@@ -33,6 +33,7 @@ DIR32 = coffgen.REL_DIR32
 PIN = re.compile(r"@pin([0-9A-F]{8})$")
 SKIP_SECTIONS = (".text", ".debug", ".drectve", ".pdata", ".xdata", ".CRT$XCU")
 CRT_INIT = ".CRT$XCU"
+TU_SCOPED = re.compile(r"_\$[ES]\d+$")
 
 
 def kind_of(name, section):
@@ -71,6 +72,10 @@ def section_relocs(data, secno):
     return out
 
 
+def relocs_in(final, secno, start, end):
+    return [r for r in section_relocs(final, secno) if start <= r[0] < end]
+
+
 class Resolver:
     """Where each name will be in the linked image: pin names carry it, the rest comes from the plan."""
 
@@ -81,18 +86,21 @@ class Resolver:
         va = pin_address(name)
         if va is not None:
             return va
+        if TU_SCOPED.match(name):   # _$E1, _$S3: one name per translation unit, never one address
+            return None
         for table in self.tables:
             if name in table:
                 return table[name]
         return None
 
 
-def candidates(path, parsed, final, address_of, resolver, retail, regions):
+def candidates(path, parsed, final, address_of, resolver, retail, regions, search=()):
     """Placement candidates of one project object.
 
     parsed: verify_vtable.parse_coff of the object as compiled; final: the link copy's bytes (relocations
     retargeted to pins, symbols renamed) before sections are made droppable; address_of(idx, symbol)
-    gives a symbol's retail address or None. Returns (accepted, rejected) lists of dicts."""
+    gives a symbol's retail address or None. search: kinds (string, float) whose address may instead be the
+    only place retail holds exactly their bytes. Returns (accepted, rejected) lists of dicts."""
     data, sections, symbols, _ = parsed
     names = {idx: (name, section, scl) for idx, name, _, section, scl, _ in coffgen.read_symbols(final)}
     symptr, = struct.unpack_from("<I", final, 8)
@@ -144,6 +152,10 @@ def candidates(path, parsed, final, address_of, resolver, retail, regions):
                 va = address_of(idx, s)
                 if va is not None:
                     vas.add(va - (value - start))
+            if not vas and kind in search and not sec["uninitialized"] and not relocs_in(final, secno, start, end):
+                found = retail.search(bytes(data[sec["raw_ptr"] + start:sec["raw_ptr"] + end]))
+                if len(found) == 1:
+                    vas.add(found[0])
             if not vas:
                 reject(name, kind, sec["name"], "no retail address", size)
                 continue
@@ -204,6 +216,80 @@ def candidates(path, parsed, final, address_of, resolver, retail, regions):
     return accepted, rejected
 
 
+def initialiser_slots(retail):
+    """{entry value: [slot VA]} of the retail initialiser table: the dwords between the zero that opens
+    .data (__xc_a) and the next zero (__xc_z). Each entry is the address of a dynamic initialiser."""
+    start = retail.by_name[".data"][0]
+    slots, at = {}, start + 4
+    if struct.unpack("<I", retail.fill(start, 4))[0] != 0:
+        return slots
+    while True:
+        value, = struct.unpack("<I", retail.fill(at, 4))
+        if value == 0:
+            return slots
+        slots.setdefault(value, []).append(at)
+        at += 4
+
+
+def jump_thunk_target(data, sections, symbols, symidx, names):
+    """The name a one-instruction `jmp target` function jumps to, if symbol `symidx` is such a function
+    (VC6 registers `_$E2: jmp _$E1` in .CRT$XCU), else None."""
+    sym = symbols.get(symidx)
+    if sym is None or sym["section"] not in sections:
+        return None
+    sec = sections[sym["section"]]
+    if not sec["name"].startswith(".text") or sym["value"] != 0 or sec["raw_size"] > 16 or len(sec["relocs"]) != 1:
+        return None
+    off, target, rtype = sec["relocs"][0]
+    code = data[sec["raw_ptr"]:sec["raw_ptr"] + sec["raw_size"]]
+    if rtype != coffgen.REL_REL32 or off != 1 or code[:1] != b"\xe9" or any(b not in (0, 0x90) for b in code[1:]) \
+            or struct.unpack_from("<i", code, 1)[0] != 0:
+        return None
+    return names.get(target)
+
+
+def initialisers(path, parsed, final, resolver, slots):
+    """Candidates for the entries of a project object's .CRT$XCU sections, each placed at the retail
+    slot holding the address of the initialiser it names. Returns (accepted, rejected, sections,
+    consecutive, thunks): the last three count sections with a placed entry, those whose placed entries sit
+    in consecutive slots (a translation unit's entries are contiguous in retail), and entries that name
+    the initialiser through the compiler's jump thunk."""
+    data, sections, symbols, _ = parsed
+    names = {idx: n for idx, n, _, _, _, _ in coffgen.read_symbols(final)}
+    accepted, rejected, nsec, consecutive, thunks = [], [], 0, 0, 0
+    for secno, sec in sections.items():
+        if sec["name"] != CRT_INIT:
+            continue
+        placed = []
+        for off, symidx, rtype in section_relocs(final, secno):
+            tname = names[symidx]
+            addend, = struct.unpack_from("<I", data, sec["raw_ptr"] + off)
+            via = jump_thunk_target(data, sections, symbols, symidx, names)
+            if via:   # the compiler registers a `jmp body` thunk that retail's table does not have: use the body
+                tname = via
+            va = resolver.address(tname)
+            where = slots.get((va + addend) & 0xFFFFFFFF, []) if va is not None else []
+            why = None
+            if rtype != DIR32 or addend:
+                why = "entry is not a plain 32-bit address"
+            elif va is None:
+                why = f"initialiser {tname} has no known address"
+            elif len(where) != 1:
+                why = f"initialiser at 0x{va:X} is {'absent from' if not where else 'repeated in'} retail's table"
+            if why:
+                rejected.append({"name": tname, "kind": "initialiser", "section": sec["name"], "why": why, "size": 4,
+                                 "va": None, "object": path.name})
+                continue
+            placed.append(where[0])
+            thunks += bool(via)
+            accepted.append({"names": [tname], "kind": "initialiser", "thunk": bool(via), "va": where[0], "size": 4, "data": bytes(4),
+                             "relocs": [(0, tname, rtype)], "object": path.name, "region": "file"})
+        if placed:
+            nsec += 1
+            consecutive += all(b - a == 4 for a, b in zip(placed, placed[1:]))
+    return accepted, rejected, nsec, consecutive, thunks
+
+
 class Regions:
     """Retail's data ranges: file-backed .rdata and .data, and the .data bss tail."""
 
@@ -262,8 +348,9 @@ def summarise(pieces, rejected, top=8):
     seen = set()
     unique = []
     for r in rejected:   # one definition is rejected once per object that carries it
-        if (r["kind"], r["name"]) not in seen:
-            seen.add((r["kind"], r["name"]))
+        key = (r["kind"], r["name"], r["object"] if TU_SCOPED.match(r["name"]) else None)
+        if key not in seen:
+            seen.add(key)
             unique.append(r)
     rejected = unique
     for p in pieces:

@@ -171,7 +171,7 @@ def order_name(sym):
 
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
          pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None, retail=None,
-         source_data=False, data_reject=()):
+         source_data=False, data_reject=(), data_search=()):
     hybrid = retail is not None   # hybrid.Retail: stubs carry retail bytes, leftovers leave the image
 
     def code_fill(va, size):
@@ -497,6 +497,8 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         if not (hybrid and pin_plan):
             raise ValueError("source_data needs the hybrid image and the pin plan")
         regions = datasource.Regions(retail)
+        init_slots = datasource.initialiser_slots(retail)
+        init_sections = [0, 0, 0]   # sections with a placed entry, and of those the ones in consecutive slots
         resolver = datasource.Resolver(
             {name: va for va, name in provider.items()},
             pin_plan["global"], call_names,
@@ -548,9 +550,15 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
                 return None
             parsed = parsed_of(path)
             if parsed is not None:
-                acc, rej = datasource.candidates(path, parsed, data, address_of, resolver, retail, regions)
+                acc, rej = datasource.candidates(path, parsed, data, address_of, resolver, retail, regions, data_search)
                 data_candidates += acc
                 data_rejected += rej
+                acc, rej, nsec, consecutive, thunks = datasource.initialisers(path, parsed, data, resolver, init_slots)
+                init_sections[2] += thunks
+                data_candidates += acc
+                data_rejected += rej
+                init_sections[0] += nsec
+                init_sections[1] += consecutive
         tail = {}
         for idx, names in coffgen.section_symbols(data).items():
             off = 20 + 40 * (idx - 1)
@@ -619,6 +627,10 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         data_rejected += [{"name": p["names"][0], "kind": p["kind"], "section": "", "size": p["size"], "va": p["va"],
                            "object": p["object"], "why": "differs from retail in the linked image"} for p in dropped]
         data_report = datasource.summarise(data_pieces, data_rejected)
+        data_report["initialiser_table"] = {"retail_entries": sum(len(v) for v in init_slots.values()),
+                                            "sections_with_placed_entries": init_sections[0],
+                                            "sections_in_consecutive_slots": init_sections[1],
+                                            "entries_named_through_a_jump_thunk": init_sections[2]}
         out.mkdir(parents=True, exist_ok=True)
         (out / "data_rejected.json").write_text(json.dumps(data_rejected, indent=1) + "\n")
         (out / "data_placed.json").write_text(json.dumps(

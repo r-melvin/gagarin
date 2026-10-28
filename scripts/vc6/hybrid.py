@@ -62,6 +62,18 @@ class Retail:
                 return self.pe[rawptr + va - start:rawptr + va - start + have] + bytes(n - have)
         raise VerifyError(f"{va:#x} is not in a section of the image")
 
+    def search(self, body):
+        """VAs of every occurrence of `body` in the file-backed parts of .rdata and .data."""
+        found = []
+        for name in (".rdata", ".data"):
+            start, _, rawptr, rawsize = self.by_name[name]
+            image = self.pe[rawptr:rawptr + rawsize]
+            at = image.find(body)
+            while at >= 0:
+                found.append(start + at)
+                at = image.find(body, at + 1)
+        return found
+
     def text_end(self):
         start, vsize, _, _ = self.by_name[".text"]
         return start + vsize

@@ -94,7 +94,7 @@ def link(objects, libs, out, includes=()):
     return proc.returncode, log
 
 
-def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False):
+def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False, search=()):
     out.mkdir(parents=True, exist_ok=True)
     retail = None
     linked_diff = {}
@@ -118,7 +118,7 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
         vc6, _ = link_diag.toolenv()
         result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data, pin_plan=pin_plan,
                               order_tail=order_tail, libdir=vc6 / "VC98/Lib", retail=retail,
-                              source_data=source_data, data_reject=reject)
+                              source_data=source_data, data_reject=reject, data_search=search)
         objects = result["objects"]
         if source_data:
             data_obj, data_layout = hybrid_module.data_object(retail, result["_data_pieces"])
@@ -177,14 +177,19 @@ def main(argv=None):
     ap.add_argument("--source-data", action="store_true",
                     help="M3 (with --hybrid): data symbols that project objects define at a known retail address "
                          "and whose compiled contents equal retail's are placed from the objects, not from the image")
+    ap.add_argument("--search-literals", action="store_true",
+                    help="with --source-data: a string or float literal with no known address is placed where retail "
+                         "holds exactly its bytes, when that is the only such place")
     args = ap.parse_args(argv)
     out = args.out.resolve()
+    if args.search_literals and not args.source_data:
+        ap.error("--search-literals needs --source-data")
     if args.source_data and not args.hybrid:
         ap.error("--source-data needs --hybrid")
     if args.hybrid and ROOT / "build-vc6" not in out.parents and out != ROOT / "build-vc6":
         ap.error("--hybrid embeds bytes of the retail image in its outputs: --out must be under build-vc6/")
     summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail, hybrid=args.hybrid,
-                  source_data=args.source_data)
+                  source_data=args.source_data, search=("string", "float") if args.search_literals else ())
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")

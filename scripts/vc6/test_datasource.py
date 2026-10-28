@@ -133,6 +133,41 @@ class CandidateTests(Fixture):
         self.assertIn("contents differ", rej[0]["why"])
 
 
+class InitialiserTests(Fixture):
+    def object(self, thunk):
+        text = b"\xe9\0\0\0\0" + b"\x90" * 11
+        return build([(".CRT$XCU", 0xC0300040, bytes(4), [(0, 0, coffgen.REL_DIR32)]),
+                      (".text", 0x60500020, text, [(1, 1, coffgen.REL_REL32)])],
+                     [("_$E2" if thunk else "?static_00401230@@YAXXZ", 0, 2 if thunk else 0, 3 if thunk else 2, None),
+                      ("?static_00401230@@YAXXZ", 0, 0, 2, None)])
+
+    def run_init(self, obj, names):
+        path = self.dir / "a.obj"
+        path.write_bytes(obj)
+        self.retail.patch(DATA, bytes(4) + struct.pack("<I", 0x401230) + bytes(8))
+        slots = datasource.initialiser_slots(self.retail)
+        return slots, datasource.initialisers(path, parse_coff(path), obj, datasource.Resolver(names), slots)
+
+    def test_the_table_is_the_run_after_the_opening_zero(self):
+        slots, _ = self.run_init(self.object(False), {})
+        self.assertEqual(slots, {0x401230: [DATA + 4]})
+
+    def test_an_entry_is_placed_in_the_slot_that_holds_the_initialiser(self):
+        _, (acc, rej, nsec, consecutive, thunks) = self.run_init(self.object(False), {"?static_00401230@@YAXXZ": 0x401230})
+        self.assertEqual([(c["va"], c["relocs"]) for c in acc], [(DATA + 4, [(0, "?static_00401230@@YAXXZ", coffgen.REL_DIR32)])])
+        self.assertEqual((rej, nsec, consecutive, thunks), ([], 1, 1, 0))
+
+    def test_a_jump_thunk_entry_names_the_body_it_jumps_to(self):
+        _, (acc, rej, nsec, consecutive, thunks) = self.run_init(self.object(True), {"?static_00401230@@YAXXZ": 0x401230})
+        self.assertEqual((acc[0]["names"], acc[0]["thunk"], thunks), (["?static_00401230@@YAXXZ"], True, 1))
+
+    def test_an_initialiser_with_no_address_or_no_slot_is_rejected(self):
+        _, (acc, rej, *_) = self.run_init(self.object(False), {})
+        self.assertIn("no known address", rej[0]["why"])
+        _, (acc, rej, *_) = self.run_init(self.object(False), {"?static_00401230@@YAXXZ": 0x401240})
+        self.assertIn("absent from retail's table", rej[0]["why"])
+
+
 class AssignTests(unittest.TestCase):
     def piece(self, va, size, kind="global", name="n", data=None, relocs=()):
         return {"names": [name], "kind": kind, "va": va, "size": size, "data": data if data is not None else bytes(size),
