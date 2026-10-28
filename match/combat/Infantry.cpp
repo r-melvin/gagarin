@@ -444,6 +444,29 @@ void InfantryClass::vf_13(Obj_004A1D30* crc)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// The infantry seen as a bare vtable pointer; slot 44 takes the argument and a
+// coordinate by value.
+struct Vtbl_00521D30;
+struct InfantryView_00521D30
+{
+    Vtbl_00521D30* Vtbl;
+};
+typedef CoordStruct (InfantryView_00521D30::*Slot44_00521D30)(int, CoordStruct);
+struct Vtbl_00521D30
+{
+    char             _pad000[0xB0];
+    Slot44_00521D30  At_B0;     // +0xB0
+};
+
+// FUNCTION: GAMEMD 0x521D30
+// Ask slot 44 for the position, passing the origin as the coordinate.
+CoordStruct InfantryClass::vf_192(int a1)
+{
+    CoordStruct zero = { 0, 0, 0 };
+    InfantryView_00521D30* self = (InfantryView_00521D30*)this;
+    return (self->*self->Vtbl->At_B0)(a1, zero);
+}
+
 // FUNCTION: GAMEMD 0x5220F0
 // Stores its argument in a member. Vtable slot 325 of InfantryClass (RTTI).
 void Obj_005220F0::FUN_005220F0()

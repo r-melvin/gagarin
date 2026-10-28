@@ -119,8 +119,7 @@ public:
     CellStruct      WaypointNearbyAccessibleCellDelta;// +0x524 (4)
     CellStruct      WaypointCell;                     // +0x528 (4)
     unsigned int    unknown_52C;                      // +0x52C
-    unsigned int    unknown_530;                      // +0x530
-    unsigned int    unknown_534;                      // +0x534
+    double          unknown_530;                      // +0x530 (8; 0x4DC760 returns it with FLD qword)
     unsigned char   IsMoveSoundPlaying;               // +0x538 (bool)
     unsigned char   align_539[3];                     // +0x539
     unsigned char   unknown_bool_53C;                 // +0x53C (binary byte-zeroes this)
@@ -207,10 +206,13 @@ public:
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x4D9920 (IsScanLimited @0x688 wrapper of 0x6F8DF0)
     // Native primary slot 288: RET 8; this override receives the target and flag.
     virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x4D94B0
+
+    double FUN_004DC760();                                         // 0x4DC760 (team flag selects a constant, else unknown_530)
 };
 
 GG_STATIC_ASSERT(offsetof(FootClass, PlanningPathIdx)            == 0x520);
 GG_STATIC_ASSERT(offsetof(FootClass, unknown_52C)               == 0x52C);
+GG_STATIC_ASSERT(offsetof(FootClass, unknown_530)               == 0x530);
 GG_STATIC_ASSERT(offsetof(FootClass, MoveSoundAudioController)   == 0x544);
 GG_STATIC_ASSERT(offsetof(FootClass, CurrentMapCoords)          == 0x558);
 GG_STATIC_ASSERT(offsetof(FootClass, CurrentTunnelCoords)       == 0x568);

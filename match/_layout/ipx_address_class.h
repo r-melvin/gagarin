@@ -72,6 +72,15 @@ public:
     void FUN_0053EDE0(NodeAddressType* node);
     // FUNCTION: GAMEMD 0x53F200 (decl; reloc).
     void FUN_0053F200(unsigned short port);
+    // FUNCTION: GAMEMD 0x53F020 / 0x53F050 / 0x53F080 / 0x53F0B0 -- ordering over the ten address bytes.
+    bool operator>(const IPXAddressClass& other) const;
+    bool operator<(const IPXAddressClass& other) const;
+    bool operator>=(const IPXAddressClass& other) const;
+    bool operator<=(const IPXAddressClass& other) const;
+    // FUNCTION: GAMEMD 0x53ECE0 -- builds an address from network number, node and port; RET 0xC.
+    IPXAddressClass(const NetworkNumberType& network, const NodeAddressType& node, unsigned short port);
+    // FUNCTION: GAMEMD 0x53ED60 -- reads the node, then the network number (mode 1) or the port; RET 0xC.
+    void FUN_0053ED60(NetworkNumberType* network, NodeAddressType* node, unsigned short* port);
 
     union {
         unsigned char NetworkNumber[4]; // +0x00 (network / port storage)

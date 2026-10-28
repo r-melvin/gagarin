@@ -11,14 +11,35 @@
 
 struct Obj_004A5950;
 
+// A direction word the way 0x4A5960 handles it: the 16-bit direction with its
+// two bytes addressable, followed by two bytes that ride along unchanged.
+struct DirWord_004A5960
+{
+    union {
+        unsigned short Raw;
+        struct {
+            unsigned char Low;
+            unsigned char High;
+        };
+    };
+    unsigned short Padding;
+};
+GG_STATIC_ASSERT(sizeof(DirWord_004A5960) == 4);
+
 struct Obj_004A5950
 {
     char unknown_00[0xB4];
     int unknown_B4;   // +0x00B4
     // FUNCTION: GAMEMD 0x4A5950
     int FUN_004A5950() const;
+    int unknown_B8;   // +0x00B8
+    int unknown_BC;   // +0x00BC
+    // FUNCTION: GAMEMD 0x4A5960
+    void FUN_004A5960(DirWord_004A5960 dir);
 };
 GG_STATIC_ASSERT(offsetof(Obj_004A5950, unknown_B4) == 0xB4);
+GG_STATIC_ASSERT(offsetof(Obj_004A5950, unknown_B8) == 0xB8);
+GG_STATIC_ASSERT(offsetof(Obj_004A5950, unknown_BC) == 0xBC);
 
 
 // FUNCTION: GAMEMD 0x4A5090

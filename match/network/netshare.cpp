@@ -726,7 +726,7 @@ void __cdecl FUN_00785360();
 // FUNCTION: GAMEMD 0x5DAFD0 (decl; reloc) -- no arguments.
 void __cdecl FUN_005DAFD0();
 
-// FUNCTION: GAMEMD 0x4E37D0 / 0x4E41D0 are declared in netshare_win.h.
+// Declarations of 0x4E37D0 and 0x4E41D0 are in netshare_win.h.
 // FUNCTION: GAMEMD 0x4E4170 (decl; reloc) -- __fastcall: the start-position control's value, RET 4.
 int FUN_004E4170(HWND dialog, int control, int fallback);
 

@@ -113,6 +113,136 @@ void FUN_004B69D0()
 {
 }
 
+#include "../_layout/swizzle_manager_class.h"
+
+// An entry of the list, seen as a bare vtable pointer; only slot 43 is called.
+struct Vtbl_004B6AB0;
+struct Entry_004B6AB0
+{
+    Vtbl_004B6AB0* Vtbl;
+};
+typedef int (Entry_004B6AB0::*Slot43_004B6AB0)();
+struct Vtbl_004B6AB0
+{
+    char            _pad000[0xAC];
+    Slot43_004B6AB0 At_AC;      // +0xAC
+};
+
+// The scenario object seen through three parallel vectors at +0x34D4,
+// +0x34F0 and +0x350C (items at +4, count at +0x10 of each).
+struct Scenario_004B6AB0
+{
+    char  _pad000[0x34D8];
+    Entry_004B6AB0** ItemsA;    // +0x34D8
+    char  _pad34DC[0x34E4 - 0x34DC];
+    int   CountA;               // +0x34E4
+    char  _pad34E8[0x34F4 - 0x34E8];
+    int*  ItemsB;               // +0x34F4
+    char  _pad34F8[0x3510 - 0x34F8];
+    int*  ItemsC;               // +0x3510
+};
+GG_STATIC_ASSERT(offsetof(Scenario_004B6AB0, ItemsA) == 0x34D8);
+GG_STATIC_ASSERT(offsetof(Scenario_004B6AB0, CountA) == 0x34E4);
+GG_STATIC_ASSERT(offsetof(Scenario_004B6AB0, ItemsB) == 0x34F4);
+GG_STATIC_ASSERT(offsetof(Scenario_004B6AB0, ItemsC) == 0x3510);
+
+// GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
+extern Scenario_004B6AB0* DAT_00A8B230;
+// GLOBAL: GAMEMD 0xA8ED84 -- the engine frame counter.
+extern int CurrentFrame;
+
+// A short list of up to five entries plus the total height they occupy.
+class List_004B69B0
+{
+public:
+    int              StartTime;     // +0x00
+    int              unknown_04;    // +0x04
+    int              unknown_08;    // +0x08
+    bool             unknown_0C;    // +0x0C
+    int              Count;         // +0x10
+    Entry_004B6AB0*  Items[5];      // +0x14
+    int              TotalHeight;   // +0x28
+
+    // FUNCTION: GAMEMD 0x4B69B0
+    List_004B69B0();
+    // FUNCTION: GAMEMD 0x4B6AB0
+    bool RemoveAt(int index);
+    // FUNCTION: GAMEMD 0x4B6B80
+    void Clear();
+    // FUNCTION: GAMEMD 0x4B6BB0
+    void SwizzlePointers();
+};
+GG_STATIC_ASSERT(offsetof(List_004B69B0, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(List_004B69B0, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(List_004B69B0, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(List_004B69B0, Items) == 0x14);
+GG_STATIC_ASSERT(offsetof(List_004B69B0, TotalHeight) == 0x28);
+GG_STATIC_ASSERT(sizeof(List_004B69B0) == 0x2C);
+
+// FUNCTION: GAMEMD 0x4B69B0
+// Start an empty list stamped with the current frame.
+List_004B69B0::List_004B69B0()
+{
+    StartTime = CurrentFrame;
+    unknown_08 = 0x7FFFFFFF;
+    unknown_0C = false;
+    Count = 0;
+    TotalHeight = 0;
+}
+
+// FUNCTION: GAMEMD 0x4B6AB0
+// Drop the entry at `index`: release its hold in the scenario's table, take
+// its height off the total and slide the later entries down.
+bool List_004B69B0::RemoveAt(int index)
+{
+    if (Count > 0 && index >= 0 && index < Count) {
+        Scenario_004B6AB0* scen = DAT_00A8B230;
+        int found = -1;
+        if (scen->CountA != 0) {
+            for (int i = 0; i < scen->CountA; i++) {
+                if (scen->ItemsA[i] == Items[index] && scen->ItemsB[i] != -1) {
+                    found = i;
+                    break;
+                }
+            }
+        }
+        if (found != -1) {
+            scen->ItemsC[found]--;
+        }
+        Entry_004B6AB0** slot = &Items[index];
+        Entry_004B6AB0* e = *slot;
+        TotalHeight -= (e->*e->Vtbl->At_AC)();
+        for (int j = index; j < Count - 1; j++) {
+            Items[j] = Items[j + 1];
+        }
+        Count--;
+        Items[Count] = 0;
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x4B6B80
+// Remove every entry and reset the total.
+void List_004B69B0::Clear()
+{
+    unknown_0C = false;
+    for (int n = Count; n > 0; n--) {
+        RemoveAt(0);
+    }
+    Count = 0;
+    TotalHeight = 0;
+}
+
+// FUNCTION: GAMEMD 0x4B6BB0
+// Register each entry pointer with the swizzle manager.
+void List_004B69B0::SwizzlePointers()
+{
+    for (int i = 0; i < Count; i++) {
+        DAT_00B0C110.vf_4(&Items[i]);
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B9BE0
 // DynamicVectorClass<ButtonFadeEffect*>::Clear
