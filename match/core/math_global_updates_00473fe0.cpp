@@ -44,7 +44,7 @@ extern "C" const double DAT_007E1730;
 
 // FUNCTION: GAMEMD 0x004CAD50 (decl; reloc) 8-byte argument/x87 result; body in unowned_leaf_sweep_a.cpp
 extern "C" double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x004CADE0 (8-byte argument/x87 result; original return type unknown)
+// FUNCTION: GAMEMD 0x004CADE0 (decl; reloc) 8-byte argument/x87 result; body in trig_table_functions_004cac40.cpp
 extern "C" double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x007C5F00 -- VC6 __ftol conversion helper.
 // GLOBAL: GAMEMD 0x007E1738 (double 0.5)
