@@ -138,11 +138,7 @@ class WaypointPathClass;
 class WeaponTypeClass;
 struct HWND__;
 
-// GLOBAL: GAMEMD 0x00B0EC60
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x0071A410 -- exit-time destructor stub of DAT_00B0EC60
-DynamicVectorClass<TemporalClass*> DAT_00B0EC60;
+// GLOBAL: GAMEMD 0x00B0EC60 -- defined in temporal_array_vector.cpp (with its initialiser and exit stub)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71AB10  (__thiscall)
