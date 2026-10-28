@@ -10,38 +10,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// LIBRARY: GAMEMD 0x7C5F00 — VC6 x87 integer conversion helper.
 // LIBRARY: GAMEMD 0x7C8B3D — statically linked CRT heap release wrapper.
 // LIBRARY: GAMEMD 0x7C978A — statically linked CRT on-exit registration.
 extern "C" {
     void __cdecl FUN_007C8B3D(void* block);
     int __cdecl FUN_007C978A(void (__cdecl *function)());
 }
-
-// FUNCTION: GAMEMD 0x004CAD50 (decl; reloc) — double-argument engine helper.
-extern double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x004CADE0 (decl; reloc) — double-argument engine helper.
-extern double __cdecl FUN_004CADE0(double value);
-
-// GLOBAL: GAMEMD 0x007E1738 — 0.5 (binary bytes).
-extern "C" const double DAT_007E1738;
-// GLOBAL: GAMEMD 0x007E1740 — 0.00390625 (binary bytes).
-extern "C" const double DAT_007E1740;
-
-// GLOBAL: GAMEMD 0x0089C680
-extern "C" double DAT_0089C680;
-// GLOBAL: GAMEMD 0x0089C6A0
-extern "C" double DAT_0089C6A0;
-// GLOBAL: GAMEMD 0x0089C6A8
-extern "C" double DAT_0089C6A8;
-// GLOBAL: GAMEMD 0x0089C6B0
-extern "C" double DAT_0089C6B0;
-// GLOBAL: GAMEMD 0x0089C6C8
-extern "C" double DAT_0089C6C8;
-// GLOBAL: GAMEMD 0x0089C6F8
-extern "C" int DAT_0089C6F8;
-// GLOBAL: GAMEMD 0x0089C6EC
-extern "C" int DAT_0089C6EC;
 
 // FUNCTION: GAMEMD 0x00438590 (decl; reloc)
 extern "C" void __cdecl FUN_00438590();
@@ -114,87 +88,6 @@ GG_STATIC_ASSERT(offsetof(DynamicBombVectorState_00438550, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(DynamicBombVectorState_00438550, unknown_14) == 0x14);
 GG_STATIC_ASSERT(sizeof(DynamicBombVectorState_00438550) == 0x18);
 
-// GLOBAL: GAMEMD 0x0089C698
-extern "C" unsigned short DAT_0089C698;
-// GLOBAL: GAMEMD 0x0089C69A
-extern "C" unsigned short DAT_0089C69A;
-// GLOBAL: GAMEMD 0x0089C6B8
-extern "C" int DAT_0089C6B8;
-// GLOBAL: GAMEMD 0x0089C6BC
-extern "C" int DAT_0089C6BC;
-// GLOBAL: GAMEMD 0x0089C6C0
-extern "C" int DAT_0089C6C0;
-// GLOBAL: GAMEMD 0x0089C6E0
-extern "C" int DAT_0089C6E0;
-// GLOBAL: GAMEMD 0x0089C6E4
-extern "C" int DAT_0089C6E4;
-// GLOBAL: GAMEMD 0x0089C6E8
-extern "C" int DAT_0089C6E8;
-// GLOBAL: GAMEMD 0x0089C688
-extern "C" int DAT_0089C688;
-// GLOBAL: GAMEMD 0x0089C68C
-extern "C" int DAT_0089C68C;
-// GLOBAL: GAMEMD 0x0089C690
-extern "C" int DAT_0089C690;
-// GLOBAL: GAMEMD 0x0089C694
-extern "C" int DAT_0089C694;
-
-// FUNCTION: GAMEMD 0x00438410
-extern "C" void FUN_00438410()
-{
-    DAT_0089C6F8 = (int)(FUN_004CAD50(DAT_0089C680 - DAT_0089C6A8)
-                         * DAT_007E1738 * DAT_0089C6A0);
-}
-
-// FUNCTION: GAMEMD 0x00438450
-extern "C" void FUN_00438450()
-{
-    DAT_0089C6B0 = FUN_004CADE0((double)DAT_0089C6F8 * DAT_007E1740);
-}
-
-// FUNCTION: GAMEMD 0x00438480
-extern "C" void FUN_00438480()
-{
-    DAT_0089C6C8 = FUN_004CADE0((double)(DAT_0089C6F8 * 2) / DAT_0089C6A0);
-}
-
-// FUNCTION: GAMEMD 0x004384B0
-extern "C" void FUN_004384B0()
-{
-    DAT_0089C6EC = (int)(DAT_0089C6F8 * 4 + DAT_007E1738);
-}
-
-// FUNCTION: GAMEMD 0x004384E0
-extern "C" void FUN_004384E0()
-{
-    DAT_0089C698 = 0;
-    DAT_0089C69A = 0;
-}
-
-// FUNCTION: GAMEMD 0x004384F0
-extern "C" void FUN_004384F0()
-{
-    DAT_0089C6B8 = 0;
-    DAT_0089C6BC = 0;
-    DAT_0089C6C0 = 0;
-}
-
-// FUNCTION: GAMEMD 0x00438510
-extern "C" void FUN_00438510()
-{
-    DAT_0089C6E8 = 0;
-    DAT_0089C6E0 = 0x80;
-    DAT_0089C6E4 = 0x80;
-}
-
-// FUNCTION: GAMEMD 0x00438530
-extern "C" void FUN_00438530()
-{
-    DAT_0089C688 = 0;
-    DAT_0089C68C = 0;
-    DAT_0089C690 = 0;
-    DAT_0089C694 = 0;
-}
 
 // FUNCTION: GAMEMD 0x00438550
 extern "C" void FUN_00438550()
