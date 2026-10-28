@@ -109,15 +109,6 @@ void __fastcall FUN_0075A7F0(int bit)
     DAT_00B45BA8[i] &= ~mask;
 }
 
-// Unmatched (best 22%): retail moves AL to CL before masking; GAMEMD 0x75A810
-bool __fastcall FUN_0075A810(int bit)
-{
-    unsigned char mask = (unsigned char)(1 << (bit & 7));
-    int i = bit >> 3;
-    bool r = (DAT_00B45BA8[i] & mask) != 0;
-    return r;
-}
-
 // Table of 8-byte (key, value) pairs at 0xB72D28 with its entry count at 0xB72F50.
 struct Pair_00B72D28
 {
