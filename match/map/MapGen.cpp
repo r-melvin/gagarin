@@ -129,7 +129,7 @@ GG_STATIC_ASSERT(sizeof(MapRegionClass*) == 4);
 
 #include "../core/vector_class_operations.h"
 
-struct _WIN32_FIND_DATAA;
+#include "../core/vector_find_data.h"
 
 // VTABLE: GAMEMD 0x7ED92C -- VectorClass<_WIN32_FIND_DATAA*>.
 template class VectorClass<_WIN32_FIND_DATAA*>;
@@ -226,8 +226,19 @@ GG_STATIC_ASSERT(sizeof(_WIN32_FIND_DATAA*) == 4);
 // DynamicVectorClass<_WIN32_FIND_DATAA*>::scalar deleting destructor
 
 // FUNCTION: GAMEMD 0x005AD9F0
-// vtable constant: 0x7ED92C
-GG_VECTOR_CTOR_POD_BODY(VectorClass_005AD9F0, PodElem4, 0x7ED92C)
+template<> VectorClass<WIN32_FIND_DATAA*>::VectorClass(int capacity,
+    WIN32_FIND_DATAA** pMem)
+    : Items(0), Capacity(capacity), IsInitialized(true), IsAllocated(false)
+{
+    if (capacity != 0) {
+        if (pMem != 0)
+            Items = new((void*)pMem) WIN32_FIND_DATAA*[capacity];
+        else {
+            Items = new WIN32_FIND_DATAA*[capacity];
+            IsAllocated = true;
+        }
+    }
+}
 
 // LIBRARY: GAMEMD 0x7C8B3D -- CRT free.
 extern "C" void __cdecl gg_free(void*);
