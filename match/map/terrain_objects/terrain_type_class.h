@@ -39,7 +39,8 @@ public:
     TerrainTypeClass(const char* id = 0) throw();
     // Load restores derived vptrs and leaves derived fields untouched. The base
     // retains its native no-init defaults for Image, charger arrays and caches.
-    TerrainTypeClass(const AbstractNoInit& noInit) : ObjectTypeClass(noInit) {}
+    // FUNCTION: GAMEMD 0x71DBD0 - the no-initialisation constructor (body in tu243_terrain_type_class.cpp).
+    TerrainTypeClass(const AbstractNoInit& noInit);
 
     // ---- primary table (IPersistStream side) overrides ---------------------------------------
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x71E260
@@ -47,15 +48,8 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);        // 6   0x71E240
     // Slot 8: the scalar deleting destructor 0x71E360 is compiler output; the destructor body is
     // inline (expanded into that entry) and the base body 0x5F7400 is out of line.
-    virtual ~TerrainTypeClass()
-    {
-        if (Image != 0) {
-            operator delete(Image);
-            Image = 0;
-        }
-        MapObjAnnouncePointerExpired(this, true);
-        TerrainTypeArray.RemoveItem(this);
-    }
+    // FUNCTION: GAMEMD 0x71DC00 (body in tu243_terrain_type_class.cpp)
+    virtual ~TerrainTypeClass();
     static TerrainTypeClass* FindOrAllocate(const char* id); // existing row 0x71E2A0
     virtual int vf_11();                                                  // 11  0x71E330
     virtual int vf_12();                                                     // 12  0x71E340

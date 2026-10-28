@@ -67,9 +67,8 @@ HRESULT __stdcall TaskForceClass::Load(IStream* pStm)
     return 0;
 }
 
-// The destructor is only ever reached through the scalar deleting destructor, so it is
-// inline: retail has no standalone copy.
-inline TaskForceClass::~TaskForceClass()
+// FUNCTION: GAMEMD 0x6E7F80
+TaskForceClass::~TaskForceClass()
 {
     AnnounceExpiredPointer(1);
     DAT_00A8E8D0.RemoveItem(this);

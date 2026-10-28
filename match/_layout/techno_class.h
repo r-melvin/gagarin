@@ -402,6 +402,7 @@ public:
     virtual bool vf_306();                                         // 306 0x70F0F0
     virtual void vf_307();                                         // 307 0x70F100
     virtual bool vf_308();                                         // 308 0x70F110
+    virtual void vf_56(void* source);                              // 56  0x702D40 (override of ObjectClass)
 
     // +0xF0 FlasherClass base (8), +0xF8 StageClass base (0x1C): retail CHD
     // 0x80C058 lists both as non-polymorphic bases at mdisp 0xF0 / 0xF8.

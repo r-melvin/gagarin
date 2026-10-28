@@ -58,15 +58,15 @@ public:
     int            unknown_B8;      // +0xB8
     int            unknown_BC;      // +0xBC
     int            unknown_C0;      // +0xC0
-    AbstractClass* Ptr_C4;          // +0xC4
-    int            unknown_C8;      // +0xC8
+    AbstractClass* Ptr_C4;          // +0xC4 owner house (INI "House")
+    int            unknown_C8;      // +0xC8 country index while no house is set
     int            unknown_CC;      // +0xCC
-    AbstractClass* Ptr_D0;          // +0xD0
-    int            unknown_D4;      // +0xD4
-    int            unknown_D8;      // +0xD8
+    AbstractClass* Ptr_D0;          // +0xD0 tag type (INI "Tag")
+    int            unknown_D4;      // +0xD4 INI "Waypoint"
+    int            unknown_D8;      // +0xD8 INI "TransportWaypoint"
     int            unknown_DC;      // +0xDC
-    AbstractClass* Ptr_E0;          // +0xE0
-    AbstractClass* Ptr_E4;          // +0xE4
+    AbstractClass* Ptr_E0;          // +0xE0 script type (INI "Script")
+    AbstractClass* Ptr_E4;          // +0xE4 task force (INI "TaskForce"; GetGroup reads its +0x98)
     int            unknown_E8;      // +0xE8
     int            unknown_EC;      // +0xEC
     bool           Flag_F0;         // +0xF0

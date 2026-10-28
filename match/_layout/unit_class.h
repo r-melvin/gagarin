@@ -98,6 +98,10 @@ public:
     virtual void vf_341(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);         // 341 0x73B470
     virtual void vf_342(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);         // 342 0x73C5F0
     virtual void vf_343(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9); // 343 0x73B140
+    virtual int vf_136();                                // 136 0x744100
+    virtual int vf_147();                                // 147 0x740EF0
+    virtual void vf_56(void* source);                    // 56  0x744720
+    virtual bool vf_65(RectangleStruct* rect, bool force, int a3); // 65 0x73B0B0
 
     int           CurrentFiringFrame;   // +0x6C0  ctor: MOV [ESI+0x6C0],EDI(-1) @0x007353E0
     void*         Type;                 // +0x6C4  UnitTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x007353E6

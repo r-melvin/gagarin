@@ -20,14 +20,14 @@
 // FUNCTION: GAMEMD 0x6F1870  TeamTypeClass::GetGroup (__thiscall)
 //
 // Return the team's group number.  -2 ("none") and any non-(-1) value are
-// returned verbatim; the -1 sentinel means "inherit the owning house's group",
-// so when an Owner house is set its group (house+0x98) is returned instead.
+// returned verbatim; the -1 sentinel means "inherit the task force's group",
+// so when a TaskForce is set its group (+0x98) is returned instead.
 // ---------------------------------------------------------------------------
 int TeamTypeClass::GetGroup() const
 {
     int group = this->Group;
-    if (group != -2 && group == -1 && this->Owner != 0) {
-        group = this->Owner->Group;
+    if (group != -2 && group == -1 && this->TaskForce != 0) {
+        group = this->TaskForce->Group;
     }
     return group;
 }

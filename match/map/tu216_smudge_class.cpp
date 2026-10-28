@@ -66,6 +66,17 @@ SmudgeClass::SmudgeClass(SmudgeTypeClass* type, const MapObjCoord& coord, int ar
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6B4B40
+SmudgeClass::~SmudgeClass()
+{
+    MapObjAnnouncePointerExpired(this, true);
+    SmudgeArray.RemoveItem(this);
+    if (MapObjRemovalEnabled)
+        vf_53();
+    Type = 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B4BE0
 // CAPPED at 82.4%: retail stores the copied cell (`MOV EAX,[EAX]; MOV [ESP+0x10],EAX`) before it reads
 // the MapObjMarkGate global and keeps it in EAX; every variant tried (copy-initialised, assigned,

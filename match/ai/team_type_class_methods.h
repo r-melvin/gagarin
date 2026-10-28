@@ -11,7 +11,8 @@
 //   Group             @ +0x9C  (MOV EAX,[ECX+0x9c] in GetGroup)
 //   Waypoint          @ +0xD4  (MOV EAX,[ECX+0xd4] in GetWaypoint)
 //   TransportWaypoint @ +0xD8  (MOV EAX,[ECX+0xd8] in GetTransportWaypoint)
-//   Owner (house ptr) @ +0xE4  (MOV ECX,[ECX+0xe4] then [ECX+0x98] in GetGroup)
+//   TaskForce         @ +0xE4  (MOV ECX,[ECX+0xe4] then [ECX+0x98] in GetGroup; the INI reader
+//                               0x6F1090 fills it from the "TaskForce" key. The owner house is at +0xC4.)
 #ifndef GG_MATCH_AI_TEAM_TYPE_CLASS_METHODS_H
 #define GG_MATCH_AI_TEAM_TYPE_CLASS_METHODS_H
 
@@ -24,15 +25,15 @@
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // ---------------------------------------------------------------------------
-// Partial HouseClass view: GetGroup reads the dword at house+0x98 when a team's
-// Group is the "owner's group" sentinel (-1).  Only that one member is pinned.
+// Partial TaskForceClass view: GetGroup reads the dword at +0x98 when a team's
+// Group is the "task force's group" sentinel (-1).  Only that one member is pinned.
 // ---------------------------------------------------------------------------
-struct TeamOwnerHouse
+struct TeamTaskForceView
 {
     char _pad_00[0x98];   // +0x00..0x97
     int  Group;           // +0x98
 };
-GG_STATIC_ASSERT(offsetof(TeamOwnerHouse, Group) == 0x98);
+GG_STATIC_ASSERT(offsetof(TeamTaskForceView, Group) == 0x98);
 
 // ---------------------------------------------------------------------------
 // Waypoint-coordinate locator.  GetWaypoint/GetTransportWaypoint load a global
@@ -59,7 +60,7 @@ public:
     int             Waypoint;            // +0xD4
     int             TransportWaypoint;   // +0xD8
     char            _pad_DC[0xE4 - 0xDC];// +0xDC..0xE3 (P2)
-    TeamOwnerHouse* Owner;               // +0xE4
+    TeamTaskForceView* TaskForce;           // +0xE4
 
     int         GetGroup() const;
     CellStruct* GetWaypoint(CellStruct* buffer) const;
@@ -69,6 +70,6 @@ public:
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Group)             == 0x9C);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Waypoint)          == 0xD4);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, TransportWaypoint) == 0xD8);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Owner)             == 0xE4);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, TaskForce)         == 0xE4);
 
 #endif  // GG_MATCH_AI_TEAM_TYPE_CLASS_METHODS_H

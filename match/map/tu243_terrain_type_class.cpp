@@ -100,6 +100,25 @@ TerrainTypeClass::TerrainTypeClass(const char* id) throw()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x71DBD0
+TerrainTypeClass::TerrainTypeClass(const AbstractNoInit& noInit) : ObjectTypeClass(noInit)
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x71DC00
+// The shape file is freed here; the base destructor 0x5F7400 follows out of line.
+TerrainTypeClass::~TerrainTypeClass()
+{
+    if (Image != 0) {
+        operator delete(Image);
+        Image = 0;
+    }
+    MapObjAnnouncePointerExpired(this, true);
+    TerrainTypeArray.RemoveItem(this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71DDD0
 bool TerrainTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 {

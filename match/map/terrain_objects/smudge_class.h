@@ -44,14 +44,8 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);        // 6   0x6B4F00
     // Slot 8: the scalar deleting destructor 0x6B4FA0 is compiler output; the destructor body is
     // inline (it is expanded into that entry, and the base body 0x5F3B80 is out of line).
-    virtual ~SmudgeClass()
-    {
-        MapObjAnnouncePointerExpired(this, true);
-        SmudgeArray.RemoveItem(this);
-        if (MapObjRemovalEnabled)
-            vf_53();
-        Type = 0;
-    }
+    // FUNCTION: GAMEMD 0x6B4B40 (body in tu216_smudge_class.cpp)
+    virtual ~SmudgeClass();
     virtual int WhatAmI();                                                  // 11  0x6B4F40
     virtual int Size();                                                     // 12  0x6B4F30
     virtual MapObjTypeClassView* GetType();                                // 34  0x6B4F20
