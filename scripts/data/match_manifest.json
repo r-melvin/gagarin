@@ -70542,7 +70542,7 @@
   "addr": "0x5BEB00",
   "sym": "_$E1",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00ABF350)",
+  "name": "dynamic initializer (header group 1: A/60 derived double)",
   "status": "matched",
   "pct": 100
  },
@@ -70551,16 +70551,97 @@
   "addr": "0x5BEB20",
   "sym": "_$E4",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00ABF338)",
+  "name": "dynamic initializer (header group 2: reciprocal double)",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/header_init_005beb00.cpp",
   "addr": "0x5BECA0",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
-  "name": "dynamic initializer (DAT_00ABF340)",
+  "name": "dynamic initializer (header group 12: {128,128,0} coordinate)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEB40",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3: 45 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEB60",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4: 60 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEB80",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 5: 90 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEBA0",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 6: derived int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEBE0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 7: derived double (int/256))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEC10",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 8: derived double (2*int/base))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEC40",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 9: derived int (4*int))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEC70",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 10: zero cell)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005beb00.cpp",
+  "addr": "0x5BEC80",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 11: zero coordinate)",
   "status": "matched",
   "pct": 100
  },
@@ -70659,7 +70740,7 @@
   "addr": "0x5BF610",
   "sym": "_$E1",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00ABF3E8)",
+  "name": "dynamic initializer (header group 1: A/60 derived double)",
   "status": "matched",
   "pct": 100
  },
@@ -70668,16 +70749,97 @@
   "addr": "0x5BF630",
   "sym": "_$E4",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00ABF3D0)",
+  "name": "dynamic initializer (header group 2: reciprocal double)",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/header_init_005bf610.cpp",
   "addr": "0x5BF7B0",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
-  "name": "dynamic initializer (DAT_00ABF3D8)",
+  "name": "dynamic initializer (header group 12: {128,128,0} coordinate)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF650",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3: 45 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF670",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4: 60 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF690",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 5: 90 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF6B0",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 6: derived int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF6F0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 7: derived double (int/256))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF720",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 8: derived double (2*int/base))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF750",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 9: derived int (4*int))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF780",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 10: zero cell)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005bf610.cpp",
+  "addr": "0x5BF790",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 11: zero coordinate)",
   "status": "matched",
   "pct": 100
  },
@@ -71478,7 +71640,7 @@
   "addr": "0x5C5EC0",
   "sym": "_$E1",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00ABF590)",
+  "name": "dynamic initializer (header group 1: A/60 derived double)",
   "status": "matched",
   "pct": 100
  },
@@ -71487,16 +71649,97 @@
   "addr": "0x5C5EE0",
   "sym": "_$E4",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00ABF578)",
+  "name": "dynamic initializer (header group 2: reciprocal double)",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/header_init_005c5ec0.cpp",
   "addr": "0x5C6060",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
-  "name": "dynamic initializer (DAT_00ABF580)",
+  "name": "dynamic initializer (header group 12: {128,128,0} coordinate)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C5F00",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3: 45 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C5F20",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4: 60 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C5F40",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 5: 90 degrees in radians)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C5F60",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 6: derived int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C5FA0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 7: derived double (int/256))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C5FD0",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 8: derived double (2*int/base))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C6000",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 9: derived int (4*int))",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C6030",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 10: zero cell)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_005c5ec0.cpp",
+  "addr": "0x5C6040",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 11: zero coordinate)",
   "status": "matched",
   "pct": 100
  },
