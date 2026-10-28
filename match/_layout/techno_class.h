@@ -69,6 +69,8 @@ struct VeterancyStruct
     float Veterancy;   // +0x00
     // FUNCTION: GAMEMD 0x750010 (decl; reloc) -- ECX receiver, no stack arguments.
     bool FUN_00750010();
+    // FUNCTION: GAMEMD 0x74FF90 (decl; reloc) -- ECX receiver, no stack arguments.
+    bool FUN_0074FF90();
 };
 GG_STATIC_ASSERT(sizeof(VeterancyStruct) == 4);
 #endif
@@ -302,11 +304,11 @@ public:
     virtual void vf_213(int a1);                                   // 213 0x708D90
     virtual void VoiceEnter();                                     // 214 0x709020
     virtual void VoiceHarvest();                                   // 215 0x709060
-    virtual int vf_216();                                          // 216 0x708EB0
+    virtual void vf_216();                                        // 216 0x708EB0
     virtual void VoiceCapture();                                   // 217 0x708DC0
     virtual void vf_218();                                        // 218 0x708FC0
     virtual void vf_219();                                         // 219 0x708E00
-    virtual int vf_220(int a1);                                    // 220 0x7090A0
+    virtual void vf_220(AbstractClass* a1);                                  // 220 0x7090A0
     virtual bool vf_221(int a1);                                   // 221 0x6FFE00
     virtual bool vf_222(int a1, AbstractClass* a2, void* a3, void* a4);            // 222 0x6FFBE0
     virtual bool IsUnderEMP();                                     // 223 0x70EFD0
@@ -316,7 +318,7 @@ public:
     virtual int vf_227();                                          // 227 0x70EFE0
     virtual int vf_228();                                          // 228 0x70D670
     virtual void vf_229(FootClass* a1);                                // 229 0x710670
-    virtual int vf_230(int a1);                                    // 230 0x70EF00
+    virtual bool vf_230(AbstractClass* a1);                                 // 230 0x70EF00
     virtual void vf_231(int a1, int a2);                           // 231 0x709820
     virtual void vf_232();                                       // 232 0x6FCD40
     virtual int vf_233(int a1);                                    // 233 0x6F7660
@@ -359,7 +361,7 @@ public:
     virtual bool vf_269(int a1);                                   // 269 0x41BFF0
     virtual void vf_270(int a1, int a2);                           // 270 0x459E60
     virtual int vf_271(int a1);                                    // 271 0x70ED80
-    virtual bool vf_272(int a1);                                   // 272 0x70EE30
+    virtual bool vf_272(ObjectClass* a1);                                 // 272 0x70EE30
     virtual void vf_273(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10); // 273 0x706640
     virtual void vf_274(int a1, int a2);                           // 274 0x6F60C0
     virtual void vf_275(int a1, int a2, int a3);                   // 275 0x6F64A0
@@ -367,7 +369,7 @@ public:
     virtual void vf_277(int a1, int a2);                           // 277 0x70A990
     virtual void vf_278(int a1, int a2, int a3);                   // 278 0x70AA60
     virtual void vf_279(bool a1);                                   // 279 0x7036C0
-    virtual void vf_280(int a1);                                   // 280 0x703770
+    virtual void vf_280(bool a1);                                   // 280 0x703770
     virtual int vf_281(int a1);                                    // 281 0x70D190
     virtual void vf_282();                                         // 282 0x41C000
     virtual unsigned long DisguiseAs(AbstractClass* target);       // 283 0x70E280
@@ -378,7 +380,7 @@ public:
     virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x709A30
     virtual bool EnterIdleMode(bool initial, bool a2);             // 289 0x709A40
     virtual void vf_290(int a1, int a2, int a3, int a4, int a5);   // 290 0x70AF50
-    virtual void vf_291(int a1, int a2, int a3, int a4);           // 291 0x70B1D0
+    virtual void vf_291(int a1, int a2, bool a3, HouseClass* a4);           // 291 0x70B1D0
     virtual int vf_292();                                          // 292 0x4C9150
     virtual void vf_293();                                         // 293 0x70CC90
     virtual void vf_294();                                         // 294 0x70CCC0
