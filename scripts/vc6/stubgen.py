@@ -171,7 +171,7 @@ def order_name(sym):
 
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
          pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None, retail=None,
-         source_data=False, data_reject=(), data_search=()):
+         source_data=False, data_reject=(), data_search=(), library_imports=False):
     hybrid = retail is not None   # hybrid.Retail: stubs carry retail bytes, leftovers leave the image
 
     def code_fill(va, size):
@@ -411,7 +411,8 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         if hybrid:
             # Import thunks come from the image, not from the import libraries (whose members would
             # bring their own import tables): same name, same 6 bytes, and the __imp_ slot as an absolute.
-            for name, addr in tail_plan["thunks"]:
+            # With library_imports the members are pulled and supply thunks and tables alike.
+            for name, addr in ([] if library_imports else tail_plan["thunks"]):
                 body = retail.fill(addr, 6)
                 writer.add_code_comdat([name], 6, 1, fill=body)
                 writer.add_absolute("__imp_" + name, struct.unpack_from("<I", body, 2)[0])
@@ -611,6 +612,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         have = {n for sec in writer.sections for n in sec[3]} | {n for n, _ in writer.commons} \
             | {n for n, _ in writer.absolutes} | {n for n, _ in writer.aliases}
         leftover = sorted((undefined_final - defined_final - have) & library_names)
+        if library_imports:   # the import libraries define these: their members are pulled
+            imported = {n for n, _ in tail_plan["thunks"]} if tail_plan else set()
+            leftover = [n for n in leftover if n not in imported and not n.startswith("__imp_")]
         for name in leftover:
             writer.add_code_comdat([name], UNKNOWN_CODE_SIZE, 1, section=".text" if hybrid else TAIL)
     data_pieces, data_report = [], None
@@ -672,6 +676,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "tail_pin_conflicts": tail_conflicts if tail_plan and hybrid else None,
         "unbound": unbound,
         "text_pieces": text_pieces,
+        "thunk_names": tail_plan["thunks"] if tail_plan else [],
         "data_report": data_report,
         "placed": placed,
         "objects": [str(p) for p in link_objects],

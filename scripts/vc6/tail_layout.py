@@ -58,14 +58,14 @@ def import_slots(pe, base, sections):
     return out
 
 
-def decorated_names(libdir):
-    """{(dll stem lower, undecorated name): decorated link symbol} from the import libraries."""
+def decorated_names(libdir, extra=()):
+    """{(dll stem lower, undecorated name): decorated link symbol} from the import libraries
+    (extra: further import library paths, such as the generated binkw32.lib)."""
     out = {}
-    for lib in link_diag.IMPORT_LIBS:
-        path = libdir / lib
+    for path in [libdir / lib for lib in link_diag.IMPORT_LIBS] + [Path(e) for e in extra]:
         if not path.is_file():
             continue
-        stem = lib.lower().rsplit(".", 1)[0]
+        stem = path.name.lower().rsplit(".", 1)[0]
         for sym in link_diag.archive_symbols(path):
             if sym.startswith("__imp__"):
                 dec = sym[len("__imp_"):]

@@ -164,11 +164,12 @@ def region_sections(name, flags, va, size, retail, pieces):
     return out
 
 
-def data_object(retail, pieces=()):
+def data_object(retail, pieces=(), library_imports=False):
     """(object bytes, [(section name, VA, size)]) reproducing retail's .rdata, .data and .rsrc.
 
     pieces: source-placed definitions (datasource.assign) that replace retail fill; each lies inside one
-    of the pieces below (initialised ones only: uninitialised definitions need no section)."""
+    of the pieces below (initialised ones only: uninitialised definitions need no section).
+    library_imports: leave out the import tables ($5, $2, $3, $4, $6): the import libraries supply them."""
     r_start, r_vsize, _, _ = retail.by_name[".rdata"]
     iat, descriptors, terminator, ilt, names = retail.import_layout()
     r_end = r_start + r_vsize
@@ -193,6 +194,9 @@ def data_object(retail, pieces=()):
     pieces = sorted((p for p in pieces if p["data"] is not None), key=lambda p: p["va"])
     sections, layout = [], []
     for name, va, size in regions:
+        if library_imports and name.startswith(".idata"):
+            layout.append((name, va, size))
+            continue
         inside = [p for p in pieces if va <= p["va"] and p["va"] + p["size"] <= va + size]
         # The attributes of an import library's sections: LINK 6 gives sections of one name with
         # different attributes (alignment included) separate output sections.

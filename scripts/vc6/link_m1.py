@@ -21,6 +21,13 @@ back, and a data object (hybrid.py) supplies .rdata, .data (with the .bss extent
 import tables and .rsrc at their retail addresses. Everything matched code references is
 pinned to those addresses. scripts/vc6/compare_image.py compares the result with retail.
 
+M3 flags on top of --hybrid (each leaves the default hybrid image unchanged):
+  --source-data       data symbols, initialiser table entries and bss extents that project objects define
+                      come from the objects when their bytes and relocation targets equal retail's
+                      (datasource.py); the rest stays retail fill. vtable_audit.py checks the vtables.
+  --search-literals   also place string/float literals with no known address where retail holds them
+  --library-imports   experimental, does not reach section identity (imports.py explains why)
+
 Usage:
   scripts/vc6/build_project.py --out OBJDIR
   scripts/vc6/link_m1.py --objdir OBJDIR [--out DIR]
@@ -35,6 +42,7 @@ import sys
 import datasource
 import hybrid as hybrid_module
 import implib
+import imports
 import link_diag
 import mapcheck
 import pindata
@@ -53,7 +61,16 @@ EARLY_IMPORT_LIBS = ["WSOCK32.LIB", "DDRAW.LIB", "DSOUND.LIB", "VERSION.LIB", "I
 LATE_IMPORT_LIBS = ["KERNEL32.LIB", "OLEAUT32.LIB"]
 
 
-def library_order(bink):
+# Retail's import descriptors follow this library order (the DLLs in descriptor order); the thunks
+# and the CRT are /ORDERed, so with imports linked from the libraries the library order is free.
+RETAIL_IMPORT_ORDER = ["KERNEL32.LIB", "USER32.LIB", "GDI32.LIB", "ADVAPI32.LIB", "SHELL32.LIB", "OLE32.LIB",
+                       "OLEAUT32.LIB", "WINMM.LIB", "WSOCK32.LIB", "DDRAW.LIB", "DSOUND.LIB", "VERSION.LIB",
+                       "COMCTL32.LIB", "IMM32.LIB"]
+
+
+def library_order(bink, library_imports=False):
+    if library_imports:
+        return RETAIL_IMPORT_ORDER + [bink] + TOOL_LIBS
     rest = [l for l in IMPORT_LIBS if l not in EARLY_IMPORT_LIBS + LATE_IMPORT_LIBS]
     return EARLY_IMPORT_LIBS + TOOL_LIBS + LATE_IMPORT_LIBS + rest + [bink]
 # /OPT:REF as retail (only 89 import thunks survive in retail, which needs
@@ -94,7 +111,7 @@ def link(objects, libs, out, includes=()):
     return proc.returncode, log
 
 
-def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False, search=()):
+def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False, search=(), library_imports=False):
     out.mkdir(parents=True, exist_ok=True)
     retail = None
     linked_diff = {}
@@ -102,7 +119,7 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
     if hybrid:
         pin_data = order_tail = True
         retail = hybrid_module.Retail(pindata.retail_path())
-        data_obj, data_layout = hybrid_module.data_object(retail)
+        data_obj, data_layout = hybrid_module.data_object(retail, library_imports=library_imports)
         (out / "hybrid_data.obj").write_bytes(data_obj)
     bink = out / "binkw32.lib"
     implib.build_from_def(ROOT / "scripts/vc6/binkw32.def", bink)
@@ -118,16 +135,19 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
         vc6, _ = link_diag.toolenv()
         result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data, pin_plan=pin_plan,
                               order_tail=order_tail, libdir=vc6 / "VC98/Lib", retail=retail,
-                              source_data=source_data, data_reject=reject, data_search=search)
+                              source_data=source_data, data_reject=reject, data_search=search, library_imports=library_imports)
         objects = result["objects"]
         if source_data:
-            data_obj, data_layout = hybrid_module.data_object(retail, result["_data_pieces"])
+            data_obj, data_layout = hybrid_module.data_object(retail, result["_data_pieces"], library_imports)
             (out / "hybrid_data.obj").write_bytes(data_obj)
         includes = ()
         if hybrid:
             objects = [out / "hybrid_data.obj"] + objects
             includes = result["order_symbols"]
-        code, log = link(objects, library_order(bink), out, includes)
+            if library_imports:   # pull the import library members in retail's slot order
+                includes = imports.import_symbols(retail, vc6 / "VC98/Lib", [bink],
+                                                  {n for n, _ in result["thunk_names"]})[0] + includes
+        code, log = link(objects, library_order(bink, library_imports), out, includes)
         unresolved, duplicates = link_diag.parse_link_log(log)
         rounds.append({"exit": code, "unresolved": len(unresolved), "duplicates": len(duplicates)})
         new = set(unresolved) - extra
@@ -180,8 +200,13 @@ def main(argv=None):
     ap.add_argument("--search-literals", action="store_true",
                     help="with --source-data: a string or float literal with no known address is placed where retail "
                          "holds exactly its bytes, when that is the only such place")
+    ap.add_argument("--library-imports", action="store_true",
+                    help="M3 (with --hybrid): the import address table, lookup tables, hint/name strings, descriptors "
+                         "and the import thunks come from the import libraries, pulled in retail's slot order")
     args = ap.parse_args(argv)
     out = args.out.resolve()
+    if args.library_imports and not args.hybrid:
+        ap.error("--library-imports needs --hybrid")
     if args.search_literals and not args.source_data:
         ap.error("--search-literals needs --source-data")
     if args.source_data and not args.hybrid:
@@ -189,7 +214,8 @@ def main(argv=None):
     if args.hybrid and ROOT / "build-vc6" not in out.parents and out != ROOT / "build-vc6":
         ap.error("--hybrid embeds bytes of the retail image in its outputs: --out must be under build-vc6/")
     summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail, hybrid=args.hybrid,
-                  source_data=args.source_data, search=("string", "float") if args.search_literals else ())
+                  source_data=args.source_data, search=("string", "float") if args.search_literals else (),
+                  library_imports=args.library_imports)
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")
