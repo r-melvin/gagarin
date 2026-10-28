@@ -12,22 +12,6 @@
 #include "../_layout/voxel_resource_data.h"
 #include "../_rt/gg_static_assert.h"
 
-extern int* DAT_0087F680;
-extern int DAT_0087F684;
-extern int DAT_0087F688;
-extern unsigned char DAT_0087F68C;
-extern int DAT_0087F690;
-// FUNCTION: GAMEMD 0x0040BDA0
-void FUN_0040BDA0()
-{
-    delete DAT_0087F680;
-    DAT_0087F680 = 0;
-    DAT_0087F684 = 0;
-    DAT_0087F688 = 0;
-    DAT_0087F68C = 0;
-    DAT_0087F690 = 0;
-}
-
 struct Iface_004C5470 {
     virtual void vf_0();
     virtual void vf_1();

@@ -81,10 +81,3 @@ int Obj_00409330::FUN_00409330() const
 {
     return unknown_30;
 }
-
-// FUNCTION: GAMEMD 0x40AD80
-// Tail-calls a method on a global object.
-void __cdecl FUN_0040AD80()
-{
-    DAT_0087E8A8.FUN_00420130();
-}

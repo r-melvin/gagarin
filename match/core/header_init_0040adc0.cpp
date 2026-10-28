@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 // The header initialiser group that opens the retail block at 0x40ADC0
 // (header_init_shapes.h): two derived doubles and a {128, 128, 0} coordinate,
 // in __xc order.
@@ -22,6 +23,22 @@ double __cdecl FUN_004CADE0(double value);
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CAC40(double value);
+
+// Global object whose constructor (0x420120) and destructor (0x420130) are
+// defined out of line elsewhere; its exit-time destructor stub is the
+// compiler's, at 0x40AD80.
+struct Gbl_0087E8A8
+{
+    // FUNCTION: GAMEMD 0x420120 (decl; reloc)
+    Gbl_0087E8A8();
+    // FUNCTION: GAMEMD 0x420130 (decl; reloc)
+    ~Gbl_0087E8A8();
+};
+
+// SYNTHETIC: GAMEMD 0x40AD60
+// SYNTHETIC: GAMEMD 0x40AD80 -- exit-time destructor stub
+// GLOBAL: GAMEMD 0x87E8A8
+Gbl_0087E8A8 DAT_0087E8A8;
 
 // SYNTHETIC: GAMEMD 0x40AD90
 // GLOBAL: GAMEMD 0x87F550
@@ -62,3 +79,20 @@ HeaderCoordInit DAT_0087F568(0, 0, 0);
 // SYNTHETIC: GAMEMD 0x40AF60
 // GLOBAL: GAMEMD 0x87F590
 HeaderCoordInit DAT_0087F590(128, 128, 0);
+
+// The path-search singleton: constructor 0x42A6D0 and destructor 0x42A900 are
+// defined out of line (path_search_ctor_dtor_methods.cpp); its exit-time
+// stub is at 0x40AFC0. The object runs to the next global at 0x87F538.
+struct PathSearchClass
+{
+    char opaque[0xC80];
+    // FUNCTION: GAMEMD 0x42A6D0 (decl; reloc)
+    PathSearchClass();
+    // FUNCTION: GAMEMD 0x42A900 (decl; reloc)
+    ~PathSearchClass();
+};
+
+// SYNTHETIC: GAMEMD 0x40AFA0
+// SYNTHETIC: GAMEMD 0x40AFC0 -- exit-time destructor stub
+// GLOBAL: GAMEMD 0x87E8B8
+PathSearchClass DAT_0087E8B8;

@@ -87,21 +87,25 @@ public:
     long Now() const { return FUN_005D5890(); }
 };
 
-// The game clock (Timer_GetTime, 0x6C8C40); its destructor is empty.
+// The game clock (0x6C8C40, called with ECX = the clock member); its destructor
+// is empty.
 class GameClock
 {
 public:
     ~GameClock() {}
-    long Now() const { return Timer_GetTime(); }
+    // FUNCTION: GAMEMD 0x6C8C40 (decl; reloc) -- timeGetTime() >> 4.
+    long Now() const;
 };
 
+// SYNTHETIC: GAMEMD 0x40EB50 -- initialiser: DAT_00887348, registers 0x40EB80
+//   (the empty clock destructor).
+// GLOBAL: GAMEMD 0x887348
+HeaderTimer<GameClock> DAT_00887348;
 // SYNTHETIC: GAMEMD 0x40EB90 -- initialiser: DAT_00887328, registers 0x40EBC0.
 // SYNTHETIC: GAMEMD 0x40EBC0 -- atexit cleanup: ~TimerResolution on +0x04.
 // GLOBAL: GAMEMD 0x887328
 HeaderTimer<WinmmClock> DAT_00887328;
 // SYNTHETIC: GAMEMD 0x40EBD0 -- initialiser: DAT_00887338, registers 0x40EC00.
-//   Not exact: retail calls 0x6C8C40 with ECX = the clock member (a member
-//   call), while the tree models 0x6C8C40 as the free __fastcall Timer_GetTime.
 // SYNTHETIC: GAMEMD 0x40EC00 -- atexit cleanup: the empty clock destructor.
 // GLOBAL: GAMEMD 0x887338
 HeaderTimer<GameClock> DAT_00887338;
