@@ -41,12 +41,16 @@ class ObjectWriter:
         self.absolutes = []  # (name, va) absolute symbols (pinned retail addresses)
 
     def add_code_comdat(self, names, size, align=16, fill=0xCC, section=".text"):
-        """One .text COMDAT of `size` fill bytes; names[0] is the COMDAT key,
+        """One .text COMDAT of `size` fill bytes (`fill`: a byte value, or a bytes object of
+        exactly `size` bytes for retail-content stubs); names[0] is the COMDAT key,
         the rest are extra external labels at offset 0 of the same section."""
         if not names or size <= 0:
             raise ValueError("a code stub needs at least one name and a positive size")
         flags = SCN_CNT_CODE | SCN_LNK_COMDAT | SCN_MEM_EXECUTE | SCN_MEM_READ | ALIGN[align]
-        self.sections.append((section, flags, bytes([fill]) * size, list(names), True))
+        content = bytes(fill) if isinstance(fill, (bytes, bytearray)) else bytes([fill]) * size
+        if len(content) != size:
+            raise ValueError("code stub fill must be exactly `size` bytes")
+        self.sections.append((section, flags, content, list(names), True))
 
     def add_common(self, name, size):
         self.commons.append((name, max(1, size)))
@@ -241,6 +245,45 @@ def section_symbols(data):
     return out
 
 
+def truncate_section(data, section, size):
+    """Copy of the object whose 1-based `section` keeps only its first `size` bytes (the section
+    header and the section symbol's aux record both say so)."""
+    data = bytearray(data)
+    off = 20 + 40 * (section - 1)
+    if size > struct.unpack_from("<I", data, off + 16)[0]:
+        raise ValueError("cannot grow a section")
+    struct.pack_into("<I", data, off + 16, size)
+    symptr = struct.unpack_from("<I", data, 8)[0]
+    for idx, name, value, sec, scl, naux in read_symbols(bytes(data)):
+        if sec == section and scl == CLASS_STATIC and value == 0 and naux and name.startswith("."):
+            struct.pack_into("<I", data, symptr + 18 * (idx + 1), size)
+            break
+    return bytes(data)
+
+
+SCN_LNK_REMOVE = 0x00000800
+SCN_LNK_INFO = 0x00000200
+
+
+def remove_sections(data, keep):
+    """Copy of the object in which every non-COMDAT section for which keep(name, flags, index)
+    is false carries IMAGE_SCN_LNK_REMOVE, so LINK leaves its contents out of the image.
+
+    Returns (object bytes, [names of the sections removed])."""
+    data = bytearray(data)
+    nsec = struct.unpack_from("<H", data, 2)[0]
+    removed = []
+    for idx in range(1, nsec + 1):
+        off = 20 + 40 * (idx - 1)
+        name = bytes(data[off:off + 8]).rstrip(b"\0").decode("latin-1")
+        flags = struct.unpack_from("<I", data, off + 36)[0]
+        if flags & (SCN_LNK_COMDAT | SCN_LNK_INFO | SCN_LNK_REMOVE) or keep(name, flags, idx):
+            continue
+        struct.pack_into("<I", data, off + 36, flags | SCN_LNK_REMOVE)
+        removed.append(name)
+    return bytes(data), removed
+
+
 def set_section_names(data, names):
     """Copy of the object with section headers renamed per {index: name} (<= 8 chars).
 
@@ -274,19 +317,23 @@ def absolutise_symbols(data, mapping):
     return bytes(out), count
 
 
-def retarget_relocations(data, mapping, rel32_mapping=None):
+def retarget_relocations(data, mapping, rel32_mapping=None, sites_mapping=None):
     """Return (object bytes, count, used names) with relocations against symbol index i
     redirected to a new undefined external named mapping[i]; REL32 relocations
     use rel32_mapping[i] instead when it has one (LINK 6 computes a REL32 to an
     absolute symbol against the unrelocated site, so it needs a symbol that is
     the address minus the image base). Only names actually used are appended.
 
+    sites_mapping {(section index, relocation offset): (dir32 name, rel32 name)} redirects single
+    relocations, for a symbol whose sites disagree (it wins over the per-symbol mappings).
+
     One undefined external is appended per distinct new name (indices of the
     existing symbols do not change), so the new names must be defined elsewhere
     in the link, e.g. as absolute symbols. Addends stored in the section data
     are untouched: the linker adds them to the new symbol's value."""
     rel32_mapping = rel32_mapping or {}
-    if not mapping and not rel32_mapping:
+    sites_mapping = sites_mapping or {}
+    if not mapping and not rel32_mapping and not sites_mapping:
         return bytes(data), 0, set()
     data = bytearray(data)
     nsec = struct.unpack_from("<H", data, 2)[0]
@@ -304,6 +351,9 @@ def retarget_relocations(data, mapping, rel32_mapping=None):
             roff = relptr + 10 * r
             symidx, kind = struct.unpack_from("<IH", data, roff + 4)
             new = (rel32_mapping.get(symidx) if kind == REL_REL32 else None) or mapping.get(symidx)
+            if (i + 1, struct.unpack_from("<I", data, roff)[0]) in sites_mapping:
+                pair = sites_mapping[(i + 1, struct.unpack_from("<I", data, roff)[0])]
+                new = pair[1] if kind == REL_REL32 else pair[0]
             if new:
                 sites.append((roff + 4, new))
     used = {name for _, name in sites}

@@ -50,6 +50,7 @@ def in_data(va):
 
 
 IMAGE_BASE = 0x400000
+IMAGE_LO, IMAGE_HI = 0x401000, 0xC04000
 
 
 def pin_name(name, va):
@@ -61,10 +62,15 @@ def rel_pin_name(name, va):
     return f"{name}@pinrel{va:08X}"
 
 
-def load_retail(binary=None):
+def retail_path(binary=None):
     binary = binary or os.environ.get("GAMEMD_BINARY")
     if not binary:
         raise SystemExit("pindata: GAMEMD_BINARY is not set (the retail image is read at run time)")
+    return binary
+
+
+def load_retail(binary=None):
+    binary = retail_path(binary)
     sha = json.loads(Path(DEFAULT_TOTALS).read_text())["_meta"]["sha256"]
     return load_pe(binary, sha)
 
@@ -93,15 +99,22 @@ def site_targets(data, sections, symbols, row_sym, address, length, pe, pe_secti
     if len(function) != 1:
         return
     function = function[0]
-    section = sections[function["section"]]
-    start, end = function["value"], function["value"] + length
+    yield from span_targets(data, sections, symbols, function["section"], function["value"], length, address,
+                            pe, pe_sections)
+
+
+def span_targets(data, sections, symbols, secidx, start, length, address, pe, pe_sections, with_offset=False):
+    """Yield (symbol index, base VA, kind) for each relocation site in bytes [start, start+length) of a
+    section whose byte `start` sits at retail VA `address` ((.., offset) too with with_offset)."""
+    section = sections[secidx]
+    end = start + length
     if section["uninitialized"] or end > section["raw_size"]:
         return
     for offset, index, kind in section["relocs"]:
         if offset < start or offset + 4 > end or kind not in (DIR32, REL32):
             continue
         sym = symbols.get(index)
-        if sym is None or sym["section"] == function["section"]:
+        if sym is None or sym["section"] == secidx:
             continue
         rel = offset - start
         fmt = "<i" if kind == REL32 else "<I"
@@ -111,7 +124,46 @@ def site_targets(data, sections, symbols, row_sym, address, length, pe, pe_secti
         except VerifyError:
             continue
         observed = retail + (address + rel + 4 if kind == REL32 else 0)
-        yield index, (observed - addend) & U32, kind
+        if with_offset:
+            yield index, (observed - addend) & U32, kind, offset
+        else:
+            yield index, (observed - addend) & U32, kind
+
+
+def derive_tail(copies, pe, pe_sections):
+    """Pins for the library tail: copies is [(object path, [(section index, retail VA, length)])].
+
+    Every cross-section target inside the image becomes a per-object pin {path: {symbol index: (name, VA)}}, a symbol
+    that derives to two addresses within one object is pinned site by site. The second result is {name: VA} for
+    code the tail calls that is defined in no copy (library code retail keeps outside the identified
+    sections), so it can be bound to its retail address."""
+    pins, calls, conflicts, site_pins = {}, {}, [], {}
+    for path, spans in copies:
+        try:
+            data, sections, symbols, _ = parse_coff(path)
+        except VerifyError:
+            continue
+        seen, where = {}, {}
+        for secidx, va, length in spans:
+            if secidx not in sections:
+                continue
+            for idx, base, kind, offset in span_targets(data, sections, symbols, secidx, 0, length, va, pe,
+                                                        pe_sections, with_offset=True):
+                sym = symbols[idx]
+                if IMAGE_LO <= base < IMAGE_HI:   # code and data alike: where the layout is right the pin equals
+                    seen.setdefault(idx, set()).add(base)   # the placed address, where it is not retail's wins
+                    where.setdefault(idx, []).append((secidx, offset, base))
+                if kind == REL32 and sym["section"] == 0 and sym["storage_class"] == coffgen.CLASS_EXTERNAL:
+                    calls.setdefault(sym["name"], set()).add(base)
+        for idx, bases in seen.items():
+            if len(bases) > 1:
+                conflicts.append({"symbol": symbols[idx]["name"], "object": path.name,
+                                  "addresses": sorted(f"0x{b:X}" for b in bases)})
+                for secidx, offset, base in where[idx]:
+                    site_pins.setdefault(path, {})[(secidx, offset)] = (symbols[idx]["name"], base)
+                continue
+            pins.setdefault(path, {})[idx] = (symbols[idx]["name"], next(iter(bases)))
+    return pins, {n: next(iter(v)) for n, v in calls.items() if len(v) == 1}, conflicts, site_pins
 
 
 def derive(objdir, index, manifest, pe, pe_sections):
@@ -217,7 +269,7 @@ def derive(objdir, index, manifest, pe, pe_sections):
 
 def retarget_object(path, data, plan):
     """(object bytes, retargeted relocations, {pin symbol: absolute value}) for one link copy of an object."""
-    mapping, rel_mapping, pins = {}, {}, {}
+    mapping, rel_mapping, pins, sites = {}, {}, {}, {}
 
     def put(idx, name, va):
         mapping[idx] = pin_name(name, va)
@@ -241,5 +293,9 @@ def retarget_object(path, data, plan):
                 va = None
             if va is not None:
                 put(idx, name, va)
-    data, sites, used = coffgen.retarget_relocations(data, mapping, rel_mapping)
-    return data, sites, {name: va for name, va in pins.items() if name in used}
+    for key, (name, va) in plan.get("site", {}).get(path, {}).items():
+        sites[key] = (pin_name(name, va), rel_pin_name(name, va))
+        pins[sites[key][0]] = va
+        pins[sites[key][1]] = va - IMAGE_BASE
+    data, count, used = coffgen.retarget_relocations(data, mapping, rel_mapping, sites)
+    return data, count, {name: va for name, va in pins.items() if name in used}

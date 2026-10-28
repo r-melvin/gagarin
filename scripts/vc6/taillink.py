@@ -163,7 +163,8 @@ def plan_tail(layout, libdir, start, out):
             entries.append({"addr": hx(s["addr"]), "len": s["len"], "align": s["align"], "name": key,
                             "kind": "section", "names": [(n, o) for n, o in s["symbols"]] or [(key, 0)]})
     order, fillers, names_at, skipped, end = order_entries(entries, start)
-    return {"objects": objects, "order": order, "fillers": fillers, "names_at": names_at, "end": end,
+    thunks = [(e["name"], e["addr"]) for e in entries if e["kind"] == "thunk"]
+    return {"objects": objects, "order": order, "thunks": thunks, "fillers": fillers, "names_at": names_at, "end": end,
             "report": {"members_copied": len(objects), "ordered": len(order) - len(fillers), "fillers": len(fillers),
                        "filler_bytes": sum(n for _, n in fillers), "skipped": skipped, "problems": problems}}
 
