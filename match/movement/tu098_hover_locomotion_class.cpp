@@ -187,6 +187,9 @@ struct Obj_00517560
     bool unknown_02;   // +0x0002
     // FUNCTION: GAMEMD 0x517560
     int FUN_00517560(Arg1_00517560* a1);
+    // FUNCTION: GAMEMD 0x517590
+    bool FUN_00517590(Arg1_00517560* a1);
+    bool IsSame(Arg1_00517560* a1) { return unknown_00 == a1->unknown_00 && unknown_01 == a1->unknown_01 && unknown_02 == a1->unknown_02; }
 };
 GG_STATIC_ASSERT(offsetof(Obj_00517560, unknown_00) == 0x0);
 GG_STATIC_ASSERT(offsetof(Obj_00517560, unknown_01) == 0x1);
@@ -558,6 +561,14 @@ void __stdcall HoverLocomotionClass::StopMoving()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5163A0
+// Unreferenced wrapper returning the virtual IsMoving() result.
+bool HoverLocomotionClass::Fun_005163A0()
+{
+    return IsMoving() ? true : false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x516370
 void __stdcall HoverLocomotionClass::DoTurn(unsigned long dir)
 {
@@ -674,6 +685,42 @@ bool __stdcall HoverLocomotionClass::Shove(unsigned long dir)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x515E30
+// Zeroes both speed doubles after telling the linked unit to stop its movement state.
+void HoverLocomotionClass::ClearSpeed()
+{
+    HoverFoot(LinkedTo)->Slot_480(0, 1);
+    SpeedFactor = 0.0;
+    Speed = 0.0;
+    HoverFoot(LinkedTo)->Slot_544(0.0);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x515E60
+// Zeroes both speed doubles and, when a heading target is set, hands it to the linked unit and clears it.
+void HoverLocomotionClass::ClearSpeedAndHeading()
+{
+    SpeedFactor = 0.0;
+    Speed = 0.0;
+    HoverFoot(LinkedTo)->Slot_544(0.0);
+    if (IsCoordSet(HeadTo)) {
+        HoverFoot(LinkedTo)->Slot_0F4(&HeadTo);
+        HeadTo = DAT_00A8F180;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x517020
+// Starts the rocking wobble: random amplitude 20..30, negated half of the time.
+void HoverLocomotionClass::StartRocking()
+{
+    IsRocking = true;
+    RockAmount = DAT_00A8B230->Random.RandomRanged(20, 30);
+    if (DAT_00A8B230->Random.RandomRanged(0, 99) < 50)
+        RockAmount = -RockAmount;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x517070
 HRESULT __stdcall HoverLocomotionClass::GetClassID(CLSID* pClassID)
 {
@@ -698,6 +745,25 @@ HRESULT __stdcall HoverLocomotionClass::Load(IStream* pStm)
 int __stdcall HoverLocomotionClass::InWhichLayer()
 {
     return 2;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x517110
+// Starts moving: speed becomes 1.0 and the linked unit is told; when it already stands on the
+// target cell (or no target is set) the arrival hook runs.
+void HoverLocomotionClass::StartMoving()
+{
+    HoverCellCoord headCell;
+    HoverCellCoord buf;
+    HoverCellCoord* cur;
+    bool atCell = !IsCoordSet(HeadTo) ||
+        (headCell = CellOf(HeadTo), cur = HoverFoot(LinkedTo)->Slot_1B8(&buf),
+         cur->X == headCell.X && cur->Y == headCell.Y);
+    Speed = 1.0;
+    HoverFoot(LinkedTo)->Slot_544(1.0);
+    Fun_005164D0(0);
+    if (atCell)
+        Fun_00514F70(1);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -810,6 +876,14 @@ RGBTripleValue HSVTriple::FUN_00517440() const
 int Obj_00517560::FUN_00517560(Arg1_00517560* a1)
 {
     return unknown_00 == a1->unknown_00 && unknown_01 == a1->unknown_01 && unknown_02 == a1->unknown_02;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x517590
+// Inequality of two three-byte values (negation of the 0x517560 comparison).
+bool Obj_00517560::FUN_00517590(Arg1_00517560* a1)
+{
+    return !IsSame(a1);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

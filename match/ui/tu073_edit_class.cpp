@@ -196,10 +196,6 @@ double DAT_008A0EA8 = DAT_008A0E38 / DAT_007E8678;
 double DAT_008A0E70 = DAT_007E1718 / DAT_008A0EA8;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x004C1DD0 -- exit-time destructor stub of DAT_008A0E88
-DynamicVectorClass<EBolt*> DAT_008A0E88;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4C1E50
 // Branching.
 void Obj_004C1E50::FUN_004C1E50()

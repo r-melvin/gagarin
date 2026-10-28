@@ -45,12 +45,23 @@ GG_STATIC_ASSERT(offsetof(Techno_0050E0E0, Owner)   == 0x21C);
 
 typedef Type_0050E0E0* (Techno_0050E0E0::*Fn84_0050E0E0)();
 
+// A cell as two shorts, copied as one dword (slot 0x1B8 returns it through a hidden pointer).
+struct TechnoCell_0050E0E0
+{
+    short X;
+    short Y;
+};
+typedef TechnoCell_0050E0E0* (Techno_0050E0E0::*Fn1B8_0050E0E0)(TechnoCell_0050E0E0* out);
+
 struct TechnoVtbl_0050E0E0
 {
     char           _pad000[0x84];      // +0x0000
     Fn84_0050E0E0  GetTechnoType;      // +0x0084
+    char           _pad088[0x1B8 - 0x88];
+    Fn1B8_0050E0E0 GetCell;            // +0x01B8
 };
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_0050E0E0, GetTechnoType) == 0x84);
+GG_STATIC_ASSERT(offsetof(TechnoVtbl_0050E0E0, GetCell) == 0x1B8);
 
 // DynamicVectorClass<TechnoClass*> — only Items and Count are read.
 struct TechnoVector_0050E0E0

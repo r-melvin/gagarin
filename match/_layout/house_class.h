@@ -517,6 +517,11 @@ public:
     void FUN_0050D2D0(HouseClass* other);
     // FUNCTION: GAMEMD 0x50D6D0 (decl; reloc) -- takes a cell by value.
     void FUN_0050D610(); // FUNCTION: GAMEMD 0x50D610 (decl; primary RET at0x50D6C1)
+    void MarkScoutNode(HouseClass* house);                    // FUNCTION: GAMEMD 0x504860
+    void AddStartingUnit(void* type, int cell);               // FUNCTION: GAMEMD 0x50D560
+    void FreeStartingUnits();                                 // FUNCTION: GAMEMD 0x50D5D0
+    float FUN_0050C050(TechnoTypeClass* type);                // FUNCTION: GAMEMD 0x50C050
+    float FUN_0050C0A0(TechnoTypeClass* type);                // FUNCTION: GAMEMD 0x50C0A0
     void FUN_0050D6D0(CellStruct cell);
     // FUNCTION: GAMEMD 0x50DA00 (decl; reloc) -- takes a cell by value.
     void FUN_0050DA00(CellStruct cell);

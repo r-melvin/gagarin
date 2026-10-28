@@ -62,6 +62,13 @@ struct Counter_004FD060
     int GetCount(int index);
 };
 
+// A cell as two shorts (read through a pointer at 0x4FFD90).
+struct Cell_004FFD90
+{
+    short X;   // +0x0000
+    short Y;   // +0x0002
+};
+
 struct House_004FD060
 {
     char                  _pad000[0x6C];             // +0x0000
@@ -73,6 +80,11 @@ struct House_004FD060
 
     // FUNCTION: GAMEMD 0x4FFB20 (decl; reloc) — which sector a coordinate is in.
     int SectorOf(Coord_004FD060* coords);
+
+    // FUNCTION: GAMEMD 0x4FFD50 — sector of an object's coordinates, -1 for a null object.
+    int SectorOfObject(Building_004FD060* object);
+    // FUNCTION: GAMEMD 0x4FFD90 — sector of the centre of a cell.
+    int SectorOfCell(Cell_004FFD90* cell);
 
     // FUNCTION: GAMEMD 0x4FD060 — HouseClass::FindBuildingOfType.
     Building_004FD060* FindBuildingOfType(int index, int sector);

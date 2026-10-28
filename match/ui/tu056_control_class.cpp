@@ -494,11 +494,6 @@ void* Obj_48E660::FUN_48E660(unsigned int flags)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x0048E6E0 -- exit-time destructor stub of DAT_0089ECF8, guard byte 0x0089ED10 bit 0
-// _$E3
-DynamicVectorClass<ConvertClass*> StaticVectorHolder_0089ECF8::DAT_0089ECF8;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x491390
 // DynamicVectorClass<ConvertClass*>::Clear
 

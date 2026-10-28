@@ -277,10 +277,6 @@ double DAT_0089E170 = DAT_0089E120 / DAT_007E4AC0;
 double DAT_0089E158 = DAT_007E1718 / DAT_0089E170;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x00471790 -- exit-time destructor stub of DAT_0089E0F0
-DynamicVectorClass<CaptureManagerClass*> DAT_0089E0F0;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x471C90
 //
 // Whether this mind-controller may take `target`. Rejected: no target; a

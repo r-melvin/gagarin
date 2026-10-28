@@ -132,6 +132,11 @@ public:
     int Fun_00514F70(int flag);     // FUNCTION: GAMEMD 0x514F70 (decl; reloc)
     void Fun_00515ED0();            // FUNCTION: GAMEMD 0x515ED0 (decl; reloc)
     void Fun_005164D0(int flag);    // FUNCTION: GAMEMD 0x5164D0 (decl; reloc)
+    void StartRocking();            // FUNCTION: GAMEMD 0x517020
+    void ClearSpeed();              // FUNCTION: GAMEMD 0x515E30
+    void ClearSpeedAndHeading();    // FUNCTION: GAMEMD 0x515E60
+    void StartMoving();             // FUNCTION: GAMEMD 0x517110
+    bool Fun_005163A0();            // FUNCTION: GAMEMD 0x5163A0
 
     // ---- members (complete-object offsets) ----
     HoverCoordView Destination_;    // +0x18

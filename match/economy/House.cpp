@@ -2653,3 +2653,138 @@ int __cdecl BasePlanningCellContainer::Comparator(const void* a, const void* b)
 
 // FUNCTION: GAMEMD 0x00510970
 // Constructor (capacity, optional storage) of the vector of BuildingTypeClass distribution objects.
+
+// FUNCTION: GAMEMD 0x504860
+// Sets the flag byte of every scout node that tracks `house`.
+void HouseClass::MarkScoutNode(HouseClass* house)
+{
+    for (int i = 0; i < ScoutNodes.Count; i++) {
+        if ((HouseClass*)ScoutNodes.Items[i].A == house)
+            ScoutNodes.Items[i].B = 1;
+    }
+}
+
+// Retail's starting-unit record: a type pointer and a cell copied as one dword
+// (0x50D560 stores both as dwords into the 8-byte allocation).
+struct StartingUnitRecord_0050D560
+{
+    void* Type;     // +0x00
+    int   Cell;     // +0x04
+};
+GG_STATIC_ASSERT(sizeof(StartingUnitRecord_0050D560) == 8);
+
+// FUNCTION: GAMEMD 0x50D560
+// Appends a new (type, cell) record to StartingUnits.
+void HouseClass::AddStartingUnit(void* type, int cell)
+{
+    StartingUnitRecord_0050D560* record = new StartingUnitRecord_0050D560;
+    record->Cell = cell;
+    record->Type = type;
+    StartingUnits.AddItem((StartingTechnoStruct*)record);
+}
+
+// FUNCTION: GAMEMD 0x50D5D0
+// Deletes every starting-unit record, newest first, then clears the vector.
+void HouseClass::FreeStartingUnits()
+{
+    for (int i = StartingUnits.Count - 1; i >= 0; i--)
+        delete StartingUnits.Items[i];
+    StartingUnits.Clear();
+}
+
+// FUNCTION: GAMEMD 0x50D610
+// Records every techno owned by this house (type and current cell) as a starting-unit
+// record, walking the techno array from the top.
+void HouseClass::FUN_0050D610()
+{
+    for (int i = DAT_00A8EC78.Count - 1; i >= 0; i--) {
+        Techno_0050E0E0* techno = DAT_00A8EC78.Items[i];
+        if ((void*)techno->Owner == (void*)this) {
+            TechnoCell_0050E0E0 buffer;
+            int cell = *(int*)(techno->*techno->Vtbl->GetCell)(&buffer);
+            void* type = (void*)(techno->*techno->Vtbl->GetTechnoType)();
+            StartingUnitRecord_0050D560* record = new StartingUnitRecord_0050D560;
+            record->Type = type;
+            record->Cell = cell;
+            StartingUnits.AddItem((StartingTechnoStruct*)record);
+        }
+    }
+}
+
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, SpeedInfantryMult) == 0x128);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, SpeedUnitsMult) == 0x12C);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, SpeedAircraftMult) == 0x130);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, BuildtimeInfantryMult) == 0x134);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, BuildtimeUnitsMult) == 0x138);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, BuildtimeAircraftMult) == 0x13C);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, BuildtimeBuildingsMult) == 0x140);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, BuildtimeDefensesMult) == 0x144);
+
+// FUNCTION: GAMEMD 0x50C050
+// The country's speed multiplier for the kind of techno type given (1.0 for other kinds).
+float HouseClass::FUN_0050C050(TechnoTypeClass* type)
+{
+    switch (type->vf_11()) {
+    case 3:
+        return Type->SpeedAircraftMult;
+    case 16:
+        return Type->SpeedInfantryMult;
+    case 40:
+        return Type->SpeedUnitsMult;
+    }
+    return DAT_007E2AC8;
+}
+
+// FUNCTION: GAMEMD 0x50C0A0
+// The country's build-time multiplier for the kind of techno type given (defences are
+// buildings of build category 5; 1.0 for other kinds).
+float HouseClass::FUN_0050C0A0(TechnoTypeClass* type)
+{
+    switch (type->vf_11()) {
+    case 16:
+        return Type->BuildtimeInfantryMult;
+    case 40:
+        return Type->BuildtimeUnitsMult;
+    case 3:
+        return Type->BuildtimeAircraftMult;
+    case 7:
+        if (static_cast<BuildingTypeClass*>(type)->BuildCat == 5)
+            return Type->BuildtimeDefensesMult;
+        return Type->BuildtimeBuildingsMult;
+    }
+    return DAT_007E2AC8;
+}
+
+// Receiver of the empty-coordinate getter at 0x4FD120 (no layout claimed).
+struct Obj_004FD120
+{
+    // FUNCTION: GAMEMD 0x4FD120
+    HBCoord* FUN_004FD120(HBCoord* out, int unused);
+};
+
+// FUNCTION: GAMEMD 0x4FD120
+// Writes the default (unset-base) coordinate to `out` and returns it; the second argument is ignored.
+HBCoord* Obj_004FD120::FUN_004FD120(HBCoord* out, int unused)
+{
+    *out = HouseEmptyCoord;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x4FFD50
+int House_004FD060::SectorOfObject(Building_004FD060* object)
+{
+    if (object == 0)
+        return -1;
+    Coord_004FD060 coords;
+    return SectorOf((object->*object->Vtbl->GetCoords)(&coords));
+}
+
+// FUNCTION: GAMEMD 0x4FFD90
+int House_004FD060::SectorOfCell(Cell_004FFD90* cell)
+{
+    Coord_004FD060 coords;
+    coords.X = cell->X * 256 + 128;
+    coords.Y = cell->Y * 256 + 128;
+    coords.Z = 0;
+    return SectorOf(&coords);
+}
