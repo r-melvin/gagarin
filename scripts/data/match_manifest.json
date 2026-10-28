@@ -99949,6 +99949,15 @@
   "pct": 100.0
  },
  {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4DF040",
+  "sym": "?vf_330@FootClass@@UAEPAXPAUDynamicVectorClassLayout@@HH@Z",
+  "len": "0x81",
+  "name": "FootClass::vf_330",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46BDE0",
   "sym": "??0BulletTypeClass@@QAE@ABUAbstractNoInit@@@Z",

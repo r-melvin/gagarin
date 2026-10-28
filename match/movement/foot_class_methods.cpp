@@ -9,6 +9,7 @@
 //   FUNCTION: GAMEMD 0x4DA1C0  FootClass::ClearNavigationList (__thiscall)
 //   FUNCTION: GAMEMD 0x4DC030  FootClass::vf_317 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DEE50  FootClass::vf_332 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DF040  FootClass::vf_330 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF0D0  FootClass::AbortMotion         (__thiscall)
 
 #include "foot_class_methods.h"
@@ -48,6 +49,27 @@ void* FootClass::vf_332(void* a1, int a2, int a3)
 {
     int output = -1;
     return this->vf_331(a1, a2, a3, &output);
+}
+
+// FUNCTION: GAMEMD 0x4DF040
+// Query slot 331 for each list entry and keep the closest result. An empty
+// current pick, an unset distance, or a result with byte +0x3D3 set replaces it.
+void* FootClass::vf_330(DynamicVectorClassLayout* a1, int a2, int a3)
+{
+    void* best = 0;
+    int bestDistance = -1;
+    for (int i = 0; i < a1->Count; i++) {
+        int distance = -1;
+        void* found = this->vf_331(((void**)a1->Items)[i], a2, a3, &distance);
+        if (found != 0) {
+            if (best == 0 || distance < bestDistance || bestDistance == -1
+                || ((char*)found)[0x3D3] != 0) {
+                best = found;
+                bestDistance = distance;
+            }
+        }
+    }
+    return best;
 }
 
 // FUNCTION: GAMEMD 0x4DF0D0  (__thiscall)

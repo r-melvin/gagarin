@@ -65,7 +65,7 @@ public:
     virtual void vf_327();                                         // 327 0x41C110
     virtual void vf_328(int a1);                                   // 328 0x41C120
     virtual void vf_329();                                         // 329 0x4D9C00
-    virtual void vf_330(int a1, int a2, int a3);                   // 330 0x4DF040
+    virtual void* vf_330(DynamicVectorClassLayout* a1, int a2, int a3);// 330 0x4DF040
     virtual void* vf_331(void* a1, int a2, int a3, int* a4);      // 331 0x4DEE80
     virtual void* vf_332(void* a1, int a2, int a3);                // 332 0x4DEE50
     virtual void vf_333(int a1, int a2);                           // 333 0x41C130
