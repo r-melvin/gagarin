@@ -30,6 +30,8 @@ struct StorageClass
     float GetAmount(int index) const;                // GAMEMD 0x6C9680 __thiscall
     float AddAmount(float amount, int index);        // GAMEMD 0x6C9690 __thiscall
     float RemoveAmount(float amount, int index);     // GAMEMD 0x6C96B0 __thiscall
+    StorageClass operator+=(const StorageClass& other);        // GAMEMD 0x6C9740 __thiscall, hidden result
+    StorageClass operator-=(const StorageClass& other);        // GAMEMD 0x6C97E0 __thiscall, hidden result
 
     float Tiberium1;  // +0x00
     float Tiberium2;  // +0x04

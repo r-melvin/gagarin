@@ -52,6 +52,9 @@ public:
     virtual void vf_265();
     // Native UnitClass slot 313 at 0x736D50 overrides FootClass slot 313.
     virtual bool vf_313();
+    // Native UnitClass slots 309/310 (0x746420/0x7464E0) override FootClass slots 309/310.
+    virtual void vf_309(int a1);
+    virtual void vf_310(FootClass* passenger);
     // FUNCTION: GAMEMD 0x00746D90 (decl; reloc)
     // UnitClass::FUN_00746D90
     int FUN_00746D90();

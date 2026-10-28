@@ -22,11 +22,11 @@ void WaveClass::vf_10(void* target, bool removed)
 HRESULT __stdcall WaveClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     AbstractClass::Save(pStm, fClearDirty);
-    int count = unknown_200;
+    int count = unknown_1F0.Count;
     HRESULT hr = pStm->Write(&count, 4, 0);
     if (hr >= 0) {
         for (int i = 0; i < count; i++) {
-            hr = pStm->Write(&unknown_1F4[i], 4, 0);
+            hr = pStm->Write(&unknown_1F0.Items[i], 4, 0);
             if (hr < 0)
                 break;
         }

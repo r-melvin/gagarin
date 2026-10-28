@@ -15,6 +15,17 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "object_class.h"
+#include "facing_class.h"
+#include "../core/vector_class.h"
+
+class CellClass;
+
+// The 0x18-byte facing-like member at +0x1D8; its constructor is the out-of-line routine at 0x4C91C0.
+struct WaveFacing_1D8 : public FacingClass
+{
+    // FUNCTION: GAMEMD 0x4C91C0 (decl; reloc)
+    WaveFacing_1D8();
+};
 
 class WaveClass : public ObjectClass
 {
@@ -56,15 +67,8 @@ public:
     int unknown_1CC;  // +0x1CC store at 0x75EB51
     int unknown_1D0;  // +0x1D0 store at 0x75E9CE
     void* unknown_1D4;  // +0x1D4 store at 0x75E9D4; cleared by vf_10 when it expires (0x75F610)
-    unsigned char unknown_1D8[24];  // +0x1D8
-    int unknown_1F0;  // +0x1F0 vptr store at 0x75E9FE
-    int* unknown_1F4;  // +0x1F4 store at 0x75E9E1; Save writes unknown_200 entries from it (0x75F7D0)
-    int unknown_1F8;  // +0x1F8 store at 0x75E9E7
-    unsigned char unknown_1FC;  // +0x1FC store at 0x75E9F1
-    unsigned char unknown_1FD;  // +0x1FD store at 0x75E9F8
-    unsigned char unknown_1FE[2];  // +0x1FE
-    int unknown_200;  // +0x200 store at 0x75EA39
-    int unknown_204;  // +0x204 store at 0x75EA2F
+    WaveFacing_1D8 unknown_1D8;  // +0x1D8 (0x18)
+    DynamicVectorClass<CellClass*> unknown_1F0;  // +0x1F0 (0x18) vptr store at 0x75E9FE; Save writes Count entries of Items (0x75F7D0)
     unsigned char unknown_208[56];  // +0x208
 };
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_AC) == 0xAC);
@@ -86,12 +90,6 @@ GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1CC) == 0x1CC);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1D0) == 0x1D0);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1D4) == 0x1D4);
 GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1F0) == 0x1F0);
-GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1F4) == 0x1F4);
-GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1F8) == 0x1F8);
-GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1FC) == 0x1FC);
-GG_STATIC_ASSERT(offsetof(WaveClass, unknown_1FD) == 0x1FD);
-GG_STATIC_ASSERT(offsetof(WaveClass, unknown_200) == 0x200);
-GG_STATIC_ASSERT(offsetof(WaveClass, unknown_204) == 0x204);
 GG_STATIC_ASSERT(sizeof(WaveClass) == 0x240);
 
 #endif  // GG_MATCH_LAYOUT_WAVE_CLASS_H

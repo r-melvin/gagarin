@@ -602,6 +602,14 @@ public:
 
     // FUNCTION: GAMEMD 0x70D0D0 (decl; reloc) -- does this object have the ability (one stack argument).
     bool FUN_0070D0D0(int ability);
+    // FUNCTION: GAMEMD 0x70DC70 (decl; reloc) -- set the unit's current weapon/mode index (one stack argument).
+    void FUN_0070DC70(int mode);
+    // FUNCTION: GAMEMD 0x70E2B0 (decl) -- start the invulnerability timer (duration, unused, force-shield flag).
+    void FUN_0070E2B0(int duration, int unused, bool forceShielded);
+    // FUNCTION: GAMEMD 0x70E300 (decl) -- start the airstrike timer.
+    void FUN_0070E300(int duration);
+    // FUNCTION: GAMEMD 0x70F770 (decl; reloc) -- re-roll the targeting timer when more than ten frames remain.
+    void FUN_0070F770();
 };
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, DurationRemaining)        == 0xF0);

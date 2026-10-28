@@ -11,7 +11,7 @@
 #include <new.h>
 // GLOBAL: GAMEMD 0x7E9900
 extern const CLSID DAT_007E9900;
-// FUNCTION: GAMEMD 0x735060 (declaration; UTF16 conversion)
+// GAMEMD 0x735060 (declaration; UTF16 conversion; body in core/w3r2_leaf_methods_d.cpp)
 void __fastcall FUN_00735060(unsigned short*, const char*, int);
 
 // Campaign's native append expansion preserves the growth increment as the
