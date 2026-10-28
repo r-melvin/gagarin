@@ -4,7 +4,7 @@
 //   UnitTypeClass construction for loading, destruction and stream loading, read off retail
 //   gamemd.exe v1.001 (vtable 0x7F6218). /Ob2: the scalar deleting destructor carries the
 //   destructor body inline.
-//   Address index: 0x7472C0 no-init ctor, 0x7472F0 dtor, 0x748010 Load, 0x748190 deleting dtor.
+//   Address index: 0x7472C0 no-init ctor, 0x7472F0 dtor, 0x7474B0 vf_32, 0x748010 Load, 0x748190 deleting dtor.
 
 #include <new.h>
 #include <stdlib.h>
