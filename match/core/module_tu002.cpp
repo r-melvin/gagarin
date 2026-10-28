@@ -1413,7 +1413,7 @@ int FUN_00409880(Aux_0040A6D0* state, unsigned count)
             }
             if (state->unknown_2C <= 0 && !state->unknown_A8)
             {
-                memset(destination, state->Settings->unknown_18C == 2 ? 0 : 0x80, transferred);
+                memset(destination, state->Settings->unknown_17C.BytesPerSample == 2 ? 0 : 0x80, transferred);
                 state->unknown_3C -= transferred;
             }
             else

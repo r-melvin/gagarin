@@ -48,7 +48,7 @@ int Voice_0040A6D0::FUN_0040A6D0()
         aux->Sink->Vptr->At_40(aux->Sink, -DAT_00816510[-pan]);
     }
 
-    int rate = FUN_00401190(&this->Timers, aux->Settings->At_184);
+    int rate = FUN_00401190(&this->Timers, aux->Settings->unknown_17C.SampleRate);
     aux->Sink->Vptr->At_44(aux->Sink, rate);
     return 0;
 }

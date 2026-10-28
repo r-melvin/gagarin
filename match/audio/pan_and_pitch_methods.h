@@ -188,18 +188,16 @@ struct Voice_0040A6D0
     unsigned char* unknown_170;
     int unknown_174;
     int unknown_178;
-    int unknown_17C;
-    int unknown_180;
-    int At_184;
-    int unknown_188;
-    int unknown_18C;
-    char unknown_190[0x10];
+    // 0x402800 compares/copies eight dwords here. Its two callers pass
+    // AudioSampleData at owner+0x44 or from the current stream format.
+    AudioSampleData unknown_17C;
+    int unknown_19C; // 0x40281B/0x402831: clear/set the format-change flag.
     int unknown_1A0;
     int unknown_1A4;
     unsigned __int64 unknown_1A8;
     unsigned __int64 unknown_1B0;
     // FUNCTION: GAMEMD 0x402800 (decl; reloc)
-    void __fastcall FUN_00402800(const AudioSampleData*);
+    int __fastcall FUN_00402800(const AudioSampleData*);
     // FUNCTION: GAMEMD 0x40A340
     int FUN_0040A340();
 
@@ -222,8 +220,14 @@ GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_164) == 0x164);
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_168) == 0x168);
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_170) == 0x170);
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_174) == 0x174);
-GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, At_184) == 0x184);
-GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_18C) == 0x18C);
+GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_17C) == 0x17C);
+GG_STATIC_ASSERT(sizeof(((Voice_0040A6D0*)0)->unknown_17C) == 32);
+GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_17C) +
+    offsetof(AudioSampleData, SampleRate) == 0x184);
+GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_17C) +
+    offsetof(AudioSampleData, BytesPerSample) == 0x18C);
+GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_19C) == 0x19C);
+GG_STATIC_ASSERT(sizeof(((Voice_0040A6D0*)0)->unknown_19C) == 4);
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_1A0) == 0x1A0);
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_1A8) == 0x1A8);
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, unknown_1B0) == 0x1B0);
