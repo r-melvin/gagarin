@@ -44,13 +44,6 @@ MechLocomotionClass::MechLocomotionClass()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5AFF50
-// Destructor body: reseats Mech's vptrs, then relays to the base destructor body.
-MechLocomotionClass::~MechLocomotionClass()
-{
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5AFF70
 bool __stdcall MechLocomotionClass::IsMoving()
 {

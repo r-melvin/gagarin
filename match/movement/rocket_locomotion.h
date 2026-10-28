@@ -59,7 +59,7 @@ public:
     RocketLocomotionClass();                                    // 0x661EC0
     // No-init constructor used by Load's placement new (0x663410).
     RocketLocomotionClass(int) : LocomotionClass(0), PhaseTimer(RocketNoInit()) {}
-    virtual ~RocketLocomotionClass();
+    virtual ~RocketLocomotionClass() {}
     // Scalar deleting wrapper 0x6635C0 is compiler output (marker in the .cpp).
 
     // Primary table (slots 3, 5, 9 are this class's; 0-2, 4, 6, 7 inherit).
