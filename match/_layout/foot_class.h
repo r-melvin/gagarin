@@ -49,6 +49,7 @@ public:
     virtual void vf_314(int a1);                                   // 314 0x4DE7B0
     virtual void vf_315(int a1);                                   // 315 0x4DE940
     virtual void vf_316(int a1);                                   // 316 0x4D9FF0
+    virtual void vf_125(int mission, int a2, int a3);              // 125 0x4D8F40
     virtual void vf_317();                                         // 317 0x4DC030
     virtual void vf_318();                                         // 318 0x41C080
     virtual void vf_319(int a1);                                   // 319 0x4D55F0
@@ -203,6 +204,7 @@ GG_STATIC_ASSERT(offsetof(FootClass, SpeedPercentage)           == 0x578);
 GG_STATIC_ASSERT(offsetof(FootClass, SpeedMultiplier)           == 0x580);
 GG_STATIC_ASSERT(offsetof(FootClass, unknown_abstract_array_588)== 0x588);
 GG_STATIC_ASSERT(offsetof(FootClass, Destination)               == 0x5A4);
+GG_STATIC_ASSERT(offsetof(FootClass, LastDestination)           == 0x5A8);
 GG_STATIC_ASSERT(offsetof(FootClass, NavQueue)                  == 0x5AC);
 GG_STATIC_ASSERT(offsetof(FootClass, MegaMission)               == 0x5C4);
 GG_STATIC_ASSERT(offsetof(FootClass, Team)                      == 0x5D4);

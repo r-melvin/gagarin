@@ -6,6 +6,7 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x41C090  FootClass::vf_323 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D8F40  FootClass::vf_125 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DA1C0  FootClass::ClearNavigationList (__thiscall)
 //   FUNCTION: GAMEMD 0x4DC030  FootClass::vf_317 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DEE50  FootClass::vf_332 (__thiscall)
@@ -24,6 +25,16 @@ void FootClass::vf_323(SHPStruct* a1, int a2, Point2D* a3,
 {
     TechnoClass::FUN_00705E00(a1, a2, a3, a4, a5, a6, a7, a8,
                              a9, a10, a11, a12, a13, a14, a15, a16);
+}
+
+// FUNCTION: GAMEMD 0x4D8F40
+// Remember the current destination, run the TechnoClass mission change, then
+// head for the new target.
+void FootClass::vf_125(int mission, int a2, int a3)
+{
+    LastDestination = Destination;
+    TechnoClass::vf_125(mission, a2, a3);
+    SetDestination((AbstractClass*)a3, true);
 }
 
 // FUNCTION: GAMEMD 0x4DA1C0  (__thiscall)

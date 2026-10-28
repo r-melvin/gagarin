@@ -3,21 +3,22 @@
 //   Retail gamemd.exe v1.001 raw instructions and function extents confirmed
 //   with the focused REA Ghidra analysis and local disassembly.
 
-#include "aircraft_helpers_0041bb30.h"
 #include "../_layout/aircraft_class.h"
 #include "../_layout/aircraft_type_class.h"
 
 // FUNCTION: GAMEMD 0x41BB30
-void AircraftClass_0041BB30::FUN_0041BB30(int first, int second, int third)
+// While attacking or in a guard/area-guard style mission with no airstrike
+// pending, only those same missions may replace the current one.
+void AircraftClass::vf_125(int mission, int a2, int a3)
 {
-    switch (At_AC) {
+    switch (CurrentMission) {
     case 4:
     case 26:
     case 27:
     case 30:
     case 31:
-        if (At_294 == 0) {
-            switch (first) {
+        if (Airstrike == 0) {
+            switch (mission) {
             case 4:
             case 26:
             case 27:
@@ -31,7 +32,7 @@ void AircraftClass_0041BB30::FUN_0041BB30(int first, int second, int third)
         break;
     }
 
-    FUN_004D8F40(first, second, third);
+    FootClass::vf_125(mission, a2, a3);
 }
 
 // FUNCTION: GAMEMD 0x41BBD0

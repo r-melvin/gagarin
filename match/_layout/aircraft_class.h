@@ -49,6 +49,7 @@ public:
     virtual int __stdcall vf_07();   // 0x41B840
     virtual int __stdcall vf_08();   // 0x41B860
     // Native primary slot 288: two stack dwords, target pointer and flag.
+    virtual void vf_125(int mission, int a2, int a3);           // 125 0x41BB30
     virtual void SetDestination(AbstractClass* target, bool a2); // 288 0x41AA80
     virtual void* vf_330(DynamicVectorClassLayout* a1, int a2, int a3);// 330 0x41BBD0
     // Native AircraftType virtual 0x41CB20 passes its this to ctor 0x413D20;

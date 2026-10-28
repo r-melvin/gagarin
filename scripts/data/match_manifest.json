@@ -30426,8 +30426,8 @@
   "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
   "addr": "0x41BB30",
   "len": "0xa0",
-  "sym": "?FUN_0041BB30@AircraftClass_0041BB30@@QAEXHHH@Z",
-  "name": "AircraftClass_0041BB30::FUN_0041BB30",
+  "sym": "?vf_125@AircraftClass@@UAEXHHH@Z",
+  "name": "AircraftClass::vf_125",
   "status": "matched",
   "pct": 100
  },
@@ -99936,6 +99936,15 @@
   "sym": "?vf_317@FootClass@@UAEXXZ",
   "len": "0x2c",
   "name": "FootClass::vf_317",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4D8F40",
+  "sym": "?vf_125@FootClass@@UAEXHHH@Z",
+  "len": "0x38",
+  "name": "FootClass::vf_125",
   "status": "matched",
   "pct": 100.0
  },
