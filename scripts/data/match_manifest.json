@@ -69341,6 +69341,15 @@
   "pct": 100
  },
  {
+  "tu": "match/render/alpha_shape_class.cpp",
+  "addr": "0x420E40",
+  "sym": "?Save@AlphaShapeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x21",
+  "name": "AlphaShapeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/network/tu108_ipx_manager_class.cpp",
   "addr": "0x540710",
   "sym": "_$E2",
@@ -100550,5 +100559,140 @@
   "name": "CampaignClass scalar deleting destructor",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/enum_connections_small_methods.cpp",
+  "addr": "0x49FFF0",
+  "sym": "?AddRef@EnumConnectionsClass@@UAGKXZ",
+  "len": "0x1e",
+  "name": "EnumConnectionsClass::AddRef",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/enum_connections_small_methods.cpp",
+  "addr": "0x4A0160",
+  "sym": "?Skip@EnumConnectionsClass@@UAGJK@Z",
+  "len": "0x15",
+  "name": "EnumConnectionsClass::Skip",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/enum_connections_small_methods.cpp",
+  "addr": "0x4A0180",
+  "sym": "?Reset@EnumConnectionsClass@@UAGJXZ",
+  "len": "0x10",
+  "name": "EnumConnectionsClass::Reset",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/enum_connections_small_methods.cpp",
+  "addr": "0x4A0990",
+  "sym": "?AddRef@EnumConnectionPointsClass@@UAGKXZ",
+  "len": "0x1e",
+  "name": "EnumConnectionPointsClass::AddRef",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/enum_connections_small_methods.cpp",
+  "addr": "0x4A0AF0",
+  "sym": "?Skip@EnumConnectionPointsClass@@UAGJK@Z",
+  "len": "0x15",
+  "name": "EnumConnectionPointsClass::Skip",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/enum_connections_small_methods.cpp",
+  "addr": "0x4A0B10",
+  "sym": "?Reset@EnumConnectionPointsClass@@UAGJXZ",
+  "len": "0x10",
+  "name": "EnumConnectionPointsClass::Reset",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2EE0",
+  "sym": "?Commit@CStreamClass@@UAGJK@Z",
+  "len": "0x28",
+  "name": "CStreamClass::Commit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2F10",
+  "sym": "?Revert@CStreamClass@@UAGJXZ",
+  "len": "0x23",
+  "name": "CStreamClass::Revert",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2FC0",
+  "sym": "?Stat@CStreamClass@@UAGJPAUtagSTATSTG@@K@Z",
+  "len": "0x2d",
+  "name": "CStreamClass::Stat",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2FF0",
+  "sym": "?Clone@CStreamClass@@UAGJPAPAUIStream@@@Z",
+  "len": "0x28",
+  "name": "CStreamClass::Clone",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/connection_point_getter_methods.cpp",
+  "addr": "0x4A05D0",
+  "sym": "?GetConnectionInterface@ConnectionPointClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x32",
+  "name": "ConnectionPointClass::GetConnectionInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/connection_point_getter_methods.cpp",
+  "addr": "0x4A0610",
+  "sym": "?GetConnectionPointContainer@ConnectionPointClass@@UAGJPAPAUIConnectionPointContainer@@@Z",
+  "len": "0x19",
+  "name": "ConnectionPointClass::GetConnectionPointContainer",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/application_swizzle_methods.cpp",
+  "addr": "0x429550",
+  "sym": "?vf_8@ApplicationClass@@UAGJPAPAX@Z",
+  "len": "0x17",
+  "name": "ApplicationClass::vf_8",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/side_class_save_methods.cpp",
+  "addr": "0x6A4710",
+  "sym": "?vf_13@SideClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x21",
+  "name": "SideClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/side_class_save_methods.cpp",
+  "addr": "0x6A48A0",
+  "sym": "?Save@SideClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x61",
+  "name": "SideClass::Save",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
