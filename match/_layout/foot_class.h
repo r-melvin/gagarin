@@ -51,7 +51,6 @@ public:
     virtual void vf_315(int a1);                                   // 315 0x4DE940
     virtual CoordStruct vf_316();                                  // 316 0x4D9FF0
     virtual void vf_125(int mission, int a2, int a3);              // 125 0x4D8F40
-    virtual bool vf_80(int a1, int a2, int a3, int a4);            // 80  0x4D7D50 (decl; reloc)
     virtual int vf_30();                                           // 30  0x4DB7E0
     virtual bool vf_126();                                         // 126 0x4D8F80
     virtual int vf_188();                                          // 188 0x4DB0A0
