@@ -23,12 +23,9 @@ public:
     virtual HRESULT __stdcall Advise(IUnknown *pUnkSink, DWORD *pdwCookie);// 5  0x4A0630: implements IConnectionPoint
     virtual HRESULT __stdcall Unadvise(DWORD dwCookie);         // 6  0x4A0700: implements IConnectionPoint
     virtual HRESULT __stdcall EnumConnections(IEnumConnections * *ppEnum);// 7  0x4A0760: implements IConnectionPoint
-    int unknown_04;  // +0x4 store at 0x4A087C (+0x4..+0x13 copied from the first argument)
-    int unknown_08;  // +0x8 store at 0x4A0881
-    int unknown_0C;  // +0xC store at 0x4A0887
-    int unknown_10;  // +0x10 store at 0x4A088D
+    IID unknown_04;  // +0x4..+0x13 copied from the first argument at 0x4A087C; GetConnectionInterface copies it out
     int unknown_14;  // +0x14 store at 0x4A0899
-    int unknown_18;  // +0x18 store at 0x4A0896
+    IUnknown* unknown_18;  // +0x18 store at 0x4A0896; GetConnectionPointContainer queries it (0x4A0610)
     int unknown_1C;  // +0x1C vptr store at 0x4A08A9
     int unknown_20;  // +0x20 store at 0x4A089C
     int unknown_24;  // +0x24 store at 0x4A089F
@@ -39,9 +36,6 @@ public:
     int unknown_30;  // +0x30 store at 0x4A08B0
 };
 GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_08) == 0x8);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_0C) == 0xC);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_1C) == 0x1C);

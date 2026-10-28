@@ -29,7 +29,7 @@ public:
     virtual int vf_12();                                        // 12  0x6A4910: override (declaration from the base header)
     virtual void vf_13(struct Obj_004A1D30 *);                  // 13  0x6A4710: override of AbstractTypeClass
     int unknown_98;  // +0x98 vptr store at 0x6A458C
-    int unknown_9C;  // +0x9C store at 0x6A4563
+    int* unknown_9C;  // +0x9C store at 0x6A4563; Save writes unknown_A8 entries from it (0x6A48A0)
     int unknown_A0;  // +0xA0 store at 0x6A4569
     unsigned char unknown_A4;  // +0xA4 store at 0x6A456F
     unsigned char unknown_A5;  // +0xA5 store at 0x6A4576
