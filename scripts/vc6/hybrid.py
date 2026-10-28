@@ -94,24 +94,69 @@ class Retail:
 
 
 def write_object(sections):
-    """COFF object from [(name, flags, data or None, size)]: no symbols, no relocations.
+    """COFF object from [(name, flags, data or None, size) or (.., relocs)]: relocations are
+    [(offset, symbol name, type)] against undefined externals; no other symbols.
 
     data None gives an uninitialised section of `size` bytes."""
+    strtab = bytearray(4)
+    index = {}
+    symbols = bytearray()
+    sections = [tuple(sec) + (() ,) * (5 - len(sec)) for sec in sections]
+    for sec in sections:
+        for _, name, _ in sec[4]:
+            if name not in index:
+                raw = name.encode("latin-1")
+                field = raw.ljust(8, b"\0") if len(raw) <= 8 else struct.pack("<II", 0, len(strtab))
+                if len(raw) > 8:
+                    strtab += raw + b"\0"
+                index[name] = len(index)
+                symbols += field + struct.pack("<IhHBB", 0, 0, 0, coffgen.CLASS_EXTERNAL, 0)
+    struct.pack_into("<I", strtab, 0, len(strtab))
     offset = 20 + 40 * len(sections)
     headers, body = bytearray(), bytearray()
-    for name, flags, data, size in sections:
+    for name, flags, data, size, relocs in sections:
         raw = name.encode("latin-1").ljust(8, b"\0")
-        headers += raw + struct.pack("<IIIIIIHHI", 0, 0, size, offset if data is not None else 0, 0, 0, 0, 0,
-                                     flags | (coffgen.ALIGN[2] if name == ".idata$6" else coffgen.ALIGN[4]))
+        align = flags & 0x00F00000 or (coffgen.ALIGN[2] if name == ".idata$6" else coffgen.ALIGN[4])
+        if len(relocs) > 0xFFFF:
+            raise ValueError("too many relocations in one section")
+        relptr = offset + len(data) if relocs else 0
+        headers += raw + struct.pack("<IIIIIIHHI", 0, 0, size, offset if data is not None else 0, relptr, 0,
+                                     len(relocs), 0, (flags & ~0x00F00000) | align)
         if data is not None:
             body += data
             offset += len(data)
-    return bytes(struct.pack("<HHIIIHH", coffgen.I386, len(sections), 0, offset, 0, 0, 0) + headers + body
-                 + struct.pack("<I", 4))
+        for off, symbol, kind in relocs:
+            body += struct.pack("<IIH", off, index[symbol], kind)
+            offset += 10
+    return bytes(struct.pack("<HHIIIHH", coffgen.I386, len(sections), 0, offset, len(index), 0, 0) + headers + body
+                 + symbols + strtab)
 
 
-def data_object(retail):
-    """(object bytes, [(section name, VA, size)]) reproducing retail's .rdata, .data and .rsrc."""
+def region_sections(name, flags, va, size, retail, pieces):
+    """Sections that tile [va, va+size) of a region: retail fill around the source `pieces`
+    (dicts with va, size, data, relocs), all named `name`. The first carries the region's own
+    alignment; the rest are byte-aligned so nothing is padded between them."""
+    out, cursor = [], va
+
+    def add(lo, data, length, relocs=()):
+        first = not out
+        out.append((name, flags if first else (flags & ~0x00F00000) | coffgen.ALIGN[1], data, length, list(relocs)))
+
+    for p in pieces:
+        if p["va"] > cursor:
+            add(cursor, retail.fill(cursor, p["va"] - cursor), p["va"] - cursor)
+        add(p["va"], p["data"], p["size"], p["relocs"])
+        cursor = p["va"] + p["size"]
+    if cursor < va + size or not out:
+        add(cursor, retail.fill(cursor, va + size - cursor), va + size - cursor)
+    return out
+
+
+def data_object(retail, pieces=()):
+    """(object bytes, [(section name, VA, size)]) reproducing retail's .rdata, .data and .rsrc.
+
+    pieces: source-placed definitions (datasource.assign) that replace retail fill; each lies inside one
+    of the pieces below (initialised ones only: uninitialised definitions need no section)."""
     r_start, r_vsize, _, _ = retail.by_name[".rdata"]
     iat, descriptors, terminator, ilt, names = retail.import_layout()
     r_end = r_start + r_vsize
@@ -119,7 +164,7 @@ def data_object(retail):
     lead_start = (iat[0] + iat[1] + 15) & ~15
     if any(retail.fill(iat[0] + iat[1], lead_start - iat[0] - iat[1])):
         raise VerifyError("the bytes between the import address table and the next .rdata are not zero")
-    pieces = [
+    regions = [
         (".idata$5", iat[0], iat[1]),
         (".rdata", lead_start, descriptors[0] - lead_start),
         (".idata$2", descriptors[0], descriptors[1]),
@@ -129,22 +174,30 @@ def data_object(retail):
     ]
     if iat[0] != r_start:
         raise VerifyError("the import address table is not at the start of .rdata")
+    d_start, d_vsize, _, d_rawsize = retail.by_name[".data"]
+    s_start, s_vsize, _, _ = retail.by_name[".rsrc"]
+    regions.append((".data", d_start, d_rawsize))
+    regions.append((".rsrc$01", s_start, s_vsize))
+    pieces = sorted((p for p in pieces if p["data"] is not None), key=lambda p: p["va"])
     sections, layout = [], []
-    for name, va, size in pieces:
+    for name, va, size in regions:
+        inside = [p for p in pieces if va <= p["va"] and p["va"] + p["size"] <= va + size]
         # The attributes of an import library's sections: LINK 6 gives sections of one name with
         # different attributes (alignment included) separate output sections.
-        flags = IDATA_FLAGS if name.startswith(".idata") else DATA_FLAGS
-        sections.append((name, flags, retail.fill(va, size), size))
+        if name.startswith(".idata"):
+            flags = IDATA_FLAGS
+        elif name == ".data":
+            flags = DATA_FLAGS | coffgen.SCN_MEM_WRITE
+        else:
+            flags = DATA_FLAGS
+        sections.extend(region_sections(name, flags, va, size, retail, inside))
         layout.append((name, va, size))
-    d_start, d_vsize, _, d_rawsize = retail.by_name[".data"]
-    sections.append((".data", DATA_FLAGS | coffgen.SCN_MEM_WRITE, retail.fill(d_start, d_rawsize), d_rawsize))
-    layout.append((".data", d_start, d_rawsize))
-    if d_vsize > d_rawsize:
-        sections.append((".bss", BSS_FLAGS, None, d_vsize - d_rawsize))
-        layout.append((".bss", d_start + d_rawsize, d_vsize - d_rawsize))
-    s_start, s_vsize, _, _ = retail.by_name[".rsrc"]
-    sections.append((".rsrc$01", DATA_FLAGS, retail.fill(s_start, s_vsize), s_vsize))
-    layout.append((".rsrc$01", s_start, s_vsize))
+        if name == ".data" and d_vsize > d_rawsize:
+            sections.append((".bss", BSS_FLAGS, None, d_vsize - d_rawsize))
+            layout.append((".bss", d_start + d_rawsize, d_vsize - d_rawsize))
+    stray = [p for p in pieces if not any(va <= p["va"] and p["va"] + p["size"] <= va + size for _, va, size in regions)]
+    if stray:
+        raise VerifyError(f"a source piece lies outside the data regions: 0x{stray[0]['va']:X}")
     return write_object(sections), layout
 
 

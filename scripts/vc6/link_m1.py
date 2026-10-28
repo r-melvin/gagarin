@@ -32,6 +32,7 @@ from pathlib import Path
 import subprocess
 import sys
 
+import datasource
 import hybrid as hybrid_module
 import implib
 import link_diag
@@ -93,9 +94,11 @@ def link(objects, libs, out, includes=()):
     return proc.returncode, log
 
 
-def run(objdir, out, pin_data=False, order_tail=False, hybrid=False):
+def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False):
     out.mkdir(parents=True, exist_ok=True)
     retail = None
+    linked_diff = {}
+    reject = set()   # (VA, size) of source-placed data that did not come out equal to retail's bytes
     if hybrid:
         pin_data = order_tail = True
         retail = hybrid_module.Retail(pindata.retail_path())
@@ -111,11 +114,15 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False):
         manifest = json.loads((ROOT / "scripts/data/match_manifest.json").read_text())
         pe, _, pe_sections = pindata.load_retail()
         pin_plan = pindata.derive(objdir, index, manifest, pe, pe_sections)
-    for _ in range(MAX_ROUNDS):
+    for _ in range(MAX_ROUNDS + 4):
         vc6, _ = link_diag.toolenv()
         result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data, pin_plan=pin_plan,
-                              order_tail=order_tail, libdir=vc6 / "VC98/Lib", retail=retail)
+                              order_tail=order_tail, libdir=vc6 / "VC98/Lib", retail=retail,
+                              source_data=source_data, data_reject=reject)
         objects = result["objects"]
+        if source_data:
+            data_obj, data_layout = hybrid_module.data_object(retail, result["_data_pieces"])
+            (out / "hybrid_data.obj").write_bytes(data_obj)
         includes = ()
         if hybrid:
             objects = [out / "hybrid_data.obj"] + objects
@@ -124,13 +131,27 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False):
         unresolved, duplicates = link_diag.parse_link_log(log)
         rounds.append({"exit": code, "unresolved": len(unresolved), "duplicates": len(duplicates)})
         new = set(unresolved) - extra
+        if source_data and code == 0 and not new:
+            # a source-placed piece the linker put somewhere else, or filled differently, gives its place back
+            bad = datasource.verify_image((out / "m1.exe").read_bytes(), result["_data_pieces"], retail)
+            rounds[-1]["data_pieces_differing"] = len(bad)
+            if bad:
+                reject |= set(bad)
+                linked_diff.update({f"0x{va:X}+{size}": [list(d) for d in diffs] for (va, size), diffs in bad.items()})
+                continue
         if not new:
             break
         extra |= new
     if hybrid:
         placement = [[".text", va, size, origin, name] for va, size, origin, name in result["text_pieces"]]
+        for p in result.get("_data_pieces", ()):
+            section = ".data" if p["va"] >= retail.by_name[".data"][0] else ".rdata"
+            placement.append([section, p["va"], p["size"], "project", p["names"][0]])
         (out / "placement.json").write_text(json.dumps({"pieces": placement}) + "\n")
-    summary = {k: v for k, v in result.items() if k not in ("placed", "objects", "order_symbols", "text_pieces")}
+    if linked_diff:
+        (out / "data_linked_diff.json").write_text(json.dumps(linked_diff, indent=1) + "\n")
+    summary = {k: v for k, v in result.items()
+               if k not in ("placed", "objects", "order_symbols", "text_pieces") and not k.startswith("_")}
     summary.update({"rounds": rounds, "link_exit_code": code, "unresolved_after_stubs": len(unresolved),
                     "unresolved_symbols": sorted(unresolved), "duplicates": sorted(duplicates),
                     "warnings": sorted({l.strip() for l in log.splitlines() if "warning LNK" in l})[:200]})
@@ -153,11 +174,17 @@ def main(argv=None):
     ap.add_argument("--hybrid", action="store_true",
                     help="M2: runnable image (implies --pin-data --order-tail): unmatched code and all data, "
                          "the resources and the import tables take their bytes from $GAMEMD_BINARY at build time")
+    ap.add_argument("--source-data", action="store_true",
+                    help="M3 (with --hybrid): data symbols that project objects define at a known retail address "
+                         "and whose compiled contents equal retail's are placed from the objects, not from the image")
     args = ap.parse_args(argv)
     out = args.out.resolve()
+    if args.source_data and not args.hybrid:
+        ap.error("--source-data needs --hybrid")
     if args.hybrid and ROOT / "build-vc6" not in out.parents and out != ROOT / "build-vc6":
         ap.error("--hybrid embeds bytes of the retail image in its outputs: --out must be under build-vc6/")
-    summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail, hybrid=args.hybrid)
+    summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail, hybrid=args.hybrid,
+                  source_data=args.source_data)
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")

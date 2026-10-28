@@ -45,6 +45,7 @@ import sys
 from pathlib import Path
 
 import coffgen
+import datasource
 import hybrid as hybrid_module
 import pindata
 import taillink
@@ -169,7 +170,8 @@ def order_name(sym):
 
 
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
-         pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None, retail=None):
+         pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None, retail=None,
+         source_data=False, data_reject=()):
     hybrid = retail is not None   # hybrid.Retail: stubs carry retail bytes, leftovers leave the image
 
     def code_fill(va, size):
@@ -490,6 +492,17 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     removed_sections = 0
     pinned_definitions = 0
     pinned_symbols = 0
+    data_candidates, data_rejected = [], []
+    if source_data:
+        if not (hybrid and pin_plan):
+            raise ValueError("source_data needs the hybrid image and the pin plan")
+        regions = datasource.Regions(retail)
+        resolver = datasource.Resolver(
+            {name: va for va, name in provider.items()},
+            pin_plan["global"], call_names,
+            {name: va for va, name in (tail_plan["names_at"].items() if tail_plan else ())},
+            {name: va for name, va in (tail_plan["thunks"] if tail_plan else ())},
+            {name: va for name, (va, _) in bindings.items()})
     # M2 data pinning: project definitions of bound globals become absolute symbols at
     # their retail addresses, so code references the retail storage directly.
     pin_map = {name: va for name, (va, _) in bindings.items() if section_of(va) in (".rdata", ".data")} \
@@ -520,6 +533,24 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             if k:
                 pinned_definitions += k
                 changed = True
+        if source_data:
+            def address_of(idx, symbol, path=path):
+                pin = pin_plan["object"].get(path, {}).get(idx)
+                if pin:
+                    return pin[1]
+                if symbol["storage_class"] == coffgen.CLASS_EXTERNAL:
+                    for table in (pin_plan["global"], pin_plan["comdat"]):
+                        if symbol["name"] in table:
+                            return table[symbol["name"]]
+                    va = bindings.get(symbol["name"], (None,))[0]
+                    if va is not None and section_of(va) in (".rdata", ".data"):
+                        return va
+                return None
+            parsed = parsed_of(path)
+            if parsed is not None:
+                acc, rej = datasource.candidates(path, parsed, data, address_of, resolver, retail, regions)
+                data_candidates += acc
+                data_rejected += rej
         tail = {}
         for idx, names in coffgen.section_symbols(data).items():
             off = 20 + 40 * (idx - 1)
@@ -574,6 +605,24 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         leftover = sorted((undefined_final - defined_final - have) & library_names)
         for name in leftover:
             writer.add_code_comdat([name], UNKNOWN_CODE_SIZE, 1, section=".text" if hybrid else TAIL)
+    data_pieces, data_report = [], None
+    if source_data:
+        data_pieces, data_rejected = datasource.assign(data_candidates, data_rejected)
+        for piece in data_pieces:   # data targets of a piece are absolute, like the references of matched code
+            for _, tname, _ in piece["relocs"]:
+                va = datasource.pin_address(tname)
+                if va is not None and tname not in retail_pins:
+                    retail_pins[tname] = va
+                    writer.add_absolute(tname, va)
+        dropped = [p for p in data_pieces if (p["va"], p["size"]) in data_reject]
+        data_pieces = [p for p in data_pieces if (p["va"], p["size"]) not in data_reject]
+        data_rejected += [{"name": p["names"][0], "kind": p["kind"], "section": "", "size": p["size"], "va": p["va"],
+                           "object": p["object"], "why": "differs from retail in the linked image"} for p in dropped]
+        data_report = datasource.summarise(data_pieces, data_rejected)
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "data_rejected.json").write_text(json.dumps(data_rejected, indent=1) + "\n")
+        (out / "data_placed.json").write_text(json.dumps(
+            [{k: v for k, v in p.items() if k != "data"} for p in data_pieces], indent=1) + "\n")
     (out / "stubs.obj").write_bytes(writer.build())
     if tail_plan:
         link_objects.extend(tail_plan["objects"])
@@ -611,10 +660,12 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "tail_pin_conflicts": tail_conflicts if tail_plan and hybrid else None,
         "unbound": unbound,
         "text_pieces": text_pieces,
+        "data_report": data_report,
         "placed": placed,
         "objects": [str(p) for p in link_objects],
     }
     (out / "plan.json").write_text(json.dumps(result, indent=1) + "\n")
+    result["_data_pieces"] = data_pieces
     return result
 
 
