@@ -4,6 +4,8 @@
 //   with the focused REA Ghidra analysis and local disassembly.
 
 #include "aircraft_helpers_0041bb30.h"
+#include "../_layout/aircraft_class.h"
+#include "../_layout/aircraft_type_class.h"
 
 // FUNCTION: GAMEMD 0x41BB30
 void AircraftClass_0041BB30::FUN_0041BB30(int first, int second, int third)
@@ -33,19 +35,21 @@ void AircraftClass_0041BB30::FUN_0041BB30(int first, int second, int third)
 }
 
 // FUNCTION: GAMEMD 0x41BBD0
-void* AircraftClass_0041BB30::FUN_0041BBD0(int first, int, int third)
+// Airport-bound aircraft keep a dock that still answers radio query 0xF with
+// 1; otherwise pick a new one with the FootClass slot-330 search.
+void* AircraftClass::vf_330(DynamicVectorClassLayout* a1, int, int a3)
 {
-    if (At_6C4->At_E0D != 0 && At_6CC != 0) {
-        if ((this->*Vtbl->At_278)(0xF, At_6CC) != 1) {
-            At_6CC = 0;
+    if (Type->AirportBound && DockNowHeadingTo != 0) {
+        if (this->vf_158(0xF, (RadioClass*)DockNowHeadingTo) != 1) {
+            DockNowHeadingTo = 0;
         } else {
             goto retainTarget;
         }
     }
 
-    At_6CC = FUN_004DF040(first, 0, third);
-    return At_6CC;
+    DockNowHeadingTo = FootClass::vf_330(a1, 0, a3);
+    return DockNowHeadingTo;
 
 retainTarget:
-    return At_6CC;
+    return DockNowHeadingTo;
 }

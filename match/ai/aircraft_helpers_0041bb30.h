@@ -35,15 +35,11 @@ struct AircraftClass_0041BB30
 
     // FUNCTION: GAMEMD 0x41BB30
     void FUN_0041BB30(int first, int second, int third);
-    // FUNCTION: GAMEMD 0x41BBD0
-    void* FUN_0041BBD0(int first, int second, int third);
 
-    // The direct callees are thiscall methods; the original binary calls them
+    // The direct callee is a thiscall method; the original binary calls it
     // with this in ECX and three stack arguments.
     // FUNCTION: GAMEMD 0x4D8F40 — direct thiscall target of 0x41BB30.
     void FUN_004D8F40(int first, int second, int third);
-    // FUNCTION: GAMEMD 0x4DF040 — direct thiscall target of 0x41BBD0.
-    void* FUN_004DF040(int first, int second, int third);
 };
 
 GG_STATIC_ASSERT(offsetof(AircraftClass_0041BB30, Vtbl) == 0x000);

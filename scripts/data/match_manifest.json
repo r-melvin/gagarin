@@ -30435,8 +30435,8 @@
   "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
   "addr": "0x41BBD0",
   "len": "0x60",
-  "sym": "?FUN_0041BBD0@AircraftClass_0041BB30@@QAEPAXHHH@Z",
-  "name": "AircraftClass_0041BB30::FUN_0041BBD0",
+  "sym": "?vf_330@AircraftClass@@UAEPAXPAUDynamicVectorClassLayout@@HH@Z",
+  "name": "AircraftClass::vf_330",
   "status": "matched",
   "pct": 100
  },
