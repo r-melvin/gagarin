@@ -1,23 +1,36 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// The header initialiser group that opens the retail block at 0x5BEB00
-// (header_init_shapes.h): the same twelve initialisers as the block at 0x40ADC0, in
+// The header initialiser group that opens the retail block at 0x5BEAB0
+// (header_init_shapes.h): a zero 4-int block and pow-derived base double, then the same twelve initialisers as the block at 0x40ADC0, in
 // __xc order: two derived doubles, three angle doubles, the derived ints/doubles,
 // a zero cell, a zero coordinate and a {128, 128, 0} coordinate.
+#include <math.h>
+#pragma intrinsic(pow)
 #include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
 // FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CAD50(double value);
 // FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CADE0(double value);
 
-// GLOBAL: GAMEMD 0xABF300
-extern double DAT_00ABF300;
 // GLOBAL: GAMEMD 0x7EE090
 const double DAT_007EE090 = 60.0;
 // GLOBAL: GAMEMD 0x7EE098 -- degrees to radians
 const double DAT_007EE098 = 0.017453292519943295;
 
+// SYNTHETIC: GAMEMD 0x5BEAB0
+// GLOBAL: GAMEMD 0xABF2E8
+MathTblZero4 DAT_00ABF2E8;
+// SYNTHETIC: GAMEMD 0x5BEAD0
+// GLOBAL: GAMEMD 0xABF300
+double DAT_00ABF300 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
 // SYNTHETIC: GAMEMD 0x5BEB00
 // GLOBAL: GAMEMD 0xABF350
 double DAT_00ABF350 = DAT_00ABF300 / DAT_007EE090;
