@@ -147,7 +147,7 @@ public:
     virtual int vf_44();                                           // 44 0x7120D0
     // Native712120 returns a dword; caller6F4D14 compares full EAX signed.
     virtual int vf_45();                                           // 45 0x712120
-    virtual void vf_46(int a1, int a2);                            // 46 0x711F60
+    virtual int vf_46(HouseClass* house, bool a2);                  // 46 0x711F60
     // Native717800 returns field618 or the fallback dword in EAX; Process4CCB81
     // stores it whole and MoveTo4CCE6C adds it as an integer.
     virtual int vf_47();                                           // 47 0x717800

@@ -33,6 +33,7 @@
 #include "cell.h"            // CellStruct, Cell
 
 class TeamClass;
+struct Matrix3D;
 
 // FootClass  (0x520..0x6BF, sizeof = 0x6C0)
 class FootClass : public TechnoClass
@@ -43,7 +44,7 @@ public:
     // Slot 323 forwards its sixteen dwords to TechnoClass::FUN_00705E00.
     virtual void vf_309(int a1);                                   // 309 0x4DE750
     virtual void vf_310(FootClass* passenger);                     // 310 0x4DE760; 0x4DE742 passes the FootClass* that 0x473430 returned
-    virtual void vf_311();                                         // 311 0x4DC790
+    virtual bool vf_311();                                         // 311 0x4DC790
     virtual bool vf_312();                                         // 312 0x4DBFD0
     virtual bool vf_313();                                         // 313 0x41C060, native AL=false
     virtual void vf_314(int a1);                                   // 314 0x4DE7B0
@@ -54,13 +55,13 @@ public:
     virtual void vf_318();                                         // 318 0x41C080
     virtual bool vf_319(const CoordStruct& a1);                    // 319 0x4D55F0
     virtual bool vf_320();                                         // 320 0x4D55C0
-    virtual void vf_321();                                         // 321 0x4DB9B0
+    virtual bool vf_321();                                         // 321 0x4DB9B0
     virtual void vf_322(int a1, int a2, int a3);                   // 322 0x4DF7F0
     // Native slot 323 forwards 16 dwords to the typed TechnoClass helper at 0x41C090.
     virtual void vf_323(SHPStruct* a1, int a2, Point2D* a3, RectangleStruct* a4,
                         int a5, int a6, int a7, int a8, int a9, int a10,
                         int a11, int a12, int a13, int a14, int a15, int a16); // 323 0x41C090
-    virtual void vf_324(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);// 324 0x4DAF10
+    virtual void vf_324(int a1, int a2, int a3, int a4, int a5, Point2D* a6, Matrix3D* a7, int a8, int a9, int a10);// 324 0x4DAF10
     virtual void vf_325();                                         // 325 0x41C0F0
     virtual void vf_326();                                         // 326 0x41C100
     virtual void vf_327();                                         // 327 0x41C110
@@ -70,7 +71,7 @@ public:
     virtual void* vf_331(void* a1, int a2, int a3, int* a4);      // 331 0x4DEE80
     virtual void* vf_332(void* a1, int a2, int a3);                // 332 0x4DEE50
     virtual void vf_333(int a1, int a2);                           // 333 0x41C130
-    virtual void vf_334();                                         // 334 0x4DB1A0
+    virtual int vf_334();                                          // 334 0x4DB1A0
     virtual void vf_335(int a1);                                   // 335 0x4D5690
     virtual void vf_336(int a1);                                   // 336 0x41C140
     virtual void vf_337(double a1);                                // 337 0x4D3710
