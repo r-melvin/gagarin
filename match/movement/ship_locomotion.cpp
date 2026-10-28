@@ -14,10 +14,25 @@
 
 #include <new.h>
 #include "../_layout/ship_locomotion_class.h"
+#include "drive_support_views.h"
+
+// Ship's foot is the same FootClass prefix the Drive bodies read.
+static inline DriveFootView* ShipFoot(ShipLocomotionClass* self)
+{
+    return (DriveFootView*)self->LinkedTo;
+}
 
 // GLOBAL: GAMEMD 0xB077F8 - the empty coordinate this TU compares against
 // (three dwords, read by the constructor at 0x69EC72..0x69EC83).
 extern "C" LocoCoord DAT_00B077F8;
+
+// GLOBAL: GAMEMD 0xB0782C - height added to a bridge-cell destination (MoveTo 0x69F450).
+extern "C" int DAT_00B0782C;
+
+// GLOBAL: GAMEMD 0x7F2A40 - 12-byte track entries indexed by TrackNumber (WillJumpTracks 0x6A4130).
+extern DriveTrackEntry ShipTrackEntries_007F2A40[];
+// GLOBAL: GAMEMD 0x7F2960 - 16-byte track controls (`SHL ESI,4; [ESI+0x7F2964]` at 0x6A41B0).
+extern DriveTrackControl ShipTrackControls_007F2960[];
 
 // LIBRARY: OLE32!OleLoadFromStream, IAT 0x7E15F8 (declared by <ole2.h>).
 
@@ -100,6 +115,196 @@ HRESULT __stdcall ShipLocomotionClass::EndPiggyback(ILocomotion** out)
         return S_OK;
     }
     return S_FALSE;
+}
+
+static inline bool ShipIsSet(const LocoCoord& c)
+{
+    return c.X != DAT_00B077F8.X || c.Y != DAT_00B077F8.Y || c.Z != DAT_00B077F8.Z;
+}
+
+static inline bool ShipIsEmpty(const LocoCoord& c)
+{
+    return c.X == DAT_00B077F8.X && c.Y == DAT_00B077F8.Y && c.Z == DAT_00B077F8.Z;
+}
+
+// FUNCTION: GAMEMD 0x6A4230
+int __stdcall ShipLocomotionClass::GetTrackNumber()
+{
+    return TrackNumber;
+}
+
+// FUNCTION: GAMEMD 0x6A4240
+int __stdcall ShipLocomotionClass::GetTrackIndex()
+{
+    return TrackIndex;
+}
+
+// FUNCTION: GAMEMD 0x6A4210
+void __stdcall ShipLocomotionClass::Lock()
+{
+    UnLocked = false;
+}
+
+// FUNCTION: GAMEMD 0x6A4220
+void __stdcall ShipLocomotionClass::Unlock()
+{
+    UnLocked = true;
+}
+
+// FUNCTION: GAMEMD 0x6A3EB0
+int __stdcall ShipLocomotionClass::ZGradient()
+{
+    return LocomotionClass::ZGradient();
+}
+
+// FUNCTION: GAMEMD 0x6A05C0
+void __stdcall ShipLocomotionClass::DoTurn(unsigned long dir)
+{
+    unsigned long desired = dir;
+    ShipFoot(this)->PrimaryFacing.FUN_004C9220(&desired);
+}
+
+// FUNCTION: GAMEMD 0x69F3A0
+LocoCoord __stdcall ShipLocomotionClass::Destination()
+{
+    LocoCoord c;
+    c.X = DestCoord.X;
+    c.Y = DestCoord.Y;
+    c.Z = DestCoord.Z;
+    return c;
+}
+
+// FUNCTION: GAMEMD 0x69FBE0
+void __stdcall ShipLocomotionClass::Unlimbo()
+{
+    ForceNewSlope(ShipFoot(this)->vf_1BC()->SlopeIndex);
+}
+
+// FUNCTION: GAMEMD 0x69F250
+void __stdcall ShipLocomotionClass::ForceNewSlope(int ramp)
+{
+    unknown_20 = ramp;
+    unknown_1C = ramp;
+    SlopeTimer = RateTimer(0);
+}
+
+// FUNCTION: GAMEMD 0x69F080
+bool __stdcall ShipLocomotionClass::IsOkToEnd()
+{
+    if (!IsMoving() && Piggybackee != 0 && UnLocked && !ShipFoot(this)->unknown_6AD)
+        return true;
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6A3F00
+void __stdcall ShipLocomotionClass::MarkAllOccupationBits(int mark)
+{
+    if (ShipIsSet(HeadTo))
+        FUN_006A01A0(&HeadTo, mark);
+}
+
+// FUNCTION: GAMEMD 0x69F290
+bool __stdcall ShipLocomotionClass::IsMoving()
+{
+    if (ShipIsSet(DestCoord))
+        return true;
+    if (ShipIsSet(HeadTo)) {
+        if (HeadTo.X != ShipFoot(this)->GetLocation().X || HeadTo.Y != ShipFoot(this)->GetLocation().Y)
+            return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x69F330
+bool __stdcall ShipLocomotionClass::IsMovingNow()
+{
+    if (ShipFoot(this)->PrimaryFacing.FUN_004C9480() != 0)
+        return true;
+    if (IsMoving() && ShipIsSet(HeadTo) && ShipFoot(this)->vf_538() > 0)
+        return true;
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x69F3D0
+LocoCoord __stdcall ShipLocomotionClass::HeadToCoord()
+{
+    LocoCoord c;
+    if (ShipIsSet(HeadTo)) {
+        c.X = HeadTo.X;
+        c.Y = HeadTo.Y;
+        c.Z = HeadTo.Z;
+        return c;
+    }
+    LocoCoord here = ShipFoot(this)->GetLocation();
+    c.X = here.X;
+    c.Y = here.Y;
+    c.Z = here.Z;
+    return c;
+}
+
+// FUNCTION: GAMEMD 0x69F450 (partial: retail pushes EDI up front and addresses DestCoord through it)
+void __stdcall ShipLocomotionClass::MoveTo(LocoCoord to)
+{
+    if (ShipFoot(this)->vf_37C() || ShipFoot(this)->vf_380() || ShipFoot(this)->vf_1D4() || ShipFoot(this)->vf_1D8())
+        return;
+    DestCoord = to;
+    if (ShipIsSet(to)) {
+        if (DriveMap().FUN_00565730(&to)->Flags & 0x100)
+            DestCoord.Z += DAT_00B0782C;
+    }
+}
+
+// FUNCTION: GAMEMD 0x69F510
+void __stdcall ShipLocomotionClass::StopMoving()
+{
+    if (ShipIsSet(HeadTo) && ShipFoot(this)->vf_084()->unknown_C94 && !ShipFoot(this)->unknown_6D0) {
+        DriveFootView* foot = ShipFoot(this)->unknown_6C8;
+        if (foot) {
+            do {
+                foot->Locomotor->StopMoving();
+                foot = foot->unknown_6C8;
+            } while (foot && foot != foot->unknown_6C8);
+        }
+    }
+    unknown_50 = unknown_50 < 0.3f ? unknown_50 : 0.3f;
+    DestCoord = DAT_00B077F8;
+}
+
+// A 16-bit binary angle stored in a dword slot: the heading byte is placed in
+// the high byte of the word (`MOV BH,[ECX+4]; MOV [ESP+0x10],BX`) and the whole
+// slot is read back (`MOV EBX,[ESP+0x10]`) before the shift at 0x6A4191.
+union ShipAngle
+{
+    unsigned short Raw;
+    unsigned int   Whole;
+};
+
+static inline int ShipTrackFacing8(unsigned char heading)
+{
+    ShipAngle angle;
+    angle.Raw = (unsigned short)(heading << 8);
+    return ((angle.Whole >> 12) + 1) >> 1 & 7;
+}
+
+// FUNCTION: GAMEMD 0x6A4130 (partial: retail holds the track entry as a pointer in ECX; compiled keeps a scaled offset)
+bool __stdcall ShipLocomotionClass::WillJumpTracks()
+{
+    int dir = ShipFoot(this)->unknown_5E0;
+    if (dir >= -1 && dir <= 8) {
+        bool shortTrack = unknown_60;
+        DriveTrackEntry* entry = &ShipTrackEntries_007F2A40[TrackNumber];
+        int control = shortTrack ? entry->unknown_1 : entry->unknown_0;
+        bool turning = false;
+        if (dir != 8 && dir != -1 && ShipTrackFacing8(entry->unknown_4) != dir)
+            turning = true;
+        if (dir != -1 && turning
+            && ShipTrackControls_007F2960[control].unknown_4 == TrackIndex && TrackIndex != 0) {
+            char next = ShipTrackEntries_007F2A40[dir + ShipTrackFacing8(entry->unknown_4) * 8].unknown_0;
+            if (next && ShipTrackControls_007F2960[next].unknown_8)
+                return true;
+        }
+    }
+    return false;
 }
 
 // SYNTHETIC: GAMEMD 0x6A4300 -- compiler-generated ILocomotion QI adjustor thunk (this -= 0x4).

@@ -98,6 +98,9 @@ public:
     virtual HRESULT __stdcall PiggybackCLSID(CLSID* out);                 // 6  0x69ED20
     virtual bool __stdcall IsPiggybacking();                              // 7  0x6A4280
 
+    // MarkAllOccupationBits 0x6A3F00 calls this with (&HeadTo, mark).
+    void FUN_006A01A0(const LocoCoord* coord, int mark);                  // 0x6A01A0
+
     // +0x18 is the IPiggyback vptr.
     int            unknown_1C;    // +0x1C ctor `MOV [ESI+0x1c],EAX` @0x0069EC5D
     int            unknown_20;    // +0x20 ctor @0x0069EC60 (=0)
