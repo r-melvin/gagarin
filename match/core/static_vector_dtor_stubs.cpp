@@ -261,8 +261,6 @@ DynamicVectorClass<HouseClass*> DAT_00A80228;
 // SYNTHETIC: GAMEMD 0x004E6D60 -- initialiser of DAT_00A8E9A8
 DynamicVectorClass<AnimClass*> DAT_00A8E9A8;
 
-// GLOBAL: GAMEMD 0x00ABCA10
-
 // GLOBAL: GAMEMD 0x00ABCB78
 // SYNTHETIC: GAMEMD 0x005569E0 -- exit-time destructor stub of DAT_00ABCB78
 // SYNTHETIC: GAMEMD 0x005569A0 -- initialiser of DAT_00ABCB78

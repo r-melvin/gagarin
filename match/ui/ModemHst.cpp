@@ -51,6 +51,29 @@ extern int DAT_00ABF0F8;
 // GLOBAL: GAMEMD 0xABF100
 extern double DAT_00ABF100;
 
+// GLOBAL: GAMEMD 0xA8B3AC -- the value the list control at 0x667 hands back for its selection.
+extern int DAT_00A8B3AC;
+
+// FUNCTION: GAMEMD 0x5B93F0
+//
+// The list at control 0x667 changed: take the data value of its selected row and, if the control
+// has one, publish it and mark the dialog dirty. No control, no selection or no data changes nothing.
+void WolScenarioColorDlgClass::FUN_005B93F0()
+{
+    HWND_ control = GetDlgItem(this->Dialog, 0x667);
+    if (control != 0) {
+        unsigned int selection = SendMessageA(control, GG_CB_GETCURSEL, 0, 0);
+        if (selection != 0xFFFFFFFF) {
+            long data = SendMessageA(control, GG_CB_GETITEMDATA, selection, 0);
+            if (data != -1) {
+                DAT_00A8B3AC = data;
+                this->OptionsChanged = true;
+                this->unknown_08 = true;
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x5B9450
 //
 // The colour combo's selection changed. The tail is the same publish-and-repaint

@@ -1088,6 +1088,13 @@ void Obj_00597FE0::FUN_00597FE0()
     FUN_00734E60(DAT_0082BC70, 0, DAT_0082BA48, 0x15D6);
 }
 
+// FUNCTION: GAMEMD 0x598160
+// One draw from the map generator's random source, scaled by the spread and offset by the base.
+double __stdcall FUN_00598160(double base, double spread)
+{
+    return DAT_00ABDFB8.FUN_005980C0() * spread + base;
+}
+
 // FUNCTION: GAMEMD 0x598180
 double __stdcall FUN_00598180(double a1, double a2, double a3, double a4)
 {

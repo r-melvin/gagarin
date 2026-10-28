@@ -26,6 +26,7 @@ class Item_0054FFB0
 {
 public:
     void FUN_0054FFB0();
+    static void FUN_00550000();
 };
 class Item_0065FD00
 {
@@ -54,6 +55,20 @@ void Item_0053CB90::FUN_0053CB90()
 void Item_0054FFB0::FUN_0054FFB0()
 {
     DAT_00ABC878.RemoveItem(this);
+}
+
+// FUNCTION: GAMEMD 0x550000
+// Free every element of the global vector, taking each one out before it is deleted.
+void Item_0054FFB0::FUN_00550000()
+{
+    while (DAT_00ABC878.Count != 0) {
+        Item_0054FFB0* item = DAT_00ABC878.Items[0];
+        if (item != 0) {
+            Item_0054FFB0* key = item;
+            DAT_00ABC878.RemoveItem(key);
+            delete item;
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x65FD00

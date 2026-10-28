@@ -84,6 +84,19 @@ int FUN_00558810(Obj_00558810* a1, int a2, int a3)
 
 static const char LoadDlgFile[] = "D:\\ra2mdpost\\LoadDlg.CPP";
 
+// FUNCTION: GAMEMD 0x558740
+// Start with no mission mode or description, the "SAV" extension and a 0x800 field, and an empty
+// entry list (cleared through its vtable, as the constructor leaves it).
+LoadOptionsClass::LoadOptionsClass()
+{
+    Mode = 0;
+    Description = 0;
+    Field14 = 0;
+    Extension = "SAV";
+    Field10 = 0x800;
+    Entries.Clear();
+}
+
 // SYNTHETIC: GAMEMD 0x55A0D0
 // LoadOptionsClass::scalar deleting destructor (compiler-generated ??_G; scored from the harness, see menus.rows.tsv)
 // CAPPED at 95.5% (42 of 44 instructions; multiset identical). Retail stores the vtable (`MOV [EDI],0x7ED2E4`)

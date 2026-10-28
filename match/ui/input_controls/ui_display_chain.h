@@ -1141,6 +1141,9 @@ public:
     int  CursorIndex;                     // +0x5560 the applied row of the cursor table
     int  RequestedCursor;                 // +0x5564 the last cursor id requested through slot 18
     int  CursorFrame;                     // +0x5568 animation frame within the applied row
+
+    // FUNCTION: GAMEMD 0x5BDA40 (native constructor)
+    MouseClass();
 };
 GG_STATIC_ASSERT(offsetof(MouseClass, CursorFlag) == 0x555C);
 GG_STATIC_ASSERT(offsetof(MouseClass, CursorIndex) == 0x5560);

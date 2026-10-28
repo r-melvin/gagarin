@@ -96,6 +96,9 @@ public:
     int           CurrentMissionStartTime;   // +0xC0  (frames)
     int           MissionAccumulateTime;     // +0xC4
     CDTimerClass  UpdateTimer;               // +0xC8  (0xC)
+
+    // FUNCTION: GAMEMD 0x5B2DA0 (declaration; native constructor)
+    MissionClass();
 };
 
 GG_STATIC_ASSERT(offsetof(MissionClass, CurrentMission)          == 0xAC);

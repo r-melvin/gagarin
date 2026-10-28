@@ -120,3 +120,11 @@ void MouseClass::vf_07()
     CursorFlag = false;
     RequestedCursor = 0;
 }
+
+// FUNCTION: GAMEMD 0x5BDA40
+// Build the base scroll display, then clear the cursor state; the object's own vtables are seated
+// as part of the construction.
+MouseClass::MouseClass()
+    : CursorFlag(false), CursorIndex(0), RequestedCursor(0), CursorFrame(0)
+{
+}

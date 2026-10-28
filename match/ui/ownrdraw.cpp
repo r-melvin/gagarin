@@ -1918,6 +1918,13 @@ int __stdcall FUN_0060AA60(GG_HWND hWnd, int unused)
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x60AAA0
+// Run the callback above over every child window of a dialog.
+void __fastcall FUN_0060AAA0(GG_HWND hWnd)
+{
+    EnumChildWindows(hWnd, (int (__stdcall *)(GG_HWND, long))FUN_0060AA60, 0);
+}
+
 // GLOBAL: GAMEMD 0x7F5BE4 / 0x7F5BF0 -- the 800 x 600 layout the dialogs are
 // designed for (entries of the width and height tables at 0x7F5BE0/0x7F5BEC).
 extern int DAT_007F5BE4;

@@ -40,6 +40,7 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ wnd,
 #define GG_CB_GETCURSEL 0x147
 #define GG_CB_SETCURSEL 0x14E
 #define GG_CBM_SETCOLOR 0x498
+#define GG_CB_GETITEMDATA 0x150
 
 // GLOBAL: GAMEMD 0xA8B394 — the local player's chosen colour index.
 extern int PlayerColor;
@@ -72,6 +73,14 @@ struct WolScenarioColorDlgClass
     void FUN_005B59B0();
     // FUNCTION: GAMEMD 0x5B9450
     void OnColorSelChanged();
+    // FUNCTION: GAMEMD 0x5B5960
+    void FUN_005B5960();
+    // FUNCTION: GAMEMD 0x5B93F0
+    void FUN_005B93F0();
+    // FUNCTION: GAMEMD 0x5B5E90
+    void FUN_005B5E90();
+    // FUNCTION: GAMEMD 0x5B5A50
+    void FUN_005B5A50(char mode);
 };
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, Dialog) == 0x00);
 GG_STATIC_ASSERT(offsetof(WolScenarioColorDlgClass, unknown_08) == 0x08);

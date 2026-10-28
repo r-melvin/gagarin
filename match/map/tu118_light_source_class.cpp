@@ -293,9 +293,6 @@ extern double DAT_00ABCA68;
 // GLOBAL: GAMEMD 0xABCA38
 extern double DAT_00ABCA38;
 
-// SYNTHETIC: GAMEMD 0x00554680 -- exit-time destructor stub of DAT_00ABCA10
-DynamicVectorClass<LightSourceClass*> DAT_00ABCA10;
-
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x554D50
 // Work through the light queue backwards within a time budget, sampling each

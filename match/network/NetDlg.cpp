@@ -5,6 +5,7 @@
 //   code range (0x5da4d0-0x5dacef). Functions are in ascending retail address order.
 
 #include "../core/init_misc_methods.h"
+#include "transport/winsock_interface_class.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -72,4 +73,22 @@ bool __cdecl FUN_005DA6C0()
     }
 
     return true;
+}
+
+// GLOBAL: GAMEMD 0x887628 -- the packet interface (WinsockInterfaceClass).
+extern WinsockInterfaceClass* Interface_00887628;
+// GLOBAL: GAMEMD 0xA8D610
+extern unsigned short DAT_00A8D610;
+
+// FUNCTION: GAMEMD 0x5DA720
+//
+// Tear down the packet interface: clear the 0xA8D610 word, delete the interface if there is one
+// and forget it.
+void __cdecl FUN_005DA720()
+{
+    DAT_00A8D610 = 0;
+    if (Interface_00887628 != 0) {
+        delete Interface_00887628;
+    }
+    Interface_00887628 = 0;
 }

@@ -135,6 +135,9 @@ public:
     int            Field14;      // +0x14
     char           _pad018[8];
     DynamicVectorClass<FileEntryClass*> Entries;  // +0x20
+
+    // FUNCTION: GAMEMD 0x558740 (native constructor)
+    LoadOptionsClass();
 };
 GG_STATIC_ASSERT(offsetof(LoadOptionsClass, Mode) == 0x04);
 GG_STATIC_ASSERT(offsetof(LoadOptionsClass, Extension) == 0x08);
