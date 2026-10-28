@@ -13,6 +13,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/coord_struct.h"
 
 // ---------------------------------------------------------------------------
 // HouseClass — only the bits VisibleToPlayer touches are modelled here. Both
@@ -45,8 +46,9 @@ extern HouseClass** HouseClass_ArrayItems;      // [0x00A8022C]
 struct BeaconClass
 {
     bool VisibleToPlayer() const;          // GAMEMD 0x4308B0 __thiscall
+    BeaconClass();                         // GAMEMD 0x430210 __thiscall
 
-    char          _coord[0x0C];            // CoordStruct Coord @ 0x00 — P2
+    CoordStruct   Coord;                   // +0x00
     unsigned char Bitfield;                // +0x0C  (bit 0 = active/visible)
     char          _gap0D[0x110 - 0x0D];    // [0x0D..0x10F] (Text[128] etc.) — P2
     int           HouseID;                 // +0x110

@@ -53,6 +53,8 @@ struct FacingClass
     DirStruct FUN_004C93D0() const;
     DirStruct* FUN_004C93D0(DirStruct* out);
     bool FUN_004C9480() const;
+    DirStruct FUN_004C9530() const;
+    DirStruct FUN_004C95D0(const DirStruct* other) const;
 
     short Difference() const
     {
