@@ -98438,7 +98438,7 @@
   "len": "0x174",
   "name": "FUN_0040A090",
   "status": "partial",
-  "pct": 13.1
+  "pct": 65.4
  },
  {
   "tu": "match/core/module_tu002.cpp",
@@ -98465,7 +98465,7 @@
   "len": "0x2ca",
   "name": "FUN_0040A340",
   "status": "partial",
-  "pct": 14.7
+  "pct": 25.8
  },
  {
   "tu": "match/core/module_tu002.cpp",
@@ -138375,5 +138375,347 @@
   "name": "Triple_00763700::Assign",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x554910",
+  "sym": "??1LightSourceClass@@UAE@XZ",
+  "len": "0x8d",
+  "name": "LightSourceClass::~LightSourceClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x555150",
+  "sym": "??_GLightSourceClass@@UAEPAXI@Z",
+  "len": "0xa1",
+  "name": "LightSourceClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x5548E0",
+  "sym": "??0LightSourceClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "LightSourceClass::LightSourceClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x554830",
+  "sym": "??0LightSourceClass@@QAE@XZ",
+  "len": "0xa9",
+  "name": "LightSourceClass::LightSourceClass()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x554760",
+  "sym": "??0LightSourceClass@@QAE@ULightTint@@HHHHH@Z",
+  "len": "0xc2",
+  "name": "LightSourceClass::LightSourceClass(tint, ...)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x65B2F0",
+  "sym": "??1RadSiteClass@@UAE@XZ",
+  "len": "0xa7",
+  "name": "RadSiteClass::~RadSiteClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x65B2A0",
+  "sym": "??0RadSiteClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x48",
+  "name": "RadSiteClass::RadSiteClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_light_rad_dtors_r13.cpp",
+  "addr": "0x65B3D0",
+  "sym": "?Load@RadSiteClass@@UAGJPAUIStream@@@Z",
+  "len": "0x76",
+  "name": "RadSiteClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_type_dtors_r13.cpp",
+  "addr": "0x5FC4D0",
+  "sym": "??1OverlayClass@@UAE@XZ",
+  "len": "0x93",
+  "name": "OverlayClass::~OverlayClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_type_dtors_r13.cpp",
+  "addr": "0x5FE3F0",
+  "sym": "??1OverlayTypeClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "OverlayTypeClass::~OverlayTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_side_class_r13.cpp",
+  "addr": "0x6A4930",
+  "sym": "??_GSideClass@@UAEPAXI@Z",
+  "len": "0xcf",
+  "name": "SideClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_side_class_r13.cpp",
+  "addr": "0x6A4780",
+  "sym": "?Load@SideClass@@UAGJPAUIStream@@@Z",
+  "len": "0x111",
+  "name": "SideClass::Load",
+  "status": "partial",
+  "pct": 88.0
+ },
+ {
+  "tu": "match/core/w2_side_ctor_r13.cpp",
+  "addr": "0x6A4550",
+  "sym": "??0SideClass@@QAE@PBD@Z",
+  "len": "0xc0",
+  "name": "SideClass::SideClass(const char*)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_parasite_r13.cpp",
+  "addr": "0x629390",
+  "sym": "??0ParasiteClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x48",
+  "name": "ParasiteClass::ParasiteClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_parasite_r13.cpp",
+  "addr": "0x629210",
+  "sym": "??0ParasiteClass@@QAE@XZ",
+  "len": "0x91",
+  "name": "ParasiteClass::ParasiteClass()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_parasite_r13.cpp",
+  "addr": "0x6292B0",
+  "sym": "??0ParasiteClass@@QAE@PAX@Z",
+  "len": "0xd8",
+  "name": "ParasiteClass::ParasiteClass(owner)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_parasite_r13.cpp",
+  "addr": "0x62AF70",
+  "sym": "??_GParasiteClass@@UAEPAXI@Z",
+  "len": "0xf6",
+  "name": "ParasiteClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_parasite_r13.cpp",
+  "addr": "0x6294D0",
+  "sym": "?vf_13@ParasiteClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x58",
+  "name": "ParasiteClass::vf_13 (checksum)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_parasite_r13.cpp",
+  "addr": "0x6295B0",
+  "sym": "?Load@ParasiteClass@@UAGJPAUIStream@@@Z",
+  "len": "0xfc",
+  "name": "ParasiteClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_progress_r13.cpp",
+  "addr": "0x642A30",
+  "sym": "??1ProgressScreenClass@@UAE@XZ",
+  "len": "0x29",
+  "name": "ProgressScreenClass::~ProgressScreenClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r13.cpp",
+  "addr": "0x6599C0",
+  "sym": "?FUN_006599C0@Obj_006599C0@@QAEXXZ",
+  "len": "0x64",
+  "name": "Obj_006599C0::FUN_006599C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r13.cpp",
+  "addr": "0x5F96B0",
+  "sym": "?FUN_005F96B0@@YIXPADH@Z",
+  "len": "0x53",
+  "name": "FUN_005F96B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r13.cpp",
+  "addr": "0x58AF80",
+  "sym": "?AddItem@?$DynamicVectorClass@UTriple12@@@@QAE_NABUTriple12@@@Z",
+  "len": "0x61",
+  "name": "DynamicVectorClass<Triple12>::AddItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r13.cpp",
+  "addr": "0x658910",
+  "sym": "?FUN_00658910@Obj_00658910@@QBE_NPBU1@@Z",
+  "len": "0x5c",
+  "name": "Obj_00658910::FUN_00658910",
+  "status": "partial",
+  "pct": 91.1
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58AFF0",
+  "sym": "??0?$VectorClass@U?$HashObject@II@@@@QAE@HPAU?$HashObject@II@@@Z",
+  "len": "0x72",
+  "name": "??0?$VectorClass@U?$HashObject@II@@@@QAE@HPAU?$HashObject@II@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58A630",
+  "sym": "??_E?$DynamicVectorClass@U?$HashObject@II@@@@UAEPAXI@Z",
+  "len": "0xa3",
+  "name": "??_E?$DynamicVectorClass@U?$HashObject@II@@@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58B070",
+  "sym": "??0?$VectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@QAE@HPAU?$HashObject@IUSubzoneConnectionStruct@@@@@Z",
+  "len": "0x94",
+  "name": "??0?$VectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@QAE@HPAU?$HashObject@IUSubzoneConnectionStruct@@@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58A840",
+  "sym": "??_E?$DynamicVectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@UAEPAXI@Z",
+  "len": "0xa3",
+  "name": "??_E?$DynamicVectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x628690",
+  "sym": "??_E?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UAEPAXI@Z",
+  "len": "0xa3",
+  "name": "??_E?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x628740",
+  "sym": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ",
+  "len": "0x20",
+  "name": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x658C60",
+  "sym": "??_E?$DynamicVectorClass@U?$HashObject@URadarTrackingStruct@@PAVTechnoClass@@@@@@UAEPAXI@Z",
+  "len": "0xa3",
+  "name": "??_E?$DynamicVectorClass@U?$HashObject@URadarTrackingStruct@@PAVTechnoClass@@@@@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x589100",
+  "sym": "??0?$DynamicVectorClass@USubzoneConnectionStruct@@@@QAE@HPAUSubzoneConnectionStruct@@@Z",
+  "len": "0x90",
+  "name": "??0?$DynamicVectorClass@USubzoneConnectionStruct@@@@QAE@HPAUSubzoneConnectionStruct@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58ADB0",
+  "sym": "??0?$VectorClass@UZoneConnectionClass@@@@QAE@HPAUZoneConnectionClass@@@Z",
+  "len": "0xae",
+  "name": "??0?$VectorClass@UZoneConnectionClass@@@@QAE@HPAUZoneConnectionClass@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x588D60",
+  "sym": "?Clear@?$DynamicVectorClass@USubzoneTrackingStruct@@@@UAEXXZ",
+  "len": "0x78",
+  "name": "?Clear@?$DynamicVectorClass@USubzoneTrackingStruct@@@@UAEXXZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x589960",
+  "sym": "?Clear@?$VectorClass@USubzoneTrackingStruct@@@@UAEXXZ",
+  "len": "0x75",
+  "name": "?Clear@?$VectorClass@USubzoneTrackingStruct@@@@UAEXXZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58A470",
+  "sym": "??_G?$VectorClass@USubzoneTrackingStruct@@@@UAEPAXI@Z",
+  "len": "0x90",
+  "name": "??_G?$VectorClass@USubzoneTrackingStruct@@@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58A5B0",
+  "sym": "??_G?$DynamicVectorClass@USubzoneTrackingStruct@@@@UAEPAXI@Z",
+  "len": "0x78",
+  "name": "??_G?$DynamicVectorClass@USubzoneTrackingStruct@@@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x658D60",
+  "sym": "??0?$VectorClass@UPoint2D@@@@QAE@HPAUPoint2D@@@Z",
+  "len": "0x72",
+  "name": "??0?$VectorClass@UPoint2D@@@@QAE@HPAUPoint2D@@@Z",
+  "status": "matched",
+  "pct": 100
  }
 ]

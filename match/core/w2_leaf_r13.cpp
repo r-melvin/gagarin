@@ -41,6 +41,7 @@ GG_STATIC_ASSERT(offsetof(Obj_006599C0, Length) == 0x68);
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square root, __cdecl, the operand pushed as a double.
 double __cdecl FUN_004CAC40(double value);
 
+// FUNCTION: GAMEMD 0x6599C0
 void Obj_006599C0::FUN_006599C0()
 {
     Delta = To - From;
@@ -66,6 +67,7 @@ struct Obj_00658910 {
 GG_STATIC_ASSERT(offsetof(Obj_00658910, Items) == 4);
 GG_STATIC_ASSERT(offsetof(Obj_00658910, Count) == 8);
 
+// FUNCTION: GAMEMD 0x658910
 bool Obj_00658910::FUN_00658910(const Obj_00658910* other) const
 {
     if (Count == other->Count) {
