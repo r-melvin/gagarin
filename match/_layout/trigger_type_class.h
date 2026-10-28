@@ -37,6 +37,7 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x727C80
     virtual int vf_11();                                                  // 11  0x727CA0
     virtual int vf_12();                                                  // 12  0x727CB0
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x727B30
     // FUNCTION: GAMEMD 0x726C80 (constructor declaration)
     TriggerTypeClass(const char* id);
     // Load re-runs the base no-init constructor (0x410960) and reinstalls the four vtables.

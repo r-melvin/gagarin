@@ -70,6 +70,25 @@ public:
     void UnmarkAllOccupationBits(CoordStruct const& coords);
     // GAMEMD 0x746000 (RET 8): whether a hop between two cells goes to the A* search.
     bool AStarAttempt(const CellStruct* from, const CellStruct* to);
+    // Overrides recovered from retail (bodies in combat/unit_class_vslot_w3_methods.cpp).
+    virtual bool IsUnderEMP();                          // 223 0x746C90
+    virtual int vf_185(AbstractClass* target);          // 185 0x746CD0
+    virtual bool vf_167();                              // 167 0x744180
+    virtual double vf_173();                            // 173 0x7414A0
+    virtual DirStruct vf_170();                         // 170 0x746E30
+    virtual DirStruct vf_194();                         // 194 0x740F80
+    virtual ObjectTypeClass* vf_51(bool a1);            // 51  0x7465B0
+    virtual HouseClass* vf_52(bool a1);                 // 52  0x7465F0
+    virtual void vf_284();                              // 284 0x746720
+    virtual int vf_151();                               // 151 0x740B10
+    void FUN_00746630(ObjectTypeClass* type);           // 0x746630
+    bool FUN_00746D10();                                // 0x746D10
+    bool FUN_00746DB0();                                // 0x746DB0
+    virtual void vf_10(void* target, bool removed);    // 10  0x7446E0
+    virtual bool vf_245(HouseClass* house, bool a2);   // 245 0x7463A0
+    virtual int vf_139();                              // 139 0x740A90
+    int FUN_007438B0();                                // 0x7438B0
+    void FUN_00740E60();                               // 0x740E60
     // Slots 341-343, introduced by UnitClass (344 slots in all; retail table 0x7F5C70).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     // Each pops 0x20 or 0x24 bytes, so some of those words are by-value structures.

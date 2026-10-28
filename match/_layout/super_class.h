@@ -24,6 +24,7 @@ class SuperClass : public AbstractClass
 {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // slot3, existing body
+    virtual void vf_13(Obj_004A1D30* crc);                  // slot13 0x6CE020
     int GetRechargeTime() const; // 0x6CC260
     int           CustomChargeTime;      // +0x24 ctor MOV [ESI+0x24],EAX(-1) @0x006CAFA7
     void*         Type;                  // +0x28 SuperWeaponTypeClass*; ctor =arg1 @0x006CAFA4

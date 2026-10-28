@@ -498,6 +498,7 @@ public:
     void FUN_004FC060(ObjectClass* object, bool value); // GAMEMD 0x4FC060
     float GiveTiberium(float amount, int type); // GAMEMD 0x4F9610
     bool IsAlliedWith(const HouseClass* house) const;
+    float FUN_0050C160() const; // GAMEMD 0x50C160
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc) -- no arguments, bool.
     bool FUN_0050B730();
     // FUNCTION: GAMEMD 0x50BDF0 -- ECX=House, one TechnoType* stack argument,

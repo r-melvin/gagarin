@@ -191,6 +191,9 @@ public:
     virtual bool vf_53();                                          // 53  0x4DB260
     virtual int vf_138();                                          // 138 0x4D5350
     virtual int vf_139();                                          // 139 0x4D4200
+    virtual int vf_151();                                          // 151 0x4D4280
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6   0x4DB690
+    virtual bool vf_245(HouseClass* house, bool a2);               // 245 0x4DBED0
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x4D9920 (IsScanLimited @0x688 wrapper of 0x6F8DF0)
     // Native primary slot 288: RET 8; this override receives the target and flag.
     virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x4D94B0

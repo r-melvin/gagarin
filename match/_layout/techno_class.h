@@ -101,6 +101,8 @@ struct TransitionTimer
     bool FUN_004A51B0();
     // FUNCTION: GAMEMD 0x4A51D0 (decl; reloc)
     bool FUN_004A51D0();
+    // FUNCTION: GAMEMD 0x4A5240 (decl; reloc) -- starts the transition with a duration (double by value)
+    void FUN_004A5240(double value);
     // FUNCTION: GAMEMD 0x4A52F0 (decl; reloc) -- fraction of the transition done
     double PercentageDone();
 
@@ -231,6 +233,8 @@ public:
     virtual void vf_9();                                           // 9   0x6F3F40
     virtual bool vf_25();                                          // 25  0x6F32D0
     virtual bool vf_37();                                          // 37  0x701140 (table 0x7F4960 + 0x94)
+    virtual TechnoTypeClass* vf_33();                              // 33  0x6F3270: the type, via slot 34
+    virtual int vf_35();                                           // 35  0x708B30: the type's slot-28 value
     virtual bool vf_39();                                          // 39  0x7010D0: guarding with a live weapon
     virtual bool vf_40();                                          // 40  0x700C40
     virtual CoordStruct vf_44(int a1, int a2, int a3, int a4);     // 44  0x6F3AD0

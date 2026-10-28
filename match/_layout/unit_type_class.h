@@ -28,6 +28,11 @@ class UnitTypeClass : public TechnoTypeClass
 public:
     // Declaration: GAMEMD 0x747F20 -- slot45, full EAX scalar, no args.
     virtual int vf_45();
+    // Overrides recovered from retail (bodies in combat/unit_type_class_w3_methods.cpp).
+    virtual void vf_13(Obj_004A1D30* crc);              // 13  0x747F70
+    virtual CoordStruct vf_30();                        // 30  0x747590
+    virtual CoordStruct vf_31();                        // 31  0x7475D0
+    virtual void* vf_35(void* house);                   // 35  0x747560
     int          ArrayIndex;               // +0xDF8
     int          MovementRestrictedTo;     // +0xDFC (LandType enum)
     CoordStruct  HalfDamageSmokeLocation;  // +0xE00 (0xC)
