@@ -48,6 +48,17 @@ unsigned file has them. The signature is added after linking by the
 publisher and no build produces it; this is the single documented exclusion. Per-function checks, successful
 compilation and a successful link do not establish whole-image identity.
 
+Distribution patches. The pinned image (the EA Play distribution) carries
+post-link patches over the first instructions of a few functions (the no-CD
+patches found by `scripts/vc6/patch_scan.py`). They are recorded in
+`scripts/data/distribution_patches.json` as address, length, instruction text and
+a trivial C++ body that VC6 compiles to the same bytes; no retail bytes are
+recorded. The source keeps the original functions. The final build compiles those
+bodies and writes them over the listed sites as its last step; this is the only
+permitted post-link step. Identity counts as reached when this patched build
+equals the pinned unsigned image. Rows for patched functions stay `partial` and
+note the patched bytes.
+
 For annotated functions, the oracle is the per-function match percentage against
 the retail binary, not behaviour tests.
 
