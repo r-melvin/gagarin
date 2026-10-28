@@ -2,10 +2,10 @@
 // Provenance: own-binary-via-Ghidra
 // VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
-// Run-time initialisers (constructor plus atexit registration of the exit
-// destructor stub) of file-scope DynamicVectorClass<T> objects in the unit at
-// 0x4E62D0..0x4E8268, in retail order. Each initialiser sits 0x40 bytes before
-// the exit stub that static_vector_dtor_stubs.cpp matches.
+// File-scope DynamicVectorClass<T> objects in the unit at 0x4E62D0..0x4E8268, in
+// retail order. Each definition yields the fused run-time initialiser
+// (constructor plus atexit registration) and, 0x40 bytes after it, the exit
+// destructor stub it registers.
 #include "vector_class_operations.h"
 
 class AbstractTypeClass;
