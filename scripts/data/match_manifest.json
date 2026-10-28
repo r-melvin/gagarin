@@ -60344,6 +60344,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/dialog_window_helpers.cpp",
+  "addr": "0x775D70",
+  "sym": "_$E4",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B72F38)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/grow_list_handle_tables_methods.cpp",
   "addr": "0x797C20",
   "sym": "?FUN_00797C20@@YIXXZ",
@@ -75466,17 +75475,16 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C050",
-  "sym": "_$E7",
+  "sym": "_$E32",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B76640)",
   "status": "partial",
-  "pct": 80.0,
-  "note": "85.3% aligned; register swap (count/floor) in the shrink loop"
+  "pct": 80.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA20",
-  "sym": "_$E12",
+  "sym": "_$E102",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B73ACC)",
   "status": "matched",
@@ -75485,7 +75493,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA50",
-  "sym": "_$E17",
+  "sym": "_$E107",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76E24)",
   "status": "matched",
@@ -75494,17 +75502,16 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CCD0",
-  "sym": "_$E22",
+  "sym": "_$E112",
   "len": "0x137",
   "name": "atexit cleanup (DAT_00B76608)",
   "status": "partial",
-  "pct": 80.0,
-  "note": "85.3% aligned; register swap as 0x77C050"
+  "pct": 80.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CE10",
-  "sym": "_$E27",
+  "sym": "_$E117",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B765F0)",
   "status": "matched",
@@ -75513,7 +75520,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CE30",
-  "sym": "_$E30",
+  "sym": "_$E120",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73E3C)",
   "status": "matched",
@@ -75522,7 +75529,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF30",
-  "sym": "_$E33",
+  "sym": "_$E133",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76AC4)",
   "status": "matched",
@@ -75549,7 +75556,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF90",
-  "sym": "_$E38",
+  "sym": "_$E138",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76E34)",
   "status": "matched",
@@ -75558,7 +75565,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFC0",
-  "sym": "_$E43",
+  "sym": "_$E143",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B73B30)",
   "status": "matched",
@@ -75567,7 +75574,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFF0",
-  "sym": "_$E48",
+  "sym": "_$E148",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B7622C)",
   "status": "matched",
@@ -75576,7 +75583,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D020",
-  "sym": "_$E53",
+  "sym": "_$E153",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76908)",
   "status": "matched",
@@ -75585,7 +75592,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D050",
-  "sym": "_$E58",
+  "sym": "_$E158",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B77794)",
   "status": "matched",
@@ -75594,7 +75601,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D080",
-  "sym": "_$E63",
+  "sym": "_$E163",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B778F4)",
   "status": "matched",
@@ -75603,7 +75610,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0B0",
-  "sym": "_$E68",
+  "sym": "_$E168",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B778FC)",
   "status": "matched",
@@ -75612,7 +75619,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0E0",
-  "sym": "_$E73",
+  "sym": "_$E173",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B765EC)",
   "status": "matched",
@@ -75621,7 +75628,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D110",
-  "sym": "_$E78",
+  "sym": "_$E178",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76900)",
   "status": "matched",
@@ -75639,7 +75646,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D1C0",
-  "sym": "_$E83",
+  "sym": "_$E183",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76230)",
   "status": "matched",
@@ -75832,7 +75839,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77DA10",
-  "sym": "_$E88",
+  "sym": "_$E188",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B73E40)",
   "status": "matched",
@@ -75841,7 +75848,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77DA40",
-  "sym": "_$E93",
+  "sym": "_$E193",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B7778C)",
   "status": "matched",
@@ -80277,13 +80284,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/tu241_temporal_class.cpp",
+  "tu": "match/combat/temporal_array_vector.cpp",
   "addr": "0x71A410",
-  "sym": "_$E3",
+  "sym": "_$E2",
   "len": "0x3b",
   "name": "DynamicVectorClass<TemporalClass*> exit destructor stub (DAT_00B0EC60)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/abstract_class_forward_methods.cpp",
@@ -80597,6 +80604,15 @@
   "sym": "_$E21",
   "len": "0x3d",
   "name": "DynamicVectorClass dynamic initializer (fused ctor + atexit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_c.cpp",
+  "addr": "0x74C380",
+  "sym": "_$E28",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<VeinholeMonsterClass*> guarded initialiser (DAT_00B1D290)",
   "status": "matched",
   "pct": 100
  },
@@ -81078,6 +81094,168 @@
   "pct": 100
  },
  {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x71E620",
+  "sym": "_$E219",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TEventClass*> initialiser (DAT_00B0F1A0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x721640",
+  "sym": "_$E224",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TiberiumClass*> initialiser (DAT_00B0F4E8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x7252D0",
+  "sym": "_$E229",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F720)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x725350",
+  "sym": "_$E234",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F670)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x7253D0",
+  "sym": "_$E239",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F618)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x725450",
+  "sym": "_$E244",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F708)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x7254D0",
+  "sym": "_$E249",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F5B8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x725550",
+  "sym": "_$E254",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F640)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x7255D0",
+  "sym": "_$E259",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F658)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x725650",
+  "sym": "_$E264",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F5F0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x7256D0",
+  "sym": "_$E269",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F5D8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x725750",
+  "sym": "_$E274",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F6C8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x7257D0",
+  "sym": "_$E279",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F6F0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x725850",
+  "sym": "_$E284",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractClass*> initialiser (DAT_00B0F698)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x750300",
+  "sym": "_$E289",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<VocClass*> initialiser (DAT_00B1D378)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x752210",
+  "sym": "_$E294",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<VoxClass*> initialiser (DAT_00B1D4A0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x759180",
+  "sym": "_$E299",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<MovieHandle*> initialiser (DAT_00B45B58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x763590",
+  "sym": "_$E304",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<WaypointPathClass*> initialiser (DAT_00B72608)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/persist_class_id_methods.cpp",
   "addr": "0x763C30",
   "sym": "?GetClassID@WaypointPathClass@@UAGJPAU_GUID@@@Z",
@@ -81195,164 +81373,164 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/ui/dialog_window_helpers.cpp",
   "addr": "0x775D90",
-  "sym": "?FUN_00775D90@@YIXXZ",
+  "sym": "_$E2",
   "len": "0x17",
-  "name": "FUN_00775D90",
+  "name": "atexit cleanup (DAT_00B72F38)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B920",
-  "sym": "?FUN_0077B920@@YIXXZ",
+  "sym": "_$E7",
   "len": "0x17",
-  "name": "FUN_0077B920",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B960",
-  "sym": "?FUN_0077B960@@YIXXZ",
+  "sym": "_$E12",
   "len": "0x17",
-  "name": "FUN_0077B960",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B9A0",
-  "sym": "?FUN_0077B9A0@@YIXXZ",
+  "sym": "_$E17",
   "len": "0x17",
-  "name": "FUN_0077B9A0",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B9E0",
-  "sym": "?FUN_0077B9E0@@YIXXZ",
+  "sym": "_$E22",
   "len": "0x17",
-  "name": "FUN_0077B9E0",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77BA20",
-  "sym": "?FUN_0077BA20@@YIXXZ",
+  "sym": "_$E27",
   "len": "0x17",
-  "name": "FUN_0077BA20",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C370",
-  "sym": "?FUN_0077C370@@YIXXZ",
+  "sym": "_$E37",
   "len": "0x3e",
-  "name": "FUN_0077C370",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C600",
-  "sym": "?FUN_0077C600@@YIXXZ",
+  "sym": "_$E47",
   "len": "0x3e",
-  "name": "FUN_0077C600",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C720",
-  "sym": "?FUN_0077C720@@YIXXZ",
+  "sym": "_$E62",
   "len": "0x3e",
-  "name": "FUN_0077C720",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C780",
-  "sym": "?FUN_0077C780@@YIXXZ",
+  "sym": "_$E67",
   "len": "0x3e",
-  "name": "FUN_0077C780",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C7E0",
-  "sym": "?FUN_0077C7E0@@YIXXZ",
+  "sym": "_$E72",
   "len": "0x3e",
-  "name": "FUN_0077C7E0",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C840",
-  "sym": "?FUN_0077C840@@YIXXZ",
+  "sym": "_$E77",
   "len": "0x3e",
-  "name": "FUN_0077C840",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C8A0",
-  "sym": "?FUN_0077C8A0@@YIXXZ",
+  "sym": "_$E82",
   "len": "0x3e",
-  "name": "FUN_0077C8A0",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C900",
-  "sym": "?FUN_0077C900@@YIXXZ",
+  "sym": "_$E87",
   "len": "0x3e",
-  "name": "FUN_0077C900",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C960",
-  "sym": "?FUN_0077C960@@YIXXZ",
+  "sym": "_$E92",
   "len": "0x3e",
-  "name": "FUN_0077C960",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C9C0",
-  "sym": "?FUN_0077C9C0@@YIXXZ",
+  "sym": "_$E97",
   "len": "0x3e",
-  "name": "FUN_0077C9C0",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CE70",
-  "sym": "?FUN_0077CE70@@YIXXZ",
+  "sym": "_$E123",
   "len": "0x3e",
-  "name": "FUN_0077CE70",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CED0",
-  "sym": "?FUN_0077CED0@@YIXXZ",
+  "sym": "_$E128",
   "len": "0x3e",
-  "name": "FUN_0077CED0",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
@@ -96645,18 +96823,18 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C5A0",
-  "sym": "?FUN_0077C5A0@@YIXXZ",
+  "sym": "_$E42",
   "len": "0x3e",
-  "name": "FUN_0077C5A0",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C660",
-  "sym": "?FUN_0077C660@@YIXXZ",
+  "sym": "_$E52",
   "len": "0x3e",
-  "name": "FUN_0077C660",
+  "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
   "pct": 100.0
  },
@@ -101364,7 +101542,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA00",
-  "sym": "_$E14",
+  "sym": "_$E104",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73ACC)",
   "status": "matched",
@@ -101373,7 +101551,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA30",
-  "sym": "_$E19",
+  "sym": "_$E109",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76E24)",
   "status": "matched",
@@ -101382,7 +101560,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF10",
-  "sym": "_$E35",
+  "sym": "_$E135",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76AC4)",
   "status": "matched",
@@ -101391,7 +101569,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF70",
-  "sym": "_$E40",
+  "sym": "_$E140",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76E34)",
   "status": "matched",
@@ -101400,7 +101578,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFA0",
-  "sym": "_$E45",
+  "sym": "_$E145",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73B30)",
   "status": "matched",
@@ -101409,7 +101587,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFD0",
-  "sym": "_$E50",
+  "sym": "_$E150",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B7622C)",
   "status": "matched",
@@ -101418,7 +101596,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D000",
-  "sym": "_$E55",
+  "sym": "_$E155",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76908)",
   "status": "matched",
@@ -101427,7 +101605,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D030",
-  "sym": "_$E60",
+  "sym": "_$E160",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B77794)",
   "status": "matched",
@@ -101436,7 +101614,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D060",
-  "sym": "_$E65",
+  "sym": "_$E165",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B778F4)",
   "status": "matched",
@@ -101445,7 +101623,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D090",
-  "sym": "_$E70",
+  "sym": "_$E170",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B778FC)",
   "status": "matched",
@@ -101454,7 +101632,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0C0",
-  "sym": "_$E75",
+  "sym": "_$E175",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B765EC)",
   "status": "matched",
@@ -101463,7 +101641,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0F0",
-  "sym": "_$E80",
+  "sym": "_$E180",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76900)",
   "status": "matched",
@@ -101472,7 +101650,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D9F0",
-  "sym": "_$E90",
+  "sym": "_$E190",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73E40)",
   "status": "matched",
@@ -101481,7 +101659,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77DA20",
-  "sym": "_$E95",
+  "sym": "_$E195",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B7778C)",
   "status": "matched",
@@ -101490,9 +101668,198 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D1A0",
-  "sym": "_$E85",
+  "sym": "_$E185",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76230)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B900",
+  "sym": "_$E9",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B778D8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B940",
+  "sym": "_$E14",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B73E10)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B980",
+  "sym": "_$E19",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76AE0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B9C0",
+  "sym": "_$E24",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B77900)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77BA00",
+  "sym": "_$E29",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76520)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C350",
+  "sym": "_$E39",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B777A0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C580",
+  "sym": "_$E44",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B765F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C5E0",
+  "sym": "_$E49",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B73BD8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C640",
+  "sym": "_$E54",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B736F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C6A0",
+  "sym": "_$E59",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76B00)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C6C0",
+  "sym": "_$E57",
+  "len": "0x3e",
+  "name": "atexit cleanup (DAT_00B76B00)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C700",
+  "sym": "_$E64",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76510)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C760",
+  "sym": "_$E69",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B73AE8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C7C0",
+  "sym": "_$E74",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B77820)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C820",
+  "sym": "_$E79",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B73708)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C880",
+  "sym": "_$E84",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76188)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C8E0",
+  "sym": "_$E89",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B73AA8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C940",
+  "sym": "_$E94",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76980)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C9A0",
+  "sym": "_$E99",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B779B0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CE50",
+  "sym": "_$E125",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76AD0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CEB0",
+  "sym": "_$E130",
+  "len": "0x1d",
+  "name": "dynamic initializer (DAT_00B76970)",
   "status": "matched",
   "pct": 100
  },
@@ -129816,6 +130183,33 @@
   "sym": "_$E40",
   "len": "0x17",
   "name": "dynamic initializer (DAT_00B780B0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/temporal_array_vector.cpp",
+  "addr": "0x71A3D0",
+  "sym": "_$E4",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TemporalClass*> initialiser (DAT_00B0EC60)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_option_vector_global.cpp",
+  "addr": "0x766070",
+  "sym": "_$E4",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<rc_ptr<GameOption>> initialiser (DAT_00B72760)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_option_vector_global.cpp",
+  "addr": "0x7660B0",
+  "sym": "_$E2",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<rc_ptr<GameOption>> exit destructor stub (DAT_00B72760)",
   "status": "matched",
   "pct": 100
  }
