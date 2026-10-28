@@ -4,6 +4,9 @@
 //   from the user's retail gamemd.exe v1.001 via the local Ghidra CLI. Kept beside
 //   tu168_overlay_class.cpp (which defines 0x5fc1a0/0x5fc1c0 and reads DAT_00AC1530 as an extern)
 //   so that file's _$E numbering is left alone. Same shape as the 0x438340 table in core.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include <math.h>
 #pragma intrinsic(pow)

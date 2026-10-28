@@ -45,6 +45,9 @@
 // any name is set, the placement values and (where the slot has them) the four power flags. The four SuperAnim
 // slots read their X and Y defaults from other slots' values (retail loads them from ActiveAnimFour, ActiveAnimTwo
 // and ActiveAnimThree); TYPES_READ_ANIM_QUIRK reproduces that.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include "house_building/types_building_shared.h"
 #include "../_layout/swizzle_manager_class.h"

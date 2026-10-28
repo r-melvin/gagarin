@@ -43,6 +43,9 @@
 // returns false. The ownership expression retains the verified short-circuit
 // term so VC6 schedules SETZ and the pointer/capacity stores as retail does.
 // These views remain verified under the default flags (/O2 /Gr /DNDEBUG /Gy, no /GX).
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include "../core/vector_class_operations.h"
 
@@ -221,6 +224,8 @@ double DAT_00B0B860 = DAT_007E1718 / DAT_00B0B878;
 // target, the manager's timer is restarted at two frames, and the unit is
 // unlinked from this manager. Then the target, pending target and status are
 // all cleared.
+// Under /Ob2 cl would fold this body into its callers; retail keeps the call.
+#pragma auto_inline(off)
 void SpawnManager_006B7BB0::ResetTarget()
 {
     for (int i = 0; i < Count; ++i) {
@@ -236,6 +241,7 @@ void SpawnManager_006B7BB0::ResetTarget()
     NewTarget = 0;
     Target = 0;
 }
+#pragma auto_inline(on)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B7C40

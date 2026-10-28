@@ -6,6 +6,9 @@
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
 //
 // ParticleClass entries (layout and evidence: particle_class.h).
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include <new.h>
 #include "../_layout/swizzle_manager_class.h"

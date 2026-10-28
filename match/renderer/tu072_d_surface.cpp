@@ -49,6 +49,9 @@
 // is the primary surface, frees the surface description, releases the
 // DirectDraw surface, then seats the Surface table 0x7E2198 (the empty
 // XSurface/Surface destructors inline away).
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include <string.h>
 #include "dsurface_class.h"

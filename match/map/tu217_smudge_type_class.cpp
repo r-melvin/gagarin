@@ -15,6 +15,9 @@
 // buffer at +0x24 (the string compare is the statically linked CRT routine
 // at 0x7C8D20). The three owners are placeholders `Obj_<ADDR>`; the global
 // vectors are named by retail address.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include <new.h>
 #include "terrain_objects/smudge_class.h"

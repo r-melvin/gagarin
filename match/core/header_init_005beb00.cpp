@@ -4,6 +4,9 @@
 // (header_init_shapes.h): a zero 4-int block and pow-derived base double, then the same twelve initialisers as the block at 0x40ADC0, in
 // __xc order: two derived doubles, three angle doubles, the derived ints/doubles,
 // a zero cell, a zero coordinate and a {128, 128, 0} coordinate.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 #include <math.h>
 #pragma intrinsic(pow)
 #include "header_init_shapes.h"

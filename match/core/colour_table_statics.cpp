@@ -3,6 +3,9 @@
 // Seven 256-entry colour tables (768 bytes each) in the unit at 0x40D8A0. Each is an array of
 // RGBClass, whose constructor zeroes the three channels; retail folds the array construction into
 // a single compiler-generated loop per table.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 #include "../_layout/rgb_class.h"
 
 // A 256-entry table filled with one colour by the out-of-line constructor at

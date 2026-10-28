@@ -5,6 +5,9 @@
 // constructors, so the tree's view type supplies one (header_init_shapes.h). Each sits in
 // retail among the static initialisers of the TU that owns its address neighbours; they are
 // collected here because that TU's own source is not in the tree.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 #include "header_init_shapes.h"
 
 // SYNTHETIC: GAMEMD 0x40AF80

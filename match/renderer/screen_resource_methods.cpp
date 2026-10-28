@@ -12,6 +12,9 @@
 // and palette globals are per screen; offsets and the PaletteSet / ScreenPaletteRes layouts are asserted in
 // screen_palette_mgr_methods.h. Rows already matched elsewhere (the convert getters, 0x72B9E0..0x72BA80,
 // 0x72CAC0..0x72CB60 and the named family in screen_palette_mgr_methods.cpp) are not repeated here.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include <math.h>
 #pragma intrinsic(pow)

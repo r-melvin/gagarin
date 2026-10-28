@@ -50,6 +50,9 @@
 // default constructor that zeroes the three bytes). The body is the DynamicVectorClass constructor
 // taking a capacity and optional storage, with the VectorClass constructor expanded inline.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 // Binary-backed string references (retail bytes including the terminating NUL):
 // STRING: GAMEMD 0x817474 "<none>"

@@ -12128,7 +12128,6 @@
  "match/combat/evade_unit_globals.cpp::_DAT_007E8808": "0x007E8808",
  "match/combat/temporal_class.cpp::_DAT_007F5100": "0x007F5100",
  "match/combat/tu076_em_pulse_class.cpp::_DAT_007E8728": "0x007E8728",
- "match/combat/tu174_particle_class.cpp::_$E2": "0x0062D760",
  "match/combat/tu174_particle_class.cpp::_?$S7@?1??vf_66@ParticleClass@@UAEPAUParticleCellCoord@@PAX@Z@4EA": "0x00AC4998",
  "match/combat/tu174_particle_class.cpp::_?invalidCell@?1??vf_66@ParticleClass@@UAEPAUParticleCellCoord@@PAX@Z@4U3@A": "0x00AC49D0",
  "match/core/AbsType.cpp::_$E2": "0x00410640",
