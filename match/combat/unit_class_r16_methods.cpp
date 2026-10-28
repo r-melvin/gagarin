@@ -3,7 +3,7 @@
 //   UnitClass overrides read off retail gamemd.exe v1.001 (vtable 0x7F5C70), round 16. The
 //   bodies sit on UnitView_r16, a plain derived view of the canonical UnitClass, so no shared
 //   header changes. Functions are in ascending retail address order.
-//   Address index: 0x744640 (slot 13), 0x746670 (slot 283), 0x746750 (slot 50), 0x746810 (slot 9).
+//   Address index: 0x744640 (slot 13), 0x746750 (slot 50).
 
 #include "../_layout/unit_class.h"
 #include "../_layout/obj_004a1d30.h"
@@ -69,9 +69,6 @@ struct UnitHouseView_r16
     bool FUN_004F9A50(HouseClass* other);
 };
 
-// GLOBAL: GAMEMD 0xA83D84 -- the object type array a disguise is taken from.
-extern ObjectTypeClass** DAT_00A83D84_r16;
-
 inline CellStruct UnitCoordToCell_r16(const CoordStruct& where)
 {
     CellStruct result;
@@ -83,12 +80,8 @@ inline CellStruct UnitCoordToCell_r16(const CoordStruct& where)
 class UnitView_r16 : public UnitClass
 {
 public:
-    // FUNCTION: GAMEMD 0x70E280 (decl; reloc)
-    void FUN_0070E280(AbstractClass* target);
     void FUN_00744640(Obj_004A1D30* crc);
-    void FUN_00746670(AbstractClass* target);
     bool FUN_00746750(HouseClass* house);
-    void FUN_00746810();
 };
 
 // FUNCTION: GAMEMD 0x744640
@@ -109,35 +102,6 @@ void UnitView_r16::FUN_00744640(Obj_004A1D30* crc)
     sink->FUN_004A1CA0(Unloading);
     sink->FUN_004A1CA0(IsHarvesting);
     sink->FUN_004A1CA0(ShouldScatterInNextIdle);
-}
-
-// FUNCTION: GAMEMD 0x746670
-// Take on the disguise of the given object: its type and house, by object kind.
-void UnitView_r16::FUN_00746670(AbstractClass* target)
-{
-    if (target) {
-        switch (target->vf_11()) {
-        case 36:
-            Disguise = static_cast<ObjectClass*>(target)->vf_34();
-            DisguisedAsHouse = 0;
-            FUN_0070E280(target);
-            break;
-        case 11:
-            if (vf_230(target)) {
-                Disguise = DAT_00A83D84_r16[*(int*)((char*)target + 0x44)];
-                DisguisedAsHouse = 0;
-                FUN_0070E280(target);
-            }
-            break;
-        case 1:
-            if (static_cast<ObjectClass*>(target)->vf_49()) {
-                Disguise = static_cast<ObjectClass*>(target)->vf_51(true);
-                DisguisedAsHouse = static_cast<ObjectClass*>(target)->vf_52(true);
-                FUN_0070E280(target);
-            }
-            break;
-        }
-    }
 }
 
 // FUNCTION: GAMEMD 0x746750

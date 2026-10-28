@@ -7,6 +7,7 @@
 #include <stddef.h>
 #include <windows.h>
 #include "../_rt/gg_static_assert.h"
+#include "vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0x8A0DD0..0x8A0DE4 -- the display's colour shift operands.
 extern int DAT_008A0DD0;
@@ -100,4 +101,109 @@ unsigned char PaletteView_r16::FUN_00758E10(float red, float green, float blue)
         entry += 3;
     } while (i < 256);
     return (unsigned char)best;
+}
+
+// An object that tracks a list of pointers and one current pointer (list at +0xC4, current at
+// +0xE0), as far as the pointer-expiry notification.
+struct PointerListView_r16
+{
+    void FUN_00722140(void* target, bool removed);
+
+    char unknown_00[0xE0];
+    void* Current;   // +0xE0
+};
+GG_STATIC_ASSERT(offsetof(PointerListView_r16, Current) == 0xE0);
+
+// FUNCTION: GAMEMD 0x722140
+// Forget every reference to an expired pointer.
+void PointerListView_r16::FUN_00722140(void* target, bool removed)
+{
+    DynamicVectorClass<void*>* list = reinterpret_cast<DynamicVectorClass<void*>*>((char*)this + 0xC4);
+    for (int i = list->Count - 1; i >= 0; i--) {
+        if (list->Items[i] == target) {
+            list->Delete(i);
+        }
+    }
+    if (Current == target) {
+        Current = 0;
+    }
+}
+
+// A record with a counted list of pairs at +0xA4 (header ints at +0x98..+0xA0).
+struct PairListView_r16
+{
+    int First;    // +0x98
+    int Count;    // +0x9C
+    int Third;    // +0xA0
+    struct Pair {
+        int A;
+        int B;
+    } Pairs[1];   // +0xA4
+};
+
+class PairListOwnerView_r16
+{
+public:
+    // FUNCTION: GAMEMD 0x6E8000 (decl; reloc) -- refresh the other object from this one.
+    void FUN_006E8000(PairListOwnerView_r16* other);
+    PairListOwnerView_r16* FUN_006E80F0(PairListOwnerView_r16* target, PairListOwnerView_r16* source);
+
+    char unknown_00[0x98];
+    PairListView_r16 List;   // +0x98
+};
+GG_STATIC_ASSERT(offsetof(PairListOwnerView_r16, List) == 0x98);
+
+// FUNCTION: GAMEMD 0x6E80F0
+// Copy the source's pair list into this one, then have the target refresh from this.
+PairListOwnerView_r16* PairListOwnerView_r16::FUN_006E80F0(PairListOwnerView_r16* target,
+                                                           PairListOwnerView_r16* source)
+{
+    if (this != source) {
+        List.First = source->List.First;
+        List.Count = source->List.Count;
+        List.Third = source->List.Third;
+        for (int i = 0; i < List.Count; i++) {
+            List.Pairs[i] = source->List.Pairs[i];
+        }
+    }
+    target->FUN_006E8000(this);
+    return target;
+}
+
+// An object holding a request handle and two remembered values.
+struct RemembersView_r16
+{
+    bool FUN_00759EB0(int first, unsigned int second, unsigned int third, int fourth, int fifth);
+
+    char unknown_00[0x200];
+    int Handle;            // +0x200
+    char unknown_204[0x520 - 0x204];
+    unsigned int Second;   // +0x520
+    unsigned int Third;    // +0x524
+};
+GG_STATIC_ASSERT(offsetof(RemembersView_r16, Handle) == 0x200);
+GG_STATIC_ASSERT(offsetof(RemembersView_r16, Second) == 0x520);
+GG_STATIC_ASSERT(offsetof(RemembersView_r16, Third) == 0x524);
+
+// FUNCTION: GAMEMD 0x7C3270 (decl; reloc)
+int __fastcall FUN_007C3270(int handle, int first, unsigned int second, unsigned int third, int fourth, int fifth);
+
+// FUNCTION: GAMEMD 0x759EB0
+// Remember the second and third values (or reuse the remembered ones for -1) and make the request.
+bool RemembersView_r16::FUN_00759EB0(int first, unsigned int second, unsigned int third, int fourth, int fifth)
+{
+    if (second == 0xFFFFFFFF) {
+        second = Second;
+    } else {
+        Second = second;
+    }
+    if (third == 0xFFFFFFFF) {
+        third = Third;
+    } else {
+        Third = third;
+    }
+    if (fourth == -1) fourth = 0;
+    if (fifth == -1) fifth = 0;
+    bool done = FUN_007C3270(Handle, first, second, third, fourth, fifth) == -1;
+    return done;
 }
