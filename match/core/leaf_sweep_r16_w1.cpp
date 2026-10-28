@@ -7,12 +7,14 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include <new.h>
 #pragma intrinsic(memset)
 #pragma intrinsic(abs)
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/cell.h"
+#include "../_layout/geometry2d.h"
+#include "../combat/ion_blast_draw_methods.h"
 #include "header_init_shapes.h"
-#include "triple_timer_init_methods.h"
 
 // GLOBAL: GAMEMD 0x87F914 / 0x87F918 -- map width / height in cells.
 extern int DAT_0087F914;
@@ -127,27 +129,6 @@ int __fastcall FUN_00505F80(HouseCell_00505F80* house, CellStruct* cell, int bas
     return *result;
 }
 
-// Receiver of 0x4062C0: three timers laid out back to back at +0xB8.
-struct Timers_004062C0
-{
-    char _pad0000[0xB8];
-    Timer_00401000 First;    // +0xB8
-    Timer_00401000 Second;   // +0xE0
-    Timer_00401000 Third;    // +0x108
-
-    void FUN_004062C0(unsigned a, int b);
-};
-GG_STATIC_ASSERT(offsetof(Timers_004062C0, Third) == 0x108);
-
-// FUNCTION: GAMEMD 0x4062C0
-// Sets all three timers to 0x4000 with the same two extra arguments.
-void Timers_004062C0::FUN_004062C0(unsigned a, int b)
-{
-    FUN_004071A0(&First, 0x4000, a, b);
-    FUN_004071A0(&Second, 0x4000, a, b);
-    FUN_004071A0(&Third, 0x4000, a, b);
-}
-
 // WIN32_FIND_DATAA, for the drive probe at 0x47AA50.
 struct FindData_0047AA50
 {
@@ -257,3 +238,93 @@ unsigned int __fastcall FUN_004AECD0(const char* name)
     }
     return version;
 }
+
+// FUNCTION: GAMEMD 0x53D8E0
+// Spiral cell ordering around the origin: index 1 is the origin's first ring
+// neighbour; each ring r holds 8r cells. Returns the (x, y) offset of cell
+// `n` (counted from 1) through the hidden result pointer.
+Point2D __fastcall FUN_0053D8E0(int n)
+{
+    Point2D out;
+    int ring = 1;
+    n--;
+    if (n >= 8) {
+        int step = 8;
+        do {
+            n -= step;
+            step += 8;
+            ring++;
+        } while (n >= step);
+    }
+    if (n < ring * 2 + 1) {
+        out.X = ring;
+        out.Y = n - ring;
+        return out;
+    }
+    if (n < ring * 4 + 1) {
+        out.X = ring * 3 - n;
+        out.Y = ring;
+        return out;
+    }
+    if (n < ring * 6 + 1) {
+        out.X = -ring;
+        out.Y = ring * 5 - n;
+        return out;
+    }
+    out.X = n + ring * -7;
+    out.Y = -ring;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x53D9F0
+// Rebuild the ion blast pixel-offset table for a surface pitch: entry 0 is the
+// origin, entry i the spiral point i as X + Y * pitch.
+void __fastcall FUN_0053D9F0(int pitch)
+{
+    IonBlastOffsets[0] = 0;
+    IonBlastOffsetsPitch = pitch;
+    for (int i = 1; i < ION_BLAST_OFFSET_COUNT; i++) {
+        Point2D pt = FUN_0053D8E0(i);
+        IonBlastOffsets[i] = pt.Y * pitch + pt.X;
+    }
+}
+
+// Scalar-deleting-destructor shape at 0x4AECA0 (see core/deleting_dtor_sweep.h): it
+// tears down the member at +0xC, then the object itself, and frees the block when
+// bit 0 of the flag is set. Written longhand because cl would inline the empty
+// destructor bodies instead of emitting the two calls.
+extern "C" void __cdecl FUN_007C8B3D(void* block);   // GAMEMD 0x7C8B3D operator delete
+void __fastcall FUN_0043AE50(void* member);          // GAMEMD 0x43AE50 (decl; reloc)
+void __fastcall FUN_00631C80(void* self);            // GAMEMD 0x631C80 (decl; reloc)
+
+struct Obj_004AECA0
+{
+    char _pad00[0xC];
+    void* FUN_004AECA0(unsigned int flags);
+};
+
+// FUNCTION: GAMEMD 0x4AECA0
+void* Obj_004AECA0::FUN_004AECA0(unsigned int flags)
+{
+    FUN_0043AE50((char*)this + 0xC);
+    FUN_00631C80(this);
+    if (flags & 1) {
+        FUN_007C8B3D(this);
+    }
+    return this;
+}
+
+// Vector deleting destructor at 0x40B010 of a 4-byte class (a vptr only) whose
+// destructor lives out of line at 0x7B46F0. cl emits `??_E` only once the array
+// form of `new` is seen, so an unreferenced static helper does that; VC6 drops
+// the helper itself and keeps the destructor.
+struct Elem_0040B010
+{
+    virtual ~Elem_0040B010();   // GAMEMD 0x7B46F0 (decl; reloc)
+};
+static Elem_0040B010* GgNewArray_0040B010(int n)
+{
+    return new Elem_0040B010[n];
+}
+// SYNTHETIC: GAMEMD 0x40B010
+// Elem_0040B010::`vector deleting destructor'

@@ -233,21 +233,23 @@ bool FootClass::vf_224()
 }
 
 // FUNCTION: GAMEMD 0x4DAF10
-// PARTIAL 88.7%: only the register order of the draw-point addition differs.
 // Forward to TechnoClass slot 273 with the screen point shifted by the
 // locomotor's draw point; the point and the matrix go on as local copies.
+// The `Point2D* const` alias of the incoming point is load-bearing (found by the
+// permuter run): without it cl swaps the registers of the draw-point addition.
 void FootClass::vf_324(int a1, int a2, int a3, int a4, int a5, Point2D* a6,
                        Matrix3D* a7, int a8, int a9, int a10)
 {
+    Point2D* const src = a6;
     Matrix3D matrix = *a7;
     Point2D point;
-    point.X = a6->X;
-    point.Y = a6->Y;
+    point.X = src->X;
+    point.Y = src->Y;
     if (Locomotor != 0) {
         LocoPoint2D draw = (*(ILocomotionPtr*)&Locomotor)->DrawPoint();
         Point2D sum;
-        sum.Y = a6->Y + draw.Y;
-        sum.X = a6->X + draw.X;
+        sum.X = src->X + draw.X;
+        sum.Y = src->Y + draw.Y;
         point = sum;
     }
     TechnoClass::vf_273(a1, a2, a3, a4, a5, (int)&point, (int)&matrix, a8, a10, a9);

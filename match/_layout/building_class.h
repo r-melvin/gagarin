@@ -217,6 +217,14 @@ public:
     void FUN_00452260();
     // FUNCTION: GAMEMD 0x452360 (decl; reloc)
     void FUN_00452360();
+    // FUNCTION: GAMEMD 0x452DC0 (decl; reloc) -- one stack argument (RET 4).
+    void FUN_00452DC0(int which);
+    // FUNCTION: GAMEMD 0x4529E0 -- refresh all four sides once the building is placed.
+    void FUN_004529E0();
+    // FUNCTION: GAMEMD 0x44F7A0 -- rebuild the owner's radar-visibility mask from its live buildings.
+    void FUN_0044F7A0();
+    // FUNCTION: GAMEMD 0x455B90 -- bitmask of the four edge-adjacent cells that hold a live building with the type flag at +0x16C0.
+    unsigned int FUN_00455B90();
 
     BuildingTypeClass* Type;              // +0x520 ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
     FactoryClass*  Factory;               // +0x524 ctor @0x0043B75C (=0)
