@@ -27915,10 +27915,10 @@
   "tu": "match/platform/copy_protection_methods.cpp",
   "addr": "0x49F5C0",
   "sym": "?IsLauncherRunning@CopyProtection@@YG_NXZ",
-  "len": "0x3",
+  "len": "0x5B",
   "name": "IsLauncherRunning",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 96
  },
  {
   "tu": "match/platform/copy_protection_methods.cpp",
@@ -27933,28 +27933,28 @@
   "tu": "match/platform/copy_protection_methods.cpp",
   "addr": "0x49F7A0",
   "sym": "?CheckProtectedData@CopyProtection@@YG_NXZ",
-  "len": "0x3",
+  "len": "0x108",
   "name": "CheckProtectedData",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 96
  },
  {
   "tu": "match/platform/copy_protection_more_methods.cpp",
   "addr": "0x49F740",
   "sym": "?DispatchLauncherMessage@CopyProtection@@YIXPAUMSG@1@@Z",
-  "len": "0x1",
+  "len": "0x58",
   "name": "DispatchLauncherMessage",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 98
  },
  {
   "tu": "match/platform/copy_protection_more_methods.cpp",
   "addr": "0x49F8B0",
   "sym": "?ShutDown@CopyProtection@@YGXXZ",
-  "len": "0x1",
+  "len": "0x65",
   "name": "ShutDown",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 99
  },
  {
   "tu": "match/platform/debug_window_list_methods.cpp",
