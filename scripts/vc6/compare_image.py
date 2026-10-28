@@ -8,9 +8,13 @@ only). Prints the sections' sizes against retail's and the differing byte ranges
 than --merge bytes are joined). The PE headers are not compared; AGENTS.md lists their known
 differences. Exit status 0 when every section's bytes and virtual size equal retail's.
 
-Usage:  GAMEMD_BINARY=gamemd.exe scripts/vc6/compare_image.py IMAGE [--merge 16] [--limit 20]
+With a placement.json (link_m1.py --hybrid writes one next to m1.exe) it also reports, per section, how
+many bytes of the image come from compiled project objects, from toolchain libraries and from retail fill.
+
+Usage:  GAMEMD_BINARY=gamemd.exe scripts/vc6/compare_image.py IMAGE [--merge 16] [--limit 20] [--placement P]
 """
 import argparse
+import json
 import os
 import struct
 import sys
@@ -65,16 +69,53 @@ def compare(image, retail, merge=16):
     return out
 
 
+def origin_counts(sections, pieces):
+    """{section: {"vsize", "file", "project", "library", "retail"}} from placement pieces.
+
+    sections: [(name, VA, virtual size, file bytes)]; pieces: [[section, VA, size, origin, name]] for every
+    byte that does not come from the pinned image (origin "project": compiled project objects, "library":
+    toolchain library members). Every other byte of the section is retail fill. Counts are bytes of the
+    virtual size, so an uninitialised symbol past the file-backed part counts too."""
+    out = {}
+    for name, va, vsize, data in sections:
+        counts = {"project": 0, "library": 0}
+        for pname, pva, size, origin, _ in pieces:
+            if pname != name:
+                continue
+            lo, hi = max(pva, va), min(pva + size, va + vsize)
+            if hi > lo:
+                counts[origin] = counts.get(origin, 0) + hi - lo
+        out[name] = {"vsize": vsize, "file": len(data), **counts, "retail": vsize - sum(counts.values())}
+    return out
+
+
+def print_origins(counts):
+    print("bytes by origin (of virtual size)")
+    totals = {}
+    for name, c in list(counts.items()) + [("total", None)]:
+        if c is None:
+            c = totals
+        else:
+            for k, v in c.items():
+                totals[k] = totals.get(k, 0) + v
+        print(f"{name:7} {c['vsize']:9} project {c['project']:9} ({100 * c['project'] / c['vsize']:5.2f}%)  "
+              f"library {c['library']:8} ({100 * c['library'] / c['vsize']:5.2f}%)  "
+              f"retail fill {c['retail']:9} ({100 * c['retail'] / c['vsize']:5.2f}%)")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("image", type=Path)
     ap.add_argument("--merge", type=int, default=16)
     ap.add_argument("--limit", type=int, default=20, help="ranges to print per section")
+    ap.add_argument("--placement", type=Path, help="placement.json written by link_m1.py --hybrid "
+                    "(default: next to IMAGE when present): reports the bytes by origin")
     args = ap.parse_args(argv)
     binary = os.environ.get("GAMEMD_BINARY")
     if not binary:
         raise SystemExit("compare_image: GAMEMD_BINARY is not set")
-    result = compare(args.image.read_bytes(), hybrid.Retail(binary), args.merge)
+    image = args.image.read_bytes()
+    result = compare(image, hybrid.Retail(binary), args.merge)
     clean = True
     for name, r in result.items():
         same_size = r["vsize"] == r["retail_vsize"]
@@ -84,6 +125,9 @@ def main(argv=None):
               f"differing bytes {r['diff_bytes']} in {len(r['ranges'])} ranges")
         for va, length in r["ranges"][:args.limit]:
             print(f"    0x{va:X} +0x{length:X}")
+    placement = args.placement or args.image.with_name("placement.json")
+    if placement.is_file():
+        print_origins(origin_counts(image_sections(image), json.loads(placement.read_text())["pieces"]))
     return 0 if clean else 1
 
 

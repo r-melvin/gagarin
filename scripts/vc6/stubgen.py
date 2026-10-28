@@ -338,6 +338,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     debt = 0   # bytes a compiled function ran past its retail slot
     layout = stub_layout(ordered)
     tail_plan = None
+    text_pieces = []   # [va, size, origin, name]: the bytes of .text that come from compiled project objects
     if order_tail:
         # The census gives the last engine function a slot that runs over the import-thunk
         # run behind it; the tail ordering places those thunks, so the slot ends where they begin.
@@ -349,6 +350,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             sym = provider[va]
             order.append(sym)
             size = trimmed.get(va, comdat_size.get(sym, 0))
+            text_pieces.append([va, min(size, slot), "project", sym])
             placed.append({"addr": f"0x{va:X}", "symbol": sym, "kind": "matched", "len": e[1],
                            "object_size": f"0x{size:X}"})
             if size > slot:
@@ -391,6 +393,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         for name, size in tail_plan["fillers"]:
             writer.add_code_comdat([name], size, 1, fill=code_fill(int(name[9:17], 16), size) if hybrid else 0xCC)
         order.extend(tail_plan["order"])
+        text_pieces.extend([va, size, "library", name] for va, size, name in tail_plan["library_sections"])
         stub_names.update(n for n, _ in tail_plan["fillers"])
         if hybrid and retail.text_end() > tail_plan["end"]:
             # Retail's .text continues past the last identified library section (code the toolchain
@@ -607,6 +610,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "pin_report": pin_plan["report"] if pin_plan else None,
         "tail_pin_conflicts": tail_conflicts if tail_plan and hybrid else None,
         "unbound": unbound,
+        "text_pieces": text_pieces,
         "placed": placed,
         "objects": [str(p) for p in link_objects],
     }

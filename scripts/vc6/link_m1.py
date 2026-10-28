@@ -127,7 +127,10 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False):
         if not new:
             break
         extra |= new
-    summary = {k: v for k, v in result.items() if k not in ("placed", "objects", "order_symbols")}
+    if hybrid:
+        placement = [[".text", va, size, origin, name] for va, size, origin, name in result["text_pieces"]]
+        (out / "placement.json").write_text(json.dumps({"pieces": placement}) + "\n")
+    summary = {k: v for k, v in result.items() if k not in ("placed", "objects", "order_symbols", "text_pieces")}
     summary.update({"rounds": rounds, "link_exit_code": code, "unresolved_after_stubs": len(unresolved),
                     "unresolved_symbols": sorted(unresolved), "duplicates": sorted(duplicates),
                     "warnings": sorted({l.strip() for l in log.splitlines() if "warning LNK" in l})[:200]})

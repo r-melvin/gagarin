@@ -164,7 +164,10 @@ def plan_tail(layout, libdir, start, out):
                             "kind": "section", "names": [(n, o) for n, o in s["symbols"]] or [(key, 0)]})
     order, fillers, names_at, skipped, end = order_entries(entries, start)
     thunks = [(e["name"], e["addr"]) for e in entries if e["kind"] == "thunk"]
-    return {"objects": objects, "order": order, "thunks": thunks, "fillers": fillers, "names_at": names_at, "end": end,
+    skipped_at = {x["addr"] for x in skipped}
+    library_sections = [(e["addr"], e["len"], e["names"][0][0]) for e in entries
+                        if e["kind"] == "section" and f"0x{e['addr']:X}" not in skipped_at]
+    return {"objects": objects, "library_sections": library_sections, "order": order, "thunks": thunks, "fillers": fillers, "names_at": names_at, "end": end,
             "report": {"members_copied": len(objects), "ordered": len(order) - len(fillers), "fillers": len(fillers),
                        "filler_bytes": sum(n for _, n in fillers), "skipped": skipped, "problems": problems}}
 
