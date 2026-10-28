@@ -24,6 +24,8 @@ struct UnitTrackerClass
     int* GetAllTotals();
     // Native entry 0x7490D0; declaration only.
     void ClearUnitTotal();
+    // Native entry 0x749040; declaration only.
+    void DecrementUnitTotal(int unitType);
     // Native entry 0x749100; declaration only.
     void ToNetworkFormat();
     // Native entry 0x749150; declaration only.

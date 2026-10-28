@@ -9,6 +9,17 @@
 
 #include "unit_tracker_class_methods.h"
 
+// FUNCTION: GAMEMD 0x748FD0  UnitTrackerClass::UnitTrackerClass (__thiscall)
+// Sets the count to the full table, zeroes every slot and the network-format flag.
+UnitTrackerClass::UnitTrackerClass()
+{
+    UnitCount = UNIT_TRACKER_MAX_TYPES;
+    for (int i = 0; i < UnitCount; i++) {
+        UnitTotals[i] = 0;
+    }
+    InNetworkFormat = 0;
+}
+
 // FUNCTION: GAMEMD 0x749020  UnitTrackerClass::IncrementUnitTotal (__thiscall, ret 0x4)
 // Note the retail bound check is one-sided (`CMP EAX,EDX; JGE skip`) — a
 // negative unit type indexes below the table rather than being rejected.
@@ -16,6 +27,15 @@ void UnitTrackerClass::IncrementUnitTotal(int unitType)
 {
     if (unitType < UnitCount) {
         UnitTotals[unitType]++;
+    }
+}
+
+// FUNCTION: GAMEMD 0x749040  UnitTrackerClass::DecrementUnitTotal (__thiscall, ret 0x4)
+// One-sided bound check, like IncrementUnitTotal.
+void UnitTrackerClass::DecrementUnitTotal(int unitType)
+{
+    if (unitType < UnitCount) {
+        UnitTotals[unitType]--;
     }
 }
 

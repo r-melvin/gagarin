@@ -399,6 +399,13 @@ bool WinModemClass::Enter_Failsafe_Mode()
     return true;
 }
 
+// FUNCTION: GAMEMD 0x7748A0
+// Stores the value in the field at +0x60.
+void WinModemClass::FUN_007748A0(int type)
+{
+    unknown_60 = type;
+}
+
 // FUNCTION: GAMEMD 0x774980
 //
 // Finish any pending overlapped read, then read whatever the driver queue
