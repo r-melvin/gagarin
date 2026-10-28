@@ -1,5 +1,18 @@
 # Project status
 
+**Snapshot 2026-10-28.** The manifest holds **14,002 matched and 813 partial
+rows** in 1,570 compiled translation units; the full gate re-proves every matched
+row with no regressions. The address-faithful link places all 14,002 matched
+functions at their retail addresses with no drift, and with `--pin-data
+--order-tail` 13,997 of them are byte-identical to retail in place. Milestone
+**M2 (hybrid runnable build) is reached**: `link_m1.py --hybrid
+--distribution-patches` produces an image whose `.text`, `.rdata`, `.data` and
+`.rsrc` equal the pinned image byte for byte (section table, entry point and
+image size included), and it starts the game under Wine. Unmatched code and all
+data in that image come from the pinned binary at build time; it shows that the
+recompiled functions work in place, not that the source alone builds the game.
+The older snapshot below is kept for history.
+
 At source snapshot **`ce91a761` (2026-10-27)**, the manifest holds
 **11,091 rows: 10,307 matched and 784 partial**, in 1,249 manifest translation
 units. The extent census contains **19,778 functions** and 3,878,653 function
@@ -572,14 +585,14 @@ selected constructors, registered cleanups and CRT order. These separately
 scoped counts have not been summed into a unified initializer census. Native
 whole-table ordering and identity remain incomplete.
 
-Link milestones (diagnostic images do not run):
+Link milestones (the M2 hybrid image runs; the M0 and M1 diagnostic images do not):
 
 | Milestone | State | Measurement |
 | --- | --- | --- |
 | M0 diagnostic link | measured at `286b0ae1` | 1,270 objects, 8,621 unresolved externals and 0 duplicate definitions, using `/FORCE`; an unresolved-symbol diagnostic, not a working engine |
-| M1 address-faithful stub link | verified at `ce91a761` | Exit 0 without `/FORCE`, 0 unresolved after 8,902 placed int3 stubs, 0 duplicate definitions; all 10,307 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
-| M2 hybrid runnable build | next | not started |
-| M3 matched objects swap in | not started | |
+| M1 address-faithful stub link | verified 2026-10-28 | Exit 0 without `/FORCE`, 0 unresolved, 0 duplicate definitions, 0 drift events; all 14,002 matched entries at retail addresses. The former drift at `0x49F620` and `0x4A80D0` was two no-CD-patched functions, now recovered whole (see AGENTS.md, Distribution patches). With `--pin-data --order-tail` every referenced global and the CRT/library tail sit at retail addresses, the entry point equals retail, and 13,997 matched functions are byte-identical in place |
+| M2 hybrid runnable build | reached 2026-10-28 | `link_m1.py --hybrid --distribution-patches`: matched functions from source, unmatched code and all data filled from the pinned binary at build time; `.text`, `.rdata`, `.data` and `.rsrc` equal retail with 0 differing bytes (`compare_image.py`); the image starts the game under Wine. Outside the sections it still lacks retail's Rich header, its stripped-debug directory and trailer, and its timestamp and checksum |
+| M3 matched objects swap in | next | |
 | M4 pure-source playable | not started | |
 | M5 unsigned-image identity | not started | the complete unsigned image, as defined in AGENTS.md, equals retail byte for byte |
 
