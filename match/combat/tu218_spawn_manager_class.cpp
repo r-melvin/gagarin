@@ -214,10 +214,6 @@ double DAT_00B0B878 = DAT_00B0B828 / DAT_007F35D0;
 double DAT_00B0B860 = DAT_007E1718 / DAT_00B0B878;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x006B6C50 -- exit-time destructor stub of DAT_00B0B880
-DynamicVectorClass<SpawnManagerClass*> DAT_00B0B880;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B7BB0
 //
 // Drop the current target. Every node in the recallable state whose unit's

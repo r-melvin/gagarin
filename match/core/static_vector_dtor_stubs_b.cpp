@@ -6,12 +6,14 @@
 // emitted as stand-alone stubs (same shape as static_vector_dtor_stubs.cpp):
 // each stub restores the VectorClass<T> vtable, frees the array when it is
 // owned, and clears the flag and capacity. T is the element type of the
-// RTTI TypeDescriptor behind the vtable the stub stores. The initialisers are
-// left to the translation-unit migration; they compile here as a by-product and
-// are not claimed.
+// RTTI TypeDescriptor behind the vtable the stub stores. The initialisers
+// compile here as the fused constructor + atexit run-time initialiser and are
+// claimed with their stubs.
 #include "vector_class_operations.h"
 
 class ObjectClass;
+class ParasiteClass;
+class SpawnManagerClass;
 class ThemeControl;
 
 // Element types of the two by-value vectors: placeholders that declare only the
@@ -50,3 +52,11 @@ DynamicVectorClass<AcceleratorTracker> DAT_00ABFCB8;
 // GLOBAL: GAMEMD 0x00B0B650
 // SYNTHETIC: GAMEMD 0x006B23F0 -- exit-time destructor stub of DAT_00B0B650
 DynamicVectorClass<UndoInfoStruct> DAT_00B0B650;
+
+// GLOBAL: GAMEMD 0x00AC4910
+// SYNTHETIC: GAMEMD 0x006291D0 -- exit-time destructor stub of DAT_00AC4910
+DynamicVectorClass<ParasiteClass*> DAT_00AC4910;
+
+// GLOBAL: GAMEMD 0x00B0B880
+// SYNTHETIC: GAMEMD 0x006B6C50 -- exit-time destructor stub of DAT_00B0B880
+DynamicVectorClass<SpawnManagerClass*> DAT_00B0B880;

@@ -298,11 +298,6 @@ struct StaticVectorHolder_00AA0118 {
     static DynamicVectorClass<IonBlastClass*> DAT_00AA0118;
 };
 
-struct StaticVectorHolder_00B04DA8 {
-    // GLOBAL: GAMEMD 0x00B04DA8
-    static DynamicVectorClass<RadarEventClass*> DAT_00B04DA8;
-};
-
 struct StaticVectorHolder_00B0CDE8 {
     // GLOBAL: GAMEMD 0x00B0CDE8
     static DynamicVectorClass<ShadowControlClass*> DAT_00B0CDE8;
@@ -328,9 +323,6 @@ double DAT_00B04DF0 = DAT_00B04D70 / DAT_007F0980;
 // SYNTHETIC: GAMEMD 0x65F7F0
 // GLOBAL: GAMEMD 0xB04DD0
 double DAT_00B04DD0 = DAT_007E1718 / DAT_00B04DF0;
-
-// SYNTHETIC: GAMEMD 0x0065F9F0 -- exit-time destructor stub of DAT_00B04DA8, guard byte 0x00B04D28 bit 0
-DynamicVectorClass<RadarEventClass*> StaticVectorHolder_00B04DA8::DAT_00B04DA8;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x65FA60

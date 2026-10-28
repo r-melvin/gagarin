@@ -11,6 +11,7 @@
 // by the matching initialiser. The initialisers (__xc table entries) are left to
 // the translation-unit migration and compile here as a by-product, unclaimed.
 #include "vector_class_operations.h"
+#include "../_layout/dirty_area.h"
 
 class AnimClass;
 class IonBlastClass;
@@ -51,3 +52,12 @@ struct StaticVectorHolder_00B1D290 {
 // SYNTHETIC: GAMEMD 0x0074C3C0 -- exit-time destructor stub of DAT_00B1D290, guard byte 0x00B1D250 bit 0
 DynamicVectorClass<VeinholeMonsterClass*> StaticVectorHolder_00B1D290::DAT_00B1D290;
 
+// SYNTHETIC: GAMEMD 0x0065F9F0 -- exit-time destructor stub of DAT_00B04DA8, guard byte 0x00B04D28 bit 0
+DynamicVectorClass<RadarEventClass*> StaticVectorHolder_00B04DA8::DAT_00B04DA8;
+
+struct StaticVectorHolder_00B0CE78 {
+    // GLOBAL: GAMEMD 0x00B0CE78
+    static DynamicVectorClass<DirtyAreaStruct> DAT_00B0CE78;
+};
+// SYNTHETIC: GAMEMD 0x006D1AA0 -- exit-time destructor stub of DAT_00B0CE78, guard byte 0x00B0CD58 bit 0
+DynamicVectorClass<DirtyAreaStruct> StaticVectorHolder_00B0CE78::DAT_00B0CE78;

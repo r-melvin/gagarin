@@ -555,10 +555,6 @@ double DAT_00AC4980 = DAT_00AC4930 / DAT_007EF810;
 double DAT_00AC4968 = DAT_007E1718 / DAT_00AC4980;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x006291D0 -- exit-time destructor stub of DAT_00AC4910
-DynamicVectorClass<ParasiteClass*> DAT_00AC4910;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006296D0
 HRESULT __stdcall ParasiteClass::GetClassID(CLSID* pClassID)
 {
