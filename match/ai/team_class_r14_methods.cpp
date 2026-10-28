@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "team_class_methods.h"
 
 struct ActionArg_r14 {
     int unknown_00;
@@ -47,7 +48,6 @@ struct TeamMap_r14 {
 // GLOBAL: GAMEMD 0x87F7E8
 extern TeamMap_r14 DAT_0087F7E8;
 
-struct TeamClass;
 typedef void (TeamMember_r14::*Fn174_r14)(void* a1, int a2, int a3);
 typedef void (TeamMember_r14::*Fn3D4_r14)(int a1);
 typedef bool (TeamMember_r14::*Fn33C_r14)();
@@ -72,55 +72,6 @@ struct ObjList_r14_6502D30 {
     int FUN_00502D30(int a1);
 };
 
-// Retail RTTI establishes the class key.
-class TeamClass {
-public:
-    char            _pad000[0x28];
-    TeamTarget_r14* Target28;                 // +0x28
-    char            _pad02C[0x34 - 0x2C];
-    TeamMember_r14* Member34;                 // +0x34
-    char            _pad038[0x54 - 0x38];
-    TeamMember_r14* FirstMember;              // +0x54
-    char            _pad058[0x77 - 0x58];
-    bool            Flag77;                   // +0x77
-    bool            Flag78;                   // +0x78
-    char            _pad079;
-    bool            Flag7A;                   // +0x7A
-    bool            Flag7B;                   // +0x7B
-    char            _pad07C[0x7F - 0x7C];
-    bool            Flag7F;                   // +0x7F
-    bool            Done;                     // +0x80
-
-    // FUNCTION: GAMEMD 0x6E9050 (decl; reloc)
-    void FUN_006E9050(void* target);
-    // FUNCTION: GAMEMD 0x6EBAD0 (decl; reloc)
-    void FUN_006EBAD0();
-    // FUNCTION: GAMEMD 0x6EA870 (decl; reloc)
-    void FUN_006EA870(TeamMember_r14* m, int a2, int a3);
-
-    // FUNCTION: GAMEMD 0x6EA080
-    void FUN_006EA080();
-    // FUNCTION: GAMEMD 0x6EC730
-    void FUN_006EC730(int a1, bool a2);
-    // FUNCTION: GAMEMD 0x6ECB50
-    void FUN_006ECB50(int a1, int a2);
-    // FUNCTION: GAMEMD 0x6ECF10
-    void FUN_006ECF10(int a1, int a2);
-    // FUNCTION: GAMEMD 0x6ECF50
-    void FUN_006ECF50(ActionArg_r14* a1, int a2);
-    // FUNCTION: GAMEMD 0x6EDC70
-    void FUN_006EDC70(int a1, int a2);
-};
-GG_STATIC_ASSERT(offsetof(TeamClass, Target28)     == 0x28);
-GG_STATIC_ASSERT(offsetof(TeamClass, Member34)     == 0x34);
-GG_STATIC_ASSERT(offsetof(TeamClass, FirstMember)  == 0x54);
-GG_STATIC_ASSERT(offsetof(TeamClass, Flag77)       == 0x77);
-GG_STATIC_ASSERT(offsetof(TeamClass, Flag78)       == 0x78);
-GG_STATIC_ASSERT(offsetof(TeamClass, Flag7A)       == 0x7A);
-GG_STATIC_ASSERT(offsetof(TeamClass, Flag7B)       == 0x7B);
-GG_STATIC_ASSERT(offsetof(TeamClass, Flag7F)       == 0x7F);
-GG_STATIC_ASSERT(offsetof(TeamClass, Done)         == 0x80);
-
 // GLOBAL: GAMEMD 0xB0E968 -- constant argument for member slot 0x174.
 extern char DAT_00B0E968[];
 
@@ -134,7 +85,7 @@ void TeamClass::FUN_006EA080()
     this->Flag7F = true;
     this->Flag78 = true;
     this->Flag7A = false;
-    for (TeamMember_r14* m = this->FirstMember; m != 0; m = m->Next) {
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; m = m->Next) {
         if (this->Flag7B || this->Flag77) {
             m->Flag689 = true;
         }
@@ -152,9 +103,9 @@ void TeamClass::FUN_006EC730(int a1, bool a2)
     if (a2) {
         TeamMember_r14* m = this->Member34;
         if (m == 0) {
-            m = this->FirstMember;
+            m = (TeamMember_r14*)this->FirstUnit;
         }
-        FUN_006E9050(DAT_0087F7E8.FUN_00580BC0(m));
+        AssignMissionTarget((AbstractClass*)DAT_0087F7E8.FUN_00580BC0(m));
     }
     FUN_006EBAD0();
 }
@@ -165,11 +116,11 @@ void TeamClass::FUN_006EC730(int a1, bool a2)
 // before the call.
 void TeamClass::FUN_006ECB50(int a1, int a2)
 {
-    for (TeamMember_r14* m = this->FirstMember; m != 0; ) {
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; ) {
         bool r = ((m->*m->Vtbl->At_33C)() != 0);
         TeamMember_r14* next = m->Next;
         if (r) {
-            FUN_006EA870(m, -1, 1);
+            LiberateMember((FootClass*)m, -1, 1);
         }
         m = next;
     }
@@ -181,7 +132,7 @@ void TeamClass::FUN_006ECB50(int a1, int a2)
 // Calls member slot 0x174 (constant block, 1, 0) for every member.
 void TeamClass::FUN_006ECF10(int a1, int a2)
 {
-    for (TeamMember_r14* m = this->FirstMember; m != 0; m = m->Next) {
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; m = m->Next) {
         (m->*m->Vtbl->At_174)(DAT_00B0E968, 1, 0);
     }
     this->Done = true;
@@ -198,7 +149,7 @@ void TeamClass::FUN_006ECF50(ActionArg_r14* a1, int a2)
 {
     TeamMemberVtbl_r14* vt;
     TeamMember_r14* next;
-    TeamMember_r14* m = this->FirstMember;
+    TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit;
     if (m != 0) {
         do {
             next = m->Next;
@@ -215,7 +166,7 @@ void TeamClass::FUN_006ECF50(ActionArg_r14* a1, int a2)
 // Calls member slot 0x51C for every member.
 void TeamClass::FUN_006EDC70(int a1, int a2)
 {
-    for (TeamMember_r14* m = this->FirstMember; m != 0; m = m->Next) {
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; m = m->Next) {
         (m->*m->Vtbl->At_51C)();
     }
     this->Done = true;

@@ -13,26 +13,9 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "vox_class_play_index_methods.h"
 
-struct VoxEntry_00752480
-{
-    char _pad000[0x50];   // +0x0000
-    int  State;           // +0x0050  2 = finished
-};
-GG_STATIC_ASSERT(offsetof(VoxEntry_00752480, State) == 0x50);
-
-struct VoxEngine_00752480
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x407F40 (decl; reloc)
-    void FUN_00407F40();
-    // FUNCTION: GAMEMD 0x407A90 (decl; reloc)
-    void FUN_00407A90();
-};
-// GLOBAL: GAMEMD 0xB1D4CC
-extern VoxEngine_00752480* DAT_00B1D4CC;
-
-class StreamView_00B1D4D8
+class StreamView_00752B40
 {
 public:
     char opaque[4];
@@ -42,21 +25,13 @@ public:
     void FUN_00407A90();
 };
 // GLOBAL: GAMEMD 0xB1D4D8
-extern StreamView_00B1D4D8* DAT_00B1D4D8;
+extern StreamView_00752B40* DAT_00B1D4D8;
 
-// GLOBAL: GAMEMD 0xB1D4B0
-extern int DAT_00B1D4B0;
-// GLOBAL: GAMEMD 0xB1D4A4
-extern VoxEntry_00752480** DAT_00B1D4A4;
-// GLOBAL: GAMEMD 0xB1D4C4
-extern VoxEntry_00752480* DAT_00B1D4C4;
 // GLOBAL: GAMEMD 0x00B1D37C
 extern "C" void** DAT_00B1D37C;
 // GLOBAL: GAMEMD 0x00B1D388
 extern "C" int DAT_00B1D388;
 
-// FUNCTION: GAMEMD 0x752370 (decl; reloc) -- drop the current/queued voice.
-void __fastcall FUN_00752370();
 
 // FUNCTION: GAMEMD 0x7515C0
 //

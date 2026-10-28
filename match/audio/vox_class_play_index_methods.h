@@ -57,6 +57,8 @@ struct VoxEngine_00752480
     char opaque[4];
     // FUNCTION: GAMEMD 0x407F40 (decl; reloc) — stop whatever is playing.
     void FUN_00407F40();
+    // FUNCTION: GAMEMD 0x407A90 (decl; reloc) — release the engine.
+    void FUN_00407A90();
 };
 // GLOBAL: GAMEMD 0xB1D4CC — the engine handle.
 extern VoxEngine_00752480* DAT_00B1D4CC;

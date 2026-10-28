@@ -74,6 +74,8 @@ GG_STATIC_ASSERT(offsetof(ThemeControlVector, Count) == 0x10);
 // Themes lands at 0x14, putting Items at 0x18 and Count at 0x24 — exactly the
 // [ECX+0x18]/[ECX+0x24] member accesses in every accessor.
 // ---------------------------------------------------------------------------
+struct ThemeSaveStream_00721010;
+
 struct ThemeClass
 {
     const char*    GetName(unsigned int index) const;    // GAMEMD 0x720940
@@ -85,6 +87,9 @@ struct ThemeClass
     void           Stop(bool fade);                       // GAMEMD 0x720EA0
     bool           FUN_00720FD0();                        // GAMEMD 0x720FD0
     int            FindIndex(const char* id) const;       // GAMEMD 0x721210
+    void           FadeStream();                          // GAMEMD 0x720E80
+    void           Suspend();                             // GAMEMD 0x720F70
+    long           SaveIndexes(ThemeSaveStream_00721010* stm); // GAMEMD 0x721010
 
     int  CurrentTheme;    // +0x00
     int  LastTheme;       // +0x04

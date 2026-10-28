@@ -6,6 +6,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "theme_class_methods.h"
 
 struct ThemeStream_00720EA0
 {
@@ -24,29 +25,6 @@ struct ThemeSaveStream_00721010
     virtual long __stdcall Write(const void* buf, unsigned long cb, unsigned long* written);
 };
 
-struct ThemeClass
-{
-    int  CurrentTheme;          // +0x00
-    int  LastTheme;             // +0x04
-    int  QueuedTheme;           // +0x08
-    int  Volume;                // +0x0C
-    bool IsScoreRepeat;         // +0x10
-    bool IsFading;              // +0x11
-    bool IsScoreShuffle;        // +0x12
-    char _pad13[0x2C - 0x13];   // +0x13
-    ThemeStream_00720EA0* Stream;  // +0x2C
-
-    void FadeStream();                                   // 0x720E80
-    void Suspend();                                      // 0x720F70
-    bool FUN_00720FD0();                                 // 0x720FD0
-    long SaveIndexes(ThemeSaveStream_00721010* stm);     // 0x721010
-};
-GG_STATIC_ASSERT(offsetof(ThemeClass, CurrentTheme) == 0x00);
-GG_STATIC_ASSERT(offsetof(ThemeClass, LastTheme)    == 0x04);
-GG_STATIC_ASSERT(offsetof(ThemeClass, QueuedTheme)  == 0x08);
-GG_STATIC_ASSERT(offsetof(ThemeClass, IsFading)     == 0x11);
-GG_STATIC_ASSERT(offsetof(ThemeClass, Stream)       == 0x2C);
-
 extern bool ScoresPresent_00A8EC74;
 extern bool DAT_00A8ED64;
 int __cdecl FUN_00407000();
@@ -57,8 +35,9 @@ extern "C" void __cdecl FUN_004068E0(const char* format, ...);
 // Start fading the current stream out and flag the jukebox as fading.
 void ThemeClass::FadeStream()
 {
-    if (this->Stream != 0) {
-        this->Stream->FUN_004080C0();
+    ThemeStream_00720EA0* stream = (ThemeStream_00720EA0*)this->Stream;
+    if (stream != 0) {
+        stream->FUN_004080C0();
     }
     this->IsFading = true;
 }
@@ -84,8 +63,9 @@ void ThemeClass::Suspend()
     }
     // STRING: GAMEMD 0x84484C
     FUN_004068E0("Theme::Suspend(%d)\n", this->LastTheme);
-    if (this->Stream != 0) {
-        this->Stream->FUN_00407F40();
+    ThemeStream_00720EA0* stream = (ThemeStream_00720EA0*)this->Stream;
+    if (stream != 0) {
+        stream->FUN_00407F40();
     }
     this->CurrentTheme = -1;
     this->QueuedTheme = this->LastTheme;
@@ -100,11 +80,11 @@ bool ThemeClass::FUN_00720FD0()
 {
     if (this->Stream != 0) {
         if (this->IsFading) {
-            if (this->Stream->FUN_004080D0() == 0) {
-                this->Stream->FUN_00407F40();
+            if (((ThemeStream_00720EA0*)this->Stream)->FUN_004080D0() == 0) {
+                ((ThemeStream_00720EA0*)this->Stream)->FUN_00407F40();
             }
         }
-        return this->Stream->FUN_00408070() != 0;
+        return ((ThemeStream_00720EA0*)this->Stream)->FUN_00408070() != 0;
     }
     return false;
 }

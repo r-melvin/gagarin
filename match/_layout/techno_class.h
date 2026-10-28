@@ -610,6 +610,20 @@ public:
     void FUN_0070E300(int duration);
     // FUNCTION: GAMEMD 0x70F770 (decl; reloc) -- re-roll the targeting timer when more than ten frames remain.
     void FUN_0070F770();
+    // FUNCTION: GAMEMD 0x5B36B0 (decl; reloc)
+    bool FUN_005B36B0();
+    // FUNCTION: GAMEMD 0x5F5C60 (decl; reloc) -- health ratio, x87 result.
+    double FUN_005F5C60();
+    // FUNCTION: GAMEMD 0x7013E0 -- dispatches slot 242 with LastTarget when FUN_005B36B0 holds.
+    bool FUN_007013E0();
+    // FUNCTION: GAMEMD 0x70BE50 -- frame-phase value modulo 400.
+    int FUN_0070BE50();
+    // FUNCTION: GAMEMD 0x70D7A0 -- tells the linked object when health or slot 114 crosses the limit.
+    void FUN_0070D7A0();
+    // FUNCTION: GAMEMD 0x70DD20 -- CurrentWeaponNumber when the type's FUN_00717880 holds.
+    int FUN_0070DD20();
+    // FUNCTION: GAMEMD 0x710590 -- smallest weapon range over the passenger list.
+    int FUN_00710590();
 };
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, DurationRemaining)        == 0xF0);

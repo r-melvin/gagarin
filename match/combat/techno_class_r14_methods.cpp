@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Offsets, vtable slots and callees read off the user's retail gamemd.exe
-//   v1.001 (Ghidra disasm) at the addresses annotated below. Members touched
-//   only here carry placeholder names.
+//   v1.001 (Ghidra disasm) at the addresses annotated below. Methods live on
+//   the canonical TechnoClass (match/_layout/techno_class.h).
 //   LIBRARY: GAMEMD 0x7C5F00  __ftol (CRT double->long; reloc)
 //
 // Address index:
@@ -14,22 +14,17 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
+#include "../_layout/techno_class.h"
+#include "../_layout/techno_type_class.h"
 
-struct TechnoTypeClass
-{
-    // FUNCTION: GAMEMD 0x717880 (decl; reloc)
-    bool FUN_00717880();
-};
-
-struct Rules_0070D690
+struct Rules_0070D7A0
 {
     char   _pad000[0x1700];
     double Threshold;          // +0x1700
 };
-GG_STATIC_ASSERT(offsetof(Rules_0070D690, Threshold) == 0x1700);
+GG_STATIC_ASSERT(offsetof(Rules_0070D7A0, Threshold) == 0x1700);
 // GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.
-extern Rules_0070D690* RulesInstance_0070D690;
+extern Rules_0070D7A0* RulesInstance_0070D7A0;
 
 struct WeaponTypeBase_r14
 {
@@ -38,11 +33,8 @@ struct WeaponTypeBase_r14
 };
 GG_STATIC_ASSERT(offsetof(WeaponTypeBase_r14, Range) == 0xB4);
 
-struct WeaponStruct_r14
-{
-    WeaponTypeBase_r14* WeaponType;   // +0x00
-};
-
+// The linked object at TechnoClass+0x310 (DamageParticleSystem slot): only
+// its vtable slot 0xF8 is used here.
 struct LinkedVtbl_r14;
 struct LinkedObj_r14
 {
@@ -68,78 +60,6 @@ struct SubIface_r14
     SubIfaceVtbl_r14* Vtbl;
 };
 
-// Head of the embedded list at TechnoClass+0x114.
-struct ListHead_r14;
-
-struct TechnoVtbl_r14;
-
-// Retail RTTI 0x817B58 establishes the class key.
-class TechnoClass
-{
-public:
-    TechnoVtbl_r14* Vtbl;                 // +0x000
-    SubIface_r14    Sub;                  // +0x004
-    char            _pad008[0x14 - 0x08];
-    unsigned char   Flags14;              // +0x014
-    char            _pad015[0x30 - 0x15];
-    TechnoClass*    Next30;               // +0x030
-    char            _pad034[0x114 - 0x34];
-    char            ListHeadByte;         // +0x114
-    char            _pad115[0x138 - 0x115];
-    int             Value138;             // +0x138
-    char            _pad13C[0x24C - 0x13C];
-    float           Float24C;             // +0x24C
-    char            _pad250[0x2B8 - 0x250];
-    int             Value2B8;             // +0x2B8
-    char            _pad2BC[0x310 - 0x2BC];
-    LinkedObj_r14*  Linked310;            // +0x310
-
-    // FUNCTION: GAMEMD 0x5B36B0 (decl; reloc)
-    bool FUN_005B36B0();
-    // FUNCTION: GAMEMD 0x5F5C60 (decl; reloc) -- health ratio, x87 result.
-    double FUN_005F5C60();
-
-    // FUNCTION: GAMEMD 0x7013E0
-    bool FUN_007013E0();
-    // FUNCTION: GAMEMD 0x70BE50
-    int FUN_0070BE50();
-    // FUNCTION: GAMEMD 0x70D7A0
-    void FUN_0070D7A0();
-    // FUNCTION: GAMEMD 0x70DD20
-    int FUN_0070DD20();
-    // FUNCTION: GAMEMD 0x710590
-    int FUN_00710590();
-};
-GG_STATIC_ASSERT(offsetof(TechnoClass, Sub)       == 0x004);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Flags14)   == 0x014);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Next30)    == 0x030);
-GG_STATIC_ASSERT(offsetof(TechnoClass, ListHeadByte) == 0x114);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Value138)  == 0x138);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Float24C)  == 0x24C);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Value2B8)  == 0x2B8);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Linked310) == 0x310);
-
-typedef TechnoTypeClass* (TechnoClass::*FnGetType_r14)();
-typedef int              (TechnoClass::*FnInt_r14)();
-typedef void             (TechnoClass::*FnVoidInt_r14)(int);
-typedef WeaponStruct_r14* (TechnoClass::*FnTurretWeapon_r14)();
-
-struct TechnoVtbl_r14
-{
-    char               _pad000[0x84];
-    FnGetType_r14      GetTechnoType;     // +0x084
-    char               _pad088[0x1C8 - 0x88];
-    FnInt_r14          At_1C8;            // +0x1C8
-    char               _pad1CC[0x3C8 - 0x1CC];
-    FnVoidInt_r14      At_3C8;            // +0x3C8
-    char               _pad3CC[0x3F4 - 0x3CC];
-    FnTurretWeapon_r14 GetTurretWeapon;   // +0x3F4
-};
-GG_STATIC_ASSERT(offsetof(TechnoVtbl_r14, GetTechnoType)   == 0x84);
-GG_STATIC_ASSERT(offsetof(TechnoVtbl_r14, At_1C8)          == 0x1C8);
-GG_STATIC_ASSERT(offsetof(TechnoVtbl_r14, At_3C8)          == 0x3C8);
-GG_STATIC_ASSERT(offsetof(TechnoVtbl_r14, GetTurretWeapon) == 0x3F4);
-
 // First node of an embedded list head (reads the head's +4 pointer).
 struct ListHead_r14
 {
@@ -154,7 +74,7 @@ struct ListHead_r14
 bool TechnoClass::FUN_007013E0()
 {
     if (FUN_005B36B0()) {
-        (this->*this->Vtbl->At_3C8)(this->Value2B8);
+        vf_242((int)this->LastTarget);
         return true;
     }
     return false;
@@ -166,8 +86,9 @@ bool TechnoClass::FUN_007013E0()
 // truncated +0x24C float, taken modulo 400.
 int TechnoClass::FUN_0070BE50()
 {
-    int a = this->Sub.Vtbl->At_10(&this->Sub);
-    return ((int)this->Float24C + a) % 400;
+    SubIface_r14* sub = (SubIface_r14*)((char*)this + 4);
+    int a = sub->Vtbl->At_10(sub);
+    return ((int)this->WarpFactor + a) % 400;
 }
 
 // FUNCTION: GAMEMD 0x70D7A0
@@ -176,10 +97,11 @@ int TechnoClass::FUN_0070BE50()
 // below -10, tell the linked object (if any) through its slot 0xF8.
 void TechnoClass::FUN_0070D7A0()
 {
-    if (FUN_005F5C60() > ((Rules_0070D690*)RulesInstance_0070D690)->Threshold
-        || (this->*this->Vtbl->At_1C8)() < -10) {
-        if (this->Linked310 != 0) {
-            (this->Linked310->*this->Linked310->Vtbl->At_F8)();
+    if (FUN_005F5C60() > RulesInstance_0070D7A0->Threshold
+        || vf_114() < -10) {
+        LinkedObj_r14* linked = (LinkedObj_r14*)this->DamageParticleSystem;
+        if (linked != 0) {
+            (linked->*linked->Vtbl->At_F8)();
         }
     }
 }
@@ -189,8 +111,8 @@ void TechnoClass::FUN_0070D7A0()
 // The +0x138 value when the type's FUN_00717880 holds, else zero.
 int TechnoClass::FUN_0070DD20()
 {
-    if ((this->*this->Vtbl->GetTechnoType)()->FUN_00717880()) {
-        return this->Value138;
+    if (vf_33()->FUN_00717880()) {
+        return this->CurrentWeaponNumber;
     }
     return 0;
 }
@@ -203,15 +125,16 @@ int TechnoClass::FUN_0070DD20()
 int TechnoClass::FUN_00710590()
 {
     int best = 0x7FFFFFFF;
-    TechnoClass* node = ((ListHead_r14*)&this->ListHeadByte)->FUN_00473450();
+    TechnoClass* node = ((ListHead_r14*)&this->Passengers)->FUN_00473450();
     if (node != 0) {
         do {
-            WeaponStruct_r14* w = (node->*node->Vtbl->GetTurretWeapon)();
-            if (w->WeaponType != 0 && w->WeaponType->Range < best) {
-                best = w->WeaponType->Range;
+            WeaponStruct* w = node->GetPrimaryWeapon();
+            WeaponTypeBase_r14* wt = (WeaponTypeBase_r14*)w->WeaponType;
+            if (wt != 0 && wt->Range < best) {
+                best = wt->Range;
             }
-            node = node->Next30;
-        } while (node != 0 && (node->Flags14 & 4) != 0);
+            node = (TechnoClass*)node->NextObject;
+        } while (node != 0 && node->Flags.IsFoot);
     }
     return best;
 }
