@@ -65989,9 +65989,90 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AF60",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0087F590)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AE00",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AE20",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AE40",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AE60",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AEA0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AED0",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AF00",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AF30",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AF40",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66016,9 +66097,90 @@
  {
   "tu": "match/core/header_init_0040b380.cpp",
   "addr": "0x40B520",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0087F638)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B3C0",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B3E0",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B400",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B420",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B460",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B490",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B4C0",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B4F0",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040b380.cpp",
+  "addr": "0x40B500",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66043,9 +66205,90 @@
  {
   "tu": "match/core/header_init_0040c5c0.cpp",
   "addr": "0x40C760",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0087F738)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C600",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C620",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C640",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C660",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C6A0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C6D0",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C700",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C730",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040c5c0.cpp",
+  "addr": "0x40C740",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66088,7 +66331,7 @@
  {
   "tu": "match/core/header_init_0040cfd0.cpp",
   "addr": "0x40D170",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00884D68)",
   "status": "matched",
@@ -66115,9 +66358,90 @@
  {
   "tu": "match/core/header_init_0040cfd0.cpp",
   "addr": "0x40D9F0",
-  "sym": "_$E10",
+  "sym": "_$E37",
   "len": "0xd",
   "name": "dynamic initializer (DAT_00886B88)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D010",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D030",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D050",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D070",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D0B0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D0E0",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D110",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D140",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040cfd0.cpp",
+  "addr": "0x40D150",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66142,9 +66466,90 @@
  {
   "tu": "match/core/header_init_0040dad0.cpp",
   "addr": "0x40DC70",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00887020)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DB10",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DB30",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DB50",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DB70",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DBB0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DBE0",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DC10",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DC40",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040dad0.cpp",
+  "addr": "0x40DC50",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66169,9 +66574,90 @@
  {
   "tu": "match/core/header_init_0040ddf0.cpp",
   "addr": "0x40DF90",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_008871F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DE30",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DE50",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DE70",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DE90",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DED0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DF00",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DF30",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DF60",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ddf0.cpp",
+  "addr": "0x40DF70",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66196,7 +66682,7 @@
  {
   "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40E750",
-  "sym": "_$E8",
+  "sym": "_$E35",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_008872E0)",
   "status": "matched",
@@ -66205,7 +66691,7 @@
  {
   "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40EB90",
-  "sym": "_$E13",
+  "sym": "_$E40",
   "len": "0x2f",
   "name": "dynamic initializer (DAT_00887328)",
   "status": "matched",
@@ -66214,7 +66700,7 @@
  {
   "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40EBC0",
-  "sym": "_$E11",
+  "sym": "_$E38",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00887328)",
   "status": "matched",
@@ -66223,9 +66709,90 @@
  {
   "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40EC00",
-  "sym": "_$E16",
+  "sym": "_$E43",
   "len": "0x1",
   "name": "atexit cleanup (DAT_00887338)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E5F0",
+  "sym": "_$E8",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E610",
+  "sym": "_$E11",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E630",
+  "sym": "_$E14",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E650",
+  "sym": "_$E17",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E690",
+  "sym": "_$E20",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E6C0",
+  "sym": "_$E23",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E6F0",
+  "sym": "_$E26",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E720",
+  "sym": "_$E29",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40E730",
+  "sym": "_$E32",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66250,7 +66817,7 @@
  {
   "tu": "match/core/header_init_0040ec60.cpp",
   "addr": "0x40EE00",
-  "sym": "_$E8",
+  "sym": "_$E35",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_008873E8)",
   "status": "matched",
@@ -66259,7 +66826,7 @@
  {
   "tu": "match/core/header_init_0040ec60.cpp",
   "addr": "0x40F270",
-  "sym": "_$E13",
+  "sym": "_$E40",
   "len": "0x1b",
   "name": "dynamic initializer (DAT_00887460)",
   "status": "matched",
@@ -66268,9 +66835,90 @@
  {
   "tu": "match/core/header_init_0040ec60.cpp",
   "addr": "0x40F290",
-  "sym": "_$E11",
+  "sym": "_$E38",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00887460)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40ECA0",
+  "sym": "_$E8",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40ECC0",
+  "sym": "_$E11",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40ECE0",
+  "sym": "_$E14",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40ED00",
+  "sym": "_$E17",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40ED40",
+  "sym": "_$E20",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40ED70",
+  "sym": "_$E23",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40EDA0",
+  "sym": "_$E26",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40EDD0",
+  "sym": "_$E29",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ec60.cpp",
+  "addr": "0x40EDE0",
+  "sym": "_$E32",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66295,9 +66943,90 @@
  {
   "tu": "match/core/header_init_0040f2d0.cpp",
   "addr": "0x40F470",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_008874E8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F310",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F330",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F350",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F370",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F3B0",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F3E0",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F410",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F440",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f2d0.cpp",
+  "addr": "0x40F450",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66340,9 +67069,90 @@
  {
   "tu": "match/core/header_init_0040f970.cpp",
   "addr": "0x40FB10",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00887558)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40F9B0",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40F9D0",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40F9F0",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40FA10",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40FA50",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40FA80",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40FAB0",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40FAE0",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040f970.cpp",
+  "addr": "0x40FAF0",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
@@ -66367,9 +67177,90 @@
  {
   "tu": "match/core/header_init_0040ff90.cpp",
   "addr": "0x410130",
-  "sym": "_$E7",
+  "sym": "_$E34",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_008876A8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x40FFD0",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x40FFF0",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 3)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x410010",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "dynamic initializer (header group 4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x410030",
+  "sym": "_$E16",
+  "len": "0x31",
+  "name": "dynamic initializer (header group 5)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x410070",
+  "sym": "_$E19",
+  "len": "0x21",
+  "name": "dynamic initializer (header group 6)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x4100A0",
+  "sym": "_$E22",
+  "len": "0x2c",
+  "name": "dynamic initializer (header group 7)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x4100D0",
+  "sym": "_$E25",
+  "len": "0x27",
+  "name": "dynamic initializer (header group 8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x410100",
+  "sym": "_$E28",
+  "len": "0xf",
+  "name": "dynamic initializer (header group 9)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040ff90.cpp",
+  "addr": "0x410110",
+  "sym": "_$E31",
+  "len": "0x12",
+  "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
