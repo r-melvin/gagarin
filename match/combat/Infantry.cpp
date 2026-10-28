@@ -60,6 +60,7 @@ extern double DAT_00A8F238;
 #include "../movement/loco_interfaces.h"
 #include "../_layout/building_class.h"
 #include "../_layout/cell_class.h"
+#include "../core/rules_class.h"
 
 // Offsets this TU relies on, each read from an instruction in the matched bodies.
 GG_STATIC_ASSERT(offsetof(CellClass, OccupationFlags)    == 0x124);  // 0x5217C0
@@ -186,6 +187,23 @@ int InfantryClass::vf_243(int a1, int a2)
         }
     }
     return result;
+}
+
+// FUNCTION: GAMEMD 0x51F250
+// PARTIAL: 87.5% - ebx/edi hold a2/a4 swapped (6 instructions differ, same multiset).
+// Refuses while berzerk, or while in a 0x1B-0x1E sequence when vf_28 reports 2; otherwise defers to FootClass.
+bool InfantryClass::vf_80(int a1, int a2, int a3, int a4)
+{
+    int s = this->SequenceAnim;
+    if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
+        if (this->vf_28(a2, 0, a4) == 2) {
+            return false;
+        }
+    }
+    if (this->Berzerk) {
+        return false;
+    }
+    return FootClass::vf_80(a1, a2, a3, a4);
 }
 
 // STRING: GAMEMD 0x825550 "TXT_TECHNICIAN"
@@ -475,6 +493,14 @@ unsigned char Obj_00522540::FUN_00522540() const
     return unknown_6C0->unknown_6AC;
 }
 
+// FUNCTION: GAMEMD 0x522600
+// Applies the type's full strength as C4 warhead damage; the second argument is the house.
+void InfantryClass::vf_85(int a1, int a2, bool a3)
+{
+    int damage = this->Type->Strength;
+    this->vf_91(&damage, 0, RulesInstance->C4Warhead, 0, true, false, (void*)a2);
+}
+
 // FUNCTION: GAMEMD 0x522640
 ObjectTypeClass* InfantryClass::vf_51(bool a1)
 {
@@ -574,6 +600,15 @@ bool InfantryClass::vf_225()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x522C00
+// Starts sequence 0x20 when the argument is set or vf_225() holds.
+void InfantryClass::vf_226(int a1)
+{
+    if ((unsigned char)a1 || this->vf_225()) {
+        this->vf_342(0x20, 0, 0);
+    }
+}
+
 // FUNCTION: GAMEMD 0x522C30
 bool InfantryClass::FUN_00522C30(int sequence)
 {
@@ -621,6 +656,16 @@ void Obj_00522D00::FUN_00522D00()
 void Obj_00522D20::FUN_00522D20()
 {
     vf_122(5, 0);
+}
+
+// FUNCTION: GAMEMD 0x522D30
+// True when vf_173() equals the constant at 0x7E1718.
+bool InfantryClass::FUN_00522D30()
+{
+    if (this->vf_173() == DAT_007E1718) {
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x522FC0

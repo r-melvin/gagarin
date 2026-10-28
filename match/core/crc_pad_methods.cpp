@@ -15,6 +15,35 @@
 // FUNCTION: GAMEMD 0x4A1FB0 (decl; reloc) -- table-driven checksum.
 extern unsigned int FUN_004A1FB0(const void* data, int length, unsigned int seed);
 
+// GLOBAL: GAMEMD 0x81F7B4 -- the 256-entry CRC-32 table.
+extern const unsigned int DAT_0081F7B4[256];
+
+// FUNCTION: GAMEMD 0x004A1FB0
+// Table-driven CRC-32 update over `length` bytes, starting from `seed`.
+unsigned int FUN_004A1FB0(const void* data, int length, unsigned int seed)
+{
+    const unsigned char* bytes = (const unsigned char*)data;
+    unsigned int crc = ~seed;
+    while (length--) {
+        crc = (crc >> 8) ^ DAT_0081F7B4[(crc & 0xFF) ^ *bytes];
+        bytes++;
+    }
+    return ~crc;
+}
+
+// FUNCTION: GAMEMD 0x004A1FF0
+// PARTIAL: 90% - xor operands come out as esi,edx instead of edx,esi (2 instructions differ).
+// The same CRC-32 update over a NUL-terminated string, starting from `seed`.
+unsigned int FUN_004A1FF0(const char* text, unsigned int seed)
+{
+    unsigned int crc = ~seed;
+    while (*text) {
+        crc = (crc >> 8) ^ DAT_0081F7B4[(unsigned char)*text ^ (crc & 0xFF)];
+        text++;
+    }
+    return ~crc;
+}
+
 union Word_004A2060 {
     unsigned char bytes[4];
     unsigned int word;

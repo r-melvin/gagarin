@@ -77,6 +77,8 @@ struct House_004FD060
     int                   unknown_78;             // +0x0078
     char                  _pad07C[0x5500 - 0x7C];    // +0x007C
     Counter_004FD060      At_5500;                   // +0x5500
+    char                  _pad5501[0x564C - 0x5501]; // +0x5501
+    int                   At_564C;                   // +0x564C
 
     // FUNCTION: GAMEMD 0x4FFB20 (decl; reloc) — which sector a coordinate is in.
     int SectorOf(Coord_004FD060* coords);
@@ -88,9 +90,13 @@ struct House_004FD060
 
     // FUNCTION: GAMEMD 0x4FD060 — HouseClass::FindBuildingOfType.
     Building_004FD060* FindBuildingOfType(int index, int sector);
+
+    // FUNCTION: GAMEMD 0x4FD040 — the building type being produced, null when none.
+    BuildingType_004FD060* GetProducingBuildingType();
 };
 GG_STATIC_ASSERT(offsetof(House_004FD060, BuildingItems) == 0x6C);
 GG_STATIC_ASSERT(offsetof(House_004FD060, unknown_78) == 0x78);
 GG_STATIC_ASSERT(offsetof(House_004FD060, At_5500)       == 0x5500);
+GG_STATIC_ASSERT(offsetof(House_004FD060, At_564C)       == 0x564C);
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_FIND_BUILDING_METHODS_H

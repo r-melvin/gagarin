@@ -187,6 +187,51 @@ bool FootClass::vf_321()
     return EnterIdleMode(false, !hold);
 }
 
+// FUNCTION: GAMEMD 0x4D5660
+// Clears the destination, resets the first path direction, then runs slot 320 and the TechnoClass base.
+void FootClass::vf_232()
+{
+    this->SetDestination(0, true);
+    this->PathDirections[0] = -1;
+    this->vf_320();
+    this->TechnoClass::vf_232();
+}
+
+// FUNCTION: GAMEMD 0x4D8F80
+// When movement is possible, re-issues the stored last destination.
+bool FootClass::vf_126()
+{
+    if (FUN_007013E0()) {
+        this->SetDestination((AbstractClass*)this->LastDestination, true);
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x4DB0A0
+// The locomotor's ZGradient, or 2 without a locomotor.
+int FootClass::vf_188()
+{
+    if (this->Locomotor != 0) {
+        return (*(ILocomotionPtr*)&this->Locomotor)->ZGradient();
+    }
+    return 2;
+}
+
+// FUNCTION: GAMEMD 0x4DB7E0
+// The locomotor's layer.
+int FootClass::vf_30()
+{
+    return (*(ILocomotionPtr*)&this->Locomotor)->InWhichLayer();
+}
+
+// FUNCTION: GAMEMD 0x4DE770
+// True while the paralysis timer has time left.
+bool FootClass::vf_224()
+{
+    return this->ParalysisTimer.GetTimeLeft() != 0;
+}
+
 // FUNCTION: GAMEMD 0x4DAF10
 // PARTIAL 88.7%: only the register order of the draw-point addition differs.
 // Forward to TechnoClass slot 273 with the screen point shifted by the

@@ -64,6 +64,11 @@ struct House_00509E00
 
     // FUNCTION: GAMEMD 0x509E00 — HouseClass::Fire_LightningStorm.
     void Fire_LightningStorm(Super_00509E00* pSuper);
+
+    // FUNCTION: GAMEMD 0x509B20 / 0x509BD0 / 0x509C10 -- sibling firing entries.
+    void FUN_00509B20(Super_00509E00* pSuper);
+    void FUN_00509BD0(Super_00509E00* pSuper);
+    void FUN_00509C10(Super_00509E00* pSuper);
 };
 GG_STATIC_ASSERT(offsetof(House_00509E00, Supers)  == 0x254);
 GG_STATIC_ASSERT(offsetof(House_00509E00, At_54EC) == 0x54EC);

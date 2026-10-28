@@ -117,6 +117,13 @@ struct Obj_005175E0 {
     bool FUN_005175E0();
 };
 
+struct Obj_005176A0 {
+    unsigned int Bits;
+    bool FUN_005176A0() const;
+    bool FUN_005176B0() const;
+    bool FUN_005176C0() const;
+};
+
 struct Rec_00549B50 {
     int unknown_00;
     int unknown_04;
@@ -569,6 +576,40 @@ bool HoverLocomotionClass::Fun_005163A0()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5163B0
+// PARTIAL: 95.7% - final return path schedules `mov al,1` before `pop esi` (4 instructions differ).
+// While moving, clears the path-direction slot that matches the distance (in cells) from
+// the foot to the destination, or the first slot when the foot's other target accepts it.
+bool HoverLocomotionClass::Fun_005163B0()
+{
+    if (!IsMoving())
+        return false;
+    if (HoverFoot(LinkedTo)->PathDirection0 == -1)
+        return false;
+    if ((HoverFoot(LinkedTo)->unknown_5A4 && HoverFoot(LinkedTo)->unknown_5A4->Slot_02C() == 1) ||
+        (HoverFoot(LinkedTo)->unknown_5A4 && HoverFoot(LinkedTo)->unknown_5A4->Slot_02C() == 15)) {
+        int d[3];
+        HoverCoordView buffer;
+        HoverCoordView* here = HoverUnitCoord(HoverFoot(LinkedTo), &buffer);
+        d[0] = here->X - Destination_.X;
+        d[1] = here->Y - Destination_.Y;
+        d[2] = here->Z - Destination_.Z;
+        int index = (int)HoverSqrt((double)d[0] * d[0] + (double)d[1] * d[1] + (double)d[2] * d[2]) / 256;
+        if (index < 24) {
+            (&HoverFoot(LinkedTo)->PathDirection0)[index] = -1;
+            return true;
+        }
+    }
+    if (HoverFoot(LinkedTo)->unknown_2B4) {
+        if (HoverFoot(LinkedTo)->Slot_3AC(HoverFoot(LinkedTo)->unknown_2B4)) {
+            HoverFoot(LinkedTo)->PathDirection0 = -1;
+            return true;
+        }
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x516370
 void __stdcall HoverLocomotionClass::DoTurn(unsigned long dir)
 {
@@ -891,4 +932,46 @@ bool Obj_00517560::FUN_00517590(Arg1_00517560* a1)
 bool Obj_005175E0::FUN_005175E0()
 {
     return !FUN_005175D0();
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5176A0
+// True when bit 0 of the flag dword is clear.
+bool Obj_005176A0::FUN_005176A0() const
+{
+    unsigned int t = Bits;
+    bool r = !(t & 1);
+    return r;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5176B0
+// True when bit 1 of the flag dword is clear.
+bool Obj_005176A0::FUN_005176B0() const
+{
+    unsigned int t = Bits;
+    unsigned char c = ~t;
+    c >>= 1;
+    bool r = c & 1;
+    return r;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5176C0
+// True when bit 2 of the flag dword is clear.
+bool Obj_005176A0::FUN_005176C0() const
+{
+    unsigned int t = Bits;
+    unsigned char c = ~t;
+    c >>= 2;
+    bool r = c & 1;
+    return r;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x517310
+// True when the X and Y components of both coordinates are equal.
+bool HoverCoordView::Fun_00517310(const LocoCoord* other)
+{
+    return X == other->X && Y == other->Y;
 }

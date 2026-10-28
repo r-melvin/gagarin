@@ -1083,6 +1083,13 @@ void House_004F9970::UpdateAllSilos(int prevStorage, int prevTotalStorage)
     }
 }
 
+// FUNCTION: GAMEMD 0x4F9F70
+// Applies FUN_004F9F90 to the house stored at `index` of the global house array.
+void HouseClass::FUN_004F9F70(int index, bool flag)
+{
+    this->FUN_004F9F90((HouseClass*)HouseArray.Items[index], flag);
+}
+
 // FUNCTION: GAMEMD 0x4FB6B0  HouseClass::RegisterJustBuilt (__thiscall, ret 4)
 //
 // A factory has just finished something. The house records which type it was
@@ -1202,6 +1209,26 @@ void HouseClusterView::PointerExpired(HouseAbstractPtrView* pointer, bool remove
         Primary_Unused3 = 0;
     if (Primary_ForDefenses == pointer)
         Primary_ForDefenses = 0;
+}
+
+// FUNCTION: GAMEMD 0x4FCE00
+// Sets the starting credits and balance to `credits`, and the colour scheme index (also on the
+// house type) to `colorIndex`; the middle argument is ignored.
+void HouseClass::FUN_004FCE00(int colorIndex, int unused, int credits)
+{
+    this->StartingCredits = credits;
+    this->Balance = credits;
+    this->Type->ColorSchemeIndex = colorIndex;
+    this->ColorSchemeIndex = colorIndex;
+}
+
+// FUNCTION: GAMEMD 0x4FD040
+BuildingType_004FD060* House_004FD060::GetProducingBuildingType()
+{
+    if (this->At_564C != -1) {
+        return DAT_00A83C6C[this->At_564C];
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x4FD060
@@ -1366,6 +1393,42 @@ HRESULT __stdcall HouseClass::IHouse_vf_14()
     }
     AllToHunt = true;
     return 0;
+}
+
+// Receiver of the empty-cell writer at 0x501AA0 (no layout claimed).
+struct Obj_00501AA0
+{
+    // FUNCTION: GAMEMD 0x501AA0
+    Cell_004FFD90* FUN_00501AA0(Cell_004FFD90* out, int a2, int a3);
+};
+
+// FUNCTION: GAMEMD 0x501AA0
+// Writes the zero cell to `out` and returns it; the other two arguments are ignored.
+Cell_004FFD90* Obj_00501AA0::FUN_00501AA0(Cell_004FFD90* out, int a2, int a3)
+{
+    Cell_004FFD90 cell;
+    cell.X = 0;
+    cell.Y = 0;
+    *out = cell;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x502100
+// Applies FUN_004F9B70 to the object's house; does nothing for a null object.
+void HouseClass::FUN_00502100(AbstractClass* object, bool flag)
+{
+    if (object) {
+        this->FUN_004F9B70(object->vf_15(), flag);
+    }
+}
+
+// FUNCTION: GAMEMD 0x502130
+// Applies FUN_004F9F90 to the object's house; does nothing for a null object.
+void HouseClass::FUN_00502130(AbstractClass* object, bool flag)
+{
+    if (object) {
+        this->FUN_004F9F90(object->vf_15(), flag);
+    }
 }
 
 // FUNCTION: GAMEMD 0x5024F0
@@ -2478,6 +2541,20 @@ template class DynamicVectorClass<ScoutStruct>;
 // DynamicVectorClass<HouseClass::BuildChoiceClass*>::FindItemIndex (slot 4)
 template class VectorClass<HouseClass::BuildChoiceClass*>;
 
+// The receiver of the cell comparison at 0x50E470 is a cell itself.
+struct Cell_0050E470 : Cell_004FFD90
+{
+    // FUNCTION: GAMEMD 0x50E470
+    bool FUN_0050E470(const Cell_004FFD90* other);
+};
+
+// FUNCTION: GAMEMD 0x50E470
+// True when both coordinates of the two cells are equal.
+bool Cell_0050E470::FUN_0050E470(const Cell_004FFD90* other)
+{
+    return X == other->X && Y == other->Y;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E6A0
 // DynamicVectorClass<const TeamTypeClass*>::Clear
@@ -2768,6 +2845,19 @@ HBCoord* Obj_004FD120::FUN_004FD120(HBCoord* out, int unused)
 {
     *out = HouseEmptyCoord;
     return out;
+}
+
+// FUNCTION: GAMEMD 0x4FDCE0
+// For argument 4, runs the two IHouse sweeps (slots 13 and 14) on this house's interface.
+bool HouseClass::FUN_004FDCE0(int arg)
+{
+    if (arg == 4) {
+        IHouse* house = (IHouse*)((char*)this + 0x24);
+        house->vf_13();
+        house->IHouse_vf_14();
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x4FFD50

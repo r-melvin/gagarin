@@ -40,6 +40,9 @@ struct Obj_008A38E0
     }
     ~Obj_008A38E0() {}
 
+    // FUNCTION: GAMEMD 0x4C6140 -- clears the record again; returns this.
+    Obj_008A38E0* FUN_004C6140();
+
     unsigned char  unknown_00[0x32];   // +0x00
     unsigned char  _pad_32[2];         // +0x32
     int            unknown_34;         // +0x34
@@ -59,4 +62,16 @@ Obj_008A38E0 DAT_008A38E0;
 // An unreferenced empty function.
 void FUN_004C6170()
 {
+}
+
+// FUNCTION: GAMEMD 0x4C6140
+// Resets the record to its constructed state and returns it.
+Obj_008A38E0* Obj_008A38E0::FUN_004C6140()
+{
+    unknown_34 = 0;
+    unknown_38 = 0;
+    unknown_3C = 1;
+    unknown_40 = 0;
+    memset(unknown_00, 0, sizeof(unknown_00));
+    return this;
 }

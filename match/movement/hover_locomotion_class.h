@@ -137,6 +137,7 @@ public:
     void ClearSpeedAndHeading();    // FUNCTION: GAMEMD 0x515E60
     void StartMoving();             // FUNCTION: GAMEMD 0x517110
     bool Fun_005163A0();            // FUNCTION: GAMEMD 0x5163A0
+    bool Fun_005163B0();            // FUNCTION: GAMEMD 0x5163B0
 
     // ---- members (complete-object offsets) ----
     HoverCoordView Destination_;    // +0x18

@@ -53,7 +53,10 @@ public:
     virtual int vf_243(int a1, int a2);                            // 243 0x51DF60
     virtual ObjectTypeClass* vf_51(bool a1);                       // 51  0x522640
     virtual HouseClass* vf_52(bool a1);                            // 52  0x5226C0
+    virtual bool vf_80(int a1, int a2, int a3, int a4);            // 80  0x51F250
+    virtual void vf_85(int a1, int a2, bool a3);                   // 85  0x522600
     virtual int vf_138();                                          // 138 0x51F540
+    virtual void vf_226(int a1);                                   // 226 0x522C00
     virtual int vf_139();                                          // 139 0x51F660
     virtual bool vf_225();                                         // 225 0x522BC0
     virtual void vf_284();                                         // 284 0x522780
@@ -71,6 +74,8 @@ public:
     int FUN_00522C60(int sequence);
     // FUNCTION: GAMEMD 0x522CB0 -- true for the sequence values SequenceAnim currently holds in that set.
     int FUN_00522CB0();
+    // FUNCTION: GAMEMD 0x522D30 -- true when vf_173() equals the 1.0 constant.
+    bool FUN_00522D30();
     // FUNCTION: GAMEMD 0x522FC0 -- slot 97 reports 10.
     bool FUN_00522FC0();
 

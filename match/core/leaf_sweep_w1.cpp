@@ -454,6 +454,79 @@ void Obj_004F3AB0::Set(char value)
     }
 }
 
+// FUNCTION: GAMEMD 0x55ABB0 (decl; reloc) -- stdcall member taking its object as the only argument.
+int __stdcall FUN_0055ABB0(void* self);
+
+// FUNCTION: GAMEMD 0x4B4880
+// Forwards its single argument to the stdcall routine at 0x55ABB0 and returns its result.
+int __stdcall FUN_004B4880(void* self)
+{
+    return FUN_0055ABB0(self);
+}
+
+// FUNCTION: GAMEMD 0x4B6610
+// Calls IsDirty (slot 4) on the persist-stream interface passed in and returns its result.
+HRESULT __stdcall FUN_004B6610(IPersistStream* stream)
+{
+    return stream->IsDirty();
+}
+
+// A pair of ints ordered by the comparator at 0x4A48C0.
+struct IntPair_004A48C0
+{
+    int First;
+    int Second;
+};
+
+// FUNCTION: GAMEMD 0x4A48C0
+// Three-way comparison of two pairs: by First descending, then by Second.
+int __cdecl FUN_004A48C0(const IntPair_004A48C0* a, const IntPair_004A48C0* b)
+{
+    IntPair_004A48C0 x = *a;
+    IntPair_004A48C0 y = *b;
+    if (y.First > x.First) {
+        return -1;
+    }
+    if (y.First < x.First) {
+        return 1;
+    }
+    if (x.Second < y.Second) {
+        return -1;
+    }
+    return y.Second < x.Second;
+}
+
+// One 32-byte record of the table at 0x4A35F0 (only the fields it writes are named).
+struct Entry_004A35F0
+{
+    int   unknown_00;
+    int   unknown_04;
+    int   unknown_08;
+    float One;          // +0x0C
+    int   unknown_10[2];
+    int   unknown_18;
+    int   unknown_1C;
+
+    // FUNCTION: GAMEMD 0x4A35F0
+    void FUN_004A35F0(int index, int a, int b, int c, int d, int e);
+};
+GG_STATIC_ASSERT(sizeof(Entry_004A35F0) == 0x20);
+GG_STATIC_ASSERT(offsetof(Entry_004A35F0, One) == 0x0C);
+GG_STATIC_ASSERT(offsetof(Entry_004A35F0, unknown_18) == 0x18);
+
+// FUNCTION: GAMEMD 0x4A35F0
+// Fills record `index` of the table (this) with five values and a weight of 1.0.
+void Entry_004A35F0::FUN_004A35F0(int index, int a, int b, int c, int d, int e)
+{
+    Entry_004A35F0* entry = this + index;
+    entry->unknown_00 = a;
+    entry->unknown_04 = b;
+    entry->unknown_08 = c;
+    entry->unknown_18 = d;
+    entry->unknown_1C = e;
+    entry->One = 1.0f;
+}
+
 // FUNCTION: GAMEMD 0x4F4DA0
 // Clears the low three bits of each of count*3 bytes (count in EDX).
 void __fastcall FUN_004F4DA0(unsigned char* bytes, unsigned int count)
@@ -462,6 +535,55 @@ void __fastcall FUN_004F4DA0(unsigned char* bytes, unsigned int count)
         *bytes &= 0xF8;
         bytes++;
     }
+}
+
+// FUNCTION: GAMEMD 0x4F4DC0
+// Clears the low three bits of the first three bytes of each of `count` four-byte pixels.
+void __fastcall FUN_004F4DC0(unsigned char* pixels, int count)
+{
+    for (; count > 0; count--) {
+        *pixels &= 0xF8;
+        pixels++;
+        *pixels &= 0xF8;
+        pixels++;
+        *pixels &= 0xF8;
+        pixels += 2;
+    }
+}
+
+// FUNCTION: GAMEMD 0x4F4DF0
+// Packs count*width*height three-byte RGB pixels in place into 15-bit (5-5-5) words.
+void __fastcall FUN_004F4DF0(unsigned char* pixels, unsigned int count, int width, int height)
+{
+    unsigned char* src = pixels;
+    unsigned short* dst = (unsigned short*)pixels;
+    for (unsigned int n = count * width * height; n > 0; n--) {
+        unsigned char r = src[0] & 0xF8;
+        unsigned char g = src[1] & 0xF8;
+        unsigned char b = src[2] >> 3;
+        unsigned short v = (unsigned short)r;
+        v = (unsigned short)((v << 5) | g);
+        v = (unsigned short)((v << 2) | b);
+        *dst = v;
+        dst++;
+        src += 3;
+    }
+}
+
+// An object owned through the global pointer at 0xA9FA9C; only its virtual destructor is used.
+struct Obj_00A9FA9C
+{
+    virtual ~Obj_00A9FA9C() {}
+};
+// GLOBAL: GAMEMD 0xA9FA9C
+extern Obj_00A9FA9C* DAT_00A9FA9C;
+
+// FUNCTION: GAMEMD 0x53BB80
+// Destroys the object held in the global pointer, if any, and clears the pointer.
+void FUN_0053BB80()
+{
+    delete DAT_00A9FA9C;
+    DAT_00A9FA9C = 0;
 }
 
 // GLOBAL: GAMEMD 0xA9FF80 / 0xA9FFA8 -- two-word values copied from the first to the second.

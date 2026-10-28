@@ -354,3 +354,14 @@ void FUN_004E23C0(HWND window, int command, HWND control, unsigned notify)
 // SYNTHETIC: GAMEMD 0x4E2440
 // GLOBAL: GAMEMD 0x8B3F14
 DWORD DAT_008B3F14 = timeGetTime();
+
+// FUNCTION: GAMEMD 0x4E2480
+// Milliseconds since the start-up reading; one fewer when the timer has wrapped.
+DWORD FUN_004E2480()
+{
+    DWORD now = timeGetTime();
+    if (now <= DAT_008B3F14) {
+        return now - DAT_008B3F14 - 1;
+    }
+    return now - DAT_008B3F14;
+}

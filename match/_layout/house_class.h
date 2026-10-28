@@ -151,6 +151,15 @@ class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, pub
 public:
     // FUNCTION: GAMEMD 0x4F9A90 (decl; reloc), ECX receiver, one AbstractClass*.
     bool FUN_004F9A90(AbstractClass* object);
+    // FUNCTION: GAMEMD 0x4FDCE0 - runs IHouse slots 13 and 14 when the argument is 4.
+    bool FUN_004FDCE0(int arg);
+    // FUNCTION: GAMEMD 0x502100 / 0x502130 - apply FUN_004F9B70 / FUN_004F9F90 to an object's house.
+    void FUN_00502100(AbstractClass* object, bool flag);
+    void FUN_00502130(AbstractClass* object, bool flag);
+    // FUNCTION: GAMEMD 0x4F9F70 - applies FUN_004F9F90 to the house at the given array index.
+    void FUN_004F9F70(int index, bool flag);
+    // FUNCTION: GAMEMD 0x4FCE00 - stores the starting credits and balance (third argument) and the colour index (first).
+    void FUN_004FCE00(int colorIndex, int unused, int credits);
     // Declaration: GAMEMD 0x4F54A0 -- recovered body currently on legacy owner.
     HouseClass(HouseTypeClass* type);
     // Declaration: GAMEMD 0x4F5190 -- forwards this opaque argument to4101C0.

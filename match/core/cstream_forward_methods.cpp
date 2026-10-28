@@ -5,9 +5,18 @@
 //
 // CStreamClass IStream methods that forward unchanged to the wrapped stream
 // (the smart-pointer dereference raises E_POINTER when it is null).
-// Address index: 0x4A2E50 SetSize, 0x4A2EE0 Commit, 0x4A2F10 Revert, 0x4A2FC0 Stat, 0x4A2FF0 Clone.
+// Address index: 0x4A2E00 Seek, 0x4A2E50 SetSize, 0x4A2EA0 CopyTo, 0x4A2EE0 Commit, 0x4A2F10 Revert, 0x4A2F40 LockRegion,
+// 0x4A2F80 UnlockRegion, 0x4A2FC0 Stat, 0x4A2FF0 Clone.
 
 #include "../_layout/cstream_class.h"
+
+// FUNCTION: GAMEMD 0x4A2E00
+HRESULT __stdcall CStreamClass::Seek(LARGE_INTEGER dlibMove, DWORD dwOrigin, ULARGE_INTEGER* plibNewPosition)
+{
+    if (Reading || Writing)
+        return E_FAIL;
+    return Stream->Seek(dlibMove, dwOrigin, plibNewPosition);
+}
 
 // FUNCTION: GAMEMD 0x4A2E50
 HRESULT __stdcall CStreamClass::SetSize(ULARGE_INTEGER libNewSize)
@@ -15,6 +24,13 @@ HRESULT __stdcall CStreamClass::SetSize(ULARGE_INTEGER libNewSize)
     if (Reading || Writing)
         return E_FAIL;
     return Stream->SetSize(libNewSize);
+}
+
+// FUNCTION: GAMEMD 0x4A2EA0
+HRESULT __stdcall CStreamClass::CopyTo(IStream* pstm, ULARGE_INTEGER cb, ULARGE_INTEGER* pcbRead,
+                                       ULARGE_INTEGER* pcbWritten)
+{
+    return Stream->CopyTo(pstm, cb, pcbRead, pcbWritten);
 }
 
 // FUNCTION: GAMEMD 0x4A2EE0
@@ -29,6 +45,18 @@ HRESULT __stdcall CStreamClass::Revert()
     return Stream->Revert();
 }
 
+// FUNCTION: GAMEMD 0x4A2F40
+HRESULT __stdcall CStreamClass::LockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType)
+{
+    return Stream->LockRegion(libOffset, cb, dwLockType);
+}
+
+// FUNCTION: GAMEMD 0x4A2F80
+HRESULT __stdcall CStreamClass::UnlockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType)
+{
+    return Stream->UnlockRegion(libOffset, cb, dwLockType);
+}
+
 // FUNCTION: GAMEMD 0x4A2FC0
 HRESULT __stdcall CStreamClass::Stat(STATSTG* pstatstg, DWORD grfStatFlag)
 {
@@ -39,4 +67,15 @@ HRESULT __stdcall CStreamClass::Stat(STATSTG* pstatstg, DWORD grfStatFlag)
 HRESULT __stdcall CStreamClass::Clone(IStream** ppstm)
 {
     return Stream->Clone(ppstm);
+}
+
+// FUNCTION: GAMEMD 0x4A30E0
+HRESULT CStreamClass::FUN_004A30E0()
+{
+    if (Writing && Remaining > 0) {
+        if ((IStream*)Stream == 0)
+            return E_FAIL;
+        return FUN_004A3020(OutBuffer, Remaining);
+    }
+    return S_OK;
 }

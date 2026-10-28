@@ -51,6 +51,14 @@ public:
     virtual void vf_315(int a1);                                   // 315 0x4DE940
     virtual CoordStruct vf_316();                                  // 316 0x4D9FF0
     virtual void vf_125(int mission, int a2, int a3);              // 125 0x4D8F40
+    virtual bool vf_80(int a1, int a2, int a3, int a4);            // 80  0x4D7D50 (decl; reloc)
+    virtual int vf_30();                                           // 30  0x4DB7E0
+    virtual bool vf_126();                                         // 126 0x4D8F80
+    virtual int vf_188();                                          // 188 0x4DB0A0
+    virtual bool vf_224();                                         // 224 0x4DE770
+    virtual void vf_232();                                         // 232 0x4D5660
+    // FUNCTION: GAMEMD 0x7013E0 (decl; reloc) -- whether the object may move now.
+    bool FUN_007013E0();
     virtual void vf_317();                                         // 317 0x4DC030
     virtual void vf_318();                                         // 318 0x41C080
     virtual bool vf_319(const CoordStruct& a1);                    // 319 0x4D55F0

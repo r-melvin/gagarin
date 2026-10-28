@@ -67,6 +67,11 @@ public:
     // Slot 14: the scalar deleting destructor 0x4A3110 carries this body inline.
     virtual ~CStreamClass();
 
+    // FUNCTION: GAMEMD 0x4A3020 (decl; reloc) -- writes `count` buffered bytes as one block.
+    HRESULT FUN_004A3020(char* buffer, int count);
+    // FUNCTION: GAMEMD 0x4A30E0 -- flushes the pending output block, if any.
+    HRESULT FUN_004A30E0();
+
     IStreamPtr         Stream;       // +0x08 ctor @0x4A282A (=0)
     long               RefCount;     // +0x0C ctor @0x4A282D; AddRef / Release interlock it
     bool               Reading;      // +0x10 ctor @0x4A2830
