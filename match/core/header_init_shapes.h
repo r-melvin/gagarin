@@ -23,4 +23,11 @@ struct HeaderCoordInit : CoordStruct
 };
 GG_STATIC_ASSERT(sizeof(HeaderCoordInit) == 0xC);
 
+#include "../_layout/cell.h"
+
+struct HeaderCellInit : CellStruct
+{
+    HeaderCellInit(short x, short y) { X = x; Y = y; }
+};
+
 #endif  // GG_MATCH_CORE_HEADER_INIT_SHAPES_H
