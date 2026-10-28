@@ -34,6 +34,7 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../../_layout/geometry2d.h"
+#include "../../_layout/abstract_class.h"
 #include "../../core/dynamic_vector_ctor_methods.h"
 #include "../../core/vector_class_operations.h"
 #include "../../core/pair_vector_ctor_family_methods.h"
@@ -272,6 +273,8 @@ GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_0C) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RadarArrayHolder) == 0x10);
+struct Cell_0050DEF0;   // radar_class.h
+struct RadarDiamond;    // radar_class_more_methods.cpp
 class MapClass : public GScreenClass
 {
 public:
@@ -541,7 +544,7 @@ public:
 
     virtual void vf_50();                                // 50  0x652D90 (free the art)
     virtual void vf_51();                                // 51  0x653760
-    virtual void vf_52();                                // 52  0x653F70
+    virtual void vf_52(const CoordStruct* where);        // 52  0x653F70
     virtual void vf_53();                                // 53  0x652E90 (load the art)
 
     // FUNCTION: GAMEMD 0x654650 (decl; reloc) -- helper uses ECX=this, RET.
@@ -572,6 +575,16 @@ public:
 
     // FUNCTION: GAMEMD 0x652E50 (decl; reloc) -- RET 4.
     void FUN_00652E50(bool on);
+    // FUNCTION: GAMEMD 0x655050 -- cell to radar-space record {x, y, mode, 1}; RET 8.
+    struct RadarDiamond FUN_00655050(const Cell_0050DEF0& cell);
+    // FUNCTION: GAMEMD 0x655150 -- radar-space point to cell; hidden result, RET 8.
+    Cell_0050DEF0 FUN_00655150(const Point2D* point);
+    // FUNCTION: GAMEMD 0x656BE0 (decl; reloc) -- RET 8.
+    void FUN_00656BE0(bool on, int flag);
+    // FUNCTION: GAMEMD 0x656DF0 -- switch the tactical map on or off; RET 4.
+    void FUN_00656DF0(bool on);
+    // FUNCTION: GAMEMD 0x656E90 -- latch the forced flag; RET 4.
+    void FUN_00656E90(bool force);
 
     // Retail constructor 0x6A4F20: vector members at +0x1224/+0x125C/+0x1278,
     // followed by the timer at +0x1500. Other bytes remain unclassified.
@@ -699,7 +712,7 @@ public:
     PowerClass();
     // FUNCTION: GAMEMD 0x6A4F20 (decl; partial) -- tagged load constructor, RET 4.
     PowerClass(const Obj_005BDF70& noInit)
-        : RadarClass(noInit), unknown_1520(0)
+        : RadarClass(noInit), unknown_1510(AbstractNoInit()), unknown_1520(0)
     {
     }
     virtual void vf_05();                                // 5   0x63F7B0
@@ -711,13 +724,44 @@ public:
     virtual void vf_50();                                // 50  0x63F7E0
     virtual void vf_53();                                // 53  0x63F7C0
 
-    // +0x150C..+0x1543: the constructor 0x63F6B0 stores +0x150C (byte) through +0x1540; none is touched here.
-    char unknown_150C[0x1520 - 0x150C];
+    // FUNCTION: GAMEMD 0x63F810 -- restart the +0x1510 timer at 3 and set +0x151C to 10.
+    void FUN_0063F810();
+    // FUNCTION: GAMEMD 0x63F850 (decl; reloc)
+    int FUN_0063F850();
+    // FUNCTION: GAMEMD 0x63F8F0 -- scaled share of the three bar counters.
+    int FUN_0063F8F0();
+    // FUNCTION: GAMEMD 0x63F960 (decl; reloc) -- three out limits, RET 12.
+    void FUN_0063F960(int* limit152C, int* limit1530, int* limit1534);
+    // FUNCTION: GAMEMD 0x63FDC0 -- shrink the first counter that exceeds its limit.
+    void FUN_0063FDC0();
+    // FUNCTION: GAMEMD 0x63FE30 -- grow the first counter below its limit.
+    void FUN_0063FE30();
+
+    // +0x150C..+0x1543: stores of the constructor 0x63F6B0.
+    bool unknown_150C;                  // +0x150C ctor 0
+    char unknown_150D[3];
+    ScenarioElapsedTimer unknown_1510;  // +0x1510
+    int unknown_151C;                   // +0x151C ctor 0
     ScenarioElapsedTimer unknown_1520;
-    char unknown_152C[0x1544 - 0x152C];
+    int unknown_152C;                   // +0x152C ctor 0
+    int unknown_1530;                   // +0x1530 ctor 0
+    int unknown_1534;                   // +0x1534 ctor 0
+    bool unknown_1538;                  // +0x1538 ctor 0
+    char unknown_1539[3];
+    int unknown_153C;                   // +0x153C ctor -1
+    int unknown_1540;                   // +0x1540 ctor -1
 };
 // SidebarClass's constructor writes its first member (the first strip) at +0x1544.
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_150C) == 0x150C);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_1510) == 0x1510);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_151C) == 0x151C);
 GG_STATIC_ASSERT(offsetof(PowerClass, unknown_1520) == 0x1520);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_152C) == 0x152C);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_1530) == 0x1530);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_1534) == 0x1534);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_1538) == 0x1538);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_153C) == 0x153C);
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_1540) == 0x1540);
 GG_STATIC_ASSERT(sizeof(PowerClass) == 0x1544);
 
 // ---- SidebarClass ------------------------------------------------------------------------------------------------

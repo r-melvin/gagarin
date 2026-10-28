@@ -445,12 +445,11 @@ extern double DAT_00ABECE0;
 GG_STATIC_ASSERT(sizeof(DAT_00ABECF8) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00ABECE0) == 8);
 
-// FUNCTION: GAMEMD 0x58B760
-// Tail-calls a method on a global object.
-void FUN_0058B760(int a1, int a2)
-{
-    FUN_005958E0(&DAT_00ABDFD8, a2);
-}
+// SYNTHETIC: GAMEMD 0x58B740 -- constructor call + atexit registration
+// SYNTHETIC: GAMEMD 0x58B760 -- exit-time stub: tail-jumps to the destructor
+// GLOBAL: GAMEMD 0xABDFD8
+// The random-map generator object.
+Gbl_00ABDFD8 DAT_00ABDFD8;
 
 // FUNCTION: GAMEMD 0x58B770
 // Calls other functions.

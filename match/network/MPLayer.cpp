@@ -12,6 +12,7 @@
 
 // Library helpers. Out-of-line copies exist in retail; /Ob2 also inlines
 // them into the callers below.
+// FUNCTION: GAMEMD 0x5C65B0
 void WordsIncrement(unsigned int* a, int n)
 {
     while (++*a == 0) {
@@ -22,6 +23,7 @@ void WordsIncrement(unsigned int* a, int n)
     }
 }
 
+// FUNCTION: GAMEMD 0x5C65D0
 void WordsDecrement(unsigned int* a, int n)
 {
     while (--*a == 0xFFFFFFFF) {
@@ -32,6 +34,7 @@ void WordsDecrement(unsigned int* a, int n)
     }
 }
 
+// FUNCTION: GAMEMD 0x5C6920
 void WordsInvert(unsigned int* a, int n)
 {
     for (int i = 0; i < n; i++) {
@@ -40,23 +43,27 @@ void WordsInvert(unsigned int* a, int n)
     }
 }
 
+// FUNCTION: GAMEMD 0x5C65F0
 void WordsNegate(unsigned int* a, int n)
 {
     WordsInvert(a, n);
     WordsIncrement(a, n);
 }
 
+// FUNCTION: GAMEMD 0x5C69C0
 void WordsCopy(unsigned int* dst, const unsigned int* src, int n)
 {
     memcpy(dst, src, n * 4);
 }
 
+// FUNCTION: GAMEMD 0x5C6940
 void WordsSetSmall(unsigned int* r, unsigned int v, int n)
 {
     memset(r, 0, n * 4);
     *r = v;
 }
 
+// FUNCTION: GAMEMD 0x5C6590
 int WordsUsedCount(const unsigned int* a, int n)
 {
     a += n - 1;
@@ -79,6 +86,7 @@ inline bool WordsAreOne(const unsigned int* a, int n)
     return *a == 1 && WordsUsedCount(a, n) <= 1;
 }
 
+// FUNCTION: GAMEMD 0x5C6960
 int WordsBitLength(const unsigned int* a, int n)
 {
     int w = WordsUsedCount(a, n);
@@ -99,6 +107,7 @@ void WordsSetBit(unsigned int* a, unsigned int bit)
     a[bit >> 5] |= 1 << (bit & 31);
 }
 
+// FUNCTION: GAMEMD 0x5C69E0
 int WordsCompare(const unsigned int* a, const unsigned int* b, int n)
 {
     a += n - 1;
@@ -116,6 +125,7 @@ int WordsCompare(const unsigned int* a, const unsigned int* b, int n)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x5C6A30
 bool WordsAddWithCarry(unsigned int* dst, const unsigned int* x, const unsigned int* y, bool carry, int n)
 {
     while (n--) {
@@ -144,6 +154,7 @@ bool WordsAddSmall(unsigned int* dst, const unsigned int* x, unsigned int y, boo
     return carry;
 }
 
+// FUNCTION: GAMEMD 0x5C6B00
 bool WordsSubWithBorrow(unsigned int* dst, const unsigned int* x, const unsigned int* y, bool borrow, int n)
 {
     unsigned short* d = (unsigned short*)dst;
@@ -188,6 +199,36 @@ void HalfWordsMulAdd(unsigned short* dst, const unsigned short* src, unsigned sh
         carry = t >> 16;
     }
     *dst += (unsigned short)carry;
+}
+
+// FUNCTION: GAMEMD 0x5C61F0
+// True when the number equals a single word.
+bool WordsEqualsSmall(const unsigned int* a, unsigned int v, int n)
+{
+    return *a == v && WordsUsedCount(a, n) <= 1;
+}
+
+// FUNCTION: GAMEMD 0x5C8870
+// Reverse a byte array in place.
+void BytesReverse(unsigned char* p, int n)
+{
+    unsigned char* e = p + n - 1;
+    while (p < e) {
+        unsigned char lo = *p;
+        *p++ = *e;
+        *e-- = lo;
+    }
+}
+
+// FUNCTION: GAMEMD 0x5C8890
+// Three-way compare of two half words.
+int HalfWordCompare(const unsigned short* a, const unsigned short* b)
+{
+    unsigned short x = *a;
+    unsigned short y = *b;
+    if (y > x)
+        return -1;
+    return y < x;
 }
 
 // Modulus state set up by FUN_005c7ec0.

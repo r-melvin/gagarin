@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
 //   Ordered ascending by retail address.
 
 #include "trivial_tu127_methods.h"
+#include "../_layout/cell_class.h"
 
 // FUNCTION: GAMEMD 0x561900
 // Tail-forwards to another function.
@@ -20,12 +22,11 @@ void Obj_005638C0::FUN_005638C0()
     FUN_005638D0();
 }
 
-// FUNCTION: GAMEMD 0x565080
-// Tail-calls a method on a global object.
-void FUN_00565080(int a1, int a2)
-{
-    FUN_0047BB60(DAT_00ABDC50, a2);
-}
+// SYNTHETIC: GAMEMD 0x565060 -- CellClass constructor + atexit registration
+// SYNTHETIC: GAMEMD 0x565080 -- exit-time stub: tail-jumps to ~CellClass
+// GLOBAL: GAMEMD 0xABDC50
+// The map's "invalid cell" sentinel.
+CellClass InvalidCell;
 
 // FUNCTION: GAMEMD 0x56C200
 // Returns a constant.

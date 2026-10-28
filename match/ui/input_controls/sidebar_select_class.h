@@ -185,6 +185,11 @@ GG_STATIC_ASSERT(sizeof(SelectEvent) == 0x6F);
 // VTABLE: GAMEMD 0x7F2FCC
 struct SidebarSelectClass : public ControlClass
 {
+    // FUNCTION: GAMEMD 0x6AACB0 -- default constructor (id 0, 0x3C x 0x30 box, flags 0x19).
+    SidebarSelectClass();
+    // FUNCTION: GAMEMD 0x6AACE0 -- store both words at +0x2C and +0x30; RET 8.
+    void FUN_006AACE0(SelectOwnerStrip* owner, int value);
+
     SelectOwnerStrip* Owner;                    // +0x2C
     int unknown_30;                             // +0x30
     unsigned char Hover;                        // +0x34
@@ -203,7 +208,10 @@ GG_STATIC_ASSERT(offsetof(SidebarSelectClass, Hover) == 0x34);
 struct SidebarSBGadgetClass : public GadgetClass
 {
     SidebarSBGadgetClass(int x, int y, int width, int height, unsigned int flags,
-                         char sticky);
+                         char sticky)
+        : GadgetClass(x, y, width, height, flags, sticky)
+    {
+    }
     // FUNCTION: GAMEMD 0x6ABA40 -- slot 31 (Action).
     virtual int Action(unsigned flags, unsigned* key, int modifier);
 };

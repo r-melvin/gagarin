@@ -402,6 +402,11 @@ public:
     int unknown_30C;                    // +0x30C  ctor 4
     bool unknown_310;                   // +0x310  ctor 0
 
+    // FUNCTION: GAMEMD 0x595740 (decl; reloc) -- constructor
+    Gbl_00ABDFD8();
+    // FUNCTION: GAMEMD 0x5958E0 (decl; reloc) -- destructor
+    ~Gbl_00ABDFD8();
+
     // FUNCTION: GAMEMD 0x5981F0 (declaration)
     void FUN_005981F0();
 };
