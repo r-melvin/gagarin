@@ -46,11 +46,11 @@ extern double DAT_00B0ECF8;
 
 // SYNTHETIC: GAMEMD 0x71B5D0
 // GLOBAL: GAMEMD 0xB0ED48
-double DAT_00B0ED48 = DAT_00B0ECF8 / DAT_007F51E0;
+extern double DAT_00B0ED48;
 
 // SYNTHETIC: GAMEMD 0x71B5F0
 // GLOBAL: GAMEMD 0xB0ED30
-double DAT_00B0ED30 = DAT_007E1718 / DAT_00B0ED48;
+extern double DAT_00B0ED30;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71B920

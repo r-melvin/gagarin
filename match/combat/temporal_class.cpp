@@ -32,13 +32,13 @@ const double DAT_007F5100 = 60.0;
 
 // SYNTHETIC: GAMEMD 0x71A1F0
 // GLOBAL: GAMEMD 0xB0ECC8
-double DAT_00B0ECC8 = DAT_00B0EC78 / DAT_007F5100;
+extern double DAT_00B0ECC8;
 // SYNTHETIC: GAMEMD 0x71A210
 // GLOBAL: GAMEMD 0xB0ECB0
-double DAT_00B0ECB0 = 1.0 / DAT_00B0ECC8;
+extern double DAT_00B0ECB0;
 // SYNTHETIC: GAMEMD 0x71A390
 // GLOBAL: GAMEMD 0xB0ECB8
-TuningCoordInit DAT_00B0ECB8(128, 128, 0);
+extern TuningCoordInit DAT_00B0ECB8;
 
 // The append to TemporalClass::Array, the inlined DynamicVectorClass::AddItem
 // in the same free-function shape as EMPulse_AddItem (combat/empulse_class.cpp).

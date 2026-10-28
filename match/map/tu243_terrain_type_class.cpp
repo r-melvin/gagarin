@@ -70,13 +70,13 @@ extern double DAT_00B0ED80;
 // dynamic initializer for DAT_00B0F140
 
 // GLOBAL: GAMEMD 0x00B0F140
-double DAT_00B0F140 = DAT_00B0ED80 / DAT_007F5418;
+extern double DAT_00B0F140;
 
 // SYNTHETIC: GAMEMD 0x0071D3E0
 // dynamic initializer for DAT_00B0EDB8
 
 // GLOBAL: GAMEMD 0x00B0EDB8
-double DAT_00B0EDB8 = DAT_007E1718 / DAT_00B0F140;
+extern double DAT_00B0EDB8;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71DA80

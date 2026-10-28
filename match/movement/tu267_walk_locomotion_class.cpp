@@ -33,13 +33,13 @@ extern double DAT_00B45BD0;
 const double DAT_007F69C0 = 60.0;
 
 // GLOBAL: GAMEMD 0xB45C20
-double DAT_00B45C20 = DAT_00B45BD0 / DAT_007F69C0;
+extern double DAT_00B45C20;
 
 // GLOBAL: GAMEMD 0xB45C08
-double DAT_00B45C08 = 1.0 / DAT_00B45C20;
+extern double DAT_00B45C08;
 
 // GLOBAL: GAMEMD 0xB45C10
-TuningCoordInit DAT_00B45C10(128, 128, 0);
+extern TuningCoordInit DAT_00B45C10;
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

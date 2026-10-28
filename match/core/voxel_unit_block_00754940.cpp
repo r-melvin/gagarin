@@ -21,13 +21,13 @@ const double DAT_007F6940 = 60.0;
 
 // SYNTHETIC: GAMEMD 0x754940
 // GLOBAL: GAMEMD 0xB45180
-double DAT_00B45180 = DAT_00B43EF8 / DAT_007F6940;
+extern double DAT_00B45180;
 // SYNTHETIC: GAMEMD 0x754960
 // GLOBAL: GAMEMD 0xB450A0
-double DAT_00B450A0 = 1.0 / DAT_00B45180;
+extern double DAT_00B450A0;
 // SYNTHETIC: GAMEMD 0x754AE0
 // GLOBAL: GAMEMD 0xB450A8
-TuningCoordInit DAT_00B450A8(128, 128, 0);
+extern TuningCoordInit DAT_00B450A8;
 
 // Globals whose constructors are empty: retail keeps each initialiser as a
 // lone RET in __xc (entries 0x8156CC, 0x8156D0, 0x8156DC..0x8156E8). The

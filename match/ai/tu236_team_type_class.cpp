@@ -97,17 +97,11 @@ extern const double DAT_007F4790;
 // GLOBAL: GAMEMD 0xB0E9D0
 extern double DAT_00B0E9D0;
 
-// SYNTHETIC: GAMEMD 0x006F04A0
-// dynamic initializer for DAT_00B0EA20
-
 // GLOBAL: GAMEMD 0x00B0EA20
-double DAT_00B0EA20 = DAT_00B0E9D0 / DAT_007F4790;
-
-// SYNTHETIC: GAMEMD 0x006F04C0
-// dynamic initializer for DAT_00B0EA08
+extern double DAT_00B0EA20;
 
 // GLOBAL: GAMEMD 0x00B0EA08
-double DAT_00B0EA08 = DAT_007E1718 / DAT_00B0EA20;
+extern double DAT_00B0EA08;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ---------------------------------------------------------------------------

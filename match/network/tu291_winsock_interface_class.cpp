@@ -143,13 +143,13 @@ static inline void DiscardQueue(WinsockInterfaceClass::WinsockBufferType**& item
 // dynamic initializer for DAT_00B78090
 
 // GLOBAL: GAMEMD 0x00B78090
-double DAT_00B78090 = DAT_00B78040 / DAT_007F79A8;
+extern double DAT_00B78090;
 
 // SYNTHETIC: GAMEMD 0x007B1820
 // dynamic initializer for DAT_00B78078
 
 // GLOBAL: GAMEMD 0x00B78078
-double DAT_00B78078 = DAT_007E1718 / DAT_00B78090;
+extern double DAT_00B78078;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7B1B80  WinsockInterfaceClass::vf_1 (slot 1)

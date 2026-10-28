@@ -26,13 +26,13 @@ const double DAT_007F70F0 = 60.0;
 
 // SYNTHETIC: GAMEMD 0x767CD0
 // GLOBAL: GAMEMD 0xB72900
-double DAT_00B72900 = DAT_00B728B0 / DAT_007F70F0;
+extern double DAT_00B72900;
 // SYNTHETIC: GAMEMD 0x767CF0
 // GLOBAL: GAMEMD 0xB728E8
-double DAT_00B728E8 = 1.0 / DAT_00B72900;
+extern double DAT_00B728E8;
 // SYNTHETIC: GAMEMD 0x767E70
 // GLOBAL: GAMEMD 0xB728F0
-TuningCoordInit DAT_00B728F0(128, 128, 0);
+extern TuningCoordInit DAT_00B728F0;
 
 // ---- surfaces --------------------------------------------------------------------------------------------------------
 

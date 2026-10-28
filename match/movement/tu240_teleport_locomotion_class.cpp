@@ -39,13 +39,13 @@ extern double DAT_00B0EBE0;
 const double DAT_007F4FC8 = 60.0;
 
 // GLOBAL: GAMEMD 0xB0EC30
-double DAT_00B0EC30 = DAT_00B0EBE0 / DAT_007F4FC8;
+extern double DAT_00B0EC30;
 
 // GLOBAL: GAMEMD 0xB0EC18
-double DAT_00B0EC18 = 1.0 / DAT_00B0EC30;
+extern double DAT_00B0EC18;
 
 // GLOBAL: GAMEMD 0xB0EC20
-TuningCoordInit DAT_00B0EC20(128, 128, 0);
+extern TuningCoordInit DAT_00B0EC20;
 
 // The cell, as this class uses it.
 struct TeleportCellView

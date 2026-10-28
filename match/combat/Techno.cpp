@@ -475,29 +475,6 @@ House_00705D70* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xB054D0
 ColorSchemeVec_00705D70 DAT_00B054D0;
 
-// FUNCTION: GAMEMD 0x6F28D0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006F28D0()
-{
-    DAT_00B0EB28 = DAT_00B0EA58 / DAT_007F4880;
-}
-
-// FUNCTION: GAMEMD 0x6F28F0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006F28F0()
-{
-    DAT_00B0EB10 = DAT_007E1718 / DAT_00B0EB28;
-}
-
-// FUNCTION: GAMEMD 0x6F2A70
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_006F2A70()
-{
-    DAT_00B0EB20 = 0;
-    DAT_00B0EB18 = 0x80;
-    DAT_00B0EB1C = 0x80;
-}
-
 // FUNCTION: GAMEMD 0x6F32D0
 // Alive, out of limbo, in the playfield, not of kind 6, discovered by the
 // current player, of a selectable type, and owned by the current player.
