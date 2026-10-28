@@ -72,6 +72,11 @@ public:
     // FUNCTION: GAMEMD 0x547020 (decl; reloc) — the lazy tile-set loader.
     void LoadTileData();
 
+    // Round 15 additions (GAMEMD 0x544BE0, 0x544C80, 0x549A60).
+    int              FUN_00544BE0(int idx);
+    bool             FUN_00544C80();
+    int              FUN_00549A60(int idx);
+
     IsoTileTypeVtbl* Vfptr;                    // +0x000
     char             _pad_004[0x0A4 - 0x004];
     TileImageHeader* unknown_A4;                 // +0x0A4

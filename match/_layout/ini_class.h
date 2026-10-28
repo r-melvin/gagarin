@@ -73,6 +73,19 @@ public:
     static void FUN_0052AA90(char* buffer);
     // FUNCTION: GAMEMD 0x52AAC0
     static bool FUN_0052AAC0(char* buffer);
+    // Round 15: GAMEMD 0x528170 writes an integer as upper-case hex; GAMEMD 0x5295A0 is WriteBool over Wstring names.
+    bool FUN_00528170(const char* section, const char* key, int value);
+    bool WriteBool(const Wstring& section, const Wstring& key, bool value);
+    // Round 15 (Wstring names): GAMEMD 0x529820, 0x529C40, 0x52A0A0.
+    bool Write2Integers(const Wstring& section, const Wstring& key, const int* values);
+    bool WriteIntTriple(const Wstring& section, const Wstring& key, const int* values);
+    bool WriteFloatTriple(const Wstring& section, const Wstring& key, const float* values);
+    // Round 15 (Wstring names): GAMEMD 0x527640, 0x527C60, 0x528600.
+    bool WriteInteger(const Wstring& section, const Wstring& key, int value, int format);
+    bool WriteIntQuad(const Wstring& section, const Wstring& key, const int* values);
+    bool WriteDouble(const Wstring& section, const Wstring& key, double value);
+    // GAMEMD 0x5281C0: the Wstring-name twin of 0x528170.
+    bool FUN_005281C0(const Wstring& section, const Wstring& key, int value);
     void* unknown_04;
     void* unknown_08;
     // RTTI table 0x7E1AFC; explicit inherited vptr view is retained.
