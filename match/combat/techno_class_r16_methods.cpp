@@ -4,7 +4,7 @@
 //   0x6f28a0-0x7108df), round 16. The overrides that the canonical TechnoClass already declares
 //   are defined on it; the rest sit on TechnoView_r16, a plain derived view, so no shared header
 //   changes. Functions are in ascending retail address order.
-//   Address index: 0x707DD0, 0x708E00, 0x70B1D0.
+//   Address index: 0x707DD0, 0x708E00, 0x70B1D0, 0x70DC70.
 
 #include "../_layout/techno_class.h"
 #include "../_layout/techno_type_class.h"
@@ -119,6 +119,21 @@ void TechnoClass::vf_291(int a1, int a2, bool a3, HouseClass* a4)
                     DAT_0087F7E8_r16.FUN_005678E0(&LastSightCoords, range, a4, a1, a2, 0, 1, 1);
                 }
             }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x70DC70
+// Pick the turret for a weapon number (0 when it is out of range); chargers keep theirs.
+void TechnoClass::FUN_0070DC70(int mode)
+{
+    if (!vf_33()->IsChargeTurret) {
+        if (mode >= 0 && mode < 18) {
+            CurrentTurretNumber = vf_33()->FUN_007178B0(mode);
+            CurrentWeaponNumber = mode;
+        } else {
+            CurrentTurretNumber = vf_33()->FUN_007178B0(0);
+            CurrentWeaponNumber = 0;
         }
     }
 }
