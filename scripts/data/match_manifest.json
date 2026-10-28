@@ -99941,6 +99941,51 @@
  },
  {
   "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4D3710",
+  "sym": "?vf_337@FootClass@@UAEXN@Z",
+  "len": "0x67",
+  "name": "FootClass::vf_337",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4D55C0",
+  "sym": "?vf_320@FootClass@@UAE_NXZ",
+  "len": "0x27",
+  "name": "FootClass::vf_320",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4D55F0",
+  "sym": "?vf_319@FootClass@@UAE_NABUCoordStruct@@@Z",
+  "len": "0x6C",
+  "name": "FootClass::vf_319",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4D9FF0",
+  "sym": "?vf_316@FootClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x30",
+  "name": "FootClass::vf_316",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4DBFD0",
+  "sym": "?vf_312@FootClass@@UAE_NXZ",
+  "len": "0x5C",
+  "name": "FootClass::vf_312",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
   "addr": "0x4D8F40",
   "sym": "?vf_125@FootClass@@UAEXHHH@Z",
   "len": "0x38",

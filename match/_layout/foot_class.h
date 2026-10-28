@@ -44,16 +44,16 @@ public:
     virtual void vf_309(int a1);                                   // 309 0x4DE750
     virtual void vf_310(FootClass* passenger);                     // 310 0x4DE760; 0x4DE742 passes the FootClass* that 0x473430 returned
     virtual void vf_311();                                         // 311 0x4DC790
-    virtual void vf_312();                                         // 312 0x4DBFD0
+    virtual bool vf_312();                                         // 312 0x4DBFD0
     virtual bool vf_313();                                         // 313 0x41C060, native AL=false
     virtual void vf_314(int a1);                                   // 314 0x4DE7B0
     virtual void vf_315(int a1);                                   // 315 0x4DE940
-    virtual void vf_316(int a1);                                   // 316 0x4D9FF0
+    virtual CoordStruct vf_316();                                  // 316 0x4D9FF0
     virtual void vf_125(int mission, int a2, int a3);              // 125 0x4D8F40
     virtual void vf_317();                                         // 317 0x4DC030
     virtual void vf_318();                                         // 318 0x41C080
-    virtual void vf_319(int a1);                                   // 319 0x4D55F0
-    virtual void vf_320();                                         // 320 0x4D55C0
+    virtual bool vf_319(const CoordStruct& a1);                    // 319 0x4D55F0
+    virtual bool vf_320();                                         // 320 0x4D55C0
     virtual void vf_321();                                         // 321 0x4DB9B0
     virtual void vf_322(int a1, int a2, int a3);                   // 322 0x4DF7F0
     // Native slot 323 forwards 16 dwords to the typed TechnoClass helper at 0x41C090.
@@ -73,7 +73,7 @@ public:
     virtual void vf_334();                                         // 334 0x4DB1A0
     virtual void vf_335(int a1);                                   // 335 0x4D5690
     virtual void vf_336(int a1);                                   // 336 0x41C140
-    virtual void vf_337(int a1, int a2);                           // 337 0x4D3710
+    virtual void vf_337(double a1);                                // 337 0x4D3710
     virtual void vf_338();                                         // 338 0x4DBA30
     virtual void vf_339();                                         // 339 0x4DBA40
     virtual void vf_340(int a1);                                   // 340 0x4DDC60
