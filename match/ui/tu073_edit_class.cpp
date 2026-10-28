@@ -272,6 +272,14 @@ Obj_004C2C30* Obj_004C2C30::FUN_004C2C30()
 // DynamicVectorClass<EBolt*>::scalar deleting destructor
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4C30B0
+EditClass::~EditClass()
+{
+    if (GadgetClass::IsFocused()) {
+        GadgetClass::KillFocus();
+    }
+}
+
 // FUNCTION: GAMEMD 0x4C30E0
 // EditClass::SetText slot (+0x88): edits `text` in place, at most size-1 characters, and redraws.
 void EditClass::SetText(wchar_t* text, int size)

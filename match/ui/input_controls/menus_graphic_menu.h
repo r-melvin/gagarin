@@ -120,7 +120,8 @@ extern void* MenusScreenSurface;
 class GraphicMenuItem
 {
 public:
-    // FUNCTION: GAMEMD 0x4F3A50 (constructor, not bound here)
+    // FUNCTION: GAMEMD 0x4F3A50
+    GraphicMenuItem(int id);
     virtual ~GraphicMenuItem();                       // 0x4F3A70 body, 0x4F3B20 scalar deleting
     virtual bool Slot1(unsigned key);                    // 0x4F3B00 (shared by Anim and Image)
     virtual bool Slot2(const Point2D* point);      // 0x4F3AF0 (base and Shortcut)

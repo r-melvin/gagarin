@@ -21,6 +21,8 @@ struct FlyDrawInterfaceHolder
     IFlyControl* Held;
     // Declaration: GAMEMD 0x4D0430 -- one-pointer release helper, ECX=this.
     void Release();
+    // FUNCTION: GAMEMD 0x4D0400 -- comparison with a null literal.
+    bool IsNull(int null) const;
     ~FlyDrawInterfaceHolder() throw()
     {
         if (Held != 0) Held->Release();

@@ -105,6 +105,7 @@ public:
 class DiskLaserClass : public AbstractClass
 {
 public:
+    DiskLaserClass(const AbstractNoInit& noInit);
     virtual void vf_13(Obj_004A1D30* crc);
 };
 
@@ -237,6 +238,7 @@ double DAT_008A0270 = DAT_007E1718 / DAT_008A0288;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x004A6CB0 -- exit-time destructor stub of DAT_008A0208
+// SYNTHETIC: GAMEMD 0x004A6C70 -- initialiser of DAT_008A0208
 DynamicVectorClass<DiskLaserClass*> DAT_008A0208;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -258,6 +260,12 @@ void DiskLaser_004A7900::PointerGotInvalid(void* pInvalid)
         this->unknown_30 = -1;
         reinterpret_cast<PendingVector_004A7900*>(&DAT_00B0F698)->AddItem(this);
     }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x004A7AD0
+DiskLaserClass::DiskLaserClass(const AbstractNoInit& noInit) : AbstractClass(noInit)
+{
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

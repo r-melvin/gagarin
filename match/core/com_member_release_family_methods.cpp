@@ -17,6 +17,16 @@ GG_COM_MEMBER_RELEASE_BODY(004B4D50)
 // FUNCTION: GAMEMD 0x004B4D60
 GG_COM_MEMBER_RELEASE_BODY(004B4D60)
 
+// FUNCTION: GAMEMD 0x004D0400
+// Comparison with a null literal: a non-zero argument raises E_POINTER.
+bool FlyDrawInterfaceHolder::IsNull(int null) const
+{
+    if (null != 0) {
+        FUN_007DC720((long)0x80004003);
+    }
+    return Held == 0;
+}
+
 // FUNCTION: GAMEMD 0x004D0430
 void FlyDrawInterfaceHolder::Release()
 {

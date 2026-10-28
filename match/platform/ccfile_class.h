@@ -128,6 +128,7 @@ private:
 class BufferIOFileClass : public RawFileClass
 {
 public:
+    BufferIOFileClass(); // GAMEMD 0x431B20 (decl; reloc)
     virtual const char* SetFileName(const char* name); // 0x431E80, slot2
 
     bool Commit(); // 0x431DD0: ECX receiver, AL-only return tails.
@@ -173,6 +174,8 @@ class CDFileClass : public BufferIOFileClass
 {
 public:
     CDFileClass();                                          // GAMEMD 0x47AA30 (decl; reloc)
+    CDFileClass(const char* pFileName);                    // GAMEMD 0x47A9D0
+    CDFileClass(const Wstring& name);                      // GAMEMD 0x47AA00
     // Inline and empty: retail seats vtable 0x7E1668 before ~BufferIOFileClass.
     virtual ~CDFileClass() {}
     virtual const char* SetFileName(const char* pFileName); // GAMEMD 0x47AE10 (decl; base call)

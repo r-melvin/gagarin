@@ -46,6 +46,7 @@ class GadgetClass : public LinkClass
 public:
     // FUNCTION: GAMEMD 0x4E12F0 (decl; constructor)
     GadgetClass(int x, int y, int width, int height, unsigned int flags, char sticky);
+    GadgetClass(const GadgetClass& other);           // GAMEMD 0x4E1340 (decl; reloc)
 
     // Overrides land in the base's slots regardless of declaration position;
     // NEW slots below are declared in exact vtable order so the compiler emits

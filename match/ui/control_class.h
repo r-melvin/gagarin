@@ -20,6 +20,8 @@ public:
     // FUNCTION: GAMEMD 0x48E520 (decl)
     ControlClass(int id, int x, int y, int width, int height,
                  unsigned int flags, char sticky);
+    // FUNCTION: GAMEMD 0x48E570
+    ControlClass(const ControlClass& other);
 
     unsigned int ID;              // +0x24, GetID
     GadgetClass* Peer;             // +0x28, stored by 0x48E600; Draw calls slot +0x6C, Action slot +0x4C

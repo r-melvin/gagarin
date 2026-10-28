@@ -26,6 +26,8 @@ struct ScenarioElapsedTimer
     explicit ScenarioElapsedTimer(const AbstractNoInit&) {}
     // Declaration: GAMEMD 0x4F1B20 -- caller648D08, clock6C8C40.
     int FUN_004F1B20();
+    // Declaration: GAMEMD 0x4F1B00 -- out-of-line duration constructor, returns this.
+    ScenarioElapsedTimer* FUN_004F1B00(int ticks);
     int GetTimeLeft()
     {
         int left = unknown_08;

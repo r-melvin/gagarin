@@ -425,6 +425,13 @@ ControlClass::ControlClass(int id, int x, int y, int width, int height,
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x48E570
+ControlClass::ControlClass(const ControlClass& other)
+    : GadgetClass(other), ID(other.ID), Peer(other.Peer)
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48E5A0
 int ControlClass::Action(unsigned flags, unsigned* key, int modifier)
 {

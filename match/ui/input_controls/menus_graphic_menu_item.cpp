@@ -14,6 +14,12 @@ inline GraphicMenuItem::~GraphicMenuItem()
     delete Part;
 }
 
+// FUNCTION: GAMEMD 0x4F3A50
+GraphicMenuItem::GraphicMenuItem(int id)
+    : Id(id), Flag08(false), Visible(true), Part(0)
+{
+}
+
 // FUNCTION: GAMEMD 0x4F3AF0
 bool GraphicMenuItem::Slot2(const Point2D*)
 {

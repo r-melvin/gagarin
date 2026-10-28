@@ -183,6 +183,10 @@ public:
     // Methods matched in economy/building_class.cpp. 0x4521C0 clears HasPower @0x660 and
     // pauses every Anims[] entry; 0x452210 sets it and resumes them.
     void DestroyNthAnim(int slot);       // GAMEMD 0x451E40
+    void SetAnimInvisible(int slot);     // GAMEMD 0x451EA0
+    void FUN_00454CF0();                 // GAMEMD 0x454CF0
+    void FUN_00454D30();                 // GAMEMD 0x454D30
+    bool FUN_004598D0();                 // GAMEMD 0x4598D0
     void DisableTemporal();              // GAMEMD 0x4521C0
     void EnableTemporal();               // GAMEMD 0x452210
     bool IsTraversable();                // GAMEMD 0x4525F0
