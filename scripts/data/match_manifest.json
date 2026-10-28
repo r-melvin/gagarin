@@ -136980,5 +136980,329 @@
   "name": "QueryCell",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x4031D0",
+  "sym": "?Begin@QCursor_004031D0@@QAEXXZ",
+  "len": "0x14",
+  "name": "Begin",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x417CA0",
+  "sym": "?Forward@Fwd_00417CA0@@QAEHHHHH@Z",
+  "len": "0x1c",
+  "name": "Forward",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x422C70",
+  "sym": "?Try@Obj_00422C70@@QAE_NHHH@Z",
+  "len": "0x26",
+  "name": "Try",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x43A5D0",
+  "sym": "?Crc@CrcOwner_0043A5D0@@QAEXPAUCrc_0043A5D0@@@Z",
+  "len": "0x25",
+  "name": "Crc",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x453370",
+  "sym": "?ClearIfOwnerFlag@Obj_00453370@@QAEXXZ",
+  "len": "0x24",
+  "name": "ClearIfOwnerFlag",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x4790B0",
+  "sym": "?FUN_004790B0@@YIXH@Z",
+  "len": "0x24",
+  "name": "FUN_004790B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x47A6B0",
+  "sym": "?FUN_0047A6B0@@YGXH@Z",
+  "len": "0x1d",
+  "name": "FUN_0047A6B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x47B130",
+  "sym": "?FUN_0047B130@@YIXXZ",
+  "len": "0x1c",
+  "name": "FUN_0047B130",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x488450",
+  "sym": "?SetFlag@List_00488480@@QAEXHD@Z",
+  "len": "0x2a",
+  "name": "SetFlag",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x488480",
+  "sym": "?FlagAt@List_00488480@@QAEDH@Z",
+  "len": "0x19",
+  "name": "FlagAt",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x48C600",
+  "sym": "?FUN_0048C600@@YIHXZ",
+  "len": "0x27",
+  "name": "FUN_0048C600",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x5278F0",
+  "sym": "?Read@Reader_005278F0@@QAEHHHH@Z",
+  "len": "0x27",
+  "name": "Read",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x53D550",
+  "sym": "?FUN_0053D550@@YIXXZ",
+  "len": "0x25",
+  "name": "FUN_0053D550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x53EC40",
+  "sym": "?FUN_0053EC40@@YIXH_N@Z",
+  "len": "0x28",
+  "name": "FUN_0053EC40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x53EC70",
+  "sym": "?FUN_0053EC70@@YIFH@Z",
+  "len": "0x20",
+  "name": "FUN_0053EC70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x4016B0",
+  "sym": "?FUN_004016B0@@YIXPAURowTable_004016B0@@HPAURowSrc_004016B0@@@Z",
+  "len": "0x3c",
+  "name": "FUN_004016B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x41B5E0",
+  "sym": "?Test@Obj_0041B5E0@@QAE_NXZ",
+  "len": "0x2e",
+  "name": "Test",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x41B610",
+  "sym": "?Crc@Obj_0041B610@@QAEXPAUCrcSink_0041B610@@@Z",
+  "len": "0x4c",
+  "name": "Crc",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x41B660",
+  "sym": "?Detach@Obj_0041B610@@QAEXPAX_N@Z",
+  "len": "0x38",
+  "name": "Detach",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x42E110",
+  "sym": "?Update@Limiter_0042E0B0@@QAE_NN@Z",
+  "len": "0x38",
+  "name": "Update",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x43C2A0",
+  "sym": "?ReleaseAll@Holder_0043C2A0@@QAEXXZ",
+  "len": "0x2a",
+  "name": "ReleaseAll",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x45E8B0",
+  "sym": "?Set@Slots_0045E8B0@@QAEXHHHH@Z",
+  "len": "0x31",
+  "name": "Set",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x46D430",
+  "sym": "?FUN_0046D430@@YIXXZ",
+  "len": "0x2a",
+  "name": "FUN_0046D430",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x474870",
+  "sym": "?Percent@Fwd_00474870@@QAEHHHH@Z",
+  "len": "0x2e",
+  "name": "Percent",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x476F70",
+  "sym": "?Forward@Sink_00476F70@@QAEXHHPAULookup_00476F70@@@Z",
+  "len": "0x43",
+  "name": "Forward",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x48DF30",
+  "sym": "?FUN_0048DF30@@YIHPBD@Z",
+  "len": "0x50",
+  "name": "FUN_0048DF30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x49B720",
+  "sym": "?FreeAll@Pool_0049B720@@QAEXXZ",
+  "len": "0x3e",
+  "name": "FreeAll",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x454D70",
+  "sym": "?PokeAll@Chain_00454D70@@QAEXXZ",
+  "len": "0x34",
+  "name": "PokeAll",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x486800",
+  "sym": "?Allowed@Mask_00486800@@QAE_NH@Z",
+  "len": "0x3f",
+  "name": "Allowed",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x49D070",
+  "sym": "?Fetch@Table_0049B610@@QAE_NPAPAXH@Z",
+  "len": "0x4a",
+  "name": "Fetch",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x41A570",
+  "sym": "?Get_0041A570@Obj_0041A570@@QAE?AUVal_0041A570@@XZ",
+  "len": "0x1d",
+  "name": "Get_0041A570",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x41C1E0",
+  "sym": "?Get_0041C1E0@Obj_0041C1E0@@QAE?AUVal_0041C1E0@@XZ",
+  "len": "0x1d",
+  "name": "Get_0041C1E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x430620",
+  "sym": "?SetName@Named_00430620@@QAEXPBD@Z",
+  "len": "0x27",
+  "name": "SetName",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x487C10",
+  "sym": "?RowFlag@Owner_00487C10@@QAEDXZ",
+  "len": "0x55",
+  "name": "RowFlag",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x42CEB0",
+  "sym": "?Has@Pairs_0042CEB0@@QAE_NGGH@Z",
+  "len": "0x53",
+  "name": "Has",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "addr": "0x44EF80",
+  "sym": "?Lookup@Owner_0044EF80@@QAEHPAUTarget_0044EF80@@H@Z",
+  "len": "0x2e",
+  "name": "Lookup",
+  "status": "partial",
+  "pct": 80
  }
 ]
