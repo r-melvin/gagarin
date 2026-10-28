@@ -3,7 +3,7 @@
 // Retail static initialisers 0x6F28A0-0x6F2A50: the second copy of the angle-table setup (same
 // shapes as 0x6F0470-0x6F0660 in angle_math_006f0470.cpp), read instruction by instruction from
 // gamemd.exe v1.001.
-//   0x6F28A0 0x6F2910 0x6F2930 0x6F2950 0x6F2970 0x6F29B0 0x6F29E0 0x6F2A10 0x6F2A40 0x6F2A50
+//   0x6F28A0 0x6F2910 0x6F2930 0x6F2950 0x6F2970 0x6F29B0 0x6F29E0 0x6F2A10 0x6F2A40 0x6F2A50 0x6F2A90
 #include <math.h>
 #pragma intrinsic(pow)
 
@@ -51,6 +51,14 @@ extern "C" int DAT_00B0EB24;
 extern "C" short DAT_00B0EA50;
 // GLOBAL: GAMEMD 0x00B0EA52
 extern "C" short DAT_00B0EA52;
+// GLOBAL: GAMEMD 0x00B0EA40
+extern "C" int DAT_00B0EA40;
+// GLOBAL: GAMEMD 0x00B0EA44
+extern "C" int DAT_00B0EA44;
+// GLOBAL: GAMEMD 0x00B0EA48
+extern "C" int DAT_00B0EA48;
+// GLOBAL: GAMEMD 0x00B0EA4C
+extern "C" int DAT_00B0EA4C;
 // GLOBAL: GAMEMD 0x00B0EA90
 extern "C" int DAT_00B0EA90;
 // GLOBAL: GAMEMD 0x00B0EA94
@@ -119,4 +127,13 @@ extern "C" void FUN_006F2A50()
     DAT_00B0EA90 = 0;
     DAT_00B0EA94 = 0;
     DAT_00B0EA98 = 0;
+}
+
+// FUNCTION: GAMEMD 0x6F2A90
+extern "C" void FUN_006F2A90()
+{
+    DAT_00B0EA40 = 0;
+    DAT_00B0EA44 = 0;
+    DAT_00B0EA48 = 0;
+    DAT_00B0EA4C = 0;
 }
