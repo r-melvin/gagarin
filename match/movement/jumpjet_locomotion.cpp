@@ -10,24 +10,52 @@
 
 #include <new.h>
 #include "../_layout/jumpjet_locomotion_class.h"
+#include "drive_support_views.h"
 
 // GLOBAL: GAMEMD 0xABC5A8 - the empty coordinate this TU compares against.
 extern "C" LocoCoord DAT_00ABC5A8;
+// GLOBAL: GAMEMD 0xABC5E8 - minimum jump height unit; Height is clamped to twice it (LinkToObject 0x54AD30).
+extern "C" int DAT_00ABC5E8;
+// GLOBAL: GAMEMD 0xABC5DC - height subtracted over a bridge cell (InWhichLayer 0x54B8D0).
+extern "C" int DAT_00ABC5DC;
 
 // Address-local views of the linked FootClass, scoped to the Jumpjet bodies;
 // every offset is read from an entry-origin instruction cited beside it.
-struct JumpjetFacingView
+struct JumpjetFacingView : FacingClass
 {
-    char unknown_00[0x18];
+    // FUNCTION: GAMEMD 0x4C91E0 (decl; reloc) - __thiscall constructor, one stack argument (rate of turn).
+    JumpjetFacingView(int rate);
     // FUNCTION: GAMEMD 0x4C9300 (decl; reloc) - __thiscall, DoTurn 0x54B6E0.
     void FUN_004C9300(const unsigned long* dir);
+    // FUNCTION: GAMEMD 0x4C9300 (decl; reloc) - same entry, LinkToObject passes its DirStruct local.
+    void FUN_004C9300(const DirStruct* dir);
 };
 
 struct JumpjetTypeView
 {
     char          unknown_000[0x5EC];
     unsigned char unknown_5EC;           // +0x5EC EndPiggyback `CMP [EAX+0x5EC],BL`
+    char          unknown_5ED[0xD70 - 0x5ED];
+    int           JumpjetTurnRate;       // +0xD70 LinkToObject @0x54AD49
+    int           JumpjetSpeed;          // +0xD74 @0x54AD5C
+    float         JumpjetClimb;          // +0xD78 @0x54AD6F
+    float         JumpjetCrash;          // +0xD7C @0x54AD82
+    int           JumpjetHeight;         // +0xD80 @0x54AD9B
+    float         JumpjetAccel;          // +0xD84 @0x54ADB6
+    float         JumpjetWobbles;        // +0xD88 @0x54ADC9
+    char          JumpjetNoWobbles;      // +0xD8C @0x54ADEF
+    char          unknown_D8D[3];
+    int           unknown_D90;           // +0xD90 @0x54ADDC
 };
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetTurnRate) == 0xD70);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetSpeed) == 0xD74);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetClimb) == 0xD78);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetCrash) == 0xD7C);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetHeight) == 0xD80);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetAccel) == 0xD84);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetWobbles) == 0xD88);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, JumpjetNoWobbles) == 0xD8C);
+GG_STATIC_ASSERT(offsetof(JumpjetTypeView, unknown_D90) == 0xD90);
 GG_STATIC_ASSERT(offsetof(JumpjetTypeView, unknown_5EC) == 0x5EC);
 
 struct JumpjetPathView
@@ -60,7 +88,7 @@ struct JumpjetFootVirtuals
     virtual void vf_048();
     virtual void vf_04C();
     virtual void vf_050();
-    virtual void vf_054();
+    virtual bool vf_054();
     virtual void vf_058();
     virtual void vf_05C();
     virtual void vf_060();
@@ -153,7 +181,7 @@ struct JumpjetFootVirtuals
     virtual void vf_1BC();
     virtual void vf_1C0();
     virtual void vf_1C4();
-    virtual void vf_1C8();
+    virtual int vf_1C8();
     virtual void vf_1CC();
     virtual void vf_1D0();
     virtual void vf_1D4();
@@ -166,7 +194,10 @@ struct JumpjetFootVirtuals
 
 struct JumpjetFootView : JumpjetFootVirtuals
 {
-    char              unknown_004[0x09C - 0x004];
+    char              unknown_08C_pad[0x08C - 0x004];
+    unsigned char     unknown_08C;       // +0x08C InWhichLayer `[EAX+0x8C]`
+    unsigned char     unknown_08D;       // +0x08D InWhichLayer `[EDX+0x8D]`
+    char              unknown_08E[0x09C - 0x08E];
     LocoCoord         Location;          // +0x09C HeadToCoord 0x54D9B0
     char              unknown_0A8[0x21C - 0x0A8];
     JumpjetPathView*  unknown_21C;       // +0x21C EndPiggyback `MOV EDX,[ECX+0x21C]`
@@ -179,6 +210,8 @@ struct JumpjetFootView : JumpjetFootVirtuals
     unsigned char     unknown_6AD;       // +0x6AD IsOkToEnd / EndPiggyback
     unsigned char     unknown_6AE;       // +0x6AE IsOkToEnd / EndPiggyback
 };
+GG_STATIC_ASSERT(offsetof(JumpjetFootView, unknown_08C) == 0x08C);
+GG_STATIC_ASSERT(offsetof(JumpjetFootView, unknown_08D) == 0x08D);
 GG_STATIC_ASSERT(offsetof(JumpjetFootView, Location) == 0x09C);
 GG_STATIC_ASSERT(offsetof(JumpjetFootView, unknown_21C) == 0x21C);
 GG_STATIC_ASSERT(offsetof(JumpjetFootView, PrimaryFacing) == 0x388);
@@ -344,6 +377,53 @@ HRESULT __stdcall JumpjetLocomotionClass::EndPiggyback(ILocomotion** out)
         return S_OK;
     }
     return S_FALSE;
+}
+
+// FUNCTION: GAMEMD 0x54B8D0
+int __stdcall JumpjetLocomotionClass::InWhichLayer()
+{
+    int height = JumpjetFoot(this)->vf_1C8();
+    if (!JumpjetFoot(this)->unknown_08C) {
+        LocoCoord here = JumpjetFoot(this)->Location;
+        if (DriveMap().FUN_00565730(&here)->Flags & 0x100) {
+            if (height >= DAT_00ABC5DC && !JumpjetFoot(this)->unknown_08D)
+                height -= DAT_00ABC5DC;
+        }
+    }
+    if (!JumpjetFoot(this)->vf_054())
+        return 2;
+    if (height == 0)
+        return 2;
+    return (height >= Height) + 3;
+}
+
+// FUNCTION: GAMEMD 0x54AD30 (partial 82.6%: retail CSEs the facing address into EAX for SetDesired and recomputes it for 0x4C9300)
+HRESULT __stdcall JumpjetLocomotionClass::LinkToObject(FootClass* object)
+{
+    JumpjetFootView* foot = (JumpjetFootView*)object;
+    TurnRate = foot->vf_084()->JumpjetTurnRate;
+    Speed = foot->vf_084()->JumpjetSpeed;
+    Climb = foot->vf_084()->JumpjetClimb;
+    Crash = foot->vf_084()->JumpjetCrash;
+    int height = foot->vf_084()->JumpjetHeight;
+    int floor = DAT_00ABC5E8 + DAT_00ABC5E8;
+    Height = height > floor ? height : floor;
+    Accel = foot->vf_084()->JumpjetAccel;
+    Wobbles = foot->vf_084()->JumpjetWobbles;
+    unknown_38 = foot->vf_084()->unknown_D90;
+    NoWobbles = foot->vf_084()->JumpjetNoWobbles;
+    LocomotionFacing = JumpjetFacingView(TurnRate);
+    {
+        DirStruct turn;
+        turn.Raw = 0x4000;
+        LocomotionFacing.SetDesired(turn);
+    }
+    {
+        DirStruct turn;
+        turn.Raw = 0x4000;
+        ((JumpjetFacingView&)LocomotionFacing).FUN_004C9300(&turn);
+    }
+    return LocomotionClass::LinkToObject(object);
 }
 
 // SYNTHETIC: GAMEMD 0x54DFA0 -- compiler-generated scalar deleting destructor.

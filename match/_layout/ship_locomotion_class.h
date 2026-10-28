@@ -100,6 +100,9 @@ public:
 
     // MarkAllOccupationBits 0x6A3F00 calls this with (&HeadTo, mark).
     void FUN_006A01A0(const LocoCoord* coord, int mark);                  // 0x6A01A0
+    LocoPoint2D FUN_006A3DB0(const LocoPoint2D* point, int* facing);      // 0x6A3DB0
+    bool FUN_006A0470();                                                  // 0x6A0470
+    bool FUN_006A04C0(const LocoCoord* coord);                            // 0x6A04C0
 
     // +0x18 is the IPiggyback vptr.
     int            unknown_1C;    // +0x1C ctor `MOV [ESI+0x1c],EAX` @0x0069EC5D

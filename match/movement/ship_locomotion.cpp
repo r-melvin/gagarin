@@ -13,6 +13,8 @@
 // (match/core/multi_vtable_dtor_family_methods.cpp).
 
 #include <new.h>
+#include <math.h>
+#include <stdlib.h>
 #include "../_layout/ship_locomotion_class.h"
 #include "drive_support_views.h"
 
@@ -33,6 +35,9 @@ extern "C" int DAT_00B0782C;
 extern DriveTrackEntry ShipTrackEntries_007F2A40[];
 // GLOBAL: GAMEMD 0x7F2960 - 16-byte track controls (`SHL ESI,4; [ESI+0x7F2964]` at 0x6A41B0).
 extern DriveTrackControl ShipTrackControls_007F2960[];
+
+// GLOBAL: GAMEMD 0xB07838 - height tolerance read by IsMovingHere 0x6A3F50.
+extern "C" int DAT_00B07838;
 
 // LIBRARY: OLE32!OleLoadFromStream, IAT 0x7E15F8 (declared by <ole2.h>).
 
@@ -304,6 +309,112 @@ bool __stdcall ShipLocomotionClass::WillJumpTracks()
                 return true;
         }
     }
+    return false;
+}
+
+// Frames left on a timer (the CDTimerClass value inlined by its readers).
+static inline int ShipTimeLeft(const CDTimerClass& timer)
+{
+    int startTime = timer.StartTime;
+    int timeLeft = timer.TimeLeft;
+    if (startTime != -1) {
+        int elapsed = CurrentFrame - startTime;
+        if (elapsed < timeLeft)
+            return timeLeft - elapsed;
+        return 0;
+    }
+    return timeLeft;
+}
+
+// Fraction of the slope timer that has run (1.0 when the timer has no rate).
+static inline double ShipSlopeFraction(const RateTimer& timer)
+{
+    return timer.Rate != 0 ? (double)(timer.Rate - ShipTimeLeft(timer)) / timer.Rate : 1.0;
+}
+
+// FUNCTION: GAMEMD 0x69FB20 (partial: retail branches on Rate != 0 into the compute block and loads key after the FPU test)
+Matrix3D __stdcall ShipLocomotionClass::ShadowMatrix(unsigned int* key)
+{
+    bool settled = ShipSlopeFraction(SlopeTimer) == 1.0
+        && fabs(ShipFoot(this)->unknown_328) < 0.005
+        && fabs(ShipFoot(this)->unknown_32C) < 0.005;
+    if (!settled && key)
+        *key = (unsigned int)-1;
+    return LocomotionClass::ShadowMatrix(key);
+}
+
+// FUNCTION: GAMEMD 0x6A0470
+bool ShipLocomotionClass::FUN_006A0470()
+{
+    if (ShipIsSet(HeadTo)) {
+        HeadTo = DAT_00B077F8;
+        unknown_63 = false;
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6A04C0 (partial 83%: retail loads the foot into ECX for the push, compiled uses EAX)
+bool ShipLocomotionClass::FUN_006A04C0(const LocoCoord* coord)
+{
+    FUN_006A0470();
+    if (ShipIsSet(*coord)) {
+        HeadTo = *coord;
+        unknown_63 = true;
+        if (DriveMap().FUN_00565730(coord)->FUN_00481A00(ShipFoot(this)) && !ShipFoot(this)->unknown_081) {
+            FUN_006A01A0(coord, 1);
+            return true;
+        }
+        if (ShipFoot(this)->unknown_090) {
+            HeadTo = DAT_00B077F8;
+            unknown_63 = false;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6A0310 (partial: inlines 0x6A04C0, same register-choice diffs)
+void __stdcall ShipLocomotionClass::ForceTrack(int track, LocoCoord coord)
+{
+    TrackNumber = track;
+    TrackIndex = 0;
+    if (ShipIsSet(coord)) {
+        LocoCoord where = coord;
+        if (FUN_006A04C0(&where)) {
+            DestCoord = coord;
+            unknown_50 = 1.0;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6A3F50 (partial: 159 vs 160 instructions; LocoPoint2D argument store scheduling differs)
+bool __stdcall ShipLocomotionClass::IsMovingHere(LocoCoord to)
+{
+    LocoCoord head = HeadToCoord();
+    if (ShipIsEmpty(head))
+        return false;
+    if (!unknown_60 && TrackNumber != -1) {
+        int control = ShipTrackEntries_007F2A40[TrackNumber].unknown_0;
+        if (control) {
+            DriveTrackPoint* points = ShipTrackControls_007F2960[control].Points;
+            int jump = ShipTrackControls_007F2960[control].unknown_C;
+            if (jump > -1) {
+                DriveTrackPoint& at_jump = points[jump];
+                int facing = at_jump.Facing;
+                if (TrackIndex < jump) {
+                    LocoPoint2D point(at_jump.X, at_jump.Y);
+                    LocoPoint2D at = FUN_006A3DB0(&point, &facing);
+                    LocoCoord here = ShipFoot(this)->GetLocation();
+                    if (DriveCellCoord(at.X, at.Y) == DriveCellCoord(to.X, to.Y)
+                        && abs(here.Z - to.Z) <= DAT_00B07838)
+                        return true;
+                }
+            }
+        }
+    }
+    if (DriveCellCoord(head.X, head.Y) == DriveCellCoord(to.X, to.Y)
+        && abs(head.Z - to.Z) <= DAT_00B07838)
+        return true;
     return false;
 }
 
