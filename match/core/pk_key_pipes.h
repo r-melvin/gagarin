@@ -33,6 +33,10 @@ int FUN_005c69e0(const unsigned long* left, const unsigned long* right, int prec
 // FUNCTION: GAMEMD 0x5C6B60 (decl; reloc) -- subtract a 16-bit value with borrow.
 char FUN_005c6b60(unsigned long* result, const unsigned long* source,
                   unsigned short value, int borrow, int precision);
+// FUNCTION: GAMEMD 0x5C62B0 (decl; reloc) -- store the number as length-prefixed big-endian bytes.
+int FUN_005c62b0(const unsigned long* digits, unsigned char* out, int precision);
+// FUNCTION: GAMEMD 0x5C6370 (decl; reloc) -- load a number from length-prefixed big-endian bytes.
+void FUN_005c6370(unsigned long* digits, const unsigned char* data, int precision);
 // FUNCTION: GAMEMD 0x5C6FE0 (decl; reloc) -- multiply.
 int FUN_005c6fe0(unsigned long* result, const unsigned long* left,
                  const unsigned long* right, int precision);
@@ -113,6 +117,15 @@ public:
     int Encrypt(const void* source, int length, void* dest) const;
     // FUNCTION: GAMEMD 0x632870
     int Decrypt(const void* source, int length, void* dest) const;
+
+    // FUNCTION: GAMEMD 0x631FC0 -- serialise the modulus; 0 when no buffer is given.
+    int StoreModulus(unsigned char* out) const;
+    // FUNCTION: GAMEMD 0x631FE0 -- serialise the exponent; 0 when no buffer is given.
+    int StoreExponent(unsigned char* out) const;
+    // FUNCTION: GAMEMD 0x632000 -- load the modulus and record its bit length minus one.
+    void LoadModulus(const unsigned char* data);
+    // FUNCTION: GAMEMD 0x632030 -- load the exponent.
+    void LoadExponent(const unsigned char* data);
 };
 GG_STATIC_ASSERT(offsetof(PKey_00632740, Modulus) == 0x000);
 GG_STATIC_ASSERT(offsetof(PKey_00632740, Exponent) == 0x100);

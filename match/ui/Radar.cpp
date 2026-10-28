@@ -1708,19 +1708,6 @@ void Radar_00658770::FUN_00658770(void* arg)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x658780
-void* Obj_658780::FUN_658780(unsigned int flags)
-{
-    FUN_004E1390(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x00658AA0
 // VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::FindItemIndex
 // FUNCTION: GAMEMD 0x00658AF0

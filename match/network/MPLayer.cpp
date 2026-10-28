@@ -34,6 +34,22 @@ void WordsDecrement(unsigned int* a, int n)
     }
 }
 
+// FUNCTION: GAMEMD 0x5C68E0
+// Shift the number left one bit, feeding in `carry` and returning the bit shifted out.
+bool WordsShiftLeftCarry(unsigned int* a, bool carry, int n)
+{
+    while (n--) {
+        bool out = (*a >> 31) & 1;
+        *a <<= 1;
+        if (carry) {
+            (*a)++;
+        }
+        a++;
+        carry = out;
+    }
+    return carry;
+}
+
 // FUNCTION: GAMEMD 0x5C6920
 void WordsInvert(unsigned int* a, int n)
 {
@@ -140,6 +156,8 @@ bool WordsAddWithCarry(unsigned int* dst, const unsigned int* x, const unsigned 
     return carry;
 }
 
+// FUNCTION: GAMEMD 0x5C6AA0
+// PARTIAL: 82.9% (register allocation: retail keeps the addend in EBX and the word in EDI)
 bool WordsAddSmall(unsigned int* dst, const unsigned int* x, unsigned int y, bool carry, int n)
 {
     while (n--) {
@@ -172,19 +190,23 @@ bool WordsSubWithBorrow(unsigned int* dst, const unsigned int* x, const unsigned
     return borrow;
 }
 
-int WordsMulSmall(unsigned int* dst, const unsigned int* src, short m, int n)
+inline void HalfWordsMulSmall(unsigned short* d, const unsigned short* a, short m, int n)
 {
-    unsigned short* d = (unsigned short*)dst;
-    const unsigned short* a = (const unsigned short*)src;
     unsigned int carry = 0;
-    n += n;
     for (int i = 0; i < n; i++) {
         unsigned int t = *a * m + carry;
-        a++;
         *d = (unsigned short)t;
-        d++;
         carry = t >> 16;
+        d++;
+        a++;
     }
+}
+
+// FUNCTION: GAMEMD 0x5C6D90
+// Multiply a word array by a signed 16-bit value, half-word at a time.
+int WordsMulSmall(unsigned int* dst, const unsigned int* src, short m, int n)
+{
+    HalfWordsMulSmall((unsigned short*)dst, (const unsigned short*)src, m, n * 2);
     return 0;
 }
 
