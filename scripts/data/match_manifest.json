@@ -139509,5 +139509,140 @@
   "name": "FUN_00620870",
   "status": "partial",
   "pct": 84.4
+ },
+ {
+  "tu": "match/map/iso_tile_type_class_r15_methods.cpp",
+  "addr": "0x544BE0",
+  "sym": "?FUN_00544BE0@IsometricTileTypeClass@@QAEHH@Z",
+  "len": "0x38",
+  "name": "IsometricTileTypeClass::FUN_00544BE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/iso_tile_type_class_r15_methods.cpp",
+  "addr": "0x544C80",
+  "sym": "?FUN_00544C80@IsometricTileTypeClass@@QAE_NXZ",
+  "len": "0x2b",
+  "name": "IsometricTileTypeClass::FUN_00544C80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/iso_tile_type_class_r15_methods.cpp",
+  "addr": "0x549A60",
+  "sym": "?FUN_00549A60@IsometricTileTypeClass@@QAEHH@Z",
+  "len": "0x38",
+  "name": "IsometricTileTypeClass::FUN_00549A60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/crc_sink_r15_methods.cpp",
+  "addr": "0x4A1D90",
+  "sym": "?FUN_004A1D90@Obj_004A1D30@@QAEXN@Z",
+  "len": "0x1f",
+  "name": "Obj_004A1D30::FUN_004A1D90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_leaf_r15_w1.cpp",
+  "addr": "0x4A3B80",
+  "sym": "?FUN_004A3B80@@YIHHHHHH@Z",
+  "len": "0x27",
+  "name": "FUN_004A3B80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_leaf_r15_w1.cpp",
+  "addr": "0x4A83D0",
+  "sym": "?FUN_004A83D0@@YG_NH@Z",
+  "len": "0x40",
+  "name": "FUN_004A83D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x527640",
+  "sym": "?WriteInteger@INIClass@@QAE_NABVWstring@@0HH@Z",
+  "len": "0x90",
+  "name": "INIClass::WriteInteger (Wstring names)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x527C60",
+  "sym": "?WriteIntQuad@INIClass@@QAE_NABVWstring@@0PBH@Z",
+  "len": "0x5a",
+  "name": "INIClass::WriteIntQuad (Wstring names)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x528170",
+  "sym": "?FUN_00528170@INIClass@@QAE_NPBD0H@Z",
+  "len": "0x46",
+  "name": "INIClass::FUN_00528170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x5281C0",
+  "sym": "?FUN_005281C0@INIClass@@QAE_NABVWstring@@0H@Z",
+  "len": "0x5b",
+  "name": "INIClass::FUN_005281C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x528600",
+  "sym": "?WriteDouble@INIClass@@QAE_NABVWstring@@0N@Z",
+  "len": "0x60",
+  "name": "INIClass::WriteDouble (Wstring names)",
+  "status": "partial",
+  "pct": 93.3
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x5295A0",
+  "sym": "?WriteBool@INIClass@@QAE_NABVWstring@@0_N@Z",
+  "len": "0x46",
+  "name": "INIClass::WriteBool (Wstring names)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x529820",
+  "sym": "?Write2Integers@INIClass@@QAE_NABVWstring@@0PBH@Z",
+  "len": "0x52",
+  "name": "INIClass::Write2Integers (Wstring names)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x529C40",
+  "sym": "?WriteIntTriple@INIClass@@QAE_NABVWstring@@0PBH@Z",
+  "len": "0x56",
+  "name": "INIClass::WriteIntTriple (Wstring names)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "addr": "0x52A0A0",
+  "sym": "?WriteFloatTriple@INIClass@@QAE_NABVWstring@@0PBM@Z",
+  "len": "0x65",
+  "name": "INIClass::WriteFloatTriple (Wstring names)",
+  "status": "matched",
+  "pct": 100
  }
 ]
