@@ -45,6 +45,7 @@ class FootClass;
 struct PassengersClass
 {
     FootClass* RemoveFirstPassenger();                // GAMEMD 0x473430
+    void       AddPassenger(FootClass* passenger);    // GAMEMD 0x4733A0
     FootClass* GetFirstPassenger();                   // GAMEMD 0x473450: returns FirstPassenger
     int        GetTotalSize() const;                  // GAMEMD 0x473460
     void       RemovePassenger(FootClass* passenger); // GAMEMD 0x4734B0
@@ -257,8 +258,8 @@ public:
     virtual bool vf_169();                                         // 169 0x6FBC90
     virtual DirStruct vf_170();                                    // 170 0x4E0150
     virtual int IsArmed();                                         // 171 0x701120
-    virtual void vf_172();                                         // 172 0x70C620
-    virtual void vf_173();                                         // 173 0x708BC0
+    virtual bool vf_172();                                         // 172 0x70C620
+    virtual double vf_173();                                       // 173 0x708BC0
     virtual int vf_174();                                          // 174 0x708C30
     virtual void vf_175();                                         // 175 0x70ADA0
     virtual int vf_176();                                          // 176 0x708B40
@@ -278,7 +279,7 @@ public:
     virtual void vf_190(int a1);                                   // 190 0x459DC0
     virtual CellStruct vf_191(AbstractClass* target, int a2);         // 191 0x70AD50: forwards its first argument to slot 42
     virtual int vf_192(int a1, int a2);                            // 192 0x6F3D60
-    virtual int vf_193(int a1, int a2);                            // 193 0x708C10
+    virtual int vf_193(int a1, int* a2);                          // 193 0x708C10
     virtual DirStruct vf_194();                                       // 194 0x708D70
     virtual int vf_195();                                          // 195 0x707D20
     virtual bool vf_196();                                          // 196 0x700D10
@@ -303,7 +304,7 @@ public:
     virtual void VoiceHarvest();                                   // 215 0x709060
     virtual int vf_216();                                          // 216 0x708EB0
     virtual void VoiceCapture();                                   // 217 0x708DC0
-    virtual int vf_218();                                          // 218 0x708FC0
+    virtual void vf_218();                                        // 218 0x708FC0
     virtual void vf_219();                                         // 219 0x708E00
     virtual int vf_220(int a1);                                    // 220 0x7090A0
     virtual bool vf_221(int a1);                                   // 221 0x6FFE00
@@ -314,15 +315,15 @@ public:
     virtual void vf_226(int a1);                                   // 226 0x41BF90
     virtual int vf_227();                                          // 227 0x70EFE0
     virtual int vf_228();                                          // 228 0x70D670
-    virtual void vf_229(int a1);                                   // 229 0x710670
+    virtual void vf_229(FootClass* a1);                                // 229 0x710670
     virtual int vf_230(int a1);                                    // 230 0x70EF00
     virtual void vf_231(int a1, int a2);                           // 231 0x709820
-    virtual void vf_232();                                         // 232 0x6FCD40
+    virtual void vf_232();                                       // 232 0x6FCD40
     virtual int vf_233(int a1);                                    // 233 0x6F7660
     virtual bool vf_234(AbstractClass* target, int weapon);            // 234 0x6F77B0: is the target in that weapon's range
     virtual bool IsCloseEnoughToAttack(AbstractClass* target);     // 235 0x6F7780
     virtual void vf_236(CoordStruct* a1);                                // 236 0x6F7930
-    virtual void vf_237(int a1);                                   // 237 0x6F78D0
+    virtual bool vf_237(AbstractClass* target);                                 // 237 0x6F78D0
     virtual int vf_238();                                          // 238 0x4C9150
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
     virtual bool vf_240(int a1, int a2, int a3);                   // 240 0x6FC0B0
@@ -357,7 +358,7 @@ public:
     virtual bool vf_268();                                         // 268 0x705D50
     virtual bool vf_269(int a1);                                   // 269 0x41BFF0
     virtual void vf_270(int a1, int a2);                           // 270 0x459E60
-    virtual void vf_271(int a1);                                   // 271 0x70ED80
+    virtual int vf_271(int a1);                                    // 271 0x70ED80
     virtual bool vf_272(int a1);                                   // 272 0x70EE30
     virtual void vf_273(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10); // 273 0x706640
     virtual void vf_274(int a1, int a2);                           // 274 0x6F60C0
@@ -365,7 +366,7 @@ public:
     virtual void vf_276(int a1, int a2, int a3);                   // 276 0x709A90
     virtual void vf_277(int a1, int a2);                           // 277 0x70A990
     virtual void vf_278(int a1, int a2, int a3);                   // 278 0x70AA60
-    virtual void vf_279(int a1);                                   // 279 0x7036C0
+    virtual void vf_279(bool a1);                                   // 279 0x7036C0
     virtual void vf_280(int a1);                                   // 280 0x703770
     virtual int vf_281(int a1);                                    // 281 0x70D190
     virtual void vf_282();                                         // 282 0x41C000
