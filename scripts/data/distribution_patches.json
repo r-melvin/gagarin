@@ -1,0 +1,122 @@
+{
+ "schema": "gagarin/distribution_patches/1",
+ "binary_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
+ "provenance": "own-binary: sites found by scripts/vc6/patch_scan.py over the pinned PE; originals recovered in the listed TUs. No bytes are stored.",
+ "notes": "Each patch overwrites the first patch_len bytes of the function at addr with the instructions in patched_insns (the code stand_in compiles to under the project flags). overwritten_insns are the original instructions the recovered source compiles to at that spot; their length equals patch_len. The recovered source is the original function, so a post-link step applies these patches to reproduce the distributed image.",
+ "patches": [
+  {
+   "addr": "0x49F5C0",
+   "function": "CopyProtection::IsLauncherRunning",
+   "sym": "?IsLauncherRunning@CopyProtection@@YG_NXZ",
+   "tu": "match/platform/copy_protection_methods.cpp",
+   "patch_len": 3,
+   "patched_insns": [
+    "mov al,0x1",
+    "ret"
+   ],
+   "overwritten_insns": [
+    "push ecx",
+    "push ebx",
+    "push esi"
+   ],
+   "stand_in": {
+    "convention": "__stdcall",
+    "signature": "bool __stdcall f()",
+    "body": "return true;"
+   }
+  },
+  {
+   "addr": "0x49F620",
+   "function": "CopyProtection::NotifyLauncher",
+   "sym": "?NotifyLauncher@CopyProtection@@YG_NXZ",
+   "tu": "match/platform/copy_protection_methods.cpp",
+   "patch_len": 3,
+   "patched_insns": [
+    "mov al,0x1",
+    "ret"
+   ],
+   "overwritten_insns": [
+    "sub esp,0x1c"
+   ],
+   "stand_in": {
+    "convention": "__stdcall",
+    "signature": "bool __stdcall f()",
+    "body": "return true;"
+   }
+  },
+  {
+   "addr": "0x49F740",
+   "function": "CopyProtection::DispatchLauncherMessage",
+   "sym": "?DispatchLauncherMessage@CopyProtection@@YIXPAUMSG@1@@Z",
+   "tu": "match/platform/copy_protection_more_methods.cpp",
+   "patch_len": 1,
+   "patched_insns": [
+    "ret"
+   ],
+   "overwritten_insns": [
+    "push esi"
+   ],
+   "stand_in": {
+    "convention": "__fastcall",
+    "signature": "void __fastcall f(MSG*)",
+    "body": "{}"
+   }
+  },
+  {
+   "addr": "0x49F7A0",
+   "function": "CopyProtection::CheckProtectedData",
+   "sym": "?CheckProtectedData@CopyProtection@@YG_NXZ",
+   "tu": "match/platform/copy_protection_methods.cpp",
+   "patch_len": 3,
+   "patched_insns": [
+    "mov al,0x1",
+    "ret"
+   ],
+   "overwritten_insns": [
+    "sub esp,0x10"
+   ],
+   "stand_in": {
+    "convention": "__stdcall",
+    "signature": "bool __stdcall f()",
+    "body": "return true;"
+   }
+  },
+  {
+   "addr": "0x49F8B0",
+   "function": "CopyProtection::ShutDown",
+   "sym": "?ShutDown@CopyProtection@@YGXXZ",
+   "tu": "match/platform/copy_protection_more_methods.cpp",
+   "patch_len": 1,
+   "patched_insns": [
+    "ret"
+   ],
+   "overwritten_insns": [
+    "push ecx"
+   ],
+   "stand_in": {
+    "convention": "__stdcall",
+    "signature": "void __stdcall f()",
+    "body": "{}"
+   }
+  },
+  {
+   "addr": "0x4A80D0",
+   "function": "CD::GetCDNumber",
+   "sym": "?CD_GetCDNumber@@YIHHH@Z",
+   "tu": "match/platform/cd_get_cd_number.cpp",
+   "patch_len": 6,
+   "patched_insns": [
+    "mov eax,0x2",
+    "ret"
+   ],
+   "overwritten_insns": [
+    "sub esp,0x120"
+   ],
+   "stand_in": {
+    "convention": "__fastcall",
+    "signature": "int __fastcall f(int, int)",
+    "body": "return 2;"
+   }
+  }
+ ]
+}

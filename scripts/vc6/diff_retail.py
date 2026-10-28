@@ -413,6 +413,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--obj", required=True)
     ap.add_argument("--sym", required=True)
+    ap.add_argument("--skip", metavar="RETAIL,COMPILED", default="0,0",
+                    help="leading instructions to drop from the retail / compiled stream "
+                         "(a distribution patch over a function's prologue)")
     ap.add_argument("--addr", required=True)
     ap.add_argument("--len", default="auto",
                     help="full validated retail byte span (hex); the legacy "
@@ -476,6 +479,8 @@ def main():
     elif comp_tabs:
         print("table: compiled switch table lies outside the retail span; not compared\n")
 
+    skip_retail, skip_comp = (int(v) for v in a.skip.split(","))
+    retail, comp = retail[skip_retail:], comp[skip_comp:]
     n = max(len(retail), len(comp))
     exact = reloc = mismatch = 0
     print(f"{'off':>5}  {'retail':<22} {'compiled':<22} verdict")
