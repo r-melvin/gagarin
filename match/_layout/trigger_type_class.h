@@ -39,6 +39,8 @@ public:
     virtual int vf_12();                                                  // 12  0x727CB0
     // FUNCTION: GAMEMD 0x726C80 (constructor declaration)
     TriggerTypeClass(const char* id);
+    // Load re-runs the base no-init constructor (0x410960) and reinstalls the four vtables.
+    TriggerTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x726F50
     bool HasCrossesVerticalLineEvent() const;
     // FUNCTION: GAMEMD 0x726F80

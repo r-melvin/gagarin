@@ -26,7 +26,7 @@ public:
     int unknown_04;  // +0x4 store at 0x4A0C2F
     int unknown_08;  // +0x8 store at 0x4A0C32
     int unknown_0C;  // +0xC vptr store at 0x4A0C44
-    int unknown_10;  // +0x10 store at 0x4A0C37
+    IConnectionPoint** unknown_10;  // +0x10 store at 0x4A0C37; the array Next hands out from (0x4A0A50)
     int unknown_14;  // +0x14 store at 0x4A0C3A
     unsigned char unknown_18;  // +0x18 store at 0x4A0C3D
     unsigned char unknown_19;  // +0x19 store at 0x4A0C41

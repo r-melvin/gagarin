@@ -21,7 +21,7 @@ public:
     virtual void __stdcall vf_3(int a1);                        // 3  0x429420: RET 0x8, this on the stack
     virtual void __stdcall vf_4(int a1);                        // 4  0x429450: RET 0x8, this on the stack
     virtual void __stdcall vf_5();                              // 5  0x4294A0: RET 0x4, this on the stack
-    virtual void __stdcall vf_6(int a1);                        // 6  0x4294B0: RET 0x8, this on the stack
+    virtual HRESULT __stdcall vf_6(BSTR* pbstr);                  // 6  0x4294B0: RET 0x8, this on the stack
     virtual void __stdcall vf_7(int a1);                        // 7  0x429500: RET 0x8, this on the stack
     virtual HRESULT __stdcall vf_8(void** ppv);                    // 8  0x429550: RET 0x8, this on the stack
     virtual void __stdcall vf_9(int a1);                        // 9  0x429400: RET 0x8, this on the stack

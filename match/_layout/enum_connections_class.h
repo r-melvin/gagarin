@@ -23,7 +23,7 @@ public:
     virtual HRESULT __stdcall Reset(void);                      // 5  0x4A0180: implements IEnumConnections
     virtual HRESULT __stdcall Clone(IEnumConnections * *ppEnum);// 6  0x4A0190: implements IEnumConnections
     int unknown_04;  // +0x4 vptr store at 0x4A02CE
-    int unknown_08;  // +0x8 store at 0x4A02C1
+    CONNECTDATA* unknown_08;  // +0x8 store at 0x4A02C1; the array Next hands out from (0x4A00B0)
     int unknown_0C;  // +0xC store at 0x4A02C4
     unsigned char unknown_10;  // +0x10 store at 0x4A02C7
     unsigned char unknown_11;  // +0x11 store at 0x4A02CB

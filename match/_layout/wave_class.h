@@ -25,7 +25,7 @@ public:
     virtual long __stdcall Load(struct IStream *);              // 5  0x75F650: override of ObjectClass
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);// 6  0x75F7D0: override (declaration from the base header)
     virtual ~WaveClass();                                       // 8  0x763200: deleting destructor override
-    virtual void vf_10(void *, bool);                           // 10  0x75F610: override of ObjectClass
+    virtual void vf_10(void* target, bool removed);                         // 10  0x75F610: override of ObjectClass
     virtual int vf_11();                                        // 11  0x7631F0: override (declaration from the base header)
     virtual int vf_12();                                        // 12  0x75F880: override (declaration from the base header)
     virtual void vf_23();                                       // 23  0x760F50: override of ObjectClass
@@ -34,7 +34,7 @@ public:
     virtual bool vf_53();                                       // 53  0x75F980: override of ObjectClass
     virtual bool vf_54(struct CoordStruct const &, int);        // 54  0x75F8B0: override of ObjectClass
     virtual void vf_69(Point2D* point, RectangleStruct* clip);  // 69  0x75F9F0: override of ObjectClass (RET 8)
-    int unknown_AC;  // +0xAC store at 0x75E975
+    void* unknown_AC;  // +0xAC store at 0x75E975; cleared by vf_10 when it expires (0x75F610)
     int unknown_B0;  // +0xB0 store at 0x75E97B
     unsigned char unknown_B4[120];  // +0xB4
     unsigned char unknown_12C;  // +0x12C store at 0x75E981
@@ -55,10 +55,10 @@ public:
     unsigned char unknown_1AC[32];  // +0x1AC
     int unknown_1CC;  // +0x1CC store at 0x75EB51
     int unknown_1D0;  // +0x1D0 store at 0x75E9CE
-    int unknown_1D4;  // +0x1D4 store at 0x75E9D4
+    void* unknown_1D4;  // +0x1D4 store at 0x75E9D4; cleared by vf_10 when it expires (0x75F610)
     unsigned char unknown_1D8[24];  // +0x1D8
     int unknown_1F0;  // +0x1F0 vptr store at 0x75E9FE
-    int unknown_1F4;  // +0x1F4 store at 0x75E9E1
+    int* unknown_1F4;  // +0x1F4 store at 0x75E9E1; Save writes unknown_200 entries from it (0x75F7D0)
     int unknown_1F8;  // +0x1F8 store at 0x75E9E7
     unsigned char unknown_1FC;  // +0x1FC store at 0x75E9F1
     unsigned char unknown_1FD;  // +0x1FD store at 0x75E9F8

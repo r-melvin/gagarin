@@ -15,8 +15,8 @@ class ScoreFontClass
 {
 public:
     virtual ~ScoreFontClass();                                  // 0  0x691040: scalar deleting destructor shape
-    virtual void vf_1(int a1);                                  // 1  0x6907E0: RET 0x4
-    virtual void vf_2(int a1);                                  // 2  0x6907A0: RET 0x4
+    virtual int vf_1(unsigned short ch);                                // 1  0x6907E0: RET 0x4
+    virtual int vf_2(const unsigned short* text);                                // 2  0x6907A0: RET 0x4
     virtual void vf_3(int a1, int a2, int a3, int a4, int a5);  // 3  0x690910: RET 0x14
     virtual void vf_4(int a1, int a2, int a3, int a4, int a5, int a6);// 4  0x690850: RET 0x18
     int unknown_04;  // +0x4 store at 0x690585

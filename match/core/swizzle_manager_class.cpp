@@ -35,6 +35,16 @@ HRESULT __stdcall SwizzleManagerClass::vf_4(void* pointerFieldAddress)
     return S_OK;
 }
 
+// FUNCTION: GAMEMD 0x6CF2C0
+HRESULT __stdcall SwizzleManagerClass::vf_6(int identity, void* subject)
+{
+    SwizzlePointerClass item;
+    item.B = subject;
+    item.A = identity;
+    unknown_1C.AddItem(item);
+    return S_OK;
+}
+
 // FUNCTION: GAMEMD 0x6CF410
 HRESULT __stdcall SwizzleManagerClass::vf_9(unsigned int* outputValue)
 {
