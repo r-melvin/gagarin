@@ -81,14 +81,14 @@ def link(objects, libs, out):
     return proc.returncode, log
 
 
-def run(objdir, out):
+def run(objdir, out, pin_data=False):
     out.mkdir(parents=True, exist_ok=True)
     bink = out / "binkw32.lib"
     implib.build_from_def(ROOT / "scripts/vc6/binkw32.def", bink)
     library_names = library_symbols([bink])
     extra, rounds = set(), []
     for _ in range(MAX_ROUNDS):
-        result = stubgen.plan(objdir, library_names, out / "stubs", extra)
+        result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data)
         code, log = link(result["objects"], library_order(bink), out)
         unresolved, duplicates = link_diag.parse_link_log(log)
         rounds.append({"exit": code, "unresolved": len(unresolved), "duplicates": len(duplicates)})
@@ -107,9 +107,12 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--objdir", type=Path, default=ROOT / "build-vc6/project")
     ap.add_argument("--out", type=Path, default=ROOT / "build-vc6/link_m1")
+    ap.add_argument("--pin-data", action="store_true",
+                    help="M2: bind every bound global to its retail address (absolute symbols) "
+                         "instead of placing zero-filled or project storage")
     args = ap.parse_args(argv)
     out = args.out.resolve()
-    summary = run(args.objdir.resolve(), out)
+    summary = run(args.objdir.resolve(), out, pin_data=args.pin_data)
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")

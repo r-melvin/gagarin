@@ -37,6 +37,7 @@ class ObjectWriter:
         self.commons = []    # (name, size)
         self.anchor = []     # names the anchor table points at
         self.aliases = []    # (name, target) weak externals
+        self.absolutes = []  # (name, va) absolute symbols (pinned retail addresses)
 
     def add_code_comdat(self, names, size, align=16, fill=0xCC, section=".text"):
         """One .text COMDAT of `size` fill bytes; names[0] is the COMDAT key,
@@ -48,6 +49,10 @@ class ObjectWriter:
 
     def add_common(self, name, size):
         self.commons.append((name, max(1, size)))
+
+    def add_absolute(self, name, va):
+        """An absolute external: references resolve to the fixed address `va`."""
+        self.absolutes.append((name, va))
 
     def add_alias(self, name, target):
         """Weak external: `name` resolves to `target` (defined anywhere in the
@@ -94,6 +99,10 @@ class ObjectWriter:
         for name, size in self.commons:
             index[name] = count
             symbols += name_field(name) + struct.pack("<IhHBB", size, 0, 0, CLASS_EXTERNAL, 0)
+            count += 1
+        for name, va in self.absolutes:
+            index[name] = count
+            symbols += name_field(name) + struct.pack("<IhHBB", va, -1, 0, CLASS_EXTERNAL, 0)
             count += 1
         def undefined(name):
             nonlocal count, symbols
@@ -244,3 +253,21 @@ def set_section_names(data, names):
         off = 20 + 40 * (idx - 1)
         data[off:off + 8] = raw.ljust(8, b"\0")
     return bytes(data)
+
+
+def absolutise_symbols(data, mapping):
+    """Return (object bytes, count) with external definitions named in mapping
+    {name: va} turned into absolute symbols at va. Only definitions in
+    non-COMDAT, non-code sections are changed; their storage stays in the object
+    unused, and every relocation against the symbol now resolves to va."""
+    nsec, symptr, nsyms = struct.unpack_from("<H", data, 2)[0], *struct.unpack_from("<II", data, 8)
+    out, count = bytearray(data), 0
+    for idx, name, value, section, scl, _ in read_symbols(data):
+        if section <= 0 or scl != CLASS_EXTERNAL or name not in mapping:
+            continue
+        flags = struct.unpack_from("<I", data, 20 + 40 * (section - 1) + 36)[0]
+        if flags & (SCN_CNT_CODE | SCN_LNK_COMDAT):
+            continue
+        struct.pack_into("<Ih", out, symptr + 18 * idx + 8, mapping[name], -1)
+        count += 1
+    return bytes(out), count

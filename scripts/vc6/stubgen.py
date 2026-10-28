@@ -156,7 +156,8 @@ def order_name(sym):
     return sym[1:] if sym.startswith("_") else sym
 
 
-def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None):
+def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
+         pin_data=False):
     index = json.loads((objdir / "objects.json").read_text())
     objects = [objdir / o["object"] for o in index["objects"]]
     if manifest is None:
@@ -338,6 +339,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             writer.add_code_comdat([sym], max(ext_len.get(va, UNKNOWN_CODE_SIZE), 1), 16 if va % 16 == 0 else 1,
                                    section=TAIL)
             counts["code_bound_unordered"] += 1
+        elif sec is not None and pin_data:
+            writer.add_absolute(sym, va)
+            counts["data_bound"] += 1
         elif sec is not None:
             nxt = data_addrs[bisect.bisect_right(data_addrs, va)]
             writer.add_common(sym, nxt - va)
@@ -358,6 +362,11 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     renamed_total = 0
     order_set = set(order)
     tail_sections = 0
+    pinned_definitions = 0
+    # M2 data pinning: project definitions of bound globals become absolute symbols at
+    # their retail addresses, so code references the retail storage directly.
+    pin_map = {name: va for name, (va, _) in bindings.items() if section_of(va) in (".rdata", ".data")} \
+        if pin_data else {}
     for path in objects:
         data, changed = path.read_bytes(), False
         if path in fold_rename:
@@ -373,6 +382,11 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         if path in static_rename:
             data, _ = coffgen.rename_symbols(data, static_rename[path], retarget=False, statics=True)
             changed = True
+        if pin_map:
+            data, k = coffgen.absolutise_symbols(data, pin_map)
+            if k:
+                pinned_definitions += k
+                changed = True
         tail = {}
         for idx, names in coffgen.section_symbols(data).items():
             off = 20 + 40 * (idx - 1)
@@ -410,6 +424,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "static_functions_promoted": len(promoted),
         "order_names_not_expressible": [n for n in order if not n.startswith(("?", "@", "_"))],
         "extra_stubs": counts,
+        "pinned_definitions": pinned_definitions,
         "unbound": unbound,
         "placed": placed,
         "objects": [str(p) for p in link_objects],
