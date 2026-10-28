@@ -26,6 +26,14 @@ Outputs, in OUT:
 
 Data addresses are NOT faithful in M1: data stubs are COMMON symbols and land
 wherever the linker puts .bss. Only the engine .text layout is ordered.
+
+M2 (both optional, both read only names, addresses and sizes at link time):
+  pin_data    pindata.py derives retail addresses of referenced data and code pointers
+              from the matched functions' relocation sites (needs the retail image) and
+              retargets those relocations to absolute "<name>@pin<VA>" symbols.
+  order_tail  taillink.py orders the import thunks and library code behind the engine
+              block from scripts/data/crt_tail_layout.json and writes copies of the
+              library members involved to OUT/tail.
 """
 
 import argparse
@@ -38,6 +46,7 @@ from pathlib import Path
 
 import coffgen
 import pindata
+import taillink
 from coff_equivalence import plan_folds
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -158,7 +167,7 @@ def order_name(sym):
 
 
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
-         pin_data=False, pin_plan=None):
+         pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None):
     index = json.loads((objdir / "objects.json").read_text())
     objects = [objdir / o["object"] for o in index["objects"]]
     if manifest is None:
@@ -170,6 +179,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         pe, _, pe_sections = pindata.load_retail()
         pin_plan = pindata.derive(objdir, index, manifest, pe, pe_sections)
     retail_pins = {}   # pin symbol -> retail VA, defined absolute in stubs.obj
+    call_names = pin_plan.get("calls", {}) if pin_plan else {}
 
     defined_in = {}
     referenced, called = set(), set()
@@ -281,7 +291,15 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     ordered = [e for e in extents if e[4] in ORDERED_KINDS]
     oversize = []
     debt = 0   # bytes a compiled function ran past its retail slot
-    for (va, slot, align), e in zip(stub_layout(ordered), ordered):
+    layout = stub_layout(ordered)
+    tail_plan = None
+    if order_tail:
+        # The census gives the last engine function a slot that runs over the import-thunk
+        # run behind it; the tail ordering places those thunks, so the slot ends where they begin.
+        tail_layout = tail_layout or taillink.load_layout()
+        first = taillink.first_address(tail_layout)
+        layout = [(va, min(slot, first - va) if va < first else slot, align) for va, slot, align in layout]
+    for (va, slot, align), e in zip(layout, ordered):
         if va in provider:
             sym = provider[va]
             order.append(sym)
@@ -306,6 +324,10 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             continue
         names = sorted(n for n in names_at.get(va, ()) if n not in library_names and n not in provided_names
                        and n not in stub_names)
+        # A library routine that retail keeps inside the engine block (__ftol): matched code
+        # calls it by library name, so the stub at its retail address carries that name too.
+        names += sorted(n for n, cva in call_names.items() if cva == va and n in library_names
+                        and n not in provided_names and n not in stub_names and n not in names)
         key = f"?stub_{va:08X}@@YAXXZ"
         names = [key] + names
         if debt:
@@ -316,6 +338,25 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         order.append(key)
         placed.append({"addr": f"0x{va:X}", "symbol": key, "kind": "stub", "len": f"0x{slot:X}",
                        "names": len(names) - 1})
+
+    if order_tail:
+        engine_end = max(va + slot for va, slot, _ in layout)
+        tail_plan = taillink.plan_tail(tail_layout, libdir or (ROOT / "toolchain/MSVC600/VC98/Lib"),
+                                  engine_end, out / "tail")
+        for name, size in tail_plan["fillers"]:
+            writer.add_code_comdat([name], size, 1)
+        order.extend(tail_plan["order"])
+        stub_names.update(n for n, _ in tail_plan["fillers"])
+        # Matched code can call a library name whose retail target is a different, identical body
+        # (memmove calls land on memcpy's code), or a name the ordering does not place (an OLDNAMES alias such as
+        # remove): pin such names to what the call sites say.
+        placed_at = {name: va for va, name in tail_plan["names_at"].items()}
+        if pin_plan:
+            lo, hi = taillink.first_address(tail_layout), tail_plan["end"]
+            moved = {n: va for n, va in call_names.items() if lo <= va < hi and placed_at.get(n) != va
+                     and n in library_names and n not in pin_plan["global"]}
+            pin_plan["global"].update(moved)
+            pin_plan["report"]["call_pins_for_library_names"] = {n: f"0x{va:X}" for n, va in sorted(moved.items())}
 
     # Unordered code stubs: bound names in .text outside the ordered block
     # (CRT placeholders, thunks) and still-unresolved function names.
@@ -330,6 +371,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     # function under another view's name, a global the project defines under
     # its own name) becomes a weak alias of that definition.
     defined_at = {va: provider_name for va, provider_name in provider.items()}
+    if tail_plan:
+        for va, name in tail_plan["names_at"].items():
+            defined_at.setdefault(va, name)
     for name in sorted(still_defined):
         if name in bindings:
             defined_at.setdefault(bindings[name][0], name)
@@ -417,6 +461,8 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     for name, va in sorted(retail_pins.items()):
         writer.add_absolute(name, va)
     (out / "stubs.obj").write_bytes(writer.build())
+    if tail_plan:
+        link_objects.extend(tail_plan["objects"])
     link_objects.append(out / "stubs.obj")
     (out / "order.txt").write_text("\n".join(order_name(n) for n in order) + "\n", encoding="latin-1")
     result = {
@@ -438,8 +484,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "static_functions_promoted": len(promoted),
         "order_names_not_expressible": [n for n in order if not n.startswith(("?", "@", "_"))],
         "extra_stubs": counts,
+        "tail": tail_plan["report"] if tail_plan else None,
         "pinned_definitions": pinned_definitions,
-        "pinned_reference_symbols": pinned_symbols,
+        "pinned_relocations": pinned_symbols,
         "pin_symbols_defined": len(retail_pins),
         "pin_report": pin_plan["report"] if pin_plan else None,
         "unbound": unbound,

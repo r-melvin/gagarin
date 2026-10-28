@@ -289,18 +289,32 @@ def gather(libdir):
     return sections
 
 
-def run(libdir, start):
+def run(libdir, start, hints=None):
     base, tail = load_retail(start)
     sections = gather(libdir)
     for s in sections:
         s["cands"] = candidates(s, tail)
     placed, alive, inferred = identify(sections, tail)
+    # hints {symbol: retail VA} (e.g. REL32 targets of matched code) settle sections that the
+    # first pass could not place; the first archive section defining the name is the one LINK
+    # would pull. Placed sections are never moved (matched code may call a body under another
+    # library name: memmove calls land on memcpy's identical body).
+    if hints:
+        seen = set()
+        for s in sections:
+            for name, value, external in s["symbols"]:
+                if external and name in hints and name not in seen:
+                    seen.add(name)
+                    if s["id"] not in placed and hints[name] - base - value in s["cands"]:
+                        s["cands"] = [hints[name] - base - value]
+        placed, alive, inferred = identify(sections, tail)
     records, covered = [], []
     for sid, pos in placed.items():
         s = sections[sid]
         ext = [(n, v) for n, v, e in s["symbols"] if e]
         records.append({"addr": f"0x{base + pos:08X}", "len": s["size"], "library": s["library"],
-                        "member": s["member"], "symbol": (ext or [(f"{s['member']}#{s['index']}", 0)])[0][0],
+                        "member": s["member"], "member_index": s["member_key"][1], "section": s["index"],
+                        "align": s["align"], "symbol": (ext or [(f"{s['member']}#{s['index']}", 0)])[0][0],
                         "symbols": [{"name": n, "addr": f"0x{base + pos + v:08X}"} for n, v in ext],
                         "comdat": s["comdat"], "inferred_by_order": sid in inferred})
         covered.append((pos, pos + s["size"]))

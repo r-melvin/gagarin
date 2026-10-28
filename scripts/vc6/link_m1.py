@@ -27,7 +27,9 @@ import sys
 import implib
 import link_diag
 import mapcheck
+import pindata
 import stubgen
+import taillink
 
 ROOT = Path(__file__).resolve().parents[2]
 TOOL_LIBS = link_diag.TOOL_LIBS + ["OLDNAMES.LIB", "UUID.LIB"]
@@ -81,14 +83,22 @@ def link(objects, libs, out):
     return proc.returncode, log
 
 
-def run(objdir, out, pin_data=False):
+def run(objdir, out, pin_data=False, order_tail=False):
     out.mkdir(parents=True, exist_ok=True)
     bink = out / "binkw32.lib"
     implib.build_from_def(ROOT / "scripts/vc6/binkw32.def", bink)
     library_names = library_symbols([bink])
     extra, rounds = set(), []
+    pin_plan = None
+    if pin_data:   # derived once from the retail image; stubgen.plan adds call pins to it
+        index = json.loads((objdir / "objects.json").read_text())
+        manifest = json.loads((ROOT / "scripts/data/match_manifest.json").read_text())
+        pe, _, pe_sections = pindata.load_retail()
+        pin_plan = pindata.derive(objdir, index, manifest, pe, pe_sections)
     for _ in range(MAX_ROUNDS):
-        result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data)
+        vc6, _ = link_diag.toolenv()
+        result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data, pin_plan=pin_plan,
+                              order_tail=order_tail, libdir=vc6 / "VC98/Lib")
         code, log = link(result["objects"], library_order(bink), out)
         unresolved, duplicates = link_diag.parse_link_log(log)
         rounds.append({"exit": code, "unresolved": len(unresolved), "duplicates": len(duplicates)})
@@ -110,9 +120,12 @@ def main(argv=None):
     ap.add_argument("--pin-data", action="store_true",
                     help="M2: bind every bound global to its retail address (absolute symbols) "
                          "instead of placing zero-filled or project storage")
+    ap.add_argument("--order-tail", action="store_true",
+                    help="M2: place the library tail (import thunks, CRT, COMSUPP, LIBCPMT) at retail "
+                         "addresses from scripts/data/crt_tail_layout.json")
     args = ap.parse_args(argv)
     out = args.out.resolve()
-    summary = run(args.objdir.resolve(), out, pin_data=args.pin_data)
+    summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail)
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")
@@ -123,6 +136,12 @@ def main(argv=None):
     check = mapcheck.check(out / "m1.map", out / "stubs/plan.json")
     (out / "mapcheck.json").write_text(json.dumps(check, indent=1) + "\n")
     mapcheck.print_summary(check)
+    if args.order_tail:
+        publics, _ = mapcheck.parse_map((out / "m1.map").read_text(encoding="latin-1"))
+        tail = taillink.check_map(publics, taillink.load_layout())
+        (out / "tailcheck.json").write_text(json.dumps(tail, indent=1) + "\n")
+        print(f"library tail: {tail['at_retail_address']} of {tail['symbols']} symbols at retail addresses "
+              f"({tail['displaced']} displaced, {tail['not_in_map']} not in map)")
     return 0 if summary["link_exit_code"] == 0 else 1
 
 
