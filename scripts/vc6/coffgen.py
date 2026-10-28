@@ -271,3 +271,47 @@ def absolutise_symbols(data, mapping):
         struct.pack_into("<Ih", out, symptr + 18 * idx + 8, mapping[name], -1)
         count += 1
     return bytes(out), count
+
+
+def retarget_relocations(data, mapping):
+    """Return (object bytes, count) with relocations against symbol index i
+    redirected to a new undefined external named mapping[i].
+
+    One undefined external is appended per distinct new name (indices of the
+    existing symbols do not change), so the new names must be defined elsewhere
+    in the link, e.g. as absolute symbols. Addends stored in the section data
+    are untouched: the linker adds them to the new symbol's value."""
+    if not mapping:
+        return bytes(data), 0
+    data = bytearray(data)
+    nsec = struct.unpack_from("<H", data, 2)[0]
+    symptr, nsyms = struct.unpack_from("<II", data, 8)
+    strtab_at = symptr + nsyms * 18
+    strtab = bytearray(data[strtab_at:])
+    added, new_index = bytearray(), {}
+    for name in sorted(set(mapping.values())):
+        raw = name.encode("latin-1")
+        if len(raw) <= 8:
+            field = raw.ljust(8, b"\0")
+        else:
+            field = struct.pack("<II", 0, len(strtab))
+            strtab.extend(raw + b"\0")
+        new_index[name] = nsyms + len(new_index)
+        added += field + struct.pack("<IhHBB", 0, 0, 0, CLASS_EXTERNAL, 0)
+    count = 0
+    for i in range(nsec):
+        off = 20 + 40 * i
+        relptr = struct.unpack_from("<I", data, off + 24)[0]
+        nrel = struct.unpack_from("<H", data, off + 32)[0]
+        first = 0
+        if struct.unpack_from("<I", data, off + 36)[0] & SCN_LNK_NRELOC_OVFL:
+            nrel, first = struct.unpack_from("<I", data, relptr)[0], 1   # first record holds the real count
+        for r in range(first, nrel):
+            roff = relptr + 10 * r
+            symidx = struct.unpack_from("<I", data, roff + 4)[0]
+            if symidx in mapping:
+                struct.pack_into("<I", data, roff + 4, new_index[mapping[symidx]])
+                count += 1
+    struct.pack_into("<I", strtab, 0, len(strtab))
+    struct.pack_into("<I", data, 12, nsyms + len(new_index))
+    return bytes(data[:strtab_at]) + bytes(added) + bytes(strtab), count

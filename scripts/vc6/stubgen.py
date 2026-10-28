@@ -37,6 +37,7 @@ import sys
 from pathlib import Path
 
 import coffgen
+import pindata
 from coff_equivalence import plan_folds
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -157,7 +158,7 @@ def order_name(sym):
 
 
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
-         pin_data=False):
+         pin_data=False, pin_plan=None):
     index = json.loads((objdir / "objects.json").read_text())
     objects = [objdir / o["object"] for o in index["objects"]]
     if manifest is None:
@@ -165,6 +166,10 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     if extents is None:
         extents = json.loads((DATA / "function_extents.json").read_text())["entries"]
     bindings, conflicts = load_bindings(manifest, symbol_bindings)
+    if pin_data and pin_plan is None:
+        pe, _, pe_sections = pindata.load_retail()
+        pin_plan = pindata.derive(objdir, index, manifest, pe, pe_sections)
+    retail_pins = {}   # pin symbol -> retail VA, defined absolute in stubs.obj
 
     defined_in = {}
     referenced, called = set(), set()
@@ -357,18 +362,24 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
 
     writer.set_anchor(order)
     out.mkdir(parents=True, exist_ok=True)
-    (out / "stubs.obj").write_bytes(writer.build())
     link_objects = []
     renamed_total = 0
     order_set = set(order)
     tail_sections = 0
     pinned_definitions = 0
+    pinned_symbols = 0
     # M2 data pinning: project definitions of bound globals become absolute symbols at
     # their retail addresses, so code references the retail storage directly.
     pin_map = {name: va for name, (va, _) in bindings.items() if section_of(va) in (".rdata", ".data")} \
         if pin_data else {}
     for path in objects:
         data, changed = path.read_bytes(), False
+        if pin_plan:
+            data, k, pins = pindata.retarget_object(path, data, pin_plan)
+            if k:
+                retail_pins.update(pins)
+                pinned_symbols += k
+                changed = True
         if path in fold_rename:
             data, _ = coffgen.rename_symbols(data, fold_rename[path], retarget_weak_defaults=True)
             changed = True
@@ -403,6 +414,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             link_objects.append(target)
         else:
             link_objects.append(path)
+    for name, va in sorted(retail_pins.items()):
+        writer.add_absolute(name, va)
+    (out / "stubs.obj").write_bytes(writer.build())
     link_objects.append(out / "stubs.obj")
     (out / "order.txt").write_text("\n".join(order_name(n) for n in order) + "\n", encoding="latin-1")
     result = {
@@ -425,6 +439,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "order_names_not_expressible": [n for n in order if not n.startswith(("?", "@", "_"))],
         "extra_stubs": counts,
         "pinned_definitions": pinned_definitions,
+        "pinned_reference_symbols": pinned_symbols,
+        "pin_symbols_defined": len(retail_pins),
+        "pin_report": pin_plan["report"] if pin_plan else None,
         "unbound": unbound,
         "placed": placed,
         "objects": [str(p) for p in link_objects],
