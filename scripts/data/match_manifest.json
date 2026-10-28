@@ -72833,6 +72833,24 @@
   "pct": 100
  },
  {
+  "tu": "match/network/rc_ptr_base.cpp",
+  "addr": "0x65D4B0",
+  "sym": "??0rc_ptr_base@@QAE@ABV0@@Z",
+  "len": "0x1e",
+  "name": "rc_ptr_base::rc_ptr_base",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/rc_ptr_base.cpp",
+  "addr": "0x65D670",
+  "sym": "?vf_2@ReferenceCounted@@UAEXXZ",
+  "len": "0x14",
+  "name": "ReferenceCounted::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/mathtbl_init_717df0.cpp",
   "addr": "0x717E20",
   "sym": "_$E5",
@@ -87448,6 +87466,24 @@
   "pct": 100.0
  },
  {
+  "tu": "match/map/tu243_terrain_type_class.cpp",
+  "addr": "0x71DBD0",
+  "sym": "??0TerrainTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "TerrainTypeClass::TerrainTypeClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu243_terrain_type_class.cpp",
+  "addr": "0x71DC00",
+  "sym": "??1TerrainTypeClass@@UAE@XZ",
+  "len": "0x98",
+  "name": "TerrainTypeClass::~TerrainTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/trivial_tu244_methods.cpp",
   "addr": "0x71FA40",
   "sym": "?FUN_0071FA40@Obj_0071FA40@@QAEXH@Z",
@@ -100809,6 +100845,15 @@
   "name": "dynamic initializer (DAT_00B0B748)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu216_smudge_class.cpp",
+  "addr": "0x6B4B40",
+  "sym": "??1SmudgeClass@@UAE@XZ",
+  "len": "0x93",
+  "name": "SmudgeClass::~SmudgeClass",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
@@ -133463,6 +133508,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ai/task_force_class_body.cpp",
+  "addr": "0x6E7F80",
+  "sym": "??1TaskForceClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "TaskForceClass::~TaskForceClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/combat/super_class_w3_methods.cpp",
   "addr": "0x6CDEF0",
   "sym": "?Load@SuperClass@@UAGJPAUIStream@@@Z",
@@ -134235,5 +134289,689 @@
   "name": "MultiplayerTeam::vf_2",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/deleting_dtor_w3_methods.cpp",
+  "addr": "0x727FD0",
+  "sym": "??0TubeClass@@QAE@PBUTubeCell@@H@Z",
+  "len": "0xf6",
+  "name": "TubeClass::TubeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/deleting_dtor_w3_methods.cpp",
+  "addr": "0x7280D0",
+  "sym": "??1TubeClass@@UAE@XZ",
+  "len": "0xc2",
+  "name": "TubeClass::~TubeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/deleting_dtor_w3_methods.cpp",
+  "addr": "0x728710",
+  "sym": "??_GTubeClass@@UAEPAXI@Z",
+  "len": "0xd6",
+  "name": "TubeClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
+  "addr": "0x7472C0",
+  "sym": "??0UnitTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "UnitTypeClass::UnitTypeClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
+  "addr": "0x7472F0",
+  "sym": "??1UnitTypeClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "UnitTypeClass::~UnitTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
+  "addr": "0x748010",
+  "sym": "?Load@UnitTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x9a",
+  "name": "UnitTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
+  "addr": "0x748190",
+  "sym": "??_GUnitTypeClass@@UAEPAXI@Z",
+  "len": "0x8d",
+  "name": "UnitTypeClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
+  "addr": "0x7474B0",
+  "sym": "?vf_32@UnitTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
+  "len": "0xad",
+  "name": "UnitTypeClass::vf_32",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_weapon_type_class_w3_methods.cpp",
+  "addr": "0x6CE700",
+  "sym": "??0SuperWeaponTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x38",
+  "name": "SuperWeaponTypeClass::SuperWeaponTypeClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_weapon_type_class_w3_methods.cpp",
+  "addr": "0x6CE740",
+  "sym": "??1SuperWeaponTypeClass@@UAE@XZ",
+  "len": "0x72",
+  "name": "SuperWeaponTypeClass::~SuperWeaponTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_weapon_type_class_w3_methods.cpp",
+  "addr": "0x6CE800",
+  "sym": "?Load@SuperWeaponTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0xc8",
+  "name": "SuperWeaponTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_weapon_type_class_w3_methods.cpp",
+  "addr": "0x6CEFE0",
+  "sym": "??_GSuperWeaponTypeClass@@UAEPAXI@Z",
+  "len": "0x86",
+  "name": "SuperWeaponTypeClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
+  "addr": "0x74AF70",
+  "sym": "??1VoxelAnimTypeClass@@UAE@XZ",
+  "len": "0xda",
+  "name": "VoxelAnimTypeClass::~VoxelAnimTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
+  "addr": "0x74B810",
+  "sym": "?Load@VoxelAnimTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0xb6",
+  "name": "VoxelAnimTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
+  "addr": "0x74BA30",
+  "sym": "??_GVoxelAnimTypeClass@@UAEPAXI@Z",
+  "len": "0xee",
+  "name": "VoxelAnimTypeClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "addr": "0x7637D0",
+  "sym": "??0WaypointPathClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x35",
+  "name": "WaypointPathClass::WaypointPathClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "addr": "0x763810",
+  "sym": "??0WaypointPathClass@@QAE@H@Z",
+  "len": "0xaf",
+  "name": "WaypointPathClass::WaypointPathClass(int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "addr": "0x7638C0",
+  "sym": "??1WaypointPathClass@@UAE@XZ",
+  "len": "0xb4",
+  "name": "WaypointPathClass::~WaypointPathClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "addr": "0x763E20",
+  "sym": "??_GWaypointPathClass@@UAEPAXI@Z",
+  "len": "0xc8",
+  "name": "WaypointPathClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "addr": "0x763C70",
+  "sym": "?Load@WaypointPathClass@@UAGJPAUIStream@@@Z",
+  "len": "0x114",
+  "name": "WaypointPathClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_type_class_ini_w3_methods.cpp",
+  "addr": "0x6F1090",
+  "sym": "?vf_25@TeamTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x4b2",
+  "name": "TeamTypeClass::vf_25 (INI reader)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_type_class_ini_w3_methods.cpp",
+  "addr": "0x6F1550",
+  "sym": "?vf_26@TeamTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x311",
+  "name": "TeamTypeClass::vf_26 (INI writer)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "addr": "0x744100",
+  "sym": "?vf_136@UnitClass@@UAEHXZ",
+  "len": "0x75",
+  "name": "UnitClass::vf_136",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "addr": "0x740EF0",
+  "sym": "?vf_147@UnitClass@@UAEHXZ",
+  "len": "0x90",
+  "name": "UnitClass::vf_147",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "addr": "0x744720",
+  "sym": "?vf_56@UnitClass@@UAEXPAX@Z",
+  "len": "0x7a",
+  "name": "UnitClass::vf_56",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "addr": "0x73B0B0",
+  "sym": "?vf_65@UnitClass@@UAE_NPAURectangleStruct@@_NH@Z",
+  "len": "0x8c",
+  "name": "UnitClass::vf_65",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7BE660",
+  "sym": "?FUN_007be660@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0xa",
+  "name": "FUN_007be660",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7BF230",
+  "sym": "?FUN_007bf230@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x4",
+  "name": "FUN_007bf230",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C3230",
+  "sym": "?FUN_007c3230@@YIHPAUMovieHandle_007BD470@@P6AXPAG11HHH@Z2@Z",
+  "len": "0x3a",
+  "name": "FUN_007c3230",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C35B0",
+  "sym": "?FUN_007c35b0@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0xa",
+  "name": "FUN_007c35b0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C3670",
+  "sym": "?FUN_007c3670@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x16",
+  "name": "FUN_007c3670",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C3690",
+  "sym": "?FUN_007c3690@@YIHPAUMovieHandle_007BD470@@H@Z",
+  "len": "0x29",
+  "name": "FUN_007c3690",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C3710",
+  "sym": "?FUN_007c3710@@YIHPAUMovieHandle_007BD470@@PAH11@Z",
+  "len": "0x2c",
+  "name": "FUN_007c3710",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C3840",
+  "sym": "?FUN_007c3840@@YIHPAUMovieHandle_007BD470@@PAH1@Z",
+  "len": "0x20",
+  "name": "FUN_007c3840",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C0490",
+  "sym": "?FUN_007c0490@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x41",
+  "name": "FUN_007c0490",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C04E0",
+  "sym": "?FUN_007c04e0@@YIDPAUMovieHandle_007BD470@@H@Z",
+  "len": "0x47",
+  "name": "FUN_007c04e0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C1130",
+  "sym": "?FUN_007c1130@@YIHPAUMovieHandle_007BD470@@K@Z",
+  "len": "0x1d",
+  "name": "FUN_007c1130",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "addr": "0x7C1D40",
+  "sym": "?FUN_007c1d40@@YIHPAUMovieHandle_007BD470@@K@Z",
+  "len": "0x41",
+  "name": "FUN_007c1d40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AE630",
+  "sym": "??0Matrix3D@@QAE@MMMMMMMMMMMM@Z",
+  "len": "0x58",
+  "name": "Matrix3D::Matrix3D",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AE690",
+  "sym": "??0Matrix3D@@QAE@ABUVector3D@@000@Z",
+  "len": "0x5a",
+  "name": "Matrix3D::Matrix3D",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AEA70",
+  "sym": "?Scale@Matrix3D@@QAEXMMM@Z",
+  "len": "0x5b",
+  "name": "Matrix3D::Scale",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AEB50",
+  "sym": "?Shear0@Matrix3D@@QAEXMM@Z",
+  "len": "0x43",
+  "name": "Matrix3D::Shear0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AEBA0",
+  "sym": "?Shear2@Matrix3D@@QAEXMM@Z",
+  "len": "0x44",
+  "name": "Matrix3D::Shear2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AEBF0",
+  "sym": "?Shear1@Matrix3D@@QAEXMM@Z",
+  "len": "0x44",
+  "name": "Matrix3D::Shear1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AF240",
+  "sym": "?RotateZ@Matrix3D@@QAEXMM@Z",
+  "len": "0x73",
+  "name": "Matrix3D::RotateZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AF2C0",
+  "sym": "?GetTransX@Matrix3D@@QAEMXZ",
+  "len": "0x47",
+  "name": "Matrix3D::GetTransX",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AF310",
+  "sym": "?GetTransY@Matrix3D@@QAEMXZ",
+  "len": "0x47",
+  "name": "Matrix3D::GetTransY",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AF360",
+  "sym": "?GetTransZ@Matrix3D@@QAEMXZ",
+  "len": "0x47",
+  "name": "Matrix3D::GetTransZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AF3B0",
+  "sym": "?GetAxisHeading@Matrix3D@@QAENXZ",
+  "len": "0x5d",
+  "name": "Matrix3D::GetAxisHeading",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AF470",
+  "sym": "?GetAxisHeadingX@Matrix3D@@QAENXZ",
+  "len": "0x5d",
+  "name": "Matrix3D::GetAxisHeadingX",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "addr": "0x5AF4D0",
+  "sym": "?RotateVector@Matrix3D@@QAEPAUVector3D@@PAU2@PBU2@@Z",
+  "len": "0x71",
+  "name": "Matrix3D::RotateVector",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/multiplayer_game_mode_team_methods.cpp",
+  "addr": "0x5D63E0",
+  "sym": "?FUN_005D63E0@MultiplayerGameMode@@QAE_NPAVMultiMission@@@Z",
+  "len": "0x49",
+  "name": "MultiplayerGameMode::FUN_005D63E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/multiplayer_game_mode_team_methods.cpp",
+  "addr": "0x5D6620",
+  "sym": "?FUN_005D6620@MultiplayerGameMode@@QAEPAUMPTeam@@H@Z",
+  "len": "0x6a",
+  "name": "MultiplayerGameMode::FUN_005D6620",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/multiplayer_game_mode_team_methods.cpp",
+  "addr": "0x5D6750",
+  "sym": "?FUN_005D6750@MultiplayerGameMode@@QAEXXZ",
+  "len": "0x31",
+  "name": "MultiplayerGameMode::FUN_005D6750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/multiplayer_game_mode_team_methods.cpp",
+  "addr": "0x5D5D20",
+  "sym": "??1MultiplayerGameMode@@UAE@XZ",
+  "len": "0x8e",
+  "name": "MultiplayerGameMode::~MultiplayerGameMode",
+  "status": "partial",
+  "pct": 96
+ },
+ {
+  "tu": "match/combat/quaternion_ops_methods.cpp",
+  "addr": "0x645CD0",
+  "sym": "?FUN_00645CD0@FloatQuad_00645CD0@@QAEXM@Z",
+  "len": "0x29",
+  "name": "FloatQuad_00645CD0::FUN_00645CD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/quaternion_ops_methods.cpp",
+  "addr": "0x645D00",
+  "sym": "?FUN_00645D00@FloatQuad_00645CD0@@QAEPAMH@Z",
+  "len": "0xa",
+  "name": "FloatQuad_00645CD0::FUN_00645D00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/quaternion_ops_methods.cpp",
+  "addr": "0x645D20",
+  "sym": "?FUN_00645D20@FloatQuad_00645CD0@@QAE?AU1@ABU1@@Z",
+  "len": "0x3b",
+  "name": "FloatQuad_00645CD0::FUN_00645D20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/rad_beam_setter_methods.cpp",
+  "addr": "0x659470",
+  "sym": "?FUN_00659470@RadBeamView_00659470@@QAEXABURgb3_00659470@@@Z",
+  "len": "0x16",
+  "name": "RadBeamView_00659470::FUN_00659470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/rad_beam_setter_methods.cpp",
+  "addr": "0x6594A0",
+  "sym": "?FUN_006594A0@RadBeamView_00659470@@QAEXABUInt3_006594A0@@@Z",
+  "len": "0x1a",
+  "name": "RadBeamView_00659470::FUN_006594A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/rad_beam_setter_methods.cpp",
+  "addr": "0x6594C0",
+  "sym": "?FUN_006594C0@RadBeamView_00659470@@QAEXABUInt3_006594A0@@@Z",
+  "len": "0x1a",
+  "name": "RadBeamView_00659470::FUN_006594C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/rad_beam_setter_methods.cpp",
+  "addr": "0x659580",
+  "sym": "?FUN_00659580@RadBeamView_00659470@@QAEXH@Z",
+  "len": "0xa",
+  "name": "RadBeamView_00659470::FUN_00659580",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/rad_beam_setter_methods.cpp",
+  "addr": "0x65A1B0",
+  "sym": "?FUN_0065A1B0@IntVec3_0065A1B0@@QAEAAU1@H@Z",
+  "len": "0x28",
+  "name": "IntVec3_0065A1B0::FUN_0065A1B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_leaf_methods_a.cpp",
+  "addr": "0x65FB70",
+  "sym": "?FUN_0065FB70@@YIEH@Z",
+  "len": "0xa",
+  "name": "FUN_0065FB70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_leaf_methods_a.cpp",
+  "addr": "0x660530",
+  "sym": "?FUN_00660530@@YA_NXZ",
+  "len": "0xb",
+  "name": "FUN_00660530",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_leaf_methods_a.cpp",
+  "addr": "0x6643E0",
+  "sym": "?FUN_006643E0@IntVector_006643E0@@QBEHH@Z",
+  "len": "0x1a",
+  "name": "IntVector_006643E0::FUN_006643E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_leaf_methods_a.cpp",
+  "addr": "0x683000",
+  "sym": "?FUN_00683000@@YIHH@Z",
+  "len": "0x21",
+  "name": "FUN_00683000",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_leaf_methods_a.cpp",
+  "addr": "0x68C960",
+  "sym": "?FUN_0068C960@ColorSchemeView_0068C960@@QBE_NABU1@@Z",
+  "len": "0x22",
+  "name": "ColorSchemeView_0068C960::FUN_0068C960",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_leaf_methods_a.cpp",
+  "addr": "0x68C990",
+  "sym": "?FUN_0068C990@ColorSchemeView_0068C960@@QBE_NABU1@@Z",
+  "len": "0x23",
+  "name": "ColorSchemeView_0068C960::FUN_0068C990",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_rgb_stream_methods.cpp",
+  "addr": "0x6614F0",
+  "sym": "?Save@RGBClass@@QAEJPAUIStream_004C6320@@@Z",
+  "len": "0x12",
+  "name": "RGBClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2b_rgb_stream_methods.cpp",
+  "addr": "0x661510",
+  "sym": "?Load@RGBClass@@QAEJPAUIStream_004C6320@@@Z",
+  "len": "0x12",
+  "name": "RGBClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_class_word_lookup_methods.cpp",
+  "addr": "0x56D3A0",
+  "sym": "?FUN_0056D3A0@MapClass@@QBEIPBUCellStruct@@@Z",
+  "len": "0x4e",
+  "name": "MapClass::FUN_0056D3A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_distance_squared_methods.cpp",
+  "addr": "0x5F6500",
+  "sym": "?FUN_005F6500@AbstractView_005F6500@@QAEHPAU1@@Z",
+  "len": "0x60",
+  "name": "AbstractView_005F6500::FUN_005F6500",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_distance_squared_methods.cpp",
+  "addr": "0x5F6560",
+  "sym": "?FUN_005F6560@AbstractView_005F6500@@QAEHPBUCoord3_005F6500@@@Z",
+  "len": "0x3e",
+  "name": "AbstractView_005F6500::FUN_005F6560",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/record_table_compare_methods.cpp",
+  "addr": "0x5899E0",
+  "sym": "?FUN_005899E0@RecordTable_005896F0@@QBEHPBUTableRecord_005896F0@@@Z",
+  "len": "0x4c",
+  "name": "RecordTable_005896F0::FUN_005899E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/record_table_compare_methods.cpp",
+  "addr": "0x5896F0",
+  "sym": "?FUN_005896F0@RecordTable_005896F0@@QBE_NABU1@@Z",
+  "len": "0x50",
+  "name": "RecordTable_005896F0::FUN_005896F0",
+  "status": "partial",
+  "pct": 89
  }
 ]
