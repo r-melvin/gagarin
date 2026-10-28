@@ -319,10 +319,3 @@ int Obj_004A7C80::FUN_004A7C80() const
 
 // SYNTHETIC: GAMEMD 0x4A8080
 // DynamicVectorClass<DiskLaserClass*>::scalar deleting destructor
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x4A80D0  CD::GetCDNumber (__fastcall)
-int CD_GetCDNumber()
-{
-    return 2;
-}
