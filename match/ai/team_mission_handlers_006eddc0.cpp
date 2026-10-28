@@ -19,9 +19,12 @@ struct MemberType_006EE1F0 {
     int unknown_5E0;   // +0x05E0
     unsigned char unknown_5E4[0x18];
     int unknown_5FC;   // +0x05FC
+    unsigned char unknown_600[0x84];
+    int unknown_684;   // +0x0684
 };
 GG_STATIC_ASSERT(offsetof(MemberType_006EE1F0, unknown_5E0) == 0x5E0);
 GG_STATIC_ASSERT(offsetof(MemberType_006EE1F0, unknown_5FC) == 0x5FC);
+GG_STATIC_ASSERT(offsetof(MemberType_006EE1F0, unknown_684) == 0x684);
 
 struct TaskEntryType_006EF470 {
     virtual void vf_000();
@@ -58,8 +61,129 @@ GG_STATIC_ASSERT(offsetof(TaskForce_006EF470, unknown_A8) == 0xA8);
 struct TeamType_006EF470 {
     unsigned char unknown_00[0xE4];
     TaskForce_006EF470* unknown_E4;   // +0x00E4
+    unsigned char unknown_E8[0xF];
+    char unknown_F7;   // +0x00F7
 };
 GG_STATIC_ASSERT(offsetof(TeamType_006EF470, unknown_E4) == 0xE4);
+GG_STATIC_ASSERT(offsetof(TeamType_006EF470, unknown_F7) == 0xF7);
+
+struct CoordStruct_006EDF10 {
+    int unknown_00;   // +0x0000
+    int unknown_04;   // +0x0004
+    int unknown_08;   // +0x0008
+};
+GG_STATIC_ASSERT(sizeof(CoordStruct_006EDF10) == 0xC);
+
+struct CellStruct_006EDF10 {
+    short unknown_00;   // +0x0000
+    short unknown_02;   // +0x0002
+};
+GG_STATIC_ASSERT(sizeof(CellStruct_006EDF10) == 0x4);
+
+struct CellView_006EE100 {
+    unsigned char unknown_00[0x140];
+    unsigned int unknown_140;   // +0x0140
+};
+GG_STATIC_ASSERT(offsetof(CellView_006EE100, unknown_140) == 0x140);
+
+struct MapView_006EDF10 {
+    // FUNCTION: GAMEMD 0x57B790 (decl; reloc)
+    void FUN_0057B790(CellStruct_006EDF10* cell);
+    // FUNCTION: GAMEMD 0x578080 (decl; reloc)
+    int FUN_00578080(CoordStruct_006EDF10* coord);
+    // FUNCTION: GAMEMD 0x565730 (decl; reloc)
+    CellView_006EE100* FUN_00565730(CoordStruct_006EDF10* coord);
+};
+
+struct TacticalView_006EE100 {
+    // FUNCTION: GAMEMD 0x6D2420 (decl; reloc)
+    void FUN_006D2420(CoordStruct_006EDF10* coord, int arg);
+};
+
+struct Rules_006EE0A0 {
+    unsigned char unknown_00[0xFA8];
+    void* unknown_FA8;   // +0x0FA8
+    unsigned char unknown_FAC[0x7E8];
+    int unknown_1794;   // +0x1794
+};
+GG_STATIC_ASSERT(offsetof(Rules_006EE0A0, unknown_FA8) == 0xFA8);
+GG_STATIC_ASSERT(offsetof(Rules_006EE0A0, unknown_1794) == 0x1794);
+
+struct HouseView_006EE310 {
+    unsigned char unknown_00[0x5600];
+    int unknown_5600;   // +0x5600
+};
+GG_STATIC_ASSERT(offsetof(HouseView_006EE310, unknown_5600) == 0x5600);
+
+struct Rules_006F03B0 {
+    unsigned char unknown_00[0x171C];
+    int unknown_171C;   // +0x171C
+    int unknown_1720;   // +0x1720
+};
+GG_STATIC_ASSERT(offsetof(Rules_006F03B0, unknown_1720) == 0x1720);
+
+struct RttiPair_006F03B0 {
+    int unknown_00;   // +0x0000
+    int unknown_04;   // +0x0004
+};
+
+struct Target_006F03B0 {
+    // FUNCTION: GAMEMD 0x691500 (decl; reloc)
+    RttiPair_006F03B0* FUN_00691500(RttiPair_006F03B0* out);
+};
+
+struct Member_006EDDC0;
+struct TypeView_006EE310 {
+    unsigned char unknown_00[4];
+};
+
+struct DirValue_006EDCA0 {
+    short unknown_00;   // +0x0000
+    DirValue_006EDCA0() {}
+    DirValue_006EDCA0(int v) { unknown_00 = (short)(v << 13); }
+};
+GG_STATIC_ASSERT(sizeof(DirValue_006EDCA0) == 0x2);
+
+struct FacingSlot_006EDCA0 {
+    // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc)
+    DirValue_006EDCA0* FUN_004C93D0(DirValue_006EDCA0* out);
+};
+
+// The COM locomotor interface the member holds at +0x674 (slot 4 = IsMoving, slot 19 = set facing).
+struct ILocomotion_006EDCA0 {
+    virtual void __stdcall vf_000();
+    virtual void __stdcall vf_001();
+    virtual void __stdcall vf_002();
+    virtual void __stdcall vf_003();
+    virtual bool __stdcall vf_004();
+    virtual void __stdcall vf_005();
+    virtual void __stdcall vf_006();
+    virtual void __stdcall vf_007();
+    virtual void __stdcall vf_008();
+    virtual void __stdcall vf_009();
+    virtual void __stdcall vf_010();
+    virtual void __stdcall vf_011();
+    virtual void __stdcall vf_012();
+    virtual void __stdcall vf_013();
+    virtual void __stdcall vf_014();
+    virtual void __stdcall vf_015();
+    virtual void __stdcall vf_016();
+    virtual void __stdcall vf_017();
+    virtual void __stdcall vf_018();
+    virtual void __stdcall vf_019(DirValue_006EDCA0 dir);
+};
+
+extern void __stdcall _com_issue_error(long hr);
+struct ILocomotionPtr_006EDCA0 {
+    ILocomotion_006EDCA0* m_pInterface;
+    ILocomotion_006EDCA0* operator->() const
+    {
+        if (m_pInterface == 0) {
+            _com_issue_error(0x80004003);
+        }
+        return m_pInterface;
+    }
+};
 
 struct Member_006EDDC0 {
     virtual void vf_000();
@@ -80,7 +204,7 @@ struct Member_006EDDC0 {
     virtual void vf_015();
     virtual void vf_016();
     virtual void vf_017();
-    virtual void vf_018();
+    virtual CoordStruct_006EDF10* vf_018(CoordStruct_006EDF10* out);
     virtual void vf_019();
     virtual void vf_020();
     virtual void vf_021();
@@ -153,7 +277,7 @@ struct Member_006EDDC0 {
     virtual void vf_088();
     virtual void vf_089();
     virtual void vf_090();
-    virtual void vf_091();
+    virtual int vf_091(int* damage, int distance, void* warhead, void* source, bool ignoreDefense, bool preventsPassengerEscape, void* house);
     virtual void vf_092();
     virtual void vf_093();
     virtual void vf_094();
@@ -391,9 +515,13 @@ struct Member_006EDDC0 {
     virtual void vf_326();
     virtual void vf_327();
     virtual void vf_328(int arg);
+    // FUNCTION: GAMEMD 0x6EF9E0
+    bool FUN_006EF9E0();
     unsigned char unknown_04[0x68];
     int unknown_6C;   // +0x006C
-    unsigned char unknown_70[0x11];
+    unsigned char unknown_70[4];
+    bool unknown_74;   // +0x0074
+    unsigned char unknown_75[0xC];
     bool unknown_81;   // +0x0081
     unsigned char unknown_82[0xE];
     bool unknown_90;   // +0x0090
@@ -401,13 +529,17 @@ struct Member_006EDDC0 {
     int unknown_F0;   // +0x00F0
     unsigned char unknown_F4[0x20];
     int unknown_114;   // +0x0114
-    unsigned char unknown_118[0x1E4];
+    unsigned char unknown_118[0x104];
+    HouseView_006EE310* unknown_21C;   // +0x021C
+    unsigned char unknown_220[0xDC];
     int unknown_2FC;   // +0x02FC
     unsigned char unknown_300[0xD5];
     bool unknown_3D5;   // +0x03D5
     unsigned char unknown_3D6[0x202];
     Member_006EDDC0* unknown_5D8;   // +0x05D8
-    unsigned char unknown_5DC[0xAD];
+    unsigned char unknown_5DC[0x98];
+    ILocomotionPtr_006EDCA0 unknown_674;   // +0x0674
+    unsigned char unknown_678[0x11];
     bool unknown_689;   // +0x0689
 };
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_6C) == 0x6C);
@@ -415,15 +547,22 @@ GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_81) == 0x81);
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_90) == 0x90);
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_F0) == 0xF0);
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_114) == 0x114);
+GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_21C) == 0x21C);
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_2FC) == 0x2FC);
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_3D5) == 0x3D5);
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_5D8) == 0x5D8);
+GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_674) == 0x674);
 GG_STATIC_ASSERT(offsetof(Member_006EDDC0, unknown_689) == 0x689);
 
 struct Owner_006EDDC0 {
     unsigned char unknown_00[0x24];
     TeamType_006EF470* unknown_24;   // +0x0024
-    unsigned char unknown_28[0x2C];
+    Target_006F03B0* unknown_28;   // +0x0028
+    unsigned char unknown_2C[8];
+    Member_006EDDC0* unknown_34;   // +0x0034
+    unsigned char unknown_38[4];
+    int unknown_3C;   // +0x003C
+    unsigned char unknown_40[0x14];
     Member_006EDDC0* unknown_54;   // +0x0054
     unsigned char unknown_58[0x28];
     bool unknown_80;   // +0x0080
@@ -441,13 +580,71 @@ struct Owner_006EDDC0 {
     bool FUN_006EF470();
     // FUNCTION: GAMEMD 0x6EF5C0
     void FUN_006EF5C0(ActionArg_006EDDC0* a1, bool a2);
+    // FUNCTION: GAMEMD 0x6EDD60
+    void FUN_006EDD60(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6EDD90
+    void FUN_006EDD90(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6EE050
+    void FUN_006EE050(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6EE0A0
+    void FUN_006EE0A0(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6EE0E0
+    void FUN_006EE0E0(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6E9050 (decl; reloc) -- TeamClass::AssignMissionTarget.
+    void FUN_006E9050(void* target);
+    // FUNCTION: GAMEMD 0x6EB490 (decl; reloc)
+    void FUN_006EB490();
+    // FUNCTION: GAMEMD 0x6EE310
+    void FUN_006EE310(ActionArg_006EDDC0* a1, bool a2);
+    // FUNCTION: GAMEMD 0x6F03B0
+    int FUN_006F03B0();
+    // FUNCTION: GAMEMD 0x6F03F0
+    bool FUN_006F03F0();
+    // FUNCTION: GAMEMD 0x6EDCA0
+    void FUN_006EDCA0(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6EDFD0
+    void FUN_006EDFD0(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6EDF10
+    void FUN_006EDF10(ActionArg_006EDDC0* a1, int a2);
+    // FUNCTION: GAMEMD 0x6EE100
+    void FUN_006EE100(ActionArg_006EDDC0* a1, int a2);
 };
 GG_STATIC_ASSERT(offsetof(Owner_006EDDC0, unknown_24) == 0x24);
+GG_STATIC_ASSERT(offsetof(Owner_006EDDC0, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(Owner_006EDDC0, unknown_34) == 0x34);
+GG_STATIC_ASSERT(offsetof(Owner_006EDDC0, unknown_3C) == 0x3C);
 GG_STATIC_ASSERT(offsetof(Owner_006EDDC0, unknown_54) == 0x54);
 GG_STATIC_ASSERT(offsetof(Owner_006EDDC0, unknown_80) == 0x80);
 
 // GLOBAL: GAMEMD 0xA8E7AC
 extern int DAT_00A8E7AC;
+
+// GLOBAL: GAMEMD 0x87F7E8
+extern MapView_006EDF10 DAT_0087F7E8;
+// GLOBAL: GAMEMD 0x887324
+extern TacticalView_006EE100* DAT_00887324;
+// GLOBAL: GAMEMD 0x8871E0
+extern Rules_006EE0A0* DAT_008871E0;
+// GLOBAL: GAMEMD 0xB0E948
+extern int DAT_00B0E948;
+// GLOBAL: GAMEMD 0xB0E99C
+extern int DAT_00B0E99C;
+
+// GLOBAL: GAMEMD 0xA83C6C
+extern TypeView_006EE310** DAT_00A83C6C;
+// GLOBAL: GAMEMD 0xA8022C
+extern HouseView_006EE310** DAT_00A8022C;
+
+// FUNCTION: GAMEMD 0x6EEBD0 (decl; reloc) -- fastcall: ecx = type, edx = house; returns the target or null.
+void* __fastcall FUN_006EEBD0(TypeView_006EE310* type, HouseView_006EE310* house, Member_006EDDC0* member, int y, char flag);
+
+// FUNCTION: GAMEMD 0x539EB0 (decl; reloc)
+void __fastcall FUN_00539EB0(int a1, int a2, int a3, void* a4);
+
+// FUNCTION: GAMEMD 0x53A100 (decl; reloc)
+bool __cdecl FUN_0053A100();
+// FUNCTION: GAMEMD 0x53A090 (decl; reloc)
+void __fastcall FUN_0053A090();
 
 // FUNCTION: GAMEMD 0x750920 (decl; reloc) -- VocClass::PlayGlobal(index, volume, pan, controller).
 void* FUN_00750920(int voc, float volume, unsigned int pan, void* controller);
@@ -539,6 +736,205 @@ bool Owner_006EDDC0::FUN_006EF470()
         if (t->vf_011() == 3 && t->unknown_5E0 > 0) {
             return true;
         }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6EDD60
+// Calls member virtual slot 326 for every member.
+void Owner_006EDDC0::FUN_006EDD60(ActionArg_006EDDC0* a1, int a2)
+{
+    for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
+        m->vf_326();
+    }
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EDD90
+// Calls member virtual slot 325 for every member.
+void Owner_006EDDC0::FUN_006EDD90(ActionArg_006EDDC0* a1, int a2)
+{
+    for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
+        m->vf_325();
+    }
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EE050
+// Calls member virtual slots 53 and 62 for every member (next link read first).
+void Owner_006EDDC0::FUN_006EE050(ActionArg_006EDDC0* a1, int a2)
+{
+    for (Member_006EDDC0* m = unknown_54; m != 0; ) {
+        Member_006EDDC0* next = m->unknown_5D8;
+        m->vf_053();
+        m->vf_062();
+        m = next;
+    }
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EE0E0
+// Runs the global fix-up when the global condition holds.
+void Owner_006EDDC0::FUN_006EE0E0(ActionArg_006EDDC0* a1, int a2)
+{
+    if (FUN_0053A100()) {
+        FUN_0053A090();
+    }
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EE0A0
+// When the global condition fails, forwards the record's argument to the global handler.
+void Owner_006EDDC0::FUN_006EE0A0(ActionArg_006EDDC0* a1, int a2)
+{
+    if (!FUN_0053A100()) {
+        FUN_00539EB0(a1->unknown_04, DAT_008871E0->unknown_1794, DAT_00B0E948, 0);
+    }
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EDF10
+// Moves the view to the first member's cell.
+void Owner_006EDDC0::FUN_006EDF10(ActionArg_006EDDC0* a1, int a2)
+{
+    for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
+        CoordStruct_006EDF10 tmp;
+        CoordStruct_006EDF10* c = m->vf_018(&tmp);
+        CellStruct_006EDF10 cell;
+        cell.unknown_00 = (short)(c->unknown_00 / 256);
+        cell.unknown_02 = (short)(c->unknown_04 / 256);
+        CellStruct_006EDF10 where = cell;
+        DAT_0087F7E8.FUN_0057B790(&where);
+    }
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EE100
+// Looks at the target's coordinate (raised by the bridge height on bridge cells) in the tactical view.
+void Owner_006EDDC0::FUN_006EE100(ActionArg_006EDDC0* a1, int a2)
+{
+    CoordStruct_006EDF10 tmp;
+    CoordStruct_006EDF10 coord = *unknown_34->vf_018(&tmp);
+    coord.unknown_08 = DAT_0087F7E8.FUN_00578080(&coord);
+    if ((DAT_0087F7E8.FUN_00565730(&coord)->unknown_140 & 0x100) != 0
+        || (DAT_0087F7E8.FUN_00565730(&coord)->unknown_140 & 0x400) != 0) {
+        coord.unknown_08 += DAT_00B0E99C;
+    }
+    DAT_00887324->FUN_006D2420(&coord, a1->unknown_04);
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EDFD0
+// Keeps dealing the warhead damage to every living member until none is hit any more.
+void Owner_006EDDC0::FUN_006EDFD0(ActionArg_006EDDC0* a1, int a2)
+{
+    bool again;
+    do {
+        again = false;
+        for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
+            if (m->unknown_6C > 0 && m->unknown_90 && m->unknown_74 && !m->unknown_81) {
+                int damage = m->unknown_6C;
+                m->vf_091(&damage, 0, DAT_008871E0->unknown_FA8, 0, true, false, 0);
+                again = true;
+            }
+        }
+    } while (again);
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6EDCA0
+// Turns every idle member to the record's facing; completes once no member is still moving.
+void Owner_006EDDC0::FUN_006EDCA0(ActionArg_006EDDC0* a1, int a2)
+{
+    bool done = true;
+    Member_006EDDC0* m = unknown_54;
+    if (m != 0) {
+        do {
+            if (m->unknown_674->vf_004()) {
+                done = false;
+            } else {
+                DirValue_006EDCA0 cur;
+                FacingSlot_006EDCA0* facing = (FacingSlot_006EDCA0*)((char*)m + 0x388);
+                if (facing->FUN_004C93D0(&cur)->unknown_00 != DirValue_006EDCA0(a1->unknown_04).unknown_00) {
+                    DirValue_006EDCA0 dir(a1->unknown_04);
+                    m->unknown_674->vf_019(dir);
+                }
+            }
+            m = m->unknown_5D8;
+        } while (m != 0);
+    }
+    if (done) {
+        unknown_80 = true;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6EE310
+// Picks a mission target for the team from the record's packed value, then finishes
+// unless a member is not ready.
+void Owner_006EDDC0::FUN_006EE310(ActionArg_006EDDC0* a1, bool a2)
+{
+    if (a2 && unknown_3C == 0) {
+        Member_006EDDC0* first = unknown_54;
+        if (first != 0) {
+            int packed = a1->unknown_04;
+            int x = packed & 0xFFFF;
+            int y = (packed >> 16) & 0xFFFF;
+            TypeView_006EE310* type = DAT_00A83C6C[x];
+            HouseView_006EE310* house = 0;
+            int index = first->unknown_21C->unknown_5600;
+            if (index != -1) {
+                house = DAT_00A8022C[index];
+            }
+            void* target = FUN_006EEBD0(type, house, first, y, unknown_24->unknown_F7);
+            if (target != 0) {
+                FUN_006E9050(target);
+            }
+        }
+    }
+    if (unknown_3C != 0) {
+        for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
+            if (m->vf_033()->unknown_684 <= 0 || m->unknown_2FC > 0) {
+                FUN_006EB490();
+                return;
+            }
+        }
+    }
+    FUN_006E9050(0);
+    unknown_80 = true;
+}
+
+// FUNCTION: GAMEMD 0x6F03F0
+// True when any member's type value at +0x684 is not positive or the member's value at +0x2FC is positive.
+bool Owner_006EDDC0::FUN_006F03F0()
+{
+    bool r = false;
+    for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
+        if (m->vf_033()->unknown_684 <= 0 || m->unknown_2FC > 0) {
+            r = true;
+            break;
+        }
+    }
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x6F03B0
+// Returns the rules value for the owner's object class: one value for classes 0x35/0x36, another otherwise.
+int Owner_006EDDC0::FUN_006F03B0()
+{
+    RttiPair_006F03B0 pair;
+    int id = unknown_28->FUN_00691500(&pair)->unknown_00;
+    if (id == 0x36 || id == 0x35) {
+        return ((Rules_006F03B0*)DAT_008871E0)->unknown_1720;
+    }
+    return ((Rules_006F03B0*)DAT_008871E0)->unknown_171C;
+}
+
+// FUNCTION: GAMEMD 0x6EF9E0
+// True for a live, healthy member that is not hidden (or the global override is on).
+bool Member_006EDDC0::FUN_006EF9E0()
+{
+    if (this != 0 && unknown_90 && unknown_6C != 0 && (DAT_00A8E7AC != 0 || !unknown_81)) {
+        return true;
     }
     return false;
 }
