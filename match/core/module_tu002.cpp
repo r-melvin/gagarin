@@ -14,6 +14,28 @@
 #include <windows.h>
 #include "module_tu002_stream.h"
 #include "module_tu002_sound.h"
+#include <mmsystem.h>
+#include <dsound.h>
+
+// Native record extents: 0x40A0DD..0x40A0F6 clears the 18-byte format;
+// 0x40A126..0x40A153 clears five descriptor words; 0x40A1AA initializes the
+// remaining 23 capability words before its 96-byte size is passed to GetCaps.
+GG_STATIC_ASSERT(sizeof(WAVEFORMATEX) == 18);
+GG_STATIC_ASSERT(offsetof(WAVEFORMATEX, wFormatTag) == 0);
+GG_STATIC_ASSERT(offsetof(WAVEFORMATEX, nChannels) == 2);
+GG_STATIC_ASSERT(offsetof(WAVEFORMATEX, nSamplesPerSec) == 4);
+GG_STATIC_ASSERT(offsetof(WAVEFORMATEX, nAvgBytesPerSec) == 8);
+GG_STATIC_ASSERT(offsetof(WAVEFORMATEX, nBlockAlign) == 12);
+GG_STATIC_ASSERT(offsetof(WAVEFORMATEX, wBitsPerSample) == 14);
+GG_STATIC_ASSERT(offsetof(WAVEFORMATEX, cbSize) == 16);
+GG_STATIC_ASSERT(sizeof(DSBUFFERDESC) == 20);
+GG_STATIC_ASSERT(offsetof(DSBUFFERDESC, dwSize) == 0);
+GG_STATIC_ASSERT(offsetof(DSBUFFERDESC, dwFlags) == 4);
+GG_STATIC_ASSERT(offsetof(DSBUFFERDESC, dwBufferBytes) == 8);
+GG_STATIC_ASSERT(offsetof(DSBUFFERDESC, dwReserved) == 12);
+GG_STATIC_ASSERT(offsetof(DSBUFFERDESC, lpwfxFormat) == 16);
+GG_STATIC_ASSERT(sizeof(DSCAPS) == 96);
+GG_STATIC_ASSERT(offsetof(DSCAPS, dwSize) == 0);
 #include "bounded_copy_methods.h"
 #include "list_holder_methods.h"
 #include "floored_decrement_methods.h"
@@ -1540,22 +1562,31 @@ finished:
     return 1;
 }
 // FUNCTION: GAMEMD 0x40A090
+// PARTIAL: 70/107 instructions (65.4%). Retail's format/descriptor clearing
+// and capability-record initialization are recovered; the instruction multiset
+// agrees, with scheduling/register differences. Layout review, ordinary source
+// forms and flag bisection did not reach byte identity.
 int Pool_00402860::FUN_0040A090()
 {
     Capacity = 100;
     unknown_170.FUN_00403870(33);
     unknown_170.FUN_004038A0(1056);
     unknown_170.FUN_004038C0(3168);
-    Wave_0040A340 wave;
-    wave.format = 1;
-    wave.channels = static_cast<unsigned short>(unknown_44.NumChannels);
-    wave.rate = unknown_44.SampleRate;
-    wave.alignment = static_cast<unsigned short>(unknown_44.BytesPerSample * unknown_44.NumChannels);
-    wave.average = wave.alignment * wave.rate;
-    wave.bits = static_cast<unsigned short>(unknown_44.BytesPerSample << 3);
-    wave.extra = 0;
-    Descriptor_0040A340 descriptor = { 20, 1, 0, 0, 0 };
     DAT_0087E850.unknown_20 = this;
+    WAVEFORMATEX wave;
+    memset(&wave, 0, sizeof(wave));
+    wave.wFormatTag = 1;
+    wave.nChannels = static_cast<unsigned short>(unknown_44.NumChannels);
+    wave.nSamplesPerSec = unknown_44.SampleRate;
+    wave.nBlockAlign = static_cast<unsigned short>(unknown_44.BytesPerSample) * static_cast<unsigned short>(unknown_44.NumChannels);
+    wave.nAvgBytesPerSec = wave.nBlockAlign * wave.nSamplesPerSec;
+    wave.wBitsPerSample = static_cast<unsigned short>(unknown_44.BytesPerSample << 3);
+    wave.cbSize = 0;
+    DSBUFFERDESC descriptor;
+    memset(&descriptor, 0, sizeof(descriptor));
+    descriptor.dwSize = sizeof(descriptor);
+    descriptor.dwFlags = 1;
+    descriptor.dwBufferBytes = 0;
     if (DAT_0087E89C->Vptr->CreateBuffer(DAT_0087E89C, &descriptor, &DAT_0087E8A0, 0))
     {
         DAT_0087E8A0 = 0;
@@ -1563,9 +1594,7 @@ int Pool_00402860::FUN_0040A090()
     }
     Sink_0040A6D0* buffer = reinterpret_cast<Sink_0040A6D0*>(DAT_0087E8A0);
     if (buffer->Vptr->At_38(buffer, &wave)) FUN_004068E0(DAT_0081677C);
-    Caps_0040A090 caps;
-    memset(&caps, 0, sizeof(caps));
-    caps.size = sizeof(caps);
+    DSCAPS caps = { sizeof(caps) };
     DAT_0087E89C->Vptr->GetCaps(DAT_0087E89C, &caps);
     buffer = reinterpret_cast<Sink_0040A6D0*>(DAT_0087E8A0);
     buffer->Vptr->At_30(buffer, 0, 0, 1);
@@ -1615,6 +1644,10 @@ int Voice_0040A6D0::FUN_0040A2D0()
     return 0;
 }
 // FUNCTION: GAMEMD 0x40A340
+// PARTIAL: 58/225 instructions (25.8%). Format and descriptor initialization
+// now agree with retail's instruction multiset. Remaining differences include
+// the reuse/create/play block placement and register scheduling. Retain the
+// readable control flow after layout review, source forms and flag bisection.
 int Voice_0040A6D0::FUN_0040A340()
 {
     Aux_0040A6D0* state = Aux;
@@ -1632,19 +1665,25 @@ int Voice_0040A6D0::FUN_0040A340()
     }
     if (state->Sink) { state->Sink->Vptr->At_08(state->Sink); state->Sink = 0; }
     {
-        Wave_0040A340 wave;
-        wave.format = 1;
-        wave.channels = static_cast<unsigned short>(format->NumChannels);
-        wave.rate = format->SampleRate;
-        wave.alignment = static_cast<unsigned short>(format->BytesPerSample * format->NumChannels);
-        wave.average = wave.alignment * wave.rate;
-        wave.bits = static_cast<unsigned short>(format->BytesPerSample << 3);
-        wave.extra = 0;
+        WAVEFORMATEX wave;
+        memset(&wave, 0, sizeof(wave));
+        wave.wFormatTag = 1;
+        wave.nChannels = static_cast<unsigned short>(format->NumChannels);
+        wave.nSamplesPerSec = format->SampleRate;
+        wave.nBlockAlign = static_cast<unsigned short>(format->BytesPerSample * format->NumChannels);
+        wave.nAvgBytesPerSec = wave.nBlockAlign * wave.nSamplesPerSec;
+        wave.wBitsPerSample = static_cast<unsigned short>(format->BytesPerSample << 3);
+        wave.cbSize = 0;
         state->unknown_44 = *format;
-        int bytes = static_cast<int>((wave.average * 3 / 100) * 8 + 1023);
+        DSBUFFERDESC descriptor;
+        memset(&descriptor, 0, sizeof(descriptor));
+        descriptor.dwSize = sizeof(descriptor);
+        descriptor.dwFlags = 0xE8;
+        int bytes = static_cast<int>((wave.nAvgBytesPerSec * 3 / 100) * 8 + 1023);
         state->unknown_6C = (bytes / 1024) * 1024;
         FUN_004068E0(DAT_00816808, state->unknown_6C);
-        Descriptor_0040A340 descriptor = { 20, 0xE8, state->unknown_6C << 2, 0, &wave };
+        descriptor.dwBufferBytes = state->unknown_6C << 2;
+        descriptor.lpwfxFormat = &wave;
         // Imported COM output interface is identical at this concrete call.
         if (DAT_0087E89C->Vptr->CreateBuffer(DAT_0087E89C, &descriptor, reinterpret_cast<SoundBuffer_0040A7B0**>(&state->Sink), 0))
         {
@@ -1652,8 +1691,8 @@ int Voice_0040A6D0::FUN_0040A340()
             FUN_004068E0(DAT_008167E4);
             return 0x80040000;
         }
-        state->unknown_68 = descriptor.bytes;
-        FUN_004068E0(DAT_008167C4, descriptor.bytes);
+        state->unknown_68 = descriptor.dwBufferBytes;
+        FUN_004068E0(DAT_008167C4, descriptor.dwBufferBytes);
     }
 ready:
     state->unknown_2C = 0;
