@@ -12,6 +12,7 @@
 #include "abstract_type_class.h"
 
 class TechnoTypeClass;
+struct TaskForceTypeView;
 
 struct TaskForceEntry
 {
@@ -33,6 +34,11 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6
     virtual int vf_11();                                                  // 11  0x6E87D0
     virtual int vf_12();                                                  // 12  0x6E87E0
+
+    // FUNCTION: GAMEMD 0x6E8160
+    int FUN_006E8160() const;
+    // FUNCTION: GAMEMD 0x6E8780
+    int FUN_006E8780() const;
 
     int            ArrayIndex;      // +0x98
     int            EntryCount;      // +0x9C

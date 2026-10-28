@@ -15,6 +15,44 @@ extern DynamicVectorClass<TaskForceClass*> DAT_00A8E8D0;
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;
 
+// GLOBAL: GAMEMD 0xA8B238 -- the first dword of the session object, tested for being set.
+extern int DAT_00A8B238;
+
+// A techno type, as far as the dword the task force scan reads.
+struct TaskForceTypeView
+{
+    char unknown_00[0x634];
+    int unknown_634;   // +0x634
+};
+GG_STATIC_ASSERT(offsetof(TaskForceTypeView, unknown_634) == 0x634);
+
+// FUNCTION: GAMEMD 0x6E8160
+// The total number of units the task force asks for.
+int TaskForceClass::FUN_006E8160() const
+{
+    int total = 0;
+    for (int i = 0; i < EntryCount; i++) {
+        total += Entries[i].Amount;
+    }
+    return total;
+}
+
+// FUNCTION: GAMEMD 0x6E8780
+// The largest value of the entry types' +0x634 dword, or 11 for an unset one while the session is live.
+int TaskForceClass::FUN_006E8780() const
+{
+    int result = 0;
+    for (int i = 0; i < EntryCount; i++) {
+        int value = reinterpret_cast<TaskForceTypeView*>(Entries[i].Type)->unknown_634;
+        if (value > result) {
+            result = value;
+        } else if (value == -1 && DAT_00A8B238) {
+            result = 11;
+        }
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x6E86A0
 HRESULT __stdcall TaskForceClass::Load(IStream* pStm)
 {
