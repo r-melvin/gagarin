@@ -152,7 +152,7 @@ int TechnoClass::vf_193(int a1, int* out)
 // Forward the owner house to the type's slot 46 with a zero second argument.
 void TechnoClass::vf_175()
 {
-    vf_33()->vf_46((int)Owner, 0);
+    vf_33()->vf_46(Owner, 0);
 }
 
 // FUNCTION: GAMEMD 0x708BC0
