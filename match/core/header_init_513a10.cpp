@@ -65,3 +65,18 @@ HeaderCoordInit DAT_00A8F1A8(128, 128, 0);
 // SYNTHETIC: GAMEMD 0x513C00
 // GLOBAL: GAMEMD 0xA8F150
 MathTblZero4 DAT_00A8F150;
+
+// The unit's own static after the header group: a three-byte colour record whose
+// constructor zeroes its components (retail 0x517340, in the hover unit proper).
+struct HeaderByteTriple
+{
+    unsigned char A;
+    unsigned char B;
+    unsigned char C;
+    HeaderByteTriple() : A(0), B(0), C(0) {}
+};
+GG_STATIC_ASSERT(sizeof(HeaderByteTriple) == 3);
+
+// SYNTHETIC: GAMEMD 0x517340
+// GLOBAL: GAMEMD 0xA8F1C4
+HeaderByteTriple DAT_00A8F1C4;

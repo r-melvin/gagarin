@@ -489,6 +489,10 @@ public:
     BuildingTypeClass* FUN_005051E0(const void* typeList);
     // FUNCTION: GAMEMD 0x50E000 (decl; reloc) -- takes one cell by value, RET 4.
     void FUN_0050E000(Cell cell);
+    // FUNCTION: GAMEMD 0x50DAA0 -- StartingEdge when it is 0..3, else 0.
+    int FUN_0050DAA0() const;
+    // FUNCTION: GAMEMD 0x50DAC0 -- the map edge opposite Edge (0->2, 1->3, 2->0, 3->1), else 0.
+    int FUN_0050DAC0() const;
     // FUNCTION: GAMEMD 0x4F9A50 (decl; reloc) -- is the other house an ally (one stack argument).
     UnitTypeClass* FUN_00505310(const DynamicVectorClass<UnitTypeClass*>& types); // GAMEMD 0x505310
     void FUN_004FC060(ObjectClass* object, bool value); // GAMEMD 0x4FC060

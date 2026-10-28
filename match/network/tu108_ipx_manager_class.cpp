@@ -12,22 +12,70 @@
 // order. IPXManagerClass is declared in connman_class.h.
 
 #include <string.h>
+#include <math.h>
+#pragma intrinsic(pow)
+#include "../core/header_init_shapes.h"
+#include "../core/mathtbl_init_shapes.h"
 #include "transport/connman_class.h"
 #include "transport/ipx_interface_class.h"
 #include "../core/vector_class.h"
 
 // ---- run-time initialised copies of the shared tuning globals -------------
+// The unit's header group, in retail __xc order (0x5406E0-0x5408E6).
 
-// GLOBAL: GAMEMD 0xAA0650
-extern double DAT_00AA0650;
+// FUNCTION: GAMEMD (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+double __cdecl FUN_004CAD50(double value);
+double __cdecl FUN_004CADE0(double value);
+
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
 // GLOBAL: GAMEMD 0x7EC158
 const double DAT_007EC158 = 60.0;
+// GLOBAL: GAMEMD 0x7EC160
+const double DAT_007EC160 = 0.017453292519943295;
 
+// SYNTHETIC: GAMEMD 0x5406E0
+// GLOBAL: GAMEMD 0xAA0650
+double DAT_00AA0650 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
+// SYNTHETIC: GAMEMD 0x540710
 // GLOBAL: GAMEMD 0xAA06A0
 double DAT_00AA06A0 = DAT_00AA0650 / DAT_007EC158;
 
+// SYNTHETIC: GAMEMD 0x540730
 // GLOBAL: GAMEMD 0xAA0688
 double DAT_00AA0688 = 1.0 / DAT_00AA06A0;
+
+// SYNTHETIC: GAMEMD 0x540750
+// GLOBAL: GAMEMD 0xAA0680
+double DAT_00AA0680 = DAT_007EC160 * 45.0;
+// SYNTHETIC: GAMEMD 0x540770
+// GLOBAL: GAMEMD 0xAA0658
+double DAT_00AA0658 = DAT_007EC160 * 60.0;
+// SYNTHETIC: GAMEMD 0x540790
+// GLOBAL: GAMEMD 0xAA0630
+double DAT_00AA0630 = DAT_007EC160 * 90.0;
+// SYNTHETIC: GAMEMD 0x5407B0
+// GLOBAL: GAMEMD 0xAA06A8
+int DAT_00AA06A8 = (int)(FUN_004CAD50(DAT_00AA0630 - DAT_00AA0658) * DAT_00AA0650 * 0.5);
+// SYNTHETIC: GAMEMD 0x5407F0
+// GLOBAL: GAMEMD 0xAA0660
+double DAT_00AA0660 = FUN_004CADE0(DAT_00AA06A8 * 0.00390625);
+// SYNTHETIC: GAMEMD 0x540820
+// GLOBAL: GAMEMD 0xAA0678
+double DAT_00AA0678 = FUN_004CADE0((DAT_00AA06A8 * 2) / DAT_00AA0650);
+// SYNTHETIC: GAMEMD 0x540850
+// GLOBAL: GAMEMD 0xAA069C
+int DAT_00AA069C = (int)(DAT_00AA06A8 * 4 + 0.5);
+// SYNTHETIC: GAMEMD 0x540880
+// GLOBAL: GAMEMD 0xAA0648
+HeaderCellInit DAT_00AA0648(0, 0);
+// SYNTHETIC: GAMEMD 0x540890
+// GLOBAL: GAMEMD 0xAA0668
+HeaderCoordInit DAT_00AA0668(0, 0, 0);
 
 struct TuningCoordInit_540
 {
@@ -37,8 +85,13 @@ struct TuningCoordInit_540
     TuningCoordInit_540(int x, int y, int z) { X = x; Y = y; Z = z; }
 };
 
+// SYNTHETIC: GAMEMD 0x5408B0
 // GLOBAL: GAMEMD 0xAA0690
 TuningCoordInit_540 DAT_00AA0690(128, 128, 0);
+
+// SYNTHETIC: GAMEMD 0x5408D0
+// GLOBAL: GAMEMD 0xAA0638
+MathTblZero4 DAT_00AA0638;
 
 // The 12-byte address block the forwarding step sends to; only the dword at +4
 // is set at run time (the loopback IP).
@@ -80,12 +133,6 @@ extern int DAT_00B052EC;
 
 // GLOBAL: GAMEMD 0xA8E2B2 -- per-player port words.
 extern unsigned short Ports_00A8E2B2[];
-
-// SYNTHETIC: GAMEMD 0x540710
-
-// SYNTHETIC: GAMEMD 0x540730
-
-// SYNTHETIC: GAMEMD 0x5408B0
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5408F0
