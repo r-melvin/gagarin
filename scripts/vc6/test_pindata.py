@@ -121,16 +121,35 @@ class PinTests(unittest.TestCase):
                            [sym("_g", 0, 0, coffgen.CLASS_EXTERNAL)])
         plan = {"global": {"_g": 0x7E1000}, "object": {}}
         out, count, pins = pindata.retarget_object(Path("x.obj"), obj, plan)
-        self.assertEqual((count, pins), (1, {"_g@pin007E1000": 0x7E1000}))
+        self.assertEqual((count, pins), (1, {"_g@pin007E1000": 0x7E1000}))   # DIR32 only: no rel companion
         names = {n: i for i, n, *_ in coffgen.read_symbols(out)}
         self.assertIn("_g@pin007E1000", names)
         reloc = struct.unpack_from("<IIH", out, 20 + 40 + 6)
         self.assertEqual(reloc[1], names["_g@pin007E1000"])
         self.assertEqual(out[20 + 40 + 1:20 + 40 + 5], b"\x08\0\0\0")   # addend untouched
 
+    def test_rel32_sites_use_the_image_base_relative_companion(self):
+        obj = build_object([("_f", b"\xe8\0\0\0\0\xa1\0\0\0\0\xc3", [(1, 1, pindata.REL32), (6, 1, pindata.DIR32)])],
+                           [sym("_g", 0, 0, coffgen.CLASS_EXTERNAL)])
+        plan = {"global": {"_g": 0x7C8D20}, "object": {}}
+        out, count, pins = pindata.retarget_object(Path("x.obj"), obj, plan)
+        self.assertEqual(count, 2)
+        self.assertEqual(pins, {"_g@pin007C8D20": 0x7C8D20, "_g@pinrel007C8D20": 0x7C8D20 - 0x400000})
+        names = {i: n for i, n, *_ in coffgen.read_symbols(out)}
+        base = 20 + 40 + 11   # relocations follow the 11 code bytes
+        self.assertEqual(names[struct.unpack_from("<I", out, base + 4)[0]], "_g@pinrel007C8D20")
+        self.assertEqual(names[struct.unpack_from("<I", out, base + 14)[0]], "_g@pin007C8D20")
+
+    def test_unused_pin_names_are_not_added(self):
+        obj = build_object([("_f", b"\xa1\0\0\0\0\xc3", [(1, 1, pindata.DIR32)])],
+                           [sym("_g", 0, 0, coffgen.CLASS_EXTERNAL)])
+        out, count, used = coffgen.retarget_relocations(obj, {1: "_a"}, {1: "_b"})
+        self.assertEqual((count, used), (1, {"_a"}))
+        self.assertNotIn("_b", [n for _, n, *_ in coffgen.read_symbols(out)])
+
     def test_retarget_relocations_noop(self):
         obj = build_object([("_f", b"\xc3", [])])
-        self.assertEqual(coffgen.retarget_relocations(obj, {}), (obj, 0))
+        self.assertEqual(coffgen.retarget_relocations(obj, {}), (obj, 0, set()))
 
 
 if __name__ == "__main__":

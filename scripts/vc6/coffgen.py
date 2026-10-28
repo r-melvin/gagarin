@@ -19,6 +19,7 @@ SCN_CNT_INITIALIZED_DATA = 0x00000040
 SCN_MEM_WRITE = 0x80000000
 SCN_LNK_NRELOC_OVFL = 0x01000000
 REL_DIR32 = 6
+REL_REL32 = 0x14
 ALIGN = {1: 0x00100000, 2: 0x00200000, 4: 0x00300000, 8: 0x00400000, 16: 0x00500000}
 CLASS_EXTERNAL = 2
 CLASS_STATIC = 3
@@ -273,32 +274,25 @@ def absolutise_symbols(data, mapping):
     return bytes(out), count
 
 
-def retarget_relocations(data, mapping):
-    """Return (object bytes, count) with relocations against symbol index i
-    redirected to a new undefined external named mapping[i].
+def retarget_relocations(data, mapping, rel32_mapping=None):
+    """Return (object bytes, count, used names) with relocations against symbol index i
+    redirected to a new undefined external named mapping[i]; REL32 relocations
+    use rel32_mapping[i] instead when it has one (LINK 6 computes a REL32 to an
+    absolute symbol against the unrelocated site, so it needs a symbol that is
+    the address minus the image base). Only names actually used are appended.
 
     One undefined external is appended per distinct new name (indices of the
     existing symbols do not change), so the new names must be defined elsewhere
     in the link, e.g. as absolute symbols. Addends stored in the section data
     are untouched: the linker adds them to the new symbol's value."""
-    if not mapping:
-        return bytes(data), 0
+    rel32_mapping = rel32_mapping or {}
+    if not mapping and not rel32_mapping:
+        return bytes(data), 0, set()
     data = bytearray(data)
     nsec = struct.unpack_from("<H", data, 2)[0]
     symptr, nsyms = struct.unpack_from("<II", data, 8)
     strtab_at = symptr + nsyms * 18
-    strtab = bytearray(data[strtab_at:])
-    added, new_index = bytearray(), {}
-    for name in sorted(set(mapping.values())):
-        raw = name.encode("latin-1")
-        if len(raw) <= 8:
-            field = raw.ljust(8, b"\0")
-        else:
-            field = struct.pack("<II", 0, len(strtab))
-            strtab.extend(raw + b"\0")
-        new_index[name] = nsyms + len(new_index)
-        added += field + struct.pack("<IhHBB", 0, 0, 0, CLASS_EXTERNAL, 0)
-    count = 0
+    sites = []   # (offset of the symbol field, new name)
     for i in range(nsec):
         off = 20 + 40 * i
         relptr = struct.unpack_from("<I", data, off + 24)[0]
@@ -308,10 +302,24 @@ def retarget_relocations(data, mapping):
             nrel, first = struct.unpack_from("<I", data, relptr)[0], 1   # first record holds the real count
         for r in range(first, nrel):
             roff = relptr + 10 * r
-            symidx = struct.unpack_from("<I", data, roff + 4)[0]
-            if symidx in mapping:
-                struct.pack_into("<I", data, roff + 4, new_index[mapping[symidx]])
-                count += 1
+            symidx, kind = struct.unpack_from("<IH", data, roff + 4)
+            new = (rel32_mapping.get(symidx) if kind == REL_REL32 else None) or mapping.get(symidx)
+            if new:
+                sites.append((roff + 4, new))
+    used = {name for _, name in sites}
+    strtab = bytearray(data[strtab_at:])
+    added, new_index = bytearray(), {}
+    for name in sorted(used):
+        raw = name.encode("latin-1")
+        if len(raw) <= 8:
+            field = raw.ljust(8, b"\0")
+        else:
+            field = struct.pack("<II", 0, len(strtab))
+            strtab.extend(raw + b"\0")
+        new_index[name] = nsyms + len(new_index)
+        added += field + struct.pack("<IhHBB", 0, 0, 0, CLASS_EXTERNAL, 0)
+    for at, name in sites:
+        struct.pack_into("<I", data, at, new_index[name])
     struct.pack_into("<I", strtab, 0, len(strtab))
     struct.pack_into("<I", data, 12, nsyms + len(new_index))
-    return bytes(data[:strtab_at]) + bytes(added) + bytes(strtab), count
+    return bytes(data[:strtab_at]) + bytes(added) + bytes(strtab), len(sites), used

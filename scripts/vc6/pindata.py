@@ -14,6 +14,10 @@ against that symbol (in the link copy of the object) to a new absolute symbol
 "<name>@pin<VA>", so the object's own COMDAT or static storage is left intact
 and simply becomes unreferenced.
 
+Calls: REL32 sites to code give "calls" {name: retail VA} for the names that derive to a single
+address (link_m1 uses them to hang library names on the engine-range stub they call, and
+tail_layout.py to resolve library sections that match in several places).
+
 Keys. A symbol that is defined in this object as a COMDAT (float and string
 literals, vtables, inline data) or is file-local (statics, section symbols such
 as .rdata) is pinned per object: retail pools literals per module, so one name
@@ -45,8 +49,16 @@ def in_data(va):
     return any(lo <= va < hi for lo, hi in DATA_RANGES)
 
 
+IMAGE_BASE = 0x400000
+
+
 def pin_name(name, va):
     return f"{name}@pin{va:08X}"
+
+
+def rel_pin_name(name, va):
+    """Companion for REL32 sites: defined as va - image base (LINK 6 quirk, see coffgen.retarget_relocations)."""
+    return f"{name}@pinrel{va:08X}"
 
 
 def load_retail(binary=None):
@@ -108,6 +120,7 @@ def derive(objdir, index, manifest, pe, pe_sections):
     cache = {}
     obs_object = {}   # (path, symidx) -> {base: sites}
     obs_global = {}   # name -> {base: [(path, symidx, sites)]}
+    obs_calls = {}    # name -> {call target VA: sites} (REL32 to code)
     skipped = {"text_or_other": 0, "rows": 0, "sites": 0}
     for row in manifest:
         if row["status"] != "matched":
@@ -129,10 +142,17 @@ def derive(objdir, index, manifest, pe, pe_sections):
         for idx, base, kind in site_targets(data, sections, symbols, row["sym"], int(row["addr"], 16),
                                             int(row["len"], 16), pe, pe_sections):
             skipped["sites"] += 1
-            if not in_data(base):
-                skipped["text_or_other"] += 1
-                continue
             how = classify(data, symbols[idx])
+            # DIR32 sites are pinned wherever they point: function pointers (an atexit callback _$E<n>
+            # whose retail callee is another TU's body, project names no matched row provides) and
+            # constants that matched code takes as the "address" of an extern.
+            code_pointer = kind == DIR32 and not symbols[idx]["name"].startswith((".", "$"))
+            if not in_data(base) and not code_pointer:
+                skipped["text_or_other"] += 1
+                if kind == REL32 and how == "global":
+                    obs_calls.setdefault(symbols[idx]["name"], {}).setdefault(base, 0)
+                    obs_calls[symbols[idx]["name"]][base] += 1
+                continue
             if how == "object":
                 obs_object.setdefault((path, idx), {}).setdefault(base, 0)
                 obs_object[(path, idx)][base] += 1
@@ -179,21 +199,47 @@ def derive(objdir, index, manifest, pe, pe_sections):
         "per_object_names_with_several_addresses": len(varying),
         "literal_content_differs": literal_mismatch,
     }
-    return {"global": global_pins, "object": object_pins, "report": report}
+    # A COMDAT is defined in every object that uses it and LINK keeps one copy (the matched
+    # function's own object need not be the one it keeps), so every copy's references to a
+    # COMDAT name that derives to one address everywhere are pinned alike.
+    by_name = {}
+    for path, pins in object_pins.items():
+        for idx, (name, base) in pins.items():
+            if cache[path][2][idx]["storage_class"] == coffgen.CLASS_EXTERNAL:
+                by_name.setdefault(name, set()).add(base)
+    comdat_pins = {name: next(iter(vas)) for name, vas in by_name.items() if len(vas) == 1}
+    calls = {name: next(iter(vas)) for name, vas in obs_calls.items() if len(vas) == 1}
+    report["call_names_with_several_targets"] = sorted(n for n, v in obs_calls.items() if len(v) > 1)
+    report["comdat_pins"] = len(comdat_pins)
+    return {"global": global_pins, "object": object_pins, "comdat": comdat_pins,
+            "rejected": {r["symbol"] for r in rejected if r["scope"] == "global"}, "calls": calls, "report": report}
 
 
 def retarget_object(path, data, plan):
-    """(object bytes, retargeted symbols, {pin symbol: va}) for one link copy of an object."""
-    mapping, pins = {}, {}
-    for idx, (name, va) in plan["object"].get(path, {}).items():
+    """(object bytes, retargeted relocations, {pin symbol: absolute value}) for one link copy of an object."""
+    mapping, rel_mapping, pins = {}, {}, {}
+
+    def put(idx, name, va):
         mapping[idx] = pin_name(name, va)
+        rel_mapping[idx] = rel_pin_name(name, va)
         pins[mapping[idx]] = va
-    if plan["global"]:
+        pins[rel_mapping[idx]] = va - IMAGE_BASE
+
+    for idx, (name, va) in plan["object"].get(path, {}).items():
+        put(idx, name, va)
+    if plan["global"] or plan.get("comdat"):
         for idx, name, _, section, scl, _ in coffgen.read_symbols(data):
-            if scl == coffgen.CLASS_EXTERNAL and name in plan["global"] and idx not in mapping \
-                    and not (section > 0 and _comdat(data, section)):
+            if scl != coffgen.CLASS_EXTERNAL or idx in mapping:
+                continue
+            if section > 0 and _comdat(data, section):
+                va = plan.get("comdat", {}).get(name)
+            elif name in plan["global"]:
                 va = plan["global"][name]
-                mapping[idx] = pin_name(name, va)
-                pins[mapping[idx]] = va
-    data, _ = coffgen.retarget_relocations(data, mapping)
-    return data, len(mapping), pins
+            elif name not in plan.get("rejected", ()):
+                va = plan.get("comdat", {}).get(name)   # undefined here, a COMDAT elsewhere
+            else:
+                va = None
+            if va is not None:
+                put(idx, name, va)
+    data, sites, used = coffgen.retarget_relocations(data, mapping, rel_mapping)
+    return data, sites, {name: va for name, va in pins.items() if name in used}
