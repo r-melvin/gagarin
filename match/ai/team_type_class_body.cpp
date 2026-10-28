@@ -94,6 +94,9 @@ TeamTypeClass::~TeamTypeClass()
     DAT_00B0F670.RemoveItem(this);
 }
 
+// SYNTHETIC: GAMEMD 0x6F20D0
+// TeamTypeClass scalar deleting destructor (primary slot 8), the destructor expanded in place.
+
 // FUNCTION: GAMEMD 0x6F1BB0
 HRESULT __stdcall TeamTypeClass::Load(IStream* pStm)
 {

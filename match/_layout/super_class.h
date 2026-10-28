@@ -24,8 +24,17 @@ class SuperClass : public AbstractClass
 {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // slot3, existing body
+    virtual HRESULT __stdcall Load(IStream* pStm);          // slot5  0x6CDEF0
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // slot6 existing body
+    virtual void vf_10(void* target, bool removed);         // slot10 0x6CDFF0
+    virtual int vf_11();                                    // slot11 0x6CE200
+    virtual int vf_12();                                    // slot12 0x6CE210
+    virtual int __stdcall vf_rtti_3();                      // +4 table slot3 0x6CE1F0
     virtual void vf_13(Obj_004A1D30* crc);                  // slot13 0x6CE020
     int GetRechargeTime() const; // 0x6CC260
+    // The stream loader's in-place construction: the base only (retail 0x410170).
+    struct LoadTag {};
+    SuperClass(LoadTag) {}
     int           CustomChargeTime;      // +0x24 ctor MOV [ESI+0x24],EAX(-1) @0x006CAFA7
     void*         Type;                  // +0x28 SuperWeaponTypeClass*; ctor =arg1 @0x006CAFA4
     void*         Owner;                 // +0x2C HouseClass*; ctor =arg2 @0x006CAFAA

@@ -197,6 +197,9 @@ public:
     virtual void vf_10(void* a1, bool a2);                         // 10  0x4D9960
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x4DBAD0
     virtual bool vf_53();                                          // 53  0x4DB260
+    virtual bool vf_80(int a1, int a2, int a3, int a4);            // 80  0x4D7D50
+    virtual bool vf_81(int a1, int a2, int a3);                    // 81  0x4D74E0
+    virtual int vf_136();                                          // 136 0x4D6AA0
     virtual int vf_138();                                          // 138 0x4D5350
     virtual int vf_139();                                          // 139 0x4D4200
     virtual int vf_151();                                          // 151 0x4D4280

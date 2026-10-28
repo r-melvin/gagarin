@@ -81,6 +81,9 @@ public:
     virtual HouseClass* vf_52(bool a1);                 // 52  0x7465F0
     virtual void vf_284();                              // 284 0x746720
     virtual int vf_151();                               // 151 0x740B10
+    virtual bool vf_53();                               // 53  0x7440B0
+    virtual bool vf_80(int a1, int a2, int a3, int a4); // 80  0x738910
+    virtual bool vf_81(int a1, int a2, int a3);         // 81  0x738890
     void FUN_00746630(ObjectTypeClass* type);           // 0x746630
     bool FUN_00746D10();                                // 0x746D10
     bool FUN_00746DB0();                                // 0x746DB0
