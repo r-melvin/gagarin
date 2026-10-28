@@ -21,6 +21,7 @@
 class FieldClass
 {
 public:
+    ~FieldClass();      // GAMEMD 0x4CB890 (decl; reloc)
     void HostToNet();   // GAMEMD 0x4CB8B0 __thiscall
     void NetToHost();   // GAMEMD 0x4CB920 __thiscall
 
@@ -51,6 +52,9 @@ class PacketClass
 {
 public:
     PacketClass(char* pBuffer);   // GAMEMD 0x625AF0 __thiscall
+    ~PacketClass();               // GAMEMD 0x625AB0 __thiscall
+    void AddField(FieldClass* field);          // GAMEMD 0x625AE0 __thiscall
+    FieldClass* FindField(const char* id);     // GAMEMD 0x625D20 __thiscall
 
     unsigned short Size;          // +0x00
     unsigned short ID;            // +0x02

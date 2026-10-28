@@ -30,7 +30,8 @@ public:
     virtual void FUN_slot10();
     virtual void FUN_slot14();
     virtual void FUN_slot18();
-    virtual void FUN_slot1C();
+    // Slot 7 (+0x1C): stdcall, seven arguments (name, id, out buffer, length, timeout, flag, -1).
+    virtual int FUN_slot1C(const char* name, int a2, char* out, int length, int timeout, int flag, int a7);
     // FUNCTION: GAMEMD 0x7754A0
     virtual void Set_Value_64(int value);
     // FUNCTION: GAMEMD 0x7754B0
