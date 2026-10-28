@@ -30,4 +30,12 @@ struct HeaderCellInit : CellStruct
     HeaderCellInit(short x, short y) { X = x; Y = y; }
 };
 
+// Four zeroed ints (a rectangle or four-slot record with a user constructor).
+struct HeaderZeroQuad
+{
+    int a, b, c, d;
+    HeaderZeroQuad(int v) { a = v; b = v; c = v; d = v; }
+};
+GG_STATIC_ASSERT(sizeof(HeaderZeroQuad) == 0x10);
+
 #endif  // GG_MATCH_CORE_HEADER_INIT_SHAPES_H
