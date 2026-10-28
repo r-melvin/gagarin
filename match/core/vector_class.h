@@ -14,6 +14,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+struct AbstractNoInit;
 
 // VectorClass<T> has seven 4-byte slots. In VectorClass<int>, the raw
 // address point 0x7E4DB8 puts Clear at +0x0C; the ToolTip base address point
@@ -23,6 +24,7 @@ template<class T> class VectorClass {
 public:
     VectorClass(int capacity = 0, T* pMem = 0);
     VectorClass(const VectorClass<T>& other);
+    VectorClass(const AbstractNoInit&) {}
     VectorClass<T>& operator=(const VectorClass<T>& other);
     virtual ~VectorClass();
     virtual bool operator==(const VectorClass<T>&) const;
@@ -67,6 +69,7 @@ template<class T> class DynamicVectorClass : public VectorClass<T> {
 public:
     DynamicVectorClass(int capacity = 0, T* pMem = 0);
     DynamicVectorClass(const DynamicVectorClass<T>& other);
+    DynamicVectorClass(const AbstractNoInit& noInit) : VectorClass<T>(noInit) {}
     virtual bool SetCapacity(int capacity, T* pMem);
     virtual void Clear();
     virtual int FindItemIndex(const T& item) const;

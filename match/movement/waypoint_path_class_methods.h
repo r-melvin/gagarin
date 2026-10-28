@@ -24,6 +24,7 @@ class WaypointPathClass : public AbstractClass
 {
 public:
     explicit WaypointPathClass(int index) throw(); // GAMEMD 0x763810, RET4
+    WaypointPathClass(const AbstractNoInit& noInit) throw(); // GAMEMD 0x7637D0, RET4
     // Native primary table7F6E70 overrides; declarations only.
     virtual HRESULT __stdcall GetClassID(CLSID* id); // slot3,763C30
     virtual HRESULT __stdcall Load(IStream* stream); // slot5,763C70

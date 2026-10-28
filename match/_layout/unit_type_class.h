@@ -33,6 +33,15 @@ public:
     virtual CoordStruct vf_30();                        // 30  0x747590
     virtual CoordStruct vf_31();                        // 31  0x7475D0
     virtual void* vf_35(void* house);                   // 35  0x747560
+    // FUNCTION: GAMEMD 0x7472C0 (no-initialisation constructor, used by Load)
+    UnitTypeClass(const AbstractNoInit& noInit);
+    // FUNCTION: GAMEMD 0x7472F0 (destructor; slot 8 = 0x748190)
+    ~UnitTypeClass();
+    virtual HRESULT __stdcall Load(IStream* pStm);      // 5   0x748010
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // 3 0x747F30
+    virtual int vf_11();                                // 11  0x748170
+    virtual int vf_12();                                // 12  0x748160
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house); // 32 0x7474B0
     int          ArrayIndex;               // +0xDF8
     int          MovementRestrictedTo;     // +0xDFC (LandType enum)
     CoordStruct  HalfDamageSmokeLocation;  // +0xE00 (0xC)
