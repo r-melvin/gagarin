@@ -74604,7 +74604,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<const CommandClass*> exit destructor stub (DAT_0087F658)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74613,7 +74613,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<LightConvertClass*> exit destructor stub (DAT_0087F698)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74622,7 +74622,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<IsometricTileClass*> exit destructor stub (DAT_0087F750)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_object_dtor_stubs.cpp",
@@ -74640,7 +74640,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<MixFileClass*> exit destructor stub (DAT_00884D90)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74649,7 +74649,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<MixFileClass*> exit destructor stub (DAT_00884DC0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74658,7 +74658,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<MixFileClass*> exit destructor stub (DAT_00884DA8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74667,7 +74667,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<MixFileClass*> exit destructor stub (DAT_00884DE0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74676,7 +74676,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<ScriptClass*> exit destructor stub (DAT_008872B0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74685,7 +74685,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<VoxelAnimClass*> exit destructor stub (DAT_00887388)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74694,7 +74694,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<WarheadTypeClass*> exit destructor stub (DAT_008874C0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -74703,7 +74703,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<WeaponTypeClass*> exit destructor stub (DAT_00887568)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/abstract_class_forward_methods.cpp",
@@ -74757,7 +74757,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<AirstrikeClass*> exit destructor stub (DAT_00889FB8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/abstract_class_forward_methods.cpp",
@@ -75585,7 +75585,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<EgoClass*> exit destructor stub (DAT_008A3770)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_member_dtor_stubs_a.cpp",
@@ -75720,7 +75720,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<FootClass*> exit destructor stub (DAT_008B3DC0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
@@ -75837,7 +75837,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<AITriggerTypeClass*> exit destructor stub (DAT_00A8B200)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75846,7 +75846,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<TriggerTypeClass*> exit destructor stub (DAT_008B4178)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75855,7 +75855,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<TriggerClass*> exit destructor stub (DAT_00A8EAE8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75864,7 +75864,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<BuildingLightClass*> exit destructor stub (DAT_008B4190)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75873,7 +75873,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<ParticleSystemClass*> exit destructor stub (DAT_00A80208)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75882,7 +75882,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<TubeClass*> exit destructor stub (DAT_008B4138)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75891,7 +75891,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<WaveClass*> exit destructor stub (DAT_00A8EC38)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75900,7 +75900,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<BulletClass*> exit destructor stub (DAT_00A8ED40)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75909,7 +75909,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<OverlayClass*> exit destructor stub (DAT_00A8EC50)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75918,7 +75918,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<ParticleClass*> exit destructor stub (DAT_00A83DC8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75927,7 +75927,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<SmudgeClass*> exit destructor stub (DAT_00A8B1E0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75936,7 +75936,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<TerrainClass*> exit destructor stub (DAT_00A8E988)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75945,7 +75945,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<InfantryClass*> exit destructor stub (DAT_00A83DE8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75954,7 +75954,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<BuildingClass*> exit destructor stub (DAT_00A8EB40)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75963,7 +75963,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<AircraftClass*> exit destructor stub (DAT_00A8E390)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75972,7 +75972,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<UnitClass*> exit destructor stub (DAT_008B4108)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75981,7 +75981,7 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<HouseClass*> exit destructor stub (DAT_00A80228)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -75990,304 +75990,601 @@
   "len": "0x3b",
   "name": "DynamicVectorClass<AnimClass*> exit destructor stub (DAT_00A8E9A8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E6E20",
-  "sym": "_$E162",
+  "sym": "_$E2",
   "len": "0x3b",
   "name": "DynamicVectorClass<TeamClass*> exit destructor stub (DAT_008B40E8)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E6EA0",
-  "sym": "_$E167",
+  "sym": "_$E7",
   "len": "0x3b",
   "name": "DynamicVectorClass<FactoryClass*> exit destructor stub (DAT_00A83E30)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E6F20",
-  "sym": "_$E172",
+  "sym": "_$E12",
   "len": "0x3b",
   "name": "DynamicVectorClass<CampaignClass*> exit destructor stub (DAT_00A83CF8)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E6FA0",
-  "sym": "_$E177",
+  "sym": "_$E17",
   "len": "0x3b",
   "name": "DynamicVectorClass<SideClass*> exit destructor stub (DAT_008B4120)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7020",
-  "sym": "_$E182",
+  "sym": "_$E22",
   "len": "0x3b",
   "name": "DynamicVectorClass<HouseTypeClass*> exit destructor stub (DAT_00A83C98)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E70A0",
-  "sym": "_$E187",
+  "sym": "_$E27",
   "len": "0x3b",
   "name": "DynamicVectorClass<TaskForceClass*> exit destructor stub (DAT_00A8E8D0)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7120",
-  "sym": "_$E192",
+  "sym": "_$E32",
   "len": "0x3b",
   "name": "DynamicVectorClass<TeamTypeClass*> exit destructor stub (DAT_00A8ECA0)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E71A0",
-  "sym": "_$E197",
+  "sym": "_$E37",
   "len": "0x3b",
   "name": "DynamicVectorClass<ScriptTypeClass*> exit destructor stub (DAT_008B41C8)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7220",
-  "sym": "_$E202",
+  "sym": "_$E42",
   "len": "0x3b",
   "name": "DynamicVectorClass<OverlayTypeClass*> exit destructor stub (DAT_00A83D80)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E72A0",
-  "sym": "_$E207",
+  "sym": "_$E47",
   "len": "0x3b",
   "name": "DynamicVectorClass<SmudgeTypeClass*> exit destructor stub (DAT_00A8EC18)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7320",
-  "sym": "_$E212",
+  "sym": "_$E52",
   "len": "0x3b",
   "name": "DynamicVectorClass<TerrainTypeClass*> exit destructor stub (DAT_00A8E318)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E73A0",
-  "sym": "_$E217",
+  "sym": "_$E57",
   "len": "0x3b",
   "name": "DynamicVectorClass<BuildingTypeClass*> exit destructor stub (DAT_00A83C68)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7420",
-  "sym": "_$E222",
+  "sym": "_$E62",
   "len": "0x3b",
   "name": "DynamicVectorClass<AircraftTypeClass*> exit destructor stub (DAT_00A8B218)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E74A0",
-  "sym": "_$E227",
+  "sym": "_$E67",
   "len": "0x3b",
   "name": "DynamicVectorClass<UnitTypeClass*> exit destructor stub (DAT_00A83CE0)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7520",
-  "sym": "_$E232",
+  "sym": "_$E72",
   "len": "0x3b",
   "name": "DynamicVectorClass<AnimTypeClass*> exit destructor stub (DAT_008B4150)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E75A0",
-  "sym": "_$E237",
+  "sym": "_$E77",
   "len": "0x3b",
   "name": "DynamicVectorClass<InfantryTypeClass*> exit destructor stub (DAT_00A8E348)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7620",
-  "sym": "_$E242",
+  "sym": "_$E82",
   "len": "0x3b",
   "name": "DynamicVectorClass<BulletTypeClass*> exit destructor stub (DAT_00A83C80)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E76A0",
-  "sym": "_$E247",
+  "sym": "_$E87",
   "len": "0x3b",
   "name": "DynamicVectorClass<VoxelAnimTypeClass*> exit destructor stub (DAT_00A8EB28)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7720",
-  "sym": "_$E252",
+  "sym": "_$E92",
   "len": "0x3b",
   "name": "DynamicVectorClass<IsometricTileTypeClass*> exit destructor stub (DAT_00A8ED28)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E77A0",
-  "sym": "_$E257",
+  "sym": "_$E97",
   "len": "0x3b",
   "name": "DynamicVectorClass<ParticleTypeClass*> exit destructor stub (DAT_00A83D98)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7820",
-  "sym": "_$E262",
+  "sym": "_$E102",
   "len": "0x3b",
   "name": "DynamicVectorClass<ParticleSystemTypeClass*> exit destructor stub (DAT_00A83D68)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E78A0",
-  "sym": "_$E267",
+  "sym": "_$E107",
   "len": "0x3b",
   "name": "DynamicVectorClass<SuperWeaponTypeClass*> exit destructor stub (DAT_00A8E330)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7920",
-  "sym": "_$E272",
+  "sym": "_$E112",
   "len": "0x3b",
   "name": "DynamicVectorClass<SuperClass*> exit destructor stub (DAT_00A83CB8)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E79A0",
-  "sym": "_$E277",
+  "sym": "_$E117",
   "len": "0x3b",
   "name": "DynamicVectorClass<SuperClass*> exit destructor stub (DAT_00A83D50)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7A20",
-  "sym": "_$E282",
+  "sym": "_$E122",
   "len": "0x3b",
   "name": "DynamicVectorClass<TechnoClass*> exit destructor stub (DAT_00A8EC78)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7AA0",
-  "sym": "_$E287",
+  "sym": "_$E127",
   "len": "0x3b",
   "name": "DynamicVectorClass<TechnoTypeClass*> exit destructor stub (DAT_00A8EB00)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7B20",
-  "sym": "_$E292",
+  "sym": "_$E132",
   "len": "0x3b",
   "name": "DynamicVectorClass<ObjectClass*> exit destructor stub (DAT_00A8E360)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7BA0",
-  "sym": "_$E297",
+  "sym": "_$E137",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractTypeClass*> exit destructor stub (DAT_00A8E968)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7C20",
-  "sym": "_$E302",
+  "sym": "_$E142",
   "len": "0x3b",
   "name": "DynamicVectorClass<BuildingClass*> exit destructor stub (DAT_008B41E0)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7CA0",
-  "sym": "_$E307",
+  "sym": "_$E147",
   "len": "0x3b",
   "name": "DynamicVectorClass<AnimClass*> exit destructor stub (DAT_00A83E00)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7D80",
-  "sym": "_$E312",
+  "sym": "_$E152",
   "len": "0x3b",
   "name": "DynamicVectorClass<ObjectClass*> exit destructor stub (DAT_00A8ECB8)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7F70",
-  "sym": "_$E317",
+  "sym": "_$E157",
   "len": "0x3b",
   "name": "DynamicVectorClass<TagClass*> exit destructor stub (DAT_008B41A8)",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "tu": "match/core/static_vector_init_stubs.cpp",
   "addr": "0x4E7FF0",
-  "sym": "_$E322",
+  "sym": "_$E162",
   "len": "0x3b",
   "name": "DynamicVectorClass<TagClass*> exit destructor stub (DAT_008B40C8)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E6DE0",
+  "sym": "_$E4",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TeamClass*> dynamic initializer (DAT_008B40E8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E6E60",
+  "sym": "_$E9",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<FactoryClass*> dynamic initializer (DAT_00A83E30)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E6EE0",
+  "sym": "_$E14",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<CampaignClass*> dynamic initializer (DAT_00A83CF8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E6F60",
+  "sym": "_$E19",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<SideClass*> dynamic initializer (DAT_008B4120)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E6FE0",
+  "sym": "_$E24",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<HouseTypeClass*> dynamic initializer (DAT_00A83C98)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7060",
+  "sym": "_$E29",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TaskForceClass*> dynamic initializer (DAT_00A8E8D0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E70E0",
+  "sym": "_$E34",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TeamTypeClass*> dynamic initializer (DAT_00A8ECA0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7160",
+  "sym": "_$E39",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<ScriptTypeClass*> dynamic initializer (DAT_008B41C8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E71E0",
+  "sym": "_$E44",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<OverlayTypeClass*> dynamic initializer (DAT_00A83D80)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7260",
+  "sym": "_$E49",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<SmudgeTypeClass*> dynamic initializer (DAT_00A8EC18)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E72E0",
+  "sym": "_$E54",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TerrainTypeClass*> dynamic initializer (DAT_00A8E318)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7360",
+  "sym": "_$E59",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<BuildingTypeClass*> dynamic initializer (DAT_00A83C68)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E73E0",
+  "sym": "_$E64",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AircraftTypeClass*> dynamic initializer (DAT_00A8B218)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7460",
+  "sym": "_$E69",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<UnitTypeClass*> dynamic initializer (DAT_00A83CE0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E74E0",
+  "sym": "_$E74",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AnimTypeClass*> dynamic initializer (DAT_008B4150)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7560",
+  "sym": "_$E79",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<InfantryTypeClass*> dynamic initializer (DAT_00A8E348)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E75E0",
+  "sym": "_$E84",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<BulletTypeClass*> dynamic initializer (DAT_00A83C80)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7660",
+  "sym": "_$E89",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<VoxelAnimTypeClass*> dynamic initializer (DAT_00A8EB28)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E76E0",
+  "sym": "_$E94",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<IsometricTileTypeClass*> dynamic initializer (DAT_00A8ED28)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7760",
+  "sym": "_$E99",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<ParticleTypeClass*> dynamic initializer (DAT_00A83D98)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E77E0",
+  "sym": "_$E104",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<ParticleSystemTypeClass*> dynamic initializer (DAT_00A83D68)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7860",
+  "sym": "_$E109",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<SuperWeaponTypeClass*> dynamic initializer (DAT_00A8E330)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E78E0",
+  "sym": "_$E114",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<SuperClass*> dynamic initializer (DAT_00A83CB8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7960",
+  "sym": "_$E119",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<SuperClass*> dynamic initializer (DAT_00A83D50)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E79E0",
+  "sym": "_$E124",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TechnoClass*> dynamic initializer (DAT_00A8EC78)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7A60",
+  "sym": "_$E129",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TechnoTypeClass*> dynamic initializer (DAT_00A8EB00)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7AE0",
+  "sym": "_$E134",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<ObjectClass*> dynamic initializer (DAT_00A8E360)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7B60",
+  "sym": "_$E139",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AbstractTypeClass*> dynamic initializer (DAT_00A8E968)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7BE0",
+  "sym": "_$E144",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<BuildingClass*> dynamic initializer (DAT_008B41E0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7C60",
+  "sym": "_$E149",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<AnimClass*> dynamic initializer (DAT_00A83E00)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7D40",
+  "sym": "_$E154",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<ObjectClass*> dynamic initializer (DAT_00A8ECB8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7F30",
+  "sym": "_$E159",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TagClass*> dynamic initializer (DAT_008B41A8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_init_stubs.cpp",
+  "addr": "0x4E7FB0",
+  "sym": "_$E164",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<TagClass*> dynamic initializer (DAT_008B40C8)",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_member_dtor_stubs_a.cpp",
@@ -76589,11 +76886,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x5569E0",
-  "sym": "_$E327",
+  "sym": "_$E162",
   "len": "0x3b",
   "name": "DynamicVectorClass<LineTrail*> exit destructor stub (DAT_00ABCB78)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
@@ -76877,11 +77174,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x5BF810",
-  "sym": "_$E332",
+  "sym": "_$E167",
   "len": "0x3b",
   "name": "DynamicVectorClass<const char*> exit destructor stub (DAT_00ABF390)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/global_leaf_helper_methods.cpp",
@@ -76922,11 +77219,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x5D4C90",
-  "sym": "_$E337",
+  "sym": "_$E172",
   "len": "0x3b",
   "name": "DynamicVectorClass<HWND__*> exit destructor stub (DAT_00ABFC90)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/global_vector_add_item_methods.cpp",
@@ -77021,11 +77318,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x5FF210",
-  "sym": "_$E342",
+  "sym": "_$E177",
   "len": "0x3b",
   "name": "DynamicVectorClass<SpotLightClass*> exit destructor stub (DAT_00AC1678)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/ui/ownrdraw.cpp",
@@ -77282,20 +77579,20 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x6590D0",
-  "sym": "_$E347",
+  "sym": "_$E182",
   "len": "0x3b",
   "name": "DynamicVectorClass<RadBeam*> exit destructor stub (DAT_00B04A60)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x65B1A0",
-  "sym": "_$E352",
+  "sym": "_$E187",
   "len": "0x3b",
   "name": "DynamicVectorClass<RadSiteClass*> exit destructor stub (DAT_00B04BD0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/abstract_class_forward_methods.cpp",
@@ -77363,11 +77660,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x68C370",
-  "sym": "_$E357",
+  "sym": "_$E192",
   "len": "0x3b",
   "name": "DynamicVectorClass<ColorScheme*> exit destructor stub (DAT_00B054D0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -77525,11 +77822,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x6AF160",
-  "sym": "_$E362",
+  "sym": "_$E197",
   "len": "0x3b",
   "name": "DynamicVectorClass<SlaveManagerClass*> exit destructor stub (DAT_00B0B5F0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -77624,11 +77921,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x6BB2A0",
-  "sym": "_$E367",
+  "sym": "_$E202",
   "len": "0x3b",
   "name": "DynamicVectorClass<unsigned long> exit destructor stub (DAT_00B0BC88)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/Startup.cpp",
@@ -78470,11 +78767,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x6DCFC0",
-  "sym": "_$E372",
+  "sym": "_$E207",
   "len": "0x3b",
   "name": "DynamicVectorClass<TActionClass*> exit destructor stub (DAT_00B0E658)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/ai/TAction.cpp",
@@ -78488,11 +78785,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x6E4DA0",
-  "sym": "_$E377",
+  "sym": "_$E212",
   "len": "0x3b",
   "name": "DynamicVectorClass<TagClass*> exit destructor stub (DAT_00B0E720)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/ai/tag_class_body.cpp",
@@ -78677,11 +78974,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x71E660",
-  "sym": "_$E382",
+  "sym": "_$E217",
   "len": "0x3b",
   "name": "DynamicVectorClass<TEventClass*> exit destructor stub (DAT_00B0F1A0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -78695,11 +78992,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x721680",
-  "sym": "_$E387",
+  "sym": "_$E222",
   "len": "0x3b",
   "name": "DynamicVectorClass<TiberiumClass*> exit destructor stub (DAT_00B0F4E8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -78713,110 +79010,110 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725310",
-  "sym": "_$E392",
+  "sym": "_$E227",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F720)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725390",
-  "sym": "_$E397",
+  "sym": "_$E232",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F670)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725410",
-  "sym": "_$E402",
+  "sym": "_$E237",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F618)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725490",
-  "sym": "_$E407",
+  "sym": "_$E242",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F708)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725510",
-  "sym": "_$E412",
+  "sym": "_$E247",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F5B8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725590",
-  "sym": "_$E417",
+  "sym": "_$E252",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F640)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725610",
-  "sym": "_$E422",
+  "sym": "_$E257",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F658)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725690",
-  "sym": "_$E427",
+  "sym": "_$E262",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F5F0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725710",
-  "sym": "_$E432",
+  "sym": "_$E267",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F5D8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725790",
-  "sym": "_$E437",
+  "sym": "_$E272",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F6C8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725810",
-  "sym": "_$E442",
+  "sym": "_$E277",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F6F0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x725890",
-  "sym": "_$E447",
+  "sym": "_$E282",
   "len": "0x3b",
   "name": "DynamicVectorClass<AbstractClass*> exit destructor stub (DAT_00B0F698)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -78974,20 +79271,20 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x750340",
-  "sym": "_$E452",
+  "sym": "_$E287",
   "len": "0x3b",
   "name": "DynamicVectorClass<VocClass*> exit destructor stub (DAT_00B1D378)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x752250",
-  "sym": "_$E457",
+  "sym": "_$E292",
   "len": "0x3b",
   "name": "DynamicVectorClass<VoxClass*> exit destructor stub (DAT_00B1D4A0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/global_leaf_helper_methods.cpp",
@@ -79010,11 +79307,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x7591C0",
-  "sym": "_$E462",
+  "sym": "_$E297",
   "len": "0x3b",
   "name": "DynamicVectorClass<MovieHandle*> exit destructor stub (DAT_00B45B58)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -79073,11 +79370,11 @@
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x7635D0",
-  "sym": "_$E467",
+  "sym": "_$E302",
   "len": "0x3b",
   "name": "DynamicVectorClass<WaypointPathClass*> exit destructor stub (DAT_00B72608)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -101484,6 +101781,186 @@
   "sym": "_$E31",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00AC1658)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0470",
+  "sym": "@FUN_006F0470@0",
+  "len": "0x28",
+  "name": "FUN_006F0470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F04E0",
+  "sym": "@FUN_006F04E0@0",
+  "len": "0x13",
+  "name": "FUN_006F04E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0500",
+  "sym": "@FUN_006F0500@0",
+  "len": "0x13",
+  "name": "FUN_006F0500",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0520",
+  "sym": "@FUN_006F0520@0",
+  "len": "0x13",
+  "name": "FUN_006F0520",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0540",
+  "sym": "@FUN_006F0540@0",
+  "len": "0x31",
+  "name": "FUN_006F0540",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0580",
+  "sym": "@FUN_006F0580@0",
+  "len": "0x21",
+  "name": "FUN_006F0580",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F05B0",
+  "sym": "@FUN_006F05B0@0",
+  "len": "0x2c",
+  "name": "FUN_006F05B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F05E0",
+  "sym": "@FUN_006F05E0@0",
+  "len": "0x27",
+  "name": "FUN_006F05E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0610",
+  "sym": "@FUN_006F0610@0",
+  "len": "0xf",
+  "name": "FUN_006F0610",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0620",
+  "sym": "@FUN_006F0620@0",
+  "len": "0x12",
+  "name": "FUN_006F0620",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0640",
+  "sym": "@FUN_006F0640@0",
+  "len": "0x1a",
+  "name": "FUN_006F0640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0660",
+  "sym": "@FUN_006F0660@0",
+  "len": "0x17",
+  "name": "FUN_006F0660",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_006f0470.cpp",
+  "addr": "0x6F0680",
+  "sym": "?FUN_006F0680@@YIHPBD@Z",
+  "len": "0x59",
+  "name": "FUN_006F0680",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "addr": "0x6EC370",
+  "sym": "?FUN_006EC370@Owner_006EDDC0@@QAE_NXZ",
+  "len": "0x21",
+  "name": "Owner_006EDDC0::FUN_006EC370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "addr": "0x6EC3D0",
+  "sym": "?FUN_006EC3D0@Owner_006EDDC0@@QAEPAUMember_006EDDC0@@XZ",
+  "len": "0x7d",
+  "name": "Owner_006EDDC0::FUN_006EC3D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "addr": "0x6EDDC0",
+  "sym": "?FUN_006EDDC0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
+  "len": "0x41",
+  "name": "Owner_006EDDC0::FUN_006EDDC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "addr": "0x6EDE90",
+  "sym": "?FUN_006EDE90@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
+  "len": "0x26",
+  "name": "Owner_006EDDC0::FUN_006EDE90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "addr": "0x6EE1F0",
+  "sym": "?FUN_006EE1F0@Owner_006EDDC0@@QAEXHH@Z",
+  "len": "0x3b",
+  "name": "Owner_006EDDC0::FUN_006EE1F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "addr": "0x6EF470",
+  "sym": "?FUN_006EF470@Owner_006EDDC0@@QAE_NXZ",
+  "len": "0x5c",
+  "name": "Owner_006EDDC0::FUN_006EF470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "addr": "0x6EF5C0",
+  "sym": "?FUN_006EF5C0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@_N@Z",
+  "len": "0x30",
+  "name": "Owner_006EDDC0::FUN_006EF5C0",
   "status": "matched",
   "pct": 100
  }
