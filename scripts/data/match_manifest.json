@@ -72050,6 +72050,132 @@
   "pct": 100
  },
  {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C6590",
+  "sym": "?WordsUsedCount@@YIHPBIH@Z",
+  "len": "0x1c",
+  "name": "WordsUsedCount",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C65B0",
+  "sym": "?WordsIncrement@@YIXPAIH@Z",
+  "len": "0x15",
+  "name": "WordsIncrement",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C65D0",
+  "sym": "?WordsDecrement@@YIXPAIH@Z",
+  "len": "0x1b",
+  "name": "WordsDecrement",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C65F0",
+  "sym": "?WordsNegate@@YIXPAIH@Z",
+  "len": "0x30",
+  "name": "WordsNegate",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C6920",
+  "sym": "?WordsInvert@@YIXPAIH@Z",
+  "len": "0x14",
+  "name": "WordsInvert",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C6940",
+  "sym": "?WordsSetSmall@@YIXPAIIH@Z",
+  "len": "0x15",
+  "name": "WordsSetSmall",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C6960",
+  "sym": "?WordsBitLength@@YIHPBIH@Z",
+  "len": "0x3c",
+  "name": "WordsBitLength",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C69C0",
+  "sym": "?WordsCopy@@YIXPAIPBIH@Z",
+  "len": "0x11",
+  "name": "WordsCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C69E0",
+  "sym": "?WordsCompare@@YIHPBI0H@Z",
+  "len": "0x46",
+  "name": "WordsCompare",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C6A30",
+  "sym": "?WordsAddWithCarry@@YI_NPAIPBI1_NH@Z",
+  "len": "0x6a",
+  "name": "WordsAddWithCarry",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C6B00",
+  "sym": "?WordsSubWithBorrow@@YI_NPAIPBI1_NH@Z",
+  "len": "0x56",
+  "name": "WordsSubWithBorrow",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C61F0",
+  "sym": "?WordsEqualsSmall@@YI_NPBIIH@Z",
+  "len": "0x32",
+  "name": "WordsEqualsSmall",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C8870",
+  "sym": "?BytesReverse@@YIXPAEH@Z",
+  "len": "0x19",
+  "name": "BytesReverse",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C8890",
+  "sym": "?HalfWordCompare@@YIHPBG0@Z",
+  "len": "0x14",
+  "name": "HalfWordCompare",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/header_init_5c91d0.cpp",
   "addr": "0x5C9220",
   "sym": "_$E7",
@@ -84336,9 +84462,9 @@
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x565080",
-  "sym": "?FUN_00565080@@YIXHH@Z",
+  "sym": "_$E2",
   "len": "0xa",
-  "name": "FUN_00565080",
+  "name": "atexit cleanup (InvalidCell)",
   "status": "matched",
   "pct": 100
  },
@@ -84361,11 +84487,20 @@
   "pct": 100
  },
  {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x565060",
+  "sym": "_$E4",
+  "len": "0x16",
+  "name": "dynamic initializer (InvalidCell)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/map/MapGen.cpp",
   "addr": "0x58B760",
-  "sym": "?FUN_0058B760@@YIXHH@Z",
+  "sym": "_$E2",
   "len": "0xa",
-  "name": "FUN_0058B760",
+  "name": "atexit cleanup (DAT_00ABDFD8)",
   "status": "matched",
   "pct": 100
  },
@@ -99125,6 +99260,15 @@
   "name": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
   "status": "partial",
   "pct": 93.6
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x58B740",
+  "sym": "_$E4",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00ABDFD8)",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ai/PlanMgr.cpp",
@@ -126319,7 +126463,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4C60",
-  "sym": "_$E10",
+  "sym": "_$E21",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::SellButton_00B07DF8)",
   "status": "matched",
@@ -126328,7 +126472,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4CA0",
-  "sym": "_$E15",
+  "sym": "_$E26",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::RepairButton_00B0B3A0)",
   "status": "matched",
@@ -126337,7 +126481,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4CE0",
-  "sym": "_$E20",
+  "sym": "_$E31",
   "len": "0x29",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::ButtonArray_00B07C48)",
   "status": "matched",
@@ -126346,7 +126490,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4D40",
-  "sym": "_$E25",
+  "sym": "_$E36",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::Button_00B0B328)",
   "status": "matched",
@@ -126355,7 +126499,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4D80",
-  "sym": "_$E30",
+  "sym": "_$E41",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::Button_00B0B408)",
   "status": "matched",
@@ -126364,7 +126508,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4C80",
-  "sym": "_$E7",
+  "sym": "_$E18",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (SellButton_00B07DF8)",
   "status": "matched",
@@ -126373,7 +126517,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4CC0",
-  "sym": "_$E13",
+  "sym": "_$E24",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (RepairButton_00B0B3A0)",
   "status": "matched",
@@ -126382,7 +126526,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4D10",
-  "sym": "_$E18",
+  "sym": "_$E29",
   "len": "0x30",
   "name": "ShapeButtonClass static member guarded exit stub (ButtonArray_00B07C48)",
   "status": "matched",
@@ -126391,7 +126535,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4D60",
-  "sym": "_$E23",
+  "sym": "_$E34",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (Button_00B0B328)",
   "status": "matched",
@@ -126400,9 +126544,63 @@
  {
   "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
   "addr": "0x6A4DA0",
-  "sym": "_$E28",
+  "sym": "_$E39",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (Button_00B0B408)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "addr": "0x6A4C10",
+  "sym": "_$E9",
+  "len": "0x2c",
+  "name": "dynamic initializer (SBGadget_00B07E58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "addr": "0x6A4C40",
+  "sym": "_$E6",
+  "len": "0x1f",
+  "name": "atexit cleanup (SBGadget_00B07E58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "addr": "0x6A4DC0",
+  "sym": "_$E46",
+  "len": "0x43",
+  "name": "dynamic initializer (SelectArray_00B07E80)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "addr": "0x6A4E10",
+  "sym": "_$E44",
+  "len": "0x30",
+  "name": "atexit cleanup (SelectArray_00B07E80)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "addr": "0x6AACB0",
+  "sym": "??0SidebarSelectClass@@QAE@XZ",
+  "len": "0x2e",
+  "name": "SidebarSelectClass::SidebarSelectClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "addr": "0x6AACE0",
+  "sym": "?FUN_006AACE0@SidebarSelectClass@@QAEXPAUSelectOwnerStrip@@H@Z",
+  "len": "0x11",
+  "name": "SidebarSelectClass::FUN_006AACE0",
   "status": "matched",
   "pct": 100
  },
@@ -132048,5 +132246,167 @@
   "name": "TechnoClass::vf_35",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63F6B0",
+  "sym": "??0PowerClass@@QAE@XZ",
+  "len": "0x77",
+  "name": "PowerClass::PowerClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63F730",
+  "sym": "?vf_07@PowerClass@@UAEXXZ",
+  "len": "0x7b",
+  "name": "PowerClass::vf_07",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63F7E0",
+  "sym": "?vf_50@PowerClass@@UAEXXZ",
+  "len": "0x24",
+  "name": "PowerClass::vf_50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63F810",
+  "sym": "?FUN_0063F810@PowerClass@@QAEXXZ",
+  "len": "0x35",
+  "name": "PowerClass::FUN_0063F810",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63F8F0",
+  "sym": "?FUN_0063F8F0@PowerClass@@QAEHXZ",
+  "len": "0x49",
+  "name": "PowerClass::FUN_0063F8F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63F940",
+  "sym": "?FUN_0063F940@@YIHXZ",
+  "len": "0x19",
+  "name": "FUN_0063F940",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63FDC0",
+  "sym": "?FUN_0063FDC0@PowerClass@@QAEXXZ",
+  "len": "0x6a",
+  "name": "PowerClass::FUN_0063FDC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x63FE30",
+  "sym": "?FUN_0063FE30@PowerClass@@QAEXXZ",
+  "len": "0x6a",
+  "name": "PowerClass::FUN_0063FE30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/power_class_methods.cpp",
+  "addr": "0x640450",
+  "sym": "?vf_33@PowerClass@@UAEPBGH@Z",
+  "len": "0x53",
+  "name": "PowerClass::vf_33",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x652E50",
+  "sym": "?FUN_00652E50@RadarClass@@QAEX_N@Z",
+  "len": "0x38",
+  "name": "RadarClass::FUN_00652E50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x653810",
+  "sym": "?vf_36@RadarClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
+  "len": "0x17",
+  "name": "RadarClass::vf_36",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x653F70",
+  "sym": "?vf_52@RadarClass@@UAEXPBUCoordStruct@@@Z",
+  "len": "0x13",
+  "name": "RadarClass::vf_52",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x655050",
+  "sym": "?FUN_00655050@RadarClass@@QAE?AURadarDiamond@@ABUCell_0050DEF0@@@Z",
+  "len": "0x61",
+  "name": "RadarClass::FUN_00655050",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x655890",
+  "sym": "?FUN_00655890@RadarKey_00655890@@QAEHXZ",
+  "len": "0x14",
+  "name": "RadarKey_00655890::FUN_00655890",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x6558B0",
+  "sym": "?FUN_006558B0@RadarKey_006558B0@@QAEHXZ",
+  "len": "0x15",
+  "name": "RadarKey_006558B0::FUN_006558B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x656DF0",
+  "sym": "?FUN_00656DF0@RadarClass@@QAEX_N@Z",
+  "len": "0x5a",
+  "name": "RadarClass::FUN_00656DF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x656E90",
+  "sym": "?FUN_00656E90@RadarClass@@QAEX_N@Z",
+  "len": "0x28",
+  "name": "RadarClass::FUN_00656E90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "addr": "0x655150",
+  "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBUPoint2D@@@Z",
+  "len": "0x62",
+  "name": "RadarClass::FUN_00655150",
+  "status": "partial",
+  "pct": 91
  }
 ]
