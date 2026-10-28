@@ -191,6 +191,33 @@
   "pct": 100.0
  },
  {
+  "tu": "match/ai/house_class_lightning_storm_methods.cpp",
+  "addr": "0x509B20",
+  "sym": "?FUN_00509B20@House_00509E00@@QAEXPAUSuper_00509E00@@@Z",
+  "len": "0xa7",
+  "name": "House_00509E00::FUN_00509B20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_lightning_storm_methods.cpp",
+  "addr": "0x509BD0",
+  "sym": "?FUN_00509BD0@House_00509E00@@QAEXPAUSuper_00509E00@@@Z",
+  "len": "0x31",
+  "name": "House_00509E00::FUN_00509BD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_lightning_storm_methods.cpp",
+  "addr": "0x509C10",
+  "sym": "?FUN_00509C10@House_00509E00@@QAEXPAUSuper_00509E00@@@Z",
+  "len": "0xa7",
+  "name": "House_00509E00::FUN_00509C10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ai/house_class_lookup_methods.cpp",
   "addr": "0x510ED0",
   "sym": "?FindByPlayerAt@HouseClass@@SIPAV1@H@Z",
@@ -68885,6 +68912,15 @@
   "pct": 100
  },
  {
+  "tu": "match/combat/evade_unit_globals.cpp",
+  "addr": "0x4C6140",
+  "sym": "?FUN_004C6140@Obj_008A38E0@@QAEPAU1@XZ",
+  "len": "0x25",
+  "name": "Obj_008A38E0::FUN_004C6140",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/game_controls_dialog.cpp",
   "addr": "0x4E1B40",
   "sym": "_$E2",
@@ -68953,6 +68989,15 @@
   "sym": "_$E11",
   "len": "0xC",
   "name": "dynamic initializer (DAT_008B3F14)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E2480",
+  "sym": "?FUN_004E2480@@YIKXZ",
+  "len": "0x17",
+  "name": "FUN_004E2480",
   "status": "matched",
   "pct": 100
  },
@@ -95750,6 +95795,24 @@
   "pct": 100.0
  },
  {
+  "tu": "match/core/crc_pad_methods.cpp",
+  "addr": "0x4A1FF0",
+  "sym": "?FUN_004A1FF0@@YIIPBDI@Z",
+  "len": "0x33",
+  "name": "FUN_004A1FF0",
+  "status": "partial",
+  "pct": 90.0
+ },
+ {
+  "tu": "match/core/crc_pad_methods.cpp",
+  "addr": "0x4A1FB0",
+  "sym": "?FUN_004A1FB0@@YIIPBXHI@Z",
+  "len": "0x37",
+  "name": "FUN_004A1FB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/leaf_stub_methods_c.cpp",
   "addr": "0x4A31F0",
   "sym": "?FUN_004A31F0@Obj_004A31F0@@QAE_NPAX@Z",
@@ -95939,6 +96002,51 @@
   "pct": 100.0
  },
  {
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "addr": "0x5176A0",
+  "sym": "?FUN_005176A0@Obj_005176A0@@QBE_NXZ",
+  "len": "0x7",
+  "name": "Obj_005176A0::FUN_005176A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "addr": "0x5176B0",
+  "sym": "?FUN_005176B0@Obj_005176A0@@QBE_NXZ",
+  "len": "0x9",
+  "name": "Obj_005176A0::FUN_005176B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "addr": "0x5176C0",
+  "sym": "?FUN_005176C0@Obj_005176A0@@QBE_NXZ",
+  "len": "0xa",
+  "name": "Obj_005176A0::FUN_005176C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "addr": "0x5163B0",
+  "sym": "?Fun_005163B0@HoverLocomotionClass@@QAE_NXZ",
+  "len": "0x11b",
+  "name": "HoverLocomotionClass::Fun_005163B0",
+  "status": "partial",
+  "pct": 95.7
+ },
+ {
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "addr": "0x517310",
+  "sym": "?Fun_00517310@HoverCoordView@@QAE_NPBULocoCoord@@@Z",
+  "len": "0x25",
+  "name": "HoverCoordView::Fun_00517310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/combat/Infantry.cpp",
   "addr": "0x523370",
   "sym": "?FUN_00523370@Obj_00523370@@QAEPAU1@PAUIUnknown@@@Z",
@@ -95955,6 +96063,42 @@
   "name": "Obj_00523370::FUN_005233A0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Infantry.cpp",
+  "addr": "0x522600",
+  "sym": "?vf_85@InfantryClass@@UAEXHH_N@Z",
+  "len": "0x3c",
+  "name": "InfantryClass::vf_85",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/Infantry.cpp",
+  "addr": "0x51F250",
+  "sym": "?vf_80@InfantryClass@@UAE_NHHHH@Z",
+  "len": "0x6a",
+  "name": "InfantryClass::vf_80",
+  "status": "partial",
+  "pct": 87.5
+ },
+ {
+  "tu": "match/combat/Infantry.cpp",
+  "addr": "0x522C00",
+  "sym": "?vf_226@InfantryClass@@UAEXH@Z",
+  "len": "0x2b",
+  "name": "InfantryClass::vf_226",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/Infantry.cpp",
+  "addr": "0x522D30",
+  "sym": "?FUN_00522D30@InfantryClass@@QAE_NXZ",
+  "len": "0x1b",
+  "name": "InfantryClass::FUN_00522D30",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/platform/Ini.cpp",
@@ -102890,6 +103034,78 @@
   "pct": 100.0
  },
  {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x4FDCE0",
+  "sym": "?FUN_004FDCE0@HouseClass@@QAE_NH@Z",
+  "len": "0x23",
+  "name": "HouseClass::FUN_004FDCE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x502100",
+  "sym": "?FUN_00502100@HouseClass@@QAEXPAVAbstractClass@@_N@Z",
+  "len": "0x21",
+  "name": "HouseClass::FUN_00502100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x502130",
+  "sym": "?FUN_00502130@HouseClass@@QAEXPAVAbstractClass@@_N@Z",
+  "len": "0x21",
+  "name": "HouseClass::FUN_00502130",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x4FD040",
+  "sym": "?GetProducingBuildingType@House_004FD060@@QAEPAUBuildingType_004FD060@@XZ",
+  "len": "0x18",
+  "name": "House_004FD060::GetProducingBuildingType",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x501AA0",
+  "sym": "?FUN_00501AA0@Obj_00501AA0@@QAEPAUCell_004FFD90@@PAU2@HH@Z",
+  "len": "0x1b",
+  "name": "Obj_00501AA0::FUN_00501AA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x50E470",
+  "sym": "?FUN_0050E470@Cell_0050E470@@QAE_NPBUCell_004FFD90@@@Z",
+  "len": "0x23",
+  "name": "Cell_0050E470::FUN_0050E470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x4F9F70",
+  "sym": "?FUN_004F9F70@HouseClass@@QAEXH_N@Z",
+  "len": "0x1a",
+  "name": "HouseClass::FUN_004F9F70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x4FCE00",
+  "sym": "?FUN_004FCE00@HouseClass@@QAEXHHH@Z",
+  "len": "0x26",
+  "name": "HouseClass::FUN_004FCE00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/small_misc2_methods.cpp",
   "addr": "0x405C00",
   "sym": "?FUN_00405C00@Obj_00405B00@@QAEXXZ",
@@ -103997,6 +104213,51 @@
   "pct": 100.0
  },
  {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2EA0",
+  "sym": "?CopyTo@CStreamClass@@UAGJPAUIStream@@T_ULARGE_INTEGER@@PAT3@2@Z",
+  "len": "0x3c",
+  "name": "CStreamClass::CopyTo",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2F40",
+  "sym": "?LockRegion@CStreamClass@@UAGJT_ULARGE_INTEGER@@0K@Z",
+  "len": "0x3c",
+  "name": "CStreamClass::LockRegion",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2F80",
+  "sym": "?UnlockRegion@CStreamClass@@UAGJT_ULARGE_INTEGER@@0K@Z",
+  "len": "0x3c",
+  "name": "CStreamClass::UnlockRegion",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A2E00",
+  "sym": "?Seek@CStreamClass@@UAGJT_LARGE_INTEGER@@KPAT_ULARGE_INTEGER@@@Z",
+  "len": "0x4e",
+  "name": "CStreamClass::Seek",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/cstream_forward_methods.cpp",
+  "addr": "0x4A30E0",
+  "sym": "?FUN_004A30E0@CStreamClass@@QAEJXZ",
+  "len": "0x29",
+  "name": "CStreamClass::FUN_004A30E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/connection_point_getter_methods.cpp",
   "addr": "0x4A05D0",
   "sym": "?GetConnectionInterface@ConnectionPointClass@@UAGJPAU_GUID@@@Z",
@@ -104373,6 +104634,51 @@
   "name": "FootClass::vf_311",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_small_slots.cpp",
+  "addr": "0x4D5660",
+  "sym": "?vf_232@FootClass@@UAEXXZ",
+  "len": "0x2c",
+  "name": "FootClass::vf_232",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_small_slots.cpp",
+  "addr": "0x4D8F80",
+  "sym": "?vf_126@FootClass@@UAE_NXZ",
+  "len": "0x27",
+  "name": "FootClass::vf_126",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_small_slots.cpp",
+  "addr": "0x4DB0A0",
+  "sym": "?vf_188@FootClass@@UAEHXZ",
+  "len": "0x30",
+  "name": "FootClass::vf_188",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_small_slots.cpp",
+  "addr": "0x4DB7E0",
+  "sym": "?vf_30@FootClass@@UAEHXZ",
+  "len": "0x25",
+  "name": "FootClass::vf_30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_small_slots.cpp",
+  "addr": "0x4DE770",
+  "sym": "?vf_224@FootClass@@UAE_NXZ",
+  "len": "0x35",
+  "name": "FootClass::vf_224",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/techno_type_class_vf46.cpp",
@@ -131897,6 +132203,69 @@
   "pct": 100.0
  },
  {
+  "tu": "match/core/leaf_sweep_w1.cpp",
+  "addr": "0x4F4DC0",
+  "sym": "?FUN_004F4DC0@@YIXPAEH@Z",
+  "len": "0x26",
+  "name": "FUN_004F4DC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_w1.cpp",
+  "addr": "0x4F4DF0",
+  "sym": "?FUN_004F4DF0@@YIXPAEIHH@Z",
+  "len": "0x50",
+  "name": "FUN_004F4DF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_w1.cpp",
+  "addr": "0x4B4880",
+  "sym": "?FUN_004B4880@@YGHPAX@Z",
+  "len": "0xd",
+  "name": "FUN_004B4880",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_w1.cpp",
+  "addr": "0x4B6610",
+  "sym": "?FUN_004B6610@@YGJPAUIPersistStream@@@Z",
+  "len": "0xd",
+  "name": "FUN_004B6610",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_w1.cpp",
+  "addr": "0x4A48C0",
+  "sym": "?FUN_004A48C0@@YAHPBUIntPair_004A48C0@@0@Z",
+  "len": "0x37",
+  "name": "FUN_004A48C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_w1.cpp",
+  "addr": "0x4A35F0",
+  "sym": "?FUN_004A35F0@Entry_004A35F0@@QAEXHHHHHH@Z",
+  "len": "0x35",
+  "name": "Entry_004A35F0::FUN_004A35F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_w1.cpp",
+  "addr": "0x53BB80",
+  "sym": "?FUN_0053BB80@@YIXXZ",
+  "len": "0x1b",
+  "name": "FUN_0053BB80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/vector_global_inits_w1.cpp",
   "addr": "0x4C1D90",
   "sym": "_$E4",
@@ -132145,6 +132514,42 @@
   "sym": "?CanFire@TunnelLocomotionClass@@UAGHXZ",
   "len": "0x1f",
   "name": "TunnelLocomotionClass::CanFire",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "addr": "0x728A00",
+  "sym": "??0TunnelLocomotionClass@@QAE@XZ",
+  "len": "0x4d",
+  "name": "TunnelLocomotionClass::TunnelLocomotionClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "addr": "0x728A90",
+  "sym": "?Destination@TunnelLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x52",
+  "name": "TunnelLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "addr": "0x72A090",
+  "sym": "?CanEnterCell@TunnelLocomotionClass@@UAGHH@Z",
+  "len": "0x47",
+  "name": "TunnelLocomotionClass::CanEnterCell",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "addr": "0x72A150",
+  "sym": "?Load@TunnelLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x47",
+  "name": "TunnelLocomotionClass::Load",
   "status": "matched",
   "pct": 100
  },
@@ -132766,6 +133171,339 @@
   "sym": "?LoadExponent@PKey_00632740@@QAEXPBE@Z",
   "len": "0x14",
   "name": "LoadExponent",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_type_class_body.cpp",
+  "addr": "0x6F06E0",
+  "sym": "??0TeamTypeClass@@QAE@PBD@Z",
+  "len": "0x20c",
+  "name": "TeamTypeClass::TeamTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_type_class_body.cpp",
+  "addr": "0x6F08F0",
+  "sym": "??1TeamTypeClass@@UAE@XZ",
+  "len": "0xc2",
+  "name": "TeamTypeClass::~TeamTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_type_class_body.cpp",
+  "addr": "0x6F1BB0",
+  "sym": "?Load@TeamTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x89",
+  "name": "TeamTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_type_class_body.cpp",
+  "addr": "0x6F1C80",
+  "sym": "?vf_13@TeamTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x196",
+  "name": "TeamTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/team_type_class_body.cpp",
+  "addr": "0x6F20D0",
+  "sym": "??_GTeamTypeClass@@UAEPAXI@Z",
+  "len": "0xd6",
+  "name": "TeamTypeClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/task_force_class_body.cpp",
+  "addr": "0x6E86A0",
+  "sym": "?Load@TaskForceClass@@UAGJPAUIStream@@@Z",
+  "len": "0x63",
+  "name": "TaskForceClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/task_force_class_body.cpp",
+  "addr": "0x6E87F0",
+  "sym": "??_GTaskForceClass@@UAEPAXI@Z",
+  "len": "0x8d",
+  "name": "TaskForceClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/task_force_class_body.cpp",
+  "addr": "0x6E8160",
+  "sym": "?FUN_006E8160@TaskForceClass@@QBEHXZ",
+  "len": "0x1f",
+  "name": "TaskForceClass::FUN_006E8160",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/task_force_class_body.cpp",
+  "addr": "0x6E8780",
+  "sym": "?FUN_006E8780@TaskForceClass@@QBEHXZ",
+  "len": "0x41",
+  "name": "TaskForceClass::FUN_006E8780",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_class_w3_methods.cpp",
+  "addr": "0x6CDEF0",
+  "sym": "?Load@SuperClass@@UAGJPAUIStream@@@Z",
+  "len": "0xdb",
+  "name": "SuperClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_class_w3_methods.cpp",
+  "addr": "0x6CDFF0",
+  "sym": "?vf_10@SuperClass@@UAEXPAX_N@Z",
+  "len": "0x2b",
+  "name": "SuperClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_class_w3_methods.cpp",
+  "addr": "0x6CE1F0",
+  "sym": "?vf_rtti_3@SuperClass@@UAGHXZ",
+  "len": "0x8",
+  "name": "SuperClass::vf_rtti_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/stream_w3_methods.cpp",
+  "addr": "0x6B1300",
+  "sym": "?Save@SlaveManagerClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x63",
+  "name": "SlaveManagerClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/stream_w3_methods.cpp",
+  "addr": "0x6B80B0",
+  "sym": "?Save@SpawnManagerClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x63",
+  "name": "SpawnManagerClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/stream_w3_methods.cpp",
+  "addr": "0x7220A0",
+  "sym": "?GetSizeMax@TiberiumClass@@UAGJPAT_ULARGE_INTEGER@@@Z",
+  "len": "0x2f",
+  "name": "TiberiumClass::GetSizeMax",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/stream_w3_methods.cpp",
+  "addr": "0x7220D0",
+  "sym": "?Save@TiberiumClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x61",
+  "name": "TiberiumClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/stream_w3_methods.cpp",
+  "addr": "0x7281A0",
+  "sym": "?Load@TubeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x40",
+  "name": "TubeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/stream_w3_methods.cpp",
+  "addr": "0x75E2C0",
+  "sym": "?Save@WarheadTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0xe1",
+  "name": "WarheadTypeClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "addr": "0x71F800",
+  "sym": "?vf_10@TEventClass@@UAEXPAX_N@Z",
+  "len": "0x20",
+  "name": "TEventClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "addr": "0x71F8C0",
+  "sym": "?Load@TEventClass@@UAGJPAUIStream@@@Z",
+  "len": "0x6f",
+  "name": "TEventClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "addr": "0x71FA80",
+  "sym": "??_GTEventClass@@UAEPAXI@Z",
+  "len": "0x11f",
+  "name": "TEventClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
+  "addr": "0x738890",
+  "sym": "?vf_81@UnitClass@@UAE_NHHH@Z",
+  "len": "0x7d",
+  "name": "UnitClass::vf_81",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
+  "addr": "0x7440B0",
+  "sym": "?vf_53@UnitClass@@UAE_NXZ",
+  "len": "0x50",
+  "name": "UnitClass::vf_53",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
+  "addr": "0x738910",
+  "sym": "?vf_80@UnitClass@@UAE_NHHHH@Z",
+  "len": "0x58",
+  "name": "UnitClass::vf_80",
+  "status": "partial",
+  "pct": 85.4
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E0480",
+  "sym": "?FUN_006E0480@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x10",
+  "name": "TActionClass::FUN_006E0480",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E0F90",
+  "sym": "?FUN_006E0F90@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xf",
+  "name": "TActionClass::FUN_006E0F90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E1DC0",
+  "sym": "?FUN_006E1DC0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x33",
+  "name": "TActionClass::FUN_006E1DC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E1E00",
+  "sym": "?FUN_006E1E00@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x33",
+  "name": "TActionClass::FUN_006E1E00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E1F60",
+  "sym": "?FUN_006E1F60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x2b",
+  "name": "TActionClass::FUN_006E1F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E2660",
+  "sym": "?FUN_006E2660@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x57",
+  "name": "TActionClass::FUN_006E2660",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E1BD0",
+  "sym": "?FUN_006E1BD0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x61",
+  "name": "TActionClass::FUN_006E1BD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E1C40",
+  "sym": "?FUN_006E1C40@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x75",
+  "name": "TActionClass::FUN_006E1C40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E2860",
+  "sym": "?FUN_006E2860@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x74",
+  "name": "TActionClass::FUN_006E2860",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E28E0",
+  "sym": "?FUN_006E28E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x61",
+  "name": "TActionClass::FUN_006E28E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_w3_methods.cpp",
+  "addr": "0x6E2F00",
+  "sym": "?FUN_006E2F00@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x4a",
+  "name": "TActionClass::FUN_006E2F00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/voxel_anim_veinhole_w3_methods.cpp",
+  "addr": "0x749B20",
+  "sym": "?vf_65@VoxelAnimClass@@UAE_NPAURectangleStruct@@_NH@Z",
+  "len": "0x47",
+  "name": "VoxelAnimClass::vf_65",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/voxel_anim_veinhole_w3_methods.cpp",
+  "addr": "0x74F330",
+  "sym": "?vf_30@VeinholeMonsterClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "VeinholeMonsterClass::vf_30",
   "status": "matched",
   "pct": 100
  }
