@@ -5,10 +5,13 @@
 // in __xc order.
 // VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: retail folds the atexit registration into the 0x40F270 initialiser.
+#include <math.h>
 #include "header_init_shapes.h"
 
-// GLOBAL: GAMEMD 0x8873A8
-extern double DAT_008873A8;
+// GLOBAL: GAMEMD 0x7E1708
+const double DAT_007E1708 = 2.0;
+// GLOBAL: GAMEMD 0x7E1710
+const double DAT_007E1710 = 256.0;
 // GLOBAL: GAMEMD 0x7E1E18
 const double DAT_007E1E18 = 60.0;
 // GLOBAL: GAMEMD 0x7E1E20 -- degrees to radians
@@ -19,6 +22,12 @@ double __cdecl FUN_004CAD50(double value);
 // FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CADE0(double value);
 
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+
+// SYNTHETIC: GAMEMD 0x40EC30
+// GLOBAL: GAMEMD 0x8873A8
+double DAT_008873A8 = FUN_004CAC40(pow(DAT_007E1710, DAT_007E1708) * 2);
 // SYNTHETIC: GAMEMD 0x40EC60
 // GLOBAL: GAMEMD 0x8873F8
 double DAT_008873F8 = DAT_008873A8 / DAT_007E1E18;

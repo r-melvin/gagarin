@@ -3,10 +3,13 @@
 // The header initialiser group that opens the retail block at 0x40F970
 // (header_init_shapes.h): two derived doubles and a {128, 128, 0} coordinate,
 // in __xc order.
+#include <math.h>
 #include "header_init_shapes.h"
 
-// GLOBAL: GAMEMD 0x887518
-extern double DAT_00887518;
+// GLOBAL: GAMEMD 0x7E1708
+const double DAT_007E1708 = 2.0;
+// GLOBAL: GAMEMD 0x7E1710
+const double DAT_007E1710 = 256.0;
 // GLOBAL: GAMEMD 0x7E1EC0
 const double DAT_007E1EC0 = 60.0;
 // GLOBAL: GAMEMD 0x7E1EC8 -- degrees to radians
@@ -17,6 +20,12 @@ double __cdecl FUN_004CAD50(double value);
 // FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CADE0(double value);
 
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+
+// SYNTHETIC: GAMEMD 0x40F940
+// GLOBAL: GAMEMD 0x887518
+double DAT_00887518 = FUN_004CAC40(pow(DAT_007E1710, DAT_007E1708) * 2);
 // SYNTHETIC: GAMEMD 0x40F970
 // GLOBAL: GAMEMD 0x887588
 double DAT_00887588 = DAT_00887518 / DAT_007E1EC0;
