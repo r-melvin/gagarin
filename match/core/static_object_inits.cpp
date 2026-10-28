@@ -9,6 +9,8 @@
 // source is not in the tree, so they are collected here; the class names are
 // address placeholders.
 
+#include <unknwn.h>
+
 // Heap-owning five-field record: the constructor zeroes the fields and the
 // destructor frees the block, then zeroes them again (the exit-time stub at
 // 0x40BDA0 is the inlined destructor).
@@ -115,3 +117,22 @@ public:
 // SYNTHETIC: GAMEMD 0x40FF30 -- exit-time destructor stub
 // GLOBAL: GAMEMD 0x887598
 Obj_00887598 DAT_00887598;
+
+// An owning COM interface pointer: starts null and releases the interface at
+// exit (the stub at 0x40D220 is the inlined Release call through slot 2).
+class Obj_0087F7B8
+{
+public:
+    IUnknown* Interface;
+    Obj_0087F7B8() : Interface(0) {}
+    ~Obj_0087F7B8()
+    {
+        if (Interface)
+            Interface->Release();
+    }
+};
+
+// SYNTHETIC: GAMEMD 0x40D200
+// SYNTHETIC: GAMEMD 0x40D220 -- exit-time destructor stub
+// GLOBAL: GAMEMD 0x87F7B8
+Obj_0087F7B8 DAT_0087F7B8;

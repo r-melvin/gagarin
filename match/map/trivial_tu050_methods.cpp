@@ -63,11 +63,33 @@ bool Obj_00486650::FUN_00486650()
     return true;
 }
 
+// FUNCTION: GAMEMD 0x486670
+// Branching.
+bool Obj_00486670::FUN_00486670()
+{
+    if (unknown_38 < DAT_00ABC2B0 || unknown_38 >= DAT_00ABC2B0 + 0x10)
+    {
+        return false;
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x4866D0
 // Branching.
 bool Obj_004866D0::FUN_004866D0()
 {
     if (unknown_38 < DAT_00ABBEC8 || unknown_38 >= DAT_00ABBEC8 + 0xF)
+    {
+        return false;
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x4866F0
+// Branching.
+bool Obj_004866F0::FUN_004866F0()
+{
+    if (unknown_38 < DAT_00ABBEC4 || unknown_38 >= DAT_00ABBEC4 + 4)
     {
         return false;
     }

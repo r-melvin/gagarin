@@ -15,7 +15,9 @@ struct Obj_00483610;
 struct Obj_00486380;
 struct Obj_004865B0;
 struct Obj_00486650;
+struct Obj_00486670;
 struct Obj_004866D0;
+struct Obj_004866F0;
 struct Obj_00486710;
 struct Obj_00486730;
 struct Obj_00486900;
@@ -34,8 +36,12 @@ extern int DAT_00AA1094;
 extern int DAT_00AA10A4;
 // GLOBAL: GAMEMD 0xABAD28
 extern int DAT_00ABAD28;
+// GLOBAL: GAMEMD 0xABBEC4
+extern int DAT_00ABBEC4;
 // GLOBAL: GAMEMD 0xABBEC8
 extern int DAT_00ABBEC8;
+// GLOBAL: GAMEMD 0xABC2B0
+extern int DAT_00ABC2B0;
 // GLOBAL: GAMEMD 0xABC2C8
 extern int DAT_00ABC2C8;
 
@@ -89,6 +95,15 @@ struct Obj_00486650
 };
 GG_STATIC_ASSERT(offsetof(Obj_00486650, unknown_38) == 0x38);
 
+struct Obj_00486670
+{
+    char unknown_00[0x38];
+    int unknown_38;   // +0x0038
+    // FUNCTION: GAMEMD 0x486670
+    bool FUN_00486670();
+};
+GG_STATIC_ASSERT(offsetof(Obj_00486670, unknown_38) == 0x38);
+
 struct Obj_004866D0
 {
     char unknown_00[0x38];
@@ -97,6 +112,15 @@ struct Obj_004866D0
     bool FUN_004866D0();
 };
 GG_STATIC_ASSERT(offsetof(Obj_004866D0, unknown_38) == 0x38);
+
+struct Obj_004866F0
+{
+    char unknown_00[0x38];
+    int unknown_38;   // +0x0038
+    // FUNCTION: GAMEMD 0x4866F0
+    bool FUN_004866F0();
+};
+GG_STATIC_ASSERT(offsetof(Obj_004866F0, unknown_38) == 0x38);
 
 struct Obj_00486710
 {
