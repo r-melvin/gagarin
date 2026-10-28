@@ -122,13 +122,11 @@ extern const double DAT_007EAB18;
 // GLOBAL: GAMEMD 0xA8F0E8
 extern double DAT_00A8F0E8;
 
-// SYNTHETIC: GAMEMD 0x511230
 // GLOBAL: GAMEMD 0xA8F138
-double DAT_00A8F138 = DAT_00A8F0E8 / DAT_007EAB18;
+extern double DAT_00A8F138;
 
-// SYNTHETIC: GAMEMD 0x511250
 // GLOBAL: GAMEMD 0xA8F120
-double DAT_00A8F120 = DAT_007E1718 / DAT_00A8F138;
+extern double DAT_00A8F120;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5113F0

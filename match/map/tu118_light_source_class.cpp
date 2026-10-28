@@ -287,13 +287,11 @@ extern double DAT_00ABC9E8;
 // FUNCTION: GAMEMD 0x544FF0 (decl; reloc)
 bool FUN_00544FF0(int value, bool flag);
 
-// SYNTHETIC: GAMEMD 0x554460
 // GLOBAL: GAMEMD 0xABCA68
-double DAT_00ABCA68 = DAT_00ABC9E8 / DAT_007ECF68;
+extern double DAT_00ABCA68;
 
-// SYNTHETIC: GAMEMD 0x554480
 // GLOBAL: GAMEMD 0xABCA38
-double DAT_00ABCA38 = DAT_007E1718 / DAT_00ABCA68;
+extern double DAT_00ABCA38;
 
 // SYNTHETIC: GAMEMD 0x00554680 -- exit-time destructor stub of DAT_00ABCA10
 DynamicVectorClass<LightSourceClass*> DAT_00ABCA10;

@@ -34,17 +34,14 @@ extern const char DAT_0082FFF4[];
 // text; __fastcall with the file and line on the stack, RET 8.
 const wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
-// SYNTHETIC: GAMEMD 0x5CAC50
 // GLOBAL: GAMEMD 0xABFAF0
-double DAT_00ABFAF0 = DAT_00ABFAA0 / DAT_007EE7D0;
+extern double DAT_00ABFAF0;
 
-// SYNTHETIC: GAMEMD 0x5CAC70
 // GLOBAL: GAMEMD 0xABFAD8
-double DAT_00ABFAD8 = 1.0 / DAT_00ABFAF0;
+extern double DAT_00ABFAD8;
 
-// SYNTHETIC: GAMEMD 0x5CADF0
 // GLOBAL: GAMEMD 0xABFAE0
-TuningCoordInit DAT_00ABFAE0(128, 128, 0);
+extern TuningCoordInit DAT_00ABFAE0;
 
 // FUNCTION: GAMEMD 0x5CAE10
 MultiplayerSiegeDefenderTeam::MultiplayerSiegeDefenderTeam()

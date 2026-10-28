@@ -434,27 +434,16 @@ extern int DAT_00ABECF0;
 // LIBRARY: GAMEMD 0x7C8B3D -- operator delete(void*), ??3@YAXPAX@Z.
 // LIBRARY: GAMEMD 0x7C5F00 -- __ftol (the double to integer conversion).
 
-// SYNTHETIC: GAMEMD 0x0058B560
 // dynamic initializer for DAT_00ABECF8
 // GLOBAL: GAMEMD 0x00ABECF8
-double DAT_00ABECF8 = DAT_00ABE368 / DAT_007ED620;
+extern double DAT_00ABECF8;
 
-// SYNTHETIC: GAMEMD 0x0058B580
 // dynamic initializer for DAT_00ABECE0
 // GLOBAL: GAMEMD 0x00ABECE0
-double DAT_00ABECE0 = 1.0 / DAT_00ABECF8;
+extern double DAT_00ABECE0;
 
 GG_STATIC_ASSERT(sizeof(DAT_00ABECF8) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00ABECE0) == 8);
-
-// FUNCTION: GAMEMD 0x58B700
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0058B700()
-{
-    DAT_00ABECF0 = 0;
-    DAT_00ABECE8 = 0x80;
-    DAT_00ABECEC = 0x80;
-}
 
 // FUNCTION: GAMEMD 0x58B760
 // Tail-calls a method on a global object.

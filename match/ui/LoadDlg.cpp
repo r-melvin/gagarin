@@ -107,27 +107,16 @@ extern int DAT_00ABCC24;
 // GLOBAL: GAMEMD 0xABCC28
 extern int DAT_00ABCC28;
 
-// SYNTHETIC: GAMEMD 0x00558580
 // dynamic initializer for DAT_00ABCC30
 // GLOBAL: GAMEMD 0x00ABCC30
-double DAT_00ABCC30 = DAT_00ABCBE0 / DAT_007ED2D0;
+extern double DAT_00ABCC30;
 
-// SYNTHETIC: GAMEMD 0x005585A0
 // dynamic initializer for DAT_00ABCC18
 // GLOBAL: GAMEMD 0x00ABCC18
-double DAT_00ABCC18 = 1.0 / DAT_00ABCC30;
+extern double DAT_00ABCC18;
 
 GG_STATIC_ASSERT(sizeof(DAT_00ABCC30) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00ABCC18) == 8);
-
-// FUNCTION: GAMEMD 0x558720
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00558720()
-{
-    DAT_00ABCC28 = 0;
-    DAT_00ABCC20 = 0x80;
-    DAT_00ABCC24 = 0x80;
-}
 
 // FUNCTION: GAMEMD 0x559D60
 // Runs the loading dialog around the game load: the cursor count is saved, the dialog shown, and the

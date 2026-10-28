@@ -1,0 +1,67 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+// Header static initialisers at 0x5AFCE0-0x5AFED0 (header_init_shapes.h): the group of
+// math-table doubles/ints and zero blocks each retail TU opens with, in __xc order.
+#include <math.h>
+#pragma intrinsic(pow)
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
+
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CADE0(double value);
+
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
+// GLOBAL: GAMEMD 0x7EDB58
+const double DAT_007EDB58 = 60.0;
+// GLOBAL: GAMEMD 0x7EDB60
+const double DAT_007EDB60 = 0.017453292519943295;
+
+// SYNTHETIC: GAMEMD 0x5AFCE0
+// GLOBAL: GAMEMD 0xABEDF8
+double DAT_00ABEDF8 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+// SYNTHETIC: GAMEMD 0x5AFD10
+// GLOBAL: GAMEMD 0xABEE48
+double DAT_00ABEE48 = DAT_00ABEDF8 / DAT_007EDB58;
+// SYNTHETIC: GAMEMD 0x5AFD30
+// GLOBAL: GAMEMD 0xABEE30
+double DAT_00ABEE30 = 1.0 / DAT_00ABEE48;
+// SYNTHETIC: GAMEMD 0x5AFD50
+// GLOBAL: GAMEMD 0xABEE28
+double DAT_00ABEE28 = DAT_007EDB60 * 45.0;
+// SYNTHETIC: GAMEMD 0x5AFD70
+// GLOBAL: GAMEMD 0xABEE00
+double DAT_00ABEE00 = DAT_007EDB60 * 60.0;
+// SYNTHETIC: GAMEMD 0x5AFD90
+// GLOBAL: GAMEMD 0xABEDD8
+double DAT_00ABEDD8 = DAT_007EDB60 * 90.0;
+// SYNTHETIC: GAMEMD 0x5AFDB0
+// GLOBAL: GAMEMD 0xABEE50
+int DAT_00ABEE50 = (int)(FUN_004CAD50(DAT_00ABEDD8 - DAT_00ABEE00) * DAT_00ABEDF8 * 0.5);
+// SYNTHETIC: GAMEMD 0x5AFDF0
+// GLOBAL: GAMEMD 0xABEE08
+double DAT_00ABEE08 = FUN_004CADE0(DAT_00ABEE50 * 0.00390625);
+// SYNTHETIC: GAMEMD 0x5AFE20
+// GLOBAL: GAMEMD 0xABEE20
+double DAT_00ABEE20 = FUN_004CADE0((DAT_00ABEE50 * 2) / DAT_00ABEDF8);
+// SYNTHETIC: GAMEMD 0x5AFE50
+// GLOBAL: GAMEMD 0xABEE44
+int DAT_00ABEE44 = (int)(DAT_00ABEE50 * 4 + 0.5);
+// SYNTHETIC: GAMEMD 0x5AFE80
+// GLOBAL: GAMEMD 0xABEDF0
+HeaderCellInit DAT_00ABEDF0(0, 0);
+// SYNTHETIC: GAMEMD 0x5AFE90
+// GLOBAL: GAMEMD 0xABEE10
+HeaderCoordInit DAT_00ABEE10(0, 0, 0);
+// SYNTHETIC: GAMEMD 0x5AFEB0
+// GLOBAL: GAMEMD 0xABEE38
+HeaderCoordInit DAT_00ABEE38(128, 128, 0);
+// SYNTHETIC: GAMEMD 0x5AFED0
+// GLOBAL: GAMEMD 0xABEDE0
+MathTblZero4 DAT_00ABEDE0;

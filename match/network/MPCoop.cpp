@@ -345,17 +345,14 @@ extern int DAT_00A8B254;
 // GLOBAL: GAMEMD 0xABF460 -- eight per-entry values (`MOV ECX,8; REP STOSD`).
 int DAT_00ABF460[8];
 
-// SYNTHETIC: GAMEMD 0x5C1120
 // GLOBAL: GAMEMD 0xABF490
-double DAT_00ABF490 = DAT_00ABF420 / DAT_007EE268;
+extern double DAT_00ABF490;
 
-// SYNTHETIC: GAMEMD 0x5C1140
 // GLOBAL: GAMEMD 0xABF458
-double DAT_00ABF458 = 1.0 / DAT_00ABF490;
+extern double DAT_00ABF458;
 
-// SYNTHETIC: GAMEMD 0x5C12C0
 // GLOBAL: GAMEMD 0xABF480
-HeaderCoordInit DAT_00ABF480(128, 128, 0);
+extern HeaderCoordInit DAT_00ABF480;
 
 // FUNCTION: GAMEMD 0x5C1470
 // The base gets `false` for its fifth argument. Then empty the campaign list

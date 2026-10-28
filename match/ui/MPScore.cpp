@@ -211,17 +211,14 @@ extern const int DAT_0082FE04[8];
 
 // ---- the score screen ----------------------------------------------------------------------------------------------
 
-// SYNTHETIC: GAMEMD 0x5C9540
 // GLOBAL: GAMEMD 0xABF9E8
-double DAT_00ABF9E8 = DAT_00ABF998 / DAT_007EE6D8;
+extern double DAT_00ABF9E8;
 
-// SYNTHETIC: GAMEMD 0x5C9560
 // GLOBAL: GAMEMD 0xABF9D0
-double DAT_00ABF9D0 = 1.0 / DAT_00ABF9E8;
+extern double DAT_00ABF9D0;
 
-// SYNTHETIC: GAMEMD 0x5C96E0
 // GLOBAL: GAMEMD 0xABF9D8
-TuningCoordInit DAT_00ABF9D8(128, 128, 0);
+extern TuningCoordInit DAT_00ABF9D8;
 
 // FUNCTION: GAMEMD 0x5C9700
 //

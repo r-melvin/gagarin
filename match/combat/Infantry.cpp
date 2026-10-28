@@ -155,29 +155,6 @@ const wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int 
 // GLOBAL: GAMEMD 0x825560 -- "D:\\ra2mdpost\\Infantry.CPP"
 extern const char DAT_00825560[];
 
-// FUNCTION: GAMEMD 0x517870
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00517870()
-{
-    DAT_00A8F238 = DAT_00A8F1E8 / DAT_007EAEE8;
-}
-
-// FUNCTION: GAMEMD 0x517890
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00517890()
-{
-    DAT_00A8F220 = DAT_007E1718 / DAT_00A8F238;
-}
-
-// FUNCTION: GAMEMD 0x517A10
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00517A10()
-{
-    DAT_00A8F230 = 0;
-    DAT_00A8F228 = 0x80;
-    DAT_00A8F22C = 0x80;
-}
-
 // FUNCTION: GAMEMD 0x51AA10
 void InfantryClass::vf_10(void* a1, bool a2)
 {

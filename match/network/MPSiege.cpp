@@ -67,17 +67,14 @@ int FUN_00688ED0(BuildingClass* building, const Cell& cell, int unknown);
 // text; __fastcall with the file and line on the stack, RET 8.
 const wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
-// SYNTHETIC: GAMEMD 0x5CA450
 // GLOBAL: GAMEMD 0xABFA70
-double DAT_00ABFA70 = DAT_00ABFA20 / DAT_007EE6E8;
+extern double DAT_00ABFA70;
 
-// SYNTHETIC: GAMEMD 0x5CA470
 // GLOBAL: GAMEMD 0xABFA58
-double DAT_00ABFA58 = 1.0 / DAT_00ABFA70;
+extern double DAT_00ABFA58;
 
-// SYNTHETIC: GAMEMD 0x5CA5F0
 // GLOBAL: GAMEMD 0xABFA60
-TuningCoordInit DAT_00ABFA60(128, 128, 0);
+extern TuningCoordInit DAT_00ABFA60;
 
 // FUNCTION: GAMEMD 0x5CA630
 MultiplayerSiege::MultiplayerSiege(const Obj_007B66D0& name, const Obj_007B66D0& description,

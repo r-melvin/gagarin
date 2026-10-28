@@ -360,26 +360,14 @@ GG_STATIC_ASSERT(sizeof(const AnimClass*) == 4);
 // Declaration: GAMEMD 0x4CAC40 -- engine helper, stacked double/ST0 result.
 double __cdecl FUN_004CAC40(double value);
 
-// SYNTHETIC: GAMEMD 0x539350
 // GLOBAL: GAMEMD 0xA9FA00
-double DAT_00A9FA00 = FUN_004CAC40(2.0 * pow(256.0, 2.0));
+extern double DAT_00A9FA00;
 
-// SYNTHETIC: GAMEMD 0x539380
 // GLOBAL: GAMEMD 0xA9FA88
-double DAT_00A9FA88 = DAT_00A9FA00 / 60.0;
+extern double DAT_00A9FA88;
 
-// SYNTHETIC: GAMEMD 0x5393A0
 // GLOBAL: GAMEMD 0xA9FA58
-double DAT_00A9FA58 = 1.0 / DAT_00A9FA88;
-
-// FUNCTION: GAMEMD 0x539520
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00539520()
-{
-    DAT_00A9FA80 = 0;
-    DAT_00A9FA78 = 0x80;
-    DAT_00A9FA7C = 0x80;
-}
+extern double DAT_00A9FA58;
 
 // FUNCTION: GAMEMD 0x539560
 // Stores to a global.

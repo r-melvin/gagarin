@@ -605,29 +605,6 @@ extern int DAT_00A8F028;
 // GLOBAL: GAMEMD 0xA8F030
 extern double DAT_00A8F030;
 
-// FUNCTION: GAMEMD 0x4F4F30
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004F4F30()
-{
-    DAT_00A8F030 = DAT_00A8EFA0 / DAT_007EA758;
-}
-
-// FUNCTION: GAMEMD 0x4F4F50
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004F4F50()
-{
-    DAT_00A8F018 = DAT_007E1718 / DAT_00A8F030;
-}
-
-// FUNCTION: GAMEMD 0x4F50D0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004F50D0()
-{
-    DAT_00A8F028 = 0;
-    DAT_00A8F020 = 0x80;
-    DAT_00A8F024 = 0x80;
-}
-
 // CAPPED at 98.3% (multiset identical; 17 instructions differ in order or register only: the -1 constant
 // load near +0x214, the five byte stores near +0x3BB, a push near +0x69F, one add operand order near
 // +0xBC6, two fill-setup orders). Variants tried: memset vs element loops for the fills, vector ctor with

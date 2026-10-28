@@ -28,29 +28,6 @@ extern int DAT_00ABF078;
 // GLOBAL: GAMEMD 0xABF080
 extern double DAT_00ABF080;
 
-// FUNCTION: GAMEMD 0x5B47F0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005B47F0()
-{
-    DAT_00ABF080 = DAT_00ABF030 / DAT_007EDF58;
-}
-
-// FUNCTION: GAMEMD 0x5B4810
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005B4810()
-{
-    DAT_00ABF068 = DAT_007E1718 / DAT_00ABF080;
-}
-
-// FUNCTION: GAMEMD 0x5B4990
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005B4990()
-{
-    DAT_00ABF078 = 0;
-    DAT_00ABF070 = 0x80;
-    DAT_00ABF074 = 0x80;
-}
-
 // FUNCTION: GAMEMD 0x5B59B0
 //
 // Reconcile the colour combo with the colour this slot already holds. If the

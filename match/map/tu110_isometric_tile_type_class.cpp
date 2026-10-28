@@ -292,17 +292,15 @@ extern const double DAT_007EC440;
 // GLOBAL: GAMEMD 0xAA1070
 extern double DAT_00AA1070;
 
-// SYNTHETIC: GAMEMD 0x00543C90
 // dynamic initializer for DAT_00ABC2C0
 
 // GLOBAL: GAMEMD 0x00ABC2C0
-double DAT_00ABC2C0 = DAT_00AA1070 / DAT_007EC440;
+extern double DAT_00ABC2C0;
 
-// SYNTHETIC: GAMEMD 0x00543CB0
 // dynamic initializer for DAT_00ABC1F0
 
 // GLOBAL: GAMEMD 0x00ABC1F0
-double DAT_00ABC1F0 = DAT_007E1718 / DAT_00ABC2C0;
+extern double DAT_00ABC1F0;
 
 // FUNCTION: GAMEMD 0x544CB0  (__thiscall)
 // The loaded tile-set header, loading it on first use. Retail reads the member

@@ -128,29 +128,6 @@ extern double DAT_00ABEDC8;
 
 #include "../_layout/matrix3d.h"
 
-// FUNCTION: GAMEMD 0x5ADB50
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005ADB50()
-{
-    DAT_00ABEDC8 = DAT_00ABED78 / DAT_007EDB38;
-}
-
-// FUNCTION: GAMEMD 0x5ADB70
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005ADB70()
-{
-    DAT_00ABEDB0 = DAT_007E1718 / DAT_00ABEDC8;
-}
-
-// FUNCTION: GAMEMD 0x5ADCF0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005ADCF0()
-{
-    DAT_00ABEDC0 = 0;
-    DAT_00ABEDB8 = 0x80;
-    DAT_00ABEDBC = 0x80;
-}
-
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5AE4F0
 // Returns zero; pops its stack arguments.

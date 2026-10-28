@@ -32,17 +32,14 @@ const double DAT_007EE5E0 = 60.0;
 #include "mp_game_mode_leaf_classes.h"
 #include "../ui/input_controls/ui_display_chain.h"
 
-// SYNTHETIC: GAMEMD 0x5C9220
 // GLOBAL: GAMEMD 0xABF948
-double DAT_00ABF948 = DAT_00ABF8F8 / DAT_007EE5E0;
+extern double DAT_00ABF948;
 
-// SYNTHETIC: GAMEMD 0x5C9240
 // GLOBAL: GAMEMD 0xABF930
-double DAT_00ABF930 = 1.0 / DAT_00ABF948;
+extern double DAT_00ABF930;
 
-// SYNTHETIC: GAMEMD 0x5C93C0
 // GLOBAL: GAMEMD 0xABF938
-HeaderCoordInit DAT_00ABF938(128, 128, 0);
+extern HeaderCoordInit DAT_00ABF938;
 
 // FUNCTION: GAMEMD 0x5C93E0
 Megawealth::Megawealth(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f)

@@ -28,19 +28,13 @@ extern double DAT_00ABF4C0;
 const double DAT_007EE410 = 60.0;
 
 // GLOBAL: GAMEMD 0xABF510
-double DAT_00ABF510 = DAT_00ABF4C0 / DAT_007EE410;
+extern double DAT_00ABF510;
 
 // GLOBAL: GAMEMD 0xABF4F8
-double DAT_00ABF4F8 = 1.0 / DAT_00ABF510;
+extern double DAT_00ABF4F8;
 
 // GLOBAL: GAMEMD 0xABF500
-HeaderCoordInit DAT_00ABF500(128, 128, 0);
-
-// SYNTHETIC: GAMEMD 0x5C5B20
-
-// SYNTHETIC: GAMEMD 0x5C5B40
-
-// SYNTHETIC: GAMEMD 0x5C5CC0
+extern HeaderCoordInit DAT_00ABF500;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C5CE0

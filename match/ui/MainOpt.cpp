@@ -29,26 +29,15 @@ extern int DAT_00ABCF40;
 // GLOBAL: GAMEMD 0xABCF48
 extern double DAT_00ABCF48;
 
-// SYNTHETIC: GAMEMD 0x0055F7B0
 // dynamic initializer for DAT_00ABCF48
 
 // GLOBAL: GAMEMD 0x00ABCF48
-double DAT_00ABCF48 = DAT_00ABCE40 / DAT_007ED3B0;
+extern double DAT_00ABCF48;
 
-// SYNTHETIC: GAMEMD 0x0055F7D0
 // dynamic initializer for DAT_00ABCF30
 
 // GLOBAL: GAMEMD 0x00ABCF30
-double DAT_00ABCF30 = DAT_007E1718 / DAT_00ABCF48;
-
-// FUNCTION: GAMEMD 0x55F950
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0055F950()
-{
-    DAT_00ABCF40 = 0;
-    DAT_00ABCF38 = 0x80;
-    DAT_00ABCF3C = 0x80;
-}
+extern double DAT_00ABCF30;
 
 // FUNCTION: GAMEMD 0x55F970
 // Tail-calls a method on a global object.

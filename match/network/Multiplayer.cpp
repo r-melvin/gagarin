@@ -385,29 +385,6 @@ extern int DAT_00ABFDC0;
 // GLOBAL: GAMEMD 0xABFDC8
 extern double DAT_00ABFDC8;
 
-// FUNCTION: GAMEMD 0x5D58E0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005D58E0()
-{
-    DAT_00ABFDC8 = DAT_00ABFD58 / DAT_007EED08;
-}
-
-// FUNCTION: GAMEMD 0x5D5900
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005D5900()
-{
-    DAT_00ABFD98 = DAT_007E1718 / DAT_00ABFDC8;
-}
-
-// FUNCTION: GAMEMD 0x5D5A80
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005D5A80()
-{
-    DAT_00ABFDC0 = 0;
-    DAT_00ABFDB8 = 0x80;
-    DAT_00ABFDBC = 0x80;
-}
-
 // FUNCTION: GAMEMD 0x5D5B60
 // Copy the four strings and the two scalars, build the mode's CCINIClass,
 // load it from the file named by +0x2C when that file exists and read the

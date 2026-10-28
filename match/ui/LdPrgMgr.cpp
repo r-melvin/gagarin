@@ -26,27 +26,16 @@ extern int DAT_00ABC9A4;
 // GLOBAL: GAMEMD 0xABC9A8
 extern int DAT_00ABC9A8;
 
-// SYNTHETIC: GAMEMD 0x00552880
 // dynamic initializer for DAT_00ABC9B0
 // GLOBAL: GAMEMD 0x00ABC9B0
-double DAT_00ABC9B0 = DAT_00ABC960 / DAT_007ECF50;
+extern double DAT_00ABC9B0;
 
-// SYNTHETIC: GAMEMD 0x005528A0
 // dynamic initializer for DAT_00ABC998
 // GLOBAL: GAMEMD 0x00ABC998
-double DAT_00ABC998 = 1.0 / DAT_00ABC9B0;
+extern double DAT_00ABC998;
 
 GG_STATIC_ASSERT(sizeof(DAT_00ABC9B0) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00ABC998) == 8);
-
-// FUNCTION: GAMEMD 0x552A20
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00552A20()
-{
-    DAT_00ABC9A8 = 0;
-    DAT_00ABC9A0 = 0x80;
-    DAT_00ABC9A4 = 0x80;
-}
 
 
 // GLOBAL: GAMEMD 0xABC9BC
