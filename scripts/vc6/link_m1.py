@@ -117,6 +117,9 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--objdir", type=Path, default=ROOT / "build-vc6/project")
     ap.add_argument("--out", type=Path, default=ROOT / "build-vc6/link_m1")
+    ap.add_argument("--distribution-patches", action="store_true",
+                    help="after a successful link, apply the post-link distribution patches "
+                         "(apply_distribution_patches.py) to m1.exe")
     ap.add_argument("--pin-data", action="store_true",
                     help="M2: bind every bound global to its retail address (absolute symbols) "
                          "instead of placing zero-filled or project storage")
@@ -133,6 +136,10 @@ def main(argv=None):
           f"stubs {summary['stubs_placed']}); extra stubs {summary['extra_stubs']}")
     if not (out / "m1.map").is_file():
         return 1
+    if args.distribution_patches and summary["link_exit_code"] == 0:
+        import apply_distribution_patches
+        if apply_distribution_patches.main(["--image", str(out / "m1.exe")]):
+            return 1
     check = mapcheck.check(out / "m1.map", out / "stubs/plan.json")
     (out / "mapcheck.json").write_text(json.dumps(check, indent=1) + "\n")
     mapcheck.print_summary(check)
