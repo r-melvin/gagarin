@@ -5,6 +5,9 @@
 // Win32 dialog helpers: a child-window scaler run through EnumChildWindows,
 // a font cache keyed by face/size/style, the end of a tree-view drag and the
 // tree/list view state load/save walkers.
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
+//   /Ob2: the font cache's constructor and destructor inline into its initialiser and
+//   atexit stub (0x775D70, 0x775D90).
 #include <stddef.h>
 #include <string.h>
 #include <math.h>
@@ -75,6 +78,14 @@ struct FontCacheVector
     int Capacity;   // +0x04
     Elem*  Data;       // +0x08
 
+    FontCacheVector() : Count(0), Capacity(0), Data(0) {}
+    ~FontCacheVector()
+    {
+        Elem* data = Data;
+        Count = 0;
+        operator delete(data);
+    }
+
     void Fetch(int index, Elem& item) const
     {
         if (index >= 0 && index < Count) {
@@ -123,7 +134,9 @@ GG_STATIC_ASSERT(sizeof(FontCacheEntry) == 0x90);
 // are carried by the bound globals 0xB72F3C / 0xB72F40.
 
 // GLOBAL: GAMEMD 0xB72F38 -- the font cache.
-extern FontCacheVector<FontCacheEntry> DAT_00B72F38;
+// SYNTHETIC: GAMEMD 0x775D70 -- compiler-generated dynamic initializer.
+// SYNTHETIC: GAMEMD 0x775D90 -- atexit cleanup of DAT_00B72F38 (inlined destructor).
+FontCacheVector<FontCacheEntry> DAT_00B72F38;
 
 // What 0x776490 reports about the window under a drag point (ten dwords; the
 // window at +0x04 and the point at +0x10/+0x14 are the fields read here).

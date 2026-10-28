@@ -47,6 +47,13 @@ struct Vec_00B778D8
     int count;                    // +0x00
     int unknown_04;               // +0x04
     Record_00B778E0* data;        // +0x08
+    Vec_00B778D8() : count(0), unknown_04(0), data(0) {}
+    ~Vec_00B778D8()
+    {
+        Record_00B778E0* block = data;
+        count = 0;
+        operator delete(block);
+    }
 };
 extern Vec_00B778D8 DAT_00B778D8;
 
@@ -125,6 +132,13 @@ struct Vec_00B77900
     int count;                    // +0x00
     int unknown_04;               // +0x04
     Entry_00B77908* data;         // +0x08
+    Vec_00B77900() : count(0), unknown_04(0), data(0) {}
+    ~Vec_00B77900()
+    {
+        Entry_00B77908* block = data;
+        count = 0;
+        operator delete(block);
+    }
 };
 extern Vec_00B77900 DAT_00B77900;
 GG_STATIC_ASSERT(offsetof(Vec_00B77900, count) == 0x00);
@@ -323,6 +337,13 @@ struct Vec_00B76AE0
     int count;                    // +0x00
     int unknown_04;               // +0x04
     Record_00B76AE8* data;        // +0x08
+    Vec_00B76AE0() : count(0), unknown_04(0), data(0) {}
+    ~Vec_00B76AE0()
+    {
+        Record_00B76AE8* block = data;
+        count = 0;
+        operator delete(block);
+    }
 };
 extern Vec_00B76AE0 DAT_00B76AE0;
 

@@ -28,7 +28,6 @@ struct CountedStringArray {
 extern CountedBlock DAT_00AC1DE0;
 extern CountedBlock DAT_00B0BD50;
 extern char DAT_00B2FF78;
-extern CountedBlock DAT_00B72F38;
 extern CountedBlock DAT_00B778D8;
 extern CountedBlock DAT_00B73E10;
 extern CountedBlock DAT_00B76AE0;
@@ -57,14 +56,6 @@ void FUN_006C6B60()
 {
     void* block = DAT_00B0BD50.data;
     DAT_00B0BD50.count = 0;
-    gg_free(block);
-}
-
-// FUNCTION: GAMEMD 0x00775D90
-void FUN_00775D90()
-{
-    void* block = DAT_00B72F38.data;
-    DAT_00B72F38.count = 0;
     gg_free(block);
 }
 

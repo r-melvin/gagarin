@@ -294,11 +294,28 @@ struct CountedBlock {
     int count;          // +0x00
     int unknown_04;
     void* data;         // +0x08
+    CountedBlock() : count(0), unknown_04(0), data(0) {}
+    ~CountedBlock()
+    {
+        void* block = data;
+        count = 0;
+        operator delete(block);
+    }
 };
+// FUNCTION: GAMEMD 0x7B46F0 (decl; reloc) -- string object destructor (this in ECX).
+extern void FUN_007B46F0(void* self);
 struct CountedStringArray {
     int count;          // +0x00
     int unknown_04;
     unsigned char* data; // +0x08, elements of 4 bytes
+    CountedStringArray() : count(0), unknown_04(0), data(0) {}
+    ~CountedStringArray()
+    {
+        for (int i = 0; i < count; ++i)
+            FUN_007B46F0(data + i * 4);
+        count = 0;
+        operator delete(data);
+    }
 };
 GG_STATIC_ASSERT(offsetof(CountedBlock, count) == 0x00);
 GG_STATIC_ASSERT(offsetof(CountedBlock, data) == 0x08);
@@ -1306,45 +1323,25 @@ extern HeaderCoordInit DAT_00B779F8;
 // SYNTHETIC: GAMEMD 0x77B8F0 -- atexit cleanup of DAT_00B73AE0.
 Wstring DAT_00B73AE0;
 
-// FUNCTION: GAMEMD 0x0077B920
-void FUN_0077B920()
-{
-    void* block = DAT_00B778D8.data;
-    DAT_00B778D8.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B778D8
+// SYNTHETIC: GAMEMD 0x77B920 -- atexit cleanup of DAT_00B778D8 (inlined destructor).
+Vec_00B778D8 DAT_00B778D8;
 
-// FUNCTION: GAMEMD 0x0077B960
-void FUN_0077B960()
-{
-    void* block = DAT_00B73E10.data;
-    DAT_00B73E10.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B73E10
+// SYNTHETIC: GAMEMD 0x77B960 -- atexit cleanup of DAT_00B73E10 (inlined destructor).
+CountedBlock DAT_00B73E10;
 
-// FUNCTION: GAMEMD 0x0077B9A0
-void FUN_0077B9A0()
-{
-    void* block = DAT_00B76AE0.data;
-    DAT_00B76AE0.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76AE0
+// SYNTHETIC: GAMEMD 0x77B9A0 -- atexit cleanup of DAT_00B76AE0 (inlined destructor).
+Vec_00B76AE0 DAT_00B76AE0;
 
-// FUNCTION: GAMEMD 0x0077B9E0
-void FUN_0077B9E0()
-{
-    void* block = DAT_00B77900.data;
-    DAT_00B77900.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B77900
+// SYNTHETIC: GAMEMD 0x77B9E0 -- atexit cleanup of DAT_00B77900 (inlined destructor).
+Vec_00B77900 DAT_00B77900;
 
-// FUNCTION: GAMEMD 0x0077BA20
-void FUN_0077BA20()
-{
-    void* block = DAT_00B76520.data;
-    DAT_00B76520.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76520
+// SYNTHETIC: GAMEMD 0x77BA20 -- atexit cleanup of DAT_00B76520 (inlined destructor).
+CountedBlock DAT_00B76520;
 
 // GLOBAL: GAMEMD 0xB76640
 // SYNTHETIC: GAMEMD 0x77C050 -- atexit cleanup of DAT_00B76640 (inlined destructor).
@@ -1352,125 +1349,57 @@ void FUN_0077BA20()
 //   through the shrink loop; this build swaps the registers.
 Table_00B76640 DAT_00B76640;
 
-// FUNCTION: GAMEMD 0x0077C370
-void FUN_0077C370()
-{
-    for (int i = 0; i < DAT_00B777A0.count; ++i)
-        FUN_007B46F0(DAT_00B777A0.data + i * 4);
-    void* block = DAT_00B777A0.data;
-    DAT_00B777A0.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B777A0
+// SYNTHETIC: GAMEMD 0x77C370 -- atexit cleanup of DAT_00B777A0 (inlined destructor).
+CountedStringArray DAT_00B777A0;
 
-// FUNCTION: GAMEMD 0x0077C5A0
-void FUN_0077C5A0()
-{
-    for (int i = 0; i < DAT_00B765F8.count; ++i)
-        FUN_007B46F0(DAT_00B765F8.data + i * 4);
-    void* block = DAT_00B765F8.data;
-    DAT_00B765F8.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B765F8
+// SYNTHETIC: GAMEMD 0x77C5A0 -- atexit cleanup of DAT_00B765F8 (inlined destructor).
+CountedStringArray DAT_00B765F8;
 
-// FUNCTION: GAMEMD 0x0077C600
-void FUN_0077C600()
-{
-    for (int i = 0; i < DAT_00B73BD8.count; ++i)
-        FUN_007B46F0(DAT_00B73BD8.data + i * 4);
-    void* block = DAT_00B73BD8.data;
-    DAT_00B73BD8.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B73BD8
+// SYNTHETIC: GAMEMD 0x77C600 -- atexit cleanup of DAT_00B73BD8 (inlined destructor).
+CountedStringArray DAT_00B73BD8;
 
-// FUNCTION: GAMEMD 0x0077C660
-void FUN_0077C660()
-{
-    for (int i = 0; i < DAT_00B736F8.count; ++i)
-        FUN_007B46F0(DAT_00B736F8.data + i * 4);
-    void* block = DAT_00B736F8.data;
-    DAT_00B736F8.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B736F8
+// SYNTHETIC: GAMEMD 0x77C660 -- atexit cleanup of DAT_00B736F8 (inlined destructor).
+CountedStringArray DAT_00B736F8;
 
-// FUNCTION: GAMEMD 0x0077C720
-void FUN_0077C720()
-{
-    for (int i = 0; i < DAT_00B76510.count; ++i)
-        FUN_007B46F0(DAT_00B76510.data + i * 4);
-    void* block = DAT_00B76510.data;
-    DAT_00B76510.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76B00
+// SYNTHETIC: GAMEMD 0x77C6C0 -- atexit cleanup of DAT_00B76B00 (inlined destructor).
+CountedStringArray DAT_00B76B00;
 
-// FUNCTION: GAMEMD 0x0077C780
-void FUN_0077C780()
-{
-    for (int i = 0; i < DAT_00B73AE8.count; ++i)
-        FUN_007B46F0(DAT_00B73AE8.data + i * 4);
-    void* block = DAT_00B73AE8.data;
-    DAT_00B73AE8.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76510
+// SYNTHETIC: GAMEMD 0x77C720 -- atexit cleanup of DAT_00B76510 (inlined destructor).
+CountedStringArray DAT_00B76510;
 
-// FUNCTION: GAMEMD 0x0077C7E0
-void FUN_0077C7E0()
-{
-    for (int i = 0; i < DAT_00B77820.count; ++i)
-        FUN_007B46F0(DAT_00B77820.data + i * 4);
-    void* block = DAT_00B77820.data;
-    DAT_00B77820.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B73AE8
+// SYNTHETIC: GAMEMD 0x77C780 -- atexit cleanup of DAT_00B73AE8 (inlined destructor).
+CountedStringArray DAT_00B73AE8;
 
-// FUNCTION: GAMEMD 0x0077C840
-void FUN_0077C840()
-{
-    for (int i = 0; i < DAT_00B73708.count; ++i)
-        FUN_007B46F0(DAT_00B73708.data + i * 4);
-    void* block = DAT_00B73708.data;
-    DAT_00B73708.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B77820
+// SYNTHETIC: GAMEMD 0x77C7E0 -- atexit cleanup of DAT_00B77820 (inlined destructor).
+CountedStringArray DAT_00B77820;
 
-// FUNCTION: GAMEMD 0x0077C8A0
-void FUN_0077C8A0()
-{
-    for (int i = 0; i < DAT_00B76188.count; ++i)
-        FUN_007B46F0(DAT_00B76188.data + i * 4);
-    void* block = DAT_00B76188.data;
-    DAT_00B76188.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B73708
+// SYNTHETIC: GAMEMD 0x77C840 -- atexit cleanup of DAT_00B73708 (inlined destructor).
+CountedStringArray DAT_00B73708;
 
-// FUNCTION: GAMEMD 0x0077C900
-void FUN_0077C900()
-{
-    for (int i = 0; i < DAT_00B73AA8.count; ++i)
-        FUN_007B46F0(DAT_00B73AA8.data + i * 4);
-    void* block = DAT_00B73AA8.data;
-    DAT_00B73AA8.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76188
+// SYNTHETIC: GAMEMD 0x77C8A0 -- atexit cleanup of DAT_00B76188 (inlined destructor).
+CountedStringArray DAT_00B76188;
 
-// FUNCTION: GAMEMD 0x0077C960
-void FUN_0077C960()
-{
-    for (int i = 0; i < DAT_00B76980.count; ++i)
-        FUN_007B46F0(DAT_00B76980.data + i * 4);
-    void* block = DAT_00B76980.data;
-    DAT_00B76980.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B73AA8
+// SYNTHETIC: GAMEMD 0x77C900 -- atexit cleanup of DAT_00B73AA8 (inlined destructor).
+CountedStringArray DAT_00B73AA8;
 
-// FUNCTION: GAMEMD 0x0077C9C0
-void FUN_0077C9C0()
-{
-    for (int i = 0; i < DAT_00B779B0.count; ++i)
-        FUN_007B46F0(DAT_00B779B0.data + i * 4);
-    void* block = DAT_00B779B0.data;
-    DAT_00B779B0.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76980
+// SYNTHETIC: GAMEMD 0x77C960 -- atexit cleanup of DAT_00B76980 (inlined destructor).
+CountedStringArray DAT_00B76980;
+
+// GLOBAL: GAMEMD 0x00B779B0
+// SYNTHETIC: GAMEMD 0x77C9C0 -- atexit cleanup of DAT_00B779B0 (inlined destructor).
+CountedStringArray DAT_00B779B0;
 
 // GLOBAL: GAMEMD 0xB73ACC
 // SYNTHETIC: GAMEMD 0x77CA00 -- compiler-generated dynamic initializer.
@@ -1495,25 +1424,13 @@ int DAT_00B765F0 = DAT_0084A1C8 - DAT_0084A1C4 - 4;
 // SYNTHETIC: GAMEMD 0x77CE30
 int DAT_00B73E3C = DAT_0084A1D8 - DAT_0084A1D4 - 4;
 
-// FUNCTION: GAMEMD 0x0077CE70
-void FUN_0077CE70()
-{
-    for (int i = 0; i < DAT_00B76AD0.count; ++i)
-        FUN_007B46F0(DAT_00B76AD0.data + i * 4);
-    void* block = DAT_00B76AD0.data;
-    DAT_00B76AD0.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76AD0
+// SYNTHETIC: GAMEMD 0x77CE70 -- atexit cleanup of DAT_00B76AD0 (inlined destructor).
+CountedStringArray DAT_00B76AD0;
 
-// FUNCTION: GAMEMD 0x0077CED0
-void FUN_0077CED0()
-{
-    for (int i = 0; i < DAT_00B76970.count; ++i)
-        FUN_007B46F0(DAT_00B76970.data + i * 4);
-    void* block = DAT_00B76970.data;
-    DAT_00B76970.count = 0;
-    gg_free(block);
-}
+// GLOBAL: GAMEMD 0x00B76970
+// SYNTHETIC: GAMEMD 0x77CED0 -- atexit cleanup of DAT_00B76970 (inlined destructor).
+CountedStringArray DAT_00B76970;
 
 // GLOBAL: GAMEMD 0xB76AC4
 // SYNTHETIC: GAMEMD 0x77CF10 -- compiler-generated dynamic initializer.
