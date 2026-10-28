@@ -7,8 +7,8 @@
 // frees the array when it is owned, and clears the flag and capacity. T is the
 // element type of the vector's RTTI TypeDescriptor, read through the vptr stored by the
 // matching initialiser. The initialisers (the __xc table entries, which also
-// register these stubs with atexit) are left to the translation-unit migration;
-// they compile here as a by-product and are not claimed. The globals' retail
+// register these stubs with atexit) compile here with /Ob2 as the fused
+// constructor + atexit run-time initialiser and are claimed with their stubs. The globals' retail
 // addresses are bound for verification through the per-TU symbol map.
 #include "vector_class_operations.h"
 

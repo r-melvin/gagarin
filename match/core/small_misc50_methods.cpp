@@ -9,7 +9,7 @@
 extern const wchar_t DAT_00887734[];
 // STRING: GAMEMD 0x817830
 extern const char STR_00817830[];
-// FUNCTION: GAMEMD 0x734E60 (declaration)
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc)
 wchar_t* __fastcall StringTable_LoadString(const char*, int*, const char*, int);
 
 // FUNCTION: GAMEMD 0x410960

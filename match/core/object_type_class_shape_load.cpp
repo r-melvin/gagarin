@@ -14,7 +14,7 @@
 extern ScenarioClass* ScenarioInstance;
 // GLOBAL: GAMEMD 0x7E1B78
 extern Theater Theater_Array[6];
-// FUNCTION: GAMEMD 0x5B40B0 (declaration)
+// FUNCTION: GAMEMD 0x5B40B0 (decl; reloc)
 void* __fastcall MixFileClass_Retrieve(char*, bool);
 
 static inline char GgLowerFilenameByte(char c)
