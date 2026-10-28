@@ -8,6 +8,8 @@
 // touches, with offset asserts.
 
 #include <stddef.h>
+#include <new.h>
+#include "../_layout/voxel_resource_data.h"
 #include "../_rt/gg_static_assert.h"
 
 extern int* DAT_0087F680;
@@ -49,31 +51,19 @@ void FUN_004C5470()
     }
 }
 
-struct Obj_005BD5A0 {
-    unsigned char unknown_00[0xC];
-    int* unknown_0C;
-    void FUN_005BD5A0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_005BD5A0, unknown_0C) == 0xC);
 // FUNCTION: GAMEMD 0x005BD5A0
-void Obj_005BD5A0::FUN_005BD5A0()
+Obj_005BD5A0::~Obj_005BD5A0()
 {
     if (unknown_0C)
-        delete unknown_0C;
+        ::operator delete(unknown_0C);
     unknown_0C = 0;
 }
 
-struct Obj_005BD7C0 {
-    unsigned char unknown_00[0xC];
-    int* unknown_0C;
-    void FUN_005BD7C0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_005BD7C0, unknown_0C) == 0xC);
 // FUNCTION: GAMEMD 0x005BD7C0
-void Obj_005BD7C0::FUN_005BD7C0()
+void Obj_005BD5A0::FUN_005BD7C0()
 {
     if (unknown_0C)
-        delete unknown_0C;
+        ::operator delete(unknown_0C);
     unknown_0C = 0;
 }
 

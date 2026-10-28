@@ -41,7 +41,7 @@ enum { MouseHotCenter = 12345, MouseHotFar = 54321 };
 // GLOBAL: GAMEMD 0x0082D028 - the cursor table (5 rows are initialised).
 extern MouseCursorEntry MouseCursorTable[];
 // GLOBAL: GAMEMD 0x00ABF294 - the loaded MOUSE.SHA shape file.
-extern MouseShapeView* DAT_00ABF294;
+extern Obj_0069E430* DAT_00ABF294;
 // GLOBAL: GAMEMD 0x00ABF2DC - the load-flag byte handed to FileSystem::LoadWholeFileEx.
 extern char MouseShapeFlag;
 // GLOBAL: GAMEMD 0x00ABF2DD - set once a cursor has been applied.

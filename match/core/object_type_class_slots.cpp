@@ -21,7 +21,7 @@ int ObjectTypeClass::vf_28()
 
 // FUNCTION: GAMEMD 0x5F7320
 ObjectTypeClass::ObjectTypeClass(const AbstractNoInit& noInit)
-    : AbstractTypeClass(noInit), Image(0), MainVoxel(noInit), TurretVoxel(noInit), BarrelVoxel(noInit)
+    : AbstractTypeClass(noInit), Image(0), MainVoxel(noInit), TurretVoxel(noInit), BarrelVoxel(noInit), ImageFile(noInit), AlphaImageFile(noInit)
 {
 }
 
@@ -29,6 +29,16 @@ ObjectTypeClass::ObjectTypeClass(const AbstractNoInit& noInit)
 int ObjectTypeClass::vf_29()
 {
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x5F75C0
+CoordStruct ObjectTypeClass::vf_30()
+{
+    CoordStruct coord;
+    coord.X = 10;
+    coord.Y = 10;
+    coord.Z = 10;
+    return coord;
 }
 
 // FUNCTION: GAMEMD 0x5F75E0
@@ -83,6 +93,15 @@ void* ObjectTypeClass::vf_36(int a1)
 {
     static Range_005F7640 range;
     return &range;
+}
+
+// FUNCTION: GAMEMD 0x5F9970
+HRESULT __stdcall ObjectTypeClass::GetSizeMax(ULARGE_INTEGER* size)
+{
+    HRESULT result = AbstractClass::GetSizeMax(size);
+    if (result >= 0)
+        result = S_OK;
+    return result;
 }
 
 // SYNTHETIC: GAMEMD 0x5F9AE0

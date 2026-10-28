@@ -542,12 +542,11 @@ HBCoord BuildingTypeClass::vf_30()
 {
     int width;
     int height;
-    TypesShapeView* shape = (TypesShapeView*)vf_39();
+    Obj_0069E430* shape = static_cast<Obj_0069E430*>(vf_39());
     if (shape) {
-        TypesFrameRect tmp;
-        TypesFrameRect rect = *shape->GetFrameRect(&tmp, 0);
-        width = rect.W;
-        height = rect.H;
+        RectangleStruct rect = shape->FUN_0069E7E0(0);
+        width = rect.Width;
+        height = rect.Height;
     } else {
         width = 0;
         height = 0;

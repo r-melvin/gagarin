@@ -6,6 +6,8 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_TYPES_BUILDING_SHARED_H
 
 #include "types_building_type_class.h"
+#include "../../_layout/obj_0069e430.h"
+#include "../../_layout/geometry2d.h"
 
 // The map object (global 0x87F7E8; read-only here). The floor-height lookup ignores its `this`.
 class TypesMapView
@@ -35,24 +37,6 @@ inline TypesStaticCell TypesMakeStaticCell(short x, short y)
     TypesStaticCell cell(x, y);
     return cell;
 }
-
-// The bounds of one shape frame (four dwords), as the shape bounds query fills them in.
-struct TypesFrameRect
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int W;   // +0x08
-    int H;   // +0x0C
-};
-GG_STATIC_ASSERT(sizeof(TypesFrameRect) == 0x10);
-
-// A loaded shape (read-only view).
-class TypesShapeView
-{
-public:
-    // FUNCTION: GAMEMD 0x69E7E0 (read-only here) - fills and returns the bounds of one frame, or 0.
-    TypesFrameRect* GetFrameRect(TypesFrameRect* out, int frame);
-};
 
 // GLOBAL: GAMEMD 0x89C8D0 - the all-zero coordinate the constructor copies into the coordinate members
 // (its first two dwords also serve as the zero point), and GLOBAL: GAMEMD 0x89C8A0 - the 16-byte object

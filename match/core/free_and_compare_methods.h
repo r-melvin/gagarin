@@ -16,7 +16,7 @@
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
 // __cdecl, two pointer arguments, `ADD ESP,8` after — and its result feeds
-// `NEG/SBB/INC`, the materialisation of `== 0`. That is strcmp.
+// `NEG/SBB/INC`, the materialisation of `== 0` for the native comparison routine.
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);
 
 struct Obj_00408400
@@ -36,15 +36,5 @@ struct Obj_00408500
     void FUN_004085A0();
 };
 GG_STATIC_ASSERT(sizeof(Obj_00408500) == 32);
-
-struct Obj_00410A00
-{
-    char _pad00[0x24];
-    char Name[1];      // +0x0024  inline string; only its address is taken
-
-    // FUNCTION: GAMEMD 0x410A40
-    bool FUN_00410A40(const char* other) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00410A00, Name) == 0x24);
 
 #endif  // GG_MATCH_CORE_FREE_AND_COMPARE_METHODS_H

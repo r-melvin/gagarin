@@ -20,13 +20,13 @@ inline void MouseClass::ApplyCursorRow(int index, bool flag)
     int x = 0;
     int y = 0;
     if (row.unknown_14 == MouseHotCenter)
-        x = DAT_00ABF294->Width / 2;
+        x = DAT_00ABF294->unknown_02 / 2;
     if (row.unknown_14 == MouseHotFar)
-        x = DAT_00ABF294->Width;
+        x = DAT_00ABF294->unknown_02;
     if (row.unknown_18 == MouseHotCenter)
-        y = DAT_00ABF294->Height / 2;
+        y = DAT_00ABF294->unknown_04 / 2;
     if (row.unknown_18 == MouseHotFar)
-        y = DAT_00ABF294->Height;
+        y = DAT_00ABF294->unknown_04;
     Point2D hot(x, y);
     WWMouseClassInstance->SetCursor(&hot, DAT_00ABF294, CursorFrame + start);
 }
@@ -110,7 +110,7 @@ void MouseClass::vf_10(int* key, Point2D* where)
 void MouseClass::vf_05()
 {
     ScrollClass::vf_05();
-    DAT_00ABF294 = (MouseShapeView*)FUN_004A38D0("MOUSE.SHA", &MouseShapeFlag);
+    DAT_00ABF294 = (Obj_0069E430*)FUN_004A38D0("MOUSE.SHA", &MouseShapeFlag);
 }
 
 // FUNCTION: GAMEMD 0x5BDF50

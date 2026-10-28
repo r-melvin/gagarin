@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
+#include "../core/bounded_text.h"
 
 class CCINIClass;
 
@@ -34,23 +35,32 @@ public:
     AbstractTypeClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x4109C0 (declaration; destructor, slot 8 = 0x410C30)
     virtual ~AbstractTypeClass();
+    // FUNCTION: GAMEMD 0x410A40 (nonvirtual, compares ID with caller text)
+    bool FUN_00410A40(const char* other) const;
     // Overrides and new slots of the primary table 0x7E2000 (27 slots).
-    // Signatures are not recovered; placeholders keep the shape.
+    // Names retain slot placeholders; signatures follow native calls and returns.
     virtual void vf_13(Obj_004A1D30* crc); // 13  0x410BE0
-    virtual void vf_24();                 // 24  0x410C20 (new)
+    virtual void vf_24(int value);                 // 24  0x410C20 (new)
     virtual bool vf_25(CCINIClass* ini);  // 25  0x410A60 (new; RET 4, bool)
     virtual bool vf_26(CCINIClass* ini);  // 26  0x410B90 (new; RET 4, bool)
-    char           ID[0x18];          // +0x24  strncpy(pID, 0x18)
-    unsigned char  zero_3C;           // +0x3C  ID NUL-terminator slot
-    char           UINameLabel[0x20]; // +0x3D
+    // Native 0x4108B3..0x4108B7 copies six dwords plus the terminator byte.
+    GgBoundedText<25> ID;          // +0x24, 24 characters plus NUL at +0x3C
+    GgBoundedText<32> UINameLabel; // +0x3D
     unsigned char  _pad_5D[3];        // +0x5D  (align UIName to +0x60)
     const wchar_t* UIName;            // +0x60
-    char           Name[0x31];        // +0x64  strncpy(…, 0x30)
+    GgBoundedText<49> Name;        // +0x64  strncpy(…, 0x30)
     unsigned char  _pad_95[3];        // +0x95  (pad to sizeof 0x98)
 };
 
+GG_STATIC_ASSERT(offsetof(GgBoundedText<25>, Data) == 0);
+GG_STATIC_ASSERT(offsetof(GgBoundedText<32>, Data) == 0);
+GG_STATIC_ASSERT(offsetof(GgBoundedText<49>, Data) == 0);
+GG_STATIC_ASSERT(sizeof(GgBoundedText<25>) == 25);
+GG_STATIC_ASSERT(sizeof(GgBoundedText<32>) == 32);
+GG_STATIC_ASSERT(sizeof(GgBoundedText<49>) == 49);
 GG_STATIC_ASSERT(offsetof(AbstractTypeClass, ID)          == 0x24);
-GG_STATIC_ASSERT(offsetof(AbstractTypeClass, zero_3C)     == 0x3C);
+GG_STATIC_ASSERT(sizeof(((AbstractTypeClass*)0)->ID)     == 0x19);
+GG_STATIC_ASSERT(offsetof(AbstractTypeClass, ID) + 0x18  == 0x3C);
 GG_STATIC_ASSERT(offsetof(AbstractTypeClass, UINameLabel) == 0x3D);
 GG_STATIC_ASSERT(offsetof(AbstractTypeClass, UIName)      == 0x60);
 GG_STATIC_ASSERT(offsetof(AbstractTypeClass, Name)        == 0x64);

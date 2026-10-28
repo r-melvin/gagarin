@@ -9,7 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_00754900;
 
 // GLOBAL: GAMEMD 0x846614
 extern int DAT_00846614;
@@ -28,29 +27,5 @@ extern char DAT_00B2FF78[];
 
 // FUNCTION: GAMEMD 0x43AE50 (declaration)
 void FUN_0043AE50(void*, int);
-
-struct Obj_00754900
-{
-    // FUNCTION: GAMEMD 0x754900
-    Obj_00754900* FUN_00754900();
-};
-
-
-// FUNCTION: GAMEMD 0x752AB0
-void FUN_00752AB0(int a1);
-// FUNCTION: GAMEMD 0x7533A0
-bool __cdecl FUN_007533A0();
-// FUNCTION: GAMEMD 0x753570
-int __cdecl FUN_00753570();
-// FUNCTION: GAMEMD 0x753A30
-void FUN_00753A30(int a1, int a2);
-// FUNCTION: GAMEMD 0x753AB0
-void FUN_00753AB0(int a1, int a2);
-// FUNCTION: GAMEMD 0x753AD0
-void __cdecl FUN_00753AD0();
-// FUNCTION: GAMEMD 0x753AE0
-void __cdecl FUN_00753AE0();
-// FUNCTION: GAMEMD 0x753C60
-void* __cdecl FUN_00753C60();
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU264_METHODS_H

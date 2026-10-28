@@ -31,7 +31,7 @@ public:
     BulletTypeClass(const char* id);
 
     // Slot 8 in the primary table is the native scalar-deleting entry at
-    // 0x46C890.  The ordinary destructor body remains a separate provider.
+    // 0x46C890, generated from the ordinary destructor body at 0x46BE10.
     virtual ~BulletTypeClass();
 
     // Native overrides are declared here to preserve the four emitted tables.
@@ -51,34 +51,34 @@ public:
     // Implemented at the native address 0x46C840 in the owning source TU.
     void SetScaledSpawnDelay(int delay);
 
-    // Constructor target is recovered in its owning source TU.
-    BulletTypeClass* Construct(const char* id);
-
     // ObjectTypeClass's two pure slots have concrete BulletType table entries.
     virtual bool vf_32(const CellStruct* cell, HouseClass* house); // slot 32, table 0x7E4948
     virtual void* vf_35(void* house);                             // slot 35, table 0x7E4948
 
-    unsigned char unknown_294;
-    unsigned char unknown_295;
-    unsigned char unknown_296;
-    unsigned char unknown_297;
-    unsigned char unknown_298;
-    unsigned char unknown_299;
-    unsigned char unknown_29A;
-    unsigned char unknown_29B;
-    unsigned char unknown_29C;
-    unsigned char unknown_29D;
-    unsigned char unknown_29E;
-    unsigned char unknown_29F;
-    unsigned char unknown_2A0;
-    unsigned char unknown_2A1;
-    unsigned char unknown_2A2;
-    unsigned char unknown_2A3;
-    unsigned char unknown_2A4[2];
-    unsigned char unknown_2A6;
-    unsigned char unknown_2A7;
-    unsigned char unknown_2A8;
-    unsigned char unknown_2A9;
+    // Boolean fields: native 0x46BEE0 reads them through 0x5295F0;
+    // 0x46C560 passes their bytes directly to Boolean checksum 0x4A1CA0.
+    bool unknown_294;
+    bool unknown_295;
+    bool unknown_296;
+    bool unknown_297;
+    bool unknown_298;
+    bool unknown_299;
+    bool unknown_29A;
+    bool unknown_29B;
+    bool unknown_29C;
+    bool unknown_29D;
+    bool unknown_29E;
+    bool unknown_29F;
+    bool unknown_2A0;
+    bool unknown_2A1;
+    bool unknown_2A2;
+    bool unknown_2A3;
+    bool unknown_2A4;
+    bool unknown_2A5;
+    bool unknown_2A6;
+    bool unknown_2A7;
+    bool unknown_2A8;
+    bool unknown_2A9;
     unsigned char unknown_2AA[2];
     int unknown_2AC;
     // FUNCTION 0x46BEE0 reads the AirburstWeapon INI key at 0x81B04C,
@@ -93,23 +93,23 @@ public:
     // INI key "ShrapnelCount" (STRING 0x81B02C).
     int ShrapnelCount;               // +0x2B8
     int unknown_2BC;
-    unsigned char unknown_2C0;
+    bool unknown_2C0;
     unsigned char unknown_2C1[7];
     double unknown_2C8;
     int unknown_2D0;
-    unsigned char unknown_2D4[4];
+    int unknown_2D4; // Native Color reader 0x474A90 at 0x46BFA5 uses a DWORD fallback.
     AnimTypeClass* unknown_2D8;
     int unknown_2DC;
     int unknown_2E0;
     int unknown_2E4;
     int ScaledSpawnDelay;
-    unsigned char unknown_2EC;
+    bool unknown_2EC;
     unsigned char unknown_2ED[3];
     int unknown_2F0;
     unsigned char unknown_2F4;
     unsigned char unknown_2F5;
     unsigned char unknown_2F6;
-    unsigned char unknown_2F7;
+    bool unknown_2F7;
 };
 
 GG_STATIC_ASSERT(sizeof(ObjectTypeClass) == 0x294);
@@ -146,7 +146,9 @@ GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A2) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A3) == 0x2A3);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A3) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A4) == 0x2A4);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A4) == 2);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A5) == 0x2A5);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A5) == 1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A4) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A6) == 0x2A6);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A6) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A7) == 0x2A7);
@@ -204,8 +206,8 @@ GG_STATIC_ASSERT(sizeof(BulletTypeClass) == 0x2F8);
 
 template<class T> class DynamicVectorClass;
 typedef DynamicVectorClass<BulletTypeClass*> BulletTypeVector;
-// This typed declaration aliases the storage emitted as DAT_00A83C80 in
-// static_vector_dtor_stubs.cpp, where the canonical GLOBAL annotation lives.
-extern BulletTypeVector BulletTypeClass_Array;
+// Shared storage is emitted in static_vector_dtor_stubs.cpp, where the
+// canonical GLOBAL annotation lives. Consumers use its actual linker symbol.
+extern BulletTypeVector DAT_00A83C80;
 
 #endif  // GG_MATCH_COMBAT_BULLET_TYPE_CLASS_H

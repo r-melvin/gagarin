@@ -7,11 +7,8 @@
 #define GG_MATCH_UI_SHAPE_HEADER_H
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-struct ColorStruct;
 struct ShapeHeader
 {
-    // CALLEE: GAMEMD 0x69E860 (decl; reloc) -- hidden RGB result and frame, RET8.
-    ColorStruct GetRadarColor(unsigned int frame);
     short unknown_00;
     short Width;
     short Height;

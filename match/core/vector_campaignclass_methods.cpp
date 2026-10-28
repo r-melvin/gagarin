@@ -8,7 +8,7 @@
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 #include "vector_class_operations.h"
-class CampaignClass;
+#include "campaign_class.h"
 
 // FUNCTION: GAMEMD 0x4E8A20
 // DynamicVectorClass<CampaignClass*>::Clear

@@ -47,7 +47,7 @@ inline void WWMouseClass::DrawCursorBlock()
         if (unknown_4) {
             // Retail calls the out-of-line lock here (0x7B9813) instead of expanding it inline.
             LockMouseCall();
-            rect = unknown_4->GetFrameRect(CursorFrame);
+            static_cast<RectangleStruct&>(rect) = unknown_4->FUN_0069E7E0(CursorFrame);
             rect.X += Position.X - unknown_3C.X;
             rect.Y += Position.Y - unknown_3C.Y;
             UnlockMouse();
@@ -112,7 +112,7 @@ int WWMouseClass::GetHideCount()
 }
 
 // FUNCTION: GAMEMD 0x7B8A00
-void WWMouseClass::SetCursor(const Point2D* hotspot, MouseShapeView* shape, int frame)
+void WWMouseClass::SetCursor(const Point2D* hotspot, Obj_0069E430* shape, int frame)
 {
     if (shape) {
         if (IsCaptured()) {

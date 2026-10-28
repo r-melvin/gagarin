@@ -11,6 +11,13 @@
 // GLOBAL: GAMEMD 0x887680 -- the coordinate slot 18 returns.
 extern CoordStruct DAT_00887680;
 
+// FUNCTION: GAMEMD 0x410210
+// RTTI-interface slot 3 queries primary slot 11; VC6 adjusts the +4 receiver.
+int __stdcall AbstractClass::vf_rtti_3()
+{
+    return vf_11();
+}
+
 // FUNCTION: GAMEMD 0x410410
 // Feed UniqueID and the Dirty byte to the checksum sink.
 void AbstractClass::vf_13(Obj_004A1D30* crc)

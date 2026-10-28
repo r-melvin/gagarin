@@ -35,6 +35,10 @@ struct Matrix3D
         Row[2][0] = m20; Row[2][1] = m21; Row[2][2] = m22; Row[2][3] = m23;
     }
 
+    // Native 0x5AE5E0 copies the twelve contiguous scalar components.
+    // Placeholder avoids asserting constructor versus assignment identity.
+    Matrix3D& FUN_005AE5E0(const Matrix3D& source);
+
     // Native 0x5AE610: copy twelve dwords from source, returning this.
     // A placeholder avoids asserting constructor versus assignment identity.
     Matrix3D& FUN_005AE610(const Matrix3D& source);

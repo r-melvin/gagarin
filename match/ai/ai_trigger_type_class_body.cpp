@@ -652,7 +652,7 @@ bool AITriggerTypeClass::vf_26(CCINIClass* ini)
     *digits = 0;
 
     sprintf(buffer, "%s,%s,%s,%d,%d,%s,%s,%lf,%lf,%lf,%d,%d,%d,%d,%s,%d,%d,%d",
-            Name, team1, house, unknown_B0, unknown_98, object, hex,
+            Name.Data, team1, house, unknown_B0, unknown_98, object, hex,
             Weight_Current, Weight_Minimum, Weight_Maximum,
             unknown_D0 != 0, 0, unknown_AC, unknown_D1 != 0, team2,
             unknown_D2 != 0, unknown_D3 != 0, unknown_D4 != 0);

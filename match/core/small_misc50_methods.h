@@ -1,54 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Offsets, vtable addresses, the string and the fallback global read
-//   numerically off the user's retail gamemd.exe v1.001 via the local Ghidra
-//   CLI at 0x410960. The string at 0x817830 is "D:\ra2mdpost\AbsType" — a
-//   build-machine path left in the binary, used as the allocation tag.
-//
-// A constructor: run the base, install this class's four vtable pointers, then
-// point +0x60 either at a freshly registered block or at the shared fallback at
-// 0x887734, depending on the byte at +0x3D.
+//   Native field offsets and control flow for 0x4253B0 and 0x44FE60.
+//   The former private 0x410960 constructor view has been replaced by
+//   AbstractTypeClass in the implementation file.
 #ifndef GG_MATCH_CORE_SMALL_MISC50_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC50_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-extern char VT_007E2000;   // VTABLE: GAMEMD 0x7E2000
-extern char VT_007E1FE4;   // VTABLE: GAMEMD 0x7E1FE4
-extern char VT_007E1FDC;   // VTABLE: GAMEMD 0x7E1FDC
-extern char VT_007E1FD4;   // VTABLE: GAMEMD 0x7E1FD4
-
-// STRING: GAMEMD 0x817830 "D:\ra2mdpost\AbsType"
-extern const char STR_00817830[];
-
-// GLOBAL: GAMEMD 0x887734 — the shared fallback block.
-extern char DAT_00887734;
-
-// FUNCTION: GAMEMD 0x734E60 — the registrar. Two register arguments (the
-// destination and a zero) plus the tag and a size on the stack.
-void* FUN_00734E60(void* destination, int zero,
-                   const char* tag, int size);
-
-struct Obj_00410960
-{
-    char* vt0;        // +0x0000
-    char* vt1;        // +0x0004
-    char* vt2;        // +0x0008
-    char* vt3;        // +0x000C
-    char  _pad010[0x3D - 0x10];
-    char  Registered; // +0x003D
-    char  _pad03E[0x60 - 0x3E];
-    void* Block;      // +0x0060
-
-    // FUNCTION: GAMEMD 0x4101C0 — the base constructor, one stack argument.
-    void FUN_004101C0(int value);
-
-    // FUNCTION: GAMEMD 0x410960
-    Obj_00410960* FUN_00410960(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00410960, Registered) == 0x3D);
-GG_STATIC_ASSERT(offsetof(Obj_00410960, Block) == 0x60);
 
 // ---------------------------------------------------------------------------
 // 0x4253B0 — record where this object's key appears in the registry, then

@@ -66,10 +66,3 @@ void* __cdecl FUN_00753C60()
 {
     return DAT_00B2FF78;
 }
-
-// FUNCTION: GAMEMD 0x754900
-// Returns its receiver.
-Obj_00754900* Obj_00754900::FUN_00754900()
-{
-    return this;
-}

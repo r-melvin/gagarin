@@ -2911,7 +2911,7 @@ if (!file) {
                 DAT_00A83C9C[type]->Name, house->Edge, house->StartingAllies,
                 house->StartingPoint, static_cast<unsigned char>(house->Visionary),
                 house->MapIsClear);
-        logger->FUN_005BD1F0(STR_00838D44, house->Type->ID, DAT_00AC51FC);
+        logger->FUN_005BD1F0(STR_00838D44, house->Type->ID.Data, DAT_00AC51FC);
     }
 
 {
@@ -2919,7 +2919,7 @@ if (!file) {
 for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     HouseClass* house = DAT_00A8022C[houseIndex];
     DAT_00AC51FC = 0;
-    fprintf(file, STR_00838D08, house->Type->ID, house->ArrayIndex);
+    fprintf(file, STR_00838D08, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_00A83DE8.Count; ++i) {
         InfantryClass* item = static_cast<InfantryClass**>(DAT_00A83DE8.Items)[i];
         if (item->Owner != house) continue;
@@ -2945,7 +2945,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
                 typeName, target.Name, target.X, target.Y, speed,
                 destination.Name, destination.X, destination.Y);
     }
-    logger->FUN_005BD1F0(STR_00838C98, house->Type->ID, DAT_00AC51FC);
+    logger->FUN_005BD1F0(STR_00838C98, house->Type->ID.Data, DAT_00AC51FC);
 }
 
 }
@@ -2955,7 +2955,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
 for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     HouseClass* house = DAT_00A8022C[houseIndex];
     DAT_00AC51FC = 0;
-    fprintf(file, STR_00838C60, house->Type->ID, house->ArrayIndex);
+    fprintf(file, STR_00838C60, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_008B4108.Count; ++i) {
         UnitClass* item = static_cast<UnitClass**>(DAT_008B4108.Items)[i];
         if (item->Owner != house) continue;
@@ -2990,7 +2990,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
                 destination.Name, destination.X, destination.Y,
                 trackNumber, trackIndex, speed);
     }
-    logger->FUN_005BD1F0(STR_00838BCC, house->Type->ID, DAT_00AC51FC);
+    logger->FUN_005BD1F0(STR_00838BCC, house->Type->ID.Data, DAT_00AC51FC);
 }
 
 }
@@ -3000,7 +3000,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
 for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     HouseClass* house = DAT_00A8022C[houseIndex];
     DAT_00AC51FC = 0;
-    fprintf(file, STR_00838B90, house->Type->ID, house->ArrayIndex);
+    fprintf(file, STR_00838B90, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_00A8EB40.Count; ++i) {
         BuildingClass* item = static_cast<BuildingClass**>(DAT_00A8EB40.Items)[i];
         if (item->Owner != house) continue;
@@ -3022,7 +3022,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
         fprintf(file, STR_00838B4C, x, y, facing, mission, typeIndex,
                 typeName, target.Name, target.X, target.Y);
     }
-    logger->FUN_005BD1F0(STR_00838B38, house->Type->ID, DAT_00AC51FC);
+    logger->FUN_005BD1F0(STR_00838B38, house->Type->ID.Data, DAT_00AC51FC);
 }
 
 }
@@ -3032,7 +3032,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
 for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     HouseClass* house = DAT_00A8022C[houseIndex];
     DAT_00AC51FC = 0;
-    fprintf(file, STR_00838AFC, house->Type->ID, house->ArrayIndex);
+    fprintf(file, STR_00838AFC, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_00A8E390.Count; ++i) {
         AircraftClass* item = static_cast<AircraftClass**>(DAT_00A8E390.Items)[i];
         if (item->Owner != house) continue;
@@ -3054,7 +3054,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
         fprintf(file, STR_00838B4C, x, y, facing, mission, typeIndex,
                 typeName, target.Name, target.X, target.Y);
     }
-    logger->FUN_005BD1F0(STR_00838AEC, house->Type->ID, DAT_00AC51FC);
+    logger->FUN_005BD1F0(STR_00838AEC, house->Type->ID.Data, DAT_00AC51FC);
 }
 
 }
@@ -3086,7 +3086,7 @@ for (int layer = 0; layer < 5; ++layer) {
             fprintf(file, STR_00838AB0, name, typeIndex, typeName);
         }
         HouseClass* owner = item->vf_15();
-        if (owner) fprintf(file, STR_00838A90, owner->Type->ID, owner->ArrayIndex);
+        if (owner) fprintf(file, STR_00838A90, owner->Type->ID.Data, owner->ArrayIndex);
         else fprintf(file, STR_00838A80);
     }
 }
@@ -3120,7 +3120,7 @@ for (int i = 0; i < DAT_0087F778.Count; ++i) {
     else if (item->vf_11() == 36) QueueDumpLogicType(file, item, STR_00838974);
     else if (item->vf_11() == 1) QueueDumpLogicType(file, item, STR_00838958);
     HouseClass* owner = item->vf_15();
-    if (owner) fprintf(file, STR_0083894C, owner->Type->ID);
+    if (owner) fprintf(file, STR_0083894C, owner->Type->ID.Data);
     else fprintf(file, STR_00838A80);
 }
 logger->FUN_005BD1F0(STR_00838940, DAT_00AC51FC);

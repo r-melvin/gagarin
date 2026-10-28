@@ -212,6 +212,9 @@ public:
     // FUNCTION: GAMEMD 0x509140 (decl; reloc) -- (factory kind, naval, category), RET 0xC;
     // BuildingClass 0x452360 passes Type->Factory, Type->Naval, 0.
     void Update_FactoriesQueues(int factoryOf, bool isNaval, int buildCat);
+    // CALLEE: GAMEMD 0x4F7870 -- native 0x5F79A3 passes this ObjectTypeClass
+    // pointer and two Boolean arguments, testing the signed EAX result.
+    int FUN_004F7870(ObjectTypeClass* type, bool a2, bool a3);
     // FUNCTION: GAMEMD 0x50B6F0 (decl; reloc)
     bool IsControlledByCurrentPlayer() const;
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc)

@@ -647,8 +647,6 @@ public:
     short FrameCount;        // +0x06
     // FUNCTION: GAMEMD 0x69E7E0 (decl; reloc) - the pixel bounds of one frame.
     MapObjRect* GetBounds(MapObjRect* out, unsigned int frame);
-    // FUNCTION: GAMEMD 0x69E860 (decl; reloc) - the radar colour of one frame.
-    MapObjColor GetRadarColor(unsigned int frame);
 };
 GG_STATIC_ASSERT(offsetof(MapObjShapeView, Width) == 0x2);
 GG_STATIC_ASSERT(offsetof(MapObjShapeView, Height) == 0x4);

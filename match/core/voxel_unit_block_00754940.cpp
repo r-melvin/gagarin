@@ -106,8 +106,14 @@ void FUN_00755C50()
     FUN_005F99E0();
 }
 
-// FUNCTION: GAMEMD 0x7564B0
-VoxelSectionBounds *VoxelSectionSource::FUN_007564b0(int section, int frame)
+// FUNCTION: GAMEMD 0x7564A0
+VoxelSectionRow* Obj_00755D10::FUN_007564A0(int section)
 {
-    return &Records[Rows[section].FirstRecord + frame];
+    return &Block0[section];
+}
+
+// FUNCTION: GAMEMD 0x7564B0
+VoxelSectionBounds *Obj_00755D10::FUN_007564b0(int section, int frame)
+{
+    return &Block1[Block0[section].FirstRecord + frame];
 }

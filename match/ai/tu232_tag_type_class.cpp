@@ -256,8 +256,8 @@ bool TagTypeClass::ReadFromINI(TagINI_006E6080* ini)
         }
         // Preserve the fixed-size value assignment, including its self check.
         // The compare operand order controls retail's CMP EAX,EDI spelling.
-        if (&name != (TagName_006E6080*)Name) {
-            *(TagName_006E6080*)Name = name;
+        if (&name != (TagName_006E6080*)Name.Data) {
+            *(TagName_006E6080*)Name.Data = name;
         }
         FirstTrigger = TriggerTypeClass::FindOrAllocate(strtok(0, STR_00817F70));
         return true;
@@ -273,11 +273,11 @@ bool TagTypeClass::WriteToINI(TagINI_006E6080* ini)
     // Each arm submits its formatted record; VC6 shares the call itself while
     // retaining the per-arm argument setup seen in the retail body.
     if (!FirstTrigger) {
-        wsprintfA(buffer, STR_00842CD8, Name);
+        wsprintfA(buffer, STR_00842CD8, Name.Data);
         ini->WriteString(DAT_007F4550, ID, buffer);
     } else {
-        wsprintfA(buffer, STR_00842CCC, Persistence, Name,
-                  FirstTrigger->ID);
+        wsprintfA(buffer, STR_00842CCC, Persistence, Name.Data,
+                  FirstTrigger->ID.Data);
         ini->WriteString(DAT_007F4550, ID, buffer);
     }
     return true;

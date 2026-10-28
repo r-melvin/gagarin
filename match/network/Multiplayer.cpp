@@ -815,7 +815,7 @@ bool MultiplayerGameMode::vf_33(bool a)
                 }
             }
             if (!found) {
-                FUN_004068E0("Assigning Starting Points for house %d (%s)\n", i, ((HouseTypeClass*)house->Type)->ID);
+                FUN_004068E0("Assigning Starting Points for house %d (%s)\n", i, ((HouseTypeClass*)house->Type)->ID.Data);
                 Cell cell = vf_49(i, starts, taken);
                 house->FUN_0050E000(cell);
             } else {

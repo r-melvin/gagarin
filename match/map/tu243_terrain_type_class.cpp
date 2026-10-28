@@ -30,6 +30,7 @@
 //    subscript produces.
 
 #include <new.h>
+#include "../_layout/obj_0069e430.h"
 #include <stdlib.h>
 #include "terrain_objects/terrain_type_class.h"
 #include "terrain_objects/terrain_class.h"
@@ -156,9 +157,9 @@ bool TerrainTypeClass::vf_25(CCINIClass* ini)
             _makepath(path, 0, 0, ImageFile, ".SHP");
             Image = MapObjLoadShape(path, false);
         }
-        ShapeHeader* shape = static_cast<ShapeHeader*>(vf_39());
+        Obj_0069E430* shape = static_cast<Obj_0069E430*>(vf_39());
         if (shape != 0)
-            RadarColor = shape->GetRadarColor(0);
+            RadarColor = shape->FUN_0069E860(0);
         RadarColor = ini->Read3Bytes(ID, "RadarColor", RadarColor);
         IsAnimated = ini->FUN_005295F0(ID, "IsAnimated", IsAnimated);
         AnimationRate = ini->FUN_005276D0(ID, "AnimationRate", AnimationRate);

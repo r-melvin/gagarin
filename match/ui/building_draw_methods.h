@@ -23,16 +23,7 @@
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-// Shape file header; only the 16-bit fields these bodies read are named.
-struct SHPStruct
-{
-    short unknown_00;
-    short unknown_02;
-    short unknown_04;   // read by 0x43D030 as the strip height
-    short unknown_06;   // read by 0x43D290 as the strip height
-};
-GG_STATIC_ASSERT(offsetof(SHPStruct, unknown_04) == 0x04);
-GG_STATIC_ASSERT(offsetof(SHPStruct, unknown_06) == 0x06);
+#include "../_layout/shp_struct.h"
 
 // Rules object behind the pointer at 0x8871E0 (used prefix only).
 struct Rules_008871E0

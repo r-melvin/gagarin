@@ -15,6 +15,7 @@ struct Vector3D
     float Y;   // +0x04
     float Z;   // +0x08
 
+    // FUNCTION: GAMEMD 0x754900 -- emitted for record-array construction.
     Vector3D() {}
     Vector3D(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };

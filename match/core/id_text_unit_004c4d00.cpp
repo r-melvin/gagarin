@@ -46,6 +46,6 @@ GG_STATIC_ASSERT(offsetof(Obj_004C4F90, unknown_04) == 4);
 // FUNCTION: GAMEMD 0x4C4F90
 char* Obj_004C4F90::FUN_004C4F90() const
 {
-    sprintf(DAT_008A37A0, "%d,%s", unknown_00, unknown_04->ID);
+    sprintf(DAT_008A37A0, "%d,%s", unknown_00, unknown_04->ID.Data);
     return DAT_008A37A0;
 }

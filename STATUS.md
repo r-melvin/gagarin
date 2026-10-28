@@ -25,6 +25,471 @@ link. Partial table targets still select stubs; these checks do not establish
 complete class recovery. Further work prioritizes new source recovery, with
 held migrations left intact.
 
+The working-tree BulletType batch recovers seven additional exact functions:
+its ordinary destructor (`0x46BE10`, 194 bytes), INI reader (`0x46BEE0`, 1,366
+bytes), index lookup-or-create helper (`0x46C440`, 143 bytes), coordinate
+virtual (`0x46C4F0`, 98 bytes), checksum (`0x46C560`, 306 bytes), Load
+(`0x46C6A0`, 134 bytes), and compiler-generated scalar deleting destructor
+(`0x46C890`, 214 bytes). The batch also moves five virtual bodies and the ID
+getter plus Save and GetClassID from stand-in owners onto the shared class
+and array. These additions
+are not included in the source-snapshot totals above.
+
+The INI reader and checksum confirm 25 Boolean fields and the DWORD Color
+fallback previously represented as byte storage. The partial named constructor
+now measures 96.6% using ordinary member initializers; its four remaining
+instruction differences are register choices in two vector growth sums. The
+constructor no longer writes the three uninitialized padding bytes at +0x2C1. Load uses ordinary placement reconstruction; `/Ob2` produces
+the native no-init constructor inlining. All 18 exact BulletType rows pass. Across the seven recovered functions and
+the three migrated nontrivial methods, 196 relocation fields verify; the
+partial constructor's 24 relocation fields also verify.
+The complete current BulletType row set verifies 236 relocation fields across
+18 exact methods and the partial constructor, including the existing no-init
+constructor and factory.
+The factory now uses an ordinary new-expression and the recovered constructor;
+its exact 131-byte match and 11 relocation targets are preserved. The unused
+Construct alias declaration and binding are retired. WeaponType's consumers
+now use the separate AA/AG fields; all three WeaponType rows remain exact.
+BulletType's array consumers now reference the actual DAT_00A83C80 storage
+symbol emitted in static_vector_dtor_stubs.cpp. Both obsolete array alias
+bindings are retired. Fresh COFF objects agree on the same undefined/defined
+symbol pair, and the existing 0x4E7620 exit cleanup retains its exact match.
+This resolves the source symbol gap; native data placement and final-link
+provider selection remain unproved.
+Further constructor matching is held after layout, source-form and compiler
+flag attempts leave the same four instruction differences, pending the
+direction requested under AGENTS.md's three-attempt rule.
+The earlier diagnostic audit checked 47 BulletType table pointer values; it
+omitted the final primary slot. The complete 48-entry audit is recorded below.
+After recovering AbstractClass's RTTI query (`0x410210`, 16 bytes),
+ObjectTypeClass's constant coordinate virtual (`0x5F75C0`, 30 bytes), and its
+GetSizeMax wrapper (`0x5F9970`, 24 bytes), 46 table entries select matched
+source providers. QueryInterface (`0x410260`, 155 bytes) is now recovered at
+100%, including source storage for the RTTI IID; its compiled and linked IID
+bytes equal the pinned retail constant. Slot 37 (`0x5F7900`, 396 bytes) has a
+readable shared-layout body at 92.5%, but still selects a diagnostic stub.
+Its three call relocations verify. Further matching is held after layout,
+source-form and flag attempts pending the requested AGENTS.md direction. The partial BulletType constructor also selects a
+stub. The array selects its source definition, but its data address and the
+tables' addresses differ from retail.
+
+A fresh 1,262-object build using a temporary Git index includes the new INI, QueryInterface
+and factory-query sources and excludes the retired views without changing the working index.
+The diagnostic link resolves all externals with zero duplicate definitions;
+its map places all 10,318 matched rows at their annotated addresses. This
+non-running image still contains 8,891 ordered engine stubs and additional
+unrecovered dependencies. It is not a runnable engine or a byte-identical
+image. The two inherited-method TUs separately pass all 28 exact rows.
+
+The full compile/layout gate passes. The completed full regression run
+re-proves 10,314 matched rows and compile-checks 784 partials across 1,249 TUs
+with zero regressions. The three inherited methods added after that run
+started pass the separate 28-row affected-TU gate and are selected in the
+rebuilt diagnostic link. The current manifest records 10,318 matched rows and
+785 partials. A fresh full compile/regression run covers QueryInterface,
+the partial factory query and the shared House declaration; its result is pending. Per-function and diagnostic-link checks do not establish
+integrated-image identity.
+
+ObjectType resource lifetime recovery adds three exact bodies: VoxelStruct's
+destructor (`0x5F61A0`, 65 bytes), ObjectTypeClass's destructor (`0x5F7400`,
+420 bytes), and its charger-resource cleanup (`0x5F8080`, 142 bytes). The two
+existing model/animation cleanup bodies now use shared, allocation-sized
+resource declarations and ordinary destructors. VoxelStruct owns typed
+resource pointers, and ObjectType's four cache records have ordinary cleanup;
+reverse-order member and array destruction reproduces the native parent body.
+The affected eight-TU gate passes 53 exact rows and one existing partial with
+zero regressions. The new bodies' 34 relocation fields verify.
+
+The ObjectType registry uses its actual static-member storage declaration.
+Its declaration remains at the original position in the definition TU to
+preserve VC6's six guarded callback symbols and their exact bodies. A 1,264
+object diagnostic build selects the five resource lifetime bodies from source
+and places all 10,321 matched rows at their annotated addresses. The model
+cleanup's former gg_free reference selected a diagnostic stub; its three
+calls now use operator delete, preserving the 100% match and native call
+targets. The rebuilt diagnostic snapshot confirms that all three linked calls select
+LIBCMT:delete.obj. The 47-entry ObjectType and BulletType prefix audits retain
+their native values, with 44 and 46 selecting matched source, respectively.
+The full compile/layout gate passes. Full regression re-proves 10,321 exact
+rows and compile-checks 785 partials across 1,253 TUs with zero regressions.
+The current manifest has 10,321 matched rows and 785 partials.
+
+ObjectType Load (`0x5F9720`, 555 bytes) and its cache-reset entry
+(`0x5F9B60`, 32 bytes) now match 100%. Load releases existing resources before
+base deserialization, reconstructs cache records, clears serialized resource
+pointers and retrieves the optional alpha image. A shared gagarin cleanup
+helper expresses the native first inline reset and three out-of-line calls;
+ordinary destructor cleanup retains its exact bytes. All 22 relocation fields
+verify, and the six directly affected TUs pass 34 exact rows plus one existing
+partial with zero regressions.
+
+The 1,265-object diagnostic build selects the new loader in ObjectType's
+slot 5. All 94 checked ObjectType/BulletType prefix pointers remain native, with 45 and
+46 matched source providers respectively. All 10,323 matched rows retain
+their annotated addresses in that diagnostic image. The compile/layout gate
+passes; a fresh full regression run covers the cache-helper change. The
+current manifest records 10,323 matched rows and 785 partials. Remaining stubs,
+displaced data and the library tail still prevent whole-image identity.
+
+ObjectType's INI reader (`0x5F92D0`, 986 bytes) now matches 100%, including
+sound fallback, packed RGB results, gameplay flags, art settings and alpha
+image lookup. All 64 relocation fields verify. The shared AbstractType ID is
+one contiguous 25-byte buffer: native 0x4108B3..0x4108B7 copies six dwords and
+one terminator byte into it; the following UINameLabel still begins at +0x3D.
+All 34 exact rows in the six directly affected TUs pass with no regressions.
+
+The 1,266-object diagnostic build selects the INI source in ObjectType slot
+25. Both ObjectType and BulletType have 46 matched source providers across
+47 checked prefix entries; all 94 audited pointer values are preserved. The held factory
+query at 0x5F7900 remains the table stub. All 10,324 matched rows are placed at
+their annotated addresses in the diagnostic link. Compile/layout passes;
+full regression covering the ID-buffer correction passes with zero regressions. The current
+manifest records 10,324 matched rows and 785 partials. Complete engine source,
+native data placement and unsigned whole-image equality remain unfinished.
+
+AbstractType's INI reader (`0x410A60`, 299 bytes) now matches exactly. It
+reads bounded Name/UIName text and resolves the UI label, with native empty
+wide-string fallback. Its writer (`0x410B90`, 71 bytes) now uses the canonical
+class instead of a per-function placeholder layout; the obsolete header is
+retired. Both methods and all 16 relocation fields verify, and all eight exact
+rows in the two affected TUs pass. The manifest now records 10,325 exact rows
+and 785 partials. The full compile/layout gate passes. The 1,267-object diagnostic link has
+zero unresolved symbols or duplicates and places all 10,325 exact rows at their
+annotated addresses. All 35 AbstractType table pointers agree with retail;
+both INI slots select the canonical source. Full regression passes: 10,325
+exact rows, 785 documented partials, zero regressions across 1,256 TUs.
+
+AbstractType's named constructor (`0x410800`, 340 bytes) is now recovered
+as a readable partial at 96.4% (106/110 instructions). Native pre-vtable
+first-byte initialization establishes bounded text members of 25, 32 and 49
+bytes; their default/no-init/copy operations are expressed by a gagarin-named
+helper. Layout and offsets remain unchanged. The remaining four differences
+are ADD/PUSH register scheduling during vector growth. A direct-growth rewrite
+scored 52.3%; the best version is retained, and further matching is held for
+user direction after three materially different attempts.
+
+The no-init constructor (`0x410960`, 86 bytes) now uses the canonical class,
+preserves all three buffers, and resolves the UI label with the native source
+tag and line number. Its 25 instructions and eight relocation targets verify.
+The old per-function layout is retired. Variadic users explicitly pass text
+buffers. The constructor remains before the Anim save method in its original
+source order; moving it away changed VC6's shared-return code generation,
+while the canonical constructor in that position preserves both exact bodies.
+The refreshed 1,268-object diagnostic build links with no unresolved symbols or
+duplicates, and places all 10,325 exact rows at native addresses. The no-init
+constructor selects small_misc50_methods.obj; the partial named constructor
+still selects a diagnostic stub. All 35 AbstractType table pointers agree with
+retail. Final full compile/layout passes. Full byte regression passes with
+10,325 exact rows, 786 documented partials and zero regressions across 1,257
+TUs. Whole-image identity and complete engine recovery remain unfinished.
+
+ObjectType's named constructor (`0x5F7090`, 647 bytes) now matches all 151
+instructions, with all 17 relocation fields verified. Both /Ob1 and /Ob2 give
+the exact body. Native pre-vtable stores establish two 25-byte bounded filename
+members; the no-init constructor explicitly preserves both. The 23 exact rows
+in six directly affected TUs pass with no regressions.
+
+AbstractType's ID comparison (`0x410A40`) and empty slot 24 (`0x410C20`) now use
+the canonical class. Native RET 4 establishes one argument for slot 24; the
+obsolete receiver/header is retired. Its six-row TU remains exact. ObjectType
+vf_33..vf_39 occupy slots 33..39. An earlier note skipped the pure slot 32 and
+misnumbered them; native table entries and the header comments are corrected.
+
+ObjectType's shape loader (`0x5F9070`, 596 bytes) is recovered as a readable
+partial: arctic filename suffix, theater filename selection, category-dependent
+resource retrieval, fallback filename byte and minimum-eight signed dimension.
+The best score after source recovery, flag bisection and a typed-deletion /
+dimension rewrite is 5.5% with /Os. Shared-zero EBX, byte tests versus compares,
+frame offsets and branch scheduling remain different; further attempts are
+held for user direction. The shared shape-header view and theater filename
+fields are pinned by offset/size assertions.
+
+The 1,270-object diagnostic snapshot links with zero unresolved symbols or
+duplicates and places all 10,326 exact entries at native addresses. It selects
+the ObjectType constructor and canonical AbstractType slot 24 from source;
+the partial shape loader remains a diagnostic stub. The earlier 129-entry AbstractType/ObjectType/BulletType prefix audit agrees
+with retail; the two omitted slot-39 entries are covered by the later full audit. Full compile/layout
+passes. Full byte regression passes: 10,326 exact rows, 787 documented partials,
+zero regressions across 1,259 TUs. Complete source recovery and whole-image
+identity remain unfinished.
+
+Follow-on voxel-resource evidence: native model constructor 0x755CD0 ends in
+RET 8 and forwards two arguments to 0x755DB0. The 0x5F8191..0x5F819C caller
+pushes zero and a file-object pointer; the decompiler omits the second argument
+and must not define its signature. Animation constructor 0x5BD570 ends in RET 4.
+Both initialize an error byte and aligned DWORD fields before loading; native
+model accessor 0x7564B0 indexes a 12-byte record at +0x10 and returns a 164-byte
+record in the +0x14 block. The constructor/accessor signatures are unified in the next working batch;
+the model loader at 0x755DB0 is now a readable partial in the later batch.
+
+The voxel resource batch now recovers the model constructor (`0x755CD0`,
+55 bytes), animation loader (`0x5BD5C0`, 362 bytes) and translation scaler
+(`0x5BD730`, 131 bytes) exactly. The animation constructor (`0x5BD570`, 39
+bytes), resource resets (`0x755D60` / `0x5BD7C0`) and model accessor
+(`0x7564B0`) now use the same canonical resource layouts as destruction.
+All 36 exact rows in eight affected TUs pass; the constructors/loader's seven
+relocation fields verify. /Ob0 scores 3.9% for the animation loader; /Ob1 and
+/Ob2 reproduce its native body, and both settings preserve the constructors.
+
+The native matrix-copy entry (`0x5AE5E0`, 33 bytes) is a readable partial at
+26.7% using ordinary aggregate assignment. Native copies twelve DWORDs in a
+counted loop; aggregate assignment emits REP MOVSD. std::copy and a bounded
+component loop scored 5.9% and 3.8%. Further attempts are held for user direction;
+no matching-only casts are used. Full compile/layout passes. The 1,273-object
+diagnostic snapshot links without unresolved symbols or duplicates, placing all
+10,329 exact entries at native addresses. Both constructors, animation loading /
+scaling, resets and the model accessor select canonical source providers; the
+matrix-copy entry remains a diagnostic stub. The earlier 129-entry type-table prefix audit agrees with retail; the later
+full audit covers both omitted slot-39 entries. Full byte regression passes: 10,329 exact rows,
+788 documented partials, zero regressions across 1,262 TUs. Complete source
+recovery and whole-image identity remain unfinished.
+
+The model loader (`0x755DB0`, 1,762 native bytes) is now recovered as a
+readable partial at 43.3%. It releases prior storage, reads 32-/28-/92-byte disk
+records, optionally loads palette bytes and remaps, builds record transforms /
+eight corners, rebases payload offsets, and follows the native checked-read
+cleanup paths. Disk/runtime offsets and sizes are statically asserted. Native
+has 541 instructions versus 505 compiled; record construction, temporary/frame
+layout and merged failure paths remain different. /Ob1 and /Ob2 score 43.3%;
+/Ob0, /Os and /O1 regress. An eight-corner construction rewrite stays at 43.3%.
+Further attempts are held for user direction after three material approaches.
+
+Palette construction (`0x758950`, 99 bytes), destruction (`0x7589C0`, 43 bytes)
+and the section-row accessor (`0x7564A0`, 16 bytes) now match exactly. The shared
+palette view is 32 bytes, with ownership DWORDs at +0x18/+0x1C; its gagarin name
+does not assert original identity. All four palette lifetime relocations verify.
+The record-array callback emits the canonical Vector3D default constructor at
+`0x754900` (3 bytes), replacing its former placeholder receiver. All 45 exact
+rows in ten affected TUs pass, alongside two documented partials. Model-loader
+relocations are not independently proven by the offset-based relocation checker
+because its compiled span is shorter than native.
+
+Full compile/layout passes. The 1,275-object diagnostic image links with no
+unresolved symbols or duplicates and places all 10,332 exact rows at native
+addresses. The palette lifetimes and Vector3D constructor select source;
+the held model loader remains a stub. The earlier 129-entry type-table prefix audit agrees with retail; the later
+full audit covers both omitted slot-39 entries. Full byte regression passes: 10,332 exact rows, 789
+documented partials, zero regressions across 1,264 TUs. Complete source recovery
+and whole-image identity remain unfinished.
+
+The parent voxel loader (`0x5F8110`, 3,019 bytes) is recovered as a readable
+partial at 18.2%. It preserves the main-file lifetime, special APC/no-spawn art,
+indexed or ordinary turret/barrel loading, native failure cleanup and successful
+cache reset/dimension calculation. Source recovery, flag bisection and explicit
+file-scope/branch restructuring give 824 native instructions versus 821 compiled;
+register/scheduling, stack-reference and branch-layout differences remain.
+Further matching is held for user direction after three material approaches.
+The function ends at 0x5F8CDA; 0x5F8CE0 is a separate 898-byte update method.
+
+That update method now matches all 244 instructions and all 56 relocation
+fields. It checks kind 0x28, the existing slot-39 image getter and byte +0xCA1,
+then replaces optional turret/barrel resources with the native file lifetimes.
+Raw UnitType RTTI and slot11->0x748170 confirm the checked TechnoType base
+accesses. All 17 exact rows in six directly affected TUs pass, plus the new
+partial. Full compile/layout and regression pass: 10,333 exact rows, 790
+partials, zero regressions across 1,266 TUs.
+
+**Audit correction:** ObjectType/BulletType each have 40 primary slots (0..39),
+plus eight secondary entries. Earlier 47-entry / combined 129-entry checks were
+prefix audits and omitted each final slot-39 pointer. The pure slot 32 had also
+been skipped in an earlier comment-only renumbering; comments and factory slot
+37 are corrected. The fresh 1,277-object diagnostic image checks all 131 entries:
+AbstractType 35/35, ObjectType 48/48, BulletType 48/48. ObjectType and BulletType
+each select 47 matched provider entries; only the held factory is stubbed.
+The update method selects source, the held parent loader remains a stub, and
+all 10,333 exact rows land at native addresses. Link has zero unresolved symbols
+and duplicates. Complete source recovery and whole-image identity remain
+unfinished.
+
+The indexed turret loader (`0x5F7A90`, 797 bytes) and barrel loader
+(`0x5F7DB0`, 719 bytes) now match all 214 and 200 instructions respectively.
+All 85 relocation fields verify. Index zero uses the unsuffixed filename;
+other indices use the native numeric suffix. The turret path clears replaced
+and failed resources and reports a missing file as false. The barrel path
+reports a missing file as true, overwrites its slots, and releases failed
+resources without clearing those slots, preserving the native behavior.
+The turret animation-success flag is initialized before allocation, matching
+the native store and lifetime. /Ob1 and /Ob2 reproduce both bodies; /Ob0 scores
+11.2% / 5.5%.
+
+Full compile/layout and regression pass: 10,335 exact rows, 790 documented
+partials, zero regressions across 1,267 TUs. The 1,278-object diagnostic build
+links without unresolved symbols or duplicates, selects both indexed loaders
+from source and places every exact row at its native address. All 131 complete
+type-table pointers agree with retail. Complete source recovery and whole-image
+identity remain unfinished.
+
+The pre-factory shared-art loader (`0x5F76B0`, 319 bytes), cleanup
+(`0x5F77F0`, 268 bytes), and tagged resource destructor (`0x69E500`, 113
+bytes) now match exactly: 700 bytes and 64 verified relocation fields.
+Loading uses RawFileClass's whole-file path before MIX fallback; cleanup
+preserves the native array-count/36-byte-element destruction protocol and
+ownership-byte reset without clearing the resource pointers. The destructor
+handles the signed -1 tag, owned nested resource, intrusive links and name.
+The existing constructor remains exact. Native `0x4A38AB` confirms allocator
+`0x7C8E17`.
+
+An asserted 20-byte storage view preserves the four resource pointers followed
+by four ownership bytes at native `0xAC1478..0xAC148B`. Its initial state is
+zero-filled. This is a gagarin layout view, not an original type-name claim.
+The refreshed 1,279-object diagnostic link has zero unresolved symbols or
+duplicates, selects all three new bodies at native addresses and places all
+10,338 exact rows at native addresses. All 131 complete type-table pointers
+agree with retail. Shared-art storage is still displaced (linked `0x9DA658`);
+absolute data placement and whole-image identity remain unfinished.
+
+Full compile/layout checks pass. The final regression run reports 10,338 exact
+rows, 790 documented partials and zero regressions across 1,268 TUs.
+
+The tagged resource frame-data loader (`0x69E740`, 152 bytes) now matches
+all 47 instructions and seven relocation fields. It lazily obtains owned
+whole-file data, resolves the resource, checks the signed frame count against
+an unsigned index, and follows the nonzero data offset in a 24-byte frame
+record. Record stride, offset +20 and signed count at +6 are asserted.
+
+The shared-buffer resolver (`0x69E580`, 438 bytes) is recovered as a readable
+partial. /Ob1 and /Ob2 score 2.1%; an inline-destructor/explicit-lifetime variant
+reached 8.6% but suppressed the canonical destructor symbol, so that variant
+is not retained. Native inlines destruction and uses different register,
+null-test and spill allocation. Three materially different attempts are held
+pending direction. The generated deletion helper also matched in the discarded
+inline variant; it is not claimed as recovered in the retained build. The
+three zero-filled cache globals at `0xB077B4..0xB077BC` now have source owners.
+
+The 1,279-object diagnostic link selects the exact frame-data loader at its
+native address; the held resolver remains a stub. All 10,339 exact rows are
+at native addresses, all 131 complete type-table pointers agree, and link has
+zero unresolved symbols or duplicates. Whole-image identity remains unfinished.
+The file tables used by the loader also agree across their 17 slots each
+(CCFileClass and CDFileClass). Full compile/layout checks pass; the final
+regression gate reports 10,339 exact rows, 791 documented partials and zero
+regressions across 1,268 TUs.
+
+The adjacent frame-bounds (`0x69E7E0`, 117 bytes), RGB color (`0x69E860`,
+106 bytes), and first flag-bit (`0x69E8D0`, 46 bytes) queries now match all
+39/36/16 instructions: 269 bytes and seven verified relocation fields. Their
+frame-record view pins signed shorts at +0/+2/+4/+6, a flag byte at +8,
+packed color at +12 and data offset at +20, with stride 24. Bounds and color
+return through native hidden-result pointers. The zero-filled 16-byte bounds
+fallback at `0xB077A0` now has a source definition.
+
+The second flag-bit query (`0x69E900`, 48 bytes) is a readable 88.2% partial.
+Native AND 2; SHR 1 becomes SHR 1; AND 1. Three attempts (ordinary masks,
+bitfield view, byte-return ABI) did not resolve that delta; the ordinary bool
+version is retained and further matching is held pending direction.
+
+The refreshed 1,279-object diagnostic link places all 10,342 exact rows at
+native addresses, with zero unresolved symbols or duplicates. All 131 complete
+type-table pointers and both 17-slot file tables agree. The fallback rectangle
+is linked at `0x9DA658`, so absolute data placement remains unfinished.
+Full compile/layout checks pass. The final regression gate reports 10,342
+exact rows, 792 documented partials and zero regressions across 1,268 TUs.
+
+BuildingTypeClass's bounds query (`0x45EBD0`) and TerrainTypeClass's INI
+reader (`0x71DEA0`) now call the canonical Obj_0069E430 bounds/color methods.
+The bounds result uses its actual by-value hidden-result ABI. The unused
+TypesShapeView/TypesFrameRect pair and two unused color-method declarations
+are removed, together with their three obsolete binding aliases. Both callers
+remain exact (28/153 instructions), and all 32 relocation fields verify.
+
+A reverse include-dependency closure covers every edited header and caller:
+43 manifest TUs, 1,055 exact rows, 135 documented partials, zero regressions.
+This is an affected-source check, not a new complete verify_all run. The last
+full gate above remains the 10,342-exact/792-partial baseline. A refreshed
+1,279-object diagnostic build compiles and links without unresolved symbols or
+duplicates, places all 10,342 exact rows at native addresses and selects the
+canonical source accessor bodies. None of the retired method symbols appears
+in its map. All 131 complete type-table pointers and both 17-slot file tables
+agree. Complete source recovery and whole-image identity remain unfinished.
+
+MouseClass's cursor resource and WWMouseClass's stored shape/SetCursor
+argument now use Obj_0069E430. The MouseShapeView stand-in and its bounds
+method alias are retired. The draw helper assigns the canonical by-value
+RectangleStruct result to CursorRect's actual RectangleStruct base. Native
+`0x5BDB17/0x5BDB2B` and `0x5BDB3A/0x5BDB4D`, disassembled from caller entry
+`0x5BDAB0`, sign-extend the +2/+4 dimensions; the canonical fields are now
+signed shorts. Their offsets and the resource's 36-byte size are unchanged.
+
+The initial resource/mouse check preserves 35 exact rows and three partials.
+The reverse include-dependency closure verifies all 18 affected manifest TUs:
+537 exact rows, 170 documented partials, zero regressions. The two migrated
+mouse draw paths verify all 42 relocation fields. The refreshed 1,279-object
+diagnostic build compiles and links with zero unresolved symbols or duplicates,
+places all 10,342 exact rows at native addresses, and contains no MouseShapeView
+symbols. WWMouseClass's 18-slot table and Mouse's destructor slot agree with
+retail, as do the 131 complete type-table pointers and both 17-slot file tables.
+These are affected-source and integrated diagnostic checks; the most recent
+full regression baseline remains 10,342 exact/792 partial. Whole-image
+identity and complete source recovery remain unfinished.
+
+The resource lifetime cluster now has readable source for five more routines.
+Owned-file loading (`0x69E090`, 99 bytes), owned-data release (`0x69E100`,
+119 bytes), list deletion (`0x69E180`, 142 bytes), and the generated scalar
+deleting destructor (`0x69E930`, 122 bytes) match exactly: 482 bytes and 21
+verified relocation fields. /Ob1 and /Ob2 reproduce all four; /Ob0 reduces the
+loader to 57.1%.
+
+The destructor and release helper are mutually recursive inline definitions:
+the destructor releases owned data through the helper, and the helper deletes
+the owned resource. This reproduces their native expansion and preserves the
+out-of-line destructor (`0x69E500`, still exact), emitted where shared-art array
+cleanup takes its address. Its manifest provider is now object_type_shared_art.
+The list-head global at `0xB077B0` also has a source definition. The held shared
+resolver inherits the recovered lifetime definitions but remains partial with
+its historical score; it has not been re-scored pending direction.
+
+All-resource unload (`0x69E210`, 259 bytes) and age-filtered unload
+(`0x69E320`, 266 bytes) are recovered partials at 52.6%/54.1%. The list walks
+match; shared-cache destruction differs in member-address loads and register
+allocation. Ordinary out-of-line lifetime code, shared inline definitions,
+and /Ob1-versus-/Ob2 bisection did not finish these bodies. Further matching
+is held pending direction. Both preserve conditional cache reset and the age
+comparison at member +0x20.
+
+All 19 affected manifest TUs pass: 541 exact rows, 172 documented partials,
+zero regressions. The 1,280-object diagnostic build places all 10,346 exact
+rows at native addresses and links without unresolved symbols or duplicates.
+Its selected deleting-wrapper provider is obj_0069e430 rather than the new
+lifecycle object; that selected body and all four relocations are separately
+verified exact. All 131 complete type-table pointers and both 17-slot file
+tables agree. These are affected-source and diagnostic integration checks,
+not a new complete verify_all run; full source recovery and whole-image
+identity remain unfinished.
+
+CampaignClass now derives from the shared AbstractTypeClass and uses a real
+constructor, no-init constructor, virtual INI dispatch, and typed campaign
+vector. Its factory (`0x46CE10`) remains exact without manually writing vptrs,
+a raw-allocation Construct shim or force-inline search copy. A campaign pointer
+append specialization preserves the native growth-accumulator order without
+changing other vector element types. /Ob2 reproduces the factory; /Ob1 gives
+2.7%.
+
+Five newly recovered functions match exactly: destructor `0x46CC10` (121 bytes),
+INI reader `0x46CCD0` (307), checksum `0x46CFC0` (61), Load `0x46D000` (69),
+and generated deleting destructor `0x46D090` (141): 699 bytes. Existing class-ID,
+Save, size and type-query bodies are migrated to the canonical class. The two
+pristine trivial_tu042 files are retired after verified backups and replacement
+checks. All eleven exact Campaign bodies verify 90 relocation fields.
+
+The standalone constructor `0x46CB60` is partial: best 84.8%, retained form
+76.1%; store scheduling differs although its inlined factory matches. Three
+approaches were tried (ordinary constructor/generic append, explicit typed
+append, specialized append/member initializers); further matching is held
+pending direction. The manifest partial percentage records the historical best.
+
+Native RTTI COL `0x7FC920`, TD `0x81B170` identifies CampaignClass and its
+AbstractTypeClass/AbstractClass bases at zero, with COM subobjects +0/+4/+8/+12.
+All 35 Campaign table pointers agree with retail, and a 27-slot primary-table
+schema plus all touched fields/sizes have static assertions. All five affected
+TUs pass: 150 exact rows, 23 documented partials, zero regressions. The refreshed
+1,279-object diagnostic build compiles and links with zero unresolved symbols
+or duplicates, places all 10,351 exact rows at native addresses, and preserves
+the 131 previously checked type-table pointers and both 17-slot file tables.
+The current manifest has 10,351 matched rows and 795 documented partials across
+1,268 TUs. This is affected-source plus diagnostic integration evidence; the
+last full regression run remains the earlier 10,342/792 baseline. Full source
+recovery and whole-image identity remain unfinished.
+
 The narrow string family now has one Wstring owner. Despite its retail name,
 this is the four-byte, heap-owning **narrow** string. The separate wide owner
 also has canonical by-value AsLower/AsUpper methods; animation-owned duplicate

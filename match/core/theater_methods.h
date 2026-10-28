@@ -8,7 +8,8 @@
 // Theater — the 0x70-byte per-theater descriptor (TEMPERATE, SNOW, ...). There
 // are 6 entries in the fixed global Theater::Array @0x7E1B78. Only the leading
 // ID[0x10] field is touched by FindIndex (the _stricmp comparand); the
-// remaining members are padded to the confirmed 0x70 stride (full layout = P2).
+// ObjectType loader 0x5F9070 also pins the extension and filename byte; other
+// members remain padded to the confirmed 0x70 stride.
 #ifndef GG_MATCH_CORE_THEATER_METHODS_H
 #define GG_MATCH_CORE_THEATER_METHODS_H
 
@@ -29,10 +30,16 @@ struct Theater
     static int FindIndex(const char* pName);  // GAMEMD 0x48DBE0
 
     char ID[0x10];          // +0x00  e.g. "TEMPERATE"
-    char _pad[0x60];        // +0x10  remaining members (P2); pad to 0x70 stride
+    char unknown_10[0x3E];
+    char Extension[4];       // +0x4E, native 0x5F915C passes this to _makepath.
+    char unknown_52[4];
+    char unknown_56;         // +0x56, native 0x5F91D7 selects filename byte 1.
+    char unknown_57[0x19];
 };
 
 GG_STATIC_ASSERT(offsetof(Theater, ID) == 0x00);
+GG_STATIC_ASSERT(offsetof(Theater, Extension) == 0x4E);
+GG_STATIC_ASSERT(offsetof(Theater, unknown_56) == 0x56);
 GG_STATIC_ASSERT(sizeof(Theater) == 0x70);
 
 #endif  // GG_MATCH_CORE_THEATER_METHODS_H

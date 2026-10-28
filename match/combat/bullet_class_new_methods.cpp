@@ -1278,7 +1278,7 @@ bool BulletClass::FUN_00468BB0(CoordStruct* where)
         return true;
     }
 
-    if (Type->unknown_2A4[0] && Target != 0 && Target->IsInAir() &&
+    if (Type->unknown_2A4 && Target != 0 && Target->IsInAir() &&
         this->FUN_005F6360(Target) < 0x80) {
         return true;
     }

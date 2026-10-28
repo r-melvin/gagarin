@@ -6866,9 +6866,9 @@
  {
   "tu": "match/core/AbsType.cpp",
   "addr": "0x410A40",
-  "sym": "?FUN_00410A40@Obj_00410A00@@QBE_NPBD@Z",
+  "sym": "?FUN_00410A40@AbstractTypeClass@@QBE_NPBD@Z",
   "len": "0x19",
-  "name": "FUN_00410A40",
+  "name": "AbstractTypeClass::FUN_00410A40",
   "status": "matched",
   "pct": 100.0
  },
@@ -7998,11 +7998,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/AbsType.cpp",
+  "tu": "match/core/abstract_type_class_ini.cpp",
   "addr": "0x410b90",
-  "sym": "?FUN_00410B90@Obj_00410B90@@QAE_NPAUCCINI_00410B90@@@Z",
+  "sym": "?vf_26@AbstractTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x47",
-  "name": "Obj_00410B90::FUN_00410B90",
+  "name": "AbstractTypeClass::vf_26",
   "status": "matched",
   "pct": 100
  },
@@ -11853,9 +11853,9 @@
  {
   "tu": "match/core/small_misc50_methods.cpp",
   "addr": "0x410960",
-  "sym": "?FUN_00410960@Obj_00410960@@QAEPAU1@H@Z",
+  "sym": "??0AbstractTypeClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x56",
-  "name": "Obj_00410960::FUN_00410960",
+  "name": "AbstractTypeClass no-init constructor",
   "status": "matched",
   "pct": 100
  },
@@ -51704,7 +51704,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/persist_save_stub_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C730",
   "sym": "?Save@BulletTypeClass@@UAGJPAUIStream@@H@Z",
   "len": "0x1D",
@@ -51713,7 +51713,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/persist_save_stub_methods.cpp",
+  "tu": "match/core/campaign_class.cpp",
   "addr": "0x46D050",
   "sym": "?Save@CampaignClass@@UAGJPAUIStream@@H@Z",
   "len": "0x1D",
@@ -59122,7 +59122,7 @@
  {
   "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B8A00",
-  "sym": "?SetCursor@WWMouseClass@@UAEXPBUPoint2D@@PAVMouseShapeView@@H@Z",
+  "sym": "?SetCursor@WWMouseClass@@UAEXPBUPoint2D@@PAUObj_0069E430@@H@Z",
   "len": "0x247",
   "name": "WWMouseClass::SetCursor",
   "status": "matched",
@@ -60112,7 +60112,7 @@
  {
   "tu": "match/core/voxel_draw_bounds_methods.cpp",
   "addr": "0x7540F0",
-  "sym": "?FUN_007540f0@@YIXPAUVoxelSectionSource@@HHPAUMatrix3D@@@Z",
+  "sym": "?FUN_007540f0@@YIXPAUObj_00755D10@@HHPAUMatrix3D@@@Z",
   "len": "0x1F7",
   "name": "FUN_007540f0",
   "status": "matched",
@@ -71683,9 +71683,9 @@
  {
   "tu": "match/core/voxel_unit_block_00754940.cpp",
   "addr": "0x7564B0",
-  "sym": "?FUN_007564b0@VoxelSectionSource@@QAEPAUVoxelSectionBounds@@HH@Z",
+  "sym": "?FUN_007564b0@Obj_00755D10@@QAEPAUVoxelSectionBounds@@HH@Z",
   "len": "0x22",
-  "name": "VoxelSectionSource::FUN_007564b0",
+  "name": "Obj_00755D10::FUN_007564b0",
   "status": "matched",
   "pct": 100
  },
@@ -75111,7 +75111,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/persist_class_id_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C750",
   "sym": "?GetClassID@BulletTypeClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -75120,7 +75120,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/persist_class_id_methods.cpp",
+  "tu": "match/core/campaign_class.cpp",
   "addr": "0x46CF80",
   "sym": "?GetClassID@CampaignClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -79775,9 +79775,9 @@
  {
   "tu": "match/core/AbsType.cpp",
   "addr": "0x410C20",
-  "sym": "?FUN_00410C20@Obj_00410C20@@QAEXH@Z",
+  "sym": "?vf_24@AbstractTypeClass@@UAEXH@Z",
   "len": "0x3",
-  "name": "Obj_00410C20::FUN_00410C20",
+  "name": "AbstractTypeClass::vf_24",
   "status": "matched",
   "pct": 100
  },
@@ -80349,65 +80349,65 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/trivial_tu041_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C820",
-  "sym": "?FUN_0046C820@Obj_0046C820@@QAEHHH@Z",
+  "sym": "?vf_10@BulletTypeClass@@UAEXPAX_N@Z",
   "len": "0x1b",
-  "name": "Obj_0046C820::FUN_0046C820",
+  "name": "BulletTypeClass::vf_10",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/trivial_tu041_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C850",
-  "sym": "?FUN_0046C850@Obj_0046C850@@QBEHXZ",
+  "sym": "?vf_11@BulletTypeClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0046C850::FUN_0046C850",
+  "name": "BulletTypeClass::vf_11",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/trivial_tu041_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C860",
-  "sym": "?FUN_0046C860@Obj_0046C860@@QBEHXZ",
+  "sym": "?vf_12@BulletTypeClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0046C860::FUN_0046C860",
+  "name": "BulletTypeClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/trivial_tu041_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C870",
-  "sym": "?FUN_0046C870@Obj_0046C870@@QBE_NHH@Z",
+  "sym": "?vf_32@BulletTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x5",
-  "name": "Obj_0046C870::FUN_0046C870",
+  "name": "BulletTypeClass::vf_32",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/trivial_tu041_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C880",
-  "sym": "?FUN_0046C880@Obj_0046C880@@QBEHH@Z",
+  "sym": "?vf_35@BulletTypeClass@@UAEPAXPAX@Z",
   "len": "0x5",
-  "name": "Obj_0046C880::FUN_0046C880",
+  "name": "BulletTypeClass::vf_35",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu042_methods.cpp",
+  "tu": "match/core/campaign_class.cpp",
   "addr": "0x46D070",
-  "sym": "?FUN_0046D070@Obj_0046D070@@QBEHXZ",
+  "sym": "?vf_12@CampaignClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0046D070::FUN_0046D070",
+  "name": "CampaignClass size",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu042_methods.cpp",
+  "tu": "match/core/campaign_class.cpp",
   "addr": "0x46D080",
-  "sym": "?FUN_0046D080@Obj_0046D080@@QBEHXZ",
+  "sym": "?vf_11@CampaignClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0046D080::FUN_0046D080",
+  "name": "CampaignClass type query",
   "status": "matched",
   "pct": 100
  },
@@ -85479,11 +85479,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu264_methods.cpp",
+  "tu": "match/core/voxel_model_load.cpp",
   "addr": "0x754900",
-  "sym": "?FUN_00754900@Obj_00754900@@QAEPAU1@XZ",
+  "sym": "??0Vector3D@@QAE@XZ",
   "len": "0x3",
-  "name": "Obj_00754900::FUN_00754900",
+  "name": "Vector3D default constructor",
   "status": "matched",
   "pct": 100
  },
@@ -91584,11 +91584,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu139_b_methods.cpp",
+  "tu": "match/core/voxel_resource_ctors.cpp",
   "addr": "0x5BD570",
-  "sym": "?FUN_005BD570@@YIPAUObj_005BD570@@PAU1@HH@Z",
+  "sym": "??0Obj_005BD5A0@@QAE@PAVFileClass@@@Z",
   "len": "0x27",
-  "name": "FUN_005BD570",
+  "name": "Obj_005BD5A0 constructor",
   "status": "matched",
   "pct": 100
  },
@@ -92944,9 +92944,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/field_read_leaf_methods.cpp",
+  "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C4D0",
-  "sym": "?FUN_0046C4D0@@YIPAHI@Z",
+  "sym": "?FUN_0046C4D0@@YIPADI@Z",
   "len": "0x17",
   "name": "FUN_0046C4D0",
   "status": "matched",
@@ -93477,18 +93477,18 @@
  {
   "tu": "match/core/global_reset_leaf_methods.cpp",
   "addr": "0x5BD5A0",
-  "sym": "?FUN_005BD5A0@Obj_005BD5A0@@QAEXXZ",
+  "sym": "??1Obj_005BD5A0@@QAE@XZ",
   "len": "0x1c",
-  "name": "Obj_005BD5A0::FUN_005BD5A0",
+  "name": "Obj_005BD5A0 destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/core/global_reset_leaf_methods.cpp",
   "addr": "0x5BD7C0",
-  "sym": "?FUN_005BD7C0@Obj_005BD7C0@@QAEXXZ",
+  "sym": "?FUN_005BD7C0@Obj_005BD5A0@@QAEXXZ",
   "len": "0x1c",
-  "name": "Obj_005BD7C0::FUN_005BD7C0",
+  "name": "Obj_005BD5A0::FUN_005BD7C0",
   "status": "matched",
   "pct": 100.0
  },
@@ -94341,18 +94341,18 @@
  {
   "tu": "match/core/small_container_methods.cpp",
   "addr": "0x755D10",
-  "sym": "?FUN_00755D10@Obj_00755D10@@QAEXXZ",
+  "sym": "??1Obj_00755D10@@QAE@XZ",
   "len": "0x42",
-  "name": "Obj_00755D10::FUN_00755D10",
+  "name": "Obj_00755D10 destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/core/small_container_methods.cpp",
   "addr": "0x755D60",
-  "sym": "?FUN_00755D60@Obj_00755D60@@QAEXXZ",
+  "sym": "?FUN_00755D60@Obj_00755D10@@QAEXXZ",
   "len": "0x42",
-  "name": "Obj_00755D60::FUN_00755D60",
+  "name": "Obj_00755D10::FUN_00755D60",
   "status": "matched",
   "pct": 100.0
  },
@@ -100000,6 +100000,501 @@
   "len": "0x21E",
   "name": "BulletTypeClass named constructor",
   "status": "partial",
-  "pct": 4.8
+  "pct": 96.6
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46C6A0",
+  "sym": "?Load@BulletTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x86",
+  "name": "BulletTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46C560",
+  "sym": "?vf_13@BulletTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x132",
+  "name": "BulletTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46C4F0",
+  "sym": "?vf_27@BulletTypeClass@@UAE?AUCoordStruct@@ABU2@@Z",
+  "len": "0x62",
+  "name": "BulletTypeClass::vf_27",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46C440",
+  "sym": "?FUN_0046C440@@YIHPBD@Z",
+  "len": "0x8F",
+  "name": "FUN_0046C440",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46BE10",
+  "sym": "??1BulletTypeClass@@UAE@XZ",
+  "len": "0xC2",
+  "name": "BulletTypeClass destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46C890",
+  "sym": "??_GBulletTypeClass@@UAEPAXI@Z",
+  "len": "0xD6",
+  "name": "BulletTypeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/bullet_type_class_ini.cpp",
+  "addr": "0x46BEE0",
+  "sym": "?vf_25@BulletTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x556",
+  "name": "BulletTypeClass::vf_25",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_class_slots.cpp",
+  "addr": "0x410210",
+  "sym": "?vf_rtti_3@AbstractClass@@UAGHXZ",
+  "len": "0x10",
+  "name": "AbstractClass::vf_rtti_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x5F75C0",
+  "sym": "?vf_30@ObjectTypeClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x1E",
+  "name": "ObjectTypeClass::vf_30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x5F9970",
+  "sym": "?GetSizeMax@ObjectTypeClass@@UAGJPAT_ULARGE_INTEGER@@@Z",
+  "len": "0x18",
+  "name": "ObjectTypeClass::GetSizeMax",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_class_query_interface.cpp",
+  "addr": "0x410260",
+  "sym": "?QueryInterface@AbstractClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x9B",
+  "name": "AbstractClass::QueryInterface",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_factory_query.cpp",
+  "addr": "0x5F7900",
+  "sym": "?vf_37@ObjectTypeClass@@UAEPAX_N00PAX@Z",
+  "len": "0x18C",
+  "name": "ObjectTypeClass::vf_37",
+  "status": "partial",
+  "pct": 92.5
+ },
+ {
+  "tu": "match/core/voxel_struct_lifetime.cpp",
+  "addr": "0x5F61A0",
+  "sym": "??1VoxelStruct@@QAE@XZ",
+  "len": "0x41",
+  "name": "VoxelStruct destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_lifetime.cpp",
+  "addr": "0x5F7400",
+  "sym": "??1ObjectTypeClass@@UAE@XZ",
+  "len": "0x1A4",
+  "name": "ObjectTypeClass destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_lifetime.cpp",
+  "addr": "0x5F8080",
+  "sym": "?FUN_005F8080@ObjectTypeClass@@QAEXXZ",
+  "len": "0x8E",
+  "name": "ObjectTypeClass::FUN_005F8080",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_load.cpp",
+  "addr": "0x5F9720",
+  "sym": "?Load@ObjectTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x22B",
+  "name": "ObjectTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_load.cpp",
+  "addr": "0x5F9B60",
+  "sym": "?FUN_005F9B60@IndexClass@@QAEXXZ",
+  "len": "0x20",
+  "name": "IndexClass::FUN_005F9B60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_ini.cpp",
+  "addr": "0x5F92D0",
+  "sym": "?vf_25@ObjectTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x3DA",
+  "name": "ObjectTypeClass::vf_25",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_type_class_ini.cpp",
+  "addr": "0x410A60",
+  "sym": "?vf_25@AbstractTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x12b",
+  "name": "AbstractTypeClass::vf_25",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_type_class_ctor.cpp",
+  "addr": "0x410800",
+  "sym": "??0AbstractTypeClass@@QAE@PBD@Z",
+  "len": "0x154",
+  "name": "AbstractTypeClass::AbstractTypeClass",
+  "status": "partial",
+  "pct": 96.4
+ },
+ {
+  "tu": "match/core/object_type_class_ctor.cpp",
+  "addr": "0x5F7090",
+  "sym": "??0ObjectTypeClass@@QAE@PBD@Z",
+  "len": "0x287",
+  "name": "ObjectTypeClass::ObjectTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_shape_load.cpp",
+  "addr": "0x5F9070",
+  "sym": "?FUN_005F9070@ObjectTypeClass@@QAEXXZ",
+  "len": "0x254",
+  "name": "ObjectTypeClass::FUN_005F9070",
+  "status": "partial",
+  "pct": 5.5
+ },
+ {
+  "tu": "match/core/voxel_resource_ctors.cpp",
+  "addr": "0x755CD0",
+  "sym": "??0Obj_00755D10@@QAE@PAVFileClass@@H@Z",
+  "len": "0x37",
+  "name": "Obj_00755D10 constructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_animation_load.cpp",
+  "addr": "0x5BD5C0",
+  "sym": "?FUN_005BD5C0@Obj_005BD5A0@@QAEHPAVFileClass@@@Z",
+  "len": "0x16a",
+  "name": "Obj_005BD5A0::FUN_005BD5C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_resource_copy.cpp",
+  "addr": "0x5AE5E0",
+  "sym": "?FUN_005AE5E0@Matrix3D@@QAEAAU1@ABU1@@Z",
+  "len": "0x21",
+  "name": "Matrix3D::FUN_005AE5E0",
+  "status": "partial",
+  "pct": 26.7
+ },
+ {
+  "tu": "match/core/voxel_animation_load.cpp",
+  "addr": "0x5BD730",
+  "sym": "?FUN_005BD730@Obj_005BD5A0@@QAEXM@Z",
+  "len": "0x83",
+  "name": "Obj_005BD5A0::FUN_005BD730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_palette_lifetime.cpp",
+  "addr": "0x758950",
+  "sym": "??0VoxelShadePalette@@QAE@PAE0@Z",
+  "len": "0x63",
+  "name": "VoxelShadePalette constructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_palette_lifetime.cpp",
+  "addr": "0x7589C0",
+  "sym": "??1VoxelShadePalette@@QAE@XZ",
+  "len": "0x2b",
+  "name": "VoxelShadePalette destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_unit_block_00754940.cpp",
+  "addr": "0x7564A0",
+  "sym": "?FUN_007564A0@Obj_00755D10@@QAEPAUVoxelSectionRow@@H@Z",
+  "len": "0x10",
+  "name": "Obj_00755D10::FUN_007564A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_load.cpp",
+  "addr": "0x755DB0",
+  "sym": "?FUN_00755DB0@Obj_00755D10@@QAEHPAVFileClass@@H@Z",
+  "len": "0x6e2",
+  "name": "Obj_00755D10::FUN_00755DB0",
+  "status": "partial",
+  "pct": 43.3
+ },
+ {
+  "tu": "match/core/object_type_class_voxel_load.cpp",
+  "addr": "0x5F8110",
+  "sym": "?FUN_005F8110@ObjectTypeClass@@QAEXXZ",
+  "len": "0xbcb",
+  "name": "ObjectTypeClass::FUN_005F8110",
+  "status": "partial",
+  "pct": 18.2
+ },
+ {
+  "tu": "match/core/object_type_class_voxel_update.cpp",
+  "addr": "0x5F8CE0",
+  "sym": "?FUN_005F8CE0@ObjectTypeClass@@QAEXXZ",
+  "len": "0x382",
+  "name": "ObjectTypeClass::FUN_005F8CE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_indexed_voxel_load.cpp",
+  "addr": "0x5F7A90",
+  "sym": "?FUN_005F7A90@ObjectTypeClass@@QAE_NPBDH@Z",
+  "len": "0x31d",
+  "name": "ObjectTypeClass::FUN_005F7A90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_indexed_voxel_load.cpp",
+  "addr": "0x5F7DB0",
+  "sym": "?FUN_005F7DB0@ObjectTypeClass@@QAE_NPBDH@Z",
+  "len": "0x2cf",
+  "name": "ObjectTypeClass::FUN_005F7DB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_shared_art.cpp",
+  "addr": "0x69E500",
+  "sym": "??1Obj_0069E430@@QAE@XZ",
+  "len": "0x71",
+  "name": "Obj_0069E430 destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_shared_art.cpp",
+  "addr": "0x5F76B0",
+  "sym": "?FUN_005F76B0@@YIXXZ",
+  "len": "0x13f",
+  "name": "FUN_005F76B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_shared_art.cpp",
+  "addr": "0x5F77F0",
+  "sym": "?FUN_005F77F0@@YIXXZ",
+  "len": "0x10c",
+  "name": "FUN_005F77F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/obj_0069e430.cpp",
+  "addr": "0x69E580",
+  "sym": "?FUN_0069E580@Obj_0069E430@@QAEPAU1@XZ",
+  "len": "0x1b6",
+  "name": "Obj_0069E430 shared resource resolver",
+  "status": "partial",
+  "pct": 8.6
+ },
+ {
+  "tu": "match/core/obj_0069e430.cpp",
+  "addr": "0x69E740",
+  "sym": "?FUN_0069E740@Obj_0069E430@@QAEPADI@Z",
+  "len": "0x98",
+  "name": "Obj_0069E430 frame data loader",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/obj_0069e430.cpp",
+  "addr": "0x69E7E0",
+  "sym": "?FUN_0069E7E0@Obj_0069E430@@QAE?AURectangleStruct@@I@Z",
+  "len": "0x75",
+  "name": "Obj_0069E430 frame bounds",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/obj_0069e430.cpp",
+  "addr": "0x69E860",
+  "sym": "?FUN_0069E860@Obj_0069E430@@QAE?AUColorStruct@@I@Z",
+  "len": "0x6a",
+  "name": "Obj_0069E430 frame color",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/obj_0069e430.cpp",
+  "addr": "0x69E8D0",
+  "sym": "?FUN_0069E8D0@Obj_0069E430@@QAE_NI@Z",
+  "len": "0x2e",
+  "name": "Obj_0069E430 frame bit 0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/obj_0069e430.cpp",
+  "addr": "0x69E900",
+  "sym": "?FUN_0069E900@Obj_0069E430@@QAE_NI@Z",
+  "len": "0x30",
+  "name": "Obj_0069E430 frame bit 1",
+  "status": "partial",
+  "pct": 88.2
+ },
+ {
+  "tu": "match/core/shape_resource_lifecycle.cpp",
+  "addr": "0x69E090",
+  "sym": "?FUN_0069E090@@YIXPAUObj_0069E430@@@Z",
+  "len": "0x63",
+  "name": "owned resource load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/shape_resource_lifecycle.cpp",
+  "addr": "0x69E100",
+  "sym": "?FUN_0069E100@@YIXPAUObj_0069E430@@@Z",
+  "len": "0x77",
+  "name": "owned resource unload",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/shape_resource_lifecycle.cpp",
+  "addr": "0x69E180",
+  "sym": "?FUN_0069E180@@YIXXZ",
+  "len": "0x8e",
+  "name": "resource list delete",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/shape_resource_lifecycle.cpp",
+  "addr": "0x69E210",
+  "sym": "?FUN_0069E210@@YIXXZ",
+  "len": "0x103",
+  "name": "resource unload all",
+  "status": "partial",
+  "pct": 52.6
+ },
+ {
+  "tu": "match/core/shape_resource_lifecycle.cpp",
+  "addr": "0x69E320",
+  "sym": "?FUN_0069E320@@YIXI@Z",
+  "len": "0x10a",
+  "name": "resource age unload",
+  "status": "partial",
+  "pct": 54.1
+ },
+ {
+  "tu": "match/core/shape_resource_lifecycle.cpp",
+  "addr": "0x69E930",
+  "sym": "??_GObj_0069E430@@QAEPAXI@Z",
+  "len": "0x7a",
+  "name": "Obj_0069E430 scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/campaign_class.cpp",
+  "addr": "0x46CB60",
+  "sym": "??0CampaignClass@@QAE@PBD@Z",
+  "len": "0xac",
+  "name": "CampaignClass constructor",
+  "status": "partial",
+  "pct": 84.8
+ },
+ {
+  "tu": "match/core/campaign_class.cpp",
+  "addr": "0x46CC10",
+  "sym": "??1CampaignClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "CampaignClass destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/campaign_class.cpp",
+  "addr": "0x46CCD0",
+  "sym": "?vf_25@CampaignClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x133",
+  "name": "CampaignClass INI reader",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/campaign_class.cpp",
+  "addr": "0x46CFC0",
+  "sym": "?vf_13@CampaignClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x3d",
+  "name": "CampaignClass checksum",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/campaign_class.cpp",
+  "addr": "0x46D000",
+  "sym": "?Load@CampaignClass@@UAGJPAUIStream@@@Z",
+  "len": "0x45",
+  "name": "CampaignClass Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/campaign_class.cpp",
+  "addr": "0x46D090",
+  "sym": "??_GCampaignClass@@UAEPAXI@Z",
+  "len": "0x8d",
+  "name": "CampaignClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
  }
 ]

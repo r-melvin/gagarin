@@ -77,17 +77,6 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class BulletTypeClass : public ObjectTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class CampaignClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 class DiskLaserClass : public AbstractClass
 {
@@ -288,24 +277,6 @@ HRESULT __stdcall NeuronClass::Save(IStream* pStm, BOOL fClearDirty)
 HRESULT __stdcall BulletClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     return AbstractClass::Save(pStm, fClearDirty);
-}
-
-// FUNCTION: GAMEMD 0x46C730
-HRESULT __stdcall BulletTypeClass::Save(IStream* pStm, BOOL fClearDirty)
-{
-    HRESULT hr = ObjectTypeClass::Save(pStm, fClearDirty);
-    if (hr >= 0)
-        hr = 0;
-    return hr;
-}
-
-// FUNCTION: GAMEMD 0x46D050
-HRESULT __stdcall CampaignClass::Save(IStream* pStm, BOOL fClearDirty)
-{
-    HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
-    if (hr >= 0)
-        hr = 0;
-    return hr;
 }
 
 // FUNCTION: GAMEMD 0x4A7C10

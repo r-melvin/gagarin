@@ -47,6 +47,10 @@ public:
 
     // FUNCTION: GAMEMD 0x474DA0 (decl; reloc) -- foundation enumeration, RET0C.
     int ReadFoundation(const char* section, const char* key, int fallback);
+    // FUNCTION: GAMEMD 0x474A90 (decl; reloc) -- colour-scheme index, RET 0xC.
+    int ReadColorScheme(const char* section, const char* key, int fallback);
+    // FUNCTION: GAMEMD 0x4753F0 (decl; reloc) -- armor enumeration, RET 0xC.
+    int ReadArmor(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x474B50 (decl; reloc) -- hidden RGB result, default by reference.
     ColorStruct Read3Bytes(const char* section, const char* key, const ColorStruct& fallback);
 

@@ -1,160 +1,140 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Target bytes: user's retail gamemd.exe v1.001 @0x46CC90 / @0x46CE10 (Ghidra
-//   disasm). INI method addresses cross-checked against YRpp
-//   (reconfirmed below). Each offset confirmed
-//   numerically from the member-access disassembly.
-//
-// reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x46CC90   CampaignClass::FindIndex          (__fastcall)
-//   FUNCTION: GAMEMD 0x46CE10   CampaignClass::CreateFromINIList  (__fastcall)
-//   GLOBAL:   GAMEMD 0xA83CF8   CampaignClass::Array  (DynamicVectorClass<CampaignClass*>)
-//   LIBRARY:  GAMEMD 0x7C8D20   _strcmpi  (CRT; excluded from match target)
-
+// Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+// Native campaign construction, INI, checksum and persistence bodies.
 #include "campaign_class.h"
+#include "vector_class_operations.h"
+#include "../platform/ccini_class_methods.h"
+#include "../_layout/obj_004a1d30.h"
+#include <string.h>
+#include <wchar.h>
+#include <new.h>
+// GLOBAL: GAMEMD 0x7E9900
+extern const CLSID DAT_007E9900;
+// FUNCTION: GAMEMD 0x735060 (declaration; UTF16 conversion)
+void __fastcall FUN_00735060(unsigned short*, const char*, int);
 
-// --- referenced retail callees (declared, no body => reloc-normalised CALLs) ---
-extern "C" int __cdecl _strcmpi(const char*, const char*);
-
-// CCINIClass — only the three methods CreateFromINIList uses, bound to their
-// retail addresses (YRpp, reconfirmed). Modelled as __thiscall
-// members so cl emits ECX=this + the reloc CALL.
-class CCINIClass
+// Campaign's native append expansion preserves the growth increment as the
+// accumulator; the generic vector implementation spells the same sum oppositely.
+template<> inline bool DynamicVectorClass<CampaignClass*>::AddItem(CampaignClass* const& item)
 {
-public:
-    int         GetKeyCount(const char* pSection);                 // 0x526960
-    const char* GetKeyName(const char* pSection, int nKeyIndex);   // 0x526CC0
-    int ReadString(const char* pSection, const char* pKey,
-                   const char* pDefault, char* pBuffer, size_t szBufferSize); // 0x528A10
-};
+    if (Count >= this->Capacity) {
+        if (this->IsAllocated || !this->Capacity) {
+            int grow = CapacityIncrement;
+            if (grow <= 0) return false;
+            grow += this->Capacity;
+            if (!this->SetCapacity(grow, 0)) return false;
+        } else return false;
+    }
+    int index = Count++;
+    this->Items[index] = item;
+    return true;
+}
 
-// ---------------------------------------------------------------------------
-// FUNCTION: GAMEMD 0x46CC90  (__fastcall — name in ECX)
-//
-// Linear case-insensitive lookup of `name` in CampaignClass::Array by each
-// entry's ID (+0x24); returns the index, or -1 if absent. Count and Items are
-// reloaded from the global each iteration.
-// ---------------------------------------------------------------------------
+// Partial: best 84.8%, retained form 76.1%; standalone vptr/member stores
+// differ in scheduling. The inlined factory is exact; further matching held.
+// FUNCTION: GAMEMD 0x46CB60
+CampaignClass::CampaignClass(const char* name) throw()
+    : AbstractTypeClass(name), idxCD(-1), FinalMovie(-1)
+{
+    CampaignArray.AddItem(this);
+    Scenario[0] = 0;
+    wcscpy(Description, L"");
+}
+
+// FUNCTION: GAMEMD 0x46CC10
+CampaignClass::~CampaignClass()
+{
+    AnnounceExpiredPointer(1);
+    CampaignArray.RemoveItem(this);
+}
+
+// FUNCTION: GAMEMD 0x46CC90
 int CampaignClass::FindIndex(const char* name)
 {
-    for (int i = 0; i < CampaignArray.Count; ++i)
-    {
+    for (int i = 0; i < CampaignArray.Count; ++i) {
         CampaignClass* entry = CampaignArray.Items[i];
-        if (_strcmpi(entry->ID, name) == 0)
-            return i;
+        if (_strcmpi(entry->ID, name) == 0) return i;
     }
     return -1;
 }
 
-// ---------------------------------------------------------------------------
-// FUNCTION: GAMEMD 0x410800 (decl; reloc) — AbstractTypeClass base constructor.
-// LIBRARY: GAMEMD 0x7CA489 (decl; reloc) — wcscpy (CRT).
-// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new (CRT).
-// ---------------------------------------------------------------------------
-extern "C" wchar_t* __cdecl wcscpy(wchar_t* dest, const wchar_t* src);
-
-// The FindIndex search again, `__forceinline` so retail's inlined copy inside
-// CreateFromINIList is reproduced (cl 8804 will not inline the out-of-line
-// __fastcall static on its own). Naming the entry in a local
-// (`CampaignClass* entry = ...`) rather than subscripting inside the call
-// argument is what puts the Items load in ECX and the buffer LEA in EDX, as
-// retail has them; it is worth six instructions here and also took the
-// out-of-line 0x46CC90 copy from 89.3% to 100%.
-static __forceinline int FindIndexInline(const char* name)
+// FUNCTION: GAMEMD 0x46CCD0
+bool CampaignClass::vf_25(CCINIClass* ini)
 {
-    for (int i = 0; i < CampaignArray.Count; ++i)
-    {
-        CampaignClass* entry = CampaignArray.Items[i];
-        if (_strcmpi(entry->ID, name) == 0)
-            return i;
+    ini->Reset();
+    if (AbstractTypeClass::vf_25(ini)) {
+        idxCD = ini->FUN_005276D0(ID, "CD", idxCD);
+        FinalMovie = ini->FUN_004757D0(ID, "FinalMovie", FinalMovie);
+        ini->FUN_00528A10(ID, "Scenario", Scenario, Scenario, 512);
+        _strupr(Scenario);
+        if (!ini->FUN_005295F0(ID, "DebugOnly", false)) {
+            ini->FUN_00529160(ID, "Description", Description, 128);
+        } else {
+            char buffer[1024];
+            ini->FUN_00528A10(ID, "Description", 0, buffer, 1024);
+            strcat(buffer, " - for debug/testing");
+            FUN_00735060(reinterpret_cast<unsigned short*>(Description), buffer, -1);
+        }
+        return true;
     }
-    return -1;
+    return false;
 }
 
-// The constructor body, expanded by hand. Retail inlines the whole thing into
-// CreateFromINIList, so it is written as a Construct member rather than a real
-// constructor: under /GX `new CampaignClass(name)` wraps the allocation in an
-// exception frame with an unwind funclet that frees the block, which retail
-// does not have.
-//
-// The four vtable-pointer stores are the COM multiple-inheritance base's, read
-// straight out of the disassembly (0x46CEC6..0x46CEE0).
-__forceinline CampaignClass* CampaignClass::Construct(const char* name)
+// FUNCTION: GAMEMD 0x46CE10
+void CampaignClass::CreateFromINIList(CCINIClass* ini)
 {
-    this->BaseConstruct(name);
-
-    this->idxCD = -1;
-    this->FinalMovie = -1;
-
-    this->Vptr  = (CampaignVtbl*)0x7E4A28;
-    this->Vptr2 = (void*)0x7E4A0C;
-    this->Vptr3 = (void*)0x7E4A04;
-    this->Vptr4 = (void*)0x7E49FC;
-
-    CampaignArray.AddItem(this);
-
-    this->Scenario[0] = 0;
-    wcscpy(this->Description, L"");
-
-    return this;
-}
-
-// ---------------------------------------------------------------------------
-// FUNCTION: GAMEMD 0x46CE10  (__fastcall — pINI in ECX)
-//
-// For every key in [Battles], read its value into a 32-char buffer, find or
-// create the matching CampaignClass, and let it parse its own INI section.
-//
-// The retail body inlines three things: the FindIndex search, the whole
-// CampaignClass constructor (four vptr stores, idxCD/FinalMovie = -1, the
-// Array.AddItem, the Scenario/Description resets), and
-// DynamicVectorClass<CampaignClass*>::AddItem with its SetCapacity growth arm.
-// All three are spelled out above / below rather than called.
-//
-// MATCHED 100% (112/112), up from 2.7%. Four levers, in order of value:
-//   1. The constructor written as `p = (CampaignClass*)::operator new(0x3A0);
-//      p = p ? p->Construct(name) : 0;` with a `__forceinline` Construct.
-//      `new CampaignClass(name)` with a declared constructor keeps the ctor out
-//      of line and adds the /GX exception frame retail does not have; without
-//      __forceinline cl 8804 refuses to expand Construct at all (2.7% -> 31.2%).
-//   2. The allocate arm written FIRST (`if (idx == -1) { new } else
-//      { existing }`). Retail lays the allocation inline and the
-//      `Array.Items[idx]` lookup as the far block at 0x46CF58; the reverse
-//      spelling swaps them and inverts every branch with it.
-//   3. `int index = this->Count++; this->Items[index] = item;` in the inlined
-//      AddItem. `Items[Count++] = item;` stores first and increments after,
-//      where retail bumps the count before the element store
-//      (`MOV ECX,[Count]; MOV EAX,ECX; INC ECX; MOV [Count],ECX`).
-//      (2 + 3 together: 31.2% -> 92.0%.)
-//   4. The searched entry bound to a local before the `_strcmpi` call
-//      (92.0% -> 98.2%), and the grown capacity accumulated in place
-//      (`grow += this->Capacity;` rather than `grow + this->Capacity` in the
-//      argument) so the sum lands in the freshly loaded CapacityIncrement
-//      register as retail's `ADD ECX,EAX` does (98.2% -> 100%).
-// ---------------------------------------------------------------------------
-void CampaignClass::CreateFromINIList(CCINIClass* pINI)
-{
-    int count = pINI->GetKeyCount("Battles");
-    for (int i = 0; i < count; ++i)
-    {
+    int count = ini->GetKeyCount("Battles");
+    for (int i = 0; i < count; ++i) {
         char buffer[32];
-        pINI->ReadString("Battles",
-                         pINI->GetKeyName("Battles", i),
-                         "", buffer, sizeof(buffer));
-
-        int idx = FindIndexInline(buffer);
-
-        CampaignClass* pCampaign;
-        if (idx == -1)
-        {
-            pCampaign = (CampaignClass*)::operator new(sizeof(CampaignClass));
-            pCampaign = pCampaign ? pCampaign->Construct(buffer) : 0;
-        }
-        else
-        {
-            pCampaign = CampaignArray.Items[idx];
-        }
-
-        (pCampaign->*pCampaign->Vptr->At_64)(pINI);
+        ini->FUN_00528A10("Battles", ini->GetKeyName("Battles", i), "", buffer, sizeof(buffer));
+        int index = FindIndex(buffer);
+        CampaignClass* campaign;
+        if (index == -1) campaign = new CampaignClass(buffer);
+        else campaign = CampaignArray.Items[index];
+        campaign->vf_25(ini);
     }
 }
+
+// FUNCTION: GAMEMD 0x46CF80
+HRESULT __stdcall CampaignClass::GetClassID(CLSID* out)
+{
+    if (!out) return E_POINTER;
+    *out = DAT_007E9900;
+    return S_OK;
+}
+
+// FUNCTION: GAMEMD 0x46CFC0
+void CampaignClass::vf_13(Obj_004A1D30* crc)
+{
+    AbstractTypeClass::vf_13(crc);
+    crc->FUN_004A1D50(idxCD);
+    crc->FUN_004A1DB0(Scenario);
+    crc->FUN_004A1D50(FinalMovie);
+}
+
+// FUNCTION: GAMEMD 0x46D000
+HRESULT __stdcall CampaignClass::Load(IStream* stream)
+{
+    HRESULT result = AbstractClass::Load(stream);
+    if (result >= 0) {
+        new(this) CampaignClass(AbstractNoInit());
+        result = S_OK;
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x46D050
+HRESULT __stdcall CampaignClass::Save(IStream* stream, BOOL clearDirty)
+{
+    HRESULT result = AbstractClass::Save(stream, clearDirty);
+    if (result >= 0) result = S_OK;
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x46D070
+int CampaignClass::vf_12() { return sizeof(CampaignClass); }
+// FUNCTION: GAMEMD 0x46D080
+int CampaignClass::vf_11() { return 0xA; }
+// SYNTHETIC: GAMEMD 0x46D090
+// CampaignClass scalar deleting destructor.

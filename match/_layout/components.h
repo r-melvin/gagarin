@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ObjectTypeClass ctor FUN_0x0058B8F0 member-access sites
-//   cross-checked vs YRpp ColorStruct/IndexClass/AbilitiesStruct. P2 leaf
+//   Oracle: ObjectTypeClass construction 0x5F7090 / 0x5F7320 and
+//   destruction 0x5F7400; cross-checked component names remain hypotheses. Leaf
 //   components reused by ObjectTypeClass (RadialColor, MainVoxel, voxel caches,
 //   Veteran/EliteAbilities).
 //
@@ -14,6 +14,8 @@
 #include "../_rt/gg_static_assert.h"
 
 #include "color_struct.h"
+#include "voxel_resource_data.h"
+#include <new.h>
 
 // VoxelStruct — a voxel model + its HVA animation (two 32-bit pointers).
 // Pointer members modelled as real pointers (decomp shows undefined4 truncation).
@@ -24,8 +26,10 @@ struct VoxelStruct
     // its three individual voxel members use the explicit no-init path.
     VoxelStruct() : unknown_00(0), HVAData(0) {}
     VoxelStruct(const AbstractNoInit&) {}
-    void* unknown_00;   // +0x00  (MotLib / VoxLib model ptr)
-    void* HVAData;     // +0x04  (HVA animation ptr)
+    // FUNCTION: GAMEMD 0x5F61A0
+    ~VoxelStruct();
+    Obj_00755D10* unknown_00; // +0x00, owned model; native delete at 0x5F61AA.
+    Obj_005BD5A0* HVAData;    // +0x04, owned animation; native delete at 0x5F61C7.
 };
 
 GG_STATIC_ASSERT(offsetof(VoxelStruct, unknown_00) == 0x00);
@@ -54,6 +58,22 @@ struct IndexClass
 {
     // ObjectType no-init5F7361..5F73D3: four empty cache records.
     IndexClass() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(0), Archive(0) {}
+    // gagarin helper for the common inline cleanup seen in native Load and
+    // destruction. The separately emitted reset entry follows below.
+    void ResetStorage()
+    {
+        ::operator delete(IndexTable);
+        IndexTable = 0;
+        IndexCount = 0;
+        IndexSize = 0;
+        IsSorted = 0;
+        Archive = 0;
+    }
+    // Native ObjectType destruction 0x5F749C..0x5F7544 expands the same
+    // cleanup for four cache members, in reverse declaration order.
+    ~IndexClass() { ResetStorage(); }
+    // FUNCTION: GAMEMD 0x5F9B60
+    void FUN_005F9B60();
     void*         IndexTable;   // +0x00  (NodeElement array on the heap)
     int           IndexCount;   // +0x04
     int           IndexSize;    // +0x08

@@ -35,19 +35,3 @@ void Obj_005BCC60::FUN_005BCC60(int a1, int a2, int a3, int a4)
     unknown_272C = a3;
     unknown_2730 = a4;
 }
-
-// FUNCTION: GAMEMD 0x5BD570
-// Branching.
-Obj_005BD570* FUN_005BD570(Obj_005BD570* a1, int a2, int a3)
-{
-    a1->unknown_00 = 0;
-    a1->unknown_04 = 0;
-    a1->unknown_08 = 0;
-    a1->unknown_0C = 0;
-    int c0 = FUN_005BD5C0(a1, a2, a3);
-    if (c0 == 0)
-    {
-        a1->unknown_00 = 1;
-    }
-    return a1;
-}

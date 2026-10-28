@@ -17,9 +17,7 @@
 #include "free_and_compare_methods.h"
 #include <string.h>
 
-#include "ini_read_names_methods.h"
 
-#include "trivial_tu014_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -67,24 +65,10 @@ void __cdecl FUN_004107E0()
 // FUNCTION: GAMEMD 0x410A40
 // `NEG EAX; SBB EAX,EAX; INC EAX` after the call is the bool form of `== 0`,
 // so the comparison is an equality test rather than an ordering one. Argument
-// order is (other, Name) — the pushes put the caller's string first.
-bool Obj_00410A00::FUN_00410A40(const char* other) const
+// order is (other, ID) — the pushes put the caller's string first.
+bool AbstractTypeClass::FUN_00410A40(const char* other) const
 {
-    return FUN_007C8D20(other, Name) == 0;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x410B90
-bool Obj_00410B90::FUN_00410B90(CCINI_00410B90* ini)
-{
-    ini->FUN_005257C0(Section, 0);
-    ini->FUN_00528660(Section, STR_00817854, &Name);
-
-    if (UIName) {
-        ini->FUN_00528660(Section, STR_0081784C, &UIName);
-    }
-
-    return true;
+    return FUN_007C8D20(other, ID) == 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -102,6 +86,6 @@ void AbstractTypeClass::vf_13(Obj_004A1D30* crc)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x410C20
 // Empty function that pops its stack arguments. Vtable slot 24 of AbstractTypeClass (RTTI) and 27 derived vtable(s).
-void Obj_00410C20::FUN_00410C20(int a1)
+void AbstractTypeClass::vf_24(int value)
 {
 }

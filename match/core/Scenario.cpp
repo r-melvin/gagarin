@@ -1913,7 +1913,7 @@ void __fastcall FUN_006886B0(bool value)
     for (i = 0; i < HouseClass_ArrayCount; ++i) {
         HouseClass* house = HouseClass_ArrayItems[i];
         if (house->Type->MultiplayPassive) continue;
-        FUN_004068E0(STR_0083DD70, i, house->Type->ID);
+        FUN_004068E0(STR_0083DD70, i, house->Type->ID.Data);
         DynamicVectorClass<UnitTypeClass*> units(0, 0);
         DynamicVectorClass<InfantryTypeClass*> infantry(0, 0);
         unsigned int owner = 1 << house->Type->ArrayIndex;
@@ -1985,7 +1985,7 @@ void __fastcall FUN_006886B0(bool value)
             if (!FUN_00688ED0(object, start, 4)) {
                 delete object;
             } else {
-                FUN_004068E0(STR_0083DD50, house->Type->ID, type->ID);
+                FUN_004068E0(STR_0083DD50, house->Type->ID.Data, type->ID.Data);
                 spent += type->vf_43();
                 created.AddItem(techno);
                 if (ScenarioInstance->unknown_0000 & 0x200) FUN_007500B0(1);

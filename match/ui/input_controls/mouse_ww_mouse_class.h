@@ -28,6 +28,7 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../../_layout/geometry2d.h"
+#include "../../_layout/obj_0069e430.h"
 
 // Surface vtable as the mouse code uses it: slot 0 = deleting destructor (`PUSH 1; CALL [EAX]`),
 // slot 2 (+0x08) = the five-argument blit, slot 31 (+0x7C) / 32 (+0x80) = width / height. The match/renderer
@@ -84,21 +85,6 @@ struct CursorRect : public RectangleStruct
     bool IsPositive() const { return Width > 0 && Height > 0; }
 };
 
-// Shape-file view: 0x69E7E0 is __thiscall returning the frame rectangle by value (hidden-result pointer, then the frame
-// index; RET 8).
-class MouseShapeView
-{
-public:
-    // FUNCTION: GAMEMD 0x69E7E0 (decl; reloc)
-    CursorRect GetFrameRect(int frame);
-
-    short unknown_00;   // +0x00
-    short Width;        // +0x02 (read as `MOVSX EAX,WORD PTR [ECX+2]`)
-    short Height;       // +0x04
-};
-GG_STATIC_ASSERT(offsetof(MouseShapeView, Width) == 0x02);
-GG_STATIC_ASSERT(offsetof(MouseShapeView, Height) == 0x04);
-
 // VTABLE: GAMEMD 0x7F7B78 (one slot: the scalar deleting destructor 0x7BA300)
 class Mouse
 {
@@ -122,7 +108,7 @@ class WWMouseClass : public Mouse
 public:
     // ---- virtual slots (complete-object order) ----------------------------------------------
     virtual ~WWMouseClass(); // slot0: body0x7B88D0, deleting wrapper0x7BA3A0
-    virtual void SetCursor(const Point2D* hotspot, MouseShapeView* shape, int frame);      // 1  0x7B8A00
+    virtual void SetCursor(const Point2D* hotspot, Obj_0069E430* shape, int frame);      // 1  0x7B8A00
     virtual bool IsMouseHidden();                                                // 2  0x7BA320
     virtual void vf_3();                                                    // 3  0x7B9930
     virtual void vf_4();                                                    // 4  0x7B9750
@@ -150,7 +136,7 @@ public:
     void DrawCursorBlock();
 
     // ---- members ---------------------------------------------------------------------------
-    MouseShapeView*    unknown_4;       // +0x04
+    Obj_0069E430*    unknown_4;       // +0x04
     int                CursorFrame;       // +0x08
     int                unknown_C;         // +0x0C
     bool               Captured;          // +0x10

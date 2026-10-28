@@ -58,10 +58,10 @@ struct StaticVectorHolder_00ABDF90 {
 // SYNTHETIC: GAMEMD 0x0058BC70 -- exit-time destructor stub of DAT_00ABDF90, guard byte 0x00ABDFB0 bit 0
 DynamicVectorClass<MapRegionClass*> StaticVectorHolder_00ABDF90::DAT_00ABDF90;
 
-struct StaticVectorHolder_00AC1418 {
-    // GLOBAL: GAMEMD 0x00AC1418
-    static DynamicVectorClass<ObjectTypeClass*> DAT_00AC1418;
-};
+// Keep this declaration at its original position: VC6 numbers guarded
+// static-member callbacks when it encounters their declaring class.
+#include "object_type_registry.h"
+
 // SYNTHETIC: GAMEMD 0x005F7030 -- exit-time destructor stub of DAT_00AC1418, guard byte 0x00AC1470 bit 0
 DynamicVectorClass<ObjectTypeClass*> StaticVectorHolder_00AC1418::DAT_00AC1418;
 

@@ -8,6 +8,7 @@
 // retail address. Each address is verified separately.
 
 #include <stddef.h>
+#include "../_layout/voxel_resource_data.h"
 #include "vector_class_operations.h"
 #include "../_rt/gg_static_assert.h"
 
@@ -79,51 +80,31 @@ Obj_005F9990* Obj_005F9990::FUN_005F9990(const char* name)
     return 0;
 }
 
-struct Obj_00755D10 {
-    unsigned char unknown_00[0x10];
-    void* Block0;                   // +0x10
-    void* Block1;                   // +0x14
-    void* Block2;                   // +0x18
-    void FUN_00755D10();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00755D10, Block0) == 0x10);
-GG_STATIC_ASSERT(offsetof(Obj_00755D10, Block2) == 0x18);
-
 // FUNCTION: GAMEMD 0x00755D10
-void Obj_00755D10::FUN_00755D10()
+Obj_00755D10::~Obj_00755D10()
 {
     if (Block0 != 0)
-        gg_free(Block0);
+        ::operator delete(Block0);
     Block0 = 0;
     if (Block1 != 0)
-        gg_free(Block1);
+        ::operator delete(Block1);
     Block1 = 0;
     if (Block2 != 0)
-        gg_free(Block2);
+        ::operator delete(Block2);
     Block2 = 0;
 }
 
-struct Obj_00755D60 {
-    unsigned char unknown_00[0x10];
-    void* Block0;                   // +0x10
-    void* Block1;                   // +0x14
-    void* Block2;                   // +0x18
-    void FUN_00755D60();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00755D60, Block0) == 0x10);
-GG_STATIC_ASSERT(offsetof(Obj_00755D60, Block2) == 0x18);
-
 // FUNCTION: GAMEMD 0x00755D60
-void Obj_00755D60::FUN_00755D60()
+void Obj_00755D10::FUN_00755D60()
 {
     if (Block0 != 0)
-        gg_free(Block0);
+        ::operator delete(Block0);
     Block0 = 0;
     if (Block1 != 0)
-        gg_free(Block1);
+        ::operator delete(Block1);
     Block1 = 0;
     if (Block2 != 0)
-        gg_free(Block2);
+        ::operator delete(Block2);
     Block2 = 0;
 }
 

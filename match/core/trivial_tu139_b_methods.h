@@ -11,7 +11,6 @@
 
 struct Obj_005BCC40;
 struct Obj_005BCC60;
-struct Obj_005BD570;
 
 // GLOBAL: GAMEMD 0xABF239
 extern unsigned char DAT_00ABF239;
@@ -20,8 +19,6 @@ extern unsigned char DAT_00ABF23A;
 // GLOBAL: GAMEMD 0xABF240
 extern int DAT_00ABF240;
 
-// FUNCTION: GAMEMD 0x5BD5C0 (declaration)
-int FUN_005BD5C0(Obj_005BD570*, int, int);
 // Import ShowWindow from USER32.dll (IAT slot 0x7E1498)
 extern "C" __declspec(dllimport) void __stdcall ShowWindow(int, int);
 
@@ -42,23 +39,6 @@ GG_STATIC_ASSERT(offsetof(Obj_005BCC60, unknown_2728) == 0x2728);
 GG_STATIC_ASSERT(offsetof(Obj_005BCC60, unknown_272C) == 0x272C);
 GG_STATIC_ASSERT(offsetof(Obj_005BCC60, unknown_2730) == 0x2730);
 
-struct Obj_005BD570
-{
-    unsigned char unknown_00;   // +0x0000
-    char unknown_01[0x3];
-    int unknown_04;   // +0x0004
-    int unknown_08;   // +0x0008
-    int unknown_0C;   // +0x000C
-};
-GG_STATIC_ASSERT(offsetof(Obj_005BD570, unknown_00) == 0x0);
-GG_STATIC_ASSERT(offsetof(Obj_005BD570, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(Obj_005BD570, unknown_08) == 0x8);
-GG_STATIC_ASSERT(offsetof(Obj_005BD570, unknown_0C) == 0xC);
-
-
 // FUNCTION: GAMEMD 0x5BC400
 void __cdecl FUN_005BC400();
-// FUNCTION: GAMEMD 0x5BD570
-Obj_005BD570* FUN_005BD570(Obj_005BD570* a1, int a2, int a3);
-
 #endif  // GG_MATCH_CORE_TRIVIAL_TU139_B_METHODS_H

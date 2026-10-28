@@ -28,10 +28,6 @@ extern const CLSID DAT_007E9620;
 extern const CLSID DAT_007E9980;
 // GLOBAL: GAMEMD 0x007E96E0 -- CLSID of BulletClass.
 extern const CLSID DAT_007E96E0;
-// GLOBAL: GAMEMD 0x007E95D0 -- CLSID of BulletTypeClass.
-extern const CLSID DAT_007E95D0;
-// GLOBAL: GAMEMD 0x007E9900 -- CLSID of CampaignClass.
-extern const CLSID DAT_007E9900;
 // GLOBAL: GAMEMD 0x007E9930 -- CLSID of CellClass.
 extern const CLSID DAT_007E9930;
 // GLOBAL: GAMEMD 0x007E9890 -- CLSID of DiskLaserClass.
@@ -158,14 +154,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 class BulletClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class BulletTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class CampaignClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -412,24 +400,6 @@ HRESULT __stdcall BulletClass::GetClassID(CLSID* pClassID)
     if (pClassID == 0)
         return E_POINTER;
     *pClassID = DAT_007E96E0;
-    return S_OK;
-}
-
-// FUNCTION: GAMEMD 0x0046C750
-HRESULT __stdcall BulletTypeClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E95D0;
-    return S_OK;
-}
-
-// FUNCTION: GAMEMD 0x0046CF80
-HRESULT __stdcall CampaignClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E9900;
     return S_OK;
 }
 

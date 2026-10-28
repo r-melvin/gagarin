@@ -43,9 +43,9 @@ int WeaponTypeClass::AllowedThreats()
 {
     BulletTypeClass* proj = this->Projectile;
     int threats = 0;
-    if (proj->unknown_2A4[0])
+    if (proj->unknown_2A4)
         threats = 4;
-    if (proj->unknown_2A4[1])
+    if (proj->unknown_2A5)
         threats |= 0xB8;
     return threats;
 }

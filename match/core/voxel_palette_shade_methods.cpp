@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //
 // Builds the 32-level voxel shading remap table from a palette and a set of
@@ -7,21 +8,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct VoxelShadePalette
-{
-	int RangeLow;                 // +0x00
-	int RangeHigh;                // +0x04
-	int LevelCount;               // +0x08
-	int unknown_0C;
-	unsigned char *Palette;       // +0x10
-	unsigned char *Remap;         // +0x14
-
-	unsigned char FUN_00758ea0(float r, float g, float b, bool inRange);
-	void FUN_00758b70(float *scales, int count);
-};
-GG_STATIC_ASSERT(offsetof(VoxelShadePalette, LevelCount) == 0x08);
-GG_STATIC_ASSERT(offsetof(VoxelShadePalette, Palette) == 0x10);
-GG_STATIC_ASSERT(offsetof(VoxelShadePalette, Remap) == 0x14);
+#include "voxel_shade_palette.h"
 
 extern float DAT_00b45a90[32];
 

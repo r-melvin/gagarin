@@ -4,29 +4,22 @@
 
 #include "small_misc50_methods.h"
 
+#include "../_layout/abstract_type_class.h"
+// GLOBAL: GAMEMD 0x887734
+extern const wchar_t DAT_00887734[];
+// STRING: GAMEMD 0x817830
+extern const char STR_00817830[];
+// FUNCTION: GAMEMD 0x734E60 (declaration)
+wchar_t* __fastcall StringTable_LoadString(const char*, int*, const char*, int);
+
 // FUNCTION: GAMEMD 0x410960
-//
-// The flag byte is read and its address taken before the four vtable stores,
-// which is why retail's `MOV AL,[ESI+0x3D]` and `LEA ECX,[ESI+0x3D]` sit ahead
-// of them even though the branch on that byte comes afterwards.
-Obj_00410960* Obj_00410960::FUN_00410960(int value)
+AbstractTypeClass::AbstractTypeClass(const AbstractNoInit& noInit)
+    : AbstractClass(noInit), ID(noInit), UINameLabel(noInit), Name(noInit)
 {
-    FUN_004101C0(value);
-
-    vt0 = &VT_007E2000;
-    vt1 = &VT_007E1FE4;
-    vt2 = &VT_007E1FDC;
-    vt3 = &VT_007E1FD4;
-
-    if (Registered) {
-        Block = FUN_00734E60(&Registered, 0, STR_00817830, 0x7F);
-
-        return this;
-    }
-
-    Block = &DAT_00887734;
-
-    return this;
+    if (UINameLabel[0])
+        UIName = StringTable_LoadString(UINameLabel, 0, STR_00817830, 0x7F);
+    else
+        UIName = DAT_00887734;
 }
 
 // FUNCTION: GAMEMD 0x4253B0

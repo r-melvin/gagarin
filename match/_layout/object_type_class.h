@@ -60,10 +60,18 @@ public:
     virtual void* vf_39();                                                // 39  0x41CFA0
     // FUNCTION: GAMEMD 0x5004E0 (existing static member, native category lookup).
     static int IsBuildCat5(int abstractID, int idx);
+    // FUNCTION: GAMEMD 0x5F7A90 (declaration; ECX=this, two stack arguments)
+    bool FUN_005F7A90(const char* name, int index);
+    // FUNCTION: GAMEMD 0x5F7DB0 (declaration; ECX=this, two stack arguments)
+    bool FUN_005F7DB0(const char* name, int index);
     // FUNCTION: GAMEMD 0x5F8110 (decl; reloc)
     void FUN_005F8110();
+    // FUNCTION: GAMEMD 0x5F8CE0 (declaration)
+    void FUN_005F8CE0();
     // FUNCTION: GAMEMD 0x5F9070 (decl; reloc)
     void FUN_005F9070();
+    // FUNCTION: GAMEMD 0x5F8080 -- forward cleanup of both charger arrays.
+    void FUN_005F8080();
 
     ColorStruct   RadialColor;            // +0x98  (3 bytes)
     unsigned char unused_9B;              // +0x9B
@@ -83,10 +91,10 @@ public:
     int           MaxDimension;           // +0x1EC
     int           CrushSound;             // +0x1F0  (ctor = -1)
     int           AmbientSound;           // +0x1F4  (ctor = -1)
-    char          ImageFile[0x19];        // +0x1F8 (0x1F8..0x210)
+    GgBoundedText<25> ImageFile;        // +0x1F8 (0x1F8..0x210)
     bool          AlternateArcticArt;     // +0x211
     bool          ArcticArtInUse;         // +0x212
-    char          AlphaImageFile[0x19];   // +0x213 (0x213..0x22B)
+    GgBoundedText<25> AlphaImageFile;   // +0x213 (0x213..0x22B)
     bool          Theater;                // +0x22C
     bool          Crushable;              // +0x22D
     bool          Bombable;               // +0x22E  (ctor = 1)
@@ -121,6 +129,7 @@ GG_STATIC_ASSERT(offsetof(ObjectTypeClass, ChargerTurrets)         == 0xC8);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, ChargerBarrels)         == 0x158);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, MaxDimension)           == 0x1EC);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, ImageFile)              == 0x1F8);
+GG_STATIC_ASSERT(sizeof(((ObjectTypeClass*)0)->ImageFile)           == 0x19);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, AlphaImageFile)         == 0x213);
 // TerrainType constructor71DB18..71DB30 and71DEA0 reader use these inherited bytes.
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, RadarInvisible) == 0x22F);
