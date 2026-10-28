@@ -81,22 +81,33 @@ GG_STATIC_ASSERT(offsetof(LineTrailVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(LineTrailVector, Count)       == 0x10);
 #endif
 
+// One ring entry; only the dword at +0x0C is read (by FUN_00556D20).
+struct LineTrailNode
+{
+    int unknown_00[3];
+    int unknown_0C;
+};
+
 struct LineTrail
 {
     void SetDecrement(int val);             // GAMEMD 0x556B50 __thiscall
     static void __stdcall DeleteAll();      // GAMEMD 0x556DF0 __stdcall
+    int  FUN_00556D20();                    // GAMEMD 0x556D20 __thiscall
 
     unsigned char   Color[3];   // +0x00  ColorStruct (R,G,B)
     unsigned char   _pad0;      // +0x03
     LineTrailOwner* Owner;      // +0x04
     int             Decrement;  // +0x08
     int             ActiveSlot; // +0x0C
-    // LineTrailNode Trails[32] follows at +0x10 (not touched here).
+    LineTrailNode   Trails[32]; // +0x10
 };
 
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(LineTrail, Owner)     == 0x04);
 #endif
 GG_STATIC_ASSERT(offsetof(LineTrail, Decrement) == 0x08);
+GG_STATIC_ASSERT(offsetof(LineTrail, ActiveSlot) == 0x0C);
+GG_STATIC_ASSERT(offsetof(LineTrail, Trails) == 0x10);
+GG_STATIC_ASSERT(offsetof(LineTrailNode, unknown_0C) == 0x0C);
 
 #endif  // GG_MATCH_RENDERER_LINE_TRAIL_H

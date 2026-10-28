@@ -34,6 +34,8 @@ extern const double DAT_007E1718;
 extern const double DAT_007EF900;
 // GLOBAL: GAMEMD 0xAC49B8
 extern double DAT_00AC49B8;
+// GLOBAL: GAMEMD 0x7E2800
+extern const double DAT_007E2800;
 
 // SYNTHETIC: GAMEMD 0x62B400
 // GLOBAL: GAMEMD 0xAC4A10
@@ -123,6 +125,22 @@ ParticleClass::ParticleClass()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62CE40
+// Runs the per-frame step for the type's behaviour, then counts the particle's life down.
+void ParticleClass::FUN_0062CE40()
+{
+    switch (Type->BehavesLike) {
+    case 0: UpdateBehavior0(); break;
+    case 1: UpdateBehavior1(); break;
+    case 2: UpdateBehavior2(); break;
+    case 3: UpdateBehavior3(); break;
+    case 4: UpdateBehavior4(); break;
+    }
+    if (--unknown_128 == 0)
+        unknown_131 = 1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x62CEC0
 // CAPPED: stack-slot layout and register assignment differ from retail (see the report).
 void ParticleClass::vf_69(void* where, ParticleRect* clip)
@@ -200,6 +218,66 @@ void ParticleClass::vf_69(void* where, ParticleRect* clip)
                          ((g >> gg_b_translucent_pixel_format.loss1 << gg_b_translucent_pixel_format.pos1) & 0xFFFF) |
                          ((r >> gg_b_translucent_pixel_format.loss0 << gg_b_translucent_pixel_format.pos0) & 0xFFFF);
     ParticleSurface->PlotPixel(&point, color);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62D510
+// Steps the location by the second coordinate while the particle still has speed; if the stepped
+// position is higher than the current one the particle is flagged to finish. Then passes the
+// stepped position to slot 109.
+void ParticleClass::FUN_0062D510()
+{
+    ParticleCoord next = Location;
+    ParticleCoord here = Location;
+    if (Velocity > DAT_007E2800) {
+        next.X += Coord2.X;
+        next.Y += Coord2.Y;
+        next.Z += Coord2.Z;
+    }
+    if (Velocity > DAT_007E2800) {
+        int hereHeight = ParticleMap.GetHeight(&here);
+        int nextHeight = ParticleMap.GetHeight(&next);
+        if (nextHeight > hereHeight) {
+            unknown_12D = 1;
+            unknown_131 = 1;
+        }
+    }
+    vf_109(&next);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62D5E0
+// Per-frame movement step by behaviour: types 0 and 1 have their own bodies; type 2 is the
+// stepped-position check of FUN_0062D510 inlined.
+void ParticleClass::FUN_0062D5E0()
+{
+    switch (Type->BehavesLike) {
+    case 0:
+        FUN_0062D2A0();
+        break;
+    case 1:
+        FUN_0062D3F0();
+        break;
+    case 2: {
+        ParticleCoord next = Location;
+        ParticleCoord here = Location;
+        if (Velocity > DAT_007E2800) {
+            next.X += Coord2.X;
+            next.Y += Coord2.Y;
+            next.Z += Coord2.Z;
+        }
+        if (Velocity > DAT_007E2800) {
+            int hereHeight = ParticleMap.GetHeight(&here);
+            int nextHeight = ParticleMap.GetHeight(&next);
+            if (nextHeight > hereHeight) {
+                unknown_12D = 1;
+                unknown_131 = 1;
+            }
+        }
+        vf_109(&next);
+        break;
+    }
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

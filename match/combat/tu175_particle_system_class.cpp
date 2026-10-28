@@ -198,6 +198,32 @@ ParticleClass* ParticleSystemClass::SpawnParticle(ParticleTypeClass* pType,
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62E5D0
+// Marks the particle at this index finished and removes it from the system's list.
+bool ParticleSystemClass::FUN_0062E5D0(int index)
+{
+    if (index < Particles.Count) {
+        Particles.Items[index]->MarkFinished();
+        Particles.RemoveItem(Particles.Items[index]);
+        return true;
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x62E650
+// Finishes and removes every particle of the system, last first.
+void ParticleSystemClass::FUN_0062E650()
+{
+    for (int i = Particles.Count - 1; i >= 0; i--) {
+        if (i < Particles.Count) {
+            Particles.Items[i]->MarkFinished();
+            Particles.RemoveItem(Particles.Items[i]);
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x62FD60
 void ParticleSystemClass::Update()
 {

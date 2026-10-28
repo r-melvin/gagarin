@@ -69,3 +69,14 @@ LinkClass* LinkClass::Add(LinkClass& object)
     }
     return HeadOfList();
 }
+
+// FUNCTION: GAMEMD 0x556600
+// Assignment re-links this node after the source node; self-assignment does nothing.
+LinkClass& LinkClass::operator=(const LinkClass& other)
+{
+    if (&other != this) {
+        Remove();
+        Add(const_cast<LinkClass&>(other));
+    }
+    return *this;
+}

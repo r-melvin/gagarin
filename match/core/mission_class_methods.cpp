@@ -71,3 +71,12 @@ int MissionControlClass::FindIndex(const char* name)
     }
     return -1;
 }
+
+// FUNCTION: GAMEMD 0x5B3950  MissionControlClass::NameOf (__fastcall)
+// Name of a mission by index; "<none>" for -1.
+const char* MissionControlClass::NameOf(int mission)
+{
+    if (mission != -1)
+        return MissionControlNames[mission];
+    return "<none>";
+}

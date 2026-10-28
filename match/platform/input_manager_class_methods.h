@@ -18,9 +18,19 @@
 
 struct InputManagerClass
 {
-    char _pad0[0x314];          // +0x000 unmodelled storage prefix
+    int            unknown_00;          // +0x000
+    int            unknown_04;          // +0x004
+    unsigned short unknown_08;          // +0x008
+    unsigned short unknown_0A;          // +0x00A
+    int            unknown_0C;          // +0x00C
+    int            unknown_10;          // +0x010
+    unsigned char  KeyState[0x100];     // +0x014  cleared by the constructor (0x40 dwords)
+    unsigned short Ring[256];           // +0x114  queued key codes
     int  field_314;             // +0x314  ring-buffer head/read index
     int  field_318;             // +0x318  ring-buffer tail/write index
+
+    // FUNCTION: GAMEMD 0x54F6F0 -- pumps input when the ring is not full.
+    void FUN_0054F6F0();
 
     // FUNCTION: GAMEMD 0x54F000 (decl; reloc) — ABI view; original name unknown.
     unsigned short FUN_0054F000();
@@ -35,6 +45,8 @@ struct InputManagerClass
     void DoSomething();
 };
 
+GG_STATIC_ASSERT(offsetof(InputManagerClass, KeyState) == 0x14);
+GG_STATIC_ASSERT(offsetof(InputManagerClass, Ring) == 0x114);
 GG_STATIC_ASSERT(offsetof(InputManagerClass, field_314) == 0x314);
 GG_STATIC_ASSERT(offsetof(InputManagerClass, field_318) == 0x318);
 // The modeled prefix through the last confirmed field is 0x31C bytes; this

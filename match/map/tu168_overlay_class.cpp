@@ -526,6 +526,24 @@ void OverlayClass::vf_70(MapObjPoint* where, MapObjRect* clip)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5FDCC0
+// The vertical drawing offset for an overlay type: 12 up for tiberium, walls, crates and the
+// special overlay 0x7E, one more up for land type 9 and one more for overlay 0x7E itself.
+MapObjPoint* __fastcall FUN_005FDCC0(MapObjPoint* out, int typeIndex)
+{
+    OverlayTypeClass* type = OverlayTypeArray.Items[typeIndex];
+    MapObjPoint p(0, 0);
+    if (type->Tiberium || type->Wall || type->ArrayIndex == 0x7E || type->Crate)
+        p.Y = -12;
+    if (type->Land == 9)
+        p.Y--;
+    if (typeIndex == 0x7E)
+        p.Y--;
+    *out = p;
+    return out;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FDD20
 //
 // Map an overlay type index to the tiberium it belongs to. No overlay, or one

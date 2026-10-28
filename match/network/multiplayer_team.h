@@ -29,7 +29,7 @@ public:
     // FUNCTION: GAMEMD 0x5D8C90 (decl) -- slot 1; one argument, bool.
     virtual bool vf_1(int playerIndex);
     // FUNCTION: GAMEMD 0x5D8CB0 (decl) -- slot 2.
-    virtual void vf_2();
+    virtual bool vf_2(int playerIndex);
 
     Obj_007B66D0 unknown_04;   // +0x04
     int             unknown_08;   // +0x08
@@ -44,6 +44,7 @@ class MultiplayerObserverTeam : public MultiplayerTeam
 public:
     // FUNCTION: GAMEMD 0x5C9470 (decl; reloc)
     MultiplayerObserverTeam();
+    virtual bool vf_1(int playerIndex);                                    // 1  0x5C94C0
 };
 GG_STATIC_ASSERT(sizeof(MultiplayerObserverTeam) == 0xC);
 

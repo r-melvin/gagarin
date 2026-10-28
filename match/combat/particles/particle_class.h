@@ -76,6 +76,17 @@ public:
     virtual bool vf_73(int arg);                                   // 73  0x62D6F0
     // Slot 122 is not part of the shared ObjectClass table (122 slots): ParticleClass adds it.
     virtual int vf_122();                                                   // 122 0x62D830
+    void FUN_0062CE40();                                                    // 0x62CE40 (non-virtual)
+    // Behaviour bodies Update dispatches to by Type->BehavesLike.
+    void UpdateBehavior0();                                                 // 0x62BD50
+    void UpdateBehavior1();                                                 // 0x62C540
+    void UpdateBehavior2();                                                 // 0x62CB10
+    void UpdateBehavior3();                                                 // 0x62C6E0
+    void UpdateBehavior4();                                                 // 0x62C3A0
+    void FUN_0062D510();                                                    // 0x62D510
+    void FUN_0062D2A0();                                                    // 0x62D2A0
+    void FUN_0062D3F0();                                                    // 0x62D3F0
+    void FUN_0062D5E0();                                                    // 0x62D5E0
 
     // ---- members (complete-object offsets) ---------------------------------------------------
     ParticleTypeClass*    Type;          // +0xAC

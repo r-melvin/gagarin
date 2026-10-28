@@ -36,6 +36,17 @@ void LineTrail::SetDecrement(int val)
 }
 
 // ---------------------------------------------------------------------------
+// FUNCTION: GAMEMD 0x556D20  (__thiscall)
+// True when the trail has no owner and its current ring entry is clear.
+// ---------------------------------------------------------------------------
+int LineTrail::FUN_00556D20()
+{
+    if (this->Owner == 0 && this->Trails[this->ActiveSlot].unknown_0C == 0)
+        return 1;
+    return 0;
+}
+
+// ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x556DF0  (__stdcall, static)
 // Destroy every live LineTrail: detach each from its owner (clearing the owner
 // back-link @+0xA8 and the trail's Owner @+0x04), remove it from the global

@@ -4,7 +4,11 @@
 // filename is attested; the header-initializer bounds do not prove a complete TU.
 // RadioLinks' own RTTI at 0x816880 identifies VectorClass<TechnoClass*>.
 #include "../_layout/radio_class.h"
+#include <new.h>
 #include "../_layout/techno_class.h"
+#include "../_layout/obj_004a1d30.h"
+#include "vector_class_operations.h"
+#include "../_layout/swizzle_manager_class.h"
 
 TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; checked type filter
 
@@ -69,10 +73,92 @@ int RadioClass::vf_159(int command, void* data, RadioClass* peer)
 }
 
 
+// FUNCTION: GAMEMD 0x65AA80
+// Makes sure the object leaves its radio links, then runs the base update.
+bool RadioClass::vf_53()
+{
+    if (!InLimbo)
+        vf_160(3);
+    return MissionClass::vf_53();
+}
+
 // FUNCTION: GAMEMD 0x65AAA0
 int RadioClass::vf_158(int command, RadioClass* peer)
 {
     return vf_159(command, DAT_00A8EC30, peer);
+}
+
+// FUNCTION: GAMEMD 0x65AAC0
+// Drops every radio link that points at the expired object.
+void RadioClass::vf_10(void* target, bool removed)
+{
+    MissionClass::vf_10(target, removed);
+    for (int i = 0; i < RadioLinks.Capacity; ++i) {
+        if (RadioLinks.Items[i] == target && removed)
+            RadioLinks.Items[i] = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x65AB10
+// Feeds the link count and each linked object's id and kind to the checksum.
+void RadioClass::vf_13(Obj_004A1D30* crc)
+{
+    MissionClass::vf_13(crc);
+    crc->FUN_004A1D50(RadioLinks.Capacity);
+    for (int i = 0; i < RadioLinks.Capacity; ++i) {
+        if (RadioLinks.Items[i]) {
+            crc->FUN_004A1D50(RadioLinks.Items[i]->vf_rtti_4());
+            crc->FUN_004A1D50(RadioLinks.Items[i]->vf_11());
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x65AB80
+// Loads the link vector (count then raw pointers) and registers each for swizzling.
+HRESULT __stdcall RadioClass::Load(IStream* pStm)
+{
+    HRESULT hr = MissionClass::Load(pStm);
+    if (hr < 0)
+        return hr;
+    VectorClass<TechnoClass*>* links = &RadioLinks;
+    if (links)
+        new (links) VectorClass<TechnoClass*>(0, 0);
+    int count;
+    int i;
+    hr = pStm->Read(&count, 4, 0);
+    if (hr < 0)
+        return hr;
+    RadioLinks.SetCapacity(count, 0);
+    for (i = 0; i < count; ++i) {
+        TechnoClass* link;
+        hr = pStm->Read(&link, 4, 0);
+        if (hr < 0)
+            return hr;
+        RadioLinks.Items[i] = link;
+    }
+    for (i = 0; i < count; ++i)
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&RadioLinks.Items[i]);
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x65AC40
+// Saves the link vector as the capacity followed by the raw pointers.
+HRESULT __stdcall RadioClass::Save(IStream* pStm, BOOL fClearDirty)
+{
+    HRESULT hr = MissionClass::Save(pStm, fClearDirty);
+    if (hr < 0)
+        return hr;
+    int count = RadioLinks.Capacity;
+    int i;
+    hr = pStm->Write(&count, 4, 0);
+    if (hr < 0)
+        return hr;
+    for (i = 0; i < count; ++i) {
+        hr = pStm->Write(&RadioLinks.Items[i], 4, 0);
+        if (hr < 0)
+            return hr;
+    }
+    return 0;
 }
 
 // TU-WINDOW: past the proven header-initializer end 0x65A746.

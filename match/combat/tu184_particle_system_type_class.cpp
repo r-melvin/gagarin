@@ -175,6 +175,16 @@ bool ParticleSystemTypeClass::ReadINI(ParticleIniView* ini)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6446E0
+// Name of the system type at this index; "<none>" when the index is out of range.
+const char* FUN_006446E0(unsigned int index)
+{
+    if (index < (unsigned int)DAT_00A83D68.Count)
+        return ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[index]->ID;
+    return "<none>";
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x644700
 void ParticleSystemTypeClass::ComputeCRC(ParticleCrcView& crc)
 {
@@ -245,6 +255,34 @@ ParticleSystemTypeClass* ParticleSystemTypeClass::FindOrAllocate(const char* id)
     }
 
     return new ParticleSystemTypeClass(id);
+}
+
+// Position of this exact object in the system-type array, -1 when absent.
+static inline int IndexOfSystemType(ParticleSystemTypeClass* item)
+{
+    int count = DAT_00A83D68.Count;
+    for (int k = 0; k < count; k++) {
+        if (((ParticleSystemTypeClass**)DAT_00A83D68.Items)[k] == item)
+            return k;
+    }
+    return -1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x644630
+// Index of the system type with this name; unknown names are created first. Returns -1 for
+// "<none>" and for an empty name.
+int FUN_00644630(const char* name)
+{
+    if (_stricmp(name, "<none>") != 0 && strlen(name) != 0) {
+        int i;
+        for (i = 0; i < DAT_00A83D68.Count; i++) {
+            if (_stricmp(name, ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[i]->ID) == 0)
+                return i;
+        }
+        return IndexOfSystemType(new ParticleSystemTypeClass(name));
+    }
+    return -1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

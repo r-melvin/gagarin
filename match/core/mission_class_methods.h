@@ -39,6 +39,7 @@ struct MissionControlClass
     static bool IsRecruitableMission(int mission);  // GAMEMD 0x5B36E0
     const char*            GetName();                          // GAMEMD 0x5B3740
     static int  FindIndex(const char* name);        // GAMEMD 0x5B3910
+    static const char* NameOf(int mission);         // GAMEMD 0x5B3950
 };
 
 GG_STATIC_ASSERT(offsetof(MissionControlClass, ArrayIndex)  == 0x00);

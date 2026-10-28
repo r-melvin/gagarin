@@ -44,6 +44,7 @@ public:
     // FUNCTION: GAMEMD 0x62DF20
     ParticleSystemClass();
     void FUN_0062E650(); // GAMEMD 0x62E650, caller0x685618
+    bool FUN_0062E5D0(int index); // GAMEMD 0x62E5D0
     ParticleClass* SpawnParticle(const ParticleCoord& coords1, const ParticleCoord& coords2);
     ParticleClass* SpawnParticle(ParticleTypeClass* pType, const ParticleCoord& coords);
     // FUNCTION: GAMEMD 0x62DC50

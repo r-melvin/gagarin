@@ -32,7 +32,7 @@ public:
     // Declaration: GAMEMD 0x65AC40 -- primary slot6, stdcall this+stream+BOOL.
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     // Declaration: GAMEMD 0x65AAC0 -- primary slot10, ECX receiver/RET8.
-    virtual void vf_10(void* a1, bool a2);
+    virtual void vf_10(void* target, bool removed);
     // Declaration: GAMEMD 0x65AB10 -- primary slot13, ECX receiver/RET4.
     virtual void vf_13(Obj_004A1D30* crc);
     // Declaration: GAMEMD 0x65AA80 -- primary slot53, byte result/RET.

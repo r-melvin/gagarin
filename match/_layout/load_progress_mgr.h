@@ -18,6 +18,7 @@ struct Point2D;
 class LoadProgressMgr : public INoticeSink
 {
 public:
+    LoadProgressMgr(); // FUNCTION: GAMEMD 0x552AD0
     void FUN_00552B10(); // FUNCTION: GAMEMD 0x552B10 (decl; 0x684760)
     Point2D* FUN_00552BE0(Point2D* out); // FUNCTION: GAMEMD 0x552BE0 (decl; 0x68481E)
     int FUN_00552C90(); // FUNCTION: GAMEMD 0x552C90 (decl; 0x684836)

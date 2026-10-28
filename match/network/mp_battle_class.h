@@ -25,6 +25,8 @@ class MultiplayerBattleTeam : public MultiplayerTeam
 {
 public:
     MultiplayerBattleTeam(const Obj_007B66D0& name, int index);
+    virtual bool vf_1(int playerIndex);                                    // 1  0x5C1090
+    virtual bool vf_2(int playerIndex);                                    // 2  0x5C10B0
 };
 
 #endif  // GG_MATCH_NETWORK_MP_BATTLE_CLASS_H

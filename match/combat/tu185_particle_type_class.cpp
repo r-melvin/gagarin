@@ -785,6 +785,33 @@ bool ParticleTypeClass::ReadINI(ParticleIniView* ini)
     return false;
 }
 
+// Position of this exact object in the particle-type array, -1 when absent.
+static inline int IndexOfType(ParticleTypeClass* item)
+{
+    int count = ParticleTypeArray.Count;
+    for (int k = 0; k < count; k++) {
+        if (ParticleTypeArray.Items[k] == item)
+            return k;
+    }
+    return -1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x645430
+// Index of the particle type with this name; unknown names are created first. -1 for "<none>".
+int FUN_00645430(const char* name)
+{
+    if (stricmp(name, "<none>") != 0) {
+        int i;
+        for (i = 0; i < ParticleTypeArray.Count; i++) {
+            if (stricmp(name, ParticleTypeArray.Items[i]->ID) == 0)
+                return i;
+        }
+        return IndexOfType(new ParticleTypeClass(name));
+    }
+    return -1;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006454C0
 int* FUN_006454C0(unsigned int index)

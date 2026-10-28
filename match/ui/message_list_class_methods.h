@@ -26,6 +26,12 @@ struct MessageListClass
     int NumMessages() const; // Declaration: GAMEMD 0x5D4AA0
     void SetWidth(int width); // Declaration: GAMEMD 0x5D4AD0
     void ComputeY(); // Declaration: GAMEMD 0x5D4BF0
+    // Declaration: GAMEMD 0x5D3F60 -- text of the label whose +0x28 field equals the argument.
+    const wchar_t* FUN_005D3F60(int key);
+    // Declaration: GAMEMD 0x5D3F90 -- the label whose +0x28 field equals the argument.
+    TextLabelClass* FUN_005D3F90(int key);
+    // Declaration: GAMEMD 0x5D41E0 -- gives the edit label the focus while editing.
+    void FUN_005D41E0();
 
     TextLabelClass* MessageList;
     int MessagePos_X;
