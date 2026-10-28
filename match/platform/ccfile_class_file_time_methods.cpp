@@ -27,7 +27,8 @@ unsigned long CCFileClass::GetFileTime()
         if (MixFileClass_Offset(GetFileName(), 0, &mix, 0, 0)) {
             const char* archiveName = mix->FileName;
             CCFileClass file(archiveName);
-            time = file.GetFileTime();
+            // Retail 0x473EC6 dispatches through FileClass slot +0x38.
+            time = static_cast<FileClass&>(file).GetFileTime();
             return time;
         }
     }
@@ -43,7 +44,8 @@ bool CCFileClass::SetFileTime(unsigned long fileTime)
         if (MixFileClass_Offset(GetFileName(), 0, &mix, 0, 0)) {
             const char* archiveName = mix->FileName;
             CCFileClass file(archiveName);
-            ok = file.SetFileTime(fileTime);
+            // Retail 0x473F7F dispatches through FileClass slot +0x3C.
+            ok = static_cast<FileClass&>(file).SetFileTime(fileTime);
         }
     }
     return ok;
