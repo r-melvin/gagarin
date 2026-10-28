@@ -32,12 +32,58 @@ public:
     void SetSide(int idx);        // GAMEMD 0x642B10 __thiscall
     int  GetSide();               // GAMEMD 0x642B20 __thiscall
 
+    ProgressScreenClass();        // GAMEMD 0x6429E0 (no arguments)
+    // Exit-time destructor: its body is inlined into the atexit thunk 0x6429A0.
+    ~ProgressScreenClass()
+    {
+        if (BufferOwned) {
+            delete Buffer;
+            BufferOwned = false;
+        }
+        Buffer = 0;
+    }
+
     int  Field04;                 // +0x04, slot 0
-    char _layout_pad_P2[0x78];    // +0x08 .. full layout = P2
+    int  Table08[16];             // +0x08 .. +0x47, zeroed by the constructor
+    int  unknown_48;              // +0x48
+    int  unknown_4C;              // +0x4C
+    int  unknown_50;              // +0x50
+    char* Buffer;                 // +0x54, released by the destructor
+    bool BufferOwned;             // +0x58
+    char _pad_59[3];              // +0x59 .. +0x5B untouched here
+    int  unknown_5C;              // +0x5C
+    bool unknown_60;              // +0x60
+    bool unknown_61;              // +0x61
+    bool unknown_62;              // +0x62
+    char _pad_63;                 // +0x63 untouched here
+    int  unknown_64;              // +0x64
+    int  unknown_68;              // +0x68
+    int  unknown_6C;              // +0x6C
+    bool unknown_70;              // +0x70
+    char _pad_71[3];              // +0x71 .. +0x73 untouched here
+    int  unknown_74;              // +0x74 untouched here
+    int  unknown_78;              // +0x78
+    int  unknown_7C;              // +0x7C
     int  PlayerSide;              // +0x80
 };
 
 GG_STATIC_ASSERT(offsetof(ProgressScreenClass, Field04) == 0x04);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, Table08) == 0x08);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_48) == 0x48);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_50) == 0x50);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, Buffer) == 0x54);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, BufferOwned) == 0x58);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_5C) == 0x5C);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_60) == 0x60);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_61) == 0x61);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_62) == 0x62);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_64) == 0x64);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_68) == 0x68);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_6C) == 0x6C);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_70) == 0x70);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_78) == 0x78);
+GG_STATIC_ASSERT(offsetof(ProgressScreenClass, unknown_7C) == 0x7C);
 GG_STATIC_ASSERT(offsetof(ProgressScreenClass, PlayerSide) == 0x80);
 
 #endif  // GG_MATCH_UI_PROGRESS_SCREEN_CLASS_H

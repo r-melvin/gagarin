@@ -1,0 +1,12 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Evidence: 0x642980 loads 0xAC4F58 into ECX, calls the constructor 0x6429E0 and registers the
+//   thunk at 0x6429A0 with atexit; both come from the one global definition below. The thunk is the
+//   destructor body inlined (restore the vptr, release the owned buffer).
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
+
+#include "progress_screen_class.h"
+
+// GLOBAL: GAMEMD 0xAC4F58
+// SYNTHETIC: GAMEMD 0x6429A0 -- exit-time destructor thunk
+ProgressScreenClass DAT_00AC4F58;
