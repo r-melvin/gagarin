@@ -48221,6 +48221,24 @@
   "pct": 100.0
  },
  {
+  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "addr": "0x55A6C0",
+  "sym": "??0LocomotionClass@@QAE@XZ",
+  "len": "0x23",
+  "name": "LocomotionClass::LocomotionClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "addr": "0x55A6F0",
+  "sym": "??1LocomotionClass@@UAE@XZ",
+  "len": "0x15",
+  "name": "LocomotionClass::~LocomotionClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x513C20",
   "sym": "??0HoverLocomotionClass@@QAE@XZ",
@@ -68350,6 +68368,15 @@
   "sym": "?vf_81@ObjectClass@@UAE_NHHH@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_81",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_class_slots_5f3e30.cpp",
+  "addr": "0x5F3E50",
+  "sym": "?FUN_005F3E50@ObjectClass@@QAE_NPBD@Z",
+  "len": "0x17",
+  "name": "ObjectClass::FUN_005F3E50",
   "status": "matched",
   "pct": 100
  },
@@ -96929,6 +96956,15 @@
   "pct": 100.0
  },
  {
+  "tu": "match/core/rules_class_readtypes_more_methods.cpp",
+  "addr": "0x672740",
+  "sym": "?Read_Teams@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x82",
+  "name": "RulesClass::Read_Teams",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/dword_vector_assign_methods.cpp",
   "addr": "0x67A570",
   "sym": "?FUN_0067A570@Vec_0067A570@@QAEPAU1@ABU1@@Z",
@@ -100244,6 +100280,42 @@
   "pct": 26.7
  },
  {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F1B0",
+  "sym": "?FUN_0069F1B0@ShipLocomotionClass@@QAENXZ",
+  "len": "0x5B",
+  "name": "ShipLocomotionClass::FUN_0069F1B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F210",
+  "sym": "?FUN_0069F210@ShipLocomotionClass@@QAEXH@Z",
+  "len": "0x3A",
+  "name": "ShipLocomotionClass::FUN_0069F210",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69EF10",
+  "sym": "?Save@ShipLocomotionClass@@UAGJPAUIStream@@H@Z",
+  "len": "0xDF",
+  "name": "ShipLocomotionClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A3EC0",
+  "sym": "?FUN_006A3EC0@ShipLocomotionClass@@QAE_NXZ",
+  "len": "0x36",
+  "name": "ShipLocomotionClass::FUN_006A3EC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A160",
   "sym": "?QueryInterface@TeleportLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
@@ -102348,6 +102420,24 @@
   "name": "ObjectClass::ObjectClass(no-init)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/tu165_object_class.cpp",
+  "addr": "0x5F61F0",
+  "sym": "?FUN_005F61F0@ObjectClass@@QAE_NPAV1@@Z",
+  "len": "0x2A",
+  "name": "ObjectClass::FUN_005F61F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/tu165_object_class.cpp",
+  "addr": "0x5F6060",
+  "sym": "?FUN_005F6060@ObjectClass@@QAEXH@Z",
+  "len": "0x3C",
+  "name": "ObjectClass::FUN_005F6060",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -135234,5 +135324,68 @@
   "name": "Obj_00544E00::FUN_00544E00",
   "status": "partial",
   "pct": 89.5
+ },
+ {
+  "tu": "match/core/rules_class_iq_methods.cpp",
+  "addr": "0x674240",
+  "sym": "?Read_IQ@Rules_00674240@@QAE_NPAVCCINI_00674240@@@Z",
+  "len": "0x18D",
+  "name": "RulesClass::Read_IQ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_methods_c.cpp",
+  "addr": "0x550240",
+  "sym": "?FUN_00550240@@YIXXZ",
+  "len": "0x20",
+  "name": "FUN_00550240",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_methods_c.cpp",
+  "addr": "0x5C69A0",
+  "sym": "?FUN_005C69A0@@YIHPBEI@Z",
+  "len": "0x1A",
+  "name": "FUN_005C69A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_methods_c.cpp",
+  "addr": "0x645C70",
+  "sym": "?FUN_00645C70@Quat_00645C70@@QAEXXZ",
+  "len": "0x59",
+  "name": "Quat_00645C70::FUN_00645C70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_methods_c.cpp",
+  "addr": "0x6433D0",
+  "sym": "?FUN_006433D0@Obj_006433D0@@QAENXZ",
+  "len": "0x27",
+  "name": "Obj_006433D0::FUN_006433D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_methods_c.cpp",
+  "addr": "0x643E90",
+  "sym": "?FUN_00643E90@Obj_006433D0@@QAENH@Z",
+  "len": "0x1C",
+  "name": "Obj_006433D0::FUN_00643E90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_methods_c.cpp",
+  "addr": "0x5BD360",
+  "sym": "?FUN_005BD360@@YGEE@Z",
+  "len": "0x65",
+  "name": "FUN_005BD360",
+  "status": "matched",
+  "pct": 100
  }
 ]
