@@ -855,6 +855,16 @@ static __forceinline bool Observer_At_Extra_Slot()
 // GLOBAL: GAMEMD 0xAC0D40 -- the lobby dialog.
 extern HWND DAT_00AC0D40;
 
+// FUNCTION: GAMEMD 0x5E23A0
+//
+// Send message 0x4DC to the lobby start control (item 0x59F) of the open dialog.
+void FUN_005E23A0()
+{
+    HWND dialog = FUN_00775B10();
+    HWND item = GetDlgItem(dialog, 0x59F);
+    SendMessageA(item, 0x4DC, 0, 0);
+}
+
 // FUNCTION: GAMEMD 0x5E2460
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_005E2460()
@@ -906,6 +916,24 @@ unsigned int FUN_005E2670(Obj_007B66D0* text)
         hash = (hash << 8) ^ (hash >> 24);
     }
     return hash;
+}
+
+// FUNCTION: GAMEMD 0x5E26C0
+//
+// Find whichever of the four numbered dialogs is currently open (0xC2, 0xC9, 0xBC, 0xBD).
+HWND FUN_005E26C0()
+{
+    HWND dialog = FUN_00775940(0xC2);
+    if (!dialog) {
+        dialog = FUN_00775940(0xC9);
+        if (!dialog) {
+            dialog = FUN_00775940(0xBC);
+            if (!dialog) {
+                dialog = FUN_00775940(0xBD);
+            }
+        }
+    }
+    return dialog;
 }
 
 // FUNCTION: GAMEMD 0x5E2700

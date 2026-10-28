@@ -413,6 +413,7 @@ struct ColorTable_00626070
 
     const ColorRGB_00661350& operator[](int index) const { return Colors[index % 256]; }
 
+    void FUN_006260F0(int ratio);
     void FUN_00626120(int ratio, const ColorTable_00626070& target);
     void FUN_00626170(int ratio, const char* marks);
     void FUN_006261B0(int ratio, const ColorTable_00626070& target, const char* marks);
@@ -420,6 +421,16 @@ struct ColorTable_00626070
 };
 
 GG_STATIC_ASSERT(offsetof(ColorTable_00626070, Colors) == 0x000);
+
+// Same 256-entry table, filled with one colour (0x626020) and assigned with a self-check (0x6260D0).
+struct ColorTableFill_00626020
+{
+    ColorRGB_00661350 Colors[256];   // +0x000
+
+    ColorTableFill_00626020(const ColorRGB_00661350& fill);
+    ColorTableFill_00626020& operator=(const ColorTableFill_00626020& other);
+};
+GG_STATIC_ASSERT(sizeof(ColorTableFill_00626020) == 0x300);
 
 #include <stdlib.h>
 #include "../_rt/gg_static_assert.h"
@@ -3314,10 +3325,38 @@ PacketClass::PacketClass(char* pBuffer)
     }
 }
 
+// FUNCTION: GAMEMD 0x626020
+ColorTableFill_00626020::ColorTableFill_00626020(const ColorRGB_00661350& fill)
+{
+    for (int i = 0; i < 256; i++) {
+        Colors[i] = fill;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x626070
 ColorTable_00626070::ColorTable_00626070(const ColorTable_00626070& other)
 {
     *this = other;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6260D0
+ColorTableFill_00626020& ColorTableFill_00626020::operator=(const ColorTableFill_00626020& other)
+{
+    if (this != &other) {
+        memcpy(this, &other, sizeof(*this));
+    }
+    return *this;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6260F0
+void ColorTable_00626070::FUN_006260F0(int ratio)
+{
+    for (int i = 0; i < 256; i++) {
+        Colors[i].Blend(ratio, DAT_00A83CD9);
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

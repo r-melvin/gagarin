@@ -452,6 +452,51 @@ int Obj_005F1EA0::FUN_005F1EC0()
     return 0;
 }
 
+#include "transport/conn_types.h"
+
+// Link to the connection's packet queue (CommBufferClass, layout in transport/conn_types.h).
+struct Link_005F1EE0 {
+    int unknown_00;
+    CommBufferClass* unknown_04;
+};
+GG_STATIC_ASSERT(offsetof(Link_005F1EE0, unknown_04) == 0x4);
+
+struct Obj_005F1EE0 {
+    unsigned char unknown_00[0x38];
+    Link_005F1EE0* unknown_38;
+    unsigned long FUN_005F1EE0();
+    void FUN_005F1F00(int a1);
+    void FUN_005F1F70(int a1, int a2, int a3, int a4, int a5, int a6);
+    int FUN_005F35D0();
+    int FUN_005F35F0();
+    int FUN_005F3610(int a1);
+    int FUN_005F3630(int a1);
+};
+GG_STATIC_ASSERT(offsetof(Obj_005F1EE0, unknown_38) == 0x38);
+
+// FUNCTION: GAMEMD 0x005F1EE0
+// Returns the packet queue's value at CommBufferClass 0x48BA80, or zero without a link.
+unsigned long Obj_005F1EE0::FUN_005F1EE0()
+{
+    if (unknown_38)
+        return unknown_38->unknown_04->FUN_0048BA80();
+    return 0;
+}
+// FUNCTION: GAMEMD 0x005F1F00
+// Resets the packet queue's counters (CommBufferClass 0x48BAA0 with true); the argument is unused.
+void Obj_005F1EE0::FUN_005F1F00(int a1)
+{
+    if (unknown_38)
+        unknown_38->unknown_04->FUN_0048BAA0(true);
+}
+// FUNCTION: GAMEMD 0x005F1F70
+// Forwards five of its six arguments to CommBufferClass 0x48BAD0; the first is unused.
+void Obj_005F1EE0::FUN_005F1F70(int a1, int a2, int a3, int a4, int a5, int a6)
+{
+    if (unknown_38)
+        unknown_38->unknown_04->FUN_0048BAD0(a2, a3, a4, a5, a6);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005f3170
 // Hangs up the modem: probes it with "AT" (twice, toggling the line between),
@@ -544,5 +589,45 @@ int Obj_005F3520::FUN_005F3520(int a1) const
 // Returns zero; pops its stack arguments. Vtable slot 6 of NullModemClass (RTTI).
 int Obj_005F3530::FUN_005F3530(int a1) const
 {
+    return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5F35D0
+// Reads CommBufferClass +0x28 of the linked queue, or zero without a link.
+int Obj_005F1EE0::FUN_005F35D0()
+{
+    if (unknown_38)
+        return unknown_38->unknown_04->unknown_28;
+    return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5F35F0
+// Reads CommBufferClass +0x38 of the linked queue, or zero without a link.
+int Obj_005F1EE0::FUN_005F35F0()
+{
+    if (unknown_38)
+        return unknown_38->unknown_04->unknown_38;
+    return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5F3610
+// As 0x5F35D0 with one unused argument.
+int Obj_005F1EE0::FUN_005F3610(int a1)
+{
+    if (unknown_38)
+        return unknown_38->unknown_04->unknown_28;
+    return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5F3630
+// As 0x5F35F0 with one unused argument.
+int Obj_005F1EE0::FUN_005F3630(int a1)
+{
+    if (unknown_38)
+        return unknown_38->unknown_04->unknown_38;
     return 0;
 }
