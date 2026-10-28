@@ -194,6 +194,7 @@ class MSBinkPlayer
 {
 public:
     ~MSBinkPlayer();                     // FUNCTION: GAMEMD 0x432700 (decl)
+    bool IsDone();                       // FUNCTION: GAMEMD 0x432C50 (decl)
 };
 
 // The VQA playback object held by MSVQAnim. Retail stops it and then deletes
@@ -553,6 +554,7 @@ public:
     virtual void  ResumeTimerSlot();                     // slot 3
     virtual bool  Update(int context, struct MSRect* out);  // slot 4
     virtual void  Draw(int context, struct MSRect* area);   // slot 5
+    virtual struct MSRect GetRectSlot();                    // slot 6
 
     int          Field04;    // +0x04
     int          Field08;    // +0x08
@@ -625,11 +627,37 @@ GG_STATIC_ASSERT(offsetof(MSAnimVector, Vector) == 0x04
 // flag at +0x3C; 0x5CEB83 loads the pointer, 0x5CEB90 tests the flag, and the
 // release nulls both. The 0x20..0x3B gap is the shape's own bookkeeping, which
 // no function in this file reads.
+// The decoded shape file MSShapeAnim owns at +0x1C: a short header carrying
+// the frame size and count, read at +2/+4/+6 by the animation's members.
+struct MSShapeFile
+{
+    short Unknown0;   // +0x00
+    short Width;      // +0x02
+    short Height;     // +0x04
+    short Frames;     // +0x06
+
+    // FUNCTION: GAMEMD 0x69E7E0 (decl; reloc) -- the rectangle of one frame,
+    // written to the caller's buffer and handed back.
+    struct MSRect* GetFrameRect(struct MSRect* out, unsigned int frame);
+};
+GG_STATIC_ASSERT(offsetof(MSShapeFile, Width) == 2 && offsetof(MSShapeFile, Frames) == 6);
+
+// FUNCTION: GAMEMD 0x4A3970 (decl; reloc) -- load a shape by name; the
+// ownership flag arrives in EDX and is cleared before the lookup.
+MSShapeFile* __fastcall MSLoadShape(const char* name, bool* owned);
+
 class MSShapeAnim : public MSAnim
 {
 public:
-    void* Buffer;            // +0x1C
-    char  unknown_20[0x1C];  // +0x20
+    MSShapeFile* Buffer;     // +0x1C
+    int   Field20;           // +0x20
+    int   Field24;           // +0x24
+    unsigned int Frame;      // +0x28 current frame
+    int   Field2C;           // +0x2C
+    int   LastFrame;         // +0x30 frame count minus one
+    bool  Field34;           // +0x34
+    char  unknown_35[3];
+    unsigned int Flags;      // +0x38 (bit 9: centre on the frame)
     bool  OwnsBuffer;        // +0x3C
 
     // The shape animation's release: hand the decoded buffer back only when
@@ -646,7 +674,15 @@ public:
     }
 
     void* DeletingDtor(unsigned int f);   // 0x5CEB80
+
+    // 0x5CB790 -- jump to a frame, redrawing the area it covers.
+    void SetFrame(unsigned int frame);
+    // 0x5CBCB0, slot 6 -- the current frame's rectangle on the screen.
+    MSRect GetRectSlot();
 };
+GG_STATIC_ASSERT(offsetof(MSShapeAnim, Frame) == 0x28
+              && offsetof(MSShapeAnim, LastFrame) == 0x30
+              && offsetof(MSShapeAnim, Flags) == 0x38);
 GG_STATIC_ASSERT(sizeof(MSShapeAnim) == 0x40
               && offsetof(MSShapeAnim, Buffer) == 0x1C
               && offsetof(MSShapeAnim, OwnsBuffer) == 0x3C);
