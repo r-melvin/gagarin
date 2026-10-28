@@ -101270,5 +101270,221 @@
   "name": "TechnoTypeClass::vf_46",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC170",
+  "sym": "_$E1",
+  "len": "0x28",
+  "name": "dynamic initializer (DAT_00AC1530)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC1E0",
+  "sym": "_$E4",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AC15B8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC200",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AC1538)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC220",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AC1510)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC240",
+  "sym": "_$E13",
+  "len": "0x31",
+  "name": "dynamic initializer (DAT_00AC15E0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC280",
+  "sym": "_$E16",
+  "len": "0x21",
+  "name": "dynamic initializer (DAT_00AC1540)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC2B0",
+  "sym": "_$E19",
+  "len": "0x2c",
+  "name": "dynamic initializer (DAT_00AC1580)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC2E0",
+  "sym": "_$E22",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_00AC15D4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC310",
+  "sym": "_$E25",
+  "len": "0xf",
+  "name": "dynamic initializer (DAT_00AC1528)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC320",
+  "sym": "_$E28",
+  "len": "0x12",
+  "name": "dynamic initializer (DAT_00AC1570)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC340",
+  "sym": "_$E31",
+  "len": "0x1a",
+  "name": "dynamic initializer (DAT_00AC15C8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FC360",
+  "sym": "_$E34",
+  "len": "0x17",
+  "name": "dynamic initializer (DAT_00AC1518)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu168_overlay_statics.cpp",
+  "addr": "0x5FE040",
+  "sym": "_$E37",
+  "len": "0x17",
+  "name": "dynamic initializer (DAT_00AC15F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE060",
+  "sym": "_$E1",
+  "len": "0x28",
+  "name": "dynamic initializer (DAT_00AC1610)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE0D0",
+  "sym": "_$E4",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AC1648)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE0F0",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AC1618)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE110",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AC15F0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE130",
+  "sym": "_$E13",
+  "len": "0x31",
+  "name": "dynamic initializer (DAT_00AC1670)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE170",
+  "sym": "_$E16",
+  "len": "0x21",
+  "name": "dynamic initializer (DAT_00AC1620)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE1A0",
+  "sym": "_$E19",
+  "len": "0x2c",
+  "name": "dynamic initializer (DAT_00AC1638)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE1D0",
+  "sym": "_$E22",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_00AC1664)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE200",
+  "sym": "_$E25",
+  "len": "0xf",
+  "name": "dynamic initializer (DAT_00AC1608)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE210",
+  "sym": "_$E28",
+  "len": "0x12",
+  "name": "dynamic initializer (DAT_00AC1628)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/tu169_overlay_type_statics.cpp",
+  "addr": "0x5FE230",
+  "sym": "_$E31",
+  "len": "0x1a",
+  "name": "dynamic initializer (DAT_00AC1658)",
+  "status": "matched",
+  "pct": 100
  }
 ]
