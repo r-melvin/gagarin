@@ -27,6 +27,10 @@ struct EventQueue
     // EventQueue<128>::FUN_00652540
     int FUN_00652540();
 
+    // FUNCTION: GAMEMD 0x4F1AA0
+    // EventQueue<128>::FUN_004F1AA0 -- append one event; false when the queue is full.
+    int FUN_004F1AA0(const EventQueueItem* item);
+
     EventQueue()
     {
         Count = 0;

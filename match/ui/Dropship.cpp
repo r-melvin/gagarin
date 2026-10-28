@@ -243,6 +243,25 @@ void List_004B69B0::SwizzlePointers()
     }
 }
 
+// FUNCTION: GAMEMD 0x4B6BF0
+// Index of the scenario table row that holds `entry` and is still in use, or -1.
+int __fastcall FUN_004B6BF0(Entry_004B6AB0* entry)
+{
+    int n = DAT_00A8B230->CountA;
+    if (n != 0) {
+        int i = 0;
+        if (0 < n) {
+            do {
+                if (DAT_00A8B230->ItemsA[i] == entry && DAT_00A8B230->ItemsB[i] != -1) {
+                    return i;
+                }
+                i++;
+            } while (i < n);
+        }
+    }
+    return -1;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B9BE0
 // DynamicVectorClass<ButtonFadeEffect*>::Clear
