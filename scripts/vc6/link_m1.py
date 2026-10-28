@@ -13,6 +13,14 @@ linked address and size with the manifest.
 The image is a layout probe. It does not run (stubs are int3) and it is never
 evidence of identity with the retail executable.
 
+--hybrid (M2) builds a runnable image instead. It reads the pinned retail image
+($GAMEMD_BINARY) while it builds and writes only under build-vc6/ (the output is
+ignored by git and must never be committed): unmatched code, gaps and the unidentified
+end of .text take retail's bytes, matched bodies that differ from retail give their slot
+back, and a data object (hybrid.py) supplies .rdata, .data (with the .bss extent), the
+import tables and .rsrc at their retail addresses. Everything matched code references is
+pinned to those addresses. scripts/vc6/compare_image.py compares the result with retail.
+
 Usage:
   scripts/vc6/build_project.py --out OBJDIR
   scripts/vc6/link_m1.py --objdir OBJDIR [--out DIR]
@@ -24,6 +32,7 @@ from pathlib import Path
 import subprocess
 import sys
 
+import hybrid as hybrid_module
 import implib
 import link_diag
 import mapcheck
@@ -68,12 +77,13 @@ def library_symbols(extra=()):
     return names
 
 
-def link(objects, libs, out):
+def link(objects, libs, out, includes=()):
     vc6, env = link_diag.toolenv()
     wp = link_diag.wine_path
     rsp = out / "link.rsp"
     lines = LINK_FLAGS + ["/ORDER:@" + wp(out / "stubs/order.txt"), "/OUT:" + wp(out / "m1.exe"),
                           "/MAP:" + wp(out / "m1.map")]
+    lines += [f"/INCLUDE:{n}" for n in includes]
     lines += [f'"{wp(o)}"' for o in objects] + [f'"{wp(l)}"' if "/" in str(l) else l for l in libs]
     rsp.write_text("\r\n".join(lines) + "\r\n", encoding="latin-1")
     proc = subprocess.run(["wine", str(vc6 / "VC98/Bin/LINK.EXE"), "@" + wp(rsp)], env=env,
@@ -83,8 +93,14 @@ def link(objects, libs, out):
     return proc.returncode, log
 
 
-def run(objdir, out, pin_data=False, order_tail=False):
+def run(objdir, out, pin_data=False, order_tail=False, hybrid=False):
     out.mkdir(parents=True, exist_ok=True)
+    retail = None
+    if hybrid:
+        pin_data = order_tail = True
+        retail = hybrid_module.Retail(pindata.retail_path())
+        data_obj, data_layout = hybrid_module.data_object(retail)
+        (out / "hybrid_data.obj").write_bytes(data_obj)
     bink = out / "binkw32.lib"
     implib.build_from_def(ROOT / "scripts/vc6/binkw32.def", bink)
     library_names = library_symbols([bink])
@@ -98,15 +114,20 @@ def run(objdir, out, pin_data=False, order_tail=False):
     for _ in range(MAX_ROUNDS):
         vc6, _ = link_diag.toolenv()
         result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data, pin_plan=pin_plan,
-                              order_tail=order_tail, libdir=vc6 / "VC98/Lib")
-        code, log = link(result["objects"], library_order(bink), out)
+                              order_tail=order_tail, libdir=vc6 / "VC98/Lib", retail=retail)
+        objects = result["objects"]
+        includes = ()
+        if hybrid:
+            objects = [out / "hybrid_data.obj"] + objects
+            includes = result["order_symbols"]
+        code, log = link(objects, library_order(bink), out, includes)
         unresolved, duplicates = link_diag.parse_link_log(log)
         rounds.append({"exit": code, "unresolved": len(unresolved), "duplicates": len(duplicates)})
         new = set(unresolved) - extra
         if not new:
             break
         extra |= new
-    summary = {k: v for k, v in result.items() if k not in ("placed", "objects")}
+    summary = {k: v for k, v in result.items() if k not in ("placed", "objects", "order_symbols")}
     summary.update({"rounds": rounds, "link_exit_code": code, "unresolved_after_stubs": len(unresolved),
                     "unresolved_symbols": sorted(unresolved), "duplicates": sorted(duplicates),
                     "warnings": sorted({l.strip() for l in log.splitlines() if "warning LNK" in l})[:200]})
@@ -126,9 +147,14 @@ def main(argv=None):
     ap.add_argument("--order-tail", action="store_true",
                     help="M2: place the library tail (import thunks, CRT, COMSUPP, LIBCPMT) at retail "
                          "addresses from scripts/data/crt_tail_layout.json")
+    ap.add_argument("--hybrid", action="store_true",
+                    help="M2: runnable image (implies --pin-data --order-tail): unmatched code and all data, "
+                         "the resources and the import tables take their bytes from $GAMEMD_BINARY at build time")
     args = ap.parse_args(argv)
     out = args.out.resolve()
-    summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail)
+    if args.hybrid and ROOT / "build-vc6" not in out.parents and out != ROOT / "build-vc6":
+        ap.error("--hybrid embeds bytes of the retail image in its outputs: --out must be under build-vc6/")
+    summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail, hybrid=args.hybrid)
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")

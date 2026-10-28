@@ -45,8 +45,10 @@ import sys
 from pathlib import Path
 
 import coffgen
+import hybrid as hybrid_module
 import pindata
 import taillink
+from verify_vtable import VerifyError, parse_coff
 from coff_equivalence import plan_folds
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -167,7 +169,12 @@ def order_name(sym):
 
 
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
-         pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None):
+         pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None, retail=None):
+    hybrid = retail is not None   # hybrid.Retail: stubs carry retail bytes, leftovers leave the image
+
+    def code_fill(va, size):
+        return retail.fill(va, size) if hybrid else 0xCC
+
     index = json.loads((objdir / "objects.json").read_text())
     objects = [objdir / o["object"] for o in index["objects"]]
     if manifest is None:
@@ -208,6 +215,16 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     for path in objects:
         statics_in[path] = {name for _, name, _, sec, scl, _ in coffgen.read_symbols(path.read_bytes())
                             if scl == 3 and sec > 0}
+    parsed_cache = {}
+
+    def parsed_of(path):
+        if path not in parsed_cache:
+            try:
+                parsed_cache[path] = parse_coff(path)
+            except VerifyError:
+                parsed_cache[path] = None
+        return parsed_cache[path]
+
     by_addr = {}
     for r in manifest:
         by_addr.setdefault(hx(r["addr"]), []).append(r)
@@ -223,7 +240,12 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
                 continue
             obj = tu_object.get(r["tu"])
             sym = r["sym"]
-            if sym in defined_in and sym not in used:
+            # hybrid: a name several TUs define (implicit members such as a scalar deleting destructor, COMDAT
+            # ANY) may have different bodies; LINK keeps the first, so the row's own body takes a unique name.
+            shared = hybrid and obj is not None and obj in defined_in.get(sym, ()) and len(defined_in[sym]) > 1 \
+                and any(hybrid_module.function_matches(parsed_of(other), sym, va, hx(r["len"]), retail) is False
+                        for other in defined_in[sym] if other != obj)
+            if sym in defined_in and sym not in used and not shared:
                 provider[va] = sym
             elif obj is not None and sym in statics_in.get(obj, ()):
                 provider[va] = f"?static_{va:08X}@@YAXXZ"
@@ -244,6 +266,29 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             used.add(sym)
             provider_rows[va] = r
             break
+
+    demoted, trims, trimmed = [], {}, {}
+    if hybrid:
+        # A compiled body that is not byte-identical to retail's (outside relocation sites) must not
+        # take the slot: the image runs it in retail's place. Those slots get retail's bytes.
+        for va in sorted(provider):
+            row = provider_rows[va]
+            obj = tu_object.get(row["tu"])
+            if obj is None or parsed_of(obj) is None:
+                continue
+            if hybrid_module.function_matches(parsed_of(obj), row["sym"], va, hx(row["len"]), retail) is False:
+                demoted.append({"addr": f"0x{va:X}", "symbol": row["sym"]})
+                del provider[va]
+                del provider_rows[va]
+        for va, name in provider.items():
+            row = provider_rows[va]
+            obj = tu_object.get(row["tu"])
+            if obj is None or len(defined_in.get(row["sym"], [obj])) > 1 and name == row["sym"]:
+                continue
+            cut = hybrid_module.pad_trim(parsed_of(obj), row["sym"], va, hx(row["len"]), retail)
+            if cut:
+                trims.setdefault(obj, []).append(cut)
+                trimmed[va] = cut[1]
 
     # Model explicit same-address COMDAT sharing only after full code and
     # relocation equivalence to an existing matched provider is established.
@@ -303,7 +348,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         if va in provider:
             sym = provider[va]
             order.append(sym)
-            size = comdat_size.get(sym, 0)
+            size = trimmed.get(va, comdat_size.get(sym, 0))
             placed.append({"addr": f"0x{va:X}", "symbol": sym, "kind": "matched", "len": e[1],
                            "object_size": f"0x{size:X}"})
             if size > slot:
@@ -313,11 +358,11 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
                 oversize.append({"addr": f"0x{va:X}", "symbol": sym, "object_size": f"0x{size:X}",
                                  "retail_slot": f"0x{slot:X}"})
                 debt += size - slot
-            elif size < slot and (va + slot) % 16 or slot - size >= 16 or e[3] == "mixed":
+            elif size < slot and (va + slot) % 16 or slot - size >= 16 or e[3] == "mixed" or va in trimmed:
                 # Retail keeps bytes after this function that the compiled COMDAT
                 # (padded to 16) does not cover: hold their place with a filler.
                 filler = f"?gap_{va:08X}@@YAXXZ"
-                writer.add_code_comdat([filler], slot - size, 1)
+                writer.add_code_comdat([filler], slot - size, 1, fill=code_fill(va + size, slot - size))
                 order.append(filler)
                 placed.append({"addr": f"0x{va + size:X}", "symbol": filler, "kind": "filler",
                                "len": f"0x{slot - size:X}"})
@@ -333,7 +378,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         if debt:
             paid = min(debt, slot - 1)
             slot, align, debt = slot - paid, 1, debt - paid
-        writer.add_code_comdat(names, slot, align)
+        writer.add_code_comdat(names, slot, align, fill=code_fill(va, slot))
         stub_names.update(names)
         order.append(key)
         placed.append({"addr": f"0x{va:X}", "symbol": key, "kind": "stub", "len": f"0x{slot:X}",
@@ -344,17 +389,45 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         tail_plan = taillink.plan_tail(tail_layout, libdir or (ROOT / "toolchain/MSVC600/VC98/Lib"),
                                   engine_end, out / "tail")
         for name, size in tail_plan["fillers"]:
-            writer.add_code_comdat([name], size, 1)
+            writer.add_code_comdat([name], size, 1, fill=code_fill(int(name[9:17], 16), size) if hybrid else 0xCC)
         order.extend(tail_plan["order"])
         stub_names.update(n for n, _ in tail_plan["fillers"])
+        if hybrid and retail.text_end() > tail_plan["end"]:
+            # Retail's .text continues past the last identified library section (code the toolchain
+            # libraries do not explain); the image keeps its bytes so .rdata begins where retail's does.
+            rest = retail.text_end() - tail_plan["end"]
+            writer.add_code_comdat(["?hybrid_text_end@@YAXXZ"], rest, 1, fill=code_fill(tail_plan["end"], rest))
+            order.append("?hybrid_text_end@@YAXXZ")
+            stub_names.add("?hybrid_text_end@@YAXXZ")
         # Matched code can call a library name whose retail target is a different, identical body
         # (memmove calls land on memcpy's code), or a name the ordering does not place (an OLDNAMES alias such as
         # remove): pin such names to what the call sites say.
         placed_at = {name: va for va, name in tail_plan["names_at"].items()}
+        if hybrid:
+            # Import thunks come from the image, not from the import libraries (whose members would
+            # bring their own import tables): same name, same 6 bytes, and the __imp_ slot as an absolute.
+            for name, addr in tail_plan["thunks"]:
+                body = retail.fill(addr, 6)
+                writer.add_code_comdat([name], 6, 1, fill=body)
+                writer.add_absolute("__imp_" + name, struct.unpack_from("<I", body, 2)[0])
+                stub_names.add(name)
+            tail_copies = {}
+            for sec in tail_layout["sections"]:
+                path = out / "tail" / f"{sec['library'].split('.')[0].lower()}_{sec['member_index']:04d}.obj"
+                if path in tail_plan["objects"]:
+                    tail_copies.setdefault(path, []).append((sec["section"], hx(sec["addr"]), sec["len"]))
+            tail_pins, tail_calls, tail_conflicts, tail_sites = pindata.derive_tail(list(tail_copies.items()), retail.pe,
+                                                                         retail.sections)
+            for name, va in tail_calls.items():
+                call_names.setdefault(name, va)
         if pin_plan:
-            lo, hi = taillink.first_address(tail_layout), tail_plan["end"]
-            moved = {n: va for n, va in call_names.items() if lo <= va < hi and placed_at.get(n) != va
-                     and n in library_names and n not in pin_plan["global"]}
+            lo, hi = taillink.first_address(tail_layout), (retail.text_end() if hybrid else tail_plan["end"])
+            if hybrid:   # retail is the reference: every called name that derives to one address is bound to it
+                lo = TEXT[0]
+                moved = {n: va for n, va in call_names.items() if lo <= va < hi and n not in pin_plan["global"]}
+            else:
+                moved = {n: va for n, va in call_names.items() if lo <= va < hi and placed_at.get(n) != va
+                         and n in library_names and n not in pin_plan["global"]}
             pin_plan["global"].update(moved)
             pin_plan["report"]["call_pins_for_library_names"] = {n: f"0x{va:X}" for n, va in sorted(moved.items())}
 
@@ -386,7 +459,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             counts["aliases"] += 1
         elif sec == ".text":
             writer.add_code_comdat([sym], max(ext_len.get(va, UNKNOWN_CODE_SIZE), 1), 16 if va % 16 == 0 else 1,
-                                   section=TAIL)
+                                   section=".text" if hybrid else TAIL)
             counts["code_bound_unordered"] += 1
         elif sec is not None and pin_data:
             writer.add_absolute(sym, va)
@@ -396,7 +469,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             writer.add_common(sym, nxt - va)
             counts["data_bound"] += 1
         elif looks_like_function(sym, called):
-            writer.add_code_comdat([sym], UNKNOWN_CODE_SIZE, section=TAIL)
+            writer.add_code_comdat([sym], UNKNOWN_CODE_SIZE, section=".text" if hybrid else TAIL)
             counts["code_unbound"] += 1
             unbound["function"].append(sym)
         else:
@@ -404,12 +477,14 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             counts["data_unbound"] += 1
             unbound["data"].append(sym)
 
-    writer.set_anchor(order)
+    if not hybrid:   # hybrid: link_m1 passes /INCLUDE instead, so no table lands in the image
+        writer.set_anchor(order)
     out.mkdir(parents=True, exist_ok=True)
     link_objects = []
     renamed_total = 0
     order_set = set(order)
     tail_sections = 0
+    removed_sections = 0
     pinned_definitions = 0
     pinned_symbols = 0
     # M2 data pinning: project definitions of bound globals become absolute symbols at
@@ -447,7 +522,15 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             off = 20 + 40 * (idx - 1)
             if data[off:off + 8].rstrip(b"\0") == b".text" and not order_set.intersection(names):
                 tail[idx] = TAIL
-        if tail:
+        for secidx, size in trims.get(path, ()):
+            data = coffgen.truncate_section(data, secidx, size)
+            changed = True
+        if hybrid:
+            data, gone = hybrid_module.harden(data, order_set, re.sub(r'\W', '_', path.stem))
+            if gone:
+                removed_sections += len(gone)
+                changed = True
+        elif tail:
             data = coffgen.set_section_names(data, tail)
             tail_sections += len(tail)
             changed = True
@@ -458,8 +541,36 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             link_objects.append(target)
         else:
             link_objects.append(path)
+    if hybrid:
+        tail_plan_pins = {"object": tail_pins, "site": tail_sites, "global": pin_plan["global"], "comdat": {},
+                          "rejected": pin_plan["rejected"]} if tail_plan else None
+        for path in tail_plan["objects"] if tail_plan else ():
+            data, k, pins = pindata.retarget_object(path, path.read_bytes(), tail_plan_pins)
+            retail_pins.update(pins)
+            pinned_symbols += k
+            data, gone = hybrid_module.harden(data, order_set, re.sub(r'\W', '_', path.stem))
+            removed_sections += len(gone)
+            path.write_bytes(data)
     for name, va in sorted(retail_pins.items()):
         writer.add_absolute(name, va)
+    leftover = []
+    if hybrid:
+        # Archive members are pulled for every undefined name, however dead the referencing section
+        # is, and a pulled member's own sections are roots. Give each library name that is still
+        # undefined a placeholder of our own (a droppable COMDAT at the very end of .text: /OPT:REF
+        # discards it unless retained code still references it, and then it shows in the map).
+        defined_final, undefined_final = set(), set()
+        for path in link_objects + (tail_plan["objects"] if tail_plan else []):
+            d, u, _, _ = object_symbols(path)
+            defined_final |= d
+            undefined_final |= u
+            defined_final |= {n for _, n, _, sec, scl, _ in coffgen.read_symbols(path.read_bytes())
+                              if scl == 2 and sec == -1}
+        have = {n for sec in writer.sections for n in sec[3]} | {n for n, _ in writer.commons} \
+            | {n for n, _ in writer.absolutes} | {n for n, _ in writer.aliases}
+        leftover = sorted((undefined_final - defined_final - have) & library_names)
+        for name in leftover:
+            writer.add_code_comdat([name], UNKNOWN_CODE_SIZE, 1, section=".text" if hybrid else TAIL)
     (out / "stubs.obj").write_bytes(writer.build())
     if tail_plan:
         link_objects.extend(tail_plan["objects"])
@@ -476,6 +587,11 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "renamed_definitions": renamed_total,
         "renamed_objects": len(rename),
         "project_code_sections_moved_to_tail": tail_sections,
+        "sections_made_droppable": removed_sections,
+        "hybrid_rows_demoted_to_retail_bytes": demoted,
+        "hybrid_padding_trimmed": [f"0x{va:X}" for va in sorted(trimmed)],
+        "library_names_stubbed": leftover,
+        "order_symbols": order,
         "binding_conflicts": conflicts,
         "collocated_comdats": folded,
         "collocated_comdats_rejected": fold_rejected,
@@ -489,6 +605,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "pinned_relocations": pinned_symbols,
         "pin_symbols_defined": len(retail_pins),
         "pin_report": pin_plan["report"] if pin_plan else None,
+        "tail_pin_conflicts": tail_conflicts if tail_plan and hybrid else None,
         "unbound": unbound,
         "placed": placed,
         "objects": [str(p) for p in link_objects],
