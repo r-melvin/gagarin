@@ -108,21 +108,18 @@ extern const char DAT_0084566C[] = "MSG:Elite";
 // Win32 import reached through the IAT (`CALL dword ptr [0x007E1530]`).
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
-// FUNCTION: GAMEMD 0x7307B0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_007307B0()
 {
     DAT_00B0FE48 = DAT_00B0FDF8 / DAT_007F5C08;
 }
 
-// FUNCTION: GAMEMD 0x7307D0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_007307D0()
 {
     DAT_00B0FE30 = DAT_007E1718 / DAT_00B0FE48;
 }
 
-// FUNCTION: GAMEMD 0x730950
 // Static-initialiser shape: stores constants to adjacent globals.
 void __cdecl FUN_00730950()
 {

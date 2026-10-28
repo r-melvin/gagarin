@@ -26,6 +26,8 @@ struct RadarButtonStatics {
 
 RadarGadgetPlaceholder_00B04A10 RadarButtonStatics::Gadget_00B04A10;
 // SYNTHETIC: GAMEMD 0x006528D0 -- initialiser of RadarButtonF2_00B04978
+// SYNTHETIC: GAMEMD 0x006528F0 -- exit-time destructor stub of RadarButtonF2_00B04978
 ShapeButtonClass RadarButtonStatics::RadarButtonF2_00B04978;
 // SYNTHETIC: GAMEMD 0x00652920 -- initialiser of RadarButtonF3_00B04910
+// SYNTHETIC: GAMEMD 0x00652940 -- exit-time destructor stub of RadarButtonF3_00B04910
 ShapeButtonClass RadarButtonStatics::RadarButtonF3_00B04910;

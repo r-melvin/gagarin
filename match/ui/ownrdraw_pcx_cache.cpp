@@ -14,4 +14,5 @@ public:
 
 // GLOBAL: GAMEMD 0xAC4848
 // SYNTHETIC: GAMEMD 0x600550 -- exit-time destructor thunk
+// SYNTHETIC: GAMEMD 0x00600530 -- initialiser of DAT_00AC4848
 StringHashTable_00AC4848 DAT_00AC4848;

@@ -30,12 +30,17 @@ struct SidebarButtonStatics {
 };
 
 // SYNTHETIC: GAMEMD 0x006A4C60 -- initialiser of SellButton_00B07DF8
+// SYNTHETIC: GAMEMD 0x006A4C80 -- exit-time destructor stub of SellButton_00B07DF8
 ShapeButtonClass SidebarButtonStatics::SellButton_00B07DF8;
 // SYNTHETIC: GAMEMD 0x006A4CA0 -- initialiser of RepairButton_00B0B3A0
+// SYNTHETIC: GAMEMD 0x006A4CC0 -- exit-time destructor stub of RepairButton_00B0B3A0
 ShapeButtonClass SidebarButtonStatics::RepairButton_00B0B3A0;
 // SYNTHETIC: GAMEMD 0x006A4CE0 -- initialiser of ButtonArray_00B07C48
+// SYNTHETIC: GAMEMD 0x006A4D10 -- exit-time destructor stub of ButtonArray_00B07C48
 ShapeButtonClass SidebarButtonStatics::ButtonArray_00B07C48[4];
 // SYNTHETIC: GAMEMD 0x006A4D40 -- initialiser of Button_00B0B328
+// SYNTHETIC: GAMEMD 0x006A4D60 -- exit-time destructor stub of Button_00B0B328
 ShapeButtonClass SidebarButtonStatics::Button_00B0B328;
 // SYNTHETIC: GAMEMD 0x006A4D80 -- initialiser of Button_00B0B408
+// SYNTHETIC: GAMEMD 0x006A4DA0 -- exit-time destructor stub of Button_00B0B408
 ShapeButtonClass SidebarButtonStatics::Button_00B0B408;

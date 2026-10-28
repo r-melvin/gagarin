@@ -9,4 +9,5 @@
 
 // GLOBAL: GAMEMD 0xAC4F58
 // SYNTHETIC: GAMEMD 0x6429A0 -- exit-time destructor thunk
+// SYNTHETIC: GAMEMD 0x00642980 -- initialiser of DAT_00AC4F58
 ProgressScreenClass DAT_00AC4F58;

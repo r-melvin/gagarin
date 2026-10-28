@@ -11,4 +11,5 @@ class TemporalClass;
 
 // GLOBAL: GAMEMD 0x00B0EC60
 // SYNTHETIC: GAMEMD 0x0071A410 -- exit-time destructor stub of DAT_00B0EC60
+// SYNTHETIC: GAMEMD 0x0071A3D0 -- initialiser of DAT_00B0EC60
 DynamicVectorClass<TemporalClass*> DAT_00B0EC60;

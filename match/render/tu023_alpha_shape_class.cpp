@@ -483,6 +483,7 @@ struct HWND__;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x00420920 -- exit-time destructor stub of DAT_0088A0F0
+// SYNTHETIC: GAMEMD 0x004208E0 -- initialiser of DAT_0088A0F0
 DynamicVectorClass<AlphaShapeClass*> DAT_0088A0F0;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

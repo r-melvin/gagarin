@@ -66,13 +66,11 @@ extern const double DAT_007F5418;
 // GLOBAL: GAMEMD 0xB0ED80
 extern double DAT_00B0ED80;
 
-// SYNTHETIC: GAMEMD 0x0071D3C0
 // dynamic initializer for DAT_00B0F140
 
 // GLOBAL: GAMEMD 0x00B0F140
 extern double DAT_00B0F140;
 
-// SYNTHETIC: GAMEMD 0x0071D3E0
 // dynamic initializer for DAT_00B0EDB8
 
 // GLOBAL: GAMEMD 0x00B0EDB8

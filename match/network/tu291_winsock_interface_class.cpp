@@ -139,13 +139,11 @@ static inline void DiscardQueue(WinsockInterfaceClass::WinsockBufferType**& item
 // STRING: GAMEMD 0x84DEA4 "Async select failed on primary socket - error code %d.\n"
 // STRING: GAMEMD 0x84DE68 "Async select failed on alternate socket - error code %d.\n"
 
-// SYNTHETIC: GAMEMD 0x007B1800
 // dynamic initializer for DAT_00B78090
 
 // GLOBAL: GAMEMD 0x00B78090
 extern double DAT_00B78090;
 
-// SYNTHETIC: GAMEMD 0x007B1820
 // dynamic initializer for DAT_00B78078
 
 // GLOBAL: GAMEMD 0x00B78078

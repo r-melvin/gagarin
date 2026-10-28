@@ -69,21 +69,18 @@ extern double DAT_00B1D0B0;
 // Native error helper at 0x7DC720; the Unit call passes 0x80004003.
 void __stdcall FUN_007DC720(unsigned int hr);
 
-// FUNCTION: GAMEMD 0x7351B0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_007351B0()
 {
     DAT_00B1D0B0 = DAT_00B1CFD0 / DAT_007F5C28;
 }
 
-// FUNCTION: GAMEMD 0x7351D0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_007351D0()
 {
     DAT_00B1D008 = DAT_007E1718 / DAT_00B1D0B0;
 }
 
-// FUNCTION: GAMEMD 0x735350
 // Static-initialiser shape: stores constants to adjacent globals.
 void __cdecl FUN_00735350()
 {

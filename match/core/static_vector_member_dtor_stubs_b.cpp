@@ -28,6 +28,7 @@ struct StaticVectorHolder_00A9FA60 {
     static DynamicVectorClass<const AnimClass*> DAT_00A9FA60;
 };
 // SYNTHETIC: GAMEMD 0x005395C0 -- exit-time destructor stub of DAT_00A9FA60, guard byte 0x00A9F9A9 bit 0
+// SYNTHETIC: GAMEMD 0x00539580 -- initialiser of DAT_00A9FA60
 DynamicVectorClass<const AnimClass*> StaticVectorHolder_00A9FA60::DAT_00A9FA60;
 
 struct StaticVectorHolder_00AA1078 {
@@ -35,6 +36,7 @@ struct StaticVectorHolder_00AA1078 {
     static DynamicVectorClass<IsometricTileTypeClass::TileInsertType*> DAT_00AA1078;
 };
 // SYNTHETIC: GAMEMD 0x00543EB0 -- exit-time destructor stub of DAT_00AA1078, guard byte 0x00AA0E2C bit 0
+// SYNTHETIC: GAMEMD 0x00543E70 -- initialiser of DAT_00AA1078
 DynamicVectorClass<IsometricTileTypeClass::TileInsertType*> StaticVectorHolder_00AA1078::DAT_00AA1078;
 
 struct StaticVectorHolder_00ABC878 {
@@ -42,6 +44,7 @@ struct StaticVectorHolder_00ABC878 {
     static DynamicVectorClass<LaserDrawClass*> DAT_00ABC878;
 };
 // SYNTHETIC: GAMEMD 0x0054FE00 -- exit-time destructor stub of DAT_00ABC878, guard byte 0x00ABC718 bit 0
+// SYNTHETIC: GAMEMD 0x0054FDC0 -- initialiser of DAT_00ABC878
 DynamicVectorClass<LaserDrawClass*> StaticVectorHolder_00ABC878::DAT_00ABC878;
 
 struct StaticVectorHolder_00ABCA40 {
@@ -56,6 +59,7 @@ struct StaticVectorHolder_00ABDF90 {
     static DynamicVectorClass<MapRegionClass*> DAT_00ABDF90;
 };
 // SYNTHETIC: GAMEMD 0x0058BC70 -- exit-time destructor stub of DAT_00ABDF90, guard byte 0x00ABDFB0 bit 0
+// SYNTHETIC: GAMEMD 0x0058BC30 -- initialiser of DAT_00ABDF90
 DynamicVectorClass<MapRegionClass*> StaticVectorHolder_00ABDF90::DAT_00ABDF90;
 
 // Keep this declaration at its original position: VC6 numbers guarded
@@ -63,5 +67,6 @@ DynamicVectorClass<MapRegionClass*> StaticVectorHolder_00ABDF90::DAT_00ABDF90;
 #include "object_type_registry.h"
 
 // SYNTHETIC: GAMEMD 0x005F7030 -- exit-time destructor stub of DAT_00AC1418, guard byte 0x00AC1470 bit 0
+// SYNTHETIC: GAMEMD 0x005F6FF0 -- initialiser of DAT_00AC1418
 DynamicVectorClass<ObjectTypeClass*> StaticVectorHolder_00AC1418::DAT_00AC1418;
 

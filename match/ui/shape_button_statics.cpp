@@ -22,8 +22,11 @@ struct ShapeButtonStatics {
 };
 
 // SYNTHETIC: GAMEMD 0x006CFBA0 -- initialiser of ButtonArray_00B0C1C0
+// SYNTHETIC: GAMEMD 0x006CFBD0 -- exit-time destructor stub of ButtonArray_00B0C1C0
 ShapeButtonClass ShapeButtonStatics::ButtonArray_00B0C1C0[25];
 // SYNTHETIC: GAMEMD 0x006CFC00 -- initialiser of Button_00B0CCB0
+// SYNTHETIC: GAMEMD 0x006CFC20 -- exit-time destructor stub of Button_00B0CCB0
 ShapeButtonClass ShapeButtonStatics::Button_00B0CCB0;
 // SYNTHETIC: GAMEMD 0x006CFC40 -- initialiser of Button_00B0CC40
+// SYNTHETIC: GAMEMD 0x006CFC60 -- exit-time destructor stub of Button_00B0CC40
 ShapeButtonClass ShapeButtonStatics::Button_00B0CC40;

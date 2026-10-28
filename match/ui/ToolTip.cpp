@@ -82,21 +82,18 @@ extern int DAT_00B0F580;
 // GLOBAL: GAMEMD 0xB0F588
 extern double DAT_00B0F588;
 
-// FUNCTION: GAMEMD 0x723AC0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_00723AC0()
 {
     DAT_00B0F588 = DAT_00B0F538 / DAT_007F5798;
 }
 
-// FUNCTION: GAMEMD 0x723AE0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_00723AE0()
 {
     DAT_00B0F570 = DAT_007E1718 / DAT_00B0F588;
 }
 
-// FUNCTION: GAMEMD 0x723C60
 // Static-initialiser shape: stores constants to adjacent globals.
 void __cdecl FUN_00723C60()
 {

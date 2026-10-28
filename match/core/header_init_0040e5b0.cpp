@@ -100,6 +100,7 @@ public:
 // SYNTHETIC: GAMEMD 0x40EB50 -- initialiser: DAT_00887348, registers 0x40EB80
 //   (the empty clock destructor).
 // GLOBAL: GAMEMD 0x887348
+// SYNTHETIC: GAMEMD 0x0040EB80 -- exit-time destructor stub of DAT_00887348
 HeaderTimer<GameClock> DAT_00887348;
 // SYNTHETIC: GAMEMD 0x40EB90 -- initialiser: DAT_00887328, registers 0x40EBC0.
 // SYNTHETIC: GAMEMD 0x40EBC0 -- atexit cleanup: ~TimerResolution on +0x04.

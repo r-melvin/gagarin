@@ -26,6 +26,7 @@ struct StaticVectorHolder_0088A080 {
     static DynamicVectorClass<AlphaLightingRemapClass*> DAT_0088A080;
 };
 // SYNTHETIC: GAMEMD 0x004200C0 -- exit-time destructor stub of DAT_0088A080, guard byte 0x0088A098 bit 0
+// SYNTHETIC: GAMEMD 0x00420080 -- initialiser of DAT_0088A080
 DynamicVectorClass<AlphaLightingRemapClass*> StaticVectorHolder_0088A080::DAT_0088A080;
 
 struct StaticVectorHolder_0089DE18 {
@@ -33,6 +34,7 @@ struct StaticVectorHolder_0089DE18 {
     static DynamicVectorClass<BulletClass*> DAT_0089DE18;
 };
 // SYNTHETIC: GAMEMD 0x00466320 -- exit-time destructor stub of DAT_0089DE18, guard byte 0x0089DDD0 bit 0
+// SYNTHETIC: GAMEMD 0x004662E0 -- initialiser of DAT_0089DE18
 DynamicVectorClass<BulletClass*> StaticVectorHolder_0089DE18::DAT_0089DE18;
 
 struct StaticVectorHolder_0089ECF8 {
@@ -45,6 +47,7 @@ struct StaticVectorHolder_008A3870 {
     static DynamicVectorClass<EMPulseClass*> DAT_008A3870;
 };
 // SYNTHETIC: GAMEMD 0x004C5250 -- exit-time destructor stub of DAT_008A3870, guard byte 0x008A3818 bit 0
+// SYNTHETIC: GAMEMD 0x004C5210 -- initialiser of DAT_008A3870
 DynamicVectorClass<EMPulseClass*> StaticVectorHolder_008A3870::DAT_008A3870;
 
 struct StaticVectorHolder_008B3D10 {
@@ -52,6 +55,7 @@ struct StaticVectorHolder_008B3D10 {
     static DynamicVectorClass<FoggedObjectClass*> DAT_008B3D10;
 };
 // SYNTHETIC: GAMEMD 0x004D0790 -- exit-time destructor stub of DAT_008B3D10, guard byte 0x008B3CD5 bit 0
+// SYNTHETIC: GAMEMD 0x004D0750 -- initialiser of DAT_008B3D10
 DynamicVectorClass<FoggedObjectClass*> StaticVectorHolder_008B3D10::DAT_008B3D10;
 
 struct StaticVectorHolder_00A8EFC8 {

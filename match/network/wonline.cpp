@@ -1325,22 +1325,27 @@ Wstring DAT_00B73AE0;
 
 // GLOBAL: GAMEMD 0x00B778D8
 // SYNTHETIC: GAMEMD 0x77B920 -- atexit cleanup of DAT_00B778D8 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077B900 -- initialiser of DAT_00B778D8
 Vec_00B778D8 DAT_00B778D8;
 
 // GLOBAL: GAMEMD 0x00B73E10
 // SYNTHETIC: GAMEMD 0x77B960 -- atexit cleanup of DAT_00B73E10 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077B940 -- initialiser of DAT_00B73E10
 CountedBlock DAT_00B73E10;
 
 // GLOBAL: GAMEMD 0x00B76AE0
 // SYNTHETIC: GAMEMD 0x77B9A0 -- atexit cleanup of DAT_00B76AE0 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077B980 -- initialiser of DAT_00B76AE0
 Vec_00B76AE0 DAT_00B76AE0;
 
 // GLOBAL: GAMEMD 0x00B77900
 // SYNTHETIC: GAMEMD 0x77B9E0 -- atexit cleanup of DAT_00B77900 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077B9C0 -- initialiser of DAT_00B77900
 Vec_00B77900 DAT_00B77900;
 
 // GLOBAL: GAMEMD 0x00B76520
 // SYNTHETIC: GAMEMD 0x77BA20 -- atexit cleanup of DAT_00B76520 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077BA00 -- initialiser of DAT_00B76520
 CountedBlock DAT_00B76520;
 
 // GLOBAL: GAMEMD 0xB76640
@@ -1351,54 +1356,67 @@ Table_00B76640 DAT_00B76640;
 
 // GLOBAL: GAMEMD 0x00B777A0
 // SYNTHETIC: GAMEMD 0x77C370 -- atexit cleanup of DAT_00B777A0 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C350 -- initialiser of DAT_00B777A0
 CountedStringArray DAT_00B777A0;
 
 // GLOBAL: GAMEMD 0x00B765F8
 // SYNTHETIC: GAMEMD 0x77C5A0 -- atexit cleanup of DAT_00B765F8 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C580 -- initialiser of DAT_00B765F8
 CountedStringArray DAT_00B765F8;
 
 // GLOBAL: GAMEMD 0x00B73BD8
 // SYNTHETIC: GAMEMD 0x77C600 -- atexit cleanup of DAT_00B73BD8 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C5E0 -- initialiser of DAT_00B73BD8
 CountedStringArray DAT_00B73BD8;
 
 // GLOBAL: GAMEMD 0x00B736F8
 // SYNTHETIC: GAMEMD 0x77C660 -- atexit cleanup of DAT_00B736F8 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C640 -- initialiser of DAT_00B736F8
 CountedStringArray DAT_00B736F8;
 
 // GLOBAL: GAMEMD 0x00B76B00
 // SYNTHETIC: GAMEMD 0x77C6C0 -- atexit cleanup of DAT_00B76B00 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C6A0 -- initialiser of DAT_00B76B00
 CountedStringArray DAT_00B76B00;
 
 // GLOBAL: GAMEMD 0x00B76510
 // SYNTHETIC: GAMEMD 0x77C720 -- atexit cleanup of DAT_00B76510 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C700 -- initialiser of DAT_00B76510
 CountedStringArray DAT_00B76510;
 
 // GLOBAL: GAMEMD 0x00B73AE8
 // SYNTHETIC: GAMEMD 0x77C780 -- atexit cleanup of DAT_00B73AE8 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C760 -- initialiser of DAT_00B73AE8
 CountedStringArray DAT_00B73AE8;
 
 // GLOBAL: GAMEMD 0x00B77820
 // SYNTHETIC: GAMEMD 0x77C7E0 -- atexit cleanup of DAT_00B77820 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C7C0 -- initialiser of DAT_00B77820
 CountedStringArray DAT_00B77820;
 
 // GLOBAL: GAMEMD 0x00B73708
 // SYNTHETIC: GAMEMD 0x77C840 -- atexit cleanup of DAT_00B73708 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C820 -- initialiser of DAT_00B73708
 CountedStringArray DAT_00B73708;
 
 // GLOBAL: GAMEMD 0x00B76188
 // SYNTHETIC: GAMEMD 0x77C8A0 -- atexit cleanup of DAT_00B76188 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C880 -- initialiser of DAT_00B76188
 CountedStringArray DAT_00B76188;
 
 // GLOBAL: GAMEMD 0x00B73AA8
 // SYNTHETIC: GAMEMD 0x77C900 -- atexit cleanup of DAT_00B73AA8 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C8E0 -- initialiser of DAT_00B73AA8
 CountedStringArray DAT_00B73AA8;
 
 // GLOBAL: GAMEMD 0x00B76980
 // SYNTHETIC: GAMEMD 0x77C960 -- atexit cleanup of DAT_00B76980 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C940 -- initialiser of DAT_00B76980
 CountedStringArray DAT_00B76980;
 
 // GLOBAL: GAMEMD 0x00B779B0
 // SYNTHETIC: GAMEMD 0x77C9C0 -- atexit cleanup of DAT_00B779B0 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077C9A0 -- initialiser of DAT_00B779B0
 CountedStringArray DAT_00B779B0;
 
 // GLOBAL: GAMEMD 0xB73ACC
@@ -1426,10 +1444,12 @@ int DAT_00B73E3C = DAT_0084A1D8 - DAT_0084A1D4 - 4;
 
 // GLOBAL: GAMEMD 0x00B76AD0
 // SYNTHETIC: GAMEMD 0x77CE70 -- atexit cleanup of DAT_00B76AD0 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077CE50 -- initialiser of DAT_00B76AD0
 CountedStringArray DAT_00B76AD0;
 
 // GLOBAL: GAMEMD 0x00B76970
 // SYNTHETIC: GAMEMD 0x77CED0 -- atexit cleanup of DAT_00B76970 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x0077CEB0 -- initialiser of DAT_00B76970
 CountedStringArray DAT_00B76970;
 
 // GLOBAL: GAMEMD 0xB76AC4

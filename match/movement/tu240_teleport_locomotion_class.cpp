@@ -227,11 +227,8 @@ inline bool TeleportIsFoot(TeleportFootView* object)
     return object->Flags.IsFoot;
 }
 
-// SYNTHETIC: GAMEMD 0x717E20
 
-// SYNTHETIC: GAMEMD 0x717E40
 
-// SYNTHETIC: GAMEMD 0x717FC0
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x718000

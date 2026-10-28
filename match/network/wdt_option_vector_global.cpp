@@ -13,4 +13,5 @@ typedef rc_ptr<WorldDominationTour::GameOption> OptionPtr;
 
 // GLOBAL: GAMEMD 0x00B72760
 // SYNTHETIC: GAMEMD 0x007660B0 -- exit-time destructor stub of DAT_00B72760
+// SYNTHETIC: GAMEMD 0x00766070 -- initialiser of DAT_00B72760
 DynamicVectorClass<OptionPtr> DAT_00B72760;

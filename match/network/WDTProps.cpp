@@ -39,12 +39,10 @@ extern int DAT_00B729F4;
 // GLOBAL: GAMEMD 0xB729F8
 extern int DAT_00B729F8;
 
-// SYNTHETIC: GAMEMD 0x0076BCD0
 // dynamic initializer for DAT_00B72A00
 // GLOBAL: GAMEMD 0x00B72A00
 extern double DAT_00B72A00;
 
-// SYNTHETIC: GAMEMD 0x0076BCF0
 // dynamic initializer for DAT_00B729E8
 // GLOBAL: GAMEMD 0x00B729E8
 extern double DAT_00B729E8;
@@ -52,7 +50,6 @@ extern double DAT_00B729E8;
 GG_STATIC_ASSERT(sizeof(DAT_00B72A00) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00B729E8) == 8);
 
-// FUNCTION: GAMEMD 0x76BE70
 // Static-initialiser shape: stores constants to adjacent globals.
 void __cdecl FUN_0076BE70()
 {

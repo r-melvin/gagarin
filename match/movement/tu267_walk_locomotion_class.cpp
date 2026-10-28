@@ -76,11 +76,8 @@ struct Obj_0075C7E0 {
     int FUN_0075C7E0(void*);
 };
 
-// SYNTHETIC: GAMEMD 0x75A8D0
 
-// SYNTHETIC: GAMEMD 0x75A8F0
 
-// SYNTHETIC: GAMEMD 0x75AA70
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x75AA90

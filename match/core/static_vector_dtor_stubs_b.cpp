@@ -42,6 +42,7 @@ struct UndoInfoStruct
 
 // GLOBAL: GAMEMD 0x0087F778
 // SYNTHETIC: GAMEMD 0x0040CBC0 -- exit-time destructor stub of DAT_0087F778
+// SYNTHETIC: GAMEMD 0x0040CB80 -- initialiser of DAT_0087F778
 LogicClass DAT_0087F778;
 
 // The theme-list object at 0xA83D10: its constructor (0x720960, defined out of
@@ -66,16 +67,20 @@ Obj_00A83D10 DAT_00A83D10;
 
 // GLOBAL: GAMEMD 0x00ABFCB8
 // SYNTHETIC: GAMEMD 0x005D4D10 -- exit-time destructor stub of DAT_00ABFCB8
+// SYNTHETIC: GAMEMD 0x005D4CD0 -- initialiser of DAT_00ABFCB8
 DynamicVectorClass<AcceleratorTracker> DAT_00ABFCB8;
 
 // GLOBAL: GAMEMD 0x00B0B650
 // SYNTHETIC: GAMEMD 0x006B23F0 -- exit-time destructor stub of DAT_00B0B650
+// SYNTHETIC: GAMEMD 0x006B23B0 -- initialiser of DAT_00B0B650
 DynamicVectorClass<UndoInfoStruct> DAT_00B0B650;
 
 // GLOBAL: GAMEMD 0x00AC4910
 // SYNTHETIC: GAMEMD 0x006291D0 -- exit-time destructor stub of DAT_00AC4910
+// SYNTHETIC: GAMEMD 0x00629190 -- initialiser of DAT_00AC4910
 DynamicVectorClass<ParasiteClass*> DAT_00AC4910;
 
 // GLOBAL: GAMEMD 0x00B0B880
 // SYNTHETIC: GAMEMD 0x006B6C50 -- exit-time destructor stub of DAT_00B0B880
+// SYNTHETIC: GAMEMD 0x006B6C10 -- initialiser of DAT_00B0B880
 DynamicVectorClass<SpawnManagerClass*> DAT_00B0B880;
