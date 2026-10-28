@@ -27924,10 +27924,10 @@
   "tu": "match/platform/copy_protection_methods.cpp",
   "addr": "0x49F620",
   "sym": "?NotifyLauncher@CopyProtection@@YG_NXZ",
-  "len": "0x3",
+  "len": "0x114",
   "name": "NotifyLauncher",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 98
  },
  {
   "tu": "match/platform/copy_protection_methods.cpp",
@@ -28236,13 +28236,13 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/tu066_disk_laser_class.cpp",
+  "tu": "match/platform/cd_get_cd_number.cpp",
   "addr": "0x4A80D0",
-  "sym": "?CD_GetCDNumber@@YIHXZ",
-  "len": "0x6",
+  "sym": "?CD_GetCDNumber@@YIHHH@Z",
+  "len": "0x196",
   "name": "CD::GetCDNumber",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 98
  },
  {
   "tu": "match/platform/system_query_methods.cpp",
@@ -30585,128 +30585,128 @@
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00435610.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435610",
-  "sym": "@FUN_00435610@0",
+  "sym": "_$E1",
   "len": "0x28",
-  "name": "FUN_00435610",
+  "name": "dynamic initializer (DAT_0089C4F8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00435610.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435640",
-  "sym": "@FUN_00435640@0",
+  "sym": "_$E4",
   "len": "0x13",
-  "name": "FUN_00435640",
+  "name": "dynamic initializer (DAT_0089C548)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00435610.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435660",
-  "sym": "@FUN_00435660@0",
+  "sym": "_$E7",
   "len": "0x13",
-  "name": "FUN_00435660",
+  "name": "dynamic initializer (DAT_0089C530)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00435610.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435680",
-  "sym": "@FUN_00435680@0",
+  "sym": "_$E10",
   "len": "0x13",
-  "name": "FUN_00435680",
+  "name": "dynamic initializer (DAT_0089C528)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00435610.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x4356A0",
-  "sym": "@FUN_004356A0@0",
+  "sym": "_$E13",
   "len": "0x13",
-  "name": "FUN_004356A0",
+  "name": "dynamic initializer (DAT_0089C500)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00435610.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x4356C0",
-  "sym": "@FUN_004356C0@0",
+  "sym": "_$E16",
   "len": "0x13",
-  "name": "FUN_004356C0",
+  "name": "dynamic initializer (DAT_0089C4D8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x4356E0",
-  "sym": "@FUN_004356E0@0",
+  "sym": "_$E19",
   "len": "0x31",
-  "name": "FUN_004356E0",
+  "name": "dynamic initializer (DAT_0089C550)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435720",
-  "sym": "@FUN_00435720@0",
+  "sym": "_$E22",
   "len": "0x21",
-  "name": "FUN_00435720",
+  "name": "dynamic initializer (DAT_0089C508)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435750",
-  "sym": "@FUN_00435750@0",
+  "sym": "_$E25",
   "len": "0x2c",
-  "name": "FUN_00435750",
+  "name": "dynamic initializer (DAT_0089C520)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435780",
-  "sym": "@FUN_00435780@0",
+  "sym": "_$E28",
   "len": "0x27",
-  "name": "FUN_00435780",
+  "name": "dynamic initializer (DAT_0089C544)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x4357B0",
-  "sym": "@FUN_004357B0@0",
+  "sym": "_$E31",
   "len": "0xf",
-  "name": "FUN_004357B0",
+  "name": "dynamic initializer (DAT_0089C4F0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x4357C0",
-  "sym": "@FUN_004357C0@0",
+  "sym": "_$E34",
   "len": "0x12",
-  "name": "FUN_004357C0",
+  "name": "dynamic initializer (DAT_0089C510)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x4357E0",
-  "sym": "@FUN_004357E0@0",
+  "sym": "_$E37",
   "len": "0x1a",
-  "name": "FUN_004357E0",
+  "name": "dynamic initializer (DAT_0089C538)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004356e0.cpp",
+  "tu": "match/core/mathtbl_init_435610.cpp",
   "addr": "0x435800",
-  "sym": "@FUN_00435800@0",
+  "sym": "_$E40",
   "len": "0x17",
-  "name": "FUN_00435800",
+  "name": "dynamic initializer (DAT_0089C4E0)",
   "status": "matched",
   "pct": 100
  },
@@ -31314,56 +31314,56 @@
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00438340.cpp",
-  "addr": "0x00438340",
-  "sym": "@FUN_00438340@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438340",
+  "sym": "_$E1",
   "len": "0x28",
-  "name": "FUN_00438340",
+  "name": "dynamic initializer (DAT_0089C6A0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00438340.cpp",
-  "addr": "0x00438370",
-  "sym": "@FUN_00438370@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438370",
+  "sym": "_$E4",
   "len": "0x13",
-  "name": "FUN_00438370",
+  "name": "dynamic initializer (DAT_0089C6F0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00438340.cpp",
-  "addr": "0x00438390",
-  "sym": "@FUN_00438390@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438390",
+  "sym": "_$E7",
   "len": "0x13",
-  "name": "FUN_00438390",
+  "name": "dynamic initializer (DAT_0089C6D8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00438340.cpp",
-  "addr": "0x004383B0",
-  "sym": "@FUN_004383B0@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x4383B0",
+  "sym": "_$E10",
   "len": "0x13",
-  "name": "FUN_004383B0",
+  "name": "dynamic initializer (DAT_0089C6D0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00438340.cpp",
-  "addr": "0x004383D0",
-  "sym": "@FUN_004383D0@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x4383D0",
+  "sym": "_$E13",
   "len": "0x13",
-  "name": "FUN_004383D0",
+  "name": "dynamic initializer (DAT_0089C6A8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_00438340.cpp",
-  "addr": "0x004383F0",
-  "sym": "@FUN_004383F0@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x4383F0",
+  "sym": "_$E16",
   "len": "0x13",
-  "name": "FUN_004383F0",
+  "name": "dynamic initializer (DAT_0089C680)",
   "status": "matched",
   "pct": 100
  },
@@ -31476,74 +31476,74 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x00438410",
-  "sym": "@FUN_00438410@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438410",
+  "sym": "_$E19",
   "len": "0x31",
-  "name": "FUN_00438410",
+  "name": "dynamic initializer (DAT_0089C6F8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x00438450",
-  "sym": "@FUN_00438450@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438450",
+  "sym": "_$E22",
   "len": "0x21",
-  "name": "FUN_00438450",
+  "name": "dynamic initializer (DAT_0089C6B0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x00438480",
-  "sym": "@FUN_00438480@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438480",
+  "sym": "_$E25",
   "len": "0x2c",
-  "name": "FUN_00438480",
+  "name": "dynamic initializer (DAT_0089C6C8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x004384B0",
-  "sym": "@FUN_004384B0@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x4384B0",
+  "sym": "_$E28",
   "len": "0x27",
-  "name": "FUN_004384B0",
+  "name": "dynamic initializer (DAT_0089C6EC)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x004384E0",
-  "sym": "@FUN_004384E0@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x4384E0",
+  "sym": "_$E31",
   "len": "0xf",
-  "name": "FUN_004384E0",
+  "name": "dynamic initializer (DAT_0089C698)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x004384F0",
-  "sym": "@FUN_004384F0@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x4384F0",
+  "sym": "_$E34",
   "len": "0x12",
-  "name": "FUN_004384F0",
+  "name": "dynamic initializer (DAT_0089C6B8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x00438510",
-  "sym": "@FUN_00438510@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438510",
+  "sym": "_$E37",
   "len": "0x1a",
-  "name": "FUN_00438510",
+  "name": "dynamic initializer (DAT_0089C6E0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
-  "addr": "0x00438530",
-  "sym": "@FUN_00438530@0",
+  "tu": "match/core/mathtbl_init_438340.cpp",
+  "addr": "0x438530",
+  "sym": "_$E40",
   "len": "0x17",
-  "name": "FUN_00438530",
+  "name": "dynamic initializer (DAT_0089C688)",
   "status": "matched",
   "pct": 100
  },
@@ -31692,112 +31692,112 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B58A0",
-  "sym": "_FUN_004B58A0@0",
+  "sym": "_$E1",
   "len": "0x28",
-  "name": "_FUN_004B58A0@0",
+  "name": "dynamic initializer (DAT_008A0808)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B58D0",
-  "sym": "_FUN_004B58D0@0",
+  "sym": "_$E4",
   "len": "0x13",
-  "name": "_FUN_004B58D0@0",
+  "name": "dynamic initializer (DAT_008A0858)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B58F0",
-  "sym": "_FUN_004B58F0@0",
+  "sym": "_$E7",
   "len": "0x13",
-  "name": "_FUN_004B58F0@0",
+  "name": "dynamic initializer (DAT_008A0840)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5910",
-  "sym": "@FUN_004B5910@0",
+  "sym": "_$E10",
   "len": "0x13",
-  "name": "@FUN_004B5910@0",
+  "name": "dynamic initializer (DAT_008A0838)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5930",
-  "sym": "@FUN_004B5930@0",
+  "sym": "_$E13",
   "len": "0x13",
-  "name": "@FUN_004B5930@0",
+  "name": "dynamic initializer (DAT_008A0810)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5950",
-  "sym": "@FUN_004B5950@0",
+  "sym": "_$E16",
   "len": "0x13",
-  "name": "@FUN_004B5950@0",
+  "name": "dynamic initializer (DAT_008A07E8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004b59b0.cpp",
-  "addr": "0x004B59B0",
-  "sym": "@FUN_004B59B0@0",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
+  "addr": "0x4B59B0",
+  "sym": "_$E22",
   "len": "0x21",
-  "name": "FUN_004B59B0",
+  "name": "dynamic initializer (DAT_008A0818)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/angle_math_004b59b0.cpp",
-  "addr": "0x004B59E0",
-  "sym": "@FUN_004B59E0@0",
-  "len": "0x2C",
-  "name": "FUN_004B59E0",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
+  "addr": "0x4B59E0",
+  "sym": "_$E25",
+  "len": "0x2c",
+  "name": "dynamic initializer (DAT_008A0830)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5A40",
-  "sym": "@FUN_004B5A40@0",
-  "len": "0x0F",
-  "name": "@FUN_004B5A40@0",
+  "sym": "_$E31",
+  "len": "0xf",
+  "name": "dynamic initializer (DAT_008A0800)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5A50",
-  "sym": "@FUN_004B5A50@0",
+  "sym": "_$E34",
   "len": "0x12",
-  "name": "@FUN_004B5A50@0",
+  "name": "dynamic initializer (DAT_008A0820)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5A70",
-  "sym": "@FUN_004B5A70@0",
-  "len": "0x1A",
-  "name": "@FUN_004B5A70@0",
+  "sym": "_$E37",
+  "len": "0x1a",
+  "name": "dynamic initializer (DAT_008A0848)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5A90",
-  "sym": "@FUN_004B5A90@0",
+  "sym": "_$E40",
   "len": "0x17",
-  "name": "@FUN_004B5A90@0",
+  "name": "dynamic initializer (DAT_008A07F0)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persisted_pair_vectors_004391c0.cpp",
@@ -65980,7 +65980,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40ADC0",
-  "sym": "_$E4",
+  "sym": "_$E10",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0087F5A0)",
   "status": "matched",
@@ -65989,7 +65989,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40ADE0",
-  "sym": "_$E7",
+  "sym": "_$E13",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0087F588)",
   "status": "matched",
@@ -65998,7 +65998,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AF60",
-  "sym": "_$E37",
+  "sym": "_$E43",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0087F590)",
   "status": "matched",
@@ -66007,7 +66007,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AE00",
-  "sym": "_$E10",
+  "sym": "_$E16",
   "len": "0x13",
   "name": "dynamic initializer (header group 2)",
   "status": "matched",
@@ -66016,7 +66016,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AE20",
-  "sym": "_$E13",
+  "sym": "_$E19",
   "len": "0x13",
   "name": "dynamic initializer (header group 3)",
   "status": "matched",
@@ -66025,7 +66025,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AE40",
-  "sym": "_$E16",
+  "sym": "_$E22",
   "len": "0x13",
   "name": "dynamic initializer (header group 4)",
   "status": "matched",
@@ -66034,7 +66034,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AE60",
-  "sym": "_$E19",
+  "sym": "_$E25",
   "len": "0x31",
   "name": "dynamic initializer (header group 5)",
   "status": "matched",
@@ -66043,7 +66043,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AEA0",
-  "sym": "_$E22",
+  "sym": "_$E28",
   "len": "0x21",
   "name": "dynamic initializer (header group 6)",
   "status": "matched",
@@ -66052,7 +66052,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AED0",
-  "sym": "_$E25",
+  "sym": "_$E31",
   "len": "0x2c",
   "name": "dynamic initializer (header group 7)",
   "status": "matched",
@@ -66061,7 +66061,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AF00",
-  "sym": "_$E28",
+  "sym": "_$E34",
   "len": "0x27",
   "name": "dynamic initializer (header group 8)",
   "status": "matched",
@@ -66070,7 +66070,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AF30",
-  "sym": "_$E31",
+  "sym": "_$E37",
   "len": "0xf",
   "name": "dynamic initializer (header group 9)",
   "status": "matched",
@@ -66079,7 +66079,7 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AF40",
-  "sym": "_$E34",
+  "sym": "_$E40",
   "len": "0x12",
   "name": "dynamic initializer (header group 10)",
   "status": "matched",
@@ -66088,9 +66088,18 @@
  {
   "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AD90",
-  "sym": "_$E1",
+  "sym": "_$E7",
   "len": "0x28",
   "name": "dynamic initializer (header X)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AD60",
+  "sym": "_$E4",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_0087E8A8)",
   "status": "matched",
   "pct": 100
  },
@@ -66754,7 +66763,7 @@
  {
   "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40EB90",
-  "sym": "_$E43",
+  "sym": "_$E48",
   "len": "0x2f",
   "name": "dynamic initializer (DAT_00887328)",
   "status": "matched",
@@ -66763,7 +66772,7 @@
  {
   "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40EBC0",
-  "sym": "_$E41",
+  "sym": "_$E46",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00887328)",
   "status": "matched",
@@ -66772,7 +66781,7 @@
  {
   "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40EC00",
-  "sym": "_$E46",
+  "sym": "_$E51",
   "len": "0x1",
   "name": "atexit cleanup (DAT_00887338)",
   "status": "matched",
@@ -66865,6 +66874,15 @@
   "sym": "_$E2",
   "len": "0x28",
   "name": "dynamic initializer (header X)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40EB50",
+  "sym": "_$E43",
+  "len": "0x25",
+  "name": "dynamic initializer (DAT_00887348)",
   "status": "matched",
   "pct": 100
  },
@@ -70351,7 +70369,7 @@
  {
   "tu": "match/network/tu108_ipx_manager_class.cpp",
   "addr": "0x540710",
-  "sym": "_$E2",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AA06A0)",
   "status": "matched",
@@ -70360,7 +70378,7 @@
  {
   "tu": "match/network/tu108_ipx_manager_class.cpp",
   "addr": "0x540730",
-  "sym": "_$E5",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AA0688)",
   "status": "matched",
@@ -70369,8 +70387,8 @@
  {
   "tu": "match/network/tu108_ipx_manager_class.cpp",
   "addr": "0x5408B0",
-  "sym": "_$E8",
-  "len": "0x1A",
+  "sym": "_$E38",
+  "len": "0x1a",
   "name": "dynamic initializer (DAT_00AA0690)",
   "status": "matched",
   "pct": 100
@@ -70642,6 +70660,105 @@
   "sym": "?FUN_005430C0@IPXManagerClass@@QAEXI@Z",
   "len": "0x14",
   "name": "IPXManagerClass::FUN_005430C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x5406E0",
+  "sym": "_$E2",
+  "len": "0x28",
+  "name": "dynamic initializer (DAT_00AA0650)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x540750",
+  "sym": "_$E11",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AA0680)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x540770",
+  "sym": "_$E14",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AA0658)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x540790",
+  "sym": "_$E17",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00AA0630)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x5407B0",
+  "sym": "_$E20",
+  "len": "0x31",
+  "name": "dynamic initializer (DAT_00AA06A8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x5407F0",
+  "sym": "_$E23",
+  "len": "0x21",
+  "name": "dynamic initializer (DAT_00AA0660)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x540820",
+  "sym": "_$E26",
+  "len": "0x2c",
+  "name": "dynamic initializer (DAT_00AA0678)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x540850",
+  "sym": "_$E29",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_00AA069C)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x540880",
+  "sym": "_$E32",
+  "len": "0xf",
+  "name": "dynamic initializer (DAT_00AA0648)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x540890",
+  "sym": "_$E35",
+  "len": "0x12",
+  "name": "dynamic initializer (DAT_00AA0668)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "addr": "0x5408D0",
+  "sym": "_$E41",
+  "len": "0x17",
+  "name": "dynamic initializer (DAT_00AA0638)",
   "status": "matched",
   "pct": 100
  },
@@ -75919,13 +76036,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/static_object_dtor_stubs.cpp",
+  "tu": "match/core/static_object_inits.cpp",
   "addr": "0x40D330",
-  "sym": "?FUN_0040D330@@YIXXZ",
+  "sym": "_$E16",
   "len": "0xa",
-  "name": "FUN_0040D330 (exit destructor stub of DAT_00884D88)",
+  "name": "atexit cleanup (DAT_00884D88)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
@@ -76106,6 +76223,15 @@
   "name": "AlphaShapeClass::GetClassID",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "addr": "0x4208E0",
+  "sym": "_$E4",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_0088A0F0)",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -78655,6 +78781,51 @@
   "pct": 100
  },
  {
+  "tu": "match/core/static_vector_member_dtor_stubs_b.cpp",
+  "addr": "0x539580",
+  "sym": "_$E6",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00A9FA60)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_b.cpp",
+  "addr": "0x5546C0",
+  "sym": "_$E27",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00ABCA10)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_b.cpp",
+  "addr": "0x54FDC0",
+  "sym": "_$E20",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00ABC878)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_b.cpp",
+  "addr": "0x543E70",
+  "sym": "_$E13",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00AA1078)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_b.cpp",
+  "addr": "0x58BC30",
+  "sym": "_$E34",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00ABDF90)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/static_vector_dtor_stubs.cpp",
   "addr": "0x5FF210",
   "sym": "_$E177",
@@ -78808,13 +78979,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/tu173_parasite_class.cpp",
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
   "addr": "0x6291D0",
-  "sym": "_$E8",
+  "sym": "_$E22",
   "len": "0x3b",
   "name": "DynamicVectorClass<ParasiteClass*> exit destructor stub (DAT_00AC4910)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/combat/tu173_parasite_class.cpp",
@@ -78952,13 +79123,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/core/static_vector_member_dtor_stubs_c.cpp",
   "addr": "0x65F9F0",
-  "sym": "_$E13",
+  "sym": "_$E31",
   "len": "0x58",
   "name": "DynamicVectorClass<RadarEventClass*> guarded exit destructor stub (DAT_00B04DA8)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/platform/tu196_random_straw.cpp",
@@ -79240,13 +79411,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/tu218_spawn_manager_class.cpp",
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
   "addr": "0x6B6C50",
-  "sym": "_$E8",
+  "sym": "_$E27",
   "len": "0x3b",
   "name": "DynamicVectorClass<SpawnManagerClass*> exit destructor stub (DAT_00B0B880)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -80617,6 +80788,51 @@
   "pct": 100
  },
  {
+  "tu": "match/core/static_vector_member_dtor_stubs_c.cpp",
+  "addr": "0x539620",
+  "sym": "_$E6",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00A9F9D0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_c.cpp",
+  "addr": "0x53CA70",
+  "sym": "_$E13",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00AA0118)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_c.cpp",
+  "addr": "0x65F9B0",
+  "sym": "_$E34",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<RadarEventClass*> dynamic initializer (DAT_00B04DA8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_c.cpp",
+  "addr": "0x6D1A60",
+  "sym": "_$E41",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<DirtyAreaStruct> dynamic initializer (DAT_00B0CE78)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_member_dtor_stubs_c.cpp",
+  "addr": "0x6D1AA0",
+  "sym": "_$E38",
+  "len": "0x58",
+  "name": "DynamicVectorClass<DirtyAreaStruct> guarded exit destructor stub (DAT_00B0CE78)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/persist_class_id_methods.cpp",
   "addr": "0x74F2D0",
   "sym": "?GetClassID@VeinholeMonsterClass@@UAGJPAU_GUID@@@Z",
@@ -81256,6 +81472,33 @@
   "pct": 100
  },
  {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x5569A0",
+  "sym": "_$E164",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00ABCB78)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x5BF7D0",
+  "sym": "_$E169",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00ABF390)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs.cpp",
+  "addr": "0x5D4C50",
+  "sym": "_$E174",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00ABFC90)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/persist_class_id_methods.cpp",
   "addr": "0x763C30",
   "sym": "?GetClassID@WaypointPathClass@@UAGJPAU_GUID@@@Z",
@@ -81841,20 +82084,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu002_methods.cpp",
+  "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AD80",
-  "sym": "?FUN_0040AD80@@YAXXZ",
+  "sym": "_$E2",
   "len": "0xa",
-  "name": "FUN_0040AD80",
+  "name": "atexit cleanup (DAT_0087E8A8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu003_methods.cpp",
+  "tu": "match/core/header_init_0040adc0.cpp",
+  "addr": "0x40AFA0",
+  "sym": "_$E48",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_0087E8B8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040adc0.cpp",
   "addr": "0x40AFC0",
-  "sym": "?FUN_0040AFC0@@YIXHH@Z",
+  "sym": "_$E46",
   "len": "0xa",
-  "name": "FUN_0040AFC0",
+  "name": "atexit cleanup (DAT_0087E8B8)",
   "status": "matched",
   "pct": 100
  },
@@ -81913,11 +82165,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu009_methods.cpp",
+  "tu": "match/core/header_init_0040e5b0.cpp",
   "addr": "0x40EB80",
-  "sym": "?FUN_0040EB80@@YAXXZ",
+  "sym": "_$E41",
   "len": "0x1",
-  "name": "FUN_0040EB80",
+  "name": "atexit cleanup (DAT_00887348)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/header_init_0040e5b0.cpp",
+  "addr": "0x40EBD0",
+  "sym": "_$E53",
+  "len": "0x25",
+  "name": "dynamic initializer (DAT_00887338)",
   "status": "matched",
   "pct": 100
  },
@@ -81949,11 +82210,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu012_methods.cpp",
+  "tu": "match/core/static_object_inits.cpp",
   "addr": "0x40FF30",
-  "sym": "?FUN_0040FF30@@YAXXZ",
+  "sym": "_$E21",
   "len": "0x1",
-  "name": "FUN_0040FF30",
+  "name": "atexit cleanup (DAT_00887598)",
   "status": "matched",
   "pct": 100
  },
@@ -82800,6 +83061,24 @@
   "sym": "?FUN_00487E70@Obj_00487E70@@QBEHXZ",
   "len": "0x6",
   "name": "Obj_00487E70::FUN_00487E70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/trivial_tu050_methods.cpp",
+  "addr": "0x486670",
+  "sym": "?FUN_00486670@Obj_00486670@@QAE_NXZ",
+  "len": "0x1a",
+  "name": "Obj_00486670::FUN_00486670",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/trivial_tu050_methods.cpp",
+  "addr": "0x4866F0",
+  "sym": "?FUN_004866F0@Obj_004866F0@@QAE_NXZ",
+  "len": "0x1a",
+  "name": "Obj_004866F0::FUN_004866F0",
   "status": "matched",
   "pct": 100
  },
@@ -84739,11 +85018,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ownrdraw.cpp",
+  "tu": "match/ui/ownrdraw_pcx_cache.cpp",
   "addr": "0x600550",
-  "sym": "?FUN_00600550@@YIXHH@Z",
+  "sym": "_$E2",
   "len": "0xa",
-  "name": "FUN_00600550",
+  "name": "StringHashTable_00AC4848 exit destructor thunk (DAT_00AC4848)",
   "status": "matched",
   "pct": 100
  },
@@ -95021,13 +95300,13 @@
   "pct": 13.8
  },
  {
-  "tu": "match/core/global_reset_leaf_methods.cpp",
+  "tu": "match/core/static_object_inits.cpp",
   "addr": "0x40BDA0",
-  "sym": "?FUN_0040BDA0@@YIXXZ",
+  "sym": "_$E2",
   "len": "0x2a",
-  "name": "FUN_0040BDA0",
+  "name": "atexit cleanup (DAT_0087F680)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs_b.cpp",
@@ -96261,6 +96540,60 @@
   "name": "_$E17",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
+  "addr": "0x5D4CD0",
+  "sym": "_$E14",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_00ABFCB8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
+  "addr": "0x6B23B0",
+  "sym": "_$E19",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<UndoInfoStruct> dynamic initializer (DAT_00B0B650)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
+  "addr": "0x629190",
+  "sym": "_$E24",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<ParasiteClass*> dynamic initializer (DAT_00AC4910)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
+  "addr": "0x6B6C10",
+  "sym": "_$E29",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<SpawnManagerClass*> dynamic initializer (DAT_00B0B880)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
+  "addr": "0x40CB80",
+  "sym": "_$E4",
+  "len": "0x3d",
+  "name": "dynamic initializer (DAT_0087F778)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_vector_dtor_stubs_b.cpp",
+  "addr": "0x4E7E30",
+  "sym": "_$E9",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00A83D10)",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/string_hash_methods.cpp",
@@ -99949,7 +100282,7 @@
  {
   "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x65F7D0",
-  "sym": "_$E6",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B04DF0)",
   "status": "matched",
@@ -99958,7 +100291,7 @@
  {
   "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x65F7F0",
-  "sym": "_$E9",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B04DD0)",
   "status": "matched",
@@ -119279,6 +119612,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/header_init_513a10.cpp",
+  "addr": "0x517340",
+  "sym": "_$E43",
+  "len": "0x12",
+  "name": "dynamic initializer (DAT_00A8F1C4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/header_init_517840.cpp",
   "addr": "0x517840",
   "sym": "_$E1",
@@ -124814,20 +125156,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004b58a0.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5970",
-  "sym": "_$E1",
+  "sym": "_$E19",
   "len": "0x31",
-  "name": "dynamic initializer (header group 6)",
+  "name": "dynamic initializer (DAT_008A0860)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004b58a0.cpp",
+  "tu": "match/core/mathtbl_init_4b58a0.cpp",
   "addr": "0x4B5A10",
-  "sym": "_$E4",
+  "sym": "_$E28",
   "len": "0x27",
-  "name": "dynamic initializer (header group 9)",
+  "name": "dynamic initializer (DAT_008A0854)",
   "status": "matched",
   "pct": 100
  },
@@ -125788,24 +126130,6 @@
  {
   "tu": "match/core/colour_table_statics.cpp",
   "addr": "0x40D940",
-  "sym": "_$E10",
-  "len": "0x1b",
-  "name": "dynamic initializer (256-entry colour table)",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/core/colour_table_statics.cpp",
-  "addr": "0x40D960",
-  "sym": "_$E13",
-  "len": "0x1b",
-  "name": "dynamic initializer (256-entry colour table)",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/core/colour_table_statics.cpp",
-  "addr": "0x40D980",
   "sym": "_$E16",
   "len": "0x1b",
   "name": "dynamic initializer (256-entry colour table)",
@@ -125814,10 +126138,46 @@
  },
  {
   "tu": "match/core/colour_table_statics.cpp",
-  "addr": "0x40D9A0",
+  "addr": "0x40D960",
   "sym": "_$E19",
   "len": "0x1b",
   "name": "dynamic initializer (256-entry colour table)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/colour_table_statics.cpp",
+  "addr": "0x40D980",
+  "sym": "_$E22",
+  "len": "0x1b",
+  "name": "dynamic initializer (256-entry colour table)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/colour_table_statics.cpp",
+  "addr": "0x40D9A0",
+  "sym": "_$E25",
+  "len": "0x1b",
+  "name": "dynamic initializer (256-entry colour table)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/colour_table_statics.cpp",
+  "addr": "0x40D900",
+  "sym": "_$E10",
+  "len": "0x20",
+  "name": "dynamic initializer (DAT_00884E80)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/colour_table_statics.cpp",
+  "addr": "0x40D920",
+  "sym": "_$E13",
+  "len": "0x20",
+  "name": "dynamic initializer (DAT_00885D80)",
   "status": "matched",
   "pct": 100
  },
@@ -130210,6 +130570,582 @@
   "sym": "_$E2",
   "len": "0x3d",
   "name": "DynamicVectorClass<rc_ptr<GameOption>> exit destructor stub (DAT_00B72760)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58C1C0",
+  "sym": "?FUN_0058C1C0@GridCell@@QBEHXZ",
+  "len": "0x2a",
+  "name": "GridCell::FUN_0058C1C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58C1F0",
+  "sym": "?FUN_0058C1F0@GridCell@@QBEEXZ",
+  "len": "0x20",
+  "name": "GridCell::FUN_0058C1F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58C240",
+  "sym": "?FUN_0058C240@GridCell@@QBEXXZ",
+  "len": "0x21",
+  "name": "GridCell::FUN_0058C240",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58C270",
+  "sym": "?FUN_0058C270@@YIXXZ",
+  "len": "0x23",
+  "name": "FUN_0058C270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58C2A0",
+  "sym": "?FUN_0058C2A0@GridCell@@QBEPAURec_50@@XZ",
+  "len": "0x1f",
+  "name": "GridCell::FUN_0058C2A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58C2C0",
+  "sym": "?FUN_0058C2C0@@YIPAURec_50@@H@Z",
+  "len": "0xf",
+  "name": "FUN_0058C2C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58C6C0",
+  "sym": "?FUN_0058C6C0@@YIXXZ",
+  "len": "0x25",
+  "name": "FUN_0058C6C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58D070",
+  "sym": "?FUN_0058D070@@YIXPBUGridCell@@H@Z",
+  "len": "0x27",
+  "name": "FUN_0058D070",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58D0A0",
+  "sym": "?FUN_0058D0A0@GridCell@@QBEHXZ",
+  "len": "0x29",
+  "name": "GridCell::FUN_0058D0A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58D0D0",
+  "sym": "?FUN_0058D0D0@@YIXPBUGridCell@@H@Z",
+  "len": "0x21",
+  "name": "FUN_0058D0D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x58D100",
+  "sym": "?FUN_0058D100@@YIHPBUGridCell@@@Z",
+  "len": "0x20",
+  "name": "FUN_0058D100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x5A0090",
+  "sym": "?FUN_005A0090@@YGXPBUGridCell@@H@Z",
+  "len": "0x2f",
+  "name": "FUN_005A0090",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x5A00C0",
+  "sym": "?FUN_005A00C0@@YGHPBUGridCell@@@Z",
+  "len": "0x31",
+  "name": "FUN_005A00C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x5A0100",
+  "sym": "?FUN_005A0100@@YGXPBUGridCell@@H@Z",
+  "len": "0x2b",
+  "name": "FUN_005A0100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_grid_accessors.cpp",
+  "addr": "0x5A0130",
+  "sym": "?FUN_005A0130@@YGHPBUGridCell@@@Z",
+  "len": "0x26",
+  "name": "FUN_005A0130",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/house_class_edge_methods.cpp",
+  "addr": "0x50DA20",
+  "sym": "?FUN_0050DA20@HouseClass@@QAEXUCellStruct@@@Z",
+  "len": "0x19",
+  "name": "HouseClass::FUN_0050DA20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/house_class_edge_methods.cpp",
+  "addr": "0x50DAA0",
+  "sym": "?FUN_0050DAA0@HouseClass@@QBEHXZ",
+  "len": "0x12",
+  "name": "HouseClass::FUN_0050DAA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/house_class_edge_methods.cpp",
+  "addr": "0x50DAC0",
+  "sym": "?FUN_0050DAC0@HouseClass@@QBEHXZ",
+  "len": "0x27",
+  "name": "HouseClass::FUN_0050DAC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/type_class_noinit_ctors.cpp",
+  "addr": "0x5FE3C0",
+  "sym": "??0OverlayTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "OverlayTypeClass::OverlayTypeClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/type_class_noinit_ctors.cpp",
+  "addr": "0x644220",
+  "sym": "??0ParticleSystemTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "ParticleSystemTypeClass::ParticleSystemTypeClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/type_class_noinit_ctors.cpp",
+  "addr": "0x6B5370",
+  "sym": "??0SmudgeTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "SmudgeTypeClass::SmudgeTypeClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/type_class_noinit_ctors.cpp",
+  "addr": "0x6DD180",
+  "sym": "??0TActionClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "TActionClass::TActionClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/type_class_noinit_ctors.cpp",
+  "addr": "0x6E7F50",
+  "sym": "??0TaskForceClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "TaskForceClass::TaskForceClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw_pcx_cache.cpp",
+  "addr": "0x600530",
+  "sym": "_$E4",
+  "len": "0x16",
+  "name": "StringHashTable_00AC4848 dynamic initializer (DAT_00AC4848)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/progress_screen_global.cpp",
+  "addr": "0x642980",
+  "sym": "_$E4",
+  "len": "0x16",
+  "name": "ProgressScreenClass dynamic initializer (DAT_00AC4F58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/progress_screen_global.cpp",
+  "addr": "0x6429A0",
+  "sym": "_$E2",
+  "len": "0x33",
+  "name": "ProgressScreenClass exit destructor stub (DAT_00AC4F58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F1350",
+  "sym": "?FUN_005F1350@@YIXD@Z",
+  "len": "0x36",
+  "name": "FUN_005F1350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F3320",
+  "sym": "?FUN_005F3320@@YGXH@Z",
+  "len": "0x13",
+  "name": "FUN_005F3320",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F3350",
+  "sym": "?FUN_005F3350@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_005F3350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F3400",
+  "sym": "?FUN_005F3400@@YIXXZ",
+  "len": "0x18",
+  "name": "FUN_005F3400",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F3420",
+  "sym": "?FUN_005F3420@@YIXXZ",
+  "len": "0x15",
+  "name": "FUN_005F3420",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F3450",
+  "sym": "?FUN_005F3450@@YIHXZ",
+  "len": "0x42",
+  "name": "FUN_005F3450",
+  "status": "partial",
+  "pct": 91.7
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F34A0",
+  "sym": "?FUN_005F34A0@@YGHPBDHPADHHH@Z",
+  "len": "0x2e",
+  "name": "FUN_005F34A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "addr": "0x5F34D0",
+  "sym": "?FUN_005F34D0@@YGHPBD@Z",
+  "len": "0x49",
+  "name": "FUN_005F34D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw_dialog_control_ctor.cpp",
+  "addr": "0x624110",
+  "sym": "??0SimpleDialogControl@OwnerDraw@@QAE@XZ",
+  "len": "0x11",
+  "name": "OwnerDraw::SimpleDialogControl::SimpleDialogControl",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw_list_entry_methods.cpp",
+  "addr": "0x624460",
+  "sym": "??1ListEntry_006255F0@@QAE@XZ",
+  "len": "0x15",
+  "name": "ListEntry_006255F0::~ListEntry_006255F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw_list_entry_methods.cpp",
+  "addr": "0x6247D0",
+  "sym": "??0ListEntry_006255F0@@QAE@ABU0@@Z",
+  "len": "0x3d",
+  "name": "ListEntry_006255F0::ListEntry_006255F0(const ListEntry_006255F0&)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/packet_class_list.cpp",
+  "addr": "0x625AB0",
+  "sym": "??1PacketClass@@QAE@XZ",
+  "len": "0x29",
+  "name": "PacketClass::~PacketClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/packet_class_list.cpp",
+  "addr": "0x625AE0",
+  "sym": "?AddField@PacketClass@@QAEXPAVFieldClass@@@Z",
+  "len": "0x10",
+  "name": "PacketClass::AddField",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/packet_class_list.cpp",
+  "addr": "0x625D20",
+  "sym": "?FindField@PacketClass@@QAEPAVFieldClass@@PBD@Z",
+  "len": "0x32",
+  "name": "PacketClass::FindField",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/null_modem_conn_leaves.cpp",
+  "addr": "0x5EF150",
+  "sym": "??1NullModemConnClass@@QAE@XZ",
+  "len": "0x1e",
+  "name": "NullModemConnClass::~NullModemConnClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/null_modem_conn_leaves.cpp",
+  "addr": "0x5EF170",
+  "sym": "?SetUnknown4C@NullModemConnClass@@QAEXH@Z",
+  "len": "0x13",
+  "name": "NullModemConnClass::SetUnknown4C",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_leaves_w3.cpp",
+  "addr": "0x5F33A0",
+  "sym": "?Clear@Obj_005F33A0@@QAEXXZ",
+  "len": "0xe",
+  "name": "Obj_005F33A0::Clear",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_leaves_w3.cpp",
+  "addr": "0x5F1390",
+  "sym": "?Elapsed@Obj_005F1390@@QAEHXZ",
+  "len": "0x1f",
+  "name": "Obj_005F1390::Elapsed",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_leaves_w3.cpp",
+  "addr": "0x6C6B00",
+  "sym": "??0Obj_006C6B00@@QAE@ABU0@@Z",
+  "len": "0x3d",
+  "name": "Obj_006C6B00::Obj_006C6B00(const Obj_006C6B00&)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_leaves_w3.cpp",
+  "addr": "0x6C9EC0",
+  "sym": "??0Reader_006C9EC0@@QAE@PAUByteStream_006C9EC0@@@Z",
+  "len": "0x3d",
+  "name": "Reader_006C9EC0::Reader_006C9EC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_leaves_w3.cpp",
+  "addr": "0x6E85B0",
+  "sym": "?AllChildrenReady@Obj_006E85B0@@QAE_NXZ",
+  "len": "0x3d",
+  "name": "Obj_006E85B0::AllChildrenReady",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/score_font_ctors.cpp",
+  "addr": "0x690580",
+  "sym": "??0ScoreFontClass@@QAE@XZ",
+  "len": "0x2b",
+  "name": "ScoreFontClass::ScoreFontClass()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/score_font_ctors.cpp",
+  "addr": "0x6905B0",
+  "sym": "??0ScoreFontClass@@QAE@HHHH@Z",
+  "len": "0x3d",
+  "name": "ScoreFontClass::ScoreFontClass(int,int,int,int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/score_font_ctors.cpp",
+  "addr": "0x6905F0",
+  "sym": "??1ScoreFontClass@@UAE@XZ",
+  "len": "0x4c",
+  "name": "ScoreFontClass::~ScoreFontClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40BD70",
+  "sym": "_$E4",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_0087F680)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40D310",
+  "sym": "_$E18",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00884D88)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40D9C0",
+  "sym": "_$E13",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_00886980)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40DA20",
+  "sym": "_$E7",
+  "len": "0x21",
+  "name": "dynamic initializer (DAT_00886FA0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40DA50",
+  "sym": "_$E10",
+  "len": "0x21",
+  "name": "dynamic initializer (DAT_00886FB0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40FF10",
+  "sym": "_$E23",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00887598)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40D200",
+  "sym": "_$E28",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_0087F7B8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_object_inits.cpp",
+  "addr": "0x40D220",
+  "sym": "_$E26",
+  "len": "0x10",
+  "name": "atexit cleanup (DAT_0087F7B8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_misc_range1_methods.cpp",
+  "addr": "0x4870D0",
+  "sym": "?FUN_004870D0@Obj_004870D0@@QBE_NH@Z",
+  "len": "0x11",
+  "name": "Obj_004870D0::FUN_004870D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_misc_range1_methods.cpp",
+  "addr": "0x4870F0",
+  "sym": "?FUN_004870F0@Obj_004870D0@@QBE_NH@Z",
+  "len": "0x14",
+  "name": "Obj_004870D0::FUN_004870F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_misc_range1_methods.cpp",
+  "addr": "0x4A52D0",
+  "sym": "?FUN_004A52D0@Obj_004A52D0@@QAEXXZ",
+  "len": "0x9",
+  "name": "Obj_004A52D0::FUN_004A52D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_misc_range1_methods.cpp",
+  "addr": "0x4B6BE0",
+  "sym": "?FUN_004B6BE0@Obj_004B6BE0@@QBEHH@Z",
+  "len": "0xb",
+  "name": "Obj_004B6BE0::FUN_004B6BE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_misc_range1_methods.cpp",
+  "addr": "0x4F2680",
+  "sym": "?FUN_004F2680@Obj_004F2680@@QAEXABUKey_007B4940@@@Z",
+  "len": "0x10",
+  "name": "Obj_004F2680::FUN_004F2680",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_misc_range1_methods.cpp",
+  "addr": "0x4F2800",
+  "sym": "?FUN_004F2800@Obj_004F2680@@QAEXABUKey_007B4940@@@Z",
+  "len": "0x10",
+  "name": "Obj_004F2680::FUN_004F2800",
   "status": "matched",
   "pct": 100
  }
