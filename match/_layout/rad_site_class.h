@@ -45,6 +45,7 @@ public:
 
     // Native default constructor is 0x65B1E0 (thiscall, no stack arguments).
     RadSiteClass();
+    RadSiteClass(const AbstractNoInit& noInit);   // native 0x65B2A0 (no-init: base no-init, timers, vptrs)
 
     // Native call contracts used by BulletClass::FUN_004690B0.
     void SetBaseCell(CellStruct* cell);  // target 0x65B4C0, thiscall RET 4
