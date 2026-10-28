@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Header static initialisers at 0x543C40-0x543E30 (header_init_shapes.h): the group of
+// Header static initialisers at 0x543C40-0x543E50 (header_init_shapes.h): the group of
 // math-table doubles/ints and zero blocks each retail TU opens with, in __xc order.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
@@ -9,6 +9,14 @@
 #pragma intrinsic(pow)
 #include "header_init_shapes.h"
 #include "mathtbl_init_shapes.h"
+
+// Three zeroed bytes (a palette entry with a user constructor).
+struct HeaderByte3
+{
+    unsigned char a, b, c;
+    HeaderByte3() : a(0), b(0), c(0) {}
+};
+GG_STATIC_ASSERT(sizeof(HeaderByte3) == 3);
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CAC40(double value);
@@ -68,3 +76,6 @@ HeaderCoordInit DAT_00ABB0F8(0, 0, 0);
 // SYNTHETIC: GAMEMD 0x543E30
 // GLOBAL: GAMEMD 0xABC200
 HeaderCoordInit DAT_00ABC200(128, 128, 0);
+// SYNTHETIC: GAMEMD 0x543E50
+// GLOBAL: GAMEMD 0xABBED0
+HeaderByte3 DAT_00ABBED0[256];

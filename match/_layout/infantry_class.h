@@ -65,6 +65,7 @@ public:
     virtual void vf_326();                                         // 326 0x521C10
     virtual void vf_328(int a1);                                   // 328 0x521C60
     virtual CoordStruct vf_192(int a1);                            // 192 0x521D30
+    virtual unsigned long DisguiseAs(AbstractClass* target);       // 283 0x522700
 
     // Non-virtual members (bodies in match/combat/Infantry.cpp).
     // FUNCTION: GAMEMD 0x522510 -- true for the four SequenceAnim values 0x1B-0x1E.

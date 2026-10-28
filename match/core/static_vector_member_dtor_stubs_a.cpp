@@ -63,5 +63,6 @@ struct StaticVectorHolder_00A8EFC8 {
     static DynamicVectorClass<HouseClass::BuildChoiceClass*> DAT_00A8EFC8;
 };
 // SYNTHETIC: GAMEMD 0x004F5130 -- exit-time destructor stub of DAT_00A8EFC8, guard byte 0x00A8EF60 bit 0
+// SYNTHETIC: GAMEMD 0x004F50F0 -- initialiser of DAT_00A8EFC8
 DynamicVectorClass<HouseClass::BuildChoiceClass*> StaticVectorHolder_00A8EFC8::DAT_00A8EFC8;
 

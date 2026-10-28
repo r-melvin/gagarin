@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Header static initialisers at 0x53C820-0x53CA10 (header_init_shapes.h): the group of
+// Header static initialisers at 0x53C820-0x53CA30 (header_init_shapes.h): the group of
 // math-table doubles/ints and zero blocks each retail TU opens with, in __xc order.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
@@ -25,6 +25,14 @@ extern const double DAT_007E1710;
 const double DAT_007EC010 = 60.0;
 // GLOBAL: GAMEMD 0x7EC018
 const double DAT_007EC018 = 0.017453292519943295;
+// GLOBAL: GAMEMD 0x7EC020
+const double DAT_007EC020 = 0.0;
+// GLOBAL: GAMEMD 0x7EC028
+const double DAT_007EC028 = 57.0;
+// GLOBAL: GAMEMD 0x7EC048
+const double DAT_007EC048 = 0.0125;
+// GLOBAL: GAMEMD 0x7EC050
+const double DAT_007EC050 = 4.0;
 
 // SYNTHETIC: GAMEMD 0x53C820
 // GLOBAL: GAMEMD 0xA9FF90
@@ -68,3 +76,6 @@ HeaderCoordInit DAT_00AA0130(128, 128, 0);
 // SYNTHETIC: GAMEMD 0x53CA10
 // GLOBAL: GAMEMD 0xA9FF70
 MathTblZero4 DAT_00A9FF70;
+// SYNTHETIC: GAMEMD 0x53CA30
+// GLOBAL: GAMEMD 0xA9FF80
+double DAT_00A9FF80 = (DAT_007EC050 - DAT_007EC020 + DAT_007EC028) * DAT_007EC048;

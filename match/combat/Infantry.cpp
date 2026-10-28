@@ -557,6 +557,26 @@ HouseClass* InfantryClass::vf_52(bool a1)
     return CurrentPlayer;
 }
 
+// FUNCTION: GAMEMD 0x522700
+// Disguise as another infantryman: take on his type and house. Retail leaves
+// the return value unset.
+#pragma warning(disable : 4716)
+unsigned long InfantryClass::DisguiseAs(AbstractClass* target)
+{
+    TechnoClass* other = (TechnoClass*)target;
+    if (other && other->vf_11() == 15) {
+        TechnoClass::DisguiseAs(target);
+        if (other->vf_49()) {
+            this->Disguise = other->vf_51(true);
+            this->DisguisedAsHouse = other->vf_52(true);
+        } else {
+            this->Disguise = other->vf_34();
+            this->DisguisedAsHouse = other->vf_15();
+        }
+    }
+}
+#pragma warning(default : 4716)
+
 // FUNCTION: GAMEMD 0x522780
 void InfantryClass::vf_284()
 {
