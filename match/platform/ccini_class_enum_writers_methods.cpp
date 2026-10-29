@@ -173,3 +173,8 @@ bool CCINI_00474910::WriteMovie(const char* section, const char* key, int index)
 
     return WriteString(section, key, name);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B4124
+MovieRecord** DAT_008B4124;
+// END defined globals

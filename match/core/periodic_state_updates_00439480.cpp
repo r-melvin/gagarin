@@ -50,3 +50,10 @@ double DAT_0089C730 = FUN_004CADE0( static_cast<double>(DAT_0089C778) * DAT_007E
 // SYNTHETIC: GAMEMD 0x004395E0
 // GLOBAL: GAMEMD 0x0089C748
 double DAT_0089C748 = FUN_004CADE0( static_cast<double>(DAT_0089C778 * 2) / DAT_0089C720);
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E3D70
+double DAT_007E3D70 = 60.0;
+// GLOBAL: GAMEMD 0x7E3D78
+double DAT_007E3D78 = 0.017453292519943295;
+// END defined globals

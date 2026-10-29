@@ -36,3 +36,10 @@ char* __fastcall FUN_007350C0(const wchar_t* text)
     DAT_00B1CF90 = (DAT_00B1CF90 + 1) & 7;
     return buffer;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0FE94
+char DAT_00B0FE94[8][0x400];
+// GLOBAL: GAMEMD 0xB1CF90
+unsigned int DAT_00B1CF90;
+// END defined globals

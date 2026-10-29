@@ -610,3 +610,8 @@ int RandomStraw::FUN_006C98E0(void* source, int slen)
 // SYNTHETIC: GAMEMD 0x4AEC10 -- Straw scalar deleting destructor, emitted here
 // because the RandomStraw constructor seats the Straw vtable (xref 0x6616C3);
 // it calls the out-of-line Straw destructor at 0x6C9850 and operator delete.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F0980
+extern const double DAT_007F0980 = 60.0;
+// END defined globals

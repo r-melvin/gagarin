@@ -35,3 +35,7 @@ int FUN_00427CB0(const char* name)
     return -1;
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B228
+int DAT_00A8B228;
+// END defined globals

@@ -128,3 +128,8 @@ void __stdcall TunnelLocomotionClass::DoTurn(unsigned long dir)
 }
 
 // SYNTHETIC: GAMEMD 0x72A210 -- TunnelLocomotionClass scalar deleting destructor, emitted by the compiler from the virtual destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0F910
+LocoCoord DAT_00B0F910;
+// END defined globals

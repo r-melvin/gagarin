@@ -33,4 +33,3 @@ extern DynamicVectorClass<Obj_00638A20*> DAT_00AC4C18;
 
 struct Obj_00638DC0;
 extern DynamicVectorClass<Obj_00638DC0*> DAT_00AC4B30;
-

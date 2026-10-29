@@ -91,3 +91,8 @@ void FUN_004A4830()
         result = Surface_008A009C->GetStatus(2);
     } while (result != 0 && result != (long)0x887601C2);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A009C
+SurfaceView_008A009C* Surface_008A009C;
+// END defined globals

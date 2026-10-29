@@ -37,3 +37,8 @@ int MapClass::GetZPos(CoordStruct* coords)
 
     return cell->GetFloorHeight(subcoords);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F928
+int CellArrayCount;
+// END defined globals

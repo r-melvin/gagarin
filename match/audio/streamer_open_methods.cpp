@@ -87,3 +87,18 @@ void __cdecl FUN_0053E5F0()
         LeaveCriticalSection(&DAT_00AA0418);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA0418
+CriticalSection_0053E6B0 DAT_00AA0418;
+// GLOBAL: GAMEMD 0xAA045C
+int DAT_00AA045C;
+// GLOBAL: GAMEMD 0xAA0460
+void* DAT_00AA0460;
+// GLOBAL: GAMEMD 0xAA0464
+void* DAT_00AA0464;
+// GLOBAL: GAMEMD 0xAA0468
+void* DAT_00AA0468;
+// GLOBAL: GAMEMD 0xAA046C
+int DAT_00AA046C;
+// END defined globals

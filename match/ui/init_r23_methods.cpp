@@ -33,3 +33,10 @@ bool FUN_00534DE0()
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x884E58
+MixFileClass* DAT_00884E58;
+// GLOBAL: GAMEMD 0x884E5C
+MixFileClass* DAT_00884E5C;
+// END defined globals

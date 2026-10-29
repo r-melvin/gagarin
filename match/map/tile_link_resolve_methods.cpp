@@ -31,3 +31,8 @@ void FUN_00465CC0()
         i++;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x887048
+CCINIClass* DAT_00887048;
+// END defined globals

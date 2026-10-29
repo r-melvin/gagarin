@@ -442,3 +442,8 @@ void EditClass::SetFocus()
     }
     GadgetClass::SetFocus();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E8678
+extern const double DAT_007E8678 = 60.0;
+// END defined globals

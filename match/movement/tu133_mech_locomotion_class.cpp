@@ -215,3 +215,8 @@ int MechLocomotionClass::Size()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x5B1B50 -- compiler-generated Mech deleting destructor;
 // the table's weak vector-deleting reference defaults to this scalar entry.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABEE10
+LocoCoord DAT_00ABEE10;
+// END defined globals

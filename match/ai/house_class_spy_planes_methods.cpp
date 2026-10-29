@@ -71,3 +71,10 @@ int __fastcall HouseClass::SendSpyPlanes(int typeIndex, int count, int a2,
 
     return made;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B21C
+AircraftTypeClass** DAT_00A8B21C;
+// GLOBAL: GAMEMD 0xB04C38
+CellStruct DAT_00B04C38;
+// END defined globals

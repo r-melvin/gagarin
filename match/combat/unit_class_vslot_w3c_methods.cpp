@@ -106,3 +106,8 @@ bool UnitClass::vf_65(RectangleStruct* rect, bool force, int a3)
     }
     return ObjectClass::vf_65(rect, force, 0);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1CFB8
+CellStruct DAT_00B1CFB8;
+// END defined globals

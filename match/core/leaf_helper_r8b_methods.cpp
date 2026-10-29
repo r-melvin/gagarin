@@ -168,3 +168,10 @@ bool Obj_004D03D0::FUN_004D03D0(const Obj_004D03D0* other) const
 {
     return abs(X) >= abs(other->X);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA0748
+int DAT_00AA0748;
+// GLOBAL: GAMEMD 0xAA0E18
+int DAT_00AA0E18;
+// END defined globals

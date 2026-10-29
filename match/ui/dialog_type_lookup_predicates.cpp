@@ -99,3 +99,8 @@ int FUN_00603240(int nKey, GG_HWND hCtl)
 
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC1B00
+HashMap_00602B90 DAT_00AC1B00;
+// END defined globals

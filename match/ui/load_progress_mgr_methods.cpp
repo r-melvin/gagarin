@@ -110,3 +110,12 @@ bool LoadProgressMgr::Notice(int id, int arg)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F5BE0
+int DAT_007F5BE0 = 640;
+// GLOBAL: GAMEMD 0x7F5BE4
+int DAT_007F5BE4 = 800;
+// GLOBAL: GAMEMD 0x7F5BF0
+int DAT_007F5BF0 = 600;
+// END defined globals

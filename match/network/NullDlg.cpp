@@ -94,3 +94,10 @@ int __stdcall FUN_005EFF00(HWND h, UINT msg, WPARAM w, LPARAM l)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8DAC0
+SerialSettings_005F19E0 DAT_00A8DAC0;
+// GLOBAL: GAMEMD 0x7EEFB8
+extern const double DAT_007EEFB8 = 60.0;
+// END defined globals

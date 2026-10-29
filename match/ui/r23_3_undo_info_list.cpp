@@ -50,3 +50,10 @@ void FUN_006B24A0()
     }
     DAT_00B0B650.Clear();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0B6EC
+UndoGridSlot_006B24A0* DAT_00B0B6EC;
+// GLOBAL: GAMEMD 0x8759A4
+int DAT_008759A4 = 0;
+// END defined globals

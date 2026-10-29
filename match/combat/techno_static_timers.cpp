@@ -8,27 +8,7 @@
 // the destructor of a static data member. The frame timer starts from the
 // frame counter with the middle word untouched; the wall-clock timer stamps the
 // multimedia clock (GameClockClass::GetTime, 0x6C8C40) and clears the duration.
-#include "../_layout/elapsed_timer.h"
-#include "../_layout/frame_timer.h"
-
-struct TechnoStaticFrameTimer : CDTimerClass
-{
-    TechnoStaticFrameTimer()
-    {
-        StartTime = CurrentFrame;
-        TimeLeft = 0;
-    }
-    ~TechnoStaticFrameTimer() {}
-};
-struct TechnoStaticClockTimer : ScenarioElapsedTimer { ~TechnoStaticClockTimer() {} };
-
-struct TechnoStatics
-{
-    // GLOBAL: GAMEMD 0xB0EA80
-    static TechnoStaticFrameTimer FrameTimer;
-    // GLOBAL: GAMEMD 0xB0EA70
-    static TechnoStaticClockTimer ClockTimer;
-};
+#include "techno_static_timers.h"
 
 // SYNTHETIC: GAMEMD 0x006F2AB0 -- initialiser of TechnoStatics::FrameTimer
 // SYNTHETIC: GAMEMD 0x006F2AD0 -- exit stub of TechnoStatics::FrameTimer, guard byte 0xB0EA38 bit 0

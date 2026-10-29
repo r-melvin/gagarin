@@ -64,3 +64,8 @@ bool Cell_004838E0::CanTiberiumGerminate(void* tiberium)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8ED28
+IsoTileVector_004838E0 IsoTileArray_004838E0;
+// END defined globals

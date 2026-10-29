@@ -52,3 +52,8 @@ char *FUN_0074fdc0()
 	}
 	return DAT_00846158;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x846358
+bool DAT_00846358 = true;
+// END defined globals

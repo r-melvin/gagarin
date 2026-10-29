@@ -64,3 +64,10 @@ long ComPtr_0041C250::CreateInstance(const void* rclsid, ComUnknown_0041C250* ou
     }
     return hr;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x817BB0
+extern const char riid_00817BB0[16] = {-112, 50, 15, 7, 65, -104, -47, 17, -73, 9, 0, -96, 36, -35, -81, -47};
+// GLOBAL: GAMEMD 0x817BC0
+extern const char riid_00817BC0[16] = {0, 0, 0, 0, 0, 0, 0, 0, -64, 0, 0, 0, 0, 0, 0, 70};
+// END defined globals

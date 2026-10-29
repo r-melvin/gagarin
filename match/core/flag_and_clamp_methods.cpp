@@ -55,3 +55,8 @@ bool __cdecl FUN_00407000()
 {
     return DAT_0087E728 != 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87E728
+void* DAT_0087E728;
+// END defined globals

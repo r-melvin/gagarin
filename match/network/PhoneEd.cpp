@@ -181,3 +181,8 @@ void PhoneBookDialog_006316E0::FUN_00631B20()
         SendMessageA(item, 0xF1, !own, 0);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EFD90
+extern const double DAT_007EFD90 = 60.0;
+// END defined globals

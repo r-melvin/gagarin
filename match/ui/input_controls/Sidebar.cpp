@@ -1702,3 +1702,42 @@ struct Elem_006AC8D0 { int unknown_00; int unknown_04; Elem_006AC8D0() {} bool o
 template class DynamicVectorClass<Elem_006AC8D0>;
 
 // SYNTHETIC: GAMEMD 0x4AEBF0 -- DisplayClass scalar deleting destructor, emitted by the compiler from the virtual destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F6D0
+SidebarConvert* ConvertB_0087F6D0;
+// GLOBAL: GAMEMD 0x886F94
+int DAT_00886F94;
+// GLOBAL: GAMEMD 0xB07BC0
+SidebarShapeFile* DarkenShape_00B07BC0;
+// GLOBAL: GAMEMD 0xB0B328
+SidebarButton ScrollDownButton_00B0B328;
+// GLOBAL: GAMEMD 0xB0B408
+SidebarButton ScrollUpButton_00B0B408;
+// GLOBAL: GAMEMD 0xB0B468
+SidebarShapeFile* SideShapes_00B0B468[8];
+// GLOBAL: GAMEMD 0xB0B488
+bool SideShapeOwned_00B0B488[8];
+// GLOBAL: GAMEMD 0xB0B490
+SidebarShapeFile* ObsShapes_00B0B490[15];
+// GLOBAL: GAMEMD 0xB0B4CC
+bool ObsShapeOwned_00B0B4CC[15];
+// GLOBAL: GAMEMD 0xB0B4E0
+int RepairY_00B0B4E0;
+// GLOBAL: GAMEMD 0xB0B4E4
+int SellOffset_00B0B4E4;
+// GLOBAL: GAMEMD 0xB0B4EC
+int TabY_00B0B4EC;
+// GLOBAL: GAMEMD 0xB0B4F0
+int TabStep_00B0B4F0;
+// GLOBAL: GAMEMD 0xB0B4F8
+int StripY_00B0B4F8;
+// GLOBAL: GAMEMD 0xB0B4FC
+int ColumnStep_00B0B4FC;
+// GLOBAL: GAMEMD 0xB0B500
+int RowStep_00B0B500;
+// GLOBAL: GAMEMD 0xB0B518
+unsigned char SelectHoverChanged_00B0B518;
+// GLOBAL: GAMEMD 0x7F2F30
+extern const double DAT_007F2F30 = 60.0;
+// END defined globals

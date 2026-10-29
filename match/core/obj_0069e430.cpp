@@ -173,3 +173,8 @@ bool Obj_0069E430::FUN_0069E900(unsigned int index)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x83F870
+unsigned int DAT_0083F870 = 1;
+// END defined globals

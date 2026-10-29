@@ -41,3 +41,12 @@ GadgetClass::~GadgetClass()
 
 // SYNTHETIC: GAMEMD 0x4E1A60
 // GadgetClass scalar deleting destructor, emitted from the ordinary destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B3E88
+GadgetClass* GadgetClass_StuckOn;
+// GLOBAL: GAMEMD 0x8B3E8C
+GadgetClass* GadgetClass_LastList;
+// GLOBAL: GAMEMD 0x8B3E90
+GadgetClass* GadgetClass_Focused;
+// END defined globals

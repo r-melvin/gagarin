@@ -815,3 +815,8 @@ int TeleportLocomotionClass::Size()
 // SYNTHETIC: GAMEMD 0x71A190 -- compiler-generated IPiggyback QI adjustor thunk (this -= 0x18).
 // SYNTHETIC: GAMEMD 0x71A1A0 -- compiler-generated IPiggyback AddRef adjustor thunk (this -= 0x18).
 // SYNTHETIC: GAMEMD 0x71A1B0 -- compiler-generated IPiggyback Release adjustor thunk (this -= 0x18).
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0EBF8
+LocoCoord DAT_00B0EBF8;
+// END defined globals

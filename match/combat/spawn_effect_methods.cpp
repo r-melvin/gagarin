@@ -26,3 +26,8 @@ void FUN_004251F0(int, const short* cell)
         FUN_004A3C30(&DAT_00885780, 0x1E, FUN_0048D080);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x885780
+Queue_004251F0 DAT_00885780;
+// END defined globals

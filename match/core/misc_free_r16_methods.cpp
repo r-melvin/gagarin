@@ -207,3 +207,18 @@ bool RemembersView_r16::FUN_00759EB0(int first, unsigned int second, unsigned in
     bool done = FUN_007C3270(Handle, first, second, third, fourth, fifth) == -1;
     return done;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A0DD0
+int DAT_008A0DD0;
+// GLOBAL: GAMEMD 0x8A0DD4
+int DAT_008A0DD4;
+// GLOBAL: GAMEMD 0x8A0DD8
+int DAT_008A0DD8;
+// GLOBAL: GAMEMD 0x8A0DDC
+int DAT_008A0DDC;
+// GLOBAL: GAMEMD 0x8A0DE0
+int DAT_008A0DE0;
+// GLOBAL: GAMEMD 0x8A0DE4
+int DAT_008A0DE4;
+// END defined globals

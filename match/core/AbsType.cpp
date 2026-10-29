@@ -78,3 +78,8 @@ void AbstractTypeClass::vf_13(Obj_004A1D30* crc)
 void AbstractTypeClass::vf_24(int value)
 {
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E1FC0
+extern const double DAT_007E1FC0 = 60.0;
+// END defined globals

@@ -79,8 +79,14 @@ def relocs_in(final, secno, start, end):
 class Resolver:
     """Where each name will be in the linked image: pin names carry it, the rest comes from the plan."""
 
-    def __init__(self, *tables):
+    def __init__(self, *tables, aliases=None):
         self.tables = tables
+        self.aliases = aliases or {}   # (name, VA) -> the name that is defined at VA for a name with several addresses
+
+    def alias(self, name, va):
+        """A name the project defines at several retail addresses (a scalar deleting destructor that several
+        instances share) is linked at one of them; the instance at `va` goes by another name."""
+        return self.aliases.get((name, va))
 
     def address(self, name):
         va = pin_address(name)
@@ -192,6 +198,9 @@ def candidates(path, parsed, final, address_of, resolver, retail, regions, searc
                 addend, = struct.unpack_from("<I", body, lo)
                 got, = struct.unpack_from("<I", want, lo)
                 known = resolver.address(tname)
+                same = resolver.alias(tname, (got - addend) & 0xFFFFFFFF)
+                if same:   # the slot names the instance at its own retail address, not the one the name links to
+                    tname, known = same, (got - addend) & 0xFFFFFFFF
                 if known is None:
                     bad = f"relocation target {tname} has no known address"
                     break

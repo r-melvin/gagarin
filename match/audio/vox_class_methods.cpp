@@ -97,3 +97,8 @@ void VoxClass::SilenceIndex(int index)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D4A0
+VoxArrayType VoxArray;
+// END defined globals

@@ -118,3 +118,8 @@ HRESULT __stdcall RadSiteClass::Load(IStream* pStm)
 }
 
 // SYNTHETIC: GAMEMD 0x65BED0 -- RadSiteClass scalar deleting destructor, emitted by the compiler from the virtual destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABCA00
+LightTint DAT_00ABCA00;
+// END defined globals

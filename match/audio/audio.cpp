@@ -158,3 +158,10 @@ VocClass* AudioController::GetEventType(void* event)
 {
     return *(VocClass**)((char*)event + 0x24);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87E294
+AudioIDXData* AudioIDXData_Instance;
+// GLOBAL: GAMEMD 0x87E2A0
+void* g_AudioEnabled;
+// END defined globals

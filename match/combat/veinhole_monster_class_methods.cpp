@@ -58,3 +58,10 @@ void VeinholeMonsterClass::LoadVeinholeArt(int idxTheatre)
     sprintf(filename, "VEINHOLE.%s", TheaterArray[idxTheatre].Extension);
     VeinSHPData = LoadVeinholeSHP(filename, 0);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D290
+DynamicVectorClassLayout VeinholeArray;
+// GLOBAL: GAMEMD 0xB1D2EC
+void* VeinSHPData;
+// END defined globals

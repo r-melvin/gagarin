@@ -301,3 +301,20 @@ void __fastcall FUN_00549A00(int a, int b, int* outX, int* outY)
     *outX += (b * -60) / 2;
     *outY += (b * 30) / 2;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA0374
+int DebugWindowListCapacity;
+// GLOBAL: GAMEMD 0xAA044C
+void** DebugWindowList;
+// GLOBAL: GAMEMD 0xAA0470
+int DebugWindowLastKey;
+// GLOBAL: GAMEMD 0xAA0474
+int DebugWindowLastIndex;
+// GLOBAL: GAMEMD 0xAA107C
+TileStep_00544E30** DAT_00AA107C;
+// GLOBAL: GAMEMD 0xAA1088
+int DAT_00AA1088;
+// GLOBAL: GAMEMD 0x87DE2C
+int DAT_0087DE2C = 0;
+// END defined globals

@@ -275,3 +275,12 @@ int TagClass::vf_11()
 
 // SYNTHETIC: GAMEMD 0x6E58B0
 // TagClass scalar deleting destructor, emitted by the compiler.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83CDC
+int DAT_00A83CDC;
+// GLOBAL: GAMEMD 0xA83DBC
+int DAT_00A83DBC;
+// GLOBAL: GAMEMD 0xA8ED6B
+bool DAT_00A8ED6B;
+// END defined globals

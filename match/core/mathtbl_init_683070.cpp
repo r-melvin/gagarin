@@ -63,3 +63,8 @@ MathTblZero3 DAT_00B05488;
 // SYNTHETIC: GAMEMD 0x683260
 // GLOBAL: GAMEMD 0xB05448
 MathTblZero4 DAT_00B05448;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F0E40
+extern const double DAT_007F0E40 = 0.017453292519943295;
+// END defined globals

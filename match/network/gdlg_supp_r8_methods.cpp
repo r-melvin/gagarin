@@ -249,3 +249,8 @@ int __fastcall FUN_004E5000(int id)
     }
     return -1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC4848
+PCX DAT_00AC4848;
+// END defined globals

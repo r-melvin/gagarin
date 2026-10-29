@@ -373,3 +373,10 @@ BuildingClass* HouseClass::FUN_004F9670()
     }
     return best;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8243C8
+int DAT_008243C8[9] = {-131, -130, -129, -1, 0, 1, 129, 130, 131};
+// GLOBAL: GAMEMD 0x8243EC
+int DAT_008243EC[9] = {2, 1, 2, 1, 0, 1, 2, 1, 2};
+// END defined globals

@@ -111,3 +111,12 @@ void FUN_00750FA0()
         node = next;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D320
+SampleList_r21_4 DAT_00B1D320_r21_4;
+// GLOBAL: GAMEMD 0xB1D3A4
+SamplePool_r21_4* DAT_00B1D3A4_r21_4;
+// GLOBAL: GAMEMD 0xB1D3A8
+int DAT_00B1D3A8_r21_4;
+// END defined globals

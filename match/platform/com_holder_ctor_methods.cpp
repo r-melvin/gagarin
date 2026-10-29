@@ -41,3 +41,10 @@ BlockCipherView::BlockCipherView()
         FUN_007DC720(hr);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x818C08
+extern const char riid_00818C08[16] = {0, 49, 17, -32, 124, 106, -47, 17, -74, -7, 0, -96, 36, -35, -81, -47};
+// GLOBAL: GAMEMD 0x7E9500
+extern const char rclsid_007E9500[16] = {16, -83, 64, 20, -88, 106, -47, 17, -74, -7, 0, -96, 36, -35, -81, -47};
+// END defined globals

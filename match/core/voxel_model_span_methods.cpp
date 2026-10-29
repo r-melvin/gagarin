@@ -998,3 +998,8 @@ void FUN_007586f0(const Vector3D *a, const Vector3D *b, float k, int set)
 	DAT_00b45990[254] = 0x10;
 	DAT_00b45990[253] = 0x10;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB43184
+int DAT_00b43184;
+// END defined globals

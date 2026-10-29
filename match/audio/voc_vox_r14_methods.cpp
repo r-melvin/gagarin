@@ -101,3 +101,12 @@ bool __fastcall FUN_007532A0(int index)
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D4A4
+VoxClass** DAT_00B1D4A4;
+// GLOBAL: GAMEMD 0xB1D4B0
+int DAT_00B1D4B0;
+// GLOBAL: GAMEMD 0xB1D4C4
+VoxClass* DAT_00B1D4C4;
+// END defined globals

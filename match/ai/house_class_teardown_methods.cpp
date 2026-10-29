@@ -55,3 +55,8 @@ void HouseClass::SDDTORAllAndTriggers()
 
     delete this;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EC78
+DynamicVectorClassLayout TechnoArray;
+// END defined globals

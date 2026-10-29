@@ -90,3 +90,8 @@ void FUN_0053E420(void* window)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA0450
+int DebugWindowListCount;
+// END defined globals

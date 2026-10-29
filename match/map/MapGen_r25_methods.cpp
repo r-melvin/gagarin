@@ -40,3 +40,8 @@ CellStruct* __fastcall FUN_0058BEA0(CellStruct* out)
     *out = z;
     return out;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89C2DC
+int DAT_0089C2DC;
+// END defined globals

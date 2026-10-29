@@ -44,3 +44,8 @@ bool CellClass::TryAssignJumpjet(ObjectClass* object)
         Jumpjet_OccupyCell(object, MapCoords);
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89E748
+CellStruct JumpjetClearCoords;
+// END defined globals

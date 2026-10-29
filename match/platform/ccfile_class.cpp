@@ -625,3 +625,8 @@ void RawFileClass::Bias(int offset, int length)
         this->RawFileClass::Seek(0, 0);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB04BEC
+bool IsReadingAudioFile;
+// END defined globals

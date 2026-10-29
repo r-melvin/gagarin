@@ -2906,3 +2906,12 @@ ShapeButtonClass::ShapeButtonClass(int id, const void* shape, int x, int y,
     if (width != 0) Width = width;
     if (height != 0) Height = height;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x83ED14
+signed char DAT_0083ED14[9] = {3, 11, 21, 29, 13, 25, 17, 15, 5};
+// GLOBAL: GAMEMD 0x83ED20
+int DAT_0083ED20 = -1;
+// GLOBAL: GAMEMD 0x7F1190
+extern const double DAT_007F1190 = 60.0;
+// END defined globals

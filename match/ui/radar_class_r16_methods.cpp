@@ -130,3 +130,8 @@ void RadarView_R16::FUN_00656BE0(bool on, bool sound)
         FUN_004068E0("Radar: DEACTIVING\n");
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F0424
+extern const float DAT_007F0424 = 0.00390625f;
+// END defined globals

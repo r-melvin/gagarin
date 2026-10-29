@@ -64,3 +64,10 @@ int FUN_0063F7C0(Obj_0063F7C0* a1, int a2)
     DAT_00AC4E74 = c1;
     return c1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC4E74
+int DAT_00AC4E74;
+// GLOBAL: GAMEMD 0x7EFF40
+extern const double DAT_007EFF40 = 60.0;
+// END defined globals

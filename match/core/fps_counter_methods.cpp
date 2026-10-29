@@ -43,3 +43,14 @@ unsigned int Detail::GetMinFrameRate()
 	}
 	return MinFrameRate;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABCD44
+unsigned int FPSCounter_CurrentFrameRate;
+// GLOBAL: GAMEMD 0xABCD50
+bool FPSCounter_ReducedEffects;
+// GLOBAL: GAMEMD 0x829FF4
+unsigned int MinFrameRate = 0xF;
+// GLOBAL: GAMEMD 0x829FF8
+unsigned int BufferZoneWidth = 5;
+// END defined globals

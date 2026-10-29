@@ -271,3 +271,8 @@ const wchar_t* LoadOptionsClass::Slot8()
 
 // SYNTHETIC: GAMEMD 0x55A460
 // DynamicVectorClass<FileEntryClass*>::scalar deleting destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8ED5C
+bool MenusLoadFlagA;
+// END defined globals

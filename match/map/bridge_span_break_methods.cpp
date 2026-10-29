@@ -156,3 +156,22 @@ void BridgeSpanWalker::Break_00572330(BridgeCellStruct* cell, unsigned facing)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA0E28
+int GgTileBaseB;
+// GLOBAL: GAMEMD 0xAA0E38
+int GgRampV0;
+// GLOBAL: GAMEMD 0xAA1130
+int GgRampV1;
+// GLOBAL: GAMEMD 0xABAD1C
+int GgTileBaseA;
+// GLOBAL: GAMEMD 0xABAD30
+int GgBridgeSetV;
+// GLOBAL: GAMEMD 0xABC1E8
+int GgCapV0;
+// GLOBAL: GAMEMD 0xABC2B4
+int GgCapV1;
+// GLOBAL: GAMEMD 0xABDC50
+BridgeCellClass InvalidCell;
+// END defined globals

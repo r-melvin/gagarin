@@ -332,3 +332,8 @@ int WalkLocomotionClass::Size()
 // SYNTHETIC: GAMEMD 0x75CC60 -- compiler-generated IPiggyback QI adjustor thunk (this -= 0x18).
 // SYNTHETIC: GAMEMD 0x75CC70 -- compiler-generated IPiggyback AddRef adjustor thunk (this -= 0x18).
 // SYNTHETIC: GAMEMD 0x75CC80 -- compiler-generated IPiggyback Release adjustor thunk (this -= 0x18).
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB45BE8
+LocoCoord DAT_00B45BE8;
+// END defined globals

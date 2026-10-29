@@ -73,3 +73,10 @@ void GScreen_004F4480::Render()
     (this->*this->Vtbl->At_44)();
     DAT_00887314 = saved;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EF54
+Opt_004F4480* DAT_00A8EF54;
+// GLOBAL: GAMEMD 0xB0B519
+bool DAT_00B0B519;
+// END defined globals

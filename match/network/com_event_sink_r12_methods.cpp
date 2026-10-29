@@ -70,3 +70,10 @@ unsigned long __stdcall DownloadEventSink_r12::AddRef()
 {
     return InterlockedIncrement(&m_dwRef);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB77DC1
+bool DAT_00B77DC1;
+// GLOBAL: GAMEMD 0x7EEF28
+int DAT_007EEF28 = -1;
+// END defined globals

@@ -44,3 +44,8 @@ int PKey_00632740::Decrypt(const void* source, int length, void* dest) const
     }
     return total;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8F8F8
+int DAT_00a8f8f8;
+// END defined globals

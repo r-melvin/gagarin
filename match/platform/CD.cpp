@@ -882,3 +882,16 @@ bool FUN_0047af70(char* name)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x884B8E
+unsigned char TipTouchedSidebar_00884B8E;
+// GLOBAL: GAMEMD 0x886F90
+RectangleStruct SidebarRect_00886F90;
+// GLOBAL: GAMEMD 0x89E410
+SearchPath_0047AE10* DAT_0089E410;
+// GLOBAL: GAMEMD 0x89E418
+unsigned int DAT_0089E418;
+// GLOBAL: GAMEMD 0xA8EB7C
+unsigned char SidebarSideFlag_00A8EB7C;
+// END defined globals

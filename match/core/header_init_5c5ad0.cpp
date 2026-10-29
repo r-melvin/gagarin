@@ -67,3 +67,8 @@ HeaderCoordInit DAT_00ABF4D8(0, 0, 0);
 // SYNTHETIC: GAMEMD 0x5C5CC0
 // GLOBAL: GAMEMD 0xABF500
 HeaderCoordInit DAT_00ABF500(128, 128, 0);
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EE410
+extern const double DAT_007EE410 = 60.0;
+// END defined globals

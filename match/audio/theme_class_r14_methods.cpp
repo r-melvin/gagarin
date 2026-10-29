@@ -93,3 +93,10 @@ long ThemeClass::SaveIndexes(ThemeSaveStream_00721010* stm)
     }
     return hr;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EC74
+bool ScoresPresent_00A8EC74;
+// GLOBAL: GAMEMD 0xA8ED64
+bool DAT_00A8ED64;
+// END defined globals

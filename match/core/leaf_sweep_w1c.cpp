@@ -816,3 +816,14 @@ int Map_004AA290::QueryCell(int a, int b)
 {
     return GetCell(a, b, 0)->Query();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B3F14
+unsigned int DAT_008B3F14;
+// GLOBAL: GAMEMD 0x8B4148
+int DAT_008B4148;
+// GLOBAL: GAMEMD 0xAA0448
+int DAT_00AA0448;
+// GLOBAL: GAMEMD 0xAC11B4
+Slot_004E4820* DAT_00AC11B4;
+// END defined globals

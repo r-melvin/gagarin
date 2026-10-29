@@ -271,3 +271,10 @@ void FUN_005FF800()
         DAT_00AC1698[i] = 0;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC1698
+BSurface_005FF800* DAT_00AC1698[74];
+// GLOBAL: GAMEMD 0xAC1838
+void* DAT_00AC1838;
+// END defined globals

@@ -328,3 +328,10 @@ void Fill_Team_List(void* target)
         Set_Team_Entry_004E5ED0(target, item, value);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B29C
+int StartTable[8];
+// GLOBAL: GAMEMD 0xA8B2BC
+SlotTables SlotChoices;
+// END defined globals

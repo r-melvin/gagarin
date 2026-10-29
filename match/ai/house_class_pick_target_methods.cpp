@@ -43,3 +43,8 @@ Cell HouseClass::PickTargetByType(int targetType)
     }
     return DAT_00A8EF98;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B40E8
+TeamVector_0050D170 DAT_008B40E8;
+// END defined globals

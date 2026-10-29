@@ -32,3 +32,8 @@ int VocClass::FindIndex(const char* pName)
     }
     return -1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D378
+DynamicVectorClassLayout VocClass_Array;
+// END defined globals

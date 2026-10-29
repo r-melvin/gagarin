@@ -1503,3 +1503,36 @@ template class VectorClass<HashObject<RadarTrackingStruct,TechnoClass*> >;
 // VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>> -- vtable 0x007F044C slot 3; locator 0x008083F0 -> type descriptor 0x008393E0
 //   `.?AV?$VectorClass@U?$HashObject@URadarTrackingStruct@@PAVTechnoClass@@@@@@`.
 template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F6CC
+int DAT_0087F6CC;
+// GLOBAL: GAMEMD 0x886FA8
+int DAT_00886FA8;
+// GLOBAL: GAMEMD 0xB048AC
+void* DAT_00B048AC;
+// GLOBAL: GAMEMD 0xB048C8
+int DAT_00B048C8;
+// GLOBAL: GAMEMD 0xB048CC
+int DAT_00B048CC;
+// GLOBAL: GAMEMD 0xB048E0
+void* DAT_00B048E0;
+// GLOBAL: GAMEMD 0xB048F8
+unsigned char DAT_00B048F8;
+// GLOBAL: GAMEMD 0xB048F9
+unsigned char DAT_00B048F9;
+// GLOBAL: GAMEMD 0xB04910
+ShapeButtonClass RadarButtonF3_00B04910;
+// GLOBAL: GAMEMD 0xB0493D
+unsigned char DAT_00B0493D;
+// GLOBAL: GAMEMD 0xB04978
+ShapeButtonClass RadarButtonF2_00B04978;
+// GLOBAL: GAMEMD 0xB049A5
+unsigned char DAT_00B049A5;
+// GLOBAL: GAMEMD 0xB04A00
+int DAT_00B04A00;
+// GLOBAL: GAMEMD 0xB04A04
+int DAT_00B04A04;
+// GLOBAL: GAMEMD 0x7F02A8
+extern const double DAT_007F02A8 = 60.0;
+// END defined globals

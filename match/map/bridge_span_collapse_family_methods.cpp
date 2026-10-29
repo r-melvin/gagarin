@@ -655,3 +655,16 @@ void BridgeSpanWalker::Collapse_00573170(BridgeCellStruct* cell, unsigned facing
         PlaceSpan(adj, GgBridgeSetH + GgTileBaseB + 3, -1, last->SubTileOrdinal - 4, 0);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA0740
+int GgRampH1;
+// GLOBAL: GAMEMD 0xAA1028
+int GgBridgeSetH;
+// GLOBAL: GAMEMD 0xAA1540
+int GgRampH0;
+// GLOBAL: GAMEMD 0xAA1548
+int GgCapH1;
+// GLOBAL: GAMEMD 0xABC1D0
+int GgCapH0;
+// END defined globals

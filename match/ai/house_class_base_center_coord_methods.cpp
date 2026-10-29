@@ -32,3 +32,10 @@ CoordStruct HouseClass::FUN_0050DF30() const
     }
     return DAT_0087F7E8.FUN_005657A0(&cell)->vf_18();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EF98
+CellStruct NoCell_00A8EF98;
+// GLOBAL: GAMEMD 0xA8EFF8
+CoordStruct EmptyCoord_00A8EFF8;
+// END defined globals

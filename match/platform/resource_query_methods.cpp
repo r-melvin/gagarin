@@ -24,3 +24,8 @@ void* Unsorted_GetResource(int id, const char* type)
 
     return LockResource(loaded);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89F974
+HINSTANCE GameInstance;
+// END defined globals

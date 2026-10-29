@@ -362,3 +362,8 @@ bool VectorResizeFamily::FUN_6B8400(int newsize, void** array)
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F35D0
+extern const double DAT_007F35D0 = 60.0;
+// END defined globals

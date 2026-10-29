@@ -29,3 +29,9 @@ void __cdecl FUN_0041CAF0()
     DAT_00889F60 = FUN_005B40B0(DAT_00817FD8, 0);
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x889F5C
+Obj_005B40B0* DAT_00889F5C;
+// GLOBAL: GAMEMD 0x889F60
+Obj_005B40B0* DAT_00889F60;
+// END defined globals

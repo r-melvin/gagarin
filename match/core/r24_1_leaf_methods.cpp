@@ -130,3 +130,8 @@ void Obj_00488210::FUN_00488210(unsigned flags, int key, int unused)
     }
     FUN_00723EC0(flags, key, 0);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F6C4
+ColorConvert* DAT_0087F6C4;
+// END defined globals

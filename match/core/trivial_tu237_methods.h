@@ -44,7 +44,8 @@ struct Obj_0070F110;
 struct Obj_0070FE40;
 
 // GLOBAL: GAMEMD 0x87F7E8
-extern char DAT_0087F7E8[];
+class MapClass;
+extern MapClass DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x6562D0 (declaration)
 void FUN_006562D0(void*, int, int);

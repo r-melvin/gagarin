@@ -136,3 +136,8 @@ bool __fastcall FUN_005C88B0(const unsigned int* a, int n)
         return false;
     return FindTablePrimeR3((unsigned short)*a) != 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x82FCE0
+unsigned int DAT_0082fce0 = 0x7FCF;
+// END defined globals

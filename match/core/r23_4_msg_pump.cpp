@@ -50,3 +50,8 @@ bool FUN_00759200()
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA0430
+int DAT_00AA0430;
+// END defined globals

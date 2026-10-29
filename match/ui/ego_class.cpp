@@ -162,3 +162,8 @@ void EgoClass::FUN_004C3DD0(void* surface)
     rect.H = 18;
     DAT_00887314->vf_2(&rect, surface, &rect, 0, 1);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A0F58
+void* DAT_008A0F58;
+// END defined globals

@@ -436,3 +436,8 @@ void Owner_005AE460::FUN_005AE460()
     }
     Slots.FUN_005CF5F0();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB054E0
+int DAT_00B054E0;
+// END defined globals

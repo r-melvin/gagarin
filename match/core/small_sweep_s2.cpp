@@ -427,3 +427,8 @@ wchar_t* __fastcall FUN_00727D60(wchar_t* text)
     }
     return text;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D428
+int DAT_00B1D428;
+// END defined globals

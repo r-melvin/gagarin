@@ -67,3 +67,8 @@ CellStruct* TeamTypeClass::GetTransportWaypoint(CellStruct* buffer) const
     *buffer = *WaypointLocatorPtr->GetCoords(&local, this->TransportWaypoint);
     return buffer;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0E9C8
+CellStruct DefaultWaypointCell;
+// END defined globals

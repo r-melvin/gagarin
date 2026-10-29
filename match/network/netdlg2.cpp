@@ -113,3 +113,8 @@ void __cdecl FUN_005DFDE0()
 void __cdecl FUN_005DFDF0()
 {
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EEF08
+extern const double DAT_007EEF08 = 60.0;
+// END defined globals

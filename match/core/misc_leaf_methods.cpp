@@ -60,3 +60,8 @@ void __stdcall FUN_004F42E0(void)
 {
     DAT_00a8ef54 = 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87E730
+int DAT_0087E730;
+// END defined globals

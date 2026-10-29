@@ -189,3 +189,8 @@ void FUN_004a4700()
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x81FC6C
+bool DAT_0081FC6C = true;
+// END defined globals

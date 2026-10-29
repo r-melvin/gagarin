@@ -248,3 +248,22 @@ bool TActionClass::FUN_006E2F00(HouseClass* house, ObjectClass* object, TriggerC
     DAT_00A8B230->unknown_353C = unknown_90;
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F770
+TActionSlowObject* DAT_0087F770;
+// GLOBAL: GAMEMD 0x88098C
+int DAT_0088098C;
+// GLOBAL: GAMEMD 0x880990
+int DAT_00880990;
+// GLOBAL: GAMEMD 0x880994
+int DAT_00880994;
+// GLOBAL: GAMEMD 0x88099A
+bool DAT_0088099A;
+// GLOBAL: GAMEMD 0x88099B
+bool DAT_0088099B;
+// GLOBAL: GAMEMD 0x88099C
+bool DAT_0088099C;
+// GLOBAL: GAMEMD 0xA8ED9C
+bool DAT_00A8ED9C;
+// END defined globals

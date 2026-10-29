@@ -393,3 +393,11 @@ void __fastcall FUN_006EC250(int threshold, int house)
     }
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B40F8
+int DAT_008B40F8;
+// GLOBAL: GAMEMD 0x8B41CC
+void** DAT_008B41CC;
+// GLOBAL: GAMEMD 0xA8ECA4
+void** DAT_00A8ECA4;
+// END defined globals

@@ -42,3 +42,16 @@ int FUN_007529E0()
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D3C8
+VoxList_007529E0 DAT_00B1D3C8_busy;
+// GLOBAL: GAMEMD 0xB1D3F0
+VoxList_007529E0 DAT_00B1D3F0_busy;
+// GLOBAL: GAMEMD 0xB1D450
+VoxList_007529E0 DAT_00B1D450_busy[4];
+// GLOBAL: GAMEMD 0xB1D4B8
+void* DAT_00B1D4B8_busy;
+// GLOBAL: GAMEMD 0xB1D4CC
+VoxEngine_00752480* DAT_00B1D4CC;
+// END defined globals

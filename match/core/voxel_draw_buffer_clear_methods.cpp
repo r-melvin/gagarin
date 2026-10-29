@@ -68,3 +68,14 @@ void FUN_00753e00()
 	DAT_00b2d5e0 = Float3(10000.0f, 10000.0f, 10000.0f);
 	DAT_00b2d948 = Float3(-10000.0f, -10000.0f, -10000.0f);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB2FB60
+DirtyRect DAT_00b2fb60;
+// GLOBAL: GAMEMD 0xB2FB70
+int DAT_00b2fb70;
+// GLOBAL: GAMEMD 0xB43180
+int DAT_00b43180;
+// GLOBAL: GAMEMD 0x8467E0
+int DAT_008467e0 = 1;
+// END defined globals

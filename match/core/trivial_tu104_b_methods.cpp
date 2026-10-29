@@ -12,3 +12,8 @@ int __cdecl FUN_0053A0E0()
 {
     return DAT_00A9FAB4 != 0 || DAT_00A9FAB8 > 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA9FAB8
+int DAT_00A9FAB8;
+// END defined globals

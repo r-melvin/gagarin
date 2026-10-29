@@ -116,3 +116,12 @@ void __fastcall FUN_0053F5F0(int socketNumber)
     Interface_00887628->Slot20(DAT_00A8EBB4);
     DAT_00AA05A8 = Interface_00887628->Init(socketNumber & 0xFFFF);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A00A0
+bool DAT_008A00A0;
+// GLOBAL: GAMEMD 0xA8EBB4
+int DAT_00A8EBB4;
+// GLOBAL: GAMEMD 0xAA05A8
+int DAT_00AA05A8;
+// END defined globals

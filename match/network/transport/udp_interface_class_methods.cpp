@@ -408,3 +408,10 @@ unsigned short UDPInterfaceClass::GetPrimaryPort()
 {
     return PrimaryPort;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x841F30
+int DAT_00841F30 = 1234;
+// GLOBAL: GAMEMD 0x841F38
+unsigned short DAT_00841F38 = 1236;
+// END defined globals

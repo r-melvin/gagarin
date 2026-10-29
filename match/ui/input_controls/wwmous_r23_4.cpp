@@ -39,3 +39,10 @@ void FUN_007B86B0()
         MouseMutex = 0;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB78154
+HANDLE DAT_00B78154;
+// GLOBAL: GAMEMD 0xB7816C
+int DAT_00B7816C;
+// END defined globals

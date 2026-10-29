@@ -93,3 +93,8 @@ bool SerialEdDialog_006956D0::FUN_006956D0(SerialSettings_006956D0* settings)
     bool accepted = Result == 1;
     return accepted;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F1180
+extern const double DAT_007F1180 = 60.0;
+// END defined globals

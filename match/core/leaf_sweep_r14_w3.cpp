@@ -518,3 +518,10 @@ int Counts_00756570::FUN_00756570() const
 {
     return A * 12 + B * 164 + C + 0x1C;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D14C
+unsigned short* DAT_00b1d14c;
+// GLOBAL: GAMEMD 0xB44318
+Blob30_00754BE0 DAT_00B44318;
+// END defined globals

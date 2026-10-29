@@ -50,6 +50,7 @@
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/unit_type_class.h"
 #include "../_layout/voxel_anim_class.h"
+#include "../map/terrain_objects/isometric_tile_class.h"
 
 
 
@@ -71,12 +72,6 @@ public:
 
 
 class DiskLaserClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class IsometricTileClass : public AbstractClass
 {
 public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
@@ -185,7 +180,7 @@ HRESULT __stdcall InfantryClass::Save(IStream* pStm, BOOL fClearDirty)
 // FUNCTION: GAMEMD 0x5439F0
 HRESULT __stdcall IsometricTileClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
+    HRESULT hr = MapObjClassView::Save(pStm, fClearDirty);
     if (hr >= 0)
         hr = 0;
     return hr;

@@ -466,3 +466,8 @@ void ScenarioClass::ScenarioLighting(int* red, int* green, int* blue)
         break;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EB78
+int DAT_00A8EB78;
+// END defined globals

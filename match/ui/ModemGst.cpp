@@ -162,3 +162,12 @@ void Obj_005B6EB0::FUN_005B6EB0(const wchar_t* name, int index, const wchar_t* t
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B3AC
+int DAT_00A8B3AC;
+// GLOBAL: GAMEMD 0x8316A8
+extern const unsigned long DAT_008316A8[8] = {0xDE2DD, 0x1919FF, 0xE2742A, 0x2ED13E, 0x19A0FF, 0xE6D732, 0xBD2895, 0xEB9AFF};
+// GLOBAL: GAMEMD 0x7EEF44
+extern const unsigned long DefaultSchemeColor = 0x40FFFF;
+// END defined globals

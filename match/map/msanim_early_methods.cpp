@@ -193,3 +193,8 @@ MSVQAnim::~MSVQAnim()
 
 // Compiler-generated scalar deleting destructor of MSVQAnim, emitted with the vtable 0x7EE9B0 by the constructor.
 // SYNTHETIC: GAMEMD 0x5CECB0 -- MSVQAnim::`scalar deleting destructor'
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EB98
+float DAT_00A8EB98;
+// END defined globals

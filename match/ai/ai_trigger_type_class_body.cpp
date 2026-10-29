@@ -673,3 +673,18 @@ void FUN_00420130()
 void FUN_00420360()
 {
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83C68
+DynamicVectorClass<TechnoTypeClass*> DAT_00A83C68;
+// GLOBAL: GAMEMD 0xA83C98
+DynamicVectorClass<AbstractTypeClass*> DAT_00A83C98;
+// GLOBAL: GAMEMD 0xA83CE0
+DynamicVectorClass<TechnoTypeClass*> DAT_00A83CE0;
+// GLOBAL: GAMEMD 0xA8B200
+DynamicVectorClass<AITriggerTypeClass*> AITriggerTypes;
+// GLOBAL: GAMEMD 0xA8B218
+DynamicVectorClass<TechnoTypeClass*> DAT_00A8B218;
+// GLOBAL: GAMEMD 0xA8E348
+DynamicVectorClass<TechnoTypeClass*> DAT_00A8E348;
+// END defined globals

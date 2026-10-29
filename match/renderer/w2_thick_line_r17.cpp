@@ -63,3 +63,8 @@ void __fastcall FUN_0063D960(int width, unsigned int color, Point2D a, Point2D b
         FUN_0063D810(i, color, a, b, 1);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x836880
+unsigned char DAT_00836880[16] = {1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1};
+// END defined globals

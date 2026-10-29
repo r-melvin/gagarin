@@ -72,3 +72,8 @@ int __stdcall FUN_0052D870(HWND h, UINT msg, WPARAM w, LPARAM l)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x825C80
+int DAT_00825C80 = -1;
+// END defined globals

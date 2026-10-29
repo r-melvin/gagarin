@@ -390,3 +390,12 @@ int OverlayTypeClass::vf_16()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x5FEF30 — compiler-generated scalar deleting destructor emitted for the virtual destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D90
+int DAT_00A83D90;
+// GLOBAL: GAMEMD 0xAC1608
+MapObjCell OverlayZeroCell;
+// GLOBAL: GAMEMD 0x7EF5C0
+extern const double DAT_007EF5C0 = 60.0;
+// END defined globals

@@ -2683,3 +2683,18 @@ int BulletClass::vf_11()
 
 // SYNTHETIC: GAMEMD 0x46B5C0 -- BulletClass scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E1738
+extern const double DAT_007E1738 = 0.5;
+// GLOBAL: GAMEMD 0x7E2800
+extern const double DAT_007E2800 = 0.0;
+// GLOBAL: GAMEMD 0x7E2818
+extern const double DAT_007E2818 = -10430.060040584269;
+// GLOBAL: GAMEMD 0x7E2820
+extern const double DAT_007E2820 = 1.5707963267948966;
+// GLOBAL: GAMEMD 0x7E96E0
+extern const char rclsid_007E96E0[16] = {-55, 45, 39, 14, 15, -100, -47, 17, -73, 9, 0, -96, 36, -35, -81, -47};
+// GLOBAL: GAMEMD 0x7F7C90
+extern const char riid_007F7C90[16] = {0, 0, 0, 0, 0, 0, 0, 0, -64, 0, 0, 0, 0, 0, 0, 70};
+// END defined globals

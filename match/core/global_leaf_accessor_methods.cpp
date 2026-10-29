@@ -83,3 +83,10 @@ int FUN_007271D0(int index)
 {
     return DAT_008449F8[index];
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABED0C
+int DAT_00ABED0C;
+// GLOBAL: GAMEMD 0x816108
+int DAT_00816108 = 1;
+// END defined globals

@@ -198,3 +198,16 @@ void AnimClass::vf_62()
     }
     ObjectClass::vf_62();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D84
+OverlayView_004260F0** DAT_00A83D84;
+// GLOBAL: GAMEMD 0xA8E9AC
+AnimClass** DAT_00A8E9AC;
+// GLOBAL: GAMEMD 0xA8E9B8
+int DAT_00A8E9B8;
+// GLOBAL: GAMEMD 0xB054D4
+SchemeView_004261D0** DAT_00B054D4;
+// GLOBAL: GAMEMD 0xB0F4EC
+TiberiumView_004261D0** DAT_00B0F4EC;
+// END defined globals

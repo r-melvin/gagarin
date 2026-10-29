@@ -114,3 +114,18 @@ void __cdecl FUN_0072CB60()
         DAT_00B0FCF4.Convert = 0;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0FA60
+WholeFileBlock* DAT_00B0FA60;
+// GLOBAL: GAMEMD 0xB0FB54
+WholeFileBlock* DAT_00B0FB54;
+// GLOBAL: GAMEMD 0xB0FCF0
+bool DAT_00B0FCF0;
+// GLOBAL: GAMEMD 0xB0FCF4
+PaletteSet DAT_00B0FCF4;
+// GLOBAL: GAMEMD 0xB0FD5C
+bool DAT_00B0FD5C;
+// GLOBAL: GAMEMD 0xB0FD60
+PaletteSet DAT_00B0FD60;
+// END defined globals

@@ -51,3 +51,16 @@ int* FUN_0074B620(unsigned int index)
         return &DAT_00889F64;
     return &DAT_00A8EB2C[index]->unknown_24;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x889F64
+int DAT_00889F64;
+// GLOBAL: GAMEMD 0x8B4154
+Rec_0046C4D0** DAT_008B4154;
+// GLOBAL: GAMEMD 0x8B4160
+unsigned int DAT_008B4160;
+// GLOBAL: GAMEMD 0xA8EB2C
+Rec_0046C4D0** DAT_00A8EB2C;
+// GLOBAL: GAMEMD 0xA8EB38
+unsigned int DAT_00A8EB38;
+// END defined globals

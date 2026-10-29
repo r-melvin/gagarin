@@ -78,3 +78,8 @@ Cell __stdcall FUN_005835D0(const CellStruct* origin, const CellStruct* comparis
 
     return selected;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABDC74
+CellStruct DAT_00ABDC74;
+// END defined globals

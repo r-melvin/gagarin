@@ -327,3 +327,12 @@ bool ObjectView_006FBFA0::FUN_006FC030()
     }
     return FUN_005F6C70();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0EA50
+int DAT_00B0EA50;
+// GLOBAL: GAMEMD 0xB73550
+int DAT_00B73550;
+// GLOBAL: GAMEMD 0x822CF2
+bool DAT_00822CF2 = true;
+// END defined globals

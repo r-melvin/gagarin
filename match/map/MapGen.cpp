@@ -1837,3 +1837,42 @@ int __cdecl FUN_005AD9C0(const void* a, const void* b)
 // FUNCTION: GAMEMD 0x5ADA40
 // VectorClass<TRect<int>>::VectorClass(int, TRect<int>*), emitted by the explicit instantiation below.
 template class VectorClass<TRect<int> >;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABDF90
+DynamicVectorClass<MapRegionClass*> DAT_00ABDF90;
+// GLOBAL: GAMEMD 0xABDFB8
+Gbl_00ABDFB8 DAT_00ABDFB8;
+// GLOBAL: GAMEMD 0xABDFD0
+int DAT_00ABDFD0;
+// GLOBAL: GAMEMD 0xABDFD4
+int DAT_00ABDFD4;
+// GLOBAL: GAMEMD 0xABDFEC
+Callback_00595BC0 DAT_00ABDFEC;
+// GLOBAL: GAMEMD 0xABE150
+Obj_00ABE150* DAT_00ABE150;
+// GLOBAL: GAMEMD 0xABEC90
+int DAT_00ABEC90;
+// GLOBAL: GAMEMD 0xABECD0
+int DAT_00ABECD0;
+// GLOBAL: GAMEMD 0xABED10
+Rec_50* DAT_00ABED10;
+// GLOBAL: GAMEMD 0xABED14
+int DAT_00ABED14;
+// GLOBAL: GAMEMD 0x82AF18
+int DAT_0082AF18[9] = {64, 128, 1, 32, 0, 2, 16, 8, 4};
+// GLOBAL: GAMEMD 0x7ED6D8
+extern const double DAT_007ED6D8 = 5.0;
+// GLOBAL: GAMEMD 0x7ED6E0
+extern const double DAT_007ED6E0 = 15.0;
+// GLOBAL: GAMEMD 0x7ED7C0
+extern const double DAT_007ED7C0 = 5.0;
+// GLOBAL: GAMEMD 0x7ED7F0
+double DAT_007ED7F0 = 0.005;
+// GLOBAL: GAMEMD 0x7ED7F8
+double DAT_007ED7F8 = 0.001;
+// GLOBAL: GAMEMD 0x7ED800
+extern const double DAT_007ED800 = 5.0;
+// GLOBAL: GAMEMD 0x7ED808
+extern const double DAT_007ED808 = 5.0;
+// END defined globals

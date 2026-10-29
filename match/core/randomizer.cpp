@@ -141,3 +141,10 @@ int Randomizer::RandomRanged(int min, int max)
 
     return pick + lo;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839644
+int DAT_00839644[4] = {-1163302777, 504877868, 62708796, 255054258};
+// GLOBAL: GAMEMD 0x839694
+int DAT_00839694[4] = {1259289432, -394989373, 1767228838, 1437059654};
+// END defined globals

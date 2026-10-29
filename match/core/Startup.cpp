@@ -2142,3 +2142,16 @@ template class TClassFactory<AlphaShapeClass>;
 typedef TClassFactory<CStreamClass> GgClassFactoryRep;
 GG_STATIC_ASSERT(offsetof(GgClassFactoryRep, RefCount) == 0x4);
 GG_STATIC_ASSERT(sizeof(GgClassFactoryRep) == 0x8);
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A0DEF
+char DAT_008A0DEF;
+// GLOBAL: GAMEMD 0xB0BC68
+int DAT_00B0BC68;
+// GLOBAL: GAMEMD 0xB0BCF5
+char DAT_00B0BCF5;
+// GLOBAL: GAMEMD 0xB732F0
+HINSTANCE DAT_00b732f0;
+// GLOBAL: GAMEMD 0x7F3700
+extern const double DAT_007F3700 = 60.0;
+// END defined globals

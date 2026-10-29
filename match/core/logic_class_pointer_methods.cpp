@@ -38,3 +38,8 @@ void LogicClass::PointerGotInvalid(AbstractClass* invalid, bool removed)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B40C8
+DynamicVectorClassLayout LogicArray;
+// END defined globals

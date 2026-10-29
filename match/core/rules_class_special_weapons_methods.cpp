@@ -34,3 +34,10 @@ bool RulesClass::Read_SpecialWeapons(CCINIClass* pINI)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8874C4
+WarheadTypeClass** WarheadTypeItems;
+// GLOBAL: GAMEMD 0x8874D0
+int WarheadTypeCount;
+// END defined globals

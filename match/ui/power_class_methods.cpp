@@ -150,3 +150,10 @@ const wchar_t* PowerClass::vf_33(int id)
 
 // SYNTHETIC: GAMEMD 0x6404B0 -- PowerClass scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0B504
+int StripHeight_00B0B504;
+// GLOBAL: GAMEMD 0x7E3568
+extern const double DAT_007E3568 = 5.0;
+// END defined globals

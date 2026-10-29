@@ -481,3 +481,8 @@ int TechnoClass::vf_199(int mode)
     }
     return range;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E27F8
+double DAT_007E27F8 = 900.0;
+// END defined globals

@@ -351,3 +351,10 @@ bool TActionClass::FUN_006E0EF0(HouseClass* house, ObjectClass* object, TriggerC
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83DEC
+InfantryClass** DAT_00A83DEC;
+// GLOBAL: GAMEMD 0xA83DF8
+int DAT_00A83DF8;
+// END defined globals

@@ -350,3 +350,10 @@ int ConnectionClass::vf_8()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x48C650  ConnectionClass::`scalar deleting destructor' (inlines ~ConnectionClass)
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EA0C
+ConnectionClass* GlobalConnection_00A8EA0C;
+// GLOBAL: GAMEMD 0x7E51A0
+extern const double DAT_007E51A0 = 60.0;
+// END defined globals

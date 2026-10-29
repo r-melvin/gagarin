@@ -101,3 +101,8 @@ OverlayTypeStaticZero3 DAT_00AC1628;
 // SYNTHETIC: GAMEMD 0x5FE230
 // GLOBAL: GAMEMD 0xAC1658
 OverlayTypeStaticCoord DAT_00AC1658;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EF5C8
+extern const double DAT_007EF5C8 = 0.017453292519943295;
+// END defined globals

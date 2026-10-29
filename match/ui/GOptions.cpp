@@ -184,3 +184,8 @@ Obj_004F2B50* Obj_004F2B50::FUN_004F2B50()
     unknown_08--;
     return this;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EA5E0
+extern const double DAT_007EA5E0 = 60.0;
+// END defined globals

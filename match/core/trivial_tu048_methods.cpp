@@ -12,3 +12,8 @@ void Obj_004790A0::FUN_004790A0()
 {
     FUN_004A80D0(DAT_0089E414, this);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89E414
+int DAT_0089E414;
+// END defined globals

@@ -57,3 +57,10 @@ ScoreFontClass::~ScoreFontClass()
     }
 }
 // SYNTHETIC: GAMEMD 0x691040 -- ScoreFontClass::`scalar deleting destructor' (vtable 0x7F0EF0 slot 0).
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0558C
+int DAT_00B0558C;
+// GLOBAL: GAMEMD 0xB05590
+SharedGlyphSlot_00B05590 DAT_00B05590[3];
+// END defined globals

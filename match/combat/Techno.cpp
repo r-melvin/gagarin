@@ -1200,7 +1200,7 @@ void TechnoClass::vf_294()
 // Calls other functions. Vtable slot 295 of TechnoClass (RTTI) and 4 derived vtable(s).
 void FUN_0070CCF0(int a1, int a2)
 {
-    FUN_006562D0(DAT_0087F7E8, a2, a1 + 0x208);
+    FUN_006562D0(&DAT_0087F7E8, a2, a1 + 0x208);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1726,6 +1726,41 @@ bool Obj_0070F110::FUN_0070F110() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+#include "techno_static_timers.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/abstract_class.h"
+#include "../_layout/player_ptr_00a83d4c.h"
+#include "../ui/input_controls/ui_display_chain.h"
+
+// GLOBAL: GAMEMD 0x87F7E8
+extern MapClass DAT_0087F7E8;
+// GLOBAL: GAMEMD 0xB0EB38
+AbstractClass* DAT_00B0EB38;
+// GLOBAL: GAMEMD 0xB0EB3C
+int DAT_00B0EB3C;
+GG_STATIC_ASSERT(sizeof(DAT_00B0EB38) == 4);
+GG_STATIC_ASSERT(sizeof(DAT_00B0EB3C) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, TalkBubbleTime) == 0x1800);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->TalkBubbleTime) == 4);
+
+// FUNCTION: GAMEMD 0x70F120
+// Physical fastcall arguments are nullable ECX object and EDX value.
+// TU placement and original lexical ownership are inferred, not proved.
+void __fastcall FUN_0070F120(AbstractClass* object, int value)
+{
+    if (object && value) {
+        DAT_00B0EB3C = value;
+        DAT_00B0EB38 = object;
+        int duration = Rules->TalkBubbleTime;
+        TechnoStatics::ClockTimer = TechnoStaticClockTimer(duration);
+        DAT_0087F7E8.FUN_005673A0(object->vf_18(), 2, DAT_00A83D4C, 0, 0, 0, 1, 1);
+    } else {
+        DAT_00B0EB3C = 0;
+        DAT_00B0EB38 = 0;
+        TechnoStatics::ClockTimer = TechnoStaticClockTimer(0);
+    }
+}
+
 // FUNCTION: GAMEMD 0x70F670
 //
 // Add this object's current contribution to the mover, remembering what was
@@ -1886,19 +1921,13 @@ void Drainer_0070FD70::BeginDraining(Target_0070FD70* target)
         FUN_00472140(target->Buffer);
     }
 
-    void* raw = gg_operator_new(0x1C8);
-    Anim_0070FD70* anim;
-    if (raw != 0) {
-        anim = ((Anim_0070FD70*)raw)->Construct(
-            RulesInstance->DrainAnim,
-            (this->*this->Vtbl->BuildCoord)(0, 1, 0x600, 0, 0));
-    } else {
-        anim = 0;
-    }
-
+    AnimClass* anim = new AnimClass(
+        RulesInstance->DrainAnimationType,
+        (this->*this->Vtbl->BuildCoord)(),
+        0, 1, 0x600, 0, false);
     this->DrainAnim = anim;
     if (anim != 0) {
-        anim->Attach(this);
+        anim->FUN_00424B50(this);
     }
 
     if (this != 0 && (this->Flags & 4) != 0) {

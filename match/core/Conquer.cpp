@@ -465,3 +465,16 @@ const char* FUN_0048E090(unsigned int index)
         return DAT_0081DA78[index];
     return DAT_00817474;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89C3B0
+int DAT_0089C3B0;
+// GLOBAL: GAMEMD 0xA83CE4
+TechnoTypeClass** UnitTypeClass_ArrayItems;
+// GLOBAL: GAMEMD 0xA8E34C
+TechnoTypeClass** InfantryTypeClass_ArrayItems;
+// GLOBAL: GAMEMD 0xA8ECB8
+DynamicVectorClass<ObjectClass*> CurrentObjects;
+// GLOBAL: GAMEMD 0x7E51E0
+extern const double DAT_007E51E0 = 60.0;
+// END defined globals

@@ -53,3 +53,14 @@ void BuildingLightMethodView_00436900::FUN_00436A00(int unknownArg0, char unknow
     if (this->unknown_E4 == (unsigned int)unknownArg0)
         this->unknown_E4 = 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E9730
+unsigned int DAT_007E9730 = 0x54822258;
+// GLOBAL: GAMEMD 0x7E9734
+unsigned int DAT_007E9734 = 0x11D1D8A8;
+// GLOBAL: GAMEMD 0x7E9738
+unsigned int DAT_007E9738 = 0x600062B4;
+// GLOBAL: GAMEMD 0x7E973C
+unsigned int DAT_007E973C = 0x79A9C697;
+// END defined globals

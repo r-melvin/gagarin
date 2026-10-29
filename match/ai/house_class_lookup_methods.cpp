@@ -150,3 +150,8 @@ int FUN_00510FB0(const char* name)
     }
     return strcmp(name, "<Player @ H>") == 0 ? 0x1182 : -1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA80228
+HouseArray_00510ED0 HouseArray;
+// END defined globals

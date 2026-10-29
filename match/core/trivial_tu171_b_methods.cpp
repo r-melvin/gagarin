@@ -21,3 +21,8 @@ int Obj_0060A230::FUN_0060A230()
     EnumChildWindows(this, 0x60A180, 0);
     return DAT_00AC1CAC;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC1CAC
+int DAT_00AC1CAC;
+// END defined globals

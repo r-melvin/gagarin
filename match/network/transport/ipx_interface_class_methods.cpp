@@ -286,3 +286,8 @@ unsigned int IPXInterfaceClass::MessageForSocket(int)
 {
     return 0x473;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB7801C
+unsigned char DAT_00B7801C;
+// END defined globals

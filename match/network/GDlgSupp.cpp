@@ -236,3 +236,8 @@ void FUN_004E6150(int* value, char* code, char* buffer, int count)
         strncpy(buffer, DAT_0084E865, count);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E94E0
+extern const double DAT_007E94E0 = 60.0;
+// END defined globals

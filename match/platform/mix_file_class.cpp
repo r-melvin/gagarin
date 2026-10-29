@@ -83,3 +83,8 @@ void* MixFileClass_Retrieve(char* name, bool force)
 
     return value;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF00C
+SortedTreeNode* g_FileCacheRoot;
+// END defined globals

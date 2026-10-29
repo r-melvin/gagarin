@@ -73,3 +73,8 @@ FactoryClass* HouseClass::GetPrimaryFactory(int absID, bool naval, int buildCat)
         return 0;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0F4E8
+DynamicVectorClass_TiberiumPtr TiberiumArray;
+// END defined globals

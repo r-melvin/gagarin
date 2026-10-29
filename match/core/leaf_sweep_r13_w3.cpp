@@ -149,3 +149,8 @@ bool __stdcall FUN_006E2640(int a, int b, int c, int d)
     FUN_0053A090();
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0FC0C
+char DAT_00B0FC0C;
+// END defined globals

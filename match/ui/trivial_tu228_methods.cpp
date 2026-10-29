@@ -44,3 +44,10 @@ void Obj_006D15F0::FUN_006D15F0()
     vf_13(DAT_00B0CC40);
     DAT_00887368->FUN_00724730(0xF1);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0CC20
+int DAT_00B0CC20;
+// GLOBAL: GAMEMD 0xB0CD28
+int DAT_00B0CD28;
+// END defined globals

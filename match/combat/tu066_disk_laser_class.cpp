@@ -360,3 +360,8 @@ int Obj_004A7C80::FUN_004A7C80() const
 
 // SYNTHETIC: GAMEMD 0x4A8080
 // DynamicVectorClass<DiskLaserClass*>::scalar deleting destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E5EC8
+extern const double DAT_007E5EC8 = 60.0;
+// END defined globals

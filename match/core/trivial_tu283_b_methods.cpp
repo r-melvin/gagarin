@@ -12,3 +12,8 @@ int __cdecl FUN_00774070()
 {
     return DAT_00B72D0C != 0 && DAT_00B72D0C->unknown_08 != 0 && DAT_00B72D0C->unknown_40C != 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB72D0C
+Gptr_00B72D0C* DAT_00B72D0C;
+// END defined globals

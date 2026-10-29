@@ -220,3 +220,18 @@ int TechnoClass::vf_28(CellStruct* cell, char a2, char a3)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EBF8
+int DAT_00A8EBF8;
+// GLOBAL: GAMEMD 0xA8EBFC
+int DAT_00A8EBFC;
+// GLOBAL: GAMEMD 0xA8EC00
+int DAT_00A8EC00;
+// GLOBAL: GAMEMD 0xA8EC04
+int DAT_00A8EC04;
+// GLOBAL: GAMEMD 0xA8EC08
+int DAT_00A8EC08;
+// GLOBAL: GAMEMD 0xA8EC0C
+int DAT_00A8EC0C;
+// END defined globals

@@ -798,3 +798,10 @@ void Obj_0048BAD0::Set(int a, int b, int c, int d, int e)
     unknown_50 = d;
     unknown_54 = e;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA9FA9C
+Obj_00A9FA9C* DAT_00A9FA9C;
+// GLOBAL: GAMEMD 0x828140
+int DAT_00828140 = 1;
+// END defined globals

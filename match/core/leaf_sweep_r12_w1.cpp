@@ -1255,3 +1255,24 @@ bool Pairs_0042CEB0::Has(unsigned short a, unsigned short b, int index)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x88733C
+Timer_0088733C DAT_0088733C;
+// GLOBAL: GAMEMD 0x887340
+int DAT_00887340;
+// GLOBAL: GAMEMD 0x89E000
+char DAT_0089E000[8];
+// GLOBAL: GAMEMD 0x89E3A0
+char DAT_0089E3A0;
+// GLOBAL: GAMEMD 0xA8DA90
+Probe_0046D430* DAT_00A8DA90[8];
+// GLOBAL: GAMEMD 0xA9FFC8
+Deletable_0053D550* DAT_00A9FFC8[80];
+// GLOBAL: GAMEMD 0xAA0168
+short DAT_00AA0168[256];
+// GLOBAL: GAMEMD 0xAA0444
+int DAT_00AA0444;
+// GLOBAL: GAMEMD 0xABF3A0
+int DAT_00ABF3A0;
+// END defined globals

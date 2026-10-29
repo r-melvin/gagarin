@@ -28,3 +28,8 @@ void MapClass::FUN_004AE450()
     }
     FlagToRedraw(1);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABDC84
+int DAT_00ABDC84;
+// END defined globals

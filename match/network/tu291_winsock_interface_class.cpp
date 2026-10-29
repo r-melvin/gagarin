@@ -604,3 +604,12 @@ int WinsockInterfaceClass::vf_16(HWND, unsigned int, unsigned int, long)
 
 // SYNTHETIC: GAMEMD 0x7B2B50
 // DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::scalar deleting destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB780A0
+int DAT_00B780A0;
+// GLOBAL: GAMEMD 0x84DD9C
+extern const int DAT_0084DD9C = 131072;
+// GLOBAL: GAMEMD 0x84DDA0
+extern const int DAT_0084DDA0 = 131072;
+// END defined globals

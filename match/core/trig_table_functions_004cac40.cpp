@@ -326,3 +326,12 @@ void __cdecl FUN_004CB0E0()
         DAT_0084F084[i] = Lookup8192(i * 0.0007669903939428206);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8223B0
+extern const float DAT_008223B0 = 2607.594482421875f;
+// GLOBAL: GAMEMD 0x8223B4
+extern const float DAT_008223B4 = 2607.594482421875f;
+// GLOBAL: GAMEMD 0x8650B8
+extern const float DAT_008650B8 = 0.024413354694843292f;
+// END defined globals

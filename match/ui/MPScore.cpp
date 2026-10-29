@@ -591,3 +591,14 @@ void* FUN_005CA110(int index)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF958
+ScoreEntry_00A8D1FC* DAT_00ABF958[8];
+// GLOBAL: GAMEMD 0xABF9F4
+int DAT_00ABF9F4;
+// GLOBAL: GAMEMD 0xABF9F8
+int DAT_00ABF9F8;
+// GLOBAL: GAMEMD 0xAC1198
+HouseClass* DAT_00AC1198;
+// END defined globals

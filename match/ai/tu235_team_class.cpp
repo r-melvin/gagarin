@@ -904,3 +904,10 @@ int TeamClass::vf_11()
 }
 
 // SYNTHETIC: GAMEMD 0x6F0450 -- compiler-generated TeamClass scalar deleting destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D4C
+int DAT_00A83D4C;
+// GLOBAL: GAMEMD 0x7F46F0
+extern const double DAT_007F46F0 = 60.0;
+// END defined globals

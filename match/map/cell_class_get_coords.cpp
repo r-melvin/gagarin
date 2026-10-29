@@ -190,3 +190,8 @@ int __stdcall CellClass::vf_rtti_3()
 
 // FUNCTION: GAMEMD 0x487E80
 // VC6 emits this scalar deleting destructor from CellClass's virtual destructor declaration.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F924
+CellClass** DAT_0087F924;
+// END defined globals

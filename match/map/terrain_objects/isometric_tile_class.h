@@ -43,6 +43,7 @@ public:
     IsometricTileClass(const MapObjNoInit& noInit) : MapObjClassView(noInit) {}
 
     virtual HRESULT __stdcall Load(IStream* pStm);                          // 5   0x543990
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);        // 6   0x5439F0 (persist_save_stub_methods.cpp)
     // Slot 8. The body is expanded both into the scalar deleting destructor 0x543B10 and into the
     // stand-alone destructor 0x543880 (not emitted here: nothing in this unit calls it directly);
     // the base body 0x5F3B80 is out of line.

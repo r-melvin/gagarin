@@ -34,3 +34,16 @@ void FUN_005BC370()
         SetFocus(DAT_00ABF234);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF234
+HWND DAT_00ABF234;
+// GLOBAL: GAMEMD 0xABF238
+bool DAT_00ABF238;
+// GLOBAL: GAMEMD 0xABF239
+bool DAT_00ABF239;
+// GLOBAL: GAMEMD 0xABF23A
+bool DAT_00ABF23A;
+// GLOBAL: GAMEMD 0xABF240
+HWND DAT_00ABF240;
+// END defined globals

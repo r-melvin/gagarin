@@ -73,3 +73,12 @@ void __cdecl FUN_005DA720()
     }
     Interface_00887628 = 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8D5FC
+int DAT_00A8D5FC;
+// GLOBAL: GAMEMD 0xA8D600
+Addr_005DA6C0 DAT_00A8D600;
+// GLOBAL: GAMEMD 0x7EEEF8
+extern const double DAT_007EEEF8 = 60.0;
+// END defined globals

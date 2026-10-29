@@ -134,3 +134,8 @@ int BuildingClass::SecondActiveSWIdx()
     }
     return this->Type->SuperWeapon2;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83CBC
+SWChainNode** g_SWArray;
+// END defined globals

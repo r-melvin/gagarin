@@ -325,3 +325,12 @@ void FUN_005BF450()
     DAT_00B45B58.Clear();
     FUN_005BF530();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8809D8
+int DAT_008809D8;
+// GLOBAL: GAMEMD 0x8809DC
+int DAT_008809DC;
+// GLOBAL: GAMEMD 0xABF35C
+bool DAT_00ABF35C;
+// END defined globals

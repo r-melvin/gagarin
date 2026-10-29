@@ -59,15 +59,15 @@ class Fixture(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def run_candidates(self, obj, addresses, names=None):
+    def run_candidates(self, obj, addresses, names=None, aliases=None):
         path = self.dir / "a.obj"
         path.write_bytes(obj)
 
         def address_of(idx, symbol):
             return addresses.get(symbol["name"])
 
-        return datasource.candidates(path, parse_coff(path), obj, address_of, datasource.Resolver(names or {}),
-                                     self.retail, self.regions)
+        return datasource.candidates(path, parse_coff(path), obj, address_of,
+                                     datasource.Resolver(names or {}, aliases=aliases), self.retail, self.regions)
 
 
 class CandidateTests(Fixture):
@@ -95,6 +95,23 @@ class CandidateTests(Fixture):
         obj = build([(".data", 0xC0300040, body, [])], [("_a", 0, 1, 2, None), ("_b", 4, 1, 2, None)])
         accepted, rejected = self.run_candidates(obj, {"_a": DATA + 0x100, "_b": DATA + 0x104})
         self.assertEqual(sorted((c["names"][0], c["size"]) for c in accepted), [("_a", 4), ("_b", 4)])
+
+    def test_a_name_defined_at_several_addresses_resolves_to_the_instance_at_the_slots_address(self):
+        # scalar deleting destructor ??_G: one name, instances at 0x401230 (the name) and 0x401300 (?dup_...)
+        self.retail.patch(RDATA + 0x140, struct.pack("<I", 0x401300))
+        obj = build([(".rdata", COMDAT | RDATA_FLAGS, bytes(4), [(0, 1, coffgen.REL_DIR32)])],
+                    [("??_7A@@6B@", 0, 1, 2, None), ("??_GA@@UAEPAXI@Z", 0, 0, 2, None)])
+        names = {"??_GA@@UAEPAXI@Z": 0x401230}
+        acc, rej = self.run_candidates(obj, {"??_7A@@6B@": RDATA + 0x140}, names)
+        self.assertIn("is at 0x401230", rej[0]["why"])
+        aliases = {("??_GA@@UAEPAXI@Z", 0x401300): "?dup_00401300@@YAXXZ"}
+        acc, rej = self.run_candidates(obj, {"??_7A@@6B@": RDATA + 0x140}, names, aliases)
+        self.assertEqual([c["relocs"] for c in acc], [[(0, "?dup_00401300@@YAXXZ", coffgen.REL_DIR32)]])
+        # a slot holding the address the name itself links to keeps the name, bound to that
+        # retail address like every code target of an adopted vtable
+        self.retail.patch(RDATA + 0x140, struct.pack("<I", 0x401230))
+        acc, rej = self.run_candidates(obj, {"??_7A@@6B@": RDATA + 0x140}, names, aliases)
+        self.assertEqual([c["relocs"] for c in acc], [[(0, "??_GA@@UAEPAXI@Z@pin00401230", coffgen.REL_DIR32)]])
 
     def test_relocation_targets_must_be_known_and_agree_with_retail(self):
         # a one-slot vtable: retail's dword is the address of function _f

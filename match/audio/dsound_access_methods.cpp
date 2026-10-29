@@ -57,3 +57,14 @@ SoundBuffer_0040A7B0* __cdecl FUN_0040A7B0()
 {
     return DAT_0087E8A0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87E850
+BackendState_004095B0 DAT_0087E850;
+// GLOBAL: GAMEMD 0x87E880
+CRITICAL_SECTION DAT_0087E880;
+// GLOBAL: GAMEMD 0x87E89C
+DirectSoundResource_00409FF0* DAT_0087E89C;
+// GLOBAL: GAMEMD 0x87E8A0
+SoundBuffer_0040A7B0* DAT_0087E8A0;
+// END defined globals

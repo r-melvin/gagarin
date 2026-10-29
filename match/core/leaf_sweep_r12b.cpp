@@ -77,3 +77,8 @@ void Line_00774900::FUN_00774900(bool raise)
     }
     FUN_004068E0("Set_Serial_DTR - EscapeCommFunction failed with error code %d, %s\n", GetLastError(), 0);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0F4F8
+int DAT_00B0F4F8;
+// END defined globals

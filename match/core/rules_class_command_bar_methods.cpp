@@ -41,3 +41,8 @@ bool RulesClass::Read_AdvancedCommandBar(CCINIClass* pINI, bool multiplayer)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8427CC
+int DefaultCommandIndex = -1;
+// END defined globals

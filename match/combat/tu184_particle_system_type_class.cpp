@@ -324,3 +324,8 @@ int ParticleSystemTypeClass::vf_35(int a)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x644960
 // Scalar deleting destructor emitted from the inline ParticleSystemTypeClass destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F0068
+extern const double DAT_007F0068 = 60.0;
+// END defined globals

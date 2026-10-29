@@ -45,3 +45,8 @@ void ScenarioClass::RecalcLighting(int r, int g, int b, bool tint)
     MapInstance.FUN_004AE4C0();
     MapInstance.FlagToRedraw(1);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F698
+LightConvertVec_0053AD00 DAT_0087F698;
+// END defined globals

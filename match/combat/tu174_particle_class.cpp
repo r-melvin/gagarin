@@ -394,3 +394,12 @@ ParticleTypeObjectView* ParticleClass::GetType()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x62D9A0 (compiler-generated scalar deleting destructor).
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83DC8
+ParticleClassVector ParticleArray;
+// GLOBAL: GAMEMD 0xAC49D8
+ParticleCoord ParticleEmptyCoord;
+// GLOBAL: GAMEMD 0x7EF900
+extern const double DAT_007EF900 = 60.0;
+// END defined globals

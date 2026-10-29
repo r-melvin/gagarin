@@ -1195,3 +1195,10 @@ int FUN_004C1B50(const Pair_004C1B50* self)
     double x = self->unknown_0;
     return (int)FUN_004CAC40(x * x + y * y);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8205D0
+int DAT_008205D0 = -1;
+// GLOBAL: GAMEMD 0x7E85A8
+extern const double DAT_007E85A8 = 60.0;
+// END defined globals

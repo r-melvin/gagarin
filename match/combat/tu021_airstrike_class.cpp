@@ -309,3 +309,8 @@ void Owner_0041DC80::FUN_0041DC80(Node_0041DC80* node)
 // VectorClass<AirstrikeClass*>::scalar deleting destructor
 // SYNTHETIC: GAMEMD 0x41E0F0
 // DynamicVectorClass<AirstrikeClass*>::scalar deleting destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x889FB8
+AirstrikeVec_0041DB40 DAT_00889FB8;
+// END defined globals

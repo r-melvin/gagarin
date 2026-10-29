@@ -43,3 +43,8 @@ void FUN_007773C0()
         DAT_00887640_focus->vf_5();
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB73560
+bool DAT_00B73560;
+// END defined globals

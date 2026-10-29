@@ -74,3 +74,8 @@ void FUN_006C8FA0(GG_HWND dialog, int controlId, int value)
     GG_HWND item = GetDlgItem(dialog, controlId);
     SendMessageA(item, 0x4B2, 0, (long)text);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F3F48
+extern const double DAT_007F3F48 = 60.0;
+// END defined globals

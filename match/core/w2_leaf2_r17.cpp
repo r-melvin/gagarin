@@ -127,3 +127,8 @@ int EntryTable_006A94F0::FUN_006A94F0(int index)
     }
     return length;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB05629
+unsigned char DAT_00B05629;
+// END defined globals

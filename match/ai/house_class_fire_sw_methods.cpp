@@ -33,3 +33,10 @@ bool HouseClass::Fire_SW(int index, const CellStruct& cell)
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8022C
+HouseClass** HouseArrayItems;
+// GLOBAL: GAMEMD 0xA80238
+int HouseArrayCount;
+// END defined globals

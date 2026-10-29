@@ -56,3 +56,10 @@ void StringTable::Unload()
     DAT_00B1CF88 = 0;
     DAT_00B1CF80 = 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1CF70
+int DAT_00B1CF70;
+// GLOBAL: GAMEMD 0xB1CF8C
+StringNode_00734D30* DAT_00B1CF8C;
+// END defined globals

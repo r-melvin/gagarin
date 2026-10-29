@@ -859,3 +859,12 @@ Matrix3D Matrix3D::FromQuaternion(const Quaternion& q)
         1.0f - 2.0f * (q.X * q.X + q.Y * q.Y),
         0.0f);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D9C
+Rec_0046C4D0** DAT_00A83D9C;
+// GLOBAL: GAMEMD 0xA83DA8
+unsigned int DAT_00A83DA8;
+// GLOBAL: GAMEMD 0x7F0148
+extern const double DAT_007F0148 = 60.0;
+// END defined globals

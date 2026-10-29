@@ -597,3 +597,8 @@ int Obj_0062AF60::FUN_0062AF60() const
 // FUNCTION: GAMEMD 0x0062B330
 // FUNCTION: GAMEMD 0x0062B380
 template class VectorClass<ParasiteClass*>;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EF810
+extern const double DAT_007EF810 = 60.0;
+// END defined globals

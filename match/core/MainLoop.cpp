@@ -66,3 +66,8 @@ bool HandleHolder::FUN_0055F6C0(void** other)
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABCD58
+unsigned char DAT_00ABCD58;
+// END defined globals

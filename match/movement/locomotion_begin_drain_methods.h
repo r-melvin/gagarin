@@ -28,29 +28,9 @@ struct Display_0070FD70
     void Refresh(void* owner, int a, int b);
 };
 
-struct Coord_0070FD70
-{
-    int X;   // +0x0000
-    int Y;   // +0x0004
-    int Z;   // +0x0008
-};
-
-struct Anim_0070FD70
-{
-    // FUNCTION: GAMEMD 0x421EA0 (decl; reloc) — build the animation.
-    Anim_0070FD70* Construct(int type, const Coord_0070FD70& where);
-    // FUNCTION: GAMEMD 0x424B50 (decl; reloc) — attach it to its owner.
-    void Attach(void* owner);
-};
-
-struct Rules_0070FD70
-{
-    char _pad000[0x31C];   // +0x0000
-    int  DrainAnim;        // +0x031C
-};
-GG_STATIC_ASSERT(offsetof(Rules_0070FD70, DrainAnim) == 0x31C);
-// GLOBAL: GAMEMD 0x8871E0
-extern Rules_0070FD70* RulesInstance;
+#include "../_layout/coord_struct.h"
+#include "../_layout/anim_class.h"
+#include "../_layout/rules_class.h"
 
 struct Owner_0070FD70
 {
@@ -83,7 +63,7 @@ struct Drainer_0070FD70
     char            _pad018[0x1CC - 0x18];
     Target_0070FD70* DrainingWhom;         // +0x01CC
     void*           DrainingMe;            // +0x01D0
-    Anim_0070FD70*  DrainAnim;             // +0x01D4
+    AnimClass*      DrainAnim;             // +0x01D4
     char            _pad1D8[0x5D4 - 0x1D8];
     Display_0070FD70* Display;             // +0x05D4
 
@@ -97,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(Drainer_0070FD70, DrainAnim)    == 0x1D4);
 GG_STATIC_ASSERT(offsetof(Drainer_0070FD70, Display)      == 0x5D4);
 
 typedef void*            (Drainer_0070FD70::*Fn1BC_0070FD70)();
-typedef Coord_0070FD70   (Drainer_0070FD70::*Fn48_0070FD70)(int a, int b, int c, int d, int e);
+typedef CoordStruct (Drainer_0070FD70::*Fn48_0070FD70)();
 
 struct Vtbl_0070FD70
 {

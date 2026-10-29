@@ -256,3 +256,10 @@ void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
         VocClass::PlayGlobal(DAT_008871E0->GenericBeep, VoiceVolume, 0x2000, 0);
     FUN_004068E0(STR_00832FC4, (double)VoiceVolume);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EAA50
+extern const double DAT_007EAA50 = 255.0;
+// GLOBAL: GAMEMD 0x7EF378
+extern const double DAT_007EF378 = 60.0;
+// END defined globals

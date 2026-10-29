@@ -496,3 +496,12 @@ bool Cell_R13::FUN_00483710()
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x818760
+int DAT_00818760[9] = {-1, 6, 1, 0, 7, 0, 8361364, 0, 1447116590};
+// GLOBAL: GAMEMD 0x87DE28
+int DAT_0087DE28 = 0;
+// GLOBAL: GAMEMD 0x7E3810
+extern const double DAT_007E3810 = 1e-05;
+// END defined globals

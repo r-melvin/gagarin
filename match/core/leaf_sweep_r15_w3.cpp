@@ -109,3 +109,12 @@ bool Str_007B6630::HasAnyOf(const char* set)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83CF0
+int DAT_00A83CF0;
+// GLOBAL: GAMEMD 0xA8E8D4
+Named_006E8180** DAT_00A8E8D4;
+// GLOBAL: GAMEMD 0xA8E8E0
+int DAT_00A8E8E0;
+// END defined globals

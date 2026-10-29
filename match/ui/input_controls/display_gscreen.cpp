@@ -159,3 +159,18 @@ void GScreenClass::vf_10(int*, Point2D*)
     else if (unknown_08 > 0)
         unknown_08 = 1 - unknown_08;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A0DF0
+bool DisplayFlag_008A0DF0;
+// GLOBAL: GAMEMD 0x8A0DF8
+DisplayDevice* DisplayDevice_008A0DF8;
+// GLOBAL: GAMEMD 0x8A0E08
+DisplayLayer* DisplayLayer_008A0E08;
+// GLOBAL: GAMEMD 0x8A0E0C
+DisplayLayer* DisplayLayer_008A0E0C;
+// GLOBAL: GAMEMD 0x8A0E10
+DisplayLayer* DisplayLayer_008A0E10;
+// GLOBAL: GAMEMD 0xA9FA94
+bool DisplayFlag_00A9FA94;
+// END defined globals

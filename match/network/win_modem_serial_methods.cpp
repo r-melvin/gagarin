@@ -764,3 +764,8 @@ void WinModemClass::FUN_007754D0(DWORD errors, COMSTAT status)
         FUN_004068E0(STR_00849B68);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8ED80
+bool DAT_00A8ED80;
+// END defined globals

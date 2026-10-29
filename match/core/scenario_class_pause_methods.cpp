@@ -41,3 +41,8 @@ void ScenarioClass::PauseGame()
     MapInstance.Render();
     (DAT_00887640->*DAT_00887640->Vtbl->At_10)();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B238
+Session_00683EB0 SessionInstance;
+// END defined globals

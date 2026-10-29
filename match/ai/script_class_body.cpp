@@ -251,3 +251,10 @@ int ScriptTypeClass::vf_16()
 
 // SYNTHETIC: GAMEMD 0x691FA0
 // ScriptTypeClass scalar deleting destructor (primary slot 8).
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B41C8
+DynamicVectorClass<ScriptTypeClass*> ScriptTypes;
+// GLOBAL: GAMEMD 0xA8ECA0
+DynamicVectorClass<AbstractClass*> DAT_00A8ECA0;
+// END defined globals

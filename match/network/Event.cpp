@@ -447,3 +447,8 @@ EventClass::EventClass(int houseIndex, IPXAddressClass* address, char playerId)
         Frame = CurrentFrame;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E8818
+extern const double DAT_007E8818 = 60.0;
+// END defined globals

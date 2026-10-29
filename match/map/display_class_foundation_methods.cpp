@@ -67,3 +67,8 @@ void DisplayClass::MarkFoundation(CellStruct const* baseCell, bool mark)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A03F8
+CellStruct DAT_008A03F8;
+// END defined globals

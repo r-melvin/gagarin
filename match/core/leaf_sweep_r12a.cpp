@@ -177,3 +177,12 @@ void __fastcall FUN_0074F620(GrowthStack_0074E8A0* stack)
     }
     stack->Top = 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8872FC
+int DAT_008872FC;
+// GLOBAL: GAMEMD 0xB1D294
+Monster_0074D430** DAT_00B1D294;
+// GLOBAL: GAMEMD 0xB1D2A0
+int DAT_00B1D2A0;
+// END defined globals

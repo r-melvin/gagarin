@@ -70,3 +70,10 @@ int __stdcall FUN_0065F710(HWND h, UINT msg, WPARAM w, LPARAM l)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB04CA0
+int DAT_00B04CA0;
+// GLOBAL: GAMEMD 0x7F0970
+extern const double DAT_007F0970 = 60.0;
+// END defined globals

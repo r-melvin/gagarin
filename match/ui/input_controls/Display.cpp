@@ -1757,3 +1757,18 @@ bool MapClass::vf_26()
 {
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x884D44
+bool DisplayCmdFlag_00884D44;
+// GLOBAL: GAMEMD 0x8A072C
+void* DisplayShadowShape_008A072C;
+// GLOBAL: GAMEMD 0xA8ED9D
+bool DisplayFlag_00A8ED9D;
+// GLOBAL: GAMEMD 0xB73554
+HWND DisplayWindow_00B73554;
+// GLOBAL: GAMEMD 0x820030
+int DAT_00820030[3] = {2, 3, 4};
+// GLOBAL: GAMEMD 0x7E6018
+extern const double DAT_007E6018 = 60.0;
+// END defined globals

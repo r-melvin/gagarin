@@ -123,3 +123,10 @@ bool FUN_004a42f0(void* window, int width, int height, int bpp)
     FUN_004068E0("Display mode set\n");
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A00A8
+int DAT_008A00A8;
+// GLOBAL: GAMEMD 0x8A00AC
+int DAT_008A00AC;
+// END defined globals

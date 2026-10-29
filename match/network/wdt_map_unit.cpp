@@ -410,3 +410,10 @@ int FUN_00769540(unsigned int value)
 // rc_ptr<Map> this TU instantiates)
 // SYNTHETIC: GAMEMD 0x769C00
 // Map scalar deleting destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8487BC
+bool DAT_008487BC = true;
+// GLOBAL: GAMEMD 0x8487BD
+bool DAT_008487BD = true;
+// END defined globals

@@ -37,3 +37,8 @@ void VeinholeMonsterClass::DeleteVeinholeGrowthData()
         VeinholeGrowthData = 0;
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D2F0
+void* VeinholeGrowthData;
+// END defined globals

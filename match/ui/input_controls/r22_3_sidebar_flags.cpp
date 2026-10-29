@@ -50,3 +50,8 @@ void SidebarClass::FUN_006A67A0(int tab)
         FUN_006A6610();
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0B478
+int DAT_00B0B478;
+// END defined globals

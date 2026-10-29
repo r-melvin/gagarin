@@ -357,3 +357,8 @@ DWORD FUN_004E2480()
     }
     return now - DAT_008B3F14;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EDDC
+bool DAT_00A8EDDC;
+// END defined globals

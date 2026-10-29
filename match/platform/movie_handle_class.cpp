@@ -482,3 +482,8 @@ void FUN_005C09A0()
 
 // SYNTHETIC: GAMEMD 0x5C0A30
 // BinkMovieHandle::`scalar deleting destructor'
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF3F8
+MovieHandle* DAT_00ABF3F8;
+// END defined globals

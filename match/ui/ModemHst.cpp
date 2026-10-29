@@ -395,3 +395,8 @@ void FUN_005BBED0(void* self)
 {
     FUN_005BBEE0(self);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x822CF4
+int TechLevel = 10;
+// END defined globals

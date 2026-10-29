@@ -54,3 +54,12 @@ void VoxClass::PlayIndex(int index, int priority, int volume)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D3D8
+int DAT_00B1D3D8;
+// GLOBAL: GAMEMD 0xB1D4D0
+int DAT_00B1D4D0;
+// GLOBAL: GAMEMD 0xB1D4D4
+int DAT_00B1D4D4;
+// END defined globals

@@ -60,3 +60,16 @@ wchar_t* __fastcall FUN_00734E60(const char* key, int* outValue, const char* fil
     DAT_00B1CF88 = node;
     return node->Text;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1CF6C
+int DAT_00B1CF6C;
+// GLOBAL: GAMEMD 0xB1CF74
+StringTableEntry_00734E60* DAT_00B1CF74;
+// GLOBAL: GAMEMD 0xB1CF78
+wchar_t** DAT_00B1CF78;
+// GLOBAL: GAMEMD 0xB1CF7C
+int* DAT_00B1CF7C;
+// GLOBAL: GAMEMD 0xB1CF88
+MissingString_00734E60* DAT_00B1CF88;
+// END defined globals

@@ -34,3 +34,8 @@ double DAT_00B05720 = 1.0 / DAT_00B05738;
 // SYNTHETIC: GAMEMD 0x00693B30
 // GLOBAL: GAMEMD 0x00B05728
 MathTblCoord DAT_00B05728;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F1170
+extern const double DAT_007F1170 = 60.0;
+// END defined globals

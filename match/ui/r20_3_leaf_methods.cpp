@@ -205,3 +205,8 @@ void FUN_0060D450()
         RegisterClassA(&wc);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC48CC
+int DAT_00AC48CC;
+// END defined globals

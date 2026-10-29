@@ -170,3 +170,12 @@ bool Obj_007BCF90::FUN_007BCF90(unsigned short color, Rect_007BCF90 area)
 {
     return unknown_14->vf_05(&area, color);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB04DAC
+Obj_0065FE00** DAT_00B04DAC;
+// GLOBAL: GAMEMD 0xB04DB8
+int DAT_00B04DB8;
+// GLOBAL: GAMEMD 0x7E1748
+extern const float DAT_007E1748 = 0.0f;
+// END defined globals

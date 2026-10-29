@@ -38,3 +38,8 @@ bool SlaveManagerView_006B1020::ShouldWakeUpNow()
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0B5B8
+CellStruct DAT_00B0B5B8;
+// END defined globals

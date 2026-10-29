@@ -72,3 +72,8 @@ void Obj_00554350::FUN_00554350(Arg1_00554350* a1)
         a1->vf_1(unknown_60, 0, 1);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABC9BC
+int DAT_00ABC9BC;
+// END defined globals

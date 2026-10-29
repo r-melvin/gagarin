@@ -10,3 +10,8 @@ void __cdecl LockMouseCall()
 {
     LockMouse();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB78168
+HANDLE MouseMutex;
+// END defined globals

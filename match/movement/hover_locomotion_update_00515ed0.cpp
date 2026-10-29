@@ -131,3 +131,8 @@ void HoverLocomotionClass::Fun_00515ED0()
         Fun_00514F70(1);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8F180
+LocoCoord DAT_00A8F180;
+// END defined globals

@@ -239,3 +239,12 @@ void Obj_00690F20::FUN_00690F20()
         FUN_007C93E8(unknown_00);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB05560
+int DAT_00b05560;
+// GLOBAL: GAMEMD 0xB05588
+int DAT_00b05588;
+// GLOBAL: GAMEMD 0x7F0EA0
+extern const double DAT_007F0EA0 = 60.0;
+// END defined globals

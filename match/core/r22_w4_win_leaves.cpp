@@ -128,3 +128,18 @@ int __stdcall FUN_007AD460(void* self, LPARAM lParam)
     SendMessageA((HWND)FUN_00775B10(), 0x5F5, 0, lParam);
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB730EC
+short DAT_00B730EC;
+// GLOBAL: GAMEMD 0xB73318
+short DAT_00B73318;
+// GLOBAL: GAMEMD 0xB7355C
+int DAT_00B7355C;
+// GLOBAL: GAMEMD 0xB73564
+int DAT_00B73564;
+// GLOBAL: GAMEMD 0xB73568
+int DAT_00B73568;
+// GLOBAL: GAMEMD 0xB7356C
+int DAT_00B7356C;
+// END defined globals

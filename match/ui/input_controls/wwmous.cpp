@@ -329,3 +329,9 @@ void WWMouseClass::vf_14(int x, int y)
 // SYNTHETIC: GAMEMD 0x7BA3A0
 // WWMouseClass scalar deleting destructor.
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB78160
+bool MouseConvertFlag;
+// GLOBAL: GAMEMD 0xB78164
+WWMouseClass* DAT_00B78164;
+// END defined globals

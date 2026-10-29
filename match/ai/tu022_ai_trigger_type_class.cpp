@@ -365,3 +365,10 @@ void* FUN_00420120(void* self)
 // VectorClass<AlphaLightingRemapClass*>::scalar deleting destructor
 // SYNTHETIC: GAMEMD 0x420680
 // DynamicVectorClass<AlphaLightingRemapClass*>::scalar deleting destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B204
+char** DAT_00A8B204;
+// GLOBAL: GAMEMD 0xA8B210
+int DAT_00A8B210;
+// END defined globals

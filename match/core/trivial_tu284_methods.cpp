@@ -26,3 +26,8 @@ int __stdcall FUN_00775B40(int a1, int a2, int a3, int a4)
 {
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB72F4C
+int DAT_00B72F4C;
+// END defined globals

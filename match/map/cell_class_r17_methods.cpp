@@ -61,3 +61,8 @@ void CellClass::FUN_004801F0(const Point2D* point, const RectangleStruct* clip)
         FUN_0047F250(point, clip, level);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F69C
+int* DAT_0087F69C;
+// END defined globals

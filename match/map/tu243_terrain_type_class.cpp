@@ -309,3 +309,8 @@ int TerrainTypeClass::vf_16()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x71E360 — compiler-generated scalar deleting destructor emitted for the virtual destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0ED7C
+CellStruct TerrainDefaultCell;
+// END defined globals

@@ -81,3 +81,17 @@ void __fastcall FUN_00753BF0(unsigned int shiftA, int leftA,
     }
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0F9D8
+Rgb3_0072F440 ColorA_00B0F9D8;
+// GLOBAL: GAMEMD 0xB0FA1C
+Rgb3_0072F440 ColorCur_00B0FA1C;
+// GLOBAL: GAMEMD 0xB0FAA0
+Rgb3_0072F440 ColorC_00B0FAA0;
+// GLOBAL: GAMEMD 0xB0FB04
+Rgb3_0072F440 ColorB_00B0FB04;
+// GLOBAL: GAMEMD 0xB2D5EC
+unsigned short Packed_00B2D5EC[256];
+// GLOBAL: GAMEMD 0xB2FB78
+Rgb3_0072F440 Palette_00B2FB78[256];
+// END defined globals

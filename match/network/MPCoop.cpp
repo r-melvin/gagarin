@@ -759,3 +759,12 @@ bool Obj_005C4F00::FUN_005C4F00() const
 
 // SYNTHETIC: GAMEMD 0x5C4F10 -- MPCooperative scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89F518
+List_0089F518 DAT_0089F518;
+// GLOBAL: GAMEMD 0xA8BB0C
+int DAT_00A8BB0C;
+// GLOBAL: GAMEMD 0xA8DA74
+DynamicVectorClassLayout MPGameModeArray;
+// END defined globals

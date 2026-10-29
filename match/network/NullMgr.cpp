@@ -654,3 +654,10 @@ int Obj_005F1EE0::FUN_005F3630(int a1)
 }
 
 // SYNTHETIC: GAMEMD 0x5F3650 -- compiler-generated scalar deleting destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8DAB8
+unsigned int DAT_00A8DAB8;
+// GLOBAL: GAMEMD 0x7EEFC8
+extern const double DAT_007EEFC8 = 60.0;
+// END defined globals

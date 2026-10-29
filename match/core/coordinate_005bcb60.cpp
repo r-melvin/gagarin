@@ -13,3 +13,12 @@ Point_005BCB60* Point_005BCB60::Convert(int x, int y)
     *this = result;
     return this;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF1C8
+int ABF1C8;
+// GLOBAL: GAMEMD 0xABF1D8
+int ABF1D8;
+// GLOBAL: GAMEMD 0xABF1E0
+int ABF1E0;
+// END defined globals

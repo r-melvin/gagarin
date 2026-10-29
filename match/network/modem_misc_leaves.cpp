@@ -106,3 +106,14 @@ int __stdcall FUN_005F34D0(const char* text)
     }
     return atoi(text);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EA7C
+char* DAT_00A8EA7C;
+// GLOBAL: GAMEMD 0xA8EA80
+int DAT_00A8EA80;
+// GLOBAL: GAMEMD 0xA8EA84
+int DAT_00A8EA84;
+// GLOBAL: GAMEMD 0xAC1344
+bool DAT_00AC1344;
+// END defined globals

@@ -27,3 +27,14 @@ void IonBlastClass::DrawAll()
         ((IonBlastClass**)IonBlastArray.Items)[j]->Draw();
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x887314
+Surface* DSurface_Temp;
+// GLOBAL: GAMEMD 0xA9FAE8
+int IonBlastOffsets[ION_BLAST_OFFSET_COUNT];
+// GLOBAL: GAMEMD 0xAA0118
+DynamicVectorClassLayout IonBlastArray;
+// GLOBAL: GAMEMD 0xAA0150
+int IonBlastOffsetsPitch;
+// END defined globals

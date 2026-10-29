@@ -56,3 +56,8 @@ void __fastcall FUN_0072E730(Surface_0072E730* surface, const Rect_0072E730* rec
     Point_0072E730 offset = {0, 0};
     FUN_004AED70(surface, convert, shapeOther, 0, &position, &clip, 0x400, 0, 0, 0, 1000, 0, 0, 0, offset);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8A00A4
+int DAT_008A00A4;
+// END defined globals

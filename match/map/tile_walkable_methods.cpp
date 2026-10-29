@@ -52,3 +52,10 @@ bool __fastcall FUN_00578D80(int tile, int facing)
         return true;
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA1020
+int DAT_00AA1020;
+// GLOBAL: GAMEMD 0xABBEBC
+int DAT_00ABBEBC;
+// END defined globals

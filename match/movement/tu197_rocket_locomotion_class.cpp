@@ -513,3 +513,10 @@ int RocketLocomotionClass::Size()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x6635C0 -- compiler-generated scalar deleting wrapper.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F0B08
+extern const double DAT_007F0B08 = 60.0;
+// GLOBAL: GAMEMD 0x7F0B10
+extern const double DAT_007F0B10 = 0.017453292519943295;
+// END defined globals

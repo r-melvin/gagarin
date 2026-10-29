@@ -421,3 +421,8 @@ int __stdcall LocomotionClass::ApparentSpeed()
 {
     return reinterpret_cast<LocoFootView_0055A730*>(LinkedTo)->Vtbl->At_538(LinkedTo);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABCC78
+LocoCoord DAT_00ABCC78;
+// END defined globals

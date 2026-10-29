@@ -179,3 +179,24 @@ void FUN_00798140()
     DAT_00B76188.Count = 0;
     DAT_00B77E10 = false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB736F8
+GrowList<GrowListHandle> DAT_00B736F8;
+// GLOBAL: GAMEMD 0xB73708
+GrowList<GrowListHandle> DAT_00B73708;
+// GLOBAL: GAMEMD 0xB73AE8
+GrowList<GrowListHandle> DAT_00B73AE8;
+// GLOBAL: GAMEMD 0xB73BD8
+GrowList<GrowListHandle> DAT_00B73BD8;
+// GLOBAL: GAMEMD 0xB76188
+GrowList<GrowListHandle> DAT_00B76188;
+// GLOBAL: GAMEMD 0xB76510
+GrowList<GrowListHandle> DAT_00B76510;
+// GLOBAL: GAMEMD 0xB76B00
+GrowList<GrowListHandle> DAT_00B76B00;
+// GLOBAL: GAMEMD 0xB77820
+GrowList<GrowListHandle> DAT_00B77820;
+// GLOBAL: GAMEMD 0xB77E10
+bool DAT_00B77E10;
+// END defined globals

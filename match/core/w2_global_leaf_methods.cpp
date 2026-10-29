@@ -312,3 +312,14 @@ int Obj_005D8CE0::FUN_005D8CE0()
     }
     return count;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABBEC0
+int DAT_00ABBEC0;
+// GLOBAL: GAMEMD 0xABED04
+int DAT_00ABED04;
+// GLOBAL: GAMEMD 0xABED08
+int DAT_00ABED08;
+// GLOBAL: GAMEMD 0xB45B68
+int DAT_00B45B68;
+// END defined globals

@@ -804,3 +804,8 @@ VectorCtor* VectorCtor::FUN_00473140(int size, void** array)
 
     return this;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E4AC0
+extern const double DAT_007E4AC0 = 60.0;
+// END defined globals

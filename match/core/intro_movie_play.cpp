@@ -20,3 +20,8 @@ void FUN_00539320()
     if (DAT_00A8E960 & 4)
         FUN_005BF260(FUN_0048DF30("INTRO"), -1, false, true, true);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8E960
+unsigned char DAT_00A8E960;
+// END defined globals

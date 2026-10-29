@@ -294,3 +294,8 @@ int BuildingClass::vf_258()
 {
     return Occupants.Count;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89C848
+CoordStruct DAT_0089C848;
+// END defined globals

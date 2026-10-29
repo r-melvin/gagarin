@@ -23,3 +23,8 @@ void SpotLightClass::DrawAll()
         ((SpotLightClass**)SpotlightArray.Items)[i]->Draw();
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC1678
+DynamicVectorClassLayout SpotlightArray;
+// END defined globals

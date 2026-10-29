@@ -80,3 +80,8 @@ void FUN_00632050(Straw* random, int bits, PKey_00632740* fast, PKey_00632740* s
         slow->Decrypt(crypt, slow->CipherBlockBytes(), crypt);
     } while (memcmp(plain, crypt, fast->PlainBlockBytes()) != 0);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8F8FD
+char DAT_00a8f8fd;
+// END defined globals

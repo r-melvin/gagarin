@@ -31,3 +31,14 @@ void __fastcall FUN_00406760(void (__fastcall *sink)(char* line))
         sink(line);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87E28C
+int DAT_0087E28C;
+// GLOBAL: GAMEMD 0x87E290
+int DAT_0087E290;
+// GLOBAL: GAMEMD 0x87E298
+int DAT_0087E298;
+// GLOBAL: GAMEMD 0xB1D3AC
+int DAT_00B1D3AC;
+// END defined globals

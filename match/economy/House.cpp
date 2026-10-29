@@ -2681,3 +2681,12 @@ int HouseClass::SectorOfCell(CellStruct* cell)
     coords.Z = 0;
     return SectorOf(coords);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89A29C
+unsigned char HouseMainObject;
+// GLOBAL: GAMEMD 0xA83C78
+int DAT_00A83C78;
+// GLOBAL: GAMEMD 0xA8B263
+char DAT_00A8B263;
+// END defined globals

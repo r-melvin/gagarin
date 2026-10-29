@@ -119,3 +119,8 @@ OverlayStaticZero4 DAT_00AC1518;
 // SYNTHETIC: GAMEMD 0x5FE040
 // GLOBAL: GAMEMD 0xAC15F8
 OverlayStaticZero4 DAT_00AC15F8;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EF398
+extern const double DAT_007EF398 = 0.017453292519943295;
+// END defined globals

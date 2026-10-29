@@ -522,7 +522,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             pin_plan["global"], call_names,
             {name: va for va, name in (tail_plan["names_at"].items() if tail_plan else ())},
             {name: va for name, va in (tail_plan["thunks"] if tail_plan else ())},
-            {name: va for name, (va, _) in bindings.items()}, rtti)
+            {name: va for name, (va, _) in bindings.items()}, rtti,
+            aliases={(r["symbol"], int(r["addr"], 16)): provider[int(r["addr"], 16)] for r in reused
+                     if int(r["addr"], 16) in provider})
     # M2 data pinning: project definitions of bound globals become absolute symbols at
     # their retail addresses, so code references the retail storage directly.
     pin_map = {name: va for name, (va, _) in bindings.items() if section_of(va) in (".rdata", ".data")} \

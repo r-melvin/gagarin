@@ -76,3 +76,10 @@ MathTblCoord DAT_00AC1818;
 // SYNTHETIC: GAMEMD 0x5FF1B0
 // GLOBAL: GAMEMD 0xAC17C0
 MathTblZero4 DAT_00AC17C0;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EF6A8
+extern const double DAT_007EF6A8 = 60.0;
+// GLOBAL: GAMEMD 0x7EF6B0
+extern const double DAT_007EF6B0 = 0.017453292519943295;
+// END defined globals

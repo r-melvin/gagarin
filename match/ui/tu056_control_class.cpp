@@ -6579,3 +6579,8 @@ void* CachedResourceOwner8::FUN_0049AE40(char flags)
 
 // SYNTHETIC: GAMEMD 0x48E660 -- ControlClass scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87E8A8
+ResourceRegistry TheResourceRegistry;
+// END defined globals

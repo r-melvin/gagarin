@@ -71,3 +71,10 @@ void HouseClass::FUN_0050E280(TechnoTypeClass* type)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8E7AC
+int DAT_00A8E7AC;
+// GLOBAL: GAMEMD 0xA8E9A0
+unsigned char DAT_00A8E9A0;
+// END defined globals

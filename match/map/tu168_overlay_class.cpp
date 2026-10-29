@@ -616,3 +616,16 @@ void OverlayClass::vf_69(MapObjPoint* where, MapObjRect* clip)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x5FDF70 — compiler-generated scalar deleting destructor emitted for the virtual destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D80
+DynamicVectorClassLayout OverlayTypeClass_Array;
+// GLOBAL: GAMEMD 0xA8EC50
+MapObjDynVector<OverlayClass*> OverlayArray;
+// GLOBAL: GAMEMD 0xAC1528
+MapObjCell OverlayNoCell;
+// GLOBAL: GAMEMD 0x8333BC
+int OverlayPlacementArg = -1;
+// GLOBAL: GAMEMD 0x7EF390
+extern const double DAT_007EF390 = 60.0;
+// END defined globals

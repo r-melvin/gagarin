@@ -70,3 +70,14 @@ bool Rules_00673E80::Read_Powerups(CCINI_00673E80* pINI)
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89EC28
+double PowerupWeight_0089EC28[19];
+// GLOBAL: GAMEMD 0x89ECC0
+char PowerupFlag_0089ECC0[19];
+// GLOBAL: GAMEMD 0x81DA8C
+int PowerupMoney_0081DA8C[19] = {50, 20, 1, 3, 5, 5, 20, 1, 1, 10, 10, 10, 1, 3, 1, 1, 1, 1, 1};
+// GLOBAL: GAMEMD 0x81DAD8
+int PowerupAnim_0081DAD8[19] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+// END defined globals

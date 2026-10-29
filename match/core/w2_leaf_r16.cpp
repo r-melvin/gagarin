@@ -470,3 +470,18 @@ void Dlg_00631300::FUN_00631640()
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x884B8F
+unsigned char DAT_00884B8F;
+// GLOBAL: GAMEMD 0xA8DABC
+int DAT_00A8DABC;
+// GLOBAL: GAMEMD 0xA8DB38
+Entry_00631300** DAT_00A8DB38;
+// GLOBAL: GAMEMD 0xA8DB44
+int DAT_00A8DB44;
+// GLOBAL: GAMEMD 0xA8DB50
+int* DAT_00A8DB50;
+// GLOBAL: GAMEMD 0xA8DB5C
+int DAT_00A8DB5C;
+// END defined globals

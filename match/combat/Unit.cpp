@@ -436,3 +436,10 @@ bool HandleHolder::FUN_00746EA0(void** other)
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87E8B8
+AStar_00746000 DAT_0087E8B8;
+// GLOBAL: GAMEMD 0x7F5C28
+extern const double DAT_007F5C28 = 60.0;
+// END defined globals

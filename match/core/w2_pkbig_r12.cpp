@@ -91,3 +91,8 @@ BigInt_00632740 BigInt_00632740::operator<<(int bits) const
     FUN_005c67a0(result.Digit, bits, 64);
     return result;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8F8FC
+char DAT_00a8f8fc;
+// END defined globals

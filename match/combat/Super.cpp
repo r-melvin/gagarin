@@ -184,3 +184,8 @@ bool ItemVector_0063DFD0::FUN_00006CE2D0(int item)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F3FA8
+extern const double DAT_007F3FA8 = 60.0;
+// END defined globals

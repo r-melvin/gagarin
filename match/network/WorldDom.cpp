@@ -152,3 +152,10 @@ bool __cdecl FUN_007B0430()
 {
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB77F58
+int DAT_00B77F58;
+// GLOBAL: GAMEMD 0xB77F68
+int DAT_00B77F68;
+// END defined globals

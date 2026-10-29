@@ -1057,3 +1057,26 @@ bool FUN_005c9020(unsigned int* p, int n)
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF59C
+int DAT_00abf59c;
+// GLOBAL: GAMEMD 0xABF5A0
+unsigned short DAT_00abf5a0;
+// GLOBAL: GAMEMD 0xABF5A4
+unsigned int DAT_00abf5a4[4];
+// GLOBAL: GAMEMD 0xABF5B4
+unsigned int DAT_00abf5b4[64];
+// GLOBAL: GAMEMD 0xABF6B4
+unsigned short DAT_00abf6b4;
+// GLOBAL: GAMEMD 0xABF6B8
+int DAT_00abf6b8;
+// GLOBAL: GAMEMD 0xABF6BC
+unsigned int DAT_00abf6bc[130];
+// GLOBAL: GAMEMD 0xABF8C4
+int DAT_00abf8c4;
+// GLOBAL: GAMEMD 0xABF8C8
+unsigned int DAT_00abf8c8[4];
+// GLOBAL: GAMEMD 0x82E174
+int DAT_0082E174 = 196610;
+// END defined globals

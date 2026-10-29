@@ -119,3 +119,8 @@ MenusHResult __stdcall WebBrowser::Slot16(const wchar_t* login, const wchar_t* p
 }
 
 // The scalar deleting destructor 0x7740A0 is compiler output beside the constructor in menus_web_browser_ctor.cpp.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8496B8
+extern const int MenusNavigateArg = 6357069;
+// END defined globals

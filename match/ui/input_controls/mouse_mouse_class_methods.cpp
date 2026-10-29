@@ -128,3 +128,8 @@ MouseClass::MouseClass()
     : CursorFlag(false), CursorIndex(0), RequestedCursor(0), CursorFrame(0)
 {
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF2DD
+bool MouseCursorApplied;
+// END defined globals

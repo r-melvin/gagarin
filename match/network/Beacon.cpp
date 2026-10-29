@@ -424,3 +424,12 @@ Obj_00431B20* Obj_00431B20::FUN_00431B20()
 
     return this;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89C474
+Shp_004309D0* DAT_0089C474;
+// GLOBAL: GAMEMD 0x89C478
+Shp_004309D0* DAT_0089C478;
+// GLOBAL: GAMEMD 0x7E3A18
+extern const double DAT_007E3A18 = 60.0;
+// END defined globals

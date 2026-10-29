@@ -109,3 +109,10 @@ GG_STATIC_ASSERT(sizeof(Record_00753B10) == 0x88);
 // SYNTHETIC: GAMEMD 0x753B10
 // GLOBAL: GAMEMD 0xB2D980
 Record_00753B10 DAT_00B2D980[64];
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB2D7F0
+int DAT_00B2D7F0;
+// GLOBAL: GAMEMD 0x846614
+int DAT_00846614 = 255;
+// END defined globals

@@ -23,3 +23,8 @@ SuperWeaponTypeClass* SuperWeaponTypeClass::FindFirstOfAction(int action)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8E330
+SuperWeaponTypeVector SuperWeaponTypeClass_Array;
+// END defined globals

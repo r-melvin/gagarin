@@ -99,3 +99,12 @@ Coord_00642740* Coord_00642740::FUN_00642740(const CellStruct* cell, int z)
     Z = z;
     return this;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAC48B8
+unsigned short DAT_00AC48B8;
+// GLOBAL: GAMEMD 0xAC48BA
+unsigned short DAT_00AC48BA;
+// GLOBAL: GAMEMD 0xAC48BC
+unsigned short DAT_00AC48BC;
+// END defined globals

@@ -152,3 +152,14 @@ ScriptTypeView_00691970* ScriptTypeView_00691970::FindOrAllocate(const char* pID
 
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F0FDC
+char g_ScriptType_vt3 = -112;
+// GLOBAL: GAMEMD 0x7F0FE4
+char g_ScriptType_vt2 = -128;
+// GLOBAL: GAMEMD 0x7F0FEC
+char g_ScriptType_vt1 = -32;
+// GLOBAL: GAMEMD 0x7F1008
+char g_ScriptType_vt0 = 96;
+// END defined globals

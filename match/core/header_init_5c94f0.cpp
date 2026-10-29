@@ -68,3 +68,8 @@ HeaderCoordInit DAT_00ABF9B0(0, 0, 0);
 // SYNTHETIC: GAMEMD 0x5C96E0
 // GLOBAL: GAMEMD 0xABF9D8
 TuningCoordInit DAT_00ABF9D8(128, 128, 0);
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7EE6D8
+extern const double DAT_007EE6D8 = 60.0;
+// END defined globals

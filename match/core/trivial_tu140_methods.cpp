@@ -20,3 +20,10 @@ void FUN_005BE940(int a1, int a2)
     }
     DAT_00ABF294 = 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF294
+int DAT_00ABF294;
+// GLOBAL: GAMEMD 0xABF2DC
+unsigned char DAT_00ABF2DC;
+// END defined globals

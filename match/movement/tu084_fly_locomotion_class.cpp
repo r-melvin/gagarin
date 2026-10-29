@@ -633,3 +633,8 @@ int FlyLocomotionClass::Size()
 {
     return 0x60;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E89C8
+extern const double DAT_007E89C8 = 60.0;
+// END defined globals

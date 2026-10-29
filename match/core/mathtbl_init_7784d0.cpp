@@ -81,3 +81,10 @@ MathTblCoord DAT_00B735D8;
 // SYNTHETIC: GAMEMD 0x778700 (the atexit stub that runs ~Wstring)
 // GLOBAL: GAMEMD 0x00B73590
 Wstring DAT_00B73590("_Default_");
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F74E0
+extern const double DAT_007F74E0 = 60.0;
+// GLOBAL: GAMEMD 0x7F74E8
+extern const double DAT_007F74E8 = 0.017453292519943295;
+// END defined globals

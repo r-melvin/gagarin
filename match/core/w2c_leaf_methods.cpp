@@ -727,3 +727,10 @@ char Obj_005C2640::FUN_005C4E90(int a, void* buffer, int c, Flags_005C4E90 flags
 
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EB68
+LPARAM DAT_00A8EB68;
+// GLOBAL: GAMEMD 0xAC48EC
+int DAT_00AC48EC;
+// END defined globals
