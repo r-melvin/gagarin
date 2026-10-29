@@ -5,17 +5,6 @@
 //   0x434990 and returns x unchanged when the first argument is null.
 #include "bit_font_entries_00434b10.h"
 
-// FUNCTION: GAMEMD 0x434B10
-void BitText_00434B10_View::FUN_00434B10()
-{
-    this->Vptr = &VT_007E3A80;
-    BitFont_00434B10* previous = DAT_0089C4D0;
-    delete previous;
-    if (previous == DAT_0089C4D0) {
-        DAT_0089C4D0 = 0;
-    }
-}
-
 // FUNCTION: GAMEMD 0x434B40
 // PARTIAL: 32/35 instructions (91.4%; 28 exact, 4 relocation-normalised,
 // 3 differing). The only delta is the compiler's order for loading the two

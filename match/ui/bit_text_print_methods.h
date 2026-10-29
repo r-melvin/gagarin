@@ -5,12 +5,9 @@
 //
 // The single-line text draw at 0x434B90.
 //
-// Naming: YRpp binds this address to a *non-static* `BitText::Print`,
-// and that cannot be right — retail never reads ECX. The receiver of all four
-// calls in the body is the first stack argument, and `RET 0x1C` accounts for
-// seven stack arguments with nothing left over for a `this`. So this is a free
-// __stdcall function, and it keeps its Ghidra placeholder name rather than a
-// YRpp name that the bytes contradict.
+// The entry does not read ECX; that fact alone does not distinguish a free
+// function from a method with an unused receiver. Its present declaration
+// retains the existing free-function binding pending caller ABI reconciliation.
 //
 // The first argument is what YRpp calls the font, passed by value there; it is
 // a pointer here, since it is loaded into ECX as the receiver for 0x4348F0,
@@ -18,20 +15,7 @@
 #ifndef GG_MATCH_UI_BIT_TEXT_PRINT_METHODS_H
 #define GG_MATCH_UI_BIT_TEXT_PRINT_METHODS_H
 
-class Surface;
-
-// BitFont — the four methods this draw path drives. All are direct (non-virtual)
-// __thiscall calls at fixed addresses, so they are declared without bodies and
-// the compiler emits reloc-normalised direct calls.
-class BitFont
-{
-public:
-    void FUN_004348F0(Surface* surface);                        // GAMEMD 0x4348F0
-    void FUN_00434110(int value);                               // GAMEMD 0x434110
-    int  FUN_00434500(const unsigned short* text, int a, int b,
-                      int c, int d);                            // GAMEMD 0x434500
-    void FUN_00434990(Surface* surface);                        // GAMEMD 0x434990
-};
+#include "../renderer/bit_font.h"
 
 // FUNCTION: GAMEMD 0x434B90
 int __stdcall FUN_00434B90(BitFont* font, Surface* surface, const unsigned short* text,

@@ -1027,12 +1027,15 @@ int Obj_00408D00::FUN_00408D60() const
 {
     return Channels[0].unknown_34 - Channels[0].unknown_38 == 0;
 }
+// Link offset read at 0x408E53; link footprint precedes descriptor +0x0C.
+GG_STATIC_ASSERT(offsetof(ListNode, Prev) == 0);
+GG_STATIC_ASSERT(sizeof(ListNode) == 0x0C);
 // FUNCTION: GAMEMD 0x408E50
 Aligned_00408D80* Aligned_00408D80::FUN_00408E50()
 {
-    ListNode* node = Links.Prev;
     // Retail's sentinel lies one pointer word past the owner's base address.
     ListNode* sentinel = reinterpret_cast<ListNode*>(static_cast<char*>(unknown_30) + 4);
+    ListNode* node = Links.Prev;
     if (node == sentinel)
     {
         node = node->Prev;

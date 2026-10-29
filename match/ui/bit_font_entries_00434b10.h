@@ -15,38 +15,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct BitText_00434B10_View
-{
-    const void* Vptr;
-    // FUNCTION: GAMEMD 0x434B10
-    void FUN_00434B10();
-};
-GG_STATIC_ASSERT(offsetof(BitText_00434B10_View, Vptr) == 0x00);
-GG_STATIC_ASSERT(sizeof(BitText_00434B10_View) == 0x04);
-
-struct BitFont_00434B10
-{
-    virtual ~BitFont_00434B10();
-    char unknown_004[0x40];
-};
-GG_STATIC_ASSERT(offsetof(BitFont_00434B10, unknown_004) == 0x04);
-GG_STATIC_ASSERT(sizeof(BitFont_00434B10) == 0x44);
-
-// The vtable stores a raw 32-bit code pointer; retail 0x434B25 loads this
-// slot with ECX=this and stack flag 1 (the target's thiscall deleting dtor).
-typedef void (*BitFontDeletingDtorSlot_00434B10)(void);
-struct BitFontDeletingVtable_00434B10
-{
-    BitFontDeletingDtorSlot_00434B10 deletingDestructor;
-};
-GG_STATIC_ASSERT(offsetof(BitFontDeletingVtable_00434B10, deletingDestructor) == 0x00);
-GG_STATIC_ASSERT(sizeof(BitFontDeletingVtable_00434B10) == 0x04);
-// GLOBAL: GAMEMD 0x0089C4D0 — points to the singleton allocated as BitFont
-// at 0x434AD0 and initialized by BitFont::BitFont at 0x433880.
-extern BitFont_00434B10* DAT_0089C4D0;
-// VTABLE: GAMEMD 0x007E3A80 — BitText vtable; initialized at 0x434AD5.
-extern char VT_007E3A80;
-
 class Surface;
 struct BitFont_00434B40
 {

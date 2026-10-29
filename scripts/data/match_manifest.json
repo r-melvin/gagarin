@@ -11599,9 +11599,9 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc44_methods.cpp",
+  "tu": "match/ui/bit_text_ctor_methods.cpp",
   "addr": "0x435560",
-  "sym": "?ScalarDeletingDestructor@BitText@@QAEPAXD@Z",
+  "sym": "??_GBitText@@UAEPAXI@Z",
   "len": "0x45",
   "name": "BitText::ScalarDeletingDestructor",
   "status": "matched",
@@ -11644,11 +11644,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc46_methods.cpp",
+  "tu": "match/ui/surface_desc_ctor_methods.cpp",
   "addr": "0x433940",
-  "sym": "?FUN_00433940@@YIXPAUObj_00433940@@@Z",
+  "sym": "??1BitFont@@UAE@XZ",
   "len": "0x4b",
-  "name": "FUN_00433940",
+  "name": "BitFont::~BitFont",
   "status": "matched",
   "pct": 100
  },
@@ -29858,7 +29858,7 @@
  {
   "tu": "match/ui/surface_desc_ctor_methods.cpp",
   "addr": "0x433880",
-  "sym": "??0BitFont@@QAE@PAUKey_00433880@@@Z",
+  "sym": "??0BitFont@@QAE@PBD@Z",
   "len": "0xbd",
   "name": "BitFont::BitFont",
   "status": "matched",
@@ -30747,11 +30747,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "tu": "match/ui/bit_text_ctor_methods.cpp",
   "addr": "0x434B10",
-  "sym": "?FUN_00434B10@BitText_00434B10_View@@QAEXXZ",
+  "sym": "??1BitText@@UAE@XZ",
   "len": "0x2e",
-  "name": "BitText::FUN_00434B10",
+  "name": "BitText::~BitText",
   "status": "matched",
   "pct": 100
  },
@@ -31035,13 +31035,13 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/bit_font_scalar_dtor_00434a40.cpp",
+  "tu": "match/ui/surface_desc_ctor_methods.cpp",
   "addr": "0x434A40",
-  "sym": "?ScalarDeletingDestructor@BitFontScalarDtorView_00434A40@@QAEPAXI@Z",
+  "sym": "??_GBitFont@@UAEPAXI@Z",
   "len": "0x62",
   "name": "BitFont::ScalarDeletingDestructor",
-  "status": "partial",
-  "pct": 7.9
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/movement/drive_locomotion.cpp",
@@ -95152,7 +95152,7 @@
   "len": "0xd5",
   "name": "FUN_006DA080",
   "status": "partial",
-  "pct": 57.5
+  "pct": 82.5
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -95233,7 +95233,7 @@
   "len": "0x149",
   "name": "FUN_006D8C60",
   "status": "partial",
-  "pct": 8.9
+  "pct": 72.3
  },
  {
   "tu": "match/core/Scenario.cpp",
@@ -98644,8 +98644,8 @@
   "sym": "?FUN_00408E50@Aligned_00408D80@@QAEPAU1@XZ",
   "len": "0x15",
   "name": "FUN_00408E50",
-  "status": "partial",
-  "pct": 50.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/module_tu002.cpp",
@@ -102455,7 +102455,7 @@
   "len": "0x24a",
   "name": "Tactical::vf_23",
   "status": "partial",
-  "pct": 60.4
+  "pct": 93.4
  },
  {
   "tu": "match/core/point_interpolation.cpp",
@@ -102491,7 +102491,7 @@
   "len": "0x3b2",
   "name": "Tactical::FUN_006D2790",
   "status": "partial",
-  "pct": 2.1
+  "pct": 2.5
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102509,7 +102509,7 @@
   "len": "0x272",
   "name": "Tactical::FUN_006D2B60",
   "status": "partial",
-  "pct": 4.4
+  "pct": 4.9
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102653,7 +102653,7 @@
   "len": "0x202",
   "name": "Tactical::FUN_006D4E20",
   "status": "partial",
-  "pct": 53.5
+  "pct": 79.1
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102671,7 +102671,7 @@
   "len": "0x27d",
   "name": "Tactical::FUN_006D59D0",
   "status": "partial",
-  "pct": 2.9
+  "pct": 7.5
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102680,7 +102680,7 @@
   "len": "0x2dd",
   "name": "Tactical::FUN_006D5C50",
   "status": "partial",
-  "pct": 8.1
+  "pct": 10.5
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102707,7 +102707,7 @@
   "len": "0x17b",
   "name": "Tactical::FUN_006D6410",
   "status": "partial",
-  "pct": 3.4
+  "pct": 30.5
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102743,7 +102743,7 @@
   "len": "0x4d0",
   "name": "Tactical::FUN_006D6D10",
   "status": "partial",
-  "pct": 7.8
+  "pct": 10.2
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102752,7 +102752,7 @@
   "len": "0x37e",
   "name": "Tactical::FUN_006D71E0",
   "status": "partial",
-  "pct": 1.5
+  "pct": 5.1
  },
  {
   "tu": "match/renderer/tu177_pixel_fx_class.cpp",
@@ -102779,7 +102779,7 @@
   "len": "0x2da",
   "name": "Tactical::FUN_006D7560",
   "status": "partial",
-  "pct": 3.2
+  "pct": 3.7
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102788,7 +102788,7 @@
   "len": "0x3ba",
   "name": "Tactical::FUN_006D7840",
   "status": "partial",
-  "pct": 14.6
+  "pct": 22.6
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102824,7 +102824,8 @@
   "len": "0xa8",
   "name": "Tactical::FUN_006DA180",
   "status": "partial",
-  "pct": 6.9
+  "pct": 100.0,
+  "note": "100% normalized function comparison; remains partial pending full DSurface vtable closure."
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102860,7 +102861,7 @@
   "len": "0x17c",
   "name": "Tactical::FUN_006DA5C0",
   "status": "partial",
-  "pct": 3.3
+  "pct": 95.8
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102905,7 +102906,7 @@
   "len": "0x40c",
   "name": "Tactical::FUN_006DB210",
   "status": "partial",
-  "pct": 2.2
+  "pct": 5.0
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102914,7 +102915,7 @@
   "len": "0x534",
   "name": "Tactical::FUN_006DB620",
   "status": "partial",
-  "pct": 1.2
+  "pct": 2.9
  },
  {
   "tu": "match/core/tu165_object_class.cpp",
@@ -102959,7 +102960,7 @@
   "len": "0x5db",
   "name": "Tactical::FUN_006DBE20",
   "status": "partial",
-  "pct": 33.4
+  "pct": 39.1
  },
  {
   "tu": "match/core/object_type_class_slots.cpp",

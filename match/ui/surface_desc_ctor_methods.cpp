@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
+// /Ob2 inlines the real destructor into the retail scalar wrapper at 0x434A40.
+// The normal destructor remains a separately emitted function.
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at 0x433880.
 //
@@ -20,19 +23,36 @@
 // The success path returns early rather than skipping the second reset with an
 // else; retail has two epilogues (0x4338F2 and the tail), so the early return is
 // the shape.
-BitFont::BitFont(Key_00433880* key)
+BitFont::BitFont(const char* key) throw()
 {
-    this->Vptr = VTBL_007E3A78;
     this->Reset();
 
-    this->Info = FUN_00433990(key);
-    if (this->Info != 0) {
-        this->Width = this->Info->Width;
-        this->Height = this->Info->Height;
+    this->InternalPTR = FUN_00433990(key);
+    if (this->InternalPTR != 0) {
+        this->Width = this->InternalPTR->Width;
+        this->unknown_1C = this->InternalPTR->Height;
         this->FUN_00434700();
         return;
     }
 
     this->Reset();
     return;
+}
+
+// LIBRARY: GAMEMD 0x7C93E8 — CRT free.
+// LIBRARY: GAMEMD 0x7C8B3D — operator delete used by the destructor.
+extern "C" void __cdecl FUN_007C93E8(void* block);
+
+// FUNCTION: GAMEMD 0x433940
+// SYNTHETIC: GAMEMD 0x434A40
+BitFont::~BitFont()
+{
+    void* block = Pointer_8;
+    if (block) FUN_007C93E8(block);
+    BitFontInternalData* data = InternalPTR;
+    if (data) {
+        if (data->SymbolTable) ::operator delete(data->SymbolTable);
+        if (data->Bitmaps) ::operator delete(data->Bitmaps);
+        ::operator delete(data);
+    }
 }

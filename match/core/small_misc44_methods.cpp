@@ -84,25 +84,3 @@ void __cdecl FUN_0040A950()
         POLL_CALL3(DAT_0087E8A0, 0x30, 0, 0, 1);
     }
 }
-
-// FUNCTION: GAMEMD 0x435560   BitText::`scalar deleting destructor'
-void* BitText::ScalarDeletingDestructor(char flags)
-{
-    Vtable = &VT_007E3A80;
-
-    Singleton_00435560* singleton = DAT_0089C4D0;
-
-    if (singleton) {
-        singleton->vt_000(1);
-    }
-
-    if (singleton == DAT_0089C4D0) {
-        DAT_0089C4D0 = 0;
-    }
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}

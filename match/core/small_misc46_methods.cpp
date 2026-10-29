@@ -27,32 +27,6 @@ VectorClassUnsignedShort::VectorClassUnsignedShort(int capacity, void* array)
     return;
 }
 
-// FUNCTION: GAMEMD 0x433940
-void FUN_00433940(Obj_00433940* self)
-{
-    void* block = self->Block;
-
-    self->Vtable = &VT_007E3A78;
-
-    if (block) {
-        FUN_007C93E8(block);
-    }
-
-    Sub_00433940* sub = self->Sub;
-
-    if (sub) {
-        if (sub->BufferA) {
-            FUN_007C8B3D(sub->BufferA);
-        }
-
-        if (sub->BufferB) {
-            FUN_007C8B3D(sub->BufferB);
-        }
-
-        FUN_007C8B3D(sub);
-    }
-}
-
 // FUNCTION: GAMEMD 0x473980
 int FUN_00473980(const char* name)
 {

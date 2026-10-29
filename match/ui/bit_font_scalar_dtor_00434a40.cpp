@@ -10,30 +10,3 @@
 // LIBRARY: GAMEMD 0x7C93E8 (decl; reloc) -- CRT free (the project-wide free symbol is
 // bound to operator delete 0x7C8B3D by its other callers).
 extern "C" void __cdecl FUN_007C93E8(void* block);
-
-// FUNCTION: GAMEMD 0x434A40
-// PARTIAL: retail also re-seats the vtable (0x7E3A78) before freeing; that store
-// belongs to a real BitFont class destructor, which this view does not model.
-void* BitFontScalarDtorView_00434A40::ScalarDeletingDestructor(unsigned int flags)
-{
-    void* cachedPixels = unknown_08;
-    if (cachedPixels != 0) {
-        FUN_007C93E8(cachedPixels);
-    }
-
-    BitFontPayload_00434A40* payload = unknown_04;
-    if (payload != 0) {
-        if (payload->unknown_18 != 0) {
-            ::operator delete(payload->unknown_18);
-        }
-        if (payload->unknown_1C != 0) {
-            ::operator delete(payload->unknown_1C);
-        }
-        ::operator delete(payload);
-    }
-
-    if ((flags & 1) != 0) {
-        ::operator delete(this);
-    }
-    return this;
-}

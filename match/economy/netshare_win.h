@@ -27,15 +27,7 @@ HWND FUN_007759B0(HWND window);
 // FUNCTION: GAMEMD 0x775690 (decl; reloc) -- __fastcall: a control's rectangle.
 void FUN_00775690(HWND window, RECT* rect);
 
-// The font object at 0x89C4D0 (RTTI BitFont). Only the 0x433CF0 text-measure
-// member is reached from this unit; __thiscall, four stacked arguments.
-class BitFont
-{
-public:
-    // FUNCTION: GAMEMD 0x433CF0 (decl; reloc) -- measure text: (text, out
-    // width, out height, wrap width), RET 0x10.
-    void FUN_00433CF0(const wchar_t* text, int* width, int* height, int wrapWidth);
-};
+#include "../renderer/bit_font.h"
 // GLOBAL: GAMEMD 0x89C4D0
 extern BitFont* DAT_0089C4D0;
 

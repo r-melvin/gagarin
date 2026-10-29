@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
+// /Ob2 inlines the real destructor into the retail scalar wrapper at 0x435560.
+// The normal destructor remains a separately emitted function.
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x434AD0.
 //
@@ -9,6 +12,9 @@
 //   STRING:   GAMEMD 0x818B98   "GAME.FNT"
 
 #include "bit_text_ctor_methods.h"
+
+// LIBRARY: GAMEMD 0x7C8E17 — operator new.
+// LIBRARY: GAMEMD 0x7C8B3D — operator delete in the generated scalar wrapper.
 
 // FUNCTION: GAMEMD 0x434AD0  BitText::BitText (__thiscall)
 //
@@ -21,8 +27,11 @@ BitText::BitText()
     TheGameFont = new BitFont("GAME.FNT");
 }
 
-// Stand-in for the destructor at 0x435560 so the vtable has something to point
-// at. Not annotated - matching 0x435560 is separate work.
+// FUNCTION: GAMEMD 0x434B10
+// SYNTHETIC: GAMEMD 0x435560
 BitText::~BitText()
 {
+    BitFont* previous = TheGameFont;
+    delete previous;
+    if (previous == TheGameFont) TheGameFont = 0;
 }

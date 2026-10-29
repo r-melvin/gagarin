@@ -539,8 +539,8 @@ extern unsigned char DAT_00A8ED6B; // GLOBAL: GAMEMD 0xA8ED6B (decl; reloc)
 // FUNCTION: GAMEMD 0x6D2540
 void Tactical::vf_23()
 {
-    if (DAT_00A8D5F8 & 2) return;
     bool moved = false;
+    if (DAT_00A8D5F8 & 2) return;
     if (unknown_A8 != CurrentFrame) {
         if (DAT_00A8ED5C &&
             (unknown_D0.unknown_00 != DAT_00B0CE08.X ||
@@ -557,16 +557,12 @@ void Tactical::vf_23()
                 unknown_DC = 0.0f;
             }
             Pair_006D9F80 adjusted = next;
-            int x, y;
-            if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B) {
-                x = adjusted.unknown_00;
-                y = adjusted.unknown_04;
-            } else {
-                x = next.unknown_00;
-                y = next.unknown_04;
-            }
-            unknown_D64.unknown_00 = unknown_D74.unknown_00 = x;
-            unknown_D64.unknown_04 = unknown_D74.unknown_04 = y;
+            Pair_006D9F80 result;
+            if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B)
+                result = adjusted;
+            else
+                result = next;
+            unknown_D74 = unknown_D64 = result;
             FUN_006D8B30();
             unknown_D7D = true;
             moved = true;
@@ -578,18 +574,13 @@ void Tactical::vf_23()
     }
     unknown_A8 = CurrentFrame;
     if (!(unknown_D74 == unknown_D64) && !moved) {
-        Pair_006D9F80 next = unknown_D74;
-        Pair_006D9F80 adjusted = next;
-        int x, y;
-        if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B) {
-            x = adjusted.unknown_00;
-            y = adjusted.unknown_04;
-        } else {
-            x = next.unknown_00;
-            y = next.unknown_04;
-        }
-        unknown_D64.unknown_00 = unknown_D74.unknown_00 = x;
-        unknown_D64.unknown_04 = unknown_D74.unknown_04 = y;
+        Pair_006D9F80 adjusted = unknown_D74;
+        Pair_006D9F80 result;
+        if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B)
+            result = adjusted;
+        else
+            result = unknown_D74;
+        unknown_D74 = unknown_D64 = result;
         FUN_006D8B30();
         unknown_D7D = true;
     }
@@ -625,25 +616,28 @@ void Tactical::FUN_006D2790(RectangleStruct requested, bool flag)
             DAT_00B0CE78.Items[index].Rect.Height };
         RectangleStruct temporary;
         RectangleStruct overlap = *FUN_00421B60(&temporary, &current, &requested, 0, 0);
-        RectangleStruct united;
+        int unitedX, unitedY, unitedWidth, unitedHeight;
         if (current.Width <= 0 || current.Height <= 0) {
-            united = requested;
+            unitedX = requested.X; unitedY = requested.Y;
+            unitedWidth = requested.Width; unitedHeight = requested.Height;
         } else if (requested.Width <= 0 || requested.Height <= 0) {
-            united = current;
+            unitedX = current.X; unitedY = current.Y;
+            unitedWidth = current.Width; unitedHeight = current.Height;
         } else {
-            united = current;
-            if (united.X > requested.X) {
-                united.Width += united.X - requested.X;
-                united.X = requested.X;
+            unitedX = current.X; unitedY = current.Y;
+            unitedWidth = current.Width; unitedHeight = current.Height;
+            if (unitedX > requested.X) {
+                unitedWidth += unitedX - requested.X;
+                unitedX = requested.X;
             }
-            if (united.Y > requested.Y) {
-                united.Height += united.Y - requested.Y;
-                united.Y = requested.Y;
+            if (unitedY > requested.Y) {
+                unitedHeight += unitedY - requested.Y;
+                unitedY = requested.Y;
             }
-            if (united.X + united.Width < requested.X + requested.Width)
-                united.Width = requested.Width - united.X + 1 + requested.X;
-            if (united.Y + united.Height < requested.Y + requested.Height)
-                united.Height = requested.Y - united.Y + 1 + requested.Height;
+            if (unitedX + unitedWidth < requested.X + requested.Width)
+                unitedWidth = requested.Width - unitedX + 1 + requested.X;
+            if (unitedY + unitedHeight < requested.Y + requested.Height)
+                unitedHeight = requested.Y - unitedY + 1 + requested.Y;
         }
         if (overlap.Width > 0 && overlap.Height > 0) {
             if (overlap.X == requested.X && overlap.Y == requested.Y &&
@@ -657,7 +651,7 @@ void Tactical::FUN_006D2790(RectangleStruct requested, bool flag)
                     --index;
                 }
             } else {
-                int area = united.Width * united.Height;
+                int area = unitedWidth * unitedHeight;
                 if (area < requested.Width * requested.Height + current.Height * current.Width &&
                     area < bestArea) {
                     best = index;
@@ -757,8 +751,8 @@ void Tactical::FUN_006D2B60(bool fullScreen, int dx, int dy,
         }
     }
     if (unknown_E0 > 0 && !fullScreen) {
-        for (int index = 0; index < unknown_E0; ++index) {
-            CellClass* cell = unknown_E4[index];
+        for (CellClass** cellEntry = unknown_E4; cellEntry < unknown_E4 + unknown_E0; ++cellEntry) {
+            CellClass* cell = *cellEntry;
             CoordStruct temporary;
             CoordStruct coordinate = *cell->GetCellCoords(&temporary);
             coordinate.Z = 0;
@@ -766,7 +760,7 @@ void Tactical::FUN_006D2B60(bool fullScreen, int dx, int dy,
             Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
                              projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
             if (DAT_00B73550 != 0) {
-                CellClass* currentCell = unknown_E4[index];
+                CellClass* currentCell = *cellEntry;
                 currentCell->FUN_00480180(&location, clip);
             }
         }
@@ -1593,7 +1587,7 @@ void Tactical::FUN_006D4E20(const unsigned short* text)
 
     int frame = unknown_A4;
     if (frame != -1 && DAT_00A8F798 && DAT_00A8F794 &&
-        frame < DAT_00A8F794->Frames) {
+        DAT_00A8F794->Frames > frame) {
         Point2D centered((Viewport_00886FA0.Width - DAT_00A8F794->Width) / 2,
                          (Viewport_00886FA0.Height - DAT_00A8F794->Height) / 2);
         Point2D offset(0, 0);
@@ -1602,24 +1596,20 @@ void Tactical::FUN_006D4E20(const unsigned short* text)
                       0, 0, 0, 0, 1000, 0, 0, 0, offset);
         return;
     }
-    if (!text || !FUN_007CA405(text)) return;
+    if (!text || FUN_007CA405(text) <= 0) return;
 
     BitFont* font = DAT_0089C4D0;
-    int viewportX = Viewport_00886FA0.X;
-    int viewportY = Viewport_00886FA0.Y;
-    int viewportWidth = Viewport_00886FA0.Width;
-    int viewportHeight = Viewport_00886FA0.Height;
+    RectangleStruct viewport = Viewport_00886FA0;
     int textWidth;
     int textHeight;
     const BTranslucentPixelFormat& pixel = gg_b_translucent_pixel_format;
     unsigned int white = ((255 >> pixel.loss2) << pixel.pos2) |
                          ((255 >> pixel.loss1) << pixel.pos1) |
                          ((255 >> pixel.loss0) << pixel.pos0);
-    font->FUN_00433CF0(text, &textWidth, &textHeight, viewportWidth);
-    BitFontBounds bounds = {viewportX, viewportY,
-                         viewportX + viewportWidth, viewportY + viewportHeight};
-    int x = viewportX + (viewportWidth - textWidth) / 2;
-    int y = viewportY + (viewportHeight - textHeight) / 2;
+    font->FUN_00433CF0(text, &textWidth, &textHeight, viewport.Width);
+    int x = viewport.X + (viewport.Width - textWidth) / 2;
+    int y = viewport.Y + (viewport.Height - textHeight) / 2;
+    BitFontBounds bounds = {viewport.X, viewport.Y, viewport.X + viewport.Width, viewport.Y + viewport.Height};
     font->FUN_00433C90(1);
     font->FUN_00433CA0(&bounds);
     font->FUN_00433C70((unsigned short)white);
@@ -1860,8 +1850,7 @@ void Tactical::FUN_006D59D0(unsigned char mode, CellStruct origin)
         const CellStruct& step = DAT_0089F688[direction & 7];
         bool found = false;
         while (count < range) {
-            current.X += step.X;
-            current.Y += step.Y;
+            current = current + step;
             BuildingClass* building = MapInstance.FUN_005657A0(&current)->GetBuilding();
             if (building && building->Type->bools_16A4[0x16C0 - 0x16A4] &&
                 building->Owner->IsControlledByCurrentPlayer()) {
@@ -1880,9 +1869,7 @@ void Tactical::FUN_006D59D0(unsigned char mode, CellStruct origin)
         if (!found || count <= 0)
             continue;
         unsigned int flags = mode ? 0x10606 : 0x20606;
-        CellStruct draw;
-        draw.X = origin.X + step.X;
-        draw.Y = origin.Y + step.Y;
+        CellStruct draw = origin + step;
         for (int index = 0; index < count; ++index) {
             int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
             int firstY = -1 - firstLevel * 15;
@@ -1899,8 +1886,7 @@ void Tactical::FUN_006D59D0(unsigned char mode, CellStruct origin)
                          DisplayPlaceShape_008A03FC, 0, &marker,
                          &Viewport_00886FA0, flags, 0, z, 0, 1000,
                          0, 0, 0, Point2D(0, 0));
-            draw.X += step.X;
-            draw.Y += step.Y;
+            draw = draw + step;
         }
     }
 }
@@ -1925,9 +1911,8 @@ void Tactical::FUN_006D5C50(unsigned char mode, CellStruct origin)
             continue;
         const CellStruct& step = DAT_0089F688[direction & 7];
         bool found = false;
-        while (count < range) {
-            current.X += step.X;
-            current.Y += step.Y;
+        do {
+            current = current + step;
             CellClass* cell = MapInstance.FUN_005657A0(&current);
             int overlayIndex = cell->OverlayTypeIndex;
             if (overlayIndex != -1 && overlayIndex == overlay->ArrayIndex) {
@@ -1947,13 +1932,11 @@ void Tactical::FUN_006D5C50(unsigned char mode, CellStruct origin)
                     speedType, type, owner))
                 break;
             ++count;
-        }
+        } while (count < range);
         if (!found || count <= 0)
             continue;
         unsigned int flags = mode ? 0x10606 : 0x20606;
-        CellStruct draw;
-        draw.X = origin.X + step.X;
-        draw.Y = origin.Y + step.Y;
+        CellStruct draw = origin + step;
         for (int index = 0; index < count; ++index) {
             int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
             int firstY = -1 - firstLevel * 15;
@@ -1973,8 +1956,7 @@ void Tactical::FUN_006D5C50(unsigned char mode, CellStruct origin)
                          DisplayPlaceShape_008A03FC, 0, &marker,
                          &Viewport_00886FA0, flags, 0, z, 0, 1000,
                          0, 0, 0, Point2D(0, 0));
-            draw.X += step.X;
-            draw.Y += step.Y;
+            draw = draw + step;
         }
     }
 }
@@ -2101,31 +2083,37 @@ GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 2);
 GG_STATIC_ASSERT(offsetof(Tactical, unknown_B0) == 0xB0);
 GG_STATIC_ASSERT(offsetof(Tactical, unknown_DE4) == 0xDE4);
 
+static inline CellStruct CellFromWorld_006D6410(int x, int y)
+{
+    CellStruct result;
+    result.X = x / 256;
+    result.Y = y / 256;
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x6D6410
 CellStruct Tactical::FUN_006D6410(const CoordStruct* coordinate)
 {
-    CellStruct original;
-    original.X = coordinate->X / 256;
-    original.Y = coordinate->Y / 256;
+    CellStruct original = CellFromWorld_006D6410(coordinate->X, coordinate->Y);
+    int worldX = original.X * 256 + 128;
+    int worldY = original.Y * 256 + 128;
     bool originalFlag = (MapInstance.FUN_005657A0(&original)->Flags & 0x1000) != 0;
     // Native performs the lookup twice; retain that call sequence.
     int originalLevel = MapInstance.FUN_005657A0(&original)->Level;
-    int worldX = original.X * 256 + 128 + 1536;
-    int worldY = original.Y * 256 + 128 + 1536;
+    worldX += 1536;
+    worldY += 1536;
     for (;;) {
         worldX -= 8;
         worldY -= 8;
-        CellStruct candidate;
-        candidate.X = worldX / 256;
-        candidate.Y = worldY / 256;
+        CellStruct candidate = CellFromWorld_006D6410(worldX, worldY);
         CellClass* cell = MapInstance.FUN_005657A0(&candidate);
         int levelDifference = cell->Level - originalLevel;
         if (originalFlag)
             levelDifference += ((cell->Flags >> 8) & 1) * 4;
         // Native compares narrowed signed shorts, not full 32-bit quotients.
-        short adjustedX = (worldX - levelDifference * 128) / 256;
-        short adjustedY = (worldY - levelDifference * 128) / 256;
-        if (adjustedX <= original.X && adjustedY <= original.Y) {
+        CellStruct adjusted = CellFromWorld_006D6410(worldX - levelDifference * 128,
+                                                      worldY - levelDifference * 128);
+        if (adjusted.X <= original.X && adjusted.Y <= original.Y) {
             return candidate;
         }
         if (candidate.X == original.X && candidate.Y == original.Y) {
@@ -2296,8 +2284,8 @@ void Tactical::FUN_006D6D10(const RectangleStruct* rectangle)
     world.X = (int)screen.X;
     world.Y = (int)screen.Y;
     world.Z = 0;
-    if (world.X < 0) world.X = 0;
     if (world.Y < 0) world.Y = 0;
+    if (world.X < 0) world.X = 0;
     CellClass* origin = MapInstance.FUN_00565730(&world);
     CellStruct base = origin->MapCoords;
     base.X -= 4;
@@ -2313,14 +2301,14 @@ void Tactical::FUN_006D6D10(const RectangleStruct* rectangle)
         CellStruct coordinate;
         coordinate.X = base.X + row / 2;
         coordinate.Y = base.Y + (row + 1) / 2;
-        for (int column = 0; column < columns; ++column) {
+        for (int remaining = columns; remaining > 0; --remaining) {
             if (MapInstance.FUN_00568300(&coordinate)) {
                 CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
                 if (cell->OverlayTypeIndex != -1) {
                     RectangleStruct bounds = cell->FUN_0047FB90();
                     RectangleStruct intersection;
-                    intersection = *FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
-                    if (intersection.Width > 0 && intersection.Height > 0) {
+                    RectangleStruct* result = FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (result->Width > 0 && result->Height > 0) {
                         CoordStruct center;
                         center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
                                             (coordinate.Y * 256 + 128) / 256 * 256, 0);
@@ -2341,14 +2329,14 @@ void Tactical::FUN_006D6D10(const RectangleStruct* rectangle)
         CellStruct coordinate;
         coordinate.X = base.X + row / 2;
         coordinate.Y = base.Y + (row + 1) / 2;
-        for (int column = 0; column < columns; ++column) {
+        for (int remaining = columns; remaining > 0; --remaining) {
             if (MapInstance.FUN_00568300(&coordinate)) {
                 CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
                 if (cell->OverlayTypeIndex != -1) {
                     RectangleStruct bounds = cell->FUN_0047FDE0();
                     RectangleStruct intersection;
-                    intersection = *FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
-                    if (intersection.Width > 0 && intersection.Height > 0) {
+                    RectangleStruct* result = FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (result->Width > 0 && result->Height > 0) {
                         CoordStruct center;
                         center.X = (coordinate.X * 256 + 128) / 256 * 256;
                         center.Y = (coordinate.Y * 256 + 128) / 256 * 256;
@@ -2391,9 +2379,12 @@ void Tactical::FUN_006D71E0(const RectangleStruct* rectangle)
     const int columns = rectangle->Width / 60 + 4;
     if (DAT_00B73550 && rows > 0) {
         for (int row = 0; row < rows; ++row) {
+            CellStruct offset;
+            offset.X = row / 2;
+            offset.Y = (row + 1) / 2;
             CellStruct coordinate;
-            coordinate.X = base.X + row / 2;
-            coordinate.Y = base.Y + (row + 1) / 2;
+            coordinate.X = base.X + offset.X;
+            coordinate.Y = base.Y + offset.Y;
             for (int column = 0; column < columns; ++column) {
                 if (MapInstance.FUN_00568300(&coordinate)) {
                     // Native performs the map lookup even though this caller
@@ -2470,18 +2461,21 @@ void Tactical::FUN_006D7560(const RectangleStruct* rectangle,
     int columns = rectangle->Width / 60 + 4;
     for (int row = 0; row < rows; ++row) {
         CellStruct offset;
+        int nextRow = row + 1;
         offset.X = row / 2;
-        offset.Y = (row + 1) / 2;
+        offset.Y = nextRow / 2;
         CellStruct cellCoordinate;
         cellCoordinate.X = base.X + offset.X;
         cellCoordinate.Y = base.Y + offset.Y;
-        for (int column = 0; column < columns; ++column) {
+        for (int remaining = columns; remaining > 0; --remaining) {
             if (MapInstance.FUN_00568300(&cellCoordinate)) {
                 CellClass* cell = MapInstance.FUN_005657A0(&cellCoordinate);
                 RectangleStruct bounds = cell->FUN_0047FF80();
                 RectangleStruct temporary;
-                RectangleStruct intersection =
-                    *FUN_00421B60(&temporary, rectangle, &bounds, 0, 0);
+                RectangleStruct* intersection =
+                    FUN_00421B60(&temporary, rectangle, &bounds, 0, 0);
+                int intersectionWidth = intersection->Width;
+                int intersectionHeight = intersection->Height;
                 // Native performs center construction and projection even
                 // when bounds/intersection are empty; predicate follows them.
                 int centerX = (cellCoordinate.X * 256 + 128) / 256 * 256;
@@ -2493,7 +2487,7 @@ void Tactical::FUN_006D7560(const RectangleStruct* rectangle,
                 FUN_006D2140(&copiedCenter, &position); // Native ignores bool result.
                 position.X -= 30;
                 if (bounds.Width > 0 && bounds.Height > 0 &&
-                    intersection.Width > 0 && intersection.Height > 0)
+                    intersectionWidth > 0 && intersectionHeight > 0)
                     cell->FUN_00480350(&position, clip, 0);
             }
             ++cellCoordinate.X;
@@ -2530,11 +2524,10 @@ void Tactical::FUN_006D7840(const RectangleStruct* rectangle,
     Vector3D vector(x, y, 0.0f);
     Vector3D transformed;
     vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
-    int worldX = vector.X;
-    int worldY = vector.Y;
+    Point2D world(vector.X, vector.Y);
     CellStruct base;
-    base.X = worldX / 256;
-    base.Y = worldY / 256;
+    base.X = world.X / 256;
+    base.Y = world.Y / 256;
     int rows = rectangle->Height / 15 + 17;
     int columns = rectangle->Width / 60 + 4;
     base.X -= 2;
@@ -2929,13 +2922,10 @@ void Tactical::FUN_006D8B30()
 // FUNCTION: GAMEMD 0x6D8C60
 void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
 {
-    CoordStruct coordinate = object->vf_18();
-    int xy[2] = { coordinate.X, coordinate.Y };
-    Point2D projected = IsoProject(xy);
-    Point2D point(projected.X / 256,
-                        projected.Y / 256 - AdjustForZ(coordinate.Z));
-    point.X -= DAT_00887324->unknown_B0.unknown_00;
-    point.Y -= DAT_00887324->unknown_B0.unknown_04;
+    Point2D point = DAT_00887324->CoordsToScreen(&object->vf_18());
+    Pair_006D9F80 offset = DAT_00887324->unknown_B0;
+    point.X -= offset.unknown_00;
+    point.Y -= offset.unknown_04;
     if (point.X >= -360 && point.X <= DAT_00B0CE30 + 360 &&
         point.Y >= -180 && point.Y <= DAT_00B0CE34 + 180) {
         // 0x6D8D86/0x6D8D97 pass the address of this two-int point.
@@ -3357,13 +3347,20 @@ int Tactical::FUN_006DA080() const
     rectangle.Width = right - left + 1;
     rectangle.Height = bottom - top + 1;
     if (rectangle.Width > 0 && rectangle.Height > 0) {
-        for (int i = 0; i < unknown_DB0; ++i) {
+        int i = 0;
+        if (unknown_DB0 > 0) {
+            for (;;) {
             if (DAT_00B0CEC8[i].unknown_00 != 0 && DAT_00B0CEC8[i].unknown_00->IsAlive) {
-                int x = DAT_00B0CEC8[i].unknown_04 - unknown_B0.unknown_00;
-                int y = DAT_00B0CEC8[i].unknown_08 - unknown_B0.unknown_04;
+                int originX = unknown_B0.unknown_00;
+                int x = DAT_00B0CEC8[i].unknown_04 - originX;
+                int originY = unknown_B0.unknown_04;
+                int y = DAT_00B0CEC8[i].unknown_08 - originY;
                 if (x >= rectangle.X && x < rectangle.X + rectangle.Width
                     && y >= rectangle.Y && y < rectangle.Y + rectangle.Height)
                     return 1;
+            }
+                ++i;
+                if (i >= unknown_DB0) break;
             }
         }
     }
@@ -3381,7 +3378,7 @@ void Tactical::FUN_006DA160()
 // FUNCTION: GAMEMD 0x6DA180
 void Tactical::FUN_006DA180()
 {
-    if (unknown_D90.unknown_00 != 0 || unknown_D90.unknown_04 != 0) {
+    if (!(unknown_D90 == Pair_006D9F80(0, 0))) {
         int left = unknown_D90.unknown_00;
         int right = unknown_D98.unknown_00;
         int top = unknown_D90.unknown_04;
@@ -3542,35 +3539,37 @@ void Tactical::FUN_006DA5C0(const TRect<int>* rectangle,
         // an entry snapshot. Record pointer itself advances12 bytes each time.
         for (int index = 0; index < unknown_DB0; ++index) {
             ObjectClass* object = DAT_00B0CEC8[index].unknown_00;
-            if (!object || !object->IsAlive) continue;
-            int x = DAT_00B0CEC8[index].unknown_04 - unknown_B0.unknown_00;
-            int y = DAT_00B0CEC8[index].unknown_08 - unknown_B0.unknown_04;
-            if (x < rectangle->X || x >= rectangle->X + rectangle->Width ||
-                y < rectangle->Y || y >= rectangle->Y + rectangle->Height)
-                continue;
+            if (object && object->IsAlive) {
+                Pair_006D9F80 offset = unknown_B0;
+                int x = DAT_00B0CEC8[index].unknown_04 - offset.unknown_00;
+                int y = DAT_00B0CEC8[index].unknown_08 - offset.unknown_04;
+                if (x >= rectangle->X && x < rectangle->X + rectangle->Width &&
+                    y >= rectangle->Y && y < rectangle->Y + rectangle->Height) {
 
-            if (Unsorted_IsTypeSelecting()) {
-                // Native slot88 result+24 is AbstractTypeClass::ID. The
-                // object is nonnull but the returned type is not checked.
-                FUN_007327D0(object->vf_34()->ID);
-            } else if (callback) {
-                callback(object);
-            } else {
-                bool buildingAllowed = false;
-                if (object->vf_11() == 6) {
-                    // Kind6 branch proves the BuildingClass-specific Type
-                    // access at+520; Type->UndeploysInto is+408, not Owner.
-                    BuildingClass* building = static_cast<BuildingClass*>(object);
-                    if (building->Type->UndeploysInto != 0 &&
-                        building->Type->FUN_00465D40())
-                        buildingAllowed = true;
+                    if (Unsorted_IsTypeSelecting()) {
+                        // Native slot88 result+24 is AbstractTypeClass::ID. The
+                        // object is nonnull but the returned type is not checked.
+                        FUN_007327D0(object->vf_34()->ID);
+                    } else if (!callback) {
+                        bool buildingAllowed = false;
+                        if (object->vf_11() == 6) {
+                            // Kind6 branch proves the BuildingClass-specific Type
+                            // access at+520; Type->UndeploysInto is+408, not Owner.
+                            BuildingClass* building = static_cast<BuildingClass*>(object);
+                            if (building->Type->UndeploysInto != 0 &&
+                                building->Type->FUN_00465D40())
+                                buildingAllowed = true;
+                        }
+                        HouseClass* owner = object->vf_15();
+                        if (owner && owner->IsControlledByCurrentPlayer() &&
+                            object->vf_78() &&
+                            (object->vf_11() != 6 || buildingAllowed) &&
+                            object->vf_83())
+                            DAT_00822CF2 = false;
+                    } else {
+                        callback(object);
+                    }
                 }
-                HouseClass* owner = object->vf_15();
-                if (owner && owner->IsControlledByCurrentPlayer() &&
-                    object->vf_78() &&
-                    (object->vf_11() != 6 || buildingAllowed) &&
-                    object->vf_83())
-                    DAT_00822CF2 = false;
             }
         }
     }
@@ -3893,8 +3892,8 @@ void Tactical::FUN_006DB210()
 
             CoordStruct alternateCoordinate = alternate->vf_18();
             Point2D objectPoint = CoordsToScreen(&alternateCoordinate);
-            Point2D scroll(unknown_B0.unknown_00, unknown_B0.unknown_04);
-            objectPoint -= scroll;
+            objectPoint.X -= unknown_B0.unknown_00;
+            objectPoint.Y -= unknown_B0.unknown_04;
             RectangleStruct dot = { cellPoint.X - 1, cellPoint.Y - 1, 3, 3 };
             DAT_00887314->FillRectEx(&Viewport_00886FA0, &dot, cyan);
             DAT_00887314->DrawLineEx(&Viewport_00886FA0, &cellPoint,
@@ -3909,8 +3908,8 @@ void Tactical::FUN_006DB210()
 
         CoordStruct coordinate = object->vf_18();
         Point2D objectPoint = CoordsToScreen(&coordinate);
-        Point2D scroll(unknown_B0.unknown_00, unknown_B0.unknown_04);
-        objectPoint -= scroll;
+        objectPoint.X -= unknown_B0.unknown_00;
+        objectPoint.Y -= unknown_B0.unknown_04;
 
         // Native reloads NextObject after the first virtual coordinate callback.
         CoordStruct nextCoordinate = static_cast<ObjectClass*>(object->NextObject)->vf_18();
@@ -3946,21 +3945,21 @@ void Tactical::FUN_006DB620()
 
             if (cell->OccupationBits & 0x04) {
                 Point2D offset(10, 0);
-                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
                 RectangleStruct storage;
                 RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
                 DAT_00887314->FillRect(&marker, color);
             }
             if (cell->OccupationBits & 0x10) {
                 Point2D offset(0, 6);
-                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
                 RectangleStruct storage;
                 RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
                 DAT_00887314->FillRect(&marker, color);
             }
             if (cell->OccupationBits & 0x08) {
                 Point2D offset(-10, 0);
-                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
                 RectangleStruct storage;
                 RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
                 DAT_00887314->FillRect(&marker, color);
@@ -3970,14 +3969,14 @@ void Tactical::FUN_006DB620()
 
             if (cell->AltOccupationBits & 0x04) {
                 Point2D offset(10, -60);
-                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
                 RectangleStruct storage;
                 RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
                 DAT_00887314->FillRect(&marker, color);
             }
             if (cell->AltOccupationBits & 0x10) {
                 Point2D offset(0, -66);
-                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
                 RectangleStruct storage;
                 RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
                 DAT_00887314->FillRect(&marker, color);
@@ -4088,9 +4087,8 @@ void Tactical::FUN_006DBE20()
         int range = building->FUN_004566B0();
         if (range <= 0) return;
         CellStruct cellPosition = DAT_0088095C;
-        CellClass* cell = MapInstance.FUN_005657A0(&cellPosition);
         CoordStruct temporary;
-        CoordStruct center = *cell->GetCellCoords(&temporary);
+        CoordStruct center = *MapInstance.FUN_005657A0(&cellPosition)->GetCellCoords(&temporary);
         // GLOBAL: GAMEMD 0xB0CE14
         static ColorStruct DAT_00B0CE14(0, 0, 0);
         DAT_00B0E648 += DAT_00842950 * 10;
@@ -4137,9 +4135,8 @@ void Tactical::FUN_006DBE20()
     float scale = type->unknown_F8;
     if (!(scale > 0.0f)) return;
     CellStruct cellPosition = DAT_0088095C;
-    CellClass* cell = MapInstance.FUN_005657A0(&cellPosition);
     CoordStruct temporary;
-    CoordStruct center = *cell->GetCellCoords(&temporary);
+    CoordStruct center = *MapInstance.FUN_005657A0(&cellPosition)->GetCellCoords(&temporary);
     center.X -= 126;
     center.Y -= 126;
     // GLOBAL: GAMEMD 0xB0CD70

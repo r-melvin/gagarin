@@ -47,34 +47,6 @@ struct VectorClassUnsignedShort
 GG_STATIC_ASSERT(offsetof(VectorClassUnsignedShort, IsAllocated) == 0xD);
 
 // ---------------------------------------------------------------------------
-// 0x433940 — destructor: release the block at +0x08 through 0x7C93E8, then the
-// object at +0x04 together with its two buffers through 0x7C8B3D.
-//
-// The two frees are different functions, which is why they are declared
-// separately rather than treated as one allocator.
-// ---------------------------------------------------------------------------
-extern char VT_007E3A78;   // VTABLE: GAMEMD 0x7E3A78
-
-struct Sub_00433940
-{
-    char  _pad000[0x18];
-    void* BufferA;   // +0x0018
-    void* BufferB;   // +0x001C
-};
-GG_STATIC_ASSERT(offsetof(Sub_00433940, BufferB) == 0x1C);
-
-struct Obj_00433940
-{
-    char*         Vtable;   // +0x0000
-    Sub_00433940* Sub;      // +0x0004
-    void*         Block;    // +0x0008
-};
-GG_STATIC_ASSERT(offsetof(Obj_00433940, Block) == 0x8);
-
-// FUNCTION: GAMEMD 0x433940
-void FUN_00433940(Obj_00433940* self);
-
-// ---------------------------------------------------------------------------
 // 0x473980 — index of the first table entry either of whose two names matches.
 //
 // The table at 0x81B7C8 runs to 0x81B820, so 0x58 bytes at eight per entry:

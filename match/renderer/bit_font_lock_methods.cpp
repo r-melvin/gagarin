@@ -24,7 +24,7 @@ void BitFont::Lock(Surface* surface)
 
     origin.X = 0;
     origin.Y = 0;
-    pGraphBuffer = surface->Lock(origin);
+    pGraphBuffer = static_cast<short*>(surface->Lock(origin));
     PitchDiv2 = surface->GetPitch() >> 1;
 
     rect.Left = 0;

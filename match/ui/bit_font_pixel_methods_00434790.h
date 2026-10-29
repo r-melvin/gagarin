@@ -29,8 +29,8 @@ GG_STATIC_ASSERT(offsetof(BitFontPixelMethods_00434790, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(BitFontPixelMethods_00434790, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(BitFontPixelMethods_00434790, unknown_1C) == 0x1C);
 GG_STATIC_ASSERT(sizeof(BitFontPixelMethods_00434790) == 0x20);
-GG_STATIC_ASSERT(offsetof(BitFontInternalData, pad_00) == 0x00);
-GG_STATIC_ASSERT(sizeof(BitFontInternalData) == 0x20);
+GG_STATIC_ASSERT(offsetof(BitFontInternalData, unknown_00) == 0x00);
+GG_STATIC_ASSERT(sizeof(BitFontInternalData) == 0x24);
 
 // FUNCTION: GAMEMD 0x4347B0 — __fastcall, receiver in ECX, no stack args.
 void FUN_004347B0(BitFontPixelMethods_00434790* font);

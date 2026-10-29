@@ -12,61 +12,39 @@
 // The retail call targets the CRT allocator; its body is out of scope.
 extern "C" void* __cdecl malloc(size_t size);
 
-struct BitFontDecodeData_00434700
-{
-    int unknown_00;
-    int Width;
-    int Height;
-    int unknown_0C;
-    int unknown_10;
-    int SymbolDataSize;
-    unsigned short* SymbolTable;
-    unsigned char* Bitmaps;
-    int GlyphCount;
-};
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, Width) == 0x04);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, Height) == 0x08);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, unknown_00) == 0x00);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, unknown_0C) == 0x0C);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, unknown_10) == 0x10);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, SymbolDataSize) == 0x14);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, SymbolTable) == 0x18);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, Bitmaps) == 0x1C);
-GG_STATIC_ASSERT(offsetof(BitFontDecodeData_00434700, GlyphCount) == 0x20);
-GG_STATIC_ASSERT(sizeof(BitFontDecodeData_00434700) == 0x24);
-GG_STATIC_ASSERT(offsetof(BitFont, Info) == 0x04);
-GG_STATIC_ASSERT(offsetof(BitFont, At_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(BitFont, InternalPTR) == 0x04);
+GG_STATIC_ASSERT(offsetof(BitFont, Pointer_8) == 0x08);
 
 // FUNCTION: GAMEMD 0x434700
 void BitFont::FUN_00434700()
 {
-    unsigned char* output = (unsigned char*)malloc(((BitFontDecodeData_00434700*)this->Info)->Height * ((BitFontDecodeData_00434700*)this->Info)->Width + 2);
-    this->At_08 = (int)output;
+    unsigned char* output = (unsigned char*)malloc(this->InternalPTR->unknown_08 * this->InternalPTR->Width + 2);
+    this->Pointer_8 = output;
 
-    if (this->Info != 0) {
-        unsigned int glyph = ((BitFontDecodeData_00434700*)this->Info)->SymbolTable[0x58];
+    if (this->InternalPTR != 0) {
+        unsigned int glyph = this->InternalPTR->SymbolTable[0x58];
         if (glyph != 0) {
-            unsigned char* source = ((BitFontDecodeData_00434700*)this->Info)->Bitmaps + ((BitFontDecodeData_00434700*)this->Info)->SymbolDataSize * (glyph - 1);
+            unsigned char* source = reinterpret_cast<unsigned char*>(this->InternalPTR->Bitmaps) + this->InternalPTR->SymbolDataSize * (glyph - 1);
             if (source != 0) {
                 unsigned char* sourceRow = source + 1;
                 *output = *source;
-                output = (unsigned char*)this->At_08;
+                output = (unsigned char*)this->Pointer_8;
                 output++;
 
                 int y = 0;
-                if ((unsigned int)((BitFontDecodeData_00434700*)this->Info)->Height > 0) {
+                if ((unsigned int)this->InternalPTR->unknown_08 > 0) {
                     do {
                         int x = 0;
-                        if ((unsigned int)((BitFontDecodeData_00434700*)this->Info)->Width > 0) {
+                        if ((unsigned int)this->InternalPTR->Width > 0) {
                             do {
                                 *output = (unsigned char)~*sourceRow;
                                 ++output;
                                 ++sourceRow;
                                 ++x;
-                            } while ((unsigned int)x < (unsigned int)((BitFontDecodeData_00434700*)this->Info)->Width);
+                            } while ((unsigned int)x < (unsigned int)this->InternalPTR->Width);
                         }
                         ++y;
-                    } while ((unsigned int)y < (unsigned int)((BitFontDecodeData_00434700*)this->Info)->Height);
+                    } while ((unsigned int)y < (unsigned int)this->InternalPTR->unknown_08);
                 }
             }
         }
