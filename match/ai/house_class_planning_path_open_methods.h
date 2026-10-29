@@ -9,6 +9,7 @@
 #include "../movement/waypoint_path_class_methods.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/house_class.h"
 
 // Rules view: the one field this function reads.
 struct Rules_005090F0
@@ -20,16 +21,7 @@ GG_STATIC_ASSERT(offsetof(Rules_005090F0, unknown_090) == 0x90);
 
 extern Rules_005090F0* DAT_008871E0;   // GLOBAL: GAMEMD 0x8871E0
 
-class HouseClass
-{
-public:
-    char               _pad000[0x20C];     // +0x0000
-    int                SelectedPathIndex;  // +0x020C
-    WaypointPathClass* PlanningPaths[12];  // +0x0210
 
-    // FUNCTION: GAMEMD 0x5090F0
-    bool CanExtendSelectedPlanningPath();
-};
 GG_STATIC_ASSERT(offsetof(HouseClass, SelectedPathIndex) == 0x20C);
 GG_STATIC_ASSERT(offsetof(HouseClass, PlanningPaths) == 0x210);
 

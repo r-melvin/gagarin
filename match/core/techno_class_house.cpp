@@ -8,7 +8,7 @@
 
 #include "techno_class_house.h"
 
-HouseClass* HouseClass::CurrentPlayer = NULL;
+HouseClass* CurrentPlayer = NULL;
 
 // FUNCTION: GAMEMD 0x6339B0  (__thiscall)
 // Returns the controlling house's ArrayIndex. The Owner's index by default, but
@@ -19,7 +19,7 @@ int TechnoClass::GetControllingHouse() const
 {
     HouseClass* owner = this->Owner;
     int id = owner->ArrayIndex;
-    if (owner->IsControlledByCurrentPlayer() && HouseClass::CurrentPlayer != NULL)
-        return HouseClass::CurrentPlayer->ArrayIndex;
+    if (owner->IsControlledByCurrentPlayer() && CurrentPlayer != NULL)
+        return CurrentPlayer->ArrayIndex;
     return id;
 }

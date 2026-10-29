@@ -9,16 +9,16 @@
 //   FUNCTION: GAMEMD 0x473460   PassengersClass::GetTotalSize         (__thiscall)
 //   FUNCTION: GAMEMD 0x4734B0   PassengersClass::RemovePassenger      (__thiscall)
 //   FUNCTION: GAMEMD 0x473500   PassengersClass::IndexOf              (__thiscall)
-//   FUNCTION: GAMEMD 0x4598A0   TechnoClass::IsAbsorbAllowed          (__thiscall)
+//   FUNCTION: GAMEMD 0x4598A0   TechnoView_004598A0::IsAbsorbAllowed          (__thiscall)
 //   LIBRARY:  GAMEMD 0x7C5F00   __ftol  (CRT double->long; excluded from target)
 
 #include "techno_class.h"
 
 // FUNCTION: GAMEMD 0x473430  (__thiscall)
 // Detach and return the head of the passenger list (clearing its NextObject).
-FootClass* PassengersClass::RemoveFirstPassenger()
+FootView_00473460* PassengersClass::RemoveFirstPassenger()
 {
-    FootClass* first = this->FirstPassenger;
+    FootView_00473460* first = this->FirstPassenger;
     if (first == NULL) {
         return first;
     }
@@ -35,7 +35,7 @@ int PassengersClass::GetTotalSize() const
     int total = 0;
     int count = this->NumPassengers;
     if (this->FirstPassenger != NULL) {
-        FootClass* cur = this->FirstPassenger;
+        FootView_00473460* cur = this->FirstPassenger;
         if (cur != NULL) {
             for (int i = 0; i < count; ++i) {
                 if (cur == NULL) {
@@ -57,11 +57,11 @@ int PassengersClass::GetTotalSize() const
 // choice; it was removed as match steering and the remaining one-instruction
 // difference (retail re-bases the next-link load on the new cursor) is
 // accepted.
-void PassengersClass::RemovePassenger(FootClass* pPassenger)
+void PassengersClass::RemovePassenger(FootView_00473460* pPassenger)
 {
-    FootClass* pCur;
+    FootView_00473460* pCur;
     if (pPassenger != NULL && (pCur = this->FirstPassenger, pCur != NULL)) {
-        FootClass* pNext = pCur->NextObject;
+        FootView_00473460* pNext = pCur->NextObject;
         if (pCur == pPassenger) {
             this->FirstPassenger = pNext;
             --this->NumPassengers;
@@ -93,13 +93,13 @@ void PassengersClass::RemovePassenger(FootClass* pPassenger)
 // path, which is what keeps the cold block where retail has it. Earlier passes
 // measured the peeled `while (1)` at 16.0% and an early return at 3.8%; both
 // were missing this half.
-int PassengersClass::IndexOf(FootClass* candidate) const
+int PassengersClass::IndexOf(FootView_00473460* candidate) const
 {
-    FootClass* cur = this->FirstPassenger;
+    FootView_00473460* cur = this->FirstPassenger;
     int index = 0;
 
     if (cur != 0) {
-        FootClass* target = candidate;
+        FootView_00473460* target = candidate;
 
         while (1) {
             ++index;
@@ -107,7 +107,7 @@ int PassengersClass::IndexOf(FootClass* candidate) const
                 break;
             }
 
-            FootClass* next = cur->NextObject;
+            FootView_00473460* next = cur->NextObject;
 
             if (next != 0) {
                 if ((next->Field14 & 4) == 0) {
@@ -129,7 +129,7 @@ int PassengersClass::IndexOf(FootClass* candidate) const
 
 // FUNCTION: GAMEMD 0x4598A0  (__thiscall)
 // True when either absorb flag byte on the object's type is set.
-bool TechnoClass::IsAbsorbAllowed() const
+bool TechnoView_004598A0::IsAbsorbAllowed() const
 {
     return this->Type->unknown_byte_16AE != 0 || this->Type->unknown_byte_16AF != 0;
 }

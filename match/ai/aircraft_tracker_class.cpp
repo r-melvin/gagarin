@@ -9,6 +9,9 @@
 
 #include "aircraft_tracker_class.h"
 
+// The tracked object's vtable view; see TechnoView_004134A0.
+#define TRACKED(t) ((TechnoView_004134A0*)(t))
+
 // The 20x20 bucket a cell falls into: each axis is divided into twenty bands
 // of the map's width / height, negative coordinates clamp to the first band
 // and anything past the end to the last. The column clamp is a ternary
@@ -33,8 +36,8 @@ static inline int TrackerBucket_004134A0(CellStruct_004134A0 cell)
 void AircraftTrackerClass::Add(TechnoClass* techno)
 {
     CellStruct_004134A0 buf;
-    CellStruct_004134A0 cell = *(techno->*techno->Vptr->GetMapCoords)(&buf);
-    (techno->*techno->Vptr->SetTrackedCoords)(cell);
+    CellStruct_004134A0 cell = *(TRACKED(techno)->*TRACKED(techno)->Vptr->GetMapCoords)(&buf);
+    (TRACKED(techno)->*TRACKED(techno)->Vptr->SetTrackedCoords)(cell);
     int bucket = TrackerBucket_004134A0(cell);
     (&TrackerVectors[0][0])[bucket].AddItem(techno);
 }
@@ -45,8 +48,8 @@ void AircraftTrackerClass::Add(TechnoClass* techno)
 void AircraftTrackerClass::Remove(TechnoClass* techno)
 {
     CellStruct_004134A0 buf;
-    CellStruct_004134A0 cell = *(techno->*techno->Vptr->GetTrackedCoords)(&buf);
-    (techno->*techno->Vptr->SetTrackedCoords)(DAT_00887850);
+    CellStruct_004134A0 cell = *(TRACKED(techno)->*TRACKED(techno)->Vptr->GetTrackedCoords)(&buf);
+    (TRACKED(techno)->*TRACKED(techno)->Vptr->SetTrackedCoords)(DAT_00887850);
     int bucket = TrackerBucket_004134A0(cell);
     (&TrackerVectors[0][0])[bucket].RemoveItem(techno);
 }

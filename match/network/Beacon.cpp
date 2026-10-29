@@ -130,7 +130,7 @@ bool BeaconClass::VisibleToPlayer() const
     if (this->Bitfield & 1) {
         if (HouseClass_CurrentPlayer->IsAlliedWith(this->HouseID)) {
             if (HouseClass_ArrayItems[this->HouseID]->IsAlliedWith(HouseClass_CurrentPlayer)) {
-                if (HouseClass_ArrayItems[this->HouseID]->field_1F5 == 0)
+                if (HouseClass_ArrayItems[this->HouseID]->Defeated == 0)
                     return true;
             }
         }

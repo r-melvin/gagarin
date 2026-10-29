@@ -19,18 +19,10 @@
 
 // HouseClass — only the super-weapon-slots sub-object at +0x5550 is modelled
 // (First/SecondActiveSWIdx call `lea ecx,[Owner+0x5550]; call 0x49FAE0(arg)`).
-struct SWSlotsClass
-{
-    int IsActive_49FAE0(int swType);     // GAMEMD 0x49FAE0 __thiscall (declared; reloc)
-};
-class HouseClass
-{
-public:
-    char         _pad_0000[0x5550];      // +0x0000  (full layout is P2)
-    SWSlotsClass SWSlots;                // +0x5550
-};
+#include "../_layout/house_class.h"
+
+
 #if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(HouseClass, SWSlots) == 0x5550);
 #endif
 
 

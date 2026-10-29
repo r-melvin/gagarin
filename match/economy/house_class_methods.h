@@ -16,21 +16,14 @@
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
 
+#include "../_layout/house_class.h"
 // ---------------------------------------------------------------------------
 // HouseClass — only the single byte these two methods touch is modelled; the
 // full HouseClass layout is P2. Confirmed from 0x509130
 // (`MOV byte ptr [ECX+0x1fb], 1`): the HasThreatNode flag lives at +0x1FB.
 // IonSensitivesShouldBeOffline (0x53A130) touches no member (returns false).
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    void AcquiredThreatNode();                       // GAMEMD 0x509130 __thiscall
-    bool IonSensitivesShouldBeOffline() const;       // GAMEMD 0x53A130 __thiscall
 
-    char unknown_base[0x1FB];   // +0x000 .. +0x1FA  (P2 layout)
-    bool HasThreatNode;         // +0x1FB
-};
 
 GG_STATIC_ASSERT(offsetof(HouseClass, HasThreatNode) == 0x1FB);
 

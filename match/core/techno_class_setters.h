@@ -31,24 +31,8 @@ class AbstractClass;
 // stand in for the full RadioClass/MissionClass/ObjectClass/TechnoClass spine
 // (see match/_layout/techno_class.h); only the three touched members are named.
 // ---------------------------------------------------------------------------
-class TechnoClass
-{
-public:
-    // Declared ascending by retail address (reccmp/isle TU discipline).
-    void SetArchiveTarget(AbstractClass* pTarget);    // GAMEMD 0x70C610 __thiscall
-    void SetCurrentWeaponStage(int idx);              // GAMEMD 0x70DDD0 __thiscall
-    int  SetGattlingValue(int value);                 // GAMEMD 0x70DE00 __thiscall
-    void ExitedOpenTopped(TechnoClass* pWho);         // GAMEMD 0x7104A0 __thiscall
+#include "../_layout/techno_class.h"
 
-    char           _pad_00[0x82];          // +0x000 .. +0x081
-    unsigned char  InOpenToppedTransport;  // +0x082  (ObjectClass bool)
-    char           _pad_83[0x140 - 0x83];  // +0x083 .. +0x13F
-    int            CurrentGattlingStage;   // +0x140
-    int            GattlingValue;          // +0x144  (SetGattlingValue writes
-                                           //          `MOV [ECX+0x144],EAX`)
-    char           _pad_148[0x218 - 0x148];// +0x148 .. +0x217
-    AbstractClass* ArchiveTarget;          // +0x218
-};
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, InOpenToppedTransport) == 0x82);
 GG_STATIC_ASSERT(offsetof(TechnoClass, CurrentGattlingStage)  == 0x140);

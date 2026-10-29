@@ -34,14 +34,8 @@ typedef void (* Slot3D0Func)(TechnoClass*);
 #define TECHNO_SLOT_3D0(obj) ((*(Slot3D0Func*)(*(char**)(obj) + 0x3d0))(obj))
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
-{
-public:
-    char _pad00[0x82];                 // +0x0000
-    bool InOpenToppedTransport;        // +0x0082
+#include "../_layout/techno_class.h"
 
-    void EnteredOpenTopped(TechnoClass* who);   // GAMEMD 0x710470
-};
 GG_STATIC_ASSERT(offsetof(TechnoClass, InOpenToppedTransport) == 0x82);
 
 #endif  // GG_MATCH_CORE_TECHNO_CLASS_OPENTOPPED_METHODS_H

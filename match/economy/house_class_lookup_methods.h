@@ -16,6 +16,7 @@
 
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/house_class.h"
 
 // ---------------------------------------------------------------------------
 // HouseTypeClass — only ArrayIndex2 @0xB8 is touched (the loop key in
@@ -37,21 +38,7 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 //   IsHumanPlayer    @0x1EC (bool;  `MOV AL,[ECX+0x1EC]` in 0x50B6F0)
 //   IsInPlayerControl@0x1ED (bool;  `MOV AL,[ECX+0x1ED]` in 0x50B6F0)
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    char            _pad_0x00[0x34];          // AbstractClass + ArrayIndex (P2)
-    HouseTypeClass* Type;                     // +0x34
-    char            _pad_0x38[0x1EC - 0x38];  // P2
-    bool            IsHumanPlayer;            // +0x1EC
-    bool            IsInPlayerControl;        // +0x1ED
 
-    // 0x502D30 — first house in the global Array whose Type->ArrayIndex2 matches.
-    static HouseClass* FindByCountryIndex(int houseType);
-
-    // 0x50B6F0 — can the human player at this machine control this house?
-    bool IsControlledByCurrentPlayer() const;
-};
 GG_STATIC_ASSERT(offsetof(HouseClass, Type) == 0x34);
 GG_STATIC_ASSERT(offsetof(HouseClass, IsHumanPlayer) == 0x1EC);
 GG_STATIC_ASSERT(offsetof(HouseClass, IsInPlayerControl) == 0x1ED);

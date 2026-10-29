@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/house_class.h"
 
 // ScenarioClass — only the HouseIndices[16] lookup callee is needed.  The
 // member is body-less so cl emits a reloc-normalised direct CALL.
@@ -44,12 +45,7 @@ GG_STATIC_ASSERT(sizeof(HouseArray_00510ED0) == 0x18);
 // GLOBAL: GAMEMD 0xA80228 — HouseClass::Array.
 extern HouseArray_00510ED0 HouseArray;
 
-class HouseClass
-{
-public:
-    // FUNCTION: GAMEMD 0x510ED0
-    static HouseClass* FindByPlayerAt(int at);
-};
+
 
 // GLOBAL: GAMEMD 0x889F64 -- the shared empty string.
 extern const char STR_00889F64[];

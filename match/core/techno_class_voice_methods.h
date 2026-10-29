@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every offset below is read from the user's retail gamemd.exe v1.001 with
 //   the local Ghidra CLI. The three bodies in this TU are the base
-//   implementations of three adjacent TechnoClass voice-response virtuals, and
+//   implementations of three adjacent TechnoView_00708DC0 voice-response virtuals, and
 //   their slot numbers were confirmed by reading the AircraftClass vtable out
 //   of the binary rather than from any document:
 //
@@ -16,7 +16,7 @@
 //                      +0x368 = 0x00708FC0   VoiceMove
 //                      +0x084 = 0x006F3270   GetTechnoType()
 //
-//   The *names* come from the TechnoTypeClass member each body tests, which is
+//   The *names* come from the TechnoTypeView_00708DC0 member each body tests, which is
 //   the only evidence that separates them:
 //     0x00708DC0 tests type+0x55C  VoiceCapture
 //     0x00709020 tests type+0x558  VoiceEnter
@@ -33,12 +33,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class TechnoClass;
+class TechnoView_00708DC0;
 struct TechnoVoiceVtbl;
 
-// TechnoTypeClass, as far as this TU reads it: three `int` voice indices, each
+// TechnoTypeView_00708DC0, as far as this TU reads it: three `int` voice indices, each
 // a VocClass list index or -1 for "this type has no such voice".
-class TechnoTypeClass
+class TechnoTypeView_00708DC0
 {
 public:
     char _pad_000[0x558];    // +0x000 .. +0x557
@@ -47,13 +47,13 @@ public:
     char _pad_560[0x57C - 0x560];
     int  VoiceHarvest;       // +0x57C
 };
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceEnter)   == 0x558);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceCapture) == 0x55C);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceHarvest) == 0x57C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeView_00708DC0, VoiceEnter)   == 0x558);
+GG_STATIC_ASSERT(offsetof(TechnoTypeView_00708DC0, VoiceCapture) == 0x55C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeView_00708DC0, VoiceHarvest) == 0x57C);
 
-// TechnoClass, as far as this TU reads it: the primary vptr alone. Every other
+// TechnoView_00708DC0, as far as this TU reads it: the primary vptr alone. Every other
 // access in the three bodies is a vtable dispatch.
-class TechnoClass
+class TechnoView_00708DC0
 {
 public:
     // Declared ascending by retail address (reccmp/isle TU discipline).
@@ -63,13 +63,13 @@ public:
 
     TechnoVoiceVtbl* Vfptr;    // +0x000
 };
-GG_STATIC_ASSERT(offsetof(TechnoClass, Vfptr) == 0x000);
+GG_STATIC_ASSERT(offsetof(TechnoView_00708DC0, Vfptr) == 0x000);
 
 // The class has to be complete before these typedefs, or VC6 falls back to the
 // multiple-inheritance member-pointer form and emits a `this` adjustment.
-typedef TechnoTypeClass* (TechnoClass::*GetTechnoTypeFn)();
-typedef void             (TechnoClass::*QueueVoiceFn)(int);
-typedef void             (TechnoClass::*VoiceFn)();
+typedef TechnoTypeView_00708DC0* (TechnoView_00708DC0::*GetTechnoTypeFn)();
+typedef void             (TechnoView_00708DC0::*QueueVoiceFn)(int);
+typedef void             (TechnoView_00708DC0::*VoiceFn)();
 
 struct TechnoVoiceVtbl
 {

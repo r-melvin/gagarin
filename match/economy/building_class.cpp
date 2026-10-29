@@ -114,7 +114,7 @@ int BuildingClass::FirstActiveSWIdx()
     {
         SWChainNode* node = g_SWArray[idx];
         SWChainC8* sw = node->field_28->field_C8;
-        if (sw && !this->Owner->SWSlots.IsActive_49FAE0(sw->field_DF8))
+        if (sw && !this->Owner->ActiveBuildingTypes.FUN_0049FAE0(sw->field_DF8))
             return -1;
     }
     return this->Type->SuperWeapon;
@@ -129,7 +129,7 @@ int BuildingClass::SecondActiveSWIdx()
     {
         SWChainNode* node = g_SWArray[idx];
         SWChainC8* sw = node->field_28->field_C8;
-        if (sw && !this->Owner->SWSlots.IsActive_49FAE0(sw->field_DF8))
+        if (sw && !this->Owner->ActiveBuildingTypes.FUN_0049FAE0(sw->field_DF8))
             return -1;
     }
     return this->Type->SuperWeapon2;

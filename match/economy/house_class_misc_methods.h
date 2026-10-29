@@ -19,6 +19,7 @@
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by ForceEnd).
 #include "../core/frame_counter.h"
+#include "../_layout/house_class.h"
 
 // ---------------------------------------------------------------------------
 // WaypointPathClass — the per-slot "planning mode" path object.
@@ -54,33 +55,12 @@ extern RulesShim* RulesGlobalPtr;
 //   EndFrame_298  @0x298  int    (CMP [ECX+0x298],-1)
 //   OwnedWeed     @0x314  Storage(LEA ESI,[ECX+0x314])
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    char               _pad0[0x1F7];                  // +0x0000
-    bool               IsWinner;                      // +0x01F7
-    bool               IsLoser;                       // +0x01F8
-    char               _pad1[0x210 - 0x1F9];          // +0x01F9
-    WaypointPathClass* PlanningPaths[12];             // +0x0210
-    char               _pad2[0x298 - (0x210 + 12*4)]; // +0x0240
-    int                EndFrame_298;                  // +0x0298
-    char               _pad3[0x314 - (0x298 + 4)];    // +0x029C
-    StorageClass       OwnedWeed;                     // +0x0314
 
-    // Declared ascending by retail address.
-    double             GetWeedStoragePercentage();    // GAMEMD 0x4F9750 __thiscall
-    void               ForceEnd();                    // GAMEMD 0x4FCDC0 __thiscall
-    WaypointPathClass* EnsurePlanningPathExists(int index);  // GAMEMD 0x504740 __thiscall
-
-    // Retail callee we are NOT matching here — declared (no body) so cl emits a
-    // reloc-normalised CALL.  HouseClass::Win(bool) @0x4FC9E0, returns BYTE.
-    unsigned char      Win(bool savour);              // GAMEMD 0x4FC9E0 __thiscall
-};
 
 GG_STATIC_ASSERT(offsetof(HouseClass, IsWinner)      == 0x1F7);
 GG_STATIC_ASSERT(offsetof(HouseClass, IsLoser)       == 0x1F8);
 GG_STATIC_ASSERT(offsetof(HouseClass, PlanningPaths) == 0x210);
-GG_STATIC_ASSERT(offsetof(HouseClass, EndFrame_298)  == 0x298);
+GG_STATIC_ASSERT(offsetof(HouseClass, BorrowedTime)  == 0x298);
 GG_STATIC_ASSERT(offsetof(HouseClass, OwnedWeed)     == 0x314);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_MISC_METHODS_H

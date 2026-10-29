@@ -26,23 +26,8 @@ class HouseTypeClass;   // opaque — compared by pointer identity only
 // None is ever instantiated, so no vtable is emitted for them.
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
-{
-public:
-    virtual void vf00() = 0;   // vtable+0x00
-    virtual void vf04() = 0;   // vtable+0x04
-    virtual void vf08() = 0;   // vtable+0x08
-    virtual void vf0C() = 0;   // vtable+0x0C
-    virtual void vf10() = 0;   // vtable+0x10
-    virtual void vf14() = 0;   // vtable+0x14
-    virtual void vf18() = 0;   // vtable+0x18
-    virtual void vf1C() = 0;   // vtable+0x1C
-    virtual ~TechnoClass();    // vtable+0x20 (scalar deleting dtor)
+#include "../_layout/techno_class.h"
 
-    char        _pad004[0x21C - 0x4];   // +0x0004
-    HouseClass* Owner;                  // +0x021C
-};
-GG_STATIC_ASSERT(offsetof(TechnoClass, Owner) == 0x21C);
 
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, House) == 0xA4);
 
@@ -63,26 +48,8 @@ struct HouseTriggerDeleteCallView
 };
 GG_STATIC_ASSERT(offsetof(HouseTriggerDeleteCallView, Type) == 0x24);
 
-class HouseClass
-{
-public:
-    virtual void vf00() = 0;   // vtable+0x00
-    virtual void vf04() = 0;   // vtable+0x04
-    virtual void vf08() = 0;   // vtable+0x08
-    virtual void vf0C() = 0;   // vtable+0x0C
-    virtual void vf10() = 0;   // vtable+0x10
-    virtual void vf14() = 0;   // vtable+0x14
-    virtual void vf18() = 0;   // vtable+0x18
-    virtual void vf1C() = 0;   // vtable+0x1C
-    virtual ~HouseClass();     // vtable+0x20 (scalar deleting dtor)
+#include "../_layout/house_class.h"
 
-    char            _pad004[0x34 - 0x4];   // +0x0004
-    HouseTypeClass* Type;                  // +0x0034
-
-    // FUNCTION: GAMEMD 0x4FB920
-    void SDDTORAllAndTriggers();
-};
-GG_STATIC_ASSERT(offsetof(HouseClass, Type) == 0x34);
 
 // GLOBAL: GAMEMD 0xA8EC78 — TechnoClass::Array.
 extern DynamicVectorClassLayout TechnoArray;

@@ -457,7 +457,7 @@ bool __cdecl FUN_0053A120()
 void LightningStorm::Init()
 {
     ScenarioClass::UpdateLighting();
-    CurrentPlayer->unknown_5779 = true;
+    CurrentPlayer->RecheckRadar = true;
 }
 
 // FUNCTION: GAMEMD 0x53B3F0

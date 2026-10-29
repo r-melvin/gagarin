@@ -16,7 +16,7 @@
 // destroy any slave-manager already on the new owner (Killed + delete via the
 // COM deleting destructor at vtable+0x20), install `this`, then re-stamp the
 // master onto every live slave (slave+0x2DC).
-void SlaveManagerClass::SetOwner(TechnoClass* NewOwner)
+void SlaveManagerClass::SetOwner(TechnoView_006AF580* NewOwner)
 {
     this->Owner->SlaveManager = 0;
     this->Owner = NewOwner;

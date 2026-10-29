@@ -127,6 +127,7 @@ public:
     virtual void ComputeCrc(Obj_004A1D30* crc);
     unsigned char unknown_04[0x70];
     HouseClass* unknown_74; // 0x6869DB writes containing House at +0x5774
+    int FailedToPlaceNode(class BaseNodeClass* Node);   // GAMEMD 0x42F380
 };
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_04) == 4);
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_74) == 0x74);
@@ -145,7 +146,7 @@ GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 class BuildingTypeClass;
 class HouseTypeClass;
 class TechnoTypeClass;
-class UnitTypeClass;
+class UnitTypeClass; class UnitClass; class FactoryClass;
 template<class T> class DynamicVectorClass;
 
 #include <ocidl.h>   // IConnectionPointContainer (VC98 SDK, LIBRARY)
@@ -571,6 +572,40 @@ public:
     void FUN_0050DA20(CellStruct cell);
     // FUNCTION: GAMEMD 0x50DFE0 (decl; reloc) -- takes a cell by value.
     void FUN_0050DFE0(CellStruct cell);
+
+    // Consolidated from the per-TU views (ODR); named members, addresses beside each.
+    static HouseClass* FindByPlayerAt(int at);                  // 0x510ED0
+    bool Fire_SW(int index, const CellStruct& cell);            // 0x4FAE50
+    void FUN_004FAF00(SuperClass* sw, const CellStruct& cell);  // 0x4FAF00 (decl; reloc)
+    bool CanExtendSelectedPlanningPath();                       // 0x5090F0
+    void SDDTORAllAndTriggers();                                // 0x4FB920
+    void ProductionStarted(int result);                         // 0x4FA350
+    void GiveMoney(int amount);                                 // 0x4F9950
+    void MakeAlly(int houseIndex, bool announce);               // 0x4F9B50
+    void MakeAlly(HouseClass* who, bool announce);              // 0x4F9B70
+    void ReshroudMap();                                         // 0x50BD10
+    int GetInfSelfHealStep() const;                             // 0x50D9E0
+    int GetUnitSelfHealStep() const;                            // 0x50D9F0
+    bool GainedPoweredCenter(TechnoTypeClass* type);            // 0x50E1B0
+    bool IsAlliedWith(int idxHouse) const;                      // 0x4F9A10
+    bool IsAlliedWith(ObjectClass const* pObject) const;        // 0x4F9A90
+    float GetArmorMultiplier(TechnoClass* subject);             // 0x50BD30
+    void DestroyAll();                                          // 0x4FC6D0
+    void DestroyAllBuildings();                                 // 0x4FC790
+    void DestroyAllNonBuildingsNonNaval();                      // 0x4FC820
+    void DestroyAllNonBuildingsNaval();                         // 0x4FC8D0
+    char PickedUpFlag(UnitClass* Who, unsigned long dwUnk);     // 0x4FC060
+    void UpdateFlagCoords(UnitClass* NewCarrier, unsigned long dwUnk); // 0x4FBE40 (decl; reloc)
+    void AcquiredThreatNode();                                  // 0x509130
+    bool IonSensitivesShouldBeOffline() const;                  // 0x53A130
+    void ForceEnd();                                            // 0x4FCDC0
+    unsigned char Win(bool savour);                             // 0x4FC9E0 (decl; reloc)
+    bool CanOverpower(TechnoClass* pTarget) const;              // 0x4F9AF0
+    void Cheer();                                               // 0x50C8C0
+    double GetPowerPercentage() const;                          // 0x4FCE30
+    void CreatePowerOutage(int duration);                       // 0x50BC90
+    void CreateRadarOutage(int duration);                       // 0x50BCD0
+    double GetStoragePercentage();                              // 0x4F6E70
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

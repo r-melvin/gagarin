@@ -44,17 +44,17 @@ void HouseClass::DestroyAll()
         if (!(owner != techno->Owner
               && owner == this
               && techno->MindControlledBy
-              && techno->MindControlledBy->CaptureManager->FUN_00472330(techno))
+              && ((CaptureManagerClass*)((TechnoClass*)techno->MindControlledBy)->CaptureManager)->FUN_00472330(techno))
             && owner == this
             && techno != lastDestroyed) {
 
             int damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->JustLetGo();
+                ((TemporalClass*)techno->TemporalTargetingMe)->JustLetGo();
             }
 
-            techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
+            techno->vf_91(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
             lastDestroyed = techno;
         } else {
             i++;
@@ -96,17 +96,17 @@ void HouseClass::DestroyAllBuildings()
         TechnoClass* techno = TechnoArray.Items[i];
 
         if (techno->GetOriginalOwner() == this
-            && techno->WhatAmI() == ABSTRACT_TYPE_BUILDING
+            && techno->vf_11() == ABSTRACT_TYPE_BUILDING
             && !techno->InLimbo
             && techno != lastDestroyed) {
 
             damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->JustLetGo();
+                ((TemporalClass*)techno->TemporalTargetingMe)->JustLetGo();
             }
 
-            techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
+            techno->vf_91(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
             lastDestroyed = techno;
         } else {
             i++;
@@ -135,18 +135,18 @@ void HouseClass::DestroyAllNonBuildingsNonNaval()
         TechnoClass* techno = TechnoArray.Items[i];
 
         if (techno->GetOriginalOwner() == this
-            && techno->WhatAmI() != ABSTRACT_TYPE_BUILDING
+            && techno->vf_11() != ABSTRACT_TYPE_BUILDING
             && !techno->InLimbo
-            && !techno->GetTechnoType()->Naval
+            && !techno->vf_33()->Naval
             && techno != lastDestroyed) {
 
             int damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->JustLetGo();
+                ((TemporalClass*)techno->TemporalTargetingMe)->JustLetGo();
             }
 
-            techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
+            techno->vf_91(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
             lastDestroyed = techno;
         } else {
             i++;
@@ -168,18 +168,18 @@ void HouseClass::DestroyAllNonBuildingsNaval()
         TechnoClass* techno = TechnoArray.Items[i];
 
         if (techno->GetOriginalOwner() == this
-            && techno->WhatAmI() != ABSTRACT_TYPE_BUILDING
+            && techno->vf_11() != ABSTRACT_TYPE_BUILDING
             && !techno->InLimbo
-            && techno->GetTechnoType()->Naval
+            && techno->vf_33()->Naval
             && techno != lastDestroyed) {
 
             int damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->JustLetGo();
+                ((TemporalClass*)techno->TemporalTargetingMe)->JustLetGo();
             }
 
-            techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
+            techno->vf_91(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
             lastDestroyed = techno;
         } else {
             i++;

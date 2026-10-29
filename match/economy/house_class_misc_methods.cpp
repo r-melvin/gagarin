@@ -42,7 +42,7 @@ double HouseClass::GetWeedStoragePercentage()
 // If neither the loser nor winner flag is set, declare this house the winner
 // (Win(false)); otherwise stamp the end-of-game frame once.
 //   if (!IsLoser && !IsWinner) { Win(false); return; }
-//   if (EndFrame_298 == -1) EndFrame_298 = CurrentFrame;
+//   if (BorrowedTime.StartTime == -1) BorrowedTime.StartTime = CurrentFrame;
 // ---------------------------------------------------------------------------
 void HouseClass::ForceEnd()
 {
@@ -52,8 +52,8 @@ void HouseClass::ForceEnd()
         return;
     }
 
-    if (this->EndFrame_298 == -1)
-        this->EndFrame_298 = CurrentFrame;
+    if (this->BorrowedTime.StartTime == -1)
+        this->BorrowedTime.StartTime = CurrentFrame;
 }
 
 // ---------------------------------------------------------------------------

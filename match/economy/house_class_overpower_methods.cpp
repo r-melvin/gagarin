@@ -52,8 +52,8 @@ extern RulesClass* Rules;  // GLOBAL: GAMEMD 0x8871E0
 // FUNCTION: GAMEMD 0x4F9AF0  HouseClass::CanOverpower  (__thiscall)
 bool HouseClass::CanOverpower(TechnoClass* pTarget) const
 {
-    if (pTarget && (pTarget->AbstractFlags & 2)) {
-        HouseClass* pHouse = pTarget->GetOwningHouse();
+    if (pTarget && pTarget->Flags.unknown_14_1) {
+        HouseClass* pHouse = pTarget->vf_15();
         if (pHouse) {
             if (pHouse == this) return true;
             if (pHouse->ArrayIndex == this->ArrayIndex) return true;
@@ -77,7 +77,7 @@ void HouseClass::Cheer()
     for (int i = 0; i < count; ++i) {
         TechnoClass* pTechno = TechnoArray.Items[i];
         if (pTechno && pTechno->Owner == this) {
-            pTechno->OnHouseCheer(0);
+            pTechno->vf_226(0);
         }
     }
     VocClass::PlayGlobal(Rules->field_1C8, 1.0f, 0x2000, 0);

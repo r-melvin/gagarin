@@ -45,142 +45,13 @@ enum { ABSTRACT_TYPE_BUILDING = 6 };
 // and the three members that are read.
 // ---------------------------------------------------------------------------
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
-{
-public:
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vt_020();
-    virtual void vt_024();
-    virtual void vt_028();
-    virtual int WhatAmI() const;                         // +0x002C
-    virtual void vt_030();
-    virtual void vt_034();
-    virtual void vt_038();
-    virtual void vt_03C();
-    virtual void vt_040();
-    virtual void vt_044();
-    virtual void vt_048();
-    virtual void vt_04C();
-    virtual void vt_050();
-    virtual void vt_054();
-    virtual void vt_058();
-    virtual void vt_05C();
-    virtual void vt_060();
-    virtual void vt_064();
-    virtual void vt_068();
-    virtual void vt_06C();
-    virtual void vt_070();
-    virtual void vt_074();
-    virtual void vt_078();
-    virtual void vt_07C();
-    virtual void vt_080();
-    virtual TechnoTypeClass* GetTechnoType();            // +0x0084
-    virtual void vt_088();
-    virtual void vt_08C();
-    virtual void vt_090();
-    virtual void vt_094();
-    virtual void vt_098();
-    virtual void vt_09C();
-    virtual void vt_0A0();
-    virtual void vt_0A4();
-    virtual void vt_0A8();
-    virtual void vt_0AC();
-    virtual void vt_0B0();
-    virtual void vt_0B4();
-    virtual void vt_0B8();
-    virtual void vt_0BC();
-    virtual void vt_0C0();
-    virtual void vt_0C4();
-    virtual void vt_0C8();
-    virtual void vt_0CC();
-    virtual void vt_0D0();
-    virtual void vt_0D4();
-    virtual void vt_0D8();
-    virtual void vt_0DC();
-    virtual void vt_0E0();
-    virtual void vt_0E4();
-    virtual void vt_0E8();
-    virtual void vt_0EC();
-    virtual void vt_0F0();
-    virtual void vt_0F4();
-    virtual void vt_0F8();
-    virtual void vt_0FC();
-    virtual void vt_100();
-    virtual void vt_104();
-    virtual void vt_108();
-    virtual void vt_10C();
-    virtual void vt_110();
-    virtual void vt_114();
-    virtual void vt_118();
-    virtual void vt_11C();
-    virtual void vt_120();
-    virtual void vt_124();
-    virtual void vt_128();
-    virtual void vt_12C();
-    virtual void vt_130();
-    virtual void vt_134();
-    virtual void vt_138();
-    virtual void vt_13C();
-    virtual void vt_140();
-    virtual void vt_144();
-    virtual void vt_148();
-    virtual void vt_14C();
-    virtual void vt_150();
-    virtual void vt_154();
-    virtual void vt_158();
-    virtual void vt_15C();
-    virtual void vt_160();
-    virtual void vt_164();
-    virtual void vt_168();
-    virtual int ReceiveDamage(int* damage, int distance,
-                              WarheadTypeClass* warhead,
-                              ObjectClass* attacker, bool ignoreDefenses,
-                              bool preventPassengerEscape,
-                              HouseClass* attackingHouse);           // +0x016C
+#include "../_layout/techno_class.h"
 
-    // Members. Offsets are the committed ones in match/_layout/object_class.h
-    // and match/_layout/techno_class.h, reconfirmed here from the accesses at
-    // 0x4FC7C3 (`MOV AL,[ESI+0x81]`), 0x4FC7D1 (`MOV EAX,[ESI+0x6c]`) and
-    // 0x4FC7D8 (`MOV ECX,[ESI+0x278]`).
-    char            _pad04[0x6C - 0x04];   // +0x0004
-    int             Health;                // +0x006C
-    char            _pad70[0x81 - 0x70];   // +0x0070
-    unsigned char   InLimbo;               // +0x0081
-    char            _pad82[0x21C - 0x82];   // +0x0082
-    HouseClass*     Owner;                  // +0x021C
-    char            _pad220[0x278 - 0x220]; // +0x0220
-    TemporalClass*  TemporalTargetingMe;    // +0x0278
-    char            _pad27C[0x2BC - 0x27C]; // +0x027C
-    CaptureManagerClass* CaptureManager;    // +0x02BC
-    TechnoClass*    MindControlledBy;       // +0x02C0
-
-    // Non-virtual, direct CALL 0x70F820 at 0x4FC7AE. Already committed as
-    // TechnoClass::GetOriginalOwner in match/core/techno_class_owner_methods.h.
-    HouseClass* GetOriginalOwner() const;  // GAMEMD 0x70F820
-};
-GG_STATIC_ASSERT(offsetof(TechnoClass, Health) == 0x6C);
-GG_STATIC_ASSERT(offsetof(TechnoClass, InLimbo) == 0x81);
-GG_STATIC_ASSERT(offsetof(TechnoClass, TemporalTargetingMe) == 0x278);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Owner) == 0x21C);
-GG_STATIC_ASSERT(offsetof(TechnoClass, CaptureManager) == 0x2BC);
-GG_STATIC_ASSERT(offsetof(TechnoClass, MindControlledBy) == 0x2C0);
 
 // TechnoTypeClass — only the naval flag is read, at 0x4FC86B
 // (`MOV CL,byte ptr [EAX+0xcce]` on the pointer slot 0x84 returned).
-class TechnoTypeClass
-{
-public:
-    char          _pad000[0xCCE];   // +0x0000
-    unsigned char Naval;            // +0x0CCE
-};
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Naval) == 0xCCE);
+#include "../_layout/techno_type_class.h"
+
 
 // CaptureManagerClass — one predicate, reached as
 // `MOV ECX,[EAX+0x2bc]; PUSH ESI; CALL 0x472330` at 0x4FC71E. YRpp does not
@@ -218,20 +89,9 @@ extern DynamicVectorClass_TechnoPtr TechnoArray;
 
 // RulesClass singleton pointer @0x8871E0 (canonical header).
 #include "../_layout/rules_class.h"
+#include "../_layout/house_class.h"
 
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    // Declared ascending by retail address.
-    // FUNCTION: GAMEMD 0x4FC6D0
-    void DestroyAll();
-    // FUNCTION: GAMEMD 0x4FC790
-    void DestroyAllBuildings();
-    // FUNCTION: GAMEMD 0x4FC820
-    void DestroyAllNonBuildingsNonNaval();
-    // FUNCTION: GAMEMD 0x4FC8D0
-    void DestroyAllNonBuildingsNaval();
-};
+
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_DESTROY_ALL_METHODS_H

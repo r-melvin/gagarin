@@ -86,18 +86,18 @@ extern Rules_0070D690* RulesInstance_0070D690;
 struct TechnoVtbl_0070D690;
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
+class TechnoView_0070D690
 {
 public:
     TechnoVtbl_0070D690* Vtbl;   // +0x0000
 
-    // FUNCTION: GAMEMD 0x70D690  TechnoClass::FireDeathWeapon (__thiscall)
+    // FUNCTION: GAMEMD 0x70D690  TechnoView_0070D690::FireDeathWeapon (__thiscall)
     int FireDeathWeapon(int extraDamage);
 };
 
-typedef TechnoType_0070D690*   (TechnoClass::*Fn84_0070D690)();
-typedef WeaponStruct_0070D690* (TechnoClass::*Fn3F4_0070D690)();
-typedef CoordStruct_0070D690*  (TechnoClass::*Fn48_0070D690)(CoordStruct_0070D690* out);
+typedef TechnoType_0070D690*   (TechnoView_0070D690::*Fn84_0070D690)();
+typedef WeaponStruct_0070D690* (TechnoView_0070D690::*Fn3F4_0070D690)();
+typedef CoordStruct_0070D690*  (TechnoView_0070D690::*Fn48_0070D690)(CoordStruct_0070D690* out);
 
 struct TechnoVtbl_0070D690
 {
@@ -143,8 +143,8 @@ GG_STATIC_ASSERT(offsetof(BulletVtbl_0070D690, At_D4)   == 0xD4);
 // type: __fastcall with the projectile in ECX and the owner in EDX, then
 // target, damage, warhead, speed and the bright flag on the stack.
 Bullet_0070D690* FUN_0046B050(BulletType_0070D690* projectile,
-                                          TechnoClass* owner,
-                                          TechnoClass* target,
+                                          TechnoView_0070D690* owner,
+                                          TechnoView_0070D690* target,
                                           int damage,
                                           Warhead_0070D690* warhead,
                                           int speed,

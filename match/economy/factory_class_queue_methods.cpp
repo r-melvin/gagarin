@@ -28,7 +28,7 @@ bool FactoryClass::RemoveOneFromQueue(TechnoTypeClass const* pItem)
 int FactoryClass::CountTotal(TechnoTypeClass const* pType) const
 {
     int count = 0;
-    if (this->Object && this->Object->GetTechnoType() == pType)
+    if (this->Object && this->Object->vf_33() == pType)
         count = 1;
     for (int i = 0; i < this->QueuedObjects.Count; ++i)
     {

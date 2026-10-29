@@ -66,26 +66,8 @@ public:
 // TechnoClass spine (match/_layout/techno_class.h); only the touched members
 // are named.
 // ---------------------------------------------------------------------------
-class TechnoClass
-{
-public:
-    // Declared ascending by retail address (reccmp/isle TU discipline).
-    bool        TargetingTimerFinished() const;   // GAMEMD 0x70F7E0 __thiscall
-    HouseClass* GetOriginalOwner() const;         // GAMEMD 0x70F820 __thiscall
-    void        ClearSidebarTabObject();          // GAMEMD 0x734270 __thiscall
+#include "../_layout/techno_class.h"
 
-    char                _pad_000[0x180];               // +0x000 .. +0x17F
-    CDTimerClass        TargetingTimer;                // +0x180  (0xC)
-    char                _pad_18C[0x21C - 0x18C];       // +0x18C .. +0x21B
-    HouseClass*         Owner;                         // +0x21C  HouseClass*
-    char                _pad_220[0x2BC - 0x220];       // +0x220 .. +0x2BB
-    CaptureManagerClass* CaptureManager;               // +0x2BC  CaptureManagerClass*
-    TechnoClass*        MindControlledBy;              // +0x2C0  TechnoClass*
-    char                _pad_2C4[0x2CC - 0x2C4];       // +0x2C4 .. +0x2CB
-    HouseClass*         MindControlledByHouse;         // +0x2CC  HouseClass*
-    char                _pad_2D0[0x2E0 - 0x2D0];       // +0x2D0 .. +0x2DF
-    HouseClass*         OriginallyOwnedByHouse;        // +0x2E0  HouseClass*
-};
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, TargetingTimer)         == 0x180);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Owner)                  == 0x21C);

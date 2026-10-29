@@ -19,7 +19,7 @@
 // itself is read through a second call; the death-weapon branch instead
 // calls GetTechnoType three times. Phrasing the test as two calls scored
 // 81.3%; binding the type or turret result for the damage line 21.1%.
-int TechnoClass::FireDeathWeapon(int extraDamage)
+int TechnoView_0070D690::FireDeathWeapon(int extraDamage)
 {
     Weapon_0070D690* weapon;
     int damage;

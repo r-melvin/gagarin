@@ -5,8 +5,8 @@
 //   each offset/address reconfirmed against the binary.
 //
 // reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x4F9610   HouseClass::GiveTiberium       (__thiscall)
-//   FUNCTION: GAMEMD 0x500510   HouseClass::GetPrimaryFactory  (__thiscall)
+//   FUNCTION: GAMEMD 0x4F9610   HouseView_004F9610::GiveTiberium       (__thiscall)
+//   FUNCTION: GAMEMD 0x500510   HouseView_004F9610::GetPrimaryFactory  (__thiscall)
 //   GLOBAL:   GAMEMD 0xB0F4E8   TiberiumClass::Array  (DynamicVectorClass<TiberiumClass*>)
 //   GLOBAL:   GAMEMD 0x7EAA00   float 5.0f  (FMUL multiplicand)
 //   LIBRARY:  GAMEMD 0x7C5F00   __ftol      (CRT float->long; excluded from match)
@@ -28,7 +28,7 @@ extern DynamicVectorClass_TiberiumPtr TiberiumArray;
 //   FILD Tib->Value; FMUL Type->IncomeMult; FMUL amount; FIADD Balance;
 //     __ftol -> Balance;  return amount
 // ---------------------------------------------------------------------------
-float HouseClass::GiveTiberium(float amount, int type)
+float HouseView_004F9610::GiveTiberium(float amount, int type)
 {
     this->StatAccrued54E8 = (int)(amount * 5.0f + this->StatAccrued54E8);
     this->Balance = (int)(TiberiumArray.Items[type]->Value
@@ -48,7 +48,7 @@ float HouseClass::GiveTiberium(float amount, int type)
 //   Infantry/InfantryType -> Primary_ForInfantry
 //   default               -> NULL
 // ---------------------------------------------------------------------------
-FactoryClass* HouseClass::GetPrimaryFactory(AbstractType absID, bool naval, BuildCat buildCat) const
+FactoryClass* HouseView_004F9610::GetPrimaryFactory(AbstractType absID, bool naval, BuildCat buildCat) const
 {
     switch (absID)
     {

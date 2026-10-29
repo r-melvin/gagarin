@@ -14,19 +14,19 @@ float HouseClass::GetArmorMultiplier(TechnoClass* subject)
     switch (TECHNO_WHAT_AM_I(subject))
     {
     case ABS_KIND_10:
-        return Armor->Mult_100;
+        return ((HouseArmorRecord*)this->Type)->Mult_100;
 
     case ABS_KIND_28:
-        return Armor->Mult_104;
+        return ((HouseArmorRecord*)this->Type)->Mult_104;
 
     case ABS_UNIT_3:
-        return Armor->Mult_108;
+        return ((HouseArmorRecord*)this->Type)->Mult_108;
 
     case ABS_KIND_7:
-        if (subject->unknown_E08 == 5)
-            return Armor->Mult_110;
+        if (((TechnoView_0050BD30*)subject)->unknown_E08 == 5)
+            return ((HouseArmorRecord*)this->Type)->Mult_110;
 
-        return Armor->Mult_10C;
+        return ((HouseArmorRecord*)this->Type)->Mult_10C;
     }
 
     return DefaultArmorMultiplier;

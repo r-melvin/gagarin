@@ -31,19 +31,8 @@
 // TechnoClass spine (see match/_layout/techno_class.h); only the two touched
 // members are named.
 // ---------------------------------------------------------------------------
-class TechnoClass
-{
-public:
-    // Declared ascending by retail address (reccmp/isle TU discipline).
-    int  GetEffectTintIntensity(int currentIntensity) const;          // GAMEMD 0x70E360 __thiscall
-    int  GetInvulnerabilityTintIntensity(int currentIntensity) const; // GAMEMD 0x70E380 (referenced; matched elsewhere)
-    int  GetAirstrikeTintIntensity(int currentIntensity) const;       // GAMEMD 0x70E4B0 (referenced; matched elsewhere)
-    bool IsMindControlled() const;                                    // GAMEMD 0x7105E0 __thiscall
+#include "../_layout/techno_class.h"
 
-    char          _pad_00[0x2C0];          // +0x000 .. +0x2BF
-    void*         MindControlledBy;        // +0x2C0  TechnoClass*
-    unsigned char MindControlledByAUnit;   // +0x2C4  (bool)
-};
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, MindControlledBy)      == 0x2C0);
 GG_STATIC_ASSERT(offsetof(TechnoClass, MindControlledByAUnit) == 0x2C4);

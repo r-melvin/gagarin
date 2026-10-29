@@ -14,24 +14,14 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/object_class.h"
+#include "../_layout/house_class.h"
 
 // ---------------------------------------------------------------------------
 // HouseClass — only ArrayIndex (+0x30) and the Allies bitfield dword (+0x5788)
 // are touched by the three IsAlliedWith overloads. The rest of the (huge)
 // HouseClass body is opaque padding here; full layout is P2.
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    bool IsAlliedWith(int idxHouse) const;             // GAMEMD 0x4F9A10 __thiscall
-    bool IsAlliedWith(HouseClass const* pHouse) const; // GAMEMD 0x4F9A50 __thiscall
-    bool IsAlliedWith(ObjectClass const* pObject) const; // GAMEMD 0x4F9A90 __thiscall
 
-    char unknown_00[0x30];     // [0x00..0x2F] opaque base — P2
-    int  ArrayIndex;      // +0x30
-    char unknown_34[0x5788 - (0x30 + 4)]; // [0x34..0x5787] opaque — P2
-    int  Allies;          // +0x5788  (IndexBitfield dword 0; one bit per house)
-};
 
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);

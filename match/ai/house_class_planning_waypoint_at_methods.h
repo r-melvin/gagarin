@@ -19,18 +19,11 @@
 #include "../_rt/gg_static_assert.h"
 
 #include "../_layout/cell.h"
+#include "../_layout/house_class.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Path and node types use their shared owners above.
-class HouseClass
-{
-public:
-    char               _pad000[0x210];     // +0x0000
-    WaypointPathClass* PlanningPaths[12];  // +0x0210
 
-    // FUNCTION: GAMEMD 0x5023B0
-    WaypointClass* GetPlanningWaypointAt(const CellStruct* cell);
-};
 GG_STATIC_ASSERT(offsetof(HouseClass, PlanningPaths) == 0x210);
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_PLANNING_WAYPOINT_AT_METHODS_H

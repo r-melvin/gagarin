@@ -51,10 +51,7 @@ typedef TechnoTypeClass* (* GetTypeFunc)(TechnoClass*);
 #define TECHNO_SLOT_160(o)    ((*(BoolQueryFunc*)(*(char**)(o) + 0x160))(o))
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
-{
-public:
-    bool CanBePermaMindControlled();   // GAMEMD 0x53C450
-};
+#include "../_layout/techno_class.h"
+
 
 #endif  // GG_MATCH_CORE_TECHNO_CLASS_MINDCONTROL_QUERY_METHODS_H

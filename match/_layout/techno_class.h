@@ -624,6 +624,22 @@ public:
     int FUN_0070DD20();
     // FUNCTION: GAMEMD 0x710590 -- smallest weapon range over the passenger list.
     int FUN_00710590();
+
+    // Consolidated from the per-TU views (ODR); addresses beside each.
+    int  GetInvulnerabilityTintIntensity(int currentIntensity) const;  // 0x70E380 (referenced)
+    int  GetInvulnerabilityTintIntensity(int currentIntensity);        // 0x70E380
+    int  GetAirstrikeTintIntensity(int currentIntensity) const;        // 0x70E4B0 (referenced)
+    int  GetControllingHouse() const;                                  // 0x6339B0
+    int  GetEffectTintIntensity(int currentIntensity) const;           // 0x70E360
+    bool IsMindControlled() const;                                     // 0x7105E0
+    bool CanBePermaMindControlled();                                   // 0x53C450
+    void EnteredOpenTopped(TechnoClass* who);                          // 0x710470
+    void ExitedOpenTopped(TechnoClass* who);                           // 0x7104A0
+    bool TargetingTimerFinished() const;                               // 0x70F7E0
+    HouseClass* GetOriginalOwner() const;                              // 0x70F820
+    void SetCurrentWeaponStage(int idx);                               // 0x70DDD0
+    int  SetGattlingValue(int value);                                  // 0x70DE00
+    int  TimeToBuild() const;                                          // 0x6F47A0
 };
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, DurationRemaining)        == 0xF0);

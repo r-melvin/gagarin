@@ -45,16 +45,8 @@ GG_STATIC_ASSERT(offsetof(CDTimer_0070E380, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimer_0070E380)             == 0xC);
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
-{
-public:
-    char             _pad000[0x198];     // +0x0000
-    CDTimer_0070E380 IronTintTimer;      // +0x0198
-    unsigned int     IronTintStage;      // +0x01A4
+#include "../_layout/techno_class.h"
 
-    // FUNCTION: GAMEMD 0x70E380  TechnoClass::GetInvulnerabilityTintIntensity
-    int GetInvulnerabilityTintIntensity(int currentIntensity);
-};
 GG_STATIC_ASSERT(offsetof(TechnoClass, IronTintTimer) == 0x198);
 GG_STATIC_ASSERT(offsetof(TechnoClass, IronTintTimer) + offsetof(CDTimer_0070E380, TimeLeft) == 0x1A0);
 GG_STATIC_ASSERT(offsetof(TechnoClass, IronTintStage) == 0x1A4);

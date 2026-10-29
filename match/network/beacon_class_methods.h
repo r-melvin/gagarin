@@ -14,23 +14,16 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/coord_struct.h"
+#include "../_layout/house_class.h"
 
 // ---------------------------------------------------------------------------
 // HouseClass — only the bits VisibleToPlayer touches are modelled here. Both
 // IsAlliedWith overloads are the retail callees at 0x4F9A10 / 0x4F9A50 (declared
 // without bodies so cl emits a normalised call reloc).
-class HouseClass
-{
-public:
-    bool IsAlliedWith(int idxHouse) const;          // GAMEMD 0x4F9A10 __thiscall
-    bool IsAlliedWith(const HouseClass* pHouse) const; // GAMEMD 0x4F9A50 __thiscall
 
-    char         _base[0x1F5];     // [0x000..0x1F4] — P2
-    unsigned char field_1F5;       // +0x1F5  (true => beacon hidden from player)
-};
 
 #if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(HouseClass, field_1F5) == 0x1F5);
+GG_STATIC_ASSERT(offsetof(HouseClass, Defeated) == 0x1F5);
 #endif
 
 // Retail globals (absolute-address reads; the diff harness normalises the

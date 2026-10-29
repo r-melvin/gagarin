@@ -12,7 +12,7 @@
 // jumpjet.  Retail loads entry->GetCell() (virtual @ vtable+0x1BC), reads the
 // cell's Jumpjet occupant (CellClass+0xE0) and returns it != 0 && it != entry.
 // `this` (the AircraftTrackerClass*) is unused — the body works on `entry`.
-bool AircraftTrackerClass::IsJumpjet(TechnoClass* entry)
+bool AircraftTrackerClass::IsJumpjet(TechnoView_004135A0* entry)
 {
     void* jj = entry->GetCell()->Jumpjet;
     bool occupied = jj != 0 && jj != (void*)entry;

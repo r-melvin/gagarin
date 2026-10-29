@@ -26,13 +26,13 @@ extern CellStruct_004134A0 DAT_00887850;
 struct TrackVtbl;
 // The tracked object; only three vtable slots are used: +0x1B8 and +0x2F4
 // (a CellStruct through an out pointer) and +0x2F8 (a CellStruct by value).
-class TechnoClass
+class TechnoView_004134A0
 {
 public:
     TrackVtbl* Vptr;   // +0x00
 };
-typedef CellStruct_004134A0* (TechnoClass::*FnCell_004134A0)(CellStruct_004134A0* out);
-typedef void (TechnoClass::*FnSetCell_004134A0)(CellStruct_004134A0 cell);
+typedef CellStruct_004134A0* (TechnoView_004134A0::*FnCell_004134A0)(CellStruct_004134A0* out);
+typedef void (TechnoView_004134A0::*FnSetCell_004134A0)(CellStruct_004134A0 cell);
 struct TrackVtbl
 {
     char _pad000[0x1B8];                 // +0x0000

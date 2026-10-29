@@ -30,14 +30,14 @@ struct SlaveObject;
 class HouseClass;
 
 // ---------------------------------------------------------------------------
-// TechnoClass — the slave miner / master. Only two things are touched:
+// TechnoView_006AF580 — the slave miner / master. Only two things are touched:
 //   * GetCoords()  (primary vtable index 15 -> 0x3C) — CreateSlave.
 //   * SlaveManager (+0x2D8) — the back-pointer to its SlaveManagerClass.
 // Modelled with a single vptr (4 bytes) + explicit padding; the COM tail and
 // every other member are P2.
 // ---------------------------------------------------------------------------
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
+class TechnoView_006AF580
 {
 public:
     virtual void _tv0();
@@ -109,7 +109,7 @@ public:
 // SlaveObject — one slave infantry. Touched virtuals:
 //   * OnSlaveCreated() (index 53 -> 0xD4) — post-spawn init (CreateSlave).
 //   * GuardSlot()      (index 244 -> 0x3D0) — re-issue Guard (Deploy2).
-// Touched member: SlaveOwner (+0x2DC) — the master TechnoClass*.
+// Touched member: SlaveOwner (+0x2DC) — the master TechnoView_006AF580*.
 // ---------------------------------------------------------------------------
 struct SlaveObject
 {
@@ -359,7 +359,7 @@ struct SlaveObject
     virtual void _sv243();
     virtual void GuardSlot();            // index 244 -> 0x3D0
     char _pad_so[0x2DC - 0x04];           // [0x04 .. 0x2DC)
-    TechnoClass* SlaveOwner;              // +0x2DC
+    TechnoView_006AF580* SlaveOwner;              // +0x2DC
 };
 
 // ---------------------------------------------------------------------------
@@ -379,7 +379,7 @@ struct SlaveManagerHandle
     virtual void _h6();
     virtual void _h7();
     virtual ~SlaveManagerHandle();        // index 8 -> vtable 0x20 (deleting dtor)
-    void Killed(TechnoClass* killer, HouseClass* forced);  // GAMEMD 0x6B0AE0
+    void Killed(TechnoView_006AF580* killer, HouseClass* forced);  // GAMEMD 0x6B0AE0
 };
 
 // ---------------------------------------------------------------------------
@@ -410,7 +410,7 @@ class SlaveManagerClass
 {
 public:
     char               _base[0x24];     // +0x00  COM vptrs + Array/RegenRate (P2)
-    TechnoClass*       Owner;           // +0x24
+    TechnoView_006AF580*       Owner;           // +0x24
     InfantryTypeClass* SlaveType;       // +0x28
     char               _pad2c[0x0C];    // [0x2C .. 0x38)
     DynamicVectorClassLayout SlaveNodes;      // +0x38  Items@0x3C, Count@0x48
@@ -418,7 +418,7 @@ public:
     int                State;           // +0x5C
     int                LastScanFrame;   // +0x60
 
-    void SetOwner(TechnoClass* NewOwner);   // GAMEMD 0x6AF580
+    void SetOwner(TechnoView_006AF580* NewOwner);   // GAMEMD 0x6AF580
     void CreateSlave(SlaveControl* Node);   // GAMEMD 0x6AF650
     void Deploy2();                         // GAMEMD 0x6B0D60
     void GuardAllSlaves();                  // GAMEMD 0x6B0490

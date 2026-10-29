@@ -5,13 +5,13 @@
 
 #include "techno_class_airstrike_tint_methods.h"
 
-// FUNCTION: GAMEMD 0x70E4B0  TechnoClass::GetAirstrikeTintIntensity (__thiscall, ret 0x4)
+// FUNCTION: GAMEMD 0x70E4B0  TechnoView_0070E4B0::GetAirstrikeTintIntensity (__thiscall, ret 0x4)
 //
 // Scale a tint intensity by the airstrike-target flash. The timer's remaining
 // frames drive a per-stage ramp (a 256-based fixed-point factor: fading in,
 // holding, fading out for the two shapes), the product is scaled back down
 // and capped at 2000. Stages outside 1..9 pass the intensity through.
-int TechnoClass::GetAirstrikeTintIntensity(int currentIntensity)
+int TechnoView_0070E4B0::GetAirstrikeTintIntensity(int currentIntensity)
 {
     int left = this->AirstrikeTintTimer.GetTimeLeft();
     int factor;

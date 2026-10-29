@@ -2309,7 +2309,7 @@
  {
   "tu": "match/combat/slave_manager_class_more_methods.cpp",
   "addr": "0x6AF580",
-  "sym": "?SetOwner@SlaveManagerClass@@QAEXPAVTechnoClass@@@Z",
+  "sym": "?SetOwner@SlaveManagerClass@@QAEXPAVTechnoView_006AF580@@@Z",
   "len": "0x65",
   "name": "SetOwner",
   "status": "matched",
@@ -2608,7 +2608,7 @@
  {
   "tu": "match/combat/techno_class_death_weapon_methods.cpp",
   "addr": "0x70D690",
-  "sym": "?FireDeathWeapon@TechnoClass@@QAEHH@Z",
+  "sym": "?FireDeathWeapon@TechnoView_0070D690@@QAEHH@Z",
   "len": "0x109",
   "name": "TechnoClass::FireDeathWeapon",
   "status": "matched",
@@ -12807,7 +12807,7 @@
  {
   "tu": "match/core/techno_class.cpp",
   "addr": "0x4598A0",
-  "sym": "?IsAbsorbAllowed@TechnoClass@@QBE_NXZ",
+  "sym": "?IsAbsorbAllowed@TechnoView_004598A0@@QBE_NXZ",
   "len": "0x23",
   "name": "TechnoClass::IsAbsorbAllowed",
   "status": "matched",
@@ -12816,7 +12816,7 @@
  {
   "tu": "match/core/techno_class.cpp",
   "addr": "0x473430",
-  "sym": "?RemoveFirstPassenger@PassengersClass@@QAEPAVFootClass@@XZ",
+  "sym": "?RemoveFirstPassenger@PassengersClass@@QAEPAVFootView_00473460@@XZ",
   "len": "0x18",
   "name": "PassengersClass::RemoveFirstPassenger",
   "status": "matched",
@@ -12834,7 +12834,7 @@
  {
   "tu": "match/core/techno_class.cpp",
   "addr": "0x4734B0",
-  "sym": "?RemovePassenger@PassengersClass@@QAEXPAVFootClass@@@Z",
+  "sym": "?RemovePassenger@PassengersClass@@QAEXPAVFootView_00473460@@@Z",
   "len": "0x4a",
   "name": "PassengersClass::RemovePassenger",
   "status": "partial",
@@ -12843,7 +12843,7 @@
  {
   "tu": "match/core/techno_class.cpp",
   "addr": "0x473500",
-  "sym": "?IndexOf@PassengersClass@@QBEHPAVFootClass@@@Z",
+  "sym": "?IndexOf@PassengersClass@@QBEHPAVFootView_00473460@@@Z",
   "len": "0x32",
   "name": "PassengersClass::IndexOf",
   "status": "matched",
@@ -12852,7 +12852,7 @@
  {
   "tu": "match/core/techno_class_disguise.cpp",
   "addr": "0x70E280",
-  "sym": "?DisguiseAs@TechnoClass@@QAEKPAVAbstractClass@@@Z",
+  "sym": "?DisguiseAs@TechnoView_0070E280@@QAEKPAVAbstractClass@@@Z",
   "len": "0x25",
   "name": "DisguiseAs",
   "status": "matched",
@@ -13113,7 +13113,7 @@
  {
   "tu": "match/core/techno_class_voice_methods.cpp",
   "addr": "0x708DC0",
-  "sym": "?VoiceCapture@TechnoClass@@QAEXXZ",
+  "sym": "?VoiceCapture@TechnoView_00708DC0@@QAEXXZ",
   "len": "0x3d",
   "name": "TechnoClass::VoiceCapture",
   "status": "matched",
@@ -13122,7 +13122,7 @@
  {
   "tu": "match/core/techno_class_voice_methods.cpp",
   "addr": "0x709020",
-  "sym": "?VoiceEnter@TechnoClass@@QAEXXZ",
+  "sym": "?VoiceEnter@TechnoView_00708DC0@@QAEXXZ",
   "len": "0x3d",
   "name": "TechnoClass::VoiceEnter",
   "status": "matched",
@@ -13131,7 +13131,7 @@
  {
   "tu": "match/core/techno_class_voice_methods.cpp",
   "addr": "0x709060",
-  "sym": "?VoiceHarvest@TechnoClass@@QAEXXZ",
+  "sym": "?VoiceHarvest@TechnoView_00708DC0@@QAEXXZ",
   "len": "0x3d",
   "name": "TechnoClass::VoiceHarvest",
   "status": "matched",
@@ -13140,7 +13140,7 @@
  {
   "tu": "match/core/techno_class_weapon_methods.cpp",
   "addr": "0x70E1A0",
-  "sym": "?GetPrimaryWeapon@TechnoClass@@QAEPAUWeaponStruct@@XZ",
+  "sym": "?GetPrimaryWeapon@TechnoView_0070E1A0@@QAEPAUWeaponStruct@@XZ",
   "len": "0x38",
   "name": "GetPrimaryWeapon",
   "status": "matched",
@@ -13149,7 +13149,7 @@
  {
   "tu": "match/core/techno_class_weapon_methods.cpp",
   "addr": "0x710550",
-  "sym": "?SetTargetForPassengers@TechnoClass@@QAEXPAVAbstractClass@@@Z",
+  "sym": "?SetTargetForPassengers@TechnoView_0070E1A0@@QAEXPAVAbstractClass@@@Z",
   "len": "0x34",
   "name": "SetTargetForPassengers",
   "status": "matched",
@@ -23058,7 +23058,7 @@
  {
   "tu": "match/economy/house_class_tib_methods.cpp",
   "addr": "0x4F9610",
-  "sym": "?GiveTiberium@HouseClass@@QAEMMH@Z",
+  "sym": "?GiveTiberium@HouseView_004F9610@@QAEMMH@Z",
   "len": "0x57",
   "name": "GiveTiberium",
   "status": "matched",
@@ -23067,7 +23067,7 @@
  {
   "tu": "match/economy/house_class_tib_methods.cpp",
   "addr": "0x500510",
-  "sym": "?GetPrimaryFactory@HouseClass@@QBEPAVFactoryClass@@W4AbstractType@@_NW4BuildCat@@@Z",
+  "sym": "?GetPrimaryFactory@HouseView_004F9610@@QBEPAVFactoryClass@@W4AbstractType@@_NW4BuildCat@@@Z",
   "len": "0xa0",
   "name": "GetPrimaryFactory",
   "status": "matched",
@@ -25517,7 +25517,7 @@
  {
   "tu": "match/movement/foot_class_jumpjet.cpp",
   "addr": "0x4135A0",
-  "sym": "?IsJumpjet@AircraftTrackerClass@@QAE_NPAVTechnoClass@@@Z",
+  "sym": "?IsJumpjet@AircraftTrackerClass@@QAE_NPAVTechnoView_004135A0@@@Z",
   "len": "0x29",
   "name": "AircraftTrackerClass::IsJumpjet (task name: Jumpjet_LocationClear)",
   "status": "matched",
@@ -28895,7 +28895,7 @@
  {
   "tu": "match/renderer/techno_class_airstrike_tint_methods.cpp",
   "addr": "0x70E4B0",
-  "sym": "?GetAirstrikeTintIntensity@TechnoClass@@QAEHH@Z",
+  "sym": "?GetAirstrikeTintIntensity@TechnoView_0070E4B0@@QAEHH@Z",
   "len": "0xe8",
   "name": "TechnoClass::GetAirstrikeTintIntensity",
   "status": "matched",

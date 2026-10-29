@@ -40,10 +40,10 @@ bool TechnoClass::TargetingTimerFinished() const
 HouseClass* TechnoClass::GetOriginalOwner() const
 {
     if (this->MindControlledBy != NULL)
-        return this->MindControlledBy->CaptureManager->GetOriginalOwner(
+        return ((CaptureManagerClass*)((TechnoClass*)this->MindControlledBy)->CaptureManager)->GetOriginalOwner(
             const_cast<TechnoClass*>(this));
     if (this->MindControlledByHouse != NULL)
-        return this->OriginallyOwnedByHouse;
+        return (HouseClass*)this->OriginallyOwnedByHouse;
     return this->Owner;
 }
 

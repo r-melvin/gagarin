@@ -27,11 +27,8 @@
 // so cl emits a (reloc-normalised) CALL.
 // ---------------------------------------------------------------------------
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
-{
-public:
-    int TimeToBuild() const;  // GAMEMD 0x6F47A0 __thiscall
-};
+#include "../_layout/techno_class.h"
+
 
 // ---------------------------------------------------------------------------
 // FrameTimer — empty clock policy whose value is Unsorted::CurrentFrame. As a

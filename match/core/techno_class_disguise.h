@@ -7,7 +7,7 @@
 //   These two offsets agree with the committed spine match/_layout/techno_class.h
 //   (Disguised @0x1D8, DisguiseCreationFrame @0x1DC).
 //
-// TechnoClass::DisguiseAs — record the start of a disguise (set the Disguised
+// TechnoView_0070E280::DisguiseAs — record the start of a disguise (set the Disguised
 // flag + stamp the creation frame) when given a non-null target, then dispatch
 // the virtual at vtable slot +0x49C to actually apply/recompute the disguise.
 #ifndef GG_MATCH_CORE_TECHNO_CLASS_DISGUISE_H
@@ -17,7 +17,7 @@
 #include "../_rt/gg_static_assert.h"
 
 class AbstractClass;
-class TechnoClass;
+class TechnoView_0070E280;
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84, stamped into
 // DisguiseCreationFrame (MOV EAX,[0x00A8ED84]).
@@ -30,11 +30,11 @@ class TechnoClass;
 // disassembly and not guessed.
 struct TechnoVtbl;
 
-// Minimal TechnoClass view: only the two disguise members touched by
+// Minimal TechnoView_0070E280 view: only the two disguise members touched by
 // DisguiseAs are modelled (the full 0x520 layout is in the committed spine
 // match/_layout/techno_class.h and is P2 here). The vptr at +0x000 is modelled
 // explicitly so the slot dispatch can be written as ordinary C++.
-class TechnoClass
+class TechnoView_0070E280
 {
 public:
     // FUNCTION: GAMEMD 0x70E280  (__thiscall)
@@ -47,13 +47,13 @@ public:
     int           DisguiseCreationFrame;// +0x1DC
 };
 
-GG_STATIC_ASSERT(offsetof(TechnoClass, Vfptr)                 == 0x000);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Disguised)             == 0x1D8);
-GG_STATIC_ASSERT(offsetof(TechnoClass, DisguiseCreationFrame) == 0x1DC);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E280, Vfptr)                 == 0x000);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E280, Disguised)             == 0x1D8);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E280, DisguiseCreationFrame) == 0x1DC);
 
 // The class has to be complete before the member-pointer typedef, or VC6 falls
 // back to the multiple-inheritance form and emits a `this` adjustment.
-typedef unsigned long (TechnoClass::*ApplyDisguiseFn)();
+typedef unsigned long (TechnoView_0070E280::*ApplyDisguiseFn)();
 
 struct TechnoVtbl
 {

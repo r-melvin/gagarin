@@ -13,20 +13,12 @@
 #include "../movement/waypoint_path_class_methods.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/house_class.h"
 
 class WaypointClass;   // opaque here — only compared by pointer identity
 
 // Path and node types use their shared owners above.
-class HouseClass
-{
-public:
-    char               _pad000[0x210];     // +0x0000
-    WaypointPathClass* PlanningPaths[12];  // +0x0210
 
-    // FUNCTION: GAMEMD 0x502460
-    bool GetPlanningWaypointProperties(WaypointClass* wpt, int* idxPath,
-                                       unsigned char* idxWP);
-};
 GG_STATIC_ASSERT(offsetof(HouseClass, PlanningPaths) == 0x210);
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_PLANNING_METHODS_H

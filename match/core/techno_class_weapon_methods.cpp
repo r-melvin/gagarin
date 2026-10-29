@@ -5,8 +5,8 @@
 //   cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x70E1A0  TechnoClass::GetPrimaryWeapon       (__thiscall)
-//   FUNCTION: GAMEMD 0x710550  TechnoClass::SetTargetForPassengers (__thiscall)
+//   FUNCTION: GAMEMD 0x70E1A0  TechnoView_0070E1A0::GetPrimaryWeapon       (__thiscall)
+//   FUNCTION: GAMEMD 0x710550  TechnoView_0070E1A0::SetTargetForPassengers (__thiscall)
 //
 // Both bodies are virtual-dispatch heavy (slots +0x84, +0x3C8, +0x3F8). The
 // dispatches are written as ordinary member-pointer calls through a modelled
@@ -28,7 +28,7 @@
 // index is a live variable in EAX on both paths, which is retail exactly.
 // The index also has to be a named local rather than the member expression, or
 // cl hoists the vtable load above it (40.9%).
-WeaponStruct* TechnoClass::GetPrimaryWeapon()
+WeaponStruct* TechnoView_0070E1A0::GetPrimaryWeapon()
 {
     int weaponIndex;
 
@@ -52,9 +52,9 @@ WeaponStruct* TechnoClass::GetPrimaryWeapon()
 // the prologue (70.0%). Hoisting the target copy above the list read, using the
 // parameter directly, and a `for` over the link all hold 70.0%; a `for` with
 // the lookahead in the body is 63.6%.
-void TechnoClass::SetTargetForPassengers(AbstractClass* target)
+void TechnoView_0070E1A0::SetTargetForPassengers(AbstractClass* target)
 {
-    FootClass* passenger = this->Passengers.GetFirstPassenger();
+    FootView_0070E1A0* passenger = this->Passengers.GetFirstPassenger();
     AbstractClass* newTarget = target;
 
     while (passenger != 0) {

@@ -11,19 +11,15 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/house_class.h"
 
 // HouseClass — only the flag Init raises is modelled. It keeps a placeholder
 // name: the byte's offset is fixed by `MOV byte ptr [EAX+0x5779],1`, but not its
 // meaning. It sits one byte below SpySatActive @0x577A (see
 // match/economy/house_class_accessor_methods.h), so it is in the same
 // lightning/radar flag cluster.
-class HouseClass
-{
-public:
-    char _pad00[0x5779];   // +0x0000
-    bool unknown_5779;     // +0x5779
-};
-GG_STATIC_ASSERT(offsetof(HouseClass, unknown_5779) == 0x5779);
+
+GG_STATIC_ASSERT(offsetof(HouseClass, RecheckRadar) == 0x5779);
 
 // GLOBAL: GAMEMD 0x00A83D4C — HouseClass::CurrentPlayer, the house driving
 // this machine.

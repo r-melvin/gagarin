@@ -16,8 +16,8 @@
 //
 // A unit picks up this house's flag. Rejected if the carrier is null or in
 // limbo (off-map). Otherwise the previous carrier's flag bookkeeping is updated
-// (UpdateFlagCoords with the old FlagHolder), the new carrier is stamped with
-// this house's owner/colour index (Type->ColorSchemeIndex_B8), FlagHolder is
+// (UpdateFlagCoords with the old OurFlagCarrier), the new carrier is stamped with
+// this house's owner/colour index (Type->ColorSchemeIndex_B8), OurFlagCarrier is
 // repointed to the new carrier, and true is returned.
 //   TEST EDI,EDI / JZ fail; MOV AL,[EDI+0x81] / TEST / JNZ fail;
 //   push dwUnk / push [ESI+0x53DC] / call 0x4FBE40;
@@ -30,8 +30,8 @@ char HouseClass::PickedUpFlag(UnitClass* Who, DWORD dwUnk)
         return 0;
     }
 
-    this->UpdateFlagCoords(this->FlagHolder, dwUnk);
+    this->UpdateFlagCoords((UnitClass*)this->OurFlagCarrier, dwUnk);
     Who->FlagAttach(this->Type->ColorSchemeIndex_B8);
-    this->FlagHolder = Who;
+    this->OurFlagCarrier = Who;
     return 1;
 }

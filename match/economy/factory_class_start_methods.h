@@ -15,13 +15,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
+#include "../_layout/house_class.h"
 
-class HouseClass
-{
-public:
-    // 0x4FA350 — __thiscall taking the result of the queued item's Slot_2C.
-    void ProductionStarted(int result);
-};
+
 
 // The queued blueprint. Two vtable slots are dispatched; because Slot_2C takes
 // stack arguments it must be a real virtual rather than the tree's

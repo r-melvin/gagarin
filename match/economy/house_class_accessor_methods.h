@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
+#include "../_layout/house_class.h"
 
 class HouseClass;
 class TechnoTypeClass;
@@ -69,45 +70,17 @@ extern int SessionGameMode;
 //   UnitsSelfHeal       @0x0168  int   (IMUL [ECX+0x168]  @0x50D9F0)
 //   IsHumanPlayer       @0x01EC  bool  (MOV AL,[ECX+0x1EC] @0x50B730)
 //   IsInPlayerControl   @0x01ED  bool  (MOV AL,[ECX+0x1ED] @0x50B730)
-//   PoweredCenterCount  @0x02D8  int   (TEST/SETG [ECX+0x2D8] @0x50E1B0)
+//   PoweredUnitCenters  @0x02D8  int   (TEST/SETG [ECX+0x2D8] @0x50E1B0)
 //   Balance             @0x030C  int   (ADD [ECX+0x30C]   @0x4F9950)
 //   SpySatActive        @0x577A  bool  (MOV AL,[ECX+0x577A] @0x50BD10)
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    char _pad0[0x164];                        // +0x0000
-    int  InfantrySelfHeal;                    // +0x0164
-    int  UnitsSelfHeal;                       // +0x0168
-    char _pad1[0x1EC - 0x16C];                // +0x016C
-    bool IsHumanPlayer;                       // +0x01EC
-    bool IsInPlayerControl;                   // +0x01ED
-    char _pad2[0x2D8 - 0x1EE];                // +0x01EE
-    int  PoweredCenterCount;                  // +0x02D8
-    char _pad3[0x30C - 0x2DC];                // +0x02DC
-    int  Balance;                             // +0x030C
-    char _pad4[0x577A - 0x310];               // +0x0310
-    bool SpySatActive;                        // +0x577A
 
-    // Declared ascending by retail address.
-    void GiveMoney(int amount);                            // GAMEMD 0x4F9950
-    void MakeAlly(int houseIndex, bool announce);          // GAMEMD 0x4F9B50
-    bool IsControlledByHuman() const;                      // GAMEMD 0x50B730
-    void ReshroudMap();                                    // GAMEMD 0x50BD10
-    int  GetInfSelfHealStep() const;                       // GAMEMD 0x50D9E0
-    int  GetUnitSelfHealStep() const;                      // GAMEMD 0x50D9F0
-    bool GainedPoweredCenter(TechnoTypeClass* type);       // GAMEMD 0x50E1B0
-
-    // Retail callee we are NOT matching here — declared (no body) so cl emits a
-    // reloc-normalised CALL. The HouseClass* overload MakeAlly @0x4F9B70.
-    void MakeAlly(HouseClass* who, bool announce);         // GAMEMD 0x4F9B70
-};
 
 GG_STATIC_ASSERT(offsetof(HouseClass, InfantrySelfHeal)   == 0x164);
 GG_STATIC_ASSERT(offsetof(HouseClass, UnitsSelfHeal)      == 0x168);
 GG_STATIC_ASSERT(offsetof(HouseClass, IsHumanPlayer)      == 0x1EC);
 GG_STATIC_ASSERT(offsetof(HouseClass, IsInPlayerControl)  == 0x1ED);
-GG_STATIC_ASSERT(offsetof(HouseClass, PoweredCenterCount) == 0x2D8);
+GG_STATIC_ASSERT(offsetof(HouseClass, PoweredUnitCenters) == 0x2D8);
 GG_STATIC_ASSERT(offsetof(HouseClass, Balance)            == 0x30C);
 GG_STATIC_ASSERT(offsetof(HouseClass, SpySatActive)       == 0x577A);
 

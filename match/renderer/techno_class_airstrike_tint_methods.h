@@ -16,9 +16,9 @@
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the engine frame counter.
 #include "../core/frame_counter.h"
 
-// CDTimerClass — frame count-down timer (sizeof = 0xC). GetTimeLeft is the
+// CDTimer_0070E4B0 — frame count-down timer (sizeof = 0xC). GetTimeLeft is the
 // inlined read seen at 0x70E4B0..0x70E4D3.
-struct CDTimerClass
+struct CDTimer_0070E4B0
 {
     int StartTime;    // +0x00
     int unknown_04;   // +0x04
@@ -38,22 +38,22 @@ struct CDTimerClass
         return left;
     }
 };
-GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
-GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0xC);
+GG_STATIC_ASSERT(offsetof(CDTimer_0070E4B0, TimeLeft) == 0x08);
+GG_STATIC_ASSERT(sizeof(CDTimer_0070E4B0)             == 0xC);
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
+class TechnoView_0070E4B0
 {
 public:
     char         _pad000[0x1B4];         // +0x0000
-    CDTimerClass AirstrikeTintTimer;     // +0x01B4
+    CDTimer_0070E4B0 AirstrikeTintTimer;     // +0x01B4
     unsigned int AirstrikeTintStage;     // +0x01C0
 
     // FUNCTION: GAMEMD 0x70E4B0
     int GetAirstrikeTintIntensity(int currentIntensity);
 };
-GG_STATIC_ASSERT(offsetof(TechnoClass, AirstrikeTintTimer) == 0x1B4);
-GG_STATIC_ASSERT(offsetof(TechnoClass, AirstrikeTintTimer) + offsetof(CDTimerClass, TimeLeft) == 0x1BC);
-GG_STATIC_ASSERT(offsetof(TechnoClass, AirstrikeTintStage) == 0x1C0);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E4B0, AirstrikeTintTimer) == 0x1B4);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E4B0, AirstrikeTintTimer) + offsetof(CDTimer_0070E4B0, TimeLeft) == 0x1BC);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E4B0, AirstrikeTintStage) == 0x1C0);
 
 #endif  // GG_MATCH_RENDERER_TECHNO_CLASS_AIRSTRIKE_TINT_METHODS_H

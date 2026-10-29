@@ -28,7 +28,7 @@ double HouseClass::GetPowerPercentage() const
 }
 
 // FUNCTION: GAMEMD 0x50BC90  HouseClass::CreatePowerOutage (__thiscall)
-//   byte[ECX+0x5778] = 1                       ; PowerBlackoutWasActivated
+//   byte[ECX+0x5778] = 1                       ; RecheckPower
 //   PowerBlackoutTimer (12-byte POD copy of a freshly-built timer):
 //     [+0x2A4] = Unsorted::CurrentFrame  (StartTime)
 //     [+0x2A8] = <uninitialised clock>   (CurrentTime)
@@ -37,11 +37,11 @@ void HouseClass::CreatePowerOutage(int duration)
 {
     this->PowerBlackoutTimer = CDTimerClass(duration);
 
-    this->PowerBlackoutWasActivated = true;
+    this->RecheckPower = true;
 }
 
 // FUNCTION: GAMEMD 0x50BCD0  HouseClass::CreateRadarOutage (__thiscall)
-//   byte[ECX+0x5779] = 1                       ; RadarBlackoutWasActivated
+//   byte[ECX+0x5779] = 1                       ; RecheckRadar
 //   RadarBlackoutTimer 12-byte POD copy:
 //     [+0x2B0] = Unsorted::CurrentFrame  (StartTime)
 //     [+0x2B4] = <uninitialised clock>   (CurrentTime)
@@ -50,5 +50,5 @@ void HouseClass::CreateRadarOutage(int duration)
 {
     this->RadarBlackoutTimer = CDTimerClass(duration);
 
-    this->RadarBlackoutWasActivated = true;
+    this->RecheckRadar = true;
 }

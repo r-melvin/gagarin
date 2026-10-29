@@ -72,5 +72,5 @@ int HouseClass::GetUnitSelfHealStep() const
 // for this address. The name is kept from YRpp; the signature follows the bytes.
 bool HouseClass::GainedPoweredCenter(TechnoTypeClass* type)
 {
-    return PoweredCenterCount > 0;
+    return PoweredUnitCenters > 0;
 }

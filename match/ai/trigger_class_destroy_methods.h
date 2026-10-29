@@ -28,11 +28,7 @@ class ObjectClass;   // only ever a pointer here
 
 
 // HouseClass::FindByCountryIndex — static __fastcall (arg in ECX) @0x502D30.
-class HouseClass
-{
-public:
-    static HouseClass* FindByCountryIndex(int houseType);
-};
+
 
 // HouseTypeClass — only ArrayIndex @0xB4 is touched (the FindByCountryIndex arg).
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex) == 0xB4);
@@ -105,5 +101,6 @@ GG_STATIC_ASSERT(offsetof(TriggerClass, Enabled)   == 0x44);
 
 // The retail global cleanup vector (relocation-normalised by the differ).
 #include "../core/abstract_registry.h"
+#include "../_layout/house_class.h"
 
 #endif  // GG_MATCH_AI_TRIGGER_CLASS_DESTROY_METHODS_H

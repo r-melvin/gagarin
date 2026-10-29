@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/unit_class.h"   // the flag carrier: InLimbo @0x81, FlagAttach 0x740DF0
+#include "../_layout/house_class.h"
 
 typedef unsigned long DWORD;
 
@@ -36,24 +37,10 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ColorSchemeIndex_B8) == 0xB8);
 // AbstractClass-derived layout is P2. Each offset is asserted and confirmed
 // numerically from the disassembly.
 //   Type        @0x34    HouseTypeClass*  (MOV EDX,[ESI+0x34])
-//   FlagHolder  @0x53DC  UnitClass*       (MOV/[ESI+0x53DC] read & write)
+//   OurFlagCarrier  @0x53DC  UnitClass*       (MOV/[ESI+0x53DC] read & write)
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    char            _pad0[0x34];                  // +0x0000
-    HouseTypeClass* Type;                         // +0x0034
-    char            _pad1[0x53DC - (0x34 + 4)];   // +0x0038
-    UnitClass*      FlagHolder;                   // +0x53DC
 
-    // PickedUpFlag — declared method we are matching.
-    char PickedUpFlag(UnitClass* Who, DWORD dwUnk);  // GAMEMD 0x4FC060 __thiscall
-
-    // Retail callee we are NOT matching — declared (no body) so cl emits a
-    // __thiscall + a normalised reloc. Updates the dropped-flag bookkeeping.
-    void UpdateFlagCoords(UnitClass* NewCarrier, DWORD dwUnk);  // GAMEMD 0x4FBE40 (reloc)
-};
 GG_STATIC_ASSERT(offsetof(HouseClass, Type)       == 0x34);
-GG_STATIC_ASSERT(offsetof(HouseClass, FlagHolder) == 0x53DC);
+GG_STATIC_ASSERT(offsetof(HouseClass, OurFlagCarrier) == 0x53DC);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_FLAG_METHODS_H

@@ -8,13 +8,13 @@
 //   (Passengers @0x114, CurrentWeaponNumber @0x138).
 //
 //   Helper callees (declared, not matched here, so cl emits a normalised call):
-//     0x717880  TechnoTypeClass::HasTurret  -> (TurretCount @0x808) > 0
+//     0x717880  TechnoTypeView_0070E1A0::HasTurret  -> (TurretCount @0x808) > 0
 //     0x473450  PassengersClass::GetFirstPassenger -> *(this+0x04)
 //   Both are reached by a direct relative CALL with the receiver in ECX, so
 //   both are declared as ordinary __thiscall members of their own class; the
 //   compiler rejects the receiver convention on a free function.
 //
-// TechnoClass weapon/passenger dispatch helpers:
+// TechnoView_0070E1A0 weapon/passenger dispatch helpers:
 //   GetPrimaryWeapon       — choose the current-numbered weapon when the type
 //                            has a turret, else weapon 0, via virtual GetWeapon.
 //   SetTargetForPassengers — walk the passenger list and forward a new target
@@ -27,14 +27,14 @@
 
 struct WeaponStruct;
 class  AbstractClass;
-class  TechnoClass;
-class  FootClass;
+class  TechnoView_0070E1A0;
+class  FootView_0070E1A0;
 struct TechnoVtbl;
 struct FootVtbl;
 
-// TechnoTypeClass — only the turret predicate is reached from this TU, and it
+// TechnoTypeView_0070E1A0 — only the turret predicate is reached from this TU, and it
 // is reached as a direct call with the type pointer in ECX.
-class TechnoTypeClass
+class TechnoTypeView_0070E1A0
 {
 public:
     // FUNCTION: GAMEMD 0x717880 (decl; reloc) — TurretCount @0x808 > 0
@@ -45,33 +45,33 @@ public:
 struct PassengersClass
 {
     // FUNCTION: GAMEMD 0x473450 (decl; reloc) — returns *(this+0x04)
-    FootClass* GetFirstPassenger();
+    FootView_0070E1A0* GetFirstPassenger();
 
     int        NumPassengers;     // +0x00
-    FootClass* FirstPassenger;    // +0x04
+    FootView_0070E1A0* FirstPassenger;    // +0x04
 };
 GG_STATIC_ASSERT(offsetof(PassengersClass, FirstPassenger) == 0x04);
 
-// FootClass, as far as the passenger walk reads it: the primary vptr, the
+// FootView_0070E1A0, as far as the passenger walk reads it: the primary vptr, the
 // AbstractFlags byte at +0x14 whose bit 4 gates the walk, and the NextObject
 // link at +0x30.
-class FootClass
+class FootView_0070E1A0
 {
 public:
     FootVtbl*     Vfptr;                    // +0x00
     char          _pad_004[0x14 - 0x04];    // +0x04
     unsigned char AbstractFlags;            // +0x14
     char          _pad_015[0x30 - 0x15];    // +0x15
-    FootClass*    NextObject;               // +0x30
+    FootView_0070E1A0*    NextObject;               // +0x30
 };
-GG_STATIC_ASSERT(offsetof(FootClass, AbstractFlags) == 0x14);
-GG_STATIC_ASSERT(offsetof(FootClass, NextObject)    == 0x30);
+GG_STATIC_ASSERT(offsetof(FootView_0070E1A0, AbstractFlags) == 0x14);
+GG_STATIC_ASSERT(offsetof(FootView_0070E1A0, NextObject)    == 0x30);
 
-// Minimal TechnoClass view: only the members these two methods touch are
+// Minimal TechnoView_0070E1A0 view: only the members these two methods touch are
 // modelled (full 0x520 layout is the committed spine match/_layout/techno_class.h
 // and is P2 here). The primary vptr at +0x000 is modelled explicitly so the two
 // slot dispatches can be written as ordinary C++.
-class TechnoClass
+class TechnoView_0070E1A0
 {
 public:
     // FUNCTION: GAMEMD 0x70E1A0  (__thiscall)
@@ -86,15 +86,15 @@ public:
     int             CurrentWeaponNumber;  // +0x138
 };
 
-GG_STATIC_ASSERT(offsetof(TechnoClass, Vfptr)               == 0x000);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Passengers)          == 0x114);
-GG_STATIC_ASSERT(offsetof(TechnoClass, CurrentWeaponNumber) == 0x138);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E1A0, Vfptr)               == 0x000);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E1A0, Passengers)          == 0x114);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070E1A0, CurrentWeaponNumber) == 0x138);
 
 // The classes have to be complete before these typedefs, or VC6 falls back to
 // the multiple-inheritance member-pointer form and emits a `this` adjustment.
-typedef TechnoTypeClass* (TechnoClass::*GetTechnoTypeFn)();
-typedef WeaponStruct*    (TechnoClass::*GetWeaponFn)(int);
-typedef void             (FootClass::*SetTargetFn)(AbstractClass*);
+typedef TechnoTypeView_0070E1A0* (TechnoView_0070E1A0::*GetTechnoTypeFn)();
+typedef WeaponStruct*    (TechnoView_0070E1A0::*GetWeaponFn)(int);
+typedef void             (FootView_0070E1A0::*SetTargetFn)(AbstractClass*);
 
 // Primary vtable slots reached from this TU.
 //   +0x084  GetTechnoType()      no arguments, the type pointer

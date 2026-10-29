@@ -29,22 +29,8 @@ class TechnoTypeClass;
 // genuine virtual at byte offset 0x84 (slot 33); CountTotal does
 // `Object->GetTechnoType() == pType` => MOV EAX,[ECX]; CALL [EAX+0x84].
 // ---------------------------------------------------------------------------
-class TechnoClass
-{
-public:
-    virtual void _vt_00();  virtual void _vt_01();  virtual void _vt_02();
-    virtual void _vt_03();  virtual void _vt_04();  virtual void _vt_05();
-    virtual void _vt_06();  virtual void _vt_07();  virtual void _vt_08();
-    virtual void _vt_09();  virtual void _vt_10();  virtual void _vt_11();
-    virtual void _vt_12();  virtual void _vt_13();  virtual void _vt_14();
-    virtual void _vt_15();  virtual void _vt_16();  virtual void _vt_17();
-    virtual void _vt_18();  virtual void _vt_19();  virtual void _vt_20();
-    virtual void _vt_21();  virtual void _vt_22();  virtual void _vt_23();
-    virtual void _vt_24();  virtual void _vt_25();  virtual void _vt_26();
-    virtual void _vt_27();  virtual void _vt_28();  virtual void _vt_29();
-    virtual void _vt_30();  virtual void _vt_31();  virtual void _vt_32();
-    virtual TechnoTypeClass* GetTechnoType() const;  // slot 33 == [vtbl+0x84]
-};
+#include "../_layout/techno_class.h"
+
 
 // ---------------------------------------------------------------------------
 // QueuedVectorClass -- concrete model of DynamicVectorClass<TechnoTypeClass*>.

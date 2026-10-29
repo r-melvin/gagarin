@@ -30,13 +30,13 @@ typedef int (* WhatAmIFunc)(TechnoClass*);
 #define TECHNO_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x2c))(o))
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass
+class TechnoView_0050BD30
 {
 public:
     char _pad000[0xE08];   // +0x0000
     int  unknown_E08;      // +0x0E08  selects between the two case-7 answers
 };
-GG_STATIC_ASSERT(offsetof(TechnoClass, unknown_E08) == 0xE08);
+GG_STATIC_ASSERT(offsetof(TechnoView_0050BD30, unknown_E08) == 0xE08);
 
 // The multiplier block on the house's side/country record.
 struct HouseArmorRecord
@@ -53,14 +53,8 @@ GG_STATIC_ASSERT(offsetof(HouseArmorRecord, Mult_110) == 0x110);
 // GLOBAL: GAMEMD 0x007E2AC8 — the default multiplier constant.
 extern float DefaultArmorMultiplier;
 
-class HouseClass
-{
-public:
-    char              _pad00[0x34];   // +0x0000
-    HouseArmorRecord* Armor;          // +0x0034
+#include "../_layout/house_class.h"
 
-    float GetArmorMultiplier(TechnoClass* subject);   // GAMEMD 0x50BD30
-};
-GG_STATIC_ASSERT(offsetof(HouseClass, Armor) == 0x34);
+GG_STATIC_ASSERT(offsetof(HouseClass, Type) == 0x34);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_ARMOR_METHODS_H

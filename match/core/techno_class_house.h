@@ -30,16 +30,11 @@
 // HouseClass after its 0x30-byte AbstractClass base. IsControlledByCurrentPlayer
 // (retail 0x50B6F0) is declared-only so cl emits a reloc-normalised CALL.
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    bool IsControlledByCurrentPlayer() const;   // GAMEMD 0x50B6F0 (referenced; not matched here)
+#include "../_layout/house_class.h"
 
-    static HouseClass* CurrentPlayer;           // global @ 0x00A83D4C
+// GLOBAL: GAMEMD 0xA83D4C -- the local player's house.
+extern HouseClass* CurrentPlayer;
 
-    char _pad_00[0x30];   // +0x00 .. +0x2F  (AbstractClass base — P2)
-    int  ArrayIndex;      // +0x30
-};
 
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
 
@@ -48,14 +43,8 @@ GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
 // stands in for the full RadioClass/MissionClass/ObjectClass/TechnoClass spine
 // (see match/_layout/techno_class.h); only the touched member is named.
 // ---------------------------------------------------------------------------
-class TechnoClass
-{
-public:
-    int GetControllingHouse() const;   // GAMEMD 0x6339B0 __thiscall
+#include "../_layout/techno_class.h"
 
-    char        _pad_00[0x21C];   // +0x000 .. +0x21B
-    HouseClass* Owner;            // +0x21C  HouseClass*
-};
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, Owner) == 0x21C);
 
