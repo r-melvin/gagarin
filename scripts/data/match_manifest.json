@@ -59369,7 +59369,7 @@
   "len": "0x1A0",
   "name": "FUN_004123a0",
   "status": "partial",
-  "pct": 27.3
+  "pct": 78.0
  },
  {
   "tu": "match/core/audio_stream_slot_methods.cpp",
@@ -98474,7 +98474,7 @@
   "len": "0x222",
   "name": "FUN_00406B10",
   "status": "partial",
-  "pct": 6.6
+  "pct": 98.4
  },
  {
   "tu": "match/core/module_tu002.cpp",
@@ -98797,8 +98797,8 @@
   "sym": "?FUN_004092B0@Cursor_00408930@@QAEHXZ",
   "len": "0x33",
   "name": "FUN_004092B0",
-  "status": "partial",
-  "pct": 63.2
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/module_tu002.cpp",
@@ -98843,7 +98843,7 @@
   "len": "0x14a",
   "name": "FUN_00409C40",
   "status": "partial",
-  "pct": 73.3
+  "pct": 78.7
  },
  {
   "tu": "match/core/module_tu002.cpp",
@@ -98852,7 +98852,7 @@
   "len": "0x1f9",
   "name": "FUN_00409DE0",
   "status": "partial",
-  "pct": 6.8
+  "pct": 10.6
  },
  {
   "tu": "match/core/module_tu002.cpp",

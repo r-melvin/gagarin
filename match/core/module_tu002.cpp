@@ -46,6 +46,8 @@ GG_STATIC_ASSERT(offsetof(DSCAPS, dwSize) == 0);
 #include "sorted_list_insert_methods.h"
 #include "../audio/pan_and_pitch_methods.h"
 
+GG_STATIC_ASSERT(sizeof(AudioSampleData) == 0x20); // 0x4085A0 clears 8 DWORDs
+
 // GLOBAL: GAMEMD 0x87E448
 extern double DAT_0087E448;
 // GLOBAL: GAMEMD 0x7E1750
@@ -334,29 +336,22 @@ int FUN_0040AA70(Aux_0040A6D0* state);
 int FUN_00406B10(int enabled)
 {
     FUN_00409360();
-    struct TimerEntry { Obj_00401000* timer; Obj_00401000** slot; };
-    TimerEntry entries[] = {
-        { &DAT_0087E2C0, &DAT_0087E73C },
-        { &DAT_0087E4E0, &DAT_0087E744 },
-        { &DAT_0087E578, &DAT_0087E740 },
-        { &DAT_0087E450, &DAT_0087E748 },
-        { &DAT_0087E340, &DAT_0087E74C },
-        { &DAT_0087E6A0, &DAT_0087E754 },
-        { &DAT_0087E5F8, &DAT_0087E750 },
-        { &DAT_0087E3C0, &DAT_0087E758 },
-    };
-    for (int i = 0; i < 8; ++i)
-    {
-        FUN_00401000(entries[i].timer);
-        *entries[i].slot = entries[i].timer;
-    }
-
-
-
-
-
-
-
+    FUN_00401000(&DAT_0087E2C0);
+    DAT_0087E73C = &DAT_0087E2C0;
+    FUN_00401000(&DAT_0087E4E0);
+    DAT_0087E744 = &DAT_0087E4E0;
+    FUN_00401000(&DAT_0087E578);
+    DAT_0087E740 = &DAT_0087E578;
+    FUN_00401000(&DAT_0087E450);
+    DAT_0087E748 = &DAT_0087E450;
+    FUN_00401000(&DAT_0087E340);
+    DAT_0087E74C = &DAT_0087E340;
+    FUN_00401000(&DAT_0087E6A0);
+    DAT_0087E754 = &DAT_0087E6A0;
+    FUN_00401000(&DAT_0087E5F8);
+    DAT_0087E750 = &DAT_0087E5F8;
+    FUN_00401000(&DAT_0087E3C0);
+    DAT_0087E758 = &DAT_0087E3C0;
 
     if (enabled)
     {
@@ -375,9 +370,11 @@ int FUN_00406B10(int enabled)
         {
             // The first timer group begins at owner+68 in 406C40.
             DAT_0087E73C = reinterpret_cast<Obj_00401000*>(static_cast<char*>(DAT_0087E728) + 0x68);
-            bool present;
-            { CCFileClass probe(DAT_00816280); present = probe.Exists(false); }
-            DAT_0087E734 = new MixFileClass(present ? DAT_00816280 : DAT_00816274, DAT_00886980);
+            bool present = CCFileClass(DAT_00816280).Exists(false);
+            if (present)
+                DAT_0087E734 = new MixFileClass(DAT_00816280, DAT_00886980);
+            else
+                DAT_0087E734 = new MixFileClass(DAT_00816274, DAT_00886980);
             DAT_0087E724 = FUN_004011C0(DAT_0081626C, 0);
             if (!DAT_0087E724) enabled = 0;
         }
@@ -1185,13 +1182,20 @@ int __fastcall Cursor_00408930::FUN_004091C0(int count)
     if (unknown_2C && !unknown_18) FUN_00409100();
     return total;
 }
+// Offsets and indexed entry stride read at 0x4092BA/0x4092C3/0x4092D3.
+GG_STATIC_ASSERT(offsetof(Cursor_00408930, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(Cursor_00408930, Flags) == 0x10);
+GG_STATIC_ASSERT(offsetof(Entry8b, First) == 0);
+GG_STATIC_ASSERT(offsetof(Entry8b, Second) == 4);
+GG_STATIC_ASSERT(sizeof(Entry8b) == 8);
 // FUNCTION: GAMEMD 0x4092B0
 int Cursor_00408930::FUN_004092B0()
 {
     Source_00408930* block = Source;
     unknown_2C = 0;
     unknown_0C = block;
-    unknown_04 = block ? block->Entries[Channel].First : 0;
+    if (block) unknown_04 = block->Entries[Channel].First;
+    else unknown_04 = 0;
     unknown_08 = 0;
     Flags &= ~1;
     return FUN_004091C0(0);
@@ -1463,8 +1467,10 @@ void FUN_00409C40(Aux_0040A6D0* state)
     state->unknown_74 = 3;
     state->unknown_8C = 0;
     state->unknown_A0 = 0;
+    // Retail 0x409C8B reads channels before clearing the next state word.
+    unsigned channels = format->NumChannels;
     state->unknown_A8 = 0;
-    state->unknown_A4 = format->NumChannels;
+    state->unknown_A4 = channels;
     switch (format->Format)
     {
     case 0: state->unknown_70 = FUN_00409D90; break;
@@ -1477,17 +1483,20 @@ void FUN_00409C40(Aux_0040A6D0* state)
         break;
     case 2: state->unknown_70 = FUN_00409DE0; break;
     }
-    if (state->unknown_88 < state->unknown_8C)
+    // Signed branches at 0x409CFA and 0x409D44 interpret these DWORDs as int.
+    if (static_cast<int>(state->unknown_88) < static_cast<int>(state->unknown_8C))
     {
         if (state->unknown_7C) FUN_007C93E8(state->unknown_7C);
         state->unknown_7C = static_cast<unsigned char*>(FUN_007C9430(state->unknown_8C));
-        state->unknown_88 = state->unknown_7C ? state->unknown_8C : 0;
+        if (!state->unknown_7C) state->unknown_88 = 0;
+        else state->unknown_88 = state->unknown_8C;
     }
-    if (state->unknown_9C < state->unknown_A0)
+    if (static_cast<int>(state->unknown_9C) < static_cast<int>(state->unknown_A0))
     {
         if (state->unknown_90) FUN_007C93E8(state->unknown_90);
         state->unknown_90 = static_cast<unsigned char*>(FUN_007C9430(state->unknown_A0));
-        state->unknown_9C = state->unknown_90 ? state->unknown_A0 : 0;
+        if (!state->unknown_90) state->unknown_9C = 0;
+        else state->unknown_9C = state->unknown_A0;
     }
 }
 // FUNCTION: GAMEMD 0x409DE0
@@ -1495,13 +1504,13 @@ int FUN_00409DE0(void* context, void* destination, int* outputSize,
                  const void* input, int* inputSize)
 {
     Aux_0040A6D0* state = static_cast<Aux_0040A6D0*>(context);
+    if (!state->unknown_90 || !state->unknown_7C) return 0;
     unsigned inputLeft = inputSize ? *inputSize : 0;
     unsigned outputLeft = outputSize ? *outputSize : 0;
     unsigned inputUsed = 0;
     unsigned outputUsed = 0;
     unsigned char* dest = static_cast<unsigned char*>(destination);
     const unsigned char* src = static_cast<const unsigned char*>(input);
-    if (!state->unknown_90 || !state->unknown_7C) return 0;
     for (;;)
     {
         if (state->unknown_74 == 0)

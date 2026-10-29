@@ -56,6 +56,7 @@ struct StreamBufferView
 {
     StreamBufferVtbl const* lpVtbl;
 };
+GG_STATIC_ASSERT(offsetof(StreamBufferView, lpVtbl) == 0);
 
 // The sample handle the callbacks receive.
 struct StreamSampleView
@@ -72,6 +73,7 @@ struct StreamSampleView
     unsigned       unknown_C4;    // +0xC4
 };
 GG_STATIC_ASSERT(offsetof(StreamSampleView, Slot) == 0x34);
+GG_STATIC_ASSERT(offsetof(StreamSampleView, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(StreamSampleView, Rate) == 0x3C);
 GG_STATIC_ASSERT(offsetof(StreamSampleView, Channels) == 0x3E);
 GG_STATIC_ASSERT(offsetof(StreamSampleView, Bits) == 0x3F);
@@ -106,14 +108,23 @@ struct StreamSlot
 };
 GG_STATIC_ASSERT(offsetof(StreamSlot, Active) == 0x00);
 GG_STATIC_ASSERT(offsetof(StreamSlot, LastBytes) == 0x14);
+GG_STATIC_ASSERT(offsetof(StreamSlot, LastTime) == 0x18);
+GG_STATIC_ASSERT(offsetof(StreamSlot, StartTime) == 0x1C);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Ticks) == 0x20);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Flags) == 0x28);
 GG_STATIC_ASSERT(offsetof(StreamSlot, unknown_40) == 0x40);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Current) == 0x44);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Ready) == 0x48);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Chunk) == 0x50);
+GG_STATIC_ASSERT(sizeof(((StreamSlot*)0)->Ready) == 8);
+GG_STATIC_ASSERT(sizeof(((StreamSlot*)0)->Chunk) == 8);
 GG_STATIC_ASSERT(offsetof(StreamSlot, TimerID) == 0x60);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Buffer) == 0x8C);
+GG_STATIC_ASSERT(offsetof(StreamSlot, BufferSize) == 0x90);
+GG_STATIC_ASSERT(offsetof(StreamSlot, Fills) == 0x94);
+GG_STATIC_ASSERT(offsetof(StreamSlot, unknown_98) == 0x98);
+GG_STATIC_ASSERT(offsetof(StreamSlot, unknown_9C) == 0x9C);
+GG_STATIC_ASSERT(sizeof(StreamCriticalSection) == 0x18);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Lock) == 0xA0);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Busy) == 0xB8);
 GG_STATIC_ASSERT(sizeof(StreamSlot) == 0xBC);   // slot index scaled by 0xBC
@@ -216,10 +227,19 @@ void __stdcall FUN_004123a0(unsigned timer_id, unsigned message, StreamSampleVie
 {
     bool replay = false;
     StreamSlot* slot = &DAT_00887778[sample->Slot];
-    if (InterlockedIncrement(&slot->Busy) == 1 && !(slot->Flags & 1))
+    if (InterlockedIncrement(&slot->Busy) != 1 || (slot->Flags & 1))
+    {
+        InterlockedDecrement(&slot->Busy);
+        return;
+    }
     {
         EnterCriticalSection(&slot->Lock);
-        if (slot->Buffer != 0 && slot->TimerID == timer_id)
+        if (slot->Buffer == 0 || slot->TimerID != timer_id)
+        {
+            LeaveCriticalSection(&slot->Lock);
+            InterlockedDecrement(&slot->Busy);
+            return;
+        }
         {
             unsigned status;
             slot->Buffer->lpVtbl->GetStatus(slot->Buffer, &status);
@@ -242,8 +262,8 @@ void __stdcall FUN_004123a0(unsigned timer_id, unsigned message, StreamSampleVie
                     || (play >= (slot->BufferSize >> 1) && slot->unknown_9C == 0)
                     || restarted == true)
                 {
+                    DAT_00887770(sample, slot->Chunk[slot->Current]);
                     int current = slot->Current;
-                    DAT_00887770(sample, slot->Chunk[current]);
                     slot->Fills++;
                     int next = current + 1;
                     if (next >= 2)
