@@ -14,6 +14,7 @@
 #include "../_layout/swizzle_manager_class.h"
 #include <stdlib.h>
 #include "particles/particle_class.h"
+#include "../core/vector_add_item_free.h"
 
 extern "C" const CLSID CLSID_Particle;
 
@@ -124,7 +125,7 @@ ParticleClass::ParticleClass()
       Coord2(ParticleEmptyCoord), Direction(0, 0, 0), Position(0, 0, 0), Owner(0), unknown_12C(0),
       unknown_12D(0), unknown_12E(0), unknown_12F(0), unknown_130(0), unknown_131(0)
 {
-    ParticleArray.AddItem(this);
+    DynamicVectorAddItemFree(&ParticleArray, this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -20,6 +20,7 @@
 #include "../movement/locomotion_load_support.h"
 #include "../core/header_tuning_globals.h"
 #include "../platform/ccini_class_methods.h"
+#include "../core/vector_add_item_free.h"
 
 // FUNCTION: GAMEMD 0x727CF0 (decl; reloc) -- trims a buffer in place.
 void FUN_00727CF0(char* buffer);
@@ -53,7 +54,7 @@ TuningCoordInit DAT_00B05608(128, 128, 0);
 ScriptClass::ScriptClass(ScriptTypeClass* type)
     : Type(type), unknown_28(0), CurrentMission(-1)
 {
-    DAT_008872B0.AddItem(this);
+    DynamicVectorAddItemFree(&DAT_008872B0, this);
 }
 
 // FUNCTION: GAMEMD 0x691460
@@ -88,7 +89,7 @@ HRESULT __stdcall ScriptClass::Load(IStream* pStm)
 ScriptTypeClass::ScriptTypeClass(const char* id)
     : AbstractTypeClass(id), IsGlobal(0), ActionsCount(0)
 {
-    ScriptTypes.AddItem(this);
+    DynamicVectorAddItemFree(&ScriptTypes, this);
     ArrayIndex = ScriptTypes.FindItemIndex(this);
 }
 

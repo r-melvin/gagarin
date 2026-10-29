@@ -115,6 +115,24 @@ public:
     int           CapacityIncrement; // +0x14
 };
 GG_STATIC_ASSERT(offsetof(SelectionVector, Count) == 0x10);
+// The append, as a free function: retail inlined it, and as a member the
+// inlined grow path accumulates into the wrong register.
+inline bool SelectionVector_Add(SelectionVector* v, ObjectClass* object)
+{
+    if (v->Count >= v->Capacity) {
+        if ((v->IsAllocated || !v->Capacity) && v->CapacityIncrement > 0) {
+            if (!v->vf_2(v->Capacity + v->CapacityIncrement, NULL)) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    int index = v->Count++;
+    v->Items[index] = object;
+    return true;
+}
+
 // GLOBAL: GAMEMD 0xA8ECB8
 extern SelectionVector DAT_00A8ECB8;
 
@@ -126,10 +144,8 @@ void __cdecl FUN_0048DC90();
 void FUN_00731D00(int a1);
 
 // FUNCTION: GAMEMD 0x5F4520
-// PARTIAL 97.8%: two register pairs swap in the inlined vector adds
-// (retail `ADD EAX,ECX; PUSH EAX` in the head-insert path, the reverse in the
-// append path). Tried both operand orders of Capacity + CapacityIncrement,
-// `Capacity <= Count` and a duplicated tail; permuter candidate.
+// MATCHED 100%: the append is the free SelectionVector_Add; as a member the
+// inlined grow path accumulated into the wrong register.
 bool ObjectClass::vf_83()
 {
     if (!DAT_00A8ED6B && (InLimbo || IsSelected || !vf_78())) {
@@ -159,7 +175,7 @@ bool ObjectClass::vf_83()
     if (isTechno && ((TypeView_5F4520*)vf_34())->unknown_C9C) {
         DAT_00A8ECB8.AddHead(this);
     } else {
-        DAT_00A8ECB8.Add(this);
+        SelectionVector_Add(&DAT_00A8ECB8, this);
     }
     FUN_00731D00(0);
     IsSelected = true;

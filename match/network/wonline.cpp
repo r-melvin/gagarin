@@ -883,6 +883,7 @@ struct Obj_00793CD0
 
 #include "../core/vector_class.h"
 #include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0xA8DA74 -- the lobby's node vector (DynamicVectorClass<NodeNameType*>, vtable 0x7EE370).
 extern DynamicVectorClass<NodeNameType*> DAT_00A8DA74;
@@ -2802,7 +2803,7 @@ void FUN_00796FC0()
     address.Node[0] = 0x0A;
     node->Address.FUN_0053ED20(network, address, 0);
 
-    DAT_00A8DA74.AddItem(node);
+    DynamicVectorAddItemFree(&DAT_00A8DA74, node);
     DAT_00B7790C[DAT_00A8B54C++] = 100;
     DAT_00A8BB1C = node->Address;
 }

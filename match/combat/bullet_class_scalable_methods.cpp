@@ -4,6 +4,7 @@
 //   from YRpp (name only).
 
 #include "bullet_class_scalable_methods.h"
+#include "../core/vector_add_item_free.h"
 
 // FUNCTION: GAMEMD 0x46B280
 //
@@ -13,7 +14,7 @@
 // base SpawnDelay plus one frame for every three bullets beyond the fifth.
 void BulletClass::InitScalable()
 {
-    ScalableBullets.AddItem(this);
+    DynamicVectorAddItemFree(&ScalableBullets, this);
 
     int extra = ScalableBullets.Count - 5;
     if (extra < 0)

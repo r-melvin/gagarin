@@ -13,6 +13,20 @@ int SliderClass::vf_38()
     return unknown_4C;
 }
 
+// FUNCTION: GAMEMD 0x6B1D00
+// Releases the plus and minus buttons the constructor allocated.
+SliderClass::~SliderClass()
+{
+    if (unknown_3C) {
+        delete unknown_3C;
+        unknown_3C = 0;
+    }
+    if (unknown_40) {
+        delete unknown_40;
+        unknown_40 = 0;
+    }
+}
+
 // FUNCTION: GAMEMD 0x6B1D40
 int SliderClass::vf_34(int maximum)
 {

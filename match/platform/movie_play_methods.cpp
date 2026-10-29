@@ -11,6 +11,7 @@
 #include "movie_handle_class.h"
 #include "../core/vector_class_operations.h"
 #include <string.h>
+#include "../core/vector_add_item_free.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- _stricmp.
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
@@ -298,11 +299,8 @@ void FUN_005BF360(Obj_005BF360* arg)
 }
 
 // FUNCTION: GAMEMD 0x5BF2B0
-// PARTIAL (72.2%): the inlined DynamicVectorClass::AddItem differs from the
-// canonical one in vector_class_operations.h -- retail adds Capacity to the
-// increment (`ADD ECX,EAX`) and stores through `Items[Count++]` (MOV/INC),
-// where the canonical body emits `ADD EAX,ECX` and LEA. Not rewritten here:
-// the fix belongs in the shared header (see the packet notes).
+// MATCHED 100%: the inlined AddItem is the free DynamicVectorAddItemFree form
+// (vector_add_item_free.h); as a member it accumulates into the wrong register.
 void FUN_005BF2B0(const char* name, bool flag)
 {
     if (DAT_00A8B238 == 0) {
@@ -311,13 +309,13 @@ void FUN_005BF2B0(const char* name, bool flag)
             movie->vt_entry_18(DAT_008809D8 - 3, DAT_008809DC - 1);
             movie->vt_entry_20((void*)FUN_005BF360);
             movie->unknown_04 = flag;
-            DAT_00B45B58.AddItem(movie);
+            DynamicVectorAddItemFree(&DAT_00B45B58, movie);
         }
     }
 }
 
 // FUNCTION: GAMEMD 0x5BF390
-// PARTIAL (68.3%): the inlined 0x5BF2B0 carries the same AddItem difference.
+// MATCHED 100%: the inlined 0x5BF2B0 uses the free AddItem form.
 void FUN_005BF390(int index, bool flag)
 {
     if (index >= 0 && index < DAT_00ABF3A0)

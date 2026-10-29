@@ -2159,16 +2159,12 @@ void Tactical::FUN_006D5F60(const TRect<int>* bounds)
     DAT_00B0CE30 = bounds->Width;
     DAT_00B0CE34 = bounds->Height;
     Pair_006D9F80 checked = unknown_D74;
-    int x, y;
-    if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0) {
-        x = checked.unknown_00;
-        y = checked.unknown_04;
-    } else {
-        x = unknown_D74.unknown_00;
-        y = unknown_D74.unknown_04;
-    }
-    unknown_D64.unknown_00 = unknown_D74.unknown_00 = x;
-    unknown_D64.unknown_04 = unknown_D74.unknown_04 = y;
+    Pair_006D9F80 result;
+    if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0)
+        result = checked;
+    else
+        result = unknown_D74;
+    unknown_D74 = unknown_D64 = result;
     FUN_006D8B30();
     unknown_D7D = true;
 }
@@ -3060,23 +3056,42 @@ bool Tactical::FUN_006D8AE0(const Cell* cell) const
     return false;
 }
 
+// Integer input pair is converted at 0x6D8B84 and 0x6D8BA5.
+static inline void ConvertPairVector_006D8B30(Vector3D& vector,
+                                              const Pair_006D9F80& point)
+{
+    vector.X = (float)point.unknown_00;
+    vector.Y = (float)point.unknown_04;
+    vector.Z = 0.0f;
+}
+
+// Float-to-pair conversion is expanded at native 0x6D8BCF/0x6D8BDA.
+static inline Pair_006D9F80 ConvertVectorPair_006D8B30(const Vector3D& vector)
+{
+    Pair_006D9F80 point;
+    point.unknown_00 = (int)vector.X;
+    point.unknown_04 = (int)vector.Y;
+    return point;
+}
+
 // FUNCTION: GAMEMD 0x6D8B30
 void Tactical::FUN_006D8B30()
 {
     Pair_006D9F80 center = unknown_D64;
-    unknown_B0 = center;
+    unknown_B0.unknown_00 = center.unknown_00;
+    unknown_B0.unknown_04 = center.unknown_04;
     unknown_B0.unknown_00 = center.unknown_00 - DAT_00B0CE30 / 2;
     unknown_B0.unknown_04 = center.unknown_04 - DAT_00B0CE34 / 2;
-    Vector3D vector;
-    vector.X = (float)(unknown_B0.unknown_00 - 60);
-    vector.Y = (float)(unknown_B0.unknown_04 - 30);
-    vector.Z = 0.0f;
     Vector3D transformed;
+    Pair_006D9F80 relative;
+    relative.unknown_00 = unknown_B0.unknown_00 - 60;
+    relative.unknown_04 = unknown_B0.unknown_04 - 30;
+    Vector3D vector;
+    ConvertPairVector_006D8B30(vector, relative);
     vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
-    int x = (int)vector.X;
-    int y = (int)vector.Y;
-    unknown_D80 = x / 256;
-    unknown_D84 = y / 256;
+    Pair_006D9F80 point = ConvertVectorPair_006D8B30(vector);
+    unknown_D80 = point.unknown_00 / 256;
+    unknown_D84 = point.unknown_04 / 256;
     unknown_D88 = DAT_00B0CE30 / 60 + 2;
     unknown_D8C = DAT_00B0CE34 / 15 + 4;
 }

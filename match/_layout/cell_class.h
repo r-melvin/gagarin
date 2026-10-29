@@ -137,6 +137,12 @@ public:
     bool FUN_00486770();
     // FUNCTION: GAMEMD 0x58C800 (decl; reloc) -- record for this cell (MapGen).
     struct Rec_0058C800Ret* FUN_0058C800();
+    // FUNCTION: GAMEMD 0x47EFE0 (decl; reloc) -- draws the shroud edge for the given level, RET 12.
+    void FUN_0047EFE0(const Point2D* point, const RectangleStruct* clip, int level);
+    // FUNCTION: GAMEMD 0x47F250 (decl; reloc) -- draws the fog edge for the given level, RET 12.
+    void FUN_0047F250(const Point2D* point, const RectangleStruct* clip, int level);
+    // FUNCTION: GAMEMD 0x481130 (decl; reloc) -- true when the given slot's bit is clear in the (alt) occupation bits; RET 8.
+    bool FUN_00481130(int slot, bool alt);
 
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     DynamicVectorClass<FoggedObjectClass*>* FoggedObjects; // +0x28 RTTI .?AV?$DynamicVectorClass@PAVFoggedObjectClass@@@@

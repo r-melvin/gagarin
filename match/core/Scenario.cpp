@@ -742,6 +742,7 @@ extern "C" Type_006A46D0** DAT_008B4124;
 // canonical header declares them yet).
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -2761,7 +2762,7 @@ ColorScheme::ColorScheme(const char* name, HSVClass* hsv, PaletteClass* pal1,
     unknown_30C = FUN_0068C3B0(unknown_308, pal1, pal2, unknown_004,
                                DAT_00887308, shade, 1000, 1000, 1000, DAT_0083E1AC);
     if (flag) {
-        ColorSchemeArray.AddItem(this);
+        DynamicVectorAddItemFree(&ColorSchemeArray, this);
         unknown_000 = ColorSchemeArray.Count;
     }
 }

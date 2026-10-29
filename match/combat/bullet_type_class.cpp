@@ -15,6 +15,7 @@
 #include "../_layout/obj_004a1d30.h"
 #include "../ui/input_controls/ui_display_chain.h"
 #include <new.h>
+#include "../core/vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0x7E95D0 -- native BulletTypeClass CLSID, copied at 0x46C760.
 extern const CLSID DAT_007E95D0;
@@ -76,10 +77,10 @@ BulletTypeClass::BulletTypeClass(const char* id)
     Immune = true;
     AllowCellContent = false;
 
-    DAT_00A83C80.AddItem(this);
+    DynamicVectorAddItemFree(&DAT_00A83C80, this);
     // Native instructions at 0x46BD84..0x46BDD4 treat 0xB0F670 as a
     // pointer-valued DynamicVectorClass and append this through slot +8.
-    reinterpret_cast<DynamicVectorClass<void*>*>(&DAT_00B0F670)->AddItem((void*)this);
+    DynamicVectorAddItemFree(reinterpret_cast<DynamicVectorClass<void*>*>(&DAT_00B0F670), (void*)this);
 }
 
 // FUNCTION: GAMEMD 0x46BDE0

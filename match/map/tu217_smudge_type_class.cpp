@@ -20,6 +20,7 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include <new.h>
+#include "../core/vector_add_item_free.h"
 #include "terrain_objects/smudge_class.h"
 #include "terrain_objects/smudge_type_class.h"
 
@@ -91,7 +92,7 @@ double DAT_00B0B7C8 = DAT_007E1718 / DAT_00B0B7E0;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B5260
-// CAPPED at 97.3%: retail loads Count then Capacity (EAX, ECX) for the inlined AddItem, this compiles
+// MATCHED 100%: the registry append is the free DynamicVectorAddItemFree form. Historical note: retail loads Count then Capacity (EAX, ECX) for the inlined AddItem, the member compiled
 // Capacity first; the early-return and Count-first AddItem shapes tried fall to 94.5% / 57.0%.
 // The canonical DynamicVectorClass<SmudgeTypeClass*> with an inline AddItem was also tried and is
 // worse: nested early-out ifs 45.2%, one short-circuit condition 45.2%, and that condition storing
@@ -107,7 +108,7 @@ SmudgeTypeClass::SmudgeTypeClass(const char* id)
     unknown_232 = true;
     unknown_233 = true;
     unknown_235 = false;
-    SmudgeTypeArray.AddItem(this);
+    DynamicVectorAddItemFree(&SmudgeTypeArray, this);
     ArrayIndex = SmudgeTypeArray.FindIndex(this);
 }
 

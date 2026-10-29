@@ -5,6 +5,7 @@
 #include "vector_class_operations.h"
 #include "bounded_text.h"
 #include <stdio.h>
+#include "vector_add_item_free.h"
 // GLOBAL: GAMEMD 0xA8E968
 extern DynamicVectorClass<AbstractTypeClass*> DAT_00A8E968;
 // GLOBAL: GAMEMD 0x887734
@@ -27,6 +28,6 @@ AbstractTypeClass::AbstractTypeClass(const char* id)
     }
     GgBoundedText<49>(ID).CopyTo(Name);
     UIName = DAT_00887734;
-    DAT_00A8E968.AddItem(this);
+    DynamicVectorAddItemFree(&DAT_00A8E968, this);
 }
 

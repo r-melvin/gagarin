@@ -680,6 +680,7 @@ struct Type_006A46D0
 extern "C" Type_006A46D0** DAT_008B4124;
 
 #include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
 
 
 // Globals read by this TU's static initialisers (placeholder names).
@@ -700,7 +701,7 @@ double DAT_00AC50D0 = DAT_007E1718 / DAT_00AC50E8;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x644BE0
-// CAPPED: the frozen candidate remains partial at the recorded 96.6% instruction score.
+// MATCHED 100%: the registry appends are the free DynamicVectorAddItemFree form.
 ParticleTypeClass::ParticleTypeClass(const char* id)
     : ParticleTypeObjectView(id), NextParticleOffset(0, 0, 0), XVelocity(1), YVelocity(1), MinZVelocity(0),
       ZVelocityRange(1), ColorSpeed(0), StartColor1(0, 0, 0), StartColor2(0, 0, 0), MaxDC(0), MaxEC(1),
@@ -709,8 +710,8 @@ ParticleTypeClass::ParticleTypeClass(const char* id)
       FinalDamageState(0), Translucent25State(0xFF), Translucent50State(0xFF), Normalized(false),
       NextParticle(-1), BehavesLike(-1)
 {
-    ParticleTypeArray.AddItem(this);
-    ParticleAbstractTypeArray.AddItem(this);
+    DynamicVectorAddItemFree(&ParticleTypeArray, this);
+    DynamicVectorAddItemFree(&ParticleAbstractTypeArray, this);
     unknown_234 = 0;
 }
 

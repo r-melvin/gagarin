@@ -28,6 +28,9 @@ class BenchTimer
 public:
     void Reset();
     unsigned int Average();
+    BenchTimer* FUN_004318F0();
+    void FUN_00431930(int reset);
+    void FUN_004319D0();
 
     unsigned int StartLo;   // +0x00
     unsigned int StartHi;   // +0x04
@@ -322,6 +325,21 @@ void BeaconManagerClass::DeleteAllBeacons(int houseId)
     }
 }
 
+// FUNCTION: GAMEMD 0x7C6064 (decl; reloc) -- RDTSC helper: returns the low half, stores the high half.
+unsigned int __cdecl FUN_007C6064(unsigned int* high);
+
+// FUNCTION: GAMEMD 0x4318F0
+// Stamps the start time (counter shifted right by 4) and clears the totals.
+BenchTimer* BenchTimer::FUN_004318F0()
+{
+    unsigned int hi;
+    StartLo = FUN_007C6064(&hi) >> 4 | hi << 28;
+    Total = 0;
+    Count = 0;
+    Samples = 0;
+    return this;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x431920
 void BenchTimer::Reset()
@@ -329,6 +347,32 @@ void BenchTimer::Reset()
     Total = 0;
     Count = 0;
     Samples = 0;
+}
+
+// FUNCTION: GAMEMD 0x431930
+// Stamps the start time, optionally clearing the totals first.
+void BenchTimer::FUN_00431930(int reset)
+{
+    unsigned __int64 stale;
+    if ((char)reset) {
+        Total = 0;
+        Count = 0;
+        Samples = 0;
+    }
+    unsigned int lo = FUN_007C6064((unsigned int*)&reset);
+    StartLo = lo >> 4 | reset << 28;
+    StartHi = (unsigned int)(stale >> 32);
+}
+
+// FUNCTION: GAMEMD 0x4319D0
+// Adds the time since the start stamp to the total and bumps both counters.
+void BenchTimer::FUN_004319D0()
+{
+    unsigned int hi;
+    unsigned int lo = FUN_007C6064(&hi);
+    Total += (lo >> 4 | hi << 28) - StartLo;
+    Count++;
+    Samples++;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

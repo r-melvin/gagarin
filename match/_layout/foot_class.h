@@ -206,6 +206,12 @@ public:
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x4D9920 (IsScanLimited @0x688 wrapper of 0x6F8DF0)
     // Native primary slot 288: RET 8; this override receives the target and flag.
     virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x4D94B0
+    // Round 17 overrides of base slots (retail table 0x7E8C94).
+    virtual CoordStruct vf_267();                                  // 267 0x4D8560
+    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, int a5); // 107 0x4D9C10
+    virtual bool vf_200();                                         // 200 0x4DA1D0
+    virtual void vf_229(FootClass* a1);                            // 229 0x4DE630
+    virtual int vf_26(int a1, int a2);                             // 26  0x4DA4E0
 
     double FUN_004DC760();                                         // 0x4DC760 (team flag selects a constant, else unknown_530)
 };
