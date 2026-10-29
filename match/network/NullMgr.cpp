@@ -154,6 +154,22 @@ void __cdecl FUN_005F15A0()
     DAT_00AC132C = 0x80;
 }
 
+// Destructor: frees the modem registry entry, tears the link down and drops
+// the serial port wrapper.
+// FUNCTION: GAMEMD 0x5F1650
+NullModemClass::~NullModemClass()
+{
+    if (unknown_34 != 0) {
+        delete unknown_34;
+    }
+    FUN_005F1960();
+    Shutdown();
+    if (WinModem_00B72D20 != 0) {
+        delete WinModem_00B72D20;
+        WinModem_00B72D20 = 0;
+    }
+}
+
 // FUNCTION: GAMEMD 0x005f16e0
 // Builds the connection and its buffers on first use, opens the serial device
 // selected by port (I/O address, or 1 for a registry modem matched by name)
@@ -489,6 +505,22 @@ void Obj_005F1EE0::FUN_005F1F00(int a1)
     if (unknown_38)
         unknown_38->unknown_04->FUN_0048BAA0(true);
 }
+
+// Find the first queued entry that is not flagged and whose packet is idle; returns its packet.
+// FUNCTION: GAMEMD 0x5F1F20
+NullModemQueuePacket* NullModemClass::FUN_005F1F20()
+{
+    NullModemQueuePacket* result = 0;
+    for (int i = 0; i < Connection->Queue->Count; i++) {
+        NullModemQueueEntry* entry = Connection->Queue->FUN_0048B720(i);
+        if (entry != 0 && entry->Packet->State == 0 && !(entry->Flags & 2)) {
+            result = entry->Packet;
+            break;
+        }
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x005F1F70
 // Forwards five of its six arguments to CommBufferClass 0x48BAD0; the first is unused.
 void Obj_005F1EE0::FUN_005F1F70(int a1, int a2, int a3, int a4, int a5, int a6)

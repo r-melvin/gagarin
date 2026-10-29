@@ -14,6 +14,10 @@ extern char GLOBAL_00889F64[];
 // Narrow CRT declaration; implementation remains in the toolchain library.
 extern "C" int __cdecl tolower(int ch);
 
+// LIBRARY: GAMEMD 0x007C97D3
+// _toupper
+extern "C" int __cdecl toupper(int ch);
+
 // FUNCTION: GAMEMD 0x7B4620
 Wstring::Wstring() : unknown_00(0)
 {
@@ -201,5 +205,36 @@ void Wstring::FUN_007B5B30()
         if (ch >= 'A' && ch <= 'Z') {
             unknown_00[i] = tolower(ch);
         }
+    }
+}
+
+// FUNCTION: GAMEMD 0x7B5C50
+void Wstring::FUN_007B5C50()
+{
+    for (unsigned int i = 0; i < Length(); ++i) {
+        char ch = unknown_00[i];
+        if (ch >= 'a' && ch <= 'z') {
+            unknown_00[i] = toupper(ch);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x7B51D0
+// Removes the leading run of characters that all appear in `trim`.
+void Wstring::FUN_007B51D0(const Wstring* trim)
+{
+    int count = 0;
+    while (count < Length()) {
+        const char* set = trim->unknown_00;
+        if (set == 0) {
+            set = GLOBAL_00889F64;
+        }
+        if (strchr(set, unknown_00[count]) == 0) {
+            break;
+        }
+        count++;
+    }
+    if (count > 0) {
+        FUN_007B5020(0, count);
     }
 }

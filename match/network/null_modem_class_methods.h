@@ -38,10 +38,25 @@
 
 // The connection's packet queue. Only the queue reset at 0x48B390 is reached
 // from this translation unit, as a direct (non-virtual) call.
+struct NullModemQueuePacket
+{
+    char unknown_00[2];
+    char State;           // +0x0002
+};
+struct NullModemQueueEntry
+{
+    unsigned char Flags;  // +0x0000
+    char unknown_01[0x13];
+    NullModemQueuePacket* Packet;   // +0x0014
+};
 struct NullModemQueueClass
 {
     // FUNCTION: GAMEMD 0x48B390 (decl; reloc) — CommBufferClass send-queue reset.
     void FUN_0048B390();
+    // FUNCTION: GAMEMD 0x48B720 (decl; reloc) — the entry at a queue position, or zero.
+    NullModemQueueEntry* FUN_0048B720(int position) const;
+    char unknown_00[0x28];
+    int  Count;           // +0x0028
 };
 
 // The NULL-modem connection object. Modelled with its used vtable slots in
@@ -172,6 +187,8 @@ public:
     int FUN_005F1EA0();
     // FUNCTION: GAMEMD 0x5F1C30
     int FUN_005F1C30(void* buf, int* buflen);
+    // FUNCTION: GAMEMD 0x5F1F20 -- first queued packet that is neither flagged nor in state 0.
+    NullModemQueuePacket* FUN_005F1F20();
 };
 GG_STATIC_ASSERT(offsetof(NullModemClass, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(NullModemClass, unknown_04) == 0x04 &&

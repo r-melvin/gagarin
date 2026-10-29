@@ -73,3 +73,17 @@ void SlaveManagerClass::Deploy2()
         }
     }
 }
+
+// FUNCTION: GAMEMD 0x6B0490  (__thiscall)
+// Order every live slave (State != Dead(6), Slave != null) back to Guard via
+// vtable+0x3D0, walking SlaveNodes back-to-front.
+void SlaveManagerClass::GuardAllSlaves()
+{
+    for (int i = this->SlaveNodes.Count - 1; i >= 0; --i) {
+        SlaveControl* node = ((SlaveControl**)this->SlaveNodes.Items)[i];
+        int state = node->State;
+        SlaveObject* slave = node->Slave;
+        if (state != 6 && slave != 0)
+            slave->GuardSlot();
+    }
+}

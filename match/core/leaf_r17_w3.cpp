@@ -89,38 +89,6 @@ int Float_00750030::Classify() const
     return (Value >= DAT_007E2AC8) ? 1 : 2;
 }
 
-// 0x7589F0: stream placeholder with the slots the palette writer uses.
-struct PalStream_007589F0
-{
-    virtual void v0();
-    virtual void v1();
-    virtual void v2();
-    virtual void v3();
-    virtual void v4();
-    virtual void v5();
-    virtual void v6();
-    virtual void Open(int mode);                    // slot 7  (+0x1C)
-    virtual void v8();
-    virtual int  Write(const void* buf, int len);   // slot 9  (+0x24)
-    virtual void v10();
-    virtual void v11();
-    virtual void v12();
-    virtual void Close();                           // slot 13 (+0x34)
-};
-
-// FUNCTION: GAMEMD 0x7589F0
-// PARTIAL: 92.6% -- retail pops EDI before moving the result (EBX) into EAX; ours does the reverse.
-// Writes the 0x300-byte palette to the stream; returns nonzero on a short write.
-int __fastcall FUN_007589F0(VoxelShadePalette* pal, int unused, PalStream_007589F0* s)
-{
-    int fail = 0;
-    s->Open(1);
-    if (s->Write(pal->Palette, 0x300) != 0x300)
-        fail = 1;
-    s->Close();
-    return fail;
-}
-
 // 0x7C3910..0x7C3990: a playback position object; Pos is a per-object function pointer
 // (called cdecl with the object) returning a sample count, Rate the samples per second/60 divisor.
 struct PlayPos_007C3910

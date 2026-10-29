@@ -102,6 +102,8 @@ public:
     unsigned char  unknown_36[2];
     const wchar_t* Text;           // +0x38
     int            unknown_3C;     // +0x3C
+
+    TextButtonClass();   // 0x71FFB0: ToggleClass(0, 0, 0, 0, 0), then text cleared and mode 2
 };
 GG_STATIC_ASSERT(offsetof(TextButtonClass, HasOutline) == 0x34);
 GG_STATIC_ASSERT(offsetof(TextButtonClass, unknown_35) == 0x35);

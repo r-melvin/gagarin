@@ -2334,6 +2334,15 @@
   "pct": 84.6
  },
  {
+  "tu": "match/combat/slave_manager_class_more_methods.cpp",
+  "addr": "0x6B0490",
+  "sym": "?GuardAllSlaves@SlaveManagerClass@@QAEXXZ",
+  "len": "0x2c",
+  "name": "SlaveManagerClass::GuardAllSlaves",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/combat/slave_manager_class_wake_methods.cpp",
   "addr": "0x6B1020",
   "sym": "?ShouldWakeUpNow@SlaveManagerClass@@QAE_NXZ",
@@ -96947,6 +96956,24 @@
   "pct": 100
  },
  {
+  "tu": "match/network/NullMgr.cpp",
+  "addr": "0x5F1650",
+  "sym": "??1NullModemClass@@UAE@XZ",
+  "len": "0x88",
+  "name": "NullModemClass::~NullModemClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/NullMgr.cpp",
+  "addr": "0x5F1F20",
+  "sym": "?FUN_005F1F20@NullModemClass@@QAEPAUNullModemQueuePacket@@XZ",
+  "len": "0x48",
+  "name": "NullModemClass::FUN_005F1F20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/object_type_class_slots.cpp",
   "addr": "0x5F7640",
   "sym": "?vf_36@ObjectTypeClass@@UAEPAXH@Z",
@@ -102886,6 +102913,24 @@
   "sym": "?FUN_007B5B30@Wstring@@QAEXXZ",
   "len": "0x42",
   "name": "Wstring::FUN_007B5B30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B5C50",
+  "sym": "?FUN_007B5C50@Wstring@@QAEXXZ",
+  "len": "0x42",
+  "name": "Wstring::FUN_007B5C50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B51D0",
+  "sym": "?FUN_007B51D0@Wstring@@QAEXPBV1@@Z",
+  "len": "0x5c",
+  "name": "Wstring::FUN_007B51D0",
   "status": "matched",
   "pct": 100
  },
@@ -140852,13 +140897,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_r17_w3.cpp",
+  "tu": "match/core/small_sweep_s2.cpp",
   "addr": "0x7589F0",
-  "sym": "?FUN_007589F0@@YIHPAUVoxelShadePalette@@HPAUPalStream_007589F0@@@Z",
-  "len": "0x3F",
-  "name": "FUN_007589F0",
-  "status": "partial",
-  "pct": 92.6
+  "sym": "?FUN_007589F0@Palette_007589F0@@QAEHPAVFileClass@@@Z",
+  "len": "0x3f",
+  "name": "Palette_007589F0::FUN_007589F0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/leaf_r17_w3.cpp",
@@ -141210,5 +141255,518 @@
   "name": "HouseView_004FF980::FUN_004FFA50",
   "status": "partial",
   "pct": 88.9
+ },
+ {
+  "tu": "match/core/w2_leaf_r17.cpp",
+  "addr": "0x585EE0",
+  "sym": "?FUN_00585EE0@@YAXXZ",
+  "len": "0x59",
+  "name": "FUN_00585EE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r17.cpp",
+  "addr": "0x61F190",
+  "sym": "?FUN_0061F190@@YAXXZ",
+  "len": "0x76",
+  "name": "FUN_0061F190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r17.cpp",
+  "addr": "0x65C8B0",
+  "sym": "?FUN_0065C8B0@Random3_0065C8B0@@QAEHXZ",
+  "len": "0x5e",
+  "name": "Random3_0065C8B0::FUN_0065C8B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r17.cpp",
+  "addr": "0x642740",
+  "sym": "?FUN_00642740@Coord_00642740@@QAEPAU1@PBUCellStruct@@H@Z",
+  "len": "0x2e",
+  "name": "Coord_00642740::FUN_00642740",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/w2_thick_line_r17.cpp",
+  "addr": "0x63D810",
+  "sym": "?FUN_0063D810@@YIXIIUPoint2D@@0D@Z",
+  "len": "0xfc",
+  "name": "FUN_0063D810",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/w2_thick_line_r17.cpp",
+  "addr": "0x63D960",
+  "sym": "?FUN_0063D960@@YIXHIUPoint2D@@0@Z",
+  "len": "0x56",
+  "name": "FUN_0063D960",
+  "status": "partial",
+  "pct": 79.1
+ },
+ {
+  "tu": "match/network/w2_modem_poll_r17.cpp",
+  "addr": "0x5F33B0",
+  "sym": "?FUN_005F33B0@@YAHXZ",
+  "len": "0x4f",
+  "name": "FUN_005F33B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf2_r17.cpp",
+  "addr": "0x692270",
+  "sym": "?FUN_00692270@@YAXXZ",
+  "len": "0x15",
+  "name": "FUN_00692270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf2_r17.cpp",
+  "addr": "0x692F20",
+  "sym": "?FUN_00692F20@@YAXXZ",
+  "len": "0x1",
+  "name": "FUN_00692F20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf2_r17.cpp",
+  "addr": "0x598000",
+  "sym": "?FUN_00598000@@YANXZ",
+  "len": "0x27",
+  "name": "FUN_00598000",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf2_r17.cpp",
+  "addr": "0x5DB6F0",
+  "sym": "?FUN_005DB6F0@@YAXXZ",
+  "len": "0x27",
+  "name": "FUN_005DB6F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf2_r17.cpp",
+  "addr": "0x6AC740",
+  "sym": "?FUN_006AC740@SlotTable_006AC740@@QAEXHH@Z",
+  "len": "0x38",
+  "name": "SlotTable_006AC740::FUN_006AC740",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf2_r17.cpp",
+  "addr": "0x6A94F0",
+  "sym": "?FUN_006A94F0@EntryTable_006A94F0@@QAEHH@Z",
+  "len": "0x43",
+  "name": "EntryTable_006A94F0::FUN_006A94F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/w2_map_iso_r17.cpp",
+  "addr": "0x568350",
+  "sym": "?FUN_00568350@MapView_00568350@@QBE_NPBULeptonPair_00568350@@@Z",
+  "len": "0x63",
+  "name": "MapView_00568350::FUN_00568350",
+  "status": "partial",
+  "pct": 92.7
+ },
+ {
+  "tu": "match/core/w2_leaf3_r17.cpp",
+  "addr": "0x5DAB80",
+  "sym": "?FUN_005DAB80@@YIHPBD@Z",
+  "len": "0x7a",
+  "name": "FUN_005DAB80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf3_r17.cpp",
+  "addr": "0x5DAC00",
+  "sym": "?FUN_005DAC00@@YIHPBG@Z",
+  "len": "0x74",
+  "name": "FUN_005DAC00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/w2_dialog_run_r17.cpp",
+  "addr": "0x55FA30",
+  "sym": "?FUN_0055FA30@@YA_NXZ",
+  "len": "0x6c",
+  "name": "FUN_0055FA30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/w2_dialog_run_r17.cpp",
+  "addr": "0x5FBEF0",
+  "sym": "?FUN_005FBEF0@@YA_NXZ",
+  "len": "0x73",
+  "name": "FUN_005FBEF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x771950",
+  "sym": "?FUN_00771950@Obj_00771950@@QAEXXZ",
+  "len": "0x16",
+  "name": "Obj_00771950::FUN_00771950",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x7518A0",
+  "sym": "?FUN_007518A0@@YIXPAUAudioController_007518A0@@H@Z",
+  "len": "0x1f",
+  "name": "FUN_007518A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x734F20",
+  "sym": "?FUN_00734F20@@YAHXZ",
+  "len": "0x2c",
+  "name": "FUN_00734F20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x6CE570",
+  "sym": "?FUN_006CE570@@YIHPBD@Z",
+  "len": "0x35",
+  "name": "FUN_006CE570",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x777060",
+  "sym": "?FUN_00777060@@YIXPAUHWND__@@@Z",
+  "len": "0x1b",
+  "name": "FUN_00777060",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x72E820",
+  "sym": "?FUN_0072E820@@YIXHHH@Z",
+  "len": "0x32",
+  "name": "FUN_0072E820",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x7767B0",
+  "sym": "?FUN_007767B0@@YIXPAUHWND__@@HH@Z",
+  "len": "0x3e",
+  "name": "FUN_007767B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x776880",
+  "sym": "?FUN_00776880@Dialog_00776880@@QAEXXZ",
+  "len": "0x1c",
+  "name": "Dialog_00776880::FUN_00776880",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x763690",
+  "sym": "?FUN_00763690@@YIHPBD@Z",
+  "len": "0x55",
+  "name": "FUN_00763690",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x727CF0",
+  "sym": "?FUN_00727CF0@@YIPADPAD@Z",
+  "len": "0x67",
+  "name": "FUN_00727CF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x71FFB0",
+  "sym": "??0TextButtonClass@@QAE@XZ",
+  "len": "0x2e",
+  "name": "TextButtonClass::TextButtonClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_s3.cpp",
+  "addr": "0x70FE50",
+  "sym": "?FUN_0070FE50@Techno_0070FE50@@QAEXXZ",
+  "len": "0x56",
+  "name": "Techno_0070FE50::FUN_0070FE50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/s1_quick_sweep.cpp",
+  "addr": "0x6F2B20",
+  "sym": "?FUN_006F2B20@@YIXXZ",
+  "len": "0x15",
+  "name": "FUN_006F2B20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/s1_quick_sweep.cpp",
+  "addr": "0x72F440",
+  "sym": "?FUN_0072F440@@YIXH@Z",
+  "len": "0x56",
+  "name": "FUN_0072F440",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/s1_quick_sweep.cpp",
+  "addr": "0x753BF0",
+  "sym": "?FUN_00753BF0@@YIXEHEHEH@Z",
+  "len": "0x63",
+  "name": "FUN_00753BF0",
+  "status": "partial",
+  "pct": 94.7
+ },
+ {
+  "tu": "match/core/s1_quick_sweep.cpp",
+  "addr": "0x76F030",
+  "sym": "??0?$rc_ptr@VTerritory@WorldDominationTour@@@@QAE@ABV0@@Z",
+  "len": "0x23",
+  "name": "rc_ptr<WorldDominationTour::Territory>::rc_ptr",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_s1_methods.cpp",
+  "addr": "0x7B4A10",
+  "sym": "?FUN_007B4A10@Wstring@@QAE_NPBD@Z",
+  "len": "0xaf",
+  "name": "Wstring::FUN_007B4A10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_s1_methods.cpp",
+  "addr": "0x7B4AC0",
+  "sym": "?FUN_007B4AC0@Wstring@@QAE_NHPBD@Z",
+  "len": "0x88",
+  "name": "Wstring::FUN_007B4AC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_s1_methods.cpp",
+  "addr": "0x7B4C20",
+  "sym": "??YWstring@@QAEAAV0@PBD@Z",
+  "len": "0xac",
+  "name": "Wstring::operator+=(const char*)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_s1_methods.cpp",
+  "addr": "0x7B4CD0",
+  "sym": "??YWstring@@QAEAAV0@ABV0@@Z",
+  "len": "0xc3",
+  "name": "Wstring::operator+=(const Wstring&)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_s1_methods.cpp",
+  "addr": "0x7B5AE0",
+  "sym": "?FUN_007B5AE0@Wstring@@QAE_NHPBD@Z",
+  "len": "0x50",
+  "name": "Wstring::FUN_007B5AE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x730720",
+  "sym": "?FUN_00730720@@YIXHH@Z",
+  "len": "0x16",
+  "name": "FUN_00730720",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x759F90",
+  "sym": "?FUN_00759F90@Obj_00759F90@@QAEXXZ",
+  "len": "0x6",
+  "name": "Obj_00759F90::FUN_00759F90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x75A2D0",
+  "sym": "?FUN_0075A2D0@@YI_NPAUObj_0075A2B0@@HHH@Z",
+  "len": "0x19",
+  "name": "FUN_0075A2D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x759850",
+  "sym": "?FUN_00759850@MoviePlayer_s2@@QAE_NHH@Z",
+  "len": "0x26",
+  "name": "MoviePlayer_s2::FUN_00759850",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x759880",
+  "sym": "?FUN_00759880@MoviePlayer_s2@@QAE_NHHH@Z",
+  "len": "0x4e",
+  "name": "MoviePlayer_s2::FUN_00759880",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x759900",
+  "sym": "?FUN_00759900@MoviePlayer_s2@@QAE_NXZ",
+  "len": "0x39",
+  "name": "MoviePlayer_s2::FUN_00759900",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x759E10",
+  "sym": "?FUN_00759E10@MoviePlayer_s2@@QAEXXZ",
+  "len": "0x32",
+  "name": "MoviePlayer_s2::FUN_00759E10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x759F30",
+  "sym": "?FUN_00759F30@MoviePlayer_s2@@QAEXHH@Z",
+  "len": "0x3b",
+  "name": "MoviePlayer_s2::FUN_00759F30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x72EC30",
+  "sym": "?FUN_0072EC30@@YIXXZ",
+  "len": "0x40",
+  "name": "FUN_0072EC30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x7535D0",
+  "sym": "?FUN_007535D0@@YIXXZ",
+  "len": "0x43",
+  "name": "FUN_007535D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x7B5360",
+  "sym": "?FUN_007B5360@ByteBuffer_007B5360@@QAEXH@Z",
+  "len": "0x47",
+  "name": "ByteBuffer_007B5360::FUN_007B5360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x7B70B0",
+  "sym": "?FUN_007B70B0@WideText_007B70B0@@QAEXPAGI@Z",
+  "len": "0x47",
+  "name": "WideText_007B70B0::FUN_007B70B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x7B39D0",
+  "sym": "?FUN_007B39D0@PairTable_007B39D0@@QAE_NPBIG@Z",
+  "len": "0x4d",
+  "name": "PairTable_007B39D0::FUN_007B39D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x7ACE30",
+  "sym": "?FUN_007ACE30@WstringList_007ACE30@@QAE_NPAVWstring@@H@Z",
+  "len": "0x26",
+  "name": "WstringList_007ACE30::FUN_007ACE30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x7B7D90",
+  "sym": "?FUN_007B7D90@WideText_007B7D90@@QAE_NXZ",
+  "len": "0x31",
+  "name": "WideText_007B7D90::FUN_007B7D90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x74BEA0",
+  "sym": "?FUN_0074BEA0@Selection_0074BEA0@@QAEXXZ",
+  "len": "0x31",
+  "name": "Selection_0074BEA0::FUN_0074BEA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2.cpp",
+  "addr": "0x727D60",
+  "sym": "?FUN_00727D60@@YIPAGPAG@Z",
+  "len": "0x5f",
+  "name": "FUN_00727D60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_lock_call_s2.cpp",
+  "addr": "0x7BA2C0",
+  "sym": "?LockMouseCall@@YAXXZ",
+  "len": "0x30",
+  "name": "LockMouseCall",
+  "status": "matched",
+  "pct": 100
  }
 ]

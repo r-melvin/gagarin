@@ -68,6 +68,18 @@ public:
     bool FUN_007B5AB0(char ch, unsigned int index);
     // Declaration: GAMEMD 0x7B5B30 -- lower-case ASCII uppercase characters.
     void FUN_007B5B30();
+    // Declaration: GAMEMD 0x7B5C50 -- upper-case ASCII lowercase characters.
+    void FUN_007B5C50();
+    // Declaration: GAMEMD 0x7B5AE0 -- replace with a copy of up to `length` characters.
+    bool FUN_007B5AE0(int length, const char* source);
+    // Declaration: GAMEMD 0x7B4AC0 -- append up to `count` characters of `text`.
+    bool FUN_007B4AC0(int count, const char* text);
+    // Declaration: GAMEMD 0x7B4A10 -- append the whole text; AL reports success.
+    bool FUN_007B4A10(const char* text);
+    // Declaration: GAMEMD 0x7B4C20 -- append the whole text; returns this.
+    Wstring& operator+=(const char* text);
+    // Declaration: GAMEMD 0x7B4CD0 -- append another string; returns this.
+    Wstring& operator+=(const Wstring& other);
 };
 GG_STATIC_ASSERT(sizeof(Wstring) == 4);
 GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);

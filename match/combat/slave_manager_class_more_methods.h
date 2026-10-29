@@ -421,6 +421,7 @@ public:
     void SetOwner(TechnoClass* NewOwner);   // GAMEMD 0x6AF580
     void CreateSlave(SlaveControl* Node);   // GAMEMD 0x6AF650
     void Deploy2();                         // GAMEMD 0x6B0D60
+    void GuardAllSlaves();                  // GAMEMD 0x6B0490
 };
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, Owner)         == 0x24);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveType)     == 0x28);
