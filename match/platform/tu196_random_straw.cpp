@@ -607,7 +607,7 @@ void RandomStraw::FUN_00661B70()
 int RandomStraw::Get(void* source, int slen)
 {
     if (source == 0 || slen < 1) {
-        return ((Straw*)this)->Straw::FUN_006C98E0((int)source, slen);
+        return ((Straw*)this)->Straw::FUN_006C98E0(source, slen);
     }
 
     int total = 0;

@@ -55,7 +55,7 @@ class HashStraw_004A20B0 : public Straw
 {
 public:
     // FUNCTION: GAMEMD 0x4A20B0
-    virtual int FUN_006C98E0(int first, int second);
+    virtual int FUN_006C98E0(void* first, int second);
 
     BlockHashView Hash;   // +0x0C
 };
@@ -65,7 +65,7 @@ class CacheStraw : public Straw
 {
 public:
     // FUNCTION: GAMEMD 0x4A2780
-    virtual int FUN_006C98E0(int first, int second);   // slot 2
+    virtual int FUN_006C98E0(void* first, int second);   // slot 2
 
     MemoryBuffer Buffer;  // +0x0C
     int          Index;   // +0x18
@@ -95,7 +95,7 @@ public:
     // Inlined at 0x6996EA..0x699720 and 0x69977F..0x6997B5.
     BufferStraw(void* data, int size) : Buffer(data, size), Index(0) {}
     // FUNCTION: GAMEMD 0x7BA4D0
-    virtual int FUN_006C98E0(int first, int second);   // slot 2
+    virtual int FUN_006C98E0(void* first, int second);   // slot 2
 
     MemoryBuffer Buffer;  // +0x0C
     int          Index;   // +0x18

@@ -7,8 +7,7 @@
 //   in retail gamemd.exe v1.001, passed by the assert at 0x4a248d inside this object's
 //   code range (0x4a2160-0x4a292f). Functions are in ascending retail address order.
 //
-// The parameters keep the canonical Pipe/Straw int ABI view (pointer, count);
-// the casts below hand that view to memmove and the hash as pointers.
+// Straw slot 2 takes a destination pointer and a signed byte count.
 
 #include "buffer_straws.h"
 #include "../core/mathtbl_init_shapes.h"
@@ -39,7 +38,7 @@ MathTblCoord DAT_0089F940;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4A2780
-int CacheStraw::FUN_006C98E0(int first, int second)
+int CacheStraw::FUN_006C98E0(void* first, int second)
 {
     int total = 0;
 
@@ -47,17 +46,17 @@ int CacheStraw::FUN_006C98E0(int first, int second)
         while (second > 0) {
             if (Length > 0) {
                 int tocopy = (Length < second) ? Length : second;
-                memmove((void*)first, (char*)Buffer.Buffer + Index, tocopy);
+                memmove(first, (char*)Buffer.Buffer + Index, tocopy);
                 second -= tocopy;
                 Index += tocopy;
                 total += tocopy;
                 Length -= tocopy;
-                first += tocopy;
+                first = static_cast<char*>(first) + tocopy;
             }
             if (second == 0) {
                 break;
             }
-            Length = Straw::FUN_006C98E0((int)Buffer.Buffer, Buffer.Size);
+            Length = Straw::FUN_006C98E0(Buffer.Buffer, Buffer.Size);
             Index = 0;
             if (Length == 0) {
                 break;

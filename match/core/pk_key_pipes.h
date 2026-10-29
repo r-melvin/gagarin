@@ -201,7 +201,7 @@ public:
 
     // Slot +0x08 (Get-style: destination bytes and count).
     // FUNCTION: GAMEMD 0x633130
-    virtual int FUN_006C98E0(int first, int second);
+    virtual int FUN_006C98E0(void* first, int second);
 
     int SessionKeyCipherBytes() const
     {

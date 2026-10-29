@@ -26,7 +26,7 @@ public:
     // FUNCTION: GAMEMD 0x5523E0
     LCWStraw(CompControl control, int blocksize);
     virtual ~LCWStraw();                                // slot 0 via 0x5525F0
-    virtual int FUN_006C98E0(int first, int second);    // slot 2 = 0x552490
+    virtual int FUN_006C98E0(void* first, int second);    // slot 2 = 0x552490
 
     int   Control;      // +0x0C
     int   Counter;      // +0x10
@@ -80,7 +80,7 @@ public:
     // FUNCTION: GAMEMD 0x55C720
     LZOStraw(CompControl control, int blocksize);
     virtual ~LZOStraw();                                // slot 0 via 0x55C990
-    virtual int FUN_006C98E0(int first, int second);    // slot 2 = 0x55C7C0
+    virtual int FUN_006C98E0(void* first, int second);    // slot 2 = 0x55C7C0
 
     int   Control;      // +0x0C
     int   Counter;      // +0x10

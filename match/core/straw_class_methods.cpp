@@ -52,7 +52,7 @@ void Straw::SetChainTo(Straw* next)
 }
 
 // FUNCTION: GAMEMD 0x6C98E0
-int Straw::FUN_006C98E0(int first, int second)
+int Straw::FUN_006C98E0(void* first, int second)
 {
     Straw* next = ChainTo;
     if (next != 0) {

@@ -36,10 +36,10 @@ public:
     // vtable (`CALL [0x7EFDE4]`) instead of being bound statically.
     void SetChainTo(Straw& next) { SetChainTo(&next); }
 
-    // Slot +0x08. The name and high-level argument types are not recovered;
-    // these int parameters are the observed two-word stack ABI view.
+    // Slot +0x08: 0x438210 and 0x552490 write to the destination pointer
+    // and compare length as signed. The original name is unknown.
     // FUNCTION: GAMEMD 0x6C98E0
-    virtual int FUN_006C98E0(int first, int second);
+    virtual int FUN_006C98E0(void* first, int second);
 };
 
 GG_STATIC_ASSERT(sizeof(void*) == 4);

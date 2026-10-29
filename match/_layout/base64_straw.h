@@ -16,7 +16,7 @@ class Base64Straw : public Straw
 {
 public:
     // 0  0x52AEA0: deleting destructor; no destructor of its own is attested (calls the base destructor 0x6C9850 directly)
-    virtual int FUN_006C98E0(int, int);                         // 2  0x42DF90: override of Straw
+    virtual int FUN_006C98E0(void*, int);                         // 2  0x42DF90: override of Straw
 };
 
 #endif  // GG_MATCH_LAYOUT_BASE64_STRAW_H

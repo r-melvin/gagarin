@@ -85,7 +85,7 @@ public:
     BlowStraw(PipeDirection control) : Cipher(0), Counter(0), Control(control) {}
     // Inline, as for BlowPipe: deleting entry 0x5B45C0, base ~Straw 0x6C9850.
     virtual ~BlowStraw() { delete Cipher; Cipher = 0; } // slot 0 via 0x5B45C0
-    virtual int FUN_006C98E0(int first, int second);    // slot 2 = 0x438210
+    virtual int FUN_006C98E0(void* first, int second);    // slot 2 = 0x438210
 
     BlockCipherView* Cipher;      // +0x0C
     char             Buffer[8];   // +0x10
@@ -146,7 +146,7 @@ public:
     // FUNCTION: GAMEMD 0x633050
     PKStraw(PipeDirection control, Straw* random);
     virtual void SetChainTo(Straw* next);               // slot 1 = 0x6330C0
-    virtual int FUN_006C98E0(int first, int second);    // slot 2 = 0x633130
+    virtual int FUN_006C98E0(void* first, int second);    // slot 2 = 0x633130
     // FUNCTION: GAMEMD 0x633360
     virtual void FUN_00633360(Straw* next);             // slot 3
 

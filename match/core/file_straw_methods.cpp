@@ -11,7 +11,7 @@
 // relocations to the ordinary destructor and operator delete.
 
 // FUNCTION: GAMEMD 0x7BA530
-int FileStraw::FUN_006C98E0(int buffer, int size)
+int FileStraw::FUN_006C98E0(void* buffer, int size)
 {
     if (File == 0 || buffer == 0 || size <= 0) {
         return 0;
@@ -26,7 +26,7 @@ int FileStraw::FUN_006C98E0(int buffer, int size)
             return 0;
         }
     }
-    return File->ReadBytes((void*)buffer, size);
+    return File->ReadBytes(buffer, size);
 }
 
 // FUNCTION: GAMEMD 0x7BA590

@@ -29,11 +29,10 @@ public:
     // by Straw(), then the file and state byte.
     FileStraw(FileClass* file) : File(file), HasOpened(0) {}
 
-    // Slot +0x08, inherited ABI signature from Straw. The original method
-    // name and argument types are unknown; int parameters model two stack
-    // words, the first used as a buffer pointer by the entry body.
+    // Slot +0x08: the first argument is the destination buffer; entries
+    // 0x438210 and 0x552490 compare the length as signed.
     // FUNCTION: GAMEMD 0x7BA530
-    virtual int FUN_006C98E0(int buffer, int size);
+    virtual int FUN_006C98E0(void* buffer, int size);
 
     FileClass* File; // +0x0C
     char HasOpened;          // +0x10

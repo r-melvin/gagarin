@@ -41073,9 +41073,9 @@
  {
   "tu": "match/core/straw_class_methods.cpp",
   "addr": "0x6C98E0",
-  "sym": "?FUN_006C98E0@Straw@@UAEHHH@Z",
+  "sym": "?FUN_006C98E0@Straw@@UAEHPAXH@Z",
   "len": "0x1E",
-  "name": "Straw::FUN_006C98E0(int,int)",
+  "name": "Straw::FUN_006C98E0(void*,int)",
   "status": "matched",
   "pct": 100
  },
@@ -41451,7 +41451,7 @@
  {
   "tu": "match/core/file_straw_methods.cpp",
   "addr": "0x7BA530",
-  "sym": "?FUN_006C98E0@FileStraw@@UAEHHH@Z",
+  "sym": "?FUN_006C98E0@FileStraw@@UAEHPAXH@Z",
   "len": "0x5D",
   "name": "FileStraw::FUN_006C98E0",
   "status": "matched",
@@ -50662,7 +50662,7 @@
  {
   "tu": "match/platform/hash_cache_straw_methods.cpp",
   "addr": "0x4A20B0",
-  "sym": "?FUN_006C98E0@HashStraw_004A20B0@@UAEHHH@Z",
+  "sym": "?FUN_006C98E0@HashStraw_004A20B0@@UAEHPAXH@Z",
   "len": "0x38",
   "name": "HashStraw_004A20B0::FUN_006C98E0",
   "status": "matched",
@@ -50671,7 +50671,7 @@
  {
   "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2780",
-  "sym": "?FUN_006C98E0@CacheStraw@@UAEHHH@Z",
+  "sym": "?FUN_006C98E0@CacheStraw@@UAEHPAXH@Z",
   "len": "0x93",
   "name": "CacheStraw::FUN_006C98E0",
   "status": "partial",
@@ -51058,7 +51058,7 @@
  {
   "tu": "match/platform/buffer_pipe_straw_methods.cpp",
   "addr": "0x7BA4D0",
-  "sym": "?FUN_006C98E0@BufferStraw@@UAEHHH@Z",
+  "sym": "?FUN_006C98E0@BufferStraw@@UAEHPAXH@Z",
   "len": "0x58",
   "name": "BufferStraw::FUN_006C98E0",
   "status": "matched",
@@ -60094,7 +60094,7 @@
  {
   "tu": "match/core/pk_pipe_straw_io_methods.cpp",
   "addr": "0x633130",
-  "sym": "?FUN_006C98E0@PKStraw@@UAEHHH@Z",
+  "sym": "?FUN_006C98E0@PKStraw@@UAEHPAXH@Z",
   "len": "0x1C7",
   "name": "PKStraw::FUN_006C98E0",
   "status": "matched",
