@@ -1879,12 +1879,47 @@ void FUN_0063A0D0()
     }
 }
 
+// STRING: GAMEMD 0x836D0C -- "MSG:PlanningModeLoopHelp"
+extern const char STR_00836D0C[];
+// STRING: GAMEMD 0x836CF0 -- "MSG:PlanningModeDeleteHelp"
+extern const char STR_00836CF0[];
+// GLOBAL: GAMEMD 0xAC4BF4 -- how many times each planning help message has been shown.
+extern int DAT_00AC4BF4[];
+
+// FUNCTION: GAMEMD 0x63A1B0
+// Show the loop (3) or delete (4) help message the first time it is wanted, and count the request.
+void __fastcall FUN_0063A1B0(int kind)
+{
+    if (DAT_00AC4BF4[kind] < 1) {
+        if (kind == 3) {
+            int text = FUN_00734E60(STR_00836D0C, 0, STR_00836BD4, 0xCA1);
+            FUN_00730A90(text, 0x1E0);
+        } else if (kind == 4) {
+            int text = FUN_00734E60(STR_00836CF0, 0, STR_00836BD4, 0xCA1);
+            FUN_00730A90(text, 0x1E0);
+        }
+        DAT_00AC4BF4[kind]++;
+    }
+}
+
 // FUNCTION: GAMEMD 0x63A210
 // Stores, then tail-calls.
 void Obj_0063A210::FUN_0063A210()
 {
     int c0 = FUN_00734E60(this, 0, DAT_00836BD4, 0xCA1);
     FUN_00730A90(c0, 0x1E0);
+}
+
+// FUNCTION: GAMEMD 0x63A230
+// Show a planning message once (the shared "shown" latch), then play the planning sound.
+void __fastcall FUN_0063A230(const char* key)
+{
+    if (!DAT_00AC4C08) {
+        DAT_00AC4C08 = true;
+        int text = FUN_00734E60(key, 0, STR_00836BD4, 0xCA1);
+        FUN_00730A90(text, 0x1E0);
+        FUN_00750920(RulesInstance->unknown_700, 1.0f, 0x2000, 0);
+    }
 }
 
 // FUNCTION: GAMEMD 0x63A440
