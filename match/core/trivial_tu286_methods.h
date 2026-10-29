@@ -16,18 +16,6 @@ struct Obj_0077A870;
 struct Obj_0077A890;
 struct Obj_0077A8B0;
 
-// GLOBAL: GAMEMD 0x849F58
-extern char DAT_00849F58[];
-// GLOBAL: GAMEMD 0xB73590
-extern char DAT_00B73590[];
-
-// FUNCTION: GAMEMD 0x7B4630 (declaration)
-void FUN_007B4630(void*, int, void*);
-// FUNCTION: GAMEMD 0x7B46F0 (declaration)
-void FUN_007B46F0(void*, int);
-// LIBRARY: GAMEMD 0x7C978A (declaration)
-void __cdecl FUN_007C978A(int);
-
 struct Obj_0077A760
 {
     char unknown_00[0x8];
@@ -100,10 +88,5 @@ struct Obj_0077A8B0
 GG_STATIC_ASSERT(offsetof(Obj_0077A8B0, unknown_08) == 0x8);
 GG_STATIC_ASSERT(offsetof(Obj_0077A8B0, unknown_34) == 0x34);
 
-
-// FUNCTION: GAMEMD 0x7786E0
-void FUN_007786E0(int a1, int a2);
-// FUNCTION: GAMEMD 0x778700
-void FUN_00778700(int a1, int a2);
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU286_METHODS_H

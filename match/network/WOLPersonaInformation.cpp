@@ -70,21 +70,6 @@ void __cdecl FUN_007786C0()
     DAT_00B735DC = 0x80;
 }
 
-// FUNCTION: GAMEMD 0x7786E0
-// Calls other functions.
-void FUN_007786E0(int a1, int a2)
-{
-    FUN_007B4630(DAT_00B73590, a2, DAT_00849F58);
-    FUN_007C978A(0x778700);
-}
-
-// FUNCTION: GAMEMD 0x778700
-// Tail-calls a method on a global object.
-void FUN_00778700(int a1, int a2)
-{
-    FUN_007B46F0(DAT_00B73590, a2);
-}
-
 int FUN_007B5440(int);
 int FUN_007B7140(int);
 int FUN_007350C0(int);

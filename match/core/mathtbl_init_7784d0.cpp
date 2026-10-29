@@ -7,6 +7,7 @@
 #include <math.h>
 #pragma intrinsic(pow)
 #include "mathtbl_init_shapes.h"
+#include "string_class.h"
 
 // GLOBAL: GAMEMD 0x007E1708
 extern const double DAT_007E1708;
@@ -77,3 +78,7 @@ MathTblZero3 DAT_00B735B0;
 // SYNTHETIC: GAMEMD 0x7786C0
 // GLOBAL: GAMEMD 0x00B735D8
 MathTblCoord DAT_00B735D8;
+// SYNTHETIC: GAMEMD 0x7786E0
+// SYNTHETIC: GAMEMD 0x778700 (the atexit stub that runs ~Wstring)
+// GLOBAL: GAMEMD 0x00B73590
+Wstring DAT_00B73590("_Default_");

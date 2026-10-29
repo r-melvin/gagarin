@@ -435,7 +435,7 @@ public:
     CDTimerClass       AirstrikeTintTimer;       // +0x1B4 (0xC)
     unsigned int       AirstrikeTintStage;       // +0x1C0
     int                ForceShielded;            // +0x1C4
-    unsigned char      Deactivated;              // +0x1C8 (bool)
+    bool               Deactivated;              // +0x1C8
     unsigned char      align_1C9[3];             // +0x1C9
     void*              DrainTarget;              // +0x1CC TechnoClass*
     void*              DrainingMe;               // +0x1D0 TechnoClass*

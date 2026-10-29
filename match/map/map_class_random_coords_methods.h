@@ -81,7 +81,7 @@ struct Coord_0049F420
 };
 GG_STATIC_ASSERT(sizeof(Coord_0049F420) == 0xC);
 
-// FUNCTION: GAMEMD 0x49F420 — MapClass::GetRandomCoordsNear (static).
+// GAMEMD 0x49F420 — MapClass::GetRandomCoordsNear (static), declaration only.
 Coord_0049F420 MapClass_GetRandomCoordsNear(const Coord_0049F420& coords,
                                             int distance, bool center);
 

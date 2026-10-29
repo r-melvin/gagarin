@@ -214,18 +214,6 @@ Int3_00710700 Int3_00710700::Div(int d) const
     return r;
 }
 
-// GLOBAL: GAMEMD 0xB1CFA8 / 0xB1CFC0 - two four-dword records.
-struct Rec4_00735390 { int A, B, C, D; };
-extern Rec4_00735390 DAT_00B1CFA8;
-extern Rec4_00735390 DAT_00B1CFC0;
-
-// FUNCTION: GAMEMD 0x735390
-// Copies the first record over the second.
-void __fastcall FUN_00735390()
-{
-    DAT_00B1CFC0 = DAT_00B1CFA8;
-}
-
 // 256x256 byte planes cleared by rectangle.
 // GLOBAL: GAMEMD 0xB2FF78 / 0xB1D5E0
 extern unsigned char DAT_00B2FF78[0x10000];

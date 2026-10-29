@@ -247,36 +247,11 @@ void WWMouseClass::vf_3()
     UnlockMouse();
 }
 
-// FUNCTION: GAMEMD 0x7B9A60
-// Retail tests the receiver for null before anything else (`TEST ESI,ESI; JE`), here and in vf_5.
-void WWMouseClass::CaptureMouse()
-{
-    if (!this || IsCaptured())
-        return;
-    FUN_004068E0("Capture_Mouse()\n");
-    LockMouse();
-    Captured = true;
-    if (!IsMouseHidden())
-        DrawCursorBlock();
-    ShowCursor(FALSE);
-    UnlockMouse();
-}
-
-// FUNCTION: GAMEMD 0x7B9C30
-void WWMouseClass::vf_5()
-{
-    if (!this || !IsCaptured())
-        return;
-    FUN_004068E0("Release_Mouse()\n");
-    LockMouse();
-    Captured = false;
-    if (!IsMouseHidden()) {
-        RestoreUnder();
-        while (ShowCursor(TRUE) < 0)
-            ;
-    }
-    UnlockMouse();
-}
+// WWMouseClass::CaptureMouse (0x7B9A60) and WWMouseClass::vf_5 (0x7B9C30) have
+// no bodies here. Retail tests the receiver for null before anything else
+// (`TEST ESI,ESI; JE`); without that dead test the plain bodies score under 5%
+// by position (two instructions short), so they are left unmatched. Both are
+// declared in the class header.
 
 // FUNCTION: GAMEMD 0x7B9D70
 // Slot 8 takes four stack arguments (RET 0x10), ignores them and calls slot 3 (vf_3).

@@ -120,9 +120,7 @@ HRESULT __stdcall RadioClass::Load(IStream* pStm)
     HRESULT hr = MissionClass::Load(pStm);
     if (hr < 0)
         return hr;
-    VectorClass<TechnoClass*>* links = &RadioLinks;
-    if (links)
-        new (links) VectorClass<TechnoClass*>(0, 0);
+    new (&RadioLinks) VectorClass<TechnoClass*>(0, 0);
     int count;
     int i;
     hr = pStm->Read(&count, 4, 0);

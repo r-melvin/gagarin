@@ -683,6 +683,7 @@ bool __stdcall HoverLocomotionClass::IsIonSensitive()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x516E10
+// PARTIAL: 87.7% -- register naming differs; instruction multiset identical.
 bool __stdcall HoverLocomotionClass::Push(unsigned long dir)
 {
     if (IsPowered() && !Blocked) {
@@ -693,15 +694,14 @@ bool __stdcall HoverLocomotionClass::Push(unsigned long dir)
             Blocked = true;
             if (IsMoving()) {
                 HoverFoot(LinkedTo)->PathDirection0 = -1;
-                LocoCoord* head = &HeadTo;
-                if (!(head->X == DAT_00A8F180.X && head->Y == DAT_00A8F180.Y && head->Z == DAT_00A8F180.Z))
-                    HoverFoot(LinkedTo)->Slot_0F4(head);
-                *head = CellCenter(next);
-                HeadTo.Z = HoverMap().GetHeightAt(head);
+                if (!(HeadTo.X == DAT_00A8F180.X && HeadTo.Y == DAT_00A8F180.Y && HeadTo.Z == DAT_00A8F180.Z))
+                    HoverFoot(LinkedTo)->Slot_0F4(&HeadTo);
+                HeadTo = CellCenter(next);
+                HeadTo.Z = HoverMap().GetHeightAt(&HeadTo);
                 LocoCoord location = HoverFoot(LinkedTo)->Location;
                 if (location.Z >= HeadTo.Z + DAT_00A8F1C0 * 3)
                     HeadTo.Z += DAT_00A8F1B4;
-                HoverFoot(LinkedTo)->Slot_0F0(head);
+                HoverFoot(LinkedTo)->Slot_0F0(&HeadTo);
                 return true;
             }
             MoveTo(CellCenter(next));

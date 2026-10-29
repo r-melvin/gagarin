@@ -104,31 +104,6 @@ void Obj_00430590::FUN_00430590(int a, int b, int c, int index)
     }
 }
 
-// House seen only through the cell stored at +0x5750 (HouseClass).
-struct HouseCell_00505F80
-{
-    char _pad0000[0x5750];
-    CellStruct Cell;   // +0x5750
-};
-GG_STATIC_ASSERT(offsetof(HouseCell_00505F80, Cell) == 0x5750);
-
-// FUNCTION: GAMEMD 0x505F80
-// Weighted distance from the house cell to `cell`: the larger axis delta times
-// 1000, added to `base`. The trailing stack word is unused. Returning through a
-// pointer to the local is load-bearing: found by the permuter, it is what makes
-// cl keep the second abs in the registers retail uses.
-int __fastcall FUN_00505F80(HouseCell_00505F80* house, CellStruct* cell, int base, int unused)
-{
-    int dx = cell->X - house->Cell.X;
-    int dy = cell->Y - house->Cell.Y;
-    int ay = abs(dy);
-    int ax = abs(dx);
-    int d = ax > ay ? ax : ay;
-    dx = base + d * 1000;
-    int* result = &dx;
-    return *result;
-}
-
 // WIN32_FIND_DATAA, for the drive probe at 0x47AA50.
 struct FindData_0047AA50
 {

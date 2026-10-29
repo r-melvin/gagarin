@@ -7,8 +7,6 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 //
-// Retail gamemd.exe v1.001 at 0x723E40 zeros four absolute-address dwords.
-//
 // A free __fastcall table lookup at 0x723D20: an index below 0x3C selects one
 // of twenty result codes through a byte-indexed jump table; any other index
 // gives 0. Its callers and the meaning of the codes are not recovered (no
@@ -33,14 +31,6 @@
 // LIBRARY: GAMEMD 0x7C8E17
 // operator new(size_t), emitted as ??2@YAPAXI@Z for these pointer arrays.
 
-// GLOBAL: GAMEMD 0xB0F598
-extern "C" unsigned int DAT_00B0F598;
-// GLOBAL: GAMEMD 0xB0F59C
-extern "C" unsigned int DAT_00B0F59C;
-// GLOBAL: GAMEMD 0xB0F5A0
-extern "C" unsigned int DAT_00B0F5A0;
-// GLOBAL: GAMEMD 0xB0F5A4
-extern "C" unsigned int DAT_00B0F5A4;
 
 #include "toggle_class_methods.h"
 
@@ -161,15 +151,6 @@ int FUN_00723D20(unsigned int index)
         return 0x2A;
     }
     return 0;
-}
-
-// FUNCTION: GAMEMD 0x723E40
-extern "C" void FUN_00723E40()
-{
-    DAT_00B0F598 = 0;
-    DAT_00B0F59C = 0;
-    DAT_00B0F5A0 = 0;
-    DAT_00B0F5A4 = 0;
 }
 
 // FUNCTION: GAMEMD 0x723E60
@@ -317,19 +298,19 @@ bool ToolTipManager::Add(ToolTip& tip)
 }
 
 // FUNCTION: GAMEMD 0x724730 ToolTipManager::Remove (__thiscall, RET 4)
+// PARTIAL: 97.2% -- register naming differs in a few instructions; multiset identical.
 void ToolTipManager::Remove(unsigned int key)
 {
-    ToolTipTable* table = &this->Table;
-    if (this->Table.Count == 0)
+    if (Table.Count == 0)
         return;
-    if (!table->Ensure(key))
+    if (!Table.Ensure(key))
         return;
 
-    const ToolTip* data = table->GetTip(key);
+    const ToolTip* data = Table.GetTip(key);
     if (this->CurrentToolTip == data && this->CurrentToolTip != 0)
         this->MarkToRedraw(this->CurrentToolTipData);
 
-    table->RemoveEntry(data);
+    Table.RemoveEntry(data);
     this->ToolTips.RemoveItem(data);
 
     if (data != 0)

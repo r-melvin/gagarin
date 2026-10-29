@@ -84,7 +84,7 @@ struct PCX
     char               _pad10[8];  // +0x10
     unsigned int (* Hash)(PCXKey_006BA140* key);   // +0x18
 
-    // FUNCTION: GAMEMD 0x6BA140
+    // GAMEMD 0x6BA140 (declaration only)
     void* GetSurface(const char* filename, BytePalette_006BA140* palette);
 };
 GG_STATIC_ASSERT(offsetof(PCX, Count) == 0x04);

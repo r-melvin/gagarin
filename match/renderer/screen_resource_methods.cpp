@@ -20,6 +20,7 @@
 #pragma intrinsic(pow)
 #include "screen_palette_mgr_methods.h"
 #include "../_layout/geometry2d.h"
+#include "../core/mathtbl_init_shapes.h"
 
 // GLOBAL: GAMEMD 0x844B9C
 extern const char* DAT_00844B9C;
@@ -470,6 +471,10 @@ inline void ReleaseB0FB94Sets()
 const double DAT_007F5BD0 = 60.0;
 // GLOBAL: GAMEMD 0x7F5BD8
 const double DAT_007F5BD8 = 0.017453292519943295;
+
+// SYNTHETIC: GAMEMD 0x72A690
+// GLOBAL: GAMEMD 0xB0FA08
+MathTblZero4 DAT_00B0FA08;
 
 // SYNTHETIC: GAMEMD 0x72A6B0
 // GLOBAL: GAMEMD 0xB0FA28

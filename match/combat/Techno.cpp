@@ -1868,12 +1868,9 @@ void TechnoClass::CancelAndGoIdle()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // The redraw is ObjectClass primary slot 73 (vtable offset 0x124), called with 2.
 // FUNCTION: GAMEMD 0x70FBD0  (__thiscall)
-// Retail loads the raw bool byte straight into AL with no 0/1 normalisation, so
-// read it as a bool lvalue (`mov al,[ecx+0x1c8]; ret`), not via the unsigned-char
-// member (which would force a `test`/`setne`).
 bool UnitClass::IsDeactivated() const
 {
-    return *(const bool*)&Deactivated;
+    return Deactivated;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

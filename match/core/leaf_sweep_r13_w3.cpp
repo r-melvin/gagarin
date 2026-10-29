@@ -1,69 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entry points straight at the initialiser body (no out-of-line _$E thunk).
 //   Small functions read off the user's retail gamemd.exe v1.001 with the local Ghidra CLI at the
 //   address in each annotation. Receivers are placeholder views named after their address.
-//   Address index: 0x6E2640, 0x71FF00, 0x723FE0, 0x72A690,
+//   Address index: 0x6E2640, 0x71FF00,
 //   0x72F330, 0x747600, 0x7500D0, 0x7500E0, 0x7515F0, 0x763700, 0x764FF0, 0x7B8C50.
 
+#include "mathtbl_init_shapes.h"
+
 // ---------------------------------------------------------------------------
-// 0x71FF00: resets four counters.
+// 0x71FF00: static initialiser of a four-word record whose constructor zeroes it.
+// SYNTHETIC: GAMEMD 0x71FF00
 // GLOBAL: GAMEMD 0xB0F1E8
-extern int DAT_00B0F1E8;
-// GLOBAL: GAMEMD 0xB0F1EC
-extern int DAT_00B0F1EC;
-// GLOBAL: GAMEMD 0xB0F1F0
-extern int DAT_00B0F1F0;
-// GLOBAL: GAMEMD 0xB0F1F4
-extern int DAT_00B0F1F4;
-
-// FUNCTION: GAMEMD 0x71FF00
-void FUN_0071FF00()
-{
-    DAT_00B0F1E8 = 0;
-    DAT_00B0F1EC = 0;
-    DAT_00B0F1F0 = 0;
-    DAT_00B0F1F4 = 0;
-}
-
-// ---------------------------------------------------------------------------
-// 0x723FE0: resets four counters.
-// GLOBAL: GAMEMD 0xB0F5A8
-extern int DAT_00B0F5A8;
-// GLOBAL: GAMEMD 0xB0F5AC
-extern int DAT_00B0F5AC;
-// GLOBAL: GAMEMD 0xB0F5B0
-extern int DAT_00B0F5B0;
-// GLOBAL: GAMEMD 0xB0F5B4
-extern int DAT_00B0F5B4;
-
-// FUNCTION: GAMEMD 0x723FE0
-void FUN_00723FE0()
-{
-    DAT_00B0F5A8 = 0;
-    DAT_00B0F5AC = 0;
-    DAT_00B0F5B0 = 0;
-    DAT_00B0F5B4 = 0;
-}
-
-// ---------------------------------------------------------------------------
-// 0x72A690: resets four counters.
-// GLOBAL: GAMEMD 0xB0FA08
-extern int DAT_00B0FA08;
-// GLOBAL: GAMEMD 0xB0FA0C
-extern int DAT_00B0FA0C;
-// GLOBAL: GAMEMD 0xB0FA10
-extern int DAT_00B0FA10;
-// GLOBAL: GAMEMD 0xB0FA14
-extern int DAT_00B0FA14;
-
-// FUNCTION: GAMEMD 0x72A690
-void FUN_0072A690()
-{
-    DAT_00B0FA08 = 0;
-    DAT_00B0FA0C = 0;
-    DAT_00B0FA10 = 0;
-    DAT_00B0FA14 = 0;
-}
+MathTblZero4 DAT_00B0F1E8;
 
 // ---------------------------------------------------------------------------
 // 0x7515F0: whether the first word is non-zero.

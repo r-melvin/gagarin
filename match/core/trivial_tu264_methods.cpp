@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
@@ -48,17 +51,24 @@ void FUN_00753AB0(int a1, int a2)
     DAT_00B2D7F0 = 0x7E2198;
 }
 
-// FUNCTION: GAMEMD 0x753AD0
-// Empty function.
-void __cdecl FUN_00753AD0()
+// Two globals whose constructors are empty: retail's initialisers at 0x753AD0
+// and 0x753AE0 are a bare RET. Neither writes anything, so their addresses and
+// real types are not recovered; the placeholder types below only carry the
+// empty constructor.
+struct Empty_00753AD0
 {
-}
+    Empty_00753AD0() {}
+};
+struct Empty_00753AE0
+{
+    Empty_00753AE0() {}
+};
 
-// FUNCTION: GAMEMD 0x753AE0
-// Empty function.
-void __cdecl FUN_00753AE0()
-{
-}
+// SYNTHETIC: GAMEMD 0x753AD0
+Empty_00753AD0 Obj_00753AD0;
+
+// SYNTHETIC: GAMEMD 0x753AE0
+Empty_00753AE0 Obj_00753AE0;
 
 // FUNCTION: GAMEMD 0x753C60
 // Returns the address of a global.

@@ -2665,7 +2665,7 @@ ULONG __stdcall BulletClass::Release()
 {
     --DAT_00ABCD3C;
     ULONG count = InterlockedDecrement(&RefCount);
-    if (count == 0 && this)
+    if (count == 0)
         delete this;
     return count;
 }

@@ -17,8 +17,12 @@
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
 // GLOBAL: GAMEMD 0xA8B238 — the mode gate.
 
-// PARTIAL -- 98.3% (225 of 229 retail instructions exact or
-// reloc-normalised, multiset IDENTICAL). The whole residual is one
+// PARTIAL -- 95.6% (219 of 229 retail instructions exact or
+// reloc-normalised). The allied test is written as plain
+// `if (allied) continue;`; retail jumps INTO the shared code when the two are
+// not allied and over it when they are, so that one JE/JNE polarity differs
+// (it scored 98.3% with an empty then-arm, which is dropped as dead code).
+// The rest of the residual is one
 // commutative addition's destination register, in the inlined append, and it
 // appears twice because the append is inlined once per container: retail
 // accumulates the growth step into the capacity's register (`ADD ECX,EAX`)
@@ -34,11 +38,9 @@
 // unwind frame retail's bare `SUB ESP,0x30` has no room for; the owner gate
 // tested for ZERO rather than non-zero, which is what leaves the flag byte at
 // one on the fall-through and is the opposite of the obvious reading; the
-// allied test written with an EMPTY then-arm and the `continue` in the else,
-// which is the only way to get retail's jump INTO the shared code rather than
-// over it (92.6% to 95.6%); and two store orders inside the container's own
+// allied test (see above); and two store orders inside the container's own
 // constructor and destructor - the growth step before the count, the
-// allocation flag before the capacity (95.6% to 98.3%).
+// allocation flag before the capacity.
 //
 // ILocomotion slot +0x94 — pick something for the flyer to head at. The whole
 // global object array is run backwards; everything the flyer is allowed to
@@ -69,11 +71,7 @@ void __stdcall FlyLocoPick::PickTarget()
         Techno_004CFE80* candidate = ObjectArray_00A8EC7C[i];
 
         if (owned == 0) {
-            // The empty arm is load-bearing: retail jumps INTO the shared
-            // code when the two are not allied and jumps over it when they
-            // are, which is the polarity an `if (allied) continue;` inverts.
-            if (this->LinkedTo->Owner->IsAlliedWith(candidate->Owner) == 0) {
-            } else {
+            if (this->LinkedTo->Owner->IsAlliedWith(candidate->Owner) != 0) {
                 continue;
             }
         } else {

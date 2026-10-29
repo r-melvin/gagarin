@@ -122,11 +122,9 @@ bool __stdcall LocomotionClass::PowerOn()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A910
-// The pointer local preserves retail's store-before-vptr-load instruction order.
 bool __stdcall LocomotionClass::PowerOff()
 {
-    bool* flag = &Powered;
-    *flag = false;
+    Powered = false;
     return IsPowered();
 }
 
