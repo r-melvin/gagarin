@@ -563,12 +563,12 @@ Tactical::~Tactical()
 // FUNCTION: GAMEMD 0x6D1EB0
 Pair_006D9F80* Pair_006D9F80::FUN_006D1EB0(int x, int y)
 {
-    int projectedX = x * 60 / 2;
-    int projectedY = x * 30 / 2;
-    projectedX += y * -60 / 2;
-    projectedY += y * 30 / 2;
-    unknown_00 = projectedX;
-    unknown_04 = projectedY;
+    int coordinates[2];
+    coordinates[0] = x;
+    coordinates[1] = y;
+    Point2D projected = IsoProject(coordinates);
+    unknown_00 = projected.X;
+    unknown_04 = projected.Y;
     return this;
 }
 
@@ -2177,8 +2177,12 @@ void Tactical::FUN_006D5F60(const TRect<int>* bounds)
 void Tactical::FUN_006D6000(const Pair_006D9F80* point)
 {
     Pair_006D9F80 checked = *point;
-    unknown_D64 = unknown_D74 =
-        FUN_006D8640(&checked) && DAT_00A8ED6B == 0 ? checked : *point;
+    Pair_006D9F80 result;
+    if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0)
+        result = checked;
+    else
+        result = *point;
+    unknown_D74 = unknown_D64 = result;
     FUN_006D8B30();
     unknown_D7D = true;
 }
@@ -2196,8 +2200,8 @@ Arg1_006D6170* Obj_006D6170::FUN_006D6170(Arg1_006D6170* a1)
 // FUNCTION: GAMEMD 0x6D6190
 Pair_006D9F80 Tactical::FUN_006D6190() const
 {
-    Pair_006D9F80 position = unknown_D64;
     Pair_006D9F80 offset = unknown_B0;
+    Pair_006D9F80 position = unknown_D64;
     position.unknown_00 -= offset.unknown_00;
     position.unknown_04 -= offset.unknown_04;
     return position;

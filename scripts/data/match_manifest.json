@@ -94953,8 +94953,8 @@
   "sym": "?FUN_006D1EB0@Pair_006D9F80@@QAEPAU1@HH@Z",
   "len": "0x59",
   "name": "FUN_006D1EB0",
-  "status": "partial",
-  "pct": 28.6
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -94989,8 +94989,8 @@
   "sym": "?FUN_006D6000@Tactical@@QAEXPBUPair_006D9F80@@@Z",
   "len": "0x6e",
   "name": "FUN_006D6000",
-  "status": "partial",
-  "pct": 48.6
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -94998,8 +94998,8 @@
   "sym": "?FUN_006D6190@Tactical@@QBE?AUPair_006D9F80@@XZ",
   "len": "0x2a",
   "name": "FUN_006D6190",
-  "status": "partial",
-  "pct": 33.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102644,7 +102644,7 @@
   "len": "0x338",
   "name": "Tactical::FUN_006D7F20",
   "status": "partial",
-  "pct": 2.4
+  "pct": 2.7
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102707,7 +102707,7 @@
   "len": "0x38e",
   "name": "Tactical::FUN_006DA9D0",
   "status": "partial",
-  "pct": 3.0
+  "pct": 3.3
  },
  {
   "tu": "match/ui/input_controls/Display.cpp",
@@ -102725,7 +102725,7 @@
   "len": "0x4af",
   "name": "Tactical::FUN_006DAD60",
   "status": "partial",
-  "pct": 3.5
+  "pct": 5.3
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -102788,7 +102788,7 @@
   "len": "0xa18",
   "name": "Tactical::FUN_006D8DB0",
   "status": "partial",
-  "pct": 2.6
+  "pct": 2.7
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
