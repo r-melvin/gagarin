@@ -1172,6 +1172,16 @@
   "pct": 100
  },
  {
+  "tu": "match/audio/audio_time_methods.cpp",
+  "addr": "0x4093C0",
+  "sym": "?FUN_004093C0@@YI_JXZ",
+  "len": "0x2f",
+  "name": "FUN_004093C0",
+  "status": "matched",
+  "pct": 100.0,
+  "note": "Game-owned QPC reader. Full native entry span and all four relocation targets verified; scalar frequency/callback storage widths and zero-fill/runtime initialization confirmed. Candidate status must pass verify_all before delivery."
+ },
+ {
   "tu": "match/audio/dsound_access_methods.cpp",
   "addr": "0x409FF0",
   "sym": "?FUN_00409FF0@@YAXXZ",

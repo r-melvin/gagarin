@@ -89,12 +89,7 @@ void FUN_00402650(void* subject);
 // ---------------------------------------------------------------------------
 extern "C" __declspec(dllimport) int __stdcall QueryPerformanceFrequency(__int64*);  // IAT 0x7E11D8
 
-extern __int64 DAT_0087E828;   // GLOBAL: GAMEMD 0x87E828 — ticks per millisecond
-extern void*   DAT_0087E848;   // GLOBAL: GAMEMD 0x87E848 — the selected reader
-
-// FUNCTION: GAMEMD 0x4093C0 / 0x4093F0 — the two readers.
-void FUN_004093C0();
-void FUN_004093F0();
+#include "../audio/audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x409360
 void __cdecl FUN_00409360();

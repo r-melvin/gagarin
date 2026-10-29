@@ -74,6 +74,9 @@ void Obj_00407FB0::FUN_00408000()
     }
 }
 
+// GLOBAL: GAMEMD 0x87E828
+__int64 DAT_0087E828;
+
 // FUNCTION: GAMEMD 0x409360
 void __cdecl FUN_00409360()
 {
@@ -81,10 +84,10 @@ void __cdecl FUN_00409360()
 
     if (QueryPerformanceFrequency(&frequency)) {
         DAT_0087E828 = frequency / 1000;
-        DAT_0087E848 = (void*)FUN_004093C0;
+        AudioTimeHook = FUN_004093C0;
 
         return;
     }
 
-    DAT_0087E848 = (void*)FUN_004093F0;
+    AudioTimeHook = FUN_004093F0;
 }
