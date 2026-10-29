@@ -10,6 +10,22 @@
 
 #include "bit_font.h"
 
+// FUNCTION: GAMEMD 0x433CA0
+void BitFont::FUN_00433CA0(const BitFontBounds* src)
+{
+    if (src != 0) {
+        Bounds.Left = src->Left;
+        Bounds.Top = src->Top;
+        Bounds.Right = src->Right;
+        Bounds.Bottom = src->Bottom;
+        return;
+    }
+    Bounds.Bottom = 0;
+    Bounds.Right = 0;
+    Bounds.Top = 0;
+    Bounds.Left = 0;
+}
+
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x4346C0  BitFont::GetCharacterBitmap  (__thiscall)
 // Look up the glyph index for wch in the font's symbol table; return a pointer

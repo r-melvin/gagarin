@@ -11040,11 +11040,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc27_methods.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x433CA0",
-  "sym": "?FUN_00433CA0@Obj_00433CA0@@QAEXPBUQuad_00433CA0@@@Z",
+  "sym": "?FUN_00433CA0@BitFont@@QAEXPBUBitFontBounds@@@Z",
   "len": "0x33",
-  "name": "FUN_00433CA0",
+  "name": "BitFont::FUN_00433CA0",
   "status": "matched",
   "pct": 100.0
  },
@@ -30659,7 +30659,7 @@
  {
   "tu": "match/ui/bit_font_singleton_methods.cpp",
   "addr": "0x435530",
-  "sym": "?DestroyBitFontIfSingleton@@YGXPAVBitFontSingletonView@@@Z",
+  "sym": "?DestroyBitFontIfSingleton@@YGXPAVBitFont@@@Z",
   "len": "0x28",
   "name": "DestroyBitFontIfSingleton",
   "status": "matched",

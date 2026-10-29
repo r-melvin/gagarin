@@ -6,18 +6,19 @@
 // FUNCTION: GAMEMD 0x4354D0
 void CreateBitFontSingleton()
 {
-    BitFontSingleton = new BitFontSingletonView(BitFontGameName);
+    // STRING: GAMEMD 0x818B98
+    TheGameFont = new BitFont("GAME.FNT");
 }
 // FUNCTION: GAMEMD 0x435500
 void DestroyBitFontSingleton()
 {
-    BitFontSingletonView* font = BitFontSingleton;
+    BitFont* font = TheGameFont;
     delete font;
-    if (font == BitFontSingleton) BitFontSingleton = 0;
+    if (font == TheGameFont) TheGameFont = 0;
 }
 // FUNCTION: GAMEMD 0x435530
-void __stdcall DestroyBitFontIfSingleton(BitFontSingletonView* font)
+void __stdcall DestroyBitFontIfSingleton(BitFont* font)
 {
     delete font;
-    if (font == BitFontSingleton) BitFontSingleton = 0;
+    if (font == TheGameFont) TheGameFont = 0;
 }
