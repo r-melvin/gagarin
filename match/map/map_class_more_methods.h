@@ -22,26 +22,7 @@
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 0x4);
 
-// MapClass (partial) — only the members the two matched methods touch.
-class MapClass
-{
-public:
-    char pad_00[0x0C];
-    int  Bitfield;                 // +0x0C  (default 2)
-    char pad_10[0xF4 - 0x10];
-    int  MapRectWidth;             // +0xF4  (MapRect.Width)
-    int  MapRectHeight;            // +0xF8  (MapRect.Height)
+#include "../ui/input_controls/ui_display_chain.h"
 
-    // 0x4F42D0 — unconditional `Bitfield = 2`, sibling of
-    // GScreenClass::FlagToRedraw's conditional set. No name is attested for
-    // it; kept as a placeholder.
-    void FUN_004F42D0();
-    // 0x568300
-    bool CoordinatesLegal(const CellStruct& cell) const;
-};
-
-GG_STATIC_ASSERT(offsetof(MapClass, Bitfield)       == 0x0C);
-GG_STATIC_ASSERT(offsetof(MapClass, MapRectWidth)   == 0xF4);
-GG_STATIC_ASSERT(offsetof(MapClass, MapRectHeight)  == 0xF8);
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_MORE_METHODS_H

@@ -48,8 +48,8 @@ struct Delegate_00426750
     virtual bool vt_018();          // +0x0018
     virtual void vt_01C(int flag);  // +0x001C
     virtual void vt_020();
-    virtual void vt_024();
-    virtual void vt_028();
+    virtual int vt_024(void* buffer, int size);   // +0x0024  read
+    virtual void vt_028(int position, int whence); // +0x0028  seek
     virtual void vt_02C();
     virtual void vt_030();
     virtual void vt_034();          // +0x0034  reached by the 0x426790 teardown
@@ -69,6 +69,22 @@ struct SubObject_00426790
 // No other table in the image holds them, so the slot is declared on
 // AnimFile rather than inherited. The METHOD name is still unknown; only the
 // class is proven, so the `FUN_<addr>` member name stays a placeholder.
+// The six-byte frame table entry at +0x80E of the file object.
+struct AnimFrameEntry_00426990
+{
+    unsigned short Value;       // +0x00  at most 0x100
+    unsigned short unknown_02;
+    unsigned short unknown_04;
+};
+GG_STATIC_ASSERT(sizeof(AnimFrameEntry_00426990) == 6);
+
+struct SlotRgb_00426670
+{
+    unsigned char R;
+    unsigned char G;
+    unsigned char B;
+};
+
 struct AnimFile_00426750
 {
     char*             Vtable;      // +0x0000
@@ -76,9 +92,19 @@ struct AnimFile_00426750
     Delegate_00426750* Delegate;   // +0x0084
     char              Retired;     // +0x0088
     char              Primed;      // +0x0089
-    char              _pad08A[0xE0C - 0x8A];
+    char              _pad08A[0x50C - 0x8A];
+    SlotRgb_00426670  Slots[0x100];      // +0x050C
+    char              _pad80C[0x80E - 0x80C];
+    AnimFrameEntry_00426990 Frames[1];   // +0x080E
+    char              _pad814[0xE0C - 0x814];
     SubObject_00426790* Sub;       // +0x0E0C
     void*             Buffer;      // +0x0E10
+    int               Mark1;       // +0x0E14
+    int               Mark2;       // +0x0E18
+
+    // FUNCTION: GAMEMD 0x426670 — the constructor: base vtable, clear the
+    // delegate, flags and slot table, then this class's vtable.
+    AnimFile_00426750();
 
     // FUNCTION: GAMEMD 0x4267F0 — declared as a member so the tail position
     // stays a `CALL`.
@@ -91,12 +117,18 @@ struct AnimFile_00426750
     void FUN_004266D0();
     // FUNCTION: GAMEMD 0x426790
     void FUN_00426790();
+    // FUNCTION: GAMEMD 0x426E00 — position the delegate on a frame and read it.
+    bool FUN_00426E00(int frame);
 };
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Retired) == 0x88);
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Sub) == 0xE0C);
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Buffer) == 0xE10);
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Delegate) == 0x84);
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Primed) == 0x89);
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Slots) == 0x50C);
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Frames) == 0x80E);
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Mark1) == 0xE14);
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Mark2) == 0xE18);
 
 // ---------------------------------------------------------------------------
 // 0x43A670 — release every slot of the vector at +0x08, then reset the

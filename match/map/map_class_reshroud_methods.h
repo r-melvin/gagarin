@@ -89,7 +89,7 @@ extern MapStatic_00577AB0 MapInstance;
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct MapVtbl_00577AB0;
 
-class MapClass
+class MapView_578350
 {
 public:
     MapVtbl_00577AB0* Vtbl;        // +0x0000
@@ -119,14 +119,14 @@ public:
     // FUNCTION: GAMEMD 0x577AB0
     void Reshroud(House_00577AB0* house);
 };
-GG_STATIC_ASSERT(offsetof(MapClass, At_F4)      == 0xF4);
-GG_STATIC_ASSERT(offsetof(MapClass, IterState)  == 0x10C);
-GG_STATIC_ASSERT(offsetof(MapClass, IterCount)  == 0x110);
-GG_STATIC_ASSERT(offsetof(MapClass, IterLast)   == 0x114);
-GG_STATIC_ASSERT(offsetof(MapClass, IterCursor) == 0x118);
-GG_STATIC_ASSERT(offsetof(MapClass, At_13C)     == 0x13C);
+GG_STATIC_ASSERT(offsetof(MapView_578350, At_F4)      == 0xF4);
+GG_STATIC_ASSERT(offsetof(MapView_578350, IterState)  == 0x10C);
+GG_STATIC_ASSERT(offsetof(MapView_578350, IterCount)  == 0x110);
+GG_STATIC_ASSERT(offsetof(MapView_578350, IterLast)   == 0x114);
+GG_STATIC_ASSERT(offsetof(MapView_578350, IterCursor) == 0x118);
+GG_STATIC_ASSERT(offsetof(MapView_578350, At_13C)     == 0x13C);
 
-typedef void (MapClass::*Fn38_00577AB0)(int mode);
+typedef void (MapView_578350::*Fn38_00577AB0)(int mode);
 
 struct MapVtbl_00577AB0
 {

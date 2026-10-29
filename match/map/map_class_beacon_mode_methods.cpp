@@ -20,7 +20,7 @@
 // their own flag), but it is what the bytes say, and it is why there is no
 // CSE copy here where the siblings keep one: the two reads are of different
 // members. Seeding from PlaceBeaconMode was the only reason this sat at 10.7%.
-void MapClass::SetPlaceBeaconMode(int mode)
+void MapView_4AC960::SetPlaceBeaconMode(int mode)
 {
     bool want = RepairMode;
 

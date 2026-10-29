@@ -31,27 +31,6 @@ GG_STATIC_ASSERT(offsetof(Cell_00578540, Y)          == 0x26);
 GG_STATIC_ASSERT(offsetof(Cell_00578540, Level)      == 0x11B);
 GG_STATIC_ASSERT(offsetof(Cell_00578540, SlopeIndex) == 0x11C);
 
-// MapClass — MapRect {X,Y,Width,Height} @0xEC and VisibleRect @0xFC.
-class MapClass
-{
-public:
-    char _pad000[0xEC];      // +0x0000
-    int  MapRectX;           // +0x00EC
-    int  MapRectY;           // +0x00F0
-    int  MapRectWidth;       // +0x00F4
-    int  MapRectHeight;      // +0x00F8
-    int  VisibleRectX;       // +0x00FC
-    int  VisibleRectY;       // +0x0100
-    int  VisibleRectWidth;   // +0x0104
-    int  VisibleRectHeight;  // +0x0108
-
-    // FUNCTION: GAMEMD 0x578540
-    bool IsWithinUsableArea(Cell_00578540* pCell, bool checkLevel) const;
-};
-GG_STATIC_ASSERT(offsetof(MapClass, MapRectWidth)      == 0xF4);
-GG_STATIC_ASSERT(offsetof(MapClass, VisibleRectX)      == 0xFC);
-GG_STATIC_ASSERT(offsetof(MapClass, VisibleRectY)      == 0x100);
-GG_STATIC_ASSERT(offsetof(MapClass, VisibleRectWidth)  == 0x104);
-GG_STATIC_ASSERT(offsetof(MapClass, VisibleRectHeight) == 0x108);
+#include "../ui/input_controls/ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_USABLE_AREA_METHODS_H

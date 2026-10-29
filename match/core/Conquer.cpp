@@ -319,7 +319,7 @@ int Theater::FindIndex(const char* pName)
 // Drain CurrentObjects by repeatedly invoking object[0]'s vtable[+0x150] virtual
 // (each call de-registers itself, shrinking Count), then reset the drag latch and
 // clear the selection grid.
-void MapClass::UnselectAll()
+void MapView_5865E0::UnselectAll()
 {
     while (CurrentObjects.Count != 0)
     {
@@ -402,7 +402,7 @@ void FUN_0048DED0()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48DF80  (__fastcall)
 // Map a land-type name to its index; "<none>" or NULL => -1; unknown => -1.
-int MapClass::GetLandTypeFromName(const char* name)
+int MapView_5865E0::GetLandTypeFromName(const char* name)
 {
     if (strcmpi("<none>", name) != 0 && name != 0)
     {

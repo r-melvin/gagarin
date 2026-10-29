@@ -30,15 +30,6 @@ inline CellStruct Coord2Cell(const CoordStruct& coords)
     return c;
 }
 
-class MapClass
-{
-public:
-    // CellStruct overload @ 0x578460 — declared (no body) so cl emits a
-    // reloc-normalised __thiscall to it from the CoordStruct overload.
-    bool IsWithinUsableArea(const CellStruct& cell, bool checkLevel) const;
-
-    // The matched function @ 0x5785F0.
-    bool IsWithinUsableArea(const CoordStruct& coords) const;
-};
+#include "../ui/input_controls/ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_AREA_METHODS_H

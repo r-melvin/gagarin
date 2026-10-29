@@ -39,14 +39,14 @@ public:
     // FUNCTION: GAMEMD 0x4A9770 (declaration)
     void Remove(ObjectClass* object);
 };
-class MapClass : public DisplayClass
+class MapView_565730_3 : public DisplayClass
 {
 public:
     // FUNCTION: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
     CellClass* FUN_00565730(const CoordStruct* coord);
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass DAT_0087F7E8;
+extern MapView_565730_3 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- plays a sound at a coordinate
 // through an audio controller (__fastcall, sound in ECX, coordinate in EDX).

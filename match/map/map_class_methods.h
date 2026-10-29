@@ -18,7 +18,7 @@ struct CoordStruct;
 struct CellStruct;
 class CellClass;
 
-class MapClass
+class MapView_5865E0
 {
 public:
     static void UnselectAll();

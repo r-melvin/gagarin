@@ -27,13 +27,6 @@ GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 #include "../_layout/house_class.h"
 GG_STATIC_ASSERT(offsetof(HouseClass, ThreatPosedEstimates) + (130 + 1) * sizeof(unsigned int) == 0x59f0);
 
-// Minimal MapClass view: GetThreatPosed touches no instance members (it reads
-// the global cell-array pointer and InvalidCell), so the struct is empty apart
-// from carrying the method scope for the mangled name.
-class MapClass
-{
-public:
-    int GetThreatPosed(const CellStruct& cell, HouseClass* pHouse) const;  // 0x56BCD0
-};
+#include "../ui/input_controls/ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_THREAT_METHODS_H

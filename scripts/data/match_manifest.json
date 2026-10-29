@@ -11329,6 +11329,24 @@
   "pct": 100
  },
  {
+  "tu": "match/core/small_misc38_methods.cpp",
+  "addr": "0x426670",
+  "sym": "??0AnimFile_00426750@@QAE@XZ",
+  "len": "0x59",
+  "name": "AnimFile_00426750::AnimFile_00426750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_misc38_methods.cpp",
+  "addr": "0x426E00",
+  "sym": "?FUN_00426E00@AnimFile_00426750@@QAE_NH@Z",
+  "len": "0x7e",
+  "name": "AnimFile_00426750::FUN_00426E00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x452630",
   "sym": "?vf_37@BuildingClass@@UAE_NXZ",
@@ -24030,7 +24048,7 @@
  {
   "tu": "match/map/map_class_beacon_mode_methods.cpp",
   "addr": "0x4AC960",
-  "sym": "?SetPlaceBeaconMode@MapClass@@QAEXH@Z",
+  "sym": "?SetPlaceBeaconMode@MapView_4AC960@@QAEXH@Z",
   "len": "0xa7",
   "name": "MapClass::SetPlaceBeaconMode",
   "status": "matched",
@@ -24075,7 +24093,7 @@
  {
   "tu": "match/core/Conquer.cpp",
   "addr": "0x48DC90",
-  "sym": "?UnselectAll@MapClass@@SIXXZ",
+  "sym": "?UnselectAll@MapView_5865E0@@SIXXZ",
   "len": "0x32",
   "name": "UnselectAll",
   "status": "matched",
@@ -24084,7 +24102,7 @@
  {
   "tu": "match/core/Conquer.cpp",
   "addr": "0x48DF80",
-  "sym": "?GetLandTypeFromName@MapClass@@SIHPBD@Z",
+  "sym": "?GetLandTypeFromName@MapView_5865E0@@SIHPBD@Z",
   "len": "0x4B",
   "name": "GetLandTypeFromName",
   "status": "matched",
@@ -24093,7 +24111,7 @@
  {
   "tu": "match/map/map_class_methods.cpp",
   "addr": "0x5865E0",
-  "sym": "?IsLocationFogged@MapClass@@QBE_NPBUCoordStruct@@@Z",
+  "sym": "?IsLocationFogged@MapView_5865E0@@QBE_NPBUCoordStruct@@@Z",
   "len": "0x5",
   "name": "IsLocationFogged",
   "status": "matched",
@@ -24102,7 +24120,7 @@
  {
   "tu": "match/map/map_class_mode_methods.cpp",
   "addr": "0x4AC660",
-  "sym": "?SetSellMode@MapClass@@QAEXH@Z",
+  "sym": "?SetSellMode@MapView_4AC660@@QAEXH@Z",
   "len": "0x98",
   "name": "MapClass::SetSellMode",
   "status": "matched",
@@ -24111,7 +24129,7 @@
  {
   "tu": "match/map/map_class_mode_methods.cpp",
   "addr": "0x4AC820",
-  "sym": "?SetTogglePowerMode@MapClass@@QAEXH@Z",
+  "sym": "?SetTogglePowerMode@MapView_4AC660@@QAEXH@Z",
   "len": "0x98",
   "name": "MapClass::SetTogglePowerMode",
   "status": "matched",
@@ -24120,7 +24138,7 @@
  {
   "tu": "match/map/map_class_mode_methods.cpp",
   "addr": "0x4AC8C0",
-  "sym": "?SetRepairMode@MapClass@@QAEXH@Z",
+  "sym": "?SetRepairMode@MapView_4AC660@@QAEXH@Z",
   "len": "0x98",
   "name": "MapClass::SetRepairMode",
   "status": "matched",
@@ -24219,7 +24237,7 @@
  {
   "tu": "match/map/map_class_reshroud_methods.cpp",
   "addr": "0x577AB0",
-  "sym": "?Reshroud@MapClass@@QAEXPAUHouse_00577AB0@@@Z",
+  "sym": "?Reshroud@MapView_578350@@QAEXPAUHouse_00577AB0@@@Z",
   "len": "0xf4",
   "name": "MapClass::Reshroud",
   "status": "partial",
@@ -24282,7 +24300,7 @@
  {
   "tu": "match/map/map_class_traversable_methods.cpp",
   "addr": "0x578AD0",
-  "sym": "?MakeTraversable@MapClass@@QBE_NPBUObj_00578AD0@@ABUCellStruct@@@Z",
+  "sym": "?MakeTraversable@MapView_578AD0@@QBE_NPBUObj_00578AD0@@ABUCellStruct@@@Z",
   "len": "0x95",
   "name": "MapClass::MakeTraversable",
   "status": "matched",
@@ -28441,6 +28459,15 @@
   "name": "Drawing::RGB_To_Int",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/renderer/drawing.cpp",
+  "addr": "0x410DC0",
+  "sym": "?FUN_00410DC0@ABuffer@@QAEXPAVBSurfaceLayout@@HHHH@Z",
+  "len": "0x89",
+  "name": "ABuffer::FUN_00410DC0",
+  "status": "partial",
+  "pct": 93.1
  },
  {
   "tu": "match/renderer/zbuffer_class_methods.cpp",
@@ -91359,7 +91386,7 @@
  {
   "tu": "match/map/cell_zone_search_00583820.cpp",
   "addr": "0x583820",
-  "sym": "?FUN_00583820@MapClass@@QAE?AVCell@@PBUCellStruct@@HH@Z",
+  "sym": "?FUN_00583820@MapView_578460@@QAE?AVCell@@PBUCellStruct@@HH@Z",
   "len": "0x2a8",
   "name": "MapClass::FUN_00583820",
   "status": "partial",
@@ -102248,7 +102275,7 @@
   "len": "0x2bea",
   "name": "?FUN_0064DEA0@@YIXPAVEventClass@@@Z",
   "status": "partial",
-  "pct": 7.1
+  "pct": 5.1
  },
  {
   "tu": "match/network/Queue.cpp",
@@ -135381,6 +135408,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/leaf_helper_r8b_methods.cpp",
+  "addr": "0x48B390",
+  "sym": "?FUN_0048B390@Obj_0048B720@@QAEXXZ",
+  "len": "0x78",
+  "name": "Obj_0048B720::FUN_0048B390",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/map/map_class_iso_coord_methods.cpp",
   "addr": "0x565470",
   "sym": "?FUN_00565470@MapClass@@QBE?AUPoint2D@@ABU2@@Z",
@@ -136247,7 +136283,7 @@
  {
   "tu": "match/map/map_class_word_lookup_methods.cpp",
   "addr": "0x56D3A0",
-  "sym": "?FUN_0056D3A0@MapClass@@QBEIPBUCellStruct@@@Z",
+  "sym": "?FUN_0056D3A0@MapView_56D3A0@@QBEIPBUCellStruct@@@Z",
   "len": "0x4e",
   "name": "MapClass::FUN_0056D3A0",
   "status": "matched",
@@ -143807,7 +143843,7 @@
  {
   "tu": "match/map/map_class_rect_area_00578640.cpp",
   "addr": "0x578640",
-  "sym": "?FUN_00578640@MapClass@@QAE_NPBHPBUCellStruct@@_N@Z",
+  "sym": "?FUN_00578640@MapView_578460@@QAE_NPBHPBUCellStruct@@_N@Z",
   "len": "0xc9",
   "name": "MapClass::FUN_00578640",
   "status": "matched",
@@ -144422,6 +144458,87 @@
   "sym": "?FUN_004DC810@FootClass@@QAEXHC@Z",
   "len": "0xa7",
   "name": "FootClass::FUN_004DC810",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "addr": "0x450590",
+  "sym": "?FUN_00450590@BuildingClass@@QAEXXZ",
+  "len": "0x98",
+  "name": "BuildingClass::FUN_00450590",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "addr": "0x4504F0",
+  "sym": "?FUN_004504F0@BuildingClass@@QAEXHPBUCoordStruct@@@Z",
+  "len": "0x97",
+  "name": "BuildingClass::FUN_004504F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "addr": "0x452670",
+  "sym": "?FUN_00452670@BuildingClass@@QAE_NPAVBuildingTypeClass@@PAVHouseClass@@@Z",
+  "len": "0x79",
+  "name": "BuildingClass::FUN_00452670",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "addr": "0x454730",
+  "sym": "?FUN_00454730@BuildingClass@@QAEXXZ",
+  "len": "0x85",
+  "name": "BuildingClass::FUN_00454730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "addr": "0x454930",
+  "sym": "?FUN_00454930@BuildingClass@@QAEXXZ",
+  "len": "0x80",
+  "name": "BuildingClass::FUN_00454930",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "addr": "0x458750",
+  "sym": "?FUN_00458750@BuildingClass@@QAEXXZ",
+  "len": "0x7e",
+  "name": "BuildingClass::FUN_00458750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/aircraft_fly_control_r23_methods.cpp",
+  "addr": "0x41B6A0",
+  "sym": "?vf_03@AircraftClass@@UAGHXZ",
+  "len": "0xb9",
+  "name": "AircraftClass::vf_03",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/aircraft_fly_control_r23_methods.cpp",
+  "addr": "0x41B760",
+  "sym": "?vf_04@AircraftClass@@UAGHXZ",
+  "len": "0x64",
+  "name": "AircraftClass::vf_04",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/aircraft_fly_control_r23_methods.cpp",
+  "addr": "0x41B7F0",
+  "sym": "?vf_06@AircraftClass@@UAGHXZ",
+  "len": "0x4e",
+  "name": "AircraftClass::vf_06",
   "status": "matched",
   "pct": 100
  }

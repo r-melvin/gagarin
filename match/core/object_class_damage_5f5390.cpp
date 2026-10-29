@@ -11,7 +11,7 @@
 #include "../_layout/tag_class.h"
 #include "../_layout/building_class.h"
 
-class MapClass
+class MapView_489180
 {
 public:
     // FUNCTION: GAMEMD 0x489180 (declaration) -- the damage after armour and distance.
@@ -78,7 +78,7 @@ int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, b
     if (health > 0 && *damage != 0 && (a5 || !vf_34()->Immune)) {
         int strength = vf_34()->Strength;
         if (!a5) {
-            *damage = MapClass::FUN_00489180(*damage, warhead, vf_34()->Armor, distance);
+            *damage = MapView_489180::FUN_00489180(*damage, warhead, vf_34()->Armor, distance);
         }
         if (this != 0 && vf_11() == 6 && !((BuildingTypeView_5F5390*)AsBuilding(this)->Type)->unknown_1577) {
             *damage = *damage < 1 ? 1 : *damage;

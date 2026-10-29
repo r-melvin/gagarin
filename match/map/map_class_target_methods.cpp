@@ -20,8 +20,8 @@ CellClass* MapClass::GetTargetCell(Point2D& location)
     int idx = (y << 9) + x;
 
     CellClass* pCell;
-    if (idx >= 0 && idx < this->TotalCells &&
-        (pCell = this->Cells[idx]) != 0)
+    if (idx >= 0 && idx < this->Owned.Capacity &&
+        (pCell = this->Owned.Items[idx]) != 0)
     {
         return pCell;
     }

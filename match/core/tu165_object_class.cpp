@@ -71,7 +71,7 @@ public:
     // CALLEE: GAMEMD 0x4AEB30 (declaration) -- set the object under focus.
     void FUN_004AEB30(ObjectClass* object);
 };
-class MapClass : public DisplayClass
+class MapView_565730_5 : public DisplayClass
 {
 public:
     // CALLEE: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
@@ -82,7 +82,7 @@ public:
     int FUN_00578080(const CoordStruct* coord);
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass DAT_0087F7E8;
+extern MapView_565730_5 DAT_0087F7E8;
 
 // The rules object behind the global pointer 0x8871E0 (read-only here).
 struct ObjectRulesView_5F4360

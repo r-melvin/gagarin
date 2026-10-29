@@ -40,7 +40,7 @@ extern const char* const LandTypeName[12];
 
 // FUNCTION: GAMEMD 0x5865E0  MapClass::IsLocationFogged (__thiscall)
 // Retail stub: always false. The argument is accepted and ignored (RET 0x4).
-bool MapClass::IsLocationFogged(CoordStruct const* coords) const
+bool MapView_5865E0::IsLocationFogged(CoordStruct const* coords) const
 {
     return false;
 }

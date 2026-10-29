@@ -144,7 +144,7 @@ public:
 
 GG_STATIC_ASSERT(offsetof(CellView_005B20F0, Flags) == 0x140);
 
-class MapClass
+class MapView_578080_2
 {
 public:
     // CALLEE: GAMEMD 0x00578080
@@ -154,7 +154,7 @@ public:
 };
 
 // GLOBAL: GAMEMD 0x0087F7E8
-extern MapClass MapClass_Instance;
+extern MapView_578080_2 MapClass_Instance;
 // GLOBAL: GAMEMD 0x00ABEF10
 extern CoordStruct GG_UnsetCoord;
 // GLOBAL: GAMEMD 0x00ABEF44

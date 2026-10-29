@@ -163,3 +163,55 @@ void Obj_0043A670::FUN_0043A6B0(int first, int second)
 }
 
 
+
+// FUNCTION: GAMEMD 0x426670
+//
+// Constructor: the base's vtable goes in first, then the delegate, flags and the
+// 256 three-byte slots are cleared, the two trailing words are set to -1, and
+// this class's vtable replaces the base's.
+AnimFile_00426750::AnimFile_00426750()
+{
+    Vtable = &VT_007E35A8;
+    Delegate = 0;
+    Retired = 0;
+    Primed = 0;
+    SlotRgb_00426670* slot = Slots;
+    for (int n = 0x100; n != 0; n--) {
+        slot->R = 0;
+        slot->G = 0;
+        slot->B = 0;
+        slot++;
+    }
+    Sub = 0;
+    Buffer = 0;
+    Mark1 = -1;
+    Mark2 = -1;
+    Vtable = &VT_007E3584;
+}
+
+// FUNCTION: GAMEMD 0x426E00
+//
+// Fails while the file is not open. Moving to a frame other than the current
+// one records it, seeks the delegate to that frame's position and reads the
+// frame's bytes (header, packed length and data) into the buffer; the read must
+// return the full size.
+bool AnimFile_00426750::FUN_00426E00(int frame)
+{
+    if (Retired) {
+        if (Mark2 != frame) {
+            Mark2 = frame;
+
+            Delegate->vt_028((frame << 16) + 0xB00, 0);
+
+            int size = Frames[frame].unknown_02 + Frames[frame].Value * 2 + 8;
+
+            if (Delegate->vt_024(Buffer, size) != size) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    return false;
+}

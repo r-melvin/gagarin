@@ -65,20 +65,37 @@ bool Obj_004867B0::FUN_004867B0() const
 struct Rec36_0048B720
 {
     int flags;           // +0x00 bit 0: record in use
-    char unknown_04[0x20];
+    int unknown_04;
+    int unknown_08;
+    int unknown_0C;
+    int unknown_10;
+    char unknown_14[4];
+    int unknown_18;
+    char unknown_1C[4];
+    unsigned short unknown_20;
+    char unknown_22[2];
 };
 GG_STATIC_ASSERT(sizeof(Rec36_0048B720) == 0x24);
+GG_STATIC_ASSERT(offsetof(Rec36_0048B720, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(Rec36_0048B720, unknown_20) == 0x20);
 
 struct Obj_0048B720
 {
-    char             unknown_00[0x24];
+    char             unknown_00[4];
+    int              Count;       // +0x0004
+    char             unknown_08[0x24 - 0x08];
     Rec36_0048B720*  Records;     // +0x0024
-    char             unknown_28[0x30 - 0x28];
+    int              Used;        // +0x0028
+    char             unknown_2C[0x30 - 0x2C];
     int*             Order;       // +0x0030
     // FUNCTION: GAMEMD 0x48B720
     Rec36_0048B720* FUN_0048B720(int position) const;
+    // FUNCTION: GAMEMD 0x48B390
+    void FUN_0048B390();
 };
+GG_STATIC_ASSERT(offsetof(Obj_0048B720, Count) == 0x4);
 GG_STATIC_ASSERT(offsetof(Obj_0048B720, Records) == 0x24);
+GG_STATIC_ASSERT(offsetof(Obj_0048B720, Used) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_0048B720, Order) == 0x30);
 
 // FUNCTION: GAMEMD 0x48B720
@@ -88,6 +105,26 @@ Rec36_0048B720* Obj_0048B720::FUN_0048B720(int position) const
 {
     Rec36_0048B720* rec = &Records[Order[position]];
     return (rec->flags & 1) ? rec : 0;
+}
+
+// FUNCTION: GAMEMD 0x48B390
+// Reset the table: nothing in use, every record's three state bits and its
+// working fields cleared, and the order list zeroed.
+void Obj_0048B720::FUN_0048B390()
+{
+    Used = 0;
+    for (int i = 0; i < Count; i++) {
+        Records[i].flags &= ~1;
+        Records[i].flags &= ~2;
+        Records[i].flags &= ~4;
+        Records[i].unknown_04 = 0;
+        Records[i].unknown_08 = 0;
+        Records[i].unknown_0C = 0;
+        Records[i].unknown_10 = 0;
+        Records[i].unknown_18 = 0;
+        Records[i].unknown_20 = 0;
+        Order[i] = 0;
+    }
 }
 
 // Same lookup over 24-byte records.

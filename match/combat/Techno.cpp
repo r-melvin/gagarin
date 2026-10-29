@@ -300,7 +300,7 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, WeaponCount)           == 0x80C);  //
 
 // The map singleton (GAMEMD 0x87F7E8). Only the cell lookup is reached here; it
 // reads the X and Y words of the coordinate it is handed.
-class MapClass
+class MapView_565730_2
 {
 public:
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) -- the cell under a coordinate.
@@ -312,7 +312,7 @@ public:
 };
 
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass MapClass_Instance;
+extern MapView_565730_2 MapClass_Instance;
 // GLOBAL: GAMEMD 0xB0EA80 -- a frame timer restarted by 0x70D150.
 extern CDTimerClass DAT_00B0EA80;
 // GLOBAL: GAMEMD 0x822CF2

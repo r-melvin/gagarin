@@ -40,14 +40,14 @@ struct MapCell_0043D290
 GG_STATIC_ASSERT(offsetof(MapCell_0043D290, unknown_10A) == 0x10A);
 
 // The map instance at 0x87F7E8 (RTTI .?AVMapClass@@).
-class MapClass
+class MapView_5657A0_5
 {
 public:
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the cell at a cell coordinate; RET 4.
     MapCell_0043D290* FUN_005657A0(const CellStruct& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass DAT_0087F7E8;
+extern MapView_5657A0_5 DAT_0087F7E8;
 
 // The screen transform at 0x887324 (RTTI .?AVTactical@@).
 #include "../_layout/tactical.h"

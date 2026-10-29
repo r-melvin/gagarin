@@ -84,7 +84,7 @@ GG_STATIC_ASSERT(offsetof(CellClass_00578AD0, FirstObject) == 0xE4);
 // GLOBAL: GAMEMD 0xABDC50 — MapClass::InvalidCell (its MapCoords is 0xABDC74).
 extern CellClass_00578AD0 InvalidCell;
 
-class MapClass
+class MapView_578AD0
 {
 public:
     char                 _pad000[0x13C];   // +0x0000
@@ -102,9 +102,9 @@ public:
     DropPodObjectView* GetCellAt(const LocoCoord& coord);
     DropPodObjectView* GetCellAt(const LocoCoord* coord);
 };
-GG_STATIC_ASSERT(offsetof(MapClass, Cells) == 0x13C);
+GG_STATIC_ASSERT(offsetof(MapView_578AD0, Cells) == 0x13C);
 
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance; its Cells member is 0x87F924.
-extern MapClass MapInstance;
+extern MapView_578AD0 MapInstance;
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_TRAVERSABLE_METHODS_H

@@ -30,17 +30,6 @@ GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 // or empty), at fixed retail address 0xABDC50.
 #define InvalidCell (*reinterpret_cast<CellClass*>(0x00ABDC50))
 
-// Minimal MapClass view: only the two members GetTargetCell touches.
-class MapClass
-{
-public:
-    char        _pad0[0x13c];  // +0x000 (GScreenClass base etc.)
-    CellClass** Cells;         // +0x13c  flat cell-pointer array
-    int         TotalCells;    // +0x140  number of cells in the array
-
-    CellClass* GetTargetCell(Point2D& location);  // 0x565730
-};
-GG_STATIC_ASSERT(offsetof(MapClass, Cells)      == 0x13c);
-GG_STATIC_ASSERT(offsetof(MapClass, TotalCells) == 0x140);
+#include "../ui/input_controls/ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_TARGET_METHODS_H

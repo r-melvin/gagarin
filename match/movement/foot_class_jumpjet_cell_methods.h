@@ -17,7 +17,7 @@
 #include "../_layout/foot_class.h"   // FootClass::CurrentJumpjetMapCoords @0x564, CellStruct
 #include "../_layout/cell_class.h"   // CellClass::Jumpjet @0xE0
 
-class MapClass
+class MapView_5657A0_4
 {
 public:
     CellClass* GetCellAt(CellStruct const& mapCoords) const;   // GAMEMD 0x5657A0
@@ -25,7 +25,7 @@ public:
 
 // GLOBAL: GAMEMD 0x0087F7E8 — the MapClass instance (an object, not a pointer:
 // retail loads its address as the immediate `MOV ECX,0x87F7E8`).
-extern MapClass   MapInstance;
+extern MapView_5657A0_4   MapInstance;
 // GLOBAL: GAMEMD 0x008B3D88 — the "no cell" CellStruct sentinel.
 extern CellStruct NoCell;
 

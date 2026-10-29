@@ -17,7 +17,7 @@ struct MapWordView_0056D3A0
 GG_STATIC_ASSERT(sizeof(MapWordView_0056D3A0) == 4);
 
 // Minimal MapClass view: the size members and the word table.
-class MapClass
+class MapView_56D3A0
 {
 public:
     char                  unknown_000[0x68];
@@ -29,15 +29,15 @@ public:
 
     unsigned int FUN_0056D3A0(const CellStruct* cell) const;
 };
-GG_STATIC_ASSERT(offsetof(MapClass, Words) == 0x68);
-GG_STATIC_ASSERT(offsetof(MapClass, WordCount) == 0x6C);
-GG_STATIC_ASSERT(offsetof(MapClass, Width) == 0xF4);
-GG_STATIC_ASSERT(offsetof(MapClass, Height) == 0xF8);
+GG_STATIC_ASSERT(offsetof(MapView_56D3A0, Words) == 0x68);
+GG_STATIC_ASSERT(offsetof(MapView_56D3A0, WordCount) == 0x6C);
+GG_STATIC_ASSERT(offsetof(MapView_56D3A0, Width) == 0xF4);
+GG_STATIC_ASSERT(offsetof(MapView_56D3A0, Height) == 0xF8);
 
 // FUNCTION: GAMEMD 0x56D3A0
 // The word value for a cell, indexed row-major over (Width + Height + 1) columns and
 // clamped to the table (the sum of the size members, plus one, is the row width).
-unsigned int MapClass::FUN_0056D3A0(const CellStruct* cell) const
+unsigned int MapView_56D3A0::FUN_0056D3A0(const CellStruct* cell) const
 {
     int index = (Height + Width + 1) * cell->Y + cell->X;
     if (index < 0) {

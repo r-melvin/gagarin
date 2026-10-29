@@ -27,7 +27,7 @@ extern HouseClass* CurrentPlayer;
 // GAMEMD 0x0048DC90 — the no-argument notify run after a mode is entered.
 void ModeEntered();
 
-class MapClass
+class MapView_4AC660
 {
 public:
 #include "map_class_mode_slots.inc"
@@ -45,10 +45,10 @@ public:
     void SetTogglePowerMode(int mode);  // GAMEMD 0x4AC820
     void SetRepairMode(int mode);       // GAMEMD 0x4AC8C0
 };
-GG_STATIC_ASSERT(offsetof(MapClass, unknown_11A8)    == 0x11A8);
-GG_STATIC_ASSERT(offsetof(MapClass, RepairMode)      == 0x11B0);
-GG_STATIC_ASSERT(offsetof(MapClass, SellMode)        == 0x11B1);
-GG_STATIC_ASSERT(offsetof(MapClass, TogglePowerMode) == 0x11B2);
-GG_STATIC_ASSERT(offsetof(MapClass, unknown_11B4)    == 0x11B4);
+GG_STATIC_ASSERT(offsetof(MapView_4AC660, unknown_11A8)    == 0x11A8);
+GG_STATIC_ASSERT(offsetof(MapView_4AC660, RepairMode)      == 0x11B0);
+GG_STATIC_ASSERT(offsetof(MapView_4AC660, SellMode)        == 0x11B1);
+GG_STATIC_ASSERT(offsetof(MapView_4AC660, TogglePowerMode) == 0x11B2);
+GG_STATIC_ASSERT(offsetof(MapView_4AC660, unknown_11B4)    == 0x11B4);
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_MODE_METHODS_H

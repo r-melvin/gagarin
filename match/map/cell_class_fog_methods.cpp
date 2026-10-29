@@ -6,7 +6,7 @@
 
 // The retail MapClass singleton lives at this fixed address; calling through it
 // makes cl emit `mov ecx,0x87F7E8` exactly as retail does.
-#define MapInstance (reinterpret_cast<MapClass*>(0x87F7E8))
+#define MapInstance (reinterpret_cast<MapView_5657A0_2*>(0x87F7E8))
 
 // FUNCTION: GAMEMD 0x486BF0  CellClass::CleanFog (__thiscall)
 //   Walks a small diagonal stripe of cells starting at this cell's MapCoords:

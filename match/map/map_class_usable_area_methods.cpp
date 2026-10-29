@@ -21,16 +21,16 @@ bool MapClass::IsWithinUsableArea(Cell_00578540* pCell, bool checkLevel) const
     if (checkLevel) {
         level = pCell->Level;
         if (pCell->SlopeIndex != 0) {
-            if (y + x < this->MapRectWidth + this->VisibleRectY * 2 + 4 + level)
+            if (y + x < this->MapRect.Width + this->LocalRect.Y * 2 + 4 + level)
                 level = level + 1;
         }
     }
 
-    if (y + x > this->MapRectWidth + this->VisibleRectY * 2 + level
-        && y + x <= this->MapRectWidth
-                    + (this->VisibleRectHeight + this->VisibleRectY) * 2 + 2 + level
-        && x - y < (this->VisibleRectWidth + this->VisibleRectX) * 2 - this->MapRectWidth
-        && y - x < this->MapRectWidth - this->VisibleRectX * 2)
+    if (y + x > this->MapRect.Width + this->LocalRect.Y * 2 + level
+        && y + x <= this->MapRect.Width
+                    + (this->LocalRect.Height + this->LocalRect.Y) * 2 + 2 + level
+        && x - y < (this->LocalRect.Width + this->LocalRect.X) * 2 - this->MapRect.Width
+        && y - x < this->MapRect.Width - this->LocalRect.X * 2)
         return true;
     return false;
 }

@@ -10,7 +10,7 @@
 // True when `cell` lies inside the diamond-shaped screen footprint of the cell rectangle `rect`.
 // With `useLevel` the cell's height (one more for a sloped cell near the upper edge) shifts
 // the footprint.
-bool MapClass::FUN_00578640(const int* rect, const CellStruct* cell, bool useLevel)
+bool MapView_578460::FUN_00578640(const int* rect, const CellStruct* cell, bool useLevel)
 {
     int x = cell->X;
     int level = 0;

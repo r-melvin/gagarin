@@ -7,17 +7,10 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "small_misc38_methods.h"
 
-// The animation header held at +0x8C of the file object, and the six-byte
-// frame table at +0x80E.
-struct AnimFrameEntry_00426990
-{
-    unsigned short Value;       // +0x00  at most 0x100
-    unsigned short unknown_02;
-    unsigned short unknown_04;
-};
-GG_STATIC_ASSERT(sizeof(AnimFrameEntry_00426990) == 6);
-
+// The animation header held at +0x8C of the file object; its six-byte frame
+// table entry (AnimFrameEntry_00426990) is declared in small_misc38_methods.h.
 struct AnimFileView_00426990
 {
     char           unknown_000[0x8C];

@@ -23,7 +23,7 @@
 #include "map_class_mode_methods.h"
 
 // FUNCTION: GAMEMD 0x4AC660  MapClass::SetSellMode (__thiscall, ret 0x4)
-void MapClass::SetSellMode(int mode)
+void MapView_4AC660::SetSellMode(int mode)
 {
     bool want = SellMode;
 
@@ -61,7 +61,7 @@ void MapClass::SetSellMode(int mode)
 }
 
 // FUNCTION: GAMEMD 0x4AC820  MapClass::SetTogglePowerMode (__thiscall, ret 0x4)
-void MapClass::SetTogglePowerMode(int mode)
+void MapView_4AC660::SetTogglePowerMode(int mode)
 {
     bool want = TogglePowerMode;
 
@@ -99,7 +99,7 @@ void MapClass::SetTogglePowerMode(int mode)
 }
 
 // FUNCTION: GAMEMD 0x4AC8C0  MapClass::SetRepairMode (__thiscall, ret 0x4)
-void MapClass::SetRepairMode(int mode)
+void MapView_4AC660::SetRepairMode(int mode)
 {
     bool want = RepairMode;
 

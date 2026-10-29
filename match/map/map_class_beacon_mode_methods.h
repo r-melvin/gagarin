@@ -36,7 +36,7 @@ extern BeaconManagerClass BeaconManager;
 // mode is entered (the same call the other mode setters make).
 void ModeEntered();
 
-class MapClass
+class MapView_4AC960
 {
 public:
 #include "map_class_mode_slots.inc"
@@ -53,11 +53,11 @@ public:
     // FUNCTION: GAMEMD 0x4AC960
     void SetPlaceBeaconMode(int mode);
 };
-GG_STATIC_ASSERT(offsetof(MapClass, unknown_11A8)    == 0x11A8);
-GG_STATIC_ASSERT(offsetof(MapClass, RepairMode)      == 0x11B0);
-GG_STATIC_ASSERT(offsetof(MapClass, SellMode)        == 0x11B1);
-GG_STATIC_ASSERT(offsetof(MapClass, TogglePowerMode) == 0x11B2);
-GG_STATIC_ASSERT(offsetof(MapClass, unknown_11B3)    == 0x11B3);
-GG_STATIC_ASSERT(offsetof(MapClass, PlaceBeaconMode) == 0x11B4);
+GG_STATIC_ASSERT(offsetof(MapView_4AC960, unknown_11A8)    == 0x11A8);
+GG_STATIC_ASSERT(offsetof(MapView_4AC960, RepairMode)      == 0x11B0);
+GG_STATIC_ASSERT(offsetof(MapView_4AC960, SellMode)        == 0x11B1);
+GG_STATIC_ASSERT(offsetof(MapView_4AC960, TogglePowerMode) == 0x11B2);
+GG_STATIC_ASSERT(offsetof(MapView_4AC960, unknown_11B3)    == 0x11B3);
+GG_STATIC_ASSERT(offsetof(MapView_4AC960, PlaceBeaconMode) == 0x11B4);
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_BEACON_MODE_METHODS_H

@@ -46,14 +46,6 @@ extern Scenario_00489180* ScenarioInstance;
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern Rules_00489180* RulesInstance;
 
-// Minimal MapClass view: GetTotalDamage is static (no instance members), so
-// the struct only carries the method scope for the mangled name.
-class MapClass
-{
-public:
-    // FUNCTION: GAMEMD 0x489180
-    static int GetTotalDamage(int damage, WarheadType_00489180* warhead,
-                              int armor, int distance);
-};
+#include "../ui/input_controls/ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_TOTAL_DAMAGE_METHODS_H

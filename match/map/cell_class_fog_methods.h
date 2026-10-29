@@ -25,7 +25,7 @@ class CellClass;
 // MapClass singleton — only GetCellAt is forwarded to here, declared (no body)
 // so cl emits a relocatable __thiscall call. The retail singleton object lives
 // at the fixed address 0x87F7E8.
-class MapClass
+class MapView_5657A0_2
 {
 public:
     CellClass* GetCellAt(CellStruct const& mapCoords) const;  // 0x5657A0

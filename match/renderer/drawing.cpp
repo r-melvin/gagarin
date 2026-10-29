@@ -17,6 +17,38 @@
 // Pixel shift cells are owned by the shared reconstruction storage.
 
 // ---------------------------------------------------------------------------
+// FUNCTION: GAMEMD 0x410DC0  (__thiscall, RET 0x14)
+// Copy a width x height block of 16-bit pixels out of the ring buffer into the
+// surface at (x, y): the source wraps back by BufferSize each time it reaches
+// BufferTail, and the destination advances by the surface's row pitch less the
+// copied width after each row.
+//
+// PARTIAL: 93.1% -- the instruction multiset is identical; the residual is the
+// first four instructions' register naming (retail loads x into EAX and the
+// surface vtable into EDX, cl does the reverse). Variants tried: the offset in
+// its own int local, the position sum written the other way round, and plain
+// value temporaries for x and y (all 93.1% or worse).
+// ---------------------------------------------------------------------------
+void ABuffer::FUN_00410DC0(BSurfaceLayout* dest, int x, int y, int width, int height)
+{
+    unsigned short* target = (unsigned short*)dest->vf_23(x, y);
+    unsigned int source = (unsigned int)this->BufferHead + this->BufferPosition;
+    int skip = dest->vf74() / 2 - width;
+    if (target && height > 0) {
+        for (int row = height; row > 0; row--) {
+            for (int col = width; col > 0; col--) {
+                *target++ = *(unsigned short*)source;
+                source += 2;
+                if (source >= (unsigned int)this->BufferTail)
+                    source -= this->BufferSize;
+            }
+            target += skip;
+        }
+    }
+    dest->Lock();
+}
+
+// ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x410E50  (__thiscall)
 // Release the backing surface (virtual slot 0, "delete this" flag = 1) and
 // null the pointer. The null-store is unconditional in retail.

@@ -117,6 +117,18 @@ public:
     void FUN_00441F60();
     // FUNCTION: GAMEMD 0x442D90 (decl; reloc) -- one stack argument.
     void FUN_00442D90(int unknownStackArg0);
+    // FUNCTION: GAMEMD 0x458750 -- restart the cash-production timer and pay out the first instalment.
+    void FUN_00458750();
+    // FUNCTION: GAMEMD 0x452670 -- whether an upgrade type may be attached for a house.
+    bool FUN_00452670(BuildingTypeClass* upgrade, HouseClass* house);
+    // FUNCTION: GAMEMD 0x454730 -- drop animation slot 0x13, then restart every slot the type marks.
+    void FUN_00454730();
+    // FUNCTION: GAMEMD 0x454930 -- start animation slot 0x13, then drop every slot the type marks.
+    void FUN_00454930();
+    // FUNCTION: GAMEMD 0x4504F0 -- record the prism stage, target and firing delay, then switch to the charge animation (slot 0xA).
+    void FUN_004504F0(int stage, const CoordStruct* target);
+    // FUNCTION: GAMEMD 0x450590 -- drop overpowerers no longer aiming at this building, then refresh IsOverpowered.
+    void FUN_00450590();
 
 
     // Primary-table (0x7E3EBC) overrides matched in economy/house_building/building_a_methods_*.cpp.

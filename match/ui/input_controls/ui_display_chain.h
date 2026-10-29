@@ -273,6 +273,8 @@ GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_0C) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RadarArrayHolder) == 0x10);
+struct Cell_00578540;           // map_class_usable_area_methods.cpp
+struct WarheadType_00489180;    // map_class_total_damage_methods.cpp
 struct Cell_0050DEF0;   // radar_class.h
 struct RadarDiamond;    // radar_class_more_methods.cpp
 class MapClass : public GScreenClass
@@ -330,6 +332,39 @@ public:
     MapSavedObject* NextSavedObject_00578290();
     // FUNCTION: GAMEMD 0x578350 (decl; reloc) -- rewind the cell-object iteration.
     void FUN_00578350();
+
+    // Methods defined by the matched map/ TUs (formerly per-TU partial views of this class).
+    // FUNCTION: GAMEMD 0x588960 / 0x588990 -- clamp the capped count at +0x148.
+    void FUN_00588960(int limit);
+    int FUN_00588990();
+    // FUNCTION: GAMEMD 0x565470 / 0x5654A0 / 0x5654E0 / 0x565520 / 0x565610 -- isometric projection helpers.
+    Point2D FUN_00565470(const Point2D& in) const;
+    Point2D FUN_005654A0(const Point2D& in) const;
+    Point2D FUN_005654E0(const Point2D& in) const;
+    Point2D FUN_00565520(const Point2D& in) const;
+    CellStruct* FUN_00565610(CellStruct* out, const CellStruct* in) const;
+    // FUNCTION: GAMEMD 0x56D3A0 -- the word lookup for a cell.
+    unsigned int FUN_0056D3A0(const CellStruct* cell) const;
+    // FUNCTION: GAMEMD 0x578460 (decl; reloc), const view / 0x5785F0 / 0x578540 -- usable-area tests.
+    bool IsWithinUsableArea(const CellStruct& cell, bool checkLevel) const;
+    bool IsWithinUsableArea(const CoordStruct& coords) const;
+    bool IsWithinUsableArea(Cell_00578540* pCell, bool checkLevel) const;
+    // FUNCTION: GAMEMD 0x578080 -- the floor height at a coordinate (second name for FUN_00578080).
+    int GetZPos(CoordStruct* coords);
+    // FUNCTION: GAMEMD 0x4F42D0 / 0x568300.
+    void FUN_004F42D0();
+    bool CoordinatesLegal(const CellStruct& cell) const;
+    // FUNCTION: GAMEMD 0x565730 (decl; reloc) / 0x4ACA10 -- cell under a coordinate; infantry sub-location pick.
+    CellClass* GetCellAt(const CoordStruct& coords);
+    CoordStruct PickInfantrySublocation(const CoordStruct& coords, bool ignoreContents);
+    // FUNCTION: GAMEMD 0x565730 -- the cell under a cell-space point.
+    CellClass* GetTargetCell(Point2D& location);
+    // FUNCTION: GAMEMD 0x586360 -- IsLocationShrouded.
+    bool IsLocationShrouded(CoordStruct const& coords) const;
+    // FUNCTION: GAMEMD 0x56BCD0 -- threat posed at a cell to a house.
+    int GetThreatPosed(const CellStruct& cell, HouseClass* pHouse) const;
+    // FUNCTION: GAMEMD 0x489180 -- the damage after armour and distance.
+    static int GetTotalDamage(int damage, WarheadType_00489180* warhead, int armor, int distance);
 
     char  unknown_10[0x14 - 0x10];                   // +0x0010
     MapBucketTable<MapBucketA>* BucketsA;            // +0x0014

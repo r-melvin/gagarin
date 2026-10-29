@@ -15,7 +15,7 @@
 #include "../_layout/cell.h"
 #include "../_layout/cell_class.h"
 
-class MapClass
+class MapView_578460
 {
 public:
     // FUNCTION: GAMEMD 0x578460 (decl; reloc)
@@ -45,13 +45,13 @@ public:
     int MapWidth;                // +0xF4
     int MapHeight;               // +0xF8
 };
-GG_STATIC_ASSERT(offsetof(MapClass, CellCount) == 0x6C);
-GG_STATIC_ASSERT(offsetof(MapClass, ZoneWords) == 0x70);
-GG_STATIC_ASSERT(offsetof(MapClass, MapWidth) == 0xF4);
-GG_STATIC_ASSERT(offsetof(MapClass, MapHeight) == 0xF8);
+GG_STATIC_ASSERT(offsetof(MapView_578460, CellCount) == 0x6C);
+GG_STATIC_ASSERT(offsetof(MapView_578460, ZoneWords) == 0x70);
+GG_STATIC_ASSERT(offsetof(MapView_578460, MapWidth) == 0xF4);
+GG_STATIC_ASSERT(offsetof(MapView_578460, MapHeight) == 0xF8);
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map singleton.
-extern MapClass DAT_0087F7E8;
+extern MapView_578460 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x87F924 -- the 512 x 512 cell pointer table.
 extern CellClass** DAT_0087F924;
 // GLOBAL: GAMEMD 0xABDC50 -- the cell returned for an out-of-range lookup.

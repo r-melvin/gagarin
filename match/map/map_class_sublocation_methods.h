@@ -26,22 +26,7 @@ GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
 // GLOBAL: GAMEMD 0x8A0740 — the height of one cell level in leptons.
 extern int DAT_008A0740;
 
-// MapClass (partial) — no members are touched; only the singleton's address
-// and one method matter here.
-class MapClass
-{
-public:
-    // FUNCTION: GAMEMD 0x565730 (decl; reloc) — the cell under a coordinate.
-    CellClass* GetCellAt(const CoordStruct& coords);
-
-    // FUNCTION: GAMEMD 0x4ACA10
-    // A __thiscall member whose `this` goes unused (ECX is overwritten with the
-    // singleton's address on the second instruction); the receiver is not a
-    // stack argument, so `RET 0xC` covers the hidden result slot, the
-    // coordinate reference and the flag. Written `static __stdcall` (the same
-    // stack shape) VC6 schedules the result copy differently — see the .cpp.
-    CoordStruct PickInfantrySublocation(const CoordStruct& coords, bool ignoreContents);
-};
+#include "../ui/input_controls/ui_display_chain.h"
 
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer:
 // retail loads its address as the immediate `MOV ECX,0x87F7E8`).

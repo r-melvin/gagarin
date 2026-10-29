@@ -25,7 +25,7 @@
 // `count * 0x800 + At_13C + 4`; re-reading IterCount/IterLast from the
 // members; a char* cast on the base; `(count << 11) + 4` grouped; the
 // parenthesised `At_13C + (count * 0x800 + 4)`.
-void MapClass::Reshroud(House_00577AB0* house)
+void MapView_578350::Reshroud(House_00577AB0* house)
 {
     if (house != 0) {
         DAT_00A80228.Items[house->ArrayIndex]->At_241 = 0;

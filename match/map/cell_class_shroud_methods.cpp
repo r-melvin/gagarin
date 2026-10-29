@@ -6,7 +6,7 @@
 
 // The retail MapClass singleton lives at this fixed address; calling through it
 // makes cl emit `mov ecx,0x87F7E8` exactly as retail does.
-#define MapInstance (reinterpret_cast<MapClass*>(0x87F7E8))
+#define MapInstance (reinterpret_cast<MapView_5657A0_3*>(0x87F7E8))
 
 // FUNCTION: GAMEMD 0x481810  CellView_00481810::GetNeighbourCell (__thiscall)
 //   For facing < 8 returns the cell at MapCoords + AdjacentCell[facing&7];

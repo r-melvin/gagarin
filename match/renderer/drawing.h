@@ -61,6 +61,11 @@ public:
     virtual void vf58() = 0;                                     // 0x58
     virtual int  vf_23(int x, int y) = 0;                    // 0x5C
     virtual int  Lock() = 0;                                     // 0x60
+    virtual void vf64() = 0;                                     // 0x64
+    virtual void vf68() = 0;                                     // 0x68
+    virtual void vf6C() = 0;                                     // 0x6C
+    virtual void vf70() = 0;                                     // 0x70
+    virtual int  vf74() = 0;                                     // 0x74  row pitch in bytes
 };
 
 // ---------------------------------------------------------------------------
@@ -78,6 +83,8 @@ struct ABuffer
     // Declaration: GAMEMD 0x411330 -- rectangle16 bytes by value, RET16.
     void FUN_00411330(RectangleStruct rectangle);
     void FUN_00410ED0(int dx, int dy, unsigned short color); // RET12
+    // FUNCTION: GAMEMD 0x410DC0 -- copy a width x height block of 16-bit pixels from the ring buffer to a surface, RET 0x14.
+    void FUN_00410DC0(BSurfaceLayout* dest, int x, int y, int width, int height);
     void  ReleaseSurface();                                  // GAMEMD 0x410E50
     bool  Fill(unsigned short Color);                        // GAMEMD 0x4112D0
     bool  FillRect(unsigned short Color, RectangleStruct Rect); // GAMEMD 0x411310

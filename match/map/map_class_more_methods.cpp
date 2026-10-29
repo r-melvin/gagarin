@@ -14,7 +14,7 @@
 // GScreenClass::FlagToRedraw (0x4F42F0) which only sets it when not already 2.
 void MapClass::FUN_004F42D0()
 {
-    this->Bitfield = 2;
+    this->RedrawFlag = 2;
 }
 
 // FUNCTION: GAMEMD 0x568300  (__thiscall)
@@ -23,10 +23,10 @@ bool MapClass::CoordinatesLegal(const CellStruct& cell) const
 {
     int x = cell.X;
     int y = cell.Y;
-    int w = this->MapRectWidth;
+    int w = this->MapRect.Width;
     bool legal = (x + y) > w
         && (x - y) < w
         && (y - x) < w
-        && (x + y) <= w + 2 * this->MapRectHeight;
+        && (x + y) <= w + 2 * this->MapRect.Height;
     return legal;
 }

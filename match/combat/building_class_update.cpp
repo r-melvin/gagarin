@@ -35,7 +35,7 @@ struct Global_00A8EB60
 // GLOBAL: GAMEMD 0xA8EB60
 extern Global_00A8EB60 DAT_00A8EB60;
 // GLOBAL: GAMEMD 0x87F7E8 -- the map.
-extern MapClass DAT_0087F7E8;
+extern MapView_5865E0 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x887324 -- the tactical object.
 extern Tactical_006D2140* DAT_00887324;
 // GLOBAL: GAMEMD 0xABAD1C

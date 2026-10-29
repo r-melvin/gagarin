@@ -15,7 +15,7 @@ public:
     // FUNCTION: GAMEMD 0x4A9720 (declaration) -- put an object on the map.
     void FUN_004A9720(ObjectClass* object);
 };
-class MapClass : public DisplayClass
+class MapView_565730_4 : public DisplayClass
 {
 public:
     // FUNCTION: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
@@ -28,7 +28,7 @@ public:
     static int FUN_00489180(int damage, void* warhead, int armor, int distance);
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass DAT_0087F7E8;
+extern MapView_565730_4 DAT_0087F7E8;
 
 // The logic object list at 0x87F778.
 #include "logicview_87f778.h"

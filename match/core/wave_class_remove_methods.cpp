@@ -13,11 +13,11 @@ public:
     // FUNCTION: GAMEMD 0x4A9770 (declaration) -- take an object off the map.
     void FUN_004A9770(ObjectClass* object);
 };
-class MapClass : public DisplayClass
+class MapView_4A9770 : public DisplayClass
 {
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass DAT_0087F7E8;
+extern MapView_4A9770 DAT_0087F7E8;
 
 // The logic object list at 0x87F778.
 #include "logicview_87f778.h"

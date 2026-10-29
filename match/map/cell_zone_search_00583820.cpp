@@ -19,7 +19,7 @@ inline CellStruct Displaced(const CellStruct& cell, const CellStruct& step)
 }
 
 // FUNCTION: GAMEMD 0x583820
-Cell MapClass::FUN_00583820(const CellStruct* start, int zoneWordOffset, int targetZone)
+Cell MapView_578460::FUN_00583820(const CellStruct* start, int zoneWordOffset, int targetZone)
 {
     Cell selected;
     CellClass* cell = CellAt(start);

@@ -38,7 +38,7 @@ class CellView_00481810;
 // MapClass singleton — only the two helpers GetNeighbourCell / IsShrouded
 // forward to, declared (no body) so cl emits relocatable __thiscall calls.
 // The retail singleton object lives at the fixed address 0x87F7E8.
-class MapClass
+class MapView_5657A0_3
 {
 public:
     CellView_00481810* GetCellAt(CellStruct const& mapCoords) const;        // 0x5657A0

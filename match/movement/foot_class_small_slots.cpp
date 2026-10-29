@@ -97,7 +97,7 @@ extern Scenario_004D4200* DAT_00A8B230;
 // FUNCTION: GAMEMD 0x6EC300 (declaration) -- whether the linked team accepts the move.
 char FUN_006EC300(int linked);
 
-class MapClass
+class MapView_5785F0
 {
 public:
     // FUNCTION: GAMEMD 0x5785F0 (declaration) -- whether a coordinate is in the usable area.
@@ -106,7 +106,7 @@ public:
     CellClass* FUN_005657A0(const CellStruct* cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass DAT_0087F7E8;
+extern MapView_5785F0 DAT_0087F7E8;
 
 // The building type seen through its flag at +0x16A9.
 struct BuildingTypeView_4DB9B0

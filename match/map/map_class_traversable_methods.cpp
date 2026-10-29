@@ -14,7 +14,7 @@
 // gets the building's own MakeTraversable verdict returned directly; an
 // unallied one that is already traversable ends the walk with true. `this` is
 // never read — the walk goes through the global instance.
-bool MapClass::MakeTraversable(Obj_00578AD0 const* visitor, CellStruct const& cell) const
+bool MapView_578AD0::MakeTraversable(Obj_00578AD0 const* visitor, CellStruct const& cell) const
 {
     int idx = (cell.Y << 9) + cell.X;
     CellClass_00578AD0* pCell;

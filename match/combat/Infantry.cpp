@@ -103,7 +103,7 @@ struct SequenceStruct
 GG_STATIC_ASSERT(sizeof(SequenceStruct) == 0x24);
 
 // The map singleton (GAMEMD 0x87F7E8): the two lookups the occupation methods use.
-class MapClass
+class MapView_565730
 {
 public:
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) -- the cell under a coordinate.
@@ -112,7 +112,7 @@ public:
     int GetCellFloorHeight(const CoordStruct& where);
 };
 // GLOBAL: GAMEMD 0x87F7E8
-extern MapClass MapClass_Instance;
+extern MapView_565730 MapClass_Instance;
 // GLOBAL: GAMEMD 0xA8F234 -- the height added to the floor before the bridge test.
 extern int DAT_00A8F234;
 

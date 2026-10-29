@@ -69,7 +69,9 @@ struct RulesClass
     int unknown_000; // 0x6850FB -> fastcall55AF40
     int unknown_004;
     int unknown_008; // 0x685108 -> fastcall55AF50
-    char unknown_00C[0x04C - 0x00C];
+    char unknown_00C[0x044 - 0x00C];
+    int unknown_044;    // +0x044 read by AircraftClass 0x41B760 as its facing fallback
+    char unknown_048[0x04C - 0x048];
     AnimTypeClass* LandAnim; // +0x04C
     int unknown_050; // 0x6D26BE reads DWORD duration; 0x6D26E1 stores it to Tactical+DAC.
     char unknown_054[0x8C - 0x054];
@@ -269,6 +271,8 @@ GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0x0FA8);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionYellow) == 0x1700);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionRed) == 0x1708);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadDurationMultiple) == 0x1804);
+
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_044) == 0x44);
 
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1178) == 0x1178);
 
