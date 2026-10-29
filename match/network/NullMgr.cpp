@@ -653,3 +653,5 @@ int Obj_005F1EE0::FUN_005F3630(int a1)
         return unknown_38->unknown_04->unknown_38;
     return 0;
 }
+
+// SYNTHETIC: GAMEMD 0x5F3650 -- compiler-generated scalar deleting destructor.

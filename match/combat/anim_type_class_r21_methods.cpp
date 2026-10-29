@@ -48,6 +48,7 @@ void AnimTypeClass::vf_13(Obj_004A1D30* crc)
 }
 
 // The scalar deleting form of the destructor (??_G); the destructor body is inlined into it.
+// FUNCTION: GAMEMD 0x427880
 // FUNCTION: GAMEMD 0x428EA0
 AnimTypeClass::~AnimTypeClass()
 {

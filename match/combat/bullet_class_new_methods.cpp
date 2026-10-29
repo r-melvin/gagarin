@@ -2670,6 +2670,9 @@ ULONG __stdcall BulletClass::Release()
     return count;
 }
 
+// SYNTHETIC: GAMEMD 0x46B990 -- compiler-generated BulletClass AddRef adjustor thunk.
+// SYNTHETIC: GAMEMD 0x46B9A0 -- compiler-generated BulletClass Release adjustor thunk.
+
 // FUNCTION: GAMEMD 0x46B540
 int BulletClass::vf_12()
 {

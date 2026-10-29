@@ -82174,6 +82174,15 @@
   "pct": 100.0
  },
  {
+  "tu": "match/core/vector_small_struct_slot_methods.cpp",
+  "addr": "0x4D2DB0",
+  "sym": "??0?$VectorClass@UDrawRecord@FoggedObjectClass@@@@QAE@HPAUDrawRecord@FoggedObjectClass@@@Z",
+  "len": "0x90",
+  "name": "VectorClass<FoggedObjectClass::DrawRecord>::VectorClass(int, T*)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/persist_class_id_methods.cpp",
   "addr": "0x772C90",
   "sym": "?GetClassID@WeaponTypeClass@@UAGJPAU_GUID@@@Z",
@@ -97253,6 +97262,15 @@
   "pct": 100
  },
  {
+  "tu": "match/network/NullMgr.cpp",
+  "addr": "0x5F3650",
+  "sym": "??_GNullModemClass@@UAEPAXI@Z",
+  "len": "0x9d",
+  "name": "NullModemClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/object_type_class_slots.cpp",
   "addr": "0x5F7640",
   "sym": "?vf_36@ObjectTypeClass@@UAEPAXH@Z",
@@ -98223,6 +98241,15 @@
   "name": "VectorClass<rc_ptr<WDTTerritory>>::Slot5",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x538A20",
+  "sym": "??_E?$rc_ptr@VWDTTerritory@@@@UAEPAXI@Z",
+  "len": "0x6a",
+  "name": "rc_ptr<WDTTerritory>::vector deleting destructor",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/member_forward_leaf_methods.cpp",
@@ -104779,6 +104806,24 @@
   "name": "BulletClass::FUN_004690B0",
   "status": "partial",
   "pct": 3.8
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x46B990",
+  "sym": "?AddRef@BulletClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "BulletClass::AddRef adjustor thunk",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x46B9A0",
+  "sym": "?Release@BulletClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "BulletClass::Release adjustor thunk",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/cell_class_get_coords.cpp",
@@ -139800,6 +139845,33 @@
   "pct": 100
  },
  {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x40B070",
+  "sym": "??_ESubzoneTrackingStruct@@QAEPAXI@Z",
+  "len": "0xa3",
+  "name": "SubzoneTrackingStruct::vector deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58ABD0",
+  "sym": "??4?$DynamicVectorClass@USubzoneConnectionStruct@@@@QAEAAV0@ABV0@@Z",
+  "len": "0x99",
+  "name": "DynamicVectorClass<SubzoneConnectionStruct>::operator=",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_vector_r13.cpp",
+  "addr": "0x58AD10",
+  "sym": "??4?$VectorClass@USubzoneConnectionStruct@@@@QAEAAV0@ABV0@@Z",
+  "len": "0x94",
+  "name": "VectorClass<SubzoneConnectionStruct>::operator=",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/leaf_sweep_r14_w1.cpp",
   "addr": "0x402900",
   "sym": "?FUN_00402900@@YIXXZ",
@@ -143531,6 +143603,15 @@
   "sym": "??_GAnimTypeClass@@UAEPAXI@Z",
   "len": "0xcf",
   "name": "AnimTypeClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_type_class_r21_methods.cpp",
+  "addr": "0x427880",
+  "sym": "??1AnimTypeClass@@UAE@XZ",
+  "len": "0xbb",
+  "name": "AnimTypeClass::~AnimTypeClass",
   "status": "matched",
   "pct": 100
  },

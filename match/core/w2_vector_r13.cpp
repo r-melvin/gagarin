@@ -86,6 +86,10 @@ template class DynamicVectorClass<HO_RT>;
 GG_ARRAY_NEW(SubzoneConn, SubzoneConnectionStruct)
 // FUNCTION: GAMEMD 0x00589100
 // DynamicVectorClass<SubzoneConnectionStruct>::DynamicVectorClass(int, T*)
+// FUNCTION: GAMEMD 0x0058ABD0
+// DynamicVectorClass<SubzoneConnectionStruct>::operator=
+// FUNCTION: GAMEMD 0x0058AD10
+// VectorClass<SubzoneConnectionStruct>::operator=
 template class VectorClass<SubzoneConnectionStruct>;
 template class DynamicVectorClass<SubzoneConnectionStruct>;
 
@@ -102,6 +106,8 @@ GG_ARRAY_NEW(STS, SubzoneTrackingStruct)
 // DynamicVectorClass<SubzoneTrackingStruct>::Clear
 // FUNCTION: GAMEMD 0x00589960
 // VectorClass<SubzoneTrackingStruct>::Clear
+// FUNCTION: GAMEMD 0x0040B070
+// SubzoneTrackingStruct::vector deleting destructor
 // FUNCTION: GAMEMD 0x0058A470
 // VectorClass<SubzoneTrackingStruct>::scalar deleting destructor
 // FUNCTION: GAMEMD 0x0058A5B0

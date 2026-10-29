@@ -88,6 +88,7 @@ unsigned char WDTState::FUN_0076B090() const
 
 // FUNCTION: GAMEMD 0x76B790
 // rc_ptr<WDTTerritory>::rc_ptr(WDTTerritory*)
+// SYNTHETIC: GAMEMD 0x538A20 -- compiler-generated rc_ptr<WDTTerritory> vector deleting destructor.
 template class rc_ptr<WDTTerritory>;
 
 // FUNCTION: GAMEMD 0x76B7B0

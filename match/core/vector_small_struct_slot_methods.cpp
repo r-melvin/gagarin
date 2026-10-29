@@ -46,6 +46,8 @@ template class DynamicVectorClass<tagCONNECTDATA>;
 // DynamicVectorClass<FoggedObjectClass::DrawRecord>::FindItemIndex
 // FUNCTION: GAMEMD 0x004D2960
 // DynamicVectorClass<FoggedObjectClass::DrawRecord>::Slot5
+// FUNCTION: GAMEMD 0x004D2DB0
+// VectorClass<FoggedObjectClass::DrawRecord>::VectorClass(int, T*)
 // VTABLE: GAMEMD 0x007E8BC0 -- VectorClass<FoggedObjectClass::DrawRecord>.
 // VTABLE: GAMEMD 0x007E8BA0 -- DynamicVectorClass<FoggedObjectClass::DrawRecord>.
 template class VectorClass<FoggedObjectClass::DrawRecord>;
