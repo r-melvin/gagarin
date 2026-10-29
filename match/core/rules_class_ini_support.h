@@ -6,6 +6,7 @@
 #ifndef GG_MATCH_CORE_RULES_CLASS_INI_SUPPORT_H
 #define GG_MATCH_CORE_RULES_CLASS_INI_SUPPORT_H
 
+#include <string.h>
 #include "../_layout/rules_class.h"
 #include "../platform/ccini_class_methods.h"
 #include "../audio/voc_class_methods.h"
@@ -46,5 +47,29 @@ extern char* RadiationSection;   // GLOBAL: GAMEMD 0x7f0c88
 extern char* GeneralSection;   // GLOBAL: GAMEMD 0x7f0c9c
 extern char* MultiplayerDialogSettingsSection;   // GLOBAL: GAMEMD 0x7f0ca0
 extern char* AISection;   // GLOBAL: GAMEMD 0x7f0cd4
+
+extern const char STR_00817F70[];   // STRING: GAMEMD 0x817F70 ","
+
+// Comma-separated list of animation type names, expanded inline in the INI readers (e.g. 0x721A50):
+// the names are looked up in turn (unknown names are skipped) and appended to a fresh list. The reader
+// calls this only when the key is present; otherwise it returns the caller's list. The two-function split
+// (builder inside the key test) is what reproduces retail's mix of inlined and called list destructors.
+static inline TypeList<const AnimTypeClass*> BuildAnimTypeList(char* buffer)
+{
+    TypeList<const AnimTypeClass*> list(0, 0);
+    for (char* token = strtok(buffer, STR_00817F70); token && *token; token = strtok(0, STR_00817F70)) {
+        const AnimTypeClass* type = AnimType_FindPtr(token);
+        if (type)
+            list.AddItem(type);
+    }
+    return list;
+}
+static inline TypeList<const AnimTypeClass*> ReadAnimTypeList(CCINIClass* ini, const char* section,
+    const char* key, const TypeList<const AnimTypeClass*>& defaultValue, char* buffer)
+{
+    if (ini->ReadString(section, key, STR_00889F64, buffer, 0x80))
+        return BuildAnimTypeList(buffer);
+    return defaultValue;
+}
 
 #endif

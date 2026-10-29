@@ -17,7 +17,13 @@ template<class T> class TypeList : public DynamicVectorClass<T>
 public:
     // Default-constructor stores are verified in the int and pointer TUs.
     TypeList() : DynamicVectorClass<T>() {}
-    TypeList(const TypeList<T>& other) : DynamicVectorClass<T>(other) {}
+    // Capacity constructor, expanded inline in the INI readers (call 0x525250, then the list vptr store).
+    // A member template, so that the explicit instantiations that stand for retail's out-of-line list
+    // functions do not emit a function retail does not have.
+    template<class N> TypeList(N capacity, T* pMem) : DynamicVectorClass<T>(capacity, pMem) {}
+    // Copy constructor: a separate function in retail (0x5255F0 for animation type lists) that the INI
+    // readers call; defined in vector_class_operations.h, so TUs that only include this header call it.
+    TypeList(const TypeList<T>& other);
     // Nonvirtual stream helper declarations; selected specializations and
     // native entry addresses are declared in vector_stream_save_family_methods.h.
     int FUN_0067A4A0(IStream* stream);
@@ -31,7 +37,7 @@ public:
     int FUN_0067A7D0(IStream* stream);
     int FUN_0067A850(IStream* stream);
     int FUN_0067A8E0(IStream* stream);
-    unsigned char unknown_18[4]; // observed storage, no scalar meaning or initialization claim
+    unsigned int unknown_18; // observed storage, copied as one dword by the assignment in the INI readers (e.g. 0x721C1E); no scalar meaning claimed
 };
 #if GG_TARGET_ABI_32
 class TechnoTypeClass;

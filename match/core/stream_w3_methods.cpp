@@ -91,12 +91,12 @@ HRESULT __stdcall SpawnManagerClass::Save(IStream* pStm, BOOL fClearDirty)
 
 
 // FUNCTION: GAMEMD 0x7220A0
-// The base size plus a count and one dword per entry.
+// The base size plus the debris list's count and one dword per entry.
 HRESULT __stdcall TiberiumClass::GetSizeMax(ULARGE_INTEGER* pcbSize)
 {
     HRESULT hr = AbstractClass::GetSizeMax(pcbSize);
     if (hr >= 0) {
-        pcbSize->LowPart += unknown_D4 * 4 + 4;
+        pcbSize->LowPart += Debris.Count * 4 + 4;
         return 0;
     }
     return hr;
@@ -108,10 +108,10 @@ HRESULT __stdcall TiberiumClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
     if (hr >= 0) {
-        int count = unknown_D4;
+        int count = Debris.Count;
         pStm->Write(&count, 4, 0);
         for (int i = 0; i < count; i++) {
-            pStm->Write(&unknown_C8[i], 4, 0);
+            pStm->Write(&Debris.Items[i], 4, 0);
         }
         return 0;
     }

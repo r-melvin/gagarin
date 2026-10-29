@@ -9,6 +9,9 @@
 #include "abstract_type_class.h"
 #include "cell.h"
 #include "frame_timer.h"
+#include "../core/vector_class.h"
+#include "../core/type_list.h"
+class AnimTypeClass;
 // 8-byte queue entry: a cell and its float priority.
 struct TiberiumQueueNode
 {
@@ -104,18 +107,23 @@ public:
     virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize);     // 7   0x7220A0
     virtual int vf_11();
     virtual int vf_12();
+    // FUNCTION: GAMEMD 0x721A50 -- read the type's rules section.
+    virtual bool vf_25(CCINIClass* ini);
     // UIName (+0x60, read by CellClass::GetUIName 0x484FF0) is the AbstractTypeClass member.
     int            unknown_98;    // +0x98 compared with CellClass::GetContainedTiberiumIndex
     int            unknown_9C;    // +0x9C delay stored into the spread timer
-    char           _padA0[0xA8 - 0xA0];
-    int            unknown_A8;    // +0xA8 base growth delay
-    char           _padAC[0xB8 - 0xAC];
+    double         SpreadPercentage;   // +0xA0 (ReadINI key SpreadPercentage)
+    int            unknown_A8;    // +0xA8 base growth delay (ReadINI key Growth)
+    char           _padAC[0xB0 - 0xAC];
+    double         GrowthPercentage;   // +0xB0 (ReadINI key GrowthPercentage)
     int            Value;         // +0xB8
-    char           _padBC[0xC8 - 0xBC];
-    int*           unknown_C8;    // +0xC8 one dword per entry
-    char           unknown_CC[0xD4 - 0xCC];
-    int            unknown_D4;    // +0xD4 entry count
-    char           unknown_D8[0xF0 - 0xD8];
+    int            Power;         // +0xBC (ReadINI key Power)
+    int            Color;         // +0xC0 (ReadINI key Color, colour scheme index)
+    TypeList<const AnimTypeClass*> Debris;   // +0xC4 (ReadINI key Debris)
+    int            unknown_E0;    // +0xE0 set from the Image key
+    int            unknown_E4;    // +0xE4
+    int            unknown_E8;    // +0xE8
+    int            unknown_EC;    // +0xEC
     TiberiumLogic  SpreadLogic;   // +0xF0
     CDTimerClass   SpreadTimer;   // +0x100
     TiberiumLogic  GrowthLogic;   // +0x10C
@@ -145,8 +153,10 @@ public:
     // FUNCTION: GAMEMD 0x722E50 -- free the growth logic of every type.
     static void FreeGrowthLogicAll();
 };
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_C8) == 0xC8);
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_D4) == 0xD4);
+GG_STATIC_ASSERT(offsetof(TiberiumClass, SpreadPercentage) == 0xA0);
+GG_STATIC_ASSERT(offsetof(TiberiumClass, GrowthPercentage) == 0xB0);
+GG_STATIC_ASSERT(offsetof(TiberiumClass, Debris) == 0xC4);
+GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_EC) == 0xEC);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, UIName) == 0x60);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, Value) == 0xB8);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_98) == 0x98);
