@@ -33,7 +33,7 @@ import attempts  # noqa: E402
 
 BRANCH = re.compile(r"^(j\w+|call|loop\w*)\s+(?:0x)?([0-9a-f]+)\s*$")
 HEX = re.compile(r"0x([0-9a-f]{6,8})\b")
-DEFAULT_FLAGS = "/nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2 (project default)"
+DEFAULT_FLAGS = "/nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2 (project default)"
 
 
 def audit_extent(va):

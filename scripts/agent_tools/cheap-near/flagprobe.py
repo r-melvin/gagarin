@@ -10,7 +10,7 @@ import argparse, json, os, re, subprocess, sys, tempfile, shutil
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "land"))
 from sectioncmp import coff
 
-DEFAULT = "/nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2"
+DEFAULT = "/nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2"
 
 def tuflags(path):
     for l in open(path, errors="replace"):

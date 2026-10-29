@@ -199,9 +199,11 @@ def candidates(path, parsed, final, address_of, resolver, retail, regions, searc
                     bad = f"relocation target {tname} is at 0x{known:X}, retail's field says 0x{(got - addend) & 0xFFFFFFFF:X}"
                     break
                 ours[lo:lo + 4] = want[lo:lo + 4] = bytes(4)
-                if pin_address(tname) is None and regions.locate(known, 1) is not None:
-                    # data the object does not define (library or unrecovered data) or another definition:
-                    # bound to its retail address like the references of matched code (pindata.py)
+                if pin_address(tname) is None and (regions.locate(known, 1) is not None
+                                                   or pindata.IMAGE_LO <= known < regions.text_end):
+                    # data the object does not define (library or unrecovered data) or another definition, or
+                    # code (a function slot of a vtable whose body is not placed from its object): bound to its
+                    # retail address like the references of matched code (pindata.py)
                     tname = pindata.pin_name(tname, known)
                 relocs.append((lo, tname, rtype))
             if bad:
@@ -296,6 +298,7 @@ class Regions:
     def __init__(self, retail):
         r_start, r_vsize, _, _ = retail.by_name[".rdata"]
         d_start, d_vsize, _, d_raw = retail.by_name[".data"]
+        self.text_end = retail.text_end()
         self.ranges = [("file", r_start, r_start + r_vsize), ("file", d_start, d_start + d_raw),
                        ("bss", d_start + d_raw, d_start + d_vsize)]
 

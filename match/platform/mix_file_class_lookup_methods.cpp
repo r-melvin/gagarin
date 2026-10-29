@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /Ob2
 //   Bodies matched against retail gamemd.exe v1.001 at each address below.
 //
 // Mounted-MIX list lookups: walk the List<MixFileClass*> at 0xABEFD8 and compare

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Op /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Op /Ob2
 // Measured /Op retains the native divide-by-60 instruction; /Ob2 emits the
 // three dynamic initializers directly. All existing owner rows remain exact.
 //   Original translation unit coopcamp.cpp. The name is the source-file string at 0x81f370

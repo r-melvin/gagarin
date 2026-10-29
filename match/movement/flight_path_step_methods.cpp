@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bodies ascending by retail address; bytes diffed against the user's
 //   retail gamemd.exe v1.001.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Op /MT
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /Op /MT
 //
 // /Op (improve float consistency) is a claim about the retail build, so it has
 // to justify itself. Without it cl keeps double-typed intermediates in the x87

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /Ob2
 //
 // JumpjetLocomotionClass (layout and tables in _layout/jumpjet_locomotion_class.h).
 // The COM / IPiggyback bodies below are the shapes DriveLocomotionClass uses

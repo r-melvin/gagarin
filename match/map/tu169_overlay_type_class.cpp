@@ -18,7 +18,7 @@
 //   GLOBAL:   GAMEMD 0xA83D84  OverlayTypeClass::Array.Items
 //   GLOBAL:   GAMEMD 0xA83D90  OverlayTypeClass::Array.Count
 //   STRING:   GAMEMD 0x81834C  ".SHP"
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 

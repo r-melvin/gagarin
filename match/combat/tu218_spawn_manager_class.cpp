@@ -43,7 +43,7 @@
 // returns false. The ownership expression retains the verified short-circuit
 // term so VC6 schedules SETZ and the pointer/capacity stores as retail does.
 // These views remain verified under the default flags (/O2 /Gr /DNDEBUG /Gy, no /GX).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 

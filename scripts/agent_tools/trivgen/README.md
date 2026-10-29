@@ -55,7 +55,7 @@ worklist.csv (size <= 32) --> re-filter --> lift --> classify --> emit C++ --> c
    `volatile`, no alias pointers, no asm; the only casts are `(unsigned char)`/`(unsigned short)` narrowing views of a
    wider register that the binary compares at byte or word width.
 6. **Verify** (`verify.py`, `trivgen.py run`). Every generated TU is compiled with the worktree's `scripts/vc6/vc6cl.sh`
-   (flags from the TU, default `/O2 /Gr /DNDEBUG /Gy /MT /Ob2`). A compile error is attributed to its function and that function
+   (flags from the TU, default `/O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2`). A compile error is attributed to its function and that function
    is dropped from the probe TU. For each function: `raw_match.py` must report 100% with zero real diffs, then
    `verify_relocations.py` runs strictly with a symbol map built from the object itself (every symbol whose decorated
    name carries `DAT_`/`FUN_` plus its address, and `__imp__name` resolved through the PE import table). Only

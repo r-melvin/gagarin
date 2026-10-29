@@ -39,7 +39,7 @@
 //
 //   The flyer's take-off switch. Bytes diffed against the user's retail
 //   gamemd.exe v1.001.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 

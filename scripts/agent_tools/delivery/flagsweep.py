@@ -29,7 +29,7 @@ import dlib as D  # noqa: E402
 import landlib as L  # noqa: E402
 
 PROBE = os.path.join(D.TOOLS, "cheap-near", "flagprobe.py")
-DEFAULT = "/nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2"   # scripts/vc6/vc6cl.sh
+DEFAULT = "/nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2"   # scripts/vc6/vc6cl.sh
 
 
 def main(argv=None):

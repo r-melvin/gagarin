@@ -48,7 +48,7 @@
 //
 // VectorClass construction, ordered ascending by retail address, written out
 // longhand per the family rule.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 

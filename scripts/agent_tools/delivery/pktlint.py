@@ -57,7 +57,7 @@ import dlib as D  # noqa: E402
 import landlib as L  # noqa: E402
 import cppscan  # noqa: E402
 
-PROJECT_FLAGS = {"/nologo", "/c", "/O2", "/Gr", "/DNDEBUG", "/Gy", "/MT", "/Ob2"}   # scripts/vc6/vc6cl.sh
+PROJECT_FLAGS = {"/nologo", "/c", "/O2", "/Gr", "/GR", "/DNDEBUG", "/Gy", "/MT", "/Ob2"}   # scripts/vc6/vc6cl.sh
 SDD_NAME = re.compile(r"scalar[ _]*deleting|deleting[ _]*d(?:e)?(?:structor|tor)|\?\?_G|vec(?:tor)?[ _]*deleting", re.I)
 SDD_DELETE = re.compile(r"\bdelete\s+this\b|\boperator\s+delete\s*\(\s*this\b|\b(?:free|FreeMem|GameMemFree\w*)\s*\(\s*this\b")
 SDD_FLAG = re.compile(r"&\s*1\b")

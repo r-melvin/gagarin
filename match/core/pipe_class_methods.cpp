@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
 // Placement lead: ??_GPipe belongs in a file that constructs a Pipe (all such
 // retail functions are still unmatched); until then this file avoids /Ob2.
 // Pipe is identified by TD 0x81BF80 (.?AVPipe@@), primary table 0x7E6218,

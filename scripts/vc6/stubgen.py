@@ -48,6 +48,7 @@ import coffgen
 import datasource
 import hybrid as hybrid_module
 import pindata
+import rttimap
 import taillink
 from verify_vtable import VerifyError, parse_coff
 from coff_equivalence import plan_folds
@@ -509,6 +510,11 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         if not (hybrid and pin_plan):
             raise ValueError("source_data needs the hybrid image and the pin plan")
         regions = datasource.Regions(retail)
+        vtable_vas = {n: va for n, (va, _) in bindings.items() if n.startswith("??_7")}
+        for table in (pin_plan["comdat"], pin_plan["global"]):
+            vtable_vas.update({n: va for n, va in table.items() if n.startswith("??_7")})
+        rtti_json = json.loads((ROOT / "scripts/data/rtti_classes.json").read_text())
+        rtti = rttimap.RttiNames(retail, rtti_json["classes"], vtable_vas, rtti_json["type_descriptors_without_locator"])
         init_slots = datasource.initialiser_slots(retail)
         init_sections = [0, 0, 0]   # sections with a placed entry, and of those the ones in consecutive slots
         resolver = datasource.Resolver(
@@ -516,7 +522,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             pin_plan["global"], call_names,
             {name: va for va, name in (tail_plan["names_at"].items() if tail_plan else ())},
             {name: va for name, va in (tail_plan["thunks"] if tail_plan else ())},
-            {name: va for name, (va, _) in bindings.items()})
+            {name: va for name, (va, _) in bindings.items()}, rtti)
     # M2 data pinning: project definitions of bound globals become absolute symbols at
     # their retail addresses, so code references the retail storage directly.
     pin_map = {name: va for name, (va, _) in bindings.items() if section_of(va) in (".rdata", ".data")} \
@@ -559,6 +565,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
                     va = bindings.get(symbol["name"], (None,))[0]
                     if va is not None and section_of(va) in (".rdata", ".data"):
                         return va
+                    return rtti.address(symbol["name"])
                 return None
             parsed = parsed_of(path)
             if parsed is not None:

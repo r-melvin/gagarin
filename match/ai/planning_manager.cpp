@@ -10,7 +10,7 @@
 // constructor 0x633A20, the view-point helper 0x6339E0, the rectangle helper
 // 0x634510) appear both out of line and expanded inside other callers, and
 // each list initialiser carries its atexit registration inline.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /Ob2 /DNDEBUG /Gy /MT
 
 #include "planning_manager.h"
 

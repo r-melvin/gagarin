@@ -102,7 +102,7 @@ class CandidateTests(Fixture):
         obj = build([(".rdata", COMDAT | RDATA_FLAGS, bytes(4), [(0, 1, coffgen.REL_DIR32)])],
                     [("??_7A@@6B@", 0, 1, 2, None), ("?f@@YAXXZ", 0, 0, 2, None)])
         acc, rej = self.run_candidates(obj, {"??_7A@@6B@": RDATA + 0x140}, {"?f@@YAXXZ": 0x401230})
-        self.assertEqual([c["relocs"] for c in acc], [[(0, "?f@@YAXXZ", coffgen.REL_DIR32)]])
+        self.assertEqual([c["relocs"] for c in acc], [[(0, "?f@@YAXXZ@pin00401230", coffgen.REL_DIR32)]])   # code targets are bound to their address too
         acc, rej = self.run_candidates(obj, {"??_7A@@6B@": RDATA + 0x140}, {"?f@@YAXXZ": 0x401240})
         self.assertIn("is at 0x401240", rej[0]["why"])
         acc, rej = self.run_candidates(obj, {"??_7A@@6B@": RDATA + 0x140}, {})
@@ -122,7 +122,7 @@ class CandidateTests(Fixture):
                     [("??_7A@@6B@", 0, 1, 2, None), ("??_EA@@UAEPAXI@Z", 0, 0, coffgen.CLASS_WEAK_EXTERNAL, weak_aux),
                      ("??_GA@@UAEPAXI@Z", 0, 0, 2, None)])
         acc, _ = self.run_candidates(obj, {"??_7A@@6B@": RDATA + 0x140}, {"??_GA@@UAEPAXI@Z": 0x401230})
-        self.assertEqual(acc[0]["relocs"][0][1], "??_GA@@UAEPAXI@Z")
+        self.assertEqual(acc[0]["relocs"][0][1], "??_GA@@UAEPAXI@Z@pin00401230")
 
     def test_bss_definitions_are_accounted_in_the_bss_tail(self):
         bss_va = DATA + 0x1000 + 0x40   # inside the bss tail of the fake image

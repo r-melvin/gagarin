@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x4A3020 in the user's retail gamemd.exe v1.001.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /Ob2
 //
 // CStreamClass block writer (layout and tables in _layout/cstream_class.h).
 // Address index: 0x4A3020.

@@ -67,7 +67,7 @@ validate with `classcheck.py CLASS`. Draft a constructor with `scripts/vc6/ctor_
 
 ## 3. Write code, then score
 
-Flags: one project-wide set (`/nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2`, plus `/GR` once landed) lives in
+Flags: one project-wide set (`/nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2`) lives in
 `scripts/vc6/vc6cl.sh`. Do not add a `// VC6FLAGS:` line or `#pragma inline_depth`/`optimize` to make a
 function match; if it only matches under other flags, a definition it can see belongs in another file.
 Fast checks: `scripts/vc6/compile_all.sh --changed` and `python3 scripts/vc6/verify_all.py --jobs 8 --changed`.

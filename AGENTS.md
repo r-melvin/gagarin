@@ -115,7 +115,7 @@ against an instruction in the binary before it lands as a repo fact.
   use names recalled from memory without that evidence; use a placeholder.
 - Pin compiler flags by bisection for each cluster, never by assumption. The
   binary has no C++ exception-handling tables, and free functions default to
-  `__fastcall`, so the target default is `/O2 /Gr /DNDEBUG /Gy /MT` without `/GX`
+  `__fastcall`, so the target default is `/O2 /Gr /GR /DNDEBUG /Gy /MT` without `/GX`
   (`/MT` because retail links the multithreaded static CRT; it changes only the
   `.drectve` default-library record of each object, not code, data or relocations);
   `/Ob2` is set per TU only where the evidence requires it.

@@ -13,7 +13,7 @@
 //   0x63FDC0  PowerClass::FUN_0063FDC0
 //   0x63FE30  PowerClass::FUN_0063FE30
 //   0x640450  PowerClass::vf_33
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /Ob2 /MT
 
 #include "input_controls/ui_display_chain.h"
 #include "../_layout/house_class.h"

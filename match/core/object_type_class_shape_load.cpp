@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Os /Gr /DNDEBUG /Gy /MT /Ob1
+// VC6FLAGS: /nologo /c /O2 /Os /Gr /GR /DNDEBUG /Gy /MT /Ob1
 // Entry 0x5F9070..0x5F92C3: arctic suffix, theater filenames, shape lookup,
 // fallback filename byte and maximum signed dimension.
 #include "../_layout/object_type_class.h"

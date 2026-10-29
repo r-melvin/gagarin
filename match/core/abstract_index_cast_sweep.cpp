@@ -19,7 +19,7 @@
 // visible: cl merging two identical `return 0` exits. Splitting the search into
 // its own inline function un-merged them and the colouring fell into line.
 
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line helper behind a jump).
 

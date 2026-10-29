@@ -52,7 +52,7 @@
 // element type of the vector's RTTI TypeDescriptor, read through the vptr stored
 // by the matching initialiser. The initialisers (__xc table entries) are left to
 // the translation-unit migration and compile here as a by-product, unclaimed.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 

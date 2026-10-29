@@ -28,7 +28,7 @@
 // plain register. Count and Items are re-read every iteration rather than
 // hoisted.
 
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /Ob2 /DNDEBUG /Gy
 // /Ob2 expands proven global array constructors/destructors; __xc order is
 // confirmed by ev_182d7497bcb677f15b6407900116870a45444b90af558c3036740f7b8ac401a4.
 #include <string.h>

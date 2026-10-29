@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
 // Placement lead: this file regresses under the project /Ob2 default, so a
 // definition it can see probably lived in another original file.
 // Complete entry-origin span 0x5256F0..0x5257B7, 200 bytes.

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
 // Placement lead: this file regresses under the project /Ob2 default, so a
 // definition it can see probably lived in another original file.
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4F4CE0, 0x4F4D30

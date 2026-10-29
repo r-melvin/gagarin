@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x4A2E50, 0x4A2EE0, 0x4A2F10, 0x4A2FC0, 0x4A2FF0.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /Ob2
 //
 // CStreamClass IStream methods that forward unchanged to the wrapped stream
 // (the smart-pointer dereference raises E_POINTER when it is null).
