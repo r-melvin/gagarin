@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Flag bisection: /GX adds exception-unwind code absent from the complete
 // 0x69DDC0 destructor. Omitting it reproduces that body; all other methods
 // in this TU are reverified with this same flag set.
@@ -18,8 +17,9 @@
 // FUNCTION: GAMEMD 0x6D09C0 ShapeButtonClass::SetToolTip (__fastcall)
 // LIBRARY: GAMEMD 0x7C8B3D GameDelete
 
-// SYNTHETIC: GAMEMD 0x4B57F0
-// ShapeButtonClass::`scalar deleting destructor'
+// The scalar deleting destructor 0x4B57F0 is emitted by the constructors' TU
+// (network/Session.cpp), where only the destructor declaration is visible;
+// under /Ob2 it would otherwise inline the destructor body below.
 
 #include "shape_button_class.h"
 #include "shape_button_class_support.h"

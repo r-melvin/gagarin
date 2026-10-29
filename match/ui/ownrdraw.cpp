@@ -1525,8 +1525,1880 @@ Obj_007B66D0 FUN_00603FC0(GG_HWND hWndOwner, GG_HWND hWndSource, unsigned short 
     return text;
 }
 
-// FUNCTION: GAMEMD 0x6040B0 (decl; reloc) -- __fastcall: the text for a key and control, or null.
-const char* FUN_006040B0(int nKey, GG_HWND hWnd);
+// GLOBAL: GAMEMD 0xA8B238 -- compared against 4 to pick the Westwood Online back-button text.
+extern int DAT_00A8B238;
+// GLOBAL: GAMEMD 0xA8B244 -- compared against 3 alongside DAT_00A8B238.
+extern int DAT_00A8B244;
+// GLOBAL: GAMEMD 0xAC10C8 -- zero selects the lobby Join text, otherwise Observe.
+extern int DAT_00AC10C8;
+
+// FUNCTION: GAMEMD 0x6040B0
+// The status-text key ("STT:...") for a control of the dialog type registered under nKey,
+// or null when the control has none.
+const char* FUN_006040B0(int nKey, GG_HWND hWnd)
+{
+    MapValue_00602B90* dialog = Inline_Probe(nKey);
+    int category = dialog ? dialog->Field6C : 0;
+    int nCtlID = GetDlgCtrlID(hWnd);
+    if (nCtlID == 0)
+    {
+        return 0;
+    }
+    if (nCtlID == -1)
+    {
+        return 0;
+    }
+    if (category == 0xe2)
+    {
+        if (nCtlID == 0x683)
+        {
+            return "STT:MainButtonSinglePlayer";
+        }
+        if (nCtlID == 0x684)
+        {
+            return "STT:MainButtonWWOnline";
+        }
+        if (nCtlID == 0x578)
+        {
+            return "STT:MainButtonNetwork";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:MainButtonMovies";
+        }
+        if (nCtlID == 0x55c)
+        {
+            return "STT:MainButtonOptions";
+        }
+        if (nCtlID == 0x55f)
+        {
+            return "STT:MainButtonYuriWebSite";
+        }
+        if (nCtlID == 0x3ee)
+        {
+            return "STT:MainButtonExitGamemd";
+        }
+    }
+    else if (category == 0x100)
+    {
+        if (nCtlID == 0x688)
+        {
+            return "STT:SingleButtonNewCampaign";
+        }
+        if (nCtlID == 0x689)
+        {
+            return "STT:SingleButtonLoadSavedGame";
+        }
+        if (nCtlID == 0x579)
+        {
+            return "STT:SingleButtonSkirmish";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:SingleButtonBack";
+        }
+    }
+    else if (category == 0x94)
+    {
+        if (nCtlID == 0x6ea)
+        {
+            return "STT:AlliedCampaignIcon";
+        }
+        if (nCtlID == 0x6eb)
+        {
+            return "STT:CampaignAnimTutorial";
+        }
+        if (nCtlID == 0x6ec)
+        {
+            return "STT:SovietCampaignIcon";
+        }
+        if (nCtlID == 0x50f)
+        {
+            return "STT:CampaignSliderDifficulty";
+        }
+        if (nCtlID == 0x40e)
+        {
+            return "STT:CampaignButtonLoad";
+        }
+        if (nCtlID == 0x455)
+        {
+            return "STT:CampaignList";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:CampaignButtonBack";
+        }
+    }
+    else if (category == 0xb7)
+    {
+        if (nCtlID == 0x525)
+        {
+            return "STT:LoadList";
+        }
+        if (nCtlID == 0x40f)
+        {
+            return "STT:LoadButtonLoad";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:LoadButtonBack";
+        }
+    }
+    else if (category == 0x102)
+    {
+        if (nCtlID == 0x6a0)
+        {
+            return "STT:SkirmishEditPlayer";
+        }
+        if (((((nCtlID == 0x50b) || (nCtlID == 0x50e)) || (nCtlID == 0x516)) ||
+        ((nCtlID == 0x51a || (nCtlID == 0x51b)))) || ((nCtlID == 0x51c || (nCtlID == 0x51d))))
+        {
+            return "STT:SkirmishComboAIPlayer";
+        }
+        if ((((nCtlID == 0x6da) || (nCtlID == 0x6db)) ||
+        ((nCtlID == 0x6dc || (((nCtlID == 0x6dd || (nCtlID == 0x6de)) || (nCtlID == 0x6df)))))) ||
+       ((nCtlID == 0x6e0 || (nCtlID == 0x6e1))))
+        {
+            return "STT:SkirmishPictureFlag";
+        }
+        if ((((nCtlID == 0x6a1) || (nCtlID == 0x510)) ||
+        ((nCtlID == 0x513 || (((nCtlID == 0x51e || (nCtlID == 0x514)) || (nCtlID == 0x51f)))))) ||
+       ((nCtlID == 0x520 || (nCtlID == 0x521))))
+        {
+            return "STT:SkirmishComboCountry";
+        }
+        if (((nCtlID == 0x6a2) || (nCtlID == 0x522)) ||
+       ((nCtlID == 0x523 ||
+        ((((nCtlID == 0x524 || (nCtlID == 0x525)) || (nCtlID == 0x526)) ||
+         ((nCtlID == 0x527 || (nCtlID == 0x528))))))))
+        {
+            return "STT:SkirmishComboColor";
+        }
+        if (((nCtlID == 0x6a3) || (nCtlID == 0x6a4)) ||
+       (((nCtlID == 0x6a5 || (((nCtlID == 0x6a6 || (nCtlID == 0x6a7)) || (nCtlID == 0x6a8)))) ||
+        ((nCtlID == 0x6aa || (nCtlID == 0x6ab))))))
+        {
+            return "STT:HostComboStart";
+        }
+        if ((nCtlID == 0x76d) ||
+         ((((nCtlID == 0x76e || (nCtlID == 0x76f)) ||
+           ((nCtlID == 0x770 || (((nCtlID == 0x771 || (nCtlID == 0x772)) || (nCtlID == 0x773)))))) ||
+          (nCtlID == 0x774))))
+        {
+            return "STT:HostComboTeam";
+        }
+        if (nCtlID == 0x529)
+        {
+            return "STT:SkirmishSliderSpeed";
+        }
+        if (nCtlID == 0x511)
+        {
+            return "STT:SkirmishSliderCredits";
+        }
+        if (nCtlID == 0x50c)
+        {
+            return "STT:SkirmishSliderUnit";
+        }
+        if (nCtlID == 0x5aa)
+        {
+            return "STT:SkirmishButtonChooseMap";
+        }
+        if (nCtlID == 0x693)
+        {
+            return "STT:SkirmishCBoxRedeploys";
+        }
+        if (nCtlID == 0x54e)
+        {
+            return "STT:SkirmishCBoxShortGame";
+        }
+        if (nCtlID == 0x69a)
+        {
+            return "STT:SkirmishCBoxSWAllowed";
+        }
+        if (nCtlID == 0x69d)
+        {
+            return "STT:SkirmishCBoxBuildOffAlly";
+        }
+        if (nCtlID == 0x696)
+        {
+            return "STT:SkirmishCBoxCrates";
+        }
+        if (nCtlID == 0x468)
+        {
+            return "STT:SkirmishMapThumbnail";
+        }
+        if (nCtlID == 0x6ec)
+        {
+            return "STT:SkirmishLabelGameType";
+        }
+        if (nCtlID == 0x5a8)
+        {
+            return "STT:SkirmishLabelScenario";
+        }
+        if (nCtlID == 0x617)
+        {
+            return "STT:SkirmishButtonStartGame";
+        }
+        if (nCtlID == 0x5c0)
+        {
+            return "STT:SkirmishButtonBack";
+        }
+    }
+    else if (category == 0xbb)
+    {
+        if (nCtlID == 0x541)
+        {
+            return "STT:LobbyEditYourName";
+        }
+        if (nCtlID == 0x53e)
+        {
+            return "STT:LobbyListUsers";
+        }
+        if (nCtlID == 0x549)
+        {
+            return "STT:LobbyListGames";
+        }
+        if (nCtlID == 0x53f)
+        {
+            return "STT:LobbyEditOutput";
+        }
+        if (nCtlID == 0x540)
+        {
+            return "STT:LobbyEditInput";
+        }
+        if (nCtlID == 0x6cc)
+        {
+            return "STT:LobbyButtonNew";
+        }
+        if (nCtlID == 0x6cd)
+        {
+            if (DAT_00AC10C8 == 0)
+            {
+                return "STT:LobbyButtonJoin";
+            }
+            return "STT:LobbyButtonObserve";
+        }
+        if (nCtlID == 0x760)
+        {
+            return "STT:ObserverToggle";
+        }
+        if (nCtlID == 0x6ce)
+        {
+            return "STT:LobbyButtonObserve";
+        }
+        if (nCtlID == 0x5c0)
+        {
+            return "STT:LobbyButtonBack";
+        }
+    }
+    else if ((category == 0xbc) || (category == 0xc2))
+    {
+        if (((nCtlID == 0x6d2) || ((nCtlID == 0x6d3 || (nCtlID == 0x6d4)))) ||
+         ((nCtlID == 0x6d5 ||
+          ((((nCtlID == 0x6d6 || (nCtlID == 0x6d7)) || (nCtlID == 0x6d8)) || (nCtlID == 0x6d9))))))
+        {
+            return "STT:HostPictureAcceptance";
+        }
+        if ((((nCtlID == 0x411) || (nCtlID == 0x412)) ||
+          ((nCtlID == 0x413 || ((nCtlID == 0x414 || (nCtlID == 0x415)))))) ||
+         ((nCtlID == 0x416 || ((nCtlID == 0x417 || (nCtlID == 0x418))))))
+        {
+            return "STT:HostComboPlayer";
+        }
+        if ((((nCtlID == 0x6da) || (nCtlID == 0x6db)) || (nCtlID == 0x6dc)) ||
+         (((nCtlID == 0x6dd || (nCtlID == 0x6de)) ||
+          ((nCtlID == 0x6df || ((nCtlID == 0x6e0 || (nCtlID == 0x6e1))))))))
+        {
+            return "STT:HostPictureFlag";
+        }
+        if ((nCtlID == 0x6a1) ||
+         (((((nCtlID == 0x510 || (nCtlID == 0x513)) || (nCtlID == 0x51e)) ||
+           ((nCtlID == 0x514 || (nCtlID == 0x51f)))) || ((nCtlID == 0x520 || (nCtlID == 0x521))))))
+        {
+            return "STT:HostComboCountry";
+        }
+        if ((((nCtlID == 0x6a2) || (nCtlID == 0x522)) || (nCtlID == 0x523)) ||
+         ((((nCtlID == 0x524 || (nCtlID == 0x525)) || (nCtlID == 0x526)) ||
+          ((nCtlID == 0x527 || (nCtlID == 0x528))))))
+        {
+            return "STT:HostComboColor";
+        }
+        if (((((nCtlID == 0x6a3) || ((nCtlID == 0x6a4 || (nCtlID == 0x6a5)))) || (nCtlID == 0x6a6)) ||
+          (((nCtlID == 0x6a7 || (nCtlID == 0x6a8)) || (nCtlID == 0x6aa)))) || (nCtlID == 0x6ab))
+        {
+            return "STT:HostComboStart";
+        }
+        if ((((nCtlID == 0x76d) || (nCtlID == 0x76e)) ||
+          ((nCtlID == 0x76f || ((nCtlID == 0x770 || (nCtlID == 0x771)))))) ||
+         ((nCtlID == 0x772 || ((nCtlID == 0x773 || (nCtlID == 0x774))))))
+        {
+            return "STT:HostComboTeam";
+        }
+        if (nCtlID == 0x529)
+        {
+            return "STT:HostSliderSpeed";
+        }
+        if (nCtlID == 0x402)
+        {
+            return "STT:HostSliderCredits";
+        }
+        if (nCtlID == 0x54f)
+        {
+            return "STT:HostSliderUnit";
+        }
+        if (nCtlID == 1000)
+        {
+            return "STT:HostCBoxRedeploys";
+        }
+        if (nCtlID == 0x54e)
+        {
+            return "STT:HostCBoxShortGame";
+        }
+        if (nCtlID == 0x69a)
+        {
+            return "STT:HostCBoxSWAllowed";
+        }
+        if (nCtlID == 0x69d)
+        {
+            return "STT:HostCBoxBuildOffAlly";
+        }
+        if (nCtlID == 0x54d)
+        {
+            return "STT:HostCBoxCrates";
+        }
+        if (nCtlID == 0x53f)
+        {
+            return "STT:HostEditOutput";
+        }
+        if (nCtlID == 0x540)
+        {
+            return "STT:HostEditInput";
+        }
+        if (nCtlID == 0x468)
+        {
+            return "STT:HostMapThumbnail";
+        }
+        if (nCtlID == 0x5a8)
+        {
+            return "STT:HostLabelScenario";
+        }
+        if (nCtlID == 0x588)
+        {
+            return "STT:HostButtonGo";
+        }
+        if (nCtlID == 0x5aa)
+        {
+            return "STT:HostButtonChooseMap";
+        }
+        if (nCtlID == 2)
+        {
+            if (category == 0xc2)
+            {
+                return "STT:WOLNewGameCancel";
+            }
+            else
+            {
+                return "STT:HostButtonBack";
+            }
+        }
+        if (nCtlID == 0x5c2)
+        {
+            return "STT:WOLPageButton";
+        }
+        if (nCtlID == 0x3ed)
+        {
+            return "STT:EmoteButton";
+        }
+    }
+    else if ((category == 0xbd) || (category == 0xc9))
+    {
+        if ((((nCtlID == 0x6d2) || (nCtlID == 0x6d3)) || (nCtlID == 0x6d4)) ||
+         (((nCtlID == 0x6d5 || (nCtlID == 0x6d6)) ||
+          ((nCtlID == 0x6d7 || ((nCtlID == 0x6d8 || (nCtlID == 0x6d9))))))))
+        {
+            return "STT:GuestPictureAcceptance";
+        }
+        if ((((nCtlID == 0x411) || (nCtlID == 0x412)) || (nCtlID == 0x413)) ||
+         (((nCtlID == 0x414 || (nCtlID == 0x415)) ||
+          ((nCtlID == 0x416 || ((nCtlID == 0x417 || (nCtlID == 0x418))))))))
+        {
+            return "STT:GuestComboPlayer";
+        }
+        if (((((nCtlID == 0x6da) || (nCtlID == 0x6db)) || (nCtlID == 0x6dc)) ||
+          ((nCtlID == 0x6dd || (nCtlID == 0x6de)))) ||
+         ((nCtlID == 0x6df || ((nCtlID == 0x6e0 || (nCtlID == 0x6e1))))))
+        {
+            return "STT:GuestPictureFlag";
+        }
+        if ((((nCtlID == 0x6a1) || (nCtlID == 0x510)) || (nCtlID == 0x513)) ||
+         (((nCtlID == 0x51e || (nCtlID == 0x514)) ||
+          ((nCtlID == 0x51f || ((nCtlID == 0x520 || (nCtlID == 0x521))))))))
+        {
+            return "STT:GuestComboCountry";
+        }
+        if ((((nCtlID == 0x6a2) || (nCtlID == 0x522)) || (nCtlID == 0x523)) ||
+         (((nCtlID == 0x524 || (nCtlID == 0x525)) ||
+          ((nCtlID == 0x526 || ((nCtlID == 0x527 || (nCtlID == 0x528))))))))
+        {
+            return "STT:GuestComboColor";
+        }
+        if (((((nCtlID == 0x6a3) || (nCtlID == 0x6a4)) || (nCtlID == 0x6a5)) ||
+          ((nCtlID == 0x6a6 || (nCtlID == 0x6a7)))) ||
+         ((nCtlID == 0x6a8 || ((nCtlID == 0x6aa || (nCtlID == 0x6ab))))))
+        {
+            return "STT:GuestComboStart";
+        }
+        if ((((nCtlID == 0x76d) || (nCtlID == 0x76e)) || (nCtlID == 0x76f)) ||
+         (((nCtlID == 0x770 || (nCtlID == 0x771)) ||
+          ((nCtlID == 0x772 || ((nCtlID == 0x773 || (nCtlID == 0x774))))))))
+        {
+            return "STT:GuestComboTeam";
+        }
+        if (nCtlID == 0x529)
+        {
+            return "STT:GuestSliderSpeed";
+        }
+        if (nCtlID == 0x402)
+        {
+            return "STT:GuestSliderCredits";
+        }
+        if (nCtlID == 0x54f)
+        {
+            return "STT:GuestSliderUnit";
+        }
+        if (nCtlID == 1000)
+        {
+            return "STT:GuestCBoxRedeploys";
+        }
+        if (nCtlID == 0x54e)
+        {
+            return "STT:GuestCBoxShortGame";
+        }
+        if (nCtlID == 0x69a)
+        {
+            return "STT:GuestCBoxSWAllowed";
+        }
+        if (nCtlID == 0x69d)
+        {
+            return "STT:GuestCBoxBuildOffAlly";
+        }
+        if (nCtlID == 0x54d)
+        {
+            return "STT:GuestCBoxCrates";
+        }
+        if (nCtlID == 0x53f)
+        {
+            return "STT:GuestEditOutput";
+        }
+        if (nCtlID == 0x540)
+        {
+            return "STT:GuestEditInput";
+        }
+        if (nCtlID == 0x468)
+        {
+            return "STT:GuestMapThumbnail";
+        }
+        if (nCtlID == 0x5a8)
+        {
+            return "STT:GuestLabelScenario";
+        }
+        if (nCtlID == 0x59f)
+        {
+            return "STT:GuestButtonAccept";
+        }
+        if (nCtlID == 2)
+        {
+            if (category == 0xc9)
+            {
+                return "STT:WOLNewGameCancel";
+            }
+            else
+            {
+                return "STT:GuestButtonBack";
+            }
+        }
+        if (nCtlID == 0x5c2)
+        {
+            return "STT:WOLPageButton";
+        }
+        if (nCtlID == 0x3ed)
+        {
+            return "STT:EmoteButton";
+        }
+    }
+    else if (category == 0x101)
+    {
+        if (nCtlID == 0x68d)
+        {
+            return "STT:OptionsButtonSneak";
+        }
+        if (nCtlID == 0x68e)
+        {
+            return "STT:OptionsButtonMovies";
+        }
+        if (nCtlID == 0x68f)
+        {
+            return "STT:OptionsButtonCredits";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:OptionsButtonBack";
+        }
+    }
+    else if (category == 0x129)
+    {
+        if (nCtlID == 0x745)
+        {
+            return "GUI:PlayMovie";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:MsnDltButtonBack";
+        }
+        if (nCtlID == 0x744)
+        {
+            return "GUI:SelectMovie";
+        }
+    }
+    else if (category == 0xd5)
+    {
+        if (nCtlID == 0x5ce)
+        {
+            return "STT:MainOptButtonKeyboard";
+        }
+        if (nCtlID == 0x5cd)
+        {
+            return "STT:MainOptButtonNetwork";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:MainOptButtonBack";
+        }
+        if (nCtlID == 0x674)
+        {
+            return "STT:MainOptCBoxStretch";
+        }
+        if (nCtlID == 0x52b)
+        {
+            return "STT:MainOptSliderVisual";
+        }
+        if (nCtlID == 0x6ed)
+        {
+            return "STT:MainOptComboModes";
+        }
+        if (nCtlID == 0x529)
+        {
+            return "STT:MainOptSliderSpeed";
+        }
+        if (nCtlID == 0x50f)
+        {
+            return "STT:MainOptSliderDifficulty";
+        }
+        if (nCtlID == 0x601)
+        {
+            return "STT:MainOptCBoxTargetLines";
+        }
+        if (nCtlID == 0x604)
+        {
+            return "STT:MainOptCBoxHidden";
+        }
+        if (nCtlID == 0x602)
+        {
+            return "STT:MainOptCBoxTooltips";
+        }
+        if (nCtlID == 0x52a)
+        {
+            return "STT:MainOptSliderScroll";
+        }
+        if (nCtlID == 0x51a)
+        {
+            return "STT:MainOptCBoxScrollCoasting";
+        }
+        if (nCtlID == 0x52f)
+        {
+            return "STT:MainOptSliderMusic";
+        }
+        if (nCtlID == 0x532)
+        {
+            return "STT:MainOptSliderSound";
+        }
+        if (nCtlID == 0x536)
+        {
+            return "STT:MainOptSliderVoice";
+        }
+    }
+    else if (category == 0xd7)
+    {
+        if (nCtlID == 0x5d4)
+        {
+            return "STT:MultiOptComboCard";
+        }
+        if (nCtlID == 0x5d1)
+        {
+            return "STT:MultiOptEditSocketNum";
+        }
+        if (nCtlID == 0x5d3)
+        {
+            return "STT:MultiOptEditDestAddr";
+        }
+        if (nCtlID == 0x762)
+        {
+            return "STT:MultiOptSendDelay";
+        }
+        if (nCtlID == 0x5d7)
+        {
+            return "STT:MultiOptPortNumber";
+        }
+        if (nCtlID == 1)
+        {
+            return "STT:MultiOptButtonOk";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:MultiOptButtonCancel";
+        }
+    }
+    else if (category == 0xa3)
+    {
+        if (nCtlID == 0x4c7)
+        {
+            return "STT:KeyboardComboCategory";
+        }
+        if (nCtlID == 0x6e9)
+        {
+            return "STT:KeyboardGroupDescription";
+        }
+        if (nCtlID == 0x4c8)
+        {
+            return "STT:KeyboardListCommands";
+        }
+        if (nCtlID == 0x63c)
+        {
+            return "STT:KeyboardLabelShortcut";
+        }
+        if (nCtlID == 0x63d)
+        {
+            return "STT:KeyboardLabelError";
+        }
+        if (nCtlID == 0x4cd)
+        {
+            return "STT:KeyboardEditEntry";
+        }
+        if (nCtlID == 0x4cf)
+        {
+            return "STT:KeyboardButtonAssign";
+        }
+        if (nCtlID == 0x63b)
+        {
+            return "STT:KeyboardLabelAssigned";
+        }
+        if (nCtlID == 0x4d0)
+        {
+            return "STT:KeyboardButtonResetAll";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:KeyboardButtonBack";
+        }
+    }
+    else if (category == 0x10c)
+    {
+        if (nCtlID == 0x6e7)
+        {
+            return "STT:BriefingLabelContent";
+        }
+        if (nCtlID == 0x423)
+        {
+            return "STT:BriefingButtonReturn";
+        }
+    }
+    else if (category == 0xb6)
+    {
+                if (nCtlID == 0x6c9)
+        {
+            MapValue_00602B90* value = Inline_Probe((int)hWnd);
+            if (value)
+            {
+                int mode = value->FieldC0;
+                if (mode == 3)
+                {
+                    return "STT:ConfirmExitButtonLeaveEx";
+                }
+                if (mode == 2)
+                {
+                    return "STT:ConfirmExitButtonLeave";
+                }
+            }
+            return "STT:Empty";
+        }
+        if (nCtlID == 0x712)
+        {
+            MapValue_00602B90* value = Inline_Probe((int)hWnd);
+            if (value)
+            {
+                int mode = value->FieldC0;
+                if (mode == 4)
+                {
+                    return "STT:ConfirmExitButtonObserve";
+                }
+                if (mode == 5)
+                {
+                    return "STT:ConfirmExitButtonRestart";
+                }
+            }
+            return "STT:Empty";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:ConfirmExitButtonResume";
+        }
+    }
+    else if (category == 0xd9)
+    {
+        if (nCtlID == 0x5c1)
+        {
+            return "STT:ConfirmModeButtonOk";
+        }
+        if (nCtlID == 0x6ca)
+        {
+            return "STT:ConfirmModeButtonCancel";
+        }
+    }
+    else if (category == 0x73)
+    {
+        if ((((nCtlID == 0x411) || (nCtlID == 0x412)) || (nCtlID == 0x413)) ||
+         (((nCtlID == 0x414 || (nCtlID == 0x415)) ||
+          ((nCtlID == 0x416 || ((nCtlID == 0x417 || (nCtlID == 0x418))))))))
+        {
+            return "STT:DiplomacyLabelPlayer";
+        }
+        if ((((((nCtlID == 0x6cf) || (nCtlID == 0x6d0)) || (nCtlID == 0x6d1)) ||
+           ((nCtlID == 0x6d2 || (nCtlID == 0x6d3)))) || (nCtlID == 0x6d4)) || (nCtlID == 0x6d5))
+        {
+            return "STT:DiplomacyCBoxAllies";
+        }
+        if ((((nCtlID == 0x6d6) || (nCtlID == 0x6d7)) ||
+          ((nCtlID == 0x6d8 || (((nCtlID == 0x6d9 || (nCtlID == 0x6e2)) || (nCtlID == 0x6e3)))))) ||
+         (nCtlID == 0x6e4))
+        {
+            return "STT:DiplomacyCBoxListeners";
+        }
+        if ((((nCtlID == 0x419) || (nCtlID == 0x41a)) ||
+            ((nCtlID == 0x41b || ((nCtlID == 0x41c || (nCtlID == 0x41d)))))) ||
+           ((nCtlID == 0x41e || ((nCtlID == 0x41f || (nCtlID == 0x420))))))
+        {
+            return "STT:DiplomacyCBoxKills";
+        }
+        if (nCtlID == 0x423)
+        {
+            return "STT:DiplomacyButtonReturn";
+        }
+        if (nCtlID == 0x730)
+        {
+            return "STT:TauntsOn";
+        }
+    }
+    else if (category == 0xbbb)
+    {
+        if (nCtlID == 0x529)
+        {
+            return "STT:IGGameOptSliderSpeed";
+        }
+        if (nCtlID == 0x52a)
+        {
+            return "STT:IGGameOptSliderScroll";
+        }
+        if (nCtlID == 0x52b)
+        {
+            return "STT:IGGameOptSliderVisual";
+        }
+        if (nCtlID == 0x602)
+        {
+            return "STT:IGGameOptCBoxTooltips";
+        }
+        if (nCtlID == 0x601)
+        {
+            return "STT:IGGameOptCBoxTargetLines";
+        }
+        if (nCtlID == 0x604)
+        {
+            return "STT:IGGameOptCBoxHidden";
+        }
+        if (nCtlID == 0x51a)
+        {
+            return "STT:IGGameOptCBoxScrollCoast";
+        }
+        if (nCtlID == 0x52d)
+        {
+            return "STT:IGGameOptButtonSound";
+        }
+        if (nCtlID == 0x52c)
+        {
+            return "STT:IGGameOptButtonKeyboard";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:IGGameOptButtonBack";
+        }
+    }
+    else if (category == 0x105)
+    {
+        if (nCtlID == 0x405)
+        {
+            return "STT:GenerateCBoxEnvironment";
+        }
+        if (nCtlID == 0x3ea)
+        {
+            return "STT:GenerateCBoxTime";
+        }
+        if (nCtlID == 0x407)
+        {
+            return "STT:GenerateCBoxTheater";
+        }
+        if (nCtlID == 0x406)
+        {
+            return "STT:GenerateCBoxMapSize";
+        }
+        if (nCtlID == 0x408)
+        {
+            return "STT:GenerateCBoxResources";
+        }
+        if (nCtlID == 0x3eb)
+        {
+            return "STT:GenerateSliderNumPlayers";
+        }
+        if (nCtlID == 0x621)
+        {
+            return "STT:GenerateButtonSurprise";
+        }
+        if (nCtlID == 0x620)
+        {
+            return "STT:GenerateButtonPreview";
+        }
+        if (nCtlID == 0x6c2)
+        {
+            return "STT:GenerateButtonLoadMap";
+        }
+        if (nCtlID == 0x6c3)
+        {
+            return "STT:GenerateButtonSaveMap";
+        }
+        if (nCtlID == 0x6c4)
+        {
+            return "STT:GenerateButtonDeleteMap";
+        }
+        if (nCtlID == 0x6c5)
+        {
+            return "STT:GenerateButtonUseMap";
+        }
+        if (nCtlID == 0x5c0)
+        {
+            return "STT:GenerateButtonCancel";
+        }
+    }
+    else if (category == 0x2b5)
+    {
+        if (nCtlID == 0x528)
+        {
+            return "STT:MsnDltListMission";
+        }
+        if (nCtlID == 0x6c8)
+        {
+            return "STT:MsnDltButtonDelete";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:MsnDltButtonBack";
+        }
+    }
+    else if (category == 0x2b4)
+    {
+        if (nCtlID == 0x527)
+        {
+            return "STT:MsnSaveListMission";
+        }
+        if (nCtlID == 0x526)
+        {
+            return "STT:MsnSaveEditName";
+        }
+        if (nCtlID == 0x6c7)
+        {
+            return "STT:MsnSaveButtonSave";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:MsnSaveButtonBack";
+        }
+    }
+    else if (category == 0x108)
+    {
+        if (nCtlID == 0x6d2)
+        {
+            return "STT:MPScoreLabelGame";
+        }
+        if (nCtlID == 0x3ea)
+        {
+            return "STT:MPScoreLabelTime";
+        }
+        if (((((nCtlID == 0x411) || (nCtlID == 0x412)) ||
+           ((nCtlID == 0x413 || ((nCtlID == 0x414 || (nCtlID == 0x415)))))) || (nCtlID == 0x416)) ||
+         ((nCtlID == 0x417 || (nCtlID == 0x418))))
+        {
+            return "STT:MPScoreLabelPlayer";
+        }
+        if (((((nCtlID == 0x419) || (nCtlID == 0x41a)) || (nCtlID == 0x41b)) ||
+            ((nCtlID == 0x41c || (nCtlID == 0x41d)))) ||
+           ((nCtlID == 0x41e || ((nCtlID == 0x41f || (nCtlID == 0x420))))))
+        {
+            return "STT:MPScoreLabelKills";
+        }
+        if ((((nCtlID == 0x6a3) || (nCtlID == 0x6a4)) || (nCtlID == 0x6a9)) ||
+             (((nCtlID == 0x6ac || (nCtlID == 0x6af)) ||
+              ((nCtlID == 0x6b2 || ((nCtlID == 0x6b5 || (nCtlID == 0x6b8))))))))
+        {
+            return "STT:MPScoreLabelLosses";
+        }
+        if (((((nCtlID == 0x6a5) || (nCtlID == 0x6a7)) || (nCtlID == 0x6aa)) ||
+                ((nCtlID == 0x6ad || (nCtlID == 0x6b0)))) ||
+               ((nCtlID == 0x6b3 || ((nCtlID == 0x6b6 || (nCtlID == 0x6b9))))))
+        {
+            return "STT:MPScoreLabelBuilt";
+        }
+        if ((((((nCtlID == 0x6a6) || (nCtlID == 0x6a8)) || (nCtlID == 0x6ab)) ||
+                 ((nCtlID == 0x6ae || (nCtlID == 0x6b1)))) || (nCtlID == 0x6b4)) ||
+               ((nCtlID == 0x6b7 || (nCtlID == 0x6ba))))
+        {
+            return "STT:MPScoreLabelScore";
+        }
+        if (nCtlID == 0x6d1)
+        {
+            return "STT:MPScoreButtonContinue";
+        }
+    }
+    else if (category == 0xb5)
+    {
+        if (nCtlID == 0x521)
+        {
+            return "STT:IGSingleOptButtonControls";
+        }
+        if (nCtlID == 0x51e)
+        {
+            return "STT:IGSingleOptButtonLoad";
+        }
+        if (nCtlID == 0x51f)
+        {
+            return "STT:IGSingleOptButtonSave";
+        }
+        if (nCtlID == 0x520)
+        {
+            return "STT:IGSingleOptButtonDelete";
+        }
+        if (nCtlID == 0x522)
+        {
+            return "STT:IGSingleOptButtonAbort";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:IGSingleOptButtonBack";
+        }
+    }
+    else if (category == 0xbba)
+    {
+        if (nCtlID == 0x521)
+        {
+            return "STT:IGMultiOptButtonControls";
+        }
+        if (nCtlID == 0x522)
+        {
+            return "STT:IGMultiOptButtonAbort";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:IGMultiOptButtonResume";
+        }
+    }
+    else if (category == 0xea)
+    {
+        if ((((nCtlID == 0x640) || (nCtlID == 0x642)) || (nCtlID == 0x641)) ||
+         (((nCtlID == 0x643 || (nCtlID == 0x644)) ||
+          ((nCtlID == 0x645 || ((nCtlID == 0x646 || (nCtlID == 0x647))))))))
+        {
+            return "STT:ReconnectButtonPlayer";
+        }
+        if (((((nCtlID == 0x648) || (nCtlID == 0x649)) || (nCtlID == 0x64a)) ||
+          ((nCtlID == 0x64b || (nCtlID == 0x64c)))) ||
+         ((nCtlID == 0x64d || ((nCtlID == 0x64e || (nCtlID == 0x64f))))))
+        {
+            return "STT:ReconnectProgressPlayer";
+        }
+        if (nCtlID == 0x650)
+        {
+            return "STT:ReconnectLabelTime";
+        }
+        if (nCtlID == 0x651)
+        {
+            return "STT:ReconnectEditInfo";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:ReconnectButtonLeaveGame";
+        }
+    }
+    else if (category == 0x6b)
+    {
+        if (nCtlID == 0x6eb)
+        {
+            return "STT:ScenarioListGameType";
+        }
+        if (nCtlID == 0x553)
+        {
+            return "STT:ScenarioListMaps";
+        }
+        if (nCtlID == 0x468)
+        {
+            return "STT:ScenarioMapThumbnail";
+        }
+        if (nCtlID == 0x6c5)
+        {
+            return "STT:ScenarioButtonUseMap";
+        }
+        if (nCtlID == 0x583)
+        {
+            return "STT:ScenarioButtonRandom";
+        }
+        if (nCtlID == 0x5c0)
+        {
+            return "STT:ScenarioButtonCancel";
+        }
+    }
+    else if (category == 0xb8)
+    {
+        if (nCtlID == 0x52f)
+        {
+            return "STT:SoundOptSliderMusic";
+        }
+        if (nCtlID == 0x532)
+        {
+            return "STT:SoundOptSliderSound";
+        }
+        if (nCtlID == 0x536)
+        {
+            return "STT:SoundOptSliderVoice";
+        }
+        if (nCtlID == 0x530)
+        {
+            return "STT:SoundOptListScore";
+        }
+        if (nCtlID == 0x533)
+        {
+            return "STT:SoundOptCBoxShuffle";
+        }
+        if (nCtlID == 0x534)
+        {
+            return "STT:SoundOptCBoxRepeat";
+        }
+        if (nCtlID == 0x531)
+        {
+            return "STT:SoundOptButtonPlay";
+        }
+        if (nCtlID == 0x535)
+        {
+            return "STT:SoundOptButtonStop";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:SoundOptButtonBack";
+        }
+    }
+    else if (category == 0x103)
+    {
+        if (nCtlID == 0x6f1)
+        {
+            return "STT:StandScoreParTime";
+        }
+        if (nCtlID == 0x6f2)
+        {
+            return "STT:StandScoreYourTime";
+        }
+        if (nCtlID == 0x6f3)
+        {
+            return "STT:StandScoreTitle";
+        }
+        if (nCtlID == 0x6f4)
+        {
+            return "STT:StandScoreMessage";
+        }
+        if (nCtlID == 0x6f6)
+        {
+            return "STT:StandScoreKills";
+        }
+        if (nCtlID == 0x423)
+        {
+            return "STT:StandScoreButtonReturn";
+        }
+    }
+    else if (category == 0xff)
+    {
+        if (nCtlID == 0x3ef)
+        {
+            return "STT:OptionInternetLatency";
+        }
+        if (nCtlID == 0x529)
+        {
+            return "STT:OptionInternetSpeedSlider";
+        }
+        if (nCtlID == 0x521)
+        {
+            return "STT:OptionInternetGameControls";
+        }
+        if (nCtlID == 0x522)
+        {
+            return "STT:OptionInternetAbortMission";
+        }
+        if (nCtlID == 0x675)
+        {
+            return "STT:IGMultiOptButtonResume";
+        }
+    }
+    else if (category == 0x122)
+    {
+        if (nCtlID == 0x6f9)
+        {
+            return "STT:WOLAddBuddyQueryDoNotAsk";
+        }
+        if (nCtlID == 1)
+        {
+            return "STT:WOLAddBuddyQueryYes";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:WOLAddBuddyQueryNo";
+        }
+    }
+    else if (category == 0x112)
+    {
+        if (nCtlID == 0x6f9)
+        {
+            return "STT:WOLAutoLoginDoNotAsk";
+        }
+        if (nCtlID == 1)
+        {
+            return "STT:WOLAutoLoginYes";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:WOLAutoLoginNo";
+        }
+    }
+    else if (category == 0x116)
+    {
+        if (nCtlID == 0x689)
+        {
+            return "STT:WOLBuddyBuddyList";
+        }
+        if (nCtlID == 0x6f0)
+        {
+            return "STT:WOLBuddyWins";
+        }
+        if (nCtlID == 0x6f1)
+        {
+            return "STT:WOLBuddyLosses";
+        }
+        if (nCtlID == 0x701)
+        {
+            return "STT:WOLBuddyDisconnects";
+        }
+        if (nCtlID == 0x6f4)
+        {
+            return "STT:WOLBuddyRank";
+        }
+        if (nCtlID == 0x6f5)
+        {
+            return "STT:WOLBuddyPoints";
+        }
+        if (nCtlID == 0x62b)
+        {
+            return "STT:WOLBuddyCreateGame";
+        }
+        if (nCtlID == 0x62d)
+        {
+            return "STT:WOLBuddyJoin";
+        }
+        if (nCtlID == 0x760)
+        {
+            return "STT:ObserverToggle";
+        }
+        if (nCtlID == 0x5c2)
+        {
+            return "STT:WOLBuddyPage";
+        }
+        if (nCtlID == 0x702)
+        {
+            return "STT:WOLBuddyAdd";
+        }
+        if (nCtlID == 0x703)
+        {
+            return "STT:WOLBuddyRemove";
+        }
+        if (nCtlID == 0x704)
+        {
+            return "STT:WOLBuddyRefresh";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:WOLBuddyBack";
+        }
+    }
+    else if (category == 0x113)
+    {
+        if (nCtlID == 0x55d)
+        {
+            return "STT:WOLLobbyRefreshChannels";
+        }
+        if (nCtlID == 0x53f)
+        {
+            return "STT:LobbyEditOutput";
+        }
+        if (nCtlID == 0x540)
+        {
+            return "STT:LobbyEditInput";
+        }
+        if (nCtlID == 0x3ed)
+        {
+            return "STT:EmoteButton";
+        }
+        if (nCtlID == 0x53d)
+        {
+            return "STT:WOLLobbyChannelList";
+        }
+        if (nCtlID == 0x62b)
+        {
+            return "STT:LobbyButtonNew";
+        }
+        if (nCtlID == 0x62d)
+        {
+            if (DAT_00AC10C8 == 0)
+            {
+                return "STT:LobbyButtonJoin";
+            }
+            return "STT:LobbyButtonObserve";
+        }
+        if (nCtlID == 0x760)
+        {
+            return "STT:ObserverToggle";
+        }
+        if (nCtlID == 0x689)
+        {
+            return "STT:WOLBuddy";
+        }
+        if (nCtlID == 0x688)
+        {
+            return "STT:WOLClan";
+        }
+        if (nCtlID == 0x7a3)
+        {
+            return "STT:WOLTournament";
+        }
+        if (nCtlID == 0x7a6)
+        {
+            return "STT:WOLNews";
+        }
+        if (nCtlID == 0x61f)
+        {
+            return "STT:WOLLobbyOptions";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:WOLLobbyBack";
+        }
+        if (nCtlID == 0x769)
+        {
+            return "STT:WOLGamesortGametype";
+        }
+        if (nCtlID == 0x768)
+        {
+            return "STT:WOLGamesortPassword";
+        }
+        if (nCtlID == 0x767)
+        {
+            return "STT:WOLGamesortReslock";
+        }
+        if (nCtlID == 0x765)
+        {
+            return "STT:WOLGamesortAlpha";
+        }
+        if (nCtlID == 0x766)
+        {
+            return "STT:WOLGamesortPing";
+        }
+        if (nCtlID == 0x76a)
+        {
+            return "STT:WOLPlayersortAlpha";
+        }
+        if (nCtlID == 0x76b)
+        {
+            return "STT:WOLPlayersortRank";
+        }
+        if (nCtlID == 0x76c)
+        {
+            return "STT:WOLPlayersortClan";
+        }
+        if (nCtlID == 0x5c2)
+        {
+            return "STT:WOLPageButton";
+        }
+    }
+    else if (category == 0xfe)
+    {
+        if (nCtlID == 0x3f0)
+        {
+            return "STT:WOLMyInformationLocale";
+        }
+        if (nCtlID == 1)
+        {
+            return "STT:WOLLocaleOK";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:WOLLocaleCancel";
+        }
+    }
+    else if (category == 0x10f)
+    {
+        if (nCtlID == 0x628)
+        {
+            return "STT:WOLLoginNickname";
+        }
+        if (nCtlID == 0x72c)
+        {
+            return "STT:WOLLoginPassword";
+        }
+        if (nCtlID == 0x72d)
+        {
+            return "STT:WOLLoginRemember";
+        }
+        if (nCtlID == 0x539)
+        {
+            return "STT:WOLLoginLogin";
+        }
+        if (nCtlID == 0x6ea)
+        {
+            return "STT:WOLNewAccount";
+        }
+        if (nCtlID == 0x6eb)
+        {
+            return "STT:WOLLoginForget";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:WOLLoginBack";
+        }
+        if (nCtlID == 0x6ec)
+        {
+            return "STT:WOLManageAccount";
+        }
+    }
+    else if (category == 0x11d)
+    {
+        if (nCtlID == 0x628)
+        {
+            return "STT:IGRLogin";
+        }
+        if (nCtlID == 0x72c)
+        {
+            return "STT:WOLLoginPassword";
+        }
+        if (nCtlID == 0x539)
+        {
+            return "STT:WOLLoginLogin";
+        }
+        if (nCtlID == 0x6ea)
+        {
+            return "STT:WOLNewAccount";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:WOLLoginBack";
+        }
+        if (nCtlID == 0x6ec)
+        {
+            return "STT:WOLManageAccount";
+        }
+        if (nCtlID == 0x629)
+        {
+            return "STT:WOLMyInformationServer";
+        }
+        if (nCtlID == 0x62a)
+        {
+            return "STT:WOLMyInformationLocale";
+        }
+        if (nCtlID == 0x6a1)
+        {
+            return "STT:WOLMyInformationCountry";
+        }
+        if (nCtlID == 0x6a2)
+        {
+            return "STT:WOLMyInformationColor";
+        }
+    }
+    else if (category == 0x117)
+    {
+        if (nCtlID == 0x53f)
+        {
+            return "STT:WOLMatchOutput";
+        }
+        if (nCtlID == 0x5c0)
+        {
+            return (DAT_00A8B238 == 4 && DAT_00A8B244 == 3) ? "WOL:WDTMatchBack" : "STT:WOLMatchCancel";
+        }
+    }
+    else if (category == 0x114)
+    {
+        if (nCtlID == 0x628)
+        {
+            return "STT:WOLMyInformationName";
+        }
+        if (nCtlID == 0x629)
+        {
+            return "STT:WOLMyInformationServer";
+        }
+        if (nCtlID == 0x62a)
+        {
+            return "STT:WOLMyInformationLocale";
+        }
+        if (nCtlID == 0x6a1)
+        {
+            return "STT:WOLMyInformationCountry";
+        }
+        if (nCtlID == 0x6a2)
+        {
+            return "STT:WOLMyInformationColor";
+        }
+        if (nCtlID == 0x6ff)
+        {
+            return "STT:WOLMyInformationAutoLogin";
+        }
+        if (nCtlID == 0x6f0)
+        {
+            return "STT:WOLMyInformationWins";
+        }
+        if (nCtlID == 0x6f1)
+        {
+            return "STT:WOLMyInformationLosses";
+        }
+        if (nCtlID == 0x701)
+        {
+            return "STT:WOLMyInformationDisconnects";
+        }
+        if (nCtlID == 0x6f4)
+        {
+            return "STT:WOLMyInformationRank";
+        }
+        if (nCtlID == 0x6f5)
+        {
+            return "STT:WOLMyInformationPoints";
+        }
+        if (nCtlID == 0x687)
+        {
+            return "STT:WOLBuddy";
+        }
+        if (nCtlID == 0x688)
+        {
+            return "STT:WOLClan";
+        }
+        if (nCtlID == 0x7a3)
+        {
+            return "STT:WOLTournament";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:WOLMyInformationBack";
+        }
+        if (nCtlID == 0x6ea)
+        {
+            return "STT:WOLNewAccount";
+        }
+        if (nCtlID == 0x6eb)
+        {
+            return "STT:WOLLoginForget";
+        }
+        if (nCtlID == 0x6ec)
+        {
+            return "STT:WOLManageAccount";
+        }
+        if (nCtlID == 0x773)
+        {
+            return "STT:MatchSameRes";
+        }
+    }
+    else if (category == 0xc3)
+    {
+        if (nCtlID == 0x548)
+        {
+            return "STT:WOLNewGameMaxPlayers";
+        }
+        if (nCtlID == 0x72c)
+        {
+            return "STT:WOLNewGamePassword";
+        }
+        if (nCtlID == 0x629)
+        {
+            return "STT:WOLNewGameTournament";
+        }
+        if (nCtlID == 0x66c)
+        {
+            return "STT:WOLNewGameClanTournament";
+        }
+        if (nCtlID == 1)
+        {
+            return "STT:WOLNewGameOK";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:WOLNewGameCancel";
+        }
+        if (nCtlID == 0x71e)
+        {
+            return "STT:WOLLimitScreenResolution";
+        }
+    }
+    else if (category == 700)
+    {
+        if (nCtlID == 0x5f5)
+        {
+            return "STT:WOLOptionsPage";
+        }
+        if (nCtlID == 0x5f6)
+        {
+            return "STT:WOLOptionsLanguageFilter";
+        }
+        if (nCtlID == 0x5f7)
+        {
+            return "STT:WOLOptionsFind";
+        }
+        if (nCtlID == 0x5f8)
+        {
+            return "STT:WOLOptionsMusic";
+        }
+        if (nCtlID == 0x5f9)
+        {
+            return "STT:WOLOptionsShowAllInLobby";
+        }
+        if (nCtlID == 1)
+        {
+            return "STT:WOLOptionsOk";
+        }
+        if (nCtlID == 0x63a)
+        {
+            return "STT:WOLOptionsSoundOptions";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:WOLOptionsCancel";
+        }
+        if (nCtlID == 0x6ed)
+        {
+            return "STT:MainOptComboModes";
+        }
+        if (nCtlID == 0x5fa)
+        {
+            return "STT:WOLOptionFilterAsian";
+        }
+        if (nCtlID == 0x5fb)
+        {
+            return "STT:WOLOptionFilterNonAsian";
+        }
+        if (nCtlID == 0x775)
+        {
+            return "STT:WOLOptionFilterClan";
+        }
+        if (nCtlID == 0x774)
+        {
+            return "STT:WOLOptionFilterBuddies";
+        }
+    }
+    else if (category == 0x10e)
+    {
+        if (nCtlID == 0x6f0)
+        {
+            return "STT:WOLMyInformationWins";
+        }
+        if (nCtlID == 0x6f1)
+        {
+            return "STT:WOLMyInformationLosses";
+        }
+        if (nCtlID == 0x701)
+        {
+            return "STT:WOLMyInformationDisconnects";
+        }
+        if (nCtlID == 0x6f4)
+        {
+            return "STT:WOLMyInformationRank";
+        }
+        if (nCtlID == 0x6f5)
+        {
+            return "STT:WOLMyInformationPoints";
+        }
+        if (nCtlID == 0x6e0)
+        {
+            return "STT:WOLWelcomeQuickMatch";
+        }
+        if (nCtlID == 0x6e1)
+        {
+            return "STT:WOLWelcomeCustomMatch";
+        }
+        if (nCtlID == 0x6e2)
+        {
+            return "STT:WOLBuddy";
+        }
+        if (nCtlID == 0x6e3)
+        {
+            return "STT:WOLWelcomeWDT";
+        }
+        if (nCtlID == 0x6e4)
+        {
+            return "STT:WOLWelcomeMyInformation";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:WOLWelcomeBack";
+        }
+        if (nCtlID == 0x771)
+        {
+            return "STT:QuickCoop";
+        }
+        if (nCtlID == 0x797)
+        {
+            return "STT:WelcomeUpdate";
+        }
+        if (nCtlID == 0x55f)
+        {
+            return "STT:MainButtonYuriWebSite";
+        }
+    }
+    else if (category == 0x11c)
+    {
+        if (nCtlID == 0x6e0)
+        {
+            return "STT:WOLWelcomeQuickMatch";
+        }
+        if (nCtlID == 0x6e1)
+        {
+            return "STT:WOLWelcomeCustomMatch";
+        }
+        if (nCtlID == 0x6e2)
+        {
+            return "STT:WOLBuddy";
+        }
+        if (nCtlID == 0x6e3)
+        {
+            return "STT:WOLWelcomeWDT";
+        }
+        if (nCtlID == 0x686)
+        {
+            return "STT:WOLWelcomeBack";
+        }
+        if (nCtlID == 0x771)
+        {
+            return "STT:QuickCoop";
+        }
+        if (nCtlID == 0x55f)
+        {
+            return "STT:MainButtonYuriWebSite";
+        }
+    }
+    else if (category == 0xe7)
+    {
+        if (nCtlID == 0x62e)
+        {
+            return "STT:WOLBeginNickMonth";
+        }
+        if (nCtlID == 0x62f)
+        {
+            return "STT:WOLBeginNickDay";
+        }
+        if (nCtlID == 0x630)
+        {
+            return "STT:WOLBeginNickYear";
+        }
+        if (nCtlID == 0x626)
+        {
+            return "STT:WOLBeginNickEmail";
+        }
+        if ((nCtlID == 0x631) || (nCtlID == 0x70a))
+        {
+            return "STT:WOLBeginNickNewsletter";
+        }
+        if (nCtlID == 1)
+        {
+            return "STT:WOLBeginNickContinue";
+        }
+        if (nCtlID == 0x576)
+        {
+            return "STT:WOLBeginNickViewPrivacy";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:WOLBeginNickCancel";
+        }
+    }
+    else if (((category == 0xe6) || (category == 0xf3)) || (category == 0xf4))
+    {
+        if (nCtlID == 1)
+        {
+            return "STT:WOLNewNickOk";
+        }
+        if (nCtlID == 2)
+        {
+            return "STT:WOLNewNickCancel";
+        }
+        if (nCtlID == 0x628)
+        {
+            return "STT:WOLNewNickNickname";
+        }
+        if (nCtlID == 0x72c)
+        {
+            return "STT:WOLNewNickPassword";
+        }
+        if (nCtlID == 0x627)
+        {
+            return "STT:WOLNewNickVerify";
+        }
+        if (nCtlID == 0x5e5)
+        {
+            return "STT:WOLNewNickParentEMail";
+        }
+        if ((nCtlID == 0x66b) || (nCtlID == 0x70b))
+        {
+            return "STT:WOLNewNickSellInfo";
+        }
+    }
+    else if (category == 0x125)
+    {
+        if (nCtlID == 0x686)
+        {
+            return "WOL:WDTFactionBack";
+        }
+        return "WDT:FactionSelectToolTip";
+    }
+    else if (category == 0xbc6)
+    {
+        if ((nCtlID == 0x781) || (nCtlID == 0x782))
+        {
+            return "STT:MPScoreLabelPlayer";
+        }
+        if ((nCtlID == 0x783) || (nCtlID == 0x784))
+        {
+            return "STT:MPScoreLabelKills";
+        }
+        if ((nCtlID == 0x785) || (nCtlID == 0x786))
+        {
+            return "STT:MPScoreLabelLosses";
+        }
+        if ((nCtlID == 0x787) || (nCtlID == 0x788))
+        {
+            return "STT:MPScoreLabelBuilt";
+        }
+        if ((nCtlID == 0x789) || (nCtlID == 0x78a))
+        {
+            return "STT:MPScoreLabelScore";
+        }
+        if (nCtlID == 0x733)
+        {
+            return "STT:MPScoreLabelCampaignName";
+        }
+        if (nCtlID == 0x71b)
+        {
+            return "STT:MPScoreLabelMapName";
+        }
+        if (nCtlID == 0x732)
+        {
+            return "STT:MPScoreLabelDifficulty";
+        }
+        if (nCtlID == 0x6d1)
+        {
+            return "STT:MPCampScoreContinue";
+        }
+        if (nCtlID == 0x5c0)
+        {
+            return "STT:MPCampScoreQuit";
+        }
+        if (nCtlID == 0x3ea)
+        {
+            return "STT:MPScoreLabelTime";
+        }
+        if ((nCtlID == 0x411) || (nCtlID == 0x412))
+        {
+            return "STT:MPScoreLabelPlayer";
+        }
+        if ((nCtlID == 0x6da) || (nCtlID == 0x6db))
+        {
+            return "STT:HostPictureFlag";
+        }
+        if ((nCtlID == 0x6a1) || (nCtlID == 0x510))
+        {
+            return "STT:HostComboCountry";
+        }
+        if ((nCtlID == 0x6a2) || (nCtlID == 0x522))
+        {
+            return "STT:HostComboColor";
+        }
+        if (nCtlID == 0x540)
+        {
+            return "STT:HostEditInput";
+        }
+        if (nCtlID == 0x53f)
+        {
+            return "STT:HostEditOutput";
+        }
+    }
+    else if (category == 0xbc7)
+    {
+        if (nCtlID == 0x733)
+        {
+            return "STT:MPScoreLabelCampaignName";
+        }
+        if (nCtlID == 0x735)
+        {
+            return "STT:MPCampEndCampaignNumber";
+        }
+        if (nCtlID == 0x732)
+        {
+            return "STT:MPScoreLabelDifficulty";
+        }
+        if (nCtlID == 0x3ea)
+        {
+            return "STT:MPCampEndTime";
+        }
+        if ((((nCtlID == 0x411) || (nCtlID == 0x412)) || (nCtlID == 0x73a)) || (nCtlID == 0x739))
+        {
+            return "STT:MPScoreLabelPlayer";
+        }
+        if ((nCtlID == 0x419) || (nCtlID == 0x41a))
+        {
+            return "STT:MPScoreLabelKills";
+        }
+        if ((nCtlID == 0x6a3) || (nCtlID == 0x6a4))
+        {
+            return "STT:MPScoreLabelLosses";
+        }
+        if ((nCtlID == 0x6a5) || (nCtlID == 0x6a7))
+        {
+            return "STT:MPScoreLabelBuilt";
+        }
+        if ((nCtlID == 0x6a6) ||
+                       (((nCtlID == 0x6a8 || (nCtlID == 0x73b)) || (nCtlID == 0x738))))
+        {
+            return "STT:MPScoreLabelScore";
+        }
+        if (nCtlID == 0x6d1)
+        {
+            return "STT:MPScoreButtonContinue";
+        }
+    }
+    return 0;
+}
+
 // GLOBAL: GAMEMD 0x887734 -- shared empty wide string.
 extern const wchar_t DAT_00887734[];
 

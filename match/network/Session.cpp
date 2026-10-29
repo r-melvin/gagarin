@@ -2868,6 +2868,10 @@ void SHAState_0069DB30::FUN_0069DB30(const void* source, ShaState_0069DB30& acc)
     acc.Long[4] += work.Long[4];
 }
 
+// SYNTHETIC: GAMEMD 0x4B57F0
+// ShapeButtonClass::`scalar deleting destructor', emitted beside the
+// constructors below; it calls the out-of-line destructor at 0x69DDC0.
+
 // FUNCTION: GAMEMD 0x69DCF0
 ShapeButtonClass::ShapeButtonClass()
     : ToggleClass(0, 0, 0, 0, 0),

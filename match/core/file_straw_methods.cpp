@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-pinned-PE and RTTI.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // The ordinary destructor at 0x7BA590 matches with /GX omitted; /GX adds
 // exception-handler setup. All three entry spans below match using this set.
 #include "../_layout/file_straw.h"
 #include "../platform/ccfile_class.h"
 
-// SYNTHETIC: GAMEMD 0x477770 -- compiler-generated FileStraw scalar deleting
-// destructor. Full span 0x1E includes RET 4; its two call fields are COFF
-// relocations to the ordinary destructor and operator delete.
+// The scalar deleting destructor 0x477770 is emitted by the stack-FileStraw
+// user (INIClass::FUN_00525A10, platform/ini_class_stream_wrappers.cpp), where
+// only the destructor declaration is visible; under /Ob2 it would otherwise
+// inline the body below instead of calling it.
 
 // FUNCTION: GAMEMD 0x7BA530
 int FileStraw::FUN_006C98E0(void* buffer, int size)

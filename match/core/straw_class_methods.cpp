@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // TD 0x81BFB0 identifies Straw; its three-slot table at 0x7E61F0 and observed
 // member offsets are documented in _layout/straw.h. Full entry-origin spans:
 //   0x6C9850 (0x32), ev_3388e8a6a9a2268601c03555517c6f5b0e5dc9dd1ce374790e7d2b3d6aadb27c
@@ -11,8 +10,10 @@
 // probes. Original high-level names/types for slot 2 remain unknown.
 #include "../_layout/straw.h"
 
-// SYNTHETIC: GAMEMD 0x4AEC10 -- Straw scalar deleting destructor emitted by
-// the virtual destructor; its retail relocation targets were verified.
+// The Straw scalar deleting destructor 0x4AEC10 is emitted by the
+// RandomStraw constructor's TU (platform/tu196_random_straw.cpp), where only
+// the Straw destructor declaration is visible; under /Ob2 it would otherwise
+// inline the body below instead of calling it.
 
 // FUNCTION: GAMEMD 0x6C9850
 Straw::~Straw()

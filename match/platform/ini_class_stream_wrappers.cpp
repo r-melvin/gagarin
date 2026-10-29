@@ -7,6 +7,13 @@
 #include "../_layout/file_straw.h"
 #include "../_layout/file_pipe.h"
 
+// SYNTHETIC: GAMEMD 0x477770 -- FileStraw scalar deleting destructor, emitted
+// here beside the stack FileStraw below; it calls the out-of-line destructor
+// at 0x7BA590 and operator delete.
+// SYNTHETIC: GAMEMD 0x477790 -- FilePipe scalar deleting destructor, emitted
+// here beside the stack FilePipe below; it calls the out-of-line destructor
+// at 0x7BA420 and operator delete.
+
 // FUNCTION: GAMEMD 0x525A10
 // Reset the two list links, then load the INI through a stack FileStraw.
 int INIClass::FUN_00525A10(FileClass* file, unsigned long options)

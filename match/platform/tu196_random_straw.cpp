@@ -606,3 +606,7 @@ int RandomStraw::FUN_006C98E0(void* source, int slen)
 }
 
 // SYNTHETIC: GAMEMD 0x661C70 -- RandomStraw::`scalar deleting destructor' (compiler-generated beside the constructor)
+
+// SYNTHETIC: GAMEMD 0x4AEC10 -- Straw scalar deleting destructor, emitted here
+// because the RandomStraw constructor seats the Straw vtable (xref 0x6616C3);
+// it calls the out-of-line Straw destructor at 0x6C9850 and operator delete.

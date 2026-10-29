@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-pinned-PE and RTTI.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Paired probes: /GX adds EH setup to the ordinary destructor; no-GX
 // reproduces its complete span. The other three bodies match both sets.
 #include "../_layout/file_pipe.h"
@@ -8,8 +7,10 @@
 
 // LIBRARY: GAMEMD 0x7C8B3D -- operator delete(void*).
 
-// SYNTHETIC: GAMEMD 0x477790 -- compiler-generated scalar deleting
-// destructor; its body calls the ordinary destructor at 0x7BA420.
+// The scalar deleting destructor 0x477790 is emitted by the stack-FilePipe
+// user (INIClass::FUN_00526420, platform/ini_class_stream_wrappers.cpp), where
+// only the destructor declaration is visible; under /Ob2 it would otherwise
+// inline the body below instead of calling it.
 
 // FUNCTION: GAMEMD 0x7BA420
 FilePipe::~FilePipe()

@@ -4776,7 +4776,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/file_straw_methods.cpp",
+  "tu": "match/platform/ini_class_stream_wrappers.cpp",
   "addr": "0x477770",
   "sym": "??_GFileStraw@@UAEPAXI@Z",
   "len": "0x1E",
@@ -4785,7 +4785,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/file_pipe_methods.cpp",
+  "tu": "match/platform/ini_class_stream_wrappers.cpp",
   "addr": "0x477790",
   "sym": "??_GFilePipe@@UAEPAXI@Z",
   "len": "0x1E",
@@ -4839,7 +4839,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/straw_class_methods.cpp",
+  "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x4AEC10",
   "sym": "??_GStraw@@UAEPAXI@Z",
   "len": "0x1E",
@@ -4857,7 +4857,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class.cpp",
+  "tu": "match/network/Session.cpp",
   "addr": "0x4B57F0",
   "sym": "??_GShapeButtonClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -28927,7 +28927,7 @@
   "len": "0x642",
   "name": "FUN_00602490",
   "status": "partial",
-  "pct": 28.0
+  "pct": 17.5
  },
  {
   "tu": "match/ui/CampScor.cpp",
@@ -105116,7 +105116,7 @@
   "len": "0x218",
   "name": "CellClass::Load",
   "status": "partial",
-  "pct": 9.7
+  "pct": 15.4
  },
  {
   "tu": "match/map/cell_class_get_coords.cpp",
@@ -133289,6 +133289,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x6040B0",
+  "sym": "?FUN_006040B0@@YIPBDHPAX@Z",
+  "len": "0x268F",
+  "name": "FUN_006040B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/ownrdraw_list_entry_methods.cpp",
   "addr": "0x624460",
   "sym": "??1ListEntry_006255F0@@QAE@XZ",
@@ -146183,8 +146192,8 @@
   "len": "0x85",
   "sym": "?Release@ConnectionPointClass@@UAGKXZ",
   "name": "ConnectionPointClass::Release",
-  "status": "partial",
-  "pct": 18.4,
+  "status": "matched",
+  "pct": 100.0,
   "note": "Candidate calls the real destructor out of line; retail inlines cleanup. Provider and vtable closure remain unproved."
  },
  {
@@ -146214,7 +146223,7 @@
   "sym": "?Release@EnumConnectionPointsClass@@UAGKXZ",
   "name": "EnumConnectionPointsClass::Release",
   "status": "partial",
-  "pct": 15.5,
+  "pct": 93.1,
   "note": "Candidate calls the real destructor out of line; retail inlines cleanup. Provider and vtable closure remain unproved."
  },
  {
