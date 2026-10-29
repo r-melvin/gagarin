@@ -18,14 +18,6 @@ struct UnknownObject_00437050
     bool FUN_00437050(const void* location, int flag);
 };
 
-// GLOBAL: GAMEMD 0x0089C558
-extern "C" unsigned int DAT_0089C558;
-// GLOBAL: GAMEMD 0x0089C55C
-extern "C" unsigned int DAT_0089C55C;
-// GLOBAL: GAMEMD 0x0089C560
-extern "C" unsigned int DAT_0089C560;
-// GLOBAL: GAMEMD 0x0089C564
-extern "C" unsigned int DAT_0089C564;
 
 // Entry 0x4371B0 loads the receiver's vtable from offset 0, then calls its
 // byte offset 0x70 (slot 28 (0x1C)). The target returns int.
@@ -49,8 +41,6 @@ GG_STATIC_ASSERT(sizeof(UnknownObject_004371B0) == 4);
 // FUNCTION: GAMEMD 0x004370B0
 extern "C" int __cdecl FUN_004370B0();
 
-// FUNCTION: GAMEMD 0x00437190
-extern "C" void __cdecl FUN_00437190();
 
 // FUNCTION: GAMEMD 0x004371B0
 extern "C" int FUN_004371B0(

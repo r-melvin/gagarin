@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit TAction.CPP. The name is the source-file string at 0x842bf8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6de10c inside this object's
@@ -29,6 +32,7 @@
 // it in slot 3.
 
 #include "taction_class_mode_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include "../core/id_resolve_command_sweep.h"
 
@@ -54,16 +58,6 @@ extern const double DAT_007E1718;
 extern const double DAT_007F43B8;
 // GLOBAL: GAMEMD 0xB0E688
 extern double DAT_00B0E688;
-// GLOBAL: GAMEMD 0xB0E6C0
-extern double DAT_00B0E6C0;
-// GLOBAL: GAMEMD 0xB0E6C8
-extern int DAT_00B0E6C8;
-// GLOBAL: GAMEMD 0xB0E6CC
-extern int DAT_00B0E6CC;
-// GLOBAL: GAMEMD 0xB0E6D0
-extern int DAT_00B0E6D0;
-// GLOBAL: GAMEMD 0xB0E6D8
-extern double DAT_00B0E6D8;
 
 
 // ---- from the former TAction.cpp ----
@@ -298,28 +292,17 @@ extern DynamicVectorClass<TActionClass*> DAT_00B0F670;
 extern DynamicVectorClass<TActionClass*> DAT_00B0F658;
 extern DynamicVectorClass<TActionClass*> DAT_00B0E658;
 
-// FUNCTION: GAMEMD 0x6DCDA0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006DCDA0()
-{
-    DAT_00B0E6D8 = DAT_00B0E688 / DAT_007F43B8;
-}
+// SYNTHETIC: GAMEMD 0x006DCDA0
+// GLOBAL: GAMEMD 0x00B0E6D8
+double DAT_00B0E6D8 = DAT_00B0E688 / DAT_007F43B8;
 
-// FUNCTION: GAMEMD 0x6DCDC0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006DCDC0()
-{
-    DAT_00B0E6C0 = DAT_007E1718 / DAT_00B0E6D8;
-}
+// SYNTHETIC: GAMEMD 0x006DCDC0
+// GLOBAL: GAMEMD 0x00B0E6C0
+double DAT_00B0E6C0 = DAT_007E1718 / DAT_00B0E6D8;
 
-// FUNCTION: GAMEMD 0x6DCF40
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_006DCF40()
-{
-    DAT_00B0E6D0 = 0;
-    DAT_00B0E6C8 = 0x80;
-    DAT_00B0E6CC = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x006DCF40
+// GLOBAL: GAMEMD 0x00B0E6C8
+MathTblCoord DAT_00B0E6C8;
 
 struct Obj_006E4790;
 

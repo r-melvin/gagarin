@@ -8,6 +8,7 @@
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
+#include "../core/mathtbl_init_shapes.h"
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7F1170
@@ -16,12 +17,6 @@ extern const double DAT_007F1170;
 extern double DAT_00B056E8;
 // GLOBAL: GAMEMD 0xB05720
 extern double DAT_00B05720;
-// GLOBAL: GAMEMD 0xB05728
-extern int DAT_00B05728;
-// GLOBAL: GAMEMD 0xB0572C
-extern int DAT_00B0572C;
-// GLOBAL: GAMEMD 0xB05730
-extern int DAT_00B05730;
 // GLOBAL: GAMEMD 0xB05738
 extern double DAT_00B05738;
 
@@ -37,11 +32,6 @@ double DAT_00B05738 = DAT_00B056E8 / DAT_007F1170;
 // GLOBAL: GAMEMD 0x00B05720
 double DAT_00B05720 = 1.0 / DAT_00B05738;
 
-// FUNCTION: GAMEMD 0x693B30
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00693B30()
-{
-    DAT_00B05730 = 0;
-    DAT_00B05728 = 0x80;
-    DAT_00B0572C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x00693B30
+// GLOBAL: GAMEMD 0x00B05728
+MathTblCoord DAT_00B05728;

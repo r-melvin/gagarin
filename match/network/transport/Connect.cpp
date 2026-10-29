@@ -6,6 +6,7 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 
 #include <string.h>
+#include "../../core/mathtbl_init_shapes.h"
 #include "conn_types.h"
 
 // VTABLE: GAMEMD 0x7E51B4  ConnectionClass (10 slots, slot 9 = _purecall 0x4C9150)
@@ -35,12 +36,6 @@
 extern const double DAT_007E51A0;
 // GLOBAL: GAMEMD 0x89E8B8
 extern double DAT_0089E8B8;
-// GLOBAL: GAMEMD 0x89E8F8
-extern int DAT_0089E8F8;
-// GLOBAL: GAMEMD 0x89E8FC
-extern int DAT_0089E8FC;
-// GLOBAL: GAMEMD 0x89E900
-extern int DAT_0089E900;
 
 // SYNTHETIC: GAMEMD 0x0048BCA0
 // dynamic initializer for DAT_0089E908
@@ -55,14 +50,9 @@ double DAT_0089E8F0 = 1.0 / DAT_0089E908;
 GG_STATIC_ASSERT(sizeof(DAT_0089E908) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_0089E8F0) == 8);
 
-// FUNCTION: GAMEMD 0x48BE40
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0048BE40()
-{
-    DAT_0089E900 = 0;
-    DAT_0089E8F8 = 0x80;
-    DAT_0089E8FC = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x0048BE40
+// GLOBAL: GAMEMD 0x0089E8F8
+MathTblCoord DAT_0089E8F8;
 
 // FUNCTION: GAMEMD 0x48BE60
 ConnectionClass::ConnectionClass(int sendSlots, int receiveSlots, int maxlen,

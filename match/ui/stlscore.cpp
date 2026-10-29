@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit stlscore.cpp. The name is the source-file string at 0x842178
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6c9254 inside this object's
@@ -8,6 +11,7 @@
 //   a separate rename-only change.
 
 #include "../core/trivial_tu223_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -20,39 +24,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007F3F48;
 // GLOBAL: GAMEMD 0xB0BEF0
 extern double DAT_00B0BEF0;
-// GLOBAL: GAMEMD 0xB0BF40
-extern double DAT_00B0BF40;
-// GLOBAL: GAMEMD 0xB0BF48
-extern int DAT_00B0BF48;
-// GLOBAL: GAMEMD 0xB0BF4C
-extern int DAT_00B0BF4C;
-// GLOBAL: GAMEMD 0xB0BF50
-extern int DAT_00B0BF50;
-// GLOBAL: GAMEMD 0xB0BF58
-extern double DAT_00B0BF58;
 
-// FUNCTION: GAMEMD 0x6C8CB0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006C8CB0()
-{
-    DAT_00B0BF58 = DAT_00B0BEF0 / DAT_007F3F48;
-}
+// SYNTHETIC: GAMEMD 0x006C8CB0
+// GLOBAL: GAMEMD 0x00B0BF58
+double DAT_00B0BF58 = DAT_00B0BEF0 / DAT_007F3F48;
 
-// FUNCTION: GAMEMD 0x6C8CD0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006C8CD0()
-{
-    DAT_00B0BF40 = DAT_007E1718 / DAT_00B0BF58;
-}
+// SYNTHETIC: GAMEMD 0x006C8CD0
+// GLOBAL: GAMEMD 0x00B0BF40
+double DAT_00B0BF40 = DAT_007E1718 / DAT_00B0BF58;
 
-// FUNCTION: GAMEMD 0x6C8E50
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_006C8E50()
-{
-    DAT_00B0BF50 = 0;
-    DAT_00B0BF48 = 0x80;
-    DAT_00B0BF4C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x006C8E50
+// GLOBAL: GAMEMD 0x00B0BF48
+MathTblCoord DAT_00B0BF48;
 
 // FUNCTION: GAMEMD 0x6C8E70
 // Returns its receiver.

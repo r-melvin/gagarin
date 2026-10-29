@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 // Full entry-origin spans establish the accesses; source ownership and names
 // remain unknown. The table and pointer result are address-scoped ABI views.
 #include <stddef.h>
+#include "mathtbl_init_shapes.h"
 #include "../_rt/gg_static_assert.h"
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 GG_STATIC_ASSERT(sizeof(void*) == 4);
@@ -21,13 +25,6 @@ extern "C" TableRow_00473940 Table_0081B7C8[11];
 // STRING: GAMEMD 0x00817474
 extern "C" char STR_00817474[];
 // GLOBAL: GAMEMD 0x0089E280 (dword cleared by 0x4739D0)
-extern "C" unsigned int DAT_0089E280;
-// GLOBAL: GAMEMD 0x0089E284
-extern "C" unsigned int DAT_0089E284;
-// GLOBAL: GAMEMD 0x0089E288
-extern "C" unsigned int DAT_0089E288;
-// GLOBAL: GAMEMD 0x0089E28C
-extern "C" unsigned int DAT_0089E28C;
 
 // FUNCTION: GAMEMD 0x00473940
 // ECX carries the index, EAX carries the selected pointer; fastcall is the
@@ -38,11 +35,6 @@ extern "C" void* FUN_00473940(unsigned int index)
     return (void*)STR_00817474;
 }
 
-// FUNCTION: GAMEMD 0x004739D0
-extern "C" void FUN_004739D0()
-{
-    DAT_0089E280 = 0;
-    DAT_0089E284 = 0;
-    DAT_0089E288 = 0;
-    DAT_0089E28C = 0;
-}
+// SYNTHETIC: GAMEMD 0x004739D0
+// GLOBAL: GAMEMD 0x0089E280
+MathTblZero4 DAT_0089E280;

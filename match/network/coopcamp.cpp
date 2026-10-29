@@ -30,6 +30,7 @@
 // claim is made.
 
 #include <math.h>
+#include "../core/mathtbl_init_shapes.h"
 #pragma intrinsic(pow)
 #include "../_layout/ini_class.h"
 
@@ -109,12 +110,6 @@ GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, CapacityIncrement) == 0x14)
 // Declaration: GAMEMD 0x4CAC40 -- engine table helper; stacked double, ST0 result.
 double __cdecl FUN_004CAC40(double value);
 
-// GLOBAL: GAMEMD 0x89F660
-extern int DAT_0089F660;
-// GLOBAL: GAMEMD 0x89F664
-extern int DAT_0089F664;
-// GLOBAL: GAMEMD 0x89F668
-extern int DAT_0089F668;
 
 // SYNTHETIC: GAMEMD 0x49B180
 // Compiler-generated dynamic initializer for the native double storage.
@@ -129,14 +124,9 @@ double DAT_0089F670 = DAT_0089F5A0 / 60.0;
 // GLOBAL: GAMEMD 0x89F658
 double DAT_0089F658 = 1.0 / DAT_0089F670;
 
-// FUNCTION: GAMEMD 0x49B350
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0049B350()
-{
-    DAT_0089F668 = 0;
-    DAT_0089F660 = 0x80;
-    DAT_0089F664 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x0049B350
+// GLOBAL: GAMEMD 0x0089F660
+MathTblCoord DAT_0089F660;
 
 // FUNCTION: GAMEMD 0x49B420
 // Tail-calls a method on a global object.

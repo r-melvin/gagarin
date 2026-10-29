@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Scenario.CPP. The name is the source-file string at 0x83d838
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6835e1 inside this object's
@@ -23,6 +26,7 @@
 // translation units already declared as callees but nothing defined.
 
 #include "../_layout/mp_score_runner.h"
+#include "mathtbl_init_shapes.h"
 #include "scenario_class_methods.h"
 #include "../_layout/obj_004a1d30.h"
 #include "vtable_seating_ctor_family_methods.h"
@@ -750,39 +754,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007F0E38;
 // GLOBAL: GAMEMD 0xB05460
 extern double DAT_00B05460;
-// GLOBAL: GAMEMD 0xB054A8
-extern double DAT_00B054A8;
-// GLOBAL: GAMEMD 0xB054B0
-extern int DAT_00B054B0;
-// GLOBAL: GAMEMD 0xB054B4
-extern int DAT_00B054B4;
-// GLOBAL: GAMEMD 0xB054B8
-extern int DAT_00B054B8;
-// GLOBAL: GAMEMD 0xB054C0
-extern double DAT_00B054C0;
 
-// FUNCTION: GAMEMD 0x6830A0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006830A0()
-{
-    DAT_00B054C0 = DAT_00B05460 / DAT_007F0E38;
-}
+// SYNTHETIC: GAMEMD 0x006830A0
+// GLOBAL: GAMEMD 0x00B054C0
+double DAT_00B054C0 = DAT_00B05460 / DAT_007F0E38;
 
-// FUNCTION: GAMEMD 0x6830C0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006830C0()
-{
-    DAT_00B054A8 = DAT_007E1718 / DAT_00B054C0;
-}
+// SYNTHETIC: GAMEMD 0x006830C0
+// GLOBAL: GAMEMD 0x00B054A8
+double DAT_00B054A8 = DAT_007E1718 / DAT_00B054C0;
 
-// FUNCTION: GAMEMD 0x683240
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00683240()
-{
-    DAT_00B054B8 = 0;
-    DAT_00B054B0 = 0x80;
-    DAT_00B054B4 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x00683240
+// GLOBAL: GAMEMD 0x00B054B0
+MathTblCoord DAT_00B054B0;
 
 // FUNCTION: GAMEMD 0x6832B0
 // Empty function.

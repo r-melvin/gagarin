@@ -32,6 +32,7 @@
 // /Ob2 expands proven global array constructors/destructors; __xc order is
 // confirmed by ev_182d7497bcb677f15b6407900116870a45444b90af558c3036740f7b8ac401a4.
 #include <string.h>
+#include "../core/mathtbl_init_shapes.h"
 #include <wchar.h>
 #include <time.h>
 #include <stdio.h>
@@ -94,12 +95,6 @@ extern void* DAT_00B77F60;
 extern const double DAT_007F0290;
 // GLOBAL: GAMEMD 0xAC6650
 extern double DAT_00AC6650;
-// GLOBAL: GAMEMD 0xAFA420
-extern int DAT_00AFA420;
-// GLOBAL: GAMEMD 0xAFA424
-extern int DAT_00AFA424;
-// GLOBAL: GAMEMD 0xAFA428
-extern int DAT_00AFA428;
 // GLOBAL: GAMEMD 0xB04878
 extern unsigned char DAT_00B04878;
 // GLOBAL: GAMEMD 0xB04884
@@ -892,14 +887,9 @@ double DAT_00AFA410 = 1.0 / DAT_00AFA460;
 GG_STATIC_ASSERT(sizeof(DAT_00AFA460) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00AFA410) == 8);
 
-// FUNCTION: GAMEMD 0x646C50
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00646C50()
-{
-    DAT_00AFA428 = 0;
-    DAT_00AFA420 = 0x80;
-    DAT_00AFA424 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x00646C50
+// GLOBAL: GAMEMD 0x00AFA420
+MathTblCoord DAT_00AFA420;
 
 // FUNCTION: GAMEMD 0x646C90
 Obj_00646CE0::Obj_00646CE0()

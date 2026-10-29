@@ -30,6 +30,7 @@
 // Functions ordered ascending by retail address.
 
 #include "event_class_ctors.h"
+#include "../core/mathtbl_init_shapes.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -40,12 +41,6 @@
 extern const double DAT_007E8818;
 // GLOBAL: GAMEMD 0x8A39A0
 extern double DAT_008A39A0;
-// GLOBAL: GAMEMD 0x8A39E0
-extern int DAT_008A39E0;
-// GLOBAL: GAMEMD 0x8A39E4
-extern int DAT_008A39E4;
-// GLOBAL: GAMEMD 0x8A39E8
-extern int DAT_008A39E8;
 
 // SYNTHETIC: GAMEMD 0x004C6390
 // dynamic initializer for DAT_008A39F0
@@ -60,14 +55,9 @@ double DAT_008A39D8 = 1.0 / DAT_008A39F0;
 GG_STATIC_ASSERT(sizeof(DAT_008A39F0) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_008A39D8) == 8);
 
-// FUNCTION: GAMEMD 0x4C6530
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004C6530()
-{
-    DAT_008A39E8 = 0;
-    DAT_008A39E0 = 0x80;
-    DAT_008A39E4 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x004C6530
+// GLOBAL: GAMEMD 0x008A39E0
+MathTblCoord DAT_008A39E0;
 
 // FUNCTION: GAMEMD 0x4C65A0  EventClass::EventClass(int, SpecialPayload)
 // GLOBAL: GAMEMD 0xA8ED84

@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. Small leaf bodies
 //   from the 0x54E000-0x6ABD00 range; receivers are placeholder views of the members touched.
@@ -6,6 +9,7 @@
 // Address index: 0x5DAF20 0x69E070 0x5DA040 0x5DA080 0x5FA440 0x5FA470 0x660BB0 0x660C50 0x5BB260 0x5CB400 0x6ABD10 0x5FA2E0 0x5FA310 0x5F0010 0x5F0040
 
 #include <stddef.h>
+#include "mathtbl_init_shapes.h"
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc)
@@ -22,24 +26,10 @@ bool __cdecl FUN_005DAF20()
     return false;
 }
 
-// GLOBAL: GAMEMD 0xB077A0
-extern int DAT_00B077A0;
-// GLOBAL: GAMEMD 0xB077A4
-extern int DAT_00B077A4;
-// GLOBAL: GAMEMD 0xB077A8
-extern int DAT_00B077A8;
-// GLOBAL: GAMEMD 0xB077AC
-extern int DAT_00B077AC;
 
-// FUNCTION: GAMEMD 0x69E070
-// Zero the four adjacent words.
-void __cdecl FUN_0069E070()
-{
-    DAT_00B077A0 = 0;
-    DAT_00B077A4 = 0;
-    DAT_00B077A8 = 0;
-    DAT_00B077AC = 0;
-}
+// SYNTHETIC: GAMEMD 0x0069E070
+// GLOBAL: GAMEMD 0x00B077A0
+MathTblZero4 DAT_00B077A0;
 
 // FUNCTION: GAMEMD 0x5DA040
 // Sum a weight for every flag set in the byte.

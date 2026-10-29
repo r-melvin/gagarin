@@ -64,6 +64,7 @@
 // The element copy ctor 0x7B4690 (__thiscall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
 
 #include "../_layout/session_class.h"
+#include "../core/mathtbl_init_shapes.h"
 #include "../platform/ccini_class_methods.h"
 #include "../platform/ccfile_class.h"
 #include <stdio.h>
@@ -1617,12 +1618,6 @@ template class DynamicVectorClass<Wstring>;
 extern const double DAT_007F1190;
 // GLOBAL: GAMEMD 0xB057E8
 extern double DAT_00B057E8;
-// GLOBAL: GAMEMD 0xB07768
-extern int DAT_00B07768;
-// GLOBAL: GAMEMD 0xB0776C
-extern int DAT_00B0776C;
-// GLOBAL: GAMEMD 0xB07770
-extern int DAT_00B07770;
 
 // SYNTHETIC: GAMEMD 0x00696D50
 // dynamic initializer for DAT_00B07778
@@ -1637,14 +1632,9 @@ double DAT_00B07760 = 1.0 / DAT_00B07778;
 GG_STATIC_ASSERT(sizeof(DAT_00B07778) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00B07760) == 8);
 
-// FUNCTION: GAMEMD 0x696EF0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00696EF0()
-{
-    DAT_00B07770 = 0;
-    DAT_00B07768 = 0x80;
-    DAT_00B0776C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x00696EF0
+// GLOBAL: GAMEMD 0x00B07768
+MathTblCoord DAT_00B07768;
 
 // FUNCTION: GAMEMD 0x00696F10
 int Obj_00696F10::FUN_00696F10() const

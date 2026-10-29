@@ -28,6 +28,7 @@
 // translation units already declared as callees but nothing defined.
 
 #include <windows.h>
+#include "../core/mathtbl_init_shapes.h"
 
 extern int DAT_00816108;
 struct Rec12_008B4040 { int key; int unknown_04; int unknown_08; };
@@ -271,12 +272,6 @@ struct Obj_004F4C20
 extern const double DAT_007E94E0;
 // GLOBAL: GAMEMD 0x8B3FA8
 extern double DAT_008B3FA8;
-// GLOBAL: GAMEMD 0x8B40A8
-extern int DAT_008B40A8;
-// GLOBAL: GAMEMD 0x8B40AC
-extern int DAT_008B40AC;
-// GLOBAL: GAMEMD 0x8B40B0
-extern int DAT_008B40B0;
 
 // SYNTHETIC: GAMEMD 0x004E3160
 // dynamic initializer for DAT_008B40B8
@@ -291,14 +286,9 @@ double DAT_008B40A0 = 1.0 / DAT_008B40B8;
 GG_STATIC_ASSERT(sizeof(DAT_008B40B8) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_008B40A0) == 8);
 
-// FUNCTION: GAMEMD 0x4E3300
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004E3300()
-{
-    DAT_008B40B0 = 0;
-    DAT_008B40A8 = 0x80;
-    DAT_008B40AC = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x004E3300
+// GLOBAL: GAMEMD 0x008B40A8
+MathTblCoord DAT_008B40A8;
 
 // FUNCTION: GAMEMD 0x004E4580
 bool FUN_004E4580(int index)

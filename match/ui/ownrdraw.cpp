@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Original translation unit ownrdraw.cpp. The name is the source-file string at 0x833730
 //   in retail gamemd.exe v1.001, passed by the assert at 0x604079 inside this object's
@@ -122,6 +125,7 @@
 // false:   XOR AL,AL / RET      ; return false
 
 #include "../core/const_store_leaf_sweep.h"
+#include "../core/mathtbl_init_shapes.h"
 
 // VTABLE: GAMEMD 0x7E35A8
 class Animate
@@ -616,16 +620,6 @@ extern const double DAT_007E1718;
 extern const double DAT_007EF700;
 // GLOBAL: GAMEMD 0xAC1B40
 extern double DAT_00AC1B40;
-// GLOBAL: GAMEMD 0xAC4838
-extern double DAT_00AC4838;
-// GLOBAL: GAMEMD 0xAC4888
-extern int DAT_00AC4888;
-// GLOBAL: GAMEMD 0xAC488C
-extern int DAT_00AC488C;
-// GLOBAL: GAMEMD 0xAC4890
-extern int DAT_00AC4890;
-// GLOBAL: GAMEMD 0xAC48A0
-extern double DAT_00AC48A0;
 
 // ---- from the former ownrdraw.cpp ----
 //   assert string "D:\ra2mdpost\ownrdraw.cpp" at 0x833730.
@@ -707,28 +701,17 @@ __forceinline void Obj_00626250::Inline_Release()
     }
 }
 
-// FUNCTION: GAMEMD 0x600370
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00600370()
-{
-    DAT_00AC48A0 = DAT_00AC1B40 / DAT_007EF700;
-}
+// SYNTHETIC: GAMEMD 0x00600370
+// GLOBAL: GAMEMD 0x00AC48A0
+double DAT_00AC48A0 = DAT_00AC1B40 / DAT_007EF700;
 
-// FUNCTION: GAMEMD 0x600390
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00600390()
-{
-    DAT_00AC4838 = DAT_007E1718 / DAT_00AC48A0;
-}
+// SYNTHETIC: GAMEMD 0x00600390
+// GLOBAL: GAMEMD 0x00AC4838
+double DAT_00AC4838 = DAT_007E1718 / DAT_00AC48A0;
 
-// FUNCTION: GAMEMD 0x600510
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00600510()
-{
-    DAT_00AC4890 = 0;
-    DAT_00AC4888 = 0x80;
-    DAT_00AC488C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x00600510
+// GLOBAL: GAMEMD 0x00AC4888
+MathTblCoord DAT_00AC4888;
 
 // GLOBAL: GAMEMD 0xAC1DF0, 0xAC4604, 0xAC4624, 0xAC1890, 0xAC18A4, 0xAC1CB0,
 //   0xAC4618, 0xAC184C, 0xAC4628, 0xAC4880, 0xAC1DD8, 0xAC1B98, 0xAC1B94,
@@ -2085,14 +2068,9 @@ bool FUN_0060CAF0(int nKey)
 
     int category = value->Field6C;
 
-    if (category == 0xBC || category == 0xBD || category == 0x102 ||
+    return value->FieldD5 = (category == 0xBC || category == 0xBD || category == 0x102 ||
         category == 0xC2 || category == 0xC9 || category == 0xBC6 ||
-        category == 0x105 || category == 0x6B || category == 0x113)
-    {
-        return value->FieldD5 = true;
-    }
-
-    return value->FieldD5 = false;
+        category == 0x105 || category == 0x6B || category == 0x113);
 }
 
 // FUNCTION: GAMEMD 0x60CBA0  FUN_0060CBA0 (__fastcall)
@@ -2128,10 +2106,7 @@ bool FUN_0060CCC0(int nKey)
 
     int category = value->Field6C;
 
-    if (category == 0x103 || category == 0xBC7)
-        return value->FieldD7 = true;
-
-    return value->FieldD7 = false;
+    return value->FieldD7 = (category == 0x103 || category == 0xBC7);
 }
 
 // FUNCTION: GAMEMD 0x60CD50  FUN_0060CD50 (__fastcall)
@@ -2151,12 +2126,7 @@ bool FUN_0060CDB0(int nKey)
 
     int category = value->Field6C;
 
-    if (category == 0x108 || category == 0xBC6)
-    {
-        return value->FieldD8 = true;
-    }
-
-    return value->FieldD8 = false;
+    return value->FieldD8 = (category == 0x108 || category == 0xBC6);
 }
 
 // FUNCTION: GAMEMD 0x60CE40  FUN_0060CE40 (__fastcall)

@@ -9,6 +9,7 @@
 //   a separate rename-only change.
 
 #include "../core/empty_function_family_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include "../core/trivial_tu167_methods.h"
 
@@ -23,12 +24,6 @@
 extern const double DAT_007EF378;
 // GLOBAL: GAMEMD 0xAC14B0
 extern double DAT_00AC14B0;
-// GLOBAL: GAMEMD 0xAC14F0
-extern int DAT_00AC14F0;
-// GLOBAL: GAMEMD 0xAC14F4
-extern int DAT_00AC14F4;
-// GLOBAL: GAMEMD 0xAC14F8
-extern int DAT_00AC14F8;
 
 // SYNTHETIC: GAMEMD 0x005FA100
 // dynamic initializer for DAT_00AC1500
@@ -43,14 +38,9 @@ double DAT_00AC14E8 = 1.0 / DAT_00AC1500;
 GG_STATIC_ASSERT(sizeof(DAT_00AC1500) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00AC14E8) == 8);
 
-// FUNCTION: GAMEMD 0x5FA2A0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005FA2A0()
-{
-    DAT_00AC14F8 = 0;
-    DAT_00AC14F0 = 0x80;
-    DAT_00AC14F4 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x005FA2A0
+// GLOBAL: GAMEMD 0x00AC14F0
+MathTblCoord DAT_00AC14F0;
 
 // FUNCTION: GAMEMD 0x005FA430
 void FUN_005FA430()

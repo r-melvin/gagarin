@@ -19,6 +19,7 @@
 //   cross-checked against YRpp.
 
 #include "../ai/slot_grid_find_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
@@ -71,12 +72,6 @@ extern "C" void __cdecl GameDelete(void* pMem);
 extern const double DAT_007E3A18;
 // GLOBAL: GAMEMD 0x89C398
 extern double DAT_0089C398;
-// GLOBAL: GAMEMD 0x89C458
-extern int DAT_0089C458;
-// GLOBAL: GAMEMD 0x89C45C
-extern int DAT_0089C45C;
-// GLOBAL: GAMEMD 0x89C460
-extern int DAT_0089C460;
 
 // SYNTHETIC: GAMEMD 0x0042FFD0
 // dynamic initializer for DAT_0089C468
@@ -91,14 +86,11 @@ double DAT_0089C450 = 1.0 / DAT_0089C468;
 GG_STATIC_ASSERT(sizeof(DAT_0089C468) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_0089C450) == 8);
 
-// FUNCTION: GAMEMD 0x430170
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00430170()
-{
-    DAT_0089C460 = 0;
-    DAT_0089C458 = 0x80;
-    DAT_0089C45C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x00430170
+// dynamic initializer for DAT_0089C458
+// GLOBAL: GAMEMD 0x0089C458
+MathTblCoord DAT_0089C458;
+GG_STATIC_ASSERT(sizeof(DAT_0089C458) == 0xC);
 
 // FUNCTION: GAMEMD 0x430580
 // Empty function that pops its stack arguments.

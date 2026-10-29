@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Conquer.CPP. The name is the source-file string at 0x81d4f8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x48cb8e inside this object's
@@ -31,6 +34,7 @@
 //   cross-checked against YRpp.
 
 #include "empty_function_family_methods.h"
+#include "mathtbl_init_shapes.h"
 
 #include "techno_type_class_getbytype_methods.h"
 
@@ -295,39 +299,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007E51E0;
 // GLOBAL: GAMEMD 0x89E948
 extern double DAT_0089E948;
-// GLOBAL: GAMEMD 0x89E988
-extern double DAT_0089E988;
-// GLOBAL: GAMEMD 0x89E990
-extern int DAT_0089E990;
-// GLOBAL: GAMEMD 0x89E994
-extern int DAT_0089E994;
-// GLOBAL: GAMEMD 0x89E998
-extern int DAT_0089E998;
-// GLOBAL: GAMEMD 0x89E9A0
-extern double DAT_0089E9A0;
 
-// FUNCTION: GAMEMD 0x48C6E0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0048C6E0()
-{
-    DAT_0089E9A0 = DAT_0089E948 / DAT_007E51E0;
-}
+// SYNTHETIC: GAMEMD 0x0048C6E0
+// GLOBAL: GAMEMD 0x0089E9A0
+double DAT_0089E9A0 = DAT_0089E948 / DAT_007E51E0;
 
-// FUNCTION: GAMEMD 0x48C700
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0048C700()
-{
-    DAT_0089E988 = DAT_007E1718 / DAT_0089E9A0;
-}
+// SYNTHETIC: GAMEMD 0x0048C700
+// GLOBAL: GAMEMD 0x0089E988
+double DAT_0089E988 = DAT_007E1718 / DAT_0089E9A0;
 
-// FUNCTION: GAMEMD 0x48C880
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0048C880()
-{
-    DAT_0089E998 = 0;
-    DAT_0089E990 = 0x80;
-    DAT_0089E994 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x0048C880
+// GLOBAL: GAMEMD 0x0089E990
+MathTblCoord DAT_0089E990;
 
 // FUNCTION: GAMEMD 0x48C8A0
 // Empty function.

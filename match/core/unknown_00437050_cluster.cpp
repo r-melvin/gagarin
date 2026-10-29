@@ -1,9 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 // Retail gamemd.exe v1.001 instructions and relocation targets were confirmed
 // from full entry-bounded disassembly, raw memory reads and focused REA records.
 
 #include "unknown_00437050_cluster.h"
+#include "mathtbl_init_shapes.h"
 
 // FUNCTION: GAMEMD 0x00437050
 bool UnknownObject_00437050::FUN_00437050(const void* location, int flag)
@@ -23,14 +27,9 @@ extern "C" int __cdecl FUN_004370B0()
     return 0x13;
 }
 
-// FUNCTION: GAMEMD 0x00437190
-extern "C" void __cdecl FUN_00437190()
-{
-    DAT_0089C558 = 0;
-    DAT_0089C55C = 0;
-    DAT_0089C560 = 0;
-    DAT_0089C564 = 0;
-}
+// SYNTHETIC: GAMEMD 0x00437190
+// GLOBAL: GAMEMD 0x0089C558
+MathTblZero4 DAT_0089C558;
 
 // FUNCTION: GAMEMD 0x004371B0
 extern "C" int FUN_004371B0(

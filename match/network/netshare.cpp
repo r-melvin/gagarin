@@ -20,6 +20,7 @@
 //   0x7C8B3D operator delete (all reloc).
 
 #include "../economy/netshare_slot_nodes.h"
+#include "../core/mathtbl_init_shapes.h"
 
 // The playable count as the two release paths want it: one extra slot opens up
 // when the extra-slot flag is clear and there is room for it.
@@ -55,16 +56,6 @@ extern const double DAT_007E1718;
 extern const double DAT_007EEF18;
 // GLOBAL: GAMEMD 0xAC0CE8
 extern double DAT_00AC0CE8;
-// GLOBAL: GAMEMD 0xAC10E8
-extern double DAT_00AC10E8;
-// GLOBAL: GAMEMD 0xAC1148
-extern int DAT_00AC1148;
-// GLOBAL: GAMEMD 0xAC114C
-extern int DAT_00AC114C;
-// GLOBAL: GAMEMD 0xAC1150
-extern int DAT_00AC1150;
-// GLOBAL: GAMEMD 0xAC1160
-extern double DAT_00AC1160;
 
 
 // ---- from the former netshare_chat_005e2670.cpp ----
@@ -865,28 +856,17 @@ void FUN_005E23A0()
     SendMessageA(item, 0x4DC, 0, 0);
 }
 
-// FUNCTION: GAMEMD 0x5E2460
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005E2460()
-{
-    DAT_00AC1160 = DAT_00AC0CE8 / DAT_007EEF18;
-}
+// SYNTHETIC: GAMEMD 0x005E2460
+// GLOBAL: GAMEMD 0x00AC1160
+double DAT_00AC1160 = DAT_00AC0CE8 / DAT_007EEF18;
 
-// FUNCTION: GAMEMD 0x5E2480
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005E2480()
-{
-    DAT_00AC10E8 = DAT_007E1718 / DAT_00AC1160;
-}
+// SYNTHETIC: GAMEMD 0x005E2480
+// GLOBAL: GAMEMD 0x00AC10E8
+double DAT_00AC10E8 = DAT_007E1718 / DAT_00AC1160;
 
-// FUNCTION: GAMEMD 0x5E2600
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005E2600()
-{
-    DAT_00AC1150 = 0;
-    DAT_00AC1148 = 0x80;
-    DAT_00AC114C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x005E2600
+// GLOBAL: GAMEMD 0x00AC1148
+MathTblCoord DAT_00AC1148;
 
 #include "../core/string_class.h"
 

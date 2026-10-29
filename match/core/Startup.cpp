@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Startup.CPP. The name is the source-file string at 0x840e0c
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6bc2d3 inside this object's
@@ -39,6 +42,7 @@
 // Factory slot identities follow the native tables recorded below.
 
 #include "class_factory.h"
+#include "mathtbl_init_shapes.h"
 #include "../_layout/abstract_class.h"
 #include "../movement/loco_base.h"
 #include "../_layout/side_class.h"
@@ -650,39 +654,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007F3700;
 // GLOBAL: GAMEMD 0xB0BC70
 extern double DAT_00B0BC70;
-// GLOBAL: GAMEMD 0xB0BCC0
-extern double DAT_00B0BCC0;
-// GLOBAL: GAMEMD 0xB0BCC8
-extern int DAT_00B0BCC8;
-// GLOBAL: GAMEMD 0xB0BCCC
-extern int DAT_00B0BCCC;
-// GLOBAL: GAMEMD 0xB0BCD0
-extern int DAT_00B0BCD0;
-// GLOBAL: GAMEMD 0xB0BCD8
-extern double DAT_00B0BCD8;
 
-// FUNCTION: GAMEMD 0x6BB0A0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006BB0A0()
-{
-    DAT_00B0BCD8 = DAT_00B0BC70 / DAT_007F3700;
-}
+// SYNTHETIC: GAMEMD 0x006BB0A0
+// GLOBAL: GAMEMD 0x00B0BCD8
+double DAT_00B0BCD8 = DAT_00B0BC70 / DAT_007F3700;
 
-// FUNCTION: GAMEMD 0x6BB0C0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006BB0C0()
-{
-    DAT_00B0BCC0 = DAT_007E1718 / DAT_00B0BCD8;
-}
+// SYNTHETIC: GAMEMD 0x006BB0C0
+// GLOBAL: GAMEMD 0x00B0BCC0
+double DAT_00B0BCC0 = DAT_007E1718 / DAT_00B0BCD8;
 
-// FUNCTION: GAMEMD 0x6BB240
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_006BB240()
-{
-    DAT_00B0BCD0 = 0;
-    DAT_00B0BCC8 = 0x80;
-    DAT_00B0BCCC = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x006BB240
+// GLOBAL: GAMEMD 0x00B0BCC8
+MathTblCoord DAT_00B0BCC8;
 
 // FUNCTION: GAMEMD 0x6BB2E0
 inline bool FUN_006BB2E0(const char* key, const char* subkey, const char* value)

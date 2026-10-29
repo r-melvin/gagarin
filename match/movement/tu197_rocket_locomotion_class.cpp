@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | original | YRpp-cross-check
 //   Original translation unit TU197 of retail gamemd.exe v1.001; its source-file name is
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x661cb0-0x6635ef,
@@ -22,75 +25,55 @@ extern "C" const CLSID CLSID_RocketLocomotion =
 
 // The diagonal of a 256x256-lepton cell. The two squares are the same
 // expression, so cl computes the power once and doubles it with `FADD ST,ST`.
-// FUNCTION: GAMEMD 0x661CB0
-void Init_DAT_00B04E20()
-{
-    DAT_00B04E20 = FUN_004CAC40(pow(256.0, 2.0) + pow(256.0, 2.0));
-}
+// SYNTHETIC: GAMEMD 0x00661CB0
+// GLOBAL: GAMEMD 0x00B04E20
+double DAT_00B04E20 = FUN_004CAC40(pow(256.0, 2.0) + pow(256.0, 2.0));
 
 // The cell diagonal cut into sixtieths.
-// FUNCTION: GAMEMD 0x661CE0
-void Init_DAT_00B04E70()
-{
-    DAT_00B04E70 = DAT_00B04E20 / DAT_007F0B08;
-}
+// SYNTHETIC: GAMEMD 0x00661CE0
+// GLOBAL: GAMEMD 0x00B04E70
+double DAT_00B04E70 = DAT_00B04E20 / DAT_007F0B08;
 
 // Its reciprocal, so the hot path multiplies instead of dividing.
-// FUNCTION: GAMEMD 0x661D00
-void Init_DAT_00B04E58()
-{
-    DAT_00B04E58 = 1.0 / DAT_00B04E70;
-}
+// SYNTHETIC: GAMEMD 0x00661D00
+// GLOBAL: GAMEMD 0x00B04E58
+double DAT_00B04E58 = 1.0 / DAT_00B04E70;
 
 // Forty-five degrees in radians.
-// FUNCTION: GAMEMD 0x661D20
-void Init_DAT_00B04E50()
-{
-    DAT_00B04E50 = DAT_007F0B10 * 45.0;
-}
+// SYNTHETIC: GAMEMD 0x00661D20
+// GLOBAL: GAMEMD 0x00B04E50
+double DAT_00B04E50 = DAT_007F0B10 * 45.0;
 
 // Sixty degrees in radians.
-// FUNCTION: GAMEMD 0x661D40
-void Init_DAT_00B04E28()
-{
-    DAT_00B04E28 = DAT_007F0B10 * 60.0;
-}
+// SYNTHETIC: GAMEMD 0x00661D40
+// GLOBAL: GAMEMD 0x00B04E28
+double DAT_00B04E28 = DAT_007F0B10 * 60.0;
 
 // Ninety degrees in radians.
-// FUNCTION: GAMEMD 0x661D60
-void Init_DAT_00B04E00()
-{
-    DAT_00B04E00 = DAT_007F0B10 * 90.0;
-}
+// SYNTHETIC: GAMEMD 0x00661D60
+// GLOBAL: GAMEMD 0x00B04E00
+double DAT_00B04E00 = DAT_007F0B10 * 90.0;
 
 // Half the cell diagonal projected through the thirty degrees between the first
 // two angles, truncated to an integer number of leptons.
-// FUNCTION: GAMEMD 0x661D80
-void Init_DAT_00B04E78()
-{
-    DAT_00B04E78 = (int)(FUN_004CAD50(DAT_00B04E00 - DAT_00B04E28) * DAT_00B04E20 * 0.5);
-}
+// SYNTHETIC: GAMEMD 0x00661D80
+// GLOBAL: GAMEMD 0x00B04E78
+int DAT_00B04E78 = (int)(FUN_004CAD50(DAT_00B04E00 - DAT_00B04E28) * DAT_00B04E20 * 0.5);
 
 // The angle that projection subtends across one cell.
-// FUNCTION: GAMEMD 0x661DC0
-void Init_DAT_00B04E30()
-{
-    DAT_00B04E30 = FUN_004CADE0(DAT_00B04E78 * 0.00390625);
-}
+// SYNTHETIC: GAMEMD 0x00661DC0
+// GLOBAL: GAMEMD 0x00B04E30
+double DAT_00B04E30 = FUN_004CADE0(DAT_00B04E78 * 0.00390625);
 
 // The angle twice that projection subtends across the cell diagonal.
-// FUNCTION: GAMEMD 0x661DF0
-void Init_DAT_00B04E48()
-{
-    DAT_00B04E48 = FUN_004CADE0((DAT_00B04E78 * 2) / DAT_00B04E20);
-}
+// SYNTHETIC: GAMEMD 0x00661DF0
+// GLOBAL: GAMEMD 0x00B04E48
+double DAT_00B04E48 = FUN_004CADE0((DAT_00B04E78 * 2) / DAT_00B04E20);
 
 // Four times the projection, rounded rather than truncated.
-// FUNCTION: GAMEMD 0x661E20
-void Init_DAT_00B04E6C()
-{
-    DAT_00B04E6C = (int)(DAT_00B04E78 * 4 + 0.5);
-}
+// SYNTHETIC: GAMEMD 0x00661E20
+// GLOBAL: GAMEMD 0x00B04E6C
+int DAT_00B04E6C = (int)(DAT_00B04E78 * 4 + 0.5);
 
 // The word pair starts cleared.
 // FUNCTION: GAMEMD 0x661E50

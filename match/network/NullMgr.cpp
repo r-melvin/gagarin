@@ -18,6 +18,7 @@
 //   not declare are TU-local views below.
 
 #include "../core/empty_function_family_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include <string.h>
 #include "null_modem_class_methods.h"
@@ -125,12 +126,6 @@ GG_STATIC_ASSERT(offsetof(NullModemSettingsView, Setting44) == 0x44
 extern const double DAT_007EEFC8;
 // GLOBAL: GAMEMD 0xAC12E0
 extern double DAT_00AC12E0;
-// GLOBAL: GAMEMD 0xAC1328
-extern int DAT_00AC1328;
-// GLOBAL: GAMEMD 0xAC132C
-extern int DAT_00AC132C;
-// GLOBAL: GAMEMD 0xAC1330
-extern int DAT_00AC1330;
 
 // SYNTHETIC: GAMEMD 0x005F1400
 // dynamic initializer for DAT_00AC1338
@@ -145,14 +140,9 @@ double DAT_00AC1320 = 1.0 / DAT_00AC1338;
 GG_STATIC_ASSERT(sizeof(DAT_00AC1338) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00AC1320) == 8);
 
-// FUNCTION: GAMEMD 0x5F15A0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005F15A0()
-{
-    DAT_00AC1330 = 0;
-    DAT_00AC1328 = 0x80;
-    DAT_00AC132C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x005F15A0
+// GLOBAL: GAMEMD 0x00AC1328
+MathTblCoord DAT_00AC1328;
 
 // Destructor: frees the modem registry entry, tears the link down and drops
 // the serial port wrapper.

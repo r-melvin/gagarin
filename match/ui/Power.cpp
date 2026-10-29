@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit Power.CPP. The name is the source-file string at 0x836db8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x640473 inside this object's
@@ -14,6 +17,7 @@
 // The nine tail-jump thunks, ordered ascending by retail address.
 
 #include "../core/deleting_dtor_sweep.h"
+#include "../core/mathtbl_init_shapes.h"
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
@@ -33,39 +37,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007EFF40;
 // GLOBAL: GAMEMD 0xAC4D18
 extern double DAT_00AC4D18;
-// GLOBAL: GAMEMD 0xAC4E50
-extern double DAT_00AC4E50;
-// GLOBAL: GAMEMD 0xAC4E58
-extern int DAT_00AC4E58;
-// GLOBAL: GAMEMD 0xAC4E5C
-extern int DAT_00AC4E5C;
-// GLOBAL: GAMEMD 0xAC4E60
-extern int DAT_00AC4E60;
-// GLOBAL: GAMEMD 0xAC4E68
-extern double DAT_00AC4E68;
 
-// FUNCTION: GAMEMD 0x63F4F0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0063F4F0()
-{
-    DAT_00AC4E68 = DAT_00AC4D18 / DAT_007EFF40;
-}
+// SYNTHETIC: GAMEMD 0x0063F4F0
+// GLOBAL: GAMEMD 0x00AC4E68
+double DAT_00AC4E68 = DAT_00AC4D18 / DAT_007EFF40;
 
-// FUNCTION: GAMEMD 0x63F510
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0063F510()
-{
-    DAT_00AC4E50 = DAT_007E1718 / DAT_00AC4E68;
-}
+// SYNTHETIC: GAMEMD 0x0063F510
+// GLOBAL: GAMEMD 0x00AC4E50
+double DAT_00AC4E50 = DAT_007E1718 / DAT_00AC4E68;
 
-// FUNCTION: GAMEMD 0x63F690
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0063F690()
-{
-    DAT_00AC4E60 = 0;
-    DAT_00AC4E58 = 0x80;
-    DAT_00AC4E5C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x0063F690
+// GLOBAL: GAMEMD 0x00AC4E58
+MathTblCoord DAT_00AC4E58;
 
 // FUNCTION: GAMEMD 0x63F7B0
 void FUN_0063F7B0(void* self)

@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Display.CPP. The name is the source-file string at 0x8201a8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x4ae5e7 inside this object's
@@ -22,6 +25,7 @@
 // DisplayClass scenario/help-text entries (layout and evidence: display_scenario.h).
 
 #include "../../_layout/object_class.h"
+#include "../../core/mathtbl_init_shapes.h"
 #include "../../_layout/house_class.h"
 #include "../../_layout/cell.h"
 #include "../../core/leftover_trivial_leaf_sweep.h"
@@ -88,39 +92,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007E6018;
 // GLOBAL: GAMEMD 0x8A0400
 extern double DAT_008A0400;
-// GLOBAL: GAMEMD 0x8A0628
-extern double DAT_008A0628;
-// GLOBAL: GAMEMD 0x8A0720
-extern int DAT_008A0720;
-// GLOBAL: GAMEMD 0x8A0724
-extern int DAT_008A0724;
-// GLOBAL: GAMEMD 0x8A0728
-extern int DAT_008A0728;
-// GLOBAL: GAMEMD 0x8A0738
-extern double DAT_008A0738;
 
-// FUNCTION: GAMEMD 0x4A8470
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004A8470()
-{
-    DAT_008A0738 = DAT_008A0400 / DAT_007E6018;
-}
+// SYNTHETIC: GAMEMD 0x004A8470
+// GLOBAL: GAMEMD 0x008A0738
+double DAT_008A0738 = DAT_008A0400 / DAT_007E6018;
 
-// FUNCTION: GAMEMD 0x4A8490
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004A8490()
-{
-    DAT_008A0628 = DAT_007E1718 / DAT_008A0738;
-}
+// SYNTHETIC: GAMEMD 0x004A8490
+// GLOBAL: GAMEMD 0x008A0628
+double DAT_008A0628 = DAT_007E1718 / DAT_008A0738;
 
-// FUNCTION: GAMEMD 0x4A8610
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004A8610()
-{
-    DAT_008A0728 = 0;
-    DAT_008A0720 = 0x80;
-    DAT_008A0724 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x004A8610
+// GLOBAL: GAMEMD 0x008A0720
+MathTblCoord DAT_008A0720;
 
 // FUNCTION: GAMEMD 0x4A8850
 void DisplayClass::vf_05()

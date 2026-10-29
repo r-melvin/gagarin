@@ -1,10 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit NetDlg.CPP. The name is the source-file string at 0x831214
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5da7ba inside this object's
 //   code range (0x5da4d0-0x5dacef). Functions are in ascending retail address order.
 
 #include "../core/init_misc_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 #include "transport/winsock_interface_class.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
@@ -18,39 +22,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007EEEF8;
 // GLOBAL: GAMEMD 0xABFF10
 extern double DAT_00ABFF10;
-// GLOBAL: GAMEMD 0xABFF48
-extern double DAT_00ABFF48;
-// GLOBAL: GAMEMD 0xABFF50
-extern int DAT_00ABFF50;
-// GLOBAL: GAMEMD 0xABFF54
-extern int DAT_00ABFF54;
-// GLOBAL: GAMEMD 0xABFF58
-extern int DAT_00ABFF58;
-// GLOBAL: GAMEMD 0xABFF60
-extern double DAT_00ABFF60;
 
-// FUNCTION: GAMEMD 0x5DA500
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005DA500()
-{
-    DAT_00ABFF60 = DAT_00ABFF10 / DAT_007EEEF8;
-}
+// SYNTHETIC: GAMEMD 0x005DA500
+// GLOBAL: GAMEMD 0x00ABFF60
+double DAT_00ABFF60 = DAT_00ABFF10 / DAT_007EEEF8;
 
-// FUNCTION: GAMEMD 0x5DA520
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005DA520()
-{
-    DAT_00ABFF48 = DAT_007E1718 / DAT_00ABFF60;
-}
+// SYNTHETIC: GAMEMD 0x005DA520
+// GLOBAL: GAMEMD 0x00ABFF48
+double DAT_00ABFF48 = DAT_007E1718 / DAT_00ABFF60;
 
-// FUNCTION: GAMEMD 0x5DA6A0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005DA6A0()
-{
-    DAT_00ABFF58 = 0;
-    DAT_00ABFF50 = 0x80;
-    DAT_00ABFF54 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x005DA6A0
+// GLOBAL: GAMEMD 0x00ABFF50
+MathTblCoord DAT_00ABFF50;
 
 // FUNCTION: GAMEMD 0x5DA6C0
 //

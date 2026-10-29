@@ -29,6 +29,7 @@
 // touched, so there is no layout to assert.
 
 #include "../core/house_index_lookup_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include "../core/small_misc5_methods.h"
 
@@ -88,12 +89,6 @@ public:
 extern const double DAT_007E4A98;
 // GLOBAL: GAMEMD 0x89DFA8
 extern double DAT_0089DFA8;
-// GLOBAL: GAMEMD 0x89E028
-extern int DAT_0089E028;
-// GLOBAL: GAMEMD 0x89E02C
-extern int DAT_0089E02C;
-// GLOBAL: GAMEMD 0x89E030
-extern int DAT_0089E030;
 
 // SYNTHETIC: GAMEMD 0x0046D150
 // dynamic initializer for DAT_0089E040
@@ -108,14 +103,9 @@ double DAT_0089E018 = 1.0 / DAT_0089E040;
 GG_STATIC_ASSERT(sizeof(DAT_0089E040) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_0089E018) == 8);
 
-// FUNCTION: GAMEMD 0x46D2F0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0046D2F0()
-{
-    DAT_0089E030 = 0;
-    DAT_0089E028 = 0x80;
-    DAT_0089E02C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x0046D2F0
+// GLOBAL: GAMEMD 0x0089E028
+MathTblCoord DAT_0089E028;
 
 // FUNCTION: GAMEMD 0x46D330
 Obj_0046D330* Obj_0046D330::FUN_0046D330()

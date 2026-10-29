@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Radar.CPP. The name is the source-file string at 0x839388
 //   in retail gamemd.exe v1.001, passed by the assert at 0x65405d inside this object's
@@ -50,6 +53,7 @@
 //   GLOBAL:   GAMEMD 0x87F7E8   RadarClass::Instance
 
 #include "../core/deleting_dtor_sweep.h"
+#include "../core/mathtbl_init_shapes.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 
@@ -765,39 +769,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007F02A8;
 // GLOBAL: GAMEMD 0xB048D8
 extern double DAT_00B048D8;
-// GLOBAL: GAMEMD 0xB049E0
-extern double DAT_00B049E0;
-// GLOBAL: GAMEMD 0xB049E8
-extern int DAT_00B049E8;
-// GLOBAL: GAMEMD 0xB049EC
-extern int DAT_00B049EC;
-// GLOBAL: GAMEMD 0xB049F0
-extern int DAT_00B049F0;
-// GLOBAL: GAMEMD 0xB049F8
-extern double DAT_00B049F8;
 
-// FUNCTION: GAMEMD 0x6526B0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006526B0()
-{
-    DAT_00B049F8 = DAT_00B048D8 / DAT_007F02A8;
-}
+// SYNTHETIC: GAMEMD 0x006526B0
+// GLOBAL: GAMEMD 0x00B049F8
+double DAT_00B049F8 = DAT_00B048D8 / DAT_007F02A8;
 
-// FUNCTION: GAMEMD 0x6526D0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006526D0()
-{
-    DAT_00B049E0 = DAT_007E1718 / DAT_00B049F8;
-}
+// SYNTHETIC: GAMEMD 0x006526D0
+// GLOBAL: GAMEMD 0x00B049E0
+double DAT_00B049E0 = DAT_007E1718 / DAT_00B049F8;
 
-// FUNCTION: GAMEMD 0x652850
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_00652850()
-{
-    DAT_00B049F0 = 0;
-    DAT_00B049E8 = 0x80;
-    DAT_00B049EC = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x00652850
+// GLOBAL: GAMEMD 0x00B049E8
+MathTblCoord DAT_00B049E8;
 
 // FUNCTION: GAMEMD 0x6528C0
 // Empty function.

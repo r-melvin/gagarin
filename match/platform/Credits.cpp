@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit Credits.CPP. The name is the source-file string at 0x81fbbc
 //   in retail gamemd.exe v1.001, passed by the assert at 0x4a248d inside this object's
@@ -8,6 +11,7 @@
 // the casts below hand that view to memmove and the hash as pointers.
 
 #include "buffer_straws.h"
+#include "../core/mathtbl_init_shapes.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -20,39 +24,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007E5D80;
 // GLOBAL: GAMEMD 0x89F900
 extern double DAT_0089F900;
-// GLOBAL: GAMEMD 0x89F938
-extern double DAT_0089F938;
-// GLOBAL: GAMEMD 0x89F940
-extern int DAT_0089F940;
-// GLOBAL: GAMEMD 0x89F944
-extern int DAT_0089F944;
-// GLOBAL: GAMEMD 0x89F948
-extern int DAT_0089F948;
-// GLOBAL: GAMEMD 0x89F950
-extern double DAT_0089F950;
 
-// FUNCTION: GAMEMD 0x4A2190
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004A2190()
-{
-    DAT_0089F950 = DAT_0089F900 / DAT_007E5D80;
-}
+// SYNTHETIC: GAMEMD 0x004A2190
+// GLOBAL: GAMEMD 0x0089F950
+double DAT_0089F950 = DAT_0089F900 / DAT_007E5D80;
 
-// FUNCTION: GAMEMD 0x4A21B0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004A21B0()
-{
-    DAT_0089F938 = DAT_007E1718 / DAT_0089F950;
-}
+// SYNTHETIC: GAMEMD 0x004A21B0
+// GLOBAL: GAMEMD 0x0089F938
+double DAT_0089F938 = DAT_007E1718 / DAT_0089F950;
 
-// FUNCTION: GAMEMD 0x4A2330
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004A2330()
-{
-    DAT_0089F948 = 0;
-    DAT_0089F940 = 0x80;
-    DAT_0089F944 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x004A2330
+// GLOBAL: GAMEMD 0x0089F940
+MathTblCoord DAT_0089F940;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4A2780

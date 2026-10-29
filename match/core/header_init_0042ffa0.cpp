@@ -26,6 +26,10 @@ double __cdecl FUN_004CADE0(double value);
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CAC40(double value);
 
+// SYNTHETIC: GAMEMD 0x42FF80
+// GLOBAL: GAMEMD 0x89C380
+HeaderZeroQuad DAT_0089C380(0);
+
 // SYNTHETIC: GAMEMD 0x42FFA0
 // GLOBAL: GAMEMD 0x89C398
 double DAT_0089C398 = FUN_004CAC40(pow(DAT_007E1710, DAT_007E1708) * 2);

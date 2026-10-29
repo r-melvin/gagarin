@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Score.CPP. The name is the source-file string at 0x83e3c4
 //   in retail gamemd.exe v1.001, passed by the assert at 0x68d646 inside this object's
@@ -33,6 +36,7 @@
 // touched, so there is no layout to assert.
 
 #include <stddef.h>
+#include "../core/mathtbl_init_shapes.h"
 #include "../_rt/gg_static_assert.h"
 
 
@@ -168,39 +172,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007F0EA0;
 // GLOBAL: GAMEMD 0xB05510
 extern double DAT_00B05510;
-// GLOBAL: GAMEMD 0xB05558
-extern double DAT_00B05558;
-// GLOBAL: GAMEMD 0xB05568
-extern int DAT_00B05568;
-// GLOBAL: GAMEMD 0xB0556C
-extern int DAT_00B0556C;
-// GLOBAL: GAMEMD 0xB05570
-extern int DAT_00B05570;
-// GLOBAL: GAMEMD 0xB05578
-extern double DAT_00B05578;
 
-// FUNCTION: GAMEMD 0x68CB60
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0068CB60()
-{
-    DAT_00B05578 = DAT_00B05510 / DAT_007F0EA0;
-}
+// SYNTHETIC: GAMEMD 0x0068CB60
+// GLOBAL: GAMEMD 0x00B05578
+double DAT_00B05578 = DAT_00B05510 / DAT_007F0EA0;
 
-// FUNCTION: GAMEMD 0x68CB80
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0068CB80()
-{
-    DAT_00B05558 = DAT_007E1718 / DAT_00B05578;
-}
+// SYNTHETIC: GAMEMD 0x0068CB80
+// GLOBAL: GAMEMD 0x00B05558
+double DAT_00B05558 = DAT_007E1718 / DAT_00B05578;
 
-// FUNCTION: GAMEMD 0x68CD00
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_0068CD00()
-{
-    DAT_00B05570 = 0;
-    DAT_00B05568 = 0x80;
-    DAT_00B0556C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x0068CD00
+// GLOBAL: GAMEMD 0x00B05568
+MathTblCoord DAT_00B05568;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x68FFE0

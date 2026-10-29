@@ -12,6 +12,7 @@
 // (abstract_type_class.h); the name is a placeholder.
 
 #include "../_layout/abstract_type_class.h"
+#include "mathtbl_init_shapes.h"
 #include "../_layout/obj_004a1d30.h"
 
 #include "free_and_compare_methods.h"
@@ -32,12 +33,6 @@ extern const double DAT_007E1FC0;
 extern double DAT_008876D8;
 // GLOBAL: GAMEMD 0x887710
 extern double DAT_00887710;
-// GLOBAL: GAMEMD 0x887718
-extern int DAT_00887718;
-// GLOBAL: GAMEMD 0x88771C
-extern int DAT_0088771C;
-// GLOBAL: GAMEMD 0x887720
-extern int DAT_00887720;
 // GLOBAL: GAMEMD 0x887728
 extern double DAT_00887728;
 
@@ -53,14 +48,9 @@ double DAT_00887728 = DAT_008876D8 / DAT_007E1FC0;
 // GLOBAL: GAMEMD 0x00887710
 double DAT_00887710 = DAT_007E1718 / DAT_00887728;
 
-// FUNCTION: GAMEMD 0x4107E0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004107E0()
-{
-    DAT_00887720 = 0;
-    DAT_00887718 = 0x80;
-    DAT_0088771C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x004107E0
+// GLOBAL: GAMEMD 0x00887718
+MathTblCoord DAT_00887718;
 
 // FUNCTION: GAMEMD 0x410A40
 // `NEG EAX; SBB EAX,EAX; INC EAX` after the call is the bool form of `== 0`,

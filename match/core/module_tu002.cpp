@@ -120,7 +120,7 @@ int FUN_00403530(void*, int);
 void FUN_00403730(void*, int);
 // FUNCTION: GAMEMD 0x402990 (decl; reloc)
 // FUN_00402990
-void __cdecl FUN_00402990();
+void FUN_00402990();
 // FUNCTION: GAMEMD 0x403FA0 (decl; reloc)
 // FUN_00403FA0
 void __cdecl FUN_00403FA0();
@@ -387,6 +387,10 @@ int FUN_00406B10(int enabled)
     DAT_0087E72C = enabled;
     return 1;
 }
+struct Owner_00402EF0;
+// FUNCTION: GAMEMD 0x4033C0 (decl; reloc) -- takes the pool in ECX only.
+void FUN_004033C0(Owner_00402EF0* self);
+
 // FUNCTION: GAMEMD 0x406D40
 void FUN_00406D40()
 {
@@ -400,7 +404,7 @@ void FUN_00406D40()
     if (DAT_0087E724) { DAT_0087E724->FUN_00401580(); DAT_0087E724 = 0; }
     if (DAT_0087E734) { delete DAT_0087E734; DAT_0087E734 = 0; }
     if (DAT_0087E738) { delete DAT_0087E738; DAT_0087E738 = 0; }
-    if (DAT_0087E728) { FUN_004033C0(DAT_0087E728, 0); DAT_0087E728 = 0; }
+    if (DAT_0087E728) { FUN_004033C0(static_cast<Owner_00402EF0*>(DAT_0087E728)); DAT_0087E728 = 0; }
     FUN_00402990();
 }
 // FUNCTION: GAMEMD 0x406DE0

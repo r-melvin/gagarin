@@ -22,6 +22,7 @@
 // The element and container types are only named here, never defined.
 
 #include "../core/deleting_dtor_sweep.h"
+#include "../core/mathtbl_init_shapes.h"
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
@@ -60,12 +61,6 @@ public:
 extern const double DAT_007EA5E0;
 // GLOBAL: GAMEMD 0xA8EE00
 extern double DAT_00A8EE00;
-// GLOBAL: GAMEMD 0xA8EE60
-extern int DAT_00A8EE60;
-// GLOBAL: GAMEMD 0xA8EE64
-extern int DAT_00A8EE64;
-// GLOBAL: GAMEMD 0xA8EE68
-extern int DAT_00A8EE68;
 
 
 // Retail PAVGraphicMenuItem RTTI establishes the pointer element type and zero-offset
@@ -112,14 +107,9 @@ double DAT_00A8EE58 = 1.0 / DAT_00A8EE70;
 GG_STATIC_ASSERT(sizeof(DAT_00A8EE70) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00A8EE58) == 8);
 
-// FUNCTION: GAMEMD 0x4F10C0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004F10C0()
-{
-    DAT_00A8EE68 = 0;
-    DAT_00A8EE60 = 0x80;
-    DAT_00A8EE64 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x004F10C0
+// GLOBAL: GAMEMD 0x00A8EE60
+MathTblCoord DAT_00A8EE60;
 
 // FUNCTION: GAMEMD 0x4F1710
 // Empty function.

@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Super.CPP. The name is the source-file string at 0x842510
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6cc2de inside this object's
@@ -15,6 +18,7 @@
 // object when bit 0 of the flag argument is set, and returns `this`.
 
 #include "super_class_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include "trivial_tu225_methods.h"
 
@@ -38,39 +42,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007F3FA8;
 // GLOBAL: GAMEMD 0xB0C008
 extern double DAT_00B0C008;
-// GLOBAL: GAMEMD 0xB0C068
-extern double DAT_00B0C068;
-// GLOBAL: GAMEMD 0xB0C070
-extern int DAT_00B0C070;
-// GLOBAL: GAMEMD 0xB0C074
-extern int DAT_00B0C074;
-// GLOBAL: GAMEMD 0xB0C078
-extern int DAT_00B0C078;
-// GLOBAL: GAMEMD 0xB0C080
-extern double DAT_00B0C080;
 
-// FUNCTION: GAMEMD 0x6CAC40
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006CAC40()
-{
-    DAT_00B0C080 = DAT_00B0C008 / DAT_007F3FA8;
-}
+// SYNTHETIC: GAMEMD 0x006CAC40
+// GLOBAL: GAMEMD 0x00B0C080
+double DAT_00B0C080 = DAT_00B0C008 / DAT_007F3FA8;
 
-// FUNCTION: GAMEMD 0x6CAC60
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006CAC60()
-{
-    DAT_00B0C068 = DAT_007E1718 / DAT_00B0C080;
-}
+// SYNTHETIC: GAMEMD 0x006CAC60
+// GLOBAL: GAMEMD 0x00B0C068
+double DAT_00B0C068 = DAT_007E1718 / DAT_00B0C080;
 
-// FUNCTION: GAMEMD 0x6CADE0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_006CADE0()
-{
-    DAT_00B0C078 = 0;
-    DAT_00B0C070 = 0x80;
-    DAT_00B0C074 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x006CADE0
+// GLOBAL: GAMEMD 0x00B0C070
+MathTblCoord DAT_00B0C070;
 
 // FUNCTION: GAMEMD 0x6CB820  SuperClass::SetReadiness (__thiscall)
 //   mov al,[esp+4]; mov [ecx+0x6f],al; ret 4

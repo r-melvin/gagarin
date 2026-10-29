@@ -6,6 +6,7 @@
 //   code range (0x4b67a0-0x4ba3af). Functions are in ascending retail address order.
 
 #include <math.h>
+#include "../core/mathtbl_init_shapes.h"
 #pragma intrinsic(pow)
 #include "../core/empty_function_family_methods.h"
 
@@ -14,12 +15,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x8A0908
-extern int DAT_008A0908;
-// GLOBAL: GAMEMD 0x8A090C
-extern int DAT_008A090C;
-// GLOBAL: GAMEMD 0x8A0910
-extern int DAT_008A0910;
 
 
 // Retail PAUButtonFadeEffect RTTI establishes the pointer element type and zero-offset
@@ -99,14 +94,9 @@ double DAT_008A0918 = DAT_008A08A8 / 60.0;
 // GLOBAL: GAMEMD 0x8A0900
 double DAT_008A0900 = 1.0 / DAT_008A0918;
 
-// FUNCTION: GAMEMD 0x4B6970
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_004B6970()
-{
-    DAT_008A0910 = 0;
-    DAT_008A0908 = 0x80;
-    DAT_008A090C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x004B6970
+// GLOBAL: GAMEMD 0x008A0908
+MathTblCoord DAT_008A0908;
 
 // FUNCTION: GAMEMD 0x004B69D0
 void FUN_004B69D0()

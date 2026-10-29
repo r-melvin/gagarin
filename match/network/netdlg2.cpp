@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit netdlg2.cpp. The name is the source-file string at 0x831288
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5db257 inside this object's
@@ -8,6 +11,7 @@
 //   bytes of the local key file.
 
 #include "../core/trivial_tu160_methods.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include <windows.h>
 #include <stdio.h>
@@ -24,39 +28,18 @@ extern const double DAT_007E1718;
 extern const double DAT_007EEF08;
 // GLOBAL: GAMEMD 0xAC01C0
 extern double DAT_00AC01C0;
-// GLOBAL: GAMEMD 0xAC0218
-extern double DAT_00AC0218;
-// GLOBAL: GAMEMD 0xAC0240
-extern int DAT_00AC0240;
-// GLOBAL: GAMEMD 0xAC0244
-extern int DAT_00AC0244;
-// GLOBAL: GAMEMD 0xAC0248
-extern int DAT_00AC0248;
-// GLOBAL: GAMEMD 0xAC0250
-extern double DAT_00AC0250;
 
-// FUNCTION: GAMEMD 0x5DAD20
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005DAD20()
-{
-    DAT_00AC0250 = DAT_00AC01C0 / DAT_007EEF08;
-}
+// SYNTHETIC: GAMEMD 0x005DAD20
+// GLOBAL: GAMEMD 0x00AC0250
+double DAT_00AC0250 = DAT_00AC01C0 / DAT_007EEF08;
 
-// FUNCTION: GAMEMD 0x5DAD40
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005DAD40()
-{
-    DAT_00AC0218 = DAT_007E1718 / DAT_00AC0250;
-}
+// SYNTHETIC: GAMEMD 0x005DAD40
+// GLOBAL: GAMEMD 0x00AC0218
+double DAT_00AC0218 = DAT_007E1718 / DAT_00AC0250;
 
-// FUNCTION: GAMEMD 0x5DAEC0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_005DAEC0()
-{
-    DAT_00AC0248 = 0;
-    DAT_00AC0240 = 0x80;
-    DAT_00AC0244 = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x005DAEC0
+// GLOBAL: GAMEMD 0x00AC0240
+MathTblCoord DAT_00AC0240;
 
 // FUNCTION: GAMEMD 0x5DAF10
 // Empty function.

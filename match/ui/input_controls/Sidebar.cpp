@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Original translation unit Sidebar.CPP. The name is the source-file string at 0x83fac4
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6a9362 inside this object's
@@ -38,6 +41,7 @@
 // (layout and evidence: sidebar_select_class.h).
 
 #include "../../core/vector_class_operations.h"
+#include "../../core/mathtbl_init_shapes.h"
 #include "../../core/deleting_dtor_sweep.h"
 #include "../../network/transport/winsock_interface_class.h"
 #include "../../_layout/pipe.h"
@@ -323,41 +327,20 @@ extern const double DAT_007E1718;
 extern const double DAT_007F2F30;
 // GLOBAL: GAMEMD 0xB07DE0
 extern double DAT_00B07DE0;
-// GLOBAL: GAMEMD 0xB0B320
-extern double DAT_00B0B320;
-// GLOBAL: GAMEMD 0xB0B388
-extern int DAT_00B0B388;
-// GLOBAL: GAMEMD 0xB0B38C
-extern int DAT_00B0B38C;
-// GLOBAL: GAMEMD 0xB0B390
-extern int DAT_00B0B390;
-// GLOBAL: GAMEMD 0xB0B398
-extern double DAT_00B0B398;
 // GLOBAL: GAMEMD 0xA8E340
 extern int DAT_00A8E340;
 
-// FUNCTION: GAMEMD 0x6A4A50
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006A4A50()
-{
-    DAT_00B0B398 = DAT_00B07DE0 / DAT_007F2F30;
-}
+// SYNTHETIC: GAMEMD 0x006A4A50
+// GLOBAL: GAMEMD 0x00B0B398
+double DAT_00B0B398 = DAT_00B07DE0 / DAT_007F2F30;
 
-// FUNCTION: GAMEMD 0x6A4A70
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006A4A70()
-{
-    DAT_00B0B320 = DAT_007E1718 / DAT_00B0B398;
-}
+// SYNTHETIC: GAMEMD 0x006A4A70
+// GLOBAL: GAMEMD 0x00B0B320
+double DAT_00B0B320 = DAT_007E1718 / DAT_00B0B398;
 
-// FUNCTION: GAMEMD 0x6A4BF0
-// Static-initialiser shape: stores constants to adjacent globals.
-void __cdecl FUN_006A4BF0()
-{
-    DAT_00B0B390 = 0;
-    DAT_00B0B388 = 0x80;
-    DAT_00B0B38C = 0x80;
-}
+// SYNTHETIC: GAMEMD 0x006A4BF0
+// GLOBAL: GAMEMD 0x00B0B388
+MathTblCoord DAT_00B0B388;
 
 // REA Evidence: ev_2ae381b14ec2843cc91bb4231572d98ff6eb01c68dc88b2d17c3a381358b4d14
 // CFG-closed retail span [0x6A4E60, 0x6A4F11), 0xB1 bytes. TabClass constructor 0x6CFE20
