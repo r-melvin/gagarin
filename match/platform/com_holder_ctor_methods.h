@@ -19,7 +19,10 @@ struct IUnkVtbl_00437F50
     long (__stdcall* AddRef)(IUnk_00437F50*);
     long (__stdcall* Release)(IUnk_00437F50*);
 };
+GG_STATIC_ASSERT(offsetof(IUnkVtbl_00437F50, QueryInterface) == 0);
+GG_STATIC_ASSERT(offsetof(IUnkVtbl_00437F50, AddRef) == 0x4);
 GG_STATIC_ASSERT(offsetof(IUnkVtbl_00437F50, Release) == 0x8);
+GG_STATIC_ASSERT(sizeof(IUnkVtbl_00437F50) == 0xC);
 
 struct IUnk_00437F50 { IUnkVtbl_00437F50* Vtbl; };
 
@@ -39,13 +42,5 @@ extern const char riid_00818C08[16];
 // the value and there is no stack cleanup after the call, so the callee pops it.
 void __stdcall FUN_007DC720(long hr);
 
-struct Holder_00437F50
-{
-    IUnk_00437F50* Interface;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x437F50
-    Holder_00437F50* Ctor();
-};
-GG_STATIC_ASSERT(offsetof(Holder_00437F50, Interface) == 0);
 
 #endif  // GG_MATCH_PLATFORM_COM_HOLDER_CTOR_METHODS_H

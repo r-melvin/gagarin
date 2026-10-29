@@ -7568,9 +7568,9 @@
  {
   "tu": "match/core/guarded_forward_methods.cpp",
   "addr": "0x437FC0",
-  "sym": "?FUN_00437FC0@Obj_00437FC0@@QAEXXZ",
+  "sym": "??1BlockCipherView@@QAE@XZ",
   "len": "0xd",
-  "name": "FUN_00437FC0",
+  "name": "BlockCipherView::~BlockCipherView",
   "status": "matched",
   "pct": 100.0
  },
@@ -8117,18 +8117,18 @@
  {
   "tu": "match/core/lazy_sink_forward_methods.cpp",
   "addr": "0x4381d0",
-  "sym": "?FUN_004381D0@Owner_004381D0@@QAEXHH@Z",
+  "sym": "?Key@BlowPipe@@QAEXPBXH@Z",
   "len": "0x40",
-  "name": "Owner_004381D0::FUN_004381D0",
+  "name": "BlowPipe::Key",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/lazy_sink_forward_methods.cpp",
   "addr": "0x438300",
-  "sym": "?FUN_00438300@Owner_004381D0@@QAEXHH@Z",
+  "sym": "?Key@BlowStraw@@QAEXPBXH@Z",
   "len": "0x40",
-  "name": "Owner_004381D0::FUN_00438300",
+  "name": "BlowStraw::Key",
   "status": "matched",
   "pct": 100
  },
@@ -10646,9 +10646,9 @@
  {
   "tu": "match/core/small_misc12_methods.cpp",
   "addr": "0x437FD0",
-  "sym": "?FUN_00437FD0@Obj_00437FD0@@QAEXHH@Z",
+  "sym": "?Key@BlockCipherView@@QAEXPBXH@Z",
   "len": "0x28",
-  "name": "FUN_00437FD0",
+  "name": "BlockCipherView::Key",
   "status": "matched",
   "pct": 100.0
  },
@@ -10889,18 +10889,18 @@
  {
   "tu": "match/core/small_misc20_methods.cpp",
   "addr": "0x438000",
-  "sym": "?FUN_00438000@Obj_00438000@@QAEHHHH@Z",
+  "sym": "?Forward@BlockCipherView@@QAEHPBXHPAX@Z",
   "len": "0x2f",
-  "name": "FUN_00438000",
+  "name": "BlockCipherView::Forward",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/core/small_misc20_methods.cpp",
   "addr": "0x438030",
-  "sym": "?FUN_00438030@Obj_00438000@@QAEHHHH@Z",
+  "sym": "?Reverse@BlockCipherView@@QAEHPBXHPAX@Z",
   "len": "0x2f",
-  "name": "FUN_00438030",
+  "name": "BlockCipherView::Reverse",
   "status": "matched",
   "pct": 100.0
  },
@@ -11150,9 +11150,9 @@
  {
   "tu": "match/core/small_misc30_methods.cpp",
   "addr": "0x438060",
-  "sym": "?FUN_00438060@Obj_00438060@@QAEHXZ",
+  "sym": "?FUN_00631D30@BlowPipe@@UAEHXZ",
   "len": "0x35",
-  "name": "FUN_00438060",
+  "name": "BlowPipe::FUN_00631D30",
   "status": "matched",
   "pct": 100.0
  },
@@ -13032,7 +13032,7 @@
  {
   "tu": "match/combat/Techno.cpp",
   "addr": "0x701120",
-  "sym": "?IsArmed@TechnoClass@@UAEHXZ",
+  "sym": "?IsArmed@TechnoClass@@UAE_NXZ",
   "len": "0x1a",
   "name": "TechnoClass::IsArmed",
   "status": "matched",
@@ -27968,9 +27968,9 @@
  {
   "tu": "match/platform/com_holder_ctor_methods.cpp",
   "addr": "0x437F50",
-  "sym": "?Ctor@Holder_00437F50@@QAEPAU1@XZ",
+  "sym": "??0BlockCipherView@@QAE@XZ",
   "len": "0x6e",
-  "name": "Holder_00437F50::Ctor",
+  "name": "BlockCipherView::BlockCipherView",
   "status": "matched",
   "pct": 100
  },
@@ -28328,11 +28328,11 @@
  {
   "tu": "match/platform/window_moving_methods.cpp",
   "addr": "0x776D80",
-  "sym": "?OnWindowMoving@@YG_NPAURect_00776D80@@@Z",
+  "sym": "?OnWindowMoving@@YI_NPAUHWND__@@IPAURect_00776D80@@@Z",
   "len": "0x8f",
   "name": "Unsorted::OnWindowMoving",
-  "status": "partial",
-  "pct": 95.1
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/renderer/bit_font.cpp",
@@ -47098,7 +47098,7 @@
  {
   "tu": "match/map/tu242_terrain_class.cpp",
   "addr": "0x71C4D0",
-  "sym": "?vf_107@TerrainClass@@UAEHPAVCellClass@@HHHH@Z",
+  "sym": "?vf_107@TerrainClass@@UAEHPAVCellClass@@HHH_N@Z",
   "len": "0xd9",
   "name": "TerrainClass::vf_107",
   "status": "partial",
@@ -49254,11 +49254,11 @@
  {
   "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x449440",
-  "sym": "?vf_107@BuildingClass@@UAEHPAVCellClass@@HHHH@Z",
+  "sym": "?vf_107@BuildingClass@@UAEHPAVCellClass@@HHH_N@Z",
   "len": "0x75",
   "name": "BuildingClass::vf_107",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/economy/tu038_building_class.cpp",
@@ -50651,6 +50651,16 @@
   "pct": 100
  },
  {
+  "addr": "0x438210",
+  "tu": "match/platform/blow_pipe_put_methods.cpp",
+  "sym": "?FUN_006C98E0@BlowStraw@@UAEHPAXH@Z",
+  "len": "0xe3",
+  "status": "partial",
+  "note": "Full-span raw and strict relocation checks pass. Scoped linked vtable has all three real providers; final-link scalar destructor selection and whole-image identity remain unproved.",
+  "name": "BlowStraw::FUN_006C98E0",
+  "pct": 100
+ },
+ {
   "tu": "match/platform/hash_cache_straw_methods.cpp",
   "addr": "0x4A2030",
   "sym": "?FUN_00631D10@HashPipe_004A2030@@UAEHHH@Z",
@@ -50851,7 +50861,7 @@
  {
   "tu": "match/platform/pk_pipe_straw_methods.cpp",
   "addr": "0x633110",
-  "sym": "?FUN_00633110@PKStraw@@QAEXPAVPKKeyView@@@Z",
+  "sym": "?FUN_00633110@PKStraw@@QAEXPAVPKey_00632740@@@Z",
   "len": "0x20",
   "name": "PKStraw::FUN_00633110",
   "status": "matched",
@@ -68149,7 +68159,7 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x4264C0",
-  "sym": "?vf_107@ObjectClass@@UAEHPAVCellClass@@HHHH@Z",
+  "sym": "?vf_107@ObjectClass@@UAEHPAVCellClass@@HHH_N@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_107",
   "status": "matched",
@@ -142061,11 +142071,11 @@
  {
   "tu": "match/movement/foot_class_r17_methods.cpp",
   "addr": "0x4D9C10",
-  "sym": "?vf_107@FootClass@@UAEHPAVCellClass@@HHHH@Z",
+  "sym": "?vf_107@FootClass@@UAEHPAVCellClass@@HHH_N@Z",
   "len": "0x49",
   "name": "FootClass::vf_107",
-  "status": "partial",
-  "pct": 92.6
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/foot_class_r17_methods.cpp",
@@ -144026,8 +144036,8 @@
   "sym": "?FUN_00707D20@TechnoClass@@QAEHXZ",
   "len": "0xb0",
   "name": "TechnoClass::FUN_00707D20",
-  "status": "partial",
-  "pct": 98.2
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",

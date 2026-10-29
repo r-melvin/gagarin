@@ -34,9 +34,9 @@ CoordStruct FootClass::vf_267()
 // FUNCTION: GAMEMD 0x4D9C10
 // Asks the locomotor whether it can enter the cell, but only when the caller's flag is set.
 // PARTIAL: 92.6% -- retail tests the flag argument as a byte; it is declared int here.
-int FootClass::vf_107(CellClass* cell, int a2, int a3, int a4, int a5)
+int FootClass::vf_107(CellClass* cell, int a2, int a3, int a4, bool a5)
 {
-    if (Locomotor != 0 && a5 != 0) {
+    if (Locomotor != 0 && a5) {
         int coords = *(int*)&cell->MapCoords;
         return (*(ILocomotionPtr*)&Locomotor)->CanEnterCell(coords);
     }

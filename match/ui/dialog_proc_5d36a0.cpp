@@ -6,9 +6,8 @@
 
 // FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog handler.
 int __fastcall FUN_00622B50(HWND h, UINT msg, WPARAM w, LPARAM l);
-// FUNCTION: GAMEMD 0x776D80 (decl; reloc) -- the WM_MOVING clamp. Its caller
-// sets up the register pair and passes the rectangle pointer on the stack.
-bool __fastcall FUN_00776D80(HWND h, WPARAM w, LPARAM rect);
+// FUNCTION: GAMEMD 0x776D80 (decl; reloc) -- the WM_MOVING clamp (ECX=window, EDX=edge, rect on the stack).
+#include "../platform/window_moving_methods.h"
 
 // FUNCTION: GAMEMD 0x5D36A0
 // Dialog procedure: after the shared handler, store the result code for the
@@ -45,7 +44,7 @@ int __stdcall FUN_005D36A0(HWND h, UINT msg, WPARAM w, LPARAM l)
             break;
         }
         case 0x216:
-            return FUN_00776D80(h, w, l);
+            return OnWindowMoving(h, w, (Rect_00776D80*)l);
         }
         r = 0;
     }

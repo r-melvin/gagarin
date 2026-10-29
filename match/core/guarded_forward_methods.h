@@ -33,8 +33,6 @@ typedef void (__stdcall* IFaceSlot)(IFace* self);
 struct Obj_00437FC0
 {
     IFace* Held;   // +0x0000
-    // FUNCTION: GAMEMD 0x437FC0
-    void FUN_00437FC0();
     // FUNCTION: GAMEMD 0x45A160
     void FUN_0045A160();
     // FUNCTION: GAMEMD 0x45A170

@@ -143,7 +143,7 @@ public:
     virtual CoordStruct vf_18();                                        // 18  0x447AC0
     virtual CoordStruct vf_19(AbstractClass* target);                   // 19  0x447E90
     virtual void vf_103(int mode);                                      // 103 0x446FF0: toggles IsBeingRepaired
-    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, int a5); // 107 0x449440
+    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, bool a5); // 107 0x449440
     virtual bool vf_161();                                              // 161 0x455DA0
     virtual DirStruct vf_170();                                         // 170 0x445E50
     virtual int GetYSort() const;                                       // 46  0x449410

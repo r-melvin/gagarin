@@ -23,12 +23,11 @@ struct ListEntry_006255F0
     // FUNCTION: GAMEMD 0x624460
     // Retail destroys an entry by expanding the two string destructors inline
     // (EntryRecord's copy constructor 0x6255F0), and also holds one standalone
-    // copy at 0x624460. Users get the implicit inline destructor; only the TU
-    // that holds the standalone copy defines GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
-    // to declare it (the object layout is the same in both).
-#ifdef GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
+    // copy at 0x624460. The class is the same in every TU; only the TU that
+    // holds the standalone copy (ownrdraw_list_entry_methods.cpp) defines
+    // GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR to define the destructor itself.
+    // Every other TU gets the inline definition below.
     ~ListEntry_006255F0();
-#endif
 };
 GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, Name) == 0x04);
 GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, Text) == 0x08);
@@ -36,5 +35,9 @@ GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, unknown_0C) == 0x0C);
 GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, unknown_14) == 0x14);
 GG_STATIC_ASSERT(sizeof(ListEntry_006255F0) == 0x18);
+
+#ifndef GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
+inline ListEntry_006255F0::~ListEntry_006255F0() {}
+#endif
 
 #endif

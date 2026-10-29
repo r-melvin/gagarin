@@ -24,33 +24,29 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
+#include "../core/pkey_layout.h"
 
 // The block cipher object reached through BlowPipe/BlowStraw +0x0C. Both
 // helpers are __thiscall with three stack words (RET 0xC).
+struct IFace;
 class BlockCipherView
 {
 public:
+    IFace* Interface;
+    // FUNCTION: GAMEMD 0x437F50
+    BlockCipherView();
+    // FUNCTION: GAMEMD 0x437FD0
+    void Key(const void* key, int length);
     // FUNCTION: GAMEMD 0x438000 (decl; reloc) -- used when control != 1.
-    void* Forward(const void* in, int length, void* out);
+    int Forward(const void* in, int length, void* out);
     // FUNCTION: GAMEMD 0x438030 (decl; reloc) -- used when control == 1.
-    void* Reverse(const void* in, int length, void* out);
+    int Reverse(const void* in, int length, void* out);
     // FUNCTION: GAMEMD 0x437FC0 (decl; reloc) -- non-virtual, out of line.
     ~BlockCipherView();
-};
 
-// The modulus object reached through PKPipe/PKStraw +0x38. Only the dword at
-// +0x200 is read here (a bit count; the helpers divide it minus one by 8).
-class PKKeyView
-{
-public:
-    int PlainBlockBytes() const { return (unknown_200 - 1) / 8; }
-    int CipherBlockBytes() const { return PlainBlockBytes() + 1; }
-    int BlockCountFor(int length) const { return (length - 1) / PlainBlockBytes() + 1; }
-
-    char unknown_000[0x200];
-    int  unknown_200;      // +0x200
 };
-GG_STATIC_ASSERT(offsetof(PKKeyView, unknown_200) == 0x200);
+GG_STATIC_ASSERT(offsetof(BlockCipherView, Interface) == 0);
+GG_STATIC_ASSERT(sizeof(BlockCipherView) == 4);
 
 class BlowPipe : public Pipe
 {
@@ -66,11 +62,15 @@ public:
     // FUNCTION: GAMEMD 0x4380A0
     virtual int FUN_00631D10(int first, int second);    // slot 4
 
+    // FUNCTION: GAMEMD 0x4381D0
+    void Key(const void* key, int length);
+
     BlockCipherView* Cipher;      // +0x0C
     char             Buffer[8];   // +0x10
     int              Counter;     // +0x18
     PipeDirection     Control;     // +0x1C
 };
+GG_STATIC_ASSERT(sizeof(BlowPipe) == 0x20);
 GG_STATIC_ASSERT(offsetof(BlowPipe, Cipher)  == 0x0C);
 GG_STATIC_ASSERT(offsetof(BlowPipe, Buffer)  == 0x10);
 GG_STATIC_ASSERT(offsetof(BlowPipe, Counter) == 0x18);
@@ -87,11 +87,15 @@ public:
     virtual ~BlowStraw() { delete Cipher; Cipher = 0; } // slot 0 via 0x5B45C0
     virtual int FUN_006C98E0(void* first, int second);    // slot 2 = 0x438210
 
+    // FUNCTION: GAMEMD 0x438300
+    void Key(const void* key, int length);
+
     BlockCipherView* Cipher;      // +0x0C
     char             Buffer[8];   // +0x10
     int              Counter;     // +0x18
     PipeDirection     Control;     // +0x1C
 };
+GG_STATIC_ASSERT(sizeof(BlowStraw) == 0x20);
 GG_STATIC_ASSERT(offsetof(BlowStraw, Cipher)  == 0x0C);
 GG_STATIC_ASSERT(offsetof(BlowStraw, Buffer)  == 0x10);
 GG_STATIC_ASSERT(offsetof(BlowStraw, Counter) == 0x18);
@@ -102,6 +106,8 @@ GG_STATIC_ASSERT(offsetof(BlowStraw, Control) == 0x1C);
 // and 0x633370 store no vtable of their own: they run the member BlowPipe /
 // BlowStraw destructor at +0x14 inline and then the base destructor, which is
 // the implicitly defined virtual destructor's shape.
+enum { PK_SESSION_KEY_BYTES = 56 };
+
 class PKPipe : public Pipe
 {
 public:
@@ -119,11 +125,14 @@ public:
     // FUNCTION: GAMEMD 0x632F60
     int FUN_00632F60() const;
 
+    int SessionKeyCipherBytes() const { if (Key == NULL) return 0; return Key->BlockCountFor(PK_SESSION_KEY_BYTES) * Key->CipherBlockBytes(); }
+    int SessionKeyPlainBytes() const { if (Key == NULL) return 0; return Key->BlockCountFor(PK_SESSION_KEY_BYTES) * Key->PlainBlockBytes(); }
+
     bool         unknown_C;      // +0x0C
     Straw*       unknown_10;    // +0x10
     BlowPipe     Cipher;          // +0x14
     PipeDirection Control;         // +0x34
-    PKKeyView*   Key;             // +0x38
+    PKey_00632740*   Key;             // +0x38
     char         Buffer[256];     // +0x3C
     int          Counter;         // +0x13C
     int          unknown_140;       // +0x140
@@ -151,17 +160,20 @@ public:
     virtual void FUN_00633360(Straw* next);             // slot 3
 
     // FUNCTION: GAMEMD 0x633110
-    void FUN_00633110(PKKeyView* key);
+    void FUN_00633110(PKey_00632740* key);
     // FUNCTION: GAMEMD 0x633300
     int FUN_00633300() const;
     // FUNCTION: GAMEMD 0x633330
     int FUN_00633330() const;
 
+    int SessionKeyCipherBytes() const { if (Key == NULL) return 0; return Key->BlockCountFor(PK_SESSION_KEY_BYTES) * Key->CipherBlockBytes(); }
+    int SessionKeyPlainBytes() const { if (Key == NULL) return 0; return Key->BlockCountFor(PK_SESSION_KEY_BYTES) * Key->PlainBlockBytes(); }
+
     bool         unknown_C;      // +0x0C
     Straw*       unknown_10;    // +0x10
     BlowStraw    Cipher;          // +0x14
     PipeDirection Control;         // +0x34
-    PKKeyView*   Key;             // +0x38
+    PKey_00632740*   Key;             // +0x38
     char         Buffer[256];     // +0x3C
     int          Counter;         // +0x13C
     int          unknown_140;       // +0x140

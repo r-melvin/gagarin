@@ -5,12 +5,13 @@
 // Ordered ascending by retail address.
 
 #include "guarded_forward_methods.h"
+#include "../platform/pk_blow_pipes.h"
 
 // FUNCTION: GAMEMD 0x437FC0
-void Obj_00437FC0::FUN_00437FC0()
+BlockCipherView::~BlockCipherView()
 {
-    if (Held) {
-        IFACE_CALL(Held, 0x8);
+    if (Interface) {
+        IFACE_CALL(Interface, 0x8);
     }
 }
 

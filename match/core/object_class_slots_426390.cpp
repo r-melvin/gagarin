@@ -104,7 +104,7 @@ void ObjectClass::vf_99(int a1)
 }
 
 // FUNCTION: GAMEMD 0x4264C0
-int ObjectClass::vf_107(CellClass* cell, int a2, int a3, int a4, int a5)
+int ObjectClass::vf_107(CellClass* cell, int a2, int a3, int a4, bool a5)
 {
     return 0;
 }

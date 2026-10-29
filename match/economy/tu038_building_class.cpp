@@ -986,7 +986,7 @@ int BuildingClass::GetYSort() const
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x449440
-int BuildingClass::vf_107(CellClass* target, int a2, int a3, int a4, int a5)
+int BuildingClass::vf_107(CellClass* target, int a2, int a3, int a4, bool a5)
 {
     CellStruct cell = target->MapCoords;
     BuildingTypeClass* type = Type;

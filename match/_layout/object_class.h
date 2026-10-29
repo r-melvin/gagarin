@@ -213,7 +213,7 @@ public:
     virtual void vf_104(int a1);                               // 104 0x5F4400: bare RET 4
     virtual void vf_105(int a1, int a2);                       // 105 0x5F6B50: bare RET 8
     virtual void vf_106(int a1);                               // 106 0x5F4410
-    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, int a5); // 107 0x4264C0: returns 0
+    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, bool a5); // 107 0x4264C0: returns 0
     virtual int vf_108(int a1, int a2, int a3, int a4, int a5); // 108 0x4264D0: returns 0
     virtual void vf_109(const CoordStruct& coord);             // 109 0x5F6940
     virtual CellStruct vf_110();                               // 110 0x41BEA0: the cell under Location

@@ -65,7 +65,7 @@ PKStraw::PKStraw(PipeDirection control, Straw* random) :
 }
 
 // FUNCTION: GAMEMD 0x633110
-void PKStraw::FUN_00633110(PKKeyView* key)
+void PKStraw::FUN_00633110(PKey_00632740* key)
 {
     Key = key;
     if (key != 0) {

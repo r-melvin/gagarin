@@ -815,17 +815,13 @@ bool TechnoClass::vf_39()
 // Does this object have a weapon at all? The turret-weapon slot has to hand
 // back a record, and the record has to name a WeaponType.
 //
-// The exit is `MOV EAX,0x1` / `XOR EAX,EAX` — five-byte immediate into the full
-// register — so the return type is int, not bool. See the header note: the
-// vtable map calls this slot `-> bool`, and the bytes say otherwise.
-int TechnoClass::IsArmed()
+// The exit is `MOV EAX,0x1` / `XOR EAX,EAX` (VC6 materialises a bool-typed
+// `&&` result that way); every caller tests only AL, so the slot is bool.
+bool TechnoClass::IsArmed()
 {
     WeaponStruct* weapon = GetPrimaryWeapon();
 
-    if (weapon != 0 && weapon->WeaponType != 0) {
-        return 1;
-    }
-    return 0;
+    return weapon != 0 && weapon->WeaponType != 0;
 }
 
 // FUNCTION: GAMEMD 0x701190

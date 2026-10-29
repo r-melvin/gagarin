@@ -265,7 +265,7 @@ public:
     virtual bool vf_168();                                         // 168 0x6FBDC0
     virtual bool vf_169();                                         // 169 0x6FBC90
     virtual DirStruct vf_170();                                    // 170 0x4E0150
-    virtual int IsArmed();                                         // 171 0x701120
+    virtual bool IsArmed();                                        // 171 0x701120
     virtual bool vf_172();                                         // 172 0x70C620
     virtual double vf_173();                                       // 173 0x708BC0
     virtual int vf_174();                                          // 174 0x708C30

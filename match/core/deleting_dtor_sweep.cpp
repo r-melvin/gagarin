@@ -8,6 +8,7 @@
 // object when bit 0 of the flag argument is set, and returns `this`.
 
 #include "deleting_dtor_sweep.h"
+#include "../platform/pk_blow_pipes.h"
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
@@ -174,7 +175,7 @@ void* Obj_588BF0::FUN_588BF0(unsigned int flags)
 // FUNCTION: GAMEMD 0x5B4610
 void* Obj_5B4610::FUN_5B4610(unsigned int flags)
 {
-    FUN_00437FC0(this);
+    static_cast<BlockCipherView*>(static_cast<void*>(this))->~BlockCipherView();
 
     if (flags & 1) {
         FUN_007C8B3D(this);

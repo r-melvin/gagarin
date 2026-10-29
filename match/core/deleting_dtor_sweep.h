@@ -31,7 +31,6 @@
 extern "C" void __cdecl FUN_007C8B3D(void* block);   // GAMEMD 0x7C8B3D operator delete
 
 // The real destructors, declared only so cl emits reloc-normalised calls.
-void FUN_00437FC0(void* self);   // GAMEMD 0x437FC0
 void FUN_0047BB60(void* self);   // GAMEMD 0x47BB60
 void FUN_0048B1F0(void* self);   // GAMEMD 0x48B1F0
 void FUN_004C30B0(void* self);   // GAMEMD 0x4C30B0

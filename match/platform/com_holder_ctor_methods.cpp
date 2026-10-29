@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x437F50.
 
 #include "com_holder_ctor_methods.h"
+#include "pk_blow_pipes.h"
 
 // FUNCTION: GAMEMD 0x437F50
 //
@@ -19,7 +20,7 @@
 // reloads `[ESP+8]` for the OleRun call, the query and the release rather than
 // holding it. That is the opposite of 0x46B050, where retail holds the same kind
 // of value in a register; the disassembly says which, and here it reloads.
-Holder_00437F50* Holder_00437F50::Ctor()
+BlockCipherView::BlockCipherView()
 {
     IUnk_00437F50* created;
 
@@ -39,5 +40,4 @@ Holder_00437F50* Holder_00437F50::Ctor()
     if (hr < 0 && hr != 0x80004002) {
         FUN_007DC720(hr);
     }
-    return this;
 }

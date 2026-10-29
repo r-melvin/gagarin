@@ -5,6 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "small_misc12_methods.h"
+#include "../platform/pk_blow_pipes.h"
 
 // FUNCTION: GAMEMD 0x408500
 // Link the node in after the anchor, add its weight to the running total, and
@@ -36,12 +37,12 @@ void* BSurface_00411650::FUN_00411650(unsigned int flags)
 // FUNCTION: GAMEMD 0x437FD0
 // The two arguments reach the interface in the opposite order to the one they
 // arrive in: retail pushes the first parameter first, so it ends up rightmost.
-void Obj_00437FD0::FUN_00437FD0(int a, int b)
+void BlockCipherView::Key(const void* key, int length)
 {
-    if (Ptr == 0) {
+    if (Interface == 0) {
         FUN_007DC720(0x80004003);
     }
 
-    IFACE_CALL2(Ptr, 0xC, b, a);
+    IFACE_CALL2(Interface, 0xC, length, (int)key);
 }
 

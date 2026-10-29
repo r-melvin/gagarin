@@ -69,7 +69,7 @@ public:
     virtual int vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house);   // 91  0x71B920
     virtual bool vf_94();                                                   // 94  0x71C5B0
     virtual void vf_95();                                                   // 95  0x71C6B0
-    virtual int vf_107(CellClass* who, int a2, int a3, int a4, int a5);       // 107 0x71C4D0
+    virtual int vf_107(CellClass* who, int a2, int a3, int a4, bool a5);       // 107 0x71C4D0
 
     // FUNCTION: GAMEMD 0x71C8E0 - flags the terrain object to be removed and restarts its stage timer.
     void StartDying();

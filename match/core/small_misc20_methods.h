@@ -17,19 +17,6 @@ typedef long (__stdcall* Slot3)(IFace*, int, int, int);
 #define IFACE_CALL3(p, slot, x, y, z) \
     ((*(Slot3*)(*(char**)(p) + (slot)))(p, x, y, z))
 
-// The two forwards differ only in the slot, 0x18 against 0x1C, and pass their
-// arguments in the order (second, first, third) - retail pushes the third
-// first, then the first, then the second.
-struct Obj_00438000
-{
-    IFace* Ptr;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x438000
-    int FUN_00438000(int a, int b, int c);
-    // FUNCTION: GAMEMD 0x438030
-    int FUN_00438030(int a, int b, int c);
-};
-
 // GLOBAL: GAMEMD 0x87E81C — the gate; 0x87E810 is the list header itself.
 extern int      DAT_0087E81C;
 extern ListNode DAT_0087E810;

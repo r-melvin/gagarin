@@ -5,6 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "small_misc20_methods.h"
+#include "../platform/pk_blow_pipes.h"
 
 // FUNCTION: GAMEMD 0x408200
 void __cdecl FUN_00408200()
@@ -74,25 +75,25 @@ void __cdecl FUN_004083D0()
 }
 
 // FUNCTION: GAMEMD 0x438000
-int Obj_00438000::FUN_00438000(int a, int b, int c)
+int BlockCipherView::Forward(const void* in, int length, void* out)
 {
-    if (Ptr == 0) {
+    if (Interface == 0) {
         FUN_007DC720(0x80004003);
     }
 
-    IFACE_CALL3(Ptr, 0x18, b, a, c);
+    IFACE_CALL3(Interface, 0x18, length, (int)in, (int)out);
 
-    return b;
+    return length;
 }
 
 // FUNCTION: GAMEMD 0x438030
-int Obj_00438000::FUN_00438030(int a, int b, int c)
+int BlockCipherView::Reverse(const void* in, int length, void* out)
 {
-    if (Ptr == 0) {
+    if (Interface == 0) {
         FUN_007DC720(0x80004003);
     }
 
-    IFACE_CALL3(Ptr, 0x1C, b, a, c);
+    IFACE_CALL3(Interface, 0x1C, length, (int)in, (int)out);
 
-    return b;
+    return length;
 }

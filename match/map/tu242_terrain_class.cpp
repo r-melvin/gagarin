@@ -265,7 +265,7 @@ void TerrainClass::vf_70(Point2D* where, RectangleStruct* clip)
 // CAPPED at 94.5% (multiset identical). Retail lays the `return 7` epilogue before the `return 0` one;
 // cl emits them in the other order. Variants tried: while loop (kept), for(;;) with the end test first,
 // a result variable with break.
-int TerrainClass::vf_107(CellClass* who, int a2, int a3, int a4, int a5)
+int TerrainClass::vf_107(CellClass* who, int a2, int a3, int a4, bool a5)
 {
     MapObjCell* list = static_cast<MapObjCell*>(vf_66(0));
     MapObjCell origin(who->MapCoords.X, who->MapCoords.Y);

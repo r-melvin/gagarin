@@ -54,12 +54,5 @@ GG_STATIC_ASSERT(offsetof(Obj_00408500d, Total) == 0x4);
 
 
 
-struct Obj_00437FD0
-{
-    IFace* Ptr;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x437FD0
-    void FUN_00437FD0(int a, int b);
-};
 
 #endif  // GG_MATCH_CORE_SMALL_MISC12_METHODS_H
