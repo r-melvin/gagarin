@@ -801,6 +801,13 @@ GG_STATIC_ASSERT(sizeof(PowerClass) == 0x1544);
 
 // ---- SidebarClass ------------------------------------------------------------------------------------------------
 
+union SidebarCameoUnknown04
+{
+    int Word;
+    unsigned char Bytes[4];
+};
+GG_STATIC_ASSERT(sizeof(SidebarCameoUnknown04) == 4);
+
 struct SidebarCameoUnknown18Bytes
 {
     unsigned char Low;
@@ -820,7 +827,7 @@ struct SidebarCameo
     // FUNCTION: GAMEMD 0x6AC7C0 (decl; partial) -- array element initializer, RET 4.
     SidebarCameo();
     int   unknown_00;                     // +0x00 (cleared by StripClass initializer)
-    unsigned char unknown_04[4];           // +0x04 (initializer writes the first byte; strip reset clears the dword)
+    SidebarCameoUnknown04 unknown_04;      // +0x04 (initializer writes byte 0; strip reset clears the four bytes; lookups compare it as an int)
     int   unknown_08;                     // +0x08
     void* Pointer;                        // +0x0C (registered with the swizzle manager after a load)
     int   unknown_10;                     // +0x10

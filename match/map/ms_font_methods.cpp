@@ -53,7 +53,7 @@ int MSFont::LineWidth(const wchar_t* text)
     return widest;
 }
 
-// FUNCTION: GAMEMD 0x5D30C0 (partial 86.6%: retail sums the lead and the widest line in EDI before loading the output pointer)
+// FUNCTION: GAMEMD 0x5D30C0
 // Measure a text into a rectangle at the origin: the widest line plus the lead
 // across, one line height per line down; an empty text measures nothing.
 void MSFont::Measure(const wchar_t* text, MSRect* out)
@@ -76,8 +76,9 @@ void MSFont::Measure(const wchar_t* text, MSRect* out)
                 height += LineHeight;
             }
         } while (*text != 0);
+        int across = Lead + widest;
         out->Height = height;
-        out->Width = Lead + widest;
+        out->Width = across;
         out->X = 0;
         out->Y = 0;
         return;

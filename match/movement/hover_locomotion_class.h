@@ -62,7 +62,7 @@ extern HoverCellCoord DAT_00A8F160;
 extern int DAT_00A8F1B4;
 // GLOBAL: GAMEMD 0xA8F1C0 - height threshold read by Hover Process/Push/IsMovingHere
 extern int DAT_00A8F1C0;
-// DAT_0089F688 is the shared Pair_0042D490 table from pair_0042d490.h.
+// DAT_0089F688 is the shared step table from core/cell_step_tables.h.
 
 // Hover calls Foot slot +0x48 with a coordinate out pointer and receives that
 // pointer back. This address-local member-pointer layout retains the observed dispatch.

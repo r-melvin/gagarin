@@ -17,6 +17,7 @@
 #define GG_MATCH_AI_TACTION_CLASS_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/rect_4i.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/abstract_class.h"
 
@@ -196,12 +197,16 @@ public:
     bool FUN_006E1F60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x006E2660
     bool FUN_006E2660(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E4560
+    bool FUN_006E4560(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E21E0
+    bool FUN_006E21E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
 
     unsigned char unknown_24[4];     // +0x24
     TActionClass* unknown_28;        // +0x28
     int           unknown_2C;        // +0x2C
     TeamTypeClass* unknown_30;       // +0x30
-    unsigned char unknown_34[0x10];  // +0x34
+    Rect_4i       unknown_34;        // +0x34 map rectangle (x, y, width, height)
     int           unknown_44;        // +0x44 waypoint index
     unsigned char unknown_48[4];     // +0x48
     TagTypeClass* unknown_4C;        // +0x4C
@@ -224,6 +229,7 @@ public:
 
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(TActionClass, unknown_34) == 0x34);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_44) == 0x44);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_4C) == 0x4C);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_50) == 0x50);

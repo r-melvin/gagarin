@@ -330,10 +330,7 @@ GG_STATIC_ASSERT(sizeof(IPXConnClass) == 0xB8);
 // Globals and callee objects reached by IPXConnClass / IPXGlobalConnClass.
 // ---------------------------------------------------------------------------
 // Player records use the shared RTTI-attested NodeNameType owner.
-// GLOBAL: GAMEMD 0x887628 -- the packet interface (WinsockInterfaceClass, owned by
-// the winsock hierarchy; include winsock_interface_class.h to call through it).
-class WinsockInterfaceClass;
-extern WinsockInterfaceClass* Interface_00887628;
+#include "packet_interface_global.h"
 
 // The player/connection id registry at 0xB052D0 (shared by conn and connman);
 // 0x663D60 maps a connection id to a byte.

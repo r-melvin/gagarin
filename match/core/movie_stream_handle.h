@@ -215,7 +215,7 @@ struct MovieHandle_007BD470
     unsigned short unknown_4; // 0x4
     unsigned char unknown_6[0x2];
     unsigned char* unknown_8; // 0x8
-    short unknown_C; // 0xc
+    unsigned short unknown_C; // 0xc
     short unknown_E; // 0xe
     int unknown_10; // 0x10
     int unknown_14; // 0x14

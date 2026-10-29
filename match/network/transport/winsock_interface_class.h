@@ -20,6 +20,7 @@
 #include "../../_rt/gg_static_assert.h"
 #include "../../core/vector_class.h"
 #include "../../platform/input_manager_class_methods.h"
+#include "packet_interface_global.h"
 
 // Only imports/globals reached by StartListening and the two buffer drains.
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- log sink used on socket errors.

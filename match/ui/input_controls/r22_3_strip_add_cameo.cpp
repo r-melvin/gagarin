@@ -18,7 +18,7 @@ bool StripClass::FUN_006A87F0(int type, int id)
 {
     if (CameoCount <= 0x4B) {
         for (int i = 0; i < CameoCount; i++) {
-            if (*(int*)Cameos[i].unknown_04 == type && Cameos[i].unknown_00 == id) {
+            if (Cameos[i].unknown_04.Word == type && Cameos[i].unknown_00 == id) {
                 return false;
             }
         }

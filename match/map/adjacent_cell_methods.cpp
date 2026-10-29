@@ -46,7 +46,7 @@ Pair_0042D490* FUN_0042D490(Pair_0042D490* dest, Pair_0042D490* src,
         return dest;
     }
 
-    Pair_0042D490* step = &DAT_0089F688[dir];
+    HeaderCellInit* step = &DAT_0089F688[dir];
 
     out.X = (short)(src->X + (*step).X);
     out.Y = (short)((*step).Y + src->Y);

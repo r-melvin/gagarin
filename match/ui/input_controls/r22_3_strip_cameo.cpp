@@ -12,7 +12,7 @@
 bool StripClass::FUN_006ABA60(void* value, int type, int id)
 {
     for (int i = 0; i < CameoCount; i++) {
-        if (*(int*)Cameos[i].unknown_04 == type && Cameos[i].unknown_00 == id) {
+        if (Cameos[i].unknown_04.Word == type && Cameos[i].unknown_00 == id) {
             Cameos[i].Pointer = value;
             unknown_3D = 1;
             At_3C = 1;

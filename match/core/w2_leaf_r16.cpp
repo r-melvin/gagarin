@@ -359,9 +359,16 @@ void Dlg_006966D0::FUN_006966D0()
 struct Dlg_00631300
 {
     HWND Window;    // +0x00
+    char unknown_04[4];
+    bool Changed;   // +0x08
     // FUNCTION: GAMEMD 0x631300
     void FUN_00631300();
+    // FUNCTION: GAMEMD 0x631060 (decl; reloc) -- fill the controls.
+    void FUN_00631060();
+    // FUNCTION: GAMEMD 0x631640
+    void FUN_00631640();
 };
+GG_STATIC_ASSERT(offsetof(Dlg_00631300, Changed) == 0x8);
 
 // GLOBAL: GAMEMD 0xA8DABC -- the list index the user picked.
 extern int DAT_00A8DABC;
@@ -372,6 +379,8 @@ struct Entry_00631300
     char Name[1];       // +0x9A
 };
 extern Entry_00631300** DAT_00A8DB38;
+// GLOBAL: GAMEMD 0xA8DB44 -- the number of entries in the table.
+extern int DAT_00A8DB44;
 
 // FUNCTION: GAMEMD 0x631300
 // PARTIAL: 98.0%. One swapped base/index register pair in the table lookup; retail loads the table
@@ -446,5 +455,34 @@ void Dlg_006966D0::FUN_00696590()
         } while (i < 4);
         WPARAM found = FUN_00776E10(list, 0xFFFFFFFF, Selection);
         SendMessageA(list, 0x14E, found, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x631640
+// Remove the selected list entry from the table, mark the dialog changed and refill
+// the controls; when nothing is selected afterwards, blank the text box.
+void Dlg_00631300::FUN_00631640()
+{
+    HWND list = GetDlgItem(Window, 0x5E0);
+    if (list) {
+        DAT_00A8DABC = SendMessageA(list, 0x188, 0, 0);
+        if (DAT_00A8DABC > -1) {
+            int i = DAT_00A8DABC;
+            if (i < DAT_00A8DB44) {
+                DAT_00A8DB44--;
+                while (i < DAT_00A8DB44) {
+                    i++;
+                    DAT_00A8DB38[i - 1] = DAT_00A8DB38[i];
+                }
+            }
+            Changed = true;
+            FUN_00631060();
+            if (DAT_00A8DABC == -1) {
+                HWND edit = GetDlgItem(Window, 0x5E5);
+                if (edit) {
+                    SendMessageA(edit, 0x4B4, 0, (LPARAM)DAT_00889F64);
+                }
+            }
+        }
     }
 }

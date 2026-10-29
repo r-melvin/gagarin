@@ -41,8 +41,7 @@ int BuildingClass::FUN_0043EE50()
     int frame = 0;
     if (vf_255() && Anims[9]) {
         DirStruct facing = PrimaryFacing.FUN_004C93D0();
-        unsigned int whole = *(unsigned int*)&facing;
-        frame = DAT_007F4890[((whole >> 10) + 1 >> 1) & 0x1F];
+        frame = DAT_007F4890[((facing.Whole >> 10) + 1 >> 1) & 0x1F];
         AnimClass* anim = Anims[9];
         if (anim) {
             anim->Value = frame;

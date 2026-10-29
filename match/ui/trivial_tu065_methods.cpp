@@ -38,9 +38,9 @@ struct Vtbl_004A5960
 // through virtual slot 18.
 void Obj_004A5950::FUN_004A5960(DirWord_004A5960 dir)
 {
-    unknown_B4 = *(int*)&dir;
+    unknown_B4 = dir.Whole;
     dir.Raw = (unsigned short)(dir.Low << 8);
-    int f = (((unsigned)*(int*)&dir >> 12) + 1 >> 1) & 7;
+    int f = ((dir.Whole >> 12) + 1 >> 1) & 7;
     unknown_B8 = f;
     unknown_BC = f;
     Obj_004A5960View* v = (Obj_004A5960View*)this;

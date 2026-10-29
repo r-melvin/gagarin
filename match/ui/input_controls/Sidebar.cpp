@@ -1115,10 +1115,10 @@ StripClass* StripClass::FUN_006A80A0(void* unknown_00)
     count = 0x4B;
     do {
         cameo->unknown_00 = 0;
-        cameo->unknown_04[0] = 0;
-        cameo->unknown_04[1] = 0;
-        cameo->unknown_04[2] = 0;
-        cameo->unknown_04[3] = 0;
+        cameo->unknown_04.Bytes[0] = 0;
+        cameo->unknown_04.Bytes[1] = 0;
+        cameo->unknown_04.Bytes[2] = 0;
+        cameo->unknown_04.Bytes[3] = 0;
         cameo->unknown_08 = 0;
         cameo->Pointer = 0;
         ++cameo;
@@ -1714,7 +1714,7 @@ DisplayClass::DisplayClass(const Obj_005BDF70& noInit)
 SidebarCameo* __fastcall FUN_006AC870(SidebarCameo* cameo)
 {
     cameo->unknown_00 = 0;
-    cameo->unknown_04[0] = 0;
+    cameo->unknown_04.Bytes[0] = 0;
     cameo->unknown_08 = CurrentFrame_00A8ED84;
     cameo->unknown_10 = 0;
     cameo->unknown_14 = 0;

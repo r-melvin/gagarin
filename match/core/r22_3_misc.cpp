@@ -6,9 +6,6 @@
 
 #include "../network/transport/udp_interface_class.h"
 
-// GLOBAL: GAMEMD 0x887628 -- the packet interface, a UDPInterfaceClass (same object as
-// Interface_00887628, typed with its concrete class because vtable slots 0x68/0x6C are used).
-extern UDPInterfaceClass* UDPInterface_00887628;
 extern int DAT_00A8B238;
 
 struct Obj_005D9060 {
@@ -33,11 +30,11 @@ short Obj_005D9060::FUN_005D9060(int step)
         if (Counter > 0xffff) {
             Counter = 0x800;
         }
-        if (UDPInterface_00887628 && DAT_00A8B238 == 4) {
-            if (!UDPInterface_00887628->OpenSpareSocket(id)) {
+        if (Interface_00887628 && DAT_00A8B238 == 4) {
+            if (!static_cast<UDPInterfaceClass*>(Interface_00887628)->OpenSpareSocket(id)) {
                 continue;
             }
-            UDPInterface_00887628->CloseSpareSocket(id);
+            static_cast<UDPInterfaceClass*>(Interface_00887628)->CloseSpareSocket(id);
         }
         return id;
     } while (tries-- != 0);

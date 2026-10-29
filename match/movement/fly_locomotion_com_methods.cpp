@@ -38,9 +38,6 @@ extern const IID IID_00822410 = {
 // client's secondary facing. The key folds the slope and the facing into its
 // low eleven bits.
 // FUNCTION: GAMEMD 0x4CFB00
-// PARTIAL: retained form2 canonical owner replay, 83/87 (95.4%) instructions.
-// Word loads preserve the masked 5-bit direction for any upper word;
-// branch-distance residuals preserve the same destination blocks.
 Matrix3D __stdcall FlyLocomotionClass::ShadowMatrix(unsigned int* key)
 {
     CoordStruct coord = this->LinkedTo->Location;
@@ -50,12 +47,12 @@ Matrix3D __stdcall FlyLocomotionClass::ShadowMatrix(unsigned int* key)
     }
     Matrix3D m = FUN_007559B0(slope);
 
-    m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Raw >> 10) + 1U) >> 1) & 0x1FU) - 8)
+    m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Whole >> 10) + 1U) >> 1) & 0x1FU) - 8)
                       * gg_locomotion_facing_step));
 
     if (key != 0 && *key != 0xFFFFFFFF) {
         *key = ((*key << 6) + slope) << 5;
-        *key |= (((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Raw >> 10) + 1U) >> 1) & 0x1FU;
+        *key |= (((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Whole >> 10) + 1U) >> 1) & 0x1FU;
     }
 
     return m;

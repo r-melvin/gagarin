@@ -332,7 +332,7 @@ bool DisplayClass::vf_36(CellStruct* cell, DisplayHouse* house)
 
     for (int i = 0; i < 8; i++)
     {
-        CellStruct n = DisplayStep_0089F688[i & 7] + *cell;
+        CellStruct n = DAT_0089F688[i & 7] + *cell;
         DisplayCell* nc = GetCellAt_005657A0(n);
         if ((n.X != cell->X || n.Y != cell->Y) && !(nc->Flags12C & 0x10))
         {
@@ -347,7 +347,7 @@ bool DisplayClass::vf_36(CellStruct* cell, DisplayHouse* house)
                     DisplayProjector_00887324->FUN_006DA7D0(nc);
                     for (int j = 0; j < 8; j++)
                     {
-                        CellStruct m = DisplayStep_0089F688[j & 7] + n;
+                        CellStruct m = DAT_0089F688[j & 7] + n;
                         DisplayCell* mc = GetCellAt_005657A0(m);
                         signed char b = DisplayProjector_00887324->FUN_006D8700(&m, 0);
                         if (b != mc->Layer0Value)
@@ -380,7 +380,7 @@ bool DisplayClass::vf_36(CellStruct* cell, DisplayHouse* house)
                     DisplayProjector_00887324->FUN_006DA7D0(nc);
                     for (int j = 0; j < 8; j++)
                     {
-                        CellStruct m = DisplayStep_0089F688[j & 7] + n;
+                        CellStruct m = DAT_0089F688[j & 7] + n;
                         DisplayCell* mc = GetCellAt_005657A0(m);
                         signed char b = DisplayProjector_00887324->FUN_006D8700(&m, 1);
                         if (b != mc->Layer1Value)
@@ -477,7 +477,7 @@ bool DisplayClass::vf_38(CellStruct* cell, DisplayHouse* house)
 
     for (int i = 0; i < 8; i++)
     {
-        CellStruct n = DisplayStep_0089F688[i & 7] + *cell;
+        CellStruct n = DAT_0089F688[i & 7] + *cell;
         DisplayCell* nc = GetCellAt_005657A0(n);
         if ((n.X != cell->X || n.Y != cell->Y) && !(nc->Flags140 & 1))
         {
@@ -492,7 +492,7 @@ bool DisplayClass::vf_38(CellStruct* cell, DisplayHouse* house)
                     DisplayProjector_00887324->FUN_006DA7D0(nc);
                     for (int j = 0; j < 8; j++)
                     {
-                        CellStruct m = n + DisplayStep_0089F688[j & 7];
+                        CellStruct m = n + DAT_0089F688[j & 7];
                         DisplayCell* mc = GetCellAt_005657A0(m);
                         signed char b = DisplayProjector_00887324->FUN_006D8700(&m, 1);
                         if (b != mc->Layer1Value)
@@ -541,7 +541,7 @@ bool DisplayClass::vf_39(CellStruct* cell, DisplayHouse* house)
 
     for (int i = 0; i < 8; i++)
     {
-        CellStruct n = DisplayStep_0089F688[i & 7] + *cell;
+        CellStruct n = DAT_0089F688[i & 7] + *cell;
         DisplayCell* nc = GetCellAt_005657A0(n);
         if ((n.X != cell->X || n.Y != cell->Y) && !(nc->Flags12C & 0x10))
         {
@@ -556,7 +556,7 @@ bool DisplayClass::vf_39(CellStruct* cell, DisplayHouse* house)
                     DisplayProjector_00887324->FUN_006DA7D0(nc);
                     for (int j = 0; j < 8; j++)
                     {
-                        CellStruct m = DisplayStep_0089F688[j & 7] + n;
+                        CellStruct m = DAT_0089F688[j & 7] + n;
                         DisplayCell* mc = GetCellAt_005657A0(m);
                         signed char b = DisplayProjector_00887324->FUN_006D8700(&m, 0);
                         if (b != mc->Layer0Value)

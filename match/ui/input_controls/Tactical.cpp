@@ -42,6 +42,7 @@
 // must stay an int operand in the expression, then 0.5 folds in as a double.
 
 #include <objidl.h>
+#include "../../core/cell_step_tables.h"
 #include "../../_layout/side_class.h"
 #include "../../_layout/wave_class.h"
 
@@ -1620,8 +1621,6 @@ void Tactical::FUN_006D4E20(const unsigned short* text)
 
 #include "../../_layout/building_class.h"
 #include "../../_layout/placement_object.h"
-// GLOBAL: GAMEMD 0x89F688 (declaration; native6D576D)
-extern CellStruct DAT_0089F688[];
 // GLOBAL: GAMEMD 0x87F6C4 (declaration)
 extern ColorConvert* DAT_0087F6C4;
 // GLOBAL: GAMEMD 0x8A03FC (declaration)

@@ -106,6 +106,7 @@ struct EBolt
     CoordStruct_004C2A60 Point2;   // +0x000C
     int                  At_18;    // +0x0018
     int                  At_1C;    // +0x001C  random 0..0x100
+    struct EBoltOwner_004C29E0* At_20;   // +0x0020  back-linked object, cleared on teardown (0x4C29E0)
 
     // FUNCTION: GAMEMD 0x4C2A60
     void Fire(CoordStruct_004C2A60 from, CoordStruct_004C2A60 to, int color);
@@ -113,5 +114,6 @@ struct EBolt
 GG_STATIC_ASSERT(offsetof(EBolt, Point2) == 0x0C);
 GG_STATIC_ASSERT(offsetof(EBolt, At_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(EBolt, At_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(EBolt, At_20) == 0x20);
 
 #endif  // GG_MATCH_COMBAT_EBOLT_FIRE_METHODS_H

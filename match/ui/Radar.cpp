@@ -571,7 +571,7 @@ struct AcceleratorTracker { int A; int B; AcceleratorTracker() : A(0), B(0) {} b
 
 template class DynamicVectorClass<AcceleratorTracker>;
 
-struct UndoInfoStruct { int unknown_00; int unknown_04; int unknown_08; UndoInfoStruct() : unknown_00(0), unknown_04(0), unknown_08(0) {} bool operator==(const UndoInfoStruct& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const UndoInfoStruct& o) const { return !(*this==o); } };
+#include "../core/undo_info_struct.h"
 
 template class DynamicVectorClass<UndoInfoStruct>;
 

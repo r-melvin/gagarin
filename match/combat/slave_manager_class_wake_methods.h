@@ -58,10 +58,13 @@ struct Rules_006B1020
 {
     char _pad0000[0x1780];         // +0x0000
     int  At_1780;                  // +0x1780  a lepton range, divided by 256
-    char _pad1784[0x1790 - 0x1784];// +0x1784
+    int  At_1784;                  // +0x1784
+    int  At_1788;                  // +0x1788  a second lepton range, divided by 256
+    char _pad178C[0x1790 - 0x178C];// +0x178C
     int  At_1790;                  // +0x1790  frames between scans
 };
 GG_STATIC_ASSERT(offsetof(Rules_006B1020, At_1780) == 0x1780);
+GG_STATIC_ASSERT(offsetof(Rules_006B1020, At_1788) == 0x1788);
 GG_STATIC_ASSERT(offsetof(Rules_006B1020, At_1790) == 0x1790);
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern Rules_006B1020* RulesInstance;
@@ -102,6 +105,11 @@ public:
 
     // FUNCTION: GAMEMD 0x6B1020
     bool ShouldWakeUpNow();
+
+    // FUNCTION: GAMEMD 0x6B0260
+    bool HasNearbyCell();
+    // FUNCTION: GAMEMD 0x6B02C0
+    CellStruct GetNearbyCell();
 };
 GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B1020, Owner)         == 0x24);
 GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B1020, State)         == 0x5C);

@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
+#include "../../core/cell_step_tables.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
@@ -1783,7 +1784,6 @@ GG_STATIC_ASSERT(offsetof(BA4Building, unknown_714) == 0x714);
 // The map object, the session object, the global tables and flags touched by the bodies.
 extern BA4Map DAT_0087F7E8;
 extern BA4Game* DAT_008871E0;
-extern HBCell DAT_0089F688[8];
 extern BA4MapInfo** DAT_00A83D84;
 extern BA4Screen* DAT_00887324;
 extern int DAT_0089C818;

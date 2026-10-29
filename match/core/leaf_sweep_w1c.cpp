@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
+#include "../network/transport/winsock_interface_class.h"
 
 struct Sub_00406250
 {
@@ -295,21 +296,6 @@ int __fastcall FUN_0053E4C0(int index)
     return 0;
 }
 
-struct Iface_0053F5B0
-{
-    virtual void Slot0(int flag);
-    virtual void Slot1();
-    virtual void Slot2();
-    virtual void Slot3();
-    virtual void Slot4();
-    virtual void Slot5();
-    virtual void Slot6();
-    virtual void Slot7();
-    virtual void Slot8();
-};
-
-// GLOBAL: GAMEMD 0x887628
-extern Iface_0053F5B0* DAT_00887628;
 // GLOBAL: GAMEMD 0xAA05AC
 extern int DAT_00AA05AC;
 // GLOBAL: GAMEMD 0xAA05A8
@@ -319,8 +305,8 @@ extern int DAT_00AA05A8;
 // Calls slot 8 of the global interface when present, clears DAT_00AA05AC, returns 1.
 int FUN_0053F5B0()
 {
-    if (DAT_00887628)
-        DAT_00887628->Slot8();
+    if (Interface_00887628)
+        Interface_00887628->StopListening();
     DAT_00AA05AC = 0;
     return 1;
 }
@@ -329,7 +315,7 @@ int FUN_0053F5B0()
 // Calls slot 1 of the global interface and clears DAT_00AA05A8.
 void FUN_0053F630()
 {
-    DAT_00887628->Slot1();
+    Interface_00887628->vf_1();
     DAT_00AA05A8 = 0;
 }
 

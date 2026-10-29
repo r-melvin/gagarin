@@ -4,20 +4,8 @@
 //   order, through the string destructor 0x7B6760; 0x6247D0 is its copy constructor.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
-#include "widestring_006255f0.h"
-
-struct ListEntry_006255F0
-{
-    int Id;                       // +0x00
-    WideString_006255F0 Name;     // +0x04
-    WideString_006255F0 Text;     // +0x08
-    int unknown_0C;               // +0x0C
-    int unknown_10;               // +0x10
-    int unknown_14;               // +0x14
-
-    ListEntry_006255F0(const ListEntry_006255F0& other);
-    ~ListEntry_006255F0();
-};
+#define GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
+#include "listentry_006255f0.h"
 
 // FUNCTION: GAMEMD 0x624460
 ListEntry_006255F0::~ListEntry_006255F0()

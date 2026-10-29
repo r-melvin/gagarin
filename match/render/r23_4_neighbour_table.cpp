@@ -40,8 +40,6 @@ GG_STATIC_ASSERT(offsetof(Obj_0075F140, unknown_208) == 0x208);
 GG_STATIC_ASSERT(offsetof(Obj_0075F140, unknown_238) == 0x238);
 
 // FUNCTION: GAMEMD 0x75F140
-// PARTIAL: 86.0% -- instruction multiset identical; retail keeps -1-half in ECX from before the
-// first Direction load and zeroes EAX, this build orders those two registers the other way round.
 // Fills the eight neighbour steps from half the surface pitch, then the current step and its
 // multiples.
 void Obj_0075F140::FUN_0075F140()
@@ -53,11 +51,11 @@ void Obj_0075F140::FUN_0075F140()
     Steps[4] = half;
     Steps[5] = half - 1;
     int last = -1 - half;
-    unknown_208 = 0;
-    unknown_20C = 0;
     Steps[2] = 1;
     Steps[6] = -1;
     Steps[7] = last;
+    unknown_208 = 0;
+    unknown_20C = 0;
     int step = Steps[Direction];
     unknown_210 = step;
     unknown_214 = Steps[Direction];

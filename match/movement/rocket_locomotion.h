@@ -82,6 +82,8 @@ public:
     bool FUN_006620F0(RocketMissileSpec* spec);
     // FUNCTION: GAMEMD 0x663030 (decl; reloc) - __thiscall.
     void FUN_00663030();
+    // FUNCTION: GAMEMD 0x662240 (decl) - pitch from the foot to the destination.
+    double FUN_00662240();
 
     // ---- members (complete-object offsets) ----
     LocoCoord   Destination_;       // +0x18

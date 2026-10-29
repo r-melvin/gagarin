@@ -104,15 +104,7 @@ struct AudioControllerInit
 
 // CALLEE: GAMEMD 0x410380 (decl; reloc) -- AbstractClass's Load body.
 
-// One lepton offset per facing (0x89F6D8, eight X/Y pairs).
-struct FacingOffset
-{
-    int X;
-    int Y;
-};
-
-// GLOBAL: GAMEMD 0x89F6D8
-extern FacingOffset DAT_0089F6D8[8];
+#include "cell_step_tables.h"
 
 // The selected-objects vector at 0xA8ECB8, seen through the slot it calls
 // (slot 4 finds an item's index), its Items/Count fields and the inlined

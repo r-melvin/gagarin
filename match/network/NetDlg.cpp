@@ -58,8 +58,6 @@ bool __cdecl FUN_005DA6C0()
     return true;
 }
 
-// GLOBAL: GAMEMD 0x887628 -- the packet interface (WinsockInterfaceClass).
-extern WinsockInterfaceClass* Interface_00887628;
 // GLOBAL: GAMEMD 0xA8D610
 extern unsigned short DAT_00A8D610;
 

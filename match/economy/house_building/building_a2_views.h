@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
+#include "../../core/cell_step_tables.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
@@ -1538,8 +1539,7 @@ extern BA2Screen* DAT_00887324;
 // GLOBAL: GAMEMD 0x87F7E8 - the map; 0x89C818 - the invalid cell.
 extern BA2Map DAT_0087F7E8;
 extern HBCell DAT_0089C818;
-// GLOBAL: GAMEMD 0x89F688 (eight direction offsets), 0x89F698 / 0x89F69C (cell offsets), 0xA83C6C (the type table)
-extern HBCell DAT_0089F688[8];
+// GLOBAL: GAMEMD 0x89F698 / 0x89F69C (cell offsets), 0xA83C6C (the type table)
 extern HBCell DAT_0089F698;
 extern HBCell DAT_0089F69C;
 extern BA2Type** DAT_00A83C6C;

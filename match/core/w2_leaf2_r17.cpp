@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "trivial_tu130_methods.h"
+#include "../network/transport/winsock_interface_class.h"
 
 // GLOBAL: GAMEMD 0xB05629
 extern unsigned char DAT_00B05629;
@@ -38,14 +39,6 @@ double __cdecl FUN_00598000()
 // FUNCTION: GAMEMD 0x5E8A20 (decl; reloc)
 void __cdecl FUN_005E8A20();
 
-class Iface_00887628
-{
-public:
-    virtual ~Iface_00887628();
-};
-
-// GLOBAL: GAMEMD 0x887628
-extern Iface_00887628* DAT_00887628;
 // GLOBAL: GAMEMD 0xA8D610
 extern short DAT_00A8D610;
 
@@ -55,10 +48,10 @@ void __cdecl FUN_005DB6F0()
 {
     FUN_005E8A20();
     DAT_00A8D610 = 0;
-    if (DAT_00887628 != 0) {
-        delete DAT_00887628;
+    if (Interface_00887628 != 0) {
+        delete Interface_00887628;
     }
-    DAT_00887628 = 0;
+    Interface_00887628 = 0;
 }
 
 // GLOBAL: GAMEMD 0xA8ED84

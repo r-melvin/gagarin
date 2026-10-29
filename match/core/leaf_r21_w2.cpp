@@ -104,8 +104,6 @@ void __fastcall FUN_00532100(bool force)
     }
 }
 
-// GLOBAL: GAMEMD 0x887628 -- the network interface.
-extern WinsockInterfaceClass* Interface_00887628;
 // GLOBAL: GAMEMD 0xA8EBB4
 extern int DAT_00A8EBB4;
 // GLOBAL: GAMEMD 0xAA05A8

@@ -9,10 +9,18 @@
 #include "../_rt/gg_static_assert.h"
 #include "frame_timer.h"
 
+// Retail edits the low word in place (0x4C93D0 subtracts into the word of a
+// copied dword) but several readers load the whole dword (0x43EE50, 0x41B760,
+// 0x4CF610, 0x4CFB00), so both views are members of one four-byte value.
 struct DirStruct
 {
-    unsigned short Raw;
-    unsigned short Padding;
+    union {
+        unsigned int Whole;
+        struct {
+            unsigned short Raw;
+            unsigned short Padding;
+        };
+    };
 };
 GG_STATIC_ASSERT(offsetof(DirStruct, Raw) == 0);
 GG_STATIC_ASSERT(offsetof(DirStruct, Padding) == 2);

@@ -359,19 +359,16 @@ char FlyLocoApproach::Approach()
 // pitched and rolled by its type's own angles. The voxel index key collects
 // the facing and, on each tilt arm, the bit that names it.
 // FUNCTION: GAMEMD 0x4CF610
-// PARTIAL: retained form1 canonical owner replay, 154/159 (96.9%) instructions.
-// Word loads preserve the masked 5-bit direction for any upper word;
-// the post-SHR10 INC range also makes SAR1 and SHR1 equivalent.
 Matrix3D __stdcall FlyLocomotionClass::DrawMatrix(unsigned int* key)
 {
     Matrix3D m;
     m.MakeIdentity();
 
     if (key != 0) {
-        *key |= (int)(((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Raw >> 10) + 1) >> 1) & 0x1F) << 3);
+        *key |= ((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Whole >> 10) + 1) >> 1) & 0x1F) * 8;
     }
 
-    m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
+    m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Whole >> 10) + 1) >> 1) & 0x1F) - 8)
                       * gg_locomotion_facing_step));
 
     if (this->LinkedTo->vf_114() > 0) {

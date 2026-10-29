@@ -19,11 +19,10 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
+#include "../../core/cell_step_tables.h"
 
 // Component-wise 16-bit sums use CellStruct::operator+ (_layout/cell.h).
 
-// GLOBAL: GAMEMD 0x89F688 -- per-direction step table (eight cell offsets, 4 bytes each).
-extern CellStruct DisplayStep_0089F688[8];
 
 class DisplayHouse;
 

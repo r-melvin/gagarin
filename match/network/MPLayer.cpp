@@ -990,6 +990,20 @@ bool FUN_005c8980(unsigned int* p, unsigned int count, int n)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x005c8dd0
+// r = random value of at most `bits` bits (n words), filled from the byte source.
+void FUN_005c8dd0(unsigned int* r, ByteSource_005C8980* src, int bits, int n)
+{
+    if (bits >= n * 32) {
+        bits = n * 32;
+    }
+    int bytes = bits / 8 + 1;
+    WordsSetSmall(r, 0, n);
+    src->Fill(r, bytes);
+    ((unsigned char*)r)[bytes - 1] &= ~(0xFF << (bits % 8));
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c8e40
 // r = random value in [lo, hi] (n words), drawn by rejection sampling from
 // the byte source.

@@ -20,6 +20,15 @@ struct ListEntry_006255F0
     ListEntry_006255F0() { Id = 0; unknown_0C = -1; unknown_10 = 0; unknown_14 = -1; }
     // FUNCTION: GAMEMD 0x6247D0 (decl; reloc)
     ListEntry_006255F0(const ListEntry_006255F0& other);
+    // FUNCTION: GAMEMD 0x624460
+    // Retail destroys an entry by expanding the two string destructors inline
+    // (EntryRecord's copy constructor 0x6255F0), and also holds one standalone
+    // copy at 0x624460. Users get the implicit inline destructor; only the TU
+    // that holds the standalone copy defines GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
+    // to declare it (the object layout is the same in both).
+#ifdef GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
+    ~ListEntry_006255F0();
+#endif
 };
 GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, Name) == 0x04);
 GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, Text) == 0x08);

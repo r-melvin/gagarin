@@ -28,9 +28,7 @@ int __stdcall AircraftClass::vf_04()
     } else {
         return RulesInstance->unknown_044;
     }
-    // Retail reads the whole four-byte direction value (MOV EAX,[EAX]) before shifting.
-    unsigned int raw = *(unsigned int*)facing;
-    return (((raw >> 12) + 1) >> 1) & 7;
+    return (((facing->Whole >> 12) + 1) >> 1) & 7;
 }
 
 // FUNCTION: GAMEMD 0x0041B6A0

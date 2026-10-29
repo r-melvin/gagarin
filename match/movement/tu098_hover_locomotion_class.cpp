@@ -58,7 +58,7 @@ static inline HoverCellCoord CellOf(const LocoCoord& coord)
     return cell;
 }
 
-static inline HoverCellCoord AddCell(const HoverCellCoord& a, const Pair_0042D490& b)
+static inline HoverCellCoord AddCell(const HoverCellCoord& a, const CellStruct& b)
 {
     HoverCellCoord sum;
     sum.X = a.X + b.X;

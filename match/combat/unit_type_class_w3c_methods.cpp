@@ -11,6 +11,7 @@
 #include "../_layout/unit_type_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../_layout/unit_class.h"
+#include "../_layout/facing_class.h"
 #include "../core/randomizer.h"
 #include "../core/vector_class_operations.h"
 
@@ -32,12 +33,6 @@ GG_STATIC_ASSERT(offsetof(UnitTypeScenarioView, Random) == 0x218);
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
 extern UnitTypeScenarioView* DAT_00A8B230;
 
-// A facing built from one random byte in the high half of the word, and rounded to eight bits.
-struct UnitTypeFacing
-{
-    unsigned short Raw;
-    unsigned short Padding;
-};
 
 // FUNCTION: GAMEMD 0x7472C0
 UnitTypeClass::UnitTypeClass(const AbstractNoInit& noInit) : TechnoTypeClass(noInit)
@@ -50,10 +45,10 @@ bool UnitTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 {
     UnitClass* unit = new UnitClass(this, house);
     if (unit) {
-        UnitTypeFacing facing;
+        DirStruct facing;
         facing.Raw = 0;
         int random = DAT_00A8B230->Random.Random();
-        unsigned int bits = (*(unsigned int*)&facing & 0xFFFF00FF) | ((unsigned char)random << 8);
+        unsigned int bits = (facing.Whole & 0xFFFF00FF) | ((unsigned char)random << 8);
         CoordStruct coord;
         coord.X = cell->X * 256 + 128;
         coord.Y = cell->Y * 256 + 128;

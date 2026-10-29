@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/cell.h"
+#include "../core/cell_step_tables.h"
 #include "../_layout/cell_class.h"
 
 class MapView_578460
@@ -60,8 +61,6 @@ extern CellClass DAT_00ABDC50;
 extern CellStruct DAT_00ABDC74;
 // GLOBAL: GAMEMD 0xABD480 -- the "no cell" coordinate.
 extern CellStruct DAT_00ABD480;
-// GLOBAL: GAMEMD 0x89F688 -- the eight one-cell steps, indexed by facing.
-extern const CellStruct DAT_0089F688[8];
 
 // The cell for a coordinate, or the invalid cell (remembering the coordinate).
 inline CellClass* CellAt(const CellStruct* coord)

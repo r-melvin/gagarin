@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
+#include "../../core/cell_step_tables.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
@@ -2389,8 +2390,6 @@ extern const char s_PSIWARN_0081907C[];
 extern const char s_PULSBALL_00819070[];
 extern "C" int __cdecl abs(int);
 
-// GLOBAL: GAMEMD 0x89F688 - eight cell offsets (the neighbours in direction order)
-extern HBCell DAT_0089F688[8];
 // FUNCTION: GAMEMD 0x4068E0 (read-only here) - an empty body taking a pointer (cdecl).
 void __cdecl FUN_004068E0(const void* arg);
 // GLOBAL: GAMEMD 0x7E9A50 / 0x7E9A90 / 0x7E9A30 - class ids of locomotors, and the interface id at 0x819088

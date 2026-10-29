@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/cell.h"
+#include "../core/cell_step_tables.h"
 #include "../_layout/map_seed_class.h"
 #include "iso_tile_type_class_tile_data_methods.h"
 #include "../core/vector_class_operations.h"
@@ -63,15 +64,7 @@ GG_STATIC_ASSERT(offsetof(Rec_0058C800Ret, unknown_1A) == 0x1A);
 // RTTI-attested class; the canonical layout (_layout/cell_class.h) is included by MapGen.cpp.
 class CellClass;
 
-// Four ints: x, y, width, height.
-struct Rect_4i
-{
-    int unknown_00;
-    int unknown_04;
-    int unknown_08;
-    int unknown_0C;
-};
-GG_STATIC_ASSERT(sizeof(Rect_4i) == 0x10);
+#include "../_layout/rect_4i.h"
 // Member-wise equality, as compared inline at 0x59B940.
 inline bool operator==(const Rect_4i& a, const Rect_4i& b)
 {
@@ -271,8 +264,6 @@ extern int DAT_00ABED40[];
 extern int* DAT_00ABE260;
 // GLOBAL: GAMEMD 0xABE27C
 extern int* DAT_00ABE27C;
-// GLOBAL: GAMEMD 0x89F688 -- eight neighbour offsets.
-extern CellStruct DAT_0089F688[];
 // GLOBAL: GAMEMD 0xA8ED2C -- the tile table (Items of the IsometricTileTypeClass vector at 0xA8ED28).
 extern IsometricTileTypeClass** DAT_00A8ED2C;
 // GLOBAL: GAMEMD 0xABAD28

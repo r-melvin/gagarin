@@ -6,6 +6,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/cell_step_tables.h"
 
 struct Pair_0042D490
 {
@@ -15,8 +16,5 @@ struct Pair_0042D490
 GG_STATIC_ASSERT(offsetof(Pair_0042D490, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(Pair_0042D490, Y) == 0x02);
 GG_STATIC_ASSERT(sizeof(Pair_0042D490) == 0x04);
-
-// GLOBAL: GAMEMD 0x89F688 - per-direction step table.
-extern Pair_0042D490 DAT_0089F688[];
 
 #endif  // GG_MATCH_MAP_PAIR_0042D490_H

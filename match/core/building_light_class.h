@@ -34,6 +34,9 @@ public:
     // FUNCTION: GAMEMD 0x436E80 (decl; reloc) -- no stack arguments.
     int FUN_00436E80();
 
+    // GAMEMD 0x436DA0 -- no stack arguments.
+    int FUN_00436DA0();
+
     // FUNCTION: GAMEMD 0x435BE0
     void FUN_00435BE0(int unknownStackArg0, int unknownStackArg1);
 

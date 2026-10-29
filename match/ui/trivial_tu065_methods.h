@@ -16,13 +16,18 @@ struct Obj_004A5950;
 struct DirWord_004A5960
 {
     union {
-        unsigned short Raw;
+        unsigned int Whole;
         struct {
-            unsigned char Low;
-            unsigned char High;
+            union {
+                unsigned short Raw;
+                struct {
+                    unsigned char Low;
+                    unsigned char High;
+                };
+            };
+            unsigned short Padding;
         };
     };
-    unsigned short Padding;
 };
 GG_STATIC_ASSERT(sizeof(DirWord_004A5960) == 4);
 

@@ -19,6 +19,8 @@ public:
     virtual bool AddObject(ObjectClass* pObject, bool sorted);
     virtual void vf_8();    // 8  0x40CC00: calls Clear (slot 3)
     virtual void vf_9();    // 9  0x40CC10: bare RET
+    // FUNCTION: GAMEMD 0x551A90 (non-virtual; sorted insert, full-width result)
+    int SortedAdd(ObjectClass* pObject);
 };
 
 // GLOBAL: GAMEMD 0x8A0360 -- draw-layer array; native5519B0 callers use24-byte stride.

@@ -9,6 +9,7 @@
 #include <math.h>
 #include "header_init_shapes.h"
 #include "../_layout/geometry2d.h"
+#include "cell_step_tables.h"
 
 // GLOBAL: GAMEMD 0x7E1708
 const double DAT_007E1708 = 2.0;

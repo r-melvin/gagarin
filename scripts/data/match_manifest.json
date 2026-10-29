@@ -25430,8 +25430,8 @@
   "sym": "?DrawMatrix@FlyLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x212",
   "name": "FlyLocomotionClass::DrawMatrix",
-  "status": "partial",
-  "pct": 96.9
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/movement/fly_locomotion_com_methods.cpp",
@@ -25439,8 +25439,8 @@
   "sym": "?ShadowMatrix@FlyLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x109",
   "name": "FlyLocomotionClass::ShadowMatrix",
-  "status": "partial",
-  "pct": 95.4
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/movement/fly_locomotion_move_to_methods.cpp",
@@ -60083,6 +60083,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/modular_counter_bank_methods.cpp",
+  "addr": "0x632BE0",
+  "sym": "?FillFrom@ModularCounterBank_00632C40@@QAEPAU1@PAK@Z",
+  "len": "0x59",
+  "name": "ModularCounterBank_00632C40::FillFrom",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/pk_pipe_straw_io_methods.cpp",
   "addr": "0x632DC0",
   "sym": "?FUN_00631D10@PKPipe@@UAEHHH@Z",
@@ -72642,6 +72651,15 @@
   "name": "WordsAddSmall",
   "status": "partial",
   "pct": 82.9
+ },
+ {
+  "tu": "match/network/MPLayer.cpp",
+  "addr": "0x5C8DD0",
+  "sym": "?FUN_005c8dd0@@YIXPAIPAVByteSource_005C8980@@HH@Z",
+  "len": "0x67",
+  "name": "FUN_005c8dd0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/header_init_5c91d0.cpp",
@@ -141726,6 +141744,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x631640",
+  "sym": "?FUN_00631640@Dlg_00631300@@QAEXXZ",
+  "len": "0x97",
+  "name": "Dlg_00631300::FUN_00631640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ai/w2_planning_color_r16.cpp",
   "addr": "0x63CF10",
   "sym": "?FUN_0063CF10@@YIIPAUTechnoOwner_0063CF10@@@Z",
@@ -143468,8 +143495,8 @@
   "sym": "?Measure@MSFont@@QAEXPBGPAUMSRect@@@Z",
   "len": "0xa8",
   "name": "MSFont::Measure",
-  "status": "partial",
-  "pct": 86.6
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/r20_3_leaf_methods.cpp",
@@ -144845,7 +144872,340 @@
   "sym": "?FUN_0075F140@Obj_0075F140@@QAEXXZ",
   "len": "0xe2",
   "name": "Obj_0075F140::FUN_0075F140",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_1_drain_walkers.cpp",
+  "addr": "0x401B00",
+  "sym": "?FUN_00401B00@Mgr_00401B00@@QAEXXZ",
+  "len": "0xac",
+  "name": "Mgr_00401B00::FUN_00401B00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_1_drain_walkers.cpp",
+  "addr": "0x401EF0",
+  "sym": "?FUN_00401EF0@Mgr_00401B00@@QAEHXZ",
+  "len": "0x8b",
+  "name": "Mgr_00401B00::FUN_00401EF0",
   "status": "partial",
-  "pct": 86.0
+  "pct": 94.3
+ },
+ {
+  "tu": "match/core/r24_1_leaf_methods.cpp",
+  "addr": "0x42E150",
+  "sym": "?FUN_0042E150@Box_0042E150@@QAEXXZ",
+  "len": "0x64",
+  "name": "Box_0042E150::FUN_0042E150",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_1_leaf_methods.cpp",
+  "addr": "0x486E30",
+  "sym": "?FUN_00486E30@Cell_00486E30@@QAEHXZ",
+  "len": "0x36",
+  "name": "Cell_00486E30::FUN_00486E30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_1_leaf_methods.cpp",
+  "addr": "0x488210",
+  "sym": "?FUN_00488210@Obj_00488210@@QAEXIHH@Z",
+  "len": "0x46",
+  "name": "Obj_00488210::FUN_00488210",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_1_building_light_methods.cpp",
+  "addr": "0x436DA0",
+  "sym": "?FUN_00436DA0@BuildingLightClass@@QAEHXZ",
+  "len": "0xdd",
+  "name": "BuildingLightClass::FUN_00436DA0",
+  "status": "partial",
+  "pct": 82.1
+ },
+ {
+  "tu": "match/core/r24_1_building_light_methods.cpp",
+  "addr": "0x436E80",
+  "sym": "?FUN_00436E80@BuildingLightClass@@QAEHXZ",
+  "len": "0xbd",
+  "name": "BuildingLightClass::FUN_00436E80",
+  "status": "partial",
+  "pct": 90.4
+ },
+ {
+  "tu": "match/renderer/r24_1_ddraw_report_methods.cpp",
+  "addr": "0x4A3DD0",
+  "sym": "?FUN_004a3dd0@@YIXJH@Z",
+  "len": "0x64",
+  "name": "FUN_004a3dd0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/r24_1_ddraw_report_methods.cpp",
+  "addr": "0x4A40C0",
+  "sym": "?FUN_004a40c0@@YIXXZ",
+  "len": "0x6c",
+  "name": "FUN_004a40c0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/r24_1_ddraw_report_methods.cpp",
+  "addr": "0x4A4620",
+  "sym": "?FUN_004a4620@@YIHXZ",
+  "len": "0xda",
+  "name": "FUN_004a4620",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/r24_1_ddraw_report_methods.cpp",
+  "addr": "0x4A4700",
+  "sym": "?FUN_004a4700@@YIXXZ",
+  "len": "0x73",
+  "name": "FUN_004a4700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/r24_1_ebolt_methods.cpp",
+  "addr": "0x4C29E0",
+  "sym": "?FUN_004C29E0@@YIXXZ",
+  "len": "0x73",
+  "name": "FUN_004C29E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/layer_class_sorted_add.cpp",
+  "addr": "0x551A90",
+  "sym": "?SortedAdd@LayerClass@@QAEHPAVObjectClass@@@Z",
+  "len": "0x8c",
+  "name": "LayerClass::SortedAdd",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/light_source_free_all.cpp",
+  "addr": "0x5549A0",
+  "sym": "?FUN_005549A0@@YIXXZ",
+  "len": "0xb4",
+  "name": "FUN_005549A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/debug_window_show_methods.cpp",
+  "addr": "0x5BC370",
+  "sym": "?FUN_005BC370@@YIXXZ",
+  "len": "0x4b",
+  "name": "FUN_005BC370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_main_menu.cpp",
+  "addr": "0x52D790",
+  "sym": "?FUN_0052D790@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0xb8",
+  "name": "FUN_0052D790",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_558cb0.cpp",
+  "addr": "0x558CB0",
+  "sym": "?FUN_00558CB0@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x117",
+  "name": "FUN_00558CB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_558b90.cpp",
+  "addr": "0x558B90",
+  "sym": "?FUN_00558B90@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x117",
+  "name": "FUN_00558B90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_52d870.cpp",
+  "addr": "0x52D870",
+  "sym": "?FUN_0052D870@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x129",
+  "name": "FUN_0052D870",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_5d36a0.cpp",
+  "addr": "0x5D36A0",
+  "sym": "?FUN_005D36A0@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0xb3",
+  "name": "FUN_005D36A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_558a30.cpp",
+  "addr": "0x558A30",
+  "sym": "?FUN_00558A30@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x155",
+  "name": "FUN_00558A30",
+  "status": "partial",
+  "pct": 81.2
+ },
+ {
+  "tu": "match/ui/load_progress_mgr_cleanup.cpp",
+  "addr": "0x554370",
+  "sym": "?FUN_00554370@LoadProgressMgr@@QAEXXZ",
+  "len": "0x8f",
+  "name": "LoadProgressMgr::FUN_00554370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/slave_manager_scan_r24_3.cpp",
+  "addr": "0x6B0260",
+  "sym": "?HasNearbyCell@SlaveManagerView_006B1020@@QAE_NXZ",
+  "len": "0x55",
+  "name": "SlaveManagerView_006B1020::HasNearbyCell",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/slave_manager_scan_r24_3.cpp",
+  "addr": "0x6B02C0",
+  "sym": "?GetNearbyCell@SlaveManagerView_006B1020@@QAE?AUCellStruct@@XZ",
+  "len": "0x39",
+  "name": "SlaveManagerView_006B1020::GetNearbyCell",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_flash_r24_3.cpp",
+  "addr": "0x6E4560",
+  "sym": "?FUN_006E4560@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x7e",
+  "name": "TActionClass::FUN_006E4560",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/rocket_locomotion_pitch_r24_3.cpp",
+  "addr": "0x662240",
+  "sym": "?FUN_00662240@RocketLocomotionClass@@QAENXZ",
+  "len": "0x7f",
+  "name": "RocketLocomotionClass::FUN_00662240",
+  "status": "partial",
+  "pct": 88.9
+ },
+ {
+  "tu": "match/map/smudge_type_class_cells_r24_3.cpp",
+  "addr": "0x6B6080",
+  "sym": "?Method_6B6080@SmudgeTypeClass@@QAEXPBUMapObjCell@@@Z",
+  "len": "0xa7",
+  "name": "SmudgeTypeClass::Method_6B6080",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/smudge_type_class_cells_r24_3.cpp",
+  "addr": "0x6B5F80",
+  "sym": "?Method_6B5F80@SmudgeTypeClass@@QAE_NPBUMapObjCell@@_N@Z",
+  "len": "0xf8",
+  "name": "SmudgeTypeClass::Method_6B5F80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_map_reset_r24_3.cpp",
+  "addr": "0x6E21E0",
+  "sym": "?FUN_006E21E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xa4",
+  "name": "TActionClass::FUN_006E21E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_4_movie_player.cpp",
+  "addr": "0x7597A0",
+  "sym": "?FUN_007597A0@MoviePlayer_r24@@QAE_NXZ",
+  "len": "0x64",
+  "name": "MoviePlayer_r24::FUN_007597A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_4_movie_player.cpp",
+  "addr": "0x759BC0",
+  "sym": "?FUN_00759BC0@MoviePlayer_r24@@QAEXH@Z",
+  "len": "0x65",
+  "name": "MoviePlayer_r24::FUN_00759BC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_4_movie_stream.cpp",
+  "addr": "0x7BF140",
+  "sym": "?FUN_007bf140@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x43",
+  "name": "FUN_007bf140",
+  "status": "partial",
+  "pct": 90.9
+ },
+ {
+  "tu": "match/core/r24_4_movie_stream.cpp",
+  "addr": "0x7C19F0",
+  "sym": "?FUN_007c19f0@@YIHPAUMovieHandle_007BD470@@HPAH1@Z",
+  "len": "0x7d",
+  "name": "FUN_007c19f0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_4_movie_stream.cpp",
+  "addr": "0x7C3430",
+  "sym": "?FUN_007c3430@@YIHPAUMovieHandle_007BD470@@HHH@Z",
+  "len": "0x72",
+  "name": "FUN_007c3430",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/r24_4_persona.cpp",
+  "addr": "0x77A700",
+  "sym": "?FUN_0077A700@Persona_0077A700@@QAEXHH@Z",
+  "len": "0x60",
+  "name": "Persona_0077A700::FUN_0077A700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/r24_4_persona.cpp",
+  "addr": "0x77A7C0",
+  "sym": "?FUN_0077A7C0@Persona_0077A700@@QAEXPBUPersonaSrc_0077A7C0@@@Z",
+  "len": "0x7d",
+  "name": "Persona_0077A700::FUN_0077A7C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r24_4_shade_table.cpp",
+  "addr": "0x758670",
+  "sym": "?FUN_00758670@@YIXABUNormal_r24@@H@Z",
+  "len": "0x78",
+  "name": "FUN_00758670",
+  "status": "partial",
+  "pct": 95.2
  }
 ]

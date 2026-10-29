@@ -38,6 +38,14 @@ struct Gbl_0087F7E8
     void FUN_00654490(Rect_4i* a1);
     // FUNCTION: GAMEMD 0x654650 (declaration)
     void FUN_00654650();
+    // FUNCTION: GAMEMD 0x655990 (declaration)
+    void FUN_00655990();
+    // FUNCTION: GAMEMD 0x56C510 (declaration) -- the full zone rebuild.
+    void FUN_0056C510();
+    // FUNCTION: GAMEMD 0x581F50 (declaration)
+    void FUN_00581F50();
+    // FUNCTION: GAMEMD 0x657CE0 (declaration)
+    void FUN_00657CE0();
     // The same entry point 0x5657A0 as the 0x5A7250 TU spelled it (by reference, its own cell view).
     Cell_005A7250* GetCell(const CellStruct_005A7250& cell);
 };

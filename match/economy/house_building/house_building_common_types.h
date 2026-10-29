@@ -13,6 +13,7 @@
 
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
+#include "../../_layout/cell.h"
 
 // No-init constructor tag: Load re-runs the constructor through placement new to restore the vptrs
 // without touching any other member.
@@ -65,6 +66,14 @@ struct HBCell
     HBCell(short x, short y) : X(x), Y(y) {}
 
     HBCell operator+(const HBCell& o) const
+    {
+        HBCell r;
+        r.X = (short)(X + o.X);
+        r.Y = (short)(Y + o.Y);
+        return r;
+    }
+    // The same sum with a plain cell (the facing step table at 0x89F688).
+    HBCell operator+(const CellStruct& o) const
     {
         HBCell r;
         r.X = (short)(X + o.X);
