@@ -127,8 +127,8 @@
 // stores it four times.
 // GLOBAL: GAMEMD 0xABFBB0
 MSAnimCounters MSAnimCounts;
-MSPrintSurface* MSSurfaceGlobal;
-MSTextEngine*   MSEngineGlobal;
+BitFont* TheGameFont;
+BitText* DAT_0089C4B8;
 MSSurface*      MSScreenSurface;
 char VT_007E16B0;
 char VT_007E1668;
@@ -205,14 +205,14 @@ bool MSBitPrintAnim::vf_7()
 // which is why the two trailing numbers are one short of the far edge.
 bool MSBitPrintAnim::Update(int context, MSRect* out)
 {
-    if (MSEngineGlobal != 0 && MSSurfaceGlobal != 0) {
-        MSRect clip;
+    if (DAT_0089C4B8 != 0 && TheGameFont != 0) {
+        BitFontBounds clip;
 
-        clip.X = Bounds.X;
-        clip.Y = Bounds.Y;
-        clip.Width = Bounds.X + Bounds.Width - 1;
-        clip.Height = Bounds.Y + Bounds.Height - 1;
-        MSSurfaceGlobal->SetClip(&clip);
+        clip.Left = Bounds.X;
+        clip.Top = Bounds.Y;
+        clip.Right = Bounds.X + Bounds.Width - 1;
+        clip.Bottom = Bounds.Y + Bounds.Height - 1;
+        TheGameFont->FUN_00433CA0(&clip);
 
         // The flag is converted in its own statement, not inside the
         // argument list: as an argument expression cl interleaves the
@@ -222,7 +222,8 @@ bool MSBitPrintAnim::Update(int context, MSRect* out)
         // as retail has them, and both bodies land on 100.
         int centred = Centred != 0;
 
-        MSEngineGlobal->Print(MSSurfaceGlobal, context, Text.Peek(),
+        // Native 0x5CD48F/0x5CD55E forwards context as the surface argument.
+        DAT_0089C4B8->FUN_00434CD0(TheGameFont, reinterpret_cast<Surface*>(context), Text.Peek(),
                               Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height,
                               centred, 0, 0);
     }
@@ -238,24 +239,25 @@ bool MSBitPrintAnim::Update(int context, MSRect* out)
 // `JNE` over the `LEA`.
 void MSBitPrintAnim::Draw(int context, MSRect* area)
 {
-    if (MSEngineGlobal != 0 && MSSurfaceGlobal != 0) {
+    if (DAT_0089C4B8 != 0 && TheGameFont != 0) {
         MSRect* box = area;
 
         if (box == 0) {
             box = &Bounds;
         }
 
-        MSRect clip;
+        BitFontBounds clip;
 
-        clip.X = box->X;
-        clip.Y = box->Y;
-        clip.Width = box->X + box->Width - 1;
-        clip.Height = box->Y + box->Height - 1;
-        MSSurfaceGlobal->SetClip(&clip);
+        clip.Left = box->X;
+        clip.Top = box->Y;
+        clip.Right = box->X + box->Width - 1;
+        clip.Bottom = box->Y + box->Height - 1;
+        TheGameFont->FUN_00433CA0(&clip);
 
         int centred = Centred != 0;
 
-        MSEngineGlobal->Print(MSSurfaceGlobal, context, Text.Peek(),
+        // Native 0x5CD48F/0x5CD55E forwards context as the surface argument.
+        DAT_0089C4B8->FUN_00434CD0(TheGameFont, reinterpret_cast<Surface*>(context), Text.Peek(),
                               Bounds.X, Bounds.Y, Bounds.Width, Bounds.Height,
                               centred, 0, 0);
     }

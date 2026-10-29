@@ -71,7 +71,7 @@ static __forceinline int LineStart(int x, int maxWidth, int lineWidth, int align
 }
 
 // FUNCTION: GAMEMD 0x434CD0
-bool Obj_00434CD0::FUN_00434CD0(BitFont* font, Surface* surface, const unsigned short* text,
+bool BitText::FUN_00434CD0(BitFont* font, Surface* surface, const unsigned short* text,
                                 int x, int y, int maxWidth, int maxHeight, int alignment,
                                 int fadeStart, int fadeLength)
 {
@@ -168,7 +168,7 @@ done:
 }
 
 // FUNCTION: GAMEMD 0x4353F0
-bool Obj_00434CD0::FUN_004353F0(BitFont* font, Surface* surface, const unsigned short* text,
+bool BitText::FUN_004353F0(BitFont* font, Surface* surface, const unsigned short* text,
                                 int x, int y, int maxWidth, int maxHeight, int alignment,
                                 int fadeStart, int fadeLength)
 {

@@ -22,6 +22,8 @@ public:
 
     // FUNCTION: GAMEMD 0x434AD0
     BitText();
+    bool FUN_00434CD0(BitFont*, Surface*, const unsigned short*, int, int, int, int, int, int, int);
+    bool FUN_004353F0(BitFont*, Surface*, const unsigned short*, int, int, int, int, int, int, int);
 };
 
 GG_STATIC_ASSERT(sizeof(BitText) == 4);

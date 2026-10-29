@@ -15,7 +15,7 @@
 HRESULT CStreamClass::FUN_004A3020(char* buffer, int count)
 {
     unsigned int compressed = count;
-    FUN_0055BB90((unsigned char*)buffer, count, (unsigned char*)InBuffer, &compressed, unknown_20);
+    lzo1x_1_compress((unsigned char*)buffer, count, (unsigned char*)InBuffer, &compressed, unknown_20);
     Header.UncompressedSize = 0x10000;
     ULONG written = 0;
     Header.CompressedSize = compressed;

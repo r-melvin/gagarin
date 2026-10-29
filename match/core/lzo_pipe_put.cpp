@@ -41,7 +41,7 @@ int LZOPipe::FUN_00631D10(int first, int second)
                 Counter += len;
                 if (Counter == BlockHeader.CompCount) {
                     unsigned int outlen = 4;
-                    FUN_0055C0E0((unsigned char*)Buffer, BlockHeader.CompCount, (unsigned char*)Buffer2, &outlen, NULL);
+                    lzo1x_decompress((unsigned char*)Buffer, BlockHeader.CompCount, (unsigned char*)Buffer2, &outlen, NULL);
                     total += Pipe::FUN_00631D10((int)Buffer2, BlockHeader.UncompCount);
                     Counter = 0;
                     BlockHeader.CompCount = 0xFFFF;
@@ -58,7 +58,7 @@ int LZOPipe::FUN_00631D10(int first, int second)
             if (Counter == BlockSize) {
                 unsigned int clen = 4;
                 char* work = new char[0x10000];
-                FUN_0055BB90((unsigned char*)Buffer, BlockSize, (unsigned char*)Buffer2, &clen, work);
+                lzo1x_1_compress((unsigned char*)Buffer, BlockSize, (unsigned char*)Buffer2, &clen, work);
                 delete [] work;
                 BlockHeader.CompCount = (unsigned short)clen;
                 BlockHeader.UncompCount = (unsigned short)BlockSize;
@@ -70,7 +70,7 @@ int LZOPipe::FUN_00631D10(int first, int second)
         while (length >= BlockSize) {
             unsigned int clen = 0;
             char* work = new char[0x10000];
-            FUN_0055BB90((unsigned char*)src, BlockSize, (unsigned char*)Buffer2, &clen, work);
+            lzo1x_1_compress((unsigned char*)src, BlockSize, (unsigned char*)Buffer2, &clen, work);
             delete [] work;
             src += BlockSize;
             length -= BlockSize;
@@ -85,4 +85,35 @@ int LZOPipe::FUN_00631D10(int first, int second)
         }
     }
     return total;
+}
+
+// FUNCTION: GAMEMD 0x55C5E0
+int LZOPipe::FUN_00631D30()
+{
+    int written = 0;
+    if (Counter > 0) {
+        if (Control == 1) {
+            if (BlockHeader.CompCount == 0xFFFF) {
+                written = Pipe::FUN_00631D10((int)Buffer, Counter);
+                Counter = 0;
+            }
+            if (Counter > 0) {
+                written += Pipe::FUN_00631D10((int)&BlockHeader, sizeof(BlockHeader));
+                written += Pipe::FUN_00631D10((int)Buffer, Counter);
+                Counter = 0;
+                BlockHeader.CompCount = 0xFFFF;
+            }
+        } else {
+            unsigned int length = 0;
+            char* work = new char[0x10000];
+            lzo1x_1_compress((unsigned char*)Buffer, Counter, (unsigned char*)Buffer2, &length, work);
+            delete [] work;
+            BlockHeader.CompCount = (unsigned short)length;
+            BlockHeader.UncompCount = (unsigned short)Counter;
+            written = Pipe::FUN_00631D10((int)&BlockHeader, sizeof(BlockHeader));
+            written += Pipe::FUN_00631D10((int)Buffer2, length);
+            Counter = 0;
+        }
+    }
+    return Pipe::FUN_00631D30() + written;
 }

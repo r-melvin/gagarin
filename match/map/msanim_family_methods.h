@@ -977,29 +977,8 @@ GG_STATIC_ASSERT(offsetof(MSPCXAnim, Surface) == 0x1C
               && offsetof(MSPCXAnim, Finished) == 0x29
               && offsetof(MSPCXAnim, Bounds) == 0x2C);
 
-// The two map-stage printing globals, both tested for presence before any
-// text goes out (0x5CD410, 0x5CD4D0). The surface takes a clipping rectangle
-// directly; the engine takes the surface, the caller's context, the text and
-// the rectangle in four separate numbers.
-
-// GLOBAL: GAMEMD 0x89C4D0
-class MSPrintSurface
-{
-public:
-    int  SetClip(MSRect* area);          // FUNCTION: GAMEMD 0x433CA0 (decl)
-};
-extern MSPrintSurface* MSSurfaceGlobal;
-
-// GLOBAL: GAMEMD 0x89C4B8
-class MSTextEngine
-{
-public:
-    // FUNCTION: GAMEMD 0x434CD0 (decl). Ten stack arguments plus the receiver;
-    // retail cleans 0x28 on return, which is how the count is pinned.
-    int Print(MSPrintSurface* surface, int context, const wchar_t* text,
-              int x, int y, int width, int height, int centred, int a, int b);
-};
-extern MSTextEngine* MSEngineGlobal;
+// 0x89C4B8 is the BitText receiver and 0x89C4D0 is its BitFont.
+#include "../ui/bit_font_print_methods.h"
 
 // GLOBAL: GAMEMD 0xABFBB0 — four adjacent dwords the map-stage screen clears
 // together at 0x5CEDB0. Modelled as one struct so the four stores keep their

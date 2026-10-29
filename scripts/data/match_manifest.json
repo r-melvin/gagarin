@@ -5802,56 +5802,56 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+  "tu": "match/platform/compression_straw_ctors.cpp",
   "addr": "0x00552450",
-  "sym": "?Dtor_00552450@DualBuf@@QAEXXZ",
+  "sym": "??1LCWStraw@@UAE@XZ",
   "len": "0x35",
-  "name": "DualBuf::dtor",
+  "name": "LCWStraw::~LCWStraw",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+  "tu": "match/platform/compression_straw_ctors.cpp",
   "addr": "0x005525F0",
-  "sym": "?FUN_005525F0@DualBuf@@QAEPAXD@Z",
+  "sym": "??_GLCWStraw@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "DualBuf::scalar deleting dtor",
+  "name": "LCWStraw scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+  "tu": "match/platform/compression_straw_ctors.cpp",
   "addr": "0x0055C310",
-  "sym": "?Dtor_0055C310@DualBuf@@QAEXXZ",
+  "sym": "??1LZOPipe@@UAE@XZ",
   "len": "0x35",
-  "name": "DualBuf::dtor",
+  "name": "LZOPipe::~LZOPipe",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+  "tu": "match/platform/compression_straw_ctors.cpp",
   "addr": "0x0055C6D0",
-  "sym": "?FUN_0055C6D0@DualBuf@@QAEPAXD@Z",
+  "sym": "??_GLZOPipe@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "DualBuf::scalar deleting dtor",
+  "name": "LZOPipe scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+  "tu": "match/platform/compression_straw_ctors.cpp",
   "addr": "0x0055C780",
-  "sym": "?Dtor_0055C780@DualBuf@@QAEXXZ",
+  "sym": "??1LZOStraw@@UAE@XZ",
   "len": "0x35",
-  "name": "DualBuf::dtor",
+  "name": "LZOStraw::~LZOStraw",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+  "tu": "match/platform/compression_straw_ctors.cpp",
   "addr": "0x0055C990",
-  "sym": "?FUN_0055C990@DualBuf@@QAEPAXD@Z",
+  "sym": "??_GLZOStraw@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "DualBuf::scalar deleting dtor",
+  "name": "LZOStraw scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -28292,9 +28292,9 @@
  {
   "tu": "match/platform/lcw_block_straw_get.cpp",
   "addr": "0x552490",
-  "sym": "?Get@BlockCompressStraw_00552490@@UAEHPAXH@Z",
+  "sym": "?FUN_006C98E0@LCWStraw@@UAEHPAXH@Z",
   "len": "0x15A",
-  "name": "BlockCompressStraw_00552490::Get",
+  "name": "LCWStraw::FUN_006C98E0",
   "status": "matched",
   "pct": 100
  },
@@ -59758,6 +59758,16 @@
   "name": "LZOPipe::FUN_00631D10",
   "status": "partial",
   "pct": 99.1
+ },
+ {
+  "tu": "match/core/lzo_pipe_put.cpp",
+  "addr": "0x55C5E0",
+  "sym": "?FUN_00631D30@LZOPipe@@UAEHXZ",
+  "len": "0xe9",
+  "name": "LZOPipe::FUN_00631D30",
+  "status": "partial",
+  "pct": 100.0,
+  "note": "Full-span raw and strict targets pass; scoped actual table providers selected. Held Put remains partial99.1 and vendor decoder partial5.3; final link and whole-image identity unproved."
  },
  {
   "tu": "match/map/map_cache_prune_methods.cpp",
@@ -91357,18 +91367,18 @@
  {
   "tu": "match/ui/bit_font_print_methods.cpp",
   "addr": "0x434CD0",
-  "sym": "?FUN_00434CD0@Obj_00434CD0@@QAE_NPAVBitFont@@PAVSurface@@PBGHHHHHHH@Z",
+  "sym": "?FUN_00434CD0@BitText@@QAE_NPAVBitFont@@PAVSurface@@PBGHHHHHHH@Z",
   "len": "0x643",
-  "name": "Obj_00434CD0::FUN_00434CD0",
+  "name": "BitText::FUN_00434CD0",
   "status": "partial",
   "pct": 1.4
  },
  {
   "tu": "match/ui/bit_font_print_methods.cpp",
   "addr": "0x4353F0",
-  "sym": "?FUN_004353F0@Obj_00434CD0@@QAE_NPAVBitFont@@PAVSurface@@PBGHHHHHHH@Z",
+  "sym": "?FUN_004353F0@BitText@@QAE_NPAVBitFont@@PAVSurface@@PBGHHHHHHH@Z",
   "len": "0xd3",
-  "name": "Obj_00434CD0::FUN_004353F0",
+  "name": "BitText::FUN_004353F0",
   "status": "partial",
   "pct": 13.2
  },
@@ -99809,7 +99819,7 @@
   "name": "lzo1x_decompress",
   "status": "partial",
   "pct": 5.3,
-  "note": "LZO 1.00 lzo1x_d1.c decoder; retail decoder source version (1.01/1.02?) not found"
+  "note": "LZO 1.00 C decoder. Retail EOF returns -1 for unequal input/end; this vendor returns -8/-4. Original retail source version/API remains unidentified."
  },
  {
   "tu": "match/core/Scenario.cpp",

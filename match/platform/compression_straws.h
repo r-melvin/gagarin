@@ -18,6 +18,15 @@
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 
+struct LCWBlockHeader
+{
+    unsigned short CompCount;
+    unsigned short UncompCount;
+};
+GG_STATIC_ASSERT(sizeof(LCWBlockHeader) == 4);
+GG_STATIC_ASSERT(offsetof(LCWBlockHeader, CompCount) == 0);
+GG_STATIC_ASSERT(offsetof(LCWBlockHeader, UncompCount) == 2);
+
 class LCWStraw : public Straw
 {
 public:
@@ -34,6 +43,7 @@ public:
     char* Buffer2;      // +0x18
     int   BlockSize;    // +0x1C
     int   SafetyMargin; // +0x20
+    LCWBlockHeader Header; // +0x24, native 0x552490 reads words +0x24/+0x26
 };
 GG_STATIC_ASSERT(offsetof(LCWStraw, Control)      == 0x0C);
 GG_STATIC_ASSERT(offsetof(LCWStraw, Counter)      == 0x10);
@@ -41,7 +51,17 @@ GG_STATIC_ASSERT(offsetof(LCWStraw, Buffer)       == 0x14);
 GG_STATIC_ASSERT(offsetof(LCWStraw, Buffer2)      == 0x18);
 GG_STATIC_ASSERT(offsetof(LCWStraw, BlockSize)    == 0x1C);
 GG_STATIC_ASSERT(offsetof(LCWStraw, SafetyMargin) == 0x20);
+GG_STATIC_ASSERT(offsetof(LCWStraw, Header) == 0x24);
 // VTABLE: GAMEMD 0x7ECF44 -- [0x5525F0, 0x6C9890, 0x552490]
+
+struct LZOBlockHeader
+{
+    unsigned short CompCount;
+    unsigned short UncompCount;
+};
+GG_STATIC_ASSERT(offsetof(LZOBlockHeader, CompCount) == 0);
+GG_STATIC_ASSERT(offsetof(LZOBlockHeader, UncompCount) == 2);
+GG_STATIC_ASSERT(sizeof(LZOBlockHeader) == 4);
 
 class LZOPipe : public Pipe
 {
@@ -60,8 +80,7 @@ public:
     char*          Buffer2;      // +0x18
     int            BlockSize;    // +0x1C
     int            SafetyMargin; // +0x20
-    unsigned short HeaderWord0;  // +0x24
-    unsigned short HeaderWord1;  // +0x26
+    LZOBlockHeader BlockHeader;  // +0x24
 };
 GG_STATIC_ASSERT(offsetof(LZOPipe, Control)      == 0x0C);
 GG_STATIC_ASSERT(offsetof(LZOPipe, Counter)      == 0x10);
@@ -69,7 +88,8 @@ GG_STATIC_ASSERT(offsetof(LZOPipe, Buffer)       == 0x14);
 GG_STATIC_ASSERT(offsetof(LZOPipe, Buffer2)      == 0x18);
 GG_STATIC_ASSERT(offsetof(LZOPipe, BlockSize)    == 0x1C);
 GG_STATIC_ASSERT(offsetof(LZOPipe, SafetyMargin) == 0x20);
-GG_STATIC_ASSERT(offsetof(LZOPipe, HeaderWord0)  == 0x24);
+GG_STATIC_ASSERT(offsetof(LZOPipe, BlockHeader)  == 0x24);
+GG_STATIC_ASSERT(offsetof(LZOPipe, BlockHeader) + offsetof(LZOBlockHeader, UncompCount) == 0x26);
 // VTABLE: GAMEMD 0x7ED37C -- [0x55C6D0, 0x55C5E0, 0x477740, 0x631CC0, 0x55C350]
 
 class LZOStraw : public Straw

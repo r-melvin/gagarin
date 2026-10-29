@@ -11,53 +11,13 @@ int FUN_00551E50(const void* source, void* dest, int count);
 // FUNCTION: GAMEMD 0x551C60 (decl; reloc) - block uncompress (src ECX, dst EDX, 0).
 int FUN_00551C60(const void* source, void* dest, int length);
 
-// Data straw base: vptr, chain-to, chain-from.
-class DataStraw_00552490
-{
-public:
-    virtual ~DataStraw_00552490();
-    virtual void GetFrom(DataStraw_00552490* straw);
-    // FUNCTION: GAMEMD 0x6C98E0 (decl) - pull data from the chained straw.
-    virtual int Get(void* dest, int length);
-
-    DataStraw_00552490* ChainTo;     // +0x0004
-    DataStraw_00552490* ChainFrom;   // +0x0008
-};
-
-struct BlockHeader_00552490
-{
-    unsigned short CompCount;     // +0x0000
-    unsigned short UncompCount;   // +0x0002
-};
-GG_STATIC_ASSERT(offsetof(BlockHeader_00552490, UncompCount) == 2);
-
-// Straw that compresses (Control 0) or uncompresses (Control 1) in blocks.
-class BlockCompressStraw_00552490 : public DataStraw_00552490
-{
-public:
-    virtual int Get(void* dest, int length);
-
-    int                  Control;        // +0x000C
-    int                  Counter;        // +0x0010
-    char*                Buffer;         // +0x0014
-    char*                Buffer2;        // +0x0018
-    int                  BlockSize;      // +0x001C
-    int                  SafetyMargin;   // +0x0020
-    BlockHeader_00552490 Header;         // +0x0024
-};
-GG_STATIC_ASSERT(offsetof(BlockCompressStraw_00552490, Control) == 0x0C);
-GG_STATIC_ASSERT(offsetof(BlockCompressStraw_00552490, Counter) == 0x10);
-GG_STATIC_ASSERT(offsetof(BlockCompressStraw_00552490, Buffer) == 0x14);
-GG_STATIC_ASSERT(offsetof(BlockCompressStraw_00552490, Buffer2) == 0x18);
-GG_STATIC_ASSERT(offsetof(BlockCompressStraw_00552490, BlockSize) == 0x1C);
-GG_STATIC_ASSERT(offsetof(BlockCompressStraw_00552490, SafetyMargin) == 0x20);
-GG_STATIC_ASSERT(offsetof(BlockCompressStraw_00552490, Header) == 0x24);
+#include "compression_straws.h"
 
 // FUNCTION: GAMEMD 0x552490
 // Hands out staged bytes, refilling one block at a time from the chain:
 // decompressing reads a header then the packed block and uncompresses it;
 // compressing reads a raw block, compresses it and prefixes the header.
-int BlockCompressStraw_00552490::Get(void* dest, int length)
+int LCWStraw::FUN_006C98E0(void* dest, int length)
 {
     int total = 0;
 
@@ -83,17 +43,17 @@ int BlockCompressStraw_00552490::Get(void* dest, int length)
         }
 
         if (Control == 1) {
-            if (DataStraw_00552490::Get(&Header, sizeof(Header)) != sizeof(Header)) {
+            if (Straw::FUN_006C98E0(&Header, sizeof(Header)) != sizeof(Header)) {
                 break;
             }
             char* staging = &Buffer[(BlockSize + SafetyMargin) - Header.CompCount];
-            if (DataStraw_00552490::Get(staging, Header.CompCount) != Header.CompCount) {
+            if (Straw::FUN_006C98E0(staging, Header.CompCount) != Header.CompCount) {
                 break;
             }
             FUN_00551C60(staging, Buffer, 0);
             Counter = Header.UncompCount;
         } else {
-            Header.UncompCount = (unsigned short)DataStraw_00552490::Get(Buffer, BlockSize);
+            Header.UncompCount = (unsigned short)Straw::FUN_006C98E0(Buffer, BlockSize);
             if (Header.UncompCount == 0) {
                 break;
             }

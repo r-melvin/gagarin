@@ -10,40 +10,12 @@
 
 #include "../_layout/pipe.h"
 
-// FUNCTION: GAMEMD 0x55BB90 (decl; reloc) -- block compress, __fastcall
-// (source ECX, length EDX; destination, out-length pointer, work buffer).
-int FUN_0055BB90(const unsigned char* in, unsigned int in_len,
-    unsigned char* out, unsigned int* out_len, void* work);
-// FUNCTION: GAMEMD 0x55C0E0 (decl; reloc) -- block decompress, same convention.
-int FUN_0055C0E0(const unsigned char* in, unsigned int in_len,
-    unsigned char* out, unsigned int* out_len, void* work);
+// The vendored wrapper exports both public entry points as __fastcall.
+#define __LZO_ENTRY __fastcall
+#include "../../third_party/lzo/lzo-1.00/include/lzoconf.h"
+#include "../../third_party/lzo/lzo-1.00/include/lzo1x.h"
+#undef __LZO_ENTRY
 
-struct LZOBlockHeader
-{
-    unsigned short CompCount;     // +0x00
-    unsigned short UncompCount;   // +0x02
-};
-GG_STATIC_ASSERT(offsetof(LZOBlockHeader, UncompCount) == 2);
-
-class LZOPipe : public Pipe
-{
-public:
-    int            Control;       // +0x0C  1 = decompressing
-    int            Counter;       // +0x10
-    char*          Buffer;        // +0x14
-    char*          Buffer2;       // +0x18
-    int            BlockSize;     // +0x1C
-    int            unknown_20;    // +0x20
-    LZOBlockHeader BlockHeader;   // +0x24
-
-    // FUNCTION: GAMEMD 0x55C350
-    virtual int FUN_00631D10(int first, int second);
-};
-GG_STATIC_ASSERT(offsetof(LZOPipe, Control) == 0x0C);
-GG_STATIC_ASSERT(offsetof(LZOPipe, Counter) == 0x10);
-GG_STATIC_ASSERT(offsetof(LZOPipe, Buffer) == 0x14);
-GG_STATIC_ASSERT(offsetof(LZOPipe, Buffer2) == 0x18);
-GG_STATIC_ASSERT(offsetof(LZOPipe, BlockSize) == 0x1C);
-GG_STATIC_ASSERT(offsetof(LZOPipe, BlockHeader) == 0x24);
+#include "../platform/compression_straws.h"
 
 #endif
