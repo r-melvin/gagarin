@@ -13,7 +13,7 @@ class ScoreAnimClass
 {
 public:
     ScoreAnimClass(int x, int y, int param);
-    virtual ~ScoreAnimClass();
+    virtual ~ScoreAnimClass() {}
 
     int     X;       // +0x04
     int     Y;       // +0x08
@@ -31,7 +31,7 @@ class ScoreTimeClass : public ScoreAnimClass
 {
 public:
     ScoreTimeClass(int x, int y, int param, int a, int b, int c);
-    virtual ~ScoreTimeClass();
+    virtual ~ScoreTimeClass() {}
 
     int Field1C;   // +0x1C
     int Field20;   // +0x20
@@ -42,10 +42,34 @@ GG_STATIC_ASSERT(offsetof(ScoreTimeClass, Field1C) == 0x1C);
 GG_STATIC_ASSERT(offsetof(ScoreTimeClass, Field28) == 0x28);
 GG_STATIC_ASSERT(sizeof(ScoreTimeClass) == 0x2C);
 
+// VTABLE: GAMEMD 0x7F0EB4
+class ScorePrintClass : public ScoreAnimClass
+{
+public:
+    ScorePrintClass(int a, int b, int c, int d, char e);
+    virtual ~ScorePrintClass() {}
+
+    int  Field1C;   // +0x1C
+    int  Field20;   // +0x20
+    char Field24;   // +0x24
+    int  Field28;   // +0x28
+};
+GG_STATIC_ASSERT(offsetof(ScorePrintClass, Field1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(ScorePrintClass, Field24) == 0x24);
+GG_STATIC_ASSERT(offsetof(ScorePrintClass, Field28) == 0x28);
+GG_STATIC_ASSERT(sizeof(ScorePrintClass) == 0x2C);
+
 // FUNCTION: GAMEMD 0x690BB0
 // Builds the timed score animation: the base fields, then the three extra words.
 ScoreTimeClass::ScoreTimeClass(int x, int y, int param, int a, int b, int c)
     : ScoreAnimClass(x, y, param), Field1C(0), Field20(a), Field24(b), Field28(c)
+{
+}
+
+// FUNCTION: GAMEMD 0x690D10
+// Builds the printed score animation (first argument is the base parameter).
+ScorePrintClass::ScorePrintClass(int a, int b, int c, int d, char e)
+    : ScoreAnimClass(b, c, a), Field1C(0), Field20(0), Field24(e), Field28(d)
 {
 }
 
@@ -54,3 +78,8 @@ ScoreTimeClass::ScoreTimeClass(int x, int y, int param, int a, int b, int c)
 ScoreAnimClass::ScoreAnimClass(int x, int y, int param) : X(x), Y(y), Param(param)
 {
 }
+
+// Compiler-generated scalar deleting destructors, emitted with the vtables above.
+// SYNTHETIC: GAMEMD 0x690FE0
+// SYNTHETIC: GAMEMD 0x691000
+// SYNTHETIC: GAMEMD 0x691020

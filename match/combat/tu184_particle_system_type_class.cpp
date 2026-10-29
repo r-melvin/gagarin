@@ -132,6 +132,15 @@ ParticleSystemTypeClass::ParticleSystemTypeClass(const char* id)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x644250
+// Announces the expiring pointer and leaves the class-wide list; 0x644960 expands this body.
+ParticleSystemTypeClass::~ParticleSystemTypeClass()
+{
+    ParticleAnnouncePointerExpired(this, true);
+    DAT_00A83D68.RemoveItem(this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6442D0
 bool ParticleSystemTypeClass::ReadINI(ParticleIniView* ini)
 {

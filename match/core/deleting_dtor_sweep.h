@@ -58,7 +58,6 @@ void FUN_006B1D00(void* self);   // GAMEMD 0x6B1D00
 void FUN_006B7010(void* self);   // GAMEMD 0x6B7010
 void FUN_006CB120(void* self);   // GAMEMD 0x6CB120
 void FUN_006E5CA0(void* self);   // GAMEMD 0x6E5CA0
-void FUN_006E8DE0(void* self);   // GAMEMD 0x6E8DE0
 void FUN_006F4500(void* self);   // GAMEMD 0x6F4500
 void FUN_00711AE0(void* self);   // GAMEMD 0x711AE0
 void FUN_0071B7B0(void* self);   // GAMEMD 0x71B7B0
@@ -91,7 +90,6 @@ struct Obj_6AC7A0 { void* FUN_6AC7A0(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_6B8140 { void* FUN_6B8140(unsigned int flags); };  // FUNCTION: GAMEMD 0x6B8140
 struct Obj_6CE220 { void* FUN_6CE220(unsigned int flags); };  // FUNCTION: GAMEMD 0x6CE220
 struct Obj_6E64C0 { void* FUN_6E64C0(unsigned int flags); };  // FUNCTION: GAMEMD 0x6E64C0
-struct Obj_6F0450 { void* FUN_6F0450(unsigned int flags); };  // FUNCTION: GAMEMD 0x6F0450
 struct Obj_746E80 { void* FUN_746E80(unsigned int flags); };  // FUNCTION: GAMEMD 0x746E80
 struct Obj_76EFE0 { void* FUN_76EFE0(unsigned int flags); };  // FUNCTION: GAMEMD 0x76EFE0
 struct Obj_7AD2F0 { void* FUN_7AD2F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD2F0

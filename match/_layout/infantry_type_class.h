@@ -38,6 +38,7 @@ class InfantryTypeClass : public TechnoTypeClass
 public:
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);   // 32  0x523B40
     virtual ObjectClass* vf_35(HouseClass* owner);   // 35  0x523B10
+    virtual CellStruct* vf_36(int a1);   // 36  0x523C20: a lazily built static cell pair, a1 unused
     // CALLEE: GAMEMD 0x005236A0 (decl; reloc) -- constructor as the class factory calls it.
     InfantryTypeClass(int unknown_arg0 = 0);
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x524960

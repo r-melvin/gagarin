@@ -252,6 +252,14 @@ DiskLaserClass::DiskLaserClass(const AbstractNoInit& noInit) : AbstractClass(noI
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4A7B00
+// Removes the laser from the global laser list; ~AbstractClass runs after it.
+DiskLaserClass::~DiskLaserClass()
+{
+    DAT_008A0208.RemoveItem(this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004A7B80
 void DiskLaserClass::vf_13(Obj_004A1D30* crc)
 {
@@ -273,6 +281,8 @@ int Obj_004A7C80::FUN_004A7C80() const
 {
     return 0x49;
 }
+
+// SYNTHETIC: GAMEMD 0x4A7C90 -- DiskLaserClass scalar deleting destructor (slot 8), emitted with the vtable.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4A7D20

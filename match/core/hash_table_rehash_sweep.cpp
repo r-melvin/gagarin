@@ -59,6 +59,10 @@ template struct HashTable<Node_00625780>;
 // Halves the table, chain link at +0x0C.
 template struct HashTable<Node_006258E0>;
 
+// FUNCTION: GAMEMD 0x006BAFA0
+// Doubles the table, chain link at +0x308.
+template struct HashTable<Node_006BAFA0>;
+
 // FUNCTION: GAMEMD 0x007ADF70
 // Halves the table, chain link at +0x70.
 template struct HashTable<Node_007ADF70>;

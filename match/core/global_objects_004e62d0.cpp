@@ -8,6 +8,7 @@
 // (0x8131C4..0x813320). The unit's other globals are not defined here yet.
 
 #include <objbase.h>
+#include <string.h>
 #include "../_rt/gg_static_assert.h"
 #include "header_tuning_globals.h"
 #include "mission_class_methods.h"
@@ -194,6 +195,20 @@ ColorInit DAT_008B40E0(0xFF, 0, 0xFF);
 // SYNTHETIC: GAMEMD 0x4E8220
 // GLOBAL: GAMEMD 0xA8E980
 ColorInit DAT_00A8E980(0xFF, 0xFF, 0);
+
+// FUNCTION: GAMEMD 0x429210
+// Hands out this factory for IUnknown and IClassFactory, with a reference.
+HRESULT __stdcall TiberianSunClassFactory::QueryInterface(REFIID riid, void** ppv)
+{
+    if (ppv == 0)
+        return E_POINTER;
+    if (memcmp(&riid, &IID_IClassFactory, sizeof(IID)) != 0
+        && memcmp(&riid, &IID_IUnknown, sizeof(IID)) != 0)
+        return E_NOINTERFACE;
+    *ppv = this;
+    AddRef();
+    return S_OK;
+}
 
 // FUNCTION: GAMEMD 0x4E8260
 HRESULT __stdcall TiberianSunClassFactory::LockServer(BOOL lock)

@@ -106,6 +106,19 @@ int Obj_006B5440::FUN_006B5440(const char* name)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6B53A0
+// Frees the image, announces the expiring pointer and leaves the class-wide list; 0x6B6160 expands this body.
+SmudgeTypeClass::~SmudgeTypeClass()
+{
+    if (Image) {
+        delete Image;
+        Image = 0;
+    }
+    MapObjAnnouncePointerExpired(this, true);
+    SmudgeTypeArray.RemoveItem(this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B5490
 //
 // Load the theater-specific smudge art. For every smudge type flagged as

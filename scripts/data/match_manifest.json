@@ -5183,11 +5183,12 @@
  {
   "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6F0450",
-  "sym": "?FUN_6F0450@Obj_6F0450@@QAEPAXI@Z",
+  "sym": "??_GTeamClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_006f0450",
-  "status": "matched",
-  "pct": 100
+  "name": "TeamClass::scalar deleting destructor",
+  "status": "partial",
+  "pct": 100,
+  "note": "Natural scalar destructor bytes and relocation targets match; full table/provider closure remains unproved."
  },
  {
   "tu": "match/map/tu242_terrain_class.cpp",
@@ -7725,6 +7726,15 @@
   "sym": "?Shrink@?$HashTable@UNode_007AEF50@@@@QAEXXZ",
   "len": "0xa8",
   "name": "HashTable<Node_007AEF50>::Shrink",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/hash_table_rehash_sweep.cpp",
+  "addr": "0x6BAFA0",
+  "sym": "?Grow@?$HashTable@UNode_006BAFA0@@@@QAEXXZ",
+  "len": "0xa2",
+  "name": "HashTable<Node_006BAFA0>::Grow",
   "status": "matched",
   "pct": 100
  },
@@ -60149,6 +60159,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/hash_table_clear_methods.cpp",
+  "addr": "0x6BAC40",
+  "sym": "?Remove@?$HashTable_006249A0@VKey_006B9530@@UValue_006B9530@@@@QAE_NABVKey_006B9530@@AAUValue_006B9530@@@Z",
+  "len": "0x2ac",
+  "name": "HashTable<Key_006B9530,Value_006B9530>::Remove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/Startup.cpp",
   "addr": "0x6BB2E0",
   "sym": "?FUN_006BB2E0@@YI_NPBD00@Z",
@@ -84364,11 +84383,11 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/combat/infantry_type_class_find_index_methods.cpp",
   "addr": "0x523C80",
-  "sym": "?FUN_00523C80@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x1",
-  "name": "FUN_00523C80",
+  "name": "_$E2 (exit stub of the vf_36 static, replaces hand-made FUN_00523C80)",
   "status": "matched",
   "pct": 100
  },
@@ -87345,18 +87364,18 @@
  {
   "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6F0430",
-  "sym": "?FUN_006F0430@Obj_006F0430@@QBEHXZ",
+  "sym": "?vf_12@TeamClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_006F0430::FUN_006F0430",
+  "name": "TeamClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6F0440",
-  "sym": "?FUN_006F0440@Obj_006F0440@@QBEHXZ",
+  "sym": "?vf_11@TeamClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_006F0440::FUN_006F0440",
+  "name": "TeamClass::vf_11",
   "status": "matched",
   "pct": 100
  },
@@ -101337,6 +101356,24 @@
   "pct": 100
  },
  {
+  "tu": "match/combat/tu066_disk_laser_class.cpp",
+  "addr": "0x4A7B00",
+  "sym": "??1DiskLaserClass@@UAE@XZ",
+  "len": "0x72",
+  "name": "DiskLaserClass::~DiskLaserClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/tu066_disk_laser_class.cpp",
+  "addr": "0x4A7C90",
+  "sym": "??_GDiskLaserClass@@UAEPAXI@Z",
+  "len": "0x86",
+  "name": "DiskLaserClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/renderer/tu072_d_surface.cpp",
   "addr": "0x4BA3E0",
   "sym": "_$E2",
@@ -101742,6 +101779,15 @@
   "pct": 100
  },
  {
+  "tu": "match/combat/tu184_particle_system_type_class.cpp",
+  "addr": "0x644250",
+  "sym": "??1ParticleSystemTypeClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "ParticleSystemTypeClass::~ParticleSystemTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/combat/tu185_particle_type_class.cpp",
   "addr": "0x644A20",
   "sym": "_$E2",
@@ -101832,6 +101878,15 @@
   "pct": 100
  },
  {
+  "tu": "match/map/tu217_smudge_type_class.cpp",
+  "addr": "0x6B53A0",
+  "sym": "??1SmudgeTypeClass@@UAE@XZ",
+  "len": "0x98",
+  "name": "SmudgeTypeClass::~SmudgeTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B6A30",
   "sym": "_$E2",
@@ -101866,6 +101921,25 @@
   "name": "dynamic initializer (DAT_00B0E988)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ai/tu235_team_class.cpp",
+  "addr": "0x6EAE60",
+  "len": "0x73",
+  "sym": "?vf_10@TeamClass@@UAEXPAX_N@Z",
+  "name": "TeamClass::vf_10",
+  "status": "partial",
+  "pct": 100.0,
+  "note": "Raw code matches; TeamClass vtable/provider selection and slot closure remain unproved."
+ },
+ {
+  "tu": "match/ai/tu235_team_class.cpp",
+  "addr": "0x6E8DE0",
+  "sym": "??1TeamClass@@UAE@XZ",
+  "len": "0x268",
+  "name": "TeamClass::~TeamClass",
+  "status": "partial",
+  "pct": 100
  },
  {
   "tu": "match/core/mathtbl_init_6f0470.cpp",
@@ -133820,6 +133894,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x429210",
+  "sym": "?QueryInterface@TiberianSunClassFactory@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x5b",
+  "name": "TiberianSunClassFactory::QueryInterface",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/leaf_sweep_w1.cpp",
   "addr": "0x4F3AB0",
   "sym": "?Set@Obj_004F3AB0@@QAEXD@Z",
@@ -135148,6 +135231,15 @@
   "sym": "??_GTEventClass@@UAEPAXI@Z",
   "len": "0x11f",
   "name": "TEventClass::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "addr": "0x71E830",
+  "sym": "??1TEventClass@@UAE@XZ",
+  "len": "0x10b",
+  "name": "TEventClass::~TEventClass",
   "status": "matched",
   "pct": 100
  },
@@ -144179,6 +144271,15 @@
   "pct": 100
  },
  {
+  "tu": "match/combat/infantry_type_class_find_index_methods.cpp",
+  "addr": "0x523C20",
+  "sym": "?vf_36@InfantryTypeClass@@UAEPAUCellStruct@@H@Z",
+  "len": "0x5b",
+  "name": "InfantryTypeClass::vf_36",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/map/cell_object_square_search_005862c0.cpp",
   "addr": "0x5862C0",
   "sym": "?FUN_005862C0@@YG_NPBUCellStruct@@H@Z",
@@ -146390,6 +146491,42 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/score_anim_ctors.cpp",
+  "addr": "0x690D10",
+  "sym": "??0ScorePrintClass@@QAE@HHHHD@Z",
+  "len": "0x48",
+  "name": "ScorePrintClass::ScorePrintClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/score_anim_ctors.cpp",
+  "addr": "0x690FE0",
+  "sym": "??_GScoreAnimClass@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "ScoreAnimClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/score_anim_ctors.cpp",
+  "addr": "0x691000",
+  "sym": "??_GScoreTimeClass@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "ScoreTimeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/score_anim_ctors.cpp",
+  "addr": "0x691020",
+  "sym": "??_GScorePrintClass@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "ScorePrintClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/network/wdt_campaign_factory.cpp",
   "addr": "0x764B30",
   "sym": "?FUN_00764B30@@YI?AV?$rc_ptr@VCampaign@WorldDominationTour@@@@IABVrc_ptr_base@@@Z",
@@ -146510,6 +146647,42 @@
   "sym": "?vf_28@TechnoClass@@UAEHPAUCellStruct@@DD@Z",
   "len": "0x632",
   "name": "TechnoClass::vf_28",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/neuron_class.cpp",
+  "addr": "0x43A350",
+  "sym": "??0NeuronClass@@QAE@XZ",
+  "len": "0xee",
+  "name": "NeuronClass::NeuronClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/neuron_class.cpp",
+  "addr": "0x43A440",
+  "sym": "??1NeuronClass@@UAE@XZ",
+  "len": "0xbb",
+  "name": "NeuronClass::~NeuronClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/neuron_class.cpp",
+  "addr": "0x43A9C0",
+  "sym": "??_GNeuronClass@@UAEPAXI@Z",
+  "len": "0xcf",
+  "name": "NeuronClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/infantry_disguise_5227f0.cpp",
+  "addr": "0x5227F0",
+  "sym": "?vf_50@InfantryClass@@UAE_NPAVHouseClass@@@Z",
+  "len": "0xb9",
+  "name": "InfantryClass::vf_50",
   "status": "matched",
   "pct": 100
  }

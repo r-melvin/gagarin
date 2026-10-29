@@ -47,8 +47,6 @@ struct Obj_006EDFB0;
 struct Obj_006EDFB0_2C;
 struct Obj_006EE1B0;
 struct Obj_006EE1D0;
-struct Obj_006F0430;
-struct Obj_006F0440;
 
 // GLOBAL: GAMEMD 0x87F7E8
 extern char DAT_0087F7E8[];
@@ -148,17 +146,6 @@ struct Obj_006EE1D0
 };
 GG_STATIC_ASSERT(offsetof(Obj_006EE1D0, unknown_80) == 0x80);
 
-struct Obj_006F0430
-{
-    // FUNCTION: GAMEMD 0x6F0430
-    int FUN_006F0430() const;
-};
-
-struct Obj_006F0440
-{
-    // FUNCTION: GAMEMD 0x6F0440
-    int FUN_006F0440() const;
-};
 
 
 void FUN_006EDE40(Obj_006EDE40* a1, int a2, int a3, int a4);
@@ -447,6 +434,66 @@ double DAT_00B0E9A0 = DAT_00B0E950 / DAT_007F46F0;
 // GLOBAL: GAMEMD 0x00B0E988
 double DAT_00B0E988 = DAT_007E1718 / DAT_00B0E9A0;
 
+#include "../_layout/ai_trigger_type_class.h"
+#include "../_layout/team_type_class.h"
+#include "../_layout/house_class.h"
+#include "../_layout/tag_class.h"
+#include "../core/vector_class_operations.h"
+
+// GLOBAL: GAMEMD 0xA8E9A0
+extern unsigned char DAT_00A8E9A0;
+// GLOBAL: GAMEMD 0xB0F6F0
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F6F0;
+// GLOBAL: GAMEMD 0xB0F720
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F720;
+// GLOBAL: GAMEMD 0xB0F670
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;
+// GLOBAL: GAMEMD 0xB0F618
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F618;
+// GLOBAL: GAMEMD 0x8B40E8
+extern DynamicVectorClass<TeamClass*> DAT_008B40E8;
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_2C) == 0x2C);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_70) == 0x70);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_74) == 0x74);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_84) == 0x84);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Flag_F6) == 0xF6);
+GG_STATIC_ASSERT(offsetof(HouseClass, BaseDefenseTeamCount) == 0x566C);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->BaseDefenseTeamCount) == 4);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_2C) == 4);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_70) == 4);
+GG_STATIC_ASSERT(sizeof(((TeamTypeClass*)0)->Flag_F6) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_74) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_84) == 1);
+
+// FUNCTION: GAMEMD 0x6E8DE0
+TeamClass::~TeamClass()
+{
+    for (int i = 0; i < AITriggerTypes.Count; ++i) {
+        AITriggerTypeClass* trigger = AITriggerTypes.Items[i];
+        if (trigger->unknown_DC == Type) {
+            if (unknown_84) trigger->RegisterSuccess();
+            else trigger->RegisterFailure();
+        }
+    }
+    if (unknown_2C && Type && Type->Flag_F6)
+        --unknown_2C->BaseDefenseTeamCount;
+    if (DAT_00A8E9A0 && Type) {
+        while (FirstUnit) LiberateMember(FirstUnit, -1, 0);
+        --Type->InstanceCount;
+        if (unknown_70) {
+            if (!unknown_70->InstanceCount) unknown_70->Destroy();
+            unknown_70 = 0;
+        }
+    }
+    AnnounceExpiredPointer(1);
+    DAT_00B0F6F0.RemoveItem(this);
+    DAT_00B0F720.RemoveItem(this);
+    DAT_00B0F670.RemoveItem(this);
+    DAT_00B0F618.RemoveItem(this);
+    DAT_008B40E8.RemoveItem(this);
+    if (unknown_74 && Type) delete Type;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E9050  TeamClass::AssignMissionTarget
 //
@@ -553,6 +600,26 @@ bool Team_006EA500::AddMember(Foot_006EA500* member, bool flag)
     this->At_7D = 1;
     member->At_422 = this->Type->At_F5;
     return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+GG_STATIC_ASSERT(offsetof(FootClass, NextTeamMember) == 0x5D8);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->NextTeamMember) == 4);
+
+// FUNCTION: GAMEMD 0x6EAE60
+void TeamClass::vf_10(void* target, bool removed)
+{
+    if (target == unknown_70) unknown_70 = 0;
+    if (target == FirstUnit && removed) FirstUnit = FirstUnit->NextTeamMember;
+    if (target == unknown_2C) unknown_2C = 0;
+    if (target == Target28) Target28 = 0;
+    if (unknown_40 == target) unknown_40 = 0;
+    if (unknown_3C == target) unknown_3C = 0;
+    if (Member34 == target) Member34 = 0;
+    if (Type == target) Type = 0;
+    if (unknown_38 == target) unknown_38 = 0;
+    if (unknown_44 == target) unknown_44 = 0;
+    if (unknown_30 == target) unknown_30 = 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -760,7 +827,7 @@ void Team_006EF4D0::GetTaskForceMissingMemberTypes(TypeVector_006EF4D0* out)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6F0430
 // Returns a constant. Vtable slot 12 of TeamClass (RTTI).
-int Obj_006F0430::FUN_006F0430() const
+int TeamClass::vf_12()
 {
     return 0xA0;
 }
@@ -768,20 +835,9 @@ int Obj_006F0430::FUN_006F0430() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6F0440
 // Returns a constant. Vtable slot 11 of TeamClass (RTTI).
-int Obj_006F0440::FUN_006F0440() const
+int TeamClass::vf_11()
 {
     return 0x22;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6F0450
-void* Obj_6F0450::FUN_6F0450(unsigned int flags)
-{
-    FUN_006E8DE0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x6F0450 -- compiler-generated TeamClass scalar deleting destructor.

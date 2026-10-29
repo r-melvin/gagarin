@@ -19,6 +19,16 @@ extern DynamicVectorClass<TEventClass*> DAT_00B0F658;
 extern DynamicVectorClass<TEventClass*> DAT_00B0F670;
 extern DynamicVectorClass<TEventClass*> DAT_00B0F1A0;
 
+// FUNCTION: GAMEMD 0x71E830
+// Leaves the registries; the scalar deleting destructor 0x71FA80 expands this body in place.
+TEventClass::~TEventClass()
+{
+    AnnounceExpiredPointer(1);
+    DAT_00B0F658.RemoveItem(this);
+    DAT_00B0F670.RemoveItem(this);
+    DAT_00B0F1A0.RemoveItem(this);
+}
+
 // FUNCTION: GAMEMD 0x71F800
 // Drop a pointer that is going away: unlink it from the chain, or forget the team.
 void TEventClass::vf_10(void* target, bool removed)
@@ -44,16 +54,6 @@ HRESULT __stdcall TEventClass::Load(IStream* pStm)
     DAT_00B0C110.SwizzleManagerClass::vf_4(&TeamType);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_54);
     return 0;
-}
-
-// The destructor is only ever reached through the scalar deleting destructor, so it is
-// inline: retail has no standalone copy.
-inline TEventClass::~TEventClass()
-{
-    AnnounceExpiredPointer(1);
-    DAT_00B0F658.RemoveItem(this);
-    DAT_00B0F670.RemoveItem(this);
-    DAT_00B0F1A0.RemoveItem(this);
 }
 
 // SYNTHETIC: GAMEMD 0x71FA80

@@ -24,6 +24,8 @@ public:
     ~Key_006B9530();
     // FUNCTION: GAMEMD 0x7B4940 (decl; reloc)
     Key_006B9530& operator=(const Key_006B9530& other);
+    // FUNCTION: GAMEMD 0x7B4780 (decl; reloc)
+    bool operator==(const Key_006B9530& other) const;
 };
 GG_STATIC_ASSERT(sizeof(Key_006B9530) == 4);
 
@@ -95,10 +97,53 @@ HashTable_006249A0<KEY, VALUE>::~HashTable_006249A0()
     delete[] this->Buckets;
 }
 
+template<class KEY, class VALUE>
+bool HashTable_006249A0<KEY, VALUE>::Remove(const KEY& key, VALUE& value)
+{
+    if (this->Count == 0) return false;
+
+    float load = (float)(this->Count - 1);
+    load /= this->BucketCount;
+    int hash = this->Hash(&key);
+    unsigned idx = ((1 << this->BitWidth) - 1) & hash;
+    Node* node = this->Buckets[idx];
+    if (node == NULL) return false;
+
+    if (node->Key == key) {
+        value = node->Value;
+        Node* next = this->Buckets[idx]->Next;
+        delete this->Buckets[idx];
+        this->Buckets[idx] = next;
+        this->Count--;
+        if (load <= this->ShrinkRatio) {
+            Shrink();
+        }
+        return true;
+    }
+
+    bool found = false;
+    for (Node* cur = node->Next; cur != NULL; cur = cur->Next) {
+        if (cur->Key == key) {
+            value = cur->Value;
+            node->Next = cur->Next;
+            this->Count--;
+            delete cur;
+            found = true;
+            break;
+        }
+        node = cur;
+    }
+    if (load <= this->ShrinkRatio) {
+        Shrink();
+    }
+    return found;
+}
+
 // The instantiation serves the static table at 0xAC4848, whose
 // compiler-generated teardown thunk 0x600550 is `MOV ECX,0xAC4848; JMP
 // 0x6B9530`. Defining that global here instead (so the thunks are generated)
 // inlines this destructor into the thunk, unlike retail.
 // FUNCTION: GAMEMD 0x6B9530 (destructor)
+// FUNCTION: GAMEMD 0x6BAC40 (Remove, defined above)
 // FUNCTION: GAMEMD 0x6BAEF0 (Shrink, emitted by the same instantiation)
 template struct HashTable_006249A0<Key_006B9530, Value_006B9530>;

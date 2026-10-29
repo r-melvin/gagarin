@@ -497,13 +497,6 @@ INIClass::INIEntry* const& INISectionEntryView::Fetch(int key)
 #include "trivial_tu101_methods.h"
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x523C80
-// Empty function.
-void __cdecl FUN_00523C80()
-{
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x5247A0
 // Returns zero. Vtable slot 44 of InfantryTypeClass (RTTI).
 int Obj_005247A0::FUN_005247A0() const

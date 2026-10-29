@@ -27,6 +27,8 @@ public:
     DiskLaserClass();
     // FUNCTION: GAMEMD 0x4A7AD0 (no-initialisation constructor)
     DiskLaserClass(const AbstractNoInit& noInit);
+    // FUNCTION: GAMEMD 0x4A7B00 (destructor; slot 8 holds the scalar deleting destructor 0x4A7C90)
+    virtual ~DiskLaserClass();                                            // 8
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x4A7C30
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x4A7B90
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x4A7C10

@@ -77,6 +77,7 @@ public:
     virtual void vf_328(int a1);                                   // 328 0x521C60
     virtual CoordStruct vf_192(int a1);                            // 192 0x521D30
     virtual unsigned long DisguiseAs(AbstractClass* target);       // 283 0x522700
+    virtual bool vf_50(HouseClass* house);                         // 50  0x5227F0
     virtual bool vf_81(int a1, ObjectClass* a2, int a3);           // 81  0x51F190
     virtual CoordStruct vf_44(int a1, CoordStruct a2);             // 44  0x523250
     virtual bool vf_128();                                         // 128 0x521B60

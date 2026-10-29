@@ -50,17 +50,9 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x6B58D0
     virtual HRESULT __stdcall Load(IStream* pStm);                          // 5   0x6B5850
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);        // 6   0x6B58B0
-    // Slot 8: the scalar deleting destructor 0x6B6160 is compiler output; the destructor body is
-    // inline (it is expanded into that entry, and the base body 0x5F7400 is out of line).
-    virtual ~SmudgeTypeClass()
-    {
-        if (Image) {
-            delete Image;
-            Image = 0;
-        }
-        MapObjAnnouncePointerExpired(this, true);
-        SmudgeTypeArray.RemoveItem(this);
-    }
+    // FUNCTION: GAMEMD 0x6B53A0 (destructor; slot 8 holds the scalar deleting destructor 0x6B6160,
+    // which expands this body; the base body 0x5F7400 is out of line).
+    virtual ~SmudgeTypeClass();
     virtual int WhatAmI();                                                  // 11  0x6B6130
     virtual int Size();                                                     // 12  0x6B6140
     virtual void ComputeCRC(MapObjCrcView& crc);                            // 13  0x6B57F0

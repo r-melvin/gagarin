@@ -59,12 +59,9 @@ public:
     // No-init constructor (Load re-runs it through placement new): only the base
     // no-init constructor (0x5F7320) and the four vptrs.
     ParticleSystemTypeClass(const ParticleNoInit& noInit) : ParticleTypeObjectView(noInit) {}
-    // Slot 8: scalar deleting destructor 0x644960 (synthetic); retail inlines this body into it.
-    virtual ~ParticleSystemTypeClass()
-    {
-        ParticleAnnouncePointerExpired(this, true);
-        DAT_00A83D68.RemoveItem(this);
-    }
+    // FUNCTION: GAMEMD 0x644250 (destructor; slot 8 holds the scalar deleting destructor 0x644960,
+    // which expands this body).
+    virtual ~ParticleSystemTypeClass();
 
     // ---- primary table overrides --------------------------------------------
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);              // 0x6447A0
