@@ -44,9 +44,9 @@ public:
     virtual MenusHResult __stdcall Slot0();
     virtual MenusULong   __stdcall Slot1();
     virtual MenusULong   __stdcall Release();
-    virtual MenusHResult __stdcall Slot3();
+    virtual MenusHResult __stdcall Slot3(void* window, const void* arg);
     virtual MenusHResult __stdcall Slot4();
-    virtual MenusHResult __stdcall Slot5();
+    virtual MenusHResult __stdcall Slot5(void* sink);
     virtual MenusHResult __stdcall Slot6(void* sink);
     virtual MenusHResult __stdcall Slot7();
     virtual MenusHResult __stdcall Slot8();
@@ -56,7 +56,7 @@ public:
     virtual MenusHResult __stdcall Slot12();
     virtual MenusHResult __stdcall Slot13();
     virtual MenusHResult __stdcall Slot14();
-    virtual MenusHResult __stdcall Slot15();
+    virtual MenusHResult __stdcall Slot15(int enable);
     virtual MenusHResult __stdcall Navigate(const wchar_t* url, int arg1, const void* arg2);
 };
 
@@ -173,12 +173,21 @@ public:
 
     MenusULong       RefCount;      // +0x04
     MenusWOLBrowser* Browser;       // +0x08
-    wchar_t          PagePath[0x202];  // +0x0C
+    wchar_t          PagePath[0x200];  // +0x0C
+    bool             unknown_40C;   // +0x40C
+    char             unknown_40D[3];  // +0x40D
     void*            Window;        // +0x410
+
+    // FUNCTION: GAMEMD 0x773500 (decl; reloc) -- the constructor.
+    WebBrowser();
+    // FUNCTION: GAMEMD 0x773590 (decl; reloc) -- creates the browser component.
+    bool Initialise(void* window, const void* arg);
 };
 GG_STATIC_ASSERT(offsetof(WebBrowser, RefCount) == 0x04);
 GG_STATIC_ASSERT(offsetof(WebBrowser, Browser) == 0x08);
 GG_STATIC_ASSERT(offsetof(WebBrowser, PagePath) == 0x0C);
+GG_STATIC_ASSERT(offsetof(WebBrowser, unknown_40C) == 0x40C);
 GG_STATIC_ASSERT(offsetof(WebBrowser, Window) == 0x410);
+GG_STATIC_ASSERT(sizeof(WebBrowser) == 0x414);
 
 #endif  // GG_MATCH_UI_INPUT_CONTROLS_MENUS_WEB_BROWSER_H

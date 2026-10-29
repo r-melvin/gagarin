@@ -12,6 +12,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_type_class.h"
+#include "obj_004a1d30.h"
 #include "../core/type_list.h"
 
 // Pointer / TypeList / GUID members read as undefined4 / fixed-size blocks in
@@ -25,7 +26,9 @@ class ParticleTypeClass;    // opaque (4-byte ptr target)
 // TypeList<T> — DynamicVectorClass(0x18) + trailing dword; size = 0x1C.
 struct RawBlock1C
 {
-    unsigned char _raw[0x1C];   // +0x00..0x1B
+    unsigned char _raw[0x10];   // +0x00..0x0F
+    int Count;                  // +0x10 (the vector's live count)
+    unsigned char _raw14[0x8];  // +0x14..0x1B
 };
 GG_STATIC_ASSERT(sizeof(RawBlock1C) == 0x1C);
 
@@ -51,6 +54,8 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     virtual int vf_11();
     virtual int vf_12();
+    // FUNCTION: GAMEMD 0x75DEC0 -- slot 13, feeds the checksum sink.
+    virtual void vf_13(Obj_004A1D30* crc);
     // FUNCTION: GAMEMD 0x75E3B0 (__fastcall lookup-or-create by ID)
     static WarheadTypeClass* FindOrAllocate(const char* id);
     // The index-returning lookup-or-create and the index-to-ID lookup emitted in the block at

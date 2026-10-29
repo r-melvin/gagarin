@@ -1402,7 +1402,8 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
             endpoint.Y = target.Y;
             // Slot44 takes four DWORD arguments plus a hidden result.
             // The endpoint is already built when its virtual callback runs.
-            FUN_00705860(techno->vf_44(0, 0, 0, 0), endpoint);
+            CoordStruct origin = { 0, 0, 0 };
+            FUN_00705860(techno->vf_44(0, origin), endpoint);
             }
         }
     }

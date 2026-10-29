@@ -21,8 +21,14 @@
 #include "techno_type_class.h"   // TechnoTypeClass (sizeof 0xDF8), TypeListLayout,
                                  // WeaponStruct, AnimTypeClass fwd-decl
 
-// Opaque forward decl for the truncation-site pointer member (4 bytes).
-struct SequenceStruct;
+// One entry of the infantry type's sequence table (0x24 bytes each; indexed by sequence number).
+struct SequenceStruct
+{
+    int unknown_00;
+    int unknown_04;
+    int unknown_08[7];
+};
+GG_STATIC_ASSERT(sizeof(SequenceStruct) == 0x24);
 
 // ---------------------------------------------------------------------------
 // InfantryTypeClass  (0xDF8..0xECF, sizeof = 0xED0)

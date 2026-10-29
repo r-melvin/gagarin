@@ -34,7 +34,7 @@ const wchar_t* ObjectClass::vf_36()
 // PARTIAL 42.9%: retail keeps the return pointer in ESI and returns it with
 // MOV EAX,ESI; cl reloads it from the stack. Tried copy-then-add, member-wise
 // copy and a brace-initialised local.
-CoordStruct ObjectClass::vf_44(int a1, int a2, int a3, int a4)
+CoordStruct ObjectClass::vf_44(int a1, CoordStruct a2)
 {
     CoordStruct coord = vf_18();
     CoordStruct result;

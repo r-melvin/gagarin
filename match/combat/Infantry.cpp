@@ -93,15 +93,6 @@ static inline ILocomotionPtr* LocomotorOf(InfantryClass* unit)
     return reinterpret_cast<ILocomotionPtr*>(&unit->Locomotor);
 }
 
-// One entry of the infantry type's sequence table (0x24 bytes each; indexed by sequence number).
-struct SequenceStruct
-{
-    int unknown_00;
-    int unknown_04;
-    int unknown_08[7];
-};
-GG_STATIC_ASSERT(sizeof(SequenceStruct) == 0x24);
-
 // The map singleton (GAMEMD 0x87F7E8): the two lookups the occupation methods use.
 class MapView_565730
 {

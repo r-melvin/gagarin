@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "frame_counter.h"
+#include "packed_006c9940.h"
 
 // A timed window: a flag, the frame it opened and the frame it closes.
 struct Window_006B10D0
@@ -117,14 +118,6 @@ int Float4_006C9820::FUN_006C9820() const
     return -1;
 }
 
-struct Packed_006C9940
-{
-    unsigned char unknown_00[8];
-    unsigned int Packed;   // +0x08
-
-    void FUN_006C9940(unsigned char hi, unsigned char mid, unsigned char lo);
-};
-GG_STATIC_ASSERT(offsetof(Packed_006C9940, Packed) == 0x08);
 
 // FUNCTION: GAMEMD 0x6C9940
 // Packs three bytes into the low three bytes of the word.

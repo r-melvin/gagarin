@@ -1550,6 +1550,41 @@ Obj_007B66D0 FUN_00603F60(GG_HWND hWnd, int a1)
     return query.unknown_08;
 }
 
+// Packs a range into message 0x4E8 on the source control, then asks the owner
+// for a wide string with message 0x4E9, passing the first answer along.
+static Obj_007B66D0 AskRangeText_00603FC0(GG_HWND hWndOwner, GG_HWND hWndSource, unsigned short nLow, unsigned short nHigh)
+{
+    long lResult = SendMessageA(hWndSource, 0x4E8, 0, ((unsigned long)nHigh << 16) | nLow);
+    Query_00603F00 query;
+    query.unknown_00 = (int)hWndSource;
+    query.unknown_04 = lResult;
+    SendMessageA(hWndOwner, 0x4E9, 0, (long)&query);
+    return query.unknown_08;
+}
+
+// FUNCTION: GAMEMD 0x603FC0
+Obj_007B66D0 FUN_00603FC0(GG_HWND hWndOwner, GG_HWND hWndSource, unsigned short nLow, unsigned short nHigh)
+{
+    Obj_007B66D0 text = AskRangeText_00603FC0(hWndOwner, hWndSource, nLow, nHigh);
+    return text;
+}
+
+// FUNCTION: GAMEMD 0x6040B0 (decl; reloc) -- __fastcall: the text for a key and control, or null.
+const char* FUN_006040B0(int nKey, GG_HWND hWnd);
+// GLOBAL: GAMEMD 0x887734 -- shared empty wide string.
+extern const wchar_t DAT_00887734[];
+
+// FUNCTION: GAMEMD 0x604060
+// The localised text for a key and control, or the empty string when there is none.
+Obj_007B66D0 FUN_00604060(int nKey, GG_HWND hWnd)
+{
+    const char* pszLabel = FUN_006040B0(nKey, hWnd);
+    if (pszLabel != 0)
+        // STRING: GAMEMD 0x00833730
+        return Obj_007B66D0(FUN_00734E60(pszLabel, 0, "D:\\ra2mdpost\\ownrdraw.cpp", 0x7A5));
+    return Obj_007B66D0(DAT_00887734);
+}
+
 // FUNCTION: GAMEMD 0x606740  FUN_00606740 (__fastcall)
 void FUN_00606740(int nKey, bool bValue)
 {
@@ -2156,6 +2191,64 @@ void FUN_00610810(RectangleStruct* pRect, const wchar_t* pText, int nValue)
     FUN_00610950(true);
 }
 
+// FUNCTION: GAMEMD 0x610B50
+// Puts the saved background back under the tooltip once; false when there is
+// nothing to do (no tooltip up, already put back, or no saved background).
+bool FUN_00610B50()
+{
+    if (DAT_00AC1CB8.unknown_114 == 0)
+        return false;
+    if (DAT_00AC1CB8.unknown_118 == 1)
+        return false;
+    if (DAT_00AC1CB8.unknown_10 == 0)
+        return false;
+
+    RectangleStruct rcScreen = DAT_00AC1CB8.unknown_00;
+    RectangleStruct rcSaved;
+    rcSaved.X = 0;
+    rcSaved.Y = 0;
+    rcSaved.Width = DAT_00AC1CB8.unknown_00.Width;
+    rcSaved.Height = DAT_00AC1CB8.unknown_00.Height;
+    DAT_00887308->CopyFromPart(&rcScreen, DAT_00AC1CB8.unknown_10, &rcSaved, false, true);
+    DAT_00AC1CB8.unknown_118 = 1;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x610BF0
+// Takes the tooltip down: puts the background back if that has not happened,
+// frees it and clears the state. False when no tooltip is up.
+bool FUN_00610BF0()
+{
+    if (DAT_00AC1CB8.unknown_114 == 0)
+        return false;
+
+    if (DAT_00AC1CB8.unknown_118 != 1)
+    {
+        if (DAT_00AC1CB8.unknown_10 == 0)
+        {
+            DAT_00AC1CB8.unknown_10 = 0;
+            DAT_00AC1CB8.unknown_114 = 0;
+            DAT_00AC1CB8.unknown_118 = 0;
+            return true;
+        }
+        RectangleStruct rcScreen = DAT_00AC1CB8.unknown_00;
+        RectangleStruct rcSaved;
+        rcSaved.X = 0;
+        rcSaved.Y = 0;
+        rcSaved.Width = DAT_00AC1CB8.unknown_00.Width;
+        rcSaved.Height = DAT_00AC1CB8.unknown_00.Height;
+        DAT_00887308->CopyFromPart(&rcScreen, DAT_00AC1CB8.unknown_10, &rcSaved, false, true);
+        DAT_00AC1CB8.unknown_118 = 1;
+    }
+
+    if (DAT_00AC1CB8.unknown_10 != 0)
+        delete DAT_00AC1CB8.unknown_10;
+    DAT_00AC1CB8.unknown_10 = 0;
+    DAT_00AC1CB8.unknown_114 = 0;
+    DAT_00AC1CB8.unknown_118 = 0;
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x00612910
 void FUN_00612910()
 {
@@ -2198,6 +2291,34 @@ int FUN_00621040(Surface* pSurface, const unsigned short* pText, BitFontBounds* 
     DAT_0089C4B8->FUN_00434CD0(pFont, pSurface, pText, x, y, nWidth, nHeight, nFlags,
                                nFadeStart, nFadeLength);
     return 0;
+}
+
+// GLOBAL: GAMEMD 0x7E2AC8 -- 1.0f
+extern const float DAT_007E2AC8;
+// GLOBAL: GAMEMD 0x7EF710 / 0x7EF714 / 0x7EF718 -- 0.4f, 0.6f, 0.0625f
+extern const float DAT_007EF710;
+extern const float DAT_007EF714;
+extern const float DAT_007EF718;
+
+// FUNCTION: GAMEMD 0x621150  FUN_00621150 (__fastcall)
+// Fade factor for a position: 1.0 away from the three marks at 0x2B, 0x80 and
+// 0xD5, dipping to 0.4 on a mark and rising linearly back to 1.0 sixteen steps away.
+float FUN_00621150(int nPosition)
+{
+    float fFactor = DAT_007E2AC8;
+    int marks[3];
+    marks[0] = 0x2B;
+    marks[1] = 0x80;
+    marks[2] = 0xD5;
+    for (int i = 0; i < 3; i++)
+    {
+        int nMark = marks[i];
+        if (nPosition > nMark - 16 && nPosition <= nMark)
+            fFactor = (nMark - nPosition) * DAT_007EF714 * DAT_007EF718 + DAT_007EF710;
+        else if (nPosition > nMark && nPosition <= nMark + 16)
+            fFactor = (nPosition - nMark) * DAT_007EF714 * DAT_007EF718 + DAT_007EF710;
+    }
+    return fFactor;
 }
 
 // FUNCTION: GAMEMD 0x6213A0  FUN_006213A0 (__fastcall)

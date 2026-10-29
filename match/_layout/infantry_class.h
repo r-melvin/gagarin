@@ -36,6 +36,10 @@ public:
     // FUNCTION: GAMEMD 0x005224E0 (decl; reloc)
     // InfantryClass::FUN_005224E0
     bool FUN_005224E0();
+    // FUNCTION: GAMEMD 0x00522100 -- jumpjet type whose locomotor has the jumpjet class ID.
+    bool FUN_00522100();
+    // FUNCTION: GAMEMD 0x00522550 -- start deploying; returns the delay in frames.
+    int FUN_00522550();
     // IPersist::GetClassID (slot 3), 0x523300: copies InfantryClass's CLSID 0x7E9680.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     // IPersistStream::Save (slot 6), 0x521B00: chains FootClass::Save.
@@ -74,6 +78,9 @@ public:
     virtual CoordStruct vf_192(int a1);                            // 192 0x521D30
     virtual unsigned long DisguiseAs(AbstractClass* target);       // 283 0x522700
     virtual bool vf_81(int a1, int a2, int a3);                    // 81  0x51F190
+    virtual CoordStruct vf_44(int a1, CoordStruct a2);             // 44  0x523250
+    virtual bool vf_128();                                         // 128 0x521B60
+    virtual void vf_266();                                         // 266 0x51F330
 
     // Non-virtual members (bodies in match/combat/Infantry.cpp).
     // FUNCTION: GAMEMD 0x522510 -- true for the four SequenceAnim values 0x1B-0x1E.

@@ -60623,6 +60623,33 @@
   "pct": 100
  },
  {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774170",
+  "sym": "??1WinModemClass@@UAE@XZ",
+  "len": "0x41",
+  "name": "WinModemClass::~WinModemClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774C70",
+  "sym": "?FUN_00774C70@WinModemClass@@QAEXPBXK@Z",
+  "len": "0x54",
+  "name": "WinModemClass::FUN_00774C70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x775610",
+  "sym": "??_GWinModemClass@@UAEPAXI@Z",
+  "len": "0x55",
+  "name": "WinModemClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/dialog_window_helpers.cpp",
   "addr": "0x775BC0",
   "sym": "?ScaleChildEnumProc@@YGHPAUHWND__@@J@Z",
@@ -68005,7 +68032,7 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x4263D0",
-  "sym": "?vf_44@ObjectClass@@UAE?AUCoordStruct@@HHHH@Z",
+  "sym": "?vf_44@ObjectClass@@UAE?AUCoordStruct@@HU2@@Z",
   "len": "0x32",
   "name": "ObjectClass::vf_44",
   "status": "partial",
@@ -97793,6 +97820,15 @@
   "pct": 100.0
  },
  {
+  "tu": "match/ui/stlscore.cpp",
+  "addr": "0x6C8F10",
+  "sym": "?FUN_006C8F10@@YIXPAXHH@Z",
+  "len": "0x85",
+  "name": "FUN_006C8F10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/leaf_stub_methods_c.cpp",
   "addr": "0x6C9D20",
   "sym": "?FUN_006C9D20@Obj_006C9D20@@QAEXXZ",
@@ -101972,6 +102008,51 @@
   "pct": 100.0
  },
  {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x603FC0",
+  "sym": "?FUN_00603FC0@@YI?AVObj_007B66D0@@PAX0GG@Z",
+  "len": "0x98",
+  "name": "FUN_00603FC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x610B50",
+  "sym": "?FUN_00610B50@@YI_NXZ",
+  "len": "0x97",
+  "name": "FUN_00610B50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x610BF0",
+  "sym": "?FUN_00610BF0@@YI_NXZ",
+  "len": "0xad",
+  "name": "FUN_00610BF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x604060",
+  "sym": "?FUN_00604060@@YI?AVObj_007B66D0@@HPAX@Z",
+  "len": "0x47",
+  "name": "FUN_00604060",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x621150",
+  "sym": "?FUN_00621150@@YIMH@Z",
+  "len": "0x7e",
+  "name": "FUN_00621150",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646C90",
   "sym": "??0Obj_00646CE0@@QAE@XZ",
@@ -102968,7 +103049,7 @@
   "len": "0xe3b",
   "name": "Tactical::FUN_006D3D10",
   "status": "partial",
-  "pct": 3.3
+  "pct": 2.3
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -143427,6 +143508,33 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/r20_3_leaf_methods.cpp",
+  "addr": "0x6CA730",
+  "sym": "?FUN_006CA730@@YIXPAGPAUPacked_006C9940@@@Z",
+  "len": "0x78",
+  "name": "FUN_006CA730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r20_3_leaf_methods.cpp",
+  "addr": "0x67C690",
+  "sym": "?FUN_0067C690@@YIJPAUIStream@@@Z",
+  "len": "0x4e",
+  "name": "FUN_0067C690",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r20_3_leaf_methods.cpp",
+  "addr": "0x60D450",
+  "sym": "?FUN_0060D450@@YIXXZ",
+  "len": "0xc9",
+  "name": "FUN_0060D450",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/techno_class_r20_pips.cpp",
   "addr": "0x708C30",
   "sym": "?vf_174@TechnoClass@@UAEHXZ",
@@ -144541,5 +144649,203 @@
   "name": "AircraftClass::vf_06",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/combat/infantry_r23_methods.cpp",
+  "addr": "0x51F330",
+  "sym": "?vf_266@InfantryClass@@UAEXXZ",
+  "len": "0xa8",
+  "name": "InfantryClass::vf_266",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/infantry_r23_methods.cpp",
+  "addr": "0x521B60",
+  "sym": "?vf_128@InfantryClass@@UAE_NXZ",
+  "len": "0xaf",
+  "name": "InfantryClass::vf_128",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/infantry_r23_methods.cpp",
+  "addr": "0x522100",
+  "sym": "?FUN_00522100@InfantryClass@@QAE_NXZ",
+  "len": "0xc2",
+  "name": "InfantryClass::FUN_00522100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/infantry_r23_methods.cpp",
+  "addr": "0x523250",
+  "sym": "?vf_44@InfantryClass@@UAE?AUCoordStruct@@HU2@@Z",
+  "len": "0x9f",
+  "name": "InfantryClass::vf_44",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/infantry_r23_methods.cpp",
+  "addr": "0x522550",
+  "sym": "?FUN_00522550@InfantryClass@@QAEHXZ",
+  "len": "0xa1",
+  "name": "InfantryClass::FUN_00522550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/house_class_r23_methods.cpp",
+  "addr": "0x4FF700",
+  "sym": "?FUN_004FF700@HouseClass@@QAEXPAVTechnoClass@@@Z",
+  "len": "0x1cc",
+  "name": "HouseClass::FUN_004FF700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/init_r23_methods.cpp",
+  "addr": "0x534DE0",
+  "sym": "?FUN_00534DE0@@YI_NXZ",
+  "len": "0x6b",
+  "name": "FUN_00534DE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r23_3_undo_info_list.cpp",
+  "addr": "0x6B24A0",
+  "sym": "?FUN_006B24A0@@YIXXZ",
+  "len": "0x7a",
+  "name": "FUN_006B24A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r23_3_undo_info_list.cpp",
+  "addr": "0x6B2430",
+  "sym": "?FUN_006B2430@@YIXPBHH@Z",
+  "len": "0x6f",
+  "name": "FUN_006B2430",
+  "status": "partial",
+  "pct": 90
+ },
+ {
+  "tu": "match/core/r23_4_msg_pump.cpp",
+  "addr": "0x759200",
+  "sym": "?FUN_00759200@@YI_NXZ",
+  "len": "0x5a",
+  "name": "FUN_00759200",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r23_4_win32_leaves.cpp",
+  "addr": "0x775B50",
+  "sym": "?FUN_00775B50@@YIHIP6GHPAUHWND__@@IIJ@ZHPAJ@Z",
+  "len": "0x4e",
+  "name": "FUN_00775B50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r23_4_win32_leaves.cpp",
+  "addr": "0x7768A0",
+  "sym": "?FUN_007768A0@@YIXPAUHWND__@@@Z",
+  "len": "0x48",
+  "name": "FUN_007768A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r23_4_win32_leaves.cpp",
+  "addr": "0x776CD0",
+  "sym": "?FUN_00776CD0@@YIXPBDPAUHWND__@@PAVINIClass@@@Z",
+  "len": "0x62",
+  "name": "FUN_00776CD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r23_4_win32_leaves.cpp",
+  "addr": "0x776E10",
+  "sym": "?FUN_00776E10@@YIHPAUHWND__@@HH@Z",
+  "len": "0x54",
+  "name": "FUN_00776E10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser_ctor.cpp",
+  "addr": "0x773450",
+  "sym": "?FUN_00773450@@YIPAVWebBrowser@@PAXPBX@Z",
+  "len": "0xa9",
+  "name": "FUN_00773450 (WebBrowser factory)",
+  "status": "partial",
+  "pct": 93.2
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser_ctor.cpp",
+  "addr": "0x773500",
+  "sym": "??0WebBrowser@@QAE@XZ",
+  "len": "0x32",
+  "name": "WebBrowser::WebBrowser",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser_ctor.cpp",
+  "addr": "0x773590",
+  "sym": "?Initialise@WebBrowser@@QAE_NPAXPBX@Z",
+  "len": "0x6e",
+  "name": "WebBrowser::Initialise",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/wwmous_r23_4.cpp",
+  "addr": "0x7B86B0",
+  "sym": "?FUN_007B86B0@@YIXXZ",
+  "len": "0x74",
+  "name": "FUN_007B86B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/voxel_anim_type_class_vf13.cpp",
+  "addr": "0x74B690",
+  "sym": "?vf_13@VoxelAnimTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x139",
+  "name": "VoxelAnimTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/warhead_type_class_vf13.cpp",
+  "addr": "0x75DEC0",
+  "sym": "?vf_13@WarheadTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x1b6",
+  "name": "WarheadTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/weapon_type_class_vf13.cpp",
+  "addr": "0x772AE0",
+  "sym": "?vf_13@WeaponTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x1a9",
+  "name": "WeaponTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/r23_4_neighbour_table.cpp",
+  "addr": "0x75F140",
+  "sym": "?FUN_0075F140@Obj_0075F140@@QAEXXZ",
+  "len": "0xe2",
+  "name": "Obj_0075F140::FUN_0075F140",
+  "status": "partial",
+  "pct": 86.0
  }
 ]

@@ -16,6 +16,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/abstract_type_class.h"
+#include "../_layout/obj_004a1d30.h"
 #include "bullet_type_class.h"
 #include "../core/vector_class.h"
 
@@ -37,6 +38,7 @@ public:
     WeaponTypeClass(int unknown_arg0 = 0);
     virtual int vf_11();   // 11  0x7730E0
     virtual int vf_12();   // 12  0x7730D0
+    virtual void vf_13(Obj_004A1D30* crc);   // 13  0x772AE0
     // STATIC: GAMEMD 0x772FA0  (__fastcall)
     static WeaponTypeClass* FindOrAllocate(const char* id);
     // FUNCTION: GAMEMD 0x7729F0  (__thiscall)
@@ -72,11 +74,26 @@ public:
     int*              unknown_F8;            // +0xF8; first counted dword list saved by Save (count at +0x104)
     char              _tail_FC[0x104 - 0xFC]; // +0xFC..+0x103
     int               unknown_104;           // +0x104; entry count of the +0xF8 list
-    char              _tail_108[0x12F - 0x108]; // +0x108..+0x12E
-    unsigned char     unknown_12F;            // +0x12F; byte load at Bullet 0x46A515/0x46A985
-    char              _tail_130[0x149 - 0x130]; // +0x130..+0x148
-    unsigned char     unknown_149;            // +0x149; byte loads at Bullet 0x46A887/0x46AD3E
-    char              _tail_14A[0x150 - 0x14A]; // +0x14A..+0x14F
+    char              _tail_108[0x129 - 0x108]; // +0x108..+0x128
+    bool              unknown_129;            // +0x129
+    bool              unknown_12A;            // +0x12A
+    bool              unknown_12B;            // +0x12B
+    bool              unknown_12C;            // +0x12C
+    bool              unknown_12D;            // +0x12D
+    bool              unknown_12E;            // +0x12E
+    bool              unknown_12F;            // +0x12F; byte load at Bullet 0x46A515/0x46A985
+    bool              unknown_130;            // +0x130
+    char              _tail_131[0x145 - 0x131]; // +0x131..+0x144
+    bool              unknown_145;            // +0x145
+    bool              unknown_146;            // +0x146
+    bool              unknown_147;            // +0x147
+    bool              unknown_148;            // +0x148
+    bool              unknown_149;            // +0x149; byte loads at Bullet 0x46A887/0x46AD3E
+    char              _tail_14A[0x14C - 0x14A]; // +0x14A..+0x14B
+    bool              unknown_14C;            // +0x14C
+    bool              unknown_14D;            // +0x14D
+    unsigned char     unknown_14E;            // +0x14E
+    char              _tail_14F[0x150 - 0x14F]; // +0x14F
     bool              unknown_150;            // +0x150 (bool; read by TechnoClass slot 248 @0x70DD50)
     unsigned char     unknown_151;            // +0x151; byte loads at Bullet 0x46A8B1/0x46AD86
     char              _tail2[0x158 - 0x152];  // +0x152..+0x157
@@ -99,6 +116,12 @@ GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_DC) == 0xDC);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_E8) == 0xE8);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_F8) == 0xF8);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_104) == 0x104);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_129) == 0x129);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12E) == 0x12E);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_130) == 0x130);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_145) == 0x145);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_14C) == 0x14C);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_14E) == 0x14E);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12F) == 0x12F);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_12F) == 1);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_149) == 0x149);

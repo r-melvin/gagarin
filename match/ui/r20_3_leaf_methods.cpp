@@ -16,6 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/geometry2d.h"
 #include "../_layout/obj_0069e430.h"
+#include "../core/packed_006c9940.h"
 
 // The load screen's backdrop shape sits at +0x54 (see LoadScreenClass_00642AD0).
 struct LoadScreenShapeView_00642E00
@@ -56,6 +57,21 @@ int __fastcall FUN_006CA5A0(const wchar_t* text)
     int seconds = wcstol(secondsText, 0, 10);
     int hundredths = wcstol(colon + 1, 0, 10);
     return (unsigned int)(hundredths * 60) / 100 + (seconds + (minutes + hours * 60) * 60) * 60;
+}
+
+// FUNCTION: GAMEMD 0x6CA730
+// Parse "hours:minutes:seconds" in place and store the three numbers in the packed word.
+void __fastcall FUN_006CA730(wchar_t* text, Packed_006C9940* out)
+{
+    wchar_t* colon = wcschr(text, L':');
+    *colon = 0;
+    unsigned char hours = wcstol(text, 0, 10);
+    wchar_t* minutesText = colon + 1;
+    colon = wcschr(minutesText, L':');
+    *colon = 0;
+    unsigned char minutes = wcstol(minutesText, 0, 10);
+    unsigned char seconds = wcstol(colon + 1, 0, 10);
+    out->FUN_006C9940(hours, minutes, seconds);
 }
 
 // One of the 0x40-byte records of the table at 0xB04DAC; two frame timers and a flag.
@@ -119,5 +135,73 @@ void FUN_00660000()
         TimedRecord_00660000* record = DAT_00B04DA8.Items[i];
         if (record->Timer.GetTimeLeft() > 0 || record->Pending)
             record->FUN_00660050();
+    }
+}
+
+// GLOBAL: GAMEMD 0x7F7C90 -- IID_IUnknown.
+extern const IID DAT_007F7C90;
+
+// FUNCTION: GAMEMD 0x67C690
+// Read a count, then load that many objects from the stream, stopping at the first failure.
+HRESULT __fastcall FUN_0067C690(IStream* stream)
+{
+    int count;
+    HRESULT result = stream->Read(&count, 4, 0);
+    if (result < 0)
+        return result;
+    for (int i = 0; i < count; i++) {
+        void* object;
+        result = OleLoadFromStream(stream, DAT_007F7C90, &object);
+        if (result < 0)
+            return result;
+    }
+    return 0;
+}
+
+// GLOBAL: GAMEMD 0xAC48CC -- set once the two window classes are registered.
+extern int DAT_00AC48CC;
+// GLOBAL: GAMEMD 0xB732F0 -- the application instance.
+extern HINSTANCE DAT_00B732F0;
+
+// FUNCTION: GAMEMD 0x60D520 (decl; reloc) -- window procedure of the "NewEdit" class.
+LRESULT CALLBACK FUN_0060D520(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+// FUNCTION: GAMEMD 0x60D540 (decl; reloc) -- window procedure of the "ComboDropWin" class.
+LRESULT CALLBACK FUN_0060D540(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+
+// FUNCTION: GAMEMD 0x60D450
+// Registers the combo-box drop window class and the plain edit window class, once.
+void FUN_0060D450()
+{
+    if (DAT_00AC48CC != 1) {
+        DAT_00AC48CC = 1;
+
+        WNDCLASSA wc;
+        memset(&wc, 0, sizeof(wc));
+        wc.hInstance = DAT_00B732F0;
+        wc.style = 3;
+        wc.lpfnWndProc = FUN_0060D540;
+        wc.cbClsExtra = 0;
+        wc.cbWndExtra = 0;
+        wc.hIcon = 0;
+        wc.hCursor = 0;
+        wc.hbrBackground = 0;
+        // STRING: GAMEMD 0x8357A0 "ComboDropWin"
+        wc.lpszMenuName = "ComboDropWin";
+        wc.lpszClassName = "ComboDropWin";
+        RegisterClassA(&wc);
+
+        memset(&wc, 0, sizeof(wc));
+        wc.style = 0x83;
+        wc.lpfnWndProc = FUN_0060D520;
+        wc.cbClsExtra = 0;
+        wc.cbWndExtra = 0;
+        wc.hInstance = DAT_00B732F0;
+        wc.hIcon = 0;
+        wc.hCursor = 0;
+        wc.hbrBackground = 0;
+        wc.lpszMenuName = 0;
+        // STRING: GAMEMD 0x833720 "NewEdit"
+        wc.lpszClassName = "NewEdit";
+        RegisterClassA(&wc);
     }
 }

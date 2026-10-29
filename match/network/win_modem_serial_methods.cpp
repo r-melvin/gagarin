@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, IAT slots, string addresses and the vtable at 0x7F7488 read off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI. The class name
@@ -130,6 +131,7 @@ typedef int (*AbortFn_unknown_68)();
 class WinModemClass
 {
 public:
+// SYNTHETIC: GAMEMD 0x775610 -- the scalar deleting destructor, expanded from the body below (/Ob2).
     virtual ~WinModemClass();                                         // 0x775610
     virtual HANDLE FUN_00774410(char* device, int baud, int parity,
                                     int wordLength, int stopBits);    // 0x774410
@@ -151,6 +153,7 @@ public:
     int  FUN_00774B30(char* buffer, int length);                        // 0x774B30
     void FUN_00774BC0();                                     // 0x774BC0
     void FUN_007754D0(DWORD errors, COMSTAT status);
+    void FUN_00774C70(const void* data, DWORD length);                  // 0x774C70
 
     int          unknown_4;      // +0x0004
     int          unknown_8;           // +0x0008
@@ -193,6 +196,19 @@ GG_STATIC_ASSERT(sizeof(WinModemClass) == 0x2088);
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT string comparison.
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);
+
+// FUNCTION: GAMEMD 0x774170
+// Closes the port handle if it is open and frees the receive ring.
+WinModemClass::~WinModemClass()
+{
+    if (PortHandle != (HANDLE)-1) {
+        FUN_004068E0(STR_008497A4);
+        CloseHandle(PortHandle);
+        PortHandle = (HANDLE)-1;
+    }
+    if (unknown_24)
+        delete unknown_24;
+}
 
 // FUNCTION: GAMEMD 0x7741C0
 //
@@ -478,6 +494,22 @@ bool WinModemClass::Read_Serial_Chars()
     } while (ok == true);
 
     return total != 0;
+}
+
+// FUNCTION: GAMEMD 0x774C70
+// Queues `length` bytes on the port; a pending overlapped write is flagged, any
+// other failure is logged.
+void WinModemClass::FUN_00774C70(const void* data, DWORD length)
+{
+    DWORD written;
+    FUN_00774BC0();
+    if (!WriteFile(PortHandle, data, length, &written, &unknown_3C)) {
+        if (GetLastError() == ERROR_IO_PENDING) {
+            unknown_51 = true;
+            return;
+        }
+        FUN_004068E0(STR_00849AA4, 0);
+    }
 }
 
 // FUNCTION: GAMEMD 0x774CD0

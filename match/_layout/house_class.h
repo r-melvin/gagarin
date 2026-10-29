@@ -598,6 +598,7 @@ public:
     void DestroyAllBuildings();                                 // 0x4FC790
     void DestroyAllNonBuildingsNonNaval();                      // 0x4FC820
     void DestroyAllNonBuildingsNaval();                         // 0x4FC8D0
+    void FUN_004FF700(TechnoClass* techno);                     // 0x4FF700
     char PickedUpFlag(UnitClass* Who, unsigned long dwUnk);     // 0x4FC060
     void UpdateFlagCoords(UnitClass* NewCarrier, unsigned long dwUnk); // 0x4FBE40 (decl; reloc)
     void AcquiredThreatNode();                                  // 0x509130

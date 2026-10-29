@@ -239,7 +239,7 @@ public:
     virtual int vf_35();                                           // 35  0x708B30: the type's slot-28 value
     virtual bool vf_39();                                          // 39  0x7010D0: guarding with a live weapon
     virtual bool vf_40();                                          // 40  0x700C40
-    virtual CoordStruct vf_44(int a1, int a2, int a3, int a4);     // 44  0x6F3AD0
+    virtual CoordStruct vf_44(int a1, CoordStruct a2);     // 44  0x6F3AD0
     virtual bool vf_49();                                          // 49  0x41C010: returns Disguised
     virtual bool vf_50(HouseClass* house);                         // 50  0x41C020: returns Disguised
     virtual void vf_71();                                          // 71  0x6F4A40

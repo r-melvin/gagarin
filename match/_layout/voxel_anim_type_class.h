@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "object_type_class.h"
+#include "obj_004a1d30.h"
 
 class VoxelAnimTypeClass : public ObjectTypeClass
 {
@@ -26,24 +27,46 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6
     virtual int vf_11();                                        // 11  0x74B9F0
     virtual int vf_12();                                        // 12  0x74BA00
+    virtual void vf_13(Obj_004A1D30* crc);                      // 13  0x74B690
     virtual bool vf_32(const CellStruct* cell, HouseClass* house); // 32 0x74BA10
     virtual void* vf_35(void* house);                           // 35  0x74BA20
 
     bool unknown_294;           // +0x294
     bool unknown_295;           // +0x295
     bool unknown_296;           // +0x296
-    char unknown_297[0x2D4 - 0x297];
+    char unknown_297[0x298 - 0x297];
+    int unknown_298;            // +0x298
+    int unknown_29C;            // +0x29C
+    double unknown_2A0;         // +0x2A0
+    double unknown_2A8;         // +0x2A8
+    double unknown_2B0;         // +0x2B0
+    double unknown_2B8;         // +0x2B8
+    double unknown_2C0;         // +0x2C0
+    double unknown_2C8;         // +0x2C8
+    bool unknown_2D0;           // +0x2D0
+    char unknown_2D1[0x2D4 - 0x2D1];
     void* unknown_2D4;          // +0x2D4
-    char unknown_2D8[0x2E4 - 0x2D8];
+    int unknown_2D8;            // +0x2D8
+    int unknown_2DC;            // +0x2DC
+    int unknown_2E0;            // +0x2E0
     void* unknown_2E4;          // +0x2E4
     void* unknown_2E8;          // +0x2E8
     void* unknown_2EC;          // +0x2EC
-    char unknown_2F0[0x2F8 - 0x2F0];
+    int unknown_2F0;            // +0x2F0
+    int unknown_2F4;            // +0x2F4
     void* unknown_2F8;          // +0x2F8
     void* unknown_2FC;          // +0x2FC
-    char unknown_300[0x308 - 0x300];
+    bool unknown_300;           // +0x300
+    char unknown_301[0x308 - 0x301];
 };
 GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_296) == 0x296);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_298) == 0x298);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2A0) == 0x2A0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2C8) == 0x2C8);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2D0) == 0x2D0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2E0) == 0x2E0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2F4) == 0x2F4);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_300) == 0x300);
 GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2D4) == 0x2D4);
 GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2E4) == 0x2E4);
 GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2F8) == 0x2F8);

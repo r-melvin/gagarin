@@ -52,6 +52,20 @@ extern "C" __declspec(dllimport) GG_HWND __stdcall GetDlgItem(GG_HWND hDlg, int 
 // 0x7CA564: the CRT swprintf (cdecl, varargs).
 extern "C" int __cdecl swprintf(wchar_t* pszBuffer, const wchar_t* pszFormat, ...);
 
+// Formats a number of seconds as hours, minutes and seconds and posts the text to a
+// dialog control (custom message 0x4B2).
+// FUNCTION: GAMEMD 0x006C8F10
+void __fastcall FUN_006C8F10(GG_HWND dialog, int controlId, int seconds)
+{
+    wchar_t text[32];
+    int minutes = seconds / 60;
+    int hours = minutes / 60;
+    // STRING: GAMEMD 0x842158 L"%02d:%02d:%02d"
+    swprintf(text, L"%02d:%02d:%02d", hours, minutes - hours * 60, seconds - minutes * 60);
+    GG_HWND item = GetDlgItem(dialog, controlId);
+    SendMessageA(item, 0x4B2, 0, (long)text);
+}
+
 // Formats a number as text and posts it to a dialog control (custom message 0x4B2).
 // FUNCTION: GAMEMD 0x006C8FA0
 void FUN_006C8FA0(GG_HWND dialog, int controlId, int value)
