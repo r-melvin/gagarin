@@ -24,6 +24,15 @@ using WorldDominationTour::Conflict;
 
 typedef rc_ptr<Conflict> ConflictPtr;
 
+// FUNCTION: GAMEMD 0x764F30
+// Releases the +0x48 string, the conflict list, then the history and
+// properties handles, and the ReferenceCounted destructor.
+WorldDominationTour::Campaign::~Campaign()
+{
+}
+
+// SYNTHETIC: GAMEMD 0x765600 -- WorldDominationTour::Campaign::`scalar deleting destructor'
+
 // FUNCTION: GAMEMD 0x7656B0
 // DynamicVectorClass<rc_ptr<Conflict> >::Slot5
 // FUNCTION: GAMEMD 0x7656D0

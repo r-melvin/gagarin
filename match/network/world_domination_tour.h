@@ -63,6 +63,28 @@ public:
 GG_STATIC_ASSERT(offsetof(History, State) == 0x08);
 GG_STATIC_ASSERT(sizeof(History) == 0x10);
 
+// VTABLE: GAMEMD 0x7F6F3C
+// 0x4C bytes: operator new(0x4C) at 0x764B55 (factory 0x764B30). The
+// destructor 0x764F30 releases the +0x48 string, the conflict list, then the
+// history and properties handles.
+class CampaignProperties;
+class Campaign : public ReferenceCounted
+{
+public:
+    Campaign(unsigned int first, const rc_ptr_base& source);   // 0x764B90
+    ~Campaign();   // 0x764F30
+    rc_ptr<CampaignProperties> Properties;                // +0x08
+    rc_ptr<History> Hist;                                 // +0x10
+    DynamicVectorClass<rc_ptr<Conflict> > Conflicts;      // +0x18
+    char unknown_30[0x18];                                // +0x30
+    Member_7B46F0 Member_48;                              // +0x48
+};
+GG_STATIC_ASSERT(offsetof(Campaign, Properties) == 0x08);
+GG_STATIC_ASSERT(offsetof(Campaign, Hist) == 0x10);
+GG_STATIC_ASSERT(offsetof(Campaign, Conflicts) == 0x18);
+GG_STATIC_ASSERT(offsetof(Campaign, Member_48) == 0x48);
+GG_STATIC_ASSERT(sizeof(Campaign) == 0x4C);
+
 // VTABLE: GAMEMD 0x7F7314
 class State : public ReferenceCounted
 {

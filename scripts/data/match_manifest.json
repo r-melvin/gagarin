@@ -74729,6 +74729,15 @@
   "pct": 100
  },
  {
+  "tu": "match/network/WDTGameOptions.cpp",
+  "addr": "0x767460",
+  "sym": "?FUN_00767460@@YI?AV?$rc_ptr@VFlagGameOption@WorldDominationTour@@@@IVMember_7B46F0@@H0H@Z",
+  "len": "0x78",
+  "name": "FUN_00767460 (rc_ptr<FlagGameOption> factory)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/network/wdt_net.cpp",
   "addr": "0x76AAB0",
   "sym": "?FUN_0076AAB0@@YI?AV?$rc_ptr@VWDTTerritory@@@@XZ",
@@ -98162,6 +98171,24 @@
   "sym": "??0Conflict@WorldDominationTour@@QAE@ABV?$rc_ptr@VWDTTerritory@@@@@Z",
   "len": "0x3d",
   "name": "WorldDominationTour::Conflict::Conflict",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x764F30",
+  "sym": "??1Campaign@WorldDominationTour@@UAE@XZ",
+  "len": "0x67",
+  "name": "WorldDominationTour::Campaign::~Campaign",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x765600",
+  "sym": "??_GCampaign@WorldDominationTour@@UAEPAXI@Z",
+  "len": "0x7b",
+  "name": "WorldDominationTour::Campaign::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -143824,6 +143851,15 @@
   "sym": "??0State@WorldDominationTour@@QAE@ABV?$rc_ptr@VWDTState@@@@I@Z",
   "len": "0x5F",
   "name": "WorldDominationTour::State::State(const rc_ptr<WDTState>&, unsigned int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_state_unit.cpp",
+  "addr": "0x76F470",
+  "sym": "?FUN_0076F470@@YI?AV?$rc_ptr@VState@WorldDominationTour@@@@ABV?$rc_ptr@VWDTState@@@@H@Z",
+  "len": "0x8b",
+  "name": "FUN_0076F470 (rc_ptr<State> factory)",
   "status": "matched",
   "pct": 100
  },

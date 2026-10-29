@@ -12,6 +12,15 @@
 
 #include "world_domination_tour.h"
 
+// FUNCTION: GAMEMD 0x76F470
+// The factory for a State over `state` positioned on row `index`, returned in
+// a handle (hidden result pointer in ECX, the source in EDX); the constructor
+// below is expanded into it.
+rc_ptr<WorldDominationTour::State> FUN_0076F470(const rc_ptr<WDTState>& state, int index)
+{
+    return rc_ptr<WorldDominationTour::State>(new WorldDominationTour::State(state, index));
+}
+
 // FUNCTION: GAMEMD 0x76F500
 // The factory for a default State, returned in a handle (hidden result
 // pointer in ECX).

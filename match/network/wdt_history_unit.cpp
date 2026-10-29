@@ -30,7 +30,7 @@ extern TuningCoordInit DAT_00B72870;
 
 // ---- History ---------------------------------------------------------------------------------------------------------
 
-// FUNCTION: GAMEMD 0x76F470 (decl; reloc) -- the State factory, same shape as 0x767B00.
+// The State factory (0x76F470, defined in wdt_state_unit.cpp), same shape as 0x767B00.
 rc_ptr<WorldDominationTour::State> FUN_0076F470(const rc_ptr<WDTState>& state, int arg);
 
 // FUNCTION: GAMEMD 0x767B00

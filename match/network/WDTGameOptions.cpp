@@ -128,6 +128,14 @@ int Obj_00767400::FUN_00767440(unsigned int value) const
     return vf_14(value) == 4 ? 2 : 0;
 }
 
+// FUNCTION: GAMEMD 0x767460
+// Wraps a new FlagGameOption; the result is the hidden first argument.
+rc_ptr<FlagGameOption> FUN_00767460(unsigned int flags, Member_7B46F0 name18, int when_clear,
+                                    Member_7B46F0 name14, int when_set)
+{
+    return rc_ptr<FlagGameOption>(new FlagGameOption(flags, name18, when_clear, name14, when_set));
+}
+
 // FUNCTION: GAMEMD 0x7674E0
 int FlagGameOption::vf_0C(const rc_ptr<Obj_007674E0>& subject) const
 {
