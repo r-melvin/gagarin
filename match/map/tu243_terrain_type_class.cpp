@@ -75,6 +75,28 @@ extern double DAT_00B0F140;
 // GLOBAL: GAMEMD 0x00B0EDB8
 extern double DAT_00B0EDB8;
 
+// SYNTHETIC: GAMEMD 0x71D580 -- static initialiser of the foundation lists: constructs the eight listed rows in
+// place and default-constructs the rest
+// GLOBAL: GAMEMD 0xB0EDC0
+// The terrain foundation cell lists: ten cells per list, the listed offsets and the 0x7FFF end marker first.
+FoundationCell TerrainFoundationTable[22][10] = {
+    { FoundationCell(0, 0), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(0, 1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0, 1), FoundationCell(1, 1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0, 1), FoundationCell(1, 1),
+      FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0, 1),
+      FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0, 1),
+      FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(0, 2), FoundationCell(1, 2),
+      FoundationCell(2, 2), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(3, 0),
+      FoundationCell(0, 1), FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(3, 1),
+      FoundationCell(0x7FFF, 0x7FFF) }
+};
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71DA80
 // MATCHED (second look): the array append is the same inlined expansion the OverlayTypeClass

@@ -12,15 +12,14 @@
 #define GG_MATCH_LAYOUT_CELL_OFFSET_H
 
 #include "../_rt/gg_static_assert.h"
+#include "cell.h"
 #include <stddef.h>
 
-// The coordinate pair as retail's constructor chain sees it: two words, built
-// from ints, zero by default.
-struct CellWords
+// The coordinate pair as retail's constructor chain sees it: a CellStruct built
+// from ints, left untouched by default.
+struct CellWords : CellStruct
 {
-    short X;   // +0x00
-    short Y;   // +0x02
-    CellWords() { X = 0; Y = 0; }
+    CellWords() {}
     CellWords(int x, int y) { X = x; Y = y; }
 };
 
@@ -29,11 +28,23 @@ struct CellWords
 class CellOffset : public CellWords
 {
 public:
-    CellOffset() {}
+    CellOffset() { X = 0; Y = 0; }
     CellOffset(short x, short y) : CellWords(x, y) {}
 };
 GG_STATIC_ASSERT(sizeof(CellOffset) == 4);
 GG_STATIC_ASSERT(offsetof(CellOffset, X) == 0);
 GG_STATIC_ASSERT(offsetof(CellOffset, Y) == 2);
+
+// An element of the building and terrain foundation lists. The same (short, short)
+// constructor (the linker folds the two copies into 0x42D470), but the default
+// constructor is the empty one at 0x465D80, which the array initialisers call
+// through the vector-constructor iterator for the unlisted tail of each list.
+class FoundationCell : public CellWords
+{
+public:
+    FoundationCell() {}
+    FoundationCell(short x, short y) : CellWords(x, y) {}
+};
+GG_STATIC_ASSERT(sizeof(FoundationCell) == 4);
 
 #endif  // GG_MATCH_LAYOUT_CELL_OFFSET_H

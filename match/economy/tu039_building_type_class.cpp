@@ -99,32 +99,6 @@ template class DynamicVectorClass<DirtyAreaStruct>;
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_0045B1B0;
-struct Obj_0045C2F0;
-struct Obj_00465D80;
-
-struct Obj_0045B1B0
-{
-    // FUNCTION: GAMEMD 0x45B1B0
-    void FUN_0045B1B0();
-    // FUNCTION: GAMEMD 0x45B1C0
-    void FUN_0045B1C0();
-};
-
-struct Obj_0045C2F0
-{
-    // FUNCTION: GAMEMD 0x45C2F0
-    void FUN_0045C2F0();
-    // FUNCTION: GAMEMD 0x45C300
-    void FUN_0045C300();
-};
-
-struct Obj_00465D80
-{
-    // FUNCTION: GAMEMD 0x465D80
-    Obj_00465D80* FUN_00465D80();
-};
-
 
 void __cdecl FUN_0045EC80();
 
@@ -243,21 +217,170 @@ double DAT_0089D360 = DAT_0089C8B8 / DAT_007E4530;
 // GLOBAL: GAMEMD 0x89C8F8
 double DAT_0089C8F8 = DAT_007E1718 / DAT_0089D360;
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x45B1B0
-// Tail-forwards to another function.
-void Obj_0045B1B0::FUN_0045B1B0()
-{
-    FUN_0045B1C0();
-}
+// SYNTHETIC: GAMEMD 0x45B1B0 -- initialiser entry: tail-jumps to the table build
+// SYNTHETIC: GAMEMD 0x45B1C0 -- table build: constructs the 22 foundation lists in place
+// SYNTHETIC: GAMEMD 0x465D80 -- FoundationCell's empty default constructor, out of line for the vector-constructor calls
+// GLOBAL: GAMEMD 0x89C900
+// The foundation cell lists: 22 lists of 30 cells, each the listed offsets, the 0x7FFF end marker and
+// default-constructed cells after it.
+FoundationCell TypesFoundationCells[22][30] = {
+    { FoundationCell(0, 0), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(0, 1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0, 1), FoundationCell(1, 1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0, 1), FoundationCell(1, 1),
+      FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0, 1),
+      FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0, 1),
+      FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(0, 2), FoundationCell(1, 2),
+      FoundationCell(2, 2), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0, 1),
+      FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(0, 2), FoundationCell(1, 2),
+      FoundationCell(2, 2), FoundationCell(0, 3), FoundationCell(1, 3), FoundationCell(2, 3),
+      FoundationCell(0, 4), FoundationCell(1, 4), FoundationCell(2, 4), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(3, 0),
+      FoundationCell(0, 1), FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(3, 1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0, 1),
+      FoundationCell(1, 1), FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(2, 2),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(0, 1), FoundationCell(0, 2), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(3, 0),
+      FoundationCell(0, 1), FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(3, 1),
+      FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(2, 2), FoundationCell(3, 2),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(0, 1), FoundationCell(0, 2), FoundationCell(0, 3),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(0, 1), FoundationCell(0, 2), FoundationCell(0, 3),
+      FoundationCell(0, 4), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0, 1), FoundationCell(1, 1),
+      FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(0, 3), FoundationCell(1, 3),
+      FoundationCell(0, 4), FoundationCell(1, 4), FoundationCell(0, 5), FoundationCell(1, 5),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(0, 1), FoundationCell(1, 1),
+      FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(0, 3), FoundationCell(1, 3),
+      FoundationCell(0, 4), FoundationCell(1, 4), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(3, 0),
+      FoundationCell(4, 0), FoundationCell(0, 1), FoundationCell(1, 1), FoundationCell(2, 1),
+      FoundationCell(3, 1), FoundationCell(4, 1), FoundationCell(0, 2), FoundationCell(1, 2),
+      FoundationCell(2, 2), FoundationCell(3, 2), FoundationCell(4, 2), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(3, 0),
+      FoundationCell(0, 1), FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(3, 1),
+      FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(2, 2), FoundationCell(3, 2),
+      FoundationCell(0, 3), FoundationCell(1, 3), FoundationCell(2, 3), FoundationCell(3, 3),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(0, 1),
+      FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(0, 2), FoundationCell(1, 2),
+      FoundationCell(2, 2), FoundationCell(0, 3), FoundationCell(1, 3), FoundationCell(2, 3),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(1, 0), FoundationCell(2, 0), FoundationCell(3, 0),
+      FoundationCell(4, 0), FoundationCell(5, 0), FoundationCell(0, 1), FoundationCell(1, 1),
+      FoundationCell(2, 1), FoundationCell(3, 1), FoundationCell(4, 1), FoundationCell(5, 1),
+      FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(2, 2), FoundationCell(3, 2),
+      FoundationCell(4, 2), FoundationCell(5, 2), FoundationCell(0, 3), FoundationCell(1, 3),
+      FoundationCell(2, 3), FoundationCell(3, 3), FoundationCell(4, 3), FoundationCell(5, 3),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0x7FFF, 0x7FFF) }
+};
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x45C2F0
-// Tail-forwards to another function.
-void Obj_0045C2F0::FUN_0045C2F0()
-{
-    FUN_0045C300();
-}
+// SYNTHETIC: GAMEMD 0x45C2F0 -- initialiser entry: tail-jumps to the table build
+// SYNTHETIC: GAMEMD 0x45C300 -- table build: constructs the 22 outside lists in place
+// GLOBAL: GAMEMD 0x89D368
+// The cells just outside each foundation, in the same list layout.
+FoundationCell TypesFoundationOutsideCells[22][30] = {
+    { FoundationCell(0, 1), FoundationCell(-1, 1), FoundationCell(1, 1), FoundationCell(-1, 0),
+      FoundationCell(1, 0), FoundationCell(0, -1), FoundationCell(-1, -1), FoundationCell(1, -1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 1), FoundationCell(1, 1), FoundationCell(-1, 1), FoundationCell(2, 1),
+      FoundationCell(-1, 0), FoundationCell(2, 0), FoundationCell(0, -1), FoundationCell(1, -1),
+      FoundationCell(-1, -1), FoundationCell(2, -1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(-1, 2), FoundationCell(-1, 1),
+      FoundationCell(1, 1), FoundationCell(-1, 0), FoundationCell(1, 0), FoundationCell(0, -1),
+      FoundationCell(-1, -1), FoundationCell(1, -1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(-1, 2), FoundationCell(2, 2),
+      FoundationCell(-1, 1), FoundationCell(2, 1), FoundationCell(-1, 0), FoundationCell(2, 0),
+      FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(-1, -1), FoundationCell(2, -1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 3), FoundationCell(1, 3), FoundationCell(-1, 3), FoundationCell(2, 3),
+      FoundationCell(-1, 2), FoundationCell(2, 2), FoundationCell(-1, 1), FoundationCell(2, 1),
+      FoundationCell(-1, 0), FoundationCell(2, 0), FoundationCell(0, -1), FoundationCell(1, -1),
+      FoundationCell(-1, -1), FoundationCell(2, -1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(2, 2), FoundationCell(-1, 2),
+      FoundationCell(3, 2), FoundationCell(-1, 1), FoundationCell(3, 1), FoundationCell(-1, 0),
+      FoundationCell(3, 0), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(2, -1),
+      FoundationCell(-1, -1), FoundationCell(3, -1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 3), FoundationCell(1, 3), FoundationCell(2, 3), FoundationCell(-1, 3),
+      FoundationCell(3, 3), FoundationCell(-1, 2), FoundationCell(3, 2), FoundationCell(-1, 1),
+      FoundationCell(3, 1), FoundationCell(-1, 0), FoundationCell(3, 0), FoundationCell(0, -1),
+      FoundationCell(1, -1), FoundationCell(2, -1), FoundationCell(-1, -1), FoundationCell(3, -1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(2, -1),
+      FoundationCell(3, -1), FoundationCell(-1, 0), FoundationCell(3, 0), FoundationCell(-1, 1),
+      FoundationCell(3, 1), FoundationCell(-1, 2), FoundationCell(3, 2), FoundationCell(-1, 3),
+      FoundationCell(3, 3), FoundationCell(-1, 4), FoundationCell(3, 4), FoundationCell(-1, 5),
+      FoundationCell(0, 5), FoundationCell(1, 5), FoundationCell(2, 5), FoundationCell(3, 5),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 2), FoundationCell(1, 2), FoundationCell(2, 2), FoundationCell(3, 2),
+      FoundationCell(-1, 2), FoundationCell(4, 2), FoundationCell(-1, 1), FoundationCell(4, 1),
+      FoundationCell(-1, 0), FoundationCell(4, 0), FoundationCell(0, -1), FoundationCell(1, -1),
+      FoundationCell(2, -1), FoundationCell(3, -1), FoundationCell(-1, -1), FoundationCell(4, -1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 0), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(-1, 0),
+      FoundationCell(1, 0), FoundationCell(-1, 1), FoundationCell(1, 1), FoundationCell(-1, 2),
+      FoundationCell(1, 2), FoundationCell(-1, 3), FoundationCell(0, 3), FoundationCell(1, 3),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(2, -1),
+      FoundationCell(3, -1), FoundationCell(-1, 0), FoundationCell(3, 0), FoundationCell(-1, 1),
+      FoundationCell(0, 1), FoundationCell(1, 1), FoundationCell(2, 1), FoundationCell(3, 1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 3), FoundationCell(1, 3), FoundationCell(2, 3), FoundationCell(-1, 3),
+      FoundationCell(3, 3), FoundationCell(-1, 2), FoundationCell(3, 2), FoundationCell(-1, 1),
+      FoundationCell(3, 1), FoundationCell(-1, 0), FoundationCell(3, 0), FoundationCell(0, -1),
+      FoundationCell(1, -1), FoundationCell(2, -1), FoundationCell(-1, -1), FoundationCell(3, -1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(-1, 0),
+      FoundationCell(1, 0), FoundationCell(-1, 1), FoundationCell(1, 1), FoundationCell(-1, 2),
+      FoundationCell(1, 2), FoundationCell(-1, 3), FoundationCell(1, 3), FoundationCell(-1, 4),
+      FoundationCell(0, 4), FoundationCell(1, 4), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(-1, 0),
+      FoundationCell(1, 0), FoundationCell(-1, 1), FoundationCell(1, 1), FoundationCell(-1, 2),
+      FoundationCell(1, 2), FoundationCell(-1, 3), FoundationCell(1, 3), FoundationCell(-1, 4),
+      FoundationCell(1, 4), FoundationCell(-1, 5), FoundationCell(0, 5), FoundationCell(1, 5),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(2, -1),
+      FoundationCell(-1, 0), FoundationCell(2, 0), FoundationCell(-1, 1), FoundationCell(2, 1),
+      FoundationCell(-1, 2), FoundationCell(2, 2), FoundationCell(-1, 3), FoundationCell(2, 3),
+      FoundationCell(-1, 5), FoundationCell(2, 5), FoundationCell(-1, 6), FoundationCell(0, 6),
+      FoundationCell(1, 6), FoundationCell(2, 6), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(2, -1),
+      FoundationCell(-1, 0), FoundationCell(2, 0), FoundationCell(-1, 1), FoundationCell(2, 1),
+      FoundationCell(-1, 2), FoundationCell(2, 2), FoundationCell(-1, 3), FoundationCell(2, 3),
+      FoundationCell(-1, 5), FoundationCell(0, 5), FoundationCell(1, 5), FoundationCell(2, 5),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(2, -1),
+      FoundationCell(3, -1), FoundationCell(4, -1), FoundationCell(5, -1), FoundationCell(-1, 0),
+      FoundationCell(5, 0), FoundationCell(-1, 1), FoundationCell(5, 1), FoundationCell(-1, 2),
+      FoundationCell(5, 2), FoundationCell(-1, 3), FoundationCell(0, 3), FoundationCell(1, 3),
+      FoundationCell(2, 3), FoundationCell(3, 3), FoundationCell(4, 3), FoundationCell(5, 3),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(-1, -1), FoundationCell(0, -1), FoundationCell(1, -1), FoundationCell(2, -1),
+      FoundationCell(3, -1), FoundationCell(4, -1), FoundationCell(-1, 4), FoundationCell(0, 4),
+      FoundationCell(1, 4), FoundationCell(2, 4), FoundationCell(3, 4), FoundationCell(4, 4),
+      FoundationCell(-1, 0), FoundationCell(-1, 1), FoundationCell(-1, 2), FoundationCell(-1, 3),
+      FoundationCell(-1, 4), FoundationCell(4, 0), FoundationCell(4, 1), FoundationCell(4, 2),
+      FoundationCell(4, 3), FoundationCell(4, 4), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0, 4), FoundationCell(1, 4), FoundationCell(2, 4), FoundationCell(-1, 4),
+      FoundationCell(3, 4), FoundationCell(-1, 2), FoundationCell(3, 2), FoundationCell(-1, 1),
+      FoundationCell(3, 1), FoundationCell(-1, 0), FoundationCell(3, 0), FoundationCell(0, -1),
+      FoundationCell(1, -1), FoundationCell(2, -1), FoundationCell(-1, -1), FoundationCell(3, -1),
+      FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(2, -1), FoundationCell(0x7FFF, 0x7FFF) },
+    { FoundationCell(0x7FFF, 0x7FFF) }
+};
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45DD50
@@ -1102,7 +1225,7 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
             pointDefault = TypesMakePoint(0, 0);
             QueueingCell = TypesArtIni.ReadPoint(ImageFile, "QueueingCell", pointDefault);
         }
-        FoundationData = TypesFoundationCells[Foundation].cells;
+        FoundationData = TypesFoundationCells[Foundation];
         FoundationOutside = &TypesFoundationOutsideCells[Foundation];
         {
             TypesArtIni.ReadString(ImageFile, "Buildup", TypesEmptyText, animName, 0x10);
@@ -1410,7 +1533,7 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
 
     LoadFixup();
     PostLoad();
-    FoundationData = TypesFoundationCells[Foundation].cells;
+    FoundationData = TypesFoundationCells[Foundation];
     FoundationOutside = &TypesFoundationOutsideCells[Foundation];
     ToTile = 0;
     DAT_00B0C110.SwizzleManagerClass::vf_4(&ToOverlay);
@@ -1637,14 +1760,6 @@ bool __cdecl FUN_00465D30()
 int Obj_00465D00::FUN_00465D70() const
 {
     return unknown_EDC;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x465D80
-// Returns its receiver.
-Obj_00465D80* Obj_00465D80::FUN_00465D80()
-{
-    return this;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -9,6 +9,7 @@
 #include "../../_layout/obj_0069e430.h"
 #include "../../_layout/geometry2d.h"
 #include "../../_layout/cell.h"
+#include "../../_layout/cell_offset.h"
 
 // The map object (global 0x87F7E8; read-only here). The floor-height lookup ignores its `this`.
 class TypesMapView
@@ -44,14 +45,9 @@ extern HBCoord TypesZeroCoord;
 extern TypesQuad TypesZeroQuad;
 
 // GLOBAL: GAMEMD 0x89C900 / 0x89D368 - the per-foundation cell lists (0x78 bytes each, 22 entries) the
-// foundation slot and the outside list point into after a load.
-struct TypesFoundationEntry
-{
-    CellStruct cells[0x1E];
-};
-GG_STATIC_ASSERT(sizeof(TypesFoundationEntry) == 0x78);
-extern TypesFoundationEntry TypesFoundationCells[22];
-extern TypesFoundationEntry TypesFoundationOutsideCells[22];
+// foundation slot and the outside list point into after a load. Defined in tu039_building_type_class.cpp.
+extern FoundationCell TypesFoundationCells[22][30];
+extern FoundationCell TypesFoundationOutsideCells[22][30];
 
 #include "../foundation_dimensions.h"
 // GLOBAL: GAMEMD 0x89DDB8 - the height of one level in leptons.

@@ -13,6 +13,7 @@
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
 #include "../../_layout/cell.h"
+#include "../../_layout/cell_offset.h"
 #include "../../core/frame_counter.h"
 #include "../../core/abstract_index_cast_sweep.h"
 #include "../../_layout/vector_class.h"
@@ -136,7 +137,7 @@ inline void TerrainIndexView::AddIndexInline(const int& id, void* const& data)
 extern CellStruct TerrainDefaultCell;
 
 // GLOBAL: GAMEMD 0xB0EDC0 - the foundation cell lists, 0x28 bytes (ten cells) per entry.
-extern CellStruct TerrainFoundationTable[][10];
+extern FoundationCell TerrainFoundationTable[22][10];
 
 // GLOBAL: GAMEMD 0x87F6BC - the context handed to the shape drawer.
 extern void* TerrainDrawContext;

@@ -83035,20 +83035,20 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45B1B0",
-  "sym": "?FUN_0045B1B0@Obj_0045B1B0@@QAEXXZ",
+  "sym": "_$E30",
   "len": "0x5",
-  "name": "Obj_0045B1B0::FUN_0045B1B0",
+  "name": "initialiser entry (TypesFoundationCells)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45C2F0",
-  "sym": "?FUN_0045C2F0@Obj_0045C2F0@@QAEXXZ",
+  "sym": "_$E55",
   "len": "0x5",
-  "name": "Obj_0045C2F0::FUN_0045C2F0",
+  "name": "initialiser entry (TypesFoundationOutsideCells)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
@@ -83062,11 +83062,11 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465D80",
-  "sym": "?FUN_00465D80@Obj_00465D80@@QAEPAU1@XZ",
+  "sym": "??0FoundationCell@@QAE@XZ",
   "len": "0x3",
-  "name": "Obj_00465D80::FUN_00465D80",
+  "name": "FoundationCell::FoundationCell",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu040_methods.cpp",
@@ -87598,9 +87598,9 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71DE90",
-  "sym": "_$E3",
+  "sym": "_$E13",
   "len": "0x1",
-  "name": "_$E9",
+  "name": "atexit cleanup",
   "status": "matched",
   "pct": 100.0
  },
@@ -87621,6 +87621,15 @@
   "name": "TerrainTypeClass::~TerrainTypeClass",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/map/tu243_terrain_type_class.cpp",
+  "addr": "0x71D580",
+  "sym": "_$E10",
+  "len": "0x4fd",
+  "name": "static initialiser (TerrainFoundationTable)",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu244_methods.cpp",
@@ -101147,6 +101156,24 @@
   "name": "dynamic initializer (DAT_0089C8F8)",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/economy/tu039_building_type_class.cpp",
+  "addr": "0x45B1C0",
+  "sym": "_$E7",
+  "len": "0x1125",
+  "name": "static initialiser (TypesFoundationCells)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/tu039_building_type_class.cpp",
+  "addr": "0x45C300",
+  "sym": "_$E32",
+  "len": "0x1a14",
+  "name": "static initialiser (TypesFoundationOutsideCells)",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu044_capture_manager_class.cpp",
@@ -146532,5 +146559,23 @@
   "name": "InfantryClass::vf_50",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/map/cell_offset_tables_00579320.cpp",
+  "addr": "0x579320",
+  "sym": "_$E2",
+  "len": "0x2fa",
+  "name": "static initialiser (DAT_00ABDDA8)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/cell_offset_tables_00579320.cpp",
+  "addr": "0x57A9C0",
+  "sym": "_$E5",
+  "len": "0x329",
+  "name": "static initialiser (DAT_00ABDB68)",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
