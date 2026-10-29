@@ -189,6 +189,34 @@ int InfantryClass::vf_243(int a1, int a2)
     return result;
 }
 
+// FUNCTION: GAMEMD 0x51F190
+// PARTIAL: 95.6% - retail's jump table also spans labels 1/5/0x10/0x1A that share the join block
+// (range 1..0x39); VC6 drops empty labels so the compiled table starts at 9 (2 instructions differ).
+// Re-derives the action the target would get (vf_29): the 0x1C/0x1D kinds fold into 9 and
+// 0x1B/0x39 into 5. An infantryman never takes action 5 on itself and does nothing while
+// berzerk; otherwise the folded action is handed to FootClass.
+bool InfantryClass::vf_81(int a1, int a2, int a3)
+{
+    int action = this->vf_29(a2, a3);
+    switch (action) {
+    case 9:
+    case 0x1C:
+    case 0x1D:
+        action = 9;
+        break;
+    case 0x1B:
+    case 0x39:
+        action = 5;
+    }
+    if (a2 == (int)this && action == 5) {
+        return false;
+    }
+    if (this->Berzerk) {
+        return false;
+    }
+    return FootClass::vf_81(action, a2, a3);
+}
+
 // FUNCTION: GAMEMD 0x51F250
 // PARTIAL: 87.5% - ebx/edi hold a2/a4 swapped (6 instructions differ, same multiset).
 // Refuses while berzerk, or while in a 0x1B-0x1E sequence when vf_28 reports 2; otherwise defers to FootClass.

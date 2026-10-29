@@ -42,6 +42,8 @@ public:
     VersionClass();
     // Declaration: GAMEMD 0x74FAE0 -- returns this+0xC; RET0.
     char* FUN_0074FAE0();
+    // FUNCTION: GAMEMD 0x74FA20 -- read the version text file once, then answer the minor version.
+    unsigned short FUN_0074FA20();
 };
 GG_STATIC_ASSERT(offsetof(VersionClass, Version)      == 0x04);
 GG_STATIC_ASSERT(offsetof(VersionClass, MajorVersion) == 0x08);

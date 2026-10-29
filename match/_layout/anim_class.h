@@ -58,6 +58,15 @@ public:
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     virtual void vf_122();                                         // 122 0x423930
     virtual void vf_123();                                         // 123 0x425510
+    virtual void vf_10(void* a1, bool a2);
+    virtual void vf_62();
+    // FUNCTION: GAMEMD 0x4260F0 (non-virtual) -- whether the cell can take this animation.
+    bool FUN_004260F0(CellStruct* cell);
+    // FUNCTION: GAMEMD 0x424B50 (decl; reloc) -- AnimClass::SetOwnerObject, defined on a view in anim_class_owner_methods.cpp.
+    void FUN_00424B50(void* owner);
+    virtual void vf_13(Obj_004A1D30* crc);
+    virtual void vf_60(CoordStruct* a1);
+    virtual void vf_61(CoordStruct* a1);
     // FUNCTION: GAMEMD 0x425260 (decl; reloc) -- no stack arguments; BuildingClass 0x452480
     // calls it on each Powered building animation when the building powers down.
     void FUN_00425260();
@@ -98,17 +107,17 @@ public:
     double          Accum;                 // +0x188 (8) ctor stores 0 @0x00421FA4 and 0x3FF00000
                                            //   @0x00421FC8 — the double 1.0
     unsigned int    AnimFlags;             // +0x190 BlitterFlags; ctor MOV [ESI+0x190],EDX(=arg flags) @0x00421FD2
-    unsigned char   HasExtras;             // +0x194 ctor @0x00421FD8
+    bool            HasExtras;             // +0x194 ctor @0x00421FD8
     unsigned char   RemainingIterations;   // +0x195 ctor MOV byte [ESI+0x195],1 @0x00421FDE
-    unsigned char   UseCellLightConvert;   // +0x196 ctor @0x00421FE5
-    unsigned char   DeleteOnMapCleanup;    // +0x197 ctor @0x00421FEB
+    bool            UseCellLightConvert;   // +0x196 ctor @0x00421FE5
+    bool            DeleteOnMapCleanup;    // +0x197 ctor @0x00421FEB
     unsigned char   IsInert;               // +0x198 ctor @0x00421FF1
     unsigned char   IsFogged;              // +0x199 ctor @0x00421FF7
     unsigned char   FlamingGuyExpire;      // +0x19A ctor @0x00421FFD
-    unsigned char   UnableToContinue;      // +0x19B ctor @0x00422003
-    unsigned char   SkipProcessOnce;       // +0x19C ctor MOV byte [ESI+0x19C],1 @0x00422009
+    bool            UnableToContinue;      // +0x19B ctor @0x00422003
+    bool            SkipProcessOnce;       // +0x19C ctor MOV byte [ESI+0x19C],1 @0x00422009
     unsigned char   Invisible;             // +0x19D ctor @0x00422010
-    unsigned char   PowerOff;              // +0x19E ctor @0x00422016
+    bool            PowerOff;              // +0x19E ctor @0x00422016
     unsigned char   unused_19F;            // +0x19F (PROTECTED_PROPERTY)
     AudioController StartSoundAudioController; // +0x1A0 (0x14) ctor LEA ECX,[ESI+0x1A0];
                                                //   CALL 0x00405BE0 @0x00422042

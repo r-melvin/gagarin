@@ -23,16 +23,27 @@ struct Pair3 {
 };
 
 struct Obj_006599C0 {
-    char unknown_00[0x24];
+    char unknown_00[0x18];
+    double Step;      // +0x18 length of one step
+    char unknown_20[4];
     Pair3 From;       // +0x24
     Pair3 To;         // +0x30
     char unknown_3C[0x20];
     Pair3 Delta;      // +0x5C
     double Length;    // +0x68
+    Pair3 Direction;  // +0x70
+    char unknown_7C[0x10];
+    int Steps;        // +0x8C
     // FUNCTION: GAMEMD 0x6599C0
     // Recomputes the delta between the two points and its length.
     void FUN_006599C0();
+    // FUNCTION: GAMEMD 0x659E30
+    // Recomputes the delta and its length, then the whole steps it spans and the per-step direction.
+    void FUN_00659E30();
 };
+GG_STATIC_ASSERT(offsetof(Obj_006599C0, Step) == 0x18);
+GG_STATIC_ASSERT(offsetof(Obj_006599C0, Direction) == 0x70);
+GG_STATIC_ASSERT(offsetof(Obj_006599C0, Steps) == 0x8C);
 GG_STATIC_ASSERT(offsetof(Obj_006599C0, From) == 0x24);
 GG_STATIC_ASSERT(offsetof(Obj_006599C0, To) == 0x30);
 GG_STATIC_ASSERT(offsetof(Obj_006599C0, Delta) == 0x5C);
@@ -46,6 +57,25 @@ void Obj_006599C0::FUN_006599C0()
 {
     Delta = To - From;
     Length = FUN_004CAC40((double)(Delta.A * Delta.A + Delta.B * Delta.B + Delta.C * Delta.C));
+}
+
+// FUNCTION: GAMEMD 0x659E30
+void Obj_006599C0::FUN_00659E30()
+{
+    Delta = To - From;
+    Length = FUN_004CAC40((double)(Delta.A * Delta.A + Delta.B * Delta.B + Delta.C * Delta.C));
+    int steps = (int)(Length / Step);
+    Pair3 direction;
+    direction.A = Delta.A;
+    direction.B = Delta.B;
+    direction.C = Delta.C;
+    Steps = steps;
+    if (steps != 0) {
+        direction.A /= steps;
+        direction.B /= steps;
+        direction.C /= steps;
+    }
+    Direction = direction;
 }
 
 struct Item16 {

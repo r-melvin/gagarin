@@ -10,6 +10,8 @@
 #include "index_class_layout.h"
 class Wstring;
 class FileClass;
+class Straw;
+class Pipe;
 struct IniIntQuad;
 struct IniIntTriple;
 struct IniFloatTriple;
@@ -97,6 +99,10 @@ public:
     bool WriteIntQuad(const char* section, const char* key, const IniIntQuad& value);
     bool WriteIntTriple(const char* section, const char* key, const IniIntTriple& value);
     bool WriteFloatTriple(const char* section, const char* key, const IniFloatTriple& value);
+    // GAMEMD 0x525A60 / 0x526470: load from a straw / save into a pipe; 0x526420 saves through a file pipe.
+    int LoadStraw(Straw* straw, unsigned long options);
+    int SavePipe(Pipe* pipe);
+    int FUN_00526420(FileClass* file);
     void* unknown_04;
     void* unknown_08;
     // RTTI table 0x7E1AFC; explicit inherited vptr view is retained.

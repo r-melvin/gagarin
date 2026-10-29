@@ -151,6 +151,33 @@ static inline bool ShipIsEmpty(const LocoCoord& c)
     return c.X == DAT_00B077F8.X && c.Y == DAT_00B077F8.Y && c.Z == DAT_00B077F8.Z;
 }
 
+// FUNCTION: GAMEMD 0x6A3DB0
+// Place a track-local point in the world: the point is mirrored or swapped as the current
+// track's flag bits ask (turning the facing the same way), then offset by the head-to coordinate.
+LocoPoint2D ShipLocomotionClass::FUN_006A3DB0(const LocoPoint2D* point, int* facing)
+{
+    int dir = *facing;
+    unsigned int flags = ShipTrackEntries_007F2A40[TrackNumber].unknown_8;
+    int x = point->X;
+    int y = point->Y;
+    if (flags & 1) {
+        int t = x;
+        x = y;
+        y = t;
+        dir = (-dir - 0x40) & 0xFF;
+    }
+    if (flags & 2) {
+        x = -x;
+        dir = -dir & 0xFF;
+    }
+    if (flags & 4) {
+        y = -y;
+        dir = (-dir - 0x80) & 0xFF;
+    }
+    *facing = dir;
+    return LocoPoint2D(HeadTo.X + x, HeadTo.Y + y);
+}
+
 // FUNCTION: GAMEMD 0x6A3EC0
 bool ShipLocomotionClass::FUN_006A3EC0()
 {

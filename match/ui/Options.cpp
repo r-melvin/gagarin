@@ -18,6 +18,7 @@
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
+#include <windows.h>
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7EF378
@@ -87,6 +88,106 @@ int GameOptionsClass::GetAnimSpeed(int rate)
 int Obj_005FBF70::FUN_005FBF70() const
 {
     return unknown_0C;
+}
+
+// A selectable entry of the intro-movie and score option tables: the key it is stored
+// under, the label of its display text, and a third word.
+struct OptionEntry_005FBF80
+{
+    const char* Name;       // +0x00 zero ends a table
+    const char* Label;      // +0x04
+    int unknown_08;         // +0x08
+};
+GG_STATIC_ASSERT(sizeof(OptionEntry_005FBF80) == 0xC);
+
+// GLOBAL: GAMEMD 0x832C20 -- the intro-movie entry.
+extern OptionEntry_005FBF80 DAT_00832C20;
+// GLOBAL: GAMEMD 0x832CA0 -- the soviet campaign movie entries.
+extern OptionEntry_005FBF80 DAT_00832CA0[];
+// GLOBAL: GAMEMD 0x832C30 -- the allied campaign movie entries.
+extern OptionEntry_005FBF80 DAT_00832C30[];
+
+// The movie-pick state: the furthest entry unlocked in each campaign table.
+struct Obj_005FBF80
+{
+    char unknown_00[0x4C];
+    int unknown_4C;         // +0x4C last soviet entry unlocked
+    int unknown_50;         // +0x50 last allied entry unlocked
+    // FUNCTION: GAMEMD 0x5FBF80
+    void FUN_005FBF80(const char* name);
+    // FUNCTION: GAMEMD 0x5FC000
+    void FUN_005FC000(HWND list);
+};
+GG_STATIC_ASSERT(offsetof(Obj_005FBF80, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(Obj_005FBF80, unknown_50) == 0x50);
+
+// LIBRARY: GAMEMD 0x7C8D20 -- _stricmp.
+extern "C" int __cdecl _stricmp(const char* a, const char* b);
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- the localised text of a label.
+const wchar_t* __fastcall FUN_00734E60(const char* label, int flags, const char* file, int line);
+
+// The index of the entry stored under a key, or -1 when the table has none.
+static int FindOptionEntry(const OptionEntry_005FBF80* table, const char* name)
+{
+    int index = 0;
+    for (const OptionEntry_005FBF80* entry = table; entry->Name != 0; entry++, index++) {
+        if (_stricmp(name, entry->Name) == 0) {
+            return index;
+        }
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x5FBF80
+// Note a movie as unlocked: find its key in each campaign table and keep the larger index.
+void Obj_005FBF80::FUN_005FBF80(const char* name)
+{
+    int index = FindOptionEntry(DAT_00832CA0, name);
+    if (index > unknown_4C) {
+        unknown_4C = index;
+    }
+    index = FindOptionEntry(DAT_00832C30, name);
+    if (index > unknown_50) {
+        unknown_50 = index;
+    }
+}
+
+// GLOBAL: GAMEMD 0x833370 -- "D:\\ra2mdpost\\Options.CPP", the build path handed to the label lookup.
+extern const char DAT_00833370[];
+
+// Add the entry's display text to the list, with the entry itself as its item data.
+static void AddOptionEntry(HWND list, OptionEntry_005FBF80* entry)
+{
+    const wchar_t* text = FUN_00734E60(entry->Label, 0, DAT_00833370, 0x4F1);
+    unsigned int item = SendMessageA(list, 0x4CD, 0, (LPARAM)text);
+    if (item != 0xFFFFFFFF) {
+        SendMessageA(list, 0x19A, item, (LPARAM)entry);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5FC000
+// Fill the movie list: the intro movie, then each campaign table up to the furthest entry unlocked.
+void Obj_005FBF80::FUN_005FC000(HWND list)
+{
+    if (DAT_00832C20.Name != 0 && DAT_00832C20.Label != 0) {
+        AddOptionEntry(list, &DAT_00832C20);
+    }
+    if (unknown_4C >= 0) {
+        OptionEntry_005FBF80* entry = DAT_00832CA0;
+        for (int count = unknown_4C + 1; entry->Name != 0 && count > 0; count--, entry++) {
+            if (entry->Name != 0 && entry->Label != 0) {
+                AddOptionEntry(list, entry);
+            }
+        }
+    }
+    if (unknown_50 >= 0) {
+        OptionEntry_005FBF80* entry = DAT_00832C30;
+        for (int count = unknown_50 + 1; entry->Name != 0 && count > 0; count--, entry++) {
+            if (entry->Name != 0 && entry->Label != 0) {
+                AddOptionEntry(list, entry);
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- debug log (format, args...).

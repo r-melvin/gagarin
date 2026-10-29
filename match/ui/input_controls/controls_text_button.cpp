@@ -7,6 +7,23 @@
 #include "controls_views.h"
 
 
+// FUNCTION: GAMEMD 0x71FF20
+// Build a text button at a position and size; a size of -1 in either direction is taken from the
+// text measured in the button's font.
+TextButtonClass::TextButtonClass(int id, const wchar_t* text, int printFlags, int x, int y, int w, int h,
+                                 bool outline, bool hidden) : ToggleClass(id, x, y, w, h), HasOutline(outline), unknown_35(hidden), Text(text), unknown_3C(printFlags)
+{
+    if (w == -1 || h == -1) {
+        Font* font = FUN_004A60D0(unknown_3C);
+        if (w == -1) {
+            Width = font->TextWidth(Text, 0) + 8;
+        }
+        if (h == -1) {
+            Height = font->Height + 2;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x71FFE0
 int TextButtonClass::Draw(int forced)
 {

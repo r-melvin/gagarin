@@ -3,7 +3,7 @@
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. Small and medium bodies
 //   from the 0x54E000-0x6ABD00 range; receivers are placeholder views of the members touched.
 //
-// Address index: 0x558860 0x5E70D0 0x631300 0x642BB0 0x660BE0 0x6A76F0 0x696590 0x696740 0x696950 0x6966D0 0x6ABAD0 0x6ACBC0 0x6ACC20
+// Address index: 0x558860 0x5E70D0 0x631300 0x642BB0 0x660BE0 0x6A76F0 0x696590 0x696610 0x696740 0x696950 0x6966D0 0x6ABAD0 0x6ACBC0 0x6ACC20
 
 #include <stddef.h>
 #include <windows.h>
@@ -282,6 +282,8 @@ struct Dlg_006966D0
     int Selection;          // +0x9C
     // FUNCTION: GAMEMD 0x696590
     void FUN_00696590();
+    // FUNCTION: GAMEMD 0x696610
+    void FUN_00696610();
     // FUNCTION: GAMEMD 0x6966D0
     void FUN_006966D0();
     // FUNCTION: GAMEMD 0x696740
@@ -310,6 +312,33 @@ int __fastcall FUN_00776E10(HWND list, int start, int data);
 extern int* DAT_00A8DB68;
 // GLOBAL: GAMEMD 0x889F64 -- the empty string.
 extern char DAT_00889F64[];
+
+// GLOBAL: GAMEMD 0xA8DB50 -- the item data of the entries the list offers.
+extern int* DAT_00A8DB50;
+// GLOBAL: GAMEMD 0xA8DB5C -- how many entries.
+extern int DAT_00A8DB5C;
+
+// FUNCTION: GAMEMD 0x696610
+// Refill the list control (id 0x65E) from the global entries, then keep the remembered
+// selection when it is still in range and otherwise reset it.
+void Dlg_006966D0::FUN_00696610()
+{
+    HWND list = GetDlgItem(Window, 0x65E);
+    if (list) {
+        SendMessageA(list, 0x184, 0, 0);
+        for (int i = 0; i < DAT_00A8DB5C; i++) {
+            SendMessageA(list, 0x4C8, 0, DAT_00A8DB50[i]);
+        }
+        if (SendMessageA(list, 0x18B, 0, 0) == 0 || unknown_98 < -1) {
+            unknown_98 = -1;
+        } else if (unknown_98 >= SendMessageA(list, 0x18B, 0, 0)) {
+            unknown_98 = 0;
+        }
+        if (unknown_98 != -1) {
+            SendMessageA(list, 0x186, unknown_98, 0);
+        }
+    }
+}
 
 // FUNCTION: GAMEMD 0x6966D0
 // Set the two radio buttons (0x65C, 0x65B) from the mode selector: 0 selects the first, anything else the second.

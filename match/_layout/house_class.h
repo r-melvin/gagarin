@@ -616,6 +616,16 @@ public:
     double GetStoragePercentage();                              // 0x4F6E70
     // FUNCTION: GAMEMD 0x5095D0 (decl; reloc) -- how many live teams of this type the house fields.
     int FUN_005095D0(TeamTypeClass* type);
+    // FUNCTION: GAMEMD 0x509EC0 -- fires the given super weapon at the preferred defensive cell.
+    void FUN_00509EC0(SuperClass* super);
+    // FUNCTION: GAMEMD 0x5092F0 -- marks the radar visible to `house` and refreshes the map for the local player.
+    void FUN_005092F0(HouseClass* house);
+    // FUNCTION: GAMEMD 0x50E010 -- a powering centre is back; the first one reactivates the technos of `type`.
+    void FUN_0050E010(TechnoTypeClass* type);
+    // FUNCTION: GAMEMD 0x50E280 -- reactivates every on-map techno of this house whose type is `type`.
+    void FUN_0050E280(TechnoTypeClass* type);
+    // FUNCTION: GAMEMD 0x4F9370 -- updates every super weapon; the local player is told when one became ready.
+    void FUN_004F9370();
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

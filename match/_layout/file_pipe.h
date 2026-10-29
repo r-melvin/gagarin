@@ -21,6 +21,9 @@ public:
     // destructor; its body calls the ordinary destructor at 0x7BA420.
     virtual ~FilePipe();
 
+    // Inline construction as built on the stack at 0x526420.
+    FilePipe(FileClass* file) : File(file), HasOpened(0) {}
+
     // Slot +0x08; returns the inherited slot +0x04 result after optional
     // file cleanup.
     // FUNCTION: GAMEMD 0x7BA450

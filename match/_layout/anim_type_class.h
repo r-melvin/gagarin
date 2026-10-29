@@ -26,7 +26,8 @@ class OverlayTypeClass;
 // as an exact-size byte block so downstream offsets stay byte-exact.
 struct RandomStruct
 {
-    unsigned char _raw[8];   // +0x00..0x07
+    int Min;   // +0x00
+    int Max;   // +0x04
 };
 
 GG_STATIC_ASSERT(sizeof(RandomStruct) == 8);
@@ -40,6 +41,8 @@ public:
     AnimTypeClass(const char* id) throw();
     // The class factory's construction (TClassFactory<AnimTypeClass>): the same constructor with a default argument.
     AnimTypeClass(int unknown_arg0 = 0);
+    // FUNCTION: GAMEMD 0x428EA0 -- scalar deleting form (slot 8).
+    virtual ~AnimTypeClass();
     // Overrides of the slots ObjectTypeClass / AbstractClass leave pure (slots 3, 6, 11, 12, 32, 35).
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
@@ -47,6 +50,7 @@ public:
     virtual int vf_12();
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);
     virtual void* vf_35(void* house);
+    virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x4289D0
     // FUNCTION: GAMEMD 0x428B80 (decl; reloc), ECX=name, EAX=type pointer.
     static AnimTypeClass* FindOrAllocate(const char* id);
     // Slot 40, introduced by AnimTypeClass (41 slots in all; retail table 0x7E3608).

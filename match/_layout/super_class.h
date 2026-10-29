@@ -63,6 +63,8 @@ public:
     void Reset();
     // FUNCTION: GAMEMD 0x6CE1A0
     bool ShouldFlashTab() const;
+    // FUNCTION: GAMEMD 0x6CBCA0 (decl; reloc) -- per-frame update of the super weapon; true when it just became ready.
+    bool FUN_006CBCA0(bool isPlayer);
     // The stream loader's in-place construction: the base only (retail 0x410170).
     struct LoadTag {};
     SuperClass(LoadTag) {}

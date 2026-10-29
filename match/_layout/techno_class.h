@@ -228,6 +228,8 @@ public:
     void FUN_00705E00(SHPStruct* shape, int frame, Point2D* point, RectangleStruct* clip,
                       int a5, int a6, int zAdjust, int a8, int a9, int zSort, int tint,
                       int a12, int a13, int a14, int a15, int a16);
+    // FUNCTION: GAMEMD 0x70FBE0 (decl; reloc) -- brings a deactivated object back.
+    void Reactivate();
 
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40
@@ -529,7 +531,7 @@ public:
     int                CurrentBurstIndex;        // +0x3B8
     CDTimerClass       TargetLaserTimer;         // +0x3BC (0xC)
     short              unknown_short_3C8;        // +0x3C8
-    unsigned short     unknown_3CA;              // +0x3CA
+    short              unknown_3CA;              // +0x3CA
     unsigned char      CountedAsOwned;           // +0x3CC (bool)
     unsigned char      IsSinking;                // +0x3CD (bool)
     unsigned char      WasSinkingAlready;        // +0x3CE (bool)
@@ -624,6 +626,10 @@ public:
     int FUN_0070DD20();
     // FUNCTION: GAMEMD 0x710590 -- smallest weapon range over the passenger list.
     int FUN_00710590();
+    // FUNCTION: GAMEMD 0x707750 -- pull the +0x3CA angle word back by facing octant (two stack arguments).
+    void FUN_00707750(int a, DirStruct d);
+    // FUNCTION: GAMEMD 0x707D20 -- the crew value for a crewed object (rules table by owner side).
+    int FUN_00707D20();
 
     // Consolidated from the per-TU views (ODR); addresses beside each.
     int  GetInvulnerabilityTintIntensity(int currentIntensity) const;  // 0x70E380 (referenced)

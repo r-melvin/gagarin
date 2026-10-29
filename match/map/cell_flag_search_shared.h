@@ -23,6 +23,11 @@ public:
     // level-adjusted test. __thiscall, two stack arguments, RET 8.
     bool FUN_00578460(const CellStruct* cell, bool useLevel);
 
+    // FUNCTION: GAMEMD 0x578640
+    // The same test against a cell-space rectangle (X, Y, Width, Height as ints) in place of the
+    // whole map. __thiscall, three stack arguments, RET 0xC.
+    bool FUN_00578640(const int* rect, const CellStruct* cell, bool useLevel);
+
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
     // The cell object at a coordinate. __thiscall, one stack argument, RET 4.
     CellClass* FUN_005657A0(const CellStruct* cell);

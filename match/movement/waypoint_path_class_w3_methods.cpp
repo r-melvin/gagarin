@@ -4,7 +4,7 @@
 //   WaypointPathClass construction, destruction and stream loading, read off retail
 //   gamemd.exe v1.001 (vtable 0x7F6E70). /Ob2: the scalar deleting destructor carries the
 //   destructor body inline. The layout is movement/waypoint_path_class_methods.h.
-//   Address index: 0x7637D0 no-init ctor, 0x763810 ctor, 0x7638C0 dtor, 0x763C70 Load, 0x763E20 deleting dtor.
+//   Address index: 0x763730 default ctor, 0x7637D0 no-init ctor, 0x763810 ctor, 0x7638C0 dtor, 0x763C70 Load, 0x763E20 deleting dtor.
 
 #include <new.h>
 #include "waypoint_path_class_methods.h"
@@ -43,6 +43,14 @@ static inline bool WaypointAdd(DynamicVectorClass<WaypointClass>* vector, const 
     int index = vector->Count++;
     vector->Items[index] = item;
     return true;
+}
+
+// FUNCTION: GAMEMD 0x763730
+// A path made without an index is always registered.
+WaypointPathClass::WaypointPathClass()
+    : CurrentWaypointIndex(-1)
+{
+    PathRegistryAdd(&DAT_00B72608, this);
 }
 
 // FUNCTION: GAMEMD 0x7637D0

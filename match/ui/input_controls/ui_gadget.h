@@ -105,6 +105,8 @@ public:
     int            unknown_3C;     // +0x3C
 
     TextButtonClass();   // 0x71FFB0: ToggleClass(0, 0, 0, 0, 0), then text cleared and mode 2
+    TextButtonClass(int id, const wchar_t* text, int printFlags, int x, int y, int w, int h,
+                    bool outline, bool hidden);   // 0x71FF20
 };
 GG_STATIC_ASSERT(offsetof(TextButtonClass, HasOutline) == 0x34);
 GG_STATIC_ASSERT(offsetof(TextButtonClass, unknown_35) == 0x35);

@@ -95,6 +95,7 @@ public:
     virtual int vf_139();                              // 139 0x740A90
     int FUN_007438B0();                                // 0x7438B0
     void FUN_00740E60();                               // 0x740E60
+    bool FUN_00736C10();                               // 0x736C10: crash-lands a unit that has left the map
     // Slots 341-343, introduced by UnitClass (344 slots in all; retail table 0x7F5C70).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     // Each pops 0x20 or 0x24 bytes, so some of those words are by-value structures.

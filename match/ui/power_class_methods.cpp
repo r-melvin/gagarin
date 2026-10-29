@@ -17,6 +17,8 @@
 
 #include "input_controls/ui_display_chain.h"
 #include "../_layout/house_class.h"
+#include "../_layout/building_class.h"
+#include "../_layout/building_type_class_layout.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
 extern HouseClass* CurrentPlayer;

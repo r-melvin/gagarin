@@ -57,6 +57,8 @@ public:
     int              FUN_00544BE0(int idx);
     bool             FUN_00544C80();
     int              FUN_00549A60(int idx);
+    // Round 21 addition (GAMEMD 0x547150).
+    bool             FUN_00547150(int idx, int* outA, int* outB);
     // Round 19 additions (GAMEMD 0x544C20, 0x544CE0).
     bool             FUN_00544C20(int idx, bool load);
     static int       FUN_00544CE0(const char* name);

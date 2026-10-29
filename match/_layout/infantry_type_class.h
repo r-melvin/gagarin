@@ -44,6 +44,8 @@ public:
     virtual int vf_45();
     // IPersist::GetClassID (slot 3), 0x524C70; body in core/persist_class_id_methods.cpp.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    // FUNCTION: GAMEMD 0x523C90 -- index of the infantry type with the given ID, -1 for none.
+    static int FUN_00523C90(const char* name);
     int             ArrayIndex;          // +0xDF8
     int             Pip;                 // +0xDFC (PipIndex enum)
     int             OccupyPip;           // +0xE00 (PipIndex enum)

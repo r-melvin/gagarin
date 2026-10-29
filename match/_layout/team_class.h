@@ -46,7 +46,9 @@ public:
     char            _pad_7C[0x7F - 0x7C];
     bool            Flag7F;              // +0x7F
     bool            Done;                // +0x80
-    char            _pad_81[0xA0 - 0x81];
+    char            _pad_81;
+    bool            Flag82;              // +0x82
+    char            _pad_83[0xA0 - 0x83];
 
     // GAMEMD 0x6E9050 -- clears/assigns the team's mission target.
     void AssignMissionTarget(AbstractClass* pTarget);
@@ -89,6 +91,7 @@ GG_STATIC_ASSERT(offsetof(TeamClass, Flag7A)   == 0x7A);
 GG_STATIC_ASSERT(offsetof(TeamClass, Flag7B)   == 0x7B);
 GG_STATIC_ASSERT(offsetof(TeamClass, Flag7F)   == 0x7F);
 GG_STATIC_ASSERT(offsetof(TeamClass, Done)     == 0x80);
+GG_STATIC_ASSERT(offsetof(TeamClass, Flag82)    == 0x82);
 GG_STATIC_ASSERT(sizeof(TeamClass)             == 0xA0);
 #endif
 

@@ -29712,6 +29712,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/progress_screen_class.cpp",
+  "addr": "0x642A60",
+  "sym": "?Setup@ProgressScreenClass@@QAEXHHDH@Z",
+  "len": "0x6e",
+  "name": "ProgressScreenClass::Setup",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/Radar.cpp",
   "addr": "0x653F50",
   "sym": "?vf_28@RadarClass@@UAEXPAURectangleStruct@@HHH@Z",
@@ -59116,6 +59125,15 @@
   "sym": "?SetPrintFlags@TextButtonClass@@UAEXH@Z",
   "len": "0xA",
   "name": "TextButtonClass::SetPrintFlags",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_button.cpp",
+  "addr": "0x71FF20",
+  "sym": "??0TextButtonClass@@QAE@HPBGHHHHH_N1@Z",
+  "len": "0x88",
+  "name": "TextButtonClass::TextButtonClass",
   "status": "matched",
   "pct": 100
  },
@@ -90301,6 +90319,24 @@
   "pct": 100
  },
  {
+  "tu": "match/network/NullDlg.cpp",
+  "addr": "0x5EFF70",
+  "sym": "?FUN_005EFF70@@YIXPAUHWND__@@@Z",
+  "len": "0x9e",
+  "name": "FUN_005EFF70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/NullDlg.cpp",
+  "addr": "0x5EFF00",
+  "sym": "?FUN_005EFF00@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x69",
+  "name": "FUN_005EFF00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1400",
   "sym": "_$E2",
@@ -90382,6 +90418,24 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/Options.cpp",
+  "addr": "0x5FBF80",
+  "sym": "?FUN_005FBF80@Obj_005FBF80@@QAEXPBD@Z",
+  "len": "0x7d",
+  "name": "Obj_005FBF80::FUN_005FBF80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/Options.cpp",
+  "addr": "0x5FC000",
+  "sym": "?FUN_005FC000@Obj_005FBF80@@QAEXPAUHWND__@@@Z",
+  "len": "0x11f",
+  "name": "Obj_005FBF80::FUN_005FC000",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600370",
   "sym": "_$E3",
@@ -90432,6 +90486,33 @@
   "sym": "_$E8",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00AC4B10)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/PhoneEd.cpp",
+  "addr": "0x630B90",
+  "sym": "?FUN_00630B90@PhoneEditDialog_00630B90@@QAE_NXZ",
+  "len": "0x7d",
+  "name": "PhoneEditDialog_00630B90::FUN_00630B90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/PhoneEd.cpp",
+  "addr": "0x6316E0",
+  "sym": "?FUN_006316E0@PhoneBookDialog_006316E0@@QAE_NPAUPhoneEntry_00631B20@@@Z",
+  "len": "0x7f",
+  "name": "PhoneBookDialog_006316E0::FUN_006316E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/PhoneEd.cpp",
+  "addr": "0x631B20",
+  "sym": "?FUN_00631B20@PhoneBookDialog_006316E0@@QAEXXZ",
+  "len": "0xe1",
+  "name": "PhoneBookDialog_006316E0::FUN_00631B20",
   "status": "matched",
   "pct": 100
  },
@@ -90553,6 +90634,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/Restate.cpp",
+  "addr": "0x65F710",
+  "sym": "?FUN_0065F710@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x88",
+  "name": "FUN_0065F710",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x6830A0",
   "sym": "_$E4",
@@ -90657,6 +90747,15 @@
   "sym": "_$E8",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00B057A8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/SerialEd.cpp",
+  "addr": "0x6956D0",
+  "sym": "?FUN_006956D0@SerialEdDialog_006956D0@@QAE_NPAUSerialSettings_006956D0@@@Z",
+  "len": "0x88",
+  "name": "SerialEdDialog_006956D0::FUN_006956D0",
   "status": "matched",
   "pct": 100
  },
@@ -96641,6 +96740,15 @@
   "pct": 100
  },
  {
+  "tu": "match/combat/Infantry.cpp",
+  "addr": "0x51F190",
+  "sym": "?vf_81@InfantryClass@@UAE_NHHH@Z",
+  "len": "0x6a",
+  "name": "InfantryClass::vf_81",
+  "status": "partial",
+  "pct": 95
+ },
+ {
   "tu": "match/platform/Ini.cpp",
   "addr": "0x5247D0",
   "sym": "?FUN_005247D0@Obj_005247D0@@QAE?AUTriple_005247D0@@PBU2@@Z",
@@ -100834,6 +100942,15 @@
   "sym": "??_GShipLocomotionClass@@UAEPAXI@Z",
   "len": "0x41",
   "name": "ShipLocomotionClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A3DB0",
+  "sym": "?FUN_006A3DB0@ShipLocomotionClass@@QAE?AULocoPoint2D@@PBU2@PAH@Z",
+  "len": "0x7c",
+  "name": "ShipLocomotionClass::FUN_006A3DB0",
   "status": "matched",
   "pct": 100
  },
@@ -134085,6 +134202,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/power_class_unlit_methods.cpp",
+  "addr": "0x63F850",
+  "sym": "?FUN_0063F850@PowerClass@@QAEHXZ",
+  "len": "0x95",
+  "name": "PowerClass::FUN_0063F850",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/radar_class_more_methods.cpp",
   "addr": "0x652E50",
   "sym": "?FUN_00652E50@RadarClass@@QAEX_N@Z",
@@ -135548,6 +135674,15 @@
   "sym": "?Load@WaypointPathClass@@UAGJPAUIStream@@@Z",
   "len": "0x114",
   "name": "WaypointPathClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "addr": "0x763730",
+  "sym": "??0WaypointPathClass@@QAE@XZ",
+  "len": "0x9f",
+  "name": "WaypointPathClass::WaypointPathClass",
   "status": "matched",
   "pct": 100
  },
@@ -139476,6 +139611,15 @@
   "pct": 91.1
  },
  {
+  "tu": "match/core/w2_leaf_r13.cpp",
+  "addr": "0x659E30",
+  "sym": "?FUN_00659E30@Obj_006599C0@@QAEXXZ",
+  "len": "0xa2",
+  "name": "Obj_006599C0::FUN_00659E30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/w2_vector_r13.cpp",
   "addr": "0x58AFF0",
   "sym": "??0?$VectorClass@U?$HashObject@II@@@@QAE@HPAU?$HashObject@II@@@Z",
@@ -141326,6 +141470,15 @@
   "sym": "?FUN_006ACC20@@YIPBGH@Z",
   "len": "0x72",
   "name": "Localised name of a computer-player difficulty",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x696610",
+  "sym": "?FUN_00696610@Dlg_006966D0@@QAEXXZ",
+  "len": "0xb5",
+  "name": "Dlg_006966D0::FUN_00696610",
   "status": "matched",
   "pct": 100
  },
@@ -143243,6 +143396,465 @@
   "sym": "??0State@WorldDominationTour@@QAE@ABV?$rc_ptr@VWDTState@@@@I@Z",
   "len": "0x5F",
   "name": "WorldDominationTour::State::State(const rc_ptr<WDTState>&, unsigned int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_class_r21_methods.cpp",
+  "addr": "0x425150",
+  "sym": "?vf_10@AnimClass@@UAEXPAX_N@Z",
+  "len": "0x97",
+  "name": "AnimClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_class_r21_methods.cpp",
+  "addr": "0x425410",
+  "sym": "?vf_13@AnimClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0xfc",
+  "name": "AnimClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_class_r21_methods.cpp",
+  "addr": "0x4255B0",
+  "sym": "?vf_62@AnimClass@@UAEXXZ",
+  "len": "0x79",
+  "name": "AnimClass::vf_62",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_class_r21_methods.cpp",
+  "addr": "0x4260F0",
+  "sym": "?FUN_004260F0@AnimClass@@QAE_NPAUCellStruct@@@Z",
+  "len": "0xd5",
+  "name": "AnimClass::FUN_004260F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_class_r21_methods.cpp",
+  "addr": "0x4261D0",
+  "sym": "?FUN_004261D0@@YAXXZ",
+  "len": "0xa0",
+  "name": "FUN_004261D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_class_r21_methods.cpp",
+  "addr": "0x426270",
+  "sym": "?vf_60@AnimClass@@UAEXPAUCoordStruct@@@Z",
+  "len": "0x8f",
+  "name": "AnimClass::vf_60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_class_r21_methods.cpp",
+  "addr": "0x426300",
+  "sym": "?vf_61@AnimClass@@UAEXPAUCoordStruct@@@Z",
+  "len": "0x89",
+  "name": "AnimClass::vf_61",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_type_class_r21_methods.cpp",
+  "addr": "0x4289D0",
+  "sym": "?vf_13@AnimTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x1a2",
+  "name": "AnimTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/anim_type_class_r21_methods.cpp",
+  "addr": "0x428EA0",
+  "sym": "??_GAnimTypeClass@@UAEPAXI@Z",
+  "len": "0xcf",
+  "name": "AnimTypeClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "addr": "0x4DBDA0",
+  "sym": "?IsCloakable@FootClass@@UAE_NXZ",
+  "len": "0x4f",
+  "name": "FootClass::IsCloakable",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "addr": "0x4DE580",
+  "sym": "?vf_205@FootClass@@UAEXXZ",
+  "len": "0x4b",
+  "name": "FootClass::vf_205",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "addr": "0x4DE5D0",
+  "sym": "?vf_62@FootClass@@UAEXXZ",
+  "len": "0x42",
+  "name": "FootClass::vf_62",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "addr": "0x4DF1F0",
+  "sym": "?vf_302@FootClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x8c",
+  "name": "FootClass::vf_302",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_stream_wrappers.cpp",
+  "addr": "0x525A10",
+  "sym": "?FUN_00525A10@INIClass@@QAEHPAVFileClass@@K@Z",
+  "len": "0x4b",
+  "name": "INIClass::FUN_00525A10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_class_stream_wrappers.cpp",
+  "addr": "0x526420",
+  "sym": "?FUN_00526420@INIClass@@QAEHPAVFileClass@@@Z",
+  "len": "0x46",
+  "name": "INIClass::FUN_00526420",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_r21_w2.cpp",
+  "addr": "0x52CB50",
+  "sym": "?FUN_0052CB50@@YIXXZ",
+  "len": "0x2c",
+  "name": "FUN_0052CB50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_r21_w2.cpp",
+  "addr": "0x50B920",
+  "sym": "?FUN_0050B920@@YIXPAN00@Z",
+  "len": "0xdb",
+  "name": "FUN_0050B920",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_r21_w2.cpp",
+  "addr": "0x52FF90",
+  "sym": "?FUN_0052FF90@@YIXPBD_N@Z",
+  "len": "0x3b",
+  "name": "FUN_0052FF90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_r21_w2.cpp",
+  "addr": "0x52FFD0",
+  "sym": "?FUN_0052FFD0@@YIX_N@Z",
+  "len": "0x25",
+  "name": "FUN_0052FFD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_r21_w2.cpp",
+  "addr": "0x532100",
+  "sym": "?FUN_00532100@@YIX_N@Z",
+  "len": "0x2d",
+  "name": "FUN_00532100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_r21_w2.cpp",
+  "addr": "0x53F5F0",
+  "sym": "?FUN_0053F5F0@@YIXH@Z",
+  "len": "0x33",
+  "name": "FUN_0053F5F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_defensive_cell_methods.cpp",
+  "addr": "0x509EC0",
+  "sym": "?FUN_00509EC0@HouseClass@@QAEXPAVSuperClass@@@Z",
+  "len": "0x9f",
+  "name": "HouseClass::FUN_00509EC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_radar_visible_methods.cpp",
+  "addr": "0x5092F0",
+  "sym": "?FUN_005092F0@HouseClass@@QAEXPAV1@@Z",
+  "len": "0xc1",
+  "name": "HouseClass::FUN_005092F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_powered_center_back_methods.cpp",
+  "addr": "0x50E010",
+  "sym": "?FUN_0050E010@HouseClass@@QAEXPAVTechnoTypeClass@@@Z",
+  "len": "0xcb",
+  "name": "HouseClass::FUN_0050E010",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_powered_center_back_methods.cpp",
+  "addr": "0x50E280",
+  "sym": "?FUN_0050E280@HouseClass@@QAEXPAVTechnoTypeClass@@@Z",
+  "len": "0xb3",
+  "name": "HouseClass::FUN_0050E280",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_base_center_coord_methods.cpp",
+  "addr": "0x50DF30",
+  "sym": "?FUN_0050DF30@HouseClass@@QBE?AUCoordStruct@@XZ",
+  "len": "0xa4",
+  "name": "HouseClass::FUN_0050DF30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_update_supers_methods.cpp",
+  "addr": "0x4F9370",
+  "sym": "?FUN_004F9370@HouseClass@@QAEXXZ",
+  "len": "0x68",
+  "name": "HouseClass::FUN_004F9370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/iso_tile_type_class_r21_methods.cpp",
+  "addr": "0x547150",
+  "sym": "?FUN_00547150@IsometricTileTypeClass@@QAE_NHPAH0@Z",
+  "len": "0x55",
+  "name": "IsometricTileTypeClass::FUN_00547150",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/infantry_type_class_find_index_methods.cpp",
+  "addr": "0x523C90",
+  "sym": "?FUN_00523C90@InfantryTypeClass@@SIHPBD@Z",
+  "len": "0x61",
+  "name": "InfantryTypeClass::FUN_00523C90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/cell_object_square_search_005862c0.cpp",
+  "addr": "0x5862C0",
+  "sym": "?FUN_005862C0@@YG_NPBUCellStruct@@H@Z",
+  "len": "0x91",
+  "name": "FUN_005862C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_class_rect_area_00578640.cpp",
+  "addr": "0x578640",
+  "sym": "?FUN_00578640@MapClass@@QAE_NPBHPBUCellStruct@@_N@Z",
+  "len": "0xc9",
+  "name": "MapClass::FUN_00578640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/cell_rect_passable_00584030.cpp",
+  "addr": "0x584030",
+  "sym": "?FUN_00584030@@YG_NPBURectangleStruct@@@Z",
+  "len": "0x90",
+  "name": "FUN_00584030",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/sound_controls_dialog.cpp",
+  "addr": "0x6B6230",
+  "sym": "?FUN_006B6230@@YIXXZ",
+  "len": "0xc5",
+  "name": "FUN_006B6230",
+  "status": "partial",
+  "pct": 91.8
+ },
+ {
+  "tu": "match/ui/r21_3_modal_dialogs.cpp",
+  "addr": "0x6586D0",
+  "sym": "?FUN_006586D0@@YIXXZ",
+  "len": "0x96",
+  "name": "FUN_006586D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_r21_4_methods.cpp",
+  "addr": "0x707750",
+  "sym": "?FUN_00707750@TechnoClass@@QAEXHUDirStruct@@@Z",
+  "len": "0x62",
+  "name": "TechnoClass::FUN_00707750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_r21_4_methods.cpp",
+  "addr": "0x707D20",
+  "sym": "?FUN_00707D20@TechnoClass@@QAEHXZ",
+  "len": "0xb0",
+  "name": "TechnoClass::FUN_00707D20",
+  "status": "partial",
+  "pct": 98.2
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72D9A0",
+  "sym": "?FUN_0072D9A0@@YIXXZ",
+  "len": "0xfc",
+  "name": "FUN_0072D9A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72DC20",
+  "sym": "?FUN_0072DC20@@YIXXZ",
+  "len": "0xc3",
+  "name": "FUN_0072DC20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72DEF0",
+  "sym": "?FUN_0072DEF0@@YIXXZ",
+  "len": "0xb7",
+  "name": "FUN_0072DEF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72E1B0",
+  "sym": "?FUN_0072E1B0@@YIXHH@Z",
+  "len": "0xa5",
+  "name": "FUN_0072E1B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72F1D0",
+  "sym": "?FUN_0072F1D0@@YIXXZ",
+  "len": "0x95",
+  "name": "FUN_0072F1D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72F270",
+  "sym": "?FUN_0072F270@@YIXXZ",
+  "len": "0xbc",
+  "name": "FUN_0072F270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x730400",
+  "sym": "?FUN_00730400@@YIXXZ",
+  "len": "0x122",
+  "name": "FUN_00730400",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x730530",
+  "sym": "?FUN_00730530@@YIXXZ",
+  "len": "0x122",
+  "name": "FUN_00730530",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x730670",
+  "sym": "?FUN_00730670@@YIXXZ",
+  "len": "0xa4",
+  "name": "FUN_00730670",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72EB50",
+  "sym": "?FUN_0072EB50@@YIXXZ",
+  "len": "0xd3",
+  "name": "FUN_0072EB50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_palette_mgr_r21_4_methods.cpp",
+  "addr": "0x72F350",
+  "sym": "?FUN_0072F350@@YIXXZ",
+  "len": "0xd2",
+  "name": "FUN_0072F350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/voc_vox_r21_4_methods.cpp",
+  "addr": "0x750F40",
+  "sym": "?FUN_00750F40@@YIXPBUSampleKey_r21_4@@I@Z",
+  "len": "0x52",
+  "name": "FUN_00750F40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/voc_vox_r21_4_methods.cpp",
+  "addr": "0x750FA0",
+  "sym": "?FUN_00750FA0@@YIXXZ",
+  "len": "0x4d",
+  "name": "FUN_00750FA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/version_class_text_methods.cpp",
+  "addr": "0x74FA20",
+  "sym": "?FUN_0074FA20@VersionClass@@QAEGXZ",
+  "len": "0xb4",
+  "name": "VersionClass::FUN_0074FA20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_class_r21_4_methods.cpp",
+  "addr": "0x736C10",
+  "sym": "?FUN_00736C10@UnitClass@@QAE_NXZ",
+  "len": "0x81",
+  "name": "UnitClass::FUN_00736C10",
   "status": "matched",
   "pct": 100
  }

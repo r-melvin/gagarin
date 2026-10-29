@@ -25,6 +25,10 @@ public:
     // pinned PE. It calls the ordinary destructor at 0x7BA590.
     virtual ~FileStraw();
 
+    // Inline construction as built on the stack at 0x525A10: links zeroed
+    // by Straw(), then the file and state byte.
+    FileStraw(FileClass* file) : File(file), HasOpened(0) {}
+
     // Slot +0x08, inherited ABI signature from Straw. The original method
     // name and argument types are unknown; int parameters model two stack
     // words, the first used as a buffer pointer by the entry body.

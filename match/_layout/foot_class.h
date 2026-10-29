@@ -36,6 +36,8 @@ class TeamClass;
 struct Matrix3D;
 
 // FootClass  (0x520..0x6BF, sizeof = 0x6C0)
+class WaypointClass;
+
 class FootClass : public TechnoClass
 {
 public:
@@ -212,6 +214,14 @@ public:
     virtual bool vf_200();                                         // 200 0x4DA1D0
     virtual void vf_229(FootClass* a1);                            // 229 0x4DE630
     virtual int vf_26(int a1, int a2);                             // 26  0x4DA4E0
+
+    // Round 21 overrides of base slots (retail table 0x7E8C94).
+    virtual void vf_62();                                          // 62  0x4DE5D0
+    virtual void vf_205();                                         // 205 0x4DE580
+    virtual bool IsCloakable();                                    // 162 0x4DBDA0
+    virtual CoordStruct vf_302();                                  // 302 0x4DF1F0
+    // FUNCTION: GAMEMD 0x4DC8C0 (decl; reloc) -- takes a waypoint; defined elsewhere.
+    void FUN_004DC8C0(WaypointClass* waypoint);
 
     double FUN_004DC760();                                         // 0x4DC760 (team flag selects a constant, else unknown_530)
 };

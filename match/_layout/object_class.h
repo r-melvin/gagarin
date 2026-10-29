@@ -58,6 +58,8 @@ struct AudioController
     void FUN_00405D40();
     // FUNCTION: GAMEMD 0x405FD0 (declaration)
     void FUN_00405FD0();
+    // FUNCTION: GAMEMD 0x406060 (decl; reloc) -- ends a looping voice (audio_end_looping_methods.cpp)
+    void FUN_00406060();
 };
 GG_STATIC_ASSERT(offsetof(AudioController, Stamp)     == 0x04);
 GG_STATIC_ASSERT(offsetof(AudioController, EventType) == 0x08);
