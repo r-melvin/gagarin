@@ -5016,7 +5016,7 @@
   "len": "0x1e",
   "name": "FUN_005ac270",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/ModemHst.cpp",
@@ -6907,7 +6907,7 @@
   "len": "0x6",
   "name": "FUN_0058B7D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/MPLayer.cpp",
@@ -9562,7 +9562,7 @@
   "len": "0x86",
   "name": "FUN_005ad930",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Queue.cpp",
@@ -14414,7 +14414,7 @@
   "len": "0x2a",
   "name": "DynamicVectorClass<MapRegionClass*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -14423,7 +14423,7 @@
   "len": "0x2a",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
@@ -17223,7 +17223,7 @@
   "len": "0x49",
   "name": "VectorClass<MapRegionClass*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -17232,7 +17232,7 @@
   "len": "0x49",
   "name": "DynamicVectorClass<MapRegionClass*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -17241,7 +17241,7 @@
   "len": "0x49",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -17250,7 +17250,7 @@
   "len": "0x49",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_dtor_family_methods.cpp",
@@ -19815,7 +19815,7 @@
   "len": "0x27",
   "name": "VectorClass<MapRegionClass*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -19824,7 +19824,7 @@
   "len": "0x27",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_clear_family_methods.cpp",
@@ -20877,7 +20877,7 @@
   "len": "0xb0",
   "name": "DynamicVectorClass<MapRegionClass*>::SetCapacity",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -20886,7 +20886,7 @@
   "len": "0xb0",
   "name": "VectorResizeFamily::FUN_5AD010",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_const_char_methods.cpp",
@@ -24690,11 +24690,11 @@
  {
   "tu": "match/map/MapGen.cpp",
   "addr": "0x5A9920",
-  "sym": "??0TileLink@@QAE@ABULinkCell@@H@Z",
+  "sym": "??0TileLink@@QAE@ABVCellOffset@@H@Z",
   "len": "0x14",
-  "name": "??0TileLink@@QAE@ABULinkCell@@H@Z",
+  "name": "??0TileLink@@QAE@ABVCellOffset@@H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24703,7 +24703,7 @@
   "len": "0x15",
   "name": "??0TileLinkStandin@@QAE@XZ",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24712,16 +24712,16 @@
   "len": "0x13",
   "name": "??0TileLink@@QAE@ABU0@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
   "addr": "0x5A9980",
-  "sym": "??0TileLinkStep@@QAE@HABULinkCell@@H0H@Z",
+  "sym": "??0TileLinkStep@@QAE@HABVCellOffset@@H0H@Z",
   "len": "0x2B",
-  "name": "??0TileLinkStep@@QAE@HABULinkCell@@H0H@Z",
+  "name": "??0TileLinkStep@@QAE@HABVCellOffset@@H0H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24730,7 +24730,7 @@
   "len": "0x3D",
   "name": "??0TileLinkStep@@QAE@XZ",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24739,7 +24739,7 @@
   "len": "0x4B",
   "name": "??0TileLinkList@@QAE@ABUTileLink@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24748,7 +24748,7 @@
   "len": "0x67",
   "name": "??0TileLinkList@@QAE@ABUTileLink@@0@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24757,7 +24757,7 @@
   "len": "0x79",
   "name": "??0TileLinkList@@QAE@ABUTileLink@@00@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24766,7 +24766,7 @@
   "len": "0x8B",
   "name": "??0TileLinkList@@QAE@ABUTileLink@@000@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -24775,7 +24775,7 @@
   "len": "0x18",
   "name": "??1TileLinkList@@QAE@XZ",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/veinhole_init_growth_methods.cpp",
@@ -37790,7 +37790,7 @@
   "addr": "0x5AC3D0",
   "len": "0x1b",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMapRegionClass@@@@UBEHPAPAVMapRegionClass@@@Z",
   "name": "DynamicVectorClass<MapRegionClass*>::Slot5"
@@ -37799,7 +37799,7 @@
   "addr": "0x5AC3F0",
   "len": "0xd",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?Slot6@?$VectorClass@PAVMapRegionClass@@@@UBEPAVMapRegionClass@@H@Z",
   "name": "VectorClass<MapRegionClass*>::Slot6"
@@ -37808,7 +37808,7 @@
   "addr": "0x5AC6A0",
   "len": "0x3e",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "??8?$VectorClass@PAVMapRegionClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<MapRegionClass*>::operator=="
@@ -37817,7 +37817,7 @@
   "addr": "0x5AC6E0",
   "len": "0xae",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVMapRegionClass@@@@UAE_NHPAPAVMapRegionClass@@@Z",
   "name": "VectorClass<MapRegionClass*>::SetCapacity"
@@ -37826,7 +37826,7 @@
   "addr": "0x5AC7C0",
   "len": "0x33",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVMapRegionClass@@@@UBEHABQAVMapRegionClass@@@Z",
   "name": "VectorClass<MapRegionClass*>::FindItemIndex"
@@ -37835,7 +37835,7 @@
   "addr": "0x5AC800",
   "len": "0x1b",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?Slot5@?$VectorClass@PAVMapRegionClass@@@@UBEHPAPAVMapRegionClass@@@Z",
   "name": "VectorClass<MapRegionClass*>::Slot5"
@@ -37844,7 +37844,7 @@
   "addr": "0x5AC8D0",
   "len": "0x26",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMapRegionClass@@@@UBEHABQAVMapRegionClass@@@Z",
   "name": "DynamicVectorClass<MapRegionClass*>::FindItemIndex"
@@ -38996,7 +38996,7 @@
   "addr": "0x5AC4F0",
   "len": "0x1b",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::Slot5"
@@ -39005,7 +39005,7 @@
   "addr": "0x5AC510",
   "len": "0xd",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?Slot6@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBEPAU_WIN32_FIND_DATAA@@H@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::Slot6"
@@ -39014,7 +39014,7 @@
   "addr": "0x5ACA60",
   "len": "0x3e",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "??8?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBE_NABV0@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::operator=="
@@ -39023,7 +39023,7 @@
   "addr": "0x5ACAA0",
   "len": "0xae",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UAE_NHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::SetCapacity"
@@ -39032,7 +39032,7 @@
   "addr": "0x5ACB80",
   "len": "0x33",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHABQAU_WIN32_FIND_DATAA@@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::FindItemIndex"
@@ -39041,7 +39041,7 @@
   "addr": "0x5ACBC0",
   "len": "0x1b",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?Slot5@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::Slot5"
@@ -39050,7 +39050,7 @@
   "addr": "0x5ACBE0",
   "len": "0xb0",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UAE_NHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::SetCapacity"
@@ -39059,7 +39059,7 @@
   "addr": "0x5ACC90",
   "len": "0x26",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "tu": "match/map/MapGen.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHABQAU_WIN32_FIND_DATAA@@@Z",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::FindItemIndex"
@@ -50587,7 +50587,7 @@
   "len": "0x10",
   "name": "PairHolder_005A9BF0::PairHolder_005A9BF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/int_compare_methods.cpp",
@@ -53026,7 +53026,7 @@
   "len": "0x1B",
   "name": "DynamicVectorClass<double>::Slot5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_cellclass_slot_methods.cpp",
@@ -53044,7 +53044,7 @@
   "len": "0x1B",
   "name": "VectorClass<double>::Slot5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/MSChoice.cpp",
@@ -84834,11 +84834,11 @@
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x561900",
-  "sym": "?FUN_00561900@Obj_00561900@@QAEXXZ",
+  "sym": "_$E2",
   "len": "0x5",
-  "name": "Obj_00561900::FUN_00561900",
+  "name": "_$E static initialiser",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
@@ -84847,16 +84847,16 @@
   "len": "0x5",
   "name": "Obj_005638C0::FUN_005638C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x565080",
-  "sym": "_$E2",
+  "sym": "_$E5",
   "len": "0xa",
   "name": "atexit cleanup (InvalidCell)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
@@ -84865,7 +84865,7 @@
   "len": "0x6",
   "name": "FUN_0056C200",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
@@ -84874,16 +84874,25 @@
   "len": "0x1",
   "name": "FUN_0056C500",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x565060",
-  "sym": "_$E4",
+  "sym": "_$E7",
   "len": "0x16",
   "name": "dynamic initializer (InvalidCell)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x561910",
+  "sym": "_$E1",
+  "len": "0x1fa6",
+  "name": "static initialiser",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84892,7 +84901,7 @@
   "len": "0xa",
   "name": "atexit cleanup (DAT_00ABDFD8)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84901,7 +84910,7 @@
   "len": "0xd",
   "name": "FUN_0058B770",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84910,7 +84919,7 @@
   "len": "0x1",
   "name": "FUN_0058B7B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84919,7 +84928,7 @@
   "len": "0x1",
   "name": "FUN_0058B7C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84928,7 +84937,7 @@
   "len": "0x6",
   "name": "FUN_0058B7E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84937,7 +84946,7 @@
   "len": "0x6",
   "name": "FUN_0058B7F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84946,7 +84955,7 @@
   "len": "0x6",
   "name": "FUN_0058B800",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84955,7 +84964,7 @@
   "len": "0x6",
   "name": "FUN_0058B810",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84964,7 +84973,7 @@
   "len": "0x18",
   "name": "FUN_0058BCD0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84973,7 +84982,7 @@
   "len": "0x13",
   "name": "FUN_0058BD20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84982,7 +84991,7 @@
   "len": "0x13",
   "name": "FUN_0058BD40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -84991,7 +85000,7 @@
   "len": "0x13",
   "name": "FUN_0058BD60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -85000,7 +85009,7 @@
   "len": "0x5",
   "name": "Obj_00597D40::FUN_00597D40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -85009,7 +85018,7 @@
   "len": "0x17",
   "name": "Obj_00597F80::FUN_00597F80",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -85018,7 +85027,7 @@
   "len": "0x17",
   "name": "Obj_00597FA0::FUN_00597FA0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -85027,7 +85036,7 @@
   "len": "0x17",
   "name": "Obj_00597FC0::FUN_00597FC0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -85036,16 +85045,16 @@
   "len": "0x17",
   "name": "Obj_00597FE0::FUN_00597FE0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
   "addr": "0x5A9C20",
-  "sym": "?FUN_005A9C20@@YIXPAUObj_005A9C20@@H@Z",
+  "sym": "_$E12",
   "len": "0x11",
-  "name": "FUN_005A9C20",
+  "name": "_$E static initialiser",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/MapSel.cpp",
@@ -91285,7 +91294,7 @@
   "len": "0x2c",
   "name": "FUN_0058BB00",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91294,7 +91303,7 @@
   "len": "0x25",
   "name": "FUN_0058BCF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91303,7 +91312,7 @@
   "len": "0x38",
   "name": "FUN_0058BD80",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91321,7 +91330,7 @@
   "len": "0x87",
   "name": "MapRegionClass::~MapRegionClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91330,7 +91339,7 @@
   "len": "0xbe",
   "name": "FUN_0058C100",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91339,7 +91348,7 @@
   "len": "0x4c",
   "name": "MapRegionClass::FUN_0058C2D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91366,7 +91375,7 @@
   "len": "0xf3",
   "name": "FUN_0058CE90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91375,7 +91384,7 @@
   "len": "0x52",
   "name": "FUN_0058D010",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91384,7 +91393,7 @@
   "len": "0x71",
   "name": "MapRegionClass::FUN_0058D5A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91402,7 +91411,7 @@
   "len": "0xe8",
   "name": "MapRegionClass::FUN_005942F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91411,7 +91420,7 @@
   "len": "0x33",
   "name": "FUN_005943E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91420,7 +91429,7 @@
   "len": "0x28",
   "name": "MapSeedClass::FUN_00595710",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91438,7 +91447,7 @@
   "len": "0xac",
   "name": "MapSeedClass::FUN_00597380",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91447,7 +91456,7 @@
   "len": "0x28",
   "name": "MapSeedClass::FUN_00597730",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91456,7 +91465,7 @@
   "len": "0x6f",
   "name": "FUN_00598180",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91465,7 +91474,7 @@
   "len": "0x114",
   "name": "FUN_00599530",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91483,7 +91492,7 @@
   "len": "0x63",
   "name": "FUN_0059B6D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91501,7 +91510,7 @@
   "len": "0x48",
   "name": "FUN_0059C530",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91510,7 +91519,7 @@
   "len": "0x7e",
   "name": "FUN_0059C800",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91519,7 +91528,7 @@
   "len": "0x31",
   "name": "Obj_0059C580::FUN_0059D440",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91528,7 +91537,7 @@
   "len": "0x72",
   "name": "FUN_0059E640",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91537,7 +91546,7 @@
   "len": "0x72",
   "name": "FUN_0059E6C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91546,7 +91555,7 @@
   "len": "0x54",
   "name": "FUN_005A1270",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91564,7 +91573,7 @@
   "len": "0x38",
   "name": "Obj_0059C580::FUN_005A1E10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91573,7 +91582,7 @@
   "len": "0x7d",
   "name": "FUN_005A3A60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91582,7 +91591,7 @@
   "len": "0x6e",
   "name": "FUN_005A6BA0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -91600,7 +91609,7 @@
   "len": "0x70",
   "name": "VectorClass<TRect<int>>::VectorClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/ownrdraw.cpp",
@@ -100253,7 +100262,7 @@
   "len": "0x16",
   "name": "dynamic initializer (DAT_00ABDFD8)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -100261,6 +100270,24 @@
   "sym": "?FUN_00598160@@YGNNN@Z",
   "len": "0x15",
   "name": "FUN_00598160",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x5A9C40",
+  "sym": "_$E9",
+  "len": "0x2541",
+  "name": "static initialiser",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x5AC190",
+  "sym": "_$E10",
+  "len": "0x27",
+  "name": "static initialiser",
   "status": "matched",
   "pct": 100.0
  },

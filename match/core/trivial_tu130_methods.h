@@ -15,7 +15,6 @@ struct Obj_00597F80;
 struct Obj_00597FA0;
 struct Obj_00597FC0;
 struct Obj_00597FE0;
-struct Obj_005A9C20;
 
 // GLOBAL: GAMEMD 0x82BA48
 extern char DAT_0082BA48[];
@@ -40,8 +39,6 @@ extern int DAT_00ABECD0;
 
 // FUNCTION: GAMEMD 0x5958E0 (declaration)
 void FUN_005958E0(void*, int);
-// FUNCTION: GAMEMD 0x5A9C40 (declaration)
-void FUN_005A9C40(Obj_005A9C20*, int);
 // FUNCTION: GAMEMD 0x734E60 (declaration)
 void FUN_00734E60(void*, int, void*, int);
 // LIBRARY: GAMEMD 0x7C978A (declaration)
@@ -91,10 +88,6 @@ struct Obj_00597FE0
     void FUN_00597FE0();
 };
 
-struct Obj_005A9C20
-{
-};
-
 
 // FUNCTION: GAMEMD 0x58B760
 void FUN_0058B760(int a1, int a2);
@@ -120,7 +113,5 @@ int FUN_0058BD20(int a1);
 int FUN_0058BD40(int a1);
 // FUNCTION: GAMEMD 0x58BD60
 int FUN_0058BD60(int a1);
-// FUNCTION: GAMEMD 0x5A9C20
-void FUN_005A9C20(Obj_005A9C20* a1, int a2);
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU130_METHODS_H

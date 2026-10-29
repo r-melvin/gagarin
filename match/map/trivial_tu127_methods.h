@@ -9,7 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_00561900;
 struct Obj_005638C0;
 
 // GLOBAL: GAMEMD 0xABDC50
@@ -17,14 +16,6 @@ extern char DAT_00ABDC50[];
 
 // FUNCTION: GAMEMD 0x47BB60 (declaration)
 void FUN_0047BB60(void*, int);
-
-struct Obj_00561900
-{
-    // FUNCTION: GAMEMD 0x561900
-    void FUN_00561900();
-    // FUNCTION: GAMEMD 0x561910
-    void FUN_00561910();
-};
 
 struct Obj_005638C0
 {

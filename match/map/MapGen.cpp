@@ -1465,13 +1465,13 @@ void FUN_005A7FA0(int a1, CellStruct* a2, char a3)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // Build a link from a cell offset and a facing.
 // FUNCTION: GAMEMD 0x5A9920
-TileLink::TileLink(const LinkCell& cell, int facing) throw()
+TileLink::TileLink(const CellOffset& cell, int facing) throw()
     : Cell(cell), Facing(facing)
 {
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// Default link: the cell offset zeroed by LinkCell's own constructor and no
+// Default link: the cell offset zeroed by CellOffset's own constructor and no
 // facing yet. This is the body the array-new loops of every list constructor
 // below inline.
 // FUNCTION: GAMEMD 0x5A9940
@@ -1492,8 +1492,8 @@ TileLink::TileLink(const TileLink& other) throw()
 // Build one queued walk step from its two (tile, cell) endpoints and the link
 // index that produced it.
 // FUNCTION: GAMEMD 0x5A9980
-TileLinkStep::TileLinkStep(int fromTile, const LinkCell& fromCell, int toTile,
-                           const LinkCell& toCell, int index) throw()
+TileLinkStep::TileLinkStep(int fromTile, const CellOffset& fromCell, int toTile,
+                           const CellOffset& toCell, int index) throw()
     : FromTile(fromTile), FromCell(fromCell), ToTile(toTile),
       ToCell(toCell), Index(index)
 {
@@ -1506,8 +1506,8 @@ TileLinkStep::TileLinkStep(int fromTile, const LinkCell& fromCell, int toTile,
 // at the top of retail's body.
 // FUNCTION: GAMEMD 0x5A99B0
 TileLinkStep::TileLinkStep() throw()
-    : FromTile(0xFFFF), FromCell(LinkCell()), ToTile(0xFFFF),
-      ToCell(LinkCell()), Index(-1)
+    : FromTile(0xFFFF), FromCell(CellOffset()), ToTile(0xFFFF),
+      ToCell(CellOffset()), Index(-1)
 {
 }
 
@@ -1580,14 +1580,123 @@ TileLinkList::~TileLinkList() throw()
     Links = 0;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5A9C20
-// Calls other functions.
-void FUN_005A9C20(Obj_005A9C20* a1, int a2)
-{
-    FUN_005A9C40(a1, a2);
-    FUN_007C978A(0x5AC190);
-}
+// SYNTHETIC: GAMEMD 0x5A9C20 -- initialiser entry: runs the table build, registers 0x5AC190
+// SYNTHETIC: GAMEMD 0x5A9C40 -- table build: constructs the 109 slots in place
+// SYNTHETIC: GAMEMD 0x5AC190 -- exit-time stub: destroys the 109 slots backwards
+// GLOBAL: GAMEMD 0xABE370
+// The theater tile-link table: 109 fixed slots of one to four links (see
+// tile_link_table_methods.h). The four empty slots take the default constructor.
+TileLinkList DAT_00ABE370[109] = {
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(2, 0), 1)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(1, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(1, 1), 3)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(1, 0), 5)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(1, 0), 0), TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(1, 0), 1), TileLink(CellOffset(1, 1), 2)),
+    TileLinkList(TileLink(CellOffset(1, 0), 1), TileLink(CellOffset(1, 1), 3)),
+    TileLinkList(TileLink(CellOffset(1, 0), 1), TileLink(CellOffset(0, 1), 4)),
+    TileLinkList(TileLink(CellOffset(1, 0), 1), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(0, 0), 0)),
+    TileLinkList(TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(1, 2), 3)),
+    TileLinkList(TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(0, 1), 4)),
+    TileLinkList(TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(1, 0), 5)),
+    TileLinkList(TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(2, 1), 3), TileLink(CellOffset(0, 1), 4)),
+    TileLinkList(TileLink(CellOffset(1, 1), 3), TileLink(CellOffset(1, 0), 5)),
+    TileLinkList(TileLink(CellOffset(1, 1), 3), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(1, 1), 4), TileLink(CellOffset(1, 0), 5)),
+    TileLinkList(TileLink(CellOffset(0, 1), 4), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(0, 1), 4), TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(1, 1), 5), TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(0, 1), 6), TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(0, 1), 4)),
+    TileLinkList(TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(0, 1), 4), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 1), 4), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(1, 0), 2), TileLink(CellOffset(0, 1), 4), TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(2, 2), 3), TileLink(CellOffset(1, 1), 5)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(1, 1), 5), TileLink(CellOffset(2, 2), 3)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(1, 1), 5)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(2, 2), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(1, 1), 5), TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(2, 2), 3)),
+    TileLinkList(TileLink(CellOffset(3, 0), 1), TileLink(CellOffset(3, 2), 2), TileLink(CellOffset(0, 2), 6)),
+    TileLinkList(TileLink(CellOffset(3, 0), 1), TileLink(CellOffset(1, 2), 5)),
+    TileLinkList(TileLink(CellOffset(3, 0), 1), TileLink(CellOffset(1, 2), 5)),
+    TileLinkList(TileLink(CellOffset(3, 0), 1), TileLink(CellOffset(1, 2), 5)),
+    TileLinkList(TileLink(CellOffset(3, 0), 1), TileLink(CellOffset(1, 2), 5)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(1, 1), 5)),
+    TileLinkList(TileLink(CellOffset(1, 0), 1), TileLink(CellOffset(1, 0), 5)),
+    TileLinkList(TileLink(CellOffset(1, 0), 1), TileLink(CellOffset(1, 0), 5)),
+    TileLinkList(TileLink(CellOffset(1, 2), 5)),
+    TileLinkList(TileLink(CellOffset(1, 1), 5)),
+    TileLinkList(TileLink(CellOffset(1, 1), 5)),
+    TileLinkList(TileLink(CellOffset(3, 0), 1)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1)),
+    TileLinkList(TileLink(CellOffset(4, 0), 1), TileLink(CellOffset(1, 1), 5)),
+    TileLinkList(TileLink(CellOffset(2, 0), 1), TileLink(CellOffset(1, 3), 5)),
+    TileLinkList(),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(3, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(3, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(3, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(3, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(2, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(1, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(0, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(0, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6)),
+    TileLinkList(TileLink(CellOffset(0, 1), 6)),
+    TileLinkList(TileLink(CellOffset(2, 0), 2)),
+    TileLinkList(TileLink(CellOffset(1, 0), 2)),
+    TileLinkList(TileLink(CellOffset(1, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(3, 1), 2)),
+    TileLinkList(TileLink(CellOffset(0, 1), 6), TileLink(CellOffset(3, 0), 2)),
+    TileLinkList(),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(3, 3), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(3, 3), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(3, 3), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(3, 3), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(2, 2), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(1, 1), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(1, 1), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7)),
+    TileLinkList(TileLink(CellOffset(3, 3), 3)),
+    TileLinkList(TileLink(CellOffset(1, 2), 3)),
+    TileLinkList(TileLink(CellOffset(2, 2), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(4, 2), 3)),
+    TileLinkList(TileLink(CellOffset(1, 1), 7), TileLink(CellOffset(2, 4), 3)),
+    TileLinkList(),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 3), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 3), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 3), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 3), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 2), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 1), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 4)),
+    TileLinkList(TileLink(CellOffset(0, 3), 4)),
+    TileLinkList(TileLink(CellOffset(0, 2), 4)),
+    TileLinkList(TileLink(CellOffset(0, 2), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0)),
+    TileLinkList(TileLink(CellOffset(1, 0), 0), TileLink(CellOffset(0, 3), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(1, 3), 4)),
+    TileLinkList(),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(0, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(0, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(0, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 6), TileLink(CellOffset(0, 0), 2)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 4)),
+    TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 4))
+};
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5AC270

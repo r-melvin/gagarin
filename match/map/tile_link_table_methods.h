@@ -17,7 +17,7 @@
 // ring, which is the second class modelled here.
 //
 // Confirmed numerically:
-//   LinkCell        4 bytes   X @+0x0 (word), Y @+0x2 (word)
+//   CellOffset        4 bytes   X @+0x0 (word), Y @+0x2 (word)
 //   TileLink        8 bytes   Cell @+0x0, Facing @+0x4 (default -1)
 //   TileLinkList    0xC bytes Count @+0x0, Links @+0x4, TileIndex @+0x8
 //   TileLinkStep    0x14      FromTile @+0x0, FromCell @+0x4, ToTile @+0x8,
@@ -30,18 +30,11 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/cell_offset.h"
 
-// CellStruct -- a map cell coordinate. The user-declared default constructor
-// is what retail has: 0x5A9940 zeroes both words in place for a member, while
-// 0x5A99B0 builds it in a stack temporary and copies the dword out, which is
-// the assignment-from-temporary spelling of the same constructor.
-struct LinkCell
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-    LinkCell() throw() { X = 0; Y = 0; }
-};
-GG_STATIC_ASSERT(sizeof(LinkCell) == 0x4);
+// The cell offset is CellOffset (match/_layout/cell_offset.h). Its default
+// constructor (CellWords) zeroes both words: 0x5A9940 does that in place for a
+// member, while 0x5A99B0 builds it in a stack temporary and copies the dword out.
 
 // One link of a tile: the neighbouring cell offset and the facing that reaches
 // it. Facing defaults to -1 (`MOVL $0xFFFFFFFF,0x4(%EAX)` in 0x5A9940 and in
@@ -53,11 +46,11 @@ GG_STATIC_ASSERT(sizeof(LinkCell) == 0x4);
 // retail has no trace of one.
 struct TileLink
 {
-    LinkCell Cell;     // +0x0000
+    CellOffset Cell;     // +0x0000
     int      Facing;   // +0x0004
 
     // FUNCTION: GAMEMD 0x5A9920
-    TileLink(const LinkCell& cell, int facing) throw();
+    TileLink(const CellOffset& cell, int facing) throw();
     // The default constructor has to be visible here so the `new TileLink[n]`
     // loops below expand it, which is how retail has them; the out-of-line copy
     // retail also keeps at 0x5A9940 is the layout-compatible stand-in below.
@@ -76,7 +69,7 @@ GG_STATIC_ASSERT(offsetof(TileLink, Cell) == 0x0 &&
 // both forms" rule, applied to a constructor).
 struct TileLinkStandin
 {
-    LinkCell Cell;     // +0x0000
+    CellOffset Cell;     // +0x0000
     int      Facing;   // +0x0004
 
     // FUNCTION: GAMEMD 0x5A9940
@@ -92,14 +85,14 @@ GG_STATIC_ASSERT(offsetof(TileLinkStandin, Cell) == 0x0 &&
 struct TileLinkStep
 {
     int      FromTile;   // +0x0000
-    LinkCell FromCell;   // +0x0004
+    CellOffset FromCell;   // +0x0004
     int      ToTile;     // +0x0008
-    LinkCell ToCell;     // +0x000C
+    CellOffset ToCell;     // +0x000C
     int      Index;      // +0x0010
 
     // FUNCTION: GAMEMD 0x5A9980
-    TileLinkStep(int fromTile, const LinkCell& fromCell, int toTile,
-                 const LinkCell& toCell, int index) throw();
+    TileLinkStep(int fromTile, const CellOffset& fromCell, int toTile,
+                 const CellOffset& toCell, int index) throw();
     // FUNCTION: GAMEMD 0x5A99B0
     TileLinkStep() throw();
 };
@@ -120,6 +113,8 @@ struct TileLinkList
     TileLink* Links;       // +0x0004
     int       TileIndex;   // +0x0008
 
+    // The empty slot: no links yet. Only ever expanded inline into the table build.
+    TileLinkList() throw() { Count = 0; Links = 0; }
     // FUNCTION: GAMEMD 0x5A9A20
     TileLinkList(const TileLink& a) throw();
     // FUNCTION: GAMEMD 0x5A9A70
