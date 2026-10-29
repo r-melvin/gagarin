@@ -23760,7 +23760,7 @@
  {
   "tu": "match/map/cell_class_rad_methods.cpp",
   "addr": "0x480A30",
-  "sym": "?GetCellCoords@CellClass@@QBEPAUCoordStruct@@PAU2@@Z",
+  "sym": "?GetCellCoords@CellView_00480A30@@QBEPAUCoordStruct@@PAU2@@Z",
   "len": "0x4d",
   "name": "GetCellCoords",
   "status": "matched",
@@ -23769,7 +23769,7 @@
  {
   "tu": "match/map/cell_class_rad_methods.cpp",
   "addr": "0x487D00",
-  "sym": "?RadLevel_Decrease@CellClass@@QAEXN@Z",
+  "sym": "?RadLevel_Decrease@CellView_00480A30@@QAEXN@Z",
   "len": "0x41",
   "name": "RadLevel_Decrease",
   "status": "partial",
@@ -23850,7 +23850,7 @@
  {
   "tu": "match/map/cell_class_shroud_methods.cpp",
   "addr": "0x481810",
-  "sym": "?GetNeighbourCell@CellClass@@QBEPAV1@H@Z",
+  "sym": "?GetNeighbourCell@CellView_00481810@@QBEPAV1@H@Z",
   "len": "0x56",
   "name": "GetNeighbourCell",
   "status": "matched",
@@ -23859,7 +23859,7 @@
  {
   "tu": "match/map/cell_class_shroud_methods.cpp",
   "addr": "0x487630",
-  "sym": "?ReduceShroudCounter@CellClass@@QAEXXZ",
+  "sym": "?ReduceShroudCounter@CellView_00481810@@QAEXXZ",
   "len": "0x5a",
   "name": "ReduceShroudCounter",
   "status": "matched",
@@ -23868,7 +23868,7 @@
  {
   "tu": "match/map/cell_class_shroud_methods.cpp",
   "addr": "0x4876F0",
-  "sym": "?Unshroud@CellClass@@QAEXXZ",
+  "sym": "?Unshroud@CellView_00481810@@QAEXXZ",
   "len": "0x27",
   "name": "Unshroud",
   "status": "matched",
@@ -23877,7 +23877,7 @@
  {
   "tu": "match/map/cell_class_shroud_methods.cpp",
   "addr": "0x487950",
-  "sym": "?IsShrouded@CellClass@@QBE_NXZ",
+  "sym": "?IsShrouded@CellView_00481810@@QBE_NXZ",
   "len": "0x56",
   "name": "IsShrouded",
   "status": "matched",
@@ -52876,7 +52876,7 @@
  {
   "tu": "match/core/persist_save_stub_methods.cpp",
   "addr": "0x549D70",
-  "sym": "?Save@IsometricTileTypeClass@@UAGJPAUIStream@@H@Z",
+  "sym": "?Save@IsometricTileTypeView_00549D70@@UAGJPAUIStream@@H@Z",
   "len": "0x1D",
   "name": "IsometricTileTypeClass::Save",
   "status": "matched",
@@ -96040,7 +96040,7 @@
  {
   "tu": "match/map/cell_class_shroud_methods.cpp",
   "addr": "0x4879B0",
-  "sym": "?FUN_004879B0@CellClass@@QBE_NXZ",
+  "sym": "?FUN_004879B0@CellView_00481810@@QBE_NXZ",
   "len": "0x56",
   "name": "CellClass::FUN_004879B0",
   "status": "matched",

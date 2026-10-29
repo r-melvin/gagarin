@@ -9,6 +9,8 @@
 #include "../_layout/abstract_class.h"
 #include "../_layout/abstract_type_class.h"
 #include "../_layout/swizzle_manager_class.h"
+#include "../_layout/tiberium_class.h"
+#include "../_layout/tube_class.h"
 #include "../core/vector_class.h"
 
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
@@ -86,22 +88,6 @@ HRESULT __stdcall SpawnManagerClass::Save(IStream* pStm, BOOL fClearDirty)
 
 // ---- TiberiumClass (vtable 0x7F5728) --------------------------------------------------------
 
-class TiberiumClass : public AbstractTypeClass
-{
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x7220D0
-    virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize);     // 7   0x7220A0
-    virtual int vf_11();
-    virtual int vf_12();
-    char unknown_98[0xC8 - 0x98];
-    int* unknown_C8;               // +0xC8 one dword per entry
-    char unknown_CC[0xD4 - 0xCC];
-    int unknown_D4;                // +0xD4 entry count
-};
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_C8) == 0xC8);
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_D4) == 0xD4);
 
 // FUNCTION: GAMEMD 0x7220A0
 // The base size plus a count and one dword per entry.
@@ -133,18 +119,6 @@ HRESULT __stdcall TiberiumClass::Save(IStream* pStm, BOOL fClearDirty)
 
 // ---- TubeClass (vtable 0x7F59B0) ------------------------------------------------------------
 
-class TubeClass : public AbstractClass
-{
-public:
-    // The stream loader's in-place construction: the base only (retail 0x410170).
-    struct LoadTag {};
-    TubeClass(LoadTag) {}
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);                     // 5   0x7281A0
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-};
 
 // FUNCTION: GAMEMD 0x7281A0
 // Re-establish the object after a stream load.

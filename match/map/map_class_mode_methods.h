@@ -18,13 +18,8 @@
 
 // The house driving this machine; the mode is refused when its counter at
 // +0x2F0 is not positive.
-class HouseClass
-{
-public:
-    char _pad000[0x2F0];   // +0x0000
-    int  unknown_2F0;      // +0x02F0
-};
-GG_STATIC_ASSERT(offsetof(HouseClass, unknown_2F0) == 0x2F0);
+#include "../_layout/house_class.h"
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedBuildings) == 0x2F0);
 
 // GLOBAL: GAMEMD 0x00A83D4C — HouseClass::CurrentPlayer.
 extern HouseClass* CurrentPlayer;

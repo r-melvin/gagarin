@@ -10,15 +10,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// Minimal CellClass model: only the Jumpjet occupant pointer at +0xE0 is
-// touched (disasm: `MOV EAX,[EAX+0xE0]`).  GetCell() returns one of these.
-class CellClass
-{
-public:
-    char    _pad_0xE0[0xE0];   // +0x000
-    void*   Jumpjet;           // +0x0E0  FootClass* occupying this cell
-};
-GG_STATIC_ASSERT(offsetof(CellClass, Jumpjet) == 0xE0);
+#include "../_layout/cell_class.h"   // CellClass::Jumpjet @0xE0; GetCell() returns one of these
 
 // Minimal TechnoView_004135A0 model used only to reproduce the virtual dispatch.  The
 // retail call is `CALL [EAX+0x1BC]` (vtable byte-offset 0x1BC = slot 111), with

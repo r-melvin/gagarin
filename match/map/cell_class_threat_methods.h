@@ -28,17 +28,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 // relocatable call (the differ reloc-normalises them); they are matched in
 // their own TUs, not here.
 // ---------------------------------------------------------------------------
-class HouseClass
-{
-public:
-    char _base[0x30];   // +0x00
-    int  ArrayIndex;    // +0x30
-
-    // 0x4F9A10 — true if `idxHouse` is allied with (or equal to) this house.
-    bool IsAlliedWith(int idxHouse) const;
-    // 0x4FA2E0 — fold a threat delta into this house's per-region threat table.
-    void AccumulateThreat(int region, int threat);
-};
+#include "../_layout/house_class.h"
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
 
 // ---------------------------------------------------------------------------

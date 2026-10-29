@@ -135,14 +135,14 @@ inline Dir16 VelocityClass::PitchFromComponents() const
     return result;
 }
 
-class CellClass
+class CellView_005B20F0
 {
 public:
     char unknown_00[0x140];  // +0x000
     unsigned int Flags;      // +0x140
 };
 
-GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
+GG_STATIC_ASSERT(offsetof(CellView_005B20F0, Flags) == 0x140);
 
 class MapClass
 {
@@ -150,7 +150,7 @@ public:
     // CALLEE: GAMEMD 0x00578080
     int GetZPos(CoordStruct const* where) const;
     // CALLEE: GAMEMD 0x00565730
-    CellClass* GetTargetCell(CoordStruct const* where);
+    CellView_005B20F0* GetTargetCell(CoordStruct const* where);
 };
 
 // GLOBAL: GAMEMD 0x0087F7E8

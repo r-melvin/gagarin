@@ -48,7 +48,7 @@ void MapClass::SetSellMode(int mode)
         unknown_11B3 = false;
         unknown_11B4 = false;
 
-        if (want && CurrentPlayer->unknown_2F0 > 0)
+        if (want && CurrentPlayer->OwnedBuildings > 0)
         {
             SellMode = true;
             ModeEntered();
@@ -86,7 +86,7 @@ void MapClass::SetTogglePowerMode(int mode)
         unknown_11B3 = false;
         unknown_11B4 = false;
 
-        if (want && CurrentPlayer->unknown_2F0 > 0)
+        if (want && CurrentPlayer->OwnedBuildings > 0)
         {
             TogglePowerMode = true;
             ModeEntered();
@@ -124,7 +124,7 @@ void MapClass::SetRepairMode(int mode)
 
         Slot_48(0, 0);
 
-        if (want && CurrentPlayer->unknown_2F0 > 0)
+        if (want && CurrentPlayer->OwnedBuildings > 0)
         {
             RepairMode = true;
             ModeEntered();

@@ -1,27 +1,27 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
-// CellClass shroud / neighbour helpers, ordered ascending by retail address.
+// CellView_00481810 shroud / neighbour helpers, ordered ascending by retail address.
 #include "cell_class_shroud_methods.h"
 
 // The retail MapClass singleton lives at this fixed address; calling through it
 // makes cl emit `mov ecx,0x87F7E8` exactly as retail does.
 #define MapInstance (reinterpret_cast<MapClass*>(0x87F7E8))
 
-// FUNCTION: GAMEMD 0x481810  CellClass::GetNeighbourCell (__thiscall)
+// FUNCTION: GAMEMD 0x481810  CellView_00481810::GetNeighbourCell (__thiscall)
 //   For facing < 8 returns the cell at MapCoords + AdjacentCell[facing&7];
 //   otherwise returns this.
-CellClass* CellClass::GetNeighbourCell(int facing) const
+CellView_00481810* CellView_00481810::GetNeighbourCell(int facing) const
 {
     if ((unsigned int)facing < 8u)
     {
         CellStruct mc = this->MapCoords;
         return MapInstance->GetCellAt(mc + AdjacentCell[facing & 7]);
     }
-    return const_cast<CellClass*>(this);
+    return const_cast<CellView_00481810*>(this);
 }
 
-// FUNCTION: GAMEMD 0x487630  CellClass::ReduceShroudCounter (__thiscall)
+// FUNCTION: GAMEMD 0x487630  CellView_00481810::ReduceShroudCounter (__thiscall)
 //   Decrements ShroudCounter (snapping a value of 1 to 0 first); once it hits
 //   zero either flags the cell shrouded (AltFlags |= 0x18) or, when already
 //   shrouded, clears Flags bit 0x20.
@@ -43,7 +43,7 @@ CellClass* CellClass::GetNeighbourCell(int facing) const
 //   -- each failing test jumping to the reshroud label and an unconditional
 //   jump to the shrouded label after them -- makes cl reverse the second test
 //   and emit retail's order.
-void CellClass::ReduceShroudCounter()
+void CellView_00481810::ReduceShroudCounter()
 {
     if (ShroudCounter == 1) {
         ShroudCounter = 0;
@@ -64,12 +64,12 @@ shrouded:
     if (remaining <= 0 && (Flags & 0x20) == 0x20) Flags &= ~0x20;
 }
 
-// FUNCTION: GAMEMD 0x4876F0  CellClass::Unshroud (__thiscall)
+// FUNCTION: GAMEMD 0x4876F0  CellView_00481810::Unshroud (__thiscall)
 // Force the cell visible: set the two "revealed" bits in AltFlags, and if the
 // cell still carries shroud counters, mark the shroud-redraw bit in Flags too.
 // Retail sets all three through the AL byte lane (`OR AL,0x18` / `OR AL,0x20`
 // on the loaded dword), which is what VC6 emits for a small-constant OR.
-void CellClass::Unshroud()
+void CellView_00481810::Unshroud()
 {
     AltFlags |= 0x18;
 
@@ -77,10 +77,10 @@ void CellClass::Unshroud()
         Flags |= 0x20;
 }
 
-// FUNCTION: GAMEMD 0x487950  CellClass::IsShrouded (__thiscall)
+// FUNCTION: GAMEMD 0x487950  CellView_00481810::IsShrouded (__thiscall)
 //   Builds the cell-centre world coord (MapCoords.*256+128, GetFloorHeight) and
 //   asks the map whether that location is under shroud.
-bool CellClass::IsShrouded() const
+bool CellView_00481810::IsShrouded() const
 {
     // MapCoords (a CellStruct) is materialised into the same stack slot that
     // later serves as the {128,128} sub-cell Point2D handed to GetFloorHeight —
@@ -103,7 +103,7 @@ bool CellClass::IsShrouded() const
 // FUNCTION: GAMEMD 0x4879B0  (__thiscall)
 //   The same cell-centre coordinate as IsShrouded, handed to the map's other
 //   location test (0x5865E0).
-bool CellClass::FUN_004879B0() const
+bool CellView_00481810::FUN_004879B0() const
 {
     union { CellStruct mc; Point2D pt; } u;
     u.mc = this->MapCoords;

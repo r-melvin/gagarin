@@ -33,5 +33,5 @@ int MapClass::GetThreatPosed(const CellStruct& cell, HouseClass* pHouse) const
     CellStruct mc = pCell->MapCoords;
     int qy = mc.Y / 4;
     int qx = mc.X / 4;
-    return pHouse->ThreatPosedEstimates[qy][qx];
+    return pHouse->ThreatPosedEstimates[qy + 1][qx + 1];
 }

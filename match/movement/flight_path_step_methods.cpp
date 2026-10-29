@@ -172,7 +172,7 @@ int FlightPathStep(CoordStruct* coord, VelocityClass* velocity,
             CoordStruct ahead(coord->X + lead.X, coord->Y + lead.Y, coord->Z + lead.Z);
             CoordStruct probe = ahead;
             int floorZ;
-            CellClass* cell;
+            CellView_005B20F0* cell;
             int steps;
             int drop;
             int here;

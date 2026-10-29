@@ -17,6 +17,11 @@
 
 #include <objidl.h>
 #include "../_layout/anim_type_class.h"
+#include "../_layout/light_source_class.h"
+#include "../_layout/rad_site_class.h"
+#include "../_layout/tag_class.h"
+#include "../_layout/trigger_type_class.h"
+#include "../_layout/tube_class.h"
 #include "../_layout/bullet_class.h"
 #include "../_layout/script_class.h"
 #include "../_layout/script_type_class.h"
@@ -87,25 +92,13 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class IsometricTileTypeClass : public ObjectTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class LightSourceClass : public AbstractClass
+class IsometricTileTypeView_00549D70 : public ObjectTypeClass
 {
 public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
 class ParasiteClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class RadSiteClass : public AbstractClass
 {
 public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
@@ -132,29 +125,11 @@ public:
 };
 
 
-class TagClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 
 
 
 
-
-
-class TriggerTypeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class TubeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 class UnitTypeClass : public TechnoTypeClass
 {
@@ -245,7 +220,7 @@ HRESULT __stdcall IsometricTileClass::Save(IStream* pStm, BOOL fClearDirty)
 }
 
 // FUNCTION: GAMEMD 0x549D70
-HRESULT __stdcall IsometricTileTypeClass::Save(IStream* pStm, BOOL fClearDirty)
+HRESULT __stdcall IsometricTileTypeView_00549D70::Save(IStream* pStm, BOOL fClearDirty)
 {
     HRESULT hr = ObjectTypeClass::Save(pStm, fClearDirty);
     if (hr >= 0)

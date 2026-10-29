@@ -53,7 +53,7 @@ void CellClass::UpdateThreat(unsigned int SourceHouse, int ThreatLevel)
         if (pHouse
             && (unsigned int)pHouse->ArrayIndex != SourceHouse
             && !pHouse->IsAlliedWith((int)SourceHouse)) {
-            pHouse->AccumulateThreat(region, ThreatLevel);
+            pHouse->FUN_004FA2E0(region, ThreatLevel);
         }
     }
 }

@@ -22,14 +22,10 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
-// Minimal HouseClass view: only the 130x130 threat grid @0x59F0 is touched.
-class HouseClass
-{
-public:
-    char         _pad0[0x59f0];                  // +0x0000
-    unsigned int ThreatPosedEstimates[130][130]; // +0x59F0
-};
-GG_STATIC_ASSERT(offsetof(HouseClass, ThreatPosedEstimates) == 0x59f0);
+// The 130x130 threat grid is addressed one row and one column in (+0x59F0 is
+// ThreatPosedEstimates[1][1]).
+#include "../_layout/house_class.h"
+GG_STATIC_ASSERT(offsetof(HouseClass, ThreatPosedEstimates) + (130 + 1) * sizeof(unsigned int) == 0x59f0);
 
 // Minimal MapClass view: GetThreatPosed touches no instance members (it reads
 // the global cell-array pointer and InvalidCell), so the struct is empty apart

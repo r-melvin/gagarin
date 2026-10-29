@@ -544,11 +544,6 @@ class EgoClass;
 class EventClass;
 class FactoryClass;
 class FileEntryClass;
-class FoggedObjectClass
-{
-public:
-    struct DrawRecord;
-};
 class FootClass;
 struct GlobalPacketType;
 class GraphicMenuItem;
@@ -556,28 +551,12 @@ class HSVClass;
 struct HWND__;
 template<class T0, class T1> struct HashObject;
 class HashString;
-class HouseClass
-{
-public:
-    struct BuildChoiceClass;
-    struct StartingTechnoStruct;
-};
 class HouseTypeClass;
 struct IConnectionPoint;
 class InfantryTypeClass;
 class IonBlastClass;
-class IsometricTileTypeClass
-{
-public:
-    struct TileInsertType;
-};
 struct KamikazeControl;
 class LaserDrawClass;
-class LightSourceClass
-{
-public:
-    class PendingCellClass;
-};
 class LineTrail;
 struct MPlayerScoreType;
 class MSAnim;
@@ -613,6 +592,10 @@ class PlanningMemberClass;
 class PlanningNodeClass;
 class PlanningTokenClass;
 class Point2D;
+#include "../_layout/fogged_object_class.h"
+#include "../_layout/house_class.h"
+#include "../_layout/iso_tile_type_class.h"
+#include "../_layout/light_source_class.h"
 class RGBClass;
 class RadBeam;
 class RadSiteClass;

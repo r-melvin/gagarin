@@ -3,9 +3,9 @@
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x487D00, 0x480A30),
 //   cross-checked against YRpp (reconfirmed
-//   numerically here). CellClass derives AbstractClass.
+//   numerically here). CellView_00480A30 derives AbstractClass.
 //
-// CellClass — radiation / cell-coordinate helpers. This TU models only the
+// CellView_00480A30 — radiation / cell-coordinate helpers. This TU models only the
 // members the two matched methods touch:
 //   * MapCoords @0x24 (CellStruct, 4 bytes) — read by GetCellCoords
 //   * RadLevel  @0xF0 (double)              — clamped by RadLevel_Decrease
@@ -29,7 +29,7 @@ struct Point2D
 // Vector3D<int> — the world-coordinate out buffer filled by GetCellCoords.
 #include "../_layout/coord_struct.h"
 
-class CellClass
+class CellView_00480A30
 {
 public:
     char       _base[0x24];                 // +0x00  AbstractClass (vtable + base)
@@ -37,7 +37,7 @@ public:
     char       _pad28[0xF0 - 0x28];          // +0x28
     double     RadLevel;                     // +0xF0  clamped by RadLevel_Decrease
 
-    // 0x47B3A0  CellClass::GetFloorHeight — retail callee we are NOT matching;
+    // 0x47B3A0  CellView_00480A30::GetFloorHeight — retail callee we are NOT matching;
     // declared (no body) so cl emits a relocatable __thiscall call.
     int GetFloorHeight(Point2D const& subcoords) const;
 
@@ -47,7 +47,7 @@ public:
     void RadLevel_Decrease(double amount);
 };
 
-GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
-GG_STATIC_ASSERT(offsetof(CellClass, RadLevel) == 0xF0);
+GG_STATIC_ASSERT(offsetof(CellView_00480A30, MapCoords) == 0x24);
+GG_STATIC_ASSERT(offsetof(CellView_00480A30, RadLevel) == 0xF0);
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_RAD_METHODS_H

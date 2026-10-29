@@ -16,12 +16,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class HouseClass
-{
-public:
-    char _pad000[0x30];    // +0x0000
-    int  ArrayIndex;       // +0x0030
-};
+#include "../_layout/house_class.h"
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
 
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.

@@ -21,6 +21,15 @@ class TubeClass : public AbstractClass
 public:
     TubeClass(const TubeCell* cell, int direction);
     virtual ~TubeClass();
+    // The stream loader's in-place construction: the base only (retail 0x410170).
+    struct LoadTag {};
+    TubeClass(LoadTag) {}
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    virtual HRESULT __stdcall Load(IStream* pStm);                     // 5   0x7281A0
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x7281E0
+    virtual int vf_11();
+    virtual int vf_12();
+    virtual void vf_13(struct Obj_004A1D30* crc);                      // 13  0x728630
     TubeCell StartCell;      // +0x24
     TubeCell EndCell;        // +0x28
     int Direction;           // +0x2C
