@@ -11,8 +11,6 @@
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
-extern char VT_007E3584;   // VTABLE: GAMEMD 0x7E3584 — this class
-extern char VT_007E35A8;   // VTABLE: GAMEMD 0x7E35A8 — the base
 
 // ---------------------------------------------------------------------------
 // 0x41C3F0 — snap an all-zero triple to a default.
@@ -80,14 +78,33 @@ GG_STATIC_ASSERT(sizeof(AnimFrameEntry_00426990) == 6);
 
 struct SlotRgb_00426670
 {
+    SlotRgb_00426670() : R(0), G(0), B(0) {}
     unsigned char R;
     unsigned char G;
     unsigned char B;
 };
 
-struct AnimFile_00426750
+// VTABLE: GAMEMD 0x7E35A8
+// The abstract base of AnimFile (RTTI). Its destructor is empty and the other seven slots are the
+// CRT pure-call stub (0x4C9150). Only the compiler-generated deleting destructor 0x427270 is
+// emitted for it, beside the AnimFile constructor that seats its vtable.
+class Animate
 {
-    char*             Vtable;      // +0x0000
+public:
+    virtual ~Animate() {}
+    virtual bool vf_1(Delegate_00426750* delegate) = 0;
+    virtual void vf_2() = 0;
+    virtual int* vf_3() = 0;
+    virtual int vf_4(int arg) = 0;
+    virtual int vf_5() = 0;
+    virtual int vf_6() = 0;
+    virtual int vf_7() = 0;
+};
+
+// VTABLE: GAMEMD 0x7E3584
+class AnimFile_00426750 : public Animate
+{
+public:
     char              _pad004[0x84 - 0x04];
     Delegate_00426750* Delegate;   // +0x0084
     char              Retired;     // +0x0088
@@ -102,22 +119,29 @@ struct AnimFile_00426750
     int               Mark1;       // +0x0E14
     int               Mark2;       // +0x0E18
 
-    // FUNCTION: GAMEMD 0x426670 — the constructor: base vtable, clear the
-    // delegate, flags and slot table, then this class's vtable.
+    // FUNCTION: GAMEMD 0x426670 -- the constructor.
     AnimFile_00426750();
+    // The destructor; the scalar deleting destructor 0x4272A0 is compiler output.
+    virtual ~AnimFile_00426750();
 
-    // FUNCTION: GAMEMD 0x4267F0 — declared as a member so the tail position
+    // The teardown shared by the destructor and slot 2.
+    void Release();
+
+    // FUNCTION: GAMEMD 0x4267F0 -- declared as a member so the tail position
     // stays a `CALL`.
     bool FUN_004267F0();
 
-    // FUNCTION: GAMEMD 0x426750
-    bool FUN_00426750(Delegate_00426750* delegate);
-    // FUNCTION: GAMEMD 0x4266D0 — the destructor: the 0x426790 teardown with
-    // this class's vtable installed first and the base's last.
-    void FUN_004266D0();
-    // FUNCTION: GAMEMD 0x426790
-    void FUN_00426790();
-    // FUNCTION: GAMEMD 0x426E00 — position the delegate on a frame and read it.
+    // FUNCTION: GAMEMD 0x426750 -- slot 1
+    virtual bool vf_1(Delegate_00426750* delegate);
+    // FUNCTION: GAMEMD 0x426790 -- slot 2: the teardown
+    virtual void vf_2();
+    // Slots 3-7 are defined elsewhere (0x427290, 0x426A90, 0x426A70, 0x426A50, 0x426A80).
+    virtual int* vf_3();
+    virtual int vf_4(int arg);
+    virtual int vf_5();
+    virtual int vf_6();
+    virtual int vf_7();
+    // FUNCTION: GAMEMD 0x426E00 -- position the delegate on a frame and read it.
     bool FUN_00426E00(int frame);
 };
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Retired) == 0x88);

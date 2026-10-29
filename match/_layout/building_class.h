@@ -320,7 +320,7 @@ public:
     signed char    Translucency;          // +0x6ED ctor @0x0043B9A9
     unsigned char  align_6EE[2];          // +0x6EE
     unsigned int   StorageFilledSlots;    // +0x6F0 ctor @0x0043B9AF
-    void*          SecretProduction;      // +0x6F4 TechnoTypeClass*; ctor @0x0043B9B5
+    const void*    SecretProduction;      // +0x6F4 TechnoTypeClass*; ctor @0x0043B9B5
     ColorStruct    ColorAdd;              // +0x6F8 (3) ctor @0x0043B9BB/0x0043B9C1/0x0043B9C7
     unsigned char  align_6FB;             // +0x6FB
     int            unknown_int_6FC;       // +0x6FC ctor @0x0043B9CD

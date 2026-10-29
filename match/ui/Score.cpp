@@ -123,44 +123,6 @@ GG_STATIC_ASSERT(offsetof(BlinkCursorHost_0068FFE0, CursorColor) == 0x18);
 
 #include "../core/trivial_tu202_methods.h"
 
-// VTABLE: GAMEMD 0x7E4AB8
-class CampaignEndScoreClass
-{
-public:
-    ~CampaignEndScoreClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x7E4AAC
-class CampaignScoreClass
-{
-public:
-    ~CampaignScoreClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x7F0EDC
-class ScoreAnimClass
-{
-public:
-    ~ScoreAnimClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x007F0EC8
-class ScoreTimeClass : public ScoreAnimClass
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x007F0EB4
-class ScorePrintClass : public ScoreAnimClass
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
@@ -277,37 +239,4 @@ void Obj_00690F20::FUN_00690F20()
     {
         FUN_007C93E8(unknown_00);
     }
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x690FE0 -- ScoreAnimClass scalar deleting destructor
-void* ScoreAnimClass::DeletingDtor(unsigned int flags)
-{
-    this->~ScoreAnimClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x691000 -- ScoreTimeClass scalar deleting destructor
-void* ScoreTimeClass::DeletingDtor(unsigned int flags)
-{
-    this->~ScoreTimeClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x691020 -- ScorePrintClass scalar deleting destructor
-void* ScorePrintClass::DeletingDtor(unsigned int flags)
-{
-    this->~ScorePrintClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
 }

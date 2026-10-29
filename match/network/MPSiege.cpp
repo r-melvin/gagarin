@@ -265,7 +265,7 @@ bool MultiplayerSiege::SpawnBaseUnits(HouseClass* house, int unknown)
         return MultiplayerGameMode::SpawnBaseUnits(house, unknown);
     }
 
-    BuildingTypeClass* type = house->FUN_005051E0(DAT_008871E0->unknown_8AC);
+    BuildingTypeClass* type = house->FUN_005051E0(&DAT_008871E0->list_08AC);
     if (type == 0) {
         return false;
     }

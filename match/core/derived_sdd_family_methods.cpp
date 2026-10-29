@@ -127,30 +127,6 @@ template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_Camp
 struct Tag_rc_ptr_WorldDominationTour_State;
 template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_State>;
 
-// FUNCTION: GAMEMD 0x00766930
-// rc_ptr<WorldDominationTour::Conflict> -- seats its own vtable, retail 0x007F6F34; locator 0x0080D700 -> type
-//   descriptor 0x008480B8 `.?AV?$rc_ptr@VConflict@WorldDominationTour@@@@`. Base rc_ptr_base, whose destructor is 0x0065D460.
-struct Tag_rc_ptr_WorldDominationTour_Conflict;
-template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_Conflict>;
-
-// FUNCTION: GAMEMD 0x00766960
-// rc_ptr<WorldDominationTour::ValueGameOption<unsigned char>> -- seats its own vtable, retail 0x007F701C; locator 0x0080DA90 -> type
-//   descriptor 0x008483E8 `.?AV?$rc_ptr@V?$ValueGameOption@E@WorldDominationTour@@@@`. Base rc_ptr_base, whose destructor is 0x0065D460.
-struct Tag_rc_ptr_WorldDominationTour_ValueGameOption_unsigned_char;
-template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_ValueGameOption_unsigned_char>;
-
-// FUNCTION: GAMEMD 0x00766990
-// rc_ptr<WorldDominationTour::FlagGameOption> -- seats its own vtable, retail 0x007F7014; locator 0x0080D9F0 -> type
-//   descriptor 0x00848368 `.?AV?$rc_ptr@VFlagGameOption@WorldDominationTour@@@@`. Base rc_ptr_base, whose destructor is 0x0065D460.
-struct Tag_rc_ptr_WorldDominationTour_FlagGameOption;
-template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_FlagGameOption>;
-
-// FUNCTION: GAMEMD 0x007669C0
-// rc_ptr<WorldDominationTour::MapSizeGameOption> -- seats its own vtable, retail 0x007F7040; locator 0x0080DB28 -> type
-//   descriptor 0x00848560 `.?AV?$rc_ptr@VMapSizeGameOption@WorldDominationTour@@@@`. Base rc_ptr_base, whose destructor is 0x0065D460.
-struct Tag_rc_ptr_WorldDominationTour_MapSizeGameOption;
-template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_MapSizeGameOption>;
-
 // FUNCTION: GAMEMD 0x007678C0
 // WorldDominationTour::GameOption -- seats its own vtable, retail 0x007F7060; locator 0x0080DB60 -> type
 //   descriptor 0x008485A0 `.?AVGameOption@WorldDominationTour@@`. Base ReferenceCounted, whose destructor is 0x0065D660.

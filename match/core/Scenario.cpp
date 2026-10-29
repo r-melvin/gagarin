@@ -1555,12 +1555,12 @@ void __fastcall FUN_00686890(bool value)
         HouseClass_ArrayItems[index]->Base.unknown_74 = HouseClass_ArrayItems[index];
         HouseClass* house = HouseClass_ArrayItems[index];
         if (!house->IsHumanPlayer && !house->Type->MultiplayPassive) {
-            house->Unknown_Timer_5640 = CDTimerClass(RulesInstance->unknown_1178[house->AIDifficulty]);
+            house->Unknown_Timer_5640 = CDTimerClass(RulesInstance->list_1174.Items[house->AIDifficulty]);
             // 0x686A33..3C dereferences the known-live House then uses its
             // IHouse subobject at +0x24; reference conversion preserves that ABI.
             int money = static_cast<IHouse&>(*HouseClass_ArrayItems[index]).vf_06();
             house = HouseClass_ArrayItems[index];
-            house->FUN_004F9950((int)(money * (RulesInstance->unknown_1308[house->AIDifficulty] * 0.01)));
+            house->FUN_004F9950((int)(money * (RulesInstance->list_1304.Items[house->AIDifficulty] * 0.01)));
         }
         if (HouseClass_ArrayItems[index]->Type->MultiplayPassive)
             HouseClass_ArrayItems[index]->Type->WallOwner = false;
@@ -2447,7 +2447,7 @@ GG_STATIC_ASSERT(sizeof(ScenarioConvert_00555DA0) == 0x1B4);
 // FUNCTION: GAMEMD 0x68C050
 void __fastcall FUN_0068C050()
 {
-    void* selected = 0;
+    const void* selected = 0;
     if (DAT_008B41F0 > 0 && RulesInstance->unknown_D54 > 0 &&
         RulesInstance->unknown_D54 >= DAT_008B41F0) {
         DynamicVectorClass<int> choices(0, 0);
@@ -2456,14 +2456,14 @@ void __fastcall FUN_0068C050()
         for (i = 0; i < DAT_008B41F0; ++i) {
             int index = ScenarioInstance->unknown_0218.RandomRanged(0, choices.Count - 1);
             choices.Delete(index);
-            if (index + 1 > RulesInstance->unknown_D10) {
-                index -= RulesInstance->unknown_D10;
-                if (index + 1 > RulesInstance->unknown_D2C) {
-                    index -= RulesInstance->unknown_D2C;
-                    if (index + 1 <= RulesInstance->unknown_D48)
-                        selected = RulesInstance->unknown_D3C[index];
-                } else selected = RulesInstance->unknown_D20[index];
-            } else selected = RulesInstance->unknown_D04[index];
+            if (index + 1 > RulesInstance->list_0D00.Count) {
+                index -= RulesInstance->list_0D00.Count;
+                if (index + 1 > RulesInstance->list_0D1C.Count) {
+                    index -= RulesInstance->list_0D1C.Count;
+                    if (index + 1 <= RulesInstance->list_0D38.Count)
+                        selected = RulesInstance->list_0D38.Items[index];
+                } else selected = RulesInstance->list_0D1C.Items[index];
+            } else selected = RulesInstance->list_0D00.Items[index];
             if (selected) DAT_008B41E4[i]->SecretProduction = selected;
         }
     }

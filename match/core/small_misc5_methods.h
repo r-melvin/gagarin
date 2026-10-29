@@ -50,13 +50,4 @@ struct Obj_00432C50
 };
 GG_STATIC_ASSERT(offsetof(Obj_00432C50, unknown_30) == 0x30);
 
-struct Obj_0046D330
-{
-    char* _vtable;      // +0x0000
-    int   unknown_04;   // +0x0004
-
-    // FUNCTION: GAMEMD 0x46D330
-    Obj_0046D330* FUN_0046D330();
-};
-
 #endif  // GG_MATCH_CORE_SMALL_MISC5_METHODS_H

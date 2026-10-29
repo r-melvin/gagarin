@@ -91,22 +91,6 @@ public:                                                                   \
 
 #define GG_SEATNULL_BODY(TAG) SeatNull_##TAG::SeatNull_##TAG() : unknown_00(0) {}
 
-// VTABLE: GAMEMD 0x007EBF04
-GG_SEAT0_DECL(007EBF04);
-GG_STATIC_ASSERT(sizeof(Seat0_007EBF04) == 0x4);
-
-// VTABLE: GAMEMD 0x007EBF2C
-GG_SEAT0_DECL(007EBF2C);
-GG_STATIC_ASSERT(sizeof(Seat0_007EBF2C) == 0x4);
-
-// VTABLE: GAMEMD 0x007EBF54
-GG_SEAT0_DECL(007EBF54);
-GG_STATIC_ASSERT(sizeof(Seat0_007EBF54) == 0x4);
-
-// VTABLE: GAMEMD 0x007EBF7C
-GG_SEAT0_DECL(007EBF7C);
-GG_STATIC_ASSERT(sizeof(Seat0_007EBF7C) == 0x4);
-
 // VTABLE: GAMEMD 0x007F0DCC
 GG_SEAT0A_DECL(007F0DCC);
 GG_STATIC_ASSERT(sizeof(Seat0A_007F0DCC) == 0x4);
@@ -130,31 +114,6 @@ GG_STATIC_ASSERT(sizeof(Seat0A_007F0D3C) == 0x4);
 // VTABLE: GAMEMD 0x007E4DD8
 GG_SEAT0A_DECL(007E4DD8);
 GG_STATIC_ASSERT(sizeof(Seat0A_007E4DD8) == 0x4);
-
-// VTABLE: GAMEMD 0x007EB84C
-GG_SEAT1_DECL(007EB84C);
-GG_STATIC_ASSERT(offsetof(Seat1_007EB84C, unknown_04) == 0x4 &&
-                 sizeof(Seat1_007EB84C) == 0x8);
-
-// VTABLE: GAMEMD 0x007EBE64
-GG_SEAT1_DECL(007EBE64);
-GG_STATIC_ASSERT(offsetof(Seat1_007EBE64, unknown_04) == 0x4 &&
-                 sizeof(Seat1_007EBE64) == 0x8);
-
-// VTABLE: GAMEMD 0x007EBE8C
-GG_SEAT1_DECL(007EBE8C);
-GG_STATIC_ASSERT(offsetof(Seat1_007EBE8C, unknown_04) == 0x4 &&
-                 sizeof(Seat1_007EBE8C) == 0x8);
-
-// VTABLE: GAMEMD 0x007EBEB4
-GG_SEAT1_DECL(007EBEB4);
-GG_STATIC_ASSERT(offsetof(Seat1_007EBEB4, unknown_04) == 0x4 &&
-                 sizeof(Seat1_007EBEB4) == 0x8);
-
-// VTABLE: GAMEMD 0x007EBEDC
-GG_SEAT1_DECL(007EBEDC);
-GG_STATIC_ASSERT(offsetof(Seat1_007EBEDC, unknown_04) == 0x4 &&
-                 sizeof(Seat1_007EBEDC) == 0x8);
 
 // VTABLE: GAMEMD 0x007F72C4
 GG_SEAT2_DECL(007F72C4);
@@ -189,15 +148,6 @@ GG_STATIC_ASSERT(offsetof(SeatNull_0074FF30, unknown_00) == 0x0 &&
 // Address -> class map. A constructor cannot be redeclared at namespace scope,
 // so the reccmp `// FUNCTION:` annotations live on the bodies in the .cpp; this
 // is the index.
-//   0x00535C00  ->  Seat1_007EB84C
-//   0x00535FC0  ->  Seat1_007EBE64
-//   0x005360B0  ->  Seat1_007EBE8C
-//   0x005361A0  ->  Seat1_007EBEB4
-//   0x00536290  ->  Seat1_007EBEDC
-//   0x00537B40  ->  Seat0_007EBF04
-//   0x00537DD0  ->  Seat0_007EBF2C
-//   0x00537E70  ->  Seat0_007EBF54
-//   0x00537F10  ->  Seat0_007EBF7C
 //   0x006406E0  ->  SeatNull_006406E0
 //   0x00717BC0  ->  Seat0A_007F0DCC
 //   0x00717BD0  ->  Seat0A_007E4E78

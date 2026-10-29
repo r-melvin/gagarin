@@ -20,6 +20,7 @@ class Territory;
 // ---------------------------------------------------------------------------
 // 0x76F030: copy constructor of rc_ptr<WorldDominationTour::Territory>.
 // FUNCTION: GAMEMD 0x76F030
+// FUNCTION: GAMEMD 0x76F060 -- the destructor of the same instantiation
 // (the explicit instantiation below emits the copy constructor)
 template class rc_ptr<WorldDominationTour::Territory>;
 

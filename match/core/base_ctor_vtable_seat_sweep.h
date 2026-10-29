@@ -50,10 +50,5 @@ struct CtorSeatObject
 };
 GG_STATIC_ASSERT(offsetof(CtorSeatObject, Vtbl) == 0x0);
 
-CtorSeatObject* FUN_00765C70(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x765C70
-CtorSeatObject* FUN_007670D0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x7670D0
-CtorSeatObject* FUN_0076A7C0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x76A7C0
-CtorSeatObject* FUN_0076BC60(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x76BC60
-CtorSeatObject* FUN_0077D1D0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x77D1D0
 
 #endif  // GG_MATCH_CORE_BASE_CTOR_VTABLE_SEAT_SWEEP_H

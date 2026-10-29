@@ -1580,10 +1580,6 @@ GG_STATIC_ASSERT(offsetof(UnitClass, Type) == 0x6c4);
 GG_STATIC_ASSERT(sizeof(((UnitClass*)0)->Type) == 4);
 GG_STATIC_ASSERT(offsetof(BuildingClass, Type) == 0x520);
 GG_STATIC_ASSERT(sizeof(((BuildingClass*)0)->Type) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_140) == 0x140);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_140) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14C) == 0x14c);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_14C) == 4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_214) == 0x214);
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_214) == 4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_350) == 0x350);
@@ -2235,9 +2231,9 @@ debris_phase_469d06:
                     animationPosition.Z += 0x14;
                     const int animationIndex =
                         DAT_00A8B230->unknown_0218.RandomRanged(
-                            0, Rules->unknown_14C - 1);
+                            0, Rules->list_013C.Count - 1);
                     new (storage) AnimClass(
-                        Rules->unknown_140[animationIndex],
+                        const_cast<AnimTypeClass*>(Rules->list_013C.Items[animationIndex]),
                         animationPosition, 0, 1, 0x600, 0, false);
                 }
                 --remainingDebris;

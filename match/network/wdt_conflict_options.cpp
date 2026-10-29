@@ -35,10 +35,26 @@ typedef rc_ptr<Conflict> ConflictPtr;
 // DynamicVectorClass<rc_ptr<Conflict> >::FindItemIndex
 // FUNCTION: GAMEMD 0x765BB0
 // rc_ptr<Conflict>: the deleting destructor the compiler emits for it.
+// FUNCTION: GAMEMD 0x765C70
+// rc_ptr<Conflict>: default constructor (base constructor, then the derived vtable seat).
+// SYNTHETIC: GAMEMD 0x766930 -- rc_ptr<Conflict>::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x766960 -- rc_ptr<ValueGameOption<unsigned char>>::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x766990 -- rc_ptr<FlagGameOption>::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x7669C0 -- rc_ptr<MapSizeGameOption>::`scalar deleting destructor'
+// FUNCTION: GAMEMD 0x7668F0
+// rc_ptr<GameOption>: destructor (stores the vtable, tail-calls the base destructor).
+// FUNCTION: GAMEMD 0x766900
+// rc_ptr<FlagGameOption>: destructor.
+// FUNCTION: GAMEMD 0x766910
+// rc_ptr<MapSizeGameOption>: destructor.
 // FUNCTION: GAMEMD 0x765C90
 // VectorClass<rc_ptr<Conflict> >::VectorClass
 template class VectorClass<ConflictPtr>;
 template class DynamicVectorClass<ConflictPtr>;
+template class rc_ptr<Conflict>;
+template class rc_ptr<WorldDominationTour::ValueGameOption<unsigned char> >;
+template class rc_ptr<WorldDominationTour::FlagGameOption>;
+template class rc_ptr<WorldDominationTour::MapSizeGameOption>;
 
 // FUNCTION: GAMEMD 0x765F60
 // Wraps a new Conflict over the territory; the result is the hidden first
@@ -104,4 +120,6 @@ template class DynamicVectorClass<GameOptionPtr>;
 // rc_ptr<GameOption> copy constructor
 // FUNCTION: GAMEMD 0x767010
 // rc_ptr<GameOption> vector deleting destructor
+// FUNCTION: GAMEMD 0x7670D0
+// rc_ptr<GameOption>: default constructor.
 template class rc_ptr<WorldDominationTour::GameOption>;

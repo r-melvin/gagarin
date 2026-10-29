@@ -128,7 +128,7 @@ void ObjectClass::vf_23()
                         anim->Value = ((AnimTypeClass*)anim->Type)->RunningFrames * 8 + 1;
                         CoordStruct coord = anim->Location;
                         if (DAT_0087F7E8.FUN_00565730(&coord)->LandType == 2) {
-                            new AnimClass(DAT_008871E0->unknown_BC4[0], CoordRaised(anim->Location, 3), 0, 1, 0x600, 0, false);
+                            new AnimClass(const_cast<AnimTypeClass*>(DAT_008871E0->list_0BC0.Items[0]), CoordRaised(anim->Location, 3), 0, 1, 0x600, 0, false);
                         }
                     }
                 }

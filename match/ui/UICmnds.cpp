@@ -427,7 +427,7 @@ void __cdecl FUN_007315A0()
             UnitClass* object = DAT_008B4108.Items[i];
             if (object && !object->InLimbo && object->Owner->IsControlledByCurrentPlayer()) {
                 for (int j = 0; j < RulesInstance->unknown_B20.Count; ++j)
-                    if (RulesInstance->unknown_B20.Items[j] == object->Type) { second = object->vf_18(); found = true; break; }
+                    if (RulesInstance->unknown_B20.Items[j] == static_cast<const UnitTypeClass*>(object->Type)) { second = object->vf_18(); found = true; break; }
             }
         }
     }

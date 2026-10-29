@@ -134,15 +134,6 @@ int FUN_0076F020(LeafObj_0x04* self)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76F060
-// VTABLE: GAMEMD 0x7F71C4
-void FUN_0076F060(SeatDtorObject* self)
-{
-    self->Vtbl = VTABLE_007F71C4;
-    FUN_0065D460(self);
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76F070
 int FUN_0076F070(LeafObj_0x04* self)
 {

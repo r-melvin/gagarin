@@ -105,9 +105,9 @@ bool __stdcall DropPodLocomotionClass::Process()
         }
         new DropPodAnimAllocationView(RulesInstance->LandAnim, &loc, 0, 1, 0x600, 0, false);
         if (unknown_1C)
-            new DropPodAnimAllocationView(RulesInstance->TouchdownAnims[1], &loc, 0, 1, 0x600, 0, false);
+            new DropPodAnimAllocationView(const_cast<AnimTypeClass*>(RulesInstance->TouchdownAnims.Items[1]), &loc, 0, 1, 0x600, 0, false);
         else
-            new DropPodAnimAllocationView(RulesInstance->TouchdownAnims[0], &loc, 0, 1, 0x600, 0, false);
+            new DropPodAnimAllocationView(const_cast<AnimTypeClass*>(RulesInstance->TouchdownAnims.Items[0]), &loc, 0, 1, 0x600, 0, false);
         foot->vf_124(1);
         foot->vf_1CC(0);
         foot->vf_484(0, 1);

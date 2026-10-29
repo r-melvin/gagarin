@@ -20,14 +20,6 @@
 // touched, so there is no layout to assert.
 
 
-// VTABLE: GAMEMD 0x7E35A8
-class Animate
-{
-public:
-    ~Animate() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
 // VTABLE: GAMEMD 0x7EF720
 namespace OwnerDraw {
 class DialogControl
@@ -62,16 +54,6 @@ class SimpleDialogControl : public DialogControl
 public:
     virtual void* DeletingDtor(unsigned int flags);
 };
-}
-
-// FUNCTION: GAMEMD 0x427270 -- Animate scalar deleting destructor
-void* Animate::DeletingDtor(unsigned int flags)
-{
-    this->~Animate();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x4E8270 -- VersionClass scalar deleting destructor

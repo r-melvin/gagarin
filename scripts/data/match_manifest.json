@@ -2139,18 +2139,18 @@
  {
   "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x6616B0",
-  "sym": "?Construct@RandomStraw@@QAEPAV1@XZ",
+  "sym": "??0RandomStraw@@QAE@XZ",
   "len": "0x50",
-  "name": "Construct",
+  "name": "RandomStraw::RandomStraw",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x661700",
-  "sym": "?Destruct@RandomStraw@@QAEXXZ",
+  "sym": "??1RandomStraw@@UAE@XZ",
   "len": "0x24",
-  "name": "Destruct",
+  "name": "RandomStraw::~RandomStraw",
   "status": "matched",
   "pct": 100
  },
@@ -2220,18 +2220,18 @@
  {
   "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x661C10",
-  "sym": "?Get@RandomStraw@@QAEHPAXH@Z",
+  "sym": "?FUN_006C98E0@RandomStraw@@UAEHPAXH@Z",
   "len": "0x58",
-  "name": "Get",
+  "name": "RandomStraw::FUN_006C98E0",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x661C70",
-  "sym": "?ScalarDeletingDestructor@RandomStraw@@QAEPAXE@Z",
+  "sym": "??_GRandomStraw@@UAEPAXI@Z",
   "len": "0x3a",
-  "name": "ScalarDeletingDestructor",
+  "name": "RandomStraw::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -3048,49 +3048,49 @@
   "pct": 100
  },
  {
-  "tu": "match/core/base_ctor_vtable_seat_sweep.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x765C70",
-  "sym": "?FUN_00765C70@@YIPAUCtorSeatObject@@PAU1@@Z",
+  "sym": "??0?$rc_ptr@VConflict@WorldDominationTour@@@@QAE@XZ",
   "len": "0x12",
-  "name": "FUN_00765c70",
+  "name": "rc_ptr<Conflict>::rc_ptr",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/base_ctor_vtable_seat_sweep.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x7670D0",
-  "sym": "?FUN_007670D0@@YIPAUCtorSeatObject@@PAU1@@Z",
+  "sym": "??0?$rc_ptr@VGameOption@WorldDominationTour@@@@QAE@XZ",
   "len": "0x12",
-  "name": "FUN_007670d0",
+  "name": "rc_ptr<GameOption>::rc_ptr",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/base_ctor_vtable_seat_sweep.cpp",
+  "tu": "match/core/vector_wdt_territory_methods.cpp",
   "addr": "0x76A7C0",
-  "sym": "?FUN_0076A7C0@@YIPAUCtorSeatObject@@PAU1@@Z",
+  "sym": "??0?$rc_ptr@VTerritory@WorldDominationTour@@@@QAE@XZ",
   "len": "0x12",
-  "name": "FUN_0076a7c0",
+  "name": "rc_ptr<Territory>::rc_ptr",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/base_ctor_vtable_seat_sweep.cpp",
+  "tu": "match/network/wdt_net.cpp",
   "addr": "0x76BC60",
-  "sym": "?FUN_0076BC60@@YIPAUCtorSeatObject@@PAU1@@Z",
+  "sym": "??0?$rc_ptr@VWDTTerritory@@@@QAE@XZ",
   "len": "0x12",
-  "name": "FUN_0076bc60",
+  "name": "rc_ptr<WDTTerritory>::rc_ptr",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D1D0",
-  "sym": "?FUN_0077D1D0@@YIPAUCtorSeatObject@@PAU1@@Z",
+  "sym": "??0SimpleWonlineDialogControl@@QAE@XZ",
   "len": "0x12",
-  "name": "FUN_0077d1d0",
+  "name": "SimpleWonlineDialogControl::SimpleWonlineDialogControl",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/audio/format_store_methods.cpp",
@@ -3390,22 +3390,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/small_misc46_methods.cpp",
   "addr": "0x42DBB0",
-  "sym": "?FUN_0042DBB0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@G@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0042DBB0",
+  "name": "VectorClass<unsigned short>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/small_misc46_methods.cpp",
   "addr": "0x42DC00",
-  "sym": "?FUN_0042DC00@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@G@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0042DC00",
+  "name": "DynamicVectorClass<unsigned short>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
@@ -5623,38 +5623,38 @@
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x00766930",
-  "sym": "??_G?$DerivedSdd@UBase_rc_ptr_base@@UTag_rc_ptr_WorldDominationTour_Conflict@@@@UAEPAXI@Z",
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766930",
+  "sym": "??_G?$rc_ptr@VConflict@WorldDominationTour@@@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_rc_ptr_WorldDominationTour_Conflict>::scalar deleting destructor",
+  "name": "rc_ptr<Conflict>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x00766960",
-  "sym": "??_G?$DerivedSdd@UBase_rc_ptr_base@@UTag_rc_ptr_WorldDominationTour_ValueGameOption_unsigned_char@@@@UAEPAXI@Z",
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766960",
+  "sym": "??_G?$rc_ptr@V?$ValueGameOption@E@WorldDominationTour@@@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_rc_ptr_WorldDominationTour_ValueGameOption_unsigned_char>::scalar deleting destructor",
+  "name": "rc_ptr<ValueGameOption<unsigned char>>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x00766990",
-  "sym": "??_G?$DerivedSdd@UBase_rc_ptr_base@@UTag_rc_ptr_WorldDominationTour_FlagGameOption@@@@UAEPAXI@Z",
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766990",
+  "sym": "??_G?$rc_ptr@VFlagGameOption@WorldDominationTour@@@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_rc_ptr_WorldDominationTour_FlagGameOption>::scalar deleting destructor",
+  "name": "rc_ptr<FlagGameOption>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x007669c0",
-  "sym": "??_G?$DerivedSdd@UBase_rc_ptr_base@@UTag_rc_ptr_WorldDominationTour_MapSizeGameOption@@@@UAEPAXI@Z",
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x7669C0",
+  "sym": "??_G?$rc_ptr@VMapSizeGameOption@WorldDominationTour@@@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_rc_ptr_WorldDominationTour_MapSizeGameOption>::scalar deleting destructor",
+  "name": "rc_ptr<MapSizeGameOption>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -10501,29 +10501,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x7668F0",
-  "sym": "?FUN_007668F0@@YIXPAUSeatDtorObject@@@Z",
+  "sym": "??1?$rc_ptr@VGameOption@WorldDominationTour@@@@UAE@XZ",
   "len": "0xb",
-  "name": "FUN_007668f0",
+  "name": "rc_ptr<GameOption>::~rc_ptr",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x766900",
-  "sym": "?FUN_00766900@@YIXPAUSeatDtorObject@@@Z",
+  "sym": "??1?$rc_ptr@VFlagGameOption@WorldDominationTour@@@@UAE@XZ",
   "len": "0xb",
-  "name": "FUN_00766900",
+  "name": "rc_ptr<FlagGameOption>::~rc_ptr",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x766910",
-  "sym": "?FUN_00766910@@YIXPAUSeatDtorObject@@@Z",
+  "sym": "??1?$rc_ptr@VMapSizeGameOption@WorldDominationTour@@@@UAE@XZ",
   "len": "0xb",
-  "name": "FUN_00766910",
+  "name": "rc_ptr<MapSizeGameOption>::~rc_ptr",
   "status": "matched",
   "pct": 100
  },
@@ -10537,22 +10537,22 @@
   "pct": 100
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/s1_quick_sweep.cpp",
   "addr": "0x76F060",
-  "sym": "?FUN_0076F060@@YIXPAUSeatDtorObject@@@Z",
+  "sym": "??1?$rc_ptr@VTerritory@WorldDominationTour@@@@UAE@XZ",
   "len": "0xb",
-  "name": "FUN_0076f060",
+  "name": "rc_ptr<Territory>::~rc_ptr",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D1F0",
-  "sym": "?FUN_0077D1F0@@YIXPAUSeatDtorObject@@@Z",
-  "len": "0xb",
-  "name": "FUN_0077d1f0",
+  "sym": "??1SimpleWonlineDialogControl@@UAE@XZ",
+  "len": "0xB",
+  "name": "SimpleWonlineDialogControl::~SimpleWonlineDialogControl",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/slot_array_factory_methods.cpp",
@@ -11295,28 +11295,19 @@
  },
  {
   "tu": "match/core/small_misc38_methods.cpp",
-  "addr": "0x4266d0",
-  "sym": "?FUN_004266D0@AnimFile_00426750@@QAEXXZ",
-  "len": "0x6b",
-  "name": "AnimFile_00426750::FUN_004266D0",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x426750",
-  "sym": "?FUN_00426750@AnimFile_00426750@@QAE_NPAUDelegate_00426750@@@Z",
+  "sym": "?vf_1@AnimFile_00426750@@UAE_NPAUDelegate_00426750@@@Z",
   "len": "0x3f",
-  "name": "AnimFile_00426750::FUN_00426750",
+  "name": "AnimFile_00426750::vf_1",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x426790",
-  "sym": "?FUN_00426790@AnimFile_00426750@@QAEXXZ",
+  "sym": "?vf_2@AnimFile_00426750@@UAEXXZ",
   "len": "0x5d",
-  "name": "AnimFile_00426750::FUN_00426790",
+  "name": "AnimFile_00426750::vf_2",
   "status": "matched",
   "pct": 100
  },
@@ -11673,12 +11664,12 @@
  },
  {
   "tu": "match/core/small_misc46_methods.cpp",
-  "addr": "0x42dd60",
-  "sym": "??0VectorClassUnsignedShort@@QAE@HPAX@Z",
+  "addr": "0x42DD60",
+  "sym": "??0?$VectorClass@G@@QAE@HPAG@Z",
   "len": "0x49",
   "name": "VectorClass<unsigned short>::VectorClass",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/ui/surface_desc_ctor_methods.cpp",
@@ -12106,11 +12097,11 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D330",
-  "sym": "?FUN_0046D330@Obj_0046D330@@QAEPAU1@XZ",
-  "len": "0x1e",
-  "name": "FUN_0046D330",
+  "sym": "??0CampaignScoreClass@@QAE@XZ",
+  "len": "0x1E",
+  "name": "CampaignScoreClass::CampaignScoreClass",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/small_misc6_methods.cpp",
@@ -12232,11 +12223,11 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x470C00",
-  "sym": "?FUN_00470C00@Obj_00470C00@@QAEPAU1@XZ",
+  "sym": "??0CampaignEndScoreClass@@QAE@XZ",
   "len": "0x21",
-  "name": "FUN_00470C00",
+  "name": "CampaignEndScoreClass::CampaignEndScoreClass",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/platform/ccfile_class.cpp",
@@ -22130,83 +22121,83 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535C00",
-  "sym": "??0Seat1_007EB84C@@QAE@H@Z",
+  "sym": "??0CreateTeamCommandClass@@QAE@H@Z",
   "len": "0x12",
-  "name": "Seat1_007EB84C::ctor",
+  "name": "CreateTeamCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535FC0",
-  "sym": "??0Seat1_007EBE64@@QAE@H@Z",
+  "sym": "??0SelectTeamCommandClass@@QAE@H@Z",
   "len": "0x12",
-  "name": "Seat1_007EBE64::ctor",
+  "name": "SelectTeamCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5360B0",
-  "sym": "??0Seat1_007EBE8C@@QAE@H@Z",
+  "sym": "??0AddTeamCommandClass@@QAE@H@Z",
   "len": "0x12",
-  "name": "Seat1_007EBE8C::ctor",
+  "name": "AddTeamCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5361A0",
-  "sym": "??0Seat1_007EBEB4@@QAE@H@Z",
+  "sym": "??0CenterTeamCommandClass@@QAE@H@Z",
   "len": "0x12",
-  "name": "Seat1_007EBEB4::ctor",
+  "name": "CenterTeamCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536290",
-  "sym": "??0Seat1_007EBEDC@@QAE@H@Z",
+  "sym": "??0TauntCommandClass@@QAE@H@Z",
   "len": "0x12",
-  "name": "Seat1_007EBEDC::ctor",
+  "name": "TauntCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537B40",
-  "sym": "??0Seat0_007EBF04@@QAE@XZ",
+  "sym": "??0ScreenCaptureCommandClass@@QAE@XZ",
   "len": "0x9",
-  "name": "Seat0_007EBF04::ctor",
+  "name": "ScreenCaptureCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537DD0",
-  "sym": "??0Seat0_007EBF2C@@QAE@XZ",
+  "sym": "??0PageUserCommandClass@@QAE@XZ",
   "len": "0x9",
-  "name": "Seat0_007EBF2C::ctor",
+  "name": "PageUserCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537E70",
-  "sym": "??0Seat0_007EBF54@@QAE@XZ",
+  "sym": "??0CursorPositionCommandClass@@QAE@XZ",
   "len": "0x9",
-  "name": "Seat0_007EBF54::ctor",
+  "name": "CursorPositionCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537F10",
-  "sym": "??0Seat0_007EBF7C@@QAE@XZ",
+  "sym": "??0DeleteCommandClass@@QAE@XZ",
   "len": "0x9",
-  "name": "Seat0_007EBF7C::ctor",
+  "name": "DeleteCommandClass::ctor",
   "status": "matched",
   "pct": 100
  },
@@ -28668,11 +28659,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/scalar_deleting_dtor_methods.cpp",
+  "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x4272A0",
-  "sym": "?Destroy@AnimFile_004272A0@@QAEPAU1@H@Z",
+  "sym": "??_GAnimFile_00426750@@UAEPAXI@Z",
   "len": "0x80",
-  "name": "AnimFile_004272A0::Destroy",
+  "name": "AnimFile_00426750::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -51606,11 +51597,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_dtor_class_ddtors.cpp",
+  "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x427270",
-  "sym": "?DeletingDtor@Animate@@UAEPAXI@Z",
+  "sym": "??_GAnimate@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "Animate::DeletingDtor",
+  "name": "Animate::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -51860,18 +51851,18 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x471500",
-  "sym": "?DeletingDtor@CampaignScoreClass@@UAEPAXI@Z",
+  "sym": "??_GCampaignScoreClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CampaignScoreClass::DeletingDtor",
+  "name": "CampaignScoreClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x471520",
-  "sym": "?DeletingDtor@CampaignEndScoreClass@@UAEPAXI@Z",
+  "sym": "??_GCampaignEndScoreClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CampaignEndScoreClass::DeletingDtor",
+  "name": "CampaignEndScoreClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -52508,423 +52499,423 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535CD0",
-  "sym": "?DeletingDtor@CreateTeamCommandClass@@UAEPAXI@Z",
+  "sym": "??_GCreateTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CreateTeamCommandClass::DeletingDtor",
+  "name": "CreateTeamCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535D00",
-  "sym": "?DeletingDtor@CommandClass@@UAEPAXI@Z",
+  "sym": "??_GCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CommandClass::DeletingDtor",
+  "name": "CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536090",
-  "sym": "?DeletingDtor@SelectTeamCommandClass@@UAEPAXI@Z",
+  "sym": "??_GSelectTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SelectTeamCommandClass::DeletingDtor",
+  "name": "SelectTeamCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536180",
-  "sym": "?DeletingDtor@AddTeamCommandClass@@UAEPAXI@Z",
+  "sym": "??_GAddTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "AddTeamCommandClass::DeletingDtor",
+  "name": "AddTeamCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536270",
-  "sym": "?DeletingDtor@CenterTeamCommandClass@@UAEPAXI@Z",
+  "sym": "??_GCenterTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CenterTeamCommandClass::DeletingDtor",
+  "name": "CenterTeamCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536580",
-  "sym": "?DeletingDtor@TauntCommandClass@@UAEPAXI@Z",
+  "sym": "??_GTauntCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "TauntCommandClass::DeletingDtor",
+  "name": "TauntCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537FA0",
-  "sym": "?DeletingDtor@MultiplayerDebugCommandClass@@UAEPAXI@Z",
+  "sym": "??_GMultiplayerDebugCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "MultiplayerDebugCommandClass::DeletingDtor",
+  "name": "MultiplayerDebugCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537FC0",
-  "sym": "?DeletingDtor@MultiplayerSyncCommandClass@@UAEPAXI@Z",
+  "sym": "??_GMultiplayerSyncCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "MultiplayerSyncCommandClass::DeletingDtor",
+  "name": "MultiplayerSyncCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537FE0",
-  "sym": "?DeletingDtor@FollowCommandClass@@UAEPAXI@Z",
+  "sym": "??_GFollowCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "FollowCommandClass::DeletingDtor",
+  "name": "FollowCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538000",
-  "sym": "?DeletingDtor@View1CommandClass@@UAEPAXI@Z",
+  "sym": "??_GView1CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "View1CommandClass::DeletingDtor",
+  "name": "View1CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538020",
-  "sym": "?DeletingDtor@View2CommandClass@@UAEPAXI@Z",
+  "sym": "??_GView2CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "View2CommandClass::DeletingDtor",
+  "name": "View2CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538040",
-  "sym": "?DeletingDtor@View3CommandClass@@UAEPAXI@Z",
+  "sym": "??_GView3CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "View3CommandClass::DeletingDtor",
+  "name": "View3CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538060",
-  "sym": "?DeletingDtor@View4CommandClass@@UAEPAXI@Z",
+  "sym": "??_GView4CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "View4CommandClass::DeletingDtor",
+  "name": "View4CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538080",
-  "sym": "?DeletingDtor@SetView1CommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetView1CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetView1CommandClass::DeletingDtor",
+  "name": "SetView1CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5380A0",
-  "sym": "?DeletingDtor@SetView2CommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetView2CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetView2CommandClass::DeletingDtor",
+  "name": "SetView2CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5380C0",
-  "sym": "?DeletingDtor@SetView3CommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetView3CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetView3CommandClass::DeletingDtor",
+  "name": "SetView3CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5380E0",
-  "sym": "?DeletingDtor@SetView4CommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetView4CommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetView4CommandClass::DeletingDtor",
+  "name": "SetView4CommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538100",
-  "sym": "?DeletingDtor@OptionsCommandClass@@UAEPAXI@Z",
+  "sym": "??_GOptionsCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "OptionsCommandClass::DeletingDtor",
+  "name": "OptionsCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538120",
-  "sym": "?DeletingDtor@SidebarUpCommandClass@@UAEPAXI@Z",
+  "sym": "??_GSidebarUpCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SidebarUpCommandClass::DeletingDtor",
+  "name": "SidebarUpCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538140",
-  "sym": "?DeletingDtor@SidebarDownCommandClass@@UAEPAXI@Z",
+  "sym": "??_GSidebarDownCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SidebarDownCommandClass::DeletingDtor",
+  "name": "SidebarDownCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538160",
-  "sym": "?DeletingDtor@CenterREventCommandClass@@UAEPAXI@Z",
+  "sym": "??_GCenterREventCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CenterREventCommandClass::DeletingDtor",
+  "name": "CenterREventCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538180",
-  "sym": "?DeletingDtor@BeaconPlacementCommandClass@@UAEPAXI@Z",
+  "sym": "??_GBeaconPlacementCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "BeaconPlacementCommandClass::DeletingDtor",
+  "name": "BeaconPlacementCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5381A0",
-  "sym": "?DeletingDtor@ToggleSellCommandClass@@UAEPAXI@Z",
+  "sym": "??_GToggleSellCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "ToggleSellCommandClass::DeletingDtor",
+  "name": "ToggleSellCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5381C0",
-  "sym": "?DeletingDtor@ToggleRepairCommandClass@@UAEPAXI@Z",
+  "sym": "??_GToggleRepairCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "ToggleRepairCommandClass::DeletingDtor",
+  "name": "ToggleRepairCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5381E0",
-  "sym": "?DeletingDtor@AllianceCommandClass@@UAEPAXI@Z",
+  "sym": "??_GAllianceCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "AllianceCommandClass::DeletingDtor",
+  "name": "AllianceCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538200",
-  "sym": "?DeletingDtor@CenterBaseCommandClass@@UAEPAXI@Z",
+  "sym": "??_GCenterBaseCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CenterBaseCommandClass::DeletingDtor",
+  "name": "CenterBaseCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538220",
-  "sym": "?DeletingDtor@CenterViewCommandClass@@UAEPAXI@Z",
+  "sym": "??_GCenterViewCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CenterViewCommandClass::DeletingDtor",
+  "name": "CenterViewCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538240",
-  "sym": "?DeletingDtor@ScatterCommandClass@@UAEPAXI@Z",
+  "sym": "??_GScatterCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "ScatterCommandClass::DeletingDtor",
+  "name": "ScatterCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538260",
-  "sym": "?DeletingDtor@GuardCommandClass@@UAEPAXI@Z",
+  "sym": "??_GGuardCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "GuardCommandClass::DeletingDtor",
+  "name": "GuardCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538280",
-  "sym": "?DeletingDtor@StopCommandClass@@UAEPAXI@Z",
+  "sym": "??_GStopCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "StopCommandClass::DeletingDtor",
+  "name": "StopCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5382A0",
-  "sym": "?DeletingDtor@AllToCheerCommandClass@@UAEPAXI@Z",
+  "sym": "??_GAllToCheerCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "AllToCheerCommandClass::DeletingDtor",
+  "name": "AllToCheerCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5382C0",
-  "sym": "?DeletingDtor@DeployCommandClass@@UAEPAXI@Z",
+  "sym": "??_GDeployCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "DeployCommandClass::DeletingDtor",
+  "name": "DeployCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5382E0",
-  "sym": "?DeletingDtor@PrevObjectCommandClass@@UAEPAXI@Z",
+  "sym": "??_GPrevObjectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "PrevObjectCommandClass::DeletingDtor",
+  "name": "PrevObjectCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538300",
-  "sym": "?DeletingDtor@NextObjectCommandClass@@UAEPAXI@Z",
+  "sym": "??_GNextObjectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "NextObjectCommandClass::DeletingDtor",
+  "name": "NextObjectCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538320",
-  "sym": "?DeletingDtor@PlanningModeCommandClass@@UAEPAXI@Z",
+  "sym": "??_GPlanningModeCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "PlanningModeCommandClass::DeletingDtor",
+  "name": "PlanningModeCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538340",
-  "sym": "?DeletingDtor@CombatantSelectCommandClass@@UAEPAXI@Z",
+  "sym": "??_GCombatantSelectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CombatantSelectCommandClass::DeletingDtor",
+  "name": "CombatantSelectCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538360",
-  "sym": "?DeletingDtor@TypeSelectCommandClass@@UAEPAXI@Z",
+  "sym": "??_GTypeSelectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "TypeSelectCommandClass::DeletingDtor",
+  "name": "TypeSelectCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538380",
-  "sym": "?DeletingDtor@HealthNavCommandClass@@UAEPAXI@Z",
+  "sym": "??_GHealthNavCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "HealthNavCommandClass::DeletingDtor",
+  "name": "HealthNavCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5383A0",
-  "sym": "?DeletingDtor@VeterancyNavCommandClass@@UAEPAXI@Z",
+  "sym": "??_GVeterancyNavCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "VeterancyNavCommandClass::DeletingDtor",
+  "name": "VeterancyNavCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5383C0",
-  "sym": "?DeletingDtor@SetStructureTabCommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetStructureTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetStructureTabCommandClass::DeletingDtor",
+  "name": "SetStructureTabCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5383E0",
-  "sym": "?DeletingDtor@SetDefenseTabCommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetDefenseTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetDefenseTabCommandClass::DeletingDtor",
+  "name": "SetDefenseTabCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538400",
-  "sym": "?DeletingDtor@SetUnitTabCommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetUnitTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetUnitTabCommandClass::DeletingDtor",
+  "name": "SetUnitTabCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538420",
-  "sym": "?DeletingDtor@SetInfantryTabCommandClass@@UAEPAXI@Z",
+  "sym": "??_GSetInfantryTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "SetInfantryTabCommandClass::DeletingDtor",
+  "name": "SetInfantryTabCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538440",
-  "sym": "?DeletingDtor@ScreenCaptureCommandClass@@UAEPAXI@Z",
+  "sym": "??_GScreenCaptureCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "ScreenCaptureCommandClass::DeletingDtor",
+  "name": "ScreenCaptureCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538460",
-  "sym": "?DeletingDtor@PageUserCommandClass@@UAEPAXI@Z",
+  "sym": "??_GPageUserCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "PageUserCommandClass::DeletingDtor",
+  "name": "PageUserCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x538480",
-  "sym": "?DeletingDtor@CursorPositionCommandClass@@UAEPAXI@Z",
+  "sym": "??_GCursorPositionCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "CursorPositionCommandClass::DeletingDtor",
+  "name": "CursorPositionCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5384A0",
-  "sym": "?DeletingDtor@DeleteCommandClass@@UAEPAXI@Z",
+  "sym": "??_GDeleteCommandClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "DeleteCommandClass::DeletingDtor",
+  "name": "DeleteCommandClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -53235,15 +53226,6 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/MapSel.cpp",
-  "addr": "0x5AE5A0",
-  "sym": "?DeletingDtor@MapSelect@@UAEPAXI@Z",
-  "len": "0x33",
-  "name": "MapSelect::DeletingDtor",
-  "status": "matched",
-  "pct": 100
- },
- {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D05D0",
   "sym": "?Slot5@?$DynamicVectorClass@UPoint2D@@@@UBEHPAUPoint2D@@@Z",
@@ -53438,24 +53420,6 @@
   "sym": "?Save@ObjectTypeClass@@UAGJPAUIStream@@H@Z",
   "len": "0x1D",
   "name": "ObjectTypeClass::Save",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/ui/ownrdraw.cpp",
-  "addr": "0x6244A0",
-  "sym": "?DeletingDtor@DialogControl@OwnerDraw@@UAEPAXI@Z",
-  "len": "0x20",
-  "name": "OwnerDraw::DialogControl::DeletingDtor",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/ui/ownrdraw.cpp",
-  "addr": "0x6244C0",
-  "sym": "?DeletingDtor@SimpleDialogControl@OwnerDraw@@UAEPAXI@Z",
-  "len": "0x20",
-  "name": "OwnerDraw::SimpleDialogControl::DeletingDtor",
   "status": "matched",
   "pct": 100
  },
@@ -53861,33 +53825,6 @@
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUConnectionListStruct@OwnerTalkClass@@@@UBEHABQAUConnectionListStruct@OwnerTalkClass@@@Z",
   "len": "0x26",
   "name": "DynamicVectorClass<OwnerTalkClass::ConnectionListStruct *>::FindItemIndex",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/ui/Score.cpp",
-  "addr": "0x690FE0",
-  "sym": "?DeletingDtor@ScoreAnimClass@@UAEPAXI@Z",
-  "len": "0x20",
-  "name": "ScoreAnimClass::DeletingDtor",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/ui/Score.cpp",
-  "addr": "0x691000",
-  "sym": "?DeletingDtor@ScoreTimeClass@@UAEPAXI@Z",
-  "len": "0x20",
-  "name": "ScoreTimeClass::DeletingDtor",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/ui/Score.cpp",
-  "addr": "0x691020",
-  "sym": "?DeletingDtor@ScorePrintClass@@UAEPAXI@Z",
-  "len": "0x20",
-  "name": "ScorePrintClass::DeletingDtor",
   "status": "matched",
   "pct": 100
  },
@@ -57539,20 +57476,11 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7AC5D0",
-  "sym": "?DeletingDtor@WonlineStringDialogControl@@UAEPAXI@Z",
+  "sym": "??_GWonlineStringDialogControl@@UAEPAXI@Z",
   "len": "0x34",
-  "name": "WonlineStringDialogControl::DeletingDtor",
+  "name": "WonlineStringDialogControl::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100.0
- },
- {
-  "tu": "match/network/wonline.cpp",
-  "addr": "0x7AC630",
-  "sym": "?DeletingDtor@CreateGameDialogControl@@UAEPAXI@Z",
-  "len": "0x34",
-  "name": "CreateGameDialogControl::DeletingDtor",
-  "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/render/blitters/blitter_ddtors.cpp",
@@ -83564,9 +83492,9 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D350",
-  "sym": "?FUN_0046D350@Obj_0046D350@@QAEXXZ",
+  "sym": "??1CampaignScoreClass@@UAE@XZ",
   "len": "0x7",
-  "name": "Obj_0046D350::FUN_0046D350",
+  "name": "CampaignScoreClass::~CampaignScoreClass",
   "status": "matched",
   "pct": 100
  },
@@ -83591,9 +83519,9 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x470C30",
-  "sym": "?FUN_00470C30@Obj_00470C30@@QAEXXZ",
+  "sym": "??1CampaignEndScoreClass@@UAE@XZ",
   "len": "0x7",
-  "name": "Obj_00470C30::FUN_00470C30",
+  "name": "CampaignEndScoreClass::~CampaignEndScoreClass",
   "status": "matched",
   "pct": 100
  },
@@ -96992,6 +96920,15 @@
   "name": "IndexClassC::IsPresent",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/Init.cpp",
+  "addr": "0x532150",
+  "sym": "?FUN_00532150@@YIXXZ",
+  "len": "0x1bce",
+  "name": "FUN_00532150",
+  "status": "partial",
+  "pct": 61
  },
  {
   "tu": "match/core/global_vector_remove_item_methods.cpp",
@@ -141559,11 +141496,11 @@
  {
   "tu": "match/economy/house_class_r16_methods.cpp",
   "addr": "0x505310",
-  "sym": "?FUN_00505310@HouseClass@@QAEPAVUnitTypeClass@@ABV?$DynamicVectorClass@PAVUnitTypeClass@@@@@Z",
+  "sym": "?FUN_00505310@HouseClass@@QAEPAVUnitTypeClass@@ABV?$DynamicVectorClass@PBVUnitTypeClass@@@@@Z",
   "len": "0x4f",
   "name": "HouseClass::FUN_00505310",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/house_class_r16_methods.cpp",
@@ -146084,19 +146021,19 @@
   "pct": 76.4
  },
  {
-  "tu": "match/core/rules_class_members_methods.cpp",
+  "tu": "match/core/rules_class_construct_methods.cpp",
   "addr": "0x664D20",
-  "sym": "??0RulesClassMembers_00664D20@@QAE@ABUAbstractNoInit@@@Z",
-  "len": "0x92A",
+  "sym": "??0RulesClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x92a",
   "name": "RulesClass::RulesClass(AbstractNoInit)",
   "status": "partial",
   "pct": 95.1
  },
  {
-  "tu": "match/core/rules_class_members_methods.cpp",
+  "tu": "match/core/rules_class_construct_methods.cpp",
   "addr": "0x667A30",
-  "sym": "??1RulesClassMembers_00664D20@@QAE@XZ",
-  "len": "0xC82",
+  "sym": "??1RulesClass@@QAE@XZ",
+  "len": "0xc82",
   "name": "RulesClass::~RulesClass",
   "status": "partial",
   "pct": 25.0
@@ -146170,6 +146107,42 @@
   "sym": "_$E2",
   "len": "0x81",
   "name": "dynamic initializer exit stub (DAT_00ABC5F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/ballistic_reach_0048abc0.cpp",
+  "addr": "0x48ABC0",
+  "sym": "?FUN_0048ABC0@@YI_NHHHN@Z",
+  "len": "0x11F",
+  "name": "FUN_0048ABC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/projectile_path_clear_004cc310.cpp",
+  "addr": "0x4CC310",
+  "sym": "?FUN_004CC310@@YIPAVCellClass@@PBUCoordStruct@@0PAVWeaponTypeClass@@PAVHouseClass@@@Z",
+  "len": "0x4A",
+  "name": "FUN_004CC310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_range_006f6f60.cpp",
+  "addr": "0x6F6F60",
+  "sym": "?FUN_006F6F60@TechnoClass@@QAEHPAVAbstractClass@@@Z",
+  "len": "0x171",
+  "name": "TechnoClass::FUN_006F6F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_range_006f6f60.cpp",
+  "addr": "0x6F70E0",
+  "sym": "?FUN_006F70E0@TechnoClass@@QAEHPAVAbstractClass@@@Z",
+  "len": "0x13D",
+  "name": "TechnoClass::FUN_006F70E0",
   "status": "matched",
   "pct": 100
  }

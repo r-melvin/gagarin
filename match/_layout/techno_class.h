@@ -646,6 +646,10 @@ public:
     void SetCurrentWeaponStage(int idx);                               // 0x70DDD0
     int  SetGattlingValue(int value);                                  // 0x70DE00
     int  TimeToBuild() const;                                          // 0x6F47A0
+    // FUNCTION: GAMEMD 0x6F6F60 -- range bonus from the height difference to a target (arcing projectiles).
+    int FUN_006F6F60(AbstractClass* target);
+    // FUNCTION: GAMEMD 0x6F70E0 -- the height-difference range bonus alone, in leptons.
+    int FUN_006F70E0(AbstractClass* target);
 };
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, DurationRemaining)        == 0xF0);

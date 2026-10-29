@@ -12,13 +12,13 @@ int __fastcall FUN_005117D0(const char* name);
 
 // FUNCTION: GAMEMD 0x505310
 // First unit type of the list whose owner mask includes this house's type.
-UnitTypeClass* HouseClass::FUN_00505310(const DynamicVectorClass<UnitTypeClass*>& types)
+UnitTypeClass* HouseClass::FUN_00505310(const DynamicVectorClass<const UnitTypeClass*>& types)
 {
     int index = FUN_005117D0(Type->ParentCountry);
     unsigned mask = 1 << index;
     for (int i = 0; i < types.Count; i++) {
         if (types.Items[i]->OwnerFlags & mask) {
-            return types.Items[i];
+            return const_cast<UnitTypeClass*>(types.Items[i]);
         }
     }
     return 0;

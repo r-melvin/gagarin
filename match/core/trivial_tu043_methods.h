@@ -9,10 +9,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_0046D350;
 struct Obj_0046D480;
 struct Obj_0046D490;
-struct Obj_00470C30;
 
 // GLOBAL: GAMEMD 0x89DFE0
 extern char DAT_0089DFE0[];
@@ -21,14 +19,6 @@ extern int DAT_0089E020;
 
 // LIBRARY: GAMEMD 0x7C8B48 (declaration)
 void __cdecl FUN_007C8B48(void*, int, int, int);
-
-struct Obj_0046D350
-{
-    int unknown_00;   // +0x0000
-    // FUNCTION: GAMEMD 0x46D350
-    void FUN_0046D350();
-};
-GG_STATIC_ASSERT(offsetof(Obj_0046D350, unknown_00) == 0x0);
 
 struct Obj_0046D480
 {
@@ -45,14 +35,6 @@ struct Obj_0046D490
     unsigned char FUN_0046D490() const;
 };
 GG_STATIC_ASSERT(offsetof(Obj_0046D490, unknown_89E000) == 0x89E000);
-
-struct Obj_00470C30
-{
-    int unknown_00;   // +0x0000
-    // FUNCTION: GAMEMD 0x470C30
-    void FUN_00470C30();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00470C30, unknown_00) == 0x0);
 
 
 // FUNCTION: GAMEMD 0x46D480

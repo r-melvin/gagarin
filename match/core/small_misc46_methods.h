@@ -15,36 +15,11 @@ extern "C" void  __cdecl FUN_007C93E8(void* block);         // the other free
 extern "C" int   __cdecl FUN_007C8D20(const char* a, const char* b);
 
 // ---------------------------------------------------------------------------
-// 0x42DD60 — VectorClass<unsigned short> constructor.
-//
-// `ADD EAX,EAX` before the allocation pins the element at two bytes. A supplied
-// array is adopted as-is and leaves IsAllocated clear; only the allocating path
-// sets it. A zero capacity does neither.
-//
-// Class identity RTTI-confirmed (Tier 1, re-verified independently against
-// the binary): vtable 0x7E3824 -> complete object locator @0x7E3820 ->
-// type descriptor 0x818868 -> name `.?AV?$VectorClass@G@@` (`G` = MSVC's
-// mangling code for `unsigned short`). It is not
-// `VectorClass<short>` (signed) — the RTTI name is unsigned. Note: the same vtable (0x7E3824) is also
-// reseated by FUN_0042DBB0/FUN_0042DC00 in buffer_holder_dtor_methods.cpp -
-// those are this same class's own scalar deleting destructors, still modelled
-// there under the generic `BufferHolderDtor` shape; reconciling that naming is
-// left as follow-up, out of this rename's scope.
+// 0x42DD60 — VectorClass<unsigned short> constructor. Class identity RTTI-confirmed: vtable 0x7E3824
+// -> type descriptor 0x818868 `.?AV?$VectorClass@G@@` (`G` = unsigned short). The constructor and the
+// scalar deleting destructors 0x42DBB0 / 0x42DC00 are compiler output of the real template
+// instantiations in small_misc46_methods.cpp.
 // ---------------------------------------------------------------------------
-extern char VT_007E3824;   // VTABLE: GAMEMD 0x7E3824
-
-struct VectorClassUnsignedShort
-{
-    char* Vtable;        // +0x0000
-    void* Items;         // +0x0004
-    int   Capacity;      // +0x0008
-    char  IsInitialized; // +0x000C
-    char  IsAllocated;   // +0x000D
-
-    // FUNCTION: GAMEMD 0x42DD60
-    VectorClassUnsignedShort(int capacity, void* array);
-};
-GG_STATIC_ASSERT(offsetof(VectorClassUnsignedShort, IsAllocated) == 0xD);
 
 // ---------------------------------------------------------------------------
 // 0x473980 — index of the first table entry either of whose two names matches.

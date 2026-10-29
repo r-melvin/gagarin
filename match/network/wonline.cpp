@@ -108,19 +108,9 @@ const double DAT_007F7510 = 60.0;
 //
 // The seven vtable-seating base destructors, ordered ascending by address.
 //
-// Scalar deleting destructors of two WOL dialog controls and of MapSelect.
-// Each runs the destructor inline (own vtable store where the class declares
-// a destructor, member destructors in reverse order, then the base), frees
-// the object when bit 0 of the flag is set and returns `this`.
-//
-// RTTI chains: CreateGameDialogControl -> WonlineStringDialogControl ->
-// SimpleWonlineDialogControl -> OwnerDraw::SimpleDialogControl ->
-// OwnerDraw::DialogControl, and MapSelect -> MSEngineView_wonline. The DialogControl
-// destructor (0x624130) and the MSEngineView_wonline destructor (0x5D1B30) are out of
-// line here; SimpleDialogControl and CreateGameDialogControl have implicit
-// destructors (no vtable store of their own). Slot 0 is modelled as an
-// ordinary virtual holding the deleting wrapper, as FileClass does in
-// match/core/ram_file_class.h, because nothing is constructed in this file.
+// WOL dialog controls: RTTI chain WonlineStringDialogControl -> SimpleWonlineDialogControl ->
+// OwnerDraw::SimpleDialogControl -> OwnerDraw::DialogControl (virtual destructor 0x624130, out of
+// line). The compiler emits the vtables and scalar deleting destructors beside the constructors.
 
 // The node layout (netshare_slot_nodes.h) names a global LocalHandle (0xA8B380);
 // <windows.h> declares a Win32 function of that name, which this unit never
@@ -399,7 +389,6 @@ public:
     void* Data;
 };
 
-#include "../_layout/map_stage_list.h"
 
 namespace OwnerDraw {
 
@@ -407,8 +396,7 @@ class DialogControl
 {
 public:
     DialogControl();    // FUNCTION: GAMEMD 0x624110 (decl; reloc)
-    ~DialogControl();   // 0x624130
-    virtual void* DeletingDtor(unsigned int flags);
+    virtual ~DialogControl();   // 0x624130 (decl; reloc)
     int unknown_04;     // +0x04
     int unknown_08;     // +0x08
 };
@@ -423,7 +411,8 @@ class SimpleDialogControl : public DialogControl
 class SimpleWonlineDialogControl : public OwnerDraw::SimpleDialogControl
 {
 public:
-    ~SimpleWonlineDialogControl() {}
+    SimpleWonlineDialogControl();             // 0x77D1D0
+    virtual ~SimpleWonlineDialogControl();    // 0x77D1F0 body, 0x7A2E70 scalar deleting
 };
 
 // VTABLE: GAMEMD 0x7F7874
@@ -431,39 +420,11 @@ class WonlineStringDialogControl : public SimpleWonlineDialogControl
 {
 public:
     WonlineStringDialogControl();
-    ~WonlineStringDialogControl() {}
-    virtual void* DeletingDtor(unsigned int flags);
+    virtual ~WonlineStringDialogControl() {}   // 0x7AC5D0 scalar deleting
     Member_7B46F0_wonline String;   // +0x0C
 };
 
-class CreateGameDialogControl : public WonlineStringDialogControl
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
 GG_STATIC_ASSERT(offsetof(WonlineStringDialogControl, String) == 0x0C);
-
-class MSEngineView_wonline
-{
-public:
-    ~MSEngineView_wonline();   // 0x5D1B30
-    virtual void* DeletingDtor(unsigned int flags);
-    char unknown_04[0x4C];   // +0x04
-};
-
-// Implicit destructor: the members, then the MSEngineView_wonline one.
-class MapSelect : public MSEngineView_wonline
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-    MapStageList Stages;        // +0x50
-    char unknown_AC[0x1C];      // +0x51
-    Member_7B46F0_wonline Member_C8;    // +0xC8
-};
-
-GG_STATIC_ASSERT(offsetof(MapSelect, Stages) == 0x50);
-GG_STATIC_ASSERT(offsetof(MapSelect, Member_C8) == 0xC8);
 
 // ---- from the former wonline_leaf_methods.cpp ----
 // Small leaf functions of the online-services translation unit (retail text
@@ -729,21 +690,20 @@ extern CountedStringArray DAT_00B765F8;
 
 extern CountedStringArray DAT_00B736F8;
 
-// VTABLE: GAMEMD 0x7F7624
-CtorSeatObject* FUN_0077D1D0(CtorSeatObject* self)
+// FUNCTION: GAMEMD 0x77D1D0
+// Builds the base dialog control, then seats the vtable (0x7F7624).
+SimpleWonlineDialogControl::SimpleWonlineDialogControl()
 {
-    FUN_00624110(self);
-    self->Vtbl = VTABLE_007F7624;
-
-    return self;
 }
 
-// VTABLE: GAMEMD 0x7F7624
-void FUN_0077D1F0(SeatDtorObject* self)
+// FUNCTION: GAMEMD 0x77D1F0
+// Empty destructor (seats the vtable, then the base destructor 0x624130 runs).
+SimpleWonlineDialogControl::~SimpleWonlineDialogControl()
 {
-    self->Vtbl = VTABLE_007F7624;
-    FUN_00624130(self);
 }
+
+// (The scalar deleting destructor 0x7A2E70 is emitted here by the compiler; its annotation lives in
+// derived_sdd_family_methods.cpp.)
 
 // STRING: GAMEMD 0x817F70
 static const char DAT_00817F70[] = ",";
@@ -3560,30 +3520,13 @@ void __cdecl FUN_007AC4F0()
 {
 }
 
-// FUNCTION: GAMEMD 0x7AC5D0
-void* WonlineStringDialogControl::DeletingDtor(unsigned int flags)
-{
-    this->~WonlineStringDialogControl();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x7AC610
 WonlineStringDialogControl::WonlineStringDialogControl()
 {
 }
 
-// FUNCTION: GAMEMD 0x7AC630
-void* CreateGameDialogControl::DeletingDtor(unsigned int flags)
-{
-    this->~CreateGameDialogControl();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x7AC5D0 -- WonlineStringDialogControl::`scalar deleting destructor'
+
 
 // FUNCTION: GAMEMD 0x7AC970
 // DynamicVectorClass<tConnInfoStruct*>::Clear

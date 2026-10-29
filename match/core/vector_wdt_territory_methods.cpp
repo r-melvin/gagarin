@@ -69,6 +69,9 @@ typedef rc_ptr<WorldDominationTour::Territory> TerritoryPtr;
 // FUNCTION: GAMEMD 0x76A610
 // rc_ptr<WorldDominationTour::Territory>: the deleting destructor the compiler emits for it.
 
+// FUNCTION: GAMEMD 0x76A7C0
+// rc_ptr<WorldDominationTour::Territory>: default constructor.
+
 // FUNCTION: GAMEMD 0x76A7E0
 // VectorClass<rc_ptr<WorldDominationTour::Territory>>::VectorClass
 
@@ -78,6 +81,7 @@ template class VectorClass<TerritoryPtr>;
 template class DynamicVectorClass<TerritoryPtr>;
 // VTABLE: GAMEMD 0x7F71E0 -- VectorClass<WorldDominationTour::Centroid>.
 template class VectorClass<WorldDominationTour::Centroid>;
+template class rc_ptr<WorldDominationTour::Territory>;
 
 GG_STATIC_ASSERT(offsetof(DynamicVectorClass<TerritoryPtr>, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(DynamicVectorClass<TerritoryPtr>, Capacity) == 0x08);

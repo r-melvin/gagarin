@@ -496,35 +496,19 @@ int ZeroRunCodec_00661530::Decode(const unsigned char* source, unsigned char* de
 // two counters are initialised, then the 32 generators are default-constructed
 // in a loop, then the derived vtable is seated and the pool cleared.
 // FUNCTION: GAMEMD 0x6616B0
-RandomStraw* RandomStraw::Construct()
+RandomStraw::RandomStraw()
+    : BitsSeeded(0), Current(0)
 {
-    ChainTo = 0;
-    ChainFrom = 0;
-    Vtable = &GG_VTABLE_STRAW;
-
-    BitsSeeded = 0;
-    Current = 0;
-
-    Generator_0065C890* gen = &Random[0];
-    for (int index = 0; index < 32; index++) {
-        gen->Construct(0, 0);
-        gen++;
-    }
-
-    Vtable = &GG_VTABLE_RANDOMSTRAW;
     ResetInline();
-    return this;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // Tear a RandomStraw down. The pool is cleared before the base runs so that no
 // sensitive seed material survives in the freed memory.
 // FUNCTION: GAMEMD 0x661700
-void RandomStraw::Destruct()
+RandomStraw::~RandomStraw()
 {
-    Vtable = &GG_VTABLE_RANDOMSTRAW;
     ResetInline();
-    ((Straw*)this)->Straw::~Straw();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -604,10 +588,10 @@ void RandomStraw::FUN_00661B70()
 // the base straw, which is what terminates the chain; otherwise the generators
 // are walked round-robin, one byte per call, and the pool never runs dry.
 // FUNCTION: GAMEMD 0x661C10
-int RandomStraw::Get(void* source, int slen)
+int RandomStraw::FUN_006C98E0(void* source, int slen)
 {
     if (source == 0 || slen < 1) {
-        return ((Straw*)this)->Straw::FUN_006C98E0(source, slen);
+        return Straw::FUN_006C98E0(source, slen);
     }
 
     int total = 0;
@@ -621,18 +605,4 @@ int RandomStraw::Get(void* source, int slen)
     return total;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// Vtable slot zero: the scalar deleting thunk, with the destructor expanded
-// into it rather than called. Retail carries both this copy and the out-of-line
-// one at 0x661700.
-// FUNCTION: GAMEMD 0x661C70
-void* RandomStraw::ScalarDeletingDestructor(unsigned char flags)
-{
-    Vtable = &GG_VTABLE_RANDOMSTRAW;
-    ResetInline();
-    ((Straw*)this)->Straw::~Straw();
-    if (flags & 0x01) {
-        FUN_007C8B3D(this);
-    }
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x661C70 -- RandomStraw::`scalar deleting destructor' (compiler-generated beside the constructor)

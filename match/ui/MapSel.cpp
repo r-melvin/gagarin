@@ -9,19 +9,6 @@
 //
 //   cross-checked against YRpp.
 //
-// Scalar deleting destructors of two WOL dialog controls and of MapSelect.
-// Each runs the destructor inline (own vtable store where the class declares
-// a destructor, member destructors in reverse order, then the base), frees
-// the object when bit 0 of the flag is set and returns `this`.
-//
-// RTTI chains: CreateGameDialogControl -> WonlineStringDialogControl ->
-// SimpleWonlineDialogControl -> OwnerDraw::SimpleDialogControl ->
-// OwnerDraw::DialogControl, and MapSelect -> MSEngineView_005D1B30. The DialogControl
-// destructor (0x624130) and the MSEngineView_005D1B30 destructor (0x5D1B30) are out of
-// line here; SimpleDialogControl and CreateGameDialogControl have implicit
-// destructors (no vtable store of their own). Slot 0 is modelled as an
-// ordinary virtual holding the deleting wrapper, as FileClass does in
-// match/core/ram_file_class.h, because nothing is constructed in this file.
 
 #include "../_layout/matrix3d.h"
 
@@ -29,73 +16,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// Out-of-line destructor 0x7B46F0 (a four-byte member: a string handle).
-#include "../_layout/member_7b46f0.h"
-
-#include "../_layout/map_stage_list.h"
-
-namespace OwnerDraw {
-
-class DialogControl
-{
-public:
-    ~DialogControl();   // 0x624130
-    virtual void* DeletingDtor(unsigned int flags);
-    int unknown_04;     // +0x04
-    int unknown_08;     // +0x08
-};
-
-class SimpleDialogControl : public DialogControl
-{
-};
-
-}  // namespace OwnerDraw
-
-// VTABLE: GAMEMD 0x7F7624
-class SimpleWonlineDialogControl : public OwnerDraw::SimpleDialogControl
-{
-public:
-    ~SimpleWonlineDialogControl() {}
-};
-
-// VTABLE: GAMEMD 0x7F7874
-class WonlineStringDialogControl : public SimpleWonlineDialogControl
-{
-public:
-    ~WonlineStringDialogControl() {}
-    virtual void* DeletingDtor(unsigned int flags);
-    Member_7B46F0 String;   // +0x0C
-};
-
-class CreateGameDialogControl : public WonlineStringDialogControl
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-GG_STATIC_ASSERT(offsetof(WonlineStringDialogControl, String) == 0x0C);
-
-class MSEngineView_005D1B30
-{
-public:
-    ~MSEngineView_005D1B30();   // 0x5D1B30
-    virtual void* DeletingDtor(unsigned int flags);
-    char unknown_04[0x4C];   // +0x04
-};
-
-// Implicit destructor: the members, then the MSEngineView_005D1B30 one.
-class MapSelect : public MSEngineView_005D1B30
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-    MapStageList Stages;        // +0x50
-    char unknown_AC[0x1C];      // +0x51
-    Member_7B46F0 Member_C8;    // +0xC8
-};
-
-GG_STATIC_ASSERT(offsetof(MapSelect, Stages) == 0x50);
-GG_STATIC_ASSERT(offsetof(MapSelect, Member_C8) == 0xC8);
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -143,17 +63,6 @@ void __stdcall FUN_005AE570(int a1)
 // Empty function that pops its stack arguments.
 void __stdcall FUN_005AE580(int a1)
 {
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5AE5A0
-void* MapSelect::DeletingDtor(unsigned int flags)
-{
-    this->~MapSelect();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

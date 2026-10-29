@@ -50,10 +50,6 @@
 // Vtable stand-ins. Only the relocation is emitted, so one extern symbol per
 // retail vtable address reproduces the `MOV dword ptr [reg],imm32` seat store.
 // ---------------------------------------------------------------------------
-// VTABLE: GAMEMD 0x7E61F0  Straw
-extern "C" void* GG_VTABLE_STRAW;
-// VTABLE: GAMEMD 0x7F0AFC  RandomStraw
-extern "C" void* GG_VTABLE_RANDOMSTRAW;
 
 // ---------------------------------------------------------------------------
 // CRT primitives, declared so cl emits reloc-normalised calls.
@@ -86,7 +82,7 @@ struct Generator_0065C890
     unsigned long Index;  // +0x0004
 
     // FUNCTION: GAMEMD 0x65C890  Generator_0065C890::Generator_0065C890
-    void Construct(unsigned long seed, unsigned long index);
+    Generator_0065C890(unsigned long seed = 0, unsigned long index = 0);
     // FUNCTION: GAMEMD 0x65C8B0  Generator_0065C890::operator()
     int  Next();
 };
@@ -158,17 +154,21 @@ GG_STATIC_ASSERT(sizeof(Sha1State) == 0x74);
 //                    0x661C33.
 // Size 0x14 + 32*8 = 0x114.
 // ---------------------------------------------------------------------------
-class RandomStraw
+// VTABLE: GAMEMD 0x7F0AFC
+class RandomStraw : public Straw
 {
 public:
-    void*        Vtable;      // +0x0000
-    RandomStraw* ChainTo;     // +0x0004
-    RandomStraw* ChainFrom;   // +0x0008
     int          BitsSeeded;    // +0x000C
     int          Current;     // +0x0010
     Generator_0065C890  Random[32];  // +0x0014
 
-    // Cleanup and fallback calls use the canonical Straw prefix view.
+    // FUNCTION: GAMEMD 0x6616B0
+    RandomStraw();
+    // FUNCTION: GAMEMD 0x661700 -- out-of-line destructor; the scalar deleting
+    // destructor 0x661C70 is compiler output beside the constructor.
+    virtual ~RandomStraw();
+    // FUNCTION: GAMEMD 0x661C10 -- slot 2
+    virtual int FUN_006C98E0(void* source, int slen);
 
     // The three shapes retail keeps BOTH out of line and expanded at every use
     // site. Each is written once as a forced-inline member and the out-of-line
@@ -178,8 +178,6 @@ public:
     __forceinline void ScrambleInline();
     __forceinline void AddBitInline(int seed);
 
-    RandomStraw* Construct();
-    void  Destruct();
     void  Reset();
     int   FUN_00661750() const;
     void  FUN_00661770(int seed);
@@ -187,13 +185,8 @@ public:
     void  FUN_00661960(short seed);
     void  FUN_00661A60(long seed);
     void  FUN_00661B70();
-    int   Get(void* source, int slen);
-    void* ScalarDeletingDestructor(unsigned char flags);
 };
 
-GG_STATIC_ASSERT(offsetof(RandomStraw, Vtable) == 0x00);
-GG_STATIC_ASSERT(offsetof(RandomStraw, ChainTo) == 0x04);
-GG_STATIC_ASSERT(offsetof(RandomStraw, ChainFrom) == 0x08);
 GG_STATIC_ASSERT(offsetof(RandomStraw, BitsSeeded) == 0x0C);
 GG_STATIC_ASSERT(offsetof(RandomStraw, Current) == 0x10);
 GG_STATIC_ASSERT(offsetof(RandomStraw, Random) == 0x14);

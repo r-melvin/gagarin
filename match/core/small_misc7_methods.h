@@ -30,12 +30,4 @@ struct Obj_004036C0
 // through the stack (`SUB ESP,8; FSTP qword ptr [ESP]`), not the FPU stack.
 double __cdecl FUN_004CAC40(double v);   // GAMEMD 0x4CAC40
 
-struct Obj_00470C00
-{
-    char* _vtable;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x470C00
-    Obj_00470C00* FUN_00470C00();
-};
-
 #endif  // GG_MATCH_CORE_SMALL_MISC7_METHODS_H

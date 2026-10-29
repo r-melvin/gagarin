@@ -127,50 +127,6 @@
 #include "../core/const_store_leaf_sweep.h"
 #include "../core/mathtbl_init_shapes.h"
 
-// VTABLE: GAMEMD 0x7E35A8
-class Animate
-{
-public:
-    ~Animate() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x7EF720
-namespace OwnerDraw {
-class DialogControl
-{
-public:
-    ~DialogControl() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-}
-
-
-// VTABLE: GAMEMD 0x7F0954
-class ReferenceCounted
-{
-public:
-    ~ReferenceCounted() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x7EA57C
-class VersionClass
-{
-public:
-    ~VersionClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x007EF738
-namespace OwnerDraw {
-class SimpleDialogControl : public DialogControl
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-};
-}
-
 #include "../core/empty_function_family_methods.h"
 
 #include <new.h>
@@ -2901,28 +2857,6 @@ int FUN_006241D0(LeafObj_0x04* self)
 bool Obj_006241E0::FUN_006241E0() const
 {
     return false;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6244A0 -- OwnerDraw::DialogControl scalar deleting destructor
-void* OwnerDraw::DialogControl::DeletingDtor(unsigned int flags)
-{
-    this->~DialogControl();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6244C0 -- OwnerDraw::SimpleDialogControl scalar deleting destructor
-void* OwnerDraw::SimpleDialogControl::DeletingDtor(unsigned int flags)
-{
-    this->~SimpleDialogControl();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x6244E0  Obj_006244E0::FUN_006244E0 (__thiscall)

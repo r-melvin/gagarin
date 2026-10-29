@@ -24,10 +24,10 @@
 // (RTTI) and 0x533F50 calls both through its elements.
 //
 // Slots 1, 3, 4 and 8 of CommandClass hold __purecall (0x4C9150). No slot
-// name is attested, so all are placeholders. Slot 0 is modelled as an
-// ordinary virtual holding the deleting wrapper, as FileClass does in
-// match/core/ram_file_class.h: the constructors live in another translation
-// unit, so cl would not emit these tables or a compiler-generated `??_G` here.
+// name is attested, so all are placeholders. Slot 0 is the virtual destructor;
+// the compiler emits each `??_G` with the class's table where the object is
+// constructed (the command registration at 0x532150 and the out-of-line
+// constructors in Init.cpp).
 //
 // The five team-style commands carry one int at +0x04, stored by their
 // one-argument constructors (0x535C00, 0x535FC0, 0x5360B0, 0x5361A0,
@@ -42,8 +42,7 @@
 class CommandClass
 {
 public:
-    ~CommandClass() {}
-    virtual void* DeletingDtor(unsigned int flags);   // 0
+    virtual ~CommandClass() {}   // 0  scalar deleting destructor, 0x535D00
     virtual const char* vf_1() const = 0;      // 1  0x4C9150
     virtual const wchar_t* vf_2();       // 2  0x535CF0
     virtual const wchar_t* vf_3() = 0;   // 3  0x4C9150
@@ -58,7 +57,7 @@ public:
 class CreateTeamCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x535CD0
+    CreateTeamCommandClass(int n) : unknown_04(n) {}
     virtual const char* vf_1() const;          // 1  0x535C20
     virtual const wchar_t* vf_2();       // 2  0x535C40
     virtual const wchar_t* vf_3();       // 3  0x535C70
@@ -73,7 +72,7 @@ GG_STATIC_ASSERT(offsetof(CreateTeamCommandClass, unknown_04) == 0x04);
 class SelectTeamCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x536090
+    SelectTeamCommandClass(int n) : unknown_04(n) {}
     virtual const char* vf_1() const;          // 1  0x535FE0
     virtual const wchar_t* vf_2();       // 2  0x536000
     virtual const wchar_t* vf_3();       // 3  0x536030
@@ -88,7 +87,7 @@ GG_STATIC_ASSERT(offsetof(SelectTeamCommandClass, unknown_04) == 0x04);
 class AddTeamCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x536180
+    AddTeamCommandClass(int n) : unknown_04(n) {}
     virtual const char* vf_1() const;          // 1  0x5360D0
     virtual const wchar_t* vf_2();       // 2  0x5360F0
     virtual const wchar_t* vf_3();       // 3  0x536120
@@ -103,7 +102,7 @@ GG_STATIC_ASSERT(offsetof(AddTeamCommandClass, unknown_04) == 0x04);
 class CenterTeamCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x536270
+    CenterTeamCommandClass(int n) : unknown_04(n) {}
     virtual const char* vf_1() const;          // 1  0x5361C0
     virtual const wchar_t* vf_2();       // 2  0x5361E0
     virtual const wchar_t* vf_3();       // 3  0x536210
@@ -118,7 +117,7 @@ GG_STATIC_ASSERT(offsetof(CenterTeamCommandClass, unknown_04) == 0x04);
 class TauntCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x536580
+    TauntCommandClass(int n) : unknown_04(n) {}
     virtual const char* vf_1() const;          // 1  0x5362B0
     virtual const wchar_t* vf_2();       // 2  0x5362D0
     virtual const wchar_t* vf_3();       // 3  0x536300
@@ -133,7 +132,6 @@ GG_STATIC_ASSERT(offsetof(TauntCommandClass, unknown_04) == 0x04);
 class MultiplayerDebugCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x537FA0
     virtual const char* vf_1() const;          // 1  0x537A50
     virtual const wchar_t* vf_2();       // 2  0x537A70
     virtual const wchar_t* vf_3();       // 3  0x537A60
@@ -145,7 +143,6 @@ public:
 class MultiplayerSyncCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x537FC0
     virtual const char* vf_1() const;          // 1  0x537AB0
     virtual const wchar_t* vf_2();       // 2  0x537AD0
     virtual const wchar_t* vf_3();       // 3  0x537AC0
@@ -157,7 +154,6 @@ public:
 class FollowCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x537FE0
     virtual const char* vf_1() const;          // 1  0x5379A0
     virtual const wchar_t* vf_2();       // 2  0x5379B0
     virtual const wchar_t* vf_3();       // 3  0x5379D0
@@ -169,7 +165,6 @@ public:
 class View1CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538000
     virtual const char* vf_1() const;          // 1  0x5372E0
     virtual const wchar_t* vf_2();       // 2  0x5372F0
     virtual const wchar_t* vf_3();       // 3  0x537310
@@ -181,7 +176,6 @@ public:
 class View2CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538020
     virtual const char* vf_1() const;          // 1  0x5373D0
     virtual const wchar_t* vf_2();       // 2  0x5373E0
     virtual const wchar_t* vf_3();       // 3  0x537400
@@ -193,7 +187,6 @@ public:
 class View3CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538040
     virtual const char* vf_1() const;          // 1  0x5374C0
     virtual const wchar_t* vf_2();       // 2  0x5374D0
     virtual const wchar_t* vf_3();       // 3  0x5374F0
@@ -205,7 +198,6 @@ public:
 class View4CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538060
     virtual const char* vf_1() const;          // 1  0x5375B0
     virtual const wchar_t* vf_2();       // 2  0x5375C0
     virtual const wchar_t* vf_3();       // 3  0x5375E0
@@ -217,7 +209,6 @@ public:
 class SetView1CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538080
     virtual const char* vf_1() const;          // 1  0x5376A0
     virtual const wchar_t* vf_2();       // 2  0x5376B0
     virtual const wchar_t* vf_3();       // 3  0x5376D0
@@ -229,7 +220,6 @@ public:
 class SetView2CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5380A0
     virtual const char* vf_1() const;          // 1  0x537760
     virtual const wchar_t* vf_2();       // 2  0x537770
     virtual const wchar_t* vf_3();       // 3  0x537790
@@ -241,7 +231,6 @@ public:
 class SetView3CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5380C0
     virtual const char* vf_1() const;          // 1  0x537820
     virtual const wchar_t* vf_2();       // 2  0x537830
     virtual const wchar_t* vf_3();       // 3  0x537850
@@ -253,7 +242,6 @@ public:
 class SetView4CommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5380E0
     virtual const char* vf_1() const;          // 1  0x5378E0
     virtual const wchar_t* vf_2();       // 2  0x5378F0
     virtual const wchar_t* vf_3();       // 3  0x537910
@@ -265,7 +253,6 @@ public:
 class OptionsCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538100
     virtual const char* vf_1() const;          // 1  0x537260
     virtual const wchar_t* vf_2();       // 2  0x537270
     virtual const wchar_t* vf_3();       // 3  0x537290
@@ -277,7 +264,6 @@ public:
 class SidebarUpCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538120
     virtual const char* vf_1() const;          // 1  0x537140
     virtual const wchar_t* vf_2();       // 2  0x537150
     virtual const wchar_t* vf_3();       // 3  0x537170
@@ -289,7 +275,6 @@ public:
 class SidebarDownCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538140
     virtual const char* vf_1() const;          // 1  0x5371D0
     virtual const wchar_t* vf_2();       // 2  0x5371E0
     virtual const wchar_t* vf_3();       // 3  0x537200
@@ -301,7 +286,6 @@ public:
 class CenterREventCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538160
     virtual const char* vf_1() const;          // 1  0x5370C0
     virtual const wchar_t* vf_2();       // 2  0x5370D0
     virtual const wchar_t* vf_3();       // 3  0x5370F0
@@ -313,7 +297,6 @@ public:
 class BeaconPlacementCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538180
     virtual const char* vf_1() const;          // 1  0x537030
     virtual const wchar_t* vf_2();       // 2  0x537040
     virtual const wchar_t* vf_3();       // 3  0x537060
@@ -325,7 +308,6 @@ public:
 class ToggleSellCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5381A0
     virtual const char* vf_1() const;          // 1  0x536FB0
     virtual const wchar_t* vf_2();       // 2  0x536FC0
     virtual const wchar_t* vf_3();       // 3  0x536FE0
@@ -337,7 +319,6 @@ public:
 class ToggleRepairCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5381C0
     virtual const char* vf_1() const;          // 1  0x536F30
     virtual const wchar_t* vf_2();       // 2  0x536F40
     virtual const wchar_t* vf_3();       // 3  0x536F60
@@ -349,7 +330,6 @@ public:
 class AllianceCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5381E0
     virtual const char* vf_1() const;          // 1  0x536EB0
     virtual const wchar_t* vf_2();       // 2  0x536EC0
     virtual const wchar_t* vf_3();       // 3  0x536EE0
@@ -361,7 +341,6 @@ public:
 class CenterBaseCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538200
     virtual const char* vf_1() const;          // 1  0x536E30
     virtual const wchar_t* vf_2();       // 2  0x536E40
     virtual const wchar_t* vf_3();       // 3  0x536E60
@@ -373,7 +352,6 @@ public:
 class CenterViewCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538220
     virtual const char* vf_1() const;          // 1  0x536D90
     virtual const wchar_t* vf_2();       // 2  0x536DA0
     virtual const wchar_t* vf_3();       // 3  0x536DC0
@@ -385,7 +363,6 @@ public:
 class ScatterCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538240
     virtual const char* vf_1() const;          // 1  0x536D10
     virtual const wchar_t* vf_2();       // 2  0x536D20
     virtual const wchar_t* vf_3();       // 3  0x536D40
@@ -397,7 +374,6 @@ public:
 class GuardCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538260
     virtual const char* vf_1() const;          // 1  0x536C90
     virtual const wchar_t* vf_2();       // 2  0x536CA0
     virtual const wchar_t* vf_3();       // 3  0x536CC0
@@ -409,7 +385,6 @@ public:
 class StopCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538280
     virtual const char* vf_1() const;          // 1  0x536B10
     virtual const wchar_t* vf_2();       // 2  0x536B20
     virtual const wchar_t* vf_3();       // 3  0x536B40
@@ -421,7 +396,6 @@ public:
 class AllToCheerCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5382A0
     virtual const char* vf_1() const;          // 1  0x536B90
     virtual const wchar_t* vf_2();       // 2  0x536BA0
     virtual const wchar_t* vf_3();       // 3  0x536BC0
@@ -433,7 +407,6 @@ public:
 class DeployCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5382C0
     virtual const char* vf_1() const;          // 1  0x536C10
     virtual const wchar_t* vf_2();       // 2  0x536C20
     virtual const wchar_t* vf_3();       // 3  0x536C40
@@ -445,7 +418,6 @@ public:
 class PrevObjectCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5382E0
     virtual const char* vf_1() const;          // 1  0x536A10
     virtual const wchar_t* vf_2();       // 2  0x536A20
     virtual const wchar_t* vf_3();       // 3  0x536A40
@@ -457,7 +429,6 @@ public:
 class NextObjectCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538300
     virtual const char* vf_1() const;          // 1  0x5365A0
     virtual const wchar_t* vf_2();       // 2  0x5365B0
     virtual const wchar_t* vf_3();       // 3  0x5365D0
@@ -469,7 +440,6 @@ public:
 class PlanningModeCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538320
     virtual const char* vf_1() const;          // 1  0x5366A0
     virtual const wchar_t* vf_2();       // 2  0x5366B0
     virtual const wchar_t* vf_3();       // 3  0x5366D0
@@ -484,7 +454,6 @@ public:
 class CombatantSelectCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538340
     virtual const char* vf_1() const;          // 1  0x536770
     virtual const wchar_t* vf_2();       // 2  0x536780
     virtual const wchar_t* vf_3();       // 3  0x5367A0
@@ -497,7 +466,6 @@ public:
 class TypeSelectCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538360
     virtual const char* vf_1() const;          // 1  0x536810
     virtual const wchar_t* vf_2();       // 2  0x536820
     virtual const wchar_t* vf_3();       // 3  0x536840
@@ -512,7 +480,6 @@ public:
 class HealthNavCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538380
     virtual const char* vf_1() const;          // 1  0x5368D0
     virtual const wchar_t* vf_2();       // 2  0x5368E0
     virtual const wchar_t* vf_3();       // 3  0x536900
@@ -525,7 +492,6 @@ public:
 class VeterancyNavCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5383A0
     virtual const char* vf_1() const;          // 1  0x536970
     virtual const wchar_t* vf_2();       // 2  0x536980
     virtual const wchar_t* vf_3();       // 3  0x5369A0
@@ -538,7 +504,6 @@ public:
 class SetStructureTabCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5383C0
     virtual const char* vf_1() const;          // 1  0x535D20
     virtual const wchar_t* vf_2();       // 2  0x535D30
     virtual const wchar_t* vf_3();       // 3  0x535D50
@@ -550,7 +515,6 @@ public:
 class SetDefenseTabCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5383E0
     virtual const char* vf_1() const;          // 1  0x535DE0
     virtual const wchar_t* vf_2();       // 2  0x535DF0
     virtual const wchar_t* vf_3();       // 3  0x535E10
@@ -562,7 +526,6 @@ public:
 class SetUnitTabCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538400
     virtual const char* vf_1() const;          // 1  0x535F30
     virtual const wchar_t* vf_2();       // 2  0x535F40
     virtual const wchar_t* vf_3();       // 3  0x535F60
@@ -574,7 +537,6 @@ public:
 class SetInfantryTabCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538420
     virtual const char* vf_1() const;          // 1  0x535EA0
     virtual const wchar_t* vf_2();       // 2  0x535EB0
     virtual const wchar_t* vf_3();       // 3  0x535ED0
@@ -586,7 +548,7 @@ public:
 class ScreenCaptureCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538440
+    ScreenCaptureCommandClass() {}
     virtual const char* vf_1() const;          // 1  0x537B50
     virtual const wchar_t* vf_2();       // 2  0x537B80
     virtual const wchar_t* vf_3();       // 3  0x537B60
@@ -598,7 +560,7 @@ public:
 class PageUserCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538460
+    PageUserCommandClass() {}
     virtual const char* vf_1() const;          // 1  0x537DE0
     virtual const wchar_t* vf_2();       // 2  0x537DF0
     virtual const wchar_t* vf_3();       // 3  0x537E10
@@ -610,7 +572,7 @@ public:
 class CursorPositionCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x538480
+    CursorPositionCommandClass() {}
     virtual const char* vf_1() const;          // 1  0x537E80
     virtual const wchar_t* vf_2();       // 2  0x537E90
     virtual const wchar_t* vf_3();       // 3  0x537EB0
@@ -622,7 +584,7 @@ public:
 class DeleteCommandClass : public CommandClass
 {
 public:
-    virtual void* DeletingDtor(unsigned int flags);   // 0  0x5384A0
+    DeleteCommandClass() {}
     virtual const char* vf_1() const;          // 1  0x537F20
     virtual const wchar_t* vf_2();       // 2  0x537F30
     virtual const wchar_t* vf_3();       // 3  0x537F50

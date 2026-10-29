@@ -19,7 +19,7 @@ void FUN_0041C3F0(Triple_0041C3F0* self)
 // past everything, so the guard is written positively.
 // The second call re-reads the member rather than reusing the argument, which
 // is what retail's `MOV ECX,[ESI+0x84]` at 0x42676A is.
-bool AnimFile_00426750::FUN_00426750(Delegate_00426750* delegate)
+bool AnimFile_00426750::vf_1(Delegate_00426750* delegate)
 {
     Delegate = delegate;
 
@@ -35,22 +35,16 @@ bool AnimFile_00426750::FUN_00426750(Delegate_00426750* delegate)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x4266D0
-//
-// The destructor. Same three-step teardown as 0x426790 with the vtable
-// bracketing a destructor does: this class's goes in before any member work and
-// the base's replaces it at the end. The primed flag is read *before* the first
-// vtable store, which is why it is held in a local.
-//
-// Written out longhand rather than calling 0x426790, per the family rule -
-// retail repeats the body rather than calling it.
-void AnimFile_00426750::FUN_004266D0()
+// Teardown in three steps: retire the delegate through its slot +0x34 and drop
+// the primed flag, destroy the sub-object at +0xE0C through its own deleting
+// destructor, and free the buffer at +0xE10. The delegate pointer is cleared
+// unconditionally, before the sub-object work, while each of the other two
+// pointers is cleared inside its own guard.
+
+// FUNCTION: GAMEMD 0x426790
+void AnimFile_00426750::vf_2()
 {
-    char primed = Primed;
-
-    Vtable = &VT_007E3584;
-
-    if (primed) {
+    if (Primed) {
         Delegate->vt_034();
 
         Primed = 0;
@@ -75,18 +69,13 @@ void AnimFile_00426750::FUN_004266D0()
     }
 
     Retired = 0;
-
-    Vtable = &VT_007E35A8;
 }
 
-// FUNCTION: GAMEMD 0x426790
-//
-// Teardown in three steps: retire the delegate through its slot +0x34 and drop
-// the primed flag, destroy the sub-object at +0xE0C through its own deleting
-// destructor, and free the buffer at +0xE10. The delegate pointer is cleared
-// unconditionally, before the sub-object work, while each of the other two
-// pointers is cleared inside its own guard.
-void AnimFile_00426750::FUN_00426790()
+// The destructor: the 0x426790 teardown, expanded in place. Defined inline so /Ob2 expands it into the
+// scalar deleting destructor 0x4272A0 (compiler output beside the constructor). Retail also keeps an
+// unreferenced out-of-line copy at 0x4266D0 that one translation unit cannot emit alongside the inlined
+// one, so that address is not reproduced.
+inline AnimFile_00426750::~AnimFile_00426750()
 {
     if (Primed) {
         Delegate->vt_034();
@@ -164,30 +153,18 @@ void Obj_0043A670::FUN_0043A6B0(int first, int second)
 
 
 
-// FUNCTION: GAMEMD 0x426670
 //
 // Constructor: the base's vtable goes in first, then the delegate, flags and the
 // 256 three-byte slots are cleared, the two trailing words are set to -1, and
 // this class's vtable replaces the base's.
+// FUNCTION: GAMEMD 0x426670
 AnimFile_00426750::AnimFile_00426750()
+    : Delegate(0), Retired(0), Primed(0), Sub(0), Buffer(0), Mark1(-1), Mark2(-1)
 {
-    Vtable = &VT_007E35A8;
-    Delegate = 0;
-    Retired = 0;
-    Primed = 0;
-    SlotRgb_00426670* slot = Slots;
-    for (int n = 0x100; n != 0; n--) {
-        slot->R = 0;
-        slot->G = 0;
-        slot->B = 0;
-        slot++;
-    }
-    Sub = 0;
-    Buffer = 0;
-    Mark1 = -1;
-    Mark2 = -1;
-    Vtable = &VT_007E3584;
 }
+
+// SYNTHETIC: GAMEMD 0x427270 -- Animate::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x4272A0 -- AnimFile::`scalar deleting destructor'
 
 // FUNCTION: GAMEMD 0x426E00
 //

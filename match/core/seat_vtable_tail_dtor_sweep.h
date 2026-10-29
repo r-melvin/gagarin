@@ -58,11 +58,6 @@ struct SeatDtorObject
 GG_STATIC_ASSERT(offsetof(SeatDtorObject, Vtbl) == 0x0);
 
 void FUN_00535A60(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x535A60
-void FUN_007668F0(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x7668F0
-void FUN_00766900(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x766900
-void FUN_00766910(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x766910
 void FUN_00767300(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x767300
-void FUN_0076F060(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x76F060
-void FUN_0077D1F0(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x77D1F0
 
 #endif  // GG_MATCH_CORE_SEAT_VTABLE_TAIL_DTOR_SWEEP_H

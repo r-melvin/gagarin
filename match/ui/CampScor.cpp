@@ -10,23 +10,8 @@
 //
 // STRING: GAMEMD 0x81B2EC  "TXT_TIME_FORMAT_HOURS"
 //
-// Score screen animation and campaign score classes.
-//
-// Scalar deleting destructors of classes whose destructor is empty. Each one
-// stores the vtable of the class that declares the destructor (the derived
-// classes add nothing to it), frees the object when bit 0 of the flag is set,
-// and returns `this`. Retail's 32-byte shape:
-//
-//     MOV AL,[ESP+4]; PUSH ESI; MOV ESI,ECX; TEST AL,1; MOV [ESI],<vtable>
-//     JZ +9; PUSH ESI; CALL 0x7C8B3D; ADD ESP,4; MOV EAX,ESI; POP ESI; RET 4
-//
-// Class names and the base relation come from the retail RTTI descriptors;
-// the owning class of each body is the class whose vtable slot 0 holds it.
-// Slot 0 is modelled as an ordinary virtual holding the deleting wrapper, as
-// FileClass does in match/core/ram_file_class.h: these classes are never
-// constructed in this translation unit, so cl would not emit their tables or
-// a compiler-generated `??_G`. The classes are opaque views; no member is
-// touched, so there is no layout to assert.
+// Campaign score classes: constructors, empty destructors and the compiler-emitted
+// scalar deleting destructors (0x471500, 0x471520).
 
 #include "../core/house_index_lookup_methods.h"
 #include "../_layout/session_class.h"
@@ -42,42 +27,27 @@
 
 #include "format_duration_methods.h"
 
-// VTABLE: GAMEMD 0x7E4AB8
-class CampaignEndScoreClass
-{
-public:
-    ~CampaignEndScoreClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
 // VTABLE: GAMEMD 0x7E4AAC
+// Campaign score screen state (retail slot 1 is 0x46FC00, not matched).
 class CampaignScoreClass
 {
 public:
-    ~CampaignScoreClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
+    CampaignScoreClass();                 // 0x46D330
+    virtual ~CampaignScoreClass();        // 0x46D350 body, 0x471500 scalar deleting
+    virtual void Slot1();                 // 0x46FC00
 
-// VTABLE: GAMEMD 0x7F0EDC
-class ScoreAnimClass
+    int Unknown04;                        // +0x04
+};
+GG_STATIC_ASSERT(offsetof(CampaignScoreClass, Unknown04) == 0x04);
+
+// VTABLE: GAMEMD 0x7E4AB8
+// Campaign end score screen state (retail slot 1 is 0x471420, not matched).
+class CampaignEndScoreClass
 {
 public:
-    ~ScoreAnimClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x007F0EC8
-class ScoreTimeClass : public ScoreAnimClass
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x007F0EB4
-class ScorePrintClass : public ScoreAnimClass
-{
-public:
-    virtual void* DeletingDtor(unsigned int flags);
+    CampaignEndScoreClass();              // 0x470C00
+    virtual ~CampaignEndScoreClass();     // 0x470C30 body, 0x471520 scalar deleting
+    virtual void Slot1();                 // 0x471420
 };
 
 // Globals written by this TU's static initialisers (placeholder names; no
@@ -109,23 +79,21 @@ GG_STATIC_ASSERT(sizeof(DAT_0089E018) == 8);
 MathTblCoord DAT_0089E028;
 
 // FUNCTION: GAMEMD 0x46D330
-Obj_0046D330* Obj_0046D330::FUN_0046D330()
+CampaignScoreClass::CampaignScoreClass()
 {
-    _vtable = VT_007E4AAC;
-    unknown_04 = 0;
+    Unknown04 = 0;
 
     DAT_0089E050 = 0;
     DAT_0081B1E8 = -1;
-
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x46D350
-// Stores its argument in a member.
-void Obj_0046D350::FUN_0046D350()
+// Empty destructor (stores only the vtable).
+CampaignScoreClass::~CampaignScoreClass()
 {
-    unknown_00 = 0x7E4AAC;
 }
+
+// SYNTHETIC: GAMEMD 0x471500 -- CampaignScoreClass::`scalar deleting destructor'
 
 // FUNCTION: GAMEMD 0x46D360
 //
@@ -348,23 +316,20 @@ unsigned char FUN_0046FBD0(Obj_0046FBD0* a1, int a2)
 }
 
 // FUNCTION: GAMEMD 0x470C00
-Obj_00470C00* Obj_00470C00::FUN_00470C00()
+CampaignEndScoreClass::CampaignEndScoreClass()
 {
-    _vtable = VT_007E4AB8;
-
     DAT_0089E008 = -1;
     DAT_0089E020 = 0;
     DAT_0089DFD4 = 0;
-
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x470C30
-// Stores its argument in a member.
-void Obj_00470C30::FUN_00470C30()
+// Empty destructor (stores only the vtable).
+CampaignEndScoreClass::~CampaignEndScoreClass()
 {
-    unknown_00 = 0x7E4AB8;
 }
+
+// SYNTHETIC: GAMEMD 0x471520 -- CampaignEndScoreClass::`scalar deleting destructor'
 
 // IAT 0x7E14A4: USER32!SendMessageA.
 extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ hWnd, unsigned uMsg, unsigned wParam, long lParam);
@@ -421,26 +386,4 @@ void __cdecl FUN_00471400()
     {
         FUN_007C8B48(DAT_0089DFE0, DAT_0089E020, 4, 0x46DC90);
     }
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x471500 -- CampaignScoreClass scalar deleting destructor
-void* CampaignScoreClass::DeletingDtor(unsigned int flags)
-{
-    this->~CampaignScoreClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x471520 -- CampaignEndScoreClass scalar deleting destructor
-void* CampaignEndScoreClass::DeletingDtor(unsigned int flags)
-{
-    this->~CampaignEndScoreClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
 }

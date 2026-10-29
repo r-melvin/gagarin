@@ -62,15 +62,10 @@ MissionControlClass DAT_00A8E3A8[32];
 // ---- objects with destructors ----------------------------------------------------------------------------------------
 
 // The random-number straw at 0xA8E7B0: built by 0x6616B0, torn down by 0x661700.
-struct Straw_00A8E7B0 : RandomStraw
-{
-    Straw_00A8E7B0() { Construct(); }
-    ~Straw_00A8E7B0() { Destruct(); }
-};
 // SYNTHETIC: GAMEMD 0x4E7D10
 // SYNTHETIC: GAMEMD 0x4E7D30 -- atexit callback
 // GLOBAL: GAMEMD 0xA8E7B0
-Straw_00A8E7B0 DAT_00A8E7B0;
+RandomStraw DAT_00A8E7B0;
 
 // SYNTHETIC: GAMEMD 0x4E7DC0
 // SYNTHETIC: GAMEMD 0x4E7DE0 -- atexit callback

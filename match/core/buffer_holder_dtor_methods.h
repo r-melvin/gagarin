@@ -62,8 +62,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0040FEC0(unsigned int flags);   // FUNCTION: GAMEMD 0x40FEC0
     void* FUN_0042DB10(unsigned int flags);   // FUNCTION: GAMEMD 0x42DB10
     void* FUN_0042DB60(unsigned int flags);   // FUNCTION: GAMEMD 0x42DB60
-    void* FUN_0042DBB0(unsigned int flags);   // FUNCTION: GAMEMD 0x42DBB0
-    void* FUN_0042DC00(unsigned int flags);   // FUNCTION: GAMEMD 0x42DC00
     void* FUN_0042F970(unsigned int flags);   // FUNCTION: GAMEMD 0x42F970
     void* FUN_0042FB50(unsigned int flags);   // FUNCTION: GAMEMD 0x42FB50
     void* FUN_0042FBA0(unsigned int flags);   // FUNCTION: GAMEMD 0x42FBA0
