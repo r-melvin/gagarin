@@ -32,7 +32,7 @@ With no file the `words` rule is disabled and a warning is printed on every run.
 | lead lists (report only) | `delivery/placement_leads.py`, `delivery/ini_names.py`, `delivery/flagsweep.py`, `delivery/permute_queue.py` |
 
 Skills (`skills/`, installed with `skills/install.sh`): `gagarin-packet-worker`, `gagarin-lander`,
-`gagarin-orchestrator`; the agent templates are in `agents/`. The install script symlinks into
+`gagarin-orchestrator`; the agent templates are in `agent_defs/`. The install script symlinks into
 `~/.claude/skills` and `~/.claude/agents`; copies already there are left alone.
 
 Tests: `delivery` (`python3 -m unittest tests.test_delivery`), `land` (`python3 -m unittest test_land`,
