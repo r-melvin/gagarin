@@ -29,7 +29,7 @@ int AircraftClass_004158E0::FUN_004158E0()
         return 3;
     }
 
-    if (this->FUN_005F6440(target) <= RulesInstance->At_54C) {
+    if (this->FUN_005F6440(target) <= RulesInstance->ParadropRadius) {
         (this->*this->Vtbl->At_1E8)(0x1B, 0);
         this->At_6D3 = this->At_6D3 - 1;
     }

@@ -90,6 +90,11 @@ public:
     // FUNCTION: GAMEMD 0x477640
     AbilitiesStruct ReadAbilities(const char* section, const char* key, const AbilitiesStruct& def);
 
+    // FUNCTION: GAMEMD 0x474620 (decl; reloc) -- a fraction read as a double and scaled by 256, RET 0xC.
+    int ReadFraction(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x4759F0 (decl; reloc) -- string read through the 0x48DE70 parser, RET 0xC.
+    int FUN_004759F0(const char* section, const char* key, int defaultValue);
+
     bool          DigestValid;     // +0x40
     unsigned char Digest[0x14];    // +0x41
 };

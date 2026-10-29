@@ -189,7 +189,7 @@ void TemporalClass::FUN_0071A760()
     }
     if (Owner && Owner->unknown_082 && Target) {
         TemporalCoord delta = Owner->vf_048() - Target->vf_048();
-        if (TemporalLength(delta) > DAT_008871E0->unknown_F60 << 8) {
+        if (TemporalLength(delta) > DAT_008871E0->OpenToppedWarpDistance << 8) {
             FUN_0071ABC0();
             return;
         }
@@ -204,7 +204,7 @@ void TemporalClass::FUN_0071A760()
     if (!Target)
         FUN_0071ADB0();
     else
-        new TemporalAnimView(DAT_008871E0->unknown_340, Target->Coord_09C(), 0, 1, 0x600, 0, 0);
+        new TemporalAnimView(DAT_008871E0->WarpAway, Target->Coord_09C(), 0, 1, 0x600, 0, 0);
     if (Target) {
         if (Owner->vf_084()->unknown_C8E) {
             TemporalTypeView* targetType = Target->vf_084();

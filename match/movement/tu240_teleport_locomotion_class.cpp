@@ -546,15 +546,15 @@ bool __stdcall TeleportLocomotionClass::Process()
                 if (entry->unknown_10C == Foot())
                     entry->FUN_00468430();
             }
-            new TeleportAnimView(DAT_008871E0->unknown_33C, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
+            new TeleportAnimView(DAT_008871E0->WarpOut, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
             distance = TeleportLength(Foot()->vf_048() - unknown_28);
             unknown_3C = TeleportTimer(0);
-            if (DAT_008871E0->unknown_BF8)
-                unknown_3C = TeleportTimer(distance / DAT_008871E0->unknown_BF4);
-            unknown_3C = (unknown_3C.GetTimeLeft() > DAT_008871E0->unknown_BFC)
-                ? unknown_3C : TeleportTimer(DAT_008871E0->unknown_BFC);
-            if (distance < DAT_008871E0->unknown_C00)
-                unknown_3C = TeleportTimer(DAT_008871E0->unknown_BFC);
+            if (DAT_008871E0->ChronoTrigger)
+                unknown_3C = TeleportTimer(distance / DAT_008871E0->ChronoDistanceFactor);
+            unknown_3C = (unknown_3C.GetTimeLeft() > DAT_008871E0->ChronoMinimumDelay)
+                ? unknown_3C : TeleportTimer(DAT_008871E0->ChronoMinimumDelay);
+            if (distance < DAT_008871E0->ChronoRangeMinimum)
+                unknown_3C = TeleportTimer(DAT_008871E0->ChronoMinimumDelay);
             Foot()->unknown_271 = 1;
             if (Foot()->WhatAmI() == 1 && Foot()->unknown_6C4->unknown_E0E) {
                 unknown_3C = TeleportTimer(0);
@@ -564,7 +564,7 @@ bool __stdcall TeleportLocomotionClass::Process()
                 Foot()->unknown_694->unknown_69C->FUN_0062A4A0();
             Foot()->vf_124(0);
             int sound = Foot()->vf_084()->unknown_578;
-            if (sound != -1 || (sound = DAT_008871E0->unknown_21C) != -1)
+            if (sound != -1 || (sound = DAT_008871E0->ChronoOutSound) != -1)
                 FUN_007509E0(sound, Foot()->Coord_09C(), 0);
             Foot()->vf_1B4(&unknown_28);
             TeleportCell cell = TeleportCellOf(unknown_28);
@@ -577,13 +577,13 @@ bool __stdcall TeleportLocomotionClass::Process()
             Foot()->vf_1CC(0);
             Foot()->vf_124(1);
             sound = Foot()->vf_084()->unknown_574;
-            if (sound != -1 || (sound = DAT_008871E0->unknown_218) != -1)
+            if (sound != -1 || (sound = DAT_008871E0->ChronoInSound) != -1)
                 FUN_007509E0(sound, Foot()->Coord_09C(), 0);
             Foot()->vf_18C(2);
             StopMoving();
             there->FUN_00481A00(Foot());
             Foot()->vf_480(0, 1);
-            new TeleportAnimView(DAT_008871E0->unknown_33C, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
+            new TeleportAnimView(DAT_008871E0->WarpOut, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
             Foot()->unknown_280 = 0;
             return false;
     }
@@ -600,10 +600,10 @@ bool __stdcall TeleportLocomotionClass::Process()
         vf_10();
         return false;
     case 2: {
-        new TeleportAnimView(DAT_008871E0->unknown_33C, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
+        new TeleportAnimView(DAT_008871E0->WarpOut, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
         Foot()->vf_124(0);
         int sound = Foot()->vf_084()->unknown_578;
-        if (sound != -1 || (sound = DAT_008871E0->unknown_21C) != -1)
+        if (sound != -1 || (sound = DAT_008871E0->ChronoOutSound) != -1)
             FUN_007509E0(sound, Foot()->Coord_09C(), 0);
         Foot()->unknown_271 = 1;
         Foot()->unknown_27C = 0;
@@ -618,7 +618,7 @@ bool __stdcall TeleportLocomotionClass::Process()
     case 3:
         if (FUN_00718260(Foot()->unknown_288, false))
             unknown_38++;
-        Foot()->unknown_284 = DAT_008871E0->unknown_BEC;
+        Foot()->unknown_284 = DAT_008871E0->ChronoDelay;
         return false;
     case 4:
         FUN_00718260(Foot()->unknown_288, true);
@@ -632,7 +632,7 @@ bool __stdcall TeleportLocomotionClass::Process()
         Foot()->vf_1CC(0);
         Foot()->vf_124(1);
         int sound = Foot()->vf_084()->unknown_574;
-        if (sound != -1 || (sound = DAT_008871E0->unknown_218) != -1)
+        if (sound != -1 || (sound = DAT_008871E0->ChronoInSound) != -1)
             FUN_007509E0(sound, Foot()->Coord_09C(), 0);
         if (!DAT_0087F7E8.FUN_00578460(Foot()->vf_1B8(), 1))
             Foot()->unknown_3D5 = 0;
@@ -646,7 +646,7 @@ bool __stdcall TeleportLocomotionClass::Process()
             Foot()->FUN_0070C610(0);
             Foot()->vf_480(0, 1);
             unknown_3C = TeleportTimer(Foot()->unknown_284);
-            new TeleportAnimView(DAT_008871E0->unknown_33C, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
+            new TeleportAnimView(DAT_008871E0->WarpOut, Foot()->Coord_09C(), 0, 1, 0x600, 0, 0);
             unknown_38++;
         }
         return false;

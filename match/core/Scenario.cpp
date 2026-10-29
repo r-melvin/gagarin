@@ -902,7 +902,7 @@ bool __fastcall FUN_00684620(const char* filename)
         }
         strcpy(ScenarioInstance->unknown_125C, scenario);
     } else read = FUN_00686730(scenario);
-    if (!RulesInstance->unknown_14AE) MapInstance.FUN_00577F30(0);
+    if (!RulesInstance->Shroud) MapInstance.FUN_00577F30(0);
     if (!read) {
         FUN_004068E0(STR_0083D9B4, scenario);
         FUN_004A3C30(&DAT_00885780, 7, FUN_0048D080);
@@ -1020,16 +1020,16 @@ void __fastcall FUN_00684C30()
         DAT_00A8ED78 = new ParticleSystemClass(
             ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[index], coord, 0, 0, DAT_00B05488, 0);
     }
-    if (RulesInstance->unknown_1870) {
+    if (RulesInstance->OreTwinkle) {
         MapInstance.IteratorBegin_578350();
         while ((cell = MapInstance.IteratorNext_578290()) != 0) {
             if (cell->FUN_00485020() &&
-                ScenarioInstance->unknown_0218.RandomRanged(0, RulesInstance->unknown_186C - 1) == 0)
-                new AnimClass(RulesInstance->unknown_1870, cell->vf_18(), 0, 1, 0x600, 0, false);
+                ScenarioInstance->unknown_0218.RandomRanged(0, RulesInstance->OreTwinkleChance - 1) == 0)
+                new AnimClass(RulesInstance->OreTwinkle, cell->vf_18(), 0, 1, 0x600, 0, false);
         }
     }
-    FUN_0055AF40(RulesInstance->unknown_000);
-    FUN_0055AF50(RulesInstance->unknown_008);
+    FUN_0055AF40(RulesInstance->DetailMinFrameRateNormal);
+    FUN_0055AF50(RulesInstance->DetailBufferZoneWidth);
 }
 
 // FUNCTION: GAMEMD 0x685120
@@ -1518,7 +1518,7 @@ bool __fastcall FUN_00686730(const char* filename)
 // FUNCTION: GAMEMD 0x686890
 void __fastcall FUN_00686890(bool value)
 {
-    if (PlayerCount_00A8DA84 + DAT_00A8B274 < RulesInstance->unknown_14D0 && !DAT_00A8ED6B) {
+    if (PlayerCount_00A8DA84 + DAT_00A8B274 < RulesInstance->Players && !DAT_00A8ED6B) {
         for (int index = 0; index < HouseClass_ArrayCount; ++index) {
             HouseClass* house = HouseClass_ArrayItems[index];
             if (!house->IsHumanPlayer && !house->Type->MultiplayPassive && DAT_00A8B274 < 1)
@@ -1540,9 +1540,9 @@ void __fastcall FUN_00686890(bool value)
     Session_00A8B238.FUN_0069AE90(93);
     FUN_0048D080();
     if (DAT_00A8B261) {
-        int count = RulesInstance->unknown_1470;
+        int count = RulesInstance->CrateMinimum;
         if (count <= DAT_00A8B54C) count = DAT_00A8B54C;
-        if (RulesInstance->unknown_1474 <= count) count = RulesInstance->unknown_1474;
+        if (RulesInstance->CrateMaximum <= count) count = RulesInstance->CrateMaximum;
         for (; count > 0; --count) MapInstance.FUN_0056BD40();
     }
     FUN_0048D080();

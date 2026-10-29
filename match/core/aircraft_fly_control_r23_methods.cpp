@@ -26,7 +26,7 @@ int __stdcall AircraftClass::vf_04()
     } else if (Passengers.FirstPassenger != 0) {
         facing = SecondaryFacing.FUN_004C93D0(&heading);
     } else {
-        return RulesInstance->unknown_044;
+        return RulesInstance->PoseDir;
     }
     return (((facing->Whole >> 12) + 1) >> 1) & 7;
 }

@@ -1076,7 +1076,7 @@ int FUN_006023F0(int nKey, GG_HWND hCtl)
     int nCtlID = GetDlgCtrlID(hCtl);
 
     if ((category == 0x103 || category == 0xBC7) && nCtlID == 0x6F4)
-        return Rules->unknown_6C4;
+        return Rules->MessageCharTyped;
 
     return -1;
 }
@@ -1598,7 +1598,7 @@ bool FUN_00608260(GG_HWND hWnd)
     if (!bArmed || !bVisible)
         return false;
 
-    VocClass::PlayGlobal(Rules->unknown_1A0, 1.0f, 0x2000, 0);
+    VocClass::PlayGlobal(Rules->GUIMoveInSound, 1.0f, 0x2000, 0);
 
     bool bEnabled = IsWindowEnabled(hWnd) != 0;
 

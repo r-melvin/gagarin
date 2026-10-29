@@ -242,7 +242,7 @@ void GameOptionsClass::SetSoundVolume(float volume, bool playSample)
     SoundVolume = volume < DAT_007E1718 ? volume : DAT_007E1718;
     FUN_00407150(&DAT_0087E748->First, (int)(SoundVolume * 16384.0f));
     if (playSample)
-        VocClass::PlayGlobal(DAT_008871E0->unknown_710, 1.0f, 0x2000, 0);
+        VocClass::PlayGlobal(DAT_008871E0->GenericBeep, 1.0f, 0x2000, 0);
     FUN_004068E0(STR_00832FB0, (double)SoundVolume);
 }
 
@@ -254,6 +254,6 @@ void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
     FUN_00752AB0((int)(VoiceVolume * DAT_007EAA50));
     FUN_00407150(&DAT_0087E740->First, (int)(VoiceVolume * 16384.0f));
     if (playSample)
-        VocClass::PlayGlobal(DAT_008871E0->unknown_710, VoiceVolume, 0x2000, 0);
+        VocClass::PlayGlobal(DAT_008871E0->GenericBeep, VoiceVolume, 0x2000, 0);
     FUN_004068E0(STR_00832FC4, (double)VoiceVolume);
 }

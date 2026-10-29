@@ -18,6 +18,8 @@
 
 #include <stddef.h>
 #include "../_layout/session_class.h"
+#include "../_layout/house_class.h"
+#include "../_layout/house_class_human_inline.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
@@ -48,43 +50,8 @@ GG_STATIC_ASSERT(offsetof(ModeVtbl_00501640, At_4) == 0x4);
 extern Mode_00501640* DAT_00A8B23C;
 
 
-// HouseClass — only the members AllyAIHouses touches.
-struct House_00501640
-{
-    char _pad000[0x1EC];          // +0x0000
-    bool IsHumanPlayer;           // +0x01EC
-    bool IsInPlayerControl;       // +0x01ED
-    char _pad1EE[0x1F5 - 0x1EE];  // +0x01EE
-    bool Defeated;                // +0x01F5
-    char _pad1F6[0x24A - 0x1F6];  // +0x01F6
-    bool At_24A;                  // +0x024A  set once the AI house has allied
-
-    // FUNCTION: GAMEMD 0x50B730 (inlined here) — HouseClass::IsControlledByHuman.
-    bool IsControlledByHuman() const
-    {
-        if (Session_00A8B238.GameMode != 0) {
-            return IsHumanPlayer;
-        }
-        bool result = IsHumanPlayer;
-        result = result || IsInPlayerControl;
-        return result;
-    }
-
-    // FUNCTION: GAMEMD 0x4F9B70 (decl; reloc) — HouseClass::MakeAlly.
-    void MakeAlly(House_00501640* who, bool announce);
-    // FUNCTION: GAMEMD 0x4F9F90 (decl; reloc) — HouseClass::MakeEnemy.
-    void MakeEnemy(House_00501640* who, bool announce);
-
-    // FUNCTION: GAMEMD 0x501640 — HouseClass::AllyAIHouses (`this` unused).
-    void AllyAIHouses();
-};
-GG_STATIC_ASSERT(offsetof(House_00501640, IsHumanPlayer)     == 0x1EC);
-GG_STATIC_ASSERT(offsetof(House_00501640, IsInPlayerControl) == 0x1ED);
-GG_STATIC_ASSERT(offsetof(House_00501640, Defeated)          == 0x1F5);
-GG_STATIC_ASSERT(offsetof(House_00501640, At_24A)            == 0x24A);
-
 // GLOBAL: GAMEMD 0xA8022C — HouseClass::Array.Items.
-extern House_00501640** DAT_00A8022C;
+extern HouseClass** DAT_00A8022C;
 // GLOBAL: GAMEMD 0xA80238 — HouseClass::Array.Count.
 extern int DAT_00A80238;
 

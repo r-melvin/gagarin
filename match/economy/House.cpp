@@ -77,11 +77,28 @@
 // Native502D60 reads the country second index through this actual field.
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 
-#include "../ai/house_class_find_building_methods.h"
+
+// A cell as two shorts (read through a pointer at 0x4FFD90).
+struct Cell_004FFD90
+{
+    short X;   // +0x0000
+    short Y;   // +0x0002
+};
+
+// GLOBAL: GAMEMD 0xA83C6C — BuildingTypeClass::Array items.
+extern BuildingTypeClass** DAT_00A83C6C;
+// GLOBAL: GAMEMD 0xA83C78 — BuildingTypeClass::Array count.
+extern int DAT_00A83C78;
+// GLOBAL: GAMEMD 0xA8B263 — SWAllowed.
+extern char DAT_00A8B263;
+// GLOBAL: GAMEMD 0xA8022C — HouseClass::Array.Items.
+extern HouseClass** DAT_00A8022C;
+// GLOBAL: GAMEMD 0xA80238 — HouseClass::Array.Count.
+extern int DAT_00A80238;
 
 // Index of a type in BuildingTypeClass::Array, or -1. Inlined into the search
 // below (`XOR EAX,EAX; TEST EDI,EDI; JLE; ... OR EAX,-1`).
-static inline int TypeIndex_004FD060(BuildingType_004FD060* type)
+static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 {
     for (int i = 0; i < DAT_00A83C78; ++i) {
         if (DAT_00A83C6C[i] == type) {
@@ -92,7 +109,6 @@ static inline int TypeIndex_004FD060(BuildingType_004FD060* type)
 }
 
 #include <string.h>
-#include "../ai/house_class_find_index_methods.h"
 
 #pragma intrinsic(strcpy, strcmp)
 
@@ -374,15 +390,15 @@ extern char HouseDefaultName[];
 // GLOBAL: GAMEMD 0x7E9550 - the id handed to the connection-point source object.
 extern const IID DAT_007E9550;
 
-#include "house_class_cost_multipliers_methods.h"
 
-#include "house_class_first_buildable_methods.h"
-
-#include "house_class_register_built_methods.h"
-
-#include "house_class_remove_tracking_methods.h"
 
 #include "../_layout/building_class.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/techno_type_class.h"
+#include "../_layout/unit_type_class.h"
+
+// FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- VocClass::PlayAt.
+int VocClass_PlayAt(int index, CoordStruct* coords, int volume);
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -898,57 +914,59 @@ void HouseClass::FUN_004F9F70(int index, bool flag)
 // and picks the "unit ready" announcement: the rules-wide one for the category,
 // overridden by the type's own creation sound when it has one. Nothing is said
 // for buildings unless their type supplies a sound.
-void House_004FB6B0::RegisterJustBuilt(Techno_004FB6B0* pTechno)
+void HouseClass::RegisterJustBuilt(TechnoClass* pTechno)
 {
     int voice = -1;
 
-    this->At_246 = 1;
+    this->IsBuiltSomething = 1;
 
-    TechnoType_004FB6B0* pType = (pTechno->*pTechno->Vtbl->GetTechnoType)();
+    TechnoTypeClass* pType = pTechno->vf_33();
 
-    switch ((pTechno->*pTechno->Vtbl->WhatAmI)()) {
+    // Canonical names LastBuiltAircraftType/VehicleType sit at +0x274/+0x278;
+    // retail stores the unit type at +0x274 and the aircraft type at +0x278.
+    switch (pTechno->vf_11()) {
     case 1:
-        this->At_274 = (pType->*pType->Vtbl->GetArrayIndex)();
-        if (pType->At_C9F == 0) {
-            this->UnitCounter.Increment((pType->*pType->Vtbl->GetArrayIndex)());
+        this->LastBuiltAircraftType = pType->vf_16();
+        if (pType->bools_C8C[19] == 0) {
+            this->FactoryProducedUnitTypes.FUN_0049FA00(pType->vf_16());
         }
-        voice = RulesInstance_004FB6B0->At_178;
+        voice = RulesInstance->CreateUnitSound;
         break;
 
     case 15:
-        this->At_270 = (pType->*pType->Vtbl->GetArrayIndex)();
-        if (pType->At_C9F == 0) {
-            this->InfantryCounter.Increment((pType->*pType->Vtbl->GetArrayIndex)());
+        this->LastBuiltInfantryType = pType->vf_16();
+        if (pType->bools_C8C[19] == 0) {
+            this->FactoryProducedInfantryTypes.FUN_0049FA00(pType->vf_16());
         }
-        voice = RulesInstance_004FB6B0->At_17C;
+        voice = RulesInstance->CreateInfantrySound;
         break;
 
     case 6:
-        this->At_26C = (pType->*pType->Vtbl->GetArrayIndex)();
-        if (pType->At_C9F == 0) {
-            this->BuildingCounter.Increment((pType->*pType->Vtbl->GetArrayIndex)());
+        this->LastBuiltBuildingType = pType->vf_16();
+        if (pType->bools_C8C[19] == 0) {
+            this->FactoryProducedBuildingTypes.FUN_0049FA00(pType->vf_16());
         }
         break;
 
     case 2:
-        this->At_278 = (pType->*pType->Vtbl->GetArrayIndex)();
-        if (pType->At_C9F == 0) {
-            this->AircraftCounter.Increment((pType->*pType->Vtbl->GetArrayIndex)());
+        this->LastBuiltVehicleType = pType->vf_16();
+        if (pType->bools_C8C[19] == 0) {
+            this->FactoryProducedAircraftTypes.FUN_0049FA00(pType->vf_16());
         }
-        voice = RulesInstance_004FB6B0->At_180;
+        voice = RulesInstance->CreateAircraftSound;
         break;
     }
 
-    if (pType->At_534 != -1) {
-        voice = pType->At_534;
+    if (pType->CreateSound != -1) {
+        voice = pType->CreateSound;
     }
 
     if (voice != -1) {
-        Coord_004FB6B0 coords = pTechno->Location;
-        VocClass_PlayAt_004FB6B0(voice, coords, 0);
+        CoordStruct coords = pTechno->Location;
+        VocClass_PlayAt(voice, &coords, 0);
     }
 
-    this->At_1FC = 1;
+    this->RecheckTechTree = 1;
 }
 
 // FUNCTION: GAMEMD 0x4FB9B0
@@ -1024,10 +1042,10 @@ void HouseClass::FUN_004FCE00(int colorIndex, int unused, int credits)
 }
 
 // FUNCTION: GAMEMD 0x4FD040
-BuildingType_004FD060* House_004FD060::GetProducingBuildingType()
+BuildingTypeClass* HouseClass::GetProducingBuildingType()
 {
-    if (this->At_564C != -1) {
-        return DAT_00A83C6C[this->At_564C];
+    if (this->ProducingBuildingTypeIndex != -1) {
+        return DAT_00A83C6C[this->ProducingBuildingTypeIndex];
     }
     return 0;
 }
@@ -1037,19 +1055,18 @@ BuildingType_004FD060* House_004FD060::GetProducingBuildingType()
 // The first live building this house owns whose type has the given array
 // index, optionally restricted to one map sector. The per-type counter is
 // consulted first so houses without such a building skip the walk.
-Building_004FD060* House_004FD060::FindBuildingOfType(int index, int sector)
+BuildingClass* HouseClass::FindBuildingOfType(int index, int sector)
 {
-    if (this->At_5500.GetCount(index) > 0) {
-        int count = this->unknown_78;
+    if (this->OwnedBuildingTypes.GetCount(index) > 0) {
+        int count = this->Buildings.Count;
         for (int i = 0; i < count; ++i) {
-            Building_004FD060* building = this->BuildingItems[i];
+            BuildingClass* building = this->Buildings.Items[i];
             if (building != 0 && building->InLimbo == 0) {
                 if (TypeIndex_004FD060(building->Type) == index) {
                     if (sector == -1) {
                         return building;
                     }
-                    Coord_004FD060 buf;
-                    if (this->SectorOf((building->*building->Vtbl->GetCoords)(&buf)) == sector) {
+                    if (this->SectorOf(building->vf_18()) == sector) {
                         return building;
                     }
                 }
@@ -1073,61 +1090,61 @@ void __stdcall FUN_004FF540(int)
 // between two counts depending on whether they are power/production relevant;
 // infantry only decrement while their "still counted" flag is set; units also
 // give back a second count when their type asks for it.
-void House_004FF550::RemoveTracking(Techno_004FF550* pTechno)
+void HouseClass::RemoveTracking(TechnoClass* pTechno)
 {
-    pTechno->At_3CC = false;
+    pTechno->CountedAsOwned = false;
 
-    if ((pTechno->*pTechno->Vtbl->GetTechnoType)()->At_232 != 0) {
+    if (pTechno->vf_33()->Insignificant != 0) {
         return;
     }
 
-    if ((pTechno->*pTechno->Vtbl->GetTechnoType)()->At_C9F != 0) {
+    if (pTechno->vf_33()->bools_C8C[19] != 0) {
         return;
     }
 
-    switch ((pTechno->*pTechno->Vtbl->WhatAmI)()) {
+    switch (pTechno->vf_11()) {
     case 6:
-        if (!(pTechno->*pTechno->Vtbl->At_80)()
-            && (pTechno->At_520->At_408 == 0
-                || pTechno->At_520->At_408->At_5EC == 0)) {
-            this->At_2F0--;
+        if (!pTechno->vf_32()
+            && (static_cast<BuildingClass*>(pTechno)->Type->UndeploysInto == 0
+                || static_cast<BuildingClass*>(pTechno)->Type->UndeploysInto->ResourceGatherer == 0)) {
+            this->OwnedBuildings--;
         } else {
-            this->At_2E8--;
+            this->OwnedUnits--;
         }
         {
-            TechnoType_004FF550* pType = (pTechno->*pTechno->Vtbl->GetTechnoType)();
-            this->BuildingCounter.Decrement((pType->*pType->Vtbl->GetArrayIndex)());
+            TechnoTypeClass* pType = pTechno->vf_33();
+            this->OwnedBuildingTypes.FUN_0049FA70(pType->vf_16());
         }
         break;
 
     case 2:
-        this->At_2F8--;
+        this->OwnedAircraft--;
         {
-            TechnoType_004FF550* pType = (pTechno->*pTechno->Vtbl->GetTechnoType)();
-            this->AircraftCounter.Decrement((pType->*pType->Vtbl->GetArrayIndex)());
+            TechnoTypeClass* pType = pTechno->vf_33();
+            this->OwnedAircraftTypes.FUN_0049FA70(pType->vf_16());
         }
         break;
 
     case 15:
-        if (pTechno->At_438 != 0) {
-            this->At_2F4--;
-            pTechno->At_438 = false;
+        if (pTechno->CountedAsOwnedSpecial != 0) {
+            this->OwnedInfantry--;
+            pTechno->CountedAsOwnedSpecial = false;
         }
         {
-            TechnoType_004FF550* pType = (pTechno->*pTechno->Vtbl->GetTechnoType)();
-            this->InfantryCounter.Decrement((pType->*pType->Vtbl->GetArrayIndex)());
+            TechnoTypeClass* pType = pTechno->vf_33();
+            this->OwnedInfantryTypes.FUN_0049FA70(pType->vf_16());
         }
         break;
 
     case 1:
-        this->At_2E8--;
+        this->OwnedUnits--;
         {
-            TechnoType_004FF550* pType = (pTechno->*pTechno->Vtbl->GetTechnoType)();
-            this->UnitCounter.Decrement((pType->*pType->Vtbl->GetArrayIndex)());
+            TechnoTypeClass* pType = pTechno->vf_33();
+            this->OwnedUnitTypes.FUN_0049FA70(pType->vf_16());
         }
-        if ((pTechno->*pTechno->Vtbl->GetTechnoType)()->At_CCE != 0) {
-            if ((pTechno->*pTechno->Vtbl->GetTechnoType)()->At_5E0 == 0) {
-                this->At_2EC--;
+        if (pTechno->vf_33()->Naval != 0) {
+            if (pTechno->vf_33()->Passengers == 0) {
+                this->OwnedNavy--;
             }
         }
         break;
@@ -1868,31 +1885,32 @@ void HouseClass::UpdateAngerNodes(int scoreAdd, HouseClass* house)
 // country, required and forbidden house masks, AI base-planning side. A type
 // carrying a super weapon is skipped when supers are allowed, unless it is a
 // construction-yard type or its super cannot be disabled from the shell.
-TechnoType_005051E0* House_005051E0::FirstBuildableFromArray(TypeVector_005051E0* items)
+TechnoTypeClass* HouseClass::FirstBuildableFromArray(DynamicVectorClass<TechnoTypeClass*>* items)
 {
-    unsigned int owner = 1 << HouseType_FindIndexOfName_005051E0(Type->ParentCountry);
+    unsigned int owner = 1 << HouseTypeClass::FindIndexOfName(Type->ParentCountry);
 
     for (int i = 0; i < items->Count; i++) {
-        TechnoType_005051E0* type = items->Items[i];
+        TechnoTypeClass* type = items->Items[i];
         if ((type->OwnerFlags & owner)
             && (type->RequiredHouses == 0xFFFFFFFF
-                || (type->RequiredHouses & (1 << Type->ArrayIndex)))
+                || (type->RequiredHouses & (1 << Type->ArrayIndex2)))
             && (type->ForbiddenHouses == 0xFFFFFFFF
-                || !(type->ForbiddenHouses & (1 << Type->ArrayIndex)))
+                || !(type->ForbiddenHouses & (1 << Type->ArrayIndex2)))
             && (type->AIBasePlanningSide == -1
-                || type->AIBasePlanningSide == Type->ArrayIndex2)) {
+                || type->AIBasePlanningSide == Type->SideIndex)) {
             if (DAT_00A8B263) {
                 return type;
             }
-            if (type->SuperWeapon == -1) {
+            BuildingTypeClass* buildingType = static_cast<BuildingTypeClass*>(type);
+            if (buildingType->SuperWeapon == -1) {
                 return type;
             }
-            for (int j = 0; j < DAT_008871E0->BuildConstCount; j++) {
-                if (DAT_008871E0->BuildConstItems[j] == type) {
+            for (int j = 0; j < RulesInstance->list_091C.Count; j++) {
+                if (RulesInstance->list_091C.Items[j] == buildingType) {
                     return type;
                 }
             }
-            if (!SupersItems[type->SuperWeapon]->Type->DisableableFromShell) {
+            if (!Supers.Items[buildingType->SuperWeapon]->Type->unknown_E7) {
                 return type;
             }
         }
@@ -1989,9 +2007,9 @@ float HouseClass::FUN_0050BEB0(TechnoTypeClass* type)
 // which is exactly retail's loop. A `*(volatile int*)&Count` read in the loop
 // condition gets the re-read too but costs a `MOV EDX,mem; CMP EAX,EDX` pair
 // at the back edge instead of retail's folded memory compare (84.4%).
-void House_0050BF60::CalculateCostMultipliers()
+void HouseClass::CalculateCostMultipliers()
 {
-    float* mult = &InfantryCostMult;
+    float* mult = &CostInfantryMult;
 
     mult[0] = 1.0f;
     mult[1] = 1.0f;
@@ -1999,12 +2017,12 @@ void House_0050BF60::CalculateCostMultipliers()
     mult[3] = 1.0f;
     mult[4] = 1.0f;
 
-    for (int i = 0; i < Buildings.Count; ++i) {
-        mult[0] = Buildings[i]->Type->FactorInfantry * mult[0];
-        mult[1] = Buildings[i]->Type->FactorUnits * mult[1];
-        mult[2] = Buildings[i]->Type->FactorAircraft * mult[2];
-        mult[3] = Buildings[i]->Type->FactorBuildings * mult[3];
-        mult[4] = Buildings[i]->Type->FactorDefenses * mult[4];
+    for (int i = 0; i < FactoryPlants.Count; ++i) {
+        mult[0] = FactoryPlants.Items[i]->Type->InfantryCostBonus * mult[0];
+        mult[1] = FactoryPlants.Items[i]->Type->UnitsCostBonus * mult[1];
+        mult[2] = FactoryPlants.Items[i]->Type->AircraftCostBonus * mult[2];
+        mult[3] = FactoryPlants.Items[i]->Type->BuildingsCostBonus * mult[3];
+        mult[4] = FactoryPlants.Items[i]->Type->DefensesCostBonus * mult[4];
     }
 }
 
@@ -2024,7 +2042,7 @@ float Obj_0050C160::FUN_0050C160() const
 // into a 20-byte frame buffer (retail's inlined strcpy: REPNE SCASB then REP
 // MOVSD/MOVSB), and the comparison is the inlined strcmp byte loop. The count
 // is re-read from the global at the end of every iteration.
-int House_0050C170::FindIndexByName(const char* name)
+int HouseClass::FindIndexByName(const char* name)
 {
     char buf[20];
 
@@ -2663,20 +2681,19 @@ bool HouseClass::FUN_004FDCE0(int arg)
 }
 
 // FUNCTION: GAMEMD 0x4FFD50
-int House_004FD060::SectorOfObject(Building_004FD060* object)
+int HouseClass::SectorOfObject(BuildingClass* object)
 {
     if (object == 0)
         return -1;
-    Coord_004FD060 coords;
-    return SectorOf((object->*object->Vtbl->GetCoords)(&coords));
+    return SectorOf(object->vf_18());
 }
 
 // FUNCTION: GAMEMD 0x4FFD90
-int House_004FD060::SectorOfCell(Cell_004FFD90* cell)
+int HouseClass::SectorOfCell(CellStruct* cell)
 {
-    Coord_004FD060 coords;
+    CoordStruct coords;
     coords.X = cell->X * 256 + 128;
     coords.Y = cell->Y * 256 + 128;
     coords.Z = 0;
-    return SectorOf(&coords);
+    return SectorOf(coords);
 }

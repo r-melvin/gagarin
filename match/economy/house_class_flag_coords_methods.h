@@ -20,98 +20,30 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
+#include "../_layout/house_class.h"
+#include "../_layout/unit_class.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/cell.h"
 
-// CellStruct — the user-declared constructor selects the hidden-pointer
-// return convention for the inline coordinate-to-cell helper (see the banked
-// "Struct returns" rule).
-struct Cell_004FBE40
+// Coordinate to cell (signed division by 256 per axis), by value. Cell has a
+// constructor, so VC6 returns it through a hidden pointer.
+inline Cell CoordToCell_004FBE40(const CoordStruct& c)
 {
-    short X;   // +0x0000
-    short Y;   // +0x0002
-    Cell_004FBE40() {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_004FBE40) == 0x4);
-
-struct Coord_004FBE40
-{
-    int X;   // +0x0000
-    int Y;   // +0x0004
-    int Z;   // +0x0008
-};
-GG_STATIC_ASSERT(sizeof(Coord_004FBE40) == 0xC);
-
-// Coordinate to cell (signed division by 256 per axis), by value.
-inline Cell_004FBE40 CoordToCell_004FBE40(const Coord_004FBE40* c)
-{
-    Cell_004FBE40 r;
-    r.X = (short)(c->X / 256);
-    r.Y = (short)(c->Y / 256);
+    Cell r;
+    r.X = (short)(c.X / 256);
+    r.Y = (short)(c.Y / 256);
     return r;
 }
-
-// GLOBAL: GAMEMD 0xA8EF98 — the "no cell" CellStruct sentinel.
-extern Cell_004FBE40 DAT_00A8EF98;
-
-struct CellClass_004FBE40
-{
-    char _pad000[0x44];   // +0x0000
-    int  At_44;           // +0x0044 — flag owner index, -1 when none.
-
-    // FUNCTION: GAMEMD 0x483460 (decl; reloc) — take this cell's flag away;
-    // true when there was one.
-    bool FUN_00483460();
-};
-GG_STATIC_ASSERT(offsetof(CellClass_004FBE40, At_44) == 0x44);
 
 struct Map_004FBE40
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x568300 (decl; reloc) — MapClass::CoordinatesLegal.
-    bool CoordinatesLegal(const Cell_004FBE40& cell);
+    bool CoordinatesLegal(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_004FBE40* GetCellAt(const Cell_004FBE40& cell);
+    CellClass* GetCellAt(const CellStruct& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_004FBE40 DAT_0087F7E8;
-
-// Declaration order matters — see match/_rt/gg_vslot.h.
-struct Vtbl_004FBE40;
-
-// The flag carrier / flag holder: an ObjectClass, a UnitClass when WhatAmI
-// says so.
-struct Obj_004FBE40
-{
-    Vtbl_004FBE40* Vtbl;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x740E20 (decl; reloc) — UnitClass::FlagRemove; true
-    // when the unit was carrying a flag.
-    bool FlagRemove();
-};
-
-typedef int (Obj_004FBE40::*Fn2C_004FBE40)();
-typedef Coord_004FBE40* (Obj_004FBE40::*Fn48_004FBE40)(Coord_004FBE40* out);
-
-struct Vtbl_004FBE40
-{
-    char           _pad000[0x2C];   // +0x0000
-    Fn2C_004FBE40  WhatAmI;         // +0x002C
-    char           _pad030[0x18];   // +0x0030
-    Fn48_004FBE40  GetCoords;       // +0x0048
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_004FBE40, WhatAmI)   == 0x2C);
-GG_STATIC_ASSERT(offsetof(Vtbl_004FBE40, GetCoords) == 0x48);
-
-struct House_004FBE40
-{
-    char           _pad0000[0x53DC];   // +0x0000
-    Obj_004FBE40*  OurFlagCarrier;     // +0x53DC
-    Cell_004FBE40  OurFlagCoords;      // +0x53E0
-
-    // FUNCTION: GAMEMD 0x4FBE40
-    bool UpdateFlagCoords(Obj_004FBE40* obj, bool clearCell);
-};
-GG_STATIC_ASSERT(offsetof(House_004FBE40, OurFlagCarrier) == 0x53DC);
-GG_STATIC_ASSERT(offsetof(House_004FBE40, OurFlagCoords)  == 0x53E0);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_FLAG_COORDS_METHODS_H

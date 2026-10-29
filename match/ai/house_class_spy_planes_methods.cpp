@@ -13,14 +13,14 @@
 // setup is held open around the creating calls. Returns how many planes made
 // it in; a plane that cannot be placed is deleted and the count comes back
 // one short.
-int House_0065EAB0::SendSpyPlanes(int typeIndex, int count, int a2,
-                                  int a3, void* a4)
+int __fastcall HouseClass::SendSpyPlanes(int typeIndex, int count, int a2,
+                                         int a3, AbstractClass* a4)
 {
-    AircraftType_0065EAB0* type = DAT_00A8B21C[typeIndex];
+    AircraftTypeClass* type = DAT_00A8B21C[typeIndex];
     // The edge search's out cell is declared outside the loop: inside it, cl
     // merges its frame slot with the coordinate temporary and the whole tail
     // shifts by a slot.
-    Cell_0065EAB0 tmp;
+    CellStruct tmp;
     int made;
 
     // A `for` loop, not a counted `do`/`while`: retail guards the loop with
@@ -28,29 +28,29 @@ int House_0065EAB0::SendSpyPlanes(int typeIndex, int count, int a2,
     // form makes cl peel the creating call and duplicate it at the back edge.
     for (made = 0; made < count; made++) {
         DAT_00A8E7AC++;
-        Techno_0065EAB0* plane = (type->*type->Vtbl->CreateObject)(this);
+        AircraftClass* plane = static_cast<AircraftClass*>(type->vf_35(this));
         DAT_00A8E7AC--;
         if (plane == 0) {
             break;
         }
 
-        plane->At_3D4 = 1;
+        plane->Spawned = 1;
 
-        int side = this->At_1E0;
+        int side = this->StartingEdge;
         if (side < 0 || side > 3) {
-            side = FUN_0050DA80(this);
+            side = this->FUN_0050DA80();
         }
 
-        Cell_0065EAB0 cell = *MapInstance_0065EAB0.FUN_004AA440(
+        CellStruct cell = *MapInstance_0065EAB0.FUN_004AA440(
             &tmp, side, &DAT_00B04C38, &DAT_00B04C38, 4, 1, 0);
 
-        (plane->*plane->Vtbl->At_1E8)(a2, 0);
+        plane->vf_122(a2, 0);
 
         if (a4 != 0) {
-            (plane->*plane->Vtbl->At_480)(a4, 1);
+            plane->SetDestination(a4, 1);
         }
         if (a3 != 0) {
-            (plane->*plane->Vtbl->At_3C8)(a3);
+            plane->vf_242(a3);
         }
 
         DAT_00A8E7AC++;
@@ -58,17 +58,15 @@ int House_0065EAB0::SendSpyPlanes(int typeIndex, int count, int a2,
         // a named local filled field by field: that is what puts retail's
         // `PUSH 0` for the second argument ahead of the scaling arithmetic and
         // leaves the Z store after the address push.
-        int ok = (plane->*plane->Vtbl->Unlimbo)(
+        int ok = plane->vf_54(
             Coord_0065EAB0(cell.X * 256 + 128, cell.Y * 256 + 128, 0), 0);
         DAT_00A8E7AC--;
         if (!ok) {
-            if (plane != 0) {
-                (plane->*plane->Vtbl->ScalarDeletingDtor)(1);
-            }
+            delete plane;
             return made - 1;
         }
 
-        (plane->*plane->Vtbl->At_1EC)();
+        plane->vf_123();
     }
 
     return made;

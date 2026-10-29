@@ -402,7 +402,7 @@ public:
     unsigned char unknown_53D7;            // +0x53D7 ctor @0x004F5A0A
     unsigned char DefenseType_53D8;        // +0x53D8 ctor @0x004F5A10
     unsigned char unknown_53D9[3];         // +0x53D9 never written by the ctor
-    void*  OurFlagCarrier;                 // +0x53DC UnitClass*; ctor @0x004F5A16
+    AbstractClass* OurFlagCarrier;         // +0x53DC the carrying UnitClass, or the CellClass the dropped flag lies in; ctor @0x004F5A16
     CellStruct OurFlagCoords;              // +0x53E0 ctor word stores @0x004F5A1C/0x004F5A23
     int    KilledUnitsOfHouses[20];        // +0x53E4 .. 0x5433 ctor LEA EDI @0x004F62A1
     int    TotalKilledUnits;               // +0x5434 ctor @0x004F5A2A
@@ -599,8 +599,8 @@ public:
     void DestroyAllNonBuildingsNonNaval();                      // 0x4FC820
     void DestroyAllNonBuildingsNaval();                         // 0x4FC8D0
     void FUN_004FF700(TechnoClass* techno);                     // 0x4FF700
-    char PickedUpFlag(UnitClass* Who, unsigned long dwUnk);     // 0x4FC060
-    void UpdateFlagCoords(UnitClass* NewCarrier, unsigned long dwUnk); // 0x4FBE40 (decl; reloc)
+    char PickedUpFlag(UnitClass* Who, bool dwUnk);     // 0x4FC060
+    bool UpdateFlagCoords(AbstractClass* obj, bool clearCell);    // 0x4FBE40 (RET 8)
     void AcquiredThreatNode();                                  // 0x509130
     bool IonSensitivesShouldBeOffline() const;                  // 0x53A130
     // FUNCTION: GAMEMD 0x504790 (decl; reloc) -- adds to the anger of `house`'s node and re-picks the enemy.
@@ -665,6 +665,38 @@ public:
     bool CanAlly(HouseClass* other);
     // FUNCTION: GAMEMD 0x509140 -- re-checks the factory serving a category after the buildable set changed: drops unbuildable queue entries and abandons, suspends or resumes the current item.
     void UpdateFactoriesQueues(int rtti, bool isNaval, int buildCat);
+    // FUNCTION: GAMEMD 0x4FB6B0 -- a factory finished an object: remembers its type per category, tallies it and plays the ready voice; RET 4.
+    void RegisterJustBuilt(TechnoClass* pTechno);
+    // FUNCTION: GAMEMD 0x4FF550 -- an object left the books: clears its tracked flag and walks the owned counts and tallies down; RET 4.
+    void RemoveTracking(TechnoClass* pTechno);
+    // FUNCTION: GAMEMD 0x5051E0 -- first type in the list this house may build (owner, required/forbidden masks, planning side, super weapon rules).
+    TechnoTypeClass* FirstBuildableFromArray(DynamicVectorClass<TechnoTypeClass*>* items);
+    // FUNCTION: GAMEMD 0x50BF60 -- every cost multiplier restarts at one and folds in each owned building's type factors.
+    void CalculateCostMultipliers();
+    // FUNCTION: GAMEMD 0x50C170 -- index of the house whose name matches, or -1.
+    static int FindIndexByName(const char* name);
+    // FUNCTION: GAMEMD 0x4FD060 -- the first live building of that type index, optionally restricted to one sector.
+    BuildingClass* FindBuildingOfType(int index, int sector);
+    // FUNCTION: GAMEMD 0x4FD040 -- the building type being produced, null when none.
+    BuildingTypeClass* GetProducingBuildingType();
+    // FUNCTION: GAMEMD 0x4FFB20 (decl; reloc) -- which sector a coordinate is in.
+    int SectorOf(const CoordStruct& coords);
+    // FUNCTION: GAMEMD 0x4FFD50 -- sector of an object's coordinates, -1 for a null object.
+    int SectorOfObject(BuildingClass* object);
+    // FUNCTION: GAMEMD 0x4FFD90 -- sector of the centre of a cell.
+    int SectorOfCell(CellStruct* cell);
+    // FUNCTION: GAMEMD 0x4FBF60 -- a carrier drops the flag on a cell (or the nearest free one); RET 8.
+    bool DroppedFlag(const CellStruct& cell, bool dwUnk);
+    // FUNCTION: GAMEMD 0x505360 -- are all of a type's prerequisites among the first `count` owned building types.
+    bool AllPrerequisitesAvailable(TechnoTypeClass* type, DynamicVectorClass<BuildingTypeClass*>* owned, int count);
+    // FUNCTION: GAMEMD 0x65EAB0 -- flies a flight of aircraft of one type in from the house's map edge; returns how many made it in. __fastcall on a member: the type index travels in EDX, RET 0x10.
+    int __fastcall SendSpyPlanes(int typeIndex, int count, int a2, int a3, AbstractClass* a4);
+    // FUNCTION: GAMEMD 0x4FC980 -- ends the game for this house once and starts the borrowed-time countdown; answers the game-over flag.
+    char FUN_004FC980();
+    // FUNCTION: GAMEMD 0x4FF980 -- takes one off the factory counter of a removed building's category.
+    void FUN_004FF980(TechnoClass* building);
+    // FUNCTION: GAMEMD 0x4FFA50 -- adds one to the factory counter of an added building's category.
+    void FUN_004FFA50(TechnoClass* building);
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

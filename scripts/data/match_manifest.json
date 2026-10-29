@@ -157,7 +157,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x4FD060",
-  "sym": "?FindBuildingOfType@House_004FD060@@QAEPAUBuilding_004FD060@@HH@Z",
+  "sym": "?FindBuildingOfType@HouseClass@@QAEPAVBuildingClass@@HH@Z",
   "len": "0xb3",
   "name": "HouseClass::FindBuildingOfType",
   "status": "matched",
@@ -166,7 +166,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50C170",
-  "sym": "?FindIndexByName@House_0050C170@@SIHPBD@Z",
+  "sym": "?FindIndexByName@HouseClass@@SIHPBD@Z",
   "len": "0x9d",
   "name": "HouseClass::FindIndexByName",
   "status": "matched",
@@ -292,7 +292,7 @@
  {
   "tu": "match/ai/house_class_spy_planes_methods.cpp",
   "addr": "0x65EAB0",
-  "sym": "?SendSpyPlanes@House_0065EAB0@@QAIHHHHHPAX@Z",
+  "sym": "?SendSpyPlanes@HouseClass@@QAIHHHHHPAVAbstractClass@@@Z",
   "len": "0x180",
   "name": "HouseClass::SendSpyPlanes",
   "status": "matched",
@@ -21053,9 +21053,9 @@
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A3C0",
-  "sym": "?FUN_0067A3C0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A3C0@?$TypeList@PBVVoxelAnimTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A3C0",
+  "name": "?FUN_0067A3C0@?$TypeList@PBVVoxelAnimTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
   "pct": 100
  },
@@ -21080,54 +21080,54 @@
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A630",
-  "sym": "?FUN_0067A630@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A630@?$TypeList@PBVSmudgeTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A630",
+  "name": "?FUN_0067A630@?$TypeList@PBVSmudgeTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A6E0",
-  "sym": "?FUN_0067A6E0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A6E0@?$TypeList@PBVBuildingTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A6E0",
+  "name": "?FUN_0067A6E0@?$TypeList@PBVBuildingTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A770",
-  "sym": "?FUN_0067A770@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A770@?$TypeList@PBVUnitTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A770",
+  "name": "?FUN_0067A770@?$TypeList@PBVUnitTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A7D0",
-  "sym": "?FUN_0067A7D0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A7D0@?$TypeList@PBVAircraftTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A7D0",
+  "name": "?FUN_0067A7D0@?$TypeList@PBVAircraftTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A850",
-  "sym": "?FUN_0067A850@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A850@?$TypeList@PBVInfantryTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A850",
+  "name": "?FUN_0067A850@?$TypeList@PBVInfantryTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A8E0",
-  "sym": "?FUN_0067A8E0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A8E0@?$TypeList@PBVTerrainTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A8E0",
+  "name": "?FUN_0067A8E0@?$TypeList@PBVTerrainTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
   "pct": 100
  },
@@ -22610,7 +22610,7 @@
  {
   "tu": "match/economy/house_class_ally_ai_methods.cpp",
   "addr": "0x501640",
-  "sym": "?AllyAIHouses@House_00501640@@QAEXXZ",
+  "sym": "?AllyAIHouses@HouseClass@@QAEXXZ",
   "len": "0x10F",
   "name": "HouseClass::AllyAIHouses",
   "status": "matched",
@@ -22664,7 +22664,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50BF60",
-  "sym": "?CalculateCostMultipliers@House_0050BF60@@QAEXXZ",
+  "sym": "?CalculateCostMultipliers@HouseClass@@QAEXXZ",
   "len": "0xeb",
   "name": "HouseClass::CalculateCostMultipliers",
   "status": "matched",
@@ -22709,7 +22709,7 @@
  {
   "tu": "match/economy/house_class_dropped_flag_methods.cpp",
   "addr": "0x4FBF60",
-  "sym": "?DroppedFlag@House_004FBF60@@QAE_NABUCell_004FBF60@@K@Z",
+  "sym": "?DroppedFlag@HouseClass@@QAE_NABUCellStruct@@_N@Z",
   "len": "0xFC",
   "name": "HouseClass::DroppedFlag",
   "status": "partial",
@@ -22727,7 +22727,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x5051E0",
-  "sym": "?FirstBuildableFromArray@House_005051E0@@QAEPAUTechnoType_005051E0@@PAUTypeVector_005051E0@@@Z",
+  "sym": "?FirstBuildableFromArray@HouseClass@@QAEPAVTechnoTypeClass@@PAV?$DynamicVectorClass@PAVTechnoTypeClass@@@@@Z",
   "len": "0x123",
   "name": "HouseClass::FirstBuildableFromArray",
   "status": "matched",
@@ -22736,7 +22736,7 @@
  {
   "tu": "match/economy/house_class_flag_coords_methods.cpp",
   "addr": "0x4FBE40",
-  "sym": "?UpdateFlagCoords@House_004FBE40@@QAE_NPAUObj_004FBE40@@_N@Z",
+  "sym": "?UpdateFlagCoords@HouseClass@@QAE_NPAVAbstractClass@@_N@Z",
   "len": "0x119",
   "name": "HouseClass::UpdateFlagCoords",
   "status": "matched",
@@ -22745,7 +22745,7 @@
  {
   "tu": "match/economy/house_class_flag_methods.cpp",
   "addr": "0x4FC060",
-  "sym": "?PickedUpFlag@HouseClass@@QAEDPAVUnitClass@@K@Z",
+  "sym": "?PickedUpFlag@HouseClass@@QAEDPAVUnitClass@@_N@Z",
   "len": "0x4E",
   "name": "PickedUpFlag",
   "status": "matched",
@@ -22862,7 +22862,7 @@
  {
   "tu": "match/economy/house_class_prerequisites_methods.cpp",
   "addr": "0x505360",
-  "sym": "?AllPrerequisitesAvailable@House_00505360@@QAE_NPAUTechnoType_00505360@@PAUBuildingVector_00505360@@H@Z",
+  "sym": "?AllPrerequisitesAvailable@HouseClass@@QAE_NPAVTechnoTypeClass@@PAV?$DynamicVectorClass@PAVBuildingTypeClass@@@@H@Z",
   "len": "0x144",
   "name": "HouseClass::AllPrerequisitesAvailable",
   "status": "matched",
@@ -22871,7 +22871,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x4FB6B0",
-  "sym": "?RegisterJustBuilt@House_004FB6B0@@QAEXPAUTechno_004FB6B0@@@Z",
+  "sym": "?RegisterJustBuilt@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x18b",
   "name": "HouseClass::RegisterJustBuilt",
   "status": "matched",
@@ -22880,7 +22880,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x4FF550",
-  "sym": "?RemoveTracking@House_004FF550@@QAEXPAUTechno_004FF550@@@Z",
+  "sym": "?RemoveTracking@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x1a7",
   "name": "HouseClass::RemoveTracking",
   "status": "matched",
@@ -104445,7 +104445,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x4FFD50",
-  "sym": "?SectorOfObject@House_004FD060@@QAEHPAUBuilding_004FD060@@@Z",
+  "sym": "?SectorOfObject@HouseClass@@QAEHPAVBuildingClass@@@Z",
   "len": "0x31",
   "name": "House_004FD060::SectorOfObject",
   "status": "matched",
@@ -104454,7 +104454,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x4FFD90",
-  "sym": "?SectorOfCell@House_004FD060@@QAEHPAUCell_004FFD90@@@Z",
+  "sym": "?SectorOfCell@HouseClass@@QAEHPAUCellStruct@@@Z",
   "len": "0x3F",
   "name": "House_004FD060::SectorOfCell",
   "status": "matched",
@@ -104490,7 +104490,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x4FD040",
-  "sym": "?GetProducingBuildingType@House_004FD060@@QAEPAUBuildingType_004FD060@@XZ",
+  "sym": "?GetProducingBuildingType@HouseClass@@QAEPAVBuildingTypeClass@@XZ",
   "len": "0x18",
   "name": "House_004FD060::GetProducingBuildingType",
   "status": "matched",
@@ -142299,7 +142299,7 @@
  {
   "tu": "match/economy/house_class_r17_methods.cpp",
   "addr": "0x4FC980",
-  "sym": "?FUN_004FC980@HouseView_004FC980@@QAEDXZ",
+  "sym": "?FUN_004FC980@HouseClass@@QAEDXZ",
   "len": "0x57",
   "name": "HouseView_004FC980::FUN_004FC980",
   "status": "matched",
@@ -142308,7 +142308,7 @@
  {
   "tu": "match/economy/house_class_r17_methods.cpp",
   "addr": "0x4FF980",
-  "sym": "?FUN_004FF980@HouseView_004FF980@@QAEXPAVTechnoClass@@@Z",
+  "sym": "?FUN_004FF980@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
   "name": "HouseView_004FF980::FUN_004FF980",
   "status": "partial",
@@ -142317,7 +142317,7 @@
  {
   "tu": "match/economy/house_class_r17_methods.cpp",
   "addr": "0x4FFA50",
-  "sym": "?FUN_004FFA50@HouseView_004FF980@@QAEXPAVTechnoClass@@@Z",
+  "sym": "?FUN_004FFA50@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
   "name": "HouseView_004FF980::FUN_004FFA50",
   "status": "partial",
@@ -146214,6 +146214,33 @@
   "sym": "?vf_260@TechnoClass@@UAEXH@Z",
   "len": "0x54a",
   "name": "TechnoClass::vf_260",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/rules_class_special_weapons_methods.cpp",
+  "addr": "0x668FB0",
+  "sym": "?Read_SpecialWeapons@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x221",
+  "name": "RulesClass::Read_SpecialWeapons",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/rules_class_multiplayer_dialog_methods.cpp",
+  "addr": "0x671EA0",
+  "sym": "?Read_MultiplayerDialogSettings@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x387",
+  "name": "RulesClass::Read_MultiplayerDialogSettings",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/rules_class_crate_rules_methods.cpp",
+  "addr": "0x66B900",
+  "sym": "?Read_CrateRules@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x2a2",
+  "name": "RulesClass::Read_CrateRules",
   "status": "matched",
   "pct": 100
  }

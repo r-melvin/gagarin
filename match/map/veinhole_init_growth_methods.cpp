@@ -57,7 +57,7 @@ void InitVeinGrowthData(bool rebuild)
             DAT_00B1D2F0 = 0;
         }
         for (i = DAT_00B1D2A0 - 1; i >= 0; i--) {
-            DAT_00B1D294[i]->Growth = new Pair_0074DE90[DAT_008871E0->unknown_DC];
+            DAT_00B1D294[i]->Growth = new Pair_0074DE90[DAT_008871E0->MaxVeinholeGrowth];
 
             Stack_0074DE90* stack =
                 (Stack_0074DE90*)VeinOperatorNew(sizeof(Stack_0074DE90));

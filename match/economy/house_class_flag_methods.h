@@ -14,23 +14,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/unit_class.h"   // the flag carrier: InLimbo @0x81, FlagAttach 0x740DF0
 #include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"   // Type->ArrayIndex2 @0xB8
 
 typedef unsigned long DWORD;
-
-// ---------------------------------------------------------------------------
-// HouseTypeClass shim — only the index @0xB8 is touched.
-//
-// Confirmed from 0x4FC060: MOV EDX,[ESI+0x34] (HouseClass::Type), then
-// MOV EAX,[EDX+0xB8] — the value handed to the carrier as its owner/colour
-// index. Full AbstractTypeClass-derived layout is P2.
-// ---------------------------------------------------------------------------
-class HouseTypeClass
-{
-public:
-    char _layout_pad_P2[0xB8];   // +0x0000
-    int  ColorSchemeIndex_B8;    // +0x00B8  (MOV EAX,[EDX+0xB8])
-};
-GG_STATIC_ASSERT(offsetof(HouseTypeClass, ColorSchemeIndex_B8) == 0xB8);
 
 // ---------------------------------------------------------------------------
 // HouseClass — only the members PickedUpFlag touches are modelled; the full

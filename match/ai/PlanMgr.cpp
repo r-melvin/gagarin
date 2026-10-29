@@ -1443,7 +1443,7 @@ void FUN_006379C0()
     if (!DAT_00AC4CF4) {
         RulesClass* rules = RulesInstance;
         DAT_00AC4CF4 = true;
-        FUN_00750920(rules->unknown_1D4, 1.0f, 0x2000, 0);
+        FUN_00750920(rules->StartPlanningModeSound, 1.0f, 0x2000, 0);
         if (DAT_00AC4B80 != 0) {
             DAT_00AC4B80->vf_0(0x11C7, 0);
         }
@@ -1460,7 +1460,7 @@ void FUN_00637A10()
         DAT_00AC4C38 = 0;
         DAT_00AC4BF0 = 0;
         DAT_00AC4CF4 = false;
-        FUN_00750920(RulesInstance->unknown_1E0, 1.0f, 0x2000, 0);
+        FUN_00750920(RulesInstance->EndPlanningModeSound, 1.0f, 0x2000, 0);
         if (DAT_00AC4B80 != 0) {
             DAT_00AC4B80->vf_0(0x11C8, 0);
         }
@@ -1847,7 +1847,7 @@ void FUN_0063A0D0()
         DAT_00AC4C08 = true;
         int text = FUN_00734E60(STR_00836C80, 0, STR_00836BD4, 0xCA1);
         FUN_00730A90(text, 0x1E0);
-        FUN_00750920(RulesInstance->unknown_700, 1.0f, 0x2000, 0);
+        FUN_00750920(RulesInstance->ScoldSound, 1.0f, 0x2000, 0);
     }
 }
 
@@ -1890,7 +1890,7 @@ void __fastcall FUN_0063A230(const char* key)
         DAT_00AC4C08 = true;
         int text = FUN_00734E60(key, 0, STR_00836BD4, 0xCA1);
         FUN_00730A90(text, 0x1E0);
-        FUN_00750920(RulesInstance->unknown_700, 1.0f, 0x2000, 0);
+        FUN_00750920(RulesInstance->ScoldSound, 1.0f, 0x2000, 0);
     }
 }
 

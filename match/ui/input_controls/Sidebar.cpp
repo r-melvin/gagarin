@@ -1203,7 +1203,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                             Map_0087F7E8.SetActiveFoundation_004A8BF0(0);
                         }
                         if (factory->Object == 0 || factory->At_70 != 0) {
-                            VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                            VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                             SelectVoxPlay("EVA_Canceled", -1, -1);
                             SelectEvent event;
                             if (shift) {
@@ -1212,7 +1212,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                                 event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0x10, type, item, technoType->At_CCE)->Queue();
                             }
                         } else {
-                            VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                            VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                             SelectVoxPlay("EVA_OnHold", -1, -1);
                             SelectEvent event;
                             event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0xF, type, item, technoType->At_CCE)->Queue();
@@ -1223,14 +1223,14 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                             Owner->Entries[index].State = 2;
                             Owner->At_3C = 1;
                             Map_0087F7E8.FlagToRedraw(0);
-                            VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                            VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                             SelectVoxPlay("EVA_OnHold", -1, -1);
                             SelectEvent event;
                             event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0xF, type, item, technoType->At_CCE)->Queue();
                         }
                         SelectFactory* primary = SelectPlayer_00A83D4C->GetPrimaryFactory(type, technoType->At_CCE, category);
                         if (primary != 0 && primary->IsQueued(technoType)) {
-                            VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                            VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                             SelectEvent event;
                             if (shift) {
                                 event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0x2E, type, item, technoType->At_CCE)->Queue();
@@ -1249,7 +1249,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                                     PendingSuper_008809A0 = 1;
                                 }
                             } else {
-                                VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                                VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                                 SelectTechno* target = (object->*object->Vtbl->At_190)(0, 0);
                                 if (target == 0) {
                                     SelectEvent event;
@@ -1263,7 +1263,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                                 }
                             }
                         } else {
-                            VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                            VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                             SelectVoxPlay(type == 0x10 ? "EVA_Training" : "EVA_Building", -1, -1);
                             SelectTechnoType* current = SelectGetByTypeAndIndex(Owner->Entries[index].Type, Owner->Entries[index].Item);
                             bool currentFlag = current != 0 && current->At_CCE != 0;
@@ -1305,7 +1305,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                         } else {
                             bool ready = SelectPlayer_00A83D4C->FUN_00500700(type, technoType->At_CCE, category);
                             if (!canBuild) {
-                                VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                                VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                                 if (primary == 0 && !ready) {
                                     SelectPlayer_00A83D4C->FUN_005005B0(type, technoType->At_CCE, category);
                                     queued = true;
@@ -1325,7 +1325,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                                         if ((target->*target->Vtbl->At_94)(1, 0, 0, SelectPlayer_00A83D4C)) {
                                             int time = (target->*target->Vtbl->At_88)();
                                             if ((target->*target->Vtbl->At_2C)() == 7 && target->At_1571) {
-                                                time = (int)(time * DAT_008871E0->unknown_758);
+                                                time = (int)(time * DAT_008871E0->WallBuildSpeedCoefficient);
                                             }
                                             int frames = time;
                                             if (frames < 0xF) {
@@ -1361,7 +1361,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                     PendingSuper_008809A0 = -1;
                 }
                 if ((flags & 1) && (unsigned int)item < SelectPlayer_00A83D4C->SuperCount) {
-                    VocClass::PlayGlobal(DAT_008871E0->unknown_18C, 1.0f, 0x2000, 0);
+                    VocClass::PlayGlobal(DAT_008871E0->GUIBuildSound, 1.0f, 0x2000, 0);
                     SelectSuper* super = SelectPlayer_00A83D4C->Supers[item];
                     if (super->CanFire()) {
                         if (super->Type->At_BC == 0) {

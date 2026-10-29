@@ -569,7 +569,7 @@ void Tactical::vf_23()
             moved = true;
         }
         if (unknown_DA4.GetTimeLeft() == 0) {
-            unknown_DA4 = ScenarioElapsedTimer(Rules->unknown_050);
+            unknown_DA4 = ScenarioElapsedTimer(Rules->WaypointAnimationSpeed);
             ++unknown_DA0;
         }
     }

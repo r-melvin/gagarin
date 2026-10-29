@@ -24,6 +24,6 @@ void EBolt::Fire(CoordStruct from, CoordStruct to, int color)
     ParticleSystem_004C2A60* ps =
         (ParticleSystem_004C2A60*)operator new(sizeof(ParticleSystem_004C2A60));
     if (ps != 0) {
-        ps->Construct(DAT_008871E0->unknown_1020, &to, 0, 0, &DAT_008A0E50, 0);
+        ps->Construct(DAT_008871E0->DefaultSparkSystem, &to, 0, 0, &DAT_008A0E50, 0);
     }
 }

@@ -24,14 +24,14 @@
 //   MOV EDX,[ESI+0x34]; MOV EAX,[EDX+0xB8]; push EAX; call 0x740DF0;
 //   MOV [ESI+0x53DC],EDI; MOV AL,1.
 // ---------------------------------------------------------------------------
-char HouseClass::PickedUpFlag(UnitClass* Who, DWORD dwUnk)
+char HouseClass::PickedUpFlag(UnitClass* Who, bool dwUnk)
 {
     if (Who == NULL || Who->InLimbo != 0) {
         return 0;
     }
 
-    this->UpdateFlagCoords((UnitClass*)this->OurFlagCarrier, dwUnk);
-    Who->FlagAttach(this->Type->ColorSchemeIndex_B8);
+    this->UpdateFlagCoords(this->OurFlagCarrier, dwUnk);
+    Who->FlagAttach(this->Type->ArrayIndex2);
     this->OurFlagCarrier = Who;
     return 1;
 }

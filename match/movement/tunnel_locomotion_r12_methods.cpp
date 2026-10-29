@@ -69,7 +69,7 @@ void TunnelLocomotionClass::FUN_007294E0()
     TunnelCoord_r12 where = foot->Location;
     if (where.Z > -0x100) {
         int speed = foot->vf_538();
-        int step = (int)(speed * DAT_008871E0->unknown_20);
+        int step = (int)(speed * DAT_008871E0->TunnelSpeed);
         if (step <= 5) {
             step = 5;
         }

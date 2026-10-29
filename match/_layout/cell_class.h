@@ -296,6 +296,10 @@ public:
     unsigned int    Flags;                   // +0x140 ctor read-modify-write AND 0xFF800000
                                              //   @0x0047BCC9..0x0047BD56 (a bitfield, low 23 bits cleared)
     unsigned char   padding_144[4];          // +0x144 (PROTECTED_PROPERTY; closes the object at 0x148)
+    // FUNCTION: GAMEMD 0x483410 (decl; reloc) -- plant the flag in this cell for the given colour index; false when the cell already holds one or cannot take it.
+    bool FUN_00483410(int colorIndex);
+    // FUNCTION: GAMEMD 0x483460 (decl; reloc) -- take this cell's flag away; true when there was one.
+    bool FUN_00483460();
 };
 
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords)               == 0x24);

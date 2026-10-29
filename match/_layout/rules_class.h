@@ -18,6 +18,7 @@ struct AbstractNoInit;
 class CCINIClass;
 class WarheadTypeClass;
 class AnimTypeClass;
+class OverlayTypeClass;
 class WeaponTypeClass;
 class UnitTypeClass;
 class ObjectTypeClass;
@@ -97,17 +98,23 @@ struct RulesClass
     bool Read_ParticleSystems(CCINIClass* pINI);
     // Declaration: GAMEMD 0x672740 -- thiscall, one INI pointer, RET4.
     bool Read_Teams(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x66B900  RulesClass::Read_CrateRules
+    bool Read_CrateRules(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x671EA0  RulesClass::Read_MultiplayerDialogSettings
+    bool Read_MultiplayerDialogSettings(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x668FB0  RulesClass::Read_SpecialWeapons
+    bool Read_SpecialWeapons(CCINIClass* pINI);
 
 
-    int unknown_000; // 0x6850FB -> fastcall55AF40
-    int unknown_004;
-    int unknown_008; // 0x685108 -> fastcall55AF50
+    int DetailMinFrameRateNormal; // 0x6850FB -> fastcall55AF40
+    int DetailMinFrameRateMovie;
+    int DetailBufferZoneWidth; // 0x685108 -> fastcall55AF50
     int AmmoCrateDamage;   // +0xC
     void* LargeVisceroid;   // +0x10
     void* SmallVisceroid;   // +0x14
     int AttackingAircraftSightRange;   // +0x18
     char unknown_1C[0x4];
-    double unknown_20;   // +0x20
+    double TunnelSpeed;   // +0x20
     double TiberiumHeal;   // +0x28
     int SelfHealInfantryFrames;   // +0x30
     int SelfHealInfantryAmount;   // +0x34
@@ -116,10 +123,10 @@ struct RulesClass
     bool FreeMCV;   // +0x40
     bool BerzerkAllowed;   // +0x41
     char unknown_42[0x2];
-    int unknown_044;    // +0x044 read by AircraftClass 0x41B760 as its facing fallback
+    int PoseDir;    // +0x044 read by AircraftClass 0x41B760 as its facing fallback
     int DeployDir;   // +0x48
-    AnimTypeClass* LandAnim; // +0x04C
-    int unknown_050; // 0x6D26BE reads DWORD duration; 0x6D26E1 stores it to Tactical+DAC.
+    AnimTypeClass* DropPodPuff; // +0x04C
+    int WaypointAnimationSpeed; // 0x6D26BE reads DWORD duration; 0x6D26E1 stores it to Tactical+DAC.
     AnimTypeClass* BarrelExplode;   // +0x54
     TypeList<const VoxelAnimTypeClass*> list_0058;  // +0x0058
     ParticleSystemTypeClass* BarrelParticle;   // +0x74
@@ -128,11 +135,11 @@ struct RulesClass
     float RadarEventSpeed;   // +0x80
     float RadarEventRotationSpeed;   // +0x84
     int FlashFrameTime;   // +0x88
-    int unknown_08C;
-    int unknown_90;   // +0x90
+    int RadarCombatFlashTime;
+    int MaxWaypointPathLength;   // +0x90
     AnimTypeClass* Wake;   // +0x94
     AnimTypeClass* NukeTakeOff;   // +0x98
-    AnimTypeClass* unknown_9C;   // +0x9C
+    AnimTypeClass* InfantryExplode;   // +0x9C
     AnimTypeClass* FlamingInfantry;   // +0xA0
     AnimTypeClass* InfantryHeadPop;   // +0xA4
     AnimTypeClass* InfantryNuked;   // +0xA8
@@ -145,16 +152,16 @@ struct RulesClass
     double AITriggerFailureWeightDelta;   // +0xC8
     double AITriggerTrackRecordCoefficient;   // +0xD0
     int VeinholeMonsterStrength;   // +0xD8
-    int unknown_DC;   // +0xDC
+    int MaxVeinholeGrowth;   // +0xDC
     int VeinholeGrowthRate;   // +0xE0
     int VeinholeShrinkRate;   // +0xE4
     AnimTypeClass* VeinAttack;   // +0xE8
     int VeinDamage;   // +0xEC
     int MaximumQueuedObjects;   // +0xF0
     int AircraftFogReveal;   // +0xF4
-    void* WoodCrateImg;   // +0xF8
-    void* CrateImg;   // +0xFC
-    void* WaterCrateImg;   // +0x100
+    OverlayTypeClass* WoodCrateImg;   // +0xF8
+    OverlayTypeClass* CrateImg;   // +0xFC
+    OverlayTypeClass* WaterCrateImg;   // +0x100
     TypeList<const AnimTypeClass*> TouchdownAnims;  // +0x0104
     TypeList<const AnimTypeClass*> list_0120;  // +0x0120
     TypeList<const AnimTypeClass*> list_013C;  // +0x013C
@@ -164,13 +171,13 @@ struct RulesClass
     int CreateInfantrySound;   // +0x17C
     int CreateAircraftSound;   // +0x180
     int BaseUnderAttackSound;   // +0x184
-    int unknown_188;   // +0x188
-    int unknown_18C;   // +0x18C
-    int unknown_190;   // +0x190
-    int unknown_194;   // +0x194
-    int unknown_198;   // +0x198
+    int GUIMainButtonSound;   // +0x188
+    int GUIBuildSound;   // +0x18C
+    int GUITabSound;   // +0x190
+    int GUIOpenSound;   // +0x194
+    int GUICloseSound;   // +0x198
     int GUIMoveOutSound;   // +0x19C
-    int unknown_1A0;
+    int GUIMoveInSound;
     int GUIComboOpenSound;   // +0x1A4
     int GUIComboCloseSound;   // +0x1A8
     int GUICheckboxSound;   // +0x1AC
@@ -180,13 +187,13 @@ struct RulesClass
     int BuildingGarrisonedSound;   // +0x1BC
     int BuildingAbandonedSound;   // +0x1C0
     int BuildingRepairedSound;   // +0x1C4
-    int field_1C8;      // +0x1C8 read by HouseClass::CanOverpower
+    int CheerSound;      // +0x1C8 read by HouseClass::CanOverpower
     int PlaceBeaconSound;   // +0x1CC
     int DefaultChronoSound;   // +0x1D0
-    int unknown_1D4;    // +0x1D4 sound played on entering planning mode
+    int StartPlanningModeSound;    // +0x1D4 sound played on entering planning mode
     int AddPlanningModeCommandSound;   // +0x1D8
     int ExecutePlanSound;   // +0x1DC
-    int unknown_1E0;    // +0x1E0 sound played on leaving it
+    int EndPlanningModeSound;    // +0x1E0 sound played on leaving it
     int CrateMoneySound;   // +0x1E4
     int CrateRevealSound;   // +0x1E8
     int CrateFireSound;   // +0x1EC
@@ -199,9 +206,9 @@ struct RulesClass
     int SinkingSound;   // +0x208
     int BombTickingSound;   // +0x20C
     int BombAttachSound;   // +0x210
-    int unknown_214; // 4692E3: signed sentinel; 469333: sound argument
-    int unknown_218;   // +0x218
-    int unknown_21C;   // +0x21C
+    int YuriMindControlSound; // 4692E3: signed sentinel; 469333: sound argument
+    int ChronoInSound;   // +0x218
+    int ChronoOutSound;   // +0x21C
     int SpySatActivationSound;   // +0x220
     int SpySatDeactivationSound;   // +0x224
     int UpgradeVeteranSound;   // +0x228
@@ -211,7 +218,7 @@ struct RulesClass
     int SlaveMinerDeploySound;   // +0x238
     int SlaveMinerUndeploySound;   // +0x23C
     int BunkerWallsUpSound;   // +0x240
-    int BunkerSound;
+    int BunkerWallsDownSound;
     int RepairBridgeSound;   // +0x248
     int PsychicDominatorActivateSound;   // +0x24C
     int GeneticMutatorActivateSound;   // +0x250
@@ -255,13 +262,13 @@ struct RulesClass
     AnimTypeClass* ChronoPlacement;   // +0x330
     AnimTypeClass* ChronoBeam;   // +0x334
     AnimTypeClass* WarpIn;   // +0x338
-    void* unknown_33C;   // +0x33C
-    void* unknown_340;   // +0x340
-    AnimTypeClass* unknown_344;
+    void* WarpOut;   // +0x33C
+    void* WarpAway;   // +0x340
+    AnimTypeClass* ChronoSparkle1;
     AnimTypeClass* IronCurtainInvokeAnim;   // +0x348
     AnimTypeClass* ForceShieldInvokeAnim;   // +0x34C
-    AnimTypeClass* unknown_350; // 46A2A1 special-impact animation constructor argument
-    AnimTypeClass* SpawnAnim; // +0x354
+    AnimTypeClass* WeaponNullifyAnim; // 46A2A1 special-impact animation constructor argument
+    AnimTypeClass* AtmosphereEntry; // +0x354
     TypeList<int> list_0358;  // +0x0358
     TypeList<int> list_0374;  // +0x0374
     TypeList<int> list_0390;  // +0x0390
@@ -333,7 +340,7 @@ struct RulesClass
     bool CMislLazyCurve;   // +0x544
     char unknown_545[0x3];
     int CMislType;   // +0x548
-    int At_54C;
+    int ParadropRadius;
     double ZoomInFactor;   // +0x550
     double ConditionRedSparkingProbability;   // +0x558
     double ConditionYellowSparkingProbability;   // +0x560
@@ -343,16 +350,16 @@ struct RulesClass
     float MaxLowPowerProductionSpeed;   // +0x574
     float LowPowerPenaltyModifier;   // +0x578
     float MultipleFactory;   // +0x57C
-    int unknown_580;
+    int MaximumCheerRate;
     char unknown_584[0x4];
     double TreeFlammability;   // +0x588
     double MissileSpeedVar;   // +0x590
-    double unknown_598;
-    int unknown_5A0;
-    WeaponTypeClass* Weapon; // +0x5A4
-    int unknown_5A8;
-    int MinFall; // +0x5AC
-    double Angle; // +0x5B0
+    double MissileROTVar;
+    int MissileSafetyAltitude;
+    WeaponTypeClass* DropPodWeapon; // +0x5A4
+    int DropPodHeight;
+    int DropPodSpeed; // +0x5AC
+    double DropPodAngle; // +0x5B0
     double ScrollMultiplier;   // +0x5B8
     double CrewEscape;   // +0x5C0
     int ShakeScreen;   // +0x5C8
@@ -377,7 +384,7 @@ struct RulesClass
     char unknown_665[0x3];
     double VeteranRatio;   // +0x668
     double VeteranCombat;   // +0x670
-    double unknown_678;   // +0x678
+    double VeteranSpeed;   // +0x678
     double VeteranSight;   // +0x680
     double VeteranArmor;   // +0x688
     double VeteranROF;   // +0x690
@@ -385,54 +392,54 @@ struct RulesClass
     int CloakSound;   // +0x6A0
     int SellSound;   // +0x6A4
     int GameClosed;   // +0x6A8
-    int unknown_06AC;
+    int IncomingMessage;
     int SystemError;   // +0x6B0
     int OptionsChanged;   // +0x6B4
     int GameForming;   // +0x6B8
     int PlayerLeft;   // +0x6BC
     int PlayerJoined;   // +0x6C0
-    int unknown_6C4;
+    int MessageCharTyped;
     int Construction;   // +0x6C8
     TypeList<int> list_06CC;  // +0x06CC
     int BuildingDieSound;   // +0x6E8
     int BuildingSlam;   // +0x6EC
-    int unknown_6F0;   // +0x6F0
-    int unknown_6F4;   // +0x6F4
+    int RadarOn;   // +0x6F0
+    int RadarOff;   // +0x6F4
     int MovieOn;   // +0x6F8
     int MovieOff;   // +0x6FC
-    int unknown_700;    // +0x700 sound played when planning guard areas are refused
+    int ScoldSound;    // +0x700 sound played when planning guard areas are refused
     int TeslaCharge;   // +0x704
     int TeslaZap;   // +0x708
     int GenericClick;   // +0x70C
-    int unknown_710;   // +0x710
+    int GenericBeep;   // +0x710
     int BuildingDamageSound;   // +0x714
     int HealCrateSound;   // +0x718
     int ChuteSound;   // +0x71C
     int StopSound;   // +0x720
-    int unknown_724;
-    int unknown_728;
+    int GuardSound;
+    int ScatterSound;
     int unknown_72C;
     int StormSound;   // +0x730
     TypeList<int> list_0734;  // +0x0734
     int ShellButtonSlideSound;   // +0x750
     char unknown_754[0x4];
-    double unknown_758;   // +0x758
+    double WallBuildSpeedCoefficient;   // +0x758
     double ChargeToDrainRatio;   // +0x760
     double TrackedUphill;   // +0x768
     double TrackedDownhill;   // +0x770
     double WheeledUphill;   // +0x778
     double WheeledDownhill;   // +0x780
-    int unknown_788;
-    int unknown_78C;
+    int SpotlightMovementRadius;
+    int SpotlightLocationRadius;
     double SpotlightSpeed;   // +0x790
     double SpotlightAcceleration;   // +0x798
     double SpotlightAngle;   // +0x7A0
-    int unknown_7A8;
+    int SpotlightRadius;
     int WindDirection;   // +0x7AC
     int CameraRange;   // +0x7B0
-    int unknown_7B4; // native717810 reads fallback scalar via pointer8871E0
-    int unknown_7B8;   // +0x7B8
-    int unknown_7BC;   // +0x7BC
+    int FlightLevel; // native717810 reads fallback scalar via pointer8871E0
+    int ParachuteMaxFallRate;   // +0x7B8
+    int NoParachuteMaxFallRate;   // +0x7BC
     int BuildingDrop;   // +0x7C0
     TypeList<const SmudgeTypeClass*> list_07C4;  // +0x07C4
     TypeList<const SmudgeTypeClass*> list_07E0;  // +0x07E0
@@ -440,11 +447,11 @@ struct RulesClass
     TypeList<const SmudgeTypeClass*> list_0818;  // +0x0818
     TypeList<const SmudgeTypeClass*> list_0834;  // +0x0834
     TypeList<const BuildingTypeClass*> list_0850;  // +0x0850
-    void* unknown_86C;   // +0x86C
-    void* unknown_870;   // +0x870
-    void* unknown_874;   // +0x874
-    void* unknown_878;   // +0x878
-    void* unknown_87C;   // +0x87C
+    void* GDIGateOne;   // +0x86C
+    void* GDIGateTwo;   // +0x870
+    void* NodGateOne;   // +0x874
+    void* NodGateTwo;   // +0x878
+    void* WallTower;   // +0x87C
     TypeList<const BuildingTypeClass*> list_0880;  // +0x0880
     int GDIPowerPlant;   // +0x89C
     int NodRegularPower;   // +0x8A0
@@ -485,20 +492,20 @@ struct RulesClass
     AnimTypeClass* Smoke;   // +0xBAC
     AnimTypeClass* Smoke_BB0;   // +0xBB0
     AnimTypeClass* MoveFlash;   // +0xBB4
-    AnimTypeClass* unknown_BB8;   // +0xBB8
-    AnimTypeClass* unknown_BBC;   // +0xBBC
+    AnimTypeClass* BombParachute;   // +0xBB8
+    AnimTypeClass* Parachute;   // +0xBBC
     TypeList<const AnimTypeClass*> list_0BC0;  // +0x0BC0
     AnimTypeClass* SmallFire;   // +0xBDC
     AnimTypeClass* LargeFire;   // +0xBE0
     int Paratrooper;   // +0xBE4
     int EliteFlashTimer;   // +0xBE8
-    int unknown_BEC;   // +0xBEC
+    int ChronoDelay;   // +0xBEC
     int ChronoReinfDelay;   // +0xBF0
-    int unknown_BF4;   // +0xBF4
-    char unknown_BF8;   // +0xBF8
+    int ChronoDistanceFactor;   // +0xBF4
+    char ChronoTrigger;   // +0xBF8
     char unknown_BF9[0x3];
-    int unknown_BFC;   // +0xBFC
-    int unknown_C00;   // +0xC00
+    int ChronoMinimumDelay;   // +0xBFC
+    int ChronoRangeMinimum;   // +0xC00
     TypeList<const InfantryTypeClass*> list_0C04;  // +0x0C04
     TypeList<int> list_0C20;  // +0x0C20
     TypeList<const InfantryTypeClass*> list_0C3C;  // +0x0C3C
@@ -532,7 +539,7 @@ struct RulesClass
     int ApproachTargetResetMultiplier;   // +0xDF8
     int CampaignMoneyDeltaEasy;   // +0xDFC
     int CampaignMoneyDeltaHard;   // +0xE00
-    int unknown_E04;
+    int GuardAreaTargetingDelay;
     int NormalTargetingDelay;   // +0xE08
     int AINavalYardAdjacency;   // +0xE0C
     TypeList<int> list_0E10;  // +0x0E10
@@ -542,9 +549,9 @@ struct RulesClass
     TypeList<int> list_0E68;  // +0x0E68
     TypeList<int> list_0E84;  // +0x0E84
     TypeList<int> list_0EA0;  // +0x0EA0
-    char unknown_EBC[0x8];
+    char AICaptureLowMoneyMark[0x8];
     TypeList<int> list_0EC4;  // +0x0EC4
-    int unknown_EE0;   // +0xEE0
+    int AISuperDefenseFrames;   // +0xEE0
     int AISuperDefenseDistance;   // +0xEE4
     TypeList<int> list_0EE8;  // +0x0EE8
     TypeList<int> list_0F04;  // +0x0F04
@@ -552,13 +559,13 @@ struct RulesClass
     float PurifierBonus;   // +0xF3C
     float OccupyDamageMultiplier;   // +0xF40
     float OccupyROFMultiplier;   // +0xF44
-    int unknown_F48;   // +0xF48 added to the range of an object with slot 256 set (TechnoClass 0x6F7220)
+    int OccupyWeaponRange;   // +0xF48 added to the range of an object with slot 256 set (TechnoClass 0x6F7220)
     float BunkerDamageMultiplier;   // +0xF4C
     float BunkerROFMultiplier;   // +0xF50
-    int unknown_F54;   // +0xF54 range bonus while bunkered, not a building (0x6F7220)
+    int BunkerWeaponRangeBonus;   // +0xF54 range bonus while bunkered, not a building (0x6F7220)
     float OpenToppedDamageMultiplier;   // +0xF58
-    int unknown_F5C;   // +0xF5C range bonus for an open-topped passenger (0x6F7220)
-    int unknown_F60;   // +0xF60
+    int OpenToppedRangeBonus;   // +0xF5C range bonus for an open-topped passenger (0x6F7220)
+    int OpenToppedWarpDistance;   // +0xF60
     float FallingDamageMultiplier;   // +0xF64
     bool CurrentStrengthDamage;   // +0xF68
     char unknown_F69[0x3];
@@ -570,7 +577,7 @@ struct RulesClass
     int ThirdCrew;   // +0xF80
     WarheadTypeClass* FlameDamage;   // +0xF84
     WarheadTypeClass* FlameDamage2;   // +0xF88
-    WarheadTypeClass* unknown_F8C; // 469CA7 compares this pointer with Bullet.WH
+    WarheadTypeClass* NukeWarhead; // 469CA7 compares this pointer with Bullet.WH
     BulletTypeClass* NukeProjectile;   // +0xF90
     BulletTypeClass* NukeDown;   // +0xF94
     WarheadTypeClass* MutateWarhead;   // +0xF98
@@ -581,17 +588,17 @@ struct RulesClass
     WarheadTypeClass* CrushWarhead;   // +0xFAC
     WarheadTypeClass* V3Warhead;   // +0xFB0
     WarheadTypeClass* DMislWarhead;   // +0xFB4
-    int unknown_FB8;   // +0xFB8
-    int unknown_FBC;   // +0xFBC
+    int V3EliteWarhead;   // +0xFB8
+    int DMislEliteWarhead;   // +0xFBC
     WarheadTypeClass* CMislWarhead;   // +0xFC0
-    int unknown_FC4;   // +0xFC4
+    int CMislEliteWarhead;   // +0xFC4
     WarheadTypeClass* IvanWarhead;   // +0xFC8
     int IvanDamage;   // +0xFCC
-    int field_FD0;      // +0xFD0
+    int IvanTimedDelay;      // +0xFD0
     bool CanDetonateTimeBomb;   // +0xFD4
     bool CanDetonateDeathBomb;   // +0xFD5
     char unknown_FD6[0x2];
-    int field_FD8;      // +0xFD8
+    int IvanIconFlickerRate;      // +0xFD8
     WeaponTypeClass* DeathWeapon;   // +0xFDC
     int unknown_FE0;   // +0xFE0
     int unknown_FE4;   // +0xFE4
@@ -603,7 +610,7 @@ struct RulesClass
     int InfantryBlinkDisguiseTime;   // +0x1014
     ParticleSystemTypeClass* DefaultLargeGreySmokeSystem;   // +0x1018
     ParticleSystemTypeClass* DefaultSmallGreySmokeSystem;   // +0x101C
-    void* unknown_1020;   // +0x1020
+    void* DefaultSparkSystem;   // +0x1020
     ParticleSystemTypeClass* DefaultLargeRedSmokeSystem;   // +0x1024
     ParticleSystemTypeClass* DefaultSmallRedSmokeSystem;   // +0x1028
     ParticleSystemTypeClass* DefaultDebrisSmokeSystem;   // +0x102C
@@ -654,7 +661,7 @@ struct RulesClass
     int InfantryBaseMult;   // +0x113C
     int SoloCrateMoney;   // +0x1140
     int TreeStrength;   // +0x1144
-    void* UnitCrateType;   // +0x1148
+    UnitTypeClass* UnitCrateType;   // +0x1148
     char unknown_114C[0x4];
     double PatrolScan;   // +0x1150
     TypeList<int> list_1158;  // +0x1158
@@ -706,41 +713,41 @@ struct RulesClass
     int SilverCrate;   // +0x1464
     int WoodCrate;   // +0x1468
     int WaterCrate;   // +0x146C
-    int unknown_1470;
-    int unknown_1474;
+    int CrateMinimum;   // +0x1470
+    int CrateMaximum;   // +0x1474
     int unknown_1478_1478;   // +0x1478
     AnimTypeClass* DropZoneAnim;   // +0x147C
     int MinMoney;   // +0x1480
-    int unknown_1484; // native697F74 default Credits
+    int Money; // native697F74 default Credits
     int MaxMoney;   // +0x1488
     int MoneyIncrement;   // +0x148C
     int MinUnitCount;   // +0x1490
-    int unknown_1494;
+    int UnitCount;
     int MaxUnitCount;   // +0x1498
     int TechLevel;   // +0x149C
-    int unknown_14A0;
+    int GameSpeed;
     int AIDifficulty;   // +0x14A4
     int AIPlayers;   // +0x14A8
     bool BridgeDestruction;   // +0x14AC
     bool ShadowGrow;   // +0x14AD
-    bool unknown_14AE; // byte test0x6849D6
+    bool Shroud; // byte test0x6849D6
     bool Bases;   // +0x14AF
     bool TiberiumGrows;   // +0x14B0
-    bool unknown_14B1;
+    bool Crates;
     bool CaptureTheFlag;   // +0x14B2
     bool HarvesterTruce;   // +0x14B3
     bool MultiEngineer;   // +0x14B4
-    bool unknown_14B5;
-    bool unknown_14B6;
-    char unknown_14B7;
-    bool unknown_14B8;
-    bool unknown_14B9;
-    bool unknown_14BA;
-    bool unknown_14BB;
+    bool AlliesAllowed;
+    bool ShortGame;
+    bool FogOfWar;
+    bool MCVRedeploys;
+    bool SuperWeaponsAllowed;
+    bool BuildOffAlly;
+    bool AllyChangeAllowed;
     int DropZoneRadius;   // +0x14BC
-    double unknown_14C0;
+    double MessageDelay;
     double SavourDelay;   // +0x14C8
-    int unknown_14D0;
+    int Players;
     char unknown_14D4[0x4];
     double BaseDefenseDelay;   // +0x14D8
     int SuspendPriority;   // +0x14E0
@@ -770,20 +777,20 @@ struct RulesClass
     double AmbientChangeStep;   // +0x1670
     double CrateRegen;   // +0x1678
     double TimerWarning;   // +0x1680
-    char unknown_1688[0x8];
+    char TiberiumTransmogrify[0x8];
     double unknown_1690;   // +0x1690
     double unknown_1698;   // +0x1698
     double unknown_16A0;   // +0x16A0
     double SpeakDelay;   // +0x16A8
     double DamageDelay;   // +0x16B0
-    int unknown_16B8;
-    int unknown_16BC;   // +0x16BC
+    int Gravity;
+    int LeptonsPerSightIncrease;   // +0x16BC
     int Incoming;   // +0x16C0
     int MinDamage;   // +0x16C4
     int MaxDamage;   // +0x16C8
-    int unknown_16CC; // native712125 reads scalar via pointer8871E0
-    double unknown_16D0; // native 0x7120D0 loads the full 8-byte value
-    int unknown_16D8; // native524795 reads dword via pointer8871E0
+    int RepairStep; // native712125 reads scalar via pointer8871E0
+    double RepairPercent; // native 0x7120D0 loads the full 8-byte value
+    int IRepairStep; // native524795 reads dword via pointer8871E0
     char unknown_16DC[0x4];
     double RepairRate;   // +0x16E0
     double URepairRate;   // +0x16E8
@@ -795,15 +802,15 @@ struct RulesClass
     int CloseEnough;   // +0x1718
     int Stray;   // +0x171C
     int RelaxedStray;   // +0x1720
-    char unknown_1724[0x4];
+    char GuardModeStray[0x4];
     int Crush;   // +0x1728
     int CrateRadius;   // +0x172C
     int HomingScatter;   // +0x1730
-    int unknown_1734;
+    int BallisticScatter;
     double RefundPercent;   // +0x1738
     int BridgeStrength;   // +0x1740
     char unknown_1744[0x4];
-    double unknown_1748; // native 0x711EE0 loads the full 8-byte value
+    double BuildSpeed; // native 0x711EE0 loads the full 8-byte value
     double C4Delay;   // +0x1750
     int CreditReserve;   // +0x1758
     char unknown_175C[0x4];
@@ -817,8 +824,8 @@ struct RulesClass
     int SlaveMinerSlaveScan;   // +0x1784
     int SlaveMinerLongScan;   // +0x1788
     int SlaveMinerScanCorrection;   // +0x178C
-    int unknown_1790;   // +0x1790
-    int unknown_1794;   // +0x1794
+    int SlaveMinerKickFrameDelay;   // +0x1790
+    int LightningDeferment;   // +0x1794
     int LightningDamage;   // +0x1798
     int LightningStormDuration;   // +0x179C
     int LightningHitDelay;   // +0x17A0
@@ -835,7 +842,7 @@ struct RulesClass
     bool MutateExplosion;   // +0x17C8
     char unknown_17C9[0x3];
     int CollapseChance;   // +0x17CC
-    int unknown_17D0;   // +0x17D0
+    int WeedCapacity;   // +0x17D0
     int unknown_17D4_17D4;   // +0x17D4
     int unknown_17D8;   // +0x17D8
     int unknown_17DC;   // +0x17DC
@@ -871,9 +878,9 @@ struct RulesClass
     double RadLevelFactor;   // +0x1818
     double RadLightFactor;   // +0x1820
     double RadTintFactor;   // +0x1828
-    bool unknown_1830;   // +0x1830
-    bool unknown_1831;   // +0x1831
-    bool unknown_1832;   // +0x1832
+    bool RadColorR;   // +0x1830
+    bool RadColorG;   // +0x1831
+    bool RadColorB;   // +0x1832
     char unknown_1833[0x1];
     WarheadTypeClass* RadSiteWarhead;   // +0x1834
     int ElevationIncrement;            // +0x1838
@@ -887,180 +894,180 @@ struct RulesClass
     ColorStruct unknown_1863;   // +0x1863
     ColorStruct unknown_1866;   // +0x1866 read at 0x66B7AD
     ColorStruct unknown_1869;   // +0x1869 read at 0x66B7D7
-    int unknown_186C; // random upper bound minus one0x68508F
-    AnimTypeClass* unknown_1870; // 0x6850D9 -> AnimClass constructor0x421EA0
+    int OreTwinkleChance; // random upper bound minus one0x68508F
+    AnimTypeClass* OreTwinkle; // 0x6850D9 -> AnimClass constructor0x421EA0
     RulesColor_004B9BD0 ColorAdd[0x10];     // +0x1874
     int LaserTargetColor;   // +0x18A4
     int IronCurtainColor;   // +0x18A8
     int BerserkColor;   // +0x18AC
     int ForceShieldColor;   // +0x18B0
-    float unknown_18B4; // 0x469817: FMUL float ptr [ECX + 0x18b4]
-    float unknown_18B8_18B8;   // +0x18B8
+    float DirectRockingCoefficient; // 0x469817: FMUL float ptr [ECX + 0x18b4]
+    float FallBackCoefficient;   // +0x18B8
     char unknown_18BC[0x4];
 };
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_050) == 0x50);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_050) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, WaypointAnimationSpeed) == 0x50);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->WaypointAnimationSpeed) == 4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_B20) == 0xB20);
-GG_STATIC_ASSERT(offsetof(RulesClass, BunkerSound) == 0x244);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_000) == 0x000);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_008) == 0x008);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_186C) == 0x186C);
-GG_STATIC_ASSERT(offsetof(RulesClass, field_1C8) == 0x1C8);
+GG_STATIC_ASSERT(offsetof(RulesClass, BunkerWallsDownSound) == 0x244);
+GG_STATIC_ASSERT(offsetof(RulesClass, DetailMinFrameRateNormal) == 0x000);
+GG_STATIC_ASSERT(offsetof(RulesClass, DetailBufferZoneWidth) == 0x008);
+GG_STATIC_ASSERT(offsetof(RulesClass, OreTwinkleChance) == 0x186C);
+GG_STATIC_ASSERT(offsetof(RulesClass, CheerSound) == 0x1C8);
 GG_STATIC_ASSERT(offsetof(RulesClass, TypeA) == 0x4E0);
 GG_STATIC_ASSERT(offsetof(RulesClass, TypeB) == 0x514);
 GG_STATIC_ASSERT(offsetof(RulesClass, AIMinorSuperReadyPercent) == 0xD70);
-GG_STATIC_ASSERT(offsetof(RulesClass, field_FD0) == 0xFD0);
-GG_STATIC_ASSERT(offsetof(RulesClass, field_FD8) == 0xFD8);
+GG_STATIC_ASSERT(offsetof(RulesClass, IvanTimedDelay) == 0xFD0);
+GG_STATIC_ASSERT(offsetof(RulesClass, IvanIconFlickerRate) == 0xFD8);
 GG_STATIC_ASSERT(offsetof(RulesClass, ElevationIncrement) == 0x1838);
 GG_STATIC_ASSERT(offsetof(RulesClass, ElevationIncrementBonus) == 0x1840);
 GG_STATIC_ASSERT(offsetof(RulesClass, ElevationBonusCap) == 0x1848);
 GG_STATIC_ASSERT(offsetof(RulesClass, AlliedWallTransparency) == 0x1850);
 GG_STATIC_ASSERT(offsetof(RulesClass, WallPenetratorThreshold) == 0x1858);
 GG_STATIC_ASSERT(offsetof(RulesClass, ColorAdd) == 0x1874);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1870) == 0x1870);
+GG_STATIC_ASSERT(offsetof(RulesClass, OreTwinkle) == 0x1870);
 
-GG_STATIC_ASSERT(offsetof(RulesClass, At_54C) == 0x54C);
-GG_STATIC_ASSERT(offsetof(RulesClass, LandAnim) == 0x04C);
-GG_STATIC_ASSERT(offsetof(RulesClass, SpawnAnim) == 0x354);
-GG_STATIC_ASSERT(offsetof(RulesClass, Weapon) == 0x5A4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_5A8) == 0x5A8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1D4) == 0x1D4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1E0) == 0x1E0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_700) == 0x700);
-GG_STATIC_ASSERT(offsetof(RulesClass, MinFall) == 0x5AC);
-GG_STATIC_ASSERT(offsetof(RulesClass, Angle) == 0x5B0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_344) == 0x344);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_E04) == 0xE04);
+GG_STATIC_ASSERT(offsetof(RulesClass, ParadropRadius) == 0x54C);
+GG_STATIC_ASSERT(offsetof(RulesClass, DropPodPuff) == 0x04C);
+GG_STATIC_ASSERT(offsetof(RulesClass, AtmosphereEntry) == 0x354);
+GG_STATIC_ASSERT(offsetof(RulesClass, DropPodWeapon) == 0x5A4);
+GG_STATIC_ASSERT(offsetof(RulesClass, DropPodHeight) == 0x5A8);
+GG_STATIC_ASSERT(offsetof(RulesClass, StartPlanningModeSound) == 0x1D4);
+GG_STATIC_ASSERT(offsetof(RulesClass, EndPlanningModeSound) == 0x1E0);
+GG_STATIC_ASSERT(offsetof(RulesClass, ScoldSound) == 0x700);
+GG_STATIC_ASSERT(offsetof(RulesClass, DropPodSpeed) == 0x5AC);
+GG_STATIC_ASSERT(offsetof(RulesClass, DropPodAngle) == 0x5B0);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoSparkle1) == 0x344);
+GG_STATIC_ASSERT(offsetof(RulesClass, GuardAreaTargetingDelay) == 0xE04);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_D54) == 0xD54);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_788) == 0x788);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_78C) == 0x78C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7A8) == 0x7A8);
+GG_STATIC_ASSERT(offsetof(RulesClass, SpotlightMovementRadius) == 0x788);
+GG_STATIC_ASSERT(offsetof(RulesClass, SpotlightLocationRadius) == 0x78C);
+GG_STATIC_ASSERT(offsetof(RulesClass, SpotlightRadius) == 0x7A8);
 GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0x0FA8);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionYellow) == 0x1700);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionRed) == 0x1708);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadDurationMultiple) == 0x1804);
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_044) == 0x44);
+GG_STATIC_ASSERT(offsetof(RulesClass, PoseDir) == 0x44);
 
 
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1470) == 0x1470);
+GG_STATIC_ASSERT(offsetof(RulesClass, CrateMinimum) == 0x1470);
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1474) == 0x1474);
+GG_STATIC_ASSERT(offsetof(RulesClass, CrateMaximum) == 0x1474);
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14D0) == 0x14D0);
+GG_STATIC_ASSERT(offsetof(RulesClass, Players) == 0x14D0);
 
 // GLOBAL: GAMEMD 0x008871E0 — active RulesClass pointer.
 extern RulesClass* RulesInstance;
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_08C) == 0x08C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_580) == 0x580);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_598) == 0x598);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_598) == 8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_5A0) == 0x5A0);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_5A0) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_724) == 0x724);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_728) == 0x728);
+GG_STATIC_ASSERT(offsetof(RulesClass, RadarCombatFlashTime) == 0x08C);
+GG_STATIC_ASSERT(offsetof(RulesClass, MaximumCheerRate) == 0x580);
+GG_STATIC_ASSERT(offsetof(RulesClass, MissileROTVar) == 0x598);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->MissileROTVar) == 8);
+GG_STATIC_ASSERT(offsetof(RulesClass, MissileSafetyAltitude) == 0x5A0);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->MissileSafetyAltitude) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, GuardSound) == 0x724);
+GG_STATIC_ASSERT(offsetof(RulesClass, ScatterSound) == 0x728);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_72C) == 0x72C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14AE) == 0x14AE);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B5) == 0x14B5);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14BB) == 0x14BB);
+GG_STATIC_ASSERT(offsetof(RulesClass, Shroud) == 0x14AE);
+GG_STATIC_ASSERT(offsetof(RulesClass, AlliesAllowed) == 0x14B5);
+GG_STATIC_ASSERT(offsetof(RulesClass, AllyChangeAllowed) == 0x14BB);
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1484) == 0x1484);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1494) == 0x1494);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14A0) == 0x14A0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B1) == 0x14B1);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B6) == 0x14B6);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B8) == 0x14B8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B9) == 0x14B9);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14BA) == 0x14BA);
+GG_STATIC_ASSERT(offsetof(RulesClass, Money) == 0x1484);
+GG_STATIC_ASSERT(offsetof(RulesClass, UnitCount) == 0x1494);
+GG_STATIC_ASSERT(offsetof(RulesClass, GameSpeed) == 0x14A0);
+GG_STATIC_ASSERT(offsetof(RulesClass, Crates) == 0x14B1);
+GG_STATIC_ASSERT(offsetof(RulesClass, ShortGame) == 0x14B6);
+GG_STATIC_ASSERT(offsetof(RulesClass, MCVRedeploys) == 0x14B8);
+GG_STATIC_ASSERT(offsetof(RulesClass, SuperWeaponsAllowed) == 0x14B9);
+GG_STATIC_ASSERT(offsetof(RulesClass, BuildOffAlly) == 0x14BA);
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1A0)  == 0x1A0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6C4)  == 0x6C4);
+GG_STATIC_ASSERT(offsetof(RulesClass, GUIMoveInSound)  == 0x1A0);
+GG_STATIC_ASSERT(offsetof(RulesClass, MessageCharTyped)  == 0x6C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7B4) == 0x7B4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16CC) == 0x16CC);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16B8) == 0x16B8);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16B8) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16D0) == 0x16D0);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16D0) == 8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1734) == 0x1734);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16D8) == 0x16D8);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16D8) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1748) == 0x1748);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_1748) == 8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_EE0) == 0xEE0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_90) == 0x90);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1020) == 0x1020);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_17D0) == 0x17D0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_DC) == 0xDC);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_678) == 0x678);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16BC) == 0x16BC);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1794) == 0x1794);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_340) == 0x340);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F60) == 0xF60);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F48) == 0xF48);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F54) == 0xF54);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F5C) == 0xF5C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1790) == 0x1790);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_9C) == 0x9C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_BB8) == 0xBB8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_BBC) == 0xBBC);
+GG_STATIC_ASSERT(offsetof(RulesClass, FlightLevel) == 0x7B4);
+GG_STATIC_ASSERT(offsetof(RulesClass, RepairStep) == 0x16CC);
+GG_STATIC_ASSERT(offsetof(RulesClass, Gravity) == 0x16B8);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->Gravity) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, RepairPercent) == 0x16D0);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->RepairPercent) == 8);
+GG_STATIC_ASSERT(offsetof(RulesClass, BallisticScatter) == 0x1734);
+GG_STATIC_ASSERT(offsetof(RulesClass, IRepairStep) == 0x16D8);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->IRepairStep) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, BuildSpeed) == 0x1748);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->BuildSpeed) == 8);
+GG_STATIC_ASSERT(offsetof(RulesClass, AISuperDefenseFrames) == 0xEE0);
+GG_STATIC_ASSERT(offsetof(RulesClass, MaxWaypointPathLength) == 0x90);
+GG_STATIC_ASSERT(offsetof(RulesClass, DefaultSparkSystem) == 0x1020);
+GG_STATIC_ASSERT(offsetof(RulesClass, WeedCapacity) == 0x17D0);
+GG_STATIC_ASSERT(offsetof(RulesClass, MaxVeinholeGrowth) == 0xDC);
+GG_STATIC_ASSERT(offsetof(RulesClass, VeteranSpeed) == 0x678);
+GG_STATIC_ASSERT(offsetof(RulesClass, LeptonsPerSightIncrease) == 0x16BC);
+GG_STATIC_ASSERT(offsetof(RulesClass, LightningDeferment) == 0x1794);
+GG_STATIC_ASSERT(offsetof(RulesClass, WarpAway) == 0x340);
+GG_STATIC_ASSERT(offsetof(RulesClass, OpenToppedWarpDistance) == 0xF60);
+GG_STATIC_ASSERT(offsetof(RulesClass, OccupyWeaponRange) == 0xF48);
+GG_STATIC_ASSERT(offsetof(RulesClass, BunkerWeaponRangeBonus) == 0xF54);
+GG_STATIC_ASSERT(offsetof(RulesClass, OpenToppedRangeBonus) == 0xF5C);
+GG_STATIC_ASSERT(offsetof(RulesClass, SlaveMinerKickFrameDelay) == 0x1790);
+GG_STATIC_ASSERT(offsetof(RulesClass, InfantryExplode) == 0x9C);
+GG_STATIC_ASSERT(offsetof(RulesClass, BombParachute) == 0xBB8);
+GG_STATIC_ASSERT(offsetof(RulesClass, Parachute) == 0xBBC);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1863) == 0x1863);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1866) == 0x1866);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1869) == 0x1869);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16F8) == 0x16F8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_86C) == 0x86C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_870) == 0x870);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_874) == 0x874);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_878) == 0x878);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_87C) == 0x87C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_218) == 0x218);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_21C) == 0x21C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_33C) == 0x33C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_BEC) == 0xBEC);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_BF4) == 0xBF4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_BF8) == 0xBF8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_BFC) == 0xBFC);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_C00) == 0xC00);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_20) == 0x20);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_710) == 0x710);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6F0) == 0x6F0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6F4) == 0x6F4);
+GG_STATIC_ASSERT(offsetof(RulesClass, GDIGateOne) == 0x86C);
+GG_STATIC_ASSERT(offsetof(RulesClass, GDIGateTwo) == 0x870);
+GG_STATIC_ASSERT(offsetof(RulesClass, NodGateOne) == 0x874);
+GG_STATIC_ASSERT(offsetof(RulesClass, NodGateTwo) == 0x878);
+GG_STATIC_ASSERT(offsetof(RulesClass, WallTower) == 0x87C);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoInSound) == 0x218);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoOutSound) == 0x21C);
+GG_STATIC_ASSERT(offsetof(RulesClass, WarpOut) == 0x33C);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoDelay) == 0xBEC);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoDistanceFactor) == 0xBF4);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoTrigger) == 0xBF8);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoMinimumDelay) == 0xBFC);
+GG_STATIC_ASSERT(offsetof(RulesClass, ChronoRangeMinimum) == 0xC00);
+GG_STATIC_ASSERT(offsetof(RulesClass, TunnelSpeed) == 0x20);
+GG_STATIC_ASSERT(offsetof(RulesClass, GenericBeep) == 0x710);
+GG_STATIC_ASSERT(offsetof(RulesClass, RadarOn) == 0x6F0);
+GG_STATIC_ASSERT(offsetof(RulesClass, RadarOff) == 0x6F4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_D58) == 0xD58);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_D5C) == 0xD5C);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_D60) == 0xD60);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_420) == 0x420);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7B8) == 0x7B8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7BC) == 0x7BC);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_188) == 0x188);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_18C) == 0x18C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_190) == 0x190);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_194) == 0x194);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_198) == 0x198);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_758) == 0x758);
+GG_STATIC_ASSERT(offsetof(RulesClass, ParachuteMaxFallRate) == 0x7B8);
+GG_STATIC_ASSERT(offsetof(RulesClass, NoParachuteMaxFallRate) == 0x7BC);
+GG_STATIC_ASSERT(offsetof(RulesClass, GUIMainButtonSound) == 0x188);
+GG_STATIC_ASSERT(offsetof(RulesClass, GUIBuildSound) == 0x18C);
+GG_STATIC_ASSERT(offsetof(RulesClass, GUITabSound) == 0x190);
+GG_STATIC_ASSERT(offsetof(RulesClass, GUIOpenSound) == 0x194);
+GG_STATIC_ASSERT(offsetof(RulesClass, GUICloseSound) == 0x198);
+GG_STATIC_ASSERT(offsetof(RulesClass, WallBuildSpeedCoefficient) == 0x758);
 GG_STATIC_ASSERT(sizeof(RulesClass)              == 0x18C0);
 
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 
 
 
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_06AC) == 0x6AC);
+GG_STATIC_ASSERT(offsetof(RulesClass, IncomingMessage) == 0x6AC);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1434) == 0x1434);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14C0) == 0x14C0);
+GG_STATIC_ASSERT(offsetof(RulesClass, MessageDelay) == 0x14C0);
 
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->C4Warhead) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F8C) == 0xF8C);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_F8C) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, NukeWarhead) == 0xF8C);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->NukeWarhead) == 4);
 
 // Bullet impact caller layout closure, native 4690B0 entry-origin assembly.
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_214) == 0x214);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_214) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_350) == 0x350);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_350) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_18B4) == 0x18B4);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_18B4) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, YuriMindControlSound) == 0x214);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->YuriMindControlSound) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, WeaponNullifyAnim) == 0x350);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->WeaponNullifyAnim) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, DirectRockingCoefficient) == 0x18B4);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->DirectRockingCoefficient) == 4);
 
 // The typed container members, read off the constructors 0x664D20 / 0x665650 and destructor 0x667A30.
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0058) == 0x58);
@@ -1479,10 +1486,10 @@ GG_STATIC_ASSERT(offsetof(RulesClass, EMPulseProjectile) == 0xFA4);
 GG_STATIC_ASSERT(offsetof(RulesClass, CrushWarhead) == 0xFAC);
 GG_STATIC_ASSERT(offsetof(RulesClass, V3Warhead) == 0xFB0);
 GG_STATIC_ASSERT(offsetof(RulesClass, DMislWarhead) == 0xFB4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_FB8) == 0xFB8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_FBC) == 0xFBC);
+GG_STATIC_ASSERT(offsetof(RulesClass, V3EliteWarhead) == 0xFB8);
+GG_STATIC_ASSERT(offsetof(RulesClass, DMislEliteWarhead) == 0xFBC);
 GG_STATIC_ASSERT(offsetof(RulesClass, CMislWarhead) == 0xFC0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_FC4) == 0xFC4);
+GG_STATIC_ASSERT(offsetof(RulesClass, CMislEliteWarhead) == 0xFC4);
 GG_STATIC_ASSERT(offsetof(RulesClass, IvanWarhead) == 0xFC8);
 GG_STATIC_ASSERT(offsetof(RulesClass, IvanDamage) == 0xFCC);
 GG_STATIC_ASSERT(offsetof(RulesClass, CanDetonateTimeBomb) == 0xFD4);
@@ -1685,14 +1692,18 @@ GG_STATIC_ASSERT(offsetof(RulesClass, RadLightDelay) == 0x1814);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadLevelFactor) == 0x1818);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadLightFactor) == 0x1820);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadTintFactor) == 0x1828);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1830) == 0x1830);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1831) == 0x1831);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1832) == 0x1832);
+GG_STATIC_ASSERT(offsetof(RulesClass, RadColorR) == 0x1830);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadSiteWarhead) == 0x1834);
 GG_STATIC_ASSERT(offsetof(RulesClass, LaserTargetColor) == 0x18A4);
 GG_STATIC_ASSERT(offsetof(RulesClass, IronCurtainColor) == 0x18A8);
 GG_STATIC_ASSERT(offsetof(RulesClass, BerserkColor) == 0x18AC);
 GG_STATIC_ASSERT(offsetof(RulesClass, ForceShieldColor) == 0x18B0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_18B8_18B8) == 0x18B8);
+GG_STATIC_ASSERT(offsetof(RulesClass, FallBackCoefficient) == 0x18B8);
 
+
+GG_STATIC_ASSERT(offsetof(RulesClass, DetailMinFrameRateMovie) == 0x4);
+GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureLowMoneyMark) == 0xEBC);
+GG_STATIC_ASSERT(offsetof(RulesClass, FogOfWar) == 0x14B7);
+GG_STATIC_ASSERT(offsetof(RulesClass, TiberiumTransmogrify) == 0x1688);
+GG_STATIC_ASSERT(offsetof(RulesClass, GuardModeStray) == 0x1724);
 #endif

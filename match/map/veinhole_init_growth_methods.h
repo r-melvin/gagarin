@@ -67,7 +67,7 @@ struct Stack_0074DE90
     // rule, see match/core/campaign_class.cpp).
     __forceinline Stack_0074DE90* Construct()
     {
-        int n = DAT_008871E0->unknown_DC;
+        int n = DAT_008871E0->MaxVeinholeGrowth;
         this->Unknown_0C = 0;
         this->Capacity   = n;
         this->Unknown_10 = -1;

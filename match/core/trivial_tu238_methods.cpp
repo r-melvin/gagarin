@@ -46,7 +46,7 @@ int TechnoTypeClass::vf_28()
 // FUNCTION: GAMEMD 0x711EE0
 int TechnoTypeClass::vf_34()
 {
-    return (int)(Cost * RulesInstance->unknown_1748 * 0.9);
+    return (int)(Cost * RulesInstance->BuildSpeed * 0.9);
 }
 
 // FUNCTION: GAMEMD 0x711F00
@@ -87,8 +87,8 @@ SHPStruct* TechnoTypeClass::vf_38()
 int TechnoTypeClass::vf_44()
 {
     int quotient = vf_43();
-    quotient /= Strength / RulesInstance->unknown_16CC;
-    const int scaled = (int)(quotient * RulesInstance->unknown_16D0);
+    quotient /= Strength / RulesInstance->RepairStep;
+    const int scaled = (int)(quotient * RulesInstance->RepairPercent);
     if (scaled <= 1) {
         return 1;
     }
@@ -98,7 +98,7 @@ int TechnoTypeClass::vf_44()
 // FUNCTION: GAMEMD 0x712120
 int TechnoTypeClass::vf_45()
 {
-    return RulesInstance->unknown_16CC;
+    return RulesInstance->RepairStep;
 }
 
 // FUNCTION: GAMEMD 0x712130
@@ -485,7 +485,7 @@ void TechnoTypeClass::vf_13(Obj_004A1D30* crc)
 int TechnoTypeClass::vf_47()
 {
     if (FlightLevel == -1) {
-        return RulesInstance->unknown_7B4;
+        return RulesInstance->FlightLevel;
     }
     return FlightLevel;
 }

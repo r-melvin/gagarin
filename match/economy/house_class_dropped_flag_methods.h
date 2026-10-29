@@ -23,48 +23,34 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-struct Cell_004FBF60
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(Cell_004FBF60) == 4);
-
-// GLOBAL: GAMEMD 0xA8EF98 — the "no cell" CellStruct sentinel.
-extern Cell_004FBF60 DAT_00A8EF98;
-
-struct CellClass_004FBF60
-{
-    // FUNCTION: GAMEMD 0x483410 (decl; reloc) — plant the flag in this cell
-    // for the given colour index; false when the cell already holds one or
-    // cannot take it.
-    bool FUN_00483410(int colorIndex);
-};
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/cell.h"
 
 struct Map_004FBF60
 {
     // FUNCTION: GAMEMD 0x568300 (decl; reloc) — MapClass::CoordinatesLegal.
-    bool CoordinatesLegal(const Cell_004FBF60& cell);
+    bool CoordinatesLegal(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_004FBF60* GetCellAt(const Cell_004FBF60& cell);
+    CellClass* GetCellAt(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x56DC20 (decl; reloc) — MapClass::NearByLocation.
-    Cell_004FBF60* NearByLocation(Cell_004FBF60* out, const Cell_004FBF60& position,
-                                  int speedType, int a4, int movementZone, bool alt,
-                                  int spaceSizeX, int spaceSizeY, bool a9, bool a10,
-                                  bool a11, bool ignoreOccupied,
-                                  const Cell_004FBF60& closeTo, bool a14, bool buildable);
+    CellStruct* NearByLocation(CellStruct* out, const CellStruct& position,
+                               int speedType, int a4, int movementZone, bool alt,
+                               int spaceSizeX, int spaceSizeY, bool a9, bool a10,
+                               bool a11, bool ignoreOccupied,
+                               const CellStruct& closeTo, bool a14, bool buildable);
     // The by-value form (YRpp's wrapper), expanded inline at the call site:
     // its parameters become constant-initialised locals, which is what puts
     // the repeated 1 in EAX (with a copy in ECX for SpaceSizeY) and the
     // zeros in EDX, and reads the result back through the returned pointer.
-    Cell_004FBF60 NearByLocation(const Cell_004FBF60& position, int speedType, int a4,
-                                 int movementZone, bool alt, int spaceSizeX,
-                                 int spaceSizeY, bool a9, bool a10, bool a11,
-                                 bool ignoreOccupied, const Cell_004FBF60& closeTo,
-                                 bool a14, bool buildable)
+    CellStruct NearByLocation(const CellStruct& position, int speedType, int a4,
+                              int movementZone, bool alt, int spaceSizeX,
+                              int spaceSizeY, bool a9, bool a10, bool a11,
+                              bool ignoreOccupied, const CellStruct& closeTo,
+                              bool a14, bool buildable)
     {
-        Cell_004FBF60 outBuffer;
+        CellStruct outBuffer;
         NearByLocation(&outBuffer, position, speedType, a4, movementZone, alt,
                        spaceSizeX, spaceSizeY, a9, a10, a11, ignoreOccupied,
                        closeTo, a14, buildable);
@@ -73,28 +59,5 @@ struct Map_004FBF60
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_004FBF60 DAT_0087F7E8;
-
-struct HouseType_004FBF60
-{
-    char _pad000[0xB8];      // +0x0000
-    int  ColorSchemeIndex;   // +0x00B8
-};
-GG_STATIC_ASSERT(offsetof(HouseType_004FBF60, ColorSchemeIndex) == 0xB8);
-
-struct House_004FBF60
-{
-    char                 _pad0000[0x34];               // +0x0000
-    HouseType_004FBF60*  Type;                         // +0x0034
-    char                 _pad0038[0x53DC - 0x38];      // +0x0038
-    CellClass_004FBF60*  FlagLocation;                 // +0x53DC
-
-    // FUNCTION: GAMEMD 0x4FBE40 (decl; reloc) — HouseClass::UpdateFlagCoords.
-    void UpdateFlagCoords(CellClass_004FBF60* cell, unsigned long dwUnk);
-
-    // FUNCTION: GAMEMD 0x4FBF60
-    bool DroppedFlag(const Cell_004FBF60& cell, unsigned long dwUnk);
-};
-GG_STATIC_ASSERT(offsetof(House_004FBF60, Type) == 0x34);
-GG_STATIC_ASSERT(offsetof(House_004FBF60, FlagLocation) == 0x53DC);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_DROPPED_FLAG_METHODS_H

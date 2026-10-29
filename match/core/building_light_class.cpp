@@ -37,7 +37,7 @@ BuildingLightClass::BuildingLightClass(BuildingClass* sourceBuilding)
         return;
 
     CoordStruct location = sourceBuilding->Location;
-    int zOffset = RulesInstance->unknown_78C;
+    int zOffset = RulesInstance->SpotlightLocationRadius;
     DirStruct heading;
     double angle = (double)((short)sourceBuilding->PrimaryFacing.FUN_004C93D0(&heading)->Raw - 0x3FFF)
                  * DAT_007E2810;
@@ -50,7 +50,7 @@ BuildingLightClass::BuildingLightClass(BuildingClass* sourceBuilding)
     coordinate.Z = first.Z;
     unknown_C4 = coordinate;
 
-    int drawOffset = -RulesInstance->unknown_788;
+    int drawOffset = -RulesInstance->SpotlightMovementRadius;
     angle = (double)((short)sourceBuilding->PrimaryFacing.FUN_004C93D0(&heading)->Raw - 0x3FFF)
           * DAT_007E2810;
     CoordStruct second;

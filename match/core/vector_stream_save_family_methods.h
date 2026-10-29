@@ -25,67 +25,35 @@
 
 class AnimTypeClass;
 class ParticleSystemTypeClass;
-
-struct Stream_0067A3C0;
-
-// IStream::Write is slot +0x10; __stdcall with the receiver pushed.
-typedef long (__stdcall* StreamWrite_0067A3C0)(Stream_0067A3C0*, const void*,
-                                               unsigned long, unsigned long*);
-#define GG_SAVE_WRITE(s, p, n) \
-    ((*(StreamWrite_0067A3C0*)(*(char**)(s) + 0x10))(s, p, n, 0))
-
-// A growable vector of four-byte elements: vtable@0, Items@4, Capacity@8,
-// the two flag bytes at +0xC/+0xD, Count@0x10, CapacityIncrement@0x14.
-struct SaveVector_0067A3C0
-{
-    void* Vtbl;               // +0x0000
-    int*  Items;              // +0x0004
-    int   Capacity;           // +0x0008
-    char  IsInitialized;      // +0x000C
-    char  IsAllocated;        // +0x000D
-    char  _pad00E[2];         // +0x000E
-    int   Count;              // +0x0010
-    int   CapacityIncrement;  // +0x0014
-
-    int FUN_0067A3C0(Stream_0067A3C0* stream);
-    int FUN_0067A630(Stream_0067A3C0* stream);
-    int FUN_0067A6E0(Stream_0067A3C0* stream);
-    int FUN_0067A770(Stream_0067A3C0* stream);
-    int FUN_0067A7D0(Stream_0067A3C0* stream);
-    int FUN_0067A850(Stream_0067A3C0* stream);
-    int FUN_0067A8E0(Stream_0067A3C0* stream);
-};
-GG_STATIC_ASSERT(offsetof(SaveVector_0067A3C0, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(SaveVector_0067A3C0, Count) == 0x10);
-GG_STATIC_ASSERT(sizeof(SaveVector_0067A3C0) == 0x18);
+class VoxelAnimTypeClass;
+class SmudgeTypeClass;
+class BuildingTypeClass;
+class UnitTypeClass;
+class AircraftTypeClass;
+class InfantryTypeClass;
+class TerrainTypeClass;
 
 // The native callsites pass a typed list as ECX and an IStream* on the stack.
-// These are declarations only; the existing provider TU defines the three
-// matched helper bodies below as explicit TypeList specializations.
+// These are declarations only; the provider TU defines the bodies as explicit TypeList specializations.
 // Declaration: GAMEMD 0x0067A4A0, TypeList<const AnimTypeClass*> helper.
 template<> int TypeList<const AnimTypeClass*>::FUN_0067A4A0(IStream* stream);
 // Declaration: GAMEMD 0x0067A520, TypeList<int> helper.
 template<> int TypeList<int>::FUN_0067A520(IStream* stream);
+// Declaration: GAMEMD 0x0067A3C0, TypeList<const VoxelAnimTypeClass*> helper.
+template<> int TypeList<const VoxelAnimTypeClass*>::FUN_0067A3C0(IStream* stream);
+// Declaration: GAMEMD 0x0067A630, TypeList<const SmudgeTypeClass*> helper.
+template<> int TypeList<const SmudgeTypeClass*>::FUN_0067A630(IStream* stream);
+// Declaration: GAMEMD 0x0067A6E0, TypeList<const BuildingTypeClass*> helper.
+template<> int TypeList<const BuildingTypeClass*>::FUN_0067A6E0(IStream* stream);
+// Declaration: GAMEMD 0x0067A770, TypeList<const UnitTypeClass*> helper.
+template<> int TypeList<const UnitTypeClass*>::FUN_0067A770(IStream* stream);
+// Declaration: GAMEMD 0x0067A7D0, TypeList<const AircraftTypeClass*> helper.
+template<> int TypeList<const AircraftTypeClass*>::FUN_0067A7D0(IStream* stream);
+// Declaration: GAMEMD 0x0067A850, TypeList<const InfantryTypeClass*> helper.
+template<> int TypeList<const InfantryTypeClass*>::FUN_0067A850(IStream* stream);
+// Declaration: GAMEMD 0x0067A8E0, TypeList<const TerrainTypeClass*> helper.
+template<> int TypeList<const TerrainTypeClass*>::FUN_0067A8E0(IStream* stream);
 // Declaration: GAMEMD 0x00717B20, TypeList<const ParticleSystemTypeClass*> helper.
 template<> int TypeList<const ParticleSystemTypeClass*>::FUN_00717B20(IStream* stream);
-
-// The one shared body: write the element count, then each element.
-//
-// The return type is `int` returning the count, not `void`. EAX holds the
-// count at every exit of the retail function, and the extra `MOV EAX,[ESP+0xC]`
-// that reloads it at the bottom of the loop only exists because the value has
-// to survive the call for the return; written as `void` the reload disappears
-// and one instruction is missing (66.7%, retail-only {mov}).
-#define GG_VECTOR_STREAM_SAVE_BODY(ADDR)                                  \
-int SaveVector_0067A3C0::FUN_##ADDR(Stream_0067A3C0* stream)              \
-{                                                                         \
-    int count = Count;                                                    \
-    GG_SAVE_WRITE(stream, &count, 4);                                     \
-    for (int i = 0; i < count; ++i) {                                     \
-        GG_SAVE_WRITE(stream, &Items[i], 4);                              \
-    }                                                                     \
-    return count;                                                         \
-}
-
 
 #endif  // GG_MATCH_CORE_VECTOR_STREAM_SAVE_FAMILY_METHODS_H

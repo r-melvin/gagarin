@@ -84,13 +84,13 @@ bool __stdcall DropPodLocomotionClass::Process()
     LocoCoord loc = foot->Location;
     LocoCoord oldLoc = loc;
     int fall = foot->vf_1C8() / 10 + 2;
-    if (RulesInstance->MinFall > fall)
-        fall = RulesInstance->MinFall;
+    if (RulesInstance->DropPodSpeed > fall)
+        fall = RulesInstance->DropPodSpeed;
     if (unknown_1C)
-        loc.X = (int)(FUN_004CAD00(RulesInstance->Angle) * fall + loc.X);
+        loc.X = (int)(FUN_004CAD00(RulesInstance->DropPodAngle) * fall + loc.X);
     else
-        loc.X = (int)((double)loc.X - FUN_004CAD00(RulesInstance->Angle) * fall);
-    loc.Z = (int)((double)loc.Z - FUN_004CACB0(RulesInstance->Angle) * fall);
+        loc.X = (int)((double)loc.X - FUN_004CAD00(RulesInstance->DropPodAngle) * fall);
+    loc.Z = (int)((double)loc.Z - FUN_004CACB0(RulesInstance->DropPodAngle) * fall);
     if (foot->vf_1C8() <= 0) {
         foot->vf_1CC(0);
         loc = foot->Location;
@@ -103,7 +103,7 @@ bool __stdcall DropPodLocomotionClass::Process()
             Release();
             return true;
         }
-        new DropPodAnimAllocationView(RulesInstance->LandAnim, &loc, 0, 1, 0x600, 0, false);
+        new DropPodAnimAllocationView(RulesInstance->DropPodPuff, &loc, 0, 1, 0x600, 0, false);
         if (unknown_1C)
             new DropPodAnimAllocationView(const_cast<AnimTypeClass*>(RulesInstance->TouchdownAnims.Items[1]), &loc, 0, 1, 0x600, 0, false);
         else
@@ -117,7 +117,7 @@ bool __stdcall DropPodLocomotionClass::Process()
         return true;
     }
     foot->vf_1B4(&loc);
-    WeaponTypeClass* weapon = RulesInstance->Weapon;
+    WeaponTypeClass* weapon = RulesInstance->DropPodWeapon;
     if (weapon) {
         if (CurrentFrame % 6 == 0)
             new DropPodAnimAllocationView(((AnimTypeClass**)AnimTypeClassArray.Items)[FUN_00427CB0("SMOKEY")], &oldLoc, 0, 1, 0x600, 0, false);
@@ -150,18 +150,18 @@ void __stdcall DropPodLocomotionClass::MoveTo(LocoCoord to)
         DestCoord.Z = to.Z;
         DestCoord.Z = MapInstance.GetHeightAt(&DestCoord);
         LocoCoord c = DestCoord;
-        c.Z += RulesInstance->unknown_5A8;
-        c.X = (int)((double)RulesInstance->unknown_5A8 / FUN_004CAD50(RulesInstance->Angle) + c.X);
+        c.Z += RulesInstance->DropPodHeight;
+        c.X = (int)((double)RulesInstance->DropPodHeight / FUN_004CAD50(RulesInstance->DropPodAngle) + c.X);
         if (!MapInstance.IsWithinUsableArea(&c)) {
             unknown_1C = true;
-            c.X = (int)((double)DestCoord.X - (double)RulesInstance->unknown_5A8 / FUN_004CAD50(RulesInstance->Angle));
+            c.X = (int)((double)DestCoord.X - (double)RulesInstance->DropPodHeight / FUN_004CAD50(RulesInstance->DropPodAngle));
         }
         foot->vf_1B4(&c);
         if (foot->vf_0D8(&c, 0x80)) {
             foot->vf_1B4(&c);
             short dir = (short)0x8000;
             foot->PrimaryFacing.Set(&dir);
-            new DropPodAnimAllocationView(RulesInstance->SpawnAnim, &c, 0, 1, 0x600, 0, false);
+            new DropPodAnimAllocationView(RulesInstance->AtmosphereEntry, &c, 0, 1, 0x600, 0, false);
         } else {
             foot->vf_0D8(&c, 0x80);
         }

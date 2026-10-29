@@ -101,11 +101,11 @@ void ObjectClass::vf_23()
         if (!InLimbo) {
             if (HasParachute) {
                 FallRate--;
-                int floor = DAT_008871E0->unknown_7B8;
+                int floor = DAT_008871E0->ParachuteMaxFallRate;
                 FallRate = (FallRate > floor) ? FallRate : floor;
             } else {
                 FallRate = (int)(FallRate - 1.4);
-                int floor = DAT_008871E0->unknown_7BC;
+                int floor = DAT_008871E0->NoParachuteMaxFallRate;
                 FallRate = (FallRate > floor) ? FallRate : floor;
             }
 

@@ -71,5 +71,5 @@ void HouseClass::Cheer()
             pTechno->vf_226(0);
         }
     }
-    VocClass::PlayGlobal(Rules->field_1C8, 1.0f, 0x2000, 0);
+    VocClass::PlayGlobal(Rules->CheerSound, 1.0f, 0x2000, 0);
 }

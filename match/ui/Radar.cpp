@@ -1340,7 +1340,7 @@ void RadarClass::FUN_00655B20()
         int value = unknown_14B4;
         unknown_14AC = 5;
         FUN_00656CB0(value, 0);
-        FUN_0055AF40(RulesInstance->unknown_000);
+        FUN_0055AF40(RulesInstance->DetailMinFrameRateNormal);
     }
 }
 

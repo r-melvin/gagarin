@@ -20,18 +20,17 @@
 // through to a trailing `return false` so its epilogue lands after the main
 // one; and the flag cell goes through a pointer local so Y is read as
 // `[ESI+2]` off the LEA (95.5% with member access).
-bool House_004FBE40::UpdateFlagCoords(Obj_004FBE40* obj, bool clearCell)
+bool HouseClass::UpdateFlagCoords(AbstractClass* obj, bool clearCell)
 {
     bool removed = false;
     if (obj != 0) {
-        if ((obj->*obj->Vtbl->WhatAmI)() == 1) {
-            removed = obj->FlagRemove();
+        if (obj->vf_11() == 1) {
+            removed = static_cast<UnitClass*>(obj)->FlagRemove();
             if (removed && this->OurFlagCarrier == obj) {
                 this->OurFlagCarrier = 0;
             }
         } else {
-            Coord_004FBE40 buf;
-            Cell_004FBE40 cell = CoordToCell_004FBE40((obj->*obj->Vtbl->GetCoords)(&buf));
+            Cell cell = CoordToCell_004FBE40(obj->vf_18());
             if (DAT_0087F7E8.CoordinatesLegal(cell)) {
                 removed = DAT_0087F7E8.GetCellAt(cell)->FUN_00483460();
                 if (removed && this->OurFlagCarrier == obj) {
@@ -41,9 +40,9 @@ bool House_004FBE40::UpdateFlagCoords(Obj_004FBE40* obj, bool clearCell)
         }
 
         if (clearCell) {
-            Cell_004FBE40* flagCell = &this->OurFlagCoords;
+            CellStruct* flagCell = &this->OurFlagCoords;
             if (flagCell->X != DAT_00A8EF98.X || flagCell->Y != DAT_00A8EF98.Y) {
-                DAT_0087F7E8.GetCellAt(*flagCell)->At_44 = -1;
+                DAT_0087F7E8.GetCellAt(*flagCell)->OverlayTypeIndex = -1;
                 *flagCell = DAT_00A8EF98;
             }
         }

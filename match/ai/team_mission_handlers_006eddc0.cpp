@@ -777,7 +777,7 @@ void Owner_006EDDC0::FUN_006EE0E0(ActionArg_006EDDC0* a1, int a2)
 void Owner_006EDDC0::FUN_006EE0A0(ActionArg_006EDDC0* a1, int a2)
 {
     if (!FUN_0053A100()) {
-        FUN_00539EB0(a1->unknown_04, DAT_008871E0->unknown_1794, DAT_00B0E948, 0);
+        FUN_00539EB0(a1->unknown_04, DAT_008871E0->LightningDeferment, DAT_00B0E948, 0);
     }
     unknown_80 = true;
 }

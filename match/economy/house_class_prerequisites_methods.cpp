@@ -28,24 +28,24 @@
 // as well drops to 40.6%, and a `while (*item != building)` over the scan
 // with the found exit after it stays at the label form's score. Same lever as
 // 0x40E3E0 / 0x526CC0: the negation has to wrap the whole test.
-bool House_00505360::AllPrerequisitesAvailable(TechnoType_00505360* type,
-                                               BuildingVector_00505360* owned,
-                                               int count)
+bool HouseClass::AllPrerequisitesAvailable(TechnoTypeClass* type,
+                                           DynamicVectorClass<BuildingTypeClass*>* owned,
+                                           int count)
 {
     int i = 0;
-    if (type->PrerequisiteCount <= 0) {
+    if (type->Prerequisite.Count <= 0) {
         goto done;
     }
 top:
     {
-        int prerequisite = type->PrerequisiteItems[i];
+        int prerequisite = type->Prerequisite.Items[i];
         if (prerequisite >= 0) {
             int k = 0;
             if (count <= 0) {
                 goto fail;
             }
-            BuildingType_00505360* building = DAT_00A83C6C[prerequisite];
-            BuildingType_00505360** item = owned->Items;
+            const BuildingTypeClass* building = DAT_00A83C6C[prerequisite];
+            BuildingTypeClass** item = owned->Items;
             while (1) {
                 if (!(*item != building)) {
                     goto found;
@@ -57,21 +57,21 @@ top:
                 }
             }
         } else {
-            List_00505360* list = 0;
+            TypeList<const BuildingTypeClass*>* list = 0;
             switch (prerequisite) {
-            case -1: list = &DAT_008871E0->PrerequisitePower;    break;
-            case -2: list = &DAT_008871E0->PrerequisiteTech;     break;
-            case -3: list = &DAT_008871E0->PrerequisiteBarracks; break;
-            case -4: list = &DAT_008871E0->At_A34;               break;
-            case -5: list = &DAT_008871E0->PrerequisiteRadar;    break;
-            case -6: list = &DAT_008871E0->PrerequisiteFactory;  break;
+            case -1: list = &RulesInstance->list_08C8;    break;
+            case -2: list = &RulesInstance->list_0938;     break;
+            case -3: list = &RulesInstance->list_0900; break;
+            case -4: list = &RulesInstance->list_0A34;               break;
+            case -5: list = &RulesInstance->list_091C;    break;
+            case -6: list = &RulesInstance->list_08E4;  break;
             }
             int j = 0;
             if (list->Count <= 0) {
                 goto fail;
             }
             while (1) {
-                BuildingType_00505360* building = (list->*list->Vptr->At_18)(j);
+                const BuildingTypeClass* building = list->Slot6(j);
                 for (int k = 0; k < count; k++) {
                     if (owned->Items[k] == building) {
                         goto found;
@@ -86,7 +86,7 @@ top:
     }
 found:
     i++;
-    if (i >= type->PrerequisiteCount) {
+    if (i >= type->Prerequisite.Count) {
         goto done;
     }
     goto top;

@@ -118,7 +118,7 @@ void RadarView_R16::FUN_00656BE0(bool on, bool sound)
             unknown_14AC = 3;
             ((RadarTimer_00406060*)&unknown_14C0)->FUN_00406060();
             if (sound) {
-                FUN_00750920(DAT_008871E0->unknown_6F0, 1.0f, 0x2000, 0);
+                FUN_00750920(DAT_008871E0->RadarOn, 1.0f, 0x2000, 0);
             }
             FUN_004068E0("Radar: ACTIVATING\n");
         }
@@ -126,7 +126,7 @@ void RadarView_R16::FUN_00656BE0(bool on, bool sound)
         ((RadarTimer_00406060*)&unknown_14C0)->FUN_00406060();
         unknown_14AC = 2;
         if (sound) {
-            FUN_00750920(DAT_008871E0->unknown_6F4, 1.0f, 0x2000, 0);
+            FUN_00750920(DAT_008871E0->RadarOff, 1.0f, 0x2000, 0);
         }
         FUN_004068E0("Radar: DEACTIVING\n");
     }

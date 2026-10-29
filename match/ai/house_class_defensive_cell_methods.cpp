@@ -28,7 +28,7 @@ void HouseClass::FUN_00509EC0(SuperClass* super)
     if (PreferredDefensiveCell.X == NoCell_00A8EF98.X && PreferredDefensiveCell.Y == NoCell_00A8EF98.Y) {
         return;
     }
-    if (PreferredDefensiveCellStartTime + DAT_008871E0->unknown_EE0 <= CurrentFrame) {
+    if (PreferredDefensiveCellStartTime + DAT_008871E0->AISuperDefenseFrames <= CurrentFrame) {
         return;
     }
     cell = PreferredDefensiveCell;

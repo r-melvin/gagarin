@@ -1467,11 +1467,11 @@ int FUN_0064A630(char* data, int flag)
         const wchar_t* name = FUN_00735120(packet->unknown_04);
         wchar_t* text = packet->unknown_19.Text;
         if (!DAT_00A8BC60.FUN_005D3FC0(name, packet->unknown_18, text,
-                int(Rules->unknown_14C0 * DAT_007E27F8))) {
+                int(Rules->MessageDelay * DAT_007E27F8))) {
             name = FUN_00735120(packet->unknown_04);
             DAT_00A8BC60.FUN_005D3BA0(name, packet->unknown_18, text,
-                packet->unknown_18, 0x4046, int(Rules->unknown_14C0 * DAT_007E27F8), false);
-            VocClass::PlayGlobal(Rules->unknown_06AC, 1.0f, 0x2000, 0);
+                packet->unknown_18, 0x4046, int(Rules->MessageDelay * DAT_007E27F8), false);
+            VocClass::PlayGlobal(Rules->IncomingMessage, 1.0f, 0x2000, 0);
         }
         if (wcslen(text)) wcscpy(DAT_00A8D112, text);
         Map_0087F7E8.GScreenClass::FlagToRedraw(2);

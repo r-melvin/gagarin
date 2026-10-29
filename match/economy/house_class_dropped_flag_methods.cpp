@@ -37,15 +37,15 @@
 // problem. A flag bisection on the sibling site 0x74D490 (/O1, /O2 /Os, /Ox,
 // /O2 /Gs) never makes cl 8804 materialise a repeated push constant into a
 // register, so no switch reaches retail's shape. Best form kept at 23.9%.
-bool House_004FBF60::DroppedFlag(const Cell_004FBF60& cell, unsigned long dwUnk)
+bool HouseClass::DroppedFlag(const CellStruct& cell, bool dwUnk)
 {
     if (DAT_0087F7E8.CoordinatesLegal(cell)) {
-    this->UpdateFlagCoords(this->FlagLocation, dwUnk);
+    this->UpdateFlagCoords(this->OurFlagCarrier, dwUnk);
 
-    Cell_004FBF60 c = cell;
-    bool ok = DAT_0087F7E8.GetCellAt(c)->FUN_00483410(this->Type->ColorSchemeIndex);
+    CellStruct c = cell;
+    bool ok = DAT_0087F7E8.GetCellAt(c)->FUN_00483410(this->Type->ArrayIndex2);
     if (!ok) {
-        Cell_004FBF60 closeTo;
+        CellStruct closeTo;
         closeTo.X = 0;
         closeTo.Y = 0;
         c = DAT_0087F7E8.NearByLocation(cell, 1, -1, 0, false, 1, 1,
@@ -53,12 +53,12 @@ bool House_004FBF60::DroppedFlag(const Cell_004FBF60& cell, unsigned long dwUnk)
                                          false, false);
         if (c.X == DAT_00A8EF98.X && c.Y == DAT_00A8EF98.Y)
             return ok;
-        ok = DAT_0087F7E8.GetCellAt(c)->FUN_00483410(this->Type->ColorSchemeIndex);
+        ok = DAT_0087F7E8.GetCellAt(c)->FUN_00483410(this->Type->ArrayIndex2);
         if (!ok)
             return ok;
     }
 
-    this->FlagLocation = DAT_0087F7E8.GetCellAt(c);
+    this->OurFlagCarrier = DAT_0087F7E8.GetCellAt(c);
     return ok;
     }
     return false;

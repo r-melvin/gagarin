@@ -32,8 +32,8 @@ int BombClass::GetCurrentFlickerFrame() const
 
     const RulesClass* rules = Rules;
     int planted = PlantingFrame;
-    int flickerHalf = rules->field_FD8;
-    int period = rules->field_FD0;
+    int flickerHalf = rules->IvanIconFlickerRate;
+    int period = rules->IvanTimedDelay;
     int now = CurrentFrame;
 
     int frame = ((now - planted) / (period / 6)) * 2;

@@ -77,10 +77,10 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
         }
         int code = *key;
         if (code == 0x8066) {
-            VocClass::PlayGlobal(DAT_008871E0->unknown_188, 1.0f, 0x2000, 0);
+            VocClass::PlayGlobal(DAT_008871E0->GUIMainButtonSound, 1.0f, 0x2000, 0);
             SetSellMode_004AC660(-1);
         } else if (code == 0x8065) {
-            VocClass::PlayGlobal(DAT_008871E0->unknown_188, 1.0f, 0x2000, 0);
+            VocClass::PlayGlobal(DAT_008871E0->GUIMainButtonSound, 1.0f, 0x2000, 0);
             SetRepairMode_004AC8C0(-1);
         } else if (code >= 0x80CB && code < 0x80CF) {
             int tab = code - 0x80CB;
@@ -105,7 +105,7 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
                 FUN_006A6610();
                 At_53A7 = 1;
             }
-            VocClass::PlayGlobal(DAT_008871E0->unknown_190, 1.0f, 0x2000, 0);
+            VocClass::PlayGlobal(DAT_008871E0->GUITabSound, 1.0f, 0x2000, 0);
         } else if ((code & ~0x4000) == (ScrollDownButton_00B0B328.ID | 0x8000)) {
             ScrollDownButton_00B0B328.At_2C = 0;
             StripClass* strip = &Strips[unknown_539C];
@@ -119,9 +119,9 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
                 || (CurrentPlayer_00A83D4C != Observer_00AC1198
                     && (strip->TopRowIndex + rows) * 2 < strip->CameoCount)) {
                 strip->At_48 = strip->At_48 + step;
-                VocClass::PlayGlobal(DAT_008871E0->unknown_190, 1.0f, 0x2000, 0);
+                VocClass::PlayGlobal(DAT_008871E0->GUITabSound, 1.0f, 0x2000, 0);
             } else {
-                VocClass::PlayGlobal(DAT_008871E0->unknown_700, 1.0f, 0x2000, 0);
+                VocClass::PlayGlobal(DAT_008871E0->ScoldSound, 1.0f, 0x2000, 0);
             }
         } else if (code == (ScrollUpButton_00B0B408.ID | 0x8000)) {
             ScrollUpButton_00B0B408.At_2C = 0;
@@ -132,9 +132,9 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
             }
             if (strip->TopRowIndex != 0) {
                 strip->At_48 = strip->At_48 - rows;
-                VocClass::PlayGlobal(DAT_008871E0->unknown_190, 1.0f, 0x2000, 0);
+                VocClass::PlayGlobal(DAT_008871E0->GUITabSound, 1.0f, 0x2000, 0);
             } else {
-                VocClass::PlayGlobal(DAT_008871E0->unknown_700, 1.0f, 0x2000, 0);
+                VocClass::PlayGlobal(DAT_008871E0->ScoldSound, 1.0f, 0x2000, 0);
             }
         }
         bool redraw = false;

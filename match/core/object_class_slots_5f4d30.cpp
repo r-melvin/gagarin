@@ -276,11 +276,11 @@ bool ObjectClass::vf_58(const CoordStruct& coord)
                 vf_109(coord);
                 AnimClass* anim;
                 if (vf_11() == 8) {
-                    anim = new AnimClass(DAT_008871E0->unknown_BB8, coord, 0, 1, 0x600, 0, false);
+                    anim = new AnimClass(DAT_008871E0->BombParachute, coord, 0, 1, 0x600, 0, false);
                 } else {
                     CoordStruct where = coord;
                     where.Z += 0x4B;
-                    anim = new AnimClass(DAT_008871E0->unknown_BBC, where, 0, 1, 0x600, 0, false);
+                    anim = new AnimClass(DAT_008871E0->Parachute, where, 0, 1, 0x600, 0, false);
                     Parachute = anim;
                 }
                 if (anim != 0) {

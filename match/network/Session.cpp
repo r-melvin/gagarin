@@ -872,14 +872,14 @@ void SessionProfile_00697F10::FUN_00697F10(CCINIClass* ini, const char* section,
     ini->Reset();
     unknown_00 = ini->FUN_005276D0(section, STR_0083EFD0, FUN_005D5E10()->unknown_28);
     unknown_04 = ini->FUN_005276D0(section, STR_0083EFC4, 0);
-    unknown_08 = ini->FUN_005276D0(section, STR_008332E8, RulesInstance->unknown_14A0);
-    unknown_0C = ini->FUN_005276D0(section, STR_00824E38, RulesInstance->unknown_1484);
-    unknown_10 = ini->FUN_005276D0(section, STR_0083D06C, RulesInstance->unknown_1494);
-    unknown_14 = ini->FUN_005295F0(section, STR_0083CFA8, RulesInstance->unknown_14B6);
-    unknown_15 = ini->FUN_005295F0(section, STR_0083CF94, RulesInstance->unknown_14B9);
-    unknown_16 = ini->FUN_005295F0(section, STR_0083CF84, RulesInstance->unknown_14BA);
-    unknown_17 = ini->FUN_005295F0(section, STR_0083EFB8, RulesInstance->unknown_14B8);
-    unknown_18 = ini->FUN_005295F0(section, STR_0083EFA8, RulesInstance->unknown_14B1);
+    unknown_08 = ini->FUN_005276D0(section, STR_008332E8, RulesInstance->GameSpeed);
+    unknown_0C = ini->FUN_005276D0(section, STR_00824E38, RulesInstance->Money);
+    unknown_10 = ini->FUN_005276D0(section, STR_0083D06C, RulesInstance->UnitCount);
+    unknown_14 = ini->FUN_005295F0(section, STR_0083CFA8, RulesInstance->ShortGame);
+    unknown_15 = ini->FUN_005295F0(section, STR_0083CF94, RulesInstance->SuperWeaponsAllowed);
+    unknown_16 = ini->FUN_005295F0(section, STR_0083CF84, RulesInstance->BuildOffAlly);
+    unknown_17 = ini->FUN_005295F0(section, STR_0083EFB8, RulesInstance->MCVRedeploys);
+    unknown_18 = ini->FUN_005295F0(section, STR_0083EFA8, RulesInstance->Crates);
     for (int slot = 1; slot < 8; ++slot) {
         char key[16];
         sprintf(key, STR_0083EF9C, slot);

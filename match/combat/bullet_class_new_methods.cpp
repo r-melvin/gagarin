@@ -451,7 +451,7 @@ void BulletClass::vf_23()
       const int animationPhase = (secondaryValue + DAT_00A8ED84) % 15;
       const double phaseAngle = animationPhase * DAT_007E48F8 * DAT_007E3CC0;
       const double phaseSin = FUN_004CACB0(phaseAngle);
-      const double phaseScale = RulesInstance->unknown_598;
+      const double phaseScale = RulesInstance->MissileROTVar;
       const int phaseDirection = static_cast<int>(
           (phaseSin * phaseScale + phaseScale + DAT_007E1718) * Type->unknown_2DC);
 
@@ -525,7 +525,7 @@ void BulletClass::vf_23()
       if (targetPosition.X == DAT_0089DE30.X &&
           targetPosition.Y == DAT_0089DE30.Y &&
           targetPosition.Z == DAT_0089DE30.Z &&
-          vf_114() >= RulesInstance->unknown_5A0) {
+          vf_114() >= RulesInstance->MissileSafetyAltitude) {
         impactCandidate = true;
         resolutionMode = 1;
       }
@@ -593,7 +593,7 @@ void BulletClass::vf_23()
     else {
       if (Type->unknown_2C0 == 0) {
         const double gravity = Type->unknown_295
-            ? FUN_0048ACF0() : static_cast<double>(RulesInstance->unknown_16B8);
+            ? FUN_0048ACF0() : static_cast<double>(RulesInstance->Gravity);
         const double stepX = Velocity.X;
         const double stepY = Velocity.Y;
         const double stepZ = Velocity.Z - gravity;
@@ -1159,7 +1159,7 @@ bool BulletClass::vf_124(const CoordStruct& source,
         // ScenarioClass::unknown_0218 has asserted offset 0x218 and size 0x3F4
         // in scenario_class_methods.h; use that evidence for the call ABI.
         int draw = reinterpret_cast<Randomizer*>(reinterpret_cast<char*>(DAT_00A8B230) + 0x218)->RandomRanged(0,
-            RulesInstance->unknown_1734 * 2);
+            RulesInstance->BallisticScatter * 2);
         int truncatedDistance = (int)distance;
         int product = (int)((unsigned int)draw * (unsigned int)truncatedDistance);
         // WeaponTypeClass::Range is pinned at +0xB4 (and 4 bytes) in
@@ -1580,14 +1580,14 @@ GG_STATIC_ASSERT(offsetof(UnitClass, Type) == 0x6c4);
 GG_STATIC_ASSERT(sizeof(((UnitClass*)0)->Type) == 4);
 GG_STATIC_ASSERT(offsetof(BuildingClass, Type) == 0x520);
 GG_STATIC_ASSERT(sizeof(((BuildingClass*)0)->Type) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_214) == 0x214);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_214) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_350) == 0x350);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_350) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F8C) == 0xf8c);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_F8C) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_18B4) == 0x18b4);
-GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_18B4) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, YuriMindControlSound) == 0x214);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->YuriMindControlSound) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, WeaponNullifyAnim) == 0x350);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->WeaponNullifyAnim) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, NukeWarhead) == 0xf8c);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->NukeWarhead) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, DirectRockingCoefficient) == 0x18b4);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->DirectRockingCoefficient) == 4);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x218);
 GG_STATIC_ASSERT(sizeof(((ScenarioClass*)0)->unknown_0218) == 1012);
 GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0x0);
@@ -1713,7 +1713,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
         if (!static_cast<CaptureManagerClass*>(Owner->CaptureManager)
                  ->FUN_00471D40(Target))
             goto common_impact_tail;
-        if (Rules->unknown_214 == -1)
+        if (Rules->YuriMindControlSound == -1)
             goto common_impact_tail;
 
         const bool ownerHousePredicate = Owner->Owner->IsControlledByCurrentPlayer();
@@ -1727,7 +1727,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
         // pointer to Location and reads it; no extra null guard is present.
         CoordStruct soundLocation =
             static_cast<ObjectClass*>(targetWithFlag1)->Location;
-        FUN_007509E0(Rules->unknown_214, &soundLocation, 0);
+        FUN_007509E0(Rules->YuriMindControlSound, &soundLocation, 0);
         goto common_impact_tail;
     }
 
@@ -1965,7 +1965,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
                     (DamageMultiplier * Health) >> 8;
                 double movementSpeed =
                     static_cast<double>(scaledDamage) *
-                    static_cast<double>(Rules->unknown_18B4) / 100.0;
+                    static_cast<double>(Rules->DirectRockingCoefficient) / 100.0;
                 if (movementSpeed >= 4.0)
                     movementSpeed = 4.0;
 
@@ -2108,7 +2108,7 @@ common_impact_tail:
     // It creates Rules+0x350's animation and returns before ordinary weapon
     // effects, selected-impact allocation, or the debris tail.
     if (impactSpecialResult) {
-        AnimTypeClass* specialAnimation = Rules->unknown_350;
+        AnimTypeClass* specialAnimation = Rules->WeaponNullifyAnim;
         if (specialAnimation == 0)
             return;
         new AnimClass(specialAnimation, impactPosition, 0, 1, 0x2600,
@@ -2144,7 +2144,7 @@ common_impact_tail:
             FUN_0048ACE0(impactPosition.X, impactPosition.Y,
                          impactPosition.Z), false);
         if (animation == 0 &&
-            static_cast<WarheadTypeClass*>(WH) == Rules->unknown_F8C) {
+            static_cast<WarheadTypeClass*>(WH) == Rules->NukeWarhead) {
             int color = -1;
             if (Owner != 0)
                 color = Owner->Owner->Type->ArrayIndex2;

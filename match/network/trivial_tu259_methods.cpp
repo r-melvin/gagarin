@@ -14,7 +14,7 @@
 // FUNCTION: GAMEMD 0x524790
 int InfantryTypeClass::vf_45()
 {
-    return RulesInstance->unknown_16D8;
+    return RulesInstance->IRepairStep;
 }
 
 // FUNCTION: GAMEMD 0x7473C0
@@ -35,7 +35,7 @@ void Obj_007473D0::FUN_007473D0()
 // Member getter (dword). Vtable slot 45 of UnitTypeClass (RTTI).
 int UnitTypeClass::vf_45()
 {
-    return RulesInstance->unknown_16CC;
+    return RulesInstance->RepairStep;
 }
 
 // FUNCTION: GAMEMD 0x748160

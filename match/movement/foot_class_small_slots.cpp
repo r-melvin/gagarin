@@ -235,7 +235,7 @@ int FootClass::vf_334()
     int delay = (int)(vf_227() * ((HouseView_004DB1A0*)Owner)->FUN_0050C050(vf_33())
                       * SpeedMultiplier);
     if (FUN_0070D0D0(0)) {
-        delay = (int)(delay * DAT_008871E0->unknown_678);
+        delay = (int)(delay * DAT_008871E0->VeteranSpeed);
     }
     int result = (int)(delay * SpeedPercentage);
     if (vf_11() == 1) {

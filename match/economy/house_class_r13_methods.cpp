@@ -335,7 +335,7 @@ extern RulesClass* DAT_008871E0;
 void HouseClass::FUN_004F9700(int count, int index)
 {
     while (count > 0) {
-        float capacity = (float)DAT_008871E0->unknown_17D0;
+        float capacity = (float)DAT_008871E0->WeedCapacity;
         if (!(OwnedWeed.GetTotalAmount() < capacity))
             return;
         OwnedWeed.AddAmount(1.0f, index);

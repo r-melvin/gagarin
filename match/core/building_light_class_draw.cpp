@@ -79,10 +79,10 @@ void BuildingLightClass::FUN_00435BE0(int, int)
     sourcePosition = building->vf_18();
     ownPosition = vf_18();
     int distance = ownPosition.FUN_00437160(&offset, &sourcePosition)->FUN_0041C380();
-    int minimum = RulesInstance->unknown_78C;
+    int minimum = RulesInstance->SpotlightLocationRadius;
     int pulse = 0;
     if (distance >= minimum)
-        pulse = (distance - minimum) / ((RulesInstance->unknown_788 - minimum) / 10);
+        pulse = (distance - minimum) / ((RulesInstance->SpotlightMovementRadius - minimum) / 10);
     if (sourceDistance > minimum && unknown_DC == 3) {
         int age = pulse + 0x50;
         if (age <= 0)
@@ -104,7 +104,7 @@ void BuildingLightClass::FUN_00435BE0(int, int)
                                             ownPosition.Z - sourcePosition.Z);
     int lightRange = delta.FUN_0041C380();
     int range = FUN_00436E80();
-    int rangeLimit = (int)(range * DAT_007E3A98) + RulesInstance->unknown_7A8;
+    int rangeLimit = (int)(range * DAT_007E3A98) + RulesInstance->SpotlightRadius;
     if (lightRange < rangeLimit)
         return;
 

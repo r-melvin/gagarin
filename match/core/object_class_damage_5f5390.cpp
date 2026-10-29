@@ -105,7 +105,7 @@ int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, b
         if (Health <= 0 && vf_11() == 0xF && !a5) {
             InfantryClass* infantry = (InfantryClass*)this;
             if (((InfantryTypeView_5F5390*)infantry->Type)->Cyborg && !infantry->Crawling) {
-                new AnimClass(DAT_008871E0->unknown_9C, CoordStruct(Location), 0, 1, 0x600, 0, false);
+                new AnimClass(DAT_008871E0->InfantryExplode, CoordStruct(Location), 0, 1, 0x600, 0, false);
                 Health = (int)(((InfantryTypeView_5F5390*)infantry->Type)->Strength * 0.25);
                 Health = Health > 1 ? Health : 1;
                 infantry->Crawling = true;

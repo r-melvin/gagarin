@@ -113,12 +113,12 @@ void BuildingClass::vf_23()
     if (vf_117() || vf_118()) {
         // Active or occupied: spawn the type's anim at its muzzle points or, when
         // there are none, at the building's own location.
-        if (Type->MaxNumberOccupants == 0 || RulesInstance->unknown_344 == 0) {
-            if (CurrentFrame % 0x18 == 0 && RulesInstance->unknown_344 != 0)
-                new AnimClass(RulesInstance->unknown_344, Location, 0, 1, 0x600, 0, false);
+        if (Type->MaxNumberOccupants == 0 || RulesInstance->ChronoSparkle1 == 0) {
+            if (CurrentFrame % 0x18 == 0 && RulesInstance->ChronoSparkle1 != 0)
+                new AnimClass(RulesInstance->ChronoSparkle1, Location, 0, 1, 0x600, 0, false);
         } else {
             for (int index = 0; index < Type->MaxNumberOccupants; index++) {
-                if ((CurrentFrame + index) % 0x18 == 0 && RulesInstance->unknown_344 != 0) {
+                if ((CurrentFrame + index) % 0x18 == 0 && RulesInstance->ChronoSparkle1 != 0) {
                     Point2D projected;
                     Point2D* point = DAT_00887324->FUN_006D2070(&projected, &Type->MuzzleFlash[index]);
                     CoordStruct coordinate;
@@ -129,7 +129,7 @@ void BuildingClass::vf_23()
                     coordinate.X += origin.X;
                     coordinate.Y += origin.Y;
                     coordinate.Z += origin.Z;
-                    AnimClass* anim = new AnimClass(RulesInstance->unknown_344, coordinate, 0, 1, 0x600, 0, false);
+                    AnimClass* anim = new AnimClass(RulesInstance->ChronoSparkle1, coordinate, 0, 1, 0x600, 0, false);
                     anim->ZAdjust = -200;
                 }
             }
@@ -170,7 +170,7 @@ void BuildingClass::vf_23()
         Ammo = Type->Ammo;
 
     if (vf_97() != 1) {
-        if (vf_33()->IsGattling && CurrentFrame - LastFireBulletFrame > RulesInstance->unknown_E04 + 5) {
+        if (vf_33()->IsGattling && CurrentFrame - LastFireBulletFrame > RulesInstance->GuardAreaTargetingDelay + 5) {
             FUN_0070DE40(Type->RateDown);
             int current = FUN_0070DDF0();
             int stage = FUN_0070DDC0();

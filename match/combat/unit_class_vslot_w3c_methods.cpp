@@ -61,7 +61,7 @@ int UnitClass::vf_147()
 // random time; otherwise the foot delay applies.
 int UnitClass::vf_136()
 {
-    if (SlaveManager && DAT_008871E0->unknown_1790 + CurrentMissionStartTime < CurrentFrame) {
+    if (SlaveManager && DAT_008871E0->SlaveMinerKickFrameDelay + CurrentMissionStartTime < CurrentFrame) {
         if (static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B1020()) {
             static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B0CC0();
             int delay = (int)(FUN_005B3A00()->Rate * 900.0);

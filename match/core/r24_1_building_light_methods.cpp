@@ -35,13 +35,13 @@ static inline int DistanceBetween_00436DA0(const CoordStruct& to, const CoordStr
 int BuildingLightClass::FUN_00436DA0()
 {
     int distance = DistanceBetween_00436DA0(vf_18(), source->vf_18());
-    int minimum = RulesInstance->unknown_78C;
+    int minimum = RulesInstance->SpotlightLocationRadius;
     int pulse;
     if (distance < minimum)
         pulse = 0;
     else
-        pulse = (distance - minimum) / ((RulesInstance->unknown_788 - minimum) / 10);
-    return (int)(pulse * DAT_007E3A98) + RulesInstance->unknown_7A8;
+        pulse = (distance - minimum) / ((RulesInstance->SpotlightMovementRadius - minimum) / 10);
+    return (int)(pulse * DAT_007E3A98) + RulesInstance->SpotlightRadius;
 }
 
 // FUNCTION: GAMEMD 0x436E80
@@ -55,8 +55,8 @@ int BuildingLightClass::FUN_00436DA0()
 int BuildingLightClass::FUN_00436E80()
 {
     int distance = DistanceBetween_00436DA0(vf_18(), source->vf_18());
-    int minimum = RulesInstance->unknown_78C;
+    int minimum = RulesInstance->SpotlightLocationRadius;
     if (distance < minimum)
         return 0;
-    return (distance - minimum) / ((RulesInstance->unknown_788 - minimum) / 10);
+    return (distance - minimum) / ((RulesInstance->SpotlightMovementRadius - minimum) / 10);
 }
