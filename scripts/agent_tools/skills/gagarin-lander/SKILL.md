@@ -61,6 +61,12 @@ incoming path would land on an untracked file). STATUS.md rotation: `--status-pa
 
 ## Between batches
 
+After a landing, refresh the graphics (`scripts/orchestration/progress_svg.py`, `link_svg.py --refresh`)
+and the census (`scripts/vc6/extent_census.py`). Gates run parallel: `compile_all.sh --jobs 8`,
+`verify_all.py --jobs 8` (output identical to serial). pktlint now also rejects hand-written scalar
+deleting destructors, `this` null tests and VC6FLAGS lines that repeat the default, and in `--strict`
+partial scores that drift from the compiled score.
+
 `python3 $DL/flagsweep.py` (flag proposals for TUs with partials; land the patch like any packet)
 and `python3 $DL/permute_queue.py` (ranked permuter queue) run on the new tip; `dispatch.py`
 refreshes the worklist and cluster briefs for the orchestrator.

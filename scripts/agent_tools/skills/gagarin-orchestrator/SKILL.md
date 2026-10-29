@@ -36,6 +36,15 @@ python3 $DL/flagsweep.py                    # VC6FLAGS proposals where rows rise
 python3 $DL/permute_queue.py --scaffold 20  # permuter queue: multiset-identical / RA2-identical first
 ```
 
+Flags are project-wide: treat `flagsweep.py` output as placement evidence, not as VC6FLAGS proposals.
+`python3 scripts/agent_tools/delivery/placement_leads.py` lists files pinned off the default and where
+their definitions probably belong. Other worklists: `scripts/data/large_function_shapes.json` (shape class
+and idioms of large unrecovered functions; its ctor-dtor and string-lookup labels are hints only),
+`scripts/data/partial_residuals.json` (residual labels of partials), `scripts/data/shape_families.json`
+(unmatched functions with a matched lookalike), `ini_names.py` (field names from INI readers),
+`.coordination/claude-orch/wl/m3_data_worklist.tsv` if present (globals/literals/vtables for M3 data).
+Branch-style workers: convert with `branch2packet.py BRANCH --rows rows.json [--removed x.json] --lint`.
+
 ### 2. Workers
 
 Give them the `gagarin-packet-worker` skill. Their first draft can come from
