@@ -13,6 +13,8 @@
 
 class IsometricTileTypeClass;
 class IsometricTileClass;
+class ObjectClass;
+class HouseClass;
 struct IsoTileTypeVtbl;
 
 // One sub-tile image inside a loaded .tmp tile set.
@@ -126,8 +128,8 @@ GG_STATIC_ASSERT(sizeof(IsometricTileTypeClass)                        == 0x30C)
 // multiple-inheritance member-pointer form and emits a `this` adjustment.
 typedef TileImageHeader* (IsometricTileTypeClass::*GetTileDataFn)();
 
-// Slot 35 (CreateObject, 0x549AE0) takes the owning house; FUN_00549AE0 declares it with an int.
-typedef IsometricTileClass* (IsometricTileTypeClass::*CreateObjectFn)(int);
+// Slot 35 (CreateObject, 0x549AE0) takes the owning house; FUN_00549AE0 declares it with an int and its own result type.
+typedef ObjectClass* (IsometricTileTypeClass::*CreateObjectFn)(HouseClass*);
 
 struct IsoTileTypeVtbl
 {

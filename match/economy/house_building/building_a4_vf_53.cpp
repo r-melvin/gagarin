@@ -7,111 +7,111 @@
 #include "building_a4_views.h"
 
 // FUNCTION: GAMEMD 0x445880
-bool BA4Building::vf_53()
+bool BuildingClass::vf_53()
 {
     int i;
     bool result;
     bool anyUpgradeFlag = false;
-    HBCoordPod coord = Location;
-    HBCell cell;
+    CoordStruct coord = Location;
+    CellStruct cell;
     cell.X = (short)(coord.X / 256);
     cell.Y = (short)(coord.Y / 256);
 
-    if (!unknown_81 && Type != 0) {
+    if (!InLimbo && Type != 0) {
         for (i = 0; i < 8; i++) {
             if (DamageFireAnims[i]) {
                 DamageFireAnims[i]->vf_62();
                 DamageFireAnims[i] = 0;
             }
         }
-        if (Type->unknown_16CC && unknown_6E4) {
-            Owner->unknown_538C--;
-            if (Owner->unknown_538C < 0) {
-                Owner->unknown_538C = 0;
+        if (Type->bools_16A4[40] && ActuallyPlacedOnMap) {
+            Owner->NumOrePurifiers--;
+            if (Owner->NumOrePurifiers < 0) {
+                Owner->NumOrePurifiers = 0;
             }
         }
-        if (Type->unknown_16CB && unknown_6E4) {
-            Owner->unknown_2D4 -= Type->unknown_1780;
-            if (Owner->unknown_2D4 < 0) {
-                Owner->unknown_2D4 = 0;
+        if (Type->bools_16A4[39] && ActuallyPlacedOnMap) {
+            Owner->AirportDocks -= Type->NumberOfDocks;
+            if (Owner->AirportDocks < 0) {
+                Owner->AirportDocks = 0;
             }
         }
-        if (Type->unknown_1564 && unknown_6E4) {
-            Owner->unknown_164 -= Type->unknown_1564;
-            if (Owner->unknown_164 < 0) {
-                Owner->unknown_164 = 0;
+        if (Type->InfantryGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->InfantrySelfHeal -= Type->InfantryGainSelfHeal;
+            if (Owner->InfantrySelfHeal < 0) {
+                Owner->InfantrySelfHeal = 0;
             }
         }
-        if (Type->unknown_1568 && unknown_6E4) {
-            Owner->unknown_168 -= Type->unknown_1568;
-            if (Owner->unknown_168 < 0) {
-                Owner->unknown_168 = 0;
+        if (Type->UnitsGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->UnitsSelfHeal -= Type->UnitsGainSelfHeal;
+            if (Owner->UnitsSelfHeal < 0) {
+                Owner->UnitsSelfHeal = 0;
             }
         }
-        if (Type->unknown_16BE) {
+        if (Type->bools_16A4[26]) {
             FUN_00452A40(0);
         }
         if (!DAT_00A8E7AC) {
-            if (Type->unknown_16C8) {
-                vf_318(DAT_0089C818);
+            if (Type->bools_16A4[36]) {
+                vf_318(DAT_0089C818.raw_dword);
             }
-            if (Type->unknown_D31) {
-                vf_320(DAT_0089C818);
+            if (Type->bools_D20[17]) {
+                vf_320(DAT_0089C818.raw_dword);
             }
-            if ((!Type->unknown_408 || !Type->unknown_5EC) && !vf_32()) {
+            if ((!Type->UndeploysInto || !Type->ResourceGatherer) && !vf_32()) {
                 FUN_004561F0();
             }
         }
         for (i = 0; i < 3; i++) {
-            if (Upgrades[i + 1] && Upgrades[i + 1]->unknown_1763) {
+            if (Upgrades[i] && Upgrades[i]->bools_1760[3]) {
                 anyUpgradeFlag = true;
                 break;
             }
         }
         if (!DAT_00A8E9A0) {
-            if (Type->unknown_16BE && !DAT_00A8E7AC) {
-                unknown_618 = 0;
+            if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+                LaserFenceFrame = 0;
             }
             return true;
         }
-        if (Type == DAT_008871E0->unknown_87C) {
+        if (Type == RulesInstance->WallTower) {
             for (i = 0; i < 8; i += 2) {
-                BA4MapCell* mc = DAT_0087F7E8.FUN_005657A0(cell + DAT_0089F688[i & 7]);
+                CellClass* mc = BA4At(cell + DAT_0089F688[i & 7]);
                 mc->FUN_00480630(0);
-                if (mc->unknown_44 != -1 && DAT_00A83D84[mc->unknown_44]->unknown_2A8 && mc->unknown_11E < 0x10) {
+                if (mc->OverlayTypeIndex != -1 && DAT_00A83D84[mc->OverlayTypeIndex]->Wall && mc->OverlayData < 0x10) {
                     mc->FUN_00480CB0(200);
                 }
             }
         }
-        if (Type == DAT_008871E0->unknown_86C || Type == DAT_008871E0->unknown_874) {
-            DAT_0087F7E8.FUN_005657A0(cell + HBCell(-1, 0))->FUN_00480630(0);
-            DAT_0087F7E8.FUN_005657A0(cell + HBCell(3, 0))->FUN_00480630(0);
+        if (Type == RulesInstance->GDIGateOne || Type == RulesInstance->NodGateOne) {
+            BA4At(cell + BA4Off(-1, 0))->FUN_00480630(0);
+            BA4At(cell + BA4Off(3, 0))->FUN_00480630(0);
         }
-        if (Type == DAT_008871E0->unknown_870 || Type == DAT_008871E0->unknown_878) {
-            DAT_0087F7E8.FUN_005657A0(cell + HBCell(0, -1))->FUN_00480630(0);
-            DAT_0087F7E8.FUN_005657A0(cell + HBCell(0, 3))->FUN_00480630(0);
+        if (Type == RulesInstance->GDIGateTwo || Type == RulesInstance->NodGateTwo) {
+            BA4At(cell + BA4Off(0, -1))->FUN_00480630(0);
+            BA4At(cell + BA4Off(0, 3))->FUN_00480630(0);
         }
-        if (!Type->unknown_E58) {
-            int width = Type->FUN_0045EC90();
-            int height = Type->FUN_0045ECA0(false);
-            HBCell scratch;
-            HBCell origin = *vf_110(&scratch);
+        if (!Type->ToTile) {
+            int width = Type->GetFoundationWidth();
+            int height = Type->GetFoundationHeight(false);
+            CellStruct scratch = vf_110();
+            CellStruct origin = scratch;
             for (int y = 0; y < height + 2; y++) {
-                HBCell corner = origin + HBCell(-1, -1);
+                CellStruct corner = origin + BA4Off(-1, -1);
                 for (i = 0; i < width + 2; i++) {
-                    DAT_0087F7E8.FUN_005657A0(corner + HBCell(i, y))->unknown_122--;
+                    BA4At(corner + BA4Off(i, y))->BlockedNeighbours--;
                 }
             }
         }
         if (DAT_00887324) {
-            HBRect buf;
-            DAT_00887324->FUN_006D2790(*vf_75(&buf), 0);
+            RectangleStruct buf = vf_75();
+            DAT_00887324->FUN_006D2790(buf, 0);
         }
         if (Spotlight) {
             Spotlight->vf_62();
         }
         Owner->FUN_004FF980(this);
-        Owner->unknown_1FC = 1;
+        Owner->RecheckTechTree = 1;
         Owner->FUN_004FD150();
         if (Owner == DAT_00A83D4C) {
             DAT_00880CF4 = 1;
@@ -119,15 +119,15 @@ bool BA4Building::vf_53()
         }
         Owner->FUN_0050A490(this);
     }
-    result = FUN_006F6AC0();
+    result = TechnoClass::vf_53();
     if (anyUpgradeFlag) {
-        Owner->FUN_00509130();
+        Owner->AcquiredThreatNode();
     }
-    if (Type->unknown_EB8) {
-        Owner->FUN_00509140(Type->unknown_EB8, Type->unknown_CCE, 0);
+    if (Type->Factory) {
+        Owner->Update_FactoriesQueues(Type->Factory, Type->Naval, 0);
     }
-    if (Type->unknown_16BE && !DAT_00A8E7AC) {
-        unknown_618 = 0;
+    if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+        LaserFenceFrame = 0;
     }
     return result;
 }

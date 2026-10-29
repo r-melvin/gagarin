@@ -209,7 +209,7 @@ bool FootClass::vf_224()
 // Forward to TechnoClass slot 273 with the screen point shifted by the
 // locomotor's draw point; the point and the matrix go on as local copies.
 // PARTIAL: 87.1% -- the registers of the draw-point addition are swapped.
-void FootClass::vf_324(int a1, int a2, int a3, int a4, int a5, Point2D* a6,
+void FootClass::vf_324(VoxelStruct* a1, int a2, int a3, IndexClass* a4, RectangleStruct* a5, Point2D* a6,
                        Matrix3D* a7, int a8, int a9, int a10)
 {
     Matrix3D matrix = *a7;
@@ -223,7 +223,7 @@ void FootClass::vf_324(int a1, int a2, int a3, int a4, int a5, Point2D* a6,
         sum.Y = a6->Y + draw.Y;
         point = sum;
     }
-    TechnoClass::vf_273(a1, a2, a3, a4, a5, (int)&point, (int)&matrix, a8, a10, a9);
+    TechnoClass::vf_273(a1, a2, a3, a4, a5, &point, &matrix, a8, a10, a9);
 }
 
 // FUNCTION: GAMEMD 0x4DB1A0

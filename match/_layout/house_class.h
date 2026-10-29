@@ -416,7 +416,7 @@ public:
     ZoneInfoStruct ZoneInfos[5];           // +0x549C .. 0x54D7 bounded, not written — see note
     int    LATime;                         // +0x54D8 ctor @0x004F5A59
     int    LAEnemy;                        // +0x54DC ctor @0x004F5A5F
-    int    ToCapture;                      // +0x54E0 ctor @0x004F5A65
+    BuildingClass* ToCapture;              // +0x54E0 ctor @0x004F5A65
     unsigned int RadarVisibleTo;           // +0x54E4 IndexBitfield; ctor @0x004F5A6B
     int    PointTotal;                     // +0x54E8 ctor @0x004F5A71
     int    PreferredTargetType;            // +0x54EC ctor MOV [EBP+0x54EC],1 @0x004F5A77

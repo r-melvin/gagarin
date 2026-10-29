@@ -34,6 +34,8 @@
 
 class TeamClass;
 struct Matrix3D;
+struct VoxelStruct;
+struct IndexClass;
 
 // FootClass  (0x520..0x6BF, sizeof = 0x6C0)
 class WaypointClass;
@@ -70,7 +72,7 @@ public:
     virtual void vf_323(SHPStruct* a1, int a2, Point2D* a3, RectangleStruct* a4,
                         int a5, int a6, int a7, int a8, int a9, int a10,
                         int a11, int a12, int a13, int a14, int a15, int a16); // 323 0x41C090
-    virtual void vf_324(int a1, int a2, int a3, int a4, int a5, Point2D* a6, Matrix3D* a7, int a8, int a9, int a10);// 324 0x4DAF10
+    virtual void vf_324(VoxelStruct* a1, int a2, int a3, IndexClass* a4, RectangleStruct* a5, Point2D* a6, Matrix3D* a7, int a8, int a9, int a10);// 324 0x4DAF10
     virtual void vf_325();                                         // 325 0x41C0F0
     virtual void vf_326();                                         // 326 0x41C100
     virtual void vf_327();                                         // 327 0x41C110

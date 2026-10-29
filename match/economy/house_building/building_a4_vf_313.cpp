@@ -26,32 +26,29 @@ inline unsigned BA4PackColor(unsigned char r, unsigned char g, unsigned char b)
 }
 
 // FUNCTION: GAMEMD 0x43DA80
-void BA4Building::vf_313(HBPoint2D* pos, int clip)
+void BuildingClass::vf_313(Point2D* pos, RectangleStruct* clip)
 {
-    HBCell scratch;
-    HBCell here = *vf_110(&scratch);
+    CellStruct here = vf_110();
     int i;
 
     if (vf_97() == 0x10) {
-        if (unknown_350.FUN_004A5110() || unknown_350.FUN_004A51B0() || unknown_350.FUN_004A51D0() || unknown_350.FUN_004A5130()) {
-            if (unknown_418) {
-                for (i = 0; i < unknown_E8; i++) {
-                    BA4Object* object = FUN_0065AD40(i);
-                    if (object && !object->unknown_81 && object->vf_11() != 6) {
-                        HBCoordPod scratchA;
-                        HBCoordPod a = *object->vf_19(&scratchA, 0);
+        if (UnloadTimer.FUN_004A5110() || UnloadTimer.FUN_004A51B0() || UnloadTimer.FUN_004A51D0() || UnloadTimer.FUN_004A5130()) {
+            if (IsTether) {
+                for (i = 0; i < RadioLinks.Capacity; i++) {
+                    ObjectClass* object = FUN_0065AD40(i);
+                    if (object && !object->InLimbo && object->vf_11() != 6) {
+                        CoordStruct a = object->vf_19(0);
                         a.Z = object->Location.Z;
                         if (DAT_00B73550 && !DAT_00A8ED6B && (DAT_00A8B230->unknown_0000 & 0x1000)) {
-                            HBCoordPod q = object->Location;
-                            if (DAT_0087F7E8.FUN_005865E0(&q)) {
+                            CoordStruct q = object->Location;
+                            if (DAT_0087F7E8.IsLocationFogged(&q)) {
                                 continue;
                             }
-                            if (DAT_0087F7E8.FUN_005865E0(&a)) {
+                            if (DAT_0087F7E8.IsLocationFogged(&a)) {
                                 continue;
                             }
                         }
-                        HBCoordPod scratchB;
-                        HBCoordPod screen = DAT_00887324->FUN_006D2140(*object->vf_43(&scratchB));
+                        Point2D screen = DAT_00887324->FUN_006D2140(object->vf_43());
                         object->vf_69(&screen, clip);
                     }
                 }
@@ -60,196 +57,183 @@ void BA4Building::vf_313(HBPoint2D* pos, int clip)
     }
 
     unsigned color = 0;
-    if (unknown_294) {
-        BA4Rgb* c = &DAT_008871E0->unknown_1874[DAT_008871E0->unknown_18A4];
+    if (Airstrike) {
+        RulesColor_004B9BD0* c = &RulesInstance->ColorAdd[RulesInstance->LaserTargetColor];
         color |= BA4PackColor(c->R, c->G, c->B);
     }
-    if (vf_88() && unknown_1C4 == 1) {
-        BA4Rgb* c = &DAT_008871E0->unknown_1874[DAT_008871E0->unknown_18B0];
+    if (vf_88() && ForceShielded == 1) {
+        RulesColor_004B9BD0* c = &RulesInstance->ColorAdd[RulesInstance->ForceShieldColor];
         color |= BA4PackColor(c->R, c->G, c->B);
     }
 
-    HBCoordPod scratchLoc;
-    HBCoordPod* loc = vf_18(&scratchLoc);
-    HBCell cell(loc->X / 256, loc->Y / 256);
-    if (DAT_0087F7E8.FUN_005657A0(cell)->FUN_00487950()) {
+    CoordStruct loc = vf_18();
+    CellStruct cell = BA4Off(loc.X / 256, loc.Y / 256);
+    if (BA4At(cell)->FUN_00487950()) {
         color = 0;
     }
 
-    if (vf_97() == 0x10 && Type->unknown_150C) {
-        if (unknown_350.FUN_004A51D0() || unknown_350.FUN_004A5110() || unknown_350.FUN_004A5130() || unknown_350.FUN_004A51B0()) {
-            int frame = (int)(unknown_350.FUN_004A52F0() * Type->unknown_F00);
-            if (unknown_350.FUN_004A5130()) {
-                frame = Type->unknown_F00 - frame;
+    if (vf_97() == 0x10 && Type->DoorAnim) {
+        if (UnloadTimer.FUN_004A51D0() || UnloadTimer.FUN_004A5110() || UnloadTimer.FUN_004A5130() || UnloadTimer.FUN_004A51B0()) {
+            int frame = (int)(UnloadTimer.FUN_004A52F0() * Type->DoorStages);
+            if (UnloadTimer.FUN_004A5130()) {
+                frame = Type->DoorStages - frame;
             }
-            if (unknown_350.FUN_004A51D0()) {
+            if (UnloadTimer.FUN_004A51D0()) {
                 frame = 0;
             }
-            if (frame >= Type->unknown_F00) {
-                frame = Type->unknown_F00 - 1;
+            if (frame >= Type->DoorStages) {
+                frame = Type->DoorStages - 1;
             }
             if (frame < 0) {
                 frame = 0;
             }
-            if (FUN_005F5C60() <= DAT_008871E0->unknown_1700 && Type->unknown_1700) {
-                frame += Type->unknown_F00;
+            if (FUN_005F5C60() <= RulesInstance->ConditionYellow && Type->bools_1700[0]) {
+                frame += Type->DoorStages;
             }
-            int sortKey = -5 - FUN_006D20E0(vf_116());
-            FUN_00705E00(Type->unknown_150C, frame, pos, clip, 0, 0x100, sortKey, 0, 0,
-                         DAT_0087F7E8.FUN_005657A0(cell)->unknown_10A, 0, 0, 0, 0, 0, 0);
-            if (unknown_350.FUN_004A5130() && frame == 0) {
-                unknown_80 = 1;
+            int sortKey = -5 - FUN_006D20E0(FUN_005F5F30());
+            FUN_00705E00(Type->DoorAnim, frame, pos, clip, 0, 0x100, sortKey, 0, 0,
+                         BA4At(cell)->Intensity_Normal, 0, 0, 0, 0, 0, 0);
+            if (UnloadTimer.FUN_004A5130() && frame == 0) {
+                NeedsRedraw = 1;
             }
         }
     }
 
-    if (Type->unknown_16C5) {
+    if (Type->bools_16A4[33]) {
         bool inSale = false;
-        if (unknown_AC == 0x12 || unknown_B4 == 0x12) {
-            if (unknown_F8 < Type->unknown_F08 + Type->unknown_F04 - 1) {
+        if (CurrentMission == 0x12 || QueuedMission == 0x12) {
+            if (StageClass::Value < Type->BuildingAnimFrame[0].Count + Type->BuildingAnimFrame[0].Frame - 1) {
                 inSale = true;
             }
         }
-        if (((unknown_AC != 0x13 || unknown_F8 < 1) && !inSale) || Type->unknown_16CA) {
+        if (((CurrentMission != 0x13 || StageClass::Value < 1) && !inSale) || Type->bools_16A4[38]) {
             int tint;
             int shadowTint;
             if (DAT_00887418) {
-                tint = ((Facing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
-                shadowTint = ((Facing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                tint = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                shadowTint = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
             } else {
                 tint = -1;
                 shadowTint = -1;
             }
             int phaseA = 0;
             int phaseB = 0;
-            if (Type->unknown_B8v.unknown_04) {
-                phaseA = unknown_148 % Type->unknown_B8v.unknown_04->unknown_08;
+            if (Type->TurretVoxel.HVAData) {
+                phaseA = TurretAnimFrame % Type->TurretVoxel.HVAData->unknown_08;
             }
-            if (Type->unknown_C0.unknown_04) {
-                phaseB = unknown_148 % Type->unknown_C0.unknown_04->unknown_08;
+            if (Type->BarrelVoxel.HVAData) {
+                phaseB = TurretAnimFrame % Type->BarrelVoxel.HVAData->unknown_08;
             }
             tint |= (phaseA & 0xFF) << 16;
             shadowTint |= (phaseB & 0xFF) << 16;
 
             BA4Matrix matrix;
-            if (Type->unknown_B8v.unknown_00) {
-                int dirA = ((Facing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
-                matrix.FUN_005AF1A0((float)(dirA - 8) * (-0.19634954084936207));
-                matrix.FUN_005AE980((float)(Type->unknown_720 / 8));
-                float vx = matrix.M[3];
-                float vy = matrix.M[7];
-                float vz = matrix.M[11];
-                float negative[3];
-                negative[0] = -vx;
-                negative[1] = -vy;
-                negative[2] = -vz;
-                float positive[3];
-                positive[0] = vx;
-                positive[1] = vy;
-                positive[2] = vz;
+            if (Type->TurretVoxel.unknown_00) {
+                int dirA = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                matrix.RotateZ((float)(dirA - 8) * (-0.19634954084936207));
+                matrix.TranslateX((float)(Type->TurretOffset / 8));
+                float vx = matrix.Row[0][3];
+                float vy = matrix.Row[1][3];
+                float vz = matrix.Row[2][3];
+                Vector3D negative(-vx, -vy, -vz);
+                Vector3D positive(vx, vy, vz);
                 BA4Matrix second = matrix;
-                second.FUN_005AE8F0(negative);
-                if (unknown_3F0) {
-                    matrix.FUN_005AE980(-unknown_3EC);
+                second.Translate(negative);
+                if (TurretRecoil.State) {
+                    matrix.TranslateX(-TurretRecoil.TravelSoFar);
                     tint = -1;
                 }
-                if (unknown_410) {
-                    second.FUN_005AE980(-unknown_40C);
+                if (BarrelRecoil.State) {
+                    second.TranslateX(-BarrelRecoil.TravelSoFar);
                     tint = -1;
                 }
-                int dirB = ((unknown_370.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
-                second.FUN_005AF080(-((float)(dirB - 8) * (-0.19634954084936207)));
-                second.FUN_005AE8F0(positive);
-                HBPoint2D at;
-                at.X = pos->X + Type->unknown_F4C[9].unknown_30.X;
-                at.Y = pos->Y + Type->unknown_F4C[9].unknown_30.Y;
+                int dirB = ((BarrelFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                second.RotateY(-((float)(dirB - 8) * (-0.19634954084936207)));
+                second.Translate(positive);
+                Point2D at;
+                at.X = pos->X + Type->BuildingAnim[9].X;
+                at.Y = pos->Y + Type->BuildingAnim[9].Y;
                 bool tail = false;
-                if (((Facing.FUN_004C93D0().Whole >> 13) + 1 >> 1 & 3) > 0
-                    && ((Facing.FUN_004C93D0().Whole >> 13) + 1 >> 1 & 3) < 3) {
+                if (((PrimaryFacing.FUN_004C93D0().Whole >> 13) + 1 >> 1 & 3) > 0
+                    && ((PrimaryFacing.FUN_004C93D0().Whole >> 13) + 1 >> 1 & 3) < 3) {
                     tail = true;
-                } else if (Type->unknown_C0.unknown_00 && Type->unknown_C0.unknown_04) {
+                } else if (Type->BarrelVoxel.unknown_00 && Type->BarrelVoxel.HVAData) {
                     BA4MatrixTemp product;
                     BA4MatrixTemp defaults;
-                    vf_273(&Type->unknown_C0, 0, tint, &Type->unknown_244[3], clip, &at,
+                    vf_273(&Type->BarrelVoxel, 0, tint, &Type->VoxelTurretBarrelCache, clip, &at,
                            FUN_005AF980(&product, defaults.FUN_00754BE0(), &second),
-                           DAT_0087F7E8.FUN_005657A0(cell)->unknown_10A, color, 0);
+                           BA4At(cell)->Intensity_Normal, color, 0);
                 }
                 {
                     BA4MatrixTemp product;
                     BA4MatrixTemp defaults;
-                    vf_273(&Type->unknown_B8v, 0, tint, &Type->unknown_244[2], clip, &at,
+                    vf_273(&Type->TurretVoxel, 0, tint, &Type->VoxelShadowCache, clip, &at,
                            FUN_005AF980(&product, defaults.FUN_00754BE0(), &matrix),
-                           DAT_0087F7E8.FUN_005657A0(cell)->unknown_10A, color, 0);
+                           BA4At(cell)->Intensity_Normal, color, 0);
                 }
-                if (tail && Type->unknown_C0.unknown_00 && Type->unknown_C0.unknown_04) {
+                if (tail && Type->BarrelVoxel.unknown_00 && Type->BarrelVoxel.HVAData) {
                     BA4MatrixTemp product;
                     BA4MatrixTemp defaults;
-                    vf_273(&Type->unknown_C0, 0, tint, &Type->unknown_244[3], clip, &at,
+                    vf_273(&Type->BarrelVoxel, 0, tint, &Type->VoxelTurretBarrelCache, clip, &at,
                            FUN_005AF980(&product, defaults.FUN_00754BE0(), &second),
-                           DAT_0087F7E8.FUN_005657A0(cell)->unknown_10A, color, 0);
+                           BA4At(cell)->Intensity_Normal, color, 0);
                 }
-            } else if (Type->unknown_C0.unknown_00 && Type->unknown_C0.unknown_04) {
-                float vx = matrix.M[3];
-                float vy = matrix.M[7];
-                float vz = matrix.M[11];
-                float negative[3];
-                negative[0] = -vx;
-                negative[1] = -vy;
-                negative[2] = -vz;
-                float positive[3];
-                positive[0] = vx;
-                positive[1] = vy;
-                positive[2] = vz;
-                matrix.FUN_005AE8F0(negative);
-                int dirA = ((Facing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
-                matrix.FUN_005AF1A0((float)(dirA - 8) * (-0.19634954084936207));
-                int dirB = ((unknown_370.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
-                matrix.FUN_005AF080(-((float)(dirB - 8) * (-0.19634954084936207)));
-                matrix.FUN_005AE8F0(positive);
-                HBPoint2D at;
-                at.X = pos->X + Type->unknown_F4C[9].unknown_30.X;
-                at.Y = pos->Y + Type->unknown_F4C[9].unknown_30.Y;
+            } else if (Type->BarrelVoxel.unknown_00 && Type->BarrelVoxel.HVAData) {
+                float vx = matrix.Row[0][3];
+                float vy = matrix.Row[1][3];
+                float vz = matrix.Row[2][3];
+                Vector3D negative(-vx, -vy, -vz);
+                Vector3D positive(vx, vy, vz);
+                matrix.Translate(negative);
+                int dirA = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                matrix.RotateZ((float)(dirA - 8) * (-0.19634954084936207));
+                int dirB = ((BarrelFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                matrix.RotateY(-((float)(dirB - 8) * (-0.19634954084936207)));
+                matrix.Translate(positive);
+                Point2D at;
+                at.X = pos->X + Type->BuildingAnim[9].X;
+                at.Y = pos->Y + Type->BuildingAnim[9].Y;
                 BA4MatrixTemp product;
                 BA4MatrixTemp defaults;
-                vf_273(&Type->unknown_C0, 0, shadowTint, &Type->unknown_244[3], clip, &at,
+                vf_273(&Type->BarrelVoxel, 0, shadowTint, &Type->VoxelTurretBarrelCache, clip, &at,
                        FUN_005AF980(&product, defaults.FUN_00754BE0(), &matrix),
-                       DAT_0087F7E8.FUN_005657A0(cell)->unknown_10A, color, 0);
+                       BA4At(cell)->Intensity_Normal, color, 0);
             }
         }
-    } else if (Type->unknown_16C6) {
+    } else if (Type->bools_16A4[34]) {
         bool inSale = false;
-        if (unknown_AC == 0x12 || unknown_B4 == 0x12) {
-            if (unknown_F8 < Type->unknown_F08 + Type->unknown_F04 - 1) {
+        if (CurrentMission == 0x12 || QueuedMission == 0x12) {
+            if (StageClass::Value < Type->BuildingAnimFrame[0].Count + Type->BuildingAnimFrame[0].Frame - 1) {
                 inSale = true;
             }
         }
-        if (!(unknown_AC == 0x13 && unknown_F8 > 0) && !inSale) {
+        if (!(CurrentMission == 0x13 && StageClass::Value > 0) && !inSale) {
             BA4MatrixTemp scratchMatrix;
             BA4MatrixTemp matrix = *FUN_00458810(&scratchMatrix);
-            int angle = ((((Facing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F) + DAT_00818CB0) % 32;
+            int angle = ((((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F) + DAT_00818CB0) % 32;
             bool visible = angle <= 0x10;
-            BA4Object* child = Anims[9];
+            AnimClass* child = Anims[9];
             if (visible && child) {
                 if (DAT_00818CB4) {
-                    child->unknown_19D = 0;
+                    child->Invisible = 0;
                 }
-                child->vf_65(DAT_00886FA0, 1, 0);
-                child->unknown_19D = 1;
+                child->vf_65(&DAT_00886FA0, 1, 0);
+                child->Invisible = 1;
             }
-            HBPoint2D at;
-            at.X = pos->X + Type->unknown_F4C[9].unknown_30.X;
-            at.Y = pos->Y + Type->unknown_F4C[9].unknown_30.Y;
+            Point2D at;
+            at.X = pos->X + Type->BuildingAnim[9].X;
+            at.Y = pos->Y + Type->BuildingAnim[9].Y;
             BA4MatrixTemp product;
             BA4MatrixTemp defaults;
-            vf_273(&Type->unknown_244[1], 0, -1, &Type->unknown_244[0], clip, &at,
+            vf_273(&Type->BarrelVoxel, 0, -1, &Type->VoxelMainCache, clip, &at,
                    FUN_005AF980(&product, defaults.FUN_00754BE0(), &matrix),
-                   DAT_0087F7E8.FUN_005657A0(cell)->unknown_10A, color, 0);
+                   BA4At(cell)->Intensity_Normal, color, 0);
             if (!visible && child) {
                 if (DAT_00818CB4) {
-                    child->unknown_19D = 0;
+                    child->Invisible = 0;
                 }
-                child->vf_65(DAT_00886FA0, 1, 0);
-                child->unknown_19D = 1;
+                child->vf_65(&DAT_00886FA0, 1, 0);
+                child->Invisible = 1;
             }
         }
     }

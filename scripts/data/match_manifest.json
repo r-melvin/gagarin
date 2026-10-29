@@ -48828,11 +48828,11 @@
  {
   "tu": "match/economy/house_building/building_a4_vf_313.cpp",
   "addr": "0x43DA80",
-  "sym": "?vf_313@BA4Building@@UAEXPAUHBPoint2D@@H@Z",
+  "sym": "?vf_313@BuildingClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0xd22",
   "name": "BuildingClass::vf_313",
   "status": "partial",
-  "pct": 2.4
+  "pct": 3.4
  },
  {
   "tu": "match/economy/house_building/building_a3_body_43e940.cpp",
@@ -48855,20 +48855,20 @@
  {
   "tu": "match/economy/house_building/building_a4_vf_73.cpp",
   "addr": "0x43F180",
-  "sym": "?vf_73@BA4Building@@UAE_NH@Z",
+  "sym": "?vf_73@BuildingClass@@UAE_NH@Z",
   "len": "0x98c",
   "name": "BuildingClass::vf_73",
   "status": "partial",
-  "pct": 8.6
+  "pct": 7.2
  },
  {
   "tu": "match/economy/house_building/building_a4_vf_54.cpp",
   "addr": "0x440580",
-  "sym": "?vf_54@BA4Building@@UAE_NPAUHBCoordPod@@H@Z",
+  "sym": "?vf_54@BuildingClass@@UAE_NABUCoordStruct@@H@Z",
   "len": "0x1069",
   "name": "BuildingClass::vf_54",
   "status": "partial",
-  "pct": 5.6
+  "pct": 8.0
  },
  {
   "tu": "match/economy/house_building/building_a3_body_4415f0.cpp",
@@ -48947,11 +48947,11 @@
  {
   "tu": "match/economy/house_building/building_a4_vf_53.cpp",
   "addr": "0x445880",
-  "sym": "?vf_53@BA4Building@@UAE_NXZ",
+  "sym": "?vf_53@BuildingClass@@UAE_NXZ",
   "len": "0x5c6",
   "name": "BuildingClass::vf_53",
   "status": "partial",
-  "pct": 39.1
+  "pct": 38.5
  },
  {
   "tu": "match/economy/tu038_building_class.cpp",
@@ -49057,11 +49057,11 @@
  {
   "tu": "match/economy/house_building/building_a4_vf_245.cpp",
   "addr": "0x448260",
-  "sym": "?vf_245@BA4Building@@UAE_NPAVBA4House@@_N@Z",
+  "sym": "?vf_245@BuildingClass@@UAE_NPAVHouseClass@@_N@Z",
   "len": "0x11a6",
   "name": "BuildingClass::vf_245",
   "status": "partial",
-  "pct": 3.7
+  "pct": 10.7
  },
  {
   "tu": "match/economy/tu038_building_class.cpp",
@@ -49120,11 +49120,11 @@
  {
   "tu": "match/economy/house_building/building_a4_vf_132.cpp",
   "addr": "0x44ACF0",
-  "sym": "?vf_132@BA4Building@@UAEHXZ",
+  "sym": "?vf_132@BuildingClass@@UAEHXZ",
   "len": "0xa35",
   "name": "BuildingClass::vf_132",
   "status": "partial",
-  "pct": 8.3
+  "pct": 7.2
  },
  {
   "tu": "match/economy/tu038_building_class.cpp",
@@ -49223,7 +49223,7 @@
  {
   "tu": "match/economy/house_building/building_a2_state.cpp",
   "addr": "0x44E440",
-  "sym": "?vf_149@BA2Building@@UAEHXZ",
+  "sym": "?vf_149@BuildingClass@@UAEHXZ",
   "len": "0x355",
   "name": "BuildingClass::vf_149",
   "status": "partial",
@@ -106228,7 +106228,7 @@
  {
   "tu": "match/movement/foot_class_small_slots.cpp",
   "addr": "0x4DAF10",
-  "sym": "?vf_324@FootClass@@UAEXHHHHHPAUPoint2D@@PAUMatrix3D@@HHH@Z",
+  "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAUIndexClass@@PAURectangleStruct@@PAUPoint2D@@PAUMatrix3D@@HHH@Z",
   "len": "0xa9",
   "name": "FootClass::vf_324",
   "status": "partial",

@@ -9,56 +9,52 @@
 #include "../../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x448260
-bool BA4Building::vf_245(BA4House* newOwner, bool announce)
+bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
 {
     int i;
 
-    if (newOwner != Owner) {        if (unknown_38 && !Type->unknown_157B) {
-            unknown_38->FUN_004389B0();
+    if (newOwner != Owner) {        if (AttachedBomb && !Type->bools_1570[11]) {
+            static_cast<BA4Op38*>(AttachedBomb)->FUN_004389B0();
         }
-        if (Type->unknown_16C7) {
-            newOwner->unknown_56F8 = 1;
+        if (Type->bools_16A4[35]) {
+            newOwner->HasCloakingRanges = 1;
         }
-        if (Owner->unknown_34->unknown_1A6 && Type->unknown_1558) {
-            newOwner->FUN_004F9950(Type->unknown_1558);
-            HBCoordPod tmp;
-            tmp.X = DAT_00A8ED84;
-            tmp.Z = Type->unknown_1560;
-            unknown_6D0 = tmp;
+        if (Owner->Type->MultiplayPassive && Type->ProduceCashStartup) {
+            newOwner->GiveMoney(Type->ProduceCashStartup);
+            CashProductionTimer = CDTimerClass(Type->ProduceCashDelay);
         }
-        unsigned int bit = 1 << (newOwner->unknown_34->unknown_B8);
-        if ((bit & unknown_210) != 0) {
-            unknown_210 = unknown_210 - bit;
-            if (Type->unknown_16A4) {
-                Owner->unknown_54E4 = 0;
-                int count = Owner->unknown_68.Count;
+        unsigned int bit = 1 << (newOwner->Type->ArrayIndex2);
+        if ((bit & DisplayProductionTo) != 0) {
+            DisplayProductionTo = DisplayProductionTo - bit;
+            if (Type->bools_16A4) {
+                Owner->RadarVisibleTo = 0;
+                int count = Owner->Buildings.Count;
             for (i = 0; i < count; i++) {
-                    BA4Building* b = Owner->unknown_68.Items[i];
-                    if (b && !b->unknown_81 && b->Type->unknown_16A4) {
-                        Owner->unknown_54E4 |= b->unknown_210;
+                    BuildingClass* b = Owner->Buildings.Items[i];
+                    if (b && !b->InLimbo && b->Type->bools_16A4) {
+                        Owner->RadarVisibleTo |= b->DisplayProductionTo;
                     }
                 }
                 DAT_0087F7E8.FUN_004F42F0(2);
             }
         }
-        unknown_3D3 = 0;
-        if (Type->unknown_16BE) {
+        IsPrimaryFactory = 0;
+        if (Type->bools_16A4[26]) {
             FUN_00452A40(0);
         }
-        if (Owner->FUN_0050B6F0() || newOwner->FUN_0050B6F0()) {
-            if (!newOwner->unknown_34->unknown_1A6 && announce) {
-                if (Type->unknown_1552) {
+        if (Owner->IsControlledByCurrentPlayer() || newOwner->IsControlledByCurrentPlayer()) {
+            if (!newOwner->Type->MultiplayPassive && announce) {
+                if (Type->bools_154B[7]) {
                     if (Owner != newOwner) {
-                        if (Owner->FUN_0050B6F0()) {
+                        if (Owner->IsControlledByCurrentPlayer()) {
                             FUN_00752700(s_EVA_TechBuildingLost_00818FC4, -1, -1);
                         }
-                        if (newOwner->FUN_0050B6F0() && newOwner->FUN_0050B6F0() && Type->unknown_1554 != -1) {
-                            FUN_00752480(Type->unknown_1554, -1, -1);
+                        if (newOwner->IsControlledByCurrentPlayer() && newOwner->IsControlledByCurrentPlayer() && Type->CaptureEvaEvent != -1) {
+                            FUN_00752480(Type->CaptureEvaEvent, -1, -1);
                         }
                     }
                 } else {
-                    HBCell scratch;
-                    if (FUN_0065FA70(10, *vf_110(&scratch))) {
+                    if (FUN_0065FA70(10, vf_110())) {
                         FUN_00752700(s_EVA_BuildingCaptured_00818FAC, -1, -1);
                     }
                 }
@@ -66,47 +62,45 @@ bool BA4Building::vf_245(BA4House* newOwner, bool announce)
             DAT_00880CF4 = 1;
             DAT_0087F7E8.FUN_004F42F0(0);
         }
-        unknown_80 = 1;
-        unknown_6CC = 1;
-        if (Type->unknown_1552) {
-            unknown_6EA = 1;
-            if (unknown_614) {
-                unknown_614->FUN_00554A60(0);
+        NeedsRedraw = 1;
+        HasEngineer = 1;
+        if (Type->bools_154B[7]) {
+            StuffEnabled = 1;
+            if (LightSource) {
+                LightSource->Activate(0);
             }
-            if (Type->unknown_16BE) {
-                FUN_004533A0(0);
+            if (Type->bools_16A4[26]) {
+                CreateEndPost(false);
             }
             for (int k = 0; k < 21; k++) {
-                if (Type->unknown_F4C[k].unknown_40 && Anims[k]) {
+                if (Type->BuildingAnim[k].Powered && Anims[k]) {
                     Anims[k]->FUN_00425270();
                 }
             }
         }
-        if (Session_00A8B238.GameMode == 4 && !vf_33()->unknown_C9F) {
-            newOwner->unknown_4368.FUN_00749020(Type->unknown_DF8);
+        if (Session_00A8B238.GameMode == 4 && !vf_33()->bools_C8C[19]) {
+            newOwner->CapturedBuildings.IncrementUnitTotal(Type->ArrayIndex);
         }
 
         BA4HeldList held;
-        for (i = 0; i < unknown_E8; i++) {
-            BA4Object* object = FUN_0065AD30(i);
+        for (i = 0; i < RadioLinks.Capacity; i++) {
+            TechnoClass* object = FUN_0065AD30(i);
             if (object) {
-                if (!(object->unknown_14 & 4)) {
+                if (!object->Flags.IsFoot) {
                     object = 0;
                 } else if (vf_158(0x13, object) == 1) {
                     bool inRange = false;
-                    if (!Type->unknown_16BD) {
-                        HBCoordPod scratchA;
-                        HBCoordPod scratchB;
-                        HBCoordPod* a = vf_42(&scratchA, object);
-                        HBCoordPod* b = object->vf_18(&scratchB);
-                        HBCoordPod scratchC;
-                        HBCoordPod diff = *scratchC.FUN_0041C230(b->X - a->X, b->Y - a->Y, b->Z - a->Z);
+                    if (!Type->bools_16A4[25]) {
+                        CoordStruct a = vf_42(object);
+                        CoordStruct b = object->vf_18();
+                        CoordStruct scratchC;
+                        CoordStruct diff = *scratchC.FUN_0041C230(b.X - a.X, b.Y - a.Y, b.Z - a.Z);
                         inRange = diff.FUN_0041C380() < 0x40;
                     } else {
                         inRange = true;
                     }
                     if (inRange) {
-                        unsigned char flag = object->unknown_418;
+                        unsigned char flag = object->IsTether;
                         object->vf_245(newOwner, 1);
                         BA4Held* entry = new BA4Held(object, flag);
                         held.AddItem(entry);
@@ -120,215 +114,215 @@ bool BA4Building::vf_245(BA4House* newOwner, bool announce)
                 vf_158(3, object);
             }
         }
-        if (unknown_524) {
-            unknown_524->FUN_004C9FF0();
-            if (unknown_524) {
-                unknown_524->vf_8(1);
+        if (Factory) {
+            Factory->AbandonProduction();
+            if (Factory) {
+                delete Factory;
             }
-            unknown_524 = 0;
+            Factory = 0;
         }
         Owner->FUN_004FF980(this);
-        BA4House* oldOwner = Owner;
+        HouseClass* oldOwner = Owner;
         BA4TargetRef target;
         target.FUN_006E6AB0(this);
-        unknown_6E3 = 1;
+        HasBeenCaptured = 1;
 
-        for (i = 0; i < DAT_008871E0->unknown_8BC; i++) {
-            if (DAT_008871E0->unknown_8B0[i] == Type) {
-                oldOwner->unknown_50.RemoveItem(this);
+        for (i = 0; i < RulesInstance->list_08AC.Count; i++) {
+            if (RulesInstance->list_08AC.Items[i] == Type) {
+                oldOwner->ConYards.RemoveItem(this);
                 break;
             }
         }
-        if (Type->unknown_16A9) {
-            oldOwner->unknown_80.RemoveItem(this);
+        if (Type->bools_16A4[5]) {
+            oldOwner->UnitRepairStations.RemoveItem(this);
         }
-        if (Type->unknown_16AD) {
-            oldOwner->unknown_98.RemoveItem(this);
+        if (Type->bools_16A4[9]) {
+            oldOwner->Grinders.RemoveItem(this);
         }
-        if (Type->unknown_16AE || Type->unknown_16AF) {
-            oldOwner->unknown_B0.RemoveItem(this);
+        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+            oldOwner->Absorbers.RemoveItem(this);
         }
-        if (Type->unknown_16AB) {
-            oldOwner->unknown_C8.RemoveItem(this);
+        if (Type->bools_16A4[7]) {
+            oldOwner->Bunkers.RemoveItem(this);
         }
-        if (Type->unknown_157B && Type->unknown_634 > -1) {
-            oldOwner->unknown_E0.RemoveItem(this);
+        if (Type->bools_1570[11] && Type->TechLevel > -1) {
+            oldOwner->Occupiables.RemoveItem(this);
         }
-        if (Type->unknown_16AC) {
-            oldOwner->unknown_F8.RemoveItem(this);
+        if (Type->bools_16A4[8]) {
+            oldOwner->CloningVats.RemoveItem(this);
         }
-        if (Type->unknown_16B0) {
-            oldOwner->unknown_110.RemoveItem(this);
+        if (Type->bools_16A4[12]) {
+            oldOwner->SecretLabs.RemoveItem(this);
         }
-        if (Type->unknown_170C > 0) {
-            oldOwner->unknown_128.RemoveItem(this);
+        if (Type->PsychicDetectionRadius > 0) {
+            oldOwner->PsychicDetectionBuildings.RemoveItem(this);
         }
-        if (Type->unknown_16CD) {
-            oldOwner->unknown_140.RemoveItem(this);
+        if (Type->bools_16A4[41]) {
+            oldOwner->FactoryPlants.RemoveItem(this);
             oldOwner->FUN_0050BF60();
         }
-        oldOwner->unknown_68.RemoveItem(this);
-        if (Type->unknown_16CC) {
-            oldOwner->unknown_538C--;
+        oldOwner->Buildings.RemoveItem(this);
+        if (Type->bools_16A4[40]) {
+            oldOwner->NumOrePurifiers--;
         }
-        if (Type->unknown_1564 && unknown_6E4) {
-            Owner->unknown_164 -= Type->unknown_1564;
-            if (Owner->unknown_164 < 0) {
-                Owner->unknown_164 = 0;
+        if (Type->InfantryGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->InfantrySelfHeal -= Type->InfantryGainSelfHeal;
+            if (Owner->InfantrySelfHeal < 0) {
+                Owner->InfantrySelfHeal = 0;
             }
         }
-        if (Type->unknown_1568 && unknown_6E4) {
-            Owner->unknown_168 -= Type->unknown_1568;
-            if (Owner->unknown_168 < 0) {
-                Owner->unknown_168 = 0;
+        if (Type->UnitsGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->UnitsSelfHeal -= Type->UnitsGainSelfHeal;
+            if (Owner->UnitsSelfHeal < 0) {
+                Owner->UnitsSelfHeal = 0;
             }
         }
-        if (Type->unknown_16CB) {
-            oldOwner->unknown_2D4 -= Type->unknown_1780;
+        if (Type->bools_16A4[39]) {
+            oldOwner->AirportDocks -= Type->NumberOfDocks;
         }
-        if (Type->unknown_16C7) {
-            unknown_6EB = 0xFF;
-            if (!unknown_6EC) {
-                unknown_6EC = Type->unknown_1707;
+        if (Type->bools_16A4[35]) {
+            HasCloakingData = 0xFF;
+            if (!CloakRadius) {
+                CloakRadius = Type->CloakRadiusInCells;
             }
-            unknown_80 = 1;
-            unknown_6EC = 1;
+            NeedsRedraw = 1;
+            CloakRadius = 1;
             vf_260(1);
         }
-        if (Type->unknown_CD1) {
+        if (Type->GapGenerator) {
             vf_262();
         }
         vf_291(0, 0, 0, 0);
-        FUN_007014A0(newOwner, 1);
-        if (Type->unknown_16C7 && vf_212() && Type->unknown_16C7) {
-            unknown_6EB = 1;
-            if (unknown_6EC == Type->unknown_1707) {
-                unknown_6EC = 0;
+        TechnoClass::vf_245(newOwner, true);
+        if (Type->bools_16A4[35] && vf_212() && Type->bools_16A4[35]) {
+            HasCloakingData = 1;
+            if (CloakRadius == Type->CloakRadiusInCells) {
+                CloakRadius = 0;
             }
-            unknown_80 = 1;
+            NeedsRedraw = 1;
         }
-        if (Type->unknown_CD1 && vf_212()) {
+        if (Type->GapGenerator && vf_212()) {
             vf_261();
         }
         FUN_00448070(0);
-        oldOwner->unknown_54E0 = this;
+        oldOwner->ToCapture = this;
         oldOwner->FUN_004FD150();
         Owner->FUN_004FD150();
-        if (Owner->unknown_54E0 == this) {
-            Owner->unknown_54E0 = 0;
+        if (Owner->ToCapture == this) {
+            Owner->ToCapture = 0;
         }
-        if (oldOwner->FUN_0050B6F0() && Type->unknown_16B9) {
+        if (oldOwner->FUN_0050B6F0() && Type->bools_16A4[21]) {
             DAT_0088098C = 0;
             DAT_00880990 = 0;
             DAT_00880994 = -1;
             DAT_0087F7E8.FUN_004A8BF0(0);
         }
         Owner->FUN_004FFA50(this);
-        unknown_6E8 = 0;
+        IsBeingRepaired = 0;
         vf_311(1);
-        if (Type->unknown_16BE && !DAT_00A8E7AC) {
-            if (unknown_90 && !unknown_81) {
+        if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+            if (IsAlive && !InLimbo) {
                 FUN_00452DC0(0);
                 FUN_00452DC0(2);
                 FUN_00452DC0(4);
                 FUN_00452DC0(6);
-                FUN_004533A0(1);
+                CreateEndPost(true);
                 if (DAT_00A8E7AC) {
                     goto afterFacing;
                 }
             }
-            if (Type->unknown_16BE) {
-                unknown_618 = 0;
+            if (Type->bools_16A4[26]) {
+                LaserFenceFrame = 0;
             }
         }
     afterFacing:
-        if (Owner->FUN_0050B6F0()) {
+        if (Owner->IsControlledByCurrentPlayer()) {
             vf_290(0, 0, 0, 0, 0);
             DAT_0087F7E8.FUN_004F42F0(1);
         }
-        bit = 1 << (newOwner->unknown_34->unknown_B8);
-        if ((bit & unknown_210) != 0) {
-            unknown_210 = ~bit & unknown_210;
+        bit = 1 << (newOwner->Type->ArrayIndex2);
+        if ((bit & DisplayProductionTo) != 0) {
+            DisplayProductionTo = ~bit & DisplayProductionTo;
         }
-        int value = vf_121();
-        int angle = vf_281(vf_111()->unknown_10A);
-        if (vf_88() || (unknown_294 && unknown_294->unknown_50 == FUN_00459F40())) {
+        void* value = vf_121();
+        int angle = vf_281(vf_111()->Intensity_Normal);
+        if (vf_88() || (Airstrike && Airstrike->Target == FUN_00459F40())) {
             angle = FUN_0070E360(angle);
         }
-        unknown_700 = (short)angle;
+        LightTint = (short)angle;
         FUN_00451F60(value, angle & 0xFFFF);
-        FUN_00452170(unknown_6ED);
+        FUN_00452170(Translucency);
 
-        for (i = 0; i < DAT_008871E0->unknown_8BC; i++) {
-            if (DAT_008871E0->unknown_8B0[i] == Type) {
-                newOwner->unknown_50.AddItem(this);
+        for (i = 0; i < RulesInstance->list_08AC.Count; i++) {
+            if (RulesInstance->list_08AC.Items[i] == Type) {
+                newOwner->ConYards.AddItem(this);
                 break;
             }
         }
-        if (Type->unknown_16A9) {
-            newOwner->unknown_80.AddItem(this);
+        if (Type->bools_16A4[5]) {
+            newOwner->UnitRepairStations.AddItem(this);
         }
-        if (Type->unknown_16AD) {
-            newOwner->unknown_98.AddItem(this);
+        if (Type->bools_16A4[9]) {
+            newOwner->Grinders.AddItem(this);
         }
-        if (Type->unknown_16AE || Type->unknown_16AF) {
-            newOwner->unknown_B0.AddItem(this);
+        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+            newOwner->Absorbers.AddItem(this);
         }
-        if (Type->unknown_16AB) {
-            newOwner->unknown_C8.AddItem(this);
+        if (Type->bools_16A4[7]) {
+            newOwner->Bunkers.AddItem(this);
         }
-        if (Type->unknown_157B && Type->unknown_634 > -1) {
-            newOwner->unknown_E0.AddItem(this);
+        if (Type->bools_1570[11] && Type->TechLevel > -1) {
+            newOwner->Occupiables.AddItem(this);
         }
-        if (Type->unknown_16AC) {
-            newOwner->unknown_F8.AddItem(this);
+        if (Type->bools_16A4[8]) {
+            newOwner->CloningVats.AddItem(this);
         }
-        if (Type->unknown_16B0) {
-            newOwner->unknown_110.AddItem(this);
+        if (Type->bools_16A4[12]) {
+            newOwner->SecretLabs.AddItem(this);
         }
-        if (Type->unknown_170C > 0) {
-            newOwner->unknown_128.AddItem(this);
+        if (Type->PsychicDetectionRadius > 0) {
+            newOwner->PsychicDetectionBuildings.AddItem(this);
         }
-        if (Type->unknown_16CD) {
-            newOwner->unknown_140.AddItem(this);
-            newOwner->FUN_0050BF60();
+        if (Type->bools_16A4[41]) {
+            newOwner->FactoryPlants.AddItem(this);
+            newOwner->CalculateCostMultipliers();
         }
-        newOwner->unknown_68.AddItem(this);
-        if (Type->unknown_16CC) {
-            Owner->unknown_538C++;
+        newOwner->Buildings.AddItem(this);
+        if (Type->bools_16A4[40]) {
+            Owner->NumOrePurifiers++;
         }
-        if (Type->unknown_1564) {
-            Owner->unknown_164 += Type->unknown_1564;
+        if (Type->InfantryGainSelfHeal) {
+            Owner->InfantrySelfHeal += Type->InfantryGainSelfHeal;
         }
-        if (Type->unknown_1568) {
-            Owner->unknown_168 += Type->unknown_1568;
+        if (Type->UnitsGainSelfHeal) {
+            Owner->UnitsSelfHeal += Type->UnitsGainSelfHeal;
         }
-        if (Type->unknown_16CB) {
-            Owner->unknown_2D4 += Type->unknown_1780;
+        if (Type->bools_16A4[39]) {
+            Owner->AirportDocks += Type->NumberOfDocks;
         }
-        if (Type->unknown_EB8) {
-            oldOwner->FUN_00509140(Type->unknown_EB8, Type->unknown_CCE, 0);
-            newOwner->FUN_00509140(Type->unknown_EB8, Type->unknown_CCE, 0);
+        if (Type->Factory) {
+            oldOwner->FUN_00509140(Type->Factory, Type->Naval, 0);
+            newOwner->Update_FactoriesQueues(Type->Factory, Type->Naval, 0);
         }
         for (i = 0; i < held.Count; i++) {
             vf_158(2, held.Items[i]->Object);
             if (held.Items[i]->Flag) {
-                unknown_418 = 1;
-                held.Items[i]->Object->unknown_418 = 1;
+                IsTether = 1;
+                held.Items[i]->Object->IsTether = 1;
             }
         }
-        if (Session_00A8B238.GameMode && !newOwner->FUN_0050B730() && unknown_14C != newOwner && !unknown_14C->unknown_34->unknown_1A6) {
-            while (unknown_702 > 0) {
-                int r = Upgrades[unknown_702]->vf_46(Owner, 1);
-                Owner->FUN_004F9950(r);
+        if (Session_00A8B238.GameMode && !newOwner->IsControlledByHuman() && InitialOwner != newOwner && !InitialOwner->Type->MultiplayPassive) {
+            while (UpgradeLevel > 0) {
+                int r = Upgrades[UpgradeLevel]->vf_46(Owner, 1);
+                Owner->GiveMoney(r);
                 FUN_00451690();
-                Owner->unknown_5778 = 1;
-                Owner->unknown_5779 = 1;
+                Owner->RecheckPower = 1;
+                Owner->RecheckRadar = 1;
             }
             vf_104(1);
         }
-        oldOwner->unknown_1FC = 1;
-        newOwner->unknown_1FC = 1;
+        oldOwner->RecheckTechTree = 1;
+        newOwner->RecheckTechTree = 1;
         return true;
     }
     return false;

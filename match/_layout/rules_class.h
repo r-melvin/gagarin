@@ -294,7 +294,7 @@ struct RulesClass
     TypeList<int> list_0474;  // +0x0474
     int IonCannonDamage;   // +0x490
     int RailgunDamageRadius;   // +0x494
-    int PrismType;   // +0x498
+    BuildingTypeClass* PrismType;   // +0x498
     int unknown_49C;   // +0x49C
     int PrismSupportMax;   // +0x4A0
     int PrismSupportDelay;   // +0x4A4

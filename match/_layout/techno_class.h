@@ -101,6 +101,12 @@ struct TransitionTimer
     bool FUN_004A51B0();
     // FUNCTION: GAMEMD 0x4A51D0 (decl; reloc)
     bool FUN_004A51D0();
+    // FUNCTION: GAMEMD 0x4A52F0 (decl; reloc) -- how far the transition has progressed, 0..1.
+    double FUN_004A52F0();
+    // FUNCTION: GAMEMD 0x4A51F0 (decl; reloc) -- starts the transition with a rate (double by value)
+    void FUN_004A51F0(double rate);
+    // FUNCTION: GAMEMD 0x4A5290 (decl; reloc) -- no stack arguments.
+    void FUN_004A5290();
     // FUNCTION: GAMEMD 0x4A5240 (decl; reloc) -- starts the transition with a duration (double by value)
     void FUN_004A5240(double value);
     // FUNCTION: GAMEMD 0x4A52F0 (decl; reloc) -- fraction of the transition done
@@ -152,6 +158,10 @@ GG_STATIC_ASSERT(sizeof(RecoilData)                   == 0x20);
 #endif
 
 class PlanningTokenClass;
+class AirstrikeClass;
+struct VoxelStruct;
+struct IndexClass;
+struct Matrix3D;
 struct WeaponStruct;
 struct CellStruct;
 class CellClass;
@@ -344,7 +354,7 @@ public:
     virtual bool vf_237(AbstractClass* target);                                 // 237 0x6F78D0
     virtual int vf_238();                                          // 238 0x4C9150
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
-    virtual bool vf_240(AbstractClass* target, int a2, int a3);   // 240 0x6FC0B0; BuildingClass 0x44ACF0 passes its Target
+    virtual char vf_240(AbstractClass* target, int a2, int a3);   // 240 0x6FC0B0: returns a result code 0..10 in AL; BuildingClass 0x44ACF0 passes its Target
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x6F8DF0; FootClass 0x4D9920 tests the threat bits and the result pointer
     virtual void vf_242(AbstractClass* target);                                  // 242 0x6FCDB0
     virtual int vf_243(AbstractClass* target, int a2);            // 243 0x6FDD50; BuildingClass 0x44ACF0 passes its Target
@@ -378,7 +388,7 @@ public:
     virtual void vf_270(int a1, int a2);                           // 270 0x459E60
     virtual int vf_271(int a1);                                    // 271 0x70ED80
     virtual bool vf_272(ObjectClass* a1);                                 // 272 0x70EE30
-    virtual void vf_273(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10); // 273 0x706640
+    virtual void vf_273(VoxelStruct* voxel, int a2, int tint, IndexClass* cache, RectangleStruct* clip, Point2D* point, Matrix3D* matrix, int a8, int a9, int a10); // 273 0x706640
     virtual void vf_274(int a1, int a2);                           // 274 0x6F60C0
     virtual void vf_275(int a1, int a2, int a3);                   // 275 0x6F64A0
     virtual void vf_276(int a1, int a2, int a3);                   // 276 0x709A90
@@ -432,7 +442,7 @@ public:
     int                CurrentGattlingStage;     // +0x140
     int                GattlingValue;            // +0x144
     int                TurretAnimFrame;          // +0x148
-    void*              InitialOwner;             // +0x14C HouseClass* (set late = param_1)
+    HouseClass*        InitialOwner;             // +0x14C (set late = param_1)
     VeterancyStruct    Veterancy;                // +0x150 (4; ctor FUN_0074FF30)
     unsigned int       align_154;                // +0x154 (aligns the double)
     double             ArmorMultiplier;          // +0x158 (ctor = 1.0)
@@ -489,7 +499,7 @@ public:
     unsigned int       unknown_280;              // +0x280
     int                ChronoLockRemaining;      // +0x284
     CoordStruct        ChronoDestCoords;         // +0x288 (0xC)
-    void*              Airstrike;                // +0x294 AirstrikeClass*
+    AirstrikeClass*    Airstrike;                // +0x294
     unsigned char      Berzerk;                  // +0x298 (bool)
     unsigned char      align_299[3];             // +0x299
     int                BerzerkDurationLeft;      // +0x29C

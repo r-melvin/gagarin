@@ -12,6 +12,8 @@
 class CellClass;
 class HouseClass;
 class ObjectClass;
+class BuildingClass;
+struct Point2D;
 struct CoordStruct;
 struct CellStruct;
 struct Triple_00747EB0;
@@ -121,6 +123,14 @@ struct Map_0087F7E8
     bool IsLocationShrouded(const CoordStruct& coord) const;
     // FUNCTION: GAMEMD 0x578540 (decl; reloc) -- whether a cell is inside the usable area.
     bool FUN_00578540(CellClass* cell, bool flag);
+    // FUNCTION: GAMEMD 0x5687F0 (decl; reloc) -- take a building's footprint off the cell map.
+    void FUN_005687F0(CellStruct* cell, BuildingClass* building);
+    // FUNCTION: GAMEMD 0x5683C0 (decl; reloc) -- put a building's footprint on the cell map.
+    void FUN_005683C0(CellStruct* cell, BuildingClass* building);
+    // FUNCTION: GAMEMD 0x5678E0 (decl; reloc) -- reveal the map around a coordinate (five one-byte flags).
+    void FUN_005678E0(const CoordStruct* where, int sight, HouseClass* house, char a, char b, char c, char d, char e);
+    // FUNCTION: GAMEMD 0x4AA290 (decl; reloc) -- the building on a cell, with the screen point of the hit.
+    BuildingClass* FUN_004AA290(CellStruct* cell, Point2D* out);
 };
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.

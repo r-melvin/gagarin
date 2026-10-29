@@ -11,52 +11,50 @@
 #include "building_a4_views.h"
 
 // FUNCTION: GAMEMD 0x44ACF0
-int BA4Building::vf_132()
+int BuildingClass::vf_132()
 {
-    if (Type->unknown_16B8) {
-        switch (unknown_BC) {
+    if (Type->bools_16A4[20]) {
+        switch (MissionStatus) {
         case 0:
             {
-                if (Type->unknown_1573 && Type->unknown_EE4 > 0 && Owner->FUN_004FCE30() < 1.0) {
+                if (Type->bools_1570[3] && Type->PowerDrain > 0 && Owner->GetPowerPercentage() < 1.0) {
                     return 1;
                 }
-                BA4Object* techno = BA4As(Target, 2);
-                if (!Target || !techno || !techno->vf_116()) {
+                ObjectClass* techno = BA4As<ObjectClass>(Target, 2);
+                if (!Target || !techno || !techno->FUN_005F5F30()) {
                     vf_242(0);
-                    unknown_BC = 0;
+                    MissionStatus = 0;
                     vf_122(5, 0);
                     vf_123();
                     return 1;
                 }
-                if (Facing.FUN_004C9480()) {
+                if (PrimaryFacing.FUN_004C9480()) {
                     return 1;
                 }
-                HBDir bufferA;
-                HBDir* wanted = vf_314(&bufferA, Target);
-                if (abs((short)0x2000) < abs((short)(Facing.FUN_004C93D0().Raw - wanted->Raw))) {
-                    HBDir bufferC;
-                    Facing.FUN_004C9220(vf_314(&bufferC, Target));
+                DirStruct wanted = vf_314(Target);
+                if (abs((short)0x2000) < abs((short)(PrimaryFacing.FUN_004C93D0().Raw - wanted.Raw))) {
+                    PrimaryFacing.SetDesired(vf_314(Target));
                     return 1;
                 }
-                unknown_BC = 1;
+                MissionStatus = 1;
                 return 1;
             }
         case 1:
             {
-                BA4Object* techno = BA4As(Target, 2);
-                if (!Target || !techno || !techno->vf_116()) {
+                ObjectClass* techno = BA4As<ObjectClass>(Target, 2);
+                if (!Target || !techno || !techno->FUN_005F5F30()) {
                     vf_242(0);
-                    unknown_BC = 0;
+                    MissionStatus = 0;
                     return 1;
                 }
                 int result = vf_240(Target, 0, 1);
                 if (result == 5 || result == 6 || result == 8) {
                     vf_242(0);
-                    unknown_BC = 0;
+                    MissionStatus = 0;
                     return 1;
                 }
                 if (result == 2) {
-                    unknown_BC = 0;
+                    MissionStatus = 0;
                     return 1;
                 }
                 if (result != 0) {
@@ -64,18 +62,18 @@ int BA4Building::vf_132()
                 }
                 vf_243(Target, 0);
                 vf_243(Target, 1);
-                unknown_BC = 0;
+                MissionStatus = 0;
                 return 1;
             }
         default:
-            int base = (int)(FUN_005B3A00()->unknown_18 * 900.0);
+            int base = (int)(FUN_005B3A00()->AARate * 900.0);
             return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
         }
     }
 
     if (!Target) {
         vf_242(0);
-        unknown_664 = 0;
+        SupportingPrisms = 0;
         if (vf_268()) {
             FUN_00705D60();
         }
@@ -88,53 +86,41 @@ int BA4Building::vf_132()
     }
 
     int direction = vf_185(Target);
-    unknown_6DD = 1;
+    IsReadyToCommence = 1;
     int result = vf_240(Target, direction, 1);
     if (result == 2) {
-        if (vf_255() && Type->unknown_16C5) {
-            HBDir buffer;
-            HBDir wanted = *vf_314(&buffer, Target);
-            int turn = Type->unknown_71C;
-            if (!turn || !(abs((short)(turn << 8)) < abs((short)(Facing.FUN_004C93D0().Raw - wanted.Raw)))) {
-                Facing.FUN_004C9300(&wanted);
+        if (vf_255() && Type->bools_16A4[33]) {
+            DirStruct wanted = vf_314(Target);
+            int turn = Type->ROT;
+            if (!turn || !(abs((short)(turn << 8)) < abs((short)(PrimaryFacing.FUN_004C93D0().Raw - wanted.Raw)))) {
+                PrimaryFacing.FUN_004C9300(&wanted);
                 result = vf_240(Target, direction, 1);
             }
         }
     }
     switch (result) {
     case 0:
-        if (unknown_702 != 0 && Upgrades[1] != 0) {
+        if (UpgradeLevel != 0 && Upgrades[1] != 0) {
             if (Upgrades[1]->FUN_00712130()) {
                 vf_243(Target, 0);
                 vf_243(Target, 1);
             }
-        } else if (Type == DAT_008871E0->unknown_498) {
-            BA4Building* best = 0;
+        } else if (Type == RulesInstance->PrismType) {
+            BuildingClass* best = 0;
             int bestDistance = 0x7FFFFFFF;
-            HBCoordPod scratch;
-            HBCoordPod here = *vf_43(&scratch);
-            if (unknown_664 < DAT_008871E0->unknown_4A0) {
-                int count = Owner->unknown_68.Count;
+            CoordStruct here = vf_43();
+            if (SupportingPrisms < RulesInstance->PrismSupportMax) {
+                int count = Owner->Buildings.Count;
                 for (int i = 0; i < count; i++) {
-                    BA4Building* candidate = Owner->unknown_68.Items[i];
-                    if (candidate && candidate->unknown_90 && candidate->Type == DAT_008871E0->unknown_498) {
-                        int started = candidate->unknown_2EC;
-                        int length = candidate->unknown_2F4;
-                        if (started != -1) {
-                            int elapsed = DAT_00A8ED84 - started;
-                            if (elapsed < length) {
-                                length = length - elapsed;
-                            } else {
-                                length = 0;
-                            }
-                        }
-                        if (length == 0 && candidate->unknown_714 == 0 && !candidate->FUN_0070FEC0()
+                    BuildingClass* candidate = Owner->Buildings.Items[i];
+                    if (candidate && candidate->IsAlive && candidate->Type == RulesInstance->PrismType) {
+                        int length = candidate->RearmTimer.GetTimeLeft();
+                        if (length == 0 && candidate->DelayBeforeFiring == 0 && !candidate->IsBeingDrained()
                             && candidate->vf_97() != 1 && candidate != this) {
-                            HBCoordPod scratchCandidate;
-                            HBCoordPod* there = candidate->vf_43(&scratchCandidate);
-                            double dx = here.X - there->X;
-                            double dy = there->Y - here.Y;
-                            float dz = here.Z - there->Z;
+                            CoordStruct there = candidate->vf_43();
+                            double dx = here.X - there.X;
+                            double dy = there.Y - here.Y;
+                            float dz = here.Z - there.Z;
                             int distance = (int)FUN_004CAC40(dx * dx + dz * dz + dy * dy);
                             if (distance <= vf_90(1)) {
                                 if (!best || distance < bestDistance) {
@@ -146,76 +132,75 @@ int BA4Building::vf_132()
                     }
                 }
                 if (best) {
-                    unknown_664++;
-                    HBCoordPod zero;
+                    SupportingPrisms++;
+                    CoordStruct zero;
                     zero.X = 0;
                     zero.Y = 0;
                     zero.Z = 0;
-                    HBCoordPod scratchTarget;
-                    HBCoordPod* where = vf_44(&scratchTarget, 0, zero);
-                    best->unknown_714 = best->Type->unknown_16EC;
-                    best->unknown_704 = 2;
-                    best->unknown_708 = *where;
-                    best->FUN_00451E40(3);
+                    CoordStruct where = vf_44(0, zero);
+                    best->DelayBeforeFiring = best->Type->DelayedFireDelay;
+                    best->PrismStage = 2;
+                    best->PrismTargetCoords = where;
+                    best->DestroyNthAnim(3);
                     char* text;
                     int flag;
-                    if (best->FUN_005F5C60() > DAT_008871E0->unknown_1700) {
-                        text = &best->Type->unknown_F4C[10].unknown_00[0];
+                    if (best->FUN_005F5C60() > RulesInstance->ConditionYellow) {
+                        text = &best->Type->BuildingAnim[10].Anim[0];
                         flag = 0;
                     } else {
-                        text = &best->Type->unknown_F4C[10].unknown_10[0];
+                        text = &best->Type->BuildingAnim[10].Damaged[0];
                         flag = 1;
                     }
                     if (text && *text) {
-                        best->FUN_00451890(text, 10, flag, 0, 0);
+                        best->PlayAnim(text, 10, flag, 0, 0);
                     }
                     break;
                 }
             }
-            HBCoordPod cleared = {0, 0, 0};
-            unknown_714 = Type->unknown_16EC;
-            unknown_708 = cleared;
-            unknown_704 = 1;
-            FUN_00451E40(3);
+            CoordStruct cleared = {0, 0, 0};
+            DelayBeforeFiring = Type->DelayedFireDelay;
+            PrismTargetCoords = cleared;
+            PrismStage = 1;
+            DestroyNthAnim(3);
             char* text;
             int flag;
-            if (FUN_005F5C60() > DAT_008871E0->unknown_1700) {
-                text = &Type->unknown_F4C[10].unknown_00[0];
+            if (FUN_005F5C60() > RulesInstance->ConditionYellow) {
+                text = &Type->BuildingAnim[10].Anim[0];
                 flag = 0;
             } else {
-                text = &Type->unknown_F4C[10].unknown_10[0];
+                text = &Type->BuildingAnim[10].Damaged[0];
                 flag = 1;
             }
             if (text && *text) {
-                FUN_00451890(text, 10, flag, 0, 0);
+                PlayAnim(text, 10, flag, 0, 0);
             }
-        } else if (Type->unknown_16A7) {
-            HBCoordPod cleared = {0, 0, 0};
-            unknown_714 = Type->unknown_16EC;
-            unknown_708 = cleared;
-            unknown_704 = 1;
-            FUN_00451E40(3);
+        } else if (Type->bools_16A4[3]) {
+            CoordStruct cleared = {0, 0, 0};
+            DelayBeforeFiring = Type->DelayedFireDelay;
+            PrismTargetCoords = cleared;
+            PrismStage = 1;
+            DestroyNthAnim(3);
             char* text;
             int flag;
-            if (FUN_005F5C60() > DAT_008871E0->unknown_1700) {
-                text = &Type->unknown_F4C[10].unknown_00[0];
+            if (FUN_005F5C60() > RulesInstance->ConditionYellow) {
+                text = &Type->BuildingAnim[10].Anim[0];
                 flag = 0;
             } else {
-                text = &Type->unknown_F4C[10].unknown_10[0];
+                text = &Type->BuildingAnim[10].Damaged[0];
                 flag = 1;
             }
             if (text && *text) {
-                FUN_00451890(text, 10, flag, 0, 0);
+                PlayAnim(text, 10, flag, 0, 0);
             }
         } else {
             vf_243(Target, direction);
         }
-        if (Type->unknown_CD5) {
-            FUN_0070DE70(unknown_C4);
-            unknown_C4 = 0;
+        if (Type->IsGattling) {
+            FUN_0070DE70(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
             return 1;
         }
-        unknown_148++;
+        TurretAnimFrame++;
         return 1;
 
     case 1:
@@ -223,16 +208,16 @@ int BA4Building::vf_132()
     case 6:
     case 8:
         vf_242(0);
-        unknown_664 = 0;
+        SupportingPrisms = 0;
         if (vf_268()) {
             FUN_00705D60();
         }
         if (vf_97() == 0x1C) {
             return 1;
         }
-        if (Type->unknown_CD5) {
-            FUN_0070E000(unknown_C4);
-            unknown_C4 = 0;
+        if (Type->IsGattling) {
+            FUN_0070E000(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
         }
         vf_122(5, 0);
         vf_123();
@@ -240,40 +225,38 @@ int BA4Building::vf_132()
 
     case 2:
         if (Target) {
-            HBDir buffer;
-            Facing.FUN_004C9220(vf_314(&buffer, Target));
+            PrimaryFacing.SetDesired(vf_314(Target));
         }
-        if (Type->unknown_CD5) {
-            FUN_0070DE70(unknown_C4);
-            unknown_C4 = 0;
+        if (Type->IsGattling) {
+            FUN_0070DE70(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
         }
         return 2;
 
     case 3:
         if (Target) {
-            HBDir buffer;
-            Facing.FUN_004C9220(vf_314(&buffer, Target));
+            PrimaryFacing.SetDesired(vf_314(Target));
         }
-        if (Type->unknown_CD5) {
-            FUN_0070DE70(unknown_C4);
-            unknown_C4 = 0;
+        if (Type->IsGattling) {
+            FUN_0070DE70(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
             return 2;
         }
-        unknown_148++;
+        TurretAnimFrame++;
         return 2;
 
     case 9:
         vf_279(0);
-        if (Type->unknown_CD5) {
-            FUN_0070E000(unknown_C4);
-            unknown_C4 = 0;
+        if (Type->IsGattling) {
+            FUN_0070E000(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
         }
         break;
 
     case 10:
-        if (Type->unknown_CD5) {
-            FUN_0070E000(unknown_C4);
-            unknown_C4 = 0;
+        if (Type->IsGattling) {
+            FUN_0070E000(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
         }
         return 1;
 
@@ -281,9 +264,8 @@ int BA4Building::vf_132()
         break;
     }
     if (Target) {
-        HBDir buffer;
-        Facing.FUN_004C9220(vf_314(&buffer, Target));
+        PrimaryFacing.SetDesired(vf_314(Target));
     }
-    unknown_C4 = 0;
+    MissionAccumulateTime = 0;
     return 1;
 }

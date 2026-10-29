@@ -77,6 +77,8 @@ struct Matrix3D
     Vector3D* RotateVector(Vector3D* out, const Vector3D* in);   // 0x5AF4D0
     void PreRotateX(float angle);                         // 0x5AEC40
     void PreRotateZ(float angle);                         // 0x5AEE50
+    // FUNCTION: GAMEMD 0x754BE0 (decl; reloc) -- sets this to the default matrix and returns it.
+    Matrix3D* FUN_00754BE0();
 };
 GG_STATIC_ASSERT(offsetof(Matrix3D, Row) == 0x00);
 GG_STATIC_ASSERT(sizeof(((Matrix3D*)0)->Row[0]) == 0x10);

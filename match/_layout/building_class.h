@@ -75,6 +75,7 @@ class InfantryClass;
 class LightSourceClass;
 class CellClass;
 class BuildingLightClass;
+struct Matrix3D;
 
 class BuildingClass : public TechnoClass
 {
@@ -198,6 +199,7 @@ public:
     virtual bool vf_73(int mark);                                  // 73  0x43F180: mark or unmark the footprint
     virtual int vf_132();                                          // 132 0x44ACF0
     virtual bool vf_245(HouseClass* newOwner, bool announce);      // 245 0x448260: change owner
+    virtual int vf_149();                                          // 149 0x44E440: the construction mission step
 
 
     // Methods matched in economy/building_class.cpp. 0x4521C0 clears HasPower @0x660 and
@@ -264,11 +266,15 @@ public:
     // FUNCTION: GAMEMD 0x451400
     void FUN_00451400();
     // FUNCTION: GAMEMD 0x459F40
-    unsigned int FUN_00459F40();
+    BuildingClass* FUN_00459F40();   // this when slot 11 says Building, else null
     // FUNCTION: GAMEMD 0x452170 -- one stack argument.
     void FUN_00452170(int a);
     // FUNCTION: GAMEMD 0x451690
     void FUN_00451690();
+    // FUNCTION: GAMEMD 0x44E3A0
+    bool FUN_0044E3A0();
+    // FUNCTION: GAMEMD 0x458810 -- builds the turret/barrel draw matrix in the caller's slot and returns it.
+    Matrix3D* FUN_00458810(Matrix3D* out);
 
     BuildingTypeClass* Type;              // +0x520 ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
     FactoryClass*  Factory;               // +0x524 ctor @0x0043B75C (=0)

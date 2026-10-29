@@ -8,19 +8,18 @@
 #include "building_a4_views.h"
 
 // FUNCTION: GAMEMD 0x43F180
-bool BA4Building::vf_73(int mark)
+bool BuildingClass::vf_73(int mark)
 {
-    HBCell scratch;
-    HBCell cell;
+    CellStruct cell;
     int zero = 0;
     int x;
     int y;
 
-    if (!FUN_006F4A70(mark)) {
+    if (!TechnoClass::vf_73(mark)) {
         goto refuse;
     }
 
-    cell = *vf_110(&scratch);
+    cell = vf_110();
 
     switch (mark) {
     case 0:
@@ -29,45 +28,45 @@ bool BA4Building::vf_73(int mark)
 
     case 1:
     case 3:
-        if (Type->unknown_E58) {
-            if (vf_107(DAT_0087F7E8.FUN_005657A0(cell), -1, -1, 0, 1) == 0) {
-                int width = Type->FUN_0045EC90();
-                int height = Type->FUN_0045ECA0(false);
+        if (Type->ToTile) {
+            if (vf_107(BA4At(cell), -1, -1, 0, 1) == 0) {
+                int width = Type->GetFoundationWidth();
+                int height = Type->GetFoundationHeight(false);
                 bool placed = zero;
 
                 for (y = 0; y < height; y++) {
                     for (x = 0; x < width; x++) {
-                        HBCell c = cell + HBCell(x, y);
-                        if (DAT_0087F7E8.FUN_005657A0(c)->FUN_0047C620(Type->unknown_67C, Type, Owner)
-                            && DAT_0087F7E8.FUN_005657A0(c)->unknown_38 != Type->unknown_E58->unknown_294
-                            && DAT_0087F7E8.FUN_005657A0(c)->unknown_EC != 1) {
-                            BA4MapCell* mc = DAT_0087F7E8.FUN_005657A0(c);
-                            if (mc->unknown_48 != -1) {
-                                BA4Placed* placedType = DAT_00A8EC1C[mc->unknown_48];
-                                HBCell base = mc->unknown_24;
-                                int index = mc->unknown_11F;
+                        CellStruct c = cell + BA4Off(x, y);
+                        if (BA4At(c)->FUN_0047C620(Type->SpeedType, Type, Owner)
+                            && BA4At(c)->IsoTileTypeIndex != Type->ToTile->unknown_294
+                            && BA4At(c)->LandType != 1) {
+                            CellClass* mc = BA4At(c);
+                            if (mc->SmudgeTypeIndex != -1) {
+                                BA4Placed* placedType = DAT_00A8EC1C[mc->SmudgeTypeIndex];
+                                CellStruct base = mc->MapCoords;
+                                int index = mc->SmudgeData;
                                 base.X -= (short)(index % placedType->unknown_298);
                                 base.Y -= (short)(index / placedType->unknown_298);
                                 for (int j = 0; j < placedType->unknown_29C; j++) {
                                     for (int i = 0; i < placedType->unknown_298; i++) {
-                                        DAT_0087F7E8.FUN_005657A0(base + HBCell(i, j))->unknown_48 = -1;
-                                        DAT_0087F7E8.FUN_005657A0(base + HBCell(i, j))->FUN_004852D0();
+                                        BA4At(base + BA4Off(i, j))->SmudgeTypeIndex = -1;
+                                        BA4At(base + BA4Off(i, j))->FUN_004852D0();
                                     }
                                 }
                             }
-                            BA4Object* created = Type->unknown_E58->vf_35(Owner);
-                            HBCoordPod where;
+                            ObjectClass* created = (Type->ToTile->*(Type->ToTile->Vfptr->At_8C))(Owner);
+                            CoordStruct where;
                             where.X = c.X * 256 + 128;
                             where.Y = c.Y * 256 + 128;
                             where.Z = zero;
-                            created->vf_54(&where, 0);
+                            created->vf_54(where, 0);
                             if (Owner == DAT_00A83D4C) {
-                                HBCoordPod reveal;
+                                CoordStruct reveal;
                                 reveal.X = c.X * 256 + 128;
                                 reveal.Y = c.Y * 256 + 128;
                                 reveal.Z = zero;
                                 DAT_0087F7E8.FUN_005678E0(&reveal, 1, DAT_00A83D4C, zero, zero, zero, 1, zero);
-                                HBCoordPod reveal2;
+                                CoordStruct reveal2;
                                 reveal2.X = c.X * 256 + 128;
                                 reveal2.Y = c.Y * 256 + 128;
                                 reveal2.Z = zero;
@@ -79,7 +78,7 @@ bool BA4Building::vf_73(int mark)
                 }
                 for (y = 0; y < height + 2; y++) {
                     for (x = 0; x < width + 2; x++) {
-                        DAT_0087F7E8.FUN_005657A0(cell + HBCell(x - 1, y - 1))->FUN_00486E70();
+                        BA4At(cell + BA4Off(x - 1, y - 1))->FUN_00486E70();
                     }
                 }
                 if (placed) {
@@ -88,58 +87,56 @@ bool BA4Building::vf_73(int mark)
                     return true;
                 }
             }
-            FUN_006F4A70(0);
+            TechnoClass::vf_73(0);
             goto refuse;
         }
-        if (Type->unknown_1571) {
-            BA4Spawned* spawned = new BA4Spawned(Type->unknown_E54, &cell, Owner->unknown_34->unknown_B8);
+        if (Type->bools_1570[1]) {
+            BA4Spawned* spawned = new BA4Spawned(Type->ToOverlay, &cell, Owner->Type->ArrayIndex2);
             vf_160(3);
             vf_62();
             return true;
         }
         if (mark != 3) {
-            if (vf_107(DAT_0087F7E8.FUN_005657A0(cell), -1, -1, 0, 1) != 0) {
+            if (vf_107(BA4At(cell), -1, -1, 0, 1) != 0) {
                 goto refuse;
             }
         }
         DAT_0087F7E8.FUN_005683C0(&cell, this);
         {
-            HBCoordPod where;
+            CoordStruct where;
             where.X = cell.X * 256 + 128;
             where.Y = cell.Y * 256 + 128;
             where.Z = zero;
-            HBCoordPod scratchCoord;
-            vf_109(Type->vf_27(&scratchCoord, &where));
+            vf_109(Type->vf_27(where));
         }
         {
-            HBCoordPod scratchCoord;
-            HBCoordPod center = *vf_43(&scratchCoord);
+            CoordStruct center = vf_43();
             for (int k = 0; k < 21; k++) {
                 if (Anims[k]) {
-                    HBCoordPod scratchOffset;
-                    HBCoordPod* offset = DAT_00887324->FUN_006D2360(&scratchOffset, &Type->unknown_F4C[k].unknown_30);
-                    HBCoordPod sumScratch;
-                    HBCoordPod sum = *sumScratch.FUN_0041C230(center.X + offset->X, offset->Y + center.Y, offset->Z + center.Z);
-                    Anims[k]->vf_109(&sum);
+                    CoordStruct scratchOffset;
+                    CoordStruct* offset = DAT_00887324->FUN_006D2360(&scratchOffset, &Type->BuildingAnim[k].X);
+                    CoordStruct sumScratch;
+                    CoordStruct sum = *sumScratch.FUN_0041C230(center.X + offset->X, offset->Y + center.Y, offset->Z + center.Z);
+                    Anims[k]->vf_109(sum);
                 }
             }
         }
         {
-            int width = Type->FUN_0045EC90();
-            int height = Type->FUN_0045ECA0(false);
+            int width = Type->GetFoundationWidth();
+            int height = Type->GetFoundationHeight(false);
             for (y = 0; y < height; y++) {
                 for (x = 0; x < width; x++) {
-                    BA4MapCell* mc = DAT_0087F7E8.FUN_005657A0(cell + HBCell(x, y));
-                    if (mc->unknown_48 != -1) {
-                        BA4Placed* placedType = DAT_00A8EC1C[mc->unknown_48];
-                        HBCell base = mc->unknown_24;
-                        int index = mc->unknown_11F;
+                    CellClass* mc = BA4At(cell + BA4Off(x, y));
+                    if (mc->SmudgeTypeIndex != -1) {
+                        BA4Placed* placedType = DAT_00A8EC1C[mc->SmudgeTypeIndex];
+                        CellStruct base = mc->MapCoords;
+                        int index = mc->SmudgeData;
                         base.X -= (short)(index % placedType->unknown_298);
                         base.Y -= (short)(index / placedType->unknown_298);
                         for (int j = 0; j < placedType->unknown_29C; j++) {
                             for (int i = 0; i < placedType->unknown_298; i++) {
-                                DAT_0087F7E8.FUN_005657A0(base + HBCell(i, j))->unknown_48 = -1;
-                                DAT_0087F7E8.FUN_005657A0(base + HBCell(i, j))->FUN_004852D0();
+                                BA4At(base + BA4Off(i, j))->SmudgeTypeIndex = -1;
+                                BA4At(base + BA4Off(i, j))->FUN_004852D0();
                             }
                         }
                     }
@@ -147,7 +144,7 @@ bool BA4Building::vf_73(int mark)
             }
             for (y = 0; y < height + 2; y++) {
                 for (x = 0; x < width + 2; x++) {
-                    DAT_0087F7E8.FUN_005657A0(cell + HBCell(x - 1, y - 1))->FUN_00486E70();
+                    BA4At(cell + BA4Off(x - 1, y - 1))->FUN_00486E70();
                 }
             }
         }
@@ -155,38 +152,38 @@ bool BA4Building::vf_73(int mark)
 
     case 2:
         {
-            int value = vf_121();
-            int angle = vf_281(vf_111()->unknown_10A);
-            BA4Building* techno = BA4As(this, 6);
-            if (vf_88() || (unknown_294 && unknown_294->unknown_50 == (unsigned int)techno)) {
+            void* value = vf_121();
+            int angle = vf_281(vf_111()->Intensity_Normal);
+            BuildingClass* techno = BA4As<BuildingClass>(this, 6);
+            if (vf_88() || (Airstrike && Airstrike->Target == techno)) {
                 angle = FUN_0070E360(angle);
             }
-            unknown_700 = (short)angle;
+            LightTint = (short)angle;
             for (int k = 0; k < 21; k++) {
-                BA4Object* anim = Anims[k];
+                AnimClass* anim = Anims[k];
                 if (anim) {
-                    if (anim->unknown_C8 && anim->unknown_C8->unknown_35C) {
-                        anim->unknown_D4 = value;
-                        anim->unknown_FC = angle & 0xFFFF;
+                    if (anim->Type && anim->Type->ShouldUseCellDrawer) {
+                        anim->LightConvert = value;
+                        anim->TintColor = angle & 0xFFFF;
                     }
-                    char facing = unknown_6ED;
+                    char facing = Translucency;
                     if (facing == 0xF && vf_26(0, 0) == 5) {
                         facing = 0x10;
                     }
                     for (int m = 0; m < 21; m++) {
                         if (Anims[m]) {
-                            Anims[m]->unknown_178 = facing;
+                            Anims[m]->TranslucencyLevel = facing;
                         }
                     }
                 }
             }
-            char facing = unknown_6ED;
+            char facing = Translucency;
             if (facing == 0xF && vf_26(0, 0) == 5) {
                 facing = 0x10;
             }
             for (int m = 0; m < 21; m++) {
                 if (Anims[m]) {
-                    Anims[m]->unknown_178 = facing;
+                    Anims[m]->TranslucencyLevel = facing;
                 }
             }
         }

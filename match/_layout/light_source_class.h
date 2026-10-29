@@ -10,6 +10,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
 #include "rad_site_class.h"   // TintStruct
+#include "coord_struct.h"
 
 // The world position handed to the constructor (three ints).
 struct LightTint
@@ -29,6 +30,8 @@ public:
 
     LightSourceClass();
     LightSourceClass(LightTint tint, int a4, int a5, int a6, int a7, int a8);
+    // FUNCTION: GAMEMD 0x554760 (decl; reloc) -- the same entry as above, with the location spelled as the coordinate it is.
+    LightSourceClass(CoordStruct where, int a4, int a5, int a6, int a7, int a8);
     LightSourceClass(const AbstractNoInit& noInit);
     virtual ~LightSourceClass();
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
