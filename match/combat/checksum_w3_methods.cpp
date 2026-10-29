@@ -8,6 +8,7 @@
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/frame_timer.h"
 #include "../_layout/obj_004a1d30.h"
+#include "../ai/tevent_class_methods.h"
 
 // A pointed-to object's RTTI-info interface subobject sits at +4; its slot 4 (+0x10),
 // __stdcall with the subobject as `this`, yields the id mixed into the checksum.
@@ -31,20 +32,6 @@ static inline int RttiInfoId(void* object)
     return reinterpret_cast<RttiInfoView*>(static_cast<char*>(object) + 4)->Slot4();
 }
 
-// Checksum-only views of classes that have no canonical layout yet: just the
-// members the slot-13 bodies read (offsets from the retail disassembly).
-class TEventClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-    char unknown_24[4];    // +0x24
-    void* unknown_28;      // +0x28
-    int unknown_2C;        // +0x2C
-    void* unknown_30;      // +0x30
-    int unknown_34;        // +0x34
-};
-GG_STATIC_ASSERT(offsetof(TEventClass, unknown_28) == 0x28);
-GG_STATIC_ASSERT(offsetof(TEventClass, unknown_34) == 0x34);
 
 class TubeClass : public AbstractClass
 {
@@ -209,14 +196,14 @@ void VoxelAnimClass::vf_13(Obj_004A1D30* crc)
 void TEventClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractClass::vf_13(crc);
-    if (unknown_28) {
-        crc->FUN_004A1D50(RttiInfoId(unknown_28));
+    if (NextEvent) {
+        crc->FUN_004A1D50(RttiInfoId(NextEvent));
     }
-    crc->FUN_004A1D50(unknown_2C);
-    if (unknown_30) {
-        crc->FUN_004A1D50(RttiInfoId(unknown_30));
+    crc->FUN_004A1D50(EventKind);
+    if (TeamType) {
+        crc->FUN_004A1D50(RttiInfoId(TeamType));
     }
-    crc->FUN_004A1D50(unknown_34);
+    crc->FUN_004A1D50(Value);
 }
 
 // FUNCTION: GAMEMD 0x727B30

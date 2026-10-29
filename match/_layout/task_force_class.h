@@ -25,6 +25,9 @@ class TaskForceClass : public AbstractTypeClass
 {
 public:
     // The stream loader's in-place construction.
+    // FUNCTION: GAMEMD 0x6E7E80 (decl; reloc)
+    // The class factory's construction (TClassFactory<TaskForceClass>): the same constructor with a default argument.
+    TaskForceClass(int unknown_arg0 = 0);
     TaskForceClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x6E87F0 (scalar deleting form; destructor expanded in place)
     virtual ~TaskForceClass();

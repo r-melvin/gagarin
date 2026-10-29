@@ -18,6 +18,7 @@
 #include "../_rt/gg_static_assert.h"
 #include <string.h>
 #include "../_layout/abstract_class.h"
+#include "../_layout/obj_004a1d30.h"
 class HouseClass;
 class ObjectClass;
 struct CDTimer_00726400;
@@ -65,6 +66,18 @@ GG_STATIC_ASSERT(sizeof(TEventName) == 25);
 class TEventClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x71E6A0 (decl; reloc) -- constructor, as the class factory calls it.
+    TEventClass();
+    // The stream loader's in-place construction: only the four tables.
+    TEventClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
+    virtual ~TEventClass();
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    virtual HRESULT __stdcall Load(IStream* pStm);                     // 5   0x71F8C0
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    virtual void vf_10(void* target, bool removed);                    // 10  0x71F800
+    virtual int vf_11();
+    virtual int vf_12();
+    virtual void vf_13(Obj_004A1D30* crc);
     // FUNCTION: GAMEMD 0x71F4E0
     void LoadFromINI();
     bool GetStateA() const;   // GAMEMD 0x71F950 __thiscall
@@ -76,11 +89,12 @@ public:
     void* FUN_0071FA30();
 
     int   ArrayIndex;   // +0x24
-    void* NextEvent;    // +0x28
+    TEventClass* NextEvent;    // +0x28
     int   EventKind;    // +0x2c  (TriggerEvent enum; the switch value)
     TeamType_0071F4E0* TeamType;   // +0x30
     int   Value;        // +0x34
     TEventName String;  // +0x38  (25 bytes)
+    void* unknown_54;   // +0x54
 };
 
 GG_STATIC_ASSERT(offsetof(TEventClass, ArrayIndex) == 0x24);
@@ -89,5 +103,7 @@ GG_STATIC_ASSERT(offsetof(TEventClass, EventKind)  == 0x2c);
 GG_STATIC_ASSERT(offsetof(TEventClass, TeamType)   == 0x30);
 GG_STATIC_ASSERT(offsetof(TEventClass, Value)      == 0x34);
 GG_STATIC_ASSERT(offsetof(TEventClass, String)     == 0x38);
+GG_STATIC_ASSERT(offsetof(TEventClass, unknown_54) == 0x54);
+GG_STATIC_ASSERT(sizeof(TEventClass)               == 0x58);
 
 #endif  // GG_MATCH_AI_TEVENT_CLASS_METHODS_H

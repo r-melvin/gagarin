@@ -14,6 +14,7 @@
 
 #include "house_class_overpower_methods.h"
 #include "../audio/voc_class_play_global_methods.h"
+#include "../_layout/rules_class.h"
 
 // ---------------------------------------------------------------------------
 // Offset-pinned model of the global TechnoClass::Array (DynamicVectorClass head
@@ -37,16 +38,6 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TechnoPtr, Count) == 0x10);
 // GLOBAL: GAMEMD 0xA8EC78 -- the engine's global array of all technos.
 extern DynamicVectorClass_TechnoPtr TechnoArray;
 
-// RulesClass singleton (pointer global @0x8871E0). Only field @0x1C8 is touched
-// (`MOV EAX,[0x8871E0]; MOV ECX,[EAX+0x1C8]`).
-struct RulesClass
-{
-    char _pad00[0x1C8];   // +0x00
-    int  field_1C8;       // +0x1C8
-};
-#if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(RulesClass, field_1C8) == 0x1C8);
-#endif
 extern RulesClass* Rules;  // GLOBAL: GAMEMD 0x8871E0
 
 // FUNCTION: GAMEMD 0x4F9AF0  HouseClass::CanOverpower  (__thiscall)

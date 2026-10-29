@@ -146,7 +146,7 @@ GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 class BuildingTypeClass;
 class HouseTypeClass;
 class TechnoTypeClass;
-class UnitTypeClass; class UnitClass; class FactoryClass;
+class UnitTypeClass; class UnitClass; class FactoryClass; class TeamTypeClass;
 template<class T> class DynamicVectorClass;
 
 #include <ocidl.h>   // IConnectionPointContainer (VC98 SDK, LIBRARY)
@@ -606,6 +606,8 @@ public:
     void CreatePowerOutage(int duration);                       // 0x50BC90
     void CreateRadarOutage(int duration);                       // 0x50BCD0
     double GetStoragePercentage();                              // 0x4F6E70
+    // FUNCTION: GAMEMD 0x5095D0 (decl; reloc) -- how many live teams of this type the house fields.
+    int FUN_005095D0(TeamTypeClass* type);
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

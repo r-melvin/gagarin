@@ -18,40 +18,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
-
-class TeamTypeClass;   // pointer-identity key only (no members touched)
-
-// ---------------------------------------------------------------------------
-// TeamClass — minimal model.  Both methods compare team->Type (@+0x24) against
-// the TeamTypeClass `this`, and FlashAllInstances fires team->Flash(duration)
-// (GAMEMD 0x6EF5F0, __thiscall, one stack arg) on each match.  Type@0x24 is the
-// first member past the 0x24-byte AbstractClass base (CMP [ECX+0x24],EDI /
-// CMP [EAX+0x24],ECX).  Flash is body-less so cl emits a reloc-normalised call.
-// ---------------------------------------------------------------------------
-class TeamClass
-{
-public:
-    char           _pad_00[0x24];   // AbstractClass base (P2)
-    TeamTypeClass* Type;            // +0x24
-
-    void Flash(int duration);       // GAMEMD 0x6EF5F0
-};
-#if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(TeamClass, Type) == 0x24);
-#endif
-
-// ---------------------------------------------------------------------------
-// TeamTypeClass — only the two enumeration helpers are bound here; the full
-// AbstractTypeClass-derived layout (and the accessor binding) lives in
-// team_type_class_methods.h.  No member of TeamTypeClass is touched, so no
-// layout is modelled in this TU.
-// ---------------------------------------------------------------------------
-class TeamTypeClass
-{
-public:
-    void       FlashAllInstances(int duration);   // GAMEMD 0x6F1F30
-    TeamClass* FindFirstInstance() const;         // GAMEMD 0x6F1F70
-};
+#include "../_layout/team_class.h"
+#include "../_layout/team_type_class.h"
 
 // Global TeamClass::Array (DynamicVectorClass<TeamClass*>) — GAMEMD 0x8B40E8.
 extern DynamicVectorClassLayout DAT_008B40E8;

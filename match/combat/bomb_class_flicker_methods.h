@@ -14,24 +14,11 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/rules_class.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter (`MOV EDI,[0xA8ED84]`).
 #include "../core/frame_counter.h"
 
-// RulesClass singleton pointer @0x8871E0. Two timing fields are read here and
-// neither is bound by YRpp at a computable offset, so both keep placeholder
-// names: +0xFD0 is divided by three to give the tick period, +0xFD8 is the
-// flicker half-period. Their roles are clear from the arithmetic; their
-// [General] INI keys are not, so they are not guessed at.
-struct RulesClass
-{
-    char _pad000[0xFD0];   // +0x0000
-    int  field_FD0;        // +0x0FD0
-    char _padFD4[0x4];     // +0x0FD4
-    int  field_FD8;        // +0x0FD8
-};
-GG_STATIC_ASSERT(offsetof(RulesClass, field_FD0) == 0xFD0);
-GG_STATIC_ASSERT(offsetof(RulesClass, field_FD8) == 0xFD8);
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 
 // ---------------------------------------------------------------------------

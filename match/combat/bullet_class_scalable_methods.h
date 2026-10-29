@@ -15,36 +15,10 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
+#include "../_layout/bullet_class.h"
+#include "bullet_type_class.h"
 
-// BulletTypeClass — local partial model. SpawnDelay @0x2E4 is the base
-// spawn delay; SetScaledSpawnDelay (0x46C840, matched in bullet_type_class.cpp)
-// stores the per-bullet scaled copy at 0x2E8.
-class BulletTypeClass
-{
-public:
-    char _pad000[0x2E4];      // +0x0000
-    int  SpawnDelay;          // +0x02E4
-    int  ScaledSpawnDelay;    // +0x02E8
-    char _pad2EC[0xC];        // +0x02EC
 
-    // FUNCTION: GAMEMD 0x46C840 (decl; reloc)
-    void SetScaledSpawnDelay(int delay);
-};
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, SpawnDelay) == 0x2E4);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, ScaledSpawnDelay) == 0x2E8);
-GG_STATIC_ASSERT(sizeof(BulletTypeClass) == 0x2F8);
-
-// BulletClass : ObjectClass (0xAC) — only Type is reached here.
-class BulletClass
-{
-public:
-    char             _pad000[0xAC];   // +0x0000  ObjectClass base
-    BulletTypeClass* Type;            // +0x00AC
-
-    // FUNCTION: GAMEMD 0x46B280
-    void InitScalable();
-};
-GG_STATIC_ASSERT(offsetof(BulletClass, Type) == 0xAC);
 
 // GLOBAL: GAMEMD 0x89DE18 — BulletClass::ScalableBullets.
 extern DynamicVectorClass<BulletClass*> ScalableBullets;

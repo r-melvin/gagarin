@@ -5,7 +5,8 @@
 //   checked against YRpp
 //   (every offset/slot reconfirmed below).
 //
-// ScriptTypeClass — an AI script template loaded from the [ScriptTypes] INI
+// ScriptTypeClass (here the view ScriptTypeView_00691970, since the canonical class models the
+// constructor out of line and these bodies expand it) — an AI script template loaded from the [ScriptTypes] INI
 // section.  Only the members the two matched static methods touch are modelled;
 // the full AbstractTypeClass-derived layout (and the real COM/Abstract vtable
 // hierarchy) is P2.  The four primary/secondary vptrs (+0..+0xC), the ID string
@@ -16,8 +17,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../platform/ccini_class_methods.h"
 
-class CCINIClass;
 
 // ---------------------------------------------------------------------------
 // External (reloc-normalised) callees we are NOT matching.
@@ -27,18 +28,6 @@ int  __cdecl Strcmpi(const char* a, const char* b);                // GAMEMD 0x7
 // operator new(size_t).  __cdecl.
 void* __cdecl OpNew(unsigned int size);                            // GAMEMD 0x7C8E17
 
-// ---------------------------------------------------------------------------
-// CCINIClass — only the three __thiscall readers used here are declared
-// (body-less, so cl emits reloc-normalised direct calls).
-// ---------------------------------------------------------------------------
-class CCINIClass
-{
-public:
-    int         GetKeyCount(const char* section);                       // GAMEMD 0x526960
-    const char* GetKeyName(const char* section, int index);             // GAMEMD 0x526CC0
-    int         ReadString(const char* section, const char* key,
-                           const char* def, char* buffer, int size);    // GAMEMD 0x528A10
-};
 
 // ---------------------------------------------------------------------------
 // IScriptType — dispatch-only view onto a ScriptTypeClass primary vtable.
@@ -64,7 +53,7 @@ struct IScriptType
 // ArrayIndex/IsGlobal/ActionsCount.  The AbstractTypeClass base ctor (0x410800)
 // is declared as a body-less member so cl emits a __thiscall call to it.
 // ---------------------------------------------------------------------------
-class ScriptTypeClass
+class ScriptTypeView_00691970
 {
 public:
     void* vt0;                 // +0x00  primary vtable (IPersistStream+...)
@@ -86,15 +75,15 @@ public:
     static void LoadFromINIList(CCINIClass* pINI, int isGlobal);
 
     // FUNCTION: GAMEMD 0x691C00  ScriptTypeClass::FindOrAllocate (static __fastcall)
-    static ScriptTypeClass* FindOrAllocate(const char* pID);
+    static ScriptTypeView_00691970* FindOrAllocate(const char* pID);
 };
 
 #if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(ScriptTypeClass, ID)           == 0x24);
-GG_STATIC_ASSERT(offsetof(ScriptTypeClass, ArrayIndex)   == 0x98);
-GG_STATIC_ASSERT(offsetof(ScriptTypeClass, IsGlobal)     == 0x9C);
-GG_STATIC_ASSERT(offsetof(ScriptTypeClass, ActionsCount) == 0xA0);
-GG_STATIC_ASSERT(sizeof(ScriptTypeClass)                 == 0x234);
+GG_STATIC_ASSERT(offsetof(ScriptTypeView_00691970, ID)           == 0x24);
+GG_STATIC_ASSERT(offsetof(ScriptTypeView_00691970, ArrayIndex)   == 0x98);
+GG_STATIC_ASSERT(offsetof(ScriptTypeView_00691970, IsGlobal)     == 0x9C);
+GG_STATIC_ASSERT(offsetof(ScriptTypeView_00691970, ActionsCount) == 0xA0);
+GG_STATIC_ASSERT(sizeof(ScriptTypeView_00691970)                 == 0x234);
 #endif
 
 // ---------------------------------------------------------------------------
@@ -109,7 +98,7 @@ struct ScriptTypeVector
     virtual void _v1();
     virtual bool SetCapacity(int capacity, void* pMem);   // slot 2 -> offset 0x8
 
-    ScriptTypeClass** Items;        // +0x04
+    ScriptTypeView_00691970** Items;        // +0x04
     int               Capacity;     // +0x08
     unsigned char     IsInitialized;// +0x0C
     unsigned char     IsAllocated;  // +0x0D
@@ -126,7 +115,7 @@ struct ScriptTypeVector
 
     // Mirrors VectorClass::FindItemIndex — linear scan returning the slot index
     // of `item`, or -1. Inlined at the FindOrAllocate / LoadFromINIList tails.
-    int FindItemIndex(ScriptTypeClass* item)
+    int FindItemIndex(ScriptTypeView_00691970* item)
     {
         for (int i = 0; i < this->Count; ++i) {
             if (this->Items[i] == item) {

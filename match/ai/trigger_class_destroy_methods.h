@@ -18,6 +18,7 @@
 #include "../_layout/house_type_class.h"
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/trigger_class.h"
+#include "taction_class_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 class ObjectClass;   // only ever a pointer here
@@ -35,18 +36,6 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex) == 0xB4);
 
 class TriggerClass;  // fwd (Execute's pTrigger arg)
 
-// TActionClass — singly-linked action node. NextAction @0x28; Execute @0x6DD8B0.
-class TActionClass
-{
-public:
-    char          _pad0[0x28];   // +0x000  AbstractClass base + ArrayIndex (P2)
-    TActionClass* NextAction;    // +0x028
-
-    // GAMEMD 0x6DD8B0 __thiscall — declared (no body) so cl emits a reloc call.
-    bool Execute(HouseClass* pHouse, ObjectClass* pObject,
-                 TriggerClass* pTrigger, const CellStruct& location);
-};
-GG_STATIC_ASSERT(offsetof(TActionClass, NextAction) == 0x28);
 
 // TriggerTypeClass — House @0xA4, FirstAction @0xB0.
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, House)       == 0xA4);

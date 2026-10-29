@@ -43,7 +43,7 @@
 // naming downstream of that, not a prologue hoist.
 bool RulesClass::Read_Colors(CCINIClass* pINI)
 {
-    if (pINI->Exists(ColorsSection)) {
+    if (pINI->INIClass::Exists(ColorsSection, 0)) {
         int count = pINI->GetKeyCount(ColorsSection);
         for (int i = 0; i < count; i++) {
             const char* key = pINI->GetKeyName(ColorsSection, i);

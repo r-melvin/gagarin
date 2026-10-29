@@ -13,25 +13,25 @@
 // at the end.
 void TeamTypeClass::ProcessTaskForce()
 {
-    this->At_F0 = 1;
-    this->At_F1 = 0;
-    this->At_EC = 9;
+    this->Flag_F0 = true;
+    this->Flag_F1 = false;
+    this->unknown_EC = 9;
 
-    for (int i = 0; i < this->TaskForce->CountEntries; i++) {
-        TechnoType_006F1FA0* type = this->TaskForce->Entries[i].Type;
+    for (int i = 0; i < this->TaskForce->EntryCount; i++) {
+        TechnoTypeClass* type = this->TaskForce->Entries[i].Type;
 
-        if (type->At_CCE != 0) {
-            if (type->At_5E0 == 0) {
-                this->At_F0 = 0;
+        if (type->Naval) {
+            if (type->Passengers == 0) {
+                this->Flag_F0 = false;
             } else {
-                this->At_F1 = 1;
+                this->Flag_F1 = true;
             }
         }
 
-        this->At_EC = FUN_005889F0(type->At_5B4, this->At_EC);
+        this->unknown_EC = FUN_005889F0(type->MovementZone, this->unknown_EC);
     }
 
-    if (this->At_F6 != 0) {
-        this->At_F0 = 0;
+    if (this->Flag_F6) {
+        this->Flag_F0 = false;
     }
 }

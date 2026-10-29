@@ -33,18 +33,20 @@ public:
     virtual ~SmudgeTypeClass();
 };
 
-class TActionClass : public AbstractClass
+// Views: the canonical TActionClass / TaskForceClass construct inline, so the standalone retail
+// constructors are recorded on non-colliding view names.
+class TActionView_006DD180 : public AbstractClass
 {
 public:
-    TActionClass(const AbstractNoInit& noInit);
-    virtual ~TActionClass();
+    TActionView_006DD180(const AbstractNoInit& noInit);
+    virtual ~TActionView_006DD180();
 };
 
-class TaskForceClass : public AbstractTypeClass
+class TaskForceView_006E7F50 : public AbstractTypeClass
 {
 public:
-    TaskForceClass(const AbstractNoInit& noInit);
-    virtual ~TaskForceClass();
+    TaskForceView_006E7F50(const AbstractNoInit& noInit);
+    virtual ~TaskForceView_006E7F50();
 };
 
 // FUNCTION: GAMEMD 0x5FE3C0
@@ -66,13 +68,13 @@ SmudgeTypeClass::SmudgeTypeClass(const AbstractNoInit& noInit)
 }
 
 // FUNCTION: GAMEMD 0x6DD180
-TActionClass::TActionClass(const AbstractNoInit& noInit)
+TActionView_006DD180::TActionView_006DD180(const AbstractNoInit& noInit)
     : AbstractClass(noInit)
 {
 }
 
 // FUNCTION: GAMEMD 0x6E7F50
-TaskForceClass::TaskForceClass(const AbstractNoInit& noInit)
+TaskForceView_006E7F50::TaskForceView_006E7F50(const AbstractNoInit& noInit)
     : AbstractTypeClass(noInit)
 {
 }

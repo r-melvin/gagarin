@@ -23,6 +23,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
+#include "../_layout/anim_type_class.h"
+#include "../_layout/warhead_type_class.h"
 #include "../combat/particles/particle_system_type_class.h"
 
 // The constructors are declared `throw()`. Retail's allocate path has no SEH
@@ -34,46 +36,12 @@
 // CRT case-insensitive compare at 0x007C8D20 (__cdecl).
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
-// ---------------------------------------------------------------------------
-// AnimTypeClass — GAMEMD 0x428B80, sizeof 0x378, ctor GAMEMD 0x427530
-// ---------------------------------------------------------------------------
-class AnimTypeClass
-{
-public:
-    char _pad00[0x24];              // +0x0000  AbstractClass prefix
-    char ID[0x378 - 0x24];         // +0x0024  AbstractTypeClass::ID onwards
-
-    AnimTypeClass(const char* id) throw();   // GAMEMD 0x427530 (declared; reloc)
-
-    static AnimTypeClass* FindOrAllocate(const char* id);   // GAMEMD 0x428B80
-};
-GG_STATIC_ASSERT(offsetof(AnimTypeClass, ID) == 0x24);
-GG_STATIC_ASSERT(sizeof(AnimTypeClass) == 0x378);
 
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
 extern DynamicVectorClassLayout AnimTypeClassArray;
 
 #include "../map/terrain_objects/terrain_type_class.h"
 
-// ---------------------------------------------------------------------------
-// WarheadTypeClass — GAMEMD 0x75E3B0, sizeof 0x1D0, ctor GAMEMD 0x75CEC0
-// ---------------------------------------------------------------------------
-class WarheadTypeClass
-{
-public:
-    char _pad00[0x24];              // +0x0000  AbstractClass prefix
-    char ID[0x1D0 - 0x24];         // +0x0024  AbstractTypeClass::ID onwards
-
-    WarheadTypeClass(const char* id) throw();   // GAMEMD 0x75CEC0 (declared; reloc)
-
-    static WarheadTypeClass* FindOrAllocate(const char* id);   // GAMEMD 0x75E3B0
-    // The index-returning lookup-or-create and the index-to-ID lookup emitted
-    // in the block at 0x40F2D0. Placeholder names.
-    static int FUN_0040F510(const char* id);          // GAMEMD 0x40F510
-    static const char* FUN_0040F5C0(int index);       // GAMEMD 0x40F5C0
-};
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ID) == 0x24);
-GG_STATIC_ASSERT(sizeof(WarheadTypeClass) == 0x1D0);
 
 // GLOBAL: GAMEMD 0x8874C0 — WarheadTypeClass::Array.
 extern DynamicVectorClassLayout WarheadTypeClassArray;

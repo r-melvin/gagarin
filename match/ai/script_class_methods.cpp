@@ -25,7 +25,7 @@
 //   C7 41 2C FFFFFFFF  mov [ecx+0x2C], -1
 //   B0 01              mov al, 1
 //   C3                 ret
-bool ScriptClass::ClearMission()
+bool ScriptCursorView_00691590::ClearMission()
 {
     this->CurrentMission = -1;
     return true;
@@ -37,7 +37,7 @@ bool ScriptClass::ClearMission()
 //   89 41 2C     mov [ecx+0x2C], eax
 //   B0 01        mov al, 1
 //   C2 04 00     ret 4
-bool ScriptClass::SetMission(int nLine)
+bool ScriptCursorView_00691590::SetMission(int nLine)
 {
     this->CurrentMission = nLine;
     return true;
@@ -47,7 +47,7 @@ bool ScriptClass::SetMission(int nLine)
 // ++CurrentMission; return CurrentMission < Type->ActionsCount.
 // The increment leaves the new value in EAX, reused by the unsigned compare
 // (CMP EAX,[ECX+0xA0]; SBB EAX,EAX; NEG EAX) -> bool.
-bool ScriptClass::NextMission()
+bool ScriptCursorView_00691590::NextMission()
 {
     ++this->CurrentMission;
     return this->CurrentMission < this->Type->ActionsCount;

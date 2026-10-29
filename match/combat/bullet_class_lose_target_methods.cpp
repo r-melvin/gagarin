@@ -24,7 +24,7 @@ static inline CellStruct Coord2Cell_00468430(const CoordStruct* coord)
 //
 // The cell is read out of the target's coordinates up front, before the
 // tests, and the target pointer is re-read from the member for each call.
-void BulletClass::LoseTarget()
+void BulletView_00468430::LoseTarget()
 {
     CoordStruct coord;
     CellStruct  cell = Coord2Cell_00468430(

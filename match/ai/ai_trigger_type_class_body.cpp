@@ -24,6 +24,7 @@
 #include "../core/header_tuning_globals.h"
 #include "../economy/house_building/house_views.h"
 #include "../_layout/foot_class.h"
+#include "../_layout/team_type_class.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -62,31 +63,7 @@ extern const char* DAT_00818118;
 // GLOBAL: GAMEMD 0xA83C98 -- the house-type registry.
 extern DynamicVectorClass<AbstractTypeClass*> DAT_00A83C98;
 
-// The object at team type +0xE4: 0x6E8780 returns a count.
-struct TaskForce_006E8780
-{
-    // FUNCTION: GAMEMD 0x6E8780 (decl; reloc)
-    int FUN_006E8780();
-};
 
-// TeamTypeClass as this unit reads it (0x41FEE0, slots 25 and 26): RTTI
-// makes it an AbstractTypeClass (the ID the +0x24 adds read); only the task
-// force pointer and the zone-check fields past the base are modelled. Not a
-// canonical layout.
-class TeamTypeClass : public AbstractTypeClass
-{
-public:
-    unsigned char       unknown_98[0xE4 - 0x98];  // +0x98
-    TaskForce_006E8780* unknown_E4;   // +0xE4 (MOV ECX,[EAX+0xE4] @0x41FA66)
-    int                 unknown_E8;   // +0xE8
-    int                 unknown_EC;   // +0xEC the movement zone (pushed to 0x56D230)
-    bool                unknown_F0;   // +0xF0 checked first; clear means "reachable"
-    bool                unknown_F1;   // +0xF1 selects the two-zone test
-};
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, unknown_E4) == 0xE4);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, unknown_EC) == 0xEC);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, unknown_F0) == 0xF0);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, unknown_F1) == 0xF1);
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.
 struct Map_0087F7E8
@@ -414,13 +391,13 @@ void AITriggerTypeClass::FUN_0041F2E0(CCINIClass* ini, int isGlobal)
 // differ while the zones for movement zone 5 agree.
 bool AITriggerTypeClass::FUN_0041FEE0(TeamTypeClass* team, AITriggerHouse* first, AITriggerHouse* second)
 {
-    if (!team->unknown_F0 || second == 0) {
+    if (!team->Flag_F0 || second == 0) {
         return true;
     }
     CellStruct a = first->FUN_0050DEF0();
     CellStruct b = second->FUN_0050DEF0();
     int zone = team->unknown_EC;
-    if (team->unknown_F1) {
+    if (team->Flag_F1) {
         int zoneB = DAT_0087F7E8.FUN_0056D230(b, zone, false);
         if (DAT_0087F7E8.FUN_0056D230(a, zone, false) != zoneB) {
             int zoneB5 = DAT_0087F7E8.FUN_0056D230(b, 5, false);
@@ -587,12 +564,12 @@ bool AITriggerTypeClass::vf_25(CCINIClass* ini)
                                     }
 
                                     if (unknown_DC != 0) {
-                                        unknown_B0 = (unknown_B0 > unknown_DC->unknown_E4->FUN_006E8780())
-                                              ? unknown_B0 : unknown_DC->unknown_E4->FUN_006E8780();
+                                        unknown_B0 = (unknown_B0 > unknown_DC->TaskForce->FUN_006E8780())
+                                              ? unknown_B0 : unknown_DC->TaskForce->FUN_006E8780();
                                     }
                                     if (unknown_E0 != 0) {
-                                        unknown_B0 = (unknown_B0 > unknown_E0->unknown_E4->FUN_006E8780())
-                                              ? unknown_B0 : unknown_E0->unknown_E4->FUN_006E8780();
+                                        unknown_B0 = (unknown_B0 > unknown_E0->TaskForce->FUN_006E8780())
+                                              ? unknown_B0 : unknown_E0->TaskForce->FUN_006E8780();
                                     }
                                     return true;
                                 }

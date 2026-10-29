@@ -18,7 +18,7 @@ bool TriggerClass::FireActions(ObjectClass* pObj, CellStruct location)
     if (this->Enabled && !this->Destroyed) {
         bool result = false;
         for (TActionClass* action = reinterpret_cast<TActionClass*>(this->Type->FirstAction); action != 0;
-             action = action->NextAction) {
+             action = action->unknown_28) {
             if (action->Execute(
                     HouseClass::FindByCountryIndex(this->Type->House->ArrayIndex),
                     pObj, this, location)) {

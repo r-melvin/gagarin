@@ -18,36 +18,12 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/rules_class.h"
+#include "../platform/ccini_class_methods.h"
 
 // LIBRARY: GAMEMD 0x7C9CC2 -- CRT strtok (excluded from the match target).
 extern "C" char* __cdecl strtok(char* str, const char* delim);
 
-// Opaque INI parser; the out-of-line members are declared only, so cl emits
-// reloc-normalised __thiscall CALLs.
-class CCINIClass
-{
-public:
-    // FUNCTION: GAMEMD 0x526810 (decl; reloc)
-    void* GetSection(const char* pSection);
-    // FUNCTION: GAMEMD 0x526B10 (decl; reloc)
-    void* GetEntry(const char* pSection, const char* pKey);
-    // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- INIClass::ReadString.
-    int   ReadString(const char* pSection, const char* pKey, const char* pDefault,
-                     char* pBuffer, int size);
-
-    // FUNCTION: GAMEMD 0x679F40 -- CCINIClass::Exists (matched out of line in
-    // match/platform/ccini_class_methods.cpp). Here it is the header inline
-    // VC6 expands at the section test: with the key defaulted to null the
-    // entry branch folds away and the section probe survives as a
-    // materialised bool (`TEST EAX,EAX; SETNZ AL; TEST AL,AL`).
-    bool Exists(const char* pSection, const char* pKey = 0)
-    {
-        if (pKey == 0) {
-            return GetSection(pSection) != 0;
-        }
-        return GetEntry(pSection, pKey) != 0;
-    }
-};
 
 // FUNCTION: GAMEMD 0x6CFCC0 (decl; reloc) -- ShapeButtonClass::FindIndex
 // (matched in match/ui/shape_button_class.cpp).
@@ -72,11 +48,6 @@ extern char* ButtonListKey;
 // GLOBAL: GAMEMD 0x7F0CF4 -- pointer to the default button list text.
 extern char* ButtonListDefault;
 
-struct RulesClass
-{
-    // FUNCTION: GAMEMD 0x674650
-    bool Read_AdvancedCommandBar(CCINIClass* pINI, bool multiplayer);
-};
 
 // STRING: GAMEMD 0x817F70 -- ",".
 

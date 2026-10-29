@@ -47,7 +47,7 @@ extern char g_ScriptType_vt3;
 // The append written as a free inline helper taking the array as a pointer
 // parameter rather than as a member of the vector. See the MATCHED note below.
 static inline bool AddItem_ScriptTypeArray(ScriptTypeVector* self,
-                                           ScriptTypeClass* item)
+                                           ScriptTypeView_00691970* item)
 {
     if (self->Count >= self->Capacity) {
         if (!self->IsAllocated && self->Capacity != 0) {
@@ -72,7 +72,7 @@ static inline bool AddItem_ScriptTypeArray(ScriptTypeVector* self,
 // the matching ScriptTypeClass (constructor + Array.AddItem inlined), load it,
 // and stamp IsGlobal.
 // ---------------------------------------------------------------------------
-void ScriptTypeClass::LoadFromINIList(CCINIClass* pINI, int isGlobal)
+void ScriptTypeView_00691970::LoadFromINIList(CCINIClass* pINI, int isGlobal)
 {
     char buffer[0x18];
 
@@ -80,7 +80,7 @@ void ScriptTypeClass::LoadFromINIList(CCINIClass* pINI, int isGlobal)
     for (int n = 0; n < count; ++n) {
         const char* key = pINI->GetKeyName("ScriptTypes", n);
         if (pINI->ReadString("ScriptTypes", key, "", buffer, 0x18) > 0) {
-            ScriptTypeClass* pItem;
+            ScriptTypeView_00691970* pItem;
 
             if (Strcmpi("<none>", buffer) && Strcmpi("none", buffer)) {
                 int i = 0;
@@ -92,7 +92,7 @@ void ScriptTypeClass::LoadFromINIList(CCINIClass* pINI, int isGlobal)
                     ++i;
                 }
 
-                pItem = (ScriptTypeClass*)OpNew(0x234);
+                pItem = (ScriptTypeView_00691970*)OpNew(0x234);
                 if (pItem) {
                     pItem->AbsCtor(buffer);
                     pItem->IsGlobal = 0;
@@ -122,7 +122,7 @@ have_item:
 // Look up a ScriptTypeClass by id; allocate + register one if absent.  "<none>"
 // and "none" both resolve to null.
 // ---------------------------------------------------------------------------
-ScriptTypeClass* ScriptTypeClass::FindOrAllocate(const char* pID)
+ScriptTypeView_00691970* ScriptTypeView_00691970::FindOrAllocate(const char* pID)
 {
     if (Strcmpi("<none>", pID) && Strcmpi("none", pID)) {
         int i = 0;
@@ -133,7 +133,7 @@ ScriptTypeClass* ScriptTypeClass::FindOrAllocate(const char* pID)
             ++i;
         }
 
-        ScriptTypeClass* pItem = (ScriptTypeClass*)OpNew(0x234);
+        ScriptTypeView_00691970* pItem = (ScriptTypeView_00691970*)OpNew(0x234);
         if (pItem) {
             pItem->AbsCtor(pID);
             pItem->IsGlobal = 0;

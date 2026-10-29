@@ -65,6 +65,8 @@ public:
     TriggerClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
     // FUNCTION: GAMEMD 0x725FA0 (constructor declaration)
     TriggerClass(TriggerTypeClass* type);
+    // The class factory's construction (TClassFactory<TriggerClass>): the same constructor with a default argument.
+    TriggerClass(int unknown_arg0 = 0);
     // FUNCTION: GAMEMD 0x726250
     bool HasCrossesHorizontalLineEvent() const;
     // FUNCTION: GAMEMD 0x726290

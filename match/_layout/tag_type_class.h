@@ -33,6 +33,8 @@ public:
     virtual int vf_16();                                                  // 16  0x6E64B0
     // FUNCTION: GAMEMD 0x6E5B60 (constructor declaration)
     TagTypeClass(const char* id);
+    // The class factory's construction (TClassFactory<TagTypeClass>): the same constructor with a default argument.
+    TagTypeClass(int unknown_arg0 = 0);
     // The stream loader's in-place construction: only the four tables.
     TagTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x6E5CA0 (declaration; destructor)

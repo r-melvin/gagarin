@@ -40,6 +40,23 @@ GG_STATIC_ASSERT(sizeof(RawBlock10) == 0x10);
 class WarheadTypeClass : public AbstractTypeClass
 {
 public:
+    // FUNCTION: GAMEMD 0x75CEC0 (decl; reloc) -- constructor taking the type's ID. throw() keeps
+    // `new WarheadTypeClass(id)` free of the EH frame VC6 would register for the allocation.
+    WarheadTypeClass(const char* id) throw();
+    // The class factory's construction (TClassFactory<WarheadTypeClass>): the same constructor with a default argument.
+    WarheadTypeClass(int unknown_arg0 = 0);
+    // Overrides of the slots AbstractClass leaves pure (slots 3, 5, 6, 11, 12).
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    virtual HRESULT __stdcall Load(IStream* pStm);
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    virtual int vf_11();
+    virtual int vf_12();
+    // FUNCTION: GAMEMD 0x75E3B0 (__fastcall lookup-or-create by ID)
+    static WarheadTypeClass* FindOrAllocate(const char* id);
+    // The index-returning lookup-or-create and the index-to-ID lookup emitted in the block at
+    // 0x40F2D0. Placeholder names.
+    static int FUN_0040F510(const char* id);          // GAMEMD 0x40F510
+    static const char* FUN_0040F5C0(int index);       // GAMEMD 0x40F5C0
     double            Deform;              // +0x98
     double            Verses[0xB];         // +0xA0  (0xA0..0xF7)
     double            ProneDamage;         // +0xF8

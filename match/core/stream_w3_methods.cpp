@@ -158,9 +158,9 @@ HRESULT __stdcall TubeClass::Load(IStream* pStm)
     return 0;
 }
 
-// ---- WarheadTypeClass (vtable 0x7F6B30) -----------------------------------------------------
+// ---- WarheadTypeClass (vtable 0x7F6B30), as the view WarheadStreamView_0075E2C0 -----------------------------------------------------
 
-class WarheadTypeClass : public AbstractTypeClass
+class WarheadStreamView_0075E2C0 : public AbstractTypeClass
 {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -181,16 +181,16 @@ public:
     char unknown_1B0[0x1B8 - 0x1B0];
     int unknown_1B8;               // +0x1B8
 };
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unknown_108) == 0x108);
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unknown_114) == 0x114);
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unknown_190) == 0x190);
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unknown_19C) == 0x19C);
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unknown_1AC) == 0x1AC);
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unknown_1B8) == 0x1B8);
+GG_STATIC_ASSERT(offsetof(WarheadStreamView_0075E2C0, unknown_108) == 0x108);
+GG_STATIC_ASSERT(offsetof(WarheadStreamView_0075E2C0, unknown_114) == 0x114);
+GG_STATIC_ASSERT(offsetof(WarheadStreamView_0075E2C0, unknown_190) == 0x190);
+GG_STATIC_ASSERT(offsetof(WarheadStreamView_0075E2C0, unknown_19C) == 0x19C);
+GG_STATIC_ASSERT(offsetof(WarheadStreamView_0075E2C0, unknown_1AC) == 0x1AC);
+GG_STATIC_ASSERT(offsetof(WarheadStreamView_0075E2C0, unknown_1B8) == 0x1B8);
 
 // FUNCTION: GAMEMD 0x75E2C0
 // Writes the base state, then three counted lists of dwords.
-HRESULT __stdcall WarheadTypeClass::Save(IStream* pStm, BOOL fClearDirty)
+HRESULT __stdcall WarheadStreamView_0075E2C0::Save(IStream* pStm, BOOL fClearDirty)
 {
     HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
     if (hr >= 0) {

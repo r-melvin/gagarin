@@ -5,9 +5,9 @@
 // pointers). Each body pops three arguments (RET 0xC): section, key and the
 // value by reference. The 0x52A610 writer pops one argument and hands two
 // encoded key blocks to the uuencoded block writer at 0x526E80.
-// TU-local views: ini_class.h does not declare these methods.
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../platform/ccini_class_methods.h"
 
 // LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
@@ -33,23 +33,7 @@ public:
     int EncodeSecond(char* buffer) const;
 };
 
-class INIClass
-{
-public:
-    // FUNCTION: GAMEMD 0x528660 (decl; reloc)
-    bool WriteString(const char* section, const char* key, const char* value);
-    bool WriteIntQuad(const char* section, const char* key, const IniIntQuad& value);
-    bool WriteIntTriple(const char* section, const char* key, const IniIntTriple& value);
-    bool WriteFloatTriple(const char* section, const char* key, const IniFloatTriple& value);
-};
 
-class CCINIClass : public INIClass
-{
-public:
-    // FUNCTION: GAMEMD 0x526E80 (decl; reloc)
-    bool WriteUUBlock(const char* section, const void* block, int length);
-    bool WriteKeyBlocks(const IniKeyBlockSource& key);
-};
 
 // FUNCTION: GAMEMD 0x527C10
 bool INIClass::WriteIntQuad(const char* section, const char* key, const IniIntQuad& value)

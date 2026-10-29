@@ -10,6 +10,9 @@
 #include "index_class_layout.h"
 class Wstring;
 class FileClass;
+struct IniIntQuad;
+struct IniIntTriple;
+struct IniFloatTriple;
 // VTABLE: GAMEMD 0x7EA5F4 -- INIClass, one deleting slot.
 class INIClass
 {
@@ -86,6 +89,10 @@ public:
     bool WriteDouble(const Wstring& section, const Wstring& key, double value);
     // GAMEMD 0x5281C0: the Wstring-name twin of 0x528170.
     bool FUN_005281C0(const Wstring& section, const Wstring& key, int value);
+    // GAMEMD 0x527C10 / 0x529BF0 / 0x52A040: composite writers over the narrow-name string writer.
+    bool WriteIntQuad(const char* section, const char* key, const IniIntQuad& value);
+    bool WriteIntTriple(const char* section, const char* key, const IniIntTriple& value);
+    bool WriteFloatTriple(const char* section, const char* key, const IniFloatTriple& value);
     void* unknown_04;
     void* unknown_08;
     // RTTI table 0x7E1AFC; explicit inherited vptr view is retained.

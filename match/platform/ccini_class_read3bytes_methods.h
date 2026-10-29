@@ -15,6 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "ccini_class_methods.h"
 
 // CRT sprintf / sscanf, __cdecl variadic; the caller pops the arguments.
 // LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc)
@@ -29,17 +30,5 @@ GG_STATIC_ASSERT(offsetof(ColorStruct, G) == 0x01);
 GG_STATIC_ASSERT(offsetof(ColorStruct, B) == 0x02);
 GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);
 
-// Opaque INI parser; only the out-of-line string reader is called.
-class CCINIClass
-{
-public:
-    // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- INIClass::ReadString.
-    int ReadString(const char* section, const char* key, const char* def,
-                   char* buffer, int size);
-
-    // FUNCTION: GAMEMD 0x474B50
-    ColorStruct Read3Bytes(const char* section, const char* key,
-                           const ColorStruct& def);
-};
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_READ3BYTES_METHODS_H

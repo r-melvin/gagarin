@@ -8,6 +8,7 @@
 
 #include <new.h>
 #include "../_layout/team_type_class.h"
+#include "../_layout/house_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../core/vector_class_operations.h"
 #include "../_layout/obj_004a1d30.h"
@@ -58,18 +59,18 @@ TeamTypeClass::TeamTypeClass(const char* id)
       Flag_B2(false),
       Flag_B3(false),
       unknown_B4(7),
-      unknown_B8(-1),
+      Max(-1),
       unknown_BC(0),
       unknown_C0(0),
-      Ptr_C4(0),
-      unknown_C8(-1),
+      Owner(0),
+      idxHouse(-1),
       unknown_CC(0),
       Ptr_D0(0),
-      unknown_D4(-1),
-      unknown_D8(-1),
-      unknown_DC(0),
+      Waypoint(-1),
+      TransportWaypoint(-1),
+      InstanceCount(0),
       Ptr_E0(0),
-      Ptr_E4(0),
+      TaskForce(0),
       unknown_E8(0),
       unknown_EC(9),
       Flag_F0(true),
@@ -105,10 +106,10 @@ HRESULT __stdcall TeamTypeClass::Load(IStream* pStm)
         return hr;
     }
     new (this) TeamTypeClass(AbstractNoInit());
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&Ptr_C4);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Ptr_D0);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Ptr_E0);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&Ptr_E4);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&TaskForce);
     return 0;
 }
 
@@ -129,25 +130,25 @@ void TeamTypeClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1CA0(Flag_B0);
     crc->FUN_004A1CA0(Flag_B1);
     crc->FUN_004A1D50(unknown_B4);
-    crc->FUN_004A1D50(unknown_B8);
+    crc->FUN_004A1D50(Max);
     crc->FUN_004A1D50(unknown_BC);
-    if (Ptr_C4) {
-        crc->FUN_004A1D50(Ptr_C4->vf_11());
+    if (Owner) {
+        crc->FUN_004A1D50(Owner->vf_11());
     }
-    if (Ptr_C4) {
-        crc->FUN_004A1D50(Ptr_C4->vf_rtti_4());
+    if (Owner) {
+        crc->FUN_004A1D50(Owner->vf_rtti_4());
     }
     crc->FUN_004A1D50(unknown_CC);
     if (Ptr_D0) {
         crc->FUN_004A1D50(Ptr_D0->vf_rtti_4());
     }
-    crc->FUN_004A1D50(unknown_D4);
-    crc->FUN_004A1D50(unknown_D8);
-    crc->FUN_004A1D50(unknown_DC);
+    crc->FUN_004A1D50(Waypoint);
+    crc->FUN_004A1D50(TransportWaypoint);
+    crc->FUN_004A1D50(InstanceCount);
     if (Ptr_E0) {
         crc->FUN_004A1D50(Ptr_E0->vf_rtti_4());
     }
-    if (Ptr_E4) {
-        crc->FUN_004A1D50(Ptr_E4->vf_rtti_4());
+    if (TaskForce) {
+        crc->FUN_004A1D50(TaskForce->vf_rtti_4());
     }
 }

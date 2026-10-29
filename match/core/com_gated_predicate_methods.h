@@ -17,6 +17,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/rules_class.h"
 
 struct IFace;
 
@@ -33,16 +34,6 @@ typedef char (__stdcall* Slot0b)(IFace*);
 // missing-pointer report the smart-pointer dereference emits.
 void __stdcall FUN_007DC720(unsigned int hr);
 
-// Only the two type fields the comparison reads are modelled.
-struct RulesClass
-{
-    char _pad000[0x4E0];
-    int  TypeA;          // +0x04E0
-    char _pad4E4[0x514 - 0x4E4];
-    int  TypeB;          // +0x0514
-};
-GG_STATIC_ASSERT(offsetof(RulesClass, TypeA) == 0x4E0);
-GG_STATIC_ASSERT(offsetof(RulesClass, TypeB) == 0x514);
 
 // GLOBAL: GAMEMD 0x008871E0 — pointer to the active RulesClass instance.
 extern RulesClass* RulesInstance;

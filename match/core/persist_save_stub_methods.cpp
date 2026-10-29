@@ -12,34 +12,29 @@
 // TechnoTypeClass::Save 0x716DC0, FootClass::Save 0x4DB690). The classes are
 // declared here only as views carrying Save: intermediate bases that do not
 // override it are elided, and no member is touched, so there is no layout.
-// The canonical headers model the COM bases as plain vptr fields, so Save
-// cannot be declared on them without a shared-header change.
+// The classes with a canonical header (AbstractClass, ObjectTypeClass,
+// TechnoTypeClass, FootClass and the family C classes) come from it.
 
 #include <objidl.h>
+#include "../_layout/anim_type_class.h"
+#include "../_layout/bullet_class.h"
+#include "../_layout/script_class.h"
+#include "../_layout/script_type_class.h"
+#include "../ai/taction_class_methods.h"
+#include "../_layout/tag_type_class.h"
+#include "../_layout/task_force_class.h"
+#include "../_layout/team_class.h"
+#include "../_layout/team_type_class.h"
+#include "../ai/tevent_class_methods.h"
+#include "../_layout/trigger_class.h"
+#include "../_layout/voxel_anim_type_class.h"
+#include "../_layout/object_type_class.h"
+#include "../_layout/techno_type_class.h"
+#include "../_layout/foot_class.h"
 
-class AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 0x410320
-};
 
-class ObjectTypeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 0x5F9950
-};
 
-class TechnoTypeClass : public ObjectTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 0x716DC0
-};
 
-class FootClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 0x4DB690
-};
 
 class AircraftClass : public FootClass
 {
@@ -59,11 +54,6 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class AnimTypeClass : public ObjectTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 class NeuronClass : public AbstractClass
 {
@@ -71,11 +61,6 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class BulletClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 
 class DiskLaserClass : public AbstractClass
@@ -126,17 +111,7 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class ScriptClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
-class ScriptTypeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 class SuperClass : public AbstractClass
 {
@@ -156,11 +131,6 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class TActionClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 class TagClass : public AbstractClass
 {
@@ -168,41 +138,11 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class TagTypeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
-class TaskForceClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
-class TeamClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
-class TeamTypeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
-class TEventClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
-class TriggerClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 class TriggerTypeClass : public AbstractClass
 {
@@ -228,11 +168,6 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class VoxelAnimTypeClass : public ObjectTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 // FUNCTION: GAMEMD 0x41B5C0
 HRESULT __stdcall AircraftClass::Save(IStream* pStm, BOOL fClearDirty)

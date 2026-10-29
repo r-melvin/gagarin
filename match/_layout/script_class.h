@@ -32,8 +32,16 @@ public:
 
     // FUNCTION: GAMEMD 0x6913C0 (declaration; constructor)
     ScriptClass(ScriptTypeClass* type);
+    // The class factory's construction (TClassFactory<ScriptClass>): the same constructor with a default argument.
+    ScriptClass(int unknown_arg0 = 0);
     // The stream loader's in-place construction: only the four tables.
     ScriptClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
+
+    // Mission-cursor accessors, declared ascending by retail address.
+    // FUNCTION: GAMEMD 0x691500
+    ScriptActionNode* GetCurrentAction(ScriptActionNode* buffer) const;
+    // FUNCTION: GAMEMD 0x691540
+    ScriptActionNode* GetNextAction(ScriptActionNode* buffer) const;
 
     ScriptTypeClass* Type;            // +0x24
     int              unknown_28;      // +0x28  constructor clears it

@@ -64,8 +64,8 @@ extern int DAT_00A8E7AC;
 // GLOBAL: GAMEMD 0x89DDF0 — the "no cell" sentinel the target cell is compared to.
 extern CellStruct DAT_0089DDF0;
 
-// BulletClass : ObjectClass — only Target is reached here.
-class BulletClass
+// A view of BulletClass : ObjectClass — only Target is reached here, through the view's own target type.
+class BulletView_00468430
 {
 public:
     char           _pad000[0x10C];   // +0x0000
@@ -74,6 +74,6 @@ public:
     // FUNCTION: GAMEMD 0x468430
     void LoseTarget();
 };
-GG_STATIC_ASSERT(offsetof(BulletClass, Target) == 0x10C);
+GG_STATIC_ASSERT(offsetof(BulletView_00468430, Target) == 0x10C);
 
 #endif  // GG_MATCH_COMBAT_BULLET_CLASS_LOSE_TARGET_METHODS_H

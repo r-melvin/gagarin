@@ -16,6 +16,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "ccini_class_methods.h"
 
 // LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf (excluded from the match target).
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
@@ -28,19 +29,6 @@ GG_STATIC_ASSERT(offsetof(ColorStruct, G) == 0x01);
 GG_STATIC_ASSERT(offsetof(ColorStruct, B) == 0x02);
 GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);
 
-// No member of the INI object is touched here; only the calling convention
-// and the forwarded reader matter, so the body stays opaque.
-class CCINIClass
-{
-public:
-    // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- INIClass::ReadString.
-    int ReadString(const char* pSection, const char* pKey, const char* pDefault,
-                   char* pBuffer, int size);
-
-    // FUNCTION: GAMEMD 0x474C70
-    ColorStruct* ReadColor(ColorStruct* pOut, const char* pSection,
-                           const char* pKey, const ColorStruct& defValue);
-};
 
 // STRING: GAMEMD 0x8189B0 -- "%d,%d,%d".
 

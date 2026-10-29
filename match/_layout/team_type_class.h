@@ -13,12 +13,19 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_type_class.h"
 #include "../core/vector_class.h"
+#include "cell.h"
+#include "task_force_class.h"
+
+class HouseClass;
+class TeamClass;
 
 class TeamTypeClass : public AbstractTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x6F06E0 (constructor)
     TeamTypeClass(const char* id);
+    // The class factory's construction (TClassFactory<TeamTypeClass>): the same constructor with a default argument.
+    TeamTypeClass(int unknown_arg0 = 0);
     // The stream loader's in-place construction.
     TeamTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x6F08F0 (destructor; scalar deleting form 0x6F20D0)
@@ -34,6 +41,24 @@ public:
     virtual int vf_16();                                                  // 16  0x6F20C0
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x6F1090
     virtual bool vf_26(CCINIClass* ini);                                  // 26  0x6F1550
+
+    // GAMEMD 0x6F2070 -- the owning house (cached Owner, else the country index).
+    HouseClass* GetHouse() const;
+    // GAMEMD 0x6F0A70 -- remove every live team spawned from this type.
+    void DestroyAllInstances();
+    // GAMEMD 0x6F2040 -- run ProcessTaskForce over every team type.
+    static void ProcessAllTaskforces();
+    // FUNCTION: GAMEMD 0x6F1FA0 -- derive the summary flags from the task force.
+    void ProcessTaskForce();
+    // GAMEMD 0x6F1F30 / 0x6F1F70 -- instance enumeration helpers.
+    void FlashAllInstances(int duration);
+    TeamClass* FindFirstInstance() const;
+    // FUNCTION: GAMEMD 0x6F09C0 -- instantiate one team of this type for `house`.
+    TeamClass* CreateTeam(HouseClass* house);
+    // GAMEMD 0x6F18E0 / 0x6F1870 / 0x6F18A0 accessors.
+    int GetGroup() const;
+    CellStruct* GetWaypoint(CellStruct* buffer) const;
+    CellStruct* GetTransportWaypoint(CellStruct* buffer) const;
 
     int            ArrayIndex;      // +0x98  index in the type array
     int            Group;           // +0x9C
@@ -55,18 +80,18 @@ public:
     bool           Flag_B2;         // +0xB2
     bool           Flag_B3;         // +0xB3
     int            unknown_B4;      // +0xB4
-    int            unknown_B8;      // +0xB8
+    int            Max;             // +0xB8 instance cap, -1 = none
     int            unknown_BC;      // +0xBC
     int            unknown_C0;      // +0xC0
-    AbstractClass* Ptr_C4;          // +0xC4 owner house (INI "House")
-    int            unknown_C8;      // +0xC8 country index while no house is set
+    HouseClass*    Owner;           // +0xC4 owner house (INI "House")
+    int            idxHouse;        // +0xC8 country index while no house is set
     int            unknown_CC;      // +0xCC
     AbstractClass* Ptr_D0;          // +0xD0 tag type (INI "Tag")
-    int            unknown_D4;      // +0xD4 INI "Waypoint"
-    int            unknown_D8;      // +0xD8 INI "TransportWaypoint"
-    int            unknown_DC;      // +0xDC
+    int            Waypoint;        // +0xD4 INI "Waypoint"
+    int            TransportWaypoint; // +0xD8 INI "TransportWaypoint"
+    int            InstanceCount;   // +0xDC live instances (compared against Max in campaign mode)
     AbstractClass* Ptr_E0;          // +0xE0 script type (INI "Script")
-    AbstractClass* Ptr_E4;          // +0xE4 task force (INI "TaskForce"; GetGroup reads its +0x98)
+    TaskForceClass* TaskForce;      // +0xE4 task force (INI "TaskForce"; GetGroup reads its +0x98)
     int            unknown_E8;      // +0xE8
     int            unknown_EC;      // +0xEC
     bool           Flag_F0;         // +0xF0
@@ -83,10 +108,15 @@ GG_STATIC_ASSERT(offsetof(TeamTypeClass, ArrayIndex) == 0x98);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Group) == 0x9C);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Flag_A4) == 0xA4);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, unknown_B4) == 0xB4);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Ptr_C4) == 0xC4);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Max) == 0xB8);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Owner) == 0xC4);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, idxHouse) == 0xC8);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Waypoint) == 0xD4);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, TransportWaypoint) == 0xD8);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, InstanceCount) == 0xDC);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Ptr_D0) == 0xD0);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Ptr_E0) == 0xE0);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Ptr_E4) == 0xE4);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, TaskForce) == 0xE4);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Flag_F7) == 0xF7);
 GG_STATIC_ASSERT(sizeof(TeamTypeClass) == 0xF8);
 

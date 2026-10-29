@@ -32,6 +32,8 @@ struct CoordStruct;
 class TActionClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x6DD000 (decl; reloc) -- constructor, as the class factory calls it.
+    TActionClass();
     // The stream loader's in-place construction: only the four tables.
     TActionClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
     virtual ~TActionClass();                                              // 8   0x6E4660 (scalar deleting form)
@@ -141,6 +143,9 @@ public:
     // FUNCTION: GAMEMD 0x6E44E0
     bool FUN_006E44E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // END GENERATED
+    // GAMEMD 0x6DD8B0 __thiscall (decl; reloc) -- run the action.
+    bool Execute(HouseClass* pHouse, ObjectClass* pObject, TriggerClass* pTrigger,
+                 const CellStruct& location);
 
     // r15 handlers (taction_r15_methods.cpp).
     // FUNCTION: GAMEMD 0x6E01C0
@@ -167,6 +172,30 @@ public:
     bool FUN_006E2970(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E0EF0
     bool FUN_006E0EF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+
+    // w3 handlers (taction_w3_methods.cpp).
+    // FUNCTION: GAMEMD 0x006E0480
+    bool FUN_006E0480(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E0F90
+    bool FUN_006E0F90(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E2860
+    bool FUN_006E2860(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E28E0
+    bool FUN_006E28E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E2F00
+    bool FUN_006E2F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E1BD0
+    bool FUN_006E1BD0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E1C40
+    bool FUN_006E1C40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E1DC0
+    bool FUN_006E1DC0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E1E00
+    bool FUN_006E1E00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E1F60
+    bool FUN_006E1F60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x006E2660
+    bool FUN_006E2660(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
 
     unsigned char unknown_24[4];     // +0x24
     TActionClass* unknown_28;        // +0x28

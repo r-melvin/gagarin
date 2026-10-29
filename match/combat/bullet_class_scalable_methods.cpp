@@ -20,5 +20,5 @@ void BulletClass::InitScalable()
     if (extra < 0)
         extra = 0;
 
-    this->Type->SetScaledSpawnDelay(this->Type->SpawnDelay + extra / 3);
+    this->Type->SetScaledSpawnDelay(this->Type->unknown_2E4 + extra / 3);
 }

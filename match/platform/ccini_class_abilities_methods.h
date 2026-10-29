@@ -18,6 +18,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "ccini_class_methods.h"
 
 // LIBRARY: GAMEMD 0x7C9CC2 — CRT strtok (excluded from the match target).
 extern "C" char* __cdecl strtok(char* str, const char* delim);
@@ -40,16 +41,5 @@ struct AbilitiesStruct
 };
 GG_STATIC_ASSERT(sizeof(AbilitiesStruct) == 0x12);
 
-class CCINIClass
-{
-public:
-    // FUNCTION: GAMEMD 0x528A10 (decl; reloc) — INIClass::ReadString.
-    int ReadString(const char* section, const char* key, const char* def,
-                   char* buffer, int size);
-
-    // FUNCTION: GAMEMD 0x477640
-    AbilitiesStruct ReadAbilities(const char* section, const char* key,
-                                  const AbilitiesStruct& def);
-};
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_ABILITIES_METHODS_H

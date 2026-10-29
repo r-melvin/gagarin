@@ -24,12 +24,12 @@
 // result, direct assignment from the wrapper (1.5%), `key` and `black` order.
 bool RulesClass::Read_ColorAdd(CCINIClass* pINI)
 {
-    if (pINI->Exists(ColorAddSection)) {
+    if (pINI->INIClass::Exists(ColorAddSection, 0)) {
         int count = pINI->GetKeyCount(ColorAddSection);
         for (int i = 0; i < count; i++) {
             const char* key = pINI->GetKeyName(ColorAddSection, i);
             ColorStruct black(0, 0, 0);
-            ColorStruct c = pINI->ReadColor(ColorAddSection, key, black);
+            ColorStruct c = ReadColorViaRead3Bytes(pINI, ColorAddSection, key, black);
             this->ColorAdd[i] = c;
         }
         return true;

@@ -27,7 +27,7 @@ int TeamTypeClass::GetGroup() const
 {
     int group = this->Group;
     if (group != -2 && group == -1 && this->TaskForce != 0) {
-        group = this->TaskForce->Group;
+        group = this->TaskForce->ArrayIndex;
     }
     return group;
 }

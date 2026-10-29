@@ -364,47 +364,47 @@
  {
   "tu": "match/ai/script_class_methods.cpp",
   "addr": "0x691590",
-  "sym": "?ClearMission@ScriptClass@@QAE_NXZ",
+  "sym": "?ClearMission@ScriptCursorView_00691590@@QAE_NXZ",
   "len": "0xA",
   "name": "ClearMission",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/script_class_methods.cpp",
   "addr": "0x6915A0",
-  "sym": "?SetMission@ScriptClass@@QAE_NH@Z",
+  "sym": "?SetMission@ScriptCursorView_00691590@@QAE_NH@Z",
   "len": "0xC",
   "name": "SetMission",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/script_class_methods.cpp",
   "addr": "0x6915B0",
-  "sym": "?NextMission@ScriptClass@@QAE_NXZ",
+  "sym": "?NextMission@ScriptCursorView_00691590@@QAE_NXZ",
   "len": "0x15",
   "name": "NextMission",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/script_type_class.cpp",
   "addr": "0x691970",
-  "sym": "?LoadFromINIList@ScriptTypeClass@@SIXPAVCCINIClass@@H@Z",
+  "sym": "?LoadFromINIList@ScriptTypeView_00691970@@SIXPAVCCINIClass@@H@Z",
   "len": "0x1B8",
   "name": "LoadFromINIList",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/script_type_class.cpp",
   "addr": "0x691C00",
-  "sym": "?FindOrAllocate@ScriptTypeClass@@SIPAV1@PBD@Z",
+  "sym": "?FindOrAllocate@ScriptTypeView_00691970@@SIPAV1@PBD@Z",
   "len": "0x142",
   "name": "FindOrAllocate",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu038_building_class.cpp",
@@ -1742,11 +1742,11 @@
  {
   "tu": "match/combat/bullet_class_lose_target_methods.cpp",
   "addr": "0x468430",
-  "sym": "?LoseTarget@BulletClass@@QAEXXZ",
+  "sym": "?LoseTarget@BulletView_00468430@@QAEXXZ",
   "len": "0xa4",
   "name": "BulletClass::LoseTarget",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/bullet_class_scalable_methods.cpp",
@@ -76686,7 +76686,7 @@
  {
   "tu": "match/render/tu023_alpha_shape_class.cpp",
   "addr": "0x420920",
-  "sym": "_$E2",
+  "sym": "_$E3",
   "len": "0x3b",
   "name": "DynamicVectorClass<AlphaShapeClass*> exit destructor stub (DAT_0088A0F0)",
   "status": "matched",
@@ -76704,11 +76704,11 @@
  {
   "tu": "match/render/tu023_alpha_shape_class.cpp",
   "addr": "0x4208E0",
-  "sym": "_$E4",
+  "sym": "_$E5",
   "len": "0x3d",
   "name": "dynamic initializer (DAT_0088A0F0)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -86901,7 +86901,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D8630",
-  "sym": "_$E3",
+  "sym": "_$E4",
   "len": "0x1",
   "name": "_$E3",
   "status": "matched",
@@ -86910,7 +86910,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DA350",
-  "sym": "_$E6",
+  "sym": "_$E7",
   "len": "0x1",
   "name": "_$E6",
   "status": "matched",
@@ -86928,16 +86928,16 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DC400",
-  "sym": "_$E11",
+  "sym": "_$E12",
   "len": "0x1",
   "name": "_$E11",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DC410",
-  "sym": "_$E10",
+  "sym": "_$E11",
   "len": "0x1",
   "name": "_$E10",
   "status": "matched",
@@ -101137,20 +101137,20 @@
  {
   "tu": "match/combat/tu173_parasite_class.cpp",
   "addr": "0x628FB0",
-  "sym": "_$E2",
+  "sym": "_$E3",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4980)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu173_parasite_class.cpp",
   "addr": "0x628FD0",
-  "sym": "_$E5",
+  "sym": "_$E6",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4968)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu174_particle_class.cpp",
@@ -132268,7 +132268,7 @@
  {
   "tu": "match/core/type_class_noinit_ctors.cpp",
   "addr": "0x6DD180",
-  "sym": "??0TActionClass@@QAE@ABUAbstractNoInit@@@Z",
+  "sym": "??0TActionView_006DD180@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x2e",
   "name": "TActionClass::TActionClass(AbstractNoInit)",
   "status": "matched",
@@ -132277,7 +132277,7 @@
  {
   "tu": "match/core/type_class_noinit_ctors.cpp",
   "addr": "0x6E7F50",
-  "sym": "??0TaskForceClass@@QAE@ABUAbstractNoInit@@@Z",
+  "sym": "??0TaskForceView_006E7F50@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x2e",
   "name": "TaskForceClass::TaskForceClass(AbstractNoInit)",
   "status": "matched",
@@ -134158,7 +134158,7 @@
  {
   "tu": "match/core/stream_w3_methods.cpp",
   "addr": "0x75E2C0",
-  "sym": "?Save@WarheadTypeClass@@UAGJPAUIStream@@H@Z",
+  "sym": "?Save@WarheadStreamView_0075E2C0@@UAGJPAUIStream@@H@Z",
   "len": "0xe1",
   "name": "WarheadTypeClass::Save",
   "status": "matched",

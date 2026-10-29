@@ -33,7 +33,7 @@ TeamClass* TeamTypeClass::CreateTeam(HouseClass* house)
 
     if (ScenarioInit_00A8E7AC == 0 && this->Max >= 0) {
         if (GameMode_00A8B238 == 0) {
-            if (this->At_DC >= this->Max) {
+            if (this->InstanceCount >= this->Max) {
                 return 0;
             }
         } else {
@@ -44,7 +44,7 @@ TeamClass* TeamTypeClass::CreateTeam(HouseClass* house)
     }
 
     // STRING: GAMEMD 0x842E58
-    FUN_004068E0("Creating a new team named '%s'.\n", this->Name);
+    FUN_004068E0("Creating a new team named '%s'.\n", this->Name.Data);
 
     TeamClass* team = (TeamClass*)operator new(sizeof(TeamClass));
     return team ? team->Construct(this, house, 0) : 0;

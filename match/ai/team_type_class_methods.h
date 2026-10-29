@@ -19,21 +19,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/abstract_type_class.h"
+#include "../_layout/team_type_class.h"
 
 // CellStruct — 2D short cell coordinate (sizeof = 4).  Self-guarded for reuse.
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-// ---------------------------------------------------------------------------
-// Partial TaskForceClass view: GetGroup reads the dword at +0x98 when a team's
-// Group is the "task force's group" sentinel (-1).  Only that one member is pinned.
-// ---------------------------------------------------------------------------
-struct TeamTaskForceView
-{
-    char _pad_00[0x98];   // +0x00..0x97
-    int  Group;           // +0x98
-};
-GG_STATIC_ASSERT(offsetof(TeamTaskForceView, Group) == 0x98);
 
 // ---------------------------------------------------------------------------
 // Waypoint-coordinate locator.  GetWaypoint/GetTransportWaypoint load a global
@@ -48,28 +39,6 @@ struct WaypointLocator
 extern WaypointLocator* WaypointLocatorPtr;              // GAMEMD 0xA8B230
 extern CellStruct       DefaultWaypointCell;             // GAMEMD 0xB0E9C8
 
-// ---------------------------------------------------------------------------
-// TeamTypeClass  (AbstractTypeClass + the touched members; full layout = P2)
-// ---------------------------------------------------------------------------
-class TeamTypeClass : public AbstractTypeClass
-{
-public:
-    int             ArrayIndex;          // +0x98
-    int             Group;               // +0x9C
-    char            _pad_A0[0xD4 - 0xA0];// +0xA0..0xD3 (P2)
-    int             Waypoint;            // +0xD4
-    int             TransportWaypoint;   // +0xD8
-    char            _pad_DC[0xE4 - 0xDC];// +0xDC..0xE3 (P2)
-    TeamTaskForceView* TaskForce;           // +0xE4
 
-    int         GetGroup() const;
-    CellStruct* GetWaypoint(CellStruct* buffer) const;
-    CellStruct* GetTransportWaypoint(CellStruct* buffer) const;
-};
-
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Group)             == 0x9C);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Waypoint)          == 0xD4);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, TransportWaypoint) == 0xD8);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, TaskForce)         == 0xE4);
 
 #endif  // GG_MATCH_AI_TEAM_TYPE_CLASS_METHODS_H

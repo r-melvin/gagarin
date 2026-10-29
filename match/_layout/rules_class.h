@@ -12,6 +12,7 @@
 #include "../_rt/gg_static_assert.h"
 
 #include "../core/vector_class.h"
+#include "color_struct.h"
 class CCINIClass;
 class WarheadTypeClass;
 class AnimTypeClass;
@@ -22,6 +23,20 @@ struct RulesClass
 {
     // FUNCTION: GAMEMD 0x66D3A0
     bool Read_Colors(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x66D480
+    bool Read_ColorAdd(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x66D150
+    bool Read_ElevationModel(CCINIClass* pINI);
+    // GAMEMD 0x66D1F0 __thiscall
+    bool Read_WallModel(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x674650
+    bool Read_AdvancedCommandBar(CCINIClass* pINI, bool multiplayer);
+    // FUNCTION: GAMEMD 0x672280  RulesClass::Read_InfantryTypes  (__thiscall)
+    bool Read_InfantryTypes(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x672360  RulesClass::Read_VehicleTypes   (__thiscall)
+    bool Read_VehicleTypes(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x6723D0  RulesClass::Read_AircraftTypes  (__thiscall)
+    bool Read_AircraftTypes(CCINIClass* pINI);
 
 
     // Existing list readers: binary-confirmed section/allocator calls.
@@ -67,7 +82,9 @@ struct RulesClass
     int unknown_14C; // 469E70: array count, decremented before RandomRanged
     char unknown_150[0x1A0 - 0x150];
     int unknown_1A0;
-    char unknown_1A4[0x1D4 - 0x1A4];
+    char unknown_1A4[0x1C8 - 0x1A4];
+    int field_1C8;      // +0x1C8 read by HouseClass::CanOverpower
+    char unknown_1CC[0x1D4 - 0x1CC];
     int unknown_1D4;    // +0x1D4 sound played on entering planning mode
     char unknown_1D8[0x1E0 - 0x1D8];
     int unknown_1E0;    // +0x1E0 sound played on leaving it
@@ -80,7 +97,11 @@ struct RulesClass
     char unknown_348[0x350 - 0x348];
     AnimTypeClass* unknown_350; // 46A2A1 special-impact animation constructor argument
     AnimTypeClass* SpawnAnim; // +0x354
-    char unknown_358[0x54C - 0x358];
+    char unknown_358[0x4E0 - 0x358];
+    int TypeA;          // +0x4E0
+    char unknown_4E4[0x514 - 0x4E4];
+    int TypeB;          // +0x514
+    char unknown_518[0x54C - 0x518];
     int At_54C;
     char unknown_550[0x580 - 0x550];
     int unknown_580;
@@ -125,13 +146,19 @@ struct RulesClass
     int unknown_D48;
     char unknown_D4C[8];
     int unknown_D54;
-    char unknown_D58[0xE04 - 0xD58];
+    char unknown_D58[0xD70 - 0xD58];
+    float AIMinorSuperReadyPercent; // +0xD70
+    char unknown_D74[0xE04 - 0xD74];
     int unknown_E04;
     char unknown_E08[0xF8C - 0xE08];
     WarheadTypeClass* unknown_F8C; // 469CA7 compares this pointer with Bullet.WH
     char unknown_F90[0xFA8 - 0xF90];
     WarheadTypeClass* C4Warhead;
-    char unknown_FAC[0x1178 - 0xFAC];
+    char unknown_FAC[0xFD0 - 0xFAC];
+    int field_FD0;      // +0xFD0
+    char unknown_FD4[0xFD8 - 0xFD4];
+    int field_FD8;      // +0xFD8
+    char unknown_FDC[0x1178 - 0xFDC];
     int* unknown_1178; // 0x686A17/0x686A23 indexes by House AIDifficulty
     char unknown_117C[0x1308 - 0x117C];
     int* unknown_1308; // 0x686A52/0x686A5E
@@ -177,10 +204,19 @@ struct RulesClass
     double unknown_1748; // native 0x711EE0 loads the full 8-byte value
     char unknown_1750[0x1804 - 0x1750];
     int RadDurationMultiple;
-    char unknown_1808[0x186C - 0x1808];
+    char unknown_1808[0x1838 - 0x1808];
+    int ElevationIncrement;            // +0x1838
+    char unknown_183C[0x1840 - 0x183C];
+    double ElevationIncrementBonus;    // +0x1840
+    double ElevationBonusCap;          // +0x1848
+    bool AlliedWallTransparency;       // +0x1850
+    char unknown_1851[0x1858 - 0x1851];
+    double WallPenetratorThreshold;    // +0x1858 (default pushed as two dwords)
+    char unknown_1860[0x186C - 0x1860];
     int unknown_186C; // random upper bound minus one0x68508F
     AnimTypeClass* unknown_1870; // 0x6850D9 -> AnimClass constructor0x421EA0
-    char unknown_1874[0x18B4 - 0x1874];
+    ColorStruct ColorAdd[0x10];     // +0x1874
+    char unknown_18A4[0x18B4 - 0x18A4];
     float unknown_18B4; // 0x469817: FMUL float ptr [ECX + 0x18b4]
     char unknown_18B8[8];
 };
@@ -192,6 +228,18 @@ GG_STATIC_ASSERT(offsetof(RulesClass, BunkerSound) == 0x244);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_000) == 0x000);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_008) == 0x008);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_186C) == 0x186C);
+GG_STATIC_ASSERT(offsetof(RulesClass, field_1C8) == 0x1C8);
+GG_STATIC_ASSERT(offsetof(RulesClass, TypeA) == 0x4E0);
+GG_STATIC_ASSERT(offsetof(RulesClass, TypeB) == 0x514);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIMinorSuperReadyPercent) == 0xD70);
+GG_STATIC_ASSERT(offsetof(RulesClass, field_FD0) == 0xFD0);
+GG_STATIC_ASSERT(offsetof(RulesClass, field_FD8) == 0xFD8);
+GG_STATIC_ASSERT(offsetof(RulesClass, ElevationIncrement) == 0x1838);
+GG_STATIC_ASSERT(offsetof(RulesClass, ElevationIncrementBonus) == 0x1840);
+GG_STATIC_ASSERT(offsetof(RulesClass, ElevationBonusCap) == 0x1848);
+GG_STATIC_ASSERT(offsetof(RulesClass, AlliedWallTransparency) == 0x1850);
+GG_STATIC_ASSERT(offsetof(RulesClass, WallPenetratorThreshold) == 0x1858);
+GG_STATIC_ASSERT(offsetof(RulesClass, ColorAdd) == 0x1874);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1870) == 0x1870);
 
 GG_STATIC_ASSERT(offsetof(RulesClass, At_54C) == 0x54C);

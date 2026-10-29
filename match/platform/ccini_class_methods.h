@@ -18,7 +18,10 @@
 
 class FileClass;
 class Straw;
-struct ColorStruct;
+class TechnoTypeClass;
+class IniKeyBlockSource;
+struct AbilitiesStruct;
+#include "../_layout/color_struct.h"
 
 // VTABLE: GAMEMD 0x7E1AF4
 //   sizeof 0x58: `PUSH 0x58; CALL operator new` before the inline
@@ -53,6 +56,39 @@ public:
     int ReadArmor(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x474B50 (decl; reloc) -- hidden RGB result, default by reference.
     ColorStruct Read3Bytes(const char* section, const char* key, const ColorStruct& fallback);
+
+    // The readers below sit on INIClass in retail (their addresses are the INIClass
+    // members above). The TUs that call them were matched against these CCINIClass
+    // spellings, whose symbols are bound separately, so they stay declared here.
+    // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- read a string into a buffer, RET 0x14.
+    int ReadString(const char* section, const char* key, const char* def, char* buffer, int size);
+    // FUNCTION: GAMEMD 0x5276D0 (decl; reloc) -- read an integer, RET 0xC.
+    int ReadInteger(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x5283D0 (decl; reloc) -- read a double, RET 0x10.
+    double ReadDouble(const char* section, const char* key, double defaultValue);
+    // FUNCTION: GAMEMD 0x5295F0 (decl; reloc) -- read a bool, RET 0xC.
+    bool ReadBool(const char* section, const char* key, bool defaultValue);
+    // FUNCTION: GAMEMD 0x474B50 (decl; reloc) -- the same reader with the result buffer explicit.
+    ColorStruct* Read3Bytes(ColorStruct* pOut, const char* section, const char* key,
+                            const ColorStruct& defValue);
+    // FUNCTION: GAMEMD 0x474C70 (decl; reloc) -- colour reader with the result buffer explicit.
+    ColorStruct* ReadColor(ColorStruct* pOut, const char* section, const char* key,
+                           const ColorStruct& defValue);
+    // Inline forwarding wrapper (YRpp's by-value ReadColor shape): the read buffer is the
+    // wrapper's own local and the result is copied out of it.
+    ColorStruct ReadColor(const char* section, const char* key, const ColorStruct& defValue)
+    {
+        ColorStruct out;
+        return *ReadColor(&out, section, key, defValue);
+    }
+    // FUNCTION: GAMEMD 0x476EB0 (decl; reloc)
+    TechnoTypeClass* GetTechnoType(const char* section, const char* key);
+    // FUNCTION: GAMEMD 0x526E80 (decl; reloc) -- uuencoded block writer.
+    bool WriteUUBlock(const char* section, const void* block, int length);
+    // FUNCTION: GAMEMD 0x52A610
+    bool WriteKeyBlocks(const IniKeyBlockSource& key);
+    // FUNCTION: GAMEMD 0x477640
+    AbilitiesStruct ReadAbilities(const char* section, const char* key, const AbilitiesStruct& def);
 
     bool          DigestValid;     // +0x40
     unsigned char Digest[0x14];    // +0x41

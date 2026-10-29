@@ -13,6 +13,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "ccini_class_methods.h"
 
 class TechnoTypeClass;   // opaque, handled by pointer only
 
@@ -36,17 +37,5 @@ int FUN_0041CAA0(const char* name);
 // FUNCTION: GAMEMD 0x45E7B0 (decl; reloc) -- UnitTypeClass::FindIndex.
 int FUN_0045E7B0(const char* name);
 
-// No member of the INI object is touched here; only the calling convention
-// and the forwarded reader matter, so the body stays opaque.
-class CCINIClass
-{
-public:
-    // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- INIClass::ReadString.
-    int ReadString(const char* section, const char* key, const char* def,
-                   char* buffer, int size);
-
-    // FUNCTION: GAMEMD 0x476EB0
-    TechnoTypeClass* GetTechnoType(const char* section, const char* key);
-};
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_TECHNO_TYPE_METHODS_H

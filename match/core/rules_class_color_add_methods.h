@@ -18,63 +18,25 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/rules_class.h"
+#include "../platform/ccini_class_methods.h"
 
 // ColorStruct — packed RGB triple (no padding; size = 3).
 #include "../_layout/color_struct.h"
 GG_STATIC_ASSERT(offsetof(ColorStruct, G) == 0x01);
 GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);
 
-// Opaque INI parser; the four out-of-line members are declared only, so cl
-// emits reloc-normalised __thiscall CALLs.
-class CCINIClass
+
+
+// YRpp's by-value ReadColor shape over the 0x474B50 reader (the canonical CCINIClass::ReadColor
+// wrapper forwards to 0x474C70): the read buffer is the wrapper's own local and the default is
+// bound by const reference and forwarded by address.
+inline ColorStruct ReadColorViaRead3Bytes(CCINIClass* pINI, const char* pSection, const char* pKey,
+                                          const ColorStruct& defValue)
 {
-public:
-    // FUNCTION: GAMEMD 0x526810 (decl; reloc)
-    void*        GetSection(const char* pSection);
-    // FUNCTION: GAMEMD 0x526B10 (decl; reloc)
-    void*        GetEntry(const char* pSection, const char* pKey);
-    // FUNCTION: GAMEMD 0x526960 (decl; reloc)
-    int          GetKeyCount(const char* pSection);
-    // FUNCTION: GAMEMD 0x526CC0 (decl; reloc)
-    const char*  GetKeyName(const char* pSection, int index);
-    // FUNCTION: GAMEMD 0x474B50 (decl; reloc)
-    ColorStruct* Read3Bytes(ColorStruct* pOut, const char* pSection,
-                            const char* pKey, const ColorStruct& defValue);
-
-    // Inline forwarding wrapper (YRpp's ReadColor shape): the default is
-    // bound by const reference and forwarded by address; the read buffer is
-    // the wrapper's own local, which is what leaves `out` at [ESP+0] and the
-    // default in the caller's parameter home slot.
-    ColorStruct ReadColor(const char* pSection, const char* pKey,
-                          const ColorStruct& defValue)
-    {
-        ColorStruct out;
-        return *Read3Bytes(&out, pSection, pKey, defValue);
-    }
-
-    // FUNCTION: GAMEMD 0x679F40 — CCINIClass::Exists (matched out of line in
-    // match/platform/ccini_class_methods.cpp).  Here it is the header inline
-    // VC6 expands at the section test: with the key defaulted to null the
-    // entry branch folds away and the section probe survives as a
-    // materialised bool (`TEST EAX,EAX; SETNZ AL`), which is retail's shape.
-    bool Exists(const char* pSection, const char* pKey = 0)
-    {
-        if (pKey == 0) {
-            return GetSection(pSection) != 0;
-        }
-        return GetEntry(pSection, pKey) != 0;
-    }
-};
-
-struct RulesClass
-{
-    char        _pad000[0x1874];   // +0x0000
-    ColorStruct ColorAdd[0x10];    // +0x1874
-
-    // FUNCTION: GAMEMD 0x66D480
-    bool Read_ColorAdd(CCINIClass* pINI);
-};
-GG_STATIC_ASSERT(offsetof(RulesClass, ColorAdd) == 0x1874);
+    ColorStruct out;
+    return *pINI->Read3Bytes(&out, pSection, pKey, defValue);
+}
 
 // GLOBAL: GAMEMD 0x7F0C98 — pointer to the "ColorAdd" section name.
 extern char* ColorAddSection;

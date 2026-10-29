@@ -35,6 +35,18 @@ GG_STATIC_ASSERT(sizeof(RandomStruct) == 8);
 class AnimTypeClass : public ObjectTypeClass
 {
 public:
+    // FUNCTION: GAMEMD 0x427530 (decl; reloc) -- constructor taking the type's ID. throw() keeps
+    // `new AnimTypeClass(id)` free of the EH frame VC6 would register for the allocation.
+    AnimTypeClass(const char* id) throw();
+    // The class factory's construction (TClassFactory<AnimTypeClass>): the same constructor with a default argument.
+    AnimTypeClass(int unknown_arg0 = 0);
+    // Overrides of the slots ObjectTypeClass / AbstractClass leave pure (slots 3, 6, 11, 12, 32, 35).
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    virtual int vf_11();
+    virtual int vf_12();
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house);
+    virtual void* vf_35(void* house);
     // FUNCTION: GAMEMD 0x428B80 (decl; reloc), ECX=name, EAX=type pointer.
     static AnimTypeClass* FindOrAllocate(const char* id);
     // Slot 40, introduced by AnimTypeClass (41 slots in all; retail table 0x7E3608).

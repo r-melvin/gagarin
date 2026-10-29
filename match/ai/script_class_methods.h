@@ -31,10 +31,10 @@ struct ScriptTypeClass_Min
 GG_STATIC_ASSERT(offsetof(ScriptTypeClass_Min, ActionsCount) == 0xA0);
 
 // ---------------------------------------------------------------------------
-// ScriptClass — the per-team running AI script instance (mission cursor over a
+// ScriptCursorView_00691590 — the per-team running AI script instance (mission cursor over a
 // ScriptTypeClass's ScriptActions list).
 // ---------------------------------------------------------------------------
-class ScriptClass
+class ScriptCursorView_00691590
 {
 public:
     // Declared ascending by retail address (reccmp/isle TU discipline).
@@ -49,8 +49,8 @@ public:
 };
 
 #if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(ScriptClass, Type)           == 0x24);
-GG_STATIC_ASSERT(offsetof(ScriptClass, CurrentMission) == 0x2C);
+GG_STATIC_ASSERT(offsetof(ScriptCursorView_00691590, Type)           == 0x24);
+GG_STATIC_ASSERT(offsetof(ScriptCursorView_00691590, CurrentMission) == 0x2C);
 #endif
 
 #endif  // GG_MATCH_AI_SCRIPT_CLASS_METHODS_H

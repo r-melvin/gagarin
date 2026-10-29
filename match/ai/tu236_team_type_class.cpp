@@ -118,7 +118,7 @@ void TeamTypeClass::DestroyAllInstances()
         TeamClass* team = ((TeamClass**)TeamInstanceArray.Items)[i];
         if (this == team->Type) {
             if (team) {
-                team->Remove(1);
+                delete team;
             }
             i--;
         }

@@ -16,7 +16,7 @@ bool RulesClass::Read_AdvancedCommandBar(CCINIClass* pINI, bool multiplayer)
 {
     const char* section = multiplayer ? MultiplayerAdvancedCommandBarSection
                                       : AdvancedCommandBarSection;
-    if (pINI->Exists(section)) {
+    if (pINI->INIClass::Exists(section, 0)) {
         for (int i = 0; i < 25; i++) {
             FUN_006CFD20(i, DefaultCommandIndex);
         }

@@ -15,11 +15,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/foot_class.h"   // TechnoClass::Passengers @0x114, FootClass::Team @0x5D4
+#include "../_layout/team_class.h"   // TeamClass::LiberateMember
 
-class TeamClass
-{
-public:
-    void LiberateMember(FootClass* foot, int idx, unsigned char count);  // GAMEMD 0x6EA870
-};
 
 #endif  // GG_MATCH_CORE_TECHNO_CLASS_KILL_PASSENGERS_METHODS_H

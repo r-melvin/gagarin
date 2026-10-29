@@ -158,6 +158,8 @@ public:
     // Native caller contract (GAMEMD 0x46B310): ECX Bullet receiver, no stack args.
     // Body recovery is held; this adds only the observed caller contract.
     void FUN_0046B310();
+    // FUNCTION: GAMEMD 0x46B280 -- register in ScalableBullets and rescale the type's spawn delay.
+    void InitScalable();
 
     BulletTypeClass* Type;               // +0xAC; ctor @0x00466391
     TechnoClass*   Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397

@@ -52,6 +52,8 @@ public:
 
     // FUNCTION: GAMEMD 0x6916B0 (declaration; constructor)
     ScriptTypeClass(const char* id);
+    // The class factory's construction (TClassFactory<ScriptTypeClass>): the same constructor with a default argument.
+    ScriptTypeClass(int unknown_arg0 = 0);
     // The stream loader's in-place construction: only the four tables.
     ScriptTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
 

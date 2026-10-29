@@ -12,23 +12,9 @@
 // helpers + the per-type FindOrAllocate callees matter for a byte match.
 #ifndef GG_MATCH_CORE_RULES_CLASS_READTYPES_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_READTYPES_METHODS_H
+#include "../_layout/rules_class.h"
+#include "../platform/ccini_class_methods.h"
 
-// ---------------------------------------------------------------------------
-// Opaque INI parser model. We never read a member of it; the three methods are
-// declared (no body) so cl emits __thiscall `call rel32`s that the differ
-// reloc-normalises against retail.
-//   GetKeyCount @0x526960  __thiscall(const char* section)               -> int
-//   GetKeyName  @0x526CC0  __thiscall(const char* section, int index)    -> char*
-//   ReadString  @0x528A10  __thiscall(sec, key, def, char* buf, int len) -> int
-// ---------------------------------------------------------------------------
-class CCINIClass
-{
-public:
-    int         GetKeyCount(const char* pSection);
-    const char* GetKeyName(const char* pSection, int index);
-    int         ReadString(const char* pSection, const char* pKey,
-                           const char* pDefault, char* pBuffer, int size);
-};
 
 // ---------------------------------------------------------------------------
 // Per-type allocator callees (declared only; relocation-normalised). Each takes
@@ -50,16 +36,5 @@ int InfantryType_FindOrAllocate(const char* pID);
 int UnitType_FindOrAllocate(const char* pID);
 int AircraftType_FindOrAllocate(const char* pID);
 
-// RulesClass: only the three list-parsers are modelled; `this` is unused so no
-// members/base are needed for a byte-exact match.
-struct RulesClass
-{
-    // FUNCTION: GAMEMD 0x672280  RulesClass::Read_InfantryTypes  (__thiscall)
-    bool Read_InfantryTypes(CCINIClass* pINI);
-    // FUNCTION: GAMEMD 0x672360  RulesClass::Read_VehicleTypes   (__thiscall)
-    bool Read_VehicleTypes(CCINIClass* pINI);
-    // FUNCTION: GAMEMD 0x6723D0  RulesClass::Read_AircraftTypes  (__thiscall)
-    bool Read_AircraftTypes(CCINIClass* pINI);
-};
 
 #endif  // GG_MATCH_CORE_RULES_CLASS_READTYPES_METHODS_H

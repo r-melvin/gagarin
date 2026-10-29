@@ -7,40 +7,10 @@
 //   Address index: 0x74AF70 dtor, 0x74B810 Load, 0x74BA30 deleting dtor.
 
 #include <new.h>
-#include "../_layout/object_type_class.h"
+#include "../_layout/voxel_anim_type_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../core/vector_class_operations.h"
 
-// The members the loader and destructor touch; the rest of the class is not laid out here.
-class VoxelAnimTypeClass : public ObjectTypeClass
-{
-public:
-    VoxelAnimTypeClass(const AbstractNoInit& noInit) : ObjectTypeClass(noInit) {}
-    virtual ~VoxelAnimTypeClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);      // 3   0x74B7D0
-    virtual HRESULT __stdcall Load(IStream* pStm);              // 5   0x74B810
-    virtual int vf_11();                                        // 11  0x74B9F0
-    virtual int vf_12();                                        // 12  0x74BA00
-    virtual bool vf_32(const CellStruct* cell, HouseClass* house); // 32 0x74BA10
-    virtual void* vf_35(void* house);                           // 35  0x74BA20
-    bool unknown_294;           // +0x294
-    bool unknown_295;           // +0x295
-    bool unknown_296;           // +0x296
-    char unknown_297[0x2D4 - 0x297];
-    void* unknown_2D4;          // +0x2D4
-    char unknown_2D8[0x2E4 - 0x2D8];
-    void* unknown_2E4;          // +0x2E4
-    void* unknown_2E8;          // +0x2E8
-    void* unknown_2EC;          // +0x2EC
-    char unknown_2F0[0x2F8 - 0x2F0];
-    void* unknown_2F8;          // +0x2F8
-    void* unknown_2FC;          // +0x2FC
-};
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_296) == 0x296);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2D4) == 0x2D4);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2E4) == 0x2E4);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2F8) == 0x2F8);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2FC) == 0x2FC);
 
 // GLOBAL: GAMEMD 0xB0F670 -- the shared object registry.
 extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;

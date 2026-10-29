@@ -238,6 +238,17 @@ __forceinline bool IndexClassB::IsPresentImpl(const int& id) const
 #include <objidl.h>
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
+#include "../_layout/bullet_class.h"
+#include "../_layout/script_class.h"
+#include "../_layout/script_type_class.h"
+#include "../ai/taction_class_methods.h"
+#include "../_layout/tag_type_class.h"
+#include "../_layout/task_force_class.h"
+#include "../_layout/team_class.h"
+#include "../_layout/team_type_class.h"
+#include "../ai/tevent_class_methods.h"
+#include "../_layout/trigger_class.h"
+#include "../_layout/warhead_type_class.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -378,15 +389,12 @@ class AnimClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
+// Kept local: the canonical header reaches _layout/components.h, whose IndexClass collides with core/index_class.h in this TU.
 class AnimTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 class NeuronClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class BulletClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -454,14 +462,6 @@ class RadSiteClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class ScriptClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ScriptTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class ShipLocomotionClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -486,27 +486,7 @@ class Tactical {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class TActionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class TagClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TagTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TaskForceClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeamClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeamTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -518,15 +498,7 @@ class TemporalClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class TEventClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class TiberiumClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TriggerClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -550,6 +522,7 @@ class VoxelAnimClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
+// Kept local: the canonical header reaches _layout/components.h, whose IndexClass collides with core/index_class.h in this TU.
 class VoxelAnimTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -559,10 +532,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 class WalkLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WarheadTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };

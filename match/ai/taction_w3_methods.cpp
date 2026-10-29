@@ -9,6 +9,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/abstract_class.h"
+#include "taction_class_methods.h"
+#include "../_layout/team_type_class.h"
 #include "../_layout/cell.h"
 
 class HouseClass;
@@ -58,11 +60,6 @@ struct TActionMap
     void FUN_004F4480();
 };
 
-struct TActionTeamType
-{
-    // FUNCTION: GAMEMD 0x6F09C0 (decl; reloc) -- TeamTypeClass::CreateTeam
-    void FUN_006F09C0(int a);
-};
 
 // A super weapon, as far as the call and the flag these handlers use.
 struct TActionSuper
@@ -166,34 +163,6 @@ extern TActionSession* DAT_00A8B230;
 void FUN_0053AD00(int a, int b, int c, int d);
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
 
-class TActionClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-
-    bool FUN_006E0480(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E0F90(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E2860(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E28E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E2F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E1BD0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E1C40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E1DC0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E1E00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E1F60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-    bool FUN_006E2660(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
-
-    char unknown_24[0x30 - 0x24];
-    TActionTeamType* unknown_30;   // +0x30 the team type to create
-    char unknown_34[0x90 - 0x34];
-    int unknown_90;                // +0x90 first parameter
-};
-GG_STATIC_ASSERT(offsetof(TActionClass, unknown_30) == 0x30);
-GG_STATIC_ASSERT(offsetof(TActionClass, unknown_90) == 0x90);
 
 // FUNCTION: GAMEMD 0x6E0480
 // Run the local player's house through its 0x4FCDC0 step.
@@ -266,7 +235,7 @@ bool TActionClass::FUN_006E1F60(HouseClass* house, ObjectClass* object, TriggerC
 {
     DAT_00A8E7AC++;
     if (unknown_30) {
-        unknown_30->FUN_006F09C0(0);
+        unknown_30->CreateTeam(0);
     }
     DAT_00A8E7AC--;
     return true;
