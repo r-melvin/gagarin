@@ -1,5 +1,23 @@
 # Project status
 
+**Snapshot 2026-10-29.** The manifest holds **15,229 matched and 846 partial
+rows** in 1,828 compiled translation units; the full gate re-proves every matched
+row with no regressions. The address-faithful link places all 15,229 matched
+functions at their retail addresses with no drift. Milestone **M3 (source-built
+sections) is in progress**: the hybrid image built with `link_m1.py --hybrid
+--pin-data --order-tail --source-data --search-literals --distribution-patches`
+still equals the pinned image byte for byte in `.text`, `.rdata`, `.data` and
+`.rsrc`, and **40.48%** of its 8,391,297 section bytes now come from project
+source, another 1.04% from statically linked libraries, and the rest is still
+retail fill. Since the previous snapshot, duplicate
+class definitions were consolidated onto canonical headers (MapClass, HouseClass,
+TechnoClass, CellClass and the other families; address-named view structs moved
+to shared headers), match steering found by audit was removed, and about 200
+static initialisers written as functions were recovered as real global
+definitions so that the compiler emits them.
+
+The previous snapshot is kept for history.
+
 **Snapshot 2026-10-28.** The manifest holds **14,002 matched and 813 partial
 rows** in 1,570 compiled translation units; the full gate re-proves every matched
 row with no regressions. The address-faithful link places all 14,002 matched
