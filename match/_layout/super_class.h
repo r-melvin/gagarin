@@ -19,6 +19,10 @@
 #include "mission_class.h"   // CDTimerClass
 #include "object_class.h"    // CoordStruct
 #include "foot_class.h"      // CellStruct
+#include "super_weapon_type_class.h"
+
+class HouseClass;
+class AnimClass;
 
 class SuperClass : public AbstractClass
 {
@@ -31,13 +35,40 @@ public:
     virtual int vf_12();                                    // slot12 0x6CE210
     virtual int __stdcall vf_rtti_3();                      // +4 table slot3 0x6CE1F0
     virtual void vf_13(Obj_004A1D30* crc);                  // slot13 0x6CE020
-    int GetRechargeTime() const; // 0x6CC260
+    // FUNCTION: GAMEMD 0x6CB4D0
+    bool SetOnHold(bool onHold);
+    // FUNCTION: GAMEMD 0x6CB7B0
+    bool Lose();
+    // FUNCTION: GAMEMD 0x6CB820
+    void SetReadiness(bool ready);
+    // FUNCTION: GAMEMD 0x6CB830
+    bool StopPreclickAnim(bool unused);
+    // FUNCTION: GAMEMD 0x6CB920 (decl; reloc)
+    char ClickFire(bool isPlayer, const CellStruct& cell);
+    // FUNCTION: GAMEMD 0x6CC1E0
+    void SetCharge(int percentage);
+    // FUNCTION: GAMEMD 0x6CC260
+    int GetRechargeTime() const;
+    // FUNCTION: GAMEMD 0x6CC280
+    void SetRechargeTime(int time);
+    // FUNCTION: GAMEMD 0x6CC290
+    void ResetRechargeTime();
+    // FUNCTION: GAMEMD 0x6CC2B0
+    unsigned short* NameReadiness() const;
+    // FUNCTION: GAMEMD 0x6CC360
+    bool CanFire() const;
+    // FUNCTION: GAMEMD 0x6CDE90
+    bool ShouldDrawProgress() const;
+    // FUNCTION: GAMEMD 0x6CE0B0
+    void Reset();
+    // FUNCTION: GAMEMD 0x6CE1A0
+    bool ShouldFlashTab() const;
     // The stream loader's in-place construction: the base only (retail 0x410170).
     struct LoadTag {};
     SuperClass(LoadTag) {}
     int           CustomChargeTime;      // +0x24 ctor MOV [ESI+0x24],EAX(-1) @0x006CAFA7
-    void*         Type;                  // +0x28 SuperWeaponTypeClass*; ctor =arg1 @0x006CAFA4
-    void*         Owner;                 // +0x2C HouseClass*; ctor =arg2 @0x006CAFAA
+    SuperWeaponTypeClass* Type;          // +0x28 ctor =arg1 @0x006CAFA4
+    HouseClass*   Owner;                 // +0x2C HouseClass*; ctor =arg2 @0x006CAFAA
     CDTimerClass  RechargeTimer;         // +0x30 ctor StartTime=[0x00A8ED84] @0x006CAFB5,
                                          //       TimeLeft=0 @0x006CAFB8
     unsigned int  unused_3C;             // +0x3C (PROTECTED_PROPERTY; ctor never writes it)
@@ -48,16 +79,16 @@ public:
     int           SpecialSoundDuration;  // +0x50 ctor MOV [ESI+0x50],EAX(-1) @0x006CAFC4
     CoordStruct   SpecialSoundLocation;  // +0x54 (0xC) never written by the ctor; bounded by
                                          //       SpecialSoundDuration and CanHold
-    unsigned char CanHold;               // +0x60 ctor MOV byte [ESI+0x60],1 @0x006CAFC7
+    bool          CanHold;               // +0x60 ctor MOV byte [ESI+0x60],1 @0x006CAFC7
     unsigned char unused_61;             // +0x61 (PROTECTED_PROPERTY)
     CellStruct    ChronoMapCoords;       // +0x62 ctor MOV [ESI+0x62],EDX(=[0x00B0C000]) @0x006CAFDA
     unsigned char unused_66[2];          // +0x66 (PROTECTED_PROPERTY)
-    void*         Animation;             // +0x68 AnimClass*; ctor @0x006CAFDE
-    unsigned char AnimationGotInvalid;   // +0x6C ctor @0x006CAFE1
-    unsigned char IsPresent;             // +0x6D ctor @0x006CAFE4
-    unsigned char IsOneTime;             // +0x6E ctor @0x006CAFE7
-    unsigned char IsReady;               // +0x6F ctor @0x006CAFEA
-    unsigned char IsSuspended;           // +0x70 ctor @0x006CAFED
+    class AnimClass* Animation;          // +0x68 AnimClass*; ctor @0x006CAFDE
+    bool          AnimationGotInvalid;   // +0x6C ctor @0x006CAFE1
+    bool          IsPresent;             // +0x6D ctor @0x006CAFE4
+    bool          IsOneTime;             // +0x6E ctor @0x006CAFE7
+    bool          IsReady;               // +0x6F ctor @0x006CAFEA
+    bool          IsSuspended;           // +0x70 ctor @0x006CAFED
     unsigned char unused_71[3];          // +0x71 (PROTECTED_PROPERTY)
     int           ReadyFrame;            // +0x74 ctor MOV [ESI+0x74],-100 @0x006CAFF0
     int           CameoChargeState;      // +0x78 ctor @0x006CAFD1 (=-1)

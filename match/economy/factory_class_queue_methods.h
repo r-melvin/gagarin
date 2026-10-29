@@ -32,68 +32,7 @@ class TechnoTypeClass;
 #include "../_layout/techno_class.h"
 
 
-// ---------------------------------------------------------------------------
-// QueuedVectorClass -- concrete model of DynamicVectorClass<TechnoTypeClass*>.
-//   sizeof = 0x18.  vptr@0x00, Items@0x04, Capacity@0x08, IsInitialized@0x0C,
-//   IsAllocated@0x0D, Count@0x10, CapacityIncrement@0x14.
-// Retail VectorClass vtable order (Remove issues FindItemIndex via [vtbl+0x10]):
-//   0x00 ~VectorClass  0x04 operator==  0x08 SetCapacity  0x0C Clear
-//   0x10 FindItemIndex 0x14 GetItemIndex 0x18 GetItem
-// The virtuals are declared (no body) so cl emits the indirect vtable call;
-// only the non-virtual RemoveItem is inlined to match.
-// ---------------------------------------------------------------------------
-class QueuedVectorClass
-{
-public:
-    virtual ~QueuedVectorClass();                                          // 0x00
-    virtual bool operator==(const QueuedVectorClass& other) const;        // 0x04
-    virtual bool SetCapacity(int capacity, TechnoTypeClass const** pMem);  // 0x08
-    virtual void Clear();                                                  // 0x0C
-    virtual int  FindItemIndex(TechnoTypeClass const* const& item) const;  // 0x10
-    virtual int  GetItemIndex(TechnoTypeClass const* const* pItem) const;  // 0x14
-    virtual TechnoTypeClass const* GetItem(int index) const;              // 0x18
-
-    bool RemoveItem(int index)
-    {
-        if (index < this->Count)
-        {
-            --this->Count;
-            for (int i = index; i < this->Count; ++i)
-                this->Items[i] = this->Items[i + 1];
-            return true;
-        }
-        return false;
-    }
-
-    TechnoTypeClass const** Items;     // +0x04
-    int           Capacity;            // +0x08
-    bool          IsInitialized;       // +0x0C
-    bool          IsAllocated;         // +0x0D
-    int           Count;               // +0x10
-    int           CapacityIncrement;   // +0x14
-};
-
-GG_STATIC_ASSERT(offsetof(QueuedVectorClass, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(QueuedVectorClass, Count) == 0x10);
-GG_STATIC_ASSERT(sizeof(QueuedVectorClass)          == 0x18);
-
-// ---------------------------------------------------------------------------
-// FactoryClass -- only the layout these two methods reach.  Base (AbstractClass
-// + StageClass Production) occupies 0x00..0x40; QueuedObjects @0x40, the
-// in-production Object pointer @0x58.
-// ---------------------------------------------------------------------------
-class FactoryClass
-{
-public:
-    char              _base[0x40];     // +0x00  AbstractClass + Production
-    QueuedVectorClass QueuedObjects;   // +0x40
-    TechnoClass*      Object;          // +0x58
-
-    bool RemoveOneFromQueue(TechnoTypeClass const* pItem);  // GAMEMD 0x4CA620 __thiscall
-    int  CountTotal(TechnoTypeClass const* pType) const;    // GAMEMD 0x4CA670 __thiscall
-};
-
-GG_STATIC_ASSERT(offsetof(FactoryClass, QueuedObjects) == 0x40);
-GG_STATIC_ASSERT(offsetof(FactoryClass, Object)        == 0x58);
+#include "../_layout/factory_class.h"
+#include "../core/vector_class_operations.h"
 
 #endif  // GG_MATCH_ECONOMY_FACTORY_CLASS_QUEUE_METHODS_H

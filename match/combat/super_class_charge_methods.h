@@ -29,103 +29,11 @@
 
 // GLOBAL: GAMEMD 0x00A8ED84 — Unsorted::CurrentFrame, the global frame counter.
 #include "../core/frame_counter.h"
-
-// ---------------------------------------------------------------------------
-// CDTimerClass = TimerStruct<FrameTimer> (sizeof 0x0C): a frame count-down.
-//   +0x00 StartTime   (-1 == paused / not running)
-//   +0x04 CurrentTime (the empty FrameTimer clock's storage; never written by
-//                      the ctor, so a copy of a fresh temporary carries the
-//                      stack garbage through — retail's MOV EDX,[ESP+0x10])
-//   +0x08 TimeLeft
-// The inline members below are what retail inlined into the two bodies:
-// Resume / Pause (SetOnHold) and the (int) ctor + copy (SetCharge).
-// ---------------------------------------------------------------------------
-struct CDTimerClass
-{
-    union {
-        int      StartTime;     // +0x00  (-1 == paused)
-        unsigned StartTimeU;    // +0x00  same dword; GetTimeLeft's own guard
-    };
-    int CurrentTime;    // +0x04
-    int TimeLeft;       // +0x08
-
-    CDTimerClass(int duration)
-    {
-        this->StartTime = CurrentFrame;
-        this->TimeLeft = duration;
-    }
-
-    // Frames still to run: while running, TimeLeft less the frames elapsed
-    // since StartTime, floored at zero. The guard reads StartTime through
-    // the unsigned union alias: when Pause inlines this right after its own
-    // `StartTime != -1` test, retail keeps both compares on the one cached
-    // register (`CMP ESI,-1; JZ` twice, 0x6CB51F / 0x6CB527) and VC6 folds
-    // the second unless the two tests name different union members; the
-    // alias is the same width, so the bytes are identical.
-    int GetTimeLeft() const
-    {
-        int left = this->TimeLeft;
-        if (this->StartTimeU != 0xFFFFFFFF) {
-            int passed = CurrentFrame - this->StartTime;
-            if (passed < left) {
-                left = left - passed;
-            } else {
-                left = 0;
-            }
-        }
-        return left;
-    }
-
-    // Freeze the remaining time and stop the clock.
-    void Pause()
-    {
-        if (this->StartTime != -1) {
-            this->TimeLeft = this->GetTimeLeft();
-            this->StartTime = -1;
-        }
-    }
-
-    // Restart the clock if it was stopped.
-    void Resume()
-    {
-        if (this->StartTime == -1) {
-            this->StartTime = CurrentFrame;
-        }
-    }
-};
-GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTime)   == 0x00);
-GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTimeU)  == 0x00);
-GG_STATIC_ASSERT(offsetof(CDTimerClass, CurrentTime) == 0x04);
-GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft)    == 0x08);
-GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0x0C);
-
-// SuperWeaponTypeClass — only RechargeTime @0xB0 and ManualControl @0xF5 are
-// touched here.
-class SuperWeaponTypeClass
-{
-public:
-    char _pad0[0xB0];          // +0x00
-    int  RechargeTime;         // +0xB0
-    char _padB4[0xE5 - 0xB4];  // +0xB4
-    bool At_E5;                // +0xE5
-    char _padE6[0xED - 0xE6];  // +0xE6
-    bool At_ED;                // +0xED
-    char _padEE[0xF5 - 0xEE];  // +0xEE
-    bool ManualControl;        // +0xF5
-};
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, RechargeTime)  == 0xB0);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, ManualControl) == 0xF5);
+#include "../_layout/frame_timer.h"
+#include "../_layout/super_class.h"
 
 // SuperClass : AbstractClass — a per-house superweapon instance.
 class SuperClass;
-
-// The preclick animation; only the byte at +0x195 is cleared.
-struct PreclickAnim_006CB830
-{
-    char _pad0000[0x195];   // +0x0000
-    char At_195;            // +0x0195
-};
-GG_STATIC_ASSERT(offsetof(PreclickAnim_006CB830, At_195) == 0x195);
 
 // DynamicVectorClass<SuperClass*> at 0xB0F5B8 (an object: its address is the
 // immediate `MOV ECX,0xB0F5B8`). Slot +0x10 is FindItemIndex(item const&).
@@ -157,57 +65,42 @@ struct SuperVector_006CB830
 // GLOBAL: GAMEMD 0xB0F5B8 — the supers with a preclick animation pending.
 extern SuperVector_006CB830 DAT_00B0F5B8;
 
-class SuperClass
+// CDTimerClass Pause / Resume as retail inlined them into SetOnHold and Reset.
+// The inlined GetTimeLeft keeps its own `CMP reg,-1; JZ` right after Pause's
+// identical test (0x6CB51F / 0x6CB527); VC6 folds the second test unless the
+// guard reads the dword through a different type, hence the unsigned view.
+inline void CDTimerClass::Pause()
 {
-public:
-    char                  _base[0x24];        // +0x00  AbstractClass
-    int                   CustomChargeTime;   // +0x24  -1 == "use Type default"
-    SuperWeaponTypeClass* Type;               // +0x28
-    char                  _pad2C[4];          // +0x2C  Owner (HouseClass*)
-    CDTimerClass          RechargeTimer;      // +0x30
-    char                  _pad3C[0x60 - 0x3C];// +0x3C
-    bool                  CanHold;            // +0x60
-    char                  _pad61[0x68 - 0x61];// +0x61
-    PreclickAnim_006CB830* Animation;         // +0x68
-    bool                  At_6C;              // +0x6C
-    bool                  IsPresent;          // +0x6D
-    bool                  IsOneTime;          // +0x6E
-    bool                  IsReady;            // +0x6F
-    bool                  IsSuspended;        // +0x70
-    char                  _pad71[0x78 - 0x71];// +0x71
-    int                   At_78;              // +0x78
-    int                   At_7C;              // +0x7C
-
-    // Inline mirror of GAMEMD 0x6CC260 SuperClass::GetRechargeTime (matched in
-    // match/combat/super_class_methods.cpp); retail inlines it into SetCharge.
-    int GetRechargeTime() const
-    {
-        if (this->CustomChargeTime != -1)
-            return this->CustomChargeTime;
-        return this->Type->RechargeTime;
+    if (this->StartTime != -1) {
+        int left = this->TimeLeft;
+        if (*(unsigned*)&this->StartTime != 0xFFFFFFFF) {
+            int passed = CurrentFrame - this->StartTime;
+            if (passed < left) {
+                left = left - passed;
+            } else {
+                left = 0;
+            }
+        }
+        this->TimeLeft = left;
+        this->StartTime = -1;
     }
+}
 
-    // FUNCTION: GAMEMD 0x6CB4D0
-    bool SetOnHold(bool onHold);
-    // FUNCTION: GAMEMD 0x6CB830
-    bool StopPreclickAnim(bool unused);
+// Restart the clock if it was stopped.
+inline void CDTimerClass::Resume()
+{
+    if (this->StartTime == -1) {
+        this->StartTime = CurrentFrame;
+    }
+}
 
-    // FUNCTION: GAMEMD 0x6CC1E0
-    void SetCharge(int percentage);
-    // FUNCTION: GAMEMD 0x6CE0B0
-    void Reset();
-};
-GG_STATIC_ASSERT(offsetof(SuperClass, CustomChargeTime) == 0x24);
-GG_STATIC_ASSERT(offsetof(SuperClass, Type)             == 0x28);
-GG_STATIC_ASSERT(offsetof(SuperClass, RechargeTimer)    == 0x30);
-GG_STATIC_ASSERT(offsetof(SuperClass, CanHold)          == 0x60);
-GG_STATIC_ASSERT(offsetof(SuperClass, Animation)        == 0x68);
-GG_STATIC_ASSERT(offsetof(SuperClass, At_6C)            == 0x6C);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsPresent)        == 0x6D);
-GG_STATIC_ASSERT(offsetof(SuperClass, At_78)            == 0x78);
-GG_STATIC_ASSERT(offsetof(SuperClass, At_7C)            == 0x7C);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsOneTime)        == 0x6E);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsReady)          == 0x6F);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsSuspended)      == 0x70);
+// Inline mirror of GAMEMD 0x6CC260 SuperClass::GetRechargeTime (matched in
+// match/combat/Super.cpp); retail inlines it into SetCharge.
+inline int SuperClass::GetRechargeTime() const
+{
+    if (this->CustomChargeTime != -1)
+        return this->CustomChargeTime;
+    return this->Type->RechargeTime;
+}
 
 #endif  // GG_MATCH_COMBAT_SUPER_CLASS_CHARGE_METHODS_H

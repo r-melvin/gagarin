@@ -59,10 +59,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SpawnManagerClass* >) == 0x18);
 
 #include "../core/vector_class_operations.h"
 
-class SpawnManagerClass {
-public:
-    struct SpawnControl;
-};
+#include "../_layout/spawn_manager_class.h"
 
 template class DynamicVectorClass<SpawnManagerClass::SpawnControl*>;
 

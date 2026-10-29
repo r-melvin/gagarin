@@ -14,37 +14,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/abstract_type_class.h"
-
-// ---------------------------------------------------------------------------
-// SuperWeaponTypeClass. Members appended after the 0x98-byte AbstractTypeClass
-// spine, in confirmed retail order (YRpp cross-check):
-//   ArrayIndex @0x98, WeaponType @0x9C, RechargeVoice @0xA0, ChargingVoice
-//   @0xA4, ImpatientVoice @0xA8, SuspendVoice @0xAC, RechargeTime @0xB0,
-//   Type @0xB4, SidebarImage @0xB8, Action @0xBC.
-// Only Action @0xBC is touched by FindFirstOfAction:
-//   `CMP dword ptr [EBX+0xBC], ECX` — Action compared to the ECX argument.
-// ---------------------------------------------------------------------------
-class SuperWeaponTypeClass : public AbstractTypeClass
-{
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // existing slot3 body
-    // STATIC: GAMEMD 0x6CEEB0  (__fastcall)
-    static SuperWeaponTypeClass* FindFirstOfAction(int action);
-
-    char _pad_98[0xB8 - 0x98];   // +0x98  ArrayIndex..Type (P2)
-    int  unknown_B8;             // +0xB8; read by SidebarClass::FUN_006A8180
-    int  Action;                 // +0xBC
-    char unknown_C0[0xF8 - 0xC0];
-    float unknown_F8; // 6DC1C6: floating range scale
-    int unknown_FC;   // 6DC2AC/6DC338/6DC38A: radial subdivision count
-    // remaining Rules fields (P2)
-};
-
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_F8) == 0xF8);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_FC) == 0xFC);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Action) == 0xBC);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_B8) == 0xB8);
+#include "../_layout/super_weapon_type_class.h"
 
 // VectorClass head for SuperWeaponTypeClass::Array (DynamicVectorClass of
 // pointers). Array @0xA8E330  =>  &Items == 0xA8E334, &Count == 0xA8E340 (both

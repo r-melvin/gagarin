@@ -8,20 +8,11 @@
 // RTTI-named vtable that holds it. Aircraft uses the canonical MI declaration;
 // the remaining local classes model only these virtuals (no new layout claim).
 #include "../_layout/abstract_class.h"
+#include "../_layout/airstrike_class.h"
+#include "../_layout/disk_laser_class.h"
+#include "../_layout/temporal_class.h"
 #include "../_layout/aircraft_class.h"
 #include "../_layout/aircraft_type_class.h"
-
-class AirstrikeClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-};
-
-class DiskLaserClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-};
 
 class LightSourceClass : public AbstractClass
 {
@@ -30,12 +21,6 @@ public:
 };
 
 class RadSiteClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-};
-
-class TemporalClass : public AbstractClass
 {
 public:
     virtual void vf_13(Obj_004A1D30* crc);

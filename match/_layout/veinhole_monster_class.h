@@ -36,6 +36,7 @@ class VeinholeMonsterClass : public ObjectClass
 {
 public:
     virtual int vf_30();                       // 30  0x74F330
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);  // 3   0x74F2D0
     // Statics and methods recovered in the combat/ and map/ TUs.
     static VeinholeMonsterClass* GetVeinholeMonsterFrom(CellStruct* pCell);  // 0x74CD60, lookup by position
     static VeinholeMonsterClass* GetVeinholeMonsterAt(CellStruct* pCell);    // 0x74CDB0, lookup by spread data

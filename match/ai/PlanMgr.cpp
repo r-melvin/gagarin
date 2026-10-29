@@ -272,18 +272,10 @@ struct ScoutStruct;
 class ScriptTypeClass;
 class ShadowControlClass;
 class SideClass;
-class SlaveManagerClass
-{
-public:
-    struct SlaveControl;
-};
+class SlaveManagerClass;
 class SmudgeClass;
 class SmudgeTypeClass;
-class SpawnManagerClass
-{
-public:
-    struct SpawnControl;
-};
+class SpawnManagerClass;
 class SpotLightClass;
 class SubTitle;
 struct SubzoneConnectionStruct;

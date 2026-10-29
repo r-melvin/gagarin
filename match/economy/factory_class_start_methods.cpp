@@ -18,10 +18,10 @@ void FactoryClass::StartProduction()
     if (Object != 0)
         return;
 
-    if (unknown_38 != 0 && !IsSuspended)
+    if (Production.Rate != 0 && !IsSuspended)
         return;
 
-    TechnoTypeClass* type = QueuedObjects.Items[0];
+    TechnoTypeClass* type = const_cast<TechnoTypeClass*>(QueuedObjects.Items[0]);
     QueuedObjects.Delete(0);
 
     int result = type->Slot_40();

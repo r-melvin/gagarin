@@ -84,7 +84,7 @@ public:
     virtual void vf_82(int value);
     // FUNCTION: GAMEMD 0x43B740 (decl; reloc) -- (type, owner), RET 8; allocated
     // with PUSH 0x720 / operator new (e.g. 0x5CAB4B).
-    BuildingClass(BuildingTypeClass* type, HouseClass* owner);
+    BuildingClass(BuildingTypeClass* type = 0, HouseClass* owner = 0);
     // The primary-table (0x7E3EBC) overrides of AbstractClass's pure slots.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);              // 3  0x459E80
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);    // 6  0x454190

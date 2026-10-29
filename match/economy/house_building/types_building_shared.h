@@ -98,7 +98,7 @@ public:
     virtual int GetCost(HouseClass* house);   // slot 33 (+0x84), receives House owner
 
     unsigned char unknown_04[0x3EC - 4];   // +0x04..+0x3EB
-    BuildingTypeClass** DockItems;         // +0x3EC  (Items of the TypeList at +0x3E8)
+    BuildingTypeView_0045DD90** DockItems;         // +0x3EC  (Items of the TypeList at +0x3E8)
 };
 GG_STATIC_ASSERT(offsetof(TypesCostTypeView, DockItems) == 0x3EC);
 

@@ -88,25 +88,15 @@ struct Obj_004A7C80
 #include "disk_laser_pointer_methods.h"
 
 #include "../_layout/abstract_class.h"
+#include "../_layout/airstrike_class.h"
+#include "../_layout/disk_laser_class.h"
+#include "../_layout/temporal_class.h"
 
 class AircraftClass : public AbstractClass
 {
 public:
     virtual ULONG __stdcall AddRef();
     virtual ULONG __stdcall Release();
-};
-
-class AirstrikeClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-};
-
-class DiskLaserClass : public AbstractClass
-{
-public:
-    DiskLaserClass(const AbstractNoInit& noInit);
-    virtual void vf_13(Obj_004A1D30* crc);
 };
 
 class LightSourceClass : public AbstractClass
@@ -116,12 +106,6 @@ public:
 };
 
 class RadSiteClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-};
-
-class TemporalClass : public AbstractClass
 {
 public:
     virtual void vf_13(Obj_004A1D30* crc);

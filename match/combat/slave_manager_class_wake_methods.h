@@ -91,7 +91,7 @@ struct TechnoVtbl_006B1020
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_006B1020, At_1BC) == 0x1BC);
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_006B1020, At_338) == 0x338);
 
-class SlaveManagerClass
+class SlaveManagerView_006B1020
 {
 public:
     char               _base[0x24];          // +0x0000  AbstractClass
@@ -103,8 +103,8 @@ public:
     // FUNCTION: GAMEMD 0x6B1020
     bool ShouldWakeUpNow();
 };
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, Owner)         == 0x24);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, State)         == 0x5C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, LastScanFrame) == 0x60);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B1020, Owner)         == 0x24);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B1020, State)         == 0x5C);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B1020, LastScanFrame) == 0x60);
 
 #endif  // GG_MATCH_COMBAT_SLAVE_MANAGER_CLASS_WAKE_METHODS_H

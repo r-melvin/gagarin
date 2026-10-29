@@ -25,12 +25,12 @@
 int SpawnManagerClass::CountLaunchingSpawns() const
 {
     int count = 0;
-    for (int i = 0; i < SpawnedNodes_Count; ++i) {
-        SpawnControl* node = SpawnedNodes_Items[i];
+    for (int i = 0; i < SpawnedNodes.Count; ++i) {
+        SpawnManagerClass::SpawnControl* node = SpawnedNodes.Items[i];
         if (node->Status == 1)
             ++count;
         if (node->Status == 2) {
-            SpawnUnit* unit = node->Unit;
+            SpawnUnit* unit = (SpawnUnit*)node->Unit;
             if (unit != NULL && unit->Flag81 == 0) {
                 if (unit->GetType()->Flag_d68 != 0)
                     ++count;

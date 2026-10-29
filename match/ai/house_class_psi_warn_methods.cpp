@@ -24,6 +24,6 @@ AnimClass* HouseClass::PsiWarn(CellClass* target, BulletClass* bullet,
     AnimClass* anim = new AnimClass(type, coords, 0, 1, 0x600, 0, false);
     anim->FUN_00424C90(bullet);
     anim->FUN_00424CA0(this);
-    anim->At_19D = 1;
+    anim->Invisible = 1;
     return anim;
 }

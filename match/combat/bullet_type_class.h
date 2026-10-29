@@ -16,6 +16,8 @@ class WeaponTypeClass;
 class BulletTypeClass : public ObjectTypeClass
 {
 public:
+    // CALLEE: GAMEMD 0x0046BBC0 (decl; reloc) -- constructor as the class factory calls it.
+    BulletTypeClass(int unknown_arg0 = 0);
     // The four native primary/COM tables have complete-object offsets 0, 4,
     // 8 and 0xC, respectively.  The offsets and targets are checked against
     // the retail RTTI and table contents by the constructor evidence packet.

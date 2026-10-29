@@ -17,6 +17,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/super_class.h"
 
 // VC6 has no built-in wchar_t; it is a typedef for unsigned short.
 typedef unsigned short gg_wchar;
@@ -36,34 +37,5 @@ extern const char DAT_008424FC[];
 // text. __fastcall with two further arguments on the stack.
 gg_wchar* FUN_00734E60(const char* label, int flags,
                                  const char* file, int line);
-
-// SuperWeaponTypeClass — only UseChargeDrain @0xE5 is read here.
-class SuperWeaponTypeClass
-{
-public:
-    char _pad000[0xE5];       // +0x0000
-    bool UseChargeDrain;      // +0x00E5
-};
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, UseChargeDrain) == 0xE5);
-
-// SuperClass : AbstractClass — a per-house superweapon instance.
-class SuperClass
-{
-public:
-    char                  _base[0x28];         // +0x0000  AbstractClass + CustomChargeTime
-    SuperWeaponTypeClass* Type;                // +0x0028
-    char                  _pad2C[0x6F - 0x2C]; // +0x002C
-    bool                  IsReady;             // +0x006F
-    bool                  IsSuspended;         // +0x0070
-    char                  _pad71[0x7C - 0x71]; // +0x0071
-    int                   ChargeDrainState;    // +0x007C
-
-    // FUNCTION: GAMEMD 0x6CC2B0
-    gg_wchar* NameReadiness() const;
-};
-GG_STATIC_ASSERT(offsetof(SuperClass, Type)             == 0x28);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsReady)          == 0x6F);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsSuspended)      == 0x70);
-GG_STATIC_ASSERT(offsetof(SuperClass, ChargeDrainState) == 0x7C);
 
 #endif  // GG_MATCH_COMBAT_SUPER_CLASS_READINESS_METHODS_H

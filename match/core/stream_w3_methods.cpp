@@ -12,6 +12,7 @@
 #include "../_layout/tiberium_class.h"
 #include "../_layout/tube_class.h"
 #include "../core/vector_class.h"
+#include "../combat/weapon_type_class.h"
 
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;
@@ -190,34 +191,6 @@ HRESULT __stdcall WarheadStreamView_0075E2C0::Save(IStream* pStm, BOOL fClearDir
 
 // ---- WeaponTypeClass (vtable 0x7F73B8) ------------------------------------------------------
 
-class WeaponTypeClass : public AbstractTypeClass
-{
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x772EB0
-    virtual int vf_11();
-    virtual int vf_12();
-    char unknown_98[0xC0 - 0x98];
-    int* unknown_C0;               // +0xC0 one dword per entry
-    char unknown_C4[0xCC - 0xC4];
-    int unknown_CC;                // +0xCC entry count
-    char unknown_D0[0xDC - 0xD0];
-    int* unknown_DC;               // +0xDC
-    char unknown_E0[0xE8 - 0xE0];
-    int unknown_E8;                // +0xE8
-    char unknown_EC[0xF8 - 0xEC];
-    int* unknown_F8;               // +0xF8
-    char unknown_FC[0x104 - 0xFC];
-    int unknown_104;               // +0x104
-};
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_C0) == 0xC0);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_CC) == 0xCC);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_DC) == 0xDC);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_E8) == 0xE8);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_F8) == 0xF8);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_104) == 0x104);
-
 // FUNCTION: GAMEMD 0x772EB0
 // Writes the base state, then three counted lists of dwords.
 HRESULT __stdcall WeaponTypeClass::Save(IStream* pStm, BOOL fClearDirty)
@@ -229,10 +202,10 @@ HRESULT __stdcall WeaponTypeClass::Save(IStream* pStm, BOOL fClearDirty)
         for (int i = 0; i < count; i++) {
             pStm->Write(&unknown_F8[i], 4, 0);
         }
-        count = unknown_CC;
+        count = Reports.Count;
         pStm->Write(&count, 4, 0);
         for (int j = 0; j < count; j++) {
-            pStm->Write(&unknown_C0[j], 4, 0);
+            pStm->Write(&Reports.Items[j], 4, 0);
         }
         count = unknown_E8;
         pStm->Write(&count, 4, 0);

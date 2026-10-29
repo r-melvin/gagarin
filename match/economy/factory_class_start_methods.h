@@ -16,6 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
 #include "../_layout/house_class.h"
+#include "../_layout/factory_class.h"
 
 
 
@@ -31,25 +32,5 @@ public:
     unsigned char unknown_CCE;               // +0x0CCE  passed to Slot_2C
 };
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_CCE) == 0xCCE);
-
-class FactoryClass
-{
-public:
-    char              _pad00[0x38];          // +0x0000
-    int               unknown_38;            // +0x0038  gates the IsSuspended check
-    char              _pad3C[0x40 - 0x3C];   // +0x003C
-    DynamicVectorClass<TechnoTypeClass*> QueuedObjects;  // +0x0040
-    void*             Object;                // +0x0058
-    char              _pad5C[0x6C - 0x5C];   // +0x005C
-    HouseClass*       Owner;                 // +0x006C
-    bool              IsSuspended;           // +0x0070
-
-    void StartProduction();                  // GAMEMD 0x4CA5A0
-};
-GG_STATIC_ASSERT(offsetof(FactoryClass, unknown_38)          == 0x38);
-GG_STATIC_ASSERT(offsetof(FactoryClass, QueuedObjects)       == 0x40);
-GG_STATIC_ASSERT(offsetof(FactoryClass, Object)              == 0x58);
-GG_STATIC_ASSERT(offsetof(FactoryClass, Owner)               == 0x6C);
-GG_STATIC_ASSERT(offsetof(FactoryClass, IsSuspended)         == 0x70);
 
 #endif  // GG_MATCH_ECONOMY_FACTORY_CLASS_START_METHODS_H

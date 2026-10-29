@@ -16,7 +16,7 @@
 // destroy any slave-manager already on the new owner (Killed + delete via the
 // COM deleting destructor at vtable+0x20), install `this`, then re-stamp the
 // master onto every live slave (slave+0x2DC).
-void SlaveManagerClass::SetOwner(TechnoView_006AF580* NewOwner)
+void SlaveManagerView_006AF580::SetOwner(TechnoView_006AF580* NewOwner)
 {
     this->Owner->SlaveManager = 0;
     this->Owner = NewOwner;
@@ -39,7 +39,7 @@ void SlaveManagerClass::SetOwner(TechnoView_006AF580* NewOwner)
 // Spawn one slave infantry: SlaveType->CreateObject(Owner->GetCoords()). On
 // success, init it (vt+0xD4), stamp the master (slave+0x2DC), and fill the
 // node (State = Unknown(0), RespawnTimer = CDTimerClass(0)).
-void SlaveManagerClass::CreateSlave(SlaveControl* Node)
+void SlaveManagerView_006AF580::CreateSlave(SlaveControl* Node)
 {
     Node->Slave = this->SlaveType->CreateObject(this->Owner->GetCoords());
     if (Node->Slave) {
@@ -58,7 +58,7 @@ void SlaveManagerClass::CreateSlave(SlaveControl* Node)
 //
 // PARTIAL (84.6%): source intentionally uses ordinary stores after removing volatile
 // codegen steering. The prior forced-order full match is not claimed.
-void SlaveManagerClass::Deploy2()
+void SlaveManagerView_006AF580::Deploy2()
 {
     if (this->State == 0) {
         this->State = 4;
@@ -77,7 +77,7 @@ void SlaveManagerClass::Deploy2()
 // FUNCTION: GAMEMD 0x6B0490  (__thiscall)
 // Order every live slave (State != Dead(6), Slave != null) back to Guard via
 // vtable+0x3D0, walking SlaveNodes back-to-front.
-void SlaveManagerClass::GuardAllSlaves()
+void SlaveManagerView_006AF580::GuardAllSlaves()
 {
     for (int i = this->SlaveNodes.Count - 1; i >= 0; --i) {
         SlaveControl* node = ((SlaveControl**)this->SlaveNodes.Items)[i];

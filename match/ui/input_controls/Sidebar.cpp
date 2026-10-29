@@ -1157,7 +1157,7 @@ int __stdcall FUN_006A8160(int a1)
 int __stdcall FUN_006A8180(unsigned int index)
 {
     if (index < (unsigned int)SuperWeaponTypeClass_Array.Count) {
-        return SuperWeaponTypeClass_Array.Items[index]->unknown_B8;
+        return (int)SuperWeaponTypeClass_Array.Items[index]->SidebarImage;
     }
     return 0;
 }

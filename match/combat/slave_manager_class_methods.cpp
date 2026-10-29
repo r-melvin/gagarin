@@ -12,7 +12,7 @@
 // A slave died or was taken: search the nodes from the top for the one that
 // owns it, break its back-link, empty the node, mark it Dead and restart the
 // respawn countdown from the regen rate.
-void SlaveManagerClass::LostSlave(SlaveObject* slave)
+void SlaveManagerView_006B0A20::LostSlave(SlaveObject* slave)
 {
     for (int i = SlaveNodes.Count - 1; i >= 0; --i) {
         if (((SlaveControl**)SlaveNodes.Items)[i]->Slave == slave) {
@@ -36,7 +36,7 @@ void SlaveManagerClass::LostSlave(SlaveObject* slave)
 // optimiser floats the loop-count load to the top and delays the LastScanFrame
 // store to cover the global-frame load's latency. Volatile-qualified stores
 // that pinned the pair in source order were removed as match steering.
-void SlaveManagerClass::AllGuard()
+void SlaveManagerView_006B0A20::AllGuard()
 {
     State = 0;
     LastScanFrame = CurrentFrame;

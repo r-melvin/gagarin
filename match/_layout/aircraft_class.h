@@ -36,6 +36,11 @@ class AircraftTypeClass;
 class AircraftClass : public FootClass, public IFlyControl
 {
 public:
+    // CALLEE: GAMEMD 0x00413D20 (decl; reloc) -- constructor as the class factory calls it.
+    AircraftClass(int unknown_arg0 = 0, int unknown_arg1 = 0);
+    virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x41B430
+    virtual int vf_11();   // 11  0x41C180
+    virtual int vf_12();   // 12  0x41C170
     // +0x6C0: IFlyControl vptr; ctor: MOV [ESI+0x6C0],0x7E2250 @0x00413DA2;
     //   RTTI COL base-offset 0x6C0 confirms it.
     virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);   // 0x414290
@@ -55,6 +60,10 @@ public:
     virtual void vf_124(int mission);                           // 124 0x41B9F0
     virtual void SetDestination(AbstractClass* target, bool a2); // 288 0x41AA80
     virtual void* vf_330(DynamicVectorClassLayout* a1, int a2, int a3);// 330 0x41BBD0
+    // IPersist::GetClassID (slot 3), 0x41C190.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    // IPersistStream::Save (slot 6), 0x41B5C0: chains FootClass::Save.
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     // Native AircraftType virtual 0x41CB20 passes its this to ctor 0x413D20;
     // 0x413D3A stores that argument at +0x6C4.
     AircraftTypeClass* Type;                    // +0x6C4  AircraftTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x00413D3A

@@ -39,11 +39,7 @@
 void __fastcall FUN_00750E20(int sound, CoordStruct* where, int unused);
 
 // FUNCTION: GAMEMD 0x6B7100 / 0x6B7BB0 (decl; reloc) -- SpawnManager teardown steps.
-class SpawnManagerClass {
-public:
-    void FUN_006B7100();
-    void FUN_006B7BB0();
-};
+#include "../_layout/spawn_manager_class.h"
 
 // Rules fields read here that the shared RulesClass layout has not named yet.
 struct RulesView_DF4 {

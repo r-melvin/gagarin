@@ -26,6 +26,8 @@
 class UnitTypeClass : public TechnoTypeClass
 {
 public:
+    // CALLEE: GAMEMD 0x007470D0 (decl; reloc) -- constructor as the class factory calls it.
+    UnitTypeClass(int unknown_arg0 = 0);
     // Declaration: GAMEMD 0x747F20 -- slot45, full EAX scalar, no args.
     virtual int vf_45();
     // Overrides recovered from retail (bodies in combat/unit_type_class_w3_methods.cpp).
@@ -39,6 +41,8 @@ public:
     ~UnitTypeClass();
     virtual HRESULT __stdcall Load(IStream* pStm);      // 5   0x748010
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // 3 0x747F30
+    // IPersistStream::Save (slot 6), 0x7480B0: chains TechnoTypeClass::Save.
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     virtual int vf_11();                                // 11  0x748170
     virtual int vf_12();                                // 12  0x748160
     virtual bool vf_32(const CellStruct* cell, HouseClass* house); // 32 0x7474B0

@@ -54,31 +54,6 @@ struct SpawnUnit
 
 GG_STATIC_ASSERT(offsetof(SpawnUnit, Flag81) == 0x81);
 
-// SpawnControl (per-spawn node): Unit pointer @+0x00, Status dword @+0x04.
-struct SpawnControl
-{
-    SpawnUnit* Unit;     // +0x00
-    int        Status;   // +0x04
-};
-
-GG_STATIC_ASSERT(offsetof(SpawnControl, Unit)   == 0x00);
-GG_STATIC_ASSERT(offsetof(SpawnControl, Status) == 0x04);
-
-// SpawnManagerClass : AbstractClass. SpawnedNodes is a DynamicVectorClass<
-// SpawnControl*> embedded at +0x38: its Items pointer lands at +0x3C and its
-// Count at +0x48. Only those two are touched here.
-class SpawnManagerClass
-{
-public:
-    int CountLaunchingSpawns() const;        // GAMEMD 0x6B7D80 __thiscall
-
-    char            _base[0x3C];             // +0x00  AbstractClass + leading members + vector head
-    SpawnControl**  SpawnedNodes_Items;      // +0x3C  SpawnedNodes.Items
-    char            _pad0[0x48 - 0x40];      // +0x40  Capacity / flags
-    int             SpawnedNodes_Count;      // +0x48  SpawnedNodes.Count
-};
-
-GG_STATIC_ASSERT(offsetof(SpawnManagerClass, SpawnedNodes_Items) == 0x3C);
-GG_STATIC_ASSERT(offsetof(SpawnManagerClass, SpawnedNodes_Count) == 0x48);
+#include "../_layout/spawn_manager_class.h"
 
 #endif  // GG_MATCH_COMBAT_SPAWN_MANAGER_CLASS_COUNT_METHODS_H

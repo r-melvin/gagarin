@@ -27,49 +27,46 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "locomotion_class.h"
+#include "../movement/loco_base.h"
+#include "frame_timer.h"
 
-class TunnelLocomotionClass : public LocomotionLayoutView_0055A6C0
+struct TunnelDirStruct;
+
+class TunnelLocomotionClass : public LocomotionClass
 {
 public:
-    int          unknown_18;      // +0x18 ctor `MOV [ESI+0x18],EAX` @0x00728A0D
-                                  //       (=0). Read by ILocomotion::Is_Moving
-                                  //       0x00728A50 - `MOV ECX,[EAX+0x14]`
-                                  //       @0x00728A54 (if+0x14 = object 0x18),
-                                  //       `TEST ECX,ECX` @0x00728A57 - so the
-                                  //       class is "moving" exactly when this
-                                  //       dword is non-zero. That makes it a
-                                  //       state word, but nothing pins WHICH
-                                  //       state, so it is not named.
+    // FUNCTION: GAMEMD 0x728A00 (constructor)
+    TunnelLocomotionClass();
+    // The stream loader's in-place construction.
+    TunnelLocomotionClass(int) : LocomotionClass(0), Timer_28(0), unknown_34(0) {}
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);  // 3   0x72A110
+    virtual HRESULT __stdcall Load(IStream* pStm);       // 5   0x72A150
+    virtual int Size();                                  // 9   0x72A200
+    virtual LocoCoord __stdcall Destination();           // 5   0x728A90
+    virtual int __stdcall CanEnterCell(int cell);        // 7   0x72A090
+    virtual bool __stdcall IsToHaveShadow();             // 8   0x72A060
+    virtual int __stdcall ZGradient();                   // 15  0x72A020
+    virtual void __stdcall DoTurn(unsigned long dir);    // 19  0x72A0E0
+    virtual int __stdcall InWhichLayer();                // 29  0x72A1A0
+    virtual bool __stdcall IsMovingNow();                // 32  0x728A60
+    virtual int __stdcall CanFire();                     // 35  0x72A1C0
 
-    CoordStruct  Destination;     // +0x1C ctor `LEA ECX,[ESI+0x1c]` @0x00728A0A
-                                  //       then X @0x00728A16, Y @0x00728A1E,
-                                  //       Z @0x00728A27 from the file-scope
-                                  //       globals 0x00B0F910 / 0x00B0F914 /
-                                  //       0x00B0F918. CONFIRMED BY READER:
-                                  //       ILocomotion::Destination 0x00728A90
-                                  //       copies 0x1C (if+0x18) @0x00728AA4,
-                                  //       0x20 @0x00728AA7 and 0x24 @0x00728AAA
-                                  //       out.
+    void FinishIfTimed();                                // 0x729480
+    void FUN_00729AA0();                                 // 0x729AA0
+    void FUN_007294E0();                                 // 0x7294E0
 
-    CDTimerClass unknown_28;      // +0x28 (0xC) StartTime @0x00728A30 from the
-                                  //       frame counter 0x00A8ED84; clock slot
-                                  //       0x2C never written; TimeLeft 0x30
-                                  //       @0x00728A33 (=0). The family's timer
-                                  //       signature; what it times is not
-                                  //       proven, so it is not named.
-
-    int          unknown_34;      // +0x34 ctor @0x00728A36 (=0); no reader found
-    char         unknown_38;      // +0x38 ctor `MOV [ESI+0x38],AL` @0x00728A39
-                                  //       (=0); no reader found
-    char         unknown_39[3];   // +0x39 untouched tail to sizeof 0x3C
+    int       State;       // +0x18 movement state word (0 = idle)
+    LocoCoord DestCoord;   // +0x1C
+    CDTimerClass Timer_28; // +0x28 (what it times is unproven)
+    int       unknown_34;  // +0x34
+    char      unknown_38;  // +0x38
 };
 
-GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, unknown_18)  == 0x18);
-GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, Destination) == 0x1C);
-GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, unknown_28)  == 0x28);
-GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, unknown_34)  == 0x34);
-GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, unknown_38)  == 0x38);
+GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, State)     == 0x18);
+GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, DestCoord) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, Timer_28)  == 0x28);
+GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, unknown_34) == 0x34);
+GG_STATIC_ASSERT(offsetof(TunnelLocomotionClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(sizeof(TunnelLocomotionClass)                == 0x3C);
 
 #endif  // GG_MATCH_LAYOUT_TUNNEL_LOCOMOTION_CLASS_H

@@ -26,7 +26,7 @@
 // `this` in ECX, so the touched slot is modelled as a true virtual at vtable
 // index 244 (244 * 4 == 0x3D0). 244 filler virtuals precede it; none are ever
 // defined or instantiated — `slave->GuardSlot()` just emits the indirect call.
-class SlaveManagerClass;
+class SlaveManagerView_006B0A20;
 struct SlaveObject {
     virtual void _v0();
     virtual void _v1();
@@ -275,7 +275,7 @@ struct SlaveObject {
     virtual void GuardSlot();   // slot 244 -> vtable offset 0x3D0
 
     char               _pad004[0x2DC - 0x04];   // +0x004
-    SlaveManagerClass* SlaveOwner;              // +0x2DC  cleared by LostSlave
+    SlaveManagerView_006B0A20* SlaveOwner;              // +0x2DC  cleared by LostSlave
 };
 GG_STATIC_ASSERT(offsetof(SlaveObject, SlaveOwner) == 0x2DC);
 
@@ -310,7 +310,7 @@ GG_STATIC_ASSERT(offsetof(SlaveControl, RespawnTimer) == 0x08);
 GG_STATIC_ASSERT(offsetof(SlaveControl, Slave) == 0x00);
 GG_STATIC_ASSERT(offsetof(SlaveControl, State) == 0x04);
 
-class SlaveManagerClass
+class SlaveManagerView_006B0A20
 {
 public:
     char               _base[0x30];     // +0x00  AbstractClass + Owner..SlaveCount
@@ -324,12 +324,12 @@ public:
     void LostSlave(SlaveObject* slave); // GAMEMD 0x6B0A20 __thiscall
     void AllGuard();                    // GAMEMD 0x6B0C80 __thiscall
 };
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, RegenRate)     == 0x30);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes)    == 0x38);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, State)         == 0x5C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, LastScanFrame) == 0x60);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B0A20, RegenRate)     == 0x30);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B0A20, SlaveNodes)    == 0x38);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B0A20, State)         == 0x5C);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B0A20, LastScanFrame) == 0x60);
 // SlaveNodes.Items / .Count land at the retail offsets:
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Items) == 0x3C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Count) == 0x48);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B0A20, SlaveNodes) + offsetof(DynamicVectorClassLayout, Items) == 0x3C);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006B0A20, SlaveNodes) + offsetof(DynamicVectorClassLayout, Count) == 0x48);
 
 #endif  // GG_MATCH_COMBAT_SLAVE_MANAGER_CLASS_METHODS_H

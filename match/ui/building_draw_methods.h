@@ -68,12 +68,7 @@ extern MapClass DAT_0087F7E8;
 extern Tactical* DAT_00887324;
 
 // The production factory as seen from the draw code (RTTI .?AVFactoryClass@@).
-class FactoryClass
-{
-public:
-    // FUNCTION: GAMEMD 0x4CA160 (decl; reloc) -- the object being produced.
-    ObjectClass* FUN_004CA160();
-};
+#include "../_layout/factory_class.h"
 
 // GLOBAL: GAMEMD 0xA8ED6B, 0xB73550 -- flags gating the redraw test in 0x43CEA0.
 extern unsigned char DAT_00A8ED6B;

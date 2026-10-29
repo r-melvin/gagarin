@@ -37,13 +37,17 @@
 #include "../movement/bounce_class.h"
 
 class AnimTypeClass;
+class BulletClass;
+class HouseClass;
 
 class AnimClass : public ObjectClass, public StageClass
 {
 public:
+    // CALLEE: GAMEMD 0x00422720 (decl; reloc) -- constructor as the class factory calls it.
+    AnimClass();
     // FUNCTION: GAMEMD 0x421EA0 (declaration; constructor, RET 0x1C)
     AnimClass(AnimTypeClass* type, const CoordStruct& coord, int loopDelay, int loopCount,
-              unsigned int flags, int forceZ, bool reverse);
+              unsigned int flags, int forceZ, bool reverse) throw();
     // Overrides of the pure base slots (declarations; bodies not recovered here).
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);
@@ -57,6 +61,10 @@ public:
     // FUNCTION: GAMEMD 0x425260 (decl; reloc) -- no stack arguments; BuildingClass 0x452480
     // calls it on each Powered building animation when the building powers down.
     void FUN_00425260();
+    // FUNCTION: GAMEMD 0x424C90 (decl; reloc) -- stores the attached bullet at +0x17C.
+    void FUN_00424C90(BulletClass* bullet);
+    // FUNCTION: GAMEMD 0x424CA0 (decl; reloc) -- stores the owner house at +0x180.
+    void FUN_00424CA0(HouseClass* house);
 
     // +0xAC StageClass base (0x1C): retail CHD (COL 0x7FBA60) lists it at mdisp 0xAC;
     //   ctor stores @0x00421EB8..0x00421EDB.

@@ -29,6 +29,8 @@
 class AircraftTypeClass : public TechnoTypeClass
 {
 public:
+    // CALLEE: GAMEMD 0x0041C8B0 (decl; reloc) -- constructor as the class factory calls it.
+    AircraftTypeClass(int unknown_arg0 = 0);
     // FUNCTION: GAMEMD 0x41C8B0 (declaration; constructor)
     AircraftTypeClass(const char* id);
     // FUNCTION: GAMEMD 0x41C9F0 (declaration; no-initialisation constructor)

@@ -42,7 +42,7 @@
 #include "loco_com.h"
 #include "loco_foot.h"
 #include "drive_support_views.h"
-#include "../ui/transition_timer_methods.h"
+#include "../_layout/rate_timer.h"
 
 // GLOBAL: GAMEMD 0x8A0790 - the empty coordinate this TU compares against
 // (three dwords, read by the constructor at 0x4AF562..0x4AF573).

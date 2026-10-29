@@ -36,22 +36,21 @@
 #include "../_layout/object_type_class.h"
 #include "../_layout/techno_type_class.h"
 #include "../_layout/foot_class.h"
+#include "../_layout/aircraft_class.h"
+#include "../_layout/aircraft_type_class.h"
+#include "../_layout/empulse_class.h"
+#include "../_layout/infantry_class.h"
+#include "../_layout/light_source_class.h"
+#include "../_layout/rad_site_class.h"
+#include "../_layout/tactical.h"
+#include "../_layout/tag_class.h"
+#include "../_layout/trigger_type_class.h"
+#include "../_layout/unit_type_class.h"
+#include "../_layout/voxel_anim_class.h"
 
 
 
 
-
-class AircraftClass : public FootClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class AircraftTypeClass : public TechnoTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 class AirstrikeClass : public AbstractClass
 {
@@ -69,18 +68,6 @@ public:
 
 
 class DiskLaserClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class EMPulseClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class InfantryClass : public FootClass
 {
 public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
@@ -118,30 +105,12 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class Tactical : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 
 
 
 
 
-
-
-class UnitTypeClass : public TechnoTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class VoxelAnimClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
 
 
 // FUNCTION: GAMEMD 0x41B5C0

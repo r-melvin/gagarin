@@ -22,31 +22,11 @@ GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 class AnimTypeClass;   // opaque — only ever passed through
 class BulletClass;     // opaque
 class HouseClass;
+#include "../_layout/anim_class.h"
 
 // The warn target: only its vtable+0x48 GetCoords (by-value CoordStruct
 // return, hence the hidden out-pointer push) is used.  Never instantiated.
 #include "../_layout/cell_class.h"
-
-// AnimClass — sizeof 0x1C8; ctor + two setters are body-less (reloc CALLs).
-class AnimClass
-{
-public:
-    // FUNCTION: GAMEMD 0x421EA0 (decl; reloc)
-    AnimClass(AnimTypeClass* type, const CoordStruct& coords, int loopDelay,
-              int loopCount, unsigned int flags, int forceZAdjust,
-              bool reverse) throw();
-
-    // FUNCTION: GAMEMD 0x424C90 (decl; reloc) — stores at +0x17C.
-    void FUN_00424C90(BulletClass* bullet);
-    // FUNCTION: GAMEMD 0x424CA0 (decl; reloc) — stores at +0x180.
-    void FUN_00424CA0(HouseClass* house);
-
-    char _pad000[0x19D];    // +0x0000
-    char At_19D;            // +0x019D
-    char _pad19E[0x1C8 - 0x19E];
-};
-GG_STATIC_ASSERT(offsetof(AnimClass, At_19D) == 0x19D);
-GG_STATIC_ASSERT(sizeof(AnimClass) == 0x1C8);
 
 // FUNCTION: GAMEMD 0x427CB0 (decl; reloc) — AnimTypeClass::FindIndex(name).
 int AnimType_FindIndex(const char* name);

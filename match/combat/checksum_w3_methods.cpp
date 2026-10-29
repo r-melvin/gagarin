@@ -4,6 +4,9 @@
 //   read off retail gamemd.exe v1.001. Functions are in ascending retail address order.
 
 #include "../_layout/super_class.h"
+#include "../_layout/super_weapon_type_class.h"
+#include "../_layout/slave_manager_class.h"
+#include "../_layout/spawn_manager_class.h"
 #include "../_layout/voxel_anim_class.h"
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/frame_timer.h"
@@ -60,39 +63,6 @@ public:
 GG_STATIC_ASSERT(offsetof(WaypointPathClass, unknown_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(WaypointPathClass, unknown_38) == 0x38);
 
-class SuperWeaponTypeClass : public AbstractTypeClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-    int unknown_98;              // +0x98
-    char unknown_9C[4];          // +0x9C
-    int unknown_A0;              // +0xA0
-    int unknown_A4;              // +0xA4
-    int unknown_A8;              // +0xA8
-    int unknown_AC;              // +0xAC
-    int unknown_B0;              // +0xB0
-    int unknown_B4;              // +0xB4
-    char unknown_B8[4];          // +0xB8
-    int unknown_BC;              // +0xBC
-    char unknown_C0[0x25];       // +0xC0
-    bool unknown_E5;             // +0xE5
-    bool unknown_E6;             // +0xE6
-    bool unknown_E7;             // +0xE7
-    char unknown_E8[5];          // +0xE8
-    bool unknown_ED;             // +0xED
-    bool unknown_EE;             // +0xEE
-    char unknown_EF[1];          // +0xEF
-    int unknown_F0;              // +0xF0
-    bool unknown_F4;             // +0xF4
-    bool unknown_F5;             // +0xF5
-};
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_98) == 0x98);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_BC) == 0xBC);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_E5) == 0xE5);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_ED) == 0xED);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_F0) == 0xF0);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_F5) == 0xF5);
-
 class TiberiumClass : public AbstractTypeClass
 {
 public:
@@ -114,61 +84,18 @@ GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_A8) == 0xA8);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_B8) == 0xB8);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_E8) == 0xE8);
 
-struct SlaveNodeView
-{
-    int unknown_00;
-    int unknown_04;              // +0x04 id mixed into the checksum
-};
-
-class SlaveManagerClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-    char unknown_24[0x14];       // +0x24
-    void* vptr_38;               // +0x38 list vptr
-    SlaveNodeView** Items;       // +0x3C
-    char unknown_40[8];          // +0x40
-    int Count;                   // +0x48
-    char unknown_4C[0x10];       // +0x4C
-    int unknown_5C;              // +0x5C
-};
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, Items) == 0x3C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, Count) == 0x48);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, unknown_5C) == 0x5C);
-
-class SpawnManagerClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-    void* unknown_24;            // +0x24
-    void* unknown_28;            // +0x28
-    int unknown_2C;              // +0x2C
-    char unknown_30[0x18];       // +0x30
-    int unknown_48;              // +0x48
-    char unknown_4C[4];          // +0x4C
-    CDTimerClass Timer50;        // +0x50
-    CDTimerClass Timer5C;        // +0x5C
-    void* unknown_68;            // +0x68
-    void* unknown_6C;            // +0x6C
-    int unknown_70;              // +0x70
-};
-GG_STATIC_ASSERT(offsetof(SpawnManagerClass, unknown_2C) == 0x2C);
-GG_STATIC_ASSERT(offsetof(SpawnManagerClass, Timer50) == 0x50);
-GG_STATIC_ASSERT(offsetof(SpawnManagerClass, Timer5C) == 0x5C);
-GG_STATIC_ASSERT(offsetof(SpawnManagerClass, unknown_70) == 0x70);
-
 // FUNCTION: GAMEMD 0x6CE020
 // Super weapon flags and charge state, plus the attached animation's identity.
 void SuperClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractClass::vf_13(crc);
-    crc->FUN_004A1CA0(AsBool(IsPresent));
-    crc->FUN_004A1CA0(AsBool(IsOneTime));
-    crc->FUN_004A1CA0(AsBool(IsReady));
+    crc->FUN_004A1CA0(IsPresent);
+    crc->FUN_004A1CA0(IsOneTime);
+    crc->FUN_004A1CA0(IsReady);
     crc->FUN_004A1D50(CameoChargeState);
     crc->FUN_004A1D50(ChargeDrainState);
-    crc->FUN_004A1CA0(AsBool(CanHold));
-    crc->FUN_004A1CA0(AsBool(AnimationGotInvalid));
+    crc->FUN_004A1CA0(CanHold);
+    crc->FUN_004A1CA0(AnimationGotInvalid);
     if (Animation) {
         crc->FUN_004A1D50(*(unsigned char*)((char*)Animation + 0x195));
         crc->FUN_004A1D50(RttiInfoId(Animation));
@@ -253,22 +180,22 @@ void WaypointPathClass::vf_13(Obj_004A1D30* crc)
 void SuperWeaponTypeClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractTypeClass::vf_13(crc);
-    crc->FUN_004A1D50(unknown_98);
-    crc->FUN_004A1D50(unknown_BC);
-    crc->FUN_004A1D50(unknown_A0);
-    crc->FUN_004A1D50(unknown_A4);
-    crc->FUN_004A1D50(unknown_A8);
-    crc->FUN_004A1D50(unknown_AC);
+    crc->FUN_004A1D50(ArrayIndex);
+    crc->FUN_004A1D50(Action);
+    crc->FUN_004A1D50(RechargeVoice);
+    crc->FUN_004A1D50(ChargingVoice);
+    crc->FUN_004A1D50(ImpatientVoice);
+    crc->FUN_004A1D50(SuspendVoice);
     crc->FUN_004A1CA0(unknown_E6);
     crc->FUN_004A1CA0(unknown_E7);
     crc->FUN_004A1CA0(unknown_ED);
-    crc->FUN_004A1CA0(unknown_EE);
-    crc->FUN_004A1D50(unknown_F0);
+    crc->FUN_004A1CA0(PostClick);
+    crc->FUN_004A1D50(PostClickIndex);
     crc->FUN_004A1CA0(unknown_F4);
-    crc->FUN_004A1D50(unknown_B0);
-    crc->FUN_004A1D50(unknown_B4);
-    crc->FUN_004A1CA0(unknown_E5);
-    crc->FUN_004A1CA0(unknown_F5);
+    crc->FUN_004A1D50(RechargeTime);
+    crc->FUN_004A1D50(Type);
+    crc->FUN_004A1CA0(UseChargeDrain);
+    crc->FUN_004A1CA0(ManualControl);
 }
 
 // FUNCTION: GAMEMD 0x721DC0
@@ -290,9 +217,9 @@ void TiberiumClass::vf_13(Obj_004A1D30* crc)
 void SlaveManagerClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractClass::vf_13(crc);
-    crc->FUN_004A1D50(unknown_5C);
-    for (int i = Count - 1; i >= 0; i--) {
-        crc->FUN_004A1D50(Items[i]->unknown_04);
+    crc->FUN_004A1D50(State);
+    for (int i = SlaveNodes.Count - 1; i >= 0; i--) {
+        crc->FUN_004A1D50(SlaveNodes.Items[i]->State);
     }
 }
 
@@ -302,20 +229,20 @@ void SpawnManagerClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractClass::vf_13(crc);
     crc->FUN_004A1D50(unknown_70);
-    if (unknown_6C) {
-        crc->FUN_004A1D50(RttiInfoId(unknown_6C));
+    if (NewTarget) {
+        crc->FUN_004A1D50(RttiInfoId(NewTarget));
     }
-    if (unknown_68) {
-        crc->FUN_004A1D50(RttiInfoId(unknown_68));
+    if (Target) {
+        crc->FUN_004A1D50(RttiInfoId(Target));
     }
-    crc->FUN_004A1D50(Timer5C.GetTimeLeft());
-    crc->FUN_004A1D50(Timer50.GetTimeLeft());
-    crc->FUN_004A1D50(unknown_48);
-    crc->FUN_004A1D50(unknown_2C);
-    if (unknown_28) {
-        crc->FUN_004A1D50(RttiInfoId(unknown_28));
+    crc->FUN_004A1D50(UpdateTimer.GetTimeLeft());
+    crc->FUN_004A1D50(SpawnTimer.GetTimeLeft());
+    crc->FUN_004A1D50(SpawnedNodes.Count);
+    crc->FUN_004A1D50(SpawnCount);
+    if (SpawnType) {
+        crc->FUN_004A1D50(RttiInfoId(SpawnType));
     }
-    if (unknown_24) {
-        crc->FUN_004A1D50(RttiInfoId(unknown_24));
+    if (Owner) {
+        crc->FUN_004A1D50(RttiInfoId(Owner));
     }
 }

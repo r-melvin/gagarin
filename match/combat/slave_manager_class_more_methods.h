@@ -24,7 +24,7 @@
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84.
 #include "../core/frame_counter.h"
 
-class SlaveManagerClass;
+class SlaveManagerView_006AF580;
 struct SlaveManagerHandle;
 struct SlaveObject;
 class HouseClass;
@@ -61,10 +61,10 @@ public:
 };
 
 // ---------------------------------------------------------------------------
-// InfantryTypeClass — the slave type. CreateSlave calls its object factory at
+// InfantryTypeView_006AF580 — the slave type. CreateSlave calls its object factory at
 // primary vtable index 35 -> 0x8C (takes the spawn coords, returns the slave).
 // ---------------------------------------------------------------------------
-class InfantryTypeClass
+class InfantryTypeView_006AF580
 {
 public:
     virtual void _itv0();
@@ -406,12 +406,12 @@ GG_STATIC_ASSERT(offsetof(SlaveControl, RespawnTimer) == 0x08);
 // SlaveManagerClass — modelled non-polymorphically (COM base [0x00..0x24) is
 // P2). Only the members the three methods touch are named + asserted.
 // ---------------------------------------------------------------------------
-class SlaveManagerClass
+class SlaveManagerView_006AF580
 {
 public:
     char               _base[0x24];     // +0x00  COM vptrs + Array/RegenRate (P2)
     TechnoView_006AF580*       Owner;           // +0x24
-    InfantryTypeClass* SlaveType;       // +0x28
+    InfantryTypeView_006AF580* SlaveType;       // +0x28
     char               _pad2c[0x0C];    // [0x2C .. 0x38)
     DynamicVectorClassLayout SlaveNodes;      // +0x38  Items@0x3C, Count@0x48
     char               _pad50[0x0C];    // +0x50  RespawnTimer (CDTimerClass)
@@ -423,12 +423,12 @@ public:
     void Deploy2();                         // GAMEMD 0x6B0D60
     void GuardAllSlaves();                  // GAMEMD 0x6B0490
 };
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, Owner)         == 0x24);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveType)     == 0x28);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes)    == 0x38);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, State)         == 0x5C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, LastScanFrame) == 0x60);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Items) == 0x3C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Count) == 0x48);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006AF580, Owner)         == 0x24);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006AF580, SlaveType)     == 0x28);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006AF580, SlaveNodes)    == 0x38);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006AF580, State)         == 0x5C);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006AF580, LastScanFrame) == 0x60);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006AF580, SlaveNodes) + offsetof(DynamicVectorClassLayout, Items) == 0x3C);
+GG_STATIC_ASSERT(offsetof(SlaveManagerView_006AF580, SlaveNodes) + offsetof(DynamicVectorClassLayout, Count) == 0x48);
 
 #endif  // GG_MATCH_COMBAT_SLAVE_MANAGER_CLASS_MORE_METHODS_H

@@ -9,7 +9,9 @@
 //   the CRC slot 0x464B30, Load 0x465010, Save 0x465300, the scalar deleting destructor 0x465DC0 and
 //   the allocation sites 0x465416, 0x466053 and 0x6C29BC (`PUSH 0x1798; CALL 0x7C8E17`, all agreeing).
 //
-// BuildingTypeClass: the rules-INI template of a building ([BuildingTypes] sections).
+// BuildingTypeClass: the rules-INI template of a building ([BuildingTypes] sections). Declared here
+// as BuildingTypeView_0045DD90, because its base is the ABI view TypesBuildingTypeTechnoView rather than
+// TechnoTypeClass; the canonical class is in _layout/building_type_class_layout.h.
 //   +0x00..+0xDF7   TypesBuildingTypeTechnoView (AbstractClass .. TechnoTypeClass; READ-ONLY, only the
 //                   members this module touches are named)
 //   +0xDF8..+0x1797 the members below (names are the INI keys the reader proves).  sizeof 0x1798
@@ -18,7 +20,7 @@
 
 #include "types_shared.h"
 
-class BuildingTypeClass;
+class BuildingTypeView_0045DD90;
 class HouseClass;
 
 // Not HBPoint2D: the constructors change how the 8-byte value is returned (see house_building_views.h).
@@ -215,14 +217,14 @@ GG_STATIC_ASSERT(offsetof(TypesBuildingTypeTechnoView, unknown_D96) == 0xD96);
 GG_STATIC_ASSERT(offsetof(TypesBuildingTypeTechnoView, unknown_D97) == 0xD97);
 GG_STATIC_ASSERT(sizeof(TypesBuildingTypeTechnoView) == 0xDF8);
 // GLOBAL: GAMEMD 0xA83C68 - BuildingTypeClass::Array, every building type (DynamicVectorClass; read-only here).
-extern DynamicVectorClass<BuildingTypeClass*> TypesBuildingTypeArray;
+extern DynamicVectorClass<BuildingTypeView_0045DD90*> TypesBuildingTypeArray;
 
 // The building object (read-only view): only the constructor and the Unlimbo slot are used here.
 class TypesBuildingView
 {
 public:
     // FUNCTION: GAMEMD 0x43B740 (BuildingClass named constructor; not part of this cluster - bound)
-    TypesBuildingView(BuildingTypeClass* type, void* owner);
+    TypesBuildingView(BuildingTypeView_0045DD90* type, void* owner);
     virtual ~TypesBuildingView();
     virtual void vf_1();
     virtual void vf_2();
@@ -285,13 +287,13 @@ public:
 GG_STATIC_ASSERT(sizeof(TypesBuildingView) == 0x720);
 
 // VTABLE: GAMEMD 0x7E4570 (IPersistStream side) and GAMEMD 0x7E4554 / 0x7E454C / 0x7E4544
-class BuildingTypeClass : public TypesBuildingTypeTechnoView
+class BuildingTypeView_0045DD90 : public TypesBuildingTypeTechnoView
 {
 public:
     // FUNCTION: GAMEMD 0x45DD90 - the named constructor.
-    BuildingTypeClass(const char* id);
+    BuildingTypeView_0045DD90(const char* id);
     // FUNCTION: GAMEMD 0x45E520 (no-init constructor; not part of this cluster - bound)
-    BuildingTypeClass(const HBNoInit& noInit);
+    BuildingTypeView_0045DD90(const HBNoInit& noInit);
     // FUNCTION: GAMEMD 0x45FA90 (post-load work; not part of this cluster - bound)
     void LoadFixup();
     // FUNCTION: GAMEMD 0x45F230 (stamps the theater into the art names; not part of this cluster - bound)
@@ -304,7 +306,7 @@ public:
     // Slot 8: the scalar deleting destructor 0x465DC0 is compiler output; the destructor body 0x45E580
     // is out of line (not part of this cluster).
     // FUNCTION: GAMEMD 0x465DC0 (scalar deleting destructor; ??_G)
-    virtual ~BuildingTypeClass();
+    virtual ~BuildingTypeView_0045DD90();
     virtual int WhatAmI();                                                   // 11  0x465D90
     virtual int Size();                                                      // 12  0x465DA0
     virtual void ComputeCRC(TypesCrcView& crc);                              // 13  0x464B30
@@ -539,202 +541,202 @@ public:
     unsigned char unknown_1794[0x4];              // +0x1794
 };
 
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ArrayIndex) == 0xDF8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FoundationData) == 0xDFC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Buildup) == 0xE00);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildupLoaded) == 0xE04);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildCat) == 0xE08);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, HalfDamageSmokeLocation1) == 0xE0C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, HalfDamageSmokeLocation2) == 0xE18);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, GateCloseDelay) == 0xE28);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LightVisibility) == 0xE30);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LightIntensity) == 0xE34);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LightRedTint) == 0xE38);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LightGreenTint) == 0xE3C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LightBlueTint) == 0xE40);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PrimaryFirePixelOffset) == 0xE44);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SecondaryFirePixelOffset) == 0xE4C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ToOverlay) == 0xE54);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ToTile) == 0xE58);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildupFile) == 0xE5C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildupSound) == 0xE6C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PackupSound) == 0xE70);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CreateUnitSound) == 0xE74);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnitEnterSound) == 0xE78);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnitExitSound) == 0xE7C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, WorkingSound) == 0xE80);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NotWorkingSound) == 0xE84);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PowersUpBuilding) == 0xE88);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FreeUnit) == 0xEA0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SecretInfantry) == 0xEA4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SecretUnit) == 0xEA8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SecretBuilding) == 0xEAC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, unknown_EB0) == 0xEB0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Adjacent) == 0xEB4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Factory) == 0xEB8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, TargetCoordOffset) == 0xEBC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ExitCoord) == 0xEC8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FoundationOutside) == 0xED4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, unknown_ED8) == 0xED8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DeployFacing) == 0xEDC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PowerBonus) == 0xEE0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PowerDrain) == 0xEE4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ExtraPowerBonus) == 0xEE8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ExtraPowerDrain) == 0xEEC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Foundation) == 0xEF0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Height) == 0xEF4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, OccupyHeight) == 0xEF8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, MidPoint) == 0xEFC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DoorStages) == 0xF00);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildingAnimFrame) == 0xF04);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildingAnim) == 0xF4C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Upgrades) == 0x14E0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DeployingAnim) == 0x14E4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DeployingAnimLoaded) == 0x14E8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnderDoorAnim) == 0x14EC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnderDoorAnimLoaded) == 0x14F0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Rubble) == 0x14F4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, RubbleLoaded) == 0x14F8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, RoofDeployingAnim) == 0x14FC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, RoofDeployingAnimLoaded) == 0x1500);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnderRoofDoorAnim) == 0x1504);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnderRoofDoorAnimLoaded) == 0x1508);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DoorAnim) == 0x150C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SpecialZOverlay) == 0x1510);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SpecialZOverlayZAdjust) == 0x1514);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BibShape) == 0x1518);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BibShapeLoaded) == 0x151C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NormalZAdjust) == 0x1520);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, AntiAirValue) == 0x1524);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, AntiArmorValue) == 0x1528);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, AntiInfantryValue) == 0x152C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ZShapePointMove) == 0x1530);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, unknown_1538) == 0x1538);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ExtraLight) == 0x1548);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, TogglePower) == 0x154A);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, HasSpotlight) == 0x154B);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, IsTemple) == 0x154C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, IsPlug) == 0x154D);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, HoverPad) == 0x154E);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BaseNormal) == 0x154F);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, EligibileForAllyBuilding) == 0x1550);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, EligibleForDelayKill) == 0x1551);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NeedsEngineer) == 0x1552);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CaptureEvaEvent) == 0x1554);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ProduceCashStartup) == 0x1558);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ProduceCashAmount) == 0x155C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ProduceCashDelay) == 0x1560);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, InfantryGainSelfHeal) == 0x1564);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnitsGainSelfHeal) == 0x1568);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, RefinerySmokeFrames) == 0x156C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Bib) == 0x1570);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Wall) == 0x1571);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Capturable) == 0x1572);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Powered) == 0x1573);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PoweredSpecial) == 0x1574);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Overpowerable) == 0x1575);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Spyable) == 0x1576);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CanC4) == 0x1577);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, WantsExtraSpace) == 0x1578);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Unsellable) == 0x1579);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ClickRepairable) == 0x157A);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CanBeOccupied) == 0x157B);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CanOccupyFire) == 0x157C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, MaxNumberOccupants) == 0x1580);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ShowOccupantPips) == 0x1584);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, MuzzleFlash) == 0x1588);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DamageFireOffset) == 0x15D8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, QueueingCell) == 0x1618);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NumberImpassableRows) == 0x1620);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, RemoveOccupy) == 0x1624);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, AddOccupy) == 0x1664);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Radar) == 0x16A4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SpySat) == 0x16A5);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ChargeAnim) == 0x16A6);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, IsAnimDelayedFire) == 0x16A7);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SiloDamage) == 0x16A8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnitRepair) == 0x16A9);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnitReload) == 0x16AA);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Bunker) == 0x16AB);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Cloning) == 0x16AC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Grinding) == 0x16AD);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnitAbsorb) == 0x16AE);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, InfantryAbsorb) == 0x16AF);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SecretLab) == 0x16B0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DoubleThick) == 0x16B1);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Flat) == 0x16B2);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DockUnload) == 0x16B3);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Recoilless) == 0x16B4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, HasStupidGuardMode) == 0x16B5);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BridgeRepairHut) == 0x16B6);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Gate) == 0x16B7);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SAM) == 0x16B8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ConstructionYard) == 0x16B9);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NukeSilo) == 0x16BA);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Refinery) == 0x16BB);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Weeder) == 0x16BC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, WeaponsFactory) == 0x16BD);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LaserFencePost) == 0x16BE);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LaserFence) == 0x16BF);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FirestormWall) == 0x16C0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Hospital) == 0x16C1);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Armory) == 0x16C2);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, EMPulseCannon) == 0x16C3);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, TickTank) == 0x16C4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, TurretAnimIsVoxel) == 0x16C5);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BarrelAnimIsVoxel) == 0x16C6);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CloakGenerator) == 0x16C7);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SensorArray) == 0x16C8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ICBMLauncher) == 0x16C9);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Artillary) == 0x16CA);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Helipad) == 0x16CB);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, OrePurifier) == 0x16CC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FactoryPlant) == 0x16CD);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, InfantryCostBonus) == 0x16D0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, UnitsCostBonus) == 0x16D4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, AircraftCostBonus) == 0x16D8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildingsCostBonus) == 0x16DC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DefensesCostBonus) == 0x16E0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, GDIBarracks) == 0x16E4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NODBarracks) == 0x16E5);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, YuriBarracks) == 0x16E6);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ChargedAnimTime) == 0x16E8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DelayedFireDelay) == 0x16EC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SuperWeapon) == 0x16F0);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SuperWeapon2) == 0x16F4);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, GateStages) == 0x16F8);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PowersUpToLevel) == 0x16FC);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DamagedDoor) == 0x1700);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, InvisibleInGame) == 0x1701);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, TerrainPalette) == 0x1702);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PlaceAnywhere) == 0x1703);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ExtraDamageStage) == 0x1704);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, AIBuildThis) == 0x1705);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, IsBaseDefense) == 0x1706);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CloakRadiusInCells) == 0x1707);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ConcentricRadialIndicator) == 0x1708);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PsychicDetectionRadius) == 0x170C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BarrelStartPitch) == 0x1710);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, VoxelBarrelFile) == 0x1714);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, unknown_1728) == 0x1728);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, VoxelBarrelOffsetToPitchPivotPoint) == 0x1730);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, VoxelBarrelOffsetToRotatePivotPoint) == 0x173C);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, VoxelBarrelOffsetToBuildingPivotPoint) == 0x1748);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, VoxelBarrelOffsetToBarrelEnd) == 0x1754);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DemandLoad) == 0x1760);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DemandLoadBuildup) == 0x1761);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, FreeBuildup) == 0x1762);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, IsThreatRatingNode) == 0x1763);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, PrimaryFireDualOffset) == 0x1764);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ProtectWithWall) == 0x1765);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CanHideThings) == 0x1766);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CrateBeneath) == 0x1767);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, LeaveRubble) == 0x1768);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, CrateBeneathIsMoney) == 0x1769);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, TheaterSpecificID) == 0x176A);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NumberOfDocks) == 0x1780);
-GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DockingOffsets) == 0x1784);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ArrayIndex) == 0xDF8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, FoundationData) == 0xDFC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Buildup) == 0xE00);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BuildupLoaded) == 0xE04);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BuildCat) == 0xE08);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, HalfDamageSmokeLocation1) == 0xE0C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, HalfDamageSmokeLocation2) == 0xE18);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, GateCloseDelay) == 0xE28);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LightVisibility) == 0xE30);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LightIntensity) == 0xE34);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LightRedTint) == 0xE38);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LightGreenTint) == 0xE3C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LightBlueTint) == 0xE40);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PrimaryFirePixelOffset) == 0xE44);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SecondaryFirePixelOffset) == 0xE4C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ToOverlay) == 0xE54);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ToTile) == 0xE58);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BuildupFile) == 0xE5C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BuildupSound) == 0xE6C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PackupSound) == 0xE70);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CreateUnitSound) == 0xE74);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnitEnterSound) == 0xE78);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnitExitSound) == 0xE7C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, WorkingSound) == 0xE80);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, NotWorkingSound) == 0xE84);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PowersUpBuilding) == 0xE88);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, FreeUnit) == 0xEA0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SecretInfantry) == 0xEA4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SecretUnit) == 0xEA8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SecretBuilding) == 0xEAC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, unknown_EB0) == 0xEB0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Adjacent) == 0xEB4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Factory) == 0xEB8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, TargetCoordOffset) == 0xEBC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ExitCoord) == 0xEC8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, FoundationOutside) == 0xED4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, unknown_ED8) == 0xED8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DeployFacing) == 0xEDC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PowerBonus) == 0xEE0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PowerDrain) == 0xEE4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ExtraPowerBonus) == 0xEE8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ExtraPowerDrain) == 0xEEC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Foundation) == 0xEF0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Height) == 0xEF4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, OccupyHeight) == 0xEF8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, MidPoint) == 0xEFC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DoorStages) == 0xF00);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BuildingAnimFrame) == 0xF04);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BuildingAnim) == 0xF4C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Upgrades) == 0x14E0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DeployingAnim) == 0x14E4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DeployingAnimLoaded) == 0x14E8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnderDoorAnim) == 0x14EC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnderDoorAnimLoaded) == 0x14F0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Rubble) == 0x14F4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, RubbleLoaded) == 0x14F8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, RoofDeployingAnim) == 0x14FC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, RoofDeployingAnimLoaded) == 0x1500);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnderRoofDoorAnim) == 0x1504);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnderRoofDoorAnimLoaded) == 0x1508);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DoorAnim) == 0x150C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SpecialZOverlay) == 0x1510);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SpecialZOverlayZAdjust) == 0x1514);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BibShape) == 0x1518);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BibShapeLoaded) == 0x151C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, NormalZAdjust) == 0x1520);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, AntiAirValue) == 0x1524);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, AntiArmorValue) == 0x1528);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, AntiInfantryValue) == 0x152C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ZShapePointMove) == 0x1530);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, unknown_1538) == 0x1538);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ExtraLight) == 0x1548);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, TogglePower) == 0x154A);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, HasSpotlight) == 0x154B);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, IsTemple) == 0x154C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, IsPlug) == 0x154D);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, HoverPad) == 0x154E);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BaseNormal) == 0x154F);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, EligibileForAllyBuilding) == 0x1550);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, EligibleForDelayKill) == 0x1551);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, NeedsEngineer) == 0x1552);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CaptureEvaEvent) == 0x1554);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ProduceCashStartup) == 0x1558);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ProduceCashAmount) == 0x155C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ProduceCashDelay) == 0x1560);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, InfantryGainSelfHeal) == 0x1564);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnitsGainSelfHeal) == 0x1568);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, RefinerySmokeFrames) == 0x156C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Bib) == 0x1570);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Wall) == 0x1571);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Capturable) == 0x1572);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Powered) == 0x1573);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PoweredSpecial) == 0x1574);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Overpowerable) == 0x1575);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Spyable) == 0x1576);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CanC4) == 0x1577);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, WantsExtraSpace) == 0x1578);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Unsellable) == 0x1579);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ClickRepairable) == 0x157A);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CanBeOccupied) == 0x157B);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CanOccupyFire) == 0x157C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, MaxNumberOccupants) == 0x1580);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ShowOccupantPips) == 0x1584);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, MuzzleFlash) == 0x1588);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DamageFireOffset) == 0x15D8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, QueueingCell) == 0x1618);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, NumberImpassableRows) == 0x1620);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, RemoveOccupy) == 0x1624);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, AddOccupy) == 0x1664);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Radar) == 0x16A4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SpySat) == 0x16A5);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ChargeAnim) == 0x16A6);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, IsAnimDelayedFire) == 0x16A7);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SiloDamage) == 0x16A8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnitRepair) == 0x16A9);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnitReload) == 0x16AA);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Bunker) == 0x16AB);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Cloning) == 0x16AC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Grinding) == 0x16AD);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnitAbsorb) == 0x16AE);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, InfantryAbsorb) == 0x16AF);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SecretLab) == 0x16B0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DoubleThick) == 0x16B1);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Flat) == 0x16B2);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DockUnload) == 0x16B3);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Recoilless) == 0x16B4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, HasStupidGuardMode) == 0x16B5);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BridgeRepairHut) == 0x16B6);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Gate) == 0x16B7);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SAM) == 0x16B8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ConstructionYard) == 0x16B9);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, NukeSilo) == 0x16BA);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Refinery) == 0x16BB);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Weeder) == 0x16BC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, WeaponsFactory) == 0x16BD);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LaserFencePost) == 0x16BE);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LaserFence) == 0x16BF);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, FirestormWall) == 0x16C0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Hospital) == 0x16C1);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Armory) == 0x16C2);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, EMPulseCannon) == 0x16C3);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, TickTank) == 0x16C4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, TurretAnimIsVoxel) == 0x16C5);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BarrelAnimIsVoxel) == 0x16C6);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CloakGenerator) == 0x16C7);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SensorArray) == 0x16C8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ICBMLauncher) == 0x16C9);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Artillary) == 0x16CA);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, Helipad) == 0x16CB);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, OrePurifier) == 0x16CC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, FactoryPlant) == 0x16CD);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, InfantryCostBonus) == 0x16D0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, UnitsCostBonus) == 0x16D4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, AircraftCostBonus) == 0x16D8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BuildingsCostBonus) == 0x16DC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DefensesCostBonus) == 0x16E0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, GDIBarracks) == 0x16E4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, NODBarracks) == 0x16E5);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, YuriBarracks) == 0x16E6);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ChargedAnimTime) == 0x16E8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DelayedFireDelay) == 0x16EC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SuperWeapon) == 0x16F0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, SuperWeapon2) == 0x16F4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, GateStages) == 0x16F8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PowersUpToLevel) == 0x16FC);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DamagedDoor) == 0x1700);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, InvisibleInGame) == 0x1701);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, TerrainPalette) == 0x1702);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PlaceAnywhere) == 0x1703);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ExtraDamageStage) == 0x1704);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, AIBuildThis) == 0x1705);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, IsBaseDefense) == 0x1706);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CloakRadiusInCells) == 0x1707);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ConcentricRadialIndicator) == 0x1708);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PsychicDetectionRadius) == 0x170C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, BarrelStartPitch) == 0x1710);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, VoxelBarrelFile) == 0x1714);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, unknown_1728) == 0x1728);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, VoxelBarrelOffsetToPitchPivotPoint) == 0x1730);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, VoxelBarrelOffsetToRotatePivotPoint) == 0x173C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, VoxelBarrelOffsetToBuildingPivotPoint) == 0x1748);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, VoxelBarrelOffsetToBarrelEnd) == 0x1754);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DemandLoad) == 0x1760);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DemandLoadBuildup) == 0x1761);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, FreeBuildup) == 0x1762);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, IsThreatRatingNode) == 0x1763);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, PrimaryFireDualOffset) == 0x1764);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, ProtectWithWall) == 0x1765);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CanHideThings) == 0x1766);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CrateBeneath) == 0x1767);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, LeaveRubble) == 0x1768);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, CrateBeneathIsMoney) == 0x1769);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, TheaterSpecificID) == 0x176A);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, NumberOfDocks) == 0x1780);
+GG_STATIC_ASSERT(offsetof(BuildingTypeView_0045DD90, DockingOffsets) == 0x1784);
 // sizeof is from the allocation: `PUSH 0x1798; CALL 0x7C8E17` at 0x465416, 0x466053, 0x6C29BC.
-GG_STATIC_ASSERT(sizeof(BuildingTypeClass) == 0x1798);
+GG_STATIC_ASSERT(sizeof(BuildingTypeView_0045DD90) == 0x1798);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_BUILDING_TYPES_BUILDING_TYPE_CLASS_H

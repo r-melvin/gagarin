@@ -6,10 +6,7 @@
 // Pointer/scalar/enum element: no element layout is claimed.
 #include "vector_class_operations.h"
 
-class SlaveManagerClass {
-public:
-    struct SlaveControl;
-};
+#include "../_layout/slave_manager_class.h"
 
 // TEMPLATE: GAMEMD 0x6B13E0
 // DynamicVectorClass<SlaveManagerClass::SlaveControl*>::Slot5 (slot 5)

@@ -18,7 +18,7 @@ bool FactoryClass::RemoveOneFromQueue(TechnoTypeClass const* pItem)
 {
     int idx = this->QueuedObjects.FindItemIndex(pItem);
     if (idx != -1)
-        return this->QueuedObjects.RemoveItem(idx);
+        return this->QueuedObjects.Delete(idx);
     return false;
 }
 

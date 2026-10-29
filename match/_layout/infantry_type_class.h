@@ -30,10 +30,20 @@ struct SequenceStruct;
 class InfantryTypeClass : public TechnoTypeClass
 {
 public:
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house);   // 32  0x523B40
+    virtual void* vf_35(void* owner);   // 35  0x523B10
+    // CALLEE: GAMEMD 0x005236A0 (decl; reloc) -- constructor as the class factory calls it.
+    InfantryTypeClass(int unknown_arg0 = 0);
+    virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x524960
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x524B60
+    virtual int vf_11();   // 11  0x524D40
+    virtual int vf_12();   // 12  0x524D50
     // Declaration: GAMEMD 0x5247A0 -- InfantryTypeClass slot 44 returns EAX.
     virtual int vf_44();
     // Declaration: GAMEMD 0x524790 -- slot45, full EAX scalar, no args.
     virtual int vf_45();
+    // IPersist::GetClassID (slot 3), 0x524C70; body in core/persist_class_id_methods.cpp.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     int             ArrayIndex;          // +0xDF8
     int             Pip;                 // +0xDFC (PipIndex enum)
     int             OccupyPip;           // +0xE00 (PipIndex enum)

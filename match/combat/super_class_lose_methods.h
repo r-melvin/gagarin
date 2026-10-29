@@ -13,23 +13,10 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
 
-class SuperClass;
+#include "../_layout/super_class.h"
 
 // GLOBAL: GAMEMD 0x00A83D50
 // DynamicVectorClass<SuperClass*>: vptr +0x00, Items +0x04, Count +0x10.
 extern DynamicVectorClass<SuperClass*> ShowTimers;
-
-class SuperClass
-{
-public:
-    char _pad00[0x6D];   // +0x0000
-    bool IsPresent;      // +0x006D
-    char _pad6E;         // +0x006E
-    bool IsReady;        // +0x006F
-
-    bool Lose();         // GAMEMD 0x6CB7B0
-};
-GG_STATIC_ASSERT(offsetof(SuperClass, IsPresent) == 0x6D);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsReady)   == 0x6F);
 
 #endif  // GG_MATCH_COMBAT_SUPER_CLASS_LOSE_METHODS_H

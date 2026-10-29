@@ -22,6 +22,29 @@
 #include "../_layout/trigger_class.h"
 #include "../_layout/voxel_anim_type_class.h"
 #include "../_layout/warhead_type_class.h"
+#include "../_layout/aircraft_class.h"
+#include "../_layout/aircraft_type_class.h"
+#include "../_layout/anim_class.h"
+#include "../_layout/infantry_class.h"
+#include "../_layout/infantry_type_class.h"
+#include "../_layout/jumpjet_locomotion_class.h"
+#include "../_layout/ship_locomotion_class.h"
+#include "../_layout/teleport_locomotion_class.h"
+#include "../_layout/tunnel_locomotion_class.h"
+#include "../_layout/unit_type_class.h"
+#include "../_layout/voxel_anim_class.h"
+#include "../combat/weapon_type_class.h"
+#include "../movement/walk_locomotion_class.h"
+#include "../_layout/ai_trigger_type_class.h"
+#include "../_layout/alpha_shape_class.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/empulse_class.h"
+#include "../_layout/light_source_class.h"
+#include "../_layout/rad_site_class.h"
+#include "../_layout/tactical.h"
+#include "../_layout/tag_class.h"
+#include "../_layout/trigger_type_class.h"
+#include "../_layout/veinhole_monster_class.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -134,27 +157,7 @@ extern const CLSID DAT_007E9850;
 // GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
 extern const CLSID DAT_007E9830;
 
-class AircraftClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AircraftTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class AirstrikeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AITriggerTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AlphaShapeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AnimClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -162,15 +165,7 @@ class NeuronClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class CellClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class DiskLaserClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class EMPulseClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -178,43 +173,7 @@ class FactoryClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class FoggedObjectClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class InfantryClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class InfantryTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class IsometricTileClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class IsometricTileTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class JumpjetLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class LightSourceClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class ParasiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class RadSiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ShipLocomotionClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -234,51 +193,7 @@ class SuperWeaponTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class Tactical {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TagClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeleportLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class TemporalClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TiberiumClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TriggerTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TubeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TunnelLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class UnitTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VoxelAnimClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VeinholeMonsterClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WalkLocomotionClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -286,7 +201,25 @@ class WaypointPathClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class WeaponTypeClass {
+
+class FoggedObjectClass {
+public:
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+};
+class IsometricTileClass {
+public:
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+};
+class IsometricTileTypeClass {
+public:
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+};
+
+class TiberiumClass {
+public:
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+};
+class TubeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -409,6 +342,15 @@ HRESULT __stdcall FoggedObjectClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
+
+// FUNCTION: GAMEMD 0x00524C70
+HRESULT __stdcall InfantryTypeClass::GetClassID(CLSID* pClassID)
+{
+    if (pClassID == 0)
+        return E_POINTER;
+    *pClassID = DAT_007E95A0;
+    return S_OK;
+}
 
 // FUNCTION: GAMEMD 0x00543AB0
 HRESULT __stdcall IsometricTileClass::GetClassID(CLSID* pClassID)

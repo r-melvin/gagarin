@@ -2291,7 +2291,7 @@
  {
   "tu": "match/combat/slave_manager_class_methods.cpp",
   "addr": "0x6B0A20",
-  "sym": "?LostSlave@SlaveManagerClass@@QAEXPAUSlaveObject@@@Z",
+  "sym": "?LostSlave@SlaveManagerView_006B0A20@@QAEXPAUSlaveObject@@@Z",
   "len": "0x6e",
   "name": "SlaveManagerClass::LostSlave",
   "status": "matched",
@@ -2300,7 +2300,7 @@
  {
   "tu": "match/combat/slave_manager_class_methods.cpp",
   "addr": "0x6B0C80",
-  "sym": "?AllGuard@SlaveManagerClass@@QAEXXZ",
+  "sym": "?AllGuard@SlaveManagerView_006B0A20@@QAEXXZ",
   "len": "0x3B",
   "name": "AllGuard",
   "status": "partial",
@@ -2309,7 +2309,7 @@
  {
   "tu": "match/combat/slave_manager_class_more_methods.cpp",
   "addr": "0x6AF580",
-  "sym": "?SetOwner@SlaveManagerClass@@QAEXPAVTechnoView_006AF580@@@Z",
+  "sym": "?SetOwner@SlaveManagerView_006AF580@@QAEXPAVTechnoView_006AF580@@@Z",
   "len": "0x65",
   "name": "SetOwner",
   "status": "matched",
@@ -2318,7 +2318,7 @@
  {
   "tu": "match/combat/slave_manager_class_more_methods.cpp",
   "addr": "0x6AF650",
-  "sym": "?CreateSlave@SlaveManagerClass@@QAEXPAUSlaveControl@@@Z",
+  "sym": "?CreateSlave@SlaveManagerView_006AF580@@QAEXPAUSlaveControl@@@Z",
   "len": "0x62",
   "name": "CreateSlave",
   "status": "matched",
@@ -2327,7 +2327,7 @@
  {
   "tu": "match/combat/slave_manager_class_more_methods.cpp",
   "addr": "0x6B0D60",
-  "sym": "?Deploy2@SlaveManagerClass@@QAEXXZ",
+  "sym": "?Deploy2@SlaveManagerView_006AF580@@QAEXXZ",
   "len": "0x41",
   "name": "Deploy2",
   "status": "partial",
@@ -2336,7 +2336,7 @@
  {
   "tu": "match/combat/slave_manager_class_more_methods.cpp",
   "addr": "0x6B0490",
-  "sym": "?GuardAllSlaves@SlaveManagerClass@@QAEXXZ",
+  "sym": "?GuardAllSlaves@SlaveManagerView_006AF580@@QAEXXZ",
   "len": "0x2c",
   "name": "SlaveManagerClass::GuardAllSlaves",
   "status": "matched",
@@ -2345,7 +2345,7 @@
  {
   "tu": "match/combat/slave_manager_class_wake_methods.cpp",
   "addr": "0x6B1020",
-  "sym": "?ShouldWakeUpNow@SlaveManagerClass@@QAE_NXZ",
+  "sym": "?ShouldWakeUpNow@SlaveManagerView_006B1020@@QAE_NXZ",
   "len": "0xab",
   "name": "SlaveManagerClass::ShouldWakeUpNow",
   "status": "matched",
@@ -4759,7 +4759,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465DC0",
-  "sym": "??_GBuildingTypeClass@@UAEPAXI@Z",
+  "sym": "??_GBuildingTypeView_0045DD90@@UAEPAXI@Z",
   "len": "0x1e",
   "name": "BuildingTypeClass::`scalar deleting destructor'",
   "status": "matched",
@@ -10763,7 +10763,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45E880",
-  "sym": "?vf_35@BuildingTypeClass@@UAEPAXPAX@Z",
+  "sym": "?vf_35@BuildingTypeView_0045DD90@@UAEPAXPAX@Z",
   "len": "0x2b",
   "name": "BuildingTypeClass::vf_35",
   "status": "matched",
@@ -21681,7 +21681,7 @@
  {
   "tu": "match/core/Startup.cpp",
   "addr": "0x6C28C0",
-  "sym": "??0?$TClassFactory@VBuildingTypeClass@@@@QAE@XZ",
+  "sym": "??0?$TClassFactory@VBuildingTypeFactoryView_0045DD90@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<BuildingTypeClass>::TClassFactory<BuildingTypeClass>",
   "status": "matched",
@@ -49834,7 +49834,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45DD90",
-  "sym": "??0BuildingTypeClass@@QAE@PBD@Z",
+  "sym": "??0BuildingTypeView_0045DD90@@QAE@PBD@Z",
   "len": "0x782",
   "name": "BuildingTypeClass::BuildingTypeClass",
   "status": "partial",
@@ -49843,7 +49843,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45E800",
-  "sym": "?vf_32@BuildingTypeClass@@UAE_NPAX0@Z",
+  "sym": "?vf_32@BuildingTypeView_0045DD90@@UAE_NPAX0@Z",
   "len": "0x76",
   "name": "BuildingTypeClass::vf_32",
   "status": "matched",
@@ -49852,7 +49852,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45EBD0",
-  "sym": "?vf_30@BuildingTypeClass@@UAE?AUHBCoord@@XZ",
+  "sym": "?vf_30@BuildingTypeView_0045DD90@@UAE?AUHBCoord@@XZ",
   "len": "0x4c",
   "name": "BuildingTypeClass::vf_30",
   "status": "matched",
@@ -49861,7 +49861,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45EC20",
-  "sym": "?vf_36@BuildingTypeClass@@UAEPAX_N@Z",
+  "sym": "?vf_36@BuildingTypeView_0045DD90@@UAEPAX_N@Z",
   "len": "0x53",
   "name": "BuildingTypeClass::vf_36",
   "status": "matched",
@@ -49870,7 +49870,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45ECE0",
-  "sym": "?vf_29@BuildingTypeClass@@UAEHXZ",
+  "sym": "?vf_29@BuildingTypeView_0045DD90@@UAEHXZ",
   "len": "0x6c",
   "name": "BuildingTypeClass::vf_29",
   "status": "matched",
@@ -49879,7 +49879,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45EDD0",
-  "sym": "?vf_33@BuildingTypeClass@@UAEHPAVHouseClass@@@Z",
+  "sym": "?vf_33@BuildingTypeView_0045DD90@@UAEHPAVHouseClass@@@Z",
   "len": "0x91",
   "name": "BuildingTypeClass::vf_33",
   "status": "partial",
@@ -49888,7 +49888,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45F040",
-  "sym": "?vf_39@BuildingTypeClass@@UAEPAXXZ",
+  "sym": "?vf_39@BuildingTypeView_0045DD90@@UAEPAXXZ",
   "len": "0x11e",
   "name": "BuildingTypeClass::vf_39",
   "status": "matched",
@@ -49897,7 +49897,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45FE50",
-  "sym": "?ReadINI@BuildingTypeClass@@UAE_NPAVTypesIniView@@@Z",
+  "sym": "?ReadINI@BuildingTypeView_0045DD90@@UAE_NPAVTypesIniView@@@Z",
   "len": "0x4c06",
   "name": "BuildingTypeClass::ReadINI",
   "status": "partial",
@@ -49906,7 +49906,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x464A70",
-  "sym": "?vf_27@BuildingTypeClass@@UAE?AUHBCoord@@PBU2@@Z",
+  "sym": "?vf_27@BuildingTypeView_0045DD90@@UAE?AUHBCoord@@PBU2@@Z",
   "len": "0x4a",
   "name": "BuildingTypeClass::vf_27",
   "status": "matched",
@@ -49915,7 +49915,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x464AC0",
-  "sym": "?vf_42@BuildingTypeClass@@UAE_NPAX0@Z",
+  "sym": "?vf_42@BuildingTypeView_0045DD90@@UAE_NPAX0@Z",
   "len": "0x21",
   "name": "BuildingTypeClass::vf_42",
   "status": "matched",
@@ -49924,7 +49924,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x464AF0",
-  "sym": "?vf_31@BuildingTypeClass@@UAE?AUHBCoord@@XZ",
+  "sym": "?vf_31@BuildingTypeView_0045DD90@@UAE?AUHBCoord@@XZ",
   "len": "0x3f",
   "name": "BuildingTypeClass::vf_31",
   "status": "matched",
@@ -49933,7 +49933,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x464B30",
-  "sym": "?ComputeCRC@BuildingTypeClass@@UAEXAAVTypesCrcView@@@Z",
+  "sym": "?ComputeCRC@BuildingTypeView_0045DD90@@UAEXAAVTypesCrcView@@@Z",
   "len": "0x4d6",
   "name": "BuildingTypeClass::ComputeCRC",
   "status": "matched",
@@ -49942,7 +49942,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465010",
-  "sym": "?Load@BuildingTypeClass@@UAGJPAUIStream@@@Z",
+  "sym": "?Load@BuildingTypeView_0045DD90@@UAGJPAUIStream@@@Z",
   "len": "0x2e7",
   "name": "BuildingTypeClass::Load",
   "status": "partial",
@@ -49951,7 +49951,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465300",
-  "sym": "?Save@BuildingTypeClass@@UAGJPAUIStream@@H@Z",
+  "sym": "?Save@BuildingTypeView_0045DD90@@UAGJPAUIStream@@H@Z",
   "len": "0x71",
   "name": "BuildingTypeClass::Save",
   "status": "matched",
@@ -49960,7 +49960,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465380",
-  "sym": "?GetClassID@BuildingTypeClass@@UAGJPAU_GUID@@@Z",
+  "sym": "?GetClassID@BuildingTypeView_0045DD90@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
   "name": "BuildingTypeClass::GetClassID",
   "status": "matched",
@@ -49969,7 +49969,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465910",
-  "sym": "?vf_40@BuildingTypeClass@@UAE_NXZ",
+  "sym": "?vf_40@BuildingTypeView_0045DD90@@UAE_NXZ",
   "len": "0x3",
   "name": "BuildingTypeClass::vf_40",
   "status": "matched",
@@ -49978,7 +49978,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465920",
-  "sym": "?vf_41@BuildingTypeClass@@UAE_NXZ",
+  "sym": "?vf_41@BuildingTypeView_0045DD90@@UAE_NXZ",
   "len": "0x3",
   "name": "BuildingTypeClass::vf_41",
   "status": "matched",
@@ -49987,7 +49987,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465960",
-  "sym": "?vf_48@BuildingTypeClass@@UAEPAXXZ",
+  "sym": "?vf_48@BuildingTypeView_0045DD90@@UAEPAXXZ",
   "len": "0x18d",
   "name": "BuildingTypeClass::vf_48",
   "status": "matched",
@@ -49996,7 +49996,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465D90",
-  "sym": "?WhatAmI@BuildingTypeClass@@UAEHXZ",
+  "sym": "?WhatAmI@BuildingTypeView_0045DD90@@UAEHXZ",
   "len": "0x6",
   "name": "BuildingTypeClass::WhatAmI",
   "status": "matched",
@@ -50005,7 +50005,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465DA0",
-  "sym": "?Size@BuildingTypeClass@@UAEHXZ",
+  "sym": "?Size@BuildingTypeView_0045DD90@@UAEHXZ",
   "len": "0x6",
   "name": "BuildingTypeClass::Size",
   "status": "matched",
@@ -50014,7 +50014,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465DB0",
-  "sym": "?vf_16@BuildingTypeClass@@UAEHXZ",
+  "sym": "?vf_16@BuildingTypeView_0045DD90@@UAEHXZ",
   "len": "0x7",
   "name": "BuildingTypeClass::vf_16",
   "status": "matched",
@@ -55729,7 +55729,7 @@
  {
   "tu": "match/core/Startup.cpp",
   "addr": "0x6C28D0",
-  "sym": "?QueryInterface@?$TClassFactory@VBuildingTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
+  "sym": "?QueryInterface@?$TClassFactory@VBuildingTypeFactoryView_0045DD90@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<BuildingTypeClass>::QueryInterface",
   "status": "matched",
@@ -55738,7 +55738,7 @@
  {
   "tu": "match/core/Startup.cpp",
   "addr": "0x6C2940",
-  "sym": "?AddRef@?$TClassFactory@VBuildingTypeClass@@@@UAGKXZ",
+  "sym": "?AddRef@?$TClassFactory@VBuildingTypeFactoryView_0045DD90@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<BuildingTypeClass>::AddRef",
   "status": "matched",
@@ -55747,7 +55747,7 @@
  {
   "tu": "match/core/Startup.cpp",
   "addr": "0x6C2960",
-  "sym": "?Release@?$TClassFactory@VBuildingTypeClass@@@@UAGKXZ",
+  "sym": "?Release@?$TClassFactory@VBuildingTypeFactoryView_0045DD90@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<BuildingTypeClass>::Release",
   "status": "matched",
@@ -55756,7 +55756,7 @@
  {
   "tu": "match/core/Startup.cpp",
   "addr": "0x6C2A10",
-  "sym": "?LockServer@?$TClassFactory@VBuildingTypeClass@@@@UAGJH@Z",
+  "sym": "?LockServer@?$TClassFactory@VBuildingTypeFactoryView_0045DD90@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<BuildingTypeClass>::LockServer",
   "status": "matched",
@@ -77388,11 +77388,11 @@
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6CB0",
-  "sym": "_$E8",
+  "sym": "_$E10",
   "len": "0x3b",
   "name": "DynamicVectorClass<DiskLaserClass*> exit destructor stub (DAT_008A0208)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
@@ -78655,7 +78655,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/core/persist_class_id_methods.cpp",
   "addr": "0x524C70",
   "sym": "?GetClassID@InfantryTypeClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -80241,7 +80241,7 @@
  {
   "tu": "match/core/Startup.cpp",
   "addr": "0x6C2990",
-  "sym": "?CreateInstance@?$TClassFactory@VBuildingTypeClass@@@@UAGJPAUIUnknown@@ABU_GUID@@PAPAX@Z",
+  "sym": "?CreateInstance@?$TClassFactory@VBuildingTypeFactoryView_0045DD90@@@@UAGJPAUIUnknown@@ABU_GUID@@PAPAX@Z",
   "len": "0x77",
   "name": "TClassFactory<BuildingTypeClass>::CreateInstance",
   "status": "matched",
@@ -100822,25 +100822,25 @@
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6A90",
-  "sym": "_$E2",
+  "sym": "_$E4",
   "len": "0x13",
   "name": "dynamic initializer (DAT_008A0288)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6AB0",
-  "sym": "_$E5",
+  "sym": "_$E7",
   "len": "0x13",
   "name": "dynamic initializer (DAT_008A0270)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6C70",
-  "sym": "_$E10",
+  "sym": "_$E12",
   "len": "0x3d",
   "name": "dynamic initializer (DAT_008A0208)",
   "status": "matched",

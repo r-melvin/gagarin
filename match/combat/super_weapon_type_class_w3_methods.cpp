@@ -8,33 +8,9 @@
 
 #include <new.h>
 #include <stdlib.h>
-#include "../_layout/abstract_type_class.h"
+#include "../_layout/super_weapon_type_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../core/vector_class_operations.h"
-
-// The members the stream loader touches; the rest of the class is not laid out here.
-class SuperWeaponTypeClass : public AbstractTypeClass
-{
-public:
-    SuperWeaponTypeClass(const AbstractNoInit& noInit);
-    virtual ~SuperWeaponTypeClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);      // 3   0x6CE7C0
-    virtual HRESULT __stdcall Load(IStream* pStm);              // 5   0x6CE800
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6 0x6CE8D0
-    virtual int vf_11();                                        // 11  0x6CE8F0
-    virtual int vf_12();                                        // 12  0x6CE900
-    char unknown_98[0x4];
-    void* unknown_9C;           // +0x9C
-    char unknown_A0[0x18];
-    void* AltImage;             // +0xB8
-    char unknown_BC[0xC];
-    void* unknown_C8;           // +0xC8
-    char CameoFile[0x19];       // +0xCC
-};
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_9C) == 0x9C);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, AltImage) == 0xB8);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_C8) == 0xC8);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, CameoFile) == 0xCC);
 
 // GLOBAL: GAMEMD 0xA8E330 -- the super weapon type registry.
 extern DynamicVectorClass<SuperWeaponTypeClass*> DAT_00A8E330;
@@ -50,7 +26,7 @@ void* __fastcall FUN_005B40B0(const char* name, bool flag);
 
 // FUNCTION: GAMEMD 0x6CE700
 SuperWeaponTypeClass::SuperWeaponTypeClass(const AbstractNoInit& noInit)
-    : AbstractTypeClass(noInit), AltImage(0)
+    : AbstractTypeClass(noInit), SidebarImage(0)
 {
 }
 
@@ -69,13 +45,13 @@ HRESULT __stdcall SuperWeaponTypeClass::Load(IStream* pStm)
         return hr;
     }
     new (this) SuperWeaponTypeClass(AbstractNoInit());
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_9C);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&WeaponType);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_C8);
     char path[0x200];
     _makepath(path, 0, 0, CameoFile, STR_0081834C);
-    AltImage = FUN_005B40B0(path, false);
-    if (AltImage == 0) {
-        AltImage = FUN_005B40B0(STR_DEFAULT_ICON, false);
+    SidebarImage = FUN_005B40B0(path, false);
+    if (SidebarImage == 0) {
+        SidebarImage = FUN_005B40B0(STR_DEFAULT_ICON, false);
     }
     return 0;
 }

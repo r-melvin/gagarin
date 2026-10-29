@@ -285,7 +285,7 @@ int FUN_0045DD50(const char* name)
 // unconstructed with its three zero stores moved to the end (83.4%, kept); the anim-slot loop as a struct
 // constructor (66.8%, dropped) and as a memset/assignment variants (82.6% to 83.4%).
 // FUNCTION: GAMEMD 0x45DD90
-BuildingTypeClass::BuildingTypeClass(const char* id)
+BuildingTypeView_0045DD90::BuildingTypeView_0045DD90(const char* id)
     : TypesBuildingTypeTechnoView(id, 0), ArrayIndex(-1), FoundationData(0), Buildup(0),
       BuildupLoaded(false), BuildCat(0), HalfDamageSmokeLocation1(TypesZeroCoord),
       HalfDamageSmokeLocation2(TypesZeroCoord), GateCloseDelay(0.0), LightVisibility(5000),
@@ -452,7 +452,7 @@ int FUN_0045E7B0(const char* name)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45E800
-bool BuildingTypeClass::vf_32(void* where, void* owner)
+bool BuildingTypeView_0045DD90::vf_32(void* where, void* owner)
 {
     TypesBuildingView* building = new TypesBuildingView(this, owner);
     if (building) {
@@ -468,7 +468,7 @@ bool BuildingTypeClass::vf_32(void* where, void* owner)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45E880
-void* BuildingTypeClass::vf_35(void* owner)
+void* BuildingTypeView_0045DD90::vf_35(void* owner)
 {
     return new TypesBuildingView(this, owner);
 }
@@ -541,7 +541,7 @@ void FUN_0045E8F0()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45EBD0
-HBCoord BuildingTypeClass::vf_30()
+HBCoord BuildingTypeView_0045DD90::vf_30()
 {
     int width;
     int height;
@@ -565,7 +565,7 @@ HBCoord BuildingTypeClass::vf_30()
 // FUNCTION: GAMEMD 0x45EC20
 // The function-local static (guard bit 0 of 0x89C890, cell at 0x89C8E8) is built through a temporary;
 // its destructor stub is the bare RET at 0x45EC80 (compiler-generated atexit entry).
-void* BuildingTypeClass::vf_36(bool arg)
+void* BuildingTypeView_0045DD90::vf_36(bool arg)
 {
     static TypesStaticCell list = TypesMakeStaticCell(0x7FFF, 0x7FFF);
     void* data = FoundationData;
@@ -583,7 +583,7 @@ void __cdecl FUN_0045EC80()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45ECE0
-int BuildingTypeClass::vf_29()
+int BuildingTypeView_0045DD90::vf_29()
 {
     int pips = FoundationWidth[Foundation] * 60 / 8;
     switch (unknown_3D4) {
@@ -677,7 +677,7 @@ int BuildingTypeClass_0045ED50::FUN_0045ED50()
 // (cached rules pointer or not, second-first and first-first call order, an explicit temporary for each cost,
 // early-return and fall-through tails, `freeUnit` loaded early or late).
 // FUNCTION: GAMEMD 0x45EDD0
-int BuildingTypeClass::vf_33(HouseClass* house)
+int BuildingTypeView_0045DD90::vf_33(HouseClass* house)
 {
     int cost = TypesBuildingTypeTechnoView::vf_33(house);
     TypesCostTypeView** padAircraft = TypesRules->PadAircraft;
@@ -697,7 +697,7 @@ int BuildingTypeClass::vf_33(HouseClass* house)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45F040
-void* BuildingTypeClass::vf_39()
+void* BuildingTypeView_0045DD90::vf_39()
 {
     if (Image == 0 && DemandLoad) {
         const char* theater = TheaterSpecificID;
@@ -792,7 +792,7 @@ bool Obj_0045F1D0::FUN_0045F1D0(Shape_0045F1D0** shape, int* half)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45FE50
-bool BuildingTypeClass::ReadINI(TypesIniView* ini)
+bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
 {
     int i;
     HBCoord coordDefault;
@@ -1216,7 +1216,7 @@ bool BuildingTypeClass::ReadINI(TypesIniView* ini)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464A70
-HBCoord BuildingTypeClass::vf_27(const HBCoord* in)
+HBCoord BuildingTypeView_0045DD90::vf_27(const HBCoord* in)
 {
     HBCoord coord = *in;
     coord.Z = TypesMap.GetFloorHeight(&coord);
@@ -1225,7 +1225,7 @@ HBCoord BuildingTypeClass::vf_27(const HBCoord* in)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464AC0
-bool BuildingTypeClass::vf_42(void* arg1, void* arg2)
+bool BuildingTypeView_0045DD90::vf_42(void* arg1, void* arg2)
 {
     if (PlaceAnywhere)
         return true;
@@ -1234,7 +1234,7 @@ bool BuildingTypeClass::vf_42(void* arg1, void* arg2)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464AF0
-HBCoord BuildingTypeClass::vf_31()
+HBCoord BuildingTypeView_0045DD90::vf_31()
 {
     HBCoord coord;
     coord.X = FoundationWidth[Foundation] << 8;
@@ -1245,7 +1245,7 @@ HBCoord BuildingTypeClass::vf_31()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x464B30
-void BuildingTypeClass::ComputeCRC(TypesCrcView& crc)
+void BuildingTypeView_0045DD90::ComputeCRC(TypesCrcView& crc)
 {
     TypesBuildingTypeTechnoView::ComputeCRC(crc);
     crc.AddDouble(GateCloseDelay);
@@ -1344,7 +1344,7 @@ void BuildingTypeClass::ComputeCRC(TypesCrcView& crc)
 // scope; an initialised count; a named no-init tag; an extra stream alias; the count and loop in a nested block
 // (kept, 94.6% against 89.7% without).
 // FUNCTION: GAMEMD 0x465010
-HRESULT __stdcall BuildingTypeClass::Load(IStream* pStm)
+HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
 {
     if (FreeBuildup && Buildup) {
         gg_free(Buildup);
@@ -1386,7 +1386,7 @@ HRESULT __stdcall BuildingTypeClass::Load(IStream* pStm)
     if (hr < 0)
         return hr;
 
-    new (this) BuildingTypeClass(HBNoInit());
+    new (this) BuildingTypeView_0045DD90(HBNoInit());
 
     {
     int count;
@@ -1439,7 +1439,7 @@ HRESULT __stdcall BuildingTypeClass::Load(IStream* pStm)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465300
-HRESULT __stdcall BuildingTypeClass::Save(IStream* pStm, BOOL fClearDirty)
+HRESULT __stdcall BuildingTypeView_0045DD90::Save(IStream* pStm, BOOL fClearDirty)
 {
     HRESULT hr = TypesBuildingTypeTechnoView::Save(pStm, fClearDirty);
     if (hr < 0)
@@ -1459,7 +1459,7 @@ HRESULT __stdcall BuildingTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465380
-HRESULT __stdcall BuildingTypeClass::GetClassID(CLSID* pClassID)
+HRESULT __stdcall BuildingTypeView_0045DD90::GetClassID(CLSID* pClassID)
 {
     if (pClassID == 0)
         return E_POINTER;
@@ -1492,21 +1492,21 @@ char* FUN_004653C0(const char* name)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465910
-bool BuildingTypeClass::vf_40()
+bool BuildingTypeView_0045DD90::vf_40()
 {
     return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465920
-bool BuildingTypeClass::vf_41()
+bool BuildingTypeView_0045DD90::vf_41()
 {
     return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465960
-void* BuildingTypeClass::vf_48()
+void* BuildingTypeView_0045DD90::vf_48()
 {
     if (Buildup == 0 && DemandLoadBuildup) {
         if (strlen(BuildupFile)) {
@@ -1649,21 +1649,21 @@ Obj_00465D80* Obj_00465D80::FUN_00465D80()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465D90
-int BuildingTypeClass::WhatAmI()
+int BuildingTypeView_0045DD90::WhatAmI()
 {
     return 7;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465DA0
-int BuildingTypeClass::Size()
+int BuildingTypeView_0045DD90::Size()
 {
     return 0x1798;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465DB0
-int BuildingTypeClass::vf_16()
+int BuildingTypeView_0045DD90::vf_16()
 {
     return ArrayIndex;
 }

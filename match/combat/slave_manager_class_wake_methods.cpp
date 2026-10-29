@@ -10,7 +10,7 @@
 // (State == 0) can. An AI-owned miner always wakes; a player's wakes when it is
 // parked on ore, or - once the scan interval has elapsed - when a nearby-cell
 // search within the rules range turns up a real cell.
-bool SlaveManagerClass::ShouldWakeUpNow()
+bool SlaveManagerView_006B1020::ShouldWakeUpNow()
 {
     if (this->Owner == 0) {
         return false;

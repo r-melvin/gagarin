@@ -4,37 +4,13 @@
 // AddRef/Release slots of their primary table (slots 1 and 2) with a body that
 // only forwards to LocomotionClass::AddRef (0x55A950) / Release (0x55A970), as
 // DropPodLocomotionClass does at 0x4B66A0. The owning class of each address is
-// read from the RTTI-named primary vtable that holds it; each class is declared
-// only as far as these two virtuals (no layout is claimed).
+// read from the RTTI-named primary vtable that holds it; the classes come from
+// their canonical headers.
 #include "loco_base.h"
-
-class JumpjetLocomotionClass : public LocomotionClass
-{
-public:
-    virtual ULONG __stdcall AddRef();
-    virtual ULONG __stdcall Release();
-};
-
-class ShipLocomotionClass : public LocomotionClass
-{
-public:
-    virtual ULONG __stdcall AddRef();
-    virtual ULONG __stdcall Release();
-};
-
-class TeleportLocomotionClass : public LocomotionClass
-{
-public:
-    virtual ULONG __stdcall AddRef();
-    virtual ULONG __stdcall Release();
-};
-
-class WalkLocomotionClass : public LocomotionClass
-{
-public:
-    virtual ULONG __stdcall AddRef();
-    virtual ULONG __stdcall Release();
-};
+#include "../_layout/jumpjet_locomotion_class.h"
+#include "../_layout/ship_locomotion_class.h"
+#include "../_layout/teleport_locomotion_class.h"
+#include "walk_locomotion_class.h"
 
 // FUNCTION: GAMEMD 0x0054DF50
 ULONG __stdcall JumpjetLocomotionClass::AddRef()

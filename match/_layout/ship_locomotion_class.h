@@ -43,7 +43,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../movement/loco_base.h"
 #include "../movement/loco_com.h"
-#include "../ui/transition_timer_methods.h"
+#include "rate_timer.h"
 
 // Tables 0x7F2E58 (primary), 0x7F2D8C (ILocomotion), 0x7F2D68 (IPiggyback);
 // not claimed while slot bodies such as IsMoving 0x69F290 are unmatched.

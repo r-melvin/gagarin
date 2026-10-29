@@ -24,9 +24,9 @@ void SpawnManagerClass::SetTarget(AbstractClass* pTarget)
 int SpawnManagerClass::CountAliveSpawns() const
 {
     int count = 0;
-    int n = SpawnedNodes_Count;
+    int n = SpawnedNodes.Count;
     if (n > 0) {
-        SpawnControl** node = SpawnedNodes_Items;
+        SpawnManagerClass::SpawnControl** node = SpawnedNodes.Items;
         do {
             if ((*node)->Status != 7)
                 ++count;
@@ -42,9 +42,9 @@ int SpawnManagerClass::CountAliveSpawns() const
 int SpawnManagerClass::CountDockedSpawns() const
 {
     int count = 0;
-    int n = SpawnedNodes_Count;
+    int n = SpawnedNodes.Count;
     if (n > 0) {
-        SpawnControl** node = SpawnedNodes_Items;
+        SpawnManagerClass::SpawnControl** node = SpawnedNodes.Items;
         do {
             int status = (*node)->Status;
             if (status == 6 || status == 0)

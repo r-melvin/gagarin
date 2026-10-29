@@ -30,55 +30,6 @@
 #include "../_layout/techno_class.h"
 
 
-// ---------------------------------------------------------------------------
-// FrameTimer — empty clock policy whose value is Unsorted::CurrentFrame. As a
-// member it occupies a 1-byte slot (4 after alignment) inside CDTimerClass.
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// CDTimerClass = TimerStruct<FrameTimer>  (sizeof = 0x0C)
-//   +0x00 int        StartTime
-//   +0x04 FrameTimer CurrentTime   (1 byte + 3 pad, never written by the ctor)
-//   +0x08 int        TimeLeft
-// The int ctor sets StartTime = CurrentTime(=CurrentFrame) and TimeLeft, leaving
-// CurrentTime uninitialised. When the temporary is copied into Production.Timer
-// that uninitialised slot is carried through verbatim — exactly the
-// MOV [ECX+0x30],<garbage> store the retail disasm shows.
-// ---------------------------------------------------------------------------
-#include "../_layout/frame_timer.h"
-
-GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
-GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
-
-// ---------------------------------------------------------------------------
-#include "../_layout/stage_class.h"
-
-// ---------------------------------------------------------------------------
-// FactoryClass : AbstractClass (0x24)  (sizeof = 0x74)
-// ---------------------------------------------------------------------------
-class FactoryClass
-{
-public:
-    char         _abstract_base[0x24];  // +0x00  AbstractClass (vtable + members)
-    StageClass   Production;            // +0x24  progress timer
-    char         _queued[0x18];         // +0x40  DynamicVectorClass QueuedObjects
-    TechnoClass* Object;                // +0x58  item currently in production
-    char         _pad5c[0x14];          // +0x5C  OnHold/IsDifferent/Balance/...
-    bool         IsSuspended;           // +0x70
-    bool         IsManual;              // +0x71
-    char         _pad72[2];             // +0x72  padding_72[2]
-
-    // Declared ascending by retail address (reccmp/isle TU discipline).
-    bool Suspend(bool manual);             // GAMEMD 0x4C9E60 __thiscall
-    int  GetBuildTimeFrames() const;       // GAMEMD 0x4C9FB0 __thiscall
-};
-
-GG_STATIC_ASSERT(offsetof(FactoryClass, Production) == 0x24);
-GG_STATIC_ASSERT(offsetof(FactoryClass, Production.Timer) == 0x2C);
-GG_STATIC_ASSERT(offsetof(FactoryClass, Production.Rate) == 0x38);
-GG_STATIC_ASSERT(offsetof(FactoryClass, Object) == 0x58);
-GG_STATIC_ASSERT(offsetof(FactoryClass, IsSuspended) == 0x70);
-GG_STATIC_ASSERT(offsetof(FactoryClass, IsManual) == 0x71);
-GG_STATIC_ASSERT(sizeof(FactoryClass) == 0x74);
+#include "../_layout/factory_class.h"
 
 #endif  // GG_MATCH_ECONOMY_FACTORY_CLASS_MORE_METHODS_H

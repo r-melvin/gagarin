@@ -28,11 +28,18 @@
 class InfantryClass : public FootClass
 {
 public:
+    // CALLEE: GAMEMD 0x00517A50 (decl; reloc) -- constructor as the class factory calls it.
+    InfantryClass(int unknown_arg0 = 0, int unknown_arg1 = 0);
+    virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x521960
+    virtual int vf_11();   // 11  0x523340
+    virtual int vf_12();   // 12  0x5232F0
     // FUNCTION: GAMEMD 0x005224E0 (decl; reloc)
     // InfantryClass::FUN_005224E0
     bool FUN_005224E0();
     // IPersist::GetClassID (slot 3), 0x523300: copies InfantryClass's CLSID 0x7E9680.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    // IPersistStream::Save (slot 6), 0x521B00: chains FootClass::Save.
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 
     // Slots 341-342, introduced by InfantryClass (343 slots in all; retail table 0x7EB058).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.

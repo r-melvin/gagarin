@@ -33,37 +33,10 @@
 // an out-of-line `MOV dword [ESP+0x10],0; JMP` at 0x41F171 / 0x41F221.  The
 // `left = 0` assignment form emits three separate stores instead.
 #include "../_layout/frame_timer.h"
+#include "../_layout/super_class.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTime) == 0x00);
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft)  == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0x0C);
-
-// SuperWeaponTypeClass — only the Type enum @0xB4 is compared here
-// (1 == IronCurtain, 3 == ChronoSphere).
-class SuperWeaponTypeClass
-{
-public:
-    char _pad000[0xB4];      // +0x0000
-    int  Type;               // +0x00B4
-};
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Type) == 0xB4);
-
-// SuperClass : AbstractClass — a per-house superweapon instance.
-class SuperClass
-{
-public:
-    char                  _base[0x28];         // +0x0000  AbstractClass + CustomChargeTime
-    SuperWeaponTypeClass* Type;                // +0x0028
-    char                  _pad02C[4];          // +0x002C
-    CDTimerClass          RechargeTimer;       // +0x0030
-    char                  _pad03C[0x6D - 0x3C];// +0x003C
-    bool                  IsPresent;           // +0x006D
-
-    // FUNCTION: GAMEMD 0x6CC260 (decl; reloc)
-    int GetRechargeTime() const;
-};
-GG_STATIC_ASSERT(offsetof(SuperClass, Type)          == 0x28);
-GG_STATIC_ASSERT(offsetof(SuperClass, RechargeTimer) == 0x30);
-GG_STATIC_ASSERT(offsetof(SuperClass, IsPresent)     == 0x6D);
 
 // HouseClass — only the Supers vector is touched (Items @0x258, Count @0x264).
 class HouseClass

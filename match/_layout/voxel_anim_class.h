@@ -24,6 +24,8 @@ class VoxelAnimTypeClass;
 class VoxelAnimClass : public ObjectClass, public BounceClass
 {
 public:
+    // CALLEE: GAMEMD 0x007498D0 (decl; reloc) -- constructor as the class factory calls it.
+    VoxelAnimClass();
     // CALLEE: GAMEMD 0x7493B0
     // The native constructor transports a type pointer; its original const qualification is unknown.
     // This const-qualified API preserves the type-list item qualification at this caller.
