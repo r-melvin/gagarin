@@ -104,6 +104,8 @@ struct RulesClass
     bool Read_MultiplayerDialogSettings(CCINIClass* pINI);
     // FUNCTION: GAMEMD 0x668FB0  RulesClass::Read_SpecialWeapons
     bool Read_SpecialWeapons(CCINIClass* pINI);
+    // FUNCTION: GAMEMD 0x66BBB0  RulesClass::Read_CombatDamage
+    bool Read_CombatDamage(CCINIClass* pINI);
 
 
     int DetailMinFrameRateNormal; // 0x6850FB -> fastcall55AF40
@@ -588,10 +590,10 @@ struct RulesClass
     WarheadTypeClass* CrushWarhead;   // +0xFAC
     WarheadTypeClass* V3Warhead;   // +0xFB0
     WarheadTypeClass* DMislWarhead;   // +0xFB4
-    int V3EliteWarhead;   // +0xFB8
-    int DMislEliteWarhead;   // +0xFBC
+    WarheadTypeClass* V3EliteWarhead;   // +0xFB8
+    WarheadTypeClass* DMislEliteWarhead;   // +0xFBC
     WarheadTypeClass* CMislWarhead;   // +0xFC0
-    int CMislEliteWarhead;   // +0xFC4
+    WarheadTypeClass* CMislEliteWarhead;   // +0xFC4
     WarheadTypeClass* IvanWarhead;   // +0xFC8
     int IvanDamage;   // +0xFCC
     int IvanTimedDelay;      // +0xFD0
@@ -600,8 +602,8 @@ struct RulesClass
     char unknown_FD6[0x2];
     int IvanIconFlickerRate;      // +0xFD8
     WeaponTypeClass* DeathWeapon;   // +0xFDC
-    int unknown_FE0;   // +0xFE0
-    int unknown_FE4;   // +0xFE4
+    void* unknown_FE0;   // +0xFE0 BOMBCURS.SHP
+    void* unknown_FE4;   // +0xFE4 CHRONOSK.SHP
     int IronCurtainDuration;   // +0xFE8
     int PsychicRevealRadius;   // +0xFEC
     WarheadTypeClass* IonCannonWarhead;   // +0xFF0
@@ -610,7 +612,7 @@ struct RulesClass
     int InfantryBlinkDisguiseTime;   // +0x1014
     ParticleSystemTypeClass* DefaultLargeGreySmokeSystem;   // +0x1018
     ParticleSystemTypeClass* DefaultSmallGreySmokeSystem;   // +0x101C
-    void* DefaultSparkSystem;   // +0x1020
+    ParticleSystemTypeClass* DefaultSparkSystem;   // +0x1020
     ParticleSystemTypeClass* DefaultLargeRedSmokeSystem;   // +0x1024
     ParticleSystemTypeClass* DefaultSmallRedSmokeSystem;   // +0x1028
     ParticleSystemTypeClass* DefaultDebrisSmokeSystem;   // +0x102C

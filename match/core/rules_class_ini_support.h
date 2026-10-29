@@ -12,6 +12,8 @@
 #include "../audio/voc_class_methods.h"
 #include "../_layout/warhead_type_class.h"
 
+void* MapObjLoadShape(const char* path, bool flag);   // GAMEMD 0x5B40B0
+
 extern const char STR_00889F64[];   // STRING: GAMEMD 0x889F64 ""
 
 // The warhead type array (items pointer and live count).
@@ -29,6 +31,8 @@ class OverlayTypeClass;
 OverlayTypeClass* OverlayType_FindPtr(const char* id);   // GAMEMD 0x5FEC70
 class ParticleSystemTypeClass;
 ParticleSystemTypeClass* ParticleSystemType_FindPtr(const char* id);   // GAMEMD 0x644890
+class SmudgeTypeClass;
+SmudgeTypeClass* SmudgeType_FindPtr(const char* id);   // GAMEMD 0x6B5910
 class UnitTypeClass;
 UnitTypeClass* UnitType_FindPtr(const char* id);   // GAMEMD 0x7480D0
 class VoxelAnimTypeClass;
@@ -50,6 +54,10 @@ extern char* AISection;   // GLOBAL: GAMEMD 0x7f0cd4
 
 extern const char STR_00817F70[];   // STRING: GAMEMD 0x817F70 ","
 
+// The integer list copy constructor is expanded in the readers: the base copy (0x4779E0) stays a call and the
+// list's own vptr store follows it inline (e.g. 0x66C7B7).
+template<> inline TypeList<int>::TypeList(const TypeList<int>& other) : DynamicVectorClass<int>(other) {}
+
 // Comma-separated list of animation type names, expanded inline in the INI readers (e.g. 0x721A50):
 // the names are looked up in turn (unknown names are skipped) and appended to a fresh list. The reader
 // calls this only when the key is present; otherwise it returns the caller's list. The two-function split
@@ -69,6 +77,25 @@ static inline TypeList<const AnimTypeClass*> ReadAnimTypeList(CCINIClass* ini, c
 {
     if (ini->ReadString(section, key, STR_00889F64, buffer, 0x80))
         return BuildAnimTypeList(buffer);
+    return defaultValue;
+}
+
+// The same read for smudge type lists (the [CombatDamage] Scorches keys).
+static inline TypeList<const SmudgeTypeClass*> BuildSmudgeTypeList(char* buffer)
+{
+    TypeList<const SmudgeTypeClass*> list(0, 0);
+    for (char* token = strtok(buffer, STR_00817F70); token && *token; token = strtok(0, STR_00817F70)) {
+        const SmudgeTypeClass* type = SmudgeType_FindPtr(token);
+        if (type)
+            list.AddItem(type);
+    }
+    return list;
+}
+static inline TypeList<const SmudgeTypeClass*> ReadSmudgeTypeList(CCINIClass* ini, const char* section,
+    const char* key, const TypeList<const SmudgeTypeClass*>& defaultValue, char* buffer)
+{
+    if (ini->ReadString(section, key, STR_00889F64, buffer, 0x80))
+        return BuildSmudgeTypeList(buffer);
     return defaultValue;
 }
 

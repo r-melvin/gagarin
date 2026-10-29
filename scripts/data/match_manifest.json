@@ -146418,5 +146418,14 @@
   "status": "partial",
   "pct": 93.5,
   "note": "Native constructor initialization instructions are scheduled differently; full-span strict relocation check fails at reordered vptr."
+ },
+ {
+  "tu": "match/core/rules_class_combat_damage_methods.cpp",
+  "addr": "0x66BBB0",
+  "sym": "?Read_CombatDamage@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x13B5",
+  "name": "RulesClass::Read_CombatDamage",
+  "status": "partial",
+  "pct": 92.2
  }
 ]

@@ -17,6 +17,7 @@
 
 
 class FileClass;
+template<class T> class TypeList;
 class Straw;
 class TechnoTypeClass;
 class IniKeyBlockSource;
@@ -92,6 +93,10 @@ public:
 
     // FUNCTION: GAMEMD 0x474620 (decl; reloc) -- a fraction read as a double and scaled by 256, RET 0xC.
     int ReadFraction(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x474810 (decl; reloc) -- percentage clamped to 0..100 and scaled to a byte, RET 0xC.
+    int ReadPercentAsByte(const char* section, const char* key, int defaultValue);
+    // FUNCTION: GAMEMD 0x475D70 (decl; reloc) -- comma-separated integers; the default list goes by value.
+    TypeList<int> ReadIntegerList(const char* section, const char* key, TypeList<int> defaultValue);
     // FUNCTION: GAMEMD 0x4759F0 (decl; reloc) -- string read through the 0x48DE70 parser, RET 0xC.
     int FUN_004759F0(const char* section, const char* key, int defaultValue);
 
