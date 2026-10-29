@@ -5,7 +5,7 @@
 //   from the VersionClass instance at 0xA8ECE0 (0x74FAE0 returns its VersionName).
 #include <windows.h>
 #include <stddef.h>
-#include "../core/version_class_ctor_methods.h"
+#include "../_layout/version_class.h"
 
 // FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog handler.
 int __fastcall FUN_00622B50(HWND h, UINT msg, WPARAM w, LPARAM l);

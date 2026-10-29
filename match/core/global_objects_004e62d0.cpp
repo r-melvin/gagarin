@@ -12,7 +12,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "header_tuning_globals.h"
 #include "mission_class_methods.h"
-#include "version_class_ctor_methods.h"
+#include "../_layout/version_class.h"
 #include "../combat/random_straw.h"
 #include "../ui/game_options_class_methods.h"
 #include "../network/event_queue.h"

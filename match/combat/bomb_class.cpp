@@ -9,7 +9,7 @@
 //   FUNCTION: GAMEMD 0x438A70  BombClass::TimeToExplode (__thiscall)
 //   FUNCTION: GAMEMD 0x405FD0  AudioController::FUN_00405FD0 (referenced; matched elsewhere)
 
-#include "bomb_class.h"
+#include "../_layout/bomb_class.h"
 
 // FUNCTION: GAMEMD 0x4389B0  (__thiscall)
 // Defuse the bomb: detach it from its target, clear the owner/house/target
@@ -18,8 +18,8 @@ void BombClass::Disarm()
 {
     if (Target)
     {
-        Target->AttachedField = 0;
-        Target->AttachedFlag = 0;
+        Target->AttachedBomb = 0;
+        Target->BombVisible = 0;
     }
     Harmless = 1;
     Owner = 0;

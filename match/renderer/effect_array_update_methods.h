@@ -20,17 +20,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/vector_class.h"
+#include "../_layout/ion_blast_class.h"
 #include "shadow_block_list_methods.h"
-
-struct IonBlastClass
-{
-    void Update();                 // GAMEMD 0x53CBE0 __thiscall (declared; reloc)
-    static void UpdateAll();   // GAMEMD 0x53D310
-};
-
-// GLOBAL: GAMEMD 0x00AA0118 — IonBlastClass::Array. The sweep reads Items from
-// 0x00AA011C (+0x04) and Count from 0x00AA0128 (+0x10), which pins the base.
-extern DynamicVectorClassLayout IonBlastArray;
 
 #endif  // GG_MATCH_RENDERER_EFFECT_ARRAY_UPDATE_METHODS_H

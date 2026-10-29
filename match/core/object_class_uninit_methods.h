@@ -20,7 +20,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/techno_class.h"   // TechnoClass : ... : ObjectClass
-#include "../combat/bomb_class.h"       // BombClass::Disarm (GAMEMD 0x4389B0)
+#include "../_layout/bomb_class.h"       // BombClass::Disarm (GAMEMD 0x4389B0)
 
 GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   AttachedBomb)  == 0x38);

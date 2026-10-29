@@ -14,6 +14,7 @@
 #define GG_MATCH_COMBAT_ION_BLAST_DRAW_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/ion_blast_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 #include "../_layout/vector_class.h"
@@ -58,17 +59,5 @@ extern int IonBlastOffsets[ION_BLAST_OFFSET_COUNT];
 
 // GLOBAL: GAMEMD 0xAA0150 — the pitch the table was last built for.
 extern int IonBlastOffsetsPitch;
-
-struct IonBlastClass
-{
-    // FUNCTION: GAMEMD 0x53D580 (decl; reloc)
-    void Draw();
-
-    // FUNCTION: GAMEMD 0x53D850
-    static void DrawAll();
-};
-
-// GLOBAL: GAMEMD 0xAA0118 — IonBlastClass::Array (Items 0xAA011C, Count 0xAA0128).
-extern DynamicVectorClassLayout IonBlastArray;
 
 #endif  // GG_MATCH_COMBAT_ION_BLAST_DRAW_METHODS_H

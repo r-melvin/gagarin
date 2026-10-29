@@ -6,7 +6,7 @@
 //   class changes the owner, the new house's lists take it. The original name is not confirmed here.
 
 #include "building_a4_views.h"
-#include "../../combat/bomb_class.h"
+#include "../../_layout/bomb_class.h"
 #include "../../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x448260

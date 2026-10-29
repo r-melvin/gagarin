@@ -7,7 +7,7 @@
 //   FUNCTION: GAMEMD 0x439080  BombListClass::AddDetector    (__thiscall)
 //   FUNCTION: GAMEMD 0x4390D0  BombListClass::RemoveDetector (__thiscall)
 
-#include "bomb_list_class_methods.h"
+#include "../_layout/bomb_list_class.h"
 
 // FUNCTION: GAMEMD 0x439080  (__thiscall)
 // Append a bomb-revealing TechnoClass to the Detectors vector (inlined AddItem;

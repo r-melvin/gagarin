@@ -77,7 +77,7 @@ extern void* DAT_00B77F60;
 #include "../renderer/color_scheme_find_methods.h"
 #include "../movement/loco_interfaces.h"
 #include "../_layout/conn_stat.h"
-#include "../core/version_class_ctor_methods.h"
+#include "../_layout/version_class.h"
 #include "../core/vector_class_operations.h"
 #include "../_layout/cell.h"
 #include "../_layout/astar_00746000.h"

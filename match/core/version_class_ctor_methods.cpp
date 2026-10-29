@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x74F730. YRpp consulted
 //   for the class name only.
 
-#include "version_class_ctor_methods.h"
+#include "../_layout/version_class.h"
 
 // FUNCTION: GAMEMD 0x74F730
 //

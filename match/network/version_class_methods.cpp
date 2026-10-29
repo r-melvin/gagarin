@@ -10,7 +10,7 @@
 //   FUNCTION: GAMEMD 0x74FDB0   VersionClass::MaxVersion        (__thiscall)
 //   GLOBAL:   GAMEMD 0x846140   VersionProtocol[3]  (VersionProtocolType)
 
-#include "version_class_methods.h"
+#include "../_layout/version_class.h"
 
 // GLOBAL: GAMEMD 0x846140 — the engine's version->protocol lookup table.
 // Confirmed from memory: {0x1000,0}, {0x2000,1}, {0x10000,2}. The default

@@ -14,11 +14,37 @@
 // recompute on first use. The full method set lives in
 // match/network/version_class_methods.{h,cpp}; this TU carries the constructor
 // and so the layout it initialises.
-#ifndef GG_MATCH_CORE_VERSION_CLASS_CTOR_METHODS_H
-#define GG_MATCH_CORE_VERSION_CLASS_CTOR_METHODS_H
+#ifndef GG_MATCH_LAYOUT_VERSION_CLASS_H
+#define GG_MATCH_LAYOUT_VERSION_CLASS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+
+// CommProtocolType — YRpp. The protocol field stored in the
+// VersionProtocol table at 0x846140 (confirmed: values 0/1/2 at +4 of each
+// 8-byte entry).
+typedef enum CommProtocolEnum
+{
+    COMM_PROTOCOL_SINGLE_NO_COMP = 0,
+    COMM_PROTOCOL_SINGLE_E_COMP,
+    COMM_PROTOCOL_MULTI_E_COMP,
+    COMM_PROTOCOL_COUNT,
+    DEFAULT_COMM_PROTOCOL = COMM_PROTOCOL_MULTI_E_COMP
+} CommProtocolType;
+
+// VersionProtocolType — 8-byte entry: Version (uint) @+0, Protocol (enum) @+4.
+// Confirmed numerically from 0x74FD20: loop walks the table by 8 (SUB EAX,8)
+// while indexing Protocol via [ECX*8 + 0x846144] (== &VersionProtocol[0].Protocol).
+struct VersionProtocolType
+{
+    unsigned int     Version;   // +0x00
+    CommProtocolType Protocol;  // +0x04
+};
+GG_STATIC_ASSERT(offsetof(VersionProtocolType, Protocol) == 0x04);
+
+// The single version constant this build both floors and ceilings at, stored by
+// InitClipping (`MOV EAX,0x20000`) and returned by MinVersion / MaxVersion.
+#define VERSION_CLASS_VERSION 0x20000
 
 class VersionClass
 {
@@ -44,6 +70,13 @@ public:
     char* FUN_0074FAE0();
     // FUNCTION: GAMEMD 0x74FA20 -- read the version text file once, then answer the minor version.
     unsigned short FUN_0074FA20();
+
+    // Declared ascending by retail address (match/network/version_class_methods.cpp).
+    CommProtocolType Version_Protocol(unsigned int version);             // GAMEMD 0x74FD20 __thiscall
+    void             InitClipping();                                     // GAMEMD 0x74FD50 __thiscall
+    unsigned int     Clip_Version(unsigned int minver, unsigned int maxver);  // GAMEMD 0x74FD60 __thiscall
+    unsigned int     MinVersion();                                       // GAMEMD 0x74FDA0 __thiscall
+    unsigned int     MaxVersion();                                       // GAMEMD 0x74FDB0 __thiscall
 };
 GG_STATIC_ASSERT(offsetof(VersionClass, Version)      == 0x04);
 GG_STATIC_ASSERT(offsetof(VersionClass, MajorVersion) == 0x08);
@@ -54,4 +87,4 @@ GG_STATIC_ASSERT(offsetof(VersionClass, MinClipVer)   == 0x3C);
 GG_STATIC_ASSERT(offsetof(VersionClass, MaxClipVer)   == 0x40);
 GG_STATIC_ASSERT(sizeof(VersionClass)                 == 0x48);
 
-#endif  // GG_MATCH_CORE_VERSION_CLASS_CTOR_METHODS_H
+#endif  // GG_MATCH_LAYOUT_VERSION_CLASS_H

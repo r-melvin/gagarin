@@ -8,7 +8,7 @@
 //   0x74FA20  VersionClass::FUN_0074FA20
 
 #include <string.h>
-#include "version_class_ctor_methods.h"
+#include "../_layout/version_class.h"
 #include "../platform/ccfile_class.h"
 
 // STRING: GAMEMD 0x84635C -- the version text file name.

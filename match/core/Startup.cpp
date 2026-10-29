@@ -44,6 +44,7 @@
 #include "class_factory.h"
 #include "mathtbl_init_shapes.h"
 #include "../_layout/abstract_class.h"
+#include "../_layout/bomb_class.h"
 #include "../movement/loco_base.h"
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
@@ -311,18 +312,6 @@ public:
 };
 
 // CALLEE: GAMEMD 0x004385D0 (decl; reloc) -- BombClass default constructor.
-class BombClass : public AbstractClass
-{
-public:
-    BombClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x5C - sizeof(AbstractClass)];
-};
-
 // CALLEE: GAMEMD 0x0065B1E0 (decl; reloc) -- RadSiteClass default constructor.
 class RadSiteClass : public AbstractClass
 {

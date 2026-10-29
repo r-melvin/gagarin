@@ -8,6 +8,7 @@
 // /Ob2: the two sound/pause helpers 0x5BF530 and 0x5BF580 are called from
 // other units yet expanded inside 0x5BF180 and 0x5BF450, and 0x5BF2B0 is
 // expanded inside 0x5BF390: out-of-line bodies inlined automatically.
+#include "input_manager_class_methods.h"
 #include "movie_handle_class.h"
 #include "../_layout/session_class.h"
 #include "../core/vector_class_operations.h"
@@ -62,11 +63,6 @@ struct Surface_005BF180
     virtual void vt_00(); virtual void vt_04(); virtual void vt_08(); virtual void vt_0C();
     virtual void vt_10(); virtual void vt_14();
     virtual void vt_18(int a);
-};
-
-struct InputManagerClass
-{
-    void DoSomething();                 // GAMEMD 0x54F720 (decl; reloc)
 };
 
 // The object the movie callback posts to (0xA8BC60).

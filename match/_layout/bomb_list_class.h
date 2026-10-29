@@ -1,22 +1,20 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI (member-access disassembly at 0x439080-0x439108), cross-checked
-//   against YRpp (reconfirmed
-//   numerically here).
+//   Ghidra CLI (member-access disassembly at 0x439080-0x439150), cross-checked
+//   against YRpp and reconfirmed numerically.
 //
-// BombListClass::AddDetector / RemoveDetector both operate purely on the
-// `Detectors` vector (a DynamicVectorClass<TechnoClass*> @ +0x18). The bodies
-// inline DynamicVectorClass::AddItem and ::Remove/::RemoveItem respectively,
-// each issuing one genuine *virtual* vector call:
-//   AddDetector  -> SetCapacity   via [vtable + 0x08]  (slot 2)
-//   RemoveDetector -> FindItemIndex via [vtable + 0x10] (slot 4)
-// so the modelled vector must carry the exact retail vtable order.
-#ifndef GG_MATCH_COMBAT_BOMB_LIST_CLASS_METHODS_H
-#define GG_MATCH_COMBAT_BOMB_LIST_CLASS_METHODS_H
+// BombListClass: the bomb vector (DynamicVectorClass<BombClass*>) is the
+// object's own prefix at +0x00 (sizeof 0x18), followed by the detector vector
+// (DynamicVectorClass<TechnoClass*>) at +0x18 and UpdateDelay at +0x30.
+// Methods: AddDetector 0x439080, RemoveDetector 0x4390D0, PointerGotInvalid
+// 0x439150. FindItemIndex of the bomb vector is virtual slot 4 (+0x10).
+#ifndef GG_MATCH_LAYOUT_BOMB_LIST_CLASS_H
+#define GG_MATCH_LAYOUT_BOMB_LIST_CLASS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "bomb_class.h"
 
 class TechnoClass;
 
@@ -87,22 +85,40 @@ GG_STATIC_ASSERT(offsetof(DetectorVectorClass, Count)             == 0x10);
 GG_STATIC_ASSERT(offsetof(DetectorVectorClass, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(DetectorVectorClass)                      == 0x18);
 
-// ---------------------------------------------------------------------------
-// BombListClass  -- only the layout these two methods reach.
-//   Bombs (DynamicVectorClass<BombClass*>) @0x00, Detectors @0x18,
-//   UpdateDelay @0x30.  Non-polymorphic (Bombs.vptr is at offset 0).
-// ---------------------------------------------------------------------------
-struct BombListClass
+// FindItemIndex takes its argument by reference: retail hands it the
+// address of a stack temporary (`LEA ECX,[ESP+8]; PUSH ECX`).
+// DynamicVectorClass<BombClass*> -- vptr at +0x00, then the standard vector fields.
+struct BombVectorClass
 {
-    void AddDetector(TechnoClass* Detector);     // GAMEMD 0x439080 __thiscall
-    void RemoveDetector(TechnoClass* Detector);  // GAMEMD 0x4390D0 __thiscall
+    virtual void v00() = 0;
+    virtual void v04() = 0;
+    virtual void v08() = 0;
+    virtual void v0C() = 0;
+    virtual int  FindItemIndex(BombClass* const& item);   // +0x10 (declared; reloc)
 
-    char               Bombs[0x18];  // +0x00  DynamicVectorClass<BombClass*>
+    BombClass** Items;         // +0x04
+    int         Capacity;      // +0x08
+    int         IsAllocated;   // +0x0C
+    int         Count;         // +0x10
+    int         CapacityIncrement;   // +0x14
+};
+GG_STATIC_ASSERT(offsetof(BombVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(BombVectorClass, Count) == 0x10);
+
+GG_STATIC_ASSERT(offsetof(BombVectorClass, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(BombVectorClass) == 0x18);
+
+struct BombListClass : BombVectorClass
+{
+    void AddDetector(TechnoClass* Detector);          // GAMEMD 0x439080 __thiscall
+    void RemoveDetector(TechnoClass* Detector);       // GAMEMD 0x4390D0 __thiscall
+    void PointerGotInvalid(AbstractClass* invalid);   // GAMEMD 0x439150
+
     DetectorVectorClass Detectors;   // +0x18
-    int                UpdateDelay;  // +0x30
+    int                 UpdateDelay; // +0x30
 };
 
 GG_STATIC_ASSERT(offsetof(BombListClass, Detectors)   == 0x18);
 GG_STATIC_ASSERT(offsetof(BombListClass, UpdateDelay) == 0x30);
 
-#endif  // GG_MATCH_COMBAT_BOMB_LIST_CLASS_METHODS_H
+#endif  // GG_MATCH_LAYOUT_BOMB_LIST_CLASS_H

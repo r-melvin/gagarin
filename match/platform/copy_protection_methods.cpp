@@ -19,7 +19,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include "copy_protection_methods.h"
-#include "../core/version_class_ctor_methods.h"
+#include "../_layout/version_class.h"
 
 extern "C" int __cdecl strcmp(const char* a, const char* b);
 #pragma intrinsic(strcmp)
