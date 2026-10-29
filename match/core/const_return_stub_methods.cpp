@@ -5,6 +5,7 @@
 // Constant-return and identity leaves, ordered ascending by retail address.
 
 #include "const_return_stub_methods.h"
+#include "../_layout/frame_timer.h"
 
 // FUNCTION: GAMEMD 0x410300
 int __stdcall FUN_00410300(int)
@@ -38,9 +39,8 @@ void __stdcall FUN_00413490(int)
 
 
 // FUNCTION: GAMEMD 0x426620
-Obj_00426600* Obj_00426600::FUN_00426620(int)
+CDTimerClass::CDTimerClass(const AbstractNoInit&)
 {
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x426630

@@ -18,14 +18,14 @@
 // The pure const HasNextMission lives at 0x6915D0. This TU matches the bytes
 // actually present at 0x6915B0.
 
-#include "script_class_methods.h"
+#include "../_layout/script_class.h"
 
 // FUNCTION: GAMEMD 0x691590  (__thiscall)
 // CurrentMission = -1; return true.
 //   C7 41 2C FFFFFFFF  mov [ecx+0x2C], -1
 //   B0 01              mov al, 1
 //   C3                 ret
-bool ScriptCursorView_00691590::ClearMission()
+bool ScriptClass::ClearMission()
 {
     this->CurrentMission = -1;
     return true;
@@ -37,7 +37,7 @@ bool ScriptCursorView_00691590::ClearMission()
 //   89 41 2C     mov [ecx+0x2C], eax
 //   B0 01        mov al, 1
 //   C2 04 00     ret 4
-bool ScriptCursorView_00691590::SetMission(int nLine)
+bool ScriptClass::SetMission(int nLine)
 {
     this->CurrentMission = nLine;
     return true;
@@ -47,8 +47,9 @@ bool ScriptCursorView_00691590::SetMission(int nLine)
 // ++CurrentMission; return CurrentMission < Type->ActionsCount.
 // The increment leaves the new value in EAX, reused by the unsigned compare
 // (CMP EAX,[ECX+0xA0]; SBB EAX,EAX; NEG EAX) -> bool.
-bool ScriptCursorView_00691590::NextMission()
+bool ScriptClass::NextMission()
 {
     ++this->CurrentMission;
-    return this->CurrentMission < this->Type->ActionsCount;
+    // Native CMP/SBB at 0x6915BF uses the unsigned-below condition.
+    return (unsigned int)this->CurrentMission < (unsigned int)this->Type->ActionsCount;
 }

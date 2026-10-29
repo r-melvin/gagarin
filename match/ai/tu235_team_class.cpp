@@ -638,6 +638,69 @@ void TeamClass::ScanLimit()
     }
 }
 
+#include <new>
+#include "../_layout/swizzle_manager_class.h"
+
+// FUNCTION: GAMEMD 0x6EC450
+HRESULT __stdcall TeamClass::Load(IStream* pStm)
+{
+    HRESULT hr = AbstractClass::Load(pStm);
+    if (hr < 0) {
+        return hr;
+    }
+
+    if (this) {
+        // Native reuses the stream argument's stack home as the no-init token.
+        AbstractNoInit& noInit = *reinterpret_cast<AbstractNoInit*>(&pStm);
+        new (this) TeamClass(noInit);
+    }
+
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Target28);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2C);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_70);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&FirstUnit);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_38);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_40);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Member34);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_3C);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_30);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_44);
+    return S_OK;
+}
+
+#include "../_layout/obj_004a1d30.h"
+
+// FUNCTION: GAMEMD 0x6EC5A0
+void TeamClass::vf_13(Obj_004A1D30* crc)
+{
+    AbstractClass::vf_13(crc);
+    crc->FUN_004A1D50(Type->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_2C->vf_rtti_4());
+    if (unknown_38) crc->FUN_004A1D50(unknown_38->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_48);
+    crc->FUN_004A1D50(unknown_4C);
+    if (FirstUnit) crc->FUN_004A1D50(FirstUnit->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_58.GetTimeLeft());
+    crc->FUN_004A1D50(unknown_64.GetTimeLeft());
+    if (unknown_70) crc->FUN_004A1D50(unknown_70->vf_rtti_4());
+    crc->FUN_004A1CA0(Flag77);
+    crc->FUN_004A1CA0(Flag78);
+    crc->FUN_004A1CA0(unknown_79);
+    crc->FUN_004A1CA0(Flag7A);
+    crc->FUN_004A1CA0(Flag7B);
+    crc->FUN_004A1CA0(unknown_7C);
+    crc->FUN_004A1CA0(unknown_7D);
+    crc->FUN_004A1CA0(unknown_7E);
+    crc->FUN_004A1CA0(Flag7F);
+    crc->FUN_004A1CA0(Done);
+    crc->FUN_004A1CA0(Flag82);
+    crc->FUN_004A1CA0(unknown_83);
+    crc->FUN_004A1DE0(unknown_88, sizeof(unknown_88));
+}
+
+
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6EDA90
 // Calls other functions.

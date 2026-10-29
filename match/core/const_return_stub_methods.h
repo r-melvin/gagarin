@@ -26,16 +26,14 @@
 #include "../core/frame_counter.h"
 
 // A countdown timer: a start frame at +0x00 and a duration at +0x08, with -1
-// in the start field meaning "not running". 0x426620 sits on the same object,
-// which is why it shares this type rather than getting its own.
+// in the start field meaning "not running". This remaining placeholder view
+// is used only by the separate frames-left method at 0x426630.
 struct Obj_00426600
 {
     int  unknown_00;   // +0x0000  start frame, or -1
     char _pad04[0x4];
     int  unknown_08;   // +0x0008  duration in frames
 
-    // FUNCTION: GAMEMD 0x426620
-    Obj_00426600* FUN_00426620(int unused);
     // FUNCTION: GAMEMD 0x426630
     int FUN_00426630() const;
 };

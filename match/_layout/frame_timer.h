@@ -10,6 +10,8 @@
 // GLOBAL: GAMEMD 0xA8ED84 -- the engine frame counter.
 #include "../core/frame_counter.h"
 
+struct AbstractNoInit;
+
 // FrameTimer: empty clock policy whose value is CurrentFrame; it occupies the
 // middle slot of CDTimerClass.
 struct FrameTimer
@@ -31,6 +33,8 @@ struct CDTimerClass
     int        TimeLeft;      // +0x08
 
     CDTimerClass() {}
+    // FUNCTION: GAMEMD 0x426620 (no-init subobject construction; calls6EC480/4CA2A6)
+    CDTimerClass(const AbstractNoInit& noInit);
     CDTimerClass(int duration)
     {
         this->StartTime = this->CurrentTime;

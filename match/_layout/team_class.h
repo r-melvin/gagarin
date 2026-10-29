@@ -11,12 +11,13 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
+#include "frame_timer.h"
 
 class FootClass;
 class HouseClass;
 class TeamTypeClass;
 class TagClass;
-struct TeamTarget_r14;
+class ScriptClass;
 struct TeamMember_r14;
 struct ActionArg_r14;
 
@@ -36,41 +37,53 @@ public:
     virtual void vf_10(void* target, bool removed);
     virtual int vf_11();
     virtual int vf_12();
-    // FUNCTION: GAMEMD 0x6EC5A0 (declaration only; body unrecovered)
+    // FUNCTION: GAMEMD 0x6EC5A0 (declaration; checksum override)
     // Retail primary slot 13: thiscall with one pointer argument.
     virtual void vf_13(Obj_004A1D30* crc);
     // FUNCTION: GAMEMD 0x6E9140 (declaration only; body unrecovered)
     // Retail primary slot 23: void return follows the base declaration provisionally.
     virtual void vf_23();
 
+private:
+    // Inline-only no-init reconstruction used after the raw stream read.
+    TeamClass(const AbstractNoInit& noInit)
+        : AbstractClass(noInit), unknown_64(noInit) {}
+
+public:
     TeamTypeClass*  Type;                // +0x24
-    TeamTarget_r14* Target28;            // +0x28
+    ScriptClass*    Target28;            // +0x28
     HouseClass*     unknown_2C;          // +0x2C
     void*           unknown_30;          // +0x30
-    TeamMember_r14* Member34;            // +0x34
-    void*           unknown_38;          // +0x38
+    AbstractClass*  Member34;            // +0x34
+    AbstractClass*  unknown_38;          // +0x38; 6EAEE0 writes Cell/Foot common-base pointers
     void*           unknown_3C;          // +0x3C
     void*           unknown_40;          // +0x40
     void*           unknown_44;          // +0x44
-    char            _pad_48[0x54 - 0x48];
+    int             unknown_48;          // +0x48, checksum6EC5EF
+    int             unknown_4C;          // +0x4C, checksum6EC5FA
+    char            _pad_50[4];
     FootClass*      FirstUnit;           // +0x54
-    char            _pad_58[0x70 - 0x58];
+    CDTimerClass    unknown_58;          // +0x58, inline countdown6EC61E
+    CDTimerClass    unknown_64;          // +0x64, inline countdown6EC643
     TagClass*       unknown_70;          // +0x70
     bool            unknown_74;
     char            _pad_75[0x77 - 0x75];
     bool            Flag77;              // +0x77
     bool            Flag78;              // +0x78
-    char            _pad_79;
+    unsigned char   unknown_79;
     bool            Flag7A;              // +0x7A
     bool            Flag7B;              // +0x7B
-    char            _pad_7C[0x7F - 0x7C];
+    unsigned char   unknown_7C;
+    unsigned char   unknown_7D;
+    unsigned char   unknown_7E;
     bool            Flag7F;              // +0x7F
     bool            Done;                // +0x80
     char            _pad_81;
     bool            Flag82;              // +0x82
-    char            _pad_83;
+    unsigned char   unknown_83;
     bool            unknown_84;
-    char            _pad_85[0xA0 - 0x85];
+    char            _pad_85[3];
+    int             unknown_88[6];       // ctor6E8CF1/CF7 clears six DWORDs; checksum appends24 bytes
 
     // GAMEMD 0x6E9050 -- clears/assigns the team's mission target.
     void AssignMissionTarget(AbstractClass* pTarget);
@@ -134,6 +147,34 @@ GG_STATIC_ASSERT(offsetof(TeamClass, Done)     == 0x80);
 GG_STATIC_ASSERT(offsetof(TeamClass, Flag82)    == 0x82);
 GG_STATIC_ASSERT(offsetof(TeamClass, unknown_74) == 0x74);
 GG_STATIC_ASSERT(offsetof(TeamClass, unknown_84) == 0x84);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_48) == 0x48);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_48) == 4);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_4C) == 4);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_58) == 0x58);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_58) == 12);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_64) == 0x64);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_64) == 12);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_79) == 0x79);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_79) == 1);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_7C) == 0x7C);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_7C) == 1);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_7D) == 0x7D);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_7D) == 1);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_7E) == 0x7E);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_7E) == 1);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_83) == 0x83);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_83) == 1);
+GG_STATIC_ASSERT(offsetof(TeamClass, unknown_88) == 0x88);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_88) == 24);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->Flag77) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->Flag78) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->Flag7A) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->Flag7B) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->Flag7F) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->Done) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->Flag82) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_88[0]) == 4);
 GG_STATIC_ASSERT(sizeof(TeamClass)             == 0xA0);
 #endif
 

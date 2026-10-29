@@ -43,6 +43,13 @@ public:
     // FUNCTION: GAMEMD 0x691540
     ScriptActionNode* GetNextAction(ScriptActionNode* buffer) const;
 
+    // FUNCTION: GAMEMD 0x691590
+    bool ClearMission();
+    // FUNCTION: GAMEMD 0x6915A0
+    bool SetMission(int nLine);
+    // FUNCTION: GAMEMD 0x6915B0
+    bool NextMission();
+
     ScriptTypeClass* Type;            // +0x24
     int              unknown_28;      // +0x28  constructor clears it
     int              CurrentMission;  // +0x2C  constructor sets -1

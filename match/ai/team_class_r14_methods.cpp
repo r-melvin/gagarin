@@ -19,6 +19,7 @@
 #include "../_rt/gg_vslot.h"
 #include "team_class_methods.h"
 #include "../_layout/map_0087f7e8.h"
+#include "../_layout/script_class.h"
 
 struct ActionArg_r14 {
     int unknown_00;
@@ -36,11 +37,6 @@ struct TeamMember_r14 {
 };
 GG_STATIC_ASSERT(offsetof(TeamMember_r14, Next)    == 0x5D8);
 GG_STATIC_ASSERT(offsetof(TeamMember_r14, Flag689) == 0x689);
-
-struct TeamTarget_r14 {
-    // FUNCTION: GAMEMD 0x691590 (decl; reloc)
-    void FUN_00691590();
-};
 
 
 typedef void (TeamMember_r14::*Fn174_r14)(void* a1, int a2, int a3);
@@ -85,7 +81,7 @@ void TeamClass::FUN_006EA080()
             m->Flag689 = true;
         }
     }
-    this->Target28->FUN_00691590();
+    this->Target28->ClearMission();
     this->Done = true;
 }
 
@@ -96,9 +92,9 @@ void TeamClass::FUN_006EA080()
 void TeamClass::FUN_006EC730(int a1, bool a2)
 {
     if (a2) {
-        TeamMember_r14* m = this->Member34;
+        AbstractClass* m = this->Member34;
         if (m == 0) {
-            m = (TeamMember_r14*)this->FirstUnit;
+            m = (AbstractClass*)this->FirstUnit;
         }
         AssignMissionTarget((AbstractClass*)DAT_0087F7E8.FUN_00580BC0(m));
     }
