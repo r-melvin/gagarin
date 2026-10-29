@@ -28271,7 +28271,7 @@
   "len": "0xF5",
   "name": "Matrix3D::FromQuaternion",
   "status": "partial",
-  "pct": 23.5
+  "pct": 5.1
  },
  {
   "tu": "match/renderer/matrix3d_rotate_methods.cpp",
@@ -58427,7 +58427,7 @@
   "len": "0x52D",
   "name": "SidebarClass::vf_08",
   "status": "partial",
-  "pct": 47.9
+  "pct": 1.7
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
@@ -72564,7 +72564,7 @@
   "len": "0x1ad",
   "name": "MultiplayerSiege::vf_33",
   "status": "partial",
-  "pct": 10.1
+  "pct": 6.1
  },
  {
   "tu": "match/network/MPSiege.cpp",
@@ -95643,7 +95643,7 @@
   "len": "0x292",
   "name": "ScenarioClass::ScenarioClass",
   "status": "partial",
-  "pct": 20.6
+  "pct": 33.9
  },
  {
   "tu": "match/core/Scenario.cpp",
@@ -96661,7 +96661,7 @@
   "len": "0x1bce",
   "name": "FUN_00532150",
   "status": "partial",
-  "pct": 61
+  "pct": 61.2
  },
  {
   "tu": "match/core/global_vector_remove_item_methods.cpp",
@@ -99488,7 +99488,7 @@
   "len": "0x2d2",
   "name": "FUN_00732D10",
   "status": "partial",
-  "pct": 16.7
+  "pct": 2.2
  },
  {
   "tu": "match/ui/UICmnds.cpp",
@@ -100318,7 +100318,7 @@
   "len": "0x60D",
   "name": "?FUN_00684620@@YI_NPBD@Z",
   "status": "partial",
-  "pct": 31.5
+  "pct": 9.0
  },
  {
   "tu": "match/core/Scenario.cpp",
@@ -103309,7 +103309,7 @@
   "len": "0x176",
   "name": "Tactical::vf_24",
   "status": "partial",
-  "pct": 3.4
+  "pct": 1.1
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -105559,7 +105559,7 @@
   "len": "0xac",
   "name": "CampaignClass constructor",
   "status": "partial",
-  "pct": 84.8
+  "pct": 76.1
  },
  {
   "tu": "match/core/campaign_class.cpp",
@@ -143107,7 +143107,7 @@
   "len": "0x7e",
   "name": "FUN_0058BE20",
   "status": "partial",
-  "pct": 88
+  "pct": 88.1
  },
  {
   "tu": "match/map/MapGen_r3_methods.cpp",
