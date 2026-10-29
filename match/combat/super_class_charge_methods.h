@@ -67,21 +67,11 @@ extern SuperVector_006CB830 DAT_00B0F5B8;
 
 // CDTimerClass Pause / Resume as retail inlined them into SetOnHold and Reset.
 // The inlined GetTimeLeft keeps its own `CMP reg,-1; JZ` right after Pause's
-// identical test (0x6CB51F / 0x6CB527); VC6 folds the second test unless the
-// guard reads the dword through a different type, hence the unsigned view.
+// identical test (0x6CB51F / 0x6CB527).
 inline void CDTimerClass::Pause()
 {
     if (this->StartTime != -1) {
-        int left = this->TimeLeft;
-        if (*(unsigned*)&this->StartTime != 0xFFFFFFFF) {
-            int passed = CurrentFrame - this->StartTime;
-            if (passed < left) {
-                left = left - passed;
-            } else {
-                left = 0;
-            }
-        }
-        this->TimeLeft = left;
+        this->TimeLeft = this->GetTimeLeft();
         this->StartTime = -1;
     }
 }

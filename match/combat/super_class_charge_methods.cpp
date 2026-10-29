@@ -7,39 +7,10 @@
 #include "super_class_charge_methods.h"
 #include "../_layout/anim_class.h"
 
-// FUNCTION: GAMEMD 0x6CB4D0  SuperClass::SetOnHold (__thiscall, ret 0x4)
-//
-// Suspends or resumes a superweapon's recharge. Refuses (false) when the weapon
-// is not present, is a one-shot, is already in the requested state, or cannot
-// be held at all. Otherwise a resume of a non-manual weapon restarts the
-// recharge clock (Resume: only if it was stopped), while a hold — or any change
-// on a ManualControl weapon — freezes the remaining time (Pause). The new
-// suspend state is recorded and true reports that something changed.
-//
-// The four guards are one combined condition (that gives retail's single
-// shared `xor al,al` tail). The inlined Pause tail keeps GetTimeLeft's own
-// `CMP ESI,-1; JZ` (0x6CB527) two instructions after Pause's identical test
-// (0x6CB51F) on the same cached register: that second test survives only
-// when GetTimeLeft's guard reads StartTime through a different type
-// (the unsigned view in the header), which stops VC6 folding it; every
-// same-member spelling (preloaded local, early return, ternary, out-of-class
-// inline, IsTicking helper, a static inline helper with a pointer parameter)
-// dropped the two instructions and sat at 50.9%. The compare form
-// `passed < TimeLeft ? TimeLeft - passed : 0` is retail's
-// (SUB EDX,ESI; CMP EDX,EAX; JGE).
-bool SuperClass::SetOnHold(bool onHold)
-{
-    if (this->IsPresent && !this->IsOneTime && onHold != this->IsSuspended && this->CanHold) {
-        if (!onHold && !this->Type->ManualControl) {
-            this->RechargeTimer.Resume();
-        } else {
-            this->RechargeTimer.Pause();
-        }
-        this->IsSuspended = onHold;
-        return true;
-    }
-    return false;
-}
+// SuperClass::SetOnHold (0x6CB4D0) is unmatched: plain CDTimerClass::Pause scored
+// 50.9% because retail keeps the inlined GetTimeLeft's second `CMP ESI,-1` that
+// VC6 folds in ordinary code (the previous body forced it with a reinterpret
+// alias, removed as steering).
 
 // FUNCTION: GAMEMD 0x6CB830  SuperClass::StopPreclickAnim
 //
@@ -98,33 +69,5 @@ void SuperClass::SetCharge(int percentage)
     }
 }
 
-// FUNCTION: GAMEMD 0x6CE0B0  SuperClass::Reset
-//
-// Back to a cold start: drop the preclick animation and its pending-list
-// entry, clear the ready flag, and restart the recharge timer from
-// GetRechargeTime — pausing it again straight away if it was not running
-// before, so a held weapon stays held with its full time banked.
-//
-// The trailing Pause() inlines GetTimeLeft, whose own `CMP ESI,-1` on the
-// just-tested StartTime retail keeps (0x6CE16F); the unsigned-view guard in
-// the header (see SetOnHold) is what keeps VC6 from folding it here too.
-void SuperClass::Reset()
-{
-    if (this->Animation != 0) {
-        this->Animation->RemainingIterations = 0;
-        this->Animation = 0;
-        DAT_00B0F5B8.Remove(this);
-    }
-
-    if (this->AnimationGotInvalid) {
-        DAT_00B0F5B8.Remove(this);
-        this->AnimationGotInvalid = false;
-    }
-
-    this->IsReady = false;
-    bool running = this->RechargeTimer.StartTime != -1;
-    this->CameoChargeState = -1;
-    this->RechargeTimer = CDTimerClass(this->GetRechargeTime());
-    if (!running)
-        this->RechargeTimer.Pause();
-}
+// SuperClass::Reset (0x6CE0B0) is unmatched for the same reason (72.7% with the
+// plain Pause; the previous body forced the second `CMP ESI,-1` with the alias).

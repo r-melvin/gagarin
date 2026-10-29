@@ -772,8 +772,8 @@
   "sym": "?ClearPlanningTokens@Techno_006386E0@@QAIXPAURecord_006386E0@@@Z",
   "len": "0x151",
   "name": "TechnoClass::ClearPlanningTokens",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 95.5
  },
  {
   "tu": "match/ai/PlanMgr.cpp",
@@ -2425,15 +2425,6 @@
  },
  {
   "tu": "match/combat/super_class_charge_methods.cpp",
-  "addr": "0x6CB4D0",
-  "sym": "?SetOnHold@SuperClass@@QAE_N_N@Z",
-  "len": "0x88",
-  "name": "SuperClass::SetOnHold",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/combat/super_class_charge_methods.cpp",
   "addr": "0x6CB830",
   "sym": "?StopPreclickAnim@SuperClass@@QAE_N_N@Z",
   "len": "0xe6",
@@ -2447,15 +2438,6 @@
   "sym": "?SetCharge@SuperClass@@QAEXH@Z",
   "len": "0x78",
   "name": "SuperClass::SetCharge",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/combat/super_class_charge_methods.cpp",
-  "addr": "0x6CE0B0",
-  "sym": "?Reset@SuperClass@@QAEXXZ",
-  "len": "0xf0",
-  "name": "SuperClass::Reset",
   "status": "matched",
   "pct": 100
  },

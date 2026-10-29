@@ -35,6 +35,21 @@
 #include "../_layout/house_class.h"
 #include "frame_counter.h"
 
+// Null-tolerant "as FootClass" casts, as retail inlined them into callers that
+// pass `this` (the null test is in the retail bytes at 0x6FCD67 / 0x700D13).
+static inline bool IsFootObject(TechnoClass* object)
+{
+    return object && object->Flags.IsFoot;
+}
+
+static inline FootClass* AsFootByRtti(TechnoClass* object)
+{
+    if (object && object->vf_11() == 1) {
+        return (FootClass*)object;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x750E20 (decl; reloc) -- play a positional sound; RET 4.
 void __fastcall FUN_00750E20(int sound, CoordStruct* where, int unused);
 
@@ -116,8 +131,8 @@ bool TechnoClass::vf_237(AbstractClass* target)
 // 313 true, or is under EMP; true otherwise.
 bool TechnoClass::vf_196()
 {
-    if (this && vf_11() == 1) {
-        FootClass* foot = (FootClass*)this;
+    FootClass* foot = AsFootByRtti(this);
+    if (foot) {
         if ((foot->TubeIndex >= 0 && foot->vf_313()) || IsUnderEMP()) {
             return false;
         }
@@ -198,7 +213,7 @@ void TechnoClass::vf_232()
     vf_242(0);
     SetDestination(0, true);
     vf_160(3);
-    if (!(this && Flags.IsFoot && ((FootClass*)this)->IsAttackedByLocomotor)) {
+    if (!(IsFootObject(this) && ((FootClass*)this)->IsAttackedByLocomotor)) {
         if (SpawnManager) {
             ((SpawnManagerClass*)SpawnManager)->FUN_006B7100();
             ((SpawnManagerClass*)SpawnManager)->FUN_006B7BB0();

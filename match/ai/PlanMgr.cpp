@@ -1542,14 +1542,8 @@ bool TechnoClass::TryNextPlanningTokenNode()
 
 // FUNCTION: GAMEMD 0x6386E0
 //
-// MATCHED (100.0%, 112/112). The gate-byte test only reaches retail's
-// MOVSX EAX,byte ptr [EDI+0x1D] / TEST EAX,EAX when the char is bound to an
-// int through a ternary that supplies the null-gate fallback
-// (`int gateFlag = (gate != 0) ? gate->At_01D : 0;`): the ternary's int type
-// forces the widening while the short-circuit shape of the branch is kept.
-// Every in-place spelling of the test (plain `== 0`, an `(int)` cast, `!expr`,
-// `expr + 0 == 0`, `(expr | 0) == 0`, an inline accessor returning int, an
-// inline accessor binding the char to an int local) narrows to
+// PARTIAL: 95.5% (107/112) -- retail tests the gate's +0x1D byte through
+// MOVSX EAX,byte ptr / TEST EAX,EAX; plain `gate->At_01D == 0` compiles to
 // MOV AL,byte ptr / TEST AL,AL, which also shortens three forward jumps.
 //
 // TechnoClass::ClearPlanningTokens — tear down every planning node hanging off
@@ -1576,8 +1570,7 @@ void Techno_006386E0::ClearPlanningTokens(Record_006386E0* gate)
 
     void* slot;
 
-    int gateFlag = (gate != 0) ? gate->At_01D : 0;
-    if (gateFlag == 0 && token->NodeCount > 0) {
+    if ((gate == 0 || gate->At_01D == 0) && token->NodeCount > 0) {
         Token_006386E0* list = this->FUN_00705D20();
         if (list != 0) {
         int count = list->NodeCount;
