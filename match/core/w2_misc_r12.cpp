@@ -103,7 +103,7 @@ struct CountdownView_00690F70
     int unknown_00;
     int unknown_04;
     int unknown_08;
-    MSTimer Timer;     // +0x0C
+    MSTimerView Timer;     // +0x0C
 
     void FUN_00690F70();
 };
@@ -359,7 +359,7 @@ struct Named_005AE4C0
     SlotTable_005CF840 Slots;          // +0x50
     char             unknown_50[0xC8 - 0x50 - sizeof(SlotTable_005CF840)];
     NameStr_005AE4C0 Name;             // +0xC8
-    MSTimer          Timer;            // +0xCC
+    MSTimerView          Timer;            // +0xCC
 
     int  FUN_005AE4C0();
     void FUN_005AE500(const NameStr_005AE4C0* name);
@@ -394,7 +394,7 @@ void Named_005AE4C0::FUN_005AE500(const NameStr_005AE4C0* name)
 void Named_005AE4C0::FUN_005AE530(const char* name, int duration)
 {
     Name.FUN_007B4940(name);
-    Timer = MSTimer(duration);
+    Timer = MSTimerView(duration);
 }
 
 // Polymorphic member with a deleting destructor in slot zero.

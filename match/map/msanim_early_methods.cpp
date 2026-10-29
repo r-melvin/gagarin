@@ -3,16 +3,9 @@
 //   Bytes compared against the user's retail gamemd.exe v1.001 across
 //   0x5CB6C0..0x5CCE82, the earlier half of the map-stage animation family
 //   whose later half lives in msanim_family_methods.cpp (types from its header).
-// Address index: 0x5CB6C0 0x5CB790 0x5CBCB0 0x5CC820 0x5CC880 0x5CCE40
+// Address index: 0x5CB790 0x5CBCB0 0x5CC820 0x5CC880 0x5CCE40
 
 #include "msanim_family_methods.h"
-
-// FUNCTION: GAMEMD 0x5CB6C0
-// Seat the base animation's vtable pointer on the object and return.
-void MSAnim_SeatVptr(MSAnim* self)
-{
-    self->SeatBaseVptr();
-}
 
 // GLOBAL: GAMEMD 0x88730C -- the blitter the shape animations redraw through.
 extern MSBlitSurface* DAT_0088730C;
@@ -26,7 +19,7 @@ __forceinline static bool MSRectEqual(const MSRect& a, const MSRect& b)
 // FUNCTION: GAMEMD 0x5CB790
 // Jump to a frame. When the rectangle moves, the screen is redrawn over the
 // old position; the frame is then clamped to the last one in the file.
-void MSShapeAnim::SetFrame(unsigned int frame)
+void MSShapeAnimView::SetFrame(unsigned int frame)
 {
     MSRect old;
     old = GetRectSlot();
@@ -46,7 +39,7 @@ void MSShapeAnim::SetFrame(unsigned int frame)
 // loads differently (retail loads X, then the Y offset, then Y, W, H, then the X offset).
 // The rectangle of the current frame, moved to where the animation sits and,
 // when the centring flag is set, pulled back by half the shape's size.
-MSRect MSShapeAnim::GetRectSlot()
+MSRect MSShapeAnimView::GetRectSlot()
 {
     MSRect tmp;
     MSRect* frame = Buffer->GetFrameRect(&tmp, Frame);

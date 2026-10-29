@@ -163,12 +163,6 @@ template struct DerivedSdd<Base_ReferenceCounted, Tag_WorldDominationTour_GameOp
 struct Tag_rc_ptr_WDTState;
 template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WDTState>;
 
-// FUNCTION: GAMEMD 0x00769BD0
-// MSFrameAnim -- seats its own vtable, retail 0x007F7104; locator 0x0080DD58 -> type
-//   descriptor 0x008487C0 `.?AVMSFrameAnim@@`. Base MSAnim, whose destructor is 0x005CB6C0.
-struct Tag_MSFrameAnim;
-template struct DerivedSdd<Base_MSAnim, Tag_MSFrameAnim>;
-
 // FUNCTION: GAMEMD 0x00769D90
 // rc_ptr<WorldDominationTour::Map> -- seats its own vtable, retail 0x007F712C; locator 0x0080DDA8 -> type
 //   descriptor 0x008487E0 `.?AV?$rc_ptr@VMap@WorldDominationTour@@@@`. Base rc_ptr_base, whose destructor is 0x0065D460.
@@ -180,12 +174,6 @@ template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_Map>
 //   descriptor 0x00848BF8 `.?AVWDTTerritory@@`. Base ReferenceCounted, whose destructor is 0x0065D660.
 struct Tag_WDTTerritory;
 template struct DerivedSdd<Base_ReferenceCounted, Tag_WDTTerritory>;
-
-// FUNCTION: GAMEMD 0x00771A30
-// WorldDominationTour::Voices::Anim -- seats its own vtable, retail 0x007F7354; locator 0x0080E3A8 -> type
-//   descriptor 0x00849218 `.?AVAnim@Voices@WorldDominationTour@@`. Base MSAnim, whose destructor is 0x005CB6C0.
-struct Tag_WorldDominationTour_Voices_Anim;
-template struct DerivedSdd<Base_MSAnim, Tag_WorldDominationTour_Voices_Anim>;
 
 // FUNCTION: GAMEMD 0x007784A0
 // CCToolTip -- seats its own vtable, retail 0x007F74C4; locator 0x0080E560 -> type

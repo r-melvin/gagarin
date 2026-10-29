@@ -120,7 +120,7 @@ int CCINI_004756F0::ReadTheme(const char* section, const char* key,
     char buffer[128];
 
     if (ReadString(section, key, STR_00889F64, buffer, sizeof(buffer))) {
-        return DAT_00A83D10.FindName(buffer);
+        return DAT_00A83D10.FindIndex(buffer);
     }
 
     return defaultValue;

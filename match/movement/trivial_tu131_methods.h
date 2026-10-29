@@ -13,7 +13,7 @@ struct Obj_005AE590;
 
 struct Obj_005AE590
 {
-    // FUNCTION: GAMEMD 0x5AE590
+    // FUNCTION: GAMEMD 0x5AE590 (decl)
     void FUN_005AE590(int a1);
 };
 

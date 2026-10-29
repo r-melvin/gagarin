@@ -19,7 +19,7 @@
 //   * Items[i] is pushed unmodified as the first _stricmp arg because ID lives at
 //     ThemeControl+0, so &Items[i]->ID == Items[i].
 
-#include "theme_class_find_methods.h"
+#include "../_layout/theme_class.h"
 #include <string.h>  // strlen (intrinsic under /O2), _stricmp
 
 // FUNCTION: GAMEMD 0x721210  (__thiscall)

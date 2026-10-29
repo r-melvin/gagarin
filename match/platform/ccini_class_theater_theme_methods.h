@@ -22,6 +22,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/theme_class.h"
 
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];
@@ -105,18 +106,9 @@ extern TheaterData DAT_007E1B78[];
 // GLOBAL: GAMEMD 0x7E1B60 — the map-edge name table ("North", "East", ...).
 extern const char* DAT_007E1B60[];
 
-// The theme player. Only its two name/index entry points are modelled.
-class ThemeClass_00A83D10
-{
-public:
-    // FUNCTION: GAMEMD 0x720940 (decl; reloc) — index -> theme name.
-    const char* GetName(int index);
-    // FUNCTION: GAMEMD 0x721210 (decl; reloc) — theme name -> index.
-    int         FindName(const char* name);
-};
-
+// The theme player: canonical ThemeClass.
 // GLOBAL: GAMEMD 0xA83D10 — the theme player instance.
-extern ThemeClass_00A83D10 DAT_00A83D10;
+extern ThemeClass DAT_00A83D10;
 
 class CCINI_004756F0
 {

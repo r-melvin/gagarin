@@ -13,7 +13,7 @@
 #include "wonline.h"
 #include "../core/hash_table_view.h"
 #include "../_rt/gg_static_assert.h"
-#include "../audio/theme_class_methods.h"
+#include "../_layout/theme_class.h"
 
 // FUNCTION: GAMEMD 0x775B10 (decl; reloc)
 void* FUN_00775B10();

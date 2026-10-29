@@ -15,31 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// The playback stream object hanging off ThemeClass +0x2C. Its four
-// __thiscall methods are declared only (bodies live in match/core).
-#include "themestream_00720ea0.h"
-
-struct ThemeClass
-{
-    int  CurrentTheme;          // +0x00
-    int  LastTheme;             // +0x04
-    int  QueuedTheme;           // +0x08
-    int  Volume;                // +0x0C
-    bool IsScoreRepeat;         // +0x10
-    bool IsFading;              // +0x11
-    bool IsScoreShuffle;        // +0x12
-    char _pad13[0x2C - 0x13];   // +0x13
-    ThemeStream_00720EA0* Stream;  // +0x2C
-
-    // FUNCTION: GAMEMD 0x720EA0
-    void Stop(bool fade);
-};
-GG_STATIC_ASSERT(offsetof(ThemeClass, CurrentTheme) == 0x00);
-GG_STATIC_ASSERT(offsetof(ThemeClass, LastTheme)    == 0x04);
-GG_STATIC_ASSERT(offsetof(ThemeClass, QueuedTheme)  == 0x08);
-GG_STATIC_ASSERT(offsetof(ThemeClass, IsFading)     == 0x11);
-GG_STATIC_ASSERT(offsetof(ThemeClass, Stream)       == 0x2C);
+#include "../_layout/theme_class.h"
 
 // GLOBAL: GAMEMD 0xA8EC74 — ThemeClass::ScoresPresent (byte).
 extern bool ScoresPresent_00A8EC74;

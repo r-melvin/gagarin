@@ -17,7 +17,7 @@
 #include "wonline.h"
 #include "../core/header_init_shapes.h"
 #include "../core/hash_table_view.h"
-#include "../audio/theme_class_methods.h"
+#include "../_layout/theme_class.h"
 #include "../platform/input_manager_class_methods.h"
 #include "../ui/ui_begin_dialog_methods.h"
 #include "../ui/ui_updated_methods.h"
@@ -115,8 +115,8 @@ const double DAT_007F7510 = 60.0;
 //
 // RTTI chains: CreateGameDialogControl -> WonlineStringDialogControl ->
 // SimpleWonlineDialogControl -> OwnerDraw::SimpleDialogControl ->
-// OwnerDraw::DialogControl, and MapSelect -> MSEngine. The DialogControl
-// destructor (0x624130) and the MSEngine destructor (0x5D1B30) are out of
+// OwnerDraw::DialogControl, and MapSelect -> MSEngineView_wonline. The DialogControl
+// destructor (0x624130) and the MSEngineView_wonline destructor (0x5D1B30) are out of
 // line here; SimpleDialogControl and CreateGameDialogControl have implicit
 // destructors (no vtable store of their own). Slot 0 is modelled as an
 // ordinary virtual holding the deleting wrapper, as FileClass does in
@@ -444,16 +444,16 @@ public:
 
 GG_STATIC_ASSERT(offsetof(WonlineStringDialogControl, String) == 0x0C);
 
-class MSEngine
+class MSEngineView_wonline
 {
 public:
-    ~MSEngine();   // 0x5D1B30
+    ~MSEngineView_wonline();   // 0x5D1B30
     virtual void* DeletingDtor(unsigned int flags);
     char unknown_04[0x4C];   // +0x04
 };
 
-// Implicit destructor: the members, then the MSEngine one.
-class MapSelect : public MSEngine
+// Implicit destructor: the members, then the MSEngineView_wonline one.
+class MapSelect : public MSEngineView_wonline
 {
 public:
     virtual void* DeletingDtor(unsigned int flags);

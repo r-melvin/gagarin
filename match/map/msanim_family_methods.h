@@ -14,10 +14,10 @@
 // map) screen:
 //
 //   vtable      COL         type descriptor  name
-//   0x7EE8E8    0x8065D0    0x830088         MSAnim          (the base)
-//   0x7EE910    0x806620    0x8300A0         MSShapeAnim
-//   0x7EE938    0x806670    (via COL)        MSFadeAnim
-//   0x7EE960    0x8066C8    (via COL)        MSOverlayAnim
+//   0x7EE8E8    0x8065D0    0x830088         MSAnimView          (the base)
+//   0x7EE910    0x806620    0x8300A0         MSShapeAnimView
+//   0x7EE938    0x806670    (via COL)        MSFadeAnimView
+//   0x7EE960    0x8066C8    (via COL)        MSOverlayAnimView
 //   0x7EE988    0x806718    0x830100         MSBinkAnim
 //   0x7EE9B0    0x806768    0x830120         MSVQAnim
 //   0x7EE9D8    0x8067B8    0x830138         MSBitPrintAnim
@@ -29,7 +29,7 @@
 // MapStage rather than anything to do with audio or map selection.
 //
 // THE BASE VTABLE, slot for slot (nine slots, 0x7EE8E8..0x7EE908 inclusive;
-// 0x7EE90C is already MSShapeAnim's complete-object-locator word):
+// 0x7EE90C is already MSShapeAnimView's complete-object-locator word):
 //
 //   slot 0  0x5CEB60   scalar deleting destructor
 //   slot 1  0x5CEAC0   SetEnabled(bool)      — not overridden by any subclass
@@ -42,7 +42,7 @@
 //   slot 8  0x5CEB50   Attach(void*)         — `RET 4`, an empty hook
 //
 // Slots 1..3 hold the same three addresses in all nine vtables, which is the
-// direct evidence that they are MSAnim's own non-overridden members and that
+// direct evidence that they are MSAnimView's own non-overridden members and that
 // this translation unit owns them. Slots 4..6 of the base are all 0x4C9150,
 // one `XOR EAX,EAX; RET` body the linker's identical-COMDAT folding shared out
 // across the image; it is not reconstructed here.
@@ -64,13 +64,14 @@
 // animation's constructor builds a fresh one at 0x5CD5E9 and assigns it in
 // whole, and cl's elimination of the temporary's own two stores against that
 // copy is what leaves the single read of the never-written clock word out of
-// the dead stack slot. Modelled here as a nested `MSTimer`, which is what
+// the dead stack slot. Modelled here as a nested `MSTimerView`, which is what
 // takes that constructor from 71.9 to 90.6 percent.
 #ifndef GG_MATCH_MAP_MSANIM_FAMILY_METHODS_H
 #define GG_MATCH_MAP_MSANIM_FAMILY_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/ms_anim.h"
 
 // MSVC6 has no native `wchar_t`; the CRT headers typedef it and this
 // translation unit is standalone, so it declares the same typedef itself.
@@ -84,31 +85,18 @@ typedef unsigned short wchar_t;
 // shape. Addresses read from the call sites listed beside each one.
 // ---------------------------------------------------------------------------
 
-// The clock member's tick reader. FUNCTION: GAMEMD 0x6C8C40 (decl; reloc).
-struct MSClockClass
-{
-    // The clock is one dword. Retail carries it out of an uninitialised stack
-    // slot in the timer temporary at 0x5CD5EE (`MOV ECX,[ESP+0x14]` reading a
-    // member the temporary's constructor never wrote), which is the same
-    // three-dword timer shape seen at 0x6B7BB0.
-    int Value;   // +0x00
-
-    int GetTime();
-};
-GG_STATIC_ASSERT(sizeof(MSClockClass) == 4);
-
-// The three adjacent dwords MSAnim carries at +0x10..+0x18, built as one
+// The three adjacent dwords MSAnimView carries at +0x10..+0x18, built as one
 // temporary and struct-assigned in at 0x5CD5E9..0x5CD5FF. The constructor
 // writes the stamp and the interval and leaves the clock alone, so the copy
 // carries the dead slot out with it.
-struct MSTimer
+struct MSTimerView
 {
     int          StartTime;   // +0x00
     MSClockClass Clock;       // +0x04
     int          Remaining;   // +0x08
 
-    __forceinline MSTimer() {}
-    __forceinline MSTimer(int duration)
+    __forceinline MSTimerView() {}
+    __forceinline MSTimerView(int duration)
     {
         StartTime = Clock.GetTime();
         Remaining = duration;
@@ -129,7 +117,7 @@ struct MSTimer
         return left;
     }
 };
-GG_STATIC_ASSERT(sizeof(MSTimer) == 0xC);
+GG_STATIC_ASSERT(sizeof(MSTimerView) == 0xC);
 
 // The heap-owning wide string, the member at +0x1C of both print
 // animations. Only the two entry points this file reaches are declared: the
@@ -416,19 +404,6 @@ GG_STATIC_ASSERT(offsetof(MSFileClass, Sub58) == 0x58
 MSImageSurface* MSReadPCXFile(MSFileClass* file, char* palette,
                               void* buffer, long size);
 
-// The 16-byte rectangle both GetRect overloads copy out whole.
-struct MSRect
-{
-    int X;       // +0x00
-    int Y;       // +0x04
-    int Width;   // +0x08
-    int Height;  // +0x0C
-};
-GG_STATIC_ASSERT(sizeof(MSRect) == 0x10
-              && offsetof(MSRect, Y) == 0x04
-              && offsetof(MSRect, Width) == 0x08
-              && offsetof(MSRect, Height) == 0x0C);
-
 // The rectangle intersection, expanded inline into the PCX draw at
 // 0x5CE8C0 and into the print animation's layout at 0x5CD690. Both copies have
 // the same six early exits and the same `(0,0,0,0)` local the failures hand
@@ -525,18 +500,18 @@ __forceinline MSRect MSRectIntersect(const MSRect* self, const MSRect& other)
 // The base-vptr seat.
 //
 // Retail's destructors each seat two vtable pointers: the class's own on entry
-// and MSAnim's on the way out. cl will not inline a destructor whose BASE has
+// and MSAnimView's on the way out. cl will not inline a destructor whose BASE has
 // a user-declared destructor -- measured in both directions, with and without
 // `throw()` and with `__forceinline` on either end, it always emits an
 // out-of-line call -- and it emits the base seat only when the base destructor
 // IS user-declared. Those two facts cannot both be satisfied through
 // inheritance.
 //
-// The way out is to leave MSAnim without a user destructor, so every derived
+// The way out is to leave MSAnimView without a user destructor, so every derived
 // destructor inlines and contributes its own seat, and to write the base seat
 // as an explicit destructor call on a layout-compatible stand-in whose only
 // member is a vptr. That expands to the one `MOV [this],<vtable>` retail has.
-// The stand-in carries its own vtable symbol rather than MSAnim's, which the
+// The stand-in carries its own vtable symbol rather than MSAnimView's, which the
 // differ normalises away with every other relocation.
 class MSAnimVptrSeat
 {
@@ -545,7 +520,7 @@ public:
     __forceinline ~MSAnimVptrSeat() throw() {}
 };
 
-class MSAnim
+class MSAnimView
 {
 public:
     // The first six slots, declared so that the two dispatches this file makes
@@ -554,7 +529,7 @@ public:
     // placeholder names because the real bodies are the non-virtual members
     // further down -- the vtable is written by this file's VTABLE annotations,
     // not by cl. Slots 4 and 5 answer a byte and take the caller's context
-    // plus an out rectangle; retail's own MSAnim entries for them are the
+    // plus an out rectangle; retail's own MSAnimView entries for them are the
     // folded `return 0` at 0x4C9150, which is not reconstructed here.
     virtual void* DeletingDtorSlot(unsigned int flags);  // slot 0
     virtual void  SetEnabledSlot(bool on);               // slot 1
@@ -567,7 +542,7 @@ public:
     int          Field04;    // +0x04
     int          Field08;    // +0x08
     bool         Enabled;    // +0x0C
-    MSTimer      Timer;      // +0x10 .. +0x18
+    MSTimerView      Timer;      // +0x10 .. +0x18
 
     // The base's own field setup, expanded into every constructor in this run
     // (0x5CD338..0x5CD35C, 0x5CE4A8..0x5CE4C6, 0x5CE648..0x5CE666): take the
@@ -585,7 +560,7 @@ public:
     }
 
     // The three non-overridden base slots, out of line in this file.
-    // Seat MSAnim's vtable pointer on this object -- the tail of every
+    // Seat MSAnimView's vtable pointer on this object -- the tail of every
     // destructor in the family.
     __forceinline void SeatBaseVptr()
     {
@@ -600,14 +575,14 @@ public:
     void* DeletingDtor(unsigned int f);   // 0x5CEB60, slot 0
 
     // The remaining time, forced inline into MSPrintAnim::Update (0x5CDC50).
-    // PauseTimer uses MSTimer::TimeLeft instead.
+    // PauseTimer uses MSTimerView::TimeLeft instead.
     __forceinline int TimeLeft();
 };
-GG_STATIC_ASSERT(sizeof(MSAnim) == 0x1C
-              && offsetof(MSAnim, Field04) == 0x04
-              && offsetof(MSAnim, Field08) == 0x08
-              && offsetof(MSAnim, Enabled) == 0x0C
-              && offsetof(MSAnim, Timer) == 0x10);
+GG_STATIC_ASSERT(sizeof(MSAnimView) == 0x1C
+              && offsetof(MSAnimView, Field04) == 0x04
+              && offsetof(MSAnimView, Field08) == 0x08
+              && offsetof(MSAnimView, Enabled) == 0x0C
+              && offsetof(MSAnimView, Timer) == 0x10);
 
 // The list of sibling animations the PCX animation is drawn out of, held at
 // its +0x20. Only slot 4 and two fields are reached: the index lookup
@@ -620,9 +595,9 @@ public:
     virtual void Slot01();
     virtual void Slot02();
     virtual void Slot03();
-    virtual int  IndexOf(MSAnim* const& item);   // slot 4
+    virtual int  IndexOf(MSAnimView* const& item);   // slot 4
 
-    MSAnim** Vector;       // +0x04
+    MSAnimView** Vector;       // +0x04
     int      Capacity;    // +0x08
     bool     IsValid;      // +0x0C
     bool     IsAllocated;  // +0x0D
@@ -631,30 +606,11 @@ public:
 GG_STATIC_ASSERT(offsetof(MSAnimVector, Vector) == 0x04
               && offsetof(MSAnimVector, Count) == 0x10);
 
-// MSShapeAnim owns a decoded shape buffer at +0x1C and a "we allocated it"
+// MSShapeAnimView owns a decoded shape buffer at +0x1C and a "we allocated it"
 // flag at +0x3C; 0x5CEB83 loads the pointer, 0x5CEB90 tests the flag, and the
 // release nulls both. The 0x20..0x3B gap is the shape's own bookkeeping, which
 // no function in this file reads.
-// The decoded shape file MSShapeAnim owns at +0x1C: a short header carrying
-// the frame size and count, read at +2/+4/+6 by the animation's members.
-struct MSShapeFile
-{
-    short Unknown0;   // +0x00
-    short Width;      // +0x02
-    short Height;     // +0x04
-    short Frames;     // +0x06
-
-    // FUNCTION: GAMEMD 0x69E7E0 (decl; reloc) -- the rectangle of one frame,
-    // written to the caller's buffer and handed back.
-    struct MSRect* GetFrameRect(struct MSRect* out, unsigned int frame);
-};
-GG_STATIC_ASSERT(offsetof(MSShapeFile, Width) == 2 && offsetof(MSShapeFile, Frames) == 6);
-
-// FUNCTION: GAMEMD 0x4A3970 (decl; reloc) -- load a shape by name; the
-// ownership flag arrives in EDX and is cleared before the lookup.
-MSShapeFile* __fastcall MSLoadShape(const char* name, bool* owned);
-
-class MSShapeAnim : public MSAnim
+class MSShapeAnimView : public MSAnimView
 {
 public:
     MSShapeFile* Buffer;     // +0x1C
@@ -670,7 +626,7 @@ public:
 
     // The shape animation's release: hand the decoded buffer back only when
     // this object owns it, then forget both the pointer and the flag.
-    __forceinline ~MSShapeAnim() throw()
+    __forceinline ~MSShapeAnimView() throw()
     {
         if (Buffer != 0 && OwnsBuffer) {
             ::operator delete(Buffer);
@@ -688,44 +644,44 @@ public:
     // 0x5CBCB0, slot 6 -- the current frame's rectangle on the screen.
     MSRect GetRectSlot();
 };
-GG_STATIC_ASSERT(offsetof(MSShapeAnim, Frame) == 0x28
-              && offsetof(MSShapeAnim, LastFrame) == 0x30
-              && offsetof(MSShapeAnim, Flags) == 0x38);
-GG_STATIC_ASSERT(sizeof(MSShapeAnim) == 0x40
-              && offsetof(MSShapeAnim, Buffer) == 0x1C
-              && offsetof(MSShapeAnim, OwnsBuffer) == 0x3C);
+GG_STATIC_ASSERT(offsetof(MSShapeAnimView, Frame) == 0x28
+              && offsetof(MSShapeAnimView, LastFrame) == 0x30
+              && offsetof(MSShapeAnimView, Flags) == 0x38);
+GG_STATIC_ASSERT(sizeof(MSShapeAnimView) == 0x40
+              && offsetof(MSShapeAnimView, Buffer) == 0x1C
+              && offsetof(MSShapeAnimView, OwnsBuffer) == 0x3C);
 
 // Native RTTI: Fade derives Shape and Overlay derives Fade at offset zero.
 // Constructor/factory evidence proves Fade's two DWORD fields and size0x48,
 // then Overlay's byte at0x48 and allocation size0x4C. Resource cleanup is
 // inherited once from Shape; these added storage fields have no cleanup.
-class MSFadeAnim : public MSShapeAnim
+class MSFadeAnimView : public MSShapeAnimView
 {
 public:
     unsigned int unknown_40;
     unsigned int unknown_44;
 
-    ~MSFadeAnim() throw() {}
+    ~MSFadeAnimView() throw() {}
     void* DeletingDtor(unsigned int f);   // 0x5CEBD0
 };
-GG_STATIC_ASSERT(sizeof(MSFadeAnim) == 0x48
-              && offsetof(MSFadeAnim, unknown_40) == 0x40
-              && offsetof(MSFadeAnim, unknown_44) == 0x44);
+GG_STATIC_ASSERT(sizeof(MSFadeAnimView) == 0x48
+              && offsetof(MSFadeAnimView, unknown_40) == 0x40
+              && offsetof(MSFadeAnimView, unknown_44) == 0x44);
 
-class MSOverlayAnim : public MSFadeAnim
+class MSOverlayAnimView : public MSFadeAnimView
 {
 public:
     unsigned char unknown_48;
     unsigned char unknown_49[3];
 
-    ~MSOverlayAnim() throw() {}
+    ~MSOverlayAnimView() throw() {}
     void* DeletingDtor(unsigned int f);   // 0x5CEC20
 };
-GG_STATIC_ASSERT(sizeof(MSOverlayAnim) == 0x4C
-              && offsetof(MSOverlayAnim, unknown_48) == 0x48);
+GG_STATIC_ASSERT(sizeof(MSOverlayAnimView) == 0x4C
+              && offsetof(MSOverlayAnimView, unknown_48) == 0x48);
 
 // MSBinkAnim owns one Bink player at +0x1C and plainly deletes it.
-class MSBinkAnim : public MSAnim
+class MSBinkAnim : public MSAnimView
 {
 public:
     MSBinkPlayer* Player;    // +0x1C
@@ -741,7 +697,7 @@ GG_STATIC_ASSERT(offsetof(MSBinkAnim, Player) == 0x1C);
 // MSVQAnim owns two things and releases the later one first: the polymorphic
 // movie at +0x28 goes through its own slot-zero deleting destructor, then the
 // VQA player at +0x1C is stopped and deleted.
-class MSVQAnim : public MSAnim
+class MSVQAnim : public MSAnimView
 {
 public:
     MSVQPlayer*  Player;        // +0x1C
@@ -802,7 +758,7 @@ public:
     __forceinline ~MSBitPrintAnimVptrSeat() throw() {}
 };
 
-class MSBitPrintAnim : public MSAnim
+class MSBitPrintAnim : public MSAnimView
 {
 public:
     Obj_007B66D0_msanim_family_methods Text;     // +0x1C
@@ -870,7 +826,7 @@ public:
     __forceinline ~MSPrintAnimVptrSeat() throw() {}
 };
 
-class MSPrintAnim : public MSAnim
+class MSPrintAnim : public MSAnimView
 {
 public:
     Obj_007B66D0_msanim_family_methods Text;        // +0x1C
@@ -960,7 +916,7 @@ struct MSPoint
 };
 GG_STATIC_ASSERT(sizeof(MSPoint) == 8 && offsetof(MSPoint, Y) == 4);
 
-class MSPCXAnim : public MSAnim
+class MSPCXAnim : public MSAnimView
 {
 public:
     MSSurface*    Surface;  // +0x1C
@@ -987,7 +943,7 @@ public:
     }
 
     // The base's field setup as both PCX builders expand it. It is NOT
-    // MSAnim::Init: the two leading numbers are zero rather than the caller's,
+    // MSAnimView::Init: the two leading numbers are zero rather than the caller's,
     // and the enabled flag starts CLEAR and is raised again at the end of the
     // derived build-up (`MOV BYTE PTR [ESI+0xC],BL` at 0x5CE4B7 then
     // `MOV BYTE PTR [ESI+0xC],1` at 0x5CE50B).

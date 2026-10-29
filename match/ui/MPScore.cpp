@@ -29,6 +29,7 @@
 #include <string.h>
 #include <wchar.h>
 #include "mp_score.h"
+#include "../_layout/theme_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/house_type_class.h"
 #include "../core/header_tuning_globals.h"
@@ -161,16 +162,9 @@ void FUN_00603D30(HWND control, void* surface);
 // GLOBAL: GAMEMD 0x887310
 extern Surface_0088730C* DAT_00887310;
 
-// The theme (music) player at 0xA83D10.
-struct Theme_00A83D10
-{
-    // FUNCTION: GAMEMD 0x721210 (decl; reloc) -- a theme name to its index.
-    int FUN_00721210(const char* name);
-    // FUNCTION: GAMEMD 0x720BB0 (decl; reloc) -- play a theme by index.
-    void FUN_00720BB0(int index);
-};
+// The theme (music) player at 0xA83D10: canonical ThemeClass.
 // GLOBAL: GAMEMD 0xA83D10
-extern Theme_00A83D10 DAT_00A83D10;
+extern ThemeClass DAT_00A83D10;
 
 // A colour scheme: its +0x308 member hands back a colour by value.
 struct ColorValue_00517440
@@ -399,7 +393,7 @@ int __stdcall FUN_005C9B10(HWND dialog, UINT message, WPARAM wParam, LPARAM lPar
     switch (message) {
     case 0x497:
     {
-        DAT_00A83D10.FUN_00720BB0(DAT_00A83D10.FUN_00721210("SCORE"));
+        DAT_00A83D10.PlaySong(DAT_00A83D10.FindIndex("SCORE"));
 
         wchar_t text[0x20];
         if (DAT_00A8B238.unknown_0000 == 4) {

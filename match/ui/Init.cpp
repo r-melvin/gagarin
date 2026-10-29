@@ -550,7 +550,7 @@ bool CommandClass::vf_7(int key)
 }
 
 // FUNCTION: GAMEMD 0x535C20 -- CreateTeamCommandClass slot 1
-const char* CreateTeamCommandClass::vf_1()
+const char* CreateTeamCommandClass::vf_1() const
 {
     sprintf(DAT_00A8F5B4, "TeamCreate_%d", unknown_04);
     return DAT_00A8F5B4;
@@ -577,7 +577,7 @@ const wchar_t* CreateTeamCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x535CC0 -- CreateTeamCommandClass slot 8
-void CreateTeamCommandClass::vf_8(int key)
+void CreateTeamCommandClass::vf_8(int key) const
 {
     FUN_00731060(unknown_04);
 }
@@ -609,7 +609,7 @@ void* CommandClass::DeletingDtor(unsigned int flags)
 }
 
 // FUNCTION: GAMEMD 0x535D20 -- SetStructureTabCommandClass slot 1
-const char* SetStructureTabCommandClass::vf_1()
+const char* SetStructureTabCommandClass::vf_1() const
 {
     return "StructureTab";
 }
@@ -633,7 +633,7 @@ const wchar_t* SetStructureTabCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x535D90 -- SetStructureTabCommandClass slot 8
-void SetStructureTabCommandClass::vf_8(int key)
+void SetStructureTabCommandClass::vf_8(int key) const
 {
     if (Map_0087F7E8.Strips[0].FUN_006ABAC0()) {
         Map_0087F7E8.SetTab(0);
@@ -645,7 +645,7 @@ void SetStructureTabCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x535DE0 -- SetDefenseTabCommandClass slot 1
-const char* SetDefenseTabCommandClass::vf_1()
+const char* SetDefenseTabCommandClass::vf_1() const
 {
     return "DefenseTab";
 }
@@ -669,7 +669,7 @@ const wchar_t* SetDefenseTabCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x535E50 -- SetDefenseTabCommandClass slot 8
-void SetDefenseTabCommandClass::vf_8(int key)
+void SetDefenseTabCommandClass::vf_8(int key) const
 {
     if (Map_0087F7E8.Strips[1].FUN_006ABAC0()) {
         Map_0087F7E8.SetTab(1);
@@ -681,7 +681,7 @@ void SetDefenseTabCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x535EA0 -- SetInfantryTabCommandClass slot 1
-const char* SetInfantryTabCommandClass::vf_1()
+const char* SetInfantryTabCommandClass::vf_1() const
 {
     return "InfantryTab";
 }
@@ -705,7 +705,7 @@ const wchar_t* SetInfantryTabCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x535F10 -- SetInfantryTabCommandClass slot 8
-void SetInfantryTabCommandClass::vf_8(int key)
+void SetInfantryTabCommandClass::vf_8(int key) const
 {
     if (Map_0087F7E8.Strips[2].FUN_006ABAC0()) {
         Map_0087F7E8.SetTab(2);
@@ -713,7 +713,7 @@ void SetInfantryTabCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x535F30 -- SetUnitTabCommandClass slot 1
-const char* SetUnitTabCommandClass::vf_1()
+const char* SetUnitTabCommandClass::vf_1() const
 {
     return "UnitTab";
 }
@@ -737,7 +737,7 @@ const wchar_t* SetUnitTabCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x535FA0 -- SetUnitTabCommandClass slot 8
-void SetUnitTabCommandClass::vf_8(int key)
+void SetUnitTabCommandClass::vf_8(int key) const
 {
     if (Map_0087F7E8.Strips[3].FUN_006ABAC0()) {
         Map_0087F7E8.SetTab(3);
@@ -745,7 +745,7 @@ void SetUnitTabCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x535FE0 -- SelectTeamCommandClass slot 1
-const char* SelectTeamCommandClass::vf_1()
+const char* SelectTeamCommandClass::vf_1() const
 {
     sprintf(DAT_00A8F5B4, "TeamSelect_%d", unknown_04);
     return DAT_00A8F5B4;
@@ -772,7 +772,7 @@ const wchar_t* SelectTeamCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536080 -- SelectTeamCommandClass slot 8
-void SelectTeamCommandClass::vf_8(int key)
+void SelectTeamCommandClass::vf_8(int key) const
 {
     FUN_007311C0(unknown_04);
 }
@@ -788,7 +788,7 @@ void* SelectTeamCommandClass::DeletingDtor(unsigned int flags)
 }
 
 // FUNCTION: GAMEMD 0x5360D0 -- AddTeamCommandClass slot 1
-const char* AddTeamCommandClass::vf_1()
+const char* AddTeamCommandClass::vf_1() const
 {
     sprintf(DAT_00A8F5B4, "TeamAddSelect_%d", unknown_04);
     return DAT_00A8F5B4;
@@ -815,7 +815,7 @@ const wchar_t* AddTeamCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536170 -- AddTeamCommandClass slot 8
-void AddTeamCommandClass::vf_8(int key)
+void AddTeamCommandClass::vf_8(int key) const
 {
     FUN_007314C0(unknown_04);
 }
@@ -831,7 +831,7 @@ void* AddTeamCommandClass::DeletingDtor(unsigned int flags)
 }
 
 // FUNCTION: GAMEMD 0x5361C0 -- CenterTeamCommandClass slot 1
-const char* CenterTeamCommandClass::vf_1()
+const char* CenterTeamCommandClass::vf_1() const
 {
     sprintf(DAT_00A8F5B4, "TeamCenter_%d", unknown_04);
     return DAT_00A8F5B4;
@@ -858,7 +858,7 @@ const wchar_t* CenterTeamCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536260 -- CenterTeamCommandClass slot 8
-void CenterTeamCommandClass::vf_8(int key)
+void CenterTeamCommandClass::vf_8(int key) const
 {
     FUN_007313A0(unknown_04);
 }
@@ -874,7 +874,7 @@ void* CenterTeamCommandClass::DeletingDtor(unsigned int flags)
 }
 
 // FUNCTION: GAMEMD 0x5362B0 -- TauntCommandClass slot 1
-const char* TauntCommandClass::vf_1()
+const char* TauntCommandClass::vf_1() const
 {
     sprintf(DAT_00A8F5B4, "Taunt_%d", unknown_04);
     return DAT_00A8F5B4;
@@ -905,7 +905,7 @@ const wchar_t* TauntCommandClass::vf_4()
 // write in retail (taunt index low, colour high), and the house loop keeps
 // its pointers in different registers. Tried: nibble order swapped, int and
 // short bit-field units.
-void TauntCommandClass::vf_8(int key)
+void TauntCommandClass::vf_8(int key) const
 {
     if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B538 == 0) {
         int now = timeGetTime();
@@ -959,7 +959,7 @@ void* TauntCommandClass::DeletingDtor(unsigned int flags)
 }
 
 // FUNCTION: GAMEMD 0x5365A0 -- NextObjectCommandClass slot 1
-const char* NextObjectCommandClass::vf_1()
+const char* NextObjectCommandClass::vf_1() const
 {
     return "NextObject";
 }
@@ -983,7 +983,7 @@ const wchar_t* NextObjectCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536610 -- NextObjectCommandClass slot 8
-void NextObjectCommandClass::vf_8(int key)
+void NextObjectCommandClass::vf_8(int key) const
 {
     Map_0087F7E8.SetPowerMode_004AC820(0);
     Map_0087F7E8.SetWaypointMode_004AC700(0, 0);
@@ -1000,7 +1000,7 @@ void NextObjectCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x5366A0 -- PlanningModeCommandClass slot 1
-const char* PlanningModeCommandClass::vf_1()
+const char* PlanningModeCommandClass::vf_1() const
 {
     return "PlanningMode";
 }
@@ -1042,7 +1042,7 @@ bool PlanningModeCommandClass::vf_7(int key)
 }
 
 // FUNCTION: GAMEMD 0x536750 -- PlanningModeCommandClass slot 8
-void PlanningModeCommandClass::vf_8(int key)
+void PlanningModeCommandClass::vf_8(int key) const
 {
     if (key & 0x800) {
         FUN_00731A70(false);
@@ -1052,7 +1052,7 @@ void PlanningModeCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x536770 -- CombatantSelectCommandClass slot 1
-const char* CombatantSelectCommandClass::vf_1()
+const char* CombatantSelectCommandClass::vf_1() const
 {
     return "CombatantSelect";
 }
@@ -1082,13 +1082,13 @@ bool CombatantSelectCommandClass::vf_5(int key)
 }
 
 // FUNCTION: GAMEMD 0x5367F0 -- CombatantSelectCommandClass slot 8
-void CombatantSelectCommandClass::vf_8(int key)
+void CombatantSelectCommandClass::vf_8(int key) const
 {
     FUN_00732280((key & 0x100) == 0);
 }
 
 // FUNCTION: GAMEMD 0x536810 -- TypeSelectCommandClass slot 1
-const char* TypeSelectCommandClass::vf_1()
+const char* TypeSelectCommandClass::vf_1() const
 {
     return "TypeSelect";
 }
@@ -1130,7 +1130,7 @@ bool TypeSelectCommandClass::vf_7(int key)
 }
 
 // FUNCTION: GAMEMD 0x5368B0 -- TypeSelectCommandClass slot 8
-void TypeSelectCommandClass::vf_8(int key)
+void TypeSelectCommandClass::vf_8(int key) const
 {
     if (key & 0x800) {
         FUN_00732CC0();
@@ -1140,7 +1140,7 @@ void TypeSelectCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x5368D0 -- HealthNavCommandClass slot 1
-const char* HealthNavCommandClass::vf_1()
+const char* HealthNavCommandClass::vf_1() const
 {
     return "HealthNav";
 }
@@ -1170,13 +1170,13 @@ bool HealthNavCommandClass::vf_5(int key)
 }
 
 // FUNCTION: GAMEMD 0x536950 -- HealthNavCommandClass slot 8
-void HealthNavCommandClass::vf_8(int key)
+void HealthNavCommandClass::vf_8(int key) const
 {
     FUN_00733380((key & 0x100) == 0);
 }
 
 // FUNCTION: GAMEMD 0x536970 -- VeterancyNavCommandClass slot 1
-const char* VeterancyNavCommandClass::vf_1()
+const char* VeterancyNavCommandClass::vf_1() const
 {
     return "VeterancyNav";
 }
@@ -1206,13 +1206,13 @@ bool VeterancyNavCommandClass::vf_5(int key)
 }
 
 // FUNCTION: GAMEMD 0x5369F0 -- VeterancyNavCommandClass slot 8
-void VeterancyNavCommandClass::vf_8(int key)
+void VeterancyNavCommandClass::vf_8(int key) const
 {
     FUN_007336C0((key & 0x100) == 0);
 }
 
 // FUNCTION: GAMEMD 0x536A10 -- PrevObjectCommandClass slot 1
-const char* PrevObjectCommandClass::vf_1()
+const char* PrevObjectCommandClass::vf_1() const
 {
     return "PreviousObject";
 }
@@ -1236,7 +1236,7 @@ const wchar_t* PrevObjectCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536A80 -- PrevObjectCommandClass slot 8
-void PrevObjectCommandClass::vf_8(int key)
+void PrevObjectCommandClass::vf_8(int key) const
 {
     Map_0087F7E8.SetPowerMode_004AC820(0);
     Map_0087F7E8.SetWaypointMode_004AC700(0, 0);
@@ -1253,7 +1253,7 @@ void PrevObjectCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x536B10 -- StopCommandClass slot 1
-const char* StopCommandClass::vf_1()
+const char* StopCommandClass::vf_1() const
 {
     return "StopObject";
 }
@@ -1277,13 +1277,13 @@ const wchar_t* StopCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536B80 -- StopCommandClass slot 8
-void StopCommandClass::vf_8(int key)
+void StopCommandClass::vf_8(int key) const
 {
     FUN_00730EA0();
 }
 
 // FUNCTION: GAMEMD 0x536B90 -- AllToCheerCommandClass slot 1
-const char* AllToCheerCommandClass::vf_1()
+const char* AllToCheerCommandClass::vf_1() const
 {
     return "AllToCheer";
 }
@@ -1307,13 +1307,13 @@ const wchar_t* AllToCheerCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536C00 -- AllToCheerCommandClass slot 8
-void AllToCheerCommandClass::vf_8(int key)
+void AllToCheerCommandClass::vf_8(int key) const
 {
     FUN_00730F30();
 }
 
 // FUNCTION: GAMEMD 0x536C10 -- DeployCommandClass slot 1
-const char* DeployCommandClass::vf_1()
+const char* DeployCommandClass::vf_1() const
 {
     return "DeployObject";
 }
@@ -1337,13 +1337,13 @@ const wchar_t* DeployCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536C80 -- DeployCommandClass slot 8
-void DeployCommandClass::vf_8(int key)
+void DeployCommandClass::vf_8(int key) const
 {
     FUN_00730AF0();
 }
 
 // FUNCTION: GAMEMD 0x536C90 -- GuardCommandClass slot 1
-const char* GuardCommandClass::vf_1()
+const char* GuardCommandClass::vf_1() const
 {
     return "GuardObject";
 }
@@ -1367,13 +1367,13 @@ const wchar_t* GuardCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536D00 -- GuardCommandClass slot 8
-void GuardCommandClass::vf_8(int key)
+void GuardCommandClass::vf_8(int key) const
 {
     FUN_00730D60();
 }
 
 // FUNCTION: GAMEMD 0x536D10 -- ScatterCommandClass slot 1
-const char* ScatterCommandClass::vf_1()
+const char* ScatterCommandClass::vf_1() const
 {
     return "ScatterObject";
 }
@@ -1397,13 +1397,13 @@ const wchar_t* ScatterCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536D80 -- ScatterCommandClass slot 8
-void ScatterCommandClass::vf_8(int key)
+void ScatterCommandClass::vf_8(int key) const
 {
     FUN_00730FE0();
 }
 
 // FUNCTION: GAMEMD 0x536D90 -- CenterViewCommandClass slot 1
-const char* CenterViewCommandClass::vf_1()
+const char* CenterViewCommandClass::vf_1() const
 {
     return "CenterView";
 }
@@ -1427,7 +1427,7 @@ const wchar_t* CenterViewCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536E00 -- CenterViewCommandClass slot 8
-void CenterViewCommandClass::vf_8(int key)
+void CenterViewCommandClass::vf_8(int key) const
 {
     if (DisplayCmdSelCount_00A8ECC8 > 0) {
         Map_0087F7E8.FUN_004AE290();
@@ -1436,7 +1436,7 @@ void CenterViewCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x536E30 -- CenterBaseCommandClass slot 1
-const char* CenterBaseCommandClass::vf_1()
+const char* CenterBaseCommandClass::vf_1() const
 {
     return "CenterBase";
 }
@@ -1460,13 +1460,13 @@ const wchar_t* CenterBaseCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536EA0 -- CenterBaseCommandClass slot 8
-void CenterBaseCommandClass::vf_8(int key)
+void CenterBaseCommandClass::vf_8(int key) const
 {
     FUN_007315A0();
 }
 
 // FUNCTION: GAMEMD 0x536EB0 -- AllianceCommandClass slot 1
-const char* AllianceCommandClass::vf_1()
+const char* AllianceCommandClass::vf_1() const
 {
     return "ToggleAlliance";
 }
@@ -1490,13 +1490,13 @@ const wchar_t* AllianceCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536F20 -- AllianceCommandClass slot 8
-void AllianceCommandClass::vf_8(int key)
+void AllianceCommandClass::vf_8(int key) const
 {
     FUN_007318F0();
 }
 
 // FUNCTION: GAMEMD 0x536F30 -- ToggleRepairCommandClass slot 1
-const char* ToggleRepairCommandClass::vf_1()
+const char* ToggleRepairCommandClass::vf_1() const
 {
     return "ToggleRepair";
 }
@@ -1520,13 +1520,13 @@ const wchar_t* ToggleRepairCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x536FA0 -- ToggleRepairCommandClass slot 8
-void ToggleRepairCommandClass::vf_8(int key)
+void ToggleRepairCommandClass::vf_8(int key) const
 {
     Map_0087F7E8.SetRepairMode_004AC8C0(-1);
 }
 
 // FUNCTION: GAMEMD 0x536FB0 -- ToggleSellCommandClass slot 1
-const char* ToggleSellCommandClass::vf_1()
+const char* ToggleSellCommandClass::vf_1() const
 {
     return "ToggleSell";
 }
@@ -1550,13 +1550,13 @@ const wchar_t* ToggleSellCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537020 -- ToggleSellCommandClass slot 8
-void ToggleSellCommandClass::vf_8(int key)
+void ToggleSellCommandClass::vf_8(int key) const
 {
     Map_0087F7E8.SetSellMode_004AC660(-1);
 }
 
 // FUNCTION: GAMEMD 0x537030 -- BeaconPlacementCommandClass slot 1
-const char* BeaconPlacementCommandClass::vf_1()
+const char* BeaconPlacementCommandClass::vf_1() const
 {
     return "PlaceBeacon";
 }
@@ -1580,7 +1580,7 @@ const wchar_t* BeaconPlacementCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x5370A0 -- BeaconPlacementCommandClass slot 8
-void BeaconPlacementCommandClass::vf_8(int key)
+void BeaconPlacementCommandClass::vf_8(int key) const
 {
     if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5) {
         FUN_00731A30();
@@ -1588,7 +1588,7 @@ void BeaconPlacementCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x5370C0 -- CenterREventCommandClass slot 1
-const char* CenterREventCommandClass::vf_1()
+const char* CenterREventCommandClass::vf_1() const
 {
     return "CenterOnRadarEvent";
 }
@@ -1612,13 +1612,13 @@ const wchar_t* CenterREventCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537130 -- CenterREventCommandClass slot 8
-void CenterREventCommandClass::vf_8(int key)
+void CenterREventCommandClass::vf_8(int key) const
 {
     FUN_00734120();
 }
 
 // FUNCTION: GAMEMD 0x537140 -- SidebarUpCommandClass slot 1
-const char* SidebarUpCommandClass::vf_1()
+const char* SidebarUpCommandClass::vf_1() const
 {
     return "SidebarUp";
 }
@@ -1642,13 +1642,13 @@ const wchar_t* SidebarUpCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x5371B0 -- SidebarUpCommandClass slot 8
-void SidebarUpCommandClass::vf_8(int key)
+void SidebarUpCommandClass::vf_8(int key) const
 {
     Map_0087F7E8.Scroll(true, -1);
 }
 
 // FUNCTION: GAMEMD 0x5371D0 -- SidebarDownCommandClass slot 1
-const char* SidebarDownCommandClass::vf_1()
+const char* SidebarDownCommandClass::vf_1() const
 {
     return "SidebarDown";
 }
@@ -1672,13 +1672,13 @@ const wchar_t* SidebarDownCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537240 -- SidebarDownCommandClass slot 8
-void SidebarDownCommandClass::vf_8(int key)
+void SidebarDownCommandClass::vf_8(int key) const
 {
     Map_0087F7E8.Scroll(false, -1);
 }
 
 // FUNCTION: GAMEMD 0x537260 -- OptionsCommandClass slot 1
-const char* OptionsCommandClass::vf_1()
+const char* OptionsCommandClass::vf_1() const
 {
     return "Options";
 }
@@ -1702,13 +1702,13 @@ const wchar_t* OptionsCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x5372D0 -- OptionsCommandClass slot 8
-void OptionsCommandClass::vf_8(int key)
+void OptionsCommandClass::vf_8(int key) const
 {
     FUN_00647040();
 }
 
 // FUNCTION: GAMEMD 0x5372E0 -- View1CommandClass slot 1
-const char* View1CommandClass::vf_1()
+const char* View1CommandClass::vf_1() const
 {
     return "View1";
 }
@@ -1732,13 +1732,13 @@ const wchar_t* View1CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537350 -- View1CommandClass slot 8
-void View1CommandClass::vf_8(int key)
+void View1CommandClass::vf_8(int key) const
 {
     CommandJumpToView(0);
 }
 
 // FUNCTION: GAMEMD 0x5373D0 -- View2CommandClass slot 1
-const char* View2CommandClass::vf_1()
+const char* View2CommandClass::vf_1() const
 {
     return "View2";
 }
@@ -1762,13 +1762,13 @@ const wchar_t* View2CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537440 -- View2CommandClass slot 8
-void View2CommandClass::vf_8(int key)
+void View2CommandClass::vf_8(int key) const
 {
     CommandJumpToView(1);
 }
 
 // FUNCTION: GAMEMD 0x5374C0 -- View3CommandClass slot 1
-const char* View3CommandClass::vf_1()
+const char* View3CommandClass::vf_1() const
 {
     return "View3";
 }
@@ -1792,13 +1792,13 @@ const wchar_t* View3CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537530 -- View3CommandClass slot 8
-void View3CommandClass::vf_8(int key)
+void View3CommandClass::vf_8(int key) const
 {
     CommandJumpToView(2);
 }
 
 // FUNCTION: GAMEMD 0x5375B0 -- View4CommandClass slot 1
-const char* View4CommandClass::vf_1()
+const char* View4CommandClass::vf_1() const
 {
     return "View4";
 }
@@ -1822,13 +1822,13 @@ const wchar_t* View4CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537620 -- View4CommandClass slot 8
-void View4CommandClass::vf_8(int key)
+void View4CommandClass::vf_8(int key) const
 {
     CommandJumpToView(3);
 }
 
 // FUNCTION: GAMEMD 0x5376A0 -- SetView1CommandClass slot 1
-const char* SetView1CommandClass::vf_1()
+const char* SetView1CommandClass::vf_1() const
 {
     return "SetView1";
 }
@@ -1852,13 +1852,13 @@ const wchar_t* SetView1CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537710 -- SetView1CommandClass slot 8
-void SetView1CommandClass::vf_8(int key)
+void SetView1CommandClass::vf_8(int key) const
 {
     CommandStoreView(0);
 }
 
 // FUNCTION: GAMEMD 0x537760 -- SetView2CommandClass slot 1
-const char* SetView2CommandClass::vf_1()
+const char* SetView2CommandClass::vf_1() const
 {
     return "SetView2";
 }
@@ -1882,13 +1882,13 @@ const wchar_t* SetView2CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x5377D0 -- SetView2CommandClass slot 8
-void SetView2CommandClass::vf_8(int key)
+void SetView2CommandClass::vf_8(int key) const
 {
     CommandStoreView(1);
 }
 
 // FUNCTION: GAMEMD 0x537820 -- SetView3CommandClass slot 1
-const char* SetView3CommandClass::vf_1()
+const char* SetView3CommandClass::vf_1() const
 {
     return "SetView3";
 }
@@ -1912,13 +1912,13 @@ const wchar_t* SetView3CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537890 -- SetView3CommandClass slot 8
-void SetView3CommandClass::vf_8(int key)
+void SetView3CommandClass::vf_8(int key) const
 {
     CommandStoreView(2);
 }
 
 // FUNCTION: GAMEMD 0x5378E0 -- SetView4CommandClass slot 1
-const char* SetView4CommandClass::vf_1()
+const char* SetView4CommandClass::vf_1() const
 {
     return "SetView4";
 }
@@ -1942,13 +1942,13 @@ const wchar_t* SetView4CommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537950 -- SetView4CommandClass slot 8
-void SetView4CommandClass::vf_8(int key)
+void SetView4CommandClass::vf_8(int key) const
 {
     CommandStoreView(3);
 }
 
 // FUNCTION: GAMEMD 0x5379A0 -- FollowCommandClass slot 1
-const char* FollowCommandClass::vf_1()
+const char* FollowCommandClass::vf_1() const
 {
     return "Follow";
 }
@@ -1972,7 +1972,7 @@ const wchar_t* FollowCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537A10 -- FollowCommandClass slot 8
-void FollowCommandClass::vf_8(int key)
+void FollowCommandClass::vf_8(int key) const
 {
     if (DisplayCmdSelCount_00A8ECC8 && !Map_0087F7E8.FUN_004AEB10()) {
         Map_0087F7E8.FUN_004AEB30(DisplayCmdSelItems_00A8ECBC[0]);
@@ -1982,7 +1982,7 @@ void FollowCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x537A50 -- MultiplayerDebugCommandClass slot 1
-const char* MultiplayerDebugCommandClass::vf_1()
+const char* MultiplayerDebugCommandClass::vf_1() const
 {
     return "MultiplayerDebug";
 }
@@ -2006,7 +2006,7 @@ const wchar_t* MultiplayerDebugCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537A90 -- MultiplayerDebugCommandClass slot 8
-void MultiplayerDebugCommandClass::vf_8(int key)
+void MultiplayerDebugCommandClass::vf_8(int key) const
 {
     if (DAT_00A8B8B4) {
         DAT_00A8B8B5 = !DAT_00A8B8B5;
@@ -2014,7 +2014,7 @@ void MultiplayerDebugCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x537AB0 -- MultiplayerSyncCommandClass slot 1
-const char* MultiplayerSyncCommandClass::vf_1()
+const char* MultiplayerSyncCommandClass::vf_1() const
 {
     return "ExtraSyncChecking";
 }
@@ -2038,7 +2038,7 @@ const wchar_t* MultiplayerSyncCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537AF0 -- MultiplayerSyncCommandClass slot 8
-void MultiplayerSyncCommandClass::vf_8(int key)
+void MultiplayerSyncCommandClass::vf_8(int key) const
 {
     DAT_00B04880 = !DAT_00B04880;
     if (DAT_00B04880) {
@@ -2049,7 +2049,7 @@ void MultiplayerSyncCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x537B50 -- ScreenCaptureCommandClass slot 1
-const char* ScreenCaptureCommandClass::vf_1()
+const char* ScreenCaptureCommandClass::vf_1() const
 {
     return "ScreenCapture";
 }
@@ -2076,7 +2076,7 @@ const wchar_t* ScreenCaptureCommandClass::vf_4()
 // STRING: GAMEMD 0x827A48 -- "SCRN%04d.pcx"
 // Copy the window's client area into the surface at 0x88730C, then write it to
 // the first free SCRNnnnn.pcx.
-void ScreenCaptureCommandClass::vf_8(int key)
+void ScreenCaptureCommandClass::vf_8(int key) const
 {
     RECT client;
     if (!GetClientRect(DAT_00B73550, &client)) {
@@ -2126,7 +2126,7 @@ void ScreenCaptureCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x537DE0 -- PageUserCommandClass slot 1
-const char* PageUserCommandClass::vf_1()
+const char* PageUserCommandClass::vf_1() const
 {
     return "PageUser";
 }
@@ -2150,7 +2150,7 @@ const wchar_t* PageUserCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537E50 -- PageUserCommandClass slot 8
-void PageUserCommandClass::vf_8(int key)
+void PageUserCommandClass::vf_8(int key) const
 {
     if (Session_00A8B238.GameMode == 4) {
         FUN_006470F0();
@@ -2158,7 +2158,7 @@ void PageUserCommandClass::vf_8(int key)
 }
 
 // FUNCTION: GAMEMD 0x537E80 -- CursorPositionCommandClass slot 1
-const char* CursorPositionCommandClass::vf_1()
+const char* CursorPositionCommandClass::vf_1() const
 {
     return "CursorCheat";
 }
@@ -2182,13 +2182,13 @@ const wchar_t* CursorPositionCommandClass::vf_4()
 }
 
 // FUNCTION: GAMEMD 0x537EF0 -- CursorPositionCommandClass slot 8
-void CursorPositionCommandClass::vf_8(int key)
+void CursorPositionCommandClass::vf_8(int key) const
 {
     DAT_00A8F7D8 = !DAT_00A8F7D8;
 }
 
 // FUNCTION: GAMEMD 0x537F20 -- DeleteCommandClass slot 1
-const char* DeleteCommandClass::vf_1()
+const char* DeleteCommandClass::vf_1() const
 {
     return "Delete";
 }
@@ -2213,7 +2213,7 @@ const wchar_t* DeleteCommandClass::vf_4()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x537F90 -- DeleteCommandClass slot 8
-void DeleteCommandClass::vf_8(int key)
+void DeleteCommandClass::vf_8(int key) const
 {
     FUN_00731A10();
 }

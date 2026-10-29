@@ -97,6 +97,17 @@ LoadOptionsClass::LoadOptionsClass()
     Entries.Clear();
 }
 
+// FUNCTION: GAMEMD 0x558790
+// PARTIAL: 94.9% -- same instructions as retail; cl stores the vtable pointer after loading the entry count,
+// where retail stores it first (ten loop spellings tried, including the earlier six on the deleting copy).
+// Release every list entry, then clear the vector (its base destructor then runs inline).
+LoadOptionsClass::~LoadOptionsClass()
+{
+    for (int i = 0; i < Entries.Count; ++i)
+        delete Entries.Items[i];
+    Entries.Clear();
+}
+
 // SYNTHETIC: GAMEMD 0x55A0D0
 // LoadOptionsClass::scalar deleting destructor (compiler-generated ??_G; scored from the harness, see menus.rows.tsv)
 // CAPPED at 95.5% (42 of 44 instructions; multiset identical). Retail stores the vtable (`MOV [EDI],0x7ED2E4`)

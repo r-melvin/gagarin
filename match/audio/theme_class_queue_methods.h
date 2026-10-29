@@ -22,77 +22,7 @@
 #include <stddef.h>
 #include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
-
-// One registered score's metadata (see theme_class_methods.h for the full
-// derivation). Only Scenario/Normal/Exists/Side are touched here.
-struct ThemeControl
-{
-    char    ID[0x100];      // +0x000
-    char    Sound[0x100];   // +0x100
-    wchar_t UIName[0x40];   // +0x200
-    int     Scenario;       // +0x280
-    float   Length;         // +0x284
-    bool    Normal;         // +0x288
-    bool    Repeat;         // +0x289
-    bool    Exists;         // +0x28A
-    int     Side;           // +0x28C
-};
-GG_STATIC_ASSERT(offsetof(ThemeControl, Scenario) == 0x280);
-GG_STATIC_ASSERT(offsetof(ThemeControl, Normal)   == 0x288);
-GG_STATIC_ASSERT(offsetof(ThemeControl, Exists)   == 0x28A);
-GG_STATIC_ASSERT(offsetof(ThemeControl, Side)     == 0x28C);
-
-// DynamicVectorClass<ThemeControl*> head: vtable@0, Items@4, Count@0x10.
-struct ThemeControlVector
-{
-    void*          Vtbl;               // +0x00
-    ThemeControl** Items;              // +0x04
-    int            Capacity;           // +0x08
-    int            IsAllocated;        // +0x0C
-    int            Count;              // +0x10
-    int            CapacityIncrement;  // +0x14
-};
-GG_STATIC_ASSERT(offsetof(ThemeControlVector, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(ThemeControlVector, Count) == 0x10);
-
-// The playback stream object hanging off ThemeClass +0x2C. Its four
-// __thiscall methods are declared only (bodies live in match/core).
-struct ThemeStream_00720B20
-{
-    // FUNCTION: GAMEMD 0x407F40 (decl; reloc)
-    void FUN_00407F40();
-    // FUNCTION: GAMEMD 0x408070 (decl; reloc)
-    int  FUN_00408070() const;
-    // FUNCTION: GAMEMD 0x4080C0 (decl; reloc)
-    void FUN_004080C0();
-    // FUNCTION: GAMEMD 0x4080D0 (decl; reloc)
-    int  FUN_004080D0() const;
-};
-
-struct ThemeClass
-{
-    int  CurrentTheme;          // +0x00
-    int  LastTheme;             // +0x04
-    int  QueuedTheme;           // +0x08
-    int  Volume;                // +0x0C
-    bool IsScoreRepeat;         // +0x10
-    bool IsFading;              // +0x11
-    bool IsScoreShuffle;        // +0x12
-    ThemeControlVector Themes;  // +0x14
-    ThemeStream_00720B20* Stream;  // +0x2C
-
-    // FUNCTION: GAMEMD 0x720B20 — named by its own trace string at 0x8447D4.
-    void QueueSong(int theme);
-    // FUNCTION: GAMEMD 0x721140
-    bool IsAvailable(int theme) const;
-};
-GG_STATIC_ASSERT(offsetof(ThemeClass, LastTheme)   == 0x04);
-GG_STATIC_ASSERT(offsetof(ThemeClass, QueuedTheme) == 0x08);
-GG_STATIC_ASSERT(offsetof(ThemeClass, IsFading)    == 0x11);
-GG_STATIC_ASSERT(offsetof(ThemeClass, Themes)      == 0x14);
-GG_STATIC_ASSERT(offsetof(ThemeClass, Themes) + offsetof(ThemeControlVector, Items) == 0x18);
-GG_STATIC_ASSERT(offsetof(ThemeClass, Themes) + offsetof(ThemeControlVector, Count) == 0x24);
-GG_STATIC_ASSERT(offsetof(ThemeClass, Stream)      == 0x2C);
+#include "../_layout/theme_class.h"
 
 // HouseClass::CurrentPlayer -> Type -> side index, as read at 0x721195.
 struct HouseType_00721140

@@ -13,7 +13,7 @@ struct Obj_005D26F0;
 
 struct Obj_005D26F0
 {
-    // FUNCTION: GAMEMD 0x5D26F0
+    // FUNCTION: GAMEMD 0x5D26F0 (decl)
     void FUN_005D26F0();
 };
 

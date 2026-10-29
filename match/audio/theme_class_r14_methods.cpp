@@ -6,9 +6,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "theme_class_methods.h"
-
-#include "themestream_00720ea0.h"
+#include "../_layout/theme_class.h"
 
 struct ThemeSaveStream_00721010
 {
@@ -29,7 +27,7 @@ extern "C" void __cdecl FUN_004068E0(const char* format, ...);
 // Start fading the current stream out and flag the jukebox as fading.
 void ThemeClass::FadeStream()
 {
-    ThemeStream_00720EA0* stream = (ThemeStream_00720EA0*)this->Stream;
+    ThemeStream* stream = this->Stream;
     if (stream != 0) {
         stream->FUN_004080C0();
     }
@@ -57,7 +55,7 @@ void ThemeClass::Suspend()
     }
     // STRING: GAMEMD 0x84484C
     FUN_004068E0("Theme::Suspend(%d)\n", this->LastTheme);
-    ThemeStream_00720EA0* stream = (ThemeStream_00720EA0*)this->Stream;
+    ThemeStream* stream = this->Stream;
     if (stream != 0) {
         stream->FUN_00407F40();
     }
@@ -74,11 +72,11 @@ bool ThemeClass::FUN_00720FD0()
 {
     if (this->Stream != 0) {
         if (this->IsFading) {
-            if (((ThemeStream_00720EA0*)this->Stream)->FUN_004080D0() == 0) {
-                ((ThemeStream_00720EA0*)this->Stream)->FUN_00407F40();
+            if (this->Stream->FUN_004080D0() == 0) {
+                this->Stream->FUN_00407F40();
             }
         }
-        return ((ThemeStream_00720EA0*)this->Stream)->FUN_00408070() != 0;
+        return this->Stream->FUN_00408070() != 0;
     }
     return false;
 }

@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   RTTI: TypeDescriptor 0x0082BA10 `.?AVMapSeedClass@@`; class hierarchy descriptor 0x00805930.
-//   Bases in RTTI (declaration) order: LoadOptionsClass +0x0.
+//   Bases in RTTI (declaration) order: LoadOptionsClass +0x0 (canonical: _layout/load_options_class.h, 0x38 bytes).
+//   Constructor 0x595680: base ctor 0x558740, the stores below, vptr 0x7ED8E4, Extension = "SED" (0x82BA60),
+//   Description = &unknown_78 (a 0x100-byte wide-char buffer) cleared, then the localised description copied in.
 // VTABLE: GAMEMD 0x7ED8E4 (9 slots)
 //   Allocation: operator new (0x7C8E17) of 0x178 bytes at 0x5961BF, 0x596715.
 //   Virtual slots are named vf_<slot>; the binary attests no names. Argument counts come from each target's RET n;
@@ -11,7 +13,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../ui/load_options_class_methods.h"
+#include "load_options_class.h"
 
 class MapSeedClass : public LoadOptionsClass
 {
@@ -30,7 +32,6 @@ public:
     virtual unsigned short const * Slot6();                     // 6  0x597FA0: override of LoadOptionsClass
     virtual unsigned short const * Slot7();                     // 7  0x597FC0: override of LoadOptionsClass
     virtual unsigned short const * Slot8();                     // 8  0x597FE0: override of LoadOptionsClass
-    unsigned char unknown_10[40];  // +0x10
     int unknown_38;  // +0x38 store at 0x595693
     int unknown_3C;  // +0x3C store at 0x595696
     int unknown_40;  // +0x40 store at 0x595699
@@ -50,6 +51,8 @@ public:
     unsigned short unknown_78;  // +0x78 store at 0x5956D8
     unsigned char unknown_7A[254];  // +0x7A
 
+    // FUNCTION: GAMEMD 0x595680 (native constructor; runs LoadOptionsClass::LoadOptionsClass first)
+    MapSeedClass();
     // FUNCTION: GAMEMD 0x595710
     void FUN_00595710();
     // FUNCTION: GAMEMD 0x597260
@@ -79,5 +82,6 @@ GG_STATIC_ASSERT(offsetof(MapSeedClass, unknown_70) == 0x70);
 GG_STATIC_ASSERT(offsetof(MapSeedClass, unknown_74) == 0x74);
 GG_STATIC_ASSERT(offsetof(MapSeedClass, unknown_78) == 0x78);
 GG_STATIC_ASSERT(sizeof(MapSeedClass) == 0x178);
+GG_STATIC_ASSERT(offsetof(MapSeedClass, unknown_78) == 0x78);
 
 #endif  // GG_MATCH_LAYOUT_MAP_SEED_CLASS_H

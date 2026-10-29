@@ -16,7 +16,7 @@
 //   STRING:   GAMEMD 0x817694   "none"      (GetID out-of-range default)
 //   LIBRARY:  GAMEMD 0x7C5F00   __ftol      (CRT float->long; GetLength cast)
 
-#include "theme_class_methods.h"
+#include "../_layout/theme_class.h"
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x720940  (__thiscall)

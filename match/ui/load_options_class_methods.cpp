@@ -8,7 +8,7 @@
 //   FUNCTION: GAMEMD 0x559EB0  LoadOptionsClass::DeleteMission   (__thiscall, slot 3; ECX unused)
 //   FUNCTION: GAMEMD 0x558DD0  LoadOptionsClass::ProcessDialog   (referenced; tail-jmp)
 
-#include "load_options_class_methods.h"
+#include "../_layout/load_options_class.h"
 
 // The Win32 file-delete import. Retail calls it indirectly through the IAT
 // (`call dword ptr [__imp__DeleteFileA@4]`); declaring it dllimport makes our

@@ -13,7 +13,7 @@
 //   object built by 0x4085A0 with 0x408610 and 0x408560, and the 64-bit
 //   divide by 1000 through __aulldiv 0x7C9380. The ThemeControl and
 //   ThemeClass offsets match the committed model in
-//   match/audio/theme_class_find_methods.h and the CCFileClass offsets
+//   match/_layout/theme_class.h and the CCFileClass offsets
 //   match match/platform/ccfile_class_open_mix_methods.h. Names
 //   cross-checked against YRpp.
 #ifndef GG_MATCH_AUDIO_THEME_CLASS_SCAN_METHODS_H
@@ -22,6 +22,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/memory_buffer.h"
+#include "../_layout/theme_class.h"
 
 // GLOBAL: GAMEMD 0xA8EC74 — the first scan gate.
 extern char DAT_00A8EC74;
@@ -96,46 +97,5 @@ int FUN_00408610(File_007207F0* file, Audio_007207F0* audio, int* length);
 // FUNCTION: GAMEMD 0x408560 (decl; reloc) — the sample's duration in
 // milliseconds as a 64-bit value, __fastcall.
 unsigned __int64 FUN_00408560(Audio_007207F0* audio, int length);
-
-// ThemeControl — one registered score.
-struct ThemeControl_007207F0
-{
-    char    ID[0x100];       // +0x0000
-    char    Sound[0x100];    // +0x0100
-    char    _pad200[0x80];   // +0x0200  UIName
-    int     Scenario;        // +0x0280
-    float   Length;          // +0x0284
-    char    Normal;          // +0x0288
-    char    Repeat;          // +0x0289
-    char    Exists;          // +0x028A
-    char    _pad28B;         // +0x028B
-    int     Side;            // +0x028C
-};
-GG_STATIC_ASSERT(offsetof(ThemeControl_007207F0, Sound)  == 0x100);
-GG_STATIC_ASSERT(offsetof(ThemeControl_007207F0, Length) == 0x284);
-GG_STATIC_ASSERT(offsetof(ThemeControl_007207F0, Exists) == 0x28A);
-
-struct ThemeVector_007207F0
-{
-    void*                    _vtable;   // +0x00
-    ThemeControl_007207F0**  Items;     // +0x04
-    int                      Capacity;  // +0x08
-    int                      IsAllocated; // +0x0C
-    int                      Count;     // +0x10
-    int                      CapacityIncrement; // +0x14
-};
-GG_STATIC_ASSERT(offsetof(ThemeVector_007207F0, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(ThemeVector_007207F0, Count) == 0x10);
-
-struct Theme_007207F0
-{
-    char                 _pad000[0x14];   // +0x0000
-    ThemeVector_007207F0 Themes;          // +0x0014
-
-    // FUNCTION: GAMEMD 0x7207F0 — ThemeClass::Scan.
-    void Scan();
-};
-GG_STATIC_ASSERT(offsetof(Theme_007207F0, Themes) + offsetof(ThemeVector_007207F0, Items) == 0x18);
-GG_STATIC_ASSERT(offsetof(Theme_007207F0, Themes) + offsetof(ThemeVector_007207F0, Count) == 0x24);
 
 #endif  // GG_MATCH_AUDIO_THEME_CLASS_SCAN_METHODS_H

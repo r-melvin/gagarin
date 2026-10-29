@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include <string.h>
-#include "../ui/load_options_class_methods.h"
+#include "../_layout/load_options_class.h"
 #include "vector_class_operations.h"
 
 // FUNCTION: GAMEMD 0x5BECC0

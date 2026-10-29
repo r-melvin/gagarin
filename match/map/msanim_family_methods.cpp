@@ -40,25 +40,16 @@
 //   FUNCTION: GAMEMD 0x5CEA40  MSPCXAnim::Attach
 //   FUNCTION: GAMEMD 0x5CEA80  MSPCXAnim::GetRect
 //   FUNCTION: GAMEMD 0x5CEAB0  MSPCXAnim::vf_7
-//   FUNCTION: GAMEMD 0x5CEAC0  MSAnim::SetEnabled
-//   FUNCTION: GAMEMD 0x5CEAD0  MSAnim::PauseTimer
-//   FUNCTION: GAMEMD 0x5CEB20  MSAnim::ResumeTimer
-//   FUNCTION: GAMEMD 0x5CEB40  MSAnim::vf_7
-//   FUNCTION: GAMEMD 0x5CEB50  MSAnim::Attach
-//   FUNCTION: GAMEMD 0x5CEB60  MSAnim::DeletingDtor
-//   FUNCTION: GAMEMD 0x5CEB80  MSShapeAnim::DeletingDtor
-//   FUNCTION: GAMEMD 0x5CEBD0  MSFadeAnim::DeletingDtor
-//   FUNCTION: GAMEMD 0x5CEC20  MSOverlayAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CEC70  MSBinkAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CECB0  MSVQAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CED10  MSBitPrintAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CED40  MSPrintAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CED70  MSPCXAnim::DeletingDtor
 //   SYNTHETIC: GAMEMD 0x5CEDB0  MSAnimCounts initialiser
-//   VTABLE:   GAMEMD 0x7EE8E8  MSAnim        (9 slots)
-//   VTABLE:   GAMEMD 0x7EE910  MSShapeAnim
-//   VTABLE:   GAMEMD 0x7EE938  MSFadeAnim
-//   VTABLE:   GAMEMD 0x7EE960  MSOverlayAnim
+//   VTABLE:   GAMEMD 0x7EE8E8  MSAnimView        (9 slots)
+//   VTABLE:   GAMEMD 0x7EE910  MSShapeAnimView
+//   VTABLE:   GAMEMD 0x7EE938  MSFadeAnimView
+//   VTABLE:   GAMEMD 0x7EE960  MSOverlayAnimView
 //   VTABLE:   GAMEMD 0x7EE988  MSBinkAnim
 //   VTABLE:   GAMEMD 0x7EE9B0  MSVQAnim
 //   VTABLE:   GAMEMD 0x7EE9D8  MSBitPrintAnim
@@ -96,7 +87,7 @@
 // block by four. Measured: the timer written as three field copies out of a
 // named temporary (49.0 -- the copy blocks cl's elimination of the temporary's
 // own stores), as a read of the temporary's never-written clock word (71.9),
-// and as the whole-struct assignment `Timer = MSTimer(duration)` that this file
+// and as the whole-struct assignment `Timer = MSTimerView(duration)` that this file
 // now uses (90.6); the clock store spelled through the member's `Value` rather
 // than the struct, and a named local for the interval, each changed nothing.
 //
@@ -307,7 +298,7 @@ MSPrintAnim* MSPrintAnim::Construct(const wchar_t* text, int x, int y,
     // the dead stack slot -- the same shape recorded at 0x6B7BB0. Written here
     // as that surviving read so the frame and the three stores come out as
     // retail has them.
-    Timer = MSTimer(interval);
+    Timer = MSTimerView(interval);
 
     Layout(rect);
 
@@ -431,7 +422,7 @@ bool MSPrintAnim::Update(int context, MSRect* out)
         return false;
     }
 
-    Timer = MSTimer(Interval);
+    Timer = MSTimerView(Interval);
 
     if (CharPos > Text.Length()) {
         if (LineCount > 2) {
@@ -935,17 +926,10 @@ bool MSPCXAnim::vf_7()
     return Finished;
 }
 
-// FUNCTION: GAMEMD 0x5CEAC0
-// Slot 1, shared by all nine classes: enable or disable the animation.
-void MSAnim::SetEnabled(bool on)
-{
-    Enabled = on;
-}
-
 // The time still on the clock. Zero once the interval has run out; the whole
 // interval when the timer is already paused, since a paused timer stamps its
 // start as -1 and keeps its remainder in +0x18.
-__forceinline int MSAnim::TimeLeft()
+__forceinline int MSAnimView::TimeLeft()
 {
     int remain = Timer.Remaining;
 
@@ -963,94 +947,6 @@ __forceinline int MSAnim::TimeLeft()
     }
 
     return remain;
-}
-
-// FUNCTION: GAMEMD 0x5CEAD0
-// Slot 2: freeze the animation's clock, banking whatever is left of the
-// current interval. Retail tests StartTime twice — once here and once inside
-// the timer's ordinary inline reader (MSTimer::TimeLeft); the forced-inline
-// MSAnim::TimeLeft lets cl fold the second test.
-void MSAnim::PauseTimer()
-{
-    if (Timer.StartTime != -1) {
-        Timer.Remaining = Timer.TimeLeft();
-        Timer.StartTime = -1;
-    }
-}
-
-// FUNCTION: GAMEMD 0x5CEB20
-// Slot 3: restart the clock, but only from a genuinely paused state.
-void MSAnim::ResumeTimer()
-{
-    if (Timer.StartTime == -1) {
-        Timer.StartTime = Timer.Clock.GetTime();
-    }
-}
-
-// FUNCTION: GAMEMD 0x5CEB40
-// Slot 7 of the base: an animation with no completion notion never finishes.
-bool MSAnim::vf_7()
-{
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x5CEB50
-// Slot 8 of the base: an empty hook. The argument is popped by the callee and
-// never read, which is the whole of retail's `RET 4`.
-void MSAnim::Attach(void* target)
-{
-}
-
-// FUNCTION: GAMEMD 0x5CEB60
-// Slot 0 of the base. The destructor body is nothing but the vptr seat every
-// destructor of a polymorphic class performs, so the thunk is the seat, the
-// conditional free and the returned receiver.
-void* MSAnim::DeletingDtor(unsigned int f)
-{
-    SeatBaseVptr();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x5CEB80
-void* MSShapeAnim::DeletingDtor(unsigned int f)
-{
-    this->MSShapeAnim::~MSShapeAnim();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x5CEBD0
-// Fade adds only trivial storage; resource cleanup is inherited from Shape.
-void* MSFadeAnim::DeletingDtor(unsigned int f)
-{
-    this->MSFadeAnim::~MSFadeAnim();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x5CEC20
-void* MSOverlayAnim::DeletingDtor(unsigned int f)
-{
-    this->MSOverlayAnim::~MSOverlayAnim();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x5CEC70

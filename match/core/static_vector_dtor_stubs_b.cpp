@@ -13,11 +13,11 @@
 #include "../_rt/gg_static_assert.h"
 #include "vector_class_operations.h"
 #include "../_layout/layer_class.h"
+#include "../_layout/theme_class.h"
 
 class ObjectClass;
 class ParasiteClass;
 class SpawnManagerClass;
-class ThemeControl;
 
 // Element types of the two by-value vectors: placeholders that declare only the
 // fields and the element operations the vector template instantiates.
@@ -37,25 +37,13 @@ struct AcceleratorTracker
 // SYNTHETIC: GAMEMD 0x0040CB80 -- initialiser of DAT_0087F778
 LogicClass DAT_0087F778;
 
-// The theme-list object at 0xA83D10: its constructor (0x720960, defined out of
-// line) also builds the vector at +0x14; the exit-time stub at 0x4E7E50 is the
-// vector's destructor inlined into this class's empty one.
-class Obj_00A83D10
-{
-public:
-    char unknown_00[0x14];
-    DynamicVectorClass<ThemeControl*> Themes;
-    // FUNCTION: GAMEMD 0x720960 (decl; reloc)
-    Obj_00A83D10();
-    ~Obj_00A83D10() {}
-};
-GG_STATIC_ASSERT(offsetof(Obj_00A83D10, Themes) == 0x14);
-GG_STATIC_ASSERT(sizeof(Obj_00A83D10) == 0x2C);
-
+// The theme jukebox at 0xA83D10: canonical ThemeClass (match/_layout/theme_class.h). Its constructor
+// 0x720960 is defined out of line; the exit-time stub at 0x4E7E50 is the vector's destructor inlined
+// into the class' implicit one.
 // GLOBAL: GAMEMD 0x00A83D10
 // SYNTHETIC: GAMEMD 0x004E7E30
 // SYNTHETIC: GAMEMD 0x004E7E50 -- exit-time destructor stub of DAT_00A83D10
-Obj_00A83D10 DAT_00A83D10;
+ThemeClass DAT_00A83D10;
 
 // GLOBAL: GAMEMD 0x00ABFCB8
 // SYNTHETIC: GAMEMD 0x005D4D10 -- exit-time destructor stub of DAT_00ABFCB8

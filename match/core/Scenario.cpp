@@ -38,7 +38,7 @@
 #include "../platform/ccfile_class.h"
 #include "../map/class_sweep_00581f50.h"
 #include "frame_counter.h"
-#include "../audio/theme_class_methods.h"
+#include "../_layout/theme_class.h"
 #include "../ui/tooltip_manager_shared.h"
 #include "../combat/evade_class_do_methods.h"
 #include "spin_wait_methods.h"
@@ -671,7 +671,7 @@ bool __fastcall FUN_00683AB0(const char* filename, bool flag, int index)
             }
         }
         FUN_004068E0(STR_0083D890, filename);
-        DAT_00A83D10.FUN_00720BB0(DAT_00A83D10.FindIndex(STR_0082C1BC));
+        DAT_00A83D10.PlaySong(DAT_00A83D10.FindIndex(STR_0082C1BC));
         if (!FUN_00684620(filename)) {
             WWMouseClassInstance->vf_4();
             if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(0, EmptyName_00887734);

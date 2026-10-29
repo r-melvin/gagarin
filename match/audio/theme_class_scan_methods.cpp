@@ -17,7 +17,7 @@
 // sample duration is bound before the divide so the call happens before
 // the divisor is pushed, and the CRT 64-bit divide pops its own arguments
 // (__stdcall) so no stack adjustment follows it.
-void Theme_007207F0::Scan()
+void ThemeClass::Scan()
 {
     if (DAT_00A8EC74 && FUN_00407000() && !DAT_00A8ED64) {
         for (int i = 0; i < Themes.Count; i++) {
@@ -27,7 +27,7 @@ void Theme_007207F0::Scan()
             File_007207F0 file;
             file.Construct(path);
 
-            ThemeControl_007207F0** slot = &Themes.Items[i];
+            ThemeControl** slot = &Themes.Items[i];
             (*slot)->Exists = file.Exists(0);
 
             if (Themes.Items[i]->Exists) {
@@ -36,7 +36,7 @@ void Theme_007207F0::Scan()
                 file.Open(1);
                 int length;
                 if (FUN_00408610(&file, &audio, &length)) {
-                    ThemeControl_007207F0** entry = &Themes.Items[i];
+                    ThemeControl** entry = &Themes.Items[i];
                     unsigned __int64 millis = FUN_00408560(&audio, length);
                     int seconds = (int)gg_aulldiv(millis, 1000);
                     (*entry)->Length = (float)seconds;

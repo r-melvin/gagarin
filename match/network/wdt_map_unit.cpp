@@ -14,7 +14,7 @@
 #include "../core/header_tuning_globals.h"
 #include "../core/string_class.h"
 #include "../core/vector_class_operations.h"
-#include "../map/msanim_family_methods.h"
+#include "../_layout/ms_anim.h"
 #include "wdt_rc_ptr.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
@@ -70,16 +70,9 @@ void FUN_0072E450(int surface, MSRect* area, int flag);
 
 // ---- MSFrameAnim -----------------------------------------------------------------------------------------------------
 
-// VTABLE: GAMEMD 0x7F7104
-// Slots 4..6 are its own (0x767ED0, 0x767EF0, 0x767F80); slots 1..3, 7 and 8
-// are MSAnim's.
-class MSFrameAnim : public MSAnim
-{
-public:
-    virtual bool   Update(int context, MSRect* out);   // slot 4
-    virtual void   Draw(int context, MSRect* area);    // slot 5
-    virtual MSRect GetRect();                          // slot 6
-};
+// MSFrameAnim is the canonical class in match/_layout/ms_anim.h (its constructor and scalar deleting
+// destructor are in ms_frame_anim_ctor.cpp); slots 4..6 are its own (0x767ED0, 0x767EF0, 0x767F80) and
+// slots 1..3, 7 and 8 are MSAnim's.
 
 // FUNCTION: GAMEMD 0x767ED0
 bool MSFrameAnim::Update(int context, MSRect* out)

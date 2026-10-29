@@ -1400,7 +1400,7 @@
  {
   "tu": "match/audio/theme_class_scan_methods.cpp",
   "addr": "0x7207F0",
-  "sym": "?Scan@Theme_007207F0@@QAEXXZ",
+  "sym": "?Scan@ThemeClass@@QAEXXZ",
   "len": "0x149",
   "name": "ThemeClass::Scan",
   "status": "matched",
@@ -5099,11 +5099,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/MSChoice.cpp",
+  "tu": "match/ui/ms_engine_methods.cpp",
   "addr": "0x5D2700",
-  "sym": "?FUN_5D2700@Obj_5D2700@@QAEPAXI@Z",
+  "sym": "??_GMSEngine@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_005d2700",
+  "name": "MSEngine::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -5667,11 +5667,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x00769bd0",
-  "sym": "??_G?$DerivedSdd@UBase_MSAnim@@UTag_MSFrameAnim@@@@UAEPAXI@Z",
+  "tu": "match/network/ms_frame_anim_ctor.cpp",
+  "addr": "0x769BD0",
+  "sym": "??_GMSFrameAnim@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_MSFrameAnim>::scalar deleting destructor",
+  "name": "MSFrameAnim::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -5694,11 +5694,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x00771a30",
-  "sym": "??_G?$DerivedSdd@UBase_MSAnim@@UTag_WorldDominationTour_Voices_Anim@@@@UAEPAXI@Z",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
+  "addr": "0x771A30",
+  "sym": "??_GAnim@Voices@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_WorldDominationTour_Voices_Anim>::scalar deleting destructor",
+  "name": "WorldDominationTour::Voices::Anim::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -24651,83 +24651,83 @@
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEAC0",
-  "sym": "?SetEnabled@MSAnim@@QAEX_N@Z",
+  "sym": "?SetEnabled@MSAnim@@UAEX_N@Z",
   "len": "0xa",
-  "name": "MSAnim",
+  "name": "MSAnim::SetEnabled",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEAD0",
-  "sym": "?PauseTimer@MSAnim@@QAEXXZ",
+  "sym": "?PauseTimer@MSAnim@@UAEXXZ",
   "len": "0x41",
-  "name": "MSAnim",
+  "name": "MSAnim::PauseTimer",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEB20",
-  "sym": "?ResumeTimer@MSAnim@@QAEXXZ",
+  "sym": "?ResumeTimer@MSAnim@@UAEXXZ",
   "len": "0x16",
-  "name": "MSAnim",
+  "name": "MSAnim::ResumeTimer",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEB40",
-  "sym": "?vf_7@MSAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSAnim@@UAE_NXZ",
   "len": "0x3",
-  "name": "MSAnim",
+  "name": "MSAnim::vf_7",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEB50",
-  "sym": "?Attach@MSAnim@@QAEXPAX@Z",
+  "sym": "?Attach@MSAnim@@UAEXPAX@Z",
   "len": "0x3",
-  "name": "MSAnim",
+  "name": "MSAnim::Attach",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEB60",
-  "sym": "?DeletingDtor@MSAnim@@QAEPAXI@Z",
+  "sym": "??_GMSAnim@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "MSAnim",
+  "name": "MSAnim::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEB80",
-  "sym": "?DeletingDtor@MSShapeAnim@@QAEPAXI@Z",
+  "sym": "??_GMSShapeAnim@@UAEPAXI@Z",
   "len": "0x48",
-  "name": "MSShapeAnim",
+  "name": "MSShapeAnim::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEBD0",
-  "sym": "?DeletingDtor@MSFadeAnim@@QAEPAXI@Z",
+  "sym": "??_GMSFadeAnim@@UAEPAXI@Z",
   "len": "0x48",
-  "name": "MSFadeAnim",
+  "name": "MSFadeAnim::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CEC20",
-  "sym": "?DeletingDtor@MSOverlayAnim@@QAEPAXI@Z",
+  "sym": "??_GMSOverlayAnim@@UAEPAXI@Z",
   "len": "0x48",
-  "name": "MSOverlayAnim",
+  "name": "MSOverlayAnim::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -62102,7 +62102,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535C20",
-  "sym": "?vf_1@CreateTeamCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@CreateTeamCommandClass@@UBEPBDXZ",
   "len": "0x1C",
   "name": "CreateTeamCommandClass::vf_1",
   "status": "matched",
@@ -62138,7 +62138,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535CC0",
-  "sym": "?vf_8@CreateTeamCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@CreateTeamCommandClass@@UBEXH@Z",
   "len": "0xB",
   "name": "CreateTeamCommandClass::vf_8",
   "status": "matched",
@@ -62156,7 +62156,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535D20",
-  "sym": "?vf_1@SetStructureTabCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetStructureTabCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetStructureTabCommandClass::vf_1",
   "status": "matched",
@@ -62192,7 +62192,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535D90",
-  "sym": "?vf_8@SetStructureTabCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetStructureTabCommandClass@@UBEXH@Z",
   "len": "0x41",
   "name": "SetStructureTabCommandClass::vf_8",
   "status": "matched",
@@ -62201,7 +62201,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535DE0",
-  "sym": "?vf_1@SetDefenseTabCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetDefenseTabCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetDefenseTabCommandClass::vf_1",
   "status": "matched",
@@ -62237,7 +62237,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535E50",
-  "sym": "?vf_8@SetDefenseTabCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetDefenseTabCommandClass@@UBEXH@Z",
   "len": "0x41",
   "name": "SetDefenseTabCommandClass::vf_8",
   "status": "matched",
@@ -62246,7 +62246,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535EA0",
-  "sym": "?vf_1@SetInfantryTabCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetInfantryTabCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetInfantryTabCommandClass::vf_1",
   "status": "matched",
@@ -62282,7 +62282,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535F10",
-  "sym": "?vf_8@SetInfantryTabCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetInfantryTabCommandClass@@UBEXH@Z",
   "len": "0x1D",
   "name": "SetInfantryTabCommandClass::vf_8",
   "status": "matched",
@@ -62291,7 +62291,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535F30",
-  "sym": "?vf_1@SetUnitTabCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetUnitTabCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetUnitTabCommandClass::vf_1",
   "status": "matched",
@@ -62327,7 +62327,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535FA0",
-  "sym": "?vf_8@SetUnitTabCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetUnitTabCommandClass@@UBEXH@Z",
   "len": "0x1D",
   "name": "SetUnitTabCommandClass::vf_8",
   "status": "matched",
@@ -62336,7 +62336,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x535FE0",
-  "sym": "?vf_1@SelectTeamCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SelectTeamCommandClass@@UBEPBDXZ",
   "len": "0x1C",
   "name": "SelectTeamCommandClass::vf_1",
   "status": "matched",
@@ -62372,7 +62372,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536080",
-  "sym": "?vf_8@SelectTeamCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SelectTeamCommandClass@@UBEXH@Z",
   "len": "0xB",
   "name": "SelectTeamCommandClass::vf_8",
   "status": "matched",
@@ -62381,7 +62381,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5360D0",
-  "sym": "?vf_1@AddTeamCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@AddTeamCommandClass@@UBEPBDXZ",
   "len": "0x1C",
   "name": "AddTeamCommandClass::vf_1",
   "status": "matched",
@@ -62417,7 +62417,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536170",
-  "sym": "?vf_8@AddTeamCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@AddTeamCommandClass@@UBEXH@Z",
   "len": "0xB",
   "name": "AddTeamCommandClass::vf_8",
   "status": "matched",
@@ -62426,7 +62426,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5361C0",
-  "sym": "?vf_1@CenterTeamCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@CenterTeamCommandClass@@UBEPBDXZ",
   "len": "0x1C",
   "name": "CenterTeamCommandClass::vf_1",
   "status": "matched",
@@ -62462,7 +62462,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536260",
-  "sym": "?vf_8@CenterTeamCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@CenterTeamCommandClass@@UBEXH@Z",
   "len": "0xB",
   "name": "CenterTeamCommandClass::vf_8",
   "status": "matched",
@@ -62471,7 +62471,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5362B0",
-  "sym": "?vf_1@TauntCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@TauntCommandClass@@UBEPBDXZ",
   "len": "0x1C",
   "name": "TauntCommandClass::vf_1",
   "status": "matched",
@@ -62507,7 +62507,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536350",
-  "sym": "?vf_8@TauntCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@TauntCommandClass@@UBEXH@Z",
   "len": "0x22F",
   "name": "TauntCommandClass::vf_8",
   "status": "partial",
@@ -62516,7 +62516,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5365A0",
-  "sym": "?vf_1@NextObjectCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@NextObjectCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "NextObjectCommandClass::vf_1",
   "status": "matched",
@@ -62552,7 +62552,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536610",
-  "sym": "?vf_8@NextObjectCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@NextObjectCommandClass@@UBEXH@Z",
   "len": "0x81",
   "name": "NextObjectCommandClass::vf_8",
   "status": "matched",
@@ -62561,7 +62561,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5366A0",
-  "sym": "?vf_1@PlanningModeCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@PlanningModeCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "PlanningModeCommandClass::vf_1",
   "status": "matched",
@@ -62624,7 +62624,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536750",
-  "sym": "?vf_8@PlanningModeCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@PlanningModeCommandClass@@UBEXH@Z",
   "len": "0x1D",
   "name": "PlanningModeCommandClass::vf_8",
   "status": "matched",
@@ -62633,7 +62633,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536770",
-  "sym": "?vf_1@CombatantSelectCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@CombatantSelectCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "CombatantSelectCommandClass::vf_1",
   "status": "matched",
@@ -62678,7 +62678,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5367F0",
-  "sym": "?vf_8@CombatantSelectCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@CombatantSelectCommandClass@@UBEXH@Z",
   "len": "0x14",
   "name": "CombatantSelectCommandClass::vf_8",
   "status": "matched",
@@ -62687,7 +62687,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536810",
-  "sym": "?vf_1@TypeSelectCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@TypeSelectCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "TypeSelectCommandClass::vf_1",
   "status": "matched",
@@ -62750,7 +62750,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5368B0",
-  "sym": "?vf_8@TypeSelectCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@TypeSelectCommandClass@@UBEXH@Z",
   "len": "0x19",
   "name": "TypeSelectCommandClass::vf_8",
   "status": "matched",
@@ -62759,7 +62759,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5368D0",
-  "sym": "?vf_1@HealthNavCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@HealthNavCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "HealthNavCommandClass::vf_1",
   "status": "matched",
@@ -62804,7 +62804,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536950",
-  "sym": "?vf_8@HealthNavCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@HealthNavCommandClass@@UBEXH@Z",
   "len": "0x14",
   "name": "HealthNavCommandClass::vf_8",
   "status": "matched",
@@ -62813,7 +62813,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536970",
-  "sym": "?vf_1@VeterancyNavCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@VeterancyNavCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "VeterancyNavCommandClass::vf_1",
   "status": "matched",
@@ -62858,7 +62858,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5369F0",
-  "sym": "?vf_8@VeterancyNavCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@VeterancyNavCommandClass@@UBEXH@Z",
   "len": "0x14",
   "name": "VeterancyNavCommandClass::vf_8",
   "status": "matched",
@@ -62867,7 +62867,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536A10",
-  "sym": "?vf_1@PrevObjectCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@PrevObjectCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "PrevObjectCommandClass::vf_1",
   "status": "matched",
@@ -62903,7 +62903,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536A80",
-  "sym": "?vf_8@PrevObjectCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@PrevObjectCommandClass@@UBEXH@Z",
   "len": "0x81",
   "name": "PrevObjectCommandClass::vf_8",
   "status": "matched",
@@ -62912,7 +62912,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536B10",
-  "sym": "?vf_1@StopCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@StopCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "StopCommandClass::vf_1",
   "status": "matched",
@@ -62948,7 +62948,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536B80",
-  "sym": "?vf_8@StopCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@StopCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "StopCommandClass::vf_8",
   "status": "matched",
@@ -62957,7 +62957,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536B90",
-  "sym": "?vf_1@AllToCheerCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@AllToCheerCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "AllToCheerCommandClass::vf_1",
   "status": "matched",
@@ -62993,7 +62993,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536C00",
-  "sym": "?vf_8@AllToCheerCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@AllToCheerCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "AllToCheerCommandClass::vf_8",
   "status": "matched",
@@ -63002,7 +63002,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536C10",
-  "sym": "?vf_1@DeployCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@DeployCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "DeployCommandClass::vf_1",
   "status": "matched",
@@ -63038,7 +63038,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536C80",
-  "sym": "?vf_8@DeployCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@DeployCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "DeployCommandClass::vf_8",
   "status": "matched",
@@ -63047,7 +63047,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536C90",
-  "sym": "?vf_1@GuardCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@GuardCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "GuardCommandClass::vf_1",
   "status": "matched",
@@ -63083,7 +63083,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536D00",
-  "sym": "?vf_8@GuardCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@GuardCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "GuardCommandClass::vf_8",
   "status": "matched",
@@ -63092,7 +63092,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536D10",
-  "sym": "?vf_1@ScatterCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@ScatterCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "ScatterCommandClass::vf_1",
   "status": "matched",
@@ -63128,7 +63128,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536D80",
-  "sym": "?vf_8@ScatterCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@ScatterCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "ScatterCommandClass::vf_8",
   "status": "matched",
@@ -63137,7 +63137,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536D90",
-  "sym": "?vf_1@CenterViewCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@CenterViewCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "CenterViewCommandClass::vf_1",
   "status": "matched",
@@ -63173,7 +63173,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536E00",
-  "sym": "?vf_8@CenterViewCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@CenterViewCommandClass@@UBEXH@Z",
   "len": "0x22",
   "name": "CenterViewCommandClass::vf_8",
   "status": "matched",
@@ -63182,7 +63182,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536E30",
-  "sym": "?vf_1@CenterBaseCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@CenterBaseCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "CenterBaseCommandClass::vf_1",
   "status": "matched",
@@ -63218,7 +63218,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536EA0",
-  "sym": "?vf_8@CenterBaseCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@CenterBaseCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "CenterBaseCommandClass::vf_8",
   "status": "matched",
@@ -63227,7 +63227,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536EB0",
-  "sym": "?vf_1@AllianceCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@AllianceCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "AllianceCommandClass::vf_1",
   "status": "matched",
@@ -63263,7 +63263,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536F20",
-  "sym": "?vf_8@AllianceCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@AllianceCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "AllianceCommandClass::vf_8",
   "status": "matched",
@@ -63272,7 +63272,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536F30",
-  "sym": "?vf_1@ToggleRepairCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@ToggleRepairCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "ToggleRepairCommandClass::vf_1",
   "status": "matched",
@@ -63308,7 +63308,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536FA0",
-  "sym": "?vf_8@ToggleRepairCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@ToggleRepairCommandClass@@UBEXH@Z",
   "len": "0xF",
   "name": "ToggleRepairCommandClass::vf_8",
   "status": "matched",
@@ -63317,7 +63317,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x536FB0",
-  "sym": "?vf_1@ToggleSellCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@ToggleSellCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "ToggleSellCommandClass::vf_1",
   "status": "matched",
@@ -63353,7 +63353,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537020",
-  "sym": "?vf_8@ToggleSellCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@ToggleSellCommandClass@@UBEXH@Z",
   "len": "0xF",
   "name": "ToggleSellCommandClass::vf_8",
   "status": "matched",
@@ -63362,7 +63362,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537030",
-  "sym": "?vf_1@BeaconPlacementCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@BeaconPlacementCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "BeaconPlacementCommandClass::vf_1",
   "status": "matched",
@@ -63398,7 +63398,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5370A0",
-  "sym": "?vf_8@BeaconPlacementCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@BeaconPlacementCommandClass@@UBEXH@Z",
   "len": "0x16",
   "name": "BeaconPlacementCommandClass::vf_8",
   "status": "matched",
@@ -63407,7 +63407,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5370C0",
-  "sym": "?vf_1@CenterREventCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@CenterREventCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "CenterREventCommandClass::vf_1",
   "status": "matched",
@@ -63443,7 +63443,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537130",
-  "sym": "?vf_8@CenterREventCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@CenterREventCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "CenterREventCommandClass::vf_8",
   "status": "matched",
@@ -63452,7 +63452,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537140",
-  "sym": "?vf_1@SidebarUpCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SidebarUpCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SidebarUpCommandClass::vf_1",
   "status": "matched",
@@ -63488,7 +63488,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5371B0",
-  "sym": "?vf_8@SidebarUpCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SidebarUpCommandClass@@UBEXH@Z",
   "len": "0x11",
   "name": "SidebarUpCommandClass::vf_8",
   "status": "matched",
@@ -63497,7 +63497,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5371D0",
-  "sym": "?vf_1@SidebarDownCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SidebarDownCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SidebarDownCommandClass::vf_1",
   "status": "matched",
@@ -63533,7 +63533,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537240",
-  "sym": "?vf_8@SidebarDownCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SidebarDownCommandClass@@UBEXH@Z",
   "len": "0x11",
   "name": "SidebarDownCommandClass::vf_8",
   "status": "matched",
@@ -63542,7 +63542,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537260",
-  "sym": "?vf_1@OptionsCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@OptionsCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "OptionsCommandClass::vf_1",
   "status": "matched",
@@ -63578,7 +63578,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5372D0",
-  "sym": "?vf_8@OptionsCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@OptionsCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "OptionsCommandClass::vf_8",
   "status": "matched",
@@ -63587,7 +63587,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5372E0",
-  "sym": "?vf_1@View1CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@View1CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "View1CommandClass::vf_1",
   "status": "matched",
@@ -63623,7 +63623,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537350",
-  "sym": "?vf_8@View1CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@View1CommandClass@@UBEXH@Z",
   "len": "0x7E",
   "name": "View1CommandClass::vf_8",
   "status": "matched",
@@ -63632,7 +63632,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5373D0",
-  "sym": "?vf_1@View2CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@View2CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "View2CommandClass::vf_1",
   "status": "matched",
@@ -63668,7 +63668,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537440",
-  "sym": "?vf_8@View2CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@View2CommandClass@@UBEXH@Z",
   "len": "0x7E",
   "name": "View2CommandClass::vf_8",
   "status": "matched",
@@ -63677,7 +63677,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5374C0",
-  "sym": "?vf_1@View3CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@View3CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "View3CommandClass::vf_1",
   "status": "matched",
@@ -63713,7 +63713,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537530",
-  "sym": "?vf_8@View3CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@View3CommandClass@@UBEXH@Z",
   "len": "0x7E",
   "name": "View3CommandClass::vf_8",
   "status": "matched",
@@ -63722,7 +63722,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5375B0",
-  "sym": "?vf_1@View4CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@View4CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "View4CommandClass::vf_1",
   "status": "matched",
@@ -63758,7 +63758,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537620",
-  "sym": "?vf_8@View4CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@View4CommandClass@@UBEXH@Z",
   "len": "0x7E",
   "name": "View4CommandClass::vf_8",
   "status": "matched",
@@ -63767,7 +63767,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5376A0",
-  "sym": "?vf_1@SetView1CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetView1CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetView1CommandClass::vf_1",
   "status": "matched",
@@ -63803,7 +63803,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537710",
-  "sym": "?vf_8@SetView1CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetView1CommandClass@@UBEXH@Z",
   "len": "0x48",
   "name": "SetView1CommandClass::vf_8",
   "status": "matched",
@@ -63812,7 +63812,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537760",
-  "sym": "?vf_1@SetView2CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetView2CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetView2CommandClass::vf_1",
   "status": "matched",
@@ -63848,7 +63848,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5377D0",
-  "sym": "?vf_8@SetView2CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetView2CommandClass@@UBEXH@Z",
   "len": "0x48",
   "name": "SetView2CommandClass::vf_8",
   "status": "matched",
@@ -63857,7 +63857,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537820",
-  "sym": "?vf_1@SetView3CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetView3CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetView3CommandClass::vf_1",
   "status": "matched",
@@ -63893,7 +63893,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537890",
-  "sym": "?vf_8@SetView3CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetView3CommandClass@@UBEXH@Z",
   "len": "0x48",
   "name": "SetView3CommandClass::vf_8",
   "status": "matched",
@@ -63902,7 +63902,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5378E0",
-  "sym": "?vf_1@SetView4CommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@SetView4CommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "SetView4CommandClass::vf_1",
   "status": "matched",
@@ -63938,7 +63938,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537950",
-  "sym": "?vf_8@SetView4CommandClass@@UAEXH@Z",
+  "sym": "?vf_8@SetView4CommandClass@@UBEXH@Z",
   "len": "0x48",
   "name": "SetView4CommandClass::vf_8",
   "status": "matched",
@@ -63947,7 +63947,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x5379A0",
-  "sym": "?vf_1@FollowCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@FollowCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "FollowCommandClass::vf_1",
   "status": "matched",
@@ -63983,7 +63983,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537A10",
-  "sym": "?vf_8@FollowCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@FollowCommandClass@@UBEXH@Z",
   "len": "0x3B",
   "name": "FollowCommandClass::vf_8",
   "status": "matched",
@@ -63992,7 +63992,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537A50",
-  "sym": "?vf_1@MultiplayerDebugCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@MultiplayerDebugCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "MultiplayerDebugCommandClass::vf_1",
   "status": "matched",
@@ -64028,7 +64028,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537A90",
-  "sym": "?vf_8@MultiplayerDebugCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@MultiplayerDebugCommandClass@@UBEXH@Z",
   "len": "0x1B",
   "name": "MultiplayerDebugCommandClass::vf_8",
   "status": "matched",
@@ -64037,7 +64037,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537AB0",
-  "sym": "?vf_1@MultiplayerSyncCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@MultiplayerSyncCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "MultiplayerSyncCommandClass::vf_1",
   "status": "matched",
@@ -64073,7 +64073,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537AF0",
-  "sym": "?vf_8@MultiplayerSyncCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@MultiplayerSyncCommandClass@@UBEXH@Z",
   "len": "0x43",
   "name": "MultiplayerSyncCommandClass::vf_8",
   "status": "matched",
@@ -64082,7 +64082,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537B50",
-  "sym": "?vf_1@ScreenCaptureCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@ScreenCaptureCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "ScreenCaptureCommandClass::vf_1",
   "status": "matched",
@@ -64118,7 +64118,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537DE0",
-  "sym": "?vf_1@PageUserCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@PageUserCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "PageUserCommandClass::vf_1",
   "status": "matched",
@@ -64154,7 +64154,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537E50",
-  "sym": "?vf_8@PageUserCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@PageUserCommandClass@@UBEXH@Z",
   "len": "0x11",
   "name": "PageUserCommandClass::vf_8",
   "status": "matched",
@@ -64163,7 +64163,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537E80",
-  "sym": "?vf_1@CursorPositionCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@CursorPositionCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "CursorPositionCommandClass::vf_1",
   "status": "matched",
@@ -64199,7 +64199,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537EF0",
-  "sym": "?vf_8@CursorPositionCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@CursorPositionCommandClass@@UBEXH@Z",
   "len": "0x12",
   "name": "CursorPositionCommandClass::vf_8",
   "status": "matched",
@@ -64208,7 +64208,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537F20",
-  "sym": "?vf_1@DeleteCommandClass@@UAEPBDXZ",
+  "sym": "?vf_1@DeleteCommandClass@@UBEPBDXZ",
   "len": "0x6",
   "name": "DeleteCommandClass::vf_1",
   "status": "matched",
@@ -64244,7 +64244,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537F90",
-  "sym": "?vf_8@DeleteCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@DeleteCommandClass@@UBEXH@Z",
   "len": "0x8",
   "name": "DeleteCommandClass::vf_8",
   "status": "matched",
@@ -64253,7 +64253,7 @@
  {
   "tu": "match/ui/Init.cpp",
   "addr": "0x537BC0",
-  "sym": "?vf_8@ScreenCaptureCommandClass@@UAEXH@Z",
+  "sym": "?vf_8@ScreenCaptureCommandClass@@UBEXH@Z",
   "len": "0x20c",
   "name": "ScreenCaptureCommandClass::vf_8",
   "status": "matched",
@@ -85262,11 +85262,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/MapSel.cpp",
+  "tu": "match/ui/ms_engine_methods.cpp",
   "addr": "0x5AE590",
-  "sym": "?FUN_005AE590@Obj_005AE590@@QAEXH@Z",
+  "sym": "?Slot1@MSEngine@@UAEXH@Z",
   "len": "0x3",
-  "name": "Obj_005AE590::FUN_005AE590",
+  "name": "MSEngine::Slot1",
   "status": "matched",
   "pct": 100
  },
@@ -85442,11 +85442,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/MSChoice.cpp",
+  "tu": "match/ui/ms_engine_methods.cpp",
   "addr": "0x5D26F0",
-  "sym": "?FUN_005D26F0@Obj_005D26F0@@QAEXXZ",
+  "sym": "?Slot2@MSEngine@@UAEXXZ",
   "len": "0x1",
-  "name": "Obj_005D26F0::FUN_005D26F0",
+  "name": "MSEngine::Slot2",
   "status": "matched",
   "pct": 100
  },
@@ -94904,6 +94904,24 @@
   "pct": 100.0
  },
  {
+  "tu": "match/ui/LoadDlg.cpp",
+  "addr": "0x558790",
+  "sym": "??1LoadOptionsClass@@UAE@XZ",
+  "len": "0x60",
+  "name": "LoadOptionsClass::~LoadOptionsClass",
+  "status": "partial",
+  "pct": 94.9
+ },
+ {
+  "tu": "match/ui/LoadDlg.cpp",
+  "addr": "0x55A0D0",
+  "sym": "??_GLoadOptionsClass@@UAEPAXI@Z",
+  "len": "0x7c",
+  "name": "LoadOptionsClass::scalar deleting destructor",
+  "status": "partial",
+  "pct": 95.5
+ },
+ {
   "tu": "match/map/trivial_tu127_b_methods.cpp",
   "addr": "0x567370",
   "sym": "?FUN_00567370@Obj_00567370@@QAEXHHHHHHHHH@Z",
@@ -97137,22 +97155,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/msshape_anim_dtor_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CB750",
   "sym": "?MSShapeAnim_DestroyAtA@@YIXPAVMSShapeAnim@@@Z",
   "len": "0x33",
   "name": "MSShapeAnim_DestroyAtA",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/map/msshape_anim_dtor_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CC2F0",
   "sym": "?MSShapeAnim_DestroyAtB@@YIXPAVMSShapeAnim@@@Z",
   "len": "0x33",
   "name": "MSShapeAnim_DestroyAtB",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/static_vector_dtor_stubs_b.cpp",
@@ -137848,18 +137866,45 @@
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_early_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CB6C0",
-  "sym": "?MSAnim_SeatVptr@@YIXPAVMSAnim@@@Z",
+  "sym": "??1MSAnim@@UAE@XZ",
   "len": "0x7",
-  "name": "MSAnim_SeatVptr",
+  "name": "MSAnim::~MSAnim",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/ms_anim_ctors.cpp",
+  "addr": "0x5CB6D0",
+  "sym": "??0MSShapeAnim@@QAE@PBDHHHH_NI@Z",
+  "len": "0x77",
+  "name": "MSShapeAnim::MSShapeAnim",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/ms_anim_ctors.cpp",
+  "addr": "0x5CBD20",
+  "sym": "??0MSFadeAnim@@QAE@PBDHHHHHH@Z",
+  "len": "0x7a",
+  "name": "MSFadeAnim::MSFadeAnim",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/ms_anim_ctors.cpp",
+  "addr": "0x5CC250",
+  "sym": "??0MSOverlayAnim@@QAE@PBDHHHHHEH_N@Z",
+  "len": "0x93",
+  "name": "MSOverlayAnim::MSOverlayAnim",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CB790",
-  "sym": "?SetFrame@MSShapeAnim@@QAEXI@Z",
+  "sym": "?SetFrame@MSShapeAnimView@@QAEXI@Z",
   "len": "0xa4",
   "name": "MSShapeAnim::SetFrame",
   "status": "matched",
@@ -137868,7 +137913,7 @@
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CBCB0",
-  "sym": "?GetRectSlot@MSShapeAnim@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRectSlot@MSShapeAnimView@@UAE?AUMSRect@@XZ",
   "len": "0x6f",
   "name": "MSShapeAnim::GetRectSlot",
   "status": "partial",
@@ -145487,5 +145532,95 @@
   "name": "FUN_007AD690",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/map/map_seed_class_ctor.cpp",
+  "addr": "0x595680",
+  "sym": "??0MapSeedClass@@QAE@XZ",
+  "len": "0x8c",
+  "name": "MapSeedClass::MapSeedClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_52d640.cpp",
+  "addr": "0x52D640",
+  "sym": "?FUN_0052D640@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x148",
+  "name": "FUN_0052D640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_proc_531f60.cpp",
+  "addr": "0x531F60",
+  "sym": "?FUN_00531F60@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x19f",
+  "name": "FUN_00531F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/theme_class_ctor_clear_methods.cpp",
+  "addr": "0x720960",
+  "sym": "??0ThemeClass@@QAE@XZ",
+  "len": "0x41",
+  "name": "ThemeClass::ThemeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/theme_class_ctor_clear_methods.cpp",
+  "addr": "0x720770",
+  "sym": "?Clear@ThemeClass@@QAEXXZ",
+  "len": "0x71",
+  "name": "ThemeClass::Clear",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_execute_by_name.cpp",
+  "addr": "0x533F50",
+  "sym": "?FUN_00533F50@@YIXPBD@Z",
+  "len": "0x74",
+  "name": "FUN_00533F50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/ms_frame_anim_ctor.cpp",
+  "addr": "0x767E90",
+  "sym": "??0MSFrameAnim@@QAE@XZ",
+  "len": "0x28",
+  "name": "MSFrameAnim::MSFrameAnim",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
+  "addr": "0x771850",
+  "sym": "??0Anim@Voices@WorldDominationTour@@QAE@PAX@Z",
+  "len": "0x31",
+  "name": "WorldDominationTour::Voices::Anim::Anim",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ms_engine_methods.cpp",
+  "addr": "0x5D1AA0",
+  "sym": "??0MSEngine@@QAE@XZ",
+  "len": "0x81",
+  "name": "MSEngine::MSEngine",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ms_engine_methods.cpp",
+  "addr": "0x5D1B30",
+  "sym": "??1MSEngine@@UAE@XZ",
+  "len": "0xed",
+  "name": "MSEngine::~MSEngine",
+  "status": "partial",
+  "pct": 96.7
  }
 ]
