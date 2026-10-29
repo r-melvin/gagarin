@@ -78,16 +78,15 @@ extern unsigned short Packed_00B2D5EC[256];
 
 // FUNCTION: GAMEMD 0x753BF0
 //
-// PARTIAL: 94.7% -- retail walks a byte pointer with an unsigned end compare
-// (JB) and keeps the first shift count in EDX; the plain array loop gives
-// JL and CL (variants tried: int shift count, pointer loop).
+// The index is unsigned (retail ends the walk with an unsigned compare, JB) and the
+// first shift count is a full register (retail copies ECX to EDX whole).
 // Each palette entry is shifted right then left per channel and the three
 // channels are or-ed into one 16-bit value.
-void __fastcall FUN_00753BF0(unsigned char shiftA, int leftA,
+void __fastcall FUN_00753BF0(unsigned int shiftA, int leftA,
                              unsigned char shiftB, int leftB,
                              unsigned char shiftC, int leftC)
 {
-    for (int i = 0; i < 256; i++) {
+    for (unsigned i = 0; i < 256; i++) {
         unsigned short v = (unsigned short)((unsigned char)(Palette_00B2FB78[i].R >> shiftA) << leftA);
         v |= (unsigned short)((unsigned char)(Palette_00B2FB78[i].B >> shiftC) << leftC);
         v |= (unsigned short)((unsigned char)(Palette_00B2FB78[i].G >> shiftB) << leftB);

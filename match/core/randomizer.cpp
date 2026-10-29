@@ -9,6 +9,52 @@
 
 #include "randomizer.h"
 
+// GLOBAL: GAMEMD 0x839644 -- first key table
+extern int DAT_00839644[4];
+// GLOBAL: GAMEMD 0x839694 -- second key table
+extern int DAT_00839694[4];
+
+// Keyed mixing step shared by the seeding loop below and the generator at 0x65C8B0.
+struct RandomizerMix
+{
+    int Left;
+    int Counter;
+
+    int Step()
+    {
+        int right = Counter;
+        int left = Left;
+        Counter = right + 1;
+        for (int i = 0; i < 4; i++) {
+            int saved = right;
+            int x = DAT_00839644[i] ^ right;
+            int lo = x & 0xFFFF;
+            int hi = x >> 16;
+            int m = ~(hi * hi) + lo * lo;
+            right = (m >> 16) | (m << 16);
+            right ^= DAT_00839694[i];
+            right += hi * lo;
+            right ^= left;
+            left = saved;
+        }
+        return right;
+    }
+};
+
+// FUNCTION: GAMEMD 0x65C6D0  (__thiscall, RET 4)
+// Seed the table: each entry is the next output of the mixing step, keyed by the seed and a running counter.
+Randomizer::Randomizer(int seed)
+{
+    Next1 = 0;
+    Next2 = 103;
+    RandomizerMix mix;
+    mix.Left = seed;
+    mix.Counter = 0;
+    for (int n = 0; n < 250; n++)
+        Table[n] = mix.Step();
+    unknown_00 = false;
+}
+
 // FUNCTION: GAMEMD 0x65C780  (__thiscall)
 // Advance the XOR lagged-table generator one step and return the new value.
 //   if (disabled) return 0;

@@ -202,7 +202,7 @@ bool __stdcall DriveLocomotionClass::IsMoving()
 // FUNCTION: GAMEMD 0x4AFC20
 bool __stdcall DriveLocomotionClass::IsMovingNow()
 {
-    if (Foot()->PrimaryFacing.FUN_004C9480())
+    if (((DriveFootView*)LinkedTo)->PrimaryFacing.FUN_004C9480())
         return true;
     if (IsMoving() && DriveIsSet(HeadTo) && Foot()->vf_538() > 0)
         return true;

@@ -1022,6 +1022,7 @@ class TabClass : public SidebarClass, public INoticeSink
 public:
     // FUNCTION: GAMEMD 0x6CFE20 (decl; reloc)
     TabClass();
+    TabClass(const Obj_005BDF70& noInit);
 
     virtual void vf_05();                                // 5   0x6D0260
     virtual void vf_08();                                // 8   0x6D03A0

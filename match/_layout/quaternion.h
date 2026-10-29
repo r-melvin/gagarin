@@ -28,4 +28,17 @@ GG_STATIC_ASSERT(offsetof(Quaternion, Z) == 0x08);
 GG_STATIC_ASSERT(offsetof(Quaternion, W) == 0x0C);
 GG_STATIC_ASSERT(sizeof(Quaternion) == 0x10);
 
+// Element of the two 21-entry rotation tables at 0xB44348 and 0xB43188. Their
+// static initialisers (0x754B40, 0x754B70) call one out-of-line constructor
+// (0x645C30) per element with the arguments (0, 0, 0, 1.0f), which only a
+// declared default-argument constructor produces: the inline Quaternion
+// constructors are expanded in place and a plain array would not push them.
+// A separate type keeps the inline Quaternion constructors of other users.
+struct QuaternionEntry : Quaternion
+{
+    // FUNCTION: GAMEMD 0x645C30 (decl; reloc) -- shared with the stored-four-words constructor there.
+    QuaternionEntry(float x = 0.0f, float y = 0.0f, float z = 0.0f, float w = 1.0f);
+};
+GG_STATIC_ASSERT(sizeof(QuaternionEntry) == 0x10);
+
 #endif  // GG_MATCH_LAYOUT_QUATERNION_H

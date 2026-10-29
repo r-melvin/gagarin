@@ -7,6 +7,7 @@
 #include "../core/global_getter_family_methods.h"
 
 #include "../core/trivial_tu289_methods.h"
+#include "../core/string_class.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -50,60 +51,52 @@ void __cdecl FUN_007AF280()
     DAT_00B77F4C = 0x80;
 }
 
-// FUNCTION: GAMEMD 0x7AF390
-// Tail-calls a method on a global object.
-void FUN_007AF390(int a1, int a2)
+// FUNCTION: GAMEMD 0x7AF2A0
+// The label text for an index: 1, 2 and 3 pick the first three strings, any
+// other index the last. Each string is a function-local static, built on
+// first use; the first three are built together before the index is tested.
+Wstring* __fastcall FUN_007AF2A0(int index)
 {
-    FUN_007B46F0(DAT_00B77EF0, a2);
+// SYNTHETIC: GAMEMD 0x7AF3C0 (the atexit stub that runs ~Wstring on first)
+    static Wstring first("DIS");
+// SYNTHETIC: GAMEMD 0x7AF3B0 (the atexit stub that runs ~Wstring on second)
+    static Wstring second("ALL");
+// SYNTHETIC: GAMEMD 0x7AF3A0 (the atexit stub that runs ~Wstring on third)
+    static Wstring third("SOV");
+    switch (index) {
+    case 1:
+        return &first;
+    case 2:
+        return &second;
+    case 3:
+        return &third;
+    }
+// SYNTHETIC: GAMEMD 0x7AF390 (the atexit stub that runs ~Wstring on other)
+    static Wstring other("xx");
+    return &other;
 }
 
-// FUNCTION: GAMEMD 0x7AF3A0
-// Tail-calls a method on a global object.
-void FUN_007AF3A0(int a1, int a2)
+// FUNCTION: GAMEMD 0x7AF3D0
+// The same shape over four more labels.
+Wstring* __fastcall FUN_007AF3D0(int index)
 {
-    FUN_007B46F0(DAT_00B77F30, a2);
-}
-
-// FUNCTION: GAMEMD 0x7AF3B0
-// Tail-calls a method on a global object.
-void FUN_007AF3B0(int a1, int a2)
-{
-    FUN_007B46F0(DAT_00B77F08, a2);
-}
-
-// FUNCTION: GAMEMD 0x7AF3C0
-// Tail-calls a method on a global object.
-void FUN_007AF3C0(int a1, int a2)
-{
-    FUN_007B46F0(DAT_00B77F20, a2);
-}
-
-// FUNCTION: GAMEMD 0x7AF4C0
-// Tail-calls a method on a global object.
-void FUN_007AF4C0(int a1, int a2)
-{
-    FUN_007B46F0(DAT_00B77EB0, a2);
-}
-
-// FUNCTION: GAMEMD 0x7AF4D0
-// Tail-calls a method on a global object.
-void FUN_007AF4D0(int a1, int a2)
-{
-    FUN_007B46F0(DAT_00B77F1C, a2);
-}
-
-// FUNCTION: GAMEMD 0x7AF4E0
-// Tail-calls a method on a global object.
-void FUN_007AF4E0(int a1, int a2)
-{
-    FUN_007B46F0(DAT_00B77EC8, a2);
-}
-
-// FUNCTION: GAMEMD 0x7AF4F0
-// Tail-calls a method on a global object.
-void FUN_007AF4F0(int a1, int a2)
-{
-    FUN_007B46F0(DAT_00B77EC0, a2);
+// SYNTHETIC: GAMEMD 0x7AF4F0 (the atexit stub that runs ~Wstring on first)
+    static Wstring first("NA");
+// SYNTHETIC: GAMEMD 0x7AF4E0 (the atexit stub that runs ~Wstring on second)
+    static Wstring second("EU");
+// SYNTHETIC: GAMEMD 0x7AF4D0 (the atexit stub that runs ~Wstring on third)
+    static Wstring third("AS");
+    switch (index) {
+    case 1:
+        return &first;
+    case 2:
+        return &second;
+    case 3:
+        return &third;
+    }
+// SYNTHETIC: GAMEMD 0x7AF4C0 (the atexit stub that runs ~Wstring on other)
+    static Wstring other("XX");
+    return &other;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

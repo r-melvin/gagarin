@@ -86,6 +86,7 @@ public:
     int FUN_00485020(); // GAMEMD 0x485020; caller0x685078 tests EAX
     void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
+    int FUN_00487D50(); // GAMEMD 0x487D50 (decl; reloc): Level + 4 * (Flags bit 7)
 
     // Retail vtable 0x7E4EEC overrides these five slots of AbstractClass; the
     // bodies are not reconstructed here. They make CellClass a complete type.
@@ -169,6 +170,8 @@ public:
     const wchar_t* GetUIName() const;             // GAMEMD 0x484FF0
     int GetRadLevel();                            // GAMEMD 0x487CB0
     int GetContainedTiberiumIndex() const;        // GAMEMD 0x485010
+    bool FUN_00483690();                          // GAMEMD 0x483690
+    bool FUN_00483620();                          // GAMEMD 0x483620
     void SetMapCoords(CellStruct const* coords);  // GAMEMD 0x485240
     void RadLevel_Increase(double amount);        // GAMEMD 0x487CE0
     void RadLevel_Decrease(double amount);

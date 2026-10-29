@@ -1093,8 +1093,8 @@ unsigned int __fastcall FUN_005E2620(const Wstring* key);
 
 // Constructor (inlined into each file-scope table's initialiser): 128 buckets,
 // shrink ratio 0.2 / growth 0.8, bit width derived from the bucket count.
-// PARTIAL: 88.2% on every initialiser -- retail stores the zero at +0x10 (from EAX)
-// before the decrement of the bit width; this build stores it from EDX after it.
+// The width loop is tested `bits > 0`; with `!= 0` the compiler knows the leftover is zero
+// and stores it from the shared zero register after the decrement instead of from EAX.
 template<class KEY, class VALUE>
 HashTable_006249A0<KEY, VALUE>::HashTable_006249A0()
 {
@@ -1106,7 +1106,7 @@ HashTable_006249A0<KEY, VALUE>::HashTable_006249A0()
     do {
         width++;
         bits >>= 1;
-    } while (bits != 0);
+    } while (bits > 0);
     this->unknown_10 = bits;
     this->BitWidth = --width;
     this->BucketCount = 1 << width;

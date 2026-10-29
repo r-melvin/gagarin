@@ -98,3 +98,87 @@ int Obj_005FBF70::FUN_005FBF70() const
 {
     return unknown_0C;
 }
+
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- debug log (format, args...).
+void __cdecl FUN_004068E0(const char* format, ...);
+
+// FUNCTION: GAMEMD 0x407150 (decl; reloc) -- set a channel's volume (fastcall: channel, value).
+struct Obj_00401000;
+void __fastcall FUN_00407150(Obj_00401000* channel, int value);
+
+// FUNCTION: GAMEMD 0x752AB0 (decl; reloc) -- set the global voice level.
+void __fastcall FUN_00752AB0(int level);
+
+// Score jukebox object at 0xA83D10; its level setter is 0x721290.
+struct ScoreJukebox_00721290
+{
+    // FUNCTION: GAMEMD 0x721290 (decl; reloc)
+    void FUN_00721290(int level);
+};
+
+// GLOBAL: GAMEMD 0xA83D10
+extern ScoreJukebox_00721290 DAT_00A83D10;
+// GLOBAL: GAMEMD 0x87E740 -- voice channel.
+extern Obj_00401000* DAT_0087E740;
+// GLOBAL: GAMEMD 0x87E744 -- score channel.
+extern Obj_00401000* DAT_0087E744;
+// GLOBAL: GAMEMD 0x87E748 -- sound channel.
+extern Obj_00401000* DAT_0087E748;
+
+// GLOBAL: GAMEMD 0x7E1718 -- 1.0.
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7EAA50 -- level scale (double).
+extern const double DAT_007EAA50;
+
+// STRING: GAMEMD 0x832F9C -- "ScoreVolume = %f\n"
+extern char STR_00832F9C[];
+// STRING: GAMEMD 0x832FB0 -- "SoundVolume = %f\n"
+extern char STR_00832FB0[];
+// STRING: GAMEMD 0x832FC4 -- "VoiceVolume = %f\n"
+extern char STR_00832FC4[];
+
+// Rules view: the sound index played as feedback when a volume changes.
+struct OptionsRulesView_005FA510
+{
+    char unknown_00[0x710];
+    int  VolumeFeedback;   // +0x710
+};
+GG_STATIC_ASSERT(offsetof(OptionsRulesView_005FA510, VolumeFeedback) == 0x710);
+// GLOBAL: GAMEMD 0x8871E0 -- rules.
+extern OptionsRulesView_005FA510* DAT_008871E0;
+
+// VocClass::PlayGlobal 0x750920, called with a sound index, pan and volume.
+#include "../audio/voc_class_play_global_methods.h"
+
+// FUNCTION: GAMEMD 0x5FA4A0
+// Clamp and store the score volume, push it to the score channel and the jukebox, log it.
+void GameOptionsClass::SetScoreVolume(float volume, bool unused)
+{
+    ScoreVolume = volume < DAT_007E1718 ? volume : DAT_007E1718;
+    FUN_00407150(DAT_0087E744, (int)(ScoreVolume * 16384.0f));
+    DAT_00A83D10.FUN_00721290((int)(ScoreVolume * DAT_007EAA50));
+    FUN_004068E0(STR_00832F9C, (double)ScoreVolume);
+}
+
+// FUNCTION: GAMEMD 0x5FA510
+// Clamp and store the sound volume, push it to the sound channel, play the feedback sample, log it.
+void GameOptionsClass::SetSoundVolume(float volume, bool playSample)
+{
+    SoundVolume = volume < DAT_007E1718 ? volume : DAT_007E1718;
+    FUN_00407150(DAT_0087E748, (int)(SoundVolume * 16384.0f));
+    if (playSample)
+        VocClass::PlayGlobal(DAT_008871E0->VolumeFeedback, 1.0f, 0x2000, 0);
+    FUN_004068E0(STR_00832FB0, (double)SoundVolume);
+}
+
+// FUNCTION: GAMEMD 0x5FA590
+// Clamp and store the voice volume, push it to the voice level and channel, play the feedback sample, log it.
+void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
+{
+    VoiceVolume = volume < DAT_007E1718 ? volume : DAT_007E1718;
+    FUN_00752AB0((int)(VoiceVolume * DAT_007EAA50));
+    FUN_00407150(DAT_0087E740, (int)(VoiceVolume * 16384.0f));
+    if (playSample)
+        VocClass::PlayGlobal(DAT_008871E0->VolumeFeedback, VoiceVolume, 0x2000, 0);
+    FUN_004068E0(STR_00832FC4, (double)VoiceVolume);
+}

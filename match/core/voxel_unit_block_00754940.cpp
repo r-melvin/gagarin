@@ -12,6 +12,7 @@
 #include "../core/header_tuning_globals.h"
 #include "../renderer/matrix3d_rotate_methods.h"
 #include "../_layout/matrix3d.h"
+#include "../_layout/quaternion.h"
 #include "voxel_section_source.h"
 #include "mathtbl_init_shapes.h"
 
@@ -41,6 +42,14 @@ struct VoxelEmptyInit
 VoxelEmptyInit unknown_00754B20;
 // SYNTHETIC: GAMEMD 0x754B30
 VoxelEmptyInit unknown_00754B30;
+// The two 21-entry rotation tables: each element is built by the out-of-line
+// default-argument constructor 0x645C30 with (0, 0, 0, 1.0f).
+// SYNTHETIC: GAMEMD 0x754B40
+// GLOBAL: GAMEMD 0xB44348
+QuaternionEntry DAT_00B44348[21];
+// SYNTHETIC: GAMEMD 0x754B70
+// GLOBAL: GAMEMD 0xB43188
+QuaternionEntry DAT_00B43188[21];
 // SYNTHETIC: GAMEMD 0x754BA0
 VoxelEmptyInit unknown_00754BA0;
 // SYNTHETIC: GAMEMD 0x754BB0

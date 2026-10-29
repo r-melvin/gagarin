@@ -84,10 +84,14 @@ public:
 class State : public ReferenceCounted
 {
 public:
+    State();                                                       // 0x76F560
+    State(const rc_ptr<WDTState>& state, unsigned int index);     // 0x76F5A0
     ~State() {}
     virtual void* DeletingDtor(unsigned int flags);
     rc_ptr<WDTState> Next;   // +0x08
+    void* unknown_10;        // +0x10 the row of Next picked by the index (0 when out of range)
 };
+GG_STATIC_ASSERT(sizeof(State) == 0x14);   // operator new(0x14) at 0x76F504
 
 // VTABLE: GAMEMD 0x7F7334
 class Territory : public ReferenceCounted
@@ -193,6 +197,7 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Conflict, Territory) == 0x08);
+GG_STATIC_ASSERT(offsetof(WorldDominationTour::State, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, Member_0C) == 0x0C);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, Member_20) == 0x20);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_14) == 0x14);

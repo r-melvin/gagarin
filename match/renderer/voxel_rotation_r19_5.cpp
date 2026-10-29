@@ -8,9 +8,9 @@
 // GLOBAL: GAMEMD 0xB43F10 -- the first rotation matrix table (0x30 bytes each).
 extern Matrix3D DAT_00B43F10[];
 // GLOBAL: GAMEMD 0xB44348 -- the first quaternion table.
-extern Quaternion DAT_00B44348[];
+extern QuaternionEntry DAT_00B44348[];
 // GLOBAL: GAMEMD 0xB43188 -- the second quaternion table.
-extern Quaternion DAT_00B43188[];
+extern QuaternionEntry DAT_00B43188[];
 // GLOBAL: GAMEMD 0xB45188 -- the second rotation matrix table.
 extern Matrix3D DAT_00B45188[];
 

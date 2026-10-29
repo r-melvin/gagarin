@@ -18,6 +18,7 @@
 #include <string.h>
 #include <objidl.h>   // IStream, IPersistStream, CLSID, IID, HRESULT (VC98 SDK, LIBRARY)
 #include "../../_rt/gg_static_assert.h"
+struct AbstractNoInit;
 #include "house_building_views.h"
 #include "house_building_com_bases.h"
 #include "house_building_views.h"
@@ -98,6 +99,7 @@ template <class T> class TypesTypeList : public DynamicVectorClass<T>
 {
 public:
     TypesTypeList() : DynamicVectorClass<T>(0, 0) {}
+    TypesTypeList(const AbstractNoInit& noInit) : DynamicVectorClass<T>(noInit) {}
 
     // DynamicVectorClass::AddItem (out of line in retail: 0x512F20 / 0x5132F0 / 0x5136C0).
     bool AddItem(const T& item);
@@ -131,6 +133,7 @@ template <int N> struct TypesFixedString
     char Data[N];
 
     TypesFixedString() { Data[0] = 0; }
+    TypesFixedString(const AbstractNoInit&) {}
     TypesFixedString& operator=(const TypesFixedString& other)
     {
         if (this != &other)

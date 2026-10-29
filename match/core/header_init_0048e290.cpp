@@ -65,3 +65,10 @@ HeaderCoordInit DAT_0089EA30(0, 0, 0);
 // SYNTHETIC: GAMEMD 0x48E460
 // GLOBAL: GAMEMD 0x89EC08
 HeaderCoordInit DAT_0089EC08(128, 128, 0);
+
+// SYNTHETIC: GAMEMD 0x48E480
+// GLOBAL: GAMEMD 0x89E9F0 -- the five sub-cell spots: centre, then the four quarter points.
+HeaderCoordInit DAT_0089E9F0[5] = {
+    HeaderCoordInit(128, 128, 0), HeaderCoordInit(64, 64, 0), HeaderCoordInit(192, 64, 0),
+    HeaderCoordInit(64, 192, 0), HeaderCoordInit(192, 192, 0)
+};

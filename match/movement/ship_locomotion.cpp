@@ -253,7 +253,7 @@ bool __stdcall ShipLocomotionClass::IsMoving()
 // FUNCTION: GAMEMD 0x69F330
 bool __stdcall ShipLocomotionClass::IsMovingNow()
 {
-    if (ShipFoot(this)->PrimaryFacing.FUN_004C9480() != 0)
+    if (((DriveFootView*)LinkedTo)->PrimaryFacing.FUN_004C9480() != 0)
         return true;
     if (IsMoving() && ShipIsSet(HeadTo) && ShipFoot(this)->vf_538() > 0)
         return true;
@@ -471,3 +471,8 @@ bool __stdcall ShipLocomotionClass::IsMovingHere(LocoCoord to)
 // SYNTHETIC: GAMEMD 0x6A4330 -- compiler-generated IPiggyback QI adjustor thunk (this -= 0x18).
 // SYNTHETIC: GAMEMD 0x6A4340 -- compiler-generated IPiggyback AddRef adjustor thunk (this -= 0x18).
 // SYNTHETIC: GAMEMD 0x6A4350 -- compiler-generated IPiggyback Release adjustor thunk (this -= 0x18).
+
+// SYNTHETIC: GAMEMD 0x6A42B0 -- compiler-generated scalar deleting destructor.
+// The destructor body (releases Piggybackee) is the same code as 0x69ECF0,
+// which stays scored by ComRel_0069ECF0 (match/core/multi_vtable_dtor_family_methods.cpp).
+ShipLocomotionClass::~ShipLocomotionClass() {}

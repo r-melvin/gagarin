@@ -243,6 +243,7 @@ public:
 // height. The line height is a plain field at +0x08 (`MOV EAX,[ECX+8]` at
 // 0x5CE417).
 class MSSurface;
+struct MSShapeFile;
 
 class MSFont
 {
@@ -277,8 +278,15 @@ public:
     // seed of the centring measurement.
     int  Lead;            // +0x04
     int  LineHeight;      // +0x08
+    int  unknown_0C;      // +0x0C
+    int  unknown_10;      // +0x10
+    MSShapeFile* Glyphs;  // +0x14 the glyph shape, three frames per character
+
+    // FUNCTION: GAMEMD 0x5D3170 -- the widest line of a text, in pixels.
+    int  LineWidth(const wchar_t* text);
 };
 GG_STATIC_ASSERT(offsetof(MSFont, LineHeight) == 0x08);
+GG_STATIC_ASSERT(offsetof(MSFont, Glyphs) == 0x14);
 
 // The drawing surface the PCX animation holds at +0x1C. Only slot 2 is
 // reached (`CALL [EDI+8]` at 0x5CEA74, 0x5CE819 and 0x5CE900): blit a frame

@@ -15,8 +15,8 @@ void __stdcall FUN_00410E70(unsigned short* dest, int count, unsigned short valu
         count--;
     }
 
-    unsigned short* end = 0;
     int pairs = count >> 1;
+    unsigned short* end = 0;
     if (pairs) {
         unsigned long* wide = (unsigned long*)dest;
         unsigned long both = ((unsigned long)value << 16) + value;

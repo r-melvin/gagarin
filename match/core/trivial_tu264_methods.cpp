@@ -9,6 +9,7 @@
 
 #include "trivial_tu264_methods.h"
 #include "mathtbl_init_shapes.h"
+#include "../_layout/vector3d.h"
 
 // SYNTHETIC: GAMEMD 0x7539B0
 // GLOBAL: GAMEMD 0xB2D810
@@ -95,3 +96,17 @@ void* __cdecl FUN_00753C60()
 {
     return DAT_00B2FF78;
 }
+
+// Eight corner points followed by 0x28 bytes whose constructor does nothing.
+// 64 records at 0xB2D980; retail builds the array with the vector constructor
+// iterator over the corners (constructor 0x754900) once per record.
+struct Record_00753B10
+{
+    Vector3D Corners[8];    // +0x00
+    char unknown_60[0x28];  // +0x60
+};
+GG_STATIC_ASSERT(sizeof(Record_00753B10) == 0x88);
+
+// SYNTHETIC: GAMEMD 0x753B10
+// GLOBAL: GAMEMD 0xB2D980
+Record_00753B10 DAT_00B2D980[64];

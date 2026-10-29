@@ -16,6 +16,7 @@
 
 #include "house_building/types_house_type_class.h"
 #include "../_layout/swizzle_manager_class.h"
+#include "../_layout/abstract_class.h"
 
 // GLOBAL: GAMEMD 0x8B4120 - SideClass::Array (read-only here).
 extern DynamicVectorClass<TypesSideView*> TypesSideArray;
@@ -146,6 +147,14 @@ HouseTypeClass::HouseTypeClass(const char* id)
     TypesAddItemEarlyOut(TypesHouseTypeArray, this);
     ArrayIndex2 = TypesFindIndex(TypesHouseTypeArray, this);
     ArrayIndex = TypesFindIndexHoisted(TypesHouseTypeArray, this);
+}
+
+// FUNCTION: GAMEMD 0x511650
+// No-init constructor: runs the abstract-type base no-init constructor and leaves the data untouched.
+HouseTypeClass::HouseTypeClass(const HBNoInit& noInit)
+    : HouseTypeAbstractView(noInit), ParentCountry(AbstractNoInit()), VeteranInfantry(AbstractNoInit()), VeteranUnits(AbstractNoInit()),
+      VeteranAircraft(AbstractNoInit())
+{
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

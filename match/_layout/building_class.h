@@ -225,6 +225,12 @@ public:
     void FUN_0044F7A0();
     // FUNCTION: GAMEMD 0x455B90 -- bitmask of the four edge-adjacent cells that hold a live building with the type flag at +0x16C0.
     unsigned int FUN_00455B90();
+    // FUNCTION: GAMEMD 0x43EE50 -- point the Anims[9] animation at the frame matching the primary facing; returns the frame (0 when not applicable).
+    int FUN_0043EE50();
+    // FUNCTION: GAMEMD 0x451F60 -- give every animation the lighting and tint, then push the translucency to all of them (RET 8).
+    void FUN_00451F60(void* lightConvert, int tint);
+    // FUNCTION: GAMEMD 0x4528A0 -- true when the target's centre is within PsychicDetectionRadius cells (RET 4).
+    bool FUN_004528A0(AbstractClass* target);
 
     BuildingTypeClass* Type;              // +0x520 ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
     FactoryClass*  Factory;               // +0x524 ctor @0x0043B75C (=0)

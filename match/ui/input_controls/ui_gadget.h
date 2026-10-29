@@ -50,6 +50,7 @@ class ControlClass : public GadgetClass
 {
 public:
     ControlClass(int id, int x, int y, int w, int h, unsigned flags, char sticky);   // 0x48E520
+    ControlClass(const ControlClass& other);   // 0x48E570 (decl; reloc)
 
     virtual unsigned GetID();                                                // 0x44  0x48E610
     virtual int  Draw(int forced);                                           // 0x6C  0x48E620
@@ -115,6 +116,7 @@ class GaugeClass : public ControlClass
 {
 public:
     GaugeClass(int id, int x, int y, int w, int h);   // 0x4E2500: Control(id, x, y, w, h, 7, 1)
+    GaugeClass(const GaugeClass& other);   // 0x5581A0
 
     virtual int  Draw(int forced);                                      // 0x6C  0x4E2690
     virtual int  Action(unsigned flags, unsigned* key, int modifier);   // 0x7C  0x4E2830

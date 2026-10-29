@@ -578,6 +578,10 @@ public:
     bool Fire_SW(int index, const CellStruct& cell);            // 0x4FAE50
     void FUN_004FAF00(SuperClass* sw, const CellStruct& cell);  // 0x4FAF00 (decl; reloc)
     bool CanExtendSelectedPlanningPath();                       // 0x5090F0
+    bool SelectPlanningWaypoint(const WaypointClass* wp);       // 0x502290
+    int FindEmptyPlanningPath();                                // 0x5090A0
+    bool IsPlanningCellFreeOfOtherPaths(const CellStruct* cell); // 0x5022F0
+    void AddPlanningWaypoint(const WaypointClass* wp);          // 0x502160
     void SDDTORAllAndTriggers();                                // 0x4FB920
     void ProductionStarted(int result);                         // 0x4FA350
     void GiveMoney(int amount);                                 // 0x4F9950

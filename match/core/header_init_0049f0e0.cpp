@@ -8,6 +8,7 @@
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>
 #include "header_init_shapes.h"
+#include "../_layout/geometry2d.h"
 
 // GLOBAL: GAMEMD 0x7E1708
 const double DAT_007E1708 = 2.0;
@@ -65,3 +66,17 @@ HeaderCoordInit DAT_0089F718(0, 0, 0);
 // SYNTHETIC: GAMEMD 0x49F2B0
 // GLOBAL: GAMEMD 0x89F740
 HeaderCoordInit DAT_0089F740(128, 128, 0);
+
+// SYNTHETIC: GAMEMD 0x49F2F0
+// GLOBAL: GAMEMD 0x89F688 -- the eight one-cell steps indexed by facing, N first, clockwise.
+HeaderCellInit DAT_0089F688[8] = {
+    HeaderCellInit(0, -1), HeaderCellInit(1, -1), HeaderCellInit(1, 0), HeaderCellInit(1, 1),
+    HeaderCellInit(0, 1), HeaderCellInit(-1, 1), HeaderCellInit(-1, 0), HeaderCellInit(-1, -1)
+};
+
+// SYNTHETIC: GAMEMD 0x49F3A0
+// GLOBAL: GAMEMD 0x89F6D8 -- the eight one-cell steps in leptons, N first, clockwise.
+Point2D DAT_0089F6D8[8] = {
+    Point2D(0, -256), Point2D(256, -256), Point2D(256, 0), Point2D(256, 256),
+    Point2D(0, 256), Point2D(-256, 256), Point2D(-256, 0), Point2D(-256, -256)
+};

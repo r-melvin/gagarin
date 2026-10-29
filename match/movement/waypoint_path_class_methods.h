@@ -38,6 +38,9 @@ public:
     void SetWaypoint(int idx, const WaypointClass* pWaypoint);     // 0x763AF0
     void RemoveWaypoint(int idx);                                  // 0x763B30
     void ClearWaypoints();                                         // 0x763BE0
+    bool SelectWaypointAt(const WaypointClass* pWaypoint);         // 0x763A50 (decl; reloc)
+    WaypointPathClass();                                           // 0x763730 (decl; reloc)
+    void AddWaypoint(const WaypointClass* pWaypoint);              // 0x7639A0 (decl; reloc)
 
     int            CurrentWaypointIndex; // +0x24
     DynamicVectorClass<WaypointClass> Waypoints;            // +0x28

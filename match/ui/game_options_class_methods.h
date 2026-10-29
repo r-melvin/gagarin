@@ -28,6 +28,10 @@ struct GameOptionsClass
     bool unknown_1E;        // +0x1E check box 0x601
     bool unknown_1F;        // +0x1F check box 0x604
     bool unknown_20;        // +0x20 check box 0x602
+    char unknown_21[0x17];  // +0x21
+    float SoundVolume;      // +0x38 SetSoundVolume 0x5FA510
+    float VoiceVolume;      // +0x3C SetVoiceVolume 0x5FA590
+    float ScoreVolume;      // +0x40 SetScoreVolume 0x5FA4A0
 
     // FUNCTION: GAMEMD 0x5FA350 (decl; reloc)
     GameOptionsClass();
@@ -35,6 +39,12 @@ struct GameOptionsClass
     int GetAnimSpeed(int rate);   // GAMEMD 0x5FB2E0 __thiscall
     // FUNCTION: GAMEMD 0x5FAD10 (decl; reloc)
     void FUN_005FAD10();
+    // FUNCTION: GAMEMD 0x5FA4A0
+    void SetScoreVolume(float volume, bool unused);
+    // FUNCTION: GAMEMD 0x5FA510
+    void SetSoundVolume(float volume, bool playSample);
+    // FUNCTION: GAMEMD 0x5FA590
+    void SetVoiceVolume(float volume, bool playSample);
 };
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, GameSpeed) == 0x00);
 GG_STATIC_ASSERT(sizeof(((GameOptionsClass*)0)->GameSpeed) == 4);
@@ -43,5 +53,8 @@ GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_1E) == 0x1E);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(GameOptionsClass, SoundVolume) == 0x38);
+GG_STATIC_ASSERT(offsetof(GameOptionsClass, VoiceVolume) == 0x3C);
+GG_STATIC_ASSERT(offsetof(GameOptionsClass, ScoreVolume) == 0x40);
 
 #endif  // GG_MATCH_UI_GAME_OPTIONS_CLASS_METHODS_H

@@ -702,7 +702,7 @@ int Obj_006F9DC0::FUN_006F9DC0() const
 void TechnoClass::vf_82(int a1)
 {
     if (this->vf_50(CurrentPlayer)) {
-        if (this->vf_52(true)) {
+        if (!this->vf_52(true)) {
             return;
         }
     }

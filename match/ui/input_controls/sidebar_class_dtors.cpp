@@ -17,5 +17,12 @@ TabClass::TabClass()
 {
 }
 
+// FUNCTION: GAMEMD 0x5BE9B0
+// The "no initialisation" constructor: runs the SidebarClass no-init constructor and nothing else.
+TabClass::TabClass(const Obj_005BDF70& noInit)
+    : SidebarClass(noInit)
+{
+}
+
 // SYNTHETIC: GAMEMD 0x5BE9E0
 // The TabClass scalar deleting destructor, emitted from its implicit destructor.
