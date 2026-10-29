@@ -23,7 +23,7 @@ void CellClass::RemoveContent(ObjectClass* object, bool alt)
     if (object == 0)
         return;
 
-    ObjectClass* head = alt ? this->AltObject : this->FirstObject;
+    ObjectClass* head = (ObjectClass*)(alt ? this->AltObject : this->FirstObject);
     if (head == object) {
         if (alt)
             this->AltObject = (ObjectClass*)object->NextObject;

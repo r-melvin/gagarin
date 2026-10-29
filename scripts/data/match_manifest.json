@@ -13104,7 +13104,7 @@
  {
   "tu": "match/core/techno_class_threat_methods.cpp",
   "addr": "0x70F6E0",
-  "sym": "?UpdateThreatInCell@TechnoClass@@QAEXPAVCellClass@@@Z",
+  "sym": "?UpdateThreatInCell@TechnoView_0070F6E0@@QAEXPAVCellClass@@@Z",
   "len": "0x51",
   "name": "UpdateThreatInCell",
   "status": "matched",
@@ -24968,7 +24968,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74CDF0",
-  "sym": "?UpdateAllVeinholes@VeinholeMonsterClass@@SIXXZ",
+  "sym": "?UpdateAllVeinholes@VeinholeMonsterView_0074CDF0@@SIXXZ",
   "len": "0x5c",
   "name": "VeinholeMonsterClass::UpdateAllVeinholes",
   "status": "matched",
@@ -24977,7 +24977,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74EA30",
-  "sym": "?DestroyAll@VeinholeMonsterClass@@SIXXZ",
+  "sym": "?DestroyAll@VeinholeMonsterView_0074CDF0@@SIXXZ",
   "len": "0x3f",
   "name": "VeinholeMonsterClass::DestroyAll",
   "status": "matched",
@@ -24986,7 +24986,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74EEE0",
-  "sym": "?Save@VeinholeMonsterClass@@UAGJPAXH@Z",
+  "sym": "?Save@VeinholeMonsterView_0074CDF0@@UAGJPAXH@Z",
   "len": "0x17",
   "name": "VeinholeMonsterClass::Save",
   "status": "matched",
@@ -24995,7 +24995,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74EF00",
-  "sym": "?GetTerrainType@VeinholeMonsterClass@@SIPAXXZ",
+  "sym": "?GetTerrainType@VeinholeMonsterView_0074CDF0@@SIPAXXZ",
   "len": "0xc",
   "name": "VeinholeMonsterClass::GetTerrainType",
   "status": "matched",
@@ -96616,7 +96616,7 @@
  {
   "tu": "match/core/persist_load_forward_methods.cpp",
   "addr": "0x5550C0",
-  "sym": "?Load@LightSourceClass@@UAGJPAUIStream@@@Z",
+  "sym": "?Load@LightSourceView_005550C0@@UAGJPAUIStream@@@Z",
   "len": "0x45",
   "name": "LightSourceClass::Load",
   "status": "matched",

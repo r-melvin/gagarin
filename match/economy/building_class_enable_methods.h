@@ -12,11 +12,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/building_class.h"
 
-class LightSourceClass
-{
-public:
-    void Activate(unsigned long zero);   // GAMEMD 0x554A60 __thiscall (declared; reloc)
-};
+#include "../_layout/light_source_class.h"
 
 void AnimClass_Enable(AnimClass* anim);
 

@@ -48,15 +48,7 @@ struct SubzoneRecord_00586990
 };
 GG_STATIC_ASSERT(sizeof(SubzoneRecord_00586990) == 10);
 
-class CellClass
-{
-public:
-    char       _pad000[0x24];   // +0x0000
-    CellStruct MapCoords;       // +0x0024
-
-    // FUNCTION: GAMEMD 0x47D2B0 (decl; reloc) — the per-cell redraw request.
-    void FUN_0047D2B0(int what);
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
 // GLOBAL: GAMEMD 0x87F924 — MapClass::Instance.Cells item base.

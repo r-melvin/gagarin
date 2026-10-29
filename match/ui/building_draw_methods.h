@@ -63,14 +63,7 @@ public:
 extern MapClass DAT_0087F7E8;
 
 // The screen transform at 0x887324 (RTTI .?AVTactical@@).
-class Tactical
-{
-public:
-    // FUNCTION: GAMEMD 0x6D1FE0 (decl; reloc) -- two stack arguments (RET 8).
-    Point2D* FUN_006D1FE0(Point2D* out, const Point2D* in);
-    // FUNCTION: GAMEMD 0x6D2140 (decl; reloc) -- world coordinate to client point; RET 8.
-    void FUN_006D2140(const CoordStruct& coord, Point2D* out);
-};
+#include "../_layout/tactical.h"
 // GLOBAL: GAMEMD 0x887324 -- pointer to the transform.
 extern Tactical* DAT_00887324;
 

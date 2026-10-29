@@ -21,12 +21,7 @@
 // TiberiumClass — only the Value field at +0xB8 is touched (read by
 // GetContainedTiberiumValue: mov eax,[edx+0xb8]). The binary places Value at
 // 0xB8 regardless of YRpp's nominal double-packing, so pad to it directly.
-class TiberiumClass
-{
-public:
-    char _pad[0xB8];   // +0x00  AbstractTypeClass base + leading int/double props
-    int  Value;        // +0xB8
-};
+#include "../_layout/tiberium_class.h"
 GG_STATIC_ASSERT(offsetof(TiberiumClass, Value) == 0xB8);
 
 // Global base pointer of the Tiberium array @ 0x00B0F4EC. The retail loads the
@@ -46,24 +41,7 @@ enum CellFlags
     CellFlags_None = 0
 };
 
-class CellClass
-{
-public:
-    char       _base[0x44];                  // +0x000  AbstractClass + leading props
-    int        OverlayTypeIndex;             // +0x044
-    char       _pad48[0x11E - 0x48];         // +0x048
-    unsigned char OverlayData;               // +0x11E
-    char       _pad11F[0x130 - 0x11F];       // +0x11F
-    int        ShroudCounter;                // +0x130
-    int        GapsCoveringThisCell;         // +0x134
-    char       _pad138[0x140 - 0x138];       // +0x138
-    CellFlags  Flags;                        // +0x140
-
-    // 0x485020
-    int GetContainedTiberiumValue() const;
-    // 0x487690
-    void IncreaseShroudCounter();
-};
+#include "../_layout/cell_class.h"
 
 GG_STATIC_ASSERT(offsetof(CellClass, OverlayTypeIndex) == 0x44);
 GG_STATIC_ASSERT(offsetof(CellClass, OverlayData) == 0x11E);

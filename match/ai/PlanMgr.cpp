@@ -212,11 +212,7 @@ class EgoClass;
 class EventClass;
 class FactoryClass;
 class FileEntryClass;
-class FoggedObjectClass
-{
-public:
-    struct DrawRecord;
-};
+#include "../_layout/fogged_object_class.h"
 class FootClass;
 struct GlobalPacketType;
 class GraphicMenuItem;
@@ -228,18 +224,10 @@ class HouseTypeClass;
 struct IConnectionPoint;
 class InfantryTypeClass;
 class IonBlastClass;
-class IsometricTileTypeClass
-{
-public:
-    struct TileInsertType;
-};
+#include "../_layout/iso_tile_type_class.h"
 struct KamikazeControl;
 class LaserDrawClass;
-class LightSourceClass
-{
-public:
-    class PendingCellClass;
-};
+#include "../_layout/light_source_class.h"
 class LineTrail;
 struct MPlayerScoreType;
 class MSAnim;

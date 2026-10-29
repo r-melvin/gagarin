@@ -19,12 +19,7 @@
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Minimal CellClass view: only MapCoords @0x24 is touched.
-class CellClass
-{
-public:
-    char       _pad0[0x24];   // +0x00
-    CellStruct MapCoords;     // +0x24
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
 // Minimal HouseClass view: only the 130x130 threat grid @0x59F0 is touched.

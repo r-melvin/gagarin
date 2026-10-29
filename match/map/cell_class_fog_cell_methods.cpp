@@ -67,7 +67,7 @@ void CellClass::FogCell()
 
                 cell->Flags |= 0x400000;
 
-                for (Obj_00486A70* obj = cell->FirstObject; obj != 0;
+                for (Obj_00486A70* obj = (Obj_00486A70*)cell->FirstObject; obj != 0;
                      obj = obj->NextObject)
                 {
                     int rtti = obj->RTTI.Vptr->WhatAmI(&obj->RTTI);
@@ -99,7 +99,7 @@ void CellClass::FogCell()
                 }
 
                 if (fogged->Count > 0) {
-                    cell->FoggedObjects = fogged;
+                    cell->FoggedObjects = (DynamicVectorClass<FoggedObjectClass*>*)fogged;
                 } else if (fogged != 0) {
                     (fogged->*fogged->Vptr->At_00)(1);
                 }

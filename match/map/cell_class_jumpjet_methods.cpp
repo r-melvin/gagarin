@@ -32,8 +32,8 @@ static __inline ObjectClass* foot_cast(ObjectClass* object)
 bool CellClass::TryAssignJumpjet(ObjectClass* object)
 {
     if (object == 0) {
-        if (is_foot(Jumpjet))
-            Jumpjet_OccupyCell(foot_cast(Jumpjet), JumpjetClearCoords);
+        if (is_foot((ObjectClass*)Jumpjet))
+            Jumpjet_OccupyCell(foot_cast((ObjectClass*)Jumpjet), JumpjetClearCoords);
         Jumpjet = 0;
         return true;
     }

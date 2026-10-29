@@ -52,15 +52,7 @@ struct RegionLookupClass
     int CoordsToRegion(CellStruct const* coords);
 };
 
-class CellClass
-{
-public:
-    char       _base[0x24];   // +0x00  AbstractClass (vtable + base)
-    CellStruct MapCoords;     // +0x24  read by UpdateThreat
-
-    // 0x481870
-    void UpdateThreat(unsigned int SourceHouse, int ThreatLevel);
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_THREAT_METHODS_H

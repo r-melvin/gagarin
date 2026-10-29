@@ -19,10 +19,10 @@
 #include "foot_class.h"      // CellStruct
 
 // TintStruct — 0xC, bounded by Intensity @0x54 and IntensitySteps @0x64 in
-// RadSiteClass; the ctor never writes it, so its fields are not named here.
+// RadSiteClass; the ctor never writes it. Red/Green/Blue are as LightSourceClass::ChangeLevels uses them.
 #ifndef GG_MATCH_LAYOUT_TINTSTRUCT_DEFINED
 #define GG_MATCH_LAYOUT_TINTSTRUCT_DEFINED
-struct TintStruct { unsigned char unknown_00[0xC]; };
+struct TintStruct { int Red; int Green; int Blue; };
 GG_STATIC_ASSERT(sizeof(TintStruct) == 0xC);
 #endif
 
@@ -53,6 +53,8 @@ public:
     void SetRadLevel(int level);         // target 0x65B4F0, thiscall RET 4
     void Add(int level);                 // target 0x65B530, thiscall RET 4
     void Activate();                     // target 0x65B580, thiscall RET 0
+    int  GetRadLevel();                  // 0x65B510, thiscall
+    void Deactivate();                   // 0x65BB50, thiscall
 
     void*        LightSource;         // +0x24 LightSourceClass*; ctor @0x0065B1EA
     CDTimerClass RadLevelTimer;       // +0x28 ctor StartTime=[0x00A8ED84] @0x0065B1F3, TimeLeft @0x0065B1F6

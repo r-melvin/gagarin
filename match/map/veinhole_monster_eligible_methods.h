@@ -59,14 +59,6 @@ extern Map_0074D670 MapInstance_0074D670;
 // is recovered here; the struct exists so the routine is spelled as the static
 // member it is rather than as a free function, and so the next address on this
 // class has somewhere to attach.
-class VeinholeMonsterClass
-{
-public:
-    // FUNCTION: GAMEMD 0x74D670 — IsCellEligibleForVeinHole. A *static*
-    // member: the cell it inspects arrives in ECX, but the cell is the
-    // argument, not the receiver — the routine belongs to the monster class,
-    // not to CellClass.
-    static bool IsCellEligibleForVeinHole(const Cell_0074D670* cell);
-};
+#include "../_layout/veinhole_monster_class.h"
 
 #endif  // GG_MATCH_MAP_VEINHOLE_MONSTER_ELIGIBLE_METHODS_H

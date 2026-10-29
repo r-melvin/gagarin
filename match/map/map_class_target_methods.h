@@ -23,12 +23,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Minimal CellClass view: only MapCoords @0x24 is touched (written into
 // InvalidCell on the fallback path).
-class CellClass
-{
-public:
-    char       _pad0[0x24];   // +0x00
-    CellStruct MapCoords;     // +0x24
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
 // InvalidCell global (the dummy cell returned when the index is out of range

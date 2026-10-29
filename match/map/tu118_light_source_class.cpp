@@ -72,10 +72,7 @@ GG_STATIC_ASSERT(offsetof(GgLightSourceClassDynamicVector, CapacityIncrement) ==
 
 #include "../core/vector_class_operations.h"
 
-class LightSourceClass {
-public:
-    class PendingCellClass;
-};
+#include "../_layout/light_source_class.h"
 
 template class DynamicVectorClass<LightSourceClass::PendingCellClass*>;
 

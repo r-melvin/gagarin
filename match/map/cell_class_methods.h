@@ -32,12 +32,7 @@ int OverlayTypeIndexToTiberium(int idxOverlay);
 
 // TiberiumClass — only the AbstractTypeClass UIName pointer at +0x60 is needed
 // (GetUIName loads [EDX+0x60] from the array element). Full layout is P2.
-class TiberiumClass
-{
-public:
-    char           _pad00[0x60];   // +0x00  AbstractTypeClass prefix
-    const wchar_t* UIName;         // +0x60
-};
+#include "../_layout/tiberium_class.h"
 GG_STATIC_ASSERT(offsetof(TiberiumClass, UIName) == 0x60);
 
 // GLOBAL: GAMEMD 0x00B0F4EC — TiberiumClass::Array.Items (the vector object
@@ -56,27 +51,7 @@ GG_STATIC_ASSERT(offsetof(RulesRadShim, RadLevelMax) == 0x180C);
 // GLOBAL: GAMEMD 0x008871E0 — pointer to the active RulesClass instance.
 extern RulesRadShim* RulesGlobalPtr;
 
-class CellClass
-{
-public:
-    char       _base[0x24];                 // +0x00  AbstractClass (vtable + base)
-    CellStruct MapCoords;                    // +0x24  written by SetMapCoords
-    char       _pad28[0x44 - 0x28];          // +0x28
-    int        OverlayTypeIndex;             // +0x44  read by GetContainedTiberiumIndex
-    char       _pad48[0xF0 - 0x48];          // +0x48
-    double     RadLevel;                     // +0xF0  accumulated by RadLevel_Increase
-
-    // 0x484FF0
-    const wchar_t* GetUIName() const;
-    // 0x487CB0
-    int GetRadLevel();
-    // 0x485010
-    int GetContainedTiberiumIndex() const;
-    // 0x485240
-    void SetMapCoords(CellStruct const* coords);
-    // 0x487CE0
-    void RadLevel_Increase(double amount);
-};
+#include "../_layout/cell_class.h"
 
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 GG_STATIC_ASSERT(offsetof(CellClass, OverlayTypeIndex) == 0x44);

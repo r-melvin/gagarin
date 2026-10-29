@@ -41,20 +41,7 @@ typedef int (* WhatAmIFunc)(const ObjectClass*);
 
 // CellClass — a single map cell. This TU models only the two occupier-list
 // heads the queries dereference; the unknown base is padded to 0xE4.
-class CellClass
-{
-public:
-    char         _pad00[0xE4];   // +0x00  AbstractClass base + cell bookkeeping
-    ObjectClass* FirstObject;    // +0xE4  ground occupier list head
-    ObjectClass* AltObject;      // +0xE8  on-bridge occupier list head
-
-    // FUNCTION: GAMEMD 0x47EBA0  CellClass::GetUnit      (__thiscall)
-    UnitClass*     GetUnit(bool alt) const;
-    // FUNCTION: GAMEMD 0x47EBF0  CellClass::GetAircraft  (__thiscall)
-    AircraftClass* GetAircraft(bool alt) const;
-    // FUNCTION: GAMEMD 0x47EC40  CellClass::GetInfantry  (__thiscall)
-    InfantryClass* GetInfantry(bool alt) const;
-};
+#include "../_layout/cell_class.h"
 
 GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xE4);
 GG_STATIC_ASSERT(offsetof(CellClass, AltObject)   == 0xE8);

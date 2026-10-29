@@ -44,6 +44,11 @@ class BuildingClass;
 class BuildingTypeClass;
 class HouseClass;
 class FoggedObjectClass;
+class UnitClass;
+class AircraftClass;
+class InfantryClass;
+class TerrainClass;
+struct TunnelClass;
 
 class CellClass : public AbstractClass
 {
@@ -143,6 +148,54 @@ public:
     void FUN_0047F250(const Point2D* point, const RectangleStruct* clip, int level);
     // FUNCTION: GAMEMD 0x481130 (decl; reloc) -- true when the given slot's bit is clear in the (alt) occupation bits; RET 8.
     bool FUN_00481130(int slot, bool alt);
+
+    // Methods recovered in the map/ TUs (consolidated from per-TU views of this class).
+    // GAMEMD 0x481870 -- fold this cell's threat into the other houses' tables.
+    void UpdateThreat(unsigned int SourceHouse, int ThreatLevel);
+    // GAMEMD 0x481870 -- same address as UpdateThreat, named for the TechnoClass caller.
+    void AddThreat(HouseClass* pHouse, int threat);
+    // GAMEMD 0x487C70 (decl; reloc) -- stores the cell's RadSite.
+    void FUN_00487C70(void* radSite);
+    bool IsBridgeTile();          // GAMEMD 0x486750
+    bool IsWoodBridgeTile();      // GAMEMD 0x486770
+    bool IsTileInSet00AA0E24();   // GAMEMD 0x486790
+    void FogCell();
+    void ClearFoggedObjects();
+    void CleanFog();
+    bool TryAssignJumpjet(ObjectClass* object);   // GAMEMD 0x487D70
+    void MarkForRedraw();
+    const wchar_t* GetUIName() const;             // GAMEMD 0x484FF0
+    int GetRadLevel();                            // GAMEMD 0x487CB0
+    int GetContainedTiberiumIndex() const;        // GAMEMD 0x485010
+    void SetMapCoords(CellStruct const* coords);  // GAMEMD 0x485240
+    void RadLevel_Increase(double amount);        // GAMEMD 0x487CE0
+    void RadLevel_Decrease(double amount);
+    UnitClass*     GetUnit(bool alt) const;
+    AircraftClass* GetAircraft(bool alt) const;
+    InfantryClass* GetInfantry(bool alt) const;
+    void RevealCellObjects();                     // GAMEMD 0x483480
+    TunnelClass* GetTunnel() const;               // GAMEMD 0x484F20
+    ObjectClass* FindObjectOfType(int abs, bool alt) const; // GAMEMD 0x47C4D0
+    TerrainClass* GetTerrain(bool alt) const;     // GAMEMD 0x47C550
+    ObjectClass* GetSomeObject(int a, int b);     // GAMEMD 0x47C5A0
+    ObjectClass* FindObjectAt(int a, int b, bool alt); // GAMEMD 0x47C3D0
+    void RemoveContent(ObjectClass* object, bool alt);
+    void IncreaseSensorsOfHouse(int idxHouse);            // GAMEMD 0x487150
+    void DecreaseSensorsOfHouse(int idxHouse);            // GAMEMD 0x487160
+    void IncreaseDisguiseSensorsOfHouse(int idxHouse);    // GAMEMD 0x487170
+    void DecreaseDisguiseSensorsOfHouse(int idxHouse);    // GAMEMD 0x487180
+    bool IsLandType5() const;                             // GAMEMD 0x487DF0
+    bool FUN_00487E00() const;
+    CellClass* GetNeighbourCell(int facing) const;
+    void Unshroud();
+    void ReduceShroudCounter();
+    bool IsShrouded() const;
+    bool FUN_004879B0() const;
+    int GetContainedTiberiumValue() const;                // GAMEMD 0x485020
+    void IncreaseShroudCounter();                         // GAMEMD 0x487690
+    void SetWallOwner();
+    CoordStruct FindInfantrySubposition(const CoordStruct& coords, bool ignoreContents,
+                                        bool alt, bool useCellCoords);
 
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     DynamicVectorClass<FoggedObjectClass*>* FoggedObjects; // +0x28 RTTI .?AV?$DynamicVectorClass@PAVFoggedObjectClass@@@@

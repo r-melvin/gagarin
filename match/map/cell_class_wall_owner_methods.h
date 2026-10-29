@@ -69,17 +69,7 @@ extern Building_0047D210** DAT_00A8EB44;
 // GLOBAL: GAMEMD 0xA8EB50 — BuildingClass::Array.Count.
 extern int DAT_00A8EB50;
 
-class CellClass
-{
-public:
-    char _pad000[0x44];       // +0x0000
-    int  OverlayTypeIndex;    // +0x0044
-    char _pad048[0x8];        // +0x0048
-    int  WallOwnerIndex;      // +0x0050
-
-    // FUNCTION: GAMEMD 0x47D210
-    void SetWallOwner();
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, OverlayTypeIndex) == 0x44);
 GG_STATIC_ASSERT(offsetof(CellClass, WallOwnerIndex) == 0x50);
 

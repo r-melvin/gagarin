@@ -44,32 +44,7 @@ extern unsigned char CellOccupiersValid;
 // (ECX = this, no stack arguments) with no extra register traffic.
 typedef int (* WhatAmIFunc)(const ObjectClass*);
 
-class CellClass
-{
-public:
-    char           _pad00[0x7C];               // +0x00   AbstractClass base + cell bookkeeping
-    unsigned short SensorsOfHouses[24];        // +0x7C
-    unsigned short DisguiseSensorsOfHouses[24];// +0xAC
-    char           _padDC[0xE4 - 0xDC];        // +0xDC
-    ObjectClass*   FirstObject;                // +0xE4   ground occupier list head
-    char           _padE8[0xEC - 0xE8];        // +0xE8
-    int            LandType;                   // +0xEC
-    char           _padF0[0x100 - 0xF0];       // +0xF0
-    int            OccupyHeightsCoveringMe;    // +0x100
-
-    // FUNCTION: GAMEMD 0x487150
-    void IncreaseSensorsOfHouse(int idxHouse);
-    // FUNCTION: GAMEMD 0x487160
-    void DecreaseSensorsOfHouse(int idxHouse);
-    // FUNCTION: GAMEMD 0x487170
-    void IncreaseDisguiseSensorsOfHouse(int idxHouse);
-    // FUNCTION: GAMEMD 0x487180
-    void DecreaseDisguiseSensorsOfHouse(int idxHouse);
-    // FUNCTION: GAMEMD 0x487DF0
-    bool IsLandType5() const;
-    // FUNCTION: GAMEMD 0x487E00
-    bool FUN_00487E00() const;
-};
+#include "../_layout/cell_class.h"
 
 GG_STATIC_ASSERT(offsetof(CellClass, SensorsOfHouses)         == 0x7C);
 GG_STATIC_ASSERT(offsetof(CellClass, DisguiseSensorsOfHouses) == 0xAC);

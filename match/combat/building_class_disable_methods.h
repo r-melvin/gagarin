@@ -20,11 +20,6 @@
 #include "../_layout/anim_class.h"
 
 // LightSourceClass — only the switch called here.
-class LightSourceClass
-{
-public:
-    // FUNCTION: GAMEMD 0x554A80 (decl; reloc) — switch the light source.
-    void FUN_00554A80(char on);
-};
+#include "../_layout/light_source_class.h"
 
 #endif  // GG_MATCH_COMBAT_BUILDING_CLASS_DISABLE_METHODS_H

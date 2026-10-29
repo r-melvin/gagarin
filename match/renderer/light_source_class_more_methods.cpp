@@ -14,14 +14,14 @@
 // store the new values and, if currently lit, recompute the light converts.
 void LightSourceClass::ChangeLevels(int nIntensity, TintStruct Tint, unsigned long mode)
 {
-    if (LightIntensity != nIntensity ||
-        LightTint.Red != Tint.Red ||
-        LightTint.Red != Tint.Blue)
+    if (unknown_24 != nIntensity ||
+        TintRed != Tint.Red ||
+        TintRed != Tint.Blue)
     {
-        LightIntensity = nIntensity;
-        LightTint.Red = Tint.Red;
-        LightTint.Green = Tint.Green;
-        LightTint.Blue = Tint.Blue;
+        unknown_24 = nIntensity;
+        TintRed = Tint.Red;
+        TintGreen = Tint.Green;
+        TintBlue = Tint.Blue;
         if (Activated)
             Calculate(mode);
     }

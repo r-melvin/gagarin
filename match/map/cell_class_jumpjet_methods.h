@@ -14,40 +14,16 @@
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-// The AbstractClass flag byte at +0x14, as bit-fields (match/_layout/
-// abstract_class.h). Bit 2 marks a FootClass-derived object.
-struct JumpjetFlagBits
-{
-    bool IsTechno     : 1;             // bit 0
-    bool unknown_14_1 : 1;             // bit 1
-    bool IsFoot       : 1;             // bit 2
-};
-// Retail RTTI 0x817AF8 establishes the class key; public access preserves this ABI view.
-class ObjectClass
-{
-public:
-    char _pad00[0x14];                 // +0x0000
-    JumpjetFlagBits Flags;             // +0x0014
-};
-GG_STATIC_ASSERT(offsetof(ObjectClass, Flags) == 0x14);
 // FootClass::Jumpjet_OccupyCell @0x4E00B0 — __fastcall with the object in ECX
 // and the cell coordinate pushed. Declared only; relocation-normalised.
+class ObjectClass;
 void Jumpjet_OccupyCell(ObjectClass* object, CellStruct coords);
 
 // GLOBAL: GAMEMD 0x0089E748 — the coordinate handed over when a cell releases
 // its jumpjet occupant.
 extern CellStruct JumpjetClearCoords;
 
-class CellClass
-{
-public:
-    char         _pad00[0x24];          // +0x0000
-    CellStruct   MapCoords;             // +0x0024
-    char         _pad28[0xE0 - 0x28];   // +0x0028
-    ObjectClass* Jumpjet;               // +0x00E0
-
-    bool TryAssignJumpjet(ObjectClass* object);   // GAMEMD 0x487D70
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 GG_STATIC_ASSERT(offsetof(CellClass, Jumpjet)   == 0xE0);
 

@@ -122,6 +122,13 @@ public:
     int FUN_006DA080() const;
     void FUN_006D9FF0(Callback_006DA5C0 callback);
     void FUN_006DA5C0(const TRect<int>* rectangle, Callback_006DA5C0 callback); // 0x6DA5C0; RET 8
+    // Methods recovered in the renderer/ and ui/ TUs (consolidated from per-TU views).
+    bool CoordsToClient(const CoordStruct* coord, Point2D* point);
+    int* AdjustForZShapeMove(int* pDest, const int* pClient);
+    int* ApplyMatrix_Pixel(int* pOut, const int* pIn);
+    bool AddSelectable(void* pTechno, int x, int y);
+    Point2D* FUN_006D1FE0(Point2D* out, const Point2D* in);
+    void FUN_006D2140(const CoordStruct& coord, Point2D* out);   // 0x6D2140, void-result view
     unsigned short unknown_24[64];
     int unknown_A4;
     int unknown_A8;

@@ -56,7 +56,7 @@ bool CellClass::IsLandType5() const
 bool CellClass::FUN_00487E00() const
 {
     if (CellOccupiersValid) {
-        for (ObjectClass* obj = this->FirstObject; obj != 0;
+        for (ObjectClass* obj = (ObjectClass*)this->FirstObject; obj != 0;
              obj = (ObjectClass*)obj->NextObject) {
             if (((WhatAmIFunc)((void**)*(void**)obj)[11])(obj) == 6) {
                 if (obj != 0 && this->OccupyHeightsCoveringMe == 1) {

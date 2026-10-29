@@ -11,7 +11,7 @@
 // FUNCTION: GAMEMD 0x70F6E0  (__thiscall)
 // Re-stamp this object's threat contribution into a cell's per-house threat
 // map: take the old contribution out, recompute it, and put the new one in.
-void TechnoClass::UpdateThreatInCell(CellClass* Cell)
+void TechnoView_0070F6E0::UpdateThreatInCell(CellClass* Cell)
 {
     if (Cell != 0) {
         Cell->AddThreat((this->*this->Vfptr->At_38)(), -this->ThreatPosed);

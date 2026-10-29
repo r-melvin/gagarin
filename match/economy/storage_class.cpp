@@ -47,12 +47,7 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TiberiumPtr, Items) == 0x04);
 
 // TiberiumClass: only Value @0xB8 is needed here. FILD dword[EAX+0xB8] in
 // 0x6C9600 loads it as an int; YRpp names it `Value`.
-class TiberiumClass
-{
-public:
-    char _layout_pad_P2[0xB8];     // full AbstractTypeClass-derived layout = P2
-    int  Value;                    // +0xB8
-};
+#include "../_layout/tiberium_class.h"
 GG_STATIC_ASSERT(offsetof(TiberiumClass, Value) == 0xB8);  // pointer-free: holds on both ABIs
 
 // GLOBAL: GAMEMD 0xB0F4E8 — the engine's global Tiberium type array.

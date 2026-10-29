@@ -31,17 +31,7 @@ extern int GgWoodBridgeTileBase;
 // GLOBAL: GAMEMD 0xAA0E24 — first iso-tile index of the set 0x486790 tests.
 extern int GgTileBase_00AA0E24;
 
-class CellClass
-{
-public:
-    // Declared ascending by retail address (reccmp/isle TU discipline).
-    bool IsBridgeTile();          // GAMEMD 0x486750
-    bool IsWoodBridgeTile();      // GAMEMD 0x486770
-    bool IsTileInSet00AA0E24();   // GAMEMD 0x486790
-
-    char _pad_000[0x38];      // +0x00
-    int  IsoTileTypeIndex;    // +0x38
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, IsoTileTypeIndex) == 0x38);
 
 #endif // GG_MATCH_MAP_CELL_CLASS_BRIDGE_TILE_QUERIES_H

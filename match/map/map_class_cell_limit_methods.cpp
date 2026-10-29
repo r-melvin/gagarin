@@ -9,13 +9,8 @@
 #include "../_rt/gg_static_assert.h"
 
 // Minimal cell view: only the signed byte +0x11B is read.
-class CellClass
-{
-public:
-    char        unknown_000[0x11B];
-    signed char unknown_11B;
-};
-GG_STATIC_ASSERT(offsetof(CellClass, unknown_11B) == 0x11B);
+#include "../_layout/cell_class.h"
+GG_STATIC_ASSERT(offsetof(CellClass, Level) == 0x11B);
 
 // Minimal MapClass view: the cell table and the capped count.
 class MapClass
@@ -55,7 +50,7 @@ int MapClass::FUN_00588990()
         for (int i = 0; i < n; ++i) {
             CellClass* cell = unknown_13C[i];
             if (cell) {
-                ClampMax(unknown_148, cell->unknown_11B);
+                ClampMax(unknown_148, cell->Level);
                 ClampMinZero(unknown_148);
             }
         }

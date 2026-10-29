@@ -13,7 +13,7 @@
 // DestroyAll below, written out again: retail carries two copies of the sweep,
 // so the source did too. See DestroyAll for why the sweep is phrased the way it
 // is.
-void VeinholeMonsterClass::UpdateAllVeinholes()
+void VeinholeMonsterView_0074CDF0::UpdateAllVeinholes()
 {
     int i;
 
@@ -23,9 +23,9 @@ void VeinholeMonsterClass::UpdateAllVeinholes()
 
     i = VeinholeArray.Count - 1;
     if (i >= 0) {
-        VeinholeMonsterClass** items = VeinholeArray.Items;
+        VeinholeMonsterView_0074CDF0** items = VeinholeArray.Items;
         do {
-            VeinholeMonsterClass* monster = items[i];
+            VeinholeMonsterView_0074CDF0* monster = items[i];
             if (monster->IsDead && monster->unknown_B0->Count == 0) {
                 if (monster) {
                     delete monster;
@@ -51,13 +51,13 @@ void VeinholeMonsterClass::UpdateAllVeinholes()
 // outside that test the null path jumps to the reload instead of past it
 // (95.7%). VC6 folds the explicit test into delete's implicit one, so the
 // guard costs no instruction.
-void VeinholeMonsterClass::DestroyAll()
+void VeinholeMonsterView_0074CDF0::DestroyAll()
 {
     int i = VeinholeArray.Count - 1;
     if (i >= 0) {
-        VeinholeMonsterClass** items = VeinholeArray.Items;
+        VeinholeMonsterView_0074CDF0** items = VeinholeArray.Items;
         do {
-            VeinholeMonsterClass* monster = items[i];
+            VeinholeMonsterView_0074CDF0* monster = items[i];
             if (monster->IsDead && monster->unknown_B0->Count == 0) {
                 if (monster) {
                     delete monster;
@@ -73,7 +73,7 @@ void VeinholeMonsterClass::DestroyAll()
 //
 // IPersistStream::Save — forwards the receiver and both stream arguments to the
 // shared object saver.
-long __stdcall VeinholeMonsterClass::Save(void* pStm, int fClearDirty)
+long __stdcall VeinholeMonsterView_0074CDF0::Save(void* pStm, int fClearDirty)
 {
     return FUN_00410320(this, pStm, fClearDirty);
 }
@@ -81,7 +81,7 @@ long __stdcall VeinholeMonsterClass::Save(void* pStm, int fClearDirty)
 // FUNCTION: GAMEMD 0x74EF00
 //
 // The terrain type a veinhole is drawn as, taken from the rules.
-void* VeinholeMonsterClass::GetTerrainType()
+void* VeinholeMonsterView_0074CDF0::GetTerrainType()
 {
     return RulesInstance->VeinholeTerrainType;
 }

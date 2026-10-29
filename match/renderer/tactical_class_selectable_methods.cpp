@@ -24,7 +24,7 @@
 // single `LEA EAX,[EAX+EAX*2]` instead of hoisting `&entry` with a SHL.
 bool Tactical::AddSelectable(void* pTechno, int x, int y)
 {
-    int count = this->SelectableCount;
+    int count = this->unknown_DB0;
 
     if (count != 500
         && x >= -32 && x <= DAT_00886FA8 + 32
@@ -32,13 +32,15 @@ bool Tactical::AddSelectable(void* pTechno, int x, int y)
     {
         TacticalSelectables[count].Techno = pTechno;
 
-        Point2D pos = this->TacticalPos;
+        Point2D pos;
+        pos.X = this->unknown_B0.unknown_00;
+        pos.Y = this->unknown_B0.unknown_04;
         Point2D pt;
         pt.X = x + pos.X;
         pt.Y = y + pos.Y;
-        TacticalSelectables[this->SelectableCount].Point = pt;
+        TacticalSelectables[this->unknown_DB0].Point = pt;
 
-        this->SelectableCount = this->SelectableCount + 1;
+        this->unknown_DB0 = this->unknown_DB0 + 1;
         return true;
     }
     return false;

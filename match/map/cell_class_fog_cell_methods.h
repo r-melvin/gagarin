@@ -163,22 +163,7 @@ GG_STATIC_ASSERT(offsetof(ObjVtbl_00486A70, At_150)       == 0x150);
 GG_STATIC_ASSERT(offsetof(ObjVtbl_00486A70, GetMapCoords) == 0x1B8);
 
 // ---------------------------------------------------------------------------
-class CellClass
-{
-public:
-    char              _pad000[0x24];            // +0x0000
-    CellStruct        MapCoords;                // +0x0024
-    FogVec_00486A70*  FoggedObjects;            // +0x0028
-    char              _pad02C[0xE4 - 0x2C];     // +0x002C
-    Obj_00486A70*     FirstObject;              // +0x00E4
-    char              _pad0E8[0x11B - 0xE8];    // +0x00E8
-    signed char       Level;                    // +0x011B
-    char              _pad11C[0x140 - 0x11C];   // +0x011C
-    int               Flags;                    // +0x0140
-
-    // FUNCTION: GAMEMD 0x486A70 — CellClass::FogCell.
-    void FogCell();
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords)     == 0x24);
 GG_STATIC_ASSERT(offsetof(CellClass, FoggedObjects) == 0x28);
 GG_STATIC_ASSERT(offsetof(CellClass, FirstObject)   == 0xE4);

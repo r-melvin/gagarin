@@ -50,22 +50,7 @@ struct Map_00486E70
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_00486E70 DAT_0087F7E8;
 
-class CellClass
-{
-public:
-    char       _pad000[0x24];   // +0x0000
-    CellStruct MapCoords;       // +0x0024
-
-    // FUNCTION: GAMEMD 0x47FF80 (decl; reloc) — the cell's own screen rect.
-    RectangleStruct FUN_0047FF80();
-    // FUNCTION: GAMEMD 0x47FB90 (decl; reloc) — the overlapper rect.
-    RectangleStruct FUN_0047FB90();
-    // FUNCTION: GAMEMD 0x47FDE0 (decl; reloc) — the occupier rect.
-    RectangleStruct FUN_0047FDE0();
-
-    // FUNCTION: GAMEMD 0x486E70 — CellClass::MarkForRedraw.
-    void MarkForRedraw();
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_MARK_REDRAW_METHODS_H

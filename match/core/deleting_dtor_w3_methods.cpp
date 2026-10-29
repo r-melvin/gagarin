@@ -26,27 +26,7 @@ struct TubeMapView
 // GLOBAL: GAMEMD 0x87F7E8 -- MapClass::Instance (an object, not a pointer).
 extern TubeMapView DAT_0087F7E8;
 
-// A tube's start and end cells are copied from one dword.
-struct TubeCell
-{
-    short X;
-    short Y;
-};
-
-class TubeClass : public AbstractClass
-{
-public:
-    TubeClass(const TubeCell* cell, int direction);
-    virtual ~TubeClass();
-    TubeCell StartCell;      // +0x24
-    TubeCell EndCell;        // +0x28
-    int Direction;           // +0x2C
-    int Steps[100];          // +0x30
-    int StepCount;           // +0x1C0
-};
-GG_STATIC_ASSERT(offsetof(TubeClass, StartCell) == 0x24);
-GG_STATIC_ASSERT(offsetof(TubeClass, Steps) == 0x30);
-GG_STATIC_ASSERT(offsetof(TubeClass, StepCount) == 0x1C0);
+#include "../_layout/tube_class.h"
 
 // GLOBAL: GAMEMD 0x8B4138 -- the tube registry.
 extern DynamicVectorClass<TubeClass*> DAT_008B4138;

@@ -19,7 +19,7 @@ AnimClass* HouseClass::PsiWarn(CellClass* target, BulletClass* bullet,
 {
     AnimTypeClass* type =
         ((AnimTypeClass**)AnimTypeArray.Items)[AnimType_FindIndex(animName)];
-    CoordStruct coords = target->GetCoords();
+    CoordStruct coords = target->vf_18();
 
     AnimClass* anim = new AnimClass(type, coords, 0, 1, 0x600, 0, false);
     anim->FUN_00424C90(bullet);

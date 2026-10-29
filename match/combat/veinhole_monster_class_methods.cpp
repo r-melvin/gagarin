@@ -44,7 +44,7 @@ VeinholeMonsterClass* VeinholeMonsterClass::GetVeinholeMonsterAt(CellStruct* pCe
 {
     for (int i = VeinholeArray.Count - 1; i >= 0; --i)
     {
-        if (((VeinholeMonsterClass**)VeinholeArray.Items)[i]->SpreadData[CellStructToIndex(pCell)] != 0)
+        if (((VeinholeMonsterClass**)VeinholeArray.Items)[i]->GrowthLogic.SpreadData[CellStructToIndex(pCell)] != 0)
             return ((VeinholeMonsterClass**)VeinholeArray.Items)[i];
     }
     return 0;

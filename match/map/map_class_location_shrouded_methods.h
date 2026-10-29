@@ -23,17 +23,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
-class CellClass
-{
-public:
-    char       _pad000[0x24];           // +0x0000
-    CellStruct MapCoords;               // +0x0024
-    char       _pad028[0x12C - 0x28];   // +0x0028
-    int        AltFlags;                // +0x012C  bit 3 = shrouded
-
-    // FUNCTION: GAMEMD 0x481810 (decl; reloc) — CellClass::GetNeighbourCell.
-    CellClass* GetNeighbourCell(int facing) const;
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 GG_STATIC_ASSERT(offsetof(CellClass, AltFlags)  == 0x12C);
 

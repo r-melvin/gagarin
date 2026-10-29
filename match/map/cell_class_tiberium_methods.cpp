@@ -24,7 +24,7 @@ void CellClass::IncreaseShroudCounter()
     if (old == -1)
         this->ShroudCounter = 0;
     this->ShroudCounter = this->ShroudCounter + 1;
-    if (this->ShroudCounter > this->GapsCoveringThisCell)
+    if (this->ShroudCounter > (int)this->GapsCoveringThisCell)
         this->ShroudCounter = this->GapsCoveringThisCell;
     if (old <= 0 && this->ShroudCounter > 0)
         this->Flags = (CellFlags)(this->Flags | 0x20);

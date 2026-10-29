@@ -9,8 +9,11 @@
 class TiberiumClass
 {
 public:
-    char _pad0[0xB8];   // AbstractTypeClass-derived head = P2
-    int  Value;         // +0xB8
+    char           _pad0[0x60];   // AbstractTypeClass-derived head = P2
+    const wchar_t* UIName;        // +0x60 (read by CellClass::GetUIName 0x484FF0)
+    char           _pad64[0xB8 - 0x64];
+    int            Value;         // +0xB8
 };
+GG_STATIC_ASSERT(offsetof(TiberiumClass, UIName) == 0x60);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, Value) == 0xB8);
 #endif

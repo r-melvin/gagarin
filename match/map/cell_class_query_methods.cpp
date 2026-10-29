@@ -25,7 +25,7 @@
 // +0xFC). Nothing is read back, so the loop is a plain forward walk.
 void CellClass::RevealCellObjects()
 {
-    for (ObjectClass* object = FirstObject; object != 0; object = (ObjectClass*)object->NextObject) {
+    for (ObjectClass* object = (ObjectClass*)FirstObject; object != 0; object = (ObjectClass*)object->NextObject) {
         (*(RevealFunc*)(*(char**)object + 0xFC))(object);
     }
 }
@@ -36,8 +36,8 @@ void CellClass::RevealCellObjects()
 // array count.
 TunnelClass* CellClass::GetTunnel() const
 {
-    if (TunnelIndex >= 0 && TunnelIndex < TunnelArrayCount)
-        return TunnelArrayItems[TunnelIndex];
+    if (TubeIndex >= 0 && TubeIndex < TunnelArrayCount)
+        return TunnelArrayItems[TubeIndex];
 
     return 0;
 }
@@ -48,7 +48,7 @@ TunnelClass* CellClass::GetTunnel() const
 ObjectClass* CellClass::FindObjectOfType(int abs, bool alt) const
 {
     if (CellOccupiersValid) {
-        ObjectClass* obj = alt ? this->AltObject : this->FirstObject;
+        ObjectClass* obj = (ObjectClass*)(alt ? this->AltObject : this->FirstObject);
         for (; obj; obj = (ObjectClass*)obj->NextObject) {
             if (WHAT_AM_I(obj) == abs) {
                 return obj;
@@ -63,7 +63,7 @@ ObjectClass* CellClass::FindObjectOfType(int abs, bool alt) const
 BuildingClass* CellClass::GetBuilding() const
 {
     if (CellOccupiersValid) {
-        for (ObjectClass* obj = this->FirstObject; obj;
+        for (ObjectClass* obj = (ObjectClass*)this->FirstObject; obj;
              obj = (ObjectClass*)obj->NextObject) {
             if (WHAT_AM_I(obj) == ABS_BUILDING) {
                 return (BuildingClass*)obj;
@@ -78,7 +78,7 @@ BuildingClass* CellClass::GetBuilding() const
 TerrainClass* CellClass::GetTerrain(bool alt) const
 {
     if (CellOccupiersValid) {
-        ObjectClass* obj = alt ? this->AltObject : this->FirstObject;
+        ObjectClass* obj = (ObjectClass*)(alt ? this->AltObject : this->FirstObject);
         for (; obj; obj = (ObjectClass*)obj->NextObject) {
             if (WHAT_AM_I(obj) == ABS_TERRAIN) {
                 return (TerrainClass*)obj;
@@ -102,7 +102,7 @@ ObjectClass* CellClass::GetSomeObject(int a, int b)
     ObjectClass* object = 0;
 
     if (CellOccupiersValid) {
-        for (object = FirstObject; object != 0; object = (ObjectClass*)object->NextObject) {
+        for (object = (ObjectClass*)FirstObject; object != 0; object = (ObjectClass*)object->NextObject) {
             if (WHAT_AM_I(object) == 2)
                 break;
         }
@@ -116,7 +116,7 @@ ObjectClass* CellClass::GetSomeObject(int a, int b)
         return found;
 
     if (CellOccupiersValid) {
-        for (object = FirstObject; object != 0; object = (ObjectClass*)object->NextObject) {
+        for (object = (ObjectClass*)FirstObject; object != 0; object = (ObjectClass*)object->NextObject) {
             if (WHAT_AM_I(object) == ABS_TERRAIN)
                 return object;
         }

@@ -19,7 +19,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class TechnoClass;
+class TechnoView_0070F6E0;
 class HouseClass;
 struct TechnoVtbl;
 
@@ -28,12 +28,7 @@ struct TechnoVtbl;
 // so it is an ordinary __thiscall member taking two pushed arguments; the
 // compiler rejects the receiver convention on a free function, so it is
 // declared (never defined) as a member of the cell.
-class CellClass
-{
-public:
-    // FUNCTION: GAMEMD 0x481870 (decl; reloc) — CellClass::AddThreat
-    void AddThreat(HouseClass* pHouse, int threat);
-};
+#include "../_layout/cell_class.h"
 
 // ---------------------------------------------------------------------------
 // TechnoClass — minimal offset-pinned model for UpdateThreatInCell. The pad gap
@@ -42,7 +37,7 @@ public:
 // are modelled. The two virtual dispatches (slots +0x38 / +0x2C0) are written as
 // ordinary member-pointer calls through the modelled vtable struct.
 // ---------------------------------------------------------------------------
-class TechnoClass
+class TechnoView_0070F6E0
 {
 public:
     // FUNCTION: GAMEMD 0x70F6E0  (__thiscall)
@@ -53,13 +48,13 @@ public:
     int          ThreatPosed;             // +0x508
 };
 
-GG_STATIC_ASSERT(offsetof(TechnoClass, Vfptr)       == 0x000);
-GG_STATIC_ASSERT(offsetof(TechnoClass, ThreatPosed) == 0x508);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070F6E0, Vfptr)       == 0x000);
+GG_STATIC_ASSERT(offsetof(TechnoView_0070F6E0, ThreatPosed) == 0x508);
 
 // The class has to be complete before these typedefs, or VC6 falls back to the
 // multiple-inheritance member-pointer form and emits a `this` adjustment.
-typedef HouseClass* (TechnoClass::*GetOwningHouseFn)();
-typedef int         (TechnoClass::*CalculateThreatFn)();
+typedef HouseClass* (TechnoView_0070F6E0::*GetOwningHouseFn)();
+typedef int         (TechnoView_0070F6E0::*CalculateThreatFn)();
 
 // Primary vtable slots reached from this TU.
 //   +0x038  GetOwningHouse()   no arguments, the owning house

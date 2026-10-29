@@ -35,13 +35,8 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 extern CellStruct DAT_008A03F8;
 
 // Only the flags dword at +0x12C is touched here.
-class CellClass
-{
-public:
-    char _pad000[0x12C];   // +0x0000
-    int  Flags;            // +0x012C  bit 1 = foundation-marked
-};
-GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x12C);
+#include "../_layout/cell_class.h"
+GG_STATIC_ASSERT(offsetof(CellClass, AltFlags) == 0x12C);
 
 // DisplayClass (MapClass base included); only CurrentFoundationData at
 // +0x117C and the two inherited cell queries are used.

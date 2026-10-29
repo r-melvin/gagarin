@@ -31,23 +31,7 @@ public:
     CellClass* GetCellAt(CellStruct const& mapCoords) const;  // 0x5657A0
 };
 
-class CellClass
-{
-public:
-    char        _base[0x24];                 // +0x00  AbstractClass (vtable + base)
-    CellStruct  MapCoords;                    // +0x24
-    char        _pad28[0x11B - 0x28];         // +0x28
-    signed char Level;                        // +0x11B
-    char        _pad11c[0x140 - 0x11C];       // +0x11C
-    int         Flags;                        // +0x140
-
-    // 0x486C50  CellClass::ClearFoggedObjects — retail callee we are NOT
-    // matching; declared (no body) so cl emits a relocatable __thiscall call.
-    void ClearFoggedObjects();
-
-    // 0x486BF0
-    void CleanFog();
-};
+#include "../_layout/cell_class.h"
 
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 GG_STATIC_ASSERT(offsetof(CellClass, Level)     == 0x11B);

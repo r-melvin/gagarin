@@ -37,12 +37,12 @@ extern Rules_0074EF00* RulesInstance;
 // VeinholeMonsterClass*. Only Items @+0x04 (0xB1D294) and Count @+0x10
 // (0xB1D2A0) are touched here.
 // ---------------------------------------------------------------------------
-class VeinholeMonsterClass;
+class VeinholeMonsterView_0074CDF0;
 
 struct VeinholeArray_0074CDF0
 {
     void*                   _vtable;   // +0x00
-    VeinholeMonsterClass**  Items;     // +0x04
+    VeinholeMonsterView_0074CDF0**  Items;     // +0x04
     int                     Capacity;  // +0x08
     char                    _pad00C[4];
     int                     Count;     // +0x10
@@ -69,7 +69,7 @@ GG_STATIC_ASSERT(offsetof(Queue_0074CDF0, Count) == 0x00);
 // deleting destructor @+0x20 (index 8) and Update @+0x5C (index 23). No
 // constructor is defined here, so no vtable is emitted.
 // ---------------------------------------------------------------------------
-class VeinholeMonsterClass
+class VeinholeMonsterView_0074CDF0
 {
 public:
     virtual long vf_00();   // +0x00  IUnknown
@@ -81,7 +81,7 @@ public:
     // FUNCTION: GAMEMD 0x74EEE0 — IPersistStream::Save, __stdcall.
     virtual long __stdcall Save(void* pStm, int fClearDirty);   // +0x18
     virtual long vf_1C();   // +0x1C  GetSizeMax
-    virtual ~VeinholeMonsterClass();   // +0x20  deleting destructor
+    virtual ~VeinholeMonsterView_0074CDF0();   // +0x20  deleting destructor
     virtual long vf_24();
     virtual long vf_28();
     virtual long vf_2C();
@@ -112,11 +112,11 @@ public:
     // FUNCTION: GAMEMD 0x74EF00
     static void* GetTerrainType();
 };
-GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, unknown_B0) == 0xB0);
-GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, IsDead)      == 0x100);
+GG_STATIC_ASSERT(offsetof(VeinholeMonsterView_0074CDF0, unknown_B0) == 0xB0);
+GG_STATIC_ASSERT(offsetof(VeinholeMonsterView_0074CDF0, IsDead)      == 0x100);
 
 // FUNCTION: GAMEMD 0x410320 (decl; reloc) — the shared object save, __stdcall
 // with the receiver pushed first.
-long __stdcall FUN_00410320(VeinholeMonsterClass* subject, void* pStm, int fClearDirty);
+long __stdcall FUN_00410320(VeinholeMonsterView_0074CDF0* subject, void* pStm, int fClearDirty);
 
 #endif  // GG_MATCH_MAP_VEINHOLE_MONSTER_METHODS_H

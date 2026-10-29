@@ -59,9 +59,9 @@ void DisplayClass::MarkFoundation(CellStruct const* baseCell, bool mark)
             if (CoordinatesLegal(cell)) {
                 CellClass* pCell = GetCellAt(cell);
                 if (mark) {
-                    pCell->Flags |= 2;
+                    pCell->AltFlags |= 2;
                 } else {
-                    pCell->Flags &= ~2;
+                    pCell->AltFlags &= ~2;
                 }
             }
         }

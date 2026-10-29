@@ -50,22 +50,7 @@ void __cdecl GameDeallocate(void* ptr);
 // (index 8): GetClassID@0x0C, Save@0x18, dtor-thunk@0x20 (0x00410470). Eight
 // preceding virtual slots reproduce that index; the class is never instantiated
 // here, so no vtable/bodies are emitted.
-class VeinholeMonsterClass
-{
-public:
-    virtual long vf_00();  // vtable +0x00
-    virtual long vf_04();  // vtable +0x04
-    virtual long vf_08();  // vtable +0x08
-    virtual long vf_0c();  // vtable +0x0C  (GetClassID slot)
-    virtual long vf_10();  // vtable +0x10
-    virtual long vf_14();  // vtable +0x14
-    virtual long vf_18();  // vtable +0x18  (Save slot)
-    virtual long vf_1c();  // vtable +0x1C
-    virtual ~VeinholeMonsterClass();  // vtable +0x20  (deleting dtor)
-
-    static void DeleteAll();                    // GAMEMD 0x74D760
-    static void DeleteVeinholeGrowthData();     // GAMEMD 0x74E880
-};
+#include "../_layout/veinhole_monster_class.h"
 
 // GLOBAL: GAMEMD 0x00B1D2F0 — the lazily allocated per-cell vein growth table.
 // DeleteVeinholeGrowthData frees it through the same game-heap deallocator and

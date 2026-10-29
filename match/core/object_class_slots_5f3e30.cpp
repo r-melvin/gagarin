@@ -27,12 +27,7 @@ GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_BC4) == 0xBC4);
 GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_FA8) == 0xFA8);
 
 // The map cell (read-only here).
-class CellClass
-{
-public:
-    char unknown_000[0xEC];
-    int  unknown_EC;                 // +0xEC  2 for the cells a flaming guy splashes in
-};
+#include "../_layout/cell_class.h"
 struct Point2D;
 
 // The map object at 0x87F7E8 (only the entry points used here).
@@ -163,7 +158,7 @@ void ObjectClass::vf_23()
                         anim->Timer = TimerStarted(1);
                         anim->Value = ((AnimTypeClass*)anim->Type)->RunningFrames * 8 + 1;
                         CoordStruct coord = anim->Location;
-                        if (DAT_0087F7E8.FUN_00565730(&coord)->unknown_EC == 2) {
+                        if (DAT_0087F7E8.FUN_00565730(&coord)->LandType == 2) {
                             new AnimClass(DAT_008871E0->unknown_BC4[0], CoordRaised(anim->Location, 3), 0, 1, 0x600, 0, false);
                         }
                     }

@@ -48,18 +48,7 @@ struct CellStruct_0047EA90
 GG_STATIC_ASSERT(sizeof(CellStruct_0047EA90) == 4);
 
 // CellClass — only the members RemoveContent touches.
-class CellClass
-{
-public:
-    char                _pad00[0x24];      // +0x00  AbstractClass base
-    CellStruct_0047EA90 MapCoords;         // +0x24
-    char                _pad28[0xE4 - 0x28];// +0x28
-    ObjectClass*        FirstObject;       // +0xE4  ground occupier list head
-    ObjectClass*        AltObject;         // +0xE8  on-bridge occupier list head
-
-    // FUNCTION: GAMEMD 0x47EA90  CellClass::RemoveContent (__thiscall)
-    void RemoveContent(ObjectClass* object, bool alt);
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords)   == 0x24);
 GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xE4);
 GG_STATIC_ASSERT(offsetof(CellClass, AltObject)   == 0xE8);

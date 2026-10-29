@@ -29,7 +29,7 @@ struct tagCONNECTDATA { void* pUnk; unsigned long dwCookie; bool operator==(cons
 template class VectorClass<tagCONNECTDATA>;
 template class DynamicVectorClass<tagCONNECTDATA>;
 
-class FoggedObjectClass { public: struct DrawRecord { int unknown_00; int unknown_04; unsigned char unknown_08; int unknown_0C; DrawRecord() : unknown_00(0), unknown_04(0), unknown_08(0), unknown_0C(0) {} DrawRecord(const DrawRecord& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08), unknown_0C(o.unknown_0C) {} bool operator==(const DrawRecord& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04; } bool operator!=(const DrawRecord& o) const { return !(*this==o); } }; };
+#include "../_layout/fogged_object_class.h"
 // FUNCTION: GAMEMD 0x004D29B0
 // VectorClass<FoggedObjectClass::DrawRecord>::operator==
 // FUNCTION: GAMEMD 0x004D2A10

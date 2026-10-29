@@ -33,18 +33,8 @@ extern int DAT_00886FA8;
 // GLOBAL: GAMEMD 0x886FAC — view bound height.
 extern int DAT_00886FAC;
 
-class Tactical
-{
-public:
-    char    _pad000[0xB0];    // +0x0000
-    Point2D TacticalPos;      // +0x00B0
-    char    _pad0B8[0xDB0 - 0xB8];  // +0x00B8
-    int     SelectableCount;  // +0x0DB0
-
-    // FUNCTION: GAMEMD 0x6D9EF0
-    bool AddSelectable(void* pTechno, int x, int y);
-};
-GG_STATIC_ASSERT(offsetof(Tactical, TacticalPos) == 0xB0);
-GG_STATIC_ASSERT(offsetof(Tactical, SelectableCount) == 0xDB0);
+#include "../_layout/tactical.h"
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_B0) == 0xB0);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_DB0) == 0xDB0);
 
 #endif  // GG_MATCH_RENDERER_TACTICAL_CLASS_SELECTABLE_METHODS_H

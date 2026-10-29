@@ -25,29 +25,7 @@ class HouseClass;
 
 // The warn target: only its vtable+0x48 GetCoords (by-value CoordStruct
 // return, hence the hidden out-pointer push) is used.  Never instantiated.
-class CellClass
-{
-public:
-    virtual void vf00() = 0;   // vtable+0x00
-    virtual void vf04() = 0;   // vtable+0x04
-    virtual void vf08() = 0;   // vtable+0x08
-    virtual void vf0C() = 0;   // vtable+0x0C
-    virtual void vf10() = 0;   // vtable+0x10
-    virtual void vf14() = 0;   // vtable+0x14
-    virtual void vf18() = 0;   // vtable+0x18
-    virtual void vf1C() = 0;   // vtable+0x1C
-    virtual void vf20() = 0;   // vtable+0x20
-    virtual void vf24() = 0;   // vtable+0x24
-    virtual void vf28() = 0;   // vtable+0x28
-    virtual void vf2C() = 0;   // vtable+0x2C
-    virtual void vf30() = 0;   // vtable+0x30
-    virtual void vf34() = 0;   // vtable+0x34
-    virtual void vf38() = 0;   // vtable+0x38
-    virtual void vf3C() = 0;   // vtable+0x3C
-    virtual void vf40() = 0;   // vtable+0x40
-    virtual void vf44() = 0;   // vtable+0x44
-    virtual CoordStruct GetCoords() const = 0;   // vtable+0x48
-};
+#include "../_layout/cell_class.h"
 
 // AnimClass — sizeof 0x1C8; ctor + two setters are body-less (reloc CALLs).
 class AnimClass

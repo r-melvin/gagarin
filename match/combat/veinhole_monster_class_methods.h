@@ -65,22 +65,9 @@ void* LoadVeinholeSHP(const char* name, char fileType);
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
-class VeinholeMonsterClass
-{
-public:
-    static VeinholeMonsterClass* GetVeinholeMonsterFrom(CellStruct* pCell);
-    static VeinholeMonsterClass* GetVeinholeMonsterAt(CellStruct* pCell);
-    static void LoadVeinholeArt(int idxTheatre);
+#include "../_layout/veinhole_monster_class.h"
 
-    // Only the two members the lookups touch are modelled (full layout is P2):
-    //   SpreadData (CellIndexesWithVeins) bool* @0xC4, Position CellStruct @0xF8.
-    char       _base0[0xC4];   // +0x00
-    char*      SpreadData;     // +0xC4  bool array, indexed by cell index
-    char       _pad1[0xF8 - 0xC8]; // +0xC8
-    CellStruct Position;       // +0xF8
-};
-
-GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, SpreadData) == 0xC4);
+GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, GrowthLogic) + offsetof(VeinholeLogic, SpreadData) == 0xC4);
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, Position)   == 0xF8);
 
 #endif  // GG_MATCH_COMBAT_VEINHOLE_MONSTER_CLASS_H

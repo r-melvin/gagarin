@@ -18,18 +18,7 @@
 #include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x8);
 
-class Tactical
-{
-public:
-    char     _pad000[0xDE4];  // +0x0000
-    Matrix3D IsoTransformMatrix;  // +0x0DE4  passed to MatrixApply in EDX
-
-    // FUNCTION: GAMEMD 0x6D1FE0
-    int* AdjustForZShapeMove(int* pDest, const int* pClient);
-
-    // FUNCTION: GAMEMD 0x6D2070
-    int* ApplyMatrix_Pixel(int* pOut, const int* pIn);
-};
-GG_STATIC_ASSERT(offsetof(Tactical, IsoTransformMatrix) == 0xDE4);
+#include "../_layout/tactical.h"
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_DE4) == 0xDE4);
 
 #endif  // GG_MATCH_RENDERER_TACTICAL_CLASS_MATRIX_METHODS_H

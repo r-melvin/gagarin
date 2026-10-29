@@ -11,10 +11,10 @@
 #include <new.h>
 #include "../_layout/abstract_class.h"
 
-class LightSourceClass : public AbstractClass
+class LightSourceView_005550C0 : public AbstractClass
 {
 public:
-    LightSourceClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
+    LightSourceView_005550C0(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
@@ -23,12 +23,12 @@ public:
 };
 
 // FUNCTION: GAMEMD 0x5550C0
-HRESULT __stdcall LightSourceClass::Load(IStream* pStm)
+HRESULT __stdcall LightSourceView_005550C0::Load(IStream* pStm)
 {
     HRESULT hr = AbstractClass::Load(pStm);
     if (hr < 0) {
         return hr;
     }
-    new (this) LightSourceClass(AbstractNoInit());
+    new (this) LightSourceView_005550C0(AbstractNoInit());
     return 0;
 }

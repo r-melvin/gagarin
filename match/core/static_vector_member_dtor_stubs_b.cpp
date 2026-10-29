@@ -16,12 +16,8 @@ class AnimClass;
 class LaserDrawClass;
 class MapRegionClass;
 class ObjectTypeClass;
-class IsometricTileTypeClass { public:
-    struct TileInsertType;
-};
-class LightSourceClass { public:
-    class PendingCellClass;
-};
+#include "../_layout/iso_tile_type_class.h"
+#include "../_layout/light_source_class.h"
 
 struct StaticVectorHolder_00A9FA60 {
     // GLOBAL: GAMEMD 0x00A9FA60

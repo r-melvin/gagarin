@@ -48,33 +48,10 @@ typedef int (* WhatAmIFunc)(const ObjectClass*);
 
 // CellClass — a single map cell. This TU models only the two occupier-list
 // heads the three queries dereference; the unknown base is padded to 0xE4.
-class CellClass
-{
-public:
-    char         _pad00[0xE4];        // +0x00  AbstractClass base + cell bookkeeping
-    ObjectClass* FirstObject;         // +0xE4  ground occupier list head
-    ObjectClass* AltObject;           // +0xE8  on-bridge occupier list head
-    char         _padEC[0x116 - 0xEC];// +0xEC
-    short        TunnelIndex;         // +0x116 (signed; -1 == no tunnel)
-
-    // FUNCTION: GAMEMD 0x483480  CellClass::RevealCellObjects (__thiscall)
-    void RevealCellObjects();
-    // FUNCTION: GAMEMD 0x484F20  CellClass::GetTunnel (__thiscall)
-    TunnelClass* GetTunnel() const;
-    // FUNCTION: GAMEMD 0x47C4D0  CellClass::FindObjectOfType (__thiscall)
-    ObjectClass* FindObjectOfType(int abs, bool alt) const;
-    // FUNCTION: GAMEMD 0x47C520  CellClass::GetBuilding (__thiscall)
-    BuildingClass* GetBuilding() const;
-    // FUNCTION: GAMEMD 0x47C550  CellClass::GetTerrain (__thiscall)
-    TerrainClass* GetTerrain(bool alt) const;
-    // FUNCTION: GAMEMD 0x47C5A0  CellClass::GetSomeObject (__thiscall)
-    ObjectClass* GetSomeObject(int a, int b);
-    // 0x47C3D0 — retail callee, declared only (relocation-normalised).
-    ObjectClass* FindObjectAt(int a, int b, bool alt);
-};
+#include "../_layout/cell_class.h"
 
 GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xE4);
 GG_STATIC_ASSERT(offsetof(CellClass, AltObject)   == 0xE8);
-GG_STATIC_ASSERT(offsetof(CellClass, TunnelIndex) == 0x116);
+GG_STATIC_ASSERT(offsetof(CellClass, TubeIndex) == 0x116);
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_QUERY_METHODS_H

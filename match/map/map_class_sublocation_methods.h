@@ -19,19 +19,7 @@
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 // CellClass (partial) — only the members PickInfantrySublocation reads.
-class CellClass
-{
-public:
-    char _pad000[0x11B];            // +0x0000
-    char Level;                     // +0x011B  signed (MOVSX)
-    char _pad11C[0x140 - 0x11C];    // +0x011C
-    int  Flags;                     // +0x0140  bit 0x100 = cell has a bridge
-
-    // FUNCTION: GAMEMD 0x481180 (decl; reloc) — the sub-position search;
-    // returned by value (hidden 12-byte result slot at [ESP+4]).
-    CoordStruct FindInfantrySubposition(const CoordStruct& coords, bool ignoreContents,
-                                        bool alt, bool useCellCoords);
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, Level) == 0x11B);
 GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
 

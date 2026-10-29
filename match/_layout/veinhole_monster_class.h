@@ -28,7 +28,7 @@
 // CurrentState, is at 0xC8 == 0xAC + 0x1C. Field names are NOT established.
 #ifndef GG_MATCH_LAYOUT_VEINHOLELOGIC_DEFINED
 #define GG_MATCH_LAYOUT_VEINHOLELOGIC_DEFINED
-struct VeinholeLogic { unsigned char unknown_00[0x1C]; };
+struct VeinholeLogic { unsigned char unknown_00[0x18]; char* SpreadData; /* +0x18 (object +0xC4): bool array indexed by cell index */ };
 GG_STATIC_ASSERT(sizeof(VeinholeLogic) == 0x1C);
 #endif
 
@@ -36,6 +36,15 @@ class VeinholeMonsterClass : public ObjectClass
 {
 public:
     virtual int vf_30();                       // 30  0x74F330
+    // Statics and methods recovered in the combat/ and map/ TUs.
+    static VeinholeMonsterClass* GetVeinholeMonsterFrom(CellStruct* pCell);  // 0x74CD60, lookup by position
+    static VeinholeMonsterClass* GetVeinholeMonsterAt(CellStruct* pCell);    // 0x74CDB0, lookup by spread data
+    static void LoadVeinholeArt(int idxTheatre);  // 0x74D450
+    static void DeleteAll();                   // 0x74D760
+    static void DeleteVeinholeGrowthData();    // 0x74E880
+    static bool IsCellEligibleForVeinHole(const struct Cell_0074D670* cell);  // 0x74D670
+    void RecalculateSpread();                  // 0x74E6B0
+    void Recalculate();                        // 0x74E930
     VeinholeLogic GrowthLogic;                 // +0xAC (0x1C) see note
     int           CurrentState;                // +0xC8 ctor @0x0074C5F9
     int           NextState;                   // +0xCC ctor @0x0074C5FF

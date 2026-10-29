@@ -26,7 +26,7 @@
 UnitClass* CellClass::GetUnit(bool alt) const
 {
     if (CellOccupiersValid) {
-        ObjectClass* obj = alt ? this->AltObject : this->FirstObject;
+        ObjectClass* obj = (ObjectClass*)(alt ? this->AltObject : this->FirstObject);
         for (; obj; obj = (ObjectClass*)obj->NextObject) {
             if (WHAT_AM_I(obj) == ABS_UNIT) {
                 return (UnitClass*)obj;
@@ -41,7 +41,7 @@ UnitClass* CellClass::GetUnit(bool alt) const
 AircraftClass* CellClass::GetAircraft(bool alt) const
 {
     if (CellOccupiersValid) {
-        ObjectClass* obj = alt ? this->AltObject : this->FirstObject;
+        ObjectClass* obj = (ObjectClass*)(alt ? this->AltObject : this->FirstObject);
         for (; obj; obj = (ObjectClass*)obj->NextObject) {
             if (WHAT_AM_I(obj) == ABS_AIRCRAFT) {
                 return (AircraftClass*)obj;
@@ -56,7 +56,7 @@ AircraftClass* CellClass::GetAircraft(bool alt) const
 InfantryClass* CellClass::GetInfantry(bool alt) const
 {
     if (CellOccupiersValid) {
-        ObjectClass* obj = alt ? this->AltObject : this->FirstObject;
+        ObjectClass* obj = (ObjectClass*)(alt ? this->AltObject : this->FirstObject);
         for (; obj; obj = (ObjectClass*)obj->NextObject) {
             if (WHAT_AM_I(obj) == ABS_INFANTRY) {
                 return (InfantryClass*)obj;

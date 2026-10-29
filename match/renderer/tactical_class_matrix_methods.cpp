@@ -66,7 +66,7 @@ int* Tactical::ApplyMatrix_Pixel(int* pOut, const int* pIn)
     v.Z = 0.0f;
     v.Y = (float)pIn[1];
 
-    v = *Matrix3D::MatrixApply(&r, &this->IsoTransformMatrix, &v);
+    v = *Matrix3D::MatrixApply(&r, &this->unknown_DE4, &v);
 
     Point2D pt;
     pt.X = (int)v.X;

@@ -21,28 +21,7 @@
 // copies it as a single dword (mov edx,[eax]; mov [ecx+0x40],edx).
 #include "../_layout/cell.h"
 
-class RadSiteClass
-{
-public:
-    void SetBaseCell(CellStruct* pCell);  // GAMEMD 0x65B4C0 __thiscall
-    void SetSpread(int nCells);           // GAMEMD 0x65B4D0 __thiscall
-    void SetRadLevel(int nRadLevel);      // GAMEMD 0x65B4F0 __thiscall
-    int  GetRadLevel();                   // GAMEMD 0x65B510 __thiscall
-    void Add(int nRadLevel);              // GAMEMD 0x65B530 __thiscall
-    void Activate();                      // GAMEMD 0x65B580 __thiscall
-    void Deactivate();                    // GAMEMD 0x65BB50 __thiscall
-
-    // AbstractClass base + the LightSource pointer occupy [0x00..0x3F]; their
-    // full decomposition is P2. Only the members our methods touch are modelled.
-    char       _base[0x40];     // +0x00
-    CellStruct BaseCell;        // +0x40
-    int        Spread;          // +0x44
-    int        SpreadInLeptons; // +0x48
-    int        RadLevel;        // +0x4C
-    char       _pad1[0x6C - 0x50]; // +0x50
-    int        RadDuration;     // +0x6C
-    int        RadTimeLeft;     // +0x70
-};
+#include "../_layout/rad_site_class.h"
 
 GG_STATIC_ASSERT(offsetof(RadSiteClass, BaseCell)        == 0x40);
 GG_STATIC_ASSERT(offsetof(RadSiteClass, Spread)          == 0x44);

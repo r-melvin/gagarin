@@ -68,21 +68,8 @@ struct Map_0074E930
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance.
 extern Map_0074E930 MapInstance;
 
-class VeinholeMonsterClass
-{
-public:
-    char       _pad000[0xF8];      // +0x0000
-    CellStruct Cell;               // +0x00F8
-    char       _padFC[4];          // +0x00FC
-    char       At_100;             // +0x0100
-
-    // FUNCTION: GAMEMD 0x74E6B0 (decl; reloc) — RecalculateSpread.
-    void RecalculateSpread();
-
-    // FUNCTION: GAMEMD 0x74E930
-    void Recalculate();
-};
-GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, Cell)   == 0xF8);
-GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, At_100) == 0x100);
+#include "../_layout/veinhole_monster_class.h"
+GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, Position) == 0xF8);
+GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, IsDead) == 0x100);
 
 #endif  // GG_MATCH_MAP_VEINHOLE_MONSTER_RECALCULATE_METHODS_H

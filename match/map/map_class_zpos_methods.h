@@ -25,14 +25,7 @@ GG_STATIC_ASSERT(sizeof(Point2D) == 8);
 
 #include "../_layout/coord_struct.h"
 
-class CellClass
-{
-public:
-    char       _pad00[0x24];   // +0x0000
-    CellStruct MapCoords;      // +0x0024
-
-    int GetFloorHeight(Point2D const& subcoords) const;   // GAMEMD 0x47B3A0 (declared; reloc)
-};
+#include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
 // GLOBAL: GAMEMD 0x0087F924 / 0x0087F928 — the cell array base and its count.
