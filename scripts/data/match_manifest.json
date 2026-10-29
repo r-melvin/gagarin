@@ -146427,5 +146427,35 @@
   "name": "RulesClass::Read_CombatDamage",
   "status": "partial",
   "pct": 92.2
+ },
+ {
+  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "addr": "0x4A0B20",
+  "len": "0xFC",
+  "sym": "?Clone@EnumConnectionPointsClass@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+  "name": "EnumConnectionPointsClass::Clone",
+  "status": "partial",
+  "pct": 95.7,
+  "note": "90/94 instructions; native writes EnumConnectionPointsClass vptr 0x7E5D28 before loading Count/xoring/comparing, candidate emits that store after those three instructions. Full strict relocation proof fails at the moved vtable relocation."
+ },
+ {
+  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "addr": "0x4A0C20",
+  "len": "0xB8",
+  "sym": "??0EnumConnectionPointsClass@@QAE@ABV?$DynamicVectorClass@PAUIConnectionPoint@@@@@Z",
+  "name": "EnumConnectionPointsClass::EnumConnectionPointsClass",
+  "status": "partial",
+  "pct": 94.4,
+  "note": "67/71 instructions; native vptr store at 0x4A0CAC precedes the Count load/xor/compare, candidate stores vptr after those instructions. Full strict relocation proof fails at moved vtable relocation. The direct House caller still names legacy HouseConnPtEnum and is an unresolved reconciliation dependency; no alias closure is claimed."
+ },
+ {
+  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "addr": "0x4A0CE0",
+  "len": "0xC2",
+  "sym": "??0EnumConnectionPointsClass@@QAE@ABV0@@Z",
+  "name": "EnumConnectionPointsClass::EnumConnectionPointsClass",
+  "status": "partial",
+  "pct": 94.5,
+  "note": "69/73 instructions; native vptr store at 0x4A0D76 precedes the Count load/xor/compare, candidate stores vptr after those instructions. Full strict relocation proof fails at moved vtable relocation; no direct call xref to this copy constructor was found."
  }
 ]

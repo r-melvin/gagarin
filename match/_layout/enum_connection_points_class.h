@@ -24,7 +24,10 @@ public:
     virtual HRESULT __stdcall Skip(ULONG cConnections);         // 4  0x4A0AF0: implements IEnumConnectionPoints
     virtual HRESULT __stdcall Reset(void);                      // 5  0x4A0B10: implements IEnumConnectionPoints
     virtual HRESULT __stdcall Clone(IEnumConnectionPoints * *ppEnum);// 6  0x4A0B20: implements IEnumConnectionPoints
-    // FUNCTION: GAMEMD 0x4A0C20 (copy constructor used by Clone)
+    // FUNCTION: GAMEMD 0x4A0C20 (construct from a connection-point vector; starts at index zero)
+    EnumConnectionPointsClass(const DynamicVectorClass<IConnectionPoint*>& points);
+    // FUNCTION: GAMEMD 0x4A0CE0 (copy constructor preserves the cursor and AddRefs the points)
+    EnumConnectionPointsClass(const EnumConnectionPointsClass& other);
     // FUNCTION: GAMEMD 0x4A0DB0 (destructor: releases every held point; Release deletes the object)
     ~EnumConnectionPointsClass();
 

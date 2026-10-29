@@ -51,6 +51,7 @@ extern int CurrentFrame_00A8ED84;
 
 // A packed map cell (two 16-bit coordinates).
 #include "../../_layout/cell.h"
+#include "../../map/crate_class.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 #include "../../_layout/components.h"
@@ -394,7 +395,8 @@ public:
     int unknown_14C; // +0x014C
     int unknown_150; // +0x0150
     int unknown_154; // +0x0154
-    char unknown_158[0x115C - 0x158]; // +0x0158
+    CrateClass Crates[0x100]; // +0x0158
+    char unknown_1158[4]; // +0x1158
     DynamicVectorClass<Cell> CellTags; // +0x115C
 };
 GG_STATIC_ASSERT(offsetof(MapClass, BucketsA) == 0x14);
@@ -415,7 +417,10 @@ GG_STATIC_ASSERT(offsetof(MapClass, unknown_148) == 0x148);
 GG_STATIC_ASSERT(offsetof(MapClass, unknown_14C) == 0x14C);
 GG_STATIC_ASSERT(offsetof(MapClass, unknown_150) == 0x150);
 GG_STATIC_ASSERT(offsetof(MapClass, unknown_154) == 0x154);
-GG_STATIC_ASSERT(offsetof(MapClass, unknown_158) == 0x158);
+GG_STATIC_ASSERT(offsetof(MapClass, Crates) == 0x158);
+GG_STATIC_ASSERT(offsetof(MapClass, Crates) + offsetof(CrateClass, Location) == 0x164);
+GG_STATIC_ASSERT(sizeof(((MapClass*)0)->Crates) == 0x1000);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_1158) == 0x1158);
 GG_STATIC_ASSERT(offsetof(MapClass, CellTags) == 0x115C);
 GG_STATIC_ASSERT(sizeof(VectorClass<CellClass*>) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<ZoneConnectionClass>) == 0x18);
