@@ -105307,7 +105307,7 @@
   "len": "0x254",
   "name": "ObjectTypeClass::FUN_005F9070",
   "status": "partial",
-  "pct": 5.5
+  "pct": 3.8
  },
  {
   "tu": "match/core/voxel_resource_ctors.cpp",
@@ -143835,8 +143835,8 @@
   "sym": "?RegisterForSpread@TiberiumClass@@QAEXPAUCellStruct@@@Z",
   "len": "0x143",
   "name": "TiberiumClass::RegisterForSpread",
-  "status": "partial",
-  "pct": 98
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/network/wdt_state_unit.cpp",
@@ -146577,5 +146577,14 @@
   "name": "static initialiser (DAT_00ABDB68)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_type_class_ini_712170.cpp",
+  "addr": "0x712170",
+  "sym": "?vf_25@TechnoTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x3fd1",
+  "name": "TechnoTypeClass::vf_25",
+  "status": "partial",
+  "pct": 98.5
  }
 ]

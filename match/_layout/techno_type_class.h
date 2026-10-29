@@ -59,7 +59,15 @@ class WeaponTypeClass;
 struct WeaponStruct
 {
     WeaponTypeClass* WeaponType;   // +0x00
-    unsigned char    unknown_04[0x18];
+    union {
+        unsigned char unknown_04[0x18];
+        struct {
+            CoordStruct FLH;             // +0x04  (the "<weapon>FLH" art key)
+            int         BarrelLength;    // +0x10
+            int         BarrelThickness; // +0x14
+            bool        TurretLocked;    // +0x18
+        };
+    };
 };
 GG_STATIC_ASSERT(sizeof(WeaponStruct) == 0x1C);
 
@@ -308,7 +316,7 @@ public:
     bool            DistributedFire;                // +0x6B0
     bool            DamageReducesReadiness;         // +0x6B1
     unsigned char   _pad_6B2[2];                    // +0x6B2
-    int             ReadinessReductionMultiplier;   // +0x6B4
+    float           ReadinessReductionMultiplier;   // +0x6B4 (float: vf_25 reads it with ReadDouble and narrows)
     UnitTypeClass*  UnloadingClass;                 // +0x6B8
     AnimTypeClass*  DeployingAnim;                  // +0x6BC
     bool            AttackFriendlies;               // +0x6C0
@@ -369,7 +377,34 @@ public:
     WeaponStruct    EliteWeapon[18];                // +0xA94 (0x1F8)
     // 23 x bool: TypeImmune .. TurretRecoil (0xC8C..0xCA2), names collapsed in
     // the oracle; exact-size byte block keeps downstream offsets byte-exact.
-    bool            bools_C8C[23];                  // +0xC8C (0xC8C..0xCA2)
+    union {
+        bool bools_C8C[23];
+        struct {
+            bool TypeImmune;                  // +0xC8C
+            bool MoveToShroud;                // +0xC8D
+            bool Trainable;                   // +0xC8E
+            bool unknown_C8F;                 // +0xC8F
+            bool TargetLaser;                 // +0xC90
+            bool ImmuneToVeins;               // +0xC91
+            bool TiberiumHeal;                // +0xC92
+            bool CloakStop;                   // +0xC93
+            bool IsTrain;                     // +0xC94
+            bool IsDropship;                  // +0xC95
+            bool ToProtect;                   // +0xC96
+            bool Disableable;                 // +0xC97
+            bool unknown_C98;                 // +0xC98
+            bool DoubleOwned;                 // +0xC99
+            bool Invisible;                   // +0xC9A
+            bool RadarVisible;                // +0xC9B
+            bool unknown_C9C;                 // +0xC9C
+            bool Sensors;                     // +0xC9D
+            bool Nominal;                     // +0xC9E
+            bool DontScore;                   // +0xC9F
+            bool DamageSelf;                  // +0xCA0
+            bool Turret;                      // +0xCA1
+            bool TurretRecoil;                // +0xCA2
+        };
+    };   // 0xC8C..0xCA2
     unsigned char   _pad_CA3[1];                    // +0xCA3
     TurretControl   TurretAnimData;                 // +0xCA4 (0x10)
     bool            unknown_bool_CB4;               // +0xCB4
@@ -399,7 +434,42 @@ public:
     WeaponTypeClass* DeathWeapon;                   // +0xD18
     float           DeathWeaponDamageModifier;      // +0xD1C
     // 31 x bool: NoAutoFire .. RejoinTeamIfLimboed, Slaved (0xD20..0xD3E).
-    bool            bools_D20[31];                  // +0xD20 (0xD20..0xD3E)
+    union {
+        bool bools_D20[31];
+        struct {
+            bool NoAutoFire;                  // +0xD20
+            bool TurretSpins;                 // +0xD21
+            bool TiltCrashJumpjet;            // +0xD22
+            bool Normalized;                  // +0xD23
+            bool ManualReload;                // +0xD24
+            bool VisibleLoad;                 // +0xD25
+            bool LightningRod;                // +0xD26
+            bool HunterSeeker;                // +0xD27
+            bool Crusher;                     // +0xD28
+            bool OmniCrusher;                 // +0xD29
+            bool OmniCrushResistant;          // +0xD2A
+            bool TiltsWhenCrushes;            // +0xD2B
+            bool unknown_D2C;                 // +0xD2C
+            bool AutoCrush;                   // +0xD2D
+            bool Bunkerable;                  // +0xD2E
+            bool CanDisguise;                 // +0xD2F
+            bool PermaDisguise;               // +0xD30
+            bool DetectDisguise;              // +0xD31
+            bool DisguiseWhenStill;           // +0xD32
+            bool CanApproachTarget;           // +0xD33
+            bool CanRecalcApproachTarget;     // +0xD34
+            bool ImmuneToPsionics;            // +0xD35
+            bool ImmuneToPsionicWeapons;      // +0xD36
+            bool ImmuneToRadiation;           // +0xD37
+            bool Parasiteable;                // +0xD38
+            bool DefaultToGuardArea;          // +0xD39
+            bool Warpable;                    // +0xD3A
+            bool ImmuneToPoison;              // +0xD3B
+            bool ReselectIfLimboed;           // +0xD3C
+            bool RejoinTeamIfLimboed;         // +0xD3D
+            bool Slaved;                      // +0xD3E
+        };
+    };   // 0xD20..0xD3E
     unsigned char   _pad_D3F[1];                    // +0xD3F
     InfantryTypeClass* Enslaves;                    // +0xD40
     int             SlavesNumber;                   // +0xD44
@@ -428,7 +498,21 @@ public:
     unsigned char   _pad_D8D[3];                    // +0xD8D
     int             JumpjetDeviation;               // +0xD90
     // 10 x bool: JumpJet .. RequiresStolenAlliedTech (0xD94..0xD9D).
-    bool            bools_D94[10];                  // +0xD94 (0xD94..0xD9D)
+    union {
+        bool bools_D94[10];
+        struct {
+            bool JumpJet;                     // +0xD94
+            bool Crashable;                   // +0xD95
+            bool ConsideredAircraft;          // +0xD96
+            bool Organic;                     // +0xD97
+            bool NoShadow;                    // +0xD98
+            bool CanPassiveAquire;            // +0xD99
+            bool CanRetaliate;                // +0xD9A
+            bool RequiresStolenThirdTech;     // +0xD9B
+            bool RequiresStolenSovietTech;    // +0xD9C
+            bool RequiresStolenAlliedTech;    // +0xD9D
+        };
+    };   // 0xD94..0xD9D
     unsigned char   _pad_D9E[2];                    // +0xD9E
     unsigned long   RequiredHouses;                 // +0xDA0 (DWORD)
     unsigned long   ForbiddenHouses;                // +0xDA4 (DWORD)
@@ -841,5 +925,75 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Naval) == 0xCCE);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Naval) == 1);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Underwater) == 0xD69);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Underwater) == 1);
+
+// Names of the packed bool blocks: each is the INI key read by TechnoTypeClass::vf_25 (0x712170) into that byte.
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TypeImmune) == 0xC8C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MoveToShroud) == 0xC8D);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Trainable) == 0xC8E);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_C8F) == 0xC8F);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TargetLaser) == 0xC90);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ImmuneToVeins) == 0xC91);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TiberiumHeal) == 0xC92);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, CloakStop) == 0xC93);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, IsTrain) == 0xC94);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, IsDropship) == 0xC95);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ToProtect) == 0xC96);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Disableable) == 0xC97);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_C98) == 0xC98);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DoubleOwned) == 0xC99);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Invisible) == 0xC9A);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, RadarVisible) == 0xC9B);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_C9C) == 0xC9C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Sensors) == 0xC9D);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Nominal) == 0xC9E);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DontScore) == 0xC9F);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DamageSelf) == 0xCA0);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Turret) == 0xCA1);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TurretRecoil) == 0xCA2);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, NoAutoFire) == 0xD20);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TurretSpins) == 0xD21);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TiltCrashJumpjet) == 0xD22);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Normalized) == 0xD23);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ManualReload) == 0xD24);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VisibleLoad) == 0xD25);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, LightningRod) == 0xD26);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, HunterSeeker) == 0xD27);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Crusher) == 0xD28);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OmniCrusher) == 0xD29);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OmniCrushResistant) == 0xD2A);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TiltsWhenCrushes) == 0xD2B);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_D2C) == 0xD2C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, AutoCrush) == 0xD2D);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Bunkerable) == 0xD2E);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, CanDisguise) == 0xD2F);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PermaDisguise) == 0xD30);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DetectDisguise) == 0xD31);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DisguiseWhenStill) == 0xD32);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, CanApproachTarget) == 0xD33);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, CanRecalcApproachTarget) == 0xD34);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ImmuneToPsionics) == 0xD35);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ImmuneToPsionicWeapons) == 0xD36);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ImmuneToRadiation) == 0xD37);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Parasiteable) == 0xD38);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DefaultToGuardArea) == 0xD39);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Warpable) == 0xD3A);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ImmuneToPoison) == 0xD3B);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ReselectIfLimboed) == 0xD3C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, RejoinTeamIfLimboed) == 0xD3D);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Slaved) == 0xD3E);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, JumpJet) == 0xD94);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Crashable) == 0xD95);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, ConsideredAircraft) == 0xD96);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Organic) == 0xD97);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, NoShadow) == 0xD98);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, CanPassiveAquire) == 0xD99);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, CanRetaliate) == 0xD9A);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, RequiresStolenThirdTech) == 0xD9B);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, RequiresStolenSovietTech) == 0xD9C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, RequiresStolenAlliedTech) == 0xD9D);
+GG_STATIC_ASSERT(offsetof(WeaponStruct, FLH) == 0x04);
+GG_STATIC_ASSERT(offsetof(WeaponStruct, BarrelLength) == 0x10);
+GG_STATIC_ASSERT(offsetof(WeaponStruct, BarrelThickness) == 0x14);
+GG_STATIC_ASSERT(offsetof(WeaponStruct, TurretLocked) == 0x18);
 
 #endif  // GG_MATCH_LAYOUT_TECHNO_TYPE_CLASS_H
