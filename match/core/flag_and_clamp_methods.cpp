@@ -10,7 +10,7 @@
 // True when any of the three sub-objects has bit 1 set.
 int Obj_00401000::FUN_004010A0() const
 {
-    return (unknown_00 & 2) || (unknown_28 & 2) || (unknown_50 & 2);
+    return (First.Flags32 & 2) || (Second.Flags32 & 2) || (Third.Flags32 & 2);
 }
 
 // FUNCTION: GAMEMD 0x401170
@@ -18,9 +18,9 @@ int Obj_00401000::FUN_004010A0() const
 // ascending, and reproduced as retail has it rather than tidied.
 void Obj_00401000::FUN_00401170()
 {
-    unknown_00 &= ~2;
-    unknown_50 &= ~2;
-    unknown_28 &= ~2;
+    First.Flags32 &= ~2;
+    Third.Flags32 &= ~2;
+    Second.Flags32 &= ~2;
 }
 
 // Store clamped to 0..100.

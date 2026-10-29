@@ -112,6 +112,16 @@ bool BufferIOFileClass::Exists(int writeShared)
     return this->RawFileClass::Exists(false);
 }
 
+// FUNCTION: GAMEMD 0x431F30
+bool BufferIOFileClass::HasHandle()
+{
+    if (unknown_bool_25 != 0) {
+        if (unknown_bool_29 != 0) return true;
+        return Handle != (void*)-1;
+    }
+    return Handle != (void*)-1;
+}
+
 // FUNCTION: GAMEMD 0x431F50  (__thiscall)
 // BufferIOFileClass::OpenEx — set the name virtually, then open via the
 // class-qualified (non-virtual, direct CALL) BufferIOFileClass::Open.
@@ -304,6 +314,13 @@ int CCFileClass::GetFileSize()
         return length;
     }
     return this->BufferIOFileClass::GetFileSize();
+}
+
+// FUNCTION: GAMEMD 0x473CD0
+bool CCFileClass::HasHandle()
+{
+    if (Buffer.Buffer != 0) return true;
+    return BufferIOFileClass::HasHandle();
 }
 
 // FUNCTION: GAMEMD 0x473CE0  (__thiscall)

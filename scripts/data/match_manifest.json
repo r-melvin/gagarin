@@ -83191,11 +83191,11 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/trivial_tu030_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x431F30",
-  "sym": "?FUN_00431F30@Obj_00431F30@@QAEEXZ",
+  "sym": "?HasHandle@BufferIOFileClass@@UAE_NXZ",
   "len": "0x1d",
-  "name": "Obj_00431F30::FUN_00431F30",
+  "name": "BufferIOFileClass::HasHandle",
   "status": "matched",
   "pct": 100
  },
@@ -83452,11 +83452,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu046_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x473CD0",
-  "sym": "?FUN_00473CD0@Obj_00473CD0@@QAEEXZ",
+  "sym": "?HasHandle@CCFileClass@@UAE_NXZ",
   "len": "0xf",
-  "name": "Obj_00473CD0::FUN_00473CD0",
+  "name": "CCFileClass::HasHandle",
   "status": "matched",
   "pct": 100
  },

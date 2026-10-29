@@ -109,8 +109,10 @@ extern int DAT_008809D8;
 extern int DAT_008809DC;
 // GLOBAL: GAMEMD 0x87F770
 extern InputManagerClass* DAT_0087F770;
+// 0x406BA6 stores an Obj_00401000 address into this timer target.
+struct Obj_00401000;
 // GLOBAL: GAMEMD 0x87E750
-extern void* DAT_0087E750;
+extern Obj_00401000* DAT_0087E750;
 // GLOBAL: GAMEMD 0x87E758
 extern void* DAT_0087E758;
 // GLOBAL: GAMEMD 0xA8BC60

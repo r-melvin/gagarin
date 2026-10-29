@@ -10,31 +10,11 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "triple_timer_init_methods.h"
 
 // GLOBAL: GAMEMD 0x87E728
 extern void* DAT_0087E728;
 
-// Three sub-objects at +0x00, +0x28 and +0x50, each opening with an int flag
-// word. Bit 1 (mask 2) is the one both methods here care about.
-//
-// The flags are ints, not bytes, even though 0x4010A0 tests them with
-// `TEST byte ptr`: 0x401170 reads and writes the full dword at the same
-// offsets. VC6 narrows a `& 2` test to the low byte on its own.
-struct Obj_00401000
-{
-    int  unknown_00;             // +0x0000
-    char _pad04[0x28 - 0x04];
-    int  unknown_28;             // +0x0028
-    char _pad2C[0x50 - 0x2C];
-    int  unknown_50;             // +0x0050
-
-    // FUNCTION: GAMEMD 0x4010A0
-    int FUN_004010A0() const;
-    // FUNCTION: GAMEMD 0x401170
-    void FUN_00401170();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00401000, unknown_28) == 0x28);
-GG_STATIC_ASSERT(offsetof(Obj_00401000, unknown_50) == 0x50);
 
 struct Obj_00406600
 {

@@ -28,6 +28,27 @@ extern AudioIDXData* AudioIDXData_Instance;
 // resolve an event (every getter short-circuits to null).
 extern void* g_AudioEnabled;
 
+// Retail stores the timer group address in these seven globals at FUN_00406B10.
+// The PE image places each pointer in the zero-filled tail of .data. Only the
+// pointer slots are defined here; the pointed-to Obj_00401000 stays incomplete.
+struct Obj_00401000;
+GG_STATIC_ASSERT(sizeof(Obj_00401000*) == 4);
+
+// GLOBAL: GAMEMD 0x87E73C
+Obj_00401000* DAT_0087E73C;
+// GLOBAL: GAMEMD 0x87E740
+Obj_00401000* DAT_0087E740;
+// GLOBAL: GAMEMD 0x87E744
+Obj_00401000* DAT_0087E744;
+// GLOBAL: GAMEMD 0x87E748
+Obj_00401000* DAT_0087E748;
+// GLOBAL: GAMEMD 0x87E74C
+Obj_00401000* DAT_0087E74C;
+// GLOBAL: GAMEMD 0x87E750
+Obj_00401000* DAT_0087E750;
+// GLOBAL: GAMEMD 0x87E754
+Obj_00401000* DAT_0087E754;
+
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x4015C0  (__fastcall: pThis=ECX, pName=EDX)
 //

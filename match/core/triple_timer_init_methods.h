@@ -18,8 +18,8 @@
 
 struct Timer_00401000
 {
-    // The flags field is read as a byte at 0x4010A0 and as a dword at
-    // 0x401170; both spellings are needed to reproduce the operand size.
+    // Retail tests the low flag byte at 0x4010A0 and clears the DWORD
+    // at 0x401170; both accesses begin at offset zero.
     union {
         unsigned char Flags;    // +0x0000  bit 1 = running
         unsigned int  Flags32;  // +0x0000
@@ -31,6 +31,8 @@ struct Timer_00401000
     __int64 unknown_18;
     char unknown_20[8];
 };
+GG_STATIC_ASSERT(offsetof(Timer_00401000, Flags32) == 0);
+GG_STATIC_ASSERT(sizeof(((Timer_00401000*)0)->Flags32) == 4);
 GG_STATIC_ASSERT(offsetof(Timer_00401000, Value) == 0x4);
 GG_STATIC_ASSERT(offsetof(Timer_00401000, Target) == 8);
 GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_0C) == 0xC);
@@ -47,6 +49,10 @@ void FUN_00407150(Timer_00401000* timer, int level);
 
 struct Obj_00401000
 {
+    // FUNCTION: GAMEMD 0x4010A0 (decl)
+    int FUN_004010A0() const;
+    // FUNCTION: GAMEMD 0x401170 (decl)
+    void FUN_00401170();
     Timer_00401000 First;    // +0x0000
     Timer_00401000 Second;   // +0x0028
     Timer_00401000 Third;    // +0x0050
