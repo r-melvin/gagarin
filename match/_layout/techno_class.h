@@ -71,6 +71,8 @@ struct VeterancyStruct
     bool FUN_00750010();
     // FUNCTION: GAMEMD 0x74FF90 (decl; reloc) -- ECX receiver, no stack arguments.
     bool FUN_0074FF90();
+    // FUNCTION: GAMEMD 0x750090 (decl; reloc) -- one stack argument (RET 4).
+    void FUN_00750090(int arg);
 };
 GG_STATIC_ASSERT(sizeof(VeterancyStruct) == 4);
 #endif
@@ -252,6 +254,8 @@ public:
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40
     virtual int vf_28(CellStruct* cell, char a2, char a3);          // 28  0x700600: the cursor action over a cell
+    virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x70C270
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6  0x70C250
     virtual bool vf_25();                                          // 25  0x6F32D0
     virtual bool vf_37();                                          // 37  0x701140 (table 0x7F4960 + 0x94)
     virtual TechnoTypeClass* vf_33();                              // 33  0x6F3270: the type, via slot 34
@@ -294,7 +298,7 @@ public:
     virtual int vf_176();                                          // 176 0x708B40
     virtual bool vf_177(int a1);                                   // 177 0x459D90
     virtual void vf_178(int a1, int a2);                           // 178 0x6FDA00
-    virtual void vf_179(int a1);                                   // 179 0x707F60
+    virtual bool vf_179(CoordStruct* where);                       // 179 0x707F60
     virtual int vf_180();                                          // 180 0x6F3950
     virtual int vf_181();                                          // 181 0x41BF00
     virtual int vf_182();                                          // 182 0x41BF10
@@ -353,9 +357,9 @@ public:
     virtual bool IsCloseEnoughToAttack(AbstractClass* target);     // 235 0x6F7780
     virtual void vf_236(CoordStruct* a1);                                // 236 0x6F7930
     virtual bool vf_237(AbstractClass* target);                                 // 237 0x6F78D0
-    virtual int vf_238();                                          // 238 0x4C9150
+    virtual void vf_238(void* arg);                                // 238 BuildingClass 0x44D760 (the base slot target 0x4C9150 is a bare stub)
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
-    virtual char vf_240(AbstractClass* target, int a2, int a3);   // 240 0x6FC0B0: returns a result code 0..10 in AL; BuildingClass 0x44ACF0 passes its Target
+    virtual int vf_240(AbstractClass* target, int a2, int a3);    // 240 0x6FC0B0: returns a result code 0..10; BuildingClass 0x44ACF0 passes its Target
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x6F8DF0; FootClass 0x4D9920 tests the threat bits and the result pointer
     virtual void vf_242(AbstractClass* target);                                  // 242 0x6FCDB0
     virtual int vf_243(AbstractClass* target, int a2);            // 243 0x6FDD50; BuildingClass 0x44ACF0 passes its Target
@@ -671,6 +675,8 @@ public:
     int FUN_006F6F60(AbstractClass* target);
     // FUNCTION: GAMEMD 0x6F70E0 -- the height-difference range bonus alone, in leptons.
     int FUN_006F70E0(AbstractClass* target);
+    // FUNCTION: GAMEMD 0x6FFEC0 (decl; reloc) -- the action this object takes on a target (the flag is one byte).
+    int FUN_006FFEC0(AbstractClass* target, char flag);
 };
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, DurationRemaining)        == 0xF0);

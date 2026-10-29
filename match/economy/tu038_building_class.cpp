@@ -203,23 +203,31 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Reestablish* >) == 0x18);
 #include "house_building/building_a_views.h"
 #include "../_layout/building_class.h"
 #include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+#include "../combat/weapon_type_class.h"
+#include "../_layout/factory_class.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/infantry_class.h"
+#include "../_layout/anim_class.h"
+#include "../_layout/obj_004a1d30.h"
+#include "../core/mission_class_methods.h"
 
 #include <stdlib.h>
 #include "house_building/building_a_views.h"
 
 // One refund of a production slot: the production object is looked up, the building is flagged while the
 // owner is told, then the flag is restored (inline in retail, once per slot).
-inline void BAReleaseSlot(BuildingAView* b, int handle)
+inline void BAReleaseSlot(BuildingClass* b, FactoryClass* factory)
 {
-    BAProdView* prod = FUN_004CA160(handle);
-    unsigned char saved = b->unknown_81;
-    b->unknown_81 = 1;
+    BAProdView* prod = FUN_004CA160(factory);
+    bool saved = b->InLimbo;
+    b->InLimbo = 1;
     if (prod) {
         if (!prod->vf_33()->vf_37(1, 0, 0, b->Owner)) {
-            b->Owner->FUN_004FAA10(b->Type->unknown_EB8, prod->vf_33()->vf_16(0, 0));
+            b->Owner->FUN_004FAA10(b->Type->Factory, prod->vf_33()->vf_16(0, 0));
         }
     }
-    b->unknown_81 = saved;
+    b->InLimbo = saved;
 }
 
 #include <new.h>
@@ -343,35 +351,34 @@ int BuildingClass::vf_187()
 // firing offset, a zero coordinate by default) to a target. Delta: retail keeps the offset in ESI/EDI with
 // the Z in a stack slot and reaches one shared transform call from both branches with different buffers;
 // the sequential, shared-pointer and branch-swapped forms differ in prologue, frame (0x18 vs 0x2c) and call order.
-HBDir BuildingAView::vf_314(BAObjView* target)
+DirStruct BuildingClass::vf_314(AbstractClass* target)
 {
-    HBCoord off = DAT_0089C848;
-    BATypeView* type = Type;
-    HBPoint2D p;
-    HBPoint2D buf;
-    if (type->unknown_E44.X == 0xFFFF && type->unknown_E44.Y == 0xFFFF) {
-        p = type->unknown_11E0;
+    CoordStruct off = DAT_0089C848;
+    BuildingTypeClass* type = Type;
+    Point2D p;
+    Point2D buf;
+    if (type->PrimaryFirePixelOffset.X == 0xFFFF && type->PrimaryFirePixelOffset.Y == 0xFFFF) {
+        p.X = type->BuildingAnim[9].X;
+        p.Y = type->BuildingAnim[9].Y;
         if (p.X != 0 || p.Y != 0) {
-            HBPoint2D* r = DAT_00887324->FUN_006D2070(&buf, &p);
+            Point2D* r = DAT_00887324->FUN_006D2070(&buf, &p);
             off.X = r->X;
             off.Y = r->Y;
             off.Z = 0;
         }
     } else {
-        HBPoint2D* r = DAT_00887324->FUN_006D2070(&p, &type->unknown_E44);
+        Point2D* r = DAT_00887324->FUN_006D2070(&p, &type->PrimaryFirePixelOffset);
         off.X = r->X;
         off.Y = r->Y;
         off.Z = 0;
     }
-    HBCoord c;
-    HBCoord* pc = vf_18(&c);
-    int px = pc->X + off.X;
-    int py = pc->Y + off.Y;
-    HBCoord t;
-    HBCoord* pt = target->vf_18(&t);
-    int tx = pt->X;
-    HBDir d;
-    d.Raw = (short)((FUN_004CAE30((double)py - pt->Y, (double)tx - px) - DAT_007E2820) * DAT_007E2818);
+    const CoordStruct& c = vf_18();
+    int px = c.X + off.X;
+    int py = c.Y + off.Y;
+    const CoordStruct& t = target->vf_18();
+    int tx = t.X;
+    DirStruct d;
+    d.Raw = (short)((FUN_004CAE30((double)py - t.Y, (double)tx - px) - DAT_007E2820) * DAT_007E2818);
     return d;
 }
 
@@ -379,53 +386,53 @@ HBDir BuildingAView::vf_314(BAObjView* target)
 // FUNCTION: GAMEMD 0x442C40
 // CAPPED at 86.5% (multiset identical). Delta: retail loads the AddItem vptr before the capacity sum and uses EDX
 // for the type value; AddItem written as cap-local, member-reload and nested forms (86.5/84.3/77.5%).
-void BuildingAView::vf_9()
+void BuildingClass::vf_9()
 {
-    FUN_006F3F40();
+    TechnoClass::vf_9();
     if (Owner) {
-        unknown_53C = Owner->unknown_34->unknown_B8;
+        OwnerCountryIndex = Owner->Type->ArrayIndex2;
         Owner->FUN_004FF700(this);
     }
     if (Type) {
-        unknown_70 = unknown_6C = Type->unknown_A0;
-        int v = Type->unknown_680;
+        EstimatedHealth = Health = Type->Strength;
+        int v = Type->InitialAmmo;
         if (v == -1) {
-            v = Type->unknown_684;
+            v = Type->Ammo;
         }
-        unknown_2FC = v;
-        Facing.FUN_004C9680(Type->unknown_71C);
+        Ammo = v;
+        PrimaryFacing.FUN_004C9680(Type->ROT);
         if (!Type->vf_48()) {
-            unknown_6DC = 0;
+            AI_Sellable = 0;
         } else {
-            Type->FUN_00465AF0();
-            unknown_6E9 = 1;
+            Type->ClearBuildUp();
+            HasBuildUp = 1;
         }
-        if (Owner && Owner->unknown_2C0 && !Type->unknown_CCE && Type->unknown_C8E && Type->unknown_408) {
-            unknown_150.FUN_00750090(1);
+        if (Owner && Owner->WarFactoryInfiltrated && !Type->Naval && Type->bools_C8C[2] && Type->UndeploysInto) {
+            Veterancy.FUN_00750090(1);
         }
     }
-    if (Type && Type->unknown_16B0) {
+    if (Type && Type->bools_16A4[0x16B0 - 0x16A4]) {
         DAT_008B41E0.AddItem(this);
     }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4436F0
-bool BuildingAView::vf_80(int mode, HBCell* cell, int a3, int a4)
+bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 {
     if (mode == 5) {
         vf_222(1, DAT_0087F7E8.FUN_005657A0(cell), 0, 0);
     } else if (mode == 6 || mode == 1) {
         bool blocked = false;
-        if (!Type->unknown_16B9
-            || (Owner->FUN_0050B730() && Session_00A8B238.GameMode && DAT_00A8B320 && unknown_2C0 == 0)) {
-            if (Type->unknown_408 != 0 || vf_161()) {
+        if (!Type->bools_16A4[0x16B9 - 0x16A4]
+            || (Owner->IsControlledByHuman() && Session_00A8B238.GameMode && DAT_00A8B320 && MindControlledBy == 0)) {
+            if (Type->UndeploysInto != 0 || vf_161()) {
                 FUN_00443860(cell, 1);
             }
         } else {
             blocked = true;
         }
-        if (Type->unknown_408 != 0 && !blocked) {
+        if (Type->UndeploysInto != 0 && !blocked) {
             BATargetRef targetBuf;
             BAEvent ev;
             BAEvent* queued = ev.FUN_004C65E0(vf_14(), 0x16, *targetBuf.FUN_006E6AB0(this));
@@ -445,13 +452,13 @@ bool BuildingAView::vf_80(int mode, HBCell* cell, int a3, int a4)
 // CAPPED at 17.1%. Retail places the Base(0) fallback inline right after the first two tests and jumps back
 // to it from the later failures; the three shapes tried (target=0 else-if, if/else with a trailing call, early
 // returns) all put that block last. Instruction multiset differs by one jcc sense.
-void BuildingAView::vf_242(BAObjView* target)
+void BuildingClass::vf_242(AbstractClass* target)
 {
-    if (unknown_AC != 0x13 && vf_212()) {
-        if (target && vf_254(0)->First && !vf_254(0)->First->Type->unknown_2A4 && !vf_235(target)) {
-            FUN_006FCDB0(0);
-            if (Type->unknown_16C4 || Type->unknown_16CA) {
-                if (!Owner->FUN_0050B730() && !vf_223()) {
+    if (CurrentMission != 0x13 && vf_212()) {
+        if (target && vf_254(0)->WeaponType && !vf_254(0)->WeaponType->Projectile->unknown_2A4 && !IsCloseEnoughToAttack(target)) {
+            TechnoClass::vf_242(0);
+            if (Type->bools_16A4[0x16C4 - 0x16A4] || Type->bools_16A4[0x16CA - 0x16A4]) {
+                if (!Owner->IsControlledByHuman() && !IsUnderEMP()) {
                     vf_122(0x13, 0);
                     vf_123();
                 }
@@ -461,16 +468,16 @@ void BuildingAView::vf_242(BAObjView* target)
     } else {
         target = 0;
     }
-    FUN_006FCDB0(target);
+    TechnoClass::vf_242(target);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4456D0
-void BuildingAView::vf_312()
+void BuildingClass::vf_312()
 {
     int i;
-    if (Owner == DAT_00A83D4C && !unknown_81 && unknown_41B && unknown_660) {
-        switch (Type->unknown_EB8) {
+    if (Owner == DAT_00A83D4C && !InLimbo && DiscoveredByCurrentPlayer && HasPower) {
+        switch (Type->Factory) {
         case 7:
             for (i = 0; i < DAT_00A83C68.Count; i++) {
                 if (DAT_00A83D4C->FUN_004F7870(DAT_00A83C68.Items[i], 0, 1)) {
@@ -554,9 +561,9 @@ void BuildingClass::vf_103(int mode)
     int sound;
     if (IsBeingRepaired) {
         if (Health == Type->Strength) {
-            sound = RulesInstance->unknown_700;
+            sound = RulesInstance->ScoldSound;
         } else {
-            sound = RulesInstance->unknown_70C;
+            sound = RulesInstance->GenericClick;
             if (Owner->IsControlledByCurrentPlayer()) {
                 vf_82(7);
             }
@@ -566,7 +573,7 @@ void BuildingClass::vf_103(int mode)
             }
         }
     } else {
-        sound = RulesInstance->unknown_70C;
+        sound = RulesInstance->GenericClick;
     }
     if (Owner->IsControlledByCurrentPlayer()) {
         CoordStruct where = Location;
@@ -580,12 +587,12 @@ void BuildingClass::vf_103(int mode)
 // CAPPED (see the report): retail is a three-case switch on the mode whose "nothing to do" exits jump to the
 // shared epilogue, which no switch/return/flag formulation tried here reproduces; the first-written
 // if-chain form below scores best.
-void BuildingAView::vf_104(int mode)
+void BuildingClass::vf_104(int mode)
 {
-    if (!unknown_6E9) {
-        if (Type->unknown_16C0) {
+    if (!HasBuildUp) {
+        if (Type->bools_16A4[0x16C0 - 0x16A4]) {
             Type->vf_33(Owner);
-            Owner->FUN_0050B730();
+            Owner->IsControlledByHuman();
             vf_53();
             vf_62();
         }
@@ -600,7 +607,7 @@ void BuildingAView::vf_104(int mode)
         }
         act = false;
     } else if (mode == 1) {
-        if (vf_97() == 0x13 || unknown_6DF) {
+        if (vf_97() == 0x13 || C4Applied) {
             return;
         }
         act = true;
@@ -611,8 +618,8 @@ void BuildingAView::vf_104(int mode)
         vf_122(0x13, 0);
         vf_123();
     }
-    if (Owner->FUN_0050B6F0()) {
-        VocClass::PlayGlobal(RulesInstance->unknown_70C, 1.0f, 0x2000, 0);
+    if (Owner->IsControlledByCurrentPlayer()) {
+        VocClass::PlayGlobal(RulesInstance->GenericClick, 1.0f, 0x2000, 0);
     }
 }
 
@@ -620,13 +627,13 @@ void BuildingAView::vf_104(int mode)
 // FUNCTION: GAMEMD 0x447210
 // CAPPED at 3.3% (first transcription, two forms). Delta: retail pushes EDI after the early returns and has a 0xc frame;
 // the same register-lifetime effect as vf_80 but in the other direction.
-int BuildingAView::vf_29(BAObjView* obj, char flag)
+int BuildingClass::vf_29(ObjectClass* obj, char flag)
 {
     int r;
-    if (Type->unknown_1701) {
+    if (Type->bools_1700[1]) {
         return 0;
     }
-    if (obj->vf_11() == 6 && obj->unknown_520->unknown_1701) {
+    if (obj->vf_11() == 6 && ((BuildingClass*)obj)->Type->bools_1700[1]) {
         return 0;
     }
     r = FUN_006FFEC0(obj, flag);
@@ -634,33 +641,33 @@ int BuildingAView::vf_29(BAObjView* obj, char flag)
         return 8;
     }
     if (r == 4) {
-        if (Type->unknown_CD1 && DAT_00A83D4C == Owner) {
-            if (!unknown_268) {
-                if (Owner->unknown_24.vf_8() - Owner->unknown_24.vf_9() <= Type->unknown_EEC) {
+        if (Type->GapGenerator && DAT_00A83D4C == Owner) {
+            if (!GapSuperCharged) {
+                if (Owner->IHouse_vf_08() - Owner->vf_09() <= Type->ExtraPowerDrain) {
                     r = 0;
                     return r;
                 }
             }
-        } else if (!((Type->unknown_16AE || Type->unknown_16AF) && unknown_114 > 0)) {
-            if (vf_258() <= 0 && Type->unknown_EB8 == 0) {
+        } else if (!((Type->bools_16A4[0x16AE - 0x16A4] || Type->bools_16A4[0x16AF - 0x16A4]) && Passengers.NumPassengers > 0)) {
+            if (vf_258() <= 0 && Type->Factory == 0) {
                 r = 0;
                 return r;
             }
         }
         r = 4;
-        if (Type->unknown_EB8 != 0 && unknown_3D3) {
+        if (Type->Factory != 0 && IsPrimaryFactory) {
             r = 0;
         }
         return r;
     }
     if (r == 5) {
-        if (vf_254(0)->First == 0) {
+        if (vf_254(0)->WeaponType == 0) {
             goto checkTarget;
         }
-        if (!vf_254(0)->First->Type->unknown_2A5 || Type->unknown_16C3) {
+        if (!vf_254(0)->WeaponType->Projectile->unknown_2A5 || Type->bools_16A4[0x16C3 - 0x16A4]) {
             r = 0;
         }
-        if (unknown_AC == 0x13) {
+        if (CurrentMission == 0x13) {
             r = 0;
             return r;
         }
@@ -670,28 +677,27 @@ int BuildingAView::vf_29(BAObjView* obj, char flag)
             r = 7;
             return r;
         }
-        int kind = Type->unknown_EB8;
+        int kind = Type->Factory;
         if (kind == 0x10 || kind == 0x28 || kind == 3) {
             if (!DAT_0087F770->FUN_0054F5C0(DAT_00A8EBF8) && !DAT_0087F770->FUN_0054F5C0(DAT_00A8EBFC)) {
                 r = 7;
                 return r;
             }
-            HBCoord tmp;
-            HBCoord* c = obj->vf_18(&tmp);
-            HBCell cell;
-            cell.X = (short)(c->X / 256);
-            cell.Y = (short)(c->Y / 256);
-            HBCell cellCopy = cell;
-            if (Type->unknown_EB8 != 3) {
-                HBCoord where;
+            const CoordStruct& tmp = obj->vf_18();
+            CellStruct cell;
+            cell.X = (short)(tmp.X / 256);
+            cell.Y = (short)(tmp.Y / 256);
+            CellStruct cellCopy = cell;
+            if (Type->Factory != 3) {
+                CoordStruct where;
                 where.X = (cell.X << 8) + 0x80;
                 where.Y = (cell.Y << 8) + 0x80;
                 where.Z = 0;
                 if (!vf_179(&where)) {
                     r = 2;
                 }
-                if (!(DAT_0087F7E8.FUN_005657A0(&cellCopy)->unknown_140 & 0x100)
-                    && DAT_0087F7E8.FUN_005657A0(&cellCopy)->unknown_4C != 0) {
+                if (!(DAT_0087F7E8.FUN_005657A0(&cellCopy)->Flags & 0x100)
+                    && DAT_0087F7E8.FUN_005657A0(&cellCopy)->Passability != 0) {
                     r = 2;
                     return r;
                 }
@@ -702,7 +708,7 @@ int BuildingAView::vf_29(BAObjView* obj, char flag)
         return r;
     }
 checkTarget:
-    if (obj->vf_34()->unknown_233) {
+    if (obj->vf_34()->Immune) {
         r = 2;
     }
     return r;
@@ -711,23 +717,22 @@ checkTarget:
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447540
 // CAPPED at 42.2%. Delta: retail keeps one separate "xor ebx,ebx; jmp done" per exit and a flat r==1||r==2 test; goto, else-if and split forms all give the same 42.2%.
-int BuildingAView::vf_28(HBCell* cell, char a, char b)
+int BuildingClass::vf_28(CellStruct* cell, char a, char b)
 {
     int r;
-    if (Type->unknown_1701) {
+    if (Type->bools_1700[1]) {
         return 0;
     }
-    if (Type->unknown_408 != 0 && a != 0) {
-        r = FUN_00700600(cell, 0, b);
-        HBCoord tmp;
-        if (!DAT_0087F7E8.FUN_00586360(DAT_0087F7E8.FUN_005657A0(cell)->vf_18(&tmp))
+    if (Type->UndeploysInto != 0 && a != 0) {
+        r = TechnoClass::vf_28(cell, 0, b);
+        if (!DAT_0087F7E8.FUN_00586360(DAT_0087F7E8.FUN_005657A0(cell)->vf_18())
             && r == 1
-            && DAT_0087F7E8.FUN_005657A0(cell)->unknown_EC == 5
-            && Type->unknown_5ED && Type->unknown_5EC) {
+            && DAT_0087F7E8.FUN_005657A0(cell)->LandType == 5
+            && Type->ResourceDestination && Type->ResourceGatherer) {
             return 6;
         }
     } else {
-        r = FUN_00700600(cell, a, b);
+        r = TechnoClass::vf_28(cell, a, b);
     }
     if (r == 1 || r == 2) {
         if (!vf_40() && r == 1) {
@@ -739,16 +744,16 @@ int BuildingAView::vf_28(HBCell* cell, char a, char b)
                 r = 0;
                 goto done;
             }
-            if (Type->unknown_EB8 != 3) {
-                HBCoord where;
+            if (Type->Factory != 3) {
+                CoordStruct where;
                 where.Z = 0;
                 where.X = (cell->X << 8) + 0x80;
                 where.Y = (cell->Y << 8) + 0x80;
                 if (!vf_179(&where)) {
                     r = 2;
                 }
-                if (!(DAT_0087F7E8.FUN_005657A0(cell)->unknown_140 & 0x100)
-                    && DAT_0087F7E8.FUN_005657A0(cell)->unknown_4C != 0) {
+                if (!(DAT_0087F7E8.FUN_005657A0(cell)->Flags & 0x100)
+                    && DAT_0087F7E8.FUN_005657A0(cell)->Passability != 0) {
                     r = 2;
                     goto done;
                 }
@@ -756,20 +761,20 @@ int BuildingAView::vf_28(HBCell* cell, char a, char b)
         }
     }
     if (r == 5) {
-        if (vf_254(0)->First == 0) {
+        if (vf_254(0)->WeaponType == 0) {
             return r;
         }
-        if (!vf_254(0)->First->Type->unknown_2A5 || Type->unknown_16C3) {
+        if (!vf_254(0)->WeaponType->Projectile->unknown_2A5 || Type->bools_16A4[0x16C3 - 0x16A4]) {
             r = 0;
         }
-        if (unknown_AC == 0x13) {
+        if (CurrentMission == 0x13) {
             r = 0;
         } else if (r == 5) {
             return r;
         }
     }
 done:
-    if (vf_161() && Owner->FUN_0050B6F0()) {
+    if (vf_161() && Owner->IsControlledByCurrentPlayer()) {
         r = 1;
     }
     return r;
@@ -795,79 +800,76 @@ CoordStruct BuildingClass::vf_18()
 // FUNCTION: GAMEMD 0x447B20
 // CAPPED at 5.3%. Delta: retail keeps a 0x34 frame with a dead Location copy (Z=0, X, Y stores) and shares one
 // epilogue; early-return, single-result and per-block-temporary forms tried.
-HBCoord BuildingAView::FUN_00447B20(BAObjView* arg)
+CoordStruct BuildingClass::vf_42(AbstractClass* arg)
 {
-    HBCoord tmp;
-    HBCoord r;
-    if (Type->unknown_16BC) {
-        HBCell cell;
-        HBCell* c = vf_110(&cell);
-        HBCell shifted;
-        shifted.X = c->X + 2;
-        shifted.Y = c->Y + 1;
+    CoordStruct r;
+    if (Type->bools_16A4[0x16BC - 0x16A4]) {
+        CellStruct c = vf_110();
+        CellStruct shifted;
+        shifted.X = c.X + 2;
+        shifted.Y = c.Y + 1;
         r.X = (shifted.X << 8) + 0x80;
         r.Y = (shifted.Y << 8) + 0x80;
         r.Z = Location.Z;
         return r;
     }
-    if (Type->unknown_16BB) {
-        HBCoord* p = FUN_005F6C80(&tmp, arg);
-        r.X = p->X + 0x80;
-        r.Y = p->Y;
-        r.Z = p->Z;
+    if (Type->bools_16A4[0x16BB - 0x16A4]) {
+        const CoordStruct& p = ObjectClass::vf_42(arg);
+        r.X = p.X + 0x80;
+        r.Y = p.Y;
+        r.Z = p.Z;
         return r;
     }
-    if (Type->unknown_16AB && arg) {
-        HBCoord* pa = arg->vf_18(&tmp);
-        HBCoord tb;
-        HBCoord* pb = vf_18(&tb);
-        int bx = pb->X;
-        int ax = pa->X;
-        HBDir d;
-        d.Raw = (short)((FUN_004CAE30((double)pb->Y - pa->Y, (double)ax - bx) - DAT_007E2820) * DAT_007E2818);
+    if (Type->bools_16A4[0x16AB - 0x16A4] && arg) {
+        const CoordStruct& pa = arg->vf_18();
+        const CoordStruct& pb = vf_18();
+        int bx = pb.X;
+        int ax = pa.X;
+        DirStruct d;
+        d.Raw = (short)((FUN_004CAE30((double)pb.Y - pa.Y, (double)ax - bx) - DAT_007E2820) * DAT_007E2818);
         int dir = ((d.Whole >> 7) + 1 >> 1) & 0xFF;
-        HBCoord* pc = vf_18(&tb);
+        const CoordStruct& pc = vf_18();
         if (dir >= 0 && dir < 0x40) {
-            r.X = pc->X + 0x80;
-            r.Y = pc->Y - 0x80;
+            r.X = pc.X + 0x80;
+            r.Y = pc.Y - 0x80;
         } else if (dir >= 0x40 && dir < 0x80) {
-            r.X = pc->X + 0x80;
-            r.Y = pc->Y + 0x80;
+            r.X = pc.X + 0x80;
+            r.Y = pc.Y + 0x80;
         } else if (dir >= 0x80 && dir < 0xC0) {
-            r.X = pc->X - 0x80;
-            r.Y = pc->Y + 0x80;
+            r.X = pc.X - 0x80;
+            r.Y = pc.Y + 0x80;
         } else {
-            r.X = pc->X - 0x80;
-            r.Y = pc->Y - 0x80;
+            r.X = pc.X - 0x80;
+            r.Y = pc.Y - 0x80;
         }
-        r.Z = pc->Z;
+        r.Z = pc.Z;
         return r;
     }
-    if (!Type->unknown_16CB && !Type->unknown_16A9) {
-        return *FUN_005F6C80(&tmp, arg);
+    if (!Type->bools_16A4[0x16CB - 0x16A4] && !Type->bools_16A4[0x16A9 - 0x16A4]) {
+        return ObjectClass::vf_42(arg);
     }
-    switch (Type->unknown_1780) {
+    switch (Type->NumberOfDocks) {
     case 0:
-        return *vf_18(&tmp);
+        return vf_18();
     case 1: {
-        HBCoord* pc = vf_18(&tmp);
-        HBCoord* off = Type->unknown_1788;
-        r.X = off->X + pc->X;
-        r.Y = off->Y + pc->Y;
-        r.Z = off->Z + pc->Z;
+        const CoordStruct& pc = vf_18();
+        CoordStruct* off = Type->DockingOffsets.Items;
+        r.X = off->X + pc.X;
+        r.Y = off->Y + pc.Y;
+        r.Z = off->Z + pc.Z;
         return r;
     }
     default: {
-        int idx = FUN_0065AD90(arg);
-        if (idx >= 0 && idx < Type->unknown_1780) {
-            HBCoord* off = &Type->unknown_1788[idx];
-            HBCoord* pc = vf_18(&tmp);
-            r.X = off->X + pc->X;
-            r.Y = off->Y + pc->Y;
-            r.Z = off->Z + pc->Z;
+        int idx = FindLinkIndex(arg);
+        if (idx >= 0 && idx < Type->NumberOfDocks) {
+            CoordStruct* off = &Type->DockingOffsets.Items[idx];
+            const CoordStruct& pc = vf_18();
+            r.X = off->X + pc.X;
+            r.Y = off->Y + pc.Y;
+            r.Z = off->Z + pc.Z;
             return r;
         }
-        return *vf_18(&tmp);
+        return vf_18();
     }
     }
 }
@@ -901,25 +903,25 @@ CoordStruct BuildingClass::vf_19(AbstractClass* arg)
 //
 // CAPPED at 91.0% (instruction multiset identical): retail takes the absolute value of the quantised limit
 // before the absolute value of the facing difference; every operand order tried evaluates them the other way.
-int BuildingAView::vf_240(BAObjView* target, int b, int c)
+int BuildingClass::vf_240(AbstractClass* target, int b, int c)
 {
-    if (!Type->unknown_157B || (Type->unknown_157C && vf_258())) {
-        if (!FUN_0070FEC0()) {
-            if (Type->unknown_16C3) {
+    if (!Type->bools_1570[0x157B - 0x1570] || (Type->bools_1570[0x157C - 0x1570] && vf_258())) {
+        if (!IsBeingDrained()) {
+            if (Type->bools_16A4[0x16C3 - 0x16A4]) {
                 return 6;
             }
             if (vf_97() != 0x13 && vf_97() != 0x12) {
                 if (!vf_212()) {
                     return 6;
                 }
-                if (unknown_714) {
+                if (DelayBeforeFiring) {
                     return 3;
                 }
-                int r = FUN_006FC0B0(target, b, c);
+                int r = TechnoClass::vf_240(target, b, c);
                 if (r == 0 && vf_255()) {
-                    HBDir want = vf_314(target);
-                    int quant = Type->unknown_16C5 ? 0 : 8;
-                    short diff = Facing.FUN_004C93D0().Raw;
+                    DirStruct want = vf_314(target);
+                    int quant = Type->bools_16A4[0x16C5 - 0x16A4] ? 0 : 8;
+                    short diff = PrimaryFacing.FUN_004C93D0().Raw;
                     diff -= want.Raw;
                     if (abs((short)(quant << 8)) < abs(diff)) {
                         return 2;
@@ -936,40 +938,40 @@ int BuildingAView::vf_240(BAObjView* target, int b, int c)
 // FUNCTION: GAMEMD 0x448160
 // CAPPED at 81.7% (multiset identical). Delta: retail keeps the type pointer in EAX and the kind in ECX; the
 // kind-first and result-first orders both allocate the other way.
-char BuildingAView::vf_316()
+char BuildingClass::vf_316()
 {
-    int kind = Type->unknown_EB8;
-    char r = unknown_3D3;
+    int kind = Type->Factory;
+    char r = IsPrimaryFactory;
     if (kind != 0) {
         if (r) {
-            unknown_3D3 = 0;
+            IsPrimaryFactory = 0;
         } else {
             int i = 0;
-            int count = Owner->unknown_78;
+            int count = Owner->Buildings.Count;
             if (count > 0) {
                 do {
-                    BuildingAView* other = Owner->unknown_6C[i];
-                    if (!other->unknown_81) {
-                        BATypeView* ot = other->Type;
-                        if (ot->unknown_EB8 == Type->unknown_EB8) {
-                            if ((Type->unknown_CCE && ot->unknown_CCE) || (!Type->unknown_CCE && !ot->unknown_CCE)) {
-                                other->unknown_3D3 = 0;
+                    BuildingClass* other = Owner->Buildings.Items[i];
+                    if (!other->InLimbo) {
+                        BuildingTypeClass* ot = other->Type;
+                        if (ot->Factory == Type->Factory) {
+                            if ((Type->Naval && ot->Naval) || (!Type->Naval && !ot->Naval)) {
+                                other->IsPrimaryFactory = 0;
                             }
                         }
                     }
                     i++;
                 } while (i < count);
             }
-            unknown_3D3 = 1;
-            if (Owner->FUN_0050B6F0()) {
+            IsPrimaryFactory = 1;
+            if (Owner->IsControlledByCurrentPlayer()) {
                 FUN_00752700(s_EVA_PrimaryBuildingSelected_00818F28, -1, -1);
             }
-            if (Type->unknown_EB8 == 7) {
+            if (Type->Factory == 7) {
                 Owner->FUN_0050DB00(this);
             }
         }
         vf_73(2);
-        r = unknown_3D3;
+        r = IsPrimaryFactory;
     }
     return r;
 }
@@ -1018,26 +1020,26 @@ bool BuildingClass::vf_38()
 // FUNCTION: GAMEMD 0x4496B0
 // CAPPED at 41.5%. Delta: retail realigns the stack (AND ESP,-8, 0x38 frame), keeps a masked flag byte in a stack
 // local and evaluates the price conversion before the counter call; local flag, temp price and operand-swap forms tried.
-int BuildingAView::vf_135()
+int BuildingClass::vf_135()
 {
     int i;
     unsigned char active;
-    if (vf_33()->unknown_CD5) {
-        FUN_0070E000(unknown_C4);
-        unknown_C4 = 0;
+    if (vf_33()->IsGattling) {
+        FUN_0070E000(MissionAccumulateTime);
+        MissionAccumulateTime = 0;
     }
-    if (vf_171()) {
-        unknown_6DD = 1;
-        if (!Type->unknown_16C3) {
-            int idx = Type->unknown_16F0;
+    if (IsArmed()) {
+        IsReadyToCommence = 1;
+        if (!Type->bools_16A4[0x16C3 - 0x16A4]) {
+            int idx = Type->SuperWeapon;
             HBIdx3View* link;
             if (idx == -1 || (link = DAT_00A83CBC[idx]->unknown_28->unknown_C8) == 0
-                || Owner->unknown_5550.FUN_0049FAE0(link->unknown_DF8) != 0) {
-                if (Type->unknown_16F0 != -1) {
+                || Owner->ActiveBuildingTypes.FUN_0049FAE0(link->unknown_DF8) != 0) {
+                if (Type->SuperWeapon != -1) {
                     goto price;
                 }
             }
-            if (!Type->unknown_157B || vf_258() > 0) {
+            if (!Type->bools_1570[0x157B - 0x1570] || vf_258() > 0) {
                 if (Target) {
                     vf_122(1, 0);
                     vf_123();
@@ -1046,27 +1048,27 @@ int BuildingAView::vf_135()
             }
         }
     price:
-        int price = (int)(DAT_007E27F8 * FUN_005B3A00()->unknown_18);
+        int price = (int)(DAT_007E27F8 * FUN_005B3A00()->AARate);
         return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
-    if (Type->unknown_16B5) {
+    if (Type->bools_16A4[0x16B5 - 0x16A4]) {
         return 100;
     }
-    switch (unknown_BC) {
+    switch (MissionStatus) {
     case 0:
         FUN_00447780(1);
-        unknown_BC = 1;
+        MissionStatus = 1;
         break;
     case 1:
-        if (Type->unknown_16A9 || Type->unknown_16AA || Type->unknown_16AB) {
-            for (i = 0; i < unknown_E8; i++) {
-                BAObjView* o = FUN_0065AD30(i);
-                if (o && (active = o->unknown_14 & 1) != 0) {
+        if (Type->bools_16A4[0x16A9 - 0x16A4] || Type->bools_16A4[0x16AA - 0x16A4] || Type->bools_16A4[0x16AB - 0x16A4]) {
+            for (i = 0; i < RadioLinks.Capacity; i++) {
+                TechnoClass* o = FUN_0065AD30(i);
+                if (o && (active = o->Flags.IsTechno) != 0) {
                     if (o->vf_97() == 7) {
-                        HBCoord a, b, d;
-                        HBCoord* pa = o->vf_18(&a);
-                        HBCoord* pb = vf_18(&b);
-                        HBCoord* diff = d.FUN_0041C230(pb->X - pa->X, pb->Y - pa->Y, pb->Z - pa->Z);
+                        const CoordStruct& pa = o->vf_18();
+                        const CoordStruct& pb = vf_18();
+                        CoordStruct d;
+                        CoordStruct* diff = d.FUN_0041C230(pb.X - pa.X, pb.Y - pa.Y, pb.Z - pa.Z);
                         if ((int)FUN_004CAC40((double)diff->X * diff->X + (double)diff->Z * diff->Z + (double)diff->Y * diff->Y) < 0x40) {
                             if (vf_158(0x13, o) == 1) {
                                 vf_122(0x14, 0);
@@ -1077,21 +1079,21 @@ int BuildingAView::vf_135()
                 }
             }
         }
-        if (Type->unknown_16BD) {
+        if (Type->bools_16A4[0x16BD - 0x16A4]) {
             FUN_00449540();
         }
         break;
     }
-    if (Type->unknown_16AA && FUN_0065AE30()) {
+    if (Type->bools_16A4[0x16AA - 0x16A4] && HasAnyLink()) {
         if (vf_157(0x1D) != 1 && vf_157(0x13) == 1) {
             vf_122(0x14, 0);
         }
     }
-    if (Type->unknown_16A9) {
-        int price = (int)(DAT_007E27F8 * FUN_005B3A00()->unknown_10);
+    if (Type->bools_16A4[0x16A9 - 0x16A4]) {
+        int price = (int)(DAT_007E27F8 * FUN_005B3A00()->Rate);
         return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
-    int price = (int)(DAT_007E27F8 * FUN_005B3A00()->unknown_10);
+    int price = (int)(DAT_007E27F8 * FUN_005B3A00()->Rate);
     return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price * 3;
 }
 
@@ -1104,39 +1106,40 @@ int BuildingClass::vf_136()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x449A50
-int BuildingAView::vf_145()
+int BuildingClass::vf_145()
 {
-    HBCoord soundPos;
-    HBCoord pos;
-    switch (unknown_BC) {
+    CoordStruct soundPos;
+    CoordStruct pos;
+    switch (MissionStatus) {
     case 0: {
         FUN_00447780(0);
         vf_157(0xB);
-        int sound = Type->unknown_E6C;
-        if (sound != -1 || (sound = RulesInstance->unknown_6C8) != -1) {
+        int sound = Type->BuildupSound;
+        if (sound != -1 || (sound = RulesInstance->Construction) != -1) {
             soundPos = Location;
-            FUN_007509E0(sound, &soundPos, &unknown_6A0);
+            FUN_007509E0(sound, &soundPos, &Audio7);
         }
-        unknown_80 = 1;
-        unknown_BC = 1;
+        NeedsRedraw = 1;
+        MissionStatus = 1;
         break;
     }
     case 1:
-        unknown_80 = 1;
+        NeedsRedraw = 1;
         pos = Location;
-        FUN_00750D40(&pos, &unknown_6A0);
-        if (unknown_6DD) {
+        FUN_00750D40(&pos, &Audio7);
+        if (IsReadyToCommence) {
             vf_157(0xC);
             vf_157(3);
             FUN_00447780(1);
             vf_311(0);
             vf_122(5, 0);
-            if (!Type->unknown_16BF) {
-                HBDir dir((unsigned char)Type->unknown_ED8);
-                Facing.FUN_004C9300(&dir);
+            if (!Type->bools_16A4[0x16BF - 0x16A4]) {
+                DirStruct dir;
+                dir.Raw = (unsigned char)Type->field_ED8 << 8;
+                PrimaryFacing.FUN_004C9300(&dir);
             }
-            Type->FUN_00465AF0();
-            unknown_6A0.FUN_00406060();
+            Type->ClearBuildUp();
+            Audio7.FUN_00406060();
             return 1;
         }
         break;
@@ -1252,15 +1255,11 @@ int BuildingClass::vf_174()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44D760
-void BuildingAView::vf_238(void* arg)
+void BuildingClass::vf_238(void* arg)
 {
-    if (arg && Owner->FUN_0050B6F0()) {
-        HBCoord coordTmp;
-        HBCoord* c = vf_19(&coordTmp, 0);
-        HBCell cell;
-        cell.X = (short)(c->X / 256);
-        cell.Y = (short)(c->Y / 256);
-        HBCell tmp = cell;
+    if (arg && Owner->IsControlledByCurrentPlayer()) {
+        CellStruct cell = CellOfCoord(vf_19(0));
+        CellStruct tmp = cell;
         tmp.FUN_00660B80();
     }
 }
@@ -1276,7 +1275,7 @@ HBDir* BuildingAView::vf_194(HBDir* out)
     if (Target == 0) {
         unsigned int raw = Facing.FUN_004C93D0().Whole;
         out->Raw = (short)((unsigned char)(((raw >> 7) + 1) >> 1) << 8);
-    } else if (vf_255() && !Type->unknown_16C5) {
+    } else if (vf_255() && !Type->bools_16A4[0x16C5 - 0x16A4]) {
         unsigned int raw = Facing.FUN_004C93D0().Whole;
         out->Raw = (short)(((((raw >> 10) + 1) >> 1) & 0x1F) * 0x800);
     } else {
@@ -1433,27 +1432,27 @@ void BuildingAView::vf_10(BAObjView* ptr, bool removed)
         double ratio = FUN_005F5C60();
         char* name;
         int low;
-        if (ratio <= RulesInstance->unknown_1700) {
+        if (ratio <= RulesInstance->ConditionYellow) {
             low = 1;
-            name = Type->unknown_1424;
+            name = Type->BuildingAnim[18].Damaged;
         } else {
             low = 0;
-            name = Type->unknown_1414;
+            name = Type->BuildingAnim[18].Anim;
         }
         if (name && *name) {
             FUN_00451890(name, 0x12, low, 0, 0);
         }
     }
-    if (Type->unknown_16AD && Anims[10] == ptr) {
+    if (Type->bools_16A4[0x16AD - 0x16A4] && Anims[10] == ptr) {
         double ratio = FUN_005F5C60();
         char* name;
         int low;
-        if (ratio <= RulesInstance->unknown_1700) {
+        if (ratio <= RulesInstance->ConditionYellow) {
             low = 1;
-            name = Type->unknown_1028;
+            name = Type->BuildingAnim[3].Damaged;
         } else {
             low = 0;
-            name = Type->unknown_1018;
+            name = Type->BuildingAnim[3].Anim;
         }
         if (name && *name) {
             FUN_00451890(name, 3, low, 0, 0);
@@ -1474,7 +1473,7 @@ void BuildingAView::vf_10(BAObjView* ptr, bool removed)
             }
         }
     }
-    if (Type == (BATypeView*)ptr) {
+    if (Type == (BuildingTypeClass*)ptr) {
         Type = 0;
     }
     int i;
@@ -1494,7 +1493,7 @@ void BuildingAView::vf_10(BAObjView* ptr, bool removed)
 int BuildingClass::vf_195()
 {
     if (!HasBeenCaptured && DAT_00A8B230->unknown_0218.RandomRanged(0, 0x63) < 0x19 && Type->Factory == 7) {
-        return RulesInstance->unknown_F70;
+        return RulesInstance->Engineer;
     }
     return TechnoClass::vf_195();
 }
@@ -1503,51 +1502,51 @@ int BuildingClass::vf_195()
 // FUNCTION: GAMEMD 0x44EBF0
 // CAPPED at 67.4%. Delta: retail merges the type!=7 path into the fifth inlined slot copy (jump into the middle);
 // loop, helper-inline and if/else-with-helper forms tried, none merges.
-void BuildingAView::vf_55(char arg)
+void BuildingClass::vf_55(bool arg)
 {
     if (arg) {
         if (Factory) {
-            FUN_004C9FF0(Factory);
+            Factory->AbandonProduction();
             if (Factory) {
-                Factory->vf_8(1);
+                delete Factory;
             }
             Factory = 0;
         }
         if (Owner) {
-            if (Type->unknown_EB8 == 7) {
-                if (Owner->unknown_53BC[0]) {
-                    BAReleaseSlot(this, Owner->unknown_53BC[0]);
+            if (Type->Factory == 7) {
+                if (Owner->Primary_ForBuildings) {
+                    BAReleaseSlot(this, Owner->Primary_ForBuildings);
                 }
-                if (Owner->unknown_53BC[1]) {
-                    BAReleaseSlot(this, Owner->unknown_53BC[1]);
+                if (Owner->Primary_Unused1) {
+                    BAReleaseSlot(this, Owner->Primary_Unused1);
                 }
-                if (Owner->unknown_53BC[2]) {
-                    BAReleaseSlot(this, Owner->unknown_53BC[2]);
+                if (Owner->Primary_Unused2) {
+                    BAReleaseSlot(this, Owner->Primary_Unused2);
                 }
-                if (Owner->unknown_53BC[3]) {
-                    BAReleaseSlot(this, Owner->unknown_53BC[3]);
+                if (Owner->Primary_Unused3) {
+                    BAReleaseSlot(this, Owner->Primary_Unused3);
                 }
-                if (Owner->unknown_53BC[4]) {
-                    BAReleaseSlot(this, Owner->unknown_53BC[4]);
+                if (Owner->Primary_ForDefenses) {
+                    BAReleaseSlot(this, Owner->Primary_ForDefenses);
                 }
             } else {
-                int handle = Owner->FUN_00500510(Type->unknown_EB8, Type->unknown_CCE, 0);
-                if (handle) {
-                    BAReleaseSlot(this, handle);
+                FactoryClass* factory = Owner->GetPrimaryFactory(Type->Factory, Type->Naval, 0);
+                if (factory) {
+                    BAReleaseSlot(this, factory);
                 }
             }
         }
         vf_160(3);
     } else {
         int i;
-        for (i = 0; i < unknown_E8; i++) {
-            BAObjView* o = FUN_0065AD30(i);
+        for (i = 0; i < RadioLinks.Capacity; i++) {
+            TechnoClass* o = FUN_0065AD30(i);
             if (o && !Owner->FUN_004F9A90(o)) {
                 vf_158(3, o);
             }
         }
     }
-    FUN_005F5280(arg);
+    ObjectClass::vf_55(arg);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1574,23 +1573,31 @@ allow:
     return Type->UndeploysInto != 0;
 }
 
+// The sum of two coordinates.
+static inline CoordStruct CoordSum(const CoordStruct& a, const CoordStruct& b)
+{
+    CoordStruct r;
+    r.X = a.X + b.X;
+    r.Y = a.Y + b.Y;
+    r.Z = a.Z + b.Z;
+    return r;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44F640
 // CAPPED at 26.0% (13 of 50 instructions). Retail lays the equal-to-empty-coordinate path (the vf_18 copy) after
 // the non-equal path, entered by a final `je`; cl keeps it first behind `jne` for every spelling tried
 // (`==&&` then-block, `!=||` then-block, a `goto`, an if/else with one return).
-HBCoord* BuildingBView::vf_45(HBCoord* out, int)
+CoordStruct BuildingClass::vf_45(int)
 {
-    HBCoord tmp;
-    BuildingBTypeView* type = Type;
-    if (type->CoordEC8.X != BuildingBEmptyCoord.X || type->CoordEC8.Y != BuildingBEmptyCoord.Y
-        || type->CoordEC8.Z != BuildingBEmptyCoord.Z) {
-        HBCoord loc = Location;
-        *out = loc + type->CoordEC8;
+    BuildingTypeClass* type = Type;
+    if (type->ExitCoord.X != DAT_0089C848.X || type->ExitCoord.Y != DAT_0089C848.Y
+        || type->ExitCoord.Z != DAT_0089C848.Z) {
+        CoordStruct loc = Location;
+        return CoordSum(loc, type->ExitCoord);
     } else {
-        *out = *vf_18(&tmp);
+        return vf_18();
     }
-    return out;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1620,17 +1627,17 @@ void __cdecl FUN_004503E0()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451330
-int BuildingBView::vf_180()
+int BuildingClass::vf_180()
 {
-    if (!NoCrew && Type->unknown_CCD) {
+    if (!NoCrew && Type->Crewed) {
         int rate;
         int side = Owner->SideIndex;
         if (side == 0)
-            rate = BuildingBRules->unknown_14F8;
+            rate = RulesInstance->AlliedSurvivorDivisor;
         else if (side == 1)
-            rate = BuildingBRules->unknown_14FC;
+            rate = RulesInstance->SovietSurvivorDivisor;
         else if (side == 2)
-            rate = BuildingBRules->unknown_1500;
+            rate = RulesInstance->ThirdSurvivorDivisor;
         else
             return 0;
         if (rate != 0) {
@@ -2066,9 +2073,9 @@ HRESULT __stdcall BuildingBView::Load(IStream* pStm)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454190
-HRESULT __stdcall BuildingBView::Save(IStream* pStm, BOOL fClearDirty)
+HRESULT __stdcall BuildingClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT hr = Func_70C250(pStm, fClearDirty);
+    HRESULT hr = TechnoClass::Save(pStm, fClearDirty);
     if (hr < 0)
         return hr;
     int i;
@@ -2102,44 +2109,44 @@ bool BuildingClass::vf_128()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454260
-void BuildingBView::vf_13(BuildingBCrcView* crc)
+void BuildingClass::vf_13(Obj_004A1D30* crc)
 {
-    Func_70C270(crc);
+    TechnoClass::vf_13(crc);
     int c4Left = C4Timer.GetTimeLeft();
-    crc->AddInt(c4Left);
+    crc->FUN_004A1D50(c4Left);
     int cashLeft = CashProductionTimer.GetTimeLeft();
-    crc->AddInt(cashLeft);
-    crc->AddInt(BState);
-    crc->AddInt(QueueBState);
-    crc->AddInt(OwnerCountryIndex);
+    crc->FUN_004A1D50(cashLeft);
+    crc->FUN_004A1D50(BState);
+    crc->FUN_004A1D50(QueueBState);
+    crc->FUN_004A1D50(OwnerCountryIndex);
     if (C4AppliedBy)
-        crc->AddInt(C4AppliedBy->Rtti.Fetch_ID());
-    crc->AddInt(unknown_544);
+        crc->FUN_004A1D50(C4AppliedBy->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_544);
     if (FirestormAnim)
-        crc->AddInt(FirestormAnim->Rtti.Fetch_ID());
-    crc->AddInt(FactoryRetryTimer.GetTimeLeft());
-    crc->AddInt(unknown_5FC);
-    crc->AddInt(LaserFenceFrame);
-    crc->AddInt(FirestormWallFrame);
-    crc->AddBool(HasPower);
-    crc->AddBool(StuffEnabled);
-    crc->AddBool(BeingProduced);
-    crc->AddBool(ShouldRebuild);
-    crc->AddBool(unknown_6DC);
-    crc->AddBool(IsReadyToCommence);
-    crc->AddBool(IsBeingRepaired);
-    crc->AddBool(NeedsRepairs);
-    crc->AddBool(C4Applied);
-    crc->AddBool(NoCrew);
-    crc->AddBool(unknown_bool_6E1);
-    crc->AddBool(unknown_bool_6E2);
-    crc->AddBool(HasBeenCaptured);
-    crc->AddBool(ActuallyPlacedOnMap);
-    crc->AddBool(HasEngineer);
-    crc->AddBool(unknown_bool_6E5);
-    crc->AddBool(IsDamaged);
-    crc->AddInt((unsigned short)unknown_short_700);
-    crc->AddByte(UpgradeLevel);
+        crc->FUN_004A1D50(FirestormAnim->vf_rtti_4());
+    crc->FUN_004A1D50(FactoryRetryTimer.GetTimeLeft());
+    crc->FUN_004A1D50(unknown_5FC);
+    crc->FUN_004A1D50(LaserFenceFrame);
+    crc->FUN_004A1D50(FirestormWallFrame);
+    crc->FUN_004A1CA0(HasPower);
+    crc->FUN_004A1CA0(StuffEnabled);
+    crc->FUN_004A1CA0(BeingProduced);
+    crc->FUN_004A1CA0(ShouldRebuild);
+    crc->FUN_004A1CA0(AI_Sellable);
+    crc->FUN_004A1CA0(IsReadyToCommence);
+    crc->FUN_004A1CA0(IsBeingRepaired);
+    crc->FUN_004A1CA0(NeedsRepairs);
+    crc->FUN_004A1CA0(C4Applied);
+    crc->FUN_004A1CA0(NoCrew);
+    crc->FUN_004A1CA0(unknown_bool_6E1);
+    crc->FUN_004A1CA0(unknown_bool_6E2);
+    crc->FUN_004A1CA0(HasBeenCaptured);
+    crc->FUN_004A1CA0(ActuallyPlacedOnMap);
+    crc->FUN_004A1CA0(HasEngineer);
+    crc->FUN_004A1CA0(unknown_bool_6E5);
+    crc->FUN_004A1CA0(IsDamaged);
+    crc->FUN_004A1D50((unsigned short)LightTint);
+    crc->FUN_004A1C10(UpgradeLevel);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2357,7 +2364,7 @@ void BuildingBView::vf_260(bool refresh)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4555D0
 // Every refusal shares one epilogue in retail; written as separate returns cl gives each its own.
-bool BuildingBView::vf_212()
+bool BuildingClass::vf_212()
 {
     int two = 2;
     if (!HasPower && Overpowerers.Count < two)
@@ -2366,20 +2373,20 @@ bool BuildingBView::vf_212()
         goto refuse;
     if (Health == 0)
         goto refuse;
-    if (Type->unknown_1573 && Type->unknown_EE4 > 0 && Owner->FUN_004FCE30() < 1.0) {
+    if (Type->bools_1570[0x1573 - 0x1570] && Type->PowerDrain > 0 && Owner->FUN_004FCE30() < 1.0) {
         if (Overpowerers.Count < two)
             goto refuse;
     }
     {
-        BuildingBTypeView* type = Type;
-        if (type->unknown_1574) {
+        BuildingTypeClass* type = Type;
+        if (type->bools_1570[0x1574 - 0x1570]) {
             HouseClass* owner = Owner;
             if (owner->PowerBlackoutTimer.GetTimeLeft() != 0)
                 goto refuse;
             if (owner->IsBeingDrained)
                 goto refuse;
         }
-        if (type->unknown_1552 && !HasEngineer)
+        if (type->bools_154B[0x1552 - 0x154B] && !HasEngineer)
             goto refuse;
     }
     if (vf_97() != 0x12 && vf_97() != 0x13)
@@ -3019,11 +3026,11 @@ bool BuildingBView::vf_292(HBCoord* where, int dir)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458DB0
-bool BuildingBView::vf_171()
+bool BuildingClass::IsArmed()
 {
     if (vf_256())
         return true;
-    return Func_701120();
+    return TechnoClass::IsArmed();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -3353,13 +3360,12 @@ ObjectTypeClass* BuildingClass::vf_34()
 // displacement) where cl always canonicalises a constant add of a negative immediate to `sub`. Variants
 // tried: direct field subtraction, a struct copy with -=, operator- / operator+ with a named offset
 // coordinate, and `+ -0x80`.
-HBCoord* BuildingBView::vf_43(HBCoord* out)
+CoordStruct BuildingClass::vf_43()
 {
-    HBCoord c = Location;
+    CoordStruct c = Location;
     c.X -= 0x80;
     c.Y -= 0x80;
-    *out = c;
-    return out;
+    return c;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

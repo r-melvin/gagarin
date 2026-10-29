@@ -6,25 +6,46 @@
 #include <new.h>
 #include "building_b_views.h"
 #include "../../_layout/building_class.h"
+#include "../../_layout/infantry_class.h"
+#include "../../_layout/cell_class.h"
+#include "../../_layout/map_0087f7e8.h"
+#include "../../core/vector_class.h"
+
+// GLOBAL: GAMEMD 0xA83DEC / 0xA83DF8 -- InfantryClass array items and count.
+extern InfantryClass** DAT_00A83DEC;
+extern int DAT_00A83DF8;
+// GLOBAL: GAMEMD 0x89C848 -- the zero coordinate.
+extern CoordStruct DAT_0089C848;
+
+// The sum of two screen points.
+static inline Point2D PointSum(const Point2D& a, const Point2D& b)
+{
+    Point2D r;
+    r.X = a.X + b.X;
+    r.Y = a.Y + b.Y;
+    return r;
+}
 
 // FUNCTION: GAMEMD 0x4565E0
-void BuildingBView::vf_294()
+// Takes the building's foundation cells off the radar and stops tracking it.
+void BuildingClass::vf_294()
 {
-    BuildingBPointVector* foundation = BuildingBMap.Func_656580(Type);
+    DynamicVectorClass<Point2D>* foundation = DAT_0087F7E8.FUN_00656580(Type);
     for (int i = 0; i < foundation->Count; i++) {
-        HBPoint2D at = RadarPosition + foundation->Items[i];
-        BuildingBMap.Func_655740(this, at.X, at.Y);
+        Point2D at = PointSum(RadarPosition, foundation->Items[i]);
+        DAT_0087F7E8.FUN_00655740(this, at.X, at.Y);
     }
     IsRadarTracked = false;
 }
 
 // FUNCTION: GAMEMD 0x456640
-void BuildingBView::vf_295()
+// Redraws the radar pixel of every foundation cell.
+void BuildingClass::vf_295()
 {
-    BuildingBPointVector* foundation = BuildingBMap.Func_656580(Type);
+    DynamicVectorClass<Point2D>* foundation = DAT_0087F7E8.FUN_00656580(Type);
     for (int i = 0; i < foundation->Count; i++) {
-        HBPoint2D point = RadarPosition + foundation->Items[i];
-        BuildingBMap.Func_6562D0(&point);
+        Point2D point = PointSum(RadarPosition, foundation->Items[i]);
+        DAT_0087F7E8.FUN_006562D0(&point);
     }
 }
 
@@ -162,15 +183,15 @@ bool BuildingClass::vf_32()
 }
 
 // FUNCTION: GAMEMD 0x4576F0
-void BuildingBView::vf_184()
+// Sends away every infantryman standing on this building's cell who is not heading elsewhere.
+void BuildingClass::vf_184()
 {
-    for (int i = 0; i < BuildingBUnitCount; i++) {
-        BuildingBOccupantView* unit = BuildingBUnitItems[i];
-        HBCoord tmp;
-        BuildingBView* building = BuildingBMap.Func_565730(unit->vf_19(&tmp, 0))->Func_47C520();
+    for (int i = 0; i < DAT_00A83DF8; i++) {
+        InfantryClass* unit = DAT_00A83DEC[i];
+        BuildingClass* building = DAT_0087F7E8.FUN_00565730(unit->vf_19(0))->FUN_0047C520();
         if (unit->IsAlive && building && building == this) {
-            if (unit->unknown_5A4 == 0 || unit->unknown_5A4 == building)
-                unit->vf_93(&BuildingBEmptyCoord, 1, 1);
+            if (unit->Destination == 0 || unit->Destination == building)
+                unit->vf_93(DAT_0089C848, 1, 1);
         }
     }
 }
@@ -254,17 +275,18 @@ accept:
 }
 
 // FUNCTION: GAMEMD 0x457C90
-void BuildingBView::vf_85(int a, int b, int c)
+// Clears a planted C4 charge (its timer restarts idle) and starts the invulnerability timer.
+void BuildingClass::vf_85(int a, int b, bool c)
 {
     if (C4Applied) {
         C4Applied = false;
-        BuildingBTimer idle;
-        idle.StartTime = BuildingBFrame;
+        CDTimerClass idle;
+        idle.StartTime = CurrentFrame;
         idle.TimeLeft = 0;
         C4Timer = idle;
         C4AppliedBy = 0;
     }
-    Func_70E2B0(a, b, c);
+    FUN_0070E2B0(a, b, c);
 }
 
 // FUNCTION: GAMEMD 0x4581F0

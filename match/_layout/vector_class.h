@@ -21,11 +21,31 @@ struct VectorClassLayout
     unsigned long unknown_0C; // +0x0C (retail reads bytes +0x0C and +0x0D)
 };
 
+// VectorClass layout view with a typed element pointer (sizeof = 0x10).
+template <class T> struct VectorClassLayoutOf
+{
+    void* _vtable;       // +0x00  (vptr slot)
+    T*    Items;         // +0x04
+    int   Capacity;      // +0x08
+    unsigned long unknown_0C; // +0x0C (retail reads bytes +0x0C and +0x0D)
+};
+
 // DynamicVectorClass layout view  (sizeof = 0x18)
 struct DynamicVectorClassLayout
 {
     void* _vtable;       // +0x00
     void* Items;         // +0x04
+    int   Capacity;      // +0x08
+    unsigned long unknown_0C; // +0x0C (retail reads bytes +0x0C and +0x0D)
+    int   Count;         // +0x10
+    int   CapacityIncrement;  // +0x14
+};
+
+// DynamicVectorClass layout view with a typed element pointer (sizeof = 0x18).
+template <class T> struct DynamicVectorClassLayoutOf
+{
+    void* _vtable;       // +0x00
+    T*    Items;         // +0x04
     int   Capacity;      // +0x08
     unsigned long unknown_0C; // +0x0C (retail reads bytes +0x0C and +0x0D)
     int   Count;         // +0x10

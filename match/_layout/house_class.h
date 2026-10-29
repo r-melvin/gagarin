@@ -713,6 +713,10 @@ public:
     bool FUN_0050B6F0();
     // FUNCTION: GAMEMD 0x509140 -- three stack arguments (RET 0xC).
     void FUN_00509140(int a, char b, int c);
+    // FUNCTION: GAMEMD 0x50DB00 (decl; reloc) -- one stack argument (RET 4).
+    void FUN_0050DB00(BuildingClass* building);
+    // FUNCTION: GAMEMD 0x4FAA10 (decl; reloc) -- two stack arguments (RET 8).
+    void FUN_004FAA10(int kind, int value);
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

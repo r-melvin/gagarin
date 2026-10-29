@@ -203,8 +203,8 @@ public:
     virtual void vf_10(void* a1, bool a2);                         // 10  0x4D9960
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x4DBAD0
     virtual bool vf_53();                                          // 53  0x4DB260
-    virtual bool vf_80(int a1, CellStruct* a2, int a3, int a4);            // 80  0x4D7D50
-    virtual bool vf_81(int a1, int a2, int a3);                    // 81  0x4D74E0
+    virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x4D7D50
+    virtual bool vf_81(int a1, ObjectClass* a2, int a3);           // 81  0x4D74E0
     virtual int vf_136();                                          // 136 0x4D6AA0
     virtual int vf_138();                                          // 138 0x4D5350
     virtual int vf_139();                                          // 139 0x4D4200
@@ -226,7 +226,7 @@ public:
     virtual void vf_205();                                         // 205 0x4DE580
     virtual bool IsCloakable();                                    // 162 0x4DBDA0
     virtual CoordStruct vf_302();                                  // 302 0x4DF1F0
-    virtual int vf_29(int a1, int a2);                             // 29  0x4DDED0 (a1 is the target object)
+    virtual int vf_29(ObjectClass* target, char flag);             // 29  0x4DDED0
     // FUNCTION: GAMEMD 0x4DC8C0 (decl; reloc) -- takes a waypoint; defined elsewhere.
     void FUN_004DC8C0(WaypointClass* waypoint);
 

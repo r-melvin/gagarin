@@ -172,6 +172,10 @@ public:
     virtual bool EnterIdleMode(bool initial, bool a2);                  // 289 0x44D6A0
     // GAMEMD 0x447780 (decl; reloc) -- one stack argument; 0x44D6A0 passes 0 or 1.
     void FUN_00447780(int a1);
+    // FUNCTION: GAMEMD 0x443860 (decl; reloc) -- two stack arguments.
+    void FUN_00443860(CellStruct* cell, int flag);
+    // FUNCTION: GAMEMD 0x449540 (decl; reloc) -- no stack arguments.
+    void FUN_00449540();
 
     // More primary-table (0x7E3EBC) overrides of ObjectClass slots.
     virtual bool vf_65(RectangleStruct* rect, bool force, int a3);      // 65 0x43CEA0
@@ -186,7 +190,7 @@ public:
     virtual void vf_313(Point2D* point, RectangleStruct* clip);    // 313 0x43DA80
     virtual DirStruct vf_314(AbstractClass* target);               // 314 0x43ED40 (0x44D7D0 returns its result for the target)
     virtual void vf_315(int a1, int a2, int a3, int a4);           // 315 0x4415F0
-    virtual void vf_316();                                         // 316 0x448160
+    virtual char vf_316();                                         // 316 0x448160
     virtual void vf_317(int a1);                                   // 317 0x455820
     virtual void vf_318(int a1);                                   // 318 0x4556D0
     virtual void vf_319(int a1);                                   // 319 0x455A80
@@ -200,6 +204,28 @@ public:
     virtual int vf_132();                                          // 132 0x44ACF0
     virtual bool vf_245(HouseClass* newOwner, bool announce);      // 245 0x448260: change owner
     virtual int vf_149();                                          // 149 0x44E440: the construction mission step
+    virtual void vf_9();                                           // 9   0x442C40
+    virtual int vf_145();                                          // 145 0x449A50
+    virtual void vf_104(int mode);                                 // 104 0x447110
+    virtual int vf_240(AbstractClass* target, int a2, int a3);     // 240 0x447F10
+    virtual int vf_28(CellStruct* cell, char a, char b);           // 28  0x447540
+    virtual int vf_29(ObjectClass* target, char flag);             // 29  0x447210
+    virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x4436F0
+    virtual void vf_242(AbstractClass* target);                    // 242 0x443B90
+    virtual void vf_55(bool removed);                              // 55  0x44EBF0
+    virtual void vf_238(void* arg);                                // 238 0x44D760
+    virtual int vf_135();                                          // 135 0x4496B0
+    virtual void vf_85(int a1, int a2, bool a3);                   // 85  0x457C90
+    virtual void vf_184();                                         // 184 0x4576F0
+    virtual void vf_294();                                         // 294 0x4565E0
+    virtual bool IsArmed();                                        // 171 0x458DB0
+    virtual bool vf_212();                                         // 212 0x4555D0
+    virtual int vf_180();                                          // 180 0x451330
+    virtual CoordStruct vf_43();                                   // 43  0x459EF0
+    virtual CoordStruct vf_45(int a1);                             // 45  0x44F640
+    virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x454260
+    virtual void vf_295();                                         // 295 0x456640
+    virtual CoordStruct vf_42(AbstractClass* target);              // 42  0x447B20
 
 
     // Methods matched in economy/building_class.cpp. 0x4521C0 clears HasPower @0x660 and
@@ -282,7 +308,7 @@ public:
     int            BState;                // +0x534 ctor @0x0043B777
     int            QueueBState;           // +0x538 ctor @0x0043B77D
     unsigned int   OwnerCountryIndex;     // +0x53C ctor @0x0043B783
-    void*          C4AppliedBy;           // +0x540 InfantryClass*; ctor @0x0043B789
+    InfantryClass* C4AppliedBy;           // +0x540 ctor @0x0043B789
     unsigned int   unknown_544;           // +0x544 ctor @0x0043B78F
     AnimClass*     FirestormAnim;         // +0x548; ctor @0x0043B795
     AnimClass*     PsiWarnAnim;           // +0x54C; ctor @0x0043B79B
@@ -318,9 +344,9 @@ public:
     unsigned char  HasExtraPowerBonus;    // +0x668 ctor @0x0043B89B
     unsigned char  HasExtraPowerDrain;    // +0x669 ctor @0x0043B8AB
     unsigned char  align_66A[2];          // +0x66A
-    DynamicVectorClassLayout Overpowerers;      // +0x66C (0x18) ctor vptr @0x0043B8CA, fields
+    DynamicVectorClassLayoutOf<TechnoClass*> Overpowerers;      // +0x66C (0x18) ctor vptr @0x0043B8CA, fields
                                           //   @0x0043B8B1/0x0043B8B7/0x0043B8BD/0x0043B8C4/0x0043B8D6/0x0043B8D0
-    DynamicVectorClassLayout Occupants;         // +0x684 (0x18) ctor vptr @0x0043B8F5, fields
+    DynamicVectorClassLayoutOf<InfantryClass*> Occupants;         // +0x684 (0x18) ctor vptr @0x0043B8F5, fields
                                           //   @0x0043B8DC/0x0043B8E2/0x0043B8E8/0x0043B8EF/0x0043B901/0x0043B8FB
     int            FiringOccupantIndex;   // +0x69C ctor @0x0043B907
     AudioController Audio7;               // +0x6A0 (0x14) ctor LEA ECX,[ESI+0x6A0]; CALL 0x00405BE0 @0x0043BA85

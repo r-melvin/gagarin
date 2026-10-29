@@ -134,8 +134,8 @@ public:
     virtual bool vf_25();                                      // 25  0x426390: returns false
     virtual int vf_26(int a1, int a2);                         // 26  0x4263A0: returns 0
     virtual void* vf_27();                                     // 27  0x5F3E30: forwards to the type's slot 39
-    virtual int vf_28(CellStruct* cell, char a2, char a3);     // 28  0x5F4250: returns 0
-    virtual int vf_29(int a1, int a2);                         // 29  0x5F4240: returns 0
+    virtual int vf_28(CellStruct* cell, char a, char b);       // 28  0x5F4250: returns 0
+    virtual int vf_29(ObjectClass* target, char flag);         // 29  0x5F4240: returns 0
     virtual int vf_30();                                       // 30  0x5F4260: layer
     virtual bool vf_31();                                      // 31  0x5F6C10
     virtual bool vf_32();                                      // 32  0x4263B0: returns false
@@ -187,8 +187,8 @@ public:
     virtual void vf_77();                                      // 77  0x5F4D10
     virtual bool vf_78();                                      // 78  0x5F6C30
     virtual bool vf_79();                                      // 79  0x5F6C70: returns vf_78()
-    virtual bool vf_80(int a1, CellStruct* a2, int a3, int a4);        // 80  0x5F4360: returns false
-    virtual bool vf_81(int a1, int a2, int a3);                // 81  0x5F4350: returns false
+    virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x5F4360: returns false
+    virtual bool vf_81(int a1, ObjectClass* a2, int a3);       // 81  0x5F4350: returns false
     virtual void vf_82(int a1);                                // 82  0x5F4370: bare RET 4
     virtual bool vf_83();                                      // 83  0x5F4520
     virtual void vf_84();                                      // 84  0x5F44A0

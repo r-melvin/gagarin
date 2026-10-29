@@ -19,7 +19,7 @@ extern UnitFlagHouse** DAT_00A8022C;
 // FUNCTION: GAMEMD 0x738890
 // Maps the object kind in question to a target class, then defers to the foot test unless
 // the unit is aimed at itself in a way that makes no sense or is berserk.
-bool UnitClass::vf_81(int a1, int a2, int a3)
+bool UnitClass::vf_81(int a1, ObjectClass* a2, int a3)
 {
     int type = vf_29(a2, a3);
     int m = a1;
@@ -39,7 +39,7 @@ five:
         m = 5;
     }
 done:
-    if (a2 == (int)this && (m == 2 || m == 5)) {
+    if (a2 == this && (m == 2 || m == 5)) {
         return false;
     }
     if (Berzerk) {
@@ -52,15 +52,15 @@ done:
 // PARTIAL: 85.4% -- identical instruction multiset; retail keeps the third and fourth
 // arguments in EBX/EDI the other way round (variants with locals and nested ifs tried).
 // Refuses when deployed and the unit's own check says 2, or when berserk.
-bool UnitClass::vf_80(int a1, CellStruct* a2, int a3, int a4)
+bool UnitClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 {
-    if (Deployed && vf_28(a2, 0, a4) == 2) {
+    if (Deployed && vf_28(cell, 0, a4) == 2) {
         return false;
     }
     if (Berzerk) {
         return false;
     }
-    return FootClass::vf_80(a1, a2, a3, a4);
+    return FootClass::vf_80(mode, cell, a3, a4);
 }
 
 // FUNCTION: GAMEMD 0x7440B0

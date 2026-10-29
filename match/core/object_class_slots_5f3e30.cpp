@@ -140,13 +140,13 @@ void ObjectClass::vf_23()
 }
 
 // FUNCTION: GAMEMD 0x5F4240
-int ObjectClass::vf_29(int a1, int a2)
+int ObjectClass::vf_29(ObjectClass* target, char flag)
 {
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x5F4250
-int ObjectClass::vf_28(CellStruct* cell, char a2, char a3)
+int ObjectClass::vf_28(CellStruct* cell, char a, char b)
 {
     return 0;
 }
@@ -222,7 +222,7 @@ void ObjectClass::vf_72(int a1, int a2)
 }
 
 // FUNCTION: GAMEMD 0x5F4350
-bool ObjectClass::vf_81(int a1, int a2, int a3)
+bool ObjectClass::vf_81(int a1, ObjectClass* a2, int a3)
 {
     return false;
 }

@@ -13,6 +13,8 @@ class CellClass;
 class HouseClass;
 class ObjectClass;
 class BuildingClass;
+class BuildingTypeClass;
+template<class T> class DynamicVectorClass;
 struct Point2D;
 struct CoordStruct;
 struct CellStruct;
@@ -131,6 +133,12 @@ struct Map_0087F7E8
     void FUN_005678E0(const CoordStruct* where, int sight, HouseClass* house, char a, char b, char c, char d, char e);
     // FUNCTION: GAMEMD 0x4AA290 (decl; reloc) -- the building on a cell, with the screen point of the hit.
     BuildingClass* FUN_004AA290(CellStruct* cell, Point2D* out);
+    // FUNCTION: GAMEMD 0x656580 (decl; reloc) -- the foundation point list of a building type (one stack argument).
+    DynamicVectorClass<Point2D>* FUN_00656580(BuildingTypeClass* type);
+    // FUNCTION: GAMEMD 0x655740 (decl; reloc) -- three stack arguments.
+    void FUN_00655740(BuildingClass* building, int x, int y);
+    // FUNCTION: GAMEMD 0x6562D0 (decl; reloc) -- one stack argument.
+    void FUN_006562D0(Point2D* point);
 };
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.

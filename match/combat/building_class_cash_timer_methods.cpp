@@ -79,12 +79,6 @@ void BuildingClass::FUN_004504F0(int stage, const CoordStruct* target)
     }
 }
 
-// The overpowerer list at +0x66C holds TechnoClass pointers.
-static inline TechnoClass*& OverpowererAt(DynamicVectorClassLayout& list, int index)
-{
-    return ((TechnoClass**)list.Items)[index];
-}
-
 // FUNCTION: GAMEMD 0x450590
 //
 // Drop every overpowering unit whose target is no longer this building, then
@@ -93,11 +87,11 @@ static inline TechnoClass*& OverpowererAt(DynamicVectorClassLayout& list, int in
 void BuildingClass::FUN_00450590()
 {
     for (int i = Overpowerers.Count - 1; i >= 0; i--) {
-        if (OverpowererAt(Overpowerers, i)->Target != this) {
+        if (Overpowerers.Items[i]->Target != this) {
             if (i < Overpowerers.Count) {
                 Overpowerers.Count--;
                 for (int j = i; j < Overpowerers.Count; j++) {
-                    OverpowererAt(Overpowerers, j) = OverpowererAt(Overpowerers, j + 1);
+                    Overpowerers.Items[j] = Overpowerers.Items[j + 1];
                 }
             }
         }

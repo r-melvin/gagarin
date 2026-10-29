@@ -63,6 +63,8 @@ struct FacingClass
     bool FUN_004C9480() const;
     // FUNCTION: GAMEMD 0x4C9300 (decl; reloc) -- turns to the facing at once (one stack argument, RET 4).
     void FUN_004C9300(const DirStruct* facing);
+    // FUNCTION: GAMEMD 0x4C9680 (decl; reloc) -- sets the rotation rate (one stack argument, RET 4).
+    void FUN_004C9680(int rate);
     DirStruct FUN_004C9530() const;
     DirStruct FUN_004C95D0(const DirStruct* other) const;
 

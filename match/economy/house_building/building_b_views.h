@@ -1130,14 +1130,14 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);   // slot 3 (+0xC)
     virtual void unused_slot_4();
     virtual HRESULT __stdcall Load(IStream* pStm);   // slot 5 (+0x14)
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // slot 6 (+0x18)
+    virtual void unused_slot_6();
     virtual void unused_slot_7();
     virtual void* vf_8(unsigned int flags);   // slot 8 (+0x20)
     virtual void unused_slot_9();
     virtual void unused_slot_10();
     virtual int vf_11();   // slot 11 (+0x2C)
     virtual int vf_12();   // slot 12 (+0x30)
-    virtual void vf_13(BuildingBCrcView* crc);   // slot 13 (+0x34)
+    virtual void unused_slot_13();
     virtual void unused_slot_14();
     virtual void unused_slot_15();
     virtual void unused_slot_16();
@@ -1167,9 +1167,9 @@ public:
     virtual bool vf_40();   // slot 40 (+0xA0)
     virtual HBCoord* unused_slot_41(HBCoord* out);   // slot 41 (+0xA4); canonical BuildingClass owns 0x4500A0
     virtual void unused_slot_42();
-    virtual HBCoord* vf_43(HBCoord* out);   // slot 43 (+0xAC)
+    virtual HBCoord* vf_43(HBCoord* out);   // slot 43 (+0xAC); the body is BuildingClass::vf_43
     virtual void unused_slot_44();
-    virtual HBCoord* vf_45(HBCoord* out, int unused);   // slot 45 (+0xB4)
+    virtual void unused_slot_45();
     virtual void unused_slot_46();
     virtual void unused_slot_47();
     virtual void unused_slot_48();
@@ -1209,7 +1209,7 @@ public:
     virtual void vf_82(int a);   // slot 82 (+0x148)
     virtual void unused_slot_83();
     virtual void unused_slot_84();
-    virtual void vf_85(int a, int b, int c);   // slot 85 (+0x154)
+    virtual void unused_slot_85();
     virtual void unused_slot_86();
     virtual void unused_slot_87();
     virtual bool vf_88();   // slot 88 (+0x160)
@@ -1295,7 +1295,7 @@ public:
     virtual bool vf_168();   // slot 168 (+0x2A0)
     virtual bool vf_169();   // slot 169 (+0x2A4)
     virtual void unused_slot_170();
-    virtual bool vf_171();   // slot 171 (+0x2AC)
+    virtual void unused_slot_171();
     virtual void unused_slot_172();
     virtual void unused_slot_173();
     virtual void unused_slot_174();
@@ -1304,11 +1304,11 @@ public:
     virtual void unused_slot_177();
     virtual void unused_slot_178();
     virtual void unused_slot_179();
-    virtual int vf_180();   // slot 180 (+0x2D0)
+    virtual void unused_slot_180();
     virtual int vf_181();   // slot 181 (+0x2D4)
     virtual int vf_182();   // slot 182 (+0x2D8)
     virtual int vf_183();   // slot 183 (+0x2DC)
-    virtual void vf_184();   // slot 184 (+0x2E0)
+    virtual void unused_slot_184();
     virtual void unused_slot_185();
     virtual void unused_slot_186();
     virtual void unused_slot_187();
@@ -1336,7 +1336,7 @@ public:
     virtual void unused_slot_209();
     virtual void unused_slot_210();
     virtual void unused_slot_211();
-    virtual bool vf_212();   // slot 212 (+0x350)
+    virtual bool vf_212();   // slot 212 (+0x350); the body is BuildingClass::vf_212
     virtual void vf_213(int a);   // slot 213 (+0x354)
     virtual void unused_slot_214();
     virtual void unused_slot_215();
@@ -1418,8 +1418,8 @@ public:
     virtual void unused_slot_291();
     virtual bool vf_292(HBCoord* where, int dir);   // slot 292 (+0x490)
     virtual void unused_slot_293();
-    virtual void vf_294();   // slot 294 (+0x498)
-    virtual void vf_295();   // slot 295 (+0x49C)
+    virtual void unused_slot_294();
+    virtual void unused_slot_295();
     virtual void unused_slot_296();
     virtual void unused_slot_297();
     virtual void unused_slot_298();

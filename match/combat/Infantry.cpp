@@ -176,7 +176,7 @@ int InfantryClass::vf_243(AbstractClass* a1, int a2)
 // Re-derives the action the target would get (vf_29): the 0x1C/0x1D kinds fold into 9 and
 // 0x1B/0x39 into 5. An infantryman never takes action 5 on itself and does nothing while
 // berzerk; otherwise the folded action is handed to FootClass.
-bool InfantryClass::vf_81(int a1, int a2, int a3)
+bool InfantryClass::vf_81(int a1, ObjectClass* a2, int a3)
 {
     int action = this->vf_29(a2, a3);
     switch (action) {
@@ -189,7 +189,7 @@ bool InfantryClass::vf_81(int a1, int a2, int a3)
     case 0x39:
         action = 5;
     }
-    if (a2 == (int)this && action == 5) {
+    if (a2 == this && action == 5) {
         return false;
     }
     if (this->Berzerk) {
@@ -201,18 +201,18 @@ bool InfantryClass::vf_81(int a1, int a2, int a3)
 // FUNCTION: GAMEMD 0x51F250
 // PARTIAL: 87.5% - ebx/edi hold a2/a4 swapped (6 instructions differ, same multiset).
 // Refuses while berzerk, or while in a 0x1B-0x1E sequence when vf_28 reports 2; otherwise defers to FootClass.
-bool InfantryClass::vf_80(int a1, CellStruct* a2, int a3, int a4)
+bool InfantryClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 {
     int s = this->SequenceAnim;
     if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
-        if (this->vf_28(a2, 0, a4) == 2) {
+        if (this->vf_28(cell, 0, a4) == 2) {
             return false;
         }
     }
     if (this->Berzerk) {
         return false;
     }
-    return FootClass::vf_80(a1, a2, a3, a4);
+    return FootClass::vf_80(mode, cell, a3, a4);
 }
 
 // STRING: GAMEMD 0x825550 "TXT_TECHNICIAN"

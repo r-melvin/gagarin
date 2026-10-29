@@ -27,6 +27,8 @@ struct Obj_004A1D30
     void FUN_004A1C10(unsigned char value);
     // FUNCTION: GAMEMD 0x4A1CA0 (decl; reloc) -- add one byte.
     void FUN_004A1CA0(bool value);
+    // FUNCTION: GAMEMD 0x4A1CA0 (decl; reloc) -- the same entry for a flag stored as a plain byte.
+    void FUN_004A1CA0(unsigned char value);
     // FUNCTION: GAMEMD 0x4A1D30 (decl; reloc) -- add one word.
     void FUN_004A1D30(unsigned short value);
     // FUNCTION: GAMEMD 0x4A1D50 (decl; reloc) -- add one dword.

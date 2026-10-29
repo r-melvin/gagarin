@@ -46,6 +46,8 @@ public:
     TechnoClass* FUN_0065AD40(int index);               // GAMEMD 0x65AD40
     bool ContainsLink(const TechnoClass* pLink) const;  // GAMEMD 0x65AD50
     int  FindLinkIndex(const TechnoClass* pLink) const;  // GAMEMD 0x65AD90
+    // FUNCTION: GAMEMD 0x65AD90 (decl; reloc) -- the same entry with the argument of the object slots (BuildingClass 0x447B20).
+    int  FindLinkIndex(const AbstractClass* pLink) const;
     bool HasFreeLink() const;                            // GAMEMD 0x65ADC0
     bool HasFreeLinkFor(RadioClass* who) const;          // GAMEMD 0x65ADF0
     bool HasAnyLink() const;                             // GAMEMD 0x65AE30
