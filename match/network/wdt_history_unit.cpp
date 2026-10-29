@@ -70,5 +70,7 @@ WorldDominationTour::History::~History()
 {
 }
 
+// SYNTHETIC: GAMEMD 0x767C50 -- rc_ptr<WDTState>::`scalar deleting destructor' (compiler-emitted for the
+// rc_ptr<WDTState> this TU instantiates)
 // SYNTHETIC: GAMEMD 0x767C10
 // History scalar deleting destructor.

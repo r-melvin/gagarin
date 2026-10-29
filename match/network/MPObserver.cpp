@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Original translation unit MPObserver.cpp. The name is the source-file string at 0x82fd40
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5c9476 inside this object's
 //   code range (0x5c91f0-0x5c950f). Functions are in ascending retail address order.
@@ -51,6 +52,8 @@ Megawealth::Megawealth(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstri
 Megawealth::~Megawealth()
 {
 }
+
+// SYNTHETIC: GAMEMD 0x5C9440 -- Megawealth scalar deleting destructor, emitted by the compiler from the virtual destructor above
 
 // FUNCTION: GAMEMD 0x5C9430
 // Slot 35: call the map's 0x577F30 with no house, and succeed.

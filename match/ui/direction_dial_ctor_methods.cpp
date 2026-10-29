@@ -67,3 +67,5 @@ Dial8Class::Dial8Class(int id, int x, int y, int width, int height, int directio
     InnerPoint[7].X = unknown_2C - (width * 42 / 2) / 100;
     InnerPoint[7].Y = unknown_30 - (height * 42 / 2) / 100;
 }
+
+// SYNTHETIC: GAMEMD 0x4A59A0 -- Dial8Class scalar deleting destructor, emitted by the compiler from the virtual destructor

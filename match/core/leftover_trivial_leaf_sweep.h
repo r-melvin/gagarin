@@ -62,7 +62,6 @@ bool __stdcall FUN_005B43F0(int unused);           // FUNCTION: GAMEMD 0x5B43F0
 bool __stdcall FUN_005D6310(int unused);           // FUNCTION: GAMEMD 0x5D6310
 bool __cdecl   FUN_005D6340();                     // FUNCTION: GAMEMD 0x5D6340
 bool __cdecl   FUN_005D7570();                     // FUNCTION: GAMEMD 0x5D7570
-int FUN_006241D0(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x6241D0
 void __stdcall FUN_006A4FF0(int unused);           // FUNCTION: GAMEMD 0x6A4FF0
 int FUN_0067A730(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A730
 int FUN_0067A7C0(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A7C0

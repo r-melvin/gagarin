@@ -117,3 +117,5 @@ HRESULT __stdcall RadSiteClass::Load(IStream* pStm)
     }
     return hr;
 }
+
+// SYNTHETIC: GAMEMD 0x65BED0 -- RadSiteClass scalar deleting destructor, emitted by the compiler from the virtual destructor

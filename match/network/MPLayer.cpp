@@ -362,7 +362,6 @@ extern "C" Team_005095D0** DAT_008B40EC;
 #include "../_layout/obj_005095d0.h"
 
 
-#include "../_layout/obj_0050da10.h"
 
 #include "../_layout/obj_0053ecb0.h"
 
@@ -474,6 +473,8 @@ MultiplayerManBattle::MultiplayerManBattle(const Obj_007B66D0& a, const Obj_007B
 MultiplayerManBattle::~MultiplayerManBattle()
 {
 }
+
+// SYNTHETIC: GAMEMD 0x5C61A0 -- MultiplayerManBattle scalar deleting destructor, emitted by the compiler from the virtual destructor above
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005C61D0

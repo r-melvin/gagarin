@@ -104,3 +104,5 @@ void TextButtonClass::SetPrintFlags(int flags)
 {
     unknown_3C = flags;
 }
+
+// SYNTHETIC: GAMEMD 0x720210 -- TextButtonClass scalar deleting destructor, emitted by the compiler from the virtual destructor

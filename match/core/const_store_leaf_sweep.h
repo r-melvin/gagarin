@@ -34,7 +34,6 @@ struct ConstStoreObject
 GG_STATIC_ASSERT(offsetof(ConstStoreObject, Head) == 0x0);
 
 void FUN_005D8FC0(ConstStoreObject* self);   // FUNCTION: GAMEMD 0x5D8FC0
-void FUN_00624130(ConstStoreObject* self);   // FUNCTION: GAMEMD 0x624130
 void FUN_007ACBD0(ConstStoreObject* self);   // FUNCTION: GAMEMD 0x7ACBD0
 
 #endif  // GG_MATCH_CORE_CONST_STORE_LEAF_SWEEP_H

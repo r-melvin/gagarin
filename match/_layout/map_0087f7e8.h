@@ -95,6 +95,8 @@ struct Map_0087F7E8
     int FUN_00578080(Triple_005247D0* value);
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) -- the cell under a coordinate.
     CellClass* FUN_00565730(const CoordStruct* coord);
+    // The same routine taking the coordinate by reference (an rvalue result of a coordinate getter can bind to it).
+    CellClass* FUN_00565730(const CoordStruct& coord);
     // FUNCTION: GAMEMD 0x4A9720 (decl; reloc) -- DisplayClass::Submit, put an object on the map.
     void FUN_004A9720(ObjectClass* object);
     // FUNCTION: GAMEMD 0x4A9770 (decl; reloc) -- DisplayClass::Remove, take an object off the map.

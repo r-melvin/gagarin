@@ -57,6 +57,8 @@ struct CDTimerClass
     }
 
     void SetTimeLeft(int value) { this->TimeLeft = value; }
+    // FUNCTION: GAMEMD 0x426630 (decl; reloc) -- frames left, as the out-of-line routine reports them.
+    int FUN_00426630() const;
     void Pause();
     void Resume();
 };

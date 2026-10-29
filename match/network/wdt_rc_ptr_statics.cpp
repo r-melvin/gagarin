@@ -14,6 +14,9 @@
 
 namespace WorldDominationTour { class Campaign; }
 
+// SYNTHETIC: GAMEMD 0x006C8840 -- rc_ptr<PlayerProfile>::`scalar deleting destructor' (compiler-emitted for the
+// rc_ptr<PlayerProfile> below; retail's copy sits in an unrecovered TU near 0x6C8840)
+
 // SYNTHETIC: GAMEMD 0x0077D120 -- initialiser of DAT_00B75E48, registers the exit stub
 // SYNTHETIC: GAMEMD 0x0077D140 -- exit stub of DAT_00B75E48 (destructor)
 // GLOBAL: GAMEMD 0xB75E48

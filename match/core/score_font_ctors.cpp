@@ -57,3 +57,4 @@ ScoreFontClass::~ScoreFontClass()
         }
     }
 }
+// SYNTHETIC: GAMEMD 0x691040 -- ScoreFontClass::`scalar deleting destructor' (vtable 0x7F0EF0 slot 0).

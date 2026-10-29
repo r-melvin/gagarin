@@ -23,3 +23,5 @@ HRESULT __stdcall TriggerTypeClass::Load(IStream* pStm)
     DAT_00B0C110.SwizzleManagerClass::vf_4(&House);
     return 0;
 }
+
+// SYNTHETIC: GAMEMD 0x727CD0 -- TriggerTypeClass scalar deleting destructor, emitted by the compiler from the virtual destructor

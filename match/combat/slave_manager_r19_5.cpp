@@ -95,3 +95,5 @@ SlaveManagerClass::SlaveManagerClass(const AbstractNoInit& noInit)
     : AbstractClass(noInit), SlaveNodes(0, 0), RespawnTimer(0)
 {
 }
+
+// SYNTHETIC: GAMEMD 0x6B1390 -- SlaveManagerClass scalar deleting destructor, emitted by the compiler from the virtual destructor

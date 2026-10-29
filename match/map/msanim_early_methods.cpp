@@ -4,9 +4,10 @@
 //   Bytes compared against the user's retail gamemd.exe v1.001 across
 //   0x5CB6C0..0x5CCE82, the earlier half of the map-stage animation family
 //   whose later half lives in msanim_family_methods.cpp (types from its header).
-// Address index: 0x5CB790 0x5CBCB0 0x5CC760 0x5CC820 0x5CC850 0x5CC880 0x5CCA10 0x5CCE40 0x5CEC70
+// Address index: 0x5CB790 0x5CBCB0 0x5CC760 0x5CC820 0x5CC850 0x5CC880 0x5CCA10 0x5CCC30 0x5CCE40 0x5CEC70 0x5CECB0
 
 #include "msanim_family_methods.h"
+#include "../_layout/memory_buffer.h"
 
 // GLOBAL: GAMEMD 0x88730C -- the blitter the shape animations redraw through.
 extern MSBlitSurface* DAT_0088730C;
@@ -123,10 +124,59 @@ void MSBinkAnim::Attach(void* target)
 {
 }
 
+// FUNCTION: GAMEMD 0x5CCC30
+// Build a VQA animation. When there is a name and a surface, the movie is opened with an empty clip pair and
+// the volume scale, its destination box is centred (640x400) on the caller's surface and its source box on
+// the screen surface; the backdrop is then looked up as "<stem>.PCX" through a stack file object which is
+// torn down inline.
+MSVQAnim::MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, bool field2c)
+    : Player(0), Surface(surface), Field24(field24), Movie(0), Field2C(field2c), Finished(false)
+{
+    if (name->FUN_007B47F0(0) && surface != 0) {
+        MSBounds none2;
+        MSBounds none1;
+        Player = FUN_005BFAA0(name->FUN_007B5440(), surface, none1, none2, (int)(DAT_00A8EB98 * 255.0), 0);
+
+        if (Player != 0) {
+            int y = (surface->Limit() - 400) / 2;
+            int x = (surface->Slot31() - 640) / 2;
+            RectangleStruct dest = { x, y, 640, 400 };
+            Player->Dest = dest;
+
+            y = (DAT_0088730C->Slot32() - 400) / 2;
+            x = (DAT_0088730C->Slot31() - 640) / 2;
+            RectangleStruct source = { x, y, 640, 400 };
+            Player->Source = source;
+        }
+
+        MSStringClass stem;
+        stem.Init();
+        name->Split(0, ".", &stem);
+
+        MSStringClass full;
+
+        MSFileClass file;
+        file.Construct(stem.Concat(&full, ".PCX"));
+        full.Destruct();
+
+        if (file.Exists(0)) {
+            Movie = (MSDeletable*)MSReadPCXFile(&file, 0, 0, 0);
+        }
+
+        file.Vtbl    = &VT_007E16B0;
+        file.Reset64 = 0;
+        ((MemoryBuffer*)file.Sub58)->Clear();
+        file.Vtbl    = &VT_007E1668;
+        FUN_00431B80(&file);
+
+        stem.Destruct();
+    }
+}
+
 // FUNCTION: GAMEMD 0x5CCE40
 // The VQA animation's destructor, out of line: the movie goes through its own slot-zero deleting
-// destructor, then the player is stopped and deleted. (Its scalar deleting destructor 0x5CECB0 is not
-// reproduced: cl emits ??_G only beside a constructor and the constructor 0x5CCC30 is not matched.)
+// destructor, then the player is stopped and deleted. The compiler emits its scalar deleting destructor
+// 0x5CECB0 beside the constructor above.
 MSVQAnim::~MSVQAnim()
 {
     if (Movie != 0) {
@@ -141,3 +191,6 @@ MSVQAnim::~MSVQAnim()
 
 // Compiler-generated scalar deleting destructor of MSBinkAnim (destructor and base destructor expanded inline).
 // SYNTHETIC: GAMEMD 0x5CEC70 -- MSBinkAnim::`scalar deleting destructor'
+
+// Compiler-generated scalar deleting destructor of MSVQAnim, emitted with the vtable 0x7EE9B0 by the constructor.
+// SYNTHETIC: GAMEMD 0x5CECB0 -- MSVQAnim::`scalar deleting destructor'

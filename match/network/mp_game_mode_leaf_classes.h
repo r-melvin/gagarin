@@ -34,7 +34,7 @@ class UnholyAlliance : public MultiplayerGameMode
 {
 public:
     UnholyAlliance(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
-    virtual ~UnholyAlliance();
+    virtual ~UnholyAlliance() {}
 };
 GG_STATIC_ASSERT(sizeof(UnholyAlliance) == sizeof(MultiplayerGameMode));
 

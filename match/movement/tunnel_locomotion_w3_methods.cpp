@@ -126,3 +126,5 @@ void __stdcall TunnelLocomotionClass::DoTurn(unsigned long dir)
     DirStruct d = *reinterpret_cast<DirStruct*>(&dir);
     LinkedTo->PrimaryFacing.SetDesired(d);
 }
+
+// SYNTHETIC: GAMEMD 0x72A210 -- TunnelLocomotionClass scalar deleting destructor, emitted by the compiler from the virtual destructor

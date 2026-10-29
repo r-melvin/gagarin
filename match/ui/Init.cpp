@@ -54,7 +54,6 @@
 
 #include "../core/pair_vector_grow_sweep.h"
 
-#include "../core/seat_vtable_tail_dtor_sweep.h"
 
 #include "../core/trivial_tu102_methods.h"
 
@@ -569,14 +568,6 @@ void __cdecl FUN_00532140()
 void FUN_005355C0(int a1, int a2)
 {
     FUN_00721210(DAT_00A83D10, a2, DAT_008263A8);
-}
-
-// FUNCTION: GAMEMD 0x535A60
-// VTABLE: GAMEMD 0x7E1668
-void FUN_00535A60(SeatDtorObject* self)
-{
-    self->Vtbl = VTABLE_007E1668;
-    FUN_00431B80(self);
 }
 
 // FUNCTION: GAMEMD 0x535BD0 -- CommandClass slot 5

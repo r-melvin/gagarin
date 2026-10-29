@@ -83,7 +83,11 @@ public:
     bool              unknown_12E;            // +0x12E
     bool              unknown_12F;            // +0x12F; byte load at Bullet 0x46A515/0x46A985
     bool              unknown_130;            // +0x130
-    char              _tail_131[0x145 - 0x131]; // +0x131..+0x144
+    char              _tail_131[0x136 - 0x131]; // +0x131..+0x135
+    bool              unknown_136;            // +0x136
+    char              _tail_137[0x142 - 0x137]; // +0x137..+0x141
+    bool              unknown_142;            // +0x142
+    char              _tail_143[0x145 - 0x143]; // +0x143..+0x144
     bool              unknown_145;            // +0x145
     bool              unknown_146;            // +0x146
     bool              unknown_147;            // +0x147
@@ -119,6 +123,8 @@ GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_104) == 0x104);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_129) == 0x129);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12E) == 0x12E);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_130) == 0x130);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_136) == 0x136);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_142) == 0x142);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_145) == 0x145);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_14C) == 0x14C);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_14E) == 0x14E);

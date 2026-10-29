@@ -518,6 +518,7 @@ extern double DAT_00AC1B40;
 #include "../core/hash_table_rehash_sweep.h"
 #include "../core/global_getter_family_methods.h"
 #include "../core/trivial_tu181_methods.h"
+#include "ownrdraw_dialog_control.h"
 #pragma intrinsic(strcmp)
 #include "../audio/voc_class_play_global_methods.h"
 
@@ -2802,29 +2803,21 @@ void __stdcall FUN_006240A0(int nKey, int unused)
         value->FieldD4 = true;
 }
 
-// A dialog-control object (+0x04 word, +0x08 byte). Placeholder view of the record.
-struct Obj_00624110
+// FUNCTION: GAMEMD 0x624110
+// Zero the word at +0x04 and the byte at +0x08; the compiler seats the vtable (0x7EF738).
+OwnerDraw::SimpleDialogControl::SimpleDialogControl()
+    : unknown_04(0), unknown_08(0)
 {
-    void*         unknown_00;   // +0x00 vtable pointer
-    int           unknown_04;   // +0x04
-    unsigned char unknown_08;   // +0x08
-
-    // FUNCTION: GAMEMD 0x624140 (__thiscall)
-    void FUN_00624140(int nKey, int nValue);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00624110, unknown_04) == 0x04);
-GG_STATIC_ASSERT(offsetof(Obj_00624110, unknown_08) == 0x08);
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x624130
-// VTABLE: GAMEMD 0x7EF720
-void FUN_00624130(ConstStoreObject* self)
-{
-    self->Head = VTABLE_007EF720;
 }
 
-// FUNCTION: GAMEMD 0x624140  Obj_00624110::FUN_00624140 (__thiscall)
-void Obj_00624110::FUN_00624140(int nKey, int nValue)
+// FUNCTION: GAMEMD 0x624130
+// Base destructor: seats the OwnerDraw::DialogControl vtable (0x7EF720).
+OwnerDraw::DialogControl::~DialogControl()
+{
+}
+
+// FUNCTION: GAMEMD 0x624140
+void OwnerDraw::SimpleDialogControl::Slot1(int nKey, int nValue)
 {
     unknown_04 = nValue;
 
@@ -2836,28 +2829,29 @@ void Obj_00624110::FUN_00624140(int nKey, int nValue)
     unknown_08 = true;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6241C0
-// Member getter (byte). Vtable slot 2 of OwnerDraw::SimpleDialogControl (RTTI) and 4 derived vtable(s).
-unsigned char Obj_006241C0::FUN_006241C0() const
+unsigned char OwnerDraw::SimpleDialogControl::Slot2() const
 {
     return unknown_08;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6241D0
-int FUN_006241D0(LeafObj_0x04* self)
+int OwnerDraw::SimpleDialogControl::Slot3()
 {
-    return self->unknown_04;
+    return unknown_04;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6241E0
-// Returns a constant boolean. Vtable slot 4 of OwnerDraw::SimpleDialogControl (RTTI) and 1 derived vtable(s).
-bool Obj_006241E0::FUN_006241E0() const
+bool OwnerDraw::SimpleDialogControl::Slot4() const
 {
     return false;
 }
+
+// Compiler-generated scalar deleting destructor of DialogControl, emitted with its vtable 0x7EF720.
+// SYNTHETIC: GAMEMD 0x6244A0 -- OwnerDraw::DialogControl::`scalar deleting destructor'
+
+// Compiler-generated scalar deleting destructor of SimpleDialogControl (base destructor expanded inline).
+// SYNTHETIC: GAMEMD 0x6244C0 -- OwnerDraw::SimpleDialogControl::`scalar deleting destructor'
 
 // FUNCTION: GAMEMD 0x6244E0  Obj_006244E0::FUN_006244E0 (__thiscall)
 void Obj_006244E0::FUN_006244E0()

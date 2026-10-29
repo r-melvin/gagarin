@@ -56,3 +56,5 @@ SubzoneTrackingStruct::SubzoneTrackingStruct()
     unknown_1C = 0;
     unknown_20 = 0;
 }
+
+// SYNTHETIC: GAMEMD 0x588BF0 -- MapClass scalar deleting destructor, emitted by the compiler from the virtual destructor

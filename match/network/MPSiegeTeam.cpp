@@ -54,6 +54,8 @@ MultiplayerSiegeDefenderTeam::~MultiplayerSiegeDefenderTeam()
 {
 }
 
+// SYNTHETIC: GAMEMD 0x5CAF10 -- MultiplayerSiegeDefenderTeam scalar deleting destructor, emitted by the compiler from the virtual destructor above
+
 // FUNCTION: GAMEMD 0x5CAE70
 //
 // A player may join the defenders only while no other player is on team 1.
@@ -83,3 +85,5 @@ MultiplayerSiegeAttackerTeam::MultiplayerSiegeAttackerTeam()
 MultiplayerSiegeAttackerTeam::~MultiplayerSiegeAttackerTeam()
 {
 }
+
+// SYNTHETIC: GAMEMD 0x5CAF40 -- MultiplayerSiegeAttackerTeam scalar deleting destructor, emitted by the compiler from the virtual destructor above

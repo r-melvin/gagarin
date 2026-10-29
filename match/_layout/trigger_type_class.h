@@ -43,6 +43,8 @@ public:
     TriggerTypeClass(const char* id);
     // Load re-runs the base no-init constructor (0x410960) and reinstalls the four vtables.
     TriggerTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
+    // FUNCTION: GAMEMD 0x726E00 (decl; reloc) -- the destructor, called out of line from the scalar deleting destructor 0x727CD0.
+    virtual ~TriggerTypeClass();
     // FUNCTION: GAMEMD 0x726F50
     bool HasCrossesVerticalLineEvent() const;
     // FUNCTION: GAMEMD 0x726F80

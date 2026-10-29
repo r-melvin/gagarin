@@ -65,7 +65,7 @@ class DisplayTacticalGadget_008A06F8 : public GadgetClass
 {
 public:
     DisplayTacticalGadget_008A06F8() : GadgetClass(0, 0, 0, 0, 0x7F, 1) {}
-    // SYNTHETIC: GAMEMD 0x004AEBB0 -- implicit scalar deleting destructor (slot 0).
+    // Slot 0 is the implicit scalar deleting destructor (0x004AEBB0, annotated in Display.cpp).
     // FUNCTION: GAMEMD 0x4AAC10 (decl; reloc) -- slot 31 (Action).
     virtual int Action(unsigned flags, unsigned* key, int modifier);
 };

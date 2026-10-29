@@ -150,3 +150,5 @@ void SliderClass::PeerToPeer(unsigned flags, unsigned* key, GadgetClass* source)
             Step(1);
     }
 }
+
+// SYNTHETIC: GAMEMD 0x558180 -- SliderClass scalar deleting destructor, emitted by the compiler from the virtual destructor

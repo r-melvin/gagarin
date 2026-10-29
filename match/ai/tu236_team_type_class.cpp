@@ -201,6 +201,7 @@ int Obj_006F20C0::FUN_006F20C0() const
 // FUNCTION: GAMEMD 0x006F25E0
 // DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::AddItem
 template class VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*> >;
+// SYNTHETIC: GAMEMD 0x6F26E0 -- compiler-generated vector deleting destructor of DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6F25D0

@@ -18,6 +18,8 @@ struct Obj_007667E0
     unsigned char unknown_0F;   // +0x0F
 };
 
+namespace WorldDominationTour { class Campaign; }
+
 using WorldDominationTour::Conflict;
 
 typedef rc_ptr<Conflict> ConflictPtr;
@@ -38,6 +40,10 @@ typedef rc_ptr<Conflict> ConflictPtr;
 // rc_ptr<Conflict>: the deleting destructor the compiler emits for it.
 // FUNCTION: GAMEMD 0x765C70
 // rc_ptr<Conflict>: default constructor (base constructor, then the derived vtable seat).
+// SYNTHETIC: GAMEMD 0x765710 -- rc_ptr<CampaignProperties>::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x765740 -- rc_ptr<History>::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x765790 -- rc_ptr<Campaign>::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x7657C0 -- rc_ptr<State>::`scalar deleting destructor'
 // SYNTHETIC: GAMEMD 0x766930 -- rc_ptr<Conflict>::`scalar deleting destructor'
 // SYNTHETIC: GAMEMD 0x766960 -- rc_ptr<ValueGameOption<unsigned char>>::`scalar deleting destructor'
 // SYNTHETIC: GAMEMD 0x766990 -- rc_ptr<FlagGameOption>::`scalar deleting destructor'
@@ -53,6 +59,10 @@ typedef rc_ptr<Conflict> ConflictPtr;
 template class VectorClass<ConflictPtr>;
 template class DynamicVectorClass<ConflictPtr>;
 template class rc_ptr<Conflict>;
+template class rc_ptr<WorldDominationTour::CampaignProperties>;
+template class rc_ptr<WorldDominationTour::History>;
+template class rc_ptr<WorldDominationTour::Campaign>;
+template class rc_ptr<WorldDominationTour::State>;
 template class rc_ptr<WorldDominationTour::ValueGameOption<unsigned char> >;
 template class rc_ptr<WorldDominationTour::FlagGameOption>;
 template class rc_ptr<WorldDominationTour::MapSizeGameOption>;

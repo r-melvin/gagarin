@@ -407,5 +407,7 @@ int FUN_00769540(unsigned int value)
     return value;
 }
 
+// SYNTHETIC: GAMEMD 0x769D90 -- rc_ptr<Map>::`scalar deleting destructor' (compiler-emitted for the
+// rc_ptr<Map> this TU instantiates)
 // SYNTHETIC: GAMEMD 0x769C00
 // Map scalar deleting destructor.

@@ -41,7 +41,6 @@ extern "C" Team_005095D0** DAT_008B40EC;
 #include "../_layout/obj_005095d0.h"
 
 
-#include "../_layout/obj_0050da10.h"
 
 
 // FUNCTION: GAMEMD 0x0053EC90

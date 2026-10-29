@@ -15,3 +15,5 @@ GadgetClass::GadgetClass(const GadgetClass& other)
       IsDisabled(other.IsDisabled), Flags(other.Flags)
 {
 }
+
+// SYNTHETIC: GAMEMD 0x4E1AD0 -- LinkClass scalar deleting destructor, emitted by the compiler from the virtual destructor

@@ -35,12 +35,30 @@ struct Techno_00471C90;
 class TechnoClass;
 class HouseClass;
 
+// The control-node vector with its retail inline constructor (vtable 0x7E4BA4,
+// empty, growth step 10). Same size and layout as DynamicVectorClassLayout.
+struct CaptureControlNodeVector : DynamicVectorClassLayout
+{
+    CaptureControlNodeVector()
+    {
+        ((unsigned char*)&unknown_0C)[0] = 1;
+        Items = 0;
+        Capacity = 0;
+        ((unsigned char*)&unknown_0C)[1] = 0;
+        _vtable = (void*)0x7E4BA4;
+        CapacityIncrement = 10;
+        Count = 0;
+    }
+};
+
 class CaptureManagerClass : public AbstractClass
 {
 public:
     void DrawLinks(); // 0x472160
     // FUNCTION: GAMEMD 0x4717D0 (declaration; constructor)
     CaptureManagerClass(void* owner, int maxControlNodes, bool infiniteMindControl);
+    // FUNCTION: GAMEMD 0x471950 (no-initialisation constructor)
+    CaptureManagerClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x471C90
     bool CanCapture(Techno_00471C90* target) const;
     // CALLEE: GAMEMD 0x471D40 -- thiscall, mutable AbstractClass* stack argument, bool result.
@@ -80,7 +98,7 @@ public:
     virtual ~CaptureManagerClass();
 
 
-    DynamicVectorClassLayout ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields
+    CaptureControlNodeVector ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields
                                                //   @0x004717E6/0x004717E9/0x004717E2/0x004717FD/0x004717F6
     int           MaxControlNodes;             // +0x3C ctor = arg2 @0x00471822
     unsigned char InfiniteMindControl;         // +0x40 ctor = arg3 @0x00471825

@@ -1727,3 +1727,5 @@ struct Elem_006AC8D0 { int unknown_00; int unknown_04; Elem_006AC8D0() {} bool o
 // FUNCTION: GAMEMD 0x006AC8D0
 // DynamicVectorClass<Elem_006AC8D0>::DynamicVectorClass
 template class DynamicVectorClass<Elem_006AC8D0>;
+
+// SYNTHETIC: GAMEMD 0x4AEBF0 -- DisplayClass scalar deleting destructor, emitted by the compiler from the virtual destructor

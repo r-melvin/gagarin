@@ -10,3 +10,5 @@ GaugeClass::GaugeClass(const GaugeClass& other)
       unknown_2E(other.unknown_2E), Maximum(other.Maximum), Value(other.Value), unknown_38(other.unknown_38)
 {
 }
+
+// SYNTHETIC: GAMEMD 0x4E30D0 -- GaugeClass scalar deleting destructor, emitted by the compiler from the virtual destructor

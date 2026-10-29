@@ -85,3 +85,5 @@ void FoggedObjectClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1D50(unknown_58);
     crc->FUN_004A1D50(DrawRecords.Count);
 }
+
+// SYNTHETIC: GAMEMD 0x4D2910 -- FoggedObjectClass scalar deleting destructor, emitted by the compiler from the virtual destructor

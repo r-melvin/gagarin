@@ -390,34 +390,7 @@ public:
 };
 
 
-namespace OwnerDraw {
-
-class DialogControl
-{
-public:
-    DialogControl();    // FUNCTION: GAMEMD 0x624110 (decl; reloc)
-    virtual ~DialogControl();   // 0x624130 (decl; reloc)
-    // Slots 1-4 are pure in retail (vtable 0x7EF720 holds the CRT pure-call stub 0x4C9150 in each).
-    virtual void          Slot1(int key, int value) = 0;
-    virtual unsigned char Slot2() const = 0;
-    virtual int           Slot3() = 0;
-    virtual bool          Slot4() const = 0;
-    int unknown_04;     // +0x04
-    int unknown_08;     // +0x08
-};
-
-// VTABLE: GAMEMD 0x7EF738
-class SimpleDialogControl : public DialogControl
-{
-public:
-    // Overrides defined in ownrdraw.cpp / the leaf sweeps (declarations only here, bound by address).
-    virtual void          Slot1(int key, int value);   // 0x624140 (decl; reloc)
-    virtual unsigned char Slot2() const;               // 0x6241C0 (decl; reloc)
-    virtual int           Slot3();                     // 0x6241D0 (decl; reloc)
-    virtual bool          Slot4() const;               // 0x6241E0 (decl; reloc)
-};
-
-}  // namespace OwnerDraw
+#include "../ui/ownrdraw_dialog_control.h"
 
 // VTABLE: GAMEMD 0x7F7624
 class SimpleWonlineDialogControl : public OwnerDraw::SimpleDialogControl

@@ -77,19 +77,20 @@ inline CaptureManagerClass::~CaptureManagerClass()
     ControlNodes.Capacity = 0;
 }
 
+// FUNCTION: GAMEMD 0x471950
+// No-initialisation constructor: the base's no-init constructor, the member
+// vector's inline constructor, then the class tables.
+CaptureManagerClass::CaptureManagerClass(const AbstractNoInit& noInit)
+    : AbstractClass(noInit)
+{
+}
+
 // FUNCTION: GAMEMD 0x4717D0
 // Builds the control-node vector in place and registers the manager. Compiling
 // it here emits the class tables and so the scalar deleting destructor.
 CaptureManagerClass::CaptureManagerClass(void* owner, int maxControlNodes,
                                          bool infiniteMindControl)
 {
-    ControlNodes._vtable = (void*)0x7E4BA4;
-    ControlNodes.Items = 0;
-    ControlNodes.Capacity = 0;
-    ((unsigned char*)&ControlNodes.unknown_0C)[0] = 1;
-    ((unsigned char*)&ControlNodes.unknown_0C)[1] = 0;
-    ControlNodes.Count = 0;
-    ControlNodes.CapacityIncrement = 10;
     Owner = owner;
     MaxControlNodes = maxControlNodes;
     InfiniteMindControl = infiniteMindControl;

@@ -24,6 +24,8 @@ MultiplayerBattle::~MultiplayerBattle()
 {
 }
 
+// SYNTHETIC: GAMEMD 0x5C0FE0 -- MultiplayerBattle scalar deleting destructor, emitted by the compiler from the virtual destructor above
+
 // FUNCTION: GAMEMD 0x5C0E20
 bool MultiplayerBattle::vf_16()
 {
@@ -43,3 +45,5 @@ MultiplayerTeam* FUN_005C1030(int index)
 {
     return new MultiplayerBattleTeam(FUN_007B7DD0(index), index);
 }
+
+// SYNTHETIC: GAMEMD 0x5C10D0 -- MultiplayerBattleTeam scalar deleting destructor, emitted by the compiler from the virtual destructor

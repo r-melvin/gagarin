@@ -117,3 +117,5 @@ void ToolTipManager::FUN_00724BE0()
         MarkToRedraw(CurrentToolTipData);
     }
 }
+
+// SYNTHETIC: GAMEMD 0x724C10 -- ToolTipManager scalar deleting destructor, emitted by the compiler from the virtual destructor

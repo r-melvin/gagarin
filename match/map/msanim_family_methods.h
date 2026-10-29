@@ -202,7 +202,21 @@ class MSVQPlayer
 public:
     void Stop();                         // FUNCTION: GAMEMD 0x5BFF00 (decl)
     ~MSVQPlayer();                       // FUNCTION: GAMEMD 0x5C01F0 (decl)
+
+    char            unknown_00[0x24];
+    RectangleStruct Dest;                // +0x24 where the movie is drawn on the caller's surface
+    RectangleStruct Source;              // +0x34 the matching area of the screen surface
 };
+GG_STATIC_ASSERT(offsetof(MSVQPlayer, Dest) == 0x24 && offsetof(MSVQPlayer, Source) == 0x34);
+
+class MSSurface;
+// FUNCTION: GAMEMD 0x5BFAA0 (decl; reloc) -- open the movie `name` on a surface; two clip rectangles by value,
+// a volume and a flag follow.
+MSVQPlayer* __fastcall FUN_005BFAA0(const char* name, MSSurface* surface,
+                                    RectangleStruct a, RectangleStruct b, int volume, int flag);
+
+// GLOBAL: GAMEMD 0xA8EB98 -- the movie volume scale.
+extern float DAT_00A8EB98;
 
 // A one-slot stand-in for the polymorphic payloads MSVQAnim (+0x28) and
 // MSPCXAnim (+0x24) own. Retail destroys both with `MOV EAX,[ECX]; PUSH 1;
@@ -308,7 +322,7 @@ public:
     virtual void Slot24();  virtual void Slot25();  virtual void Slot26();
     virtual void Slot27();  virtual void Slot28();  virtual void Slot29();
     virtual RectangleStruct* GetRect(RectangleStruct* out);   // slot 30
-    virtual void Slot31();
+    virtual int  Slot31();                                // slot 31: the surface width (0x7C)
     // Slot 32, `CALL [EDX+0x80]` at 0x5CE42A on the caller's surface (NOT on
     // the font -- the receiver is the first parameter, reloaded from its home
     // slot two instructions earlier): the last printable line's bottom edge.
@@ -326,6 +340,20 @@ public:
     virtual void Slot01();
     virtual void Blit(RectangleStruct* area, MSSurface* source,
                       RectangleStruct* from, int a, int b);
+    // Slots 3..30 are declared only to place the two queries the VQA animation's constructor makes
+    // on the 0x88730C surface.
+    virtual void Slot03();  virtual void Slot04();  virtual void Slot05();
+    virtual void Slot06();  virtual void Slot07();  virtual void Slot08();
+    virtual void Slot09();  virtual void Slot10();  virtual void Slot11();
+    virtual void Slot12();  virtual void Slot13();  virtual void Slot14();
+    virtual void Slot15();  virtual void Slot16();  virtual void Slot17();
+    virtual void Slot18();  virtual void Slot19();  virtual void Slot20();
+    virtual void Slot21();  virtual void Slot22();  virtual void Slot23();
+    virtual void Slot24();  virtual void Slot25();  virtual void Slot26();
+    virtual void Slot27();  virtual void Slot28();  virtual void Slot29();
+    virtual void Slot30();
+    virtual int  Slot31();                                // the surface width
+    virtual int  Slot32();                                // the surface height
 };
 
 // GLOBAL: GAMEMD 0x887310 — the screen surface both PCX builders seat into the
@@ -376,6 +404,7 @@ public:
     // returned pointer straight to the file object. The two spellings push the
     // same two words in the same order.
     MSStringClass* Concat(MSStringClass* out, const char* suffix) const;
+    const char* FUN_007B5440() const;             // FUNCTION: GAMEMD 0x7B5440 (decl; reloc)
 };
 GG_STATIC_ASSERT(sizeof(MSStringClass) == 4);
 
@@ -581,6 +610,8 @@ public:
     // destructor, then the player, which is stopped before it is freed. The
     // member reload between the two is cl's, not the source's -- it cannot
     // prove Stop left the member alone.
+    // FUNCTION: GAMEMD 0x5CCC30
+    MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, bool field2c);
     virtual ~MSVQAnim();                                   // slot 0, 0x5CECB0 (out of line 0x5CCE40)
     virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);       // slot 4, 0x5CCE90
     virtual void   Draw(MouseSurfaceView* context, RectangleStruct* area);        // slot 5, 0x5CD0E0
@@ -589,14 +620,18 @@ public:
     virtual void   Attach(void* target);                   // slot 8, 0x5CD240
 
     MSVQPlayer*  Player;        // +0x1C
-    char         unknown_20[8]; // +0x20
+    MSSurface*   Surface;       // +0x20
+    int          Field24;       // +0x24
     MSDeletable* Movie;         // +0x28
-    char         unknown_2C[1]; // +0x2C
+    bool         Field2C;       // +0x2C
     bool         Finished;      // +0x2D -- slot 7's whole body is
                                 //          `MOV AL,[ECX+0x2D]; RET` at 0x5CD320
 };
 GG_STATIC_ASSERT(offsetof(MSVQAnim, Player) == 0x1C
+              && offsetof(MSVQAnim, Surface) == 0x20
+              && offsetof(MSVQAnim, Field24) == 0x24
               && offsetof(MSVQAnim, Movie) == 0x28
+              && offsetof(MSVQAnim, Field2C) == 0x2C
               && offsetof(MSVQAnim, Finished) == 0x2D);
 
 // MSBitPrintAnim holds a wide string at +0x1C whose destructor retail calls

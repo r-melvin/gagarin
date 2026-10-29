@@ -12,3 +12,5 @@ TextLabelClass::TextLabelClass(const wchar_t* text, int x, int y, int scheme, in
       unknown_48(0)
 {
 }
+
+// SYNTHETIC: GAMEMD 0x72A670 -- TextLabelClass scalar deleting destructor, emitted by the compiler from the virtual destructor

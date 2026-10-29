@@ -2276,6 +2276,7 @@ int HouseClass::vf_16()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x50E380 -- compiler-generated scalar deleting destructor.
+// SYNTHETIC: GAMEMD 0x510460 -- compiler-generated vector deleting destructor of DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>.
 // SYNTHETIC: GAMEMD 0x510A20 -- compiler-generated QueryInterface adjustor thunk.
 // SYNTHETIC: GAMEMD 0x510A30 -- compiler-generated AddRef adjustor thunk.
 // SYNTHETIC: GAMEMD 0x510A40 -- compiler-generated Release adjustor thunk.

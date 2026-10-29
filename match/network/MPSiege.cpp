@@ -84,6 +84,8 @@ MultiplayerSiege::~MultiplayerSiege()
 {
 }
 
+// SYNTHETIC: GAMEMD 0x5CABD0 -- MultiplayerSiege scalar deleting destructor, emitted by the compiler from the virtual destructor above
+
 // FUNCTION: GAMEMD 0x5CA680
 //
 // After the base check, the first player defends (team 1) and the second

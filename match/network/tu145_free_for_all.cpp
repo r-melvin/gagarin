@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Original translation unit TU145 of retail gamemd.exe v1.001; its source-file name is
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x5c5af0-0x5c5e8f,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
@@ -49,6 +50,8 @@ FreeForAll::FreeForAll(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstri
 FreeForAll::~FreeForAll()
 {
 }
+
+// SYNTHETIC: GAMEMD 0x5C5E40 -- FreeForAll scalar deleting destructor, emitted by the compiler from the virtual destructor above
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C5D30
