@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // No /GX: the four emitted leaf deleting wrappers match only without it.
 // Paired flags leave all 24 ordinary method sections unchanged. Cluster: BlitTrans<uc|us>,
 // BlitTransXlat<uc|us>, BlitTransRemapDest<uc>, BlitTransRemapXlat<uc>.

@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x6A4780 (Load) and 0x6A4930 (scalar deleting destructor); the
 //   +0x98 member is a DynamicVectorClass<int> (vtable 0x7E4DD8, base 0x7E4DB8) per the Save body.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Address index: 0x6A4780 SideClass::Load, 0x6A4930 SideClass deleting destructor.
 //   The class is declared locally with its vector member spelled out; the shared layout header
 //   keeps the raw words.

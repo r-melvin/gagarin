@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   VoxelAnimTypeClass registry lookup, read off retail gamemd.exe v1.001 (vtable 0x7F6548).
 //   Address index: 0x74BB20 registry lookup.
 

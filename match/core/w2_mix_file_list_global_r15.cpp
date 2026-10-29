@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // The List<MixFileClass*> static data member at 0xABEFD8 (RTTI vtable 0x7EDF38, a one-slot
 // table whose slot zero is 0x5B46E0). Retail's fused constructor + atexit initialiser is

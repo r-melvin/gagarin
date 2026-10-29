@@ -3,7 +3,6 @@
 //
 // WebBrowser construction (layout and evidence: menus_web_browser.h). The factory expands the
 // constructor and the component set-up inline; both are also kept out of line.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //
 // Address index:
 //   0x773450  FUN_00773450 (factory)

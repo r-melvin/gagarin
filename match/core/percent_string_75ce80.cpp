@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 // Evidence: disassembled from the user's gamemd.exe v1.001 at 0x75CE80; the
 //   constant at 0x7E3808 is the double 0.01 (bytes 7B14AE47E17A843F).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // CRT atoi (0x7C9BFD).
 int    __cdecl P_atoi(const char* str);
 // CRT strchr (0x7CAF30).

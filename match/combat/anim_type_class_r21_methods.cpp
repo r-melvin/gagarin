@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   AnimTypeClass members read off retail gamemd.exe v1.001 (vtable 0x7E3608).
 //   Address index: 0x4289D0, 0x428EA0
 #include "../_layout/anim_type_class.h"

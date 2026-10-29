@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x533F50 (0x74 bytes): walks the global command list (Items 0x87F65C, Count

@@ -3,7 +3,6 @@
 //   Evidence: small leaf functions spread over 0x6A0000-0x7C0000 of the user's gamemd.exe v1.001, each
 //   disassembled from its entry point; the receiver types are placeholder views that declare only
 //   the fields the bodies touch.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

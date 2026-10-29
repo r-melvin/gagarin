@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Entry-origin retail evidence at 0x525A10 and 0x526420 (stack FileStraw
 //   vtable 0x7E4D90 / FilePipe vtable 0x7E4DA0, destructors 0x7BA590/0x7BA420).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/ini_class.h"
 #include "../_layout/file_straw.h"

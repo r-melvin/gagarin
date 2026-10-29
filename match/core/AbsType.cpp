@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit AbsType.cpp. The name is the source-file string at 0x817830
 //   in retail gamemd.exe v1.001, passed by the assert at 0x410994 inside this object's
 //   code range (0x410610-0x410e4f). Functions are in ascending retail address order.

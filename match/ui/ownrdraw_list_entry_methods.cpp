@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: 0x624460 destroys the two wide strings at +0x08 and +0x04 of a list entry, in that
 //   order, through the string destructor 0x7B6760; 0x6247D0 is its copy constructor.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #define GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
 #include "listentry_006255f0.h"

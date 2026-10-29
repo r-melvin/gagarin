@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Options.CPP. The name is the source-file string at 0x833370
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5fbb56 inside this object's

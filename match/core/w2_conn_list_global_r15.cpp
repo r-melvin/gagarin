@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // The owned-connection list global at 0xB052D0: a DynamicVectorClass<ConnectionListStruct*>
 // (vtable 0x7F0C2C) followed by a flag byte (+0x18) and a dword (+0x1C), both cleared by the

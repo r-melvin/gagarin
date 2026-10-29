@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // A static data member of IndexClass type, as laid out at 0x8B3CC0. Its
 // initialiser at 0x4D07F0 zeroes the five prefix fields and registers the

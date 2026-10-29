@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   Initialiser and exit-time stub addresses and the vtable stored by each were read off the
 //   user's retail gamemd.exe v1.001 with the local Ghidra CLI.
 //

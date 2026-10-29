@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x767E90 (0x28 bytes); RTTI .?AVMSFrameAnim@@ (vtable 0x7F7104, base MSAnim);

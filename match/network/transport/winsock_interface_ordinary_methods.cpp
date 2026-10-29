@@ -5,7 +5,6 @@
 // The selected methods are the unclaimed ordinary WinsockInterfaceClass base
 // entries only; StartListening and both buffer-drain methods remain in their
 // existing TUs. No constructor, destructor, or ShutdownWinsock body is here.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include <string.h>
 #include "winsock_interface_class.h"
 

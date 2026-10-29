@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Evidence: disassembly of 0x764B30 (the rc_ptr<Campaign> factory: operator new(0x4C) at 0x764B55,
 //   constructor 0x764B90 with the first value in EDX and the source handle on the stack, handle vtable
 //   0x7F6F24 = .?AV?$rc_ptr@VCampaign@WorldDominationTour@@@@). Class names are the retail RTTI names;

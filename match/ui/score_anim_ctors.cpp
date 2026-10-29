@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x690BB0 and 0x690F30; RTTI .?AVScoreTimeClass@@ (vtable 0x7F0EC8, base

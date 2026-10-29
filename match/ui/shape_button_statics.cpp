@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // Static ShapeButtonClass members in the unit at 0x6CFBA0-0x6CFC79: a 25-element array
 // (0x00B0C1C0..0x00B0CB20) and two single buttons. The run-time initialiser of each

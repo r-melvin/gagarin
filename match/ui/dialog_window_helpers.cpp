@@ -5,7 +5,6 @@
 // Win32 dialog helpers: a child-window scaler run through EnumChildWindows,
 // a font cache keyed by face/size/style, the end of a tree-view drag and the
 // tree/list view state load/save walkers.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: the font cache's constructor and destructor inline into its initialiser and
 //   atexit stub (0x775D70, 0x775D90).
 #include <stddef.h>

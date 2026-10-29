@@ -4,7 +4,6 @@
 //   BaseCenter +0x5494 (see house_class.h), the "no cell" sentinel at 0xA8EF98, the empty
 //   coordinate at 0xA8EFF8, MapClass::GetCellAt 0x5657A0 on the map at 0x87F7E8, and CellClass
 //   vtable slot 18 (+0x48) which returns the cell's coordinate through a hidden pointer.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/house_class.h"
 #include "../_layout/cell_class.h"

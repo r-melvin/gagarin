@@ -3,7 +3,6 @@
 // Relies on match/_layout/straw.h: the inline Straw() that zeroes +4/+8, and
 // for 0x633050 the reference overload of SetChainTo that forwards to the
 // virtual slot.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // /Ob2 emits the native inlined scalar-deleting LCW destructor.
 #include "compression_straws.h"
 

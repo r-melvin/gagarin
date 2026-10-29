@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. Helpers of the
 //   netdlg2.cpp object (source-file string 0x831288, code range 0x5DACF0..0x5E242F).
 //

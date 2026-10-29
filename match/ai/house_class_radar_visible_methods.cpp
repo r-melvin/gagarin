@@ -4,7 +4,6 @@
 //   (see house_class.h), HouseTypeClass index at +0xB8, ObjectClass InLimbo/Location at
 //   +0x81/+0x9C, TechnoClass Owner at +0x21C, TechnoTypeClass Sight at +0x5E8, vtable slot 33,
 //   the technos array at 0xA8EC78 and the current player at 0xA83D4C.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/house_class.h"
 #include "../_layout/house_type_class.h"

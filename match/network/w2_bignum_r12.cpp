@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below; further
 //   multi-word integer helpers from the MPLayer.CPP object (0x5c5e90-0x5c91ef).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //
 // Address index: 0x5C6500 0x5C6550 0x5C8930
 

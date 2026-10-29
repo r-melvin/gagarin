@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // Static members of the Radar unit's guarded group (guard byte 0x00B048A8): bit 1 is a
 // GadgetClass-derived object at 0x00B04A10 (initialiser 0x652870, exit stub 0x6528A0) whose

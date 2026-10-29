@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // /Ob2 inlines the real destructor into the scalar deleting destructor
 // at 0x6DC470; /Ob1 leaves a call and scores12.5%. All prior exact rows
 // in this TU remain raw-exact under this flag.

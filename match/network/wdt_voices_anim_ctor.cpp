@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x771850 (0x31 bytes); RTTI .?AVAnim@Voices@WorldDominationTour@@ (vtable

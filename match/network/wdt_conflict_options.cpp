@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //
 // World Domination Tour conflict helpers and the rc_ptr<GameOption> vector
 // instantiations (retail 0x765F60-0x767080). The vector bodies are the

@@ -4,7 +4,6 @@
 // The unit at retail 0x4C5EE0..0x4C635F (it also holds EvadeClass::Do,
 // evade_class_do_methods.cpp): three of its run-time initialisers and an
 // unreferenced empty function, in retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <stddef.h>
 #include <string.h>

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   TaskForceClass stream loading and destruction, read off retail gamemd.exe v1.001
 //   (vtable 0x7F4680). The layout is match/_layout/task_force_class.h.
 //   /Ob2: the scalar deleting destructor carries the destructor body inline.

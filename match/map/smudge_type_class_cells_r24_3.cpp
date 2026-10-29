@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra
 //   Retail gamemd.exe v1.001 disassembly at 0x6B6080 (SmudgeTypeClass, layout in
 //   terrain_objects/smudge_type_class.h).

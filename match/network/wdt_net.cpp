@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   WDTTerritory and WDTState, their rc_ptr factories, and the
 //   VectorClass<rc_ptr<WDTTerritory>> members emitted beside them. Class names
 //   are the retail RTTI names; members are placeholders.

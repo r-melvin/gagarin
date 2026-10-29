@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against the user's retail gamemd.exe v1.001 (Ghidra CLI
 //   disassembly from each entry) at 0x5C0DD0..0x5C1087.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //
 // /Ob2 measured on this TU (all five rows scored under default, /Ob1, /Ob2 and
 // /Op): only /Ob2 moves anything, and it moves FUN_005C1030 from 67.6% (index

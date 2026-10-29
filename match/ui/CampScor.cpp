@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit CampScor.cpp. The name is the source-file string at 0x81b304

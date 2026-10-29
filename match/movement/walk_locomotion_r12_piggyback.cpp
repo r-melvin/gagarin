@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   WalkLocomotionClass IPiggyback members, read off retail gamemd.exe v1.001
 //   (IPiggyback table 0x7F69D4). Same shape as the Drive and DropPod bodies.
 //   Address index: 0x75C850 BeginPiggyback, 0x75C8A0 EndPiggyback, 0x75CBA0 IsPiggybacking.

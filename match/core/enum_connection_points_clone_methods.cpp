@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // /Ob2 inlines the local copy constructor into Clone: default flags score 0% there, /Ob2 scores 95.7%.
 
 #include "../_layout/enum_connection_points_class.h"

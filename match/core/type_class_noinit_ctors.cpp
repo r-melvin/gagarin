@@ -3,7 +3,6 @@
 //   Evidence: the five constructors at 0x5FE3C0, 0x644220, 0x6B5370, 0x6DD180 and 0x6E7F50 each
 //   forward their NoInit argument to a base constructor and then store the four COM-interface
 //   vtable pointers of the RTTI class named by the first vtable (read from the binary).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //
 // Each class is declared here with only what the constructor needs (a base and a virtual
 // destructor, so the compiler emits the vptr stores); the classes' real bodies are recovered in

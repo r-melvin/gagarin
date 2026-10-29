@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Body read from the retail function at 0x52D870 (0x129 bytes, RET 0x10).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 #include <windows.h>
 #include "../_layout/obj_005fbf80.h"
 

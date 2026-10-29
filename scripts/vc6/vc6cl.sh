@@ -44,7 +44,7 @@ export LIB="$VC98/Lib"
 
 # Locked/bisected flag set. P0.5 bisects this against the leaf cluster, then
 # pins it here once the bytes match.
-DEFAULT_FLAGS="/nologo /c /O2 /Gr /DNDEBUG /Gy /MT"
+DEFAULT_FLAGS="/nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2"
 
 # Per-TU flag override. A translation unit whose retail bytes are only
 # reproducible under a different flag set declares it on a single line near the

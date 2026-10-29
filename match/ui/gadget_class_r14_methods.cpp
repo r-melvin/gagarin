@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Evidence: disassembly of 0x4E1340; the vtable stores (0x7E9344 then 0x7E92BC) are the
 //   LinkClass and GadgetClass constructors, as in the sibling constructor at 0x4E12F0.
 //

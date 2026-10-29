@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   Evidence: retail gamemd.exe v1.001 initialisers 0x6006B0 and 0x600880 and their exit-time
 //   stubs 0x600750 and 0x600920. Each global is one chained hash table whose constructor
 //   (128 buckets, load limits 0.2 / 0.8, hash function 0x600660) and destructor (free every

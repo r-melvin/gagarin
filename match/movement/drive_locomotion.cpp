@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // /Ob2: retail keeps out-of-line copies of helpers that have no direct
 // callers (0x4AFAA0, 0x4AFED0, 0x4B0DA0) while inlining the same bodies into
 // their users (0x4AF9B0, 0x4B0410, 0x4B0DF0 into 0x4B0C40).

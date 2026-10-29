@@ -3,7 +3,6 @@
 // PKey_00632740 (public-key record: modulus at +0, exponent at +0x100, bit length - 1 at
 // +0x200) serialisers over the bignum byte codecs at 0x5C62B0 / 0x5C6370. Layout and
 // evidence: pk_key_pipes.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 
 #include "pk_key_pipes.h"
 

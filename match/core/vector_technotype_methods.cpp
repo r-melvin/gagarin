@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // The three raw seven-slot RTTI tables below encode PAVTechnoTypeClass,
 // an unqualified pointer. Complete entry-origin bodies establish all bound
 // methods. /GX emits shorter derived deleting wrappers; no GX reproduces

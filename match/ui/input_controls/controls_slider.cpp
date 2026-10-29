@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 // Flag bisection: a paired /GX probe of every entry in this TU produced the same scores as the
 // line above. /GX is omitted because controls_static_button.cpp shows retail has no unwind code.
 //

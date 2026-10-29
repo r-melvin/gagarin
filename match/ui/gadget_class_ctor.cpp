@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // /Ob2 retains the ordinary destructor body in the scalar deleting wrapper.
 // Retail 0x4E12F0..0x4E133E establishes all stores and the conditional flag OR.
 // Exact once Next/Previous come from the inline LinkClass constructor: the base

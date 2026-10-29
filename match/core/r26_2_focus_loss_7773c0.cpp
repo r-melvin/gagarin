@@ -4,7 +4,6 @@
 //   gamemd.exe v1.001.
 //
 // Address index: 0x7773C0
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- debug log.
 void FUN_004068E0(const char* format, ...);

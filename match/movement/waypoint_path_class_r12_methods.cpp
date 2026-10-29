@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   WaypointPathClass list editing, read off retail gamemd.exe v1.001
 //   (vtable 0x7F6E70). The layout is movement/waypoint_path_class_methods.h.
 //   Address index: 0x763AF0 set, 0x763B30 remove, 0x763BE0 clear.

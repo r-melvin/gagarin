@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below; the
 //   class and the evidence for its single member are in string_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Further Wstring bodies, ascending by retail address.
 #include <string.h>
 #include <ctype.h>

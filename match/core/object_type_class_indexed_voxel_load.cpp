@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // /Ob0 gives 11.2% / 5.5%; /Ob1 and /Ob2 reproduce both native bodies.
 // Indexed resource loaders, validated from 0x5F7A90 and 0x5F7DB0 entries.
 // Each function retains its own native replacement/failure semantics.

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Kamikaze's constructor 0x54E360 and destructor 0x54E690 are called by
 //   nothing: the global's initialiser 0x54E260 and its exit stub 0x54E2D0 carry
 //   the same bodies inline (/Ob2 expands the out-of-line functions into them).

@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 // Native7B5B30 expands Length; /Ob2 preserves all existing complete sections.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Canonical Wstring bodies, ascending by retail address. The class and the
 // evidence for its single member are in string_class.h.
 #include <string.h>

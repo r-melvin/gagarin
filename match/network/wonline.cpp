@@ -5,7 +5,6 @@
 // "D:\ra2mdpost\wonline.cpp"). Run-time initialisers and atexit cleanups of
 // the file-scope objects come first, then the free helpers, in retail
 // address order. All names are placeholders.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: retail inlines the record search 0x77D240 into 0x77D4C0.
 #define NO_STRICT
 #define LocalHandle LocalHandle_Win32

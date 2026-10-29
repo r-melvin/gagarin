@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 // Small leaf routines read from retail gamemd.exe v1.001 that touch only their arguments and
 // a few globals (named by retail address, typed only as far as the instructions show).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 
 #include <stddef.h>
 #include "../_layout/house_class.h"

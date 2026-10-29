@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   TunnelLocomotionClass state-completion handlers, read off retail gamemd.exe v1.001.
 //   Each runs when the state timer has covered its full duration (progress equals 1.0).
 //   Address index: 0x729480, 0x729AA0, 0x7294E0.

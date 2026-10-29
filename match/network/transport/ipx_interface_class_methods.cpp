@@ -6,7 +6,6 @@
 // ownership or a complete emitted/final-linked IPX vtable.
 // GetAdapterAddressString at 0x7B0F50 is independently checked against the
 // entry-origin retail span and strict relocation targets.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include <string.h>
 #include <stdio.h>
 #include "../../_layout/ipx_address_class.h"

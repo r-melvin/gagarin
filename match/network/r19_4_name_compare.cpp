@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   Evidence: retail gamemd.exe v1.001 disassembly at 0x631C10 (the strcmp is the compiler's
 //   inline expansion, the wide compare is the CRT wcscmp at 0x7CA5D3).
 //

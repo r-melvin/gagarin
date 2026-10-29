@@ -3,7 +3,6 @@
 //   Evidence: 0x5FE3F0 stores four vtable pointers, announces the expired pointer, removes the
 //   object from the class-wide array and falls into the ObjectTypeClass body; 0x5FC4D0 is the
 //   same shape over ObjectClass.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Address index: 0x5FC4D0 ~OverlayClass, 0x5FE3F0 ~OverlayTypeClass.
 
 #include "../_layout/object_type_class.h"

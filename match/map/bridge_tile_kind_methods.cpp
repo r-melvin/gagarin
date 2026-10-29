@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Evidence: retail gamemd.exe v1.001 disassembly at 0x5746C0.
 //
 // Address index: 0x574600 0x5746C0

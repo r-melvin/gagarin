@@ -5,7 +5,6 @@
 // run-time initialisers, the remap-table builder 0x4C3A20 and the EgoClass
 // constructor and draw bodies, in retail address order. EgoClass is declared
 // in ego_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <string.h>
 #include <wchar.h>

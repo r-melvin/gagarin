@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Body read from the retail function at 0x554370 (0x8F bytes, plain RET).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include "../_layout/load_progress_mgr.h"
 

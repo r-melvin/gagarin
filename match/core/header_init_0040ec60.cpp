@@ -3,7 +3,6 @@
 // The header initialiser group that opens the retail block at 0x40EC60
 // (header_init_shapes.h): two derived doubles and a {128, 128, 0} coordinate,
 // in __xc order.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: retail folds the atexit registration into the 0x40F270 initialiser.
 #include <math.h>
 #include "header_init_shapes.h"

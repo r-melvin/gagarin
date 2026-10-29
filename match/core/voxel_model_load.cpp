@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // Native 0x755DB0..0x756491: file blocks, optional palette loading, record
 // transforms, bounding corners and cleanup on every checked short read.
 #include "../_layout/voxel_resource_data.h"

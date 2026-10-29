@@ -3,7 +3,6 @@
 //   Control flow read from retail gamemd.exe v1.001 at 0x584030: a rectangle of cells (X, Y,
 //   Width, Height as ints) is walked row by row; every cell's Passability (+0x4C) must be 3 or 4.
 //   __stdcall, RET 4, no receiver.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include "cell_flag_search_shared.h"
 #include "../_layout/geometry2d.h"
 

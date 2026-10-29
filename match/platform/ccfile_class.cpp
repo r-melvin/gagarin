@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm) at the
 //   addresses annotated below. Layout/vtable cross-checked against YRpp
 //   (reconfirmed from the disasm).

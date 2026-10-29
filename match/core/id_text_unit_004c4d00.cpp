@@ -4,7 +4,6 @@
 // The unit at retail 0x4C4D00..0x4C4FFF (between Egos.CPP and the EMPulse
 // unit): three of its run-time initialisers and the "%d,%s" formatter
 // 0x4C4F90, in retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <stdio.h>
 #include "../_layout/abstract_type_class.h"

@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra
 //   Retail gamemd.exe v1.001 disassembly at 0x6E4560, inside the TAction.cpp range.
 //

@@ -3,7 +3,6 @@
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. Small leaf bodies
 //   from the 0x54E000-0x6AC000 range; receivers are placeholder views of the members touched.
 //
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 // Address index: 0x61F190 0x65C8B0 0x642740

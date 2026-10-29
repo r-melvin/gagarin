@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
 // VectorClass<T> over four eight-byte elements, and

@@ -3,7 +3,6 @@
 //   Small functions read off the user's retail gamemd.exe v1.001 with the local Ghidra CLI at the
 //   address in each annotation. The receiver is a placeholder view named after its address.
 //   Address index: 0x74BF40, 0x74BD50.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   (/Ob2: retail inlines the selection step 0x74BF40 into 0x74BD50.)
 
 #include <stddef.h>

@@ -3,7 +3,6 @@
 // Native 0x5F7400 unregisters the object, releases its owned image, clears
 // charger resources and destroys cache/voxel members in reverse order.
 // Native 0x5F8080 clears the paired charger arrays in forward index order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // /Ob2 expands the registry removal and four cache destructors as in retail.
 #include "../_layout/object_type_class.h"
 #include "object_type_registry.h"

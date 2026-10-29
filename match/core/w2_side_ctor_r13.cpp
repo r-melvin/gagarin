@@ -3,7 +3,6 @@
 //   Evidence: disassembly of 0x6A4550 (SideClass constructor from an id): AbstractTypeClass constructor,
 //   the +0x98 list built as a TypeList<int> (vtable 0x7E4DD8), the unique id assignment through the
 //   IRTTITypeInfo side, and the append to the side registry at 0x8B4120.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Address index: 0x6A4550 SideClass::SideClass(const char*).
 //   The class is declared locally with its list member spelled out; the shared layout header keeps raw words.
 

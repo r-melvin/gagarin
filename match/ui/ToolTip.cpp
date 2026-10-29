@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 //   Original translation unit ToolTip.cpp. The name is the source-file string at 0x8449cc
 //   in retail gamemd.exe v1.001, passed by the assert at 0x724afa inside this object's
 //   code range (0x723a90-0x7250bf). Functions are in ascending retail address order.

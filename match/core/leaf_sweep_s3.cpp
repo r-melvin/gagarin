@@ -5,7 +5,6 @@
 //   Receivers that are not bound by RTTI keep a placeholder name derived from the
 //   address.
 //
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Small leaves between 0x6B0000 and 0x7C4000, worker s3 sweep. Ordered ascending by
 // retail address.
 #include <stddef.h>

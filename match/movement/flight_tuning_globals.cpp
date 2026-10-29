@@ -5,7 +5,6 @@
 // copy this TU got, in __xc order. Retail's evidence: each initialiser stores one
 // global of the 0x00ABEF58..0x00ABEFD0 run, and the table entries point straight at
 // them.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>

@@ -4,7 +4,6 @@
 //   its procedure (or the host) stores a result, and closes it again.
 //
 // Address index: 0x6586D0
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 #include <windows.h>
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

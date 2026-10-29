@@ -5,7 +5,6 @@
 //   would inline it. Layout and evidence: input_controls/ui_display_chain.h.
 //
 //   0x63F850  PowerClass::FUN_0063F850
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 
 #include "input_controls/ui_display_chain.h"
 #include "../_layout/house_class.h"

@@ -3,7 +3,6 @@
 //   Evidence: disassembly of 0x554910 / 0x555150 (LightSourceClass destructor and its scalar
 //   deleting entry) and 0x65B2F0 (RadSiteClass destructor); each announces the expired pointer,
 //   leaves its class-wide array and runs the AbstractClass destructor.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Address index: 0x554910 ~LightSourceClass, 0x555150 LightSourceClass scalar deleting
 //   destructor, 0x65B2F0 ~RadSiteClass.
 //   LightSourceClass and CellClass come from match/_layout; MapClass is a local view.

@@ -3,7 +3,6 @@
 //   Evidence: small functions beside the NullModem unit (0x5F1350..0x5F34D0) that forward to the
 //   shared WinModemClass instance at 0xB72D20 or work on the text buffer at 0xA8EA7C, each
 //   disassembled from the user's gamemd.exe v1.001.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include <string.h>
 #include <stdlib.h>

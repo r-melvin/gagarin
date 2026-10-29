@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   TEventClass stream loading and destruction, read off retail gamemd.exe v1.001
 //   (vtable 0x7F5578). The class is a view that carries only the members these bodies
 //   touch (offsets from the retail disassembly). Functions are in ascending retail address

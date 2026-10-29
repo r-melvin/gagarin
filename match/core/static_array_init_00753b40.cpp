@@ -6,7 +6,6 @@
 //   empty. Retail's loop pushes (0x754900, 4, 0xC, record) and calls the vector
 //   constructor iterator 0x4068F0 once per record (ESI += 0x48, EDI = 0x40).
 //   No name is attested for the array or its types; placeholders only.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 

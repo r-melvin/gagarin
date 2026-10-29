@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Scalar deleting destructors (primary slot 8) of Tube, WaypointPath, SuperWeaponType,
 //   UnitType, VoxelAnimType and Wave, read off retail gamemd.exe v1.001. The destructor
 //   is only reached through the deleting form, so it is expanded in place.

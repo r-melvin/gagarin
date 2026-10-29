@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // /Ob1 and /Ob2 both reproduce these constructor bodies.
 // Native entries initialize the aligned fields, load through the supplied
 // FileClass, and set byte +0 only when the loader returns zero.

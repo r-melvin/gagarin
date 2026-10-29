@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 // Retail TU name is unattested. REA byte evidence and entry-origin CFGs
 // establish these routines; source names remain address placeholders.
 #include "trivial_tu002_methods.h"

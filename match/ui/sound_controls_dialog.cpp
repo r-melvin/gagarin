@@ -5,7 +5,6 @@
 //   runner in game_controls_dialog.cpp.
 //
 // Address index: 0x6B6230
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 #include <windows.h>
 #include "ui_updated_methods.h"
 #include "game_options_class_methods.h"

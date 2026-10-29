@@ -4,7 +4,6 @@
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x53f8a0-0x5406df,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 
 #include <string.h>
 #include "transport/conn_types.h"

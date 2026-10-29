@@ -4,7 +4,6 @@
 // confirmed in the retail gamemd.exe v1.001 by entry-bounded disassembly and
 // Ghidra memory reads. RTTI TypeDescriptor 0x00816918 names the object at
 // 0x89C668 DynamicVectorClass<BombClass*> (vtable 0x7E17CC, base vtable 0x7E17EC).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 #include "vector_class_operations.h"

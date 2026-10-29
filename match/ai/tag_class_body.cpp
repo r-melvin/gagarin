@@ -6,7 +6,6 @@
 // destructor, the small accessors, the event dispatcher and the primary-table
 // slots 5, 10, 11, 12 and 13. Functions are in retail address order; TagClass
 // itself is declared in _layout/tag_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: the destructor expands the vector FindItemIndex bodies in place.
 
 #include <new.h>

@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Body read from the retail function at 0x5549A0 (0xB4 bytes, plain RET).
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 #include "vector_class_operations.h"
 #include "../_layout/light_source_class.h"
 

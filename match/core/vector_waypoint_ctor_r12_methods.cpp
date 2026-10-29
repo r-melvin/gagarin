@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   VectorClass<WaypointClass> constructor taking a capacity and optional storage, read off retail
 //   gamemd.exe v1.001 (vtable 0x7F6EF4). The other members of the instantiation are in
 //   vector_dtor_element_slot_methods.cpp.

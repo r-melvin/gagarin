@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // Provenance: own-binary-via-Ghidra
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. Functions of the
 //   random-map generator (original translation unit MapGen.cpp, see MapGen.cpp) that are

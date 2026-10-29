@@ -3,7 +3,6 @@
 //   Original translation unit Connect.CPP. The name is the source-file string at 0x81d42c
 //   in retail gamemd.exe v1.001, passed by the assert at 0x48c123 inside this object's
 //   code range (0x48bc70-0x48c6af). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 
 #include <string.h>
 #include "../../core/mathtbl_init_shapes.h"

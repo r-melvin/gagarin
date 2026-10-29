@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Measured /Ob2 retains the ordinary destructor and expands its deleting entry.
 //   Original translation unit TU052 of retail gamemd.exe v1.001; its source-file name is
 //   not attested by the binary, so the file keeps a placeholder name. Candidate window 0x4886e1-0x488f8f,

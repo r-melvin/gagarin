@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 // Small leaf routines read from retail gamemd.exe v1.001; each owner is a placeholder
 // `Obj_<ADDR>` pinned by offsetof asserts. Each address is verified separately.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // Address index: 0x597A10 0x5B4400 0x5BC3C0 0x5C0080 0x5C00C0 0x5C1D80 0x5C21A0 0x5C2640
 //   0x5C2680 0x5C2CB0 0x5C2CE0 0x5C3F30 0x5C4670 0x5C4E90 0x5C6080 0x5CAF70 0x5CAFB0 0x5D1E50
 //   0x5DB650 0x5F3540 0x5F3560 0x5F35A0 0x600630 0x622440 0x6225E0 0x622610 0x64AAA0 0x65BE90

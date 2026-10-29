@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //
 // The saved-game header constructor at 0x680FF0: clears the header's counters, the three
 // short/byte flags, the -1 id at +0x188 and the six-word block at +0x3D8. It lives in its own

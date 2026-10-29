@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit WDTGameOptions.cpp. The name is the source-file string at 0x8486ac
 //   in retail gamemd.exe v1.001, passed by the assert at 0x767371 inside this object's
 //   code range (0x767110-0x76790f). Functions are in ascending retail address order.

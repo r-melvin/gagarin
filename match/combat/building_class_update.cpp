@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 //   Complete 0x43FB20..0x44057B body (0xA5B bytes, two RETs plus the shared
 //   exit) read from the entry-bounded retail function. RTTI COL 0x7FC360 names
 //   BuildingClass; its primary table 0x7E3EBC holds this function at slot 23.

@@ -7,7 +7,6 @@
 // are the retail RTTI names (".?AVHistory@WorldDominationTour@@" vtable
 // 0x7F70DC, ".?AVReferenceCounted@@" 0x7F0954, ".?AV?$rc_ptr@VHistory@..."
 // 0x7F6F74, ".?AV?$rc_ptr@VWDTState@@@@" 0x7F70EC).
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

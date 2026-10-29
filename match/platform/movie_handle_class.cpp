@@ -4,7 +4,6 @@
 //   disassembly from each entry) in the retail block 0x5BF850..0x5C0A6C:
 //   the VQ/Bink movie handles and the movie state helpers that sit beside
 //   them. Names are the RTTI class names; members and slots are placeholders.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // /Ob2: retail's deleting destructors (0x5C09B0, 0x5C0A30) expand the
 // out-of-line destructors (0x5C0490, 0x5C0600, 0x5C0630) in place, which cl
 // only does for a non-inline body under automatic inlining.

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // File-scope timer objects, one per retail unit, each initialised by an inline constructor
 // that stamps the start tick from the clock at +4 (GameClockClass::GetTime, 0x6C8C40) and

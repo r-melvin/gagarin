@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI TypeDescriptors 0x8169B8 and 0x8169F0 identify
 // VectorClass<LightConvertClass*> and DynamicVectorClass<LightConvertClass*>; the latter's
 // CHD names the former as its zero-offset base.

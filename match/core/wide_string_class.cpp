@@ -4,7 +4,6 @@
 //   The layout, the `__thiscall` conventions, the CRT helper addresses and every
 //   constant below come from the retail disassembly.
 
-// VC6FLAGS: /nologo /c /O2 /Ob2 /Gr /DNDEBUG /Gy /MT
 
 #include "wide_string_class.h"
 

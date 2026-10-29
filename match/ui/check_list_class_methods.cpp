@@ -3,7 +3,6 @@
 //   Bodies ascending by retail address; bytes diffed against the user's
 //   retail gamemd.exe v1.001. The class is the canonical CheckListClass in
 //   input_controls/ui_gadget.h (RTTI .?AVCheckListClass@@, vtable 0x7E4F84).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Retail carries the destructor twice -- out of line at 0x4882D0 and expanded
 //   inside the compiler's scalar deleting destructor at 0x4886E0. One virtual
 //   destructor definition under /Ob2 yields both.

@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | RTTI-confirmed-inheritance
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 // Retail method contracts, member accesses, and callees were read from the
 // pinned v1.001 image; native call contracts are noted at the relevant sites.
 #include "../_layout/bullet_class.h"

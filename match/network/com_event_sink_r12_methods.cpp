@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   AddRef of the three COM event-sink objects of the online-service layer, read off retail
 //   gamemd.exe v1.001. Each object holds, after its vptr, the reference count at +4. The sinks are
 //   RTTI-named ATL CComObject instantiations (vtables 0x7F76B4, 0x7F766C, 0x7F78E4, slot 1); their

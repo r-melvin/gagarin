@@ -3,7 +3,6 @@
 //   Original translation unit WDTProps.cpp. The name is the source-file string at 0x848d80
 //   in retail gamemd.exe v1.001, passed by the assert at 0x76bf38 inside this object's
 //   code range (0x76bca0-0x76c09f). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //
 //   The retail assert path string names this unit WDTProps.cpp. /Ob2 lets the
 //   out-of-line destructor 0x76BED0 also expand inside the deleting wrapper

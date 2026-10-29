@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // /Ob0 scores 3.9%; /Ob1 and /Ob2 reproduce the full loader.
 // Native 0x5BD5C0..0x5BD729 reads a 24-byte header, skips 16 bytes per
 // section, then reads frame/section matrices; short reads close and clear.

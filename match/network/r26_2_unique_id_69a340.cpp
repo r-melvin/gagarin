@@ -3,7 +3,6 @@
 //   Evidence: disassembly of 0x69A340 in the user's gamemd.exe v1.001.
 //
 // Address index: 0x69A340
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include <windows.h>
 #include <mmsystem.h>

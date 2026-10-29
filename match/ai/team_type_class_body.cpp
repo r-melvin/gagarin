@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   TeamTypeClass construction, destruction and stream loading, read off retail
 //   gamemd.exe v1.001 (vtable 0x7F47D0). The layout is match/_layout/team_type_class.h.
 //   /Ob2: the registry AddItem/RemoveItem bodies are expanded in place, and the

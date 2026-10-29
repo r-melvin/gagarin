@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   WaypointPathClass construction, destruction and stream loading, read off retail
 //   gamemd.exe v1.001 (vtable 0x7F6E70). /Ob2: the scalar deleting destructor carries the
 //   destructor body inline. The layout is movement/waypoint_path_class_methods.h.

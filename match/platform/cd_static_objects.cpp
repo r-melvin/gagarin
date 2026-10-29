@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // File-scope object next to the CD drive code (initialiser 0x4796E0, exit stub
 // 0x479700). It is a 26-word record that the constructor zeroes and whose

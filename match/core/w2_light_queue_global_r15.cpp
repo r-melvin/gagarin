@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // The light-source list global at 0xABCA10: a DynamicVectorClass<LightSourceClass*>
 // (vtable 0x7ECF7C). Retail puts its fused constructor + atexit initialiser at

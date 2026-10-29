@@ -6,7 +6,6 @@
 //   The vector deleting destructors (??_E) and constructor closures (??_F) are only emitted when the
 //   array form of `new` is seen, so each type has an unreferenced static helper that does that; VC6
 //   drops the helper itself.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   Address index: see the FUNCTION annotations; element types: HashObject<uint, uint>,
 //   HashObject<uint, SubzoneConnectionStruct>, HashObject<HashString, SchemeNode*>,
 //   HashObject<RadarTrackingStruct, TechnoClass*>, SubzoneConnectionStruct, ZoneConnectionClass,

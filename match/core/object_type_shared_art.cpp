@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // /Ob1 and /Ob2 reproduce both native bodies.
 // Native 0x5F76B0 loads four shared art resources, recording raw-file
 // ownership before MIX fallback. Native 0x5F77F0 uses array destruction

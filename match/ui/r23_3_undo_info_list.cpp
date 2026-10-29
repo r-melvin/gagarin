@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra
 //   Operations on the global undo list DynamicVectorClass<UndoInfoStruct> at 0xB0B650
 //   (defined in core/static_vector_dtor_stubs_b.cpp), read off the retail

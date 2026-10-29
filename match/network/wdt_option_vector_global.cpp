@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // File-scope vector of reference-counted World Domination Tour options
 // (rc_ptr<GameOption>, RTTI vtables 0x7F6FD4 / 0x7F6FF4). Defined here under /Ob2 so

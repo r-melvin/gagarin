@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x5CB6D0 (MSShapeAnim), 0x5CBD20 (MSFadeAnim) and 0x5CC250 (MSOverlayAnim); the

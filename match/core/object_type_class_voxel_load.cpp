@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // Native 0x5F8110..0x5F8CDA. The main file lives across the whole function;
 // each optional model/animation pair has nested file-object lifetimes.
 #include "../_layout/object_type_class.h"

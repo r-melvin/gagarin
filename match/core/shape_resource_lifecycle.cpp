@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // /Ob1 and /Ob2 reproduce the matched lifetime entries.
 // Native 69E090..69E429: tagged-resource loading and list/cache cleanup.
 // The receiver identity is not attested, so address-based names are retained.

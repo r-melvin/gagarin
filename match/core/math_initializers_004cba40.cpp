@@ -1,6 +1,5 @@
 #include "mathtbl_init_shapes.h"
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | original

@@ -3,7 +3,6 @@
 //   Evidence: 0x600530 loads 0xAC4848 into ECX, calls the constructor 0x6B9450 and registers
 //   the thunk at 0x600550 (`MOV ECX,0xAC4848; JMP 0x6B9530`) with atexit; both come from the one
 //   global definition below, whose constructor and destructor are defined out of line elsewhere.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include "../_layout/stringhashtable_00ac4848.h"
 

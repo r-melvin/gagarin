@@ -3,7 +3,6 @@
 //   Control flow read from retail gamemd.exe v1.001 at 0x578640: the map width at +0xF4, the cell
 //   level (+0x11B) and slope index (+0x11C), and four diamond-edge tests against a rectangle of
 //   four ints (X, Y, Width, Height).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include "cell_flag_search_shared.h"
 
 // FUNCTION: GAMEMD 0x578640

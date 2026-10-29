@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. The same four-character
 //   tagged chunk list as 0x625EA0 / 0x625F60 in ownrdraw.cpp: these two copy a chunk's string or
 //   bytes out instead of one word.

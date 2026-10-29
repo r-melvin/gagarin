@@ -3,7 +3,6 @@
 //   Evidence: disassembly of 0x752680 in the user's gamemd.exe v1.001.
 //
 // Address index: 0x752680
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include "vox_class_play_index_methods.h"
 

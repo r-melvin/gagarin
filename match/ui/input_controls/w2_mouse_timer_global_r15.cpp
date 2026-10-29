@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // The cursor animation timer global at 0xABF2A0 (see MouseCursorTimer in mouse_mouse_class.h):
 // start tick at +0, the clock member at +4 (its empty destructor is the only exit work) and

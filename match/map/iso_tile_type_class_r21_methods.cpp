@@ -5,7 +5,6 @@
 //   iso_tile_type_class_tile_data_methods.h); the slot +0x9C call is GetTileData.
 //
 // Address index: 0x547150
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include "iso_tile_type_class_tile_data_methods.h"
 
 // Tile-image header fields beyond the ones TileImageHeader names; a view over the same record.

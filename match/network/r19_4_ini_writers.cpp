@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. Each function writes
 //   one or two values of the [MultiPlayer] section into RA2MD.INI through the global INI object.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // Address index: 0x5EE1B0 0x5D9360 0x5D8FD0
 

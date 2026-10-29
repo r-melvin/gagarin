@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, IAT slots, string addresses and the vtable at 0x7F7488 read off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI. The class name

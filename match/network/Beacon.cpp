@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Beacon.CPP. The name is the source-file string at 0x818ad8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x430d11 inside this object's

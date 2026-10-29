@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 // Header static initialisers at 0x510B00-0x510CF0 (header_init_shapes.h): the group of
 // math-table doubles/ints and zero blocks each retail TU opens with, in __xc order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>

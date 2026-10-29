@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below.
 //
 // The four short bridge-span breakers beside the Collapse walkers (bridge_span_collapse_family_methods.cpp).

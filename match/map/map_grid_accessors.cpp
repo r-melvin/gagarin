@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Read off retail gamemd.exe v1.001 with the local Ghidra CLI at each address.
 //   Per-cell accessors of the 0x50-byte record grid at 0xABED10 that the MapGen.cpp
 //   unit (0x58B530-0x5ADB1F) keeps: the record for a cell is

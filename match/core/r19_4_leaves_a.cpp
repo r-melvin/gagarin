@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. The owned-connection
 //   list holder (a DynamicVectorClass of pointers, vtable 0x7F0C2C, then a flag byte at +0x18
 //   and a dword at +0x1C) as a stand-alone constructor, clear and destructor.

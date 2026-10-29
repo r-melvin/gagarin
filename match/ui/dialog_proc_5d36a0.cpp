@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Body read from the retail function at 0x5D36A0 (0xB3 bytes, RET 0x10).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 #include <windows.h>
 
 // FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog handler.

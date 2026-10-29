@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entry points straight at the initialiser body (no out-of-line _$E thunk).
 //   Small functions read off the user's retail gamemd.exe v1.001 with the local Ghidra CLI at the
 //   address in each annotation. Receivers are placeholder views named after their address.

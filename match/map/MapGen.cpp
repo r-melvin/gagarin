@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit MapGen.cpp. The name is the source-file string at 0x82ba48
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5956ec inside this object's

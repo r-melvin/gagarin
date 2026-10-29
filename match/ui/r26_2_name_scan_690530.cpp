@@ -3,7 +3,6 @@
 //   Evidence: disassembly of 0x690530 in the user's gamemd.exe v1.001.
 //
 // Address index: 0x690530
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 extern "C" int __cdecl _stricmp(const char*, const char*);
 

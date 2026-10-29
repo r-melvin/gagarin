@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 //   Evidence: retail gamemd.exe v1.001 disassembly at 0x5D8CB0 (MultiplayerTeam slot 2, vtable
 //   0x7EEEDC), 0x5C1090 and 0x5C10B0 (MultiplayerBattleTeam slots 1 and 2, vtable 0x7EE258) and
 //   0x5C94C0 (MultiplayerObserverTeam slot 1, vtable 0x7EE6C8).

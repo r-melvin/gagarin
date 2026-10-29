@@ -4,7 +4,6 @@
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x5406e0-0x54311f,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //
 // The IPXManagerClass unit of retail .text (0x540710..0x5430DF), the parts not
 // already in connman_class.cpp: the unit's header-global initialisers, the

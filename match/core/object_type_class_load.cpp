@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Placement lead: this file regresses under the project /Ob2 default, so a
+// definition it can see probably lived in another original file.
 // Entry-point disassembly 0x5F9720..0x5F994A establishes cleanup before the
 // base Load, reconstruction of cache state, and optional alpha-image lookup.
 #include "../_layout/object_type_class.h"

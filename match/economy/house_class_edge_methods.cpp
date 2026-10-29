@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Bytes matched against retail gamemd.exe v1.001 at 0x50DA20, 0x50DAA0 and 0x50DAC0
 //   (small HouseClass members between the cell helpers of House.cpp).
 #include "../_layout/house_class.h"

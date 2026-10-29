@@ -3,7 +3,6 @@
 //   Evidence: small leaf functions in the 0x5EF000-0x5F2000 range of the user's gamemd.exe v1.001,
 //   each disassembled from its entry point; the receiver types are placeholder views that declare
 //   only the fields the bodies touch.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include <stddef.h>
 #include <string.h>

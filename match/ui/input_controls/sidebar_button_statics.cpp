@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // Static objects in the Sidebar unit (0x6A4C10-0x6A4E3F). The first, the SBGadget at 0x00B07E58,
 // owns bit 1 of guard byte 0x00B07BB0. Each following member's run-time initialiser

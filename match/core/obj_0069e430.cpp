@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-REA
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // /Ob1 and /Ob2 preserve the existing lifetime bodies and frame-data loader.
 // Entry69E430 initializes the0x24-byte resource allocated by5B40B0.
 // Identity remains unknown; the fields retain address-based names.

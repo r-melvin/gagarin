@@ -4,7 +4,6 @@
 //   v1.001.
 //
 // Address index: 0x777AC0
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include <windows.h>
 #include <stdio.h>

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI names VectorClass/DynamicVectorClass over unsigned short, bool, double and unsigned char.
 // Scalar elements need no element type; the canonical templates are instantiated as-is.
 #include "vector_class_operations.h"

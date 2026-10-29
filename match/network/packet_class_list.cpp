@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: list handling of PacketClass (fields chained through FieldClass::Next at +0x0C,
 //   head at +0x04) disassembled at 0x625AB0, 0x625AE0 and 0x625D20 in the user's gamemd.exe.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include <string.h>
 #include "packet_class.h"

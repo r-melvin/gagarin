@@ -3,7 +3,6 @@
 //   Shape draw into a clipped rectangle, read off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI. Sibling of the shape draws at 0x72E860..0x72EA70 (views named after the address).
 //   Address index: 0x72E730.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 struct Point_0072E730 {
     int x;

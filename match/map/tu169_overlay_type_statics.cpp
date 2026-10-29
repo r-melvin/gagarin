@@ -4,7 +4,6 @@
 //   disassembled from the user's retail gamemd.exe v1.001 via the local Ghidra CLI. Kept beside
 //   tu169_overlay_type_class.cpp (which defines 0x5fe090/0x5fe0b0 and reads DAT_00AC1610 as an
 //   extern) so that file's _$E numbering is left alone. Same shape as tu168_overlay_statics.cpp.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 

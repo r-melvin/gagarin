@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // File-scope DynamicVectorClass<T> objects in the unit at 0x4E62D0..0x4E8268, in
 // retail order. Each definition yields the fused run-time initialiser

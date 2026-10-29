@@ -6,7 +6,6 @@
 //
 // ScoreFontClass construction. Address index: 0x690580 default constructor, 0x6905B0 constructor
 // with four values, 0x6905F0 destructor.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include "../_layout/score_font_class.h"
 

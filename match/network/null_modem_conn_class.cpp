@@ -4,7 +4,6 @@
 //   (RTTI, vtable 0x7EEF90) derives from ConnectionClass (conn_types.h): the constructor chains to
 //   0x48BE60 and allocates the packet buffer, the destructor frees it, and the compiler emits the
 //   scalar deleting destructor 0x5EF290 and the vtable from them.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

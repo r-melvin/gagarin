@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Native campaign construction, INI, checksum and persistence bodies.
 #include "campaign_class.h"
 #include "vector_class_operations.h"

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //
 // The comparison callback the load dialog sorts its saved-game list with (retail 0x559D30, a
 // neighbour of LoadOptionsClass::Slot1 in LoadDlg.cpp). It sorts newest first: the entries'

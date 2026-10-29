@@ -3,7 +3,6 @@
 //   Evidence: disassembly of 0x642C20 in the user's gamemd.exe v1.001.
 //
 // Address index: 0x642C20
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
 #include "progress_screen_class.h"
 #include "../platform/file_system_load_whole_methods.h"

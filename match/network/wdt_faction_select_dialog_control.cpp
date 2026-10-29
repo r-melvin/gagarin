@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Evidence: disassembly of 0x7AF500 and 0x7B0440; RTTI .?AVFactionSelectDialogControl@WorldDominationTour@@
 //   (vtable 0x7F791C, bases OwnerDraw::SimpleDialogControl -> OwnerDraw::DialogControl). The vtable
 //   overrides only slot 0; slots 1-4 are SimpleDialogControl's.

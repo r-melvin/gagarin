@@ -3,7 +3,6 @@
 //   Offsets read numerically off retail gamemd.exe v1.001 at 0x509EC0: the preferred
 //   defensive cells at +0x54F4/+0x54F8 and their start time at +0x54FC (see house_class.h),
 //   the RulesClass pointer at 0x8871E0 (+0xEE0) and the frame counter at 0xA8ED84.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/house_class.h"
 #include "../core/frame_counter.h"

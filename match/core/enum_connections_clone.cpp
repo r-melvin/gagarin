@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // /Ob2: retail Clone inlines its copy constructor, vector copying and sink retention.
 // Provenance: own-binary-via-Ghidra
 #include "../_layout/enum_connections_class.h"

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // /Ob1 and /Ob2 both give the native body; no /Ob2-only expansion is needed.
 // Native 0x5F7090..0x5F7316 initializes the component records, copies ID to
 // ImageFile, assigns empty AlphaImageFile, and appends this to the type registry.

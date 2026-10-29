@@ -4,7 +4,6 @@
 //   cross-checked against YRpp.
 //
 // Function claims in this TU are ordered by their retail entry addresses.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // /Ob2 inlines the derived no-init constructor in Load at 0x46C6B8,
 // leaving the native direct ObjectTypeClass constructor call and four vptr stores.
 

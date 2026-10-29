@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // Two class-scope static timers of the Techno.cpp unit (retail 0x6F28A0-0x7108DF).
 // Both initialisers (0x6F2AB0, 0x6F2AF0) sit after that unit's header group, and

@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Small leaf routines read off retail gamemd.exe v1.001 with the local Ghidra CLI.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../ui/input_controls/mouse_ww_mouse_class.h"
 #include "../_layout/rgb_class.h"

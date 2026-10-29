@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // Native 0x5F8CE0..0x5F9061 updates the optional turret/barrel pairs when
 // the kind is 0x28, virtual slot39 returns a pointer, and byte +0xCA1 is set.
 #include "../_layout/object_type_class.h"

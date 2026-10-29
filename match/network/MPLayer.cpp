@@ -3,7 +3,6 @@
 //   Original translation unit MPLayer.CPP. The name is the source-file string at 0x82e134
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5c60da inside this object's
 //   code range (0x5c5e90-0x5c91ef). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //
 //   Multi-word unsigned integer helpers (little-endian 32-bit word arrays).
 

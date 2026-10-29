@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x629390 (ParasiteClass no-init constructor): AbstractClass no-init
 //   constructor, two timers restarted at +0x2C and +0x38, a zero at +0x40 and the four vtable pointers.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Address index: 0x629210 / 0x6292B0 constructors, 0x62AF70 scalar deleting destructor, 0x629390 ParasiteClass::ParasiteClass(AbstractNoInit const&), 0x6294D0 ParasiteClass::vf_13.
 //   The class is declared locally with only the members these bodies touch.
 

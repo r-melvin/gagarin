@@ -3,7 +3,6 @@
 //   Control flow read from retail gamemd.exe v1.001 at 0x5862C0: a square of cells around a
 //   centre is walked row by row; the first cell whose object list (+0xE4) is not empty ends
 //   the search. __stdcall, RET 8, no receiver.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include "cell_flag_search_shared.h"
 
 // FUNCTION: GAMEMD 0x5862C0

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Small RadarClass members from Radar.CPP's code range (0x652680-0x658E7F), bytes matched against
 //   retail gamemd.exe v1.001. Layout and evidence: input_controls/ui_display_chain.h.
 //   Ordered ascending by retail address.

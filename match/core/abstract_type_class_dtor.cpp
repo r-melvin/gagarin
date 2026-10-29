@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   /Ob2: the scalar deleting destructor 0x410C30 carries this destructor
 //   inline, while 0x4109C0 also exists out of line for the derived
 //   destructors (0x726E00, 0x6E5CA0, ...). Both call ~AbstractClass 0x4101F0.

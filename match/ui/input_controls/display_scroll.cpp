@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //
 // ScrollClass entries (layout and evidence: display_scroll.h).
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: retail's __xc entries point at the initialiser bodies themselves
 //   (0x692080, 0x6920A0, 0x692220), with no forwarding stub.
 

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob1
 // /Ob1 and /Ob2 both reproduce these lifetime bodies.
 #include "voxel_shade_palette.h"
 #include <new.h>

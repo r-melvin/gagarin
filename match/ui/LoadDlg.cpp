@@ -1,4 +1,3 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 

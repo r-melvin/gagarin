@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra; frozen milestone-2 b-plainxlat source.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include <string.h>
 #include "b_plainxlat.h"
 #include "b_xlatalpha.h"   // BlitAlphaWrapRow

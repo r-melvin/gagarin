@@ -8,7 +8,6 @@
 // the second constructor in place; the table row it picks is
 // ((WDTState*)Next.Pointer)->unknown_44[index] when index is below the count
 // at +0x24. Class names are the retail RTTI names.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include "world_domination_tour.h"
 

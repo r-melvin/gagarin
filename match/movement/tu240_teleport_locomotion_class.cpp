@@ -4,7 +4,6 @@
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x717df0-0x71a1bf,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //
 // TeleportLocomotionClass (locomotion module leaf), retail .text
 // 0x717E20..0x71A15F. Layout, tables and evidence are in

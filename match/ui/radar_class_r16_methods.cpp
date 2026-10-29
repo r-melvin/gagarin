@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below (Radar.CPP code range
 //   0x652680-0x658E7F). Layout and evidence for the members: input_controls/ui_display_chain.h.
 //   The members are declared on a TU-local derived view so the shared header stays untouched.

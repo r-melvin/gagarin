@@ -4,7 +4,6 @@
 //   destructors, which stop inlining their bodies with it (0x4E1A60 100% -> 6.5%, 0x558060 and 0x488F00 -> 0%,
 //   0x4B55F0 -> 17.6%); every other function here scores identically with and without it.
 //   Lists cluster: ListClass vtable bodies at 0x4886B0 and 0x557570..0x558060 (ordered by address).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 #include "lists_views.h"
 
 // LIBRARY: GAMEMD 0x7DD0F8 _wcsicmp

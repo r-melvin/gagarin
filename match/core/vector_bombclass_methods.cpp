@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI TypeDescriptors 0x8168E8 and 0x816918 identify
 // VectorClass<BombClass*> and DynamicVectorClass<BombClass*>; the latter's
 // CHD names the former as its zero-offset base.

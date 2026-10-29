@@ -4,7 +4,6 @@
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x4c5000-0x4c5edf,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.

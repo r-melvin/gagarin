@@ -3,7 +3,6 @@
 //   Offsets read numerically off retail gamemd.exe v1.001 at 0x4F9370: the super weapon vector
 //   at house +0x254 (Items +0x258, Count +0x264), SuperClass Type +0x28, the type's slot 16
 //   (+0x40), the UI-string builder 0x6ABC60 and the sidebar/map call 0x6A60A0 on 0x87F7E8.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/house_class.h"
 #include "../_layout/super_class.h"

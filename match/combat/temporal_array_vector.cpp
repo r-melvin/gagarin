@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // The global vector of every TemporalClass (retail 0x00B0EC60, TemporalClass::Array).
 // Defined here under /Ob2 so the run-time initialiser (constructor plus atexit

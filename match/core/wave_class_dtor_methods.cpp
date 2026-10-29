@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   WaveClass destructor 0x75ED30 and its scalar deleting destructor 0x763200 (which carries the
 //   same body inline), read off retail gamemd.exe v1.001.
 //   Address index: 0x75EBE0 constructor, 0x75ED30 ~WaveClass, 0x763200 scalar deleting destructor.

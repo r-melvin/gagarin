@@ -4,7 +4,6 @@
 //   count at house +0x2D8, the control bytes at +0x1EC/+0x1ED, the techno array at 0xA8EC78,
 //   techno Owner +0x21C / InLimbo +0x81 / type slot 33, Reactivate 0x70FBE0, and the EVA line
 //   at 0x824FE4. Mirrors LostPoweredCenter (0x50E0E0).
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/house_class.h"
 #include "../_layout/session_class.h"

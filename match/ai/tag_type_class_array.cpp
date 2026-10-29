@@ -3,7 +3,6 @@
 // Retail 0x6E5AE0 initializes 0xB0E780 with DynamicVectorClass<TagTypeClass*>
 // table 0x7F4558, empty storage, flags 1/0, count 0 and growth 10, then
 // registers 0x6E5B20 through atexit at 0x7C978A. Full initializer span 61 bytes.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 // Ob2 fuses the initializer and registration helpers as in retail; no GX.
 #include "../_layout/tag_type_class.h"
 #include "../core/vector_class_operations.h"

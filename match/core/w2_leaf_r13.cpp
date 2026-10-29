@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: small routines read from retail gamemd.exe v1.001 by disassembly; owners that are
 //   not yet named are free __fastcall functions pinned by their operand shapes.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

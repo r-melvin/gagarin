@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit WDTTerr.cpp. The name is the source-file string at 0x84917c
 //   in retail gamemd.exe v1.001, passed by the assert at 0x76fa3a inside this object's
 //   code range (0x76f720-0x77007f). Functions are in ascending retail address order.

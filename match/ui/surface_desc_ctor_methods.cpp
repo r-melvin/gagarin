@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // /Ob2 inlines the real destructor into the retail scalar wrapper at 0x434A40.
 // The normal destructor remains a separately emitted function.
 // Provenance: own-binary-via-Ghidra

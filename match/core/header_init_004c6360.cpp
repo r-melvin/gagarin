@@ -3,7 +3,6 @@
 // The header initialiser group (pow-derived cell diagonal, 60-unit ratio, angle table) that opens the retail block at 0x4C6360
 // (header_init_shapes.h): two derived doubles and a {128, 128, 0} coordinate,
 // in __xc order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>
