@@ -52,12 +52,47 @@ class LinkSvgTest(unittest.TestCase):
             self.assertEqual(s["m1"]["entries_at_retail_address"], 2)
             self.assertEqual(s["m1"]["bytes_at_retail_address"], 0x18)
             self.assertEqual(s["m1"]["ordered_bytes"], 0x48)
-            self.assertEqual([m["state"] for m in s["milestones"]], ["done", "done", "next", "todo", "todo", "todo"])
+            self.assertEqual([m["state"] for m in s["milestones"]], ["done", "done", "done", "next", "todo", "todo"])
+            self.assertNotIn("m2", s)
+            self.assertNotIn("m3", s)
             svg = link_svg.render(s)
             self.assertEqual(svg, link_svg.render(json.loads(json.dumps(s))))
             self.assertTrue(svg.startswith("<svg ") and svg.endswith("</svg>\n"))
             self.assertIn("2 of 3 ordered entries", svg)
             self.assertIn("Unsigned image", svg)
+            self.assertIn("entry point -16 bytes", svg)
+
+    def test_m2_m3_sections(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = self.fixture(tmp)
+            (tmp / "pinned").mkdir()
+            (tmp / "pinned/mapcheck.json").write_text(json.dumps({
+                "drift_events": 0, "landmarks": {"entry point (WinMainCRTStartup)": {"delta": 0}}}))
+            (tmp / "m2a.json").write_text(json.dumps({
+                "matched_rows": 10, "identical": 9, "differ": 1, "differ_with_other_bytes": 1, "missing": []}))
+            (tmp / "hy").mkdir()
+            sec = {"diff_bytes": 0, "vsize": 16, "retail_vsize": 16}
+            (tmp / "hy/compare.json").write_text(json.dumps({
+                "identical": True, "sections": {".text": sec, ".data": dict(sec, diff_bytes=3)}}))
+            (tmp / "m3").mkdir()
+            (tmp / "m3/compare.json").write_text(json.dumps({
+                "identical": True, "sections": {".text": sec, ".data": sec},
+                "origins": {".text": {"vsize": 16, "file": 16, "project": 4, "library": 2, "retail": 10},
+                            ".data": {"vsize": 16, "file": 8, "project": 8, "library": 0, "retail": 8}}}))
+            s = link_svg.refresh(tmp / "report.json", tmp / "m1", tmp / "m2a.json", tmp / "pinned", tmp / "m3", tmp / "hy")
+            self.assertEqual(s["m2"]["identical_in_place"], 9)
+            self.assertEqual(s["m2"]["pinned_entry_point_delta"], 0)
+            self.assertEqual(s["m2"]["hybrid_sections"][".data"]["diff_bytes"], 3)
+            self.assertEqual(s["m3"]["total"], {"vsize": 32, "project": 12, "library": 2, "retail": 18, "diff_bytes": 0})
+            svg = link_svg.render(s)
+            self.assertIn("9 of 10 matched rows", svg)
+            self.assertIn("1 of 2 equal retail", svg)
+            self.assertIn("12 / 2 / 18", svg)
+            self.assertIn("37.50% source", svg)
+            # Omitted inputs keep the earlier figures.
+            again = link_svg.refresh(tmp / "report.json", tmp / "m1", previous=s)
+            self.assertEqual(again["m2"], s["m2"])
+            self.assertEqual(again["m3"], s["m3"])
 
 
 if __name__ == "__main__":

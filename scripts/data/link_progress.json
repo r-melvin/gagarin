@@ -1,29 +1,105 @@
 {
  "m0": {
   "by_kind": {
-   "crt": 24,
-   "data": 4323,
-   "function": 4186,
+   "crt": 26,
+   "data": 4564,
+   "function": 4409,
    "import": 0,
-   "vtable": 88
+   "vtable": 84
   },
   "duplicate_definitions": 0,
-  "objects": 1270,
-  "unresolved": 8621
+  "objects": 1728,
+  "unresolved": 9083
  },
  "m1": {
-  "bytes_at_retail_address": 3884299,
-  "drift_events": 4,
+  "bytes_at_retail_address": 3842885,
+  "drift_events": 0,
   "duplicates": 0,
-  "entries_at_retail_address": 19250,
-  "entry_point_delta": -8044,
+  "entries_at_retail_address": 19275,
+  "entry_point_delta": -7708,
   "link_exit_code": 0,
-  "matched_at_retail_address": 10307,
-  "matched_functions": 10307,
-  "ordered_bytes": 3884971,
-  "ordered_entries": 19252,
-  "stubs_placed": 8902,
+  "matched_at_retail_address": 14910,
+  "matched_functions": 14910,
+  "ordered_bytes": 3842885,
+  "ordered_entries": 19275,
+  "stubs_placed": 4299,
   "unresolved_after_stubs": 0
+ },
+ "m2": {
+  "differ": 7,
+  "differ_with_other_bytes": 5,
+  "hybrid_sections": {
+   ".data": {
+    "diff_bytes": 0,
+    "size_equal": true
+   },
+   ".rdata": {
+    "diff_bytes": 0,
+    "size_equal": true
+   },
+   ".rsrc": {
+    "diff_bytes": 0,
+    "size_equal": true
+   },
+   ".text": {
+    "diff_bytes": 0,
+    "size_equal": true
+   }
+  },
+  "hybrid_sections_identical": true,
+  "identical_in_place": 14692,
+  "matched_rows": 14699,
+  "missing": 0,
+  "pinned_drift_events": 0,
+  "pinned_entry_point_delta": 0
+ },
+ "m3": {
+  "identical": true,
+  "sections": {
+   ".data": {
+    "diff_bytes": 0,
+    "file": 442368,
+    "library": 0,
+    "project": 2250985,
+    "retail": 1319675,
+    "va": 8462336,
+    "vsize": 3570660
+   },
+   ".rdata": {
+    "diff_bytes": 0,
+    "file": 196724,
+    "library": 0,
+    "project": 32449,
+    "retail": 164275,
+    "va": 8261632,
+    "vsize": 196724
+   },
+   ".rsrc": {
+    "diff_bytes": 0,
+    "file": 563868,
+    "library": 0,
+    "project": 0,
+    "retail": 563868,
+    "va": 12034048,
+    "vsize": 563868
+   },
+   ".text": {
+    "diff_bytes": 0,
+    "file": 4060045,
+    "library": 87227,
+    "project": 1045821,
+    "retail": 2926997,
+    "va": 4198400,
+    "vsize": 4060045
+   }
+  },
+  "total": {
+   "diff_bytes": 0,
+   "library": 87227,
+   "project": 3329255,
+   "retail": 4974815,
+   "vsize": 8391297
+  }
  },
  "milestones": [
   {
@@ -39,12 +115,12 @@
   {
    "id": "M2",
    "name": "Hybrid runnable build",
-   "state": "next"
+   "state": "done"
   },
   {
    "id": "M3",
    "name": "Matched objects swap in",
-   "state": "todo"
+   "state": "next"
   },
   {
    "id": "M4",
@@ -58,7 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "286b0ae1",
-  "m1": "ce91a761"
+  "m0": "c5ca71ba",
+  "m1": "c5ca71ba",
+  "m2": "c5ca71ba",
+  "m3": "c5ca71ba"
  }
 }

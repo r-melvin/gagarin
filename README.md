@@ -20,9 +20,13 @@ the extent census are matched (52.1%) and 784 more are partial. Matched bodies
 cover 716,425 of 3,878,653 listed function bytes (18.5%). The full regression
 check re-proves every matched row; affected exact functions also pass explicit
 relocation checks. The address-faithful stub link (M1) resolves every external
-and places all 10,307 distinct matched entries at their retail addresses.
-It remains a layout probe with stub bodies and an unordered library tail.
-The engine does not yet run from this build, and no whole-image identity is claimed.
+and places all 14,699 matched entries at their retail addresses. With
+`--pin-data --order-tail`, 14,692 of them are byte-identical to retail in place.
+The M1 image itself is a layout probe with stub bodies. The M2 hybrid image
+(`link_m1.py --hybrid`) has `.text`, `.rdata`, `.data` and `.rsrc` equal to
+retail and starts under Wine, but fills unmatched code and data from the pinned
+binary; at M3, 39.2% of its 8,391,297 section bytes come from source. No
+whole-image identity is claimed.
 
 ![gagarin matching progress](.github/assets/progress.svg)
 
@@ -51,7 +55,7 @@ C++ files into path-preserving VC6 objects. Two link probes run on those
 objects: `link_diag.py` (M0) links everything with `/FORCE` and counts the
 unresolved externals, and `link_m1.py` (M1) links the objects with int3 stubs
 in retail order, then `mapcheck.py` checks each matched function's linked
-address. Neither image runs. `scripts/orchestration/link_svg.py --refresh`
+address. Neither of those two images runs (`--hybrid` builds the runnable M2 image). `scripts/orchestration/link_svg.py --refresh`
 updates the link figures from their output. See
 [CONTRIBUTING.md](CONTRIBUTING.md)
 for setup, the per-function matching workflow and file conventions; [AGENTS.md](AGENTS.md)

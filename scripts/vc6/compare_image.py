@@ -11,7 +11,7 @@ differences. Exit status 0 when every section's bytes and virtual size equal ret
 With a placement.json (link_m1.py --hybrid writes one next to m1.exe) it also reports, per section, how
 many bytes of the image come from compiled project objects, from toolchain libraries and from retail fill.
 
-Usage:  GAMEMD_BINARY=gamemd.exe scripts/vc6/compare_image.py IMAGE [--merge 16] [--limit 20] [--placement P]
+Usage:  GAMEMD_BINARY=gamemd.exe scripts/vc6/compare_image.py IMAGE [--merge 16] [--limit 20] [--placement P] [--json OUT]
 """
 import argparse
 import json
@@ -108,6 +108,7 @@ def main(argv=None):
     ap.add_argument("image", type=Path)
     ap.add_argument("--merge", type=int, default=16)
     ap.add_argument("--limit", type=int, default=20, help="ranges to print per section")
+    ap.add_argument("--json", type=Path, help="also write the per-section result and the bytes by origin here")
     ap.add_argument("--placement", type=Path, help="placement.json written by link_m1.py --hybrid "
                     "(default: next to IMAGE when present): reports the bytes by origin")
     args = ap.parse_args(argv)
@@ -126,8 +127,16 @@ def main(argv=None):
         for va, length in r["ranges"][:args.limit]:
             print(f"    0x{va:X} +0x{length:X}")
     placement = args.placement or args.image.with_name("placement.json")
+    origins = None
     if placement.is_file():
-        print_origins(origin_counts(image_sections(image), json.loads(placement.read_text())["pieces"]))
+        origins = origin_counts(image_sections(image), json.loads(placement.read_text())["pieces"])
+        print_origins(origins)
+    if args.json:
+        args.json.write_text(json.dumps({
+            "identical": clean, "origins": origins,
+            "sections": {n: {"va": r["va"], "vsize": r["vsize"], "retail_vsize": r["retail_vsize"],
+                             "diff_bytes": r["diff_bytes"], "ranges": len(r["ranges"])} for n, r in result.items()}},
+            indent=1, sort_keys=True) + "\n")
     return 0 if clean else 1
 
 
