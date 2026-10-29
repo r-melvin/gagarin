@@ -345,19 +345,6 @@ bool TagTypeClass::HasZoneEntryByEvent() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6E64C0
-void* Obj_6E64C0::FUN_6E64C0(unsigned int flags)
-{
-    FUN_006E5CA0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E64E0
 // DynamicVectorClass<TagTypeClass*>::Clear
 
@@ -393,3 +380,6 @@ void* Obj_6E64C0::FUN_6E64C0(unsigned int flags)
 
 // SYNTHETIC: GAMEMD 0x6E67F0
 // DynamicVectorClass<TagTypeClass*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x6E64C0 -- TagTypeClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

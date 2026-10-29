@@ -67,3 +67,6 @@ bool MultiplayerTeam::vf_2(int playerIndex)
     DAT_00A8DA78[playerIndex]->unknown_6B = unknown_08;
     return true;
 }
+
+// SYNTHETIC: GAMEMD 0x5C94D0 -- MultiplayerObserverTeam scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

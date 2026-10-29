@@ -752,19 +752,6 @@ int Obj_00523340::FUN_00523340() const
     return 0xF;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x523350
-void* Obj_523350::FUN_523350(unsigned int flags)
-{
-    FUN_00517D90(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 struct Obj_00523370 {
     IUnknown* unknown_00;
     Obj_00523370* FUN_00523370(IUnknown* p);

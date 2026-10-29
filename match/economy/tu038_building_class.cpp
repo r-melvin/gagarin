@@ -3369,16 +3369,6 @@ CoordStruct BuildingClass::vf_43()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x459F20
-void* BuildingBView::vf_8(unsigned int flags)
-{
-    Func_43BCF0();
-    if (flags & 1)
-        operator delete(this);
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459F40
 // Hand back the object only if it is of the expected kind. Retail computes the
 // selection branchlessly (`SUB 6; NEG; SBB; NOT; AND`), which is what the

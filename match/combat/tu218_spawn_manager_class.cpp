@@ -314,19 +314,6 @@ int Obj_006B8130::FUN_006B8130() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6B8140
-void* Obj_6B8140::FUN_6B8140(unsigned int flags)
-{
-    FUN_006B7010(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TEMPLATE: GAMEMD 0x6B8190
 // DynamicVectorClass<SpawnManagerClass::SpawnControl*>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x6B81B0

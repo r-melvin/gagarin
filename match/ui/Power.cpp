@@ -64,16 +64,3 @@ int FUN_0063F7C0(Obj_0063F7C0* a1, int a2)
     DAT_00AC4E74 = c1;
     return c1;
 }
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6404B0
-void* Obj_6404B0::FUN_6404B0(unsigned int flags)
-{
-    FUN_00652C00(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}

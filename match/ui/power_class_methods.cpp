@@ -147,3 +147,6 @@ const wchar_t* PowerClass::vf_33(int id)
     }
     return RadarClass::vf_33(id);
 }
+
+// SYNTHETIC: GAMEMD 0x6404B0 -- PowerClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

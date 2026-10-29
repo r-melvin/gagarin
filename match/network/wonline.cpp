@@ -3589,54 +3589,6 @@ template struct HashTable_006249A0<Wstring, int>;
 // FUNCTION: GAMEMD 0x7ACF70
 template struct HashTable_006249A0<Wstring, Value_007AE8E0>;
 
-// FUNCTION: GAMEMD 0x7AD2F0
-void* Obj_7AD2F0::FUN_7AD2F0(unsigned int flags)
-{
-    FUN_007B46F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x7AD310
-void* Obj_7AD310::FUN_7AD310(unsigned int flags)
-{
-    FUN_007B46F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x7AD330
-void* Obj_7AD330::FUN_7AD330(unsigned int flags)
-{
-    FUN_007B46F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x7AD350
-void* Obj_7AD350::FUN_7AD350(unsigned int flags)
-{
-    FUN_007B46F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x7AD480
 int __stdcall FUN_007AD480(void* unused, unsigned int done, unsigned int total, int unused2, int seconds)
 {
@@ -3831,20 +3783,6 @@ int HashTableIndex::FUN_007AECB0(const void* key)
     int hash = this->Hash(key);
 
     return ((1 << this->BitWidth) - 1) & hash;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x7AED20
-void* Obj_7AED20::FUN_7AED20(unsigned int flags)
-{
-    FUN_007B46F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

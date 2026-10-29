@@ -485,19 +485,6 @@ void Obj_0048E650::FUN_0048E650(int a1, int a2, int a3)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x48E660
-void* Obj_48E660::FUN_48E660(unsigned int flags)
-{
-    FUN_004E1390(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x491390
 // DynamicVectorClass<ConvertClass*>::Clear
 
@@ -6589,3 +6576,6 @@ void* CachedResourceOwner8::FUN_0049AE40(char flags)
 // SYNTHETIC: GAMEMD 0x49B130
 // DynamicVectorClass<ConvertClass*>::scalar deleting destructor
 
+
+// SYNTHETIC: GAMEMD 0x48E660 -- ControlClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

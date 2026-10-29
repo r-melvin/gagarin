@@ -27,6 +27,7 @@ class AnimClass;
 class SuperClass : public AbstractClass
 {
 public:
+    virtual ~SuperClass();                                  // slot0 0x6CE220 scalar deleting; destructor 0x6CB120 (external)
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // slot3, existing body
     virtual HRESULT __stdcall Load(IStream* pStm);          // slot5  0x6CDEF0
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // slot6 existing body

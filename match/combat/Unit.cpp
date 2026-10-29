@@ -427,19 +427,6 @@ int Obj_00746E20::FUN_00746E20() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x746E80
-void* Obj_746E80::FUN_746E80(unsigned int flags)
-{
-    FUN_00735780(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x746EA0
 bool HandleHolder::FUN_00746EA0(void** other)
 {

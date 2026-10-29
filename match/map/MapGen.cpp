@@ -1698,19 +1698,6 @@ TileLinkList DAT_00ABE370[109] = {
     TileLinkList(TileLink(CellOffset(0, 0), 0), TileLink(CellOffset(0, 0), 4))
 };
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5AC270
-void* Obj_5AC270::FUN_5AC270(unsigned int flags)
-{
-    FUN_00558790(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // A growable array of dwords, assigned from another (slot 3 releases the old storage).
 struct Vec_005AC430 {
     virtual void vf_00(); virtual void vf_01(); virtual void vf_02();

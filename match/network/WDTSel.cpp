@@ -105,19 +105,6 @@ void __cdecl FUN_0076C270()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76EFE0
-void* Obj_76EFE0::FUN_76EFE0(unsigned int flags)
-{
-    FUN_0076C6E0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76F000
 // Calls other functions.
 int Obj_0076F000::FUN_0076F000(int a1, int a2)

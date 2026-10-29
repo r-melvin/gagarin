@@ -151,19 +151,6 @@ int Obj_006CE210::FUN_006CE210() const
     return 0x80;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6CE220
-void* Obj_6CE220::FUN_6CE220(unsigned int flags)
-{
-    FUN_006CB120(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // Take a reference on the held interface, if there is one.
 struct Obj_006CE270 {
     IUnknown* unknown_00;

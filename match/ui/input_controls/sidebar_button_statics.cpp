@@ -70,3 +70,9 @@ void SidebarSelectClass::FUN_006AACE0(SelectOwnerStrip* owner, int value)
     Owner = owner;
     unknown_30 = value;
 }
+
+// SYNTHETIC: GAMEMD 0x6AC780 -- SidebarSelectClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.
+
+// SYNTHETIC: GAMEMD 0x6AC7A0 -- SidebarSBGadgetClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

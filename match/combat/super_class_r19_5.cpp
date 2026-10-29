@@ -23,3 +23,6 @@ SuperClass::SuperClass()
 {
     DAT_00A83CB8.AddItem(this);
 }
+
+// SYNTHETIC: GAMEMD 0x6CE220 -- SuperClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

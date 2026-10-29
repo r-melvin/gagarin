@@ -117,19 +117,6 @@ void __cdecl FUN_004F1710()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x4F2830
-void* Obj_4F2830::FUN_4F2830(unsigned int flags)
-{
-    FUN_004F21A0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4F2850
 // DynamicVectorClass<GraphicMenuItem*>::Clear
 

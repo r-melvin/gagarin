@@ -30,3 +30,6 @@ MapSeedClass::MapSeedClass()
     if (FUN_00734FD0())
         FUN_007CA489(&unknown_78, FUN_00734E60(DAT_0082BA2C, 0, DAT_0082BA48, 0xF5E));
 }
+
+// SYNTHETIC: GAMEMD 0x5AC270 -- MapSeedClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

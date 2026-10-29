@@ -2680,3 +2680,6 @@ int BulletClass::vf_11()
 {
     return 8;
 }
+
+// SYNTHETIC: GAMEMD 0x46B5C0 -- BulletClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

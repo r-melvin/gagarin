@@ -347,19 +347,6 @@ void Obj_005BAA80::FUN_005BAA80(const wchar_t* name, int index, const wchar_t* t
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5BB560
-void* Obj_5BB560::FUN_5BB560(unsigned int flags)
-{
-    FUN_006406F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005bb580
 // Returns the first subkey (searched depth-first below root) whose string
 // value valueName equals match, still open; 0 when none is found.

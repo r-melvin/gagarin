@@ -757,15 +757,5 @@ bool Obj_005C4F00::FUN_005C4F00() const
     return false;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5C4F10
-void* Obj_5C4F10::FUN_5C4F10(unsigned int flags)
-{
-    FUN_005C1640(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x5C4F10 -- MPCooperative scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

@@ -1652,32 +1652,6 @@ void Sidebar_006D1800::FUN_006AC5E0(void* arg)
     FUN_00656AC0(arg);
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6AC780
-void* Obj_6AC780::FUN_6AC780(unsigned int flags)
-{
-    FUN_004E1390(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6AC7A0
-void* Obj_6AC7A0::FUN_6AC7A0(unsigned int flags)
-{
-    FUN_004E1390(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // REA Evidence: ev_5aa6e42dac161c3cab96320d4b05f5004758d3f4436f42d8ed931b3b6df535fc
 // CFG-closed retail span [0x6AC7C0, 0x6AC7E1), 0x21 bytes; 10 instructions, RET at 0x6AC7E0.
 // Writes +0x14=0, +0x18 low byte=0, +0x1C=CurrentFrame, +0x24=0, +0x28=0, +0x2C=1;

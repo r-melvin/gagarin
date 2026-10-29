@@ -1130,30 +1130,6 @@ char* __fastcall FUN_0052A9E0(unsigned char* line, int* eq, int* valueStart, int
     return rest;
 }
 
-// FUNCTION: GAMEMD 0x52AEA0
-void* Obj_52AEA0::FUN_52AEA0(unsigned int flags)
-{
-    ((Straw*)this)->Straw::~Straw();
-
-    if (flags & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x52AEE0
-void* Obj_52AEE0::FUN_52AEE0(unsigned int flags)
-{
-    ((Pipe*)this)->Pipe::~Pipe();
-
-    if (flags & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
 // An empty index owns nothing and is trivially "sorted": every field is zero,
 // which retail writes out of one zeroed register.
 // FUNCTION: GAMEMD 0x52B080

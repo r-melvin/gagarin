@@ -72,30 +72,6 @@ void FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 void FUN_007B6760(void* self);   // GAMEMD 0x7B6760
 
 struct Obj_487E80 { void* FUN_487E80(unsigned int flags); };  // FUNCTION: GAMEMD 0x487E80
-struct Obj_48E660 { void* FUN_48E660(unsigned int flags); };  // FUNCTION: GAMEMD 0x48E660
-struct Obj_4F2830 { void* FUN_4F2830(unsigned int flags); };  // FUNCTION: GAMEMD 0x4F2830
-struct Obj_5172F0 { void* FUN_5172F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x5172F0
-struct Obj_523350 { void* FUN_523350(unsigned int flags); };  // FUNCTION: GAMEMD 0x523350
-struct Obj_52AEA0 { void* FUN_52AEA0(unsigned int flags); };  // FUNCTION: GAMEMD 0x52AEA0
-struct Obj_52AEE0 { void* FUN_52AEE0(unsigned int flags); };  // FUNCTION: GAMEMD 0x52AEE0
-struct Obj_54A170 { void* FUN_54A170(unsigned int flags); };  // FUNCTION: GAMEMD 0x54A170
-struct Obj_5AC270 { void* FUN_5AC270(unsigned int flags); };  // FUNCTION: GAMEMD 0x5AC270
-struct Obj_5BB560 { void* FUN_5BB560(unsigned int flags); };  // FUNCTION: GAMEMD 0x5BB560
-struct Obj_5C4F10 { void* FUN_5C4F10(unsigned int flags); };  // FUNCTION: GAMEMD 0x5C4F10
-struct Obj_5C94D0 { void* FUN_5C94D0(unsigned int flags); };  // FUNCTION: GAMEMD 0x5C94D0
 struct Obj_5D2700 { void* FUN_5D2700(unsigned int flags); };  // FUNCTION: GAMEMD 0x5D2700 (decl)
-struct Obj_6404B0 { void* FUN_6404B0(unsigned int flags); };  // FUNCTION: GAMEMD 0x6404B0
-struct Obj_6AC780 { void* FUN_6AC780(unsigned int flags); };  // FUNCTION: GAMEMD 0x6AC780
-struct Obj_6AC7A0 { void* FUN_6AC7A0(unsigned int flags); };  // FUNCTION: GAMEMD 0x6AC7A0
-struct Obj_6B8140 { void* FUN_6B8140(unsigned int flags); };  // FUNCTION: GAMEMD 0x6B8140
-struct Obj_6CE220 { void* FUN_6CE220(unsigned int flags); };  // FUNCTION: GAMEMD 0x6CE220
-struct Obj_6E64C0 { void* FUN_6E64C0(unsigned int flags); };  // FUNCTION: GAMEMD 0x6E64C0
-struct Obj_746E80 { void* FUN_746E80(unsigned int flags); };  // FUNCTION: GAMEMD 0x746E80
-struct Obj_76EFE0 { void* FUN_76EFE0(unsigned int flags); };  // FUNCTION: GAMEMD 0x76EFE0
-struct Obj_7AD2F0 { void* FUN_7AD2F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD2F0
-struct Obj_7AD310 { void* FUN_7AD310(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD310
-struct Obj_7AD330 { void* FUN_7AD330(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD330
-struct Obj_7AD350 { void* FUN_7AD350(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD350
-struct Obj_7AED20 { void* FUN_7AED20(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AED20
 
 #endif  // GG_MATCH_CORE_DELETING_DTOR_SWEEP_H

@@ -61,16 +61,3 @@ bool Megawealth::vf_35()
     Map_0087F7E8.FUN_00577F30(0);
     return true;
 }
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5C94D0
-void* Obj_5C94D0::FUN_5C94D0(unsigned int flags)
-{
-    FUN_005D8C80(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}

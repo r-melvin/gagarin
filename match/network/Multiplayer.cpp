@@ -1044,3 +1044,6 @@ bool VectorResizeFamily::FUN_5D8730(int newsize, void** array)
 
     return false;
 }
+
+// SYNTHETIC: GAMEMD 0x40E4A0 -- CCINIClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

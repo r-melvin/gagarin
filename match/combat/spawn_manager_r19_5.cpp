@@ -17,3 +17,6 @@ SpawnManagerClass::SpawnManagerClass(const AbstractNoInit& noInit)
     : AbstractClass(noInit), SpawnedNodes(0, 0), SpawnTimer(0), UpdateTimer(0)
 {
 }
+
+// SYNTHETIC: GAMEMD 0x6B8140 -- SpawnManagerClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.

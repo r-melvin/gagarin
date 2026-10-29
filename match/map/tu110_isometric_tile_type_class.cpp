@@ -329,19 +329,6 @@ int Obj_0054A160::FUN_0054A160() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x54A170
-void* Obj_54A170::FUN_54A170(unsigned int flags)
-{
-    FUN_00544A70(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TEMPLATE: GAMEMD 0x54A1C0
 // DynamicVectorClass<unsigned short*>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x54A1E0

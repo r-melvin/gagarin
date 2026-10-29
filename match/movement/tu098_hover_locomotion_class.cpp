@@ -823,19 +823,6 @@ int HoverLocomotionClass::Size()
 // Compiler-generated scalar deleting destructor from the native declaration.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x5172F0
-void* Obj_5172F0::FUN_5172F0(unsigned int flags)
-{
-    FUN_0055A6F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x517360
 void HSVColour::Adjust(unsigned char ratio, const HSVColour& other)
 {
@@ -957,3 +944,6 @@ bool HoverCoordView::Fun_00517310(const LocoCoord* other)
 {
     return X == other->X && Y == other->Y;
 }
+
+// SYNTHETIC: GAMEMD 0x5172F0 -- LocomotionClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.
