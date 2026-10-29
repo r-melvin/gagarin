@@ -1,0 +1,5358 @@
+{
+ "schema": "gagarin/shape_families/1",
+ "generated_by": "scripts/vc6/shape_families.py",
+ "note": "families of engine functions sharing a normalised instruction shape; addresses/lengths/hashes only. exact keeps non-address immediates, coarse masks them.",
+ "functions_hashed": 19215,
+ "totals": {
+  "exact": {
+   "families": 68,
+   "families_with_matched_exemplar": 29,
+   "unmatched_functions_in_families": 132,
+   "unmatched_bytes_in_families": 35793,
+   "recoverable_functions": 51,
+   "recoverable_bytes": 2904
+  },
+  "coarse": {
+   "families": 102,
+   "families_with_matched_exemplar": 39,
+   "unmatched_functions_in_families": 197,
+   "unmatched_bytes_in_families": 66178,
+   "recoverable_functions": 65,
+   "recoverable_bytes": 4798
+  }
+ },
+ "families": {
+  "exact": [
+   {
+    "hash": "e1b52db236fe7963",
+    "n_insns": 11,
+    "func_len": 30,
+    "members": 84,
+    "matched": 70,
+    "partial": 0,
+    "unmatched": 14,
+    "unmatched_bytes": 420,
+    "recoverable_bytes": 420,
+    "exemplar": {
+     "addr": "0x40E4A0",
+     "len": 30,
+     "n_insns": 11,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/deleting_dtor_methods.cpp",
+     "sym": "?FUN_0040E4A0@Obj_0040E400@@QAEPAXI@Z",
+     "name": "FUN_0040E4A0",
+     "rtti": [
+      "CCINIClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x477750",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "SHAPipe[0]"
+      ]
+     },
+     {
+      "addr": "0x48BB00",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "CommBufferClass[0]"
+      ]
+     },
+     {
+      "addr": "0x4B57D0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "EditClass[0]"
+      ]
+     },
+     {
+      "addr": "0x4E0170",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "FootClass[8]"
+      ]
+     },
+     {
+      "addr": "0x4E30F0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TriColorGaugeClass[0]"
+      ]
+     },
+     {
+      "addr": "0x5B4610",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5D3450",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "MSFont[0]"
+      ]
+     },
+     {
+      "addr": "0x624480",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7106E0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TechnoClass[8]"
+      ]
+     },
+     {
+      "addr": "0x7179A0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TechnoTypeClass[8]"
+      ]
+     },
+     {
+      "addr": "0x723710",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TiberiumClass[8]"
+      ]
+     },
+     {
+      "addr": "0x74AB50",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "VoxelAnimClass[8]"
+      ]
+     },
+     {
+      "addr": "0x74F340",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "VeinholeMonsterClass[8]"
+      ]
+     },
+     {
+      "addr": "0x7B1790",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "IPXInterfaceClass[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "f19cb42ba576e81a",
+    "n_insns": 80,
+    "func_len": 267,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 267,
+    "recoverable_bytes": 267,
+    "exemplar": {
+     "addr": "0x726140",
+     "len": 267,
+     "n_insns": 80,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/ai/trigger_class_body.cpp",
+     "sym": "??1TriggerClass@@UAE@XZ",
+     "name": "TriggerClass::~TriggerClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x71E830",
+      "len": 267,
+      "n_insns": 80,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "2c692cb25303c131",
+    "n_insns": 62,
+    "func_len": 207,
+    "members": 3,
+    "matched": 2,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 207,
+    "recoverable_bytes": 207,
+    "exemplar": {
+     "addr": "0x421730",
+     "len": 207,
+     "n_insns": 62,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/render/alpha_shape_class.cpp",
+     "sym": "??_GAlphaShapeClass@@UAEPAXI@Z",
+     "name": "AlphaShapeClass::scalar deleting destructor",
+     "rtti": [
+      "AlphaShapeClass[8]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x43A9C0",
+      "len": 207,
+      "n_insns": 62,
+      "status": "unmatched",
+      "rtti": [
+       "NeuronClass[8]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "d1da54b69a7f934c",
+    "n_insns": 34,
+    "func_len": 96,
+    "members": 3,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 192,
+    "recoverable_bytes": 192,
+    "exemplar": {
+     "addr": "0x691040",
+     "len": 96,
+     "n_insns": 34,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/score_font_ctors.cpp",
+     "sym": "??_GScoreFontClass@@UAEPAXI@Z",
+     "name": "ScoreFontClass scalar deleting destructor",
+     "rtti": [
+      "ScoreFontClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x6910A0",
+      "len": 96,
+      "n_insns": 34,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreFullFontClass[0]"
+      ]
+     },
+     {
+      "addr": "0x691100",
+      "len": 96,
+      "n_insns": 34,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreBigFontClass[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "7605e9f65675b94a",
+    "n_insns": 56,
+    "func_len": 187,
+    "members": 3,
+    "matched": 2,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 187,
+    "recoverable_bytes": 187,
+    "exemplar": {
+     "addr": "0x420C80",
+     "len": 187,
+     "n_insns": 56,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/render/alpha_shape_class.cpp",
+     "sym": "??1AlphaShapeClass@@UAE@XZ",
+     "name": "AlphaShapeClass::~AlphaShapeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x43A440",
+      "len": 187,
+      "n_insns": 56,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "f6af8ab835595935",
+    "n_insns": 68,
+    "func_len": 185,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 185,
+    "recoverable_bytes": 185,
+    "exemplar": {
+     "addr": "0x746750",
+     "len": 185,
+     "n_insns": 68,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/combat/unit_class_r16_methods.cpp",
+     "sym": "?FUN_00746750@UnitView_r16@@QAE_NPAVHouseClass@@@Z",
+     "name": "UnitClass::vf_50",
+     "rtti": [
+      "UnitClass[50]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5227F0",
+      "len": 185,
+      "n_insns": 68,
+      "status": "unmatched",
+      "rtti": [
+       "InfantryClass[50]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "c6689d505f7d916c",
+    "n_insns": 44,
+    "func_len": 152,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 152,
+    "recoverable_bytes": 152,
+    "exemplar": {
+     "addr": "0x71DC00",
+     "len": 152,
+     "n_insns": 44,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/map/tu243_terrain_type_class.cpp",
+     "sym": "??1TerrainTypeClass@@UAE@XZ",
+     "name": "TerrainTypeClass::~TerrainTypeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x6B53A0",
+      "len": 152,
+      "n_insns": 44,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e9f8f61c1161ee1d",
+    "n_insns": 40,
+    "func_len": 134,
+    "members": 6,
+    "matched": 5,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 134,
+    "recoverable_bytes": 134,
+    "exemplar": {
+     "addr": "0x410C30",
+     "len": 134,
+     "n_insns": 40,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
+     "name": "AbstractTypeClass scalar deleting destructor",
+     "rtti": [
+      "AbstractTypeClass[8]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4A7C90",
+      "len": 134,
+      "n_insns": 40,
+      "status": "unmatched",
+      "rtti": [
+       "DiskLaserClass[8]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "ca3f53fc9dc76dd0",
+    "n_insns": 36,
+    "func_len": 121,
+    "members": 8,
+    "matched": 7,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 121,
+    "recoverable_bytes": 121,
+    "exemplar": {
+     "addr": "0x41CA20",
+     "len": 121,
+     "n_insns": 36,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/economy/tu020_aircraft_type_class.cpp",
+     "sym": "??1AircraftTypeClass@@UAE@XZ",
+     "name": "AircraftTypeClass::~AircraftTypeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x644250",
+      "len": 121,
+      "n_insns": 36,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "a13490cc8a0cb357",
+    "n_insns": 34,
+    "func_len": 114,
+    "members": 6,
+    "matched": 5,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 114,
+    "recoverable_bytes": 114,
+    "exemplar": {
+     "addr": "0x4109C0",
+     "len": 114,
+     "n_insns": 34,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "sym": "??1AbstractTypeClass@@UAE@XZ",
+     "name": "AbstractTypeClass::~AbstractTypeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4A7B00",
+      "len": 114,
+      "n_insns": 34,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "90e2651c30bb5f73",
+    "n_insns": 12,
+    "func_len": 32,
+    "members": 153,
+    "matched": 150,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 96,
+    "recoverable_bytes": 96,
+    "exemplar": {
+     "addr": "0x4115A0",
+     "len": 32,
+     "n_insns": 12,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/leaf_sweep_r13_w1.cpp",
+     "sym": "?Destroy@Obj_004115A0@@QAEPAXE@Z",
+     "name": "Obj_004115A0::Destroy",
+     "rtti": [
+      "XSurface[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x690FE0",
+      "len": 32,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreAnimClass[0]"
+      ]
+     },
+     {
+      "addr": "0x691000",
+      "len": 32,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreTimeClass[0]"
+      ]
+     },
+     {
+      "addr": "0x691020",
+      "len": 32,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "ScorePrintClass[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "847be85bf09cc0ca",
+    "n_insns": 37,
+    "func_len": 91,
+    "members": 3,
+    "matched": 2,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 91,
+    "recoverable_bytes": 91,
+    "exemplar": {
+     "addr": "0x4F4240",
+     "len": 91,
+     "n_insns": 37,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/ui/input_controls/display_gscreen.cpp",
+     "sym": "?QueryInterface@GScreenClass@@UAGJPBUDisplayGuid@@PAPAX@Z",
+     "name": "GScreenClass::QueryInterface",
+     "rtti": [
+      "DisplayClass[0]",
+      "GScreenClass[0]",
+      "MapClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x429210",
+      "len": 91,
+      "n_insns": 37,
+      "status": "unmatched",
+      "rtti": [
+       "TiberianSunClassFactory[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "ac12cc49f93ca2dd",
+    "n_insns": 24,
+    "func_len": 91,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 91,
+    "recoverable_bytes": 91,
+    "exemplar": {
+     "addr": "0x41CB70",
+     "len": 91,
+     "n_insns": 24,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/function_static_r20.cpp",
+     "sym": "?FUN_0041CB70@@YGPAUCellPairStatic_00889F20@@H@Z",
+     "name": "FUN_0041CB70",
+     "rtti": [
+      "AircraftTypeClass[36]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x523C20",
+      "len": 91,
+      "n_insns": 24,
+      "status": "unmatched",
+      "rtti": [
+       "InfantryTypeClass[36]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "29c14b3acb0aa757",
+    "n_insns": 21,
+    "func_len": 88,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 88,
+    "recoverable_bytes": 88,
+    "exemplar": {
+     "addr": "0x6338A0",
+     "len": 88,
+     "n_insns": 21,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/ai/planning_manager.cpp",
+     "sym": "_$E71",
+     "name": "PlanMgr cleanup callback (node list, guard byte 0xAC4B62 bit 1)"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x539700",
+      "len": 88,
+      "n_insns": 21,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "a97e5b3cdba4e7f8",
+    "n_insns": 12,
+    "func_len": 36,
+    "members": 28,
+    "matched": 26,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 72,
+    "recoverable_bytes": 72,
+    "exemplar": {
+     "addr": "0x401950",
+     "len": 36,
+     "n_insns": 12,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/platform/ccfile_class.cpp",
+     "sym": "??_GCDFileClass@@UAEPAXI@Z",
+     "name": "CDFileClass::`scalar deleting destructor'",
+     "rtti": [
+      "CDFileClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x556520",
+      "len": 36,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "LightConvertClass[0]"
+      ]
+     },
+     {
+      "addr": "0x7784A0",
+      "len": 36,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "CCToolTip[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "0560f669b2f1ca9e",
+    "n_insns": 12,
+    "func_len": 61,
+    "members": 132,
+    "matched": 131,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 61,
+    "recoverable_bytes": 61,
+    "exemplar": {
+     "addr": "0x40BDD0",
+     "len": 61,
+     "n_insns": 12,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/static_vector_dtor_stubs.cpp",
+     "sym": "_$E4",
+     "name": "dynamic initializer (static vector, fused atexit)"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5396C0",
+      "len": 61,
+      "n_insns": 12,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "82b75be880a881c8",
+    "n_insns": 24,
+    "func_len": 59,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 59,
+    "recoverable_bytes": 59,
+    "exemplar": {
+     "addr": "0x510460",
+     "len": 59,
+     "n_insns": 24,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/economy/House.cpp",
+     "sym": "??_E?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@QAEPAXI@Z",
+     "name": "DistributionObject<BuildingTypeClass*> vector deleting destructor"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4E0DE0",
+      "len": 59,
+      "n_insns": 24,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "66cc46129bd8f8dc",
+    "n_insns": 3,
+    "func_len": 18,
+    "members": 4,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 54,
+    "recoverable_bytes": 54,
+    "exemplar": {
+     "addr": "0x4CCA70",
+     "len": 18,
+     "n_insns": 3,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+     "sym": "?Destroy@FlyLocoObject@@QAEXXZ",
+     "name": "FlyLocomotionClass::Destroy"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x513D00",
+      "len": 18,
+      "n_insns": 3,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5AFF50",
+      "len": 18,
+      "n_insns": 3,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x661F30",
+      "len": 18,
+      "n_insns": 3,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "1ff60199bf0d0d44",
+    "n_insns": 16,
+    "func_len": 52,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 52,
+    "recoverable_bytes": 52,
+    "exemplar": {
+     "addr": "0x7AC5D0",
+     "len": 52,
+     "n_insns": 16,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/network/wonline.cpp",
+     "sym": "??_GWonlineStringDialogControl@@UAEPAXI@Z",
+     "name": "WonlineStringDialogControl::`scalar deleting destructor'",
+     "rtti": [
+      "WonlineStringDialogControl[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x7AC630",
+      "len": 52,
+      "n_insns": 16,
+      "status": "unmatched",
+      "rtti": [
+       "CreateGameDialogControl[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "f0a897292c334fea",
+    "n_insns": 17,
+    "func_len": 51,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 51,
+    "recoverable_bytes": 51,
+    "exemplar": {
+     "addr": "0x5CB750",
+     "len": 51,
+     "n_insns": 17,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/map/ms_anim_ctors.cpp",
+     "sym": "??1MSShapeAnim@@UAE@XZ",
+     "name": "MSShapeAnim::~MSShapeAnim"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5CC2F0",
+      "len": 51,
+      "n_insns": 17,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "57778374181a52d7",
+    "n_insns": 14,
+    "func_len": 40,
+    "members": 3,
+    "matched": 2,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 40,
+    "recoverable_bytes": 40,
+    "exemplar": {
+     "addr": "0x4AEC30",
+     "len": 40,
+     "n_insns": 14,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/network/Session.cpp",
+     "sym": "??_GBufferStraw@@UAEPAXI@Z",
+     "name": "BufferStraw scalar deleting destructor",
+     "rtti": [
+      "BufferStraw[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x52AE70",
+      "len": 40,
+      "n_insns": 14,
+      "status": "unmatched",
+      "rtti": [
+       "CacheStraw[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "4948e080fffa765d",
+    "n_insns": 9,
+    "func_len": 33,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 33,
+    "recoverable_bytes": 33,
+    "exemplar": {
+     "addr": "0x753540",
+     "len": 33,
+     "n_insns": 9,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/global_reset_leaf_methods.cpp",
+     "sym": "?FUN_00753540@@YIXXZ",
+     "name": "FUN_00753540"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x753580",
+      "len": 33,
+      "n_insns": 9,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "2cd311d42148445d",
+    "n_insns": 9,
+    "func_len": 32,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 32,
+    "recoverable_bytes": 32,
+    "exemplar": {
+     "addr": "0x628740",
+     "len": 32,
+     "n_insns": 9,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/w2_vector_r13.cpp",
+     "sym": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ",
+     "name": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x7719E0",
+      "len": 32,
+      "n_insns": 9,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "db45dfc89b3c92f0",
+    "n_insns": 2,
+    "func_len": 10,
+    "members": 40,
+    "matched": 37,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 30,
+    "recoverable_bytes": 30,
+    "exemplar": {
+     "addr": "0x4105E0",
+     "len": 10,
+     "n_insns": 2,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/abstract_class_dtor.cpp",
+     "sym": "?QueryInterface@AbstractClass@@W3AGJABU_GUID@@PAPAX@Z",
+     "name": "AbstractClass::QueryInterface (IRTTITypeInfo adjustor)",
+     "rtti": [
+      "AITriggerTypeClass[0]",
+      "AbstractClass[0]",
+      "AbstractTypeClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x41C640",
+      "len": 10,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[0]"
+      ]
+     },
+     {
+      "addr": "0x41C650",
+      "len": 10,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[1]"
+      ]
+     },
+     {
+      "addr": "0x41C660",
+      "len": 10,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "46bed22fa0c22588",
+    "n_insns": 10,
+    "func_len": 28,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 28,
+    "recoverable_bytes": 28,
+    "exemplar": {
+     "addr": "0x417CA0",
+     "len": 28,
+     "n_insns": 10,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/leaf_sweep_r12_w1.cpp",
+     "sym": "?Forward@Fwd_00417CA0@@QAEHHHHH@Z",
+     "name": "Forward",
+     "rtti": [
+      "AircraftClass[222]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x417C80",
+      "len": 28,
+      "n_insns": 10,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[80]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "6772cc27116d7f37",
+    "n_insns": 6,
+    "func_len": 22,
+    "members": 38,
+    "matched": 37,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 22,
+    "recoverable_bytes": 22,
+    "exemplar": {
+     "addr": "0x40AD60",
+     "len": 22,
+     "n_insns": 6,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/header_init_0040adc0.cpp",
+     "sym": "_$E4",
+     "name": "dynamic initializer (DAT_0087E8A8)"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x40D190",
+      "len": 22,
+      "n_insns": 6,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "14efe9039841c312",
+    "n_insns": 1,
+    "func_len": 6,
+    "members": 3,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 12,
+    "recoverable_bytes": 12,
+    "exemplar": {
+     "addr": "0x5D58A0",
+     "len": 6,
+     "n_insns": 1,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/trivial_tu155_methods.cpp",
+     "sym": "?FUN_005D58A0@@YAXXZ",
+     "name": "FUN_005D58A0"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5D5890",
+      "len": 6,
+      "n_insns": 1,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x77B8C0",
+      "len": 6,
+      "n_insns": 1,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "12fd925c75bb0f6d",
+    "n_insns": 2,
+    "func_len": 11,
+    "members": 18,
+    "matched": 17,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 11,
+    "recoverable_bytes": 11,
+    "exemplar": {
+     "addr": "0x5C0E10",
+     "len": 11,
+     "n_insns": 2,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/network/mp_battle_class.cpp",
+     "sym": "??1MultiplayerBattle@@UAE@XZ",
+     "name": "MultiplayerBattle::~MultiplayerBattle"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x535A60",
+      "len": 11,
+      "n_insns": 2,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "614d96f628022310",
+    "n_insns": 1,
+    "func_len": 5,
+    "members": 44,
+    "matched": 43,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 2,
+    "recoverable_bytes": 2,
+    "exemplar": {
+     "addr": "0x4F4D80",
+     "len": 2,
+     "n_insns": 1,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/combat/scratch_buffer_vector_methods.cpp",
+     "sym": "??8ScratchEntry@@QBI_NABU0@@Z",
+     "name": "ScratchEntry::operator=="
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5175D0",
+      "len": 2,
+      "n_insns": 1,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8657bd71b76c3e45",
+    "n_insns": 549,
+    "func_len": 1777,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 3554,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x75FA90",
+      "len": 1777,
+      "n_insns": 549,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7602E0",
+      "len": 1777,
+      "n_insns": 549,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "a023c8a4e0cbf954",
+    "n_insns": 412,
+    "func_len": 1381,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2762,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x570AE0",
+      "len": 1381,
+      "n_insns": 412,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x576200",
+      "len": 1381,
+      "n_insns": 412,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "ed7c8c0cff7b6710",
+    "n_insns": 348,
+    "func_len": 1201,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2402,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56A4C0",
+      "len": 1201,
+      "n_insns": 348,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x56A980",
+      "len": 1201,
+      "n_insns": 348,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "dfdb1ea516fb52d4",
+    "n_insns": 342,
+    "func_len": 1189,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2378,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4AFF60",
+      "len": 1189,
+      "n_insns": 342,
+      "status": "unmatched",
+      "rtti": [
+       "DriveLocomotionClass[9]"
+      ]
+     },
+     {
+      "addr": "0x69F670",
+      "len": 1189,
+      "n_insns": 342,
+      "status": "unmatched",
+      "rtti": [
+       "ShipLocomotionClass[9]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "48b6bd8dc3363143",
+    "n_insns": 148,
+    "func_len": 464,
+    "members": 5,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 5,
+    "unmatched_bytes": 2320,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x67B550",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67B720",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67B8F0",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67BB10",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67BDD0",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "35a115831bbbe260",
+    "n_insns": 301,
+    "func_len": 1058,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2116,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x47E040",
+      "len": 1058,
+      "n_insns": 301,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x47E470",
+      "len": 1058,
+      "n_insns": 301,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "a8b87e7e54e3b02b",
+    "n_insns": 375,
+    "func_len": 1011,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2022,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x410ED0",
+      "len": 1011,
+      "n_insns": 375,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7BCB50",
+      "len": 1011,
+      "n_insns": 375,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "5e930822cd97ea6d",
+    "n_insns": 181,
+    "func_len": 608,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1216,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x5749C0",
+      "len": 608,
+      "n_insns": 181,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57F440",
+      "len": 608,
+      "n_insns": 181,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "f03c842efb0a7079",
+    "n_insns": 181,
+    "func_len": 572,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1144,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x574780",
+      "len": 572,
+      "n_insns": 181,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57F200",
+      "len": 572,
+      "n_insns": 181,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "57b5729b46cbf151",
+    "n_insns": 186,
+    "func_len": 466,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 932,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7C5BC0",
+      "len": 466,
+      "n_insns": 186,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7C7F20",
+      "len": 466,
+      "n_insns": 186,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "9c8e23c36155b42d",
+    "n_insns": 110,
+    "func_len": 285,
+    "members": 3,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 855,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4E0B10",
+      "len": 285,
+      "n_insns": 110,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>[2]"
+      ]
+     },
+     {
+      "addr": "0x50FE20",
+      "len": 285,
+      "n_insns": 110,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>[2]"
+      ]
+     },
+     {
+      "addr": "0x6F24B0",
+      "len": 285,
+      "n_insns": 110,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "d31b8619d95365b7",
+    "n_insns": 27,
+    "func_len": 149,
+    "members": 5,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 5,
+    "unmatched_bytes": 745,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x40DFB0",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E060",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E110",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E1C0",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E270",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "7a2329d65fd0f120",
+    "n_insns": 84,
+    "func_len": 318,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 636,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779B50",
+      "len": 318,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779DD0",
+      "len": 318,
+      "n_insns": 84,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "267fc91d946c6b97",
+    "n_insns": 83,
+    "func_len": 317,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 634,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779C90",
+      "len": 317,
+      "n_insns": 83,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779F10",
+      "len": 317,
+      "n_insns": 83,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "c248fde0ee04cd3a",
+    "n_insns": 84,
+    "func_len": 295,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 590,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x57DAF0",
+      "len": 295,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57DC20",
+      "len": 295,
+      "n_insns": 84,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e7b61825efa25c82",
+    "n_insns": 91,
+    "func_len": 291,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 582,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x600750",
+      "len": 291,
+      "n_insns": 91,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x600920",
+      "len": 291,
+      "n_insns": 91,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "73b797ee163f8b7e",
+    "n_insns": 78,
+    "func_len": 289,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 578,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x5B5EF0",
+      "len": 289,
+      "n_insns": 78,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5B9F30",
+      "len": 289,
+      "n_insns": 78,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "19e7f34fdefb338c",
+    "n_insns": 84,
+    "func_len": 287,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 574,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x57C870",
+      "len": 287,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57C990",
+      "len": 287,
+      "n_insns": 84,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8cb5acf30748be44",
+    "n_insns": 84,
+    "func_len": 276,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 552,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56B780",
+      "len": 276,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x56B9A0",
+      "len": 276,
+      "n_insns": 84,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "692981b8904b21ee",
+    "n_insns": 96,
+    "func_len": 273,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 546,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x47A1B0",
+      "len": 273,
+      "n_insns": 96,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x47A2D0",
+      "len": 273,
+      "n_insns": 96,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "66a4098c5fb33aee",
+    "n_insns": 71,
+    "func_len": 271,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 542,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779830",
+      "len": 271,
+      "n_insns": 71,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779A40",
+      "len": 271,
+      "n_insns": 71,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e3240cde490bc37c",
+    "n_insns": 81,
+    "func_len": 264,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 528,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x5B6DA0",
+      "len": 264,
+      "n_insns": 81,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5BA970",
+      "len": 264,
+      "n_insns": 81,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "80ddb59927383fee",
+    "n_insns": 82,
+    "func_len": 263,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 526,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56F7A0",
+      "len": 263,
+      "n_insns": 82,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x572C90",
+      "len": 263,
+      "n_insns": 82,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "087b021ee4a28126",
+    "n_insns": 82,
+    "func_len": 261,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 522,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56F690",
+      "len": 261,
+      "n_insns": 82,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x572B80",
+      "len": 261,
+      "n_insns": 82,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "d7eda1bae9722577",
+    "n_insns": 62,
+    "func_len": 246,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 492,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779730",
+      "len": 246,
+      "n_insns": 62,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779940",
+      "len": 246,
+      "n_insns": 62,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "d9b479ffde11aca6",
+    "n_insns": 76,
+    "func_len": 207,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 414,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x6392D0",
+      "len": 207,
+      "n_insns": 76,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x6393A0",
+      "len": 207,
+      "n_insns": 76,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "1b9466db1af550d1",
+    "n_insns": 121,
+    "func_len": 366,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 366,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x6A01A0",
+      "len": 366,
+      "n_insns": 121,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "11a0bd6e1afaff79",
+    "n_insns": 114,
+    "func_len": 285,
+    "members": 4,
+    "matched": 0,
+    "partial": 3,
+    "unmatched": 1,
+    "unmatched_bytes": 285,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7659F0",
+      "len": 285,
+      "n_insns": 114,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<rc_ptr<WorldDominationTour::Conflict>>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "5f0f6e52264480ed",
+    "n_insns": 114,
+    "func_len": 282,
+    "members": 4,
+    "matched": 0,
+    "partial": 3,
+    "unmatched": 1,
+    "unmatched_bytes": 282,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x765840",
+      "len": 282,
+      "n_insns": 114,
+      "status": "unmatched",
+      "rtti": [
+       "VectorClass<rc_ptr<WorldDominationTour::Conflict>>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "363efb3470a9072d",
+    "n_insns": 53,
+    "func_len": 117,
+    "members": 4,
+    "matched": 0,
+    "partial": 2,
+    "unmatched": 2,
+    "unmatched_bytes": 234,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4D0490",
+      "len": 117,
+      "n_insns": 53,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x680F70",
+      "len": 117,
+      "n_insns": 53,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "3ff108aba8f61d11",
+    "n_insns": 30,
+    "func_len": 77,
+    "members": 3,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 231,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7AC6B0",
+      "len": 77,
+      "n_insns": 30,
+      "status": "unmatched",
+      "rtti": [
+       "ATL::CComObject<CChatEventSink>[2]"
+      ]
+     },
+     {
+      "addr": "0x7AC820",
+      "len": 77,
+      "n_insns": 30,
+      "status": "unmatched",
+      "rtti": [
+       "ATL::CComObject<CNetUtilEventSink>[2]"
+      ]
+     },
+     {
+      "addr": "0x7AD640",
+      "len": 77,
+      "n_insns": 30,
+      "status": "unmatched",
+      "rtti": [
+       "ATL::CComObject<CDownloadEventSink>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "8e95e901819b6985",
+    "n_insns": 34,
+    "func_len": 115,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 230,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x76DED0",
+      "len": 115,
+      "n_insns": 34,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x76DF50",
+      "len": 115,
+      "n_insns": 34,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "b87aceb2bee41e16",
+    "n_insns": 79,
+    "func_len": 227,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 227,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x69F0C0",
+      "len": 227,
+      "n_insns": 79,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "b994aaecc6fdae29",
+    "n_insns": 27,
+    "func_len": 99,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 198,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7B0220",
+      "len": 99,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7B02A0",
+      "len": 99,
+      "n_insns": 27,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "c59bf66846d623f9",
+    "n_insns": 34,
+    "func_len": 91,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 182,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7BC1F0",
+      "len": 91,
+      "n_insns": 34,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7BC250",
+      "len": 91,
+      "n_insns": 34,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "32c24629d3bbca83",
+    "n_insns": 15,
+    "func_len": 87,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 174,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7539D0",
+      "len": 87,
+      "n_insns": 15,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x753A50",
+      "len": 87,
+      "n_insns": 15,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "b4ee433b45eac474",
+    "n_insns": 49,
+    "func_len": 142,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 142,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x69F5E0",
+      "len": 142,
+      "n_insns": 49,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "22b0ab6891f0b4b2",
+    "n_insns": 58,
+    "func_len": 137,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 137,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7BCA50",
+      "len": 137,
+      "n_insns": 58,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "08505490c6b39c3b",
+    "n_insns": 2,
+    "func_len": 13,
+    "members": 3,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 39,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x41C670",
+      "len": 13,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[0]"
+      ]
+     },
+     {
+      "addr": "0x41C680",
+      "len": 13,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[1]"
+      ]
+     },
+     {
+      "addr": "0x41C690",
+      "len": 13,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[2]"
+      ]
+     }
+    ]
+   }
+  ],
+  "coarse": [
+   {
+    "hash": "b5a164392e19246f",
+    "n_insns": 244,
+    "func_len": 684,
+    "members": 3,
+    "matched": 1,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 684,
+    "recoverable_bytes": 684,
+    "exemplar": {
+     "addr": "0x7AE950",
+     "len": 684,
+     "n_insns": 244,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/network/wonline.cpp",
+     "sym": "?Remove@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAE_NABVWstring@@AAUValue_007AE8E0@@@Z",
+     "name": "?Remove@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAE_NABVWstring@@AAUValue_007AE8E0@@@Z"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x6BAC40",
+      "len": 684,
+      "n_insns": 244,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8b0691ba63f9004c",
+    "n_insns": 11,
+    "func_len": 30,
+    "members": 84,
+    "matched": 70,
+    "partial": 0,
+    "unmatched": 14,
+    "unmatched_bytes": 420,
+    "recoverable_bytes": 420,
+    "exemplar": {
+     "addr": "0x40E4A0",
+     "len": 30,
+     "n_insns": 11,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/deleting_dtor_methods.cpp",
+     "sym": "?FUN_0040E4A0@Obj_0040E400@@QAEPAXI@Z",
+     "name": "FUN_0040E4A0",
+     "rtti": [
+      "CCINIClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x477750",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "SHAPipe[0]"
+      ]
+     },
+     {
+      "addr": "0x48BB00",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "CommBufferClass[0]"
+      ]
+     },
+     {
+      "addr": "0x4B57D0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "EditClass[0]"
+      ]
+     },
+     {
+      "addr": "0x4E0170",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "FootClass[8]"
+      ]
+     },
+     {
+      "addr": "0x4E30F0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TriColorGaugeClass[0]"
+      ]
+     },
+     {
+      "addr": "0x5B4610",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5D3450",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "MSFont[0]"
+      ]
+     },
+     {
+      "addr": "0x624480",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7106E0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TechnoClass[8]"
+      ]
+     },
+     {
+      "addr": "0x7179A0",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TechnoTypeClass[8]"
+      ]
+     },
+     {
+      "addr": "0x723710",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "TiberiumClass[8]"
+      ]
+     },
+     {
+      "addr": "0x74AB50",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "VoxelAnimClass[8]"
+      ]
+     },
+     {
+      "addr": "0x74F340",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "VeinholeMonsterClass[8]"
+      ]
+     },
+     {
+      "addr": "0x7B1790",
+      "len": 30,
+      "n_insns": 11,
+      "status": "unmatched",
+      "rtti": [
+       "IPXInterfaceClass[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "09e7a2d76aea0eba",
+    "n_insns": 48,
+    "func_len": 135,
+    "members": 3,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 270,
+    "recoverable_bytes": 270,
+    "exemplar": {
+     "addr": "0x74E8A0",
+     "len": 135,
+     "n_insns": 48,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/leaf_sweep_r12a.cpp",
+     "sym": "?FUN_0074E8A0@@YIXPAUVein_0074E8A0@@@Z",
+     "name": "FUN_0074E8A0"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x722A20",
+      "len": 135,
+      "n_insns": 48,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x723510",
+      "len": 135,
+      "n_insns": 48,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e1386d5ba3e6e9ca",
+    "n_insns": 80,
+    "func_len": 267,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 267,
+    "recoverable_bytes": 267,
+    "exemplar": {
+     "addr": "0x726140",
+     "len": 267,
+     "n_insns": 80,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/ai/trigger_class_body.cpp",
+     "sym": "??1TriggerClass@@UAE@XZ",
+     "name": "TriggerClass::~TriggerClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x71E830",
+      "len": 267,
+      "n_insns": 80,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "3acf547e67205d06",
+    "n_insns": 62,
+    "func_len": 207,
+    "members": 3,
+    "matched": 2,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 207,
+    "recoverable_bytes": 207,
+    "exemplar": {
+     "addr": "0x421730",
+     "len": 207,
+     "n_insns": 62,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/render/alpha_shape_class.cpp",
+     "sym": "??_GAlphaShapeClass@@UAEPAXI@Z",
+     "name": "AlphaShapeClass::scalar deleting destructor",
+     "rtti": [
+      "AlphaShapeClass[8]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x43A9C0",
+      "len": 207,
+      "n_insns": 62,
+      "status": "unmatched",
+      "rtti": [
+       "NeuronClass[8]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "07328f2146cc18f5",
+    "n_insns": 34,
+    "func_len": 96,
+    "members": 3,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 192,
+    "recoverable_bytes": 192,
+    "exemplar": {
+     "addr": "0x691040",
+     "len": 96,
+     "n_insns": 34,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/score_font_ctors.cpp",
+     "sym": "??_GScoreFontClass@@UAEPAXI@Z",
+     "name": "ScoreFontClass scalar deleting destructor",
+     "rtti": [
+      "ScoreFontClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x6910A0",
+      "len": 96,
+      "n_insns": 34,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreFullFontClass[0]"
+      ]
+     },
+     {
+      "addr": "0x691100",
+      "len": 96,
+      "n_insns": 34,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreBigFontClass[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "121f7fc271916721",
+    "n_insns": 56,
+    "func_len": 187,
+    "members": 3,
+    "matched": 2,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 187,
+    "recoverable_bytes": 187,
+    "exemplar": {
+     "addr": "0x420C80",
+     "len": 187,
+     "n_insns": 56,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/render/alpha_shape_class.cpp",
+     "sym": "??1AlphaShapeClass@@UAE@XZ",
+     "name": "AlphaShapeClass::~AlphaShapeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x43A440",
+      "len": 187,
+      "n_insns": 56,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "9bdeff4baa5eeba7",
+    "n_insns": 68,
+    "func_len": 185,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 185,
+    "recoverable_bytes": 185,
+    "exemplar": {
+     "addr": "0x746750",
+     "len": 185,
+     "n_insns": 68,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/combat/unit_class_r16_methods.cpp",
+     "sym": "?FUN_00746750@UnitView_r16@@QAE_NPAVHouseClass@@@Z",
+     "name": "UnitClass::vf_50",
+     "rtti": [
+      "UnitClass[50]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5227F0",
+      "len": 185,
+      "n_insns": 68,
+      "status": "unmatched",
+      "rtti": [
+       "InfantryClass[50]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "1eba78daf9789f6a",
+    "n_insns": 52,
+    "func_len": 166,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 166,
+    "recoverable_bytes": 166,
+    "exemplar": {
+     "addr": "0x4A95A0",
+     "len": 166,
+     "n_insns": 52,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/map/display_class_foundation_methods.cpp",
+     "sym": "?MarkFoundation@DisplayClass@@QAEXPBUCellStruct@@_N@Z",
+     "name": "DisplayClass::MarkFoundation"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4A9650",
+      "len": 166,
+      "n_insns": 52,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "7173ff54377e1056",
+    "n_insns": 67,
+    "func_len": 156,
+    "members": 8,
+    "matched": 7,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 162,
+    "recoverable_bytes": 162,
+    "exemplar": {
+     "addr": "0x5EF010",
+     "len": 156,
+     "n_insns": 67,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/hash_table_rehash_sweep.cpp",
+     "sym": "?Grow@?$HashTable@UNode_005EF010@@@@QAEXXZ",
+     "name": "HashTable<Node_005EF010>::Grow"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x6BAFA0",
+      "len": 162,
+      "n_insns": 67,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "a98c19946162c664",
+    "n_insns": 44,
+    "func_len": 152,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 152,
+    "recoverable_bytes": 152,
+    "exemplar": {
+     "addr": "0x71DC00",
+     "len": 152,
+     "n_insns": 44,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/map/tu243_terrain_type_class.cpp",
+     "sym": "??1TerrainTypeClass@@UAE@XZ",
+     "name": "TerrainTypeClass::~TerrainTypeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x6B53A0",
+      "len": 152,
+      "n_insns": 44,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "dc416ea1dfefc080",
+    "n_insns": 31,
+    "func_len": 141,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 141,
+    "recoverable_bytes": 141,
+    "exemplar": {
+     "addr": "0x5C9720",
+     "len": 141,
+     "n_insns": 31,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/ui/MPScore.cpp",
+     "sym": "?FUN_005C9720@Obj_005C9700@@QAEXXZ",
+     "name": "Obj_005C9700::FUN_005C9720"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x6C8E80",
+      "len": 141,
+      "n_insns": 31,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "0a85a9f0be9d7208",
+    "n_insns": 40,
+    "func_len": 134,
+    "members": 6,
+    "matched": 5,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 134,
+    "recoverable_bytes": 134,
+    "exemplar": {
+     "addr": "0x410C30",
+     "len": 134,
+     "n_insns": 40,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
+     "name": "AbstractTypeClass scalar deleting destructor",
+     "rtti": [
+      "AbstractTypeClass[8]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4A7C90",
+      "len": 134,
+      "n_insns": 40,
+      "status": "unmatched",
+      "rtti": [
+       "DiskLaserClass[8]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "a7862e813f32d27e",
+    "n_insns": 36,
+    "func_len": 121,
+    "members": 8,
+    "matched": 7,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 121,
+    "recoverable_bytes": 121,
+    "exemplar": {
+     "addr": "0x41CA20",
+     "len": 121,
+     "n_insns": 36,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/economy/tu020_aircraft_type_class.cpp",
+     "sym": "??1AircraftTypeClass@@UAE@XZ",
+     "name": "AircraftTypeClass::~AircraftTypeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x644250",
+      "len": 121,
+      "n_insns": 36,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "394305a870cd6575",
+    "n_insns": 34,
+    "func_len": 114,
+    "members": 6,
+    "matched": 5,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 114,
+    "recoverable_bytes": 114,
+    "exemplar": {
+     "addr": "0x4109C0",
+     "len": 114,
+     "n_insns": 34,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "sym": "??1AbstractTypeClass@@UAE@XZ",
+     "name": "AbstractTypeClass::~AbstractTypeClass"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4A7B00",
+      "len": 114,
+      "n_insns": 34,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8ad060e093eee900",
+    "n_insns": 33,
+    "func_len": 120,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 111,
+    "recoverable_bytes": 111,
+    "exemplar": {
+     "addr": "0x71F8C0",
+     "len": 111,
+     "n_insns": 33,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/ai/tevent_class_w3_methods.cpp",
+     "sym": "?Load@TEventClass@@UAGJPAUIStream@@@Z",
+     "name": "TEventClass::Load",
+     "rtti": [
+      "TEventClass[5]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x43A540",
+      "len": 111,
+      "n_insns": 33,
+      "status": "unmatched",
+      "rtti": [
+       "NeuronClass[5]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "cfe1f54ddc746804",
+    "n_insns": 46,
+    "func_len": 101,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 101,
+    "recoverable_bytes": 101,
+    "exemplar": {
+     "addr": "0x65AC40",
+     "len": 107,
+     "n_insns": 46,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/tu189_radio_class.cpp",
+     "sym": "?Save@RadioClass@@UAGJPAUIStream@@H@Z",
+     "name": "RadioClass::Save",
+     "rtti": [
+      "RadioClass[6]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4CA3C0",
+      "len": 101,
+      "n_insns": 46,
+      "status": "unmatched",
+      "rtti": [
+       "FactoryClass[6]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "8f056c054ed4b6a1",
+    "n_insns": 20,
+    "func_len": 78,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 99,
+    "recoverable_bytes": 99,
+    "exemplar": {
+     "addr": "0x471950",
+     "len": 78,
+     "n_insns": 20,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/combat/capture_manager_release_methods.cpp",
+     "sym": "??0CaptureManagerClass@@QAE@ABUAbstractNoInit@@@Z",
+     "name": "CaptureManagerClass::CaptureManagerClass (no-init)"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x544A00",
+      "len": 99,
+      "n_insns": 20,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "97d0ff4f7cfc2b07",
+    "n_insns": 12,
+    "func_len": 32,
+    "members": 153,
+    "matched": 150,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 96,
+    "recoverable_bytes": 96,
+    "exemplar": {
+     "addr": "0x4115A0",
+     "len": 32,
+     "n_insns": 12,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/leaf_sweep_r13_w1.cpp",
+     "sym": "?Destroy@Obj_004115A0@@QAEPAXE@Z",
+     "name": "Obj_004115A0::Destroy",
+     "rtti": [
+      "XSurface[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x690FE0",
+      "len": 32,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreAnimClass[0]"
+      ]
+     },
+     {
+      "addr": "0x691000",
+      "len": 32,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "ScoreTimeClass[0]"
+      ]
+     },
+     {
+      "addr": "0x691020",
+      "len": 32,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "ScorePrintClass[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "53f5663d7a52615c",
+    "n_insns": 24,
+    "func_len": 91,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 91,
+    "recoverable_bytes": 91,
+    "exemplar": {
+     "addr": "0x41CB70",
+     "len": 91,
+     "n_insns": 24,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/function_static_r20.cpp",
+     "sym": "?FUN_0041CB70@@YGPAUCellPairStatic_00889F20@@H@Z",
+     "name": "FUN_0041CB70",
+     "rtti": [
+      "AircraftTypeClass[36]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x523C20",
+      "len": 91,
+      "n_insns": 24,
+      "status": "unmatched",
+      "rtti": [
+       "InfantryTypeClass[36]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "f35e501fa0830f11",
+    "n_insns": 37,
+    "func_len": 91,
+    "members": 3,
+    "matched": 2,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 91,
+    "recoverable_bytes": 91,
+    "exemplar": {
+     "addr": "0x4F4240",
+     "len": 91,
+     "n_insns": 37,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/ui/input_controls/display_gscreen.cpp",
+     "sym": "?QueryInterface@GScreenClass@@UAGJPBUDisplayGuid@@PAPAX@Z",
+     "name": "GScreenClass::QueryInterface",
+     "rtti": [
+      "DisplayClass[0]",
+      "GScreenClass[0]",
+      "MapClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x429210",
+      "len": 91,
+      "n_insns": 37,
+      "status": "unmatched",
+      "rtti": [
+       "TiberianSunClassFactory[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "051e6622b9512891",
+    "n_insns": 21,
+    "func_len": 88,
+    "members": 25,
+    "matched": 24,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 88,
+    "recoverable_bytes": 88,
+    "exemplar": {
+     "addr": "0x4200C0",
+     "len": 88,
+     "n_insns": 21,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/static_vector_member_dtor_stubs_a.cpp",
+     "sym": "_$E3",
+     "name": "DynamicVectorClass<AlphaLightingRemapClass*> guarded exit destructor stub (DAT_0088A080)"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x539700",
+      "len": 88,
+      "n_insns": 21,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "88adbf8fceeb248e",
+    "n_insns": 16,
+    "func_len": 73,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 73,
+    "recoverable_bytes": 73,
+    "exemplar": {
+     "addr": "0x523980",
+     "len": 73,
+     "n_insns": 16,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/leaf_sweep_w1c.cpp",
+     "sym": "??0Obj_00523980@@QAE@H@Z",
+     "name": "Obj_00523980"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x771F00",
+      "len": 73,
+      "n_insns": 16,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8ab9a274fc0b0027",
+    "n_insns": 12,
+    "func_len": 36,
+    "members": 28,
+    "matched": 26,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 72,
+    "recoverable_bytes": 72,
+    "exemplar": {
+     "addr": "0x401950",
+     "len": 36,
+     "n_insns": 12,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/platform/ccfile_class.cpp",
+     "sym": "??_GCDFileClass@@UAEPAXI@Z",
+     "name": "CDFileClass::`scalar deleting destructor'",
+     "rtti": [
+      "CDFileClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x556520",
+      "len": 36,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "LightConvertClass[0]"
+      ]
+     },
+     {
+      "addr": "0x7784A0",
+      "len": 36,
+      "n_insns": 12,
+      "status": "unmatched",
+      "rtti": [
+       "CCToolTip[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "8c5e60b718b13abe",
+    "n_insns": 2,
+    "func_len": 10,
+    "members": 70,
+    "matched": 64,
+    "partial": 0,
+    "unmatched": 6,
+    "unmatched_bytes": 69,
+    "recoverable_bytes": 69,
+    "exemplar": {
+     "addr": "0x4105E0",
+     "len": 10,
+     "n_insns": 2,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/abstract_class_dtor.cpp",
+     "sym": "?QueryInterface@AbstractClass@@W3AGJABU_GUID@@PAPAX@Z",
+     "name": "AbstractClass::QueryInterface (IRTTITypeInfo adjustor)",
+     "rtti": [
+      "AITriggerTypeClass[0]",
+      "AbstractClass[0]",
+      "AbstractTypeClass[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x41C640",
+      "len": 10,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[0]"
+      ]
+     },
+     {
+      "addr": "0x41C650",
+      "len": 10,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[1]"
+      ]
+     },
+     {
+      "addr": "0x41C660",
+      "len": 10,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[2]"
+      ]
+     },
+     {
+      "addr": "0x41C670",
+      "len": 13,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[0]"
+      ]
+     },
+     {
+      "addr": "0x41C680",
+      "len": 13,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[1]"
+      ]
+     },
+     {
+      "addr": "0x41C690",
+      "len": 13,
+      "n_insns": 2,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "d5508b5a314c82cf",
+    "n_insns": 12,
+    "func_len": 61,
+    "members": 132,
+    "matched": 131,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 61,
+    "recoverable_bytes": 61,
+    "exemplar": {
+     "addr": "0x40BDD0",
+     "len": 61,
+     "n_insns": 12,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/static_vector_dtor_stubs.cpp",
+     "sym": "_$E4",
+     "name": "dynamic initializer (static vector, fused atexit)"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5396C0",
+      "len": 61,
+      "n_insns": 12,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "4f336b9f2b239473",
+    "n_insns": 24,
+    "func_len": 59,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 59,
+    "recoverable_bytes": 59,
+    "exemplar": {
+     "addr": "0x510460",
+     "len": 59,
+     "n_insns": 24,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/economy/House.cpp",
+     "sym": "??_E?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@QAEPAXI@Z",
+     "name": "DistributionObject<BuildingTypeClass*> vector deleting destructor"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x4E0DE0",
+      "len": 59,
+      "n_insns": 24,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "54236d97d0188802",
+    "n_insns": 3,
+    "func_len": 18,
+    "members": 4,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 54,
+    "recoverable_bytes": 54,
+    "exemplar": {
+     "addr": "0x4CCA70",
+     "len": 18,
+     "n_insns": 3,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+     "sym": "?Destroy@FlyLocoObject@@QAEXXZ",
+     "name": "FlyLocomotionClass::Destroy"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x513D00",
+      "len": 18,
+      "n_insns": 3,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5AFF50",
+      "len": 18,
+      "n_insns": 3,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x661F30",
+      "len": 18,
+      "n_insns": 3,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "03a8ed8ff9b1d0ad",
+    "n_insns": 16,
+    "func_len": 52,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 52,
+    "recoverable_bytes": 52,
+    "exemplar": {
+     "addr": "0x7AC5D0",
+     "len": 52,
+     "n_insns": 16,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/network/wonline.cpp",
+     "sym": "??_GWonlineStringDialogControl@@UAEPAXI@Z",
+     "name": "WonlineStringDialogControl::`scalar deleting destructor'",
+     "rtti": [
+      "WonlineStringDialogControl[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x7AC630",
+      "len": 52,
+      "n_insns": 16,
+      "status": "unmatched",
+      "rtti": [
+       "CreateGameDialogControl[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "19c4136716d47399",
+    "n_insns": 17,
+    "func_len": 51,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 51,
+    "recoverable_bytes": 51,
+    "exemplar": {
+     "addr": "0x5CB750",
+     "len": 51,
+     "n_insns": 17,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/map/ms_anim_ctors.cpp",
+     "sym": "??1MSShapeAnim@@UAE@XZ",
+     "name": "MSShapeAnim::~MSShapeAnim"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5CC2F0",
+      "len": 51,
+      "n_insns": 17,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "c2c698f574590c08",
+    "n_insns": 15,
+    "func_len": 45,
+    "members": 5,
+    "matched": 4,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 48,
+    "recoverable_bytes": 48,
+    "exemplar": {
+     "addr": "0x4AF5E0",
+     "len": 45,
+     "n_insns": 15,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+     "sym": "??1ComRel_004AF5E0@@UAE@XZ",
+     "name": "ComRel_004AF5E0::dtor"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x54AD00",
+      "len": 48,
+      "n_insns": 15,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "376051993545357e",
+    "n_insns": 14,
+    "func_len": 40,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 40,
+    "recoverable_bytes": 40,
+    "exemplar": {
+     "addr": "0x4AEC30",
+     "len": 40,
+     "n_insns": 14,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/network/Session.cpp",
+     "sym": "??_GBufferStraw@@UAEPAXI@Z",
+     "name": "BufferStraw scalar deleting destructor",
+     "rtti": [
+      "BufferStraw[0]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x52AE70",
+      "len": 40,
+      "n_insns": 14,
+      "status": "unmatched",
+      "rtti": [
+       "CacheStraw[0]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "ee5be715d6a40c01",
+    "n_insns": 9,
+    "func_len": 33,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 33,
+    "recoverable_bytes": 33,
+    "exemplar": {
+     "addr": "0x753540",
+     "len": 33,
+     "n_insns": 9,
+     "status": "matched",
+     "pct": 100.0,
+     "tu": "match/core/global_reset_leaf_methods.cpp",
+     "sym": "?FUN_00753540@@YIXXZ",
+     "name": "FUN_00753540"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x753580",
+      "len": 33,
+      "n_insns": 9,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "ed48f45e5007a2a6",
+    "n_insns": 9,
+    "func_len": 32,
+    "members": 2,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 32,
+    "recoverable_bytes": 32,
+    "exemplar": {
+     "addr": "0x628740",
+     "len": 32,
+     "n_insns": 9,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/w2_vector_r13.cpp",
+     "sym": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ",
+     "name": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x7719E0",
+      "len": 32,
+      "n_insns": 9,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "c5f6f7b7f430eff8",
+    "n_insns": 10,
+    "func_len": 28,
+    "members": 4,
+    "matched": 3,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 28,
+    "recoverable_bytes": 28,
+    "exemplar": {
+     "addr": "0x417CA0",
+     "len": 28,
+     "n_insns": 10,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/leaf_sweep_r12_w1.cpp",
+     "sym": "?Forward@Fwd_00417CA0@@QAEHHHHH@Z",
+     "name": "Forward",
+     "rtti": [
+      "AircraftClass[222]"
+     ]
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x417C80",
+      "len": 28,
+      "n_insns": 10,
+      "status": "unmatched",
+      "rtti": [
+       "AircraftClass[80]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "6772cc27116d7f37",
+    "n_insns": 6,
+    "func_len": 22,
+    "members": 38,
+    "matched": 37,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 22,
+    "recoverable_bytes": 22,
+    "exemplar": {
+     "addr": "0x40AD60",
+     "len": 22,
+     "n_insns": 6,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/header_init_0040adc0.cpp",
+     "sym": "_$E4",
+     "name": "dynamic initializer (DAT_0087E8A8)"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x40D190",
+      "len": 22,
+      "n_insns": 6,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "14efe9039841c312",
+    "n_insns": 1,
+    "func_len": 6,
+    "members": 3,
+    "matched": 1,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 12,
+    "recoverable_bytes": 12,
+    "exemplar": {
+     "addr": "0x5D58A0",
+     "len": 6,
+     "n_insns": 1,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/core/trivial_tu155_methods.cpp",
+     "sym": "?FUN_005D58A0@@YAXXZ",
+     "name": "FUN_005D58A0"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5D5890",
+      "len": 6,
+      "n_insns": 1,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x77B8C0",
+      "len": 6,
+      "n_insns": 1,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "12fd925c75bb0f6d",
+    "n_insns": 2,
+    "func_len": 11,
+    "members": 18,
+    "matched": 17,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 11,
+    "recoverable_bytes": 11,
+    "exemplar": {
+     "addr": "0x5C0E10",
+     "len": 11,
+     "n_insns": 2,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/network/mp_battle_class.cpp",
+     "sym": "??1MultiplayerBattle@@UAE@XZ",
+     "name": "MultiplayerBattle::~MultiplayerBattle"
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x535A60",
+      "len": 11,
+      "n_insns": 2,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "614d96f628022310",
+    "n_insns": 1,
+    "func_len": 5,
+    "members": 44,
+    "matched": 43,
+    "partial": 0,
+    "unmatched": 1,
+    "unmatched_bytes": 2,
+    "recoverable_bytes": 2,
+    "exemplar": {
+     "addr": "0x4F4D80",
+     "len": 2,
+     "n_insns": 1,
+     "status": "matched",
+     "pct": 100,
+     "tu": "match/combat/scratch_buffer_vector_methods.cpp",
+     "sym": "??8ScratchEntry@@QBI_NABU0@@Z",
+     "name": "ScratchEntry::operator=="
+    },
+    "unmatched_members": [
+     {
+      "addr": "0x5175D0",
+      "len": 2,
+      "n_insns": 1,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "b403a71bef163159",
+    "n_insns": 549,
+    "func_len": 1777,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 3554,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x75FA90",
+      "len": 1777,
+      "n_insns": 549,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7602E0",
+      "len": 1777,
+      "n_insns": 549,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "4fbf28b450d259d3",
+    "n_insns": 430,
+    "func_len": 1532,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 3060,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x574000",
+      "len": 1532,
+      "n_insns": 430,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x574C20",
+      "len": 1528,
+      "n_insns": 430,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "f3f98ff72f3d2a7d",
+    "n_insns": 453,
+    "func_len": 1471,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2948,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x57BCF0",
+      "len": 1471,
+      "n_insns": 453,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57CF60",
+      "len": 1477,
+      "n_insns": 453,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "2f2725e07f4ee967",
+    "n_insns": 412,
+    "func_len": 1381,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2762,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x570AE0",
+      "len": 1381,
+      "n_insns": 412,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x576200",
+      "len": 1381,
+      "n_insns": 412,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "4d92759a982bd483",
+    "n_insns": 402,
+    "func_len": 1357,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2727,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x57DD50",
+      "len": 1357,
+      "n_insns": 402,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57E7A0",
+      "len": 1370,
+      "n_insns": 402,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "5112dee5f6f4e7dc",
+    "n_insns": 381,
+    "func_len": 1266,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2545,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x57E2A0",
+      "len": 1266,
+      "n_insns": 381,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57ED00",
+      "len": 1279,
+      "n_insns": 381,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "36695856df681538",
+    "n_insns": 348,
+    "func_len": 1201,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2402,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56A4C0",
+      "len": 1201,
+      "n_insns": 348,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x56A980",
+      "len": 1201,
+      "n_insns": 348,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "72890d91324af993",
+    "n_insns": 342,
+    "func_len": 1189,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2378,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4AFF60",
+      "len": 1189,
+      "n_insns": 342,
+      "status": "unmatched",
+      "rtti": [
+       "DriveLocomotionClass[9]"
+      ]
+     },
+     {
+      "addr": "0x69F670",
+      "len": 1189,
+      "n_insns": 342,
+      "status": "unmatched",
+      "rtti": [
+       "ShipLocomotionClass[9]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "f437f1ff9a31c89c",
+    "n_insns": 181,
+    "func_len": 572,
+    "members": 4,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 4,
+    "unmatched_bytes": 2360,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x574780",
+      "len": 572,
+      "n_insns": 181,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5749C0",
+      "len": 608,
+      "n_insns": 181,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57F200",
+      "len": 572,
+      "n_insns": 181,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57F440",
+      "len": 608,
+      "n_insns": 181,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "4621a0c7072d0cfe",
+    "n_insns": 148,
+    "func_len": 464,
+    "members": 5,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 5,
+    "unmatched_bytes": 2320,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x67B550",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67B720",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67B8F0",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67BB10",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x67BDD0",
+      "len": 464,
+      "n_insns": 148,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "d0181d48dbf6483f",
+    "n_insns": 301,
+    "func_len": 1058,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2116,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x47E040",
+      "len": 1058,
+      "n_insns": 301,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x47E470",
+      "len": 1058,
+      "n_insns": 301,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "6cad168c6b5823f3",
+    "n_insns": 375,
+    "func_len": 1011,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 2022,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x410ED0",
+      "len": 1011,
+      "n_insns": 375,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7BCB50",
+      "len": 1011,
+      "n_insns": 375,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "7cc7145ae13143a1",
+    "n_insns": 221,
+    "func_len": 802,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1619,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x575540",
+      "len": 802,
+      "n_insns": 221,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x575BA0",
+      "len": 817,
+      "n_insns": 221,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "dd03f2165f247c52",
+    "n_insns": 221,
+    "func_len": 800,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1615,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x575220",
+      "len": 800,
+      "n_insns": 221,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x575870",
+      "len": 815,
+      "n_insns": 221,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "014c6279dcb1c829",
+    "n_insns": 225,
+    "func_len": 770,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1540,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4FEF03",
+      "len": 770,
+      "n_insns": 225,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x4FF233",
+      "len": 770,
+      "n_insns": 225,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "3ffd864e040fef48",
+    "n_insns": 244,
+    "func_len": 740,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1480,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x6B59A0",
+      "len": 740,
+      "n_insns": 244,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x6B5C90",
+      "len": 740,
+      "n_insns": 244,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "71eedad57de76a50",
+    "n_insns": 154,
+    "func_len": 481,
+    "members": 3,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 1443,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x507B80",
+      "len": 481,
+      "n_insns": 154,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x507D70",
+      "len": 481,
+      "n_insns": 154,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x507F60",
+      "len": 481,
+      "n_insns": 154,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e273812fa7afd926",
+    "n_insns": 202,
+    "func_len": 635,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1270,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4E49A0",
+      "len": 635,
+      "n_insns": 202,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x4E5480",
+      "len": 635,
+      "n_insns": 202,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "906be5e5e3c49a5d",
+    "n_insns": 84,
+    "func_len": 287,
+    "members": 4,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 4,
+    "unmatched_bytes": 1164,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x57C870",
+      "len": 287,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57C990",
+      "len": 287,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57DAF0",
+      "len": 295,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x57DC20",
+      "len": 295,
+      "n_insns": 84,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "6806e078870da007",
+    "n_insns": 160,
+    "func_len": 507,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 1014,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4E4C20",
+      "len": 507,
+      "n_insns": 160,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x4E5700",
+      "len": 507,
+      "n_insns": 160,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e8ce4dcfcb274f3b",
+    "n_insns": 186,
+    "func_len": 466,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 932,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7C5BC0",
+      "len": 466,
+      "n_insns": 186,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7C7F20",
+      "len": 466,
+      "n_insns": 186,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "574e52fc26cf309b",
+    "n_insns": 91,
+    "func_len": 291,
+    "members": 3,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 873,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x600750",
+      "len": 291,
+      "n_insns": 91,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x600920",
+      "len": 291,
+      "n_insns": 91,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x612930",
+      "len": 291,
+      "n_insns": 91,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "169b2dfb86317029",
+    "n_insns": 110,
+    "func_len": 285,
+    "members": 3,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 855,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4E0B10",
+      "len": 285,
+      "n_insns": 110,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>[2]"
+      ]
+     },
+     {
+      "addr": "0x50FE20",
+      "len": 285,
+      "n_insns": 110,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>[2]"
+      ]
+     },
+     {
+      "addr": "0x6F24B0",
+      "len": 285,
+      "n_insns": 110,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "13b1cb3dea2682ce",
+    "n_insns": 123,
+    "func_len": 423,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 846,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x703B10",
+      "len": 423,
+      "n_insns": 123,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x703CC0",
+      "len": 423,
+      "n_insns": 123,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "a92f0f95544539b0",
+    "n_insns": 27,
+    "func_len": 149,
+    "members": 5,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 5,
+    "unmatched_bytes": 745,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x40DFB0",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E060",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E110",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E1C0",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x40E270",
+      "len": 149,
+      "n_insns": 27,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "aaa84616c9b6e542",
+    "n_insns": 90,
+    "func_len": 338,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 676,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x5B6F30",
+      "len": 338,
+      "n_insns": 90,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5BAB00",
+      "len": 338,
+      "n_insns": 90,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "135fc12863f994a7",
+    "n_insns": 84,
+    "func_len": 318,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 636,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779B50",
+      "len": 318,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779DD0",
+      "len": 318,
+      "n_insns": 84,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "68b62c4f18e36030",
+    "n_insns": 83,
+    "func_len": 317,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 634,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779C90",
+      "len": 317,
+      "n_insns": 83,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779F10",
+      "len": 317,
+      "n_insns": 83,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "f861c3084e4fc639",
+    "n_insns": 100,
+    "func_len": 296,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 592,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x77E1D0",
+      "len": 296,
+      "n_insns": 100,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x77E300",
+      "len": 296,
+      "n_insns": 100,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "9bc7de0b5ee0b863",
+    "n_insns": 186,
+    "func_len": 582,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 582,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x57BAA0",
+      "len": 582,
+      "n_insns": 186,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "c7cfdee33c34464e",
+    "n_insns": 78,
+    "func_len": 289,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 578,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x5B5EF0",
+      "len": 289,
+      "n_insns": 78,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5B9F30",
+      "len": 289,
+      "n_insns": 78,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "55c112109bf4d86f",
+    "n_insns": 84,
+    "func_len": 276,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 552,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56B780",
+      "len": 276,
+      "n_insns": 84,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x56B9A0",
+      "len": 276,
+      "n_insns": 84,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "1038c86f4da8d2f4",
+    "n_insns": 96,
+    "func_len": 273,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 546,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x47A1B0",
+      "len": 273,
+      "n_insns": 96,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x47A2D0",
+      "len": 273,
+      "n_insns": 96,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "70c490bb658ac51a",
+    "n_insns": 71,
+    "func_len": 271,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 542,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779830",
+      "len": 271,
+      "n_insns": 71,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779A40",
+      "len": 271,
+      "n_insns": 71,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "dd8b726906c84243",
+    "n_insns": 81,
+    "func_len": 264,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 528,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x5B6DA0",
+      "len": 264,
+      "n_insns": 81,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5BA970",
+      "len": 264,
+      "n_insns": 81,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "d4c0b5535d314497",
+    "n_insns": 82,
+    "func_len": 263,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 526,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56F7A0",
+      "len": 263,
+      "n_insns": 82,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x572C90",
+      "len": 263,
+      "n_insns": 82,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "55abbb072dc7fc94",
+    "n_insns": 82,
+    "func_len": 261,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 522,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x56F690",
+      "len": 261,
+      "n_insns": 82,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x572B80",
+      "len": 261,
+      "n_insns": 82,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "d95fb732e7612ff2",
+    "n_insns": 96,
+    "func_len": 254,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 508,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x5C34F0",
+      "len": 254,
+      "n_insns": 96,
+      "status": "unmatched",
+      "rtti": [
+       "MPCooperative[27]"
+      ]
+     },
+     {
+      "addr": "0x5C35F0",
+      "len": 254,
+      "n_insns": 96,
+      "status": "unmatched",
+      "rtti": [
+       "MPCooperative[28]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "21523ee1f2794471",
+    "n_insns": 62,
+    "func_len": 246,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 492,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x779730",
+      "len": 246,
+      "n_insns": 62,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x779940",
+      "len": 246,
+      "n_insns": 62,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8681d63b92bf0a05",
+    "n_insns": 76,
+    "func_len": 214,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 431,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x410CE0",
+      "len": 214,
+      "n_insns": 76,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7BC970",
+      "len": 217,
+      "n_insns": 76,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "83e90f3f4d8a0419",
+    "n_insns": 77,
+    "func_len": 213,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 426,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x770970",
+      "len": 213,
+      "n_insns": 77,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x770A50",
+      "len": 213,
+      "n_insns": 77,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "124d950e853c093e",
+    "n_insns": 76,
+    "func_len": 207,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 414,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x6392D0",
+      "len": 207,
+      "n_insns": 76,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x6393A0",
+      "len": 207,
+      "n_insns": 76,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "07028847ec2a0108",
+    "n_insns": 90,
+    "func_len": 202,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 404,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7B5B80",
+      "len": 202,
+      "n_insns": 90,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7B5CA0",
+      "len": 202,
+      "n_insns": 90,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "015fbf9c7b04417f",
+    "n_insns": 69,
+    "func_len": 199,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 398,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x770F10",
+      "len": 199,
+      "n_insns": 69,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x770FE0",
+      "len": 199,
+      "n_insns": 69,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "31ad68c3ab79a012",
+    "n_insns": 50,
+    "func_len": 194,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 388,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x690A10",
+      "len": 194,
+      "n_insns": 50,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x690AE0",
+      "len": 194,
+      "n_insns": 50,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e46f50525e31af58",
+    "n_insns": 65,
+    "func_len": 191,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 382,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x76FB90",
+      "len": 191,
+      "n_insns": 65,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x76FC50",
+      "len": 191,
+      "n_insns": 65,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "b83e6e8638e881ae",
+    "n_insns": 76,
+    "func_len": 184,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 368,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x42DCA0",
+      "len": 184,
+      "n_insns": 76,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x5AD870",
+      "len": 184,
+      "n_insns": 76,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "d40152a30b935de0",
+    "n_insns": 121,
+    "func_len": 366,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 366,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x6A01A0",
+      "len": 366,
+      "n_insns": 121,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "2bb26b56db4ce048",
+    "n_insns": 87,
+    "func_len": 321,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 321,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4A8D50",
+      "len": 321,
+      "n_insns": 87,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8aa3c48fee65b005",
+    "n_insns": 66,
+    "func_len": 154,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 308,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7C6E94",
+      "len": 154,
+      "n_insns": 66,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7C6F2E",
+      "len": 154,
+      "n_insns": 66,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "fc7b906f9c8711ce",
+    "n_insns": 114,
+    "func_len": 285,
+    "members": 4,
+    "matched": 0,
+    "partial": 3,
+    "unmatched": 1,
+    "unmatched_bytes": 285,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7659F0",
+      "len": 285,
+      "n_insns": 114,
+      "status": "unmatched",
+      "rtti": [
+       "DynamicVectorClass<rc_ptr<WorldDominationTour::Conflict>>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "ce4a2187815053dd",
+    "n_insns": 114,
+    "func_len": 282,
+    "members": 4,
+    "matched": 0,
+    "partial": 3,
+    "unmatched": 1,
+    "unmatched_bytes": 282,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x765840",
+      "len": 282,
+      "n_insns": 114,
+      "status": "unmatched",
+      "rtti": [
+       "VectorClass<rc_ptr<WorldDominationTour::Conflict>>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "c719e62e7da6eee1",
+    "n_insns": 43,
+    "func_len": 139,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 278,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4F26E0",
+      "len": 139,
+      "n_insns": 43,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x4F2770",
+      "len": 139,
+      "n_insns": 43,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "2c29e30b757d5e93",
+    "n_insns": 53,
+    "func_len": 117,
+    "members": 4,
+    "matched": 0,
+    "partial": 2,
+    "unmatched": 2,
+    "unmatched_bytes": 234,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4D0490",
+      "len": 117,
+      "n_insns": 53,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x680F70",
+      "len": 117,
+      "n_insns": 53,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "32761fecd7527b3d",
+    "n_insns": 30,
+    "func_len": 77,
+    "members": 3,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 3,
+    "unmatched_bytes": 231,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7AC6B0",
+      "len": 77,
+      "n_insns": 30,
+      "status": "unmatched",
+      "rtti": [
+       "ATL::CComObject<CChatEventSink>[2]"
+      ]
+     },
+     {
+      "addr": "0x7AC820",
+      "len": 77,
+      "n_insns": 30,
+      "status": "unmatched",
+      "rtti": [
+       "ATL::CComObject<CNetUtilEventSink>[2]"
+      ]
+     },
+     {
+      "addr": "0x7AD640",
+      "len": 77,
+      "n_insns": 30,
+      "status": "unmatched",
+      "rtti": [
+       "ATL::CComObject<CDownloadEventSink>[2]"
+      ]
+     }
+    ]
+   },
+   {
+    "hash": "d4017a58d9027ec4",
+    "n_insns": 34,
+    "func_len": 115,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 230,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x76DED0",
+      "len": 115,
+      "n_insns": 34,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x76DF50",
+      "len": 115,
+      "n_insns": 34,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "ac39589e725ae6cc",
+    "n_insns": 79,
+    "func_len": 227,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 227,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x69F0C0",
+      "len": 227,
+      "n_insns": 79,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "8581f5604218e0c3",
+    "n_insns": 27,
+    "func_len": 99,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 198,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7B0220",
+      "len": 99,
+      "n_insns": 27,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7B02A0",
+      "len": 99,
+      "n_insns": 27,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "2223954ee2702414",
+    "n_insns": 34,
+    "func_len": 91,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 182,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7BC1F0",
+      "len": 91,
+      "n_insns": 34,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x7BC250",
+      "len": 91,
+      "n_insns": 34,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "59d2d4c0cfe7006b",
+    "n_insns": 15,
+    "func_len": 87,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 174,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7539D0",
+      "len": 87,
+      "n_insns": 15,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x753A50",
+      "len": 87,
+      "n_insns": 15,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "e730b24d34c258f4",
+    "n_insns": 49,
+    "func_len": 142,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 142,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x69F5E0",
+      "len": 142,
+      "n_insns": 49,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "3c70157a42757da2",
+    "n_insns": 58,
+    "func_len": 137,
+    "members": 2,
+    "matched": 0,
+    "partial": 1,
+    "unmatched": 1,
+    "unmatched_bytes": 137,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x7BCA50",
+      "len": 137,
+      "n_insns": 58,
+      "status": "unmatched"
+     }
+    ]
+   },
+   {
+    "hash": "4f8eb4712d320b7b",
+    "n_insns": 10,
+    "func_len": 35,
+    "members": 2,
+    "matched": 0,
+    "partial": 0,
+    "unmatched": 2,
+    "unmatched_bytes": 70,
+    "recoverable_bytes": 0,
+    "exemplar": null,
+    "unmatched_members": [
+     {
+      "addr": "0x4FEEE0",
+      "len": 35,
+      "n_insns": 10,
+      "status": "unmatched"
+     },
+     {
+      "addr": "0x4FF210",
+      "len": 35,
+      "n_insns": 10,
+      "status": "unmatched"
+     }
+    ]
+   }
+  ]
+ }
+}
