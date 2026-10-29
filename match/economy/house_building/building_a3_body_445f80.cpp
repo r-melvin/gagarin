@@ -14,6 +14,8 @@
 
 #include "building_a3_views.h"
 #include "../../_layout/session_class.h"
+#include "../../_layout/super_class.h"
+#include "../../_layout/building_class.h"
 
 // The sound / animation name slot of a building type: nothing is played for a null or empty name.
 // FUN_00451890 is reached through BuildingA3View::FUN_00451890(name, id, a, b, c).
@@ -166,27 +168,27 @@ void BuildingA3View::vf_311(char flag)
         }
 
         if (Type->unknown_16CC) {
-            ++Owner->unknown_538C;
+            ++Owner->NumOrePurifiers;
         }
         if (Type->unknown_1564) {
-            Owner->unknown_164 += Type->unknown_1564;
+            Owner->InfantrySelfHeal += Type->unknown_1564;
         }
         if (Type->unknown_1568) {
-            Owner->unknown_168 += Type->unknown_1568;
+            Owner->UnitsSelfHeal += Type->unknown_1568;
         }
         if (Type->unknown_16CB) {
-            Owner->unknown_2D4 += Type->unknown_1780;
+            Owner->AirportDocks += Type->unknown_1780;
             DAT_0087F7E8.FUN_006A60E0(3);
         }
 
         // Super weapon timers of the owner that belong to this type: announce how long they still have to run.
         if (Type->unknown_16F0 != -1) {
-            for (int i = 0; i < Owner->unknown_264; i++) {
-                BA3SuperView* super = Owner->unknown_258[i];
-                if (super->unknown_28->unknown_B4 == Type->unknown_16F0) {
-                    int remaining = super->unknown_38;
-                    if (super->unknown_30 != -1) {
-                        int elapsed = DAT_00A8ED84 - super->unknown_30;
+            for (int i = 0; i < Owner->Supers.Count; i++) {
+                SuperClass* super = Owner->Supers.Items[i];
+                if (super->Type->Type == Type->unknown_16F0) {
+                    int remaining = super->RechargeTimer.TimeLeft;
+                    if (super->RechargeTimer.StartTime != -1) {
+                        int elapsed = DAT_00A8ED84 - super->RechargeTimer.StartTime;
                         if (elapsed < remaining) {
                             remaining = remaining - elapsed;
                         } else {
@@ -272,7 +274,7 @@ void BuildingA3View::vf_311(char flag)
         FUN_004547C0();
     }
 
-    if (Type->unknown_5EE && !Owner->FUN_0050B6F0()) {
+    if (Type->unknown_5EE && !Owner->IsControlledByCurrentPlayer()) {
         if (!flag) {
             vf_290(0, 0, 1, DAT_00A83D4C, 0);
             HBCoord where = Location;
@@ -285,9 +287,9 @@ void BuildingA3View::vf_311(char flag)
     }
 
     // The EVA announcement of a super weapon building.
-    if (!Owner->FUN_0050B6F0() && !Owner->FUN_004F9A50(DAT_00A83D4C) && DAT_00A8B538 == 0 && Session_00A8B238.GameMode
+    if (!Owner->IsControlledByCurrentPlayer() && !Owner->IsAlliedWith(DAT_00A83D4C) && DAT_00A8B538 == 0 && Session_00A8B238.GameMode
         && (Type->unknown_16F0 == -1 || DAT_00A83CBC[Type->unknown_16F0]->unknown_28->unknown_C8 == 0
-            || Owner->unknown_5550.FUN_0049FAE0(DAT_00A83CBC[Type->unknown_16F0]->unknown_28->unknown_C8->unknown_DF8) != 0)) {
+            || Owner->ActiveBuildingTypes.FUN_0049FAE0(DAT_00A83CBC[Type->unknown_16F0]->unknown_28->unknown_C8->unknown_DF8) != 0)) {
         const char* eva;
         switch (Type->unknown_16F0) {
         case 0:
@@ -331,10 +333,10 @@ afterEva:
         }
     }
 
-    Owner->unknown_1FC = 1;
+    Owner->RecheckTechTree = 1;
     unknown_6E4 = 1;
-    Owner->unknown_5778 = 1;
-    Owner->unknown_5779 = 1;
+    Owner->RecheckPower = 1;
+    Owner->RecheckRadar = 1;
     if (vf_33()->unknown_CD1) {
         vf_261();
     }

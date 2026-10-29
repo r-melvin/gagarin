@@ -49475,7 +49475,7 @@
  {
   "tu": "match/economy/house_building/building_b_part4.cpp",
   "addr": "0x456750",
-  "sym": "?vf_76@BuildingBView@@UAEXUBuildingBColor@@@Z",
+  "sym": "?vf_76@BuildingBView@@UAEXUColorStruct@@@Z",
   "len": "0x21a",
   "name": "BuildingClass::vf_76",
   "status": "matched",

@@ -2163,7 +2163,7 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
             } else {
                 keep = unknown_41A || vf_202() || BuildingBGlobal_00B73550 == 0
                     || (Session_00A8B238.GameMode != 0 && Owner != 0 && BuildingBPlayer != 0
-                        && BuildingBPlayer->Func_4F9A50(Owner) && Owner->Func_4F9A50(BuildingBPlayer));
+                        && BuildingBPlayer->IsAlliedWith(Owner) && Owner->IsAlliedWith(BuildingBPlayer));
             }
             if (keep)
                 return 3;
@@ -2245,7 +2245,7 @@ void BuildingBView::vf_260(bool refresh)
         vf_280(0);
     if (HasCloakingData && Type->unknown_16C7) {
     BuildingBSurfaceView* surface = BuildingBSurface;
-    int owner = Owner->unknown_30;
+    int owner = Owner->ArrayIndex;
     int size = surface->vf_31();
     int half = size / 2;
     if (HasCloakingData > 0) {
@@ -2276,7 +2276,7 @@ void BuildingBView::vf_260(bool refresh)
                         object->vf_264();
                 }
                 BuildingBView* building = target->Func_47C520();
-                if (building && building->Owner->unknown_30 == owner) {
+                if (building && building->Owner->ArrayIndex == owner) {
                                         HBCell there = BuildingBCellOf(*building->vf_18(&tmp));
                     if (there.X == cell.X && there.Y == cell.Y) {
                         CloakRadius = CloakRadius - 1;
@@ -2315,7 +2315,7 @@ void BuildingBView::vf_260(bool refresh)
                         object->vf_264();
                 }
                 BuildingBView* building = target->Func_47C520();
-                if (building && building->Owner->unknown_30 == owner) {
+                if (building && building->Owner->ArrayIndex == owner) {
                                         HBCell there = BuildingBCellOf(*building->vf_18(&tmp));
                     if (there.X == at.X && there.Y == at.Y) {
                         if (!refresh) {
@@ -2366,17 +2366,17 @@ bool BuildingBView::vf_212()
         goto refuse;
     if (Health == 0)
         goto refuse;
-    if (Type->unknown_1573 && Type->unknown_EE4 > 0 && Owner->Func_4FCE30() < 1.0) {
+    if (Type->unknown_1573 && Type->unknown_EE4 > 0 && Owner->FUN_004FCE30() < 1.0) {
         if (Overpowerers.Count < two)
             goto refuse;
     }
     {
         BuildingBTypeView* type = Type;
         if (type->unknown_1574) {
-            BuildingBHouseView* owner = Owner;
-            if (owner->unknown_timer_2A4.GetTimeLeft() != 0)
+            HouseClass* owner = Owner;
+            if (owner->PowerBlackoutTimer.GetTimeLeft() != 0)
                 goto refuse;
-            if (owner->unknown_577B)
+            if (owner->IsBeingDrained)
                 goto refuse;
         }
         if (type->unknown_1552 && !HasEngineer)
@@ -2400,7 +2400,7 @@ void BuildingBView::vf_318(HBCell cell)
 {
     int radius = Type->unknown_1707;
     int radiusSq = radius * radius;
-    int owner = Owner->unknown_30;
+    int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         HBCoord tmp;
         cell = BuildingBCellOf(*vf_18(&tmp));
@@ -2438,7 +2438,7 @@ void BuildingBView::vf_317(HBCell cell)
         return;
     int radius = Type->unknown_5F0;
     int radiusSq = radius * radius;
-    int owner = Owner->unknown_30;
+    int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         HBCoord tmp;
         cell = BuildingBCellOf(*vf_18(&tmp));
@@ -2474,7 +2474,7 @@ void BuildingBView::vf_320(HBCell cell)
 {
     int radius = Type->unknown_5F4;
     int radiusSq = radius * radius;
-    int owner = Owner->unknown_30;
+    int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         HBCoord tmp;
         cell = BuildingBCellOf(*vf_18(&tmp));
@@ -2506,7 +2506,7 @@ void BuildingBView::vf_319(HBCell cell)
         return;
     int radius = Type->unknown_5F4;
     int radiusSq = radius * radius;
-    int owner = Owner->unknown_30;
+    int owner = Owner->ArrayIndex;
     if (cell == BuildingBEmptyCell) {
         HBCoord tmp;
         cell = BuildingBCellOf(*vf_18(&tmp));

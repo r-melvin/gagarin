@@ -14,6 +14,7 @@
 #include "../../_layout/session_class.h"
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
+#include "../../_layout/house_class.h"
 #include "../../core/cell_step_tables.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
@@ -26,10 +27,10 @@ class BA3UnitTypeView;
 class BA3TechnoView;
 class BA3UnitView;
 struct BA3LightView;
-struct BA3SuperView;
+class SuperClass;
 struct BA3SpotView;
 class BA3TypeView;
-class BA3HouseView;
+class HouseClass;
 class BuildingA3View;
 class ParticleSystemTypeClass;
 class BA3AnimTypeView;
@@ -259,7 +260,7 @@ public:
     // FUNCTION: GAMEMD 0x424C90 (read-only here)
     void FUN_00424C90(void* other);
     // FUNCTION: GAMEMD 0x424CA0 (read-only here)
-    void FUN_00424CA0(BA3HouseView* owner);
+    void FUN_00424CA0(HouseClass* owner);
 };
 GG_STATIC_ASSERT(offsetof(BA3AnimView, unknown_D4) == 0xD4);
 GG_STATIC_ASSERT(offsetof(BA3AnimView, unknown_DC) == 0xDC);
@@ -327,6 +328,7 @@ struct BA3MapView
     HBCell* FUN_0056DC20(HBCoord* start, HBCell* cell, int a, int b, int c, char d, int e, int f, char g, char h, char i, char j, HBCell* k, char l, char m);
     // FUNCTION: GAMEMD 0x5657A0 (read-only here)
     BA3ObjView* FUN_005657A0(HBCell* cell);
+    BA3ObjView* FUN_005657A0(CellStruct* cell);
     // FUNCTION: GAMEMD 0x4ACA10 (read-only here)
     HBCoord* FUN_004ACA10(HBCoord* out, HBCoord* in, char flag);
 };
@@ -400,74 +402,6 @@ public:
 
 };
 
-// The owning house, BuildingClass +0x21C (partial; the HouseClass name is YRpp-cross-checked).
-struct BA3HouseView
-{
-    char _pad_0000[0x24];   // +0x0000
-    BA3IntervalView unknown_24;   // +0x0024
-    char _pad_0028[0x44];   // +0x0028
-    BuildingA3View** unknown_6C;   // +0x006C
-    char _pad_0070[0x8];   // +0x0070
-    int unknown_78;   // +0x0078
-    char _pad_007C[0xE8];   // +0x007C
-    int unknown_164;   // +0x0164
-    int unknown_168;   // +0x0168
-    char _pad_016C[0x80];   // +0x016C
-    unsigned char unknown_1EC;   // +0x01EC
-    char _pad_01ED[0xF];   // +0x01ED
-    unsigned char unknown_1FC;   // +0x01FC
-    char _pad_01FD[0x5B];   // +0x01FD
-    BA3SuperView** unknown_258;   // +0x0258
-    char _pad_025C[0x8];   // +0x025C
-    int unknown_264;   // +0x0264
-    char _pad_0268[0x6C];   // +0x0268
-    int unknown_2D4;   // +0x02D4
-    char _pad_02D8[0x1C];   // +0x02D8
-    int unknown_2F4;   // +0x02F4
-    char _pad_02F8[0x4];   // +0x02F8
-    BA3FloatView unknown_2FC;   // +0x02FC
-    char _pad_02FD[0x508F];   // +0x02FD
-    int unknown_538C;   // +0x538C
-    char _pad_5390[0x154];   // +0x5390
-    unsigned int unknown_54E4;   // +0x54E4
-    char _pad_54E8[0x68];   // +0x54E8
-    HBListView unknown_5550;   // +0x5550
-    char _pad_5551[0x227];   // +0x5551
-    unsigned char unknown_5778;   // +0x5778
-    unsigned char unknown_5779;   // +0x5779
-    char _pad_577A[0x6];   // +0x577A
-    HBCell unknown_5780;   // +0x5780
-    HBCell unknown_5784;   // +0x5784
-    // FUNCTION: GAMEMD 0x50B6F0 (read-only here)
-    bool FUN_0050B6F0();
-    // FUNCTION: GAMEMD 0x50B730 (read-only here)
-    bool FUN_0050B730();
-    // FUNCTION: GAMEMD 0x4F9A50 (read-only here)
-    bool FUN_004F9A50(BA3HouseView* other);
-    // FUNCTION: GAMEMD 0x4F9950 (read-only here)
-    void FUN_004F9950(int value);
-    // FUNCTION: GAMEMD 0x53A130 (read-only here)
-    bool FUN_0053A130();
-};
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_6C) == 0x6C);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_78) == 0x78);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_164) == 0x164);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_168) == 0x168);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_1EC) == 0x1EC);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_1FC) == 0x1FC);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_258) == 0x258);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_264) == 0x264);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_2D4) == 0x2D4);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_2F4) == 0x2F4);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_2FC) == 0x2FC);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_538C) == 0x538C);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_54E4) == 0x54E4);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_5550) == 0x5550);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_5778) == 0x5778);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_5779) == 0x5779);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_5780) == 0x5780);
-GG_STATIC_ASSERT(offsetof(BA3HouseView, unknown_5784) == 0x5784);
 
 // Sub-object at BuildingTypeClass +0x510 (only a field at +0x10 is read).
 struct BA3TypeSubView
@@ -491,27 +425,6 @@ GG_STATIC_ASSERT(offsetof(BA3Timer, Start) == 0x0);
 GG_STATIC_ASSERT(offsetof(BA3Timer, unknown_04) == 0x4);
 GG_STATIC_ASSERT(offsetof(BA3Timer, Delay) == 0x8);
 
-// Type of a super weapon (partial).
-struct BA3SuperTypeView
-{
-    char _pad_0000[0xB4];   // +0x0000
-    int unknown_B4;   // +0x00B4
-};
-GG_STATIC_ASSERT(offsetof(BA3SuperTypeView, unknown_B4) == 0xB4);
-
-// A super weapon object of the owning house (partial).
-struct BA3SuperView
-{
-    char _pad_0000[0x28];   // +0x0000
-    BA3SuperTypeView* unknown_28;   // +0x0028
-    char _pad_002C[0x4];   // +0x002C
-    int unknown_30;   // +0x0030
-    char _pad_0034[0x4];   // +0x0034
-    int unknown_38;   // +0x0038
-};
-GG_STATIC_ASSERT(offsetof(BA3SuperView, unknown_28) == 0x28);
-GG_STATIC_ASSERT(offsetof(BA3SuperView, unknown_30) == 0x30);
-GG_STATIC_ASSERT(offsetof(BA3SuperView, unknown_38) == 0x38);
 
 // A light / spotlight object (opaque); one method is reached.
 struct BA3LightView
@@ -579,7 +492,7 @@ public:
     virtual int vf_43();   // slot 43, +0xAC
     virtual void vt_0B0();
     virtual void vt_0B4();
-    virtual int vf_46(BA3HouseView* owner, int flag);   // slot 46, +0xB8
+    virtual int vf_46(HouseClass* owner, int flag);   // slot 46, +0xB8
 
     char _pad_0004[0x5B0];   // +0x0004
     int unknown_5B4;   // +0x05B4
@@ -762,7 +675,7 @@ struct BA3UnitMem
 {
     char _pad_0000[0x8E8];   // +0x0000
     // FUNCTION: GAMEMD 0x7353C0 (read-only here) - the constructor, returns the object.
-    BA3UnitView* FUN_007353C0(BA3UnitTypeView* type, BA3HouseView* owner);
+    BA3UnitView* FUN_007353C0(BA3UnitTypeView* type, HouseClass* owner);
 };
 GG_STATIC_ASSERT(sizeof(BA3UnitMem) == 0x8E8);
 
@@ -771,7 +684,7 @@ struct BA3SpawnMem
 {
     char _pad_0000[0x6D8];   // +0x0000
     // FUNCTION: GAMEMD 0x413D20 (read-only here) - the constructor, returns the object.
-    BA3UnitView* FUN_00413D20(BA3UnitTypeView* type, BA3HouseView* owner);
+    BA3UnitView* FUN_00413D20(BA3UnitTypeView* type, HouseClass* owner);
 };
 GG_STATIC_ASSERT(sizeof(BA3SpawnMem) == 0x6D8);
 
@@ -1244,7 +1157,7 @@ public:
     BA3FlashView unknown_150;   // +0x0150
     char _pad_0151[0xC7];   // +0x0151
     BA3ObjView* unknown_218;   // +0x0218
-    BA3HouseView* unknown_21C;   // +0x021C
+    HouseClass* unknown_21C;   // +0x021C
     char _pad_0220[0x1B0];   // +0x0220
     unsigned char unknown_3D0;   // +0x03D0
     char _pad_03D1[0x67];   // +0x03D1
@@ -1478,7 +1391,7 @@ public:
     virtual void vt_078();
     virtual void vt_07C();
     virtual void vt_080();
-    virtual int vf_33(BA3HouseView* owner);   // slot 33, +0x84
+    virtual int vf_33(HouseClass* owner);   // slot 33, +0x84
 
     char _pad_0004[0x1F4];   // +0x0004
     char unknown_1F8[1];   // +0x01F8
@@ -2049,8 +1962,8 @@ public:
     virtual void vt_47C();
     virtual void vf_288(void* target, int arg);   // slot 288, +0x480
     virtual void vf_289(bool flag, int unused);   // slot 289, +0x484
-    virtual void vf_290(int a, int b, int c, BA3HouseView* house, int d);   // slot 290, +0x488
-    virtual void vf_291(int a, int b, int c, BA3HouseView* house);   // slot 291, +0x48C
+    virtual void vf_290(int a, int b, int c, HouseClass* house, int d);   // slot 290, +0x488
+    virtual void vf_291(int a, int b, int c, HouseClass* house);   // slot 291, +0x48C
     virtual void vt_490();
     virtual void vt_494();
     virtual void vt_498();
@@ -2102,7 +2015,7 @@ public:
     int unknown_210;   // +0x0210
     char _pad_0214[0x4];   // +0x0214
     BA3ObjView* unknown_218;   // +0x0218
-    BA3HouseView* Owner;   // +0x021C
+    HouseClass* Owner;   // +0x021C
     char _pad_0220[0x40];   // +0x0220
     int unknown_260;   // +0x0260
     char _pad_0264[0x4];   // +0x0264
@@ -2291,7 +2204,7 @@ template<class T> inline bool BA3AddItem(DynamicVectorClass<T>& v, const T& item
 }
 
 // GLOBAL: GAMEMD 0xA83D4C (the local player's house), 0xA8ED84, 0xA8B230 (random source), 0x89C848 (zero coordinate)
-extern BA3HouseView* DAT_00A83D4C;
+extern HouseClass* DAT_00A83D4C;
 extern int DAT_00A8ED84;
 extern HBSourceView* DAT_00A8B230;
 extern HBCoord DAT_0089C848;

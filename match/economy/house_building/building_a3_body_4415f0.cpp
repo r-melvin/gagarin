@@ -14,6 +14,7 @@
 // with the copy of Location first, the vector item added by value / by reference, signed and unsigned moduli.
 
 #include "building_a3_views.h"
+#include "../../_layout/building_class.h"
 
 // One cell of the 256-lepton grid as its centre lepton: the retail code divides by 256 (rounding towards zero),
 // narrows to 16 bits, and scales back.
@@ -41,11 +42,11 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
     if (unknown_210) {
         unknown_210 = 0;
         if (Type->unknown_16A4) {
-            Owner->unknown_54E4 = 0;
-            for (int i = 0; i < Owner->unknown_78; ++i) {
-                BuildingA3View* other = Owner->unknown_6C[i];
-                if (other && !other->unknown_81 && other->Type->unknown_16A4) {
-                    Owner->unknown_54E4 |= other->unknown_210;
+            Owner->RadarVisibleTo = 0;
+            for (int i = 0; i < Owner->Buildings.Count; ++i) {
+                BuildingClass* other = Owner->Buildings.Items[i];
+                if (other && !other->InLimbo && other->Type->bools_16A4[0]) {
+                    Owner->RadarVisibleTo |= other->DisplayProductionTo;
                 }
             }
             DAT_0087F7E8.FUN_004F42F0(2);
@@ -66,7 +67,7 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
         FUN_00452A40(1);
     }
 
-    if (Type->unknown_5EE && !Owner->FUN_0050B6F0()) {
+    if (Type->unknown_5EE && !Owner->IsControlledByCurrentPlayer()) {
         vf_291(0, 0, 1, DAT_00A83D4C);
     }
 
@@ -146,7 +147,7 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
     while (unknown_33C.FUN_006C9650() >= DAT_007E2AC8) {
         int index = unknown_33C.FUN_006C9820();
         unknown_33C.FUN_006C96B0(1.0f, index);
-        Owner->unknown_2FC.FUN_006C96B0(1.0f, index);
+        Owner->OwnedTiberium.RemoveAmount(1.0f, index);
         int distance = DAT_00A8B230->Counter.FUN_0065C7E0(0x100, 0x300);
         HBCoord loc = Location;
         HBCoord shot = *FUN_0049F420(&scatter, &loc, distance, 1);

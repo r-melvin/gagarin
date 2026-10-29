@@ -89,11 +89,11 @@ int BuildingA3View::vf_143()
                         }
                         if (Type->unknown_16AF) {
                             FUN_007509E0(RulesInstance->unknown_274, &vf_18(), 0);
-                            if (passenger->unknown_21C->unknown_1EC) {
+                            if (passenger->unknown_21C->IsHumanPlayer) {
                                 passenger->unknown_68F = 0;
                             }
                             if (!passenger->unknown_438) {
-                                passenger->unknown_21C->unknown_2F4++;
+                                passenger->unknown_21C->OwnedInfantry++;
                                 passenger->unknown_438 = 1;
                             }
                             passenger->unknown_439 = 0;
@@ -101,7 +101,7 @@ int BuildingA3View::vf_143()
                         passenger->vf_122(2, 0);
                         passenger->vf_288(DAT_0087F7E8.FUN_005657A0(first ? &copyB : &copyA), 1);
                         if (Type->unknown_EE8 > 0) {
-                            Owner->unknown_5778 = 1;
+                            Owner->RecheckPower = 1;
                         }
                         goto done;
                     }
@@ -304,7 +304,7 @@ int BuildingA3View::vf_143()
                     vf_261();
                     unknown_268 = 1;
                     unknown_669 = 1;
-                    Owner->unknown_5778 = 1;
+                    Owner->RecheckPower = 1;
                 } else {
                     unknown_26C = Type->unknown_CD2;
                     vf_261();
@@ -315,7 +315,7 @@ int BuildingA3View::vf_143()
                 unknown_669 = 0;
                 unknown_26C = Type->unknown_CD2;
                 vf_261();
-                Owner->unknown_5778 = 1;
+                Owner->RecheckPower = 1;
             }
         }
         vf_122(5, 0);

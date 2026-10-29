@@ -84,7 +84,7 @@ int BuildingA3View::vf_147()
                 unknown_620.Stage = 0;
                 switch (vf_157(0x1C)) {
                 case 0x21:
-                    if (Owner->FUN_0050B6F0()) {
+                    if (Owner->IsControlledByCurrentPlayer()) {
                         HBCell cellTmp;
                         HBCell* cell = vf_110(&cellTmp);
                         if (((BA3EvaView*)8)->FUN_0065FA70(*cell)) {
@@ -174,7 +174,7 @@ int BuildingA3View::vf_147()
                 }
                 return 3;
             }
-            if (!Owner->FUN_0053A130()) {
+            if (!Owner->IonSensitivesShouldBeOffline()) {
                 (*hold)->vf_22();
             }
             if (persist.p) {
@@ -268,7 +268,7 @@ int BuildingA3View::vf_147()
                     Status = 0;
                     unknown_6DD = 1;
                 }
-            } else if (!Owner->FUN_0053A130()) {
+            } else if (!Owner->IonSensitivesShouldBeOffline()) {
                 if (!FUN_0065AD30(0)->unknown_674->vf_24()) {
                     FUN_0065AD30(0)->unknown_674->vf_22();
                 }
@@ -330,7 +330,7 @@ int BuildingA3View::vf_147()
                             return 1;
                         }
                     } else {
-                        if (unknown_41A && Owner->unknown_24.vf_6() == 0) {
+                        if (unknown_41A && Owner->vf_06() == 0) {
                             FUN_00752700(s_EVA_InsufficientFunds_00819044, -1, -1);
                         }
                         FUN_00451E40(8);

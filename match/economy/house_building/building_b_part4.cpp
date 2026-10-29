@@ -29,7 +29,7 @@ void BuildingBView::vf_295()
 }
 
 // The function-local white of the flashing glow; the empty destructor is registered with atexit (0x456970 is a RET).
-class BuildingBWhite : public BuildingBColor
+class BuildingBWhite : public ColorStruct
 {
 public:
     BuildingBWhite()
@@ -42,28 +42,28 @@ public:
 };
 
 // FUNCTION: GAMEMD 0x456750
-void BuildingBView::vf_76(BuildingBColor tint)
+void BuildingBView::vf_76(ColorStruct tint)
 {
     int level = Func_4566B0();
-    if (level > 0 && HasPower && Owner->Func_50B6F0()) {
+    if (level > 0 && HasPower && Owner->IsControlledByCurrentPlayer()) {
         if (Type->unknown_1708) {
             static BuildingBWhite white;
-            tint = Owner->unknown_color_56F9;
+            tint = Owner->Color;
             unsigned int phase = (timeGetTime() >> 1) & 0x3FF;
             if (!(phase & 0x200)) {
                 if (!(phase & 0x100))
-                    tint.Func_6612C0(~phase & 0xFF, &white);
+                    tint.FUN_006612C0(~phase & 0xFF, white);
                 HBCoord tmp;
                 BuildingBFunc_456980(0, 0, *vf_18(&tmp), tint, (float)level, 0, 1);
             }
             unsigned int spark = (unsigned int)((level + 0.5) / BuildingBFunc_4CAC40(2.0) * 60.0) * phase >> 10;
             if (spark > 0x20) {
                 HBCoord tmp;
-                BuildingBFunc_456980(0, 0, *vf_18(&tmp), Owner->unknown_color_56F9, (float)spark, 1, 1);
+                BuildingBFunc_456980(0, 0, *vf_18(&tmp), Owner->Color, (float)spark, 1, 1);
             }
         } else {
             HBCoord tmp;
-            BuildingBFunc_456980(tint.R, 1, *vf_18(&tmp), Owner->unknown_color_56F9, (float)level, 0, 1);
+            BuildingBFunc_456980(tint.R, 1, *vf_18(&tmp), Owner->Color, (float)level, 0, 1);
         }
     }
 }
@@ -121,7 +121,7 @@ bool BuildingBView::vf_201(int* flag)
         return false;
     if (InLimbo)
         return false;
-    if (Owner->Func_50B6F0())
+    if (Owner->IsControlledByCurrentPlayer())
         return unknown_41B ? true : false;
     {
         HBCoord tmp;
@@ -148,7 +148,7 @@ bool BuildingBView::vf_201(int* flag)
     if (unknown_220 != 2 && Translucency != 0xF && !IsFogged && !blocked)
         return true;
     if (vf_202()) {
-        if (!BuildingBPlayer->Func_4F9A50(Owner) && !IsFogged && !blocked)
+        if (!BuildingBPlayer->IsAlliedWith(Owner) && !IsFogged && !blocked)
             *flag = 1;
         return true;
     }

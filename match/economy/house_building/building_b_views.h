@@ -26,10 +26,12 @@
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "building_b_shared.h"
+#include "../../_layout/house_class.h"
+#include "../../_layout/color_struct.h"
 
 class BuildingBView;
 class BuildingBTypeView;
-class BuildingBHouseView;
+class HouseClass;
 class BuildingBSurfaceView;
 class BuildingBTargetObjView;
 class BuildingBAnimObjView;
@@ -110,19 +112,6 @@ public:
     void Func_7BB920(int x, int y, int radius, BuildingBColor16 color);
 };
 
-// A 24-bit colour (3 bytes).
-struct BuildingBColor
-{
-public:
-    void Func_6612C0(int amount, const BuildingBColor* target);
-    unsigned char R;   // +0x0
-    unsigned char G;   // +0x1
-    unsigned char B;   // +0x2
-};
-GG_STATIC_ASSERT(offsetof(BuildingBColor, R) == 0x0);
-GG_STATIC_ASSERT(offsetof(BuildingBColor, G) == 0x1);
-GG_STATIC_ASSERT(offsetof(BuildingBColor, B) == 0x2);
-GG_STATIC_ASSERT(sizeof(BuildingBColor) == 0x3);
 
 // Opaque data object of an anim (read-only here).
 class BuildingBAnimDataView
@@ -699,7 +688,7 @@ public:
     virtual void unused_slot_43();
     virtual void unused_slot_44();
     virtual void unused_slot_45();
-    virtual int vf_46(BuildingBHouseView* house, int a);   // slot 46 (+0xB8)
+    virtual int vf_46(HouseClass* house, int a);   // slot 46 (+0xB8)
     virtual void unused_slot_47();
     virtual int vf_48();   // slot 48 (+0xC0)
     int Func_45EC90();
@@ -817,31 +806,6 @@ GG_STATIC_ASSERT(offsetof(BuildingBTypeView, unknown_16C6) == 0x16C6);
 GG_STATIC_ASSERT(offsetof(BuildingBTypeView, unknown_16C7) == 0x16C7);
 GG_STATIC_ASSERT(offsetof(BuildingBTypeView, unknown_1707) == 0x1707);
 GG_STATIC_ASSERT(offsetof(BuildingBTypeView, unknown_1708) == 0x1708);
-
-// Partial view of the owning HouseClass (BuildingClass+0x21C).
-class BuildingBHouseView
-{
-public:
-    bool Func_50B6F0();
-    double Func_4FCE30();
-    bool Func_50B730();
-    bool Func_4F9A50(BuildingBHouseView* other);
-    char unknown_00[0x30];   // +0x0
-    int unknown_30;   // +0x30
-    char unknown_34[0x1B4];   // +0x34
-    int SideIndex;   // +0x1E8
-    char unknown_1EC[0xB8];   // +0x1EC
-    BuildingBTimer unknown_timer_2A4;   // +0x2A4
-    char unknown_2B0[0x5449];   // +0x2B0
-    BuildingBColor unknown_color_56F9;   // +0x56F9
-    char unknown_56FC[0x7F];   // +0x56FC
-    bool unknown_577B;   // +0x577B
-};
-GG_STATIC_ASSERT(offsetof(BuildingBHouseView, unknown_30) == 0x30);
-GG_STATIC_ASSERT(offsetof(BuildingBHouseView, SideIndex) == 0x1E8);
-GG_STATIC_ASSERT(offsetof(BuildingBHouseView, unknown_timer_2A4) == 0x2A4);
-GG_STATIC_ASSERT(offsetof(BuildingBHouseView, unknown_color_56F9) == 0x56F9);
-GG_STATIC_ASSERT(offsetof(BuildingBHouseView, unknown_577B) == 0x577B);
 
 // VeterancyStruct embedded at +0x150 of a techno (4 bytes).
 struct BuildingBVeterancyView
@@ -1236,7 +1200,7 @@ public:
     virtual void unused_slot_73();
     virtual void unused_slot_74();
     virtual HBRect* vf_75(HBRect* out);   // slot 75 (+0x12C)
-    virtual void vf_76(BuildingBColor tint);   // slot 76 (+0x130)
+    virtual void vf_76(ColorStruct tint);   // slot 76 (+0x130)
     virtual void unused_slot_77();
     virtual void unused_slot_78();
     virtual void unused_slot_79();
@@ -1523,7 +1487,7 @@ public:
     HBPoint2D RadarPosition;   // +0x208
     char unknown_210[0x8];   // +0x210
     BuildingBAbstractView* unknown_218;   // +0x218
-    BuildingBHouseView* Owner;   // +0x21C
+    HouseClass* Owner;   // +0x21C
     int unknown_220;   // +0x220
     char unknown_224[0x70];   // +0x224
     BuildingBTargetObjView* unknown_294;   // +0x294
@@ -1680,7 +1644,7 @@ GG_STATIC_ASSERT(sizeof(BuildingBView) == 0x720);
 
 
 // FUNCTION: GAMEMD 0x456980 (read-only here; __fastcall, flags in cl/dl)
-void BuildingBFunc_456980(char a, char b, HBCoord at, BuildingBColor color, float intensity, char c, char d);
+void BuildingBFunc_456980(char a, char b, HBCoord at, ColorStruct color, float intensity, char c, char d);
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 // FUNCTION: GAMEMD 0x4CAC40 (read-only here; cdecl, double argument)
 double __cdecl BuildingBFunc_4CAC40(double value);
@@ -1776,7 +1740,7 @@ extern BuildingBRulesView* BuildingBRules;
 // GLOBAL: GAMEMD 0xB73550
 extern int BuildingBGlobal_00B73550;
 // GLOBAL: GAMEMD 0xA83D4C (the local player's house)
-extern BuildingBHouseView* BuildingBPlayer;
+extern HouseClass* BuildingBPlayer;
 // GLOBAL: GAMEMD 0xA8B320
 extern bool BuildingBGlobal_00A8B320;
 // GLOBAL: GAMEMD 0x87F7E8 (the map object; its address is passed in ECX)

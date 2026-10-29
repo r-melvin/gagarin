@@ -37,8 +37,8 @@ int BuildingA3View::vf_148()
             unknown_6DD = 0;
             FUN_00447780(2);
             Status = 1;
-            BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->unknown_5784);
-            BA3HouseView* owner = Owner;
+            BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->NukeTarget);
+            HouseClass* owner = Owner;
             const BA3AnimTypeView* warning = DAT_008B4154[FUN_00427CB0(s_PSIWARN_0081907C)];
             HBCoord where = cell->vf_18();
             BA3AnimMem* mem = new BA3AnimMem;
@@ -61,7 +61,7 @@ int BuildingA3View::vf_148()
         case 2: {
             HBCoord tmp;
             vf_18();
-            BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->unknown_5784);
+            BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->NukeTarget);
             BA3LaunchInfoView* info = DAT_00A8E334[unknown_5F8]->unknown_9C;
             BA3MissileView* missile = FUN_0046B050(info->unknown_A0, cell, this, info->unknown_A4, info->unknown_AC, 0xFF, 1);
             if (missile) {
@@ -108,15 +108,15 @@ int BuildingA3View::vf_148()
     }
 
     if (unknown_5F8 != -1) {
-        vf_243(DAT_0087F7E8.FUN_005657A0(&Owner->unknown_5784), 0);
+        vf_243(DAT_0087F7E8.FUN_005657A0(&Owner->NukeTarget), 0);
         vf_122(5, 0);
     }
 
     if (Type->unknown_16C3) {
         switch (Status) {
         case 0: {
-            HBDir dirA = vf_314(DAT_0087F7E8.FUN_005657A0(&Owner->unknown_5780));
-            HBDir dirB = vf_178(DAT_0087F7E8.FUN_005657A0(&Owner->unknown_5780));
+            HBDir dirA = vf_314(DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget));
+            HBDir dirB = vf_178(DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget));
             if (abs(0) < abs((short)(Facing388.FUN_004C93D0().Raw - dirA.Raw))) {
                 Facing388.FUN_004C9220(&dirA);
                 return 1;
@@ -145,9 +145,9 @@ int BuildingA3View::vf_148()
         }
         case 2: {
             BA3WeaponTypeView* weapon = vf_254(0)->First;
-            BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->unknown_5780);
-            BA3ObjView* targetCell = DAT_0087F7E8.FUN_005657A0(&Owner->unknown_5780);
-            if (DAT_00A8ED6B || (Owner->unknown_5780.X == DAT_0089C818.X && Owner->unknown_5780.Y == DAT_0089C818.Y)) {
+            BA3ObjView* cell = DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget);
+            BA3ObjView* targetCell = DAT_0087F7E8.FUN_005657A0(&Owner->EMPTarget);
+            if (DAT_00A8ED6B || (Owner->EMPTarget.X == DAT_0089C818.X && Owner->EMPTarget.Y == DAT_0089C818.Y)) {
                 FUN_00447780(1);
                 vf_122(5, 0);
                 return 0x3C;
@@ -155,12 +155,12 @@ int BuildingA3View::vf_148()
             Facing370.FUN_004C9220(&vf_178(cell));
             HBCoord muzzle = vf_44(0, zero);
             HBCoord aim;
-            aim.X = Owner->unknown_5780.X * 256 + 0x80;
-            aim.Y = Owner->unknown_5780.Y * 256 + 0x80;
+            aim.X = Owner->EMPTarget.X * 256 + 0x80;
+            aim.Y = Owner->EMPTarget.Y * 256 + 0x80;
             aim.Z = 0;
             DAT_0087F7E8.FUN_00578080(aim);
-            int tx = Owner->unknown_5780.X * 256 + 0x80;
-            int ty = Owner->unknown_5780.Y * 256 + 0x80;
+            int tx = Owner->EMPTarget.X * 256 + 0x80;
+            int ty = Owner->EMPTarget.Y * 256 + 0x80;
             int yaw = (short)(int)((FUN_004CAE30((double)muzzle.Y - ty, (double)tx - muzzle.X) - DAT_007E2820) * DAT_007E2818);
             int speed = FUN_005F6360(cell)->FUN_0048AB90((double)RulesInstance->unknown_16B8);
             BA3MissileView* missile = FUN_0046B050(weapon->unknown_A0, cell, this, weapon->unknown_A4, weapon->unknown_AC,
