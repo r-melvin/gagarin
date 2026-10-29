@@ -15,7 +15,7 @@ bool HouseClass::Fire_SW(int index, const CellStruct& cell)
     SuperClass* sw = this->SupersItems[index];
     SuperClass* partner = 0;
     if (sw->Type->PostClick) {
-        partner = this->SupersItems[sw->Type->PostClickIndex];
+        partner = this->SupersItems[sw->Type->PreDependent];
         if (partner != 0) {
             sw->ChronoMapCoords = partner->ChronoMapCoords;
         }

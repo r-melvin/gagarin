@@ -28,49 +28,62 @@ public:
     virtual int vf_11();                                        // 11  0x74B9F0
     virtual int vf_12();                                        // 12  0x74BA00
     virtual void vf_13(Obj_004A1D30* crc);                      // 13  0x74B690
+    virtual bool vf_25(CCINIClass* ini);                        // 25  0x74B050
     virtual bool vf_32(const CellStruct* cell, HouseClass* house); // 32 0x74BA10
     virtual ObjectClass* vf_35(HouseClass* house);                           // 35  0x74BA20
 
-    bool unknown_294;           // +0x294
-    bool unknown_295;           // +0x295
-    bool unknown_296;           // +0x296
+    bool Normalized;              // +0x294
+    bool Translucent;             // +0x295
+    bool unknown_296;             // +0x296
     char unknown_297[0x298 - 0x297];
-    int unknown_298;            // +0x298
-    int unknown_29C;            // +0x29C
-    double unknown_2A0;         // +0x2A0
-    double unknown_2A8;         // +0x2A8
-    double unknown_2B0;         // +0x2B0
-    double unknown_2B8;         // +0x2B8
-    double unknown_2C0;         // +0x2C0
-    double unknown_2C8;         // +0x2C8
-    bool unknown_2D0;           // +0x2D0
+    int VoxelIndex;               // +0x298
+    int Duration;                 // +0x29C
+    double Elasticity;            // +0x2A0
+    double MinAngularVelocity;    // +0x2A8
+    double MaxAngularVelocity;    // +0x2B0
+    double MinZVel;               // +0x2B8
+    double MaxZVel;               // +0x2C0
+    double MaxXYVel;              // +0x2C8
+    bool IsMeteor;                // +0x2D0
     char unknown_2D1[0x2D4 - 0x2D1];
-    void* unknown_2D4;          // +0x2D4
-    int unknown_2D8;            // +0x2D8
-    int unknown_2DC;            // +0x2DC
-    int unknown_2E0;            // +0x2E0
-    void* unknown_2E4;          // +0x2E4
-    void* unknown_2E8;          // +0x2E8
-    void* unknown_2EC;          // +0x2EC
-    int unknown_2F0;            // +0x2F0
-    int unknown_2F4;            // +0x2F4
-    void* unknown_2F8;          // +0x2F8
-    void* unknown_2FC;          // +0x2FC
-    bool unknown_300;           // +0x300
+    void* Spawns;                 // +0x2D4
+    int SpawnCount;               // +0x2D8
+    int StartSound;               // +0x2DC
+    int StopSound;                // +0x2E0
+    void* BounceAnim;             // +0x2E4
+    void* ExpireAnim;             // +0x2E8
+    void* TrailerAnim;            // +0x2EC
+    int Damage;                   // +0x2F0
+    int DamageRadius;             // +0x2F4
+    void* Warhead;                // +0x2F8
+    void* AttachedSystem;         // +0x2FC
+    bool IsTiberium;              // +0x300
     char unknown_301[0x308 - 0x301];
 };
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, Normalized) == 0x294);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, Translucent) == 0x295);
 GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_296) == 0x296);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_298) == 0x298);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2A0) == 0x2A0);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2C8) == 0x2C8);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2D0) == 0x2D0);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2E0) == 0x2E0);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2F4) == 0x2F4);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_300) == 0x300);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2D4) == 0x2D4);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2E4) == 0x2E4);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2F8) == 0x2F8);
-GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, unknown_2FC) == 0x2FC);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, VoxelIndex) == 0x298);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, Duration) == 0x29C);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, Elasticity) == 0x2A0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, MinAngularVelocity) == 0x2A8);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, MaxAngularVelocity) == 0x2B0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, MinZVel) == 0x2B8);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, MaxZVel) == 0x2C0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, MaxXYVel) == 0x2C8);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, IsMeteor) == 0x2D0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, Spawns) == 0x2D4);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, SpawnCount) == 0x2D8);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, StartSound) == 0x2DC);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, StopSound) == 0x2E0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, BounceAnim) == 0x2E4);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, ExpireAnim) == 0x2E8);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, TrailerAnim) == 0x2EC);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, Damage) == 0x2F0);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, DamageRadius) == 0x2F4);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, Warhead) == 0x2F8);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, AttachedSystem) == 0x2FC);
+GG_STATIC_ASSERT(offsetof(VoxelAnimTypeClass, IsTiberium) == 0x300);
 GG_STATIC_ASSERT(sizeof(VoxelAnimTypeClass) == 0x308);
 
 #endif

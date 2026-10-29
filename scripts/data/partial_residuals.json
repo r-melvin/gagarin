@@ -1,0 +1,5427 @@
+[
+ {
+  "addr": "0x401EF0",
+  "name": "Mgr_00401B00::FUN_00401EF0",
+  "tu": "match/core/r24_1_drain_walkers.cpp",
+  "sym": "?FUN_00401EF0@Mgr_00401B00@@QAEHXZ",
+  "len": "0x8b",
+  "manifest_pct": 94.3,
+  "pct": 94.3,
+  "retail_insns": 53,
+  "comp_insns": 53,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x402860",
+  "name": "FUN_00402860",
+  "tu": "match/core/floored_decrement_methods.cpp",
+  "sym": "?FUN_00402860@@YIXPAUOwner_00402860@@PAUMember_00402860@@@Z",
+  "len": "0x4b",
+  "manifest_pct": 89.5,
+  "pct": 89.5,
+  "retail_insns": 19,
+  "comp_insns": 19,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x402AF0",
+  "name": "FUN_00402AF0",
+  "tu": "match/core/hooked_node_create_methods.cpp",
+  "sym": "?FUN_00402AF0@@YIPAUNode_00402AF0@@PAUOwner_00402AF0@@@Z",
+  "len": "0x8e",
+  "manifest_pct": 96.5,
+  "pct": 96.5,
+  "retail_insns": 57,
+  "comp_insns": 57,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x403530",
+  "name": "FUN_00403530",
+  "tu": "match/core/floored_decrement_methods.cpp",
+  "sym": "?FUN_00403530@@YIHPAUPool_00402860@@H@Z",
+  "len": "0x76",
+  "manifest_pct": 86.8,
+  "pct": 86.8,
+  "retail_insns": 38,
+  "comp_insns": 38,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 3,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x404dd0",
+  "name": "FUN_00404DD0",
+  "tu": "match/core/small_misc45_methods.cpp",
+  "sym": "?FUN_00404DD0@@YIXPAUObj_00404DD0@@@Z",
+  "len": "0x49",
+  "manifest_pct": 91.3,
+  "pct": 91.3,
+  "retail_insns": 23,
+  "comp_insns": 23,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4050C0",
+  "name": "FUN_004050C0",
+  "tu": "match/core/timer_ring_release_004050c0.cpp",
+  "sym": "?FUN_004050C0@@YAXXZ",
+  "len": "0x65",
+  "manifest_pct": 87.5,
+  "pct": 87.5,
+  "retail_insns": 32,
+  "comp_insns": 32,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x406B10",
+  "name": "FUN_00406B10",
+  "tu": "match/core/module_tu002.cpp",
+  "sym": "?FUN_00406B10@@YIHH@Z",
+  "len": "0x222",
+  "manifest_pct": 98.4,
+  "pct": 98.4,
+  "retail_insns": 122,
+  "comp_insns": 122,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x407550",
+  "name": "FUN_00407550",
+  "tu": "match/core/module_tu002.cpp",
+  "sym": "?FUN_00407550@@YIHXZ",
+  "len": "0x12e",
+  "manifest_pct": 88.0,
+  "pct": 88.0,
+  "retail_insns": 83,
+  "comp_insns": 83,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x408270",
+  "name": "FUN_00408270",
+  "tu": "match/core/tick_all_workers_methods.cpp",
+  "sym": "?FUN_00408270@@YIXXZ",
+  "len": "0x7b",
+  "manifest_pct": 93.0,
+  "pct": 93.0,
+  "retail_insns": 43,
+  "comp_insns": 43,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 3,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x40A670",
+  "name": "FUN_0040A670",
+  "tu": "match/core/module_tu002.cpp",
+  "sym": "?FUN_0040A670@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x24",
+  "manifest_pct": 86.7,
+  "pct": 86.7,
+  "retail_insns": 15,
+  "comp_insns": 15,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x40A6A0",
+  "name": "FUN_0040A6A0",
+  "tu": "match/core/module_tu002.cpp",
+  "sym": "?FUN_0040A6A0@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x2a",
+  "manifest_pct": 89.5,
+  "pct": 89.5,
+  "retail_insns": 19,
+  "comp_insns": 19,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x40A6D0",
+  "name": "Voice_0040A6D0::FUN_0040A6D0",
+  "tu": "match/audio/pan_and_pitch_methods.cpp",
+  "sym": "?FUN_0040A6D0@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x99",
+  "manifest_pct": 96.4,
+  "pct": 96.4,
+  "retail_insns": 56,
+  "comp_insns": 56,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x410DC0",
+  "name": "ABuffer::FUN_00410DC0",
+  "tu": "match/renderer/drawing.cpp",
+  "sym": "?FUN_00410DC0@ABuffer@@QAEXPAVBSurfaceLayout@@HHHH@Z",
+  "len": "0x89",
+  "manifest_pct": 93.1,
+  "pct": 93.1,
+  "retail_insns": 58,
+  "comp_insns": 58,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x412550",
+  "name": "FUN_00412550",
+  "tu": "match/core/audio_stream_slot_methods.cpp",
+  "sym": "?FUN_00412550@@YAXXZ",
+  "len": "0x43",
+  "manifest_pct": 88.2,
+  "pct": 88.2,
+  "retail_insns": 17,
+  "comp_insns": 17,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4125A0",
+  "name": "FUN_004125a0",
+  "tu": "match/core/audio_stream_slot_methods.cpp",
+  "sym": "?FUN_004125a0@@YAXXZ",
+  "len": "0x49",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 20,
+  "comp_insns": 20,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4155F0",
+  "name": "AircraftClass::FUN_004155F0",
+  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "sym": "?FUN_004155F0@Aircraft_004155F0@@QAEHXZ",
+  "len": "0x1cd",
+  "manifest_pct": 98.6,
+  "pct": 98.6,
+  "retail_insns": 144,
+  "comp_insns": 144,
+  "labels": [
+   "branch-target"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "branch-target",
+  "eligible": true
+ },
+ {
+  "addr": "0x41c2e0",
+  "name": "Vector_0041C2E0::FUN_0041C2E0",
+  "tu": "match/core/angle_from_points_methods.cpp",
+  "sym": "?FUN_0041C2E0@Vector_0041C2E0@@QAE?AUAngle16_0041C2E0@@XZ",
+  "len": "0x63",
+  "manifest_pct": 88.6,
+  "pct": 88.6,
+  "retail_insns": 35,
+  "comp_insns": 35,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x424B50",
+  "name": "AnimClass::SetOwnerObject",
+  "tu": "match/combat/anim_class_owner_methods.cpp",
+  "sym": "?SetOwnerObject@Anim_00424B50@@QAEXPAUOwner_00424B50@@@Z",
+  "len": "0x13B",
+  "manifest_pct": 83.7,
+  "pct": 83.7,
+  "retail_insns": 104,
+  "comp_insns": 104,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 7,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x42EAD0",
+  "name": "Obj_0042EAD0::FindByKey",
+  "tu": "match/core/leaf_sweep_r13_w1.cpp",
+  "sym": "?FindByKey@Obj_0042EAD0@@QAEPAURec_0042EAD0@@PBUKey_0042EAD0@@@Z",
+  "len": "0x48",
+  "manifest_pct": 94.3,
+  "pct": 94.3,
+  "retail_insns": 35,
+  "comp_insns": 35,
+  "labels": [
+   "register-swap",
+   "stack-slot",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 2,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x430590",
+  "name": "Obj_00430590::FUN_00430590",
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "sym": "?FUN_00430590@Obj_00430590@@QAEXHHHH@Z",
+  "len": "0x4e",
+  "manifest_pct": 84.6,
+  "pct": 84.6,
+  "retail_insns": 26,
+  "comp_insns": 26,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x434B40",
+  "name": "FUN_00434B40",
+  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "sym": "?FUN_00434B40@@YGHPAUBitFont_00434B40@@PAVSurface@@HHH@Z",
+  "len": "0x50",
+  "manifest_pct": 91.4,
+  "pct": 91.4,
+  "retail_insns": 35,
+  "comp_insns": 35,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x434BF0",
+  "name": "FUN_00434BF0",
+  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "sym": "?FUN_00434BF0@@YGHPAUBitFont_00434B40@@PAVSurface@@HHHH@Z",
+  "len": "0xe0",
+  "manifest_pct": 81.6,
+  "pct": 81.6,
+  "retail_insns": 87,
+  "comp_insns": 87,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 3,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x436DA0",
+  "name": "BuildingLightClass::FUN_00436DA0",
+  "tu": "match/core/r24_1_building_light_methods.cpp",
+  "sym": "?FUN_00436DA0@BuildingLightClass@@QAEHXZ",
+  "len": "0xdd",
+  "manifest_pct": 82.1,
+  "pct": 82.1,
+  "retail_insns": 78,
+  "comp_insns": 78,
+  "labels": [
+   "register-swap",
+   "stack-slot",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 6,
+  "stack_diffs": 10,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x436E80",
+  "name": "BuildingLightClass::FUN_00436E80",
+  "tu": "match/core/r24_1_building_light_methods.cpp",
+  "sym": "?FUN_00436E80@BuildingLightClass@@QAEHXZ",
+  "len": "0xbd",
+  "manifest_pct": 90.4,
+  "pct": 90.4,
+  "retail_insns": 73,
+  "comp_insns": 73,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 3,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x438210",
+  "name": "BlowStraw::FUN_006C98E0",
+  "tu": "match/platform/blow_pipe_put_methods.cpp",
+  "sym": "?FUN_006C98E0@BlowStraw@@UAEHPAXH@Z",
+  "len": "0xe3",
+  "manifest_pct": 100,
+  "pct": 100.0,
+  "retail_insns": 93,
+  "comp_insns": 93,
+  "labels": [
+   "reloc-or-table"
+  ],
+  "primary": "reloc-or-table",
+  "eligible": false
+ },
+ {
+  "addr": "0x43EE50",
+  "name": "BuildingClass::FUN_0043EE50",
+  "tu": "match/economy/building_class_r20_methods.cpp",
+  "sym": "?FUN_0043EE50@BuildingClass@@QAEHXZ",
+  "len": "0x5d",
+  "manifest_pct": 94.3,
+  "pct": 94.3,
+  "retail_insns": 35,
+  "comp_insns": 35,
+  "labels": [
+   "register-swap",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x442C40",
+  "name": "BuildingClass::vf_9",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "sym": "?vf_9@BuildingClass@@UAEXXZ",
+  "len": "0x147",
+  "manifest_pct": 86.5,
+  "pct": 86.5,
+  "retail_insns": 89,
+  "comp_insns": 89,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x447F10",
+  "name": "BuildingClass::vf_240",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "sym": "?vf_240@BuildingClass@@UAEHPAVAbstractClass@@HH@Z",
+  "len": "0x155",
+  "manifest_pct": 91.0,
+  "pct": 91.0,
+  "retail_insns": 122,
+  "comp_insns": 122,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x448160",
+  "name": "BuildingClass::vf_316",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "sym": "?vf_316@BuildingClass@@UAEDXZ",
+  "len": "0xfb",
+  "manifest_pct": 81.7,
+  "pct": 81.7,
+  "retail_insns": 71,
+  "comp_insns": 71,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 7,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x44EF80",
+  "name": "Lookup",
+  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "sym": "?Lookup@Owner_0044EF80@@QAEHPAUTarget_0044EF80@@H@Z",
+  "len": "0x2e",
+  "manifest_pct": 80,
+  "pct": 80.0,
+  "retail_insns": 15,
+  "comp_insns": 15,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x456E00",
+  "name": "BuildingClass::vf_82",
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "sym": "?vf_82@BuildingBView@@UAEXH@Z",
+  "len": "0x180",
+  "manifest_pct": 95.2,
+  "pct": 95.2,
+  "retail_insns": 126,
+  "comp_insns": 126,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x458330",
+  "name": "BuildingClass::UpdateOccupantAnims",
+  "tu": "match/combat/building_class_occupant_anims_methods.cpp",
+  "sym": "?UpdateOccupantAnims@BuildingClass@@QAEXXZ",
+  "len": "0x290",
+  "manifest_pct": 88.5,
+  "pct": 88.5,
+  "retail_insns": 217,
+  "comp_insns": 217,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "test R8,R8": 5
+  },
+  "only_compiled_shapes": {
+   "test R32,R32": 5
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x4585C0",
+  "name": "BuildingClass::KillOccupants",
+  "tu": "match/combat/building_class_kill_occupants_methods.cpp",
+  "sym": "?KillOccupants@Building_004585C0@@QAEXPAUKiller_004585C0@@@Z",
+  "len": "0x181",
+  "manifest_pct": 85.5,
+  "pct": 85.5,
+  "retail_insns": 117,
+  "comp_insns": 117,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 8,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x45AEA0",
+  "name": "ComHolder::FUN_0045AEA0",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "sym": "?FUN_0045AEA0@ComHolder_0045AEA0@@QAEJPAPAUIUnk@@@Z",
+  "len": "0x75",
+  "manifest_pct": 86.8,
+  "pct": 86.8,
+  "retail_insns": 53,
+  "comp_insns": 52,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "mov": 1
+  },
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,R32": 1
+  },
+  "only_compiled_shapes": {},
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x45AF20",
+  "name": "ComHolder::FUN_0045AF20",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "sym": "?FUN_0045AF20@ComHolder_0045AEA0@@QAEJPAPAUIUnk@@@Z",
+  "len": "0x75",
+  "manifest_pct": 86.8,
+  "pct": 86.8,
+  "retail_insns": 53,
+  "comp_insns": 52,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "mov": 1
+  },
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,R32": 1
+  },
+  "only_compiled_shapes": {},
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x45E8F0",
+  "name": "FUN_0045E8F0",
+  "tu": "match/economy/tu039_building_type_class.cpp",
+  "sym": "?FUN_0045E8F0@@YIXXZ",
+  "len": "0x72",
+  "manifest_pct": 95.3,
+  "pct": 95.3,
+  "retail_insns": 43,
+  "comp_insns": 43,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x465010",
+  "name": "BuildingTypeClass::Load",
+  "tu": "match/economy/tu039_building_type_class.cpp",
+  "sym": "?Load@BuildingTypeView_0045DD90@@UAGJPAUIStream@@@Z",
+  "len": "0x2e7",
+  "manifest_pct": 96.6,
+  "pct": 96.6,
+  "retail_insns": 203,
+  "comp_insns": 203,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 7,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x46ADE0",
+  "name": "FUN_0046ADE0",
+  "tu": "match/combat/rad_site_at_cell_0046ade0.cpp",
+  "sym": "?FUN_0046ADE0@@YGXUCellStruct@@HH@Z",
+  "len": "0x81",
+  "manifest_pct": 91.5,
+  "pct": 91.5,
+  "retail_insns": 47,
+  "comp_insns": 47,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4717D0",
+  "name": "CaptureManagerClass::CaptureManagerClass",
+  "tu": "match/combat/capture_manager_release_methods.cpp",
+  "sym": "??0CaptureManagerClass@@QAE@PAXH_N@Z",
+  "len": "0xBD",
+  "manifest_pct": 82.4,
+  "pct": 82.4,
+  "retail_insns": 51,
+  "comp_insns": 51,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,R32": 1,
+   "mov dword ptr [R32+N],A": 1,
+   "mov R32,dword ptr ds:A": 1,
+   "mov dword ptr ds:A,R32": 1
+  },
+  "only_compiled_shapes": {
+   "mov dword ptr [R32+N],N": 1,
+   "mov R32,ds:A": 2,
+   "mov ds:A,R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x4734B0",
+  "name": "PassengersClass::RemovePassenger",
+  "tu": "match/core/techno_class.cpp",
+  "sym": "?RemovePassenger@PassengersClass@@QAEXPAVFootView_00473460@@@Z",
+  "len": "0x4a",
+  "manifest_pct": 97.1,
+  "pct": 97.1,
+  "retail_insns": 34,
+  "comp_insns": 34,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 1,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x473750",
+  "name": "Snapshot_00473750::Ctor",
+  "tu": "match/combat/target_snapshot_ctor_methods.cpp",
+  "sym": "?Ctor@Snapshot_00473750@@QAEPAU1@PAUOwner_00473750@@@Z",
+  "len": "0x99",
+  "manifest_pct": 83.0,
+  "pct": 83.0,
+  "retail_insns": 53,
+  "comp_insns": 53,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x473BA0",
+  "name": "CCFileClass::Seek",
+  "tu": "match/platform/ccfile_class.cpp",
+  "sym": "?Seek@CCFileClass@@UAEHHH@Z",
+  "len": "0x5B",
+  "manifest_pct": 90.6,
+  "pct": 90.6,
+  "retail_insns": 32,
+  "comp_insns": 32,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x478BA0",
+  "name": "CCToolTip::Update",
+  "tu": "match/platform/CD.cpp",
+  "sym": "?Update@CCToolTip@@UAE_NAAUToolTipManagerData@@@Z",
+  "len": "0x20E",
+  "manifest_pct": 99.0,
+  "pct": 99.0,
+  "retail_insns": 191,
+  "comp_insns": 191,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x47A3F0",
+  "name": "CDDriveControl::FUN_0047a3f0",
+  "tu": "match/platform/CD.cpp",
+  "sym": "?FUN_0047a3f0@CDDriveControl@@QAE_NPAXD@Z",
+  "len": "0x16E",
+  "manifest_pct": 81.2,
+  "pct": 81.2,
+  "retail_insns": 117,
+  "comp_insns": 117,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x486E70",
+  "name": "CellClass::MarkForRedraw",
+  "tu": "match/map/cell_class_mark_redraw_methods.cpp",
+  "sym": "?MarkForRedraw@CellClass@@QAEXXZ",
+  "len": "0x180",
+  "manifest_pct": 96.6,
+  "pct": 96.6,
+  "retail_insns": 149,
+  "comp_insns": 149,
+  "labels": [
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 3,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x48C040",
+  "name": "ConnectionClass::Receive_Packet",
+  "tu": "match/network/transport/Connect.cpp",
+  "sym": "?Receive_Packet@ConnectionClass@@UAEHPAUConnPacketHeader@@H@Z",
+  "len": "0x2D5",
+  "manifest_pct": 98.6,
+  "pct": 98.6,
+  "retail_insns": 284,
+  "comp_insns": 284,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x494690",
+  "name": "BlitTranslucentWriteAlpha<unsigned short>::BlitCopy",
+  "tu": "match/ui/tu056_control_class.cpp",
+  "sym": "?BlitCopy@?$BlitTranslucentWriteAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x1f5",
+  "manifest_pct": 88.0,
+  "pct": 88.0,
+  "retail_insns": 142,
+  "comp_insns": 142,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 3,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0010",
+  "name": "EnumConnectionsClass::Release",
+  "tu": "match/core/enum_connections_clone.cpp",
+  "sym": "?Release@EnumConnectionsClass@@UAGKXZ",
+  "len": "0x9D",
+  "manifest_pct": 93.1,
+  "pct": 93.1,
+  "retail_insns": 58,
+  "comp_insns": 58,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A00B0",
+  "name": "EnumConnectionsClass::Next",
+  "tu": "match/core/enum_connections_next_methods.cpp",
+  "sym": "?Next@EnumConnectionsClass@@UAGJKPAUtagCONNECTDATA@@PAK@Z",
+  "len": "0xA6",
+  "manifest_pct": 95.4,
+  "pct": 95.4,
+  "retail_insns": 65,
+  "comp_insns": 65,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0190",
+  "name": "EnumConnectionsClass::Clone",
+  "tu": "match/core/enum_connections_clone.cpp",
+  "sym": "?Clone@EnumConnectionsClass@@UAGJPAPAUIEnumConnections@@@Z",
+  "len": "0x116",
+  "manifest_pct": 95.1,
+  "pct": 95.1,
+  "retail_insns": 103,
+  "comp_insns": 103,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A02B0",
+  "name": "EnumConnectionsClass::EnumConnectionsClass(vector)",
+  "tu": "match/core/enum_connections_clone.cpp",
+  "sym": "??0EnumConnectionsClass@@QAE@ABV?$DynamicVectorClass@UtagCONNECTDATA@@@@@Z",
+  "len": "0xC2",
+  "manifest_pct": 91.9,
+  "pct": 91.9,
+  "retail_insns": 74,
+  "comp_insns": 74,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0380",
+  "name": "EnumConnectionsClass::EnumConnectionsClass(copy)",
+  "tu": "match/core/enum_connections_clone.cpp",
+  "sym": "??0EnumConnectionsClass@@QAE@ABV0@@Z",
+  "len": "0xD0",
+  "manifest_pct": 93.5,
+  "pct": 93.5,
+  "retail_insns": 77,
+  "comp_insns": 77,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0450",
+  "name": "EnumConnectionsClass::~EnumConnectionsClass",
+  "tu": "match/core/enum_connections_clone.cpp",
+  "sym": "??1EnumConnectionsClass@@QAE@XZ",
+  "len": "0x5d",
+  "manifest_pct": 94.9,
+  "pct": 94.9,
+  "retail_insns": 39,
+  "comp_insns": 39,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A08D0",
+  "name": "ConnectionPointClass::~ConnectionPointClass",
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "sym": "??1ConnectionPointClass@@QAE@XZ",
+  "len": "0x47",
+  "manifest_pct": 100.0,
+  "pct": 100.0,
+  "retail_insns": 28,
+  "comp_insns": 28,
+  "labels": [
+   "reloc-or-table"
+  ],
+  "primary": "reloc-or-table",
+  "eligible": false
+ },
+ {
+  "addr": "0x4A09B0",
+  "name": "EnumConnectionPointsClass::Release",
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "sym": "?Release@EnumConnectionPointsClass@@UAGKXZ",
+  "len": "0x9d",
+  "manifest_pct": 93.1,
+  "pct": 93.1,
+  "retail_insns": 58,
+  "comp_insns": 58,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0A50",
+  "name": "EnumConnectionPointsClass::Next",
+  "tu": "match/core/enum_connections_next_methods.cpp",
+  "sym": "?Next@EnumConnectionPointsClass@@UAGJKPAPAUIConnectionPoint@@PAK@Z",
+  "len": "0x9F",
+  "manifest_pct": 95.2,
+  "pct": 95.2,
+  "retail_insns": 63,
+  "comp_insns": 63,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0B20",
+  "name": "EnumConnectionPointsClass::Clone",
+  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "sym": "?Clone@EnumConnectionPointsClass@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+  "len": "0xFC",
+  "manifest_pct": 95.7,
+  "pct": 95.7,
+  "retail_insns": 94,
+  "comp_insns": 94,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0C20",
+  "name": "EnumConnectionPointsClass::EnumConnectionPointsClass",
+  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "sym": "??0EnumConnectionPointsClass@@QAE@ABV?$DynamicVectorClass@PAUIConnectionPoint@@@@@Z",
+  "len": "0xB8",
+  "manifest_pct": 94.4,
+  "pct": 94.4,
+  "retail_insns": 71,
+  "comp_insns": 71,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0CE0",
+  "name": "EnumConnectionPointsClass::EnumConnectionPointsClass",
+  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "sym": "??0EnumConnectionPointsClass@@QAE@ABV0@@Z",
+  "len": "0xC2",
+  "manifest_pct": 94.5,
+  "pct": 94.5,
+  "retail_insns": 73,
+  "comp_insns": 73,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A0DB0",
+  "name": "EnumConnectionPointsClass::~EnumConnectionPointsClass",
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "sym": "??1EnumConnectionPointsClass@@QAE@XZ",
+  "len": "0x5d",
+  "manifest_pct": 94.9,
+  "pct": 94.9,
+  "retail_insns": 39,
+  "comp_insns": 39,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A1FF0",
+  "name": "FUN_004A1FF0",
+  "tu": "match/core/crc_pad_methods.cpp",
+  "sym": "?FUN_004A1FF0@@YIIPBDI@Z",
+  "len": "0x33",
+  "manifest_pct": 90.0,
+  "pct": 90.0,
+  "retail_insns": 20,
+  "comp_insns": 20,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A2780",
+  "name": "CacheStraw::FUN_006C98E0",
+  "tu": "match/platform/Credits.cpp",
+  "sym": "?FUN_006C98E0@CacheStraw@@UAEHPAXH@Z",
+  "len": "0x93",
+  "manifest_pct": 93.7,
+  "pct": 93.7,
+  "retail_insns": 63,
+  "comp_insns": 63,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x4A8960",
+  "name": "DisplayClass::vf_42",
+  "tu": "match/ui/input_controls/Display.cpp",
+  "sym": "?vf_42@DisplayClass@@UAEXPBURectangleStruct@@@Z",
+  "len": "0x284",
+  "manifest_pct": 92.0,
+  "pct": 92.0,
+  "retail_insns": 176,
+  "comp_insns": 176,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 1,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4AC380",
+  "name": "DisplayClass::vf_47",
+  "tu": "match/ui/input_controls/Display.cpp",
+  "sym": "?vf_47@DisplayClass@@UAEXPBUPoint2D@@@Z",
+  "len": "0x167",
+  "manifest_pct": 95.1,
+  "pct": 95.1,
+  "retail_insns": 102,
+  "comp_insns": 102,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 5,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x4B0DF0",
+  "name": "DriveLocomotionClass::FUN_004B0DF0",
+  "tu": "match/movement/drive_locomotion.cpp",
+  "sym": "?FUN_004B0DF0@DriveLocomotionClass@@QAE_NPBULocoCoord@@@Z",
+  "len": "0xf2",
+  "manifest_pct": 84.3,
+  "pct": 84.3,
+  "retail_insns": 83,
+  "comp_insns": 83,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 5,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4BB620",
+  "name": "DSurface::FillRectEx",
+  "tu": "match/renderer/tu072_d_surface.cpp",
+  "sym": "?FillRectEx@DSurface@@UAE_NPAURectangleStruct@@0I@Z",
+  "len": "0x20e",
+  "manifest_pct": 85.1,
+  "pct": 85.1,
+  "retail_insns": 174,
+  "comp_insns": 174,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "lea": 1
+  },
+  "only_compiled": {
+   "add": 1
+  },
+  "only_retail_shapes": {
+   "lea R32,[R32+R32*N]": 1
+  },
+  "only_compiled_shapes": {
+   "add R32,R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x4C9530",
+  "name": "FacingClass::FUN_004C9530",
+  "tu": "match/movement/facing_r14_methods.cpp",
+  "sym": "?FUN_004C9530@FacingClass@@QBE?AUDirStruct@@XZ",
+  "len": "0x9d",
+  "manifest_pct": 95.5,
+  "pct": 95.5,
+  "retail_insns": 67,
+  "comp_insns": 67,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "sub R32,R32": 1,
+   "mov word ptr [R32+N],R16": 1
+  },
+  "only_compiled_shapes": {
+   "mov dword ptr [R32+N],R32": 1,
+   "sub word ptr [R32+N],R16": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x4CFE80",
+  "name": "FlyLocomotionClass::PickTarget",
+  "tu": "match/movement/fly_locomotion_pick_target_methods.cpp",
+  "sym": "?PickTarget@FlyLocoPick@@QAGXXZ",
+  "len": "0x2f2",
+  "manifest_pct": 95.6,
+  "pct": 95.6,
+  "retail_insns": 229,
+  "comp_insns": 229,
+  "labels": [
+   "branch-polarity",
+   "register-swap"
+  ],
+  "only_retail": {
+   "je": 1
+  },
+  "only_compiled": {
+   "jne": 1
+  },
+  "sched": true,
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "branch-polarity",
+  "eligible": true
+ },
+ {
+  "addr": "0x4DAF10",
+  "name": "FootClass::vf_324",
+  "tu": "match/movement/foot_class_small_slots.cpp",
+  "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAUIndexClass@@PAURectangleStruct@@PAUPoint2D@@PAUMatrix3D@@HHH@Z",
+  "len": "0xa9",
+  "manifest_pct": 87.1,
+  "pct": 87.1,
+  "retail_insns": 62,
+  "comp_insns": 62,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 5,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4E15A0",
+  "name": "GadgetClass::ExtractGadgetAt",
+  "tu": "match/ui/gadget_class_methods.cpp",
+  "sym": "?ExtractGadgetAt@GadgetClass@@QAEPAV1@HH@Z",
+  "len": "0x94",
+  "manifest_pct": 89.1,
+  "pct": 89.1,
+  "retail_insns": 55,
+  "comp_insns": 55,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 6,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x4E1640",
+  "name": "GadgetClass::Input",
+  "tu": "match/ui/input_controls/lists_gadget.cpp",
+  "sym": "?Input@GadgetClass@@UAEIXZ",
+  "len": "0x2DC",
+  "manifest_pct": 89.2,
+  "pct": 89.2,
+  "retail_insns": 250,
+  "comp_insns": 250,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 4
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 4
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x4F4320",
+  "name": "GScreenClass::Input",
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "sym": "?Input@GScreenClass@@UAEXPAH00@Z",
+  "len": "0xC5",
+  "manifest_pct": 81.2,
+  "pct": 81.2,
+  "retail_insns": 64,
+  "comp_insns": 64,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 11,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4F54A0",
+  "name": "HouseClass::HouseClass",
+  "tu": "match/economy/House.cpp",
+  "sym": "??0HouseClusterView@@QAE@PAUHouseTypeView@@@Z",
+  "len": "0x109a",
+  "manifest_pct": 98.3,
+  "pct": 98.3,
+  "retail_insns": 1023,
+  "comp_insns": 1023,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x4F9670",
+  "name": "HouseClass::FUN_004F9670",
+  "tu": "match/economy/house_class_r13_methods.cpp",
+  "sym": "?FUN_004F9670@HouseClass@@QAEPAVBuildingClass@@XZ",
+  "len": "0x8d",
+  "manifest_pct": 98.2,
+  "pct": 98.2,
+  "retail_insns": 57,
+  "comp_insns": 57,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 1,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x4FF980",
+  "name": "HouseView_004FF980::FUN_004FF980",
+  "tu": "match/economy/house_class_r17_methods.cpp",
+  "sym": "?FUN_004FF980@HouseClass@@QAEXPAVTechnoClass@@@Z",
+  "len": "0x8b",
+  "manifest_pct": 88.9,
+  "pct": 88.9,
+  "retail_insns": 45,
+  "comp_insns": 45,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,N": 1,
+   "xor R32,R32": 1
+  },
+  "only_compiled_shapes": {
+   "mov R8,N": 1,
+   "xor R8,R8": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x4FFA50",
+  "name": "HouseView_004FF980::FUN_004FFA50",
+  "tu": "match/economy/house_class_r17_methods.cpp",
+  "sym": "?FUN_004FFA50@HouseClass@@QAEXPAVTechnoClass@@@Z",
+  "len": "0x8b",
+  "manifest_pct": 88.9,
+  "pct": 88.9,
+  "retail_insns": 45,
+  "comp_insns": 45,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,N": 1,
+   "xor R32,R32": 1
+  },
+  "only_compiled_shapes": {
+   "mov R8,N": 1,
+   "xor R8,R8": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x503040",
+  "name": "HouseClass::Load",
+  "tu": "match/economy/House.cpp",
+  "sym": "?Load@HouseClass@@UAGJPAUIStream@@@Z",
+  "len": "0x1033",
+  "manifest_pct": 98.3,
+  "pct": 98.3,
+  "retail_insns": 1428,
+  "comp_insns": 1428,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 24,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x50D440",
+  "name": "HouseClass::RespawnStartingForces",
+  "tu": "match/economy/House.cpp",
+  "sym": "?RespawnStartingForces@HouseClass@@QAEXXZ",
+  "len": "0xE4",
+  "manifest_pct": 81.9,
+  "pct": 81.9,
+  "retail_insns": 83,
+  "comp_insns": 83,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,dword ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr [R32]": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x510E10",
+  "name": "FUN_00510E10",
+  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "sym": "?FUN_00510E10@@YIXHPADH@Z",
+  "len": "0xb4",
+  "manifest_pct": 85.7,
+  "pct": 85.7,
+  "retail_insns": 56,
+  "comp_insns": 56,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5163B0",
+  "name": "HoverLocomotionClass::Fun_005163B0",
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "sym": "?Fun_005163B0@HoverLocomotionClass@@QAE_NXZ",
+  "len": "0x11b",
+  "manifest_pct": 95.7,
+  "pct": 95.7,
+  "retail_insns": 94,
+  "comp_insns": 94,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x516E10",
+  "name": "HoverLocomotionClass::Push",
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "sym": "?Push@HoverLocomotionClass@@UAG_NK@Z",
+  "len": "0x1AE",
+  "manifest_pct": 87.7,
+  "pct": 87.7,
+  "retail_insns": 138,
+  "comp_insns": 138,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R16,word ptr [R32]": 1,
+   "add R16,word ptr [R32*N+A]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R16,word ptr [R32*N+A]": 1,
+   "add R16,word ptr [R32]": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5171C0",
+  "name": "HoverLocomotionClass::MarkAllOccupationBits",
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "sym": "?MarkAllOccupationBits@HoverLocomotionClass@@UAGXH@Z",
+  "len": "0x46",
+  "manifest_pct": 84.0,
+  "pct": 84.0,
+  "retail_insns": 25,
+  "comp_insns": 25,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x51F190",
+  "name": "InfantryClass::vf_81",
+  "tu": "match/combat/Infantry.cpp",
+  "sym": "?vf_81@InfantryClass@@UAE_NHPAVObjectClass@@H@Z",
+  "len": "0x6a",
+  "manifest_pct": 95.6,
+  "pct": 95.6,
+  "retail_insns": 45,
+  "comp_insns": 45,
+  "labels": [
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x51F250",
+  "name": "InfantryClass::vf_80",
+  "tu": "match/combat/Infantry.cpp",
+  "sym": "?vf_80@InfantryClass@@UAE_NHPAUCellStruct@@HH@Z",
+  "len": "0x6a",
+  "manifest_pct": 87.5,
+  "pct": 87.5,
+  "retail_insns": 48,
+  "comp_insns": 48,
+  "labels": [
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x528600",
+  "name": "INIClass::WriteDouble (Wstring names)",
+  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "sym": "?WriteDouble@INIClass@@QAE_NABVWstring@@0N@Z",
+  "len": "0x60",
+  "manifest_pct": 93.3,
+  "pct": 93.3,
+  "retail_insns": 30,
+  "comp_insns": 30,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x538D40",
+  "name": "FUN_00538D40",
+  "tu": "match/ui/Init.cpp",
+  "sym": "?FUN_00538D40@@YAXXZ",
+  "len": "0x12D",
+  "manifest_pct": 86.8,
+  "pct": 86.8,
+  "retail_insns": 106,
+  "comp_insns": 106,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R8,byte ptr [R32]": 2,
+   "mov byte ptr ds:A,N": 1
+  },
+  "only_compiled_shapes": {
+   "mov R8,byte ptr [R32+N]": 2,
+   "mov byte ptr ds:A,A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x540110",
+  "name": "IPXGlobalConnClass::vf_17",
+  "tu": "match/network/tu107_ipx_global_conn_class.cpp",
+  "sym": "?vf_17@IPXGlobalConnClass@@UAEXI@Z",
+  "len": "0x194",
+  "manifest_pct": 98.5,
+  "pct": 98.5,
+  "retail_insns": 133,
+  "comp_insns": 133,
+  "labels": [
+   "register-swap",
+   "stack-slot",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 2,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x541170",
+  "name": "IPXManagerClass::FUN_00541170",
+  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "sym": "?FUN_00541170@IPXManagerClass@@QAEHPAXHHH@Z",
+  "len": "0xE4",
+  "manifest_pct": 84.1,
+  "pct": 84.1,
+  "retail_insns": 88,
+  "comp_insns": 88,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 7,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x544E00",
+  "name": "Obj_00544E00::FUN_00544E00",
+  "tu": "match/core/small_misc_w1_methods.cpp",
+  "sym": "?FUN_00544E00@Obj_00544E00@@QAEPAU1@H@Z",
+  "len": "0x2c",
+  "manifest_pct": 89.5,
+  "pct": 89.5,
+  "retail_insns": 19,
+  "comp_insns": 19,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x54AD30",
+  "name": "JumpjetLocomotionClass::LinkToObject",
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "sym": "?LinkToObject@JumpjetLocomotionClass@@UAGJPAVFootClass@@@Z",
+  "len": "0x11E",
+  "manifest_pct": 82.6,
+  "pct": 82.6,
+  "retail_insns": 86,
+  "comp_insns": 86,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "lea": 1
+  },
+  "only_compiled": {
+   "mov": 1
+  },
+  "only_retail_shapes": {
+   "lea R32,[R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x557830",
+  "name": "ListClass::Action",
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "sym": "?Action@ListClass@@UAEHIPAIH@Z",
+  "len": "0xf0",
+  "manifest_pct": 96.8,
+  "pct": 96.8,
+  "retail_insns": 93,
+  "comp_insns": 93,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x558790",
+  "name": "LoadOptionsClass::~LoadOptionsClass",
+  "tu": "match/ui/LoadDlg.cpp",
+  "sym": "??1LoadOptionsClass@@UAE@XZ",
+  "len": "0x60",
+  "manifest_pct": 94.9,
+  "pct": 94.9,
+  "retail_insns": 39,
+  "comp_insns": 39,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x558A30",
+  "name": "FUN_00558A30",
+  "tu": "match/ui/dialog_proc_558a30.cpp",
+  "sym": "?FUN_00558A30@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x155",
+  "manifest_pct": 81.2,
+  "pct": 81.2,
+  "retail_insns": 112,
+  "comp_insns": 112,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "je": 2
+  },
+  "only_compiled": {
+   "jne": 2
+  },
+  "only_retail_shapes": {
+   "mov dword ptr [R32+N],N": 1
+  },
+  "only_compiled_shapes": {
+   "mov dword ptr [R32+N],R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x55A0D0",
+  "name": "LoadOptionsClass::scalar deleting destructor",
+  "tu": "match/ui/LoadDlg.cpp",
+  "sym": "??_GLoadOptionsClass@@UAEPAXI@Z",
+  "len": "0x7c",
+  "manifest_pct": 95.5,
+  "pct": 95.5,
+  "retail_insns": 44,
+  "comp_insns": 44,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x55C350",
+  "name": "LZOPipe::FUN_00631D10",
+  "tu": "match/core/lzo_pipe_put.cpp",
+  "sym": "?FUN_00631D10@LZOPipe@@UAEHHH@Z",
+  "len": "0x28B",
+  "manifest_pct": 99.1,
+  "pct": 99.1,
+  "retail_insns": 230,
+  "comp_insns": 230,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x55C5E0",
+  "name": "LZOPipe::FUN_00631D30",
+  "tu": "match/core/lzo_pipe_put.cpp",
+  "sym": "?FUN_00631D30@LZOPipe@@UAEHXZ",
+  "len": "0xe9",
+  "manifest_pct": 100.0,
+  "pct": 100.0,
+  "retail_insns": 91,
+  "comp_insns": 91,
+  "labels": [
+   "reloc-or-table"
+  ],
+  "primary": "reloc-or-table",
+  "eligible": false
+ },
+ {
+  "addr": "0x568350",
+  "name": "MapView_00568350::FUN_00568350",
+  "tu": "match/map/w2_map_iso_r17.cpp",
+  "sym": "?FUN_00568350@MapView_00568350@@QBE_NPBULeptonPair_00568350@@@Z",
+  "len": "0x63",
+  "manifest_pct": 92.7,
+  "pct": 92.7,
+  "retail_insns": 41,
+  "comp_insns": 41,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 3,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x577AB0",
+  "name": "MapClass::Reshroud",
+  "tu": "match/map/map_class_reshroud_methods.cpp",
+  "sym": "?Reshroud@MapView_578350@@QAEXPAVHouseClass@@@Z",
+  "len": "0xf4",
+  "manifest_pct": 92.3,
+  "pct": 92.3,
+  "retail_insns": 65,
+  "comp_insns": 65,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x586360",
+  "name": "MapClass::IsLocationShrouded",
+  "tu": "match/map/map_class_location_shrouded_methods.cpp",
+  "sym": "?IsLocationShrouded@MapClass@@QBE_NABUCoordStruct@@@Z",
+  "len": "0x135",
+  "manifest_pct": 96.9,
+  "pct": 96.9,
+  "retail_insns": 97,
+  "comp_insns": 97,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5866C0",
+  "name": "FUN_005866C0",
+  "tu": "match/map/map_cell_sweeps_005866c0.cpp",
+  "sym": "?FUN_005866C0@MapScan_005866C0@@QAEXXZ",
+  "len": "0x5d",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 25,
+  "comp_insns": 25,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x589300",
+  "name": "Equals",
+  "tu": "match/movement/vector_search_00589290.cpp",
+  "sym": "?Equals@SearchVector16_00589300@@QBE_NABU1@@Z",
+  "len": "0x63",
+  "manifest_pct": 88.1,
+  "pct": 88.1,
+  "retail_insns": 42,
+  "comp_insns": 42,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "cmp R16,word ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "cmp R16,word ptr [R32-N]": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5896F0",
+  "name": "RecordTable_005896F0::FUN_005896F0",
+  "tu": "match/map/record_table_compare_methods.cpp",
+  "sym": "?FUN_005896F0@RecordTable_005896F0@@QBE_NABU1@@Z",
+  "len": "0x50",
+  "manifest_pct": 89.2,
+  "pct": 89.2,
+  "retail_insns": 37,
+  "comp_insns": 37,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x58BE20",
+  "name": "FUN_0058BE20",
+  "tu": "match/map/MapGen_r3_methods.cpp",
+  "sym": "?FUN_0058BE20@@YI?AVCell@@XZ",
+  "len": "0x7e",
+  "manifest_pct": 88.1,
+  "pct": 88.1,
+  "retail_insns": 42,
+  "comp_insns": 42,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 3,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x58BEA0",
+  "name": "FUN_0058BEA0",
+  "tu": "match/map/MapGen_r25_methods.cpp",
+  "sym": "?FUN_0058BEA0@@YIPAUCellStruct@@PAU1@@Z",
+  "len": "0xce",
+  "manifest_pct": 94.3,
+  "pct": 94.3,
+  "retail_insns": 70,
+  "comp_insns": 70,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x58BF70",
+  "name": "MapRegionClass::MapRegionClass",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "??0MapRegionClass@@QAE@UCellStruct@@@Z",
+  "len": "0xf7",
+  "manifest_pct": 97.3,
+  "pct": 97.3,
+  "retail_insns": 74,
+  "comp_insns": 74,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x58C320",
+  "name": "MapRegionClass::FUN_0058C320",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_0058C320@MapRegionClass@@QAEXPAUCellStruct@@@Z",
+  "len": "0x8e",
+  "manifest_pct": 95.8,
+  "pct": 95.8,
+  "retail_insns": 48,
+  "comp_insns": 48,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x58C3B0",
+  "name": "MapRegionClass::FUN_0058C3B0",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_0058C3B0@MapRegionClass@@QAEXPAUCellStruct@@@Z",
+  "len": "0xe7",
+  "manifest_pct": 84.2,
+  "pct": 84.2,
+  "retail_insns": 76,
+  "comp_insns": 76,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 5,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5904B0",
+  "name": "?FUN_005904B0@@YG_NPAURect_4i@@@Z",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_005904B0@@YG_NPAURect_4i@@@Z",
+  "len": "0x114",
+  "manifest_pct": 94.7,
+  "pct": 94.7,
+  "retail_insns": 94,
+  "comp_insns": 94,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x59BAB0",
+  "name": "?FUN_0059BAB0@@YG_NPAUCellStruct@@PAURect_4i@@DNN@Z",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_0059BAB0@@YG_NPAUCellStruct@@PAURect_4i@@DNN@Z",
+  "len": "0x10c",
+  "manifest_pct": 83.9,
+  "pct": 83.9,
+  "retail_insns": 93,
+  "comp_insns": 93,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,N": 2,
+   "xor R32,R32": 1
+  },
+  "only_compiled_shapes": {
+   "mov R8,N": 2,
+   "xor R8,R8": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x59D480",
+  "name": "FUN_0059D480",
+  "tu": "match/core/cell_distance_score_methods.cpp",
+  "sym": "?FUN_0059D480@@YGMPBUCellStruct@@0H@Z",
+  "len": "0x89",
+  "manifest_pct": 92.1,
+  "pct": 92.1,
+  "retail_insns": 38,
+  "comp_insns": 38,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "fld dword ptr ds:A": 1,
+   "fmul dword ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "fmul qword ptr ds:A": 1,
+   "fld dword ptr [R32+N]": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5A12D0",
+  "name": "FUN_005A12D0",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_005A12D0@@YGXDH@Z",
+  "len": "0x72",
+  "manifest_pct": 94.4,
+  "pct": 94.4,
+  "retail_insns": 36,
+  "comp_insns": 36,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x5A6C10",
+  "name": "?FUN_005A6C10@@YIXHPAUCellStruct@@HH@Z",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_005A6C10@@YIXHPAUCellStruct@@HH@Z",
+  "len": "0x166",
+  "manifest_pct": 95.0,
+  "pct": 95.0,
+  "retail_insns": 100,
+  "comp_insns": 100,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R16,R16": 1,
+   "add R16,word ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R16,word ptr [R32+N]": 1,
+   "add R16,R16": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5A7E90",
+  "name": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
+  "len": "0x103",
+  "manifest_pct": 93.6,
+  "pct": 93.6,
+  "retail_insns": 78,
+  "comp_insns": 78,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R16,R16": 1,
+   "add R16,word ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R16,word ptr [R32+N]": 1,
+   "add R16,R16": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5A7FA0",
+  "name": "FUN_005A7FA0",
+  "tu": "match/map/MapGen.cpp",
+  "sym": "?FUN_005A7FA0@@YIXHPAUCellStruct@@D@Z",
+  "len": "0x104",
+  "manifest_pct": 96.2,
+  "pct": 96.2,
+  "retail_insns": 80,
+  "comp_insns": 80,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R16,R16": 1,
+   "add R16,word ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R16,word ptr [R32+N]": 1,
+   "add R16,R16": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5AF710",
+  "name": "Matrix3D::FUN_005AF710",
+  "tu": "match/renderer/quaternion_matrix_methods.cpp",
+  "sym": "?FUN_005AF710@Matrix3D@@QAEXABUVector3D@@0M@Z",
+  "len": "0x26D",
+  "manifest_pct": 95.8,
+  "pct": 95.8,
+  "retail_insns": 189,
+  "comp_insns": 189,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 8,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x005B2A30",
+  "name": "VelocityClass::SetPitch",
+  "tu": "match/movement/velocity_class_set_pitch_methods.cpp",
+  "sym": "?SetPitch@VelocityClass@@QAEXABUDir16@@@Z",
+  "len": "0x156",
+  "manifest_pct": 96.4,
+  "pct": 96.4,
+  "retail_insns": 112,
+  "comp_insns": 112,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5BDDC0",
+  "name": "MouseClass::vf_10",
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "sym": "?vf_10@MouseClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x16D",
+  "manifest_pct": 92.6,
+  "pct": 92.6,
+  "retail_insns": 108,
+  "comp_insns": 108,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 8,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x5BDF70",
+  "name": "MouseClass::vf_30",
+  "tu": "match/ui/input_controls/mouse_mouse_class_stream.cpp",
+  "sym": "?vf_30@MouseClass@@UAEJPAUIStream@@@Z",
+  "len": "0x752",
+  "manifest_pct": 84.1,
+  "pct": 84.1,
+  "retail_insns": 617,
+  "comp_insns": 617,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "xor": 1
+  },
+  "only_compiled": {
+   "mov": 1
+  },
+  "only_retail_shapes": {
+   "mov R32,R32": 1,
+   "xor R32,R32": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr [R32+N]": 1,
+   "mov dword ptr [R32+N],N": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5BF850",
+  "name": "FUN_005BF850",
+  "tu": "match/platform/movie_handle_class.cpp",
+  "sym": "?FUN_005BF850@@YIHXZ",
+  "len": "0x5d",
+  "manifest_pct": 86.7,
+  "pct": 86.7,
+  "retail_insns": 45,
+  "comp_insns": 45,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5C0240",
+  "name": "VQMovieHandle::VQMovieHandle",
+  "tu": "match/platform/movie_handle_class.cpp",
+  "sym": "??0VQMovieHandle@@QAE@PAUObj_005C01A0@@@Z",
+  "len": "0x31",
+  "manifest_pct": 87.5,
+  "pct": 87.5,
+  "retail_insns": 16,
+  "comp_insns": 16,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5C07D0",
+  "name": "FUN_005C07D0",
+  "tu": "match/platform/movie_handle_class.cpp",
+  "sym": "?FUN_005C07D0@@YIPAVMovieHandle@@PBDPAUSurface_005C07D0@@PAURectangleStruct@@@Z",
+  "len": "0x1a3",
+  "manifest_pct": 98.6,
+  "pct": 98.6,
+  "retail_insns": 147,
+  "comp_insns": 147,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5C23B0",
+  "name": "MPCooperative::FUN_005C23B0",
+  "tu": "match/network/MPCoop.cpp",
+  "sym": "?FUN_005C23B0@MPCooperative@@QAEXPAUHWND__@@H@Z",
+  "len": "0x14f",
+  "manifest_pct": 98.3,
+  "pct": 98.3,
+  "retail_insns": 118,
+  "comp_insns": 118,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x5C6AA0",
+  "name": "WordsAddSmall",
+  "tu": "match/network/MPLayer.cpp",
+  "sym": "?WordsAddSmall@@YI_NPAIPBII_NH@Z",
+  "len": "0x5c",
+  "manifest_pct": 82.9,
+  "pct": 82.9,
+  "retail_insns": 41,
+  "comp_insns": 41,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "add": 1
+  },
+  "only_compiled": {
+   "lea": 1
+  },
+  "only_retail_shapes": {
+   "add R32,R32": 1
+  },
+  "only_compiled_shapes": {
+   "lea R32,[R32+R32*N]": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5CBCB0",
+  "name": "MSShapeAnim::GetRect",
+  "tu": "match/map/msanim_early_methods.cpp",
+  "sym": "?GetRect@MSShapeAnim@@UAE?AURectangleStruct@@XZ",
+  "len": "0x6f",
+  "manifest_pct": 83.3,
+  "pct": 83.3,
+  "retail_insns": 48,
+  "comp_insns": 48,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5CF5F0",
+  "name": "MapStageList",
+  "tu": "match/ui/MSChoice.cpp",
+  "sym": "?ClearAll@MapStageList@@QAEXXZ",
+  "len": "0xbf",
+  "manifest_pct": 90.3,
+  "pct": 90.3,
+  "retail_insns": 72,
+  "comp_insns": 72,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5D1B30",
+  "name": "MSEngine::~MSEngine",
+  "tu": "match/ui/ms_engine_methods.cpp",
+  "sym": "??1MSEngine@@UAE@XZ",
+  "len": "0xed",
+  "manifest_pct": 96.7,
+  "pct": 96.7,
+  "retail_insns": 92,
+  "comp_insns": 92,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5D31D0",
+  "name": "MSFont::CharWidth",
+  "tu": "match/map/ms_font_methods.cpp",
+  "sym": "?CharWidth@MSFont@@UAEHG@Z",
+  "len": "0x7c",
+  "manifest_pct": 86.4,
+  "pct": 86.4,
+  "retail_insns": 44,
+  "comp_insns": 44,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "add": 1
+  },
+  "only_compiled": {
+   "sub": 1
+  },
+  "only_retail_shapes": {
+   "add R32,N": 1
+  },
+  "only_compiled_shapes": {
+   "sub R32,N": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5D5D20",
+  "name": "MultiplayerGameMode::~MultiplayerGameMode",
+  "tu": "match/network/multiplayer_game_mode_team_methods.cpp",
+  "sym": "??1MultiplayerGameMode@@UAE@XZ",
+  "len": "0x8e",
+  "manifest_pct": 96.4,
+  "pct": 96.4,
+  "retail_insns": 55,
+  "comp_insns": 55,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5E2340",
+  "name": "FUN_005E2340",
+  "tu": "match/network/r19_4_netdlg2_leaves.cpp",
+  "sym": "?FUN_005E2340@@YAXXZ",
+  "len": "0x53",
+  "manifest_pct": 84.6,
+  "pct": 84.6,
+  "retail_insns": 26,
+  "comp_insns": 26,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5E2FA0",
+  "name": "FUN_005E2FA0",
+  "tu": "match/network/netshare.cpp",
+  "sym": "?FUN_005E2FA0@@YIXXZ",
+  "len": "0x65",
+  "manifest_pct": 94.7,
+  "pct": 94.7,
+  "retail_insns": 38,
+  "comp_insns": 38,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5E68A0",
+  "name": "FUN_005E68A0",
+  "tu": "match/network/netshare.cpp",
+  "sym": "?FUN_005E68A0@@YIHPAUHWND__@@@Z",
+  "len": "0x7f",
+  "manifest_pct": 89.2,
+  "pct": 89.2,
+  "retail_insns": 37,
+  "comp_insns": 37,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5E9580",
+  "name": "FUN_005E9580",
+  "tu": "match/network/netshare.cpp",
+  "sym": "?FUN_005E9580@@YI_NXZ",
+  "len": "0x5c",
+  "manifest_pct": 83.8,
+  "pct": 83.8,
+  "retail_insns": 37,
+  "comp_insns": 37,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5E95E0",
+  "name": "FUN_005E95E0",
+  "tu": "match/network/netshare.cpp",
+  "sym": "?FUN_005E95E0@@YI_NXZ",
+  "len": "0xba",
+  "manifest_pct": 90.0,
+  "pct": 90.0,
+  "retail_insns": 60,
+  "comp_insns": 60,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5F3450",
+  "name": "FUN_005F3450",
+  "tu": "match/network/modem_misc_leaves.cpp",
+  "sym": "?FUN_005F3450@@YIHXZ",
+  "len": "0x42",
+  "manifest_pct": 91.7,
+  "pct": 91.7,
+  "retail_insns": 24,
+  "comp_insns": 24,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x5F4EC0",
+  "name": "ObjectClass::vf_54",
+  "tu": "match/core/object_class_slots_5f4d30.cpp",
+  "sym": "?vf_54@ObjectClass@@UAE_NABUCoordStruct@@H@Z",
+  "len": "0x36f",
+  "manifest_pct": 83.4,
+  "pct": 83.4,
+  "retail_insns": 277,
+  "comp_insns": 276,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "mov": 1
+  },
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,R32": 1
+  },
+  "only_compiled_shapes": {},
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x5F6360",
+  "name": "AbstractClass::DistanceFrom3D",
+  "tu": "match/core/tu165_object_class.cpp",
+  "sym": "?DistanceFrom3D@Obj_005F6360@@QAEHPAU1@@Z",
+  "len": "0xd5",
+  "manifest_pct": 92.9,
+  "pct": 92.9,
+  "retail_insns": 84,
+  "comp_insns": 84,
+  "labels": [
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 4,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x5F7900",
+  "name": "ObjectTypeClass::vf_37",
+  "tu": "match/core/object_type_class_factory_query.cpp",
+  "sym": "?vf_37@ObjectTypeClass@@UAEPAX_N00PAX@Z",
+  "len": "0x18C",
+  "manifest_pct": 92.5,
+  "pct": 92.5,
+  "retail_insns": 133,
+  "comp_insns": 133,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 6,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x60C7D0",
+  "name": "?FUN_0060C7D0@@YI_NH@Z",
+  "tu": "match/ui/ownrdraw.cpp",
+  "sym": "?FUN_0060C7D0@@YI_NH@Z",
+  "len": "0xf7",
+  "manifest_pct": 97.5,
+  "pct": 97.5,
+  "retail_insns": 79,
+  "comp_insns": 79,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x620870",
+  "name": "FUN_00620870",
+  "tu": "match/core/w2_leaf_r14.cpp",
+  "sym": "?FUN_00620870@@YIIG@Z",
+  "len": "0x79",
+  "manifest_pct": 84.4,
+  "pct": 84.4,
+  "retail_insns": 32,
+  "comp_insns": 32,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x631300",
+  "name": "Dialog: remember selected list entry and copy its text into the edit control",
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "sym": "?FUN_00631300@Dlg_00631300@@QAEXXZ",
+  "len": "0x7f",
+  "manifest_pct": 98.0,
+  "pct": 98.0,
+  "retail_insns": 50,
+  "comp_insns": 50,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 1,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x632050",
+  "name": "FUN_00632050",
+  "tu": "match/core/pk_key_generate_methods.cpp",
+  "sym": "?FUN_00632050@@YIXPAVStraw@@HPAVPKey_00632740@@1@Z",
+  "len": "0x6EB",
+  "manifest_pct": 89.8,
+  "pct": 89.8,
+  "retail_insns": 430,
+  "comp_insns": 430,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "jne": 1
+  },
+  "only_compiled": {
+   "jg": 1
+  },
+  "only_retail_shapes": {
+   "push R32": 1,
+   "test R8,R8": 1
+  },
+  "only_compiled_shapes": {
+   "push N": 1,
+   "test R32,R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x632DC0",
+  "name": "PKPipe::FUN_00631D10",
+  "tu": "match/core/pk_pipe_straw_io_methods.cpp",
+  "sym": "?FUN_00631D10@PKPipe@@UAEHHH@Z",
+  "len": "0x168",
+  "manifest_pct": 88.3,
+  "pct": 88.3,
+  "retail_insns": 120,
+  "comp_insns": 120,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 14,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x634290",
+  "name": "Node_006386E0::FUN_00634290",
+  "tu": "match/ai/PlanMgr.cpp",
+  "sym": "?FUN_00634290@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
+  "len": "0x32",
+  "manifest_pct": 92.3,
+  "pct": 92.3,
+  "retail_insns": 26,
+  "comp_insns": 26,
+  "labels": [
+   "branch-polarity",
+   "register-swap"
+  ],
+  "only_retail": {
+   "jl": 1
+  },
+  "only_compiled": {
+   "jg": 1
+  },
+  "sched": true,
+  "reg_diffs": 1,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "branch-polarity",
+  "eligible": true
+ },
+ {
+  "addr": "0x6386E0",
+  "name": "TechnoClass::ClearPlanningTokens",
+  "tu": "match/ai/PlanMgr.cpp",
+  "sym": "?ClearPlanningTokens@Techno_006386E0@@QAIXPAURecord_006386E0@@@Z",
+  "len": "0x151",
+  "manifest_pct": 95.5,
+  "pct": 95.5,
+  "retail_insns": 112,
+  "comp_insns": 112,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "movsx": 1
+  },
+  "only_compiled": {
+   "mov": 1
+  },
+  "only_retail_shapes": {
+   "test R32,R32": 1,
+   "movsx R32,byte ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R8,byte ptr [R32+N]": 1,
+   "test R8,R8": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6425F0",
+  "name": "PreviewClass::CreatePreviewSurface",
+  "tu": "match/ui/preview_class_surface_methods.cpp",
+  "sym": "?CreatePreviewSurface@PreviewClass_006425F0@@QAEXPAUPreviewData_006425F0@@@Z",
+  "len": "0x14D",
+  "manifest_pct": 87.3,
+  "pct": 87.3,
+  "retail_insns": 110,
+  "comp_insns": 110,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R8,byte ptr ds:A": 2
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 2
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x646480",
+  "name": "Matrix3D::FromAxis",
+  "tu": "match/renderer/matrix3d_axis_methods.cpp",
+  "sym": "?FromAxis@Matrix3D@@SI?AUQuaternion@@ABUVector3D@@M@Z",
+  "len": "0x10A",
+  "manifest_pct": 89.4,
+  "pct": 89.4,
+  "retail_insns": 85,
+  "comp_insns": 85,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 4,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x646E10",
+  "name": "_$E20",
+  "tu": "match/network/Queue.cpp",
+  "sym": "_$E23",
+  "len": "0x4e",
+  "manifest_pct": 92.6,
+  "pct": 92.6,
+  "retail_insns": 27,
+  "comp_insns": 27,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x64A000",
+  "name": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
+  "tu": "match/network/Queue.cpp",
+  "sym": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
+  "len": "0xb2",
+  "manifest_pct": 86.2,
+  "pct": 86.2,
+  "retail_insns": 58,
+  "comp_insns": 58,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "lea": 2
+  },
+  "only_compiled": {
+   "add": 2
+  },
+  "only_retail_shapes": {
+   "mov R32,R32": 1,
+   "lea R32,[R32+R32*N]": 2
+  },
+  "only_compiled_shapes": {
+   "mov R16,R16": 1,
+   "add R32,R32": 2
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x652CF0",
+  "name": "RadarClass::vf_05",
+  "tu": "match/ui/Radar.cpp",
+  "sym": "?vf_05@RadarClass@@UAEXXZ",
+  "len": "0xa0",
+  "manifest_pct": 82.8,
+  "pct": 82.8,
+  "retail_insns": 29,
+  "comp_insns": 29,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 3,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x655150",
+  "name": "RadarClass::FUN_00655150",
+  "tu": "match/ui/radar_class_more_methods.cpp",
+  "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBUPoint2D@@@Z",
+  "len": "0x62",
+  "manifest_pct": 91.3,
+  "pct": 91.3,
+  "retail_insns": 23,
+  "comp_insns": 23,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x658910",
+  "name": "Obj_00658910::FUN_00658910",
+  "tu": "match/core/w2_leaf_r13.cpp",
+  "sym": "?FUN_00658910@Obj_00658910@@QBE_NPBU1@@Z",
+  "len": "0x5c",
+  "manifest_pct": 91.1,
+  "pct": 91.1,
+  "retail_insns": 45,
+  "comp_insns": 45,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,dword ptr [R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr [R32-N]": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x65A970",
+  "name": "RadioClass::vf_159",
+  "tu": "match/core/tu189_radio_class.cpp",
+  "sym": "?vf_159@RadioClass@@UAEHHPAXPAV1@@Z",
+  "len": "0x105",
+  "manifest_pct": 89.3,
+  "pct": 89.3,
+  "retail_insns": 103,
+  "comp_insns": 103,
+  "labels": [
+   "branch-polarity"
+  ],
+  "only_retail": {
+   "jne": 1
+  },
+  "only_compiled": {
+   "je": 1
+  },
+  "sched": true,
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "branch-polarity",
+  "eligible": true
+ },
+ {
+  "addr": "0x6613A0",
+  "name": "RGBClass::FUN_006613A0",
+  "tu": "match/platform/tu196_random_straw.cpp",
+  "sym": "?FUN_006613A0@RGBClass@@QBE?AUHSVClass@@XZ",
+  "len": "0x141",
+  "manifest_pct": 97.5,
+  "pct": 97.5,
+  "retail_insns": 118,
+  "comp_insns": 118,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 3,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x662240",
+  "name": "RocketLocomotionClass::FUN_00662240",
+  "tu": "match/movement/rocket_locomotion_pitch_r24_3.cpp",
+  "sym": "?FUN_00662240@RocketLocomotionClass@@QAENXZ",
+  "len": "0x7f",
+  "manifest_pct": 88.9,
+  "pct": 88.9,
+  "retail_insns": 45,
+  "comp_insns": 45,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 5,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x664D20",
+  "name": "RulesClass::RulesClass(AbstractNoInit)",
+  "tu": "match/core/rules_class_construct_methods.cpp",
+  "sym": "??0RulesClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x92a",
+  "manifest_pct": 95.1,
+  "pct": 95.1,
+  "retail_insns": 607,
+  "comp_insns": 603,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "push": 2,
+   "mov": 2
+  },
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,R32": 1,
+   "push N": 2,
+   "mov dword ptr [R32],A": 1
+  },
+  "only_compiled_shapes": {},
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x665650",
+  "name": "RulesClass::RulesClass",
+  "tu": "match/core/rules_class_ctor_665650.cpp",
+  "sym": "??0RulesClass@@QAE@XZ",
+  "len": "0x23d7",
+  "manifest_pct": 99.8,
+  "pct": 99.8,
+  "retail_insns": 1621,
+  "comp_insns": 1621,
+  "labels": [
+   "scheduling",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x66BBB0",
+  "name": "RulesClass::Read_CombatDamage",
+  "tu": "match/core/rules_class_combat_damage_methods.cpp",
+  "sym": "?Read_CombatDamage@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x13B5",
+  "manifest_pct": 92.2,
+  "pct": 92.2,
+  "retail_insns": 1380,
+  "comp_insns": 1380,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,dword ptr ds:A": 6
+  },
+  "only_compiled_shapes": {
+   "mov R32,ds:A": 6
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x66D480",
+  "name": "RulesClass::Read_ColorAdd",
+  "tu": "match/core/rules_class_color_add_methods.cpp",
+  "sym": "?Read_ColorAdd@RulesClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0xaa",
+  "manifest_pct": 81.8,
+  "pct": 81.8,
+  "retail_insns": 66,
+  "comp_insns": 66,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x682640",
+  "name": "FUN_00682640",
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "sym": "?FUN_00682640@@YGJPAUIStorage@@HPBD@Z",
+  "len": "0x137",
+  "manifest_pct": 94.6,
+  "pct": 94.6,
+  "retail_insns": 111,
+  "comp_insns": 111,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x682780",
+  "name": "FUN_00682780",
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "sym": "?FUN_00682780@@YGJPAUIStorage@@HPBG@Z",
+  "len": "0xf8",
+  "manifest_pct": 98.1,
+  "pct": 98.1,
+  "retail_insns": 103,
+  "comp_insns": 103,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x682880",
+  "name": "FUN_00682880",
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "sym": "?FUN_00682880@@YGJPAUIPropertySetStorage@@HPBD@Z",
+  "len": "0x11f",
+  "manifest_pct": 92.6,
+  "pct": 92.6,
+  "retail_insns": 94,
+  "comp_insns": 94,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x689310",
+  "name": "ScenarioClass::FUN_00689310",
+  "tu": "match/core/Scenario.cpp",
+  "sym": "?FUN_00689310@ScenarioClass@@QAEXPAUGg_IStream@@@Z",
+  "len": "0x153",
+  "manifest_pct": 88.6,
+  "pct": 88.6,
+  "retail_insns": 132,
+  "comp_insns": 132,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "push": 1,
+   "pop": 1
+  },
+  "only_compiled": {
+   "sub": 1,
+   "add": 1
+  },
+  "only_retail_shapes": {
+   "push R32": 1,
+   "pop R32": 1
+  },
+  "only_compiled_shapes": {
+   "sub R32,N": 1,
+   "add R32,N": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x689D30",
+  "name": "ScenarioClass::ReadStartPoints",
+  "tu": "match/core/Scenario.cpp",
+  "sym": "?ReadStartPoints@Scenario_00689D30@@QAE_NPAUCCINI_00689D30@@@Z",
+  "len": "0x15c",
+  "manifest_pct": 94.0,
+  "pct": 94.0,
+  "retail_insns": 100,
+  "comp_insns": 100,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov dword ptr [R32+N],R32": 1
+  },
+  "only_compiled_shapes": {
+   "mov dword ptr [R32-N],R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x68C3B0",
+  "name": "?FUN_0068C3B0@@YIPAXPBXPAUPaletteClass@@1PAX2HHHHPBE@Z",
+  "tu": "match/core/Scenario.cpp",
+  "sym": "?FUN_0068C3B0@@YIPAXPBXPAUPaletteClass@@1PAX2HHHHPBE@Z",
+  "len": "0x14b",
+  "manifest_pct": 87.6,
+  "pct": 87.6,
+  "retail_insns": 113,
+  "comp_insns": 113,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 7,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x696590",
+  "name": "Dialog: fill the four-entry list control and select the matching entry",
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "sym": "?FUN_00696590@Dlg_006966D0@@QAEXXZ",
+  "len": "0x74",
+  "manifest_pct": 87.8,
+  "pct": 87.8,
+  "retail_insns": 49,
+  "comp_insns": 49,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6970A0",
+  "name": "Session constructor",
+  "tu": "match/network/Session.cpp",
+  "sym": "??0SessionClass@@QAE@XZ",
+  "len": "0x716",
+  "manifest_pct": 87.9,
+  "pct": 87.9,
+  "retail_insns": 356,
+  "comp_insns": 355,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "lea": 1
+  },
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov dword ptr [R32+N],R32": 1,
+   "lea R32,[R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "mov word ptr [R32+N],R16": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x697AD0",
+  "name": "SessionClass::FUN_00697AD0",
+  "tu": "match/network/Session.cpp",
+  "sym": "?FUN_00697AD0@SessionClass@@QAEXXZ",
+  "len": "0x85",
+  "manifest_pct": 84.3,
+  "pct": 84.3,
+  "retail_insns": 51,
+  "comp_insns": 51,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 8,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x69A3B0",
+  "name": "MultiMission INI constructor",
+  "tu": "match/network/Session.cpp",
+  "sym": "??0MultiMission@@QAE@PAVINIClass@@PBD@Z",
+  "len": "0x5cb",
+  "manifest_pct": 91.4,
+  "pct": 91.4,
+  "retail_insns": 420,
+  "comp_insns": 420,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 33,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x69DB30",
+  "name": "SHAState_0069DB30::FUN_0069DB30",
+  "tu": "match/network/Session.cpp",
+  "sym": "?FUN_0069DB30@SHAState_0069DB30@@QBEXPBXAAUShaState_0069DB30@@@Z",
+  "len": "0x195",
+  "manifest_pct": 83.1,
+  "pct": 83.1,
+  "retail_insns": 142,
+  "comp_insns": 142,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "mov": 1,
+   "sub": 1,
+   "xor": 2
+  },
+  "only_compiled": {
+   "add": 1,
+   "and": 1,
+   "shr": 2
+  },
+  "only_retail_shapes": {
+   "sub R32,R32": 1,
+   "mov dword ptr [R32+N],R32": 1,
+   "xor R32,R32": 2,
+   "mov R8,byte ptr [R32+N]": 2,
+   "mov dword ptr [R32+R32*N-N],R32": 1
+  },
+  "only_compiled_shapes": {
+   "add R32,N": 1,
+   "mov R32,R32": 2,
+   "and R32,N": 1,
+   "shr R32,N": 2,
+   "mov dword ptr [R32-N],R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x69E900",
+  "name": "Obj_0069E430 frame bit 1",
+  "tu": "match/core/obj_0069e430.cpp",
+  "sym": "?FUN_0069E900@Obj_0069E430@@QAE_NI@Z",
+  "len": "0x30",
+  "manifest_pct": 88.2,
+  "pct": 88.2,
+  "retail_insns": 17,
+  "comp_insns": 17,
+  "labels": [
+   "scheduling",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 1,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x6A04C0",
+  "name": "ShipLocomotionClass::FUN_006A04C0",
+  "tu": "match/movement/ship_locomotion.cpp",
+  "sym": "?FUN_006A04C0@ShipLocomotionClass@@QAE_NPBULocoCoord@@@Z",
+  "len": "0xF3",
+  "manifest_pct": 83.3,
+  "pct": 83.3,
+  "retail_insns": 84,
+  "comp_insns": 83,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "nop": 1
+  },
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "nop ": 1
+  },
+  "only_compiled_shapes": {},
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6A4780",
+  "name": "SideClass::Load",
+  "tu": "match/core/w2_side_class_r13.cpp",
+  "sym": "?Load@SideClass@@UAGJPAUIStream@@@Z",
+  "len": "0x111",
+  "manifest_pct": 88.0,
+  "pct": 88.0,
+  "retail_insns": 92,
+  "comp_insns": 92,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6A7590",
+  "name": "SidebarClass::SetTab",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "sym": "?SetTab@Sidebar_006A7590@@QAEXH@Z",
+  "len": "0x156",
+  "manifest_pct": 94.9,
+  "pct": 94.9,
+  "retail_insns": 98,
+  "comp_insns": 98,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6A7D70",
+  "name": "SidebarClass::vf_54",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "sym": "?vf_54@SidebarClass@@UAE_NH@Z",
+  "len": "0x30F",
+  "manifest_pct": 86.0,
+  "pct": 86.0,
+  "retail_insns": 229,
+  "comp_insns": 229,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 4,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6ABD30",
+  "name": "SidebarClass::vf_34",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "sym": "?vf_34@SidebarClass@@UAEXXZ",
+  "len": "0x4D3",
+  "manifest_pct": 98.1,
+  "pct": 98.1,
+  "retail_insns": 323,
+  "comp_insns": 323,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 6,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x6AF360",
+  "name": "SlaveManagerClass::SlaveManagerClass()",
+  "tu": "match/combat/slave_manager_r19_5.cpp",
+  "sym": "??0SlaveManagerClass@@QAE@XZ",
+  "len": "0xD2",
+  "manifest_pct": 91.5,
+  "pct": 91.5,
+  "retail_insns": 59,
+  "comp_insns": 59,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6B0CC0",
+  "name": "SlaveManagerClass::SetStateIdle1",
+  "tu": "match/combat/slave_manager_r19_5.cpp",
+  "sym": "?SetStateIdle1@SlaveManagerClass@@QAEXXZ",
+  "len": "0x41",
+  "manifest_pct": 84.6,
+  "pct": 84.6,
+  "retail_insns": 26,
+  "comp_insns": 26,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6B0D10",
+  "name": "SlaveManagerClass::SetStateIdle4",
+  "tu": "match/combat/slave_manager_r19_5.cpp",
+  "sym": "?SetStateIdle4@SlaveManagerClass@@QAEXXZ",
+  "len": "0x41",
+  "manifest_pct": 84.6,
+  "pct": 84.6,
+  "retail_insns": 26,
+  "comp_insns": 26,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6B0D60",
+  "name": "Deploy2",
+  "tu": "match/combat/slave_manager_class_more_methods.cpp",
+  "sym": "?Deploy2@SlaveManagerView_006AF580@@QAEXXZ",
+  "len": "0x41",
+  "manifest_pct": 84.6,
+  "pct": 84.6,
+  "retail_insns": 26,
+  "comp_insns": 26,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6B2430",
+  "name": "FUN_006B2430",
+  "tu": "match/ui/r23_3_undo_info_list.cpp",
+  "sym": "?FUN_006B2430@@YIXPBHH@Z",
+  "len": "0x6f",
+  "manifest_pct": 90,
+  "pct": 90.0,
+  "retail_insns": 40,
+  "comp_insns": 40,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6B4BE0",
+  "name": "SmudgeClass::Mark",
+  "tu": "match/map/tu216_smudge_class.cpp",
+  "sym": "?Mark@SmudgeClass@@UAE_NH@Z",
+  "len": "0x88",
+  "manifest_pct": 82.4,
+  "pct": 82.4,
+  "retail_insns": 51,
+  "comp_insns": 51,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6B6230",
+  "name": "FUN_006B6230",
+  "tu": "match/ui/sound_controls_dialog.cpp",
+  "sym": "?FUN_006B6230@@YIXXZ",
+  "len": "0xc5",
+  "manifest_pct": 91.8,
+  "pct": 91.8,
+  "retail_insns": 61,
+  "comp_insns": 61,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov byte ptr ds:A,N": 1
+  },
+  "only_compiled_shapes": {
+   "mov byte ptr ds:A,A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6B8AF0",
+  "name": "Packed_006B8AF0::FUN_006B8AF0",
+  "tu": "match/core/leaf_sweep_r14_w3.cpp",
+  "sym": "?FUN_006B8AF0@Packed_006B8AF0@@QBE_NPBU1@@Z",
+  "len": "0x1F",
+  "manifest_pct": 91.7,
+  "pct": 91.7,
+  "retail_insns": 12,
+  "comp_insns": 12,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "test R8,N": 1
+  },
+  "only_compiled_shapes": {
+   "test R8,R8": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6CAEC0",
+  "name": "SuperClass::SuperClass()",
+  "tu": "match/combat/super_class_r19_5.cpp",
+  "sym": "??0SuperClass@@QAE@XZ",
+  "len": "0xC7",
+  "manifest_pct": 82.5,
+  "pct": 82.5,
+  "retail_insns": 57,
+  "comp_insns": 57,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov dword ptr [R32+N],A": 1,
+   "cmp dword ptr ds:A,R32": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1,
+   "cmp R32,R32": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6D0680",
+  "name": "TabClass::vf_10",
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "sym": "?vf_10@TabClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x336",
+  "manifest_pct": 96.9,
+  "pct": 96.9,
+  "retail_insns": 229,
+  "comp_insns": 229,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 1,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6D2540",
+  "name": "Tactical::vf_23",
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "sym": "?vf_23@Tactical@@UAEXXZ",
+  "len": "0x24a",
+  "manifest_pct": 93.4,
+  "pct": 93.4,
+  "retail_insns": 152,
+  "comp_insns": 152,
+  "labels": [
+   "register-swap",
+   "stack-slot",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 1,
+  "stack_diffs": 6,
+  "imm_diffs": 1,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x6D6070",
+  "name": "Tactical::SetTacticalPosition",
+  "tu": "match/ui/tactical_class_position_methods.cpp",
+  "sym": "?SetTacticalPosition@Tactical_006D6070@@QAEXPBUCoord_006D6070@@@Z",
+  "len": "0xff",
+  "manifest_pct": 92.4,
+  "pct": 92.4,
+  "retail_insns": 92,
+  "comp_insns": 92,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 4,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6D84D0",
+  "name": "FUN_006D84D0",
+  "tu": "match/core/w3r2_leaf_methods_c.cpp",
+  "sym": "?FUN_006D84D0@@YG?AUPoint2D@@PBU1@@Z",
+  "len": "0x59",
+  "manifest_pct": 80.6,
+  "pct": 80.6,
+  "retail_insns": 31,
+  "comp_insns": 31,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 4,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6DA080",
+  "name": "FUN_006DA080",
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "sym": "?FUN_006DA080@Tactical@@QBEHXZ",
+  "len": "0xd5",
+  "manifest_pct": 82.5,
+  "pct": 82.5,
+  "retail_insns": 80,
+  "comp_insns": 80,
+  "labels": [
+   "register-swap",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 14,
+  "stack_diffs": 0,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x6DA180",
+  "name": "Tactical::FUN_006DA180",
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "sym": "?FUN_006DA180@Tactical@@QAEXXZ",
+  "len": "0xa8",
+  "manifest_pct": 100.0,
+  "pct": 100.0,
+  "retail_insns": 58,
+  "comp_insns": 58,
+  "labels": [
+   "reloc-or-table"
+  ],
+  "primary": "reloc-or-table",
+  "eligible": false
+ },
+ {
+  "addr": "0x6DA230",
+  "name": "Tactical::FUN_006DA230",
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "sym": "?FUN_006DA230@Tactical@@QAEHH@Z",
+  "len": "0x11c",
+  "manifest_pct": 91.0,
+  "pct": 91.0,
+  "retail_insns": 78,
+  "comp_insns": 78,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6DA5C0",
+  "name": "Tactical::FUN_006DA5C0",
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "sym": "?FUN_006DA5C0@Tactical@@QAEXPBV?$TRect@H@@P6IXPAVObjectClass@@@Z@Z",
+  "len": "0x17c",
+  "manifest_pct": 95.8,
+  "pct": 95.8,
+  "retail_insns": 120,
+  "comp_insns": 120,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,dword ptr [R32+N]": 1,
+   "mov byte ptr ds:A,N": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr [R32-N]": 1,
+   "mov byte ptr ds:A,A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6E0EF0",
+  "name": "TActionClass::FUN_006E0EF0",
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "sym": "?FUN_006E0EF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x9F",
+  "manifest_pct": 96.1,
+  "pct": 96.1,
+  "retail_insns": 51,
+  "comp_insns": 51,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x6E4150",
+  "name": "TActionClass::FUN_006E4150",
+  "tu": "match/ai/TAction.cpp",
+  "sym": "?FUN_006E4150@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xae",
+  "manifest_pct": 89.7,
+  "pct": 89.7,
+  "retail_insns": 68,
+  "comp_insns": 68,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "dec": 1
+  },
+  "only_compiled": {
+   "lea": 1
+  },
+  "only_retail_shapes": {
+   "dec R32": 1
+  },
+  "only_compiled_shapes": {
+   "lea R32,[R32-N]": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6E8DE0",
+  "name": "TeamClass::~TeamClass",
+  "tu": "match/ai/tu235_team_class.cpp",
+  "sym": "??1TeamClass@@UAE@XZ",
+  "len": "0x268",
+  "manifest_pct": 100,
+  "pct": 100.0,
+  "retail_insns": 195,
+  "comp_insns": 195,
+  "labels": [
+   "reloc-or-table"
+  ],
+  "primary": "reloc-or-table",
+  "eligible": false
+ },
+ {
+  "addr": "0x6EAE60",
+  "name": "TeamClass::vf_10",
+  "tu": "match/ai/tu235_team_class.cpp",
+  "sym": "?vf_10@TeamClass@@UAEXPAX_N@Z",
+  "len": "0x73",
+  "manifest_pct": 100.0,
+  "pct": 100.0,
+  "retail_insns": 43,
+  "comp_insns": 43,
+  "labels": [
+   "reloc-or-table"
+  ],
+  "primary": "reloc-or-table",
+  "eligible": false
+ },
+ {
+  "addr": "0x6EC250",
+  "name": "FUN_006EC250",
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "sym": "?FUN_006EC250@@YIXHH@Z",
+  "len": "0xAE",
+  "manifest_pct": 89.7,
+  "pct": 89.7,
+  "retail_insns": 58,
+  "comp_insns": 58,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "lea": 1
+  },
+  "only_compiled": {
+   "add": 1
+  },
+  "only_retail_shapes": {
+   "lea R32,[R32+N]": 1
+  },
+  "only_compiled_shapes": {
+   "add R32,N": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x6ECF50",
+  "name": "TeamClass::FUN_006ECF50",
+  "tu": "match/ai/team_class_r14_methods.cpp",
+  "sym": "?FUN_006ECF50@TeamClass@@QAEXPAUActionArg_r14@@H@Z",
+  "len": "0x54",
+  "manifest_pct": 84.8,
+  "pct": 84.8,
+  "retail_insns": 33,
+  "comp_insns": 33,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 4,
+  "stack_diffs": 3,
+  "imm_diffs": 2,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x6F0450",
+  "name": "TeamClass::scalar deleting destructor",
+  "tu": "match/ai/tu235_team_class.cpp",
+  "sym": "??_GTeamClass@@UAEPAXI@Z",
+  "len": "0x1e",
+  "manifest_pct": 100,
+  "pct": 100.0,
+  "retail_insns": 11,
+  "comp_insns": 11,
+  "labels": [
+   "reloc-or-table"
+  ],
+  "primary": "reloc-or-table",
+  "eligible": false
+ },
+ {
+  "addr": "0x719BF0",
+  "name": "TeleportLocomotionClass::vf_10",
+  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "sym": "?vf_10@TeleportLocomotionClass@@UAGXXZ",
+  "len": "0x68",
+  "manifest_pct": 80.6,
+  "pct": 80.6,
+  "retail_insns": 36,
+  "comp_insns": 36,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x71A090",
+  "name": "TeleportLocomotionClass::MarkAllOccupationBits",
+  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "sym": "?MarkAllOccupationBits@TeleportLocomotionClass@@UAGXH@Z",
+  "len": "0x46",
+  "manifest_pct": 84.0,
+  "pct": 84.0,
+  "retail_insns": 25,
+  "comp_insns": 25,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x71ABC0",
+  "name": "TemporalClass::LetGo",
+  "tu": "match/combat/tu241_temporal_class.cpp",
+  "sym": "?LetGo@Temporal_0071ABC0@@QAEXXZ",
+  "len": "0xea",
+  "manifest_pct": 85.5,
+  "pct": 85.5,
+  "retail_insns": 83,
+  "comp_insns": 83,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 12,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x71AF20",
+  "name": "TemporalClass::FUN_0071AF20",
+  "tu": "match/combat/temporal_class.cpp",
+  "sym": "?FUN_0071AF20@TemporalClass@@QAEXPAUTemporalTechnoView@@@Z",
+  "len": "0x263",
+  "manifest_pct": 99.0,
+  "pct": 99.0,
+  "retail_insns": 192,
+  "comp_insns": 192,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x722AF0",
+  "name": "TiberiumClass::RegisterForSpread",
+  "tu": "match/economy/tiberium_class_spread_methods.cpp",
+  "sym": "?RegisterForSpread@TiberiumClass@@QAEXPAUCellStruct@@@Z",
+  "len": "0x143",
+  "manifest_pct": 98,
+  "pct": 98.0,
+  "retail_insns": 101,
+  "comp_insns": 101,
+  "labels": [
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 2,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x724730",
+  "name": "ToolTipManager::Remove",
+  "tu": "match/ui/ToolTip.cpp",
+  "sym": "?Remove@ToolTipManager@@QAEXI@Z",
+  "len": "0x181",
+  "manifest_pct": 97.2,
+  "pct": 97.2,
+  "retail_insns": 142,
+  "comp_insns": 142,
+  "labels": [
+   "scheduling",
+   "register-swap",
+   "stack-slot",
+   "constant"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 1,
+  "stack_diffs": 1,
+  "imm_diffs": 1,
+  "primary": "constant",
+  "eligible": false
+ },
+ {
+  "addr": "0x732C30",
+  "name": "FUN_00732C30",
+  "tu": "match/ui/UICmnds.cpp",
+  "sym": "?FUN_00732C30@@YI_NPAVTechnoClass@@PAV?$DynamicVectorClass@PBD@@@Z",
+  "len": "0x68",
+  "manifest_pct": 94.0,
+  "pct": 94.0,
+  "retail_insns": 50,
+  "comp_insns": 50,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 2,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x732CC0",
+  "name": "FUN_00732CC0",
+  "tu": "match/ui/UICmnds.cpp",
+  "sym": "?FUN_00732CC0@@YAXXZ",
+  "len": "0x3a",
+  "manifest_pct": 87.5,
+  "pct": 87.5,
+  "retail_insns": 16,
+  "comp_insns": 16,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov byte ptr ds:A,N": 1
+  },
+  "only_compiled_shapes": {
+   "mov byte ptr ds:A,A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x738910",
+  "name": "UnitClass::vf_80",
+  "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
+  "sym": "?vf_80@UnitClass@@UAE_NHPAUCellStruct@@HH@Z",
+  "len": "0x58",
+  "manifest_pct": 85.4,
+  "pct": 85.4,
+  "retail_insns": 41,
+  "comp_insns": 41,
+  "labels": [
+   "register-swap",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x74BEE0",
+  "name": "FillBuf_0074BEE0::ClearZero",
+  "tu": "match/core/leaf_r17_w3.cpp",
+  "sym": "?ClearZero@FillBuf_0074BEE0@@QAEXXZ",
+  "len": "0x26",
+  "manifest_pct": 87.5,
+  "pct": 87.5,
+  "retail_insns": 16,
+  "comp_insns": 16,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x74BF10",
+  "name": "FillBuf_0074BEE0::ClearOnes",
+  "tu": "match/core/leaf_r17_w3.cpp",
+  "sym": "?ClearOnes@FillBuf_0074BEE0@@QAEXXZ",
+  "len": "0x23",
+  "manifest_pct": 87.5,
+  "pct": 87.5,
+  "retail_insns": 16,
+  "comp_insns": 16,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x74E930",
+  "name": "VeinholeMonsterClass::Recalculate",
+  "tu": "match/map/veinhole_monster_recalculate_methods.cpp",
+  "sym": "?Recalculate@VeinholeMonsterClass@@QAEXXZ",
+  "len": "0xf4",
+  "manifest_pct": 87.0,
+  "pct": 87.0,
+  "retail_insns": 77,
+  "comp_insns": 77,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 10,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x750E20",
+  "name": "VoxClass::PlayAtPos",
+  "tu": "match/audio/vox_class_play_methods.cpp",
+  "sym": "?PlayAtPos@VoxClass@@SIPAXHPAUCoordStruct@@H@Z",
+  "len": "0x98",
+  "manifest_pct": 91.4,
+  "pct": 91.4,
+  "retail_insns": 58,
+  "comp_insns": 58,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x751040",
+  "name": "FUN_00751040",
+  "tu": "match/core/unowned_leaf_sweep_c.cpp",
+  "sym": "?FUN_00751040@@YIXXZ",
+  "len": "0x3a",
+  "manifest_pct": 81.8,
+  "pct": 81.8,
+  "retail_insns": 22,
+  "comp_insns": 22,
+  "labels": [
+   "scheduling",
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 3,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x756BB0",
+  "name": "VoxelModel::FUN_00756bb0",
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "sym": "?FUN_00756bb0@VoxelModel@@QAEXXZ",
+  "len": "0x21E",
+  "manifest_pct": 98.7,
+  "pct": 98.7,
+  "retail_insns": 153,
+  "comp_insns": 153,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x758670",
+  "name": "FUN_00758670",
+  "tu": "match/core/r24_4_shade_table.cpp",
+  "sym": "?FUN_00758670@@YIXABUNormal_r24@@H@Z",
+  "len": "0x78",
+  "manifest_pct": 95.2,
+  "pct": 95.2,
+  "retail_insns": 42,
+  "comp_insns": 42,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "fmul dword ptr [R32]": 1,
+   "fld dword ptr [R32+N]": 1,
+   "mov byte ptr [R32+A],N": 1
+  },
+  "only_compiled_shapes": {
+   "fmul dword ptr [R32+N]": 1,
+   "fld dword ptr [R32]": 1,
+   "mov byte ptr [R32+A],A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x75EBE0",
+  "name": "WaveClass::WaveClass",
+  "tu": "match/core/wave_class_dtor_methods.cpp",
+  "sym": "??0WaveClass@@QAE@XZ",
+  "len": "0x14c",
+  "manifest_pct": 81.7,
+  "pct": 81.7,
+  "retail_insns": 71,
+  "comp_insns": 71,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x773450",
+  "name": "FUN_00773450 (WebBrowser factory)",
+  "tu": "match/ui/input_controls/menus_web_browser_ctor.cpp",
+  "sym": "?FUN_00773450@@YIPAVWebBrowser@@PAXPBX@Z",
+  "len": "0xa9",
+  "manifest_pct": 93.2,
+  "pct": 93.2,
+  "retail_insns": 59,
+  "comp_insns": 59,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x774980",
+  "name": "WinModemClass::Read_Serial_Chars",
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "sym": "?Read_Serial_Chars@WinModemClass@@QAE_NXZ",
+  "len": "0x1AF",
+  "manifest_pct": 90.1,
+  "pct": 90.1,
+  "retail_insns": 161,
+  "comp_insns": 161,
+  "labels": [
+   "branch-polarity",
+   "stack-slot"
+  ],
+  "only_retail": {
+   "jne": 1
+  },
+  "only_compiled": {
+   "je": 1
+  },
+  "sched": true,
+  "reg_diffs": 0,
+  "stack_diffs": 1,
+  "imm_diffs": 0,
+  "primary": "branch-polarity",
+  "eligible": true
+ },
+ {
+  "addr": "0x774CD0",
+  "name": "WinModemClass::Get_Modem_Result",
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "sym": "?Get_Modem_Result@WinModemClass@@UAEHHPADHH@Z",
+  "len": "0x277",
+  "manifest_pct": 87.8,
+  "pct": 87.8,
+  "retail_insns": 222,
+  "comp_insns": 221,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {
+   "mov": 1,
+   "jge": 1
+  },
+  "only_compiled": {
+   "jl": 1
+  },
+  "only_retail_shapes": {
+   "mov R32,R32": 1
+  },
+  "only_compiled_shapes": {},
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x774F50",
+  "name": "WinModemClass::Dial_Modem",
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "sym": "?Dial_Modem@WinModemClass@@UAEXPAD@Z",
+  "len": "0x1B2",
+  "manifest_pct": 92.1,
+  "pct": 92.1,
+  "retail_insns": 164,
+  "comp_insns": 164,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 13,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x77bae0",
+  "name": "atexit cleanup (DAT_00B768C0)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E32",
+  "len": "0x12e",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x77bcb0",
+  "name": "atexit cleanup (DAT_00B73AF8)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E37",
+  "len": "0x12e",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x77be80",
+  "name": "atexit cleanup (DAT_00B77D80)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E42",
+  "len": "0x12e",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x77C050",
+  "name": "atexit cleanup (DAT_00B76640)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E47",
+  "len": "0x12e",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x77c220",
+  "name": "atexit cleanup (DAT_00B76680)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E52",
+  "len": "0x12e",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x77c450",
+  "name": "atexit cleanup (DAT_00B76530)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E62",
+  "len": "0x12e",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x77cb00",
+  "name": "atexit cleanup (DAT_00B76990)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E137",
+  "len": "0x12e",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x77CCD0",
+  "name": "atexit cleanup (DAT_00B76608)",
+  "tu": "match/network/wonline.cpp",
+  "sym": "_$E142",
+  "len": "0x137",
+  "manifest_pct": 80.0,
+  "pct": 80.0,
+  "retail_insns": 95,
+  "comp_insns": 95,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "mov R32,ds:A": 1
+  },
+  "only_compiled_shapes": {
+   "mov R32,dword ptr ds:A": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x7A8DA0",
+  "name": "?FUN_007A8DA0@@YGHPAXHHPAUEntry_00B77908@@PBD@Z",
+  "tu": "match/network/wonline.cpp",
+  "sym": "?FUN_007A8DA0@@YGHPAXHHPAUEntry_00B77908@@PBD@Z",
+  "len": "0x129",
+  "manifest_pct": 96.9,
+  "pct": 96.9,
+  "retail_insns": 97,
+  "comp_insns": 97,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 3,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x7A8FC0",
+  "name": "?FUN_007A8FC0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
+  "tu": "match/network/wonline.cpp",
+  "sym": "?FUN_007A8FC0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
+  "len": "0x142",
+  "manifest_pct": 97.2,
+  "pct": 97.2,
+  "retail_insns": 108,
+  "comp_insns": 108,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 3,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x7B53B0",
+  "name": "Wstring::Copy_Padded",
+  "tu": "match/core/string_class_methods.cpp",
+  "sym": "?Copy_Padded@Wstring@@QBEXPADI@Z",
+  "len": "0x50",
+  "manifest_pct": 88.9,
+  "pct": 88.9,
+  "retail_insns": 36,
+  "comp_insns": 36,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 4,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x7B6E20",
+  "name": "Obj_007B66D0::FUN_007B6E20",
+  "tu": "match/core/wide_string_class.cpp",
+  "sym": "?FUN_007B6E20@Obj_007B66D0@@QAE_NG@Z",
+  "len": "0x9d",
+  "manifest_pct": 98.6,
+  "pct": 98.6,
+  "retail_insns": 70,
+  "comp_insns": 70,
+  "labels": [
+   "register-swap"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 1,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "register-swap",
+  "eligible": true
+ },
+ {
+  "addr": "0x7B6F40",
+  "name": "Obj_007B66D0::FUN_007B6F40",
+  "tu": "match/core/wide_string_class.cpp",
+  "sym": "?FUN_007B6F40@Obj_007B66D0@@QAEXPBV1@@Z",
+  "len": "0xf6",
+  "manifest_pct": 97.9,
+  "pct": 97.9,
+  "retail_insns": 97,
+  "comp_insns": 97,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x7B7180",
+  "name": "Obj_007B66D0::FUN_007B7180",
+  "tu": "match/core/wide_string_class.cpp",
+  "sym": "?FUN_007B7180@Obj_007B66D0@@QBEGI@Z",
+  "len": "0x26",
+  "manifest_pct": 93.8,
+  "pct": 93.8,
+  "retail_insns": 16,
+  "comp_insns": 16,
+  "labels": [
+   "missing-extra"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "only_retail_shapes": {
+   "xor R32,R32": 1
+  },
+  "only_compiled_shapes": {
+   "xor R16,R16": 1
+  },
+  "primary": "missing-extra",
+  "eligible": false
+ },
+ {
+  "addr": "0x7bbb90",
+  "name": "XSurface::CopyFromPart",
+  "tu": "match/renderer/xsurface_blit.cpp",
+  "sym": "?CopyFromPart@XSurface@@UAE_NPAURectangleStruct@@PAVSurface@@0_N2@Z",
+  "len": "0x153",
+  "manifest_pct": 85.1,
+  "pct": 85.1,
+  "retail_insns": 121,
+  "comp_insns": 121,
+  "labels": [
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "sched": false,
+  "reg_diffs": 0,
+  "stack_diffs": 18,
+  "imm_diffs": 0,
+  "primary": "stack-slot",
+  "eligible": true
+ },
+ {
+  "addr": "0x7BF140",
+  "name": "FUN_007bf140",
+  "tu": "match/core/r24_4_movie_stream.cpp",
+  "sym": "?FUN_007bf140@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x43",
+  "manifest_pct": 90.9,
+  "pct": 90.9,
+  "retail_insns": 22,
+  "comp_insns": 22,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x7C2250",
+  "name": "FUN_007c2250",
+  "tu": "match/core/movie_stream_methods.cpp",
+  "sym": "?FUN_007c2250@@YIHPAUMovieHandle_007BD470@@H@Z",
+  "len": "0x1BB",
+  "manifest_pct": 98.8,
+  "pct": 98.8,
+  "retail_insns": 172,
+  "comp_insns": 172,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x7C2410",
+  "name": "FUN_007c2410",
+  "tu": "match/core/movie_stream_methods.cpp",
+  "sym": "?FUN_007c2410@@YIHPAUMovieHandle_007BD470@@I@Z",
+  "len": "0x175",
+  "manifest_pct": 95.1,
+  "pct": 95.1,
+  "retail_insns": 142,
+  "comp_insns": 142,
+  "labels": [
+   "scheduling"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 0,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ },
+ {
+  "addr": "0x7C30D0",
+  "name": "FUN_007c30d0",
+  "tu": "match/core/movie_stream_methods.cpp",
+  "sym": "?FUN_007c30d0@@YIHPAUMovieHandle_007BD470@@HH@Z",
+  "len": "0x15D",
+  "manifest_pct": 90.0,
+  "pct": 90.0,
+  "retail_insns": 110,
+  "comp_insns": 110,
+  "labels": [
+   "scheduling",
+   "stack-slot"
+  ],
+  "only_retail": {},
+  "only_compiled": {},
+  "reg_diffs": 0,
+  "stack_diffs": 2,
+  "imm_diffs": 0,
+  "primary": "scheduling",
+  "eligible": true
+ }
+]

@@ -50,22 +50,22 @@ public:
     int   Type;                    // +0xB4  ctor -1
     void* SidebarImage;            // +0xB8  cameo shape; ctor 0, set by Load
     int   Action;                  // +0xBC  ctor 0
-    int   unknown_C0;              // +0xC0  ctor -1
-    int   unknown_C4;              // +0xC4  ctor -1
-    void* unknown_C8;              // +0xC8  ctor 0; swizzled by Load
+    int   SpecialSound;              // +0xC0  ctor -1
+    int   StartSound;              // +0xC4  ctor -1
+    void* AuxBuilding;              // +0xC8  ctor 0; swizzled by Load
     char  CameoFile[0x19];         // +0xCC  ctor [EDI]=0 @0x006CE617
     bool  UseChargeDrain;          // +0xE5  ctor 0
-    bool  unknown_E6;              // +0xE6  ctor 1
-    bool  unknown_E7;              // +0xE7  ctor 0
+    bool  IsPowered;              // +0xE6  ctor 1
+    bool  DisableableFromShell;              // +0xE7  ctor 0
     int   FlashSidebarTabFrames;   // +0xE8  ctor -1
-    bool  unknown_EC;              // +0xEC  ctor 0
-    bool  unknown_ED;              // +0xED  ctor 0
+    bool  AIDefendAgainst;              // +0xEC  ctor 0
+    bool  PreClick;              // +0xED  ctor 0
     bool  PostClick;               // +0xEE  ctor 0
-    int   PostClickIndex;          // +0xF0  ctor -1
-    bool  unknown_F4;              // +0xF4  ctor 0
+    int   PreDependent;          // +0xF0  ctor -1
+    bool  ShowTimer;              // +0xF4  ctor 0
     bool  ManualControl;           // +0xF5  ctor 0
-    float unknown_F8;              // +0xF8  ctor 0; floating range scale (0x6DC1C6)
-    int   unknown_FC;              // +0xFC  ctor 0; radial subdivision count
+    float Range;              // +0xF8  ctor 0; floating range scale (0x6DC1C6)
+    int   LineMultiplier;              // +0xFC  ctor 0; radial subdivision count
 };
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, ArrayIndex)             == 0x98);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, WeaponType)             == 0x9C);
@@ -77,22 +77,22 @@ GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, RechargeTime)           == 0xB0)
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Type)                   == 0xB4);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, SidebarImage)           == 0xB8);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Action)                 == 0xBC);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_C0)             == 0xC0);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_C4)             == 0xC4);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_C8)             == 0xC8);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, SpecialSound)             == 0xC0);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, StartSound)             == 0xC4);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, AuxBuilding)             == 0xC8);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, CameoFile)              == 0xCC);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, UseChargeDrain)         == 0xE5);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_E6)             == 0xE6);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_E7)             == 0xE7);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, IsPowered)             == 0xE6);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, DisableableFromShell)             == 0xE7);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, FlashSidebarTabFrames)  == 0xE8);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_EC)             == 0xEC);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_ED)             == 0xED);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, AIDefendAgainst)             == 0xEC);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, PreClick)             == 0xED);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, PostClick)              == 0xEE);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, PostClickIndex)         == 0xF0);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_F4)             == 0xF4);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, PreDependent)         == 0xF0);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, ShowTimer)             == 0xF4);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, ManualControl)          == 0xF5);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_F8)             == 0xF8);
-GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_FC)             == 0xFC);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Range)             == 0xF8);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, LineMultiplier)             == 0xFC);
 GG_STATIC_ASSERT(sizeof(SuperWeaponTypeClass)                           == 0x100);
 
 #endif  // GG_MATCH_LAYOUT_SUPER_WEAPON_TYPE_CLASS_H

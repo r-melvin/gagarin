@@ -429,8 +429,8 @@ void __cdecl FUN_007315A0()
         for (int i = DAT_008B4108.Count - 1; i >= 0 && !found; --i) {
             UnitClass* object = DAT_008B4108.Items[i];
             if (object && !object->InLimbo && object->Owner->IsControlledByCurrentPlayer()) {
-                for (int j = 0; j < RulesInstance->unknown_B20.Count; ++j)
-                    if (RulesInstance->unknown_B20.Items[j] == static_cast<const UnitTypeClass*>(object->Type)) { second = object->vf_18(); found = true; break; }
+                for (int j = 0; j < RulesInstance->BaseUnit.Count; ++j)
+                    if (RulesInstance->BaseUnit.Items[j] == static_cast<const UnitTypeClass*>(object->Type)) { second = object->vf_18(); found = true; break; }
             }
         }
     }

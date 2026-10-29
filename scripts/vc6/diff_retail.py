@@ -416,6 +416,9 @@ def main():
     ap.add_argument("--skip", metavar="RETAIL,COMPILED", default="0,0",
                     help="leading instructions to drop from the retail / compiled stream "
                          "(a distribution patch over a function's prologue)")
+    ap.add_argument("--dump-streams", metavar="JSON",
+                    help="write the trimmed retail/compiled instruction streams "
+                         "and COFF relocation offsets to JSON (residual_classify.py)")
     ap.add_argument("--addr", required=True)
     ap.add_argument("--len", default="auto",
                     help="full validated retail byte span (hex); the legacy "
@@ -481,6 +484,11 @@ def main():
 
     skip_retail, skip_comp = (int(v) for v in a.skip.split(","))
     retail, comp = retail[skip_retail:], comp[skip_comp:]
+    if a.dump_streams:
+        with open(a.dump_streams, "w") as f:
+            json.dump({"retail": retail, "comp": comp,
+                       "relocs": sorted(relocs) if not isinstance(relocs, dict)
+                       else sorted(relocs.keys())}, f)
     n = max(len(retail), len(comp))
     exact = reloc = mismatch = 0
     print(f"{'off':>5}  {'retail':<22} {'compiled':<22} verdict")

@@ -84467,11 +84467,11 @@
  {
   "tu": "match/map/tu110_isometric_tile_type_class.cpp",
   "addr": "0x547CE0",
-  "sym": "?FUN_00547CE0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x1",
-  "name": "FUN_00547CE0",
+  "name": "exit-time destructor stub (function-local table of FUN_00547370)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu110_isometric_tile_type_class.cpp",
@@ -84710,16 +84710,16 @@
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x5638C0",
-  "sym": "?FUN_005638C0@Obj_005638C0@@QAEXXZ",
+  "sym": "_$E5",
   "len": "0x5",
-  "name": "Obj_005638C0::FUN_005638C0",
+  "name": "_$E static initialiser (DAT_00ABCF60 entry)",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x565080",
-  "sym": "_$E5",
+  "sym": "_$E8",
   "len": "0xa",
   "name": "atexit cleanup (InvalidCell)",
   "status": "matched",
@@ -84746,7 +84746,7 @@
  {
   "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x565060",
-  "sym": "_$E7",
+  "sym": "_$E10",
   "len": "0x16",
   "name": "dynamic initializer (InvalidCell)",
   "status": "matched",
@@ -84758,6 +84758,15 @@
   "sym": "_$E1",
   "len": "0x1fa6",
   "name": "static initialiser",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x5638D0",
+  "sym": "_$E4",
+  "len": "0x178c",
+  "name": "static initialiser (DAT_00ABCF60)",
   "status": "matched",
   "pct": 100.0
  },
@@ -96701,6 +96710,24 @@
   "pct": 100.0
  },
  {
+  "tu": "match/map/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x543F10",
+  "sym": "_$E2",
+  "len": "0x776",
+  "name": "static initialiser (Gbl_00ABC2D0)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu110_isometric_tile_type_class.cpp",
+  "addr": "0x547370",
+  "sym": "?FUN_00547370@IsometricTileTypeClass@@QAEPAUCellStruct@@XZ",
+  "len": "0x963",
+  "name": "IsometricTileTypeClass::FUN_00547370",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/core/small_container_methods.cpp",
   "addr": "0x54F1C0",
   "sym": "?FUN_0054F1C0@Obj_0054F1C0@@QAE_NG@Z",
@@ -101247,6 +101274,15 @@
   "name": "DiskLaserClass scalar deleting destructor",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/combat/tu066_disk_laser_class.cpp",
+  "addr": "0x4A6CF0",
+  "sym": "_$E15",
+  "len": "0x4a6",
+  "name": "static initialiser (DAT_008A0180)",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/tu072_d_surface.cpp",
@@ -146606,5 +146642,23 @@
   "name": "TechnoTypeClass::vf_25",
   "status": "partial",
   "pct": 98.5
+ },
+ {
+  "tu": "match/combat/voxel_anim_type_class_ini_74b050.cpp",
+  "addr": "0x74B050",
+  "sym": "?vf_25@VoxelAnimTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x5CD",
+  "name": "VoxelAnimTypeClass::vf_25",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/super_weapon_type_class_ini_6cea20.cpp",
+  "addr": "0x6CEA20",
+  "sym": "?vf_25@SuperWeaponTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x43D",
+  "name": "SuperWeaponTypeClass::vf_25",
+  "status": "matched",
+  "pct": 100
  }
 ]

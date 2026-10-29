@@ -4132,7 +4132,7 @@ void Tactical::FUN_006DBE20()
     }
     if (DAT_008809A0 == -1) return;
     SuperWeaponTypeClass* type = SuperWeaponTypeClass_Array.Items[DAT_008809A0];
-    float scale = type->unknown_F8;
+    float scale = type->Range;
     if (!(scale > 0.0f)) return;
     CellStruct cellPosition = DAT_0088095C;
     CoordStruct temporary;
@@ -4148,7 +4148,7 @@ void Tactical::FUN_006DBE20()
     else if (level <= 0) { direction = 1; DAT_00842954 = direction; }
     ColorStruct baseColor = HouseClass_ArrayItems[CurrentPlayer->ArrayIndex]->Color;
     ColorStruct color(0, 0, 0);
-    int count = type->unknown_FC;
+    int count = type->LineMultiplier;
     if (count > 0) {
         if ((float)count * scale < 0.0f) return;
         int step = 0;
@@ -4158,10 +4158,10 @@ void Tactical::FUN_006DBE20()
             if (level >= 100) direction = -1;
             else if (level <= 0) direction = 1;
             color.FUN_006612C0(level, DAT_00B0CD70);
-            FUN_00456980(0, 1, center, color, (float)step / (float)type->unknown_FC, 0, 0);
+            FUN_00456980(0, 1, center, color, (float)step / (float)type->LineMultiplier, 0, 0);
             ++step;
             // Native TEST AH,0x41 repeats for less/equal OR unordered.
-        } while (!((float)step > (float)type->unknown_FC * scale));
+        } while (!((float)step > (float)type->LineMultiplier * scale));
         return;
     }
     baseColor.FUN_006612C0(level, DAT_00B0CD70);

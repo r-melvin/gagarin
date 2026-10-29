@@ -19,8 +19,12 @@
 #include "../_layout/obj_004a1d30.h"
 #include "bullet_type_class.h"
 #include "../core/vector_class.h"
+#include "../core/type_list.h"
+#include "../_layout/color_struct.h"
 
 class WarheadTypeClass;  // Warhead member is only stored as a pointer here.
+class AnimTypeClass;
+class ParticleSystemTypeClass;
 
 // ---------------------------------------------------------------------------
 // WeaponTypeClass  (sizeof = 0x160; confirmed by `PUSH 0x160` before the
@@ -39,6 +43,7 @@ public:
     virtual int vf_11();   // 11  0x7730E0
     virtual int vf_12();   // 12  0x7730D0
     virtual void vf_13(Obj_004A1D30* crc);   // 13  0x772AE0
+    virtual bool vf_25(CCINIClass* ini);   // 25  0x772080
     // STATIC: GAMEMD 0x772FA0  (__fastcall)
     static WeaponTypeClass* FindOrAllocate(const char* id);
     // FUNCTION: GAMEMD 0x7729F0  (__thiscall)
@@ -64,79 +69,142 @@ public:
     WarheadTypeClass* Warhead;                // +0xAC
     int               ROF;                    // +0xB0
     int               Range;                  // +0xB4
-    unsigned int      unknown_B8;             // +0xB8
-    DynamicVectorClass<int> Reports;           // +0xBC (items +0xC0, count +0xCC)
-    char              _tail[0xDC - 0xD4];    // +0xD4..+0xDB
-    int*              unknown_DC;            // +0xDC; third counted dword list saved by Save (count at +0xE8)
-    char              _tail_E0[0xE8 - 0xE0]; // +0xE0..+0xE7
-    int               unknown_E8;            // +0xE8; entry count of the +0xDC list
-    char              _tail_EC[0xF8 - 0xEC]; // +0xEC..+0xF7
-    int*              unknown_F8;            // +0xF8; first counted dword list saved by Save (count at +0x104)
-    char              _tail_FC[0x104 - 0xFC]; // +0xFC..+0x103
-    int               unknown_104;           // +0x104; entry count of the +0xF8 list
-    char              _tail_108[0x129 - 0x108]; // +0x108..+0x128
-    bool              unknown_129;            // +0x129
-    bool              unknown_12A;            // +0x12A
-    bool              unknown_12B;            // +0x12B
-    bool              unknown_12C;            // +0x12C
-    bool              unknown_12D;            // +0x12D
-    bool              unknown_12E;            // +0x12E
-    bool              unknown_12F;            // +0x12F; byte load at Bullet 0x46A515/0x46A985
-    bool              unknown_130;            // +0x130
-    char              _tail_131[0x136 - 0x131]; // +0x131..+0x135
-    bool              unknown_136;            // +0x136
-    char              _tail_137[0x142 - 0x137]; // +0x137..+0x141
-    bool              unknown_142;            // +0x142
-    char              _tail_143[0x145 - 0x143]; // +0x143..+0x144
-    bool              unknown_145;            // +0x145
-    bool              unknown_146;            // +0x146
-    bool              unknown_147;            // +0x147
-    bool              unknown_148;            // +0x148
-    bool              unknown_149;            // +0x149; byte loads at Bullet 0x46A887/0x46AD3E
-    char              _tail_14A[0x14C - 0x14A]; // +0x14A..+0x14B
-    bool              unknown_14C;            // +0x14C
-    bool              unknown_14D;            // +0x14D
-    unsigned char     unknown_14E;            // +0x14E
-    char              _tail_14F[0x150 - 0x14F]; // +0x14F
-    bool              unknown_150;            // +0x150 (bool; read by TechnoClass slot 248 @0x70DD50)
-    unsigned char     unknown_151;            // +0x151; byte loads at Bullet 0x46A8B1/0x46AD86
-    char              _tail2[0x158 - 0x152];  // +0x152..+0x157
-    int               unknown_158;            // +0x158 (signed test at 0x46913E)
-    char              _tail3[0x160 - 0x15C];  // +0x15C..+0x15F
+    int               MinimumRange;           // +0xB8
+    TypeList<int>     Reports;                // +0xBC (items +0xC0, count +0xCC)
+    TypeList<int>     DownReport;             // +0xD8 (items +0xDC, count +0xE8)
+    TypeList<const AnimTypeClass*> Anim;      // +0xF4 (items +0xF8, count +0x104)
+    const AnimTypeClass* OccupantAnim;        // +0x110
+    const AnimTypeClass* AssaultAnim;         // +0x114
+    const AnimTypeClass* OpenToppedAnim;      // +0x118
+    ParticleSystemTypeClass* AttachedParticleSystem; // +0x11C
+    ColorStruct       LaserInnerColor;        // +0x120
+    ColorStruct       LaserOuterColor;        // +0x123
+    ColorStruct       LaserOuterSpread;       // +0x126
+    bool              UseFireParticles;       // +0x129
+    bool              UseSparkParticles;      // +0x12A
+    bool              OmniFire;               // +0x12B
+    bool              DistributedWeaponFire;  // +0x12C
+    bool              IsRailgun;              // +0x12D
+    bool              Lobber;                 // +0x12E
+    bool              Bright;                 // +0x12F; byte load at Bullet 0x46A515/0x46A985
+    bool              IsSonic;                // +0x130
+    bool              Spawner;                // +0x131
+    bool              LimboLaunch;            // +0x132
+    bool              DecloakToFire;          // +0x133
+    bool              CellRangefinding;       // +0x134
+    bool              FireOnce;               // +0x135
+    bool              NeverUse;               // +0x136
+    bool              RevealOnFire;           // +0x137
+    bool              TerrainFire;            // +0x138
+    bool              SabotageCursor;         // +0x139
+    bool              MigAttackCursor;        // +0x13A
+    bool              DisguiseFireOnly;       // +0x13B
+    int               DisguiseFakeBlinkTime;  // +0x13C
+    bool              InfiniteMindControl;    // +0x140
+    bool              FireWhileMoving;        // +0x141
+    bool              DrainWeapon;            // +0x142
+    bool              FireInTransport;        // +0x143
+    bool              Suicide;                // +0x144
+    bool              TurboBoost;             // +0x145
+    bool              Supress;                // +0x146
+    bool              Camera;                 // +0x147
+    bool              Charges;                // +0x148
+    bool              IsLaser;                // +0x149; byte loads at Bullet 0x46A887/0x46AD3E
+    bool              DiskLaser;              // +0x14A
+    bool              IsLine;                 // +0x14B
+    bool              IsBigLaser;             // +0x14C
+    bool              IsHouseColor;           // +0x14D
+    char              LaserDuration;          // +0x14E
+    bool              IonSensitive;           // +0x14F
+    bool              AreaFire;               // +0x150 (read by TechnoClass slot 248 @0x70DD50)
+    bool              IsElectricBolt;         // +0x151; byte loads at Bullet 0x46A8B1/0x46AD86
+    bool              DrawBoltAsLaser;        // +0x152
+    bool              IsAlternateColor;       // +0x153
+    bool              IsRadBeam;              // +0x154
+    bool              IsRadEruption;          // +0x155
+    char              _tail2[0x158 - 0x156];  // +0x156..+0x157
+    int               RadLevel;               // +0x158 (signed test at 0x46913E)
+    bool              IsMagBeam;              // +0x15C
+    char              _tail3[0x160 - 0x15D];  // +0x15D..+0x15F
 };
 
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, AmbientDamage) == 0x98);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Burst) == 0x9C);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Projectile) == 0xA0);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Burst)      == 0x9C);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Burst)  == 4);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Damage)     == 0xA4);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Damage) == 4);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed)      == 0xA8);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Range)      == 0xB4);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Range) == 4);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports)    == 0xBC);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Damage) == 0xA4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed) == 0xA8);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Warhead) == 0xAC);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, ROF) == 0xB0);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Range) == 0xB4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, MinimumRange) == 0xB8);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) == 0xBC);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DownReport) == 0xD8);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Anim) == 0xF4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, OccupantAnim) == 0x110);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, AssaultAnim) == 0x114);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, OpenToppedAnim) == 0x118);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, AttachedParticleSystem) == 0x11C);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, LaserInnerColor) == 0x120);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, LaserOuterColor) == 0x123);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, LaserOuterSpread) == 0x126);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, UseFireParticles) == 0x129);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, UseSparkParticles) == 0x12A);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, OmniFire) == 0x12B);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DistributedWeaponFire) == 0x12C);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsRailgun) == 0x12D);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Lobber) == 0x12E);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Bright) == 0x12F);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsSonic) == 0x130);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Spawner) == 0x131);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, LimboLaunch) == 0x132);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DecloakToFire) == 0x133);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, CellRangefinding) == 0x134);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, FireOnce) == 0x135);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, NeverUse) == 0x136);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, RevealOnFire) == 0x137);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, TerrainFire) == 0x138);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, SabotageCursor) == 0x139);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, MigAttackCursor) == 0x13A);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DisguiseFireOnly) == 0x13B);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DisguiseFakeBlinkTime) == 0x13C);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, InfiniteMindControl) == 0x140);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, FireWhileMoving) == 0x141);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DrainWeapon) == 0x142);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, FireInTransport) == 0x143);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Suicide) == 0x144);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, TurboBoost) == 0x145);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Supress) == 0x146);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Camera) == 0x147);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Charges) == 0x148);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsLaser) == 0x149);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DiskLaser) == 0x14A);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsLine) == 0x14B);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsBigLaser) == 0x14C);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsHouseColor) == 0x14D);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, LaserDuration) == 0x14E);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IonSensitive) == 0x14F);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, AreaFire) == 0x150);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsElectricBolt) == 0x151);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DrawBoltAsLaser) == 0x152);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsAlternateColor) == 0x153);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsRadBeam) == 0x154);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsRadEruption) == 0x155);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, RadLevel) == 0x158);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsMagBeam) == 0x15C);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x04 == 0xC0);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x10 == 0xCC);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_DC) == 0xDC);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_E8) == 0xE8);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_F8) == 0xF8);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_104) == 0x104);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_129) == 0x129);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12E) == 0x12E);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_130) == 0x130);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_136) == 0x136);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_142) == 0x142);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_145) == 0x145);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_14C) == 0x14C);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_14E) == 0x14E);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12F) == 0x12F);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_12F) == 1);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_149) == 0x149);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_149) == 1);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_151) == 0x151);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_151) == 1);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_150) == 0x150);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_158) == 0x158);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_158) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DownReport) + 0x04 == 0xDC);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, DownReport) + 0x10 == 0xE8);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Anim) + 0x04 == 0xF8);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Anim) + 0x10 == 0x104);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Reports) == 0x1C);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Burst) == 4);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Damage) == 4);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Range) == 4);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Bright) == 1);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->IsLaser) == 1);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->IsElectricBolt) == 1);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->RadLevel) == 4);
 GG_STATIC_ASSERT(sizeof(WeaponTypeClass)               == 0x160);
 
 // VectorClass head for WeaponTypeClass::Array (DynamicVectorClass of pointers).

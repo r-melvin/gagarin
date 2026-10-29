@@ -186,12 +186,12 @@ void SuperWeaponTypeClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1D50(ChargingVoice);
     crc->FUN_004A1D50(ImpatientVoice);
     crc->FUN_004A1D50(SuspendVoice);
-    crc->FUN_004A1CA0(unknown_E6);
-    crc->FUN_004A1CA0(unknown_E7);
-    crc->FUN_004A1CA0(unknown_ED);
+    crc->FUN_004A1CA0(IsPowered);
+    crc->FUN_004A1CA0(DisableableFromShell);
+    crc->FUN_004A1CA0(PreClick);
     crc->FUN_004A1CA0(PostClick);
-    crc->FUN_004A1D50(PostClickIndex);
-    crc->FUN_004A1CA0(unknown_F4);
+    crc->FUN_004A1D50(PreDependent);
+    crc->FUN_004A1CA0(ShowTimer);
     crc->FUN_004A1D50(RechargeTime);
     crc->FUN_004A1D50(Type);
     crc->FUN_004A1CA0(UseChargeDrain);

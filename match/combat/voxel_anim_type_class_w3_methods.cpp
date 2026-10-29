@@ -39,12 +39,12 @@ HRESULT __stdcall VoxelAnimTypeClass::Load(IStream* pStm)
         return hr;
     }
     new (this) VoxelAnimTypeClass(AbstractNoInit());
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2F8);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2E4);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2E8);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2EC);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2D4);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2FC);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Warhead);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&BounceAnim);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&ExpireAnim);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&TrailerAnim);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Spawns);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&AttachedSystem);
     FUN_005F8110();
     return 0;
 }

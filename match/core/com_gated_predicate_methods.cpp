@@ -23,7 +23,7 @@ int AircraftClass_0041B920::FUN_0041B920()
     int type = TypeIndex;
     RulesClass* rules = RulesInstance;
 
-    if (type != rules->TypeA && type != rules->TypeB) {
+    if (type != rules->V3RocketType && type != rules->DMislType) {
         return FUN_004DE620();
     }
 
@@ -43,7 +43,7 @@ int AircraftClass_0041B920::FUN_0041B980()
     int type = TypeIndex;
     RulesClass* rules = RulesInstance;
 
-    if (type != rules->TypeA && type != rules->TypeB) {
+    if (type != rules->V3RocketType && type != rules->DMislType) {
         return FUN_005F6B60();
     }
 

@@ -197,20 +197,20 @@ HRESULT __stdcall WeaponTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
     if (hr >= 0) {
-        int count = unknown_104;
+        int count = Anim.Count;
         pStm->Write(&count, 4, 0);
         for (int i = 0; i < count; i++) {
-            pStm->Write(&unknown_F8[i], 4, 0);
+            pStm->Write(&Anim.Items[i], 4, 0);
         }
         count = Reports.Count;
         pStm->Write(&count, 4, 0);
         for (int j = 0; j < count; j++) {
             pStm->Write(&Reports.Items[j], 4, 0);
         }
-        count = unknown_E8;
+        count = DownReport.Count;
         pStm->Write(&count, 4, 0);
         for (int k = 0; k < count; k++) {
-            pStm->Write(&unknown_DC[k], 4, 0);
+            pStm->Write(&DownReport.Items[k], 4, 0);
         }
         return 0;
     }

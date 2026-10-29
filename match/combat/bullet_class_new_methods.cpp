@@ -1389,12 +1389,12 @@ GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Range) == 0xB4);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Range) == 4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Warhead) == 0xAC);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Warhead) == 4);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12F) == 0x12F);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_12F) == 1);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_149) == 0x149);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_149) == 1);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_151) == 0x151);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_151) == 1);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Bright) == 0x12F);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Bright) == 1);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsLaser) == 0x149);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->IsLaser) == 1);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, IsElectricBolt) == 0x151);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->IsElectricBolt) == 1);
 GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xE4);
 GG_STATIC_ASSERT(sizeof(((CellClass*)0)->FirstObject) == 4);
 GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0x00);
@@ -1571,8 +1571,8 @@ GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed) == 0xa8);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Speed) == 4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Warhead) == 0xac);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Warhead) == 4);
-GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_158) == 0x158);
-GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_158) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, RadLevel) == 0x158);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->RadLevel) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Size) == 0x380);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Size) == 8);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Naval) == 0xcce);
@@ -1645,7 +1645,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
     // The native signed DWORD at WeaponType+0x158 is tested with JLE.
     if (WeaponType != 0) {
       // Native 46913E/469146 saves this value across the calls below.
-      const int radLevel = WeaponType->unknown_158;
+      const int radLevel = WeaponType->RadLevel;
       if (radLevel > 0) {
         CellStruct impactCell;
         impactCell.X = static_cast<short>(impact->X / 0x100);
@@ -2233,9 +2233,9 @@ debris_phase_469d06:
                     animationPosition.Z += 0x14;
                     const int animationIndex =
                         DAT_00A8B230->unknown_0218.RandomRanged(
-                            0, Rules->list_013C.Count - 1);
+                            0, Rules->MetallicDebris.Count - 1);
                     new (storage) AnimClass(
-                        const_cast<AnimTypeClass*>(Rules->list_013C.Items[animationIndex]),
+                        const_cast<AnimTypeClass*>(Rules->MetallicDebris.Items[animationIndex]),
                         animationPosition, 0, 1, 0x600, 0, false);
                 }
                 --remainingDebris;
@@ -2434,7 +2434,7 @@ void BulletClass::FUN_0046A310()
             // 46A50F-46A555 snapshots these fields before CoCreateInstance;
             // keep the pre-call values if COM invokes code that mutates them.
             WarheadTypeClass* spawnWarhead = weapon->Warhead;
-            unsigned char spawnFlag = weapon->unknown_12F;
+            unsigned char spawnFlag = weapon->Bright;
             int spawnDamage = weapon->Damage;
             int spawnSpeed = weapon->Speed;
             TechnoClass* spawnOwner = Owner;
@@ -2514,9 +2514,9 @@ void BulletClass::FUN_0046A310()
                     // each call.  The first callback receives FirstObject,
                     // zero, WeaponType, and the cell coordinate; the second
                     // receives FirstObject, WeaponType, and the coordinate.
-                    if (weapon->unknown_149 != 0 && Owner != 0)
+                    if (weapon->IsLaser != 0 && Owner != 0)
                         Owner->FUN_006FD210(target, 0, weapon, &callbackPosition);
-                    if (weapon->unknown_151 != 0 && Owner != 0)
+                    if (weapon->IsElectricBolt != 0 && Owner != 0)
                         Owner->FUN_006FD460(target, weapon, &callbackPosition);
                 }
             }
@@ -2538,7 +2538,7 @@ void BulletClass::FUN_0046A310()
             randomCell.Y + DAT_00A8B230->unknown_0218.RandomRanged(-2, 2));
         // Native 46A985-46A9B0 snapshots the setter inputs and Owner before
         // the Map lookup and CoCreateInstance calls.
-        unsigned char spawnFlag = weapon->unknown_12F;
+        unsigned char spawnFlag = weapon->Bright;
         TechnoClass* spawnOwner = Owner;
         int spawnDamage = weapon->Damage;
         int spawnSpeed = weapon->Speed;
@@ -2619,12 +2619,12 @@ void BulletClass::FUN_0046A310()
                 // Bullet.Owner.  The first Map lookup's returned CellClass*
                 // is argument 1 at 46AD81; the second is argument 1 at
                 // 46ADB9.  Neither argument is an assumed FirstObject.
-                if (weapon->unknown_149 != 0 && Owner != 0) {
+                if (weapon->IsLaser != 0 && Owner != 0) {
                     CellClass* callbackCell = reinterpret_cast<CellClass*>(
                         Map_0087F7E8.FUN_005657A0(&randomCell));
                     Owner->FUN_006FD210(callbackCell, 0, weapon, &callbackPosition);
                 }
-                if (weapon->unknown_151 != 0 && Owner != 0) {
+                if (weapon->IsElectricBolt != 0 && Owner != 0) {
                     CellClass* callbackCell = reinterpret_cast<CellClass*>(
                         Map_0087F7E8.FUN_005657A0(&randomCell));
                     Owner->FUN_006FD460(callbackCell, weapon, &callbackPosition);

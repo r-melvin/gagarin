@@ -90,12 +90,74 @@ CellOffset DAT_00ABD490[369] = {
     CellOffset(-11, -1), CellOffset(11, -1), CellOffset(11, 0), CellOffset(-11, 0)
 };
 
-// FUNCTION: GAMEMD 0x5638C0
-// Tail-forwards to another function.
-void Obj_005638C0::FUN_005638C0()
-{
-    FUN_005638D0();
-}
+// SYNTHETIC: GAMEMD 0x5638C0 -- initialiser entry: tail-jumps to the aggregate fill at 0x5638D0
+// SYNTHETIC: GAMEMD 0x5638D0 -- aggregate fill of the offset table
+// GLOBAL: GAMEMD 0xABCF60
+// Cell offsets, 309 entries.
+CellOffset DAT_00ABCF60[309] = {
+    CellOffset(0, 0), CellOffset(-1, 1), CellOffset(0, 1), CellOffset(1, 1), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, -1), CellOffset(0, -1), CellOffset(-1, -1), CellOffset(1, 1),
+    CellOffset(0, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(0, -1),
+    CellOffset(-1, -1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(1, 1),
+    CellOffset(-1, 1), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(0, -1),
+    CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1),
+    CellOffset(1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(-1, 1), CellOffset(1, 1),
+    CellOffset(-1, 1), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(-1, -1), CellOffset(0, -1), CellOffset(0, -1),
+    CellOffset(0, -1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(1, 1),
+    CellOffset(1, 1), CellOffset(-1, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1),
+    CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, -1), CellOffset(-1, -1),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(1, -1), CellOffset(-1, -1),
+    CellOffset(-1, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, 1),
+    CellOffset(0, 1), CellOffset(0, 1), CellOffset(1, 1), CellOffset(0, 1), CellOffset(0, 1),
+    CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1),
+    CellOffset(1, 0), CellOffset(1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1),
+    CellOffset(0, -1), CellOffset(0, -1), CellOffset(-1, -1), CellOffset(0, -1), CellOffset(0, -1),
+    CellOffset(0, -1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(1, 1),
+    CellOffset(0, 1), CellOffset(0, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(1, 1),
+    CellOffset(-1, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 1),
+    CellOffset(-1, 1), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(-1, -1),
+    CellOffset(1, -1), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(-1, -1), CellOffset(1, -1),
+    CellOffset(0, -1), CellOffset(0, -1), CellOffset(-1, -1), CellOffset(0, -1), CellOffset(0, -1),
+    CellOffset(0, -1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1),
+    CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(1, 1), CellOffset(1, 1),
+    CellOffset(-1, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 1),
+    CellOffset(-1, 1), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(-1, -1), CellOffset(0, -1), CellOffset(0, -1),
+    CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1),
+    CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1),
+    CellOffset(0, 1), CellOffset(0, 1), CellOffset(1, 1), CellOffset(1, 1), CellOffset(-1, 1),
+    CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1),
+    CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(-1, -1),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(1, -1), CellOffset(-1, -1),
+    CellOffset(-1, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1),
+    CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, 1), CellOffset(0, 1),
+    CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1), CellOffset(0, 1),
+    CellOffset(1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(-1, 1), CellOffset(1, 1),
+    CellOffset(1, 1), CellOffset(-1, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1),
+    CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 1), CellOffset(-1, 1), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0),
+    CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, 0),
+    CellOffset(-1, 0), CellOffset(1, 0), CellOffset(-1, 0), CellOffset(1, -1), CellOffset(-1, -1),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(-1, -1), CellOffset(1, -1),
+    CellOffset(1, -1), CellOffset(-1, -1), CellOffset(-1, -1), CellOffset(1, -1), CellOffset(1, -1),
+    CellOffset(-1, -1), CellOffset(-1, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1),
+    CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1), CellOffset(0, -1)
+};
 
 // SYNTHETIC: GAMEMD 0x565060 -- CellClass constructor + atexit registration
 // SYNTHETIC: GAMEMD 0x565080 -- exit-time stub: tail-jumps to ~CellClass

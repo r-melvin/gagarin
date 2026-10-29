@@ -37,7 +37,13 @@ export GAMEMD_BINARY="/path/to/gamemd.exe"
 python3 scripts/vc6/verify_all.py
 ```
 
-`raw_match.py` and `diff_retail.py` inherit this setting. They verify the image's
+`raw_match.py` and `diff_retail.py` inherit this setting.
+
+Both gates run `--jobs N` units at once (default nproc, max 8) with the same
+output as a serial run. `--changed [REF]` (default HEAD) checks only the TUs
+whose source or transitively included header differs from REF; a change to the
+toolchain wrapper or a scoring script selects everything. `verify_all.py` also
+takes `--tu` and `--shard I/N`. They verify the image's
 SHA-256 against the project pin and require the full span to be backed by one
 PE section. A configured bad path or hash fails; it never falls back to Ghidra.
 With the variable unset, the existing Ghidra memory reader remains available.

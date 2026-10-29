@@ -815,7 +815,7 @@ bool MultiplayerGameMode::SpawnBaseUnits(HouseClass* house, int unused)
 {
     if (DAT_00A8B258 == 0)
         return true;
-    UnitTypeClass* type = house->FUN_00505310(RulesInstance->unknown_B20);
+    UnitTypeClass* type = house->FUN_00505310(RulesInstance->BaseUnit);
     if (type == 0)
         return false;
     UnitClass* unit = new UnitClass(type, house);

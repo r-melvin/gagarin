@@ -106,6 +106,8 @@ struct RulesClass
     bool Read_SpecialWeapons(CCINIClass* pINI);
     // FUNCTION: GAMEMD 0x66BBB0  RulesClass::Read_CombatDamage
     bool Read_CombatDamage(CCINIClass* pINI);
+    // GAMEMD 0x66D530  RulesClass::Read_General (declaration only; body not yet matched)
+    bool Read_General(CCINIClass* pINI);
 
 
     int DetailMinFrameRateNormal; // 0x6850FB -> fastcall55AF40
@@ -130,7 +132,7 @@ struct RulesClass
     AnimTypeClass* DropPodPuff; // +0x04C
     int WaypointAnimationSpeed; // 0x6D26BE reads DWORD duration; 0x6D26E1 stores it to Tactical+DAC.
     AnimTypeClass* BarrelExplode;   // +0x54
-    TypeList<const VoxelAnimTypeClass*> list_0058;  // +0x0058
+    TypeList<const VoxelAnimTypeClass*> BarrelDebris;  // +0x0058
     ParticleSystemTypeClass* BarrelParticle;   // +0x74
     float RadarEventColorSpeed;   // +0x78
     int RadarEventMinRadius;   // +0x7C
@@ -165,9 +167,9 @@ struct RulesClass
     OverlayTypeClass* CrateImg;   // +0xFC
     OverlayTypeClass* WaterCrateImg;   // +0x100
     TypeList<const AnimTypeClass*> TouchdownAnims;  // +0x0104
-    TypeList<const AnimTypeClass*> list_0120;  // +0x0120
-    TypeList<const AnimTypeClass*> list_013C;  // +0x013C
-    TypeList<const AnimTypeClass*> list_0158;  // +0x0158
+    TypeList<const AnimTypeClass*> DeadBodies;  // +0x0120
+    TypeList<const AnimTypeClass*> MetallicDebris;  // +0x013C
+    TypeList<const AnimTypeClass*> BridgeExplosions;  // +0x0158
     int DigSound;   // +0x174
     int CreateUnitSound;   // +0x178
     int CreateInfantrySound;   // +0x17C
@@ -243,9 +245,9 @@ struct RulesClass
     AnimTypeClass* Dig;   // +0x294
     AnimTypeClass* IonBlast;   // +0x298
     AnimTypeClass* IonBeam;   // +0x29C
-    TypeList<const AnimTypeClass*> list_02A0;  // +0x02A0
-    TypeList<const AnimTypeClass*> list_02BC;  // +0x02BC
-    TypeList<const AnimTypeClass*> list_02D8;  // +0x02D8
+    TypeList<const AnimTypeClass*> DamageFireTypes;  // +0x02A0
+    TypeList<const AnimTypeClass*> WeatherConClouds;  // +0x02BC
+    TypeList<const AnimTypeClass*> WeatherConBolts;  // +0x02D8
     AnimTypeClass* WeatherConBoltExplosion;   // +0x2F4
     WarheadTypeClass* DominatorWarhead;   // +0x2F8
     AnimTypeClass* DominatorFirstAnim;   // +0x2FC
@@ -271,12 +273,12 @@ struct RulesClass
     AnimTypeClass* ForceShieldInvokeAnim;   // +0x34C
     AnimTypeClass* WeaponNullifyAnim; // 46A2A1 special-impact animation constructor argument
     AnimTypeClass* AtmosphereEntry; // +0x354
-    TypeList<int> list_0358;  // +0x0358
-    TypeList<int> list_0374;  // +0x0374
-    TypeList<int> list_0390;  // +0x0390
-    TypeList<int> list_03AC;  // +0x03AC
-    TypeList<int> list_03C8;  // +0x03C8
-    TypeList<int> list_03E4;  // +0x03E4
+    TypeList<int> PrerequisitePower;  // +0x0358
+    TypeList<int> PrerequisiteFactory;  // +0x0374
+    TypeList<int> PrerequisiteBarracks;  // +0x0390
+    TypeList<int> PrerequisiteRadar;  // +0x03AC
+    TypeList<int> PrerequisiteTech;  // +0x03C8
+    TypeList<int> PrerequisiteProc;  // +0x03E4
     void* PrerequisiteProcAlternate;   // +0x400
     int GateUp;   // +0x404
     int GateDown;   // +0x408
@@ -289,13 +291,13 @@ struct RulesClass
     double unknown_428;   // +0x428
     double unknown_430;   // +0x430
     int unknown_438;   // +0x438
-    TypeList<int> list_043C;  // +0x043C
-    TypeList<int> list_0458;  // +0x0458
-    TypeList<int> list_0474;  // +0x0474
+    TypeList<int> RadarEventSuppressionDistances;  // +0x043C
+    TypeList<int> RadarEventVisibilityDurations;  // +0x0458
+    TypeList<int> RadarEventDurations;  // +0x0474
     int IonCannonDamage;   // +0x490
     int RailgunDamageRadius;   // +0x494
     BuildingTypeClass* PrismType;   // +0x498
-    int unknown_49C;   // +0x49C
+    int PrismSupportModifier;   // +0x49C
     int PrismSupportMax;   // +0x4A0
     int PrismSupportDelay;   // +0x4A4
     int PrismSupportDuration;   // +0x4A8
@@ -305,7 +307,7 @@ struct RulesClass
     float V3RocketPitchInitial;   // +0x4B8
     float V3RocketPitchFinal;   // +0x4BC
     float V3RocketTurnRate;   // +0x4C0
-    int unknown_4C4;   // +0x4C4
+    int V3RocketRaiseRate;   // +0x4C4
     float V3RocketAcceleration;   // +0x4C8
     int V3RocketAltitude;   // +0x4CC
     int V3RocketDamage;   // +0x4D0
@@ -313,13 +315,13 @@ struct RulesClass
     int V3RocketBodyLength;   // +0x4D8
     bool V3RocketLazyCurve;   // +0x4DC
     char unknown_4DD[0x3];
-    int TypeA;          // +0x4E0
+    int V3RocketType;          // +0x4E0
     int DMislPauseFrames;   // +0x4E4
     int DMislTiltFrames;   // +0x4E8
     float DMislPitchInitial;   // +0x4EC
     float DMislPitchFinal;   // +0x4F0
     float DMislTurnRate;   // +0x4F4
-    int unknown_4F8;   // +0x4F8
+    int DMislRaiseRate;   // +0x4F8
     float DMislAcceleration;   // +0x4FC
     int DMislAltitude;   // +0x500
     int DMislDamage;   // +0x504
@@ -327,13 +329,13 @@ struct RulesClass
     int DMislBodyLength;   // +0x50C
     bool DMislLazyCurve;   // +0x510
     char unknown_511[0x3];
-    int TypeB;          // +0x514
+    int DMislType;          // +0x514
     int CMislPauseFrames;   // +0x518
     int CMislTiltFrames;   // +0x51C
     float CMislPitchInitial;   // +0x520
     float CMislPitchFinal;   // +0x524
     float CMislTurnRate;   // +0x528
-    int unknown_52C;   // +0x52C
+    int CMislRaiseRate;   // +0x52C
     float CMislAcceleration;   // +0x530
     int CMislAltitude;   // +0x534
     int CMislDamage;   // +0x538
@@ -372,7 +374,7 @@ struct RulesClass
     double HoverBrake;   // +0x5E8
     double HoverDampen;   // +0x5F0
     double PlacementDelay;   // +0x5F8
-    TypeList<const VoxelAnimTypeClass*> list_0600;  // +0x0600
+    TypeList<const VoxelAnimTypeClass*> ExplosiveVoxelDebris;  // +0x0600
     void* TireVoxelDebris;   // +0x61C
     void* ScrapVoxelDebris;   // +0x620
     int BridgeVoxelMax;   // +0x624
@@ -448,13 +450,13 @@ struct RulesClass
     TypeList<const SmudgeTypeClass*> list_07FC;  // +0x07FC
     TypeList<const SmudgeTypeClass*> list_0818;  // +0x0818
     TypeList<const SmudgeTypeClass*> list_0834;  // +0x0834
-    TypeList<const BuildingTypeClass*> list_0850;  // +0x0850
+    TypeList<const BuildingTypeClass*> RepairBay;  // +0x0850
     void* GDIGateOne;   // +0x86C
     void* GDIGateTwo;   // +0x870
     void* NodGateOne;   // +0x874
     void* NodGateTwo;   // +0x878
     void* WallTower;   // +0x87C
-    TypeList<const BuildingTypeClass*> list_0880;  // +0x0880
+    TypeList<const BuildingTypeClass*> Shipyard;  // +0x0880
     int GDIPowerPlant;   // +0x89C
     int NodRegularPower;   // +0x8A0
     int NodAdvancedPower;   // +0x8A4
@@ -486,9 +488,9 @@ struct RulesClass
     double GDIBaseDefenseCoefficient;   // +0xB10
     int ComputerBaseDefenseResponse;   // +0xB18
     int MaximumBaseDefenseValue;   // +0xB1C
-    TypeList<const UnitTypeClass*> unknown_B20;  // +0x0B20
-    TypeList<const UnitTypeClass*> list_0B3C;  // +0x0B3C
-    TypeList<const AircraftTypeClass*> list_0B58;  // +0x0B58
+    TypeList<const UnitTypeClass*> BaseUnit;  // +0x0B20
+    TypeList<const UnitTypeClass*> HarvesterUnit;  // +0x0B3C
+    TypeList<const AircraftTypeClass*> PadAircraft;  // +0x0B58
     TypeList<const AnimTypeClass*> list_0B74;  // +0x0B74
     TypeList<const AnimTypeClass*> list_0B90;  // +0x0B90
     AnimTypeClass* Smoke;   // +0xBAC
@@ -508,22 +510,22 @@ struct RulesClass
     char unknown_BF9[0x3];
     int ChronoMinimumDelay;   // +0xBFC
     int ChronoRangeMinimum;   // +0xC00
-    TypeList<const InfantryTypeClass*> list_0C04;  // +0x0C04
-    TypeList<int> list_0C20;  // +0x0C20
-    TypeList<const InfantryTypeClass*> list_0C3C;  // +0x0C3C
-    TypeList<int> list_0C58;  // +0x0C58
-    TypeList<const InfantryTypeClass*> list_0C74;  // +0x0C74
-    TypeList<int> list_0C90;  // +0x0C90
-    TypeList<const InfantryTypeClass*> list_0CAC;  // +0x0CAC
-    TypeList<int> list_0CC8;  // +0x0CC8
-    TypeList<const InfantryTypeClass*> list_0CE4;  // +0x0CE4
-    TypeList<const InfantryTypeClass*> list_0D00;  // +0x0D00
-    TypeList<const UnitTypeClass*> list_0D1C;  // +0x0D1C
-    TypeList<const BuildingTypeClass*> list_0D38;  // +0x0D38
+    TypeList<const InfantryTypeClass*> AmerParaDropInf;  // +0x0C04
+    TypeList<int> AmerParaDropNum;  // +0x0C20
+    TypeList<const InfantryTypeClass*> AllyParaDropInf;  // +0x0C3C
+    TypeList<int> AllyParaDropNum;  // +0x0C58
+    TypeList<const InfantryTypeClass*> SovParaDropInf;  // +0x0C74
+    TypeList<int> SovParaDropNum;  // +0x0C90
+    TypeList<const InfantryTypeClass*> YuriParaDropInf;  // +0x0CAC
+    TypeList<int> YuriParaDropNum;  // +0x0CC8
+    TypeList<const InfantryTypeClass*> AnimToInfantry;  // +0x0CE4
+    TypeList<const InfantryTypeClass*> SecretInfantry;  // +0x0D00
+    TypeList<const UnitTypeClass*> SecretUnits;  // +0x0D1C
+    TypeList<const BuildingTypeClass*> SecretBuildings;  // +0x0D38
     int unknown_D54;
-    ObjectTypeClass* unknown_D58;   // +0xD58
-    ObjectTypeClass* unknown_D5C;   // +0xD5C
-    ObjectTypeClass* unknown_D60;   // +0xD60
+    ObjectTypeClass* AlliedDisguise;   // +0xD58
+    ObjectTypeClass* SovietDisguise;   // +0xD5C
+    ObjectTypeClass* ThirdDisguise;   // +0xD60
     int SpyPowerBlackout;   // +0xD64
     float SpyMoneyStealPercent;   // +0xD68
     bool AttackCursorOnDisguise;   // +0xD6C
@@ -532,10 +534,10 @@ struct RulesClass
     int AISafeDistance;   // +0xD74
     int HarvesterTooFarDistance;   // +0xD78
     int ChronoHarvTooFarDistance;   // +0xD7C
-    TypeList<int> list_0D80;  // +0x0D80
-    TypeList<int> list_0D9C;  // +0x0D9C
-    TypeList<int> list_0DB8;  // +0x0DB8
-    TypeList<int> list_0DD4;  // +0x0DD4
+    TypeList<int> AlliedBaseDefenseCounts;  // +0x0D80
+    TypeList<int> SovietBaseDefenseCounts;  // +0x0D9C
+    TypeList<int> ThirdBaseDefenseCounts;  // +0x0DB8
+    TypeList<int> AIPickWallDefensePercent;  // +0x0DD4
     int AIRestrictReplaceTime;   // +0xDF0
     int ThreatPerOccupant;   // +0xDF4
     int ApproachTargetResetMultiplier;   // +0xDF8
@@ -544,15 +546,16 @@ struct RulesClass
     int GuardAreaTargetingDelay;
     int NormalTargetingDelay;   // +0xE08
     int AINavalYardAdjacency;   // +0xE0C
-    TypeList<int> list_0E10;  // +0x0E10
-    TypeList<int> list_0E2C;  // +0x0E2C
+    TypeList<int> DisabledDisguiseDetectionPercent;  // +0x0E10
+    TypeList<int> AIAutoDeployFrameDelay;  // +0x0E2C
     int MaximumBuildingPlacementFailures;   // +0xE48
-    TypeList<int> list_0E4C;  // +0x0E4C
-    TypeList<int> list_0E68;  // +0x0E68
-    TypeList<int> list_0E84;  // +0x0E84
-    TypeList<int> list_0EA0;  // +0x0EA0
-    char AICaptureLowMoneyMark[0x8];
-    TypeList<int> list_0EC4;  // +0x0EC4
+    TypeList<int> AICaptureNormal;  // +0x0E4C
+    TypeList<int> AICaptureWounded;  // +0x0E68
+    TypeList<int> AICaptureLowPower;  // +0x0E84
+    TypeList<int> AICaptureLowMoney;  // +0x0EA0
+    int AICaptureLowMoneyMark;   // +0xEBC
+    float AICaptureWoundedMark;   // +0xEC0
+    TypeList<int> AISuperDefenseProbability;  // +0x0EC4
     int AISuperDefenseFrames;   // +0xEE0
     int AISuperDefenseDistance;   // +0xEE4
     TypeList<int> list_0EE8;  // +0x0EE8
@@ -608,7 +611,7 @@ struct RulesClass
     int PsychicRevealRadius;   // +0xFEC
     WarheadTypeClass* IonCannonWarhead;   // +0xFF0
     int VeinholeTypeClass;   // +0xFF4
-    TypeList<const TerrainTypeClass*> list_0FF8;  // +0x0FF8
+    TypeList<const TerrainTypeClass*> DefaultMirageDisguises;  // +0x0FF8
     int InfantryBlinkDisguiseTime;   // +0x1014
     ParticleSystemTypeClass* DefaultLargeGreySmokeSystem;   // +0x1018
     ParticleSystemTypeClass* DefaultSmallGreySmokeSystem;   // +0x101C
@@ -666,34 +669,34 @@ struct RulesClass
     UnitTypeClass* UnitCrateType;   // +0x1148
     char unknown_114C[0x4];
     double PatrolScan;   // +0x1150
-    TypeList<int> list_1158;  // +0x1158
-    TypeList<int> list_1174;  // +0x1174
+    TypeList<int> TeamDelays;  // +0x1158
+    TypeList<int> AIHateDelays;  // +0x1174
     int DissolveUnfilledTeamDelay;   // +0x1190
-    TypeList<int> list_1194;  // +0x1194
-    TypeList<int> list_11B0;  // +0x11B0
-    TypeList<int> list_11CC;  // +0x11CC
-    TypeList<int> list_11E8;  // +0x11E8
-    TypeList<int> list_1204;  // +0x1204
-    TypeList<int> list_1220;  // +0x1220
-    TypeList<int> list_123C;  // +0x123C
-    TypeList<int> list_1258;  // +0x1258
-    TypeList<int> list_1274;  // +0x1274
-    TypeList<int> list_1290;  // +0x1290
-    TypeList<int> list_12AC;  // +0x12AC
-    TypeList<int> list_12C8;  // +0x12C8
-    TypeList<int> list_12E4;  // +0x12E4
+    TypeList<int> AIIonCannonConYardValue;  // +0x1194
+    TypeList<int> AIIonCannonWarFactoryValue;  // +0x11B0
+    TypeList<int> AIIonCannonPowerValue;  // +0x11CC
+    TypeList<int> AIIonCannonTechCenterValue;  // +0x11E8
+    TypeList<int> AIIonCannonEngineerValue;  // +0x1204
+    TypeList<int> AIIonCannonThiefValue;  // +0x1220
+    TypeList<int> AIIonCannonHarvesterValue;  // +0x123C
+    TypeList<int> AIIonCannonMCVValue;  // +0x1258
+    TypeList<int> AIIonCannonAPCValue;  // +0x1274
+    TypeList<int> AIIonCannonBaseDefenseValue;  // +0x1290
+    TypeList<int> AIIonCannonPlugValue;  // +0x12AC
+    TypeList<int> AIIonCannonHelipadValue;  // +0x12C8
+    TypeList<int> AIIonCannonTempleValue;  // +0x12E4
     int AIAlternateProductionCreditCutoff;   // +0x1300
-    TypeList<int> list_1304;  // +0x1304
-    TypeList<int> list_1320;  // +0x1320
-    TypeList<int> list_133C;  // +0x133C
-    TypeList<int> list_1358;  // +0x1358
-    TypeList<int> list_1374;  // +0x1374
-    TypeList<int> list_1390;  // +0x1390
-    TypeList<int> list_13AC;  // +0x13AC
-    TypeList<int> list_13C8;  // +0x13C8
+    TypeList<int> MultiplayerAICM;  // +0x1304
+    TypeList<int> AIVirtualPurifiers;  // +0x1320
+    TypeList<int> AISlaveMinerNumber;  // +0x133C
+    TypeList<int> HarvestersPerRefinery;  // +0x1358
+    TypeList<int> AIExtraRefineries;  // +0x1374
+    TypeList<int> MinimumAIDefensiveTeams;  // +0x1390
+    TypeList<int> MaximumAIDefensiveTeams;  // +0x13AC
+    TypeList<int> TotalAITeamCap;  // +0x13C8
     char unknown_13E4[0x4];
     double AIUseTurbineUpgradeProbability;   // +0x13E8
-    TypeList<int> list_13F0;  // +0x13F0
+    TypeList<int> FillEarliestTeamProbability;  // +0x13F0
     char unknown_140C[0x4];
     double CloakDelay;   // +0x1410
     double GameSpeedBias;   // +0x1418
@@ -779,7 +782,8 @@ struct RulesClass
     double AmbientChangeStep;   // +0x1670
     double CrateRegen;   // +0x1678
     double TimerWarning;   // +0x1680
-    char TiberiumTransmogrify[0x8];
+    int TiberiumTransmogrify;   // +0x1688
+    char unknown_168C[0x4];
     double unknown_1690;   // +0x1690
     double unknown_1698;   // +0x1698
     double unknown_16A0;   // +0x16A0
@@ -804,7 +808,7 @@ struct RulesClass
     int CloseEnough;   // +0x1718
     int Stray;   // +0x171C
     int RelaxedStray;   // +0x1720
-    char GuardModeStray[0x4];
+    int GuardModeStray;
     int Crush;   // +0x1728
     int CrateRadius;   // +0x172C
     int HomingScatter;   // +0x1730
@@ -910,14 +914,14 @@ struct RulesClass
 
 GG_STATIC_ASSERT(offsetof(RulesClass, WaypointAnimationSpeed) == 0x50);
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->WaypointAnimationSpeed) == 4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_B20) == 0xB20);
+GG_STATIC_ASSERT(offsetof(RulesClass, BaseUnit) == 0xB20);
 GG_STATIC_ASSERT(offsetof(RulesClass, BunkerWallsDownSound) == 0x244);
 GG_STATIC_ASSERT(offsetof(RulesClass, DetailMinFrameRateNormal) == 0x000);
 GG_STATIC_ASSERT(offsetof(RulesClass, DetailBufferZoneWidth) == 0x008);
 GG_STATIC_ASSERT(offsetof(RulesClass, OreTwinkleChance) == 0x186C);
 GG_STATIC_ASSERT(offsetof(RulesClass, CheerSound) == 0x1C8);
-GG_STATIC_ASSERT(offsetof(RulesClass, TypeA) == 0x4E0);
-GG_STATIC_ASSERT(offsetof(RulesClass, TypeB) == 0x514);
+GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketType) == 0x4E0);
+GG_STATIC_ASSERT(offsetof(RulesClass, DMislType) == 0x514);
 GG_STATIC_ASSERT(offsetof(RulesClass, AIMinorSuperReadyPercent) == 0xD70);
 GG_STATIC_ASSERT(offsetof(RulesClass, IvanTimedDelay) == 0xFD0);
 GG_STATIC_ASSERT(offsetof(RulesClass, IvanIconFlickerRate) == 0xFD8);
@@ -1037,9 +1041,9 @@ GG_STATIC_ASSERT(offsetof(RulesClass, TunnelSpeed) == 0x20);
 GG_STATIC_ASSERT(offsetof(RulesClass, GenericBeep) == 0x710);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadarOn) == 0x6F0);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadarOff) == 0x6F4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_D58) == 0xD58);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_D5C) == 0xD5C);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_D60) == 0xD60);
+GG_STATIC_ASSERT(offsetof(RulesClass, AlliedDisguise) == 0xD58);
+GG_STATIC_ASSERT(offsetof(RulesClass, SovietDisguise) == 0xD5C);
+GG_STATIC_ASSERT(offsetof(RulesClass, ThirdDisguise) == 0xD60);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_420) == 0x420);
 GG_STATIC_ASSERT(offsetof(RulesClass, ParachuteMaxFallRate) == 0x7B8);
 GG_STATIC_ASSERT(offsetof(RulesClass, NoParachuteMaxFallRate) == 0x7BC);
@@ -1072,24 +1076,24 @@ GG_STATIC_ASSERT(offsetof(RulesClass, DirectRockingCoefficient) == 0x18B4);
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->DirectRockingCoefficient) == 4);
 
 // The typed container members, read off the constructors 0x664D20 / 0x665650 and destructor 0x667A30.
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0058) == 0x58);
+GG_STATIC_ASSERT(offsetof(RulesClass, BarrelDebris) == 0x58);
 GG_STATIC_ASSERT(offsetof(RulesClass, TouchdownAnims) == 0x104);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0120) == 0x120);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_013C) == 0x13C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0158) == 0x158);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_02A0) == 0x2A0);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_02BC) == 0x2BC);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_02D8) == 0x2D8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0358) == 0x358);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0374) == 0x374);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0390) == 0x390);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_03AC) == 0x3AC);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_03C8) == 0x3C8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_03E4) == 0x3E4);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_043C) == 0x43C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0458) == 0x458);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0474) == 0x474);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0600) == 0x600);
+GG_STATIC_ASSERT(offsetof(RulesClass, DeadBodies) == 0x120);
+GG_STATIC_ASSERT(offsetof(RulesClass, MetallicDebris) == 0x13C);
+GG_STATIC_ASSERT(offsetof(RulesClass, BridgeExplosions) == 0x158);
+GG_STATIC_ASSERT(offsetof(RulesClass, DamageFireTypes) == 0x2A0);
+GG_STATIC_ASSERT(offsetof(RulesClass, WeatherConClouds) == 0x2BC);
+GG_STATIC_ASSERT(offsetof(RulesClass, WeatherConBolts) == 0x2D8);
+GG_STATIC_ASSERT(offsetof(RulesClass, PrerequisitePower) == 0x358);
+GG_STATIC_ASSERT(offsetof(RulesClass, PrerequisiteFactory) == 0x374);
+GG_STATIC_ASSERT(offsetof(RulesClass, PrerequisiteBarracks) == 0x390);
+GG_STATIC_ASSERT(offsetof(RulesClass, PrerequisiteRadar) == 0x3AC);
+GG_STATIC_ASSERT(offsetof(RulesClass, PrerequisiteTech) == 0x3C8);
+GG_STATIC_ASSERT(offsetof(RulesClass, PrerequisiteProc) == 0x3E4);
+GG_STATIC_ASSERT(offsetof(RulesClass, RadarEventSuppressionDistances) == 0x43C);
+GG_STATIC_ASSERT(offsetof(RulesClass, RadarEventVisibilityDurations) == 0x458);
+GG_STATIC_ASSERT(offsetof(RulesClass, RadarEventDurations) == 0x474);
+GG_STATIC_ASSERT(offsetof(RulesClass, ExplosiveVoxelDebris) == 0x600);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0648) == 0x648);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_06CC) == 0x6CC);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0734) == 0x734);
@@ -1098,8 +1102,8 @@ GG_STATIC_ASSERT(offsetof(RulesClass, list_07E0) == 0x7E0);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_07FC) == 0x7FC);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0818) == 0x818);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0834) == 0x834);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0850) == 0x850);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0880) == 0x880);
+GG_STATIC_ASSERT(offsetof(RulesClass, RepairBay) == 0x850);
+GG_STATIC_ASSERT(offsetof(RulesClass, Shipyard) == 0x880);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_08AC) == 0x8AC);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_08C8) == 0x8C8);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_08E4) == 0x8E4);
@@ -1121,66 +1125,66 @@ GG_STATIC_ASSERT(offsetof(RulesClass, list_0A88) == 0xA88);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0AA4) == 0xAA4);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0AC0) == 0xAC0);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0ADC) == 0xADC);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0B3C) == 0xB3C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0B58) == 0xB58);
+GG_STATIC_ASSERT(offsetof(RulesClass, HarvesterUnit) == 0xB3C);
+GG_STATIC_ASSERT(offsetof(RulesClass, PadAircraft) == 0xB58);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0B74) == 0xB74);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0B90) == 0xB90);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0BC0) == 0xBC0);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0C04) == 0xC04);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0C20) == 0xC20);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0C3C) == 0xC3C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0C58) == 0xC58);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0C74) == 0xC74);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0C90) == 0xC90);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0CAC) == 0xCAC);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0CC8) == 0xCC8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0CE4) == 0xCE4);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0D00) == 0xD00);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0D1C) == 0xD1C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0D38) == 0xD38);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0D80) == 0xD80);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0D9C) == 0xD9C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0DB8) == 0xDB8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0DD4) == 0xDD4);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0E10) == 0xE10);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0E2C) == 0xE2C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0E4C) == 0xE4C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0E68) == 0xE68);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0E84) == 0xE84);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0EA0) == 0xEA0);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0EC4) == 0xEC4);
+GG_STATIC_ASSERT(offsetof(RulesClass, AmerParaDropInf) == 0xC04);
+GG_STATIC_ASSERT(offsetof(RulesClass, AmerParaDropNum) == 0xC20);
+GG_STATIC_ASSERT(offsetof(RulesClass, AllyParaDropInf) == 0xC3C);
+GG_STATIC_ASSERT(offsetof(RulesClass, AllyParaDropNum) == 0xC58);
+GG_STATIC_ASSERT(offsetof(RulesClass, SovParaDropInf) == 0xC74);
+GG_STATIC_ASSERT(offsetof(RulesClass, SovParaDropNum) == 0xC90);
+GG_STATIC_ASSERT(offsetof(RulesClass, YuriParaDropInf) == 0xCAC);
+GG_STATIC_ASSERT(offsetof(RulesClass, YuriParaDropNum) == 0xCC8);
+GG_STATIC_ASSERT(offsetof(RulesClass, AnimToInfantry) == 0xCE4);
+GG_STATIC_ASSERT(offsetof(RulesClass, SecretInfantry) == 0xD00);
+GG_STATIC_ASSERT(offsetof(RulesClass, SecretUnits) == 0xD1C);
+GG_STATIC_ASSERT(offsetof(RulesClass, SecretBuildings) == 0xD38);
+GG_STATIC_ASSERT(offsetof(RulesClass, AlliedBaseDefenseCounts) == 0xD80);
+GG_STATIC_ASSERT(offsetof(RulesClass, SovietBaseDefenseCounts) == 0xD9C);
+GG_STATIC_ASSERT(offsetof(RulesClass, ThirdBaseDefenseCounts) == 0xDB8);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIPickWallDefensePercent) == 0xDD4);
+GG_STATIC_ASSERT(offsetof(RulesClass, DisabledDisguiseDetectionPercent) == 0xE10);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIAutoDeployFrameDelay) == 0xE2C);
+GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureNormal) == 0xE4C);
+GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureWounded) == 0xE68);
+GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureLowPower) == 0xE84);
+GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureLowMoney) == 0xEA0);
+GG_STATIC_ASSERT(offsetof(RulesClass, AISuperDefenseProbability) == 0xEC4);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0EE8) == 0xEE8);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0F04) == 0xF04);
 GG_STATIC_ASSERT(offsetof(RulesClass, list_0F20) == 0xF20);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_0FF8) == 0xFF8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1158) == 0x1158);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1174) == 0x1174);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1194) == 0x1194);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_11B0) == 0x11B0);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_11CC) == 0x11CC);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_11E8) == 0x11E8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1204) == 0x1204);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1220) == 0x1220);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_123C) == 0x123C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1258) == 0x1258);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1274) == 0x1274);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1290) == 0x1290);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_12AC) == 0x12AC);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_12C8) == 0x12C8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_12E4) == 0x12E4);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1304) == 0x1304);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1320) == 0x1320);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_133C) == 0x133C);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1358) == 0x1358);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1374) == 0x1374);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_1390) == 0x1390);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_13AC) == 0x13AC);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_13C8) == 0x13C8);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_13F0) == 0x13F0);
+GG_STATIC_ASSERT(offsetof(RulesClass, DefaultMirageDisguises) == 0xFF8);
+GG_STATIC_ASSERT(offsetof(RulesClass, TeamDelays) == 0x1158);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIHateDelays) == 0x1174);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonConYardValue) == 0x1194);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonWarFactoryValue) == 0x11B0);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonPowerValue) == 0x11CC);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonTechCenterValue) == 0x11E8);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonEngineerValue) == 0x1204);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonThiefValue) == 0x1220);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonHarvesterValue) == 0x123C);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonMCVValue) == 0x1258);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonAPCValue) == 0x1274);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonBaseDefenseValue) == 0x1290);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonPlugValue) == 0x12AC);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonHelipadValue) == 0x12C8);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIIonCannonTempleValue) == 0x12E4);
+GG_STATIC_ASSERT(offsetof(RulesClass, MultiplayerAICM) == 0x1304);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIVirtualPurifiers) == 0x1320);
+GG_STATIC_ASSERT(offsetof(RulesClass, AISlaveMinerNumber) == 0x133C);
+GG_STATIC_ASSERT(offsetof(RulesClass, HarvestersPerRefinery) == 0x1358);
+GG_STATIC_ASSERT(offsetof(RulesClass, AIExtraRefineries) == 0x1374);
+GG_STATIC_ASSERT(offsetof(RulesClass, MinimumAIDefensiveTeams) == 0x1390);
+GG_STATIC_ASSERT(offsetof(RulesClass, MaximumAIDefensiveTeams) == 0x13AC);
+GG_STATIC_ASSERT(offsetof(RulesClass, TotalAITeamCap) == 0x13C8);
+GG_STATIC_ASSERT(offsetof(RulesClass, FillEarliestTeamProbability) == 0x13F0);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1860) == 0x1860);
 GG_STATIC_ASSERT(sizeof(RulesColor_004B9BD0) == 3);
-GG_STATIC_ASSERT(offsetof(RulesClass, list_013C) + 4 == 0x140);  // Items
-GG_STATIC_ASSERT(offsetof(RulesClass, list_013C) + 0x10 == 0x14C);  // Count
+GG_STATIC_ASSERT(offsetof(RulesClass, MetallicDebris) + 4 == 0x140);  // Items
+GG_STATIC_ASSERT(offsetof(RulesClass, MetallicDebris) + 0x10 == 0x14C);  // Count
 
 // Scalar fields named from the stores of constructor 0x665650 and the INI readers that load them
 // (0x6691E0, 0x66BBB0, 0x66D530, 0x672AE0, ...); a name is the INI key read into that slot.
@@ -1319,7 +1323,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_438) == 0x438);
 GG_STATIC_ASSERT(offsetof(RulesClass, IonCannonDamage) == 0x490);
 GG_STATIC_ASSERT(offsetof(RulesClass, RailgunDamageRadius) == 0x494);
 GG_STATIC_ASSERT(offsetof(RulesClass, PrismType) == 0x498);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_49C) == 0x49C);
+GG_STATIC_ASSERT(offsetof(RulesClass, PrismSupportModifier) == 0x49C);
 GG_STATIC_ASSERT(offsetof(RulesClass, PrismSupportMax) == 0x4A0);
 GG_STATIC_ASSERT(offsetof(RulesClass, PrismSupportDelay) == 0x4A4);
 GG_STATIC_ASSERT(offsetof(RulesClass, PrismSupportDuration) == 0x4A8);
@@ -1329,7 +1333,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketTiltFrames) == 0x4B4);
 GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketPitchInitial) == 0x4B8);
 GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketPitchFinal) == 0x4BC);
 GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketTurnRate) == 0x4C0);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_4C4) == 0x4C4);
+GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketRaiseRate) == 0x4C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketAcceleration) == 0x4C8);
 GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketAltitude) == 0x4CC);
 GG_STATIC_ASSERT(offsetof(RulesClass, V3RocketDamage) == 0x4D0);
@@ -1341,7 +1345,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, DMislTiltFrames) == 0x4E8);
 GG_STATIC_ASSERT(offsetof(RulesClass, DMislPitchInitial) == 0x4EC);
 GG_STATIC_ASSERT(offsetof(RulesClass, DMislPitchFinal) == 0x4F0);
 GG_STATIC_ASSERT(offsetof(RulesClass, DMislTurnRate) == 0x4F4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_4F8) == 0x4F8);
+GG_STATIC_ASSERT(offsetof(RulesClass, DMislRaiseRate) == 0x4F8);
 GG_STATIC_ASSERT(offsetof(RulesClass, DMislAcceleration) == 0x4FC);
 GG_STATIC_ASSERT(offsetof(RulesClass, DMislAltitude) == 0x500);
 GG_STATIC_ASSERT(offsetof(RulesClass, DMislDamage) == 0x504);
@@ -1353,7 +1357,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, CMislTiltFrames) == 0x51C);
 GG_STATIC_ASSERT(offsetof(RulesClass, CMislPitchInitial) == 0x520);
 GG_STATIC_ASSERT(offsetof(RulesClass, CMislPitchFinal) == 0x524);
 GG_STATIC_ASSERT(offsetof(RulesClass, CMislTurnRate) == 0x528);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_52C) == 0x52C);
+GG_STATIC_ASSERT(offsetof(RulesClass, CMislRaiseRate) == 0x52C);
 GG_STATIC_ASSERT(offsetof(RulesClass, CMislAcceleration) == 0x530);
 GG_STATIC_ASSERT(offsetof(RulesClass, CMislAltitude) == 0x534);
 GG_STATIC_ASSERT(offsetof(RulesClass, CMislDamage) == 0x538);
@@ -1705,7 +1709,9 @@ GG_STATIC_ASSERT(offsetof(RulesClass, FallBackCoefficient) == 0x18B8);
 
 GG_STATIC_ASSERT(offsetof(RulesClass, DetailMinFrameRateMovie) == 0x4);
 GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureLowMoneyMark) == 0xEBC);
+GG_STATIC_ASSERT(offsetof(RulesClass, AICaptureWoundedMark) == 0xEC0);
 GG_STATIC_ASSERT(offsetof(RulesClass, FogOfWar) == 0x14B7);
 GG_STATIC_ASSERT(offsetof(RulesClass, TiberiumTransmogrify) == 0x1688);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_168C) == 0x168C);
 GG_STATIC_ASSERT(offsetof(RulesClass, GuardModeStray) == 0x1724);
 #endif

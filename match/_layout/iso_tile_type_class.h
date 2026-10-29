@@ -11,6 +11,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "vector_class.h"
 
+struct CellStruct;
 class IsometricTileTypeClass;
 class IsometricTileClass;
 class ObjectClass;
@@ -68,6 +69,8 @@ public:
     static int       FUN_00544CE0(const char* name);
     // Round 25 addition (GAMEMD 0x549AE0).
     IsometricTileClass* FUN_00549AE0(int unused);
+    // Added with GAMEMD 0x547370.
+    CellStruct* FUN_00547370();
 
     IsoTileTypeVtbl* Vfptr;                    // +0x000
     char             _pad_004[0x024 - 0x004];

@@ -1911,7 +1911,7 @@ TechnoTypeClass* HouseClass::FirstBuildableFromArray(DynamicVectorClass<TechnoTy
                     return type;
                 }
             }
-            if (!Supers.Items[buildingType->SuperWeapon]->Type->unknown_E7) {
+            if (!Supers.Items[buildingType->SuperWeapon]->Type->DisableableFromShell) {
                 return type;
             }
         }

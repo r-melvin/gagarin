@@ -45,7 +45,7 @@ HRESULT __stdcall SuperWeaponTypeClass::Load(IStream* pStm)
     }
     new (this) SuperWeaponTypeClass(AbstractNoInit());
     DAT_00B0C110.SwizzleManagerClass::vf_4(&WeaponType);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_C8);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&AuxBuilding);
     char path[0x200];
     _makepath(path, 0, 0, CameoFile, STR_0081834C);
     SidebarImage = FUN_005B40B0(path, false);

@@ -545,13 +545,13 @@ ObjectTypeClass* InfantryClass::vf_51(bool a1)
     if (CurrentPlayer) {
         int side = CurrentPlayer->SideIndex;
         if (side == 0) {
-            return DAT_008871E0->unknown_D58;
+            return DAT_008871E0->AlliedDisguise;
         }
         if (side == 1) {
-            return DAT_008871E0->unknown_D5C;
+            return DAT_008871E0->SovietDisguise;
         }
     }
-    return DAT_008871E0->unknown_D60;
+    return DAT_008871E0->ThirdDisguise;
 }
 
 // FUNCTION: GAMEMD 0x5226C0
@@ -594,11 +594,11 @@ void InfantryClass::vf_284()
         this->DisguisedAsHouse = this->Owner;
         int side = this->Owner->SideIndex;
         if (side == 0) {
-            this->Disguise = DAT_008871E0->unknown_D58;
+            this->Disguise = DAT_008871E0->AlliedDisguise;
         } else if (side == 1) {
-            this->Disguise = DAT_008871E0->unknown_D5C;
+            this->Disguise = DAT_008871E0->SovietDisguise;
         } else {
-            this->Disguise = DAT_008871E0->unknown_D60;
+            this->Disguise = DAT_008871E0->ThirdDisguise;
         }
     } else {
         this->Disguised = false;

@@ -32,7 +32,7 @@ bool SuperClass::StopPreclickAnim(bool unused)
         this->AnimationGotInvalid = false;
     }
 
-    if (this->IsPresent && !this->IsReady && (!this->IsSuspended || this->Type->unknown_ED)) {
+    if (this->IsPresent && !this->IsReady && (!this->IsSuspended || this->Type->PreClick)) {
         this->CameoChargeState = -1;
         this->RechargeTimer.Resume();
         this->RechargeTimer = CDTimerClass(this->GetRechargeTime());

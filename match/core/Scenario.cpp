@@ -1551,12 +1551,12 @@ void __fastcall FUN_00686890(bool value)
         HouseClass_ArrayItems[index]->Base.unknown_74 = HouseClass_ArrayItems[index];
         HouseClass* house = HouseClass_ArrayItems[index];
         if (!house->IsHumanPlayer && !house->Type->MultiplayPassive) {
-            house->Unknown_Timer_5640 = CDTimerClass(RulesInstance->list_1174.Items[house->AIDifficulty]);
+            house->Unknown_Timer_5640 = CDTimerClass(RulesInstance->AIHateDelays.Items[house->AIDifficulty]);
             // 0x686A33..3C dereferences the known-live House then uses its
             // IHouse subobject at +0x24; reference conversion preserves that ABI.
             int money = static_cast<IHouse&>(*HouseClass_ArrayItems[index]).vf_06();
             house = HouseClass_ArrayItems[index];
-            house->FUN_004F9950((int)(money * (RulesInstance->list_1304.Items[house->AIDifficulty] * 0.01)));
+            house->FUN_004F9950((int)(money * (RulesInstance->MultiplayerAICM.Items[house->AIDifficulty] * 0.01)));
         }
         if (HouseClass_ArrayItems[index]->Type->MultiplayPassive)
             HouseClass_ArrayItems[index]->Type->WallOwner = false;
@@ -1673,7 +1673,7 @@ void __fastcall FUN_006886B0(bool value)
     int types = 0;
     for (int i = 0; i < DAT_00A83CE0.Count; ++i) {
         UnitTypeClass* type = DAT_00A83CE0.Items[i];
-        if (type->AllowedToStartInMultiplayer && RulesInstance->unknown_B20.FindItemIndex(type) < 0) {
+        if (type->AllowedToStartInMultiplayer && RulesInstance->BaseUnit.FindItemIndex(type) < 0) {
             cost += type->vf_43();
             ++types;
         }
@@ -1699,7 +1699,7 @@ void __fastcall FUN_006886B0(bool value)
         for (int j = 0; j < DAT_00A83CE0.Count; ++j) {
             UnitTypeClass* type = DAT_00A83CE0.Items[j];
             if (type->AllowedToStartInMultiplayer && type->TechLevel <= house->TechLevel &&
-                (type->OwnerFlags & owner) && RulesInstance->unknown_B20.FindItemIndex(type) < 0)
+                (type->OwnerFlags & owner) && RulesInstance->BaseUnit.FindItemIndex(type) < 0)
                 units.AddItem(type);
         }
         for (j = 0; j < DAT_00A8E348.Count; ++j) {
@@ -1740,7 +1740,7 @@ void __fastcall FUN_006886B0(bool value)
         }
         house->FUN_0050E000(start);
         if (DAT_00A8B258) {
-            ObjectClass* unit = new UnitClass(house->FUN_00505310(RulesInstance->unknown_B20), house);
+            ObjectClass* unit = new UnitClass(house->FUN_00505310(RulesInstance->BaseUnit), house);
             CoordStruct coord = { start.X * 256 + 128, start.Y * 256 + 128, 0 };
             if (!unit->vf_54(coord, 0) && !FUN_00688ED0(unit, start, 1)) {
                 delete unit;
@@ -2452,14 +2452,14 @@ void __fastcall FUN_0068C050()
         for (i = 0; i < DAT_008B41F0; ++i) {
             int index = ScenarioInstance->unknown_0218.RandomRanged(0, choices.Count - 1);
             choices.Delete(index);
-            if (index + 1 > RulesInstance->list_0D00.Count) {
-                index -= RulesInstance->list_0D00.Count;
-                if (index + 1 > RulesInstance->list_0D1C.Count) {
-                    index -= RulesInstance->list_0D1C.Count;
-                    if (index + 1 <= RulesInstance->list_0D38.Count)
-                        selected = RulesInstance->list_0D38.Items[index];
-                } else selected = RulesInstance->list_0D1C.Items[index];
-            } else selected = RulesInstance->list_0D00.Items[index];
+            if (index + 1 > RulesInstance->SecretInfantry.Count) {
+                index -= RulesInstance->SecretInfantry.Count;
+                if (index + 1 > RulesInstance->SecretUnits.Count) {
+                    index -= RulesInstance->SecretUnits.Count;
+                    if (index + 1 <= RulesInstance->SecretBuildings.Count)
+                        selected = RulesInstance->SecretBuildings.Items[index];
+                } else selected = RulesInstance->SecretUnits.Items[index];
+            } else selected = RulesInstance->SecretInfantry.Items[index];
             if (selected) DAT_008B41E4[i]->SecretProduction = selected;
         }
     }

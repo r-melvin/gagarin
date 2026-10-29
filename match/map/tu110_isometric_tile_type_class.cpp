@@ -35,6 +35,7 @@
 // asserts; interface objects reached through COM slots use the objbase types.
 
 #include "../core/vector_class_operations.h"
+#include "../core/header_init_shapes.h"
 
 #include "iso_tile_type_class_tile_data_methods.h"
 
@@ -87,7 +88,6 @@ GG_STATIC_ASSERT(offsetof(Obj_0054A160, unknown_294) == 0x294);
 
 void __cdecl FUN_00544DF0();
 bool __cdecl FUN_00544FF0();
-void __cdecl FUN_00547CE0();
 
 
 #include "../core/deleting_dtor_sweep.h"
@@ -201,6 +201,51 @@ extern double DAT_00ABC2C0;
 // GLOBAL: GAMEMD 0x00ABC1F0
 extern double DAT_00ABC1F0;
 
+// SYNTHETIC: GAMEMD 0x543F10 -- table build: constructs the 40 four-integer records in place
+// GLOBAL: GAMEMD 0xABC2D0
+Quad_0054A120 Gbl_00ABC2D0[40] = {
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 30, 30),
+    Quad_0054A120(0, 0, 30, 30),
+    Quad_0054A120(0, 0, 30, 30),
+    Quad_0054A120(1, 0, 30, 30),
+    Quad_0054A120(1, 0, 30, 30),
+    Quad_0054A120(2, 1, 60, 15),
+    Quad_0054A120(3, 1, 60, 15),
+    Quad_0054A120(4, 1, 60, 15),
+    Quad_0054A120(5, 0, 90, 30),
+    Quad_0054A120(6, 0, 60, 15),
+    Quad_0054A120(7, 1, 30, 0),
+    Quad_0054A120(8, 0, 60, 15),
+    Quad_0054A120(9, 0, 60, 15),
+    Quad_0054A120(10, 1, 0, -15),
+    Quad_0054A120(11, 1, 0, -15),
+    Quad_0054A120(12, 0, 60, 15),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0),
+    Quad_0054A120(0, 0, 0, 0)
+};
+
 // FUNCTION: GAMEMD 0x544CB0  (__thiscall)
 // The loaded tile-set header, loading it on first use. Retail reads the member
 // once up front and again only inside the loading arm, so the source keeps the
@@ -280,11 +325,77 @@ bool IsometricTileTypeClass::GetConnectFlag(int idx)
     return false;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x547CE0
-// Empty function.
-void __cdecl FUN_00547CE0()
+// GLOBAL: GAMEMD 0xAA105C -- the empty cell, defined in match/core/header_init_543c40.cpp
+extern const HeaderCellInit DAT_00AA105C;
+// GLOBAL: GAMEMD 0xAA102C -- five tile-set ids
+extern int DAT_00AA102C[5];
+
+// A cell of the function-local table: copied from a cell value, with an (empty) destructor.
+struct IsoCell_00ABAD34
 {
+    CellStruct Value;
+    IsoCell_00ABAD34(const CellStruct& c) { Value = c; }
+    ~IsoCell_00ABAD34() {}
+};
+
+// FUNCTION: GAMEMD 0x547370
+// SYNTHETIC: GAMEMD 0x547CE0 -- exit-time destructor stub of the function-local table below
+// Returns the row of five "no cell"-terminated cell lists (the 6th cell of each row is the 0x7FFF marker)
+// selected by this tile's set index, relative to whichever of five tile-set ids it falls within; null if none
+// applies or the flag at +0x2E1 is clear. The table is built on first use.
+CellStruct* IsometricTileTypeClass::FUN_00547370()
+{
+    if (!unknown_2E1)
+        return 0;
+    static IsoCell_00ABAD34 Table[40][6] = {
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -1), HeaderCellInit(0, -1), HeaderCellInit(-1, -2), DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -1), HeaderCellInit(0, -1), HeaderCellInit(-1, -2), DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(-1, -3), HeaderCellInit(0, -3), DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(-1, -3), HeaderCellInit(0, -3), DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(-1, -3), HeaderCellInit(0, -3), DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -3), DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -3), HeaderCellInit(1, -3), HeaderCellInit(-1, -3), HeaderCellInit(-2, -3), DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -3), HeaderCellInit(-1, -3), HeaderCellInit(-2, -3), HeaderCellInit(-3, -2), DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -3), HeaderCellInit(-1, -3), HeaderCellInit(-2, -3), DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -3), HeaderCellInit(-1, -3), HeaderCellInit(-2, -3), DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(-2, -3), DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(-2, -3), DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { HeaderCellInit(0, -3), DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) },
+    { DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, DAT_00AA105C, HeaderCellInit(0x7FFF, 0x7FFF) }
+    };
+    for (int i = 0; i < 5; ++i)
+    {
+        int d = unknown_294 - DAT_00AA102C[i];
+        if (d >= 0 && d < 40)
+            return &Table[d][0].Value;
+    }
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

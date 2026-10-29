@@ -9,22 +9,11 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_005638C0;
-
 // GLOBAL: GAMEMD 0xABDC50
 extern char DAT_00ABDC50[];
 
 // FUNCTION: GAMEMD 0x47BB60 (declaration)
 void FUN_0047BB60(void*, int);
-
-struct Obj_005638C0
-{
-    // FUNCTION: GAMEMD 0x5638C0
-    void FUN_005638C0();
-    // FUNCTION: GAMEMD 0x5638D0
-    void FUN_005638D0();
-};
-
 
 // FUNCTION: GAMEMD 0x56C200
 int __cdecl FUN_0056C200();

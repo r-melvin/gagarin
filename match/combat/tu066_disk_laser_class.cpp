@@ -224,6 +224,46 @@ double DAT_008A0270 = DAT_007E1718 / DAT_008A0288;
 // SYNTHETIC: GAMEMD 0x004A6C70 -- initialiser of DAT_008A0208
 DynamicVectorClass<DiskLaserClass*> DAT_008A0208;
 
+// Declarations: GAMEMD 0x4CACB0 (sin) and 0x4CAD00 (cos) -- __cdecl, double in and out.
+extern "C" double __cdecl FUN_004CACB0(double angle);
+extern "C" double __cdecl FUN_004CAD00(double angle);
+// GLOBAL: GAMEMD 0x7E5ED0 -- degrees to radians
+extern const double DAT_007E5ED0;
+
+// A pair of integers built from its two arguments.
+struct Pair_008A0180
+{
+    int unknown_0;
+    int unknown_4;
+    Pair_008A0180(int a, int b)
+    {
+        unknown_0 = a;
+        unknown_4 = b;
+    }
+};
+GG_STATIC_ASSERT(sizeof(Pair_008A0180) == 8);
+
+// SYNTHETIC: GAMEMD 0x4A6CF0 -- table build: sixteen (cosine, sine) pairs scaled by 240, at 15-22 degree steps
+// GLOBAL: GAMEMD 0x8A0180
+Pair_008A0180 DAT_008A0180[16] = {
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 270.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 270.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 292.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 292.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 315.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 315.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 337.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 337.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 0.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 0.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 22.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 22.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 45.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 45.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 67.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 67.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 90.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 90.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 112.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 112.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 135.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 135.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 157.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 157.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 180.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 180.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 202.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 202.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 235.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 235.0) * 240.0)),
+    Pair_008A0180((int)(FUN_004CAD00(DAT_007E5ED0 * 257.0) * 240.0), (int)(FUN_004CACB0(DAT_007E5ED0 * 257.0) * 240.0))
+};
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4A7900  DiskLaserClass::PointerGotInvalid (__thiscall, ret 0x4)
 // Two independent tests, one per end of the laser: if the expiring pointer is

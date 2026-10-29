@@ -183,7 +183,7 @@ RulesClass::RulesClass()
     IonCannonDamage(700),
     RailgunDamageRadius(128),
     PrismType(0),
-    unknown_49C(100),
+    PrismSupportModifier(100),
     PrismSupportMax(8),
     PrismSupportDelay(100),
     PrismSupportDuration(15),
@@ -313,9 +313,9 @@ RulesClass::RulesClass()
     ChronoMinimumDelay(0),
     ChronoRangeMinimum(0),
     unknown_D54(0),
-    unknown_D58(0),
-    unknown_D5C(0),
-    unknown_D60(0),
+    AlliedDisguise(0),
+    SovietDisguise(0),
+    ThirdDisguise(0),
     SpyPowerBlackout(0),
     SpyMoneyStealPercent(0.5f),
     AttackCursorOnDisguise(false),
@@ -632,33 +632,33 @@ RulesClass::RulesClass()
     V3RocketPitchInitial = 0.0f;
     V3RocketPitchFinal = 1.0f;
     V3RocketTurnRate = 0.0500000007f;
-    unknown_4C4 = 1;
+    V3RocketRaiseRate = 1;
     V3RocketAcceleration = 0.400000006f;
     V3RocketAltitude = 768;
     V3RocketDamage = 1000;
     V3RocketEliteDamage = 1000;
     V3RocketBodyLength = 256;
     V3RocketLazyCurve = true;
-    TypeA = 0;
+    V3RocketType = 0;
     DMislPauseFrames = 10;
     DMislTiltFrames = 60;
     DMislPitchInitial = 0.0f;
     DMislPitchFinal = 1.0f;
     DMislTurnRate = 0.0500000007f;
-    unknown_4F8 = 1;
+    DMislRaiseRate = 1;
     DMislAcceleration = 0.400000006f;
     DMislAltitude = 768;
     DMislDamage = 1000;
     DMislEliteDamage = 1000;
     DMislBodyLength = 128;
     DMislLazyCurve = false;
-    TypeB = 0;
+    DMislType = 0;
     CMislPauseFrames = 10;
     CMislTiltFrames = 30;
     CMislPitchInitial = 1.0f;
     CMislPitchFinal = 1.0f;
     CMislTurnRate = 1.0f;
-    unknown_52C = 1;
+    CMislRaiseRate = 1;
     CMislAcceleration = 0.600000024f;
     CMislAltitude = 768;
     CMislDamage = 500;

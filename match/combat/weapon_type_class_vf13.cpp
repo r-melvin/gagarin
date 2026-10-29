@@ -26,12 +26,12 @@ void WeaponTypeClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractTypeClass::vf_13(crc);
     crc->FUN_004A1D50(AmbientDamage);
-    crc->FUN_004A1CA0(unknown_130);
-    crc->FUN_004A1CA0(unknown_145);
-    crc->FUN_004A1CA0(unknown_146);
-    crc->FUN_004A1CA0(unknown_147);
-    crc->FUN_004A1CA0(unknown_149);
-    crc->FUN_004A1CA0(unknown_14D);
+    crc->FUN_004A1CA0(IsSonic);
+    crc->FUN_004A1CA0(TurboBoost);
+    crc->FUN_004A1CA0(Supress);
+    crc->FUN_004A1CA0(Camera);
+    crc->FUN_004A1CA0(IsLaser);
+    crc->FUN_004A1CA0(IsHouseColor);
     crc->FUN_004A1D50(Burst);
     if (Projectile)
         crc->FUN_004A1D50(RttiInfoId_00772AE0(Projectile));
@@ -42,16 +42,16 @@ void WeaponTypeClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1D50(ROF);
     crc->FUN_004A1D50(Range);
     crc->FUN_004A1D50(Reports.Count);
-    crc->FUN_004A1D50(unknown_E8);
-    crc->FUN_004A1D50(unknown_104);
-    crc->FUN_004A1CA0(unknown_129);
-    crc->FUN_004A1CA0(unknown_12E);
-    crc->FUN_004A1C10(unknown_14E);
-    crc->FUN_004A1CA0(unknown_14C);
-    crc->FUN_004A1CA0(unknown_12D);
-    crc->FUN_004A1CA0(unknown_148);
-    crc->FUN_004A1CA0(unknown_12F);
-    crc->FUN_004A1CA0(unknown_12A);
-    crc->FUN_004A1CA0(unknown_12B);
-    crc->FUN_004A1CA0(unknown_12C);
+    crc->FUN_004A1D50(DownReport.Count);
+    crc->FUN_004A1D50(Anim.Count);
+    crc->FUN_004A1CA0(UseFireParticles);
+    crc->FUN_004A1CA0(Lobber);
+    crc->FUN_004A1C10(LaserDuration);
+    crc->FUN_004A1CA0(IsBigLaser);
+    crc->FUN_004A1CA0(IsRailgun);
+    crc->FUN_004A1CA0(Charges);
+    crc->FUN_004A1CA0(Bright);
+    crc->FUN_004A1CA0(UseSparkParticles);
+    crc->FUN_004A1CA0(OmniFire);
+    crc->FUN_004A1CA0(DistributedWeaponFire);
 }

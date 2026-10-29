@@ -1373,7 +1373,7 @@ bool TechnoClass::vf_248()
 {
     WeaponStruct* weapon = this->vf_252();
     if (weapon != 0 && weapon->WeaponType != 0) {
-        return weapon->WeaponType->unknown_150;
+        return weapon->WeaponType->AreaFire;
     }
     return false;
 }

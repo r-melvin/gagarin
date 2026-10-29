@@ -10,22 +10,22 @@
 void VoxelAnimTypeClass::vf_13(Obj_004A1D30* crc)
 {
     ObjectTypeClass::vf_13(crc);
-    crc->FUN_004A1CA0(unknown_294);
-    crc->FUN_004A1CA0(unknown_295);
+    crc->FUN_004A1CA0(Normalized);
+    crc->FUN_004A1CA0(Translucent);
     crc->FUN_004A1CA0(unknown_296);
-    crc->FUN_004A1D50(unknown_298);
-    crc->FUN_004A1D50(unknown_29C);
-    crc->FUN_004A1D90(unknown_2A0);
-    crc->FUN_004A1D90(unknown_2A8);
-    crc->FUN_004A1D90(unknown_2B0);
-    crc->FUN_004A1D90(unknown_2B8);
-    crc->FUN_004A1D90(unknown_2C0);
-    crc->FUN_004A1D90(unknown_2C8);
-    crc->FUN_004A1CA0(unknown_2D0);
-    crc->FUN_004A1D50(unknown_2D8);
-    crc->FUN_004A1D50(unknown_2DC);
-    crc->FUN_004A1D50(unknown_2E0);
-    crc->FUN_004A1D50(unknown_2F0);
-    crc->FUN_004A1D50(unknown_2F4);
-    crc->FUN_004A1CA0(unknown_300);
+    crc->FUN_004A1D50(VoxelIndex);
+    crc->FUN_004A1D50(Duration);
+    crc->FUN_004A1D90(Elasticity);
+    crc->FUN_004A1D90(MinAngularVelocity);
+    crc->FUN_004A1D90(MaxAngularVelocity);
+    crc->FUN_004A1D90(MinZVel);
+    crc->FUN_004A1D90(MaxZVel);
+    crc->FUN_004A1D90(MaxXYVel);
+    crc->FUN_004A1CA0(IsMeteor);
+    crc->FUN_004A1D50(SpawnCount);
+    crc->FUN_004A1D50(StartSound);
+    crc->FUN_004A1D50(StopSound);
+    crc->FUN_004A1D50(Damage);
+    crc->FUN_004A1D50(DamageRadius);
+    crc->FUN_004A1CA0(IsTiberium);
 }

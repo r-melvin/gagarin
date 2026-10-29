@@ -34,7 +34,7 @@ int TechnoClass::vf_185(AbstractClass* target)
         WeaponTypeClass* secondary = vf_254(1)->WeaponType;
         if (secondary) {
             WeaponTypeClass* primary = vf_254(0)->WeaponType;
-            if (primary && !secondary->unknown_136 && target) {
+            if (primary && !secondary->NeverUse && target) {
                 if (InOpenToppedTransport && vf_33()->OpenTransportWeapon != -1) {
                     return vf_33()->OpenTransportWeapon;
                 }
@@ -62,11 +62,11 @@ int TechnoClass::vf_185(AbstractClass* target)
                     if (primary->Warhead->IsLocomotor && techno && techno->vf_11() == 6) {
                         return 1;
                     }
-                    if (secondary->unknown_142 && techno && techno->vf_33()->Drainable
+                    if (secondary->DrainWeapon && techno && techno->vf_33()->Drainable
                         && !DrainTarget && !Owner->FUN_004F9A90(techno)) {
                         return 1;
                     }
-                    if (secondary->unknown_150 && vf_97() == 0x10) {
+                    if (secondary->AreaFire && vf_97() == 0x10) {
                         return 1;
                     }
                     if (vf_11() == 6 && ((BuildingClass*)this)->IsOverpowered) {

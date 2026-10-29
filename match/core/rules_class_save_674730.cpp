@@ -24,56 +24,56 @@
 void RulesClass::Save(IStream* stream)
 {
     stream->Write(this, 0x18C0, 0);
-    SAVE_INT_LIST(list_1194)
-    SAVE_INT_LIST(list_11B0)
-    SAVE_INT_LIST(list_11CC)
-    SAVE_INT_LIST(list_11E8)
-    SAVE_INT_LIST(list_1204)
-    SAVE_INT_LIST(list_1220)
-    SAVE_INT_LIST(list_123C)
-    SAVE_INT_LIST(list_1258)
-    SAVE_INT_LIST(list_1274)
-    SAVE_INT_LIST(list_1290)
-    SAVE_INT_LIST(list_12AC)
-    SAVE_INT_LIST(list_12C8)
-    SAVE_INT_LIST(list_12E4)
-    SAVE_INT_LIST(list_13F0)
-    SAVE_INT_LIST(list_1158)
+    SAVE_INT_LIST(AIIonCannonConYardValue)
+    SAVE_INT_LIST(AIIonCannonWarFactoryValue)
+    SAVE_INT_LIST(AIIonCannonPowerValue)
+    SAVE_INT_LIST(AIIonCannonTechCenterValue)
+    SAVE_INT_LIST(AIIonCannonEngineerValue)
+    SAVE_INT_LIST(AIIonCannonThiefValue)
+    SAVE_INT_LIST(AIIonCannonHarvesterValue)
+    SAVE_INT_LIST(AIIonCannonMCVValue)
+    SAVE_INT_LIST(AIIonCannonAPCValue)
+    SAVE_INT_LIST(AIIonCannonBaseDefenseValue)
+    SAVE_INT_LIST(AIIonCannonPlugValue)
+    SAVE_INT_LIST(AIIonCannonHelipadValue)
+    SAVE_INT_LIST(AIIonCannonTempleValue)
+    SAVE_INT_LIST(FillEarliestTeamProbability)
+    SAVE_INT_LIST(TeamDelays)
     SAVE_INT_LIST(list_09A8)
-    SAVE_INT_LIST(list_0D80)
-    SAVE_INT_LIST(list_0D9C)
-    SAVE_INT_LIST(list_0DB8)
+    SAVE_INT_LIST(AlliedBaseDefenseCounts)
+    SAVE_INT_LIST(SovietBaseDefenseCounts)
+    SAVE_INT_LIST(ThirdBaseDefenseCounts)
     SAVE_INT_LIST(list_0EE8)
     SAVE_INT_LIST(list_0F04)
     SAVE_INT_LIST(list_0F20)
-    SAVE_INT_LIST(list_0E10)
-    SAVE_INT_LIST(list_0EC4)
-    SAVE_INT_LIST(list_0E2C)
-    SAVE_INT_LIST(list_0DD4)
-    SAVE_INT_LIST(list_1390)
-    SAVE_INT_LIST(list_13AC)
-    list_0E4C.FUN_0067A520(stream);
-    list_0E68.FUN_0067A520(stream);
-    list_0E84.FUN_0067A520(stream);
-    list_0EA0.FUN_0067A520(stream);
-    list_1304.FUN_0067A520(stream);
-    list_1320.FUN_0067A520(stream);
-    list_133C.FUN_0067A520(stream);
-    list_1358.FUN_0067A520(stream);
-    list_1374.FUN_0067A520(stream);
-    list_13C8.FUN_0067A520(stream);
-    list_1174.FUN_0067A520(stream);
-    list_043C.FUN_0067A520(stream);
-    list_0458.FUN_0067A520(stream);
-    list_0474.FUN_0067A520(stream);
-    list_0058.FUN_0067A3C0(stream);
-    list_0600.FUN_0067A3C0(stream);
-    list_0358.FUN_0067A520(stream);
-    list_0374.FUN_0067A520(stream);
-    list_0390.FUN_0067A520(stream);
-    list_03AC.FUN_0067A520(stream);
-    list_03C8.FUN_0067A520(stream);
-    list_03E4.FUN_0067A520(stream);
+    SAVE_INT_LIST(DisabledDisguiseDetectionPercent)
+    SAVE_INT_LIST(AISuperDefenseProbability)
+    SAVE_INT_LIST(AIAutoDeployFrameDelay)
+    SAVE_INT_LIST(AIPickWallDefensePercent)
+    SAVE_INT_LIST(MinimumAIDefensiveTeams)
+    SAVE_INT_LIST(MaximumAIDefensiveTeams)
+    AICaptureNormal.FUN_0067A520(stream);
+    AICaptureWounded.FUN_0067A520(stream);
+    AICaptureLowPower.FUN_0067A520(stream);
+    AICaptureLowMoney.FUN_0067A520(stream);
+    MultiplayerAICM.FUN_0067A520(stream);
+    AIVirtualPurifiers.FUN_0067A520(stream);
+    AISlaveMinerNumber.FUN_0067A520(stream);
+    HarvestersPerRefinery.FUN_0067A520(stream);
+    AIExtraRefineries.FUN_0067A520(stream);
+    TotalAITeamCap.FUN_0067A520(stream);
+    AIHateDelays.FUN_0067A520(stream);
+    RadarEventSuppressionDistances.FUN_0067A520(stream);
+    RadarEventVisibilityDurations.FUN_0067A520(stream);
+    RadarEventDurations.FUN_0067A520(stream);
+    BarrelDebris.FUN_0067A3C0(stream);
+    ExplosiveVoxelDebris.FUN_0067A3C0(stream);
+    PrerequisitePower.FUN_0067A520(stream);
+    PrerequisiteFactory.FUN_0067A520(stream);
+    PrerequisiteBarracks.FUN_0067A520(stream);
+    PrerequisiteRadar.FUN_0067A520(stream);
+    PrerequisiteTech.FUN_0067A520(stream);
+    PrerequisiteProc.FUN_0067A520(stream);
     list_06CC.FUN_0067A520(stream);
     list_0734.FUN_0067A520(stream);
     list_07C4.FUN_0067A630(stream);
@@ -81,8 +81,8 @@ void RulesClass::Save(IStream* stream)
     list_07FC.FUN_0067A630(stream);
     list_0818.FUN_0067A630(stream);
     list_0834.FUN_0067A630(stream);
-    list_0850.FUN_0067A6E0(stream);
-    list_0880.FUN_0067A6E0(stream);
+    RepairBay.FUN_0067A6E0(stream);
+    Shipyard.FUN_0067A6E0(stream);
     list_08AC.FUN_0067A6E0(stream);
     list_08C8.FUN_0067A6E0(stream);
     list_08E4.FUN_0067A6E0(stream);
@@ -103,33 +103,33 @@ void RulesClass::Save(IStream* stream)
     list_0AA4.FUN_0067A6E0(stream);
     list_0AC0.FUN_0067A6E0(stream);
     list_0ADC.FUN_0067A6E0(stream);
-    list_0B58.FUN_0067A7D0(stream);
+    PadAircraft.FUN_0067A7D0(stream);
     list_0B74.FUN_0067A4A0(stream);
     list_0B90.FUN_0067A4A0(stream);
     list_0BC0.FUN_0067A4A0(stream);
-    unknown_B20.FUN_0067A770(stream);
-    list_0FF8.FUN_0067A8E0(stream);
-    list_0B3C.FUN_0067A770(stream);
-    list_0D00.FUN_0067A850(stream);
-    list_0D1C.FUN_0067A770(stream);
-    list_0D38.FUN_0067A6E0(stream);
-    list_0120.FUN_0067A4A0(stream);
+    BaseUnit.FUN_0067A770(stream);
+    DefaultMirageDisguises.FUN_0067A8E0(stream);
+    HarvesterUnit.FUN_0067A770(stream);
+    SecretInfantry.FUN_0067A850(stream);
+    SecretUnits.FUN_0067A770(stream);
+    SecretBuildings.FUN_0067A6E0(stream);
+    DeadBodies.FUN_0067A4A0(stream);
     TouchdownAnims.FUN_0067A4A0(stream);
-    list_013C.FUN_0067A4A0(stream);
-    list_0158.FUN_0067A4A0(stream);
+    MetallicDebris.FUN_0067A4A0(stream);
+    BridgeExplosions.FUN_0067A4A0(stream);
     list_0648.FUN_0067A520(stream);
-    list_0C04.FUN_0067A850(stream);
-    list_0C20.FUN_0067A520(stream);
-    list_0C3C.FUN_0067A850(stream);
-    list_0C58.FUN_0067A520(stream);
-    list_0C74.FUN_0067A850(stream);
-    list_0C90.FUN_0067A520(stream);
-    list_0CAC.FUN_0067A850(stream);
-    list_0CC8.FUN_0067A520(stream);
-    list_0CE4.FUN_0067A850(stream);
-    list_02A0.FUN_0067A4A0(stream);
-    list_02BC.FUN_0067A4A0(stream);
-    list_02D8.FUN_0067A4A0(stream);
+    AmerParaDropInf.FUN_0067A850(stream);
+    AmerParaDropNum.FUN_0067A520(stream);
+    AllyParaDropInf.FUN_0067A850(stream);
+    AllyParaDropNum.FUN_0067A520(stream);
+    SovParaDropInf.FUN_0067A850(stream);
+    SovParaDropNum.FUN_0067A520(stream);
+    YuriParaDropInf.FUN_0067A850(stream);
+    YuriParaDropNum.FUN_0067A520(stream);
+    AnimToInfantry.FUN_0067A850(stream);
+    DamageFireTypes.FUN_0067A4A0(stream);
+    WeatherConClouds.FUN_0067A4A0(stream);
+    WeatherConBolts.FUN_0067A4A0(stream);
     // ColorAdd is the engine's RGBClass array; RGBClass::Save takes the IStream_004C6320 view of the stream.
     for (int i = 0; i < 16; ++i) {
         ((RGBClass*)&ColorAdd[i])->Save((IStream_004C6320*)stream);
