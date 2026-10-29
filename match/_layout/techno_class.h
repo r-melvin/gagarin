@@ -251,6 +251,7 @@ public:
 
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40
+    virtual int vf_28(CellStruct* cell, char a2, char a3);          // 28  0x700600: the cursor action over a cell
     virtual bool vf_25();                                          // 25  0x6F32D0
     virtual bool vf_37();                                          // 37  0x701140 (table 0x7F4960 + 0x94)
     virtual TechnoTypeClass* vf_33();                              // 33  0x6F3270: the type, via slot 34

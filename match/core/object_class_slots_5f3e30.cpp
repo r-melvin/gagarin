@@ -146,7 +146,7 @@ int ObjectClass::vf_29(int a1, int a2)
 }
 
 // FUNCTION: GAMEMD 0x5F4250
-int ObjectClass::vf_28(int a1, int a2, int a3)
+int ObjectClass::vf_28(CellStruct* cell, char a2, char a3)
 {
     return 0;
 }

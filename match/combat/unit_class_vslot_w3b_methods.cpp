@@ -52,7 +52,7 @@ done:
 // PARTIAL: 85.4% -- identical instruction multiset; retail keeps the third and fourth
 // arguments in EBX/EDI the other way round (variants with locals and nested ifs tried).
 // Refuses when deployed and the unit's own check says 2, or when berserk.
-bool UnitClass::vf_80(int a1, int a2, int a3, int a4)
+bool UnitClass::vf_80(int a1, CellStruct* a2, int a3, int a4)
 {
     if (Deployed && vf_28(a2, 0, a4) == 2) {
         return false;

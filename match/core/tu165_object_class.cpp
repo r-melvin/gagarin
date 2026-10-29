@@ -379,7 +379,7 @@ Dir_005F3DB0* Obj_005F3DB0::FUN_005F3DB0(Dir_005F3DB0* result,
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5F4360
-bool ObjectClass::vf_80(int a1, int a2, int a3, int a4)
+bool ObjectClass::vf_80(int a1, CellStruct* a2, int a3, int a4)
 {
     return false;
 }

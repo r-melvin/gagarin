@@ -201,7 +201,7 @@ bool InfantryClass::vf_81(int a1, int a2, int a3)
 // FUNCTION: GAMEMD 0x51F250
 // PARTIAL: 87.5% - ebx/edi hold a2/a4 swapped (6 instructions differ, same multiset).
 // Refuses while berzerk, or while in a 0x1B-0x1E sequence when vf_28 reports 2; otherwise defers to FootClass.
-bool InfantryClass::vf_80(int a1, int a2, int a3, int a4)
+bool InfantryClass::vf_80(int a1, CellStruct* a2, int a3, int a4)
 {
     int s = this->SequenceAnim;
     if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {

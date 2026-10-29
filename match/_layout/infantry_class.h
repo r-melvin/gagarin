@@ -64,7 +64,7 @@ public:
     virtual int vf_243(AbstractClass* target, int a2);            // 243 0x51DF60
     virtual ObjectTypeClass* vf_51(bool a1);                       // 51  0x522640
     virtual HouseClass* vf_52(bool a1);                            // 52  0x5226C0
-    virtual bool vf_80(int a1, int a2, int a3, int a4);            // 80  0x51F250
+    virtual bool vf_80(int a1, CellStruct* a2, int a3, int a4);            // 80  0x51F250
     virtual void vf_85(int a1, int a2, bool a3);                   // 85  0x522600
     virtual int vf_138();                                          // 138 0x51F540
     virtual void vf_226(int a1);                                   // 226 0x522C00

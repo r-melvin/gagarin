@@ -68368,7 +68368,7 @@
  {
   "tu": "match/core/object_class_slots_5f3e30.cpp",
   "addr": "0x5F4250",
-  "sym": "?vf_28@ObjectClass@@UAEHHHH@Z",
+  "sym": "?vf_28@ObjectClass@@UAEHPAUCellStruct@@DD@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_28",
   "status": "matched",
@@ -69853,7 +69853,7 @@
  {
   "tu": "match/core/tu165_object_class.cpp",
   "addr": "0x5F4360",
-  "sym": "?vf_80@ObjectClass@@UAE_NHHHH@Z",
+  "sym": "?vf_80@ObjectClass@@UAE_NHPAUCellStruct@@HH@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_80",
   "status": "matched",
@@ -96665,7 +96665,7 @@
  {
   "tu": "match/combat/Infantry.cpp",
   "addr": "0x51F250",
-  "sym": "?vf_80@InfantryClass@@UAE_NHHHH@Z",
+  "sym": "?vf_80@InfantryClass@@UAE_NHPAUCellStruct@@HH@Z",
   "len": "0x6a",
   "name": "InfantryClass::vf_80",
   "status": "partial",
@@ -135136,7 +135136,7 @@
  {
   "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
   "addr": "0x738910",
-  "sym": "?vf_80@UnitClass@@UAE_NHHHH@Z",
+  "sym": "?vf_80@UnitClass@@UAE_NHPAUCellStruct@@HH@Z",
   "len": "0x58",
   "name": "UnitClass::vf_80",
   "status": "partial",
@@ -146467,5 +146467,14 @@
   "status": "partial",
   "pct": 94.5,
   "note": "69/73 instructions; native vptr store at 0x4A0D76 precedes the Count load/xor/compare, candidate stores vptr after those instructions. Full strict relocation proof fails at moved vtable relocation; no direct call xref to this copy constructor was found."
+ },
+ {
+  "tu": "match/combat/techno_class_cell_action_700600.cpp",
+  "addr": "0x700600",
+  "sym": "?vf_28@TechnoClass@@UAEHPAUCellStruct@@DD@Z",
+  "len": "0x632",
+  "name": "TechnoClass::vf_28",
+  "status": "matched",
+  "pct": 100
  }
 ]
