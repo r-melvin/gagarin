@@ -292,6 +292,12 @@ extern DynamicVectorClass<TActionClass*> DAT_00B0F670;
 extern DynamicVectorClass<TActionClass*> DAT_00B0F658;
 extern DynamicVectorClass<TActionClass*> DAT_00B0E658;
 
+// 0x6DD1D6..0x6DD2AF accesses registry item storage at +4 and count at +0x10.
+typedef DynamicVectorClass<TActionClass*> TActionRegistry;
+GG_STATIC_ASSERT(offsetof(TActionRegistry, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(TActionRegistry, Count) == 0x10);
+GG_STATIC_ASSERT(sizeof(TActionRegistry) == 0x18);
+
 // SYNTHETIC: GAMEMD 0x006DCDA0
 // GLOBAL: GAMEMD 0x00B0E6D8
 double DAT_00B0E6D8 = DAT_00B0E688 / DAT_007F43B8;
@@ -319,6 +325,16 @@ struct Obj_006E4790
 };
 GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_00) == 0x0);
 GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_1F) == 0x1F);
+
+// FUNCTION: GAMEMD 0x6DD1B0
+TActionClass::~TActionClass()
+{
+    AnnounceExpiredPointer(1);
+    DAT_00B0F670.RemoveItem(this);
+    DAT_00B0F658.RemoveItem(this);
+    DAT_00B0E658.RemoveItem(this);
+    unknown_6D[0] = 0;
+}
 
 // FUNCTION: GAMEMD 0x6DD2C0
 void TActionClass::vf_10(void* target, bool removed)
@@ -1531,7 +1547,7 @@ bool __stdcall FUN_006E4540(void* p, int, int, int)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4630
 // Returns a constant. Vtable slot 12 of TActionClass (RTTI).
-int Obj_006E4630::FUN_006E4630() const
+int TActionClass::vf_12()
 {
     return 0x94;
 }
@@ -1539,29 +1555,24 @@ int Obj_006E4630::FUN_006E4630() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4640
 // Returns a constant. Vtable slot 11 of TActionClass (RTTI).
-int Obj_006E4640::FUN_006E4640() const
+int TActionClass::vf_11()
 {
     return 0x2F;
 }
 
+GG_STATIC_ASSERT(offsetof(TActionClass, unknown_24) == 0x24);
+GG_STATIC_ASSERT(sizeof(((TActionClass*)0)->unknown_24) == 4);
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4650
 // Member getter (dword). Vtable slot 16 of TActionClass (RTTI).
-int Obj_006E4650::FUN_006E4650() const
+int TActionClass::vf_16()
 {
-    return unknown_24;
+    // Retail 0x6E4650 loads a dword at [ECX+0x24]; interpret the four-byte storage as that field.
+    return *(int*)unknown_24;
 }
 
-// The scalar deleting form of the destructor (??_G); the destructor body is inlined into it.
-// FUNCTION: GAMEMD 0x6E4660
-inline TActionClass::~TActionClass()
-{
-    AnnounceExpiredPointer(1);
-    DAT_00B0F670.RemoveItem(this);
-    DAT_00B0F658.RemoveItem(this);
-    DAT_00B0E658.RemoveItem(this);
-    unknown_6D[0] = 0;
-}
+// SYNTHETIC: GAMEMD 0x6E4660 -- scalar deleting destructor.
 
 // FUNCTION: GAMEMD 0x6E4790
 // Branching.

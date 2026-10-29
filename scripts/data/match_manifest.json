@@ -87228,27 +87228,27 @@
  {
   "tu": "match/ai/TAction.cpp",
   "addr": "0x6E4630",
-  "sym": "?FUN_006E4630@Obj_006E4630@@QBEHXZ",
+  "sym": "?vf_12@TActionClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_006E4630::FUN_006E4630",
+  "name": "TActionClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ai/TAction.cpp",
   "addr": "0x6E4640",
-  "sym": "?FUN_006E4640@Obj_006E4640@@QBEHXZ",
+  "sym": "?vf_11@TActionClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_006E4640::FUN_006E4640",
+  "name": "TActionClass::vf_11",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ai/TAction.cpp",
   "addr": "0x6E4650",
-  "sym": "?FUN_006E4650@Obj_006E4650@@QBEHXZ",
+  "sym": "?vf_16@TActionClass@@UAEHXZ",
   "len": "0x4",
-  "name": "Obj_006E4650::FUN_006E4650",
+  "name": "TActionClass::vf_16",
   "status": "matched",
   "pct": 100
  },
@@ -97793,6 +97793,15 @@
   "sym": "?FUN_006E43A0@Obj_006E43A0@@QAE_NPAURec_006E43A0@@HHH@Z",
   "len": "0x32",
   "name": "Obj_006E43A0::FUN_006E43A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/TAction.cpp",
+  "addr": "0x6DD1B0",
+  "sym": "??1TActionClass@@UAE@XZ",
+  "len": "0x10F",
+  "name": "TActionClass::~TActionClass",
   "status": "matched",
   "pct": 100.0
  },
