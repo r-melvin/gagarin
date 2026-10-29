@@ -58256,6 +58256,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/input_controls/menus_graphic_menu_item.cpp",
+  "addr": "0x4F3B20",
+  "sym": "??_GGraphicMenuItem@@UAEPAXI@Z",
+  "len": "0x38",
+  "name": "GraphicMenuItem::~GraphicMenuItem (scalar deleting)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/ui/input_controls/menus_graphic_menu_shortcut.cpp",
   "addr": "0x4F3EE0",
   "sym": "?Slot1@GraphicMenuShortcutItem@@UAE_NI@Z",
@@ -58596,6 +58605,15 @@
   "name": "MouseClass::vf_07",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDA40",
+  "sym": "??0MouseClass@@QAE@XZ",
+  "len": "0x36",
+  "name": "MouseClass::MouseClass",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/mouse_mouse_class_stream.cpp",
@@ -60090,6 +60108,141 @@
   "name": "FUN_00682640",
   "status": "partial",
   "pct": 94.6
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682150",
+  "sym": "?FUN_00682150@@YGJPAUIStorage@@HPAD@Z",
+  "len": "0xe8",
+  "name": "FUN_00682150",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682240",
+  "sym": "?FUN_00682240@@YGJPAUIStorage@@HPAG@Z",
+  "len": "0xb0",
+  "name": "FUN_00682240",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x6822F0",
+  "sym": "?FUN_006822F0@@YGJPAUIPropertySetStorage@@HPAD@Z",
+  "len": "0xdd",
+  "name": "FUN_006822F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x6823D0",
+  "sym": "?FUN_006823D0@@YGJPAUIPropertySetStorage@@HPAG@Z",
+  "len": "0xd7",
+  "name": "FUN_006823D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x6824B0",
+  "sym": "?FUN_006824B0@@YGJPAUIStorage@@HPAH@Z",
+  "len": "0xb3",
+  "name": "FUN_006824B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682570",
+  "sym": "?FUN_00682570@@YGJPAUIPropertySetStorage@@HPAH@Z",
+  "len": "0xcb",
+  "name": "FUN_00682570",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x6829A0",
+  "sym": "?FUN_006829A0@@YGJPAUIPropertySetStorage@@HPAG@Z",
+  "len": "0xeb",
+  "name": "FUN_006829A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682A90",
+  "sym": "?FUN_00682A90@@YGJPAUIStorage@@HH@Z",
+  "len": "0xe6",
+  "name": "FUN_00682A90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682B80",
+  "sym": "?FUN_00682B80@@YGJPAUIPropertySetStorage@@HH@Z",
+  "len": "0xeb",
+  "name": "FUN_00682B80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682C70",
+  "sym": "?FUN_00682C70@@YGJPAUIStorage@@HPAU_FILETIME@@@Z",
+  "len": "0xba",
+  "name": "FUN_00682C70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682D30",
+  "sym": "?FUN_00682D30@@YGJPAUIPropertySetStorage@@HPAU_FILETIME@@@Z",
+  "len": "0xd9",
+  "name": "FUN_00682D30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682E10",
+  "sym": "?FUN_00682E10@@YGJPAUIStorage@@HPBU_FILETIME@@@Z",
+  "len": "0xe6",
+  "name": "FUN_00682E10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682F00",
+  "sym": "?FUN_00682F00@@YGJPAUIPropertySetStorage@@HPBU_FILETIME@@@Z",
+  "len": "0xf8",
+  "name": "FUN_00682F00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682780",
+  "sym": "?FUN_00682780@@YGJPAUIStorage@@HPBG@Z",
+  "len": "0xf8",
+  "name": "FUN_00682780",
+  "status": "partial",
+  "pct": 98.1
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682880",
+  "sym": "?FUN_00682880@@YGJPAUIPropertySetStorage@@HPBD@Z",
+  "len": "0x11f",
+  "name": "FUN_00682880",
+  "status": "partial",
+  "pct": 92.6
  },
  {
   "tu": "match/ui/Score.cpp",
@@ -78619,13 +78772,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/tu118_light_source_class.cpp",
+  "tu": "match/core/w2_light_queue_global_r15.cpp",
   "addr": "0x554680",
   "sym": "_$E2",
   "len": "0x3b",
   "name": "DynamicVectorClass<LightSourceClass*> exit destructor stub (DAT_00ABCA10)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/static_vector_member_dtor_stubs_b.cpp",
@@ -89932,6 +90085,15 @@
   "pct": 100
  },
  {
+  "tu": "match/network/NetDlg.cpp",
+  "addr": "0x5DA720",
+  "sym": "?FUN_005DA720@@YAXXZ",
+  "len": "0x22",
+  "name": "FUN_005DA720",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/network/netdlg2.cpp",
   "addr": "0x5DAD20",
   "sym": "?FUN_005DAD20@@YAXXZ",
@@ -94381,6 +94543,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/LoadDlg.cpp",
+  "addr": "0x558740",
+  "sym": "??0LoadOptionsClass@@QAE@XZ",
+  "len": "0x4b",
+  "name": "LoadOptionsClass::LoadOptionsClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/map/trivial_tu127_b_methods.cpp",
   "addr": "0x567370",
   "sym": "?FUN_00567370@Obj_00567370@@QAEXHHHHHHHHH@Z",
@@ -96470,11 +96641,47 @@
   "pct": 100.0
  },
  {
+  "tu": "match/ui/ModemGst.cpp",
+  "addr": "0x5B5960",
+  "sym": "?FUN_005B5960@WolScenarioColorDlgClass@@QAEXXZ",
+  "len": "0x4c",
+  "name": "WolScenarioColorDlgClass::FUN_005B5960",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ModemGst.cpp",
+  "addr": "0x5B5E90",
+  "sym": "?FUN_005B5E90@WolScenarioColorDlgClass@@QAEXXZ",
+  "len": "0x54",
+  "name": "WolScenarioColorDlgClass::FUN_005B5E90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ModemGst.cpp",
+  "addr": "0x5B5A50",
+  "sym": "?FUN_005B5A50@WolScenarioColorDlgClass@@QAEXD@Z",
+  "len": "0x72",
+  "name": "WolScenarioColorDlgClass::FUN_005B5A50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5BAA80",
   "sym": "?FUN_005BAA80@Obj_005BAA80@@QAEXPBGH0@Z",
   "len": "0x7a",
   "name": "Obj_005BAA80::FUN_005BAA80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ModemHst.cpp",
+  "addr": "0x5B93F0",
+  "sym": "?FUN_005B93F0@WolScenarioColorDlgClass@@QAEXXZ",
+  "len": "0x51",
+  "name": "WolScenarioColorDlgClass::FUN_005B93F0",
   "status": "matched",
   "pct": 100.0
  },
@@ -97474,6 +97681,15 @@
   "sym": "?FUN_00752D60@VoxClass@@QAEXXZ",
   "len": "0x4c",
   "name": "VoxClass::FUN_00752D60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/global_vector_remove_item_methods.cpp",
+  "addr": "0x550000",
+  "sym": "?FUN_00550000@Item_0054FFB0@@SIXXZ",
+  "len": "0x74",
+  "name": "Item_0054FFB0::FUN_00550000",
   "status": "matched",
   "pct": 100.0
  },
@@ -99631,6 +99847,15 @@
   "pct": 100
  },
  {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x598160",
+  "sym": "?FUN_00598160@@YGNNN@Z",
+  "len": "0x15",
+  "name": "FUN_00598160",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x635560",
   "sym": "?FUN_00635560@PlanningNodeClass@@QAEXI@Z",
@@ -99674,6 +99899,24 @@
   "name": "?FUN_0063D2D0@@YIIPAVPlanningNodeClass@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63A1B0",
+  "sym": "?FUN_0063A1B0@@YIXH@Z",
+  "len": "0x55",
+  "name": "Show planning loop/delete help message once",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63A230",
+  "sym": "?FUN_0063A230@@YIXPBD@Z",
+  "len": "0x4a",
+  "name": "Show a planning message once then play planning sound",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/network/Session.cpp",
@@ -100368,6 +100611,15 @@
   "name": "ShipLocomotionClass::FUN_006A3EC0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F330",
+  "sym": "?IsMovingNow@ShipLocomotionClass@@UAG_NXZ",
+  "len": "0x67",
+  "name": "ShipLocomotionClass::IsMovingNow",
+  "status": "partial",
+  "pct": 94.7
  },
  {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
@@ -101250,6 +101502,15 @@
   "name": "ColorTable_00626070::FUN_006260F0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x60AAA0",
+  "sym": "?FUN_0060AAA0@@YIXPAX@Z",
+  "len": "0xf",
+  "name": "FUN_0060AAA0",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/network/Queue.cpp",
@@ -103102,6 +103363,15 @@
   "sym": "?SwizzlePointers@List_004B69B0@@QAEXXZ",
   "len": "0x2b",
   "name": "List_004B69B0::SwizzlePointers",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/Dropship.cpp",
+  "addr": "0x4B6BF0",
+  "sym": "?FUN_004B6BF0@@YIHPAUEntry_004B6AB0@@@Z",
+  "len": "0x3c",
+  "name": "FUN_004B6BF0",
   "status": "matched",
   "pct": 100
  },
@@ -105118,6 +105388,15 @@
   "sym": "?vf_224@FootClass@@UAE_NXZ",
   "len": "0x35",
   "name": "FootClass::vf_224",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_small_slots.cpp",
+  "addr": "0x4DAF10",
+  "sym": "?vf_324@FootClass@@UAEXHHHHHPAUPoint2D@@PAUMatrix3D@@HHH@Z",
+  "len": "0xa9",
+  "name": "FootClass::vf_324",
   "status": "matched",
   "pct": 100
  },
@@ -133805,6 +134084,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/stream_w3_methods.cpp",
+  "addr": "0x772EB0",
+  "sym": "?Save@WeaponTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0xe1",
+  "name": "WeaponTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/ai/tevent_class_w3_methods.cpp",
   "addr": "0x71F800",
   "sym": "?vf_10@TEventClass@@UAEXPAX_N@Z",
@@ -139905,5 +140193,581 @@
   "name": "FUN_006EC250",
   "status": "partial",
   "pct": 89.7
+ },
+ {
+  "tu": "match/core/w2_light_queue_global_r15.cpp",
+  "addr": "0x554640",
+  "sym": "_$E4",
+  "len": "0x3d",
+  "name": "DynamicVectorClass<LightSourceClass*> fused ctor + atexit initialiser (DAT_00ABCA10)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_conn_list_global_r15.cpp",
+  "addr": "0x663800",
+  "sym": "_$E4",
+  "len": "0x47",
+  "name": "ConnListHolder_00B052D0 fused ctor + atexit initialiser (DAT_00B052D0)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_conn_list_global_r15.cpp",
+  "addr": "0x663850",
+  "sym": "_$E2",
+  "len": "0x87",
+  "name": "ConnListHolder_00B052D0 exit stub (DAT_00B052D0)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_mix_file_list_global_r15.cpp",
+  "addr": "0x5B3AC0",
+  "sym": "_$E6",
+  "len": "0x47",
+  "name": "List<MixFileClass*> fused ctor + atexit initialiser (DAT_00ABEFD8)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_mix_file_list_global_r15.cpp",
+  "addr": "0x5B3B10",
+  "sym": "_$E3",
+  "len": "0xec",
+  "name": "List<MixFileClass*> guarded exit stub (DAT_00ABEFD8)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/w2_mouse_timer_global_r15.cpp",
+  "addr": "0x5BD9F0",
+  "sym": "_$E6",
+  "len": "0x25",
+  "name": "MouseTimer fused ctor + atexit initialiser (DAT_00ABF2A0)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/w2_mouse_timer_global_r15.cpp",
+  "addr": "0x5BDA20",
+  "sym": "_$E3",
+  "len": "0x15",
+  "name": "MouseTimer guarded exit stub (DAT_00ABF2A0)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/mission_class_ctor_r15.cpp",
+  "addr": "0x5B2DA0",
+  "sym": "??0MissionClass@@QAE@XZ",
+  "len": "0x68",
+  "name": "MissionClass::MissionClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/w2_load_list_compare_r15.cpp",
+  "addr": "0x559D30",
+  "sym": "?FUN_00559D30@@YAHPAPAUSavedGameEntry_00559D30@@0@Z",
+  "len": "0x22",
+  "name": "FUN_00559D30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/w2_save_header_ctor_r15.cpp",
+  "addr": "0x680FF0",
+  "sym": "??0MenusSaveHeader@@QAE@XZ",
+  "len": "0x61",
+  "name": "MenusSaveHeader::MenusSaveHeader",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_class_r16_methods.cpp",
+  "addr": "0x505310",
+  "sym": "?FUN_00505310@HouseClass@@QAEPAVUnitTypeClass@@ABV?$DynamicVectorClass@PAVUnitTypeClass@@@@@Z",
+  "len": "0x4f",
+  "name": "HouseClass::FUN_00505310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/house_class_r16_methods.cpp",
+  "addr": "0x4AE9B0",
+  "sym": "?FUN_004AE9B0@@YGHHPBUCellStruct@@@Z",
+  "len": "0x47",
+  "name": "FUN_004AE9B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x412AC0",
+  "sym": "?FUN_00412AC0@@YGHUCellStruct@@@Z",
+  "len": "0x80",
+  "name": "FUN_00412AC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x505F80",
+  "sym": "?FUN_00505F80@@YIHPAUHouseCell_00505F80@@PAUCellStruct@@HH@Z",
+  "len": "0x42",
+  "name": "FUN_00505F80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x47AA50",
+  "sym": "?FUN_0047AA50@@YIHD@Z",
+  "len": "0x5c",
+  "name": "FUN_0047AA50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x53E730",
+  "sym": "?FUN_0053E730@@YIHPAUMsgView_0053E730@@PAXII@Z",
+  "len": "0x32",
+  "name": "FUN_0053E730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x4AECD0",
+  "sym": "?FUN_004AECD0@@YIIPBD@Z",
+  "len": "0x74",
+  "name": "FUN_004AECD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x42E0B0",
+  "sym": "?FUN_0042E0B0@Rec_0042E0B0@@QAEPAU1@HHHHHHH@Z",
+  "len": "0x46",
+  "name": "Rec_0042E0B0::FUN_0042E0B0",
+  "status": "partial",
+  "pct": 77.3
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x430590",
+  "sym": "?FUN_00430590@Obj_00430590@@QAEXHHHH@Z",
+  "len": "0x4e",
+  "name": "Obj_00430590::FUN_00430590",
+  "status": "partial",
+  "pct": 84.6
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x53D8E0",
+  "sym": "?FUN_0053D8E0@@YI?AUPoint2D@@H@Z",
+  "len": "0x71",
+  "name": "FUN_0053D8E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x53D9F0",
+  "sym": "?FUN_0053D9F0@@YIXH@Z",
+  "len": "0x4d",
+  "name": "FUN_0053D9F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x40B010",
+  "sym": "??_EElem_0040B010@@UAEPAXI@Z",
+  "len": "0x5e",
+  "name": "Elem_0040B010::vector deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "addr": "0x4AECA0",
+  "sym": "?FUN_004AECA0@Obj_004AECA0@@QAEPAXI@Z",
+  "len": "0x28",
+  "name": "Obj_004AECA0::FUN_004AECA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/event_queue_r16_methods.cpp",
+  "addr": "0x4F1AA0",
+  "sym": "?FUN_004F1AA0@?$EventQueue@$0IA@@@QAEHPBVEventClass@@@Z",
+  "len": "0x5b",
+  "name": "EventQueue<128>::FUN_004F1AA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/building_class_r16_methods.cpp",
+  "addr": "0x4529E0",
+  "sym": "?FUN_004529E0@BuildingClass@@QAEXXZ",
+  "len": "0x5f",
+  "name": "BuildingClass::FUN_004529E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/building_class_r16_methods.cpp",
+  "addr": "0x44F7A0",
+  "sym": "?FUN_0044F7A0@BuildingClass@@QAEXXZ",
+  "len": "0x74",
+  "name": "BuildingClass::FUN_0044F7A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/building_class_r16_methods.cpp",
+  "addr": "0x455B90",
+  "sym": "?FUN_00455B90@BuildingClass@@QAEIXZ",
+  "len": "0x8a",
+  "name": "BuildingClass::FUN_00455B90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_r16_methods.cpp",
+  "addr": "0x6E0110",
+  "sym": "?FUN_006E0110@TActionView_r16@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xa8",
+  "name": "TActionClass::FUN_006E0110",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r16_methods.cpp",
+  "addr": "0x6E1FF0",
+  "sym": "?FUN_006E1FF0@TActionView_r16@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x56",
+  "name": "TActionClass::FUN_006E1FF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r16_methods.cpp",
+  "addr": "0x6E26D0",
+  "sym": "?FUN_006E26D0@TActionView_r16@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xbe",
+  "name": "TActionClass::FUN_006E26D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r16_methods.cpp",
+  "addr": "0x6E2790",
+  "sym": "?FUN_006E2790@TActionView_r16@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xb3",
+  "name": "TActionClass::FUN_006E2790",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/waypoint_path_r16_methods.cpp",
+  "addr": "0x7639A0",
+  "sym": "?FUN_007639A0@WaypointPathView_r16@@QAE_NPAUCoordStruct@@@Z",
+  "len": "0xac",
+  "name": "WaypointPathClass::FUN_007639A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/unit_class_r16_methods.cpp",
+  "addr": "0x744640",
+  "sym": "?FUN_00744640@UnitView_r16@@QAEXPAUObj_004A1D30@@@Z",
+  "len": "0x9f",
+  "name": "UnitClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/unit_class_r16_methods.cpp",
+  "addr": "0x746750",
+  "sym": "?FUN_00746750@UnitView_r16@@QAE_NPAVHouseClass@@@Z",
+  "len": "0xb9",
+  "name": "UnitClass::vf_50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/techno_class_r16_methods.cpp",
+  "addr": "0x70DC70",
+  "sym": "?FUN_0070DC70@TechnoClass@@QAEXH@Z",
+  "len": "0x6e",
+  "name": "TechnoClass::FUN_0070DC70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/techno_class_r16_methods.cpp",
+  "addr": "0x707DD0",
+  "sym": "?vf_96@TechnoView_r16@@UAEHXZ",
+  "len": "0x8b",
+  "name": "TechnoClass::vf_96",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/super_class_r16_methods.cpp",
+  "addr": "0x6CB2E0",
+  "sym": "?FUN_006CB2E0@SuperView_r16@@QAEXXZ",
+  "len": "0xb9",
+  "name": "SuperClass::FUN_006CB2E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/misc_free_r16_methods.cpp",
+  "addr": "0x6B9370",
+  "sym": "?FUN_006B9370@@YIIHHH@Z",
+  "len": "0x70",
+  "name": "FUN_006B9370",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/misc_free_r16_methods.cpp",
+  "addr": "0x6E80F0",
+  "sym": "?FUN_006E80F0@PairListOwnerView_r16@@QAEPAV1@PAV1@0@Z",
+  "len": "0x6f",
+  "name": "FUN_006E80F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/misc_free_r16_methods.cpp",
+  "addr": "0x722140",
+  "sym": "?FUN_00722140@PointerListView_r16@@QAEXPAX_N@Z",
+  "len": "0x69",
+  "name": "FUN_00722140",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/misc_free_r16_methods.cpp",
+  "addr": "0x758E10",
+  "sym": "?FUN_00758E10@PaletteView_r16@@QAEEMMM@Z",
+  "len": "0x85",
+  "name": "FUN_00758E10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/misc_free_r16_methods.cpp",
+  "addr": "0x759EB0",
+  "sym": "?FUN_00759EB0@RemembersView_r16@@QAE_NHIIHH@Z",
+  "len": "0x64",
+  "name": "FUN_00759EB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/misc_free_r16_methods.cpp",
+  "addr": "0x763610",
+  "sym": "?FUN_00763610@@YIPADH@Z",
+  "len": "0x71",
+  "name": "FUN_00763610",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/misc_free_r16_methods.cpp",
+  "addr": "0x775690",
+  "sym": "?FUN_00775690@@YIHPAUHWND__@@PAUtagRECT@@@Z",
+  "len": "0x6c",
+  "name": "FUN_00775690",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x558860",
+  "sym": "?FUN_00558860@@YIXPAUHWND__@@H0H@Z",
+  "len": "0x72",
+  "name": "Dialog item handler: record which button or list action ended the dialog",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x5E70D0",
+  "sym": "?FUN_005E70D0@@YIIPAUHWND__@@H@Z",
+  "len": "0x85",
+  "name": "Select the list entry (control 0x553) whose item data equals the value",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x631300",
+  "sym": "?FUN_00631300@Dlg_00631300@@QAEXXZ",
+  "len": "0x7f",
+  "name": "Dialog: remember selected list entry and copy its text into the edit control",
+  "status": "partial",
+  "pct": 98.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x642BB0",
+  "sym": "?FUN_00642BB0@@YGHH@Z",
+  "len": "0x6c",
+  "name": "Packed colour for a player slot",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x660BE0",
+  "sym": "?FUN_00660BE0@@YIPAUCellXY_00660BE0@@PAU1@@Z",
+  "len": "0x6a",
+  "name": "Step back one entry in the 8-slot position history",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x696590",
+  "sym": "?FUN_00696590@Dlg_006966D0@@QAEXXZ",
+  "len": "0x74",
+  "name": "Dialog: fill the four-entry list control and select the matching entry",
+  "status": "partial",
+  "pct": 87.8
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x696740",
+  "sym": "?FUN_00696740@Dlg_006966D0@@QAEXH@Z",
+  "len": "0x68",
+  "name": "Dialog: show/enable a text control with the text after the dash",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x696950",
+  "sym": "?FUN_00696950@Dlg_006966D0@@QAEXXZ",
+  "len": "0x64",
+  "name": "Dialog: hide text control and read its text back",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x6966D0",
+  "sym": "?FUN_006966D0@Dlg_006966D0@@QAEXXZ",
+  "len": "0x63",
+  "name": "Dialog: set the two radio buttons from the mode selector",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x6A76F0",
+  "sym": "?FUN_006A76F0@@YGXH@Z",
+  "len": "0x67",
+  "name": "Restart a strip slot animation on the next 10-frame boundary",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x6ABAD0",
+  "sym": "?FUN_006ABAD0@SidebarView_006ABAD0@@QAEXHHI@Z",
+  "len": "0x8d",
+  "name": "Route an object kind to its sidebar strip",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x6ACBC0",
+  "sym": "?FUN_006ACBC0@@YIHH@Z",
+  "len": "0x5c",
+  "name": "Skirmish dialog control id to slot index",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/w2_leaf_r16.cpp",
+  "addr": "0x6ACC20",
+  "sym": "?FUN_006ACC20@@YIPBGH@Z",
+  "len": "0x72",
+  "name": "Localised name of a computer-player difficulty",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/w2_planning_color_r16.cpp",
+  "addr": "0x63CF10",
+  "sym": "?FUN_0063CF10@@YIIPAUTechnoOwner_0063CF10@@@Z",
+  "len": "0xa5",
+  "name": "Owner colour blended toward marker colour, packed",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/w2_planning_color_r16.cpp",
+  "addr": "0x63CFC0",
+  "sym": "?FUN_0063CFC0@@YIIPAUTechnoOwner_0063CF10@@@Z",
+  "len": "0xa5",
+  "name": "Owner colour blended toward white, packed",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/w2_planning_color_r16.cpp",
+  "addr": "0x63D070",
+  "sym": "?FUN_0063D070@@YIIPBUColorStruct@@0H@Z",
+  "len": "0x78",
+  "name": "Blend a colour toward a target and pack",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_r16_methods.cpp",
+  "addr": "0x6550C0",
+  "sym": "?FUN_006550C0@RadarView_R16@@QAE?AURadarDiamond_006550C0@@PBUCell_0050DEF0@@@Z",
+  "len": "0x8e",
+  "name": "RadarClass: map cell to radar screen position",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_r16_methods.cpp",
+  "addr": "0x6551C0",
+  "sym": "?FUN_006551C0@RadarView_R16@@QAEXPBVCell@@@Z",
+  "len": "0x8b",
+  "name": "RadarClass: queue a cell for redraw once",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_r16_methods.cpp",
+  "addr": "0x6557F0",
+  "sym": "?FUN_006557F0@RadarView_R16@@QAEPAUPoint2D@@PAU2@PBU2@_N@Z",
+  "len": "0x9d",
+  "name": "RadarClass: map point to radar pixel (optionally clamped)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/radar_class_r16_methods.cpp",
+  "addr": "0x656BE0",
+  "sym": "?FUN_00656BE0@RadarView_R16@@QAEX_N0@Z",
+  "len": "0xb3",
+  "name": "RadarClass: radar on/off transition with sound",
+  "status": "matched",
+  "pct": 100
  }
 ]
