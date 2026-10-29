@@ -414,15 +414,8 @@ extern int DAT_00886F94;
 // GLOBAL: GAMEMD 0xA8EB7C -- which side the sidebar is on (compared against 1 / non-zero).
 extern unsigned char SidebarSideFlag_00A8EB7C;
 
-// ScenarioClass: only the sidebar margin selector at +0x34B8 is read.
-// GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-struct SidebarScenario
-{
-    char _pad000[0x34B8];
-    int At_34B8;                                // +0x34B8
-};
-GG_STATIC_ASSERT(offsetof(SidebarScenario, At_34B8) == 0x34B8);
-extern SidebarScenario* Scenario_00A8B230;
+#include "../../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // RulesClass: only the sound ids the sidebar plays are read.
 // GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.

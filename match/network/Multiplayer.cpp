@@ -201,25 +201,11 @@ template class MultiplayerGameMode::Initializer<MPCooperative>;
 // GLOBAL: GAMEMD 0xA80228 -- the house array (Items 0xA8022C, Count 0xA80238).
 extern DynamicVectorClass<HouseClass*> HouseArray_00A80228;
 
-struct Random_005D6890
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) -- a value in [low, high].
-    int FUN_0065C7E0(int low, int high);
-};
 
-struct Scenario_005D6790
-{
-    unsigned int unknown_0000;     // +0x0000  bit 10 cleared by slot +0x7C, bit 9 tested by +0xCC
-    char _pad0004[0x218 - 4];
-    Random_005D6890 unknown_0218;  // +0x0218
-    char _pad0219[0x1180 - 0x219];
-    int  unknown_1180[16];         // +0x1180  house index per start slot
-};
-GG_STATIC_ASSERT(offsetof(Scenario_005D6790, unknown_0218) == 0x218);
-GG_STATIC_ASSERT(offsetof(Scenario_005D6790, unknown_1180) == 0x1180);
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-extern Scenario_005D6790* ScenarioInstance_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 #include "session_entry.h"
 
@@ -668,7 +654,7 @@ void MultiplayerGameMode::CreateMPTeams(DynamicVectorClass<MultiplayerTeam*>& te
 // FUNCTION: GAMEMD 0x5D6790
 bool MultiplayerGameMode::vf_31()
 {
-    ScenarioInstance_00A8B230->unknown_0000 &= ~0x400;
+    DAT_00A8B230->unknown_0000 &= ~0x400;
     return true;
 }
 
@@ -695,7 +681,7 @@ Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, boo
 {
     int i;
     for (i = 0; i < starts.Count; i++) {
-        if (ScenarioInstance_00A8B230->unknown_1180[i] != -1) {
+        if (DAT_00A8B230->unknown_1180.HouseIndex[i] != -1) {
             break;
         }
     }
@@ -704,25 +690,25 @@ Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, boo
         DAT_00ABFDD4 = false;
         DAT_00ABFDD5 = false;
         if (IsObserverHouse(house)) {
-            int slot = ScenarioInstance_00A8B230->unknown_0218.FUN_0065C7E0(0, starts.Count - 1);
+            int slot = DAT_00A8B230->unknown_0218.RandomRanged(0, starts.Count - 1);
             taken[slot] = true;
-            ScenarioInstance_00A8B230->unknown_1180[slot] = house;
+            DAT_00A8B230->unknown_1180.HouseIndex[slot] = house;
             DAT_00ABFDD4 = true;
             FUN_004068E0("Observer observing random cell: %d (%d,%d)\n",
                          slot, starts.Items[slot].X, starts.Items[slot].Y);
             return starts.Items[slot];
         }
-        int slot = ScenarioInstance_00A8B230->unknown_0218.FUN_0065C7E0(0, starts.Count - 1);
+        int slot = DAT_00A8B230->unknown_0218.RandomRanged(0, starts.Count - 1);
         FUN_004068E0("First cell taken: %d (%d,%d)\n",
                      slot, starts.Items[slot].X, starts.Items[slot].Y);
         taken[slot] = true;
-        ScenarioInstance_00A8B230->unknown_1180[slot] = house;
+        DAT_00A8B230->unknown_1180.HouseIndex[slot] = house;
         return starts.Items[slot];
     }
 
     if (DAT_00ABFDD4 && !DAT_00ABFDD5) {
         DAT_00ABFDD5 = true;
-        ScenarioInstance_00A8B230->unknown_1180[i] = house;
+        DAT_00A8B230->unknown_1180.HouseIndex[i] = house;
         return starts.Items[i];
     }
 
@@ -756,7 +742,7 @@ Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, boo
         }
     }
     taken[best] = true;
-    ScenarioInstance_00A8B230->unknown_1180[best] = house;
+    DAT_00A8B230->unknown_1180.HouseIndex[best] = house;
     FUN_004068E0("Starting cell taken: %d (%d,%d)\n",
                  best, starts.Items[best].X, starts.Items[best].Y);
     return starts.Items[best];
@@ -774,7 +760,7 @@ bool MultiplayerGameMode::vf_32(bool a)
             int slot = house->StartingPoint;
             if (slot != -2) {
                 house->FUN_0050E000(starts.Items[slot]);
-                ScenarioInstance_00A8B230->unknown_1180[slot] = i;
+                DAT_00A8B230->unknown_1180.HouseIndex[slot] = i;
             }
         }
     }
@@ -790,7 +776,7 @@ bool MultiplayerGameMode::vf_33(bool a)
     int i;
 
     for (i = 0; i < 16; i++) {
-        if (ScenarioInstance_00A8B230->unknown_1180[i] == -1) {
+        if (DAT_00A8B230->unknown_1180.HouseIndex[i] == -1) {
             taken[i] = false;
         } else {
             taken[i] = true;
@@ -802,7 +788,7 @@ bool MultiplayerGameMode::vf_33(bool a)
             bool found = false;
             int slot = -1;
             for (int j = 0; j < 16; j++) {
-                if (ScenarioInstance_00A8B230->unknown_1180[j] == i) {
+                if (DAT_00A8B230->unknown_1180.HouseIndex[j] == i) {
                     found = true;
                     slot = j;
                 }
@@ -896,9 +882,9 @@ bool MultiplayerGameMode::vf_51(HouseClass* house, int* budget)
     while (*budget > 0 && tries > 0) {
         TechnoType_005D70F0* type;
         if (*budget > initial / 3 && units.Count != 0) {
-            type = units.Items[ScenarioInstance_00A8B230->unknown_0218.FUN_0065C7E0(0, units.Count - 1)];
+            type = units.Items[DAT_00A8B230->unknown_0218.RandomRanged(0, units.Count - 1)];
         } else {
-            type = infantry.Items[ScenarioInstance_00A8B230->unknown_0218.FUN_0065C7E0(0, infantry.Count - 1)];
+            type = infantry.Items[DAT_00A8B230->unknown_0218.RandomRanged(0, infantry.Count - 1)];
         }
         Techno_005D70F0* techno = (Techno_005D70F0*)FUN_007CAAE4(
             (type->*type->Vtbl->vt_8C)(house), 0, TypeDesc_ObjectClass, TypeDesc_TechnoClass, 0);
@@ -909,7 +895,7 @@ bool MultiplayerGameMode::vf_51(HouseClass* house, int* budget)
             tries--;
         } else {
             *budget -= (type->*type->Vtbl->vt_AC)();
-            if (ScenarioInstance_00A8B230->unknown_0000 & 0x200) {
+            if (DAT_00A8B230->unknown_0000 & 0x200) {
                 techno->unknown_150.Select(true);
             }
             if (house->FUN_0050B730()) {

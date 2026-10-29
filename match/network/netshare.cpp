@@ -248,9 +248,9 @@ extern unsigned char DAT_00A8B31D;
 extern const char DAT_00831A60[];
 
 // ScenarioClass::Instance (0xA8B230): only the +0x1254 member is stored here.
-#include "obj_00a8b230.h"
 // GLOBAL: GAMEMD 0xA8B230
-extern Obj_00A8B230* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // The object at 0xA8E960: a flags dword at +0x00, and the empty member 0x6B8B10
 // reached as a tail jump with ECX = its address.
@@ -1425,7 +1425,7 @@ void FUN_005E3850(const char* name, const char* text)
     packet.Command = 0x18;
     strcpy(packet.Name, LocalHandle);
     strcpy(packet.Text, text);
-    DAT_00A8D638.unknown_1BF = SessionObject_00A8B238.FUN_0069B720();
+    DAT_00A8D638.unknown_1BF = Session_00A8B238.FUN_0069B720();
     DAT_00A8D638.unknown_1C3 = FUN_005DAC00(BlankName);
     for (int i = 1; i < PlayerNodes.Count; i++) {
         if (_stricmp(Narrow_007350C0(PlayerNodes.Vector[i]->Name), name) == 0) {
@@ -2245,7 +2245,7 @@ void FUN_005E9B60(HWND dialog, int control)
     int value = FUN_004E4170(dialog, control, -1);
     int slot = FUN_004E3830(control);
     if (slot == SelectedSlotIndex) {
-        SessionObject_00A8B238.FUN_0069B760(value, false);
+        Session_00A8B238.FUN_0069B760(value, false);
         if (PlayerNodes.Count != 0) {
             PlayerNodes.Vector[0]->FUN_00696F90(value);
         }
@@ -2275,7 +2275,7 @@ void FUN_005E9C00(HWND dialog, int control)
         if (House_Choice_In_Use(value)) {
             value = -2;
         }
-        SessionObject_00A8B238.FUN_0069B7E0(value, false);
+        Session_00A8B238.FUN_0069B7E0(value, false);
         if (PlayerNodes.Count != 0) {
             PlayerNodes.Vector[0]->FUN_00696FC0(value);
         }

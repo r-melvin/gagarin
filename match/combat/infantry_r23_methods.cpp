@@ -12,15 +12,9 @@
 #include "../core/mission_class_methods.h"
 #include "../core/randomizer.h"
 
-// ScenarioClass::Instance (0xA8B230): only its randomizer at +0x218 is used here.
-struct ScenarioView_00522550
-{
-    char       _pad000[0x218];
-    Randomizer Random;
-};
-GG_STATIC_ASSERT(offsetof(ScenarioView_00522550, Random) == 0x218);
 // GLOBAL: GAMEMD 0xA8B230
-extern ScenarioView_00522550* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // GLOBAL: GAMEMD 0x7E9AC0 -- CLSID of JumpjetLocomotionClass.
 extern const CLSID DAT_007E9AC0;
@@ -101,5 +95,5 @@ int InfantryClass::FUN_00522550()
     ShouldDeploy = true;
     MissionControlClass* control = FUN_005B3A00();
     int delay = (int)(control->Rate * 900.0);
-    return delay + DAT_00A8B230->Random.RandomRanged(0, 2);
+    return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
 }

@@ -30,10 +30,3 @@ void Obj_004770B0::FUN_004770B0(int a, int b, unsigned int c)
 #include "../_layout/obj_00549b50.h"
 
 #include "../_layout/obj_006ea4f0.h"
-
-#include "../_layout/obj_007719c0.h"
-// FUNCTION: GAMEMD 0x007719C0
-bool Obj_007719C0::FUN_007719C0()
-{
-    return !FUN_007529E0();
-}

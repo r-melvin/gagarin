@@ -38,7 +38,7 @@
 bool Cell_00483780::SpreadTiberium(char forced)
 {
     if (forced == 0) {
-        if ((DAT_00A8B230->Flags & 0x80) == 0) {
+        if ((DAT_00A8B230->unknown_0000 & 0x80) == 0) {
             return false;
         }
         int index = OverlayTypeIndexToTiberium_00483780(this->OverlayTypeIndex);
@@ -71,7 +71,7 @@ bool Cell_00483780::SpreadTiberium(char forced)
     }
 
     Tiberium_00483780* type = TiberiumArrayItems_00483780[tiberium];
-    int start = DAT_00A8B230->Random.RandomRanged(0, 7);
+    int start = DAT_00A8B230->unknown_0218.RandomRanged(0, 7);
 
     for (int i = 0; i < 8; i++) {
         Cell_00483780* neighbour = this->GetNeighbourCell((i + start) & 7);

@@ -110,8 +110,8 @@ bool __stdcall FlyLocomotionClass::PowerOff()
 {
     if (IsMoving()) {
         IsSpinning = 1;
-        unknown_54 = Scenario_00A8B230->RandomNumber.RandomRanged(0x14, 0x1E);
-        if (Scenario_00A8B230->RandomNumber.RandomRanged(0, 0x63) < 0x32) {
+        unknown_54 = DAT_00A8B230->unknown_0218.RandomRanged(0x14, 0x1E);
+        if (DAT_00A8B230->unknown_0218.RandomRanged(0, 0x63) < 0x32) {
             unknown_54 = -unknown_54;
         }
         StopMoving();

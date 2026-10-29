@@ -171,7 +171,8 @@ extern unsigned char DAT_00A8EB7C;
 // GLOBAL: GAMEMD 0x00A8EDA0
 extern int DAT_00A8EDA0;
 // GLOBAL: GAMEMD 0x00A8B230 -- scenario object pointer, used at native offset +0x34B8.
-extern char* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0x00A8B23C -- game-mode object pointer.
 extern MultiplayerGameMode* DAT_00A8B23C;
 // GLOBAL: GAMEMD 0x00A8ED6B
@@ -315,7 +316,6 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 
 #include "../_layout/obj_0069b540.h"
 
-#include "../_layout/obj_0069bbe0.h"
 
 #include "../_layout/type_006a46d0.h"
 
@@ -756,7 +756,7 @@ void RadarClass::vf_53()
 {
     FUN_004068E0(DAT_0083932C);
     vf_50();
-    if (*(int*)(DAT_00A8B230 + 0x34B8) == 0) {
+    if (DAT_00A8B230->unknown_34B8 == 0) {
         unknown_11F0 = (DAT_007F5BF8 - 0x90) / 2 + 4;
         DAT_00B04A00 = unknown_11E4 + 0x0B;
         DAT_00B048CC = unknown_11E8 + 4;

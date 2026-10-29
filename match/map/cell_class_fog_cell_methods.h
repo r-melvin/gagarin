@@ -34,13 +34,10 @@
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-struct Scenario_00486A70
-{
-    int Flags;   // +0x0000  bit 0x1000 gates the whole routine
-};
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance (a pointer).
-extern Scenario_00486A70* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // ---------------------------------------------------------------------------
 // The per-cell fogged-object vector. Its vptr is at +0x00 and the

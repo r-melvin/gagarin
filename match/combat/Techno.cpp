@@ -215,8 +215,6 @@ extern "C" HWND DAT_00B73550;
 // GLOBAL: GAMEMD 0x00B7355C
 extern "C" HIMC DAT_00B7355C;
 
-// GLOBAL: GAMEMD 0x00A8B238
-extern "C" int DAT_00A8B238;
 // GLOBAL: GAMEMD 0x00B76B24
 extern "C" int DAT_00B76B24;
 #include "../_layout/flags_0077d940.h"

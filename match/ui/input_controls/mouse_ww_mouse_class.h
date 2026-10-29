@@ -68,7 +68,7 @@ public:
     virtual void vf_27() = 0;
     virtual void vf_28() = 0;
     virtual void vf_29() = 0;
-    virtual void vf_30() = 0;
+    virtual RectangleStruct GetRect() const = 0; // +0x78, hidden-result ABI (MSEngine 0x5D1E70)
     virtual int GetWidth() const = 0;
     virtual int GetHeight() const = 0;
 };

@@ -195,18 +195,6 @@ struct HoverAnimView
 };
 GG_STATIC_ASSERT(sizeof(HoverAnimView) == 0x1C8);
 
-struct HoverRandomView
-{
-    char unknown_000[0x04];
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc)
-    int RandomRanged(int minval, int maxval);
-};
-GG_STATIC_ASSERT(sizeof(HoverRandomView) == 0x04);
-struct HoverScenarioView
-{ char unknown_000[0x218]; HoverRandomView Random; };
-GG_STATIC_ASSERT(offsetof(HoverScenarioView, Random) == 0x218);
-GG_STATIC_ASSERT(sizeof(HoverScenarioView) == 0x21C); // accessed prefix only
-
 // Method-only Map prefix view. The singleton itself is the canonical LocoMap
 // object declared in loco_foot.h; Hover accesses its same storage through this view.
 struct HoverMapView

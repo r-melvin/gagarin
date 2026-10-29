@@ -68,7 +68,7 @@ bool ThemeClass::IsAvailable(int theme) const
         && CurrentPlayer_00A83D4C->Type->SideIndex != control->Side)
         return false;
     if (Session_00A8B238.GameMode == 0
-        && ScenarioInstance_00A8B230->At_1254 < control->Scenario)
+        && DAT_00A8B230->unknown_1254 < control->Scenario)
         return false;
     return true;
 }

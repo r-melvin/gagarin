@@ -153,7 +153,7 @@ int BA2Building::vf_91(int* damage, int distance, BA2Warhead* warhead, BA2Obj* a
                     continue;
                 }
                 int rows = Type->FUN_0045ECA0(0);
-                switch (DAT_00A8B230->Counter.FUN_0065C7E0(0, rows + Type->FUN_0045EC90() + 5)) {
+                switch (DAT_00A8B230->unknown_0218.RandomRanged(0, rows + Type->FUN_0045EC90() + 5)) {
                 case 1:
                 case 2:
                 case 3:
@@ -163,7 +163,7 @@ int BA2Building::vf_91(int* damage, int distance, BA2Warhead* warhead, BA2Obj* a
                         HBCoord scatter;
                         BA2Anim* anim = new BA2Anim(RulesInstance_8871E0->unknown_B78[0],
                                                     FUN_0049F420(&scatter, &pos, 0x60, 0), 0,
-                                                    DAT_00A8B230->Counter.FUN_0065C7E0(1, 3), 0x600, 0, 0);
+                                                    DAT_00A8B230->unknown_0218.RandomRanged(1, 3), 0x600, 0, 0);
                         if (anim) {
                             anim->FUN_00424B50(this);
                         }
@@ -176,7 +176,7 @@ int BA2Building::vf_91(int* damage, int distance, BA2Warhead* warhead, BA2Obj* a
                         HBCoord scatter;
                         BA2Anim* anim = new BA2Anim(RulesInstance_8871E0->unknown_B78[1],
                                                     FUN_0049F420(&scatter, &pos, 0x60, 0),  0,
-                                                    DAT_00A8B230->Counter.FUN_0065C7E0(1, 3), 0x600, 0, 0);
+                                                    DAT_00A8B230->unknown_0218.RandomRanged(1, 3), 0x600, 0, 0);
                         if (anim) {
                             anim->FUN_00424B50(this);
                         }
@@ -213,7 +213,7 @@ int BA2Building::vf_91(int* damage, int distance, BA2Warhead* warhead, BA2Obj* a
                     if (!Facing.FUN_004C9480() && vf_212()) {
                         BA2Dir dir;
                         dir.Raw = 0;
-                        dir.Bytes.Hi = DAT_00A8B230->Counter.FUN_0065C780();
+                        dir.Bytes.Hi = DAT_00A8B230->unknown_0218.Random();
                         Facing.FUN_004C9220(&dir);
                     }
                 } else {

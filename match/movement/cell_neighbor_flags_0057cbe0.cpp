@@ -7,17 +7,6 @@
 // 0x57CBB0/0x57CBBC, 0x57CCB4/0x57CCC0 and
 // 0x57CCD0/0x57CCDC. No engine names are inferred for the numeric cases.
 #include "cell_neighbor_flags_0057cbe0.h"
-// Reconstructed inline lookup: the two retail copies share the table load.
-static inline NeighborCell_0057CBE0* LookupNeighbor(const NeighborCoord_0057CBE0* cell)
-{
-    int index = cell->Y * 512 + cell->X;
-    if (index >= 0 && index < 0x40000) {
-        NeighborCell_0057CBE0* found = NeighborCells[index];
-        if (found) return found;
-    }
-    NeighborFallback.Coordinates = *cell;
-    return &NeighborFallback;
-}
 // FUNCTION: GAMEMD 0x57CAB0
 int FUN_0057CAB0(NeighborCoord_0057CBE0* cell)
 {

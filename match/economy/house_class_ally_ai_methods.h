@@ -31,15 +31,9 @@ GG_STATIC_ASSERT(offsetof(Rules_00501640, At_14B5) == 0x14B5);
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern Rules_00501640* DAT_008871E0;
 
-// ScenarioClass — the byte that suppresses AI alliances.
-struct Scenario_00501640
-{
-    char _pad000[0x11E0];   // +0x0000
-    char At_11E0;           // +0x11E0  (bool)
-};
-GG_STATIC_ASSERT(offsetof(Scenario_00501640, At_11E0) == 0x11E0);
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-extern Scenario_00501640* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct ModeVtbl_00501640;

@@ -37,16 +37,10 @@ struct Random_00726400
     int RandomRanged(int min, int max);
 };
 
-// ScenarioClass — only Random @0x218 is touched.
-struct Scenario_00726400
-{
-    char             _pad000[0x218];    // +0x0000
-    Random_00726400  Random;            // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(Scenario_00726400, Random) == 0x218);
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-extern Scenario_00726400* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // TEventClass — one node of the trigger type's event list.
 struct TEvent_00726400

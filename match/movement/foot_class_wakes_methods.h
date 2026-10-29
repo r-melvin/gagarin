@@ -47,23 +47,11 @@ struct CoordStruct_00629E90
 GG_STATIC_ASSERT(offsetof(CoordStruct_00629E90, Z) == 0x8);
 GG_STATIC_ASSERT(sizeof(CoordStruct_00629E90) == 0xC);
 
-// The scenario randomizer; only the ranged draw is called.
-struct Random_00629E90
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
-    int RandomRanged(int min, int max);
-};
 
-// ScenarioClass — only Random @0x218 is touched.
-struct Scenario_00629E90
-{
-    char            _pad000[0x218];   // +0x0000
-    Random_00629E90 Random;           // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(Scenario_00629E90, Random) == 0x218);
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-extern Scenario_00629E90* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 struct AnimTypeClass_00629E90;
 

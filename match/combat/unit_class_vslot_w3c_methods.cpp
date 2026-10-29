@@ -29,15 +29,9 @@ GG_STATIC_ASSERT(offsetof(UnitRulesView, SlaveScanDelay) == 0x1790);
 // GLOBAL: GAMEMD 0x8871E0 -- the rules.
 extern UnitRulesView* DAT_008871E0;
 
-// The scenario object, as far as the random number generator it carries.
-struct UnitScenarioView
-{
-    char unknown_00[0x218];
-    Randomizer Random;   // +0x218
-};
-GG_STATIC_ASSERT(offsetof(UnitScenarioView, Random) == 0x218);
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
-extern UnitScenarioView* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // The mission control record, as far as the mission rate in minutes.
 struct MissionControlClass
@@ -77,7 +71,7 @@ int UnitClass::vf_136()
         if (static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B1020()) {
             static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B0CC0();
             int delay = (int)(FUN_005B3A00()->Rate * 900.0);
-            return delay + DAT_00A8B230->Random.RandomRanged(0, 2);
+            return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
         }
     }
     return FootClass::vf_136();

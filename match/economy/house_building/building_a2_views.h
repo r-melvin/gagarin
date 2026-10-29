@@ -308,23 +308,7 @@ GG_STATIC_ASSERT(offsetof(BA2Rules, unknown_FA8) == 0xFA8);
 GG_STATIC_ASSERT(offsetof(BA2Rules, unknown_1700) == 0x1700);
 GG_STATIC_ASSERT(offsetof(BA2Rules, unknown_17EC) == 0x17EC);
 
-// Counter object embedded in the source object at +0x218 (partial).
-// Not merged into HBCounterView: FUN_0065C780 returns unsigned char here (see house_building_views.h).
-struct BA2Counter
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (read-only here)
-    int FUN_0065C7E0(int a, int b);
-    // FUNCTION: GAMEMD 0x65C780 (read-only here)
-    unsigned char FUN_0065C780();
-};
 
-// Object behind the global at 0xA8B230 (partial).
-struct BA2Source
-{
-    char _pad_0000[0x218];   // +0x0000
-    BA2Counter Counter;   // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(BA2Source, Counter) == 0x218);
 
 // Object behind the global at 0x887324 (partial).
 struct BA2Screen
@@ -1535,7 +1519,8 @@ GG_STATIC_ASSERT(offsetof(BA2Building, unknown_703) == 0x703);
 
 // GLOBAL: GAMEMD 0x8871E0 / 0xA8B230 / 0x887324 - the rules, the source object and the screen object.
 extern BA2Rules* RulesInstance_8871E0;
-extern BA2Source* DAT_00A8B230;
+#include "../../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 extern BA2Screen* DAT_00887324;
 // GLOBAL: GAMEMD 0x87F7E8 - the map; 0x89C818 - the invalid cell.
 extern BA2Map DAT_0087F7E8;

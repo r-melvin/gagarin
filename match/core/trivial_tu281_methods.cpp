@@ -17,11 +17,3 @@ void __cdecl FUN_00771780()
 void __cdecl FUN_00771790()
 {
 }
-
-// FUNCTION: GAMEMD 0x771890
-// Stores, then tail-calls.
-void Obj_00771890::FUN_00771890()
-{
-    unknown_00 = 0x7F7354;
-    FUN_005CB6C0();
-}

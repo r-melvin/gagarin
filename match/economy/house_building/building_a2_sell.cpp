@@ -163,7 +163,7 @@ int BA2Building::vf_146()
                         BA2Infantry* soldier = new BA2Infantry(kind, Owner);
                         if (soldier) {
                             ++DAT_00A8E7AC;
-                            HBCell* offset = cells2 + DAT_00A8B230->Counter.FUN_0065C7E0(0, count - 1);
+                            HBCell* offset = cells2 + DAT_00A8B230->unknown_0218.RandomRanged(0, count - 1);
                             HBCell here = vf_110();
                             HBCoord pos;
                             pos.X = (short)(offset->X + here.X) * 256 + 128;

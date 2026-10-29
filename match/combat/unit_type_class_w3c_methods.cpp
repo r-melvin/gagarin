@@ -23,15 +23,9 @@ extern const char STR_0081834C[];
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- loads a shape file by path.
 void* __fastcall FUN_005B40B0(const char* name, bool flag);
 
-// The scenario object, as far as the random number generator it carries.
-struct UnitTypeScenarioView
-{
-    char unknown_00[0x218];
-    Randomizer Random;   // +0x218
-};
-GG_STATIC_ASSERT(offsetof(UnitTypeScenarioView, Random) == 0x218);
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
-extern UnitTypeScenarioView* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 
 // FUNCTION: GAMEMD 0x7472C0
@@ -47,7 +41,7 @@ bool UnitTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
     if (unit) {
         DirStruct facing;
         facing.Raw = 0;
-        int random = DAT_00A8B230->Random.Random();
+        int random = DAT_00A8B230->unknown_0218.Random();
         unsigned int bits = (facing.Whole & 0xFFFF00FF) | ((unsigned char)random << 8);
         CoordStruct coord;
         coord.X = cell->X * 256 + 128;

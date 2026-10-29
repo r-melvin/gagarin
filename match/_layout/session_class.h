@@ -14,6 +14,7 @@
 #include "game_mode_options.h"
 #include "../platform/ccfile_class.h"
 #include "../ui/message_list_class_methods.h"
+#include "score_entry_00a8d1fc.h"
 class PhoneEntryClass;
 struct GlobalPacketType;
 
@@ -111,7 +112,13 @@ struct SessionClass
     unsigned int unknown_1FBC;
     bool unknown_1FC0;
     bool unknown_1FC1;
-    char unknown_1FC2[0x2354 - 0x1FC2];
+    char unknown_1FC2[2];
+    // Score table 0xA8D1FC..0xA8D57B; the dword 0xA8D57C, filled count 0xA8D580, survivor 0xA8D584.
+    ScoreEntry_00A8D1FC ScoreEntries[8];    // +0x1FC4
+    int unknown_2344;                       // +0x2344 (0xA8D57C)
+    int ScoreCount;                         // +0x2348 (0xA8D580)
+    int ScoreSurvivor;                      // +0x234C (0xA8D584)
+    char unknown_2350[4];
     CCFileClass unknown_2354;
     int unknown_23C0;
     int unknown_23C4;
@@ -197,7 +204,7 @@ struct SessionClass
     DisplayScCellObject* unknown_30CC; // existing MapClass lookup result view
     int unknown_30D0;
     int unknown_30D4;
-    char InGameFrameActive;     // +0x30D8
+    bool InGameFrameActive;     // +0x30D8
 
     // Declaration: GAMEMD 0x69BAB0 (decl; reloc)
     void Resume();
@@ -242,11 +249,20 @@ struct SessionClass
     int FUN_0069BC60(int index);
     // Declaration: GAMEMD 0x69BD60 -- ECX receiver, noargs, RET.
     void FUN_0069BD60();
+    // Declaration: GAMEMD 0x69A310 -- maps a slot id to a colour index; RET4, ECX unused.
+    unsigned int FUN_0069A310(unsigned int index);
+    // Declaration: GAMEMD 0x69B720 -- unknown_15C unless unknown_160 is -2.
+    int FUN_0069B720();
+    // Declaration: GAMEMD 0x69BBE0 -- MOV AL,[ECX+0x30D8]; RET.
+    bool FUN_0069BBE0();
 };
 GG_STATIC_ASSERT(offsetof(SessionClass, GameMode) == 0);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_307A) == 0x307A);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_307A) == 0x10);
 GG_STATIC_ASSERT(offsetof(SessionClass, InGameFrameActive) == 0x30D8);
+GG_STATIC_ASSERT(offsetof(SessionClass, ScoreEntries) == 0x1FC4);
+GG_STATIC_ASSERT(offsetof(SessionClass, ScoreCount) == 0x2348);
+GG_STATIC_ASSERT(offsetof(SessionClass, ScoreSurvivor) == 0x234C);
 
 // GLOBAL: GAMEMD 0xA8B238
 extern SessionClass Session_00A8B238;

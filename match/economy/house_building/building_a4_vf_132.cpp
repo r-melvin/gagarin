@@ -69,7 +69,7 @@ int BA4Building::vf_132()
             }
         default:
             int base = (int)(FUN_005B3A00()->unknown_18 * 900.0);
-            return base + DAT_00A8B230->unknown_218.FUN_0065C7E0(0, 2);
+            return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
         }
     }
 

@@ -1222,11 +1222,11 @@ int __stdcall FUN_0078D120(void* window, unsigned int message, unsigned int wpar
 
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DAT_00A8ED9C;
-#include "obj_00a8b230.h"
 #include "../_layout/map_0087f7e8.h"
 
 // GLOBAL: GAMEMD 0xA8B230
-extern Obj_00A8B230* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 
 // Declaration: GAMEMD 0x773E90 (decl; reloc)

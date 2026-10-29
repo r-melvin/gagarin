@@ -37,6 +37,9 @@ struct VoxNode_00752480
     VoxEntry_00752480* Entry;          // +0x000C
     char               _pad010[8];     // +0x0010
     int                Priority;       // +0x0018
+
+    // FUNCTION: GAMEMD 0x4073E0 (decl; reloc) -- the next node in the list.
+    VoxNode_00752480* FUN_004073E0();
 };
 GG_STATIC_ASSERT(offsetof(VoxNode_00752480, Entry)    == 0xC);
 GG_STATIC_ASSERT(offsetof(VoxNode_00752480, Priority) == 0x18);
@@ -59,6 +62,8 @@ struct VoxEngine_00752480
     void FUN_00407F40();
     // FUNCTION: GAMEMD 0x407A90 (decl; reloc) — release the engine.
     void FUN_00407A90();
+    // FUNCTION: GAMEMD 0x408070 (decl; reloc) -- non-zero while the engine is busy.
+    int FUN_00408070() const;
 };
 // GLOBAL: GAMEMD 0xB1D4CC — the engine handle.
 extern VoxEngine_00752480* DAT_00B1D4CC;

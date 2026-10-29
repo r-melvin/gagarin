@@ -190,45 +190,6 @@ bool Obj_00772AC0::FUN_00772AC0() const
     return false;
 }
 
-// 0x771970 / 0x771980 / 0x7719D0: stubs that run the helper at 0x771620 on the member at +0x1C.
-struct Obj_00771620
-{
-    void FUN_00771620();
-};
-
-struct Obj_00771970
-{
-    char unknown_00[0x1C];
-    Obj_00771620* Inner;   // +0x1C
-
-    // FUNCTION: GAMEMD 0x771970 (__thiscall)
-    bool FUN_00771970(int a, int b);
-    // FUNCTION: GAMEMD 0x771980 (__thiscall)
-    void FUN_00771980(int a, int b);
-    // FUNCTION: GAMEMD 0x7719D0 (__thiscall)
-    void FUN_007719D0(int a);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00771970, Inner) == 0x1C);
-
-// FUNCTION: GAMEMD 0x771970
-bool Obj_00771970::FUN_00771970(int, int)
-{
-    Inner->FUN_00771620();
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x771980
-void Obj_00771970::FUN_00771980(int, int)
-{
-    Inner->FUN_00771620();
-}
-
-// FUNCTION: GAMEMD 0x7719D0
-void Obj_00771970::FUN_007719D0(int)
-{
-    Inner->FUN_00771620();
-}
-
 // 0x777B30 / 0x777B60: fill the caller's buffer from the globals at 0x822D1C / 0x822D20.
 // GLOBAL: GAMEMD 0x822D1C
 extern int DAT_00822D1C;

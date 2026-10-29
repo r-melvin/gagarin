@@ -1308,7 +1308,8 @@ unsigned int FUN_00772A90(BAObjView* entry);
 // GLOBAL: GAMEMD 0x87F7E8 - the map object (its address is loaded into ECX).
 extern BAMapView DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xA8B230 / 0x8871E0
-extern HBSourceView* DAT_00A8B230;
+#include "../../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 extern BARulesView* RulesInstance;
 
 

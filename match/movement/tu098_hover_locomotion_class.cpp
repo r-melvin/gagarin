@@ -605,8 +605,8 @@ bool __stdcall HoverLocomotionClass::PowerOff()
         int state = HoverFoot(LinkedTo)->unknown_0AC;
         if (state != 0 && state != 7) {
             IsRocking = true;
-            RockAmount = DAT_00A8B230->Random.RandomRanged(20, 30);
-            if (DAT_00A8B230->Random.RandomRanged(0, 99) < 50)
+            RockAmount = DAT_00A8B230->unknown_0218.RandomRanged(20, 30);
+            if (DAT_00A8B230->unknown_0218.RandomRanged(0, 99) < 50)
                 RockAmount = -RockAmount;
         }
     }
@@ -696,8 +696,8 @@ bool __stdcall HoverLocomotionClass::Shove(unsigned long dir)
 {
     if (Push(dir)) {
         IsRocking = true;
-        RockAmount = DAT_00A8B230->Random.RandomRanged(20, 30);
-        if (DAT_00A8B230->Random.RandomRanged(0, 99) < 50)
+        RockAmount = DAT_00A8B230->unknown_0218.RandomRanged(20, 30);
+        if (DAT_00A8B230->unknown_0218.RandomRanged(0, 99) < 50)
             RockAmount = -RockAmount;
         return true;
     }
@@ -735,8 +735,8 @@ void HoverLocomotionClass::ClearSpeedAndHeading()
 void HoverLocomotionClass::StartRocking()
 {
     IsRocking = true;
-    RockAmount = DAT_00A8B230->Random.RandomRanged(20, 30);
-    if (DAT_00A8B230->Random.RandomRanged(0, 99) < 50)
+    RockAmount = DAT_00A8B230->unknown_0218.RandomRanged(20, 30);
+    if (DAT_00A8B230->unknown_0218.RandomRanged(0, 99) < 50)
         RockAmount = -RockAmount;
 }
 

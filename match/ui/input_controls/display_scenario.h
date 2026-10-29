@@ -47,6 +47,8 @@ struct DisplayScCellObject
     bool FUN_004870D0(int index);
     // FUNCTION: GAMEMD 0x484FF0 (decl; reloc) -- CellClass::GetUIName.
     const wchar_t* FUN_00484FF0();
+    // FUNCTION: GAMEMD 0x483E30 (decl; reloc) -- six light values (ambient and tint), RET 24.
+    void FUN_00483E30(int v0, int v1, int v2, int v3, int v4, int v5);
 };
 GG_STATIC_ASSERT(offsetof(DisplayScCellObject, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(DisplayScCellObject, unknown_3C) == 0x3C);
@@ -317,14 +319,7 @@ struct DisplayScTactical
     void FUN_006D6070(DisplayScCoord* coord);
 };
 extern DisplayScTactical* DisplayScTactical_00887324;
-// GLOBAL: GAMEMD 0xA8B238 -- SessionClass::Instance (progress report target).
-struct DisplayScSession
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x69AE90 (decl; reloc)
-    void FUN_0069AE90(int step);
-};
-extern DisplayScSession DisplayScSession_00A8B238;
+#include "../../_layout/session_class.h"
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc) -- Unsorted::CallBack, no arguments.
 void __cdecl FUN_0048D080();
 // FUNCTION: GAMEMD 0x71DCA0 / 0x5FE620 / 0x45E970 / 0x427940 / 0x6B5490 (decl; reloc) -- per-theater loaders, ECX.

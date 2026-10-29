@@ -16,18 +16,11 @@ struct MSVQPlayerRects
 GG_STATIC_ASSERT(offsetof(MSVQPlayerRects, Dest) == 0x24
               && offsetof(MSVQPlayerRects, Source) == 0x34);
 
-// TU-local stand-in that adds the slot-5 member to MSVQAnim.
-class MSVQAnimDraw : public MSVQAnim
-{
-public:
-    void Draw(int context, MSRect* area);
-};
-
 // FUNCTION: GAMEMD 0x005cd0e0
 // Slot 5: blit the player's current source rectangle from the screen surface
 // into its destination on the caller's surface, skipped when the optional
 // clip rectangle leaves nothing of the source.
-void MSVQAnimDraw::Draw(int context, MSRect* area)
+void MSVQAnim::Draw(int context, MSRect* area)
 {
     if (Player != 0 && !Finished) {
         if (area != 0) {

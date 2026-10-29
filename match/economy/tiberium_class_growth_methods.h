@@ -31,22 +31,10 @@ GG_STATIC_ASSERT(sizeof(Cell_007235A0) == 0x4);
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
 #include "../core/frame_counter.h"
 
-// The scenario randomizer; only the raw draw is called.
-struct Random_007235A0
-{
-    // FUNCTION: GAMEMD 0x65C780 (decl; reloc) — Randomizer::Random.
-    int Random();
-};
 
-// ScenarioClass — only Random @0x218 is touched.
-struct Scenario_007235A0
-{
-    char             _pad000[0x218];   // +0x0000
-    Random_007235A0  Random;           // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(Scenario_007235A0, Random) == 0x218);
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance (pointer).
-extern Scenario_007235A0* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // CellClass — only the overlay data byte is read.
 struct CellClass_007235A0

@@ -32,6 +32,7 @@ public:
     void SetSide(int idx);        // GAMEMD 0x642B10 __thiscall
     int  GetSide();               // GAMEMD 0x642B20 __thiscall
     void Setup(int first, int second, char slotCount, int unknown);  // GAMEMD 0x642A60 __thiscall, RET 0x10
+    void LoadBackground(const char* file, const char* picture, int value);  // GAMEMD 0x642C20 __thiscall, RET 0xC
 
     ProgressScreenClass();        // GAMEMD 0x6429E0 (no arguments)
     // Exit-time destructor: its body is inlined into the atexit thunk 0x6429A0.
@@ -52,7 +53,7 @@ public:
     char* Buffer;                 // +0x54, released by the destructor
     bool BufferOwned;             // +0x58
     char _pad_59[3];              // +0x59 .. +0x5B untouched here
-    int  unknown_5C;              // +0x5C
+    const char* unknown_5C;       // +0x5C picture name, stored by LoadBackground
     bool unknown_60;              // +0x60
     char unknown_61;              // +0x61 slot count (read with MOVSX by Setup 0x642A60)
     bool unknown_62;              // +0x62

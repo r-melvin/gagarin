@@ -202,6 +202,8 @@ public:
     void SetWallOwner();
     CoordStruct FindInfantrySubposition(const CoordStruct& coords, bool ignoreContents,
                                         bool alt, bool useCellCoords);
+    // GAMEMD 0x487C80 (decl; reloc) -- the cell's RadSite (+0xF8).
+    void* FUN_00487C80();
 
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     DynamicVectorClass<FoggedObjectClass*>* FoggedObjects; // +0x28 RTTI .?AV?$DynamicVectorClass@PAVFoggedObjectClass@@@@

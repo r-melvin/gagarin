@@ -478,8 +478,8 @@ void FootClass::CreateWakes(int x, int y, int z)
 
     int i = 3;
     do {
-        int along  = DAT_00A8B230->Random.RandomRanged(-0xB4, 0xB4);
-        int across = DAT_00A8B230->Random.RandomRanged(-0x40, 0x40);
+        int along  = DAT_00A8B230->unknown_0218.RandomRanged(-0xB4, 0xB4);
+        int across = DAT_00A8B230->unknown_0218.RandomRanged(-0x40, 0x40);
 
         CoordStruct_00629E90 coord;
         coord.X = x + (int)(along * c - across * s);

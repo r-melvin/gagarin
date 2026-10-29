@@ -11,7 +11,7 @@
 inline int SidebarRowCount()
 {
     int margin = 0x1A;
-    if (Scenario_00A8B230->At_34B8) {
+    if (DAT_00A8B230->unknown_34B8) {
         margin = 0x12;
     }
     return (DAT_00886F9C - margin - StripY_00B0B4F8 + DAT_00886F94 - 7) / 50;

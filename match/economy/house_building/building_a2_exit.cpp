@@ -86,7 +86,7 @@ int BA2Building::vf_64(BA2Other* obj, HBCell where)
             } else {
                 target = HBCell(u.X - 1, u.Y);
             }
-            int jitter = DAT_00A8B230->Counter.FUN_0065C7E0(0, DAT_0087F8F0);
+            int jitter = DAT_00A8B230->unknown_0218.RandomRanged(0, DAT_0087F8F0);
             target.X += jitter;
             target.Y += jitter;
             ++DAT_00A8E7AC;

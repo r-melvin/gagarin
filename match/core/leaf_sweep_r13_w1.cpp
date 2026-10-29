@@ -375,16 +375,10 @@ struct Tiberium_R13Cell
 GG_STATIC_ASSERT(offsetof(Tiberium_R13Cell, unknown_B0) == 0xB0);
 GG_STATIC_ASSERT(offsetof(Tiberium_R13Cell, unknown_E4) == 0xE4);
 
-struct Scenario_R13Cell
-{
-    unsigned char unknown_00;
-    char          Pad_01[0x34A6 - 1];
-    unsigned char unknown_34A6;
-};
-GG_STATIC_ASSERT(offsetof(Scenario_R13Cell, unknown_34A6) == 0x34A6);
 
 // GLOBAL: GAMEMD 0xA8B230
-extern Scenario_R13Cell* DAT_00A8B230;
+#include "scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0xB0F4EC
 extern Tiberium_R13Cell** DAT_00B0F4EC;
 // GLOBAL: GAMEMD 0x7E3810
@@ -468,7 +462,7 @@ bool Cell_R13::FUN_00483620()
 // True when the tiberium here is past halfway, unmarked, rich enough and unoccupied.
 bool Cell_R13::FUN_00483690()
 {
-    if (!(DAT_00A8B230->unknown_00 & 0x80))
+    if (!(DAT_00A8B230->unknown_0000 & 0x80))
         return false;
     int index = OverlayTypeIndexToTiberium_00483780(unknown_44);
     if (index == -1)

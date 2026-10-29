@@ -5105,7 +5105,7 @@
   "len": "0x1e",
   "name": "MSEngine::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/deleting_dtor_sweep.cpp",
@@ -5698,7 +5698,7 @@
   "addr": "0x771A30",
   "sym": "??_GAnim@Voices@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "WorldDominationTour::Voices::Anim::scalar deleting destructor",
+  "name": "WorldDominationTour::Voices::Anim::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -24418,27 +24418,27 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD320",
-  "sym": "?vf_7@MSVQAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSVQAnim@@UAE_NXZ",
   "len": "0x4",
-  "name": "?vf_7@MSVQAnim@@QAE_NXZ",
+  "name": "MSVQAnim::vf_7",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD330",
-  "sym": "?Construct@MSBitPrintAnim@@QAEPAV1@PBGPBUMSRect@@_N@Z",
+  "sym": "??0MSBitPrintAnim@@QAE@PBGPBUMSRect@@_N@Z",
   "len": "0x6e",
-  "name": "MSBitPrintAnim::Construct",
-  "status": "partial",
-  "pct": 88.6
+  "name": "MSBitPrintAnim::MSBitPrintAnim",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD3A0",
   "sym": "?MSBitPrintAnim_Destroy@@YIXPAVMSBitPrintAnim@@@Z",
   "len": "0x19",
-  "name": "?MSBitPrintAnim_Destroy@@YIXPAVMSBitPrintAni",
+  "name": "MSBitPrintAnim_Destroy",
   "status": "matched",
   "pct": 100
  },
@@ -24447,25 +24447,25 @@
   "addr": "0x5CD3C0",
   "sym": "?SetStarted@MSBitPrintAnim@@QAEX_N@Z",
   "len": "0xa",
-  "name": "?SetStarted@MSBitPrintAnim@@QAEX_N@Z",
+  "name": "MSBitPrintAnim::SetStarted",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD3D0",
-  "sym": "?GetRect@MSBitPrintAnim@@QAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSBitPrintAnim@@UAE?AUMSRect@@XZ",
   "len": "0x24",
-  "name": "?GetRect@MSBitPrintAnim@@QAE?AUMSRect@@XZ",
+  "name": "MSBitPrintAnim::GetRect",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD400",
-  "sym": "?vf_7@MSBitPrintAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSBitPrintAnim@@UAE_NXZ",
   "len": "0x4",
-  "name": "?vf_7@MSBitPrintAnim@@QAE_NXZ",
+  "name": "MSBitPrintAnim::vf_7",
   "status": "matched",
   "pct": 100
  },
@@ -24474,7 +24474,7 @@
   "addr": "0x5CD410",
   "sym": "?Update@MSBitPrintAnim@@UAE_NHPAUMSRect@@@Z",
   "len": "0xb6",
-  "name": "?Update@MSBitPrintAnim@@UAE_NHPAUMSRect@@@Z",
+  "name": "MSBitPrintAnim::Update",
   "status": "matched",
   "pct": 100
  },
@@ -24483,25 +24483,25 @@
   "addr": "0x5CD4D0",
   "sym": "?Draw@MSBitPrintAnim@@UAEXHPAUMSRect@@@Z",
   "len": "0x9e",
-  "name": "?Draw@MSBitPrintAnim@@UAEXHPAUMSRect@@@Z",
+  "name": "MSBitPrintAnim::Draw",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD570",
-  "sym": "?Construct@MSPrintAnim@@QAEPAV1@PBGHHPAVMSFont@@PBUMSRect@@HH_N3@Z",
+  "sym": "??0MSPrintAnim@@QAE@PBGHHPAVMSFont@@PBUMSRect@@HH_N3@Z",
   "len": "0x115",
-  "name": "MSPrintAnim::Construct",
-  "status": "partial",
-  "pct": 93.8
+  "name": "MSPrintAnim::MSPrintAnim",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD690",
   "sym": "?Layout@MSPrintAnim@@QAEXPBUMSRect@@@Z",
   "len": "0x1b7",
-  "name": "MSPrintAnim",
+  "name": "MSPrintAnim::Layout",
   "status": "matched",
   "pct": 100
  },
@@ -24510,7 +24510,7 @@
   "addr": "0x5CDB90",
   "sym": "?MSCountPages@@YIHPAVObj_007B66D0_msanim_family_methods@@PAVMSFont@@H@Z",
   "len": "0xb9",
-  "name": "",
+  "name": "MSCountPages",
   "status": "matched",
   "pct": 100
  },
@@ -24519,26 +24519,25 @@
   "addr": "0x5CDC50",
   "sym": "?Update@MSPrintAnim@@UAE_NHPAUMSRect@@@Z",
   "len": "0x28c",
-  "name": "MSPrintAnim",
-  "status": "partial",
-  "pct": 100,
-  "note": "Body is 100.0% (raw_match exact modulo relocations) but the row is held partial: MSPrintAnim's compiled vtable has 6 slots against retail's 9, so verify_vtable fails, and strict verify_relocations fails on the unbound callee ?GetTime@MSClockClass@@QAEHXZ."
+  "name": "MSPrintAnim::Update",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CDEE0",
   "sym": "?Draw@MSPrintAnim@@UAEXHPAUMSRect@@@Z",
   "len": "0x1e0",
-  "name": "MSPrintAnim",
+  "name": "MSPrintAnim::Draw",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE2B0",
-  "sym": "?GetRect@MSPrintAnim@@QAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSPrintAnim@@UAE?AUMSRect@@XZ",
   "len": "0x24",
-  "name": "MSPrintAnim",
+  "name": "MSPrintAnim::GetRect",
   "status": "matched",
   "pct": 100
  },
@@ -24547,16 +24546,16 @@
   "addr": "0x5CE2E0",
   "sym": "?SetActive@MSPrintAnim@@QAEX_N@Z",
   "len": "0x11",
-  "name": "MSPrintAnim",
+  "name": "MSPrintAnim::SetActive",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE300",
-  "sym": "?vf_7@MSPrintAnim@@QAEHXZ",
+  "sym": "?vf_7@MSPrintAnim@@UAE_NXZ",
   "len": "0x28",
-  "name": "MSPrintAnim",
+  "name": "MSPrintAnim::vf_7",
   "status": "matched",
   "pct": 100
  },
@@ -24565,7 +24564,7 @@
   "addr": "0x5CE330",
   "sym": "?MeasureWidth@MSPrintAnim@@QAEHPAVObj_007B66D0_msanim_family_methods@@@Z",
   "len": "0x64",
-  "name": "?MeasureWidth@MSPrintAnim@@QAEHPAVWideString",
+  "name": "MSPrintAnim::MeasureWidth",
   "status": "matched",
   "pct": 100
  },
@@ -24574,25 +24573,25 @@
   "addr": "0x5CE3A0",
   "sym": "?DrawLines@MSPrintAnim@@QAEXPAVMSSurface@@PAUMSRect@@@Z",
   "len": "0xf6",
-  "name": "MSPrintAnim",
+  "name": "MSPrintAnim::DrawLines",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE4A0",
-  "sym": "?ConstructCentred@MSPCXAnim@@QAEPAV1@PAVMSStringClass@@PAVMSAnimVector@@_N@Z",
+  "sym": "??0MSPCXAnim@@QAE@PAVMSStringClass@@PAVMSAnimVector@@_N@Z",
   "len": "0x194",
-  "name": "MSPCXAnim",
+  "name": "MSPCXAnim::MSPCXAnim",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE640",
-  "sym": "?ConstructAt@MSPCXAnim@@QAEPAV1@PAVMSStringClass@@PAVMSAnimVector@@PBUMSPoint@@_N@Z",
+  "sym": "??0MSPCXAnim@@QAE@PAVMSStringClass@@PAVMSAnimVector@@PBUMSPoint@@_N@Z",
   "len": "0x165",
-  "name": "MSPCXAnim",
+  "name": "MSPCXAnim::MSPCXAnim",
   "status": "matched",
   "pct": 100
  },
@@ -24601,7 +24600,7 @@
   "addr": "0x5CE7B0",
   "sym": "?MSPCXAnim_Destroy@@YIXPAVMSPCXAnim@@@Z",
   "len": "0x1e",
-  "name": "",
+  "name": "MSPCXAnim_Destroy",
   "status": "matched",
   "pct": 100
  },
@@ -24610,7 +24609,7 @@
   "addr": "0x5CE7D0",
   "sym": "?Update@MSPCXAnim@@UAE_NHPAUMSRect@@@Z",
   "len": "0xec",
-  "name": "?Update@MSPCXAnim@@UAE_NHPAUMSRect@@@Z",
+  "name": "MSPCXAnim::Update",
   "status": "matched",
   "pct": 100
  },
@@ -24619,34 +24618,34 @@
   "addr": "0x5CE8C0",
   "sym": "?Draw@MSPCXAnim@@UAEXHPAUMSRect@@@Z",
   "len": "0x171",
-  "name": "MSPCXAnim",
+  "name": "MSPCXAnim::Draw",
   "status": "partial",
   "pct": 35.1
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CEA40",
-  "sym": "?Attach@MSPCXAnim@@QAEXPAX@Z",
+  "sym": "?Attach@MSPCXAnim@@UAEXPAX@Z",
   "len": "0x3f",
-  "name": "?Attach@MSPCXAnim@@QAEXPAX@Z",
+  "name": "MSPCXAnim::Attach",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CEA80",
-  "sym": "?GetRect@MSPCXAnim@@QAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSPCXAnim@@UAE?AUMSRect@@XZ",
   "len": "0x24",
-  "name": "MSPCXAnim",
+  "name": "MSPCXAnim::GetRect",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CEAB0",
-  "sym": "?vf_7@MSPCXAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSPCXAnim@@UAE_NXZ",
   "len": "0x4",
-  "name": "MSPCXAnim",
+  "name": "MSPCXAnim::vf_7",
   "status": "matched",
   "pct": 100
  },
@@ -24732,11 +24731,11 @@
   "pct": 100
  },
  {
-  "tu": "match/map/msanim_family_methods.cpp",
+  "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CEC70",
-  "sym": "?DeletingDtor@MSBinkAnim@@QAEPAXI@Z",
+  "sym": "??_GMSBinkAnim@@UAEPAXI@Z",
   "len": "0x3f",
-  "name": "MSBinkAnim",
+  "name": "MSBinkAnim::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -24745,34 +24744,34 @@
   "addr": "0x5CECB0",
   "sym": "?DeletingDtor@MSVQAnim@@QAEPAXI@Z",
   "len": "0x58",
-  "name": "MSVQAnim",
+  "name": "MSVQAnim::DeletingDtor",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CED10",
-  "sym": "?DeletingDtor@MSBitPrintAnim@@QAEPAXI@Z",
+  "sym": "??_GMSBitPrintAnim@@UAEPAXI@Z",
   "len": "0x2e",
-  "name": "MSBitPrintAnim",
+  "name": "MSBitPrintAnim::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CED40",
-  "sym": "?DeletingDtor@MSPrintAnim@@QAEPAXI@Z",
+  "sym": "??_GMSPrintAnim@@UAEPAXI@Z",
   "len": "0x2e",
-  "name": "MSPrintAnim",
+  "name": "MSPrintAnim::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CED70",
-  "sym": "?DeletingDtor@MSPCXAnim@@QAEPAXI@Z",
+  "sym": "??_GMSPCXAnim@@UAEPAXI@Z",
   "len": "0x33",
-  "name": "MSPCXAnim",
+  "name": "MSPCXAnim::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -59934,9 +59933,9 @@
  {
   "tu": "match/map/msvqanim_draw_methods.cpp",
   "addr": "0x5CD0E0",
-  "sym": "?Draw@MSVQAnimDraw@@UAEXHPAUMSRect@@@Z",
-  "len": "0x15E",
-  "name": "MSVQAnimDraw::Draw",
+  "sym": "?Draw@MSVQAnim@@UAEXHPAUMSRect@@@Z",
+  "len": "0x15e",
+  "name": "MSVQAnim::Draw",
   "status": "partial",
   "pct": 17.3
  },
@@ -61671,9 +61670,9 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69BBE0",
-  "sym": "?FUN_0069BBE0@@YIDPAUObj_0069BBE0@@@Z",
+  "sym": "?FUN_0069BBE0@SessionClass@@QAE_NXZ",
   "len": "0x7",
-  "name": "FUN_0069BBE0",
+  "name": "SessionClass::FUN_0069BBE0",
   "status": "matched",
   "pct": 100
  },
@@ -85274,11 +85273,11 @@
  {
   "tu": "match/ui/ms_engine_methods.cpp",
   "addr": "0x5AE590",
-  "sym": "?Slot1@MSEngine@@UAEXH@Z",
+  "sym": "?OnRedraw@MSEngine@@UAEXPAVMouseSurfaceView@@@Z",
   "len": "0x3",
-  "name": "MSEngine::Slot1",
+  "name": "MSEngine::OnRedraw",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu139_methods.cpp",
@@ -85434,11 +85433,11 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu152_methods.cpp",
+  "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CCA10",
-  "sym": "?FUN_005CCA10@Obj_005CCA10@@QAEXH@Z",
+  "sym": "?Attach@MSBinkAnim@@UAEXPAX@Z",
   "len": "0x3",
-  "name": "Obj_005CCA10::FUN_005CCA10",
+  "name": "MSBinkAnim::Attach",
   "status": "matched",
   "pct": 100
  },
@@ -85454,11 +85453,11 @@
  {
   "tu": "match/ui/ms_engine_methods.cpp",
   "addr": "0x5D26F0",
-  "sym": "?Slot2@MSEngine@@UAEXXZ",
+  "sym": "?Process@MSEngine@@UAEXXZ",
   "len": "0x1",
-  "name": "MSEngine::Slot2",
+  "name": "MSEngine::Process",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu155_methods.cpp",
@@ -89088,11 +89087,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu281_methods.cpp",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771890",
-  "sym": "?FUN_00771890@Obj_00771890@@QAEXXZ",
+  "sym": "??1Anim@Voices@WorldDominationTour@@UAE@XZ",
   "len": "0xb",
-  "name": "Obj_00771890::FUN_00771890",
+  "name": "WorldDominationTour::Voices::Anim::~Anim",
   "status": "matched",
   "pct": 100
  },
@@ -95141,9 +95140,9 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69B720",
-  "sym": "?FUN_0069B720@Obj_0069B720@@QAEHXZ",
+  "sym": "?FUN_0069B720@SessionClass@@QAEHXZ",
   "len": "0x16",
-  "name": "Obj_0069B720::FUN_0069B720",
+  "name": "SessionClass::FUN_0069B720",
   "status": "matched",
   "pct": 100
  },
@@ -96168,9 +96167,9 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69A310",
-  "sym": "?FUN_0069A310@@YGII@Z",
+  "sym": "?FUN_0069A310@SessionClass@@QAEII@Z",
   "len": "0x27",
-  "name": "?FUN_0069A310@@YGII@Z",
+  "name": "SessionClass::FUN_0069A310",
   "status": "matched",
   "pct": 100.0
  },
@@ -98380,22 +98379,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/anim_pause_timer_methods.cpp",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771900",
-  "sym": "?FUN_00771900@Obj_00771900@@QAEXXZ",
+  "sym": "?PauseTimer@Anim@Voices@WorldDominationTour@@UAEXXZ",
   "len": "0x41",
-  "name": "Obj_00771900::FUN_00771900",
+  "name": "WorldDominationTour::Voices::Anim::PauseTimer",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/core/forwarding_leaf_methods.cpp",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x7719C0",
-  "sym": "?FUN_007719C0@Obj_007719C0@@QAE_NXZ",
+  "sym": "?vf_7@Anim@Voices@WorldDominationTour@@UAE_NXZ",
   "len": "0xb",
-  "name": "Obj_007719C0::FUN_007719C0",
+  "name": "WorldDominationTour::Voices::Anim::vf_7",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/global_vector_name_lookup_methods.cpp",
@@ -100822,6 +100821,15 @@
   "pct": 82.6
  },
  {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54D930",
+  "sym": "?MarkAllOccupationBits@JumpjetLocomotionClass@@UAGXH@Z",
+  "len": "0x7A",
+  "name": "JumpjetLocomotionClass::MarkAllOccupationBits",
+  "status": "partial",
+  "pct": 28.6
+ },
+ {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x69EC50",
   "sym": "??0ShipLocomotionClass@@QAE@XZ",
@@ -101144,6 +101152,42 @@
   "name": "ShipLocomotionClass::FUN_006A3DB0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F450",
+  "sym": "?MoveTo@ShipLocomotionClass@@UAGXULocoCoord@@@Z",
+  "len": "0xB5",
+  "name": "ShipLocomotionClass::MoveTo",
+  "status": "partial",
+  "pct": 7.4
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A0310",
+  "sym": "?ForceTrack@ShipLocomotionClass@@UAGXHULocoCoord@@@Z",
+  "len": "0x15E",
+  "name": "ShipLocomotionClass::ForceTrack",
+  "status": "partial",
+  "pct": 20.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A3F50",
+  "sym": "?IsMovingHere@ShipLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "len": "0x1D7",
+  "name": "ShipLocomotionClass::IsMovingHere",
+  "status": "partial",
+  "pct": 6.9
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4130",
+  "sym": "?WillJumpTracks@ShipLocomotionClass@@UAG_NXZ",
+  "len": "0xD9",
+  "name": "ShipLocomotionClass::WillJumpTracks",
+  "status": "partial",
+  "pct": 35.6
  },
  {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
@@ -134627,11 +134671,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/w2_leaf_methods_a.cpp",
+  "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CC850",
-  "sym": "?FUN_005CC850@Obj_005CC850@@QAEPAUQuad_005CC850@@PAU2@@Z",
+  "sym": "?GetRect@MSBinkAnim@@UAE?AUMSRect@@XZ",
   "len": "0x24",
-  "name": "FUN_005CC850",
+  "name": "MSBinkAnim::GetRect",
   "status": "matched",
   "pct": 100
  },
@@ -137507,29 +137551,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/range3_leaves_w3.cpp",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771970",
-  "sym": "?FUN_00771970@Obj_00771970@@QAE_NHH@Z",
+  "sym": "?Update@Anim@Voices@WorldDominationTour@@UAE_NHPAUMSRect@@@Z",
   "len": "0xd",
-  "name": "FUN_00771970",
+  "name": "WorldDominationTour::Voices::Anim::Update",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/range3_leaves_w3.cpp",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771980",
-  "sym": "?FUN_00771980@Obj_00771970@@QAEXHH@Z",
+  "sym": "?Draw@Anim@Voices@WorldDominationTour@@UAEXHPAUMSRect@@@Z",
   "len": "0xb",
-  "name": "FUN_00771980",
+  "name": "WorldDominationTour::Voices::Anim::Draw",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/range3_leaves_w3.cpp",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x7719D0",
-  "sym": "?FUN_007719D0@Obj_00771970@@QAEXH@Z",
+  "sym": "?Attach@Anim@Voices@WorldDominationTour@@UAEXPAX@Z",
   "len": "0xb",
-  "name": "FUN_007719D0",
+  "name": "WorldDominationTour::Voices::Anim::Attach",
   "status": "matched",
   "pct": 100
  },
@@ -137914,7 +137958,7 @@
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CB790",
-  "sym": "?SetFrame@MSShapeAnimView@@QAEXI@Z",
+  "sym": "?SetFrame@MSShapeAnim@@QAEXI@Z",
   "len": "0xa4",
   "name": "MSShapeAnim::SetFrame",
   "status": "matched",
@@ -137923,9 +137967,9 @@
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CBCB0",
-  "sym": "?GetRectSlot@MSShapeAnimView@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSShapeAnim@@UAE?AUMSRect@@XZ",
   "len": "0x6f",
-  "name": "MSShapeAnim::GetRectSlot",
+  "name": "MSShapeAnim::GetRect",
   "status": "partial",
   "pct": 83.3
  },
@@ -137941,9 +137985,9 @@
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CC880",
-  "sym": "?MSBinkAnim_IsDone@@YIHPAVMSBinkAnim@@@Z",
+  "sym": "?vf_7@MSBinkAnim@@UAE_NXZ",
   "len": "0x19",
-  "name": "MSBinkAnim_IsDone",
+  "name": "MSBinkAnim::vf_7",
   "status": "matched",
   "pct": 100
  },
@@ -137955,6 +137999,15 @@
   "name": "MSVQAnim_Destroy",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/map/msanim_early_methods.cpp",
+  "addr": "0x5CC760",
+  "sym": "??0MSBinkAnim@@QAE@PAVWstring@@HHPBUMSRect@@_N@Z",
+  "len": "0xb9",
+  "name": "MSBinkAnim::MSBinkAnim",
+  "status": "partial",
+  "pct": 56.7
  },
  {
   "tu": "match/core/leaf_sweep_w1c.cpp",
@@ -142466,11 +142519,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_sweep_s3.cpp",
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771950",
-  "sym": "?FUN_00771950@Obj_00771950@@QAEXXZ",
+  "sym": "?ResumeTimer@Anim@Voices@WorldDominationTour@@UAEXXZ",
   "len": "0x16",
-  "name": "Obj_00771950::FUN_00771950",
+  "name": "WorldDominationTour::Voices::Anim::ResumeTimer",
   "status": "matched",
   "pct": 100
  },
@@ -145609,9 +145662,27 @@
  {
   "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771850",
-  "sym": "??0Anim@Voices@WorldDominationTour@@QAE@PAX@Z",
+  "sym": "??0Anim@Voices@WorldDominationTour@@QAE@PAUObj_00771620@@@Z",
   "len": "0x31",
   "name": "WorldDominationTour::Voices::Anim::Anim",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
+  "addr": "0x7718A0",
+  "sym": "?SetEnabled@Anim@Voices@WorldDominationTour@@UAEX_N@Z",
+  "len": "0x56",
+  "name": "WorldDominationTour::Voices::Anim::SetEnabled",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
+  "addr": "0x771990",
+  "sym": "?GetRect@Anim@Voices@WorldDominationTour@@UAE?AUMSRect@@XZ",
+  "len": "0x2a",
+  "name": "WorldDominationTour::Voices::Anim::GetRect",
   "status": "matched",
   "pct": 100
  },
@@ -145622,7 +145693,7 @@
   "len": "0x81",
   "name": "MSEngine::MSEngine",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/ms_engine_methods.cpp",
@@ -145632,5 +145703,158 @@
   "name": "MSEngine::~MSEngine",
   "status": "partial",
   "pct": 96.7
+ },
+ {
+  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "addr": "0x5D1C20",
+  "sym": "?AddAnim@MSEngine@@QAEHPAVMSAnim@@@Z",
+  "len": "0x62",
+  "name": "MSEngine::AddAnim",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "addr": "0x5D1C90",
+  "sym": "?ReplaceAnim@MSEngine@@QAEXPAVMSAnim@@0@Z",
+  "len": "0xe4",
+  "name": "MSEngine::ReplaceAnim",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "addr": "0x5D1D80",
+  "sym": "?RemoveAnim@MSEngine@@QAEXPAVMSAnim@@@Z",
+  "len": "0x62",
+  "name": "MSEngine::RemoveAnim",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "addr": "0x5D1DF0",
+  "sym": "?WaitForAnim@MSEngine@@QAEXPAVMSAnim@@I@Z",
+  "len": "0x58",
+  "name": "MSEngine::WaitForAnim",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "addr": "0x5D1E70",
+  "sym": "?Draw@MSEngine@@QAEXPAVMouseSurfaceView@@@Z",
+  "len": "0x157",
+  "name": "MSEngine::Draw",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "addr": "0x5D2530",
+  "sym": "?PauseWhileInactive@MSEngine@@QAEXXZ",
+  "len": "0x97",
+  "name": "MSEngine::PauseWhileInactive",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "addr": "0x5D25D0",
+  "sym": "?AddSfx@MSEngine@@QAE_NPBD0@Z",
+  "len": "0x80",
+  "name": "MSEngine::AddSfx",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/map_class_detail_level_004ae450.cpp",
+  "addr": "0x4AE450",
+  "sym": "?FUN_004AE450@MapClass@@QAEXXZ",
+  "len": "0x62",
+  "name": "MapClass::FUN_004AE450",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/cell_neighbor_flags_0057b990.cpp",
+  "addr": "0x57B990",
+  "sym": "?FUN_0057B990@@YIIPAUNeighborCoord_0057CBE0@@@Z",
+  "len": "0xce",
+  "name": "FUN_0057B990",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/rad_site_at_cell_0046ade0.cpp",
+  "addr": "0x46ADE0",
+  "sym": "?FUN_0046ADE0@@YGXUCellStruct@@HH@Z",
+  "len": "0x81",
+  "name": "FUN_0046ADE0",
+  "status": "partial",
+  "pct": 91.5
+ },
+ {
+  "tu": "match/ui/r26_2_name_scan_690530.cpp",
+  "addr": "0x690530",
+  "sym": "?Find@NameList_00690530@@QAEXPBDH@Z",
+  "len": "0x43",
+  "name": "NameList_00690530::Find",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/r26_2_progress_load_background.cpp",
+  "addr": "0x642C20",
+  "sym": "?LoadBackground@ProgressScreenClass@@QAEXPBD0H@Z",
+  "len": "0x5d",
+  "name": "ProgressScreenClass::LoadBackground",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/r26_2_unique_id_69a340.cpp",
+  "addr": "0x69A340",
+  "sym": "?FUN_0069A340@@YIKXZ",
+  "len": "0x68",
+  "name": "FUN_0069A340",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/r26_2_vox_live_node_752680.cpp",
+  "addr": "0x752680",
+  "sym": "?FUN_00752680@@YIPAUVoxNode_00752480@@PAUVoxEntry_00752480@@@Z",
+  "len": "0x7e",
+  "name": "FUN_00752680",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/r26_2_vox_busy_7529e0.cpp",
+  "addr": "0x7529E0",
+  "sym": "?FUN_007529E0@@YIHXZ",
+  "len": "0x56",
+  "name": "FUN_007529E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r26_2_build_date_text_777ac0.cpp",
+  "addr": "0x777AC0",
+  "sym": "?FUN_00777AC0@@YIXPAD@Z",
+  "len": "0x6d",
+  "name": "FUN_00777AC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/r26_2_focus_loss_7773c0.cpp",
+  "addr": "0x7773C0",
+  "sym": "?FUN_007773C0@@YIXXZ",
+  "len": "0x55",
+  "name": "FUN_007773C0",
+  "status": "matched",
+  "pct": 100
  }
 ]

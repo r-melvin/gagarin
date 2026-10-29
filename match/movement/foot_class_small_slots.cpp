@@ -77,23 +77,11 @@ GG_STATIC_ASSERT(offsetof(Rules_004DB1A0, unknown_678) == 0x678);
 // GLOBAL: GAMEMD 0x8871E0
 extern Rules_004DB1A0* DAT_008871E0;
 
-// The scenario randomizer; only the ranged draw is called.
-struct Random_004D4200
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) -- a value in [min, max].
-    int RandomRanged(int min, int max);
-};
 
-// ScenarioClass -- only Random @0x218 is touched.
-struct Scenario_004D4200
-{
-    char             _pad000[0x218];    // +0x0000
-    Random_004D4200  Random;            // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(Scenario_004D4200, Random) == 0x218);
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-extern Scenario_004D4200* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x6EC300 (declaration) -- whether the linked team accepts the move.
 char FUN_006EC300(int linked);
@@ -125,7 +113,7 @@ int FootClass::vf_139()
         return 1;
     }
     int base = (int)(FUN_005B3A00()->Rate * 900.0);
-    return base + DAT_00A8B230->Random.RandomRanged(0, 2);
+    return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
 }
 
 // FUNCTION: GAMEMD 0x4DB260

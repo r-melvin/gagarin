@@ -1047,7 +1047,7 @@ int BuildingAView::vf_135()
         }
     price:
         int price = (int)(DAT_007E27F8 * FUN_005B3A00()->unknown_18);
-        return DAT_00A8B230->Counter.FUN_0065C7E0(0, 2) + price;
+        return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
     if (Type->unknown_16B5) {
         return 100;
@@ -1089,10 +1089,10 @@ int BuildingAView::vf_135()
     }
     if (Type->unknown_16A9) {
         int price = (int)(DAT_007E27F8 * FUN_005B3A00()->unknown_10);
-        return DAT_00A8B230->Counter.FUN_0065C7E0(0, 2) + price;
+        return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price;
     }
     int price = (int)(DAT_007E27F8 * FUN_005B3A00()->unknown_10);
-    return DAT_00A8B230->Counter.FUN_0065C7E0(0, 2) + price * 3;
+    return DAT_00A8B230->unknown_0218.RandomRanged(0, 2) + price * 3;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1493,7 +1493,7 @@ void BuildingAView::vf_10(BAObjView* ptr, bool removed)
 // FUNCTION: GAMEMD 0x44EB10
 int BuildingClass::vf_195()
 {
-    if (!HasBeenCaptured && DAT_00A8B230->Counter.FUN_0065C7E0(0, 0x63) < 0x19 && Type->Factory == 7) {
+    if (!HasBeenCaptured && DAT_00A8B230->unknown_0218.RandomRanged(0, 0x63) < 0x19 && Type->Factory == 7) {
         return RulesInstance->unknown_F70;
     }
     return TechnoClass::vf_195();

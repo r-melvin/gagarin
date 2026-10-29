@@ -97,7 +97,7 @@ void __stdcall FlyLocoPick::PickTarget()
         if ((candidate->*candidate->Vtbl->At_84)()->At_231 == 0) {
             continue;
         }
-        if ((Scenario_00A8B230->Flags & 0x800) != 0 &&
+        if ((DAT_00A8B230->unknown_0000 & 0x800) != 0 &&
             (candidate->*candidate->Vtbl->At_2C)() == 1 &&
             candidate->Type->At_E0E != 0) {
             continue;
@@ -121,12 +121,12 @@ void __stdcall FlyLocoPick::PickTarget()
     }
 
     if (preferred.Count > 0) {
-        int pick = Scenario_00A8B230->RandomNumber.RandomRanged(
+        int pick = DAT_00A8B230->unknown_0218.RandomRanged(
             0, preferred.Count - 1);
         Foot_004CFE80* flyer = this->LinkedTo;
         (flyer->*flyer->Vtbl->At_3C8)(preferred.Items[pick]);
     } else if (plain.Count > 0) {
-        int pick = Scenario_00A8B230->RandomNumber.RandomRanged(
+        int pick = DAT_00A8B230->unknown_0218.RandomRanged(
             0, plain.Count - 1);
         Foot_004CFE80* flyer = this->LinkedTo;
         (flyer->*flyer->Vtbl->At_3C8)(plain.Items[pick]);

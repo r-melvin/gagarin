@@ -102,7 +102,7 @@ int BA2Building::vf_149()
             return 0;
         }
         int price = (int)(FUN_005B3A00()->unknown_10 * 900.0);
-        return price + DAT_00A8B230->Counter.FUN_0065C7E0(0, 2);
+        return price + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
     }
     vf_122(5, 0);
     return 1;

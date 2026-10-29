@@ -15,14 +15,14 @@
 // scores are recorded in scripts/data/match_manifest.json.
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x5CD320  MSVQAnim::vf_7
-//   FUNCTION: GAMEMD 0x5CD330  MSBitPrintAnim::Construct
+//   FUNCTION: GAMEMD 0x5CD330  MSBitPrintAnim::MSBitPrintAnim
 //   FUNCTION: GAMEMD 0x5CD3A0  MSBitPrintAnim::~MSBitPrintAnim (out of line)
 //   FUNCTION: GAMEMD 0x5CD3C0  MSBitPrintAnim::SetStarted
 //   FUNCTION: GAMEMD 0x5CD3D0  MSBitPrintAnim::GetRect
 //   FUNCTION: GAMEMD 0x5CD400  MSBitPrintAnim::vf_7
 //   FUNCTION: GAMEMD 0x5CD410  MSBitPrintAnim::Update
 //   FUNCTION: GAMEMD 0x5CD4D0  MSBitPrintAnim::Draw
-//   FUNCTION: GAMEMD 0x5CD570  MSPrintAnim::Construct      (PARTIAL; see manifest)
+//   FUNCTION: GAMEMD 0x5CD570  MSPrintAnim::MSPrintAnim
 //   FUNCTION: GAMEMD 0x5CD690  MSPrintAnim::Layout
 //   FUNCTION: GAMEMD 0x5CDB90  MSCountPages                (PARTIAL, 94.7%)
 //   FUNCTION: GAMEMD 0x5CDC50  MSPrintAnim::Update         (PARTIAL, 99.1%)
@@ -32,26 +32,19 @@
 //   FUNCTION: GAMEMD 0x5CE300  MSPrintAnim::vf_7
 //   FUNCTION: GAMEMD 0x5CE330  MSPrintAnim::MeasureWidth
 //   FUNCTION: GAMEMD 0x5CE3A0  MSPrintAnim::DrawLines
-//   FUNCTION: GAMEMD 0x5CE4A0  MSPCXAnim::ConstructCentred
-//   FUNCTION: GAMEMD 0x5CE640  MSPCXAnim::ConstructAt
+//   FUNCTION: GAMEMD 0x5CE4A0  MSPCXAnim::MSPCXAnim (centred)
+//   FUNCTION: GAMEMD 0x5CE640  MSPCXAnim::MSPCXAnim (at a point)
 //   FUNCTION: GAMEMD 0x5CE7B0  MSPCXAnim::~MSPCXAnim (out of line)
 //   FUNCTION: GAMEMD 0x5CE7D0  MSPCXAnim::Update
 //   FUNCTION: GAMEMD 0x5CE8C0  MSPCXAnim::Draw             (PARTIAL, 35.1%)
 //   FUNCTION: GAMEMD 0x5CEA40  MSPCXAnim::Attach
 //   FUNCTION: GAMEMD 0x5CEA80  MSPCXAnim::GetRect
 //   FUNCTION: GAMEMD 0x5CEAB0  MSPCXAnim::vf_7
-//   FUNCTION: GAMEMD 0x5CEC70  MSBinkAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CECB0  MSVQAnim::DeletingDtor
-//   FUNCTION: GAMEMD 0x5CED10  MSBitPrintAnim::DeletingDtor
-//   FUNCTION: GAMEMD 0x5CED40  MSPrintAnim::DeletingDtor
-//   FUNCTION: GAMEMD 0x5CED70  MSPCXAnim::DeletingDtor
+//   (SYNTHETIC deleting destructors 0x5CED10 / 0x5CED40 / 0x5CED70: annotated at the end of the file)
 //   SYNTHETIC: GAMEMD 0x5CEDB0  MSAnimCounts initialiser
-//   VTABLE:   GAMEMD 0x7EE8E8  MSAnimView        (9 slots)
-//   VTABLE:   GAMEMD 0x7EE910  MSShapeAnimView
-//   VTABLE:   GAMEMD 0x7EE938  MSFadeAnimView
-//   VTABLE:   GAMEMD 0x7EE960  MSOverlayAnimView
-//   VTABLE:   GAMEMD 0x7EE988  MSBinkAnim
-//   VTABLE:   GAMEMD 0x7EE9B0  MSVQAnim
+//   VTABLE:   GAMEMD 0x7EE8E8  MSAnim (9 slots), 0x7EE910 MSShapeAnim, 0x7EE938 MSFadeAnim, 0x7EE960 MSOverlayAnim,
+//             0x7EE988 MSBinkAnim, 0x7EE9B0 MSVQAnim: the classes are in match/_layout/ms_anim.h and this header
 //   VTABLE:   GAMEMD 0x7EE9D8  MSBitPrintAnim
 //   VTABLE:   GAMEMD 0x7EEA00  MSPrintAnim
 //   VTABLE:   GAMEMD 0x7EEA2C  MSPCXAnim
@@ -68,30 +61,7 @@
 //     +0x5C that no class in this file has) and runs to 0x5CE2A4.
 //   0x5CD850 is 0x335 exactly, one body.
 //
-// PARTIAL — 0x5CD570 MSPrintAnim::Construct, 93.8%. Retail's centring block
-// starts the running width at zero and subtracts the font lead at the end
-// (0x5CD611..0x5CD66F: the lead and the accumulator sit in the dead a8 and
-// centred argument slots); the margin argument only seeds Interval. The earlier
-// source seeded the width with the lead and subtracted the margin, which was
-// wrong as well as worse (45.8%). The remaining delta is the two timer stores,
-// which retail places above the string constructor's argument setup; that is
-// accepted rather than forced with a receiver alias.
-//
-// HISTORICAL ATTEMPTS — 0x5CD570 MSPrintAnim::Construct, old oracle
-// reported 90.6% (87/96 instructions,
-// multiset identical). Two residuals. cl keeps the address of the clock member
-// in a callee-saved register across the whole body and writes the re-stamped
-// clock through it, where retail addresses the member directly; and retail
-// spills a second dead zero into the ninth argument's home slot beside the
-// centring accumulator, which shifts every stack displacement in the centring
-// block by four. Measured: the timer written as three field copies out of a
-// named temporary (49.0 -- the copy blocks cl's elimination of the temporary's
-// own stores), as a read of the temporary's never-written clock word (71.9),
-// and as the whole-struct assignment `Timer = MSTimerView(duration)` that this file
-// now uses (90.6); the clock store spelled through the member's `Value` rather
-// than the struct, and a named local for the interval, each changed nothing.
-//
-// BODY-EXACT — 0x5CDB90 MSCountPages and 0x5CDC50 MSPrintAnim::Update. Both
+// BODY-EXACT -- 0x5CDB90 MSCountPages and 0x5CDC50 MSPrintAnim::Update. Both
 // were register-assignment residuals: the three locals of each loop take their
 // registers in declaration order, and the first indexed read pushes whichever
 // is zero. MSCountPages declares i, pages, used; Update's measuring block
@@ -116,8 +86,9 @@
 // reverse, which costs one `MOV` and shifts every later displacement -- plus
 // the unmerged sixteen bytes.
 //
-// MSBitPrintAnim construction uses direct timer stores. Redundant receiver
-// aliases used only to force scheduling have been removed.
+// The constructors, destructors and scalar deleting destructors of the print/PCX classes are the
+// compiler's, from the real class definitions in the header. MSVQAnim's scalar deleting destructor is the one
+// exception: its constructor (0x5CCC30) is not matched, and cl emits `??_G` only beside a constructor.
 
 #include "msanim_family_methods.h"
 #include "../_layout/memory_buffer.h"
@@ -142,29 +113,12 @@ bool MSVQAnim::vf_7()
 }
 
 // FUNCTION: GAMEMD 0x5CD330
-// Build a bit-printed line: the base takes the rectangle's two leading
-// numbers, the text is built from the caller's pointer, and then the whole
-// rectangle is copied in. Retail schedules the derived vtable seat into the
-// middle of that copy, which is cl's own placement of the seat every derived
-// constructor performs after its base returns.
-MSBitPrintAnim* MSBitPrintAnim::Construct(const wchar_t* text,
-                                          const MSRect* rect, bool centred)
+// Build a bit-printed line: the base takes the rectangle's two leading numbers, the text is built from
+// the caller's pointer, and then the whole rectangle is copied in.
+MSBitPrintAnim::MSBitPrintAnim(const wchar_t* text, const MSRect* rect, bool centred)
+    : MSAnim(rect->X, rect->Y), Text(text), Bounds(*rect), Started(false)
 {
-    int x = rect->X;
-    int y = rect->Y;
-
-    Field04 = x;
-    Field08 = y;
-    Enabled = true;
-    Timer.StartTime = Timer.Clock.GetTime();
-    Timer.Remaining = 0;
-    SeatBaseVptr();
-    Text.Construct(text);
-    Bounds = *rect;
-    Started = false;
-    SeatOwnVptr();
     Centred = centred;
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x5CD3A0
@@ -271,36 +225,12 @@ void MSBitPrintAnim::Draw(int context, MSRect* area)
 // is re-stamped from a temporary carrying its interval, and the page is laid
 // out inside the caller's rectangle. A centred page finally measures its first
 // line and banks half the slack as its pen offset.
-MSPrintAnim* MSPrintAnim::Construct(const wchar_t* text, int x, int y,
-                                    MSFont* font, const MSRect* rect,
-                                    int duration, int margin, bool a8,
-                                    bool centred)
+MSPrintAnim::MSPrintAnim(const wchar_t* text, int x, int y, MSFont* font, const MSRect* rect, int duration,
+                         int margin, bool a8, bool centred)
+    : MSAnim(x, y), Text(text), Field20(0), CharPos(duration), LineCount(0), Interval(margin), Field30(a8),
+      Font(font), Active(false), Centred(centred), CentreOffset(0)
 {
-    Init(x, y);
-    SeatBaseVptr();
-    Text.Construct(text);
-
-    int interval = duration;
-
-    Interval = margin;
-    Field30 = a8;
-    Field20 = 0;
-    CharPos = interval;
-    LineCount = 0;
-    Font = font;
-    Active = false;
-    Centred = centred;
-    CentreOffset = 0;
-    SeatOwnVptr();
-
-    // The timer temporary: retail builds a twelve-byte  and
-    // struct-assigns it in, and cl kills the temporary's own stamp and interval
-    // stores against the copy that immediately reads them back. What survives
-    // is one read of the clock word the temporary never wrote, carried out of
-    // the dead stack slot -- the same shape recorded at 0x6B7BB0. Written here
-    // as that surviving read so the frame and the three stores come out as
-    // retail has them.
-    Timer = MSTimerView(interval);
+    Timer = MSTimer(duration);
 
     Layout(rect);
 
@@ -320,8 +250,6 @@ MSPrintAnim* MSPrintAnim::Construct(const wchar_t* text, int x, int y,
 
         CentreOffset = (Bounds.Width - width - lead) / 2;
     }
-
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x5CD690
@@ -401,6 +329,26 @@ int MSCountPages(Obj_007B66D0_msanim_family_methods* text, MSFont* font, int lim
     return 0;
 }
 
+// The time still on the clock. Zero once the interval has run out; the whole
+// interval when the timer is already paused, since a paused timer stamps its
+// start as -1 and keeps its remainder in +0x18.
+__forceinline int MSAnim::TimeLeft()
+{
+    int remain = Timer.Remaining;
+
+    if (Timer.StartTime != -1) {
+        int elapsed = Timer.Clock.GetTime() - Timer.StartTime;
+
+        if (elapsed < remain) {
+            remain -= elapsed;
+        } else {
+            remain = 0;
+        }
+    }
+
+    return remain;
+}
+
 // FUNCTION: GAMEMD 0x5CDC50
 // Slot 4 for a printed page: step it on by one character. Nothing happens
 // until the interval has run out; then the timer is re-stamped, the page's
@@ -424,7 +372,7 @@ bool MSPrintAnim::Update(int context, MSRect* out)
         return false;
     }
 
-    Timer = MSTimerView(Interval);
+    Timer = MSTimer(Interval);
 
     if (CharPos > Text.Length()) {
         if (LineCount > 2) {
@@ -628,17 +576,9 @@ void MSPrintAnim::SetActive(bool on)
 // of its text, and has held the completed page for more than two ticks. Both
 // comparisons are unsigned in retail (JBE twice), which is what pins CharPos
 // and LineCount as unsigned rather than signed counters.
-int MSPrintAnim::vf_7()
+bool MSPrintAnim::vf_7()
 {
-    if (Active) {
-        if (CharPos > Text.Length()) {
-            if (LineCount > 2) {
-                return 1;
-            }
-        }
-    }
-
-    return 0;
+    return Active && CharPos > Text.Length() && LineCount > 2;
 }
 
 // FUNCTION: GAMEMD 0x5CE330
@@ -707,24 +647,9 @@ void MSPrintAnim::DrawLines(MSSurface* surface, MSRect* clip)
 // with its flag clear, the derived members are seated, and only then is the
 // animation enabled; the picture is looked up as "<stem>.PCX" through a stack
 // file object which is torn down inline on both exits of the name test.
-MSPCXAnim* MSPCXAnim::ConstructCentred(MSStringClass* name,
-                                       MSAnimVector* owner, bool flag)
+MSPCXAnim::MSPCXAnim(MSStringClass* name, MSAnimVector* owner, bool flag)
+    : Surface(MSScreenSurface), Owner(owner), Image(0), Field28(flag), Finished(false)
 {
-    Inline_005CE4A0();
-    SeatBaseVptr();
-
-    Surface = MSScreenSurface;
-    Owner = owner;
-    Image = 0;
-    Field28 = flag;
-    Finished = false;
-    MSRect* box = &Bounds;
-
-    box->X = 0;
-    box->Y = 0;
-    box->Width = 0;
-    box->Height = 0;
-    SeatOwnVptr();
     Enabled = true;
 
     if (name->FUN_007B47F0(0)) {
@@ -763,31 +688,14 @@ MSPCXAnim* MSPCXAnim::ConstructCentred(MSStringClass* name,
 
         stem.Destruct();
     }
-
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x5CE640
 // The same build-up placed at the caller's point rather than centred. The
 // trailing surface query is retail's and its result is dropped on the floor.
-MSPCXAnim* MSPCXAnim::ConstructAt(MSStringClass* name, MSAnimVector* owner,
-                                  const MSPoint* where, bool flag)
+MSPCXAnim::MSPCXAnim(MSStringClass* name, MSAnimVector* owner, const MSPoint* where, bool flag)
+    : Surface(MSScreenSurface), Owner(owner), Image(0), Field28(flag), Finished(false)
 {
-    Inline_005CE4A0();
-    SeatBaseVptr();
-
-    Surface = MSScreenSurface;
-    Owner = owner;
-    Image = 0;
-    Field28 = flag;
-    Finished = false;
-    MSRect* box = &Bounds;
-
-    box->X = 0;
-    box->Y = 0;
-    box->Width = 0;
-    box->Height = 0;
-    SeatOwnVptr();
     Enabled = true;
 
     if (name->FUN_007B47F0(0)) {
@@ -806,8 +714,8 @@ MSPCXAnim* MSPCXAnim::ConstructAt(MSStringClass* name, MSAnimVector* owner,
 
             if (Image != 0) {
                 MSRect frame;
-                *box = *((MSImageSurface*)Image)->GetRect(&frame);
-                box->X = where->X;
+                Bounds = *((MSImageSurface*)Image)->GetRect(&frame);
+                Bounds.X = where->X;
                 Bounds.Y = where->Y;
                 Surface->GetRect(&frame);
             }
@@ -821,8 +729,6 @@ MSPCXAnim* MSPCXAnim::ConstructAt(MSStringClass* name, MSAnimVector* owner,
 
         stem.Destruct();
     }
-
-    return this;
 }
 
 // FUNCTION: GAMEMD 0x5CE7B0
@@ -928,88 +834,21 @@ bool MSPCXAnim::vf_7()
     return Finished;
 }
 
-// The time still on the clock. Zero once the interval has run out; the whole
-// interval when the timer is already paused, since a paused timer stamps its
-// start as -1 and keeps its remainder in +0x18.
-__forceinline int MSAnimView::TimeLeft()
-{
-    int remain = Timer.Remaining;
-
-    // Retail compares StartTime against -1 again here even when the caller
-    // has just done so (PauseTimer). An ordinary signed test lets cl fold the
-    // repeated compare; that difference is accepted rather than steered.
-    if (Timer.StartTime != -1) {
-        int elapsed = Timer.Clock.GetTime() - Timer.StartTime;
-
-        if (elapsed < remain) {
-            remain -= elapsed;
-        } else {
-            remain = 0;
-        }
-    }
-
-    return remain;
-}
-
-// FUNCTION: GAMEMD 0x5CEC70
-void* MSBinkAnim::DeletingDtor(unsigned int f)
-{
-    this->MSBinkAnim::~MSBinkAnim();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x5CECB0
-void* MSVQAnim::DeletingDtor(unsigned int f)
+// The VQA animation's scalar deleting destructor (see the declaration for why it is spelled out).
+void* MSVQAnim::DeletingDtor(unsigned int flags)
 {
     this->MSVQAnim::~MSVQAnim();
 
-    if (f & 1) {
+    if (flags & 1) {
         ::operator delete(this);
     }
 
     return this;
 }
 
-// FUNCTION: GAMEMD 0x5CED10
-// The bit-printed animation's only member with a destructor is its wide
-// string, whose destructor retail calls out of line.
-void* MSBitPrintAnim::DeletingDtor(unsigned int f)
-{
-    this->MSBitPrintAnim::~MSBitPrintAnim();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x5CED40
-void* MSPrintAnim::DeletingDtor(unsigned int f)
-{
-    this->MSPrintAnim::~MSPrintAnim();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x5CED70
-void* MSPCXAnim::DeletingDtor(unsigned int f)
-{
-    this->MSPCXAnim::~MSPCXAnim();
-
-    if (f & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
+// Compiler-generated scalar deleting destructors of the three classes above, each with the destructor and the
+// base destructor expanded inline, as retail's are.
+// SYNTHETIC: GAMEMD 0x5CED10 -- MSBitPrintAnim::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x5CED40 -- MSPrintAnim::`scalar deleting destructor'
+// SYNTHETIC: GAMEMD 0x5CED70 -- MSPCXAnim::`scalar deleting destructor'

@@ -313,8 +313,6 @@ extern unsigned char DAT_00B054CC;
 // _FUN_00406F40
 extern "C" void __cdecl FUN_00406F40();
 
-// GLOBAL: GAMEMD 0x00A8B238
-extern int DAT_00A8B238;
 // FUNCTION: GAMEMD 0x406f00 (decl; reloc)
 // _FUN_00406F00
 extern "C" void __cdecl FUN_00406F00();
@@ -538,7 +536,6 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 
 #include "../_layout/obj_0069b540.h"
 
-#include "../_layout/obj_0069bbe0.h"
 
 #include "../_layout/type_006a46d0.h"
 
@@ -713,7 +710,7 @@ void __fastcall FUN_00684060(int duration)
     }
     if (!ScenarioInstance->unknown_062C) {
         FUN_00406F00();
-        if (DAT_00A8B238 == 0 || DAT_00A8B238 == 5) {
+        if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5) {
             ScenarioInstance->unknown_0614.Pause();
         }
         DAT_00B054CC = ScenarioInstance->unknown_35A2;
@@ -2380,7 +2377,7 @@ const char* ScenarioClass::FUN_0068BF90()
 int __fastcall FUN_0068BFE0()
 {
     int result = 0;
-    if (!DAT_00A8B238) {
+    if (!Session_00A8B238.GameMode) {
         int index = ScenarioInstance->unknown_34CC;
         if (index != -1) result = CampaignArray.Items[index]->idxCD;
     } else {
@@ -2586,3 +2583,9 @@ int ColorScheme::FindByName(const char* name, HSVClass* hsv,
         new ColorScheme(name, hsv, pal1, pal2, shade, true);
     }
 }
+
+// Layout checks for the start-slot region (kept here: extra asserts in scenario_class_methods.h
+// shift codegen in the TUs that include it).
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1180) == 0x1180);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1180.unknown_60) == 0x11E0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1180.NumCoopHumanStartSpots) == 0x11E4);

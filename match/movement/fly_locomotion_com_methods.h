@@ -28,22 +28,11 @@
 #include "../_rt/gg_static_assert.h"
 #include "loco_interfaces.h"
 
-// The scenario's random generator; the touchdown spin is drawn from it.
-struct RandomClass_004CFD20
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
-    int RandomRanged(int minval, int maxval);
-};
 
-struct ScenarioClass_004CFD20
-{
-    char _pad000[0x218];                 // +0x0000
-    RandomClass_004CFD20 RandomNumber;   // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(ScenarioClass_004CFD20, RandomNumber) == 0x218);
 
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
-extern ScenarioClass_004CFD20* Scenario_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // GLOBAL: GAMEMD 0x7E9A80 -- the native class identifier.
 extern "C" const CLSID CLSID_FlyLocomotion;

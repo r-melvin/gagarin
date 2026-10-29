@@ -198,6 +198,16 @@ GG_STATIC_ASSERT(sizeof(ScenarioText32) == 32);
 
 class TechnoTypeClass;
 
+// 0x1180..0x11E7: house index per start slot, then the coop start-spot fields.
+struct ScenarioStartSlots
+{
+    int HouseIndex[16];         // +0x00 (0x1180)
+    char unknown_40[0x60 - 0x40];
+    bool unknown_60;            // +0x60 (0x11E0)
+    int NumCoopHumanStartSpots; // +0x64 (0x11E4)
+};
+GG_STATIC_ASSERT(sizeof(ScenarioStartSlots) == 0x68);
+
 struct ScenarioClass
 {
     ScenarioClass();
@@ -256,7 +266,8 @@ struct ScenarioClass
     unsigned char unknown_0630;
     char unknown_0631;
     CellStruct Waypoints[702];        // 0x632  valid range [0..701]
-    char unknown_112A[0x11E8 - 0x112A];
+    char unknown_112A[0x1180 - 0x112A];
+    ScenarioStartSlots unknown_1180;
     ScenarioTimer Timer_11E8;
     const wchar_t* unknown_11F4;
     ScenarioText32 unknown_11F8;
@@ -314,7 +325,7 @@ struct ScenarioClass
     char unknown_3560[0x3598 - 0x3560];
     bool unknown_3598;
     char unknown_3599[0x35A2 - 0x3599];
-    unsigned char unknown_35A2;
+    bool unknown_35A2;
     char unknown_35A3;
     int unknown_35A4, unknown_35A8, unknown_35AC;
     char unknown_35B0;

@@ -13,15 +13,9 @@
 #include "../_layout/map_0087f7e8.h"
 
 
-// The session block at 0xA8B230, seen only through the byte read here.
-struct Session_00A8B230
-{
-    unsigned char unknown_0000[0x35A2];
-    char unknown_35A2;                  // +0x35A2
-};
-GG_STATIC_ASSERT(offsetof(Session_00A8B230, unknown_35A2) == 0x35A2);
 // GLOBAL: GAMEMD 0xA8B230
-extern Session_00A8B230* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0xA8ED9C
 extern char DAT_00A8ED9C;
 

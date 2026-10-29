@@ -93,7 +93,8 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, UndeploysInto) == 0x408);
 // GLOBAL: GAMEMD 0x00A802C8
 extern EventQueue<128> DAT_00A802C8;
 // GLOBAL: GAMEMD 0x00A8B230
-extern unsigned int* DAT_00A8B230;
+#include "scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // GLOBAL: GAMEMD 0x00A8BC60
 extern MessageListClass DAT_00A8BC60;

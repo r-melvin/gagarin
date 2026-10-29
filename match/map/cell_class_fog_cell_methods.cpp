@@ -49,7 +49,7 @@
 // stripe body (68.3%, byte-identical residual).
 void CellClass::FogCell()
 {
-    if (DAT_00A8B230->Flags & 0x1000)
+    if (DAT_00A8B230->unknown_0000 & 0x1000)
     {
         CellStruct coords = this->MapCoords;
         int i = 1;

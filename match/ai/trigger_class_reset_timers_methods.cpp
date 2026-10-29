@@ -17,7 +17,7 @@
 // randomizer's sub-object address non-destructively with `LEA ECX,[EAX+0x218]`;
 // calling through the member expression makes cl load the global straight into
 // ECX and destroy it with `ADD ECX,0x218`. Binding the address to a local
-// (`Random_00726400* rnd = &DAT_00A8B230->Random;`) gets 95.6%, but the local
+// (`Random_00726400* rnd = &DAT_00A8B230->unknown_0218;`) gets 95.6%, but the local
 // is a redundant alias that only steers the register allocator, so it is not
 // used. Other spellings measured: the event value hoisted to a local 76.5%, a
 // scenario pointer local 69.1%, the sum written without a `delay` local
@@ -35,7 +35,7 @@ void TriggerClass::ResetTimers()
             this->OccuredEvents &= ~(1 << index);
         }
         if (event->EventKind == 51) {
-            int delay = DAT_00A8B230->Random.RandomRanged(0, event->Value);
+            int delay = DAT_00A8B230->unknown_0218.RandomRanged(0, event->Value);
             int total = event->Value / 2 + delay;
             this->Timer = CDTimer_00726400(total * 15);
             this->OccuredEvents &= ~(1 << index);

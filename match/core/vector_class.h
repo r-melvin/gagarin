@@ -81,6 +81,8 @@ public:
     bool RemoveItem(const T& item);
     // Inline append (vector_class_operations.h).
     bool AddItem(const T& item);
+    // Inline insert after an index (vector_class_mutation.h), expanded in MSEngine::ReplaceAnim (0x5D1C90).
+    bool InsertAfter(int index, const T& item);
     int Count;       // +0x10
     int CapacityIncrement; // +0x14
 };

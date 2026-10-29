@@ -73,13 +73,9 @@ public:
 // GLOBAL: GAMEMD 0x87F7E8 -- the MapClass instance itself.
 extern DisplayMapInstance DisplayMap_0087F7E8;
 
-// ScenarioClass: only the first dword (flag word) is read.
-struct DisplayScenario
-{
-    unsigned long Flags;   // +0x00
-};
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-extern DisplayScenario* DisplayScenario_00A8B230;
+#include "../../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // DisplayClass (slots 36..39) and MapClass::GetCellAt_005657A0 are declared in ui_display_chain.h.
 

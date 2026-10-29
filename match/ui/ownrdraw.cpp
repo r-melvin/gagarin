@@ -1202,7 +1202,7 @@ bool FUN_00602490(int nKey, GG_HWND hCtl)
     }
 
     if (FUN_00601360(category) && nCtlID == 0x695
-        && !DAT_00A8B238_Session.FUN_0069BBE0())
+        && !Session_00A8B238.FUN_0069BBE0())
     {
         return true;
     }
@@ -1627,7 +1627,7 @@ void FUN_00607FD0(GG_HWND hWnd)
 // FUNCTION: GAMEMD 0x608260  FUN_00608260 (__fastcall)
 bool FUN_00608260(GG_HWND hWnd)
 {
-    if (DAT_00A8B238_Session.FUN_0069BBE0())
+    if (Session_00A8B238.FUN_0069BBE0())
         return false;
 
     MapValue_00602B90* value = Inline_Probe((int)hWnd);
@@ -1730,7 +1730,7 @@ bool FUN_00609B30(int nKey, GG_HWND hCtl)
 // FUNCTION: GAMEMD 0x609BC0  FUN_00609BC0
 bool FUN_00609BC0(GG_HWND hParent, GG_HWND hWnd)
 {
-    if (DAT_00A8B238_Session.FUN_0069BBE0())
+    if (Session_00A8B238.FUN_0069BBE0())
         return false;
 
     if ((GetWindowLongA(hWnd, -16) & 0xB) == 0xB)
@@ -1755,7 +1755,7 @@ bool FUN_00609BC0(GG_HWND hParent, GG_HWND hWnd)
 // FUNCTION: GAMEMD 0x609CF0  FUN_00609CF0
 bool FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd)
 {
-    if (!DAT_00A8B238_Session.FUN_0069BBE0())
+    if (!Session_00A8B238.FUN_0069BBE0())
         return false;
 
     if ((GetWindowLongA(hWnd, -16) & 0xB) == 0xB)
@@ -1877,7 +1877,7 @@ __forceinline static int Inline_CentreMargin(bool bFills, int nExtent, int nDesi
 void FUN_0060AF50(GG_HWND hWnd, RectangleStruct* pRect)
 {
     GG_HWND hParent = GetParent(hWnd);
-    bool bFills = DAT_00A8B238_Session.FUN_0069BBE0();
+    bool bFills = Session_00A8B238.FUN_0069BBE0();
     GG_RECT rcParent;
     GetWindowRect(hParent, &rcParent);
 

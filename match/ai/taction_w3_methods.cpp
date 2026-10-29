@@ -125,20 +125,9 @@ struct TActionRateSource { char unknown_00[0x550]; int unknown_550; int unknown_
 extern TActionRateSource* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DAT_00A8ED9C;
-// A session object read for one flag byte at +0x35A2 and its scenario counters.
-struct TActionSession
-{
-    char unknown_00[0x3534];
-    int unknown_3534;
-    int unknown_3538;
-    int unknown_353C;
-    char unknown_3540[0x35A2 - 0x3540];
-    bool unknown_35A2;
-};
-GG_STATIC_ASSERT(offsetof(TActionSession, unknown_353C) == 0x353C);
-GG_STATIC_ASSERT(offsetof(TActionSession, unknown_35A2) == 0x35A2);
 // GLOBAL: GAMEMD 0xA8B230
-extern TActionSession* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 // FUNCTION: GAMEMD 0x53AD00 (decl; reloc)
 void FUN_0053AD00(int a, int b, int c, int d);
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);

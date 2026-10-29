@@ -187,22 +187,11 @@ GG_STATIC_ASSERT(offsetof(FlyLocoObject, LocomotorVptr) == 0x04 &&
                  offsetof(FlyLocoObject, unknown_54) == 0x54 &&
                  offsetof(FlyLocoObject, SpinCount) == 0x58);
 
-// The scenario's random generator; the touchdown spin is drawn from it.
-struct RandomClass_004CFDD0
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
-    int RandomRanged(int minval, int maxval);
-};
 
-struct ScenarioClass_004CFDD0
-{
-    char _pad000[0x218];                  // +0x0000
-    RandomClass_004CFDD0 RandomNumber;    // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(ScenarioClass_004CFDD0, RandomNumber) == 0x218);
 
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
-extern ScenarioClass_004CFDD0* Scenario_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // The base whose destructor the derived one tail-jumps to. A layout-
 // compatible stand-in, cast onto `this`, is what emits the bare jump.

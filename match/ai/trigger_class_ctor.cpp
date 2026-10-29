@@ -25,12 +25,6 @@ struct TriggerCtorTypeFlagsView
 };
 GG_STATIC_ASSERT(offsetof(TriggerCtorTypeFlagsView, Flags) == 0x9C);
 
-struct TriggerCtorScenarioModeView
-{
-    unsigned char unknown_000[0x60C];
-    int unknown_60C;
-};
-GG_STATIC_ASSERT(offsetof(TriggerCtorScenarioModeView, unknown_60C) == 0x60C);
 
 struct TriggerCtorPtrVector
 {
@@ -71,7 +65,8 @@ inline bool TriggerCtorVectorAddItem(TriggerCtorPtrVector* vector,
 }
 
 // GLOBAL: GAMEMD 0x00A8B230 — ScenarioClass::Instance (pointer).
-extern TriggerCtorScenarioModeView* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x725FA0
 TriggerClass::TriggerClass(TriggerTypeClass* type)
@@ -91,9 +86,9 @@ TriggerClass::TriggerClass(TriggerTypeClass* type)
         TriggerCtorTypeFlagsView* typeFlags =
             reinterpret_cast<TriggerCtorTypeFlagsView*>(this->Type);
         if (typeFlags->Flags[3] == 0
-            || (DAT_00A8B230->unknown_60C == 0 && typeFlags->Flags[0] == 0)
-            || (DAT_00A8B230->unknown_60C == 1 && typeFlags->Flags[1] == 0)
-            || (DAT_00A8B230->unknown_60C == 2 && typeFlags->Flags[2] == 0)) {
+            || (DAT_00A8B230->Difficulty == 0 && typeFlags->Flags[0] == 0)
+            || (DAT_00A8B230->Difficulty == 1 && typeFlags->Flags[1] == 0)
+            || (DAT_00A8B230->Difficulty == 2 && typeFlags->Flags[2] == 0)) {
             this->Enabled = false;
         }
     }

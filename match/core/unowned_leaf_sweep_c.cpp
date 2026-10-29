@@ -312,8 +312,7 @@ void FUN_007781A0()
     ImmAssociateContext(DAT_00B73550, NULL);
 }
 
-// GLOBAL: GAMEMD 0x00A8B238
-extern "C" int DAT_00A8B238;
+#include "../_layout/session_class.h"
 // GLOBAL: GAMEMD 0x00B76B24
 extern "C" int DAT_00B76B24;
 #include "../_layout/flags_0077d940.h"
@@ -324,7 +323,7 @@ extern "C" Flags_0077D940 DAT_00B76B30;
 // FUNCTION: GAMEMD 0x0077D940
 bool FUN_0077D940()
 {
-    if (DAT_00A8B238 != 4) {
+    if (Session_00A8B238.GameMode != 4) {
         return false;
     }
     if (DAT_00B76B24 == 0) {
@@ -339,7 +338,7 @@ bool FUN_0077D940()
 // FUNCTION: GAMEMD 0x0077D970
 bool FUN_0077D970()
 {
-    if (DAT_00A8B238 != 4) {
+    if (Session_00A8B238.GameMode != 4) {
         return false;
     }
     bool flag = DAT_00B76B30.unknown_8;

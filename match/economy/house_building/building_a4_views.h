@@ -162,12 +162,6 @@ struct BA4Facing
     void FUN_004C9220(HBDir* dir);
 };
 
-// The random-number member of the session object at +0x218 (partial).
-struct BA4Rand
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (read-only here)
-    int FUN_0065C7E0(int low, int high);
-};
 
 // A colour of three bytes.
 struct BA4Rgb
@@ -1132,15 +1126,6 @@ struct BA4Obj33
 };
 GG_STATIC_ASSERT(offsetof(BA4Obj33, unknown_C9F) == 0xC9F);
 
-// The object at *0xA8B230 (partial).
-struct BA4Session
-{
-    int unknown_00;   // +0x0000
-    char _pad_0004[0x214];   // +0x0004
-    BA4Rand unknown_218;   // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(BA4Session, unknown_00) == 0x0);
-GG_STATIC_ASSERT(offsetof(BA4Session, unknown_218) == 0x218);
 
 // The object returned by 0x5B3A00 (partial).
 struct BA4Difficulty
@@ -1794,7 +1779,8 @@ extern int DAT_00A8E7AC;
 extern unsigned char DAT_00A8E9A0;
 extern BA4Placed** DAT_00A8EC1C;
 extern BA4House** DAT_00A8022C;
-extern BA4Session* DAT_00A8B230;
+#include "../../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 extern int DAT_0089C848;
 // LIBRARY: GAMEMD 0x7C8D20 (LIBRARY: _stricmp) / 0x7C91D0 (LIBRARY: strncpy)
 extern "C" int __cdecl _stricmp(const char* a, const char* b);

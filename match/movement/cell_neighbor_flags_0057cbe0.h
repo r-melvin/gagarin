@@ -23,4 +23,15 @@ extern NeighborCell_0057CBE0** NeighborCells;
 // GLOBAL: GAMEMD 0xABDC50
 extern NeighborCell_0057CBE0 NeighborFallback;
 // NeighborFallback.Coordinates at 0xABDC74 is written on a failed lookup.
+// Reconstructed inline lookup: the two retail copies share the table load.
+static inline NeighborCell_0057CBE0* LookupNeighbor(const NeighborCoord_0057CBE0* cell)
+{
+    int index = cell->Y * 512 + cell->X;
+    if (index >= 0 && index < 0x40000) {
+        NeighborCell_0057CBE0* found = NeighborCells[index];
+        if (found) return found;
+    }
+    NeighborFallback.Coordinates = *cell;
+    return &NeighborFallback;
+}
 #endif

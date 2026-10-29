@@ -78,7 +78,7 @@ void TabClass::vf_53()
     ShapeHeight_00B0CB50 = shape->Height;
     SidebarTabRect rect = *BarRect_00B0FC68;
     BarX_00B0CC2C = *BarOrigin_00B0FC6C - ButtonCount_00B0CB54 * rect.Width;
-    int flag = Scenario_00A8B230->At_34B8;
+    int flag = DAT_00A8B230->unknown_34B8;
     InnerWidth_00B0CD10 = rect.Width - width;
     BarRecordValue_00B0CC24 = BarRecord_00B0FC58->Y;
     OuterWidth_00B0CC38 = rect.Width - width + width;

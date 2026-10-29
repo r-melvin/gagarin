@@ -39,13 +39,6 @@ struct House_00721140
 };
 GG_STATIC_ASSERT(offsetof(House_00721140, Type) == 0x34);
 
-// ScenarioClass::Instance +0x1254, compared against ThemeControl::Scenario.
-struct Scenario_00721140
-{
-    char _pad0000[0x1254];   // +0x0000
-    int  At_1254;            // +0x1254
-};
-GG_STATIC_ASSERT(offsetof(Scenario_00721140, At_1254) == 0x1254);
 
 // GLOBAL: GAMEMD 0xA8EC74 — ThemeClass::ScoresPresent (byte).
 extern bool ScoresPresent_00A8EC74;
@@ -54,7 +47,8 @@ extern bool DAT_00A8ED64;
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
 extern House_00721140* CurrentPlayer_00A83D4C;
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-extern Scenario_00721140* ScenarioInstance_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x407000 (decl; reloc) — audio engine present.
 int __cdecl FUN_00407000();

@@ -19,10 +19,10 @@ bool Obj_00449BC0::FUN_00449BC0()
             return true;
         }
 
-        if (DAT_00A8B238 != 0
+        if (Session_00A8B238.GameMode != 0
             && Subject != 0
             && FUN_0050B730(Owner)
-            && DAT_00A8B238 != 0
+            && Session_00A8B238.GameMode != 0
             && DAT_00A8B320
             && Blocker == 0) {
 

@@ -212,22 +212,11 @@ extern Techno_004CFE80** ObjectArray_00A8EC7C;
 // GLOBAL: GAMEMD 0xA8EC88 — its count.
 extern int ObjectCount_00A8EC88;
 
-struct RandomClass_004CFE80
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
-    int RandomRanged(int minval, int maxval);
-};
 
-struct ScenarioClass_004CFE80
-{
-    int                 Flags;                    // +0x0000
-    char                _pad004[0x218 - 0x4];     // +0x0004
-    RandomClass_004CFE80 RandomNumber;            // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(ScenarioClass_004CFE80, RandomNumber) == 0x218);
 
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
-extern ScenarioClass_004CFE80* Scenario_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // ------------------------------------------------------------- the locomotor
 

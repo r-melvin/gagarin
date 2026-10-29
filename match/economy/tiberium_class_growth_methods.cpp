@@ -34,7 +34,7 @@ void Tiberium_007235A0::RegisterForGrowth(Cell_007235A0* cell)
         }
         this->GrowthLogic.Nodes[this->GrowthLogic.Count].Cell = *cell;
         this->GrowthLogic.Nodes[this->GrowthLogic.Count].Value =
-            (float)(CurrentFrame + abs(DAT_00A8B230->Random.Random()) % 50);
+            (float)(CurrentFrame + abs(DAT_00A8B230->unknown_0218.Random()) % 50);
         QueueNode_007235A0* node = &this->GrowthLogic.Nodes[this->GrowthLogic.Count];
         this->GrowthLogic.Count++;
         this->GrowthLogic.Queue->Push(node);

@@ -105,16 +105,7 @@ CellXY_00660BE0* __fastcall FUN_00660BE0(CellXY_00660BE0* out)
     return out;
 }
 
-// The game session object: its first field is the game mode (3 and 4 are the skirmish-like modes).
-struct Session_00642BB0
-{
-    int GameMode;       // +0x00
-    char unknown_04[0x1C];
-    // FUNCTION: GAMEMD 0x69A310 (decl; reloc)
-    unsigned int FUN_0069A310(unsigned int index);
-};
-// GLOBAL: GAMEMD 0xA8B238
-extern Session_00642BB0 DAT_00A8B238;
+#include "../_layout/session_class.h"
 
 // A player slot: only the colour index at +0x6B is read here.
 #pragma pack(push, 1)
@@ -138,12 +129,12 @@ extern int* DAT_00B054D4;
 int __stdcall FUN_00642BB0(int slot)
 {
     int result = 0;
-    if ((DAT_00A8B238.GameMode == 3 || DAT_00A8B238.GameMode == 4) && DAT_00A8DA78[slot]->ColorIndex == -1) {
-        unsigned int index = DAT_00A8B238.FUN_0069A310(0xFFFFFFFE);
+    if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8DA78[slot]->ColorIndex == -1) {
+        unsigned int index = Session_00A8B238.FUN_0069A310(0xFFFFFFFE);
         return DAT_00B054D4[index];
     }
     if (slot >= 0 && slot < 8) {
-        unsigned int index = DAT_00A8B238.FUN_0069A310(DAT_00A8DA78[slot]->FUN_00696F20());
+        unsigned int index = Session_00A8B238.FUN_0069A310(DAT_00A8DA78[slot]->FUN_00696F20());
         result = DAT_00B054D4[index];
     }
     return result;

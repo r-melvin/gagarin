@@ -118,11 +118,11 @@ EventQueue<256> DAT_00A83ED0;
 
 // ---- more objects with destructors ----------------------------------------------------------------------------------
 
-#include "../_layout/obj_00a8b238.h"
+#include "../_layout/session_class.h"
 // SYNTHETIC: GAMEMD 0x4E8030
 // SYNTHETIC: GAMEMD 0x4E8050 -- atexit callback
 // GLOBAL: GAMEMD 0xA8B238
-Obj_00A8B238 DAT_00A8B238;
+SessionClass Session_00A8B238;
 
 struct Obj_00A8EA70
 {

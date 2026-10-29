@@ -20,12 +20,6 @@ int Obj_005CC740::FUN_005CC740()
     return unknown_0C == 0 || unknown_40 >= 4;
 }
 
-// FUNCTION: GAMEMD 0x5CCA10
-// Empty function that pops its stack arguments. Vtable slot 8 of MSBinkAnim (RTTI).
-void Obj_005CCA10::FUN_005CCA10(int a1)
-{
-}
-
 // FUNCTION: GAMEMD 0x5CD310
 // Empty function.
 void __cdecl FUN_005CD310()

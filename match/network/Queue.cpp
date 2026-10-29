@@ -359,7 +359,7 @@ extern const char STR_00837864[];
 extern const char STR_00837828[];
 
 #include "command_packet_layouts.h"
-extern int DAT_00A8B238;
+#include "../_layout/session_class.h"
 
 // GLOBAL: GAMEMD 0xB779C4
 extern int DAT_00B779C4;
@@ -939,7 +939,7 @@ Obj_00646D00 DAT_00AFA278[7];
 // Branching.
 void __cdecl FUN_00646D50()
 {
-    if (DAT_00A8B238 == 4)
+    if (Session_00A8B238.GameMode == 4)
     {
         Manager_00A8E9C0.FUN_00543090();
     }
@@ -948,7 +948,7 @@ void __cdecl FUN_00646D50()
 // FUNCTION: GAMEMD 0x646D70
 void FUN_00646D70()
 {
-    if (DAT_00A8B238 == 4) Manager_00A8E9C0.FUN_00543080();
+    if (Session_00A8B238.GameMode == 4) Manager_00A8E9C0.FUN_00543080();
 }
 
 // FUNCTION: GAMEMD 0x646DB0
@@ -1053,7 +1053,7 @@ void FUN_00647260()
 {
     if (!(DAT_00A8D5F8 & 2))
     {
-        switch (DAT_00A8B238)
+        switch (Session_00A8B238.GameMode)
         {
         case 0:
         case 5:
@@ -1114,9 +1114,9 @@ void FUN_00647260()
     }
     if (frame == 0)
     {
-        if (DAT_00A8B238 != 0) return;
+        if (Session_00A8B238.GameMode != 0) return;
     }
-    else if (DAT_00A8B238 != 0 && DAT_00A8B238 != 5 && DAT_00A8B24C == 2 &&
+    else if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5 && DAT_00A8B24C == 2 &&
              frame != ((DAT_00A8B554 - 1 + frame) / DAT_00A8B554) * DAT_00A8B554) return;
 
     int count;
@@ -1142,7 +1142,7 @@ void FUN_00647260()
         }
     }
     int result;
-    if (DAT_00A8B238 == 0) result = FUN_0064C380(1, DAT_00A83D4C->Type->ArrayIndex2, 0, 0, 0);
+    if (Session_00A8B238.GameMode == 0) result = FUN_0064C380(1, DAT_00A83D4C->Type->ArrayIndex2, 0, 0, 0);
     else result = FUN_0064C380(DAT_00A8B548, 0, 0, 0, 0);
     if (result) FUN_0064D990(0);
     else DAT_00A8E9A0 = 0;
@@ -1155,7 +1155,7 @@ void FUN_00648350()
     ConnManClass* manager;
     char* data;
     int capacity;
-    if (DAT_00A8B238 >= 3 && DAT_00A8B238 <= 4) {
+    if (Session_00A8B238.GameMode >= 3 && Session_00A8B238.GameMode <= 4) {
         manager = &Manager_00A8E9C0;
         data = DAT_00A8D812;
         capacity = DAT_00A8DA40;
@@ -1186,7 +1186,7 @@ void FUN_00648350()
             int length, id;
             if (!manager->vf_3(data, &length, &id)) break;
             DAT_0087F770->FUN_0054F000();
-            if (DAT_00A8B238 == 1 || DAT_00A8B238 == 2) {
+            if (Session_00A8B238.GameMode == 1 || Session_00A8B238.GameMode == 2) {
                 switch (FUN_0064A630(data, 0)) {
                 case 0: break;
                 case 4:
@@ -1403,7 +1403,7 @@ int FUN_0064A0C0(ConnManClass* manager, char* data, int id, unsigned length,
     if (record.unknown_04 < header->Data.Payload_19.unknown_0B)
         record.unknown_04 = header->Data.Payload_19.unknown_0B;
     if (header->Type == 0x19) {
-        if (DAT_00A8B238 == 4 || DAT_00A8B238 == 3)
+        if (Session_00A8B238.GameMode == 4 || Session_00A8B238.GameMode == 3)
             FUN_004068E0(STR_008377F8, Manager_00A8E9C0.FUN_00540FC0(id),
                 header->Frame - header->Data.Payload_19.unknown_0D);
         if (header->Data.Payload_19.unknown_07 != DAT_00A8E7A8) return 2;
@@ -1476,7 +1476,7 @@ int FUN_0064A630(char* data, int flag)
         if (wcslen(text)) wcscpy(DAT_00A8D112, text);
         Map_0087F7E8.GScreenClass::FlagToRedraw(2);
     } else if (kind == 0x78) {
-        if ((DAT_00A8D110 && DAT_00A8B238 == 3) || (DAT_00A8D111 && DAT_00A8B238 == 4)) {
+        if ((DAT_00A8D110 && Session_00A8B238.GameMode == 3) || (DAT_00A8D111 && Session_00A8B238.GameMode == 4)) {
             FUN_00752B70(packet->unknown_19.Byte);
             return 4;
         }
@@ -1498,7 +1498,7 @@ void FUN_0064A7B0(HWND dialog)
         RectangleStruct bounds = { rect.left, rect.top,
             rect.right - rect.left, rect.bottom - rect.top };
         int index;
-        if (DAT_00A8B238 == 1 || DAT_00A8B238 == 2) index = 0;
+        if (Session_00A8B238.GameMode == 1 || Session_00A8B238.GameMode == 2) index = 0;
         else index = Manager_00A8E9C0.IPXManagerClass::vf_6(Players_00A8DA78[i]->unknown_6F);
         unsigned delay = i ? DAT_00AFA418 - DAT_00AFA278[index].unknown_0C : 0;
         ColorStruct color(0, 200, 0);
@@ -1541,7 +1541,7 @@ void FUN_0064AAE0(HWND dialog, int player)
     if (player < 0 || player >= PlayerCount_00A8DA84) return;
     FUN_004068E0(STR_00837A00, player, Players_00A8DA78[player], Players_00A8DA78[0]->unknown_6F);
     HWND list = GetDlgItem(dialog, 0x651);
-    if (!player || (DAT_00A8B238 == 4 && DAT_00B779C4)) {
+    if (!player || (Session_00A8B238.GameMode == 4 && DAT_00B779C4)) {
         if (!player)
             FUN_005E2820(-1, FUN_00734E60(STR_008379E8, 0, STR_008374A0, 0xD2F), list);
         else
@@ -1575,7 +1575,7 @@ void FUN_0064AD10(int voter, int player)
         if (DAT_00A8BB60[player][i] == voter) return;
     DAT_00A8BB60[player][count] = voter;
     ++DAT_00A8BB40[player];
-    if (DAT_00A8B238 == 3 || DAT_00A8B238 == 4) {
+    if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
         const wchar_t* name = Manager_00A8E9C0.FUN_00540FC0(voter);
         if (!name) name = Players_00A8DA78[0]->Name;
         FUN_004068E0(STR_00837A4C, name, Manager_00A8E9C0.FUN_00540FC0(player));
@@ -1637,7 +1637,7 @@ LRESULT __stdcall FUN_0064AE50(HWND window, unsigned message, WPARAM wparam, LPA
         }
         break;
     case 0x113:
-        if (DAT_00A8B238 == 4 && wparam == 1 && DAT_00AC1170) {
+        if (Session_00A8B238.GameMode == 4 && wparam == 1 && DAT_00AC1170) {
             if (DAT_00B77780 < 5) {
                 DAT_00AC1170->Vtbl->At_18(DAT_00AC1170, DAT_00B77930, 1000, &window);
                 ++DAT_00B77780;
@@ -1682,7 +1682,7 @@ LRESULT __stdcall FUN_0064AE50(HWND window, unsigned message, WPARAM wparam, LPA
                 DestroyWindow(control);
             }
         }
-        if (DAT_00A8B238 == 4) {
+        if (Session_00A8B238.GameMode == 4) {
             DAT_00B77780 = 0;
             DAT_00B77CE0 = 0;
             DAT_00B0488C = 0;
@@ -1709,7 +1709,7 @@ void FUN_0064B240(ConnManClass* manager, int index, Obj_00646D00* records, unsig
         return;
     }
     DAT_00A8022C[house]->LostConnection = 1;
-    if (FUN_005E2BE0(DAT_00A8022C[house]) == 1 && DAT_00A8B238 == 4 && !DAT_00A8F900) {
+    if (FUN_005E2BE0(DAT_00A8022C[house]) == 1 && Session_00A8B238.GameMode == 4 && !DAT_00A8F900) {
         Unsorted_RegisterGameEndTime();
         DAT_00B0BD78 = 1;
         if (!recent) DAT_00A8B8C1 = 1;
@@ -1732,7 +1732,7 @@ void FUN_0064B240(ConnManClass* manager, int index, Obj_00646D00* records, unsig
 // FUNCTION: GAMEMD 0x64B410
 int FUN_0064B410(ConnManClass* manager, Obj_00646D00* records)
 {
-    if (DAT_00A8B238 == 1 || DAT_00A8B238 == 2) {
+    if (Session_00A8B238.GameMode == 1 || Session_00A8B238.GameMode == 2) {
         if (manager->vf_4()) {
             ++DAT_00A8DAB4;
             if (!FUN_005F0120()) {
@@ -1741,7 +1741,7 @@ int FUN_0064B410(ConnManClass* manager, Obj_00646D00* records)
             }
             --DAT_00A8DAB4;
         }
-    } else if (DAT_00A8B238 == 3 || DAT_00A8B238 == 4) {
+    } else if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
         int oldest = 0x7FFFFFFF;
         int index = 0;
         for (int i = 0; i < manager->vf_4(); ++i) {
@@ -2098,7 +2098,7 @@ int FUN_0064C380(int, int, ConnManClass* manager, const ScenarioTimer* timer,
             if (event.HouseIndex != house->ArrayIndex || int(event.Frame) > CurrentFrame ||
                 (event.IsExecuted & 1)) continue;
             if (int(event.Frame) < CurrentFrame && event.Type != 0x1C &&
-                DAT_00A8B238 != 0 && DAT_00A8B238 != 5) {
+                Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5) {
                 FUN_004068E0(STR_00837F24);
                 FUN_004068E0(STR_00837EF8);
                 FUN_004068E0(STR_00837EE8, DAT_0082091C[event.Type]);
@@ -2120,13 +2120,13 @@ int FUN_0064C380(int, int, ConnManClass* manager, const ScenarioTimer* timer,
                     }
                 }
                 if (FUN_005E2BE0(departed) == 1) {
-                    if (DAT_00A8B238 == 4 && !DAT_00A8F900) {
+                    if (Session_00A8B238.GameMode == 4 && !DAT_00A8F900) {
                         DAT_00A8B8C1 = 1;
                         Unsorted_RegisterGameEndTime();
                         FUN_006C6F50(0);
                     }
                 }
-                if (DAT_00A8B238 == 4 && !DAT_00A8F900 && DAT_00A83D4C &&
+                if (Session_00A8B238.GameMode == 4 && !DAT_00A8F900 && DAT_00A83D4C &&
                     DAT_00A83D4C == departed) {
                     FUN_004068E0(STR_00837E58);
                     FUN_006C6F50(0);
@@ -2143,8 +2143,8 @@ int FUN_0064C380(int, int, ConnManClass* manager, const ScenarioTimer* timer,
                     event.FUN_004C6CB0();
                 } else if (event.Type == 0x13) {
                     FUN_004068E0(STR_00820E0C, CurrentFrame);
-                    if (DAT_00A8B238 == 1 || DAT_00A8B238 == 2) FUN_005F0180(h, 0);
-                    else if ((DAT_00A8B238 == 3 || DAT_00A8B238 == 4) && manager) {
+                    if (Session_00A8B238.GameMode == 1 || Session_00A8B238.GameMode == 2) FUN_005F0180(h, 0);
+                    else if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && manager) {
                         int index = manager->vf_6(h);
                         if (index != -1) {
                             while (index < manager->vf_4() - 1) {
@@ -2453,7 +2453,7 @@ void FUN_0064D990(int)
 // ev_071984b305daa9ce37b6f977e60696355a8ea4653d1518a4ce518f77027b2d72.
 void FUN_0064D9E0()
 {
-    if (CurrentFrame == 0 && DAT_00A8B238 != 0) return;
+    if (CurrentFrame == 0 && Session_00A8B238.GameMode != 0) return;
     int count = 0;
     int index = DAT_008B41F8.unknown_04;
     int remaining = DAT_008B41F8.Count;
@@ -3734,7 +3734,7 @@ void FUN_00652070(const EventClass* event)
 // ev_e1650ffc8d71024b2028827902f0ce65d60ab045d5cdd87917ff2d153952c855.
 void FUN_00652110(const Obj_00646D00* records, int index)
 {
-    if (DAT_00A8B238 != 4) {
+    if (Session_00A8B238.GameMode != 4) {
         DAT_00A8DB7C[index] = 0;
         return;
     }
@@ -3786,8 +3786,8 @@ void FUN_00652230(EventClass* event)
         ++DAT_008B41F8.Count;
         return;
     }
-    if (DAT_00A8B238 == 0 || DAT_00A8B238 == 5) return;
-    if (DAT_00A8B238 == 4) Unsorted_RegisterGameEndTime();
+    if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5) return;
+    if (Session_00A8B238.GameMode == 4) Unsorted_RegisterGameEndTime();
     ++DAT_00A8DAB4;
     Dialog_005D3490 dialog;
     dialog.FUN_005D3490(
@@ -3798,7 +3798,7 @@ void FUN_00652230(EventClass* event)
     DAT_00A8B8BC = 0;
     DAT_00A8E9A0 = 0;
     if (DAT_00B04874) FUN_005BC400();
-    if (DAT_00A8B238 == 4) {
+    if (Session_00A8B238.GameMode == 4) {
         DAT_00B0BD78 = 1;
         DAT_00A8B8C1 = 1;
         DAT_00A8B8C2 = 1;
@@ -3814,7 +3814,7 @@ void FUN_00652230(EventClass* event)
 void FUN_006523A0()
 {
     FUN_004068E0(STR_008391CC);
-    if (DAT_00A8B238 != 4) return;
+    if (Session_00A8B238.GameMode != 4) return;
     Manager_00A8E9C0.FUN_00543080();
     int queued = Manager_00A8E9C0.IPXManagerClass::vf_7();
     for (int index = 0; index < DAT_00B052E0; ++index) {
@@ -3834,7 +3834,7 @@ void FUN_006523A0()
     ScenarioElapsedTimer timeout(300);
     while (queued < Manager_00A8E9C0.IPXManagerClass::vf_7() && timeout.GetTimeLeft())
         FUN_0048D080();
-    if (DAT_00A8B238 == 4) Manager_00A8E9C0.FUN_00543090();
+    if (Session_00A8B238.GameMode == 4) Manager_00A8E9C0.FUN_00543090();
 }
 
 // FUNCTION: GAMEMD 0x652540

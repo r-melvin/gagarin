@@ -403,7 +403,7 @@ bool DisplayClass::vf_36(CellStruct* cell, DisplayHouse* house)
 
     if (changed)
         DisplayMap_0087F7E8.RevealCheck_005865F0(c, house, first);
-    if ((c->Flags140 & 2) && wasClear && (DisplayScenario_00A8B230->Flags & 0x1000))
+    if ((c->Flags140 & 2) && wasClear && (DAT_00A8B230->unknown_0000 & 0x1000))
         c->CleanFog_00486BF0();
     return changed;
 }
@@ -444,7 +444,7 @@ bool DisplayClass::vf_37(CellStruct* cell, DisplayHouse* house, bool increase)
         DisplayProjector_00887324->FUN_006DA7D0(c);
         DisplayMap_0087F7E8.RevealCheck_005865F0(c, house, first);
     }
-    if ((c->Flags140 & 2) && wasClear && (DisplayScenario_00A8B230->Flags & 0x1000))
+    if ((c->Flags140 & 2) && wasClear && (DAT_00A8B230->unknown_0000 & 0x1000))
         c->CleanFog_00486BF0();
     return changed;
 }
@@ -515,7 +515,7 @@ bool DisplayClass::vf_38(CellStruct* cell, DisplayHouse* house)
 
     if (ret)
         DisplayMap_0087F7E8.RevealCheck_005865F0(c, house, changed);
-    if ((c->Flags140 & 2) && fog && (DisplayScenario_00A8B230->Flags & 0x1000))
+    if ((c->Flags140 & 2) && fog && (DAT_00A8B230->unknown_0000 & 0x1000))
         c->CleanFog_00486BF0();
     return ret;
 }
@@ -1368,7 +1368,7 @@ void DisplayClass::vf_32(DisplayScIni* ini)
 
     DisplayScScenario_00A8B230->Theater = ini->FUN_00475870("Map", "Theater", 0);
     vf_06(DisplayScScenario_00A8B230->Theater);
-    DisplayScSession_00A8B238.FUN_0069AE90(0x3F);
+    Session_00A8B238.FUN_0069AE90(0x3F);
     FUN_0048D080();
     int savedValue = DisplayScScenario_00A8B230->Value_214;
     FUN_0071DCA0(DisplayScScenario_00A8B230->Theater);
@@ -1381,7 +1381,7 @@ void DisplayClass::vf_32(DisplayScIni* ini)
     FUN_0045E970(DisplayScScenario_00A8B230->Theater);
     FUN_00427940(DisplayScScenario_00A8B230->Theater);
     FUN_006B5490(DisplayScScenario_00A8B230->Theater);
-    DisplayScSession_00A8B238.FUN_0069AE90(0x41);
+    Session_00A8B238.FUN_0069AE90(0x41);
     FUN_0048D080();
 
     DisplayScScenario_00A8B230->FUN_0068BDC0(ini);
@@ -1439,7 +1439,7 @@ void DisplayClass::vf_32(DisplayScIni* ini)
             }
         }
     }
-    DisplayScSession_00A8B238.FUN_0069AE90(0x43);
+    Session_00A8B238.FUN_0069AE90(0x43);
     FUN_0048D080();
 
     DisplayScSurface surface;
@@ -1568,12 +1568,12 @@ void DisplayClass::vf_32(DisplayScIni* ini)
     }
 
     surface.LockCount--;
-    DisplayScSession_00A8B238.FUN_0069AE90(0x44);
+    Session_00A8B238.FUN_0069AE90(0x44);
     FUN_0048D080();
 
     bool flag = DisplayScFlag_00A8ED6B || DisplayScFlag_00A8ED5D;
     FUN_00546DA0(flag, DisplayScScenario_00A8B230->Flag_34BD);
-    DisplayScSession_00A8B238.FUN_0069AE90(0x45);
+    Session_00A8B238.FUN_0069AE90(0x45);
     FUN_0048D080();
 
     LocalRect = ini->FUN_00527CC0("Map", "LocalSize", MapRect);

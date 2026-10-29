@@ -41,7 +41,7 @@ void BA4Building::vf_313(HBPoint2D* pos, int clip)
                         HBCoordPod scratchA;
                         HBCoordPod a = *object->vf_19(&scratchA, 0);
                         a.Z = object->Location.Z;
-                        if (DAT_00B73550 && !DAT_00A8ED6B && (DAT_00A8B230->unknown_00 & 0x1000)) {
+                        if (DAT_00B73550 && !DAT_00A8ED6B && (DAT_00A8B230->unknown_0000 & 0x1000)) {
                             HBCoordPod q = object->Location;
                             if (DAT_0087F7E8.FUN_005865E0(&q)) {
                                 continue;

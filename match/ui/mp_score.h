@@ -16,44 +16,13 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct ScoreEntry_00A8D1FC
-{
-    wchar_t Name[0x14];       // +0x00
-    int     unknown_28;       // +0x28 colour scheme
-    int     unknown_2C;       // +0x2C winner count
-    int     unknown_30[4];    // +0x30 losses
-    int     unknown_40[4];    // +0x40 kills
-    int     unknown_50[4];    // +0x50 production
-    int     unknown_60[4];    // +0x60 score
-};
-GG_STATIC_ASSERT(offsetof(ScoreEntry_00A8D1FC, unknown_28) == 0x28);
-GG_STATIC_ASSERT(offsetof(ScoreEntry_00A8D1FC, unknown_2C) == 0x2C);
-GG_STATIC_ASSERT(offsetof(ScoreEntry_00A8D1FC, unknown_30) == 0x30);
-GG_STATIC_ASSERT(offsetof(ScoreEntry_00A8D1FC, unknown_40) == 0x40);
-GG_STATIC_ASSERT(offsetof(ScoreEntry_00A8D1FC, unknown_50) == 0x50);
-GG_STATIC_ASSERT(offsetof(ScoreEntry_00A8D1FC, unknown_60) == 0x60);
-GG_STATIC_ASSERT(sizeof(ScoreEntry_00A8D1FC) == 0x70);
+#include "../_layout/session_class.h"
+#include "../_layout/score_entry_00a8d1fc.h"
 
-// The session object at 0xA8B238 (its first dword is the game mode that
-// 0x5C9B10 tests against 4 and 5). The score table is part of it: the eight
-// entries run 0xA8D1FC..0xA8D57B (+0x1FC4), followed by the dword 0xA8D57C,
-// the filled count 0xA8D580 and the survivor's index 0xA8D584. Treating them
-// as one object is what keeps 0x5C98A0's store to the index after its store
-// to the entry, as retail has it; separate globals let VC6 hoist it.
-struct Session_00A8B238
-{
-    int                 unknown_0000;               // +0x0000 game mode
-    char                _pad0004[0x1FC4 - 0x4];     // +0x0004
-    ScoreEntry_00A8D1FC ScoreEntries[8];            // +0x1FC4 (0xA8D1FC)
-    int                 unknown_2344;               // +0x2344 (0xA8D57C)
-    int                 ScoreCount;                 // +0x2348 (0xA8D580)
-    int                 ScoreSurvivor;              // +0x234C (0xA8D584)
-};
-GG_STATIC_ASSERT(offsetof(Session_00A8B238, ScoreEntries) == 0x1FC4);
-GG_STATIC_ASSERT(offsetof(Session_00A8B238, ScoreCount) == 0x2348);
-GG_STATIC_ASSERT(offsetof(Session_00A8B238, ScoreSurvivor) == 0x234C);
-// GLOBAL: GAMEMD 0xA8B238
-extern Session_00A8B238 DAT_00A8B238;
+// The score table is part of the session object at 0xA8B238 (SessionClass, +0x1FC4): the eight
+// entries run 0xA8D1FC..0xA8D57B, followed by the dword 0xA8D57C, the filled count 0xA8D580 and
+// the survivor's index 0xA8D584. Treating them as one object is what keeps 0x5C98A0's store to
+// the index after its store to the entry, as retail has it; separate globals let VC6 hoist it.
 
 // GLOBAL: GAMEMD 0xABF958 -- the entries in score order.
 extern ScoreEntry_00A8D1FC* DAT_00ABF958[8];

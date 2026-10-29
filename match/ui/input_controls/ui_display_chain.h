@@ -337,6 +337,8 @@ public:
     MapSavedObject* NextSavedObject_00578290();
     // FUNCTION: GAMEMD 0x578350 (decl; reloc) -- rewind the cell-object iteration.
     void FUN_00578350();
+    // FUNCTION: GAMEMD 0x4AE450 -- reset every cell's light after a detail-level change, then request a redraw.
+    void FUN_004AE450();
 
     // Methods defined by the matched map/ TUs (formerly per-TU partial views of this class).
     // FUNCTION: GAMEMD 0x588960 / 0x588990 -- clamp the capped count at +0x148.

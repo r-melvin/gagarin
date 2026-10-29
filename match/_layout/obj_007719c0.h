@@ -8,6 +8,5 @@
 
 struct Obj_007719C0 {
     bool FUN_007529E0();
-    bool FUN_007719C0();
 };
 #endif

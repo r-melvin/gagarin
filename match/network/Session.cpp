@@ -315,7 +315,6 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 
 #include "../_layout/obj_00696f10.h"
 
-#include "../_layout/obj_0069bbe0.h"
 
 #include "../_layout/type_006a46d0.h"
 
@@ -453,16 +452,6 @@ struct Obj_00697020
 GG_STATIC_ASSERT(offsetof(Obj_00697020, unknown_63) == 0x63);
 GG_STATIC_ASSERT(offsetof(Obj_00697020, unknown_67) == 0x67);
 
-struct Obj_0069B720
-{
-    char unknown_00[0x15C];
-    int unknown_15C;   // +0x015C
-    int unknown_160;   // +0x0160
-    // FUNCTION: GAMEMD 0x69B720
-    int FUN_0069B720();
-};
-GG_STATIC_ASSERT(offsetof(Obj_0069B720, unknown_15C) == 0x15C);
-GG_STATIC_ASSERT(offsetof(Obj_0069B720, unknown_160) == 0x160);
 
 // FUNCTION: GAMEMD 0x696F90
 // Branching.
@@ -1391,7 +1380,7 @@ void SessionClass::FUN_00699450()
 }
 
 // FUNCTION: GAMEMD 0x69A310
-unsigned int __stdcall FUN_0069A310(unsigned int index)
+unsigned int SessionClass::FUN_0069A310(unsigned int index)
 {
     if (index == 0xFFFFFFFEU)
         index = 8;
@@ -1402,7 +1391,7 @@ unsigned int __stdcall FUN_0069A310(unsigned int index)
 
 // FUNCTION: GAMEMD 0x69B720
 // Branching.
-int Obj_0069B720::FUN_0069B720()
+int SessionClass::FUN_0069B720()
 {
     if (unknown_160 != -2)
     {
@@ -2492,9 +2481,9 @@ void SessionClass::FUN_0069BB40()
 }
 
 // FUNCTION: GAMEMD 0x0069BBE0
-char FUN_0069BBE0(Obj_0069BBE0* self)
+bool SessionClass::FUN_0069BBE0()
 {
-    return self->unknown_30D8;
+    return InGameFrameActive;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

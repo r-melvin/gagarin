@@ -11,7 +11,6 @@
 
 struct Obj_005CC690;
 struct Obj_005CC740;
-struct Obj_005CCA10;
 
 struct Obj_005CC690
 {
@@ -33,12 +32,6 @@ struct Obj_005CC740
 };
 GG_STATIC_ASSERT(offsetof(Obj_005CC740, unknown_0C) == 0xC);
 GG_STATIC_ASSERT(offsetof(Obj_005CC740, unknown_40) == 0x40);
-
-struct Obj_005CCA10
-{
-    // FUNCTION: GAMEMD 0x5CCA10
-    void FUN_005CCA10(int a1);
-};
 
 
 // FUNCTION: GAMEMD 0x5CD310

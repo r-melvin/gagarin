@@ -87,8 +87,7 @@ GG_STATIC_ASSERT(offsetof(NetshareLinkMessage, Name) == 0x24 &&
 extern NetsharePacket DAT_00A8D638;
 // GLOBAL: GAMEMD 0xA8B238 -- the session object; 0x69B720 is a __thiscall on it
 // (the same address as the session-kind int that netshare_slot_nodes.h names).
-#include "../_layout/obj_00a8b238.h"
-extern Obj_00A8B238 SessionObject_00A8B238;
+#include "../_layout/session_class.h"
 // GLOBAL: GAMEMD 0xA8B322 -- a wide string (0x5E32D0 copies it with wcscpy).
 extern wchar_t DAT_00A8B322[];
 // STRING: GAMEMD 0x831460 "GUI:HostNoMap"

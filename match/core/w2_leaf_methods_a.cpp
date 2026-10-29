@@ -116,28 +116,6 @@ void Obj_005CB840::FUN_005CB860(unsigned int value)
     }
 }
 
-struct Quad_005CC850 {
-    int A;
-    int B;
-    int C;
-    int D;
-};
-
-struct Obj_005CC850 {
-    unsigned char unknown_00[0x24];
-    Quad_005CC850 Value;        // +0x24
-    Quad_005CC850* FUN_005CC850(Quad_005CC850* out);
-};
-GG_STATIC_ASSERT(offsetof(Obj_005CC850, Value) == 0x24);
-
-// FUNCTION: GAMEMD 0x005CC850
-// Copy the 16-byte value at +0x24 into the caller's buffer.
-Quad_005CC850* Obj_005CC850::FUN_005CC850(Quad_005CC850* out)
-{
-    *out = Value;
-    return out;
-}
-
 struct Obj_0056CB80 {
     unsigned int Packed;        // +0x00
     int FUN_0056CB80();

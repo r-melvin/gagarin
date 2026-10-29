@@ -284,7 +284,7 @@ void FUN_005C9850(HWND dialog, int item, int value)
 // half and all of it). Each entry is traced to the debug log.
 void __cdecl FUN_005C98A0()
 {
-    DAT_00A8B238.ScoreCount = 0;
+    Session_00A8B238.ScoreCount = 0;
     int count = DAT_00A80228.Count;
     for (int i = 0; i < count; i++) {
         HouseClass* house = DAT_00A80228.Items[i];
@@ -292,17 +292,17 @@ void __cdecl FUN_005C98A0()
             continue;
         }
 
-        int index = DAT_00A8B238.ScoreCount++;
-        DAT_00A8B238.ScoreEntries[index].unknown_2C = 0;
-        wcscpy(DAT_00A8B238.ScoreEntries[index].Name, house->UIName);
-        DAT_00A8B238.ScoreEntries[index].unknown_30[0] = 0;
-        DAT_00A8B238.ScoreEntries[index].unknown_40[0] = 0;
-        DAT_00A8B238.ScoreEntries[index].unknown_50[0] = 0;
-        DAT_00A8B238.ScoreEntries[index].unknown_60[0] = 0;
-        DAT_00A8B238.ScoreEntries[index].unknown_28 = house->ColorSchemeIndex;
+        int index = Session_00A8B238.ScoreCount++;
+        Session_00A8B238.ScoreEntries[index].unknown_2C = 0;
+        wcscpy(Session_00A8B238.ScoreEntries[index].Name, house->UIName);
+        Session_00A8B238.ScoreEntries[index].unknown_30[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_40[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_50[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_60[0] = 0;
+        Session_00A8B238.ScoreEntries[index].unknown_28 = house->ColorSchemeIndex;
         if (!house->Defeated) {
-            ++DAT_00A8B238.ScoreEntries[index].unknown_2C;
-            DAT_00A8B238.ScoreSurvivor = index;
+            ++Session_00A8B238.ScoreEntries[index].unknown_2C;
+            Session_00A8B238.ScoreSurvivor = index;
         }
 
         int kills = 0;
@@ -313,26 +313,26 @@ void __cdecl FUN_005C98A0()
         for (k = 0; k < 20; k++) {
             kills += house->KilledBuildingsOfHouses[k];
         }
-        DAT_00A8B238.ScoreEntries[index].unknown_40[0] = kills;
-        DAT_00A8B238.ScoreEntries[index].unknown_30[0] = house->TotalKilledBuildings + house->TotalKilledUnits;
+        Session_00A8B238.ScoreEntries[index].unknown_40[0] = kills;
+        Session_00A8B238.ScoreEntries[index].unknown_30[0] = house->TotalKilledBuildings + house->TotalKilledUnits;
         int built = house->FactoryProducedBuildingTypes.FUN_0049FB60();
         built += house->FactoryProducedUnitTypes.FUN_0049FB60();
         built += house->FactoryProducedInfantryTypes.FUN_0049FB60();
         built += house->FactoryProducedAircraftTypes.FUN_0049FB60();
-        DAT_00A8B238.ScoreEntries[index].unknown_50[0] = built;
+        Session_00A8B238.ScoreEntries[index].unknown_50[0] = built;
         if (house->PointTotal > 0) {
-            DAT_00A8B238.ScoreEntries[index].unknown_60[0] += house->PointTotal;
+            Session_00A8B238.ScoreEntries[index].unknown_60[0] += house->PointTotal;
         }
         if (!house->Defeated) {
-            int score = DAT_00A8B238.ScoreEntries[index].unknown_60[0];
-            DAT_00A8B238.ScoreEntries[index].unknown_60[0] = DAT_00A8B230->unknown_218.FUN_0065C7E0(score / 2, score) + score / 2 + score;
+            int score = Session_00A8B238.ScoreEntries[index].unknown_60[0];
+            Session_00A8B238.ScoreEntries[index].unknown_60[0] = DAT_00A8B230->unknown_218.FUN_0065C7E0(score / 2, score) + score / 2 + score;
         }
 
         FUN_004068E0("%hs: %s\n Scheme: %d\n Lost = %d\n Kills = %d\n Built = %d\n Score = %d\n",
-                     DAT_00A8B238.ScoreEntries[index].Name, DAT_00A8B238.ScoreEntries[index].unknown_2C > 0 ? "Winner" : "Loser",
-                     DAT_00A8B238.ScoreEntries[index].unknown_28, DAT_00A8B238.ScoreEntries[index].unknown_30[0],
-                     DAT_00A8B238.ScoreEntries[index].unknown_40[0], DAT_00A8B238.ScoreEntries[index].unknown_50[0],
-                     DAT_00A8B238.ScoreEntries[index].unknown_60[0]);
+                     Session_00A8B238.ScoreEntries[index].Name, Session_00A8B238.ScoreEntries[index].unknown_2C > 0 ? "Winner" : "Loser",
+                     Session_00A8B238.ScoreEntries[index].unknown_28, Session_00A8B238.ScoreEntries[index].unknown_30[0],
+                     Session_00A8B238.ScoreEntries[index].unknown_40[0], Session_00A8B238.ScoreEntries[index].unknown_50[0],
+                     Session_00A8B238.ScoreEntries[index].unknown_60[0]);
     }
 }
 
@@ -341,9 +341,9 @@ void __cdecl FUN_005C98A0()
 // Point the sort table at the filled entries and order them by score.
 void __cdecl FUN_005C9AA0()
 {
-    int count = DAT_00A8B238.ScoreCount;
+    int count = Session_00A8B238.ScoreCount;
     for (int i = 0; i < count; i++) {
-        DAT_00ABF958[i] = &DAT_00A8B238.ScoreEntries[i];
+        DAT_00ABF958[i] = &Session_00A8B238.ScoreEntries[i];
     }
     if (count > 1) {
         qsort(DAT_00ABF958, count, sizeof(ScoreEntry_00A8D1FC*), FUN_005C9AE0);
@@ -396,13 +396,13 @@ int __stdcall FUN_005C9B10(HWND dialog, UINT message, WPARAM wParam, LPARAM lPar
         DAT_00A83D10.PlaySong(DAT_00A83D10.FindIndex("SCORE"));
 
         wchar_t text[0x20];
-        if (DAT_00A8B238.unknown_0000 == 4) {
+        if (Session_00A8B238.GameMode == 4) {
             swprintf(text, FUN_00734E60("TXT_GAME", 0, DAT_0082FE24, 0x174), DAT_00B779D4);
         } else {
-            swprintf(text, FUN_00734E60("TXT_GAME", 0, DAT_0082FE24, 0x176), DAT_00A8B238.unknown_2344);
+            swprintf(text, FUN_00734E60("TXT_GAME", 0, DAT_0082FE24, 0x176), Session_00A8B238.unknown_2344);
         }
         const wchar_t* title;
-        if (DAT_00A8B238.unknown_0000 == 5) {
+        if (Session_00A8B238.GameMode == 5) {
             title = FUN_00734E60("GUI:SkirmishScore", 0, DAT_0082FE24, 0x17A);
         } else {
             title = FUN_00734E60("GUI:MultiplayerScore", 0, DAT_0082FE24, 0x17C);
@@ -428,7 +428,7 @@ int __stdcall FUN_005C9B10(HWND dialog, UINT message, WPARAM wParam, LPARAM lPar
             }
         }
 
-        for (i = 0; i < DAT_00A8B238.ScoreCount; i++) {
+        for (i = 0; i < Session_00A8B238.ScoreCount; i++) {
             ColorValue_00517440 color = DAT_00B054D0.Items[DAT_00ABF958[i]->unknown_28]->unknown_308.FUN_00517440();
             COLORREF rgb = RGB(color.R, color.G, color.B);
 
@@ -473,7 +473,7 @@ int __stdcall FUN_005C9B10(HWND dialog, UINT message, WPARAM wParam, LPARAM lPar
         RECT first;
         RECT last;
         FUN_00775690(GetDlgItem(dialog, 0x6D2), &first);
-        FUN_00775690(GetDlgItem(dialog, DAT_0082FD5C[DAT_00A8B238.ScoreCount - 1][4]), &last);
+        FUN_00775690(GetDlgItem(dialog, DAT_0082FD5C[Session_00A8B238.ScoreCount - 1][4]), &last);
         Rect_005C9720 frame;
         frame.X = first.left;
         frame.Y = first.top;

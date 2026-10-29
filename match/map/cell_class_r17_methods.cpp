@@ -32,18 +32,10 @@ void CellClass::FUN_00480180(const Point2D* point, const RectangleStruct* clip)
 // GLOBAL: GAMEMD 0x00887324 -- the tactical view.
 extern Tactical* DAT_00887324;
 
-struct ScenarioFlagsView_r17
-{
-    unsigned int Flags;   // +0x00
-};
-struct HouseView_r17
-{
-    char _pad_000[0x1F5];
-    char unknown_1F5;     // +0x1F5
-};
-GG_STATIC_ASSERT(offsetof(HouseView_r17, unknown_1F5) == 0x1F5);
-extern ScenarioFlagsView_r17* DAT_00A8B230;   // GAMEMD 0x00A8B230, the scenario object
-extern HouseView_r17* DAT_00A83D4C;           // GAMEMD 0x00A83D4C, the current player house
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
+#include "../_layout/house_class.h"
+extern HouseClass* DAT_00A83D4C;
 
 // FUNCTION: GAMEMD 0x4801F0
 // Refreshes the cell's visibility and fog levels from the tactical view and draws
@@ -60,7 +52,7 @@ void CellClass::FUN_004801F0(const Point2D* point, const RectangleStruct* clip)
     FUN_0047EFE0(point, clip, level);
     signed char fog = DAT_00887324->FUN_006D8700(&MapCoords, 1);
     Foggedness = fog;
-    if ((DAT_00A8B230->Flags & 0x1000) && !DAT_00A83D4C->unknown_1F5) {
+    if ((DAT_00A8B230->unknown_0000 & 0x1000) && !DAT_00A83D4C->Defeated) {
         level = fog;
         if (level == -2)
             level = 15;

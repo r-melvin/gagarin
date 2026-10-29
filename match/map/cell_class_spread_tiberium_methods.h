@@ -61,22 +61,11 @@ GG_STATIC_ASSERT(offsetof(Tiberium_00483780, At_0A0) == 0xA0);
 // GLOBAL: GAMEMD 0xB0F4EC -- TiberiumClass::Array.Items.
 extern Tiberium_00483780** TiberiumArrayItems_00483780;
 
-struct Randomizer_00483780
-{
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) -- Randomizer::RandomRanged.
-    int RandomRanged(int low, int high);
-};
 
-struct Scenario_00483780
-{
-    unsigned char       Flags;              // +0x0000
-    char                _pad001[0x218 - 1]; // +0x0001
-    Randomizer_00483780 Random;             // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(Scenario_00483780, Random) == 0x218);
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-extern Scenario_00483780* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 struct Cell_00483780;
 

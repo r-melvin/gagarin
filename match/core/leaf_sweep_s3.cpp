@@ -15,33 +15,6 @@
 #include "../ui/input_controls/ui_gadget.h"
 
 // ---------------------------------------------------------------------------
-// 0x771950: lazily read the clock into a cached start time.
-struct Clock_00771950
-{
-    int unknown_00;
-    int FUN_006C8C40();
-};
-
-struct Obj_00771950
-{
-    char unknown_00[0x10];
-    int CachedTime;            // +0x10
-    Clock_00771950 Clock;      // +0x14
-    void FUN_00771950();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00771950, CachedTime) == 0x10);
-GG_STATIC_ASSERT(offsetof(Obj_00771950, Clock) == 0x14);
-
-// FUNCTION: GAMEMD 0x771950
-// Reads the clock once when the cached time is still -1.
-void Obj_00771950::FUN_00771950()
-{
-    if (CachedTime == -1) {
-        CachedTime = Clock.FUN_006C8C40();
-    }
-}
-
-// ---------------------------------------------------------------------------
 // 0x7518A0: fire an audio event for the table entry at an index.
 struct AudioController_007518A0;
 struct VocEntry_007518A0

@@ -194,7 +194,8 @@ struct Obj_006EDEC0;
 // GLOBAL: GAMEMD 0xA83D4C
 extern int DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8B230
-extern Gptr_00A8B230* DAT_00A8B230;
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x4FCBD0 (decl; reloc)
 void FUN_004FCBD0(int, int, int);
@@ -243,13 +244,6 @@ struct Arg1_006EDEC0
 };
 GG_STATIC_ASSERT(offsetof(Arg1_006EDEC0, unknown_04) == 0x4);
 
-struct Gptr_00A8B230
-{
-    // FUNCTION: GAMEMD 0x689670
-    void FUN_00689670(int, int);
-    // FUNCTION: GAMEMD 0x689910
-    void FUN_00689910(int, int);
-};
 
 struct Obj_006EDA90
 {

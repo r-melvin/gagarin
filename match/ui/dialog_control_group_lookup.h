@@ -35,17 +35,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "dialog_type_lookup_predicates.h"
 #include "control_id_predicate_methods.h"
-// The object at 0xA8B238, modelled only as far as the one flag 0x602490
-// reads. The offset is the displacement in the accessor's single load.
-struct SessionFlags_00A8B238
-{
-    char _pad0000[0x30D8];   // +0x0000
-    bool Flag30D8;           // +0x30D8
-
-    // FUNCTION: GAMEMD 0x69BBE0 (__thiscall)  MOV AL,[ECX+0x30D8]; RET
-    bool FUN_0069BBE0();
-};
-GG_STATIC_ASSERT(offsetof(SessionFlags_00A8B238, Flag30D8) == 0x30D8);
+#include "../_layout/session_class.h"
 
 // The hash-table offsets this TU depends on, re-asserted here rather than
 // taken on trust from the header that defines them: each is the displacement
@@ -59,8 +49,6 @@ GG_STATIC_ASSERT(offsetof(MapNode_00602B90, Value) == 0x04);
 GG_STATIC_ASSERT(offsetof(MapNode_00602B90, Next) == 0x204);
 GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field6C) == 0x6C);
 
-// GLOBAL: GAMEMD 0xA8B238 — the session object.
-extern SessionFlags_00A8B238 DAT_00A8B238_Session;
 
 // FUNCTION: GAMEMD 0x600CA0 (__fastcall)
 int FUN_00600CA0(int nKey, GG_HWND hCtl);

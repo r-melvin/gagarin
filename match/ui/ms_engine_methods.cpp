@@ -10,7 +10,7 @@
 // Reserve room for twenty rectangles and start with no animations or sound effects.
 MSEngine::MSEngine()
 {
-    Field04 = 0;
+    DirtyRectCount = 0;
     Rects.SetCapacity(0x14, 0);
     Anims.Clear();
     Sfxs.Clear();
@@ -32,12 +32,12 @@ MSEngine::~MSEngine()
 }
 
 // FUNCTION: GAMEMD 0x5AE590
-void MSEngine::Slot1(int a)
+void MSEngine::OnRedraw(MouseSurfaceView* surface)
 {
 }
 
 // FUNCTION: GAMEMD 0x5D26F0
-void MSEngine::Slot2()
+void MSEngine::Process()
 {
 }
 
