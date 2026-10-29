@@ -42,3 +42,21 @@ void MSEngine::Process()
 }
 
 // SYNTHETIC: GAMEMD 0x5D2700 -- MSEngine::`scalar deleting destructor'
+
+// Retail 5D1B3F/47/BAB/B9/CD read Count, Items, ownership and Capacity.
+GG_STATIC_ASSERT(offsetof(MSEngine, Sfxs.Items) == 0x34);
+GG_STATIC_ASSERT(offsetof(MSEngine, Sfxs.Capacity) == 0x38);
+GG_STATIC_ASSERT(offsetof(MSEngine, Sfxs.IsAllocated) == 0x3D);
+GG_STATIC_ASSERT(offsetof(MSEngine, Sfxs.Count) == 0x40);
+GG_STATIC_ASSERT(sizeof(((MSEngine*)0)->Sfxs) == 0x18);
+// Retail 5D1B74/7D/D0/DD/F1 reads the corresponding animation vector fields.
+GG_STATIC_ASSERT(offsetof(MSEngine, Anims.Items) == 0x1C);
+GG_STATIC_ASSERT(offsetof(MSEngine, Anims.Capacity) == 0x20);
+GG_STATIC_ASSERT(offsetof(MSEngine, Anims.IsAllocated) == 0x25);
+GG_STATIC_ASSERT(offsetof(MSEngine, Anims.Count) == 0x28);
+GG_STATIC_ASSERT(sizeof(((MSEngine*)0)->Anims) == 0x18);
+// Retail 5D1BF4/C01/C15 reads Items, ownership and Capacity of Rects.
+GG_STATIC_ASSERT(offsetof(MSEngine, Rects.Items) == 0x0C);
+GG_STATIC_ASSERT(offsetof(MSEngine, Rects.Capacity) == 0x10);
+GG_STATIC_ASSERT(offsetof(MSEngine, Rects.IsAllocated) == 0x15);
+GG_STATIC_ASSERT(sizeof(((MSEngine*)0)->Rects) == 0x10);

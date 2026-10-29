@@ -37,3 +37,10 @@ Kamikaze::~Kamikaze()
 // SYNTHETIC: GAMEMD 0x54E2D0 -- exit-time destructor stub of DAT_00ABC5F8
 // GLOBAL: GAMEMD 0xABC5F8
 Kamikaze DAT_00ABC5F8;
+
+// Retail 54E695/69B/B5/C6/D3/E7 read Count, Items, Capacity and ownership.
+GG_STATIC_ASSERT(offsetof(Kamikaze, Nodes.Items) == 0x10);
+GG_STATIC_ASSERT(offsetof(Kamikaze, Nodes.Capacity) == 0x14);
+GG_STATIC_ASSERT(offsetof(Kamikaze, Nodes.IsAllocated) == 0x19);
+GG_STATIC_ASSERT(offsetof(Kamikaze, Nodes.Count) == 0x1C);
+GG_STATIC_ASSERT(sizeof(((Kamikaze*)0)->Nodes) == 0x18);

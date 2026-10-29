@@ -146388,5 +146388,35 @@
   "name": "TiberiumClass::vf_25",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/enum_connections_clone.cpp",
+  "addr": "0x4A0190",
+  "len": "0x116",
+  "sym": "?Clone@EnumConnectionsClass@@UAGJPAPAUIEnumConnections@@@Z",
+  "name": "EnumConnectionsClass::Clone",
+  "status": "partial",
+  "pct": 95.1,
+  "note": "Native constructor initialization instructions are scheduled differently; full-span strict relocation check fails at reordered vptr."
+ },
+ {
+  "tu": "match/core/enum_connections_clone.cpp",
+  "addr": "0x4A02B0",
+  "len": "0xC2",
+  "sym": "??0EnumConnectionsClass@@QAE@ABV?$DynamicVectorClass@UtagCONNECTDATA@@@@@Z",
+  "name": "EnumConnectionsClass::EnumConnectionsClass(vector)",
+  "status": "partial",
+  "pct": 91.9,
+  "note": "Native initialization instructions are scheduled differently; full-span strict relocation check fails at reordered vptr."
+ },
+ {
+  "tu": "match/core/enum_connections_clone.cpp",
+  "addr": "0x4A0380",
+  "len": "0xD0",
+  "sym": "??0EnumConnectionsClass@@QAE@ABV0@@Z",
+  "name": "EnumConnectionsClass::EnumConnectionsClass(copy)",
+  "status": "partial",
+  "pct": 93.5,
+  "note": "Native constructor initialization instructions are scheduled differently; full-span strict relocation check fails at reordered vptr."
  }
 ]

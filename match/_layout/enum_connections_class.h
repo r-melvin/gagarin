@@ -23,6 +23,8 @@ public:
     virtual HRESULT __stdcall Skip(ULONG cConnections);         // 4  0x4A0160: implements IEnumConnections
     virtual HRESULT __stdcall Reset(void);                      // 5  0x4A0180: implements IEnumConnections
     virtual HRESULT __stdcall Clone(IEnumConnections * *ppEnum);// 6  0x4A0190: implements IEnumConnections
+    EnumConnectionsClass(const DynamicVectorClass<tagCONNECTDATA>& connections);
+    EnumConnectionsClass(const EnumConnectionsClass& other);
     // FUNCTION: GAMEMD 0x4A0450 (destructor: releases every held sink; Release deletes the object)
     ~EnumConnectionsClass();
 
