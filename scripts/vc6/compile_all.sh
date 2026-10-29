@@ -10,6 +10,45 @@
 #
 # Usage: scripts/vc6/compile_all.sh [--jobs N] [--changed [REF]]
 # Exit 0 iff every TU and every layout header compiles clean.
-# The work lives in compile_all.py so units can compile concurrently with a
-# deterministic report order; this wrapper keeps the historical entry point.
-exec python3 "$(dirname "${BASH_SOURCE[0]}")/compile_all.py" "$@"
+# With python3 available the work runs in compile_all.py (parallel, deterministic
+# report order). Without it (the CI image has no python3) the serial loop below
+# runs; it takes no options.
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 "$(dirname "${BASH_SOURCE[0]}")/compile_all.py" "$@"
+fi
+set -uo pipefail
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+cd "$REPO"
+fail=0
+tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
+
+# 1. Every matching TU.
+while IFS= read -r tu; do
+  d="$(dirname "$tu")"; f="$(basename "$tu")"
+  if ( cd "$d" && bash "$REPO/scripts/vc6/vc6cl.sh" /Fo"$tmp/$f.obj" "$f" ) \
+       >"$tmp/log" 2>&1 && [ -f "$tmp/$f.obj" ]; then
+    echo "  ok   $tu"
+  else
+    echo "  FAIL $tu"; grep -iE "error|fatal" "$tmp/log" | grep -v libEGL | head -3
+    fail=1
+  fi
+done < <(find match -name '*.cpp' -o -name '*.c' | sort)
+
+# 2. Every P2 layout header (compile-check its asserts via a throwaway includer).
+for h in match/_layout/*.h; do
+  base="$(basename "$h" .h)"
+  printf '#include "%s.h"\nint _chk_%s(){return 0;}\n' "$base" "$base" \
+    > "match/_layout/_ca_$base.cpp"
+  if ( cd match/_layout && bash "$REPO/scripts/vc6/vc6cl.sh" \
+         /Fo"$tmp/$base.obj" "_ca_$base.cpp" ) >"$tmp/log" 2>&1 \
+       && [ -f "$tmp/$base.obj" ]; then
+    echo "  ok   $h (asserts pass)"
+  else
+    echo "  FAIL $h"; grep -iE "error" "$tmp/log" | grep -v libEGL | head -3
+    fail=1
+  fi
+  rm -f "match/_layout/_ca_$base.cpp"
+done
+
+[ "$fail" = 0 ] && echo "=== compile_all: ALL GREEN ===" || echo "=== compile_all: FAILURES ==="
+exit "$fail"
