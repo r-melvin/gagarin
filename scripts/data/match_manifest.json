@@ -96454,9 +96454,9 @@
  {
   "tu": "match/map/MapGen.cpp",
   "addr": "0x5AD9F0",
-  "sym": "?Ctor@VectorClass_005AD9F0@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAU_WIN32_FIND_DATAA@@@@QAE@HPAPAU_WIN32_FIND_DATAA@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_005AD9F0::Ctor",
+  "name": "VectorClass<WIN32_FIND_DATAA*>::VectorClass",
   "status": "matched",
   "pct": 100.0
  },
@@ -139644,5 +139644,266 @@
   "name": "INIClass::WriteFloatTriple (Wstring names)",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E01C0",
+  "sym": "?FUN_006E01C0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x8B",
+  "name": "TActionClass::FUN_006E01C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E0930",
+  "sym": "?FUN_006E0930@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x6F",
+  "name": "TActionClass::FUN_006E0930",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E0AA0",
+  "sym": "?FUN_006E0AA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xB3",
+  "name": "TActionClass::FUN_006E0AA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E0B60",
+  "sym": "?FUN_006E0B60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x134",
+  "name": "TActionClass::FUN_006E0B60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E16D0",
+  "sym": "?FUN_006E16D0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x4B",
+  "name": "TActionClass::FUN_006E16D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E1830",
+  "sym": "?FUN_006E1830@@YIPAVObjectClass@@PAUCoordStruct@@@Z",
+  "len": "0x73",
+  "name": "FUN_006E1830",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E18B0",
+  "sym": "?FUN_006E18B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xCC",
+  "name": "TActionClass::FUN_006E18B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E1980",
+  "sym": "?FUN_006E1980@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xBF",
+  "name": "TActionClass::FUN_006E1980",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E2600",
+  "sym": "?FUN_006E2600@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x37",
+  "name": "TActionClass::FUN_006E2600",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E2970",
+  "sym": "?FUN_006E2970@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x9F",
+  "name": "TActionClass::FUN_006E2970",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E2BB0",
+  "sym": "?FUN_006E2BB0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x2D",
+  "name": "TActionClass::FUN_006E2BB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E4040",
+  "sym": "?FUN_006E4040@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x36",
+  "name": "TActionClass::FUN_006E4040",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/taction_r15_methods.cpp",
+  "addr": "0x6E0EF0",
+  "sym": "?FUN_006E0EF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x9F",
+  "name": "TActionClass::FUN_006E0EF0",
+  "status": "partial",
+  "pct": 96.1
+ },
+ {
+  "tu": "match/core/leaf_sweep_r15_w3.cpp",
+  "addr": "0x6E8180",
+  "sym": "?FUN_006E8180@@YIPAUNamed_006E8180@@PBD@Z",
+  "len": "0x47",
+  "name": "FUN_006E8180",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/leaf_sweep_r15_w3.cpp",
+  "addr": "0x747370",
+  "sym": "?FUN_00747370@@YIHPBD@Z",
+  "len": "0x41",
+  "name": "FUN_00747370",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/leaf_sweep_r15_w3.cpp",
+  "addr": "0x718090",
+  "sym": "?Refuse@Loco_00718090@@QAE_NXZ",
+  "len": "0xF",
+  "name": "Loco_00718090::Refuse",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/leaf_sweep_r15_w3.cpp",
+  "addr": "0x75A810",
+  "sym": "?FUN_0075A810@@YI_NH@Z",
+  "len": "0x18",
+  "name": "FUN_0075A810",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/leaf_sweep_r15_w3.cpp",
+  "addr": "0x7B6630",
+  "sym": "?HasAnyOf@Str_007B6630@@QAE_NPBD@Z",
+  "len": "0x3B",
+  "name": "Str_007B6630::HasAnyOf",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/wave_class_r15_methods.cpp",
+  "addr": "0x75F4C0",
+  "sym": "?AddCell@WaveView_R15@@QAEXPBUCellStruct@@@Z",
+  "len": "0x74",
+  "name": "WaveView_R15::AddCell",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/wave_class_r15_methods.cpp",
+  "addr": "0x7610A0",
+  "sym": "?Step@WaveView_R15@@QAEXXZ",
+  "len": "0x2C",
+  "name": "WaveView_R15::Step",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/wave_class_r15_methods.cpp",
+  "addr": "0x761030",
+  "sym": "?StepCells@WaveView_R15@@QAEXXZ",
+  "len": "0x6A",
+  "name": "WaveView_R15::StepCells",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6EC770",
+  "sym": "?SetCellTarget@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
+  "len": "0x56",
+  "name": "Team_R15::SetCellTarget",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6ECFB0",
+  "sym": "?SplitOff@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
+  "len": "0x71",
+  "name": "Team_R15::SplitOff",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6ED030",
+  "sym": "?InstallHelper@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
+  "len": "0x55",
+  "name": "Team_R15::InstallHelper",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6ED770",
+  "sym": "?WaitFrames@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
+  "len": "0x62",
+  "name": "Team_R15::WaitFrames",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6EC9A0",
+  "sym": "?ClearIfBusy@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
+  "len": "0xC7",
+  "name": "Team_R15::ClearIfBusy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6ECA70",
+  "sym": "?ClearIfBuilding@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
+  "len": "0xD5",
+  "name": "Team_R15::ClearIfBuilding",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6ECE60",
+  "sym": "?StepToOccupant@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
+  "len": "0xAF",
+  "name": "Team_R15::StepToOccupant",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "addr": "0x6EC250",
+  "sym": "?FUN_006EC250@@YIXHH@Z",
+  "len": "0xAE",
+  "name": "FUN_006EC250",
+  "status": "partial",
+  "pct": 89.7
  }
 ]
