@@ -118,5 +118,4 @@ MenusHResult __stdcall WebBrowser::Slot16(const wchar_t* login, const wchar_t* p
     return 0;
 }
 
-// The scalar deleting destructor 0x7740A0 is not reproduced: cl emits ??_G only beside a constructor, and the
-// constructor 0x773500 is not matched.
+// The scalar deleting destructor 0x7740A0 is compiler output beside the constructor in menus_web_browser_ctor.cpp.

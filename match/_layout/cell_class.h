@@ -204,6 +204,8 @@ public:
                                         bool alt, bool useCellCoords);
     // GAMEMD 0x487C80 (decl; reloc) -- the cell's RadSite (+0xF8).
     void* FUN_00487C80();
+    // FUNCTION: GAMEMD 0x486FF0 -- whether the cell is clear: no flagged tile, slope, cell flags, building or type 0x24 object.
+    bool FUN_00486FF0();
 
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     DynamicVectorClass<FoggedObjectClass*>* FoggedObjects; // +0x28 RTTI .?AV?$DynamicVectorClass@PAVFoggedObjectClass@@@@

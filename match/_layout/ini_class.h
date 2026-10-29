@@ -105,7 +105,7 @@ public:
     int FUN_00526420(FileClass* file);
     void* unknown_04;
     void* unknown_08;
-    // RTTI table 0x7E1AFC; explicit inherited vptr view is retained.
+    // RTTI table 0x7E1AFC.
     List<INISection*> Sections;
     IndexClassRaw SectionIndex;
     unsigned int unknown_3C;
@@ -118,12 +118,4 @@ GG_STATIC_ASSERT(offsetof(INIClass, unknown_3C) == 0x3C);
 GG_STATIC_ASSERT(sizeof(List<INIClass::INISection*>) == 0x1C);
 GG_STATIC_ASSERT(sizeof(INIClass) == 0x40);
 // VTABLE: GAMEMD 0x7E1AFC -- List<INIClass::INISection*>.
-typedef void* (List<INIClass::INISection*>::*INISectionListDeletingSlot)(unsigned int);
-extern INISectionListDeletingSlot GG_VTABLE_LISTOFINISECTION;
-// Inline expansion at 0x686773/0x68677C calls the GenericList constructor
-// then seats this specialization's one-slot table. Out-of-line entry 0x49E8E0.
-template<> inline List<INIClass::INISection*>::List()
-{
-    Vtable = &GG_VTABLE_LISTOFINISECTION;
-}
 #endif

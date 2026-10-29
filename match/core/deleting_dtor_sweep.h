@@ -33,13 +33,11 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);   // GAMEMD 0x7C8B3D operator
 // The real destructors, declared only so cl emits reloc-normalised calls.
 void FUN_0047BB60(void* self);   // GAMEMD 0x47BB60
 void FUN_0048B1F0(void* self);   // GAMEMD 0x48B1F0
-void FUN_004C30B0(void* self);   // GAMEMD 0x4C30B0
 void FUN_004D1650(void* self);   // GAMEMD 0x4D1650
 void FUN_004D3590(void* self);   // GAMEMD 0x4D3590
 void FUN_004E1390(void* self);   // GAMEMD 0x4E1390
 void FUN_004F21A0(void* self);   // GAMEMD 0x4F21A0
 void FUN_00517D90(void* self);   // GAMEMD 0x517D90
-void FUN_0052AB80(void* self);   // GAMEMD 0x52AB80
 void FUN_00544A70(void* self);   // GAMEMD 0x544A70
 void FUN_005565A0(void* self);   // GAMEMD 0x5565A0
 void FUN_00558790(void* self);   // GAMEMD 0x558790
@@ -70,9 +68,6 @@ void FUN_00726E00(void* self);   // GAMEMD 0x726E00
 void FUN_00735780(void* self);   // GAMEMD 0x735780
 void FUN_007499F0(void* self);   // GAMEMD 0x7499F0
 void FUN_0074C9F0(void* self);   // GAMEMD 0x74C9F0
-void FUN_00767300(void* self);   // GAMEMD 0x767300
-void FUN_007680C0(void* self);   // GAMEMD 0x7680C0
-void FUN_0076AFC0(void* self);   // GAMEMD 0x76AFC0
 void FUN_0076C6E0(void* self);   // GAMEMD 0x76C6E0
 void FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 void FUN_007B6760(void* self);   // GAMEMD 0x7B6760
@@ -84,11 +79,6 @@ struct Obj_48E660 { void* FUN_48E660(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_4A59A0 { void* FUN_4A59A0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4A59A0
 struct Obj_4AEBB0 { void* FUN_4AEBB0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4AEBB0
 struct Obj_4AEBF0 { void* FUN_4AEBF0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4AEBF0
-// RTTI-confirmed (Tier 1, re-verified independently against the binary):
-// vtable 0x7E81A4 (this function's own address at slot 0, the usual
-// self-referential deleting-destructor slot) -> complete object locator
-// @0x7E81A0 -> type descriptor 0x820280 -> name `.?AVEditClass@@`.
-class EditClass { public: void* ScalarDeletingDestructor(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B57D0
 struct Obj_4D2910 { void* FUN_4D2910(unsigned int flags); };  // FUNCTION: GAMEMD 0x4D2910
 // CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). FootClass's own vtable is 0x7E8C94.
@@ -104,7 +94,6 @@ struct Obj_4E30F0 { void* FUN_4E30F0(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_4F2830 { void* FUN_4F2830(unsigned int flags); };  // FUNCTION: GAMEMD 0x4F2830
 struct Obj_5172F0 { void* FUN_5172F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x5172F0
 struct Obj_523350 { void* FUN_523350(unsigned int flags); };  // FUNCTION: GAMEMD 0x523350
-struct Obj_52AE00 { void* FUN_52AE00(unsigned int flags); };  // FUNCTION: GAMEMD 0x52AE00
 struct Obj_52AEA0 { void* FUN_52AEA0(unsigned int flags); };  // FUNCTION: GAMEMD 0x52AEA0
 struct Obj_52AEE0 { void* FUN_52AEE0(unsigned int flags); };  // FUNCTION: GAMEMD 0x52AEE0
 struct Obj_54A170 { void* FUN_54A170(unsigned int flags); };  // FUNCTION: GAMEMD 0x54A170
@@ -139,9 +128,6 @@ struct Obj_72A670 { void* FUN_72A670(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_746E80 { void* FUN_746E80(unsigned int flags); };  // FUNCTION: GAMEMD 0x746E80
 struct Obj_74AB50 { void* FUN_74AB50(unsigned int flags); };  // FUNCTION: GAMEMD 0x74AB50
 struct Obj_74F340 { void* FUN_74F340(unsigned int flags); };  // FUNCTION: GAMEMD 0x74F340
-struct Obj_766A60 { void* FUN_766A60(unsigned int flags); };  // FUNCTION: GAMEMD 0x766A60
-struct Obj_769C00 { void* FUN_769C00(unsigned int flags); };  // FUNCTION: GAMEMD 0x769C00
-struct Obj_76B6F0 { void* FUN_76B6F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x76B6F0
 struct Obj_76EFE0 { void* FUN_76EFE0(unsigned int flags); };  // FUNCTION: GAMEMD 0x76EFE0
 struct Obj_7AD2F0 { void* FUN_7AD2F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD2F0
 struct Obj_7AD310 { void* FUN_7AD310(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD310

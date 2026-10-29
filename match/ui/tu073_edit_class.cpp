@@ -251,6 +251,36 @@ Obj_004C2C30* Obj_004C2C30::FUN_004C2C30()
 // SYNTHETIC: GAMEMD 0x4C2F50
 // DynamicVectorClass<EBolt*>::scalar deleting destructor
 
+// STRING: GAMEMD 0x820768 -- L"X", the width probe for an empty box
+// FUNCTION: GAMEMD 0x4C2FC0
+// Sets up the text box: the text buffer and its limit, the colour scheme, and a width/height taken
+// from the font when the caller passes -1.
+EditClass::EditClass(int id, wchar_t* text, int size, unsigned textFlags, int x, int y, int w, int h,
+                     unsigned flags)
+    : ControlClass(id, x, y, w, h, 1, 0)
+{
+    TextFlags = textFlags & ~0x100u;
+    unknown_30 = flags;
+    SetText(text, size);
+    SchemeIndex = GadgetClass::GetColorScheme();
+    if (w == -1 || h == -1) {
+        Font* font = FUN_004A60D0(textFlags);
+        if (h == -1) {
+            Height = font->Height + 1;
+        }
+        if (w == -1) {
+            if (wcslen(Text) > 0) {
+                int textWidth = font->TextWidth(Text, 0);
+                IsReadOnly = 0;
+                Width = textWidth + 6;
+                return;
+            }
+            Width = font->TextWidth(L"X", 0) * (MaxLength + 1) + 2;
+        }
+    }
+    IsReadOnly = 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4C30B0
 EditClass::~EditClass()

@@ -406,3 +406,6 @@ int FUN_00769540(unsigned int value)
         value = 0xFF;
     return value;
 }
+
+// SYNTHETIC: GAMEMD 0x769C00
+// Map scalar deleting destructor.

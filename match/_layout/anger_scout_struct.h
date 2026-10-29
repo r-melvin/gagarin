@@ -7,13 +7,14 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+class HouseClass;
 struct AngerStruct {
-    AngerStruct() : A(0), B(0) {}
-    AngerStruct(const AngerStruct& o) : A(o.A), B(o.B) {}
-    bool operator==(const AngerStruct& o) const { return A == o.A && B == o.B; }
+    AngerStruct() : House(0), AngerLevel(0) {}
+    AngerStruct(const AngerStruct& o) : House(o.House), AngerLevel(o.AngerLevel) {}
+    bool operator==(const AngerStruct& o) const { return House == o.House && AngerLevel == o.AngerLevel; }
     bool operator!=(const AngerStruct& o) const { return !(*this == o); }
-    int A;  // +0x0
-    int B;  // +0x4
+    HouseClass* House;  // +0x0 the house this node tracks
+    int AngerLevel;     // +0x4
 };
 struct ScoutStruct {
     ScoutStruct() : A(0), B(0) {}
@@ -24,5 +25,5 @@ struct ScoutStruct {
     char B;  // +0x4
 };
 GG_STATIC_ASSERT(sizeof(AngerStruct) == 8 && sizeof(ScoutStruct) == 8);
-GG_STATIC_ASSERT(offsetof(ScoutStruct, B) == 4 && offsetof(AngerStruct, B) == 4);
+GG_STATIC_ASSERT(offsetof(ScoutStruct, B) == 4 && offsetof(AngerStruct, AngerLevel) == 4);
 #endif  // GG_MATCH_LAYOUT_ANGER_SCOUT_STRUCT_H

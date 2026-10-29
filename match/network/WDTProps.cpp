@@ -128,12 +128,5 @@ Member_7B46F0 CampaignProperties::FUN_0076BFF0() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76C030
-void* CampaignProperties::DeletingDtor(unsigned int flags)
-{
-    this->~CampaignProperties();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x76C030
+// CampaignProperties scalar deleting destructor, the destructor body inlined.

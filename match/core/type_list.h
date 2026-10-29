@@ -23,6 +23,14 @@ public:
     int FUN_0067A4A0(IStream* stream);
     int FUN_0067A520(IStream* stream);
     int FUN_00717B20(IStream* stream);
+    // Typed save helpers of the RulesClass stream save (0x674730); bodies in vector_stream_save_family_methods.cpp.
+    int FUN_0067A3C0(IStream* stream);
+    int FUN_0067A630(IStream* stream);
+    int FUN_0067A6E0(IStream* stream);
+    int FUN_0067A770(IStream* stream);
+    int FUN_0067A7D0(IStream* stream);
+    int FUN_0067A850(IStream* stream);
+    int FUN_0067A8E0(IStream* stream);
     unsigned char unknown_18[4]; // observed storage, no scalar meaning or initialization claim
 };
 #if GG_TARGET_ABI_32

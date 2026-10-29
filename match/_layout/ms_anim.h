@@ -212,31 +212,8 @@ public:
 };
 GG_STATIC_ASSERT(sizeof(MSFrameAnim) == 0x1C);
 
-// The object the voice animation forwards its draw-side slots to (the member at +0x1C). Only the helper those
-// slots run is named; the name is the helper's address.
-// Slot 1 reaches a stopwatch at +0x3AC, a polymorphic member at +0x3C0 (its slot 3 is run) and a count at +0x3D0.
-struct Obj_00771620_Sub3C0
-{
-    virtual void Slot00();
-    virtual void Slot01();
-    virtual void Slot02();
-    virtual void Slot03();
-};
-
-struct Obj_00771620
-{
-    // FUNCTION: GAMEMD 0x771620 (decl; reloc)
-    void FUN_00771620();
-
-    char                unknown_000[0x3AC];
-    MSTimer             Stopwatch;      // +0x3AC
-    char                unknown_3B8[8];
-    Obj_00771620_Sub3C0 Sub3C0;         // +0x3C0
-    char                unknown_3C4[12];
-    int                 Count;          // +0x3D0
-};
-GG_STATIC_ASSERT(offsetof(Obj_00771620, Stopwatch) == 0x3AC && offsetof(Obj_00771620, Sub3C0) == 0x3C0
-              && offsetof(Obj_00771620, Count) == 0x3D0);
+// The owner of the voice animation is WorldDominationTour::Selection (wdt_selection.h).
+namespace WorldDominationTour { class Selection; }
 
 // The world-domination-tour voice animation (RTTI .?AVAnim@Voices@WorldDominationTour@@, vtable 0x7F7354):
 // it overrides every non-destructor slot of MSAnim and adds one word at +0x1C.
@@ -249,7 +226,7 @@ class Anim : public MSAnim
 {
 public:
     // FUNCTION: GAMEMD 0x771850
-    Anim(Obj_00771620* owner);
+    Anim(Selection* owner);
     virtual ~Anim();                                   // slot 0, 0x771A30 (scalar deleting); out of line 0x771890
     virtual void SetEnabled(bool on);                  // slot 1, 0x7718A0
     virtual void PauseTimer();                         // slot 2, 0x771900
@@ -260,7 +237,7 @@ public:
     virtual bool vf_7();                               // slot 7, 0x7719C0
     virtual void Attach(void* target);                 // slot 8, 0x7719D0
 
-    Obj_00771620* Owner;   // +0x1C
+    Selection* Owner;   // +0x1C
 };
 GG_STATIC_ASSERT(offsetof(Anim, Owner) == 0x1C && sizeof(Anim) == 0x20);
 

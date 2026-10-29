@@ -29,14 +29,10 @@
 // INI vtables is one slot wide - the only virtual any of these classes has is
 // its destructor, whose seat holds the scalar deleting thunk.
 //
-// MODELLING NOTE. The shared intrusive-node layouts expose an explicit
-// `void* Vtable` member at +0x00; each
-// vtable seat is stored through an extern stand-in symbol. Slot zero is
-// treated as an ordinary virtual holding the deleting-destructor thunk rather
-// than as a C++ virtual destructor: that keeps the seat stores under our
-// control (cl never expands an explicit destructor call, and it re-orders the
-// compiler-generated vptr store relative to the member initialisers), and it
-// keeps every later slot index right for classes with wider vtables.
+// MODELLING NOTE. GenericNode, GenericList, Node<T>, List<T>, INIEntry and
+// INISection are ordinary classes with virtual destructors: the compiler emits
+// their vtables, scalar deleting destructors and (via the explicit
+// instantiations in the .cpp) the Node<>/List<> constructors itself.
 #ifndef GG_MATCH_PLATFORM_INI_CLASS_NODE_METHODS_H
 #define GG_MATCH_PLATFORM_INI_CLASS_NODE_METHODS_H
 
@@ -44,29 +40,7 @@
 #include "../_layout/generic_list.h"
 #include "../_layout/index_class_layout.h"
 #include "../_layout/ini_class.h"
-#include "../_layout/memory_buffer.h"
 #include "../_rt/gg_static_assert.h"
-
-// ---------------------------------------------------------------------------
-// Vtable stand-ins. Only the relocation is emitted, so one extern symbol per
-// retail vtable address reproduces the `MOV dword ptr [reg],imm32` seat store.
-// ---------------------------------------------------------------------------
-// VTABLE: GAMEMD 0x7E1B04  GenericList
-extern "C" void* GG_VTABLE_GENERICLIST;
-// VTABLE: GAMEMD 0x7E1B0C  GenericNode
-extern "C" void* GG_VTABLE_GENERICNODE;
-// VTABLE: GAMEMD 0x7EB734  INIClass::INIEntry
-extern "C" void* GG_VTABLE_INIENTRY;
-// VTABLE: GAMEMD 0x7EB73C  INIClass::INISection
-extern "C" void* GG_VTABLE_INISECTION;
-// VTABLE: GAMEMD 0x7EB744  List<INIClass::INIEntry*>
-typedef void* (List<INIClass::INIEntry*>::*INIEntryListDeletingSlot)(unsigned int);
-extern "C" INIEntryListDeletingSlot GG_VTABLE_LISTOFINIENTRY;
-// These two are never seated by any body in this TU - their classes add
-// nothing to GenericNode, so the derived seat store is dead and cl drops it -
-// but the slot-zero bodies below belong to them, so the addresses are recorded.
-// VTABLE: GAMEMD 0x7EB74C  Node<INIClass::INISection*>
-// VTABLE: GAMEMD 0x7EB754  CacheStraw
 
 // ---------------------------------------------------------------------------
 // CRT and game-heap primitives, declared so cl emits reloc-normalised calls.
@@ -84,16 +58,6 @@ extern "C" char* __cdecl FUN_007CAF30(const char* string, int ch);
 // FUNCTION: GAMEMD 0x727CF0  strtrim - trims leading and trailing whitespace
 // in place. Takes its buffer in ECX and pops nothing, so it is __fastcall.
 void FUN_00727CF0(char* buffer);
-// Slot zero of every class in this cluster: the scalar deleting destructor.
-// `this` in ECX, the flag word pushed, the object returned in EAX. Modelled as
-// slot zero of an abstract stand-in so the indirect call keeps retail's shape
-// (`MOV EDX,[ECX]` / `PUSH 1` / `CALL [EDX]`); the stand-in is never
-// instantiated, so no vtable of its own is emitted.
-struct GG_Deletable
-{
-    virtual void* DeletingDestructor(unsigned int flags) = 0;
-};
-
 // ---------------------------------------------------------------------------
 // INIComment - one retained comment line. The destructors walk the chain
 // reading the text at +0x00 and the successor at +0x04.
@@ -114,22 +78,6 @@ typedef INIClass::INISection INISection;
 // destructor carries no seat of its own at all (the derived store is dead,
 // overwritten immediately by the base's).
 // ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-// CacheStraw - unrelated to INI, but its deleting entry is seated inside this
-// address run. The binary clears a 0x0C sub-object at +0x0C before calling the
-// Straw base routine; original member ownership is not established here.
-// ---------------------------------------------------------------------------
-class CacheStraw
-{
-public:
-    char unknown_00[0x0C];
-    MemoryBuffer Buffer; // +0x0C, passed to MemoryBuffer::Clear by the deleting entry
-
-    // FUNCTION: GAMEMD 0x52AE70  vtable 0x7EB754 slot 0
-    void* DeletingDestructor(unsigned int flags);
-};
-GG_STATIC_ASSERT(offsetof(CacheStraw, Buffer) == 0x0C);
-
 // ---------------------------------------------------------------------------
 // CRCEngine - the hash INIClass indexes section and entry names with. Three
 // dwords: the running value, the staging index and the staging word.

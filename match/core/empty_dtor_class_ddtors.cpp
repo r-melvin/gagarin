@@ -31,22 +31,6 @@ public:
 }
 
 
-// VTABLE: GAMEMD 0x7F0954
-class ReferenceCounted
-{
-public:
-    ~ReferenceCounted() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
-// VTABLE: GAMEMD 0x7EA57C
-class VersionClass
-{
-public:
-    ~VersionClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
-
 // VTABLE: GAMEMD 0x007EF738
 namespace OwnerDraw {
 class SimpleDialogControl : public DialogControl
@@ -56,23 +40,3 @@ public:
 };
 }
 
-// FUNCTION: GAMEMD 0x4E8270 -- VersionClass scalar deleting destructor
-void* VersionClass::DeletingDtor(unsigned int flags)
-{
-    this->~VersionClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-
-// FUNCTION: GAMEMD 0x65D6A0 -- ReferenceCounted scalar deleting destructor
-void* ReferenceCounted::DeletingDtor(unsigned int flags)
-{
-    this->~ReferenceCounted();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}

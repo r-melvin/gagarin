@@ -58,6 +58,8 @@ public:
     void FUN_004C9E10(TechnoClass* object);
     // FUNCTION: GAMEMD 0x4C9FF0 (decl; reloc) -- gives up the current production.
     bool AbandonProduction();
+    // FUNCTION: GAMEMD 0x4C9EA0 (decl; reloc) -- resumes a suspended production (defined on the unsuspend view).
+    bool Unsuspend(bool manual);
 
     StageClass   Production;            // +0x24  progress; Value == 0x36 when done
     DynamicVectorClass<TechnoTypeClass const*> QueuedObjects;  // +0x40 ctor vptr 0x7E8934

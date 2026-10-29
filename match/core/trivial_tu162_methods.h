@@ -9,17 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_005EF280;
-
-struct Obj_005EF280
-{
-    // FUNCTION: GAMEMD 0x48BF10
-    void FUN_0048BF10();
-    // FUNCTION: GAMEMD 0x5EF280
-    void FUN_005EF280();
-};
-
-
 // FUNCTION: GAMEMD 0x5EF270
 int __cdecl FUN_005EF270();
 

@@ -224,10 +224,13 @@ public:
     virtual void vf_205();                                         // 205 0x4DE580
     virtual bool IsCloakable();                                    // 162 0x4DBDA0
     virtual CoordStruct vf_302();                                  // 302 0x4DF1F0
+    virtual int vf_29(int a1, int a2);                             // 29  0x4DDED0 (a1 is the target object)
     // FUNCTION: GAMEMD 0x4DC8C0 (decl; reloc) -- takes a waypoint; defined elsewhere.
     void FUN_004DC8C0(WaypointClass* waypoint);
 
     double FUN_004DC760();                                         // 0x4DC760 (team flag selects a constant, else unknown_530)
+    // FUNCTION: GAMEMD 0x4DB0D0 -- non-virtual; offsets the draw point (arg 5) by the locomotor's shadow point, then draws.
+    void FUN_004DB0D0(int a1, int a2, int a3, int a4, int a5, Point2D* point, int a7, int a8, int a9, int a10, int a11);
 };
 
 GG_STATIC_ASSERT(offsetof(FootClass, PlanningPathIdx)            == 0x520);

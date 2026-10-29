@@ -20,17 +20,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
-
-// CellStruct. The user-declared constructor selects the hidden-pointer
-// return convention retail uses for this 4-byte struct.
-struct Cell_0050D170
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-
-    Cell_0050D170() {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_0050D170) == 4);
+#include "../_layout/house_class.h"
 
 struct Coord_0050D170
 {
@@ -40,14 +30,9 @@ struct Coord_0050D170
 };
 GG_STATIC_ASSERT(sizeof(Coord_0050D170) == 0xC);
 
-// GLOBAL: GAMEMD 0xA8EF98 — the "no cell" CellStruct sentinel.
-extern Cell_0050D170 DAT_00A8EF98;
-
 // FUNCTION: GAMEMD 0x645BB0 (decl; reloc) — maps a target-type index to the
 // ThreatType mask used by GreatestThreat (a switch on 2..11).
 int FUN_00645BB0(int targetType);
-
-struct House_0050D170;
 
 // Declaration order matters — see match/_rt/gg_vslot.h. The class must be
 // complete before the member-function-pointer types.
@@ -78,7 +63,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_0050D170, GreatestThreat) == 0x3C4);
 struct Team_0050D170
 {
     char             _pad000[0x2C];   // +0x0000
-    House_0050D170*  Owner;           // +0x002C
+    HouseClass*      Owner;           // +0x002C
 
     // FUNCTION: GAMEMD 0x6EC3D0 (decl; reloc) — picks the team member to run
     // the threat search on (walks the member chain from +0x54).
@@ -105,11 +90,5 @@ GG_STATIC_ASSERT(sizeof(TeamVector_0050D170) == 0x18);
 
 // GLOBAL: GAMEMD 0x8B40E8 — TeamClass::Array.
 extern TeamVector_0050D170 DAT_008B40E8;
-
-struct House_0050D170
-{
-    // FUNCTION: GAMEMD 0x50D170 — HouseClass::PickTargetByType.
-    Cell_0050D170 PickTargetByType(int targetType);
-};
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_PICK_TARGET_METHODS_H

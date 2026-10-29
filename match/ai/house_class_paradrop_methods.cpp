@@ -4,6 +4,15 @@
 
 #include "house_class_paradrop_methods.h"
 
+// Inlined by retail: BaseCenter when set, otherwise BaseSpawnCell.
+inline Cell HouseClass::GetBaseCenter() const
+{
+    if (this->BaseCenter.X != DAT_00A8EF98.X || this->BaseCenter.Y != DAT_00A8EF98.Y) {
+        return this->BaseCenter;
+    }
+    return this->BaseSpawnCell;
+}
+
 // FUNCTION: GAMEMD 0x509CD0
 //
 // Fire the paradrop super-weapon. The drop goes to the preferred target cell
@@ -30,31 +39,31 @@
 // constant-folded and leaves the stream unchanged (31.1% both ways).
 // Second-look lever (42.2%): the by-value zero cell is built in the argument
 // list as a temporary (`Cell(0, 0)`, needs the two-argument ctor added to
-// Cell_00509CD0 in the header), so its stores happen at argument-evaluation
+// Cell in the header), so its stores happen at argument-evaluation
 // time just before the call as in retail, rather than as a named local
 // initialised ahead of the pushes.
-void House_00509CD0::Fire_ParaDrop(Super_00509CD0* pSuper)
+void HouseClass::Fire_ParaDrop(SuperClass* pSuper)
 {
-    House_00509CD0* enemy;
+    HouseClass* enemy;
     if (this->EnemyHouseIndex != -1) {
         enemy = DAT_00A8022C[this->EnemyHouseIndex];
     } else {
         enemy = this;
     }
 
-    Cell_00509CD0 cell = DAT_00A8EF98;
-    Cell_00509CD0 buf;
+    Cell cell = DAT_00A8EF98;
+    Cell buf;
 
     if (this->PreferredTargetCell.X != DAT_00A8EF98.X) goto have;
     if (this->PreferredTargetCell.Y != DAT_00A8EF98.Y) goto have;
     if (this->PreferredTargetType != 1) {
-        cell = *this->PickTargetByType(&buf, this->PreferredTargetType);
+        cell = this->PickTargetByType(this->PreferredTargetType);
         goto join;
     }
     {
         cell = enemy->GetBaseCenter();
         cell = *MapInstance_00509CD0.NearByLocation(&buf, cell, 0, -1, 0, false, 5, 5,
-                                                    false, false, false, true, Cell_00509CD0(0, 0),
+                                                    false, false, false, true, Cell(0, 0),
                                                     false, false);
         cell.X += 2;
         cell.Y += 2;

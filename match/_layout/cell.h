@@ -49,6 +49,10 @@ public:
 GG_STATIC_ASSERT(sizeof(Cell) == 4);
 GG_STATIC_ASSERT(offsetof(Cell, X) == 0);
 GG_STATIC_ASSERT(offsetof(Cell, Y) == 2);
+
+// GLOBAL: GAMEMD 0xA8EF98 -- the (0, 0) "no cell" sentinel; defined by the header
+// static initialiser at 0x4F50A0 (match/core/header_init_4f4ee0.cpp).
+extern Cell DAT_00A8EF98;
 #endif
 
 #endif  // GG_MATCH_LAYOUT_CELL_H

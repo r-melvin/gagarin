@@ -11,6 +11,7 @@ class Member_7B46F0
 public:
     Member_7B46F0() {}
     Member_7B46F0(const char* text);   // 0x7B4630
+    Member_7B46F0(const Member_7B46F0& other);   // 0x7B4690
     ~Member_7B46F0();
     void* Data;
 };

@@ -33,24 +33,7 @@
 #include "../core/mathtbl_init_shapes.h"
 #pragma intrinsic(pow)
 #include "../_layout/ini_class.h"
-
-// VTABLE: GAMEMD 0x7E1AFC -- List<INIClass::INISection*>.
-// The canonical declaration is shared with its typed table definition.
-
-// Bodies owned elsewhere (0x40E320, 0x52ACE0); repeated inline here so /Ob2
-// expands them into the derived constructor as retail does.
-inline GenericNode::GenericNode()
-{
-    NextNode = 0;
-    PrevNode = 0;
-    Vtable = &GG_VTABLE_GENERIC_NODE_SLOTS;
-}
-
-inline GenericList::GenericList()
-{
-    Vtable = &GG_VTABLE_GENERIC_LIST_SLOTS;
-    FirstNode.Link(&LastNode);
-}
+#include "../_layout/generic_list_inline.h"
 
 #include "../core/trivial_tu057_methods.h"
 
@@ -224,6 +207,9 @@ unsigned char Obj_0049D0F0::FUN_0049D0F0(Arg1_0049D0F0* a1, Arg2_0049D0F0* a2)
 // TEMPLATE: GAMEMD 0x49E8E0
 // ??0?$List@PAUINISection@INIClass@@@@QAE@XZ
 // VC6 cannot instantiate a constructor alone; only its visible body is emitted.
+// The instantiation also yields the vtable 0x7E1AFC and its scalar deleting
+// destructor.
+// SYNTHETIC: GAMEMD 0x40E4C0 -- List<INISection*> scalar deleting destructor.
 template class List<INIClass::INISection*>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

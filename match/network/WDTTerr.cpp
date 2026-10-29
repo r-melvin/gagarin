@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit WDTTerr.cpp. The name is the source-file string at 0x84917c
 //   in retail gamemd.exe v1.001, passed by the assert at 0x76fa3a inside this object's
 //   code range (0x76f720-0x77007f). Functions are in ascending retail address order.
@@ -7,22 +8,9 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 //
-// Scalar deleting destructors of the World Domination Tour data classes
-// (rc_ptr_base's own is in rc_ptr_base.cpp). Each one runs the class's
-// destructor inline (the vtable store, then the member destructors in reverse
-// declaration order, then the base destructor out of line), frees the object
-// when bit 0 of the flag is set, and returns `this`.
-//
-// Class names are the retail RTTI names. A class that stores its own vtable
-// first declares its destructor; a class whose body starts with member
-// destructors and stores only its base's vtable has the implicit one (MSVC's
-// implicit destructor does not reseat the vptr). Member types are known only
-// by their out-of-line destructors, so each is an opaque view named after it.
-//
-// Slot 0 is modelled as an ordinary virtual holding the deleting wrapper, as
-// FileClass does in match/core/ram_file_class.h: nothing here is constructed,
-// so cl would not emit the tables or a compiler-generated `??_G`.
-// Offsets come from the `LEA ECX,[ESI+n]` member addresses in each body.
+// The deleting destructors (??_G) of the World Domination Tour data classes are
+// compiler output: the out-of-line destructors below make cl emit the tables and
+// the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
 
 #include "../core/trivial_tu280_methods.h"
 
@@ -71,6 +59,14 @@ void __cdecl FUN_0076F8F0()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x76FD10
+// Seats the Territory table, then the members in reverse order and the
+// ReferenceCounted destructor.
+WorldDominationTour::Territory::~Territory()
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76FF20
 // Stores its argument in a member; pops its stack arguments.
 void Obj_0076FF20::FUN_0076FF20(int a1)
@@ -89,12 +85,5 @@ int Obj_0076FF30::FUN_0076FF30()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x770020
-void* WorldDominationTour::Territory::DeletingDtor(unsigned int flags)
-{
-    this->~Territory();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x770020
+// Territory scalar deleting destructor.

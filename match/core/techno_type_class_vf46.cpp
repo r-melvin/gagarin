@@ -11,7 +11,7 @@
 // the house is human-controlled. Without a house: the cost times that double.
 int TechnoTypeClass::vf_46(HouseClass* house, bool a2)
 {
-    float scale = (float)*(double*)&Rules->unknown_1738;
+    float scale = (float)Rules->RefundPercent;
     if (a2) {
         scale = 1.0f;
     }

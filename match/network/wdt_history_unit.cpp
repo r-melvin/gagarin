@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/header_tuning_globals.h"
-#include "wdt_rc_ptr.h"
+#include "world_domination_tour.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -29,36 +29,6 @@ extern double DAT_00B72868;
 extern TuningCoordInit DAT_00B72870;
 
 // ---- History ---------------------------------------------------------------------------------------------------------
-
-// The pointee of History's state handle: only the count at +0x24 is read
-// (0x767BD0 bounds its argument by it).
-class WDTState
-{
-public:
-    char unknown_00[0x24];    // +0x00
-    unsigned int unknown_24;  // +0x24
-};
-GG_STATIC_ASSERT(offsetof(WDTState, unknown_24) == 0x24);
-
-namespace WorldDominationTour {
-
-class State;
-
-// VTABLE: GAMEMD 0x7F70DC
-// Size 0x10: the factory 0x767B00 allocates 0x10 bytes.
-class History : public ReferenceCounted
-{
-public:
-    History(const rc_ptr<WDTState>& state);
-    rc_ptr<WorldDominationTour::State> FUN_00767BB0(int arg) const;
-    int FUN_00767BD0(unsigned int index) const;
-
-    rc_ptr<WDTState> State;   // +0x08
-};
-GG_STATIC_ASSERT(offsetof(History, State) == 0x08);
-GG_STATIC_ASSERT(sizeof(History) == 0x10);
-
-}  // namespace WorldDominationTour
 
 // FUNCTION: GAMEMD 0x76F470 (decl; reloc) -- the State factory, same shape as 0x767B00.
 rc_ptr<WorldDominationTour::State> FUN_0076F470(const rc_ptr<WDTState>& state, int arg);
@@ -92,3 +62,13 @@ int WorldDominationTour::History::FUN_00767BD0(unsigned int index) const
         return 1;
     return 0;
 }
+
+// FUNCTION: GAMEMD 0x767BF0
+// Seats the History table, then the state handle and the ReferenceCounted
+// destructor.
+WorldDominationTour::History::~History()
+{
+}
+
+// SYNTHETIC: GAMEMD 0x767C10
+// History scalar deleting destructor.

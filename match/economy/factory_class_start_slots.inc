@@ -9,7 +9,7 @@
     virtual void v20() = 0;                            // +0x20
     virtual void v24() = 0;                            // +0x24
     virtual void v28() = 0;                            // +0x28
-    virtual int Slot_2C(int a, unsigned char b, int c);  // +0x2C  <- used
+    virtual int Slot_2C();                               // +0x2C  <- used (no-arg RTTI getter)
     virtual void v30() = 0;                            // +0x30
     virtual void v34() = 0;                            // +0x34
     virtual void v38() = 0;                            // +0x38

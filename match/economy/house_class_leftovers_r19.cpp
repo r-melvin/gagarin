@@ -40,8 +40,8 @@ void FUN_00501A20()
 void HouseClass::FUN_005093C0(HouseClass* house)
 {
     for (int i = 0; i < AngerNodes.Count; i++) {
-        if (AngerNodes.Items[i].A == (int)house) {
-            UpdateAngerNodes(-AngerNodes.Items[i].B, house);
+        if (AngerNodes.Items[i].House == house) {
+            UpdateAngerNodes(-AngerNodes.Items[i].AngerLevel, house);
             return;
         }
     }

@@ -178,9 +178,20 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         return retail.fill(va, size) if hybrid else 0xCC
 
     index = json.loads((objdir / "objects.json").read_text())
-    objects = [objdir / o["object"] for o in index["objects"]]
     if manifest is None:
         manifest = json.loads((DATA / "match_manifest.json").read_text())
+    # Link order decides which copy of a COMDAT (an inline function or a compiler-generated destructor
+    # emitted by several TUs) the linker keeps: the first object seen wins. Order objects by the lowest
+    # retail address their manifest rows claim, as the original link saw its objects in address order;
+    # objects without rows keep their index order after them.
+    lowest = {}
+    for row in manifest:
+        a = int(row["addr"], 16)
+        if row["tu"] not in lowest or a < lowest[row["tu"]]:
+            lowest[row["tu"]] = a
+    ordered = sorted(enumerate(index["objects"]),
+                     key=lambda t: (lowest.get(t[1].get("source"), 1 << 40), t[0]))
+    objects = [objdir / o["object"] for _, o in ordered]
     if extents is None:
         extents = json.loads((DATA / "function_extents.json").read_text())["entries"]
     bindings, conflicts = load_bindings(manifest, symbol_bindings)

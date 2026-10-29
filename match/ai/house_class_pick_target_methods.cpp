@@ -15,7 +15,7 @@
 // position is converted from leptons to a cell. No team or no target gives
 // the "no cell" sentinel. The result is a CellStruct returned through the
 // hidden pointer.
-Cell_0050D170 House_0050D170::PickTargetByType(int targetType)
+Cell HouseClass::PickTargetByType(int targetType)
 {
     int threat = FUN_00645BB0(targetType);
 
@@ -34,7 +34,7 @@ Cell_0050D170 House_0050D170::PickTargetByType(int targetType)
             threat, (member->*member->Vtbl->GetCoords)(&coord), 1);
         if (target != 0) {
             Coord_0050D170* p = (target->*target->Vtbl->GetCoords)(&coord);
-            Cell_0050D170 cell;
+            Cell cell;
             cell.X = (short)(p->X / 256);
             cell.Y = (short)(p->Y / 256);
             return cell;

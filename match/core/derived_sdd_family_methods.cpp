@@ -127,12 +127,6 @@ template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_Camp
 struct Tag_rc_ptr_WorldDominationTour_State;
 template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_State>;
 
-// FUNCTION: GAMEMD 0x007678C0
-// WorldDominationTour::GameOption -- seats its own vtable, retail 0x007F7060; locator 0x0080DB60 -> type
-//   descriptor 0x008485A0 `.?AVGameOption@WorldDominationTour@@`. Base ReferenceCounted, whose destructor is 0x0065D660.
-struct Tag_WorldDominationTour_GameOption;
-template struct DerivedSdd<Base_ReferenceCounted, Tag_WorldDominationTour_GameOption>;
-
 // FUNCTION: GAMEMD 0x00767C50
 // rc_ptr<WDTState> -- seats its own vtable, retail 0x007F70EC; locator 0x0080DD08 -> type
 //   descriptor 0x00848798 `.?AV?$rc_ptr@VWDTState@@@@`. Base rc_ptr_base, whose destructor is 0x0065D460.
@@ -145,20 +139,8 @@ template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WDTState>;
 struct Tag_rc_ptr_WorldDominationTour_Map;
 template struct DerivedSdd<Base_rc_ptr_base, Tag_rc_ptr_WorldDominationTour_Map>;
 
-// FUNCTION: GAMEMD 0x0076B6C0
-// WDTTerritory -- seats its own vtable, retail 0x007F7220; locator 0x0080E058 -> type
-//   descriptor 0x00848BF8 `.?AVWDTTerritory@@`. Base ReferenceCounted, whose destructor is 0x0065D660.
-struct Tag_WDTTerritory;
-template struct DerivedSdd<Base_ReferenceCounted, Tag_WDTTerritory>;
-
 // FUNCTION: GAMEMD 0x007784A0
 // CCToolTip -- seats its own vtable, retail 0x007F74C4; locator 0x0080E560 -> type
 //   descriptor 0x00849EE0 `.?AVCCToolTip@@`. Base ToolTipManager, whose destructor is 0x007240B0.
 struct Tag_CCToolTip;
 template struct DerivedSdd<Base_ToolTipManager, Tag_CCToolTip>;
-
-// FUNCTION: GAMEMD 0x007A2E70
-// SimpleWonlineDialogControl -- seats its own vtable, retail 0x007F7624; locator 0x0080E600 -> type
-//   descriptor 0x0084A3F0 `.?AVSimpleWonlineDialogControl@@`. Base OwnerDraw::SimpleDialogControl, whose destructor is 0x00624130.
-struct Tag_SimpleWonlineDialogControl;
-template struct DerivedSdd<Base_OwnerDraw_SimpleDialogControl, Tag_SimpleWonlineDialogControl>;

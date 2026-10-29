@@ -298,6 +298,8 @@ struct CheckItemClass
 {
     wchar_t const* Text;       // +0x00
     bool           IsChecked;  // +0x04
+
+    CheckItemClass(wchar_t const* text) throw() : Text(text), IsChecked(false) {}
 };
 GG_STATIC_ASSERT(offsetof(CheckItemClass, IsChecked) == 0x04);
 

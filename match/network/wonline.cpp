@@ -397,12 +397,24 @@ class DialogControl
 public:
     DialogControl();    // FUNCTION: GAMEMD 0x624110 (decl; reloc)
     virtual ~DialogControl();   // 0x624130 (decl; reloc)
+    // Slots 1-4 are pure in retail (vtable 0x7EF720 holds the CRT pure-call stub 0x4C9150 in each).
+    virtual void          Slot1(int key, int value) = 0;
+    virtual unsigned char Slot2() const = 0;
+    virtual int           Slot3() = 0;
+    virtual bool          Slot4() const = 0;
     int unknown_04;     // +0x04
     int unknown_08;     // +0x08
 };
 
+// VTABLE: GAMEMD 0x7EF738
 class SimpleDialogControl : public DialogControl
 {
+public:
+    // Overrides defined in ownrdraw.cpp / the leaf sweeps (declarations only here, bound by address).
+    virtual void          Slot1(int key, int value);   // 0x624140 (decl; reloc)
+    virtual unsigned char Slot2() const;               // 0x6241C0 (decl; reloc)
+    virtual int           Slot3();                     // 0x6241D0 (decl; reloc)
+    virtual bool          Slot4() const;               // 0x6241E0 (decl; reloc)
 };
 
 }  // namespace OwnerDraw
@@ -413,6 +425,7 @@ class SimpleWonlineDialogControl : public OwnerDraw::SimpleDialogControl
 public:
     SimpleWonlineDialogControl();             // 0x77D1D0
     virtual ~SimpleWonlineDialogControl();    // 0x77D1F0 body, 0x7A2E70 scalar deleting
+    virtual bool Slot4() const;               // 0x77D200
 };
 
 // VTABLE: GAMEMD 0x7F7874
@@ -702,8 +715,8 @@ SimpleWonlineDialogControl::~SimpleWonlineDialogControl()
 {
 }
 
-// (The scalar deleting destructor 0x7A2E70 is emitted here by the compiler; its annotation lives in
-// derived_sdd_family_methods.cpp.)
+// SYNTHETIC: GAMEMD 0x7A2E70
+// SimpleWonlineDialogControl scalar deleting destructor, emitted with the vtable 0x7F7624 by the constructor above.
 
 // STRING: GAMEMD 0x817F70
 static const char DAT_00817F70[] = ",";
@@ -1514,9 +1527,9 @@ Obj_007B66D0 DAT_00B76230;
 
 // FUNCTION: GAMEMD 0x77D200
 // Tail-forwards to another function. Vtable slot 4 of SimpleWonlineDialogControl (RTTI) and 2 derived vtable(s).
-void FUN_0077D200(Obj_0077D200* a1, int a2)
+bool SimpleWonlineDialogControl::Slot4() const
 {
-    FUN_0077F900();
+    return FUN_0077F900();
 }
 
 // FUNCTION: GAMEMD 0x77D210

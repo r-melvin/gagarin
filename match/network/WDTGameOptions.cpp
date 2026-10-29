@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit WDTGameOptions.cpp. The name is the source-file string at 0x8486ac
 //   in retail gamemd.exe v1.001, passed by the assert at 0x767371 inside this object's
 //   code range (0x767110-0x76790f). Functions are in ascending retail address order.
@@ -11,24 +12,9 @@
 //
 // World Domination Tour game-option methods (retail 0x767310-0x767820).
 //
-// Scalar deleting destructors of the World Domination Tour data classes
-// (rc_ptr_base's own is in rc_ptr_base.cpp). Each one runs the class's
-// destructor inline (the vtable store, then the member destructors in reverse
-// declaration order, then the base destructor out of line), frees the object
-// when bit 0 of the flag is set, and returns `this`.
-//
-// Class names are the retail RTTI names. A class that stores its own vtable
-// first declares its destructor; a class whose body starts with member
-// destructors and stores only its base's vtable has the implicit one (MSVC's
-// implicit destructor does not reseat the vptr). Member types are known only
-// by their out-of-line destructors, so each is an opaque view named after it.
-//
-// Slot 0 is modelled as an ordinary virtual holding the deleting wrapper, as
-// FileClass does in match/core/ram_file_class.h: nothing here is constructed,
-// so cl would not emit the tables or a compiler-generated `??_G`.
-// Offsets come from the `LEA ECX,[ESI+n]` member addresses in each body.
-
-#include "../core/seat_vtable_tail_dtor_sweep.h"
+// The deleting destructors (??_G) of the World Domination Tour data classes are
+// compiler output: the out-of-line destructors below make cl emit the tables and
+// the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
 
 #include "world_domination_tour.h"
 
@@ -111,12 +97,11 @@ void __cdecl FUN_007672E0()
     DAT_00B727F4 = 0x80;
 }
 
+
 // FUNCTION: GAMEMD 0x767300
-// VTABLE: GAMEMD 0x7F7060
-void FUN_00767300(SeatDtorObject* self)
+// Seats the GameOption table, then the ReferenceCounted destructor.
+GameOption::~GameOption()
 {
-    self->Vtbl = VTABLE_007F7060;
-    FUN_0065D660(self);
 }
 
 // FUNCTION: GAMEMD 0x767310
@@ -173,12 +158,17 @@ int MapSizeGameOption::vf_0C(const rc_ptr<Obj_007674E0>& subject) const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x767880
-void* WorldDominationTour::FlagGameOption::DeletingDtor(unsigned int flags)
+// FUNCTION: GAMEMD 0x767820
+// A flag option: two labels and the value taken when the subject's bit is
+// set or clear.
+FlagGameOption::FlagGameOption(unsigned int flags, Member_7B46F0 name18, int when_clear,
+                               Member_7B46F0 name14, int when_set)
+    : GameOption(flags), unknown_0C(when_clear), unknown_10(when_set), Member_14(name14), Member_18(name18)
 {
-    this->~FlagGameOption();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
 }
+
+// SYNTHETIC: GAMEMD 0x767880
+// FlagGameOption scalar deleting destructor.
+
+// SYNTHETIC: GAMEMD 0x7678C0
+// MapSizeGameOption scalar deleting destructor.

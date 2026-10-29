@@ -85,13 +85,9 @@ struct Base_MultiplayerGameMode { virtual ~Base_MultiplayerGameMode(); };
 struct Base_MultiplayerTeam { virtual ~Base_MultiplayerTeam(); };
 
 // FUNCTION: GAMEMD 0x00624130 (decl; reloc) -- OwnerDraw::SimpleDialogControl::~SimpleDialogControl.
-struct Base_OwnerDraw_SimpleDialogControl { virtual ~Base_OwnerDraw_SimpleDialogControl(); };
 
 // FUNCTION: GAMEMD 0x0065D460 (decl; reloc) -- rc_ptr_base::~rc_ptr_base.
 struct Base_rc_ptr_base { virtual ~Base_rc_ptr_base(); };
-
-// FUNCTION: GAMEMD 0x0065D660 (decl; reloc) -- ReferenceCounted::~ReferenceCounted.
-struct Base_ReferenceCounted { virtual ~Base_ReferenceCounted(); };
 
 // FUNCTION: GAMEMD 0x007240B0 (decl; reloc) -- ToolTipManager::~ToolTipManager.
 struct Base_ToolTipManager { virtual ~Base_ToolTipManager(); };
@@ -193,9 +189,6 @@ extern char VT_007F7354;
 
 // VTABLE: GAMEMD 0x007F74C4 -- CCToolTip
 extern char VT_007F74C4;
-
-// VTABLE: GAMEMD 0x007F7624 -- SimpleWonlineDialogControl
-extern char VT_007F7624;
 
 
 #endif  // GG_MATCH_CORE_DERIVED_SDD_FAMILY_METHODS_H

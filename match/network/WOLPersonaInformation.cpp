@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit WOLPersonaInformation.cpp. The name is the source-file string at 0x84a0d0
 //   in retail gamemd.exe v1.001, passed by the assert at 0x778f62 inside this object's
 //   code range (0x7784f0-0x77b08f). Functions are in ascending retail address order.
@@ -7,22 +8,9 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 //
-// Scalar deleting destructors of the World Domination Tour data classes
-// (rc_ptr_base's own is in rc_ptr_base.cpp). Each one runs the class's
-// destructor inline (the vtable store, then the member destructors in reverse
-// declaration order, then the base destructor out of line), frees the object
-// when bit 0 of the flag is set, and returns `this`.
-//
-// Class names are the retail RTTI names. A class that stores its own vtable
-// first declares its destructor; a class whose body starts with member
-// destructors and stores only its base's vtable has the implicit one (MSVC's
-// implicit destructor does not reseat the vptr). Member types are known only
-// by their out-of-line destructors, so each is an opaque view named after it.
-//
-// Slot 0 is modelled as an ordinary virtual holding the deleting wrapper, as
-// FileClass does in match/core/ram_file_class.h: nothing here is constructed,
-// so cl would not emit the tables or a compiler-generated `??_G`.
-// Offsets come from the `LEA ECX,[ESI+n]` member addresses in each body.
+// The deleting destructors (??_G) of the World Domination Tour data classes are
+// compiler output: the out-of-line destructors below make cl emit the tables and
+// the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
 
 #include "../core/trivial_tu286_methods.h"
 
@@ -88,6 +76,13 @@ void __fastcall FUN_00779650(int a, Obj_00779650* target)
 void __fastcall FUN_00779670(int a, Obj_00779650* target)
 {
     target->FUN_007B5A40(FUN_007350C0(FUN_007B7140(a)));
+}
+
+// FUNCTION: GAMEMD 0x77A050
+// Seats the PlayerProfile table, then the members in reverse order and the
+// ReferenceCounted destructor.
+PlayerProfile::~PlayerProfile()
+{
 }
 
 // FUNCTION: GAMEMD 0x77A760
@@ -198,13 +193,5 @@ void Obj_0077A8B0::FUN_0077A8B0(int a1)
     }
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x77B030
-void* PlayerProfile::DeletingDtor(unsigned int flags)
-{
-    this->~PlayerProfile();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x77B030
+// PlayerProfile scalar deleting destructor.

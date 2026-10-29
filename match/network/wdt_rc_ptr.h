@@ -36,10 +36,9 @@ class ReferenceCounted
 {
 public:
     ReferenceCounted() : RefCount(0) {}
-    // FUNCTION: GAMEMD 0x65D660 (decl; reloc)
-    virtual ~ReferenceCounted();
-    virtual void vf_1();
-    virtual void vf_2();
+    virtual ~ReferenceCounted();   // 0x65D660, out of line in rc_ptr_base.cpp
+    virtual bool vf_1(int);   // 0x65D690: returns false
+    virtual void vf_2();      // 0x65D670: drop one reference
 
     long RefCount;   // +0x04
 };

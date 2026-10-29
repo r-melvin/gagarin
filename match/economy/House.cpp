@@ -71,11 +71,11 @@
 #include "../_layout/swizzle_manager_class.h"
 #include "../_layout/super_class.h"
 #include "../_layout/house_class.h"
+#include "../_layout/house_class_allied_inline.h"
 #include "../_layout/house_type_class.h"
 #include "../_layout/obj_004a1d30.h"
 // Native502D60 reads the country second index through this actual field.
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
-#include "../ai/house_class_anger_nodes_methods.h"
 
 #include "../ai/house_class_find_building_methods.h"
 
@@ -125,8 +125,6 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
-// GLOBAL: GAMEMD 0x00A8EF98
-extern "C" Cell_0050DEF0 DAT_00A8EF98;
 // GLOBAL: GAMEMD 0x00A9FAB0
 extern "C" int DAT_00A9FAB0;
 // GLOBAL: GAMEMD 0x00AA0444
@@ -146,8 +144,6 @@ extern "C" int DAT_008B4130;
 extern "C" Team_005095D0** DAT_008B40EC;
 
 #include "../_layout/obj_005095d0.h"
-
-#include "../_layout/obj_0050da10.h"
 
 #include "../_layout/obj_0053ecb0.h"
 
@@ -386,7 +382,7 @@ extern const IID DAT_007E9550;
 
 #include "house_class_remove_tracking_methods.h"
 
-#include "house_class_silos_methods.h"
+#include "../_layout/building_class.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -865,7 +861,7 @@ Obj_004F7850* Obj_004F7850::FUN_004F7850()
 // and the current storage are reduced to a quarter-step (0..4, rounded) and
 // nothing happens unless the step moved; then every live, on-map building of a
 // silo-capable type is re-marked so its fill art updates.
-void House_004F9970::UpdateAllSilos(int prevStorage, int prevTotalStorage)
+void HouseClass::UpdateAllSilos(int prevStorage, int prevTotalStorage)
 {
     int before = 0;
     if (prevTotalStorage != 0) {
@@ -878,11 +874,11 @@ void House_004F9970::UpdateAllSilos(int prevStorage, int prevTotalStorage)
     }
 
     if (before != after) {
-        int count = this->unknown_78;
+        int count = this->Buildings.Count;
         for (int i = 0; i < count; i++) {
-            Building_004F9970* b = this->BuildingItems[i];
-            if (b != 0 && !b->InLimbo && b->Type->At_16A8) {
-                (b->*(*(BuildingVtbl_004F9970**)b)->Mark)(2);
+            BuildingClass* b = this->Buildings.Items[i];
+            if (b != 0 && !b->InLimbo && b->Type->bools_16A4[4]) {
+                b->vf_73(2);
             }
         }
     }
@@ -1418,8 +1414,8 @@ HRESULT __stdcall HouseClass::Load(IStream* pStm)
         return hr;
     while (count--) {
         AngerStruct node;
-        node.A = 0;
-        node.B = 0;
+        node.House = 0;
+        node.AngerLevel = 0;
         hr = pStm->Read(&node, 8, 0);
         if (hr < 0)
             return hr;
@@ -1839,7 +1835,7 @@ int HouseClass::vf_12()
 // re-pick the enemy: the angriest node whose house is not defeated and not an
 // ally (the ally test is the 0x4F9A50 overload inlined). The winner's array
 // index lands in EnemyHouseIndex, or -1 when no node qualifies.
-void House_00504790::UpdateAngerNodes(int scoreAdd, House_00504790* house)
+void HouseClass::UpdateAngerNodes(int scoreAdd, HouseClass* house)
 {
     int i;
 
@@ -1848,12 +1844,12 @@ void House_00504790::UpdateAngerNodes(int scoreAdd, House_00504790* house)
             this->AngerNodes.Items[i].AngerLevel += scoreAdd;
     }
 
-    House_00504790* best = 0;
+    HouseClass* best = 0;
     int bestLevel = 0;
 
     for (i = 0; i < this->AngerNodes.Count; i++) {
         int level = this->AngerNodes.Items[i].AngerLevel;
-        House_00504790* h = this->AngerNodes.Items[i].House;
+        HouseClass* h = this->AngerNodes.Items[i].House;
         if (level > bestLevel && !h->Defeated && !this->IsAlliedWith(h)) {
             bestLevel = level;
             best = h;
@@ -2153,9 +2149,9 @@ void Setter_00487C70::FUN_0050DA00(int value)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DA10
-void Obj_0050DA10::FUN_0050DA10()
+void HouseClass::FUN_0050DA10()
 {
-    unknown_54F0 = DAT_00A8EF98;
+    PreferredTargetCell = DAT_00A8EF98;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2168,19 +2164,19 @@ void Obj_0050DA40::FUN_0050DA40(int a1)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DA50
-void Obj_0050DA10::FUN_0050DA50()
+void HouseClass::FUN_0050DA50()
 {
-    unknown_54F4 = DAT_00A8EF98;
-    unknown_54FC = -100;
-    unknown_54F8 = DAT_00A8EF98;
+    PreferredDefensiveCell = DAT_00A8EF98;
+    PreferredDefensiveCellStartTime = -100;
+    PreferredDefensiveCell2 = DAT_00A8EF98;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DA80
 // +0x577C when it is 0..3, else 0.
-int Obj_0050DA10::FUN_0050DA80() const
+int HouseClass::FUN_0050DA80() const
 {
-    int value = unknown_577C;
+    int value = Edge;
     if (value >= 0 && value <= 3) {
         return value;
     }
@@ -2190,12 +2186,12 @@ int Obj_0050DA10::FUN_0050DA80() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DEF0
 // +0x5490 while +0x5494 still holds the global cell at 0xA8EF98, else +0x5494.
-Cell_0050DEF0 Obj_0050DA10::FUN_0050DEF0() const
+Cell HouseClass::FUN_0050DEF0() const
 {
-    if (unknown_5494 == DAT_00A8EF98) {
-        return unknown_5490;
+    if (BaseCenter == DAT_00A8EF98) {
+        return BaseSpawnCell;
     }
-    return unknown_5494;
+    return BaseCenter;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2209,9 +2205,9 @@ void Setter_00487C70::FUN_0050DFE0(int value)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DFF0
-void Obj_0050DA10::FUN_0050DFF0()
+void HouseClass::FUN_0050DFF0()
 {
-    unknown_5494 = DAT_00A8EF98;
+    BaseCenter = DAT_00A8EF98;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

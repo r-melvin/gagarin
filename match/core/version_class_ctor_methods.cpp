@@ -24,3 +24,6 @@ VersionClass::VersionClass()
     VersionText[0] = '\0';
     VersionName[0] = '\0';
 }
+
+// SYNTHETIC: GAMEMD 0x4E8270
+// VersionClass scalar deleting destructor, emitted with the vtable 0x7EA57C by the constructor above.

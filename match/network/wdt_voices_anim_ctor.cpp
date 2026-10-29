@@ -4,6 +4,7 @@
 //   Evidence: disassembly of 0x771850 (0x31 bytes); RTTI .?AVAnim@Voices@WorldDominationTour@@ (vtable
 //   0x7F7354, base MSAnim); layout in match/_layout/ms_anim.h.
 #include "../_layout/ms_anim.h"
+#include "../_layout/wdt_selection.h"
 
 // FUNCTION: GAMEMD 0x7529E0 (decl; reloc) -- the scenario-side check slot 7 negates.
 bool FUN_007529E0();
@@ -13,7 +14,7 @@ void FUN_007529A0(bool flag);
 
 // FUNCTION: GAMEMD 0x771850
 // A voice animation starts disabled at the origin and remembers its owner.
-WorldDominationTour::Voices::Anim::Anim(Obj_00771620* owner) : Owner(owner)
+WorldDominationTour::Voices::Anim::Anim(Selection* owner) : Owner(owner)
 {
 }
 
@@ -29,10 +30,10 @@ void WorldDominationTour::Voices::Anim::SetEnabled(bool on)
 {
     Enabled = on;
     if (!on) {
-        Obj_00771620* owner = Owner;
+        Selection* owner = Owner;
         if (owner->Count > 0) {
             FUN_007529A0(true);
-            owner->Sub3C0.Slot03();
+            owner->Queue.Slot03();
         }
         owner->Stopwatch = MSTimer();
     }

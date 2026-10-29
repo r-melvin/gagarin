@@ -22,86 +22,23 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-struct Cell_00509CD0
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-    Cell_00509CD0() {}
-    Cell_00509CD0(short x, short y) : X(x), Y(y) {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_00509CD0) == 4);
-
-// GLOBAL: GAMEMD 0xA8EF98 — a "no cell" CellStruct sentinel.
-extern Cell_00509CD0 DAT_00A8EF98;
-
-struct Super_00509CD0;
-struct House_00509CD0;
+#include "../_layout/house_class.h"
 
 // GLOBAL: GAMEMD 0xA8022C — HouseClass::Array.Items.
-extern House_00509CD0** DAT_00A8022C;
-
-// DynamicVectorClass<SuperClass*>: FindItemIndex is issued through the vptr,
-// so the slot run is declared for real (see super_class_lose_methods.h). The
-// argument is a reference: retail pushes the address of the parameter slot.
-struct SuperVector_00509CD0
-{
-    virtual void v00();
-    virtual void v04();
-    virtual void v08();
-    virtual void v0C();
-    virtual int  FindItemIndex(Super_00509CD0* const& item);   // +0x10 (decl; reloc)
-};
+extern HouseClass** DAT_00A8022C;
 
 // MapClass — only the nearby-cell search is reached.
 struct Map_00509CD0
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x56DC20 (decl; reloc) — MapClass::NearByLocation.
-    Cell_00509CD0* NearByLocation(Cell_00509CD0* out, const Cell_00509CD0& position,
-                                  int speedType, int a4, int movementZone, bool alt,
-                                  int spaceSizeX, int spaceSizeY, bool a9, bool a10,
-                                  bool a11, bool ignoreOccupied,
-                                  const Cell_00509CD0& closeTo, bool a14, bool buildable);
+    Cell* NearByLocation(Cell* out, const Cell& position,
+                         int speedType, int a4, int movementZone, bool alt,
+                         int spaceSizeX, int spaceSizeY, bool a9, bool a10,
+                         bool a11, bool ignoreOccupied,
+                         const Cell& closeTo, bool a14, bool buildable);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance.
 extern Map_00509CD0 MapInstance_00509CD0;
-
-struct House_00509CD0
-{
-    char                 _pad000[0x254];             // +0x0000
-    SuperVector_00509CD0 Supers;                     // +0x0254
-    char                 _pad258[0x5490 - 0x258];    // +0x0258
-    Cell_00509CD0        BaseSpawnCell;              // +0x5490
-    Cell_00509CD0        BaseCenter;                 // +0x5494
-    char                 _pad5498[0x54EC - 0x5498];  // +0x5498
-    int                  PreferredTargetType;        // +0x54EC
-    Cell_00509CD0        PreferredTargetCell;        // +0x54F0
-    char                 _pad54F4[0x5600 - 0x54F4];  // +0x54F4
-    int                  EnemyHouseIndex;            // +0x5600
-
-    // FUNCTION: GAMEMD 0x4FAE50 (decl; reloc) — HouseClass::Fire_SW.
-    bool Fire_SW(int index, Cell_00509CD0 const& cell);
-    // FUNCTION: GAMEMD 0x50D170 (decl; reloc) — HouseClass::PickTargetByType.
-    Cell_00509CD0* PickTargetByType(Cell_00509CD0* out, int targetType);
-
-    // Inlined by retail: BaseCenter when set, otherwise BaseSpawnCell.
-    Cell_00509CD0 GetBaseCenter() const
-    {
-        if (this->BaseCenter.X != DAT_00A8EF98.X || this->BaseCenter.Y != DAT_00A8EF98.Y) {
-            return this->BaseCenter;
-        }
-        return this->BaseSpawnCell;
-    }
-
-    // FUNCTION: GAMEMD 0x509CD0 — HouseClass::Fire_ParaDrop.
-    void Fire_ParaDrop(Super_00509CD0* pSuper);
-};
-GG_STATIC_ASSERT(offsetof(House_00509CD0, Supers)              == 0x254);
-GG_STATIC_ASSERT(offsetof(House_00509CD0, BaseSpawnCell)       == 0x5490);
-GG_STATIC_ASSERT(offsetof(House_00509CD0, BaseCenter)          == 0x5494);
-GG_STATIC_ASSERT(offsetof(House_00509CD0, PreferredTargetType) == 0x54EC);
-GG_STATIC_ASSERT(offsetof(House_00509CD0, PreferredTargetCell) == 0x54F0);
-GG_STATIC_ASSERT(offsetof(House_00509CD0, EnemyHouseIndex)     == 0x5600);
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_PARADROP_METHODS_H

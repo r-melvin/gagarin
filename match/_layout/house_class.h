@@ -409,8 +409,8 @@ public:
     int    KilledBuildingsOfHouses[20];    // +0x5438 .. 0x5487 ctor LEA EDI @0x004F62AE
     int    TotalKilledBuildings;           // +0x5488 ctor @0x004F5A30
     int    WhoLastHurtMe;                  // +0x548C ctor @0x004F5A36
-    CellStruct BaseSpawnCell;              // +0x5490 ctor @0x004F5A41
-    CellStruct BaseCenter;                 // +0x5494 ctor @0x004F5A4D
+    Cell   BaseSpawnCell;                  // +0x5490 ctor @0x004F5A41
+    Cell   BaseCenter;                     // +0x5494 ctor @0x004F5A4D
     int    Radius;                         // +0x5498 ctor @0x004F5A53
     ZoneInfoStruct ZoneInfos[5];           // +0x549C .. 0x54D7 bounded, not written — see note
     int    LATime;                         // +0x54D8 ctor @0x004F5A59
@@ -419,7 +419,7 @@ public:
     unsigned int RadarVisibleTo;           // +0x54E4 IndexBitfield; ctor @0x004F5A6B
     int    PointTotal;                     // +0x54E8 ctor @0x004F5A71
     int    PreferredTargetType;            // +0x54EC ctor MOV [EBP+0x54EC],1 @0x004F5A77
-    CellStruct PreferredTargetCell;        // +0x54F0 ctor @0x004F5A81/0x004F5A88
+    Cell   PreferredTargetCell;            // +0x54F0 ctor @0x004F5A81/0x004F5A88
     CellStruct PreferredDefensiveCell;     // +0x54F4 ctor @0x004F5A8F/0x004F5A96
     CellStruct PreferredDefensiveCell2;    // +0x54F8 ctor @0x004F5A9D/0x004F5AA4
     int    PreferredDefensiveCellStartTime;// +0x54FC ctor MOV [EBP+0x54FC],-100 @0x004F5AB1
@@ -583,7 +583,7 @@ public:
     bool IsPlanningCellFreeOfOtherPaths(const CellStruct* cell); // 0x5022F0
     void AddPlanningWaypoint(const WaypointClass* wp);          // 0x502160
     void SDDTORAllAndTriggers();                                // 0x4FB920
-    void ProductionStarted(int result);                         // 0x4FA350
+    int BeginProduction(int rtti, int id, unsigned char naval, int flag); // 0x4FA350 (RET 0x10)
     void GiveMoney(int amount);                                 // 0x4F9950
     void MakeAlly(int houseIndex, bool announce);               // 0x4F9B50
     void MakeAlly(HouseClass* who, bool announce);              // 0x4F9B70
@@ -635,6 +635,36 @@ public:
     void LostPoweredCenter(TechnoTypeClass* type);
     // FUNCTION: GAMEMD 0x500510 -- the primary factory for an RTTI class (naval picks ships over vehicles, combat picks defences over buildings); RET 0xC.
     FactoryClass* GetPrimaryFactory(int absID, bool naval, int buildCat) const;
+    // FUNCTION: GAMEMD 0x50D170 -- picks a super-weapon target cell of the given target type from a team's threat search; the "no cell" sentinel when none.
+    Cell PickTargetByType(int targetType);
+    // FUNCTION: GAMEMD 0x4F9970 -- redraws every silo building when the tiberium fill level moves a quarter step.
+    void UpdateAllSilos(int prevStorage, int prevTotalStorage);
+    // FUNCTION: GAMEMD 0x50DA10 -- resets the preferred target cell to the "no cell" sentinel.
+    void FUN_0050DA10();
+    // FUNCTION: GAMEMD 0x50DA50 -- resets both preferred defensive cells to the sentinel and the start time to -100.
+    void FUN_0050DA50();
+    // FUNCTION: GAMEMD 0x50DA80 -- Edge when it is 0..3, else 0.
+    int FUN_0050DA80() const;
+    // FUNCTION: GAMEMD 0x50DFF0 -- resets the base centre to the "no cell" sentinel.
+    void FUN_0050DFF0();
+    // FUNCTION: GAMEMD 0x50CBF0 (decl; reloc) -- picks an ion-cannon target cell; hidden result pointer, no stack arguments.
+    Cell PickIonCannonTarget();
+    // FUNCTION: GAMEMD 0x509E00 -- fires the lightning storm at the stored, ion-cannon or by-type target; nothing while the global flag is set.
+    void Fire_LightningStorm(SuperClass* pSuper);
+    // FUNCTION: GAMEMD 0x509B20 -- the same target choice as Fire_LightningStorm without the global-flag test.
+    void FUN_00509B20(SuperClass* pSuper);
+    // FUNCTION: GAMEMD 0x509BD0 -- fires the super weapon at the sentinel cell when an enemy is picked.
+    void FUN_00509BD0(SuperClass* pSuper);
+    // FUNCTION: GAMEMD 0x509C10 -- the same target choice as Fire_LightningStorm without the global-flag test.
+    void FUN_00509C10(SuperClass* pSuper);
+    // FUNCTION: GAMEMD 0x509CD0 -- fires the paradrop at the preferred cell, a free spot near the enemy's base centre, or the by-type pick.
+    void Fire_ParaDrop(SuperClass* pSuper);
+    // Inlined by retail (no out-of-line body): BaseCenter when set, otherwise BaseSpawnCell.
+    Cell GetBaseCenter() const;
+    // FUNCTION: GAMEMD 0x501540 -- may this house propose an alliance with `other` (not itself, an ally, civilian outside campaigns, or once defeated).
+    bool CanAlly(HouseClass* other);
+    // FUNCTION: GAMEMD 0x509140 -- re-checks the factory serving a category after the buildable set changed: drops unbuildable queue entries and abandons, suspends or resumes the current item.
+    void UpdateFactoriesQueues(int rtti, bool isNaval, int buildCat);
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

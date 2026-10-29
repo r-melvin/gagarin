@@ -115,6 +115,10 @@ struct Map_0087F7E8
     int FUN_00578080(const CoordStruct* coord);
     // FUNCTION: GAMEMD 0x6551C0 (decl; reloc) -- flag the cell's radar pixel.
     void FUN_006551C0(CellStruct const& cell);
+    // FUNCTION: GAMEMD 0x586360 (decl; reloc) -- whether a coordinate is under shroud.
+    bool IsLocationShrouded(const CoordStruct& coord) const;
+    // FUNCTION: GAMEMD 0x578540 (decl; reloc) -- whether a cell is inside the usable area.
+    bool FUN_00578540(CellClass* cell, bool flag);
 };
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.

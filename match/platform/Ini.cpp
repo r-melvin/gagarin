@@ -1137,18 +1137,6 @@ char* __fastcall FUN_0052A9E0(unsigned char* line, int* eq, int* valueStart, int
     return rest;
 }
 
-// FUNCTION: GAMEMD 0x52AE00
-void* Obj_52AE00::FUN_52AE00(unsigned int flags)
-{
-    FUN_0052AB80(this);
-
-    if (flags & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x52AEA0
 void* Obj_52AEA0::FUN_52AEA0(unsigned int flags)
 {

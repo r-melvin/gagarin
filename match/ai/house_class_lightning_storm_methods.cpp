@@ -26,28 +26,27 @@
 // exactly. Two neighbouring skeletons confirm the order is what matters:
 // `have:` after `join:` is 21.2% (two extra MOVs), and joining through a
 // `Cell*` selected in each arm is 60.0% (a LEA where retail has a MOV).
-void House_00509E00::Fire_LightningStorm(Super_00509E00* pSuper)
+void HouseClass::Fire_LightningStorm(SuperClass* pSuper)
 {
     if (FUN_0053A100()) {
         return;
     }
-    if (this->At_5600 == -1) {
+    if (this->EnemyHouseIndex == -1) {
         return;
     }
 
-    Cell_00509E00 cell = DAT_00A8EF98;
-    Cell_00509E00 buf;
+    CellStruct cell = DAT_00A8EF98;
 
-    if (this->At_54F0.X != DAT_00A8EF98.X) goto have;
-    if (this->At_54F0.Y != DAT_00A8EF98.Y) goto have;
-    if (this->At_54EC == 1) {
-        cell = *this->PickIonCannonTarget(&buf);
+    if (this->PreferredTargetCell.X != DAT_00A8EF98.X) goto have;
+    if (this->PreferredTargetCell.Y != DAT_00A8EF98.Y) goto have;
+    if (this->PreferredTargetType == 1) {
+        cell = this->PickIonCannonTarget();
         goto join;
     }
-    cell = *this->PickTargetByType(&buf, this->At_54EC);
+    cell = this->PickTargetByType(this->PreferredTargetType);
     goto join;
 have:
-    cell = this->At_54F0;
+    cell = this->PreferredTargetCell;
 join:
     ;
     if (cell.X != DAT_00A8EF98.X || cell.Y != DAT_00A8EF98.Y) {
@@ -57,25 +56,24 @@ join:
 
 // FUNCTION: GAMEMD 0x509B20
 // Same target choice as Fire_LightningStorm, without the global-flag test.
-void House_00509E00::FUN_00509B20(Super_00509E00* pSuper)
+void HouseClass::FUN_00509B20(SuperClass* pSuper)
 {
-    if (this->At_5600 == -1) {
+    if (this->EnemyHouseIndex == -1) {
         return;
     }
 
-    Cell_00509E00 cell = DAT_00A8EF98;
-    Cell_00509E00 buf;
+    CellStruct cell = DAT_00A8EF98;
 
-    if (this->At_54F0.X != DAT_00A8EF98.X) goto have;
-    if (this->At_54F0.Y != DAT_00A8EF98.Y) goto have;
-    if (this->At_54EC == 1) {
-        cell = *this->PickIonCannonTarget(&buf);
+    if (this->PreferredTargetCell.X != DAT_00A8EF98.X) goto have;
+    if (this->PreferredTargetCell.Y != DAT_00A8EF98.Y) goto have;
+    if (this->PreferredTargetType == 1) {
+        cell = this->PickIonCannonTarget();
         goto join;
     }
-    cell = *this->PickTargetByType(&buf, this->At_54EC);
+    cell = this->PickTargetByType(this->PreferredTargetType);
     goto join;
 have:
-    cell = this->At_54F0;
+    cell = this->PreferredTargetCell;
 join:
     ;
     if (cell.X != DAT_00A8EF98.X || cell.Y != DAT_00A8EF98.Y) {
@@ -85,34 +83,33 @@ join:
 
 // FUNCTION: GAMEMD 0x509BD0
 // Fires the super weapon at the "no cell" sentinel when something is prepared at +0x5600.
-void House_00509E00::FUN_00509BD0(Super_00509E00* pSuper)
+void HouseClass::FUN_00509BD0(SuperClass* pSuper)
 {
-    if (this->At_5600 != -1) {
+    if (this->EnemyHouseIndex != -1) {
         this->Fire_SW(this->Supers.FindItemIndex(pSuper), DAT_00A8EF98);
     }
 }
 
 // FUNCTION: GAMEMD 0x509C10
 // Same target choice as Fire_LightningStorm, without the global-flag test.
-void House_00509E00::FUN_00509C10(Super_00509E00* pSuper)
+void HouseClass::FUN_00509C10(SuperClass* pSuper)
 {
-    if (this->At_5600 == -1) {
+    if (this->EnemyHouseIndex == -1) {
         return;
     }
 
-    Cell_00509E00 cell = DAT_00A8EF98;
-    Cell_00509E00 buf;
+    CellStruct cell = DAT_00A8EF98;
 
-    if (this->At_54F0.X != DAT_00A8EF98.X) goto have;
-    if (this->At_54F0.Y != DAT_00A8EF98.Y) goto have;
-    if (this->At_54EC == 1) {
-        cell = *this->PickIonCannonTarget(&buf);
+    if (this->PreferredTargetCell.X != DAT_00A8EF98.X) goto have;
+    if (this->PreferredTargetCell.Y != DAT_00A8EF98.Y) goto have;
+    if (this->PreferredTargetType == 1) {
+        cell = this->PickIonCannonTarget();
         goto join;
     }
-    cell = *this->PickTargetByType(&buf, this->At_54EC);
+    cell = this->PickTargetByType(this->PreferredTargetType);
     goto join;
 have:
-    cell = this->At_54F0;
+    cell = this->PreferredTargetCell;
 join:
     ;
     if (cell.X != DAT_00A8EF98.X || cell.Y != DAT_00A8EF98.Y) {

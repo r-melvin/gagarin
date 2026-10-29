@@ -35,26 +35,6 @@ Shp_004309D0* FUN_005B40B0(const char* name, char force);
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) — the debug log sink.
 void __cdecl FUN_004068E0(const char* text);
 
-// The 0x24-byte file object. Modelled with explicit Construct / Destruct
-// calls (a real constructor / destructor pair would bring an EH frame retail
-// does not have).
-struct File_004309D0
-{
-    char Body[0x24];         // +0x00
-
-    // FUNCTION: GAMEMD 0x4A3890 (decl; reloc) — read the whole file.
-    Shp_004309D0* ReadWholeFile();
-};
-GG_STATIC_ASSERT(sizeof(File_004309D0) == 0x24);
-
-struct RawBase_004309D0
-{
-    // FUNCTION: GAMEMD 0x65CA80 (decl; reloc) — RawFileClass(const char*).
-    void Construct(const char* name);
-    // FUNCTION: GAMEMD 0x65CA00 (decl; reloc) — ~RawFileClass.
-    void Destruct();
-};
-
 struct BeaconManager_004309D0
 {
     char _pad0000[0x64];     // +0x0000

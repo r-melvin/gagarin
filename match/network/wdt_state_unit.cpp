@@ -36,3 +36,13 @@ WorldDominationTour::State::State(const rc_ptr<WDTState>& state, unsigned int in
     if (s != 0 && index < (unsigned int)s->unknown_24)
         unknown_10 = s->unknown_44[index];
 }
+
+// FUNCTION: GAMEMD 0x76F650
+// Seats the State table, then the state handle and the ReferenceCounted
+// destructor.
+WorldDominationTour::State::~State()
+{
+}
+
+// SYNTHETIC: GAMEMD 0x76F6C0
+// State scalar deleting destructor, the destructor body inlined.

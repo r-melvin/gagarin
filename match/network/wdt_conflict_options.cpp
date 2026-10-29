@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //
 // World Domination Tour conflict helpers and the rc_ptr<GameOption> vector
 // instantiations (retail 0x765F60-0x767080). The vector bodies are the
@@ -56,6 +57,13 @@ template class rc_ptr<WorldDominationTour::ValueGameOption<unsigned char> >;
 template class rc_ptr<WorldDominationTour::FlagGameOption>;
 template class rc_ptr<WorldDominationTour::MapSizeGameOption>;
 
+// FUNCTION: GAMEMD 0x766030
+// Seats the Conflict table, then the territory handle and the
+// ReferenceCounted destructor.
+Conflict::~Conflict()
+{
+}
+
 // FUNCTION: GAMEMD 0x765F60
 // Wraps a new Conflict over the territory; the result is the hidden first
 // argument.
@@ -106,8 +114,14 @@ typedef rc_ptr<WorldDominationTour::GameOption> GameOptionPtr;
 // FUNCTION: GAMEMD 0x766DA0
 // VectorClass<rc_ptr<GameOption> >::Slot5
 template class VectorClass<GameOptionPtr>;
+// FUNCTION: GAMEMD 0x766A10
+// ValueGameOption<unsigned char>::ValueGameOption
+// SYNTHETIC: GAMEMD 0x766A60
+// GameOption scalar deleting destructor (the destructor stays out of line here).
 // FUNCTION: GAMEMD 0x766A80
 // ValueGameOption<unsigned char>::vf_0C
+// SYNTHETIC: GAMEMD 0x766B90
+// ValueGameOption<unsigned char> scalar deleting destructor
 template class WorldDominationTour::ValueGameOption<unsigned char>;
 // FUNCTION: GAMEMD 0x766DC0
 // DynamicVectorClass<rc_ptr<GameOption> >::SetCapacity
@@ -123,3 +137,6 @@ template class DynamicVectorClass<GameOptionPtr>;
 // FUNCTION: GAMEMD 0x7670D0
 // rc_ptr<GameOption>: default constructor.
 template class rc_ptr<WorldDominationTour::GameOption>;
+
+// SYNTHETIC: GAMEMD 0x7667A0
+// Conflict scalar deleting destructor, the destructor body inlined.

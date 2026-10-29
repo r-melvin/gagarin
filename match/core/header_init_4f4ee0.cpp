@@ -9,6 +9,7 @@
 #pragma intrinsic(pow)
 #include "header_init_shapes.h"
 #include "mathtbl_init_shapes.h"
+#include "../_layout/cell.h"
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CAC40(double value);
@@ -61,7 +62,7 @@ double DAT_00A8F008 = FUN_004CADE0((DAT_00A8F038 * 2) / DAT_00A8EFA0);
 int DAT_00A8F02C = (int)(DAT_00A8F038 * 4 + 0.5);
 // SYNTHETIC: GAMEMD 0x4F50A0
 // GLOBAL: GAMEMD 0xA8EF98
-HeaderCellInit DAT_00A8EF98(0, 0);
+Cell DAT_00A8EF98(0, 0);
 // SYNTHETIC: GAMEMD 0x4F50B0
 // GLOBAL: GAMEMD 0xA8EFF8
 HeaderCoordInit DAT_00A8EFF8(0, 0, 0);

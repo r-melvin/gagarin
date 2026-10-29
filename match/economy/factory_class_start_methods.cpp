@@ -28,5 +28,5 @@ void FactoryClass::StartProduction()
     if (result < 0)
         return;
 
-    Owner->ProductionStarted(type->Slot_2C(result, type->unknown_CCE, 1));
+    Owner->BeginProduction(type->Slot_2C(), result, type->unknown_CCE, 1);
 }

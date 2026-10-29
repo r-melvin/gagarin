@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   rc_ptr_base (vtable 0x7F094C) and the rc_ptr<T> template over it; see
 //   wdt_rc_ptr.h for what the retail bodies do. This header holds only the
-//   pointer classes, so a unit that models ReferenceCounted its own way (the
-//   World Domination Tour data classes) can share them.
+//   pointer classes; ReferenceCounted itself is the one in wdt_rc_ptr.h.
 #ifndef GG_MATCH_NETWORK_WDT_RC_PTR_BASE_H
 #define GG_MATCH_NETWORK_WDT_RC_PTR_BASE_H
 

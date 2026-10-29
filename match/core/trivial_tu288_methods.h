@@ -9,7 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_0077D200;
 struct Obj_007AB330;
 struct Obj_007AB340;
 struct Obj_007AC4A0;
@@ -21,10 +20,6 @@ struct Obj_007AD610;
 
 // FUNCTION: GAMEMD 0x783C80 (declaration)
 void FUN_00783C80(int, unsigned char);
-
-struct Obj_0077D200
-{
-};
 
 struct Obj_007AB330
 {
@@ -75,8 +70,6 @@ struct Obj_007AD610
 };
 
 
-// FUNCTION: GAMEMD 0x77D200
-void FUN_0077D200(Obj_0077D200* a1, int a2);
 // FUNCTION: GAMEMD 0x785360
 void __cdecl FUN_00785360();
 // FUNCTION: GAMEMD 0x796B20

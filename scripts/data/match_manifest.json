@@ -148,7 +148,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x504790",
-  "sym": "?UpdateAngerNodes@House_00504790@@QAEXHPAU1@@Z",
+  "sym": "?UpdateAngerNodes@HouseClass@@QAEXHPAV1@@Z",
   "len": "0xcd",
   "name": "HouseClass::UpdateAngerNodes",
   "status": "matched",
@@ -184,7 +184,7 @@
  {
   "tu": "match/ai/house_class_lightning_storm_methods.cpp",
   "addr": "0x509E00",
-  "sym": "?Fire_LightningStorm@House_00509E00@@QAEXPAUSuper_00509E00@@@Z",
+  "sym": "?Fire_LightningStorm@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0xb4",
   "name": "HouseClass::Fire_LightningStorm",
   "status": "matched",
@@ -193,7 +193,7 @@
  {
   "tu": "match/ai/house_class_lightning_storm_methods.cpp",
   "addr": "0x509B20",
-  "sym": "?FUN_00509B20@House_00509E00@@QAEXPAUSuper_00509E00@@@Z",
+  "sym": "?FUN_00509B20@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0xa7",
   "name": "House_00509E00::FUN_00509B20",
   "status": "matched",
@@ -202,7 +202,7 @@
  {
   "tu": "match/ai/house_class_lightning_storm_methods.cpp",
   "addr": "0x509BD0",
-  "sym": "?FUN_00509BD0@House_00509E00@@QAEXPAUSuper_00509E00@@@Z",
+  "sym": "?FUN_00509BD0@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0x31",
   "name": "House_00509E00::FUN_00509BD0",
   "status": "matched",
@@ -211,7 +211,7 @@
  {
   "tu": "match/ai/house_class_lightning_storm_methods.cpp",
   "addr": "0x509C10",
-  "sym": "?FUN_00509C10@House_00509E00@@QAEXPAUSuper_00509E00@@@Z",
+  "sym": "?FUN_00509C10@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0xa7",
   "name": "House_00509E00::FUN_00509C10",
   "status": "matched",
@@ -238,16 +238,16 @@
  {
   "tu": "match/ai/house_class_paradrop_methods.cpp",
   "addr": "0x509CD0",
-  "sym": "?Fire_ParaDrop@House_00509CD0@@QAEXPAUSuper_00509CD0@@@Z",
+  "sym": "?Fire_ParaDrop@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0x127",
   "name": "HouseClass::Fire_ParaDrop",
   "status": "partial",
-  "pct": 42.2
+  "pct": 43.3
  },
  {
   "tu": "match/ai/house_class_pick_target_methods.cpp",
   "addr": "0x50D170",
-  "sym": "?PickTargetByType@House_0050D170@@QAE?AUCell_0050D170@@H@Z",
+  "sym": "?PickTargetByType@HouseClass@@QAE?AVCell@@H@Z",
   "len": "0xde",
   "name": "HouseClass::PickTargetByType",
   "status": "matched",
@@ -4677,11 +4677,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/const_store_leaf_sweep.cpp",
+  "tu": "match/network/rc_ptr_base.cpp",
   "addr": "0x65D660",
-  "sym": "?FUN_0065D660@@YIXPAUConstStoreObject@@@Z",
+  "sym": "??1ReferenceCounted@@UAE@XZ",
   "len": "0x7",
-  "name": "FUN_0065d660",
+  "name": "ReferenceCounted::~ReferenceCounted",
   "status": "matched",
   "pct": 100
  },
@@ -4875,15 +4875,6 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
-  "addr": "0x4B57D0",
-  "sym": "?ScalarDeletingDestructor@EditClass@@QAEPAXI@Z",
-  "len": "0x1e",
-  "name": "EditClass::ScalarDeletingDestructor",
-  "status": "matched",
-  "pct": 100.0
- },
- {
   "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x4B57F0",
   "sym": "??_GShapeButtonClass@@UAEPAXI@Z",
@@ -4992,11 +4983,11 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AE00",
-  "sym": "?FUN_52AE00@Obj_52AE00@@QAEPAXI@Z",
+  "sym": "??_GINISection@INIClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_0052ae00",
+  "name": "INIClass::INISection scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -5370,29 +5361,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x766A60",
-  "sym": "?FUN_766A60@Obj_766A60@@QAEPAXI@Z",
+  "sym": "??_GGameOption@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_00766a60",
+  "name": "WorldDominationTour::GameOption::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x769C00",
-  "sym": "?FUN_769C00@Obj_769C00@@QAEPAXI@Z",
+  "sym": "??_GMap@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_00769c00",
+  "name": "WorldDominationTour::Map::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/network/wdt_net.cpp",
   "addr": "0x76B6F0",
-  "sym": "?FUN_76B6F0@Obj_76B6F0@@QAEPAXI@Z",
+  "sym": "??_GWDTState@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_0076b6f0",
+  "name": "WDTState::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -5659,11 +5650,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x007678c0",
-  "sym": "??_G?$DerivedSdd@UBase_ReferenceCounted@@UTag_WorldDominationTour_GameOption@@@@UAEPAXI@Z",
+  "tu": "match/network/WDTGameOptions.cpp",
+  "addr": "0x7678C0",
+  "sym": "??_GMapSizeGameOption@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_WorldDominationTour_GameOption>::scalar deleting destructor",
+  "name": "WorldDominationTour::MapSizeGameOption::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -5695,11 +5686,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x0076b6c0",
-  "sym": "??_G?$DerivedSdd@UBase_ReferenceCounted@@UTag_WDTTerritory@@@@UAEPAXI@Z",
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B6C0",
+  "sym": "??_GWDTTerritory@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_WDTTerritory>::scalar deleting destructor",
+  "name": "WDTTerritory::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -5722,11 +5713,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x007a2e70",
-  "sym": "??_G?$DerivedSdd@UBase_OwnerDraw_SimpleDialogControl@@UTag_SimpleWonlineDialogControl@@@@UAEPAXI@Z",
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7A2E70",
+  "sym": "??_GSimpleWonlineDialogControl@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_SimpleWonlineDialogControl>::scalar deleting destructor",
+  "name": "SimpleWonlineDialogControl::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -8989,20 +8980,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/generic_list_methods.cpp",
+  "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x40E3E0",
-  "sym": "?DeletingDestructor@GenericList@@QAEPAXI@Z",
+  "sym": "??_GGenericList@@UAEPAXI@Z",
   "len": "0xb3",
-  "name": "GenericList::DeletingDestructor",
+  "name": "GenericList scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_section_list_methods.cpp",
+  "tu": "match/network/coopcamp.cpp",
   "addr": "0x40E4C0",
-  "sym": "?DeletingDestructor@?$List@PAUINISection@INIClass@@@@QAEPAXI@Z",
+  "sym": "??_G?$List@PAUINISection@INIClass@@@@UAEPAXI@Z",
   "len": "0xb3",
-  "name": "List<INIClass::INISection*>::DeletingDestructor",
+  "name": "List<INIClass::INISection*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -10168,29 +10159,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/relay_host_member_dtor_sweep.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x766030",
-  "sym": "??1RelayHost_007F6FC4@@UAE@XZ",
+  "sym": "??1Conflict@WorldDominationTour@@UAE@XZ",
   "len": "0x20",
-  "name": "RelayHost_007F6FC4::dtor",
+  "name": "WorldDominationTour::Conflict::~Conflict",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/relay_host_member_dtor_sweep.cpp",
+  "tu": "match/network/wdt_history_unit.cpp",
   "addr": "0x767BF0",
-  "sym": "??1RelayHost_007F70DC@@UAE@XZ",
+  "sym": "??1History@WorldDominationTour@@UAE@XZ",
   "len": "0x20",
-  "name": "RelayHost_007F70DC::dtor",
+  "name": "WorldDominationTour::History::~History",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/relay_host_member_dtor_sweep.cpp",
+  "tu": "match/network/wdt_state_unit.cpp",
   "addr": "0x76F650",
-  "sym": "??1RelayHost_007F7314@@UAE@XZ",
+  "sym": "??1State@WorldDominationTour@@UAE@XZ",
   "len": "0x20",
-  "name": "RelayHost_007F7314::dtor",
+  "name": "WorldDominationTour::State::~State",
   "status": "matched",
   "pct": 100
  },
@@ -10530,9 +10521,9 @@
  {
   "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767300",
-  "sym": "?FUN_00767300@@YIXPAUSeatDtorObject@@@Z",
+  "sym": "??1GameOption@WorldDominationTour@@UAE@XZ",
   "len": "0xb",
-  "name": "FUN_00767300",
+  "name": "WorldDominationTour::GameOption::~GameOption",
   "status": "matched",
   "pct": 100
  },
@@ -11137,7 +11128,7 @@
   "len": "0x11",
   "name": "GenericNode::GenericNode",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/small_misc2_methods.cpp",
@@ -11537,20 +11528,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/generic_list_methods.cpp",
-  "addr": "0x40e340",
-  "sym": "?LinkNode@GenericNode@@QAEXPAV1@@Z",
+  "tu": "match/platform/ini_class_node_methods.cpp",
+  "addr": "0x40E340",
+  "sym": "?Link@GenericNode@@QAEXPAV1@@Z",
   "len": "0x4b",
-  "name": "GenericNode::LinkNode",
+  "name": "GenericNode::Link",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/generic_list_methods.cpp",
-  "addr": "0x40e390",
-  "sym": "?DeletingDestructor@GenericNode@@QAEPAXD@Z",
+  "tu": "match/platform/ini_class_node_methods.cpp",
+  "addr": "0x40E390",
+  "sym": "??_GGenericNode@@UAEPAXI@Z",
   "len": "0x45",
-  "name": "GenericNode::DeletingDestructor",
+  "name": "GenericNode scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -22808,7 +22799,7 @@
  {
   "tu": "match/economy/house_class_can_ally_methods.cpp",
   "addr": "0x501540",
-  "sym": "?CanAlly@House_00501540@@QAE_NPAU1@@Z",
+  "sym": "?CanAlly@HouseClass@@QAE_NPAV1@@Z",
   "len": "0xfb",
   "name": "HouseClass::CanAlly",
   "status": "matched",
@@ -22871,7 +22862,7 @@
  {
   "tu": "match/economy/house_class_factory_queues_methods.cpp",
   "addr": "0x509140",
-  "sym": "?UpdateFactoriesQueues@House_00509140@@QAEXH_NH@Z",
+  "sym": "?UpdateFactoriesQueues@HouseClass@@QAEXH_NH@Z",
   "len": "0x1a6",
   "name": "HouseClass::Update_FactoriesQueues",
   "status": "matched",
@@ -23042,7 +23033,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x4F9970",
-  "sym": "?UpdateAllSilos@House_004F9970@@QAEXHH@Z",
+  "sym": "?UpdateAllSilos@HouseClass@@QAEXHH@Z",
   "len": "0x9e",
   "name": "HouseClass::UpdateAllSilos",
   "status": "matched",
@@ -28059,7 +28050,7 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AAF0",
-  "sym": "?DestroyEntry@INIEntry@INIClass@@QAEXXZ",
+  "sym": "??1INIEntry@INIClass@@UAE@XZ",
   "len": "0x8f",
   "name": "INIClass::INIEntry::~INIEntry",
   "status": "matched",
@@ -28068,7 +28059,7 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AB80",
-  "sym": "?DestroySection@INISection@INIClass@@QAEXXZ",
+  "sym": "??1INISection@INIClass@@UAE@XZ",
   "len": "0x15e",
   "name": "INIClass::INISection::~INISection",
   "status": "matched",
@@ -28086,27 +28077,18 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AD50",
-  "sym": "?DeletingDestructor@INIEntry@INIClass@@QAEPAXI@Z",
+  "sym": "??_GINIEntry@INIClass@@UAEPAXI@Z",
   "len": "0xa3",
-  "name": "INIClass::INIEntry::scalar deleting destructor",
+  "name": "INIClass::INIEntry scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AE20",
-  "sym": "?DeletingDestructor@?$Node@PAUINISection@INIClass@@@@QAEPAXI@Z",
+  "sym": "??_G?$Node@PAUINISection@INIClass@@@@UAEPAXI@Z",
   "len": "0x45",
-  "name": "Node<INISection*>::scalar deleting destructor",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/platform/ini_class_node_methods.cpp",
-  "addr": "0x52AE70",
-  "sym": "?DeletingDestructor@CacheStraw@@QAEPAXI@Z",
-  "len": "0x28",
-  "name": "CacheStraw::scalar deleting destructor",
+  "name": "Node<INISection*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -28140,9 +28122,9 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AFC0",
-  "sym": "?DeletingDestructor@?$List@PAUINIEntry@INIClass@@@@QAEPAXI@Z",
+  "sym": "??_G?$List@PAUINIEntry@INIClass@@@@UAEPAXI@Z",
   "len": "0xb3",
-  "name": "List<INIClass::INIEntry*>::DeletingDestructor",
+  "name": "List<INIClass::INIEntry*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -28950,16 +28932,16 @@
  {
   "tu": "match/ui/check_list_class_methods.cpp",
   "addr": "0x4882D0",
-  "sym": "?Dtor@CheckListClass@@QAEXXZ",
+  "sym": "??1CheckListClass@@UAE@XZ",
   "len": "0x3f",
-  "name": "CheckListClass::Dtor",
+  "name": "CheckListClass::~CheckListClass",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/check_list_class_methods.cpp",
   "addr": "0x488310",
-  "sym": "?AddItem@CheckListClass@@QAEXPBG@Z",
+  "sym": "?AddItem@CheckListClass@@UAEHPBG@Z",
   "len": "0x35",
   "name": "CheckListClass::AddItem",
   "status": "matched",
@@ -28968,7 +28950,7 @@
  {
   "tu": "match/ui/check_list_class_methods.cpp",
   "addr": "0x488380",
-  "sym": "?RemoveItem@CheckListClass@@QAEXPBG@Z",
+  "sym": "?RemoveItem@CheckListClass@@UAEXPBG@Z",
   "len": "0x64",
   "name": "CheckListClass::RemoveItem",
   "status": "matched",
@@ -28977,16 +28959,16 @@
  {
   "tu": "match/ui/check_list_class_methods.cpp",
   "addr": "0x4883F0",
-  "sym": "?FUN_004883F0@CheckListClass@@QAEXPBG@Z",
+  "sym": "?SetSelectedText@CheckListClass@@UAEXPBG@Z",
   "len": "0x59",
-  "name": "CheckListClass::FUN_004883F0",
+  "name": "CheckListClass::SetSelectedText",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/check_list_class_methods.cpp",
   "addr": "0x4884A0",
-  "sym": "?Action@CheckListClass@@QAEHIPAXH@Z",
+  "sym": "?Action@CheckListClass@@UAEHIPAIH@Z",
   "len": "0x76",
   "name": "CheckListClass::Action",
   "status": "matched",
@@ -28995,9 +28977,9 @@
  {
   "tu": "match/ui/check_list_class_methods.cpp",
   "addr": "0x4886E0",
-  "sym": "?ScalarDeletingDtor@CheckListClass@@QAEPAV1@E@Z",
+  "sym": "??_GCheckListClass@@UAEPAXI@Z",
   "len": "0x53",
-  "name": "CheckListClass::ScalarDeletingDtor",
+  "name": "CheckListClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -30111,9 +30093,9 @@
  {
   "tu": "match/ui/ui_list_node_methods.cpp",
   "addr": "0x5B3F50",
-  "sym": "?Destruct@MixFileClass@@QAEXXZ",
+  "sym": "??1MixFileClass@@UAE@XZ",
   "len": "0x9B",
-  "name": "MixFileClass::Destruct",
+  "name": "MixFileClass::~MixFileClass",
   "status": "matched",
   "pct": 100
  },
@@ -30136,15 +30118,6 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ui_list_node_methods.cpp",
-  "addr": "0x5B4590",
-  "sym": "?ListNodeUnlink@GenericNode@@QAEXXZ",
-  "len": "0x2D",
-  "name": "ListNodeUnlink",
-  "status": "matched",
-  "pct": 100
- },
- {
   "tu": "match/platform/pk_pipe_straw_methods.cpp",
   "addr": "0x5B45C0",
   "sym": "??_GBlowStraw@@UAEPAXI@Z",
@@ -30154,20 +30127,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ui_list_node_methods.cpp",
-  "addr": "0x5B4630",
-  "sym": "?ScalarDeletingDtor@MixFileClass@@QAEPAV1@D@Z",
-  "len": "0xAF",
-  "name": "MixFileClass::ScalarDeletingDtor",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/ui/ui_list_node_methods.cpp",
+  "tu": "match/core/w2_mix_file_list_global_r15.cpp",
   "addr": "0x5B46E0",
-  "sym": "?ScalarDeletingDtor@GenericList@@QAEPAV1@D@Z",
-  "len": "0xB3",
-  "name": "GenericList::ScalarDeletingDtor",
+  "sym": "??_G?$List@PAVMixFileClass@@@@UAEPAXI@Z",
+  "len": "0xb3",
+  "name": "List<MixFileClass*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -52264,11 +52228,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_dtor_class_ddtors.cpp",
+  "tu": "match/core/version_class_ctor_methods.cpp",
   "addr": "0x4E8270",
-  "sym": "?DeletingDtor@VersionClass@@UAEPAXI@Z",
+  "sym": "??_GVersionClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "VersionClass::DeletingDtor",
+  "name": "VersionClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -53407,11 +53371,11 @@
   "pct": 100
  },
  {
-  "tu": "match/network/conn_team_ddtors.cpp",
+  "tu": "match/network/null_modem_conn_class.cpp",
   "addr": "0x5EF290",
-  "sym": "?DeletingDtor@NullModemConnClass@@UAEPAXI@Z",
+  "sym": "??_GNullModemConnClass@@UAEPAXI@Z",
   "len": "0x32",
-  "name": "NullModemConnClass::DeletingDtor",
+  "name": "NullModemConnClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -53749,11 +53713,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_dtor_class_ddtors.cpp",
+  "tu": "match/network/rc_ptr_base.cpp",
   "addr": "0x65D6A0",
-  "sym": "?DeletingDtor@ReferenceCounted@@UAEPAXI@Z",
+  "sym": "??_GReferenceCounted@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "ReferenceCounted::DeletingDtor",
+  "name": "ReferenceCounted::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -57367,11 +57331,11 @@
   "pct": 100
  },
  {
-  "tu": "match/network/world_domination_tour_ddtors.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x7667A0",
-  "sym": "?DeletingDtor@Conflict@WorldDominationTour@@UAEPAXI@Z",
+  "sym": "??_GConflict@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x34",
-  "name": "WorldDominationTour::Conflict::DeletingDtor",
+  "name": "WorldDominationTour::Conflict::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -57385,29 +57349,29 @@
   "pct": 100
  },
  {
-  "tu": "match/network/world_domination_value_option_ddtor.cpp",
+  "tu": "match/network/wdt_conflict_options.cpp",
   "addr": "0x766B90",
   "sym": "??_G?$ValueGameOption@E@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x28",
-  "name": "WorldDominationTour::ValueGameOption<unsigned char>::scalar_deleting_dtor",
+  "name": "WorldDominationTour::ValueGameOption<unsigned char>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767880",
-  "sym": "?DeletingDtor@FlagGameOption@WorldDominationTour@@UAEPAXI@Z",
+  "sym": "??_GFlagGameOption@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x36",
-  "name": "WorldDominationTour::FlagGameOption::DeletingDtor",
+  "name": "WorldDominationTour::FlagGameOption::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/network/world_domination_tour_ddtors.cpp",
+  "tu": "match/network/wdt_history_unit.cpp",
   "addr": "0x767C10",
-  "sym": "?DeletingDtor@History@WorldDominationTour@@UAEPAXI@Z",
+  "sym": "??_GHistory@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x34",
-  "name": "WorldDominationTour::History::DeletingDtor",
+  "name": "WorldDominationTour::History::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -57448,29 +57412,29 @@
   "pct": 100
  },
  {
-  "tu": "match/network/world_domination_tour_ddtors.cpp",
+  "tu": "match/network/wdt_state_unit.cpp",
   "addr": "0x76F6C0",
-  "sym": "?DeletingDtor@State@WorldDominationTour@@UAEPAXI@Z",
+  "sym": "??_GState@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x34",
-  "name": "WorldDominationTour::State::DeletingDtor",
+  "name": "WorldDominationTour::State::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/WDTTerr.cpp",
   "addr": "0x770020",
-  "sym": "?DeletingDtor@Territory@WorldDominationTour@@UAEPAXI@Z",
+  "sym": "??_GTerritory@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x36",
-  "name": "WorldDominationTour::Territory::DeletingDtor",
+  "name": "WorldDominationTour::Territory::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/WOLPersonaInformation.cpp",
   "addr": "0x77B030",
-  "sym": "?DeletingDtor@PlayerProfile@@UAEPAXI@Z",
-  "len": "0x3E",
-  "name": "PlayerProfile::DeletingDtor",
+  "sym": "??_GPlayerProfile@@UAEPAXI@Z",
+  "len": "0x3e",
+  "name": "PlayerProfile::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -61240,7 +61204,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50DA10",
-  "sym": "?FUN_0050DA10@Obj_0050DA10@@QAEXXZ",
+  "sym": "?FUN_0050DA10@HouseClass@@QAEXXZ",
   "len": "0xc",
   "name": "Obj_0050DA10::FUN_0050DA10",
   "status": "matched",
@@ -61249,7 +61213,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50DA50",
-  "sym": "?FUN_0050DA50@Obj_0050DA10@@QAEXXZ",
+  "sym": "?FUN_0050DA50@HouseClass@@QAEXXZ",
   "len": "0x22",
   "name": "Obj_0050DA10::FUN_0050DA50",
   "status": "matched",
@@ -61258,7 +61222,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50DA80",
-  "sym": "?FUN_0050DA80@Obj_0050DA10@@QBEHXZ",
+  "sym": "?FUN_0050DA80@HouseClass@@QBEHXZ",
   "len": "0x12",
   "name": "Obj_0050DA10::FUN_0050DA80",
   "status": "matched",
@@ -61267,7 +61231,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50DEF0",
-  "sym": "?FUN_0050DEF0@Obj_0050DA10@@QBE?AUCell_0050DEF0@@XZ",
+  "sym": "?FUN_0050DEF0@HouseClass@@QBE?AVCell@@XZ",
   "len": "0x3e",
   "name": "Obj_0050DA10::FUN_0050DEF0",
   "status": "matched",
@@ -61285,7 +61249,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50DFF0",
-  "sym": "?FUN_0050DFF0@Obj_0050DA10@@QAEXXZ",
+  "sym": "?FUN_0050DFF0@HouseClass@@QAEXXZ",
   "len": "0xc",
   "name": "Obj_0050DA10::FUN_0050DFF0",
   "status": "matched",
@@ -74900,6 +74864,15 @@
   "pct": 100
  },
  {
+  "tu": "match/network/WDTGameOptions.cpp",
+  "addr": "0x767820",
+  "sym": "??0FlagGameOption@WorldDominationTour@@QAE@IVMember_7B46F0@@H0H@Z",
+  "len": "0x5d",
+  "name": "WorldDominationTour::FlagGameOption::FlagGameOption",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/network/wdt_net.cpp",
   "addr": "0x76AAB0",
   "sym": "?FUN_0076AAB0@@YI?AV?$rc_ptr@VWDTTerritory@@@@XZ",
@@ -74920,7 +74893,7 @@
  {
   "tu": "match/network/wdt_net.cpp",
   "addr": "0x76AB90",
-  "sym": "??1WDTTerritory@@QAE@XZ",
+  "sym": "??1WDTTerritory@@UAE@XZ",
   "len": "0xb",
   "name": "WDTTerritory::~WDTTerritory",
   "status": "matched",
@@ -75037,7 +75010,7 @@
  {
   "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BED0",
-  "sym": "??1CampaignProperties@WorldDominationTour@@QAE@XZ",
+  "sym": "??1CampaignProperties@WorldDominationTour@@UAE@XZ",
   "len": "0x30",
   "name": "WorldDominationTour::CampaignProperties::~CampaignProperties",
   "status": "matched",
@@ -75091,9 +75064,9 @@
  {
   "tu": "match/network/WDTProps.cpp",
   "addr": "0x76C030",
-  "sym": "?DeletingDtor@CampaignProperties@WorldDominationTour@@UAEPAXI@Z",
+  "sym": "??_GCampaignProperties@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x44",
-  "name": "WorldDominationTour::CampaignProperties::DeletingDtor",
+  "name": "WorldDominationTour::CampaignProperties::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -85579,11 +85552,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu162_methods.cpp",
+  "tu": "match/network/null_modem_conn_class.cpp",
   "addr": "0x5EF280",
-  "sym": "?FUN_005EF280@Obj_005EF280@@QAEXXZ",
+  "sym": "?Init@NullModemConnClass@@UAEXXZ",
   "len": "0x5",
-  "name": "Obj_005EF280::FUN_005EF280",
+  "name": "NullModemConnClass::Init",
   "status": "matched",
   "pct": 100
  },
@@ -86434,11 +86407,11 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/trivial_tu193_methods.cpp",
+  "tu": "match/network/rc_ptr_base.cpp",
   "addr": "0x65D690",
-  "sym": "?FUN_0065D690@Obj_0065D690@@QBE_NH@Z",
+  "sym": "?vf_1@ReferenceCounted@@UAE_NH@Z",
   "len": "0x5",
-  "name": "Obj_0065D690::FUN_0065D690",
+  "name": "ReferenceCounted::vf_1",
   "status": "matched",
   "pct": 100
  },
@@ -89035,6 +89008,15 @@
   "pct": 100
  },
  {
+  "tu": "match/network/WDTTerr.cpp",
+  "addr": "0x76FD10",
+  "sym": "??1Territory@WorldDominationTour@@UAE@XZ",
+  "len": "0x22",
+  "name": "WorldDominationTour::Territory::~Territory",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/trivial_tu281_methods.cpp",
   "addr": "0x771780",
   "sym": "?FUN_00771780@@YAXXZ",
@@ -89289,11 +89271,11 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D200",
-  "sym": "?FUN_0077D200@@YIXPAUObj_0077D200@@H@Z",
+  "sym": "?Slot4@SimpleWonlineDialogControl@@UBE_NXZ",
   "len": "0x5",
-  "name": "FUN_0077D200",
+  "name": "SimpleWonlineDialogControl::Slot4",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/network/wonline.cpp",
@@ -98282,6 +98264,15 @@
   "pct": 100.0
  },
  {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766A10",
+  "sym": "??0?$ValueGameOption@E@WorldDominationTour@@QAE@IHVMember_7B46F0@@H@Z",
+  "len": "0x47",
+  "name": "WorldDominationTour::ValueGameOption<unsigned char>::ValueGameOption",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/leaf_stub_methods_c.cpp",
   "addr": "0x769510",
   "sym": "?FUN_00769510@Obj_00769510@@QBE_NPBU1@@Z",
@@ -98332,6 +98323,15 @@
   "sym": "??_E?$rc_ptr@VWDTTerritory@@@@UAEPAXI@Z",
   "len": "0x6a",
   "name": "rc_ptr<WDTTerritory>::vector deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76AFC0",
+  "sym": "??1WDTState@@UAE@XZ",
+  "len": "0xb9",
+  "name": "WDTState::~WDTState",
   "status": "matched",
   "pct": 100
  },
@@ -98388,6 +98388,15 @@
   "name": "FUN_00779670",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/WOLPersonaInformation.cpp",
+  "addr": "0x77A050",
+  "sym": "??1PlayerProfile@@UAE@XZ",
+  "len": "0x2a",
+  "name": "PlayerProfile::~PlayerProfile",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/network/wonline.cpp",
@@ -101444,6 +101453,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/tu073_edit_class.cpp",
+  "addr": "0x4C2FC0",
+  "sym": "??0EditClass@@QAE@HPAGHIHHHHI@Z",
+  "len": "0xed",
+  "name": "EditClass::EditClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CC7C0",
   "sym": "_$E3",
@@ -102746,7 +102764,7 @@
   "len": "0x48d",
   "name": "Session map metadata",
   "status": "partial",
-  "pct": 9.2
+  "pct": 10.3
  },
  {
   "tu": "match/network/Session.cpp",
@@ -133360,16 +133378,16 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_conn_leaves.cpp",
+  "tu": "match/network/null_modem_conn_class.cpp",
   "addr": "0x5EF150",
-  "sym": "??1NullModemConnClass@@QAE@XZ",
+  "sym": "??1NullModemConnClass@@UAE@XZ",
   "len": "0x1e",
   "name": "NullModemConnClass::~NullModemConnClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_conn_leaves.cpp",
+  "tu": "match/network/null_modem_conn_class.cpp",
   "addr": "0x5EF170",
   "sym": "?SetUnknown4C@NullModemConnClass@@QAEXH@Z",
   "len": "0x13",
@@ -145006,6 +145024,15 @@
   "pct": 100
  },
  {
+  "tu": "match/ui/input_controls/menus_web_browser_ctor.cpp",
+  "addr": "0x7740A0",
+  "sym": "??_GWebBrowser@@UAEPAXI@Z",
+  "len": "0x60",
+  "name": "WebBrowser::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/input_controls/wwmous_r23_4.cpp",
   "addr": "0x7B86B0",
   "sym": "?FUN_007B86B0@@YIXXZ",
@@ -145701,7 +145728,7 @@
  {
   "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771850",
-  "sym": "??0Anim@Voices@WorldDominationTour@@QAE@PAUObj_00771620@@@Z",
+  "sym": "??0Anim@Voices@WorldDominationTour@@QAE@PAVSelection@2@@Z",
   "len": "0x31",
   "name": "WorldDominationTour::Voices::Anim::Anim",
   "status": "matched",
@@ -146207,5 +146234,59 @@
   "status": "partial",
   "pct": 94.9,
   "note": "Native vptr store and Count load are reordered; 37/39 instructions match. Vtable/provider closure remains unproved."
+ },
+ {
+  "tu": "match/network/null_modem_conn_class.cpp",
+  "addr": "0x5EF100",
+  "sym": "??0NullModemConnClass@@QAE@HHHG@Z",
+  "len": "0x4e",
+  "name": "NullModemConnClass::NullModemConnClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_vf29_004dded0.cpp",
+  "addr": "0x4DDED0",
+  "sym": "?vf_29@FootClass@@UAEHHH@Z",
+  "len": "0xC0",
+  "name": "FootClass::vf_29",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/foot_class_shadow_draw_004db0d0.cpp",
+  "addr": "0x4DB0D0",
+  "sym": "?FUN_004DB0D0@FootClass@@QAEXHHHHHPAUPoint2D@@HHHHH@Z",
+  "len": "0xCD",
+  "name": "FootClass::FUN_004DB0D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/cell_class_clear_00486ff0.cpp",
+  "addr": "0x486FF0",
+  "sym": "?FUN_00486FF0@CellClass@@QAE_NXZ",
+  "len": "0xB6",
+  "name": "CellClass::FUN_00486FF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/rules_class_ctor_665650.cpp",
+  "addr": "0x665650",
+  "sym": "??0RulesClass@@QAE@XZ",
+  "len": "0x23d7",
+  "name": "RulesClass::RulesClass",
+  "status": "partial",
+  "pct": 99.8
+ },
+ {
+  "tu": "match/core/rules_class_save_674730.cpp",
+  "addr": "0x674730",
+  "sym": "?Save@RulesClass@@QAEXPAUIStream@@@Z",
+  "len": "0xadb",
+  "name": "RulesClass::Save",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

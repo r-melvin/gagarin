@@ -240,8 +240,6 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
-// GLOBAL: GAMEMD 0x00A8EF98
-extern "C" Cell_0050DEF0 DAT_00A8EF98;
 // GLOBAL: GAMEMD 0x00A9FAB0
 extern "C" int DAT_00A9FAB0;
 // GLOBAL: GAMEMD 0x00AA0444

@@ -12,10 +12,3 @@ int __cdecl FUN_005EF270()
 {
     return 0x18;
 }
-
-// FUNCTION: GAMEMD 0x5EF280
-// Tail-forwards to another function. Vtable slot 1 of NullModemConnClass (RTTI).
-void Obj_005EF280::FUN_005EF280()
-{
-    FUN_0048BF10();
-}

@@ -4,7 +4,7 @@
 // .?AUINISection@INIClass@@. The retail constructor 0x52AF00 and teardown
 // bodies 0x52AAF0/0x52AB80 pin the accessed members and their widths below.
 // Unknown complete virtual declarations and original source-file grouping
-// remain separate recovery work; explicit inherited vptr views are retained.
+// remain separate recovery work.
 #ifndef GG_MATCH_LAYOUT_INI_NODES_H
 #define GG_MATCH_LAYOUT_INI_NODES_H
 #include "ini_class.h"
@@ -38,10 +38,9 @@ struct INIClass::INIEntry : public Node<INIClass::INIEntry*>
     INIEntry(char* entry, char* value, INIComment* comments, char* commentstring,
              int commentcursor, int preindentcursor, int postindentcursor);
 
+    // VTABLE: GAMEMD 0x7EB734 -- slot 0 is the ??_G at 0x52AD50.
     // FUNCTION: GAMEMD 0x52AAF0
-    void DestroyEntry();
-    // FUNCTION: GAMEMD 0x52AD50  vtable 0x7EB734 slot 0
-    void* DeletingDestructor(unsigned int flags);
+    virtual ~INIEntry();
 };
 
 GG_STATIC_ASSERT(offsetof(INIClass::INIEntry, Entry)            == 0x0C &&
@@ -62,15 +61,15 @@ GG_STATIC_ASSERT(offsetof(INIClass::INIEntry, Entry)            == 0x0C &&
 struct INIClass::INISection : public Node<INIClass::INISection*>
 {
     char*         Section;      // +0x0C
-    // RTTI table 0x7EB744; explicit inherited vptr view is retained.
     List<INIEntry*> Entries;    // +0x10
     IndexClassRaw EntryIndex;   // +0x2C
     INIComment*   Comments;     // +0x40
 
     INIEntry* FirstEntry() const { return (INIEntry*)Entries.First(); }
 
+    // VTABLE: GAMEMD 0x7EB73C -- slot 0 is the ??_G at 0x52AE00.
     // FUNCTION: GAMEMD 0x52AB80
-    void DestroySection();
+    virtual ~INISection();
 };
 
 GG_STATIC_ASSERT(offsetof(INIClass::INISection, Section)    == 0x0C &&

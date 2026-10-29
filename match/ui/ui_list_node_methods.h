@@ -21,12 +21,7 @@ extern "C" void __cdecl gg_free(void* block);
 // already modelled in match/core/small_misc46_methods.h).
 extern "C" void __cdecl FUN_007C93E8(void* block);
 
-// VTABLE: GAMEMD 0x7EDF50 — MixFileClass.
-extern char VT_007EDF50;
 #include "../_layout/sorted_tree_node.h"
-
-// ---------------------------------------------------------------------------
-// GenericNode and its primitives use the shared binary-confirmed layout.
 
 // ---------------------------------------------------------------------------
 // The MixFileClass destroyed at 0x5B3F50 and 0x5B4630: a GenericNode with four
@@ -37,12 +32,9 @@ extern char VT_007EDF50;
 // 0x5B3F6C, the ownership byte +0x12 at 0x5B3F73 (`CMP byte ptr [ESI+0x12],BL`,
 // a byte, cleared with the same zero), and +0x20 at 0x5B3F84. Everything in
 // between is untouched here and stays a named gap.
-class MixFileClass
+class MixFileClass : public GenericNode
 {
 public:
-    char*     Vptr;            // +0x00
-    GenericNode* Prev;            // +0x04
-    GenericNode* Next;            // +0x08
     void*     Buffer;          // +0x0C
     char      unknown_10[2];   // +0x10
     bool      OwnsRecord;      // +0x12
@@ -50,39 +42,17 @@ public:
     void*     Scratch;         // +0x20
     void*     Record;          // +0x24
 
-    void DestructInPlace()
-    {
-        this->Vptr = &VT_007EDF50;
-        if (this->Buffer != 0) {
-            FUN_007C93E8(this->Buffer);
-        }
-        if (this->Record != 0 && this->OwnsRecord) {
-            gg_free(this->Record);
-            this->OwnsRecord = false;
-        }
-        this->Record = 0;
-        if (this->Scratch != 0) {
-            gg_free(this->Scratch);
-            this->Scratch = 0;
-        }
-        ((GenericNode*)this)->Unlink();
-        ((GenericNode*)this)->DestroyNode();
-    }
-
+    // VTABLE: GAMEMD 0x7EDF50 -- slot 0 is the ??_G at 0x5B4630.
     // FUNCTION: GAMEMD 0x5B3F50
-    void Destruct();
-    // FUNCTION: GAMEMD 0x5B4630
-    MixFileClass* ScalarDeletingDtor(char flags);
+    virtual ~MixFileClass();
 };
-GG_STATIC_ASSERT(offsetof(MixFileClass, Prev) == 0x04);
-GG_STATIC_ASSERT(offsetof(MixFileClass, Next) == 0x08);
+
+GG_STATIC_ASSERT(offsetof(MixFileClass, NextNode) == 0x04);
+GG_STATIC_ASSERT(offsetof(MixFileClass, PrevNode) == 0x08);
 GG_STATIC_ASSERT(offsetof(MixFileClass, Buffer) == 0x0C);
 GG_STATIC_ASSERT(offsetof(MixFileClass, OwnsRecord) == 0x12);
 GG_STATIC_ASSERT(offsetof(MixFileClass, Scratch) == 0x20);
 GG_STATIC_ASSERT(offsetof(MixFileClass, Record) == 0x24);
 GG_STATIC_ASSERT(sizeof(MixFileClass) == 0x28);
-
-// ---------------------------------------------------------------------------
-// GenericList at 0x5B46E0 uses the shared declaration.
 
 #endif  // GG_MATCH_UI_UI_LIST_NODE_METHODS_H

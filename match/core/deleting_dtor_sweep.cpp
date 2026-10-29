@@ -74,18 +74,6 @@ void* Obj_4AEBF0::FUN_4AEBF0(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x4B57D0   EditClass::`scalar deleting destructor'
-void* EditClass::ScalarDeletingDestructor(unsigned int flags)
-{
-    FUN_004C30B0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x4D2910
 void* Obj_4D2910::FUN_4D2910(unsigned int flags)
 {
@@ -362,42 +350,6 @@ void* Obj_74AB50::FUN_74AB50(unsigned int flags)
 void* Obj_74F340::FUN_74F340(unsigned int flags)
 {
     FUN_0074C9F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x766A60
-void* Obj_766A60::FUN_766A60(unsigned int flags)
-{
-    FUN_00767300(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x769C00
-void* Obj_769C00::FUN_769C00(unsigned int flags)
-{
-    FUN_007680C0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x76B6F0
-void* Obj_76B6F0::FUN_76B6F0(unsigned int flags)
-{
-    FUN_0076AFC0(this);
 
     if (flags & 1) {
         FUN_007C8B3D(this);

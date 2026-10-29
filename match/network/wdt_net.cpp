@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   WDTTerritory and WDTState, their rc_ptr factories, and the
 //   VectorClass<rc_ptr<WDTTerritory>> members emitted beside them. Class names
 //   are the retail RTTI names; members are placeholders.
@@ -65,6 +66,26 @@ rc_ptr<WDTState> FUN_0076ABA0(void* source)
     return rc_ptr<WDTState>(new WDTState(source));
 }
 
+// FUNCTION: GAMEMD 0x76AFC0
+// Empties the territory list, frees the three labels and the row table.
+WDTState::~WDTState()
+{
+    Territories.Clear();
+    if (unknown_0C != 0)
+        delete unknown_0C;
+    if (unknown_08 != 0)
+        delete unknown_08;
+    if (unknown_10 != 0)
+        delete unknown_10;
+    if (unknown_44 != 0) {
+        for (int i = 0; i < unknown_24; i++) {
+            if (unknown_44[i] != 0)
+                delete unknown_44[i];
+        }
+        delete unknown_44;
+    }
+}
+
 // FUNCTION: GAMEMD 0x76B080
 bool WDTState::FUN_0076B080() const
 {
@@ -79,6 +100,12 @@ unsigned char WDTState::FUN_0076B090() const
 {
     return unknown_48;
 }
+
+// SYNTHETIC: GAMEMD 0x76B6C0
+// WDTTerritory scalar deleting destructor, the destructor body inlined.
+
+// SYNTHETIC: GAMEMD 0x76B6F0
+// WDTState scalar deleting destructor (the large destructor stays out of line).
 
 // FUNCTION: GAMEMD 0x76B740
 // DynamicVectorClass<rc_ptr<WDTTerritory>>::Slot5

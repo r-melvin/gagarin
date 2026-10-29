@@ -20,16 +20,16 @@
 
 
 
-// The queued blueprint. Two vtable slots are dispatched; because Slot_2C takes
-// stack arguments it must be a real virtual rather than the tree's
-// __fastcall-fn-pointer shortcut (methodology §4.6).
+// The queued blueprint. Two vtable slots are dispatched; Slot_2C (the no-arg
+// RTTI getter) is a real virtual rather than the tree's __fastcall-fn-pointer
+// shortcut (methodology §4.6).
 class TechnoTypeClass
 {
 public:
 #include "factory_class_start_slots.inc"
 
     char          _padAfterVtbl[0xCCE - 4];  // +0x0004
-    unsigned char unknown_CCE;               // +0x0CCE  passed to Slot_2C
+    unsigned char unknown_CCE;               // +0x0CCE  naval flag passed to BeginProduction
 };
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_CCE) == 0xCCE);
 

@@ -9,6 +9,7 @@
 //   0x773450  FUN_00773450 (factory)
 //   0x773500  WebBrowser::WebBrowser
 //   0x773590  WebBrowser::Initialise
+//   0x7740A0  WebBrowser scalar deleting destructor (compiler-emitted)
 //
 // LIBRARY: IAT 0x7E15FC OLE32!CoCreateInstance; GAMEMD 0x7C8E17 -- operator new.
 
@@ -55,3 +56,7 @@ bool WebBrowser::Initialise(void* window, const void* arg)
     }
     return true;
 }
+
+// SYNTHETIC: GAMEMD 0x7740A0
+// WebBrowser scalar deleting destructor, emitted with the vtable 0x7F743C by the constructor above;
+// the destructor defined in the class body is expanded into it.

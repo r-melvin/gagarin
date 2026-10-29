@@ -36,6 +36,12 @@ rc_ptr_base::rc_ptr_base(const rc_ptr_base& other)
         ++((ReferenceCounted*)Pointer)->RefCount;
 }
 
+// FUNCTION: GAMEMD 0x65D660
+// Seats the table; out of line, called by every derived destructor.
+ReferenceCounted::~ReferenceCounted()
+{
+}
+
 // FUNCTION: GAMEMD 0x65D670
 // Drop one reference; the last one deletes the object.
 void ReferenceCounted::vf_2()
@@ -43,3 +49,13 @@ void ReferenceCounted::vf_2()
     if (--RefCount == 0 && this != 0)
         delete this;
 }
+
+// FUNCTION: GAMEMD 0x65D690
+// Vtable slot 1 of every ReferenceCounted table: returns false.
+bool ReferenceCounted::vf_1(int)
+{
+    return false;
+}
+
+// SYNTHETIC: GAMEMD 0x65D6A0
+// ReferenceCounted scalar deleting destructor, the destructor body inlined.
