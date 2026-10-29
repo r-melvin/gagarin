@@ -23,6 +23,7 @@
 #include "../_layout/voxel_anim_type_class.h"
 #include "../_layout/warhead_type_class.h"
 #include "../_layout/aircraft_class.h"
+#include "../_layout/fogged_object_class.h"
 #include "../_layout/aircraft_type_class.h"
 #include "../_layout/anim_class.h"
 #include "../_layout/infantry_class.h"
@@ -202,10 +203,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 
-class FoggedObjectClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class IsometricTileClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);

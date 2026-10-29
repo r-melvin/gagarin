@@ -151,9 +151,6 @@ void __cdecl FUN_007B84D0();
 // FUNCTION: GAMEMD 0x407780 (decl; reloc)
 // FUN_00407780
 void FUN_00407780();
-// FUNCTION: GAMEMD 0x401080 (decl; reloc)
-// FUN_00401080
-void FUN_00401080(void*);
 // FUNCTION: GAMEMD 0x403810 (decl; reloc)
 // FUN_00403810
 void FUN_00403810(void*);
@@ -1302,14 +1299,14 @@ DWORD __stdcall FUN_004095B0(void* parameter)
                 }
                 if (owner)
                 {
-                    FUN_00401080(DAT_0087E744);
-                    FUN_00401080(DAT_0087E748);
-                    FUN_00401080(DAT_0087E740);
-                    FUN_00401080(DAT_0087E73C);
-                    FUN_00401080(DAT_0087E754);
-                    FUN_00401080(DAT_0087E758);
-                    FUN_00401080(DAT_0087E750);
-                    FUN_00401080(DAT_0087E74C);
+                    DAT_0087E744->FUN_00401080();
+                    DAT_0087E748->FUN_00401080();
+                    DAT_0087E740->FUN_00401080();
+                    DAT_0087E73C->FUN_00401080();
+                    DAT_0087E754->FUN_00401080();
+                    DAT_0087E758->FUN_00401080();
+                    DAT_0087E750->FUN_00401080();
+                    DAT_0087E74C->FUN_00401080();
                     FUN_00403810(owner);
                     FUN_00401170(DAT_0087E748);
                     FUN_00401170(DAT_0087E744);
@@ -1779,14 +1776,14 @@ void FUN_0040A9A0(void* context)
 {
     if (context)
     {
-        FUN_00401080(DAT_0087E744);
-        FUN_00401080(DAT_0087E748);
-        FUN_00401080(DAT_0087E740);
-        FUN_00401080(DAT_0087E73C);
-        FUN_00401080(DAT_0087E754);
-        FUN_00401080(DAT_0087E758);
-        FUN_00401080(DAT_0087E750);
-        FUN_00401080(DAT_0087E74C);
+        DAT_0087E744->FUN_00401080();
+        DAT_0087E748->FUN_00401080();
+        DAT_0087E740->FUN_00401080();
+        DAT_0087E73C->FUN_00401080();
+        DAT_0087E754->FUN_00401080();
+        DAT_0087E758->FUN_00401080();
+        DAT_0087E750->FUN_00401080();
+        DAT_0087E74C->FUN_00401080();
         FUN_00403810(context);
         FUN_00401170(DAT_0087E748);
         FUN_00401170(DAT_0087E744);

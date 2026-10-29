@@ -17,8 +17,6 @@
 #include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x4093B0 — the 64-bit reading, returned in EDX:EAX.
-unsigned __int64 FUN_004093B0();
 // FUNCTION: GAMEMD 0x48D080 — the yield, no arguments.
 void FUN_0048D080();
 

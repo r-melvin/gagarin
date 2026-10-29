@@ -17,6 +17,7 @@
 #define GG_MATCH_CORE_DISPATCH_STATE_METHODS_H
 
 #include <stddef.h>
+#include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 struct Obj_004025B0;
@@ -34,7 +35,8 @@ struct Obj_004025B0
 {
     char             _pad000[0xC];
     int              Recorded;   // +0x000C
-    char             Part[0xA4 - 0x10];   // +0x0010
+    Obj_00401000     Part;       // +0x10, initialized by 0x402418 via 0x401000
+    char             _pad088[0xA4 - 0x88];
     // volatile: shared with the mixer thread 0x4095B0 (CreateThread @0x409511),
     // which tests it at 0x409626; written here and by 0x402600/0x402650.
     volatile int     Flags;      // +0x00A4
@@ -70,13 +72,13 @@ struct Obj_004025B0
     long FUN_00402720();
 };
 GG_STATIC_ASSERT(offsetof(Obj_004025B0, Recorded) == 0xC);
+GG_STATIC_ASSERT(offsetof(Obj_004025B0, Part) == 0x10);
+GG_STATIC_ASSERT(offsetof(Obj_004025B0, _pad088) == 0x88);
 GG_STATIC_ASSERT(offsetof(Obj_004025B0, Flags) == 0xA4);
 GG_STATIC_ASSERT(offsetof(Obj_004025B0, Handler) == 0xBC);
 GG_STATIC_ASSERT(offsetof(Obj_004025B0, Dispatch) == 0xD4);
 GG_STATIC_ASSERT(offsetof(Obj_004025B0, Pending) == 0x168);
 
-// FUNCTION: GAMEMD 0x401080 — resets the sub-object at +0x10, __fastcall.
-void FUN_00401080(void* part);
 // FUNCTION: GAMEMD 0x402220 — the pre-step, __fastcall.
 void FUN_00402220(Obj_004025B0* self);
 

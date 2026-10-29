@@ -18,20 +18,20 @@ extern int DAT_00ABCD3C;
 ULONG __stdcall EnumConnectionsClass::AddRef()
 {
     DAT_00ABCD3C++;
-    return InterlockedIncrement((LONG*)&unknown_20);
+    return InterlockedIncrement((LONG*)&RefCount);
 }
 
 // FUNCTION: GAMEMD 0x4A0160
 HRESULT __stdcall EnumConnectionsClass::Skip(ULONG cConnections)
 {
-    unknown_1C += cConnections;
+    Index += cConnections;
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x4A0180
 HRESULT __stdcall EnumConnectionsClass::Reset()
 {
-    unknown_1C = 0;
+    Index = 0;
     return 0;
 }
 
@@ -39,19 +39,19 @@ HRESULT __stdcall EnumConnectionsClass::Reset()
 ULONG __stdcall EnumConnectionPointsClass::AddRef()
 {
     DAT_00ABCD3C++;
-    return InterlockedIncrement((LONG*)&unknown_08);
+    return InterlockedIncrement((LONG*)&RefCount);
 }
 
 // FUNCTION: GAMEMD 0x4A0AF0
 HRESULT __stdcall EnumConnectionPointsClass::Skip(ULONG cConnections)
 {
-    unknown_04 += cConnections;
+    Index += cConnections;
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x4A0B10
 HRESULT __stdcall EnumConnectionPointsClass::Reset()
 {
-    unknown_04 = 0;
+    Index = 0;
     return 0;
 }

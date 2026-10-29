@@ -2,7 +2,9 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x54E4D0.
 
-#include "kamikaze_update_methods.h"
+#include "../_layout/kamikaze_class.h"
+#include "../_layout/aircraft_class.h"
+#include "../_layout/cell_class.h"
 
 // FUNCTION: GAMEMD 0x54E4D0
 //
@@ -21,24 +23,24 @@
 void Kamikaze::Update()
 {
     if (this->UpdateTimer.GetTimeLeft() == 0) {
-        this->UpdateTimer = CDTimer_0054E4D0(30);
+        this->UpdateTimer = CDTimerClass(30);
 
-        for (int i = 0; i < this->NodesCount; ++i) {
-            KamikazeControl_0054E4D0* node = this->NodesItems[i];
+        for (int i = 0; i < this->Nodes.Count; ++i) {
+            KamikazeControl* node = this->Nodes.Items[i];
             AbstractClass* target = node->Target;
-            Unit_0054E4D0* unit = node->Item;
+            AircraftClass* unit = node->Item;
             unit->Ammo = 1;
 
             if (target == 0) {
-                int facing = ((unit->PrimaryFacing.Current().Raw >> 12) + 1 >> 1) & 7;
-                Cell_0054E4D0* cell = (unit->*unit->Vtbl->GetCell)();
-                Cell_0054E4D0* ahead = cell->GetNeighbourCell(facing);
-                (unit->*unit->Vtbl->SetTarget)((AbstractClass*)ahead);
-                (unit->*unit->Vtbl->QueueMission)(1, 0);
+                int facing = ((unit->PrimaryFacing.FUN_004C93D0().Whole >> 12) + 1 >> 1) & 7;
+                CellClass* cell = unit->vf_111();
+                CellClass* ahead = cell->GetNeighbourCell(facing);
+                unit->vf_242((int)ahead);
+                unit->vf_122(1, 0);
                 continue;
             }
-            (unit->*unit->Vtbl->SetTarget)(target);
-            (unit->*unit->Vtbl->QueueMission)(1, 0);
+            unit->vf_242((int)target);
+            unit->vf_122(1, 0);
         }
     }
 }

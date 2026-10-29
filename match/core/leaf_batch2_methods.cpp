@@ -3,19 +3,6 @@
 
 #include "leaf_batch2_methods.h"
 
-// FUNCTION: GAMEMD 0x004C2C10
-//
-// WaveEntry cleanup: if OwnerPtr is non-null, clear a field within the owner
-// object (at offset 0x6dc), then clear the OwnerPtr member itself.
-void WaveEntry_004C2C10::DetachOwner()
-{
-    void* owner = this->OwnerPtr;
-    if (owner != 0) {
-        *(int*)((char*)owner + 0x6dc) = 0;
-        this->OwnerPtr = 0;
-    }
-}
-
 // FUNCTION: GAMEMD 0x004CA170
 //
 // FactoryClass getter: return the OriginalBalance field at offset 0x68

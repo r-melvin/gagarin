@@ -24,12 +24,12 @@ HRESULT __stdcall EnumConnectionsClass::Next(ULONG cConnections, LPCONNECTDATA r
         *pcFetched = 0;
     ULONG fetched = 0;
     ULONG i = 0;
-    while (i < cConnections && unknown_1C < unknown_14) {
-        unknown_08[unknown_1C].pUnk->AddRef();
+    while (i < cConnections && Index < Connections.Count) {
+        Connections.Items[Index].pUnk->AddRef();
         fetched++;
         i++;
-        int index = unknown_1C++;
-        *rgcd++ = unknown_08[index];
+        int index = Index++;
+        *rgcd++ = Connections.Items[index];
     }
     if (pcFetched)
         *pcFetched = fetched;
@@ -49,12 +49,12 @@ HRESULT __stdcall EnumConnectionPointsClass::Next(ULONG cConnections, LPCONNECTI
         *pcFetched = 0;
     ULONG fetched = 0;
     ULONG i = 0;
-    while (i < cConnections && unknown_04 < unknown_1C) {
-        unknown_10[unknown_04]->AddRef();
+    while (i < cConnections && Index < Points.Count) {
+        Points.Items[Index]->AddRef();
         fetched++;
         i++;
-        int index = unknown_04++;
-        *ppCP++ = unknown_10[index];
+        int index = Index++;
+        *ppCP++ = Points.Items[index];
     }
     if (pcFetched)
         *pcFetched = fetched;

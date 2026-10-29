@@ -597,17 +597,7 @@ public:
 };
 
 // CALLEE: GAMEMD 0x004D08B0 (decl; reloc) -- FoggedObjectClass default constructor.
-class FoggedObjectClass : public AbstractClass
-{
-public:
-    FoggedObjectClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x78 - sizeof(AbstractClass)];
-};
+#include "../_layout/fogged_object_class.h"
 
 #include "../_layout/alpha_shape_class.h"
 

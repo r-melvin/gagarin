@@ -2,7 +2,9 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x54E7B0.
 
-#include "kamikaze_load_methods.h"
+#include "../_layout/kamikaze_class.h"
+#include "../_layout/swizzle_manager_class.h"
+#include "../core/vector_add_item_free.h"
 
 // FUNCTION: GAMEMD 0x54E7B0
 //
@@ -12,24 +14,23 @@
 // the inlined DynamicVectorClass::AddItem. Any negative HRESULT from the
 // stream ends the load with that code; otherwise the last read's code is
 // returned.
-long Kamikaze::Load(IStream_0054E7B0* stream)
+HRESULT Kamikaze::Load(IStream* stream)
 {
     int  count;
-    long hr = stream->Read(&count, 4, 0);
+    HRESULT hr = stream->Read(&count, 4, 0);
     if (hr < 0) {
         return hr;
     }
 
     for (int i = 0; i < count; ++i) {
-        KamikazeControl_0054E7B0* node =
-            (KamikazeControl_0054E7B0*)operator new(sizeof(KamikazeControl_0054E7B0));
-        hr = stream->Read(node, sizeof(KamikazeControl_0054E7B0), 0);
+        KamikazeControl* node = (KamikazeControl*)operator new(sizeof(KamikazeControl));
+        hr = stream->Read(node, sizeof(KamikazeControl), 0);
         if (hr < 0) {
             return hr;
         }
         DAT_00B0C110.SwizzleManagerClass::vf_4(&node->Item);
         DAT_00B0C110.SwizzleManagerClass::vf_4(&node->Target);
-        this->Nodes.AddItem(node);
+        DynamicVectorAddItemFree(&this->Nodes, node);
     }
 
     return hr;

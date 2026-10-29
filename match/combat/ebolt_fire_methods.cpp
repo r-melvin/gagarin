@@ -3,6 +3,8 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4C2A60.
 
 #include "ebolt_fire_methods.h"
+#include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
 
 // FUNCTION: GAMEMD 0x4C2A60
 //
@@ -10,14 +12,14 @@
 // are stored, a random phase in [0, 0x100] is drawn, the bolt is appended to
 // the global bolt list (inlined DynamicVectorClass::AddItem) and a particle
 // system of the rules-supplied type is spawned at the far end.
-void EBolt::Fire(CoordStruct_004C2A60 from, CoordStruct_004C2A60 to, int color)
+void EBolt::Fire(CoordStruct from, CoordStruct to, int color)
 {
     this->Point1 = from;
     this->Point2 = to;
-    this->At_18  = color;
-    this->At_1C  = DAT_00886B88.RandomRanged(0, 0x100);
+    this->Color  = color;
+    this->Phase  = DAT_00886B88.RandomRanged(0, 0x100);
 
-    DAT_008A0E88.AddItem(this);
+    DynamicVectorAddItemFree(&DAT_008A0E88, this);
 
     ParticleSystem_004C2A60* ps =
         (ParticleSystem_004C2A60*)operator new(sizeof(ParticleSystem_004C2A60));

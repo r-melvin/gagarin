@@ -14,5 +14,5 @@ extern int DAT_00ABCD3C;
 ULONG __stdcall ConnectionPointClass::AddRef()
 {
     DAT_00ABCD3C++;
-    return InterlockedIncrement((LONG*)&unknown_14);
+    return InterlockedIncrement((LONG*)&RefCount);
 }

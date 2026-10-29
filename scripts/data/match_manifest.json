@@ -1875,18 +1875,18 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tu073_edit_class.cpp",
+  "tu": "match/combat/ebolt_class.cpp",
   "addr": "0x4C2BD0",
-  "sym": "?SetOwner@EBolt@@QAEXPAUEBoltOwner@@H@Z",
+  "sym": "?SetOwner@EBolt@@QAEXPAVUnitClass@@H@Z",
   "len": "0x3B",
-  "name": "SetOwner",
+  "name": "EBolt::SetOwner",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/combat/ebolt_fire_methods.cpp",
   "addr": "0x4C2A60",
-  "sym": "?Fire@EBolt@@QAEXUCoordStruct_004C2A60@@0H@Z",
+  "sym": "?Fire@EBolt@@QAEXUCoordStruct@@0H@Z",
   "len": "0xd8",
   "name": "EBolt::Fire",
   "status": "matched",
@@ -1940,7 +1940,7 @@
  {
   "tu": "match/combat/kamikaze_load_methods.cpp",
   "addr": "0x54E7B0",
-  "sym": "?Load@Kamikaze@@QAEJPAUIStream_0054E7B0@@@Z",
+  "sym": "?Load@Kamikaze@@QAEJPAUIStream@@@Z",
   "len": "0xd7",
   "name": "Kamikaze::Load",
   "status": "matched",
@@ -8358,11 +8358,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_batch2_methods.cpp",
-  "addr": "0x004C2C10",
-  "sym": "?DetachOwner@WaveEntry_004C2C10@@QAEXXZ",
+  "tu": "match/combat/ebolt_class.cpp",
+  "addr": "0x4C2C10",
+  "sym": "?DetachOwner@EBolt@@QAEXXZ",
   "len": "0x13",
-  "name": "WaveEntry::DetachOwner",
+  "name": "EBolt::DetachOwner",
   "status": "matched",
   "pct": 100
  },
@@ -84074,20 +84074,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu085_methods.cpp",
+  "tu": "match/map/fogged_object_class.cpp",
   "addr": "0x4D27B0",
-  "sym": "?FUN_004D27B0@Obj_004D27B0@@QBEHXZ",
+  "sym": "?vf_11@FoggedObjectClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_004D27B0::FUN_004D27B0",
+  "name": "FoggedObjectClass::vf_11",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu085_methods.cpp",
+  "tu": "match/map/fogged_object_class.cpp",
   "addr": "0x4D27C0",
-  "sym": "?FUN_004D27C0@Obj_004D27C0@@QBEHXZ",
+  "sym": "?vf_12@FoggedObjectClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_004D27C0::FUN_004D27C0",
+  "name": "FoggedObjectClass::vf_12",
   "status": "matched",
   "pct": 100
  },
@@ -103412,6 +103412,42 @@
   "name": "?FUN_004AEA20@@YGXH@Z",
   "status": "partial",
   "pct": 3.6
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A8630",
+  "sym": "_$E18",
+  "len": "0x49",
+  "name": "dynamic initializer (DisplayLayerStatics::Layers)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A8680",
+  "sym": "_$E15",
+  "len": "0x51",
+  "name": "exit stub (DisplayLayerStatics::Layers)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A86E0",
+  "sym": "_$E24",
+  "len": "0x2c",
+  "name": "dynamic initializer (DisplayButtonStatics::Button)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A8710",
+  "sym": "_$E21",
+  "len": "0x1f",
+  "name": "exit stub (DisplayButtonStatics::Button)",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -146054,5 +146090,77 @@
   "name": "RulesClass::~RulesClass",
   "status": "partial",
   "pct": 25.0
+ },
+ {
+  "tu": "match/combat/ebolt_class.cpp",
+  "addr": "0x4C1E10",
+  "sym": "??0EBolt@@QAE@XZ",
+  "len": "0x38",
+  "name": "EBolt::EBolt",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/ebolt_class.cpp",
+  "addr": "0x4C2B40",
+  "sym": "?GetOwnerCoords@EBolt@@QAEPAUCoordStruct@@PAU2@@Z",
+  "len": "0x81",
+  "name": "EBolt::GetOwnerCoords",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/fogged_object_class.cpp",
+  "addr": "0x4D08B0",
+  "sym": "??0FoggedObjectClass@@QAE@XZ",
+  "len": "0xc9",
+  "name": "FoggedObjectClass::FoggedObjectClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/fogged_object_class.cpp",
+  "addr": "0x4D24A0",
+  "sym": "?Save@FoggedObjectClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x6b",
+  "name": "FoggedObjectClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/fogged_object_class.cpp",
+  "addr": "0x4D2810",
+  "sym": "?vf_13@FoggedObjectClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0xad",
+  "name": "FoggedObjectClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/kamikaze_class.cpp",
+  "addr": "0x54E360",
+  "sym": "??0Kamikaze@@QAE@XZ",
+  "len": "0x4f",
+  "name": "Kamikaze::Kamikaze",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/kamikaze_class.cpp",
+  "addr": "0x54E690",
+  "sym": "??1Kamikaze@@QAE@XZ",
+  "len": "0x5e",
+  "name": "Kamikaze::~Kamikaze",
+  "status": "partial",
+  "pct": 73.2
+ },
+ {
+  "tu": "match/combat/kamikaze_class.cpp",
+  "addr": "0x54E2D0",
+  "sym": "_$E2",
+  "len": "0x81",
+  "name": "dynamic initializer exit stub (DAT_00ABC5F8)",
+  "status": "matched",
+  "pct": 100
  }
 ]

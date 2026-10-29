@@ -118,7 +118,7 @@ public:
     unsigned char TerrainPalette;       // +0x6D3  ctor: MOV byte [ESI+0x6D3],BL @0x0073540A
     int           unknown_int_6D4;      // +0x6D4  ctor: MOV [ESI+0x6D4],EDI(-1) @0x00735410
     int           DeathFrameCounter;    // +0x6D8  ctor: MOV [ESI+0x6D8],EDI(-1) @0x00735416
-    void*         ElectricBolt;         // +0x6DC  EBolt*; ctor: MOV [ESI+0x6DC],EBX(0) @0x0073541C
+    class EBolt*   ElectricBolt;         // +0x6DC; ctor: MOV [ESI+0x6DC],EBX(0) @0x0073541C
     unsigned char Deployed;             // +0x6E0  ctor: MOV byte [ESI+0x6E0],BL @0x00735422
     unsigned char Deploying;            // +0x6E1  ctor: MOV byte [ESI+0x6E1],BL @0x00735428
     unsigned char Undeploying;          // +0x6E2  ctor: MOV byte [ESI+0x6E2],BL @0x0073542E

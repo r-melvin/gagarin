@@ -105,6 +105,21 @@ double DAT_008A0628 = DAT_007E1718 / DAT_008A0738;
 // GLOBAL: GAMEMD 0x008A0720
 MathTblCoord DAT_008A0720;
 
+struct DisplayLayerStatics {
+    // GLOBAL: GAMEMD 0x008A0360 -- the five draw layers (guard byte 0x008A03E1 bit 0).
+    static LayerClass Layers[5];
+};
+struct DisplayButtonStatics {
+    // GLOBAL: GAMEMD 0x008A06F8 -- the tactical button (guard byte 0x008A03E0 bit 0).
+    static DisplayTacticalGadget_008A06F8 Button;
+};
+// SYNTHETIC: GAMEMD 0x004A8630 -- initialiser of Layers
+// SYNTHETIC: GAMEMD 0x004A8680 -- guarded exit stub of Layers
+LayerClass DisplayLayerStatics::Layers[5];
+// SYNTHETIC: GAMEMD 0x004A86E0 -- initialiser of Button
+// SYNTHETIC: GAMEMD 0x004A8710 -- guarded exit stub of Button
+DisplayTacticalGadget_008A06F8 DisplayButtonStatics::Button;
+
 // FUNCTION: GAMEMD 0x4A8850
 void DisplayClass::vf_05()
 {
@@ -132,8 +147,8 @@ void DisplayClass::vf_07()
     PowerMode = false;
     for (int i = 0; i < 5; i++)
     {
-        DisplayLayerVec* layer = &DisplayLayers_008A0360[i];
-        layer->vf_03();
+        LayerClass* layer = &DisplayLayerStatics::Layers[i];
+        layer->Clear();
     }
 }
 
@@ -143,8 +158,8 @@ void DisplayClass::vf_08()
     GScreenClass::vf_08();
     if (!DisplayFlag_00A8ED6B)
     {
-        DisplayButton_008A06F8.FUN_005565F0();
-        AddButton(&DisplayButton_008A06F8);
+        DisplayButtonStatics::Button.LinkClass::Zap();
+        AddButton((DisplayGadget*)&DisplayButtonStatics::Button);
     }
 }
 
@@ -1671,7 +1686,7 @@ long DisplayClass::vf_30(IStream* stream)
     long result;
     for (int i = 0; i < 5; i++)
     {
-        DisplayLayerVec* layer = &DisplayLayers_008A0360[i];
+        LayerClass* layer = &DisplayLayerStatics::Layers[i];
         result = layer->Load(stream);
     }
     return result;
@@ -1684,7 +1699,7 @@ long DisplayClass::vf_31(IStream* stream)
     long result;
     for (int i = 0; i < 5; i++)
     {
-        DisplayLayerVec* layer = &DisplayLayers_008A0360[i];
+        LayerClass* layer = &DisplayLayerStatics::Layers[i];
         result = layer->Save(stream);
         if (result < 0)
             break;

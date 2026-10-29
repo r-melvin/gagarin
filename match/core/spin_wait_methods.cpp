@@ -47,7 +47,7 @@ void FUN_004070B0(Timer_00401000* self)
 // guard is 33.3%, so the two reads of `self->Inner` stay in the guard.
 void FUN_004080F0(Outer_004080F0* self)
 {
-    unsigned __int64 deadline = FUN_004093B0() + self->Inner->Interval;
+    unsigned __int64 deadline = Unsorted_AudioGetTime() + self->Inner->Interval;
 
     while (1) {
         if (!((*(unsigned char*)&self->Flags & 1)
@@ -55,7 +55,7 @@ void FUN_004080F0(Outer_004080F0* self)
             break;
         }
 
-        if (FUN_004093B0() >= deadline) {
+        if (Unsorted_AudioGetTime() >= deadline) {
             break;
         }
 

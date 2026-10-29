@@ -50,7 +50,7 @@ long Obj_004025B0::FUN_00402720()
         return 0x80070000;
     }
 
-    FUN_00401080(this->Part);
+    this->Part.FUN_00401080();
     FUN_00402220(this);
 
     DISPATCH_004025B0(this, 0x28);

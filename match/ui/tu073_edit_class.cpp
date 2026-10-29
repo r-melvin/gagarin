@@ -94,10 +94,6 @@ struct Obj_004C2C30
 };
 
 
-
-
-#include "../combat/ebolt_class_methods.h"
-
 #include "../core/vector_class_operations.h"
 
 class AITriggerTypeClass;
@@ -207,22 +203,6 @@ void Obj_004C1E50::FUN_004C1E50()
     {
         unknown_20->unknown_6DC = 0;
         unknown_20 = 0;
-    }
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x4C2BD0  (__thiscall)
-// Latch the firing unit and its weapon slot, but only when the candidate owner
-// is a live, non-limbo UnitClass (WhatAmI() == AbstractType::Unit).
-void EBolt::SetOwner(EBoltOwner* pOwner, int idxWeapon)
-{
-    if (pOwner)
-    {
-        if (pOwner->WhatAmI() == 1 && pOwner->IsAlive && !pOwner->InLimbo)
-        {
-            Owner = pOwner;
-            WeaponSlot = idxWeapon;
-        }
     }
 }
 

@@ -57,7 +57,7 @@
 #include "../_layout/aircraft_tracker_class.h"
 #include "../_layout/layer_class.h"
 #include "../_layout/tag_type_class.h"
-#include "../combat/kamikaze_class_methods.h"
+#include "../_layout/kamikaze_class.h"
 #include "../combat/particles/system_class.h"
 #include "small_misc35_methods.h"
 #include "../_layout/tag_class.h"
@@ -194,7 +194,6 @@ extern const char STR_0082C1BC[]; // STRING: GAMEMD 0x0082C1BC
 extern Tactical* TacticalInstance; // GLOBAL: GAMEMD 0x00887324
 extern ParticleSystemClass* DAT_00A8ED78; // GLOBAL: GAMEMD 0x00A8ED78
 extern AircraftTrackerClass AircraftTracker; // GLOBAL: GAMEMD 0x00887888
-extern Kamikaze DAT_00ABC5F8; // GLOBAL: GAMEMD 0x00ABC5F8
 extern Obj_00439110 DAT_0087F5D8; // GLOBAL: GAMEMD 0x0087F5D8
 extern HouseClass* CurrentPlayer; // GLOBAL: GAMEMD 0x00A83D4C
 extern DynamicVectorClass<AbstractTypeClass*> DAT_00A8E968; // GLOBAL: GAMEMD 0x00A8E968

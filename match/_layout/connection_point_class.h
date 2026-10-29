@@ -5,12 +5,14 @@
 // VTABLE: GAMEMD 0x7E5CE4 (8 slots)
 //   Virtual slots are named vf_<slot>; the binary attests no names. Argument counts come from each target's RET n;
 //   return types are not recovered (void placeholder). Member offsets come from constructor stores only.
+//   Size 0x34: the vector at +0x1C (0x18 bytes) ends the object.
 #ifndef GG_MATCH_LAYOUT_CONNECTION_POINT_CLASS_H
 #define GG_MATCH_LAYOUT_CONNECTION_POINT_CLASS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include <ocidl.h>
+#include "../core/vector_class.h"
 
 class ConnectionPointClass : public IConnectionPoint
 {
@@ -23,27 +25,20 @@ public:
     virtual HRESULT __stdcall Advise(IUnknown *pUnkSink, DWORD *pdwCookie);// 5  0x4A0630: implements IConnectionPoint
     virtual HRESULT __stdcall Unadvise(DWORD dwCookie);         // 6  0x4A0700: implements IConnectionPoint
     virtual HRESULT __stdcall EnumConnections(IEnumConnections * *ppEnum);// 7  0x4A0760: implements IConnectionPoint
-    IID unknown_04;  // +0x4..+0x13 copied from the first argument at 0x4A087C; GetConnectionInterface copies it out
-    int unknown_14;  // +0x14 store at 0x4A0899
-    IUnknown* unknown_18;  // +0x18 store at 0x4A0896; GetConnectionPointContainer queries it (0x4A0610)
-    int unknown_1C;  // +0x1C vptr store at 0x4A08A9
-    int unknown_20;  // +0x20 store at 0x4A089C
-    int unknown_24;  // +0x24 store at 0x4A089F
-    unsigned char unknown_28;  // +0x28 store at 0x4A08A2
-    unsigned char unknown_29;  // +0x29 store at 0x4A08A6
-    unsigned char unknown_2A[2];  // +0x2A
-    int unknown_2C;  // +0x2C store at 0x4A08B7
-    int unknown_30;  // +0x30 store at 0x4A08B0
+    // FUNCTION: GAMEMD 0x4A0870 (constructor: copies the interface id and holds the container)
+    ConnectionPointClass(const IID* iid, IUnknown* container);
+    // FUNCTION: GAMEMD 0x4A08D0 (destructor: releases the container; Release deletes the object)
+    ~ConnectionPointClass();
+
+    IID Iid;                 // +0x04  copied from the first constructor argument; GetConnectionInterface copies it out
+    LONG RefCount;           // +0x14  InterlockedIncrement / Decrement target (0x4A0520, 0x4A0540)
+    IUnknown* Container;     // +0x18  the owning container; held with AddRef, queried by 0x4A0610
+    DynamicVectorClass<tagCONNECTDATA> Connections;   // +0x1C  the advised sinks (vtable 0x7E5CC4, capacity increment 10)
 };
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_18) == 0x18);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_1C) == 0x1C);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_20) == 0x20);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_28) == 0x28);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_29) == 0x29);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_2C) == 0x2C);
-GG_STATIC_ASSERT(offsetof(ConnectionPointClass, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(ConnectionPointClass, Iid) == 0x4);
+GG_STATIC_ASSERT(offsetof(ConnectionPointClass, RefCount) == 0x14);
+GG_STATIC_ASSERT(offsetof(ConnectionPointClass, Container) == 0x18);
+GG_STATIC_ASSERT(offsetof(ConnectionPointClass, Connections) == 0x1C);
+GG_STATIC_ASSERT(sizeof(ConnectionPointClass) == 0x34);
 
 #endif  // GG_MATCH_LAYOUT_CONNECTION_POINT_CLASS_H

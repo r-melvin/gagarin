@@ -1458,6 +1458,7 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
 
 #include "../../renderer/bit_font.h"
 #include "../../core/spin_wait_methods.h"
+#include "../../audio/audio_time_methods.h"
 // Declaration: GAMEMD 0x4A60D0; flags in ECX are unused by this retail getter.
 BitFont* FUN_004A60D0(int flags);
 // Declaration: GAMEMD 0x4A61C0; caller-cleaned hidden result then fixed args.
@@ -1507,10 +1508,10 @@ void __fastcall FUN_006D4B50(int row, ColorScheme* scheme, int seconds,
     if (seconds == 0 && blinkClock != 0 && blinkState != 0) {
         // Native compares high then low DWORD unsigned, and samples again
         // when writing a deadline; do not reuse the first clock sample.
-        unsigned __int64 now = FUN_004093B0();
+        unsigned __int64 now = Unsorted_AudioGetTime();
         unsigned __int64 deadline = ((unsigned __int64)blinkClock[1] << 32) | blinkClock[0];
         if (deadline <= now) {
-            deadline = FUN_004093B0() + 1000;
+            deadline = (unsigned __int64)Unsorted_AudioGetTime() + 1000;
             blinkClock[0] = (unsigned int)deadline;
             blinkClock[1] = (unsigned int)(deadline >> 32);
             *blinkState = (*blinkState == 0);

@@ -38,12 +38,12 @@ HRESULT __stdcall ConnectionPointClass::GetConnectionInterface(IID* pIID)
 {
     if (pIID == 0)
         return E_POINTER;
-    *pIID = unknown_04;
+    *pIID = Iid;
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x4A0610
 HRESULT __stdcall ConnectionPointClass::GetConnectionPointContainer(IConnectionPointContainer** ppCPC)
 {
-    return unknown_18->QueryInterface(IID_IConnectionPointContainer, (void**)ppCPC);
+    return Container->QueryInterface(IID_IConnectionPointContainer, (void**)ppCPC);
 }

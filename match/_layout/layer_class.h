@@ -21,6 +21,10 @@ public:
     virtual void vf_9();    // 9  0x40CC10: bare RET
     // FUNCTION: GAMEMD 0x551A90 (non-virtual; sorted insert, full-width result)
     int SortedAdd(ObjectClass* pObject);
+    // FUNCTION: GAMEMD 0x551B90 (declaration; reads the layer from a stream)
+    long Load(struct IStream* stream);
+    // FUNCTION: GAMEMD 0x551B20 (declaration; writes the layer to a stream)
+    long Save(struct IStream* stream);
 };
 
 // GLOBAL: GAMEMD 0x8A0360 -- draw-layer array; native5519B0 callers use24-byte stride.

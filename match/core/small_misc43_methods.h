@@ -17,7 +17,6 @@
 // too - unlike 0x407100, where the two halves go to separate fields and the
 // two-int struct form is the right model.
 // ---------------------------------------------------------------------------
-__int64 FUN_004093B0();   // FUNCTION: GAMEMD 0x4093B0
 
 struct Obj_004053E0
 {

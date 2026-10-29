@@ -6,9 +6,8 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x54E6F0  Kamikaze::Clear  (__thiscall)
 //   FUNCTION: GAMEMD 0x54E750  Kamikaze::Save   (__thiscall)
-//   LIBRARY:  GAMEMD 0x7C8B3D  GameDelete (operator delete / free; excluded)
 
-#include "kamikaze_class_methods.h"
+#include "../_layout/kamikaze_class.h"
 
 // FUNCTION: GAMEMD 0x54E6F0  (__thiscall)
 // Free every node back-to-front, drop the vector's storage but keep its
@@ -35,7 +34,7 @@
 void Kamikaze::Clear()
 {
     for (int i = Nodes.Count - 1; i >= 0; --i)
-        GameDelete(Nodes.Items[i]);
+        delete Nodes.Items[i];
 
     int cap = Nodes.Capacity;
     Nodes.Clear();

@@ -8,11 +8,7 @@
 #include "../_layout/house_class.h"
 #include "../core/frame_counter.h"
 
-// EBolt: the electric-bolt effect object held at UnitClass+0x6DC.
-struct EBolt
-{
-    void FUN_004C2C10();   // 0x4C2C10, releases the bolt
-};
+#include "../_layout/ebolt_class.h"
 
 #include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0x7E2800 -- 0.0, read from memory rather than FLDZ.
@@ -154,7 +150,7 @@ bool UnitClass::FUN_00746DB0()
 HRESULT __stdcall UnitClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     if (ElectricBolt) {
-        static_cast<EBolt*>(ElectricBolt)->FUN_004C2C10();
+        ElectricBolt->DetachOwner();
         ElectricBolt = 0;
     }
     return FootClass::Save(pStm, fClearDirty);

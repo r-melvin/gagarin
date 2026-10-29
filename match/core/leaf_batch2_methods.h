@@ -10,17 +10,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x004C2C10
-// WaveEntry detach owner
-struct WaveEntry_004C2C10 {
-    unsigned char unknown_00[0x20];
-    void* OwnerPtr;  // +0x20
-
-    // FUNCTION: GAMEMD 0x004C2C10
-    void DetachOwner();
-};
-GG_STATIC_ASSERT(offsetof(WaveEntry_004C2C10, OwnerPtr) == 0x20);
-
 // FUNCTION: GAMEMD 0x004CA170
 // FactoryClass getter for OriginalBalance at offset 0x68
 struct FactoryClass_004CA170 {

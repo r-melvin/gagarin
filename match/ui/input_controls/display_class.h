@@ -15,6 +15,8 @@
 #include "../../_rt/gg_static_assert.h"
 #include "display_gscreen.h"
 #include "../tooltip_manager_shared.h"
+#include "../gadget_class_methods.h"
+#include "../../_layout/layer_class.h"
 
 // ---- foreign objects the entries reach ----------------------------------------------------------------------
 
@@ -54,36 +56,19 @@ GG_STATIC_ASSERT(offsetof(DisplayTactical, unknown_D7D) == 0xD7D);
 // GLOBAL: GAMEMD 0x887324 -- Tactical::Instance.
 extern DisplayTactical* DisplayTactical_00887324;
 
-// A draw layer: a vector object (vptr at +0) laid out in 0x18-byte elements from 0x8A0360; vf_03 is dispatched
-// through slot 3, Load / Save are direct calls.
-class DisplayLayerVec
+// The draw layers (five LayerClass objects from 0x8A0360, canonical in _layout/layer_class.h) and the tactical
+// button (0x8A06F8, RTTI .?AVTacticalClass@DisplayClass@@, vtable 0x7E608C) are static members of classes whose
+// guarded exit stubs 0x4A8680 / 0x4A8710 test one bit each; Display.cpp defines them. The button derives
+// GadgetClass at offset 0 and overrides slot 0 (scalar deleting destructor 0x4AEBB0) and slot 31 (Action 0x4AAC10).
+// VTABLE: GAMEMD 0x7E608C
+class DisplayTacticalGadget_008A06F8 : public GadgetClass
 {
 public:
-    virtual void vf_00();   // 0x00
-    virtual void vf_01();   // 0x04
-    virtual void vf_02();   // 0x08
-    virtual void vf_03();   // 0x0C
-    char unknown_04[0x14];  // +0x04
-
-    // FUNCTION: GAMEMD 0x551B90 (decl; reloc) -- read the layer from a stream (existing matched row).
-    long Load(IStream* stream);
-    // FUNCTION: GAMEMD 0x551B20 (decl; reloc) -- write the layer to a stream (existing matched row).
-    long Save(IStream* stream);
+    DisplayTacticalGadget_008A06F8() : GadgetClass(0, 0, 0, 0, 0x7F, 1) {}
+    // SYNTHETIC: GAMEMD 0x004AEBB0 -- implicit scalar deleting destructor (slot 0).
+    // FUNCTION: GAMEMD 0x4AAC10 (decl; reloc) -- slot 31 (Action).
+    virtual int Action(unsigned flags, unsigned* key, int modifier);
 };
-GG_STATIC_ASSERT(sizeof(DisplayLayerVec) == 0x18);
-// GLOBAL: GAMEMD 0x8A0360 -- the draw-layer array (five layers, ends at 0x8A03D8).
-extern DisplayLayerVec DisplayLayers_008A0360[5];
-
-// A control the screen adds to its button list (0x8A06F8): a gadget with a refresh call.
-class DisplayTacticalButton : public DisplayGadget
-{
-public:
-    char unknown_04[0x38 - 4];
-    // FUNCTION: GAMEMD 0x5565F0 (decl; reloc) -- LinkClass::Zap.
-    void FUN_005565F0();
-};
-// GLOBAL: GAMEMD 0x8A06F8
-extern DisplayTacticalButton DisplayButton_008A06F8;
 
 // GLOBAL: GAMEMD 0xA8ED6B -- Unsorted::ArmageddonMode (byte).
 extern bool DisplayFlag_00A8ED6B;

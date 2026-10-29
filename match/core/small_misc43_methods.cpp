@@ -3,6 +3,7 @@
 //   Bytes compared against retail gamemd.exe v1.001 at each annotated address below.
 
 #include "small_misc43_methods.h"
+#include "../audio/audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x4053E0
 // REGISTER-PRESSURE DELTA (status partial, 18.2%). With an ordinary state
@@ -33,7 +34,7 @@ void FUN_004053E0(Obj_004053E0* self)
         int state = self->State;
 
         if (state == 2) {
-            __int64 now = FUN_004093B0();
+            __int64 now = Unsorted_AudioGetTime();
 
             self->Accumulated -= now;
         }
@@ -68,7 +69,7 @@ void FUN_00405430(Obj_004053E0* self)
             int state = self->State;
 
             if (state == 2) {
-                self->Accumulated = FUN_004093B0() + self->Accumulated;
+                self->Accumulated = Unsorted_AudioGetTime() + self->Accumulated;
             }
         }
     }
@@ -106,7 +107,7 @@ void __cdecl FUN_00405040()
             }
 
             if (node->PauseCount == 0 && node->State == 2) {
-                node->Accumulated = FUN_004093B0() + node->Accumulated;
+                node->Accumulated = Unsorted_AudioGetTime() + node->Accumulated;
             }
         }
 
