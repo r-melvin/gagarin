@@ -24427,7 +24427,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD330",
-  "sym": "??0MSBitPrintAnim@@QAE@PBGPBUMSRect@@_N@Z",
+  "sym": "??0MSBitPrintAnim@@QAE@PBGPBURectangleStruct@@_N@Z",
   "len": "0x6e",
   "name": "MSBitPrintAnim::MSBitPrintAnim",
   "status": "matched",
@@ -24436,11 +24436,11 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD3A0",
-  "sym": "?MSBitPrintAnim_Destroy@@YIXPAVMSBitPrintAnim@@@Z",
+  "sym": "??1MSBitPrintAnim@@UAE@XZ",
   "len": "0x19",
-  "name": "MSBitPrintAnim_Destroy",
+  "name": "MSBitPrintAnim::~MSBitPrintAnim",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
@@ -24454,7 +24454,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD3D0",
-  "sym": "?GetRect@MSBitPrintAnim@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSBitPrintAnim@@UAE?AURectangleStruct@@XZ",
   "len": "0x24",
   "name": "MSBitPrintAnim::GetRect",
   "status": "matched",
@@ -24472,7 +24472,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD410",
-  "sym": "?Update@MSBitPrintAnim@@UAE_NHPAUMSRect@@@Z",
+  "sym": "?Update@MSBitPrintAnim@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0xb6",
   "name": "MSBitPrintAnim::Update",
   "status": "matched",
@@ -24481,7 +24481,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD4D0",
-  "sym": "?Draw@MSBitPrintAnim@@UAEXHPAUMSRect@@@Z",
+  "sym": "?Draw@MSBitPrintAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0x9e",
   "name": "MSBitPrintAnim::Draw",
   "status": "matched",
@@ -24490,7 +24490,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD570",
-  "sym": "??0MSPrintAnim@@QAE@PBGHHPAVMSFont@@PBUMSRect@@HH_N3@Z",
+  "sym": "??0MSPrintAnim@@QAE@PBGHHPAVMSFont@@PBURectangleStruct@@HH_N3@Z",
   "len": "0x115",
   "name": "MSPrintAnim::MSPrintAnim",
   "status": "matched",
@@ -24499,7 +24499,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD690",
-  "sym": "?Layout@MSPrintAnim@@QAEXPBUMSRect@@@Z",
+  "sym": "?Layout@MSPrintAnim@@QAEXPBURectangleStruct@@@Z",
   "len": "0x1b7",
   "name": "MSPrintAnim::Layout",
   "status": "matched",
@@ -24517,7 +24517,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CDC50",
-  "sym": "?Update@MSPrintAnim@@UAE_NHPAUMSRect@@@Z",
+  "sym": "?Update@MSPrintAnim@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0x28c",
   "name": "MSPrintAnim::Update",
   "status": "matched",
@@ -24526,7 +24526,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CDEE0",
-  "sym": "?Draw@MSPrintAnim@@UAEXHPAUMSRect@@@Z",
+  "sym": "?Draw@MSPrintAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0x1e0",
   "name": "MSPrintAnim::Draw",
   "status": "matched",
@@ -24535,7 +24535,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE2B0",
-  "sym": "?GetRect@MSPrintAnim@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSPrintAnim@@UAE?AURectangleStruct@@XZ",
   "len": "0x24",
   "name": "MSPrintAnim::GetRect",
   "status": "matched",
@@ -24571,7 +24571,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE3A0",
-  "sym": "?DrawLines@MSPrintAnim@@QAEXPAVMSSurface@@PAUMSRect@@@Z",
+  "sym": "?DrawLines@MSPrintAnim@@QAEXPAVMSSurface@@PAURectangleStruct@@@Z",
   "len": "0xf6",
   "name": "MSPrintAnim::DrawLines",
   "status": "matched",
@@ -24598,16 +24598,16 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE7B0",
-  "sym": "?MSPCXAnim_Destroy@@YIXPAVMSPCXAnim@@@Z",
+  "sym": "??1MSPCXAnim@@UAE@XZ",
   "len": "0x1e",
-  "name": "MSPCXAnim_Destroy",
+  "name": "MSPCXAnim::~MSPCXAnim",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE7D0",
-  "sym": "?Update@MSPCXAnim@@UAE_NHPAUMSRect@@@Z",
+  "sym": "?Update@MSPCXAnim@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0xec",
   "name": "MSPCXAnim::Update",
   "status": "matched",
@@ -24616,7 +24616,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE8C0",
-  "sym": "?Draw@MSPCXAnim@@UAEXHPAUMSRect@@@Z",
+  "sym": "?Draw@MSPCXAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0x171",
   "name": "MSPCXAnim::Draw",
   "status": "partial",
@@ -24634,7 +24634,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CEA80",
-  "sym": "?GetRect@MSPCXAnim@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSPCXAnim@@UAE?AURectangleStruct@@XZ",
   "len": "0x24",
   "name": "MSPCXAnim::GetRect",
   "status": "matched",
@@ -24736,15 +24736,6 @@
   "sym": "??_GMSBinkAnim@@UAEPAXI@Z",
   "len": "0x3f",
   "name": "MSBinkAnim::`scalar deleting destructor'",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/map/msanim_family_methods.cpp",
-  "addr": "0x5CECB0",
-  "sym": "?DeletingDtor@MSVQAnim@@QAEPAXI@Z",
-  "len": "0x58",
-  "name": "MSVQAnim::DeletingDtor",
   "status": "matched",
   "pct": 100
  },
@@ -59933,7 +59924,7 @@
  {
   "tu": "match/map/msvqanim_draw_methods.cpp",
   "addr": "0x5CD0E0",
-  "sym": "?Draw@MSVQAnim@@UAEXHPAUMSRect@@@Z",
+  "sym": "?Draw@MSVQAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0x15e",
   "name": "MSVQAnim::Draw",
   "status": "partial",
@@ -70092,6 +70083,15 @@
   "pct": 100.0
  },
  {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6A50",
+  "sym": "_$E13",
+  "len": "0x27",
+  "name": "AbstractIndexTable dynamic initializer (AbstractIndex)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/tu165_object_class.cpp",
   "addr": "0x5F4360",
   "sym": "?vf_80@ObjectClass@@UAE_NHHHH@Z",
@@ -74114,7 +74114,7 @@
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x767ED0",
-  "sym": "?Update@MSFrameAnim@@UAE_NHPAUMSRect@@@Z",
+  "sym": "?Update@MSFrameAnim@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0x1d",
   "name": "MSFrameAnim::Update",
   "status": "matched",
@@ -74123,7 +74123,7 @@
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x767EF0",
-  "sym": "?Draw@MSFrameAnim@@UAEXHPAUMSRect@@@Z",
+  "sym": "?Draw@MSFrameAnim@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0x8a",
   "name": "MSFrameAnim::Draw",
   "status": "matched",
@@ -74132,7 +74132,7 @@
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x767F80",
-  "sym": "?GetRect@MSFrameAnim@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSFrameAnim@@UAE?AURectangleStruct@@XZ",
   "len": "0x28",
   "name": "MSFrameAnim::GetRect",
   "status": "matched",
@@ -76401,11 +76401,11 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/core/timer_statics.cpp",
   "addr": "0x77D190",
-  "sym": "?FUN_0077D190@@YIXXZ",
+  "sym": "_$E27",
   "len": "0x1",
-  "name": "FUN_0077D190",
+  "name": "timer object exit stub (DAT_00B76478)",
   "status": "matched",
   "pct": 100
  },
@@ -80791,11 +80791,20 @@
  {
   "tu": "match/core/global_block_release_methods.cpp",
   "addr": "0x6C6B60",
-  "sym": "?FUN_006C6B60@@YIXXZ",
+  "sym": "_$E2",
   "len": "0x17",
-  "name": "FUN_006C6B60",
+  "name": "CountedBlock destructor stub (DAT_00B0BD50)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_block_release_methods.cpp",
+  "addr": "0x6C6B40",
+  "sym": "_$E4",
+  "len": "0x1d",
+  "name": "CountedBlock dynamic initializer (DAT_00B0BD50)",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/persist_class_id_methods.cpp",
@@ -82465,20 +82474,20 @@
  {
   "tu": "match/core/global_leaf_helper_methods.cpp",
   "addr": "0x7B00B0",
-  "sym": "?FUN_007B00B0@@YIXXZ",
+  "sym": "_$E2",
   "len": "0x1d",
-  "name": "FUN_007B00B0",
+  "name": "OwnedBlock destructor stub (DAT_00B77F54)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/global_leaf_helper_methods.cpp",
   "addr": "0x7B00F0",
-  "sym": "?FUN_007B00F0@@YIXXZ",
+  "sym": "_$E7",
   "len": "0x1d",
-  "name": "FUN_007B00F0",
+  "name": "OwnedBlock destructor stub (DAT_00B77F60)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/global_leaf_helper_methods.cpp",
@@ -82497,6 +82506,24 @@
   "name": "FUN_007B0350",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/global_leaf_helper_methods.cpp",
+  "addr": "0x7B0090",
+  "sym": "_$E4",
+  "len": "0x16",
+  "name": "OwnedBlock dynamic initializer (DAT_00B77F54)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_leaf_helper_methods.cpp",
+  "addr": "0x7B00D0",
+  "sym": "_$E9",
+  "len": "0x16",
+  "name": "OwnedBlock dynamic initializer (DAT_00B77F60)",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/string_char_at_methods.cpp",
@@ -85415,22 +85442,22 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu152_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CC690",
-  "sym": "?FUN_005CC690@Obj_005CC690@@QAEXXZ",
+  "sym": "?FUN_005CC690@MSFadeAnim@@QAEXXZ",
   "len": "0x8",
-  "name": "Obj_005CC690::FUN_005CC690",
+  "name": "MSFadeAnim::FUN_005CC690",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu152_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CC740",
-  "sym": "?FUN_005CC740@Obj_005CC740@@QAEHXZ",
+  "sym": "?vf_7@MSOverlayAnim@@UAE_NXZ",
   "len": "0x16",
-  "name": "Obj_005CC740::FUN_005CC740",
+  "name": "MSOverlayAnim::vf_7",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/msanim_early_methods.cpp",
@@ -94985,13 +95012,13 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu152_b_methods.cpp",
+  "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CC6A0",
-  "sym": "?FUN_005CC6A0@Obj_005CC6A0@@QAEXH@Z",
+  "sym": "?FUN_005CC6A0@MSFadeAnim@@QAEXH@Z",
   "len": "0x11",
-  "name": "Obj_005CC6A0::FUN_005CC6A0",
+  "name": "MSFadeAnim::FUN_005CC6A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu155_b_methods.cpp",
@@ -97166,20 +97193,11 @@
  {
   "tu": "match/map/ms_anim_ctors.cpp",
   "addr": "0x5CB750",
-  "sym": "?MSShapeAnim_DestroyAtA@@YIXPAVMSShapeAnim@@@Z",
+  "sym": "??1MSShapeAnim@@UAE@XZ",
   "len": "0x33",
-  "name": "MSShapeAnim_DestroyAtA",
+  "name": "MSShapeAnim::~MSShapeAnim",
   "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/map/ms_anim_ctors.cpp",
-  "addr": "0x5CC2F0",
-  "sym": "?MSShapeAnim_DestroyAtB@@YIXPAVMSShapeAnim@@@Z",
-  "len": "0x33",
-  "name": "MSShapeAnim_DestroyAtB",
-  "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/static_vector_dtor_stubs_b.cpp",
@@ -97974,13 +97992,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_reset_leaf_methods.cpp",
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
   "addr": "0x6E6A80",
-  "sym": "?FUN_006E6A80@@YIXXZ",
+  "sym": "_$E11",
   "len": "0x2a",
-  "name": "FUN_006E6A80",
+  "name": "AbstractIndexTable destructor stub (AbstractIndex)",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/global_vector_name_lookup_methods.cpp",
@@ -128821,6 +128839,15 @@
   "pct": 100
  },
  {
+  "tu": "match/core/timer_statics.cpp",
+  "addr": "0x77D160",
+  "sym": "_$E29",
+  "len": "0x25",
+  "name": "timer object dynamic initializer (DAT_00B76478)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/map/overlay_surface_base_ctor.cpp",
   "addr": "0x5FE020",
   "sym": "??0SurfaceBase_007E2104@@QAE@HH@Z",
@@ -134653,27 +134680,27 @@
   "pct": 100
  },
  {
-  "tu": "match/core/w2_leaf_methods_a.cpp",
+  "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CB840",
-  "sym": "?FUN_005CB840@Obj_005CB840@@QAEXI@Z",
+  "sym": "?FUN_005CB840@MSShapeAnim@@QAEXI@Z",
   "len": "0x19",
-  "name": "FUN_005CB840",
+  "name": "MSShapeAnim::FUN_005CB840",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/w2_leaf_methods_a.cpp",
+  "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CB860",
-  "sym": "?FUN_005CB860@Obj_005CB840@@QAEXI@Z",
+  "sym": "?FUN_005CB860@MSShapeAnim@@QAEXI@Z",
   "len": "0x19",
-  "name": "FUN_005CB860",
+  "name": "MSShapeAnim::FUN_005CB860",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CC850",
-  "sym": "?GetRect@MSBinkAnim@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSBinkAnim@@UAE?AURectangleStruct@@XZ",
   "len": "0x24",
   "name": "MSBinkAnim::GetRect",
   "status": "matched",
@@ -137553,7 +137580,7 @@
  {
   "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771970",
-  "sym": "?Update@Anim@Voices@WorldDominationTour@@UAE_NHPAUMSRect@@@Z",
+  "sym": "?Update@Anim@Voices@WorldDominationTour@@UAE_NPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0xd",
   "name": "WorldDominationTour::Voices::Anim::Update",
   "status": "matched",
@@ -137562,7 +137589,7 @@
  {
   "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771980",
-  "sym": "?Draw@Anim@Voices@WorldDominationTour@@UAEXHPAUMSRect@@@Z",
+  "sym": "?Draw@Anim@Voices@WorldDominationTour@@UAEXPAVMouseSurfaceView@@PAURectangleStruct@@@Z",
   "len": "0xb",
   "name": "WorldDominationTour::Voices::Anim::Draw",
   "status": "matched",
@@ -137967,7 +137994,7 @@
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CBCB0",
-  "sym": "?GetRect@MSShapeAnim@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@MSShapeAnim@@UAE?AURectangleStruct@@XZ",
   "len": "0x6f",
   "name": "MSShapeAnim::GetRect",
   "status": "partial",
@@ -137976,11 +138003,11 @@
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CC820",
-  "sym": "?MSBinkAnim_Destroy@@YIXPAVMSBinkAnim@@@Z",
+  "sym": "??1MSBinkAnim@@UAE@XZ",
   "len": "0x2a",
-  "name": "MSBinkAnim_Destroy",
+  "name": "MSBinkAnim::~MSBinkAnim",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/msanim_early_methods.cpp",
@@ -137994,16 +138021,16 @@
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CCE40",
-  "sym": "?MSVQAnim_Destroy@@YIXPAVMSVQAnim@@@Z",
+  "sym": "??1MSVQAnim@@UAE@XZ",
   "len": "0x43",
-  "name": "MSVQAnim_Destroy",
+  "name": "MSVQAnim::~MSVQAnim",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/msanim_early_methods.cpp",
   "addr": "0x5CC760",
-  "sym": "??0MSBinkAnim@@QAE@PAVWstring@@HHPBUMSRect@@_N@Z",
+  "sym": "??0MSBinkAnim@@QAE@PAVWstring@@HHPBURectangleStruct@@_N@Z",
   "len": "0xb9",
   "name": "MSBinkAnim::MSBinkAnim",
   "status": "partial",
@@ -138289,40 +138316,67 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_sweep_w1c.cpp",
+  "tu": "match/ui/input_controls/menus_graphic_menu_item.cpp",
   "addr": "0x4F3A70",
-  "sym": "?Destroy@Base_004F3A70@@QAEXXZ",
+  "sym": "??1GraphicMenuItem@@UAE@XZ",
   "len": "0x20",
-  "name": "Destroy",
+  "name": "GraphicMenuItem::~GraphicMenuItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1c.cpp",
+  "tu": "match/ui/input_controls/menus_graphic_menu_anim.cpp",
   "addr": "0x4F3070",
-  "sym": "?DestroyA@DerivedA_004F3070@@QAEXXZ",
+  "sym": "??1GraphicMenuAnimItem@@UAE@XZ",
   "len": "0x1f",
-  "name": "DestroyA",
+  "name": "GraphicMenuAnimItem::~GraphicMenuAnimItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1c.cpp",
-  "addr": "0x4F3600",
-  "sym": "?DestroyB@DerivedB_004F3600@@QAEXXZ",
+  "tu": "match/ui/input_controls/menus_graphic_menu_anim.cpp",
+  "addr": "0x4F30E0",
+  "sym": "??_GGraphicMenuAnimItem@@UAEPAXI@Z",
   "len": "0x33",
-  "name": "DestroyB",
+  "name": "GraphicMenuAnimItem::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1c.cpp",
-  "addr": "0x4F3E90",
-  "sym": "?DestroyC@DerivedC_004F3E90@@QAEXXZ",
-  "len": "0x42",
-  "name": "DestroyC",
+  "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
+  "addr": "0x4F3600",
+  "sym": "??1GraphicMenuImageItem@@UAE@XZ",
+  "len": "0x33",
+  "name": "GraphicMenuImageItem::~GraphicMenuImageItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
+  "addr": "0x4F3840",
+  "sym": "??_GGraphicMenuImageItem@@UAEPAXI@Z",
+  "len": "0x47",
+  "name": "GraphicMenuImageItem::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_shortcut.cpp",
+  "addr": "0x4F3E90",
+  "sym": "??1GraphicMenuShortcutItem@@UAE@XZ",
+  "len": "0x42",
+  "name": "GraphicMenuShortcutItem::~GraphicMenuShortcutItem",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_shortcut.cpp",
+  "addr": "0x4F3F60",
+  "sym": "??_GGraphicMenuShortcutItem@@UAEPAXI@Z",
+  "len": "0x56",
+  "name": "GraphicMenuShortcutItem::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_sweep_w1c.cpp",
@@ -139918,13 +139972,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/w2_progress_r13.cpp",
+  "tu": "match/ui/progress_screen_global.cpp",
   "addr": "0x642A30",
-  "sym": "??1ProgressScreenClass@@UAE@XZ",
+  "sym": "??1ProgressScreenClass@@QAE@XZ",
   "len": "0x29",
   "name": "ProgressScreenClass::~ProgressScreenClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/w2_leaf_r13.cpp",
@@ -142627,11 +142681,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/s1_quick_sweep.cpp",
+  "tu": "match/combat/techno_static_timers.cpp",
   "addr": "0x6F2B20",
-  "sym": "?FUN_006F2B20@@YIXXZ",
+  "sym": "_$E10",
   "len": "0x15",
-  "name": "FUN_006F2B20",
+  "name": "TechnoStatics::ClockTimer exit stub",
   "status": "matched",
   "pct": 100
  },
@@ -143628,7 +143682,7 @@
  {
   "tu": "match/map/ms_font_methods.cpp",
   "addr": "0x5D30C0",
-  "sym": "?Measure@MSFont@@QAEXPBGPAUMSRect@@@Z",
+  "sym": "?Measure@MSFont@@QAEXPBGPAURectangleStruct@@@Z",
   "len": "0xa8",
   "name": "MSFont::Measure",
   "status": "matched",
@@ -145680,7 +145734,7 @@
  {
   "tu": "match/network/wdt_voices_anim_ctor.cpp",
   "addr": "0x771990",
-  "sym": "?GetRect@Anim@Voices@WorldDominationTour@@UAE?AUMSRect@@XZ",
+  "sym": "?GetRect@Anim@Voices@WorldDominationTour@@UAE?AURectangleStruct@@XZ",
   "len": "0x2a",
   "name": "WorldDominationTour::Voices::Anim::GetRect",
   "status": "matched",
@@ -145824,11 +145878,11 @@
  {
   "tu": "match/audio/r26_2_vox_live_node_752680.cpp",
   "addr": "0x752680",
-  "sym": "?FUN_00752680@@YIPAUVoxNode_00752480@@PAUVoxEntry_00752480@@@Z",
+  "sym": "?GetActiveVoice@VoxClass@@QAEPAUVoxNode@@XZ",
   "len": "0x7e",
-  "name": "FUN_00752680",
+  "name": "VoxClass::GetActiveVoice",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/r26_2_vox_busy_7529e0.cpp",
@@ -145856,5 +145910,149 @@
   "name": "FUN_007773C0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x77D120",
+  "sym": "_$E4",
+  "len": "0x20",
+  "name": "rc_ptr dynamic initializer (DAT_00B75E48)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x77D140",
+  "sym": "_$E2",
+  "len": "0x14",
+  "name": "rc_ptr destructor stub (DAT_00B75E48)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B0110",
+  "sym": "_$E9",
+  "len": "0x20",
+  "name": "rc_ptr dynamic initializer (DAT_00B77F58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B0130",
+  "sym": "_$E7",
+  "len": "0x14",
+  "name": "rc_ptr destructor stub (DAT_00B77F58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B0150",
+  "sym": "_$E14",
+  "len": "0x20",
+  "name": "rc_ptr dynamic initializer (DAT_00B77F70)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B0170",
+  "sym": "_$E12",
+  "len": "0x14",
+  "name": "rc_ptr destructor stub (DAT_00B77F70)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B0190",
+  "sym": "_$E19",
+  "len": "0x20",
+  "name": "rc_ptr dynamic initializer (DAT_00B77F68)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B01B0",
+  "sym": "_$E17",
+  "len": "0x14",
+  "name": "rc_ptr destructor stub (DAT_00B77F68)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B01D0",
+  "sym": "_$E24",
+  "len": "0x20",
+  "name": "rc_ptr dynamic initializer (DAT_00B77F78)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_rc_ptr_statics.cpp",
+  "addr": "0x7B01F0",
+  "sym": "_$E22",
+  "len": "0x14",
+  "name": "rc_ptr destructor stub (DAT_00B77F78)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_static_timers.cpp",
+  "addr": "0x6F2AB0",
+  "sym": "_$E7",
+  "len": "0x20",
+  "name": "TechnoStatics::FrameTimer dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_static_timers.cpp",
+  "addr": "0x6F2AD0",
+  "sym": "_$E4",
+  "len": "0x15",
+  "name": "TechnoStatics::FrameTimer exit stub",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_static_timers.cpp",
+  "addr": "0x6F2AF0",
+  "sym": "_$E12",
+  "len": "0x25",
+  "name": "TechnoStatics::ClockTimer dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_update_00515ed0.cpp",
+  "addr": "0x515ED0",
+  "sym": "?Fun_00515ED0@HoverLocomotionClass@@QAEXXZ",
+  "len": "0x446",
+  "name": "HoverLocomotionClass::Fun_00515ED0",
+  "status": "partial",
+  "pct": 76.4
+ },
+ {
+  "tu": "match/core/rules_class_members_methods.cpp",
+  "addr": "0x664D20",
+  "sym": "??0RulesClassMembers_00664D20@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x92A",
+  "name": "RulesClass::RulesClass(AbstractNoInit)",
+  "status": "partial",
+  "pct": 95.1
+ },
+ {
+  "tu": "match/core/rules_class_members_methods.cpp",
+  "addr": "0x667A30",
+  "sym": "??1RulesClassMembers_00664D20@@QAE@XZ",
+  "len": "0xC82",
+  "name": "RulesClass::~RulesClass",
+  "status": "partial",
+  "pct": 25.0
  }
 ]

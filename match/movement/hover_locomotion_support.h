@@ -36,7 +36,10 @@ GG_STATIC_ASSERT(sizeof(Pair_0042D490) == 0x04);
 // One-dword facing value returned through the hidden pointer at the called slot.
 struct HoverDirView
 {
-    unsigned int Raw;
+    union {
+        unsigned int Raw;
+        short Angle;            // low word: the 16-bit facing the Hover bodies store directly
+    };
     HoverDirView() {}
     HoverDirView(unsigned long raw) : Raw(raw) {}
 };
@@ -182,9 +185,19 @@ GG_STATIC_ASSERT(sizeof(HoverTypeView) == 0x720); // accessed prefix only
 
 // Rules prefix used for the pointer read at +0x94.
 struct HoverRulesView
-{ char unknown_000[0x94]; void* unknown_094; };
+{
+    char unknown_000[0x94];
+    void* unknown_094;
+    char unknown_098[0x5D8 - 0x98];
+    double unknown_5D8;     // value copied to Hover Field_58 while the path direction repeats
+    double unknown_5E0;     // speed-up divisor
+    double unknown_5E8;     // slow-down divisor
+};
 GG_STATIC_ASSERT(offsetof(HoverRulesView, unknown_094) == 0x94);
-GG_STATIC_ASSERT(sizeof(HoverRulesView) == 0x98); // accessed prefix only
+GG_STATIC_ASSERT(offsetof(HoverRulesView, unknown_5D8) == 0x5D8);
+GG_STATIC_ASSERT(offsetof(HoverRulesView, unknown_5E0) == 0x5E0);
+GG_STATIC_ASSERT(offsetof(HoverRulesView, unknown_5E8) == 0x5E8);
+GG_STATIC_ASSERT(sizeof(HoverRulesView) == 0x5F0); // accessed prefix only
 
 // Animation object call used by Hover Process; no complete owner layout is claimed.
 struct HoverAnimView
@@ -592,7 +605,8 @@ struct HoverFootView : HoverFootVirtuals
     HoverObjectView* unknown_5A4;
     char unknown_5A8[0x5E0 - 0x5A8];
     int PathDirection0;
-    char unknown_5E4[0x684 - 0x5E4];
+    int PathDirection1;
+    char unknown_5E8[0x684 - 0x5E8];
     char unknown_684;
     char unknown_685[0x6B6 - 0x685];
     unsigned char unknown_6B6;
@@ -612,6 +626,7 @@ GG_STATIC_ASSERT(offsetof(HoverFootView, AngleSideways) == 0x328);
 GG_STATIC_ASSERT(offsetof(HoverFootView, AngleForwards) == 0x32C);
 GG_STATIC_ASSERT(offsetof(HoverFootView, PrimaryFacing) == 0x388);
 GG_STATIC_ASSERT(offsetof(HoverFootView, PathDirection0) == 0x5E0);
+GG_STATIC_ASSERT(offsetof(HoverFootView, PathDirection1) == 0x5E4);
 GG_STATIC_ASSERT(offsetof(HoverFootView, unknown_684) == 0x684);
 GG_STATIC_ASSERT(offsetof(HoverFootView, unknown_6B6) == 0x6B6);
 GG_STATIC_ASSERT(offsetof(HoverFootView, unknown_6B7) == 0x6B7);

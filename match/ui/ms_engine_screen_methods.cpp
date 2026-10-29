@@ -128,14 +128,14 @@ void MSEngine::Draw(MouseSurfaceView* surface)
         centred.Y = (surface->GetHeight() - centred.Height) / 2;
         surface->Blt(DAT_00887310->GetRect(), DAT_00887310, centred, 0, 1);
         for (int i = 0; i < Anims.Count; i++)
-            Anims.Items[i]->Draw((int)surface, 0);
+            Anims.Items[i]->Draw(surface, 0);
         DirtyRectCount = 0;
         AddDirtyRect(surface->GetRect());
         OnRedraw(surface);
     }
     for (int j = 0; j < Anims.Count; j++) {
         RectangleStruct touched;
-        if (Anims.Items[j]->Update((int)surface, (MSRect*)&touched) == true) {
+        if (Anims.Items[j]->Update(surface, &touched) == true) {
             delete Anims.Items[j];
             Anims.Delete(j);
         }

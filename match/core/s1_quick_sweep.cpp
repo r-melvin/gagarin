@@ -18,20 +18,6 @@ class Territory;
 }
 
 // ---------------------------------------------------------------------------
-// 0x6F2B20: set bit 1 in a global flag byte.
-// GLOBAL: GAMEMD 0xB0EA38
-extern unsigned char Flags_00B0EA38;
-
-// FUNCTION: GAMEMD 0x6F2B20
-// Sets bit 1 of the global flag byte if it is not already set.
-void FUN_006F2B20()
-{
-    if (!(Flags_00B0EA38 & 2)) {
-        Flags_00B0EA38 |= 2;
-    }
-}
-
-// ---------------------------------------------------------------------------
 // 0x76F030: copy constructor of rc_ptr<WorldDominationTour::Territory>.
 // FUNCTION: GAMEMD 0x76F030
 // (the explicit instantiation below emits the copy constructor)

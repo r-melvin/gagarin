@@ -1543,11 +1543,6 @@ Wstring DAT_00B765EC;
 // SYNTHETIC: GAMEMD 0x77D110 -- atexit cleanup of DAT_00B76900.
 Wstring DAT_00B76900;
 
-// FUNCTION: GAMEMD 0x77D190
-void FUN_0077D190()
-{
-}
-
 // GLOBAL: GAMEMD 0xB76230
 // SYNTHETIC: GAMEMD 0x77D1A0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D1C0 -- atexit cleanup of DAT_00B76230.

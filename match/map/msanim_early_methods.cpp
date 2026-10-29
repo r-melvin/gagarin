@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Bytes compared against the user's retail gamemd.exe v1.001 across
@@ -10,7 +11,7 @@
 // GLOBAL: GAMEMD 0x88730C -- the blitter the shape animations redraw through.
 extern MSBlitSurface* DAT_0088730C;
 
-__forceinline static bool MSRectEqual(const MSRect& a, const MSRect& b)
+__forceinline static bool MSRectEqual(const RectangleStruct& a, const RectangleStruct& b)
 {
     return a.X == b.X && a.Y == b.Y && a.Width == b.Width
         && a.Height == b.Height;
@@ -21,7 +22,7 @@ __forceinline static bool MSRectEqual(const MSRect& a, const MSRect& b)
 // old position; the frame is then clamped to the last one in the file.
 void MSShapeAnim::SetFrame(unsigned int frame)
 {
-    MSRect old;
+    RectangleStruct old;
     old = GetRect();
     Frame = frame;
 
@@ -34,17 +35,37 @@ void MSShapeAnim::SetFrame(unsigned int frame)
     }
 }
 
+// FUNCTION: GAMEMD 0x5CB840
+// Store the +0x2C index, clamped below the shape's frame count.
+void MSShapeAnim::FUN_005CB840(unsigned int value)
+{
+    Field2C = value;
+    int limit = Buffer->Frames;
+    if (value >= (unsigned int)limit)
+        Field2C = limit - 1;
+}
+
+// FUNCTION: GAMEMD 0x5CB860
+// Store the last-frame index, clamped below the shape's frame count.
+void MSShapeAnim::FUN_005CB860(unsigned int value)
+{
+    LastFrame = value;
+    int limit = Buffer->Frames;
+    if (value >= (unsigned int)limit)
+        LastFrame = limit - 1;
+}
+
 // FUNCTION: GAMEMD 0x5CBCB0
 // PARTIAL: 83.3% -- the same instructions as retail; cl orders the four frame-rectangle
 // loads differently (retail loads X, then the Y offset, then Y, W, H, then the X offset).
 // The rectangle of the current frame, moved to where the animation sits and,
 // when the centring flag is set, pulled back by half the shape's size.
-MSRect MSShapeAnim::GetRect()
+RectangleStruct MSShapeAnim::GetRect()
 {
-    MSRect tmp;
-    MSRect* frame = Buffer->GetFrameRect(&tmp, Frame);
+    RectangleStruct tmp;
+    RectangleStruct* frame = Buffer->GetFrameRect(&tmp, Frame);
 
-    MSRect r;
+    RectangleStruct r;
     r.X = frame->X;
     r.Y = frame->Y;
     r.Width = frame->Width;
@@ -66,7 +87,7 @@ MSRect MSShapeAnim::GetRect()
 // into a dead argument slot. Reading the corner from the stored box rather than the argument scores better.
 // Remember the caller's numbers and box; when the file name is not empty, open it as a Bink player and
 // move it to the box's corner.
-MSBinkAnim::MSBinkAnim(Wstring* name, int flags, int field34, const MSRect* rect, bool field38)
+MSBinkAnim::MSBinkAnim(Wstring* name, int flags, int field34, const RectangleStruct* rect, bool field38)
     : MSAnim(rect->X, rect->Y), Player(0), Field20(flags), Bounds(*rect), Field34(field34), Field38(field38)
 {
     if ((unsigned int)name->Length() > 0) {
@@ -76,15 +97,15 @@ MSBinkAnim::MSBinkAnim(Wstring* name, int flags, int field34, const MSRect* rect
 }
 
 // FUNCTION: GAMEMD 0x5CC820
-// The out-of-line copy of the Bink animation's destructor.
-void MSBinkAnim_Destroy(MSBinkAnim* self)
+// The Bink animation's destructor, out of line (the scalar deleting destructor expands it inline).
+MSBinkAnim::~MSBinkAnim()
 {
-    self->MSBinkAnim::~MSBinkAnim();
+    delete Player;
 }
 
 // FUNCTION: GAMEMD 0x5CC850
 // Slot 6: the box the player was opened in.
-MSRect MSBinkAnim::GetRect()
+RectangleStruct MSBinkAnim::GetRect()
 {
     return Bounds;
 }
@@ -103,10 +124,19 @@ void MSBinkAnim::Attach(void* target)
 }
 
 // FUNCTION: GAMEMD 0x5CCE40
-// The out-of-line copy of the VQA animation's destructor.
-void MSVQAnim_Destroy(MSVQAnim* self)
+// The VQA animation's destructor, out of line: the movie goes through its own slot-zero deleting
+// destructor, then the player is stopped and deleted. (Its scalar deleting destructor 0x5CECB0 is not
+// reproduced: cl emits ??_G only beside a constructor and the constructor 0x5CCC30 is not matched.)
+MSVQAnim::~MSVQAnim()
 {
-    self->MSVQAnim::~MSVQAnim();
+    if (Movie != 0) {
+        Movie->DeletingDtor(1);
+    }
+
+    if (Player != 0) {
+        Player->Stop();
+        delete Player;
+    }
 }
 
 // Compiler-generated scalar deleting destructor of MSBinkAnim (destructor and base destructor expanded inline).

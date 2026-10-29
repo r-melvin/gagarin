@@ -9,25 +9,26 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct VoxEvent
-{
-    char unknown_00[0x50];
-    int State; // observed at +0x50 in SilenceIndex
-};
-GG_STATIC_ASSERT(offsetof(VoxEvent, State) == 0x50);
+struct VoxClass;
 
+// One queued playback node.
 struct VoxNode
 {
     char unknown_00[0x04];
     VoxNode* Link;    // observed at +0x04
     char unknown_08[0x04];
-    VoxEvent* Event;  // observed at +0x0C
+    VoxClass* Event;  // observed at +0x0C: the speech entry the node plays
+    char unknown_10[8];
+    int Priority;     // observed at +0x18
 
     void Detach();   // call target 0x407450
+    VoxNode* FUN_004073E0();   // call target 0x4073E0: the next node in the list
 };
 GG_STATIC_ASSERT(offsetof(VoxNode, Link) == 0x04);
 GG_STATIC_ASSERT(offsetof(VoxNode, Event) == 0x0C);
+GG_STATIC_ASSERT(offsetof(VoxNode, Priority) == 0x18);
 
+// One speech entry.
 struct VoxClass
 {
     static void Play(const char* pName, int nUnk, int nUnk2);
@@ -38,7 +39,14 @@ struct VoxClass
     // The entry address is passed to _strcmpi as a string pointer, proving
     // only that the Name prefix starts at +0. Its storage extent is unknown.
     char Name[1];
+    char unknown_01[0x47];
+    int  Volume;    // +0x48
+    int  Priority;  // +0x4C
+    int  State;     // +0x50  2 = finished
 };
 GG_STATIC_ASSERT(offsetof(VoxClass, Name) == 0x00);
+GG_STATIC_ASSERT(offsetof(VoxClass, Volume) == 0x48);
+GG_STATIC_ASSERT(offsetof(VoxClass, Priority) == 0x4C);
+GG_STATIC_ASSERT(offsetof(VoxClass, State) == 0x50);
 
 #endif

@@ -59,7 +59,7 @@ void WorldDominationTour::Voices::Anim::ResumeTimer()
 
 // FUNCTION: GAMEMD 0x771970
 // Slot 4: run the owner's helper; the animation never reports a change.
-bool WorldDominationTour::Voices::Anim::Update(int context, MSRect* out)
+bool WorldDominationTour::Voices::Anim::Update(MouseSurfaceView* context, RectangleStruct* out)
 {
     Owner->FUN_00771620();
     return false;
@@ -67,16 +67,16 @@ bool WorldDominationTour::Voices::Anim::Update(int context, MSRect* out)
 
 // FUNCTION: GAMEMD 0x771980
 // Slot 5: run the owner's helper.
-void WorldDominationTour::Voices::Anim::Draw(int context, MSRect* area)
+void WorldDominationTour::Voices::Anim::Draw(MouseSurfaceView* context, RectangleStruct* area)
 {
     Owner->FUN_00771620();
 }
 
 // FUNCTION: GAMEMD 0x771990
 // Slot 6: hands back a rectangle it never fills in.
-MSRect WorldDominationTour::Voices::Anim::GetRect()
+RectangleStruct WorldDominationTour::Voices::Anim::GetRect()
 {
-    MSRect rect;
+    RectangleStruct rect;
     return rect;
 }
 

@@ -24,7 +24,7 @@ int MSFont::CharWidth(wchar_t ch)
             glyph = 0;
         else if (glyph >= 0xD8)
             glyph = 0xD8;
-        MSRect frame;
+        RectangleStruct frame;
         return Glyphs->GetFrameRect(&frame, glyph * 3 + 2)->Width + 1;
     }
     return 0;
@@ -56,7 +56,7 @@ int MSFont::LineWidth(const wchar_t* text)
 // FUNCTION: GAMEMD 0x5D30C0
 // Measure a text into a rectangle at the origin: the widest line plus the lead
 // across, one line height per line down; an empty text measures nothing.
-void MSFont::Measure(const wchar_t* text, MSRect* out)
+void MSFont::Measure(const wchar_t* text, RectangleStruct* out)
 {
     int widest = 0;
     if (text != 0 && wcslen(text) != 0) {

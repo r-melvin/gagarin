@@ -17,39 +17,14 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// One speech entry.
-struct VoxEntry_00752480
-{
-    char _pad000[0x48];   // +0x0000
-    int  Volume;          // +0x0048
-    int  Priority;        // +0x004C
-    int  State;           // +0x0050  2 = finished
-};
-GG_STATIC_ASSERT(offsetof(VoxEntry_00752480, Volume)   == 0x48);
-GG_STATIC_ASSERT(offsetof(VoxEntry_00752480, Priority) == 0x4C);
-GG_STATIC_ASSERT(offsetof(VoxEntry_00752480, State)    == 0x50);
-
-// One queued playback node.
-struct VoxNode_00752480
-{
-    char               _pad000[0xC];   // +0x0000
-    VoxEntry_00752480* Entry;          // +0x000C
-    char               _pad010[8];     // +0x0010
-    int                Priority;       // +0x0018
-
-    // FUNCTION: GAMEMD 0x4073E0 (decl; reloc) -- the next node in the list.
-    VoxNode_00752480* FUN_004073E0();
-};
-GG_STATIC_ASSERT(offsetof(VoxNode_00752480, Entry)    == 0xC);
-GG_STATIC_ASSERT(offsetof(VoxNode_00752480, Priority) == 0x18);
+#include "vox_class_methods.h"
 
 // The pending-node list.
 struct VoxQueue_00752480
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x4073C0 (decl; reloc) — take the next pending node.
-    VoxNode_00752480* FUN_004073C0();
+    VoxNode* FUN_004073C0();
 };
 // GLOBAL: GAMEMD 0xB1D3C8 — the pending-node list.
 extern VoxQueue_00752480 DAT_00B1D3C8;
@@ -71,38 +46,25 @@ extern VoxEngine_00752480* DAT_00B1D4CC;
 // GLOBAL: GAMEMD 0xB1D4B0 — how many speech entries there are.
 extern int DAT_00B1D4B0;
 // GLOBAL: GAMEMD 0xB1D4A4 — the speech entry table.
-extern VoxEntry_00752480** DAT_00B1D4A4;
+extern VoxClass** DAT_00B1D4A4;
 // GLOBAL: GAMEMD 0xB1D3D8 — non-zero while speech is suppressed.
 extern int DAT_00B1D3D8;
 // GLOBAL: GAMEMD 0xB1D4C4 — the entry currently speaking.
-extern VoxEntry_00752480* DAT_00B1D4C4;
+extern VoxClass* DAT_00B1D4C4;
 // GLOBAL: GAMEMD 0xB1D4D0 — the queued entry counter.
 extern int DAT_00B1D4D0;
 // GLOBAL: GAMEMD 0xB1D4D4 — the queued frame counter.
 extern int DAT_00B1D4D4;
 
 // FUNCTION: GAMEMD 0x407450 (decl; reloc) — release a pending node.
-void FUN_00407450(VoxNode_00752480* node);
+void FUN_00407450(VoxNode* node);
 // LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
 // FUNCTION: GAMEMD 0x752370 (decl; reloc) — reset the speech queue.
 void __cdecl FUN_00752370();
-// FUNCTION: GAMEMD 0x752680 (decl; reloc) — the entry's live node, if any.
-VoxNode_00752480* FUN_00752680(VoxEntry_00752480* entry);
 // FUNCTION: GAMEMD 0x752590 (decl; reloc) — start an entry.
-void FUN_00752590(VoxEntry_00752480* entry, int priority, int volume);
+void FUN_00752590(VoxClass* entry, int priority, int volume);
 // FUNCTION: GAMEMD 0x752760 (decl; reloc) — pump the speech queue.
 void __cdecl FUN_00752760();
-
-// The owning class. Nothing at this address touches an instance, so no layout
-// is recovered here; the struct exists so the routine is spelled as the static
-// member it is rather than as a free function, and so the next address on this
-// class has somewhere to attach.
-struct VoxClass
-{
-    // FUNCTION: GAMEMD 0x752480 — VoxClass::PlayIndex (static __fastcall: the
-    // index arrives in ECX, the priority in EDX and the volume on the stack).
-    static void PlayIndex(int index, int priority, int volume);
-};
 
 #endif  // GG_MATCH_AUDIO_VOX_CLASS_PLAY_INDEX_METHODS_H

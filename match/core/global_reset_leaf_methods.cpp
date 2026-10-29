@@ -51,22 +51,6 @@ void Obj_005BD5A0::FUN_005BD7C0()
     unknown_0C = 0;
 }
 
-extern int* DAT_00B0E840;
-extern int DAT_00B0E844;
-extern int DAT_00B0E848;
-extern unsigned char DAT_00B0E84C;
-extern int DAT_00B0E850;
-// FUNCTION: GAMEMD 0x006E6A80
-void FUN_006E6A80()
-{
-    delete DAT_00B0E840;
-    DAT_00B0E840 = 0;
-    DAT_00B0E844 = 0;
-    DAT_00B0E848 = 0;
-    DAT_00B0E84C = 0;
-    DAT_00B0E850 = 0;
-}
-
 struct Target_00B1CF68 {
     void FUN_007346A0();
 };

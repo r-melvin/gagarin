@@ -35,15 +35,9 @@ public:
     void LoadBackground(const char* file, const char* picture, int value);  // GAMEMD 0x642C20 __thiscall, RET 0xC
 
     ProgressScreenClass();        // GAMEMD 0x6429E0 (no arguments)
-    // Exit-time destructor: its body is inlined into the atexit thunk 0x6429A0.
-    ~ProgressScreenClass()
-    {
-        if (BufferOwned) {
-            delete Buffer;
-            BufferOwned = false;
-        }
-        Buffer = 0;
-    }
+    // GAMEMD 0x642A30: releases the owned buffer. Defined with the global in progress_screen_global.cpp,
+    // where the atexit thunk 0x6429A0 expands it inline.
+    ~ProgressScreenClass();
 
     int  Field04;                 // +0x04, slot 0
     int  Table08[16];             // +0x08 .. +0x47, zeroed by the constructor

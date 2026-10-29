@@ -46,6 +46,9 @@ double DAT_00B0E888 = 1.0 / DAT_00B0E8A0;
 // SYNTHETIC: GAMEMD 0x6E6A10
 // GLOBAL: GAMEMD 0xB0E890
 TuningCoordInit DAT_00B0E890(128, 128, 0);
+// SYNTHETIC: GAMEMD 0x6E6A50 -- initialiser of AbstractIndex, registers the exit stub
+// SYNTHETIC: GAMEMD 0x6E6A80 -- exit stub of AbstractIndex (destructor)
+AbstractIndexTable AbstractIndex;
 
 // GLOBAL: GAMEMD 0xB0E830 -- this unit's copy of the "no cell" value.
 extern CellStruct DAT_00B0E830;

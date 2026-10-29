@@ -1,15 +1,17 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //
 // GraphicMenuItem base-class entries (layout and evidence: menus_graphic_menu.h).
-// The destructor body 0x4F3A70 is defined first so the scalar deleting destructor at 0x4F3B20 expands
+// The destructor body 0x4F3A70 is defined first (out of line) so the scalar deleting destructor at 0x4F3B20 expands
 // it inline, as retail does; the derived classes' destructors (other translation units) call it.
 // LIBRARY: GAMEMD 0x7C8B3D -- operator delete.
 
 #include "menus_graphic_menu.h"
 
-// GAMEMD 0x4F3A70 (the out-of-line body) is outside this cluster's address list and is not claimed here.
-inline GraphicMenuItem::~GraphicMenuItem()
+// FUNCTION: GAMEMD 0x4F3A70
+// The out-of-line destructor body; the scalar deleting destructor expands it inline.
+GraphicMenuItem::~GraphicMenuItem()
 {
     delete Part;
 }

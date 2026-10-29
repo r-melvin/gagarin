@@ -10,8 +10,8 @@
 struct MSVQPlayerRects
 {
     char   unknown_00[0x24];
-    MSRect Dest;      // +0x24
-    MSRect Source;    // +0x34
+    RectangleStruct Dest;      // +0x24
+    RectangleStruct Source;    // +0x34
 };
 GG_STATIC_ASSERT(offsetof(MSVQPlayerRects, Dest) == 0x24
               && offsetof(MSVQPlayerRects, Source) == 0x34);
@@ -20,11 +20,11 @@ GG_STATIC_ASSERT(offsetof(MSVQPlayerRects, Dest) == 0x24
 // Slot 5: blit the player's current source rectangle from the screen surface
 // into its destination on the caller's surface, skipped when the optional
 // clip rectangle leaves nothing of the source.
-void MSVQAnim::Draw(int context, MSRect* area)
+void MSVQAnim::Draw(MouseSurfaceView* context, RectangleStruct* area)
 {
     if (Player != 0 && !Finished) {
         if (area != 0) {
-            MSRect clip = MSRectIntersect(&((MSVQPlayerRects*)Player)->Source, *area);
+            RectangleStruct clip = MSRectIntersect(&((MSVQPlayerRects*)Player)->Source, *area);
 
             if (clip.Width <= 0 || clip.Height <= 0) {
                 return;

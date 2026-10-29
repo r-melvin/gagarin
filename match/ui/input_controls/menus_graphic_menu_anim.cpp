@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //
@@ -15,5 +16,12 @@ bool GraphicMenuAnimItem::Slot2(const Point2D* point)
         && point->Y >= Rect.Y && point->Y < Rect.Y + Rect.Height;
 }
 
-// SYNTHETIC: GAMEMD 0x4F30E0
-// GraphicMenuAnimItem::scalar deleting destructor (compiler-generated ??_G; scored from the harness, see menus.rows.tsv)
+// FUNCTION: GAMEMD 0x4F3070
+// Releases the owned animation, then runs the base destructor. (The scalar deleting destructor 0x4F30E0 is
+// not reproduced: cl emits ??_G only beside a constructor, and the factory 0x4F2C70 expands it inline.)
+GraphicMenuAnimItem::~GraphicMenuAnimItem()
+{
+    delete Anim;
+}
+
+// SYNTHETIC: GAMEMD 0x4F30E0 -- GraphicMenuAnimItem::`scalar deleting destructor' (compiler-generated ??_G beside the out-of-line destructor)

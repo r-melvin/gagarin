@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //
@@ -54,6 +55,13 @@ void GraphicMenuImageItem::Slot3(MenusItemHost* host)
     }
 }
 
-// SYNTHETIC: GAMEMD 0x4F3840
-// GraphicMenuImageItem::scalar deleting destructor (compiler-generated ??_G; scored from the harness, see menus.rows.tsv)
+// FUNCTION: GAMEMD 0x4F3600
+// Frees the owned part, destroys the name member, then runs the base destructor. (The scalar deleting
+// destructor 0x4F3840 is not reproduced: cl emits ??_G only beside a constructor, and the factory 0x4F3140
+// expands it inline.)
+GraphicMenuImageItem::~GraphicMenuImageItem()
+{
+    delete Part30;
+}
 
+// SYNTHETIC: GAMEMD 0x4F3840 -- GraphicMenuImageItem::`scalar deleting destructor' (compiler-generated ??_G beside the out-of-line destructor)

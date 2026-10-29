@@ -27,3 +27,7 @@ StaticElapsedTimer DAT_00B05638;
 // SYNTHETIC: GAMEMD 0x006C6AD0 -- initialiser of DAT_00B0BD28 (the game timer, see game_timing_methods.h)
 // GLOBAL: GAMEMD 0x00B0BD28
 StaticGameTimer DAT_00B0BD28;
+// SYNTHETIC: GAMEMD 0x0077D160 -- initialiser of DAT_00B76478
+// SYNTHETIC: GAMEMD 0x0077D190 -- exit stub of DAT_00B76478 (empty destructor)
+// GLOBAL: GAMEMD 0x00B76478
+StaticElapsedTimer DAT_00B76478;

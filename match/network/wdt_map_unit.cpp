@@ -66,7 +66,7 @@ extern bool DAT_008487BC;
 extern bool DAT_008487BD;
 
 // FUNCTION: GAMEMD 0x72E450 (decl; reloc) -- __fastcall, (surface, rectangle, 1).
-void FUN_0072E450(int surface, MSRect* area, int flag);
+void FUN_0072E450(MouseSurfaceView* surface, RectangleStruct* area, int flag);
 
 // ---- MSFrameAnim -----------------------------------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ void FUN_0072E450(int surface, MSRect* area, int flag);
 // slots 1..3, 7 and 8 are MSAnim's.
 
 // FUNCTION: GAMEMD 0x767ED0
-bool MSFrameAnim::Update(int context, MSRect* out)
+bool MSFrameAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
 {
     if (DAT_008487BC)
         FUN_0072E450(context, out, 1);
@@ -85,17 +85,17 @@ bool MSFrameAnim::Update(int context, MSRect* out)
 // FUNCTION: GAMEMD 0x767EF0
 // The context is the destination surface (its slots 31 and 32 answer the
 // extents); with no area the whole surface is used.
-void MSFrameAnim::Draw(int context, MSRect* area)
+void MSFrameAnim::Draw(MouseSurfaceView* context, RectangleStruct* area)
 {
     if (DAT_008487BD) {
         WDTSurface* surface = (WDTSurface*)context;
         int width = surface->vf_31();
         int height = surface->vf_32();
         if (area != 0) {
-            MSRect rect = *area;
+            RectangleStruct rect = *area;
             FUN_0072E450(context, &rect, 1);
         } else {
-            MSRect whole;
+            RectangleStruct whole;
             whole.X = 0;
             whole.Y = 0;
             whole.Width = width;
@@ -106,9 +106,9 @@ void MSFrameAnim::Draw(int context, MSRect* area)
 }
 
 // FUNCTION: GAMEMD 0x767F80
-MSRect MSFrameAnim::GetRect()
+RectangleStruct MSFrameAnim::GetRect()
 {
-    MSRect rect;
+    RectangleStruct rect;
     rect.X = 0;
     rect.Y = 0;
     rect.Width = 640;

@@ -144,6 +144,19 @@ struct AbstractIndexTable
     bool       IsSorted;      // +0x000C   0xB0E84C
     IndexNode* Archive;       // +0x0010   0xB0E850
 
+    // The file-scope object's constructor zeroes the five fields; its
+    // destructor frees the table and zeroes them again.
+    AbstractIndexTable() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(false), Archive(0) {}
+    ~AbstractIndexTable()
+    {
+        delete IndexTable;
+        IndexTable = 0;
+        IndexCount = 0;
+        IndexSize = 0;
+        IsSorted = false;
+        Archive = 0;
+    }
+
     IndexNode* SearchSorted(const int* key);
     void**     Fetch(const int& id);
     // The second spelling of the lookup (0x6E6E20): presence test first, the
@@ -159,7 +172,7 @@ GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IsSorted) == 0xC);
 GG_STATIC_ASSERT(offsetof(AbstractIndexTable, Archive) == 0x10);
 GG_STATIC_ASSERT(sizeof(AbstractIndexTable) == 0x14);
 
-// GLOBAL: GAMEMD 0xB0E840
+// GLOBAL: GAMEMD 0xB0E840 -- defined in abstract_index_cast_sweep.cpp
 extern AbstractIndexTable AbstractIndex;
 // GLOBAL: GAMEMD 0xB78828   the slot the fetch yields on a miss
 extern void* IndexErrorValue;

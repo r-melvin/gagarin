@@ -229,7 +229,7 @@ public:
     virtual void Slot22();  virtual void Slot23();  virtual void Slot24();
     virtual void Slot25();  virtual void Slot26();  virtual void Slot27();
     virtual void Slot28();  virtual void Slot29();
-    virtual void* GetFrame(struct MSRect* area, int a, int b);  // slot 30
+    virtual void* GetFrame(RectangleStruct* area, int a, int b);  // slot 30
 };
 
 // The font both print animations hold at +0x34. Two slots are reached from
@@ -268,7 +268,7 @@ public:
     // the caller's rectangle. Retail's `CALL 0x7B7100` immediately before it
     // pops nothing, so the rectangle pushed ahead of that call is still on the
     // stack and is this call's second argument.
-    void Measure(const wchar_t* text, struct MSRect* out);
+    void Measure(const wchar_t* text, RectangleStruct* out);
 
     // The pen's starting advance, read as a dword at 0x5CD615 and used as the
     // seed of the centring measurement.
@@ -292,7 +292,7 @@ class MSSurface
 public:
     virtual void Slot00();
     virtual void Slot01();
-    virtual void Blit(struct MSRect* area, void* image, void* frame);
+    virtual void Blit(RectangleStruct* area, void* image, void* frame);
     // Slot 30 (`CALL [EAX+0x78]` at 0x5CE5B4 and 0x5CE75E): the surface's own
     // rectangle, filled into the caller's buffer and handed back. The same
     // displacement as the image's slot 30, but ONE pushed argument where the
@@ -307,7 +307,7 @@ public:
     virtual void Slot21();  virtual void Slot22();  virtual void Slot23();
     virtual void Slot24();  virtual void Slot25();  virtual void Slot26();
     virtual void Slot27();  virtual void Slot28();  virtual void Slot29();
-    virtual struct MSRect* GetRect(struct MSRect* out);   // slot 30
+    virtual RectangleStruct* GetRect(RectangleStruct* out);   // slot 30
     virtual void Slot31();
     // Slot 32, `CALL [EDX+0x80]` at 0x5CE42A on the caller's surface (NOT on
     // the font -- the receiver is the first parameter, reloaded from its home
@@ -324,8 +324,8 @@ class MSBlitSurface
 public:
     virtual void Slot00();
     virtual void Slot01();
-    virtual void Blit(struct MSRect* area, MSSurface* source,
-                      struct MSRect* from, int a, int b);
+    virtual void Blit(RectangleStruct* area, MSSurface* source,
+                      RectangleStruct* from, int a, int b);
 };
 
 // GLOBAL: GAMEMD 0x887310 — the screen surface both PCX builders seat into the
@@ -348,7 +348,7 @@ public:
     virtual void Slot21();  virtual void Slot22();  virtual void Slot23();
     virtual void Slot24();  virtual void Slot25();  virtual void Slot26();
     virtual void Slot27();  virtual void Slot28();  virtual void Slot29();
-    virtual struct MSRect* GetRect(struct MSRect* out);   // slot 30
+    virtual RectangleStruct* GetRect(RectangleStruct* out);   // slot 30
 };
 
 // The heap-owning narrow string, the PCX file name's type. Written as
@@ -432,15 +432,15 @@ GG_STATIC_ASSERT(sizeof(MSRectBuild) == 0x10);
 // intersection the PCX draw expands inline: the destination arrives in ECX,
 // the clipping rectangle in EDX, and the rectangle being clipped plus the two
 // optional origin adjustments are pushed. It hands the destination back in EAX.
-MSRect* MSRectIntersectOut(MSRect* out, const MSRect* clip,
-                           const MSRect* self, int* x, int* y);
+RectangleStruct* MSRectIntersectOut(RectangleStruct* out, const RectangleStruct* clip,
+                           const RectangleStruct* self, int* x, int* y);
 
-__forceinline MSRect MSRectIntersect(const MSRect* self, const MSRect& other)
+__forceinline RectangleStruct MSRectIntersect(const RectangleStruct* self, const RectangleStruct& other)
 {
-    MSRect rect;
+    RectangleStruct rect;
     ((MSRectBuild*)&rect)->Build(0, 0, 0, 0);
 
-    MSRect r = *self;
+    RectangleStruct r = *self;
 
     if (other.Width <= 0 || other.Height <= 0) {
         return rect;
@@ -524,7 +524,7 @@ GG_STATIC_ASSERT(offsetof(MSAnimVector, Vector) == 0x04
 
 // A rectangle member that starts as the zero rectangle or as a copy of the caller's, built in the
 // constructor's member-initialiser run.
-struct MSBounds : public MSRect
+struct MSBounds : public RectangleStruct
 {
     MSBounds()
     {
@@ -533,10 +533,10 @@ struct MSBounds : public MSRect
         Width = 0;
         Height = 0;
     }
-    MSBounds(const MSRect& rect) : MSRect(rect) {}
-    void operator=(const MSRect& rect)
+    MSBounds(const RectangleStruct& rect) : RectangleStruct(rect) {}
+    void operator=(const RectangleStruct& rect)
     {
-        MSRect::operator=(rect);
+        RectangleStruct::operator=(rect);
     }
 };
 
@@ -548,20 +548,20 @@ public:
     // FUNCTION: GAMEMD 0x5CC760
     // Remember the caller's numbers and box; when the file name is not empty, open it as a Bink player and
     // move it to the box's corner.
-    MSBinkAnim(Wstring* name, int flags, int field34, const MSRect* rect, bool field38);
+    MSBinkAnim(Wstring* name, int flags, int field34, const RectangleStruct* rect, bool field38);
 
     // The player's destructor is not virtual, so the delete expands to the
     // destructor call followed by the plain free.
-    virtual ~MSBinkAnim() { delete Player; }               // slot 0, 0x5CEC70 (out of line 0x5CC820)
-    virtual bool   Update(int context, MSRect* out);       // slot 4, 0x5CC8A0
-    virtual void   Draw(int context, MSRect* area);        // slot 5, 0x5CC970
-    virtual MSRect GetRect();                              // slot 6, 0x5CC850
+    virtual ~MSBinkAnim();                                 // slot 0, 0x5CEC70 (out of line 0x5CC820)
+    virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);       // slot 4, 0x5CC8A0
+    virtual void   Draw(MouseSurfaceView* context, RectangleStruct* area);        // slot 5, 0x5CC970
+    virtual RectangleStruct GetRect();                              // slot 6, 0x5CC850
     virtual bool   vf_7();                                 // slot 7, 0x5CC880
     virtual void   Attach(void* target);                   // slot 8, 0x5CCA10
 
     MSBinkPlayer* Player;    // +0x1C
     int           Field20;   // +0x20 the player's flags
-    MSRect        Bounds;    // +0x24
+    RectangleStruct        Bounds;    // +0x24
     int           Field34;   // +0x34
     bool          Field38;   // +0x38
 };
@@ -581,27 +581,12 @@ public:
     // destructor, then the player, which is stopped before it is freed. The
     // member reload between the two is cl's, not the source's -- it cannot
     // prove Stop left the member alone.
-    virtual ~MSVQAnim()                                    // slot 0, 0x5CECB0 (out of line 0x5CCE40)
-    {
-        if (Movie != 0) {
-            Movie->DeletingDtor(1);
-        }
-
-        if (Player != 0) {
-            Player->Stop();
-            delete Player;
-        }
-    }
-    virtual bool   Update(int context, MSRect* out);       // slot 4, 0x5CCE90
-    virtual void   Draw(int context, MSRect* area);        // slot 5, 0x5CD0E0
-    virtual MSRect GetRect();                              // slot 6, 0x5CD290
+    virtual ~MSVQAnim();                                   // slot 0, 0x5CECB0 (out of line 0x5CCE40)
+    virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);       // slot 4, 0x5CCE90
+    virtual void   Draw(MouseSurfaceView* context, RectangleStruct* area);        // slot 5, 0x5CD0E0
+    virtual RectangleStruct GetRect();                              // slot 6, 0x5CD290
     virtual bool   vf_7();                                 // slot 7, 0x5CD320
     virtual void   Attach(void* target);                   // slot 8, 0x5CD240
-
-    // The scalar deleting destructor, written by hand: this translation unit has no definition of the
-    // constructor 0x5CCC30 (a 0x206-byte body with float arithmetic, not matched yet), and cl emits the
-    // compiler's `??_G` only beside a constructor. Same bytes as retail's 0x5CECB0.
-    void* DeletingDtor(unsigned int flags);
 
     MSVQPlayer*  Player;        // +0x1C
     char         unknown_20[8]; // +0x20
@@ -620,7 +605,7 @@ GG_STATIC_ASSERT(offsetof(MSVQAnim, Player) == 0x1C
 //
 //   +0x1C  Obj_007B66D0_msanim_family_methods Text     constructed at 0x5CD367, released at
 //                                   0x5CD3AC and 0x5CED1C
-//   +0x20  MSRect Bounds            the caller's rectangle copied in whole at
+//   +0x20  RectangleStruct Bounds            the caller's rectangle copied in whole at
 //                                   0x5CD36C..0x5CD390, and copied back out by
 //                                   slot 6 at 0x5CD3D0
 //   +0x30  bool Started             cleared by the constructor at 0x5CD383,
@@ -634,24 +619,24 @@ class MSBitPrintAnim : public MSAnim
 {
 public:
     Obj_007B66D0_msanim_family_methods Text;     // +0x1C
-    MSRect          Bounds;   // +0x20
+    RectangleStruct          Bounds;   // +0x20
     bool            Started;  // +0x30
     bool            Centred;  // +0x31
 
     // FUNCTION: GAMEMD 0x5CD330
     // The base takes the rectangle's two leading numbers, the text is built from the caller's pointer, and the
     // whole rectangle is copied in afterwards.
-    MSBitPrintAnim(const wchar_t* text, const MSRect* rect, bool centred);
+    MSBitPrintAnim(const wchar_t* text, const RectangleStruct* rect, bool centred);
 
-    virtual ~MSBitPrintAnim() { Text.Release(); }          // slot 0, 0x5CED10 (out of line 0x5CD3A0)
+    virtual ~MSBitPrintAnim();                              // slot 0, 0x5CED10 (out of line 0x5CD3A0)
 
     // 0x5CD410, slot 4, and 0x5CD4D0, slot 5. Both hand the animation's
     // rectangle back through an out pointer rather than by value: retail
     // writes the sixteen bytes through the SECOND stack argument and still
     // answers a byte in EAX, so neither is a hidden return buffer.
-    virtual bool   Update(int context, MSRect* out);       // slot 4, 0x5CD410
-    virtual void   Draw(int context, MSRect* area);        // slot 5, 0x5CD4D0
-    virtual MSRect GetRect();                              // slot 6, 0x5CD3D0
+    virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);       // slot 4, 0x5CD410
+    virtual void   Draw(MouseSurfaceView* context, RectangleStruct* area);        // slot 5, 0x5CD4D0
+    virtual RectangleStruct GetRect();                              // slot 6, 0x5CD3D0
     virtual bool   vf_7();                                 // slot 7, 0x5CD400
 
     void  SetStarted(bool on);            // 0x5CD3C0
@@ -668,7 +653,7 @@ GG_STATIC_ASSERT(offsetof(MSBitPrintAnim, Text) == 0x1C
 //   +0x24  unsigned CharPos         `CMP [ESI+0x24],EAX; JBE` at 0x5CE312 --
 //                                   unsigned against the string length
 //   +0x28  unsigned LineCount       `CMP [ESI+0x28],2; JBE` at 0x5CE317
-//   +0x38  MSRect Bounds            `ADD ECX,0x38` then the 16-byte copy out
+//   +0x38  RectangleStruct Bounds            `ADD ECX,0x38` then the 16-byte copy out
 //                                   at 0x5CE2B4
 //   +0x48  bool Active              `MOV DL,[ECX+0x48]` at 0x5CE2E4
 // VTABLE: GAMEMD 0x7EEA00
@@ -685,27 +670,27 @@ public:
     bool            Field30;     // +0x30 -- its eighth
     char            unknown_31[3];
     MSFont*         Font;        // +0x34
-    MSRect          Bounds;      // +0x38
+    RectangleStruct          Bounds;      // +0x38
     bool            Active;      // +0x48
     bool            Centred;     // +0x49 -- the constructor's ninth argument
     char            unknown_4A[2];
     int             CentreOffset;  // +0x4C
 
     // FUNCTION: GAMEMD 0x5CD570 -- build a printed page.
-    MSPrintAnim(const wchar_t* text, int x, int y, MSFont* font, const MSRect* rect, int duration, int margin,
+    MSPrintAnim(const wchar_t* text, int x, int y, MSFont* font, const RectangleStruct* rect, int duration, int margin,
                 bool a8, bool centred);
 
     virtual ~MSPrintAnim() { Text.Release(); }             // slot 0, 0x5CED40 (out of line: none)
 
-    virtual bool   Update(int context, MSRect* out);       // slot 4, 0x5CDC50 -- step the page on one character
-    virtual void   Draw(int context, MSRect* clip);        // slot 5, 0x5CDEE0 -- redraw everything printed so far
-    virtual MSRect GetRect();                              // slot 6, 0x5CE2B0
+    virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);       // slot 4, 0x5CDC50 -- step the page on one character
+    virtual void   Draw(MouseSurfaceView* context, RectangleStruct* clip);        // slot 5, 0x5CDEE0 -- redraw everything printed so far
+    virtual RectangleStruct GetRect();                              // slot 6, 0x5CE2B0
     virtual bool   vf_7();                                 // slot 7, 0x5CE300
 
     // 0x5CD690 -- lay the page out inside the caller's rectangle.
-    void Layout(const MSRect* area);
+    void Layout(const RectangleStruct* area);
     // 0x5CE3A0 -- draw the page, one character at a time.
-    void DrawLines(MSSurface* surface, MSRect* clip);
+    void DrawLines(MSSurface* surface, RectangleStruct* clip);
     // 0x5CE330 -- the measured width of one line of the given text, stopping
     // at the terminator or the first newline.
     int   MeasureWidth(Obj_007B66D0_msanim_family_methods* text);
@@ -725,7 +710,7 @@ GG_STATIC_ASSERT(offsetof(MSPrintAnim, Interval) == 0x2C
 
 // The two leading numbers of the caller's placement, read as a pair at
 // 0x5CE74A/0x5CE74E. Modelled as its own two-int struct rather than as an
-// MSRect because the builder reads exactly two of the four.
+// RectangleStruct because the builder reads exactly two of the four.
 struct MSPoint
 {
     int X;   // +0x00
@@ -755,16 +740,11 @@ public:
     // FUNCTION: GAMEMD 0x5CE640 -- the same, placed at the caller's point instead.
     MSPCXAnim(MSStringClass* name, MSAnimVector* owner, const MSPoint* where, bool flag);
 
-    virtual ~MSPCXAnim()                                   // slot 0, 0x5CED70 (out of line 0x5CE7B0)
-    {
-        if (Image != 0) {
-            Image->DeletingDtor(1);
-        }
-    }
+    virtual ~MSPCXAnim();                                  // slot 0, 0x5CED70 (out of line 0x5CE7B0)
 
-    virtual bool   Update(int context, MSRect* out);       // slot 4, 0x5CE7D0
-    virtual void   Draw(int context, MSRect* area);        // slot 5, 0x5CE8C0
-    virtual MSRect GetRect();                              // slot 6, 0x5CEA80
+    virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);       // slot 4, 0x5CE7D0
+    virtual void   Draw(MouseSurfaceView* context, RectangleStruct* area);        // slot 5, 0x5CE8C0
+    virtual RectangleStruct GetRect();                              // slot 6, 0x5CEA80
     virtual bool   vf_7();                                 // slot 7, 0x5CEAB0
     virtual void   Attach(void* target);                   // slot 8, 0x5CEA40
 };
@@ -794,11 +774,5 @@ struct MSAnimCounters
 GG_STATIC_ASSERT(sizeof(MSAnimCounters) == 0x10
               && offsetof(MSAnimCounters, Field0C) == 0x0C);
 extern MSAnimCounters MSAnimCounts;
-
-// FUNCTION: GAMEMD 0x5CE7B0 — the out-of-line ~MSPCXAnim.
-void MSPCXAnim_Destroy(MSPCXAnim* self);
-
-// FUNCTION: GAMEMD 0x5CD3A0 — the out-of-line ~MSBitPrintAnim.
-void MSBitPrintAnim_Destroy(MSBitPrintAnim* self);
 
 #endif  // GG_MATCH_MAP_MSANIM_FAMILY_METHODS_H

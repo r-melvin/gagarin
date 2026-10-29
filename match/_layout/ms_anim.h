@@ -24,6 +24,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "geometry2d.h"
 
 // The clock member's tick reader. FUNCTION: GAMEMD 0x6C8C40 (decl; reloc).
 struct MSClockClass
@@ -35,18 +36,8 @@ struct MSClockClass
 };
 GG_STATIC_ASSERT(sizeof(MSClockClass) == 4);
 
-// The 16-byte rectangle the animations pass around by value.
-struct MSRect
-{
-    int X;       // +0x00
-    int Y;       // +0x04
-    int Width;   // +0x08
-    int Height;  // +0x0C
-};
-GG_STATIC_ASSERT(sizeof(MSRect) == 0x10
-              && offsetof(MSRect, Y) == 0x04
-              && offsetof(MSRect, Width) == 0x08
-              && offsetof(MSRect, Height) == 0x0C);
+// The animations pass the engine's RectangleStruct (X, Y, Width, Height) around by value.
+class MouseSurfaceView;
 
 // The decoded shape file MSShapeAnim owns at +0x1C: a short header carrying the frame size and count.
 struct MSShapeFile
@@ -58,7 +49,7 @@ struct MSShapeFile
 
     // FUNCTION: GAMEMD 0x69E7E0 (decl; reloc) -- the rectangle of one frame, written to the caller's buffer
     // and handed back.
-    struct MSRect* GetFrameRect(struct MSRect* out, unsigned int frame);
+    RectangleStruct* GetFrameRect(RectangleStruct* out, unsigned int frame);
 };
 GG_STATIC_ASSERT(offsetof(MSShapeFile, Width) == 2 && offsetof(MSShapeFile, Frames) == 6);
 
@@ -114,9 +105,9 @@ public:
     virtual void SetEnabled(bool on);                      // slot 1, 0x5CEAC0
     virtual void PauseTimer();                             // slot 2, 0x5CEAD0
     virtual void ResumeTimer();                            // slot 3, 0x5CEB20
-    virtual bool Update(int context, MSRect* out) = 0;     // slot 4, 0x4C9150 (pure)
-    virtual void Draw(int context, MSRect* area) = 0;      // slot 5, 0x4C9150 (pure)
-    virtual MSRect GetRect() = 0;                          // slot 6, 0x4C9150 (pure)
+    virtual bool Update(MouseSurfaceView* context, RectangleStruct* out) = 0;     // slot 4, 0x4C9150 (pure)
+    virtual void Draw(MouseSurfaceView* context, RectangleStruct* area) = 0;      // slot 5, 0x4C9150 (pure)
+    virtual RectangleStruct GetRect() = 0;                          // slot 6, 0x4C9150 (pure)
     virtual bool vf_7();                                   // slot 7, 0x5CEB40
     virtual void Attach(void* target);                     // slot 8, 0x5CEB50
 
@@ -140,20 +131,17 @@ class MSShapeAnim : public MSAnim
 public:
     // FUNCTION: GAMEMD 0x5CB6D0
     MSShapeAnim(const char* name, int x, int y, int field20, int field24, bool field34, unsigned int flags);
-    // slot 0, 0x5CEB80 (scalar deleting): hand the decoded buffer back only when this object owns it.
-    virtual ~MSShapeAnim()
-    {
-        if (Buffer != 0 && OwnsBuffer) {
-            delete Buffer;
-            Buffer = 0;
-            OwnsBuffer = false;
-        }
-    }
-    virtual bool Update(int context, MSRect* out);         // slot 4, 0x5CB880
-    virtual void Draw(int context, MSRect* area);          // slot 5, 0x5CBB80
-    virtual MSRect GetRect();                              // slot 6, 0x5CBCB0
+    // slot 0, 0x5CEB80 (scalar deleting), out of line 0x5CB750: hand the decoded buffer back only when this object owns it.
+    virtual ~MSShapeAnim();
+    virtual bool Update(MouseSurfaceView* context, RectangleStruct* out);         // slot 4, 0x5CB880
+    virtual void Draw(MouseSurfaceView* context, RectangleStruct* area);          // slot 5, 0x5CBB80
+    virtual RectangleStruct GetRect();                              // slot 6, 0x5CBCB0
     // FUNCTION: GAMEMD 0x5CB790 -- jump to a frame, redrawing the area it covered.
     void SetFrame(unsigned int frame);
+    // FUNCTION: GAMEMD 0x5CB840 -- store +0x2C, clamped below the frame count.
+    void FUN_005CB840(unsigned int value);
+    // FUNCTION: GAMEMD 0x5CB860 -- store LastFrame, clamped below the frame count.
+    void FUN_005CB860(unsigned int value);
 
     MSShapeFile* Buffer;     // +0x1C
     int          Field20;    // +0x20
@@ -179,12 +167,16 @@ class MSFadeAnim : public MSShapeAnim
 public:
     // FUNCTION: GAMEMD 0x5CBD20
     MSFadeAnim(const char* name, int x, int y, int field20, int field24, int field38, int field44);
+    // FUNCTION: GAMEMD 0x5CC690 -- clear +0x40.
+    void FUN_005CC690();
+    // FUNCTION: GAMEMD 0x5CC6A0 -- clear +0x40 and set the frame.
+    void FUN_005CC6A0(int frame);
     virtual ~MSFadeAnim() {}                               // slot 0, 0x5CEBD0 (scalar deleting)
-    virtual bool Update(int context, MSRect* out);         // slot 4, 0x5CBDA0
-    virtual void Draw(int context, MSRect* area);          // slot 5, 0x5CC110
+    virtual bool Update(MouseSurfaceView* context, RectangleStruct* out);         // slot 4, 0x5CBDA0
+    virtual void Draw(MouseSurfaceView* context, RectangleStruct* area);          // slot 5, 0x5CC110
 
-    int unknown_40;   // +0x40
-    int unknown_44;   // +0x44
+    unsigned int unknown_40;   // +0x40
+    int unknown_44;            // +0x44
 };
 GG_STATIC_ASSERT(offsetof(MSFadeAnim, unknown_40) == 0x40
               && offsetof(MSFadeAnim, unknown_44) == 0x44
@@ -198,8 +190,8 @@ public:
     MSOverlayAnim(const char* name, int x, int y, int field20, int field24, int field44,
                   unsigned char field48, int frame, bool quick);
     virtual ~MSOverlayAnim() {}                            // slot 0, 0x5CEC20 (scalar deleting)
-    virtual bool Update(int context, MSRect* out);         // slot 4, 0x5CC330
-    virtual void Draw(int context, MSRect* area);          // slot 5, 0x5CC550
+    virtual bool Update(MouseSurfaceView* context, RectangleStruct* out);         // slot 4, 0x5CC330
+    virtual void Draw(MouseSurfaceView* context, RectangleStruct* area);          // slot 5, 0x5CC550
     virtual bool vf_7();                                   // slot 7, 0x5CC740
     virtual void Attach(void* target);                     // slot 8, 0x5CC6C0
 
@@ -214,9 +206,9 @@ public:
     // FUNCTION: GAMEMD 0x767E90
     MSFrameAnim();
     virtual ~MSFrameAnim() {}                          // slot 0, 0x769BD0 (scalar deleting)
-    virtual bool   Update(int context, MSRect* out);   // slot 4, 0x767ED0
-    virtual void   Draw(int context, MSRect* area);    // slot 5, 0x767EF0
-    virtual MSRect GetRect();                          // slot 6, 0x767F80
+    virtual bool   Update(MouseSurfaceView* context, RectangleStruct* out);   // slot 4, 0x767ED0
+    virtual void   Draw(MouseSurfaceView* context, RectangleStruct* area);    // slot 5, 0x767EF0
+    virtual RectangleStruct GetRect();                          // slot 6, 0x767F80
 };
 GG_STATIC_ASSERT(sizeof(MSFrameAnim) == 0x1C);
 
@@ -262,9 +254,9 @@ public:
     virtual void SetEnabled(bool on);                  // slot 1, 0x7718A0
     virtual void PauseTimer();                         // slot 2, 0x771900
     virtual void ResumeTimer();                        // slot 3, 0x771950
-    virtual bool Update(int context, MSRect* out);     // slot 4, 0x771970
-    virtual void Draw(int context, MSRect* area);      // slot 5, 0x771980
-    virtual MSRect GetRect();                          // slot 6, 0x771990
+    virtual bool Update(MouseSurfaceView* context, RectangleStruct* out);     // slot 4, 0x771970
+    virtual void Draw(MouseSurfaceView* context, RectangleStruct* area);      // slot 5, 0x771980
+    virtual RectangleStruct GetRect();                          // slot 6, 0x771990
     virtual bool vf_7();                               // slot 7, 0x7719C0
     virtual void Attach(void* target);                 // slot 8, 0x7719D0
 

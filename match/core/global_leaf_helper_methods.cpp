@@ -8,15 +8,30 @@
 
 #include <string.h>
 
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
+
 // LIBRARY: GAMEMD 0x7C8B3D -- CRT free.
 extern "C" void __cdecl gg_free(void*);
+
+// An owned heap block: null at start-up, freed (and cleared) at exit.
+struct OwnedBlock {
+    void* ptr;
+    OwnedBlock() : ptr(0) {}
+    ~OwnedBlock()
+    {
+        if (ptr != 0) {
+            gg_free(ptr);
+            ptr = 0;
+        }
+    }
+};
 
 extern int DAT_00A9FABC;
 extern void* DAT_00ABF3F4;
 extern int DAT_00B2FF78[0x4000];
 extern int DAT_00B1D5E0[0x4000];
-extern void* DAT_00B77F54;
-extern void* DAT_00B77F60;
 
 // FUNCTION: GAMEMD 0x0041C610
 int __cdecl FUN_0041C610(const void* a, const void* b)
@@ -69,36 +84,28 @@ void FUN_00754840()
     memset(DAT_00B1D5E0, 0, sizeof(DAT_00B2FF78));
 }
 
-// FUNCTION: GAMEMD 0x007B00B0
-void FUN_007B00B0()
-{
-    if (DAT_00B77F54 != 0) {
-        gg_free(DAT_00B77F54);
-        DAT_00B77F54 = 0;
-    }
-}
+// SYNTHETIC: GAMEMD 0x007B0090 -- initialiser of DAT_00B77F54, registers the exit stub
+// SYNTHETIC: GAMEMD 0x007B00B0 -- exit stub of DAT_00B77F54 (destructor)
+// GLOBAL: GAMEMD 0xB77F54
+OwnedBlock DAT_00B77F54;
 
-// FUNCTION: GAMEMD 0x007B00F0
-void FUN_007B00F0()
-{
-    if (DAT_00B77F60 != 0) {
-        gg_free(DAT_00B77F60);
-        DAT_00B77F60 = 0;
-    }
-}
+// SYNTHETIC: GAMEMD 0x007B00D0 -- initialiser of DAT_00B77F60, registers the exit stub
+// SYNTHETIC: GAMEMD 0x007B00F0 -- exit stub of DAT_00B77F60 (destructor)
+// GLOBAL: GAMEMD 0xB77F60
+OwnedBlock DAT_00B77F60;
 
 // FUNCTION: GAMEMD 0x007B0320
 void FUN_007B0320(void* replacement)
 {
-    if (DAT_00B77F54 != 0)
-        gg_free(DAT_00B77F54);
-    DAT_00B77F54 = replacement;
+    if (DAT_00B77F54.ptr != 0)
+        gg_free(DAT_00B77F54.ptr);
+    DAT_00B77F54.ptr = replacement;
 }
 
 // FUNCTION: GAMEMD 0x007B0350
 void FUN_007B0350(void* replacement)
 {
-    if (DAT_00B77F60 != 0)
-        gg_free(DAT_00B77F60);
-    DAT_00B77F60 = replacement;
+    if (DAT_00B77F60.ptr != 0)
+        gg_free(DAT_00B77F60.ptr);
+    DAT_00B77F60.ptr = replacement;
 }

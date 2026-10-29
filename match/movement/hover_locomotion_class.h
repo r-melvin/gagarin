@@ -139,6 +139,9 @@ public:
     void StartMoving();             // FUNCTION: GAMEMD 0x517110
     bool Fun_005163A0();            // FUNCTION: GAMEMD 0x5163A0
     bool Fun_005163B0();            // FUNCTION: GAMEMD 0x5163B0
+    // Inline helpers used by Fun_00515ED0 (no retail address of their own).
+    int LengthToHeadTo();
+    int SqrtLengthToDestination();
 
     // ---- members (complete-object offsets) ----
     HoverCoordView Destination_;    // +0x18

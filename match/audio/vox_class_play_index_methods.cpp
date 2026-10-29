@@ -16,8 +16,8 @@ void VoxClass::PlayIndex(int index, int priority, int volume)
 {
     if (DAT_00B1D4CC != 0 && index >= 0 && index < DAT_00B1D4B0
         && DAT_00B1D3D8 == 0) {
-        VoxEntry_00752480* entry = DAT_00B1D4A4[index];
-        VoxEntry_00752480* speaking = DAT_00B1D4C4;
+        VoxClass* entry = DAT_00B1D4A4[index];
+        VoxClass* speaking = DAT_00B1D4C4;
         if (entry != speaking) {
             if (priority == -1) {
                 priority = entry->Priority;
@@ -27,10 +27,10 @@ void VoxClass::PlayIndex(int index, int priority, int volume)
             }
 
             if (speaking != 0 && priority == 2) {
-                VoxNode_00752480* node = DAT_00B1D3C8.FUN_004073C0();
+                VoxNode* node = DAT_00B1D3C8.FUN_004073C0();
                 while (node != 0) {
                     FUN_00407450(node);
-                    node->Entry->State = 2;
+                    node->Event->State = 2;
                     gg_free(node);
                     node = DAT_00B1D3C8.FUN_004073C0();
                 }
@@ -46,7 +46,7 @@ void VoxClass::PlayIndex(int index, int priority, int volume)
                 DAT_00B1D4D4 = 0;
             }
 
-            VoxNode_00752480* live = FUN_00752680(entry);
+            VoxNode* live = entry->GetActiveVoice();
             if (live == 0 || live->Priority != priority) {
                 FUN_00752590(entry, priority, volume);
             }

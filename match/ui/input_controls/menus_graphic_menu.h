@@ -144,10 +144,7 @@ GG_STATIC_ASSERT(offsetof(GraphicMenuItem, Part) == 0x0C);
 class GraphicMenuAnimItem : public GraphicMenuItem
 {
 public:
-    virtual ~GraphicMenuAnimItem()
-    {
-        delete Anim;
-    }
+    virtual ~GraphicMenuAnimItem();                   // 0x4F3070 body, 0x4F30E0 scalar deleting
     virtual bool Slot2(const Point2D* point);      // 0x4F3090
 
     ::Rect        Rect;       // +0x10
@@ -162,10 +159,7 @@ GG_STATIC_ASSERT(sizeof(GraphicMenuAnimItem) == 0x28);
 class GraphicMenuImageItem : public GraphicMenuItem
 {
 public:
-    virtual ~GraphicMenuImageItem()
-    {
-        delete Part30;
-    }
+    virtual ~GraphicMenuImageItem();                  // 0x4F3600 body, 0x4F3840 scalar deleting
     virtual bool Slot2(const Point2D* point);      // 0x4F3640
     virtual void Slot3(MenusItemHost* host);          // 0x4F37A0
     virtual void Slot4(bool value);                   // 0x4F3690
@@ -209,7 +203,7 @@ public:
 class GraphicMenuShortcutItem : public GraphicMenuItem
 {
 public:
-    virtual ~GraphicMenuShortcutItem() {}
+    virtual ~GraphicMenuShortcutItem();               // 0x4F3E90 body, 0x4F3F60 scalar deleting
     virtual bool Slot1(unsigned key);                    // 0x4F3EE0
 
     DynamicVectorClass<unsigned> Keys;  // +0x10

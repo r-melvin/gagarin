@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //
@@ -24,5 +25,11 @@ bool GraphicMenuShortcutItem::Slot1(unsigned key)
     return MenusFindKey(it, key);
 }
 
-// SYNTHETIC: GAMEMD 0x4F3F60
-// GraphicMenuShortcutItem::scalar deleting destructor (compiler-generated ??_G; scored from the harness, see menus.rows.tsv)
+// FUNCTION: GAMEMD 0x4F3E90
+// Destroys the key vector, then runs the base destructor. (The scalar deleting destructor 0x4F3F60 is not
+// reproduced: cl emits ??_G only beside a constructor, and the constructor 0x4F3C40 is not matched.)
+GraphicMenuShortcutItem::~GraphicMenuShortcutItem()
+{
+}
+
+// SYNTHETIC: GAMEMD 0x4F3F60 -- GraphicMenuShortcutItem::`scalar deleting destructor' (compiler-generated ??_G beside the out-of-line destructor)

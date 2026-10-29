@@ -40,7 +40,6 @@
 //   FUNCTION: GAMEMD 0x5CEA40  MSPCXAnim::Attach
 //   FUNCTION: GAMEMD 0x5CEA80  MSPCXAnim::GetRect
 //   FUNCTION: GAMEMD 0x5CEAB0  MSPCXAnim::vf_7
-//   FUNCTION: GAMEMD 0x5CECB0  MSVQAnim::DeletingDtor
 //   (SYNTHETIC deleting destructors 0x5CED10 / 0x5CED40 / 0x5CED70: annotated at the end of the file)
 //   SYNTHETIC: GAMEMD 0x5CEDB0  MSAnimCounts initialiser
 //   VTABLE:   GAMEMD 0x7EE8E8  MSAnim (9 slots), 0x7EE910 MSShapeAnim, 0x7EE938 MSFadeAnim, 0x7EE960 MSOverlayAnim,
@@ -115,19 +114,19 @@ bool MSVQAnim::vf_7()
 // FUNCTION: GAMEMD 0x5CD330
 // Build a bit-printed line: the base takes the rectangle's two leading numbers, the text is built from
 // the caller's pointer, and then the whole rectangle is copied in.
-MSBitPrintAnim::MSBitPrintAnim(const wchar_t* text, const MSRect* rect, bool centred)
+MSBitPrintAnim::MSBitPrintAnim(const wchar_t* text, const RectangleStruct* rect, bool centred)
     : MSAnim(rect->X, rect->Y), Text(text), Bounds(*rect), Started(false)
 {
     Centred = centred;
 }
 
 // FUNCTION: GAMEMD 0x5CD3A0
-// The out-of-line copy of the destructor. Both vtable seats survive here
+// The out-of-line destructor. Both vtable seats survive here
 // because the string release between them can observe the first, which is the
 // same reason the inlined copy at 0x5CED10 keeps only one.
-void MSBitPrintAnim_Destroy(MSBitPrintAnim* self)
+MSBitPrintAnim::~MSBitPrintAnim()
 {
-    self->MSBitPrintAnim::~MSBitPrintAnim();
+    Text.Release();
 }
 
 // FUNCTION: GAMEMD 0x5CD3C0
@@ -140,7 +139,7 @@ void MSBitPrintAnim::SetStarted(bool on)
 
 // FUNCTION: GAMEMD 0x5CD3D0
 // Slot 6: the 16-byte copy out of the rectangle at +0x20.
-MSRect MSBitPrintAnim::GetRect()
+RectangleStruct MSBitPrintAnim::GetRect()
 {
     return Bounds;
 }
@@ -157,7 +156,7 @@ bool MSBitPrintAnim::vf_7()
 // the text through the engine, and hand the box back to the caller. The
 // clipping rectangle is the box in corner form -- left, top, right, bottom --
 // which is why the two trailing numbers are one short of the far edge.
-bool MSBitPrintAnim::Update(int context, MSRect* out)
+bool MSBitPrintAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
 {
     if (DAT_0089C4B8 != 0 && TheGameFont != 0) {
         BitFontBounds clip;
@@ -191,10 +190,10 @@ bool MSBitPrintAnim::Update(int context, MSRect* out)
 // rectangle the caller names rather than always to the line's own box. A null
 // rectangle means the line's own, which is the whole of retail's one-armed
 // `JNE` over the `LEA`.
-void MSBitPrintAnim::Draw(int context, MSRect* area)
+void MSBitPrintAnim::Draw(MouseSurfaceView* context, RectangleStruct* area)
 {
     if (DAT_0089C4B8 != 0 && TheGameFont != 0) {
-        MSRect* box = area;
+        RectangleStruct* box = area;
 
         if (box == 0) {
             box = &Bounds;
@@ -225,7 +224,7 @@ void MSBitPrintAnim::Draw(int context, MSRect* area)
 // is re-stamped from a temporary carrying its interval, and the page is laid
 // out inside the caller's rectangle. A centred page finally measures its first
 // line and banks half the slack as its pen offset.
-MSPrintAnim::MSPrintAnim(const wchar_t* text, int x, int y, MSFont* font, const MSRect* rect, int duration,
+MSPrintAnim::MSPrintAnim(const wchar_t* text, int x, int y, MSFont* font, const RectangleStruct* rect, int duration,
                          int margin, bool a8, bool centred)
     : MSAnim(x, y), Text(text), Field20(0), CharPos(duration), LineCount(0), Interval(margin), Field30(a8),
       Font(font), Active(false), Centred(centred), CentreOffset(0)
@@ -258,7 +257,7 @@ MSPrintAnim::MSPrintAnim(const wchar_t* text, int x, int y, MSFont* font, const 
 // not divide, move the measured box to the pen, and clip the box to the
 // caller's rectangle. A caller's rectangle with no width or no height skips all
 // of that and simply parks the box at the pen.
-void MSPrintAnim::Layout(const MSRect* area)
+void MSPrintAnim::Layout(const RectangleStruct* area)
 {
     if (area->Width > 0 && area->Height > 0) {
         Font->Measure(Text.Peek(), &Bounds);
@@ -357,7 +356,7 @@ __forceinline int MSAnim::TimeLeft()
 // it. A centred line measures itself once, on the first character of the line,
 // and banks half its slack as the pen offset. Running off the bottom of the
 // box advances the line start past the next newline and stops the walk.
-bool MSPrintAnim::Update(int context, MSRect* out)
+bool MSPrintAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
 {
     out->X = 0;
     out->Y = 0;
@@ -485,11 +484,11 @@ bool MSPrintAnim::Update(int context, MSRect* out)
 // The sweep's implied length for this entry (0x3C4) runs past its end: the
 // body finishes at 0x5CE0BD and a separate function of another class begins at
 // 0x5CE0C0, so the real length is 0x1E0.
-void MSPrintAnim::Draw(int context, MSRect* clip)
+void MSPrintAnim::Draw(MouseSurfaceView* context, RectangleStruct* clip)
 {
     if (clip != 0) {
-        MSRect out;
-        MSRect shown = *MSRectIntersectOut(&out, clip, &Bounds, 0, 0);
+        RectangleStruct out;
+        RectangleStruct shown = *MSRectIntersectOut(&out, clip, &Bounds, 0, 0);
 
         if (shown.Width <= 0 || shown.Height <= 0) {
             return;
@@ -556,7 +555,7 @@ void MSPrintAnim::Draw(int context, MSRect* clip)
 // Hand back the rectangle the printed text occupies. The whole body is a
 // 16-byte copy out of the member at +0x38; retail's `ADD ECX,0x38` is the
 // member's address folded into the receiver register before the copy.
-MSRect MSPrintAnim::GetRect()
+RectangleStruct MSPrintAnim::GetRect()
 {
     return Bounds;
 }
@@ -610,11 +609,11 @@ int MSPrintAnim::MeasureWidth(Obj_007B66D0_msanim_family_methods* text)
 // nothing is drawn unless the overlap has both a width and a height; a
 // newline moves the pen down one line height and stops the page at the
 // surface's last printable row.
-void MSPrintAnim::DrawLines(MSSurface* surface, MSRect* clip)
+void MSPrintAnim::DrawLines(MSSurface* surface, RectangleStruct* clip)
 {
     if (clip != 0) {
-        MSRect out;
-        MSRect shown = *MSRectIntersectOut(&out, clip, &Bounds, 0, 0);
+        RectangleStruct out;
+        RectangleStruct shown = *MSRectIntersectOut(&out, clip, &Bounds, 0, 0);
 
         if (shown.Width <= 0 || shown.Height <= 0) {
             return;
@@ -668,12 +667,12 @@ MSPCXAnim::MSPCXAnim(MSStringClass* name, MSAnimVector* owner, bool flag)
 
             if (Image != 0) {
                 {
-                    MSRect frame;
+                    RectangleStruct frame;
                     Bounds = *((MSImageSurface*)Image)->GetRect(&frame);
                 }
 
-                MSRect screen;
-                MSRect sw = *Surface->GetRect(&screen);
+                RectangleStruct screen;
+                RectangleStruct sw = *Surface->GetRect(&screen);
 
                 Bounds.X += (sw.Width - Bounds.Width) / 2;
                 Bounds.Y += (sw.Height - Bounds.Height) / 2;
@@ -713,7 +712,7 @@ MSPCXAnim::MSPCXAnim(MSStringClass* name, MSAnimVector* owner, const MSPoint* wh
             Image = (MSDeletable*)MSReadPCXFile(&file, 0, 0, 0);
 
             if (Image != 0) {
-                MSRect frame;
+                RectangleStruct frame;
                 Bounds = *((MSImageSurface*)Image)->GetRect(&frame);
                 Bounds.X = where->X;
                 Bounds.Y = where->Y;
@@ -732,9 +731,11 @@ MSPCXAnim::MSPCXAnim(MSStringClass* name, MSAnimVector* owner, const MSPoint* wh
 }
 
 // FUNCTION: GAMEMD 0x5CE7B0
-void MSPCXAnim_Destroy(MSPCXAnim* self)
+MSPCXAnim::~MSPCXAnim()
 {
-    self->MSPCXAnim::~MSPCXAnim();
+    if (Image != 0) {
+        Image->DeletingDtor(1);
+    }
 }
 
 // FUNCTION: GAMEMD 0x5CE7D0
@@ -744,12 +745,12 @@ void MSPCXAnim_Destroy(MSPCXAnim* self)
 // skipping its own entry. The index of that entry comes from the list's own
 // lookup, which takes its argument by reference — the temporary holding
 // `this` is what retail parks in the incoming parameter's dead stack slot.
-bool MSPCXAnim::Update(int context, MSRect* out)
+bool MSPCXAnim::Update(MouseSurfaceView* context, RectangleStruct* out)
 {
     if (!Finished) {
         if (Enabled) {
             if (Image != 0) {
-                MSRect area;
+                RectangleStruct area;
 
                 Surface->Blit(&Bounds, Image, Image->GetFrame(&area, 0, 1));
                 Draw(context, 0);
@@ -758,7 +759,7 @@ bool MSPCXAnim::Update(int context, MSRect* out)
                 // and the local out gives retail's four loads followed by
                 // interleaved stores, where copying the member twice emits two
                 // separate load/store runs and five extra moves (34.0 percent).
-                MSRect mine = Bounds;
+                RectangleStruct mine = Bounds;
 
                 *out = mine;
 
@@ -784,11 +785,11 @@ bool MSPCXAnim::Update(int context, MSRect* out)
 // own box is intersected against it first and nothing goes out unless the
 // overlap has both a width and a height; a null rectangle draws unclipped and
 // leaves the frame rectangle to the image itself.
-void MSPCXAnim::Draw(int context, MSRect* area)
+void MSPCXAnim::Draw(MouseSurfaceView* context, RectangleStruct* area)
 {
     if (Image != 0 && !Finished && Enabled) {
         if (area != 0) {
-            MSRect clip = MSRectIntersect(&Bounds, *area);
+            RectangleStruct clip = MSRectIntersect(&Bounds, *area);
 
             if (clip.Width <= 0 || clip.Height <= 0) {
                 return;
@@ -796,7 +797,7 @@ void MSPCXAnim::Draw(int context, MSRect* area)
         }
 
         {
-            MSRect frame;
+            RectangleStruct frame;
 
             ((MSSurface*)context)->Blit(&Bounds, Image,
                                         Image->GetFrame(&frame, 0, 1));
@@ -812,7 +813,7 @@ void MSPCXAnim::Draw(int context, MSRect* area)
 void MSPCXAnim::Attach(void* target)
 {
     if (Image != 0 && Enabled) {
-        MSRect area;
+        RectangleStruct area;
 
         Surface->Blit(&Bounds, Image, Image->GetFrame(&area, 0, 1));
     }
@@ -821,7 +822,7 @@ void MSPCXAnim::Attach(void* target)
 // FUNCTION: GAMEMD 0x5CEA80
 // Slot 6 for the PCX animation: the same 16-byte copy as the printer's, out of
 // the bounds member at +0x2C.
-MSRect MSPCXAnim::GetRect()
+RectangleStruct MSPCXAnim::GetRect()
 {
     return Bounds;
 }
@@ -832,19 +833,6 @@ MSRect MSPCXAnim::GetRect()
 bool MSPCXAnim::vf_7()
 {
     return Finished;
-}
-
-// FUNCTION: GAMEMD 0x5CECB0
-// The VQA animation's scalar deleting destructor (see the declaration for why it is spelled out).
-void* MSVQAnim::DeletingDtor(unsigned int flags)
-{
-    this->MSVQAnim::~MSVQAnim();
-
-    if (flags & 1) {
-        ::operator delete(this);
-    }
-
-    return this;
 }
 
 // Compiler-generated scalar deleting destructors of the three classes above, each with the destructor and the

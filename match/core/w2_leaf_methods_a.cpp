@@ -76,46 +76,6 @@ int Obj_0054F650::FUN_0054FB90()
     return 256 - abs(Head - Tail);
 }
 
-struct LimitRec_005CB840 {
-    unsigned char unknown_00[6];
-    short Count;                // +0x06
-};
-GG_STATIC_ASSERT(offsetof(LimitRec_005CB840, Count) == 0x06);
-
-struct Obj_005CB840 {
-    unsigned char unknown_00[0x1C];
-    LimitRec_005CB840* Limits;  // +0x1C
-    unsigned char unknown_20[0x0C];
-    unsigned int A;             // +0x2C
-    unsigned int B;             // +0x30
-    void FUN_005CB840(unsigned int value);
-    void FUN_005CB860(unsigned int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_005CB840, Limits) == 0x1C);
-GG_STATIC_ASSERT(offsetof(Obj_005CB840, A) == 0x2C);
-GG_STATIC_ASSERT(offsetof(Obj_005CB840, B) == 0x30);
-
-// FUNCTION: GAMEMD 0x005CB840
-// Store an index clamped below the record's count.
-void Obj_005CB840::FUN_005CB840(unsigned int value)
-{
-    A = value;
-    int limit = Limits->Count;
-    if (value >= (unsigned int)limit) {
-        A = limit - 1;
-    }
-}
-
-// FUNCTION: GAMEMD 0x005CB860
-void Obj_005CB840::FUN_005CB860(unsigned int value)
-{
-    B = value;
-    int limit = Limits->Count;
-    if (value >= (unsigned int)limit) {
-        B = limit - 1;
-    }
-}
-
 struct Obj_0056CB80 {
     unsigned int Packed;        // +0x00
     int FUN_0056CB80();

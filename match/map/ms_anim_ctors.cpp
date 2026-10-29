@@ -24,6 +24,18 @@ MSShapeAnim::MSShapeAnim(const char* name, int x, int y, int field20, int field2
     LastFrame = Buffer->Frames - 1;
 }
 
+// FUNCTION: GAMEMD 0x5CB750
+// Hand the decoded buffer back only when this object owns it (the out-of-line body; the scalar deleting
+// destructors expand it inline).
+MSShapeAnim::~MSShapeAnim()
+{
+    if (Buffer != 0 && OwnsBuffer) {
+        delete Buffer;
+        Buffer = 0;
+        OwnsBuffer = false;
+    }
+}
+
 // FUNCTION: GAMEMD 0x5CBD20
 // A shape animation with two extra numbers.
 MSFadeAnim::MSFadeAnim(const char* name, int x, int y, int field20, int field24, int field38, int field44)
@@ -41,6 +53,28 @@ MSOverlayAnim::MSOverlayAnim(const char* name, int x, int y, int field20, int fi
     Frame = frame;
     if (!quick)
         unknown_40 = 4;
+}
+
+// FUNCTION: GAMEMD 0x5CC690
+// Clear the fade state.
+void MSFadeAnim::FUN_005CC690()
+{
+    unknown_40 = 0;
+}
+
+// FUNCTION: GAMEMD 0x5CC6A0
+// Clear the fade state and jump to the given frame.
+void MSFadeAnim::FUN_005CC6A0(int frame)
+{
+    unknown_40 = 0;
+    Frame = frame;
+}
+
+// FUNCTION: GAMEMD 0x5CC740
+// Slot 7 of the overlay: done when disabled or once the fade has run to its fourth stage.
+bool MSOverlayAnim::vf_7()
+{
+    return !Enabled || unknown_40 >= 4;
 }
 
 // FUNCTION: GAMEMD 0x5CEAC0
@@ -80,20 +114,6 @@ bool MSAnim::vf_7()
 // Slot 8 of the base: an empty hook.
 void MSAnim::Attach(void* target)
 {
-}
-
-// Two out-of-line copies of the shape animation's destructor (seat the vtable, release the decoded buffer
-// when owned, seat the base vtable), sitting in neighbouring translation units far from the family's own run.
-// FUNCTION: GAMEMD 0x5CB750
-void MSShapeAnim_DestroyAtA(MSShapeAnim* self)
-{
-    self->MSShapeAnim::~MSShapeAnim();
-}
-
-// FUNCTION: GAMEMD 0x5CC2F0
-void MSShapeAnim_DestroyAtB(MSShapeAnim* self)
-{
-    self->MSShapeAnim::~MSShapeAnim();
 }
 
 // Compiler-generated scalar deleting destructors of the four classes above (each expands its destructor and

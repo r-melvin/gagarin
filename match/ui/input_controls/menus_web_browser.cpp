@@ -118,5 +118,5 @@ MenusHResult __stdcall WebBrowser::Slot16(const wchar_t* login, const wchar_t* p
     return 0;
 }
 
-// SYNTHETIC: GAMEMD 0x7740A0
-// WebBrowser::scalar deleting destructor (compiler-generated ??_G; scored from the harness, see menus.rows.tsv)
+// The scalar deleting destructor 0x7740A0 is not reproduced: cl emits ??_G only beside a constructor, and the
+// constructor 0x773500 is not matched.
