@@ -1,0 +1,10 @@
+{
+  "?Load@HouseClusterView@@UAGJPAUIStream@@@Z": "?Load@HouseClass@@UAGJPAUIStream@@@Z",
+  "?Load@HouseAbstractView@@UAGJPAUIStream@@@Z": "?Load@AbstractClass@@UAGJPAUIStream@@@Z",
+  "??0HouseClusterView@@QAE@ABUHBNoInit@@@Z": "??0HouseClass@@QAE@ABUAbstractNoInit@@@Z",
+  "?Load@HouseCounter@@QAEXPAUIStream@@@Z": "?Load@CounterClass@@QAEJPAUIStream@@@Z",
+  "?Swizzle@HouseDropship@@QAEXXZ": "?Swizzle@DropshipStruct@@QAEXXZ",
+  "?Swizzle@HBSwizzleView@@QAGXPAPAX@Z": "?vf_4@SwizzleManagerClass@@UAGJPAX@Z",
+  "?Swizzle@HBSwizzleView@@QAGXPAX@Z": "?vf_4@SwizzleManagerClass@@UAGJPAX@Z",
+  "?HouseSwizzle@@3VHBSwizzleView@@A": "?DAT_00B0C110@@3VSwizzleManagerClass@@A"
+}

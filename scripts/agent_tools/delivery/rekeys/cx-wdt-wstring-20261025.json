@@ -1,0 +1,10 @@
+{
+  "??0MapString@@QAE@PBD@Z": "??0Wstring@@QAE@PBD@Z",
+  "?Destruct@Obj_007B4620@@QAEXXZ": "??1Wstring@@QAE@XZ",
+  "??1MapString@@QAE@XZ": "??1Wstring@@QAE@XZ",
+  "?FUN_007691E0@Map@WorldDominationTour@@QAEPAVWDTPalette@@ABVObj_007B4620@@@Z": "?FUN_007691E0@Map@WorldDominationTour@@QAEPAVWDTPalette@@ABVWstring@@@Z",
+  "??8Obj_007B4620@@QBE_NABV0@@Z": "??8Wstring@@QBE_NABV0@@Z",
+  "?FUN_005CB590@@YIPAVWDTPalette@@ABVObj_007B4620@@@Z": "?FUN_005CB590@@YIPAVWDTPalette@@ABVWstring@@@Z",
+  "??0Obj_007B4620@@QAE@ABV0@@Z": "??0Wstring@@QAE@ABV0@@Z",
+  "??0AnimationPalette@Map@WorldDominationTour@@QAE@ABVObj_007B4620@@PAVWDTPalette@@@Z": "??0AnimationPalette@Map@WorldDominationTour@@QAE@ABVWstring@@PAVWDTPalette@@@Z"
+}

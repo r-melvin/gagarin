@@ -1,0 +1,18 @@
+{
+ "?Dtor@ListClass@@QAEXXZ": "??1ListClass@@UAE@XZ",
+ "?AddItem@ListClass@@QAEHPBG@Z": "?AddItem@ListClass@@UAEHPBG@Z",
+ "?RemoveItem@ListClass@@QAEXH@Z": "?RemoveItem@ListClass@@UAEXH@Z",
+ "?RemoveItem@ListClass@@QAEXPBG@Z": "?RemoveItem@ListClass@@UAEXPBG@Z",
+ "?Action@ListClass@@QAEIIPAIH@Z": "?Action@ListClass@@UAEHIPAIH@Z",
+ "?Bump@ListClass@@QAEXH@Z": "?Bump@ListClass@@UAEXH@Z",
+ "?Step@ListClass@@QAEXH@Z": "?Step@ListClass@@UAEXH@Z",
+ "?GetItem@ListClass@@QAEPBGH@Z": "?GetItem@ListClass@@UAEPBGH@Z",
+ "?GetCurrentItem@ListClass@@QAEPBGXZ": "?GetCurrentItem@ListClass@@UAEPBGXZ",
+ "?SetViewIndex@ListClass@@QAEHH@Z": "?SetViewIndex@ListClass@@UAEHH@Z",
+ "?EnableScrollBar@ListClass@@QAEHXZ": "?EnableScrollBar@ListClass@@UAEHXZ",
+ "?DisableScrollBar@ListClass@@QAEHXZ": "?DisableScrollBar@ListClass@@UAEHXZ",
+ "?Add@ListClass@@QAEPAVLinkClass@@AAV2@@Z": "?Add@ListClass@@UAEPAVLinkClass@@AAV2@@Z",
+ "?AddHead@ListClass@@QAEPAVLinkClass@@AAV2@@Z": "?AddHead@ListClass@@UAEPAVLinkClass@@AAV2@@Z",
+ "?AddTail@ListClass@@QAEPAVLinkClass@@AAV2@@Z": "?AddTail@ListClass@@UAEPAVLinkClass@@AAV2@@Z",
+ "?Remove@ListClass@@QAEPAVLinkClass@@XZ": "?Remove@ListClass@@UAEPAVLinkClass@@XZ"
+}

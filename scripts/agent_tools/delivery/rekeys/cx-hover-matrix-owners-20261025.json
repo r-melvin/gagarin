@@ -1,0 +1,9 @@
+{
+  "?TranslateZ@HoverMatrixView@@QAEXM@Z": "?TranslateZ@Matrix3D@@QAEXM@Z",
+  "?TranslateX@HoverMatrixView@@QAEXM@Z": "?TranslateX@Matrix3D@@QAEXM@Z",
+  "?TranslateY@HoverMatrixView@@QAEXM@Z": "?TranslateY@Matrix3D@@QAEXM@Z",
+  "?RotateX@HoverMatrixView@@QAEXM@Z": "?RotateX@Matrix3D@@QAEXM@Z",
+  "?RotateY@HoverMatrixView@@QAEXM@Z": "?RotateY@Matrix3D@@QAEXM@Z",
+  "??4HoverMatrixView@@QAEAAU0@ABUMatrix3D@@@Z": "?FUN_005AE610@Matrix3D@@QAEAAU1@ABU1@@Z",
+  "?HoverMatrixMultiply@@YI?AUHoverMatrixView@@PBUMatrix3D@@0@Z": "?FUN_005AF980@@YI?AUMatrix3D@@ABU1@0@Z"
+}

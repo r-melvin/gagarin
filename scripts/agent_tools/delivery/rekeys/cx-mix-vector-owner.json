@@ -1,0 +1,6 @@
+{
+  "?FUN_0040D540@@YIXPAUBufferHolder@@@Z": "?Clear@?$DynamicVectorClass@PAVMixFileClass@@@@UAEXXZ",
+  "?FUN_0040D690@@YIXPAUBufferHolder@@@Z": "?Clear@?$VectorClass@PAVMixFileClass@@@@UAEXXZ",
+  "?FUN_0040D800@BufferHolderDtor@@QAEPAXI@Z": "??_G?$VectorClass@PAVMixFileClass@@@@UAEPAXI@Z",
+  "?FUN_0040D850@BufferHolderDtor@@QAEPAXI@Z": "??_G?$DynamicVectorClass@PAVMixFileClass@@@@UAEPAXI@Z"
+}

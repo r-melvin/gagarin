@@ -1,0 +1,11 @@
+{
+ "?FUN_004D03A0@MultiVtableObject@@QAEPAU1@D@Z": "??_GFlyLocomotionClass@@UAEPAXI@Z",
+ "?IsMovingNow@FlyLocomotionClass@@QBEDXZ": "?FUN_004CFC40@FlyLocomotionClass@@QBEDXZ",
+ "?FlyLocomotionGetClassID_004CFC80@@YGJPAUILocomotion_004CFD20@@PAUGuid_004CFC80@@@Z": "?GetClassID@FlyLocomotionClass@@UAGJPAU_GUID@@@Z",
+ "?FlyLocomotionLoad_004CFCC0@@YGJPAVFlyLocomotionClass@@PAX@Z": "?Load@FlyLocomotionClass@@UAGJPAUIStream@@@Z",
+ "?FUN_004D0390@Obj_004D0390@@QBEHXZ": "?Size@FlyLocomotionClass@@UAEHXZ",
+ "?FlyLocomotionZAdjustment_004CFCF0@@YGHPAUILocomotion_004CFD20@@@Z": "?InWhichLayer@FlyLocomotionClass@@UAGHXZ",
+ "?FlyLocomotionProcess_004CFD20@@YGXPAUILocomotion_004CFD20@@@Z": "?PowerOff@FlyLocomotionClass@@UAG_NXZ",
+ "?FlyLocomotionIsPowered_004CFD90@@YG_NPAUILocomotion_004CFD20@@@Z": "?IsPowered@FlyLocomotionClass@@UAG_NXZ",
+ "?FlyLocomotionIsSurfacing_004CFDA0@@YGDPAUILocomotion_004CFD20@@@Z": "?IsIonSensitive@FlyLocomotionClass@@UAG_NXZ"
+}

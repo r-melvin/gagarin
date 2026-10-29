@@ -1,0 +1,4 @@
+{
+ "?IdxInsert@@YIXPAUIdxNode@@PAPAU1@@Z": "?SortedTreeInsert@SortedTreeNode@@QAIXPAPAU1@@Z",
+ "?g_FileCacheRoot@@3PAUIdxNode@@A": "?g_FileCacheRoot@@3PAUSortedTreeNode@@A"
+}

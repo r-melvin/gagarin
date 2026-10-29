@@ -1,0 +1,15 @@
+{
+ "?FailedToPlaceNode@BaseClass@@QAEHPAUBaseNodeClass@@@Z": "?FailedToPlaceNode@BaseClass@@QAEHPAVBaseNodeClass@@@Z",
+ "?Slot5@?$DynamicVectorClass@UBaseNodeClass@@@@UBEHPAUBaseNodeClass@@@Z": "?Slot5@?$DynamicVectorClass@VBaseNodeClass@@@@UBEHPAVBaseNodeClass@@@Z",
+ "?Slot6@?$VectorClass@UBaseNodeClass@@@@UBE?AUBaseNodeClass@@H@Z": "?Slot6@?$VectorClass@VBaseNodeClass@@@@UBE?AVBaseNodeClass@@H@Z",
+ "??8?$VectorClass@UBaseNodeClass@@@@UBE_NABV0@@Z": "??8?$VectorClass@VBaseNodeClass@@@@UBE_NABV0@@Z",
+ "?SetCapacity@?$DynamicVectorClass@UBaseNodeClass@@@@UAE_NHPAUBaseNodeClass@@@Z": "?SetCapacity@?$DynamicVectorClass@VBaseNodeClass@@@@UAE_NHPAVBaseNodeClass@@@Z",
+ "?FindItemIndex@?$DynamicVectorClass@UBaseNodeClass@@@@UBEHABUBaseNodeClass@@@Z": "?FindItemIndex@?$DynamicVectorClass@VBaseNodeClass@@@@UBEHABVBaseNodeClass@@@Z",
+ "?SetCapacity@?$VectorClass@UBaseNodeClass@@@@UAE_NHPAUBaseNodeClass@@@Z": "?SetCapacity@?$VectorClass@VBaseNodeClass@@@@UAE_NHPAVBaseNodeClass@@@Z",
+ "?FindItemIndex@?$VectorClass@UBaseNodeClass@@@@UBEHABUBaseNodeClass@@@Z": "?FindItemIndex@?$VectorClass@VBaseNodeClass@@@@UBEHABVBaseNodeClass@@@Z",
+ "?Slot5@?$VectorClass@UBaseNodeClass@@@@UBEHPAUBaseNodeClass@@@Z": "?Slot5@?$VectorClass@VBaseNodeClass@@@@UBEHPAVBaseNodeClass@@@Z",
+ "?FUN_0042F970@BufferHolderDtor@@QAEPAXI@Z": "??_G?$DynamicVectorClass@VBaseNodeClass@@@@UAEPAXI@Z",
+ "?FUN_0042FB50@BufferHolderDtor@@QAEPAXI@Z": "??_G?$VectorClass@VBaseNodeClass@@@@UAEPAXI@Z",
+ "?FUN_0042F3A0@@YIXPAUBufferHolder@@@Z": "?Clear@?$DynamicVectorClass@VBaseNodeClass@@@@UAEXXZ",
+ "?FUN_0042FAB0@@YIXPAUBufferHolder@@@Z": "?Clear@?$VectorClass@VBaseNodeClass@@@@UAEXXZ"
+}

@@ -1,0 +1,23 @@
+{
+  "?OpenEx@CCFileClass@@UAE_NPBDI@Z": "?OpenEx@CCFileClass@@UAEHPBDI@Z",
+  "?OpenEx@BufferIOFileClass@@UAE_NPBDI@Z": "?OpenEx@BufferIOFileClass@@UAEHPBDI@Z",
+  "?Open@CDFileClass@@UAE_NI@Z": "?Open@CDFileClass@@UAEHI@Z",
+  "?OpenEx@RawFileClass@@UAE_NPBDI@Z": "?OpenEx@RawFileClass@@UAEHPBDI@Z",
+  "?OpenEx@CDFileClass@@UAE_NPBDI@Z": "?OpenEx@CDFileClass@@UAEHPBDI@Z",
+  "?Exists@RAMFileClass@@UAE_NH@Z": "?Exists@RAMFileClass@@UAE_N_N@Z",
+  "?HasHandle@RAMFileClass@@UBE_NXZ": "?HasHandle@RAMFileClass@@UAE_NXZ",
+  "?OpenEx@RAMFileClass@@UAEHPBDH@Z": "?OpenEx@RAMFileClass@@UAEHPBDI@Z",
+  "?Open@RAMFileClass@@UAEHH@Z": "?Open@RAMFileClass@@UAEHI@Z",
+  "?ReadBytes@RAMFileClass@@UAEJPAXJ@Z": "?ReadBytes@RAMFileClass@@UAEHPAXH@Z",
+  "?Seek@RAMFileClass@@UAEJJH@Z": "?Seek@RAMFileClass@@UAEHHH@Z",
+  "?GetFileSize@RAMFileClass@@UAEJXZ": "?GetFileSize@RAMFileClass@@UAEHXZ",
+  "?WriteBytes@RAMFileClass@@UAEJPBXJ@Z": "?WriteBytes@RAMFileClass@@UAEHPAXH@Z",
+  "?CDCheck@RAMFileClass@@UAEXHHPBD@Z": "?CDCheck@RAMFileClass@@UAEXK_NPBD@Z",
+  "?DeletingDtor@RAMFileClass@@UAEPAXI@Z": "??_GRAMFileClass@@UAEPAXI@Z",
+  "?DeletingDtor@FileClass@@UAEPAXI@Z": "??_GFileClass@@UAEPAXI@Z",
+  "??1RAMFileClass@@QAE@XZ": "??1RAMFileClass@@UAE@XZ",
+  "?Open@BufferIOFileClass@@UAE_NI@Z": "?Open@BufferIOFileClass@@UAEHI@Z",
+  "?Open@CCFileClass@@UAE_NI@Z": "?Open@CCFileClass@@UAEHI@Z",
+  "?FUN_007BA090@@YIXHH@Z": "?FUN_007BA090@@YIXPAVWWMouseClass@@H@Z",
+  "?FUN_00432610@Obj_00432610@@QAEPAXD@Z": "??_GBufferIOFileClass@@UAEPAXI@Z"
+}

@@ -1,0 +1,6 @@
+{
+  "match/core/static_vector_member_dtor_stubs_a.cpp::_$E17": "match/ui/tu056_control_class.cpp::_$E3",
+  "match/core/static_vector_member_dtor_stubs_a.cpp::_$E24": "match/core/static_vector_member_dtor_stubs_a.cpp::_$E18",
+  "match/core/static_vector_member_dtor_stubs_a.cpp::_$E31": "match/core/static_vector_member_dtor_stubs_a.cpp::_$E25",
+  "match/core/static_vector_member_dtor_stubs_a.cpp::_$E38": "match/core/static_vector_member_dtor_stubs_a.cpp::_$E32"
+}

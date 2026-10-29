@@ -1,0 +1,12 @@
+{
+ "match/core/vector_color_slot_methods.cpp::?Slot5@?$DynamicVectorClass@URGBClass@@@@UBEHPAURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::?Slot5@?$DynamicVectorClass@VRGBClass@@@@UBEHPAVRGBClass@@@Z",
+ "match/core/vector_color_slot_methods.cpp::?Slot6@?$VectorClass@URGBClass@@@@UBE?AURGBClass@@H@Z": "match/core/vector_color_slot_methods.cpp::?Slot6@?$VectorClass@VRGBClass@@@@UBE?AVRGBClass@@H@Z",
+ "match/core/vector_color_slot_methods.cpp::??8?$VectorClass@URGBClass@@@@UBE_NABV0@@Z": "match/core/vector_color_slot_methods.cpp::??8?$VectorClass@VRGBClass@@@@UBE_NABV0@@Z",
+ "match/core/vector_color_slot_methods.cpp::?SetCapacity@?$VectorClass@URGBClass@@@@UAE_NHPAURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::?SetCapacity@?$VectorClass@VRGBClass@@@@UAE_NHPAVRGBClass@@@Z",
+ "match/core/vector_color_slot_methods.cpp::?FindItemIndex@?$VectorClass@URGBClass@@@@UBEHABURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::?FindItemIndex@?$VectorClass@VRGBClass@@@@UBEHABVRGBClass@@@Z",
+ "match/core/vector_color_slot_methods.cpp::?Slot5@?$VectorClass@URGBClass@@@@UBEHPAURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::?Slot5@?$VectorClass@VRGBClass@@@@UBEHPAVRGBClass@@@Z",
+ "match/core/vector_color_slot_methods.cpp::?SetCapacity@?$DynamicVectorClass@URGBClass@@@@UAE_NHPAURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::?SetCapacity@?$DynamicVectorClass@VRGBClass@@@@UAE_NHPAVRGBClass@@@Z",
+ "match/core/vector_color_slot_methods.cpp::?FindItemIndex@?$DynamicVectorClass@URGBClass@@@@UBEHABURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::?FindItemIndex@?$DynamicVectorClass@VRGBClass@@@@UBEHABVRGBClass@@@Z",
+ "match/core/vector_color_slot_methods.cpp::??0?$VectorClass@URGBClass@@@@QAE@HPAURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::??0?$VectorClass@VRGBClass@@@@QAE@HPAVRGBClass@@@Z",
+ "match/combat/tu185_particle_type_class.cpp::??0?$DynamicVectorClass@URGBClass@@@@QAE@HPAURGBClass@@@Z": "match/core/vector_color_slot_methods.cpp::??0?$DynamicVectorClass@VRGBClass@@@@QAE@HPAVRGBClass@@@Z"
+}

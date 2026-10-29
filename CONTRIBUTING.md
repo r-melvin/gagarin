@@ -86,6 +86,10 @@ emitted extent and census hints. It flags missing decorated symbols and shows
 same-method alternatives. It does not compare retail bytes or prove an ABI;
 run the matching and relocation checks separately.
 
+Scripted helpers for working, packaging and landing functions (context dossier, trivial-shape
+generator, packet linter, rebase and batch lander, layout check) are indexed in
+[scripts/agent_tools/README.md](scripts/agent_tools/README.md).
+
 ## Picking a target
 
 `scripts/data/match_manifest.json` records every claimed function with its

@@ -1,0 +1,13 @@
+{
+  "?GetPlanningWaypointAt@HouseClass@@QAEPAUWaypointClass@@PBUCellStruct@@@Z": "?GetPlanningWaypointAt@HouseClass@@QAEPAVWaypointClass@@PBUCellStruct@@@Z",
+  "?GetPlanningWaypointProperties@HouseClass@@QAE_NPAUWaypointClass@@PAHPAE@Z": "?GetPlanningWaypointProperties@HouseClass@@QAE_NPAVWaypointClass@@PAHPAE@Z",
+  "?GetWaypoint@WaypointPathClass@@QBEPAUWaypointClass@@H@Z": "?GetWaypoint@WaypointPathClass@@QBEPAVWaypointClass@@H@Z",
+  "?GetWaypointAfter@WaypointPathClass@@QBEPAUWaypointClass@@PAU2@@Z": "?GetWaypointAfter@WaypointPathClass@@QBEPAVWaypointClass@@PAV2@@Z",
+  "?Slot5@?$DynamicVectorClass@UWaypointClass@@@@UBEHPAUWaypointClass@@@Z": "?Slot5@?$DynamicVectorClass@VWaypointClass@@@@UBEHPAVWaypointClass@@@Z",
+  "?Slot6@?$VectorClass@UWaypointClass@@@@UBE?AUWaypointClass@@H@Z": "?Slot6@?$VectorClass@VWaypointClass@@@@UBE?AVWaypointClass@@H@Z",
+  "??8?$VectorClass@UWaypointClass@@@@UBE_NABV0@@Z": "??8?$VectorClass@VWaypointClass@@@@UBE_NABV0@@Z",
+  "?SetCapacity@?$VectorClass@UWaypointClass@@@@UAE_NHPAUWaypointClass@@@Z": "?SetCapacity@?$VectorClass@VWaypointClass@@@@UAE_NHPAVWaypointClass@@@Z",
+  "?FindItemIndex@?$VectorClass@UWaypointClass@@@@UBEHABUWaypointClass@@@Z": "?FindItemIndex@?$VectorClass@VWaypointClass@@@@UBEHABVWaypointClass@@@Z",
+  "?Slot5@?$VectorClass@UWaypointClass@@@@UBEHPAUWaypointClass@@@Z": "?Slot5@?$VectorClass@VWaypointClass@@@@UBEHPAVWaypointClass@@@Z",
+  "?FindItemIndex@?$DynamicVectorClass@UWaypointClass@@@@UBEHABUWaypointClass@@@Z": "?FindItemIndex@?$DynamicVectorClass@VWaypointClass@@@@UBEHABVWaypointClass@@@Z"
+}

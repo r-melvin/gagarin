@@ -1,0 +1,14 @@
+{
+ "?Slot5@?$DynamicVectorClass@UCell@@@@UBEHPAUCell@@@Z": "?Slot5@?$DynamicVectorClass@VCell@@@@UBEHPAVCell@@@Z",
+ "?Slot6@?$VectorClass@UCell@@@@UBE?AUCell@@H@Z": "?Slot6@?$VectorClass@VCell@@@@UBE?AVCell@@H@Z",
+ "??8?$VectorClass@UCell@@@@UBE_NABV0@@Z": "??8?$VectorClass@VCell@@@@UBE_NABV0@@Z",
+ "?SetCapacity@?$VectorClass@UCell@@@@UAE_NHPAUCell@@@Z": "?SetCapacity@?$VectorClass@VCell@@@@UAE_NHPAVCell@@@Z",
+ "?FindItemIndex@?$VectorClass@UCell@@@@UBEHABUCell@@@Z": "?FindItemIndex@?$VectorClass@VCell@@@@UBEHABVCell@@@Z",
+ "?Slot5@?$VectorClass@UCell@@@@UBEHPAUCell@@@Z": "?Slot5@?$VectorClass@VCell@@@@UBEHPAVCell@@@Z",
+ "?SetCapacity@?$DynamicVectorClass@UCell@@@@UAE_NHPAUCell@@@Z": "?SetCapacity@?$DynamicVectorClass@VCell@@@@UAE_NHPAVCell@@@Z",
+ "?FindItemIndex@?$DynamicVectorClass@UCell@@@@UBEHABUCell@@@Z": "?FindItemIndex@?$DynamicVectorClass@VCell@@@@UBEHABVCell@@@Z",
+ "?FUN_0042FBA0@BufferHolderDtor@@QAEPAXI@Z": "??_G?$VectorClass@VCell@@@@UAEPAXI@Z",
+ "?FUN_0042FBF0@BufferHolderDtor@@QAEPAXI@Z": "??_G?$DynamicVectorClass@VCell@@@@UAEPAXI@Z",
+ "?FUN_0042F420@@YIXPAUBufferHolder@@@Z": "?Clear@?$DynamicVectorClass@VCell@@@@UAEXXZ",
+ "?FUN_0042F7C0@@YIXPAUBufferHolder@@@Z": "?Clear@?$VectorClass@VCell@@@@UAEXXZ"
+}

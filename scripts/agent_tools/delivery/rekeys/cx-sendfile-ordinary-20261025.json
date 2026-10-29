@@ -1,0 +1,4 @@
+{
+  "match/network/SendFile.cpp::?FUN_00693990@@YAXXZ": "match/network/SendFile.cpp::_$E2",
+  "match/network/SendFile.cpp::?FUN_006939B0@@YAXXZ": "match/network/SendFile.cpp::_$E5"
+}

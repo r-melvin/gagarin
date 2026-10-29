@@ -1,0 +1,17 @@
+{
+ "?FUN_00473A30@Obj_004739F0@@QAEPAU1@H@Z": "??0CCFileClass@@QAE@ABVWstring@@@Z",
+ "??0MultiplayerBattle@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "??0MultiplayerBattle@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "??0MPCooperative@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "??0MPCooperative@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "??0FreeForAll@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "??0FreeForAll@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "??0MultiplayerManBattle@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "??0MultiplayerManBattle@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "??0Megawealth@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "??0Megawealth@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "??0MultiplayerSiege@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "??0MultiplayerSiege@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "??0MultiplayerGameMode@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "??0MultiplayerGameMode@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "?vf_1@?$Initializer@VMultiplayerBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "?vf_1@?$Initializer@VMultiplayerBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "?vf_1@?$Initializer@VMultiplayerManBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "?vf_1@?$Initializer@VMultiplayerManBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "?vf_1@?$Initializer@VMultiplayerSiege@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "?vf_1@?$Initializer@VMultiplayerSiege@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "?vf_1@?$Initializer@VUnholyAlliance@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "?vf_1@?$Initializer@VUnholyAlliance@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "?vf_1@?$Initializer@VFreeForAll@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z": "?vf_1@?$Initializer@VFreeForAll@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+ "??0Obj_007B4620@@QAE@ABV0@@Z": "??0Wstring@@QAE@ABV0@@Z",
+ "?FUN_007B5440@@YIPAXPAUDefaultingHolder@@@Z": "?FUN_007B5440@Wstring@@QBEPBDXZ"
+}

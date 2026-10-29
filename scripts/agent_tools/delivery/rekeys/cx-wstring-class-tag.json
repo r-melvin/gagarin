@@ -1,0 +1,22 @@
+{
+ "??0Wstring@@QAE@ABU0@@Z": "??0Wstring@@QAE@ABV0@@Z",
+ "??4Wstring@@QAEAAU0@ABU0@@Z": "??4Wstring@@QAEAAV0@ABV0@@Z",
+ "??8Wstring@@QBE_NABU0@@Z": "??8Wstring@@QBE_NABV0@@Z",
+ "??9Wstring@@QBE_NABU0@@Z": "??9Wstring@@QBE_NABV0@@Z",
+ "??_7?$VectorClass@UWstring@@@@6B@": "??_7?$VectorClass@VWstring@@@@6B@",
+ "?SetCapacity@?$VectorClass@UWstring@@@@UAE_NHPAUWstring@@@Z": "?SetCapacity@?$VectorClass@VWstring@@@@UAE_NHPAVWstring@@@Z",
+ "?Clear@?$DynamicVectorClass@UWstring@@@@UAEXXZ": "?Clear@?$DynamicVectorClass@VWstring@@@@UAEXXZ",
+ "?Slot5@?$DynamicVectorClass@UWstring@@@@UBEHPAUWstring@@@Z": "?Slot5@?$DynamicVectorClass@VWstring@@@@UBEHPAVWstring@@@Z",
+ "?Slot6@?$VectorClass@UWstring@@@@UBE?AUWstring@@H@Z": "?Slot6@?$VectorClass@VWstring@@@@UBE?AVWstring@@H@Z",
+ "??8?$VectorClass@UWstring@@@@UBE_NABV0@@Z": "??8?$VectorClass@VWstring@@@@UBE_NABV0@@Z",
+ "?Clear@?$VectorClass@UWstring@@@@UAEXXZ": "?Clear@?$VectorClass@VWstring@@@@UAEXXZ",
+ "?FindItemIndex@?$VectorClass@UWstring@@@@UBEHABUWstring@@@Z": "?FindItemIndex@?$VectorClass@VWstring@@@@UBEHABVWstring@@@Z",
+ "?Slot5@?$VectorClass@UWstring@@@@UBEHPAUWstring@@@Z": "?Slot5@?$VectorClass@VWstring@@@@UBEHPAVWstring@@@Z",
+ "?FindItemIndex@?$DynamicVectorClass@UWstring@@@@UBEHABUWstring@@@Z": "?FindItemIndex@?$DynamicVectorClass@VWstring@@@@UBEHABVWstring@@@Z",
+ "??_G?$VectorClass@UWstring@@@@UAEPAXI@Z": "??_G?$VectorClass@VWstring@@@@UAEPAXI@Z",
+ "??_G?$DynamicVectorClass@UWstring@@@@UAEPAXI@Z": "??_G?$DynamicVectorClass@VWstring@@@@UAEPAXI@Z",
+ "?SetCapacity@?$DynamicVectorClass@UWstring@@@@UAE_NHPAUWstring@@@Z": "?SetCapacity@?$DynamicVectorClass@VWstring@@@@UAE_NHPAVWstring@@@Z",
+ "??0?$VectorClass@UWstring@@@@QAE@HPAUWstring@@@Z": "??0?$VectorClass@VWstring@@@@QAE@HPAVWstring@@@Z",
+ "??0SeatNull_007B4620@@QAE@XZ": "??0Wstring@@QAE@XZ",
+ "?FUN_00007B46F0@@YIXPAUHolder_007B46F0@@@Z": "??1Wstring@@QAE@XZ"
+}

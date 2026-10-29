@@ -1,0 +1,6 @@
+{
+ "?FUN_00634290@Node_006386E0@@QAEHPAX@Z": "?FUN_00634290@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
+ "?TryNextPlanningTokenNode@Techno_006385C0@@QAE_NXZ": "?TryNextPlanningTokenNode@TechnoClass@@QAE_NXZ",
+ "?FUN_00638A20@@YIXPAUObj_00638A20@@@Z": "?FUN_00638A20@@YIXPAVPlanningNodeClass@@@Z",
+ "?FUN_00638DC0@@YIXPAUObj_00638DC0@@@Z": "?FUN_00638DC0@@YIXPAVPlanningNodeClass@@@Z"
+}

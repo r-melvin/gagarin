@@ -1,0 +1,18 @@
+{
+  "?vf_91@TerrainClass@@UAEHPAHHPAUMapObjWarheadView@@PAX_N32@Z": "?vf_91@TerrainClass@@UAEHPAHHPAX1_N21@Z",
+  "?Mark@TerrainClass@@UAE_NH@Z": "?vf_73@TerrainClass@@UAE_NH@Z",
+  "?vf_61@TerrainClass@@UAEXPAUMapObjCoord@@@Z": "?vf_61@TerrainClass@@UAEXPAUCoordStruct@@@Z",
+  "?vf_60@TerrainClass@@UAEXPAUMapObjCoord@@@Z": "?vf_60@TerrainClass@@UAEXPAUCoordStruct@@@Z",
+  "?vf_69@TerrainClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z": "?vf_69@TerrainClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "?vf_70@TerrainClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z": "?vf_70@TerrainClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "?vf_107@TerrainClass@@UAEHPAUMapObjOccupierView@@HHHH@Z": "?vf_107@TerrainClass@@UAEHPAVCellClass@@HHHH@Z",
+  "?Update@TerrainClass@@UAEXXZ": "?vf_23@TerrainClass@@UAEXXZ",
+  "?vf_65@TerrainClass@@UAE_NPAUMapObjRect@@_NH@Z": "?vf_65@TerrainClass@@UAE_NPAURectangleStruct@@_NH@Z",
+  "?ComputeCRC@TerrainClass@@UAEXAAVMapObjCrcView@@@Z": "?vf_13@TerrainClass@@UAEXPAUObj_004A1D30@@@Z",
+  "?PointerExpired@TerrainClass@@UAEXPAX_N@Z": "?vf_10@TerrainClass@@UAEXPAX_N@Z",
+  "?Unlimbo@TerrainClass@@UAE_NPBUMapObjCoord@@H@Z": "?vf_54@TerrainClass@@UAE_NABUCoordStruct@@H@Z",
+  "?GetType@TerrainClass@@UAEPAVMapObjTypeClassView@@XZ": "?vf_34@TerrainClass@@UAEPAVObjectTypeClass@@XZ",
+  "?vf_75@TerrainClass@@UAE?AUMapObjRect@@XZ": "?vf_75@TerrainClass@@UAE?AURectangleStruct@@XZ",
+  "?Size@TerrainClass@@UAEHXZ": "?vf_12@TerrainClass@@UAEHXZ",
+  "?WhatAmI@TerrainClass@@UAEHXZ": "?vf_11@TerrainClass@@UAEHXZ"
+}

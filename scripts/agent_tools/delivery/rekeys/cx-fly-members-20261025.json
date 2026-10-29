@@ -1,0 +1,13 @@
+{
+  "?FlyLocoLinkTo_004CCA20@@YGJPAUFlyLocoIface@@PAUFoot_004CCA20@@@Z": "?LinkToObject@FlyLocomotionClass@@UAGJPAVFootClass@@@Z",
+  "?FlyLocoIsToHaveShadow_004CCA90@@YGHPAUFlyLocoIface@@@Z": "?IsMoving@FlyLocomotionClass@@UAG_NXZ",
+  "?FlyLocoIsPowered_004CCAC0@@YGDPAUFlyLocoIface@@@Z": "?IsMovingNow@FlyLocomotionClass@@UAG_NXZ",
+  "?GetDestination@FlyLocoIface@@QAG?AUCoord_004CCAE0@@XZ": "?Destination@FlyLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "?GetDrawOffset@FlyLocoOffset@@QAG?AUPair_004CF830@@XZ": "?DrawPoint@FlyLocomotionClass@@UAG?AULocoPoint2D@@XZ",
+  "?GetShadowOffset@FlyLocoIface@@QAG?AUPair_004CF940@@XZ": "?ShadowPoint@FlyLocomotionClass@@UAG?AULocoPoint2D@@XZ",
+  "?FlyLocoScaledRate_004CFE20@@YGHPAUFlyLocoIface@@@Z": "?ApparentSpeed@FlyLocomotionClass@@UAGHXZ",
+  "?FlyLocoDrawLayer_004CFE50@@YGHPAUFlyLocoIface@@@Z": "?GetStatus@FlyLocomotionClass@@UAGHXZ",
+  "?FUN_004D0430@@YIXPAUComOwner_004B4D50@@@Z": "?Release@FlyDrawInterfaceHolder@@QAEXXZ",
+  "match/movement/tu084_fly_locomotion_class.cpp::_$E1": "match/movement/tu084_fly_locomotion_class.cpp::_$E2",
+  "match/movement/tu084_fly_locomotion_class.cpp::_$E4": "match/movement/tu084_fly_locomotion_class.cpp::_$E5"
+}

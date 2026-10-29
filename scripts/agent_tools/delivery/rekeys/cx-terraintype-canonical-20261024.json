@@ -1,0 +1,13 @@
+{
+ "?vf_32@TerrainTypeClass@@UAE_NPBUMapObjCell@@PAUMapObjHouseView@@@Z": "?vf_32@TerrainTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
+ "?vf_35@TerrainTypeClass@@UAEPAXPAUMapObjHouseView@@@Z": "?vf_35@TerrainTypeClass@@UAEPAXPAX@Z",
+ "?vf_36@TerrainTypeClass@@UAEPAUMapObjCell@@H@Z": "?vf_36@TerrainTypeClass@@UAEPAXH@Z",
+ "?FUN_0071DE90@@YAXXZ": "_$E9",
+ "?ReadINI@TerrainTypeClass@@UAE_NPAVMapObjIniView@@@Z": "?vf_25@TerrainTypeClass@@UAE_NPAVCCINIClass@@@Z",
+ "?vf_27@TerrainTypeClass@@UAEPAUMapObjCoord@@PAU2@PBU2@@Z": "?vf_27@TerrainTypeClass@@UAE?AUCoordStruct@@ABU2@@Z",
+ "?ComputeCRC@TerrainTypeClass@@UAEXAAVMapObjCrcView@@@Z": "?vf_13@TerrainTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+ "?WhatAmI@TerrainTypeClass@@UAEHXZ": "?vf_11@TerrainTypeClass@@UAEHXZ",
+ "?Size@TerrainTypeClass@@UAEHXZ": "?vf_12@TerrainTypeClass@@UAEHXZ",
+ "??0TerrainClass@@QAE@PAVTerrainTypeClass@@PBUMapObjCell@@@Z": "??0TerrainClass@@QAE@PAVTerrainTypeClass@@PBUCellStruct@@@Z",
+ "?vf_32@AircraftTypeClass@@UAE_NHH@Z": "?vf_32@AircraftTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z"
+}
