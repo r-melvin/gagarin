@@ -1087,6 +1087,36 @@ GG_STATIC_ASSERT(sizeof(Node_00B76608) == 0x114);
 GG_STATIC_ASSERT(sizeof(Node_00B77D80) == 0x74);
 GG_STATIC_ASSERT(sizeof(Table_00B76640) == 0x38);
 
+// Key hash of a string object (core/string_class.h users; see netshare.cpp).
+// (retail 0x5E2620; defined in netshare.cpp)
+unsigned int __fastcall FUN_005E2620(const Wstring* key);
+
+// Constructor (inlined into each file-scope table's initialiser): 128 buckets,
+// shrink ratio 0.2 / growth 0.8, bit width derived from the bucket count.
+// PARTIAL: 88.2% on every initialiser -- retail stores the zero at +0x10 (from EAX)
+// before the decrement of the bit width; this build stores it from EDX after it.
+template<class KEY, class VALUE>
+HashTable_006249A0<KEY, VALUE>::HashTable_006249A0()
+{
+    unsigned bits = 0x80;
+    this->ShrinkRatio = 0.2;
+    this->unknown_28 = 0.8;
+    this->MinBuckets = bits;
+    int width = 0;
+    do {
+        width++;
+        bits >>= 1;
+    } while (bits != 0);
+    this->unknown_10 = bits;
+    this->BitWidth = --width;
+    this->BucketCount = 1 << width;
+    this->Count = 0;
+    this->IsFixed = 0;
+    this->Buckets = new Node*[this->BucketCount];
+    memset(this->Buckets, 0, this->BucketCount * 4);
+    this->Hash = (HashOf)FUN_005E2620;
+}
+
 // Emptying destructor: every chain is freed (each node's key destroyed),
 // then the bucket array is halved down to the floor and freed.
 template<class KEY, class VALUE>
@@ -1253,9 +1283,7 @@ GG_STATIC_ASSERT(sizeof(Obj_0077D910) == 0x24);
 
 // GLOBAL: GAMEMD 0xB779C4
 extern int DAT_00B779C4;
-// GLOBAL: GAMEMD 0xB77D80
 extern Table_00B77D80 DAT_00B77D80;
-// GLOBAL: GAMEMD 0xB768C0
 extern Table_00B77D80 DAT_00B768C0;
 
 // Chain lookup in a table: the value of the node whose key equals `key`, or
@@ -1349,16 +1377,42 @@ Vec_00B77900 DAT_00B77900;
 // SYNTHETIC: GAMEMD 0x0077BA00 -- initialiser of DAT_00B76520
 CountedBlock DAT_00B76520;
 
+// GLOBAL: GAMEMD 0xB768C0
+// SYNTHETIC: GAMEMD 0x77BAE0 -- atexit cleanup of DAT_00B768C0 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77BA40 -- initialiser of DAT_00B768C0
+Table_00B77D80 DAT_00B768C0;
+
+// GLOBAL: GAMEMD 0xB73AF8
+// SYNTHETIC: GAMEMD 0x77BCB0 -- atexit cleanup of DAT_00B73AF8 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77BC10 -- initialiser of DAT_00B73AF8
+Table_00B77D80 DAT_00B73AF8;
+
+// GLOBAL: GAMEMD 0xB77D80
+// SYNTHETIC: GAMEMD 0x77BE80 -- atexit cleanup of DAT_00B77D80 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77BDE0 -- initialiser of DAT_00B77D80
+Table_00B77D80 DAT_00B77D80;
+
 // GLOBAL: GAMEMD 0xB76640
 // SYNTHETIC: GAMEMD 0x77C050 -- atexit cleanup of DAT_00B76640 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77BFB0 -- initialiser of DAT_00B76640
 //   Not exact (80%): retail keeps the bucket count in EAX and the floor in ECX
 //   through the shrink loop; this build swaps the registers.
 Table_00B76640 DAT_00B76640;
+
+// GLOBAL: GAMEMD 0xB76680
+// SYNTHETIC: GAMEMD 0x77C220 -- atexit cleanup of DAT_00B76680 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77C180 -- initialiser of DAT_00B76680
+HashTable_006249A0<Wstring, int> DAT_00B76680;
 
 // GLOBAL: GAMEMD 0x00B777A0
 // SYNTHETIC: GAMEMD 0x77C370 -- atexit cleanup of DAT_00B777A0 (inlined destructor).
 // SYNTHETIC: GAMEMD 0x0077C350 -- initialiser of DAT_00B777A0
 CountedStringArray DAT_00B777A0;
+
+// GLOBAL: GAMEMD 0xB76530
+// SYNTHETIC: GAMEMD 0x77C450 -- atexit cleanup of DAT_00B76530 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77C3B0 -- initialiser of DAT_00B76530
+HashTable_006249A0<Wstring, int> DAT_00B76530;
 
 // GLOBAL: GAMEMD 0x00B765F8
 // SYNTHETIC: GAMEMD 0x77C5A0 -- atexit cleanup of DAT_00B765F8 (inlined destructor).
@@ -1430,8 +1484,14 @@ Wstring DAT_00B73ACC;
 // SYNTHETIC: GAMEMD 0x77CA50 -- atexit cleanup of DAT_00B76E24.
 Wstring DAT_00B76E24;
 
+// GLOBAL: GAMEMD 0xB76990
+// SYNTHETIC: GAMEMD 0x77CB00 -- atexit cleanup of DAT_00B76990 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77CA60 -- initialiser of DAT_00B76990
+HashTable_006249A0<Wstring, int> DAT_00B76990;
+
 // GLOBAL: GAMEMD 0xB76608
 // SYNTHETIC: GAMEMD 0x77CCD0 -- atexit cleanup of DAT_00B76608 (inlined destructor).
+// SYNTHETIC: GAMEMD 0x77CC30 -- initialiser of DAT_00B76608
 //   Not exact (80%): same register swap as 0x77C050.
 Table_00B76608 DAT_00B76608;
 

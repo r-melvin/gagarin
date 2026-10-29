@@ -80,6 +80,14 @@ public:
     Wstring& operator+=(const char* text);
     // Declaration: GAMEMD 0x7B4CD0 -- append another string; returns this.
     Wstring& operator+=(const Wstring& other);
+    // Declaration: GAMEMD 0x7B4B50 -- append another string (unset counts as the fallback text).
+    bool FUN_007B4B50(const Wstring* other);
+    // Declaration: GAMEMD 0x7B5A40 -- replace with a copy of `text`; AL reports success.
+    bool FUN_007B5A40(const char* text);
+    // Declaration: GAMEMD 0x7B5E30 -- cut the string at the first `ch`; AL reports whether it was found.
+    bool FUN_007B5E30(char ch);
+    // Declaration: GAMEMD 0x7B54D0 -- insert `text` at `pos` (clamped to the length).
+    bool FUN_007B54D0(const char* text, unsigned int pos);
 };
 GG_STATIC_ASSERT(sizeof(Wstring) == 4);
 GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);

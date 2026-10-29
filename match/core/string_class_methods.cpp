@@ -117,6 +117,33 @@ Wstring& Wstring::operator=(const char* text)
     return *this;
 }
 
+// FUNCTION: GAMEMD 0x7B4940
+// Assignment from another string: nothing to do when both are null or when
+// both hold equal text; a null source assigns the fallback text 0x889F64.
+Wstring& Wstring::operator=(const Wstring& other)
+{
+    if (unknown_00 == 0 && other.unknown_00 == 0) {
+        return *this;
+    }
+    if (unknown_00 != 0 && other.unknown_00 != 0 && strcmp(unknown_00, other.unknown_00) == 0) {
+        return *this;
+    }
+    const char* text = other.unknown_00;
+    if (text == 0) {
+        text = GLOBAL_00889F64;
+    }
+    if (unknown_00 != 0) {
+        delete[] unknown_00;
+    }
+    unknown_00 = 0;
+    unknown_00 = new char[text ? strlen(text) + 1 : 1];
+    unknown_00[0] = 0;
+    if (text) {
+        strcpy(unknown_00, text);
+    }
+    return *this;
+}
+
 // FUNCTION: GAMEMD 0x7B50F0
 bool Wstring::FUN_007B50F0(char ch)
 {

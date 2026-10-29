@@ -46,6 +46,11 @@ wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
 wchar_t* __cdecl wcsncpy(wchar_t* dst, const wchar_t* src, unsigned int n);
 // LIBRARY: GAMEMD 0x7CA45F (decl; reloc) — wcscat.
 wchar_t* __cdecl wcscat(wchar_t* dst, const wchar_t* src);
+// CRT wcschr (0x7CA8C6) and memmove (0x7CA090), decl; reloc.
+wchar_t* __cdecl wcschr(const wchar_t* s, wchar_t c);
+void* __cdecl memmove(void* d, const void* s, unsigned int n);
+// CRT wcsncat (0x7CB504, decl; reloc).
+wchar_t* __cdecl wcsncat(wchar_t* dst, const wchar_t* src, unsigned int n);
 // LIBRARY: GAMEMD 0x7CA5D3 (decl; reloc) — wcscmp.
 int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
 // LIBRARY: GAMEMD 0x7CAFF4 (decl; reloc) — CRT tolower.
@@ -153,6 +158,8 @@ public:
     Obj_007B66D0 AsLower() const;      // 0x7B7740
     void FUN_007B77E0();                                          // 0x7B77E0
     Obj_007B66D0 AsUpper() const;      // 0x7B7830
+    bool FUN_007B69F0(int count, const wchar_t* src);          // 0x7B69F0
+    void FUN_007B6EE0(const Obj_007B66D0* set);                // 0x7B6EE0
 };
 
 // Offsets confirmed numerically from the disassembly cited in the file header.

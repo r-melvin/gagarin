@@ -310,3 +310,117 @@ Obj_007B66D0 Obj_007B66D0::AsUpper() const
     work.FUN_007B77E0();
     return work;
 }
+
+// FUNCTION: GAMEMD 0x7B69F0
+// Appends at most `count` characters of `src`, reallocating the buffer.
+bool Obj_007B66D0::FUN_007B69F0(int count, const wchar_t* src)
+{
+    wchar_t* old = Buffer;
+    int len = count + 1;
+    if (old != 0) {
+        len += (int)wcslen(old);
+    }
+    Buffer = (wchar_t*)::operator new(len * 4);
+    if (old != 0) {
+        wcscpy(Buffer, old);
+    } else {
+        *Buffer = 0;
+    }
+    if (src != 0) {
+        wcsncat(Buffer, src, count);
+    }
+    if (old != 0) {
+        ::operator delete(old);
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x7B6E20
+// Removes every occurrence of `ch`; reports whether any was found.
+// PARTIAL: 98.6% -- one store operand order ([edx+edi] against retail [edi+edx]).
+bool Obj_007B66D0::FUN_007B6E20(wchar_t ch)
+{
+    bool removed = false;
+    if (Buffer == 0) {
+        return false;
+    }
+    int bytes = wcslen(Buffer);
+    wchar_t* found = wcschr(Buffer, ch);
+    if (found != 0) {
+        removed = true;
+        bytes = bytes * 2;
+        do {
+            memmove(found, found + 1, (bytes - (found - Buffer)) - 2);
+            bytes -= 2;
+            *(wchar_t*)((char*)Buffer + bytes) = 0;
+            found = wcschr(Buffer, ch);
+        } while (found != 0);
+        wchar_t* copy = (wchar_t*)::operator new(wcslen(Buffer) * 2 + 2);
+        wcscpy(copy, Buffer);
+        ::operator delete(Buffer);
+        Buffer = copy;
+    }
+    return removed;
+}
+
+// FUNCTION: GAMEMD 0x7B6EE0
+// Removes the leading run of characters that all appear in `set`.
+void Obj_007B66D0::FUN_007B6EE0(const Obj_007B66D0* set)
+{
+    unsigned int count = 0;
+    while (count < Length()) {
+        const wchar_t* chars = set->Buffer;
+        if (chars == 0) {
+            chars = WideEmptyString;
+        }
+        if (wcschr(chars, Buffer[count]) == 0) {
+            break;
+        }
+        count++;
+    }
+    if (count > 0) {
+        Erase(0, count);
+    }
+}
+
+// FUNCTION: GAMEMD 0x7B6F40
+// Removes the trailing run of characters that all appear in `set`.
+// PARTIAL: 97.9% -- one `pop ebx` scheduled after the empty-string load instead of before it.
+void Obj_007B66D0::FUN_007B6F40(const Obj_007B66D0* set)
+{
+    unsigned int i;
+    if (Buffer == 0) {
+        i = 0;
+    } else {
+        i = wcslen(Buffer);
+    }
+    while (i-- != 0) {
+        const wchar_t* chars = set->Buffer;
+        if (chars == 0) {
+            chars = WideEmptyString;
+        }
+        if (wcschr(chars, Buffer[i]) == 0) {
+            break;
+        }
+    }
+    int count = i + 1;
+    const wchar_t* source = WideEmptyString;
+    if (Buffer != 0) {
+        source = Buffer;
+    }
+    wchar_t* head = (wchar_t*)::operator new(count * 2 + 2);
+    head[0] = 0;
+    if (source) {
+        wcsncpy(head, source, count);
+    }
+    head[count] = 0;
+    const wchar_t* text = WideEmptyString;
+    if (head != 0) {
+        text = head;
+    }
+    Release();
+    Store(text);
+    if (head != 0) {
+        ::operator delete(head);
+    }
+}
