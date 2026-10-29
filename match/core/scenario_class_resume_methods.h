@@ -82,9 +82,9 @@ extern bool DAT_00A8EB80;
 
 // The object 0x407150 is called on (see match/core/small_misc2_methods.h);
 // redeclared locally so this TU stands alone.
-#include "obj_0087e758.h"
+#include "triple_timer_init_methods.h"
 // GLOBAL: GAMEMD 0x87E758
-extern Obj_0087E758* DAT_0087E758;
+
 // GLOBAL: GAMEMD 0x83D834 — the level handed to 0x407150, reset to 0x4000.
 extern int DAT_0083D834;
 

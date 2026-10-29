@@ -6,6 +6,7 @@
 #define GG_MATCH_CORE_SMALL_MISC5_METHODS_H
 
 #include <stddef.h>
+#include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x87E728 — the subsystem object these entry points drive.
@@ -17,7 +18,6 @@ extern int   DAT_0081B1E8;
 extern char  VT_007E4AAC[];
 
 // Declared-only callees.
-void FUN_004071C0(void* self);                 // GAMEMD 0x4071C0
 void FUN_00403730(void* self, int arg);        // GAMEMD 0x403730
 void FUN_00403770(void* self, int arg);        // GAMEMD 0x403770
 void FUN_004037C0(void* self, int arg);        // GAMEMD 0x4037C0
@@ -27,13 +27,6 @@ void __cdecl    FUN_00405040();                           // GAMEMD 0x405040
 void __cdecl    FUN_004081A0();                           // GAMEMD 0x4081A0
 void __cdecl    FUN_00751040();                           // GAMEMD 0x751040
 void __cdecl    FUN_00751080();                           // GAMEMD 0x751080
-
-struct Obj_00401080
-{
-    // Three sub-objects at +0x00, +0x28 and +0x50, each initialised the same way.
-    // FUNCTION: GAMEMD 0x401080
-    void FUN_00401080();
-};
 
 // FUNCTION: GAMEMD 0x406E80
 void __cdecl FUN_00406E80();

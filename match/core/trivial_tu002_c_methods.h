@@ -7,12 +7,12 @@
 #define GG_MATCH_CORE_TRIVIAL_TU002_C_METHODS_H
 
 #include <stddef.h>
+#include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 struct Obj_004080B0;
 
 // FUNCTION: GAMEMD 0x407170 (declaration)
-void FUN_00407170(int, int);
 
 struct Obj_004080B0
 {

@@ -39,9 +39,9 @@ extern int DAT_00B07784;
 void __cdecl FUN_00684240(void);
 
 #include "../ui/input_controls/mouse_ww_mouse_class.h"
-#include "../core/flag_object_00407100.h"
 // GLOBAL: GAMEMD 0x87E758
-extern Obj_00407100* DAT_0087E758;
+struct Obj_00401000;
+extern Obj_00401000* DAT_0087E758;
 
 #include "../_layout/session_class.h"
 

@@ -14,6 +14,7 @@
 #define GG_MATCH_CORE_SPIN_WAIT_METHODS_H
 
 #include <stddef.h>
+#include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x4093B0 — the 64-bit reading, returned in EDX:EAX.
@@ -36,7 +37,7 @@ GG_STATIC_ASSERT(offsetof(Queue_004070B0, Tail) == 0x8);
 GG_STATIC_ASSERT(offsetof(Queue_004070B0, Interval) == 0x10);
 
 // FUNCTION: GAMEMD 0x4070B0
-void FUN_004070B0(Queue_004070B0* self);
+void FUN_004070B0(Timer_00401000* self);
 
 // ---------------------------------------------------------------------------
 // 0x4080F0 — the same wait one level down: the cursors and the interval live on

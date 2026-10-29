@@ -49,12 +49,6 @@ void Obj_00405200::FUN_004052E0()
     unknown_18 |= 8;
 }
 
-// FUNCTION: GAMEMD 0x4072B0
-unsigned int Obj_004072B0::FUN_004072B0() const
-{
-    return (unsigned int)unknown_08 >> 16;
-}
-
 // FUNCTION: GAMEMD 0x408070
 int Obj_00408000::FUN_00408070() const
 {

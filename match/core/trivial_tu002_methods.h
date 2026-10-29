@@ -7,6 +7,7 @@
 #define GG_MATCH_CORE_TRIVIAL_TU002_METHODS_H
 
 #include <stddef.h>
+#include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 #include "intrusive_list_methods.h"
 #include "tail_call_methods.h"
@@ -31,7 +32,6 @@ extern Gbl_0087E8A8 DAT_0087E8A8;
 // FUNCTION: GAMEMD 0x4033C0 (declaration)
 void FUN_004033C0(void*, int);
 // FUNCTION: GAMEMD 0x407170 (declaration)
-void FUN_00407170(Obj_00407060*, int);
 
 #include "gbl_0087e8a8.h"
 

@@ -63,6 +63,7 @@
 // Retail RTTI names VectorClass<Wstring> and DynamicVectorClass<Wstring> (4-byte string-handle elements).
 // The element copy ctor 0x7B4690 (__thiscall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
 
+#include "../core/triple_timer_init_methods.h"
 #include "../_layout/session_class.h"
 #include "../core/mathtbl_init_shapes.h"
 #include "../platform/ccini_class_methods.h"
@@ -2450,7 +2451,7 @@ void SessionClass::Resume()
         if (!WWMouseClassInstance->IsCaptured()) {
             WWMouseClassInstance->CaptureMouse();
         }
-        DAT_0087E758->FUN_00407150(0x4000);
+        FUN_00407150(&DAT_0087E758->First, 0x4000);
     }
 }
 
@@ -2471,7 +2472,7 @@ void SessionClass::FUN_0069BB40()
     FUN_00750FA0();
     FUN_007535D0();
     FUN_00752CA0();
-    DAT_0087E758->FUN_00407150(0x4000);
+    FUN_00407150(&DAT_0087E758->First, 0x4000);
     if (ToolTipManager_Instance)
         ToolTipManager_Instance->SetState(false);
     if (WWMouseClassInstance->IsCaptured())

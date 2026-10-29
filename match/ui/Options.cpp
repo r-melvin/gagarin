@@ -8,6 +8,7 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 
+#include "../core/triple_timer_init_methods.h"
 #include "../core/empty_function_family_methods.h"
 #include "../core/mathtbl_init_shapes.h"
 
@@ -184,7 +185,7 @@ void __cdecl FUN_004068E0(const char* format, ...);
 
 // FUNCTION: GAMEMD 0x407150 (decl; reloc) -- set a channel's volume (fastcall: channel, value).
 struct Obj_00401000;
-void __fastcall FUN_00407150(Obj_00401000* channel, int value);
+
 
 // FUNCTION: GAMEMD 0x752AB0 (decl; reloc) -- set the global voice level.
 void __fastcall FUN_00752AB0(int level);
@@ -235,7 +236,7 @@ extern OptionsRulesView_005FA510* DAT_008871E0;
 void GameOptionsClass::SetScoreVolume(float volume, bool unused)
 {
     ScoreVolume = volume < DAT_007E1718 ? volume : DAT_007E1718;
-    FUN_00407150(DAT_0087E744, (int)(ScoreVolume * 16384.0f));
+    FUN_00407150(&DAT_0087E744->First, (int)(ScoreVolume * 16384.0f));
     DAT_00A83D10.FUN_00721290((int)(ScoreVolume * DAT_007EAA50));
     FUN_004068E0(STR_00832F9C, (double)ScoreVolume);
 }
@@ -245,7 +246,7 @@ void GameOptionsClass::SetScoreVolume(float volume, bool unused)
 void GameOptionsClass::SetSoundVolume(float volume, bool playSample)
 {
     SoundVolume = volume < DAT_007E1718 ? volume : DAT_007E1718;
-    FUN_00407150(DAT_0087E748, (int)(SoundVolume * 16384.0f));
+    FUN_00407150(&DAT_0087E748->First, (int)(SoundVolume * 16384.0f));
     if (playSample)
         VocClass::PlayGlobal(DAT_008871E0->VolumeFeedback, 1.0f, 0x2000, 0);
     FUN_004068E0(STR_00832FB0, (double)SoundVolume);
@@ -257,7 +258,7 @@ void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
 {
     VoiceVolume = volume < DAT_007E1718 ? volume : DAT_007E1718;
     FUN_00752AB0((int)(VoiceVolume * DAT_007EAA50));
-    FUN_00407150(DAT_0087E740, (int)(VoiceVolume * 16384.0f));
+    FUN_00407150(&DAT_0087E740->First, (int)(VoiceVolume * 16384.0f));
     if (playSample)
         VocClass::PlayGlobal(DAT_008871E0->VolumeFeedback, VoiceVolume, 0x2000, 0);
     FUN_004068E0(STR_00832FC4, (double)VoiceVolume);

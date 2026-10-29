@@ -8,6 +8,8 @@
 //     size, +0x20 margin = size/128 + 1, two operator-new results at +0x14/+0x18.
 //   0x55C2B0 (LZOPipe) and 0x55C720 (LZOStraw): the same +0x0C..+0x20 run with
 //     the margin equal to the block size, and LZOPipe stores word 0xFFFF at +0x24.
+//   0x55C7C0 reads/writes LZOStraw words +0x24/+0x26 as compressed and
+//     uncompressed block counts respectively; see the full entry-origin body.
 // Allocation sites for complete objects were not traced, so no sizeof is
 // asserted.
 #ifndef GG_MATCH_PLATFORM_COMPRESSION_STRAWS_H
@@ -108,6 +110,7 @@ public:
     char* Buffer2;      // +0x18
     int   BlockSize;    // +0x1C
     int   SafetyMargin; // +0x20
+    LZOBlockHeader Header; // +0x24; native 0x55C7C0 reads/writes words +0x24/+0x26
 };
 GG_STATIC_ASSERT(offsetof(LZOStraw, Control)      == 0x0C);
 GG_STATIC_ASSERT(offsetof(LZOStraw, Counter)      == 0x10);
@@ -115,6 +118,11 @@ GG_STATIC_ASSERT(offsetof(LZOStraw, Buffer)       == 0x14);
 GG_STATIC_ASSERT(offsetof(LZOStraw, Buffer2)      == 0x18);
 GG_STATIC_ASSERT(offsetof(LZOStraw, BlockSize)    == 0x1C);
 GG_STATIC_ASSERT(offsetof(LZOStraw, SafetyMargin) == 0x20);
+GG_STATIC_ASSERT(offsetof(LZOStraw, Header) == 0x24);
+GG_STATIC_ASSERT(offsetof(LZOStraw, Header) + offsetof(LZOBlockHeader, CompCount) == 0x24);
+GG_STATIC_ASSERT(offsetof(LZOStraw, Header) + offsetof(LZOBlockHeader, UncompCount) == 0x26);
+GG_STATIC_ASSERT(sizeof(((LZOBlockHeader*)0)->CompCount) == 2);
+GG_STATIC_ASSERT(sizeof(((LZOBlockHeader*)0)->UncompCount) == 2);
 // VTABLE: GAMEMD 0x7ED394 -- [0x55C990, 0x6C9890, 0x55C7C0]
 
 #endif // GG_MATCH_PLATFORM_COMPRESSION_STRAWS_H

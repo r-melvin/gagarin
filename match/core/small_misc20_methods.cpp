@@ -5,6 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "small_misc20_methods.h"
+#include "../audio/audio_stop_methods.h"
 #include "../platform/pk_blow_pipes.h"
 
 // FUNCTION: GAMEMD 0x408200
@@ -46,7 +47,7 @@ void __cdecl FUN_00408390()
     }
 
     do {
-        FUN_00407170b(((Holder_00408390*)node)->at14 + 0x10, 0);
+        FUN_00407170(&((Holder_00408390*)node)->at14->unknown_10, 0);
 
         node = (node)->FUN_004073E0();
     } while (node);
@@ -68,7 +69,7 @@ void __cdecl FUN_004083D0()
     }
 
     do {
-        FUN_00407170b(((Holder_00408390*)node)->at14 + 0x10, 0x4000);
+        FUN_00407170(&((Holder_00408390*)node)->at14->unknown_10, 0x4000);
 
         node = (node)->FUN_004073E0();
     } while (node);

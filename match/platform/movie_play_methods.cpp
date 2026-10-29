@@ -103,11 +103,11 @@ extern int DAT_008809DC;
 // GLOBAL: GAMEMD 0x87F770
 extern InputManagerClass* DAT_0087F770;
 // 0x406BA6 stores an Obj_00401000 address into this timer target.
-struct Obj_00401000;
+#include "../core/triple_timer_init_methods.h"
 // GLOBAL: GAMEMD 0x87E750
 extern Obj_00401000* DAT_0087E750;
 // GLOBAL: GAMEMD 0x87E758
-extern void* DAT_0087E758;
+
 // GLOBAL: GAMEMD 0xA8BC60
 extern Obj_005D3BA0 DAT_00A8BC60;
 // GLOBAL: GAMEMD 0xB45B58 -- the movie handles started by 0x5BF2B0.
@@ -120,7 +120,7 @@ void FUN_004082F0();                                     // GAMEMD 0x4082F0 (dec
 void FUN_004083D0();                                     // GAMEMD 0x4083D0 (decl; reloc)
 void FUN_007535B0();                                     // GAMEMD 0x7535B0 (decl; reloc)
 void FUN_00753620();                                     // GAMEMD 0x753620 (decl; reloc)
-void FUN_00407170(void* obj, int flag);       // GAMEMD 0x407170 (decl; reloc)
+
 void FUN_004F4780(bool a, void* surface, int b);   // GAMEMD 0x4F4780 (decl; reloc)
 MovieHandle* FUN_005C07D0(const char* name, void* surface, int a);   // GAMEMD 0x5C07D0 (decl; reloc)
 void Play_Movie(const char* name, int x, int a, int b, int c, int d);
@@ -237,8 +237,8 @@ void FUN_005BF530()
         FUN_00408230();
         FUN_004082F0();
         FUN_004083D0();
-        FUN_00407170(DAT_0087E758, 0x4000);
-        FUN_00407170(DAT_0087E750, 0x4000);
+        FUN_00407170(&DAT_0087E758->First, 0x4000);
+        FUN_00407170(&DAT_0087E750->First, 0x4000);
         FUN_00753620();
         DAT_00ABF35C = false;
     }
@@ -251,8 +251,8 @@ void FUN_005BF580()
         FUN_007535B0();
         FUN_00408200();
         FUN_00408270();
-        FUN_00407170(DAT_0087E758, 0x2000);
-        FUN_00407170(DAT_0087E750, 0x2000);
+        FUN_00407170(&DAT_0087E758->First, 0x2000);
+        FUN_00407170(&DAT_0087E750->First, 0x2000);
         DAT_00ABF35C = true;
     }
 }

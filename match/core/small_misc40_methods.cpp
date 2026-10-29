@@ -3,6 +3,8 @@
 //   Bytes compared against retail gamemd.exe v1.001 at the three addresses below.
 
 #include "small_misc40_methods.h"
+#include "triple_timer_init_methods.h"
+#include "../audio/audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x403820
 void FUN_00403820(Obj_00403820* self)
@@ -32,20 +34,20 @@ void FUN_00403820(Obj_00403820* self)
 }
 
 // FUNCTION: GAMEMD 0x407100
-void FUN_00407100(Timer_00407100* self, int value)
+void FUN_00407100(Timer_00401000* self, int value)
 {
-    self->field_00 = 0;
-
-    Pair64 start = FUN_004093B0();
-
-    self->StartLo   = start.Lo;
-    self->field_00 |= 1;
-    self->Limit     = 0x3E8;
-    self->Scaled    = value << 16;
-    self->StartHi   = start.Hi;
-    self->Rate      = 0x10624D;
-    self->field_14  = 0;
-
+    // The clock returns EDX:EAX; retail stores the two words separately at
+    // 0x407113 and 0x407128, with other field updates between them.
+    union { __int64 value; struct { unsigned int lo; int hi; } words; } start;
+    self->Flags32 = 0;
+    start.value = Unsorted_AudioGetTime();
+    self->unknown_18_lo = start.words.lo;
+    self->Flags32 |= 1;
+    self->unknown_10_lo = 0x3E8;
+    self->Target = value << 16;
+    self->unknown_1C = start.words.hi;
+    self->unknown_0C = 0x10624D;
+    self->unknown_14 = 0;
     FUN_004071C0(self);
 }
 

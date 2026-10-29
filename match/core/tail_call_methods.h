@@ -15,10 +15,10 @@
 #define GG_MATCH_CORE_TAIL_CALL_METHODS_H
 
 #include <stddef.h>
+#include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 // Declared-only callees.
-void  FUN_00407170(void* self, int arg);   // GAMEMD 0x407170
 void* FUN_00407470(void* self);            // GAMEMD 0x407470
 void  FUN_004072C0b(void* self);           // GAMEMD 0x4072C0
 
@@ -51,7 +51,7 @@ struct Obj_00403800b
 GG_STATIC_ASSERT(offsetof(Obj_00403800b, Handler) == 0x10C);
 
 // FUNCTION: GAMEMD 0x407070
-void FUN_00407070(void* self);
+unsigned FUN_00407070(Timer_00401000* self);
 
 struct Obj_00408000b
 {

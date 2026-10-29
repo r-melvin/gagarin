@@ -41,38 +41,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00403820, field_54) == 0x54);
 void FUN_00403820(Obj_00403820* self);
 
 // ---------------------------------------------------------------------------
-// 0x407100 — arm a timer.
-//
-// 0x4093B0 hands back a 64-bit reading in EDX:EAX (the caller at 0x4070B0 adds
-// it with `ADD`/`ADC`), and the two halves land at +0x18 and +0x1C. The
-// argument is scaled by 65536 into +0x08, and +0x0C gets 0x10624D. The final
-// hand-off is a real `JMP`, so the callee is a __fastcall free function.
-// ---------------------------------------------------------------------------
-// Modelled as a two-int struct rather than `__int64`. MSVC returns an 8-byte
-// POD in EDX:EAX, which is the same register pair, but reading the high half of
-// an `__int64` as `(int)(x >> 32)` costs a `MOV EAX,EDX` that retail does not
-// have - the struct's second member is already EDX.
-struct Pair64 { int Lo; int Hi; };
-Pair64 FUN_004093B0();   // FUNCTION: GAMEMD 0x4093B0
-void    FUN_004071C0(void* self);   // FUNCTION: GAMEMD 0x4071C0
-
-struct Timer_00407100
-{
-    int field_00;   // +0x0000  flag word
-    int field_04;
-    int Scaled;     // +0x0008
-    int Rate;       // +0x000C
-    int Limit;      // +0x0010
-    int field_14;   // +0x0014
-    int StartLo;    // +0x0018
-    int StartHi;    // +0x001C
-};
-GG_STATIC_ASSERT(offsetof(Timer_00407100, StartHi) == 0x1C);
-
-// FUNCTION: GAMEMD 0x407100
-void FUN_00407100(Timer_00407100* self, int value);
-
-// ---------------------------------------------------------------------------
 // 0x408D30 — the difference between two counters.
 // ---------------------------------------------------------------------------
 struct Obj_00408D30

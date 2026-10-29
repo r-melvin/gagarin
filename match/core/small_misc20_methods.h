@@ -27,8 +27,9 @@ struct Counted_00408200 { char _pad[0x88]; int at88; };
 void __cdecl FUN_00408200();
 
 // The same walk, driving a helper on each entry's sub-object instead.
-struct Holder_00408390 { char _pad[0x14]; char* at14; };
-void FUN_00407170b(void* self, int arg);   // GAMEMD 0x407170
+struct Peer_00405D40;
+// 0x4078C9/CE stores a pooled peer here; 0x4020FA initializes its +0x10 timer.
+struct Holder_00408390 { char _pad[0x14]; Peer_00405D40* at14; };
 
 // FUNCTION: GAMEMD 0x408390
 void __cdecl FUN_00408390();

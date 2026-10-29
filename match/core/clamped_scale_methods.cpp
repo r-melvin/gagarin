@@ -34,7 +34,7 @@ static inline unsigned Clamp_004061D0(unsigned level)
 int FUN_004061D0(Obj_004061D0* self, unsigned level)
 {
     if (self->Mode == 3) {
-        return FUN_00407170(&self->Sink,
+        return FUN_00407170(&self->Sink.Timer,
                             (self->Rate->Value >> 16) * Clamp_004061D0(level) >> 14);
     }
 

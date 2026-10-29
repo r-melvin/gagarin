@@ -8,18 +8,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_00407100b
-{
-    char         _pad00[0xC];
-    unsigned int unknown_0C;   // +0x000C
-    unsigned int unknown_10;   // +0x0010
-    int          unknown_14;   // +0x0014
-
-    // FUNCTION: GAMEMD 0x4071A0
-    void __fastcall FUN_004071A0(unsigned int v, unsigned int divisor, int extra);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00407100b, unknown_14) == 0x14);
-
 #include "../_layout/geometry2d.h"
 
 // CLASS IDENTITY (whole-image RTTI sweep; renamed from

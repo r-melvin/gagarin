@@ -8178,9 +8178,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_accessor_methods.cpp",
+  "tu": "match/core/timer_prefix_methods.cpp",
   "addr": "0x4072B0",
-  "sym": "?FUN_004072B0@Obj_004072B0@@QBEIXZ",
+  "sym": "?FUN_004072B0@@YIIPAUTimer_00401000@@@Z",
   "len": "0x7",
   "name": "FUN_004072B0",
   "status": "matched",
@@ -11094,9 +11094,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc2_methods.cpp",
+  "tu": "match/core/timer_prefix_methods.cpp",
   "addr": "0x407150",
-  "sym": "?FUN_00407150@Obj_00407100@@QAIXH@Z",
+  "sym": "?FUN_00407150@@YIIPAUTimer_00401000@@H@Z",
   "len": "0xd",
   "name": "FUN_00407150",
   "status": "matched",
@@ -11184,9 +11184,9 @@
   "pct": 63.2
  },
  {
-  "tu": "match/core/small_misc34_methods.cpp",
+  "tu": "match/core/timer_prefix_methods.cpp",
   "addr": "0x407170",
-  "sym": "?FUN_00407170c@@YIXPAUObj_00407170@@H@Z",
+  "sym": "?FUN_00407170@@YIIPAUTimer_00401000@@H@Z",
   "len": "0x2b",
   "name": "FUN_00407170",
   "status": "matched",
@@ -11259,7 +11259,7 @@
  {
   "tu": "match/core/small_misc37_methods.cpp",
   "addr": "0x406550",
-  "sym": "?FUN_00406550@@YIXPAUObj_00406550@@@Z",
+  "sym": "?FUN_00406550@@YIXPAUObj_00406550@@H@Z",
   "len": "0x13",
   "name": "FUN_00406550",
   "status": "matched",
@@ -11466,7 +11466,7 @@
  {
   "tu": "match/core/small_misc40_methods.cpp",
   "addr": "0x407100",
-  "sym": "?FUN_00407100@@YIXPAUTimer_00407100@@H@Z",
+  "sym": "?FUN_00407100@@YIXPAUTimer_00401000@@H@Z",
   "len": "0x42",
   "name": "FUN_00407100",
   "status": "matched",
@@ -12042,9 +12042,9 @@
  {
   "tu": "match/core/small_misc5_methods.cpp",
   "addr": "0x401080",
-  "sym": "?FUN_00401080@Obj_00401080@@QAEXXZ",
+  "sym": "?FUN_00401080@Obj_00401000@@QAEXXZ",
   "len": "0x19",
-  "name": "FUN_00401080",
+  "name": "Obj_00401000::FUN_00401080",
   "status": "matched",
   "pct": 100.0
  },
@@ -12285,7 +12285,7 @@
  {
   "tu": "match/core/small_misc9_methods.cpp",
   "addr": "0x4071A0",
-  "sym": "?FUN_004071A0@Obj_00407100b@@QAIXIIH@Z",
+  "sym": "?FUN_004071A0@@YIXPAUTimer_00401000@@IIH@Z",
   "len": "0x1f",
   "name": "FUN_004071A0",
   "status": "matched",
@@ -12546,7 +12546,7 @@
  {
   "tu": "match/core/spin_wait_methods.cpp",
   "addr": "0x4070b0",
-  "sym": "?FUN_004070B0@@YIXPAUQueue_004070B0@@@Z",
+  "sym": "?FUN_004070B0@@YIXPAUTimer_00401000@@@Z",
   "len": "0x44",
   "name": "FUN_004070B0",
   "status": "matched",
@@ -12699,7 +12699,7 @@
  {
   "tu": "match/core/tail_call_methods.cpp",
   "addr": "0x407070",
-  "sym": "?FUN_00407070@@YIXPAX@Z",
+  "sym": "?FUN_00407070@@YIIPAUTimer_00401000@@@Z",
   "len": "0x7",
   "name": "FUN_00407070",
   "status": "matched",

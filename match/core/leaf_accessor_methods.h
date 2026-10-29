@@ -63,14 +63,6 @@ struct Obj_00405200
 };
 GG_STATIC_ASSERT(offsetof(Obj_00405200, unknown_18) == 0x18);
 
-struct Obj_004072B0
-{
-    char _pad000[0x8 - 0x0];
-    int  unknown_08;   // +0x0008
-    // FUNCTION: GAMEMD 0x4072B0
-    unsigned int FUN_004072B0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004072B0, unknown_08) == 0x8);
 
 struct Obj_00408000
 {

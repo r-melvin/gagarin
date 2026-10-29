@@ -61,10 +61,8 @@ void FUN_00405580(Obj_00405580* self)
 //
 // Both resets act on the same sub-object, so its address is taken once; the
 // second is a tail call, which is what the free-function form gives.
-void FUN_00406550(Obj_00406550* self)
+void FUN_00406550(Obj_00406550* self, int value)
 {
-    void* sub = self->Sub;
-
-    FUN_00407150(sub);
-    FUN_004071C0(sub);
+    FUN_00407150(&self->Sub, value);
+    FUN_004071C0(&self->Sub);
 }

@@ -27,8 +27,8 @@ struct Timer_00401000
     unsigned int Value;       // +0x0004  16.16 fixed point
     union { unsigned char Flags2; unsigned Target; }; // +0x08
     int unknown_0C;
-    unsigned __int64 unknown_10;
-    __int64 unknown_18;
+    union { unsigned __int64 unknown_10; struct { unsigned int unknown_10_lo, unknown_14; }; };
+    union { __int64 unknown_18; struct { unsigned int unknown_18_lo; int unknown_1C; }; };
     char unknown_20[8];
 };
 GG_STATIC_ASSERT(offsetof(Timer_00401000, Flags32) == 0);
@@ -38,17 +38,34 @@ GG_STATIC_ASSERT(offsetof(Timer_00401000, Target) == 8);
 GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_0C) == 0xC);
 GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_10_lo) == 0x10);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_18_lo) == 0x18);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(sizeof(((Timer_00401000*)0)->unknown_10_lo) == 4);
+GG_STATIC_ASSERT(sizeof(((Timer_00401000*)0)->unknown_14) == 4);
+GG_STATIC_ASSERT(sizeof(((Timer_00401000*)0)->unknown_18_lo) == 4);
+GG_STATIC_ASSERT(sizeof(((Timer_00401000*)0)->unknown_1C) == 4);
+GG_STATIC_ASSERT(sizeof(((Timer_00401000*)0)->unknown_10) == 8);
+GG_STATIC_ASSERT(sizeof(((Timer_00401000*)0)->unknown_18) == 8);
 GG_STATIC_ASSERT(sizeof(Timer_00401000) == 0x28);
 
 // FUNCTION: GAMEMD 0x407100 — arm, __fastcall with the period in EDX.
 void FUN_00407100(Timer_00401000* timer, int period);
 // FUNCTION: GAMEMD 0x4071A0 — configure, __fastcall with two more on the stack.
-void FUN_004071A0(Timer_00401000* timer, int value, int a, int b);
+void FUN_004071A0(Timer_00401000* timer, unsigned int value, unsigned int a, int b);
 // FUNCTION: GAMEMD 0x407150 — set the level, reached by `JMP`.
-void FUN_00407150(Timer_00401000* timer, int level);
+unsigned FUN_00407150(Timer_00401000* timer, int level);
+// FUNCTION: GAMEMD 0x407170 — EAX is the previous target or clock low word.
+unsigned FUN_00407170(Timer_00401000* timer, int level);
+unsigned FUN_004072B0(Timer_00401000* timer);
+unsigned FUN_00407070(Timer_00401000* timer);
+void FUN_004070B0(Timer_00401000* timer);
 
 struct Obj_00401000
 {
+    // FUNCTION: GAMEMD 0x401080 (decl)
+    void FUN_00401080();
     // FUNCTION: GAMEMD 0x4010A0 (decl)
     int FUN_004010A0() const;
     // FUNCTION: GAMEMD 0x401170 (decl)
@@ -60,8 +77,12 @@ struct Obj_00401000
 GG_STATIC_ASSERT(offsetof(Obj_00401000, First) == 0);
 GG_STATIC_ASSERT(offsetof(Obj_00401000, Second) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00401000, Third) == 0x50);
+// GLOBAL: GAMEMD 0x87E758
+extern Obj_00401000* DAT_0087E758;
+GG_STATIC_ASSERT(sizeof(DAT_0087E758) == 4);
 
-// FUNCTION: GAMEMD 0x4071C0 — reset, __thiscall (ECX only, no argument).
+// FUNCTION: GAMEMD 0x4071C0 — ECX receiver, no stack arguments; the
+// free declaration uses the existing default __fastcall convention.
 int FUN_004071C0(Timer_00401000* timer);
 
 // FUNCTION: GAMEMD 0x401000

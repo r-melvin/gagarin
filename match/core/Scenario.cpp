@@ -378,11 +378,8 @@ extern EvadeClass DAT_008A38E0;
 // GLOBAL: GAMEMD 0x00A8EB80
 extern bool DAT_00A8EB80;
 
-void __fastcall FUN_00407070(void* value); // GAMEMD 0x407070
-void __fastcall FUN_00407150(Queue_004070B0* value, int flags); // GAMEMD 0x407150
 bool __fastcall FUN_007529E0(); // GAMEMD 0x7529E0
 // GLOBAL: GAMEMD 0x0087E758
-extern Queue_004070B0* DAT_0087E758;
 // GLOBAL: GAMEMD 0x0088730C
 extern MouseSurfaceView* DAT_0088730C;
 // GLOBAL: GAMEMD 0x00A8E9A0
@@ -1068,7 +1065,7 @@ void __fastcall FUN_006851F0()
     ScenarioInstance->unknown_0214 = 1000000;
     ScenarioInstance->unknown_0218.unknown_00 = true;
     DAT_0083D834 = 0x4000;
-    FUN_00407150(DAT_0087E758, 0x4000);
+    FUN_00407150(&DAT_0087E758->First, 0x4000);
     FUN_00750FA0();
     CurrentPlayer = 0;
     ScenarioInstance->FUN_00683610();
@@ -1162,8 +1159,8 @@ void __fastcall FUN_00685670()
     WWMouseClassInstance->vf_5();
     MapInstance.FUN_005BDA80(0, 0);
     WWMouseClassInstance->vf_3();
-    FUN_00407070(DAT_0087E758);
-    FUN_004070B0(DAT_0087E758);
+    FUN_00407070(&DAT_0087E758->First);
+    FUN_004070B0(&DAT_0087E758->First);
     int deadline = ConnTimer.GetValue() + 300;
     while (FUN_007529E0()) {
         if (deadline <= ConnTimer.GetValue()) break;
@@ -1173,7 +1170,7 @@ void __fastcall FUN_00685670()
     FUN_00752CA0();
     FUN_00406E80();
     FUN_00750FA0();
-    FUN_00407150(DAT_0087E758, 0x4000);
+    FUN_00407150(&DAT_0087E758->First, 0x4000);
     if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
@@ -1323,8 +1320,8 @@ void __fastcall FUN_00685DC0()
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
     }
-    FUN_00407070(DAT_0087E758);
-    FUN_004070B0(DAT_0087E758);
+    FUN_00407070(&DAT_0087E758->First);
+    FUN_004070B0(&DAT_0087E758->First);
     int deadline = ConnTimer.GetValue() + 300;
     while (FUN_007529E0()) {
         if (deadline <= ConnTimer.GetValue()) break;
@@ -1334,7 +1331,7 @@ void __fastcall FUN_00685DC0()
     FUN_00752CA0();
     FUN_00406E80();
     FUN_00750FA0();
-    FUN_00407150(DAT_0087E758, 0x4000);
+    FUN_00407150(&DAT_0087E758->First, 0x4000);
     bool resume = false;
     if (Session_00A8B238.GameMode != 0) {
         if (!(DAT_00A8D5F8 & 2)) {
@@ -1477,9 +1474,9 @@ void __fastcall FUN_00686570()
     WWMouseClassInstance->vf_5();
     MapInstance.FUN_005BDA80(0, 0);
     DAT_00A83D10.Stop(true);
-    FUN_00407070(DAT_0087E758);
+    FUN_00407070(&DAT_0087E758->First);
     VoxClass::Play(STR_0083DB34, 2, -1);
-    FUN_004070B0(DAT_0087E758);
+    FUN_004070B0(&DAT_0087E758->First);
     int deadline = ConnTimer.GetValue() + 300;
     while (FUN_007529E0()) {
         if (deadline <= ConnTimer.GetValue()) break;
@@ -1489,7 +1486,7 @@ void __fastcall FUN_00686570()
     FUN_00752CA0();
     FUN_00406E80();
     FUN_00750FA0();
-    FUN_00407150(DAT_0087E758, 0x4000);
+    FUN_00407150(&DAT_0087E758->First, 0x4000);
     if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);

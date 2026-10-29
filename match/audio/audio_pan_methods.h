@@ -14,6 +14,7 @@
 #define GG_MATCH_AUDIO_AUDIO_PAN_METHODS_H
 
 #include <stddef.h>  // offsetof, size_t
+#include "../core/triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
@@ -28,7 +29,7 @@ struct AudioEventTag
     char _pad_00[0x1C];
     int  Type;                         // +0x1C
     char _pad_20[0x108 - (0x1C + 4)];
-    char Channel;                      // +0x108 (sub-object marker)
+    Timer_00401000 Channel;             // +0x108; initialized by 0x4062C0
 };
 GG_STATIC_ASSERT(offsetof(AudioEventTag, Type)    == 0x1C);
 #if GG_TARGET_ABI_32
@@ -37,8 +38,8 @@ GG_STATIC_ASSERT(offsetof(AudioEventTag, Channel) == 0x108);
 
 // The two per-channel pan setters (ECX = &event->Channel, EDX = clamped pan).
 // Declared only — bodies live elsewhere; cl emits a tail-call jump (reloc).
-void FUN_00407150(void* channel, unsigned int pan);  // GAMEMD 0x407150
-void FUN_00407170(void* channel, unsigned int pan);  // GAMEMD 0x407170
+
+
 
 // Clamp `pan` to [0, 0x4000] and route it to the type-appropriate pan setter.
 void AdjustAudioEventPanning(void* event, unsigned int pan);   // GAMEMD 0x406270

@@ -5,16 +5,17 @@
 // Ordered ascending by retail address.
 
 #include "small_misc9_methods.h"
+#include "triple_timer_init_methods.h"
 
 // FUNCTION: GAMEMD 0x4071A0
 // The stored ratio is a 16.16 fixed-point reciprocal: the value is shifted up
 // sixteen bits before an *unsigned* divide, so a divisor of zero faults rather
 // than trapping to a signed-overflow path.
-void Obj_00407100b::FUN_004071A0(unsigned int v, unsigned int divisor, int extra)
+void FUN_004071A0(Timer_00401000* self, unsigned int v, unsigned int divisor, int extra)
 {
-    unknown_10 = divisor;
-    unknown_0C = (v << 16) / divisor;
-    unknown_14 = extra;
+    self->unknown_10_lo = divisor;
+    self->unknown_0C = (v << 16) / divisor;
+    self->unknown_14 = extra;
 }
 
 // FUNCTION: GAMEMD 0x41A590

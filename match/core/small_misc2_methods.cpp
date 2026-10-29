@@ -64,14 +64,6 @@ int Obj_00406600b::FUN_00406650() const
     return (Flags & 1) && unknown_4C == 0;
 }
 
-// FUNCTION: GAMEMD 0x407150
-// `SHL EDX,0x10` puts the value in the high half of the word.
-void Obj_00407100::FUN_00407150(int value)
-{
-    Flags |= 1;
-    unknown_08 = value << 16;
-}
-
 // FUNCTION: GAMEMD 0x4072D0
 void Obj_004072D0::FUN_004072D0()
 {

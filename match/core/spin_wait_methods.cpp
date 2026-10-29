@@ -3,14 +3,15 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4070B0 and 0x4080F0.
 
 #include "spin_wait_methods.h"
+#include "../audio/audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x4070B0
-void FUN_004070B0(Queue_004070B0* self)
+void FUN_004070B0(Timer_00401000* self)
 {
-    unsigned __int64 deadline = FUN_004093B0() + self->Interval;
+    unsigned __int64 deadline = Unsorted_AudioGetTime() + self->unknown_10;
 
-    while (self->Head != self->Tail) {
-        if (FUN_004093B0() >= deadline) {
+    while (self->Value != self->Target) {
+        if (Unsorted_AudioGetTime() >= deadline) {
             break;
         }
 

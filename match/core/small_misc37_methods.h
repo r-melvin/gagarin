@@ -8,6 +8,7 @@
 #define GG_MATCH_CORE_SMALL_MISC37_METHODS_H
 
 #include <stddef.h>
+#include "triple_timer_init_methods.h"
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
@@ -80,17 +81,16 @@ void FUN_00405580(Obj_00405580* self);
 // 0x406550 — run two resets over the sub-object at +0x18, the second by tail
 // call.
 // ---------------------------------------------------------------------------
-// FUNCTION: GAMEMD 0x407150 / 0x4071C0
-void FUN_00407150(void* sub);
-void FUN_004071C0(void* sub);
+// Callees: GAMEMD 0x407150 / 0x4071C0
 
 struct Obj_00406550
 {
     char _pad000[0x18];
-    char Sub[0x4];   // +0x0018
+    Timer_00401000 Sub;   // +0x18; 4063F5 allocates 0x148, 406424/458 initialize timer
 };
+GG_STATIC_ASSERT(offsetof(Obj_00406550, Sub) == 0x18);
 
 // FUNCTION: GAMEMD 0x406550
-void FUN_00406550(Obj_00406550* self);
+void FUN_00406550(Obj_00406550* self, int value);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC37_METHODS_H

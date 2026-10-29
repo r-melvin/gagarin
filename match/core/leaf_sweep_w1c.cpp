@@ -16,10 +16,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "../network/transport/winsock_interface_class.h"
 
-struct Sub_00406250
-{
-};
-void __fastcall FUN_00407150(Sub_00406250* self, int value);
+// 0x406265 addresses the event timer initialized by 0x4062F6.
+#include "triple_timer_init_methods.h"
+struct Sub_00406250 { Timer_00401000 Timer; };
 
 struct Obj_00406250
 {
@@ -36,7 +35,7 @@ void __fastcall FUN_00406250(Obj_00406250* self, int value)
         value = 0x4000;
     else if (value < 0)
         value = 0;
-    FUN_00407150(&self->unknown_108, value);
+    FUN_00407150(&self->unknown_108.Timer, value);
 }
 
 struct Obj_0042A690

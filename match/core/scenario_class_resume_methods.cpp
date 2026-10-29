@@ -21,7 +21,7 @@ void ScenarioClass::ResumeGame()
         DAT_00887368->SetState(DAT_00A8EB80);
     }
 
-    DAT_0087E758->FUN_00407150(DAT_0083D834);
+    FUN_00407150(&DAT_0087E758->First, DAT_0083D834);
     DAT_0083D834 = 0x4000;
     FUN_005BF500(false);
     FUN_00406F40();

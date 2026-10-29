@@ -4,6 +4,7 @@
 //
 //   Ordered ascending by retail address.
 
+// 0x407060 tail-forwards ECX to timer entry 0x407170.
 #include "trivial_tu002_methods.h"
 
 // FUNCTION: GAMEMD 0x406E60
@@ -21,7 +22,7 @@ void FUN_00406E60(int a1, int a2)
 // Tail-forwards to another function.
 void Obj_00407060::FUN_00407060()
 {
-    FUN_00407170(this, 0x4000);
+    FUN_00407170(reinterpret_cast<Timer_00401000*>(this), 0x4000);
 }
 
 // FUNCTION: GAMEMD 0x407090

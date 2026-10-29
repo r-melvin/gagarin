@@ -96,9 +96,9 @@ extern ToolTip_00683EB0* DAT_00887368;
 // The object 0x4072B0 / 0x407150 are called on (see
 // match/core/leaf_accessor_methods.h and match/core/small_misc2_methods.h);
 // redeclared locally so this TU stands alone.
-#include "obj_0087e758.h"
+#include "triple_timer_init_methods.h"
 // GLOBAL: GAMEMD 0x87E758
-extern Obj_0087E758* DAT_0087E758;
+
 // GLOBAL: GAMEMD 0x83D834 — the level saved across the pause.
 extern unsigned int DAT_0083D834;
 

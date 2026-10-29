@@ -4,6 +4,7 @@
 //
 // Tail-call forwarders, ordered ascending by retail address.
 
+// 0x4080C0 passes [ECX+0x14]+0x10 to timer entry 0x407170.
 #include "tail_call_methods.h"
 
 // FUNCTION: GAMEMD 0x4026A0
@@ -16,10 +17,10 @@ void Obj_00402600::FUN_004026B0() { (*(Slot*)(Dispatch + 0x2C))(this); }
 void Obj_00403800b::FUN_00403810() { Handler(this); }
 
 // FUNCTION: GAMEMD 0x407070
-void FUN_00407070(void* self) { FUN_00407170(self, 0); }
+unsigned FUN_00407070(Timer_00401000* self) { return FUN_00407170(self, 0); }
 
 // FUNCTION: GAMEMD 0x4080C0
-void Obj_00408000b::FUN_004080C0() { FUN_00407170(unknown_14 + 0x10, 0); }
+void Obj_00408000b::FUN_004080C0() { FUN_00407170(reinterpret_cast<Timer_00401000*>(unknown_14 + 0x10), 0); }
 
 // FUNCTION: GAMEMD 0x4084E0
 void Obj_00408500b::FUN_004084E0()

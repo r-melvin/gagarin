@@ -4,6 +4,7 @@
 //
 //   Ordered ascending by retail address.
 
+// 0x403470/0x403480 pass ECX+0x68 to timer entries 0x407150/0x407170.
 #include "trivial_tu000_methods.h"
 
 // FUNCTION: GAMEMD 0x401FB0
@@ -39,14 +40,14 @@ int __cdecl FUN_00403460()
 // Tail-forwards to another function.
 void FUN_00403470(int a1, int a2)
 {
-    FUN_00407150(a1 + 0x68, a2);
+    FUN_00407150(reinterpret_cast<Timer_00401000*>(a1 + 0x68), a2);
 }
 
 // FUNCTION: GAMEMD 0x403480
 // Tail-forwards to another function.
 void FUN_00403480(int a1, int a2)
 {
-    FUN_00407170(a1 + 0x68, a2);
+    FUN_00407170(reinterpret_cast<Timer_00401000*>(a1 + 0x68), a2);
 }
 
 // FUNCTION: GAMEMD 0x403490

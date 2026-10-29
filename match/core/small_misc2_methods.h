@@ -27,7 +27,7 @@ void __cdecl FUN_0040A940b();
 // unsigned (`JNC`), so a negative index takes the out-of-range path too.
 const char* FUN_00473960(unsigned int index);
 
-#include "flag_object_00407100.h"
+
 
 struct Voice_00405D40;
 

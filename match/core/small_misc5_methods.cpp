@@ -8,11 +8,11 @@
 
 // FUNCTION: GAMEMD 0x401080
 // Initialise all three sub-objects; the last is a tail call.
-void Obj_00401080::FUN_00401080()
+void Obj_00401000::FUN_00401080()
 {
-    FUN_004071C0(this);
-    FUN_004071C0((char*)this + 0x28);
-    FUN_004071C0((char*)this + 0x50);
+    FUN_004071C0(&First);
+    FUN_004071C0(&Second);
+    FUN_004071C0(&Third);
 }
 
 // FUNCTION: GAMEMD 0x406E80
