@@ -4,6 +4,17 @@
 
 #include "tick_snapshot_methods.h"
 
+// GLOBAL: GAMEMD 0x816320
+__int64 DAT_00816320 = 0x100000000i64;
+// GLOBAL: GAMEMD 0x87E84C
+volatile int DAT_0087E84C;
+// Retail read-only pointer slots contain 0x816320 and 0x816324; entry
+// 0x4093F0 reads and writes those two native 32-bit halves.
+// GLOBAL: GAMEMD 0x7E1760
+unsigned int* const DAT_007E1760 = (unsigned int*)&DAT_00816320;
+// GLOBAL: GAMEMD 0x7E1764
+int* const DAT_007E1764 = (int*)((char*)&DAT_00816320 + 4);
+
 // FUNCTION: GAMEMD 0x4093F0
 //
 // Read the running 64-bit count without tearing. The guard is re-read until it
@@ -28,7 +39,7 @@ __int64 FUN_004093F0()
         guard = DAT_0087E84C;
     }
 
-    source = DAT_007E1530;
+    source = timeGetTime;
     for (;;) {
         now = source();
         if (now < low) {
