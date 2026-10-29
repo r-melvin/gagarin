@@ -7,7 +7,7 @@ mkdir -p "$DST"
 ADST="${2:-$HOME/.claude/agents}"
 mkdir -p "$ADST"
 for a in gagarin-worker gagarin-lander gagarin-orchestrator; do
-  src="$(dirname "$HERE")/agents/$a.md"
+  src="$(dirname "$HERE")/agent_defs/$a.md"
   if [ -e "$ADST/$a.md" ] && [ ! -L "$ADST/$a.md" ]; then echo "exists and is not a link, skipped: $ADST/$a.md"; else ln -sfn "$src" "$ADST/$a.md"; echo "linked $ADST/$a.md"; fi
 done
 for s in gagarin-packet-worker gagarin-lander gagarin-orchestrator; do
