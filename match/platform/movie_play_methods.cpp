@@ -9,9 +9,11 @@
 // other units yet expanded inside 0x5BF180 and 0x5BF450, and 0x5BF2B0 is
 // expanded inside 0x5BF390: out-of-line bodies inlined automatically.
 #include "movie_handle_class.h"
+#include "../_layout/session_class.h"
 #include "../core/vector_class_operations.h"
 #include <string.h>
 #include "../core/vector_add_item_free.h"
+#include "../_layout/map_0087f7e8.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- _stricmp.
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
@@ -28,13 +30,6 @@ struct Mouse_005BED40
 // GLOBAL: GAMEMD 0x887640
 extern Mouse_005BED40* DAT_00887640;
 
-class GScreenClass
-{
-public:
-    void FlagToRedraw(int which);       // GAMEMD 0x4F42F0 (decl; reloc)
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern GScreenClass DAT_0087F7E8;
 
 // GLOBAL: GAMEMD 0x887310
 extern void* DAT_00887310;
@@ -97,8 +92,6 @@ extern char** DAT_00ABF394;
 extern int DAT_00ABF3A0;
 // GLOBAL: GAMEMD 0xA8E378
 extern bool DAT_00A8E378;
-// GLOBAL: GAMEMD 0xA8B238 -- the session game mode (0 = campaign).
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0x887300
 extern void* DAT_00887300;
 // GLOBAL: GAMEMD 0x88730C
@@ -148,7 +141,7 @@ void FUN_005BED20(const char* name, int x, int a, int b, int c)
 void Play_Movie(const char* name, int x, int a, int b, int c, int d)
 {
     char buffer[256];
-    if (!FUN_005C0640(name, buffer, true) || DAT_00A8B238 != 0)
+    if (!FUN_005C0640(name, buffer, true) || Session_00A8B238.GameMode != 0)
         return;
     DAT_0087F770->DoSomething();
     char* ext = strrchr(buffer, '.');
@@ -175,7 +168,7 @@ void Play_Movie(const char* name, int x, int a, int b, int c, int d)
         }
         DAT_0087F770->DoSomething();
         DAT_00887640->vt_10();
-        DAT_0087F7E8.FlagToRedraw(2);
+        DAT_0087F7E8.FUN_004F42F0(2);
         return;
     }
     DAT_0087F770->DoSomething();
@@ -233,7 +226,7 @@ void Play_Movie(const char* name, int x, int a, int b, int c, int d)
         FUN_004F4780(true, DAT_0088730C, 0);
     }
     DAT_00887640->vt_10();
-    DAT_0087F7E8.FlagToRedraw(2);
+    DAT_0087F7E8.FUN_004F42F0(2);
     DAT_0087F770->DoSomething();
 }
 
@@ -305,7 +298,7 @@ void FUN_005BF360(Obj_005BF360* arg)
 // (vector_add_item_free.h); as a member it accumulates into the wrong register.
 void FUN_005BF2B0(const char* name, bool flag)
 {
-    if (DAT_00A8B238 == 0) {
+    if (Session_00A8B238.GameMode == 0) {
         MovieHandle* movie = FUN_005C07D0(name, DAT_00887300, 0);
         if (movie != 0) {
             movie->vt_entry_18(DAT_008809D8 - 3, DAT_008809DC - 1);

@@ -9,6 +9,7 @@
 // reccmp annotations:
 
 #include "../_layout/techno_class.h"
+#include "../_layout/session_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/techno_type_class.h"
 #include "../core/vector_class_operations.h"
@@ -144,7 +145,7 @@ bool FUN_00730990(int group)
     for (int i = 0; i < count; ++i) {
         TechnoClass* object = DAT_00A8EC78.Items[i];
         if (object && !object->InLimbo) {
-            bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+            bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
             if (controlled && !object->IsSelected && object->Group == group - 1)
                 return false;
         }
@@ -160,7 +161,7 @@ int FUN_00730A10(int group)
     for (int i = 0; i < count; ++i) {
         TechnoClass* object = DAT_00A8EC78.Items[i];
         if (object && !object->InLimbo) {
-            bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+            bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
             if (controlled && object->Group == group - 1)
                 ++result;
         }
@@ -317,7 +318,7 @@ void FUN_00731060(int group)
     for (int i = 0; i < count; ++i) {
         TechnoClass* object = DAT_00A8EC78.Items[i];
         if (object) {
-            bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+            bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
             if (controlled) {
                 if (object->Group == group - 1) object->Group = -1;
                 if (object->IsSelected) object->Group = group - 1;
@@ -333,7 +334,7 @@ void FUN_007310D0(int group)
     for (int i = 0; i < count; ++i) {
         TechnoClass* object = DAT_00A8EC78.Items[i];
         if (object) {
-            bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+            bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
             if (controlled && object->Group == group - 1)
                 object->Group = -1;
         }
@@ -346,7 +347,7 @@ bool FUN_00731130(int group)
     for (int i = DAT_00A8EC78.Count - 1; i >= 0; --i) {
         TechnoClass* object = DAT_00A8EC78.Items[i];
         if (object && !object->InLimbo) {
-            bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+            bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
             if (controlled) {
                 if (object->Group == group - 1 && !object->IsSelected) return false;
                 if (object->Group != group - 1 && object->IsSelected) return false;
@@ -369,7 +370,7 @@ void FUN_007313A0(int group)
     for (int i = 0; i < DAT_00A8EC78.Count; ++i) {
         TechnoClass* object = DAT_00A8EC78.Items[i];
         if (object && !object->InLimbo && object->Group == group - 1) {
-            bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+            bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
             if (controlled && !object->IsSelected) {
                 object->vf_83();
                 DAT_00822CF2 = false;
@@ -393,7 +394,7 @@ void FUN_007314C0(int group)
     for (int i = 0; i < DAT_00A8EC78.Count; ++i) {
         TechnoClass* object = DAT_00A8EC78.Items[i];
         if (object && !object->InLimbo && object->Group == group - 1) {
-            bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+            bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
             if (controlled && !object->IsSelected) {
                 object->vf_83();
                 DAT_00822CF2 = false;
@@ -446,7 +447,7 @@ void __cdecl FUN_007315A0()
 // FUNCTION: GAMEMD 0x731840
 void FUN_00731840(int data)
 {
-    if (DAT_00A8B238 != 0 && !(*DAT_00A8B230 & 0x400) && RulesInstance->unknown_14B5 && RulesInstance->unknown_14BB) {
+    if (Session_00A8B238.GameMode != 0 && !(*DAT_00A8B230 & 0x400) && RulesInstance->unknown_14B5 && RulesInstance->unknown_14BB) {
         EventClass event(DAT_00A83D4C->ArrayIndex, 3, data);
         if (DAT_00A802C8.Count < 128) {
             DAT_00A802C8.List[DAT_00A802C8.Head] = event;
@@ -464,7 +465,7 @@ void __cdecl FUN_007318F0()
         reinterpret_cast<HouseClass*>(DAT_00A8ECB8.Items[0]->vf_15()) != DAT_00A83D4C &&
         reinterpret_cast<HouseClass*>(DAT_00A8ECB8.Items[0]->vf_15())->IsHumanPlayer) {
         int id = DAT_00A8ECB8.Items[0]->vf_14();
-        if (DAT_00A8B238 && !(*DAT_00A8B230 & 0x400) && RulesInstance->unknown_14B5 && RulesInstance->unknown_14BB) {
+        if (Session_00A8B238.GameMode && !(*DAT_00A8B230 & 0x400) && RulesInstance->unknown_14B5 && RulesInstance->unknown_14BB) {
             EventClass event(DAT_00A83D4C->ArrayIndex, 3, id);
             if (DAT_00A802C8.Count < 128) {
                 DAT_00A802C8.List[DAT_00A802C8.Head] = event;
@@ -784,7 +785,7 @@ void FUN_00732280(bool clear)
 int FUN_00732580(TechnoClass* object)
 {
     if (object && object->IsAlive) {
-        bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+        bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
         if (controlled) return 1;
     }
     return 0;
@@ -827,7 +828,7 @@ void FUN_00732600(const char* text)
 int FUN_00732770(TechnoClass* object, const char* text)
 {
     if (object && object->IsAlive) {
-        bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+        bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
         if (controlled && object->FUN_005F3E50(text)) return 1;
     }
     return 0;
@@ -1055,7 +1056,7 @@ void __cdecl FUN_007331B0()
             if (object && object->Flags.IsTechno) {
                 TechnoClass* techno = static_cast<TechnoClass*>(object);
                 if (techno->IsAlive) {
-                    bool controlled = DAT_00A8B238 == 0 ? techno->Owner->IsInPlayerControl : techno->Owner->IsControlledByCurrentPlayer();
+                    bool controlled = Session_00A8B238.GameMode == 0 ? techno->Owner->IsInPlayerControl : techno->Owner->IsControlledByCurrentPlayer();
                     if (controlled && techno->vf_11() != 6) list->AddItem(techno);
                 }
             }
@@ -1124,7 +1125,7 @@ void FUN_00733380(bool clear)
 int FUN_007335F0(TechnoClass* object)
 {
     if (object && object->IsAlive) {
-        bool controlled = DAT_00A8B238 == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
+        bool controlled = Session_00A8B238.GameMode == 0 ? object->Owner->IsInPlayerControl : object->Owner->IsControlledByCurrentPlayer();
         if (controlled && object->vf_11() != 6) return 1;
     }
     return 0;

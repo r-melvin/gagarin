@@ -122,11 +122,16 @@ struct SubzoneTrackingStruct
 
     // FUNCTION: GAMEMD 0x589BD0
     SubzoneTrackingStruct();
+    // Member-wise copy that leaves the two bytes at +0x1A alone (inlined into VectorClass<T>::Slot6, 0x588E10).
+    SubzoneTrackingStruct(const SubzoneTrackingStruct& o)
+        : unknown_00(o.unknown_00), unknown_18(o.unknown_18), unknown_1C(o.unknown_1C), unknown_20(o.unknown_20) {}
     bool operator==(const SubzoneTrackingStruct& o) const
     {
         return unknown_18 == o.unknown_18 && unknown_1C == o.unknown_1C;
     }
     bool operator!=(const SubzoneTrackingStruct& o) const { return !(*this == o); }
+    // FUNCTION: GAMEMD 0x58A500
+    SubzoneTrackingStruct& operator=(const SubzoneTrackingStruct& o);
 };
 GG_STATIC_ASSERT(offsetof(SubzoneTrackingStruct, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(SubzoneTrackingStruct, unknown_18) == 0x18);
@@ -380,7 +385,8 @@ public:
     DynamicVectorClass<Cell> ListA; // +0x00D4
     RectangleStruct MapRect;                         // +0x00EC [Map] Size (its address is the first argument of slot 28)
     RectangleStruct LocalRect;                       // +0x00FC [Map] LocalSize
-    char  unknown_10C[0x138 - 0x10C];                // +0x010C
+    char  unknown_10C[0x134 - 0x10C];                // +0x010C
+    int   unknown_134;                               // +0x0134 cleared by slot 24 0x565BC0
     VectorClass<CellClass*> Owned; // +0x0138
     int unknown_148; // +0x0148
     int unknown_14C; // +0x014C
@@ -401,6 +407,7 @@ GG_STATIC_ASSERT(offsetof(MapClass, Rings) == 0x8C);
 GG_STATIC_ASSERT(offsetof(MapClass, ListA) == 0xD4);
 GG_STATIC_ASSERT(offsetof(MapClass, MapRect) == 0xEC);
 GG_STATIC_ASSERT(offsetof(MapClass, LocalRect) == 0xFC);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_134) == 0x134);
 GG_STATIC_ASSERT(offsetof(MapClass, Owned) == 0x138);
 GG_STATIC_ASSERT(offsetof(MapClass, unknown_148) == 0x148);
 GG_STATIC_ASSERT(offsetof(MapClass, unknown_14C) == 0x14C);

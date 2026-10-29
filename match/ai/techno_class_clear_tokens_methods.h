@@ -77,8 +77,7 @@ struct Owner_006386E0
 };
 GG_STATIC_ASSERT(offsetof(Owner_006386E0, At_21C) == 0x21C);
 
-// GLOBAL: GAMEMD 0xA83D4C -- the player's house.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 
 // The list object at 0xAC4C40 (retail loads its address as an immediate).
 struct List_006386E0

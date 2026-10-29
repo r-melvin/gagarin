@@ -10,15 +10,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "../platform/input_manager_class_methods.h"
 #include "ui_updated_methods.h"
+#include "../_layout/map_0087f7e8.h"
 
-// The map at 0x87F7E8, seen only through the redraw flag call used here.
-struct Map_006586D0
-{
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc)
-    void FlagToRedraw(int mode);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern Map_006586D0 DAT_0087F7E8;
 
 // The session block at 0xA8B230, seen only through the byte read here.
 struct Session_00A8B230
@@ -65,5 +58,5 @@ void FUN_006586D0()
     }
     DAT_0087F770->DoSomething();
     DAT_00A8ED9C = DAT_00A8B230->unknown_35A2;
-    DAT_0087F7E8.FlagToRedraw(2);
+    DAT_0087F7E8.FUN_004F42F0(2);
 }

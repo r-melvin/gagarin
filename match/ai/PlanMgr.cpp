@@ -484,8 +484,7 @@ void FUN_00652230(EventClass* event);
 extern bool DAT_00AC4CF6;
 // GLOBAL: GAMEMD 0xAC4B84 -- 24 per-house pending-request counters.
 extern int DAT_00AC4B84[24];
-// GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 
 
 // The rules object (RulesInstance, 0x8871E0).

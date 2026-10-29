@@ -9,6 +9,7 @@
 #include "../_layout/cell.h"
 #include "../_layout/coord_struct.h"
 #include "vector_class_operations.h"
+#include "../_layout/map_0087f7e8.h"
 
 class CellClass;
 
@@ -19,14 +20,6 @@ struct WaveCell_00480A30
     CoordStruct* FUN_00480A30(CoordStruct* out);
 };
 
-// The map (GLOBAL 0x87F7E8): 0x5657A0 returns the cell at a cell coordinate.
-struct WaveMap_0087F7E8
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    CellClass* FUN_005657A0(const CellStruct* cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern WaveMap_0087F7E8 DAT_0087F7E8_WaveR15;
 
 class WaveView_R15 : public WaveClass
 {
@@ -45,7 +38,7 @@ public:
 // Add the cell under a cell coordinate to the wave's cell list, once.
 void WaveView_R15::AddCell(const CellStruct* cell)
 {
-    CellClass* c = DAT_0087F7E8_WaveR15.FUN_005657A0(cell);
+    CellClass* c = DAT_0087F7E8.FUN_005657A0(cell);
     if (unknown_1F0.FindItemIndex(c) == -1) {
         unknown_1F0.AddItem(c);
     }

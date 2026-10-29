@@ -12,6 +12,7 @@
 #include "../core/rules_class.h"
 #include "../ui/tactical_class_coords_to_client_methods.h"
 #include "../ui/tactical_class_position_methods.h"
+#include "../_layout/map_0087f7e8.h"
 
 // LIBRARY: GAMEMD 0x7C5F00 (decl; reloc) -- __ftol.
 // FUNCTION: GAMEMD 0x4CAD80 (decl; reloc) -- the double-to-double math helper
@@ -31,8 +32,6 @@ LightVector* FUN_005AFB80(LightVector* result, const Matrix3D* matrix,
 
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario object; a flag word is read at its start.
 extern int* DAT_00A8B230;
-// GLOBAL: GAMEMD 0x87F7E8 -- the map.
-extern MapView_5865E0 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x887314 -- DSurface::Temp.
 extern Surface* DAT_00887314;
 // GLOBAL: GAMEMD 0x887324 -- the tactical object.

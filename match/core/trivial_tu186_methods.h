@@ -7,14 +7,13 @@
 #define GG_MATCH_CORE_TRIVIAL_TU186_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
 
 struct Obj_00646CE0;
 struct Obj_00646D00;
 
-// GLOBAL: GAMEMD 0xA8B238
-extern int DAT_00A8B238;
 // The canonical manager owns the instance at0xA8E9C0.
 #include "../network/transport/connman_class.h"
 

@@ -33,8 +33,7 @@ extern int DAT_00B07784;
 
 // Canonical Scenario layout: 0x69BAB0 reads its byte at +0x35A2.
 #include "../core/scenario_class_methods.h"
-// GLOBAL: GAMEMD 0xA8B230
-extern ScenarioClass* DAT_00A8B230;
+#include "../_layout/scenario_ptr_00a8b230.h"
 
 // FUNCTION: GAMEMD 0x684240 (decl; reloc) — no arguments, no cleanup.
 void __cdecl FUN_00684240(void);

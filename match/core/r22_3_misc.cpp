@@ -5,8 +5,8 @@
 // Address index: 0x5D9060 0x661640
 
 #include "../network/transport/udp_interface_class.h"
+#include "../_layout/session_class.h"
 
-extern int DAT_00A8B238;
 
 struct Obj_005D9060 {
     int f00, f04, f08, f0c;
@@ -30,7 +30,7 @@ short Obj_005D9060::FUN_005D9060(int step)
         if (Counter > 0xffff) {
             Counter = 0x800;
         }
-        if (Interface_00887628 && DAT_00A8B238 == 4) {
+        if (Interface_00887628 && Session_00A8B238.GameMode == 4) {
             if (!static_cast<UDPInterfaceClass*>(Interface_00887628)->OpenSpareSocket(id)) {
                 continue;
             }

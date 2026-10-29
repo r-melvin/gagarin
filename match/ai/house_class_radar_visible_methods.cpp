@@ -10,22 +10,13 @@
 #include "../_layout/house_type_class.h"
 #include "../_layout/techno_type_class.h"
 #include "../core/vector_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
 extern HouseClass* CurrentPlayer;
 // GLOBAL: GAMEMD 0xA8EC78
 extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
 
-// The map instance (0x87F7E8) as the two calls here see it.
-struct MapView_005092F0
-{
-    // FUNCTION: GAMEMD 0x5673A0 (decl; reloc)
-    void FUN_005673A0(CoordStruct* where, int sight, HouseClass* house, int a, int b, int c, int d, int e);
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc)
-    void FUN_004F42F0(int mode);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapView_005092F0 MapInstance_0087F7E8;
 
 // FUNCTION: GAMEMD 0x5092F0
 // Mark the radar as visible to `house`. When that is the local player, every live,
@@ -39,9 +30,9 @@ void HouseClass::FUN_005092F0(HouseClass* house)
             TechnoClass* techno = DAT_00A8EC78.Items[i];
             if (techno != 0 && !techno->InLimbo && techno->Owner == this) {
                 CoordStruct where = techno->Location;
-                MapInstance_0087F7E8.FUN_005673A0(&where, techno->vf_33()->Sight, this, 0, 0, 0, 1, 1);
+                DAT_0087F7E8.FUN_005673A0(&where, techno->vf_33()->Sight, this, 0, 0, 0, 1, 1);
             }
         }
-        MapInstance_0087F7E8.FUN_004F42F0(2);
+        DAT_0087F7E8.FUN_004F42F0(2);
     }
 }

@@ -33,6 +33,6 @@ bool FootClass::MoveToWeed(int radius)
     if (cell.X == here.X && cell.Y == here.Y)
         return true;
 
-    this->SetDestination(DAT_0087F7E8.GetCellAt(cell), true);
+    this->SetDestination(DAT_0087F7E8.FUN_005657A0(&cell), true);
     return false;
 }

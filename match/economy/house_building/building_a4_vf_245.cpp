@@ -6,6 +6,7 @@
 //   class changes the owner, the new house's lists take it. The original name is not confirmed here.
 
 #include "building_a4_views.h"
+#include "../../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x448260
 bool BA4Building::vf_245(BA4House* newOwner, bool announce)
@@ -81,7 +82,7 @@ bool BA4Building::vf_245(BA4House* newOwner, bool announce)
                 }
             }
         }
-        if (DAT_00A8B238 == 4 && !vf_33()->unknown_C9F) {
+        if (Session_00A8B238.GameMode == 4 && !vf_33()->unknown_C9F) {
             newOwner->unknown_4368.FUN_00749020(Type->unknown_DF8);
         }
 
@@ -316,7 +317,7 @@ bool BA4Building::vf_245(BA4House* newOwner, bool announce)
                 held.Items[i]->Object->unknown_418 = 1;
             }
         }
-        if (DAT_00A8B238 && !newOwner->FUN_0050B730() && unknown_14C != newOwner && !unknown_14C->unknown_34->unknown_1A6) {
+        if (Session_00A8B238.GameMode && !newOwner->FUN_0050B730() && unknown_14C != newOwner && !unknown_14C->unknown_34->unknown_1A6) {
             while (unknown_702 > 0) {
                 int r = Upgrades[unknown_702]->vf_46(Owner, 1);
                 Owner->FUN_004F9950(r);

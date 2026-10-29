@@ -17,8 +17,6 @@ extern int DAT_00A8EB50;
 // GLOBAL: GAMEMD 0x87F8E4 -- the map rectangle.
 extern Rect_4i DAT_0087F8E4;
 
-// GLOBAL: GAMEMD 0x87F7E8
-extern Gbl_0087F7E8 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x006E21E0
 // Set the map rectangle from the action, then rebuild the map around it: refresh

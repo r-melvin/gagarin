@@ -30,6 +30,7 @@
 #define GG_MATCH_MOVEMENT_FLY_LOCOMOTION_PICK_TARGET_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
@@ -210,8 +211,6 @@ GG_STATIC_ASSERT(offsetof(TechnoVtbl_004CFE80, At_2C) == 0x2C &&
 extern Techno_004CFE80** ObjectArray_00A8EC7C;
 // GLOBAL: GAMEMD 0xA8EC88 — its count.
 extern int ObjectCount_00A8EC88;
-// GLOBAL: GAMEMD 0xA8B238 — the mode gate the whole body keys off.
-extern int Mode_00A8B238;
 
 struct RandomClass_004CFE80
 {

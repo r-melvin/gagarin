@@ -9,6 +9,7 @@
 // Address index: 0x5DAF20 0x69E070 0x5DA040 0x5DA080 0x5FA440 0x5FA470 0x660BB0 0x660C50 0x5BB260 0x5CB400 0x6ABD10 0x5FA2E0 0x5FA310 0x5F0010 0x5F0040
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "mathtbl_init_shapes.h"
 #include "../_rt/gg_static_assert.h"
 
@@ -239,8 +240,6 @@ public:
 extern Obj_005F16E0 DAT_00A8EA70;
 // GLOBAL: GAMEMD 0xA8D5F8
 extern unsigned char DAT_00A8D5F8;
-// GLOBAL: GAMEMD 0xA8B238
-extern int DAT_00A8B238;
 
 struct Req_005F0010
 {
@@ -266,7 +265,7 @@ bool Req_005F0010::FUN_005F0010()
 // Unless the flag bit is set and the mode is one, run the first helper; then the second.
 void __cdecl FUN_005F0040()
 {
-    if (!(DAT_00A8D5F8 & 2) && DAT_00A8B238 == 1) {
+    if (!(DAT_00A8D5F8 & 2) && Session_00A8B238.GameMode == 1) {
         DAT_00A8EA70.FUN_005F3170();
     }
     DAT_00A8EA70.FUN_005F1B70();

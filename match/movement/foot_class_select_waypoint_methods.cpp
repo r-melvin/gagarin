@@ -8,8 +8,7 @@
 #include "../_layout/house_class.h"
 #include "waypoint_path_class_methods.h"
 
-// GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 
 // FUNCTION: GAMEMD 0x4DC810
 // Selects waypoint `waypointIndex` of the local player's planning path `pathIdx` and

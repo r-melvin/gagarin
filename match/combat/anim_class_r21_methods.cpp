@@ -9,21 +9,8 @@
 #include "../_layout/anim_type_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/obj_004a1d30.h"
+#include "../_layout/map_0087f7e8.h"
 
-// The display/map instance at 0x87F7E8, as these bodies call it (ECX = instance).
-struct MapView_00425530
-{
-    // FUNCTION: GAMEMD 0x565730 (decl; reloc) -- the cell under a coordinate.
-    CellClass* FUN_00565730(CoordStruct* coord);
-    // FUNCTION: GAMEMD 0x578080 (decl; reloc) -- the ground height at a coordinate.
-    int FUN_00578080(CoordStruct* coord);
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the cell at a cell coordinate.
-    CellClass* FUN_005657A0(CellStruct* cell);
-    // FUNCTION: GAMEMD 0x4A9770 (decl; reloc) -- DisplayClass::Remove.
-    void FUN_004A9770(ObjectClass* object);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapView_00425530 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x89A1C0
 extern int DAT_0089A1C0;
 // An overlay type record, as far as this body reads it.

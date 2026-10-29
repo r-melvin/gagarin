@@ -196,6 +196,7 @@ public:
     void ReduceShroudCounter();
     bool IsShrouded() const;
     bool FUN_004879B0() const;
+    bool FUN_006B2520();                                  // GAMEMD 0x6B2520
     int GetContainedTiberiumValue() const;                // GAMEMD 0x485020
     void IncreaseShroudCounter();                         // GAMEMD 0x487690
     void SetWallOwner();

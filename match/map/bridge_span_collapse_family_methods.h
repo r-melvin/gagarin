@@ -116,6 +116,11 @@ struct BridgeSpanWalker
     void Collapse_005727E0(BridgeCellStruct* cell, unsigned facing);
     void Collapse_00572DA0(BridgeCellStruct* cell, unsigned facing);
     void Collapse_00573170(BridgeCellStruct* cell, unsigned facing);
+    // The four short breakers: one step along `facing`, then the same overlay bump and tile-set classification.
+    void Break_0056ED40(BridgeCellStruct* cell, unsigned facing);
+    void Break_0056EE40(BridgeCellStruct* cell, unsigned facing);
+    void Break_00572230(BridgeCellStruct* cell, unsigned facing);
+    void Break_00572330(BridgeCellStruct* cell, unsigned facing);
 };
 
 // Per-instance tile-set globals. Each retail body reads its own three, so each

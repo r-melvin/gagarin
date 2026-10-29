@@ -155,9 +155,6 @@ extern int DAT_00B04DB8;
 // The held interface pointer, raising E_POINTER when there is none.
 #include "../_layout/obj_00683030.h"
 
-#include "../_layout/map_00578ad0.h"
-// GLOBAL: GAMEMD 0x87F7E8 -- the map instance.
-extern Map_00578AD0 DAT_0087F7E8;
 #include "../_layout/obj_006a3e30.h"
 
 // The multimedia timer in sixteenths of a unit.
@@ -185,6 +182,7 @@ unsigned int __cdecl FUN_007CA405(const unsigned short* text);
 #include "../_layout/rect_007bcf90.h"
 #include "../_layout/surface_007bcf90.h"
 #include "../_layout/obj_007bcf90.h"
+#include "../_layout/map_0087f7e8.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

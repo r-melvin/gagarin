@@ -13,6 +13,7 @@
 // against two explicit attempts, goto against flag for the unit placement.
 
 #include "building_a3_views.h"
+#include "../../_layout/session_class.h"
 
 // The sound / animation name slot of a building type: nothing is played for a null or empty name.
 // FUN_00451890 is reached through BuildingA3View::FUN_00451890(name, id, a, b, c).
@@ -284,7 +285,7 @@ void BuildingA3View::vf_311(char flag)
     }
 
     // The EVA announcement of a super weapon building.
-    if (!Owner->FUN_0050B6F0() && !Owner->FUN_004F9A50(DAT_00A83D4C) && DAT_00A8B538 == 0 && DAT_00A8B238
+    if (!Owner->FUN_0050B6F0() && !Owner->FUN_004F9A50(DAT_00A83D4C) && DAT_00A8B538 == 0 && Session_00A8B238.GameMode
         && (Type->unknown_16F0 == -1 || DAT_00A83CBC[Type->unknown_16F0]->unknown_28->unknown_C8 == 0
             || Owner->unknown_5550.FUN_0049FAE0(DAT_00A83CBC[Type->unknown_16F0]->unknown_28->unknown_C8->unknown_DF8) != 0)) {
         const char* eva;

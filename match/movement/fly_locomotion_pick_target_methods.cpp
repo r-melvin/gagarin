@@ -7,6 +7,7 @@
 //   The flyer's target pick. Bytes diffed against the user's retail
 //   gamemd.exe v1.001.
 #include "fly_locomotion_pick_target_methods.h"
+#include "../_layout/session_class.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // VTABLE: GAMEMD 0x7E192C — the base vector's vtable.
@@ -59,7 +60,7 @@ void __stdcall FlyLocoPick::PickTarget()
     DynVec_004CFE80 preferred(0, 0);
 
     char owned;
-    if (Mode_00A8B238 != 0 &&
+    if (Session_00A8B238.GameMode != 0 &&
         this->LinkedTo->Owner->At_5600 != -1 &&
         this->LinkedTo->Owner->FUN_0050B730() == 0) {
         owned = 1;
@@ -102,7 +103,7 @@ void __stdcall FlyLocoPick::PickTarget()
             continue;
         }
 
-        if (Mode_00A8B238 != 0 &&
+        if (Session_00A8B238.GameMode != 0 &&
             this->LinkedTo->Owner->FUN_0050B730() != 0 &&
             candidate->Owner->At_34->At_1A6 == 0 &&
             ((candidate->*candidate->Vtbl->At_2C)() == 1 ||

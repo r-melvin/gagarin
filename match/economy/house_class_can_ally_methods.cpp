@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x501540.
 
 #include "house_class_can_ally_methods.h"
+#include "../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x501540
 //
@@ -15,7 +16,7 @@ bool House_00501540::CanAlly(House_00501540* other)
     if (IsAlliedWith(other)) {
         return false;
     }
-    if (other->Type->ArrayIndex2 == DAT_00818164.FindIndex() && DAT_00A8B238 != 0) {
+    if (other->Type->ArrayIndex2 == DAT_00818164.FindIndex() && Session_00A8B238.GameMode != 0) {
         return false;
     }
     if (DAT_00A8E7AC != 0) {

@@ -9,6 +9,7 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <windows.h>
+#include "../_layout/session_class.h"
 #include "game_options_class_methods.h"
 #include "tooltip_manager_shared.h"
 #include "../network/event_queue.h"
@@ -38,12 +39,9 @@ TuningCoordInit DAT_008B3EF8(128, 128, 0);
 extern GameOptionsClass DAT_00A8EB60;
 // GLOBAL: GAMEMD 0xA8E9A0
 extern char DAT_00A8E9A0;
-// GLOBAL: GAMEMD 0xA8B238 -- the session game mode.
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA8EDA0
 extern int DAT_00A8EDA0;
-// GLOBAL: GAMEMD 0xA83D4C -- the player's house.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0x887368 -- the tool-tip manager.
 extern ToolTipManager* DAT_00887368;
 
@@ -55,7 +53,6 @@ extern EventQueue<128> DAT_00A802C8;
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map; 0x4AE450 applies a new detail level.
 #include "../_layout/map_0087f7e8.h"
-extern Map_0087F7E8 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x622650 (decl; reloc)
 void* UI_BeginDialog(unsigned short id, int (__stdcall* proc)(void*, unsigned, unsigned, long), int arg);
@@ -159,7 +156,7 @@ void Obj_004E1D00::FUN_004E1DE0()
     if (item) {
         int speed = 6 - SendMessageA(item, 0x400, 0, 0);
         if (DAT_00A8EB60.GameSpeed != speed) {
-            if (DAT_00A8E9A0 == 1 && DAT_00A8B238 != 0 && DAT_00A8B238 != 5) {
+            if (DAT_00A8E9A0 == 1 && Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5) {
                 OutList_Add(EventClass(DAT_00A83D4C->ArrayIndex, 0xD, speed));
             } else {
                 DAT_00A8EB60.GameSpeed = speed;
@@ -263,7 +260,7 @@ int __stdcall FUN_004E1FE0(void* hwnd, unsigned message, unsigned wParam, long l
         break;
     case 0x497: {
         HWND item = GetDlgItem(window, 0x529);
-        if (DAT_00A8B238 == 0 && !DAT_00A8EDDC) {
+        if (Session_00A8B238.GameMode == 0 && !DAT_00A8EDDC) {
             ShowWindow(item, SW_HIDE);
             item = GetDlgItem(window, 0x714);
             ShowWindow(item, SW_HIDE);

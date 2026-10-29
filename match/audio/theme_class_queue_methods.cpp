@@ -4,6 +4,7 @@
 //   (names from the YRpp method map).
 
 #include "theme_class_queue_methods.h"
+#include "../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x720B20
 //
@@ -66,7 +67,7 @@ bool ThemeClass::IsAvailable(int theme) const
     if (CurrentPlayer_00A83D4C != 0 && control->Side != -1
         && CurrentPlayer_00A83D4C->Type->SideIndex != control->Side)
         return false;
-    if (GameMode_00A8B238 == 0
+    if (Session_00A8B238.GameMode == 0
         && ScenarioInstance_00A8B230->At_1254 < control->Scenario)
         return false;
     return true;

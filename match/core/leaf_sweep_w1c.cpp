@@ -8,6 +8,9 @@
 // Second sweep of small unowned leaves between 0x401000 and 0x540000: predicates,
 // copies and short forwarders. Ordered ascending by retail address.
 #include <windows.h>
+#include "../_layout/house_class.h"
+#include "../_layout/player_ptr_00a83d4c.h"
+#include "../_layout/session_class.h"
 #include <stddef.h>
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
@@ -319,15 +322,7 @@ void FUN_0053F630()
     DAT_00AA05A8 = 0;
 }
 
-struct Session_0053AE00
-{
-    char Pad_00[0x16054];
-    int  unknown_16054;
-};
-GG_STATIC_ASSERT(offsetof(Session_0053AE00, unknown_16054) == 0x16054);
 
-// GLOBAL: GAMEMD 0xA83D4C
-extern Session_0053AE00* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0x82809C
 extern char DAT_0082809C[];
 // GLOBAL: GAMEMD 0x828034
@@ -351,7 +346,7 @@ void FUN_0053AE00()
     wchar_t* text = FUN_00734E60(DAT_0082809C, 0, DAT_00828034, 0x463);
     int color = 3;
     if (DAT_00A83D4C)
-        color = DAT_00A83D4C->unknown_16054;
+        color = DAT_00A83D4C->ColorSchemeIndex;
     ((Printer_0053AE00*)DAT_00A8BC60)->Print(0, 0, text, color, 0x4046, 0x96, 0);
 }
 
@@ -365,7 +360,7 @@ void FUN_0053B410()
     wchar_t* text = FUN_00734E60(DAT_008280B8, 0, DAT_00828034, 0x53B);
     int color = 3;
     if (DAT_00A83D4C)
-        color = DAT_00A83D4C->unknown_16054;
+        color = DAT_00A83D4C->ColorSchemeIndex;
     ((Printer_0053AE00*)DAT_00A8BC60)->Print(0, 0, text, color, 0x4046, 0x96, 0);
 }
 
@@ -498,8 +493,6 @@ struct Slot_004E4820
 #pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(Slot_004E4820, unknown_6B) == 0x6B);
 
-// GLOBAL: GAMEMD 0xA8B238
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA8DA90
 extern Slot_004E4820* DAT_00A8DA90[8];
 // GLOBAL: GAMEMD 0xAC11B4
@@ -529,7 +522,7 @@ void __fastcall FUN_004E4820(HWND self)
     for (int i = 0; i < 8; i++)
     {
         int id = ControlId_004E4820(i);
-        if ((DAT_00A8B238 == 3 || DAT_00A8B238 == 4)
+        if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)
             && (DAT_00A8DA90[i] == DAT_00AC11B4 || DAT_00A8DA90[i]->unknown_6B == -1))
             FUN_004E4770(self, id);
         else
@@ -560,7 +553,7 @@ void __fastcall FUN_004E5310(HWND self)
     for (int i = 0; i < 8; i++)
     {
         int id = ControlId_004E5310(i);
-        if ((DAT_00A8B238 == 3 || DAT_00A8B238 == 4)
+        if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)
             && (DAT_00A8DA90[i] == DAT_00AC11B4 || DAT_00A8DA90[i]->unknown_6B == -1))
             FUN_004E5260(self, id);
         else
@@ -591,7 +584,7 @@ void __fastcall FUN_004E5D60(HWND self)
     for (int i = 0; i < 8; i++)
     {
         int id = ControlId_004E5D60(i);
-        if ((DAT_00A8B238 == 3 || DAT_00A8B238 == 4)
+        if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)
             && (DAT_00A8DA90[i] == DAT_00AC11B4 || DAT_00A8DA90[i]->unknown_6B == -1))
             FUN_004E5CB0(self, id);
         else

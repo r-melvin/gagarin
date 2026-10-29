@@ -117,12 +117,8 @@ struct MessageList_004F4480
 // GLOBAL: GAMEMD 0xA8BC60 — MessageListClass::Instance.
 extern MessageList_004F4480 DAT_00A8BC60;
 
-// The map instance at 0x87F7E8; only its redraw-counter bump at 0x578AC0 is
-// reached, so the type takes that function's class name and the call binds to
-// it.
-#include "../map/screenredraw_00578ac0.h"
-// GLOBAL: GAMEMD 0x87F7E8
-extern ScreenRedraw_00578AC0 DAT_0087F7E8;
+// The map instance at 0x87F7E8 (only its redraw-counter bump at 0x578AC0 is reached).
+#include "../_layout/map_0087f7e8.h"
 
 // GScreenClass — the redraw flag and two of its own virtuals.
 struct GScreenVtbl_004F4480;

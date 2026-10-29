@@ -359,6 +359,7 @@ extern const char STR_00837864[];
 extern const char STR_00837828[];
 
 #include "command_packet_layouts.h"
+extern int DAT_00A8B238;
 
 // GLOBAL: GAMEMD 0xB779C4
 extern int DAT_00B779C4;

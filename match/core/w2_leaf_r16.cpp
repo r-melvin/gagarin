@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include <windows.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/map_0087f7e8.h"
 
 struct Obj_00558860
 {
@@ -157,12 +158,6 @@ struct StripSlot_006A76F0
 };
 GG_STATIC_ASSERT(sizeof(StripSlot_006A76F0) == 0x60);
 
-// The tactical map object: only the redraw request at 0x4F42F0 is called.
-struct Map_006A76F0
-{
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc)
-    void FUN_004F42F0(int flag);
-};
 
 // GLOBAL: GAMEMD 0xB07C48
 extern StripSlot_006A76F0 DAT_00B07C48[];
@@ -170,8 +165,6 @@ extern StripSlot_006A76F0 DAT_00B07C48[];
 extern int DAT_00A8ED84;
 // GLOBAL: GAMEMD 0x884B8F
 extern unsigned char DAT_00884B8F;
-// GLOBAL: GAMEMD 0x87F7E8
-extern Map_006A76F0 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x6A76F0
 // Restart a strip slot's animation aligned to the next 10-frame boundary and request a redraw.

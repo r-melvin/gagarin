@@ -19,6 +19,7 @@
 #include "../_layout/matrix3d.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/aircraft_tracker_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 // The eight one-cell steps, indexed by facing.
 struct StepCell_004DB260
@@ -97,16 +98,6 @@ extern Scenario_004D4200* DAT_00A8B230;
 // FUNCTION: GAMEMD 0x6EC300 (declaration) -- whether the linked team accepts the move.
 char FUN_006EC300(int linked);
 
-class MapView_5785F0
-{
-public:
-    // FUNCTION: GAMEMD 0x5785F0 (declaration) -- whether a coordinate is in the usable area.
-    bool FUN_005785F0(const CoordStruct& coord);
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the cell at a coordinate.
-    CellClass* FUN_005657A0(const CellStruct* cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapView_5785F0 DAT_0087F7E8;
 
 // The building type seen through its flag at +0x16A9.
 struct BuildingTypeView_4DB9B0

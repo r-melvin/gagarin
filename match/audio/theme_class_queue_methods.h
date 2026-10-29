@@ -20,6 +20,7 @@
 #define GG_MATCH_AUDIO_THEME_CLASS_QUEUE_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // One registered score's metadata (see theme_class_methods.h for the full
@@ -122,8 +123,6 @@ extern bool ScoresPresent_00A8EC74;
 extern bool DAT_00A8ED64;
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
 extern House_00721140* CurrentPlayer_00A83D4C;
-// GLOBAL: GAMEMD 0xA8B238 — SessionClass::Instance.GameMode (Campaign == 0).
-extern int GameMode_00A8B238;
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
 extern Scenario_00721140* ScenarioInstance_00A8B230;
 

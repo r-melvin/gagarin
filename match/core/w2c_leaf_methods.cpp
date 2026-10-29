@@ -110,6 +110,7 @@ void Obj_005B4400::FUN_005B4400()
 }
 
 #include "../_layout/clock_006c8c40.h"
+#include "../_layout/map_0087f7e8.h"
 
 struct Obj_00690FC0 {
     unsigned char unknown_00[0x0C];
@@ -453,12 +454,6 @@ GG_STATIC_ASSERT(sizeof(Rec_00B07E80) == 0x38);
 // GLOBAL: GAMEMD 0xB07E80
 extern Rec_00B07E80 DAT_00B07E80[];
 
-struct Obj_0087F7E8 {
-    void FUN_004F4450(Rec_00B07E80* rec);
-    void FUN_004F4410(Rec_00B07E80* rec);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern Obj_0087F7E8 DAT_0087F7E8;
 
 struct Obj_006A83E0 {
     unsigned char unknown_00[0x38];

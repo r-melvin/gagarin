@@ -8,19 +8,11 @@
 #include "../_layout/building_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 // GLOBAL: GAMEMD 0xA8E7AC -- nonzero while the scenario is being set up.
 extern int ScenarioInit_00A8E7AC;
 
-// The map object (MapClass::Instance at 0x87F7E8), as far as the call below.
-struct MapObj_0044F7A0
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc)
-    void FUN_004F42F0(int a);
-};
-// GLOBAL: GAMEMD 0x87F7E8 -- MapClass::Instance (an object).
-extern MapObj_0044F7A0 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x44F7A0
 // Recompute the owner's radar-visibility mask as the OR of the display masks of

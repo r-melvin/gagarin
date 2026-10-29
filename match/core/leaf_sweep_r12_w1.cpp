@@ -8,6 +8,8 @@
 // Round 12 small unowned leaves between 0x402000 and 0x540000. Ordered ascending by
 // retail address.
 #include <windows.h>
+#include "../_layout/house_class.h"
+#include "../_layout/player_ptr_00a83d4c.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -1035,12 +1037,6 @@ void Chain_00454D70::PokeAll()
 
 // ---------------------------------------------------------------------------
 // 0x486800: bit-mask test.
-struct Cur_00486800
-{
-    char Pad_00[0x30];
-    int  Index;     // +0x30
-};
-extern Cur_00486800* DAT_00A83D4C;
 struct Mask_00486800
 {
     char  Pad_00[0x78];
@@ -1056,7 +1052,7 @@ bool Mask_00486800::Allowed(int bit)
 {
     if (DAT_00A83D4C && (Mask & (1 << bit)))
     {
-        int cur = DAT_00A83D4C->Index;
+        int cur = DAT_00A83D4C->ArrayIndex;
         if (bit == cur)
             return true;
         if (Counts[cur] <= 0)

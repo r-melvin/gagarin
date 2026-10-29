@@ -7,6 +7,7 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/house_class.h"
+#include "../_layout/session_class.h"
 #include "../_layout/techno_class.h"
 #include "../core/vector_class.h"
 
@@ -16,8 +17,6 @@ extern HouseClass* CurrentPlayer;
 extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
-// GLOBAL: GAMEMD 0xA8B238 -- session game mode (campaign == 0).
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA8E7AC -- nonzero suppresses the EVA line.
 extern int DAT_00A8E7AC;
 
@@ -27,7 +26,7 @@ void FUN_00752700(const char* name, int a, int b);
 // HouseClass::IsControlledByCurrentPlayer (0x50B6F0) as retail expands it inline here.
 static inline bool ControlledByCurrentPlayer(HouseClass* house)
 {
-    if (DAT_00A8B238 == 0) {
+    if (Session_00A8B238.GameMode == 0) {
         return house->IsHumanPlayer || house->IsInPlayerControl;
     }
     return house == CurrentPlayer;

@@ -6,6 +6,7 @@
 //   /Ob2: the scalar deleting destructor carries the destructor body inline.
 
 #include <new.h>
+#include "../_layout/session_class.h"
 #include "../_layout/task_force_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../core/vector_class_operations.h"
@@ -15,8 +16,6 @@ extern DynamicVectorClass<TaskForceClass*> DAT_00A8E8D0;
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;
 
-// GLOBAL: GAMEMD 0xA8B238 -- the first dword of the session object, tested for being set.
-extern int DAT_00A8B238;
 
 // A techno type, as far as the dword the task force scan reads.
 struct TaskForceTypeView
@@ -46,7 +45,7 @@ int TaskForceClass::FUN_006E8780() const
         int value = reinterpret_cast<TaskForceTypeView*>(Entries[i].Type)->unknown_634;
         if (value > result) {
             result = value;
-        } else if (value == -1 && DAT_00A8B238) {
+        } else if (value == -1 && Session_00A8B238.GameMode) {
             result = 11;
         }
     }

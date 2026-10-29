@@ -16,6 +16,7 @@
 #define GG_MATCH_AI_TEAM_TYPE_CLASS_CREATE_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/house_class.h"
 #include "../_layout/team_class.h"
@@ -32,7 +33,5 @@ void* __cdecl operator new(unsigned int size);
 
 // GLOBAL: GAMEMD 0xA8E7AC — nonzero while the scenario is being set up.
 extern int ScenarioInit_00A8E7AC;
-// GLOBAL: GAMEMD 0xA8B238 — SessionClass::Instance.GameMode (Campaign == 0).
-extern int GameMode_00A8B238;
 
 #endif  // GG_MATCH_AI_TEAM_TYPE_CLASS_CREATE_METHODS_H

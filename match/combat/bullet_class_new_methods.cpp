@@ -79,10 +79,8 @@ GG_STATIC_ASSERT(sizeof(DAT_007ED3D0[0]) == 4);
 extern int DAT_007F4890[32];
 // GLOBAL: GAMEMD 0x7F7C90 -- IID requested by the native spawn path.
 extern const IID DAT_007F7C90;
-// GLOBAL: GAMEMD 0xA8B230
-extern ScenarioClass* DAT_00A8B230;
-// GLOBAL: GAMEMD 0xA83D4C -- native reads House color-scheme index at16054.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/scenario_ptr_00a8b230.h"
+#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0x89DE18
 extern DynamicVectorClass<BulletClass*> ScalableBullets;
 // GLOBAL: GAMEMD 0xB0F5B8 -- actual existing storage is AbstractClass* vector.

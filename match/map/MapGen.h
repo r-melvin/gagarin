@@ -78,6 +78,7 @@ struct Cell_005A7250;
 struct CellStruct_005A7250;
 
 #include "../_layout/gbl_0087f7e8.h"
+#include "../_layout/session_class.h"
 
 typedef DynamicVectorClass<Cell> Vec_Cell;
 
@@ -151,13 +152,6 @@ struct Gbl_00A8B230
 };
 GG_STATIC_ASSERT(offsetof(Gbl_00A8B230, unknown_3598) == 0x3598);
 
-// The session object at 0xA8B238: only the entry point called from here.
-struct Gbl_00A8B238
-{
-    // FUNCTION: GAMEMD 0x69AE90 (declaration)
-    void FUN_0069AE90(int a1);
-};
-
 // The audio object at 0xAC4F58: only the entry point called from here.
 struct Gbl_00AC4F58
 {
@@ -218,8 +212,6 @@ extern char DAT_0082BA2C[];
 extern char DAT_0082BA48[];
 // GLOBAL: GAMEMD 0x886B88
 extern Gbl_00886B88 DAT_00886B88;
-// GLOBAL: GAMEMD 0xA8B238
-extern Gbl_00A8B238 DAT_00A8B238;
 // GLOBAL: GAMEMD 0xAC4F58
 extern Gbl_00AC4F58 DAT_00AC4F58;
 // GLOBAL: GAMEMD 0xABDFB8
@@ -234,8 +226,6 @@ extern int DAT_0087F8DC;
 extern double DAT_007ED7F0;
 // GLOBAL: GAMEMD 0x7ED7F8
 extern double DAT_007ED7F8;
-// GLOBAL: GAMEMD 0x87F7E8 -- the map object.
-extern Gbl_0087F7E8 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x89C2DC
 extern int DAT_0089C2DC;
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.

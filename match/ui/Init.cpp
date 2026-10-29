@@ -50,6 +50,7 @@
 // and line pushed); the line numbers are the retail immediates.
 
 #include "../core/empty_function_family_methods.h"
+#include "../_layout/session_class.h"
 
 #include "../core/pair_vector_grow_sweep.h"
 
@@ -94,8 +95,6 @@ extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
 extern char DAT_00A8F5B4[];
 // GLOBAL: GAMEMD 0xA8F654 -- the shared wide text buffer of the team commands.
 extern wchar_t DAT_00A8F654[];
-// GLOBAL: GAMEMD 0xA8B238 -- session game mode.
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA8B8B4
 extern bool DAT_00A8B8B4;
 // GLOBAL: GAMEMD 0xA8B8B5
@@ -908,10 +907,10 @@ const wchar_t* TauntCommandClass::vf_4()
 // short bit-field units.
 void TauntCommandClass::vf_8(int key)
 {
-    if ((DAT_00A8B238 == 3 || DAT_00A8B238 == 4) && DAT_00A8B538 == 0) {
+    if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B538 == 0) {
         int now = timeGetTime();
         if (DAT_00825C88 == -1 || now - DAT_00825C88 > 5000) {
-            if ((DAT_00A8D110 && DAT_00A8B238 == 3) || (DAT_00A8D111 && DAT_00A8B238 == 4)) {
+            if ((DAT_00A8D110 && Session_00A8B238.GameMode == 3) || (DAT_00A8D111 && Session_00A8B238.GameMode == 4)) {
                 DAT_00825C88 = now;
                 CommandTauntPacket packet;
                 packet.Command = 0x1D;
@@ -1583,7 +1582,7 @@ const wchar_t* BeaconPlacementCommandClass::vf_4()
 // FUNCTION: GAMEMD 0x5370A0 -- BeaconPlacementCommandClass slot 8
 void BeaconPlacementCommandClass::vf_8(int key)
 {
-    if (DAT_00A8B238 != 0 && DAT_00A8B238 != 5) {
+    if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5) {
         FUN_00731A30();
     }
 }
@@ -2153,7 +2152,7 @@ const wchar_t* PageUserCommandClass::vf_4()
 // FUNCTION: GAMEMD 0x537E50 -- PageUserCommandClass slot 8
 void PageUserCommandClass::vf_8(int key)
 {
-    if (DAT_00A8B238 == 4) {
+    if (Session_00A8B238.GameMode == 4) {
         FUN_006470F0();
     }
 }

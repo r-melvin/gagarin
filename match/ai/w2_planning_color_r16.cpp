@@ -29,8 +29,7 @@ struct TechnoOwner_0063CF10
 };
 GG_STATIC_ASSERT(offsetof(TechnoOwner_0063CF10, Owner) == 0x21C);
 
-// GLOBAL: GAMEMD 0xA83D4C -- the player's house.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0xA8022C -- HouseClass::Array.Items.
 extern HouseClass** DAT_00A8022C;
 // GLOBAL: GAMEMD 0xA83CD9 -- the colour a planning marker is drawn in normally.

@@ -11,6 +11,7 @@
 #include "../_rt/gg_static_assert.h"
 
 class IsometricTileTypeClass;
+class IsometricTileClass;
 struct IsoTileTypeVtbl;
 
 // One sub-tile image inside a loaded .tmp tile set.
@@ -62,6 +63,8 @@ public:
     // Round 19 additions (GAMEMD 0x544C20, 0x544CE0).
     bool             FUN_00544C20(int idx, bool load);
     static int       FUN_00544CE0(const char* name);
+    // Round 25 addition (GAMEMD 0x549AE0).
+    IsometricTileClass* FUN_00549AE0(int unused);
 
     IsoTileTypeVtbl* Vfptr;                    // +0x000
     char             _pad_004[0x024 - 0x004];

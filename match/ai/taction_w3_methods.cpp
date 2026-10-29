@@ -12,6 +12,7 @@
 #include "taction_class_methods.h"
 #include "../_layout/team_type_class.h"
 #include "../_layout/cell.h"
+#include "../_layout/map_0087f7e8.h"
 
 class HouseClass;
 class ObjectClass;
@@ -40,25 +41,6 @@ struct TActionHouse
 };
 GG_STATIC_ASSERT(offsetof(TActionHouse, Type) == 0x34);
 
-// The map object, as far as the calls these handlers make.
-struct TActionMap
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x4A8BF0 (decl; reloc)
-    void FUN_004A8BF0(int a);
-    // FUNCTION: GAMEMD 0x4ACAC0 (decl; reloc)
-    void FUN_004ACAC0();
-    // FUNCTION: GAMEMD 0x4AC660 (decl; reloc)
-    void FUN_004AC660(int a);
-    // FUNCTION: GAMEMD 0x4AC8C0 (decl; reloc)
-    void FUN_004AC8C0(int a);
-    // FUNCTION: GAMEMD 0x6938C0 (decl; reloc)
-    void FUN_006938C0();
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc)
-    void FUN_004F42F0(int a);
-    // FUNCTION: GAMEMD 0x4F4480 (decl; reloc)
-    void FUN_004F4480();
-};
 
 
 // A super weapon, as far as the call and the flag these handlers use.
@@ -95,8 +77,6 @@ int __fastcall FUN_006ABC60(int a, int b, int c);
 
 // GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
 extern TActionHouse* DAT_00A83D4C;
-// GLOBAL: GAMEMD 0x87F7E8 -- the map object.
-extern TActionMap DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xA8E7AC -- nonzero while a team is being created by an action.
 extern int DAT_00A8E7AC;
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x88099A / 0x88099B / 0x88099C -- tactical-view state reset by action 0x24.

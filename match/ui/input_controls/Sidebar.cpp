@@ -41,6 +41,7 @@
 // (layout and evidence: sidebar_select_class.h).
 
 #include "../../core/vector_class_operations.h"
+#include "../../_layout/session_class.h"
 #include "../../core/mathtbl_init_shapes.h"
 #include "../../core/deleting_dtor_sweep.h"
 #include "../../network/transport/winsock_interface_class.h"
@@ -58,8 +59,6 @@
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.
 #include "../../core/game_state_flags.h"
-// GLOBAL: GAMEMD 0xA8B238 -- session game mode.
-extern int GameMode_00A8B238;
 
 // FUNCTION: GAMEMD 0x5BF450 (decl; reloc) -- releases the pump list.
 void FUN_005BF450();
@@ -121,8 +120,6 @@ extern void* ConvertSurface_00887308;
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
-// GLOBAL: GAMEMD 0xA8B238 -- session game mode (3 and 4 enable the observer panel).
-extern int GameMode_00A8B238;
 // GLOBAL: GAMEMD 0xA80238 / 0xA8022C -- HouseClass::Array.Count / .Items.
 extern int HouseCount_00A80238;
 extern SidebarHouse** HouseItems_00A8022C;
@@ -534,7 +531,7 @@ void SidebarClass::vf_08()
         }
 
         Count = 0;
-        if (GameMode_00A8B238 == 3 || GameMode_00A8B238 == 4) {
+        if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
             Houses[0] = NthObservedHouse(0);
             do {
                 SidebarHouse* house = Houses[Count];
@@ -561,7 +558,7 @@ void SidebarClass::vf_08()
                 At_54AC[Count] = 0;
                 At_54CC[Count] = 0;
                 At_54EC[Count] = 0;
-                if (GameMode_00A8B238 == 4) {
+                if (Session_00A8B238.GameMode == 4) {
                     SidebarHouseRecord* record = house->At_1602A.FUN_0077DA50();
                     if (record != 0) {
                         At_544C[Count] = record->At_1C;
@@ -984,7 +981,7 @@ bool SidebarClass::vf_54(int control)
 {
     bool old = At_53A5;
     if (DAT_00A8D5F8 & 2) {
-        if (GameMode_00A8B238 != 0 && GameMode_00A8B238 != 5) {
+        if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5) {
             return old;
         }
     }
@@ -1446,11 +1443,11 @@ bool Obj_006ABAC0::FUN_006ABAC0() const
 // Branching.
 int __cdecl FUN_006ABC40()
 {
-    if (DAT_00A8B238 != 0)
+    if (Session_00A8B238.GameMode != 0)
     {
         DAT_00A8EDA0 = 8;
     }
-    return DAT_00A8B238;
+    return Session_00A8B238.GameMode;
 }
 
 // GLOBAL: GAMEMD 0xB0B468 is declared in the layout header (SideShapes).

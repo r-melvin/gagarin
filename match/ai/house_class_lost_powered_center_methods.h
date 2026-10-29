@@ -19,6 +19,7 @@
 #define GG_MATCH_AI_HOUSE_CLASS_LOST_POWERED_CENTER_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
@@ -78,8 +79,6 @@ GG_STATIC_ASSERT(offsetof(TechnoVector_0050E0E0, Count) == 0x10);
 extern TechnoVector_0050E0E0 DAT_00A8EC78;
 // GLOBAL: GAMEMD 0xA8E9A0 — Unsorted::IsActive (byte).
 extern unsigned char DAT_00A8E9A0;
-// GLOBAL: GAMEMD 0xA8B238 — SessionClass::Instance.GameMode (Campaign == 0).
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
 extern House_0050E0E0* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8E7AC — dword; nonzero suppresses the EVA line.
@@ -107,7 +106,7 @@ struct House_0050E0E0
     // as a bool (`SETZ AL; TEST AL,AL`).
     bool IsControlledByCurrentPlayer()
     {
-        if (DAT_00A8B238 == 0) {
+        if (Session_00A8B238.GameMode == 0) {
             return this->IsHumanPlayer || this->IsInPlayerControl;
         }
         return this == DAT_00A83D4C;

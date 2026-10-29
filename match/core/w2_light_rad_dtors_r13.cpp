@@ -27,13 +27,8 @@ extern DynamicVectorClass<LightSourceClass*> DAT_00ABCA10;
 
 struct CellStruct;
 #include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 
-// GLOBAL: GAMEMD 0x87F7E8 -- the map; 0x5657A0 returns the cell at a coordinate.
-struct MapView_5657A0
-{
-    CellClass* FUN_005657A0(const CellStruct* cell); // GAMEMD 0x5657A0 (decl; reloc)
-};
-extern MapView_5657A0 DAT_0087F7E8;
 
 // GLOBAL: GAMEMD 0xB04BD0 -- the radiation site registry.
 extern DynamicVectorClass<RadSiteClass*> DAT_00B04BD0;

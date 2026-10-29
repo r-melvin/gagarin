@@ -3,6 +3,7 @@
 // TechnoTypeClass helper bodies, independently checked at their entries.
 // This retained filename is provisional grouping, not attested original TU ownership.
 #include "../_layout/techno_type_class.h"
+#include "../_layout/session_class.h"
 #include "../_layout/obj_004a1d30.h"
 #include "../_layout/house_class.h"
 #include "../_layout/rules_class.h"
@@ -17,10 +18,7 @@
 
 
 
-// GLOBAL: GAMEMD 0xA8B238
-extern int DAT_00A8B238;
-// GLOBAL: GAMEMD 0xA83D4C — current House/player pointer (HouseClass*).
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0xA8EB00
 extern DynamicVectorClass<TechnoTypeClass*> DAT_00A8EB00;
 
@@ -37,7 +35,7 @@ bool TechnoTypeClass::vf_41()
 int TechnoTypeClass::vf_28()
 {
     if (bools_C8C[13] != 0) {
-        if (DAT_00A8B238 == 0) {
+        if (Session_00A8B238.GameMode == 0) {
             return OwnerFlags;
         }
         return 0x7FFFFFFF;

@@ -14,8 +14,7 @@ struct EBolt
     void FUN_004C2C10();   // 0x4C2C10, releases the bolt
 };
 
-// GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0x7E2800 -- 0.0, read from memory rather than FLDZ.
 extern const double DAT_007E2800;
 

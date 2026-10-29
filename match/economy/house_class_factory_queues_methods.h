@@ -31,6 +31,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/map_0087f7e8.h"
 
 struct House_00509140;
 
@@ -121,15 +122,6 @@ GG_STATIC_ASSERT(offsetof(FactoryVtbl_00509140, At_20) == 0x20);
 // naval) triple to a sidebar tab. __fastcall: rtti in ECX, category in EDX.
 unsigned int FUN_006ABCD0(int rtti, int buildCat, bool isNaval);
 
-struct Map_00509140
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x6A60A0 (decl; reloc) — repaint that sidebar tab.
-    void FUN_006A60A0(unsigned int tab);
-};
-// GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer);
-// the same singleton reached by `MOV ECX,0x87F7E8` throughout match/map.
-extern Map_00509140 DAT_0087F7E8;
 
 struct House_00509140
 {

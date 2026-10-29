@@ -18,6 +18,7 @@
 #include "../core/frame_counter.h"
 #include "../map/map_class_methods.h"
 #include "../ui/tactical_class_coords_to_client_methods.h"
+#include "../_layout/map_0087f7e8.h"
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- ECX = sound, EDX = coordinate,
 // one stack argument (the sound's audio controller).
@@ -34,8 +35,6 @@ struct Global_00A8EB60
 
 // GLOBAL: GAMEMD 0xA8EB60
 extern Global_00A8EB60 DAT_00A8EB60;
-// GLOBAL: GAMEMD 0x87F7E8 -- the map.
-extern MapView_5865E0 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x887324 -- the tactical object.
 extern Tactical_006D2140* DAT_00887324;
 // GLOBAL: GAMEMD 0xABAD1C
@@ -261,12 +260,12 @@ void BuildingClass::vf_23()
                         CellStruct first;
                         first.X = origin.X + x;
                         first.Y = origin.Y + y;
-                        int tile = DAT_0087F7E8.FUN_005657A0(first)->IsoTileTypeIndex;
+                        int tile = DAT_0087F7E8.FUN_005657A0(&first)->IsoTileTypeIndex;
                         origin = vf_110();
                         CellStruct second;
                         second.X = origin.X + x;
                         second.Y = origin.Y + y;
-                        int overlay = DAT_0087F7E8.FUN_005657A0(second)->OverlayTypeIndex;
+                        int overlay = DAT_0087F7E8.FUN_005657A0(&second)->OverlayTypeIndex;
                         if ((tile >= DAT_00ABAD1C && tile < DAT_00ABAD1C + 0x10)
                             || (overlay >= 0x4A && overlay <= 0x65))
                             special = true;

@@ -34,6 +34,7 @@
 //   cross-checked against YRpp.
 
 #include "empty_function_family_methods.h"
+#include "../_layout/session_class.h"
 #include "mathtbl_init_shapes.h"
 
 #include "techno_type_class_getbytype_methods.h"
@@ -222,12 +223,12 @@ void __cdecl Unsorted_CallBack()
         (pump->*pump->Vptr->At_08)();
     }
 
-    if (DAT_00A8B238 == 3 || DAT_00A8B238 == 4) {
+    if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
         FUN_0048D1E0();
     }
 
-    if (DAT_00A8B238 != 1) {
-        if (DAT_00A8B238 != 2) {
+    if (Session_00A8B238.GameMode != 1) {
+        if (Session_00A8B238.GameMode != 2) {
             goto guard;
         }
     } else if (!(DAT_00A8DAB8 & 1)) {
@@ -246,7 +247,7 @@ void __cdecl Unsorted_CallBack()
     }
 
 guard:
-    if (DAT_00A8B238 == 4 && !DAT_00B77DC2 && gg_time(0) != DAT_0089E9B0) {
+    if (Session_00A8B238.GameMode == 4 && !DAT_00B77DC2 && gg_time(0) != DAT_0089E9B0) {
         if (DAT_00AC116C != 0 && DAT_00B77DCC == 0) {
             DAT_00AC116C->Vtbl->At_0C(DAT_00AC116C);
         }

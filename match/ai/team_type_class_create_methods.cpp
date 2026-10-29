@@ -4,6 +4,7 @@
 //   the YRpp method map).
 
 #include "team_type_class_create_methods.h"
+#include "../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x6F09C0  TeamTypeClass::CreateTeam (__thiscall, ret 0x4)
 //
@@ -32,7 +33,7 @@ TeamClass* TeamTypeClass::CreateTeam(HouseClass* house)
     }
 
     if (ScenarioInit_00A8E7AC == 0 && this->Max >= 0) {
-        if (GameMode_00A8B238 == 0) {
+        if (Session_00A8B238.GameMode == 0) {
             if (this->InstanceCount >= this->Max) {
                 return 0;
             }

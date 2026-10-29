@@ -53,6 +53,7 @@
 //   GLOBAL:   GAMEMD 0x87F7E8   RadarClass::Instance
 
 #include "../core/deleting_dtor_sweep.h"
+#include "../_layout/session_class.h"
 #include "../core/mathtbl_init_shapes.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
@@ -169,8 +170,6 @@ extern int DAT_00886FA8;
 extern unsigned char DAT_00A8EB7C;
 // GLOBAL: GAMEMD 0x00A8EDA0
 extern int DAT_00A8EDA0;
-// GLOBAL: GAMEMD 0x00A8B238
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0x00A8B230 -- scenario object pointer, used at native offset +0x34B8.
 extern char* DAT_00A8B230;
 // GLOBAL: GAMEMD 0x00A8B23C -- game-mode object pointer.
@@ -1044,9 +1043,9 @@ void RadarClass::vf_10(int* key, Point2D* where)
         Map_0087F7E8.MouseClass::vf_19(0, false);
 
     if (*key == 0x80F2) {
-        if (DAT_00A8B238 == 0) {
+        if (Session_00A8B238.GameMode == 0) {
             DAT_00A8EDA0 = 9;
-        } else if ((DAT_00A8B238 == 3 || DAT_00A8B238 == 4) &&
+        } else if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) &&
                    DAT_00A8B23C != 0 && DAT_00A8B23C->vf_2() &&
                    DAT_00A8B23C->vf_1()) {
             DAT_00A8EDA0 = 9;
@@ -1110,7 +1109,7 @@ void RadarClass::vf_34()
     tip.field_18 = false;
     tip.GadgetID = 0xF2;
     tip.Text = DAT_008393C8;
-    if (DAT_00A8B238 != 0)
+    if (Session_00A8B238.GameMode != 0)
         tip.Text = DAT_008393B4;
     tip.Bounds.X = RadarButtonF2_00B04978.X;
     tip.Bounds.Y = RadarButtonF2_00B04978.Y;

@@ -18,6 +18,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 #include "team_class_methods.h"
+#include "../_layout/map_0087f7e8.h"
 
 struct ActionArg_r14 {
     int unknown_00;
@@ -41,12 +42,6 @@ struct TeamTarget_r14 {
     void FUN_00691590();
 };
 
-struct TeamMap_r14 {
-    // FUNCTION: GAMEMD 0x580BC0 (decl; reloc)
-    void* FUN_00580BC0(void* a1);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern TeamMap_r14 DAT_0087F7E8;
 
 typedef void (TeamMember_r14::*Fn174_r14)(void* a1, int a2, int a3);
 typedef void (TeamMember_r14::*Fn3D4_r14)(int a1);

@@ -8,6 +8,7 @@
 //   free-roaming kinds), 2 (the vehicle kind) and 6 (the building kind).
 
 #include "building_a2_views.h"
+extern int DAT_00A8B238;
 
 // The cell of a coordinate (leptons / 256, rounding towards zero like the original's signed shift).
 static inline HBCell BA2CellOf(const HBCoord* c)

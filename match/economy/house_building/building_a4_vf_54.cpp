@@ -6,6 +6,7 @@
 //   original name is not confirmed here.
 
 #include "building_a4_views.h"
+#include "../../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x440580
 bool BA4Building::vf_54(HBCoordPod* where, int dir)
@@ -152,7 +153,7 @@ bool BA4Building::vf_54(HBCoordPod* where, int dir)
     if (!unknown_90) {
         return true;
     }
-    if (DAT_00A8B238 && !Owner->FUN_0050B730() && !Owner->unknown_34->unknown_1A6) {
+    if (Session_00A8B238.GameMode && !Owner->FUN_0050B730() && !Owner->unknown_34->unknown_1A6) {
         unknown_6CB = 1;
     }
     if (DAT_00A8B230->unknown_00 & 0x1000) {
@@ -184,7 +185,7 @@ skip:
     Owner->FUN_004FFA50(this);
     Owner->unknown_1FC = 1;
     unknown_544 = 0;
-    if ((!unknown_41B && (DAT_0087F7E8.FUN_00565730(where)->unknown_12C & 0x10)) || DAT_00A8B238) {
+    if ((!unknown_41B && (DAT_0087F7E8.FUN_00565730(where)->unknown_12C & 0x10)) || Session_00A8B238.GameMode) {
         vf_102(DAT_00A83D4C);
     } else if (Type->unknown_E34) {
         if (!unknown_614) {

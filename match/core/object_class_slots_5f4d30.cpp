@@ -3,35 +3,15 @@
 // ObjectClass bodies for primary-table (0x7EF060) slots 53, 54 and 58
 // (0x5F4D30, 0x5F4EC0, 0x5F5940); names are placeholders (object_class.h).
 #include "../_layout/object_class.h"
+#include "../_layout/session_class.h"
 #include "../_layout/object_type_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/anim_class.h"
 
-class DisplayClass
-{
-public:
-    // FUNCTION: GAMEMD 0x4A9770 (declaration) -- take an object off the map.
-    void FUN_004A9770(ObjectClass* object);
-    // FUNCTION: GAMEMD 0x4A9720 (declaration) -- put an object on the map.
-    void FUN_004A9720(ObjectClass* object);
-};
-class MapView_565730_4 : public DisplayClass
-{
-public:
-    // FUNCTION: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
-    CellClass* FUN_00565730(const CoordStruct* coord);
-    // FUNCTION: GAMEMD 0x56D230 (declaration) -- the movement zone of a cell.
-    int FUN_0056D230(const CellStruct& cell, int movementZone, bool onBridge);
-    // FUNCTION: GAMEMD 0x5785F0 (declaration) -- whether a coordinate is in the usable area.
-    bool FUN_005785F0(const CoordStruct& coord);
-    // FUNCTION: GAMEMD 0x489180 (declaration) -- the damage after armour and distance.
-    static int FUN_00489180(int damage, void* warhead, int armor, int distance);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapView_565730_4 DAT_0087F7E8;
 
 // The logic object list at 0x87F778.
 #include "logicview_87f778.h"
+#include "../_layout/map_0087f7e8.h"
 // GLOBAL: GAMEMD 0x87F778
 extern LogicView_87F778 DAT_0087F778;
 
@@ -172,8 +152,6 @@ extern int DAT_00A8E7AC;
 
 // GLOBAL: GAMEMD 0xA8E9A0
 extern bool DAT_00A8E9A0;
-// GLOBAL: GAMEMD 0xA8B238 -- the session game mode (0 is a campaign).
-extern int DAT_00A8B238;
 
 // FUNCTION: GAMEMD 0x5F4D30
 bool ObjectClass::vf_53()
@@ -188,7 +166,7 @@ bool ObjectClass::vf_53()
     AmbientSoundController.FUN_00405D40();
     CustomSoundController.FUN_00405FD0();
     if (vf_34() != 0 && vf_34()->IsLogic) {
-        if (DAT_00A8B238 == 0 || DAT_00A8B238 == 5 || vf_rtti_4() != -2) {
+        if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5 || vf_rtti_4() != -2) {
             DAT_0087F778.FUN_0055BAE0(this);
         }
     }
@@ -241,7 +219,7 @@ bool ObjectClass::vf_54(const CoordStruct& coord, int a2)
             if (type != 0) {
                 if (type->IsLogic) {
                     if (vf_11() != 0x24 || (vf_11() == 0x24 && ((TypeView_5F4EC0*)type)->unknown_2B1)) {
-                        if (DAT_00A8B238 == 0 || DAT_00A8B238 == 5 || vf_rtti_4() != -2) {
+                        if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5 || vf_rtti_4() != -2) {
                             DAT_0087F778.FUN_0055BAA0(this, false);
                         }
                     }

@@ -535,8 +535,7 @@ struct Triple_005247D0 {
     int unknown_04;
     int unknown_08;
 };
-#include "../_layout/query_00578080.h"
-extern Query_00578080 DAT_0087F7E8;
+#include "../_layout/map_0087f7e8.h"
 struct Obj_005247D0 {
     Triple_005247D0 FUN_005247D0(const Triple_005247D0* value);
 };

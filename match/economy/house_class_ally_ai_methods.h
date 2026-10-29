@@ -17,6 +17,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_ALLY_AI_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
@@ -58,8 +59,6 @@ GG_STATIC_ASSERT(offsetof(ModeVtbl_00501640, At_4) == 0x4);
 // GLOBAL: GAMEMD 0xA8B23C — the game-mode object queried before allying.
 extern Mode_00501640* DAT_00A8B23C;
 
-// GLOBAL: GAMEMD 0xA8B238 — SessionClass::Instance.GameMode (Campaign == 0).
-extern int DAT_00A8B238;
 
 // HouseClass — only the members AllyAIHouses touches.
 struct House_00501640
@@ -75,7 +74,7 @@ struct House_00501640
     // FUNCTION: GAMEMD 0x50B730 (inlined here) — HouseClass::IsControlledByHuman.
     bool IsControlledByHuman() const
     {
-        if (DAT_00A8B238 != 0) {
+        if (Session_00A8B238.GameMode != 0) {
             return IsHumanPlayer;
         }
         bool result = IsHumanPlayer;

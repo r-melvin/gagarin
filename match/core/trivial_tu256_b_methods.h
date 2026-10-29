@@ -9,10 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Gbl_0087F7E8;
-
-// GLOBAL: GAMEMD 0x87F7E8
-extern Gbl_0087F7E8 DAT_0087F7E8;
 
 #include "../_layout/gbl_0087f7e8.h"
 

@@ -11,6 +11,7 @@
 //   /Ob2: the scalar deleting destructor 0x41FFF0 expands the destructor.
 
 #include <new.h>
+#include "../_layout/session_class.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,8 +48,6 @@ TuningCoordInit DAT_0088A060(128, 128, 0);
 extern const char* DAT_007E2A18;
 // GLOBAL: GAMEMD 0x7E2A1C -- pointer to the enable section name ("AITriggerTypesEnable").
 extern const char* DAT_007E2A1C;
-// GLOBAL: GAMEMD 0xA8B238 -- the session game mode (0 = campaign).
-extern int DAT_00A8B238;
 // STRING: GAMEMD 0x817474 -- "<none>"
 extern const char STR_00817474[];
 // STRING: GAMEMD 0x817694 -- "none"
@@ -67,7 +66,6 @@ extern DynamicVectorClass<AbstractTypeClass*> DAT_00A83C98;
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.
 #include "../_layout/map_0087f7e8.h"
-extern Map_0087F7E8 DAT_0087F7E8;
 
 // STRING: GAMEMD 0x889F64 -- the shared empty default string.
 extern const char STR_00889F64[];
@@ -366,7 +364,7 @@ void AITriggerTypeClass::FUN_0041F2E0(CCINIClass* ini, int isGlobal)
                 if (_stricmp(AITriggerTypes.Items[j]->ID, key) == 0) {
                     AITriggerTypeClass* type = AITriggerTypes.Items[j];
                     if (type != 0) {
-                        if (ini->FUN_005295F0(DAT_007E2A1C, key, false) || DAT_00A8B238 != 0) {
+                        if (ini->FUN_005295F0(DAT_007E2A1C, key, false) || Session_00A8B238.GameMode != 0) {
                             type->IsEnabled = true;
                         } else {
                             type->IsEnabled = false;

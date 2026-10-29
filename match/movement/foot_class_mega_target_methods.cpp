@@ -20,7 +20,7 @@ void FootClass::FUN_004DF280()
 {
     if (MegaTarget) {
         Cell cell = CellOfCoord(((AbstractClass*)MegaTarget)->vf_18());
-        MegaDestination = DAT_0087F7E8.GetCellAt(cell);
+        MegaDestination = DAT_0087F7E8.FUN_005657A0(&cell);
         MegaTarget = 0;
         return;
     }

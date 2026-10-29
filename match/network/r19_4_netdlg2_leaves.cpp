@@ -8,6 +8,7 @@
 #define NO_STRICT
 #define LocalHandle LocalHandle_Win32
 #include <windows.h>
+#include "../_layout/session_class.h"
 #undef LocalHandle
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
@@ -86,7 +87,7 @@ bool __cdecl FUN_005DB680()
         return false;
     }
 
-    if (DAT_00A8B238 != 4 && DAT_00A8D5FC != 0) {
+    if (Session_00A8B238.GameMode != 4 && DAT_00A8D5FC != 0) {
         DAT_00A8D600.FUN_0053EDA0(&first, &rest);
         Manager_00A8E9C0.FUN_00542FC0(&first);
     }

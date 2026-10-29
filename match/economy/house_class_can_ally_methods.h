@@ -13,6 +13,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_CAN_ALLY_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // HouseTypeClass — the type's ArrayIndex2 and the MultiplayPassive flag.
@@ -74,8 +75,6 @@ GG_STATIC_ASSERT(offsetof(House_00501540, Allies)     == 0x5788);
 extern House_00501540** DAT_00A8022C;
 // GLOBAL: GAMEMD 0xA80238 — HouseClass::Array.Count.
 extern int DAT_00A80238;
-// GLOBAL: GAMEMD 0xA8B238 — SessionClass::Instance.GameMode (Campaign == 0).
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA8E7AC — Unsorted::ScenarioInit.
 extern int DAT_00A8E7AC;
 

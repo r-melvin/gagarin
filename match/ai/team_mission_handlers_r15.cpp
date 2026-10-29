@@ -10,6 +10,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/frame_timer.h"
 #include "../_layout/cell.h"
+#include "../_layout/map_0087f7e8.h"
 
 // The action record: only the parameter at +0x04.
 struct MissionArg_R15
@@ -21,14 +22,6 @@ GG_STATIC_ASSERT(offsetof(MissionArg_R15, unknown_04) == 0x4);
 
 class CellClass;
 
-// The map (GLOBAL 0x87F7E8): 0x5657A0 returns the cell at a cell coordinate.
-struct MissionMap_R15
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    CellClass* FUN_005657A0(const CellStruct* cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MissionMap_R15 DAT_0087F7E8_MissionR15;
 
 // The 0x30-byte helper the 0x6ED030 handler installs at +0x28 of the team.
 class MissionHelper_006913C0
@@ -248,7 +241,7 @@ void Team_R15::SetCellTarget(MissionArg_R15* arg, bool first)
         CellStruct cell;
         cell.X = (short)(arg->unknown_04 % 128);
         cell.Y = (short)(arg->unknown_04 / 128);
-        FUN_006E9050(DAT_0087F7E8_MissionR15.FUN_005657A0(&cell));
+        FUN_006E9050(DAT_0087F7E8.FUN_005657A0(&cell));
     }
     FUN_006EBAD0();
 }

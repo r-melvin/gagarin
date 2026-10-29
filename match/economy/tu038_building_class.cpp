@@ -65,6 +65,7 @@
 //   LIBRARY: GAMEMD 0x7C5F00  __ftol  (CRT double->long; the (int) cast; reloc)
 
 #include "house_building/building_a_views.h"
+#include "../_layout/session_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../_layout/building_class.h"
 #include "../_layout/house_class.h"
@@ -417,7 +418,7 @@ bool BuildingAView::vf_80(int mode, HBCell* cell, int a3, int a4)
     } else if (mode == 6 || mode == 1) {
         bool blocked = false;
         if (!Type->unknown_16B9
-            || (Owner->FUN_0050B730() && DAT_00A8B238 && DAT_00A8B320 && unknown_2C0 == 0)) {
+            || (Owner->FUN_0050B730() && Session_00A8B238.GameMode && DAT_00A8B320 && unknown_2C0 == 0)) {
             if (Type->unknown_408 != 0 || vf_161()) {
                 FUN_00443860(cell, 1);
             }
@@ -1560,7 +1561,7 @@ bool BuildingClass::vf_40()
     if (Type->bools_16A4[0x16B9 - 0x16A4]) {
         if (!Owner->IsControlledByHuman())
             goto refuse;
-        if (BuildingBGlobal_00A8B238 == 0)
+        if (Session_00A8B238.GameMode == 0)
             goto refuse;
         if (BuildingBGlobal_00A8B320 == 0)
             goto refuse;
@@ -2161,7 +2162,7 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
                 }
             } else {
                 keep = unknown_41A || vf_202() || BuildingBGlobal_00B73550 == 0
-                    || (BuildingBGlobal_00A8B238 != 0 && Owner != 0 && BuildingBPlayer != 0
+                    || (Session_00A8B238.GameMode != 0 && Owner != 0 && BuildingBPlayer != 0
                         && BuildingBPlayer->Func_4F9A50(Owner) && Owner->Func_4F9A50(BuildingBPlayer));
             }
             if (keep)

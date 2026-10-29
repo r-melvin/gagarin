@@ -11,6 +11,7 @@
 #define GG_MATCH_CORE_INIT_MISC_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // Shared manager declaration preserves the direct startup call bindings.
@@ -38,7 +39,6 @@ extern Addr_005DA6C0 DAT_00A8D600;
 
 // GLOBAL: GAMEMD 0xA8B238 — first dword of the session block (YRpp:
 // SessionClass::Instance, the game-mode field).
-extern int DAT_00A8B238;
 
 // GLOBAL: GAMEMD 0xA8D5FC
 extern int DAT_00A8D5FC;

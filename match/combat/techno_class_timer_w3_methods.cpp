@@ -9,8 +9,7 @@
 #include "../_layout/techno_class.h"
 #include "../core/scenario_class_methods.h"
 
-// GLOBAL: GAMEMD 0xA8B230 -- the scenario object.
-extern ScenarioClass* DAT_00A8B230;
+#include "../_layout/scenario_ptr_00a8b230.h"
 // GLOBAL: GAMEMD 0xA8E7AC -- nonzero while a scenario is being set up.
 extern int DAT_00A8E7AC;
 

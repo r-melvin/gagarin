@@ -66,7 +66,6 @@ HouseClass* FUN_00502D30(int index);
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map; 0x5657A0 returns the cell at a coordinate.
 #include "../_layout/map_0087f7e8.h"
-extern Map_0087F7E8 DAT_0087F7E8;
 
 // The registries the destructor removes `this` from (abstract_registry.h holds their storage).
 static inline void Tag_RemoveFrom(DynamicVectorClassLayout* list, TagClass* tag)

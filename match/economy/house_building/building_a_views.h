@@ -13,6 +13,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_BUILDING_A_VIEWS_H
 
 #include <stddef.h>
+#include "../../_layout/session_class.h"
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "../../audio/voc_class_play_global_methods.h"
@@ -1294,7 +1295,6 @@ extern BAVector<BAObjView*> DAT_00A8E348;
 extern BAVector<BAObjView*> DAT_00A83CE0;
 // GLOBAL: GAMEMD 0xA802C8 (the outgoing event queue), 0xA8B238 / 0xA8B320
 extern BAEventQueue DAT_00A802C8;
-extern int DAT_00A8B238;
 extern unsigned char DAT_00A8B320;
 // IMPORT: GAMEMD 0x7E1530 (winmm timeGetTime)
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);

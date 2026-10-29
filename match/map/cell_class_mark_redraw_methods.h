@@ -20,6 +20,7 @@
 #define GG_MATCH_MAP_CELL_CLASS_MARK_REDRAW_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/map_0087f7e8.h"
 #include "../_rt/gg_static_assert.h"
 
 #include "../_layout/cell.h"
@@ -42,13 +43,6 @@ struct Tactical_00486E70
 // GLOBAL: GAMEMD 0x887324 — the tactical instance pointer.
 extern Tactical_00486E70* DAT_00887324;
 
-struct Map_00486E70
-{
-    // FUNCTION: GAMEMD 0x6551C0 (decl; reloc) — flag the cell's radar pixel.
-    void FUN_006551C0(CellStruct const& cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
-extern Map_00486E70 DAT_0087F7E8;
 
 #include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);

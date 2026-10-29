@@ -6,7 +6,7 @@
 // table whose slot zero is 0x5B46E0). Retail's fused constructor + atexit initialiser is
 // 0x5B3AC0; the exit stub at 0x5B3B10 tests bit 0 of the guard byte 0xABF008, then runs the
 // inlined list teardown (GenericList table 0x7E1B04, drain, both sentinels).
-#include "../_layout/generic_list.h"
+#include "mix_file_list_00abefd8.h"
 
 class MixFileClass;
 
@@ -33,15 +33,6 @@ template<> inline List<MixFileClass*>::List()
 {
     Vtable = &GG_VTABLE_LISTOFMIXFILE;
 }
-
-struct MixFileListValue_00ABEFD8 : List<MixFileClass*> {
-    ~MixFileListValue_00ABEFD8() { DestroyList(); }
-};
-
-struct MixFileListHolder_00ABEFD8 {
-    // GLOBAL: GAMEMD 0xABEFD8
-    static MixFileListValue_00ABEFD8 DAT_00ABEFD8;
-};
 
 // SYNTHETIC: GAMEMD 0x005B3AC0 -- initialiser of DAT_00ABEFD8 (fused ctor + atexit)
 // SYNTHETIC: GAMEMD 0x005B3B10 -- exit-time stub of DAT_00ABEFD8, guard byte 0x00ABF008 bit 0

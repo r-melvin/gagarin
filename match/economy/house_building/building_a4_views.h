@@ -11,6 +11,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_BUILDING_A4_VIEWS_H
 
 #include <stddef.h>
+#include "../../_layout/session_class.h"
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "../../core/cell_step_tables.h"
@@ -1793,7 +1794,6 @@ extern int DAT_00A8E7AC;
 extern unsigned char DAT_00A8E9A0;
 extern BA4Placed** DAT_00A8EC1C;
 extern BA4House** DAT_00A8022C;
-extern int DAT_00A8B238;
 extern BA4Session* DAT_00A8B230;
 extern int DAT_0089C848;
 // LIBRARY: GAMEMD 0x7C8D20 (LIBRARY: _stricmp) / 0x7C91D0 (LIBRARY: strncpy)

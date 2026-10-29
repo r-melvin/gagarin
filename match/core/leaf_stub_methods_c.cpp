@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <objbase.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/map_0087f7e8.h"
 
 #include "../_layout/guid_007e36c0.h"
 // GLOBAL: GAMEMD 0x7E36C0
@@ -103,9 +104,6 @@ void* Obj_00683030::FUN_00683030()
     return unknown_00;
 }
 
-#include "../_layout/map_00578ad0.h"
-// GLOBAL: GAMEMD 0x87F7E8 -- the map instance.
-extern Map_00578AD0 DAT_0087F7E8;
 #include "../_layout/obj_006a3e30.h"
 // FUNCTION: GAMEMD 0x006A3E30
 int Obj_006A3E30::FUN_006A3E30(int arg)

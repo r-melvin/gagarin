@@ -7,6 +7,7 @@
 #define GG_MATCH_CORE_TRIVIAL_TU256_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x87F7E8
@@ -47,8 +48,6 @@ void __cdecl FUN_00732CA0();
 extern DynamicVectorClass<TechnoClass*>* DAT_00B0FE6C;
 // GLOBAL: GAMEMD 0xA8EC78
 extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
-// GLOBAL: GAMEMD 0xA8B238
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0x845550
 extern int DAT_00845550;
 // GLOBAL: GAMEMD 0x845554
@@ -90,8 +89,7 @@ extern "C" wchar_t* __cdecl wcscpy(wchar_t*, const wchar_t*);
 extern Tactical* DAT_00887324;
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, UndeploysInto) == 0x408);
 
-// GLOBAL: GAMEMD 0x00A83D4C
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0x00A802C8
 extern EventQueue<128> DAT_00A802C8;
 // GLOBAL: GAMEMD 0x00A8B230

@@ -29,6 +29,7 @@
 // touched, so there is no layout to assert.
 
 #include "../core/house_index_lookup_methods.h"
+#include "../_layout/session_class.h"
 #include "../core/mathtbl_init_shapes.h"
 
 #include "../core/small_misc5_methods.h"
@@ -314,8 +315,6 @@ void FUN_0046FB50(HWND_ dlg)
 
 struct Obj_0046FBD0;
 
-// GLOBAL: GAMEMD 0xA8B238
-extern int DAT_00A8B238;
 
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc)
 void FUN_0048D080(Obj_0046FBD0*, int);
@@ -336,11 +335,11 @@ unsigned char FUN_0046FBD0(Obj_0046FBD0* a1, int a2);
 // Branching.
 unsigned char FUN_0046FBD0(Obj_0046FBD0* a1, int a2)
 {
-    if (DAT_00A8B238 == 3)
+    if (Session_00A8B238.GameMode == 3)
     {
         return FUN_005DAF20(a1, a2);
     }
-    if (DAT_00A8B238 == 4)
+    if (Session_00A8B238.GameMode == 4)
     {
         return FUN_0077F900(a1, a2);
     }

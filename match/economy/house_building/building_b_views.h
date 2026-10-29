@@ -21,6 +21,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_BUILDING_B_VIEWS_H
 
 #include "../../_layout/cell_class.h"
+#include "../../_layout/session_class.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
@@ -1776,8 +1777,6 @@ extern BuildingBRulesView* BuildingBRules;
 extern int BuildingBGlobal_00B73550;
 // GLOBAL: GAMEMD 0xA83D4C (the local player's house)
 extern BuildingBHouseView* BuildingBPlayer;
-// GLOBAL: GAMEMD 0xA8B238
-extern int BuildingBGlobal_00A8B238;
 // GLOBAL: GAMEMD 0xA8B320
 extern bool BuildingBGlobal_00A8B320;
 // GLOBAL: GAMEMD 0x87F7E8 (the map object; its address is passed in ECX)

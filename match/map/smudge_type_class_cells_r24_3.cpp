@@ -10,8 +10,6 @@
 #include "../_layout/cell_class.h"
 #include "../_layout/map_0087f7e8.h"
 
-// GLOBAL: GAMEMD 0x87F7E8
-extern Map_0087F7E8 DAT_0087F7E8;
 
 // One tile type of the theater table at 0xA8ED2C; only its placement flag is read here.
 struct IsoTileTypeView_006B5F80

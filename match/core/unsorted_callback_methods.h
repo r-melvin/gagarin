@@ -16,6 +16,7 @@
 #define GG_MATCH_CORE_UNSORTED_CALLBACK_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
 #include "../network/command_packet_layouts.h"
@@ -54,8 +55,6 @@ GG_STATIC_ASSERT(offsetof(PumpVtbl_0048D080, At_08) == 0x8);
 extern int DAT_00B45B68;
 // GLOBAL: GAMEMD 0xB45B5C — the pump list.
 extern Pump_0048D080** DAT_00B45B5C;
-// GLOBAL: GAMEMD 0xA8B238 — SessionClass::Instance.GameMode.
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA8DAB8 — the pump-enable flags (a dword: 0x5F3170 reads,
 // masks and stores it whole; the bit-0 tests here compile to a byte TEST).
 extern unsigned int DAT_00A8DAB8;

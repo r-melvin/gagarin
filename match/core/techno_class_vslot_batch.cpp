@@ -95,8 +95,7 @@ public:
     bool FUN_004870F0(void* link);
 };
 
-// GLOBAL: GAMEMD 0xA83D4C -- the local player's house.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 
 // GLOBAL: GAMEMD 0x887324
 extern Tactical* DAT_00887324;

@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4251F0.
 
 #include "spawn_effect_methods.h"
+#include "../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x4251F0
 //
@@ -21,7 +22,7 @@ void FUN_004251F0(int, const short* cell)
 
     FUN_00489280(&where, DAT_008871E0->At_1530, 0, DAT_008871E0->At_F8C, 0, 0);
 
-    if (DAT_00A8B238 == 0) {
+    if (Session_00A8B238.GameMode == 0) {
         FUN_004A3C30(&DAT_00885780, 0x1E, FUN_0048D080);
     }
 }

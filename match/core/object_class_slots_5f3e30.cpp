@@ -28,25 +28,10 @@ GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_FA8) == 0xFA8);
 
 // The map cell (read-only here).
 #include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 struct Point2D;
 
 // The map object at 0x87F7E8 (only the entry points used here).
-class DisplayClass
-{
-public:
-    // FUNCTION: GAMEMD 0x4A9720 (declaration)
-    void Submit(ObjectClass* object);
-    // FUNCTION: GAMEMD 0x4A9770 (declaration)
-    void Remove(ObjectClass* object);
-};
-class MapView_565730_3 : public DisplayClass
-{
-public:
-    // FUNCTION: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
-    CellClass* FUN_00565730(const CoordStruct* coord);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapView_565730_3 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- plays a sound at a coordinate
 // through an audio controller (__fastcall, sound in ECX, coordinate in EDX).
@@ -141,7 +126,7 @@ void ObjectClass::vf_23()
             }
 
             if (layer != vf_30()) {
-                DAT_0087F7E8.Submit(this);
+                DAT_0087F7E8.FUN_004A9720(this);
             }
 
             if (!IsFallingDown) {
@@ -165,7 +150,7 @@ void ObjectClass::vf_23()
                 }
             }
         } else {
-            DAT_0087F7E8.Remove(this);
+            DAT_0087F7E8.FUN_004A9770(this);
         }
     }
 }

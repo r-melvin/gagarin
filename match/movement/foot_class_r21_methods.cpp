@@ -13,8 +13,7 @@
 #include "../_layout/techno_type_class.h"
 #include "loco_com.h"
 
-// GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
-extern HouseClass* DAT_00A83D4C;
+#include "../_layout/player_ptr_00a83d4c.h"
 
 // FUNCTION: GAMEMD 0x4DBDA0
 // Slot 162: cloakable as a TechnoClass, and (for a type that cannot cloak while

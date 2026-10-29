@@ -8,6 +8,7 @@
 #define GG_MATCH_COMBAT_SPAWN_EFFECT_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
 struct Coord_004251F0
@@ -29,8 +30,6 @@ GG_STATIC_ASSERT(offsetof(Rules_004251F0, At_1530) == 0x1530);
 
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern Rules_004251F0* DAT_008871E0;
-// GLOBAL: GAMEMD 0xA8B238 — nonzero once the effect is already queued.
-extern int DAT_00A8B238;
 
 struct Queue_004251F0 { char opaque[4]; };
 // GLOBAL: GAMEMD 0x885780

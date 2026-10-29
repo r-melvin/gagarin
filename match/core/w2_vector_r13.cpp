@@ -23,21 +23,7 @@ class HashString { public: char unknown_00[0x100]; HashString(const HashString& 
 template<class K,class V> struct HashObject { K Key; V Value; HashObject() {} HashObject(const HashObject<K,V>& o) : Key(o.Key), Value(o.Value) {} bool operator==(const HashObject<K,V>& o) const { return Key==o.Key; } bool operator!=(const HashObject<K,V>& o) const { return !(*this==o); } };
 template<> struct HashObject<HashString,SchemeNode*> { HashString Key; SchemeNode* Value; HashObject(); HashObject(const HashObject<HashString,SchemeNode*>& o) : Key(o.Key), Value(o.Value) {} bool __fastcall operator==(const HashObject<HashString,SchemeNode*>& o) const; bool __fastcall operator!=(const HashObject<HashString,SchemeNode*>& o) const; };
 struct RadarTrackingStruct { int unknown_00; int unknown_04; int unknown_08; RadarTrackingStruct() {} RadarTrackingStruct(const RadarTrackingStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08) {} bool operator==(const RadarTrackingStruct& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const RadarTrackingStruct& o) const { return !(*this==o); } };
-struct SubzoneTrackingStruct
-{
-    DynamicVectorClass<SubzoneConnectionStruct> unknown_00; // +0x00
-    unsigned short unknown_18;                              // +0x18
-    unsigned char unknown_1A[2];                            // +0x1A
-    int unknown_1C;                                         // +0x1C
-    int unknown_20;                                         // +0x20
-    SubzoneTrackingStruct();
-    bool operator==(const SubzoneTrackingStruct& o) const
-    {
-        return unknown_18 == o.unknown_18 && unknown_1C == o.unknown_1C;
-    }
-    bool operator!=(const SubzoneTrackingStruct& o) const { return !(*this == o); }
-};
-GG_STATIC_ASSERT(sizeof(SubzoneTrackingStruct) == 0x24);
+#include "../ui/input_controls/ui_display_chain.h"
 
 typedef HashObject<unsigned int,unsigned int> HO_II;
 typedef HashObject<unsigned int,SubzoneConnectionStruct> HO_SCS;
@@ -108,12 +94,25 @@ GG_ARRAY_NEW(STS, SubzoneTrackingStruct)
 // VectorClass<SubzoneTrackingStruct>::Clear
 // FUNCTION: GAMEMD 0x0040B070
 // SubzoneTrackingStruct::vector deleting destructor
+// FUNCTION: GAMEMD 0x00588E10
+// VectorClass<SubzoneTrackingStruct>::Slot6 (element copy by value)
 // FUNCTION: GAMEMD 0x0058A470
 // VectorClass<SubzoneTrackingStruct>::scalar deleting destructor
 // FUNCTION: GAMEMD 0x0058A5B0
 // DynamicVectorClass<SubzoneTrackingStruct>::scalar deleting destructor
 template class VectorClass<SubzoneTrackingStruct>;
 template class DynamicVectorClass<SubzoneTrackingStruct>;
+
+// FUNCTION: GAMEMD 0x0058A500
+// Copies the connection list, then the three scalar fields (the two bytes at +0x1A are left alone).
+SubzoneTrackingStruct& SubzoneTrackingStruct::operator=(const SubzoneTrackingStruct& o)
+{
+    unknown_00 = o.unknown_00;
+    unknown_18 = o.unknown_18;
+    unknown_1C = o.unknown_1C;
+    unknown_20 = o.unknown_20;
+    return *this;
+}
 
 // ---- Point2D ----
 GG_ARRAY_NEW(P2, Point2D)

@@ -11,6 +11,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_BUILDING_A3_VIEWS_H
 
 #include <stddef.h>
+#include "../../_layout/session_class.h"
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "../../core/cell_step_tables.h"
@@ -2332,7 +2333,6 @@ bool FUN_0048A8D0(char flag, int a, int b, int z, double radius, HBDir* out);
 extern int DAT_00A8E7AC;
 extern unsigned char DAT_00A8ED6B;
 extern int DAT_00A8B538;
-extern int DAT_00A8B238;
 extern HBIdxView** DAT_00A83CBC;
 // GLOBAL: GAMEMD 0x89F698 (a cell offset), 0x89C818 (the "no cell" marker), 0x7F4890 (a table of 32 values), 0x818D7C (a suffix)
 extern HBCell DAT_0089F698;

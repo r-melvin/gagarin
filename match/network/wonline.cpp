@@ -10,6 +10,7 @@
 #define NO_STRICT
 #define LocalHandle LocalHandle_Win32
 #include <windows.h>
+#include "../_layout/session_class.h"
 #undef LocalHandle
 #include <stdio.h>
 #include <string.h>
@@ -621,7 +622,6 @@ struct PCXCache_00AC4848
 };
 extern PCXCache_00AC4848 DAT_00AC4848;
 
-extern int DAT_00A8B238;
 extern int DAT_00B76B24;
 extern unsigned int DAT_00B76B30;
 extern int DAT_00A8B274;
@@ -1223,19 +1223,16 @@ int __stdcall FUN_0078D120(void* window, unsigned int message, unsigned int wpar
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DAT_00A8ED9C;
 #include "obj_00a8b230.h"
+#include "../_layout/map_0087f7e8.h"
 
 // GLOBAL: GAMEMD 0xA8B230
 extern Obj_00A8B230* DAT_00A8B230;
-// GLOBAL: GAMEMD 0x87F7E8 -- the map, through its GScreenClass part.
-extern GScreen_004F4480 GScreen_0087F7E8;
 
 
 // Declaration: GAMEMD 0x773E90 (decl; reloc)
 void FUN_00773E90(const char* page);
 
 
-// GLOBAL: GAMEMD 0xA8B238 -- session game mode.
-extern int DAT_00A8B238;
 
 struct Obj_0077D910
 {
@@ -1725,7 +1722,7 @@ void FUN_0077D840()
         FUN_007759E0(window, UI::Updated, 0, true, true);
     DAT_0087F770->DoSomething();
     DAT_00A8ED9C = DAT_00A8B230->unknown_35A2;
-    GScreen_0087F7E8.FlagToRedraw(2);
+    DAT_0087F7E8.FUN_004F42F0(2);
 }
 
 // FUNCTION: GAMEMD 0x77D8C0
@@ -1763,7 +1760,7 @@ void FUN_0077D900()
 //   0/1 through EAX.
 bool FUN_0077D910(Obj_0077D910* flags)
 {
-    if (DAT_00A8B238 != 4) return false;
+    if (Session_00A8B238.GameMode != 4) return false;
     if (flags->unknown_14 != 0) return true;
     bool bit = flags->unknown_20_8;
     return bit;
@@ -1772,21 +1769,21 @@ bool FUN_0077D910(Obj_0077D910* flags)
 // FUNCTION: GAMEMD 0x77D990
 bool FUN_0077D990(Obj_0077D910* flags)
 {
-    if (DAT_00A8B238 != 4) return false;
+    if (Session_00A8B238.GameMode != 4) return false;
     return flags->unknown_20_8;
 }
 
 // FUNCTION: GAMEMD 0x77D9B0
 bool FUN_0077D9B0(Obj_0077D910* flags)
 {
-    if (DAT_00A8B238 != 4) return false;
+    if (Session_00A8B238.GameMode != 4) return false;
     return flags->unknown_20_11;
 }
 
 // FUNCTION: GAMEMD 0x77D9D0
 bool FUN_0077D9D0(Obj_0077D910* flags)
 {
-    if (DAT_00A8B238 != 4) return false;
+    if (Session_00A8B238.GameMode != 4) return false;
     return flags->unknown_20_12;
 }
 
@@ -2516,7 +2513,7 @@ int FUN_0078F6B0(int id)
 // Locks the host controls of the lobby dialog.
 void FUN_0078F720(HWND dialog)
 {
-    if (DAT_00A8B238 != 4)
+    if (Session_00A8B238.GameMode != 4)
         return;
     bool hostLocked;
     if (DAT_00B76B24 != 0)

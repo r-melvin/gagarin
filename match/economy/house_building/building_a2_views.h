@@ -11,6 +11,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_BUILDING_A2_VIEWS_H
 
 #include <stddef.h>
+#include "../../_layout/session_class.h"
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "../../core/cell_step_tables.h"
@@ -1556,8 +1557,6 @@ extern int DAT_0087F8E4;
 extern int DAT_0087F8E8;
 extern int DAT_0087F8EC;
 extern int DAT_0087F8F0;
-// GLOBAL: GAMEMD 0xA8B238 / 0xA8B320 / 0xA8EC88 / 0xA8EC7C / 0x89F6F0 / 0x89F6F4 / 0x822CF2
-extern int DAT_00A8B238;
 extern unsigned char DAT_00A8B320;
 extern int DAT_00A8EC88;
 extern BA2Tech** DAT_00A8EC7C;

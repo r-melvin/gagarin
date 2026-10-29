@@ -2941,8 +2941,7 @@ void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
 
 #include "../../_layout/building_array.h"
 
-// GLOBAL: GAMEMD 0xA8B230
-extern ScenarioClass* DAT_00A8B230;
+#include "../../_layout/scenario_ptr_00a8b230.h"
 
 // FUNCTION: GAMEMD 0x6D8DB0
 void Tactical::FUN_006D8DB0(bool argument)

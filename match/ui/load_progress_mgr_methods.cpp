@@ -7,6 +7,7 @@
 // Address index: 0x552AD0 0x552C90 0x554100 0x554150 0x554400
 
 #include "../_layout/load_progress_mgr.h"
+#include "../_layout/session_class.h"
 #include "../core/trivial_tu117_methods.h"
 
 // GLOBAL: GAMEMD 0x8A00A4 / 0x8A00A8 -- current screen width and height.
@@ -16,8 +17,6 @@ extern int DAT_008A00A8;
 extern int DAT_007F5BE0;
 extern int DAT_007F5BE4;
 extern int DAT_007F5BF0;
-// GLOBAL: GAMEMD 0xA8B238 -- non-zero while a progress screen is shown.
-extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0x88730C -- the object that closes the progress screen.
 extern Arg1_00554350* DAT_0088730C;
 
@@ -47,7 +46,7 @@ LoadProgressMgr::LoadProgressMgr()
 int LoadProgressMgr::FUN_00552C90()
 {
     int y = -1;
-    if (DAT_00A8B238)
+    if (Session_00A8B238.GameMode)
         y = (DAT_008A00A4 != DAT_007F5BE0 ? 0x50 : 0) + 0x146;
     return y;
 }

@@ -14,17 +14,12 @@
 #define GG_MATCH_MOVEMENT_FOOT_CLASS_MOVE_TO_WEED_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/map_0087f7e8.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/foot_class.h"   // FootClass: Destination @0x5A4; CoordStruct; CellStruct
 #include "../_layout/cell_class.h"
 
 extern CellStruct DAT_008B3D88;
 
-struct Map_004DDB90
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass* GetCellAt(CellStruct const& cell);
-};
-extern Map_004DDB90 DAT_0087F7E8;
 
 #endif  // GG_MATCH_MOVEMENT_FOOT_CLASS_MOVE_TO_WEED_METHODS_H

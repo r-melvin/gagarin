@@ -16,9 +16,9 @@
 #include "../_layout/coord_struct.h"
 #include "../core/building_light_class.h"
 #include "../core/id_resolve_command_sweep.h"
+#include "../_layout/map_0087f7e8.h"
 
-// GLOBAL: GAMEMD 0xA8B230 -- the scenario object.
-extern ScenarioClass* DAT_00A8B230;
+#include "../_layout/scenario_ptr_00a8b230.h"
 // GLOBAL: GAMEMD 0xA8EC7C / 0xA8EC88 -- TechnoClass array items and count.
 extern TechnoClass** DAT_00A8EC7C;
 extern int DAT_00A8EC88;
@@ -196,14 +196,6 @@ bool TActionClass::FUN_006E4040(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
-// The map (GLOBAL 0x87F7E8): 0x5657A0 returns the cell at a cell coordinate.
-struct TActionR15Map
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    CellClass* FUN_005657A0(const CellStruct* cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern TActionR15Map DAT_0087F7E8_R15;
 
 // An object found in a cell, as far as the 0x5F6CB0 step.
 struct TActionR15Object
@@ -257,7 +249,7 @@ ObjectClass* __fastcall FUN_006E1830(CoordStruct* coord)
     CellStruct at = tmp;
     ObjectClass* o = 0;
     if (at.X != DAT_00B0E680.X || at.Y != DAT_00B0E680.Y) {
-        CellClass* c = DAT_0087F7E8_R15.FUN_005657A0(&at);
+        CellClass* c = DAT_0087F7E8.FUN_005657A0(&at);
         o = c->GetBuilding();
         if (o == 0)
             o = c->FUN_0047C550(false);
@@ -275,7 +267,7 @@ bool TActionClass::FUN_006E18B0(HouseClass* house, ObjectClass* object, TriggerC
     tmp.Y = (short)(where.Y / 256);
     CellStruct at = tmp;
     if (at.X != DAT_00B0E680.X || at.Y != DAT_00B0E680.Y) {
-        CellClass* c = DAT_0087F7E8_R15.FUN_005657A0(&at);
+        CellClass* c = DAT_0087F7E8.FUN_005657A0(&at);
         ObjectClass* o = c->GetBuilding();
         if (o == 0)
             o = c->FUN_0047C550(false);
@@ -298,7 +290,7 @@ bool TActionClass::FUN_006E1980(HouseClass* house, ObjectClass* object, TriggerC
     tmp.Y = (short)(where.Y / 256);
     CellStruct at = tmp;
     if (at.X != DAT_00B0E680.X || at.Y != DAT_00B0E680.Y) {
-        CellClass* c = DAT_0087F7E8_R15.FUN_005657A0(&at);
+        CellClass* c = DAT_0087F7E8.FUN_005657A0(&at);
         ObjectClass* o = c->GetBuilding();
         if (o == 0)
             o = c->FUN_0047C550(false);

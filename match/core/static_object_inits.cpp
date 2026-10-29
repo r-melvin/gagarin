@@ -10,6 +10,7 @@
 // address placeholders.
 
 #include <unknwn.h>
+#include "os_version_info.h"
 
 // Heap-owning five-field record: the constructor zeroes the fields and the
 // destructor frees the block, then zeroes them again (the exit-time stub at
@@ -101,22 +102,12 @@ public:
 // GLOBAL: GAMEMD 0x884D88
 Obj_00884D88 DAT_00884D88;
 
-// A 0x90-byte object (ends at the next global, 0x887628) with an out-of-line
-// constructor (0x776EB0) and an empty destructor, so its exit-time stub at
-// 0x40FF30 is a bare RET.
-class Obj_00887598
-{
-public:
-    char unknown_00[0x90];
-    // FUNCTION: GAMEMD 0x776EB0 (decl; reloc)
-    Obj_00887598();
-    ~Obj_00887598() {}
-};
-
+// The OS version record (os_version_info.h): constructed out of line by 0x776EB0, empty destructor,
+// so its exit-time stub at 0x40FF30 is a bare RET.
 // SYNTHETIC: GAMEMD 0x40FF10
 // SYNTHETIC: GAMEMD 0x40FF30 -- exit-time destructor stub
 // GLOBAL: GAMEMD 0x887598
-Obj_00887598 DAT_00887598;
+OSVersionRecord DAT_00887598;
 
 // An owning COM interface pointer: starts null and releases the interface at
 // exit (the stub at 0x40D220 is the inlined Release call through slot 2).

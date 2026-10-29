@@ -85,12 +85,20 @@ public:
     // codegen (plain `new(0x28); if(p) ctor`, no fs:0 SEH prologue).
     MixFileClass(const char* name, const char* tag = "") throw();  // 0x5B3C20 __thiscall
     virtual ~MixFileClass();                               // Node<> dtor slot 0
-    char unknown_04[8];
+    MixFileClass* NextNode; // +0x04 list link (GenericNode layout)
+    MixFileClass* PrevNode; // +0x08
     const char* FileName; // +0x0C, read by CCFile Open473D10
-    char unknown_10[0x18];
+    char unknown_10[2];
+    bool IsLoaded;        // +0x12 retail 0x5B3E90 clears it with the cache pointer
+    char unknown_13[0x11];
+    void* CachedData;     // +0x24
 };
 GG_STATIC_ASSERT(sizeof(MixFileClass) == 0x28);
+GG_STATIC_ASSERT(offsetof(MixFileClass, NextNode) == 0x04);
+GG_STATIC_ASSERT(offsetof(MixFileClass, PrevNode) == 0x08);
 GG_STATIC_ASSERT(offsetof(MixFileClass, FileName) == 0x0C);
+GG_STATIC_ASSERT(offsetof(MixFileClass, IsLoaded) == 0x12);
+GG_STATIC_ASSERT(offsetof(MixFileClass, CachedData) == 0x24);
 GG_STATIC_ASSERT(sizeof(((MixFileClass*)0)->FileName) == 4);
 
 // ---------------------------------------------------------------------------

@@ -1103,7 +1103,7 @@ void FUN_00599530(Obj_0059C580* a1)
 void __stdcall FUN_0059A670(int a1)
 {
     if (DAT_00A8B230->unknown_3598)
-        DAT_00A8B238.FUN_0069AE90(a1 + 0x63);
+        Session_00A8B238.FUN_0069AE90(a1 + 0x63);
     else
         DAT_00AC4F58.FUN_00643C50(0, (double)a1, 0xFFFFFFFF, 0xFFFFFFFF);
 }

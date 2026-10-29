@@ -7,6 +7,7 @@
 //   runs 0 (start the sell animation), 1 (unload the occupants and spawn the cargo), 2 (the final replacement).
 
 #include "building_a2_views.h"
+#include "../../_layout/session_class.h"
 
 // The condition under which the sale produces a replacement unit (the unit type exists and, for the
 // network-synchronised kind, the local multiplayer conditions hold).
@@ -14,7 +15,7 @@ inline bool BA2Building::SpawnsUnit()
 {
     return Type->unknown_408
         && (!Type->unknown_16B9
-            || (DAT_00A8B238 && unknown_218 && Owner->FUN_0050B730() && DAT_00A8B238 && DAT_00A8B320 && !unknown_2C0));
+            || (Session_00A8B238.GameMode && unknown_218 && Owner->FUN_0050B730() && Session_00A8B238.GameMode && DAT_00A8B320 && !unknown_2C0));
 }
 
 // CAPPED (partial, readable): 80.1% of the retail instructions align (88.8% with stack offsets ignored). Remaining

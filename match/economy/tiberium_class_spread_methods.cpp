@@ -16,8 +16,7 @@
 #include "../core/vector_class.h"
 #include <stdlib.h>
 
-// GLOBAL: GAMEMD 0xA8B230 -- the scenario object.
-extern ScenarioClass* DAT_00A8B230;
+#include "../_layout/scenario_ptr_00a8b230.h"
 
 // GLOBAL: GAMEMD 0xB0F4E8 -- TiberiumClass::Array.
 extern DynamicVectorClass<TiberiumClass*> DAT_00B0F4E8;

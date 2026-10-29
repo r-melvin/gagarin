@@ -48,6 +48,7 @@
 // the slot-call view does not establish the original virtual declaring class.
 
 #include "../_layout/object_class.h"
+#include "../_layout/session_class.h"
 #include "../_layout/swizzle_manager_class.h"
 
 // CellStruct — 2D short cell coordinate (sizeof = 4). Self-guarded for reuse.
@@ -61,28 +62,6 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "flight_level.h"
 
 // The map object at 0x87F7E8 (only the entry points used here).
-class DisplayClass
-{
-public:
-    // CALLEE: GAMEMD 0x4F42F0 (declaration) -- flag a redraw.
-    void FlagToRedraw(int which);
-    // CALLEE: GAMEMD 0x4AEB10 (declaration) -- the object under focus.
-    ObjectClass* FUN_004AEB10();
-    // CALLEE: GAMEMD 0x4AEB30 (declaration) -- set the object under focus.
-    void FUN_004AEB30(ObjectClass* object);
-};
-class MapView_565730_5 : public DisplayClass
-{
-public:
-    // CALLEE: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
-    CellClass* FUN_00565730(const CoordStruct* coord);
-    // CALLEE: GAMEMD 0x5657A0 (declaration) -- the cell at a cell position.
-    CellClass* FUN_005657A0(const CellStruct* cell);
-    // CALLEE: GAMEMD 0x578080 (declaration) -- the ground height at a coordinate.
-    int FUN_00578080(const CoordStruct* coord);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapView_565730_5 DAT_0087F7E8;
 
 // The rules object behind the global pointer 0x8871E0 (read-only here).
 struct ObjectRulesView_5F4360
@@ -195,10 +174,7 @@ struct House_5F5280
     bool IsControlledByCurrentPlayer() const;
 };
 
-// GLOBAL: GAMEMD 0xA83D4C -- the player's house (a pointer, passed to slot 50).
-extern HouseClass* DAT_00A83D4C;
-// GLOBAL: GAMEMD 0xA8B238 -- the session game mode (0 is a campaign).
-extern int DAT_00A8B238;
+#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0xAC13BC -- the height a bridge adds.
 extern int DAT_00AC13BC;
 
@@ -333,6 +309,7 @@ GG_STATIC_ASSERT(sizeof(void*) == 4);
 #include "object_class_uninit_methods.h"
 
 #include "../_layout/object_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 typedef CoordStruct* (IPersistStream::*ObjectYSortGetCoords)(CoordStruct*) const;
 struct ObjectYSortVtablePrefix
@@ -521,7 +498,7 @@ void ObjectClass::vf_77()
 {
     if (!NeedsRedraw) {
         NeedsRedraw = 1;
-        DAT_0087F7E8.FlagToRedraw(0);
+        DAT_0087F7E8.FUN_004F42F0(0);
     }
 }
 
@@ -863,7 +840,7 @@ void ObjectClass::vf_13(Obj_004A1D30* crc)
     }
     crc->FUN_004A1D50(Health);
     crc->FUN_004A1CA0(IsOnMap);
-    if (DAT_00A8B238 == 0 || DAT_00A8B238 == 5) {
+    if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5) {
         crc->FUN_004A1CA0(NeedsRedraw);
         crc->FUN_004A1CA0(IsSelected);
     }
