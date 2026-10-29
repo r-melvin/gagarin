@@ -3,7 +3,9 @@
 //   Evidence: disassembly of 0x528170 and 0x5295A0 in the user's retail gamemd.exe v1.001;
 //   the literals are at 0x825BD0 ("%X"), 0x825BF8 ("yes") and 0x825BF4 ("no").
 //
-// INIClass writers. Address index: 0x528170 0x5295A0 0x529820 0x529C40 0x52A0A0 0x527640 0x527C60 0x528600 0x5281C0.
+// INIClass writers. Address index: 0x528170 0x5295A0 0x529820 0x529C40 0x52A0A0 0x527640 0x527B90 0x527C60 0x528600 0x5281C0.
+#include <windows.h>
+#include <objbase.h>
 #include <stdio.h>
 #include "../core/string_class.h"
 #include "../_layout/ini_class.h"
@@ -14,6 +16,20 @@ bool INIClass::FUN_00528170(const char* section, const char* key, int value)
 {
     char buffer[0x200];
     sprintf(buffer, "%X", value);
+    return WriteString(section, key, buffer);
+}
+
+// FUNCTION: GAMEMD 0x527B90
+// Writes `guid` in its braced text form, converted to the ANSI code page through a local buffer.
+bool INIClass::FUN_00527B90(const char* section, const char* key, const GUID& guid)
+{
+    LPOLESTR wide = 0;
+    char buffer[128];
+
+    StringFromCLSID(guid, &wide);
+    if (WideCharToMultiByte(CP_ACP, 0, wide, -1, buffer, 128, 0, 0) == 0)
+        GetLastError();
+    CoTaskMemFree(wide);
     return WriteString(section, key, buffer);
 }
 
@@ -106,6 +122,16 @@ bool INIClass::WriteDouble(const Wstring& section, const Wstring& key, double va
     double v = value;
     sprintf(buffer, "%f", v);
     return WriteString(sectionText, keyText, buffer);
+}
+
+// FUNCTION: GAMEMD 0x5285B0
+// Writes a double with "%f".
+bool INIClass::WriteDouble(const char* section, const char* key, double value)
+{
+    char buffer[0x200];
+    double v = value;
+    sprintf(buffer, "%f", v);
+    return WriteString(section, key, buffer);
 }
 
 // FUNCTION: GAMEMD 0x5281C0

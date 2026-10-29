@@ -80,14 +80,16 @@ GG_STATIC_ASSERT(offsetof(StreamSampleView, unknown_C4) == 0xC4);
 
 struct StreamSlot
 {
-    char                  unknown_00[0x14];
+    unsigned char         Active;          // +0x00
+    char                  unknown_01[0x13];
     unsigned              LastBytes;       // +0x14
     unsigned              LastTime;        // +0x18
     unsigned              StartTime;       // +0x1C
     unsigned              Ticks;           // +0x20
     char                  unknown_24[4];
-    unsigned char         Flags;           // +0x28
-    char                  unknown_29[0x1B];
+    unsigned              Flags;           // +0x28 (bit 0: paused)
+    char                  unknown_2C[0x14];
+    int                   unknown_40;      // +0x40
     int                   Current;         // +0x44
     int                   Ready[2];        // +0x48
     void*                 Chunk[2];        // +0x50
@@ -102,9 +104,11 @@ struct StreamSlot
     StreamCriticalSection Lock;            // +0xA0
     long                  Busy;            // +0xB8
 };
+GG_STATIC_ASSERT(offsetof(StreamSlot, Active) == 0x00);
 GG_STATIC_ASSERT(offsetof(StreamSlot, LastBytes) == 0x14);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Ticks) == 0x20);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Flags) == 0x28);
+GG_STATIC_ASSERT(offsetof(StreamSlot, unknown_40) == 0x40);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Current) == 0x44);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Ready) == 0x48);
 GG_STATIC_ASSERT(offsetof(StreamSlot, Chunk) == 0x50);
@@ -188,6 +192,24 @@ unsigned __cdecl FUN_004116a0(StreamSampleView* sample)
     return slot->Ticks;
 }
 
+// FUNCTION: GAMEMD 0x412230
+// PARTIAL: 78.6%. Same instructions; retail interleaves the Leave argument push
+// between the flag load and the OR, we push it first. Not steered.
+// Pause a streaming sample: stop its sound buffer under the slot's lock and
+// flag the slot as paused. Always returns -1.
+int __cdecl FUN_00412230(StreamSampleView* sample)
+{
+    StreamSlot* slot = &DAT_00887778[sample->Slot];
+    EnterCriticalSection(&slot->Lock);
+    if (slot->Active == 1 && slot->Buffer != 0)
+    {
+        slot->Buffer->lpVtbl->Stop(slot->Buffer);
+        slot->Flags |= 1;
+    }
+    LeaveCriticalSection(&slot->Lock);
+    return -1;
+}
+
 // FUNCTION: GAMEMD 0x4123A0
 void __stdcall FUN_004123a0(unsigned timer_id, unsigned message, StreamSampleView* sample,
                             unsigned param1, unsigned param2)
@@ -244,4 +266,34 @@ void __stdcall FUN_004123a0(unsigned timer_id, unsigned message, StreamSampleVie
         LeaveCriticalSection(&slot->Lock);
     }
     InterlockedDecrement(&slot->Busy);
+}
+
+// FUNCTION: GAMEMD 0x412550
+// PARTIAL: 88.2%. Same instructions; retail pushes the Leave argument after the OR.
+// Stop the first slot's sound buffer under its lock and flag the slot as
+// paused. Does nothing unless the slot is active and has a buffer.
+void __cdecl FUN_00412550()
+{
+    if (DAT_00887778[0].Active == 1 && DAT_00887778[0].Buffer != 0)
+    {
+        EnterCriticalSection(&DAT_00887778[0].Lock);
+        DAT_00887778[0].Buffer->lpVtbl->Stop(DAT_00887778[0].Buffer);
+        DAT_00887778[0].Flags |= 1;
+        LeaveCriticalSection(&DAT_00887778[0].Lock);
+    }
+}
+
+// FUNCTION: GAMEMD 0x4125A0
+// PARTIAL: 80.0%. Same instructions; retail pushes the Leave argument after the AND.
+// Resume the first slot's sound buffer (looping play) under its lock and clear
+// the paused flag. Does nothing unless the slot is active and has a buffer.
+void __cdecl FUN_004125a0()
+{
+    if (DAT_00887778[0].Active == 1 && DAT_00887778[0].Buffer != 0)
+    {
+        EnterCriticalSection(&DAT_00887778[0].Lock);
+        DAT_00887778[0].Buffer->lpVtbl->Play(DAT_00887778[0].Buffer, 0, 0, 1);
+        DAT_00887778[0].Flags &= ~1;
+        LeaveCriticalSection(&DAT_00887778[0].Lock);
+    }
 }

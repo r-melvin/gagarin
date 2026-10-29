@@ -29,4 +29,13 @@ public:
 };
 GG_STATIC_ASSERT(sizeof(Megawealth) == sizeof(MultiplayerGameMode));
 
+// VTABLE: GAMEMD 0x7EE814
+class UnholyAlliance : public MultiplayerGameMode
+{
+public:
+    UnholyAlliance(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
+    virtual ~UnholyAlliance();
+};
+GG_STATIC_ASSERT(sizeof(UnholyAlliance) == sizeof(MultiplayerGameMode));
+
 #endif  // GG_MATCH_NETWORK_MP_GAME_MODE_LEAF_CLASSES_H

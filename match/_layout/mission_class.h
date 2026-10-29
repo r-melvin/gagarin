@@ -99,6 +99,7 @@ public:
 
     // FUNCTION: GAMEMD 0x5B2DA0 (declaration; native constructor)
     MissionClass();
+    MissionClass(const AbstractNoInit& noInit) : ObjectClass(noInit) {}
 };
 
 GG_STATIC_ASSERT(offsetof(MissionClass, CurrentMission)          == 0xAC);

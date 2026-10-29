@@ -59,6 +59,9 @@ public:
     virtual int vf_159(int command, void* data, RadioClass* peer);                    // 159 0x65A970
     virtual void vf_160(int a1);                                   // 160 0x65ACE0
 
+    // FUNCTION: GAMEMD 0x65A7E0 (no-init constructor)
+    RadioClass(const AbstractNoInit& noInit);
+
     int         LastCommands[3];   // +0xD4  (RadioCommand enum x3)
     VectorClass<TechnoClass*> RadioLinks;        // +0xE0  (0x10; docked units etc.)
 };

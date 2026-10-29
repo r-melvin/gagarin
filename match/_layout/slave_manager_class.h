@@ -39,6 +39,10 @@ public:
     // FUNCTION: GAMEMD 0x6AF1A0 (declaration; constructor)
     SlaveManagerClass(TechnoClass* owner, InfantryTypeClass* slaveType,
                       int slaveCount, int regenRate, int reloadRate);
+    // FUNCTION: GAMEMD 0x6AF360 -- default constructor (registers in the slave manager array).
+    SlaveManagerClass();
+    // FUNCTION: GAMEMD 0x6AF440 -- NoInit constructor (load path).
+    SlaveManagerClass(const AbstractNoInit& noInit);
     virtual ~SlaveManagerClass();                                         // 8   0x6B1390
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x6B1130
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x6B1170
@@ -57,6 +61,15 @@ public:
     CDTimerClass       RespawnTimer;    // +0x50 ctor StartTime=CurrentFrame
     int                State;           // +0x5C SlaveManagerStatus
     int                LastScanFrame;   // +0x60
+
+    // Members recovered in r19_5 (match/combat/slave_manager_r19_5.cpp).
+    // FUNCTION: GAMEMD 0x6AF6C0 (decl; reloc)
+    void FUN_006AF6C0();
+    // FUNCTION: GAMEMD 0x6AFD60 (decl; reloc)
+    void FUN_006AFD60();
+    // Order every live slave to go idle and set State = 1 / 4 (0x6B0CC0 / 0x6B0D10).
+    void SetStateIdle1();
+    void SetStateIdle4();
 };
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass::SlaveControl, Slave)        == 0x00);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass::SlaveControl, State)        == 0x04);

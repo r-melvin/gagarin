@@ -199,7 +199,7 @@ public:
 
     unsigned char unknown_24[4];     // +0x24
     TActionClass* unknown_28;        // +0x28
-    unsigned char unknown_2C[4];     // +0x2C
+    int           unknown_2C;        // +0x2C
     TeamTypeClass* unknown_30;       // +0x30
     unsigned char unknown_34[0x10];  // +0x34
     int           unknown_44;        // +0x44 waypoint index

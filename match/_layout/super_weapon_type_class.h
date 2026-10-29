@@ -34,6 +34,8 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x6CE910
     virtual int vf_16();                                                  // 16  0x6CEA10
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x6CEA20
+    // Slot 27 (vtable 0x7F40FC): the first argument is ignored.
+    virtual int vf_27(int unused, AbstractClass* target);                 // 27  0x6CEF80
 
     // STATIC: GAMEMD 0x6CEEB0  (__fastcall)
     static SuperWeaponTypeClass* FindFirstOfAction(int action);

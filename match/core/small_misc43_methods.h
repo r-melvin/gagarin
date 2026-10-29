@@ -22,14 +22,20 @@ __int64 FUN_004093B0();   // FUNCTION: GAMEMD 0x4093B0
 struct Obj_004053E0
 {
     Obj_004053E0* Next;   // +0x0000  ring link
-    char    _pad004[0x1C - 0x04];
+    char    _pad004[0x18 - 0x04];
+    unsigned char Flags; // +0x0018  bit 0: marked for release; bit 7: heap block
+    char    _pad019[0x1C - 0x19];
     int     State;       // +0x001C
-    char    _pad020[0x140 - 0x20];
+    char    _pad020[0x138 - 0x20];
+    int     Pending;     // +0x0138
+    char    _pad13C[0x140 - 0x13C];
     __int64 Accumulated; // +0x0140
     char    _pad148[0x158 - 0x148];
     int     PauseCount;  // +0x0158
 };
+GG_STATIC_ASSERT(offsetof(Obj_004053E0, Flags) == 0x18);
 GG_STATIC_ASSERT(offsetof(Obj_004053E0, State) == 0x1C);
+GG_STATIC_ASSERT(offsetof(Obj_004053E0, Pending) == 0x138);
 GG_STATIC_ASSERT(offsetof(Obj_004053E0, Accumulated) == 0x140);
 GG_STATIC_ASSERT(offsetof(Obj_004053E0, PauseCount) == 0x158);
 

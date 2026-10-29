@@ -122,6 +122,30 @@ static inline ModeVector_005D5F30& Modes_005D5F30()
     return modes;
 }
 
+// FUNCTION: GAMEMD 0x5D5AC0
+// The game-mode vector (out-of-line copy of the accessor).
+ModeVector_005D5F30* FUN_005D5AC0()
+{
+    return &Modes_005D5F30();
+}
+
+// FUNCTION: GAMEMD 0x5D5ED0
+// The number of registered game modes.
+int FUN_005D5ED0()
+{
+    return Modes_005D5F30().Count;
+}
+
+// FUNCTION: GAMEMD 0x5D5E10
+// The first registered game mode, or null when there is none.
+MultiplayerGameMode* FUN_005D5E10()
+{
+    if (Modes_005D5F30().GetCount() == 0) {
+        return 0;
+    }
+    return Modes_005D5F30().Items[0];
+}
+
 // SYNTHETIC: GAMEMD 0x5D5B20 -- exit-time destructor stub of the function-local static above
 #include "mp_game_mode_class_methods.h"
 
@@ -133,14 +157,6 @@ static inline ModeVector_005D5F30& Modes_005D5F30()
 #include "mp_game_mode_leaf_classes.h"
 #include "free_for_all.h"
 #include "mp_cooperative.h"
-
-// RTTI ".?AVUnholyAlliance@@" (table 0x7EE814); only its constructor
-// (0x5CB3A0) is referenced here.
-class UnholyAlliance : public MultiplayerGameMode
-{
-public:
-    UnholyAlliance(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
-};
 
 // MultiplayerGameMode::InitializerBase and Initializer<T> are declared in the
 // canonical class (multiplayer_game_mode.h).

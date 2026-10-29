@@ -10,8 +10,6 @@
 #include "../_rt/gg_static_assert.h"
 
 
-// FUNCTION: GAMEMD 0x479700
-void __cdecl FUN_00479700();
 // FUNCTION: GAMEMD 0x479730
 void __cdecl FUN_00479730();
 

@@ -54,6 +54,10 @@ public:
     bool RemoveOneFromQueue(TechnoTypeClass const* pItem);    // 0x4CA620
     int  CountTotal(TechnoTypeClass const* pType) const;      // 0x4CA670
     bool IsQueued(TechnoTypeClass* pType) const;              // 0x4CA6B0
+    // FUNCTION: GAMEMD 0x4C9E10 -- takes `object` as the item in production, done and suspended.
+    void FUN_004C9E10(TechnoClass* object);
+    // FUNCTION: GAMEMD 0x4C9FF0 (decl; reloc) -- gives up the current production.
+    bool AbandonProduction();
 
     StageClass   Production;            // +0x24  progress; Value == 0x36 when done
     DynamicVectorClass<TechnoTypeClass const*> QueuedObjects;  // +0x40 ctor vptr 0x7E8934

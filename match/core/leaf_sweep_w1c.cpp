@@ -651,6 +651,26 @@ void __fastcall FUN_004E4770(HWND dialog, int id)
         ShowWindow(control, SW_SHOW);
 }
 
+// STRING: GAMEMD 0x8229EC -- "GUI:Observer"
+extern char DAT_008229EC[];
+
+// FUNCTION: GAMEMD 0x004E3B00
+// Fills the combo box `id` of the dialog with a single entry (the "GUI:Observer" label, message line 0x135),
+// selects it, and re-shows the control when it was visible.
+void __fastcall FUN_004E3B00(HWND dialog, int id)
+{
+    HWND control = GetDlgItem(dialog, id);
+    bool wasHidden = ShowWindow(control, SW_HIDE) == 0;
+    SendMessageA(control, 0x14B, 0, 0);
+    SendMessageA(control, 0x4DE, 0, 7);
+    int index = (int)SendMessageA(control, 0x4C2, 0, (LPARAM)FUN_00734E60(DAT_008229EC, 0, DAT_008229C0, 0x135));
+    SendMessageA(control, 0x151, index, -3);
+    SendMessageA(control, 0x14E, 0, 0);
+    SendMessageA(control, 0x4F1, 0, 1);
+    if (!wasHidden)
+        ShowWindow(control, SW_SHOW);
+}
+
 // GLOBAL: GAMEMD 0x822B7C
 extern char DAT_00822B7C[];
 

@@ -8,6 +8,11 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu264_methods.h"
+#include "mathtbl_init_shapes.h"
+
+// SYNTHETIC: GAMEMD 0x7539B0
+// GLOBAL: GAMEMD 0xB2D810
+MathTblZero4 DAT_00B2D810;
 
 // FUNCTION: GAMEMD 0x752AB0
 // Branching.
@@ -69,6 +74,20 @@ Empty_00753AD0 Obj_00753AD0;
 
 // SYNTHETIC: GAMEMD 0x753AE0
 Empty_00753AE0 Obj_00753AE0;
+
+// A rectangle of the 256-square buffer: origin (0, 0), extent 255 x 255.
+struct Rect_00753AF0
+{
+    int X;
+    int Y;
+    int Width;
+    int Height;
+    Rect_00753AF0() : X(0), Y(0), Width(0xFF), Height(0xFF) {}
+};
+
+// SYNTHETIC: GAMEMD 0x753AF0
+// GLOBAL: GAMEMD 0xB2FB60
+Rect_00753AF0 DAT_00B2FB60;
 
 // FUNCTION: GAMEMD 0x753C60
 // Returns the address of a global.

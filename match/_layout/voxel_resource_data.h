@@ -45,6 +45,8 @@ struct Obj_00755D10
     VoxelSectionRow* FUN_007564A0(int section);
     // FUNCTION: GAMEMD 0x7564B0
     VoxelSectionBounds* FUN_007564b0(int section, int frame);
+    // FUNCTION: GAMEMD 0x7564E0 -- centre of the frame's bounds; returns `out`.
+    Vector3D* FUN_007564E0(Vector3D* out, int section, int frame);
     // FUNCTION: GAMEMD 0x755D10
     ~Obj_00755D10();
     unsigned char unknown_00;

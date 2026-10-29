@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "../_layout/abstract_type_class.h"
+#include "../_layout/obj_004a1d30.h"
 #include "header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
@@ -40,6 +41,8 @@ struct Obj_004C4F90
 
     // FUNCTION: GAMEMD 0x4C4F90
     char* FUN_004C4F90() const;
+    // FUNCTION: GAMEMD 0x4C4FC0
+    void FUN_004C4FC0(Obj_004A1D30* crc) const;
 };
 GG_STATIC_ASSERT(offsetof(Obj_004C4F90, unknown_04) == 4);
 
@@ -48,4 +51,15 @@ char* Obj_004C4F90::FUN_004C4F90() const
 {
     sprintf(DAT_008A37A0, "%d,%s", unknown_00, unknown_04->ID.Data);
     return DAT_008A37A0;
+}
+
+// FUNCTION: GAMEMD 0x4C4FC0
+// Feeds the number, then the type's class kind and unique ID, into the CRC.
+void Obj_004C4F90::FUN_004C4FC0(Obj_004A1D30* crc) const
+{
+    crc->FUN_004A1D50(unknown_00);
+    if (unknown_04) {
+        crc->FUN_004A1D50(unknown_04->vf_11());
+        crc->FUN_004A1D50(unknown_04->vf_rtti_4());
+    }
 }

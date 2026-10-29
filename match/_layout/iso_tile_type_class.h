@@ -57,9 +57,14 @@ public:
     int              FUN_00544BE0(int idx);
     bool             FUN_00544C80();
     int              FUN_00549A60(int idx);
+    // Round 19 additions (GAMEMD 0x544C20, 0x544CE0).
+    bool             FUN_00544C20(int idx, bool load);
+    static int       FUN_00544CE0(const char* name);
 
     IsoTileTypeVtbl* Vfptr;                    // +0x000
-    char             _pad_004[0x0A4 - 0x004];
+    char             _pad_004[0x024 - 0x004];
+    char             ID[0x19];                 // +0x024 type name (AbstractTypeClass::ID)
+    char             _pad_03D[0x0A4 - 0x03D];
     TileImageHeader* unknown_A4;                 // +0x0A4
     char             _pad_0A8[0x294 - 0x0A8];
     int              unknown_294;              // +0x294 copied into CellClass +0x38 at 0x5A6C10
@@ -70,6 +75,7 @@ public:
     unsigned char    TileDataLoadable;         // +0x2F4
 };
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, Vfptr)            == 0x000);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, ID)                 == 0x024);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_A4)         == 0x0A4);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_294)        == 0x294);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E4)        == 0x2E4);

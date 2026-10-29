@@ -5,8 +5,13 @@
 //   (retail RTTI, see iso_tile_type_class_tile_data_methods.h); the slot +0x9C call is
 //   GetTileData.
 //
-// Address index: 0x544BE0 0x544C80 0x549A60
+// Address index: 0x544BE0 0x544C20 0x544C80 0x544CE0 0x549A60
+#include <string.h>
 #include "iso_tile_type_class_tile_data_methods.h"
+#include "../core/vector_class.h"
+
+// GLOBAL: GAMEMD 0xA8ED28 -- every IsometricTileTypeClass, in tile order.
+extern DynamicVectorClass<IsometricTileTypeClass*> DAT_00A8ED28;
 
 // Sub-tile image fields beyond the ones SubTileImage names; a view over the same record.
 struct SubTileView_r15
@@ -42,6 +47,20 @@ int IsometricTileTypeClass::FUN_00544BE0(int idx)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x544C20
+// Whether sub-tile `idx` has an image; with `load` set, the tile set is loaded first if needed.
+bool IsometricTileTypeClass::FUN_00544C20(int idx, bool load)
+{
+    if (load && this->unknown_A4 == 0 && this->TileDataLoadable) {
+        this->LoadTileData();
+    }
+    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+    if (data != 0 && idx < data->Height * data->Width && data->SubTiles[idx] != 0) {
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x544C80
 // Loads the tile set on first use and reports whether it is present.
 bool IsometricTileTypeClass::FUN_00544C80()
@@ -50,6 +69,20 @@ bool IsometricTileTypeClass::FUN_00544C80()
         this->LoadTileData();
     }
     return this->unknown_A4 != 0;
+}
+
+// FUNCTION: GAMEMD 0x544CE0
+// Index of the tile type named `name` (case-insensitive), or 0xFFFF.
+int IsometricTileTypeClass::FUN_00544CE0(const char* name)
+{
+    if (name != 0) {
+        for (int i = 0; i < DAT_00A8ED28.Count; i++) {
+            if (_stricmp(DAT_00A8ED28.Items[i]->ID, name) == 0) {
+                return i;
+            }
+        }
+    }
+    return 0xFFFF;
 }
 
 // FUNCTION: GAMEMD 0x549A60

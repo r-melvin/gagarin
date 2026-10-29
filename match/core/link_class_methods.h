@@ -29,6 +29,8 @@ public:
     // Inline: a derived constructor (GadgetClass, 0x4E12F0) stores both
     // pointers as zero before its own members.
     LinkClass() : Next(0), Previous(0) {}
+    // GAMEMD 0x556550: constructs the node and links it after `object`.
+    LinkClass(LinkClass& object);
     // GAMEMD 0x556600: unlinks this node and adds it after the source.
     LinkClass& operator=(const LinkClass& other);
 

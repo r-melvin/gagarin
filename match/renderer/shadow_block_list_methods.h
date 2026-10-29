@@ -159,6 +159,8 @@ public:
     void Draw();
     // FUNCTION: GAMEMD 0x5FFFA0 (declared; matched separately)
     static void DrawAll();
+    // FUNCTION: GAMEMD 0x5FF320 (__thiscall) -- age one step; retire the entry when it is old.
+    void AgeStep();
 
     Payload_005FF250 Payload;      // +0x00
     int              Age;          // +0x0C  zeroed by the ctor, +8 per sweep

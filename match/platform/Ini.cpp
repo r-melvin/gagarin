@@ -1100,6 +1100,47 @@ bool CCINI_0052A940::WriteTime(const char* section, const char* key, int value)
     return WriteString(section, key, buffer);
 }
 
+// FUNCTION: GAMEMD 0x52A9E0
+// Scans one INI line, tracking the column (tabs advance to the next multiple of eight): the column of
+// the first '=' (*eq), of the first visible character after it (*valueStart) and of a ';' comment
+// (*comment). Unset columns come back as 0. Returns the text after the ';', or 0 when there is none.
+char* __fastcall FUN_0052A9E0(unsigned char* line, int* eq, int* valueStart, int* comment)
+{
+    *eq = -1;
+    char* rest = 0;
+    *valueStart = -1;
+    *comment = -1;
+    unsigned char c = *line;
+    int column = 0;
+    while (c != 0) {
+        if (*eq >= 0 && *valueStart < 0 && c > 0x20)
+            *valueStart = column;
+        c = *line;
+        if (c == ';') {
+            *comment = column;
+            rest = (char*)(line + 1);
+            break;
+        }
+        if (c != '\t') {
+            if (c != '=') {
+                column++;
+            } else {
+                if (*eq < 0)
+                    *eq = column;
+                column++;
+            }
+        } else {
+            column = (column & ~7) + 8;
+        }
+        c = line[1];
+        line++;
+    }
+    *eq = *eq < 0 ? 0 : *eq;
+    *valueStart = *valueStart < 0 ? 0 : *valueStart;
+    *comment = *comment < 0 ? 0 : *comment;
+    return rest;
+}
+
 // FUNCTION: GAMEMD 0x52AE00
 void* Obj_52AE00::FUN_52AE00(unsigned int flags)
 {

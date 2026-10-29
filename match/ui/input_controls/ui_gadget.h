@@ -192,6 +192,7 @@ public:
         unknown_50 = start < length - pixels ? start : length - pixels;
     }
 
+
     GadgetClass*  unknown_3C;    // +0x3C  deleted by the destructor 0x6B1D00
     GadgetClass*  unknown_40;   // +0x40
     unsigned char unknown_44;    // +0x44  constructor flag; gates the box-and-thumb path in Draw
@@ -509,6 +510,8 @@ GG_STATIC_ASSERT(offsetof(StaticButtonClass, unknown_34) == 0x34);
 class TextLabelClass : public GadgetClass
 {
 public:
+    // FUNCTION: GAMEMD 0x72A440 -- defining it emits the vtable at 0x7F5B44.
+    TextLabelClass(const wchar_t* text, int x, int y, int scheme, int unused);
     virtual int  Draw(int forced);                      // 0x6C  0x72A4A0
     virtual void SetText(const wchar_t* text);          // 0x84  0x72A660 (new slot 33)
 

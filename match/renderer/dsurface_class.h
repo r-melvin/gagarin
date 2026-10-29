@@ -76,7 +76,9 @@ struct DDSurfaceVtbl
     long(__stdcall* Blt)(DDSurface*, DDRect*, DDSurface*, DDRect*, unsigned long, DDBltFx*); // +0x14
     void* unknown_18[7];                                                                  // +0x18
     long(__stdcall* GetBltStatus)(DDSurface*, unsigned long);                             // +0x34
-    void* unknown_38[8];                                                                  // +0x38
+    void* unknown_38[3];                                                                  // +0x38
+    long(__stdcall* GetDC)(DDSurface*, void**);                                           // +0x44
+    void* unknown_48[4];                                                                  // +0x48
     long(__stdcall* GetSurfaceDesc)(DDSurface*, DDSurfaceDesc*);                          // +0x58
     void* unknown_5C;                                                                     // +0x5C
     long(__stdcall* IsLost)(DDSurface*);                                                  // +0x60
@@ -90,6 +92,7 @@ struct DDSurfaceVtbl
 GG_STATIC_ASSERT(offsetof(DDSurfaceVtbl, Release) == 0x08);
 GG_STATIC_ASSERT(offsetof(DDSurfaceVtbl, Blt) == 0x14);
 GG_STATIC_ASSERT(offsetof(DDSurfaceVtbl, GetBltStatus) == 0x34);
+GG_STATIC_ASSERT(offsetof(DDSurfaceVtbl, GetDC) == 0x44);
 GG_STATIC_ASSERT(offsetof(DDSurfaceVtbl, GetSurfaceDesc) == 0x58);
 GG_STATIC_ASSERT(offsetof(DDSurfaceVtbl, IsLost) == 0x60);
 GG_STATIC_ASSERT(offsetof(DDSurfaceVtbl, Lock) == 0x64);
@@ -178,6 +181,12 @@ public:
 private:
     // Inline source helper used by candidate methods; false denotes failed recovery.
     bool Recover();
+
+public:
+    // FUNCTION: GAMEMD 0x4BACF0
+    void* FUN_004BACF0();
+    // FUNCTION: GAMEMD 0x4BB000
+    bool FUN_004BB000();
 };
 GG_STATIC_ASSERT(offsetof(DSurface, BytesPerPixel) == 0x10);
 GG_STATIC_ASSERT(offsetof(DSurface, Buffer) == 0x14);

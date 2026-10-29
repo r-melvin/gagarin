@@ -43,9 +43,18 @@ public:
 
     BeaconClass* Beacons[8][3];   // +0x00
     int          AllocatedCount;  // +0x60
+    char         unknown_64[0x14];            // +0x64
+    int          RadarBeaconFrameCount;       // +0x78 (read by absolute address 0x89C428)
+    int          RadarBeaconAnimPeriod;       // +0x7C (divisor of the frame counter, 0x431700)
+
+    // The global instance's initialiser at 0x430190 clears the table, the
+    // count and the period inline (rep stos, then two stores of zero).
+    BeaconManagerClass();
 };
 
 GG_STATIC_ASSERT(offsetof(BeaconManagerClass, Beacons)        == 0x00);
 GG_STATIC_ASSERT(offsetof(BeaconManagerClass, AllocatedCount) == 0x60);
+GG_STATIC_ASSERT(offsetof(BeaconManagerClass, RadarBeaconFrameCount) == 0x78);
+GG_STATIC_ASSERT(offsetof(BeaconManagerClass, RadarBeaconAnimPeriod) == 0x7C);
 
 #endif  // GG_MATCH_NETWORK_BEACON_MANAGER_CLASS_H

@@ -37,6 +37,8 @@ public:
         int            Status;   // +0x04 SpawnNodeStatus (Idle=0, Launching=1, 2, Reloading=6, Dead=7)
     };
 
+    // FUNCTION: GAMEMD 0x6B6FA0 -- NoInit constructor (load path).
+    SpawnManagerClass(const AbstractNoInit& noInit);
     virtual ~SpawnManagerClass();                                         // 8   0x6B8140
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x6B7ED0
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x6B7F10

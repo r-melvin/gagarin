@@ -528,6 +528,20 @@ DSurface::~DSurface()
     DDSurf = 0;
 }
 
+// FUNCTION: GAMEMD 0x4BACF0
+// Takes a device context from the DirectDraw surface when it is not locked; returns it, or 0.
+void* DSurface::FUN_004BACF0()
+{
+    void* dc = 0;
+    if (!IsLocked()) {
+        if (!DDSurf->lpVtbl->GetDC(DDSurf, &dc))
+            ++LockLevel;
+        else
+            return 0;
+    }
+    return dc;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4BAD60
 int DSurface::GetBytesPerPixel()
@@ -603,6 +617,30 @@ bool DSurface::Unlock()
         return true;
     }
     return false;
+}
+
+// FUNCTION: GAMEMD 0x4BB000
+// Reports whether the surface is usable: restores a lost DirectDraw surface and, if it was locked, re-takes the lock.
+bool DSurface::FUN_004BB000()
+{
+    if (!DAT_0089F978 && !DAT_00A8ED80)
+        return false;
+    if (DDSurf && DDSurf->lpVtbl->IsLost(DDSurf) == (long)DDERR_SURFACELOST_VALUE) {
+        if (DDSurf->lpVtbl->Restore(DDSurf) || DDSurf->lpVtbl->IsLost(DDSurf))
+            return false;
+        int saved = LockLevel;
+        if (saved > 0) {
+            Point2D zero;
+            LockLevel = 0;
+            zero.X = 0;
+            zero.Y = 0;
+            Lock(zero);
+            ++LockLevel;
+            Unlock();
+            LockLevel = saved;
+        }
+    }
+    return true;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

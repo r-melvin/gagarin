@@ -440,12 +440,6 @@ bool CD_004790E0::FUN_004790E0(int value)
     return FUN_004A8270(value);
 }
 
-// FUNCTION: GAMEMD 0x479700
-// Empty function.
-void __cdecl FUN_00479700()
-{
-}
-
 // FUNCTION: GAMEMD 0x479730
 // Empty function.
 void __cdecl FUN_00479730()

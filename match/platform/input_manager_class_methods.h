@@ -43,6 +43,13 @@ struct InputManagerClass
 
     // FUNCTION: GAMEMD 0x54F720 (decl; reloc) — head/tail synchronization.
     void DoSomething();
+
+    // FUNCTION: GAMEMD 0x54F200 (decl; reloc) -- queue a key record.
+    bool FUN_0054F200(int key, bool release);
+    // FUNCTION: GAMEMD 0x54F2F0 (decl) -- queue a mouse button with two coordinates.
+    bool FUN_0054F2F0(int key, unsigned short x, unsigned short y, bool release);
+    // FUNCTION: GAMEMD 0x54F3D0 (decl) -- queue a character record.
+    bool FUN_0054F3D0(char ch);
 };
 
 GG_STATIC_ASSERT(offsetof(InputManagerClass, KeyState) == 0x14);

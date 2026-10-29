@@ -598,6 +598,10 @@ public:
     void UpdateFlagCoords(UnitClass* NewCarrier, unsigned long dwUnk); // 0x4FBE40 (decl; reloc)
     void AcquiredThreatNode();                                  // 0x509130
     bool IonSensitivesShouldBeOffline() const;                  // 0x53A130
+    // FUNCTION: GAMEMD 0x504790 (decl; reloc) -- adds to the anger of `house`'s node and re-picks the enemy.
+    void UpdateAngerNodes(int scoreAdd, HouseClass* house);
+    // FUNCTION: GAMEMD 0x5093C0 -- clears the anger of `house`'s node.
+    void FUN_005093C0(HouseClass* house);
     void ForceEnd();                                            // 0x4FCDC0
     unsigned char Win(bool savour);                             // 0x4FC9E0 (decl; reloc)
     bool CanOverpower(TechnoClass* pTarget) const;              // 0x4F9AF0

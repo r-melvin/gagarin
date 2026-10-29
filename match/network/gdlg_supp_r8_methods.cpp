@@ -6,6 +6,7 @@
 //   control ids, any other index gives -1.
 
 #include <windows.h>
+#include "../renderer/pcx_get_surface_methods.h"
 
 // A handler object reached through a global; only virtual slot 10 is called.
 struct Handler_004E4170
@@ -53,6 +54,25 @@ int __fastcall FUN_004E3320(int index)
     if (index == 5) return 0x6DF;
     if (index == 6) return 0x6E0;
     return index == 7 ? 0x6E1 : -1;
+}
+
+// GLOBAL: GAMEMD 0xAC4848 -- the cache of loaded PCX pictures.
+extern PCX DAT_00AC4848;
+// GLOBAL: GAMEMD 0x844B18 -- the three ping indicator picture names (green, yellow, red).
+extern const char* DAT_00844B18[3];
+
+// FUNCTION: GAMEMD 0x4E33F0
+// The ping indicator picture for a quality level (0 good, 1 fair, 2 poor), or 0 for any other level.
+void* __fastcall FUN_004E33F0(int level)
+{
+    void* picture = 0;
+    if (level == 0)
+        return DAT_00AC4848.GetSurface(DAT_00844B18[0], 0);
+    if (level == 1)
+        return DAT_00AC4848.GetSurface(DAT_00844B18[1], 0);
+    if (level == 2)
+        picture = DAT_00AC4848.GetSurface(DAT_00844B18[2], 0);
+    return picture;
 }
 
 // FUNCTION: GAMEMD 0x4E3440

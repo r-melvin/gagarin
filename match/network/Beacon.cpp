@@ -165,6 +165,25 @@ BeaconManagerClass::~BeaconManagerClass()
     ReleaseBeacons(this);
 }
 
+// The constructor is expanded into the instance's initialiser (0x430190).
+inline BeaconManagerClass::BeaconManagerClass()
+{
+    for (int i = 0; i < 8; ++i)
+    {
+        for (int j = 0; j < 3; ++j)
+        {
+            Beacons[i][j] = 0;
+        }
+    }
+    AllocatedCount = 0;
+    RadarBeaconAnimPeriod = 0;
+}
+
+// SYNTHETIC: GAMEMD 0x430190
+// SYNTHETIC: GAMEMD 0x4301C0 -- exit-time destructor stub
+// GLOBAL: GAMEMD 0x89C3B0
+BeaconManagerClass DAT_0089C3B0;
+
 // FUNCTION: GAMEMD 0x430980  (__thiscall)
 void BeaconManagerClass::Reset()
 {

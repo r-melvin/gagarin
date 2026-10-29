@@ -53,6 +53,8 @@ public:
     double FUN_005283D0(const char* section, const char* key, double fallback);
     // FUNCTION: GAMEMD 0x5275C0
     bool WriteInteger(const char* section, const char* key, int value, int format);
+    // FUNCTION: GAMEMD 0x527B90 -- writes a GUID in its braced text form.
+    bool FUN_00527B90(const char* section, const char* key, const struct _GUID& guid);
     // FUNCTION: GAMEMD 0x528660
     bool WriteString(const char* section, const char* key, const char* value);
     // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- read a string into a buffer, RET 0x14.
@@ -87,6 +89,8 @@ public:
     bool WriteInteger(const Wstring& section, const Wstring& key, int value, int format);
     bool WriteIntQuad(const Wstring& section, const Wstring& key, const int* values);
     bool WriteDouble(const Wstring& section, const Wstring& key, double value);
+    // FUNCTION: GAMEMD 0x5285B0 -- writes a double with "%f".
+    bool WriteDouble(const char* section, const char* key, double value);
     // GAMEMD 0x5281C0: the Wstring-name twin of 0x528170.
     bool FUN_005281C0(const Wstring& section, const Wstring& key, int value);
     // GAMEMD 0x527C10 / 0x529BF0 / 0x52A040: composite writers over the narrow-name string writer.

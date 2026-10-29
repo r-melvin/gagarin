@@ -66,6 +66,8 @@ public:
     // The stream loader's in-place construction: the base only (retail 0x410170).
     struct LoadTag {};
     SuperClass(LoadTag) {}
+    // FUNCTION: GAMEMD 0x6CAEC0 -- default constructor (registers in the super weapon array).
+    SuperClass();
     int           CustomChargeTime;      // +0x24 ctor MOV [ESI+0x24],EAX(-1) @0x006CAFA7
     SuperWeaponTypeClass* Type;          // +0x28 ctor =arg1 @0x006CAFA4
     HouseClass*   Owner;                 // +0x2C HouseClass*; ctor =arg2 @0x006CAFAA

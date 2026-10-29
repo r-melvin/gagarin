@@ -13,6 +13,7 @@
 #include "../renderer/matrix3d_rotate_methods.h"
 #include "../_layout/matrix3d.h"
 #include "voxel_section_source.h"
+#include "mathtbl_init_shapes.h"
 
 // ---- run-time initialised copies of the shared tuning globals --------------
 
@@ -104,6 +105,10 @@ void FUN_00755C50()
 {
     FUN_005F99E0();
 }
+
+// SYNTHETIC: GAMEMD 0x755C90
+// GLOBAL: GAMEMD 0xB45580
+MathTblZero4 DAT_00B45580;
 
 // FUNCTION: GAMEMD 0x7564A0
 VoxelSectionRow* Obj_00755D10::FUN_007564A0(int section)
