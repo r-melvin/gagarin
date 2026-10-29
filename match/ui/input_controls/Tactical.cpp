@@ -3221,10 +3221,8 @@ bool Tactical::FUN_006D9B50(RectangleStruct viewport)
         if (building->IsAlive && building->NeedsRedraw && building->IsOnMap) {
             CoordStruct coordinate = building->vf_43();
             Point2D projected;
-            projected.X = coordinate.X * 60 / 2;
-            projected.Y = coordinate.X * 30 / 2;
-            projected.X += coordinate.Y * -60 / 2;
-            projected.Y += coordinate.Y * 30 / 2;
+            projected.X = coordinate.X * 60 / 2 + coordinate.Y * -60 / 2;
+            projected.Y = coordinate.X * 30 / 2 + coordinate.Y * 30 / 2;
             const int screenX = projected.X / 256;
             const int screenY = projected.Y / 256 - AdjustForZ(coordinate.Z);
             if (screenX >= left && screenX <= right && screenY >= top && screenY <= bottom)

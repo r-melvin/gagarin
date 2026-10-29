@@ -3,11 +3,22 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI names VectorClass/DynamicVectorClass over tagCONNECTDATA, FoggedObjectClass::DrawRecord,
 // DiskID and WorldDominationTour::Centroid. Layouts are binary-confirmed placeholders.
+#include <ocidl.h>
+
+// Native 4A0FA3-4A0FB3, 4A10F4-4A1102 and 4A1214-4A1222 compare
+// cookie first and interface pointer second.
+inline bool operator==(const tagCONNECTDATA& left, const tagCONNECTDATA& right)
+{
+    return left.dwCookie == right.dwCookie && left.pUnk == right.pUnk;
+}
+inline bool operator!=(const tagCONNECTDATA& left, const tagCONNECTDATA& right)
+{
+    return !(left == right);
+}
+
 #include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
-
-struct tagCONNECTDATA { void* pUnk; unsigned long dwCookie; bool operator==(const tagCONNECTDATA& o) const { return dwCookie==o.dwCookie && pUnk==o.pUnk; } bool operator!=(const tagCONNECTDATA& o) const { return !(*this==o); } };
 // FUNCTION: GAMEMD 0x004A0F80
 // VectorClass<tagCONNECTDATA>::operator==
 // FUNCTION: GAMEMD 0x004A0FE0
@@ -27,7 +38,26 @@ struct tagCONNECTDATA { void* pUnk; unsigned long dwCookie; bool operator==(cons
 // VTABLE: GAMEMD 0x007E5C84 -- VectorClass<tagCONNECTDATA>.
 // VTABLE: GAMEMD 0x007E5CC4 -- DynamicVectorClass<tagCONNECTDATA>.
 template class VectorClass<tagCONNECTDATA>;
+// SYNTHETIC: GAMEMD 0x004A0E10
 template class DynamicVectorClass<tagCONNECTDATA>;
+typedef VectorClass<tagCONNECTDATA> GgConnectDataVector;
+GG_STATIC_ASSERT(offsetof(GgConnectDataVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgConnectDataVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgConnectDataVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgConnectDataVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(sizeof(GgConnectDataVector) == 0x10);
+typedef DynamicVectorClass<tagCONNECTDATA> GgConnectDataDynamicVector;
+GG_STATIC_ASSERT(offsetof(GgConnectDataDynamicVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgConnectDataDynamicVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgConnectDataDynamicVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgConnectDataDynamicVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgConnectDataDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgConnectDataDynamicVector, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(GgConnectDataDynamicVector) == 0x18);
+GG_STATIC_ASSERT(sizeof(tagCONNECTDATA*) == 4);
+GG_STATIC_ASSERT(offsetof(tagCONNECTDATA, pUnk) == 0);
+GG_STATIC_ASSERT(offsetof(tagCONNECTDATA, dwCookie) == 4);
+GG_STATIC_ASSERT(sizeof(tagCONNECTDATA) == 8);
 
 #include "../_layout/fogged_object_class.h"
 // FUNCTION: GAMEMD 0x004D29B0

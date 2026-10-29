@@ -210,7 +210,6 @@ GG_STATIC_ASSERT(offsetof(GgVectorRep, Capacity)    == 0x8);
 GG_STATIC_ASSERT(offsetof(GgVectorRep, IsAllocated) == 0xD);
 GG_STATIC_ASSERT(sizeof(GgVectorRep)                == 0x10);
 
-// FUNCTION: GAMEMD 0x004A0E10
 // FUNCTION: GAMEMD 0x004A14A0
 // VectorClass<tagCONNECTDATA> -- reseats retail vtable 0x007E5C84; locator 0x007FF6D8 -> type descriptor 0x0081F5F8
 //   `.?AV?$VectorClass@UtagCONNECTDATA@@@@`.
