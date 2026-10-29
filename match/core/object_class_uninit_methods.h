@@ -20,17 +20,11 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/techno_class.h"   // TechnoClass : ... : ObjectClass
+#include "../combat/bomb_class.h"       // BombClass::Disarm (GAMEMD 0x4389B0)
 
 GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   AttachedBomb)  == 0x38);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   IsAlive)       == 0x90);
-
-// BombClass — only Disarm() is called; no members are read.
-struct UnInitBomb
-{
-    // FUNCTION: GAMEMD 0x4389B0 (decl; reloc) — BombClass::Disarm, __thiscall.
-    void Disarm();
-};
 
 // Call view for shared pending-delete storage at 0xB0F698. The
 // retail vtable order is confirmed by the inlined AddItem's growth call going

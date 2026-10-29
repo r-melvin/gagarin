@@ -72,27 +72,26 @@ SHPStruct* ObjectTypeClass::vf_38()
 // Function-local static of slot 36: two cells, (0, 0) and (0x7FFF, 0x7FFF), built through temporaries; the
 // empty destructor is registered with atexit (retail 0x5F76A0 is a lone RET).
 struct Range_005F7640 {
-    CellStruct unknown_00;
-    CellStruct unknown_04;
+    CellStruct cells[2];
     Range_005F7640()
     {
         CellStruct low;
         low.X = 0;
         low.Y = 0;
-        unknown_00 = low;
+        cells[0] = low;
         CellStruct high;
         high.X = 0x7FFF;
         high.Y = 0x7FFF;
-        unknown_04 = high;
+        cells[1] = high;
     }
     ~Range_005F7640() {}
 };
 
 // FUNCTION: GAMEMD 0x5F7640
-void* ObjectTypeClass::vf_36(int a1)
+CellStruct* ObjectTypeClass::vf_36(int a1)
 {
     static Range_005F7640 range;
-    return &range;
+    return range.cells;
 }
 
 // FUNCTION: GAMEMD 0x5F9970

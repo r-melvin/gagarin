@@ -55,7 +55,7 @@ public:
     virtual int vf_33(HouseClass* owner);                                 // 33  0x5F7610
     virtual int vf_34();                                                  // 34  0x5F7620
     virtual ObjectClass* vf_35(HouseClass* house) = 0;                                 // 35  pure (__purecall 0x4C9150; creates an object)
-    virtual void* vf_36(int a1);                                          // 36  0x5F7640: RET 4, a1 unused
+    virtual CellStruct* vf_36(int a1);                                        // 36  0x5F7640: RET 4, a1 unused
     virtual void* vf_37(bool a1, bool a2, bool a3, void* house);          // 37  0x5F7900
     virtual SHPStruct* vf_38();                                          // 38  0x5F7630
     virtual void* vf_39();                                                // 39  0x41CFA0

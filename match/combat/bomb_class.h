@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/object_class.h"   // canonical AudioController
 
 class TechnoClass;
 class HouseClass;
@@ -27,14 +28,6 @@ struct BombTargetObject
     int           AttachedField;        // +0x38  cleared by Disarm
     char          _pad1[0x68 - 0x3C];   // +0x3C
     unsigned char AttachedFlag;         // +0x68  cleared by Disarm (byte)
-};
-
-// AudioController — opaque 0x18-byte controller; Disarm calls End() @0x405FD0
-// (lea ecx,[this+0x3c]; call End). Full decomposition is out of scope here.
-struct AudioController
-{
-    void End();                         // GAMEMD 0x405FD0 __thiscall (declared; reloc)
-    char _storage[0x18];
 };
 
 class BombClass
@@ -53,7 +46,8 @@ public:
     int               DeathBomb;            // +0x30
     int               PlantingFrame;        // +0x34
     int               DetonationFrame;      // +0x38
-    AudioController   Audio;                // +0x3C (0x18 bytes)
+    AudioController   Audio;                // +0x3C (0x14 bytes)
+    int               unknown_50;           // +0x50
     int               TickSound;            // +0x54
     unsigned char     Harmless;             // +0x58
 };
@@ -61,6 +55,7 @@ public:
 GG_STATIC_ASSERT(offsetof(BombClass, DeathBomb)       == 0x30);
 GG_STATIC_ASSERT(offsetof(BombClass, PlantingFrame)   == 0x34);
 GG_STATIC_ASSERT(offsetof(BombClass, DetonationFrame) == 0x38);
+GG_STATIC_ASSERT(offsetof(BombClass, unknown_50)      == 0x50);
 GG_STATIC_ASSERT(offsetof(BombClass, TickSound)       == 0x54);
 GG_STATIC_ASSERT(offsetof(BombClass, Harmless)        == 0x58);
 GG_STATIC_ASSERT(offsetof(BombTargetObject, AttachedField) == 0x38);

@@ -987,7 +987,7 @@ void ObjectClass::vf_70(Point2D* point, RectangleStruct* clip)
 void ObjectClass::vf_62()
 {
     if (this->AttachedBomb != 0)
-        ((UnInitBomb*)this->AttachedBomb)->Disarm();
+        this->AttachedBomb->Disarm();
 
     if (this != 0 && this->Flags.IsTechno)
         ((TechnoClass*)this)->KillPassengers(0);

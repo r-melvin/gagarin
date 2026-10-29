@@ -212,19 +212,6 @@ struct BA4Screen
 
 
 
-// The object at BuildingClass +0x38 (partial).
-struct BA4Op38
-{
-    // FUNCTION: GAMEMD 0x4389B0 (read-only here)
-    void FUN_004389B0();
-};
-
-
-
-
-
-
-
 // The map object, the session object, the global tables and flags touched by the bodies.
 extern OverlayTypeClass** DAT_00A83D84;
 extern BA4Screen* DAT_00887324;

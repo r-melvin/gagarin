@@ -53,7 +53,7 @@ public:
     virtual CoordStruct vf_27(const CoordStruct& coord);                    // 27  0x5FEA30
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);          // 32  0x5FE530
     virtual ObjectClass* vf_35(HouseClass* house);                          // 35  0x5FE570
-    virtual void* vf_36(int a1);                                            // 36  0x5FE4C0
+    virtual CellStruct* vf_36(int a1);                                            // 36  0x5FE4C0
     virtual void* vf_39();                                                  // 39  0x5FEDE0
     virtual void vf_40(Point2D* where, RectangleStruct* clip, int frame);   // 40  0x5FE5A0 (introduced here)
 

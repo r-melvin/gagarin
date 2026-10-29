@@ -54,6 +54,7 @@
 #ifndef GG_MATCH_MAP_TERRAIN_OBJECTS_TERRAIN_COMMON_VIEWS_H
 #define GG_MATCH_MAP_TERRAIN_OBJECTS_TERRAIN_COMMON_VIEWS_H
 
+#include "../../_layout/cell.h"
 #include "terrain_common_types.h"
 #include "terrain_vtable_layout.h"
 #include "terrain_common_vectors.h"
@@ -404,7 +405,7 @@ public:
     virtual int vf_33(HouseClass* owner);                                                        // 33  base 0x5F7610
     virtual void vf_34();                                                                        // 34  base 0x5F7620
     virtual void* vf_35(MapObjHouseView* house);                                                 // 35  base body not recovered; overridden by Overlay 0x5FE570, Smudge 0x6B55C0, Terrain 0x71DE10
-    virtual MapObjCell* vf_36(int arg);                                                          // 36  base 0x5F7640; overridden by Overlay 0x5FE4C0, Terrain 0x71DE40
+    virtual CellStruct* vf_36(int arg);                                                          // 36  base 0x5F7640; overridden by Overlay 0x5FE4C0, Terrain 0x71DE40
     virtual void vf_37();                                                                        // 37  base 0x5F7900
     virtual void vf_38();                                                                        // 38  base 0x5F7630
     virtual void* vf_39();                                                                       // 39  base 0x41CFA0; overridden by Overlay 0x5FEDE0

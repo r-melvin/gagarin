@@ -6,6 +6,7 @@
 //   class changes the owner, the new house's lists take it. The original name is not confirmed here.
 
 #include "building_a4_views.h"
+#include "../../combat/bomb_class.h"
 #include "../../_layout/session_class.h"
 
 // FUNCTION: GAMEMD 0x448260
@@ -14,7 +15,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
     int i;
 
     if (newOwner != Owner) {        if (AttachedBomb && !Type->bools_1570[11]) {
-            static_cast<BA4Op38*>(AttachedBomb)->FUN_004389B0();
+            AttachedBomb->Disarm();
         }
         if (Type->bools_16A4[35]) {
             newOwner->HasCloakingRanges = 1;

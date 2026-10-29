@@ -59,7 +59,7 @@ public:
     virtual CoordStruct vf_27(const CoordStruct& coord);   // 27  0x71E0D0
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);                     // 32  0x71DDD0
     virtual ObjectClass* vf_35(HouseClass* house);                                       // 35  0x71DE10
-    virtual void* vf_36(int arg);                                    // 36  0x71DE40
+    virtual CellStruct* vf_36(int arg);                                    // 36  0x71DE40
 
     // ---- members (complete-object offsets) ---------------------------------------------------
     int            ArrayIndex;                 // +0x294
@@ -76,7 +76,7 @@ public:
     bool           IsAnimated;                 // +0x2B3
     bool           IsVeinhole;                 // +0x2B4
     char           unknown_2B5[3];             // +0x2B5
-    MapObjCell*   FoundationCells;            // +0x2B8
+    CellStruct*   FoundationCells;            // +0x2B8
 };
 
 GG_STATIC_ASSERT(offsetof(TerrainTypeClass, ArrayIndex) == 0x294);

@@ -54,7 +54,7 @@ public:
     virtual MapObjCoord* vf_27(MapObjCoord* out, const MapObjCoord* in);                     // 27  0x5FEA30
     virtual bool vf_32(const MapObjCell* where, MapObjHouseView* owner);        // 32  0x5FE530
     virtual void* vf_35(MapObjHouseView* owner);                           // 35  0x5FE570
-    virtual MapObjCell* vf_36(int arg);                                    // 36  0x5FE4C0
+    virtual CellStruct* vf_36(int arg);                                    // 36  0x5FE4C0
     virtual void* vf_39();                                                  // 39  0x5FEDE0
     virtual void vf_40(MapObjPoint* where, MapObjRect* clip, int frame);  // 40  0x5FE5A0
 

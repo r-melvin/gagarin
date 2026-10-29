@@ -26,9 +26,7 @@ bool TechnoTypeClass::vf_42(CellStruct* cell, HouseClass* owner)
         return false;
     }
 
-    // Slot 36's result is consumed as 4-byte coordinate pairs in this native
-    // entry (two short reads, then pointer += 4); keep its extant void* API.
-    CellStruct* offsets = static_cast<CellStruct*>(vf_36(1));
+    CellStruct* offsets = vf_36(1);
     const bool isBuilding = vf_11() == 7;
     bool rejectedAny = false;
     bool acceptedAny = false;

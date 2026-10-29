@@ -26,6 +26,7 @@ class TagClass;
 class HouseClass;
 class AnimClass;
 class ObjectTypeClass;
+class BombClass;
 // Returned by value from slots 110 and 112 (defined by the TUs that need it;
 // several unguarded definitions exist across the tree).
 struct CellStruct;
@@ -234,7 +235,7 @@ public:
     int             FallRate;                    // +0x2C
     void*           NextObject;                  // +0x30  ObjectClass* (cell/transport list)
     TagClass*       AttachedTag;                 // +0x34
-    void*           AttachedBomb;                // +0x38  BombClass*
+    BombClass*      AttachedBomb;                // +0x38
     AudioController AmbientSoundController;       // +0x3C  (0x14)
     AudioController CustomSoundController;        // +0x50  (0x14)
     int             CustomSound;                 // +0x64  (ctor = -1)

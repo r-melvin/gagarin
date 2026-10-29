@@ -139,7 +139,7 @@ ObjectClass* TerrainTypeClass::vf_35(HouseClass* house)
 // The empty cell list: a function-local static {0x7FFF, 0x7FFF} (guard bit in 0xB0ED60, object at
 // 0xB0ED78); its atexit stub is the bare RET at 0x71DE90 (compiler output, outside this partition). The
 // The shared Cell value initializes through its two-word temporary and copies the four-byte result.
-void* TerrainTypeClass::vf_36(int arg)
+CellStruct* TerrainTypeClass::vf_36(int arg)
 {
     if (FoundationCells == 0) {
         static Cell invalidCell = Cell(0x7FFF, 0x7FFF);

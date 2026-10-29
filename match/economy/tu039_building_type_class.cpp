@@ -565,10 +565,10 @@ HBCoord BuildingTypeView_0045DD90::vf_30()
 // FUNCTION: GAMEMD 0x45EC20
 // The function-local static (guard bit 0 of 0x89C890, cell at 0x89C8E8) is built through a temporary;
 // its destructor stub is the bare RET at 0x45EC80 (compiler-generated atexit entry).
-void* BuildingTypeView_0045DD90::vf_36(bool arg)
+CellStruct* BuildingTypeView_0045DD90::vf_36(bool arg)
 {
     static TypesStaticCell list = TypesMakeStaticCell(0x7FFF, 0x7FFF);
-    void* data = FoundationData;
+    CellStruct* data = FoundationData;
     if (data == 0)
         data = &list;
     return data;
@@ -1102,7 +1102,7 @@ bool BuildingTypeView_0045DD90::ReadINI(TypesIniView* ini)
             pointDefault = TypesMakePoint(0, 0);
             QueueingCell = TypesArtIni.ReadPoint(ImageFile, "QueueingCell", pointDefault);
         }
-        FoundationData = &TypesFoundationCells[Foundation];
+        FoundationData = TypesFoundationCells[Foundation].cells;
         FoundationOutside = &TypesFoundationOutsideCells[Foundation];
         {
             TypesArtIni.ReadString(ImageFile, "Buildup", TypesEmptyText, animName, 0x10);
@@ -1410,7 +1410,7 @@ HRESULT __stdcall BuildingTypeView_0045DD90::Load(IStream* pStm)
 
     LoadFixup();
     PostLoad();
-    FoundationData = &TypesFoundationCells[Foundation];
+    FoundationData = TypesFoundationCells[Foundation].cells;
     FoundationOutside = &TypesFoundationOutsideCells[Foundation];
     ToTile = 0;
     DAT_00B0C110.SwizzleManagerClass::vf_4(&ToOverlay);

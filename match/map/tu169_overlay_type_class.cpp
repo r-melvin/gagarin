@@ -113,7 +113,7 @@ int OverlayTypeClass::FindIndex(const char* pID)
 // FUNCTION: GAMEMD 0x5FE4C0
 // The function-local static (guard bit 0 of 0xAC15E8, cells at 0xAC1640 / 0xAC1644) is built through
 // temporaries; its destructor stub is the bare RET at 0x5FE520 (compiler-generated atexit entry).
-MapObjCell* OverlayTypeClass::vf_36(int arg)
+CellStruct* OverlayTypeClass::vf_36(int arg)
 {
     static OverlayStaticCell list[2] = { OverlayMakeStaticCell(0, 0), OverlayMakeStaticCell(0x7FFF, 0x7FFF) };
     return list;

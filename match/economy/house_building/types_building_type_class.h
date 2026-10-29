@@ -19,6 +19,7 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_TYPES_BUILDING_TYPE_CLASS_H
 
 #include "types_shared.h"
+#include "../../_layout/cell.h"
 
 class BuildingTypeView_0045DD90;
 class HouseClass;
@@ -145,7 +146,7 @@ public:
     virtual int vf_33(HouseClass* owner);                                    // 33  overridden (0x45EDD0)
     virtual void vf_34();                                                    // 34  0x711EE0
     virtual void* vf_35(void* owner);                                        // 35  overridden (0x45E880)
-    virtual void* vf_36(bool arg);                                           // 36  overridden (0x45EC20)
+    virtual CellStruct* vf_36(bool arg);                                           // 36  overridden (0x45EC20)
     virtual void vf_37();                                                    // 37  0x5F7900
     virtual void vf_38();                                                    // 38  0x712040
     virtual void* vf_39();                                                   // 39  overridden (0x45F040)
@@ -319,7 +320,7 @@ public:
     virtual bool vf_32(void* where, void* owner);                            // 32  0x45E800
     virtual int vf_33(HouseClass* owner);                                    // 33  0x45EDD0
     virtual void* vf_35(void* owner);                                        // 35  0x45E880
-    virtual void* vf_36(bool arg);                                           // 36  0x45EC20
+    virtual CellStruct* vf_36(bool arg);                                           // 36  0x45EC20
     virtual void* vf_39();                                                   // 39  0x45F040
     virtual bool vf_40();                                                    // 40  0x465910
     virtual bool vf_41();                                                    // 41  0x465920
@@ -328,7 +329,7 @@ public:
 
     // ---- members (complete-object offsets) ---------------------------------------------------
     int ArrayIndex;                             // +0xDF8
-    void* FoundationData;                       // +0xDFC  cell list of the foundation
+    CellStruct* FoundationData;                     // +0xDFC  cell list of the foundation
     void* Buildup;                              // +0xE00  the loaded buildup shape
     bool BuildupLoaded;                         // +0xE04
     unsigned char unknown_E05[0x3];               // +0xE05

@@ -7,7 +7,7 @@
 //   FUNCTION: GAMEMD 0x4389B0  BombClass::Disarm        (__thiscall)
 //   FUNCTION: GAMEMD 0x4389F0  BombClass::IsDeathBomb   (__thiscall)
 //   FUNCTION: GAMEMD 0x438A70  BombClass::TimeToExplode (__thiscall)
-//   FUNCTION: GAMEMD 0x405FD0  AudioController::End      (referenced; matched elsewhere)
+//   FUNCTION: GAMEMD 0x405FD0  AudioController::FUN_00405FD0 (referenced; matched elsewhere)
 
 #include "bomb_class.h"
 
@@ -25,7 +25,7 @@ void BombClass::Disarm()
     Owner = 0;
     Target = 0;
     OwnerHouse = 0;
-    Audio.End();
+    Audio.FUN_00405FD0();
     TickSound = 0;
 }
 

@@ -37,7 +37,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
             }
         } else if (Type->bools_16A4[19]) {
             CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
-            for (CellStruct* p = static_cast<CellStruct*>(Type->vf_36(1)); !(p->X == 0x7FFF && p->Y == 0x7FFF); p++) {
+            for (CellStruct* p = Type->vf_36(1); !(p->X == 0x7FFF && p->Y == 0x7FFF); p++) {
                 CellClass* mc = BA4At(*p + cell);
                 HouseClass* cellOwner = 0;
                 if (mc->WallOwnerIndex >= 0) {
@@ -160,7 +160,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
     if (DAT_00A8B230->unknown_0000 & 0x1000) {
         CellStruct here = vf_110();
         CellStruct* p;
-        for (p = static_cast<CellStruct*>(Type->vf_36(0)); !(p->X == 0x7FFF && p->Y == 0x7FFF); p++) {
+        for (p = Type->vf_36(0); !(p->X == 0x7FFF && p->Y == 0x7FFF); p++) {
             if (BA4At(p->FUN_0042D510(here))->Flags & 0x400000) {
                 goto skip;
             }

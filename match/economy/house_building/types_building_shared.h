@@ -8,6 +8,7 @@
 #include "types_building_type_class.h"
 #include "../../_layout/obj_0069e430.h"
 #include "../../_layout/geometry2d.h"
+#include "../../_layout/cell.h"
 
 // The map object (global 0x87F7E8; read-only here). The floor-height lookup ignores its `this`.
 class TypesMapView
@@ -21,11 +22,9 @@ extern TypesMapView TypesMap;
 
 // The element of the function-local static cell list the foundation slot returns. The user-declared
 // destructor is what makes VC6 register an atexit stub (a bare RET) for the static.
-struct TypesStaticCell
+struct TypesStaticCell : public CellStruct
 {
-    short X;   // +0x00
-    short Y;   // +0x02
-    TypesStaticCell(short x, short y) : X(x), Y(y) {}
+    TypesStaticCell(short x, short y) { X = x; Y = y; }
     ~TypesStaticCell() {}
 };
 GG_STATIC_ASSERT(sizeof(TypesStaticCell) == 4);
@@ -48,7 +47,7 @@ extern TypesQuad TypesZeroQuad;
 // foundation slot and the outside list point into after a load.
 struct TypesFoundationEntry
 {
-    unsigned char data[0x78];
+    CellStruct cells[0x1E];
 };
 GG_STATIC_ASSERT(sizeof(TypesFoundationEntry) == 0x78);
 extern TypesFoundationEntry TypesFoundationCells[22];

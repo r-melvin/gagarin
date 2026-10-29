@@ -2022,9 +2022,8 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
     if (warhead->BombDisarm) {
         AbstractClass* target = Target;
         if (target != 0 && target->Flags.unknown_14_1) {
-            UnInitBomb* bomb =
-                static_cast<UnInitBomb*>(
-                    static_cast<ObjectClass*>(target)->AttachedBomb);
+            BombClass* bomb =
+                static_cast<ObjectClass*>(target)->AttachedBomb;
             if (bomb != 0)
                 bomb->Disarm();
         }

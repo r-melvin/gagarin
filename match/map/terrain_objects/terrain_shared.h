@@ -136,7 +136,7 @@ inline void TerrainIndexView::AddIndexInline(const int& id, void* const& data)
 extern CellStruct TerrainDefaultCell;
 
 // GLOBAL: GAMEMD 0xB0EDC0 - the foundation cell lists, 0x28 bytes (ten cells) per entry.
-extern MapObjCell TerrainFoundationTable[][10];
+extern CellStruct TerrainFoundationTable[][10];
 
 // GLOBAL: GAMEMD 0x87F6BC - the context handed to the shape drawer.
 extern void* TerrainDrawContext;

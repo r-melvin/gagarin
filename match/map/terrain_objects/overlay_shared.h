@@ -9,6 +9,7 @@
 #define GG_MATCH_MAP_TERRAIN_OBJECTS_OVERLAY_SHARED_H
 
 #include "terrain_common_types.h"
+#include "../../_layout/cell.h"
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
 #include "../../_layout/vector_class.h"
@@ -26,9 +27,9 @@
 // translation unit (overlay_class.rows.tsv, overlay_type_class.rows.tsv), each with its own `bind _$E2`
 // row. Smudge and Terrain each have one rows file for their two translation units and no clash
 // (terrain_type_class.cpp emits `_$E3`, retail 0x71DE90).
-struct OverlayStaticCell : public MapObjCell
+struct OverlayStaticCell : public CellStruct
 {
-    OverlayStaticCell(short x, short y) : MapObjCell(x, y) {}
+    OverlayStaticCell(short x, short y) { X = x; Y = y; }
     ~OverlayStaticCell() {}
 };
 GG_STATIC_ASSERT(sizeof(OverlayStaticCell) == 4);
