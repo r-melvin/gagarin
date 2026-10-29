@@ -20,11 +20,12 @@
 
 #include <stddef.h>
 #include "../_layout/session_class.h"
+#include "../_layout/house_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
-struct Type_0050E0E0;
-struct House_0050E0E0;
+class TechnoTypeClass;
+class HouseClass;
 
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct TechnoVtbl_0050E0E0;
@@ -36,7 +37,7 @@ struct Techno_0050E0E0
     char                 _pad004[0x81 - 0x4];
     unsigned char        InLimbo;           // +0x0081
     char                 _pad082[0x21C - 0x82];
-    House_0050E0E0*      Owner;             // +0x021C
+    HouseClass*          Owner;             // +0x021C
 
     // FUNCTION: GAMEMD 0x70FC90 (decl; reloc) — TechnoClass::Deactivate.
     void Deactivate();
@@ -44,7 +45,7 @@ struct Techno_0050E0E0
 GG_STATIC_ASSERT(offsetof(Techno_0050E0E0, InLimbo) == 0x81);
 GG_STATIC_ASSERT(offsetof(Techno_0050E0E0, Owner)   == 0x21C);
 
-typedef Type_0050E0E0* (Techno_0050E0E0::*Fn84_0050E0E0)();
+typedef TechnoTypeClass* (Techno_0050E0E0::*Fn84_0050E0E0)();
 
 // A cell as two shorts, copied as one dword (slot 0x1B8 returns it through a hidden pointer).
 struct TechnoCell_0050E0E0
@@ -80,7 +81,7 @@ extern TechnoVector_0050E0E0 DAT_00A8EC78;
 // GLOBAL: GAMEMD 0xA8E9A0 — Unsorted::IsActive (byte).
 extern unsigned char DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
-extern House_0050E0E0* DAT_00A83D4C;
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8E7AC — dword; nonzero suppresses the EVA line.
 extern int DAT_00A8E7AC;
 // STRING: GAMEMD 0x824E4C  "EVA_RobotTanksOffline"
@@ -92,31 +93,16 @@ struct Vox_0050E0E0
     static void Play(const char* name, int a, int b);
 };
 
-struct House_0050E0E0
+// HouseClass::IsControlledByCurrentPlayer (0x50B6F0), inlined by retail at
+// 0x50E15C..0x50E186 in exactly this shape: the campaign arm tests the two
+// bytes by branches, the other arm materialises the pointer compare as a
+// bool (`SETZ AL; TEST AL,AL`).
+inline bool IsControlledByCurrentPlayer_0050E0E0(HouseClass* house)
 {
-    char           _pad000[0x1EC];          // +0x0000
-    unsigned char  IsHumanPlayer;           // +0x01EC
-    unsigned char  IsInPlayerControl;       // +0x01ED
-    char           _pad1EE[0x2D8 - 0x1EE];  // +0x01EE
-    int            PoweredCenterCount;      // +0x02D8
-
-    // HouseClass::IsControlledByCurrentPlayer (0x50B6F0), inlined by retail
-    // at 0x50E15C..0x50E186 in exactly this shape: the campaign arm tests the
-    // two bytes by branches, the other arm materialises the pointer compare
-    // as a bool (`SETZ AL; TEST AL,AL`).
-    bool IsControlledByCurrentPlayer()
-    {
-        if (Session_00A8B238.GameMode == 0) {
-            return this->IsHumanPlayer || this->IsInPlayerControl;
-        }
-        return this == DAT_00A83D4C;
+    if (Session_00A8B238.GameMode == 0) {
+        return house->IsHumanPlayer || house->IsInPlayerControl;
     }
-
-    // FUNCTION: GAMEMD 0x50E0E0
-    void LostPoweredCenter(Type_0050E0E0* type);
-};
-GG_STATIC_ASSERT(offsetof(House_0050E0E0, IsHumanPlayer)      == 0x1EC);
-GG_STATIC_ASSERT(offsetof(House_0050E0E0, IsInPlayerControl)  == 0x1ED);
-GG_STATIC_ASSERT(offsetof(House_0050E0E0, PoweredCenterCount) == 0x2D8);
+    return house == DAT_00A83D4C;
+}
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_LOST_POWERED_CENTER_METHODS_H

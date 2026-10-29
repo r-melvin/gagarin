@@ -383,7 +383,7 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 #include "../renderer/techno_class_drawer_methods.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
-House_00705D70* DAT_00A83D4C;
+HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xB054D0
 ColorSchemeVec_00705D70 DAT_00B054D0;
 
@@ -967,7 +967,7 @@ void FUN_00705D60(void* self)
 LightConvertClass* Techno_00705D70::GetDrawer()
 {
     TechnoType_00705D70* type = (this->*(*(Vtbl_00705D70**)this)->At_084)();
-    int index = ((House_00705D70*)this->Owner)->ColorSchemeIndex;
+    int index = this->Owner->ColorSchemeIndex;
 
     if (type->Palette != 0) {
         return (*type->Palette)[index]->LightConvert;

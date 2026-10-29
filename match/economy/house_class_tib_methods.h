@@ -6,16 +6,17 @@
 //   (every offset reconfirmed
 //   below against the user's binary).
 //
-// HouseView_004F9610 Tiberium/factory helpers:
-//   HouseView_004F9610::GiveTiberium      — credit + stat accrual from refined Tiberium
-//   HouseView_004F9610::GetPrimaryFactory — pick the primary FactoryClass for a kind
+// HouseClass Tiberium/factory helpers:
+//   HouseClass::GiveTiberium      — credit + stat accrual from refined Tiberium
+//   HouseClass::GetPrimaryFactory — pick the primary FactoryClass for a kind
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_TIB_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_TIB_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class FactoryClass;   // pointer-only; full layout is P2
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
 
 // ---------------------------------------------------------------------------
 // AbstractType — the engine's RTTI tag. Plain C++98
@@ -49,21 +50,6 @@ enum BuildCat
 };
 
 // ---------------------------------------------------------------------------
-// HouseTypeClass (partial) — the country blueprint pointed to by HouseView_004F9610+0x34.
-// 0x4F9610 reads only IncomeMult @0x148 (`FMUL float[EAX+0x148]`). Derives the
-// AbstractTypeClass COM/type head (0x00..0x97); members up to 0x148 per YRpp
-// (FixedString ParentCountry, the 7 doubles, the Armor/Cost/
-// Speed/Buildtime float blocks) collapse to padding (full layout = P2).
-// ---------------------------------------------------------------------------
-class HouseTypeClass
-{
-public:
-    char  _pad0[0x148];   // AbstractTypeClass head + multiplier blocks
-    float IncomeMult;     // +0x148
-};
-GG_STATIC_ASSERT(offsetof(HouseTypeClass, IncomeMult) == 0x148);
-
-// ---------------------------------------------------------------------------
 // TiberiumClass (partial) — only Value @0xB8 is touched (`FILD dword[EDX+0xB8]`
 // loads it as an int). Same member StorageClass::GetTotalValue uses.
 // ---------------------------------------------------------------------------
@@ -83,50 +69,5 @@ struct DynamicVectorClass_TiberiumPtr
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TiberiumPtr, Items) == 0x04);
 #endif
-
-// ---------------------------------------------------------------------------
-// HouseView_004F9610 (partial) — only the members the two methods touch are modelled;
-// everything else is offset-pinned padding (full layout = P2). Offsets:
-//   Type            @0x34   (HouseTypeClass*)   — `MOV EAX,[ESI+0x34]`
-//   Balance         @0x30C  (int credits)       — `FIADD dword[ESI+0x30C]`
-//   Primary_For*    @0x53AC.. (FactoryClass*)   — `MOV EAX,[ECX+0x53xx]`
-//   StatAccrued54E8 @0x54E8 (int stat counter)  — `FIADD dword[ESI+0x54E8]`
-// 0x53AC follows PowerOutput/PowerDrain (0x53A4/0x53A8) per the matched
-// house_class_power layout; the nine Primary_ pointers are contiguous.
-// ---------------------------------------------------------------------------
-class HouseView_004F9610
-{
-public:
-    char            _pad00[0x34];
-    HouseTypeClass* Type;                  // +0x34
-    char            _pad38[0x30C - 0x38];
-    int             Balance;               // +0x30C
-    char            _pad310[0x53AC - 0x310];
-    FactoryClass*   Primary_ForAircraft;   // +0x53AC
-    FactoryClass*   Primary_ForInfantry;   // +0x53B0
-    FactoryClass*   Primary_ForVehicles;   // +0x53B4
-    FactoryClass*   Primary_ForShips;      // +0x53B8
-    FactoryClass*   Primary_ForBuildings;  // +0x53BC
-    FactoryClass*   Primary_Unused1;       // +0x53C0
-    FactoryClass*   Primary_Unused2;       // +0x53C4
-    FactoryClass*   Primary_Unused3;       // +0x53C8
-    FactoryClass*   Primary_ForDefenses;   // +0x53CC
-    char            _pad53D0[0x54E8 - 0x53D0];
-    int             StatAccrued54E8;       // +0x54E8
-
-    // Ascending by retail address.
-    float         GiveTiberium(float amount, int type);                            // GAMEMD 0x4F9610 __thiscall
-    FactoryClass* GetPrimaryFactory(AbstractType absID, bool naval, BuildCat buildCat) const;  // GAMEMD 0x500510 __thiscall
-};
-
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Type)                == 0x34);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Balance)             == 0x30C);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Primary_ForAircraft) == 0x53AC);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Primary_ForInfantry) == 0x53B0);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Primary_ForVehicles) == 0x53B4);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Primary_ForShips)    == 0x53B8);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Primary_ForBuildings)== 0x53BC);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, Primary_ForDefenses) == 0x53CC);
-GG_STATIC_ASSERT(offsetof(HouseView_004F9610, StatAccrued54E8)     == 0x54E8);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_TIB_METHODS_H

@@ -25,10 +25,10 @@
 // `count * 0x800 + At_13C + 4`; re-reading IterCount/IterLast from the
 // members; a char* cast on the base; `(count << 11) + 4` grouped; the
 // parenthesised `At_13C + (count * 0x800 + 4)`.
-void MapView_578350::Reshroud(House_00577AB0* house)
+void MapView_578350::Reshroud(HouseClass* house)
 {
     if (house != 0) {
-        DAT_00A80228.Items[house->ArrayIndex]->At_241 = 0;
+        DAT_00A80228.Items[house->ArrayIndex]->MapIsClear = 0;
     }
 
     if (house == DAT_00A83D4C || house == 0) {
@@ -49,7 +49,7 @@ void MapView_578350::Reshroud(House_00577AB0* house)
         }
 
         MapInstance.FUN_004ADCD0(0, 0);
-        DAT_00A83D4C->At_240 = 0;
+        DAT_00A83D4C->Visionary = 0;
         MapInstance.FUN_00657CE0();
         (this->*this->Vtbl->At_38)(2);
     }

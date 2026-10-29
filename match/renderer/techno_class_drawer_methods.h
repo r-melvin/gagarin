@@ -20,6 +20,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 #include "../_layout/techno_class.h"   // TechnoClass (Owner @0x21C)
+#include "../_layout/house_class.h"
 
 class LightConvertClass;
 
@@ -45,14 +46,6 @@ struct ColorSchemeVec_00705D70
 };
 GG_STATIC_ASSERT(offsetof(ColorSchemeVec_00705D70, Items) == 0x04);
 
-// HouseClass view: only the colour-scheme index touched here.
-struct House_00705D70
-{
-    char _pad000[0x16054];    // +0x00000
-    int  ColorSchemeIndex;    // +0x16054
-};
-GG_STATIC_ASSERT(offsetof(House_00705D70, ColorSchemeIndex) == 0x16054);
-
 // TechnoTypeClass view: only the optional per-type palette list touched here.
 struct TechnoType_00705D70
 {
@@ -62,7 +55,7 @@ struct TechnoType_00705D70
 GG_STATIC_ASSERT(offsetof(TechnoType_00705D70, Palette) == 0xDF0);
 
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
-extern House_00705D70* DAT_00A83D4C;
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xB054D0 — ColorScheme::Array (its Items pointer is 0xB054D4).
 extern ColorSchemeVec_00705D70 DAT_00B054D0;
 
@@ -84,8 +77,8 @@ GG_STATIC_ASSERT(offsetof(Techno_00705D70, Owner) == 0x21C);
 GG_STATIC_ASSERT(sizeof(Techno_00705D70)          == 0x520);
 
 typedef TechnoType_00705D70* (IPersistStream::*Fn084_00705D70)();
-typedef House_00705D70*      (IPersistStream::*Fn0D0_00705D70)(int fromLocalPlayer);
-typedef bool                 (IPersistStream::*Fn440_00705D70)(House_00705D70* house);
+typedef HouseClass*      (IPersistStream::*Fn0D0_00705D70)(int fromLocalPlayer);
+typedef bool                 (IPersistStream::*Fn440_00705D70)(HouseClass* house);
 
 struct Vtbl_00705D70
 {

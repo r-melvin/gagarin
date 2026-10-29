@@ -417,29 +417,8 @@ extern unsigned char SidebarSideFlag_00A8EB7C;
 #include "../../core/scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
-// RulesClass: only the sound ids the sidebar plays are read.
-// GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.
-struct SidebarRules
-{
-    char _pad000[0x188];
-    int Sound188;                               // +0x188
-    int Sound18C;                               // +0x18C
-    int Sound190;                               // +0x190
-    int Sound194;                               // +0x194
-    int Sound198;                               // +0x198
-    char _pad19C[0x700 - 0x19C];
-    int Sound700;                               // +0x700
-    char _pad704[0x758 - 0x704];
-    double At_758;                              // +0x758 (build-time scale)
-};
-GG_STATIC_ASSERT(offsetof(SidebarRules, Sound188) == 0x188);
-GG_STATIC_ASSERT(offsetof(SidebarRules, Sound18C) == 0x18C);
-GG_STATIC_ASSERT(offsetof(SidebarRules, Sound190) == 0x190);
-GG_STATIC_ASSERT(offsetof(SidebarRules, Sound194) == 0x194);
-GG_STATIC_ASSERT(offsetof(SidebarRules, Sound198) == 0x198);
-GG_STATIC_ASSERT(offsetof(SidebarRules, Sound700) == 0x700);
-GG_STATIC_ASSERT(offsetof(SidebarRules, At_758) == 0x758);
-extern SidebarRules* Rules_008871E0;
+#include "../../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // Sidebar layout metrics (ints at 0xB0B4DC..0xB0B510), read by the setup and
 // reposition entries.

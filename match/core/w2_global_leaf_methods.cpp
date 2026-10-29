@@ -5,6 +5,7 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 
 #include <stddef.h>
+#include "../_layout/house_class.h"
 #include "../_rt/gg_static_assert.h"
 
 extern int DAT_00ABC1D4;
@@ -275,17 +276,12 @@ Obj_005AC340* Obj_005AC340::FUN_005AC340(unsigned int flags)
     return this;
 }
 
-struct House_005D7550 {
-    unsigned char unknown_00[0x1605C];
-    int Field1605C;                 // +0x1605C
-};
-GG_STATIC_ASSERT(offsetof(House_005D7550, Field1605C) == 0x1605C);
-extern House_005D7550** DAT_00A8022C;
+extern HouseClass** DAT_00A8022C;
 
 // FUNCTION: GAMEMD 0x005D7550
 int __stdcall FUN_005D7550(int index)
 {
-    return DAT_00A8022C[index]->Field1605C;
+    return DAT_00A8022C[index]->StartingAllies;
 }
 
 #pragma pack(push, 1)

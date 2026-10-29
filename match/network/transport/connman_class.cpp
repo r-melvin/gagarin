@@ -63,7 +63,8 @@ extern const char* NarrowName_007350C0(const unsigned short* name);
 // GLOBAL: GAMEMD 0xA8022C -- table of per-player objects indexed by connection id.
 extern void** PlayerTable_00A8022C;
 // GLOBAL: GAMEMD 0xA83D4C -- one distinguished entry skipped by the statistics pass.
-extern void* PlayerSkipped_00A83D4C;
+class HouseClass;
+extern HouseClass* DAT_00A83D4C;
 
 // External helper at 0x735090 (not an assigned entry): narrow a UTF-16 string.
 // Register-argument convention (ECX = dest, EDX = src, one stack word,
@@ -603,7 +604,7 @@ void IPXManagerClass::vf_23()
 {
     for (int i = 0; i < ConnectionCount; ++i) {
         void* player = PlayerTable_00A8022C[Connection[i]->ID];
-        if (player != 0 && player != PlayerSkipped_00A83D4C) {
+        if (player != 0 && player != DAT_00A83D4C) {
             ConnStat* stat = &ConnStats_00A8B574[i];
             if (stat->Name[0] == 0) {
                 WideToNarrow_00735090(stat->Name, Connection[i]->Name, -1);

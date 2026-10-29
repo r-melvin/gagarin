@@ -24,18 +24,9 @@ struct AnimCallView
     void FUN_00424B50(ObjectClass* owner);
 };
 
-// The rules fields read here.
-struct RulesView_5F5390
-{
-    char           unknown_0000[0x9C];
-    AnimTypeClass* unknown_009C;     // +0x9C  the anim for a cyborg brought down
-    char           unknown_00A0[0x1708 - 0xA0];
-    double         unknown_1708;     // +0x1708  the health ratio for result 3
-};
-GG_STATIC_ASSERT(offsetof(RulesView_5F5390, unknown_009C) == 0x9C);
-GG_STATIC_ASSERT(offsetof(RulesView_5F5390, unknown_1708) == 0x1708);
 // GLOBAL: GAMEMD 0x8871E0
-extern RulesView_5F5390* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // The InfantryTypeClass fields read here.
 struct InfantryTypeView_5F5390
@@ -106,7 +97,7 @@ int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, b
         } else {
             *damage = health;
         }
-        double threshold = strength * DAT_008871E0->unknown_1708;
+        double threshold = strength * DAT_008871E0->ConditionRed;
         if (health > threshold && health - *damage < threshold) {
             result = 3;
         }
@@ -114,7 +105,7 @@ int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, b
         if (Health <= 0 && vf_11() == 0xF && !a5) {
             InfantryClass* infantry = (InfantryClass*)this;
             if (((InfantryTypeView_5F5390*)infantry->Type)->Cyborg && !infantry->Crawling) {
-                new AnimClass(DAT_008871E0->unknown_009C, CoordStruct(Location), 0, 1, 0x600, 0, false);
+                new AnimClass(DAT_008871E0->unknown_9C, CoordStruct(Location), 0, 1, 0x600, 0, false);
                 Health = (int)(((InfantryTypeView_5F5390*)infantry->Type)->Strength * 0.25);
                 Health = Health > 1 ? Health : 1;
                 infantry->Crawling = true;

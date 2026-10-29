@@ -19,27 +19,7 @@ class ObjectClass;
 class TriggerClass;
 class TeamTypeClass;
 
-// The house type, as far as the colour scheme index.
-struct TActionHouseType
-{
-    char unknown_00[0xB8];
-    int ColorSchemeIndex;   // +0xB8
-};
 
-// The local player's house, seen through the methods these handlers call.
-struct TActionHouse
-{
-    char unknown_00[0x34];
-    TActionHouseType* Type;   // +0x34
-
-    // FUNCTION: GAMEMD 0x4FC9E0 (decl; reloc)
-    void FUN_004FC9E0(int a);
-    // FUNCTION: GAMEMD 0x4FCBD0 (decl; reloc)
-    void FUN_004FCBD0(int a);
-    // FUNCTION: GAMEMD 0x4FCDC0 (decl; reloc)
-    void FUN_004FCDC0();
-};
-GG_STATIC_ASSERT(offsetof(TActionHouse, Type) == 0x34);
 
 
 
@@ -76,7 +56,9 @@ extern TActionSidebar DAT_0087F7E8_Sidebar;
 int __fastcall FUN_006ABC60(int a, int b, int c);
 
 // GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
-extern TActionHouse* DAT_00A83D4C;
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8E7AC -- nonzero while a team is being created by an action.
 extern int DAT_00A8E7AC;
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x88099A / 0x88099B / 0x88099C -- tactical-view state reset by action 0x24.
@@ -137,7 +119,7 @@ extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds
 // Run the local player's house through its 0x4FCDC0 step.
 bool TActionClass::FUN_006E0480(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
-    DAT_00A83D4C->FUN_004FCDC0();
+    DAT_00A83D4C->ForceEnd();
     return true;
 }
 
@@ -154,7 +136,7 @@ bool TActionClass::FUN_006E0F90(HouseClass* house, ObjectClass* object, TriggerC
 bool TActionClass::FUN_006E1BD0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
     reinterpret_cast<TActionSuperHouse*>(house)->SuperItems[unknown_90]->FUN_006CB560(1, 0, 0);
-    if (reinterpret_cast<HouseClass*>(DAT_00A83D4C) == house) {
+    if (DAT_00A83D4C == house) {
         DAT_0087F7E8_Sidebar.FUN_006A6300(0x1f, unknown_90);
         DAT_0087F7E8_Sidebar.FUN_006A60A0(FUN_006ABC60(0x1f, unknown_90, 0));
     }
@@ -167,7 +149,7 @@ bool TActionClass::FUN_006E1C40(HouseClass* house, ObjectClass* object, TriggerC
 {
     reinterpret_cast<TActionSuperHouse*>(house)->SuperItems[unknown_90]->FUN_006CB560(0, 0, 0);
     reinterpret_cast<TActionSuperHouse*>(house)->SuperItems[unknown_90]->CanHold = false;
-    if (reinterpret_cast<HouseClass*>(DAT_00A83D4C) == house) {
+    if (DAT_00A83D4C == house) {
         DAT_0087F7E8_Sidebar.FUN_006A6300(0x1f, unknown_90);
         DAT_0087F7E8_Sidebar.FUN_006A60A0(FUN_006ABC60(0x1f, unknown_90, 0));
     }
@@ -178,10 +160,10 @@ bool TActionClass::FUN_006E1C40(HouseClass* house, ObjectClass* object, TriggerC
 // Apply one local-player step when the parameter names the player's colour scheme, the other if not.
 bool TActionClass::FUN_006E1DC0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
-    if (unknown_90 == DAT_00A83D4C->Type->ColorSchemeIndex) {
-        DAT_00A83D4C->FUN_004FC9E0(0);
+    if (unknown_90 == DAT_00A83D4C->Type->ArrayIndex2) {
+        DAT_00A83D4C->Win(0);
     } else {
-        DAT_00A83D4C->FUN_004FCBD0(0);
+        DAT_00A83D4C->Lose(0);
     }
     return true;
 }
@@ -190,10 +172,10 @@ bool TActionClass::FUN_006E1DC0(HouseClass* house, ObjectClass* object, TriggerC
 // The mirror of the previous handler: the second step when the colour scheme matches.
 bool TActionClass::FUN_006E1E00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
-    if (unknown_90 != DAT_00A83D4C->Type->ColorSchemeIndex) {
-        DAT_00A83D4C->FUN_004FC9E0(0);
+    if (unknown_90 != DAT_00A83D4C->Type->ArrayIndex2) {
+        DAT_00A83D4C->Win(0);
     } else {
-        DAT_00A83D4C->FUN_004FCBD0(0);
+        DAT_00A83D4C->Lose(0);
     }
     return true;
 }

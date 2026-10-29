@@ -11,15 +11,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/house_class.h"
 
-// Rules view: the one field this function reads.
-struct Rules_005090F0
-{
-    char _pad000[0x90];
-    int  unknown_090;    // +0x90 planning-path length limit
-};
-GG_STATIC_ASSERT(offsetof(Rules_005090F0, unknown_090) == 0x90);
 
-extern Rules_005090F0* DAT_008871E0;   // GLOBAL: GAMEMD 0x8871E0
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 
 GG_STATIC_ASSERT(offsetof(HouseClass, SelectedPathIndex) == 0x20C);

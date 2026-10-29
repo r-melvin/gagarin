@@ -124,19 +124,9 @@ static inline int TimerRemaining(const CDTimerClass& timer)
     return timeLeft;
 }
 
-// The rules object (GAMEMD 0x8871E0, RulesClass::Instance). Only the three
-// disguise type pointers read here are modelled.
-struct InfantryRulesView
-{
-    char             unknown_0000[0xD58];
-    ObjectTypeClass* DisguiseType0;   // +0xD58  used when the owner's side index is 0
-    ObjectTypeClass* DisguiseType1;   // +0xD5C  used when the side index is 1
-    ObjectTypeClass* DisguiseType2;   // +0xD60  used otherwise
-};
-GG_STATIC_ASSERT(offsetof(InfantryRulesView, DisguiseType0) == 0xD58);
-GG_STATIC_ASSERT(offsetof(InfantryRulesView, DisguiseType2) == 0xD60);
 // GLOBAL: GAMEMD 0x8871E0
-extern InfantryRulesView* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA83D4C -- the local player's house.
 extern HouseClass* CurrentPlayer;
 
@@ -555,13 +545,13 @@ ObjectTypeClass* InfantryClass::vf_51(bool a1)
     if (CurrentPlayer) {
         int side = CurrentPlayer->SideIndex;
         if (side == 0) {
-            return DAT_008871E0->DisguiseType0;
+            return DAT_008871E0->unknown_D58;
         }
         if (side == 1) {
-            return DAT_008871E0->DisguiseType1;
+            return DAT_008871E0->unknown_D5C;
         }
     }
-    return DAT_008871E0->DisguiseType2;
+    return DAT_008871E0->unknown_D60;
 }
 
 // FUNCTION: GAMEMD 0x5226C0
@@ -604,11 +594,11 @@ void InfantryClass::vf_284()
         this->DisguisedAsHouse = this->Owner;
         int side = this->Owner->SideIndex;
         if (side == 0) {
-            this->Disguise = DAT_008871E0->DisguiseType0;
+            this->Disguise = DAT_008871E0->unknown_D58;
         } else if (side == 1) {
-            this->Disguise = DAT_008871E0->DisguiseType1;
+            this->Disguise = DAT_008871E0->unknown_D5C;
         } else {
-            this->Disguise = DAT_008871E0->DisguiseType2;
+            this->Disguise = DAT_008871E0->unknown_D60;
         }
     } else {
         this->Disguised = false;

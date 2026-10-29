@@ -49,7 +49,7 @@ void Monster_0074D490::DrawIt()
 
     DAT_00887324->AddSelectable(this, point.X, DAT_00886FA4 + point.Y + 0x3A);
 
-    void* remap = DAT_00B054D4[DAT_00A83D4C->unknown_16054]->unknown_30C;
+    void* remap = DAT_00B054D4[DAT_00A83D4C->ColorSchemeIndex]->unknown_30C;
 
     Point_0074D490 offset = {0, 0};
     FUN_004AED70(DAT_00887314, remap, shape, palette, &point, &DAT_00886FA0,

@@ -326,7 +326,7 @@ void TabClass::vf_10(int* key, Point2D* mouse)
             FUN_00732950();
         }
     } else if (code == 0x80F0) {
-        VocClass::PlayGlobal(Rules_008871E0->Sound198, 1.0f, 0x2000, 0);
+        VocClass::PlayGlobal(DAT_008871E0->unknown_198, 1.0f, 0x2000, 0);
         if (At_5544) {
             FUN_006D04D0();
             vf_13(&CommandButtonA_00B0CCB0);
@@ -345,7 +345,7 @@ void TabClass::vf_10(int* key, Point2D* mouse)
         }
     } else if (code == 0x80F1) {
         if (InputLocked_00A8B538 == 0) {
-            VocClass::PlayGlobal(Rules_008871E0->Sound194, 1.0f, 0x2000, 0);
+            VocClass::PlayGlobal(DAT_008871E0->unknown_194, 1.0f, 0x2000, 0);
             if (!At_5544) {
                 vf_13(&CommandButtonB_00B0CC40);
                 ToolTipManager_Instance->Remove(0xF1);

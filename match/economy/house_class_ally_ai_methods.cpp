@@ -12,7 +12,7 @@
 // house and an enemy of every live human-controlled one.
 void House_00501640::AllyAIHouses()
 {
-    bool forced = DAT_008871E0->At_14B5;
+    bool forced = DAT_008871E0->unknown_14B5;
     if ((DAT_00A8B23C != 0 && (DAT_00A8B23C->*DAT_00A8B23C->Vtbl->At_4)()) || forced) {
         if (!DAT_00A8B230->unknown_1180.unknown_60) {
             for (int i = 0; i < DAT_00A80238; i++) {

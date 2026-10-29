@@ -10,9 +10,9 @@
 // match/renderer/tactical_class_coords_to_screen_methods.cpp (the
 // address-taken local is what spills Y into the temporary's second slot and
 // reloads it).
-static inline Point2D_006D2140 IsoProject(const int* p)
+static inline Point2D IsoProject(const int* p)
 {
-    Point2D_006D2140 r;
+    Point2D r;
     r.X = p[0] * 60 / 2;
     r.Y = p[0] * 30 / 2;
     r.X += p[1] * -60 / 2;
@@ -22,7 +22,7 @@ static inline Point2D_006D2140 IsoProject(const int* p)
 
 // Tactical::AdjustForZ (0x6D20E0) inlined; the bias lands in the dead
 // pCoord parameter slot.
-static inline int AdjustForZ(int z)
+static inline int InlineAdjustForZ(int z)
 {
     int bias = 0;
     if (z >= 728) {
@@ -32,16 +32,16 @@ static inline int AdjustForZ(int z)
 }
 
 // Tactical::CoordsToScreen (0x6D1F10) inlined.
-static inline void CoordsToScreen(Point2D_006D2140* pDest, const Coord_006D2140* pCoord)
+static inline void InlineCoordsToScreen(Point2D* pDest, const CoordStruct* pCoord)
 {
     int xy[2];
     xy[0] = pCoord->X;
     xy[1] = pCoord->Y;
 
-    Point2D_006D2140 r = IsoProject(xy);
+    Point2D r = IsoProject(xy);
     r.X /= 256;
     r.Y /= 256;
-    r.Y -= AdjustForZ(pCoord->Z);
+    r.Y -= InlineAdjustForZ(pCoord->Z);
 
     *pDest = r;
 }
@@ -77,14 +77,14 @@ static inline bool InView(int x, int y)
 // MOV [EAX+4],ESI; MOV EAX,ESI`; a struct copy or a by-value helper argument
 // puts both stores before both copies (98.1%), and testing pDest's fields
 // directly keeps the pops inside the branches (63.2%).
-bool Tactical_006D2140::CoordsToClient(const Coord_006D2140* pCoord, Point2D_006D2140* pDest)
+bool Tactical::CoordsToClient(const CoordStruct* pCoord, Point2D* pDest)
 {
-    CoordsToScreen(pDest, pCoord);
+    InlineCoordsToScreen(pDest, pCoord);
 
-    Point2D_006D2140 off = this->Offset_B0;
-    pDest->X -= off.X;
+    Pair_006D9F80 off = this->unknown_B0;
+    pDest->X -= off.unknown_00;
     int x = pDest->X;
-    pDest->Y -= off.Y;
+    pDest->Y -= off.unknown_04;
     int y = pDest->Y;
 
     return InView(x, y);

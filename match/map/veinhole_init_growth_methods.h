@@ -38,15 +38,10 @@
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-struct Rules_0074DE90
-{
-    char _pad000[0xDC];   // +0x0000
-    int  CellCount;       // +0x00DC
-};
-GG_STATIC_ASSERT(offsetof(Rules_0074DE90, CellCount) == 0xDC);
 
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance (a pointer).
-extern Rules_0074DE90* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // One 8-byte per-cell growth record; the user-declared empty constructor is
 // what makes `new Pair[n]` emit retail's array-new counter preamble.
@@ -72,7 +67,7 @@ struct Stack_0074DE90
     // rule, see match/core/campaign_class.cpp).
     __forceinline Stack_0074DE90* Construct()
     {
-        int n = DAT_008871E0->CellCount;
+        int n = DAT_008871E0->unknown_DC;
         this->Unknown_0C = 0;
         this->Capacity   = n;
         this->Unknown_10 = -1;

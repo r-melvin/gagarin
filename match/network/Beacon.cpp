@@ -243,9 +243,9 @@ void BeaconManager_00430AC0::Draw(Surface_00430AC0* surface, Rect_00430AC0 bound
             for (int col = 0; col < 3; ++col) {
                 Beacon_00430AC0* beacon = Beacons[row][col];
                 if (beacon != 0 && (beacon->Flags & 1)
-                    && DAT_00A83D4C->FUN_004F9A10(beacon->HouseIndex)
-                    && DAT_00A8022C[beacon->HouseIndex]->FUN_004F9A50(DAT_00A83D4C)
-                    && DAT_00A8022C[beacon->HouseIndex]->At_1F5 == 0) {
+                    && DAT_00A83D4C->IsAlliedWith(beacon->HouseIndex)
+                    && DAT_00A8022C[beacon->HouseIndex]->IsAlliedWith(DAT_00A83D4C)
+                    && DAT_00A8022C[beacon->HouseIndex]->Defeated == 0) {
                     beacon->Draw(surface, bounds);
                 }
             }

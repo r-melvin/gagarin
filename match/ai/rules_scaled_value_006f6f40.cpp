@@ -11,14 +11,10 @@ struct Record_006F6F40 {
 };
 GG_STATIC_ASSERT(offsetof(Record_006F6F40, unknown_08) == 0x8);
 
-struct Rules_006F6F40 {
-    unsigned char unknown_00[0x16BC];
-    int unknown_16BC;   // +0x16BC
-};
-GG_STATIC_ASSERT(offsetof(Rules_006F6F40, unknown_16BC) == 0x16BC);
 
 // GLOBAL: GAMEMD 0x8871E0
-extern Rules_006F6F40* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x6F6F40
 int __stdcall FUN_006F6F40(Record_006F6F40* record)

@@ -24,20 +24,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/theme_class.h"
 
-// HouseClass::CurrentPlayer -> Type -> side index, as read at 0x721195.
-struct HouseType_00721140
-{
-    char _pad000[0xBC];   // +0x0000
-    int  SideIndex;       // +0x00BC
-};
-GG_STATIC_ASSERT(offsetof(HouseType_00721140, SideIndex) == 0xBC);
 
-struct House_00721140
-{
-    char _pad000[0x34];         // +0x0000
-    HouseType_00721140* Type;   // +0x0034
-};
-GG_STATIC_ASSERT(offsetof(House_00721140, Type) == 0x34);
 
 
 // GLOBAL: GAMEMD 0xA8EC74 — ThemeClass::ScoresPresent (byte).
@@ -45,7 +32,9 @@ extern bool ScoresPresent_00A8EC74;
 // GLOBAL: GAMEMD 0xA8ED64 — byte gate; nonzero suppresses queueing.
 extern bool DAT_00A8ED64;
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
-extern House_00721140* CurrentPlayer_00A83D4C;
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
 #include "../core/scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;

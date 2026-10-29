@@ -6,6 +6,7 @@
 // sets the "action done" flag at +0x80. Owners/members are placeholder views verified by the
 // offsets asserted below.
 #include <stddef.h>
+#include "../_layout/house_class.h"
 #include "../_rt/gg_static_assert.h"
 
 struct ActionArg_006EDDC0 {
@@ -100,20 +101,7 @@ struct TacticalView_006EE100 {
     void FUN_006D2420(CoordStruct_006EDF10* coord, int arg);
 };
 
-struct Rules_006EE0A0 {
-    unsigned char unknown_00[0xFA8];
-    void* unknown_FA8;   // +0x0FA8
-    unsigned char unknown_FAC[0x7E8];
-    int unknown_1794;   // +0x1794
-};
-GG_STATIC_ASSERT(offsetof(Rules_006EE0A0, unknown_FA8) == 0xFA8);
-GG_STATIC_ASSERT(offsetof(Rules_006EE0A0, unknown_1794) == 0x1794);
 
-struct HouseView_006EE310 {
-    unsigned char unknown_00[0x5600];
-    int unknown_5600;   // +0x5600
-};
-GG_STATIC_ASSERT(offsetof(HouseView_006EE310, unknown_5600) == 0x5600);
 
 struct Rules_006F03B0 {
     unsigned char unknown_00[0x171C];
@@ -530,7 +518,7 @@ struct Member_006EDDC0 {
     unsigned char unknown_F4[0x20];
     int unknown_114;   // +0x0114
     unsigned char unknown_118[0x104];
-    HouseView_006EE310* unknown_21C;   // +0x021C
+    HouseClass* unknown_21C;   // +0x021C
     unsigned char unknown_220[0xDC];
     int unknown_2FC;   // +0x02FC
     unsigned char unknown_300[0xD5];
@@ -624,7 +612,8 @@ extern MapView_006EDF10 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x887324
 extern TacticalView_006EE100* DAT_00887324;
 // GLOBAL: GAMEMD 0x8871E0
-extern Rules_006EE0A0* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xB0E948
 extern int DAT_00B0E948;
 // GLOBAL: GAMEMD 0xB0E99C
@@ -633,10 +622,10 @@ extern int DAT_00B0E99C;
 // GLOBAL: GAMEMD 0xA83C6C
 extern TypeView_006EE310** DAT_00A83C6C;
 // GLOBAL: GAMEMD 0xA8022C
-extern HouseView_006EE310** DAT_00A8022C;
+extern HouseClass** DAT_00A8022C;
 
 // FUNCTION: GAMEMD 0x6EEBD0 (decl; reloc) -- fastcall: ecx = type, edx = house; returns the target or null.
-void* __fastcall FUN_006EEBD0(TypeView_006EE310* type, HouseView_006EE310* house, Member_006EDDC0* member, int y, char flag);
+void* __fastcall FUN_006EEBD0(TypeView_006EE310* type, HouseClass* house, Member_006EDDC0* member, int y, char flag);
 
 // FUNCTION: GAMEMD 0x539EB0 (decl; reloc)
 void __fastcall FUN_00539EB0(int a1, int a2, int a3, void* a4);
@@ -834,7 +823,7 @@ void Owner_006EDDC0::FUN_006EDFD0(ActionArg_006EDDC0* a1, int a2)
         for (Member_006EDDC0* m = unknown_54; m != 0; m = m->unknown_5D8) {
             if (m->unknown_6C > 0 && m->unknown_90 && m->unknown_74 && !m->unknown_81) {
                 int damage = m->unknown_6C;
-                m->vf_091(&damage, 0, DAT_008871E0->unknown_FA8, 0, true, false, 0);
+                m->vf_091(&damage, 0, DAT_008871E0->C4Warhead, 0, true, false, 0);
                 again = true;
             }
         }
@@ -880,8 +869,8 @@ void Owner_006EDDC0::FUN_006EE310(ActionArg_006EDDC0* a1, bool a2)
             int x = packed & 0xFFFF;
             int y = (packed >> 16) & 0xFFFF;
             TypeView_006EE310* type = DAT_00A83C6C[x];
-            HouseView_006EE310* house = 0;
-            int index = first->unknown_21C->unknown_5600;
+            HouseClass* house = 0;
+            int index = first->unknown_21C->EnemyHouseIndex;
             if (index != -1) {
                 house = DAT_00A8022C[index];
             }

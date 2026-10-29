@@ -26,31 +26,13 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/house_class.h"
 
-// HouseClass view: the registry index and the two shroud bytes.
-struct House_00577AB0
-{
-    char _pad000[0x30];            // +0x0000
-    int  ArrayIndex;               // +0x0030
-    char _pad034[0x240 - 0x34];    // +0x0034
-    char At_240;                   // +0x0240
-    char At_241;                   // +0x0241
-};
-GG_STATIC_ASSERT(offsetof(House_00577AB0, ArrayIndex) == 0x30);
-GG_STATIC_ASSERT(offsetof(House_00577AB0, At_240)     == 0x240);
-GG_STATIC_ASSERT(offsetof(House_00577AB0, At_241)     == 0x241);
 
-// DynamicVectorClass<HouseClass*> view: only Items @+4 is read.
-struct HouseVec_00577AB0
-{
-    void*             _vtable;   // +0x0000
-    House_00577AB0**  Items;     // +0x0004
-};
-GG_STATIC_ASSERT(offsetof(HouseVec_00577AB0, Items) == 0x4);
 // GLOBAL: GAMEMD 0xA80228 — HouseClass::Array (Items at 0xA8022C).
-extern HouseVec_00577AB0 DAT_00A80228;
+extern DynamicVectorClass<HouseClass*> DAT_00A80228;
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
-extern House_00577AB0* DAT_00A83D4C;
+extern HouseClass* DAT_00A83D4C;
 
 // CellClass view: the four words the reshroud sweep resets.
 struct Cell_00577AB0
@@ -117,7 +99,7 @@ public:
     Cell_00577AB0* CellIteratorNext();
 
     // FUNCTION: GAMEMD 0x577AB0
-    void Reshroud(House_00577AB0* house);
+    void Reshroud(HouseClass* house);
 };
 GG_STATIC_ASSERT(offsetof(MapView_578350, At_F4)      == 0xF4);
 GG_STATIC_ASSERT(offsetof(MapView_578350, IterState)  == 0x10C);

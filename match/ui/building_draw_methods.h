@@ -26,10 +26,10 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "../_layout/shp_struct.h"
 
 // Rules object behind the pointer at 0x8871E0 (used prefix only).
-#include "../_layout/rules_008871e0.h"
 
 // GLOBAL: GAMEMD 0x8871E0 -- pointer to the rules object.
-extern Rules_008871E0* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // Map cell as far as these bodies read it.
 struct MapCell_0043D290

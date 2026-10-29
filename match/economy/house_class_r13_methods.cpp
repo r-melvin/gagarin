@@ -325,14 +325,9 @@ int HouseClass::FUN_004FD940()
     return 0;
 }
 
-struct Rules_R13
-{
-    char Pad_00[0x17D0];
-    int  unknown_17D0;
-};
-GG_STATIC_ASSERT(offsetof(Rules_R13, unknown_17D0) == 0x17D0);
 // GLOBAL: GAMEMD 0x8871E0 -- the rules object
-extern Rules_R13* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x4F9700
 // Adds one unit of the given tiberium type to the weed storage up to `count`

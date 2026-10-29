@@ -428,11 +428,7 @@ bool TActionClass::FUN_006E03B0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
-struct Target_00A83D4C {
-    void FUN_004FC9E0(int);
-    void FUN_004FCBD0(int);
-};
-extern Target_00A83D4C* DAT_00A83D4C;
+extern HouseClass* DAT_00A83D4C;
 
 struct Obj_006E0440 {
     bool FUN_006E0440(int, int, int, int);
@@ -441,13 +437,13 @@ struct Obj_006E0440 {
 // FUNCTION: GAMEMD 0x006E0440
 bool Obj_006E0440::FUN_006E0440(int, int, int, int)
 {
-    DAT_00A83D4C->FUN_004FC9E0(1);
+    DAT_00A83D4C->Win(1);
     return true;
 }
 // FUNCTION: GAMEMD 0x006E0460
 bool Obj_006E0440::FUN_006E0460(int, int, int, int)
 {
-    DAT_00A83D4C->FUN_004FCBD0(1);
+    DAT_00A83D4C->Lose(1);
     return true;
 }
 

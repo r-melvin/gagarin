@@ -85,7 +85,7 @@ void __stdcall FlyLocoStop::StopMoving()
             cell.Y == UnsetCell_008B3C58.Y) {
             Foot_004CCFD0* idle = this->LinkedTo;
             (idle->*idle->Vtbl->At_16C)(&idle->At_6C, 0,
-                                        Rules_008871E0_Instance->At_FA8,
+                                        DAT_008871E0->C4Warhead,
                                         0, 1, 1, 0);
         } else {
             Foot_004CCFD0* state = this->LinkedTo;
@@ -141,7 +141,7 @@ void __stdcall FlyLocoStop::StopMoving()
                 return;
             }
             (idle->*idle->Vtbl->At_16C)(&idle->At_6C, 0,
-                                        Rules_008871E0_Instance->At_FA8,
+                                        DAT_008871E0->C4Warhead,
                                         0, 1, 1, 0);
         }
     }

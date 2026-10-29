@@ -229,7 +229,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50E0E0",
-  "sym": "?LostPoweredCenter@House_0050E0E0@@QAEXPAUType_0050E0E0@@@Z",
+  "sym": "?LostPoweredCenter@HouseClass@@QAEXPAVTechnoTypeClass@@@Z",
   "len": "0xc6",
   "name": "HouseClass::LostPoweredCenter",
   "status": "matched",
@@ -23067,7 +23067,7 @@
  {
   "tu": "match/economy/house_class_tib_methods.cpp",
   "addr": "0x4F9610",
-  "sym": "?GiveTiberium@HouseView_004F9610@@QAEMMH@Z",
+  "sym": "?GiveTiberium@HouseClass@@QAEMMH@Z",
   "len": "0x57",
   "name": "GiveTiberium",
   "status": "matched",
@@ -23076,7 +23076,7 @@
  {
   "tu": "match/economy/house_class_tib_methods.cpp",
   "addr": "0x500510",
-  "sym": "?GetPrimaryFactory@HouseView_004F9610@@QBEPAVFactoryClass@@W4AbstractType@@_NW4BuildCat@@@Z",
+  "sym": "?GetPrimaryFactory@HouseClass@@QBEPAVFactoryClass@@H_NH@Z",
   "len": "0xa0",
   "name": "GetPrimaryFactory",
   "status": "matched",
@@ -24237,7 +24237,7 @@
  {
   "tu": "match/map/map_class_reshroud_methods.cpp",
   "addr": "0x577AB0",
-  "sym": "?Reshroud@MapView_578350@@QAEXPAUHouse_00577AB0@@@Z",
+  "sym": "?Reshroud@MapView_578350@@QAEXPAVHouseClass@@@Z",
   "len": "0xf4",
   "name": "MapClass::Reshroud",
   "status": "partial",
@@ -29902,7 +29902,7 @@
  {
   "tu": "match/ui/tactical_class_coords_to_client_methods.cpp",
   "addr": "0x6D2140",
-  "sym": "?CoordsToClient@Tactical_006D2140@@QAE_NPBUCoord_006D2140@@PAUPoint2D_006D2140@@@Z",
+  "sym": "?CoordsToClient@Tactical@@QAE_NPBUCoordStruct@@PAUPoint2D@@@Z",
   "len": "0x132",
   "name": "Tactical::CoordsToClient",
   "status": "matched",

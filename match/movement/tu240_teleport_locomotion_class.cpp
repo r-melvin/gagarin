@@ -135,36 +135,9 @@ GG_STATIC_ASSERT(offsetof(TeleportHouseView, unknown_2A9) == 0x2A9);
 // GLOBAL: GAMEMD 0xA83D84 -- the items of the house array.
 extern TeleportHouseView** DAT_00A83D84;
 
-// The rules object (a pointer at 0x8871E0), as this class reads it.
-struct TeleportRulesView
-{
-    char  unknown_000[0x218];
-    int   unknown_218;                     // +0x218 a sound (@0x007196E3)
-    int   unknown_21C;                     // +0x21C a sound (@0x007195FF)
-    char  unknown_220[0x33C - 0x220];
-    void* unknown_33C;                     // +0x33C an anim type (@0x00719439)
-    char  unknown_340[0xBEC - 0x340];
-    int   unknown_BEC;                     // +0xBEC @0x0071997B
-    char  unknown_BF0[0xBF4 - 0xBF0];
-    int   unknown_BF4;                     // +0xBF4 a divisor (@0x007194E3)
-    char  unknown_BF8;                     // +0xBF8 @0x007194D0
-    char  unknown_BF9[0xBFC - 0xBF9];
-    int   unknown_BFC;                     // +0xBFC a minimum delay (@0x00719519)
-    int   unknown_C00;                     // +0xC00 a distance (@0x00719555)
-    char  unknown_C04[0xFA8 - 0xC04];
-    void* unknown_FA8;                     // +0xFA8 a warhead (@0x0071835B)
-};
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_218) == 0x218);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_21C) == 0x21C);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_33C) == 0x33C);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_BEC) == 0xBEC);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_BF4) == 0xBF4);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_BF8) == 0xBF8);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_BFC) == 0xBFC);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_C00) == 0xC00);
-GG_STATIC_ASSERT(offsetof(TeleportRulesView, unknown_FA8) == 0xFA8);
 // GLOBAL: GAMEMD 0x8871E0
-extern TeleportRulesView* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xB0EC2C -- a height step, set by the unit's initialiser 0x717F60.
 extern int DAT_00B0EC2C;
 // GLOBAL: GAMEMD 0xB0EC38 -- a height step, set by the unit's initialiser 0x717EC0.
@@ -300,14 +273,14 @@ bool TeleportLocomotionClass::FUN_00718260(LocoCoord coord, bool flag)
             if (!object->vf_160() && object->WhatAmI() == 0xF && Foot()->WhatAmI() == 0xF) {
                 if (TeleportSameCoord(coord, object->vf_048())) {
                     int damage = object->vf_084()->unknown_0A0;
-                    object->vf_16C(&damage, 0, DAT_008871E0->unknown_FA8, 0, 1, 0, 0);
+                    object->vf_16C(&damage, 0, DAT_008871E0->C4Warhead, 0, 1, 0, 0);
                 }
             } else if (!object->vf_160() && TeleportIsFoot(object)) {
                 int damage = object->vf_084()->unknown_0A0;
-                object->vf_16C(&damage, 0, DAT_008871E0->unknown_FA8, 0, 1, 0, 0);
+                object->vf_16C(&damage, 0, DAT_008871E0->C4Warhead, 0, 1, 0, 0);
             } else if (object->vf_160()) {
                 int damage = Foot()->vf_084()->unknown_0A0;
-                Foot()->vf_16C(&damage, 0, DAT_008871E0->unknown_FA8, 0, 1, 0, 0);
+                Foot()->vf_16C(&damage, 0, DAT_008871E0->C4Warhead, 0, 1, 0, 0);
             } else if (!TeleportIsFoot(object)) {
                 flag = true;
             }
@@ -382,7 +355,7 @@ void TeleportLocomotionClass::FUN_007187A0(LocoCoord coord)
          object = object->unknown_030) {
         if (object->vf_160()) {
             int damage = Foot()->vf_084()->unknown_0A0;
-            Foot()->vf_16C(&damage, 0, DAT_008871E0->unknown_FA8, 0, 1, 0, 0);
+            Foot()->vf_16C(&damage, 0, DAT_008871E0->C4Warhead, 0, 1, 0, 0);
         }
     }
     bool blocked = false;
@@ -428,7 +401,7 @@ void TeleportLocomotionClass::FUN_007187A0(LocoCoord coord)
             }
         } else {
             int damage = Foot()->vf_084()->unknown_0A0;
-            Foot()->vf_16C(&damage, 0, DAT_008871E0->unknown_FA8, 0, 1, 0, 0);
+            Foot()->vf_16C(&damage, 0, DAT_008871E0->C4Warhead, 0, 1, 0, 0);
         }
     }
 }

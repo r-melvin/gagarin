@@ -383,15 +383,15 @@ public:
     float  CostDefensesMult;               // +0x53A0 ctor @0x004F5998
     int    PowerOutput;                    // +0x53A4 ctor @0x004F599E
     int    PowerDrain;                     // +0x53A8 ctor @0x004F59A4
-    void*  Primary_ForAircraft;            // +0x53AC ctor @0x004F59AA
-    void*  Primary_ForInfantry;            // +0x53B0 ctor @0x004F59B0
-    void*  Primary_ForVehicles;            // +0x53B4 ctor @0x004F59B6
-    void*  Primary_ForShips;               // +0x53B8 ctor @0x004F59BC
-    void*  Primary_ForBuildings;           // +0x53BC ctor @0x004F59C2
-    void*  Primary_Unused1;                // +0x53C0 ctor @0x004F59C8
-    void*  Primary_Unused2;                // +0x53C4 ctor @0x004F59CE
-    void*  Primary_Unused3;                // +0x53C8 ctor @0x004F59D4
-    void*  Primary_ForDefenses;            // +0x53CC ctor @0x004F59DA
+    FactoryClass* Primary_ForAircraft;            // +0x53AC ctor @0x004F59AA
+    FactoryClass* Primary_ForInfantry;            // +0x53B0 ctor @0x004F59B0
+    FactoryClass* Primary_ForVehicles;            // +0x53B4 ctor @0x004F59B6
+    FactoryClass* Primary_ForShips;               // +0x53B8 ctor @0x004F59BC
+    FactoryClass* Primary_ForBuildings;           // +0x53BC ctor @0x004F59C2
+    FactoryClass* Primary_Unused1;                // +0x53C0 ctor @0x004F59C8
+    FactoryClass* Primary_Unused2;                // +0x53C4 ctor @0x004F59CE
+    FactoryClass* Primary_Unused3;                // +0x53C8 ctor @0x004F59D4
+    FactoryClass* Primary_ForDefenses;            // +0x53CC ctor @0x004F59DA
     unsigned char AircraftType_53D0;       // +0x53D0 ctor @0x004F59E0 (name anchor confirmed)
     unsigned char InfantryType_53D1;       // +0x53D1 ctor @0x004F59E6
     unsigned char VehicleType_53D2;        // +0x53D2 ctor @0x004F59EC
@@ -627,6 +627,14 @@ public:
     void FUN_0050E280(TechnoTypeClass* type);
     // FUNCTION: GAMEMD 0x4F9370 -- updates every super weapon; the local player is told when one became ready.
     void FUN_004F9370();
+    // FUNCTION: GAMEMD 0x4FCBD0 -- the counterpart of Win: clears IsWinner and settles IsGameOver/IsLoser; RET 4.
+    unsigned char Lose(bool savour);
+    // FUNCTION: GAMEMD 0x4F93E0 (decl; reloc) -- takes the building by pointer; RET 4.
+    void FUN_004F93E0(void* building);
+    // FUNCTION: GAMEMD 0x50E0E0 -- one powering centre is gone; at zero the technos of `type` are deactivated; RET 4.
+    void LostPoweredCenter(TechnoTypeClass* type);
+    // FUNCTION: GAMEMD 0x500510 -- the primary factory for an RTTI class (naval picks ships over vehicles, combat picks defences over buildings); RET 0xC.
+    FactoryClass* GetPrimaryFactory(int absID, bool naval, int buildCat) const;
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

@@ -14,6 +14,6 @@ bool HouseClass::CanExtendSelectedPlanningPath()
         return false;
     }
     WaypointPathClass* path = this->PlanningPaths[this->SelectedPathIndex];
-    return path->Waypoints.Count < DAT_008871E0->unknown_090
+    return path->Waypoints.Count < DAT_008871E0->unknown_90
         && path->CurrentWaypointIndex == -1;
 }

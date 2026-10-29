@@ -1628,7 +1628,7 @@ const wchar_t* DisplayClass::vf_33(int id)
         if (!object->Flag41A)
         {
             if (object->Value220 == 2
-                && !DisplayScMap_0087F7E8.FUN_00565730(object->vf_18())->FUN_004870D0(DisplayScHouse_00A83D4C->Index))
+                && !DisplayScMap_0087F7E8.FUN_00565730(object->vf_18())->FUN_004870D0(DAT_00A83D4C->ArrayIndex))
                 return 0;
             if (object->vf_33()->Flag_0C9A)
                 return 0;

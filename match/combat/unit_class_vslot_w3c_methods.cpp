@@ -19,15 +19,9 @@ struct UnitSlaveManagerView
     void FUN_006B0CC0();
 };
 
-// The rules object, as far as the slave scan delay.
-struct UnitRulesView
-{
-    char unknown_00[0x1790];
-    int SlaveScanDelay;   // +0x1790
-};
-GG_STATIC_ASSERT(offsetof(UnitRulesView, SlaveScanDelay) == 0x1790);
 // GLOBAL: GAMEMD 0x8871E0 -- the rules.
-extern UnitRulesView* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
 #include "../core/scenario_class_methods.h"
@@ -67,7 +61,7 @@ int UnitClass::vf_147()
 // random time; otherwise the foot delay applies.
 int UnitClass::vf_136()
 {
-    if (SlaveManager && DAT_008871E0->SlaveScanDelay + CurrentMissionStartTime < CurrentFrame) {
+    if (SlaveManager && DAT_008871E0->unknown_1790 + CurrentMissionStartTime < CurrentFrame) {
         if (static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B1020()) {
             static_cast<UnitSlaveManagerView*>(SlaveManager)->FUN_006B0CC0();
             int delay = (int)(FUN_005B3A00()->Rate * 900.0);

@@ -44,20 +44,9 @@ struct Vtbl_00480510
 };
 GG_STATIC_ASSERT(offsetof(Vtbl_00480510, WhatAmI) == 0x2C);
 
-// RulesClass — the five gate / wall-tower building types.
-struct Rules_00480510
-{
-    char                    _pad000[0x86C];   // +0x0000
-    BuildingType_00480510*  GDIGateOne;       // +0x086C
-    BuildingType_00480510*  GDIGateTwo;       // +0x0870
-    BuildingType_00480510*  NodGateOne;       // +0x0874
-    BuildingType_00480510*  NodGateTwo;       // +0x0878
-    BuildingType_00480510*  WallTower;        // +0x087C
-};
-GG_STATIC_ASSERT(offsetof(Rules_00480510, GDIGateOne) == 0x86C);
-GG_STATIC_ASSERT(offsetof(Rules_00480510, WallTower)  == 0x87C);
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
-extern Rules_00480510* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // CellClass — OverlayTypeIndex and the ground occupier list head.
 struct Cell_00480510

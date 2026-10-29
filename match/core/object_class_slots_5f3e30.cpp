@@ -8,23 +8,6 @@
 #include "../_layout/anim_type_class.h"
 #include "frame_counter.h"
 
-// The rules object behind the global pointer 0x8871E0 (read-only here).
-struct ObjectRulesView
-{
-    char            unknown_000[0x420];
-    int             unknown_420;     // +0x420  compared with slot 114's result
-    char            unknown_424[0x7B8 - 0x424];
-    int             unknown_7B8;     // +0x7B8  fall-rate floor with a parachute
-    int             unknown_7BC;     // +0x7BC  fall-rate floor without one
-    char            unknown_7C0[0xBC4 - 0x7C0];
-    AnimTypeClass** unknown_BC4;     // +0xBC4  item array; element 0 is the splash animation
-    char            unknown_BC8[0xFA8 - 0xBC8];
-    void*           unknown_FA8;     // +0xFA8  the warhead a falling bomb hits with
-};
-GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_420) == 0x420);
-GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_7B8) == 0x7B8);
-GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_BC4) == 0xBC4);
-GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_FA8) == 0xFA8);
 
 // The map cell (read-only here).
 #include "../_layout/cell_class.h"
@@ -37,7 +20,8 @@ struct Point2D;
 // through an audio controller (__fastcall, sound in ECX, coordinate in EDX).
 void* FUN_007509E0(int sound, CoordStruct* coord, AudioController* controller);
 // GLOBAL: GAMEMD 0x8871E0
-extern ObjectRulesView* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // Descriptive local helpers for code retail has inlined; no original names
 // are attested. A timer temporary started now (its middle word is never
@@ -132,7 +116,7 @@ void ObjectClass::vf_23()
             if (!IsFallingDown) {
                 if (IsABomb && Health > 0) {
                     int damage = Health;
-                    vf_91(&damage, 0, DAT_008871E0->unknown_FA8, 0, true, true, 0);
+                    vf_91(&damage, 0, DAT_008871E0->C4Warhead, 0, true, true, 0);
                 }
 
                 if (vf_11() == 4) {

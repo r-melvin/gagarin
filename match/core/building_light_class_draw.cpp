@@ -35,7 +35,7 @@ extern int* DAT_00A8B230;
 // GLOBAL: GAMEMD 0x887314 -- DSurface::Temp.
 extern Surface* DAT_00887314;
 // GLOBAL: GAMEMD 0x887324 -- the tactical object.
-extern Tactical_006D2140* DAT_00887324;
+extern Tactical* DAT_00887324;
 // GLOBAL: GAMEMD 0x886FA0 -- the view rectangle (X, Y, Width, Height).
 extern RectangleStruct DAT_00886FA0;
 // GLOBAL: GAMEMD 0x7E3A98 -- scale applied to the light's range.

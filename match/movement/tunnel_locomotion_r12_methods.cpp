@@ -56,14 +56,9 @@ void TunnelLocomotionClass::FUN_00729AA0()
     }
 }
 
-// The rules object, whose +0x20 double scales the sink speed.
-struct TunnelRules_r12
-{
-    char unknown_00[0x20];
-    double SinkScale;   // +0x20
-};
 // GLOBAL: GAMEMD 0x8871E0
-extern TunnelRules_r12* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x7294E0
 // Sinks the linked unit step by step until it is 0x100 below the ground, then stops it and moves on
@@ -74,7 +69,7 @@ void TunnelLocomotionClass::FUN_007294E0()
     TunnelCoord_r12 where = foot->Location;
     if (where.Z > -0x100) {
         int speed = foot->vf_538();
-        int step = (int)(speed * DAT_008871E0->SinkScale);
+        int step = (int)(speed * DAT_008871E0->unknown_20);
         if (step <= 5) {
             step = 5;
         }

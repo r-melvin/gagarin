@@ -33,18 +33,10 @@ struct RadarTimer_00406060
     void FUN_00406060();
 };
 
-// The rules object: only the two radar sound ids are read.
-struct RulesRadarSounds_00656BE0
-{
-    char unknown_000[0x6F0];
-    int RadarOnSound;       // +0x6F0
-    int RadarOffSound;      // +0x6F4
-};
-GG_STATIC_ASSERT(offsetof(RulesRadarSounds_00656BE0, RadarOnSound) == 0x6F0);
-GG_STATIC_ASSERT(offsetof(RulesRadarSounds_00656BE0, RadarOffSound) == 0x6F4);
 
 // GLOBAL: GAMEMD 0x8871E0 -- the rules object.
-extern RulesRadarSounds_00656BE0* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- debug log, printf style.
 void __cdecl FUN_004068E0(const char* format, ...);
@@ -126,7 +118,7 @@ void RadarView_R16::FUN_00656BE0(bool on, bool sound)
             unknown_14AC = 3;
             ((RadarTimer_00406060*)&unknown_14C0)->FUN_00406060();
             if (sound) {
-                FUN_00750920(DAT_008871E0->RadarOnSound, 1.0f, 0x2000, 0);
+                FUN_00750920(DAT_008871E0->unknown_6F0, 1.0f, 0x2000, 0);
             }
             FUN_004068E0("Radar: ACTIVATING\n");
         }
@@ -134,7 +126,7 @@ void RadarView_R16::FUN_00656BE0(bool on, bool sound)
         ((RadarTimer_00406060*)&unknown_14C0)->FUN_00406060();
         unknown_14AC = 2;
         if (sound) {
-            FUN_00750920(DAT_008871E0->RadarOffSound, 1.0f, 0x2000, 0);
+            FUN_00750920(DAT_008871E0->unknown_6F4, 1.0f, 0x2000, 0);
         }
         FUN_004068E0("Radar: DEACTIVING\n");
     }

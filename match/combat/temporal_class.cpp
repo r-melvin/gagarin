@@ -55,20 +55,12 @@ static inline bool Temporal_AddItem(DynamicVectorClass<TemporalClass*>& v, Tempo
     return true;
 }
 
-// The rules object (a pointer at 0x8871E0), as 0x71A760 reads it.
-struct TemporalRulesView
-{
-    char  unknown_000[0x340];
-    void* unknown_340;                   // +0x340 @0x0071A900 (an anim type)
-    char  unknown_344[0xF60 - 0x344];
-    int   unknown_F60;                   // +0xF60 @0x0071A832 (a range in cells)
-};
-GG_STATIC_ASSERT(offsetof(TemporalRulesView, unknown_340) == 0x340);
-GG_STATIC_ASSERT(offsetof(TemporalRulesView, unknown_F60) == 0xF60);
 // GLOBAL: GAMEMD 0x8871E0
-extern TemporalRulesView* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA83D4C
-extern TemporalHouseView* DAT_00A83D4C;
+#include "../_layout/house_class.h"
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8E7AC
 extern int DAT_00A8E7AC;
 
@@ -244,7 +236,7 @@ void TemporalClass::FUN_0071A760()
             Target->vf_3B8(Owner);
             Target->vf_0E0(Owner);
             Target->vf_0F8();
-            building->unknown_21C->unknown_1FC = 1;
+            building->unknown_21C->RecheckTechTree = 1;
         } else {
             if (Target->unknown_2E4)
                 TemporalAsBuilding(Target->unknown_2E4)->FUN_00459470();
@@ -291,9 +283,9 @@ void TemporalClass::FUN_0071ACD0()
         Target->unknown_270 = 0;
         if (Target->WhatAmI() == 6) {
             TemporalTechnoView* building = Target;
-            building->unknown_21C->unknown_5778 = 1;
+            building->unknown_21C->RecheckPower = 1;
             building->FUN_00452210();
-            building->unknown_21C->unknown_1FC = 1;
+            building->unknown_21C->RecheckTechTree = 1;
         }
         Target->vf_124(2);
     }
@@ -360,9 +352,9 @@ void TemporalClass::FUN_0071AF20(TemporalTechnoView* target)
         Target->FUN_0070E000(1);
     if (Target->WhatAmI() == 6) {
         TemporalTechnoView* building = Target;
-        building->unknown_21C->unknown_5778 = 1;
+        building->unknown_21C->RecheckPower = 1;
         building->FUN_004521C0();
-        building->unknown_21C->unknown_1FC = 1;
+        building->unknown_21C->RecheckTechTree = 1;
     }
     Target->vf_124(2);
     TemporalClass* other = Target->unknown_274;

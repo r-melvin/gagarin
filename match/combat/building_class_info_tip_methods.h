@@ -31,37 +31,19 @@ struct Point_0043E7B0
 };
 GG_STATIC_ASSERT(sizeof(Point_0043E7B0) == 8);
 
-struct HouseType_0043E7B0
-{
-    char _pad000[0xB8];   // +0x0000
-    int  ArrayIndex;      // +0x00B8
-};
-GG_STATIC_ASSERT(offsetof(HouseType_0043E7B0, ArrayIndex) == 0xB8);
 
 struct Object_0043E7B0;
+class FactoryClass;
 
-struct House_0043E7B0
-{
-    char                _pad000[0x34];   // +0x0000
-    HouseType_0043E7B0* Type;            // +0x0034
-
-    // FUNCTION: GAMEMD 0x4F9A50 (decl; reloc) — HouseClass::IsAlliedWith.
-    bool IsAlliedWith(House_0043E7B0* other);
-    // FUNCTION: GAMEMD 0x50B730 (decl; reloc) — does this house build its
-    // units through a shared factory.
-    bool FUN_0050B730();
-    // FUNCTION: GAMEMD 0x500510 (decl; reloc) — the factory currently
-    // producing for this house.
-    Object_0043E7B0* FUN_00500510(int kind, char naval, int flag);
-};
-GG_STATIC_ASSERT(offsetof(House_0043E7B0, Type) == 0x34);
 // GLOBAL: GAMEMD 0xA83D4C — the house of the player at this computer.
-extern House_0043E7B0* DAT_00A83D4C;
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+extern HouseClass* DAT_00A83D4C;
 
 struct BuildingType_0043E7B0
 {
     char _pad000[0xCCE];              // +0x0000
-    char Naval;                       // +0x0CCE
+    bool Naval;                       // +0x0CCE
     char _padCCF[0xEB8 - 0xCCF];      // +0x0CCF
     int  At_EB8;                      // +0x0EB8
 };
@@ -70,7 +52,7 @@ GG_STATIC_ASSERT(offsetof(BuildingType_0043E7B0, At_EB8) == 0xEB8);
 
 // FUNCTION: GAMEMD 0x4CA160 (decl; reloc) — the object a factory is
 // currently building, __fastcall.
-Object_0043E7B0* FUN_004CA160(Object_0043E7B0* factory);
+Object_0043E7B0* FUN_004CA160(FactoryClass* factory);
 
 struct TypeVtbl_0043E7B0;
 
@@ -125,10 +107,10 @@ struct Building_0043E7B0
     char                  _pad084[0x210 - 0x84];// +0x0084
     unsigned int          SpiedBy;              // +0x0210
     char                  _pad214[8];           // +0x0214
-    House_0043E7B0*       Owner;                // +0x021C
+    HouseClass*           Owner;                // +0x021C
     char                  _pad220[0x300];       // +0x0220
     BuildingType_0043E7B0* Type;                // +0x0520
-    Object_0043E7B0*      Factory;              // +0x0524
+    FactoryClass*         Factory;              // +0x0524
 
     // FUNCTION: GAMEMD 0x43E7B0 — BuildingClass::DrawInfoTipAndSpiedSelection.
     void DrawInfoTipAndSpiedSelection(Point_0043E7B0* pos, unsigned int flags);

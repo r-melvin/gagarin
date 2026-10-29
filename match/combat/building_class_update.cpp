@@ -36,7 +36,7 @@ struct Global_00A8EB60
 // GLOBAL: GAMEMD 0xA8EB60
 extern Global_00A8EB60 DAT_00A8EB60;
 // GLOBAL: GAMEMD 0x887324 -- the tactical object.
-extern Tactical_006D2140* DAT_00887324;
+extern Tactical* DAT_00887324;
 // GLOBAL: GAMEMD 0xABAD1C
 extern int DAT_00ABAD1C;
 // GLOBAL: GAMEMD 0x7E1718

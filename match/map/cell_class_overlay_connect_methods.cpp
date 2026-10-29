@@ -31,13 +31,13 @@ bool Cell_00480510::ConnectsToOverlay(int overlay, int direction)
                     int health = obj->Health;
                     BuildingType_00480510* type = obj->Type;
                     if (health > 0) {
-                    if (type == DAT_008871E0->GDIGateOne && (direction == 2 || direction == 6)) {
+                    if (type == DAT_008871E0->unknown_86C && (direction == 2 || direction == 6)) {
                         return true;
                     }
-                    if (type == DAT_008871E0->GDIGateTwo && (direction == 0 || direction == 4)) {
+                    if (type == DAT_008871E0->unknown_870 && (direction == 0 || direction == 4)) {
                         return true;
                     }
-                    if (type == DAT_008871E0->WallTower) {
+                    if (type == DAT_008871E0->unknown_87C) {
                         return true;
                     }
                     }
@@ -50,10 +50,10 @@ bool Cell_00480510::ConnectsToOverlay(int overlay, int direction)
                     int health = obj->Health;
                     BuildingType_00480510* type = obj->Type;
                     if (health > 0) {
-                    if (type == DAT_008871E0->NodGateOne && (direction == 2 || direction == 6)) {
+                    if (type == DAT_008871E0->unknown_874 && (direction == 2 || direction == 6)) {
                         return true;
                     }
-                    if (type == DAT_008871E0->NodGateTwo && (direction == 0 || direction == 4)) {
+                    if (type == DAT_008871E0->unknown_878 && (direction == 0 || direction == 4)) {
                         return true;
                     }
                     }

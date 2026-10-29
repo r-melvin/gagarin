@@ -65,21 +65,8 @@ struct TemporalWeaponSlot
     TemporalWeaponType* Type;   // +0x00 @0x0071A876
 };
 
-struct TemporalHouseView
-{
-    char unknown_000[0x1FC];
-    char unknown_1FC;                    // +0x1FC @0x0071AD17
-    char unknown_1FD[0x5778 - 0x1FD];
-    char unknown_5778;                   // +0x5778 @0x0071AD04
-
-    // FUNCTION: GAMEMD 0x4F93E0 (decl; reloc) -- __thiscall, RET 4.
-    void FUN_004F93E0(TemporalTechnoView* building);
-};
-GG_STATIC_ASSERT(offsetof(TemporalHouseView, unknown_1FC) == 0x1FC);
-GG_STATIC_ASSERT(offsetof(TemporalHouseView, unknown_5778) == 0x5778);
-
 class TemporalClass;
-struct TemporalHouseView;
+class HouseClass;
 
 // A techno type, as this class reads it (slot 0x84 takes the house).
 struct TemporalTypeView
@@ -117,7 +104,7 @@ struct TemporalTypeView
     virtual void vf_078();
     virtual void vf_07C();
     virtual void vf_080();
-    virtual int vf_084(TemporalHouseView* house);   // +0x084
+    virtual int vf_084(HouseClass* house);   // +0x084
 
     char unknown_004[0xA0 - 0x04];
     int  unknown_0A0;                    // +0x0A0 @0x0071AFA9
@@ -493,7 +480,7 @@ struct TemporalTechnoView
     char                unknown_11C[0x150 - 0x11C];
     TemporalSink150View unknown_150;      // +0x150 `ADD ECX,0x150` @0x0071A972
     char                unknown_151[0x21C - 0x151];
-    TemporalHouseView*  unknown_21C;      // +0x21C @0x0071ACFE; the owning house
+    HouseClass*         unknown_21C;      // +0x21C @0x0071ACFE; the owning house
     char                unknown_220[0x270 - 0x220];
     char                unknown_270;      // +0x270 @0x0071ACE5
     char                unknown_271[0x274 - 0x271];

@@ -2230,9 +2230,9 @@ void Setter_00487C70::FUN_0050E000(int value)
 // every live techno of this house whose type is the powered one is
 // deactivated, walking the techno array from the top; if any was, and the
 // house is the local player's, the "robot tanks offline" EVA line plays.
-void House_0050E0E0::LostPoweredCenter(Type_0050E0E0* type)
+void HouseClass::LostPoweredCenter(TechnoTypeClass* type)
 {
-    if (--this->PoweredCenterCount == 0 && type != 0) {
+    if (--this->PoweredUnitCenters == 0 && type != 0) {
         bool found = false;
         for (int i = DAT_00A8EC78.Count - 1; i >= 0; i--) {
             Techno_0050E0E0* techno = DAT_00A8EC78.Items[i];
@@ -2243,7 +2243,7 @@ void House_0050E0E0::LostPoweredCenter(Type_0050E0E0* type)
                 found = true;
             }
         }
-        if (found && DAT_00A8E9A0 && this->IsControlledByCurrentPlayer()
+        if (found && DAT_00A8E9A0 && IsControlledByCurrentPlayer_0050E0E0(this)
             && DAT_00A8E7AC == 0) {
             Vox_0050E0E0::Play(STR_00824E4C, -1, -1);
         }

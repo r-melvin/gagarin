@@ -18,49 +18,14 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct CoordStruct;
-struct Point2D;
+#include "../_layout/tactical.h"
+#include "../_layout/coord_struct.h"
+#include "../_layout/geometry2d.h"
 
-struct Point2D_006D2140
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-};
-GG_STATIC_ASSERT(sizeof(Point2D_006D2140) == 0x8);
-
-struct Coord_006D2140
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-    int Z;                    // +0x0008
-};
-GG_STATIC_ASSERT(sizeof(Coord_006D2140) == 0xC);
-GG_STATIC_ASSERT(offsetof(Coord_006D2140, Z) == 0x8);
-
-// GLOBAL: GAMEMD 0xB0CD48 — the height-to-pixel scale (runtime-initialised
-// double; zero in the image).
 extern double DAT_00B0CD48;
 // GLOBAL: GAMEMD 0xB0CE30 — view X extent.
 extern int DAT_00B0CE30;
 // GLOBAL: GAMEMD 0xB0CE34 — view Y extent.
 extern int DAT_00B0CE34;
-
-struct Tactical_006D2140
-{
-    char             _pad000[0xB0];       // +0x0000
-    Point2D_006D2140 Offset_B0;           // +0x00B0  view offset (X, Y)
-
-    // FUNCTION: GAMEMD 0x6D2140 — Tactical::CoordsToClient. Projects
-    // the coordinate to a client point and answers whether it is within 360
-    // x 180 pixels of the view.
-    bool CoordsToClient(const Coord_006D2140* pCoord, Point2D_006D2140* pDest);
-    // The same function reached with the canonical coordinate and point types.
-    bool CoordsToClient(const CoordStruct* pCoord, Point2D* pDest);
-    // FUNCTION: GAMEMD 0x6D2070 (decl; reloc) -- writes the projected point into
-    // `pOut` and returns it.
-    Point2D* FUN_006D2070(Point2D* pOut, const Point2D* pIn);
-};
-GG_STATIC_ASSERT(offsetof(Tactical_006D2140, Offset_B0) == 0xB0);
-GG_STATIC_ASSERT(offsetof(Tactical_006D2140, Offset_B0.Y) == 0xB4);
 
 #endif  // GG_MATCH_UI_TACTICAL_CLASS_COORDS_TO_CLIENT_METHODS_H

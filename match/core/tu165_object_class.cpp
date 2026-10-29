@@ -63,15 +63,9 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // The map object at 0x87F7E8 (only the entry points used here).
 
-// The rules object behind the global pointer 0x8871E0 (read-only here).
-struct ObjectRulesView_5F4360
-{
-    char   unknown_0000[0x16F8];
-    double unknown_16F8;             // +0x16F8  health ratio threshold for slot 101
-};
-GG_STATIC_ASSERT(offsetof(ObjectRulesView_5F4360, unknown_16F8) == 0x16F8);
 // GLOBAL: GAMEMD 0x8871E0
-extern ObjectRulesView_5F4360* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // The audio controller's initialiser (0x405BE0, __thiscall, no arguments),
 // rerun over each controller a load brings in.

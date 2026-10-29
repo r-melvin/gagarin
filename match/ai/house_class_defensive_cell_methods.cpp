@@ -8,16 +8,10 @@
 #include "../_layout/house_class.h"
 #include "../core/frame_counter.h"
 
-// A view of RulesClass for the one field this routine needs.
-struct RulesView_00509EC0
-{
-    char _pad000[0xEE0];   // +0x0000
-    int  DefensiveCellDelay; // +0x0EE0
-};
-GG_STATIC_ASSERT(offsetof(RulesView_00509EC0, DefensiveCellDelay) == 0xEE0);
 
 // GLOBAL: GAMEMD 0x8871E0
-extern RulesView_00509EC0* RulesPtr_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA8EF98 -- the "no cell" sentinel.
 extern CellStruct NoCell_00A8EF98;
 
@@ -34,7 +28,7 @@ void HouseClass::FUN_00509EC0(SuperClass* super)
     if (PreferredDefensiveCell.X == NoCell_00A8EF98.X && PreferredDefensiveCell.Y == NoCell_00A8EF98.Y) {
         return;
     }
-    if (PreferredDefensiveCellStartTime + RulesPtr_008871E0->DefensiveCellDelay <= CurrentFrame) {
+    if (PreferredDefensiveCellStartTime + DAT_008871E0->unknown_EE0 <= CurrentFrame) {
         return;
     }
     cell = PreferredDefensiveCell;

@@ -56,15 +56,9 @@ GG_STATIC_ASSERT(offsetof(DisplayScCellObject, unknown_11A) == 0x11A);
 GG_STATIC_ASSERT(offsetof(DisplayScCellObject, unknown_11B) == 0x11B);
 GG_STATIC_ASSERT(offsetof(DisplayScCellObject, Flags) == 0x12C);
 
-// Something with a house-index field at +0x30 (the current player).
-struct DisplayScHouse
-{
-    char unknown_00[0x30];   // +0x00
-    int  Index;              // +0x30
-};
-GG_STATIC_ASSERT(offsetof(DisplayScHouse, Index) == 0x30);
 // GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
-extern DisplayScHouse* DisplayScHouse_00A83D4C;
+#include "../../_layout/house_class.h"
+extern HouseClass* DAT_00A83D4C;
 
 // A game object found under the cursor. Fields: +0x14 bit 0, +0x41A byte, +0x220 dword; slots 18 (+0x48, returns
 // a coordinate through a hidden pointer, no other argument), 33 (+0x84, returns a pointer to something with a byte

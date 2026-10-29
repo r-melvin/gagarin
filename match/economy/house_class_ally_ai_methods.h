@@ -21,15 +21,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
-// RulesClass — the byte that forces AI alliances.
-struct Rules_00501640
-{
-    char _pad000[0x14B5];   // +0x0000
-    bool At_14B5;           // +0x14B5
-};
-GG_STATIC_ASSERT(offsetof(Rules_00501640, At_14B5) == 0x14B5);
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
-extern Rules_00501640* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
 #include "../core/scenario_class_methods.h"

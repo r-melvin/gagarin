@@ -75,9 +75,9 @@ struct CellClass_004CCFD0
 GG_STATIC_ASSERT(offsetof(CellClass_004CCFD0, Flags) == 0x140);
 
 // The object the global at 0x8871E0 points at; only +0xFA8 is read.
-#include "../_layout/rules_008871e0.h"
 // GLOBAL: GAMEMD 0x8871E0 — that object.
-extern Rules_008871E0* Rules_008871E0_Instance;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // MapClass singleton — the object itself lives at 0x87F7E8 (`MOV ECX,imm32`).
 struct Map_004CCFD0

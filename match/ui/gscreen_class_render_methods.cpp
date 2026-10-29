@@ -15,7 +15,7 @@ void GScreen_004F4480::FlagToRedraw(int mode)
 {
     if (DAT_00887324)
     {
-        DAT_00887324->NeedsRedraw = 1;
+        DAT_00887324->unknown_D7D = 1;
     }
     if (mode != 0)
     {
@@ -47,10 +47,10 @@ void GScreen_004F4480::Render()
     this->RedrawFlag = 0;
 
     if (!FUN_0053BAE0()) {
-        DAT_00887324->Render(DAT_0088731C, any, 0);
-        DAT_00887324->Render(DAT_0088731C, any, 1);
+        DAT_00887324->FUN_006D3D10(DAT_0088731C, any, 0);
+        DAT_00887324->FUN_006D3D10(DAT_0088731C, any, 1);
         (this->*this->Vtbl->At_40)(full);
-        DAT_00887324->Render(DAT_0088731C, any, 2);
+        DAT_00887324->FUN_006D3D10(DAT_0088731C, any, 2);
     }
 
     if (DAT_00B0B519 && !DAT_00A8ED6B) {

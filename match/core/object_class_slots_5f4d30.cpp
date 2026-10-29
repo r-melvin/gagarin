@@ -86,24 +86,9 @@ struct TechnoTypeView_5F5940
 };
 GG_STATIC_ASSERT(offsetof(TechnoTypeView_5F5940, SpeedType) == 0x67C);
 
-// The rules object behind the global pointer 0x8871E0 (read-only here).
-struct RulesView_5F5940
-{
-    char           unknown_0000[0x9C];
-    AnimTypeClass* unknown_009C;     // +0x9C  the anim for a cyborg brought down
-    char           unknown_00A0[0xBB8 - 0xA0];
-    AnimTypeClass* unknown_0BB8;     // +0xBB8  the anim for a falling aircraft
-    AnimTypeClass* unknown_0BBC;     // +0xBBC  the parachute anim
-    char           unknown_0BC0[0x1708 - 0xBC0];
-    double         unknown_1708;     // +0x1708  the health ratio for result 3
-    char           unknown_1710[0x1863 - 0x1710];
-    ColorStruct    unknown_1863;     // +0x1863  the default line-trail colour
-};
-GG_STATIC_ASSERT(offsetof(RulesView_5F5940, unknown_0BBC) == 0xBBC);
-GG_STATIC_ASSERT(offsetof(RulesView_5F5940, unknown_1708) == 0x1708);
-GG_STATIC_ASSERT(offsetof(RulesView_5F5940, unknown_1863) == 0x1863);
 // GLOBAL: GAMEMD 0x8871E0
-extern RulesView_5F5940* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // A lepton coordinate's cell: each axis divided by 256.
 static inline CellStruct CoordCell(const CoordStruct& coord)
@@ -291,11 +276,11 @@ bool ObjectClass::vf_58(const CoordStruct& coord)
                 vf_109(coord);
                 AnimClass* anim;
                 if (vf_11() == 8) {
-                    anim = new AnimClass(DAT_008871E0->unknown_0BB8, coord, 0, 1, 0x600, 0, false);
+                    anim = new AnimClass(DAT_008871E0->unknown_BB8, coord, 0, 1, 0x600, 0, false);
                 } else {
                     CoordStruct where = coord;
                     where.Z += 0x4B;
-                    anim = new AnimClass(DAT_008871E0->unknown_0BBC, where, 0, 1, 0x600, 0, false);
+                    anim = new AnimClass(DAT_008871E0->unknown_BBC, where, 0, 1, 0x600, 0, false);
                     Parachute = anim;
                 }
                 if (anim != 0) {

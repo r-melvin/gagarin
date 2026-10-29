@@ -67,15 +67,9 @@ struct HouseView_004DB1A0
     double FUN_0050C050(TechnoTypeClass* type);
 };
 
-// The rules object, seen through its double at +0x678.
-struct Rules_004DB1A0
-{
-    char   _pad000[0x678];    // +0x0000
-    double unknown_678;       // +0x0678
-};
-GG_STATIC_ASSERT(offsetof(Rules_004DB1A0, unknown_678) == 0x678);
 // GLOBAL: GAMEMD 0x8871E0
-extern Rules_004DB1A0* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 
 

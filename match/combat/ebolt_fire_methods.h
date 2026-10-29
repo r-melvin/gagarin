@@ -28,15 +28,9 @@ struct CoordStruct_004C2A60
 };
 GG_STATIC_ASSERT(sizeof(CoordStruct_004C2A60) == 0xC);
 
-// RulesClass — only the type pointer at +0x1020 is read.
-struct Rules_004C2A60
-{
-    char  _pad0000[0x1020];   // +0x0000
-    void* At_1020;            // +0x1020
-};
-GG_STATIC_ASSERT(offsetof(Rules_004C2A60, At_1020) == 0x1020);
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
-extern Rules_004C2A60* DAT_008871E0;
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
 
 // GLOBAL: GAMEMD 0x8A0E50 — the object whose address is the fifth argument
 // of 0x62DC50.

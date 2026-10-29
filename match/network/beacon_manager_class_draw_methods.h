@@ -27,22 +27,12 @@ struct Rect_00430AC0
 };
 GG_STATIC_ASSERT(sizeof(Rect_00430AC0) == 0x10);
 
-struct House_00430AC0
-{
-    char _pad0000[0x1F5];    // +0x0000
-    char At_1F5;             // +0x01F5
-
-    // FUNCTION: GAMEMD 0x4F9A10 (decl; reloc) — allied with the house at an index.
-    bool FUN_004F9A10(int houseIndex);
-    // FUNCTION: GAMEMD 0x4F9A50 (decl; reloc) — allied with a house.
-    bool FUN_004F9A50(House_00430AC0* house);
-};
-GG_STATIC_ASSERT(offsetof(House_00430AC0, At_1F5) == 0x1F5);
 
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.
-extern House_00430AC0* DAT_00A83D4C;
+#include "../_layout/house_class.h"
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8022C — HouseClass::Array.Items.
-extern House_00430AC0** DAT_00A8022C;
+extern HouseClass** DAT_00A8022C;
 
 struct Beacon_00430AC0
 {

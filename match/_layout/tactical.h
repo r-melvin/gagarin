@@ -128,6 +128,8 @@ public:
     int* ApplyMatrix_Pixel(int* pOut, const int* pIn);
     bool AddSelectable(void* pTechno, int x, int y);
     Point2D* FUN_006D1FE0(Point2D* out, const Point2D* in);
+    // FUNCTION: GAMEMD 0x6D2070 (decl; reloc) -- writes the projected point into `out` and returns it.
+    Point2D* FUN_006D2070(Point2D* out, const Point2D* in);
     void FUN_006D2140(const CoordStruct& coord, Point2D* out);   // 0x6D2140, void-result view
     unsigned short unknown_24[64];
     int unknown_A4;
