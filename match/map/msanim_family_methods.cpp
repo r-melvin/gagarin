@@ -8,6 +8,9 @@
 //   separate functions; those are scored with scripts/vc6/raw_match.py, which
 //   does not need the analysis to know the address.
 //
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 // Percentages in the attempt notes below are historical; current partial
 // scores are recorded in scripts/data/match_manifest.json.
 // reccmp annotations (ascending by retail address within this TU):
@@ -51,7 +54,7 @@
 //   FUNCTION: GAMEMD 0x5CED10  MSBitPrintAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CED40  MSPrintAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CED70  MSPCXAnim::DeletingDtor
-//   FUNCTION: GAMEMD 0x5CEDB0  MSAnimResetCounters
+//   SYNTHETIC: GAMEMD 0x5CEDB0  MSAnimCounts initialiser
 //   VTABLE:   GAMEMD 0x7EE8E8  MSAnim        (9 slots)
 //   VTABLE:   GAMEMD 0x7EE910  MSShapeAnim
 //   VTABLE:   GAMEMD 0x7EE938  MSFadeAnim
@@ -128,6 +131,10 @@
 #include "msanim_family_methods.h"
 #include "../_layout/memory_buffer.h"
 
+// SYNTHETIC: GAMEMD 0x5CEDB0 -- initialiser: constructs MSAnimCounts, clearing the four
+// adjacent map-stage counters. Retail materialises the zero in a register once and
+// stores it four times.
+// GLOBAL: GAMEMD 0xABFBB0
 MSAnimCounters MSAnimCounts;
 MSPrintSurface* MSSurfaceGlobal;
 MSTextEngine*   MSEngineGlobal;
@@ -1108,14 +1115,3 @@ void* MSPCXAnim::DeletingDtor(unsigned int f)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x5CEDB0
-// Clear the four adjacent map-stage counters. Retail materialises the zero in
-// a register once and stores it four times, which is what four assignments of
-// the same constant to adjacent globals produce.
-void MSAnimResetCounters()
-{
-    MSAnimCounts.Field00 = 0;
-    MSAnimCounts.Field04 = 0;
-    MSAnimCounts.Field08 = 0;
-    MSAnimCounts.Field0C = 0;
-}

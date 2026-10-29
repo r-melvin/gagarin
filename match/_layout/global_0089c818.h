@@ -18,6 +18,7 @@ union Global_0089C818_View
 {
     unsigned int raw_dword;
     Global_0089C818_Words words;
+    Global_0089C818_View() { words.word_00 = 0; words.word_02 = 0; }
 };
 GG_STATIC_ASSERT(sizeof(unsigned short) == 2);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
@@ -30,6 +31,6 @@ GG_STATIC_ASSERT(sizeof(Global_0089C818_View) == 4);
 
 // GLOBAL: GAMEMD 0x0089C818
 // Not volatile: the only writer is the static initialiser 0x43B0E0 (__xc
-// entry 0x8127A4) and no thread procedure touches it.
+// entry 0x8127A4), this view's constructor, and no thread procedure touches it.
 extern Global_0089C818_View DAT_0089C818;
 #endif

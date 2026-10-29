@@ -416,19 +416,6 @@ bool Obj_004C3CE0::Subtract(int amount)
     return below;
 }
 
-// GLOBAL: GAMEMD 0xA83CD9 / 0xA83CDA / 0xA83CDB
-extern char DAT_00A83CD9;
-extern char DAT_00A83CDA;
-extern char DAT_00A83CDB;
-
-// FUNCTION: GAMEMD 0x4E8120
-void FUN_004E8120()
-{
-    DAT_00A83CD9 = 0;
-    DAT_00A83CDA = 0;
-    DAT_00A83CDB = 0;
-}
-
 struct Obj_004F3AB0
 {
     virtual void vf_0();
@@ -584,17 +571,6 @@ void FUN_0053BB80()
 {
     delete DAT_00A9FA9C;
     DAT_00A9FA9C = 0;
-}
-
-// GLOBAL: GAMEMD 0xA9FF80 / 0xA9FFA8 -- two-word values copied from the first to the second.
-extern int DAT_00A9FF80[2];
-extern int DAT_00A9FFA8[2];
-
-// FUNCTION: GAMEMD 0x53CA50
-void FUN_0053CA50()
-{
-    DAT_00A9FFA8[0] = DAT_00A9FF80[0];
-    DAT_00A9FFA8[1] = DAT_00A9FF80[1];
 }
 
 // A six-byte value copied as a dword and a word.

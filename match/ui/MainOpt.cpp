@@ -5,7 +5,7 @@
 //   in retail gamemd.exe v1.001, passed by the assert at 0x55f9c4 inside this object's
 //   code range (0x55f780-0x56170f). Functions are in ascending retail address order.
 
-#include "../core/trivial_tu126_methods.h"
+#include "game_options_class_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -40,12 +40,9 @@ extern double DAT_00ABCF48;
 // GLOBAL: GAMEMD 0x00ABCF30
 extern double DAT_00ABCF30;
 
-// FUNCTION: GAMEMD 0x55F970
-// Tail-calls a method on a global object.
-void __cdecl FUN_0055F970()
-{
-    DAT_00ABCE70.FUN_005FA350();
-}
+// SYNTHETIC: GAMEMD 0x55F970 -- initialiser: constructs DAT_00ABCE70 (GameOptionsClass::GameOptionsClass, 0x5FA350).
+// GLOBAL: GAMEMD 0xABCE70
+GameOptionsClass DAT_00ABCE70;
 
 // GLOBAL: GAMEMD 0x82A2A8 -- "D:\\ra2mdpost\\MainOpt.cpp", the build path handed to the label lookup.
 extern const char DAT_0082A2A8[];

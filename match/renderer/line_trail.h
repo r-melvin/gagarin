@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/coord_struct.h"
 
 // ---------------------------------------------------------------------------
 // __cdecl free used by DeleteAll for each freed trail and for the array block
@@ -84,15 +85,20 @@ GG_STATIC_ASSERT(offsetof(LineTrailVector, Count)       == 0x10);
 // One ring entry; only the dword at +0x0C is read (by FUN_00556D20).
 struct LineTrailNode
 {
-    int unknown_00[3];
+    CoordStruct Position;   // +0x00
     int unknown_0C;
 };
 
 struct LineTrail
 {
+    LineTrail();                            // GAMEMD 0x556A20
+    ~LineTrail();                           // GAMEMD 0x556AD0
     void SetDecrement(int val);             // GAMEMD 0x556B50 __thiscall
     static void __stdcall DeleteAll();      // GAMEMD 0x556DF0 __stdcall
     int  FUN_00556D20();                    // GAMEMD 0x556D20 __thiscall
+    static void __cdecl UpdateAll();               // GAMEMD 0x556D40 __cdecl
+    void FUN_00556B70();                    // GAMEMD 0x556B70 (decl; reloc)
+    void FUN_00556C00();                    // GAMEMD 0x556C00 (decl; reloc)
 
     unsigned char   Color[3];   // +0x00  ColorStruct (R,G,B)
     unsigned char   _pad0;      // +0x03

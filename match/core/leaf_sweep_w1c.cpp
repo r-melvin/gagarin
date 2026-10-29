@@ -333,19 +333,6 @@ void FUN_0053F630()
     DAT_00AA05A8 = 0;
 }
 
-// GAMEMD 0x5C6940
-void __fastcall FUN_005C6940(void* self, int zero, int arg);
-
-// GLOBAL: GAMEMD 0xA8F7F8
-extern char DAT_00A8F7F8[];
-
-// FUNCTION: GAMEMD 0x538C10
-// Calls FUN_005C6940 on the DAT_00A8F7F8 object with (0, 0x40).
-void FUN_00538C10()
-{
-    FUN_005C6940(DAT_00A8F7F8, 0, 0x40);
-}
-
 struct Session_0053AE00
 {
     char Pad_00[0x16054];

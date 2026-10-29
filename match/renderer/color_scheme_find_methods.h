@@ -64,6 +64,8 @@ struct ColorScheme
     static int FindByName(const char* name, HSVClass* hsv,
                           PaletteClass* pal1, PaletteClass* pal2,
                           int shade);   // GAMEMD 0x68C9C0
+
+    ColorScheme() throw();   // GAMEMD 0x68C650
 };
 GG_STATIC_ASSERT(offsetof(ColorScheme, Name)        == 0x304);
 GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_310) == 0x310);

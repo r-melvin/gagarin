@@ -45,10 +45,6 @@ extern "C" double __cdecl FUN_004CAD50(double value);
 // FUNCTION: GAMEMD 0x004CADE0 (decl; reloc; 8-byte argument, x87 result; return type is an ABI view)
 extern "C" double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x007C5F00 -- VC6 __ftol conversion helper.
-// GLOBAL: GAMEMD 0x0089E218 (word cleared at 0x4736E2)
-extern "C" unsigned short DAT_0089E218;
-// GLOBAL: GAMEMD 0x0089E21A (word cleared at 0x4736E8)
-extern "C" unsigned short DAT_0089E21A;
 // GLOBAL: GAMEMD 0x0089E238 (dword cleared at 0x4736F2)
 // GLOBAL: GAMEMD 0x0089E23C (dword cleared at 0x4736F7)
 // GLOBAL: GAMEMD 0x0089E240 (dword cleared at 0x4736FC)
@@ -96,12 +92,9 @@ double DAT_0089E248 = FUN_004CADE0((double)(DAT_0089E278 * 2) / DAT_0089E220);
 // GLOBAL: GAMEMD 0x0089E26C
 int DAT_0089E26C = (int)(DAT_0089E278 * 4 + DAT_007E1738);
 
-// FUNCTION: GAMEMD 0x004736E0
-extern "C" void FUN_004736E0()
-{
-    DAT_0089E218 = 0;
-    DAT_0089E21A = 0;
-}
+// SYNTHETIC: GAMEMD 0x004736E0
+// GLOBAL: GAMEMD 0x0089E218
+MathTblShortPair DAT_0089E218;
 
 // SYNTHETIC: GAMEMD 0x004736F0
 // GLOBAL: GAMEMD 0x0089E238

@@ -9,6 +9,7 @@
 #pragma intrinsic(pow)
 #include "header_init_shapes.h"
 #include "mathtbl_init_shapes.h"
+#include "pk_key_pipes.h"
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CAC40(double value);
@@ -68,3 +69,6 @@ HeaderCoordInit DAT_00A8F638(0, 0, 0);
 // SYNTHETIC: GAMEMD 0x52B990
 // GLOBAL: GAMEMD 0xA8F768
 HeaderCoordInit DAT_00A8F768(128, 128, 0);
+// SYNTHETIC: GAMEMD 0x538C10 -- a 64-word big integer, filled with 0 by its constructor (0x5C6940).
+// GLOBAL: GAMEMD 0xA8F7F8
+BigInt_00632740 DAT_00A8F7F8;

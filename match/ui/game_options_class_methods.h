@@ -32,6 +32,7 @@ struct GameOptionsClass
     float SoundVolume;      // +0x38 SetSoundVolume 0x5FA510
     float VoiceVolume;      // +0x3C SetVoiceVolume 0x5FA590
     float ScoreVolume;      // +0x40 SetScoreVolume 0x5FA4A0
+    char unknown_44[0x74];  // +0x44 the constructor 0x5FA350 stores up to +0xB4; the next global is 0xABCF28
 
     // FUNCTION: GAMEMD 0x5FA350 (decl; reloc)
     GameOptionsClass();
@@ -56,5 +57,6 @@ GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_20) == 0x20);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, SoundVolume) == 0x38);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, VoiceVolume) == 0x3C);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, ScoreVolume) == 0x40);
+GG_STATIC_ASSERT(sizeof(GameOptionsClass) == 0xB8);
 
 #endif  // GG_MATCH_UI_GAME_OPTIONS_CLASS_METHODS_H

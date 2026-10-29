@@ -108,19 +108,38 @@ GG_STATIC_ASSERT(offsetof(DrawItem_006213A0, rcItem) == 0x1C);
 extern Surface* DAT_00887308;
 extern void* DAT_00887310;
 
-// Tooltip state used by 0x610810 (placeholders; layout from the stores).
-// GLOBAL: GAMEMD 0xAC1CB8 -- the tooltip rectangle.
-extern RectangleStruct DAT_00AC1CB8;
-// GLOBAL: GAMEMD 0xAC1CC8 -- the saved background under the tooltip.
-extern Surface* DAT_00AC1CC8;
-// GLOBAL: GAMEMD 0xAC1CCC -- the tooltip text (0x100 bytes up to 0xAC1DCC).
-extern wchar_t DAT_00AC1CCC[0x80];
-// GLOBAL: GAMEMD 0xAC1DCC -- nonzero while a tooltip is up.
-extern int DAT_00AC1DCC;
-// GLOBAL: GAMEMD 0xAC1DD0 -- 1 once the background has been put back.
-extern int DAT_00AC1DD0;
-// GLOBAL: GAMEMD 0xAC1DD4 -- the caller's third argument to 0x610810.
-extern int DAT_00AC1DD4;
+// Tooltip state used by 0x610810 (placeholders; layout from the stores). One
+// object: a single initialiser (0x6107A0) clears all of it, and the members
+// are contiguous from 0xAC1CB8 to 0xAC1DD8.
+struct TooltipState_00AC1CB8
+{
+    RectangleStruct unknown_00;      // +0x000 0xAC1CB8 the tooltip rectangle
+    Surface*        unknown_10;      // +0x010 0xAC1CC8 the saved background under the tooltip
+    wchar_t         unknown_14[0x80]; // +0x014 0xAC1CCC the tooltip text (0x100 bytes)
+    int             unknown_114;     // +0x114 0xAC1DCC nonzero while a tooltip is up
+    int             unknown_118;     // +0x118 0xAC1DD0 1 once the background has been put back
+    int             unknown_11C;     // +0x11C 0xAC1DD4 the caller's third argument to 0x610810
+    TooltipState_00AC1CB8()
+    {
+        unknown_00.X = 0;
+        unknown_00.Y = 0;
+        unknown_00.Width = 0;
+        unknown_00.Height = 0;
+        unknown_10 = 0;
+        unknown_14[0] = 0;
+        unknown_114 = 0;
+        unknown_118 = 0;
+        unknown_11C = 0;
+    }
+};
+GG_STATIC_ASSERT(offsetof(TooltipState_00AC1CB8, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(TooltipState_00AC1CB8, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(TooltipState_00AC1CB8, unknown_114) == 0x114);
+GG_STATIC_ASSERT(offsetof(TooltipState_00AC1CB8, unknown_118) == 0x118);
+GG_STATIC_ASSERT(offsetof(TooltipState_00AC1CB8, unknown_11C) == 0x11C);
+GG_STATIC_ASSERT(sizeof(TooltipState_00AC1CB8) == 0x120);
+// GLOBAL: GAMEMD 0xAC1CB8
+extern TooltipState_00AC1CB8 DAT_00AC1CB8;
 // GLOBAL: GAMEMD 0xAC48D8 -- time the tooltip was raised.
 extern long DAT_00AC48D8;
 

@@ -11,17 +11,10 @@
 
 struct Obj_004294A0;
 
-// GLOBAL: GAMEMD 0x89A29C
-extern int DAT_0089A29C;
-
 struct Obj_004294A0
 {
     // FUNCTION: GAMEMD 0x4294A0
     int FUN_004294A0(int a1) const;
 };
-
-
-// FUNCTION: GAMEMD 0x429200
-void __cdecl FUN_00429200();
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU026_METHODS_H

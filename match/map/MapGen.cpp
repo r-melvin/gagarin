@@ -462,12 +462,9 @@ GG_STATIC_ASSERT(sizeof(DAT_00ABECE0) == 8);
 // The random-map generator object.
 Gbl_00ABDFD8 DAT_00ABDFD8;
 
-// FUNCTION: GAMEMD 0x58B770
-// Calls other functions.
-void __cdecl FUN_0058B770()
-{
-    DAT_00ABE890.FUN_0065C6D0(0);
-}
+// SYNTHETIC: GAMEMD 0x58B770 -- initialiser: constructs the generator's Randomizer with seed 0 (0x65C6D0).
+// GLOBAL: GAMEMD 0xABE890
+Gbl_00ABE890 DAT_00ABE890(0);
 
 // FUNCTION: GAMEMD 0x58B7B0
 // Empty function.

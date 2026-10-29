@@ -1056,13 +1056,11 @@ struct MSAnimCounters
     int Field04;  // 0xABFBB4
     int Field08;  // 0xABFBB8
     int Field0C;  // 0xABFBBC
+    MSAnimCounters() : Field00(0), Field04(0), Field08(0), Field0C(0) {}
 };
 GG_STATIC_ASSERT(sizeof(MSAnimCounters) == 0x10
               && offsetof(MSAnimCounters, Field0C) == 0x0C);
 extern MSAnimCounters MSAnimCounts;
-
-// FUNCTION: GAMEMD 0x5CEDB0
-void MSAnimResetCounters();
 
 // FUNCTION: GAMEMD 0x5CE7B0 — the out-of-line ~MSPCXAnim.
 void MSPCXAnim_Destroy(MSPCXAnim* self);

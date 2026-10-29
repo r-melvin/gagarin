@@ -2178,20 +2178,9 @@ long __stdcall FUN_0060D520(HWND__* hwnd, unsigned int msg, unsigned int wparam,
 
 // The tooltip globals 0xAC1CB8..0xAC1DD4 are declared in ownrdraw.h.
 
-// FUNCTION: GAMEMD 0x6107A0  FUN_006107A0
-// Static-initialiser shape: clears a run of globals.
-void FUN_006107A0()
-{
-    DAT_00AC1CB8.X = 0;
-    DAT_00AC1CB8.Y = 0;
-    DAT_00AC1CB8.Width = 0;
-    DAT_00AC1CB8.Height = 0;
-    DAT_00AC1CC8 = 0;
-    DAT_00AC1CCC[0] = 0;
-    DAT_00AC1DCC = 0;
-    DAT_00AC1DD0 = 0;
-    DAT_00AC1DD4 = 0;
-}
+// SYNTHETIC: GAMEMD 0x6107A0 -- initialiser: constructs DAT_00AC1CB8 (clears the tooltip state).
+// GLOBAL: GAMEMD 0xAC1CB8
+TooltipState_00AC1CB8 DAT_00AC1CB8;
 
 // FUNCTION: GAMEMD 0x6107E0  Obj_006107E0::Obj_006107E0 (__thiscall)
 Obj_006107E0::Obj_006107E0()
@@ -2213,41 +2202,41 @@ Obj_006107E0::Obj_006107E0()
 // unless the caller gives one) and the time, and draws it through 0x610950.
 void FUN_00610810(RectangleStruct* pRect, const wchar_t* pText, int nValue)
 {
-    if (DAT_00AC1DCC != 0)
+    if (DAT_00AC1CB8.unknown_114 != 0)
     {
-        if (DAT_00AC1DD0 != 1 && DAT_00AC1CC8 != 0)
+        if (DAT_00AC1CB8.unknown_118 != 1 && DAT_00AC1CB8.unknown_10 != 0)
         {
-            RectangleStruct rcScreen = DAT_00AC1CB8;
+            RectangleStruct rcScreen = DAT_00AC1CB8.unknown_00;
             RectangleStruct rcSaved;
             rcSaved.X = 0;
             rcSaved.Y = 0;
-            rcSaved.Width = DAT_00AC1CB8.Width;
-            rcSaved.Height = DAT_00AC1CB8.Height;
-            DAT_00887308->CopyFromPart(&rcScreen, DAT_00AC1CC8, &rcSaved, false, true);
-            DAT_00AC1DD0 = 1;
+            rcSaved.Width = DAT_00AC1CB8.unknown_00.Width;
+            rcSaved.Height = DAT_00AC1CB8.unknown_00.Height;
+            DAT_00887308->CopyFromPart(&rcScreen, DAT_00AC1CB8.unknown_10, &rcSaved, false, true);
+            DAT_00AC1CB8.unknown_118 = 1;
         }
 
-        if (DAT_00AC1CC8 != 0)
-            delete DAT_00AC1CC8;
+        if (DAT_00AC1CB8.unknown_10 != 0)
+            delete DAT_00AC1CB8.unknown_10;
 
-        DAT_00AC1CC8 = 0;
-        DAT_00AC1DCC = 0;
-        DAT_00AC1DD0 = 0;
+        DAT_00AC1CB8.unknown_10 = 0;
+        DAT_00AC1CB8.unknown_114 = 0;
+        DAT_00AC1CB8.unknown_118 = 0;
     }
 
     DAT_00AC48D8 = time(0);
-    swprintf(DAT_00AC1CCC, FUN_00734E60(
+    swprintf(DAT_00AC1CB8.unknown_14, FUN_00734E60(
         // STRING: GAMEMD 0x00835868
         "GUI:ToolTip", 0,
         // STRING: GAMEMD 0x00833730
         "D:\\ra2mdpost\\ownrdraw.cpp", 0x1D21));
 
     if (pText != 0)
-        wcscpy(DAT_00AC1CCC, pText);
+        wcscpy(DAT_00AC1CB8.unknown_14, pText);
 
-    DAT_00AC1CB8 = *pRect;
-    DAT_00AC1DCC = 1;
-    DAT_00AC1DD4 = nValue;
+    DAT_00AC1CB8.unknown_00 = *pRect;
+    DAT_00AC1CB8.unknown_114 = 1;
+    DAT_00AC1CB8.unknown_11C = nValue;
     FUN_00610950(true);
 }
 

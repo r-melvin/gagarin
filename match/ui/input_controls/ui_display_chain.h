@@ -880,6 +880,14 @@ struct StripClass
     void FUN_006A9540(bool full);
     // FUNCTION: GAMEMD 0x6ABAC0 (decl; reloc)
     bool FUN_006ABAC0();
+    // FUNCTION: GAMEMD 0x6ABA60
+    bool FUN_006ABA60(void* value, int type, int id);
+    // FUNCTION: GAMEMD 0x6AA600 (decl; reloc)
+    bool FUN_006AA600();
+    // FUNCTION: GAMEMD 0x6A87F0
+    bool FUN_006A87F0(int type, int id);
+    // FUNCTION: GAMEMD 0x6A8710 (decl; reloc)
+    void FUN_006A8710(int type, int id);
 };
 GG_STATIC_ASSERT(offsetof(StripClass, Timer) == 0x08);
 GG_STATIC_ASSERT(offsetof(StripClass, unknown_00) == 0x00);
@@ -948,6 +956,10 @@ public:
     bool Scroll(bool up, int amount);
     // FUNCTION: GAMEMD 0x6A7590 (decl; reloc) -- RET 4.
     void SetTab(int tab);
+    // FUNCTION: GAMEMD 0x6A7D20
+    void FUN_006A7D20();
+    // FUNCTION: GAMEMD 0x6A67A0
+    void FUN_006A67A0(int tab);
 
     StripClass Strips[4];                 // +0x1544
     int unknown_5394;                     // +0x5394

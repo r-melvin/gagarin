@@ -3,28 +3,23 @@
 //   Evidence: retail gamemd.exe v1.001 disassembly at each address below. Small leaf bodies
 //   from the 0x54E000-0x6AC000 range; receivers are placeholder views of the members touched.
 //
-// Address index: 0x585EE0 0x61F190 0x65C8B0 0x642740
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
+// Address index: 0x61F190 0x65C8B0 0x642740
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "global_getter_family_methods.h"
 #include "../_layout/cell.h"
+#include "header_init_shapes.h"
 
-// Four adjacent cell-offset pairs, filled with (0,0) (4,0) (0,4) (4,4).
-struct Pt_00ABD460 { short x, y; };
+// Four adjacent cell-offset pairs, built with (0,0) (4,0) (0,4) (4,4).
+// SYNTHETIC: GAMEMD 0x585EE0
 // GLOBAL: GAMEMD 0xABD460
-extern Pt_00ABD460 DAT_00ABD460[4];
-
-// FUNCTION: GAMEMD 0x585EE0
-// Fill the four corner offsets.
-void __cdecl FUN_00585EE0()
-{
-    Pt_00ABD460 p;
-    p.x = 0; p.y = 0; DAT_00ABD460[0] = p;
-    p.x = 4; p.y = 0; DAT_00ABD460[1] = p;
-    p.x = 0; p.y = 4; DAT_00ABD460[2] = p;
-    p.x = 4; p.y = 4; DAT_00ABD460[3] = p;
-}
+HeaderCellInit DAT_00ABD460[4] = {
+    HeaderCellInit(0, 0), HeaderCellInit(4, 0), HeaderCellInit(0, 4), HeaderCellInit(4, 4)
+};
 
 // GLOBAL: GAMEMD 0xAC48B8
 extern unsigned short DAT_00AC48B8;

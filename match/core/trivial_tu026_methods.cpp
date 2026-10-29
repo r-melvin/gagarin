@@ -6,13 +6,6 @@
 
 #include "trivial_tu026_methods.h"
 
-// FUNCTION: GAMEMD 0x429200
-// Stores to a global.
-void __cdecl FUN_00429200()
-{
-    DAT_0089A29C = 0x7E36D4;
-}
-
 // FUNCTION: GAMEMD 0x4294A0
 // Returns zero; pops its stack arguments. Vtable slot 5 of ApplicationClass (RTTI).
 int Obj_004294A0::FUN_004294A0(int a1) const

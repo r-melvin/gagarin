@@ -76,40 +76,24 @@ double DAT_00B04E48 = FUN_004CADE0((DAT_00B04E78 * 2) / DAT_00B04E20);
 int DAT_00B04E6C = (int)(DAT_00B04E78 * 4 + 0.5);
 
 // The word pair starts cleared.
-// FUNCTION: GAMEMD 0x661E50
-void Init_DAT_00B04E18()
-{
-    DAT_00B04E18.A = 0;
-    DAT_00B04E18.B = 0;
-}
+// SYNTHETIC: GAMEMD 0x661E50
+// GLOBAL: GAMEMD 0xB04E18
+GgPairShort DAT_00B04E18;
 
 // So does the triple the rocket locomotor seeds itself from.
-// FUNCTION: GAMEMD 0x661E60
-void Init_DAT_00B04E38()
-{
-    DAT_00B04E38.A = 0;
-    DAT_00B04E38.B = 0;
-    DAT_00B04E38.C = 0;
-}
+// SYNTHETIC: GAMEMD 0x661E60
+// GLOBAL: GAMEMD 0xB04E38
+GgTripleInt DAT_00B04E38(0, 0, 0);
 
 // The second triple starts at 0x80, 0x80, 0.
-// FUNCTION: GAMEMD 0x661E80
-void Init_DAT_00B04E60()
-{
-    DAT_00B04E60.A = 0x80;
-    DAT_00B04E60.B = 0x80;
-    DAT_00B04E60.C = 0;
-}
+// SYNTHETIC: GAMEMD 0x661E80
+// GLOBAL: GAMEMD 0xB04E60
+GgTripleInt DAT_00B04E60(0x80, 0x80, 0);
 
 // And the four-dword block starts cleared.
-// FUNCTION: GAMEMD 0x661EA0
-void Init_DAT_00B04E08()
-{
-    DAT_00B04E08.A = 0;
-    DAT_00B04E08.B = 0;
-    DAT_00B04E08.C = 0;
-    DAT_00B04E08.D = 0;
-}
+// SYNTHETIC: GAMEMD 0x661EA0
+// GLOBAL: GAMEMD 0xB04E08
+GgQuadInt DAT_00B04E08;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x661EC0

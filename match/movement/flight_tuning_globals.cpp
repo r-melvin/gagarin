@@ -1,110 +1,73 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bodies ascending by retail address; bytes diffed against the user's
-//   retail gamemd.exe v1.001.
+// Header static initialisers at 0x5B2B90-0x5B2D80 (header_init_shapes.h): the same
+// math-table group of doubles/ints and zero blocks as header_init_5b1ee0.cpp, the
+// copy this TU got, in __xc order. Retail's evidence: each initialiser stores one
+// global of the 0x00ABEF58..0x00ABEFD0 run, and the table entries point straight at
+// them.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 #include <math.h>
-#include "flight_tuning_globals.h"
+#pragma intrinsic(pow)
+#include "../core/header_init_shapes.h"
+#include "../core/mathtbl_init_shapes.h"
 
-// FUNCTION: GAMEMD 0x005B2B90
-// The cell diagonal: the hypotenuse of a 256-unit square. Retail wrote the
-// square as a pow() call rather than a multiplication -- the x87 `FLD 256.0 /
-// FLD 2.0 / CALL _CIpow` sequence is the intrinsic two-argument form -- and
-// the doubling comes out as FADD ST,ST.
-void __cdecl SetCellDiagonal()
-{
-    Tuning.CellDiagonal = gamemd_sqrt(2.0 * pow(256.0, 2.0));
-}
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CADE0(double value);
 
-// FUNCTION: GAMEMD 0x005B2BC0
-// How far one cell diagonal is per game frame.
-void __cdecl SetStepPerFrame()
-{
-    Tuning.StepPerFrame = Tuning.CellDiagonal / GG_FRAMES_PER_SECOND;
-}
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
+// GLOBAL: GAMEMD 0x7EDC80
+const double DAT_007EDC80 = 60.0;
+// GLOBAL: GAMEMD 0x7EDC88
+const double DAT_007EDC88 = 0.017453292519943295;
 
-// FUNCTION: GAMEMD 0x005B2BE0
-// Its reciprocal.
-void __cdecl SetInverseStep()
-{
-    Tuning.InverseStep = 1.0 / Tuning.StepPerFrame;
-}
-
-// FUNCTION: GAMEMD 0x005B2C00
-void __cdecl SetRadians45()
-{
-    Tuning.Radians45 = GG_DEGREES_TO_RADIANS * 45.0;
-}
-
-// FUNCTION: GAMEMD 0x005B2C20
-void __cdecl SetRadians60()
-{
-    Tuning.Radians60 = GG_DEGREES_TO_RADIANS * 60.0;
-}
-
-// FUNCTION: GAMEMD 0x005B2C40
-void __cdecl SetRadians90()
-{
-    Tuning.Radians90 = GG_DEGREES_TO_RADIANS * 90.0;
-}
-
-// FUNCTION: GAMEMD 0x005B2C60
-// Half the span covered over the 30-degree wedge between the two stored
-// angles, in world units, truncated to an integer.
-void __cdecl SetHalfSpan()
-{
-    Tuning.HalfSpan = (int)(gamemd_tabletrig(Tuning.Radians90 - Tuning.Radians60) *
-                            Tuning.CellDiagonal * 0.5);
-}
-
-// FUNCTION: GAMEMD 0x005B2CA0
-void __cdecl SetStepScale()
-{
-    Tuning.StepScale = gamemd_tablescale(Tuning.HalfSpan * 0.00390625);
-}
-
-// FUNCTION: GAMEMD 0x005B2CD0
-// The doubled span reaches the scale helper as a whole number of units, which
-// is why retail materialises `HalfSpan * 2` into its own stack slot and FILDs
-// it rather than doubling in the x87 stack.
-void __cdecl SetSpanScale()
-{
-    Tuning.SpanScale = gamemd_tablescale((Tuning.HalfSpan * 2) / Tuning.CellDiagonal);
-}
-
-// FUNCTION: GAMEMD 0x005B2D00
-void __cdecl SetSpanCells()
-{
-    Tuning.SpanCells = (int)(Tuning.HalfSpan * 4 + 0.5);
-}
-
-// FUNCTION: GAMEMD 0x005B2D30
-void __cdecl ResetPair70()
-{
-    Tuning.Reset70 = 0;
-    Tuning.Reset72 = 0;
-}
-
-// FUNCTION: GAMEMD 0x005B2D40
-void __cdecl ResetTriple90()
-{
-    Tuning.Reset90 = 0;
-    Tuning.Reset94 = 0;
-    Tuning.Reset98 = 0;
-}
-
-// FUNCTION: GAMEMD 0x005B2D60
-void __cdecl ResetLimits()
-{
-    Tuning.ResetC0 = 0;
-    Tuning.Limit1B8 = 0x80;
-    Tuning.Limit1BC = 0x80;
-}
-
-// FUNCTION: GAMEMD 0x005B2D80
-void __cdecl ResetQuad60()
-{
-    Tuning.Reset60 = 0;
-    Tuning.Reset64 = 0;
-    Tuning.Reset68 = 0;
-    Tuning.Reset6C = 0;
-}
+// SYNTHETIC: GAMEMD 0x5B2B90
+// GLOBAL: GAMEMD 0xABEF78
+double DAT_00ABEF78 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+// SYNTHETIC: GAMEMD 0x5B2BC0
+// GLOBAL: GAMEMD 0xABEFC8
+double DAT_00ABEFC8 = DAT_00ABEF78 / DAT_007EDC80;
+// SYNTHETIC: GAMEMD 0x5B2BE0
+// GLOBAL: GAMEMD 0xABEFB0
+double DAT_00ABEFB0 = 1.0 / DAT_00ABEFC8;
+// SYNTHETIC: GAMEMD 0x5B2C00
+// GLOBAL: GAMEMD 0xABEFA8
+double DAT_00ABEFA8 = DAT_007EDC88 * 45.0;
+// SYNTHETIC: GAMEMD 0x5B2C20
+// GLOBAL: GAMEMD 0xABEF80
+double DAT_00ABEF80 = DAT_007EDC88 * 60.0;
+// SYNTHETIC: GAMEMD 0x5B2C40
+// GLOBAL: GAMEMD 0xABEF58
+double DAT_00ABEF58 = DAT_007EDC88 * 90.0;
+// SYNTHETIC: GAMEMD 0x5B2C60
+// GLOBAL: GAMEMD 0xABEFD0
+int DAT_00ABEFD0 = (int)(FUN_004CAD50(DAT_00ABEF58 - DAT_00ABEF80) * DAT_00ABEF78 * 0.5);
+// SYNTHETIC: GAMEMD 0x5B2CA0
+// GLOBAL: GAMEMD 0xABEF88
+double DAT_00ABEF88 = FUN_004CADE0(DAT_00ABEFD0 * 0.00390625);
+// SYNTHETIC: GAMEMD 0x5B2CD0
+// GLOBAL: GAMEMD 0xABEFA0
+double DAT_00ABEFA0 = FUN_004CADE0((DAT_00ABEFD0 * 2) / DAT_00ABEF78);
+// SYNTHETIC: GAMEMD 0x5B2D00
+// GLOBAL: GAMEMD 0xABEFC4
+int DAT_00ABEFC4 = (int)(DAT_00ABEFD0 * 4 + 0.5);
+// SYNTHETIC: GAMEMD 0x5B2D30
+// GLOBAL: GAMEMD 0xABEF70
+HeaderCellInit DAT_00ABEF70(0, 0);
+// SYNTHETIC: GAMEMD 0x5B2D40
+// GLOBAL: GAMEMD 0xABEF90
+HeaderCoordInit DAT_00ABEF90(0, 0, 0);
+// SYNTHETIC: GAMEMD 0x5B2D60
+// GLOBAL: GAMEMD 0xABEFB8
+HeaderCoordInit DAT_00ABEFB8(128, 128, 0);
+// SYNTHETIC: GAMEMD 0x5B2D80
+// GLOBAL: GAMEMD 0xABEF60
+MathTblZero4 DAT_00ABEF60;

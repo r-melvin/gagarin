@@ -82,6 +82,7 @@ struct GgQuadInt
     int B;  // +0x04
     int C;  // +0x08
     int D;  // +0x0C
+    GgQuadInt() : A(0), B(0), C(0), D(0) {}
 };
 GG_STATIC_ASSERT(offsetof(GgQuadInt, A) == 0x00);
 GG_STATIC_ASSERT(offsetof(GgQuadInt, B) == 0x04);
@@ -96,6 +97,7 @@ struct GgPairShort
 {
     short A;  // +0x00
     short B;  // +0x02
+    GgPairShort() : A(0), B(0) {}
 };
 GG_STATIC_ASSERT(offsetof(GgPairShort, A) == 0x00);
 GG_STATIC_ASSERT(offsetof(GgPairShort, B) == 0x02);
@@ -110,6 +112,7 @@ struct GgTripleInt
     int A;  // +0x00
     int B;  // +0x04
     int C;  // +0x08
+    GgTripleInt(int a, int b, int c) : A(a), B(b), C(c) {}
 };
 GG_STATIC_ASSERT(offsetof(GgTripleInt, A) == 0x00);
 GG_STATIC_ASSERT(offsetof(GgTripleInt, B) == 0x04);

@@ -47,13 +47,17 @@ void FUN_00734E60(void*, int, void*, int);
 // LIBRARY: GAMEMD 0x7C978A (declaration)
 void __cdecl FUN_007C978A(int);
 
+// The global at 0xABE890 is the seeded random-number generator: 0x65C6D0 is its
+// constructor (RET 4; seed in, 250-word table of 0xC + 250*4 bytes filled).
 struct Gbl_00ABE890
 {
     // FUNCTION: GAMEMD 0x65C6D0
-    void FUN_0065C6D0(int);
+    Gbl_00ABE890(int seed);
     // FUNCTION: GAMEMD 0x65C780 (declaration) -- the raw 32-bit draw.
     unsigned int FUN_0065C780();
+    char unknown_00[0xC + 250 * 4];  // flag, two cursors, 250-entry table (Randomizer layout)
 };
+GG_STATIC_ASSERT(sizeof(Gbl_00ABE890) == 0x3F4);
 
 struct Obj_00597D40
 {

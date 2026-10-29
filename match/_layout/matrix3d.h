@@ -75,6 +75,8 @@ struct Matrix3D
     double GetAxisHeading();                              // 0x5AF3B0
     double GetAxisHeadingX();                             // 0x5AF470
     Vector3D* RotateVector(Vector3D* out, const Vector3D* in);   // 0x5AF4D0
+    void PreRotateX(float angle);                         // 0x5AEC40
+    void PreRotateZ(float angle);                         // 0x5AEE50
 };
 GG_STATIC_ASSERT(offsetof(Matrix3D, Row) == 0x00);
 GG_STATIC_ASSERT(sizeof(((Matrix3D*)0)->Row[0]) == 0x10);

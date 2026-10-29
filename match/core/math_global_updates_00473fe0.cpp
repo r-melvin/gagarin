@@ -41,10 +41,6 @@ extern "C" double __cdecl FUN_004CADE0(double value);
 extern "C" const double DAT_007E1738;
 // GLOBAL: GAMEMD 0x007E1740 (double 0.00390625)
 extern "C" const double DAT_007E1740;
-// GLOBAL: GAMEMD 0x0089E2A8
-extern "C" unsigned short DAT_0089E2A8;
-// GLOBAL: GAMEMD 0x0089E2AA
-extern "C" unsigned short DAT_0089E2AA;
 // Storage widths are instruction-confirmed; original owner/grouping is unknown.
 GG_STATIC_ASSERT(sizeof(int) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned short) == 2);
@@ -89,12 +85,9 @@ double DAT_0089E2D8 = FUN_004CADE0((DAT_0089E308 * 2) / DAT_0089E2B0);
 // GLOBAL: GAMEMD 0x0089E2FC
 int DAT_0089E2FC = (int)(DAT_0089E308 * 4 + DAT_007E1738);
 
-// FUNCTION: GAMEMD 0x00474180
-extern "C" void FUN_00474180()
-{
-    DAT_0089E2A8 = 0;
-    DAT_0089E2AA = 0;
-}
+// SYNTHETIC: GAMEMD 0x00474180
+// GLOBAL: GAMEMD 0x0089E2A8
+MathTblShortPair DAT_0089E2A8;
 
 // SYNTHETIC: GAMEMD 0x00474190
 // GLOBAL: GAMEMD 0x0089E2C8

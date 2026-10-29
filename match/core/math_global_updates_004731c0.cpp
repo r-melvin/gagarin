@@ -44,10 +44,6 @@ extern "C" double __cdecl FUN_004CAD50(double value);
 extern "C" double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x007C5F00 -- VC6 __ftol conversion helper.
 // GLOBAL: GAMEMD 0x0089E1EC (dword written at 0x473320)
-// GLOBAL: GAMEMD 0x0089E198 (word written at 0x473332)
-extern "C" unsigned short DAT_0089E198;
-// GLOBAL: GAMEMD 0x0089E19A (word written at 0x473338)
-extern "C" unsigned short DAT_0089E19A;
 // GLOBAL: GAMEMD 0x0089E1B8 (dword written at 0x473342)
 // GLOBAL: GAMEMD 0x0089E1BC (dword written at 0x473347)
 // GLOBAL: GAMEMD 0x0089E1C0 (dword written at 0x47334C)
@@ -95,12 +91,9 @@ double DAT_0089E1C8 = FUN_004CADE0((double)(DAT_0089E1F8 * 2) / DAT_0089E1A0);
 // GLOBAL: GAMEMD 0x0089E1EC
 int DAT_0089E1EC = (int)(DAT_0089E1F8 * 4 + DAT_007E1738);
 
-// FUNCTION: GAMEMD 0x00473330
-extern "C" void FUN_00473330()
-{
-    DAT_0089E198 = 0;
-    DAT_0089E19A = 0;
-}
+// SYNTHETIC: GAMEMD 0x00473330
+// GLOBAL: GAMEMD 0x0089E198
+MathTblShortPair DAT_0089E198;
 
 // SYNTHETIC: GAMEMD 0x00473340
 // GLOBAL: GAMEMD 0x0089E1B8
