@@ -61,7 +61,7 @@ public:
     virtual int vf_185(AbstractClass* target);                     // 185 0x5218E0
     // Native primary slot 242: one stack dword.
     virtual void vf_242(AbstractClass* target);                                  // 242 0x51B1F0
-    virtual int vf_243(int a1, int a2);                            // 243 0x51DF60
+    virtual int vf_243(AbstractClass* target, int a2);            // 243 0x51DF60
     virtual ObjectTypeClass* vf_51(bool a1);                       // 51  0x522640
     virtual HouseClass* vf_52(bool a1);                            // 52  0x5226C0
     virtual bool vf_80(int a1, int a2, int a3, int a4);            // 80  0x51F250

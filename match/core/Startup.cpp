@@ -185,18 +185,7 @@ public:
     unsigned char unknown_[0x3A0 - sizeof(AbstractClass)];
 };
 
-// CALLEE: GAMEMD 0x00435820 (decl; reloc) -- BuildingLightClass default constructor.
-class BuildingLightClass : public AbstractClass
-{
-public:
-    BuildingLightClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0xE8 - sizeof(AbstractClass)];
-};
+#include "../_layout/building_light_class.h"
 
 // CALLEE: GAMEMD 0x00763730 (decl; reloc) -- WaypointPathClass default constructor.
 class WaypointPathClass : public AbstractClass

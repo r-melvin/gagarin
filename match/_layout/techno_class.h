@@ -230,6 +230,14 @@ public:
                       int a12, int a13, int a14, int a15, int a16);
     // FUNCTION: GAMEMD 0x70FBE0 (decl; reloc) -- brings a deactivated object back.
     void Reactivate();
+    // FUNCTION: GAMEMD 0x705D60
+    void FUN_00705D60();
+    // FUNCTION: GAMEMD 0x70DE70 -- one stack argument (RET 4).
+    void FUN_0070DE70(int a);
+    // FUNCTION: GAMEMD 0x70E000 -- one stack argument (RET 4).
+    void FUN_0070E000(int a);
+    // FUNCTION: GAMEMD 0x70E360 -- one stack argument (RET 4), result in EAX.
+    int FUN_0070E360(int a);
 
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40
@@ -242,6 +250,8 @@ public:
     virtual CoordStruct vf_44(int a1, CoordStruct a2);     // 44  0x6F3AD0
     virtual bool vf_49();                                          // 49  0x41C010: returns Disguised
     virtual bool vf_50(HouseClass* house);                         // 50  0x41C020: returns Disguised
+    virtual bool vf_53();                                          // 53  0x6F6AC0: take off the map
+    virtual bool vf_54(const CoordStruct& coord, int a2);          // 54  0x6F6CA0: place on the map
     virtual void vf_71();                                          // 71  0x6F4A40
     virtual bool vf_73(int mode);                                  // 73  0x6F4A70
     virtual void vf_82(int a1);                                    // 82  0x6F9DD0
@@ -334,10 +344,10 @@ public:
     virtual bool vf_237(AbstractClass* target);                                 // 237 0x6F78D0
     virtual int vf_238();                                          // 238 0x4C9150
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
-    virtual bool vf_240(int a1, int a2, int a3);                   // 240 0x6FC0B0
+    virtual bool vf_240(AbstractClass* target, int a2, int a3);   // 240 0x6FC0B0; BuildingClass 0x44ACF0 passes its Target
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x6F8DF0; FootClass 0x4D9920 tests the threat bits and the result pointer
     virtual void vf_242(AbstractClass* target);                                  // 242 0x6FCDB0
-    virtual int vf_243(int a1, int a2);                            // 243 0x6FDD50
+    virtual int vf_243(AbstractClass* target, int a2);            // 243 0x6FDD50; BuildingClass 0x44ACF0 passes its Target
     virtual void CancelAndGoIdle();                                // 244 0x70F850
     virtual bool vf_245(HouseClass* house, bool a2);               // 245 0x7014A0 (RET 8)
     // CALLEE: GAMEMD 0x70B280 -- slot 246, CoordStruct* / float / bool, RET 0xC.

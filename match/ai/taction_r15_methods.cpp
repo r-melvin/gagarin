@@ -14,7 +14,7 @@
 #include "../_layout/building_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/coord_struct.h"
-#include "../core/building_light_class.h"
+#include "../_layout/building_light_class.h"
 #include "../core/id_resolve_command_sweep.h"
 #include "../_layout/map_0087f7e8.h"
 

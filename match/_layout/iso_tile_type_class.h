@@ -9,6 +9,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "vector_class.h"
 
 class IsometricTileTypeClass;
 class IsometricTileClass;
@@ -73,11 +74,35 @@ public:
     TileImageHeader* unknown_A4;                 // +0x0A4
     char             _pad_0A8[0x294 - 0x0A8];
     int              unknown_294;              // +0x294 copied into CellClass +0x38 at 0x5A6C10
-    char             _pad_298[0x2E4 - 0x298];
+    int              unknown_298;              // +0x298 ctor = 0xFFFF @0x5447E4
+    int              unknown_29C;              // +0x29C ctor = 0xFFFF @0x5447EA
+    int              unknown_2A0;              // +0x2A0 ctor = 0 @0x5447F0
+    DynamicVectorClassLayout unknown_vec_2A4;  // +0x2A4 (0x18) DynamicVectorClass<unsigned short*>: vptr 0x7ECCEC (RTTI .?AV?$DynamicVectorClass@PAG@@) @0x544811,
+                                               //   Count 0 @0x544825, CapacityIncrement 0xA @0x54481B
+    int              unknown_2BC;              // +0x2BC ctor = 0 @0x544868
+    int              unknown_2C0;              // +0x2C0 ctor @0x544836
+    int              unknown_2C4;              // +0x2C4 ctor @0x54483C
+    int              unknown_2C8;              // +0x2C8 ctor @0x544842
+    int              unknown_2CC;              // +0x2CC ctor = 0xFFFF @0x544830
+    int              unknown_2D0;              // +0x2D0 ctor @0x544848
+    int              unknown_2D4;              // +0x2D4 ctor @0x544852
+    int              unknown_2D8;              // +0x2D8 ctor = 0 @0x54486E
+    int              unknown_2DC;              // +0x2DC ctor stores its fourth argument (low byte) @0x544874
+    unsigned char    unknown_2E0;              // +0x2E0 ctor = 0 @0x54487A
+    unsigned char    unknown_2E1;              // +0x2E1 ctor = 0 @0x544880
+    unsigned char    unknown_2E2;              // +0x2E2 ctor = 1 @0x544886
+    unsigned char    unknown_2E3;              // +0x2E3 ctor = 0 @0x54488D
     int              unknown_2E4;              // +0x2E4 sub-tile columns (loop bound in 0x5A7E90 / 0x5A7FA0)
     int              unknown_2E8;              // +0x2E8 sub-tile rows
-    char             _pad_2EC[0x2F4 - 0x2EC];
+    int              unknown_2EC;              // +0x2EC ctor stores its fifth argument (low byte) @0x54489F
+    int              unknown_2F0;              // +0x2F0 ctor = 1 @0x5448A5
     unsigned char    TileDataLoadable;         // +0x2F4
+    unsigned char    unknown_2F5;              // +0x2F5 ctor = 0 @0x5449C5
+    char             _pad_2F6[0x305 - 0x2F6];
+    unsigned char    unknown_305;              // +0x305 ctor = 1 @0x5448B5
+    unsigned char    unknown_306;              // +0x306 ctor = 0 @0x5448BC
+    char             _pad_307[1];              // +0x307
+    int              unknown_308;              // +0x308 ctor = 0 @0x5448C2
 };
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, Vfptr)            == 0x000);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, ID)                 == 0x024);
@@ -85,17 +110,33 @@ GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_A4)         == 0x0A4);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_294)        == 0x294);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E4)        == 0x2E4);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E8)        == 0x2E8);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_298)        == 0x298);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_vec_2A4)    == 0x2A4);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2BC)        == 0x2BC);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2D8)        == 0x2D8);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E0)        == 0x2E0);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2EC)        == 0x2EC);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, TileDataLoadable) == 0x2F4);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_305)        == 0x305);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_308)        == 0x308);
+// sizeof from the allocation `PUSH 0x30C; CALL 0x7C8E17` at 0x6C2FBC.
+GG_STATIC_ASSERT(sizeof(IsometricTileTypeClass)                        == 0x30C);
 
 // The class has to be complete before this typedef, or VC6 falls back to the
 // multiple-inheritance member-pointer form and emits a `this` adjustment.
 typedef TileImageHeader* (IsometricTileTypeClass::*GetTileDataFn)();
 
+// Slot 35 (CreateObject, 0x549AE0) takes the owning house; FUN_00549AE0 declares it with an int.
+typedef IsometricTileClass* (IsometricTileTypeClass::*CreateObjectFn)(int);
+
 struct IsoTileTypeVtbl
 {
-    char          _pad_000[0x9C];
-    GetTileDataFn At_9C;    // +0x9C
+    char           _pad_000[0x8C];
+    CreateObjectFn At_8C;   // +0x8C slot 35
+    char           _pad_090[0x9C - 0x90];
+    GetTileDataFn  At_9C;   // +0x9C
 };
+GG_STATIC_ASSERT(offsetof(IsoTileTypeVtbl, At_8C) == 0x8C);
 GG_STATIC_ASSERT(offsetof(IsoTileTypeVtbl, At_9C) == 0x9C);
 
 #endif  // GG_MATCH_LAYOUT_ISO_TILE_TYPE_CLASS_H

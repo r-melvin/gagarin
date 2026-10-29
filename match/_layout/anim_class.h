@@ -74,6 +74,8 @@ public:
     void FUN_00424C90(BulletClass* bullet);
     // FUNCTION: GAMEMD 0x424CA0 (decl; reloc) -- stores the owner house at +0x180.
     void FUN_00424CA0(HouseClass* house);
+    // FUNCTION: GAMEMD 0x425270 (decl; reloc) -- no stack arguments, 8 bytes.
+    void FUN_00425270();
 
     // +0xAC StageClass base (0x1C): retail CHD (COL 0x7FBA60) lists it at mdisp 0xAC;
     //   ctor stores @0x00421EB8..0x00421EDB.

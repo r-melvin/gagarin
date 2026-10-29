@@ -74,6 +74,7 @@ class HouseClass;
 class InfantryClass;
 class LightSourceClass;
 class CellClass;
+class BuildingLightClass;
 
 class BuildingClass : public TechnoClass
 {
@@ -191,6 +192,13 @@ public:
     virtual void vf_320(int a1);                                   // 320 0x455980
     virtual int vf_321();                                          // 321 0x452250: returns 0
 
+    // Overrides of base slots recovered in economy/house_building/building_a4_vf_*.cpp.
+    virtual bool vf_53();                                          // 53  0x445880: take off the map
+    virtual bool vf_54(const CoordStruct& coord, int dir);         // 54  0x440580: place on the map
+    virtual bool vf_73(int mark);                                  // 73  0x43F180: mark or unmark the footprint
+    virtual int vf_132();                                          // 132 0x44ACF0
+    virtual bool vf_245(HouseClass* newOwner, bool announce);      // 245 0x448260: change owner
+
 
     // Methods matched in economy/building_class.cpp. 0x4521C0 clears HasPower @0x660 and
     // pauses every Anims[] entry; 0x452210 sets it and resumes them.
@@ -243,6 +251,24 @@ public:
     void FUN_00451F60(void* lightConvert, int tint);
     // FUNCTION: GAMEMD 0x4528A0 -- true when the target's centre is within PsychicDetectionRadius cells (RET 4).
     bool FUN_004528A0(AbstractClass* target);
+    // FUNCTION: GAMEMD 0x452A40 -- one stack argument (RET 4).
+    void FUN_00452A40(int a);
+    // FUNCTION: GAMEMD 0x4561F0
+    void FUN_004561F0();
+    // FUNCTION: GAMEMD 0x457AA0 -- three stack arguments (RET 0xC).
+    void FUN_00457AA0(int a, int b, int c);
+    // FUNCTION: GAMEMD 0x455F10 -- one stack argument.
+    void FUN_00455F10(int a);
+    // FUNCTION: GAMEMD 0x448070 -- one stack argument.
+    void FUN_00448070(int a);
+    // FUNCTION: GAMEMD 0x451400
+    void FUN_00451400();
+    // FUNCTION: GAMEMD 0x459F40
+    unsigned int FUN_00459F40();
+    // FUNCTION: GAMEMD 0x452170 -- one stack argument.
+    void FUN_00452170(int a);
+    // FUNCTION: GAMEMD 0x451690
+    void FUN_00451690();
 
     BuildingTypeClass* Type;              // +0x520 ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
     FactoryClass*  Factory;               // +0x524 ctor @0x0043B75C (=0)
@@ -252,14 +278,14 @@ public:
     unsigned int   OwnerCountryIndex;     // +0x53C ctor @0x0043B783
     void*          C4AppliedBy;           // +0x540 InfantryClass*; ctor @0x0043B789
     unsigned int   unknown_544;           // +0x544 ctor @0x0043B78F
-    void*          FirestormAnim;         // +0x548 AnimClass*; ctor @0x0043B795
-    void*          PsiWarnAnim;           // +0x54C AnimClass*; ctor @0x0043B79B
+    AnimClass*     FirestormAnim;         // +0x548; ctor @0x0043B795
+    AnimClass*     PsiWarnAnim;           // +0x54C; ctor @0x0043B79B
     CDTimerClass   FactoryRetryTimer;     // +0x550 (0xC) ctor StartTime @0x0043B7A7, TimeLeft @0x0043B7AD
     AnimClass*     Anims[0x15];           // +0x55C .. 0x5AF  ctor: MOV ECX,0x15 / LEA EDI,[ESI+0x55C] /
                                           //   REP STOSD @0x0043BA63..0x0043BA70 — 21 dwords, exact
     unsigned char  AnimStates[0x15];      // +0x5B0 .. 0x5C4  ctor zeroes 5 dwords + 1 byte @0x0043BA7F..0x0043BAA3
     unsigned char  align_5C5[3];          // +0x5C5
-    void*          DamageFireAnims[0x8];  // +0x5C8 .. 0x5E7  ctor: MOV ECX,8 / LEA EDI,[ESI+0x5C8] /
+    AnimClass*     DamageFireAnims[0x8];  // +0x5C8 .. 0x5E7  ctor: MOV ECX,8 / LEA EDI,[ESI+0x5C8] /
                                           //   REP STOSD @0x0043BA72..0x0043BA7D
     unsigned char  RequiresDamageFires;   // +0x5E8 ctor MOV byte [ESI+0x5E8],BL @0x0043B7B3
     unsigned char  align_5E9[3];          // +0x5E9
@@ -267,7 +293,7 @@ public:
                                           //   LEA EDI,[ESI+0x5EC] @0x0045270A
     int            FiringSWType;          // +0x5F8 ctor @0x0043B7B9
     unsigned int   unknown_5FC;           // +0x5FC ctor @0x0043B7BF
-    void*          Spotlight;             // +0x600 BuildingLightClass*; ctor @0x0043B7C5
+    BuildingLightClass* Spotlight;        // +0x600 ctor @0x0043B7C5; class: building_light_class.h
     RateTimer      GateTimer;             // +0x604 (0x10) ctor StartTime @0x0043B7D7, TimeLeft @0x0043B7D1,
                                           //   Rate @0x0043B7DD
     LightSourceClass* LightSource;        // +0x614 ctor @0x0043B7E3
@@ -324,7 +350,7 @@ public:
     ColorStruct    ColorAdd;              // +0x6F8 (3) ctor @0x0043B9BB/0x0043B9C1/0x0043B9C7
     unsigned char  align_6FB;             // +0x6FB
     int            unknown_int_6FC;       // +0x6FC ctor @0x0043B9CD
-    short          unknown_short_700;     // +0x700 ctor MOV word [ESI+0x700],0x3E8 @0x0043B9D3
+    short          LightTint;             // +0x700 ctor MOV word [ESI+0x700],0x3E8 @0x0043B9D3; usage: set from slot 281's result and passed as the tint to 0x451F60 (@0x448260, 0x43F180); CRC'd by 0x454260
     char           UpgradeLevel;          // +0x702 ctor @0x0043B9DC; signed (0x4527D0 loads it with MOVSX)
     signed char    GateStage;             // +0x703 ctor @0x0043B9E2
     int            PrismStage;            // +0x704 ctor @0x0043B9E8
@@ -395,7 +421,7 @@ GG_STATIC_ASSERT(offsetof(BuildingClass, StorageFilledSlots)  == 0x6F0);
 GG_STATIC_ASSERT(offsetof(BuildingClass, SecretProduction)    == 0x6F4);
 GG_STATIC_ASSERT(offsetof(BuildingClass, ColorAdd)            == 0x6F8);
 GG_STATIC_ASSERT(offsetof(BuildingClass, unknown_int_6FC)     == 0x6FC);
-GG_STATIC_ASSERT(offsetof(BuildingClass, unknown_short_700)   == 0x700);
+GG_STATIC_ASSERT(offsetof(BuildingClass, LightTint)             == 0x700);
 GG_STATIC_ASSERT(offsetof(BuildingClass, UpgradeLevel)        == 0x702);
 GG_STATIC_ASSERT(offsetof(BuildingClass, GateStage)           == 0x703);
 GG_STATIC_ASSERT(offsetof(BuildingClass, PrismStage)          == 0x704);

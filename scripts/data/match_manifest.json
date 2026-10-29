@@ -92973,7 +92973,7 @@
  {
   "tu": "match/combat/Infantry.cpp",
   "addr": "0x51DF60",
-  "sym": "?vf_243@InfantryClass@@UAEHHH@Z",
+  "sym": "?vf_243@InfantryClass@@UAEHPAVAbstractClass@@H@Z",
   "len": "0x83",
   "name": "InfantryClass::vf_243",
   "status": "matched",

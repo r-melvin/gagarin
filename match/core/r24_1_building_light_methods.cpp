@@ -5,7 +5,7 @@
 //
 // Ordered ascending by retail address.
 
-#include "building_light_class.h"
+#include "../_layout/building_light_class.h"
 #include "../core/rules_class.h"
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- sqrt.

@@ -128,6 +128,8 @@ public:
     unsigned char unknown_04[0x70];
     HouseClass* unknown_74; // 0x6869DB writes containing House at +0x5774
     int FailedToPlaceNode(class BaseNodeClass* Node);   // GAMEMD 0x42F380
+    // FUNCTION: GAMEMD 0x42F260 -- one stack argument (RET 4); BuildingClass 0x440580 passes itself (decl; reloc).
+    void FUN_0042F260(BuildingClass* building);
 };
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_04) == 4);
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_74) == 0x74);
@@ -697,6 +699,20 @@ public:
     void FUN_004FF980(TechnoClass* building);
     // FUNCTION: GAMEMD 0x4FFA50 -- adds one to the factory counter of an added building's category.
     void FUN_004FFA50(TechnoClass* building);
+    // FUNCTION: GAMEMD 0x4FD150
+    void FUN_004FD150();
+    // FUNCTION: GAMEMD 0x50A490 -- one stack argument (RET 4).
+    void FUN_0050A490(BuildingClass* building);
+    // FUNCTION: GAMEMD 0x4FCE80 -- two stack arguments (RET 8).
+    void FUN_004FCE80(CellStruct* cell, char flag);
+    // FUNCTION: GAMEMD 0x50B1D0
+    void FUN_0050B1D0();
+    // FUNCTION: GAMEMD 0x50BF60 -- no stack arguments (Ghidra: __fastcall, one unused ECX).
+    void FUN_0050BF60();
+    // FUNCTION: GAMEMD 0x50B6F0 -- 52 bytes, result in AL.
+    bool FUN_0050B6F0();
+    // FUNCTION: GAMEMD 0x509140 -- three stack arguments (RET 0xC).
+    void FUN_00509140(int a, char b, int c);
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

@@ -87,6 +87,16 @@ public:
     void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
     int FUN_00487D50(); // GAMEMD 0x487D50 (decl; reloc): Level + 4 * (Flags bit 7)
+    // FUNCTION: GAMEMD 0x480630 (decl; reloc) -- one byte argument.
+    void FUN_00480630(char flag);
+    // FUNCTION: GAMEMD 0x480CB0 (decl; reloc) -- one stack argument.
+    void FUN_00480CB0(int value);
+    // FUNCTION: GAMEMD 0x4852D0 (decl; reloc)
+    void FUN_004852D0();
+    // FUNCTION: GAMEMD 0x486E70 (decl; reloc)
+    void FUN_00486E70();
+    // FUNCTION: GAMEMD 0x47C520 (decl; reloc) -- no stack arguments; the building standing on the cell.
+    BuildingClass* FUN_0047C520();
 
     // Retail vtable 0x7E4EEC overrides these five slots of AbstractClass; the
     // bodies are not reconstructed here. They make CellClass a complete type.

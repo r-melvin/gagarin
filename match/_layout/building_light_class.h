@@ -6,24 +6,25 @@
 //   at 0x435820 (entry-bounded, RET 4, 0x330 bytes) stores every member below
 //   and the four vptrs; the primary table's slots 3, 6, 10, 12, 30 and 34 point
 //   at 0x436910, 0x4369C0, 0x436A00, 0x436900, 0x4369F0 and 0x4369E0.
-#ifndef GG_MATCH_CORE_BUILDING_LIGHT_CLASS_H
-#define GG_MATCH_CORE_BUILDING_LIGHT_CLASS_H
+#ifndef GG_MATCH_LAYOUT_BUILDING_LIGHT_CLASS_H
+#define GG_MATCH_LAYOUT_BUILDING_LIGHT_CLASS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/object_class.h"
-#include "../_layout/building_class.h"
+#include "object_class.h"
+#include "building_class.h"
 
 class BuildingLightClass : public ObjectClass
 {
 public:
     // FUNCTION: GAMEMD 0x435820
-    BuildingLightClass(BuildingClass* source);
+    BuildingLightClass(BuildingClass* source = 0);   // default: TClassFactory<BuildingLightClass>::CreateInstance does `new T`
 
     // Overrides present in the primary table 0x7E3AD0 (bodies not recovered here).
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3  0x436910
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6  0x4369C0
     virtual void vf_10(void* target, bool removed);                       // 10 0x436A00
+    virtual int vf_11();                                                  // 11 0x4370B0
     virtual int vf_12();                                                  // 12 0x436900
     virtual int vf_30();                                                  // 30 0x4369F0
     virtual ObjectTypeClass* vf_34();                                     // 34 0x4369E0

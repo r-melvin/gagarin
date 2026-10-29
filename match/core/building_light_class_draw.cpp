@@ -4,7 +4,7 @@
 //   function. The two drawing calls are slot 14 (0x38) of the Surface at
 //   DSurface::Temp, whose clip rectangle comes from slot 30 (0x78, GetRect,
 //   hidden result pointer), matching surface_class.h.
-#include "building_light_class.h"
+#include "../_layout/building_light_class.h"
 #include "../renderer/shadow_block_list_methods.h"
 #include "../map/map_class_methods.h"
 #include "../renderer/surface_class.h"
