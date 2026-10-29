@@ -178,39 +178,9 @@ public:
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class WideString_006255F0
-{
-public:
-    unsigned short* Buffer;   // +0x00
+#include "widestring_006255f0.h"
 
-    // FUNCTION: GAMEMD 0x7B66C0 (decl; reloc)
-    WideString_006255F0();
-    // FUNCTION: GAMEMD 0x7B6760 (decl; reloc)
-    ~WideString_006255F0();
-    // FUNCTION: GAMEMD 0x7B68E0 (decl; reloc)
-    WideString_006255F0& operator=(const WideString_006255F0& other);
-};
-GG_STATIC_ASSERT(sizeof(WideString_006255F0) == 4);
-
-struct ListEntry_006255F0
-{
-    int Id;                       // +0x00
-    WideString_006255F0 Name;     // +0x04
-    WideString_006255F0 Text;     // +0x08
-    int unknown_0C;               // +0x0C
-    int unknown_10;               // +0x10
-    int unknown_14;               // +0x14
-
-    ListEntry_006255F0() { Id = 0; unknown_0C = -1; unknown_10 = 0; unknown_14 = -1; }
-    // FUNCTION: GAMEMD 0x6247D0 (decl; reloc)
-    ListEntry_006255F0(const ListEntry_006255F0& other);
-};
-GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, Name) == 0x04);
-GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, Text) == 0x08);
-GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, unknown_0C) == 0x0C);
-GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, unknown_10) == 0x10);
-GG_STATIC_ASSERT(offsetof(ListEntry_006255F0, unknown_14) == 0x14);
-GG_STATIC_ASSERT(sizeof(ListEntry_006255F0) == 0x18);
+#include "listentry_006255f0.h"
 
 class EntryList_006255F0
 {
@@ -387,44 +357,14 @@ extern char DAT_0084E7C4;
 #include "../_rt/gg_static_assert.h"
 #include <stddef.h>
 
-struct ColorRGB_00661350
-{
-    unsigned char unknown_00;   // +0x00
-    unsigned char unknown_01;   // +0x01
-    unsigned char unknown_02;   // +0x02
-
-    ColorRGB_00661350() : unknown_00(0), unknown_01(0), unknown_02(0) {}
-
-    // retail thiscall helper, matched elsewhere in main as a separate view.
-    void Blend(int ratio, const ColorRGB_00661350& target);
-    int Difference(const ColorRGB_00661350& other) const;
-};
-
-GG_STATIC_ASSERT(offsetof(ColorRGB_00661350, unknown_00) == 0x00);
-GG_STATIC_ASSERT(offsetof(ColorRGB_00661350, unknown_01) == 0x01);
-GG_STATIC_ASSERT(offsetof(ColorRGB_00661350, unknown_02) == 0x02);
+#include "../_layout/colorrgb_00661350.h"
 // 0x626070 steps the element loop by 3.
 GG_STATIC_ASSERT(sizeof(ColorRGB_00661350) == 0x03);
 
 // GLOBAL: GAMEMD 0x00A83CD9 -- fixed target color pushed by 0x626170.
 extern ColorRGB_00661350 DAT_00A83CD9;
 
-struct ColorTable_00626070
-{
-    ColorRGB_00661350 Colors[256];   // +0x000
-
-    ColorTable_00626070(const ColorTable_00626070& other);
-
-    const ColorRGB_00661350& operator[](int index) const { return Colors[index % 256]; }
-
-    void FUN_006260F0(int ratio);
-    void FUN_00626120(int ratio, const ColorTable_00626070& target);
-    void FUN_00626170(int ratio, const char* marks);
-    void FUN_006261B0(int ratio, const ColorTable_00626070& target, const char* marks);
-    int Nearest(const ColorRGB_00661350& color) const;
-};
-
-GG_STATIC_ASSERT(offsetof(ColorTable_00626070, Colors) == 0x000);
+#include "../_layout/colortable_00626070.h"
 
 // Same 256-entry table, filled with one colour (0x626020) and assigned with a self-check (0x6260D0).
 struct ColorTableFill_00626020
@@ -478,37 +418,13 @@ extern PCXCache_00621D30 DAT_00ac4848;
 // LIBRARY: GAMEMD 0x7C8B3D -- CRT free.
 extern "C" void __cdecl gg_free(void*);
 
-struct Obj_006253B0 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_006253B0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_006253B0, data) == 0x08);
+#include "../_layout/obj_006253b0.h"
 
-struct Obj_00625990 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_00625990();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00625990, data) == 0x08);
+#include "../_layout/obj_00625990.h"
 
-struct Obj_007AEEC0 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_007AEEC0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_007AEEC0, data) == 0x08);
+#include "../_layout/obj_007aeec0.h"
 
-struct Obj_007AF000 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_007AF000();
-};
-GG_STATIC_ASSERT(offsetof(Obj_007AF000, data) == 0x08);
+#include "../_layout/obj_007af000.h"
 
 #include "../core/trivial_tu171_methods.h"
 

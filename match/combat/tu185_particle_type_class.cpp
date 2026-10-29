@@ -201,25 +201,11 @@ GG_STATIC_ASSERT(offsetof(Obj_00645C50, unknown_0C) == 0xC);
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_00426A70 {
-    unsigned char unknown_00[0xA0];
-    unsigned short unknown_A0;
-    int FUN_00426A70();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00426A70, unknown_A0) == 0xA0);
+#include "../_layout/obj_00426a70.h"
 
-struct Obj_00426A80 {
-    unsigned char unknown_00[0xA2];
-    unsigned short unknown_A2;
-    int FUN_00426A80();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00426A80, unknown_A2) == 0xA2);
+#include "../_layout/obj_00426a80.h"
 
-struct Rec_0046C4D0 {
-    unsigned char unknown_00[0x24];
-    int unknown_24;
-};
-GG_STATIC_ASSERT(offsetof(Rec_0046C4D0, unknown_24) == 0x24);
+#include "../_layout/rec_0046c4d0.h"
 
 extern int DAT_00889F64;
 extern Rec_0046C4D0** DAT_008B4154;
@@ -238,7 +224,7 @@ extern unsigned int DAT_00A8EB38;
 #include <objbase.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Guid_007E36C0 { unsigned int unknown[4]; };
+#include "../_layout/guid_007e36c0.h"
 // GLOBAL: GAMEMD 0x7E36C0
 extern const Guid_007E36C0 DAT_007E36C0;
 
@@ -247,143 +233,66 @@ void __stdcall FUN_007DC720(unsigned int hr);
 
 // Slot 0 of the object's own interface table, called on the object with the
 // interface id at 0x7E36C0 and the caller's out pointer.
-struct Iface_00429400
-{
-    virtual long __stdcall Slot00(const Guid_007E36C0& iid, void* out);
-};
+#include "../_layout/iface_00429400.h"
 
 // Write one dword through 0x4A1DE0.
-struct Obj_004A1D70 {
-    void FUN_004A1DE0(const void* data, int length);
-    void FUN_004A1D70(int value);
-};
+#include "../_layout/obj_004a1d70.h"
 
-struct Obj_004A31F0 {
-    void* unknown_00;
-    bool FUN_004A31F0(void* arg);
-};
-GG_STATIC_ASSERT(offsetof(Obj_004A31F0, unknown_00) == 0x00);
+#include "../_layout/obj_004a31f0.h"
 
 // A four-integer record built from its four arguments.
-struct Quad_0054A120 {
-    int unknown_0;
-    int unknown_4;
-    int unknown_8;
-    int unknown_C;
-    Quad_0054A120(int a, int b, int c, int d);
-};
-GG_STATIC_ASSERT(sizeof(Quad_0054A120) == 0x10);
+#include "../_layout/quad_0054a120.h"
 
 // The index of an element pointer within a vector of 36-byte records.
-struct Obj_00589A30 {
-    unsigned char unknown_00[4];
-    unsigned char* unknown_04;
-    unsigned char unknown_08[4];
-    bool unknown_0C;
-    unsigned int FUN_00589A30(const void* item) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00589A30, unknown_04) == 0x04);
-GG_STATIC_ASSERT(offsetof(Obj_00589A30, unknown_0C) == 0x0C);
+#include "../_layout/obj_00589a30.h"
 
 // Read one float of an inline array by index.
-struct Obj_00645D10 {
-    float unknown_00[1];
-    float FUN_00645D10(int index) const;
-};
+#include "../_layout/obj_00645d10.h"
 
 
 // Run a handler over every entry of a global table of objects.
-struct Obj_0065FE00 {
-    // FUNCTION: GAMEMD 0x65FE00 (decl; reloc)
-    void FUN_0065FE00();
-};
+#include "../_layout/obj_0065fe00.h"
 // GLOBAL: GAMEMD 0xB04DAC
 extern Obj_0065FE00** DAT_00B04DAC;
 // GLOBAL: GAMEMD 0xB04DB8
 extern int DAT_00B04DB8;
 
 // Store the argument in the first dword.
-struct Obj_00681080 {
-    int unknown_00;
-    void FUN_00681080(int value);
-};
+#include "../_layout/obj_00681080.h"
 
 // The held interface pointer, raising E_POINTER when there is none.
-struct Obj_00683030 {
-    void* unknown_00;
-    void* FUN_00683030();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00683030, unknown_00) == 0x00);
+#include "../_layout/obj_00683030.h"
 
-struct Map_00578AD0 {
-    // FUNCTION: GAMEMD 0x578AD0 (decl; reloc)
-    int FUN_00578AD0(int cell, int* arg);
-};
+#include "../_layout/map_00578ad0.h"
 // GLOBAL: GAMEMD 0x87F7E8 -- the map instance.
 extern Map_00578AD0 DAT_0087F7E8;
-struct Obj_006A3E30 {
-    unsigned char unknown_00[0xC];
-    int unknown_0C;
-    int FUN_006A3E30(int arg);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006A3E30, unknown_0C) == 0x0C);
+#include "../_layout/obj_006a3e30.h"
 
 // The multimedia timer in sixteenths of a unit.
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 // Clear the two dwords after the header.
-struct Obj_006C9D20 {
-    int unknown_00;
-    int unknown_04;
-    int unknown_08;
-    void FUN_006C9D20();
-};
-GG_STATIC_ASSERT(offsetof(Obj_006C9D20, unknown_08) == 0x08);
+#include "../_layout/obj_006c9d20.h"
 
 // A value inside the half-open range [low, high).
 // GLOBAL: GAMEMD 0x7E1748
 extern const float DAT_007E1748;
 // GLOBAL: GAMEMD 0x7E2AC8
 extern const float DAT_007E2AC8;
-struct Obj_0074FFC0 {
-    float unknown_00;
-    bool FUN_0074FFC0() const;
-};
+#include "../_layout/obj_0074ffc0.h"
 
 // Three-component equality.
-struct Obj_00769510 {
-    int unknown_00;
-    int unknown_04;
-    int unknown_08;
-    bool FUN_00769510(const Obj_00769510* other) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00769510, unknown_08) == 0x08);
+#include "../_layout/obj_00769510.h"
 
 // The character at an index of a wide string, or zero past its end.
 // LIBRARY: GAMEMD 0x7CA405 (decl; reloc) -- wcslen.
 unsigned int __cdecl FUN_007CA405(const unsigned short* text);
-struct Obj_007B7150 {
-    unsigned short* unknown_00;
-    unsigned short FUN_007B7150(unsigned int index) const;
-};
+#include "../_layout/obj_007b7150.h"
 
 // Forward a by-value rectangle to the held surface's fill slot (slot 5).
-struct Rect_007BCF90 {
-    int unknown_00;
-    int unknown_04;
-    int unknown_08;
-    int unknown_0C;
-};
-struct Surface_007BCF90 {
-    virtual void vf_00(); virtual void vf_01(); virtual void vf_02(); virtual void vf_03(); virtual void vf_04();
-    virtual bool vf_05(Rect_007BCF90* area, int color);
-};
-struct Obj_007BCF90 {
-    unsigned char unknown_00[0x14];
-    Surface_007BCF90* unknown_14;
-    bool FUN_007BCF90(unsigned short color, Rect_007BCF90 area);
-};
-GG_STATIC_ASSERT(offsetof(Obj_007BCF90, unknown_14) == 0x14);
+#include "../_layout/rect_007bcf90.h"
+#include "../_layout/surface_007bcf90.h"
+#include "../_layout/obj_007bcf90.h"
 
 #include <windows.h>
 #include <stddef.h>
@@ -392,18 +301,7 @@ GG_STATIC_ASSERT(offsetof(Obj_007BCF90, unknown_14) == 0x14);
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // A two-short cell value copied as one dword.
-struct Cell_0050DEF0
-{
-    short X;
-    short Y;
-
-    Cell_0050DEF0() {}
-    bool operator==(const Cell_0050DEF0& other) const
-    {
-        return X == other.X && Y == other.Y;
-    }
-};
-GG_STATIC_ASSERT(sizeof(Cell_0050DEF0) == 4);
+#include "../_layout/cell_0050def0.h"
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
@@ -422,259 +320,76 @@ extern "C" int DAT_008B4130;
 
 // ---------------------------------------------------------------------------
 
-struct Team_005095D0
-{
-    char Pad_00[0x24];
-    int unknown_24;
-    char Pad_28[4];
-    void* unknown_2C;
-};
-GG_STATIC_ASSERT(offsetof(Team_005095D0, unknown_2C) == 0x2C);
+#include "../_layout/team_005095d0.h"
 
 // GLOBAL: GAMEMD 0x008B40EC
 extern "C" Team_005095D0** DAT_008B40EC;
 
-struct Obj_005095D0
-{
-    int FUN_005095D0(int kind);
-};
+#include "../_layout/obj_005095d0.h"
 
 
-struct Obj_0050DA10
-{
-    char Pad_00[0x5490];
-    Cell_0050DEF0 unknown_5490;
-    Cell_0050DEF0 unknown_5494;
-    char Pad_5498[0x54F0 - 0x5498];
-    Cell_0050DEF0 unknown_54F0;
-    Cell_0050DEF0 unknown_54F4;
-    Cell_0050DEF0 unknown_54F8;
-    int unknown_54FC;
-    char Pad_5500[0x577C - 0x5500];
-    int unknown_577C;
+#include "../_layout/obj_0050da10.h"
 
-    void FUN_0050DA10();
-    void FUN_0050DA50();
-    int FUN_0050DA80() const;
-    Cell_0050DEF0 FUN_0050DEF0() const;
-    void FUN_0050DFF0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_5490) == 0x5490);
-GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54F0) == 0x54F0);
-GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54FC) == 0x54FC);
-GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_577C) == 0x577C);
+#include "../_layout/obj_0053ecb0.h"
 
-struct Obj_0053ECB0
-{
-    unsigned char unknown_0[10];
+#include "../_layout/triple_0053eda0.h"
 
-    Obj_0053ECB0();
-};
+#include "../_layout/obj_0053eda0.h"
 
-struct Triple_0053EDA0
-{
-    short unknown_0;
-    short unknown_2;
-    short unknown_4;
-};
-GG_STATIC_ASSERT(sizeof(Triple_0053EDA0) == 6);
+#include "../_layout/obj_005402b0.h"
 
-struct Obj_0053EDA0
-{
-    int unknown_0;
-    Triple_0053EDA0 unknown_4;
+#include "../_layout/obj_00542fc0.h"
 
-    void FUN_0053EDA0(int* first, Triple_0053EDA0* rest) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0053EDA0, unknown_4) == 4);
-
-struct Obj_005402B0
-{
-    void FUN_005402B0(int value);
-};
-
-struct Obj_00542FC0
-{
-    char Pad_00[0x48];
-    Obj_005402B0* unknown_48;
-
-    void FUN_00542FC0(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00542FC0, unknown_48) == 0x48);
-
-struct Entry_005657A0
-{
-    char Pad_00[0x24];
-    Cell_0050DEF0 unknown_24;
-};
+#include "../_layout/entry_005657a0.h"
 
 // GLOBAL: GAMEMD 0x00ABDC50
 extern "C" Entry_005657A0 DAT_00ABDC50;
 
-struct Obj_005657A0
-{
-    char Pad_00[0x13C];
-    Entry_005657A0** unknown_13C;
-
-    Entry_005657A0* FUN_005657A0(const Cell_0050DEF0& cell) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_005657A0, unknown_13C) == 0x13C);
+#include "../_layout/obj_005657a0.h"
 
 
-struct Iface_005BF500
-{
-    virtual void vf_0() = 0;
-    virtual void vf_1() = 0;
-    virtual void vf_2() = 0;
-    virtual void vf_3(int value) = 0;
-};
+#include "../_layout/iface_005bf500.h"
 
 // GLOBAL: GAMEMD 0x00B45B5C
 extern "C" Iface_005BF500** DAT_00B45B5C;
 
-struct Vector_005C6120
-{
-    virtual void vf_0() = 0;
-    virtual void vf_1() = 0;
-    virtual void vf_2() = 0;
-    virtual void vf_3() = 0;
-
-    void** unknown_4;
-    int Pad_08;
-    int Pad_0C;
-    int unknown_10;
-
-    void FUN_005C6120();
-};
+#include "../_layout/vector_005c6120.h"
 
 
-struct Obj_005F9710
-{
-    char unknown_0;
-    char unknown_1;
-};
+#include "../_layout/obj_005f9710.h"
 
-struct Quad_00645C30
-{
-    int unknown_0;
-    int unknown_4;
-    int unknown_8;
-    int unknown_C;
+#include "../_layout/quad_00645c30.h"
 
-    Quad_00645C30(int a, int b, int c, int d);
-};
+#include "../_layout/record_00656580.h"
 
-struct Record_00656580
-{
-    char Bytes[0x18];
-};
+#include "../_layout/key_00656580.h"
 
-struct Key_00656580
-{
-    char Pad_00[0xEF0];
-    int unknown_EF0;
-};
-GG_STATIC_ASSERT(offsetof(Key_00656580, unknown_EF0) == 0xEF0);
-
-struct Obj_00656580
-{
-    Record_00656580 unknown_0[1];
-
-    Record_00656580* FUN_00656580(const Key_00656580* key);
-};
+#include "../_layout/obj_00656580.h"
 
 
 
-struct Pair_0065C890
-{
-    int unknown_0;
-    int unknown_4;
+#include "../_layout/pair_0065c890.h"
 
-    Pair_0065C890(int a, int b);
-};
-
-struct Obj_0068BCB0
-{
-    char Pad_00[0x214];
-    int unknown_214;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0068BCB0, unknown_214) == 0x214);
+#include "../_layout/obj_0068bcb0.h"
 
 
-struct Obj_0068C030
-{
-    char Pad_00[0x1180];
-    int unknown_1180[16];
-
-    int FUN_0068C030(int index) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0068C030, unknown_1180) == 0x1180);
+#include "../_layout/obj_0068c030.h"
 
 
-struct Owner_006915D0
-{
-    char Pad_00[0xA0];
-    unsigned int unknown_A0;
-};
-GG_STATIC_ASSERT(offsetof(Owner_006915D0, unknown_A0) == 0xA0);
+#include "../_layout/owner_006915d0.h"
 
-struct Cursor_006915D0
-{
-    char Pad_00[0x24];
-    Owner_006915D0* unknown_24;
-    char Pad_28[4];
-    unsigned int unknown_2C;
-};
-GG_STATIC_ASSERT(offsetof(Cursor_006915D0, unknown_2C) == 0x2C);
+#include "../_layout/cursor_006915d0.h"
 
-#pragma pack(push, 1)
-struct Obj_00696F10
-{
-    char Pad_00[0x4B];
-    int unknown_4B;
-    int unknown_4F;
-    int unknown_53;
-    int unknown_57;
-    int unknown_5B;
-    int unknown_5F;
-    int unknown_63;
-    int unknown_67;
-
-    int FUN_00696F10() const;
-    int FUN_00696F20() const;
-    int FUN_00696F50() const;
-    int FUN_00696F70() const;
-};
-#pragma pack(pop)
-GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_4B) == 0x4B);
-GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_67) == 0x67);
+#include "../_layout/obj_00696f10.h"
 
 
-struct Obj_0069B540
-{
-    char Pad_00[0x24];
-    int unknown_24;
-    char Pad_28[0x4C - 0x28];
-    int unknown_4C[8];
-    int unknown_6C[8];
-};
-GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_4C) == 0x4C);
-GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_6C) == 0x6C);
+#include "../_layout/obj_0069b540.h"
 
 
-struct Obj_0069BBE0
-{
-    char Pad_00[0x30D8];
-    char unknown_30D8;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0069BBE0, unknown_30D8) == 0x30D8);
+#include "../_layout/obj_0069bbe0.h"
 
 
-struct Type_006A46D0
-{
-    char Pad_00[0x24];
-    char unknown_24[1];
-};
+#include "../_layout/type_006a46d0.h"
 
 // GLOBAL: GAMEMD 0x008B4124
 extern "C" Type_006A46D0** DAT_008B4124;

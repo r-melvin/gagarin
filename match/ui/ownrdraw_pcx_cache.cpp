@@ -5,12 +5,7 @@
 //   global definition below, whose constructor and destructor are defined out of line elsewhere.
 // VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
-class StringHashTable_00AC4848
-{
-public:
-    StringHashTable_00AC4848();
-    ~StringHashTable_00AC4848();
-};
+#include "../_layout/stringhashtable_00ac4848.h"
 
 // GLOBAL: GAMEMD 0xAC4848
 // SYNTHETIC: GAMEMD 0x600550 -- exit-time destructor thunk

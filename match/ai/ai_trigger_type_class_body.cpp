@@ -66,11 +66,7 @@ extern DynamicVectorClass<AbstractTypeClass*> DAT_00A83C98;
 
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.
-struct Map_0087F7E8
-{
-    // FUNCTION: GAMEMD 0x56D230 (decl; reloc) -- the zone of a cell for a movement zone.
-    int FUN_0056D230(const CellStruct& cell, int movementZone, bool isBridge);
-};
+#include "../_layout/map_0087f7e8.h"
 extern Map_0087F7E8 DAT_0087F7E8;
 
 // STRING: GAMEMD 0x889F64 -- the shared empty default string.

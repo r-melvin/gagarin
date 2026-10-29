@@ -87,11 +87,7 @@ struct VoxEvent
 };
 GG_STATIC_ASSERT(offsetof(VoxEvent, State) == 0x50);
 
-struct Obj_00407F40
-{
-    // FUNCTION: GAMEMD 0x407F40 (decl; reloc) -- stop the streamer.
-    void FUN_00407F40();
-};
+#include "../_layout/obj_00407f40.h"
 
 // FUNCTION: GAMEMD 0x752370 (decl; reloc) -- drop the current/queued voice.
 void FUN_00752370();

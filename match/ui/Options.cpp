@@ -108,18 +108,7 @@ extern OptionEntry_005FBF80 DAT_00832CA0[];
 extern OptionEntry_005FBF80 DAT_00832C30[];
 
 // The movie-pick state: the furthest entry unlocked in each campaign table.
-struct Obj_005FBF80
-{
-    char unknown_00[0x4C];
-    int unknown_4C;         // +0x4C last soviet entry unlocked
-    int unknown_50;         // +0x50 last allied entry unlocked
-    // FUNCTION: GAMEMD 0x5FBF80
-    void FUN_005FBF80(const char* name);
-    // FUNCTION: GAMEMD 0x5FC000
-    void FUN_005FC000(HWND list);
-};
-GG_STATIC_ASSERT(offsetof(Obj_005FBF80, unknown_4C) == 0x4C);
-GG_STATIC_ASSERT(offsetof(Obj_005FBF80, unknown_50) == 0x50);
+#include "../_layout/obj_005fbf80.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- _stricmp.
 extern "C" int __cdecl _stricmp(const char* a, const char* b);

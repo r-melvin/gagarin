@@ -109,10 +109,7 @@ void Obj_005B4400::FUN_005B4400()
     Owned = false;
 }
 
-struct Clock_006C8C40 {
-    int Value;
-    int GetTime();
-};
+#include "../_layout/clock_006c8c40.h"
 
 struct Obj_00690FC0 {
     unsigned char unknown_00[0x0C];

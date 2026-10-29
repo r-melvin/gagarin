@@ -35,15 +35,7 @@ int FUN_005117D0(const char* name);
 
 // ---------------------------------------------------------------------------
 
-struct Obj_00483460
-{
-    char Pad_00[0x50];
-    int unknown_50;
-    char Pad_54[0x140 - 0x54];
-    unsigned int unknown_140;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00483460, unknown_50) == 0x50);
-GG_STATIC_ASSERT(offsetof(Obj_00483460, unknown_140) == 0x140);
+#include "../_layout/obj_00483460.h"
 
 // FUNCTION: GAMEMD 0x00483460
 // Clear bit 0x10 of +0x140 and reset +0x50; true if the bit was set.
@@ -59,12 +51,7 @@ bool FUN_00483460(Obj_00483460* self)
     return false;
 }
 
-struct Obj_00485060
-{
-    char Pad_00[0x38];
-    int unknown_38;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00485060, unknown_38) == 0x38);
+#include "../_layout/obj_00485060.h"
 
 // FUNCTION: GAMEMD 0x00485060
 // Is +0x38 inside the 14-wide window that starts at the global 0xAA0738.
@@ -77,14 +64,7 @@ int FUN_00485060(Obj_00485060* self)
     return 0;
 }
 
-struct Obj_004870B0
-{
-    char Pad_00[0x78];
-    int unknown_78;
-
-    int FUN_004870B0(int bit) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004870B0, unknown_78) == 0x78);
+#include "../_layout/obj_004870b0.h"
 
 // FUNCTION: GAMEMD 0x004870B0
 // Is bit `bit` of +0x78 set.
@@ -110,12 +90,7 @@ int FUN_0048AB90(int value, double scale)
     return (int)FUN_004CAC40(value * scale * 1.2);
 }
 
-struct Obj_0048BA80
-{
-    char Pad_00[0x1C];
-    int unknown_1C;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0048BA80, unknown_1C) == 0x1C);
+#include "../_layout/obj_0048ba80.h"
 
 // FUNCTION: GAMEMD 0x0048BA80
 int FUN_0048BA80(Obj_0048BA80* self)
@@ -124,14 +99,7 @@ int FUN_0048BA80(Obj_0048BA80* self)
 }
 
 
-struct Obj_004A1D30
-{
-    void FUN_004A1DE0(const void* data, int length);
-
-    void FUN_004A1D30(unsigned short value);
-    void FUN_004A1D50(int value);
-    void FUN_004A1DB0(const char* text);
-};
+#include "../_layout/obj_004a1d30.h"
 
 // FUNCTION: GAMEMD 0x004A1D30
 // Write one word through 0x4A1DE0.
@@ -158,23 +126,7 @@ void Obj_004A1D30::FUN_004A1DB0(const char* text)
     }
 }
 
-struct Obj_004A50F0
-{
-    int unknown_0;
-    int unknown_4;
-    int unknown_8;
-    int unknown_C;
-    int unknown_10;
-    int unknown_14;
-    char unknown_18;
-    char unknown_19;
-
-    Obj_004A50F0();
-    bool FUN_004A5130() const;
-    bool FUN_004A51B0() const;
-    bool FUN_004A51D0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004A50F0, unknown_18) == 0x18);
+#include "../_layout/obj_004a50f0.h"
 
 // FUNCTION: GAMEMD 0x004A50F0
 Obj_004A50F0::Obj_004A50F0()
@@ -213,28 +165,10 @@ bool Obj_004A50F0::FUN_004A51D0() const
     return false;
 }
 
-struct Pair_004C1B50
-{
-    int unknown_0;
-    int unknown_4;
-};
+#include "../_layout/pair_004c1b50.h"
 
 
-struct Obj_004C91C0
-{
-    short unknown_0;
-    short Pad_02;
-    short unknown_4;
-    short Pad_06;
-    int unknown_8;
-    int Pad_0C;
-    int unknown_10;
-    short unknown_14;
-
-    Obj_004C91C0();
-    Obj_004C91C0(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_004C91C0, unknown_14) == 0x14);
+#include "../_layout/obj_004c91c0.h"
 
 // FUNCTION: GAMEMD 0x004C91C0
 Obj_004C91C0::Obj_004C91C0()
@@ -262,12 +196,7 @@ Obj_004C91C0::Obj_004C91C0(int value)
     unknown_14 = (short)(level << 8);
 }
 
-struct Obj_004CA160
-{
-    char Pad_00[0x58];
-    int unknown_58;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004CA160, unknown_58) == 0x58);
+#include "../_layout/obj_004ca160.h"
 
 // FUNCTION: GAMEMD 0x004CA160
 int FUN_004CA160(Obj_004CA160* self)
@@ -303,27 +232,12 @@ struct Obj_004D2790;
 
 struct Vtbl_004D2790;
 
-struct Obj_004D2790
-{
-    Vtbl_004D2790* Vtbl;
-};
+#include "../_layout/obj_004d2790.h"
 
-typedef void* (Obj_004D2790::*Fn_004D2790)(int);
 
-struct Vtbl_004D2790
-{
-    char Pad_00[0x90];
-    Fn_004D2790 At_90;
-};
+#include "../_layout/vtbl_004d2790.h"
 
-struct Record_004D2790
-{
-    char Pad_00[0x30];
-    int unknown_30;
-    char Pad_34[0x60 - 0x34];
-    Obj_004D2790** unknown_60;
-};
-GG_STATIC_ASSERT(offsetof(Record_004D2790, unknown_60) == 0x60);
+#include "../_layout/record_004d2790.h"
 
 // FUNCTION: GAMEMD 0x004D2790
 // For a kind-6 record, slot 0x90 of the object its +0x60 points at, with 0;
@@ -353,22 +267,9 @@ extern "C" char* __cdecl strcpy(char* dst, const char* src);
 #pragma intrinsic(strcpy)
 extern "C" char* __cdecl _strupr(char* text);
 
-struct Text_004F4CB0
-{
-    char unknown_0[1];
+#include "../_layout/text_004f4cb0.h"
 
-    Text_004F4CB0* FUN_004F4C30(const char* text);
-    Text_004F4CB0* FUN_004F4C70(const char* text);
-    Text_004F4CB0* FUN_004F4CB0(const char* text);
-};
-
-struct Obj_004F4C20
-{
-    char unknown_0;
-
-    Obj_004F4C20();
-    bool FUN_004F4CA0() const;
-};
+#include "../_layout/obj_004f4c20.h"
 
 // FUNCTION: GAMEMD 0x004F4C20
 Obj_004F4C20::Obj_004F4C20()

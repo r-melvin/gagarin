@@ -19,23 +19,9 @@
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
 
-struct ColorRGB_00661350
-{
-    unsigned char unknown_00;   // +0x00
-    unsigned char unknown_01;   // +0x01
-    unsigned char unknown_02;   // +0x02
+#include "../_layout/colorrgb_00661350.h"
 
-    void Blend(int ratio, const ColorRGB_00661350& target);   // 0x6612C0
-};
-GG_STATIC_ASSERT(sizeof(ColorRGB_00661350) == 0x03);
-
-struct ColorTable_00626070
-{
-    ColorRGB_00661350 Colors[256];   // +0x000
-
-    const ColorRGB_00661350& operator[](int index) const { return Colors[index % 256]; }
-    int Nearest(const ColorRGB_00661350& color) const;          // 0x626200
-};
+#include "../_layout/colortable_00626070.h"
 
 struct RemapEntry
 {

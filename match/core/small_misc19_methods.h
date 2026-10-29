@@ -10,16 +10,7 @@
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
-struct Obj_00433C00
-{
-    char  _pad00[0x18];
-    void* unknown_18;   // +0x0018
-    void* unknown_1C;   // +0x001C
-
-    // FUNCTION: GAMEMD 0x433C00
-    void FUN_00433C00();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00433C00, unknown_1C) == 0x1C);
+#include "obj_00433c00.h"
 
 // A pair of doubles. Zeroed means "unset", and the reset value is 100.0 written
 // as two dword stores.

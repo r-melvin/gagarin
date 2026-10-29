@@ -65,11 +65,7 @@ struct Random_0065C7E0
     int FUN_0065C7E0(int low, int high);
 };
 // The clock inside a count-up timer; its reader ignores `this`.
-struct Clock_006C8C40
-{
-    // FUNCTION: GAMEMD 0x6C8C40 (decl; reloc)
-    int FUN_006C8C40();
-};
+#include "../_layout/clock_006c8c40.h"
 // A count-up timer: the start tick (-1 while stopped), the clock and the ticks
 // accumulated so far; read inline by 0x5C9B10 with the timer's address in EBP.
 struct Timer_005C9B10

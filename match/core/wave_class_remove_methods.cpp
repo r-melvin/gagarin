@@ -20,11 +20,7 @@ class MapClass : public DisplayClass
 extern MapClass DAT_0087F7E8;
 
 // The logic object list at 0x87F778.
-struct LogicView_87F778
-{
-    // FUNCTION: GAMEMD 0x55BAE0 (declaration) -- remove an object from the logic list.
-    void FUN_0055BAE0(ObjectClass* object);
-};
+#include "logicview_87f778.h"
 // GLOBAL: GAMEMD 0x87F778
 extern LogicView_87F778 DAT_0087F778;
 

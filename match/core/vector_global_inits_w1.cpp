@@ -25,10 +25,7 @@ DynamicVectorClass<CaptureManagerClass*> DAT_0089E0F0;
 
 class ConvertClass;
 
-struct StaticVectorHolder_0089ECF8 {
-    // GLOBAL: GAMEMD 0x0089ECF8
-    static DynamicVectorClass<ConvertClass*> DAT_0089ECF8;
-};
+#include "../_layout/staticvectorholder_0089ecf8.h"
 
 // SYNTHETIC: GAMEMD 0x0048E6A0 -- run-time initialiser of DAT_0089ECF8
 // SYNTHETIC: GAMEMD 0x0048E6E0 -- exit-time destructor stub of DAT_0089ECF8, guard byte 0x0089ED10 bit 0

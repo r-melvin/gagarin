@@ -84,29 +84,7 @@ inline bool operator!=(const Rect_4i& a, const Rect_4i& b) { return !(a == b); }
 struct Cell_005A7250;
 struct CellStruct_005A7250;
 
-struct Gbl_0087F7E8
-{
-    // FUNCTION: GAMEMD 0x578290 (declaration)
-    CellClass* FUN_00578290();
-    // FUNCTION: GAMEMD 0x578350 (declaration)
-    void FUN_00578350();
-    // FUNCTION: GAMEMD 0x568BB0 (declaration)
-    void FUN_00568BB0(char a1);
-    // FUNCTION: GAMEMD 0x578460 (declaration)
-    bool FUN_00578460(CellStruct const* a1, char a2);
-    // FUNCTION: GAMEMD 0x578E60 (declaration)
-    void FUN_00578E60(int a1, int a2);
-    // FUNCTION: GAMEMD 0x654490 (declaration)
-    void FUN_00654490(Rect_4i* a1);
-    // FUNCTION: GAMEMD 0x654650 (declaration)
-    void FUN_00654650();
-    // FUNCTION: GAMEMD 0x5657A0 (declaration)
-    CellClass* FUN_005657A0(CellStruct const* a1);
-    // FUNCTION: GAMEMD 0x56D230 (declaration) -- the zone of a cell for a movement zone.
-    int FUN_0056D230(const CellStruct& cell, int movementZone, bool isBridge);
-    // The same entry point 0x5657A0 as the 0x5A7250 TU spelled it (by reference, its own cell view).
-    Cell_005A7250* GetCell(const CellStruct_005A7250& cell);
-};
+#include "../_layout/gbl_0087f7e8.h"
 
 typedef DynamicVectorClass<Cell> Vec_Cell;
 

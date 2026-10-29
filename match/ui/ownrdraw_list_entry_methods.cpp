@@ -4,18 +4,7 @@
 //   order, through the string destructor 0x7B6760; 0x6247D0 is its copy constructor.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 
-class WideString_006255F0
-{
-public:
-    unsigned short* Buffer;   // +0x00
-
-    // FUNCTION: GAMEMD 0x7B66C0 (decl; reloc)
-    WideString_006255F0();
-    // FUNCTION: GAMEMD 0x7B6760 (decl; reloc)
-    ~WideString_006255F0();
-    // FUNCTION: GAMEMD 0x7B6720 (decl; reloc)
-    WideString_006255F0(const WideString_006255F0& other);
-};
+#include "widestring_006255f0.h"
 
 struct ListEntry_006255F0
 {

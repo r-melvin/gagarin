@@ -14,11 +14,7 @@ struct Gbl_0087F7E8;
 // GLOBAL: GAMEMD 0x87F7E8
 extern Gbl_0087F7E8 DAT_0087F7E8;
 
-struct Gbl_0087F7E8
-{
-    // FUNCTION: GAMEMD 0x5BDB90
-    void FUN_005BDB90(int, int);
-};
+#include "../_layout/gbl_0087f7e8.h"
 
 
 // FUNCTION: GAMEMD 0x731CD0

@@ -9,27 +9,7 @@
 // Radar's tracking-list cell has the same two-short ABI as CellStruct. Keep a
 // distinct value type because its nontrivial default constructor is part of
 // the recovered by-value return convention in SetVisibleRect.
-struct Cell_0050DEF0
-{
-    short X;
-    short Y;
-
-    Cell_0050DEF0() {}
-    bool operator==(const Cell_0050DEF0& other) const
-    {
-        return X == other.X && Y == other.Y;
-    }
-    Cell_0050DEF0 operator+(const Cell_0050DEF0& other) const
-    {
-        Cell_0050DEF0 result;
-        result.X = X + other.X;
-        result.Y = Y + other.Y;
-        return result;
-    }
-};
-GG_STATIC_ASSERT(sizeof(Cell_0050DEF0) == 4);
-GG_STATIC_ASSERT(offsetof(Cell_0050DEF0, X) == 0);
-GG_STATIC_ASSERT(offsetof(Cell_0050DEF0, Y) == 2);
+#include "../_layout/cell_0050def0.h"
 
 struct RadarTrackNode
 {

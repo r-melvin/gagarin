@@ -130,6 +130,9 @@ struct Cell_00486920
 
     // FUNCTION: GAMEMD 0x486920 — CellClass::ActivateVeins.
     void ActivateVeins();
+
+    // FUNCTION: GAMEMD 0x486920 (decl; reloc)
+    void Touch();
 };
 GG_STATIC_ASSERT(offsetof(Cell_00486920, MapCoords)        == 0x24);
 GG_STATIC_ASSERT(offsetof(Cell_00486920, OverlayTypeIndex) == 0x44);

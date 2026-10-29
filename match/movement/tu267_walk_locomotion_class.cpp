@@ -46,17 +46,10 @@ extern TuningCoordInit DAT_00B45C10;
 
 
 // vtable owner / slot: -
-struct Obj_00681060 {
-    unsigned char unknown_00[0x4];
-    int unknown_04;
-    void FUN_00681060(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00681060, unknown_04) == 0x4);
+#include "../_layout/obj_00681060.h"
 
 // vtable owner / slot: ShipLocomotionClass+4/s29
-struct Obj_006A3E50 {
-    int FUN_006A3E50(void*);
-};
+#include "../_layout/obj_006a3e50.h"
 
 // vtable owner / slot: -
 struct Obj_006E5560 {
@@ -67,14 +60,10 @@ struct Obj_006E5560 {
 GG_STATIC_ASSERT(offsetof(Obj_006E5560, unknown_30) == 0x30);
 
 // vtable owner / slot: TeleportLocomotionClass+4/s29
-struct Obj_00719E20 {
-    int FUN_00719E20(void*);
-};
+#include "../_layout/obj_00719e20.h"
 
 // vtable owner / slot: WalkLocomotionClass+4/s29
-struct Obj_0075C7E0 {
-    int FUN_0075C7E0(void*);
-};
+#include "../_layout/obj_0075c7e0.h"
 
 
 

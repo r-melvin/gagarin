@@ -41,14 +41,7 @@ GG_STATIC_ASSERT(offsetof(MapIterator_00578350, cellBase) == 0x13C);
 
 GG_STATIC_ASSERT(sizeof(MapIterator_00578350) == 0x140);
 
-struct ScreenRedraw_00578AC0 {
-    char unknown_000[0x1158];
-    unsigned char redrawCounter; // +0x1158
-    void FUN_00578AC0();
-};
-GG_STATIC_ASSERT(offsetof(ScreenRedraw_00578AC0, redrawCounter) == 0x1158);
-
-GG_STATIC_ASSERT(sizeof(ScreenRedraw_00578AC0) == 0x1159);
+#include "screenredraw_00578ac0.h"
 
 // FUNCTION: GAMEMD 0x578D60
 unsigned char FUN_00578D60(int value);

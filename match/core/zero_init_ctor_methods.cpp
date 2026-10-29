@@ -9,40 +9,11 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class PairHolder_005A9BF0
-{
-public:
-    // FUNCTION: GAMEMD 0x5A9BF0
-    PairHolder_005A9BF0();
+#include "../_layout/pairholder_005a9bf0.h"
 
-    void* unknown_00;   // +0x00
-    void* unknown_04;   // +0x04
-};
-GG_STATIC_ASSERT(offsetof(PairHolder_005A9BF0, unknown_04) == 0x04);
+#include "../_layout/triple_007636f0.h"
 
-class Triple_007636F0
-{
-public:
-    // FUNCTION: GAMEMD 0x7636F0
-    Triple_007636F0();
-
-    int unknown_00;   // +0x00
-    int unknown_04;   // +0x04
-    int unknown_08;   // +0x08
-};
-GG_STATIC_ASSERT(offsetof(Triple_007636F0, unknown_08) == 0x08);
-
-class Triple_00769480
-{
-public:
-    // FUNCTION: GAMEMD 0x769480
-    Triple_00769480();
-
-    int unknown_00;   // +0x00
-    int unknown_04;   // +0x04
-    int unknown_08;   // +0x08
-};
-GG_STATIC_ASSERT(offsetof(Triple_00769480, unknown_08) == 0x08);
+#include "../_layout/triple_00769480.h"
 
 
 // FUNCTION: GAMEMD 0x7636F0

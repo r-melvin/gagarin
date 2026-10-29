@@ -9,10 +9,7 @@ struct Triple_00747EB0 {
     int unknown_04;
     int unknown_08;
 };
-struct Query_00578080 {
-    // FUNCTION: GAMEMD 0x578080 (decl; reloc) -- __thiscall, one pointer argument.
-    int FUN_00578080(Triple_00747EB0* value);
-};
+#include "../_layout/query_00578080.h"
 extern Query_00578080 DAT_0087F7E8;
 struct Obj_00747EB0 {
     Triple_00747EB0 FUN_00747EB0(const Triple_00747EB0* value);

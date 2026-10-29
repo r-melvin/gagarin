@@ -137,7 +137,7 @@ GG_STATIC_ASSERT(sizeof(MSTimer) == 0xC);
 // the measured length at 0x7B71B0 (called from 0x5CE30D). 0x7B71B0 is
 // `MOV EAX,[ECX]; TEST EAX,EAX; JNZ; RET` falling into `wcslen`, so the length
 // is unsigned and the null buffer answers zero without a branch of its own.
-class Obj_007B66D0
+class Obj_007B66D0_msanim_family_methods
 {
 public:
     wchar_t* Buffer;  // +0x00
@@ -174,7 +174,7 @@ public:
     // (0x5CDD48): the copy build. Declared as its own overload because the
     // argument is a string object where the other call passes a character
     // pointer; both emit the same reloc-normalised call.
-    void CopyFrom(const Obj_007B66D0* other);  // FUNCTION: GAMEMD 0x7B6720
+    void CopyFrom(const Obj_007B66D0_msanim_family_methods* other);  // FUNCTION: GAMEMD 0x7B6720
     // 0x7B6D90, reached at 0x5CDD54 with (0, index): keep only that many
     // leading characters.
     void Slice(int start, int count);     // FUNCTION: GAMEMD 0x7B6D90 (decl)
@@ -183,8 +183,8 @@ public:
     // its breaks.
     void Insert(int ch, int index);       // FUNCTION: GAMEMD 0x7B7660 (decl)
 };
-GG_STATIC_ASSERT(sizeof(Obj_007B66D0) == 4
-              && offsetof(Obj_007B66D0, Buffer) == 0x00);
+GG_STATIC_ASSERT(sizeof(Obj_007B66D0_msanim_family_methods) == 4
+              && offsetof(Obj_007B66D0_msanim_family_methods, Buffer) == 0x00);
 
 // The Bink playback object held by MSBinkAnim. Its destructor is an ordinary
 // non-virtual one: 0x5CEC83 is `MOV ECX,EDI; CALL 0x432700` followed by the
@@ -780,7 +780,7 @@ GG_STATIC_ASSERT(offsetof(MSVQAnim, Player) == 0x1C
 // out of line (0x5CED1C), so the member's destructor is declared and not
 // defined here.
 //
-//   +0x1C  Obj_007B66D0 Text     constructed at 0x5CD367, released at
+//   +0x1C  Obj_007B66D0_msanim_family_methods Text     constructed at 0x5CD367, released at
 //                                   0x5CD3AC and 0x5CED1C
 //   +0x20  MSRect Bounds            the caller's rectangle copied in whole at
 //                                   0x5CD36C..0x5CD390, and copied back out by
@@ -805,7 +805,7 @@ public:
 class MSBitPrintAnim : public MSAnim
 {
 public:
-    Obj_007B66D0 Text;     // +0x1C
+    Obj_007B66D0_msanim_family_methods Text;     // +0x1C
     MSRect          Bounds;   // +0x20
     bool            Started;  // +0x30
     bool            Centred;  // +0x31
@@ -854,7 +854,7 @@ GG_STATIC_ASSERT(offsetof(MSBitPrintAnim, Text) == 0x1C
 // MSPrintAnim is the one class in this run whose gameplay members are visible
 // from the three small slots reconstructed here.
 //
-//   +0x1C  Obj_007B66D0 Text     destroyed out of line at 0x5CED4C
+//   +0x1C  Obj_007B66D0_msanim_family_methods Text     destroyed out of line at 0x5CED4C
 //   +0x24  unsigned CharPos         `CMP [ESI+0x24],EAX; JBE` at 0x5CE312 —
 //                                   unsigned against the string length
 //   +0x28  unsigned LineCount       `CMP [ESI+0x28],2; JBE` at 0x5CE317
@@ -873,7 +873,7 @@ public:
 class MSPrintAnim : public MSAnim
 {
 public:
-    Obj_007B66D0 Text;        // +0x1C
+    Obj_007B66D0_msanim_family_methods Text;        // +0x1C
     // The character count the layout walks (`CMP EDI,EAX` / `JB` at 0x5CE484
     // against this member, and `TEST EAX,EAX` / `JBE` at 0x5CE3FC): unsigned.
     unsigned int    Field20;     // +0x20
@@ -913,7 +913,7 @@ public:
 
     // 0x5CE330 — the measured width of one line of the given text, stopping
     // at the terminator or the first newline.
-    int   MeasureWidth(Obj_007B66D0* text);
+    int   MeasureWidth(Obj_007B66D0_msanim_family_methods* text);
 
     MSRect GetRect();                     // 0x5CE2B0, slot 6
     void  SetActive(bool on);             // 0x5CE2E0

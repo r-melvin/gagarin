@@ -17,6 +17,8 @@
 // VectorClass<RGBClass>::Slot6
 // FUNCTION: GAMEMD 0x00477AC0
 // TypeList<RGBClass> scalar deleting destructor
+// FUNCTION: GAMEMD 0x00478220
+// VectorClass<RGBClass> copy constructor
 // FUNCTION: GAMEMD 0x004782E0
 // VectorClass<RGBClass>::operator==
 // FUNCTION: GAMEMD 0x00478340
@@ -35,6 +37,8 @@
 // VectorClass<RGBClass> scalar deleting destructor
 // FUNCTION: GAMEMD 0x00478850
 // VectorClass<RGBClass>::VectorClass
+// FUNCTION: GAMEMD 0x004788E0
+// VectorClass<RGBClass>::operator=
 // FUNCTION: GAMEMD 0x00645A70
 // DynamicVectorClass<RGBClass>::DynamicVectorClass
 // FUNCTION: GAMEMD 0x00645B10

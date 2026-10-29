@@ -120,11 +120,7 @@ extern MessageList_004F4480 DAT_00A8BC60;
 // The map instance at 0x87F7E8; only its redraw-counter bump at 0x578AC0 is
 // reached, so the type takes that function's class name and the call binds to
 // it.
-struct ScreenRedraw_00578AC0
-{
-    // FUNCTION: GAMEMD 0x578AC0 (decl; reloc) — bump the redraw counter.
-    void FUN_00578AC0();
-};
+#include "../map/screenredraw_00578ac0.h"
 // GLOBAL: GAMEMD 0x87F7E8
 extern ScreenRedraw_00578AC0 DAT_0087F7E8;
 

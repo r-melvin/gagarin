@@ -26,20 +26,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "../_layout/shp_struct.h"
 
 // Rules object behind the pointer at 0x8871E0 (used prefix only).
-struct Rules_008871E0
-{
-    char unknown_0000[0x1700];
-    double unknown_1700;             // health-ratio threshold (compared with GetHealthPercentage)
-    char unknown_1708[0x16C];
-    unsigned char unknown_1874[16][3];   // colour table, three bytes per entry
-    int unknown_18A4;                // table index, airstrike tint
-    char unknown_18A8[8];
-    int unknown_18B0;                // table index, force-shield tint
-};
-GG_STATIC_ASSERT(offsetof(Rules_008871E0, unknown_1700) == 0x1700);
-GG_STATIC_ASSERT(offsetof(Rules_008871E0, unknown_1874) == 0x1874);
-GG_STATIC_ASSERT(offsetof(Rules_008871E0, unknown_18A4) == 0x18A4);
-GG_STATIC_ASSERT(offsetof(Rules_008871E0, unknown_18B0) == 0x18B0);
+#include "../_layout/rules_008871e0.h"
 
 // GLOBAL: GAMEMD 0x8871E0 -- pointer to the rules object.
 extern Rules_008871E0* DAT_008871E0;

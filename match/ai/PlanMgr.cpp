@@ -91,21 +91,21 @@ int DAT_00AC4B84[24];
 #include "techno_class_planning_token_methods.h"
 
 extern int DAT_00816108;
-struct Rec12_008B4040 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b4040.h"
 extern Rec12_008B4040 DAT_008B4040[];
-struct Rec12_008B3F38 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b3f38.h"
 extern Rec12_008B3F38 DAT_008B3F38[];
-struct Rec12_008B3FC8 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b3fc8.h"
 extern Rec12_008B3FC8 DAT_008B3FC8[];
 extern unsigned char DAT_00A9FAB4;
 extern unsigned char DAT_00ABCD58;
 extern int DAT_00ABED0C;
 extern int DAT_00ABF168[];
-struct Rec28_0082D028 { int f00; int f04; int unknown_08[5]; };
+#include "../_layout/rec28_0082d028.h"
 extern Rec28_0082D028 DAT_0082D028[];
 extern int DAT_00AC4C90;
 extern int DAT_007F0248[];
-struct Rec16_007F0998 { int f00; int f04; int f08; int f0C; };
+#include "../_layout/rec16_007f0998.h"
 extern Rec16_007F0998 DAT_007F0998[];
 extern int DAT_00B0CB78[];
 extern int DAT_008449F8[];

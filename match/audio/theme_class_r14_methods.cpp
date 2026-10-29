@@ -8,13 +8,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "theme_class_methods.h"
 
-struct ThemeStream_00720EA0
-{
-    void FUN_00407F40();
-    int  FUN_00408070() const;
-    void FUN_004080C0();
-    int  FUN_004080D0() const;
-};
+#include "themestream_00720ea0.h"
 
 struct ThemeSaveStream_00721010
 {

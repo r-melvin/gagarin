@@ -384,10 +384,7 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 void __cdecl FUN_004068E0(const char* format, ...);
 
 // The options object at 0xA8EB60; 0x5FBF80 is handed the bare movie name.
-struct Obj_005FBF80
-{
-    void FUN_005FBF80(const char* name);   // GAMEMD 0x5FBF80 (decl; reloc)
-};
+#include "../_layout/obj_005fbf80.h"
 // GLOBAL: GAMEMD 0xA8EB60
 extern Obj_005FBF80 DAT_00A8EB60;
 

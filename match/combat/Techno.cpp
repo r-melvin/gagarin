@@ -117,26 +117,12 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // ---------------------------------------------------------------------------
 
-struct Quad_006C95E0
-{
-    int unknown_0;
-    int unknown_4;
-    int unknown_8;
-    int unknown_C;
-
-    Quad_006C95E0();
-};
+#include "../_layout/quad_006c95e0.h"
 
 // GLOBAL: GAMEMD 0x00B0CB78
 extern "C" int DAT_00B0CB78[];
 
-struct Rect_006CFDB0
-{
-    int unknown_0;
-    int unknown_4;
-    int unknown_8;
-    int unknown_C;
-};
+#include "../_layout/rect_006cfdb0.h"
 
 // GLOBAL: GAMEMD 0x00B0FC60
 extern "C" Rect_006CFDB0* DAT_00B0FC60;
@@ -149,55 +135,20 @@ extern "C" int DAT_00B0CB54;
 // GLOBAL: GAMEMD 0x00B0CC2C
 extern "C" int DAT_00B0CC2C;
 
-struct Link_006EF5F0
-{
-    char Pad_00[0xF0];
-    int unknown_F0;
-    char Pad_F4[0x5D8 - 0xF4];
-    Link_006EF5F0* unknown_5D8;
-};
-GG_STATIC_ASSERT(offsetof(Link_006EF5F0, unknown_F0) == 0xF0);
-GG_STATIC_ASSERT(offsetof(Link_006EF5F0, unknown_5D8) == 0x5D8);
+#include "../_layout/link_006ef5f0.h"
 
-struct Obj_006EF5F0
-{
-    char Pad_00[0x54];
-    Link_006EF5F0* unknown_54;
+#include "../_layout/obj_006ef5f0.h"
 
-    void FUN_006EF5F0(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006EF5F0, unknown_54) == 0x54);
-
-struct Obj_00705D20
-{
-    char Pad_00[0x514];
-    int unknown_514;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00705D20, unknown_514) == 0x514);
+#include "../_layout/obj_00705d20.h"
 
 // GLOBAL: GAMEMD 0x00843108
 extern "C" char DAT_00843108;
 
-struct Obj_00711EB0
-{
-    char Pad_00[0x610];
-    int unknown_610;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00711EB0, unknown_610) == 0x610);
+#include "../_layout/obj_00711eb0.h"
 
-struct Obj_00717880
-{
-    char Pad_00[0x808];
-    int unknown_808;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00717880, unknown_808) == 0x808);
+#include "../_layout/obj_00717880.h"
 
-struct Obj_00726910
-{
-    char Pad_00[0x2C];
-    int unknown_2C;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00726910, unknown_2C) == 0x2C);
+#include "../_layout/obj_00726910.h"
 
 // GLOBAL: GAMEMD 0x00B0FE54
 extern "C" int DAT_00B0FE54;
@@ -207,44 +158,20 @@ extern "C" char DAT_00B0FE58;
 // GLOBAL: GAMEMD 0x008463B8 (eighteen string pointers)
 extern "C" const char* const DAT_008463B8[18];
 
-struct Item_00751040
-{
-    void FUN_004053E0();
-};
+#include "../_layout/item_00751040.h"
 
-struct Holder_00751040
-{
-    Item_00751040* FUN_00406130();
-};
+#include "../_layout/holder_00751040.h"
 
-struct Node_00751040
-{
-    char Pad_00[0x0C];
-    Holder_00751040 unknown_C;
-    char Pad_0D[0x30 - 0x0D];
-    int unknown_30;
+#include "../_layout/node_00751040.h"
 
-    Node_00751040* FUN_004073E0();
-};
-GG_STATIC_ASSERT(offsetof(Node_00751040, unknown_30) == 0x30);
-
-struct List_00751040
-{
-    Node_00751040* FUN_004073C0();
-};
+#include "../_layout/list_00751040.h"
 
 // GLOBAL: GAMEMD 0x00B1D320
 extern "C" List_00751040 DAT_00B1D320;
 
-struct Named_00751590
-{
-    const char* FUN_00405170();
-};
+#include "../_layout/named_00751590.h"
 
-struct Entry_00751590
-{
-    Named_00751590* unknown_0;
-};
+#include "../_layout/entry_00751590.h"
 
 // GLOBAL: GAMEMD 0x00B1D37C
 extern "C" Entry_00751590** DAT_00B1D37C;
@@ -255,11 +182,7 @@ extern "C" const char DAT_00846574[];
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 
-struct Obj_00753510
-{
-    void FUN_00407FB0();
-    void FUN_00408000();
-};
+#include "../_layout/obj_00753510.h"
 
 // GLOBAL: GAMEMD 0x00B1D4D8
 extern "C" Obj_00753510* DAT_00B1D4D8;
@@ -285,12 +208,7 @@ extern "C" const char DAT_008497A4[];
 // 0x4068E0: cdecl text sink taking a format string (callee only).
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
-struct Obj_00774950
-{
-    char Pad_00[0x5C];
-    HANDLE unknown_5C;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00774950, unknown_5C) == 0x5C);
+#include "../_layout/obj_00774950.h"
 
 // GLOBAL: GAMEMD 0x00B73550
 extern "C" HWND DAT_00B73550;
@@ -301,11 +219,7 @@ extern "C" HIMC DAT_00B7355C;
 extern "C" int DAT_00A8B238;
 // GLOBAL: GAMEMD 0x00B76B24
 extern "C" int DAT_00B76B24;
-struct Flags_0077D940
-{
-    unsigned int unknown_0 : 8;
-    unsigned int unknown_8 : 1;
-};
+#include "../_layout/flags_0077d940.h"
 
 // GLOBAL: GAMEMD 0x00B76B30
 extern "C" Flags_0077D940 DAT_00B76B30;

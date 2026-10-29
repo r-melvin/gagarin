@@ -10,25 +10,11 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_00426A70 {
-    unsigned char unknown_00[0xA0];
-    unsigned short unknown_A0;
-    int FUN_00426A70();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00426A70, unknown_A0) == 0xA0);
+#include "../_layout/obj_00426a70.h"
 
-struct Obj_00426A80 {
-    unsigned char unknown_00[0xA2];
-    unsigned short unknown_A2;
-    int FUN_00426A80();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00426A80, unknown_A2) == 0xA2);
+#include "../_layout/obj_00426a80.h"
 
-struct Rec_0046C4D0 {
-    unsigned char unknown_00[0x24];
-    int unknown_24;
-};
-GG_STATIC_ASSERT(offsetof(Rec_0046C4D0, unknown_24) == 0x24);
+#include "../_layout/rec_0046c4d0.h"
 
 // FUNCTION: GAMEMD 0x00426A70
 int Obj_00426A70::FUN_00426A70()

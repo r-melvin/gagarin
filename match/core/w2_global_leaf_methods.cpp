@@ -13,7 +13,7 @@ extern int DAT_00ABED04;
 extern int DAT_00ABED08;
 extern int DAT_00B45B68;
 extern int DAT_00A8ED84;
-struct Rec28_0082D028 { int f00; int f04; int unknown_08; int f0C; int unknown_10[3]; };
+#include "../_layout/rec28_0082d028.h"
 extern Rec28_0082D028 DAT_0082D028[];
 
 // FUNCTION: GAMEMD 0x005AC1C0

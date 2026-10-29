@@ -26,7 +26,7 @@ void Obj_00403800::FUN_004038C0(int a, int b)
 }
 
 // FUNCTION: GAMEMD 0x41C230
-Obj_0041C200::Obj_0041C200(int a, int b, int c)
+Obj_0041C200_small_struct_ctor_methods::Obj_0041C200_small_struct_ctor_methods(int a, int b, int c)
 {
     unknown_00 = a;
     unknown_04 = b;

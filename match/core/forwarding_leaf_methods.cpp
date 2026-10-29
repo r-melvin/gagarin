@@ -10,49 +10,28 @@
 const char* FUN_0048E030(unsigned int index);
 const char* FUN_0048E090(unsigned int index);
 
-struct Obj_00477020 {
-    void FUN_00528660(int, int, const char*);
-    void FUN_00477020(int a, int b, unsigned int c);
-};
+#include "../_layout/obj_00477020.h"
 // FUNCTION: GAMEMD 0x00477020
 void Obj_00477020::FUN_00477020(int a, int b, unsigned int c)
 {
     FUN_00528660(a, b, FUN_0048E030(c));
 }
 
-struct Obj_004770B0 {
-    void FUN_00528660(int, int, const char*);
-    void FUN_004770B0(int a, int b, unsigned int c);
-};
+#include "../_layout/obj_004770b0.h"
 // FUNCTION: GAMEMD 0x004770B0
 void Obj_004770B0::FUN_004770B0(int a, int b, unsigned int c)
 {
     FUN_00528660(a, b, FUN_0048E090(c));
 }
 
-struct Obj_005175E0 {
-    bool FUN_005175D0();
-    bool FUN_005175E0();
-};
+#include "../_layout/obj_005175e0.h"
 
-struct Rec_00549B50 {
-    int unknown_00;
-    int unknown_04;
-    int unknown_08;
-};
-struct Obj_00549B50 {
-    Rec_00549B50 FUN_00549B50(const Rec_00549B50& in);
-};
+#include "../_layout/rec_00549b50.h"
+#include "../_layout/obj_00549b50.h"
 
-struct Obj_006EA4F0 {
-    void FUN_006EA500(int, int);
-    void FUN_006EA4F0(int a);
-};
+#include "../_layout/obj_006ea4f0.h"
 
-struct Obj_007719C0 {
-    bool FUN_007529E0();
-    bool FUN_007719C0();
-};
+#include "../_layout/obj_007719c0.h"
 // FUNCTION: GAMEMD 0x007719C0
 bool Obj_007719C0::FUN_007719C0()
 {

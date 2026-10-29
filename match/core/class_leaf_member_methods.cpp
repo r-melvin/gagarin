@@ -13,12 +13,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // vtable owner / slot: -
-struct Obj_00681060 {
-    unsigned char unknown_00[0x4];
-    int unknown_04;
-    void FUN_00681060(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00681060, unknown_04) == 0x4);
+#include "../_layout/obj_00681060.h"
 // FUNCTION: GAMEMD 0x00681060
 void Obj_00681060::FUN_00681060(int value)
 {
@@ -26,9 +21,7 @@ void Obj_00681060::FUN_00681060(int value)
 }
 
 // vtable owner / slot: ShipLocomotionClass+4/s29
-struct Obj_006A3E50 {
-    int FUN_006A3E50(void*);
-};
+#include "../_layout/obj_006a3e50.h"
 // FUNCTION: GAMEMD 0x006A3E50
 int Obj_006A3E50::FUN_006A3E50(void*)
 {
@@ -36,9 +29,7 @@ int Obj_006A3E50::FUN_006A3E50(void*)
 }
 
 // vtable owner / slot: TeleportLocomotionClass+4/s29
-struct Obj_00719E20 {
-    int FUN_00719E20(void*);
-};
+#include "../_layout/obj_00719e20.h"
 // FUNCTION: GAMEMD 0x00719E20
 int Obj_00719E20::FUN_00719E20(void*)
 {
@@ -46,6 +37,4 @@ int Obj_00719E20::FUN_00719E20(void*)
 }
 
 // vtable owner / slot: WalkLocomotionClass+4/s29
-struct Obj_0075C7E0 {
-    int FUN_0075C7E0(void*);
-};
+#include "../_layout/obj_0075c7e0.h"

@@ -51,12 +51,7 @@ DynamicVectorClass<Cell> FUN_00688380(bool unknown);
 
 // GLOBAL: GAMEMD 0x8871E0 -- the rules object; 0x5CAB33 passes the address of
 // its +0x8AC member (a type list) to 0x5051E0.
-struct Rules_008871E0
-{
-    char _pad000[0x8AC];      // +0x000
-    char unknown_8AC[0x18];   // +0x8AC
-};
-GG_STATIC_ASSERT(offsetof(Rules_008871E0, unknown_8AC) == 0x8AC);
+#include "../_layout/rules_008871e0.h"
 extern Rules_008871E0* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x688ED0 (decl; reloc) -- __fastcall: the building in ECX,

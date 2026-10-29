@@ -61,20 +61,7 @@ GG_STATIC_ASSERT(offsetof(Obj_0042D400, unknown_02) == 0x02);
 GG_STATIC_ASSERT(sizeof(Obj_0042D400) == 0x04);
 
 // Swap-setters: store the new value, hand back the old one.
-struct Obj_00433C00
-{
-    char          _pad00[0x24];
-    short         unknown_24;   // +0x0024
-    char          _pad26[0x41 - 0x26];
-    unsigned char unknown_41;   // +0x0041
-
-    // FUNCTION: GAMEMD 0x433C70
-    short FUN_00433C70(short value);
-    // FUNCTION: GAMEMD 0x433C90
-    unsigned char FUN_00433C90(unsigned char value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00433C00, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(Obj_00433C00, unknown_41) == 0x41);
+#include "obj_00433c00.h"
 
 // Three bytes, constructed in place.
 struct Obj_004355B0
@@ -88,11 +75,11 @@ struct Obj_004355B0
 };
 
 // Three-int value types. Byte-identical constructors, distinct types.
-struct Obj_0041C200
+struct Obj_0041C200_small_struct_ctor_methods
 {
     int unknown_00, unknown_04, unknown_08;
     // FUNCTION: GAMEMD 0x41C230
-    Obj_0041C200(int a, int b, int c);
+    Obj_0041C200_small_struct_ctor_methods(int a, int b, int c);
 };
 struct Obj_0043A000
 {

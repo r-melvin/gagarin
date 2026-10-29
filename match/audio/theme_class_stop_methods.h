@@ -18,17 +18,7 @@
 
 // The playback stream object hanging off ThemeClass +0x2C. Its four
 // __thiscall methods are declared only (bodies live in match/core).
-struct ThemeStream_00720EA0
-{
-    // FUNCTION: GAMEMD 0x407F40 (decl; reloc)
-    void FUN_00407F40();
-    // FUNCTION: GAMEMD 0x408070 (decl; reloc)
-    int  FUN_00408070() const;
-    // FUNCTION: GAMEMD 0x4080C0 (decl; reloc)
-    void FUN_004080C0();
-    // FUNCTION: GAMEMD 0x4080D0 (decl; reloc)
-    int  FUN_004080D0() const;
-};
+#include "themestream_00720ea0.h"
 
 struct ThemeClass
 {

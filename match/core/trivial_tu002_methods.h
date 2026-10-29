@@ -33,11 +33,7 @@ void FUN_004033C0(void*, int);
 // FUNCTION: GAMEMD 0x407170 (declaration)
 void FUN_00407170(Obj_00407060*, int);
 
-struct Gbl_0087E8A8
-{
-    // FUNCTION: GAMEMD 0x420130
-    void FUN_00420130();
-};
+#include "gbl_0087e8a8.h"
 
 struct Obj_00407060
 {

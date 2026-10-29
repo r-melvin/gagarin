@@ -118,13 +118,7 @@ EventQueue<256> DAT_00A83ED0;
 
 // ---- more objects with destructors ----------------------------------------------------------------------------------
 
-struct Obj_00A8B238
-{
-    // FUNCTION: GAMEMD 0x6970A0 (decl; reloc)
-    Obj_00A8B238();
-    // FUNCTION: GAMEMD 0x697840 (decl; reloc)
-    ~Obj_00A8B238();
-};
+#include "../_layout/obj_00a8b238.h"
 // SYNTHETIC: GAMEMD 0x4E8030
 // SYNTHETIC: GAMEMD 0x4E8050 -- atexit callback
 // GLOBAL: GAMEMD 0xA8B238

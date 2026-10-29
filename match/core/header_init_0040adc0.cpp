@@ -27,13 +27,7 @@ double __cdecl FUN_004CAC40(double value);
 // Global object whose constructor (0x420120) and destructor (0x420130) are
 // defined out of line elsewhere; its exit-time destructor stub is the
 // compiler's, at 0x40AD80.
-struct Gbl_0087E8A8
-{
-    // FUNCTION: GAMEMD 0x420120 (decl; reloc)
-    Gbl_0087E8A8();
-    // FUNCTION: GAMEMD 0x420130 (decl; reloc)
-    ~Gbl_0087E8A8();
-};
+#include "gbl_0087e8a8.h"
 
 // SYNTHETIC: GAMEMD 0x40AD60
 // SYNTHETIC: GAMEMD 0x40AD80 -- exit-time destructor stub

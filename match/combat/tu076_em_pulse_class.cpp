@@ -45,13 +45,7 @@ extern CellStruct DAT_008A3838;
 extern bool DAT_00A8E9A0;
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map: 0x5657E0 tests a cell, 0x5657A0 returns it.
-struct Map_0087F7E8
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    CellClass* FUN_005657A0(const CellStruct* cell);
-    // FUNCTION: GAMEMD 0x5657E0 (decl; reloc)
-    bool FUN_005657E0(const CellStruct* cell);
-};
+#include "../_layout/map_0087f7e8.h"
 extern Map_0087F7E8 DAT_0087F7E8;
 
 // The append to EMPulseClass::Array, in the free-function shape of the inlined

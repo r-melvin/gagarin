@@ -37,10 +37,7 @@ struct StaticVectorHolder_0089DE18 {
 // SYNTHETIC: GAMEMD 0x004662E0 -- initialiser of DAT_0089DE18
 DynamicVectorClass<BulletClass*> StaticVectorHolder_0089DE18::DAT_0089DE18;
 
-struct StaticVectorHolder_0089ECF8 {
-    // GLOBAL: GAMEMD 0x0089ECF8
-    static DynamicVectorClass<ConvertClass*> DAT_0089ECF8;
-};
+#include "../_layout/staticvectorholder_0089ecf8.h"
 
 struct StaticVectorHolder_008A3870 {
     // GLOBAL: GAMEMD 0x008A3870

@@ -75,12 +75,7 @@ struct CellClass_004CCFD0
 GG_STATIC_ASSERT(offsetof(CellClass_004CCFD0, Flags) == 0x140);
 
 // The object the global at 0x8871E0 points at; only +0xFA8 is read.
-struct Rules_008871E0
-{
-    char  _pad000[0xFA8];   // +0x0000
-    void* At_FA8;           // +0x0FA8
-};
-GG_STATIC_ASSERT(offsetof(Rules_008871E0, At_FA8) == 0xFA8);
+#include "../_layout/rules_008871e0.h"
 // GLOBAL: GAMEMD 0x8871E0 — that object.
 extern Rules_008871E0* Rules_008871E0_Instance;
 

@@ -373,7 +373,7 @@ void MSPrintAnim::Layout(const MSRect* area)
 // put a form feed in front of each one. The inner walk is a rotated
 // `while (ch && ch != newline)`: the terminator test is peeled to the top, the
 // newline test heads the body, and the terminator test closes it.
-int MSCountPages(Obj_007B66D0* text, MSFont* font, int limit)
+int MSCountPages(Obj_007B66D0_msanim_family_methods* text, MSFont* font, int limit)
 {
     if (!text->Equals(0)) {
         if (font != 0) {
@@ -458,7 +458,7 @@ bool MSPrintAnim::Update(int context, MSRect* out)
         }
 
         if (centred) {
-            Obj_007B66D0 line;
+            Obj_007B66D0_msanim_family_methods line;
 
             line.CopyFrom(&Text);
             line.Slice(0, i);
@@ -580,7 +580,7 @@ void MSPrintAnim::Draw(int context, MSRect* clip)
             }
         } else {
             if (centred) {
-                Obj_007B66D0 line;
+                Obj_007B66D0_msanim_family_methods line;
 
                 line.CopyFrom(&Text);
                 line.Slice(0, i);
@@ -654,7 +654,7 @@ int MSPrintAnim::vf_7()
 // the index each time rather than holding it — retail calls the indexed
 // reader three times per turn, once for the newline test, once for the width
 // and once for the loop condition.
-int MSPrintAnim::MeasureWidth(Obj_007B66D0* text)
+int MSPrintAnim::MeasureWidth(Obj_007B66D0_msanim_family_methods* text)
 {
     int i = 0;
     int width = 0;

@@ -192,7 +192,7 @@ int __fastcall FUN_004E59A0(int id)
     return id == 0x774 ? 7 : -1;
 }
 
-struct Rec12_008B3F38 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b3f38.h"
 extern Rec12_008B3F38 DAT_008B3F38[];
 
 // FUNCTION: GAMEMD 0x4E4FC0
@@ -209,7 +209,7 @@ void __fastcall FUN_004E4FC0(int count)
     }
 }
 
-struct Rec12_008B4040 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b4040.h"
 extern Rec12_008B4040 DAT_008B4040[];
 
 // FUNCTION: GAMEMD 0x4E44E0

@@ -155,24 +155,24 @@ __forceinline void RandomStraw::AddBitInline(int seed)
 // ---------------------------------------------------------------------------
 
 extern int DAT_00816108;
-struct Rec12_008B4040 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b4040.h"
 extern Rec12_008B4040 DAT_008B4040[];
-struct Rec12_008B3F38 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b3f38.h"
 extern Rec12_008B3F38 DAT_008B3F38[];
-struct Rec12_008B3FC8 { int key; int unknown_04; int unknown_08; };
+#include "../_layout/rec12_008b3fc8.h"
 extern Rec12_008B3FC8 DAT_008B3FC8[];
 extern unsigned char DAT_00A9FAB4;
 extern unsigned char DAT_00ABCD58;
 extern int DAT_00ABED0C;
 extern int DAT_00ABF168[];
-struct Rec28_0082D028 { int f00; int f04; int unknown_08[5]; };
+#include "../_layout/rec28_0082d028.h"
 extern Rec28_0082D028 DAT_0082D028[];
 extern int DAT_00AC4B80;
 extern int DAT_00AC4C90;
 extern int DAT_00AC4C38;
 extern int DAT_00AC4BF0;
 extern int DAT_007F0248[];
-struct Rec16_007F0998 { int f00; int f04; int f08; int f0C; };
+#include "../_layout/rec16_007f0998.h"
 extern Rec16_007F0998 DAT_007F0998[];
 extern int DAT_00B0CB78[];
 extern int DAT_008449F8[];
@@ -230,43 +230,14 @@ void FUN_0065FB60(Obj_0065FB60* a1, int a2);
 #include "../_rt/gg_static_assert.h"
 #include <stddef.h>
 
-struct ColorRGB_00661350
-{
-    unsigned char unknown_00;   // +0x00
-    unsigned char unknown_01;   // +0x01
-    unsigned char unknown_02;   // +0x02
-
-    ColorRGB_00661350() : unknown_00(0), unknown_01(0), unknown_02(0) {}
-
-    // retail thiscall helper, matched elsewhere in main as a separate view.
-    void Blend(int ratio, const ColorRGB_00661350& target);
-    int Difference(const ColorRGB_00661350& other) const;
-};
-
-GG_STATIC_ASSERT(offsetof(ColorRGB_00661350, unknown_00) == 0x00);
-GG_STATIC_ASSERT(offsetof(ColorRGB_00661350, unknown_01) == 0x01);
-GG_STATIC_ASSERT(offsetof(ColorRGB_00661350, unknown_02) == 0x02);
+#include "../_layout/colorrgb_00661350.h"
 // 0x626070 steps the element loop by 3.
 GG_STATIC_ASSERT(sizeof(ColorRGB_00661350) == 0x03);
 
 // GLOBAL: GAMEMD 0x00A83CD9 -- fixed target color pushed by 0x626170.
 extern ColorRGB_00661350 DAT_00A83CD9;
 
-struct ColorTable_00626070
-{
-    ColorRGB_00661350 Colors[256];   // +0x000
-
-    ColorTable_00626070(const ColorTable_00626070& other);
-
-    const ColorRGB_00661350& operator[](int index) const { return Colors[index % 256]; }
-
-    void FUN_00626120(int ratio, const ColorTable_00626070& target);
-    void FUN_00626170(int ratio, const char* marks);
-    void FUN_006261B0(int ratio, const ColorTable_00626070& target, const char* marks);
-    int Nearest(const ColorRGB_00661350& color) const;
-};
-
-GG_STATIC_ASSERT(offsetof(ColorTable_00626070, Colors) == 0x000);
+#include "../_layout/colortable_00626070.h"
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
@@ -291,25 +262,13 @@ class RadarEventClass;
 class ShadowControlClass;
 class VeinholeMonsterClass;
 
-struct StaticVectorHolder_00A9F9D0 {
-    // GLOBAL: GAMEMD 0x00A9F9D0
-    static DynamicVectorClass<const AnimClass*> DAT_00A9F9D0;
-};
+#include "../_layout/staticvectorholder_00a9f9d0.h"
 
-struct StaticVectorHolder_00AA0118 {
-    // GLOBAL: GAMEMD 0x00AA0118
-    static DynamicVectorClass<IonBlastClass*> DAT_00AA0118;
-};
+#include "../_layout/staticvectorholder_00aa0118.h"
 
-struct StaticVectorHolder_00B0CDE8 {
-    // GLOBAL: GAMEMD 0x00B0CDE8
-    static DynamicVectorClass<ShadowControlClass*> DAT_00B0CDE8;
-};
+#include "../_layout/staticvectorholder_00b0cde8.h"
 
-struct StaticVectorHolder_00B1D290 {
-    // GLOBAL: GAMEMD 0x00B1D290
-    static DynamicVectorClass<VeinholeMonsterClass*> DAT_00B1D290;
-};
+#include "../_layout/staticvectorholder_00b1d290.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

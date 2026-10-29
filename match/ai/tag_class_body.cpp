@@ -65,11 +65,7 @@ extern int DAT_00A83DBC;
 HouseClass* FUN_00502D30(int index);
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map; 0x5657A0 returns the cell at a coordinate.
-struct Map_0087F7E8
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    CellClass* FUN_005657A0(const CellStruct* cell);
-};
+#include "../_layout/map_0087f7e8.h"
 extern Map_0087F7E8 DAT_0087F7E8;
 
 // The registries the destructor removes `this` from (abstract_registry.h holds their storage).

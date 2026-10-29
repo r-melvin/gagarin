@@ -23,6 +23,9 @@
 // SYNTHETIC: GAMEMD 0x477B10
 // DynamicVectorClass<int> scalar deleting destructor
 
+// FUNCTION: GAMEMD 0x477B60
+// VectorClass<int> copy constructor
+
 // FUNCTION: GAMEMD 0x477BE0
 // VectorClass<int> capacity constructor
 

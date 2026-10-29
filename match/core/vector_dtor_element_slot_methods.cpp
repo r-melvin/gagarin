@@ -56,6 +56,8 @@ class CellClass; template<class C> struct DiscreteDistributionClass { template<c
 // VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::SetCapacity
 // FUNCTION: GAMEMD 0x004E0C40
 // DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::AddItem
+// FUNCTION: GAMEMD 0x004E0A00
+// DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::DynamicVectorClass(int, T*)
 template class VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*> >;
 template class DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*> >;
 

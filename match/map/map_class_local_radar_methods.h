@@ -46,6 +46,14 @@ GG_STATIC_ASSERT(offsetof(CellClass_00578390, SlopeIndex) == 0x11C);
 // GLOBAL: GAMEMD 0xABDC50 — MapClass::InvalidCell (its MapCoords is 0xABDC74).
 extern CellClass_00578390 InvalidCell_00578390;
 
+struct CellPos_00578390
+{
+    short X;   // +0x0000
+    short Y;   // +0x0002
+
+    CellPos_00578390(int x, int y) : X((short)x), Y((short)y) {}
+};
+
 struct Map_00578390
 {
     char _pad0000[0xF4];              // +0x0000
@@ -62,6 +70,10 @@ struct Map_00578390
     int InLocalRadar(Rect_00578390* rect, bool checkLevel);
     // FUNCTION: GAMEMD 0x578460 — MapClass::IsWithinUsableArea.
     bool IsWithinUsableArea(Cell_00578390* cell, bool checkLevel);
+    // FUNCTION: GAMEMD 0x578460 (decl) - is the cell inside the usable area.
+    bool IsWithinUsableArea(const CellPos_00578390& cell, bool checkLevel);
+
+    int IsRectWithinUsableArea(const Rect_00578390& rect, bool checkLevel);
 };
 GG_STATIC_ASSERT(offsetof(Map_00578390, MapRectWidth) == 0xF4);
 GG_STATIC_ASSERT(offsetof(Map_00578390, VisibleRectX) == 0xFC);

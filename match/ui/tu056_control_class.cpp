@@ -409,10 +409,7 @@ template class RLEBlitTransXlatZReadWrite<unsigned char>;
 
 class ConvertClass;
 
-struct StaticVectorHolder_0089ECF8 {
-    // GLOBAL: GAMEMD 0x0089ECF8
-    static DynamicVectorClass<ConvertClass*> DAT_0089ECF8;
-};
+#include "../_layout/staticvectorholder_0089ecf8.h"
 
 #include "../render/trivial_tu056_methods.h"
 

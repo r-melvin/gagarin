@@ -110,6 +110,10 @@ public:
     Cell FindWeedCell(int radius);
     // GAMEMD 0x4DDB90 (RET 4)
     bool MoveToWeed(int radius);
+    // GAMEMD 0x4DF280: turns the mega target into the mega destination cell.
+    void FUN_004DF280();
+    // GAMEMD 0x4DC810 (RET 8): selects a planning-path waypoint, or clears the selection for -1.
+    void FUN_004DC810(int pathIdx, signed char waypointIndex);
     // GAMEMD 0x4CBBA0 (RET 0x18): A* route from this object's cell to `dest`.
     void* FindPath(Cell* dest, int* buffer, int unused1, int unused2, int dirCount, int mode);
     // GAMEMD 0x7104F0: moves every passenger to this object's Location (slot 109).

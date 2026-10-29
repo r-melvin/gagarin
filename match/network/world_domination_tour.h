@@ -15,13 +15,7 @@ typedef unsigned short wchar_t;
 #endif
 
 // Out-of-line destructor 0x7B46F0 (a four-byte member: a string handle).
-class Member_7B46F0
-{
-public:
-    Member_7B46F0(const char* text);   // 0x7B4630
-    ~Member_7B46F0();
-    void* Data;
-};
+#include "../_layout/member_7b46f0.h"
 
 // Out-of-line destructor 0x7B6760 (a four-byte member).
 class Member_7B6760

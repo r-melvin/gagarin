@@ -372,39 +372,15 @@ struct GrowListRecord10C
 // LIBRARY: GAMEMD 0x7C8B3D -- CRT free.
 extern "C" void __cdecl gg_free(void*);
 
-struct Obj_006253B0 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_006253B0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_006253B0, data) == 0x08);
+#include "../_layout/obj_006253b0.h"
 
 
-struct Obj_00625990 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_00625990();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00625990, data) == 0x08);
+#include "../_layout/obj_00625990.h"
 
 
-struct Obj_007AEEC0 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_007AEEC0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_007AEEC0, data) == 0x08);
+#include "../_layout/obj_007aeec0.h"
 
-struct Obj_007AF000 {
-    int count;     // +0x00
-    int capacity;  // +0x04
-    int* data;     // +0x08
-    bool FUN_007AF000();
-};
-GG_STATIC_ASSERT(offsetof(Obj_007AF000, data) == 0x08);
+#include "../_layout/obj_007af000.h"
 
 #include "../core/seat_vtable_tail_dtor_sweep.h"
 
@@ -414,11 +390,11 @@ GG_STATIC_ASSERT(offsetof(Obj_007AF000, data) == 0x08);
 #include "../_rt/gg_static_assert.h"
 
 // Out-of-line destructor 0x7B46F0 (a four-byte member: a string handle).
-class Member_7B46F0
+class Member_7B46F0_wonline
 {
 public:
-    Member_7B46F0();    // FUNCTION: GAMEMD 0x7B4620 (decl; reloc)
-    ~Member_7B46F0();
+    Member_7B46F0_wonline();    // FUNCTION: GAMEMD 0x7B4620 (decl; reloc)
+    ~Member_7B46F0_wonline();
     void* Data;
 };
 
@@ -456,7 +432,7 @@ public:
     WonlineStringDialogControl();
     ~WonlineStringDialogControl() {}
     virtual void* DeletingDtor(unsigned int flags);
-    Member_7B46F0 String;   // +0x0C
+    Member_7B46F0_wonline String;   // +0x0C
 };
 
 class CreateGameDialogControl : public WonlineStringDialogControl
@@ -482,7 +458,7 @@ public:
     virtual void* DeletingDtor(unsigned int flags);
     MapStageList Stages;        // +0x50
     char unknown_AC[0x1C];      // +0x51
-    Member_7B46F0 Member_C8;    // +0xC8
+    Member_7B46F0_wonline Member_C8;    // +0xC8
 };
 
 GG_STATIC_ASSERT(offsetof(MapSelect, Stages) == 0x50);
@@ -1246,12 +1222,7 @@ int __stdcall FUN_0078D120(void* window, unsigned int message, unsigned int wpar
 
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DAT_00A8ED9C;
-struct Obj_00A8B230
-{
-    char unknown_0000[0x35A2];   // +0x0000
-    bool unknown_35A2;           // +0x35A2
-};
-GG_STATIC_ASSERT(offsetof(Obj_00A8B230, unknown_35A2) == 0x35A2);
+#include "obj_00a8b230.h"
 
 // GLOBAL: GAMEMD 0xA8B230
 extern Obj_00A8B230* DAT_00A8B230;
@@ -2882,10 +2853,10 @@ void FUN_007975E0()
 }
 
 // FUNCTION: GAMEMD 0x7982A0
-void __stdcall FUN_007982A0(int count, int unused, Member_7B46F0* items)
+void __stdcall FUN_007982A0(int count, int unused, Member_7B46F0_wonline* items)
 {
     for (int i = 0; i < count; i++) {
-        items[i].~Member_7B46F0();
+        items[i].~Member_7B46F0_wonline();
     }
     gg_free(items);
 }

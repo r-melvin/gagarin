@@ -54,11 +54,7 @@ extern EventQueue<128> DAT_00A802C8;
 // "GameControls: GameSpeed = %d, ScrollRate = %d, Detail = %d\n"
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map; 0x4AE450 applies a new detail level.
-struct Map_0087F7E8
-{
-    // FUNCTION: GAMEMD 0x4AE450 (decl; reloc)
-    void FUN_004AE450();
-};
+#include "../_layout/map_0087f7e8.h"
 extern Map_0087F7E8 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x622650 (decl; reloc)

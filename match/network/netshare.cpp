@@ -248,12 +248,7 @@ extern unsigned char DAT_00A8B31D;
 extern const char DAT_00831A60[];
 
 // ScenarioClass::Instance (0xA8B230): only the +0x1254 member is stored here.
-struct Obj_00A8B230
-{
-    char unknown_00[0x1254];  // +0x0000
-    int unknown_1254;         // +0x1254
-};
-GG_STATIC_ASSERT(offsetof(Obj_00A8B230, unknown_1254) == 0x1254);
+#include "obj_00a8b230.h"
 // GLOBAL: GAMEMD 0xA8B230
 extern Obj_00A8B230* DAT_00A8B230;
 
