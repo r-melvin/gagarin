@@ -146145,5 +146145,65 @@
   "name": "TechnoClass::FUN_006F70E0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "addr": "0x4A0450",
+  "len": "0x5d",
+  "sym": "??1EnumConnectionsClass@@QAE@XZ",
+  "name": "EnumConnectionsClass::~EnumConnectionsClass",
+  "status": "partial",
+  "pct": 94.9,
+  "note": "Native vptr store and Count load are reordered; 37/39 instructions match. Vtable/provider closure remains unproved."
+ },
+ {
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "addr": "0x4A0540",
+  "len": "0x85",
+  "sym": "?Release@ConnectionPointClass@@UAGKXZ",
+  "name": "ConnectionPointClass::Release",
+  "status": "partial",
+  "pct": 18.4,
+  "note": "Candidate calls the real destructor out of line; retail inlines cleanup. Provider and vtable closure remain unproved."
+ },
+ {
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "addr": "0x4A0870",
+  "len": "0x5c",
+  "sym": "??0ConnectionPointClass@@QAE@PBU_GUID@@PAUIUnknown@@@Z",
+  "name": "ConnectionPointClass::ConnectionPointClass",
+  "status": "partial",
+  "pct": 9.1,
+  "note": "Candidate calls an unresolved VectorClass constructor; retail inlines initialization. Do not assume a retail call target."
+ },
+ {
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "addr": "0x4A08D0",
+  "len": "0x47",
+  "sym": "??1ConnectionPointClass@@QAE@XZ",
+  "name": "ConnectionPointClass::~ConnectionPointClass",
+  "status": "partial",
+  "pct": 100.0,
+  "note": "Raw 100 and strict 3/3; required class/vector full vtable provider closure is unproved."
+ },
+ {
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "addr": "0x4A09B0",
+  "len": "0x9d",
+  "sym": "?Release@EnumConnectionPointsClass@@UAGKXZ",
+  "name": "EnumConnectionPointsClass::Release",
+  "status": "partial",
+  "pct": 15.5,
+  "note": "Candidate calls the real destructor out of line; retail inlines cleanup. Provider and vtable closure remain unproved."
+ },
+ {
+  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "addr": "0x4A0DB0",
+  "len": "0x5d",
+  "sym": "??1EnumConnectionPointsClass@@QAE@XZ",
+  "name": "EnumConnectionPointsClass::~EnumConnectionPointsClass",
+  "status": "partial",
+  "pct": 94.9,
+  "note": "Native vptr store and Count load are reordered; 37/39 instructions match. Vtable/provider closure remains unproved."
  }
 ]

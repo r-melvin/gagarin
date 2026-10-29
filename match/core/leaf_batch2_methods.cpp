@@ -3,6 +3,9 @@
 
 #include "leaf_batch2_methods.h"
 
+// IMPORT: GAMEMD 0x007E1530 (WINMM timeGetTime)
+extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+
 // FUNCTION: GAMEMD 0x004CA170
 //
 // FactoryClass getter: return the OriginalBalance field at offset 0x68
@@ -13,13 +16,10 @@ int FactoryClass_004CA170::GetOriginalBalance() const
 
 // FUNCTION: GAMEMD 0x004E2450
 //
-// Timer constructor: call GetTickCount and store in Snapshot
-typedef int (*GetTickCountFunc)();
+// Timer constructor: call timeGetTime and store its DWORD result in Snapshot
 Timer_004E2450::Timer_004E2450()
 {
-    // Calls extern function at 0x7e1530
-    extern GetTickCountFunc g_getTickCountFunc;
-    this->Snapshot = g_getTickCountFunc();
+    this->Snapshot = timeGetTime();
 }
 
 // 0x004F42D0 is NOT defined here. It was drafted in this batch as a
