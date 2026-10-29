@@ -146168,7 +146168,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "tu": "match/core/enum_connections_clone.cpp",
   "addr": "0x4A0450",
   "len": "0x5d",
   "sym": "??1EnumConnectionsClass@@QAE@XZ",
@@ -146418,6 +146418,16 @@
   "status": "partial",
   "pct": 93.5,
   "note": "Native constructor initialization instructions are scheduled differently; full-span strict relocation check fails at reordered vptr."
+ },
+ {
+  "tu": "match/core/enum_connections_clone.cpp",
+  "addr": "0x4A0010",
+  "len": "0x9D",
+  "sym": "?Release@EnumConnectionsClass@@UAGKXZ",
+  "name": "EnumConnectionsClass::Release",
+  "status": "partial",
+  "pct": 93.1,
+  "note": "Native destructor vptr store and count/loop setup are scheduled differently; strict comparison fails at reordered relocation."
  },
  {
   "tu": "match/core/rules_class_combat_damage_methods.cpp",

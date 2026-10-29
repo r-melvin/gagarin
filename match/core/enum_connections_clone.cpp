@@ -25,6 +25,18 @@ GG_STATIC_ASSERT(offsetof(EnumConnectionsClass, Connections.IsInitialized) == 0x
 GG_STATIC_ASSERT(offsetof(EnumConnectionsClass, Connections.IsAllocated) == 0x11);
 GG_STATIC_ASSERT(offsetof(EnumConnectionsClass, Connections.CapacityIncrement) == 0x18);
 
+// GLOBAL: GAMEMD 0xABCD3C
+extern int DAT_00ABCD3C;
+GG_STATIC_ASSERT(sizeof(DAT_00ABCD3C) == 4);
+
+// FUNCTION: GAMEMD 0x4A0010
+ULONG __stdcall EnumConnectionsClass::Release() {
+    --DAT_00ABCD3C;
+    LONG count = InterlockedDecrement(&RefCount);
+    if (count == 0) delete this;
+    return count;
+}
+
 // FUNCTION: GAMEMD 0x4A0190
 HRESULT __stdcall EnumConnectionsClass::Clone(IEnumConnections** ppEnum)
 {
@@ -53,4 +65,10 @@ EnumConnectionsClass::EnumConnectionsClass(const EnumConnectionsClass& other)
 {
     for (int i = 0; i < Connections.Count; ++i)
         Connections.Items[i].pUnk->AddRef();
+}
+
+// FUNCTION: GAMEMD 0x4A0450
+EnumConnectionsClass::~EnumConnectionsClass() {
+    for (int i = 0; i < Connections.Count; ++i) Connections.Items[i].pUnk->Release();
+    Connections.Clear();
 }

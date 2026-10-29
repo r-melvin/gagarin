@@ -27,11 +27,6 @@ GG_STATIC_ASSERT(offsetof(ConnectionPointClass, Connections.CapacityIncrement) =
 // GLOBAL: GAMEMD 0xABCD3C
 extern int DAT_00ABCD3C;
 GG_STATIC_ASSERT(sizeof(DAT_00ABCD3C) == 4);
-// FUNCTION: GAMEMD 0x4A0450
-EnumConnectionsClass::~EnumConnectionsClass() {
-    for (int i = 0; i < Connections.Count; ++i) Connections.Items[i].pUnk->Release();
-    Connections.Clear();
-}
 // FUNCTION: GAMEMD 0x4A0540
 ULONG __stdcall ConnectionPointClass::Release() {
     --DAT_00ABCD3C;
