@@ -240,7 +240,7 @@ public:
     virtual int vf_11();
     virtual int vf_12();
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);
-    virtual void* vf_35(void* owner);
+    virtual ObjectClass* vf_35(HouseClass* owner);
 };
 
 // CALLEE: GAMEMD 0x0041D300 (decl; reloc) -- AirstrikeClass default constructor.

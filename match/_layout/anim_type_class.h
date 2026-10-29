@@ -49,7 +49,7 @@ public:
     virtual int vf_11();
     virtual int vf_12();
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);
-    virtual void* vf_35(void* house);
+    virtual ObjectClass* vf_35(HouseClass* house);
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x4289D0
     // FUNCTION: GAMEMD 0x428B80 (decl; reloc), ECX=name, EAX=type pointer.
     static AnimTypeClass* FindOrAllocate(const char* id);

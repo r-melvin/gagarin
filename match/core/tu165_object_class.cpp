@@ -406,7 +406,7 @@ int ObjectClass::vf_90(int a1)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5F43A0
-void ObjectClass::vf_93(int a1, int a2, int a3)
+void ObjectClass::vf_93(const CoordStruct& coord, bool a2, bool a3)
 {
 }
 

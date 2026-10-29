@@ -14,7 +14,7 @@
 // it in; a plane that cannot be placed is deleted and the count comes back
 // one short.
 int __fastcall HouseClass::SendSpyPlanes(int typeIndex, int count, int a2,
-                                         int a3, AbstractClass* a4)
+                                         AbstractClass* a3, AbstractClass* a4)
 {
     AircraftTypeClass* type = DAT_00A8B21C[typeIndex];
     // The edge search's out cell is declared outside the loop: inside it, cl

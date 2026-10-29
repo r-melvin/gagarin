@@ -199,7 +199,7 @@ public:
     virtual int vf_90(int a1);                                 // 90  0x5F4390: returns 0
     virtual int vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house); // 91  0x5F5390
     virtual void vf_92();                                      // 92  0x4264A0: bare RET
-    virtual void vf_93(int a1, int a2, int a3);                // 93  0x5F43A0: bare RET 0xC
+    virtual void vf_93(const CoordStruct& coord, bool a2, bool a3);               // 93  0x5F43A0: bare RET 0xC
     virtual bool vf_94();                                      // 94  0x5F43B0: returns false
     virtual void vf_95();                                      // 95  0x5F43C0: bare RET
     virtual int vf_96();                                       // 96  0x5F43D0: returns 0

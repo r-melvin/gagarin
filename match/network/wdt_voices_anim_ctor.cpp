@@ -97,3 +97,10 @@ void WorldDominationTour::Voices::Anim::Attach(void* target)
 
 // SYNTHETIC: GAMEMD 0x771A30 -- Anim::`scalar deleting destructor' (seats its vtable, calls the base
 // destructor 0x5CB6C0 out of line, frees).
+
+// FUNCTION: GAMEMD 0x771800
+// Allocates and constructs a voice animation for the given owner.
+WorldDominationTour::Voices::Anim* __fastcall FUN_00771800(WorldDominationTour::Selection* owner)
+{
+    return new WorldDominationTour::Voices::Anim(owner);
+}

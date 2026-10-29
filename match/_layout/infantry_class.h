@@ -60,7 +60,7 @@ public:
     virtual void vf_61(CoordStruct* coord);                        // 61  0x521850
     virtual int vf_185(AbstractClass* target);                     // 185 0x5218E0
     // Native primary slot 242: one stack dword.
-    virtual void vf_242(int a1);                                   // 242 0x51B1F0
+    virtual void vf_242(AbstractClass* target);                                  // 242 0x51B1F0
     virtual int vf_243(int a1, int a2);                            // 243 0x51DF60
     virtual ObjectTypeClass* vf_51(bool a1);                       // 51  0x522640
     virtual HouseClass* vf_52(bool a1);                            // 52  0x5226C0

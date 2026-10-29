@@ -9,7 +9,7 @@
 // FUNCTION: GAMEMD 0x41BB30
 // While attacking or in a guard/area-guard style mission with no airstrike
 // pending, only those same missions may replace the current one.
-void AircraftClass::vf_125(int mission, int a2, int a3)
+void AircraftClass::vf_125(int mission, AbstractClass* a2, AbstractClass* a3)
 {
     switch (CurrentMission) {
     case 4:

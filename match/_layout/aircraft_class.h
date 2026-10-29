@@ -54,7 +54,7 @@ public:
     virtual int __stdcall vf_07();   // 0x41B840
     virtual int __stdcall vf_08();   // 0x41B860
     // Native primary slot 288: two stack dwords, target pointer and flag.
-    virtual void vf_125(int mission, int a2, int a3);           // 125 0x41BB30
+    virtual void vf_125(int mission, AbstractClass* a2, AbstractClass* a3);           // 125 0x41BB30
     virtual void vf_122(int mission, bool a2);                  // 122 0x41BA90
     virtual bool vf_123();                                      // 123 0x41B870
     virtual void vf_124(int mission);                           // 124 0x41B9F0

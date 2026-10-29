@@ -129,7 +129,7 @@ bool TerrainTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71DE10
-void* TerrainTypeClass::vf_35(void* house)
+ObjectClass* TerrainTypeClass::vf_35(HouseClass* house)
 {
     return new TerrainClass(this, &TerrainDefaultCell);
 }

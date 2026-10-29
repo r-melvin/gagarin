@@ -283,7 +283,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x50D440",
-  "sym": "?RespawnStartingForces@House_0050D440@@QAEXXZ",
+  "sym": "?RespawnStartingForces@HouseClass@@QAEXXZ",
   "len": "0xE4",
   "name": "HouseClass::RespawnStartingForces",
   "status": "partial",
@@ -292,7 +292,7 @@
  {
   "tu": "match/ai/house_class_spy_planes_methods.cpp",
   "addr": "0x65EAB0",
-  "sym": "?SendSpyPlanes@HouseClass@@QAIHHHHHPAVAbstractClass@@@Z",
+  "sym": "?SendSpyPlanes@HouseClass@@QAIHHHHPAVAbstractClass@@0@Z",
   "len": "0x180",
   "name": "HouseClass::SendSpyPlanes",
   "status": "matched",
@@ -30319,7 +30319,7 @@
   "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
   "addr": "0x41BB30",
   "len": "0xa0",
-  "sym": "?vf_125@AircraftClass@@UAEXHHH@Z",
+  "sym": "?vf_125@AircraftClass@@UAEXHPAVAbstractClass@@0@Z",
   "name": "AircraftClass::vf_125",
   "status": "matched",
   "pct": 100
@@ -47072,7 +47072,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71DE10",
-  "sym": "?vf_35@TerrainTypeClass@@UAEPAXPAX@Z",
+  "sym": "?vf_35@TerrainTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x2b",
   "name": "TerrainTypeClass::vf_35",
   "status": "matched",
@@ -68296,7 +68296,7 @@
  {
   "tu": "match/core/mission_class_slots.cpp",
   "addr": "0x5B3650",
-  "sym": "?vf_125@MissionClass@@UAEXHHH@Z",
+  "sym": "?vf_125@MissionClass@@UAEXHPAVAbstractClass@@0@Z",
   "len": "0x53",
   "name": "MissionClass::vf_125",
   "status": "matched",
@@ -69889,7 +69889,7 @@
  {
   "tu": "match/core/tu165_object_class.cpp",
   "addr": "0x5F43A0",
-  "sym": "?vf_93@ObjectClass@@UAEXHHH@Z",
+  "sym": "?vf_93@ObjectClass@@UAEXABUCoordStruct@@_N1@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_93",
   "status": "matched",
@@ -83295,7 +83295,7 @@
  {
   "tu": "match/combat/bullet_type_class.cpp",
   "addr": "0x46C880",
-  "sym": "?vf_35@BulletTypeClass@@UAEPAXPAX@Z",
+  "sym": "?vf_35@BulletTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x5",
   "name": "BulletTypeClass::vf_35",
   "status": "matched",
@@ -88873,6 +88873,15 @@
   "pct": 100
  },
  {
+  "tu": "match/network/WDTTerr.cpp",
+  "addr": "0x76F910",
+  "sym": "?FUN_0076F910@@YI?AV?$rc_ptr@VTerritory@WorldDominationTour@@@@HPAXPADPAI2@Z",
+  "len": "0x52",
+  "name": "FUN_0076F910",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/core/trivial_tu281_methods.cpp",
   "addr": "0x771780",
   "sym": "?FUN_00771780@@YAXXZ",
@@ -92658,7 +92667,7 @@
  {
   "tu": "match/combat/Techno.cpp",
   "addr": "0x7013A0",
-  "sym": "?vf_125@TechnoClass@@UAEXHHH@Z",
+  "sym": "?vf_125@TechnoClass@@UAEXHPAVAbstractClass@@0@Z",
   "len": "0x36",
   "name": "TechnoClass::vf_125",
   "status": "matched",
@@ -95352,8 +95361,9 @@
   "sym": "?FUN_006D8530@Tactical@@QAEXHH@Z",
   "len": "0xfe",
   "name": "Tactical::FUN_006D8530",
-  "status": "partial",
-  "pct": 94.1
+  "status": "matched",
+  "pct": 100.0,
+  "note": "Full entry span, scoped static guard/array/callback and 22 relocation targets verified; matched status subject to full gate."
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -98134,6 +98144,24 @@
   "sym": "??0?$ValueGameOption@E@WorldDominationTour@@QAE@IHVMember_7B46F0@@H@Z",
   "len": "0x47",
   "name": "WorldDominationTour::ValueGameOption<unsigned char>::ValueGameOption",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766880",
+  "sym": "?FUN_00766880@@YI?AV?$rc_ptr@V?$ValueGameOption@E@WorldDominationTour@@@@IHVMember_7B46F0@@H@Z",
+  "len": "0x62",
+  "name": "FUN_00766880",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x765FD0",
+  "sym": "??0Conflict@WorldDominationTour@@QAE@ABV?$rc_ptr@VWDTTerritory@@@@@Z",
+  "len": "0x3d",
+  "name": "WorldDominationTour::Conflict::Conflict",
   "status": "matched",
   "pct": 100
  },
@@ -105003,7 +105031,7 @@
  {
   "tu": "match/movement/foot_class_methods.cpp",
   "addr": "0x4D8F40",
-  "sym": "?vf_125@FootClass@@UAEXHHH@Z",
+  "sym": "?vf_125@FootClass@@UAEXHPAVAbstractClass@@0@Z",
   "len": "0x38",
   "name": "FootClass::vf_125",
   "status": "matched",
@@ -134217,7 +134245,7 @@
  {
   "tu": "match/combat/unit_type_class_w3_methods.cpp",
   "addr": "0x747560",
-  "sym": "?vf_35@UnitTypeClass@@UAEPAXPAX@Z",
+  "sym": "?vf_35@UnitTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x2b",
   "name": "UnitTypeClass::vf_35",
   "status": "matched",
@@ -145663,6 +145691,15 @@
   "pct": 100
  },
  {
+  "tu": "match/network/wdt_voices_anim_ctor.cpp",
+  "addr": "0x771800",
+  "sym": "?FUN_00771800@@YIPAVAnim@Voices@WorldDominationTour@@PAVSelection@3@@Z",
+  "len": "0x43",
+  "name": "FUN_00771800",
+  "status": "matched",
+  "pct": 100
+ },
+ {
   "tu": "match/ui/ms_engine_methods.cpp",
   "addr": "0x5D1AA0",
   "sym": "??0MSEngine@@QAE@XZ",
@@ -146241,6 +146278,60 @@
   "sym": "?Read_CrateRules@RulesClass@@QAE_NPAVCCINIClass@@@Z",
   "len": "0x2a2",
   "name": "RulesClass::Read_CrateRules",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/small_sweep_s2_31.cpp",
+  "addr": "0x6DA360",
+  "sym": "?FUN_006DA360@@YGPAHPAH0H@Z",
+  "len": "0xf",
+  "name": "FUN_006DA360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/score_anim_ctors.cpp",
+  "addr": "0x690BB0",
+  "sym": "??0ScoreTimeClass@@QAE@HHHHHH@Z",
+  "len": "0x4c",
+  "name": "ScoreTimeClass::ScoreTimeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/score_anim_ctors.cpp",
+  "addr": "0x690F30",
+  "sym": "??0ScoreAnimClass@@QAE@HHH@Z",
+  "len": "0x36",
+  "name": "ScoreAnimClass::ScoreAnimClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_campaign_factory.cpp",
+  "addr": "0x764B30",
+  "sym": "?FUN_00764B30@@YI?AV?$rc_ptr@VCampaign@WorldDominationTour@@@@IABVrc_ptr_base@@@Z",
+  "len": "0x5f",
+  "name": "FUN_00764B30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_faction_select_dialog_control.cpp",
+  "addr": "0x7AF500",
+  "sym": "??1FactionSelectDialogControl@WorldDominationTour@@UAE@XZ",
+  "len": "0x39",
+  "name": "WorldDominationTour::FactionSelectDialogControl::~FactionSelectDialogControl",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_faction_select_dialog_control.cpp",
+  "addr": "0x7B0440",
+  "sym": "??_GFactionSelectDialogControl@WorldDominationTour@@UAEPAXI@Z",
+  "len": "0x4d",
+  "name": "WorldDominationTour::FactionSelectDialogControl::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  }

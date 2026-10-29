@@ -34,7 +34,7 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);              // 13  0x747F70
     virtual CoordStruct vf_30();                        // 30  0x747590
     virtual CoordStruct vf_31();                        // 31  0x7475D0
-    virtual void* vf_35(void* house);                   // 35  0x747560
+    virtual ObjectClass* vf_35(HouseClass* house);                   // 35  0x747560
     // FUNCTION: GAMEMD 0x7472C0 (no-initialisation constructor, used by Load)
     UnitTypeClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x7472F0 (destructor; slot 8 = 0x748190)

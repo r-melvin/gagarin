@@ -35,11 +35,11 @@ void Kamikaze::Update()
                 int facing = ((unit->PrimaryFacing.FUN_004C93D0().Whole >> 12) + 1 >> 1) & 7;
                 CellClass* cell = unit->vf_111();
                 CellClass* ahead = cell->GetNeighbourCell(facing);
-                unit->vf_242((int)ahead);
+                unit->vf_242(ahead);
                 unit->vf_122(1, 0);
                 continue;
             }
-            unit->vf_242((int)target);
+            unit->vf_242(target);
             unit->vf_122(1, 0);
         }
     }

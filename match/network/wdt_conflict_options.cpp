@@ -82,6 +82,13 @@ rc_ptr<Conflict> FUN_00765F60(const rc_ptr<WDTTerritory>& territory)
     return rc_ptr<Conflict>(new Conflict(territory));
 }
 
+// FUNCTION: GAMEMD 0x765FD0
+// The constructor: expanded into the factory above (/Ob2) and also kept out of line.
+Conflict::Conflict(const rc_ptr<WDTTerritory>& territory)
+    : Territory(territory)
+{
+}
+
 // FUNCTION: GAMEMD 0x766010
 bool Conflict::operator==(const Conflict& other) const
 {
@@ -150,3 +157,13 @@ template class rc_ptr<WorldDominationTour::GameOption>;
 
 // SYNTHETIC: GAMEMD 0x7667A0
 // Conflict scalar deleting destructor, the destructor body inlined.
+
+// FUNCTION: GAMEMD 0x766880
+// The ValueGameOption<unsigned char> factory: a new option over the values, returned in a handle (hidden
+// result pointer in ECX, the flags in EDX).
+rc_ptr<WorldDominationTour::ValueGameOption<unsigned char> > FUN_00766880(
+    unsigned int flags, int when_set, Member_7B46F0 name, int when_clear)
+{
+    return rc_ptr<WorldDominationTour::ValueGameOption<unsigned char> >(
+        new WorldDominationTour::ValueGameOption<unsigned char>(flags, when_set, name, when_clear));
+}

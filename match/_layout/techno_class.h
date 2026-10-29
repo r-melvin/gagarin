@@ -249,7 +249,7 @@ public:
     virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
     virtual bool vf_89(const CoordStruct& coord, int a2);          // 89  0x6F7970
     virtual bool vf_102(HouseClass* house);                        // 102 0x6F4960
-    virtual void vf_125(int mission, int a2, int a3);              // 125 0x7013A0
+    virtual void vf_125(int mission, AbstractClass* a2, AbstractClass* a3);              // 125 0x7013A0
 
     // Slots 161-308, introduced by TechnoClass (RTTI ".?AVTechnoClass@@" on
     // 0x7F4960). Names are placeholders except where a tree row already carries
@@ -336,7 +336,7 @@ public:
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
     virtual bool vf_240(int a1, int a2, int a3);                   // 240 0x6FC0B0
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x6F8DF0; FootClass 0x4D9920 tests the threat bits and the result pointer
-    virtual void vf_242(int a1);                                   // 242 0x6FCDB0
+    virtual void vf_242(AbstractClass* target);                                  // 242 0x6FCDB0
     virtual int vf_243(int a1, int a2);                            // 243 0x6FDD50
     virtual void CancelAndGoIdle();                                // 244 0x70F850
     virtual bool vf_245(HouseClass* house, bool a2);               // 245 0x7014A0 (RET 8)
@@ -387,7 +387,7 @@ public:
     virtual bool EnterIdleMode(bool initial, bool a2);             // 289 0x709A40
     virtual void vf_290(int a1, int a2, int a3, int a4, int a5);   // 290 0x70AF50
     virtual void vf_291(int a1, int a2, bool a3, HouseClass* a4);           // 291 0x70B1D0
-    virtual int vf_292();                                          // 292 0x4C9150
+    virtual bool vf_292(CoordStruct* coord, int dir);                // 292 0x4C9150
     virtual void vf_293();                                         // 293 0x70CC90
     virtual void vf_294();                                         // 294 0x70CCC0
     virtual void vf_295();                                         // 295 0x70CCF0
@@ -490,7 +490,7 @@ public:
     void*              LocomotorTarget;          // +0x2AC FootClass*
     void*              LocomotorSource;          // +0x2B0 FootClass*
     AbstractClass*     Target;                   // +0x2B4
-    void*              LastTarget;               // +0x2B8 AbstractClass*
+    AbstractClass*     LastTarget;               // +0x2B8
     void*              CaptureManager;           // +0x2BC CaptureManagerClass*
     void*              MindControlledBy;         // +0x2C0 TechnoClass*
     unsigned char      MindControlledByAUnit;    // +0x2C4 (bool)

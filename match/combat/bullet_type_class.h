@@ -55,7 +55,7 @@ public:
 
     // ObjectTypeClass's two pure slots have concrete BulletType table entries.
     virtual bool vf_32(const CellStruct* cell, HouseClass* house); // slot 32, table 0x7E4948
-    virtual void* vf_35(void* house);                             // slot 35, table 0x7E4948
+    virtual ObjectClass* vf_35(HouseClass* house);                             // slot 35, table 0x7E4948
 
     // Boolean fields: native 0x46BEE0 reads them through 0x5295F0;
     // 0x46C560 passes their bytes directly to Boolean checksum 0x4A1CA0.

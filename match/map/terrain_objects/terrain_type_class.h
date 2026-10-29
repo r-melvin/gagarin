@@ -58,7 +58,7 @@ public:
     virtual bool vf_25(CCINIClass* ini);                              // 25  0x71DEA0
     virtual CoordStruct vf_27(const CoordStruct& coord);   // 27  0x71E0D0
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);                     // 32  0x71DDD0
-    virtual void* vf_35(void* house);                                       // 35  0x71DE10
+    virtual ObjectClass* vf_35(HouseClass* house);                                       // 35  0x71DE10
     virtual void* vf_36(int arg);                                    // 36  0x71DE40
 
     // ---- members (complete-object offsets) ---------------------------------------------------

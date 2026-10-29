@@ -254,7 +254,7 @@ bool BulletTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 }
 
 // FUNCTION: GAMEMD 0x46C880
-void* BulletTypeClass::vf_35(void* house)
+ObjectClass* BulletTypeClass::vf_35(HouseClass* house)
 {
     return 0;
 }

@@ -32,7 +32,7 @@ void InfantryClass::vf_266()
         return;
     CoordStruct where = Location;
     AbstractClass* found = vf_241(1, &where, false);
-    if ((Target || found) && (vf_242((int)found), found))
+    if ((Target || found) && (vf_242(found), found))
         return;
     if (CurrentMission != 5 && !vf_33()->bools_D94[0])
         EnterIdleMode(false, true);

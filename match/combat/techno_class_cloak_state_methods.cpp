@@ -141,11 +141,11 @@ void TechnoClass::vf_260(int)
                 }
                 vf_55(false);
                 for (int j = watchers.Count - 1; j >= 0; j--) {
-                    watchers.Items[j]->vf_242((int)this);
+                    watchers.Items[j]->vf_242(this);
                 }
             }
             if (vf_11() == 1 && !Owner->FUN_0050B730()) {
-                vf_93((int)&DAT_00B0EA90, 1, 0);
+                vf_93(DAT_00B0EA90, true, false);
             }
             break;
         }

@@ -241,9 +241,8 @@ public:
     // Native Load stores DWORD0/WORD4/WORD6 into an eight-byte allocation.
     struct StartingTechnoStruct
     {
-        int unknown_00;
-        short unknown_04;
-        short unknown_06;
+        ObjectTypeClass* Type;   // +0x00 the type to re-create (0x50D440 asks it to create an object)
+        CellStruct Cell;         // +0x04 the cell it starts on
     };
     struct BuildChoiceClass;    // RTTI: .?AUBuildChoiceClass@HouseClass@@ (vector element)
     // +0x24/+0x28/+0x2C: IHouse, IPublicHouse, IConnectionPointContainer vptrs
@@ -563,6 +562,7 @@ public:
     void MarkScoutNode(HouseClass* house);                    // FUNCTION: GAMEMD 0x504860
     void AddStartingUnit(void* type, int cell);               // FUNCTION: GAMEMD 0x50D560
     void FreeStartingUnits();                                 // FUNCTION: GAMEMD 0x50D5D0
+    void RespawnStartingForces();                             // FUNCTION: GAMEMD 0x50D440
     float FUN_0050C050(TechnoTypeClass* type);                // FUNCTION: GAMEMD 0x50C050
     float FUN_0050C0A0(TechnoTypeClass* type);                // FUNCTION: GAMEMD 0x50C0A0
     void FUN_0050D6D0(CellStruct cell);
@@ -690,7 +690,7 @@ public:
     // FUNCTION: GAMEMD 0x505360 -- are all of a type's prerequisites among the first `count` owned building types.
     bool AllPrerequisitesAvailable(TechnoTypeClass* type, DynamicVectorClass<BuildingTypeClass*>* owned, int count);
     // FUNCTION: GAMEMD 0x65EAB0 -- flies a flight of aircraft of one type in from the house's map edge; returns how many made it in. __fastcall on a member: the type index travels in EDX, RET 0x10.
-    int __fastcall SendSpyPlanes(int typeIndex, int count, int a2, int a3, AbstractClass* a4);
+    int __fastcall SendSpyPlanes(int typeIndex, int count, int a2, AbstractClass* a3, AbstractClass* a4);
     // FUNCTION: GAMEMD 0x4FC980 -- ends the game for this house once and starts the borrowed-time countdown; answers the game-over flag.
     char FUN_004FC980();
     // FUNCTION: GAMEMD 0x4FF980 -- takes one off the factory counter of a removed building's category.
@@ -860,9 +860,8 @@ GG_STATIC_ASSERT(sizeof(bool) == 1);
 
 
 // Native503D98/503DA0/503DA9 field stores; stream record extent eight bytes.
-GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, unknown_00) == 0);
-GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, unknown_04) == 4);
-GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, unknown_06) == 6);
+GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, Type) == 0);
+GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, Cell) == 4);
 GG_STATIC_ASSERT(sizeof(HouseClass::StartingTechnoStruct) == 8);
 
 #endif  // GG_MATCH_LAYOUT_HOUSE_CLASS_H

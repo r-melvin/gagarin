@@ -1817,7 +1817,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
                 // passes that reloaded pointer to Owner's slot 242 and the
                 // TemporalClass call. Preserve the callback mutation point.
                 temporalTarget = temporalTarget->BunkerLinkedItem;
-                Owner->vf_242(reinterpret_cast<int>(temporalTarget));
+                Owner->vf_242(temporalTarget);
             }
         }
         Owner->TemporalImUsing->FUN_0071AF20(

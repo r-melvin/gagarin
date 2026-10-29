@@ -58,6 +58,14 @@ void __cdecl FUN_0076F8F0()
     DAT_00B72B74 = 0x80;
 }
 
+// FUNCTION: GAMEMD 0x76F910
+// The Territory factory: a new Territory over the five values, returned in a handle (hidden result
+// pointer in ECX, the first value in EDX).
+rc_ptr<WorldDominationTour::Territory> FUN_0076F910(int a, void* b, char* c, unsigned int* d, unsigned int* e)
+{
+    return rc_ptr<WorldDominationTour::Territory>(new WorldDominationTour::Territory(a, b, c, d, e));
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76FD10
 // Seats the Territory table, then the members in reverse order and the

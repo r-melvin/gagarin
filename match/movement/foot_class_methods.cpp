@@ -69,11 +69,11 @@ bool FootClass::vf_319(const CoordStruct& a1)
 // FUNCTION: GAMEMD 0x4D8F40
 // Remember the current destination, run the TechnoClass mission change, then
 // head for the new target.
-void FootClass::vf_125(int mission, int a2, int a3)
+void FootClass::vf_125(int mission, AbstractClass* a2, AbstractClass* a3)
 {
     LastDestination = Destination;
     TechnoClass::vf_125(mission, a2, a3);
-    SetDestination((AbstractClass*)a3, true);
+    SetDestination(a3, true);
 }
 
 // FUNCTION: GAMEMD 0x4D9FF0

@@ -114,7 +114,6 @@ static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 
 #include "../ai/house_class_lost_powered_center_methods.h"
 
-#include "../ai/house_class_respawn_methods.h"
 
 #include "../core/empty_function_family_methods.h"
 
@@ -396,6 +395,8 @@ extern const IID DAT_007E9550;
 #include "../_layout/rules_class.h"
 #include "../_layout/techno_type_class.h"
 #include "../_layout/unit_type_class.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- VocClass::PlayAt.
 int VocClass_PlayAt(int index, CoordStruct* coords, int volume);
@@ -1582,7 +1583,7 @@ HRESULT __stdcall HouseClass::Load(IStream* pStm)
         return hr;
     while (count--) {
         StartingTechnoStruct* unit = new StartingTechnoStruct;
-        int type = 0;
+        ObjectTypeClass* type = 0;
         short x;
         short y;
         hr = pStm->Read(&type, 4, 0);
@@ -1594,9 +1595,9 @@ HRESULT __stdcall HouseClass::Load(IStream* pStm)
         hr = pStm->Read(&y, 2, 0);
         if (hr < 0)
             return hr;
-        unit->unknown_00 = type;
-        unit->unknown_04 = x;
-        unit->unknown_06 = y;
+        unit->Type = type;
+        unit->Cell.X = x;
+        unit->Cell.Y = y;
         StartingUnits.AddItem(unit);
     }
 
@@ -1801,10 +1802,10 @@ HRESULT __stdcall HouseClass::Save(IStream* pStm, BOOL fClearDirty)
         hr = pStm->Write(unit, 4, 0);
         if (hr < 0)
             return hr;
-        hr = pStm->Write(&unit->unknown_04, 2, 0);
+        hr = pStm->Write(&unit->Cell.X, 2, 0);
         if (hr < 0)
             return hr;
-        hr = pStm->Write(&unit->unknown_06, 2, 0);
+        hr = pStm->Write(&unit->Cell.Y, 2, 0);
         if (hr < 0)
             return hr;
     }
@@ -2071,69 +2072,52 @@ int HouseClass::FindIndexByName(const char* name)
 // it, as retail does. Score with scripts/vc6/raw_match.py: diff_retail.py
 // also counts the embedded jump/index tables (19 junk `add`s) as instructions.
 //
-// PARTIAL (66.0%, 68/103 by diff_retail.py; 64/83 real instructions, mnemonic
-// multiset identical). The whole residual is one register swap: retail keeps
-// `this` in EBX and the entry pointer in EBP, cl 8804 the other way round, so
-// the prologue/epilogue pushes and every use of the two (`MOV EBX,ECX`,
-// `[EBX+0x17C]`, `[EBX+0x170]`, `PUSH EBX` x2, `MOV EBP,[ECX+EAX*4]`,
-// `[EBP]`, `ADD EBP,4`, `PUSH EBP`) differ by name only; the loop, the
-// spilled counter, the jump table, the switch bodies, the map lookup, the
-// hidden-pointer GetCoords copy and the unlimbo tail are otherwise exact.
-// Tried: a `house = this` alias outside and inside the loop; all locals
-// declared at function scope; the entry as a reference, as `const`, or
-// re-indexed (`Items[i]->Type` / `&Items[i]->Cell`, which reloads after the
-// calls: 43.7%); a named cell pointer before the switch (43.7%); an inlined
-// `operator[]` on the vector; per-case block-scoped `obj`; a `default:` arm
-// (breaks the table); the create-and-test in a static inline helper and in an
-// inline member helper (entry as an inlined parameter); the flag fold and the
-// unlimbo tail in inline helpers; swapped case order; a `while` loop. None
-// moves the assignment; recorded as an allocation-ranking residual.
-//
-// TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply. Retail sinks
-// PUSH EBP/ESI/EDI below the empty-vector early-out and our output sinks the
-// same three in the same place; both sides jump the early exit straight onto
-// the last POP of the staircase epilogue, so the two returns are already as
-// split as retail's. Four further spellings measured this pass, all 66.0% and
-// byte-identical to the control: the loop body lifted into a free
-// `RespawnOne(house, i)` inline helper; the whole loop lifted into a free
-// `RespawnAll(house)` inline helper; `this` bound to a named `house` local;
-// and the unlimbo tail lifted into its own inline helper. The EBX/EBP
-// exchange is unmoved by every function boundary available in this body.
-void House_0050D440::RespawnStartingForces()
+// PARTIAL (81.9%, 68/83 instructions; mnemonic multiset identical). The whole
+// residual is one register swap: retail keeps `this` in EBX and the entry
+// pointer in EBP, cl 8804 the other way round, so the prologue/epilogue pushes
+// and every use of the two differ by name only. Written on the real types
+// (StartingTechnoStruct::Type/Cell, ObjectTypeClass::vf_35, TechnoClass::vf_292)
+// the score is unchanged from the earlier view-struct version, which tried: a
+// `house = this` alias; all locals at function scope; the entry as a reference
+// or `const`; re-indexing (reloads after the calls); a named cell pointer; an
+// inlined `operator[]`; per-case block-scoped `obj`; a `default:` arm; helper
+// functions for the create-and-test, the loop body or the whole loop; swapped
+// case order; a `while` loop; local declaration order; a separate `placed` bool.
+void HouseClass::RespawnStartingForces()
 {
     int i;
 
     for (i = this->StartingUnits.Count - 1; i >= 0; i--) {
-        StartingTechno_0050D440* entry = this->StartingUnits.Items[i];
-        Abs_0050D440* type = entry->Type;
-        Abs_0050D440* techno = 0;
-        Abs_0050D440* obj;
+        StartingTechnoStruct* entry = this->StartingUnits.Items[i];
+        ObjectTypeClass* type = entry->Type;
+        TechnoClass* techno = 0;
+        ObjectClass* obj;
 
-        switch ((type->*type->Vtbl->WhatAmI)()) {
+        switch (type->vf_11()) {
         case 3:
         case 7:
         case 0x28:
-            obj = (type->*type->Vtbl->CreateObject)(this);
+            obj = type->vf_35(this);
             if (obj == 0) {
                 techno = 0;
             } else {
-                techno = (obj->Flags & 1) ? obj : 0;
+                techno = obj->Flags.IsTechno ? static_cast<TechnoClass*>(obj) : 0;
             }
             break;
         case 0x10:
-            obj = (type->*type->Vtbl->CreateObject)(this);
+            obj = type->vf_35(this);
             if (obj == 0) {
                 techno = 0;
             } else {
-                techno = (obj->Flags & 1) ? obj : 0;
+                techno = obj->Flags.IsTechno ? static_cast<TechnoClass*>(obj) : 0;
             }
             break;
         }
 
-        Abs_0050D440* cell = MapInstance.GetCellAt(entry->Cell);
-        Coord_0050D440 coord = (cell->*cell->Vtbl->GetCoords)();
-        if (!(techno->*techno->Vtbl->At_490)(&coord, 0)) {
-            (techno->*techno->Vtbl->At_F8)();
+        CellClass* cell = DAT_0087F7E8.FUN_005657A0(&entry->Cell);
+        CoordStruct coord = cell->vf_18();
+        if (!techno->vf_292(&coord, 0)) {
+            techno->vf_62();
         }
     }
 }

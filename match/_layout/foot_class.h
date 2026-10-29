@@ -52,7 +52,7 @@ public:
     virtual void vf_314(int a1);                                   // 314 0x4DE7B0
     virtual void vf_315(int a1);                                   // 315 0x4DE940
     virtual CoordStruct vf_316();                                  // 316 0x4D9FF0
-    virtual void vf_125(int mission, int a2, int a3);              // 125 0x4D8F40
+    virtual void vf_125(int mission, AbstractClass* a2, AbstractClass* a3);              // 125 0x4D8F40
     virtual int vf_30();                                           // 30  0x4DB7E0
     virtual bool vf_126();                                         // 126 0x4D8F80
     virtual int vf_188();                                          // 188 0x4DB0A0

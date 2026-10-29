@@ -29,7 +29,7 @@ public:
     virtual int vf_12();                                        // 12  0x74BA00
     virtual void vf_13(Obj_004A1D30* crc);                      // 13  0x74B690
     virtual bool vf_32(const CellStruct* cell, HouseClass* house); // 32 0x74BA10
-    virtual void* vf_35(void* house);                           // 35  0x74BA20
+    virtual ObjectClass* vf_35(HouseClass* house);                           // 35  0x74BA20
 
     bool unknown_294;           // +0x294
     bool unknown_295;           // +0x295

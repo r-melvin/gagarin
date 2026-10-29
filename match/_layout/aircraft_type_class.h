@@ -47,7 +47,7 @@ public:
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x41CC20
     virtual CoordStruct vf_31();                                          // 31  0x41CBF0
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);                                   // 32  0x41CBE0
-    virtual void* vf_35(void* house);                                     // 35  0x41CB20
+    virtual ObjectClass* vf_35(HouseClass* house);                                     // 35  0x41CB20
     virtual bool vf_40();                                                 // 40  0x41CB50
     virtual bool vf_41();                                                 // 41  0x41CB60
 

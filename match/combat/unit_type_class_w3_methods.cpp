@@ -13,9 +13,9 @@ extern int DAT_00B1D138;
 
 // FUNCTION: GAMEMD 0x747560
 // Create a UnitClass of this type for the given house.
-void* UnitTypeClass::vf_35(void* house)
+ObjectClass* UnitTypeClass::vf_35(HouseClass* house)
 {
-    return new UnitClass(this, static_cast<HouseClass*>(house));
+    return new UnitClass(this, house);
 }
 
 // FUNCTION: GAMEMD 0x747590

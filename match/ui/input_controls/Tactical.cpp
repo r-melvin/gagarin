@@ -2754,12 +2754,15 @@ void Tactical::FUN_006D8530(int direction, int distance)
         Pair_006D9F80(0, 1), Pair_006D9F80(-1, 1),
         Pair_006D9F80(-1, 0), Pair_006D9F80(-1, -1)
     };
+    GG_STATIC_ASSERT(sizeof(offsets) == 0x40);
     Pair_006D9F80 old = unknown_D64;
     Pair_006D9F80 next(offsets[direction].unknown_00 * distance + old.unknown_00,
                       offsets[direction].unknown_04 * distance + old.unknown_04);
     if (!(old == next)) {
-        unknown_D74.unknown_00 = next.unknown_00 - old.unknown_00 + unknown_D74.unknown_00;
-        unknown_D74.unknown_04 = next.unknown_04 - old.unknown_04 + unknown_D74.unknown_04;
+        Pair_006D9F80 delta(next.unknown_00 - old.unknown_00,
+                            next.unknown_04 - old.unknown_04);
+        unknown_D74.unknown_00 += delta.unknown_00;
+        unknown_D74.unknown_04 += delta.unknown_04;
     }
 }
 

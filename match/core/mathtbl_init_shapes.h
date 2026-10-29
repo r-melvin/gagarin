@@ -9,6 +9,7 @@
 #define GG_MATCH_CORE_MATHTBL_INIT_SHAPES_H
 
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/coord_struct.h"
 
 struct MathTblShortPair
 {
@@ -18,12 +19,9 @@ struct MathTblShortPair
 };
 GG_STATIC_ASSERT(sizeof(MathTblShortPair) == 4);
 
-struct MathTblZero3
+struct MathTblZero3 : CoordStruct
 {
-    int A;
-    int B;
-    int C;
-    MathTblZero3() : A(0), B(0), C(0) {}
+    MathTblZero3() { X = 0; Y = 0; Z = 0; }
 };
 GG_STATIC_ASSERT(sizeof(MathTblZero3) == 0xC);
 

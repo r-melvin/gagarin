@@ -386,7 +386,7 @@ void MissionClass::vf_122(int mission, bool a2)
 }
 
 // FUNCTION: GAMEMD 0x5B3650
-void MissionClass::vf_125(int mission, int a2, int a3)
+void MissionClass::vf_125(int mission, AbstractClass* a2, AbstractClass* a3)
 {
     if (CurrentMission == 28 && mission == 5) {
         return;

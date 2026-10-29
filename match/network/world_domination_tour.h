@@ -41,7 +41,7 @@ namespace WorldDominationTour {
 class Conflict : public ReferenceCounted
 {
 public:
-    Conflict(const rc_ptr<WDTTerritory>& territory) : Territory(territory) {}
+    Conflict(const rc_ptr<WDTTerritory>& territory);   // 0x765FD0
     ~Conflict();   // 0x766030
     bool operator==(const Conflict& other) const;   // 0x766010
     int FUN_00766060() const;
@@ -84,6 +84,10 @@ public:
     Member_7B6760 Member_0C;   // +0x0C
     char unknown_10[0x10];     // +0x10
     Member_7B46F0 Member_20;   // +0x20
+    char unknown_24[0xC];      // +0x24 (operator new(0x30) at 0x76F916)
+
+    // FUNCTION: GAMEMD 0x76F970 (decl; reloc) -- builds a territory from five values.
+    Territory(int a, void* b, char* c, unsigned int* d, unsigned int* e);
 };
 
 }  // namespace WorldDominationTour
@@ -184,6 +188,7 @@ GG_STATIC_ASSERT(offsetof(WorldDominationTour::Conflict, Territory) == 0x08);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::State, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, Member_0C) == 0x0C);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, Member_20) == 0x20);
+GG_STATIC_ASSERT(sizeof(WorldDominationTour::Territory) == 0x30);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(PlayerProfile, Member_0C) == 0x0C);

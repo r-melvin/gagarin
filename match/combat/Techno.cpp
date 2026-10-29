@@ -830,7 +830,7 @@ bool Obj_00701190::FUN_00701190() const
 }
 
 // FUNCTION: GAMEMD 0x7013A0
-void TechnoClass::vf_125(int mission, int a2, int a3)
+void TechnoClass::vf_125(int mission, AbstractClass* a2, AbstractClass* a3)
 {
     this->LastTarget = this->Target;
     MissionClass::vf_125(mission, a2, a3);

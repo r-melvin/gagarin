@@ -74,7 +74,7 @@ struct ListHead_r14
 bool TechnoClass::FUN_007013E0()
 {
     if (FUN_005B36B0()) {
-        vf_242((int)this->LastTarget);
+        vf_242(LastTarget);
         return true;
     }
     return false;

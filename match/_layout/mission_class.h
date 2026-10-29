@@ -52,7 +52,7 @@ public:
     virtual void vf_122(int mission, bool a2);                 // 122 0x5B35E0: queues a mission
     virtual bool vf_123();                                     // 123 0x5B3570: starts the queued mission
     virtual void vf_124(int mission);                          // 124 0x5B2FD0: sets the mission now
-    virtual void vf_125(int mission, int a2, int a3);          // 125 0x5B3650: suspends the current mission
+    virtual void vf_125(int mission, AbstractClass* a2, AbstractClass* a3);          // 125 0x5B3650: suspends the current mission
     virtual bool vf_126();                                     // 126 0x5B36B0: resumes the suspended mission
     virtual bool vf_127();                                     // 127 0x5B3A10: a mission is suspended
     virtual bool vf_128();                                     // 128 0x4E0140: returns true
