@@ -38,7 +38,8 @@ enforces; nothing here needs a compiler except --strict.
                  W every valid correction (reviewer visibility: a packet is changing an existing central address)
   rekeys       W rekey / packet-map keys naming per-TU guard symbols (_$S<n>, _$E<n>), which the tools ignore
                  unless scoped 'tu::sym' in the central symbol_bindings.json
-  rea          E/W no REA Evidence IDs (ev_xxxxxxxx) in the packet's README/evidence (brief: REA primary)
+  rea          E/W no REA Evidence IDs (ev_xxxxxxxx) in the packet's README/evidence (brief: REA primary);
+               a line 'REA: none (ghidra CLI fallback)' states the fallback and silences it
   strict       (--strict) compile the touched TUs, raw_match + strict verify_relocations on every
                  matched row with the packet maps + derivable bindings; lists unbound targets;
                  E a partial row whose recorded pct differs from the compiled score (diff_retail, tolerance 0.05)
@@ -664,6 +665,8 @@ class Lint:
         blob = "\n".join(texts)
         ids = set(re.findall(r"\bev_[0-9a-f]{6,}\b", blob))
         if ids:
+            return
+        if re.search(r"^\W*REA:\s*none\s*\(ghidra CLI fallback\)", blob, re.I | re.M):
             return
         mentions_rea = re.search(r"\bREA\b|mcp__rea|reverse-engineer-anything", blob)
         mentions_ghidra = re.search(r"ghidra", blob, re.I)
