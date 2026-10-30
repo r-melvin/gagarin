@@ -262,9 +262,12 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             sym = r["sym"]
             # hybrid: a name several TUs define (implicit members such as a scalar deleting destructor, COMDAT
             # ANY) may have different bodies; LINK keeps the first, so the row's own body takes a unique name.
+            # Only definers that come before the row's object in link order matter: LINK keeps the first
+            # copy (COMDAT ANY), so a later copy never displaces this one, and the first definer is the
+            # winner and keeps the real symbol.
             shared = hybrid and obj is not None and obj in defined_in.get(sym, ()) and len(defined_in[sym]) > 1 \
                 and any(hybrid_module.function_matches(parsed_of(other), sym, va, hx(r["len"]), retail) is False
-                        for other in defined_in[sym] if other != obj)
+                        for other in defined_in[sym][:defined_in[sym].index(obj)])
             if sym in defined_in and sym not in used and not shared:
                 provider[va] = sym
             elif obj is not None and sym in statics_in.get(obj, ()):

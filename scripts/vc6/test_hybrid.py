@@ -315,6 +315,51 @@ class HybridPlanTests(unittest.TestCase):
                                                    "?stub_00401020@@YAXXZ"])
 
 
+class ComdatOrderTests(unittest.TestCase):
+    """stubgen.plan, hybrid: two objects define the COMDAT ?G; LINK keeps the copy of the first object in
+    link order, so only a mismatching definer that precedes the row's object makes the row's copy a dup_."""
+
+    def plan(self, owner_first):
+        import json
+        import stubgen
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        (root / "obj/match").mkdir(parents=True)
+        retail = FakeRetail()
+        gva = 0x401000 if owner_first else 0x401020
+        retail.patch(gva, b"\xcc" * 0x10)
+        # The object with the lowest claimed address is first in link order. The row owner's ?G is the
+        # 0xCC body retail has; the other object's ?G differs.
+        owner = coffgen.ObjectWriter()
+        owner.add_code_comdat(["?G@@YAXXZ"], 0x10, fill=0xCC)
+        other = coffgen.ObjectWriter()
+        other.add_code_comdat(["?G@@YAXXZ"], 0x10, fill=0xAA)
+        other.add_code_comdat(["?S@@YAXXZ"], 0x10)
+        (root / "obj/match/a.obj").write_bytes(owner.build())
+        (root / "obj/match/b.obj").write_bytes(other.build())
+        (root / "obj/objects.json").write_text(json.dumps({"success": True, "objects": [
+            {"object": "match/b.obj", "source": "match/b.cpp"}, {"object": "match/a.obj", "source": "match/a.cpp"}]}))
+        sva = 0x401020 if owner_first else 0x401000
+        manifest = [{"tu": "match/a.cpp", "addr": f"0x{gva:X}", "sym": "?G@@YAXXZ", "len": "0x10", "status": "matched"},
+                    {"tu": "match/b.cpp", "addr": f"0x{sva:X}", "sym": "?S@@YAXXZ", "len": "0x10", "status": "matched"}]
+        extents = [["0x401000", "0x10", "0x0", "none", "engine", []], ["0x401010", "0x10", "0x0", "none", "engine", []],
+                   ["0x401020", "0x10", "0x0", "none", "engine", []]]
+        return stubgen.plan(root / "obj", set(), root / "out", manifest=manifest, extents=extents,
+                            symbol_bindings={}, retail=retail), gva
+
+    def placed_symbol(self, result, addr):
+        return next(p["symbol"] for p in result["placed"] if p["addr"] == f"0x{addr:X}")
+
+    def test_first_object_in_link_order_keeps_the_real_symbol(self):
+        result, gva = self.plan(owner_first=True)
+        self.assertEqual(self.placed_symbol(result, gva), "?G@@YAXXZ")
+
+    def test_row_behind_a_mismatching_earlier_definer_is_renamed(self):
+        result, gva = self.plan(owner_first=False)
+        self.assertEqual(self.placed_symbol(result, gva), f"?dup_{gva:08X}@@YAXXZ")
+
+
 class CompareImageTests(unittest.TestCase):
     def test_ranges_and_sizes(self):
         import compare_image
