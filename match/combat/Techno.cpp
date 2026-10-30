@@ -876,6 +876,9 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 #endif
 
 #include "../_layout/unit_class.h"
+#include "../_layout/ebolt_class.h"
+#include "../core/cell_step_tables.h"
+#include "../map/cell_class_bridge_tile_queries.h"
 
 #include "../renderer/techno_class_drawer_methods.h"
 
@@ -1005,7 +1008,7 @@ void __fastcall FUN_004AED70(void* surface, void* conversion, void* shape,
     int a8, int z, int a10, int intensity, int a12, int a13, int a14,
     Point2D offset);
 
-// Unclaimed (below partial bar), GAMEMD 0x70A990
+// FUNCTION: GAMEMD 0x70A990
 // Draw the rank pip beside this object: the veteran or elite frame, or the
 // special one, nudged further for anything that is not infantry.
 void TechnoClass::vf_277(Point2D* where, RectangleStruct* clip)
@@ -1024,9 +1027,9 @@ void TechnoClass::vf_277(Point2D* where, RectangleStruct* clip)
     } else if (frame == -1) {
         return;
     }
-    Point2D at;
-    at.Y = where->Y + 2;
-    at.X = where->X + 5;
+    Point2D at = *where;
+    at.Y += 2;
+    at.X += 5;
     if (vf_11() != 15) {
         at.X += 5;
         at.Y += 4;
@@ -2582,6 +2585,26 @@ void TechnoClass::vf_232()
     vf_84();
 }
 
+// FUNCTION: GAMEMD 0x6FD570
+// Pick the weapon for the target, build the bolt at the fire coordinate of that weapon and,
+// for a live unit that has no bolt yet, take the bolt as its own and make this the owner.
+EBolt* TechnoClass::FUN_006FD570(AbstractClass* target)
+{
+    int weaponIndex = vf_185(target);
+    WeaponTypeClass* weapon = vf_254(weaponIndex)->WeaponType;
+    CoordStruct none;
+    none.X = 0;
+    none.Y = 0;
+    none.Z = 0;
+    CoordStruct source = vf_44(weaponIndex, none);
+    EBolt* bolt = FUN_006FD460(target, weapon, &source);
+    if (bolt && vf_11() == 1 && IsAlive && ((UnitClass*)this)->ElectricBolt == 0) {
+        ((UnitClass*)this)->ElectricBolt = bolt;
+        bolt->SetOwner((UnitClass*)this, weaponIndex);
+    }
+    return bolt;
+}
+
 // FUNCTION: GAMEMD 0x6FF950
 // Empty function.
 void __cdecl FUN_006FF950()
@@ -2993,6 +3016,136 @@ void TechnoClass::vf_280(bool silent)
 void Obj_00703850::FUN_00703850()
 {
     vf_279(0);
+}
+
+// The cell one step from `here` at a facing.
+static __inline CellClass* step_cell_00703B10(const CellStruct& here, int facing)
+{
+    CellStruct c = here + DAT_0089F688[facing];
+    return DAT_0087F7E8.FUN_005657A0(&c);
+}
+
+// FUNCTION: GAMEMD 0x703B10
+// Step test on the four cells at facing steps 0, 2, 4, 6 around this object's cell: flag 0x100 / 0x800 tests.
+bool TechnoClass::FUN_00703B10()
+{
+    CellStruct here = vf_110();
+    CellClass* cell = DAT_0087F7E8.FUN_005657A0(&here);
+    if (!cell || OnBridge) {
+        return false;
+    }
+    CellClass* cell2 = step_cell_00703B10(here, 4);
+    CellClass* cell0 = step_cell_00703B10(here, 0);
+    CellClass* cell1 = step_cell_00703B10(here, 2);
+    CellClass* cell3 = step_cell_00703B10(here, 6);
+    if ((cell->Flags & 0x100)
+        || (cell2 && (cell2->Flags & 0x100) && (cell2->Flags & 0x800))
+        || (cell3 && (cell3->Flags & 0x100) && !(cell3->Flags & 0x800))
+        || (cell1 && (cell1->Flags & 0x100) && !(cell1->Flags & 0x800))
+        || (cell0 && (cell0->Flags & 0x100) && (cell0->Flags & 0x800))) {
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x703CC0
+// Step test on the four cells at facing steps 0, 2, 4, 6 around this object's cell: flag 0x400 / 0x800 tests.
+bool TechnoClass::FUN_00703CC0()
+{
+    CellStruct here = vf_110();
+    CellClass* cell = DAT_0087F7E8.FUN_005657A0(&here);
+    if (!cell || OnBridge) {
+        return false;
+    }
+    CellClass* cell2 = step_cell_00703B10(here, 4);
+    CellClass* cell0 = step_cell_00703B10(here, 0);
+    CellClass* cell1 = step_cell_00703B10(here, 2);
+    CellClass* cell3 = step_cell_00703B10(here, 6);
+    if ((cell->Flags & 0x400)
+        || (cell2 && (cell2->Flags & 0x400) && (cell2->Flags & 0x800))
+        || (cell3 && (cell3->Flags & 0x400) && !(cell3->Flags & 0x800))
+        || (cell1 && (cell1->Flags & 0x400) && !(cell1->Flags & 0x800))
+        || (cell0 && (cell0->Flags & 0x400) && (cell0->Flags & 0x800))) {
+        return true;
+    }
+    return false;
+}
+
+// The tile index lies 6..15 above the bridge tile base (and is not one of the two
+// "no tile" markers).
+static __inline CellClass* step_cell_00703E70(const CellStruct& here, int facing)
+{
+    CellStruct c = DAT_0089F688[facing] + here;
+    return DAT_0087F7E8.FUN_005657A0(&c);
+}
+
+static __inline bool in_bridge_set_00703E70(int tile, int base)
+{
+    if (tile != 0xFFFF && tile != 0xFF) {
+        int d = tile - base + 1;
+        if (d >= 7 && d <= 16) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x703E70
+// Counts bridge-tile cells among three of the cells around this object's cell, when the cell is
+// valid and one of the two step tests (0x703B10, 0x703CC0) holds.
+int TechnoClass::FUN_00703E70()
+{
+    CellStruct here = vf_110();
+    int count = 0;
+    if (DAT_0087F7E8.FUN_005657A0(&here)) {
+        if (FUN_00703B10() || FUN_00703CC0()) {
+            CellClass* a = step_cell_00703E70(here, 4);
+            CellClass* b = step_cell_00703E70(here, 2);
+            CellClass* c = step_cell_00703E70(here, 3);
+            if (a && b && c) {
+                int base = GgBridgeTileBase;
+                if (in_bridge_set_00703E70(a->IsoTileTypeIndex, base)) {
+                    count = 1;
+                }
+                if (in_bridge_set_00703E70(b->IsoTileTypeIndex, base)) {
+                    count = 1;
+                }
+                if (in_bridge_set_00703E70(c->IsoTileTypeIndex, base)) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+}
+
+// FUNCTION: GAMEMD 0x704240
+// Height-step probe toward facing step 3: 2 when the neighbouring cell stands at least 4 levels
+// above this object's cell, 1 when the cell beyond it does (and the neighbour exists), else 0.
+int TechnoClass::FUN_00704240()
+{
+    int result = 0;
+    CellStruct here = vf_110();
+    CellClass* cell = DAT_0087F7E8.FUN_005657A0(&here);
+    if (!OnBridge) {
+        CellStruct next = vf_110() + DAT_0089F688[3];
+        CellClass* nextCell = DAT_0087F7E8.FUN_005657A0(&next);
+        if (nextCell) {
+            if (nextCell->Level - cell->Level >= 4) {
+                result = 2;
+            }
+            CellStruct coords = nextCell->MapCoords;
+            CellStruct beyond = coords + DAT_0089F688[3];
+            CellClass* beyondCell = DAT_0087F7E8.FUN_005657A0(&beyond);
+            if (beyondCell) {
+                if (beyondCell->Level - cell->Level >= 4) {
+                    return 1;
+                }
+                return result;
+            }
+        }
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x705CA0
@@ -4886,6 +5039,49 @@ void TechnoReactivate::Reactivate()
     }
 
     this->Deactivated = 0;
+}
+
+// FUNCTION: GAMEMD 0x70ED80
+// Adds bit 2 or bit 4 to the argument by the phase of a 256-frame cycle taken from
+// DisguiseCreationFrame; the phase is only sampled when the blink timer has run out
+// or its owner is controlled by the current player.
+int TechnoClass::FUN_0070ED80(int flags)
+{
+    int result = flags;
+    int frame = CurrentFrame;
+    int startTime = DisguiseBlinkTimer.StartTime;
+    int timeLeft = DisguiseBlinkTimer.TimeLeft;
+    if (startTime != -1) {
+        int elapsed = frame - startTime;
+        if (elapsed >= timeLeft) goto sample;
+        timeLeft -= elapsed;
+    }
+    if (timeLeft != 0) {
+        if (!Owner->IsControlledByCurrentPlayer()) {
+            return result;
+        }
+        frame = CurrentFrame;
+    }
+sample:
+    int phase = (frame - DisguiseCreationFrame + 0x40) % 256;
+    if (phase >= 0x40) {
+        if (phase < 0x44) {
+            result |= 2;
+        } else if (phase < 0x4C) {
+            result |= 4;
+        } else if (phase < 0x50) {
+            result |= 2;
+        } else if (phase >= 0x70) {
+            if (phase < 0x74) {
+                result |= 2;
+            } else if (phase < 0x7C) {
+                result |= 4;
+            } else if (phase < 0x80) {
+                result |= 2;
+            }
+        }
+    }
+    return result;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

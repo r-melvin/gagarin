@@ -148500,5 +148500,68 @@
   "name": "Obj_0059C580::FUN_005A0700",
   "status": "partial",
   "pct": 99.3
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6FD570",
+  "sym": "?FUN_006FD570@TechnoClass@@QAEPAVEBolt@@PAVAbstractClass@@@Z",
+  "len": "0xa7",
+  "name": "TechnoClass::FUN_006FD570",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x703B10",
+  "sym": "?FUN_00703B10@TechnoClass@@QAE_NXZ",
+  "len": "0x1a7",
+  "name": "TechnoClass::FUN_00703B10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x703CC0",
+  "sym": "?FUN_00703CC0@TechnoClass@@QAE_NXZ",
+  "len": "0x1a7",
+  "name": "TechnoClass::FUN_00703CC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x703E70",
+  "sym": "?FUN_00703E70@TechnoClass@@QAEHXZ",
+  "len": "0x181",
+  "name": "TechnoClass::FUN_00703E70",
+  "status": "partial",
+  "pct": 93.2
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x704240",
+  "sym": "?FUN_00704240@TechnoClass@@QAEHXZ",
+  "len": "0x103",
+  "name": "TechnoClass::FUN_00704240",
+  "status": "partial",
+  "pct": 93.2
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x70A990",
+  "sym": "?vf_277@TechnoClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
+  "len": "0xce",
+  "name": "TechnoClass::vf_277",
+  "status": "partial",
+  "pct": 90.5
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x70ED80",
+  "sym": "?FUN_0070ED80@TechnoClass@@QAEHH@Z",
+  "len": "0xa3",
+  "name": "TechnoClass::FUN_0070ED80",
+  "status": "partial",
+  "pct": 87.3
  }
 ]

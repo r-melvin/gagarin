@@ -184,9 +184,9 @@ public:
                       WeaponTypeClass* weapon, const CoordStruct* source);
     // Native call contract at 0x6FD460 (Bullet call site 0x46A8CC): thiscall,
     // three stack DWORDs (RET 0x0C). Bullet passes AbstractClass*,
-    // WeaponTypeClass*, CoordStruct*. The caller ignores EAX, so its original
-    // source return type remains unknown.
-    void FUN_006FD460(AbstractClass* target, WeaponTypeClass* weapon,
+    // WeaponTypeClass*, CoordStruct*. The callee returns the new EBolt (0x6FD570 keeps
+    // it in EDI and returns it).
+    class EBolt* FUN_006FD460(AbstractClass* target, WeaponTypeClass* weapon,
                       const CoordStruct* source);
 
     bool FUN_0043B150(); // ECX receiver, AL result, RET; render6D4766
@@ -214,6 +214,17 @@ public:
     PlanningTokenClass* FUN_00705D20();
     // Declaration: GAMEMD 0x6385C0 -- AL result, ordinary thiscall receiver.
     bool TryNextPlanningTokenNode();
+    // FUNCTION: GAMEMD 0x6FD570 -- fires the bolt for the weapon chosen against the target.
+    class EBolt* FUN_006FD570(AbstractClass* target);
+    // FUNCTION: GAMEMD 0x703B10 / 0x703CC0 -- cell flag tests around this object's cell.
+    bool FUN_00703B10();
+    bool FUN_00703CC0();
+    // FUNCTION: GAMEMD 0x703E70 -- counts bridge tiles among three cells around this object's.
+    int FUN_00703E70();
+    // FUNCTION: GAMEMD 0x704240 -- height-step probe toward facing step 3 (2, 1 or 0).
+    int FUN_00704240();
+    // FUNCTION: GAMEMD 0x70ED80 -- adds disguise-blink bits 2 / 4 to the argument by phase.
+    int FUN_0070ED80(int flags);
     // FUNCTION: GAMEMD 0x70FB50 (decl; reloc)
     bool FUN_0070FB50();
     // FUNCTION: GAMEMD 0x7105E0 (decl; reloc)
@@ -486,7 +497,7 @@ public:
     void*              DrainAnim;                // +0x1D4 AnimClass*
     bool               Disguised;                // +0x1D8
     unsigned char      align_1D9[3];             // +0x1D9
-    unsigned int       DisguiseCreationFrame;    // +0x1DC
+    int                DisguiseCreationFrame;    // +0x1DC
     CDTimerClass       InfantryBlinkTimer;       // +0x1E0 (0xC)
     CDTimerClass       DisguiseBlinkTimer;       // +0x1EC (0xC)
     unsigned char      UnlimboingInfantry;       // +0x1F8 (bool)

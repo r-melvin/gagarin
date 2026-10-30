@@ -10932,7 +10932,7 @@
  "?FUN_006F6AC0@TechnoView_004DB260@@QAE_NXZ": "0x006F6AC0",
  "?FUN_006F8DF0@BuildingAView@@QAEXIHH@Z": "0x006F8DF0",
  "?FUN_006FD210@TechnoClass@@QAEXPAVAbstractClass@@HPAVWeaponTypeClass@@PBUCoordStruct@@@Z": "0x006FD210",
- "?FUN_006FD460@TechnoClass@@QAEXPAVAbstractClass@@PAVWeaponTypeClass@@PBUCoordStruct@@@Z": "0x006FD460",
+ "?FUN_006FD460@TechnoClass@@QAEPAVEBolt@@PAVAbstractClass@@PAVWeaponTypeClass@@PBUCoordStruct@@@Z": "0x006FD460",
  "?FUN_006FFBE0@Fwd_00417CA0@@QAEHHHHH@Z": "0x006FFBE0",
  "?FUN_006FFEC0@TechnoClass@@QAEHPAVAbstractClass@@D@Z": "0x006FFEC0",
  "?FUN_006FFEC0@TechnoView_004DDED0@@QAEHPAVAbstractClass@@H@Z": "0x006FFEC0",
