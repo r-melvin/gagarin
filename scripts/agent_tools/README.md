@@ -30,6 +30,7 @@ With no file the `words` rule is disabled and a warning is printed on every run.
 | package | `delivery/pkt.py init/span/score/bind/finish`, or `delivery/branch2packet.py` for a branch-style worker |
 | land | `delivery/pktlint.py`, `delivery/pktrebase.py`, `delivery/batchland.py` / `land/land_bundle.sh`, `land/inc_gates.sh`, `land/verify_safe.sh` |
 | full M3 gate for one worktree | `land/m3_gate.sh WORKTREE [--full]` (JSON summary: matched, partials, differing bytes per section, project bytes, placement.json); `land/placement_diff.py OLD NEW` classifies changed pieces |
+| structure migration (measure only) | `wwstruct/chd_census.py OBJDIR [--base OBJDIR]` (RTTI `??_R3` attributes per object vs retail), `wwstruct/emitter_map.py OBJDIR [--against OBJDIR]` (which object the link keeps per shared COMDAT), `wwstruct/static_init_dump.py OBJDIR [--against OBJDIR]` (`_$E`/`_$S` per TU), `wwstruct/tu_mapping.py` (current file -> target `<Name>.CPP`, report only); tests: `wwstruct/test_wwstruct.py` |
 | lead lists (report only) | `delivery/placement_leads.py`, `delivery/ini_names.py`, `delivery/flagsweep.py`, `delivery/permute_queue.py` |
 
 Skills (`skills/`, installed with `skills/install.sh`): `gagarin-packet-worker`, `gagarin-lander`,
