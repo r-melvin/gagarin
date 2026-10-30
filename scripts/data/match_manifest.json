@@ -145108,7 +145108,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/warhead_type_class_vf13.cpp",
+  "tu": "match/core/warhead_type_index_methods.cpp",
   "addr": "0x75DEC0",
   "sym": "?vf_13@WarheadTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x1b6",
