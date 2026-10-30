@@ -46,7 +46,7 @@ def main(argv):
     files = [a for a in argv if a != "--update"]
     if not files:
         d = os.path.join(REPO, "match", "asm")
-        files = sorted(os.path.join(d, n) for n in os.listdir(d) if n.endswith(".asm"))
+        files = sorted(os.path.join(d, n) for n in os.listdir(d) if n.lower().endswith(".asm"))
     table = json.load(open(TABLE)) if os.path.isfile(TABLE) else {}
     bad = 0
     with tempfile.TemporaryDirectory() as tmp:

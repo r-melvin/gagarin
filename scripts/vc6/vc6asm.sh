@@ -45,12 +45,12 @@ if [[ $ASM = jwasm ]]; then
   for arg in "$@"; do
     case "$arg" in
       /Fo*) OBJ="${arg#/Fo}" ;;
-      *.asm) SRC="$arg" ;;
+      *.asm|*.ASM) SRC="$arg" ;;
       /*|-*) ;;   # ml-only flags (ML_EXTRA_FLAGS is not honoured either)
     esac
   done
   [[ -n "$SRC" ]] || { echo "vc6asm: no .asm source given" >&2; exit 2; }
-  [[ -n "$OBJ" ]] || OBJ="$(basename "${SRC%.asm}").obj"
+  [[ -n "$OBJ" ]] || OBJ="$(basename "${SRC%.*}").obj"
   OBJ="$(cd "$(dirname "$OBJ")" && pwd)/$(basename "$OBJ")"
   # The source path reaches the object (.file record): assemble from its own directory by
   # basename so the object does not depend on the checkout location.
@@ -72,8 +72,7 @@ SRC=""
 for arg in "$@"; do
   case "$arg" in
     /Fo*) OBJ="${arg#/Fo}"; ARGS+=("$arg") ;;
-    /*|-*) ARGS+=("$arg") ;;
-    *.asm)
+    *.asm|*.ASM)   # before /*: an absolute source path also starts with /
       SRC="$arg"
       if [[ -f "$arg" ]]; then
         abs="$(cd "$(dirname "$arg")" && pwd)/$(basename "$arg")"
@@ -91,7 +90,7 @@ for arg in "$@"; do
   esac
 done
 [[ -n "$SRC" ]] || { echo "vc6asm: no .asm source given" >&2; exit 2; }
-[[ -n "$OBJ" ]] || OBJ="$(basename "${SRC%.asm}").obj"
+[[ -n "$OBJ" ]] || OBJ="$(basename "${SRC%.*}").obj"
 
 wine "$ML" $FLAGS ${ML_EXTRA_FLAGS:-} "${ARGS[@]}"
 exec python3 "$REPO/scripts/vc6/comdatize.py" "$OBJ"
