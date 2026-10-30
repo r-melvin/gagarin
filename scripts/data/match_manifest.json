@@ -29283,25 +29283,25 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_add_edit_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4210",
-  "sym": "?AddEdit@MessageList_005D4210@@QAEPAULabel_005D4210@@HHPBGDH@Z",
+  "sym": "?AddEdit@MessageListClass@@QAEPAVTextLabelClass@@HHPBGDH@Z",
   "len": "0x172",
   "name": "MessageListClass::AddEdit",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_draw_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D49A0",
-  "sym": "?Draw@MessageList_005D49A0@@QAEXXZ",
+  "sym": "?Draw@MessageListClass@@QAEXXZ",
   "len": "0xff",
   "name": "MessageListClass::Draw",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_init_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D3A60",
   "sym": "?Init@MessageListClass@@QAEXHHHHHHH_NHHH@Z",
   "len": "0x132",
@@ -29310,7 +29310,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/message_list_class_manage_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4430",
   "sym": "?Manage@MessageListClass@@QAEHXZ",
   "len": "0xdc",
@@ -29319,7 +29319,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4400",
   "sym": "?GetEditBuffer@MessageListClass@@QBEPAGXZ",
   "len": "0xB",
@@ -29328,7 +29328,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4AA0",
   "sym": "?NumMessages@MessageListClass@@QBEHXZ",
   "len": "0x2C",
@@ -29337,7 +29337,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4BF0",
   "sym": "?ComputeY@MessageListClass@@QAEXXZ",
   "len": "0x39",
@@ -29346,7 +29346,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_more_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4AD0",
   "sym": "?SetWidth@MessageListClass@@QAEXH@Z",
   "len": "0x45",
@@ -29355,16 +29355,16 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_class_trim_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4B20",
-  "sym": "?TrimMessage@MessageList_005D4B20@@QAEHPAG0HHH@Z",
+  "sym": "?TrimMessage@MessageListClass@@QAEHPAG0HHH@Z",
   "len": "0xCD",
   "name": "MessageListClass::TrimMessage",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/message_list_remove_edit_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D4390",
   "sym": "?RemoveEdit@MessageListClass@@QAEXXZ",
   "len": "0x62",
@@ -102762,7 +102762,7 @@
   "pct": 2.4
  },
  {
-  "tu": "match/ui/message_list_class_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D39D0",
   "sym": "??0MessageListClass@@QAE@XZ",
   "len": "0x6e",
@@ -102771,7 +102771,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/message_list_class_methods.cpp",
+  "tu": "match/ui/message_list_class_lookup_methods.cpp",
   "addr": "0x5D3A40",
   "sym": "??1MessageListClass@@QAE@XZ",
   "len": "0x1f",

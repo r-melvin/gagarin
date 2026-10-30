@@ -20,19 +20,23 @@ struct MessageListClass
     TextLabelClass* FUN_005D3BA0(const wchar_t*, int, const wchar_t*, int, unsigned int, int, bool);
     // Declaration: GAMEMD 0x5D3FC0 -- four stack arguments.
     int FUN_005D3FC0(const wchar_t*, int, const wchar_t*, int);
-    void Draw(); // Declaration: GAMEMD 0x5D49A0
-    void RemoveEdit(); // Declaration: GAMEMD 0x5D4390
-    wchar_t* GetEditBuffer() const; // Declaration: GAMEMD 0x5D4400
-    int Manage(); // Declaration: GAMEMD 0x5D4430
-    int NumMessages() const; // Declaration: GAMEMD 0x5D4AA0
-    void SetWidth(int width); // Declaration: GAMEMD 0x5D4AD0
-    void ComputeY(); // Declaration: GAMEMD 0x5D4BF0
     // Declaration: GAMEMD 0x5D3F60 -- text of the label whose +0x28 field equals the argument.
     const wchar_t* FUN_005D3F60(int key);
     // Declaration: GAMEMD 0x5D3F90 -- the label whose +0x28 field equals the argument.
     TextLabelClass* FUN_005D3F90(int key);
     // Declaration: GAMEMD 0x5D41E0 -- gives the edit label the focus while editing.
     void FUN_005D41E0();
+    // Declaration: GAMEMD 0x5D4210 -- creates and returns the edit label.
+    TextLabelClass* AddEdit(int a1, int a2, const wchar_t* text, char cursor, int width);
+    // Declaration: GAMEMD 0x5D4390.
+    void RemoveEdit();
+    wchar_t* GetEditBuffer() const; // Declaration: GAMEMD 0x5D4400
+    int Manage(); // Declaration: GAMEMD 0x5D4430
+    void Draw(); // Declaration: GAMEMD 0x5D49A0
+    int NumMessages() const; // Declaration: GAMEMD 0x5D4AA0
+    void SetWidth(int width); // Declaration: GAMEMD 0x5D4AD0
+    int TrimMessage(wchar_t* dest, wchar_t* src, int minLen, int maxLen, int fromEnd); // 0x5D4B20
+    void ComputeY(); // Declaration: GAMEMD 0x5D4BF0
 
     TextLabelClass* MessageList;
     int MessagePos_X;

@@ -19,6 +19,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "message_list_class_methods.h"
+#include "input_controls/ui_common.h"
 
 // 8-byte point returned through a hidden pointer (needs the user-declared
 // constructor — see the "Struct returns" rule). The (x, y) constructor is what
@@ -46,17 +48,6 @@ struct ColorScheme_005D49A0;
 // GLOBAL: GAMEMD 0xB054D4 — ColorScheme::Array.Items.
 extern ColorScheme_005D49A0** DAT_00B054D4;
 
-// The active font: only its pixel-width query is used.
-struct Font_005D49A0
-{
-    // FUNCTION: GAMEMD 0x433ED0 (decl; reloc) — pixel width of the text
-    // (`this` unused by the callee, but the caller loads the font into ECX).
-    int TextWidth(const wchar_t* text, int flag);
-};
-// FUNCTION: GAMEMD 0x4A60D0 (decl; reloc) — the font for a set of print
-// flags (flags in ECX).
-Font_005D49A0* FUN_004A60D0(int flags);
-
 // Surface: only the rect query slot.
 struct SurfaceVtbl_005D49A0;
 struct Surface_005D49A0
@@ -70,26 +61,6 @@ struct SurfaceVtbl_005D49A0
     Fn78_005D49A0 GetRect;        // +0x0078
 };
 GG_STATIC_ASSERT(offsetof(SurfaceVtbl_005D49A0, GetRect) == 0x78);
-// GLOBAL: GAMEMD 0x887314 — DSurface::Temp.
-extern Surface_005D49A0* DAT_00887314;
-
-// WWMouseClass: hide (+0x0C) and show (+0x10).
-struct MouseVtbl_005D49A0;
-struct Mouse_005D49A0
-{
-    MouseVtbl_005D49A0* Vtbl;     // +0x0000
-};
-typedef void (Mouse_005D49A0::*FnMouse_005D49A0)();
-struct MouseVtbl_005D49A0
-{
-    char _pad000[0xC];            // +0x0000
-    FnMouse_005D49A0 At_0C;       // +0x000C
-    FnMouse_005D49A0 At_10;       // +0x0010
-};
-GG_STATIC_ASSERT(offsetof(MouseVtbl_005D49A0, At_0C) == 0xC);
-GG_STATIC_ASSERT(offsetof(MouseVtbl_005D49A0, At_10) == 0x10);
-// GLOBAL: GAMEMD 0x887640 — WWMouseClass::Instance.
-extern Mouse_005D49A0* DAT_00887640;
 
 // FUNCTION: GAMEMD 0x4A61C0 (decl; reloc) — print `text` on the surface
 // inside `clip` at `pos` in `scheme`; the returned point comes back through
@@ -134,28 +105,5 @@ GG_STATIC_ASSERT(offsetof(LabelVtbl_005D49A0, At_2C) == 0x2C);
 GG_STATIC_ASSERT(offsetof(LabelVtbl_005D49A0, At_58) == 0x58);
 GG_STATIC_ASSERT(offsetof(LabelVtbl_005D49A0, At_6C) == 0x6C);
 
-struct MessageList_005D49A0
-{
-    Label_005D49A0* MessageList;  // +0x0000  list head
-    char _pad004[0x10 - 0x04];    // +0x0004
-    int  MaxCharacters;           // +0x0010
-    char _pad014[0x19 - 0x14];    // +0x0014
-    unsigned char IsEdit;         // +0x0019
-    char _pad01A[0x24 - 0x1A];    // +0x001A
-    Label_005D49A0* EditLabel;    // +0x0024
-    char _pad028[0x2B0 - 0x28];   // +0x0028
-    int  EditCurrentPos;          // +0x02B0
-    int  EditInitialPos;          // +0x02B4
-    wchar_t EditCursor;           // +0x02B8
-
-    // FUNCTION: GAMEMD 0x5D49A0 — MessageListClass::Draw.
-    void Draw();
-};
-GG_STATIC_ASSERT(offsetof(MessageList_005D49A0, MaxCharacters) == 0x10);
-GG_STATIC_ASSERT(offsetof(MessageList_005D49A0, IsEdit) == 0x19);
-GG_STATIC_ASSERT(offsetof(MessageList_005D49A0, EditLabel) == 0x24);
-GG_STATIC_ASSERT(offsetof(MessageList_005D49A0, EditCurrentPos) == 0x2B0);
-GG_STATIC_ASSERT(offsetof(MessageList_005D49A0, EditInitialPos) == 0x2B4);
-GG_STATIC_ASSERT(offsetof(MessageList_005D49A0, EditCursor) == 0x2B8);
 
 #endif  // GG_MATCH_UI_MESSAGE_LIST_CLASS_DRAW_METHODS_H

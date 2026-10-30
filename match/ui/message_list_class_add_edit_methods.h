@@ -28,6 +28,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "message_list_class_methods.h"
 
 extern "C" {
 // LIBRARY: GAMEMD 0x7CA489 (decl; reloc) — CRT wcscpy.
@@ -87,53 +88,5 @@ GG_STATIC_ASSERT(offsetof(Label_005D4210, Y)     == 0x10);
 GG_STATIC_ASSERT(offsetof(Label_005D4210, Text)  == 0x30);
 GG_STATIC_ASSERT(offsetof(Label_005D4210, At_38) == 0x38);
 
-struct MessageList_005D4210
-{
-    Label_005D4210* MessageList;               // +0x0000  list head
-    int             MessagePos_X;              // +0x0004
-    int             MessagePos_Y;              // +0x0008
-    int             MaxMessageCount;           // +0x000C
-    int             MaxCharacters;             // +0x0010
-    int             Height;                    // +0x0014
-    unsigned char   EnableOverflow;            // +0x0018
-    unsigned char   IsEdit;                    // +0x0019
-    unsigned char   AdjustEdit;                // +0x001A
-    char            _pad01B[1];                // +0x001B
-    int             EditX;                     // +0x001C
-    int             EditY;                     // +0x0020
-    Label_005D4210* EditLabel;                 // +0x0024
-    wchar_t         EditBuffer[162];           // +0x0028
-    wchar_t         OverflowBuffer[162];       // +0x016C
-    int             EditCurrentPos;            // +0x02B0
-    int             EditInitialPos;            // +0x02B4
-    wchar_t         CursorCharacter;           // +0x02B8
-    char            _pad2BA[2];                // +0x02BA
-    int             OverflowStart;             // +0x02BC
-    int             OverflowEnd;               // +0x02C0
-    int             Width;                     // +0x02C4
-    wchar_t         MessageBuffers[14][162];   // +0x02C8
-    wchar_t         BufferAvail[14];           // +0x1480
-
-    // FUNCTION: GAMEMD 0x5D4210 — MessageListClass::AddEdit.
-    Label_005D4210* AddEdit(int a1, int a2, const wchar_t* text, char cursor,
-                            int width);
-};
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, MessagePos_Y)    == 0x008);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, MaxMessageCount) == 0x00C);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, Height)          == 0x014);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, IsEdit)          == 0x019);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, AdjustEdit)      == 0x01A);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, EditX)           == 0x01C);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, EditY)           == 0x020);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, EditLabel)       == 0x024);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, EditBuffer)      == 0x028);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, OverflowBuffer)  == 0x16C);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, EditCurrentPos)  == 0x2B0);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, EditInitialPos)  == 0x2B4);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, CursorCharacter) == 0x2B8);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, Width)           == 0x2C4);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, MessageBuffers)  == 0x2C8);
-GG_STATIC_ASSERT(offsetof(MessageList_005D4210, BufferAvail)     == 0x1480);
-GG_STATIC_ASSERT(sizeof(MessageList_005D4210) == 0x149C);
 
 #endif  // GG_MATCH_UI_MESSAGE_LIST_CLASS_ADD_EDIT_METHODS_H

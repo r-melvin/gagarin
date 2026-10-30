@@ -13,6 +13,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "message_list_class_methods.h"
 
 // LIBRARY: GAMEMD 0x7CA405 (decl; reloc) — CRT wcslen.
 extern "C" unsigned int __cdecl wcslen(const wchar_t* s);
@@ -23,12 +24,5 @@ extern "C" void* __cdecl memcpy(void* destination, const void* source, unsigned 
 // fixed-shape copy above it is the /Oi intrinsic).
 extern "C" void* __cdecl memmove(void* destination, const void* source, unsigned int count);
 
-// MessageListClass — no member is touched by TrimMessage, so only the method
-// is modelled here; the layout lives in match/ui/message_list_class_methods.h.
-struct MessageList_005D4B20
-{
-    // FUNCTION: GAMEMD 0x5D4B20 — MessageListClass::TrimMessage.
-    int TrimMessage(wchar_t* dest, wchar_t* src, int minLen, int maxLen, int fromEnd);
-};
 
 #endif  // GG_MATCH_UI_MESSAGE_LIST_CLASS_TRIM_METHODS_H
