@@ -2238,11 +2238,11 @@
  {
   "tu": "match/combat/scratch_buffer_vector_methods.cpp",
   "addr": "0x6285A0",
-  "sym": "?ID@TripleDynVector@@UBEHABUTripleEntry@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@VHSVClass@@@@UBEHABVHSVClass@@@Z",
   "len": "0x43",
-  "name": "TripleDynVector::ID",
+  "name": "DynamicVectorClass<HSVClass>::FindItemIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/scratch_buffer_vector_methods.cpp",
@@ -2283,11 +2283,11 @@
  {
   "tu": "match/combat/scratch_buffer_vector_methods.cpp",
   "addr": "0x628DF0",
-  "sym": "??0TripleVector@@QAE@IPBUTripleEntry@@@Z",
+  "sym": "??0?$VectorClass@VHSVClass@@@@QAE@HPAVHSVClass@@@Z",
   "len": "0x88",
-  "name": "TripleVector::ctor",
+  "name": "VectorClass<HSVClass>::VectorClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/scratch_buffer_vector_methods.cpp",
@@ -28079,11 +28079,11 @@
  {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x68C9C0",
-  "sym": "?FindByName@ColorScheme@@SIHPBDPAUHSVClass@@PAUPaletteClass@@2H@Z",
+  "sym": "?FindByName@ColorScheme@@SIHPBDPAVHSVClass@@PAUPaletteClass@@2H@Z",
   "len": "0x88",
   "name": "ColorScheme::FindByName",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/color_scheme_iterator_methods.cpp",
@@ -59764,11 +59764,11 @@
  {
   "tu": "match/platform/tu196_random_straw.cpp",
   "addr": "0x6613A0",
-  "sym": "?FUN_006613A0@RGBClass@@QBE?AUHSVClass@@XZ",
+  "sym": "?FUN_006613A0@RGBClass@@QBE?AVHSVClass@@XZ",
   "len": "0x141",
   "name": "RGBClass::FUN_006613A0",
-  "status": "partial",
-  "pct": 97.5
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/platform/tu196_random_straw.cpp",
@@ -79145,7 +79145,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x627DB0",
-  "sym": "?Slot5@?$DynamicVectorClass@UHSVClass@@@@UBEHPAUHSVClass@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@VHSVClass@@@@UBEHPAVHSVClass@@@Z",
   "len": "0x23",
   "name": "DynamicVectorClass<HSVClass>::Slot5",
   "status": "matched",
@@ -79154,7 +79154,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x627DE0",
-  "sym": "?Slot6@?$VectorClass@UHSVClass@@@@UBE?AUHSVClass@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VHSVClass@@@@UBE?AVHSVClass@@H@Z",
   "len": "0x25",
   "name": "VectorClass<HSVClass>::Slot6",
   "status": "matched",
@@ -79163,7 +79163,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6281F0",
-  "sym": "??8?$VectorClass@UHSVClass@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VHSVClass@@@@UBE_NABV0@@Z",
   "len": "0x4d",
   "name": "VectorClass<HSVClass>::operator==",
   "status": "matched",
@@ -79172,7 +79172,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6282E0",
-  "sym": "?SetCapacity@?$VectorClass@UHSVClass@@@@UAE_NHPAUHSVClass@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VHSVClass@@@@UAE_NHPAVHSVClass@@@Z",
   "len": "0xf2",
   "name": "VectorClass<HSVClass>::SetCapacity",
   "status": "matched",
@@ -79181,7 +79181,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x628410",
-  "sym": "?FindItemIndex@?$VectorClass@UHSVClass@@@@UBEHABUHSVClass@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VHSVClass@@@@UBEHABVHSVClass@@@Z",
   "len": "0x53",
   "name": "VectorClass<HSVClass>::FindItemIndex",
   "status": "matched",
@@ -79190,7 +79190,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x628470",
-  "sym": "?Slot5@?$VectorClass@UHSVClass@@@@UBEHPAUHSVClass@@@Z",
+  "sym": "?Slot5@?$VectorClass@VHSVClass@@@@UBEHPAVHSVClass@@@Z",
   "len": "0x23",
   "name": "VectorClass<HSVClass>::Slot5",
   "status": "matched",
@@ -79199,7 +79199,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6284A0",
-  "sym": "?SetCapacity@?$DynamicVectorClass@UHSVClass@@@@UAE_NHPAUHSVClass@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@VHSVClass@@@@UAE_NHPAVHSVClass@@@Z",
   "len": "0xf8",
   "name": "DynamicVectorClass<HSVClass>::SetCapacity",
   "status": "matched",
@@ -95626,9 +95626,9 @@
  {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x68C710",
-  "sym": "??0ColorScheme@@QAE@PBDPAUHSVClass@@PAUPaletteClass@@2H_N@Z",
+  "sym": "??0ColorScheme@@QAE@PBDPAVHSVClass@@PAUPaletteClass@@2H_N@Z",
   "len": "0x14f",
-  "name": "??0ColorScheme@@QAE@PBDPAUHSVClass@@PAUPaletteClass@@2H_N@Z",
+  "name": "??0ColorScheme@@QAE@PBDPAVHSVClass@@PAUPaletteClass@@2H_N@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -97202,7 +97202,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x628240",
-  "sym": "??0?$DynamicVectorClass@UHSVClass@@@@QAE@HPAUHSVClass@@@Z",
+  "sym": "??0?$DynamicVectorClass@VHSVClass@@@@QAE@HPAVHSVClass@@@Z",
   "len": "0x94",
   "name": "DynamicVectorClass<HSVClass>::DynamicVectorClass",
   "status": "matched",

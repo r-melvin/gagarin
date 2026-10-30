@@ -23,7 +23,7 @@
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
-struct HSVClass;
+class HSVClass;
 // Assignment at 0x6260D0 copies 0xC0 dwords; no vptr is accessed.
 struct PaletteClass
 {

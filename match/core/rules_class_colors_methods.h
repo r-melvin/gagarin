@@ -29,7 +29,7 @@ GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);
 // FUNCTION: GAMEMD 0x626AB0 (decl; reloc) -- register a named colour.
 void FUN_00626AB0(const char* name, ColorStruct* color);
 
-struct HSVClass;
+class HSVClass;
 struct PaletteClass;
 
 struct ColorScheme

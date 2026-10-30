@@ -9,7 +9,7 @@
 #define GG_MATCH_LAYOUT_RGB_CLASS_H
 #include "../_rt/gg_static_assert.h"
 #include <stddef.h>
-struct HSVClass;
+#include "hsv_class.h"
 struct IStream_004C6320;
 class RGBClass
 {

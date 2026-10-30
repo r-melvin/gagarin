@@ -392,7 +392,7 @@ extern "C" void __cdecl gg_free(void*);
 
 
 
-struct HSVClass { unsigned char unknown_00; unsigned char unknown_01; unsigned char unknown_02; HSVClass() : unknown_00(0), unknown_01(0), unknown_02(0) {} bool __fastcall operator==(const HSVClass& o) const; bool operator!=(const HSVClass& o) const; };
+#include "../_layout/hsv_class.h"
 
 template class DynamicVectorClass<HSVClass>;
 

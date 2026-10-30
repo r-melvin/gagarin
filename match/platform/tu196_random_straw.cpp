@@ -242,15 +242,7 @@ extern ColorRGB_00661350 DAT_00A83CD9;
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct HSVClass
-{
-    unsigned char Hue;          // +0x00
-    unsigned char Saturation;   // +0x01
-    unsigned char Value;        // +0x02
-};
-GG_STATIC_ASSERT(offsetof(HSVClass, Hue) == 0);
-GG_STATIC_ASSERT(offsetof(HSVClass, Saturation) == 1);
-GG_STATIC_ASSERT(offsetof(HSVClass, Value) == 2);
+#include "../_layout/hsv_class.h"
 
 #include "../_layout/rgb_class.h"
 
@@ -376,10 +368,10 @@ int ColorRGB_00661350::Difference(const ColorRGB_00661350& other) const
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6613A0
-// PARTIAL (97.5%). Saturation is cleared after the channel minimum is found,
-// not at its declaration; that order gives retail's register assignment. The
-// remaining delta is the stack slot of the result temporary (retail [ESP+0x1C],
-// ours [ESP+0x10]).
+// Saturation is cleared after the channel minimum is found, not at its
+// declaration; that order gives retail's register assignment. The result
+// temporary's stack slot (retail [ESP+0x1C]) comes from the canonical
+// HSVClass, whose constructor zeroes the three bytes.
 HSVClass RGBClass::FUN_006613A0() const
 {
     HSVClass hsv;

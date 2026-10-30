@@ -28,17 +28,12 @@ bool ScratchEntry::operator!=(ScratchEntry const& other) const
 
 // FUNCTION: GAMEMD 0x6285A0
 //
-// Find an entry in the growable 3-byte-element vector and return its index, or
-// -1 when it is not there. The bound is the active count at +0x10 rather than
-// the capacity at +0x08, which is what distinguishes this search from the one
-// at 0x628A70; the stride constant `ADD EBX,0x3` is the element size.
-int TripleDynVector::ID(TripleEntry const& object) const
-{
-    for (int index = 0; index < Count; index++) {
-        if (Vector[index] == object) return index;
-    }
-    return -1;
-}
+// DynamicVectorClass<HSVClass>::FindItemIndex: find an entry in the growable 3-byte-element
+// vector and return its index, or -1 when it is not there. The bound is the active count
+// at +0x10 rather than the capacity at +0x08, which is what distinguishes this search from
+// the one at 0x628A70; the stride constant `ADD EBX,0x3` is the element size. The explicit
+// instantiation also emits the other members, which are not claimed here.
+template class DynamicVectorClass<HSVClass>;
 
 // FUNCTION: GAMEMD 0x628A70
 //
@@ -112,23 +107,12 @@ int ScratchDynVector::ID(ScratchEntry const& object) const
 
 // FUNCTION: GAMEMD 0x628DF0
 //
-// Construct the fixed-capacity vector of 3-byte entries over storage the caller
-// supplies or over storage of its own. The element constructor is small enough
-// for VC6 to inline into the array-new loop, which is retail's three byte
-// stores from a zeroed register followed by `ADD EAX,0x3`. A failed allocation
-// still marks the vector as owning its storage.
-TripleVector::TripleVector(unsigned int size, TripleEntry const* array)
-    : Vector(0), Capacity(size), IsValid(true), IsAllocated(false)
-{
-    if (size) {
-        if (array) {
-            Vector = new((void*)array) TripleEntry[size];
-        } else {
-            Vector = new TripleEntry[size];
-            IsAllocated = true;
-        }
-    }
-}
+// VectorClass<HSVClass>::VectorClass: construct the fixed-capacity vector of 3-byte entries
+// over storage the caller supplies or over storage of its own. The element constructor is
+// small enough for VC6 to inline into the array-new loop, which is retail's three byte
+// stores from a zeroed register followed by `ADD EAX,0x3`. A failed allocation still marks
+// the vector as owning its storage.
+template class VectorClass<HSVClass>;
 
 // FUNCTION: GAMEMD 0x628ED0
 //

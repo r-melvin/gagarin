@@ -3433,7 +3433,7 @@
   "addr": "0x6613A0",
   "name": "RGBClass::FUN_006613A0",
   "tu": "match/platform/tu196_random_straw.cpp",
-  "sym": "?FUN_006613A0@RGBClass@@QBE?AUHSVClass@@XZ",
+  "sym": "?FUN_006613A0@RGBClass@@QBE?AVHSVClass@@XZ",
   "len": "0x141",
   "manifest_pct": 97.5,
   "pct": 97.5,

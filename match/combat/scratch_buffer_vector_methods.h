@@ -14,7 +14,7 @@
 //                    search loops, and `EAX<<6 + EAX` then `<<2` (i.e.
 //                    n * 65 * 4) for the allocation size and the element
 //                    address.
-//   TripleEntry   -- 3 bytes: `ADD EBX,0x3` in the search loop and
+//   HSVClass      -- 3 bytes: `ADD EBX,0x3` in the search loop and
 //                    `LEA EAX,[ESI + ESI*2]` for the allocation size.
 //
 // Container layout, confirmed member by member from the disassembly:
@@ -40,13 +40,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// The ordinary array form has to be declared alongside the placement forms or
-// VC6 hides it and the allocating arm fails to compile.
-void* __cdecl operator new(size_t);
-void* __cdecl operator new[](size_t);
-inline void* operator new(size_t, void* where) { return where; }
-inline void* operator new[](size_t, void* where) { return where; }
+#include "../_layout/hsv_class.h"
+#include "../core/vector_class_operations.h"
 
 // ---------------------------------------------------------------------------
 // ScratchEntry: the 0x104-byte element.
@@ -90,21 +85,6 @@ struct ScratchEntry
 };
 GG_STATIC_ASSERT(offsetof(ScratchEntry, Value) == 0x100);
 GG_STATIC_ASSERT(sizeof(ScratchEntry) == 0x104);
-
-// ---------------------------------------------------------------------------
-// TripleEntry: the 3-byte element. Its constructor is inlined into the
-// array-new loop (three byte stores from a zeroed register, in member order,
-// then `ADD EAX,0x3`), so it is defined here rather than declared.
-// ---------------------------------------------------------------------------
-struct TripleEntry
-{
-    char A, B, C;
-
-    TripleEntry() { A = 0; B = 0; C = 0; }
-    // FUNCTION: GAMEMD 0x5175D0 (decl; reloc) -- __fastcall comparison.
-    bool __fastcall operator==(TripleEntry const& other) const;
-};
-GG_STATIC_ASSERT(sizeof(TripleEntry) == 3);
 
 // ---------------------------------------------------------------------------
 // VectorClass<ScratchEntry>. Its constructor is emitted out of line at
@@ -189,44 +169,5 @@ public:
 GG_STATIC_ASSERT(offsetof(ScratchDynVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(ScratchDynVector, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(ScratchDynVector) == 0x18);
-
-// ---------------------------------------------------------------------------
-// VectorClass<TripleEntry> and its growable derivative. Only the base's
-// constructor and the derivative's search are in this address run.
-// ---------------------------------------------------------------------------
-class TripleVector
-{
-public:
-    // VTABLE: GAMEMD 0x7EF7F0
-    virtual ~TripleVector();                                              // 0x00
-    virtual bool operator==(TripleVector const& other) const;             // 0x04
-    virtual bool Resize(int capacity, TripleEntry const* array);          // 0x08
-    virtual void Clear();                                                 // 0x0C
-    virtual int  ID(TripleEntry const& object) const;                     // 0x10
-
-    TripleEntry* Vector;       // +0x04
-    int          Capacity;    // +0x08
-    bool         IsValid;      // +0x0C
-    bool         IsAllocated;  // +0x0D
-
-    // FUNCTION: GAMEMD 0x628DF0
-    TripleVector(unsigned int size, TripleEntry const* array);
-};
-GG_STATIC_ASSERT(offsetof(TripleVector, Vector) == 0x04);
-GG_STATIC_ASSERT(offsetof(TripleVector, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(TripleVector, IsValid) == 0x0C);
-GG_STATIC_ASSERT(offsetof(TripleVector, IsAllocated) == 0x0D);
-
-class TripleDynVector : public TripleVector
-{
-public:
-    int Count;  // +0x10
-    int CapacityIncrement;   // +0x14
-
-    // FUNCTION: GAMEMD 0x6285A0
-    int ID(TripleEntry const& object) const;
-};
-GG_STATIC_ASSERT(offsetof(TripleDynVector, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(TripleDynVector, CapacityIncrement) == 0x14);
 
 #endif  // GG_MATCH_COMBAT_SCRATCH_BUFFER_VECTOR_METHODS_H
