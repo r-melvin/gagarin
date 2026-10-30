@@ -150,6 +150,8 @@ struct Map_0087F7E8
     DynamicVectorClass<Point2D>* FUN_00656580(BuildingTypeClass* type);
     // FUNCTION: GAMEMD 0x655740 (decl; reloc) -- three stack arguments.
     void FUN_00655740(BuildingClass* building, int x, int y);
+    // FUNCTION: GAMEMD 0x568350 (decl; reloc) -- is the coordinate inside the map; CoordStruct by reference.
+    bool FUN_00568350(const CoordStruct& coord);
     // FUNCTION: GAMEMD 0x6562D0 (decl; reloc) -- one stack argument.
     void FUN_006562D0(Point2D* point);
 };

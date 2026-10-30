@@ -147505,5 +147505,14 @@
   "name": "FootClass::vf_209",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Infantry.cpp",
+  "addr": "0x520260",
+  "sym": "?FUN_00520260@InfantryClass@@QAE_NXZ",
+  "len": "0x8d",
+  "name": "InfantryClass::FUN_00520260",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

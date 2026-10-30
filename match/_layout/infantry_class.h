@@ -86,6 +86,8 @@ public:
     // Non-virtual members (bodies in match/combat/Infantry.cpp).
     // FUNCTION: GAMEMD 0x522510 -- true for the four SequenceAnim values 0x1B-0x1E.
     int FUN_00522510();
+    // FUNCTION: GAMEMD 0x520260 -- off-map while in the playfield: flag the team, run slots 232 and 62.
+    bool FUN_00520260();
     // FUNCTION: GAMEMD 0x522C30 -- no use of this; the stack argument is a sequence index.
     bool FUN_00522C30(int sequence);
     // FUNCTION: GAMEMD 0x522C60 -- no use of this; the stack argument is a sequence index.

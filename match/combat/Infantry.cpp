@@ -61,6 +61,8 @@ extern double DAT_00A8F238;
 #include "../_layout/building_class.h"
 #include "../_layout/cell_class.h"
 #include "../core/rules_class.h"
+#include "../_layout/map_0087f7e8.h"
+#include "../_layout/team_class.h"
 
 // Offsets this TU relies on, each read from an instruction in the matched bodies.
 GG_STATIC_ASSERT(offsetof(CellClass, OccupationFlags)    == 0x124);  // 0x5217C0
@@ -296,6 +298,23 @@ int InfantryClass::vf_139()
 int Obj_0051FAF0::FUN_0051FAF0() const
 {
     return unknown_6C0;
+}
+
+// FUNCTION: GAMEMD 0x520260
+bool InfantryClass::FUN_00520260()
+{
+    if (this->Team && this->IsInPlayfield) {
+        this->Team->Flag82 = true;
+    }
+    if (!this->Team && vf_97() == 5) {
+        CoordStruct where = this->Location;
+        if (!DAT_0087F7E8.FUN_00568350(where)) {
+            vf_232();
+            vf_62();
+            return true;
+        }
+    }
+    return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
