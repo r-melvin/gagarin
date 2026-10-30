@@ -74,6 +74,12 @@ partial scores that drift from the compiled score.
 and `python3 $DL/permute_queue.py` (ranked permuter queue) run on the new tip; `dispatch.py`
 refreshes the worklist and cluster briefs for the orchestrator.
 
+## One-command gate
+
+`land/m3_gate.sh <worktree> [--full]` runs prebuild, link_diag and the gate4 steps with the M3 link flags and prints a JSON summary
+(`m3_gate_summary.json`); do not write a per-lander wrapper. `land/placement_diff.py OLD/placement.json NEW/placement.json`
+classifies changed pieces and gives project bytes without ??_R3. Wait for the gate with its exit status or `$!`, never `pgrep -f`.
+
 ## What stays manual
 
 Judgment items the tools report but never decide: which view of a global/class is

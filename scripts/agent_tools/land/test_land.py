@@ -587,5 +587,54 @@ class BindingCorrections(unittest.TestCase):
             self.assertTrue(r.binding_conflicts)      # no corrections file: still refused
 
 
+class PlacementDiff(unittest.TestCase):
+    def test_classes_and_r3_exclusion(self):
+        import placement_diff as P
+        old = {(".text", 0x1000): (16, "project", "?a@@YAXXZ"),
+               (".text", 0x1010): (16, "project", "?b@@YAXXZ"),
+               (".text", 0x1020): (16, "project", "?c@@YAXXZ"),
+               (".text", 0x1030): (16, "project", "?d@@YAXXZ"),
+               (".rdata", 0x2000): (16, "project", "??_R3X@@8")}
+        new = {(".text", 0x1000): (16, "project", "?a2@@YAXXZ"),      # rename
+               (".text", 0x1010): (32, "project", "?b@@YAXXZ"),      # size
+               (".text", 0x1030): (16, "library", "?d@@YAXXZ"),     # origin
+               (".text", 0x1040): (8, "project", "?e@@YAXXZ"),       # fill->project
+               (".rdata", 0x2000): (16, "project", "??_R3X@@8")}
+        r = P.summarize(old, new)
+        self.assertEqual({c: s["pieces"] for c, s in r["classes"].items()},
+                         {"rename": 1, "size": 1, "origin": 1, "fill->project": 1, "project->fill": 1})
+        self.assertEqual(r["classes"]["size"]["bytes"], 16)
+        self.assertEqual(r["project_bytes"], dict(old=80, new=72, delta=-8))
+        self.assertEqual(r["project_bytes_excl_r3"]["old"], 64)
+
+    def test_r3_piece_change_is_tagged(self):
+        import placement_diff as P
+        r = P.summarize({(".rdata", 0x10): (16, "project", "??_R3A@@8")}, {})
+        self.assertEqual(r["classes"]["project->fill"]["r3_pieces"], 1)
+        self.assertEqual(r["project_bytes_excl_r3"], dict(old=0, new=0, delta=0))
+
+
+class M3GateSummary(unittest.TestCase):
+    def test_summary_from_logs(self):
+        import m3_gate_summary as S
+        d = tempfile.mkdtemp()
+        os.makedirs(os.path.join(d, "gate-link-m3"))
+        open(os.path.join(d, "steps.tsv"), "w").write("verify\t0\nlink_m3\t0\n")
+        open(os.path.join(d, "gate-verify.log"), "w").write("x\n=== 100 matched (100%), 7 documented partials, 0 regressed, across 3 TUs ===\n")
+        json.dump({"identical": False, "origins": {".text": {"project": 50, "library": 5}, ".data": {"project": 10, "library": 0}},
+                   "sections": {".text": {"diff_bytes": 3}, ".data": {"diff_bytes": 0}}}, open(os.path.join(d, "gate-link-m3", "compare.json"), "w"))
+        json.dump({"pieces": [[".text", 1, 50, "project", "?f"], [".rdata", 2, 10, "project", "??_R3A@@8"]]},
+                  open(os.path.join(d, "gate-link-m3", "placement.json"), "w"))
+        open(os.path.join(d, "gate-dup.log"), "w").write("5 addresses with bodies, 0 problems\n")
+        s = S.summarize(d)
+        self.assertEqual((s["matched"], s["partials"], s["regressed"]), (100, 7, 0))
+        self.assertEqual(s["differing_bytes"], {".text": 3, ".data": 0})
+        self.assertEqual((s["project_bytes"], s["project_bytes_excl_r3"]), (60, 50))
+        self.assertTrue(s["ok"])
+        self.assertTrue(s["placement_json"].endswith("placement.json"))
+        open(os.path.join(d, "steps.tsv"), "a").write("compile\t1\n")
+        self.assertFalse(S.summarize(d)["ok"])
+
+
 if __name__ == "__main__":
     unittest.main()

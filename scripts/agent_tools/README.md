@@ -29,11 +29,16 @@ With no file the `words` rule is disabled and a warning is printed on every run.
 | layout | `classcheck.py CLASS` (header vs binary, conflicting views) |
 | package | `delivery/pkt.py init/span/score/bind/finish`, or `delivery/branch2packet.py` for a branch-style worker |
 | land | `delivery/pktlint.py`, `delivery/pktrebase.py`, `delivery/batchland.py` / `land/land_bundle.sh`, `land/inc_gates.sh`, `land/verify_safe.sh` |
+| full M3 gate for one worktree | `land/m3_gate.sh WORKTREE [--full]` (JSON summary: matched, partials, differing bytes per section, project bytes, placement.json); `land/placement_diff.py OLD NEW` classifies changed pieces |
 | lead lists (report only) | `delivery/placement_leads.py`, `delivery/ini_names.py`, `delivery/flagsweep.py`, `delivery/permute_queue.py` |
 
 Skills (`skills/`, installed with `skills/install.sh`): `gagarin-packet-worker`, `gagarin-lander`,
 `gagarin-orchestrator`; the agent templates are in `agent_defs/`. The install script symlinks into
 `~/.claude/skills` and `~/.claude/agents`; copies already there are left alone.
+
+Background shells. Never wait with `pgrep -f <pattern>` when your own command line contains the
+pattern: it matches the waiting shell itself and the wait never ends. Wait on the job's exit status
+(`m3_gate.sh` exits 0 iff every step passed) or on the PID you saved from `$!`.
 
 Tests: `delivery` (`python3 -m unittest tests.test_delivery`), `land` (`python3 -m unittest test_land`,
 `python3 selftest.py`), `trivgen` (`python3 -m unittest test_trivgen`), all from their own directory.
