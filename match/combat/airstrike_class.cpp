@@ -7,7 +7,7 @@
 // and 23, in retail address order. AirstrikeClass is declared in
 // airstrike_class_methods.h.
 
-#include <new.h>
+#include "../FUNCTION.H"
 #include "airstrike_class_methods.h"
 #include "../core/vector_class_operations.h"
 #include "../core/frame_counter.h"

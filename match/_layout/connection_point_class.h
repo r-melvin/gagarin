@@ -14,6 +14,10 @@
 #include <ocidl.h>
 #include "../core/vector_class.h"
 
+// Element comparison for the vector template's out-of-line members (never called by the matched code).
+inline bool operator==(const tagCONNECTDATA& a, const tagCONNECTDATA& b) { return a.pUnk == b.pUnk && a.dwCookie == b.dwCookie; }
+inline bool operator!=(const tagCONNECTDATA& a, const tagCONNECTDATA& b) { return !(a == b); }
+
 class ConnectionPointClass : public IConnectionPoint
 {
 public:

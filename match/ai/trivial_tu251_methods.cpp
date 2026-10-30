@@ -4,6 +4,7 @@
 //
 //   Ordered ascending by retail address.
 
+#include "../FUNCTION.H"
 #include "trivial_tu251_methods.h"
 #include "../core/abstract_registry.h"
 #include "trigger_type_class_methods.h"
@@ -11,8 +12,6 @@
 #include "trigger_type_class_flags_methods.h"
 #include "trigger_type_class_load_methods.h"
 #include "trigger_type_class_save_list_methods.h"
-#include "../_layout/swizzle_manager_class.h"
-#include <new.h>
 extern "C" int __cdecl _strcmpi(const char*, const char*);
 
 struct TriggerTypeCtorVector

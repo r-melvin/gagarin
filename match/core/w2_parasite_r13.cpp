@@ -5,12 +5,8 @@
 //   Address index: 0x629210 / 0x6292B0 constructors, 0x62AF70 scalar deleting destructor, 0x629390 ParasiteClass::ParasiteClass(AbstractNoInit const&), 0x6294D0 ParasiteClass::vf_13.
 //   The class is declared in _layout/parasite_class.h with only the members these bodies touch.
 
-#include <stddef.h>
-#include "../_layout/abstract_class.h"
-#include "../_layout/parasite_class.h"
+#include "../FUNCTION.H"
 #include "vector_class_operations.h"
-#include <new.h>
-#include "../_layout/swizzle_manager_class.h"
 
 // FUNCTION: GAMEMD 0x629390
 ParasiteClass::ParasiteClass(const AbstractNoInit& noInit) : AbstractClass(noInit), TimerA(0), TimerB(0)

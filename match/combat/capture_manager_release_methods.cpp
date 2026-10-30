@@ -3,7 +3,7 @@
 // Complete retail body 0x4729C0..0x472A75 (0xB6), REA evidence
 // ev_1a5aba8e115edbbdf23b9901dd549edebbe82f9b5166cd0bd9651c8e7b3e0918.
 //   /Ob2 inlines the destructor into the scalar deleting destructor 0x4729C0.
-#include "../_layout/capture_manager_class.h"
+#include "../FUNCTION.H"
 
 extern "C" void __cdecl gg_free(void*); // LIBRARY: GAMEMD 0x7C8B3D
 // Global ABI view: retail calls the fifth virtual slot (byte +0x10) through

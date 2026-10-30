@@ -5,10 +5,8 @@
 //   touch (offsets from the retail disassembly). Functions are in ascending retail address
 //   order. /Ob2: the scalar deleting destructor carries the destructor body inline.
 
-#include <new.h>
-#include <stdlib.h>
+#include "../FUNCTION.H"
 #include "tevent_class_methods.h"
-#include "../_layout/swizzle_manager_class.h"
 #include "../core/vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.

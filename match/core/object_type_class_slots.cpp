@@ -3,18 +3,12 @@
 // Canonical ObjectTypeClass methods, ordered by retail address. The original TU
 // placement of most recovered bodies is not established by available evidence.
 
-#include "../_layout/object_type_class.h"
+#include "../FUNCTION.H"
 #include "object_type_registry.h"
 #include "vector_class_operations.h"
 #include "../platform/ccfile_class.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include "../platform/ccini_class_methods.h"
 #include "../audio/voc_class_methods.h"
-#include <string.h>
-#include <new.h>
-#include "../_layout/techno_type_class.h"
-#include "../_layout/cell.h"
 
 // ImageFile, assigns empty AlphaImageFile, and appends this to the type registry.
 // GLOBAL: GAMEMD 0x889F64

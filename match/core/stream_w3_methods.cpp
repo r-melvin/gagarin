@@ -5,15 +5,7 @@
 //   the members these bodies touch (offsets from the retail disassembly) and the
 //   overrides that make it a concrete type. Functions are in ascending retail address order.
 
-#include <new.h>
-#include "../_layout/abstract_class.h"
-#include "../_layout/abstract_type_class.h"
-#include "../_layout/swizzle_manager_class.h"
-#include "../_layout/tiberium_class.h"
-#include "../_layout/tube_class.h"
-#include "../_layout/slave_manager_class.h"
-#include "../_layout/spawn_manager_class.h"
-#include "../core/vector_class.h"
+#include "../FUNCTION.H"
 #include "../combat/weapon_type_class.h"
 
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.

@@ -68532,7 +68532,7 @@
  {
   "tu": "match/combat/airstrike_class.cpp",
   "addr": "0x41D0A0",
-  "sym": "_$E3",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00889FF0)",
   "status": "matched",
@@ -68541,7 +68541,7 @@
  {
   "tu": "match/combat/airstrike_class.cpp",
   "addr": "0x41D0C0",
-  "sym": "_$E6",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00889FD8)",
   "status": "matched",
@@ -68550,7 +68550,7 @@
  {
   "tu": "match/combat/airstrike_class.cpp",
   "addr": "0x41D240",
-  "sym": "_$E9",
+  "sym": "_$E23",
   "len": "0x1A",
   "name": "dynamic initializer (DAT_00889FE0)",
   "status": "matched",
