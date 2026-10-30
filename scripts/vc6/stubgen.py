@@ -170,6 +170,19 @@ def order_name(sym):
     return sym[1:] if sym.startswith("_") else sym
 
 
+def link_order(index, manifest):
+    """The objects.json entries in the order the link sees them: by the lowest retail address any manifest
+    row of the TU claims; objects without rows keep their index order after them."""
+    lowest = {}
+    for row in manifest:
+        a = int(row["addr"], 16)
+        if row["tu"] not in lowest or a < lowest[row["tu"]]:
+            lowest[row["tu"]] = a
+    ordered = sorted(enumerate(index["objects"]),
+                     key=lambda t: (lowest.get(t[1].get("source"), 1 << 40), t[0]))
+    return [o for _, o in ordered]
+
+
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
          pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None, retail=None,
          source_data=False, data_reject=(), data_search=(), library_imports=False):
@@ -185,14 +198,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     # emitted by several TUs) the linker keeps: the first object seen wins. Order objects by the lowest
     # retail address their manifest rows claim, as the original link saw its objects in address order;
     # objects without rows keep their index order after them.
-    lowest = {}
-    for row in manifest:
-        a = int(row["addr"], 16)
-        if row["tu"] not in lowest or a < lowest[row["tu"]]:
-            lowest[row["tu"]] = a
-    ordered = sorted(enumerate(index["objects"]),
-                     key=lambda t: (lowest.get(t[1].get("source"), 1 << 40), t[0]))
-    objects = [objdir / o["object"] for _, o in ordered]
+    objects = [objdir / o["object"] for o in link_order(index, manifest)]
     if extents is None:
         extents = json.loads((DATA / "function_extents.json").read_text())["entries"]
     bindings, conflicts = load_bindings(manifest, symbol_bindings)
