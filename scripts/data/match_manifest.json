@@ -12295,9 +12295,9 @@
   "pct": 100
  },
  {
-  "tu": "match/core/stdcall_forward_sweep.cpp",
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
   "addr": "0x6D1800",
-  "sym": "?vf_33@Tab_006D1800@@QAEXPAX@Z",
+  "sym": "?vf_33@TabClass@@UAEPBGH@Z",
   "len": "0xd",
   "name": "TabClass::vf_33",
   "status": "matched",

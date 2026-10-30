@@ -13919,6 +13919,7 @@
  "?vf_33@ParticleObjectView@@UAEXXZ": "0x005F6BC0",
  "?vf_33@ParticleTypeObjectView@@UAEHPAVHouseClass@@@Z": "0x5F7610",
  "?vf_33@RadarClass@@UAEPBGH@Z": "0x658770",
+ "?vf_33@SidebarClass@@UAEPBGH@Z": "0x006AC210",
  "?vf_33@Sidebar_006D1800@@QAEXPAX@Z": "0x006AC210",
  "?vf_33@TabClass@@UAEPBGH@Z": "0x006D1800",
  "?vf_34@BulletClass@@UAEPAVObjectTypeClass@@XZ": "0x0046B5B0",

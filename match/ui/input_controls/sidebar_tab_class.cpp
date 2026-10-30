@@ -559,6 +559,12 @@ bool TabClass::Notice(int id, int arg)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x6D1800
+const wchar_t* TabClass::vf_33(int id)
+{
+    return SidebarClass::vf_33(id);
+}
+
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0CB78
 int CommandSlotTable_00B0CB78[25];
