@@ -140356,7 +140356,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/ipx_address_class_r14_methods.cpp",
+  "tu": "match/network/ipx_address_class_compare_methods.cpp",
   "addr": "0x53EE70",
   "sym": "?FUN_0053EE70@IPXAddressClass@@QAE_NPBV1@@Z",
   "len": "0xb1",
@@ -140365,7 +140365,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/ipx_address_class_r14_methods.cpp",
+  "tu": "match/network/ipx_address_class_compare_methods.cpp",
   "addr": "0x53EF60",
   "sym": "?FUN_0053EF60@IPXAddressClass@@QAE_NPBV1@@Z",
   "len": "0xb1",
