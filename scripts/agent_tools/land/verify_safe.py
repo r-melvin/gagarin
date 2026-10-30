@@ -35,6 +35,10 @@ import landlib as L  # noqa: E402
 
 
 def load_va(tree):
+    # verify_all imports its siblings (changed_tus) by bare name.
+    vc6 = os.path.join(tree, "scripts/vc6")
+    if vc6 not in sys.path:
+        sys.path.insert(0, vc6)
     spec = importlib.util.spec_from_file_location("va_tree", os.path.join(tree, "scripts/vc6/verify_all.py"))
     m = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(m)
