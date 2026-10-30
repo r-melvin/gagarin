@@ -57,9 +57,43 @@ def undefined(objdir):
     return data_undefined.collect(objdir)
 
 
+def string_definition(ident, va, retail, limit=2048):
+    """`extern const char x[];` -> the NUL-terminated text retail holds at va, or None when it is not text."""
+    raw = bytes(retail.fill(va, limit))
+    end = raw.find(b"\0")
+    if end < 1:
+        return None
+    body = raw[:end]
+    out = []
+    for b in body:
+        c = chr(b)
+        if c in '"\\':
+            out.append("\\" + c)
+        elif c == "?":
+            out.append("\\077")
+        elif 32 <= b < 127:
+            out.append(c)
+        elif c in "\n\r\t":
+            out.append({"\n": "\\n", "\r": "\\r", "\t": "\\t"}[c])
+        else:
+            out.append("\\%03o" % b)
+    text = "".join(out)
+    if sum(1 for b in body if b < 32 and chr(b) not in "\n\r\t") > len(body) // 4:
+        return None
+    return f'extern const char {ident}[] = "{text}";'
+
+
 def initial_value(text, va, retail):
     """`extern const T x[n];` -> (definition with the value retail holds at va) or None when T is not a plain
     integer/float type or the value has no exact source spelling."""
+    ms = re.fullmatch(r"(?:extern\s+)?const\s+char\s+(\w+)\[\];", text)
+    if ms:
+        return string_definition(ms.group(1), va, retail)
+    mg = re.fullmatch(r"(?:extern\s+)?const\s+(GUID|CLSID|IID|FMTID|_GUID)\s+(\w+);", text)
+    if mg:
+        d1, d2, d3, tail = struct.unpack("<IHH8s", bytes(retail.fill(va, 16)))
+        return (f"extern const {mg.group(1)} {mg.group(2)} = {{0x{d1:08X}, 0x{d2:04X}, 0x{d3:04X}, "
+                f"{{{', '.join(f'0x{b:02X}' for b in tail)}}}}};")
     m = re.fullmatch(r"(?:extern\s+)?(const\s+)?([\w ]+?)\s+(\w+)((?:\[\d+\])*);", text)
     if not m or m.group(2).strip() not in SCALARS:
         return None
@@ -103,11 +137,15 @@ def apply(objdir, region="bss"):
         import hybrid
         retail = hybrid.Retail(pindata.retail_path())
     chosen = {}   # va -> (name, ident, text, tu)
+    failed_path = ROOT / "build-vc6/define_failed.json"
+    failed = json.loads(failed_path.read_text()) if failed_path.exists() else {}
     for n, va in sorted(names.items(), key=lambda kv: kv[1]):
         m = MANGLED.fullmatch(n)
         if not m or data_undefined.region_of(va) != region or va in chosen:
             continue
         ident = m.group(1)
+        if ident in failed.get(str(va), ()):
+            continue   # another name for this address is tried instead
         const = n.endswith("B")
         options = [(p, t) for p, t in decls.get(ident, []) if ("const" in t.split(ident)[0]) == const]
         if not options:
@@ -116,7 +154,7 @@ def apply(objdir, region="bss"):
         own = [(t, text) for t in tus for p, text in options if p == t]
         tu, text = own[0] if own else (tus[0], options[0][1])
         if region != "bss":
-            if ident.startswith(("VT_", "VTBL_", "STR_")):   # addresses inside vtables and string tables, not variables
+            if ident.startswith(("VT_", "VTBL_")):   # addresses inside vtables, not variables
                 continue
             text = initial_value(text, va, retail)
             if text is None:
@@ -154,6 +192,8 @@ def prune(objdir, base):
         base_xcu[o["source"]] = sum(1 for s in secs.values() if s["name"].startswith(".CRT$XCU"))
     pending_json = json.loads((ROOT / "build-vc6/define_pending.json").read_text())   # written by the last apply
     removed = 0
+    failed_path = ROOT / "build-vc6/define_failed.json"   # identifiers whose definition did not take, per address
+    failed = json.loads(failed_path.read_text()) if failed_path.exists() else {}
     for o in index["objects"]:
         path = ROOT / o["source"]
         src = path.read_text()
@@ -185,21 +225,26 @@ def prune(objdir, base):
             ident = re.search(r"(\w+)(?:\[[^\]]*\])*\s*(?:=.*)?;$", text).group(1)
             name = next((n for n, v in names.items() if v == va and MANGLED.fullmatch(n) and MANGLED.fullmatch(n).group(1) == ident
                          and n in defined), None)
+            if name is None and va not in names.values():   # a name made for an address nothing referenced by name
+                name = next((n for n in defined if MANGLED.fullmatch(n) and MANGLED.fullmatch(n).group(1) == ident), None)
             if not o["success"]:
                 if pos in bad_lines or not bad_lines:
                     removed += 1
+                    failed.setdefault(str(va), []).append(ident)
                 else:
                     keep.append((ann, text))
             elif not gained and name is not None:
                 keep.append((ann, text))
             else:
                 removed += 1
+                failed.setdefault(str(va), []).append(ident)
         new = head.rstrip("\n") + "\n"
         if keep:
             new += "\n" + BEGIN + "\n" + "\n".join(f"{a}\n{t}" for a, t in keep) + "\n" + END + tail
         else:
             new += tail.lstrip("\n")
         path.write_text(new)
+    failed_path.write_text(json.dumps(failed))
     print(f"removed {removed} definitions")
 
 
