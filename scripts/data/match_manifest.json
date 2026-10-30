@@ -140536,7 +140536,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_class_r14_methods.cpp",
+  "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6EA080",
   "sym": "?FUN_006EA080@TeamClass@@QAEXXZ",
   "len": "0x46",
@@ -140545,7 +140545,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_class_r14_methods.cpp",
+  "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6EC730",
   "sym": "?FUN_006EC730@TeamClass@@QAEXH_N@Z",
   "len": "0x33",
@@ -140554,7 +140554,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_class_r14_methods.cpp",
+  "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6ECB50",
   "sym": "?FUN_006ECB50@TeamClass@@QAEXHH@Z",
   "len": "0x50",
@@ -140563,7 +140563,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_class_r14_methods.cpp",
+  "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6ECF10",
   "sym": "?FUN_006ECF10@TeamClass@@QAEXHH@Z",
   "len": "0x34",
@@ -140581,7 +140581,7 @@
   "pct": 84.8
  },
  {
-  "tu": "match/ai/team_class_r14_methods.cpp",
+  "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6EDC70",
   "sym": "?FUN_006EDC70@TeamClass@@QAEXHH@Z",
   "len": "0x2B",

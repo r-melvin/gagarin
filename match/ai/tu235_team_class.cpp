@@ -51,7 +51,7 @@ struct Obj_006EE1B0;
 struct Obj_006EE1D0;
 
 // GLOBAL: GAMEMD 0x87F7E8
-extern char DAT_0087F7E8[];
+#include "../_layout/map_0087f7e8.h"
 // GLOBAL: GAMEMD 0xA83D10
 extern char DAT_00A83D10[];
 // GLOBAL: GAMEMD 0xA83D4C
@@ -390,6 +390,8 @@ extern Lookup_00747370 DAT_00842DD4_obj;
 #include "../_layout/object_class.h"
 
 #include "team_class_methods.h"
+#include "team_class_r14_views.h"
+#include "../_layout/script_class.h"
 #include "../_layout/anim_class.h"
 #include "../_layout/anim_type_class.h"
 #include "../_layout/script_type_class.h"
@@ -544,6 +546,26 @@ void Team_006E9050::AssignMissionTarget(Abstract_006E9050* target)
             At_82 = 0;
         }
     }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6EA080
+//
+// Restart the team's scripted action: raise the 7F and 78 flags, clear 7A,
+// give every member the 689 flag when the 7B or 77 flag is up, refresh the
+// target and mark the action done.
+void TeamClass::FUN_006EA080()
+{
+    this->Flag7F = true;
+    this->Flag78 = true;
+    this->Flag7A = false;
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; m = m->Next) {
+        if (this->Flag7B || this->Flag77) {
+            m->Flag689 = true;
+        }
+    }
+    this->Target28->ClearMission();
+    this->Done = true;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -710,6 +732,53 @@ void TeamClass::vf_13(Obj_004A1D30* crc)
 
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6EC730
+//
+// With the flag set, retarget the team on the map entry for the current
+// member (or the first member), then run the follow-up.
+void TeamClass::FUN_006EC730(int a1, bool a2)
+{
+    if (a2) {
+        AbstractClass* m = this->Member34;
+        if (m == 0) {
+            m = (AbstractClass*)this->FirstUnit;
+        }
+        AssignMissionTarget((AbstractClass*)DAT_0087F7E8.FUN_00580BC0(m));
+    }
+    FUN_006EBAD0();
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6ECB50
+//
+// Liberate every member whose slot 0x33C answers true; the next link is read
+// before the call.
+void TeamClass::FUN_006ECB50(int a1, int a2)
+{
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; ) {
+        bool r = ((m->*m->Vtbl->At_33C)() != 0);
+        TeamMember_r14* next = m->Next;
+        if (r) {
+            LiberateMember((FootClass*)m, -1, 1);
+        }
+        m = next;
+    }
+    this->Done = true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6ECF10
+//
+// Calls member slot 0x174 (constant block, 1, 0) for every member.
+void TeamClass::FUN_006ECF10(int a1, int a2)
+{
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; m = m->Next) {
+        (m->*m->Vtbl->At_174)(DAT_00B0E968, 1, 0);
+    }
+    this->Done = true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6EDA90
 // Calls other functions.
 void Obj_006EDA90::FUN_006EDA90(Arg1_006EDA90* a1, int a2)
@@ -783,6 +852,18 @@ void TeamClass::FUN_006EDB50(ScriptActionNode*, bool)
             }
         }
     }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6EDC70
+//
+// Calls member slot 0x51C for every member.
+void TeamClass::FUN_006EDC70(int a1, int a2)
+{
+    for (TeamMember_r14* m = (TeamMember_r14*)this->FirstUnit; m != 0; m = m->Next) {
+        (m->*m->Vtbl->At_51C)();
+    }
+    this->Done = true;
 }
 
 // FUNCTION: GAMEMD 0x6EDE10
@@ -860,7 +941,7 @@ void Obj_006EDFB0::FUN_006EDFB0(int a1, int a2)
 // Calls other functions.
 void FUN_006EE1B0(Obj_006EE1B0* a1, int a2, int a3, int a4)
 {
-    FUN_00577BB0(DAT_0087F7E8, a2, 0);
+    FUN_00577BB0(&DAT_0087F7E8, a2, 0);
     a1->unknown_80 = 1;
 }
 
@@ -869,7 +950,7 @@ void FUN_006EE1B0(Obj_006EE1B0* a1, int a2, int a3, int a4)
 // Calls other functions.
 void FUN_006EE1D0(Obj_006EE1D0* a1, int a2, int a3, int a4)
 {
-    FUN_00577F30(DAT_0087F7E8, a2, 0);
+    FUN_00577F30(&DAT_0087F7E8, a2, 0);
     a1->unknown_80 = 1;
 }
 
