@@ -307,6 +307,8 @@ GG_STATIC_ASSERT(offsetof(CheckItemClass, IsChecked) == 0x04);
 class CheckListClass : public ListClass
 {
 public:
+    CheckListClass(int id, int x, int y, int w, int h, unsigned textFlags, void const* upShape,
+                   void const* downShape);                                // 0x488280
     virtual ~CheckListClass();                                            // 0x00  0x4886E0
     virtual int        Action(unsigned flags, unsigned* key, int modifier);  // 0x7C  0x4884A0
     virtual int        AddItem(wchar_t const* text);                      // 0x88  0x488310

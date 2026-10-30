@@ -24,11 +24,6 @@ GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-inline bool operator==(CellStruct const& a, CellStruct const& b)
-{
-    return a.X == b.X && a.Y == b.Y;
-}
-
 // Lepton coordinate -> cell coordinate (signed divide by 256 on each axis).
 inline CellStruct Coord2Cell(CoordStruct const* coord)
 {

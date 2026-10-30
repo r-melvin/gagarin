@@ -39,6 +39,7 @@
 
 class TagClass;
 class PixelFXClass;
+class LightConvertClass;
 
 class BuildingClass;
 class BuildingTypeClass;
@@ -62,6 +63,8 @@ public:
 
     // Declarations: hidden RectangleStruct output, RET4; cell receiver in ECX.
     RectangleStruct FUN_0047FF80(); // 0x47FF80, hidden result, RET4
+    // FUNCTION: GAMEMD 0x480110 -- the cell's screen position, stored through the out pointer; RET4.
+    void FUN_00480110(Point2D* out);
     // Declaration: GAMEMD 0x4802A0; read-only point/clip, receiver ECX, RET8.
     void FUN_004802A0(const Point2D* point, const RectangleStruct* clip);
     void FUN_00480350(const Point2D* point, const RectangleStruct* clip, int mode); // 0x480350, RET12
@@ -91,6 +94,8 @@ public:
     void FUN_00480630(char flag);
     // FUNCTION: GAMEMD 0x480CB0 (decl; reloc) -- one stack argument.
     void FUN_00480CB0(int value);
+    // FUNCTION: GAMEMD 0x485130 -- forget `target` wherever this cell refers to it; RET4.
+    void FUN_00485130(void* target);
     // FUNCTION: GAMEMD 0x4852D0 (decl; reloc)
     void FUN_004852D0();
     // FUNCTION: GAMEMD 0x486E70 (decl; reloc)
@@ -222,8 +227,8 @@ public:
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     DynamicVectorClass<FoggedObjectClass*>* FoggedObjects; // +0x28 RTTI .?AV?$DynamicVectorClass@PAVFoggedObjectClass@@@@
     void*           BridgeOwnerCell;         // +0x2C CellClass*; ctor @0x0047BC08
-    unsigned int    unknown_30;              // +0x30 ctor @0x0047BC0B
-    void*           LightConvert;            // +0x34 LightConvertClass*; ctor @0x0047BC0E
+    void*           unknown_30;              // +0x30 ctor @0x0047BC0B
+    LightConvertClass* LightConvert;         // +0x34 ctor @0x0047BC0E
     int             IsoTileTypeIndex;        // +0x38 ctor MOV [ESI+0x38],0xFFFF @0x0047BC11
     TagClass*       AttachedTag;             // +0x3C TagClass*; ctor @0x0047BC18
     void*           Rubble;                  // +0x40 BuildingTypeClass*; ctor @0x0047BC1E

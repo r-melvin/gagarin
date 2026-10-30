@@ -147271,5 +147271,50 @@
   "name": "?FUN_0076EF80@@YIXXZ",
   "status": "partial",
   "pct": 92.9
+ },
+ {
+  "tu": "match/map/cell_class_tu050.cpp",
+  "addr": "0x47BB60",
+  "sym": "??1CellClass@@UAE@XZ",
+  "len": "0x89",
+  "name": "??1CellClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/cell_class_tu050.cpp",
+  "addr": "0x480110",
+  "sym": "?FUN_00480110@CellClass@@QAEXPAUPoint2D@@@Z",
+  "len": "0x6d",
+  "name": "CellClass::FUN_00480110",
+  "status": "partial",
+  "pct": 80.0
+ },
+ {
+  "tu": "match/map/cell_class_tu050.cpp",
+  "addr": "0x485130",
+  "sym": "?FUN_00485130@CellClass@@QAEXPAX@Z",
+  "len": "0xca",
+  "name": "CellClass::FUN_00485130",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/cell_class_tu050.cpp",
+  "addr": "0x4863D0",
+  "sym": "?FUN_004863D0@CellClass@@QAE_NXZ",
+  "len": "0x1dd",
+  "name": "CellClass::FUN_004863D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/check_list_class_methods.cpp",
+  "addr": "0x488280",
+  "sym": "??0CheckListClass@@QAE@HHHHHIPBX0@Z",
+  "len": "0x45",
+  "name": "??0CheckListClass@@QAE@HHHHHIPBX0@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

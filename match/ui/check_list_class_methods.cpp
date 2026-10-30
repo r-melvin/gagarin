@@ -12,6 +12,14 @@
 // LIBRARY: GAMEMD 0x7DD0F8 (decl; reloc) -- CRT _wcsicmp: the two text lookups compare case-insensitively.
 extern "C" int __cdecl _wcsicmp(wchar_t const* a, wchar_t const* b);
 
+// FUNCTION: GAMEMD 0x488280
+// CheckListClass::CheckListClass. The list base does the work; the read-only flag starts clear.
+CheckListClass::CheckListClass(int id, int x, int y, int w, int h, unsigned textFlags, void const* upShape,
+                               void const* downShape)
+    : ListClass(id, x, y, w, h, textFlags, upShape, downShape), IsReadOnly(false)
+{
+}
+
 // FUNCTION: GAMEMD 0x4882D0
 // SYNTHETIC: GAMEMD 0x4886E0
 // CheckListClass::~CheckListClass. Each entry is a heap node the base list does

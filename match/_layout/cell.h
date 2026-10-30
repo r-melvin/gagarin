@@ -34,6 +34,17 @@ struct CellStruct
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0);
 GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 2);
+
+// Member-wise cell comparison (two 16-bit compares), as the inlined vector searches and coordinate
+// tests expand it.
+inline bool operator==(CellStruct const& a, CellStruct const& b)
+{
+    return a.X == b.X && a.Y == b.Y;
+}
+inline bool operator!=(CellStruct const& a, CellStruct const& b)
+{
+    return !(a == b);
+}
 #endif
 
 // Cell -- the cell type RTTI names in `.?AV?$VectorClass@VCell@@@@` (table
