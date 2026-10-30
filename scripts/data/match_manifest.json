@@ -22468,11 +22468,11 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x501640",
-  "sym": "?AllyAIHouses@HouseClass@@QAEXXZ",
-  "len": "0x10F",
+  "sym": "?AllyAIHouses@HouseClass@@SIXXZ",
+  "len": "0x10f",
   "name": "HouseClass::AllyAIHouses",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/house_class_ally_methods.cpp",
@@ -147835,6 +147835,42 @@
   "sym": "?FUN_00485460@CellClass@@QAE_NXZ",
   "len": "0x128",
   "name": "CellClass::FUN_00485460",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x501160",
+  "sym": "?FUN_00501160@@YIXPAVCCINIClass@@@Z",
+  "len": "0xa9",
+  "name": "?FUN_00501160@@YIXPAVCCINIClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x505180",
+  "sym": "?FUN_00505180@HouseClass@@QAEXXZ",
+  "len": "0x5f",
+  "name": "HouseClass::FUN_00505180",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x505F80",
+  "sym": "?FUN_00505F80@HouseClass@@QAIHPAUCellStruct@@HH@Z",
+  "len": "0x42",
+  "name": "HouseClass::FUN_00505F80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x50C210",
+  "sym": "?FUN_0050C210@HouseClass@@QAEXXZ",
+  "len": "0x123",
+  "name": "HouseClass::FUN_0050C210",
   "status": "matched",
   "pct": 100.0
  }

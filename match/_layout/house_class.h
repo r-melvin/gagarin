@@ -226,8 +226,11 @@ public:
     CellStruct HouseBaseCell() const;
 
     // Declaration: GAMEMD 0x501640 -- ECX house at 0x64CA0D.
-    void AllyAIHouses();
+    static void AllyAIHouses();   // GAMEMD 0x501640; reads no receiver (no ECX setup at the callers)
+    void FUN_00501210(CCINIClass* ini);    // GAMEMD 0x501210, RET 4
     void FUN_00505180();    // GAMEMD 0x505180
+    Cell FUN_00506B90(BuildingTypeClass* upgrade); // GAMEMD 0x506B90, RET 4
+    int __fastcall FUN_00505F80(CellStruct* cell, int score, int unused); // GAMEMD 0x505F80, RET 8
     void FUN_00508F60();    // GAMEMD 0x508F60
     bool FUN_00509610(TeamTypeClass* team); // GAMEMD 0x509610, RET 4
     void FUN_0050C210();    // GAMEMD 0x50C210
@@ -244,6 +247,7 @@ public:
     // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- first house whose type has this country index; ECX carries it.
     static HouseClass* FindByCountryIndex(int country);
     // FUNCTION: GAMEMD 0x4F9790 (decl; reloc) -- one stack argument.
+    FactoryClass* FUN_004F83C0(TechnoTypeClass* type); // GAMEMD 0x4F83C0, RET 4
     void FUN_004F9790(int unknownStackArg0);
     // FUNCTION: GAMEMD 0x4F9950 (decl; reloc) -- one stack argument.
     void FUN_004F9950(int unknownStackArg0);

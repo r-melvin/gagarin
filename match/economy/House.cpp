@@ -461,6 +461,7 @@ static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #pragma intrinsic(strcpy, strcmp)
 
@@ -964,33 +965,6 @@ extern const float DAT_007E2AC8;
 
 // GLOBAL: GAMEMD 0xA8ED6B -- when set, base-node bookkeeping is skipped.
 extern unsigned char DAT_00A8ED6B;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// Unclaimed (retail inlines 0x505180 here, which is not reconstructed), GAMEMD 0x50C210
-// Re-centres the base on the last live building of one of the base-centre types (the construction yards).
-void HouseClass::FUN_0050C210()
-{
-    for (int i = Buildings.Count - 1; i >= 0; i--) {
-        BuildingClass* building = Buildings.Items[i];
-        for (int j = 0; j < RulesInstance->list_08AC.Count; j++) {
-            if (RulesInstance->list_08AC.Items[j] == building->Type) {
-                if (!building->InLimbo) {
-                    if (building == 0) {
-                        return;
-                    }
-                    CoordStruct location = building->Location;
-                    Cell cell((short)(location.X / 256), (short)(location.Y / 256));
-                    BaseSpawnCell = cell;
-                    FUN_00505180();
-                    Base.unknown_08[0].unknown_04 = cell;
-                    Base.unknown_50 = cell;
-                    return;
-                }
-                break;
-            }
-        }
-    }
-}
 
 // The receiver of the cell comparison at 0x50E470 is a cell itself.
 struct Cell_0050E470 : Cell_004FFD90
@@ -1749,6 +1723,24 @@ Obj_004F7850* Obj_004F7850::FUN_004F7850()
     unknown_0C = 0;
     unknown_10 = -1;
     return this;
+}
+
+// GLOBAL: GAMEMD 0xA83E30 -- every FactoryClass in the game (defined in static_vector_init_stubs.cpp).
+extern DynamicVectorClass<FactoryClass*> DAT_00A83E30;
+
+// Unclaimed (below partial bar), GAMEMD 0x4F83C0
+// The factory of this house that is producing the given type, or null.
+FactoryClass* HouseClass::FUN_004F83C0(TechnoTypeClass* type)
+{
+    FactoryClass* result = 0;
+    for (int i = 0; i < DAT_00A83E30.Count; i++) {
+        if (DAT_00A83E30.Items[i]->Owner == this && DAT_00A83E30.Items[i]->FUN_004CA160() != 0
+            && DAT_00A83E30.Items[i]->FUN_004CA160()->vf_33() == type) {
+            result = DAT_00A83E30.Items[i];
+            break;
+        }
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x4F9370
@@ -3298,6 +3290,24 @@ void HouseClass::FUN_00500B40(CCINIClass* ini)
     Base.unknown_74 = this;
 }
 
+// FUNCTION: GAMEMD 0x501160
+// Writes the [Houses] list (index = house name) and then every house's own section.
+void __fastcall FUN_00501160(CCINIClass* ini)
+{
+    int i;
+    ini->Clear("Houses", 0);
+    for (i = 0; i < HouseClass_Array.Count; i++) {
+        char key[32];
+        char name[32];
+        strcpy(name, HouseClass_Array.Items[i]->PlainName);
+        sprintf(key, "%d", i);
+        ini->WriteString("Houses", key, name);
+    }
+    for (i = 0; i < HouseClass_Array.Count; i++) {
+        HouseClass_Array.Items[i]->FUN_00501210(ini);
+    }
+}
+
 // FUNCTION: GAMEMD 0x5013A0
 HRESULT __stdcall HouseClass::vf_13()
 {
@@ -4262,6 +4272,22 @@ void HouseClass::MarkScoutNode(HouseClass* house)
     }
 }
 
+// FUNCTION: GAMEMD 0x505180
+// Allies the AI houses unless this house is human controlled in a multiplayer game, then
+// makes sure the base has nodes, with the scenario-setup flag cleared around the build.
+void HouseClass::FUN_00505180()
+{
+    if (!IsControlledByHuman() && Session_00A8B238.GameMode != 0) {
+        AllyAIHouses();
+    }
+    if (Base.unknown_14 == 0) {
+        int saved = DAT_00A8E7AC;
+        DAT_00A8E7AC = 0;
+        FUN_005054B0();
+        DAT_00A8E7AC = saved;
+    }
+}
+
 // FUNCTION: GAMEMD 0x5051E0
 //
 // First type in the list this house may build: owner bit for its parent
@@ -4407,6 +4433,17 @@ done:
     return true;
 }
 
+// FUNCTION: GAMEMD 0x505F80
+// Distance in cells (Chebyshev) from the base reference cell, scaled by 1000 and added to a base
+// score. Referenced only through a function pointer; the second stack argument is unused.
+int __fastcall HouseClass::FUN_00505F80(CellStruct* cell, int score, int unused)
+{
+    int dx = cell->X - Base.unknown_50.X;
+    int dy = cell->Y - Base.unknown_50.Y;
+    int m = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+    return score + m * 1000;
+}
+
 // FUNCTION: GAMEMD 0x506B70
 // Empty function.
 void __cdecl FUN_00506B70()
@@ -4417,6 +4454,44 @@ void __cdecl FUN_00506B70()
 // Empty function.
 void __cdecl FUN_00506B80()
 {
+}
+
+#include "../_layout/building_array.h"
+// FUNCTION: GAMEMD 0x45E7B0 (decl; reloc) -- fourth type registry: name -> index.
+int FUN_0045E7B0(const char* name);
+
+// Unclaimed (below partial bar), GAMEMD 0x506B90
+// The cell of this house's building of the upgraded type that can take the given upgrade and has
+// the least upgrade level (or no upgrade yet when the upgrade has a fixed level); empty if none.
+Cell HouseClass::FUN_00506B90(BuildingTypeClass* upgrade)
+{
+    int index = FUN_0045E7B0(upgrade->PowersUpBuilding);
+    if (index == -1) {
+        return Cell(0, 0);
+    }
+    BuildingClass* best = 0;
+    BuildingTypeClass* target = DAT_00A83C6C[index];
+    bool anyLevel = upgrade->PowersUpToLevel == -1;
+    int bestLevel = target->Upgrades + 10;
+    for (int i = 0; i < DAT_00A8EB40.Count; i++) {
+        BuildingClass* building = DAT_00A8EB40.Items[i];
+        if (building->Owner == this && building->Type == target && building->FUN_00452670(upgrade, this)) {
+            char upgradeLevel = building->UpgradeLevel;
+            if (anyLevel) {
+                if (upgradeLevel < bestLevel) {
+                    bestLevel = upgradeLevel;
+                    best = building;
+                }
+            } else if (upgradeLevel == 0) {
+                bestLevel = upgradeLevel;
+                best = building;
+            }
+        }
+    }
+    if (best != 0) {
+        return Cell((short)(best->Location.X / 256), (short)(best->Location.Y / 256));
+    }
+    return Cell(0, 0);
 }
 
 // FUNCTION: GAMEMD 0x508150
@@ -5259,6 +5334,32 @@ int HouseClass::FindIndexByName(const char* name)
     }
 
     return -1;
+}
+
+// FUNCTION: GAMEMD 0x50C210
+// Re-centres the base on the last live building of one of the base-centre types (the construction yards).
+void HouseClass::FUN_0050C210()
+{
+    for (int i = Buildings.Count - 1; i >= 0; i--) {
+        BuildingClass* building = Buildings.Items[i];
+        for (int j = 0; j < RulesInstance->list_08AC.Count; j++) {
+            if (RulesInstance->list_08AC.Items[j] == building->Type) {
+                if (!building->InLimbo) {
+                    if (building == 0) {
+                        return;
+                    }
+                    CoordStruct location = building->Location;
+                    Cell cell((short)(location.X / 256), (short)(location.Y / 256));
+                    BaseSpawnCell = cell;
+                    FUN_00505180();
+                    Base.unknown_08[0].unknown_04 = cell;
+                    Base.unknown_50 = cell;
+                    return;
+                }
+                break;
+            }
+        }
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
