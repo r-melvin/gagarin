@@ -102,6 +102,8 @@ struct PaletteKey_00626C60
     PaletteKey_00626C60* FUN_004F4C30(const char* text);
     // FUNCTION: GAMEMD 0x4F4CE0 (decl; reloc) -- true when both keys hold the same text.
     bool FUN_004F4CE0(const PaletteKey_00626C60* other);
+    // FUNCTION: GAMEMD 0x4F4CA0 (decl; reloc) -- __thiscall predicate on the key text.
+    bool FUN_004F4CA0();
 };
 GG_STATIC_ASSERT(sizeof(PaletteKey_00626C60) == 0x100);
 
@@ -118,6 +120,17 @@ struct PaletteEntry_00626C60
 };
 GG_STATIC_ASSERT(offsetof(PaletteEntry_00626C60, Value) == 0x100);
 GG_STATIC_ASSERT(sizeof(PaletteEntry_00626C60) == 0x104);
+
+// Walk position of the table's entry iterator (0x628170): bucket, entry within
+// the bucket, and a flag set once the walk has run off the end.
+struct PaletteIter_00626C60
+{
+    int  Bucket;                      // +0x0000
+    int  Index;                       // +0x0004
+    char Done;                        // +0x0008
+};
+GG_STATIC_ASSERT(offsetof(PaletteIter_00626C60, Index) == 0x04);
+GG_STATIC_ASSERT(offsetof(PaletteIter_00626C60, Done) == 0x08);
 
 // One hash bucket: a DynamicVectorClass of entries (0x18 bytes).
 struct Bucket_00626C60
@@ -165,6 +178,12 @@ struct Table_00626C60
 
         return 0;
     }
+
+    // FUNCTION: GAMEMD 0x628110 (__thiscall) -- the lookup as an entry point.
+    Obj_00626250** FUN_00628110(const PaletteKey_00626C60* key);
+    // FUNCTION: GAMEMD 0x628170 (__thiscall) -- the next entry the key predicate
+    // accepts, or null once the walk is done.
+    PaletteEntry_00626C60* FUN_00628170(PaletteIter_00626C60* iter);
 };
 GG_STATIC_ASSERT(offsetof(Table_00626C60, Hash) == 0x04);
 GG_STATIC_ASSERT(offsetof(Table_00626C60, NumBuckets) == 0x08);
@@ -186,6 +205,8 @@ struct Owner_00626C60
     DynamicVectorClass<Obj_0068C8D0*>* FUN_00627590(const char* pszName);
     // FUNCTION: GAMEMD 0x627A10
     void FUN_00627A10(const char* pszName);
+    // Unclaimed (below partial bar), GAMEMD 0x6274F0 (__thiscall) -- the scheme list of the named palette, or null.
+    DynamicVectorClass<Obj_0068C8D0*>* FUN_006274F0(const char* pszName);
 };
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, VecA) == 0x4);
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, Table) == 0xC);

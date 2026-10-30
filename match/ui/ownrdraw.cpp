@@ -464,8 +464,25 @@ __forceinline static MapValue_00602B90* Inline_00600CA0(int nKey)
 
 // Win32 imports reached through the IAT (`CALL dword ptr [0x007E1498]` and
 // `CALL dword ptr [0x007E14D0]`).
-extern "C" __declspec(dllimport) int __stdcall ShowWindow(HWND hWnd, int nCmdShow);
-extern "C" __declspec(dllimport) int __stdcall SetForegroundWindow(HWND hWnd);
+extern "C" __declspec(dllimport) int __stdcall ShowWindow(GG_HWND hWnd, int nCmdShow);
+extern "C" __declspec(dllimport) int __stdcall SetForegroundWindow(GG_HWND hWnd);
+
+// IAT 0x7E1470: USER32!SetWindowLongA.
+extern "C" __declspec(dllimport) long __stdcall SetWindowLongA(GG_HWND hWnd, int nIndex, long lNew);
+// IAT 0x7E14A0 / 0x7E14A8 / 0x7E14A4 come from ownrdraw.h.
+
+// FUNCTION: GAMEMD 0x622650 (decl; reloc) -- UI::BeginDialog: create the dialog
+// from resource `id` with the given procedure and extra parameter.
+GG_HWND UI_BeginDialog(unsigned short id, int (__stdcall* proc)(GG_HWND, unsigned int, unsigned int, long),
+                    int param);
+// FUNCTION: GAMEMD 0x622720 (decl; reloc) -- UI::EndDialog.
+void UI_EndDialog(GG_HWND hDlg);
+// FUNCTION: GAMEMD 0x52B9B0 (decl; reloc) -- dialog banner set-up.
+void FUN_0052B9B0(GG_HWND dialog);
+// Dialog procedure at 0x623DA0 (defined below).
+int __stdcall FUN_00623DA0(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam, long lParam);
+// Dialog procedure at 0x6232B0 (declaration only) -- the modeless message dialog.
+int __stdcall FUN_006232B0(GG_HWND hDlg, unsigned int uMsg, unsigned int wParam, long lParam);
 
 #include "ui_updated_methods.h"
 #include "../platform/input_manager_class_methods.h"
@@ -3691,6 +3708,8 @@ void __fastcall FUN_0060AAA0(GG_HWND hWnd)
 // designed for (entries of the width and height tables at 0x7F5BE0/0x7F5BEC).
 extern int DAT_007F5BE4;
 extern int DAT_007F5BF0;
+// GLOBAL: GAMEMD 0x7F5BF8 -- the design width the right-docked controls are measured against.
+extern int DAT_007F5BF8;
 
 // The margin that centres an 800 x 600 layout in a larger parent, or zero when
 // the session flag says the layout fills the parent.
@@ -3716,6 +3735,89 @@ void FUN_0060AF50(GG_HWND hWnd, RectangleStruct* pRect)
     InvalidateRect(hWnd, 0, 0);
 }
 
+// The centring margin of 0x60B550: zero when the session flag says the
+// layout fills the parent, else half the spare room, never negative.
+__forceinline static unsigned Inline_DockMargin(bool bFills, int nParent, int nDesign)
+{
+    unsigned nMargin = 0;
+
+    if (!bFills)
+        nMargin = (nParent - nDesign) / 2 < 0 ? 0 : (nParent - nDesign) / 2;
+
+    return nMargin;
+}
+
+// Unclaimed (below partial bar), GAMEMD 0x60B1D0  FUN_0060B1D0 (__fastcall)
+// Docks a control against the right edge of its parent and re-centres it
+// vertically between the parent's centring margin and the design rectangle's.
+void FUN_0060B1D0(GG_HWND hWnd, RectangleStruct* pRect)
+{
+    GG_RECT rcParent;
+    GG_RECT rcSelf;
+
+    GG_HWND hParent = GetParent(hWnd);
+    bool bFills = Session_00A8B238.FUN_0069BBE0();
+    GetWindowRect(hParent, &rcParent);
+    GetWindowRect(hWnd, &rcSelf);
+
+    int nParentW = rcParent.right - rcParent.left;
+    unsigned nMarginX = 0;
+    if (!bFills)
+    {
+        nMarginX = (nParentW - DAT_007F5BE4) / 2;
+        nMarginX = (((int)nMarginX < 0) - 1) & nMarginX;
+    }
+
+    int nParentH = rcParent.bottom - rcParent.top;
+    int nShiftY = 0;
+    if (!bFills)
+    {
+        unsigned nParentY = (nParentH - DAT_007F5BF0) / 2;
+        nParentY = (((int)nParentY < 0) - 1) & nParentY;
+        unsigned nDesignY = (pRect->Y - DAT_007F5BF0) / 2;
+        nDesignY = nDesignY & (((int)nDesignY < 0) - 1);
+        nShiftY = nParentY - nDesignY;
+    }
+
+    int nWidth = rcSelf.right - rcSelf.left;
+    int nHeight = rcSelf.bottom - rcSelf.top;
+    int nInset;
+    MapValue_00602B90* value = Inline_00600CA0((int)hWnd);
+
+    if (value && value->FieldDC)
+        nInset = value->FieldDC;
+    else
+        nInset = (DAT_007F5BF8 - nWidth) / 2;
+
+    MoveWindow(hWnd, (((rcParent.right - nInset) - nWidth) - nMarginX) - rcParent.left,
+               (rcSelf.top - rcParent.top) + nShiftY, nWidth, nHeight, 0);
+}
+
+// FUNCTION: GAMEMD 0x60B550  FUN_0060B550 (__fastcall)
+// Docks a control to the bottom-left of its parent, shifted by the parent's
+// centring margins.
+void FUN_0060B550(GG_HWND hWnd)
+{
+    GG_RECT rcParent;
+    GG_RECT rcSelf;
+
+    GG_HWND hParent = GetParent(hWnd);
+    bool bFills = Session_00A8B238.FUN_0069BBE0();
+    GetClientRect(hParent, &rcParent);
+    GetWindowRect(hWnd, &rcSelf);
+
+    unsigned nMarginX = Inline_DockMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
+    unsigned nMarginY = Inline_DockMargin(bFills, rcParent.bottom - rcParent.top, DAT_007F5BF0);
+
+    int nHeight = rcSelf.bottom - rcSelf.top;
+    int nWidth = rcSelf.right - rcSelf.left;
+
+    int nX = nMarginX + 10 + rcParent.left;
+    int nY = (rcParent.bottom - nHeight) - nMarginY - 1;
+
+    MoveWindow(hWnd, nX, nY, nWidth, nHeight, 0);
+}
+
 // FUNCTION: GAMEMD 0x60B740  FUN_0060B740
 void FUN_0060B740(GG_HWND hWnd)
 {
@@ -3728,6 +3830,58 @@ void FUN_0060B740(GG_HWND hWnd)
     GetWindowRect(hWnd, &rcSelf);
     MoveWindow(hWnd, rcSelf.left - rcParent.left, rcSelf.top - rcParent.top,
                rcSelf.right - rcSelf.left, rcSelf.bottom - rcSelf.top, 0);
+}
+
+// The shift that centres a design extent in a parent that is larger (never
+// negative) or smaller (negative) than it, expanded inline in 0x60B7A0.
+__forceinline static unsigned Inline_FillShift(int nParent, int nDesign)
+{
+    unsigned nShift = 0;
+
+    if (nDesign < nParent)
+    {
+        nShift = (nParent - nDesign) / 2 < 0 ? 0 : (nParent - nDesign) / 2;
+    }
+    else if (nParent < nDesign)
+    {
+        nShift = (nParent - nDesign) / 2;
+    }
+
+    return nShift;
+}
+
+// FUNCTION: GAMEMD 0x60B7A0  FUN_0060B7A0 (__fastcall)
+// When the session flag says the layout fills its parent, shifts a control by
+// the (signed) half-difference between the parent and the design size, never
+// moving it off the top-left.
+void FUN_0060B7A0(GG_HWND hWnd)
+{
+    GG_RECT rcSelf;
+    GG_RECT rcParent;
+
+    GG_HWND hParent = GetParent(hWnd);
+
+    if (Session_00A8B238.FUN_0069BBE0())
+    {
+        GetWindowRect(hWnd, &rcSelf);
+        GetWindowRect(hParent, &rcParent);
+
+        unsigned nShiftX = Inline_FillShift(rcParent.right - rcParent.left, DAT_007F5BE4);
+        unsigned nShiftY = Inline_FillShift(rcParent.bottom - rcParent.top, DAT_007F5BF0);
+
+        int nX = nShiftX + rcSelf.left;
+        int nY = rcSelf.top + nShiftY;
+        int nWidth = rcSelf.right - rcSelf.left;
+        int nHeight = rcSelf.bottom - rcSelf.top;
+
+        if (nX < 0)
+            nX = 0;
+
+        if (nY < 0)
+            nY = 0;
+
+        MoveWindow(hWnd, nX, nY, nWidth, nHeight, 0);
+    }
 }
 
 // FUNCTION: GAMEMD 0x60B880  FUN_0060B880
@@ -3761,6 +3915,38 @@ int FUN_0060C4E0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->Field74 : 0;
+}
+
+// Unclaimed (below partial bar), GAMEMD 0x60C540  FUN_0060C540 (__fastcall)
+bool FUN_0060C540(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (!value)
+        return false;
+
+    int category = value->Field6C;
+
+    if (category == 0x10C || category == 0x94 || category == 0xB6 || category == 0xA3 ||
+        category == 0x73 || category == 0xD8 || category == 0xBBB || category == 0xF5 ||
+        category == 0x105 || category == 0xD5 || category == 0xE2 || category == 0x2B5 ||
+        category == 0xB7 || category == 0x2B4 || category == 0x101 || category == 0x129 ||
+        category == 0xBC6 || category == 0xBC7 || category == 0x10B || category == 0xD7 ||
+        category == 0x108 || category == 0xBC || category == 0xBD || category == 0xBB ||
+        category == 0xB5 || category == 0xBBA || category == 0xFF || category == 0xEA ||
+        category == 0x6B || category == 0x100 || category == 0x102 || category == 0xB8 ||
+        category == 0xD6 || category == 0x103 || category == 0xD4 || category == 0x125 ||
+        category == 0x122 || category == 0x112 || category == 0xE7 || category == 0x116 ||
+        category == 0xC2 || category == 0xC9 || category == 0x113 || category == 0xFE ||
+        category == 0x10F || category == 0x11D || category == 0x11C || category == 0x117 ||
+        category == 0x114 || category == 0xE6 || category == 0xF3 || category == 0xF4 ||
+        category == 0x2BC || category == 0x10E || category == 0xFB)
+    {
+        value->FieldB0 = 1;
+        return value->FieldBD = true;
+    }
+
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x60C7D0  FUN_0060C7D0 (__fastcall)
@@ -3935,6 +4121,50 @@ int FUN_0060D320(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->Field6C : 0;
+}
+
+// FUNCTION: GAMEMD 0x60D380  FUN_0060D380 (__fastcall)
+// Runs a modal dialog: builds it, focuses it, and pumps the idle step until
+// the dialog procedure stores a nonzero result through the pointer kept at
+// window long 8. UI_FocusOnWindow and UI::Updated are expanded here.
+int FUN_0060D380(unsigned short nDialogId, int (__stdcall* pProc)(GG_HWND, unsigned int, unsigned int, long),
+                 char bBanner)
+{
+    int nResult;
+    GG_HWND hDlg = UI_BeginDialog(nDialogId, pProc, 0);
+    int nReturn = 0;
+    nResult = 0;
+
+    if (hDlg)
+    {
+        SetWindowLongA(hDlg, 8, (long)&nResult);
+        ShowWindow(hDlg, 1);
+        SetForegroundWindow(hDlg);
+        DAT_0087F770->DoSomething();
+
+        if (bBanner)
+            FUN_0052B9B0(hDlg);
+
+        while (nResult == 0)
+        {
+            FUN_005D4D50();
+
+            if (SessionGameMode == 0 || SessionGameMode == 5 ||
+                InhibitFlag != 0 || InhibitWord != 0)
+            {
+                CallBack();
+            }
+            else if (!PredicateA() && PredicateB())
+            {
+                break;
+            }
+        }
+
+        UI_EndDialog(hDlg);
+        nReturn = nResult;
+    }
+
+    return nReturn;
 }
 
 // FUNCTION: GAMEMD 0x0060D430
@@ -4267,6 +4497,30 @@ bool UI::Updated()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x623230  FUN_00623230 (__fastcall)
+// Opens the message dialog (resource 0xF0) with one or two text lines.
+GG_HWND FUN_00623230(long lLine1, long lLine2, long lUser)
+{
+    GG_HWND hDlg = UI_BeginDialog(0xF0, FUN_006232B0, 0);
+
+    if (hDlg)
+    {
+        SetWindowLongA(hDlg, 8, lUser);
+        GG_HWND hItem = GetDlgItem(hDlg, 0x5B0);
+        SendMessageA(hItem, 0x4B2, 0, lLine1);
+
+        if (lLine2 != 0)
+        {
+            hItem = GetDlgItem(hDlg, 0x5C0);
+            SendMessageA(hItem, 0x4B2, 0, lLine2);
+            EnableWindow(hItem, 1);
+            ShowWindow(hItem, 5);
+        }
+    }
+
+    return hDlg;
+}
+
 // FUNCTION: GAMEMD 0x623310  FUN_00623310
 void FUN_00623310(GG_HWND hDlg, long lParam)
 {
@@ -4511,6 +4765,41 @@ Obj_00623420* Obj_00623420::FUN_00623730(const Obj_00623420& other)
 
 // FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog message handler.
 int FUN_00622B50(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam, long lParam);
+
+// FUNCTION: GAMEMD 0x623CD0  FUN_00623CD0 (__fastcall)
+// Modal yes/no style prompt (resource 0x10D): shows one text line and waits
+// until the dialog procedure stores a control id; true when that was 0x5C1.
+bool FUN_00623CD0(long lText)
+{
+    int nResult = -1;
+    GG_HWND hDlg = UI_BeginDialog(0x10D, FUN_00623DA0, 0);
+
+    if (hDlg)
+    {
+        GG_HWND hItem = GetDlgItem(hDlg, 0x5B0);
+        SendMessageA(hItem, 0x4B2, 0, lText);
+        SetWindowLongA(hDlg, 8, (long)&nResult);
+        ShowWindow(hDlg, 1);
+        SetForegroundWindow(hDlg);
+        DAT_0087F770->DoSomething();
+
+        while (nResult < 0)
+        {
+            FUN_005D4D50();
+
+            if (SessionGameMode != 0 && SessionGameMode != 5 &&
+                InhibitFlag == 0 && InhibitWord == 0 &&
+                !PredicateA() && PredicateB())
+            {
+                break;
+            }
+        }
+
+        UI_EndDialog(hDlg);
+    }
+
+    return nResult == 0x5C1;
+}
 
 // FUNCTION: GAMEMD 0x623DA0  FUN_00623DA0
 // Dialog procedure: after the shared handler declines the message, a click on
@@ -5265,6 +5554,17 @@ void FUN_00626FF0()
     }
 }
 
+// Unclaimed (below partial bar), GAMEMD 0x6274F0  Owner_00626C60::FUN_006274F0 (__thiscall)
+DynamicVectorClass<Obj_0068C8D0*>* Owner_00626C60::FUN_006274F0(const char* pszName)
+{
+    PaletteKey_00626C60 key;
+    key.FUN_004F4C30(pszName);
+    Obj_00626250** ppPalette = Table->Find(key);
+    if (ppPalette)
+        return (*ppPalette)->unknown_100;
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x627A10  Owner_00626C60::FUN_00627A10 (__thiscall)
 // Rebuilds the scheme list of the named palette: frees the old list and its
 // entries and installs the one 0x627590 builds.
@@ -5276,6 +5576,39 @@ void Owner_00626C60::FUN_00627A10(const char* pszName)
     DynamicVectorClass<Obj_0068C8D0*>* pSchemes = FUN_00627590(pszName);
     pPalette->Inline_Release();
     pPalette->unknown_100 = pSchemes;
+}
+
+// FUNCTION: GAMEMD 0x628110  Table_00626C60::FUN_00628110 (__thiscall)
+Obj_00626250** Table_00626C60::FUN_00628110(const PaletteKey_00626C60* key)
+{
+    return Find(*key);
+}
+
+// FUNCTION: GAMEMD 0x628170  Table_00626C60::FUN_00628170 (__thiscall)
+PaletteEntry_00626C60* Table_00626C60::FUN_00628170(PaletteIter_00626C60* iter)
+{
+    if (!iter->Done)
+    {
+        while (iter->Bucket < NumBuckets)
+        {
+            Bucket_00626C60& bucket = Buckets[iter->Bucket];
+
+            while (iter->Index < bucket.Count)
+            {
+                PaletteEntry_00626C60* entry = &bucket.Entries[iter->Index];
+                iter->Index++;
+                if (!entry->Key.FUN_004F4CA0())
+                    return entry;
+            }
+
+            iter->Index = 0;
+            iter->Bucket++;
+        }
+
+        iter->Done = 1;
+    }
+
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
