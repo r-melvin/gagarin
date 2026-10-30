@@ -23726,7 +23726,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/map_class_add_object_methods.cpp",
+  "tu": "match/map/layer_class_slots.cpp",
   "addr": "0x5519B0",
   "sym": "?AddObject@LayerClass@@UAE_NPAVObjectClass@@_N@Z",
   "len": "0x7c",
@@ -23762,7 +23762,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/layer_class_load_methods.cpp",
+  "tu": "match/map/layer_class_slots.cpp",
   "addr": "0x551B90",
   "sym": "?Load@LayerClass@@QAEJPAUIStream@@@Z",
   "len": "0xc7",
@@ -23879,7 +23879,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_object_methods.cpp",
+  "tu": "match/map/layer_class_slots.cpp",
   "addr": "0x551A30",
   "sym": "?Sort@LayerClass@@QAEXXZ",
   "len": "0x55",
@@ -23960,7 +23960,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/layer_class_save_methods.cpp",
+  "tu": "match/map/layer_class_slots.cpp",
   "addr": "0x551B20",
   "sym": "?Save@LayerClass@@QAEJPAUIStream@@@Z",
   "len": "0x62",
@@ -145243,7 +145243,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/layer_class_sorted_add.cpp",
+  "tu": "match/map/layer_class_slots.cpp",
   "addr": "0x551A90",
   "sym": "?SortedAdd@LayerClass@@QAEHPAVObjectClass@@@Z",
   "len": "0x8c",
