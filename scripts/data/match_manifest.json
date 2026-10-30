@@ -1939,7 +1939,7 @@
   "pct": 55.6
  },
  {
-  "tu": "match/combat/kamikaze_class_methods.cpp",
+  "tu": "match/combat/kamikaze_load_methods.cpp",
   "addr": "0x54E750",
   "sym": "?Save@Kamikaze@@QAEJPAUIStream@@@Z",
   "len": "0x53",
@@ -1975,7 +1975,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/kamikaze_update_methods.cpp",
+  "tu": "match/combat/kamikaze_load_methods.cpp",
   "addr": "0x54E4D0",
   "sym": "?Update@Kamikaze@@QAEXXZ",
   "len": "0xbb",

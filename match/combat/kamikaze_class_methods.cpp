@@ -5,7 +5,6 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x54E6F0  Kamikaze::Clear  (__thiscall)
-//   FUNCTION: GAMEMD 0x54E750  Kamikaze::Save   (__thiscall)
 
 #include "../_layout/kamikaze_class.h"
 
@@ -44,24 +43,4 @@ void Kamikaze::Clear()
     timer.StartTime = CurrentFrame;
     timer.TimeLeft = 1;
     this->UpdateTimer = timer;
-}
-
-// FUNCTION: GAMEMD 0x54E750  (__thiscall)
-// Serialise the node vector: first the node count, then each 8-byte node.
-// Returns the last IStream::Write HRESULT (kept in EAX); a failed write breaks
-// out early and is returned verbatim.
-HRESULT Kamikaze::Save(IStream* pStm)
-{
-    int count = Nodes.Count;
-    HRESULT hr = pStm->Write(&count, 4, 0);
-    if (hr >= 0)
-    {
-        for (int i = 0; i < count; ++i)
-        {
-            hr = pStm->Write(Nodes.Items[i], 8, 0);
-            if (hr < 0)
-                break;
-        }
-    }
-    return hr;
 }
