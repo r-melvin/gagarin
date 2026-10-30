@@ -97,15 +97,7 @@ void FUN_005BF500(bool flag);
 // FUNCTION: GAMEMD 0x406F40 (decl; reloc) — no arguments, no cleanup.
 void __cdecl FUN_00406F40();
 
-struct ScenarioClass
-{
-    char           _pad000[0x614];   // +0x0000
-    Timer_00683FB0 ElapsedTimer;     // +0x0614
-
-    // FUNCTION: GAMEMD 0x683FB0
-    static void ResumeGame();
-};
-GG_STATIC_ASSERT(offsetof(ScenarioClass, ElapsedTimer) == 0x614);
+#include "scenario_class.h"
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
 extern ScenarioClass* ScenarioInstance;
 

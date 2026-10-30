@@ -106,12 +106,6 @@ struct Map_0053AD00
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance.
 extern Map_0053AD00 MapInstance;
 
-struct ScenarioClass
-{
-    // FUNCTION: GAMEMD 0x53AD00
-    // The tint flag is a bool: as an int it takes the callee-saved register
-    // that retail gives to `b` and the frame slot reuse flips with it.
-    static void RecalcLighting(int r, int g, int b, bool tint);
-};
+#include "scenario_class.h"
 
 #endif  // GG_MATCH_CORE_SCENARIO_CLASS_LIGHTING_RECALC_METHODS_H

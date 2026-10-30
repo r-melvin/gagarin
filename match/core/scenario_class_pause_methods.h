@@ -139,15 +139,7 @@ void __cdecl FUN_00406F00();
 // FUNCTION: GAMEMD 0x5BF500 (decl; reloc) — __fastcall, flag in CL.
 void FUN_005BF500(bool flag);
 
-struct ScenarioClass
-{
-    char           _pad000[0x614];   // +0x0000
-    Timer_00683EB0 ElapsedTimer;     // +0x0614
-
-    // FUNCTION: GAMEMD 0x683EB0
-    static void PauseGame();
-};
-GG_STATIC_ASSERT(offsetof(ScenarioClass, ElapsedTimer) == 0x614);
+#include "scenario_class.h"
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
 extern ScenarioClass* ScenarioInstance;
 

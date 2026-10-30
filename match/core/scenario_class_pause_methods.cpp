@@ -24,8 +24,8 @@ void ScenarioClass::PauseGame()
     FUN_00407150(&DAT_0087E758->First, 0x4000);
 
     if (SessionInstance.GameMode == 0 || SessionInstance.GameMode == 5) {
-        FUN_004068E0(DAT_0083D8EC, ScenarioInstance->ElapsedTimer.GetElapsed());
-        ScenarioInstance->ElapsedTimer.Pause();
+        FUN_004068E0(DAT_0083D8EC, ScenarioInstance->unknown_0614.GetElapsed());
+        ScenarioInstance->unknown_0614.Pause();
     }
 
     FUN_005BF500(true);

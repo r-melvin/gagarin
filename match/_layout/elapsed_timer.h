@@ -42,6 +42,7 @@ struct ScenarioElapsedTimer
         unknown_00 = unknown_04.GetTime();
         unknown_08 = ticks;
     }
+    inline int GetElapsed(); // Scenario count-up use at 0x683EE4 / 0x683FDC.
     void Pause()
     {
         if (unknown_00 != -1) {

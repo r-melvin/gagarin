@@ -14,8 +14,8 @@ void ScenarioClass::ResumeGame()
 {
     MapInstance.FUN_005BDAA0();
 
-    ScenarioInstance->ElapsedTimer.Resume();
-    FUN_004068E0(DAT_0083D908, ScenarioInstance->ElapsedTimer.GetElapsed());
+    ScenarioInstance->unknown_0614.Resume();
+    FUN_004068E0(DAT_0083D908, ScenarioInstance->unknown_0614.GetElapsed());
 
     if (DAT_00887368 != 0) {
         DAT_00887368->SetState(DAT_00A8EB80);

@@ -25,10 +25,7 @@ GG_STATIC_ASSERT(offsetof(HouseClass, RecheckRadar) == 0x5779);
 // this machine.
 extern HouseClass* CurrentPlayer;
 
-struct ScenarioClass
-{
-    static void UpdateLighting();   // GAMEMD 0x53C280 (declared; reloc)
-};
+#include "../core/scenario_class.h"
 
 struct LightningStorm
 {
