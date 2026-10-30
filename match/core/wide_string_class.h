@@ -65,7 +65,6 @@ int __cdecl toupper(int c);
 // `::operator new` / `::operator delete` spellings below.
 void* __cdecl memset(void* d, int c, unsigned int n);
 }
-#pragma intrinsic(memset)
 
 // GLOBAL: GAMEMD 0x887734
 //   The shared empty wide string. `MOV EDI,0x887734` at 0x7B6911 and
@@ -82,28 +81,26 @@ public:
     //
     // These four never appear as out-of-line retail functions in this family;
     // they are the shapes the retail bodies share, and every scored function
-    // below expands them. `__forceinline` sits on the declaration because a
-    // marker on the definition alone leaves cl free to emit a call for some
-    // of the expansions.
+    // below expands them. They are declared inline here.
 
     // Retail 0x7B6760 in its out-of-line form: free the buffer if any and
     // null the slot unconditionally.
-    __forceinline void Release();
+    inline void Release();
 
     // The allocate-and-copy half that 0x7B66D0, 0x7B6880, 0x7B68E0 and
     // 0x7B7600 all share verbatim.
-    __forceinline void Store(const wchar_t* src);
+    inline void Store(const wchar_t* src);
 
     // Retail 0x7B7100 in its out-of-line form: the buffer, or the shared
     // empty string when there is none.
-    __forceinline const wchar_t* Peek() const;
+    inline const wchar_t* Peek() const;
 
     // The append half shared by 0x7B6970, 0x7B6AE0 and 0x7B6B60.
-    __forceinline void Append(const wchar_t* src);
+    inline void Append(const wchar_t* src);
 
     // The measured length, zero when there is no buffer. Retail folds the
     // null case into the loop test at 0x7B76F8 / 0x7B77E8.
-    __forceinline unsigned int Length() const;
+    inline unsigned int Length() const;
 
     // ---- scored entry points, ascending by retail address ----------------
     // FUNCTION: GAMEMD 0x7B66C0 (decl; reloc) -- the default construction,
@@ -168,7 +165,7 @@ public:
 GG_STATIC_ASSERT(sizeof(Obj_007B66D0) == 4
               && offsetof(Obj_007B66D0, Buffer) == 0x00);
 
-__forceinline void Obj_007B66D0::Release()
+inline void Obj_007B66D0::Release()
 {
     if (Buffer != 0) {
         ::operator delete(Buffer);
@@ -176,7 +173,7 @@ __forceinline void Obj_007B66D0::Release()
     Buffer = 0;
 }
 
-__forceinline void Obj_007B66D0::Store(const wchar_t* src)
+inline void Obj_007B66D0::Store(const wchar_t* src)
 {
     int len = (src != 0) ? (int)wcslen(src) + 1 : 1;
     Buffer = (wchar_t*)::operator new(len * 2);
@@ -186,7 +183,7 @@ __forceinline void Obj_007B66D0::Store(const wchar_t* src)
     }
 }
 
-__forceinline const wchar_t* Obj_007B66D0::Peek() const
+inline const wchar_t* Obj_007B66D0::Peek() const
 {
     if (Buffer != 0) {
         return Buffer;
@@ -194,12 +191,12 @@ __forceinline const wchar_t* Obj_007B66D0::Peek() const
     return WideEmptyString;
 }
 
-__forceinline unsigned int Obj_007B66D0::Length() const
+inline unsigned int Obj_007B66D0::Length() const
 {
     return (Buffer != 0) ? wcslen(Buffer) : 0;
 }
 
-__forceinline void Obj_007B66D0::Append(const wchar_t* src)
+inline void Obj_007B66D0::Append(const wchar_t* src)
 {
     wchar_t* old = Buffer;
     int len = (int)wcslen(src) + 1;

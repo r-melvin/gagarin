@@ -96,8 +96,8 @@ struct MSTimerView
     MSClockClass Clock;       // +0x04
     int          Remaining;   // +0x08
 
-    __forceinline MSTimerView() {}
-    __forceinline MSTimerView(int duration)
+    inline MSTimerView() {}
+    inline MSTimerView(int duration)
     {
         StartTime = Clock.GetTime();
         Remaining = duration;
@@ -469,7 +469,7 @@ GG_STATIC_ASSERT(sizeof(MSRectBuild) == 0x10);
 RectangleStruct* MSRectIntersectOut(RectangleStruct* out, const RectangleStruct* clip,
                            const RectangleStruct* self, int* x, int* y);
 
-__forceinline RectangleStruct MSRectIntersect(const RectangleStruct* self, const RectangleStruct& other)
+inline RectangleStruct MSRectIntersect(const RectangleStruct* self, const RectangleStruct& other)
 {
     RectangleStruct rect;
     ((MSRectBuild*)&rect)->Build(0, 0, 0, 0);

@@ -11,7 +11,7 @@
 // GLOBAL: GAMEMD 0x88730C -- the blitter the shape animations redraw through.
 extern MSBlitSurface* DAT_0088730C;
 
-__forceinline static bool MSRectEqual(const RectangleStruct& a, const RectangleStruct& b)
+static inline bool MSRectEqual(const RectangleStruct& a, const RectangleStruct& b)
 {
     return a.X == b.X && a.Y == b.Y && a.Width == b.Width
         && a.Height == b.Height;

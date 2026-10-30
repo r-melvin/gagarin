@@ -67,7 +67,7 @@ void SpotLightClass::AgeStep()
 // element in the virtual call's own argument slot from the top of the loop,
 // where retail holds it in a callee-saved register and copies it into that slot
 // only at the call. 18.8% versus 100% on one edit.
-__forceinline static bool RemoveFrom(DynamicVectorClassLayout& list,
+static inline bool RemoveFrom(DynamicVectorClassLayout& list,
                                      SpotLightClass* item)
 {
     int index = (list.*((Vtbl_SpotlightArray*)list._vtable)->FindItemIndex)(item);
@@ -110,10 +110,10 @@ void FUN_005FF390()
 
 // Shared by both of 0x5FF420's table-filling loops: build a cached low-res
 // BSurface into `*slot` the first time it is needed. Left as a distinct
-// __forceinline helper (rather than folded into the caller) because the
+// inline helper (rather than folded into the caller) because the
 // builder calls it twice, once per table half, on the same literal
 // (0x100, 0x80) dimensions and 0x8000-byte buffer.
-__forceinline static void EnsureGradientSurface(BSurface_005FF800** slot)
+static inline void EnsureGradientSurface(BSurface_005FF800** slot)
 {
     if (*slot == 0)
     {
@@ -140,7 +140,7 @@ __forceinline static void EnsureGradientSurface(BSurface_005FF800** slot)
 // Shared by both loops: seat a throwaway high-res BSurface on the stack via
 // observed Surface/XSurface/BSurface vptr writes. Their sequence alone
 // does not establish the original exception-safety rationale.
-__forceinline static void ConstructRamp(RawSurface_005FF420* ramp)
+static inline void ConstructRamp(RawSurface_005FF420* ramp)
 {
     ((SurfaceFieldInit_004AEC60*)ramp)->Init(0x100, 0x100);
     ramp->LockLevel = 0;
@@ -154,7 +154,7 @@ __forceinline static void ConstructRamp(RawSurface_005FF420* ramp)
 // Downsample the 0x100-tall ramp into the cached 0x80-tall entry, one row at a
 // time, via the cached BSurface table's slot 2: source row is always double the
 // destination row.
-__forceinline static void DownsampleInto(BSurface_005FF800** slot, RawSurface_005FF420* ramp)
+static inline void DownsampleInto(BSurface_005FF800** slot, RawSurface_005FF420* ramp)
 {
     for (int row = 0; row < 0x80; ++row)
     {

@@ -24,7 +24,7 @@ extern SortedTreeNode* g_FileCacheRoot; // GLOBAL: GAMEMD 0x00ABF00C
 // LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) - operator delete.
 
 // The list-walk guard: a real node has both links set (the sentinels do not).
-static __forceinline bool IsListNode(const MixFileClass* mix)
+static inline bool IsListNode(const MixFileClass* mix)
 {
     return mix != 0 && mix->NextNode != 0 && mix->PrevNode != 0;
 }

@@ -394,7 +394,7 @@ struct Obj_00626250
     // FUNCTION: GAMEMD 0x626370
     void FUN_00626370();
     // The release body shared by 0x626290 and 0x6262F0, expanded inline in both.
-    __forceinline void Inline_Release();
+    inline void Inline_Release();
 };
 GG_STATIC_ASSERT(offsetof(Obj_00626250, unknown_100) == 0x100);
 // FUNCTION: GAMEMD 0x626660 (__fastcall)

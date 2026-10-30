@@ -28,7 +28,7 @@
 
 // The playable count as the two release paths want it: one extra slot opens up
 // when the extra-slot flag is clear and there is room for it.
-static __forceinline int Releasable_Slot_Count()
+static inline int Releasable_Slot_Count()
 {
     int playable;
     if (SessionKind == 4) {
@@ -402,7 +402,7 @@ void FUN_0077E430(char* buffer);
 void FUN_005DBB60(char* buffer);
 
 // The change detector of 0x5E32D0, inlined with its arguments into 0x5EC290.
-static __forceinline void Publish_Options_Inline(char force, char poll)
+static inline void Publish_Options_Inline(char force, char poll)
 {
     bool changed = false;
     if (time(0) - DAT_00AC11B8 == 0) {
@@ -622,7 +622,7 @@ void __cdecl FUN_005DAFD0();
 void FUN_00603D30(HWND control, void* surface);
 
 // The status-picture control of slot `index` (0x6D2 + index), -1 outside 0..7.
-static __forceinline int Slot_Picture_Control(int index)
+static inline int Slot_Picture_Control(int index)
 {
     if (index == 0) {
         return 0x6D2;
@@ -771,7 +771,7 @@ extern const wchar_t DAT_00831D9C[];
 
 // The item data of a combo-box entry (the current one when `index` is -1),
 // CB_ERR reading as 0: the body of 0x5E9B20, inlined here.
-static __forceinline int Combo_Item_Data(HWND dialog, int control, int index)
+static inline int Combo_Item_Data(HWND dialog, int control, int index)
 {
     if (index == -1) {
         index = (int)SendDlgItemMessageA(dialog, control, CB_GETCURSEL, 0, 0);
@@ -820,7 +820,7 @@ extern const char DAT_00831C8C[];
 
 // Is a real (non-singleton) player seated in the slot the extra-slot index
 // names, as an observer? The first test of both 0x5E9580 and 0x5E95E0.
-static __forceinline bool Observer_At_Extra_Slot()
+static inline bool Observer_At_Extra_Slot()
 {
     for (int i = 0; i < 8; i++) {
         NodeNameType* node = Slots[i];

@@ -27588,7 +27588,7 @@
   "len": "0x21c",
   "name": "CCINIClass::ReadTypeIdList",
   "status": "partial",
-  "pct": 19.1
+  "pct": 20.4
  },
  {
   "tu": "match/platform/ccini_class_type_list_methods.cpp",

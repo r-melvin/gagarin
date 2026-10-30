@@ -23,7 +23,7 @@ extern Obj_004355B0 DAT_00A80220;
 
 // Colour for the glyph being drawn: the font colour, or while inside the fade
 // window the font colour blended towards DAT_00A80220.
-static __forceinline int FadedColor(unsigned short color, int remaining, int step, int fadeLength)
+static inline int FadedColor(unsigned short color, int remaining, int step, int fadeLength)
 {
     unsigned char red   = (unsigned char)(color >> gg_b_translucent_pixel_format.pos0 << gg_b_translucent_pixel_format.loss0);
     unsigned char green = (unsigned char)(color >> gg_b_translucent_pixel_format.pos1 << gg_b_translucent_pixel_format.loss1);
@@ -35,7 +35,7 @@ static __forceinline int FadedColor(unsigned short color, int remaining, int ste
 
 // Draws [from, to) one glyph at a time. Returns false when the fade window
 // ends the text early.
-static __forceinline bool DrawRun(BitFont* font, const unsigned short* from, const unsigned short* to,
+static inline bool DrawRun(BitFont* font, const unsigned short* from, const unsigned short* to,
                            int& penX, int penY, int& drawIndex, int fadeStart, int fadeLength)
 {
     unsigned short color = font->unknown_24;
@@ -58,7 +58,7 @@ static __forceinline bool DrawRun(BitFont* font, const unsigned short* from, con
 
 // Left edge of a line of lineWidth pixels inside maxWidth: centred (alignment
 // bit 0), right-aligned (bit 1) or flush left.
-static __forceinline int LineStart(int x, int maxWidth, int lineWidth, int alignment)
+static inline int LineStart(int x, int maxWidth, int lineWidth, int alignment)
 {
     int offset = 0;
     if (maxWidth > lineWidth) {

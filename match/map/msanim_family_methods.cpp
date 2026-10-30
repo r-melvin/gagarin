@@ -330,7 +330,7 @@ int MSCountPages(Obj_007B66D0_msanim_family_methods* text, MSFont* font, int lim
 // The time still on the clock. Zero once the interval has run out; the whole
 // interval when the timer is already paused, since a paused timer stamps its
 // start as -1 and keeps its remainder in +0x18.
-__forceinline int MSAnim::TimeLeft()
+inline int MSAnim::TimeLeft()
 {
     int remain = Timer.Remaining;
 

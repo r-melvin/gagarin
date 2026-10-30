@@ -112,7 +112,7 @@ public:
     virtual void Attach(void* target);                     // slot 8, 0x5CEB50
 
     // The time still on the clock; forced inline into MSPrintAnim::Update (0x5CDC50), defined with it.
-    __forceinline int TimeLeft();
+    inline int TimeLeft();
 
     int     Field04;    // +0x04
     int     Field08;    // +0x08

@@ -18,7 +18,7 @@ struct IndexClassRaw
     // FUNCTION: GAMEMD 0x49EA10 (decl; reloc) -- zero all five fields.
     IndexClassRaw();
 
-    __forceinline void Clear();
+    inline void Clear();
 };
 GG_STATIC_ASSERT(offsetof(IndexClassRaw, IndexTable) == 0);
 GG_STATIC_ASSERT(offsetof(IndexClassRaw, IndexCount) == 4);
@@ -26,7 +26,7 @@ GG_STATIC_ASSERT(offsetof(IndexClassRaw, IndexSize) == 8);
 GG_STATIC_ASSERT(offsetof(IndexClassRaw, IsSorted) == 0xC);
 GG_STATIC_ASSERT(offsetof(IndexClassRaw, Archive) == 0x10);
 GG_STATIC_ASSERT(sizeof(IndexClassRaw) == 0x14);
-__forceinline void IndexClassRaw::Clear()
+inline void IndexClassRaw::Clear()
 {
     FUN_007C8B3D(IndexTable);
     IndexTable = 0;

@@ -132,7 +132,7 @@ bool BeaconClass::VisibleToPlayer() const
 
 // Free every live beacon pointer and zero the count; skipped entirely when no
 // beacons are allocated. Expanded into both the destructor and Reset.
-static __forceinline void ReleaseBeacons(BeaconManagerClass* manager)
+static inline void ReleaseBeacons(BeaconManagerClass* manager)
 {
     if (manager->AllocatedCount != 0)
     {

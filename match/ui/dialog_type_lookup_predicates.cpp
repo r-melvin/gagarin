@@ -15,7 +15,7 @@
 // `n ? &n->Value : 0` guard: that guard is the first of retail's two null tests
 // on the hit path, and the caller's own `p ? p->Field6C : 0` is the second.
 // Dropping either one loses the `ADD EAX,4` block entirely.
-__forceinline static MapValue_00602B90* Inline_00600CA0(int nKey)
+static inline MapValue_00602B90* Inline_00600CA0(int nKey)
 {
     if (DAT_00AC1B00.Count != 0)
     {

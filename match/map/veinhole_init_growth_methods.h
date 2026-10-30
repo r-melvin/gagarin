@@ -65,7 +65,7 @@ struct Stack_0074DE90
     // The constructor body, expanded by hand: under /GX a real `new T` wraps
     // the allocation in an exception frame retail does not have (the banked
     // rule, see match/core/campaign_class.cpp).
-    __forceinline Stack_0074DE90* Construct()
+    inline Stack_0074DE90* Construct()
     {
         int n = DAT_008871E0->MaxVeinholeGrowth;
         this->Unknown_0C = 0;
@@ -79,7 +79,7 @@ struct Stack_0074DE90
         return this;
     }
 
-    __forceinline void Clear()
+    inline void Clear()
     {
         for (int i = 0; i <= this->Count; i++) {
             this->Items[i] = 0;

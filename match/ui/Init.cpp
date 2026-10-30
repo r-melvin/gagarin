@@ -2248,9 +2248,9 @@ public:
     // FUNCTION: GAMEMD 0x48BC20 (decl; reloc)
     static int __cdecl Comparator(const void* ptr1, const void* ptr2);
 
-    __forceinline bool IncreaseTableSize(int amount);
-    __forceinline NodeElement* SearchForNode(const int& id) const;
-    __forceinline bool IsPresentImpl(const int& id) const;
+    inline bool IncreaseTableSize(int amount);
+    inline NodeElement* SearchForNode(const int& id) const;
+    inline bool IsPresentImpl(const int& id) const;
 
     NodeElement* IndexTable;   // +0x00
     int          IndexCount;   // +0x04
@@ -2390,7 +2390,7 @@ void FUN_00532150()
     DAT_0087F680.AddIndex(0x20, (void* const&)centerREvent);
 }
 
-__forceinline bool IndexClassC::IncreaseTableSize(int amount)
+inline bool IndexClassC::IncreaseTableSize(int amount)
 {
     if (amount < 0) return false;
 
@@ -2413,7 +2413,7 @@ __forceinline bool IndexClassC::IncreaseTableSize(int amount)
     return false;
 }
 
-__forceinline IndexClassC::NodeElement* IndexClassC::SearchForNode(const int& id) const
+inline IndexClassC::NodeElement* IndexClassC::SearchForNode(const int& id) const
 {
     if (!IsSorted) {
         FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
@@ -2443,7 +2443,7 @@ __forceinline IndexClassC::NodeElement* IndexClassC::SearchForNode(const int& id
     return 0;
 }
 
-__forceinline bool IndexClassC::IsPresentImpl(const int& id) const
+inline bool IndexClassC::IsPresentImpl(const int& id) const
 {
     if (IndexCount == 0) {
         return false;

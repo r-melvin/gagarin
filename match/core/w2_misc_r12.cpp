@@ -136,7 +136,7 @@ extern int DAT_00B054E0;
 // GLOBAL: GAMEMD 0xB054D4
 extern SchemeRec_0068CA50** DAT_00B054D4;
 
-__forceinline int SchemeIndex_0068CA50(const char* name, int id)
+inline int SchemeIndex_0068CA50(const char* name, int id)
 {
     for (int i = 0; i < DAT_00B054E0; i++) {
         if (_stricmp(name, DAT_00B054D4[i]->Name) == 0 && DAT_00B054D4[i]->Id == id) {

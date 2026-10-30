@@ -1502,13 +1502,8 @@ extern int DAT_007F4890[32];
 // Restart one animation slot with the artwork the building's current state
 // calls for: the damaged name once health has fallen to the yellow threshold,
 // otherwise the garrisoned name while somebody is inside, otherwise the plain
-// one. Retail inlines this five times over, once per slot, so it has to be
-// `__forceinline` here — plain `inline` gets four copies in and then leaves
-// the fifth as an out-of-line call, which costs 30 points on its own. The
-// marker has to sit on the DECLARATION in the header as well as on the
-// definition: with it on the definition alone cl still leaves the fifth copy
-// out of line (78.8% versus 100.0%).
-static __forceinline void PlayNthAnim(BuildingClass* self, int slot, int effectDelay)
+// one. Retail inlines this five times over, once per slot.
+static inline void PlayNthAnim(BuildingClass* self, int slot, int effectDelay)
 {
     if (self->Anims[slot] != 0) {
         int damaged = self->GetHealthPercentage()

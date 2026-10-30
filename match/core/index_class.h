@@ -85,12 +85,11 @@ public:
     static int __cdecl Comparator(const void* ptr1, const void* ptr2);
 
     // The two halves every public operation shares. Retail has both expanded
-    // into their callers, so they are forced inline and declared here rather
-    // than in the translation unit; `__forceinline` has to sit on the
-    // declaration or cl leaves one of the copies as a call.
-    __forceinline bool IncreaseTableSize(int amount);
-    __forceinline NodeElement* SearchForNode(const int& id) const;
-    __forceinline bool IsPresentImpl(const int& id) const;
+    // into their callers, so they are declared inline here rather than in
+    // the translation unit.
+    inline bool IncreaseTableSize(int amount);
+    inline NodeElement* SearchForNode(const int& id) const;
+    inline bool IsPresentImpl(const int& id) const;
 
     NodeElement* IndexTable;   // +0x00
     int          IndexCount;   // +0x04
@@ -128,8 +127,8 @@ public:
     // FUNCTION: GAMEMD 0x52B720
     static int __cdecl Comparator(const void* ptr1, const void* ptr2);
 
-    __forceinline NodeElement* SearchForNode(const int& id) const;
-    __forceinline bool IsPresentImpl(const int& id) const;
+    inline NodeElement* SearchForNode(const int& id) const;
+    inline bool IsPresentImpl(const int& id) const;
 
     NodeElement* IndexTable;   // +0x00
     int          IndexCount;   // +0x04

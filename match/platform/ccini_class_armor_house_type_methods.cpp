@@ -11,7 +11,7 @@
 // only the free-function form over the global container reproduces — the
 // same lever the movie reader needs in
 // ccini_class_theater_theme_methods.cpp.
-static __forceinline int IndexOfHouseType(HouseType_005113F0* house)
+static inline int IndexOfHouseType(HouseType_005113F0* house)
 {
     int count = DAT_00A83C98.Count;
 

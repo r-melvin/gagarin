@@ -142,7 +142,7 @@ static inline CellStruct OffsetCell_00486C50(CellStruct cell, const short* offse
 // general case grows a copy of the first rectangle left/up to cover the
 // second and then extends its right/bottom edge, the `+1` being retail's
 // inclusive-edge convention.
-static __forceinline RectangleStruct Union_00486E70(RectangleStruct const& b,
+static inline RectangleStruct Union_00486E70(RectangleStruct const& b,
                                                     RectangleStruct const& a)
 {
     if (a.Width <= 0 || a.Height <= 0) {
@@ -1350,7 +1350,6 @@ extern int DAT_0087E2A0;
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" size_t __cdecl strlen(const char* s);
-#pragma intrinsic(strlen)
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
@@ -1420,7 +1419,6 @@ extern "C" const char DAT_0084E865[];
 
 
 extern "C" char* __cdecl strcpy(char* dst, const char* src);
-#pragma intrinsic(strcpy)
 extern "C" char* __cdecl _strupr(char* text);
 
 #include "../_layout/text_004f4cb0.h"

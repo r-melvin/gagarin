@@ -105,7 +105,7 @@
 // what leaves retail's dead "count minus one" local in the frame. Retail
 // has this expanded into AddIndex, with its own early return for a negative
 // amount surviving as the one conditional on the doubling path.
-__forceinline bool IndexClass::IncreaseTableSize(int amount)
+inline bool IndexClass::IncreaseTableSize(int amount)
 {
     if (amount < 0) return false;
 
@@ -132,7 +132,7 @@ __forceinline bool IndexClass::IncreaseTableSize(int amount)
 // walks a shrinking (base, count) window rather than a pair of indices, which
 // is why retail advances a pointer and folds the count adjustment into one
 // add.
-__forceinline IndexClass::NodeElement* IndexClass::SearchForNode(const int& id) const
+inline IndexClass::NodeElement* IndexClass::SearchForNode(const int& id) const
 {
     if (!IsSorted) {
         FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
@@ -163,7 +163,7 @@ __forceinline IndexClass::NodeElement* IndexClass::SearchForNode(const int& id) 
 }
 
 // The lookup both IsPresent and FetchIndex are built from.
-__forceinline bool IndexClass::IsPresentImpl(const int& id) const
+inline bool IndexClass::IsPresentImpl(const int& id) const
 {
     if (IndexCount == 0) {
         return false;
@@ -183,7 +183,7 @@ __forceinline bool IndexClass::IsPresentImpl(const int& id) const
     return false;
 }
 
-__forceinline IndexClassB::NodeElement* IndexClassB::SearchForNode(const int& id) const
+inline IndexClassB::NodeElement* IndexClassB::SearchForNode(const int& id) const
 {
     if (!IsSorted) {
         FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
@@ -213,7 +213,7 @@ __forceinline IndexClassB::NodeElement* IndexClassB::SearchForNode(const int& id
     return 0;
 }
 
-__forceinline bool IndexClassB::IsPresentImpl(const int& id) const
+inline bool IndexClassB::IsPresentImpl(const int& id) const
 {
     if (IndexCount == 0) {
         return false;
@@ -454,7 +454,7 @@ struct INISectionEntryView
     // FUNCTION: GAMEMD 0x52A4D0
     INIClass::INIEntry* FindEntry(const char* name);
 
-    __forceinline INIClass::INIEntry* const& Fetch(int key);
+    inline INIClass::INIEntry* const& Fetch(int key);
 };
 GG_STATIC_ASSERT(offsetof(INISectionEntryView, Items)    == 0x2C);
 GG_STATIC_ASSERT(offsetof(INISectionEntryView, Count)    == 0x30);

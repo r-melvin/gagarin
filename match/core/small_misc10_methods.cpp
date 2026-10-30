@@ -11,7 +11,7 @@
 // retail materialises the zero into a register before storing
 // (`XOR EAX,EAX; MOV [ECX+0xC],EAX`), which is the inlined-return shape, where
 // a plain `sink->at0C = 0;` stores the immediate.
-static __forceinline int ProviderValue_00410230()
+static inline int ProviderValue_00410230()
 {
     if (DAT_00A8B230 == 0) {
         return 0;

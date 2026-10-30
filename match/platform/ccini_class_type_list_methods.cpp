@@ -356,7 +356,7 @@ TypeListInt CCINI_00475C70::ReadIntegerList(const char* section, const char* key
 // Append one resolved record to a list as a packed identity. Retail expands
 // this twice, once per registry, and cross-jumps only the constructor call
 // the two copies share, which is why each copy keeps a temporary of its own.
-static __forceinline void AddTypeId(TypeListInt& list, AbstractType_006E6AB0* type)
+static inline void AddTypeId(TypeListInt& list, AbstractType_006E6AB0* type)
 {
     const TypeId_00476240& id = TypeId_00476240(type);
 

@@ -94,7 +94,7 @@ GG_STATIC_ASSERT(offsetof(GgRadarEventDynamicVector, CapacityIncrement) == 0x14)
 // The SHA-1 engine's constructor. Retail's store order - the unknown_00 byte,
 // then Length, then PendingCount, then the five chaining seeds - is the
 // initialiser list followed by the body, so it is written that way.
-__forceinline Sha1State::Sha1State() : unknown_00(false), Length(0), PendingCount(0)
+inline Sha1State::Sha1State() : unknown_00(false), Length(0), PendingCount(0)
 {
     Chain[0] = GG_SHA_SA;
     Chain[1] = GG_SHA_SB;
@@ -106,7 +106,7 @@ __forceinline Sha1State::Sha1State() : unknown_00(false), Length(0), PendingCoun
 // Clear the object back to its post-construction state, so no seed material is
 // left behind. The pool clear is a constant-sized dword-aligned memset, which
 // is where retail's `REP STOSD` of 0x40 dwords comes from.
-__forceinline void RandomStraw::ResetInline()
+inline void RandomStraw::ResetInline()
 {
     BitsSeeded = 0;
     Current = 0;
@@ -116,7 +116,7 @@ __forceinline void RandomStraw::ResetInline()
 // Hash the seed pool over itself twenty bytes at a time, so every seed bit ends
 // up influencing every other one. `count` is an unsigned comparison because
 // both arms are sizeof expressions, which is what makes 0x661BDD a `JBE`.
-__forceinline void RandomStraw::ScrambleInline()
+inline void RandomStraw::ScrambleInline()
 {
     Sha1State sha;
 
@@ -135,7 +135,7 @@ __forceinline void RandomStraw::ScrambleInline()
 // eight wrapped into the pool's length, which is the `CDQ; AND EDX,7; SAR 3;
 // AND EAX,0xFF` run at 0x66177C. The bit is only formed inside the guarded arm,
 // which is where retail sinks it too.
-__forceinline void RandomStraw::AddBitInline(int seed)
+inline void RandomStraw::AddBitInline(int seed)
 {
     char* ptr = ((char*)&Random[0]) + ((BitsSeeded / 8) % sizeof(Random));
 

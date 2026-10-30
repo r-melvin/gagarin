@@ -83,7 +83,7 @@ ParasiteClass::ParasiteClass(void* owner) : TimerA(0), TimerB(0)
 // SYNTHETIC: GAMEMD 0x62AF70 -- the scalar deleting destructor (??_G) with this body expanded into it
 // Releases the subject and leaves both registries; the base destructor runs last. Retail also keeps an
 // unreferenced out-of-line copy at 0x6293E0 that this build does not reproduce.
-__forceinline ParasiteClass::~ParasiteClass()
+inline ParasiteClass::~ParasiteClass()
 {
     unknown_4C = 0;
     unknown_50 = 0;

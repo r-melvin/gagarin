@@ -12,7 +12,7 @@ float __cdecl FUN_004CAC40(double value);
 
 // The uniform [0, 1) draw that retail expands in place here (its out-of-line
 // copy is 0x598000): the raw 32-bit draw scaled by 2^-32.
-static __forceinline double UniformDraw()
+static inline double UniformDraw()
 {
     unsigned int draw = DAT_00ABE890.FUN_0065C780();
     return (double)draw * 2.3283064370807974e-10;

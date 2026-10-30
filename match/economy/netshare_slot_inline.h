@@ -3,7 +3,7 @@
 //   Inline slot-search helpers shared by the netshare.cpp slot code. Retail has
 //   each as an out-of-line function (0x5E96A0 and 0x5E9720) and as an inlined
 //   copy inside the control readers (0x5E9C00, 0x5E9CE0), which is why they are
-//   __forceinline helpers here with the out-of-line copies as thin wrappers.
+//   inline helpers here with the out-of-line copies as thin wrappers.
 #ifndef GG_MATCH_ECONOMY_NETSHARE_SLOT_INLINE_H
 #define GG_MATCH_ECONOMY_NETSHARE_SLOT_INLINE_H
 
@@ -21,7 +21,7 @@ extern int DAT_00A8B2DC[8];
 
 // Does any seated player, or any entry of the house-choice table, hold this
 // choice? -2 never matches.
-static __forceinline bool House_Choice_In_Use(int choice)
+static inline bool House_Choice_In_Use(int choice)
 {
     if (choice != -2) {
         for (int i = 0; i < 8; i++) {
@@ -44,7 +44,7 @@ static __forceinline bool House_Choice_In_Use(int choice)
 }
 
 // The same question against the second choice table and its reader.
-static __forceinline bool Colour_Choice_In_Use(int choice)
+static inline bool Colour_Choice_In_Use(int choice)
 {
     if (choice != -2) {
         for (int i = 0; i < 8; i++) {
@@ -92,7 +92,7 @@ static inline int Map_Player_Limit(int index)
 
 // The control id of slot `index` (0x411 + index), -1 outside 0..7: the body of
 // 0x5E98F0, inlined into the slot-enable routines.
-static __forceinline int Slot_Control_Id(int index)
+static inline int Slot_Control_Id(int index)
 {
     if (index == 0) {
         return 0x411;
@@ -120,7 +120,7 @@ static __forceinline int Slot_Control_Id(int index)
 
 // The slot showing a name, case-insensitively, or -1: the slot search of
 // 0x5E8D00, inlined into other routines.
-static __forceinline int Slot_Showing_Name(const wchar_t* name)
+static inline int Slot_Showing_Name(const wchar_t* name)
 {
     for (int i = 0; i < 8; i++) {
         NodeNameType* node = Slots[i];
@@ -132,7 +132,7 @@ static __forceinline int Slot_Showing_Name(const wchar_t* name)
 }
 
 // The same search for the local player (the vector's first node), as 0x5E8D40.
-static __forceinline int Local_Player_Slot()
+static inline int Local_Player_Slot()
 {
     if (PlayerNodes.Count == 0) {
         return -1;
@@ -141,7 +141,7 @@ static __forceinline int Local_Player_Slot()
 }
 
 // The singleton node for a kind number 2..7, or null: the body of 0x5E9800.
-static __forceinline NodeNameType* Node_For_Kind(int kind)
+static inline NodeNameType* Node_For_Kind(int kind)
 {
     if (kind == 2) {
         return OpenNode;
@@ -163,7 +163,7 @@ static __forceinline NodeNameType* Node_For_Kind(int kind)
 
 // How many of the eight slots are playable in this session kind (the body of
 // the slot-count helper of netshare_slot_nodes.cpp, as inlined elsewhere).
-static __forceinline int Playable_Slot_Count()
+static inline int Playable_Slot_Count()
 {
     int playable;
     if (SessionKind == 4) {
@@ -180,7 +180,7 @@ static __forceinline int Playable_Slot_Count()
 
 // A singleton node's kind number, 2..7; anything else answers 2: the body of
 // 0x5E97A0, inlined into other routines.
-static __forceinline int Kind_Of_Node(NodeNameType* node)
+static inline int Kind_Of_Node(NodeNameType* node)
 {
     if (node == OpenNode) {
         return 2;

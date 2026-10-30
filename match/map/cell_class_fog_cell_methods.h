@@ -73,7 +73,7 @@ struct FogVec_00486A70
     // The constructor body, expanded by hand: under /GX a real `new T` wraps
     // the allocation in an exception frame with an unwind funclet that retail
     // does not have (the banked rule, see match/core/campaign_class.cpp).
-    __forceinline FogVec_00486A70* Construct()
+    inline FogVec_00486A70* Construct()
     {
         this->Base.Items         = 0;
         this->Base.Capacity      = 0;

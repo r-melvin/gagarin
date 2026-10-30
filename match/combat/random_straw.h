@@ -64,7 +64,6 @@ extern "C" void* __cdecl FUN_007CA090(void* dest, const void* src, unsigned int 
 // expansion of a constant-sized, dword-aligned memset. Declared here rather
 // than pulled from <string.h> so the translation unit stays self-contained.
 extern "C" void* __cdecl memset(void* dest, int value, size_t count);
-#pragma intrinsic(memset)
 
 // ---------------------------------------------------------------------------
 // Generator_0065C890 - the 8-byte generator RandomStraw keeps 32 of.
@@ -114,7 +113,7 @@ struct Sha1State
 
     // The constructor is forced inline because retail has no out-of-line copy
     // of it: it appears expanded at every one of the five scramble sites.
-    __forceinline Sha1State();
+    inline Sha1State();
 
     // FUNCTION: GAMEMD 0x69D9E0  Sha1State::Result
     int  Result(void* result) const;
@@ -174,9 +173,9 @@ public:
     // site. Each is written once as a forced-inline member and the out-of-line
     // address gets its own one-line wrapper below, which is the recipe this
     // tree has banked for a helper that exists in both forms.
-    __forceinline void ResetInline();
-    __forceinline void ScrambleInline();
-    __forceinline void AddBitInline(int seed);
+    inline void ResetInline();
+    inline void ScrambleInline();
+    inline void AddBitInline(int seed);
 
     void  Reset();
     int   FUN_00661750() const;

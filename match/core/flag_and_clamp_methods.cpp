@@ -30,7 +30,7 @@ void Obj_00401000::FUN_00401170()
 // (`MOV EAX,0x64; MOV [ECX+0x68],EAX`). Early-returning arms or a conditional
 // expression make VC6 go branchless or lose the arm shape; two successive
 // `if`s on one local reproduce the three-arm layout byte-for-byte.
-static __forceinline int ClampPercent(int value)
+static inline int ClampPercent(int value)
 {
     int result = value;
     if (result > 100) {

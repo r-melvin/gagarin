@@ -441,7 +441,7 @@ inline Owner_00626C60::Owner_00626C60() throw()
 // guard is the first of retail's two null tests on the hit path and the
 // caller's own `p ? p->Field6C : 0` is the second. Dropping either one loses
 // the `ADD EAX,4` block.
-__forceinline static MapValue_00602B90* Inline_00600CA0(int nKey)
+static inline MapValue_00602B90* Inline_00600CA0(int nKey)
 {
     if (DAT_00AC1B00.Count != 0)
     {
@@ -538,13 +538,12 @@ extern double DAT_00AC1B40;
 #include "../core/global_getter_family_methods.h"
 #include "../core/trivial_tu181_methods.h"
 #include "ownrdraw_dialog_control.h"
-#pragma intrinsic(strcmp)
 #include "../audio/voc_class_play_global_methods.h"
 
 // The probe every function here opens with, expanded inline. Same shape as
 // the one proven at 0x602B90: the inner `n ? &n->Value : 0` guard is the first
 // of retail's two null tests on the hit path, the caller's own check the second.
-__forceinline static MapValue_00602B90* Inline_Probe(int nKey)
+static inline MapValue_00602B90* Inline_Probe(int nKey)
 {
     if (DAT_00AC1B00.Count != 0)
     {
@@ -572,7 +571,7 @@ extern int DAT_00AC48B4;
 template struct HashTable_006249A0<int, MapValue_00602B90>;
 template struct HashTable_006249A0<int, int>;
 
-__forceinline void Obj_00626250::Inline_Release()
+inline void Obj_00626250::Inline_Release()
 {
     if (unknown_100 != 0)
     {
@@ -3824,7 +3823,7 @@ extern int DAT_007F5BF8;
 
 // The margin that centres an 800 x 600 layout in a larger parent, or zero when
 // the session flag says the layout fills the parent.
-__forceinline static int Inline_CentreMargin(bool bFills, int nExtent, int nDesign)
+static inline int Inline_CentreMargin(bool bFills, int nExtent, int nDesign)
 {
     return bFills ? 0 : ((nExtent - nDesign) / 2 < 0 ? 0 : (nExtent - nDesign) / 2);
 }
@@ -3848,7 +3847,7 @@ void FUN_0060AF50(GG_HWND hWnd, RectangleStruct* pRect)
 
 // The centring margin of 0x60B550: zero when the session flag says the
 // layout fills the parent, else half the spare room, never negative.
-__forceinline static unsigned Inline_DockMargin(bool bFills, int nParent, int nDesign)
+static inline unsigned Inline_DockMargin(bool bFills, int nParent, int nDesign)
 {
     unsigned nMargin = 0;
 
@@ -4062,7 +4061,7 @@ void FUN_0060B740(GG_HWND hWnd)
 
 // The shift that centres a design extent in a parent that is larger (never
 // negative) or smaller (negative) than it, expanded inline in 0x60B7A0.
-__forceinline static unsigned Inline_FillShift(int nParent, int nDesign)
+static inline unsigned Inline_FillShift(int nParent, int nDesign)
 {
     unsigned nShift = 0;
 

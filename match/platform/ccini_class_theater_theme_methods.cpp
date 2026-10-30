@@ -12,7 +12,7 @@
 // written as a loop in the reader's own body, the pointer is homed in a
 // callee-saved register and the whole register rotation turns over (6.0%
 // against 100%).
-static __forceinline int IndexOfMovie(MovieType_006A4550* movie)
+static inline int IndexOfMovie(MovieType_006A4550* movie)
 {
     int count = DAT_008B4120.Count;
 
