@@ -609,29 +609,14 @@ inline int PlanningMissionIsMove(int mission)
 //
 // PlanningNodeClass::FUN_00634290 -- linear scan of this node's member array for
 // the one whose owner word matches `owner`; returns its index, or -1 when the
-// node is empty or nothing matches. The search sits under `if (count > 0)`
-// (retail's `OR EAX,0xffffffff` seeds the -1 answer before the guard) rather
-// than folding the empty case into the loop test, so an empty node returns -1
-// without ever touching Members.Items.
-// PARTIAL (92.3%, 24/26): a `for` over the entries with a `break` on the first
-// owner match, written `count > i` as the loop test, gives retail's single
-// guarded loop with the walk as a raw entry-pointer increment, the `OR EAX,-1`
-// seed and the unrotated test. The one residual instruction is the loop test's
-// direction: retail has `CMP EDX,ESI; JL`, this has `CMP ESI,EDX; JG` (the
-// `i < count` spelling gives the retail compare but swaps the EDX/ESI roles,
-// 69.2%).
+// node is empty or nothing matches.
 int PlanningNodeClass::FUN_00634290(TechnoClass* owner)
 {
     int index = -1;
-    int count = this->Members.Count;
-    int i = 0;
-    if (count > 0) {
-        PlanningMemberClass** entries = this->Members.Items;
-        for (; count > i; i++, entries++) {
-            if ((*entries)->Owner == owner) {
-                index = i;
-                break;
-            }
+    for (int i = 0; i < Members.Count; i++) {
+        if (Members.Items[i]->Owner == owner) {
+            index = i;
+            break;
         }
     }
     return index;
