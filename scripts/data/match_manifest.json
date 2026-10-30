@@ -45383,7 +45383,7 @@
   "len": "0xA17",
   "name": "DSurface::unknown_34",
   "status": "partial",
-  "pct": 2.8,
+  "pct": 4.5,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
  },

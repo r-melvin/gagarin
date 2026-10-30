@@ -260,7 +260,6 @@ void SpawnManagerClass::SetTarget(AbstractClass* pTarget)
 // unlinked from this manager. Then the target, pending target and status are
 // all cleared.
 // Under /Ob2 cl would fold this body into its callers; retail keeps the call.
-#pragma auto_inline(off)
 void SpawnManagerClass::ResetTarget()
 {
     for (int i = 0; i < SpawnedNodes.Count; ++i) {
@@ -276,7 +275,6 @@ void SpawnManagerClass::ResetTarget()
     NewTarget = 0;
     Target = 0;
 }
-#pragma auto_inline(on)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B7C40

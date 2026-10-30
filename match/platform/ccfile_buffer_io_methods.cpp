@@ -19,7 +19,6 @@
 // Preserve the native RawFile method name; call the Win32 import explicitly.
 #undef DeleteFile
 
-#pragma function(memcpy)
 
 
 // FUNCTION: GAMEMD 0x431E80  BufferIOFileClass::SetFileName (__thiscall, slot 2)

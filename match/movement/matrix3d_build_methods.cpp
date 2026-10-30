@@ -7,9 +7,6 @@
 #include "../renderer/matrix3d_rotate_methods.h"
 #include <math.h>
 
-// Native 0x5AF410 calls the CRT atan2 rather than the x87 intrinsic.
-#pragma function(atan2)
-
 // Existing runtime call used by the heading methods; source body unchanged.
 extern "C" double __cdecl FUN_004CAE30(double y, double x);
 
@@ -487,7 +484,7 @@ double Matrix3D::GetYRotation() const
     Vector3D axis(0.0f, 0.0f, 1.0f);
     Vector3D tmp;
     Vector3D res = *MatrixApply(&tmp, this, &axis);
-    return atan2(res.X, res.Z);
+    return FUN_004CAE30(res.X, res.Z);
 }
 
 // FUNCTION: GAMEMD 0x5AF470

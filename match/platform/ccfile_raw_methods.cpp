@@ -19,7 +19,6 @@
 // Preserve the native RawFile method name; call the Win32 import explicitly.
 #undef DeleteFile
 
-#pragma function(memcpy)
 
 
 // GLOBAL: GAMEMD 0xB04BEC

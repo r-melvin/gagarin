@@ -19,7 +19,6 @@
 // Preserve the native RawFile method name; call the Win32 import explicitly.
 #undef DeleteFile
 
-#pragma function(memcpy)
 
 
 // Standard placement new: returns the placement pointer unchanged. Used by
@@ -104,7 +103,7 @@ int CCFileClass::ReadBytes(void* pBuffer, int nBytes)
             nBytes = available;
         }
         if (nBytes != 0) {
-            memcpy(pBuffer, (char*)this->Buffer.Buffer + this->Position, nBytes);
+            memmove(pBuffer, (char*)this->Buffer.Buffer + this->Position, nBytes);
             this->Position = this->Position + nBytes;
         }
         if (opened) {

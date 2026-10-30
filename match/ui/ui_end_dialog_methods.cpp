@@ -6,7 +6,6 @@
 #include <string.h>
 #include "ui_end_dialog_methods.h"
 
-#pragma function(memcpy)
 
 // FUNCTION: GAMEMD 0x622720  UI::EndDialog
 //
@@ -36,8 +35,8 @@ void UI_EndDialog(void* hWnd)
 
 found:
     {
-        memcpy(&DAT_00B72D28[i], &DAT_00B72D28[i + 1],
-               (DAT_00B72F50 - (i + 1)) * sizeof(DialogEntry_00622720));
+        memmove(&DAT_00B72D28[i], &DAT_00B72D28[i + 1],
+                (DAT_00B72F50 - (i + 1)) * sizeof(DialogEntry_00622720));
         DAT_00B72D28[DAT_00B72F50 - 1].Window = 0;
         DAT_00B72D28[DAT_00B72F50 - 1].Id = 0;
         DAT_00B72F50--;

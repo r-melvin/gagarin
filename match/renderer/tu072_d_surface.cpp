@@ -68,7 +68,6 @@
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" size_t __cdecl strlen(const char* s);
-#pragma intrinsic(strlen)
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
@@ -139,7 +138,6 @@ extern "C" const char DAT_0084E865[];
 
 
 extern "C" char* __cdecl strcpy(char* dst, const char* src);
-#pragma intrinsic(strcpy)
 extern "C" char* __cdecl _strupr(char* text);
 
 #include "../_layout/text_004f4cb0.h"
@@ -187,7 +185,6 @@ static inline RectangleStruct Intersect(const RectangleStruct* a, const Rectangl
 #include "../render/blitters/r_shared_zwrap.h"
 #include "../render/blitters/b_shared_alpha.h"
 
-#pragma function(sqrt)
 
 // Circular row buffer object behind the Z buffer (0x887644) and the alpha buffer (0x87E8A4). Only the fields
 // the line reads are modelled: +0x04 / +0x24 / +0x28 locate the pixel origin, +0x18 / +0x1C bound the
