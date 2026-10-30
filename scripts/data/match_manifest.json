@@ -27888,7 +27888,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/input_manager_class_methods.cpp",
+  "tu": "match/platform/keyboard_ring_methods.cpp",
   "addr": "0x54F5C0",
   "sym": "?IsKeyPressed@InputManagerClass@@QBE_NH@Z",
   "len": "0x46",
@@ -27897,7 +27897,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/input_manager_class_methods.cpp",
+  "tu": "match/platform/keyboard_ring_methods.cpp",
   "addr": "0x54F720",
   "sym": "?DoSomething@InputManagerClass@@QAEXXZ",
   "len": "0x69",
@@ -143137,7 +143137,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/input_manager_queue_methods.cpp",
+  "tu": "match/platform/keyboard_ring_methods.cpp",
   "addr": "0x54F2F0",
   "sym": "?FUN_0054F2F0@InputManagerClass@@QAE_NHGG_N@Z",
   "len": "0xd2",
@@ -143146,7 +143146,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/input_manager_queue_methods.cpp",
+  "tu": "match/platform/keyboard_ring_methods.cpp",
   "addr": "0x54F3D0",
   "sym": "?FUN_0054F3D0@InputManagerClass@@QAE_ND@Z",
   "len": "0x7f",
