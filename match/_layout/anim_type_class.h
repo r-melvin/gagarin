@@ -152,4 +152,9 @@ GG_STATIC_ASSERT(offsetof(AnimTypeClass, DoubleThick)        == 0x368);
 GG_STATIC_ASSERT(offsetof(AnimTypeClass, ShouldFogRemove)    == 0x374);
 GG_STATIC_ASSERT(sizeof(AnimTypeClass)                       == 0x378);
 
+
+// Native AnimClass slot 123 (0x425516) reads this DWORD.
+GG_STATIC_ASSERT(offsetof(AnimTypeClass, End) == 0x2C0);
+GG_STATIC_ASSERT(sizeof(((AnimTypeClass*)0)->End) == 4);
+
 #endif  // GG_MATCH_LAYOUT_ANIM_TYPE_CLASS_H

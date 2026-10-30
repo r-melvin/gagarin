@@ -82809,25 +82809,25 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu024_methods.cpp",
+  "tu": "match/combat/anim_class_r21_methods.cpp",
   "addr": "0x425510",
-  "sym": "?FUN_00425510@Obj_00425510@@QBEHXZ",
+  "sym": "?vf_123@AnimClass@@UAEHXZ",
   "len": "0xd",
-  "name": "Obj_00425510::FUN_00425510",
+  "name": "AnimClass::vf_123",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu024_methods.cpp",
+  "tu": "match/combat/anim_class_r21_methods.cpp",
   "addr": "0x425520",
-  "sym": "?FUN_00425520@Obj_00425520@@QBEHXZ",
+  "sym": "?vf_34@AnimClass@@UAEPAVObjectTypeClass@@XZ",
   "len": "0x7",
-  "name": "Obj_00425520::FUN_00425520",
+  "name": "AnimClass::vf_34",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu024_methods.cpp",
+  "tu": "match/combat/anim_class_r21_methods.cpp",
   "addr": "0x426530",
   "sym": "?vf_12@AnimClass@@UAEHXZ",
   "len": "0x6",
@@ -82836,7 +82836,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu024_methods.cpp",
+  "tu": "match/combat/anim_class_r21_methods.cpp",
   "addr": "0x426580",
   "sym": "?vf_11@AnimClass@@UAEHXZ",
   "len": "0x6",

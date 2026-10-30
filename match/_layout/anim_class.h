@@ -54,10 +54,12 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     virtual int vf_11();
     virtual int vf_12();
+    // FUNCTION: GAMEMD 0x425520 (slot 34; returns Type at +0xC8).
+    virtual ObjectTypeClass* vf_34();
     // Slots 122-123, introduced by AnimClass (124 slots in all; retail table 0x7E3354).
-    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    // Names are placeholders; slot 123 returns the dword read at Type+0x2C0.
     virtual void vf_122();                                         // 122 0x423930
-    virtual void vf_123();                                         // 123 0x425510
+    virtual int vf_123();                                          // 123 0x425510: Type+0x2C0 dword in EAX
     virtual void vf_10(void* a1, bool a2);
     virtual void vf_62();
     // FUNCTION: GAMEMD 0x4260F0 (non-virtual) -- whether the cell can take this animation.
@@ -172,5 +174,9 @@ GG_STATIC_ASSERT(sizeof(AnimClass)                              == 0x1C8);
 // VTABLE: GAMEMD 0x007E3338  AnimClass::(+0x04)   (COL base 4)
 // VTABLE: GAMEMD 0x007E3330  AnimClass::(+0x08)   (COL base 8)
 // VTABLE: GAMEMD 0x007E3328  AnimClass::(+0x0C)   (COL base 12)
+
+
+// Getter access widths: native 0x425510 / 0x425520 read DWORD fields.
+GG_STATIC_ASSERT(sizeof(((AnimClass*)0)->Type) == 4);
 
 #endif  // GG_MATCH_LAYOUT_ANIM_CLASS_H

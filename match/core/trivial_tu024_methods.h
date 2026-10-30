@@ -10,35 +10,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/anim_class.h"
 
-struct Obj_00425510;
-struct Obj_00425510_C8;
-struct Obj_00425520;
 struct Obj_00427290;
-
-struct Obj_00425510
-{
-    char unknown_00[0xC8];
-    Obj_00425510_C8* unknown_C8;   // +0x00C8
-    // FUNCTION: GAMEMD 0x425510
-    int FUN_00425510() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00425510, unknown_C8) == 0xC8);
-
-struct Obj_00425510_C8
-{
-    char unknown_00[0x2C0];
-    int unknown_2C0;   // +0x02C0
-};
-GG_STATIC_ASSERT(offsetof(Obj_00425510_C8, unknown_2C0) == 0x2C0);
-
-struct Obj_00425520
-{
-    char unknown_00[0xC8];
-    int unknown_C8;   // +0x00C8
-    // FUNCTION: GAMEMD 0x425520
-    int FUN_00425520() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00425520, unknown_C8) == 0xC8);
 
 struct Obj_00427290
 {

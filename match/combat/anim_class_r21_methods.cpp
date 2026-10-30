@@ -101,6 +101,47 @@ void AnimClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1CA0(PowerOff);
 }
 
+// FUNCTION: GAMEMD 0x425510
+// Native vtable 0x7E3354 slot 123; MOV EAX,[ECX+C8]; MOV EAX,[EAX+2C0]; RET.
+int AnimClass::vf_123()
+{
+    return Type->End;
+}
+
+// FUNCTION: GAMEMD 0x425520
+// Native vtable 0x7E3354 slot 34; ObjectTypeClass base is at offset zero.
+ObjectTypeClass* AnimClass::vf_34()
+{
+    return Type;
+}
+
+// FUNCTION: GAMEMD 0x4255B0
+// Slot 62 of AnimClass: detach from the owner object, end the start sound, and
+// (unless inert) play the type's stop sound at the current coordinate.
+void AnimClass::vf_62()
+{
+    if (OwnerObject)
+        static_cast<ObjectClass*>(OwnerObject)->vf_24(this);
+    FUN_00424B50(0);
+    StartSoundAudioController.EndLooping();
+    if (!IsInert && Type && Type->StopSound != -1) {
+        FUN_007509E0(Type->StopSound, vf_18(), &StopSoundAudioController);
+    }
+    ObjectClass::vf_62();
+}
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D84
+OverlayView_004260F0** DAT_00A83D84;
+// GLOBAL: GAMEMD 0xA8E9AC
+AnimClass** DAT_00A8E9AC;
+// GLOBAL: GAMEMD 0xA8E9B8
+int DAT_00A8E9B8;
+// GLOBAL: GAMEMD 0xB054D4
+SchemeView_004261D0** DAT_00B054D4;
+// GLOBAL: GAMEMD 0xB0F4EC
+TiberiumView_004261D0** DAT_00B0F4EC;
+// END defined globals
 // A coordinate taken by value (retail copies the animation's location on the stack here).
 static inline CoordStruct PlacedAt(const CoordStruct& where)
 {
@@ -184,30 +225,16 @@ void AnimClass::vf_61(CoordStruct* coord)
     }
 }
 
-// FUNCTION: GAMEMD 0x4255B0
-// Slot 62 of AnimClass: detach from the owner object, end the start sound, and
-// (unless inert) play the type's stop sound at the current coordinate.
-void AnimClass::vf_62()
+// FUNCTION: GAMEMD 0x426530
+// Returns a constant. Vtable slot 12 of AnimClass (RTTI).
+int AnimClass::vf_12()
 {
-    if (OwnerObject)
-        static_cast<ObjectClass*>(OwnerObject)->vf_24(this);
-    FUN_00424B50(0);
-    StartSoundAudioController.EndLooping();
-    if (!IsInert && Type && Type->StopSound != -1) {
-        FUN_007509E0(Type->StopSound, vf_18(), &StopSoundAudioController);
-    }
-    ObjectClass::vf_62();
+    return 0x1C8;
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA83D84
-OverlayView_004260F0** DAT_00A83D84;
-// GLOBAL: GAMEMD 0xA8E9AC
-AnimClass** DAT_00A8E9AC;
-// GLOBAL: GAMEMD 0xA8E9B8
-int DAT_00A8E9B8;
-// GLOBAL: GAMEMD 0xB054D4
-SchemeView_004261D0** DAT_00B054D4;
-// GLOBAL: GAMEMD 0xB0F4EC
-TiberiumView_004261D0** DAT_00B0F4EC;
-// END defined globals
+// FUNCTION: GAMEMD 0x426580
+// Returns a constant. Vtable slot 11 of AnimClass (RTTI).
+int AnimClass::vf_11()
+{
+    return 4;
+}
