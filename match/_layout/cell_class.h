@@ -129,6 +129,8 @@ public:
     // Declaration: GAMEMD 0x4801F0 -- point and clip pointers, RET8.
     void FUN_004801F0(const Point2D* point, const RectangleStruct* clip);
     // FUNCTION: GAMEMD 0x4870D0 (decl; reloc) -- reads a word table at +0x7C indexed by the argument.
+    // FUNCTION: GAMEMD 0x4870B0 (decl; reloc) -- tests the bit for the given index in the word at +0x78; RET 4.
+    bool FUN_004870B0(int index);
     bool FUN_004870D0(int index);
     // FUNCTION: GAMEMD 0x47B3A0 (decl; reloc)
     int GetFloorHeight(const Point2D& subcoords) const;

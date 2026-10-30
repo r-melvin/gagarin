@@ -71,6 +71,8 @@ struct VeterancyStruct
     bool FUN_00750010();
     // FUNCTION: GAMEMD 0x74FF90 (decl; reloc) -- ECX receiver, no stack arguments.
     bool FUN_0074FF90();
+    // FUNCTION: GAMEMD 0x74FFF0 (decl; reloc) -- ECX receiver, no stack arguments.
+    bool FUN_0074FFF0();
     // FUNCTION: GAMEMD 0x750090 (decl; reloc) -- one stack argument (RET 4).
     void FUN_00750090(int arg);
 };
@@ -269,7 +271,9 @@ public:
     virtual bool vf_54(const CoordStruct& coord, int a2);          // 54  0x6F6CA0: place on the map
     virtual void vf_71();                                          // 71  0x6F4A40
     virtual bool vf_73(int mode);                                  // 73  0x6F4A70
+    virtual void vf_72(int a1, int a2);                            // 72  0x70ADC0: reveal the map around this object
     virtual void vf_82(int a1);                                    // 82  0x6F9DD0
+    virtual int vf_90(int weapon);                                 // 90  0x7012C0: the range of a weapon, cut to the shortest passenger range when open-topped
     virtual void vf_86();                                          // 86  0x70E340
     virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
     virtual bool vf_89(const CoordStruct& coord, int a2);          // 89  0x6F7970
@@ -350,7 +354,7 @@ public:
     virtual int vf_228();                                          // 228 0x70D670
     virtual void vf_229(FootClass* a1);                                // 229 0x710670
     virtual bool vf_230(AbstractClass* a1);                                 // 230 0x70EF00
-    virtual void vf_231(int a1, int a2);                           // 231 0x709820
+    virtual bool vf_231(const CoordStruct& where, int a2);         // 231 0x709820
     virtual void vf_232();                                       // 232 0x6FCD40
     virtual int vf_233(int a1);                                    // 233 0x6F7660
     virtual bool vf_234(AbstractClass* target, int weapon);            // 234 0x6F77B0: is the target in that weapon's range
@@ -397,7 +401,7 @@ public:
     virtual void vf_274(int a1, int a2);                           // 274 0x6F60C0
     virtual void vf_275(int a1, int a2, int a3);                   // 275 0x6F64A0
     virtual void vf_276(int a1, int a2, int a3);                   // 276 0x709A90
-    virtual void vf_277(int a1, int a2);                           // 277 0x70A990
+    virtual void vf_277(Point2D* where, RectangleStruct* clip);    // 277 0x70A990: draws the rank pip
     virtual void vf_278(int a1, int a2, int a3);                   // 278 0x70AA60
     virtual void vf_279(bool a1);                                   // 279 0x7036C0
     virtual void vf_280(bool a1);                                   // 280 0x703770
@@ -621,7 +625,8 @@ public:
     void*              QueueUpToEnter;               // +0x500 TechnoClass*
     int                EMPLockRemaining;             // +0x504 (signed: 0x70EFD0 tests it with SETG)
     unsigned int       ThreatPosed;                  // +0x508
-    unsigned int       ShouldLoseTargetNow;          // +0x50C
+    unsigned char      ShouldLoseTargetNow;          // +0x50C (bool; 0x709480 sets it with a byte store)
+    unsigned char      align_50D[3];                 // +0x50D
     void*              FiringRadBeam;                // +0x510 RadBeam*
     void*              PlanningToken;                // +0x514 PlanningTokenClass*
     ObjectTypeClass*   Disguise;                     // +0x518
@@ -677,6 +682,12 @@ public:
     int FUN_006F70E0(AbstractClass* target);
     // FUNCTION: GAMEMD 0x6FFEC0 (decl; reloc) -- the action this object takes on a target (the flag is one byte).
     int FUN_006FFEC0(AbstractClass* target, char flag);
+    // FUNCTION: GAMEMD 0x709290 -- may this object look for a new target (ECX receiver, no stack arguments).
+    bool FUN_00709290();
+    // FUNCTION: GAMEMD 0x709480 -- re-pick a target at its own position; true when the target changed.
+    bool FUN_00709480();
+    // FUNCTION: GAMEMD 0x70F890 -- turn berserk for a duration; the first time, releases a team and re-targets.
+    void FUN_0070F890(int duration);
 };
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, DurationRemaining)        == 0xF0);

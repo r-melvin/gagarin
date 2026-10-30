@@ -373,6 +373,8 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 #include "../economy/building_class_drain.h"
 
 #include "../_layout/foot_class.h"
+#include "../_layout/infantry_class.h"
+#include "../_layout/bomb_list_class.h"
 
 #ifndef NULL
 #define NULL 0
@@ -386,6 +388,12 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xB054D0
 ColorSchemeVec_00705D70 DAT_00B054D0;
+
+#include "../_layout/house_type_class.h"
+#include "../ui/input_controls/ui_display_chain.h"
+
+// GLOBAL: GAMEMD 0x87F7E8
+extern MapClass DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x6F32D0
 // Alive, out of limbo, in the playfield, not of kind 6, discovered by the
@@ -569,10 +577,88 @@ void TechnoClass::vf_71()
     }
 }
 
+#include "../_layout/tactical.h"
+// GLOBAL: GAMEMD 0x887324 -- the tactical view.
+extern Tactical* DAT_00887324;
+
+// Coordinate arithmetic shared by the two segment routines.
+static __inline CoordStruct times3_006F6030(const CoordStruct* v)
+{
+    CoordStruct r;
+    r.X = v->X * 3;
+    r.Y = v->Y * 3;
+    r.Z = v->Z * 3;
+    return r;
+}
+
+static __inline CoordStruct plus_006F6030(const CoordStruct& l, const CoordStruct* r)
+{
+    CoordStruct s;
+    s.X = l.X + r->X;
+    s.Y = l.Y + r->Y;
+    s.Z = l.Z + r->Z;
+    return s;
+}
+
+static __inline CoordStruct quarter_step_006F6030(const CoordStruct* a, const CoordStruct* b)
+{
+    CoordStruct s = plus_006F6030(times3_006F6030(a), b);
+    CoordStruct r;
+    r.X = s.X / 4;
+    r.Y = s.Y / 4;
+    r.Z = s.Z / 4;
+    return r;
+}
+
+// Draw a line between two coordinates as two segments, each running from one
+// end to the point three quarters of the way back; a segment is always given
+// to the draw call with its higher end first.
+// Unclaimed (below partial bar), GAMEMD 0x6F5EF0
+void __fastcall FUN_006F5EF0(const CoordStruct* a, const CoordStruct* b, int color)
+{
+    CoordStruct scratch;
+    CoordStruct sumA = plus_006F6030(times3_006F6030(a), b);
+    CoordStruct nearA = *scratch.FUN_0041C230(sumA.X / 4, sumA.Y / 4, sumA.Z / 4);
+    CoordStruct sumB = plus_006F6030(times3_006F6030(b), a);
+    CoordStruct nearB = *scratch.FUN_0041C230(sumB.X / 4, sumB.Y / 4, sumB.Z / 4);
+    if (a->Z > nearA.Z) {
+        DAT_00887324->vf_24(a, &nearA, color, 0);
+    } else {
+        DAT_00887324->vf_24(&nearA, a, color, 0);
+    }
+    if (b->Z > nearB.Z) {
+        DAT_00887324->vf_24(b, &nearB, color, 0);
+    } else {
+        DAT_00887324->vf_24(&nearB, b, color, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6F6030
+// One segment of the line above: from `a` to the point three quarters of the
+// way to `b`, higher end first.
+void __fastcall FUN_006F6030(const CoordStruct* a, const CoordStruct* b, int color)
+{
+    CoordStruct mid = quarter_step_006F6030(a, b);
+    if (a->Z > mid.Z) {
+        DAT_00887324->vf_24(a, &mid, color, 0);
+    } else {
+        DAT_00887324->vf_24(&mid, a, color, 0);
+    }
+}
+
 // FUNCTION: GAMEMD 0x6F60C0
 // Empty function that pops its stack arguments. Vtable slot 274 of TechnoClass (RTTI) and 5 derived vtable(s).
 void Obj_006F60C0::FUN_006F60C0(int a1, int a2)
 {
+}
+
+// The cell a coordinate lies in.
+static __inline CellStruct cell_from_coord_006FBDC0(const CoordStruct& coord)
+{
+    CellStruct cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+    return cell;
 }
 
 // FUNCTION: GAMEMD 0x6F7780  (__thiscall)
@@ -704,6 +790,73 @@ void Techno_006FB080::StartReloading()
     }
 }
 
+// FUNCTION: GAMEMD 0x6FBDC0
+// May this object cloak now: it must be able to (outright, or through a rank
+// ability, or by standing in a cell its house owns the shroud of), not be
+// mid-cloak, not be rearming or still waiting out the cloak delay, not be
+// firing at something it is close enough to attack, and not be a foot object
+// held by a locomotor attack.
+bool TechnoClass::vf_168()
+{
+    if (!IsCloakable()) {
+        if (Veterancy.FUN_0074FF90() || Veterancy.FUN_00750010()) {
+            TechnoTypeClass* type = vf_33();
+            if (Veterancy.FUN_0074FF90() && type->VeteranAbilities._raw[6]) {
+                goto cloakable;
+            }
+            if (Veterancy.FUN_00750010() && (type->VeteranAbilities._raw[6] || type->EliteAbilities._raw[6])) {
+                goto cloakable;
+            }
+        }
+        CellStruct here = cell_from_coord_006FBDC0(vf_18());
+        if (!reinterpret_cast<CellClass*>(DAT_0087F7E8.FUN_005657A0(&here))->FUN_004870B0(Owner->ArrayIndex) && !Cloakable) {
+            return false;
+        }
+    }
+cloakable:
+    if (CloakState == 2) {
+        return false;
+    }
+    int startTime = RearmTimer.StartTime;
+    int timeLeft = RearmTimer.TimeLeft;
+    int elapsed;
+    if (startTime != -1) {
+        elapsed = CurrentFrame - startTime;
+        if (elapsed >= timeLeft) goto rearmed;
+        timeLeft -= elapsed;
+    }
+    if (timeLeft != 0) {
+        return false;
+    }
+rearmed:
+    if (Target) {
+        if (IsCloseEnoughToAttack(Target)) {
+            return false;
+        }
+    }
+    if (vf_11() != 6 && CloakProgress.Value) {
+        return false;
+    }
+    startTime = CloakDelayTimer.StartTime;
+    timeLeft = CloakDelayTimer.TimeLeft;
+    if (startTime != -1) {
+        elapsed = CurrentFrame - startTime;
+        if (elapsed >= timeLeft) goto delayed;
+        timeLeft -= elapsed;
+    }
+    if (timeLeft != 0) {
+        return false;
+    }
+delayed:
+    if (LocomotorSource) {
+        FootClass* foot = foot_cast_007104C0(this);
+        if (foot && foot->IsAttackedByLocomotor) {
+            return false;
+        }
+    }
+    return vf_114() <= 0;
+}
+
 // FUNCTION: GAMEMD 0x6FC090
 // Calls other functions. Vtable slot 239 of TechnoClass (RTTI) and 5 derived vtable(s).
 void Obj_006FC090::FUN_006FC090(int a1, int a2)
@@ -827,6 +980,41 @@ bool TechnoClass::IsArmed()
 bool Obj_00701190::FUN_00701190() const
 {
     return false;
+}
+
+// The shortest primary-weapon range among the occupants of a transport,
+// from INT_MAX. The walk follows the NextObject links while they stay feet.
+static __inline int shortest_passenger_range_007012C0(TechnoClass* transport)
+{
+    int best = 0x7FFFFFFF;
+    TechnoClass* node = (TechnoClass*)transport->Passengers.GetFirstPassenger();
+    if (node != 0) {
+        do {
+            WeaponStruct* weapon = node->GetPrimaryWeapon();
+            if (weapon->WeaponType != 0 && weapon->WeaponType->Range < best) {
+                best = weapon->WeaponType->Range;
+            }
+            node = (TechnoClass*)node->NextObject;
+        } while (node != 0 && node->Flags.IsFoot);
+    }
+    return best;
+}
+
+// Unclaimed (below partial bar), GAMEMD 0x7012C0
+int TechnoClass::vf_90(int weapon)
+{
+    WeaponStruct* chosen = vf_254(weapon);
+    if (chosen->WeaponType != 0) {
+        int range = chosen->WeaponType->Range;
+        if (vf_33()->OpenTopped) {
+            if (range < shortest_passenger_range_007012C0(this)) {
+                return range;
+            }
+            return shortest_passenger_range_007012C0(this);
+        }
+        return range;
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x7013A0
@@ -1031,6 +1219,51 @@ void TechnoClass::vf_213(int a1)
     }
 }
 
+// GLOBAL: GAMEMD 0x84314C -- the two-letter name tested by the voice routine.
+extern "C" const char DAT_0084314C[];
+#include "../core/randomizer.h"
+
+// FUNCTION: GAMEMD 0x7090A0
+// Voice the attack order for a target: the repair line when the weapon heals
+// and the object is of the repair kind, else the primary or secondary weapon
+// line (elite variants for an elite object); with none set, a random pick from
+// the type's attack list.
+void TechnoClass::vf_220(AbstractClass* target)
+{
+    int weapon = vf_185(target);
+    int voice;
+    WeaponStruct* chosen = vf_254(weapon);
+    if (chosen->WeaponType != 0 && chosen->WeaponType->Damage < 0 && FUN_005F3E50(DAT_0084314C)) {
+        voice = Rules->VoiceIFVRepair;
+    } else if (Veterancy.FUN_00750010()) {
+        if (weapon == 0) {
+            voice = vf_33()->VoicePrimaryEliteWeaponAttack;
+        } else {
+            voice = vf_33()->VoiceSecondaryEliteWeaponAttack;
+        }
+    } else {
+        if (weapon == 0) {
+            voice = vf_33()->VoicePrimaryWeaponAttack;
+        } else {
+            voice = vf_33()->VoiceSecondaryWeaponAttack;
+        }
+    }
+    TypeList<int>* attack = &vf_33()->VoiceAttack;
+    if (attack->Count == 0) {
+        if (voice != -1) {
+            vf_213(voice);
+        }
+    } else {
+        if (voice != -1) {
+            vf_213(voice);
+            return;
+        }
+        unsigned int pick = DAT_00886B88.Random();
+        TypeList<int>& list = vf_33()->VoiceAttack;
+        vf_213(list.Items[pick % list.Count]);
+    }
+}
+
 // FUNCTION: GAMEMD 0x7091D0
 //
 // Whether this object may pick up targets of its own accord. A chain of
@@ -1073,6 +1306,24 @@ int __stdcall FUN_00709460(int a1)
     return a1 != 5 && a1 != 6 && a1 != 8;
 }
 
+// FUNCTION: GAMEMD 0x709480
+// If this object may retarget, ask the virtual that picks a target from where
+// it stands; report whether it ended up with a different target, and flag the
+// shoot-at-once state when it did.
+bool TechnoClass::FUN_00709480()
+{
+    bool changed = false;
+    if (FUN_00709290()) {
+        AbstractClass* previous = Target;
+        unknown_4FC = CurrentFrame;
+        changed = vf_231(vf_18(), 1);
+        if (changed && Target != previous) {
+            ShouldLoseTargetNow = 1;
+        }
+    }
+    return changed;
+}
+
 // FUNCTION: GAMEMD 0x7094E0
 // Branching.
 int Obj_007094E0::FUN_007094E0()
@@ -1112,6 +1363,49 @@ void Obj_00709A20::FUN_00709A20(int a1)
 {
 }
 
+// GLOBAL: GAMEMD 0xAC147C -- the pip shape file.
+extern SHPStruct* DAT_00AC147C;
+// GLOBAL: GAMEMD 0x887314 -- the surface drawn to.
+extern void* DAT_00887314;
+// GLOBAL: GAMEMD 0x87F6C4 -- the palette conversion drawn with.
+extern void* DAT_0087F6C4;
+// Declaration: GAMEMD 0x4AED70 -- ECX surface, EDX conversion, RET56.
+void __fastcall FUN_004AED70(void* surface, void* conversion, void* shape,
+    int frame, const Point2D* point, RectangleStruct* clip, int flags,
+    int a8, int z, int a10, int intensity, int a12, int a13, int a14,
+    Point2D offset);
+
+// Unclaimed (below partial bar), GAMEMD 0x70A990
+// Draw the rank pip beside this object: the veteran or elite frame, or the
+// special one, nudged further for anything that is not infantry.
+void TechnoClass::vf_277(Point2D* where, RectangleStruct* clip)
+{
+    vf_34();
+    SHPStruct* pips = DAT_00AC147C;
+    int frame = -1;
+    if (Veterancy.FUN_0074FF90()) {
+        frame = 14;
+    }
+    if (Veterancy.FUN_00750010()) {
+        frame = 15;
+    }
+    if (Veterancy.FUN_0074FFF0()) {
+        frame = 19;
+    } else if (frame == -1) {
+        return;
+    }
+    Point2D at;
+    at.Y = where->Y + 2;
+    at.X = where->X + 5;
+    if (vf_11() != 15) {
+        at.X += 5;
+        at.Y += 4;
+    }
+    Point2D zero(0, 0);
+    FUN_004AED70(DAT_00887314, DAT_0087F6C4, pips, frame, &at, clip,
+        0xE00, 0, -2, 0, 1000, 0, 0, 0, zero);
+}
+
 // FUNCTION: GAMEMD 0x70AD50
 CellStruct TechnoClass::vf_191(AbstractClass* a1, int a2)
 {
@@ -1119,6 +1413,74 @@ CellStruct TechnoClass::vf_191(AbstractClass* a1, int a2)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// GLOBAL: GAMEMD 0x7E3808 -- 0.01
+extern const double DAT_007E3808;
+// GLOBAL: GAMEMD 0x7E1718 -- 1.0
+extern const double DAT_007E1718;
+extern const double GG_ZERO;
+#include "../_layout/session_class.h"
+
+// FUNCTION: GAMEMD 0x70ADC0
+// Reveal the map around this object by its sight: the type's sight scaled by
+// the sight bonus gained from the height it stands at, and again by the rank
+// bonus. Not for an object held off the playfield, nor for a passive house
+// outside the campaign modes.
+void TechnoClass::vf_72(int a1, int a2)
+{
+    if (!IsInPlayfield) {
+        return;
+    }
+    if (Owner->Type->MultiplayPassive && Session_00A8B238.GameMode != 0) {
+        return;
+    }
+    CoordStruct here = Location;
+    int level = here.Z / Rules->LeptonsPerSightIncrease * 10;
+    if (level > SightIncrease) {
+        a1 = 0;
+    }
+    SightIncrease = (char)level;
+    int sight = (int)(vf_33()->Sight * (SightIncrease * DAT_007E3808 + DAT_007E1718));
+    if (Veterancy.FUN_0074FF90() || Veterancy.FUN_00750010()) {
+        TechnoTypeClass* type = vf_33();
+        if ((Veterancy.FUN_0074FF90() && type->VeteranAbilities._raw[5])
+            || (Veterancy.FUN_00750010() && (type->VeteranAbilities._raw[5] || type->EliteAbilities._raw[5]))) {
+            if (Rules->VeteranSight != GG_ZERO) {
+                sight = (int)(sight * Rules->VeteranSight);
+            }
+        }
+    }
+    if (sight != 0) {
+        CoordStruct where = Location;
+        DAT_0087F7E8.FUN_005673A0(where, sight, Owner, a1, a2, 0, 1, 1);
+    }
+}
+
+// Unclaimed (below partial bar), GAMEMD 0x70B1D0
+// Reveal the map around where this object last looked. A pending reveal
+// (flag at +0x250) is spent here, for the given house when one is passed with
+// the third argument, else for the owner; otherwise it reveals only when the
+// third argument is set and a house was passed.
+void TechnoClass::vf_291(int a1, int a2, bool a3, HouseClass* a4)
+{
+    if (IsInPlayfield) {
+        HouseClass* owner = Owner;
+        if (!owner->Type->MultiplayPassive) {
+            int range;
+            if (unknown_bool_250) {
+                range = LastSightRange;
+                unknown_bool_250 = 0;
+                if (range != 0 && a3 && a4) {
+                    DAT_0087F7E8.FUN_005678E0(LastSightCoords, range, a4, a1, a2, 0, 1, 1);
+                } else if (range != 0) {
+                    DAT_0087F7E8.FUN_005678E0(LastSightCoords, range, owner, a1, a2, 0, 1, 1);
+                }
+            } else if (a3 && LastSightRange != 0 && a4) {
+                DAT_0087F7E8.FUN_005678E0(LastSightCoords, LastSightRange, a4, a1, a2, 0, 1, 1);
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x70C5A0  (__thiscall)
 // Can this object cloak? The flag is a byte, and the `TEST AL,AL; SETNZ AL`
 // normalisation is the char-to-bool conversion — a member already declared
@@ -1412,6 +1774,59 @@ void TechnoClass::FUN_0070DE40(int a1)
     this->GattlingValue -= a1;
     if (this->GattlingValue < 0 || a1 == 0) {
         this->GattlingValue = 0;
+    }
+}
+
+// Declaration: GAMEMD 0x7509E0 -- VocClass::PlayAt; ECX index, EDX coordinate address, controller on the stack.
+void* __fastcall FUN_007509E0(int index, CoordStruct* coords, void* controller);
+
+// FUNCTION: GAMEMD 0x70DE70
+// Spin the gattling gun up. The value rises by RateUp per tick while below the
+// last stage's threshold (elite or normal table); once it reaches the current
+// stage's threshold the stage steps up. The spin-up sound of the weapon for
+// the current stage is started when none is playing.
+void TechnoClass::FUN_0070DE70(int a)
+{
+    int stages = vf_33()->WeaponStages;
+    int limit;
+    if (Veterancy.FUN_00750010()) {
+        limit = vf_33()->EliteStage[stages - 1];
+    } else {
+        limit = vf_33()->WeaponStage[stages - 1];
+    }
+    int value = GattlingValue;
+    if (value < limit) {
+        GattlingValue += vf_33()->RateUp * a;
+    }
+    int stage = CurrentGattlingStage;
+    WeaponTypeClass* weapon = vf_254(stage * 2)->WeaponType;
+    UnusedGattlingSoundController.FUN_00405D40();
+    IsUnusedGattlingSoundPlaying = 0;
+    if (stage >= 0 && stage < stages - 1) {
+        int threshold;
+        if (Veterancy.FUN_00750010()) {
+            threshold = vf_33()->EliteStage[stage];
+        } else {
+            threshold = vf_33()->WeaponStage[stage];
+        }
+        if (value >= threshold) {
+            stage++;
+            if (stage >= 0) {
+                CurrentGattlingStage = stage;
+            }
+            weapon = vf_254(stage * 2)->WeaponType;
+            GattlingSoundController.FUN_00405D40();
+            IsGattlingSoundPlaying = 0;
+        }
+    }
+    if (!IsGattlingSoundPlaying && weapon->Reports.Count > 0) {
+        AudioController* controller = &GattlingSoundController;
+        controller->FUN_00405D40();
+        unsigned int count = weapon->Reports.Count;
+        CoordStruct where = Location;
+        int sound = weapon->Reports.Items[DAT_00886B88.Random() % count];
+        FUN_007509E0(sound, &where, controller);
+        IsGattlingSoundPlaying = 1;
     }
 }
 
@@ -1730,10 +2145,6 @@ bool Obj_0070F110::FUN_0070F110() const
 #include "../_layout/rules_class.h"
 #include "../_layout/abstract_class.h"
 #include "../_layout/player_ptr_00a83d4c.h"
-#include "../ui/input_controls/ui_display_chain.h"
-
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapClass DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xB0EB38
 AbstractClass* DAT_00B0EB38;
 // GLOBAL: GAMEMD 0xB0EB3C
@@ -1806,6 +2217,23 @@ void TechnoClass::CancelAndGoIdle()
     vf_242(0);
     this->ArchiveTarget = 0;
     vf_124(5);
+}
+
+// FUNCTION: GAMEMD 0x70F890
+// Set the berserk duration; on the first switch-on, a foot object leaves its
+// team, then the current target is dropped and the object is put on mission 15.
+void TechnoClass::FUN_0070F890(int duration)
+{
+    BerzerkDurationLeft = duration;
+    if (!Berzerk) {
+        Berzerk = 1;
+        FootClass* foot = foot_cast_007104C0(this);
+        if (foot && foot->Team) {
+            foot->Team->LiberateMember(foot, -1, 0);
+        }
+        vf_242(0);
+        vf_122(15, false);
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

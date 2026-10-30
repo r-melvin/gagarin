@@ -104954,11 +104954,10 @@
   "tu": "match/combat/Techno.cpp",
   "addr": "0x70F120",
   "sym": "?FUN_0070F120@@YIXPAVAbstractClass@@H@Z",
-  "len": "0xAD",
-  "name": "FUN_0070F120",
-  "status": "partial",
-  "pct": 100,
-  "note": "Raw code and relocation targets match; map, timer/global provider, ABI and vtable closure remain open."
+  "len": "0xad",
+  "name": "?FUN_0070F120@@YIXPAVAbstractClass@@H@Z",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/combat/Unit.cpp",
@@ -147018,6 +147017,69 @@
   "sym": "?FUN_00628170@Table_00626C60@@QAEPAUPaletteEntry_00626C60@@PAUPaletteIter_00626C60@@@Z",
   "len": "0x80",
   "name": "Table_00626C60::FUN_00628170",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6F6030",
+  "sym": "?FUN_006F6030@@YIXPBUCoordStruct@@0H@Z",
+  "len": "0x90",
+  "name": "?FUN_006F6030@@YIXPBUCoordStruct@@0H@Z",
+  "status": "partial",
+  "pct": 79.7
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6FBDC0",
+  "sym": "?vf_168@TechnoClass@@UAE_NXZ",
+  "len": "0x1d4",
+  "name": "TechnoClass::vf_168",
+  "status": "partial",
+  "pct": 87.6
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x7090A0",
+  "sym": "?vf_220@TechnoClass@@UAEXPAVAbstractClass@@@Z",
+  "len": "0x12a",
+  "name": "TechnoClass::vf_220",
+  "status": "partial",
+  "pct": 90.1
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x709480",
+  "sym": "?FUN_00709480@TechnoClass@@QAE_NXZ",
+  "len": "0x5d",
+  "name": "TechnoClass::FUN_00709480",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x70ADC0",
+  "sym": "?vf_72@TechnoClass@@UAEXHH@Z",
+  "len": "0x182",
+  "name": "TechnoClass::vf_72",
+  "status": "partial",
+  "pct": 96.5
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x70DE70",
+  "sym": "?FUN_0070DE70@TechnoClass@@QAEXH@Z",
+  "len": "0x183",
+  "name": "TechnoClass::FUN_0070DE70",
+  "status": "partial",
+  "pct": 95.4
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x70F890",
+  "sym": "?FUN_0070F890@TechnoClass@@QAEXH@Z",
+  "len": "0x5a",
+  "name": "TechnoClass::FUN_0070F890",
   "status": "matched",
   "pct": 100.0
  }

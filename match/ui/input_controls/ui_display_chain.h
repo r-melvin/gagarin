@@ -303,6 +303,8 @@ public:
     // FUNCTION: GAMEMD 0x5673A0 (declaration only; no body provider yet)
     // Native passes a coordinate pointer; reference source spelling is provisional.
     void FUN_005673A0(const CoordStruct& where, int sight, HouseClass* house, int a, int b, int c, int d, int e);
+    // FUNCTION: GAMEMD 0x5678E0 (decl; reloc) -- reveal the map around a coordinate; the pointer is the coordinate.
+    void FUN_005678E0(const CoordStruct& where, int sight, HouseClass* house, int a, int b, int c, int d, int e);
     // FUNCTION: GAMEMD 0x00565730 (decl; reloc)
     CellClass* FUN_00565730(const CoordStruct& coord);
     // FUNCTION: GAMEMD 0x5865E0 (decl; reloc), __thiscall, RET 4.
