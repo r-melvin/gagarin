@@ -54,7 +54,7 @@ template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
 // collected in order; without the key the existing list is returned unchanged. Retail expands this
 // inline once per list (the returned list is a copy, assigned to the member by the caller).
 #define TYPES_DEFINE_READ_LIST(TYPE, FIND, NAME)                                                       \
-    inline TypesTypeList<const TYPE*> NAME##Impl(TypesIniView* ini, const char* section, const char* key,   \
+    inline TypesTypeList<const TYPE*> NAME##Impl(CCINIClass* ini, const char* section, const char* key,   \
                                            const TypesTypeList<const TYPE*>& current)                    \
     {                                                                                                  \
         char buffer[0x80];                                                                             \
@@ -71,7 +71,7 @@ template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
         }                                                                                              \
         return current;                                                                                \
     }                                                                                                  \
-    inline void NAME(TypesIniView* ini, const char* section, const char* key,                           \
+    inline void NAME(CCINIClass* ini, const char* section, const char* key,                           \
                      TypesTypeList<const TYPE*>& member)                                                \
     {                                                                                                  \
         member = NAME##Impl(ini, section, key, member);                                                \
@@ -132,7 +132,7 @@ extern double DAT_00A8F120;
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5113F0
 HouseTypeClass::HouseTypeClass(const char* id)
-    : HouseTypeAbstractView(id), ArrayIndex(-1), ArrayIndex2(-1), SideIndex(-1), ColorSchemeIndex(0),
+    : AbstractTypeClass(id), ArrayIndex(-1), ArrayIndex2(-1), SideIndex(-1), ColorSchemeIndex(0),
       FirepowerMult(1.0), GroundspeedMult(1.0), AirspeedMult(1.0), ArmorMult(1.0), ROFMult(1.0),
       CostMult(1.0), BuildtimeMult(1.0), ArmorInfantryMult(1.0f), ArmorUnitsMult(1.0f),
       ArmorAircraftMult(1.0f), ArmorBuildingsMult(1.0f), ArmorDefensesMult(1.0f),
@@ -142,7 +142,7 @@ HouseTypeClass::HouseTypeClass(const char* id)
       BuildtimeBuildingsMult(1.0f), BuildtimeDefensesMult(1.0f), IncomeMult(1.0f),
       Prefix('A'), Multiplay(false), MultiplayPassive(false), WallOwner(true), SmartAI(false)
 {
-    HBRttiBase::Create_ID();
+    AbstractClass::vf_rtti_5();
     Suffix[0] = 0;
     TypesAddItemEarlyOut(TypesHouseTypeArray, this);
     ArrayIndex2 = TypesFindIndex(TypesHouseTypeArray, this);
@@ -151,8 +151,8 @@ HouseTypeClass::HouseTypeClass(const char* id)
 
 // FUNCTION: GAMEMD 0x511650
 // No-init constructor: runs the abstract-type base no-init constructor and leaves the data untouched.
-HouseTypeClass::HouseTypeClass(const HBNoInit& noInit)
-    : HouseTypeAbstractView(noInit), ParentCountry(AbstractNoInit()), VeteranInfantry(AbstractNoInit()), VeteranUnits(AbstractNoInit()),
+HouseTypeClass::HouseTypeClass(const AbstractNoInit& noInit)
+    : AbstractTypeClass(noInit), ParentCountry(AbstractNoInit()), VeteranInfantry(AbstractNoInit()), VeteranUnits(AbstractNoInit()),
       VeteranAircraft(AbstractNoInit())
 {
 }
@@ -168,63 +168,63 @@ HouseTypeClass::HouseTypeClass(const HBNoInit& noInit)
 // member assignment too (kept); one shared 0x20-byte name buffer against separate buffers; the positive-test
 // shape `if (base) { ... return true; } return false;` (kept).
 // FUNCTION: GAMEMD 0x511850
-bool HouseTypeClass::ReadINI(TypesIniView* ini)
+bool HouseTypeClass::vf_25(CCINIClass* ini)
 {
-    ini->ClearCache();
-    if (HouseTypeAbstractView::ReadINI(ini)) {
+    ini->Reset();
+    if (AbstractTypeClass::vf_25(ini)) {
         char buffer[0x20];
-        ini->ReadString(ID, "Suffix", TypesEmptyText, buffer, 4);
+        ini->ReadString(ID.Data, "Suffix", TypesEmptyText, buffer, 4);
         if (strlen(buffer))
             strcpy(Suffix, buffer);
 
-        ini->ReadString(ID, "ParentCountry", ID, buffer, 0x19);
+        ini->ReadString(ID.Data, "ParentCountry", ID.Data, buffer, 0x19);
         ParentCountry = TypesFixedString<0x19>(buffer);
 
-        ColorSchemeIndex = ini->ReadColorScheme(ID, "Color", ColorSchemeIndex);
+        ColorSchemeIndex = ini->ReadColorScheme(ID.Data, "Color", ColorSchemeIndex);
 
         buffer[0] = Prefix;
         buffer[1] = 0;
         char prefix[2];
-        ini->ReadString(ID, "Prefix", buffer, prefix, 2);
+        ini->ReadString(ID.Data, "Prefix", buffer, prefix, 2);
         Prefix = prefix[0];
 
-        FirepowerMult = ini->ReadDouble(ID, "Firepower", FirepowerMult);
-        GroundspeedMult = ini->ReadDouble(ID, "Groundspeed", GroundspeedMult);
-        AirspeedMult = ini->ReadDouble(ID, "Airspeed", AirspeedMult);
-        ArmorMult = ini->ReadDouble(ID, "Armor", ArmorMult);
-        ROFMult = ini->ReadDouble(ID, "ROF", ROFMult);
-        CostMult = ini->ReadDouble(ID, "Cost", CostMult);
-        BuildtimeMult = ini->ReadDouble(ID, "BuildTime", BuildtimeMult);
-        Multiplay = ini->ReadBool(ID, "Multiplay", Multiplay);
-        MultiplayPassive = ini->ReadBool(ID, "MultiplayPassive", MultiplayPassive);
-        WallOwner = ini->ReadBool(ID, "WallOwner", WallOwner);
-        SmartAI = ini->ReadBool(ID, "SmartAI", SmartAI);
-        ArmorInfantryMult = (float)ini->ReadDouble(ID, "ArmorInfantryMult", ArmorInfantryMult);
-        ArmorUnitsMult = (float)ini->ReadDouble(ID, "ArmorUnitsMult", ArmorUnitsMult);
-        ArmorAircraftMult = (float)ini->ReadDouble(ID, "ArmorAircraftMult", ArmorAircraftMult);
-        ArmorBuildingsMult = (float)ini->ReadDouble(ID, "ArmorBuildingsMult", ArmorBuildingsMult);
-        ArmorDefensesMult = (float)ini->ReadDouble(ID, "ArmorDefensesMult", ArmorDefensesMult);
-        CostInfantryMult = (float)ini->ReadDouble(ID, "CostInfantryMult", CostInfantryMult);
-        CostUnitsMult = (float)ini->ReadDouble(ID, "CostUnitsMult", CostUnitsMult);
-        CostAircraftMult = (float)ini->ReadDouble(ID, "CostAircraftMult", CostAircraftMult);
-        CostBuildingsMult = (float)ini->ReadDouble(ID, "CostBuildingsMult", CostBuildingsMult);
-        CostDefensesMult = (float)ini->ReadDouble(ID, "CostDefensesMult", CostDefensesMult);
-        SpeedInfantryMult = (float)ini->ReadDouble(ID, "SpeedInfantryMult", SpeedInfantryMult);
-        SpeedUnitsMult = (float)ini->ReadDouble(ID, "SpeedUnitsMult", SpeedUnitsMult);
-        SpeedAircraftMult = (float)ini->ReadDouble(ID, "SpeedAircraftMult", SpeedAircraftMult);
-        BuildtimeInfantryMult = (float)ini->ReadDouble(ID, "BuildTimeInfantryMult", BuildtimeInfantryMult);
-        BuildtimeUnitsMult = (float)ini->ReadDouble(ID, "BuildTimeUnitsMult", BuildtimeUnitsMult);
-        BuildtimeAircraftMult = (float)ini->ReadDouble(ID, "BuildTimeAircraftMult", BuildtimeAircraftMult);
-        BuildtimeBuildingsMult = (float)ini->ReadDouble(ID, "BuildTimeBuildingsMult", BuildtimeBuildingsMult);
-        BuildtimeDefensesMult = (float)ini->ReadDouble(ID, "BuildTimeDefensesMult", BuildtimeDefensesMult);
-        IncomeMult = (float)ini->ReadDouble(ID, "IncomeMult", IncomeMult);
+        FirepowerMult = ini->ReadDouble(ID.Data, "Firepower", FirepowerMult);
+        GroundspeedMult = ini->ReadDouble(ID.Data, "Groundspeed", GroundspeedMult);
+        AirspeedMult = ini->ReadDouble(ID.Data, "Airspeed", AirspeedMult);
+        ArmorMult = ini->ReadDouble(ID.Data, "Armor", ArmorMult);
+        ROFMult = ini->ReadDouble(ID.Data, "ROF", ROFMult);
+        CostMult = ini->ReadDouble(ID.Data, "Cost", CostMult);
+        BuildtimeMult = ini->ReadDouble(ID.Data, "BuildTime", BuildtimeMult);
+        Multiplay = ini->ReadBool(ID.Data, "Multiplay", Multiplay);
+        MultiplayPassive = ini->ReadBool(ID.Data, "MultiplayPassive", MultiplayPassive);
+        WallOwner = ini->ReadBool(ID.Data, "WallOwner", WallOwner);
+        SmartAI = ini->ReadBool(ID.Data, "SmartAI", SmartAI);
+        ArmorInfantryMult = (float)ini->ReadDouble(ID.Data, "ArmorInfantryMult", ArmorInfantryMult);
+        ArmorUnitsMult = (float)ini->ReadDouble(ID.Data, "ArmorUnitsMult", ArmorUnitsMult);
+        ArmorAircraftMult = (float)ini->ReadDouble(ID.Data, "ArmorAircraftMult", ArmorAircraftMult);
+        ArmorBuildingsMult = (float)ini->ReadDouble(ID.Data, "ArmorBuildingsMult", ArmorBuildingsMult);
+        ArmorDefensesMult = (float)ini->ReadDouble(ID.Data, "ArmorDefensesMult", ArmorDefensesMult);
+        CostInfantryMult = (float)ini->ReadDouble(ID.Data, "CostInfantryMult", CostInfantryMult);
+        CostUnitsMult = (float)ini->ReadDouble(ID.Data, "CostUnitsMult", CostUnitsMult);
+        CostAircraftMult = (float)ini->ReadDouble(ID.Data, "CostAircraftMult", CostAircraftMult);
+        CostBuildingsMult = (float)ini->ReadDouble(ID.Data, "CostBuildingsMult", CostBuildingsMult);
+        CostDefensesMult = (float)ini->ReadDouble(ID.Data, "CostDefensesMult", CostDefensesMult);
+        SpeedInfantryMult = (float)ini->ReadDouble(ID.Data, "SpeedInfantryMult", SpeedInfantryMult);
+        SpeedUnitsMult = (float)ini->ReadDouble(ID.Data, "SpeedUnitsMult", SpeedUnitsMult);
+        SpeedAircraftMult = (float)ini->ReadDouble(ID.Data, "SpeedAircraftMult", SpeedAircraftMult);
+        BuildtimeInfantryMult = (float)ini->ReadDouble(ID.Data, "BuildTimeInfantryMult", BuildtimeInfantryMult);
+        BuildtimeUnitsMult = (float)ini->ReadDouble(ID.Data, "BuildTimeUnitsMult", BuildtimeUnitsMult);
+        BuildtimeAircraftMult = (float)ini->ReadDouble(ID.Data, "BuildTimeAircraftMult", BuildtimeAircraftMult);
+        BuildtimeBuildingsMult = (float)ini->ReadDouble(ID.Data, "BuildTimeBuildingsMult", BuildtimeBuildingsMult);
+        BuildtimeDefensesMult = (float)ini->ReadDouble(ID.Data, "BuildTimeDefensesMult", BuildtimeDefensesMult);
+        IncomeMult = (float)ini->ReadDouble(ID.Data, "IncomeMult", IncomeMult);
 
-        TypesReadInfantryList(ini, ID, "VeteranInfantry", VeteranInfantry);
-        TypesReadUnitList(ini, ID, "VeteranUnits", VeteranUnits);
-        TypesReadAircraftList(ini, ID, "VeteranAircraft", VeteranAircraft);
+        TypesReadInfantryList(ini, ID.Data, "VeteranInfantry", VeteranInfantry);
+        TypesReadUnitList(ini, ID.Data, "VeteranUnits", VeteranUnits);
+        TypesReadAircraftList(ini, ID.Data, "VeteranAircraft", VeteranAircraft);
 
         int oldSide = SideIndex;
-        SideIndex = ini->ReadSide(ID, "Side", oldSide);
+        SideIndex = ini->FUN_004756F0(ID.Data, "Side", oldSide);
         if (SideIndex != oldSide) {
             if (oldSide != -1) {
                 DynamicVectorClass<int>& houseTypes = TypesSideArray.Items[oldSide]->HouseTypes;
@@ -244,22 +244,22 @@ bool HouseTypeClass::ReadINI(TypesIniView* ini)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x512170
-void HouseTypeClass::ComputeCRC(TypesCrcView& crc)
+void HouseTypeClass::vf_13(Obj_004A1D30* crc)
 {
-    HouseTypeAbstractView::ComputeCRC(crc);
-    crc.AddInt(ArrayIndex2);
-    crc.AddInt(SideIndex);
-    crc.AddInt(ColorSchemeIndex);
-    crc.AddDouble(FirepowerMult);
-    crc.AddDouble(GroundspeedMult);
-    crc.AddDouble(AirspeedMult);
-    crc.AddDouble(ArmorMult);
-    crc.AddDouble(ROFMult);
-    crc.AddDouble(CostMult);
-    crc.AddDouble(BuildtimeMult);
-    crc.AddBytes(Suffix, strlen(Suffix));
-    crc.AddByte(Prefix);
-    crc.AddBool(Multiplay);
+    AbstractTypeClass::vf_13(crc);
+    crc->FUN_004A1D50(ArrayIndex2);
+    crc->FUN_004A1D50(SideIndex);
+    crc->FUN_004A1D50(ColorSchemeIndex);
+    crc->FUN_004A1D90(FirepowerMult);
+    crc->FUN_004A1D90(GroundspeedMult);
+    crc->FUN_004A1D90(AirspeedMult);
+    crc->FUN_004A1D90(ArmorMult);
+    crc->FUN_004A1D90(ROFMult);
+    crc->FUN_004A1D90(CostMult);
+    crc->FUN_004A1D90(BuildtimeMult);
+    crc->FUN_004A1DE0(Suffix, strlen(Suffix));
+    crc->FUN_004A1C10(Prefix);
+    crc->FUN_004A1CA0(Multiplay);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -285,11 +285,11 @@ HRESULT __stdcall HouseTypeClass::Load(IStream* pStm)
     VeteranUnits.Clear();
     VeteranAircraft.Clear();
 
-    HRESULT hr = HouseTypeAbstractView::Load(pStm);
+    HRESULT hr = AbstractTypeClass::Load(pStm);
     if (hr < 0)
         return hr;
 
-    new (this) HouseTypeClass(HBNoInit());
+    new (this) HouseTypeClass(AbstractNoInit());
 
     TypesLoadList(pStm, &VeteranInfantry);
     TypesLoadList(pStm, &VeteranUnits);
@@ -305,7 +305,7 @@ HRESULT __stdcall HouseTypeClass::Load(IStream* pStm)
 // FUNCTION: GAMEMD 0x512480
 HRESULT __stdcall HouseTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT hr = HouseTypeAbstractView::Save(pStm, fClearDirty);
+    HRESULT hr = AbstractTypeClass::Save(pStm, fClearDirty);
     if (hr >= 0) {
         int count = VeteranInfantry.Count;
         int i;
@@ -355,7 +355,7 @@ HRESULT __stdcall HouseTypeClass::QueryInterface(REFIID riid, void** ppv)
     if (riid == IID_IPersistStream)
         *ppv = static_cast<IPersistStream*>(this);
     if (riid == IID_IRTTITypeInfo)
-        *ppv = static_cast<HBRttiBase*>(this);
+        *ppv = static_cast<IRTTITypeInfo*>(this);
 
     if (*ppv == 0)
         return E_NOINTERFACE;
@@ -376,21 +376,21 @@ HRESULT __stdcall HouseTypeClass::GetClassID(CLSID* pClassID)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x512710
-int HouseTypeClass::WhatAmI()
+int HouseTypeClass::vf_11()
 {
     return 0xE;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x512720
-int HouseTypeClass::Size()
+int HouseTypeClass::vf_12()
 {
     return 0x1B0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x512730
-int HouseTypeClass::GetArrayIndex()
+int HouseTypeClass::vf_16()
 {
     return ArrayIndex;
 }

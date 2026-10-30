@@ -53,6 +53,8 @@ public:
     int ReadFoundation(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x474A90 (decl; reloc) -- colour-scheme index, RET 0xC.
     int ReadColorScheme(const char* section, const char* key, int fallback);
+    // FUNCTION: GAMEMD 0x4756F0 (decl; reloc) -- side-name index, RET 0xC.
+    int FUN_004756F0(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x4753F0 (decl; reloc) -- armor enumeration, RET 0xC.
     int ReadArmor(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x474B50 (decl; reloc) -- hidden RGB result, default by reference.

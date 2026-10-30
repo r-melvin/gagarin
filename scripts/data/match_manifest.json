@@ -50134,16 +50134,16 @@
  {
   "tu": "match/economy/tu097_house_type_class.cpp",
   "addr": "0x511850",
-  "sym": "?ReadINI@HouseTypeClass@@UAE_NPAVTypesIniView@@@Z",
+  "sym": "?vf_25@HouseTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x915",
   "name": "HouseTypeClass::ReadINI",
   "status": "partial",
-  "pct": 54.4
+  "pct": 55.0
  },
  {
   "tu": "match/economy/tu097_house_type_class.cpp",
   "addr": "0x512170",
-  "sym": "?ComputeCRC@HouseTypeClass@@UAEXAAVTypesCrcView@@@Z",
+  "sym": "?vf_13@HouseTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x109",
   "name": "HouseTypeClass::ComputeCRC",
   "status": "matched",
@@ -50206,7 +50206,7 @@
  {
   "tu": "match/economy/tu097_house_type_class.cpp",
   "addr": "0x512710",
-  "sym": "?WhatAmI@HouseTypeClass@@UAEHXZ",
+  "sym": "?vf_11@HouseTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "HouseTypeClass::WhatAmI",
   "status": "matched",
@@ -50215,7 +50215,7 @@
  {
   "tu": "match/economy/tu097_house_type_class.cpp",
   "addr": "0x512720",
-  "sym": "?Size@HouseTypeClass@@UAEHXZ",
+  "sym": "?vf_12@HouseTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "HouseTypeClass::Size",
   "status": "matched",
@@ -50224,7 +50224,7 @@
  {
   "tu": "match/economy/tu097_house_type_class.cpp",
   "addr": "0x512730",
-  "sym": "?GetArrayIndex@HouseTypeClass@@UAEHXZ",
+  "sym": "?vf_16@HouseTypeClass@@UAEHXZ",
   "len": "0x7",
   "name": "HouseTypeClass::GetArrayIndex",
   "status": "matched",
@@ -50287,11 +50287,11 @@
  {
   "tu": "match/economy/tu097_house_type_class.cpp",
   "addr": "0x511650",
-  "sym": "??0HouseTypeClass@@QAE@ABUHBNoInit@@@Z",
+  "sym": "??0HouseTypeClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x4c",
   "name": "HouseTypeClass::HouseTypeClass(no-init)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Beacon.cpp",

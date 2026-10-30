@@ -10,7 +10,7 @@
 //   0x5126D6 and 0x6C3D3C (`PUSH 0x1B0; CALL 0x7C8E17`, three sites, all agreeing).
 //
 // HouseTypeClass: the [Countries] blueprint of a house (rules INI [Countries] sections).
-//   +0x00..+0x97  HouseTypeAbstractView (the AbstractClass / AbstractTypeClass part; READ-ONLY)
+//   +0x00..+0x97  AbstractTypeClass (canonical; the AbstractClass spine, ID, UIName, Name)
 //   +0x98 ParentCountry  +0xB4 ArrayIndex  +0xB8 ArrayIndex2  +0xBC SideIndex  +0xC0 ColorSchemeIndex
 //   +0xC8..+0xF8 seven double multipliers  +0x100..+0x148 nineteen float multipliers
 //   +0x14C / +0x168 / +0x184 the three veteran lists  +0x1A0 Suffix  +0x1A4 Prefix  +0x1A5..+0x1A8
@@ -19,61 +19,14 @@
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_TYPES_HOUSE_TYPE_CLASS_H
 
 #include "types_shared.h"
+#include "../../_layout/abstract_type_class.h"
+#include "../../_layout/obj_004a1d30.h"
+#include "../../platform/ccini_class_methods.h"
 
 class InfantryTypeClass;
 class UnitTypeClass;
 class AircraftTypeClass;
 class HouseTypeClass;
-
-// ABI view of AbstractTypeClass (sizeof 0x98), the base of HouseTypeClass. Slot numbers are the retail
-// primary-table indices (table 0x7EAB58, 27 slots). The IPersistStream slots 0-7 are __stdcall with
-// `this` on the stack; every other slot is __thiscall. Inherited slots are READ-ONLY here.
-// VTABLE: GAMEMD 0x7EAB58 (IPersistStream side), GAMEMD 0x7EAB3C (IRTTITypeInfo side), GAMEMD 0x7EAB34
-//         (INoticeSink side), GAMEMD 0x7EAB2C (INoticeSource side)
-class HouseTypeAbstractView : public IPersistStream, public HBRttiBase,
-                              public HBNoticeSinkBase, public HBNoticeSourceBase
-{
-public:
-    // FUNCTION: GAMEMD 0x410800 (AbstractTypeClass named constructor; read-only here)
-    HouseTypeAbstractView(const char* id);
-    // FUNCTION: GAMEMD 0x410960 (AbstractTypeClass no-init constructor; read-only here)
-    HouseTypeAbstractView(const HBNoInit& noInit);
-
-    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);       // 0   overridden (0x5125A0)
-    virtual ULONG __stdcall AddRef();                                        // 1   overridden (0x512740)
-    virtual ULONG __stdcall Release();                                       // 2   overridden (0x512750)
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                   // 3   overridden (0x512640)
-    virtual HRESULT __stdcall IsDirty();                                     // 4   overridden (0x512280)
-    virtual HRESULT __stdcall Load(IStream* pStm);                           // 5   base 0x410380; overridden (0x512290)
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);         // 6   base 0x410320; overridden (0x512480)
-    virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize);           // 7   overridden (0x512570)
-    virtual ~HouseTypeAbstractView();                                        // 8   base 0x4109C0; overridden (0x512760)
-    virtual void vf_9();                                                     // 9   0x410470
-    virtual void vf_10();                                                    // 10  0x410480
-    virtual int WhatAmI();                                                   // 11  overridden (0x512710)
-    virtual int Size();                                                      // 12  overridden (0x512720)
-    virtual void ComputeCRC(TypesCrcView& crc);                              // 13  base 0x410BE0; overridden (0x512170)
-    virtual void vf_14();                                                    // 14  0x410490
-    virtual void vf_15();                                                    // 15  0x4104A0
-    virtual int GetArrayIndex();                                             // 16  overridden (0x512730)
-    virtual void vf_17();                                                    // 17  0x410440
-    virtual void vf_18();                                                    // 18  0x4104C0
-    virtual void vf_19();                                                    // 19  0x4104F0
-    virtual void vf_20();                                                    // 20  0x410520
-    virtual void vf_21();                                                    // 21  0x410530
-    virtual void vf_22();                                                    // 22  0x410540
-    virtual void vf_23();                                                    // 23  0x410570
-    virtual void vf_24();                                                    // 24  0x410C20
-    virtual bool ReadINI(TypesIniView* ini);                                 // 25  base 0x410A60; overridden (0x511850)
-    virtual void vf_26();                                                    // 26  0x410B90
-
-    char unknown_10[0x14];    // +0x10..+0x23  AbstractClass members
-    char ID[0x18];            // +0x24         AbstractTypeClass::ID, the INI section name
-    char unknown_3C[0x98 - 0x3C];   // +0x3C..+0x97
-};
-GG_STATIC_ASSERT(offsetof(HouseTypeAbstractView, unknown_10) == 0x10);
-GG_STATIC_ASSERT(offsetof(HouseTypeAbstractView, ID) == 0x24);
-GG_STATIC_ASSERT(sizeof(HouseTypeAbstractView) == 0x98);
 
 // Side objects (read-only view): the only member the house type touches is the list of house type
 // indices at +0x98 (a DynamicVectorClass<int>).
@@ -88,13 +41,13 @@ GG_STATIC_ASSERT(offsetof(TypesSideView, HouseTypes) == 0x98);
 extern DynamicVectorClass<HouseTypeClass*> TypesHouseTypeArray;
 
 // VTABLE: GAMEMD 0x7EAB58 (IPersistStream side) and GAMEMD 0x7EAB3C / 0x7EAB34 / 0x7EAB2C
-class HouseTypeClass : public HouseTypeAbstractView
+class HouseTypeClass : public AbstractTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x5113F0 - the named constructor.
     HouseTypeClass(const char* id);
     // FUNCTION: GAMEMD 0x511650 (no-init constructor; not part of this cluster - bound)
-    HouseTypeClass(const HBNoInit& noInit);
+    HouseTypeClass(const AbstractNoInit& noInit);
 
     // ---- overrides (IPersistStream side) -----------------------------------------------------
     virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);       // 0   0x5125A0
@@ -113,11 +66,11 @@ public:
         TypesAnnouncePointerExpired(this, true);
         TypesHouseTypeArray.RemoveItem(this);
     }
-    virtual int WhatAmI();                                                   // 11  0x512710
-    virtual int Size();                                                      // 12  0x512720
-    virtual void ComputeCRC(TypesCrcView& crc);                              // 13  0x512170
-    virtual int GetArrayIndex();                                             // 16  0x512730
-    virtual bool ReadINI(TypesIniView* ini);                                 // 25  0x511850
+    virtual int vf_11();                                                     // 11  0x512710
+    virtual int vf_12();                                                     // 12  0x512720
+    virtual void vf_13(Obj_004A1D30* crc);                                   // 13  0x512170
+    virtual int vf_16();                                                     // 16  0x512730
+    virtual bool vf_25(CCINIClass* ini);                                     // 25  0x511850
 
     // ---- members (complete-object offsets) ---------------------------------------------------
     TypesFixedString<0x19> ParentCountry;   // +0x98
