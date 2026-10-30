@@ -88236,38 +88236,38 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu261_methods.cpp",
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
   "addr": "0x74B9F0",
-  "sym": "?FUN_0074B9F0@Obj_0074B9F0@@QBEHXZ",
+  "sym": "?vf_11@VoxelAnimTypeClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0074B9F0::FUN_0074B9F0",
+  "name": "VoxelAnimTypeClass::vf_11",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu261_methods.cpp",
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
   "addr": "0x74BA00",
-  "sym": "?FUN_0074BA00@Obj_0074BA00@@QBEHXZ",
+  "sym": "?vf_12@VoxelAnimTypeClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0074BA00::FUN_0074BA00",
+  "name": "VoxelAnimTypeClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu261_methods.cpp",
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
   "addr": "0x74BA10",
-  "sym": "?FUN_0074BA10@Obj_0074BA10@@QBE_NHH@Z",
+  "sym": "?vf_32@VoxelAnimTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x5",
-  "name": "Obj_0074BA10::FUN_0074BA10",
+  "name": "VoxelAnimTypeClass::vf_32",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu261_methods.cpp",
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
   "addr": "0x74BA20",
-  "sym": "?FUN_0074BA20@Obj_0074BA20@@QBEHH@Z",
+  "sym": "?vf_35@VoxelAnimTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x5",
-  "name": "Obj_0074BA20::FUN_0074BA20",
+  "name": "VoxelAnimTypeClass::vf_35",
   "status": "matched",
   "pct": 100
  },
@@ -145099,7 +145099,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/voxel_anim_type_class_vf13.cpp",
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
   "addr": "0x74B690",
   "sym": "?vf_13@VoxelAnimTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x139",
@@ -146642,7 +146642,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/voxel_anim_type_class_ini_74b050.cpp",
+  "tu": "match/combat/voxel_anim_type_class_w3_methods.cpp",
   "addr": "0x74B050",
   "sym": "?vf_25@VoxelAnimTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x5CD",
