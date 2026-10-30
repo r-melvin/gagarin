@@ -59986,7 +59986,7 @@
   "len": "0x195",
   "name": "SHAState_0069DB30::FUN_0069DB30",
   "status": "partial",
-  "pct": 83.1
+  "pct": 93.0
  },
  {
   "tu": "match/core/hash_table_clear_methods.cpp",
@@ -96267,22 +96267,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/crc_pad_methods.cpp",
+  "tu": "match/core/crc_engine_methods.cpp",
   "addr": "0x4A1FF0",
   "sym": "?FUN_004A1FF0@@YIIPBDI@Z",
   "len": "0x33",
-  "name": "FUN_004A1FF0",
+  "name": "?FUN_004A1FF0@@YIIPBDI@Z",
   "status": "partial",
   "pct": 90.0
  },
  {
-  "tu": "match/core/crc_pad_methods.cpp",
+  "tu": "match/core/crc_engine_methods.cpp",
   "addr": "0x4A1FB0",
   "sym": "?FUN_004A1FB0@@YIIPBXHI@Z",
   "len": "0x37",
-  "name": "FUN_004A1FB0",
+  "name": "?FUN_004A1FB0@@YIIPBXHI@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_stub_methods_c.cpp",
@@ -148215,5 +148215,23 @@
   "name": "?FUN_007c3750@@YIHPAUMovieHandle_007BD470@@@Z",
   "status": "partial",
   "pct": 94.4
+ },
+ {
+  "tu": "match/core/crc_engine_methods.cpp",
+  "addr": "0x4A1C10",
+  "sym": "?FUN_004A1C10@Obj_004A1D30@@QAEXE@Z",
+  "len": "0x81",
+  "name": "Obj_004A1D30::FUN_004A1C10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/crc_engine_methods.cpp",
+  "addr": "0x4A1CA0",
+  "sym": "?FUN_004A1CA0@Obj_004A1D30@@QAEX_N@Z",
+  "len": "0x86",
+  "name": "Obj_004A1D30::FUN_004A1CA0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

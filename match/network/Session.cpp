@@ -177,9 +177,9 @@ GG_STATIC_ASSERT(offsetof(SHAState_0069DB30, Acc) == 0x18);
 GG_STATIC_ASSERT(offsetof(SHAState_0069DB30, PartialCount) == 0x30);
 GG_STATIC_ASSERT(offsetof(SHAState_0069DB30, Partial) == 0x34);
 
-inline unsigned long ByteSwap32(unsigned long value)
+inline long ByteSwap32(long a)
 {
-    return (((value << 16) | (value & 0xFF00)) << 8) | (unsigned char)(value >> 24) | ((unsigned short)((value >> 8) & 0xFF00));
+    return ((a >> 24) & 0x000000FFL) | ((a >> 8) & 0x0000FF00L) | ((a << 8) & 0x00FF0000L) | ((a << 24) & 0xFF000000L);
 }
 
 inline unsigned long Rotl32(unsigned long value, int bits)
@@ -2839,8 +2839,8 @@ void ShaEngineView_0069D8C0::FUN_0069D8C0(const void*& data, long& length)
 // FUNCTION: GAMEMD 0x69DB30
 void SHAState_0069DB30::FUN_0069DB30(const void* source, ShaState_0069DB30& acc) const
 {
-    unsigned long block[80];
-    const unsigned long* data = (const unsigned long*)source;
+    long block[80];
+    const long* data = (const long*)source;
 
     int index;
     for (index = 0; index < 16; index++) {
