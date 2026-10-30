@@ -11503,7 +11503,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/buffer_io_file_class_dtor_methods.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x432610",
   "sym": "??_GBufferIOFileClass@@UAEPAXI@Z",
   "len": "0x54",
@@ -26601,7 +26601,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/buffer_io_file_class_dtor_methods.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x431B80",
   "sym": "??1BufferIOFileClass@@UAE@XZ",
   "len": "0x40",
@@ -26610,7 +26610,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/buffer_io_file_class_dtor_methods.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x431D90",
   "sym": "?FUN_00431D90@BufferIOFileClass@@QAEXXZ",
   "len": "0x33",
@@ -26637,7 +26637,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/buffer_io_file_class_open_methods.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F70",
   "sym": "?Open@BufferIOFileClass@@UAEHI@Z",
   "len": "0xe0",
@@ -26709,7 +26709,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/buffer_io_file_class_open_methods.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x4325C0",
   "sym": "?Close@BufferIOFileClass@@UAEXXZ",
   "len": "0x4E",
