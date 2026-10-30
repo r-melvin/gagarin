@@ -1,0 +1,33 @@
+{
+ "schema": 1,
+ "provenance": "own-binary-via-crt_ident: addresses, sizes and archive-member names only",
+ "ambiguous_library": [
+  {
+   "addr": "0x7CA9AF",
+   "len": 5,
+   "label": "LIBCMT 5-byte jump stub (ambiguous: 11 identical archive sections, e.g. _getchar, __inc, __longjmpex)"
+  },
+  {
+   "addr": "0x7CAC2F",
+   "len": 5,
+   "label": "LIBCMT 5-byte jump stub (ambiguous: 11 identical archive sections, e.g. _getchar, __inc, __longjmpex)"
+  },
+  {
+   "addr": "0x7D5719",
+   "len": 6,
+   "label": "LIBCMT 6-byte IAT jump (ambiguous: __getdrives or __getpid)"
+  },
+  {
+   "addr": "0x7DBC57",
+   "len": 3,
+   "label": "LIBCMT/LIBCPMT 3-byte stub, xor eax,eax; ret (ambiguous: 9 identical archive sections, e.g. __matherr, ___init_collate)"
+  }
+ ],
+ "not_library": [
+  {
+   "lo": "0x7DE200",
+   "hi": "0x7E038D",
+   "reason": "Westwood hand-written asm (MMX/TASM-style frame push ebp; push ebx,ecx,edx,esi,edi; reads the CPU-feature flags at 0x84E860/0x84E862): no LIBCMT, LIBCPMT or COMSUPP member matches any of its 8,514 bytes. Source recovery, not library."
+  }
+ ]
+}

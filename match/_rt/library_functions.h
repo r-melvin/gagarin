@@ -57,11 +57,37 @@
 #ifndef GG_MATCH_RT_LIBRARY_FUNCTIONS_H
 #define GG_MATCH_RT_LIBRARY_FUNCTIONS_H
 
-// Compiler float-to-integer helper (x87 control-word save, FISTP, restore).
+// Float-to-integer helper called from game code. It compares the current x87 control word with
+// the one saved at 0x822D80, reloads it only when they differ, then FISTPs and leaves the saved
+// word in force. It is not the LIBCMT `_ftol` (no archive member matches), and its origin is
+// unidentified.
 // LIBRARY: GAMEMD 0x7c5f00
 // __ftol
 
-// Linker import thunks (JMP through the import address table), 0x7c8962-0x7c8a3a.
+// Third-party ADPCM codec (frame-pointer asm with a stack frame and the five saved registers;
+// step and index tables at 0x879B30, 0x87B170, 0x87BC90 and 0x87BD90 are referenced only from
+// here; samples clamp at 0x7FFF). The binary carries no vendor string, so the attribution to a
+// vendor codec is unverified; the routines are linked, not recovered as source.
+// LIBRARY: GAMEMD 0x7c6270
+// ADPCM stream-state init (FUN_007C6270)
+
+// LIBRARY: GAMEMD 0x7c62ac
+// ADPCM stream decode (FUN_007C62AC)
+
+// LIBRARY: GAMEMD 0x7c6730
+// ADPCM stream-state init (FUN_007C6730)
+
+// LIBRARY: GAMEMD 0x7c6752
+// ADPCM codec routine (FUN_007C6752)
+
+// LIBRARY: GAMEMD 0x7c7350
+// ADPCM stream-state init (FUN_007C7350)
+
+// LIBRARY: GAMEMD 0x7c7371
+// ADPCM codec routine (FUN_007C7371)
+
+// Linker import thunks (JMP through the import address table), 0x7c8962-0x7c8a3a. The earlier
+// thunks 0x7c8362-0x7c8962 are in library_tail.h.
 // LIBRARY: GAMEMD 0x7c8962
 // WSOCK32!htonl
 
