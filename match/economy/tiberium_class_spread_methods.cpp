@@ -95,9 +95,7 @@ void TiberiumClass::RegisterForSpread(CellStruct* cell)
         SpreadLogic.Nodes[SpreadLogic.Count].Cell = *cell;
         SpreadLogic.Nodes[SpreadLogic.Count].Value =
             (float)(CurrentFrame + abs(DAT_00A8B230->unknown_0218.Random()) % 50);
-        TiberiumQueueNode* node = &SpreadLogic.Nodes[SpreadLogic.Count];
-        SpreadLogic.Count++;
-        SpreadLogic.Queue->Push(node);
+        SpreadLogic.Queue->Push(&SpreadLogic.Nodes[SpreadLogic.Count++]);
         SpreadLogic.CellIndexesWithTiberium[TiberiumCellSurfaceIndex(cell)] = 1;
     }
 }
