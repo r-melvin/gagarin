@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4A94F0 / 0x4A95A0.
 
 #include "display_class_foundation_methods.h"
+#include "../ui/input_controls/display_reveal.h"
 
 // FUNCTION: GAMEMD 0x4A94F0  DisplayClass::FoundationBoundsSize (__thiscall, ret 0x8)
 //
@@ -52,16 +53,16 @@ CellStruct DisplayClass::FoundationBoundsSize(CellStruct const* foundation) cons
 void DisplayClass::MarkFoundation(CellStruct const* baseCell, bool mark)
 {
     if (baseCell->X != DAT_008A03F8.X || baseCell->Y != DAT_008A03F8.Y) {
-        CellStruct const* data = CurrentFoundationData;
+        CellStruct const* data = static_cast<CellStruct const*>(CurrentFoundation);
         while (data->X != 0x7FFF || data->Y != 0x7FFF) {
             CellStruct const* offset = data++;
             CellStruct cell = *offset + *baseCell;
             if (CoordinatesLegal(cell)) {
-                CellClass* pCell = GetCellAt(cell);
+                DisplayCell* pCell = GetCellAt_005657A0(cell);
                 if (mark) {
-                    pCell->AltFlags |= 2;
+                    pCell->Flags12C |= 2;
                 } else {
-                    pCell->AltFlags &= ~2;
+                    pCell->Flags12C &= ~2;
                 }
             }
         }

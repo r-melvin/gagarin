@@ -19,51 +19,7 @@
 
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
-
-// ---------------------------------------------------------------------------
-// StripClass  (sizeof == 0xF94)  — one sidebar build column/tab.
-// Only NeedsRedraw @0x3C is touched by RepaintSidebar; the rest is opaque
-// padding so the element stride (0xF94) matches the retail array arithmetic.
-// ---------------------------------------------------------------------------
-struct StripClass
-{
-    char          _pad0[0x3C];   // 0x00 .. 0x3B  (Progress/Location/Bounds/Index/...)
-    unsigned char NeedsRedraw;   // 0x3C
-    char          _pad1[0xF94 - 0x3D];
-};
-
-GG_STATIC_ASSERT(offsetof(StripClass, NeedsRedraw) == 0x3C);
-GG_STATIC_ASSERT(sizeof(StripClass) == 0xF94);
-
-// ---------------------------------------------------------------------------
-// SidebarClass  (only the base padding + the members RepaintSidebar touches).
-// The 0x1544 base prefix (PowerClass and earlier StripClass members) is opaque.
-// ---------------------------------------------------------------------------
-class SidebarClass
-{
-public:
-    char          _base[0x1544];           // 0x0000 .. 0x1543  (PowerClass base)
-    StripClass    Tabs[4];                 // 0x1544 .. 0x5393  (4 * 0xF94)
-    int           unknown_5394;            // 0x5394
-    int           unknown_5398;            // 0x5398
-    int           ActiveTabIndex;          // 0x539C
-    int           unknown_53A0;            // 0x53A0
-    unsigned char HideObjectNameInTooltip; // 0x53A4
-    unsigned char IsSidebarActive;         // 0x53A5
-    unsigned char SidebarNeedsRedraw;      // 0x53A6
-
-    // GAMEMD 0x6A60A0  SidebarClass::RepaintSidebar (__thiscall)
-    void RepaintSidebar(int tab);
-
-    // GAMEMD 0x4F42F0  GScreenClass::FlagToRedraw (__thiscall, vtable slot 14)
-    // — callee, not matched here; declared body-less so cl emits the CALL
-    // (reloc-normalised).
-    void FlagToRedraw(int mode);
-};
-
-GG_STATIC_ASSERT(offsetof(SidebarClass, Tabs) == 0x1544);
-GG_STATIC_ASSERT(offsetof(SidebarClass, ActiveTabIndex) == 0x539C);
-GG_STATIC_ASSERT(offsetof(SidebarClass, SidebarNeedsRedraw) == 0x53A6);
+#include "input_controls/ui_display_chain.h"
 
 // SidebarClass::Instance — the singleton at 0x87F7E8 (the hard-coded ECX of
 // the retail FlagToRedraw call).  Address is the only thing that matters; the

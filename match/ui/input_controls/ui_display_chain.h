@@ -484,6 +484,10 @@ public:
     void Submit(ObjectClass* object);
     void Remove(ObjectClass* object);
 
+    // FUNCTION: GAMEMD 0x4A94F0 / 0x4A95A0 (decl; reloc).
+    CellStruct FoundationBoundsSize(CellStruct const* foundation) const;
+    void MarkFoundation(CellStruct const* baseCell, bool mark);
+
     virtual void vf_05();                                // 5   0x4A8850
     virtual void vf_07();                                // 7   0x4A88C0
     virtual void vf_08();                                // 8   0x4A8930
@@ -1050,6 +1054,11 @@ public:
     void FUN_006A70E0(bool flag);
     // FUNCTION: GAMEMD 0x6A6A00 (decl; reloc) -- RET 8.
     bool Scroll(bool up, int amount);
+    // FUNCTION: GAMEMD 0x6A60A0 (decl; reloc).
+    void RepaintSidebar(int tab);
+    // FUNCTION: GAMEMD 0x6ABC60 / 0x6ABCD0 (decl; reloc; static __fastcall).
+    static int FUN_006ABC60(int abs, int idxType, int unused);
+    static int GetObjectTabIdx(int abs, int buildCat, int isNaval);
     // FUNCTION: GAMEMD 0x6A7590 (decl; reloc) -- RET 4.
     void SetTab(int tab);
     // FUNCTION: GAMEMD 0x6A7D20

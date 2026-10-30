@@ -50,16 +50,16 @@ bool SidebarClass::Scroll(bool up, int tab)
         return false;
     }
     if (tab == -1) {
-        tab = this->ActiveTabIndex;
+        tab = this->unknown_539C;
     }
-    Strip_006A6A00* strip = &this->Tabs[tab];
+    StripClass* strip = &this->Strips[tab];
 
     if (up) {
         if (strip->TopRowIndex == 0) {
             return false;
         }
         strip->At_48 = strip->At_48 - 1;
-        (this->*this->Vtbl->At_38)(0);
+        FlagToRedraw(0);
         return true;
     }
 
@@ -72,13 +72,13 @@ bool SidebarClass::Scroll(bool up, int tab)
     if (CurrentPlayer == Observer) {
         if (DAT_00884CF8 > strip->TopRowIndex + rows / 2) {
             strip->At_48 = strip->At_48 + 1;
-            (this->*this->Vtbl->At_38)(0);
+            FlagToRedraw(0);
             return true;
         }
     } else {
         if ((strip->TopRowIndex + rows) * 2 < strip->CameoCount) {
             strip->At_48 = strip->At_48 + 1;
-            (this->*this->Vtbl->At_38)(0);
+            FlagToRedraw(0);
             return true;
         }
     }

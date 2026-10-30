@@ -11,9 +11,9 @@
 //     Tabs[tab].NeedsRedraw = 1; Instance->FlagToRedraw(0); }
 void SidebarClass::RepaintSidebar(int tab)
 {
-    if (tab == this->ActiveTabIndex) {
-        this->SidebarNeedsRedraw = 1;
-        this->Tabs[tab].NeedsRedraw = 1;
-        SidebarClass_Instance.FlagToRedraw(0);
+    if (tab == this->unknown_539C) {
+        this->At_53A6 = 1;
+        this->Strips[tab].At_3C = 1;
+        SidebarClass_Instance.GScreenClass::FlagToRedraw(0);
     }
 }

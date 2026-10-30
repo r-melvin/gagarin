@@ -27,6 +27,8 @@
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
+#include "../ui/input_controls/ui_display_chain.h"
+
 // The retail sum is two 16-bit adds into a fresh pair (`ADD DX,[EBP]` /
 // `ADD AX,[EBP+2]`), built in one slot and then copied into the local that
 // is passed on: CellStruct::operator+ (_layout/cell.h) inlined.
@@ -37,25 +39,5 @@ extern CellStruct DAT_008A03F8;
 // Only the flags dword at +0x12C is touched here.
 #include "../_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, AltFlags) == 0x12C);
-
-// DisplayClass (MapClass base included); only CurrentFoundationData at
-// +0x117C and the two inherited cell queries are used.
-class DisplayClass
-{
-public:
-    char              _pad000[0x117C];        // +0x0000
-    CellStruct const* CurrentFoundationData;  // +0x117C
-
-    // FUNCTION: GAMEMD 0x568300 (decl; reloc) — MapClass::CoordinatesLegal.
-    bool CoordinatesLegal(CellStruct const& cell) const;
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass* GetCellAt(CellStruct const& cell) const;
-
-    // FUNCTION: GAMEMD 0x4A94F0
-    CellStruct FoundationBoundsSize(CellStruct const* foundation) const;
-    // FUNCTION: GAMEMD 0x4A95A0
-    void MarkFoundation(CellStruct const* baseCell, bool mark);
-};
-GG_STATIC_ASSERT(offsetof(DisplayClass, CurrentFoundationData) == 0x117C);
 
 #endif  // GG_MATCH_MAP_DISPLAY_CLASS_FOUNDATION_METHODS_H

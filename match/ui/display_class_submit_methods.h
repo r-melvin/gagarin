@@ -14,12 +14,6 @@
 #include "../_layout/object_class.h"
 
 #include "../_layout/layer_class.h"
-
-class DisplayClass
-{
-public:
-    void Submit(ObjectClass* object);   // GAMEMD 0x4A9720 (matched)
-    void Remove(ObjectClass* object);   // GAMEMD 0x4A9770 (declared; reloc)
-};
+#include "input_controls/ui_display_chain.h"
 
 #endif  // GG_MATCH_UI_DISPLAY_CLASS_SUBMIT_METHODS_H

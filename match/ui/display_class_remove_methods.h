@@ -22,12 +22,6 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, LastLayer) == 0x94);
 
 // Declaration order matters -- see match/_rt/gg_vslot.h.
 #include "../_layout/draw_layer_004a9770.h"
-
-class DisplayClass
-{
-public:
-    // FUNCTION: GAMEMD 0x4A9770
-    void Remove(ObjectClass* object);
-};
+#include "input_controls/ui_display_chain.h"
 
 #endif  // GG_MATCH_UI_DISPLAY_CLASS_REMOVE_METHODS_H
