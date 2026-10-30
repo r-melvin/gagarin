@@ -29,7 +29,9 @@ GG_STATIC_ASSERT(sizeof(Pair_8) == 0x8);
 struct Rec_50
 {
     Cell unknown_00;   // returned whole (one dword copy) by 0x58C5A0
-    unsigned char unknown_04[0x1C];
+    unsigned char unknown_04[4];
+    double unknown_08;
+    unsigned char unknown_10[0x10];
     double unknown_20;
     double unknown_28;
     unsigned char unknown_30[8];
@@ -43,6 +45,7 @@ struct Rec_50
     unsigned char unknown_4B;
     unsigned char unknown_4C[4];
 };
+GG_STATIC_ASSERT(offsetof(Rec_50, unknown_08) == 0x8);
 GG_STATIC_ASSERT(offsetof(Rec_50, unknown_20) == 0x20);
 GG_STATIC_ASSERT(offsetof(Rec_50, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(Rec_50, unknown_38) == 0x38);
@@ -133,8 +136,14 @@ public:
     bool FUN_00594010(Rect_4i* a1, int a2);
     // FUNCTION: GAMEMD 0x5942F0
     void FUN_005942F0(Rect_4i* a1);
+    // Unclaimed (below partial bar), GAMEMD 0x58C4A0
+    void FUN_0058C4A0(CellStruct* a1);
+    // FUNCTION: GAMEMD 0x58D1C0 (declaration)
+    void FUN_0058D1C0(int a1, int a2);
     // FUNCTION: GAMEMD 0x58D5A0
     void FUN_0058D5A0(char a1);
+    // Unclaimed (below partial bar), GAMEMD 0x58EEA0
+    void FUN_0058EEA0();
 };
 GG_STATIC_ASSERT(offsetof(MapRegionClass, unknown_08) == 0x8);
 GG_STATIC_ASSERT(offsetof(MapRegionClass, unknown_10) == 0x10);
@@ -147,9 +156,21 @@ GG_STATIC_ASSERT(sizeof(MapRegionClass) == 0x50);
 // ScenarioClass::Instance (0xA8B230): only the member this file touches.
 struct Gbl_00A8B230
 {
-    unsigned char unknown_00[0x3598];
+    unsigned char unknown_00[0x112C];
+    int unknown_112C;
+    int unknown_1130;
+    int unknown_1134;
+    int unknown_1138;
+    int unknown_113C;
+    Pair_8 unknown_1140[16];
+    int unknown_11C0[16];
+    unsigned char unknown_1200[0x3598 - 0x1200];
     unsigned char unknown_3598;
 };
+GG_STATIC_ASSERT(offsetof(Gbl_00A8B230, unknown_112C) == 0x112C);
+GG_STATIC_ASSERT(offsetof(Gbl_00A8B230, unknown_113C) == 0x113C);
+GG_STATIC_ASSERT(offsetof(Gbl_00A8B230, unknown_1140) == 0x1140);
+GG_STATIC_ASSERT(offsetof(Gbl_00A8B230, unknown_11C0) == 0x11C0);
 GG_STATIC_ASSERT(offsetof(Gbl_00A8B230, unknown_3598) == 0x3598);
 
 // The audio object at 0xAC4F58: only the entry point called from here.
@@ -189,6 +210,8 @@ public:
     int unknown_308;
     int unknown_30C;
 
+    // FUNCTION: GAMEMD 0x59C880
+    void FUN_0059C880(int a1, int a2, int a3, int a4);
     // FUNCTION: GAMEMD 0x59D440
     int FUN_0059D440();
     // FUNCTION: GAMEMD 0x5A17F0 (declaration)
@@ -258,8 +281,12 @@ extern int* DAT_00ABE27C;
 extern IsometricTileTypeClass** DAT_00A8ED2C;
 // GLOBAL: GAMEMD 0xABAD28
 extern int DAT_00ABAD28;
+// GLOBAL: GAMEMD 0xAA0738
+extern int DAT_00AA0738;
 // GLOBAL: GAMEMD 0xAA0E18
 extern int DAT_00AA0E18;
+// GLOBAL: GAMEMD 0xABE304
+extern int DAT_00ABE304[];
 // GLOBAL: GAMEMD 0xABE328
 extern Pair_8 DAT_00ABE328[];
 // GLOBAL: GAMEMD 0xABED0C
@@ -293,6 +320,19 @@ inline MapRegionClass* Inline_005943E0(int id)
     return 0;
 }
 
+// Inline helpers of 0x5A19E0 (placeholder names): the region id of a cell (-1 without the record array), and its store.
+inline int Inline_CellOwner(const CellStruct& c)
+{
+    if (DAT_00ABED10 == 0)
+        return -1;
+    return DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
+}
+inline void Inline_SetCellOwner(const CellStruct& c, int owner)
+{
+    if (DAT_00ABED10 != 0)
+        DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38 = owner;
+}
+
 // Inline helper expanded in 0x58C320 (placeholder name): a draw in [0, last].
 inline unsigned int Inline_0058C320(unsigned int last)
 {
@@ -301,6 +341,25 @@ inline unsigned int Inline_0058C320(unsigned int last)
         idx = (unsigned int)((double)(last + 1) * (double)DAT_00ABE890.FUN_0065C780() * 2.3283064370807974e-10);
     } while (idx > last);
     return idx;
+}
+
+// Inline helper of 0x59C630 (placeholder name): a draw in [min, max].
+inline unsigned int Inline_0059C630(int min, int max)
+{
+    unsigned int idx;
+    do {
+        idx = (unsigned int)((double)(max - min + 1) * (double)DAT_00ABE890.FUN_0065C780() * 2.3283064370807974e-10 + (double)min);
+    } while (idx > (unsigned int)max);
+    return idx;
+}
+
+// Inline helper of 0x5A33F0 (placeholder name): a cell plus a step, the table step added on the second operand for Y.
+inline CellStruct Inline_005A33F0(const CellStruct& a, const CellStruct& b)
+{
+    CellStruct ret;
+    ret.X = a.X + b.X;
+    ret.Y = b.Y + a.Y;
+    return ret;
 }
 
 // Inline helper of 0x58BCF0 (placeholder name).
@@ -314,6 +373,8 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 // FUNCTION: GAMEMD 0x58BB00
 Pair_8* FUN_0058BB00(Pair_8* a1, int a2);
+// FUNCTION: GAMEMD 0x58BB30
+void FUN_0058BB30();
 // FUNCTION: GAMEMD 0x58BCF0
 bool FUN_0058BCF0(int a1);
 // FUNCTION: GAMEMD 0x58BD80
@@ -398,6 +459,8 @@ extern Callback_00595BC0 DAT_0082AF14;
 extern Callback_00595BC0 DAT_00ABDFEC;
 // GLOBAL: GAMEMD 0xABE150
 extern Obj_00ABE150* DAT_00ABE150;
+// GLOBAL: GAMEMD 0xABE2D8 -- set when a dialog value changed.
+extern char DAT_00ABE2D8;
 // GLOBAL: GAMEMD 0xABE154 -- the preview whose first dword is its surface.
 extern SeatNull_006406E0* DAT_00ABE154;
 // GLOBAL: GAMEMD 0x885780 -- the palette written with the preview.
@@ -467,6 +530,8 @@ void __stdcall FUN_00594190(Rect_4i* area, int id);
 void FUN_00599530(Obj_0059C580* a1);
 // FUNCTION: GAMEMD 0x59C530
 void FUN_0059C530();
+// FUNCTION: GAMEMD 0x59C630
+void FUN_0059C630();
 // FUNCTION: GAMEMD 0x59C800
 bool __stdcall FUN_0059C800(int a1);
 // FUNCTION: GAMEMD 0x59E640
@@ -497,7 +562,10 @@ void FUN_0058EBC0();
 void FUN_0058EF10();
 // FUNCTION: GAMEMD 0x59B6D0
 void FUN_0059B6D0();
+// FUNCTION: GAMEMD 0x5A33F0
+void FUN_005A33F0();
 // FUNCTION: GAMEMD 0x5A3A60
 void FUN_005A3A60();
+
 
 #endif  // GG_MATCH_MAP_MAPGEN_H

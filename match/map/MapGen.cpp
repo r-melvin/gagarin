@@ -494,6 +494,24 @@ Pair_8* FUN_0058BB00(Pair_8* a1, int a2)
     return a1;
 }
 
+// FUNCTION: GAMEMD 0x58BB30
+void FUN_0058BB30()
+{
+    if (DAT_00A8B230) {
+        DAT_00A8B230->unknown_113C = DAT_00ABED0C;
+        for (int i = 0; i < DAT_00A8B230->unknown_113C; i++) {
+            Pair_8 p;
+            FUN_0058BB00(&p, i);
+            DAT_00A8B230->unknown_1140[i] = p;
+            DAT_00A8B230->unknown_11C0[i] = DAT_00ABE304[i];
+        }
+        DAT_00A8B230->unknown_112C = DAT_00ABDFD4;
+        DAT_00A8B230->unknown_1130 = DAT_00ABDFD0;
+        DAT_00A8B230->unknown_1134 = DAT_00ABEC90;
+        DAT_00A8B230->unknown_1138 = DAT_00ABECD0;
+    }
+}
+
 // FUNCTION: GAMEMD 0x58BCD0
 // Branching.
 int FUN_0058BCD0(int a1)
@@ -629,6 +647,31 @@ void MapRegionClass::FUN_0058C3B0(CellStruct* a1)
     *a1 = z;
 }
 
+// Unclaimed (below partial bar), GAMEMD 0x58C4A0
+void MapRegionClass::FUN_0058C4A0(CellStruct* a1)
+{
+    int tries = 0;
+    Rec_50* r = DAT_00ABED10;
+    unsigned int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (;;) {
+        unsigned int idx = Inline_0058C320(n - 1);
+        *r = DAT_00ABED10[idx];
+        tries++;
+        if (tries >= 100)
+            break;
+        if (r->unknown_38 == unknown_08 && (r->unknown_00.X != 0 || r->unknown_00.Y != 0) && r->unknown_44) {
+            if (DAT_0087F7E8.FUN_005657A0(&r->unknown_00)->FUN_00486380()) {
+                *a1 = r->unknown_00;
+                return;
+            }
+        }
+    }
+    CellStruct z;
+    z.X = 0;
+    z.Y = 0;
+    *a1 = z;
+}
+
 // FUNCTION: GAMEMD 0x58C5A0
 // Draw random records of the 0xABED10 table into its first slot until one
 // names a non-origin cell in `zone` that passes 0x486380 and, unless `kind`
@@ -742,6 +785,23 @@ DynamicVectorClass<Cell>* MapRegionClass::FUN_0058E5D0()
         }
     }
     return list;
+}
+
+// Unclaimed (below partial bar), GAMEMD 0x58EEA0
+void MapRegionClass::FUN_0058EEA0()
+{
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int i = 0; i < n; i++) {
+        DAT_00ABED10[i].unknown_44 = 0;
+    }
+    FUN_0058D1C0(8, -2);
+    for (int j = 0; j < n; j++) {
+        if (DAT_00ABED10[j].unknown_38 == unknown_08) {
+            DAT_00ABED10[j].unknown_44 = 1;
+        } else if (DAT_00ABED10[j].unknown_38 == -2) {
+            DAT_00ABED10[j].unknown_38 = unknown_08;
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x5904B0
@@ -971,6 +1031,67 @@ int FUN_00595BC0(Callback_00595BC0 callback)
     return result;
 }
 
+// FUNCTION: GAMEMD 0x596C70
+void MapSeedClass::FUN_00596C70(HWND__* window)
+{
+    {
+        int old = unknown_3C;
+        HWND item = GetDlgItem(window, 0x405);
+        int now = SendMessageA(item, 0x150, SendMessageA(item, 0x147, 0, 0), 0);
+        unknown_3C = now;
+        if (old != now)
+            DAT_00ABE2D8 = 1;
+    }
+    {
+        int old = unknown_38;
+        HWND item = GetDlgItem(window, 0x407);
+        int now = SendMessageA(item, 0x150, SendMessageA(item, 0x147, 0, 0), 0);
+        unknown_38 = now;
+        if (old != now)
+            DAT_00ABE2D8 = 1;
+    }
+    {
+        int old = unknown_40;
+        HWND item = GetDlgItem(window, 0x408);
+        int now = SendMessageA(item, 0x150, SendMessageA(item, 0x147, 0, 0), 0);
+        unknown_40 = now;
+        if (old != now)
+            DAT_00ABE2D8 = 1;
+    }
+    {
+        int old = unknown_48;
+        HWND item = GetDlgItem(window, 0x3EA);
+        int now = SendMessageA(item, 0x150, SendMessageA(item, 0x147, 0, 0), 0);
+        unknown_48 = now;
+        if (old != now)
+            DAT_00ABE2D8 = 1;
+    }
+    {
+        int old = unknown_64;
+        HWND item = GetDlgItem(window, 0x406);
+        int now = SendMessageA(item, 0x150, SendMessageA(item, 0x147, 0, 0), 0);
+        unknown_64 = now;
+        unknown_68 = now;
+        if (old != now)
+            DAT_00ABE2D8 = 1;
+    }
+    {
+        int old = unknown_50;
+        HWND item = GetDlgItem(window, 0x3EB);
+        int now = SendMessageA(item, 0x400, 0, 0);
+        unknown_50 = now;
+        if (old != now)
+            DAT_00ABE2D8 = 1;
+    }
+    if (DAT_00ABE2D8) {
+        FUN_00597260(unknown_3C);
+        delete DAT_00ABE154;
+        DAT_00ABE154 = 0;
+        DAT_00ABE2D8 = 0;
+    }
+    FUN_005975E0();
+}
+
 // FUNCTION: GAMEMD 0x597260
 void MapSeedClass::FUN_00597260(int a1)
 {
@@ -1187,6 +1308,32 @@ void FUN_0059C530()
     }
 }
 
+// FUNCTION: GAMEMD 0x59C630
+void FUN_0059C630()
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        if (it->IsoTileTypeIndex == DAT_00AA0738 && it->Height == 0) {
+            CellClass* n2 = it->GetNeighbourCell(2);
+            CellClass* n4 = it->GetNeighbourCell(4);
+            CellClass* n3 = it->GetNeighbourCell(3);
+            if (n2->IsoTileTypeIndex == DAT_00AA0738 && n2->Height == 0 && n4->IsoTileTypeIndex == DAT_00AA0738 &&
+                n4->Height == 0 && n3->IsoTileTypeIndex == DAT_00AA0738 && n3->Height == 0 && Inline_0059C630(1, 10) != 1) {
+                int r = Inline_0058C320(241);
+                int step;
+                if (r >= 240)
+                    step = 247 - r;
+                else
+                    step = r / 40;
+                FUN_005A6C10(DAT_00AA0738 + step, &it->MapCoords, Inline_CellOwner(it->MapCoords), -1);
+            } else {
+                it->IsoTileTypeIndex = DAT_00AA0738 + 8 + Inline_0058C320(200) / 40;
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x59C800
 bool __stdcall FUN_0059C800(int a1)
 {
@@ -1202,6 +1349,24 @@ bool __stdcall FUN_0059C800(int a1)
             it->IsoTileTypeIndex = DAT_00AA0E18;
     }
     return true;
+}
+
+// FUNCTION: GAMEMD 0x59C880
+void Obj_0059C580::FUN_0059C880(int a1, int a2, int a3, int a4)
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct c = it->MapCoords;
+        Rec_50* r = &DAT_00ABED10[c.Y * DAT_0089C2DC + c.X];
+        if (r->unknown_38 == a1) {
+            r->unknown_38 = a2;
+            r->unknown_4B = 0;
+            it->IsoTileTypeIndex = a4;
+            it->Height = 0;
+            it->Level = (a3 == -1) ? unknown_30C : a3;
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x59D440
@@ -1275,6 +1440,41 @@ void __stdcall FUN_005A12D0(char a1, int a2)
     }
 }
 
+// FUNCTION: GAMEMD 0x5A19E0
+void Obj_0059C580::FUN_005A19E0()
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellClass* c5 = it->GetNeighbourCell(5);
+        CellClass* c1 = it->GetNeighbourCell(1);
+        CellClass* c3 = it->GetNeighbourCell(3);
+        CellClass* c2 = it->GetNeighbourCell(2);
+        CellClass* c6 = it->GetNeighbourCell(6);
+        unsigned int v = DAT_0087F7E8.FUN_00579B70(it);
+        if (v == 0x83) {
+            if (DAT_0087F7E8.FUN_00579B70(c3) == 0x83 && c2->FUN_00486380()) {
+                if (Inline_0058C320(1) == 0) {
+                    c2->Level -= 4;
+                    Inline_SetCellOwner(c2->MapCoords, Inline_CellOwner(it->MapCoords));
+                }
+            }
+        } else if (v == 0x38) {
+            if (DAT_0087F7E8.FUN_00579B70(c3) == 0x38 && c6->FUN_00486380()) {
+                if (Inline_0058C320(1) == 0) {
+                    c6->Level -= 4;
+                    Inline_SetCellOwner(c6->MapCoords, Inline_CellOwner(it->MapCoords));
+                }
+            }
+        } else if (v == 0xE0) {
+            if (DAT_0087F7E8.FUN_00579B70(c5) == 0xE0 && DAT_0087F7E8.FUN_00579B70(c1) == 0xE0 && it->FUN_00486380()) {
+                it->Level += 4;
+                Inline_SetCellOwner(it->MapCoords, Inline_CellOwner(c6->MapCoords));
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x5A1E10
 void Obj_0059C580::FUN_005A1E10()
 {
@@ -1297,6 +1497,43 @@ double __stdcall FUN_005A2ED0(const CellStruct* a1, const CellStruct* a2)
     int dy = a1->Y - a2->Y;
     double distance = FUN_004CAC40((double)(dx * dx + dy * dy));
     return (double)(unsigned int)DAT_00ABE890.FUN_0065C780() * DAT_007ED7C0 * 2.3283064370807974e-10 + distance;
+}
+
+// FUNCTION: GAMEMD 0x5A33F0
+void FUN_005A33F0()
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        if (it->FUN_004865B0()) {
+            for (int f = 0; f < 8; f++) {
+                CellStruct adj = it->MapCoords;
+                adj = Inline_005A33F0(adj, DAT_0089F688[f & 7]);
+                int x = adj.X;
+                int y = adj.Y;
+                if (y + x > DAT_00ABED04 && x - y < DAT_00ABED04 && y - x < DAT_00ABED04 && y + x <= DAT_00ABED08) {
+                    if (DAT_0087F7E8.FUN_005657A0(&adj)->FUN_00486380()) {
+                        DAT_00ABED10[adj.Y * DAT_0089C2DC + adj.X].unknown_08 = 0.5;
+                        DAT_00ABED10[adj.Y * DAT_0089C2DC + adj.X].unknown_45 = 1;
+                        break;
+                    }
+                }
+            }
+        } else if (it->FUN_004863D0()) {
+            for (int g = 0; g < 8; g++) {
+                CellStruct adj = it->MapCoords;
+                adj = Inline_005A33F0(adj, DAT_0089F688[g & 7]);
+                int x = adj.X;
+                int y = adj.Y;
+                if (y + x > DAT_00ABED04 && x - y < DAT_00ABED04 && y - x < DAT_00ABED04 && y + x <= DAT_00ABED08) {
+                    if (DAT_0087F7E8.FUN_005657A0(&adj)->FUN_00486380()) {
+                        DAT_00ABED10[adj.Y * DAT_0089C2DC + adj.X].unknown_45 = 1;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x5A3A60

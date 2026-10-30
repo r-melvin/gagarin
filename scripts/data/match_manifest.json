@@ -147082,5 +147082,59 @@
   "name": "TechnoClass::FUN_0070F890",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x58BB30",
+  "sym": "?FUN_0058BB30@@YIXXZ",
+  "len": "0xe7",
+  "name": "?FUN_0058BB30@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x596C70",
+  "sym": "?FUN_00596C70@MapSeedClass@@QAEXPAUHWND__@@@Z",
+  "len": "0x1d7",
+  "name": "MapSeedClass::FUN_00596C70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x59C630",
+  "sym": "?FUN_0059C630@@YIXXZ",
+  "len": "0x1c9",
+  "name": "?FUN_0059C630@@YIXXZ",
+  "status": "partial",
+  "pct": 95.2
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x59C880",
+  "sym": "?FUN_0059C880@Obj_0059C580@@QAEXHHHH@Z",
+  "len": "0x9c",
+  "name": "Obj_0059C580::FUN_0059C880",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x5A19E0",
+  "sym": "?FUN_005A19E0@Obj_0059C580@@QAEXXZ",
+  "len": "0x285",
+  "name": "Obj_0059C580::FUN_005A19E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x5A33F0",
+  "sym": "?FUN_005A33F0@@YIXXZ",
+  "len": "0x1fb",
+  "name": "?FUN_005A33F0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

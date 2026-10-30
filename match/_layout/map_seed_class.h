@@ -15,6 +15,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "load_options_class.h"
 
+struct HWND__;
+
 class MapSeedClass : public LoadOptionsClass
 {
 public:
@@ -55,6 +57,8 @@ public:
     MapSeedClass();
     // FUNCTION: GAMEMD 0x595710
     void FUN_00595710();
+    // FUNCTION: GAMEMD 0x596C70 -- reads the dialog's combo boxes back into the members; RET 4
+    void FUN_00596C70(HWND__* window);
     // FUNCTION: GAMEMD 0x597260
     void FUN_00597260(int a1);
     // FUNCTION: GAMEMD 0x597380

@@ -47,6 +47,8 @@ struct Map_0087F7E8
     void FUN_00578350();
     // FUNCTION: GAMEMD 0x578460 (declaration)
     bool FUN_00578460(CellStruct const* a1, char a2);
+    // FUNCTION: GAMEMD 0x579B70 (declaration) -- thiscall, one cell argument.
+    unsigned int FUN_00579B70(CellClass* cell);
     // FUNCTION: GAMEMD 0x578E60 (declaration)
     void FUN_00578E60(int a1, int a2);
     // FUNCTION: GAMEMD 0x588AC0
