@@ -68,6 +68,9 @@ def compile_one(root, tmp, directory, filename, objname):
         log.seek(0)
         output = log.read()
     ok = proc.returncode == 0 and os.path.isfile(obj)
+    if not ok and proc.returncode == 77 and os.environ.get("GAGARIN_ALLOW_NO_ML") == "1":
+        # No ml.exe in this toolchain (the public CI one); .asm units are gated locally.
+        return True, ["SKIP: no ml.exe in this toolchain"]
     return ok, ([] if ok else error_lines(output))
 
 

@@ -26,9 +26,14 @@ tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
 while IFS= read -r tu; do
   d="$(dirname "$tu")"; f="$(basename "$tu")"
   drv=vc6cl.sh; case "$f" in *.asm) drv=vc6asm.sh ;; esac
-  if ( cd "$d" && bash "$REPO/scripts/vc6/$drv" /Fo"$tmp/$f.obj" "$f" ) \
-       >"$tmp/log" 2>&1 && [ -f "$tmp/$f.obj" ]; then
+  rc=0
+  ( cd "$d" && bash "$REPO/scripts/vc6/$drv" /Fo"$tmp/$f.obj" "$f" ) >"$tmp/log" 2>&1 || rc=$?
+  if [ "$rc" -eq 0 ] && [ -f "$tmp/$f.obj" ]; then
     echo "  ok   $tu"
+  elif [ "$rc" -eq 77 ] && [ "${GAGARIN_ALLOW_NO_ML:-0}" = 1 ]; then
+    # The public CI toolchain (itsmattkc/MSVC600) ships no ml.exe; .asm units are
+    # assembled and verified by the local gates only.
+    echo "  SKIP $tu (no ml.exe in this toolchain)"
   else
     echo "  FAIL $tu"; grep -iE "error|fatal" "$tmp/log" | grep -v libEGL | head -3
     fail=1

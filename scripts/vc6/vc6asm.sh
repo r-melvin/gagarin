@@ -22,7 +22,7 @@ VC98="$VC6_ROOT/VC98"
 MSDEV="$VC6_ROOT/Common/MSDev98"
 if [[ ! -f "$VC98/Bin/ml.exe" && ! -f "$VC98/Bin/ML.EXE" ]]; then
   echo "vc6asm: ml.exe not found under VC6_ROOT=$VC6_ROOT" >&2
-  exit 2
+  exit 77   # distinct code: callers may skip .asm units when the toolchain has no MASM (CI)
 fi
 ML="$VC98/Bin/ml.exe"; [[ -f "$ML" ]] || ML="$VC98/Bin/ML.EXE"
 export WINEPATH="$VC98/Bin;$MSDEV/Bin"
