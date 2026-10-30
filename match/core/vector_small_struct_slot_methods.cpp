@@ -86,7 +86,7 @@ struct DiskID { int unknown_00; bool operator==(const DiskID& o) const { return 
 
 template class VectorClass<DiskID>;
 
-struct WorldDominationTour { struct Centroid { int unknown_00; int unknown_04; int unknown_08; Centroid() : unknown_00(0), unknown_04(0), unknown_08(0) {} bool operator==(const Centroid& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const Centroid& o) const { return !(*this==o); } }; };
+struct WorldDominationTour { class Centroid { public: int unknown_00; int unknown_04; int unknown_08; Centroid() : unknown_00(0), unknown_04(0), unknown_08(0) {} bool operator==(const Centroid& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const Centroid& o) const { return !(*this==o); } }; };
 // FUNCTION: GAMEMD 0x0076A390
 // VectorClass<WorldDominationTour::Centroid>::operator==
 // FUNCTION: GAMEMD 0x0076A3F0

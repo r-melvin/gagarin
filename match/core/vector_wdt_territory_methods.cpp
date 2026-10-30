@@ -15,8 +15,9 @@
 
 namespace WorldDominationTour {
 class Territory;
-struct Centroid
+class Centroid
 {
+public:
     int unknown_00;   // +0x00
     int unknown_04;   // +0x04
     int unknown_08;   // +0x08

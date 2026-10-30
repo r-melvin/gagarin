@@ -73884,11 +73884,11 @@
  {
   "tu": "match/core/vector_wdt_territory_methods.cpp",
   "addr": "0x769D30",
-  "sym": "?Slot6@?$VectorClass@UCentroid@WorldDominationTour@@@@UBE?AUCentroid@WorldDominationTour@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VCentroid@WorldDominationTour@@@@UBE?AVCentroid@WorldDominationTour@@H@Z",
   "len": "0x28",
   "name": "VectorClass<WorldDominationTour::Centroid>::Slot6",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_wdt_territory_methods.cpp",
@@ -76772,7 +76772,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465DE0",
-  "sym": "?Slot6@?$VectorClass@U?$TPoint3D@H@@@@UBE?AU?$TPoint3D@H@@H@Z",
+  "sym": "?Slot6@?$VectorClass@V?$TPoint3D@H@@@@UBE?AV?$TPoint3D@H@@H@Z",
   "len": "0x28",
   "name": "VectorClass<TPoint3D<int>>::Slot6",
   "status": "matched",
@@ -76781,7 +76781,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465E10",
-  "sym": "??8?$VectorClass@U?$TPoint3D@H@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@V?$TPoint3D@H@@@@UBE_NABV0@@Z",
   "len": "0x5c",
   "name": "VectorClass<TPoint3D<int>>::operator==",
   "status": "matched",
@@ -76790,7 +76790,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465E70",
-  "sym": "?SetCapacity@?$VectorClass@U?$TPoint3D@H@@@@UAE_NHPAU?$TPoint3D@H@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@V?$TPoint3D@H@@@@UAE_NHPAV?$TPoint3D@H@@@Z",
   "len": "0xdd",
   "name": "VectorClass<TPoint3D<int>>::SetCapacity",
   "status": "matched",
@@ -76799,7 +76799,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465F80",
-  "sym": "?FindItemIndex@?$VectorClass@U?$TPoint3D@H@@@@UBEHABU?$TPoint3D@H@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@V?$TPoint3D@H@@@@UBEHABV?$TPoint3D@H@@@Z",
   "len": "0x50",
   "name": "VectorClass<TPoint3D<int>>::FindItemIndex",
   "status": "matched",
@@ -76808,7 +76808,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x465FD0",
-  "sym": "?Slot5@?$VectorClass@U?$TPoint3D@H@@@@UBEHPAU?$TPoint3D@H@@@Z",
+  "sym": "?Slot5@?$VectorClass@V?$TPoint3D@H@@@@UBEHPAV?$TPoint3D@H@@@Z",
   "len": "0x24",
   "name": "VectorClass<TPoint3D<int>>::Slot5",
   "status": "matched",
@@ -79229,7 +79229,7 @@
  {
   "tu": "match/core/vector_hash_scheme_slot_methods.cpp",
   "addr": "0x628830",
-  "sym": "?Slot5@?$DynamicVectorClass@U?$HashObject@UHashString@@PAVSchemeNode@@@@@@UBEHPAU?$HashObject@UHashString@@PAVSchemeNode@@@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UBEHPAU?$HashObject@VHashString@@PAVSchemeNode@@@@@Z",
   "len": "0x24",
   "name": "DynamicVectorClass<HashObject<HashString, SchemeNode*>>::Slot5",
   "status": "matched",
@@ -79238,7 +79238,7 @@
  {
   "tu": "match/core/vector_hash_scheme_slot_methods.cpp",
   "addr": "0x628860",
-  "sym": "?Slot6@?$VectorClass@U?$HashObject@UHashString@@PAVSchemeNode@@@@@@UBE?AU?$HashObject@UHashString@@PAVSchemeNode@@@@H@Z",
+  "sym": "?Slot6@?$VectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UBE?AU?$HashObject@VHashString@@PAVSchemeNode@@@@H@Z",
   "len": "0x32",
   "name": "VectorClass<HashObject<HashString, SchemeNode*>>::Slot6",
   "status": "matched",
@@ -79247,7 +79247,7 @@
  {
   "tu": "match/core/vector_hash_scheme_slot_methods.cpp",
   "addr": "0x6288A0",
-  "sym": "??8?$VectorClass@U?$HashObject@UHashString@@PAVSchemeNode@@@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UBE_NABV0@@Z",
   "len": "0x4f",
   "name": "VectorClass<HashObject<HashString, SchemeNode*>>::operator==",
   "status": "matched",
@@ -79256,7 +79256,7 @@
  {
   "tu": "match/core/vector_hash_scheme_slot_methods.cpp",
   "addr": "0x6288F0",
-  "sym": "?SetCapacity@?$VectorClass@U?$HashObject@UHashString@@PAVSchemeNode@@@@@@UAE_NHPAU?$HashObject@UHashString@@PAVSchemeNode@@@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UAE_NHPAU?$HashObject@VHashString@@PAVSchemeNode@@@@@Z",
   "len": "0x14c",
   "name": "VectorClass<HashObject<HashString, SchemeNode*>>::SetCapacity",
   "status": "matched",
@@ -79265,7 +79265,7 @@
  {
   "tu": "match/core/vector_hash_scheme_slot_methods.cpp",
   "addr": "0x628AD0",
-  "sym": "?Slot5@?$VectorClass@U?$HashObject@UHashString@@PAVSchemeNode@@@@@@UBEHPAU?$HashObject@UHashString@@PAVSchemeNode@@@@@Z",
+  "sym": "?Slot5@?$VectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UBEHPAU?$HashObject@VHashString@@PAVSchemeNode@@@@@Z",
   "len": "0x24",
   "name": "VectorClass<HashObject<HashString, SchemeNode*>>::Slot5",
   "status": "matched",
@@ -79274,7 +79274,7 @@
  {
   "tu": "match/core/vector_hash_scheme_slot_methods.cpp",
   "addr": "0x628BB0",
-  "sym": "?SetCapacity@?$DynamicVectorClass@U?$HashObject@UHashString@@PAVSchemeNode@@@@@@UAE_NHPAU?$HashObject@UHashString@@PAVSchemeNode@@@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@UAE_NHPAU?$HashObject@VHashString@@PAVSchemeNode@@@@@Z",
   "len": "0x153",
   "name": "DynamicVectorClass<HashObject<HashString, SchemeNode*>>::SetCapacity",
   "status": "matched",
@@ -81884,7 +81884,7 @@
  {
   "tu": "match/core/vector_small_struct_slot_methods.cpp",
   "addr": "0x76A390",
-  "sym": "??8?$VectorClass@UCentroid@WorldDominationTour@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VCentroid@WorldDominationTour@@@@UBE_NABV0@@Z",
   "len": "0x5c",
   "name": "VectorClass<WorldDominationTour::Centroid>::operator==",
   "status": "matched",
@@ -81893,7 +81893,7 @@
  {
   "tu": "match/core/vector_small_struct_slot_methods.cpp",
   "addr": "0x76A3F0",
-  "sym": "?SetCapacity@?$VectorClass@UCentroid@WorldDominationTour@@@@UAE_NHPAUCentroid@WorldDominationTour@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VCentroid@WorldDominationTour@@@@UAE_NHPAVCentroid@WorldDominationTour@@@Z",
   "len": "0xf9",
   "name": "VectorClass<WorldDominationTour::Centroid>::SetCapacity",
   "status": "matched",
@@ -81902,7 +81902,7 @@
  {
   "tu": "match/core/vector_small_struct_slot_methods.cpp",
   "addr": "0x76A520",
-  "sym": "?FindItemIndex@?$VectorClass@UCentroid@WorldDominationTour@@@@UBEHABUCentroid@WorldDominationTour@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VCentroid@WorldDominationTour@@@@UBEHABVCentroid@WorldDominationTour@@@Z",
   "len": "0x50",
   "name": "VectorClass<WorldDominationTour::Centroid>::FindItemIndex",
   "status": "matched",
@@ -81911,7 +81911,7 @@
  {
   "tu": "match/core/vector_small_struct_slot_methods.cpp",
   "addr": "0x76A570",
-  "sym": "?Slot5@?$VectorClass@UCentroid@WorldDominationTour@@@@UBEHPAUCentroid@WorldDominationTour@@@Z",
+  "sym": "?Slot5@?$VectorClass@VCentroid@WorldDominationTour@@@@UBEHPAVCentroid@WorldDominationTour@@@Z",
   "len": "0x24",
   "name": "VectorClass<WorldDominationTour::Centroid>::Slot5",
   "status": "matched",

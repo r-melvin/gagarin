@@ -117,7 +117,7 @@ template class DynamicVectorClass<Cell>;
 template class VectorClass<BaseNodeClass>;
 template class DynamicVectorClass<BaseNodeClass>;
 
-template<class T> struct TPoint3D { T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
+template<class T> class TPoint3D { public: T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
 // VTABLE: GAMEMD 0x007E4638 -- VectorClass<TPoint3D<int>>.
 template class VectorClass<TPoint3D<int> >;
 
