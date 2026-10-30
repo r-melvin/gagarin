@@ -122,6 +122,11 @@ don't work on the same function.
    the whole set, so it must keep `/MT` and `/GR` (the original build had RTTI on; retail carries full MSVC RTTI). Files pinned without `/Ob2` are placement leads: a
    function they can see was probably defined in another original file, so move the
    definition rather than add a new flag line.
+   `vc6cl.sh` hands cl each in-repo source as an absolute path through a fixed-length alias
+   (`Z:\tmp\vc6-<10 hex of md5(checkout path)>\match\...`, a symlink to the checkout created
+   on demand), because cl's RTTI class-hierarchy-descriptor attribute byte depends on the
+   source path strings it sees. This makes objects independent of where the checkout lives;
+   diagnostics and `#line` directives show the alias path. Do not bypass it by calling cl directly.
 4. For the last few register or ordering mismatches, try the permuter:
    `scripts/permuter/new_run.sh <addr> <C-name> <native-symbol> /tmp/run <length>`.
    The fifth argument is the full validated retail span in hex. Before searching,

@@ -84,4 +84,36 @@ fi
 # VC6_EXTRA_FLAGS is appended to whichever set was chosen (default, per-TU or
 # VC6_FLAGS). It exists for whole-tree flag experiments such as the /ML vs /MT
 # check (scripts/vc6/crt_flag_check.py); it is never set in a normal build.
-exec wine "$VC98/Bin/CL.EXE" $FLAGS ${VC6_EXTRA_FLAGS:-} "$@"
+# Checkout-independent source path. cl.exe's RTTI class-hierarchy-descriptor
+# attribute byte depends on the source path strings it sees, so a TU compiled
+# from two checkouts at different paths would differ. Every in-repo source
+# argument is therefore handed to cl as an absolute path through a fixed-length
+# alias, Z:\tmp\vc6-<10 hex of md5(repo path)>\<repo-relative path>. The alias
+# is a symlink to the checkout, created atomically (temp name then mv -T; `ln -sfn`
+# races under -j). The prefix is the same length for every checkout and the rest
+# is repo-relative, so no padding is needed. The path is deliberately not
+# resolved with `pwd -P` (that would undo the alias). The VC6FLAGS lookup above
+# still uses the original relative argument. Sources outside the repo are passed
+# unchanged.
+ALIAS_BASE=/tmp
+ARGS=()
+for arg in "$@"; do
+  case "$arg" in
+    /*|-*) ARGS+=("$arg") ;;
+    *.cpp|*.c|*.cxx|*.cc)
+      if [[ -f "$arg" ]]; then
+        abs="$(cd "$(dirname "$arg")" && pwd)/$(basename "$arg")"
+        if [[ "$abs" == "$REPO"/* ]]; then
+          alias="$ALIAS_BASE/vc6-$(printf %s "$REPO" | md5sum | cut -c1-10)"
+          [[ "$(readlink "$alias" 2>/dev/null)" == "$REPO" ]] || { ln -s "$REPO" "$alias.$$" && mv -T "$alias.$$" "$alias"; }
+          abs="$alias${abs#"$REPO"}"
+          abs="Z:${abs//\//\\}"
+          ARGS+=("$abs")
+          continue
+        fi
+      fi
+      ARGS+=("$arg") ;;
+    *) ARGS+=("$arg") ;;
+  esac
+done
+exec wine "$VC98/Bin/CL.EXE" $FLAGS ${VC6_EXTRA_FLAGS:-} "${ARGS[@]}"

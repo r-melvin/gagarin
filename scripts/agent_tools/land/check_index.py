@@ -17,6 +17,7 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import landlib as L  # noqa: E402
 
+ALIAS = re.compile(r'^[Zz]:/tmp/vc6-[0-9a-f]{10}/(.*)$')
 LINE = re.compile(rb'^#line \d+ "([^"]+)"', re.M)
 
 
@@ -34,6 +35,10 @@ def opened(tree, tu, env):
     got = set()
     for m in LINE.finditer(data):
         p = m.group(1).decode("latin1").replace("\\\\", "/").replace("\\", "/")
+        a = ALIAS.match(p)
+        if a:                              # in-repo file via the vc6cl.sh checkout alias: repo-relative
+            got.add(os.path.normpath(a.group(1)))
+            continue
         if ":" in p:                       # system header (drive letter)
             continue
         got.add(os.path.normpath(os.path.join(os.path.dirname(tu), p)))
