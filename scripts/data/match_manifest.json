@@ -146642,15 +146642,6 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/techno_type_class_ini_712170.cpp",
-  "addr": "0x712170",
-  "sym": "?vf_25@TechnoTypeClass@@UAE_NPAVCCINIClass@@@Z",
-  "len": "0x3fd1",
-  "name": "TechnoTypeClass::vf_25",
-  "status": "partial",
-  "pct": 98.5
- },
- {
   "tu": "match/combat/voxel_anim_type_class_ini_74b050.cpp",
   "addr": "0x74B050",
   "sym": "?vf_25@VoxelAnimTypeClass@@UAE_NPAVCCINIClass@@@Z",

@@ -5,9 +5,9 @@
 //   gamemd.exe v1.001 disassembly; field names are the INI key strings themselves.
 //
 //   Build notes (all read off the retail bytes):
-//   - The first half of the reader (up to the Dock list) destroys its list temporaries one inline level
-//     deeper than the second half: retail keeps their VectorClass::Clear out of line there and expands it
-//     inline from MoveSound onwards. The Early* helpers and the inline depth limit reproduce that split.
+//   - The first half of the reader (up to the Dock list) destroys its list temporaries differently from the
+//     second half: retail keeps their VectorClass::Clear out of line there and expands it inline from
+//     MoveSound onwards. Plain source does not reproduce that split, so the function is not claimed.
 //   - `sound` and `index` are function-level variables: retail reuses the same two registers across all of
 //     the sound-index reads, and the scheduling of every one of those reads depends on it.
 //   - The section is passed as the bare ID bytes through the first half, and through the identity call
@@ -98,7 +98,7 @@ struct TurretAnimBlock : WaypointQueue_00717A30
 GG_STATIC_ASSERT(sizeof(TurretAnimBlock) == 0x14);
 
 // Comma-separated type lists, expanded inline in the reader like the animation list in the support header.
-static __forceinline TypeList<const VoxelAnimTypeClass*> BuildVoxelAnimTypeList(char* buffer)
+static inline TypeList<const VoxelAnimTypeClass*> BuildVoxelAnimTypeList(char* buffer)
 {
     TypeList<const VoxelAnimTypeClass*> list(0, 0);
     for (char* token = strtok(buffer, STR_00817F70); token && *token; token = strtok(0, STR_00817F70)) {
@@ -108,14 +108,14 @@ static __forceinline TypeList<const VoxelAnimTypeClass*> BuildVoxelAnimTypeList(
     }
     return list;
 }
-static __forceinline TypeList<const VoxelAnimTypeClass*> ReadVoxelAnimTypeList(CCINIClass* ini, const char* section,
+static inline TypeList<const VoxelAnimTypeClass*> ReadVoxelAnimTypeList(CCINIClass* ini, const char* section,
     const char* key, const TypeList<const VoxelAnimTypeClass*>& defaultValue, char* buffer)
 {
     if (ini->ReadString(section, key, STR_00889F64, buffer, 0x80))
         return BuildVoxelAnimTypeList(buffer);
     return defaultValue;
 }
-static __forceinline TypeList<const BuildingTypeClass*> BuildBuildingTypeList(char* buffer)
+static inline TypeList<const BuildingTypeClass*> BuildBuildingTypeList(char* buffer)
 {
     TypeList<const BuildingTypeClass*> list(0, 0);
     for (char* token = strtok(buffer, STR_00817F70); token && *token; token = strtok(0, STR_00817F70)) {
@@ -125,14 +125,14 @@ static __forceinline TypeList<const BuildingTypeClass*> BuildBuildingTypeList(ch
     }
     return list;
 }
-static __forceinline TypeList<const BuildingTypeClass*> ReadBuildingTypeList(CCINIClass* ini, const char* section,
+static inline TypeList<const BuildingTypeClass*> ReadBuildingTypeList(CCINIClass* ini, const char* section,
     const char* key, const TypeList<const BuildingTypeClass*>& defaultValue, char* buffer)
 {
     if (ini->ReadString(section, key, STR_00889F64, buffer, 0x80))
         return BuildBuildingTypeList(buffer);
     return defaultValue;
 }
-static __forceinline TypeList<const ParticleSystemTypeClass*> BuildParticleSystemTypeList(char* buffer)
+static inline TypeList<const ParticleSystemTypeClass*> BuildParticleSystemTypeList(char* buffer)
 {
     TypeList<const ParticleSystemTypeClass*> list(0, 0);
     for (char* token = strtok(buffer, STR_00817F70); token && *token; token = strtok(0, STR_00817F70)) {
@@ -142,7 +142,7 @@ static __forceinline TypeList<const ParticleSystemTypeClass*> BuildParticleSyste
     }
     return list;
 }
-static __forceinline TypeList<const ParticleSystemTypeClass*> ReadParticleSystemTypeList(CCINIClass* ini, const char* section,
+static inline TypeList<const ParticleSystemTypeClass*> ReadParticleSystemTypeList(CCINIClass* ini, const char* section,
     const char* key, const TypeList<const ParticleSystemTypeClass*>& defaultValue, char* buffer)
 {
     if (ini->ReadString(section, key, STR_00889F64, buffer, 0x80))
@@ -150,76 +150,10 @@ static __forceinline TypeList<const ParticleSystemTypeClass*> ReadParticleSystem
     return defaultValue;
 }
 
-// The first half of the reader destroys its list temporaries one inline level deeper than the second half;
-// under the inline depth limit below that is what keeps their VectorClass::Clear calls out of line, as retail has them.
-static __forceinline void EarlyDebrisTypes(TechnoTypeClass* t, CCINIClass* ini, char* buffer)
-{
-    // STRING: GAMEMD 0x844384
-    t->DebrisTypes = ReadVoxelAnimTypeList(ini, t->ID.Data, "DebrisTypes", t->DebrisTypes, buffer);
-}
-static __forceinline void EarlyDebrisMaximums(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x844374
-    t->DebrisMaximums = ini->ReadIntegerList(NameOf(t->ID.Data), "DebrisMaximums", t->DebrisMaximums);
-}
-static __forceinline void EarlyDebrisAnims(TechnoTypeClass* t, CCINIClass* ini, char* buffer)
-{
-    // STRING: GAMEMD 0x844368
-    t->DebrisAnims = ReadAnimTypeList(ini, t->ID.Data, "DebrisAnims", t->DebrisAnims, buffer);
-}
-static __forceinline void EarlyVoiceMove(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x8442C0
-    t->VoiceMove = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceMove", t->VoiceMove);
-}
-static __forceinline void EarlyVoiceSelect(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x8442B4
-    t->VoiceSelect = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceSelect", t->VoiceSelect);
-}
-static __forceinline void EarlyVoiceSelectEnslaved(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x8442A0
-    t->VoiceSelectEnslaved = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceSelectEnslaved", t->VoiceSelectEnslaved);
-}
-static __forceinline void EarlyVoiceSelectDeactivated(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x844288
-    t->VoiceSelectDeactivated = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceSelectDeactivated", t->VoiceSelectDeactivated);
-}
-static __forceinline void EarlyVoiceAttack(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x84427C
-    t->VoiceAttack = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceAttack", t->VoiceAttack);
-}
-static __forceinline void EarlyVoiceSpecialAttack(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x844268
-    t->VoiceSpecialAttack = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceSpecialAttack", t->VoiceSpecialAttack);
-}
-static __forceinline void EarlyVoiceDie(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x84425C
-    t->VoiceDie = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceDie", t->VoiceDie);
-}
-static __forceinline void EarlyVoiceFeedback(TechnoTypeClass* t, CCINIClass* ini)
-{
-    // STRING: GAMEMD 0x84424C
-    t->VoiceFeedback = FUN_00525430(ini, NameOf(t->ID.Data), "VoiceFeedback", t->VoiceFeedback);
-}
-static __forceinline void EarlyDock(TechnoTypeClass* t, CCINIClass* ini, char* buffer)
-{
-    // STRING: GAMEMD 0x84418C
-    t->Dock = ReadBuildingTypeList(ini, t->ID.Data, "Dock", t->Dock, buffer);
-}
-
-
-#pragma inline_depth(4)
-
-// PARTIAL: 98.5% -- identical instruction multiset and relocation targets; what remains is the stack offsets of
-// the aggregate temporaries (the list under construction sits at ESP+0x3C where retail has ESP+0x40, and the
-// coordinate/ability return buffers use a different slot), which moves about 70 displacement bytes.
-// FUNCTION: GAMEMD 0x712170
+// Unclaimed (below partial bar), GAMEMD 0x712170
+// Plain source scores 12.7% (identical to the old 98.5% body minus the inline-depth pragma and the forced
+// wrappers): retail keeps the list temporaries' VectorClass::Clear out of line in the first half of the reader
+// and expands it from MoveSound onwards, which ordinary source here does not reproduce (+163 instructions).
 //
 // Read this type's keys from the rules INI section named by its ID and from the art INI section named
 // by its image file. Reports whether the base type read succeeded.
@@ -312,9 +246,12 @@ bool TechnoTypeClass::vf_25(CCINIClass* ini)
             MinDebris = 0;
         if (MaxDebris < MinDebris)
             MaxDebris = MinDebris;
-        EarlyDebrisTypes(this, ini, bufA);
-        EarlyDebrisMaximums(this, ini);
-        EarlyDebrisAnims(this, ini, bufA);
+        // STRING: GAMEMD 0x844384
+        DebrisTypes = ReadVoxelAnimTypeList(ini, ID.Data, "DebrisTypes", DebrisTypes, bufA);
+        // STRING: GAMEMD 0x844374
+        DebrisMaximums = ini->ReadIntegerList(NameOf(ID.Data), "DebrisMaximums", DebrisMaximums);
+        // STRING: GAMEMD 0x844368
+        DebrisAnims = ReadAnimTypeList(ini, ID.Data, "DebrisAnims", DebrisAnims, bufA);
         // STRING: GAMEMD 0x844354
         HasTurretTooltips = ini->ReadBool(ID.Data, "HasTurretTooltips", HasTurretTooltips);
         // STRING: GAMEMD 0x844348
@@ -362,14 +299,22 @@ bool TechnoTypeClass::vf_25(CCINIClass* ini)
             EliteWeapon[0].WeaponType = 0;
             EliteWeapon[1].WeaponType = 0;
         }
-        EarlyVoiceMove(this, ini);
-        EarlyVoiceSelect(this, ini);
-        EarlyVoiceSelectEnslaved(this, ini);
-        EarlyVoiceSelectDeactivated(this, ini);
-        EarlyVoiceAttack(this, ini);
-        EarlyVoiceSpecialAttack(this, ini);
-        EarlyVoiceDie(this, ini);
-        EarlyVoiceFeedback(this, ini);
+        // STRING: GAMEMD 0x8442C0
+        VoiceMove = FUN_00525430(ini, NameOf(ID.Data), "VoiceMove", VoiceMove);
+        // STRING: GAMEMD 0x8442B4
+        VoiceSelect = FUN_00525430(ini, NameOf(ID.Data), "VoiceSelect", VoiceSelect);
+        // STRING: GAMEMD 0x8442A0
+        VoiceSelectEnslaved = FUN_00525430(ini, NameOf(ID.Data), "VoiceSelectEnslaved", VoiceSelectEnslaved);
+        // STRING: GAMEMD 0x844288
+        VoiceSelectDeactivated = FUN_00525430(ini, NameOf(ID.Data), "VoiceSelectDeactivated", VoiceSelectDeactivated);
+        // STRING: GAMEMD 0x84427C
+        VoiceAttack = FUN_00525430(ini, NameOf(ID.Data), "VoiceAttack", VoiceAttack);
+        // STRING: GAMEMD 0x844268
+        VoiceSpecialAttack = FUN_00525430(ini, NameOf(ID.Data), "VoiceSpecialAttack", VoiceSpecialAttack);
+        // STRING: GAMEMD 0x84425C
+        VoiceDie = FUN_00525430(ini, NameOf(ID.Data), "VoiceDie", VoiceDie);
+        // STRING: GAMEMD 0x84424C
+        VoiceFeedback = FUN_00525430(ini, NameOf(ID.Data), "VoiceFeedback", VoiceFeedback);
         // STRING: GAMEMD 0x844240
         { int sound = AuxSound1; if (ini->ReadString(ID.Data, "AuxSound1", STR_00889F64, bufB, 0x80)) { int index = VocClass::FindIndex(bufB); if (index != -1) sound = index; } AuxSound1 = sound; }
         // STRING: GAMEMD 0x844234
@@ -404,7 +349,8 @@ bool TechnoTypeClass::vf_25(CCINIClass* ini)
         BuildLimit = ini->ReadInteger(ID.Data, "BuildLimit", BuildLimit);
         // STRING: GAMEMD 0x844194
         Category = static_cast<TechnoTypeIniView*>(ini)->ReadCategory(ID.Data, "Category", Category);
-        EarlyDock(this, ini, bufB);
+        // STRING: GAMEMD 0x84418C
+        Dock = ReadBuildingTypeList(ini, ID.Data, "Dock", Dock, bufB);
         // STRING: GAMEMD 0x844180
         { BuildingTypeClass* t = DeploysInto; DeploysInto = ini->ReadString(ID.Data, "DeploysInto", STR_00889F64, bufB, 0x80) ? BuildingType_FindPtr(bufB) : t; }
         // STRING: GAMEMD 0x844170
