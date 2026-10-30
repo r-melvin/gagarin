@@ -19,7 +19,7 @@ enforces; nothing here needs a compiler except --strict.
                  deletes `this`, or one named like one); the compiler emits ??_G from the declared virtual destructor.
                  E/W a FUNCTION annotation on a ??_G-like method inside an Obj_/view struct
   flags        E a `// VC6FLAGS:` line whose set equals the project default (delete the line)
-  thisnull     E a `this &&` null test (steering; the retail code does not test `this`)
+  thisnull     E a real null test of `this` (`this == 0`, `!this`, `if (this)`, `this &&`); comparisons like `x != this &&` are fine (steering; the retail code does not test `this`)
   views        E a NEW definition of a class that has a canonical header (w6 brief: never a
                  new per-TU view); W a new definition of a class already defined elsewhere (ODR debt); judged on the POST-patch tree
   classkey     E class/struct keyword differs from the RTTI TypeDescriptor (hcfix rule)
@@ -77,6 +77,15 @@ def apply_outside_repo(work, patch_text):
                           capture_output=True, env=env)
 
 
+# Real null tests of `this`; comparisons against it (`x != this && ...`, `p->f == this && ...`) are not.
+THIS_NULL = re.compile(
+    r"\bthis\s*[!=]=\s*(?:0\b|NULL\b|nullptr\b)"
+    r"|\b(?:0|NULL|nullptr)\s*[!=]=\s*this\b"
+    r"|!\s*this\b"
+    r"|\b(?:if|while)\s*\(\s*this\s*\)"
+    r"|(?:^|[(&|?,]|\breturn\b)\s*this\s*(?:&&|\|\||\?)")
+
+
 class Lint:
     def __init__(self, packet, tree, repo, allow_words=()):
         self.p = packet
@@ -85,7 +94,12 @@ class Lint:
         self.findings = []
         self.allow = [re.compile(x) for x in allow_words]
         self.ptext = open(packet.patch, errors="replace").read() if os.path.isfile(packet.patch) else ""
-        self.diffs = D.split_patch(self.ptext)
+        self.split_error = None
+        try:
+            self.diffs = D.split_patch(self.ptext)
+        except ValueError as ex:
+            self.diffs = []
+            self.split_error = str(ex)
         self.delta = None
         self.rows = []
         try:
@@ -105,6 +119,8 @@ class Lint:
 
     # ------------------------------------------------------------ rules
     def shape(self):
+        if self.split_error:
+            self.err("shape", "patch.diff is non-empty but splits into 0 files: %s" % self.split_error)
         for e in self.p.validate():
             self.err("shape", e)
         if (os.path.isfile(self.p.readme) or self.p.commit_msg_file()) and not self.p.commit_message():
@@ -316,8 +332,8 @@ class Lint:
                 continue
             for ln, text in d.added_lines():
                 code = re.sub(r"//.*$", "", text)
-                if re.search(r"\bthis\s*&&", code):
-                    self.err("thisnull", "`this &&` null test: %s" % text.strip()[:100], file=d.path, line=ln)
+                if THIS_NULL.search(code):
+                    self.err("thisnull", "`this` null test: %s" % text.strip()[:100], file=d.path, line=ln)
 
     def views(self):
         """Class-view duplication is judged on the POST-patch tree: a class moved to a new

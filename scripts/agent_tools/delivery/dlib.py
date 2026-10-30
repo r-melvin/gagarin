@@ -240,9 +240,43 @@ class FileDiff:
         return "\n".join(t for _, t in self.added_lines())
 
 
+def _plain_path(hdr):
+    """Path from a `--- X` / `+++ X` header line body (timestamp dropped, a/ b/ prefix stripped)."""
+    p = hdr.split("\t")[0].strip()
+    if p == "/dev/null":
+        return p
+    return p[2:] if p[:2] in ("a/", "b/") else p
+
+
+def _split_plain(text):
+    """Split a plain `diff -u` patch (no `diff --git` headers) into FileDiffs by synthesising the git header."""
+    lines = text.split("\n")
+    starts = [i for i in range(len(lines) - 1) if lines[i].startswith("--- ") and lines[i + 1].startswith("+++ ")]
+    out = []
+    for n, i in enumerate(starts):
+        end = starts[n + 1] if n + 1 < len(starts) else len(lines)
+        old, new = _plain_path(lines[i][4:]), _plain_path(lines[i + 1][4:])
+        path = new if new != "/dev/null" else old
+        head = "diff --git a/%s b/%s\n" % (old if old != "/dev/null" else path, path)
+        if old == "/dev/null":
+            head += "new file mode 100644\n"
+        elif new == "/dev/null":
+            head += "deleted file mode 100644\n"
+        out.append(FileDiff(head + "\n".join(lines[i:end]).rstrip("\n") + "\n"))
+    return out
+
+
 def split_patch(text):
+    """Split a patch into per-file FileDiffs. Accepts `diff --git` patches and plain unified diffs
+    (---/+++ headers only); raises ValueError for a non-blank text that yields no files."""
     parts = re.split(r"(?m)^(?=diff --git )", text)
-    return [FileDiff(p) for p in parts if p.startswith("diff --git ")]
+    out = [FileDiff(p) for p in parts if p.startswith("diff --git ")]
+    if not out:
+        out = _split_plain(text)
+    if not out and text.strip():
+        raise ValueError("patch text is not empty but contains no recognisable file diffs "
+                         "(expected `diff --git` blocks or ---/+++ unified headers)")
+    return out
 
 
 # ---------------------------------------------------------------- tree model

@@ -670,5 +670,54 @@ class NewTools(unittest.TestCase):
                          [("Foo", "Cost", "Cost", "0x401000"), ("Foo", "Speed", "Speed", "0x401000")])
 
 
+class Toolfix1030(unittest.TestCase):
+    PLAIN = ("--- a/match/x/a.cpp\t2026-10-30 10:00:00\n+++ b/match/x/a.cpp\t2026-10-30 10:00:01\n@@ -1,2 +1,3 @@\n l1\n+l2\n l3\n"
+             "--- /dev/null\n+++ b/match/x/n.h\n@@ -0,0 +1,1 @@\n+h\n")
+
+    def test_split_plain_unified_diff(self):
+        ds = D.split_patch(self.PLAIN)
+        self.assertEqual([d.path for d in ds], ["match/x/a.cpp", "match/x/n.h"])
+        self.assertTrue(ds[1].is_new and not ds[0].is_new)
+        self.assertEqual(ds[1].new_content(), "h")
+
+    def test_split_garbage_raises_and_blank_is_empty(self):
+        self.assertEqual(D.split_patch(""), [])
+        with self.assertRaises(ValueError):
+            D.split_patch("this is not a patch\n")
+
+    def test_lint_errors_on_unsplittable_patch(self):
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        p = packet(tmp, {"match/x/a.cpp": "x"}, [])
+        open(p.patch, "w").write("garbage that is not a patch\n")
+        f = [x for x in lint(p, {"shape"}) if x["rule"] == "shape"]
+        self.assertTrue(any(x["level"] == "E" and "0 files" in x["msg"] for x in f), f)
+
+    def test_thisnull_only_real_null_tests(self):
+        def hits(expr):
+            src = HEADER + "// FUNCTION: GAMEMD 0x401000\nint Foo::f() { return %s; }\n" % expr
+            tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+            return [x for x in lint(packet(tmp, {"match/x/a.cpp": src}, []), {"thisnull"}) if x["rule"] == "thisnull"]
+        for ok in ("x != this && y", "p->f == this && y", "this == p", "g(this)", "a(this, b)"):
+            self.assertEqual(hits(ok), [], ok)
+        for bad in ("this && y", "this == 0", "this == NULL", "this != 0", "!this", "0 != this", "y || this && z"):
+            self.assertTrue(hits(bad), bad)
+        src = HEADER + "// FUNCTION: GAMEMD 0x401000\nint Foo::f() { if (this) { return 1; } return 0; }\n"
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        self.assertTrue(lint(packet(tmp, {"match/x/a.cpp": src}, []), {"thisnull"}))
+
+    def test_pkt_init_refuses_existing_ready_patch(self):
+        import pkt
+        import types
+        import unittest.mock as mock
+        root = tempfile.mkdtemp(prefix="pktinit_", dir=D.SCRATCH)
+        os.makedirs(os.path.join(root, "nm", "READY"))
+        open(os.path.join(root, "nm", "READY", "patch.diff"), "w").write("keep\n")
+        with mock.patch.object(pkt, "SCRATCH_ROOT", root), mock.patch.object(pkt, "budget", lambda: (True, "")):
+            with self.assertRaises(SystemExit) as cm:
+                pkt.cmd_init(types.SimpleNamespace(name="nm", base="HEAD", force=False, reuse=False))
+        self.assertIn("--reuse", str(cm.exception))
+        self.assertEqual(open(os.path.join(root, "nm", "READY", "patch.diff")).read(), "keep\n")
+
+
 if __name__ == "__main__":
     unittest.main()

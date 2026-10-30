@@ -2,7 +2,7 @@
 """pkt.py: one command for a matching worker, from an empty shell to a linted READY packet.
 
     pkt.py budget                         memory/worktree/compiler-load budget (refuses when over)
-    pkt.py init NAME [--base REV]         scratch worktree + toolchain link + READY skeleton + env file
+    pkt.py init NAME [--base REV] [--reuse]        scratch worktree + toolchain link + READY skeleton + env file
     pkt.py span ADDR...                   CFG-closed span, manifest/claim status, Ghidra size, for each address
     pkt.py score TU [ADDR...]             compile TU, score every body claim (raw_match, else diff_retail %)
     pkt.py bind                           strict verify_relocations on every exact row; derive bindings; write map
@@ -110,6 +110,9 @@ def cmd_init(a):
     wt = os.path.join(d, "wt")
     if os.path.exists(wt):
         raise SystemExit("exists: " + wt)
+    if os.path.isfile(os.path.join(d, "READY", "patch.diff")) and not getattr(a, "reuse", False):
+        raise SystemExit("refusing: %s already holds a READY/patch.diff (init would overwrite its READY files); "
+                         "pick another NAME or pass --reuse" % d)
     os.makedirs(os.path.join(d, "READY"), exist_ok=True)
     os.makedirs(os.path.join(d, "obj"), exist_ok=True)
     base = L.rev_parse(D.MAIN_REPO, a.base)
@@ -438,7 +441,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sp = ap.add_subparsers(dest="cmd", required=True)
     sp.add_parser("budget")
-    p = sp.add_parser("init"); p.add_argument("name"); p.add_argument("--base", default="HEAD"); p.add_argument("--force", action="store_true")
+    p = sp.add_parser("init"); p.add_argument("name"); p.add_argument("--base", default="HEAD"); p.add_argument("--force", action="store_true"); p.add_argument("--reuse", action="store_true", help="init in a packet dir that already has READY/patch.diff")
     p = sp.add_parser("span"); p.add_argument("addrs", nargs="+")
     p = sp.add_parser("score"); p.add_argument("tu"); p.add_argument("addrs", nargs="*")
     sp.add_parser("bind")
