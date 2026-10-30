@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | RTTI
-//   Original translation unit TU291 of retail gamemd.exe v1.001; its source-file name is
-//   not attested by the binary, so the file keeps a placeholder name. Code range 0x7b17d0-0x7b2b9f,
+//   Assigned organizational home TU291 for WinsockInterfaceClass consolidation;
+//   the original retail source-file name is not attested. Code range 0x7b17d0-0x7b2b9f,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
 //
@@ -147,6 +147,80 @@ extern double DAT_00B78090;
 
 // GLOBAL: GAMEMD 0x00B78078
 extern double DAT_00B78078;
+
+// FUNCTION: GAMEMD 0x7B1720  WinsockInterfaceClass::AddBroadcastAddress (base stub; slot 11)
+void WinsockInterfaceClass::AddBroadcastAddress(const char*, unsigned short)
+{
+}
+
+// FUNCTION: GAMEMD 0x7B1730  WinsockInterfaceClass::ClearBroadcastAddresses (base stub; slot 12)
+void WinsockInterfaceClass::ClearBroadcastAddresses()
+{
+}
+
+// FUNCTION: GAMEMD 0x7B1740  WinsockInterfaceClass::GetNumLocalAddresses (base; slot 18)
+int WinsockInterfaceClass::GetNumLocalAddresses()
+{
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7B1750  WinsockInterfaceClass::GetLocalAddress (base; slot 19)
+unsigned char* WinsockInterfaceClass::GetLocalAddress(int)
+{
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7B1760  WinsockInterfaceClass::Slot20 (slot 20)
+void WinsockInterfaceClass::Slot20(int value)
+{
+    unknown_3F2F8 = value;
+}
+
+// FUNCTION: GAMEMD 0x7B19C0
+WinsockInterfaceClass::WinsockInterfaceClass()
+{
+    Socket = -1;
+    unknown_3F070 = -1;
+    WinsockInitialised = false;
+    for (int i = 0; i < 128; i++)
+    {
+        StaticInBuffers[i].InUse = 0;
+        StaticInBuffers[i].IsAllocated = 0;
+        StaticOutBuffers[i].InUse = 0;
+        StaticOutBuffers[i].IsAllocated = 0;
+        StaticOutBuffers[i].unknown_17 = 0;
+        StaticOutBuffers[i].unknown_18 = 0;
+        StaticAltOutBuffers[i].InUse = 0;
+        StaticAltOutBuffers[i].IsAllocated = 0;
+        StaticAltOutBuffers[i].unknown_17 = 1;
+        StaticAltOutBuffers[i].unknown_18 = 0;
+    }
+    StaticInBuffersInUse = 0;
+    StaticOutBuffersInUse = 0;
+    StaticAltOutBuffersInUse = 0;
+    StaticInBufferPos = 0;
+    StaticOutBufferPos = 0;
+    unknown_04 = 0x240;
+    FUN_004068E0("WinsockInterface constructed\n");
+}
+
+// FUNCTION: GAMEMD 0x7B1AB0
+WinsockInterfaceClass::~WinsockInterfaceClass()
+{
+    ShutdownWinsock();
+}
+
+// FUNCTION: GAMEMD 0x7B1B50
+void WinsockInterfaceClass::ShutdownWinsock()
+{
+    if (WinsockInitialised)
+    {
+        StopListening();
+        vf_1();
+        WSACleanup();
+        WinsockInitialised = false;
+    }
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7B1B80  WinsockInterfaceClass::vf_1 (slot 1)
@@ -569,6 +643,9 @@ int WinsockInterfaceClass::vf_16(HWND, unsigned int, unsigned int, long)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// SYNTHETIC: GAMEMD 0x7B2780
+// Scalar deleting destructor is emitted naturally from the ordinary destructor above.
+
 // FUNCTION: GAMEMD 0x7B2840
 // DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::Clear
 

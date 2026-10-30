@@ -45991,7 +45991,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B1720",
   "sym": "?AddBroadcastAddress@WinsockInterfaceClass@@UAEXPBDG@Z",
   "len": "0x3",
@@ -46001,7 +46001,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B1730",
   "sym": "?ClearBroadcastAddresses@WinsockInterfaceClass@@UAEXXZ",
   "len": "0x1",
@@ -46011,7 +46011,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B1740",
   "sym": "?GetNumLocalAddresses@WinsockInterfaceClass@@UAEHXZ",
   "len": "0x3",
@@ -46021,7 +46021,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B1750",
   "sym": "?GetLocalAddress@WinsockInterfaceClass@@UAEPAEH@Z",
   "len": "0x5",
@@ -46031,7 +46031,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B1760",
   "sym": "?Slot20@WinsockInterfaceClass@@UAEXH@Z",
   "len": "0xd",
@@ -46433,7 +46433,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B19C0",
   "sym": "??0WinsockInterfaceClass@@QAE@XZ",
   "len": "0xE8",
@@ -46442,7 +46442,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B1AB0",
   "sym": "??1WinsockInterfaceClass@@UAE@XZ",
   "len": "0xA0",
@@ -46451,7 +46451,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B1B50",
   "sym": "?ShutdownWinsock@WinsockInterfaceClass@@QAEXXZ",
   "len": "0x27",
@@ -46460,7 +46460,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "tu": "match/network/tu291_winsock_interface_class.cpp",
   "addr": "0x7B2780",
   "sym": "??_GWinsockInterfaceClass@@UAEPAXI@Z",
   "len": "0xB5",
