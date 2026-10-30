@@ -144,6 +144,8 @@ public:
     DynamicVectorClass<Cell>* FUN_0058D410();
     // FUNCTION: GAMEMD 0x58D5A0
     void FUN_0058D5A0(char a1);
+    // FUNCTION: GAMEMD 0x58E740 (declaration)
+    void FUN_0058E740(int a1);
     // FUNCTION: GAMEMD 0x58E9B0
     bool FUN_0058E9B0();
     // FUNCTION: GAMEMD 0x58F0C0
@@ -220,6 +222,8 @@ public:
     void FUN_0059C880(int a1, int a2, int a3, int a4);
     // FUNCTION: GAMEMD 0x59D440
     int FUN_0059D440();
+    // FUNCTION: GAMEMD 0x5A0700
+    DynamicVectorClass<Cell>* FUN_005A0700(int a1);
     // FUNCTION: GAMEMD 0x5A17F0 (declaration)
     void FUN_005A17F0();
     // FUNCTION: GAMEMD 0x5A19E0 (declaration)

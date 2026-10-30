@@ -1534,6 +1534,32 @@ void __stdcall FUN_0059E6C0(int a1, char a2)
     }
 }
 
+// FUNCTION: GAMEMD 0x5A0700
+// The cells of region `a1` that touch a different region, in table order.
+DynamicVectorClass<Cell>* Obj_0059C580::FUN_005A0700(int a1)
+{
+    DynamicVectorClass<Cell>* list = new DynamicVectorClass<Cell>;
+    list->CapacityIncrement = unknown_184 * unknown_180;
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int i = 0; i < n; i++) {
+        CellStruct c = DAT_00ABED10[i].unknown_00;
+        if (c.X != 0 || c.Y != 0) {
+            if (Inline_CellOwner(c) == a1) {
+                for (int f = 0; f < 8; f++) {
+                    CellStruct adj = Inline_005A33F0(c, DAT_0089F688[f & 7]);
+                    if (Inline_005942F0(adj)) {
+                        if (Inline_CellOwner(adj) != a1) {
+                            list->AddItem(c);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return list;
+}
+
 // FUNCTION: GAMEMD 0x5A1270
 void FUN_005A1270()
 {

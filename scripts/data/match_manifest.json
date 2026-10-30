@@ -148491,5 +148491,14 @@
   "name": "?FUN_005A7640@@YIPAURect_4i@@PAU1@PAV?$DynamicVectorClass@VCell@@@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x5A0700",
+  "sym": "?FUN_005A0700@Obj_0059C580@@QAEPAV?$DynamicVectorClass@VCell@@@@H@Z",
+  "len": "0x1cb",
+  "name": "Obj_0059C580::FUN_005A0700",
+  "status": "partial",
+  "pct": 99.3
  }
 ]
