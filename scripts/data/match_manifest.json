@@ -677,7 +677,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_create_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F09C0",
   "sym": "?CreateTeam@TeamTypeClass@@QAEPAVTeamClass@@PAVHouseClass@@@Z",
   "len": "0xAE",
@@ -713,7 +713,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_instance_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F1F30",
   "sym": "?FlashAllInstances@TeamTypeClass@@QAEXH@Z",
   "len": "0x37",
@@ -722,7 +722,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_instance_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F1F70",
   "sym": "?FindFirstInstance@TeamTypeClass@@QBEPAVTeamClass@@XZ",
   "len": "0x28",
@@ -731,7 +731,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F1870",
   "sym": "?GetGroup@TeamTypeClass@@QBEHXZ",
   "len": "0x21",
@@ -740,7 +740,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F18A0",
   "sym": "?GetWaypoint@TeamTypeClass@@QBEPAUCellStruct@@PAU2@@Z",
   "len": "0x39",
@@ -749,7 +749,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F18E0",
   "sym": "?GetTransportWaypoint@TeamTypeClass@@QBEPAUCellStruct@@PAU2@@Z",
   "len": "0x39",
@@ -758,7 +758,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_taskforce_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F1FA0",
   "sym": "?ProcessTaskForce@TeamTypeClass@@QAEXXZ",
   "len": "0x92",
@@ -136063,7 +136063,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_ini_w3_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F1090",
   "sym": "?vf_25@TeamTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x4b2",
@@ -136072,7 +136072,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_ini_w3_methods.cpp",
+  "tu": "match/ai/team_type_class_body.cpp",
   "addr": "0x6F1550",
   "sym": "?vf_26@TeamTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x311",
