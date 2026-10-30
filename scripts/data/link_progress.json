@@ -78,8 +78,8 @@
     "diff_bytes": 0,
     "file": 563868,
     "library": 0,
-    "project": 0,
-    "retail": 563868,
+    "project": 93316,
+    "retail": 470552,
     "va": 12034048,
     "vsize": 563868
    },
@@ -96,8 +96,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 3981206,
-   "retail": 4322864,
+   "project": 4074522,
+   "retail": 4229548,
    "vsize": 8391297
   }
  },
@@ -134,9 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "34e7674e",
-  "m1": "34e7674e",
+  "m0": "79cacc93",
+  "m1": "79cacc93",
   "m2": "ac2bd917",
-  "m3": "34e7674e"
+  "m3": "79cacc93"
  }
 }
