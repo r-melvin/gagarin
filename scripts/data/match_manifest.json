@@ -79605,7 +79605,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A4260",
   "sym": "?AddRef@ShipLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -79614,7 +79614,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A4270",
   "sym": "?Release@ShipLocomotionClass@@UAGKXZ",
   "len": "0xd",
