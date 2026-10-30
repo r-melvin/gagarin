@@ -188,6 +188,7 @@ static inline bool AllFogged_00457A10(CellStruct const* fd, CellStruct base,
 #include "../map/map_class_methods.h"
 #include "../ui/tactical_class_coords_to_client_methods.h"
 #include "../_layout/map_0087f7e8.h"
+#include "../map/map_class_area_methods.h"
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- ECX = sound, EDX = coordinate,
 // one stack argument (the sound's audio controller).
@@ -1542,6 +1543,260 @@ void Holder_0043C2A0::ReleaseAll()
             Items[i] = 0;
         }
     }
+}
+
+#include "../_layout/unit_class.h"
+#include "../_layout/unit_type_class.h"
+#include "../_layout/capture_manager_class.h"
+#include "house_building/building_a2_fold.h"
+
+// The length of the vector between two coordinates, as the original computed it inline (squared components
+// summed in a double, square root, truncation).
+static inline int BuildingDistance(const CoordStruct& a, const CoordStruct& b)
+{
+    int dx = a.X - b.X;
+    int dy = a.Y - b.Y;
+    return (int)FUN_004CAC40((double)dy * (double)dy + (double)(a.Z - b.Z) * (double)(a.Z - b.Z) + (double)dx * (double)dx);
+}
+
+// Moved from building_a2_radio.cpp (the BA2 parallel view family is retired); written against the canonical
+// BuildingClass, TechnoClass, RadioClass, BuildingTypeClass and UnitTypeClass.
+// PARTIAL: 21.3% (was 15.6% on the BA2 view). Remaining delta: retail reaches two shared return blocks (`return 10`
+// from 13 jumps, `return 1` from 15) where ours repeats the 7-instruction epilogue at several single-condition
+// sites; the 16A9 branch (`if (x == 1) return 10; return 1;`) is turned into neg/sbb arithmetic where retail keeps
+// the branch; the frame is 0x5C where retail's is 0x40 (slot 18/42/110 results are copied from canonical
+// by-value returns where retail reads them through the hidden-pointer result). Adjacent `return 10` guards joined
+// with `||` (BalloonHover, HasPower) gained the most; splitting the 16A9 guard lost 9 points.
+// FUNCTION: GAMEMD 0x43C2D0
+// Slot 101, the radio message handler (BuildingClass::Receive_Message). The message numbers and the results
+// (1 = accepted, 10 = refused) are kept numeric. The slot keeps the base signature: a1 is the sender
+// (TechnoClass*), a3 points at the in/out object pointer.
+int BuildingClass::vf_101(int a1, int message, int a3)
+{
+    TechnoClass* from = reinterpret_cast<TechnoClass*>(a1);
+    AbstractClass** param = reinterpret_cast<AbstractClass**>(a3);
+
+    switch (message) {
+    case 0xF:
+        FUN_006F4AB0(a1, message, a3);
+        if (!Owner->FUN_004F9A90(from)) {
+            return 0;
+        }
+        if (vf_97() == 0x12 || vf_97() == 0x13 || BState == 0
+            || (!DAT_00A8E7AC && !HasFreeLinkFor(from) && !Type->bools_16A4[10] && !Type->bools_16A4[11])) {
+            return 10;
+        }
+        if (from->vf_33()->MovementZone != 5) {
+            if ((vf_33()->Naval && !from->vf_33()->Naval)
+                || (!vf_33()->Naval && from->vf_33()->Naval)) {
+                return 10;
+            }
+        }
+        if (from->vf_33()->BalloonHover || !HasPower) {
+            return 10;
+        }
+        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+            if ((from->vf_11() == 1 && !Type->bools_16A4[10]) || (from->vf_11() == 0xF && !Type->bools_16A4[11])) {
+                return 10;
+            }
+            if (from->CaptureManager && static_cast<CaptureManagerClass*>(from->CaptureManager)->IsControllingSomething()) {
+                return 10;
+            }
+            if (Passengers.NumPassengers + 1 <= Type->Passengers && from->vf_33()->Size <= Type->SizeLimit) {
+                return 1;
+            }
+        }
+        if (Type->bools_16A4[9]) {
+            return 1;
+        }
+        if (Type->bools_16A4[7]) {
+            if (!from->FUN_0070FB50() || vf_158(0x23, from) == 1) {
+                return 10;
+            }
+            return 1;
+        }
+        if (Type->bools_16A4[5]) {
+            if ((from->vf_11() != 1 && from->vf_11() != 2) || vf_158(0x23, from) == 1) {
+                return 10;
+            }
+            return 1;
+        }
+        if ((Type->bools_16A4[30] || Type->bools_16A4[29]) && from->vf_11() == 0xF) {
+            TechnoClass* other = !from ? 0 : (from->vf_11() == 0xF ? from : 0);
+            if (other->CaptureManager && static_cast<CaptureManagerClass*>(other->CaptureManager)->IsControllingSomething()) {
+                return 10;
+            }
+            if (other->FUN_007105E0()) {
+                return 10;
+            }
+            return Ammo ? 1 : 10;
+        }
+        if (Type->bools_16A4[39]) {
+            return from->vf_rtti_3() == 2 ? 1 : 10;
+        }
+        if (Type->bools_16A4[15] && from->vf_11() == 1 && static_cast<UnitTypeClass*>(static_cast<UnitClass*>(from)->Type)->Harvester) {
+            if (DAT_00A8E7AC || !Passengers.FirstPassenger) {
+                return 1;
+            }
+        }
+        if (Type->bools_16A4[24] && from->vf_11() == 1 && static_cast<UnitTypeClass*>(static_cast<UnitClass*>(from)->Type)->Weeder) {
+            if (DAT_00A8E7AC || !Passengers.FirstPassenger) {
+                return 1;
+            }
+        }
+        return 0;
+    case 0x15:
+        if (vf_97() == 0x13) {
+            return 10;
+        }
+        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+            return 1;
+        }
+        if (Type->bools_16A4[5] || Type->bools_16A4[6] || Type->bools_16A4[29] || Type->bools_16A4[30]) {
+            IsReadyToCommence = 1;
+            vf_122(0x14, 0);
+            from->vf_122(0, 0);
+            return 1;
+        }
+        if (Type->bools_16A4[7]) {
+            IsReadyToCommence = 1;
+            vf_122(0x14, 0);
+            return 1;
+        }
+        if (Type->bools_16A4[15]) {
+            from->vf_122(0x10, 0);
+            return 1;
+        }
+        break;
+    case 0xE:
+        FUN_006F4AB0(a1, message, a3);
+        if (!HasPower) {
+            return 10;
+        }
+        if (Type->bools_16A4[5] && ContainsLink(from) && vf_158(0x22, from) == 10) {
+            return 10;
+        }
+        if (Type->bools_16A4[7] && ContainsLink(from) && !from->FUN_0070FB50()) {
+            return 10;
+        }
+        if (!Type->bools_16A4[29] && !Type->bools_16A4[30]) {
+            if (!ContainsLink(from) && HasFreeLinkFor(from)) {
+                vf_158(2, from);
+                ContainsLink(from);
+            }
+            bool needsRetry = false;
+            if (ContainsLink(from) && (Type->bools_16A4[15] || Type->bools_16A4[24])) {
+                FootClass* other = !from ? 0 : (from->Flags.IsFoot ? static_cast<FootClass*>(from) : 0);
+                CellClass* cell = DAT_0087F7E8.FUN_00565730(vf_42(other));
+                if (other->Destination && cell != other->Destination) {
+                    needsRetry = true;
+                }
+            }
+            if (FUN_0065AD30(0) && (Type->bools_16A4[5] || Type->bools_16A4[7])) {
+                CoordStruct there = FUN_0065AD30(0)->vf_18();
+                CoordStruct here = vf_18();
+                if (BuildingDistance(here, there) > 0x80) {
+                    needsRetry = true;
+                }
+            }
+            if (vf_158(0x13, from) != 1 && !needsRetry) {
+                return 1;
+            }
+            *param = this;
+            if (Type->bools_16A4[15] || Type->bools_16A4[24]) {
+                Cell here = vf_110();
+                Cell target = Cell(here.X + 3, here.Y + 1);
+                *param = DAT_0087F7E8.FUN_005657A0(&target);
+                if (vf_159(0x12, param, from) != 0x14) {
+                    return 1;
+                }
+                vf_158(0x18, from);
+                if (vf_158(0x16, from) == 1) {
+                    return 1;
+                }
+                from->vf_93(DAT_0089C848, 1, 1);
+                return 1;
+            }
+            if (!Type->bools_16A4[39]) {
+                return 1;
+            }
+            *param = this;
+            if (vf_159(0x12, param, from) != 0x14) {
+                return 1;
+            }
+            vf_157(0x18);
+            return 1;
+        }
+        if (HasFreeLinkFor(from)) {
+            CoordStruct where = Location;
+            *param = DAT_0087F7E8.FUN_00565730(&where);
+            vf_159(0x12, param, from);
+            return 1;
+        }
+        {
+            for (int i = 0; i < RadioLinks.Capacity; i++) {
+                TechnoClass* o = FUN_0065AD30(i);
+                if (vf_158(0x22, o) == 10) {
+                    vf_158(0x17, o);
+                }
+            }
+        }
+        if (HasFreeLinkFor(from)) {
+            return 1;
+        }
+        return 10;
+    case 0x10:
+        if (Passengers.FirstPassenger != 0 || !HasFreeLinkFor(from) || InLimbo || Owner != from->vf_15()) {
+            return 10;
+        }
+        if (Type->bools_16A4[23] || Type->bools_16A4[5] || Type->bools_16A4[24]) {
+            return 1;
+        }
+        return 10;
+    case 0xB:
+        vf_122(0x14, 0);
+        FUN_006F4AB0(a1, message, a3);
+        return 1;
+    case 0xC:
+        if (vf_97() != 0x13) {
+            vf_122(5, 0);
+            if (Type->bools_16A4[21]) {
+                DestroyNthAnim(7);
+                DestroyNthAnim(0x12);
+                double ratio = FUN_005F5C60();
+                bool low = ratio <= Rules->ConditionYellow;
+                char* name = low ? Type->BuildingAnim[8].Damaged : Type->BuildingAnim[8].Anim;
+                if (name && *name) {
+                    PlayAnim(name, 8, low, 0, 0);
+                }
+            }
+        }
+        FUN_006F4AB0(a1, message, a3);
+        return 1;
+    case 3:
+        FUN_00447780(1);
+        FUN_006F4AB0(a1, message, a3);
+        return 1;
+    case 8:
+        if (Type->bools_16A4[5] || Type->bools_16A4[7]) {
+            CoordStruct there = from->vf_18();
+            CoordStruct here = vf_18();
+            if (BuildingDistance(here, there) < 0x180) {
+                return 1;
+            }
+        }
+        FUN_006F4AB0(a1, message, a3);
+        if (!Type->bools_16A4[25] && !Type->bools_16A4[5] && !Type->bools_16A4[7]) {
+            return 1;
+        }
+        return 0x17;
+    case 0xD:
+        if (Type->bools_16A4[25]) {
+            return 1;
+        }
+        break;
+    }
+    return FUN_006F4AB0(a1, message, a3);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4613,6 +4868,96 @@ int Owner_0044EF80::Lookup(Target_0044EF80* t, int a)
         return r->FUN_0045EE70();
     }
     return -1;
+}
+
+// EXACT: 100.0% (494/494 instructions, 57 relocation fields verified, raw span identical modulo relocations).
+// What made it match: slot 110 as a by-value return (hidden temporary shared with the constructor temporaries),
+// the HBCell constructor temporaries reusing the argument slot, and separate loop variables (i, j) per loop.
+// FUNCTION: GAMEMD 0x44EFB0
+// Finds a cell next to the building where the mover may stand: the type's fixed exit cells first, then the
+// cells around the building's centre, the preferred cell, the type's own offset list (terminated by
+// 0x7FFF,0x7FFF) or else the rows and columns around the foundation. Returns the invalid cell on failure.
+Cell BuildingClass::vf_309(ObjectClass* who, Cell preferred)
+{
+    Cell base = vf_110();
+    Cell c;
+
+    if (Type->bools_16E4[0]) {
+        c = Cell(base.X + 1, base.Y + 2);
+        if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
+            return c;
+        }
+    }
+    if (Type->bools_16E4[1]) {
+        c = Cell(base.X + 2, base.Y + 2);
+        if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
+            return c;
+        }
+    }
+    if (Type->bools_16E4[2]) {
+        c = Cell(base.X + 2, base.Y + 1);
+        if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
+            return c;
+        }
+    }
+    if (Type->Naval && Type->bools_16A4[25]) {
+        c = Coord2Cell(vf_42(who));
+        c.X++;
+        c.Y++;
+        if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 0)) {
+            return c;
+        }
+        c.Y--;
+        if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 0)) {
+            return c;
+        }
+        c.Y++;
+        c.X--;
+        if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 0)) {
+            return c;
+        }
+    }
+    if (preferred.X != DAT_0089C818.cell.X || preferred.Y != DAT_0089C818.cell.Y) {
+        if (DAT_0087F7E8.FUN_00568300(&preferred)
+            && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&preferred), -1, -1, 0, 0)) {
+            return preferred;
+        }
+    }
+
+    CellStruct* offsets = Type->FoundationOutside;
+    if (offsets && !Type->bools_16A4[29]) {
+        while (!(offsets->X == 0x7FFF && offsets->Y == 0x7FFF)) {
+            CellStruct* entry = offsets++;
+            c = Cell(base.X + entry->X, base.Y + entry->Y);
+            if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 0)) {
+                return c;
+            }
+        }
+    } else {
+        int rows = Type->GetFoundationHeight(false);
+        for (int i = -1; i <= Type->GetFoundationWidth(); i++) {
+            c = Cell(base.X + i, base.Y + rows);
+            if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
+                return c;
+            }
+            c = Cell(base.X + i, base.Y - 1);
+            if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
+                return c;
+            }
+        }
+        int columns = Type->GetFoundationWidth();
+        for (int j = -1; j <= Type->GetFoundationHeight(false); j++) {
+            c = Cell(base.X + columns, base.Y + j);
+            if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
+                return c;
+            }
+            c = Cell(base.X - 1, base.Y + j);
+            if (DAT_0087F7E8.FUN_00568300(&c) && !who->vf_107(DAT_0087F7E8.FUN_005657A0(&c), -1, -1, 0, 1)) {
+                return c;
+            }
+        }
+    }
+    return DAT_0089C818;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

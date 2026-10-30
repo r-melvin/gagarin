@@ -46,6 +46,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "techno_class.h"     // TechnoClass spine + CDTimerClass + CoordStruct + StageClass + AudioController
+#include "cell.h"             // CellStruct and Cell (slot 309 returns a Cell)
 #include "vector_class.h"     // DynamicVectorClass
 #include "components.h"       // ColorStruct
 #include "building_type_class_layout.h"   // BuildingTypeClass
@@ -146,6 +147,7 @@ public:
     virtual const wchar_t* vf_36();                                     // 36  0x459ED0: the type's UIName
     virtual CoordStruct vf_18();                                        // 18  0x447AC0
     virtual CoordStruct vf_19(AbstractClass* target);                   // 19  0x447E90
+    virtual int vf_101(int a1, int event, int a3);                      // 101 0x43C2D0: the radio-message handler
     virtual void vf_103(int mode);                                      // 103 0x446FF0: toggles IsBeingRepaired
     virtual int vf_107(CellClass* cell, int a2, int a3, int a4, bool a5); // 107 0x449440
     virtual bool vf_161();                                              // 161 0x455DA0
@@ -185,7 +187,7 @@ public:
     virtual void vf_70(Point2D* point, RectangleStruct* clip);          // 70 0x43D030
     // Slots 309-321, introduced by BuildingClass (322 slots in all; retail table 0x7E3EBC).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
-    virtual void vf_309(int a1, int a2, int a3);                   // 309 0x44EFB0
+    virtual Cell vf_309(ObjectClass* who, Cell preferred);          // 309 0x44EFB0: a free cell next to the building for `who`
     virtual int vf_310(AbstractClass* target);                     // 310 0x447E00: distance to `target` (its slot 18, our slot 42)
     virtual void vf_311(int a1);                                   // 311 0x445F80
     virtual void vf_312();                                         // 312 0x4456D0

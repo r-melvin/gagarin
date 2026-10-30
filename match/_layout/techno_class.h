@@ -212,6 +212,11 @@ public:
     bool TryNextPlanningTokenNode();
     // FUNCTION: GAMEMD 0x70FB50 (decl; reloc)
     bool FUN_0070FB50();
+    // FUNCTION: GAMEMD 0x7105E0 (decl; reloc)
+    bool FUN_007105E0();
+    // FUNCTION: GAMEMD 0x6F4AB0 (decl; reloc) -- the TechnoClass body of slot 101 (the radio-message handler),
+    // called non-virtually by the overriding classes with the slot's three arguments.
+    int FUN_006F4AB0(int a1, int event, int a3);
     // FUNCTION: GAMEMD 0x63B550 (decl; reloc) -- no stack arguments.
     void FUN_0063B550();
     // FUNCTION: GAMEMD 0x70E260 (decl) -- non-virtual; true when the primary weapon slot names a type.
