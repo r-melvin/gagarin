@@ -9,34 +9,58 @@
 // address.
 
 #include "vtable_seating_ctor_family_methods.h"
+#include "vector_class_operations.h"
+#include "type_list.h"
+#include "vector_cursor.h"
+
+class AnimTypeClass;
+class BuildingTypeClass;
+class VoxelAnimTypeClass;
+class MSSfxEntry;
+template <class T> class rc_ptr;
+namespace WorldDominationTour {
+class Territory;
+}
 
 // FUNCTION: GAMEMD 0x006406E0
 GG_SEATNULL_BODY(006406E0)
 
 // FUNCTION: GAMEMD 0x00717BC0
-GG_SEAT0A_BODY(007F0DCC)
+// DynamicVectorClass<VoxelAnimTypeClass const*>::DynamicVectorClass(const AbstractNoInit&), emitted by the explicit instantiation.
+template class DynamicVectorClass<VoxelAnimTypeClass const*>;
 
 // FUNCTION: GAMEMD 0x00717BD0
-GG_SEAT0A_BODY(007E4E78)
+// DynamicVectorClass<int>::DynamicVectorClass(const AbstractNoInit&), emitted by the explicit instantiation.
+template class DynamicVectorClass<int>;
 
 // FUNCTION: GAMEMD 0x00717BE0
-GG_SEAT0A_BODY(007EAA28)
+// DynamicVectorClass<BuildingTypeClass const*>::DynamicVectorClass(const AbstractNoInit&), emitted by the explicit instantiation.
+template class DynamicVectorClass<BuildingTypeClass const*>;
 
 // FUNCTION: GAMEMD 0x00717BF0
-GG_SEAT0A_BODY(007EB714)
+// DynamicVectorClass<AnimTypeClass const*>::DynamicVectorClass(const AbstractNoInit&), emitted by the explicit instantiation.
+template class DynamicVectorClass<AnimTypeClass const*>;
 
 // FUNCTION: GAMEMD 0x0074FF30
 GG_SEATNULL_BODY(0074FF30)
 
 // FUNCTION: GAMEMD 0x0075E690
-GG_SEAT0A_BODY(007F0D3C)
+// TypeList<VoxelAnimTypeClass const*>::TypeList(const AbstractNoInit&), emitted by the explicit instantiation.
+template class TypeList<VoxelAnimTypeClass const*>;
 
 // FUNCTION: GAMEMD 0x0075E6A0
-GG_SEAT0A_BODY(007E4DD8)
+// TypeList<int>::TypeList(const AbstractNoInit&), emitted by the explicit instantiation.
+template class TypeList<int>;
 
 // FUNCTION: GAMEMD 0x0076F090
-GG_SEAT2_BODY(007F72C4)
+// VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*>>::VectorCursor(vector, index), emitted by the explicit instantiation.
+template class VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*> >;
 
 // FUNCTION: GAMEMD 0x0076F0C0
-GG_SEAT2_BODY(007F72D8)
+// VectorCursor<rc_ptr<Territory>, DynamicVectorClass<rc_ptr<Territory>>>::VectorCursor(vector, index), emitted by the explicit instantiation.
+template class VectorCursor<rc_ptr<WorldDominationTour::Territory>, DynamicVectorClass<rc_ptr<WorldDominationTour::Territory> > >;
 
+typedef VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*> > MSSfxEntryCursor;
+GG_STATIC_ASSERT(offsetof(MSSfxEntryCursor, unknown_04) == 0x4 &&
+                 offsetof(MSSfxEntryCursor, unknown_08) == 0x8 &&
+                 sizeof(MSSfxEntryCursor) == 0xC);

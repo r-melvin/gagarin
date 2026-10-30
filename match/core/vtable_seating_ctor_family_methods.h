@@ -38,18 +38,6 @@ public:                                                                   \
 
 #define GG_SEAT0_BODY(TAG) Seat0_##TAG::Seat0_##TAG() {}
 
-// Sub-shape 2: the same, with one argument the constructor never uses.
-#define GG_SEAT0A_DECL(TAG)                                               \
-class Seat0A_##TAG                                                        \
-{                                                                         \
-public:                                                                   \
-    Seat0A_##TAG(int unused);                                             \
-    virtual ~Seat0A_##TAG();                                              \
-    virtual void Slot1();                                                 \
-}
-
-#define GG_SEAT0A_BODY(TAG) Seat0A_##TAG::Seat0A_##TAG(int) {}
-
 // Sub-shape 3: one argument stored at +0x04, then the vtable.
 #define GG_SEAT1_DECL(TAG)                                                \
 class Seat1_##TAG                                                         \
@@ -63,21 +51,6 @@ public:                                                                   \
 
 #define GG_SEAT1_BODY(TAG) Seat1_##TAG::Seat1_##TAG(int a) : unknown_04(a) {}
 
-// Sub-shape 4: two arguments stored at +0x04 and +0x08, then the vtable.
-#define GG_SEAT2_DECL(TAG)                                                \
-class Seat2_##TAG                                                         \
-{                                                                         \
-public:                                                                   \
-    Seat2_##TAG(int a, int b);                                            \
-    virtual ~Seat2_##TAG();                                               \
-    virtual void Slot1();                                                 \
-    int unknown_04;                                                       \
-    int unknown_08;                                                       \
-}
-
-#define GG_SEAT2_BODY(TAG)                                                \
-    Seat2_##TAG::Seat2_##TAG(int a, int b) : unknown_04(a), unknown_08(b) {}
-
 // Sub-shape 5: a non-polymorphic class whose constructor nulls its first word.
 // The stored constant is literal zero, not a relocated vtable address, so this
 // carries no VTABLE annotation.
@@ -90,42 +63,6 @@ public:                                                                   \
 }
 
 #define GG_SEATNULL_BODY(TAG) SeatNull_##TAG::SeatNull_##TAG() : unknown_00(0) {}
-
-// VTABLE: GAMEMD 0x007F0DCC
-GG_SEAT0A_DECL(007F0DCC);
-GG_STATIC_ASSERT(sizeof(Seat0A_007F0DCC) == 0x4);
-
-// VTABLE: GAMEMD 0x007E4E78
-GG_SEAT0A_DECL(007E4E78);
-GG_STATIC_ASSERT(sizeof(Seat0A_007E4E78) == 0x4);
-
-// VTABLE: GAMEMD 0x007EAA28
-GG_SEAT0A_DECL(007EAA28);
-GG_STATIC_ASSERT(sizeof(Seat0A_007EAA28) == 0x4);
-
-// VTABLE: GAMEMD 0x007EB714
-GG_SEAT0A_DECL(007EB714);
-GG_STATIC_ASSERT(sizeof(Seat0A_007EB714) == 0x4);
-
-// VTABLE: GAMEMD 0x007F0D3C
-GG_SEAT0A_DECL(007F0D3C);
-GG_STATIC_ASSERT(sizeof(Seat0A_007F0D3C) == 0x4);
-
-// VTABLE: GAMEMD 0x007E4DD8
-GG_SEAT0A_DECL(007E4DD8);
-GG_STATIC_ASSERT(sizeof(Seat0A_007E4DD8) == 0x4);
-
-// VTABLE: GAMEMD 0x007F72C4
-GG_SEAT2_DECL(007F72C4);
-GG_STATIC_ASSERT(offsetof(Seat2_007F72C4, unknown_04) == 0x4 &&
-                 offsetof(Seat2_007F72C4, unknown_08) == 0x8 &&
-                 sizeof(Seat2_007F72C4) == 0xC);
-
-// VTABLE: GAMEMD 0x007F72D8
-GG_SEAT2_DECL(007F72D8);
-GG_STATIC_ASSERT(offsetof(Seat2_007F72D8, unknown_04) == 0x4 &&
-                 offsetof(Seat2_007F72D8, unknown_08) == 0x8 &&
-                 sizeof(Seat2_007F72D8) == 0xC);
 
 class CCINIClass;
 // Existing four-byte prefix, extended only with calls observed at 0x687DF3.
@@ -149,14 +86,6 @@ GG_STATIC_ASSERT(offsetof(SeatNull_0074FF30, unknown_00) == 0x0 &&
 // so the reccmp `// FUNCTION:` annotations live on the bodies in the .cpp; this
 // is the index.
 //   0x006406E0  ->  SeatNull_006406E0
-//   0x00717BC0  ->  Seat0A_007F0DCC
-//   0x00717BD0  ->  Seat0A_007E4E78
-//   0x00717BE0  ->  Seat0A_007EAA28
-//   0x00717BF0  ->  Seat0A_007EB714
 //   0x0074FF30  ->  SeatNull_0074FF30
-//   0x0075E690  ->  Seat0A_007F0D3C
-//   0x0075E6A0  ->  Seat0A_007E4DD8
-//   0x0076F090  ->  Seat2_007F72C4
-//   0x0076F0C0  ->  Seat2_007F72D8
 
 #endif  // GG_MATCH_CORE_VTABLE_SEATING_CTOR_FAMILY_METHODS_H

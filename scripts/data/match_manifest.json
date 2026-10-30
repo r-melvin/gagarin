@@ -21919,38 +21919,38 @@
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x717BC0",
-  "sym": "??0Seat0A_007F0DCC@@QAE@H@Z",
+  "sym": "??0?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0xb",
-  "name": "Seat0A_007F0DCC::ctor",
+  "name": "DynamicVectorClass<VoxelAnimTypeClass const*>::DynamicVectorClass(const AbstractNoInit&)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x717BD0",
-  "sym": "??0Seat0A_007E4E78@@QAE@H@Z",
+  "sym": "??0?$DynamicVectorClass@H@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0xb",
-  "name": "Seat0A_007E4E78::ctor",
+  "name": "DynamicVectorClass<int>::DynamicVectorClass(const AbstractNoInit&)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x717BE0",
-  "sym": "??0Seat0A_007EAA28@@QAE@H@Z",
+  "sym": "??0?$DynamicVectorClass@PBVBuildingTypeClass@@@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0xb",
-  "name": "Seat0A_007EAA28::ctor",
+  "name": "DynamicVectorClass<BuildingTypeClass const*>::DynamicVectorClass(const AbstractNoInit&)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x717BF0",
-  "sym": "??0Seat0A_007EB714@@QAE@H@Z",
+  "sym": "??0?$DynamicVectorClass@PBVAnimTypeClass@@@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0xb",
-  "name": "Seat0A_007EB714::ctor",
+  "name": "DynamicVectorClass<AnimTypeClass const*>::DynamicVectorClass(const AbstractNoInit&)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
@@ -21964,38 +21964,38 @@
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x75E690",
-  "sym": "??0Seat0A_007F0D3C@@QAE@H@Z",
+  "sym": "??0?$TypeList@PBVVoxelAnimTypeClass@@@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0xb",
-  "name": "Seat0A_007F0D3C::ctor",
+  "name": "TypeList<VoxelAnimTypeClass const*>::TypeList(const AbstractNoInit&)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x75E6A0",
-  "sym": "??0Seat0A_007E4DD8@@QAE@H@Z",
+  "sym": "??0?$TypeList@H@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0xb",
-  "name": "Seat0A_007E4DD8::ctor",
+  "name": "TypeList<int>::TypeList(const AbstractNoInit&)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x76F090",
-  "sym": "??0Seat2_007F72C4@@QAE@HH@Z",
+  "sym": "??0?$VectorCursor@PAVMSSfxEntry@@V?$DynamicVectorClass@PAVMSSfxEntry@@@@@@QAE@PAV?$DynamicVectorClass@PAVMSSfxEntry@@@@H@Z",
   "len": "0x19",
-  "name": "Seat2_007F72C4::ctor",
+  "name": "VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*>>::VectorCursor(Container*, int)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
   "addr": "0x76F0C0",
-  "sym": "??0Seat2_007F72D8@@QAE@HH@Z",
+  "sym": "??0?$VectorCursor@V?$rc_ptr@VTerritory@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@@@QAE@PAV?$DynamicVectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@H@Z",
   "len": "0x19",
-  "name": "Seat2_007F72D8::ctor",
+  "name": "VectorCursor<rc_ptr<WorldDominationTour::Territory>, DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>>::VectorCursor(Container*, int)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/string_class_methods.cpp",

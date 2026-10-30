@@ -17,7 +17,7 @@
 // frees the object when bit 0 of the flag is set and returns `this`, so the
 // destructor is an empty virtual one. These bodies are compiler output: the
 // explicit instantiations compile the inline constructor, which emits each
-// vtable and its `??_G`. No member is touched, so no layout is modelled.
+// vtable and its `??_G`. The class (members included) is core/vector_cursor.h.
 // The element and container types are only named here, never defined.
 
 #include "../core/deleting_dtor_sweep.h"
@@ -43,13 +43,7 @@ class GameOption;
 class Territory;
 }
 
-template <class T, class Container>
-class VectorCursor
-{
-public:
-    VectorCursor() {}
-    virtual ~VectorCursor() {}
-};
+#include "../core/vector_cursor.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
