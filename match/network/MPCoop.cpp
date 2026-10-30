@@ -668,8 +668,8 @@ void MPCooperative::FUN_005C2D00(int house, DynamicVectorClassLayout* spots, boo
     }
 
     int humans = 0;
-    for (i = 0; i < HouseClassArray.Count; i++) {
-        HouseClass* h = ((HouseClass**)HouseClassArray.Items)[i];
+    for (i = 0; i < HouseClass_Array.Count; i++) {
+        HouseClass* h = HouseClass_Array.Items[i];
         if (h != 0 && h->IsControlledByHuman()) {
             humans++;
         }

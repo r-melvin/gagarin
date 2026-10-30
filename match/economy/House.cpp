@@ -7,6 +7,13 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 //
+//   Original translation unit House.CPP. The name is the source-file string at 0x824724
+//   in retail gamemd.exe v1.001, passed by the assert at 0x4f8d43 inside this object's
+//   code range (0x4f4f00-0x510aff). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
 // Static data members of vector type: each retail definition is guarded by a
 // bit in a shared byte, so the exit-time destructor stub tests that bit before
 // restoring the VectorClass<T> vtable and releasing the array. Every member here
@@ -225,6 +232,29 @@
 //
 //   GLOBAL:   GAMEMD 0xA8EC78   TechnoClass::Array (DynamicVectorClass<TechnoClass*>)
 //   GLOBAL:   GAMEMD 0x8871E0   RulesClass::Instance pointer
+//
+//   Offsets read numerically off retail gamemd.exe v1.001 at 0x50E010 / 0x50E280: the powered-centre
+//   count at house +0x2D8, the control bytes at +0x1EC/+0x1ED, the techno array at 0xA8EC78,
+//   techno Owner +0x21C / InLimbo +0x81 / type slot 33, Reactivate 0x70FBE0, and the EVA line
+//   at 0x824FE4. Mirrors LostPoweredCenter (0x50E0E0).
+//
+//   Offsets read numerically off retail gamemd.exe v1.001 at 0x5092F0: RadarVisibleTo at +0x54E4
+//   (see house_class.h), HouseTypeClass index at +0xB8, ObjectClass InLimbo/Location at
+//   +0x81/+0x9C, TechnoClass Owner at +0x21C, TechnoTypeClass Sight at +0x5E8, vtable slot 33,
+//   the technos array at 0xA8EC78 and the current player at 0xA83D4C.
+//
+//   0x50B730 / 0x50BD10 / 0x50D9E0 / 0x50D9F0 / 0x50E1B0 via the local Ghidra
+//   disassembly. Member offsets confirmed numerically (see the header).
+//
+// HouseClass accessor leaves. Functions ordered ascending by retail address.
+//
+//   Names cross-checked against YRpp
+//   (each offset/address reconfirmed
+//   against the user's binary below).
+//
+//   GLOBAL:   GAMEMD 0xA80228   HouseClass::Array  (DynamicVectorClass<HouseClass*>)
+//   GLOBAL:   GAMEMD 0xA83D4C   HouseClass::CurrentPlayer  (HouseClass*)
+//   GLOBAL:   GAMEMD 0xA8B238   SessionClass::Instance.GameMode  (int; Campaign==0)
 
 #include "../core/vector_class_operations.h"
 
@@ -692,7 +722,9 @@ void __stdcall HouseQueryObjectInterface(void* object, const IID* riid, void** r
 // LIBRARY: GAMEMD 0x7DC720 (decl; reloc; LIBRARY, comsupp) - throws the COM error
 void __stdcall HouseComIssueError(long hr);
 
-// GLOBAL: GAMEMD 0xA80228 - HouseClass::Array (Items at +0x04 = 0xA8022C, Count at +0x10 = 0xA80238).
+// GLOBAL: GAMEMD 0xA80228 - HouseClass::Array (Items at +0x04 = 0xA8022C, Count at +0x10 = 0xA80238). Kept for the
+// constructor only: retail expands AddItem here with the grown capacity as increment + cap, which the canonical
+// HouseClass_Array template expansion (cap + increment) does not reproduce.
 extern HouseDynVector<HouseClusterView*> HouseArray;
 // GLOBAL: GAMEMD 0xB0F670 / 0xB0F640 / 0xB0F5F0 / 0xB0F618 / 0xB0F720 - global object lists the
 // constructor registers the house in, one after the other (element types unproven, all house pointers).
@@ -1170,6 +1202,50 @@ extern RulesClass* Rules;  // GLOBAL: GAMEMD 0x8871E0
 // GLOBAL: GAMEMD 0xA8EC78
 DynamicVectorClass_TechnoPtr TechnoArray;
 // END defined globals
+
+#include "../_layout/house_class.h"
+#include "../_layout/session_class.h"
+#include "../_layout/techno_class.h"
+#include "../core/vector_class.h"
+
+// GLOBAL: GAMEMD 0xA83D4C
+extern HouseClass* CurrentPlayer;
+// GLOBAL: GAMEMD 0xA8E9A0
+extern unsigned char DAT_00A8E9A0;
+// GLOBAL: GAMEMD 0xA8E7AC -- nonzero suppresses the EVA line.
+extern int DAT_00A8E7AC;
+
+// FUNCTION: GAMEMD 0x752700 (decl; reloc) -- plays an EVA line by name.
+void FUN_00752700(const char* name, int a, int b);
+
+// HouseClass::IsControlledByCurrentPlayer (0x50B6F0) as retail expands it inline here.
+static inline bool ControlledByCurrentPlayer(HouseClass* house)
+{
+    if (Session_00A8B238.GameMode == 0) {
+        return house->IsHumanPlayer || house->IsInPlayerControl;
+    }
+    return house == CurrentPlayer;
+}
+
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+#include "../_layout/techno_type_class.h"
+#include "../core/vector_class.h"
+#include "../_layout/map_0087f7e8.h"
+
+// GLOBAL: GAMEMD 0xA83D4C
+extern HouseClass* CurrentPlayer;
+
+#include "house_class_accessor_methods.h"
+
+#include "house_class_dropped_flag_methods.h"
+
+#include "house_class_flag_coords_methods.h"
+
+#include "house_class_lookup_methods.h"
+
+// GLOBAL: GAMEMD 0xA83D4C — the house of the player at this computer.
+extern HouseClass* CurrentPlayer;
 
 // SYNTHETIC: GAMEMD 0x4F4F00
 // GLOBAL: GAMEMD 0xA8EFA0
@@ -1811,7 +1887,13 @@ double HouseClass::GetWeedStoragePercentage()
 {
     if (this->OwnedWeed.GetTotalAmount() == 0.0f)
         return 0.0;
-    return this->OwnedWeed.GetTotalAmount() / RulesGlobalPtr->WeedStorageAmount;
+    return this->OwnedWeed.GetTotalAmount() / Rules->WeedCapacity;
+}
+
+// FUNCTION: GAMEMD 0x4F9950  HouseClass::GiveMoney (__thiscall, ret 0x4)
+void HouseClass::GiveMoney(int amount)
+{
+    Balance += amount;
 }
 
 // FUNCTION: GAMEMD 0x4F9970
@@ -1860,11 +1942,21 @@ bool HouseClass::CanOverpower(TechnoClass* pTarget) const
     return false;
 }
 
+// FUNCTION: GAMEMD 0x4F9B50  HouseClass::MakeAlly (__thiscall, ret 0x8)
+// The by-index overload: resolve the house through HouseClass::Array and
+// forward to the by-pointer overload at 0x4F9B70. Retail reads the Items base
+// straight out of 0x00A8022C, which is HouseClass::Array (@0x00A80228) + 4 —
+// i.e. Array is a static *object*, not a pointer variable.
+void HouseClass::MakeAlly(int houseIndex, bool announce)
+{
+    MakeAlly(HouseClass_Array.Items[houseIndex], announce);
+}
+
 // FUNCTION: GAMEMD 0x4F9F70
 // Applies FUN_004F9F90 to the house stored at `index` of the global house array.
 void HouseClass::FUN_004F9F70(int index, bool flag)
 {
-    this->FUN_004F9F90((HouseClass*)HouseArray.Items[index], flag);
+    this->FUN_004F9F90(HouseClass_Array.Items[index], flag);
 }
 
 // FUNCTION: GAMEMD 0x4FA2E0
@@ -2218,6 +2310,113 @@ void* HouseClass::FUN_004FBD80(int rtti, int unused)
         break;
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x4FBE40  HouseClass::UpdateFlagCoords (__thiscall, ret 8)
+//
+// Takes this house's flag away from wherever `obj` says it is. A unit gives
+// the flag up itself; anything else names a cell (its coordinates divided
+// down, refused when off-map) whose flag is removed. Either way, if the
+// flag came off and the object was our recorded carrier, the carrier is
+// forgotten. With `clearCell` set the recorded flag cell is also released
+// (its owner index reset) and set to the "no cell" sentinel unless it
+// already is. Reports whether a flag actually came off.
+//
+// Phrasing that matters: the carrier test sits inside each branch (retail
+// tests BL and the carrier per arm and cross-jumps only the store; a shared
+// test after the if/else gives a JMP into it, 9.1%); the null object falls
+// through to a trailing `return false` so its epilogue lands after the main
+// one; and the flag cell goes through a pointer local so Y is read as
+// `[ESI+2]` off the LEA (95.5% with member access).
+bool HouseClass::UpdateFlagCoords(AbstractClass* obj, bool clearCell)
+{
+    bool removed = false;
+    if (obj != 0) {
+        if (obj->vf_11() == 1) {
+            removed = static_cast<UnitClass*>(obj)->FlagRemove();
+            if (removed && this->OurFlagCarrier == obj) {
+                this->OurFlagCarrier = 0;
+            }
+        } else {
+            Cell cell = CoordToCell_004FBE40(obj->vf_18());
+            if (DAT_0087F7E8.FUN_00568300(cell)) {
+                removed = DAT_0087F7E8.FUN_005657A0(cell)->FUN_00483460();
+                if (removed && this->OurFlagCarrier == obj) {
+                    this->OurFlagCarrier = 0;
+                }
+            }
+        }
+
+        if (clearCell) {
+            CellStruct* flagCell = &this->OurFlagCoords;
+            if (flagCell->X != DAT_00A8EF98.X || flagCell->Y != DAT_00A8EF98.Y) {
+                DAT_0087F7E8.FUN_005657A0(*flagCell)->OverlayTypeIndex = -1;
+                *flagCell = DAT_00A8EF98;
+            }
+        }
+        return removed;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x4FBF60  HouseClass::DroppedFlag (__thiscall, ret 8)
+//
+// A carrier drops this house's flag on a cell. Off-map cells are refused
+// outright. Otherwise the flag bookkeeping is updated and the cell is asked
+// to take the flag; if it will not, the nearest free 1x1 spot is searched
+// for and tried instead (the "no cell" sentinel means nothing was found).
+// Whichever cell accepted becomes the flag's location.
+//
+// PARTIAL (23.9%, 22/92). Frame, slots and call sequence agree (the cell
+// copy in the first parameter's home slot, the zeroed close-to cell in the
+// second's, the NearByLocation out buffer as the one real local, every
+// callee and its argument order); the residual is retail's operand
+// materialisation for the fifteen NearByLocation arguments and its
+// callee-saved placement. Retail keeps the repeated constant 1 in EAX (with
+// a copy in ECX for SpaceSizeY) and the zeros in EDX, pushes registers, and
+// so needs EBP for the close-to address, saved and restored around that
+// call; it also sinks the PUSH EBX for `ok` past the map-bounds check. cl
+// 8804 pushes the four 1s as immediates (it materialises only the zero,
+// which the two word stores force into a register), never needs EBP, and
+// saves EBX in the prologue. Every other retail NearByLocation call site
+// (0x41A2C0 with 3s, 0x4D6CE1) shows the same register-materialised
+// constants, so this is the compiler build, not the phrasing. Variants
+// tried: the explicit out-pointer call with early returns and with the body
+// nested under the bounds check; `1`/`0` literals for the bool arguments;
+// `char` for the flag; the by-value wrapper inlined (both `return *ptr` and
+// `return outBuffer`, identical output); an aggregate-initialised close-to;
+// and the whole post-check body as an inline member (which costs the
+// parameter-slot reuse for the cell copy, 25.0% but structurally further).
+// Recorded as a candidate for the 8447-vs-8804 list.
+// Lift pass 2 (2026-09-18): confirmed as that class rather than a phrasing
+// problem. A flag bisection on the sibling site 0x74D490 (/O1, /O2 /Os, /Ox,
+// /O2 /Gs) never makes cl 8804 materialise a repeated push constant into a
+// register, so no switch reaches retail's shape. Best form kept at 23.9%.
+bool HouseClass::DroppedFlag(const CellStruct& cell, bool dwUnk)
+{
+    if (DAT_0087F7E8.FUN_00568300(cell)) {
+    this->UpdateFlagCoords(this->OurFlagCarrier, dwUnk);
+
+    CellStruct c = cell;
+    bool ok = DAT_0087F7E8.FUN_005657A0(c)->FUN_00483410(this->Type->ArrayIndex2);
+    if (!ok) {
+        CellStruct closeTo;
+        closeTo.X = 0;
+        closeTo.Y = 0;
+        c = DAT_0087F7E8.FUN_0056DC20(cell, 1, -1, 0, false, 1, 1,
+                                         false, false, false, true, closeTo,
+                                         false, false);
+        if (c.X == DAT_00A8EF98.X && c.Y == DAT_00A8EF98.Y)
+            return ok;
+        ok = DAT_0087F7E8.FUN_005657A0(c)->FUN_00483410(this->Type->ArrayIndex2);
+        if (!ok)
+            return ok;
+    }
+
+    this->OurFlagCarrier = DAT_0087F7E8.FUN_005657A0(c);
+    return ok;
+    }
+    return false;
 }
 
 // ---------------------------------------------------------------------------
@@ -3422,6 +3621,23 @@ HRESULT __stdcall HouseClass::FindConnectionPoint(REFIID riid, IConnectionPoint*
     return CONNECT_E_CANNOTCONNECT;
 }
 
+// ---------------------------------------------------------------------------
+// FUNCTION: GAMEMD 0x502D30  (static __fastcall)
+//
+// Return the first house in the global Array whose country type-index
+// (Type->ArrayIndex2) equals `houseType`, or NULL if none.
+// ---------------------------------------------------------------------------
+HouseClass* HouseClass::FindByCountryIndex(int houseType)
+{
+    for (int i = 0; i < HouseClass_Array.Count; ++i) {
+        HouseClass* pHouse = HouseClass_Array.Items[i];
+        if (pHouse->Type->ArrayIndex2 == houseType) {
+            return pHouse;
+        }
+    }
+    return 0;
+}
+
 // Native boolean-member and checksum-sink contracts preserve this exact CRC body.
 // FUNCTION: GAMEMD 0x502D60
 void HouseClass::vf_13(Obj_004A1D30* crc)
@@ -4398,6 +4614,25 @@ void HouseClass::UpdateFactoriesQueues(int rtti, bool isNaval, int buildCat)
     }
 }
 
+// FUNCTION: GAMEMD 0x5092F0
+// Mark the radar as visible to `house`. When that is the local player, every live,
+// on-map techno of this house reveals the area around it (using its type's sight
+// range) and the map is then refreshed.
+void HouseClass::FUN_005092F0(HouseClass* house)
+{
+    RadarVisibleTo |= 1 << house->Type->ArrayIndex2;
+    if (house == CurrentPlayer) {
+        for (int i = 0; i < TechnoClass_Array.Count; i++) {
+            TechnoClass* techno = TechnoClass_Array.Items[i];
+            if (techno != 0 && !techno->InLimbo && techno->Owner == this) {
+                CoordStruct where = techno->Location;
+                DAT_0087F7E8.FUN_005673A0(&where, techno->vf_33()->Sight, this, 0, 0, 0, 1, 1);
+            }
+        }
+        DAT_0087F7E8.FUN_004F42F0(2);
+    }
+}
+
 // FUNCTION: GAMEMD 0x5093C0
 // Cancels the anger recorded against `house`: finds its node and adds the node's level back with the
 // opposite sign.
@@ -4698,6 +4933,22 @@ void HouseClass::FUN_0050A490(BuildingClass* building)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// ---------------------------------------------------------------------------
+// FUNCTION: GAMEMD 0x50B6F0  (__thiscall)
+//
+// Outside campaign play the only controllable house is the current player;
+// in campaign, any human-flagged or player-controlled house qualifies.
+// ---------------------------------------------------------------------------
+bool HouseClass::IsControlledByCurrentPlayer() const
+{
+    if (Session_00A8B238.GameMode == 0) {
+        return this->IsHumanPlayer || this->IsInPlayerControl;
+    }
+    return this == CurrentPlayer;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4736,6 +4987,7 @@ bool HouseClass::FUN_0050B760(BuildingTypeClass* type, CellStruct* cell)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50BC90  HouseClass::CreatePowerOutage (__thiscall)
 //   byte[ECX+0x5778] = 1                       ; RecheckPower
 //   PowerBlackoutTimer (12-byte POD copy of a freshly-built timer):
@@ -4756,6 +5008,7 @@ void HouseClass::CreatePowerOutage(int duration)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50BCD0  HouseClass::CreateRadarOutage (__thiscall)
 //   byte[ECX+0x5779] = 1                       ; RecheckRadar
 //   RadarBlackoutTimer 12-byte POD copy:
@@ -4769,6 +5022,17 @@ void HouseClass::CreateRadarOutage(int duration)
     this->RecheckRadar = true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x50BD10  HouseClass::ReshroudMap (__thiscall)
+// A spy satellite pins the map revealed, so the reshroud is skipped entirely.
+void HouseClass::ReshroudMap()
+{
+    if (!SpySatActive) {
+        DAT_0087F7E8.FUN_00577AB0(this);
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4811,6 +5075,7 @@ float HouseClass::GetArmorMultiplier(TechnoClass* subject)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50BDF0
 float HouseClass::FUN_0050BDF0(TechnoTypeClass* type)
 {
@@ -4836,6 +5101,7 @@ float HouseClass::FUN_0050BDF0(TechnoTypeClass* type)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50BEB0
 float HouseClass::FUN_0050BEB0(TechnoTypeClass* type)
 {
@@ -4854,6 +5120,7 @@ float HouseClass::FUN_0050BEB0(TechnoTypeClass* type)
     return DAT_007E2AC8;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4904,6 +5171,7 @@ void HouseClass::CalculateCostMultipliers()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50C050
 // The country's speed multiplier for the kind of techno type given (1.0 for other kinds).
 float HouseClass::FUN_0050C050(TechnoTypeClass* type)
@@ -4919,6 +5187,7 @@ float HouseClass::FUN_0050C050(TechnoTypeClass* type)
     return DAT_007E2AC8;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4954,6 +5223,7 @@ float HouseClass::FUN_0050C0A0(TechnoTypeClass* type)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50C160
 // Fp getter.
 float Obj_0050C160::FUN_0050C160() const
@@ -4961,6 +5231,7 @@ float Obj_0050C160::FUN_0050C160() const
     return unknown_34->unknown_148;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4995,6 +5266,7 @@ int HouseClass::FindIndexByName(const char* name)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50C8C0  HouseClass::Cheer  (__thiscall)
 //
 // Retail loads EDX (the 0x2000 pan) between the controller and volume pushes,
@@ -5012,6 +5284,7 @@ void HouseClass::Cheer()
     VocClass::PlayGlobal(Rules->CheerSound, 1.0f, 0x2000, 0);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5073,6 +5346,7 @@ bool HouseClass::FUN_0050CAD0(BaseNodeClass* node)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50D170
 //
 // Picks a super-weapon target cell of the given target type for this house.
@@ -5117,6 +5391,7 @@ Cell HouseClass::PickTargetByType(int targetType)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50D250
 void HouseClass::FUN_0050D250(unsigned delta)
 {
@@ -5127,6 +5402,7 @@ void HouseClass::FUN_0050D250(unsigned delta)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5152,6 +5428,7 @@ void HouseClass::FUN_0050D290(HouseClass* other)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50D2D0
 // Gives back every building that `other` originally owned.
 void HouseClass::FUN_0050D2D0(HouseClass* other)
@@ -5167,6 +5444,7 @@ void HouseClass::FUN_0050D2D0(HouseClass* other)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5245,6 +5523,7 @@ void HouseClass::RespawnStartingForces()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50D560
 // Appends a new (type, cell) record to StartingUnits.
 void HouseClass::AddStartingUnit(void* type, int cell)
@@ -5262,6 +5541,7 @@ void HouseClass::AddStartingUnit(void* type, int cell)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50D5D0
 // Deletes every starting-unit record, newest first, then clears the vector.
 void HouseClass::FreeStartingUnits()
@@ -5271,6 +5551,7 @@ void HouseClass::FreeStartingUnits()
     StartingUnits.Clear();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5305,6 +5586,7 @@ void HouseClass::FUN_0050D610()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050D9C0
 //
 // True when the signed member at +0x164 is positive.
@@ -5321,6 +5603,7 @@ bool FUN_0050D9C0(Predicate_0050D9C0* self)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050D9D0
 //
 // True when the signed member at +0x168 is positive.
@@ -5329,6 +5612,21 @@ bool FUN_0050D9D0(Predicate_0050D9C0* self)
     return *(int*)(self->Bytes + 0x168) > 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x50D9E0  HouseClass::GetInfSelfHealStep (__thiscall)
+int HouseClass::GetInfSelfHealStep() const
+{
+    return Rules->SelfHealInfantryAmount * InfantrySelfHeal;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x50D9F0  HouseClass::GetUnitSelfHealStep (__thiscall)
+int HouseClass::GetUnitSelfHealStep() const
+{
+    return Rules->SelfHealUnitAmount * UnitsSelfHeal;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5353,12 +5651,14 @@ void Setter_00487C70::FUN_0050DA00(int value)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DA10
 void HouseClass::FUN_0050DA10()
 {
     PreferredTargetCell = DAT_00A8EF98;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5382,6 +5682,7 @@ void HouseClass::FUN_0050DA20(CellStruct cell)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50DA40
 // Stores its argument in a member; pops its stack arguments.
 void Obj_0050DA40::FUN_0050DA40(int a1)
@@ -5389,6 +5690,7 @@ void Obj_0050DA40::FUN_0050DA40(int a1)
     unknown_54F8 = a1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5405,6 +5707,7 @@ void HouseClass::FUN_0050DA50()
     PreferredDefensiveCell2 = DAT_00A8EF98;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5431,6 +5734,7 @@ int HouseClass::FUN_0050DA80() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50DAA0
 // The house's starting edge when it is a valid edge index (0..3), else 0.
 int HouseClass::FUN_0050DAA0() const
@@ -5441,6 +5745,7 @@ int HouseClass::FUN_0050DAA0() const
     return StartingEdge;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5473,6 +5778,7 @@ int HouseClass::FUN_0050DAC0() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DEF0
 // +0x5490 while +0x5494 still holds the global cell at 0xA8EF98, else +0x5494.
 Cell HouseClass::FUN_0050DEF0() const
@@ -5483,6 +5789,7 @@ Cell HouseClass::FUN_0050DEF0() const
     return BaseCenter;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5516,6 +5823,7 @@ CoordStruct HouseClass::FUN_0050DF30() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050DFE0
 //
 // Store the argument into the member at +0x5494.
@@ -5524,6 +5832,7 @@ void Setter_00487C70::FUN_0050DFE0(int value)
     *(int*)(Bytes + 0x5494) = value;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5546,6 +5855,7 @@ void HouseClass::FUN_0050DFF0()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050E000
 //
 // Store the argument into the member at +0x5490.
@@ -5554,6 +5864,29 @@ void Setter_00487C70::FUN_0050E000(int value)
     *(int*)(Bytes + 0x5490) = value;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x50E010
+// One more powering centre. When the count reaches one every on-map techno of this house
+// whose type is `type` is reactivated, walking the techno array from the top; if any was,
+// and the house is the local player's, the "robot tanks back online" EVA line plays.
+void HouseClass::FUN_0050E010(TechnoTypeClass* type)
+{
+    if (++PoweredUnitCenters == 1 && type != 0) {
+        bool found = false;
+        for (int i = TechnoClass_Array.Count - 1; i >= 0; i--) {
+            TechnoClass* techno = TechnoClass_Array.Items[i];
+            if (techno->Owner == this && techno->vf_33() == type && !techno->InLimbo) {
+                techno->Reactivate();
+                found = true;
+            }
+        }
+        if (found && DAT_00A8E9A0 && ControlledByCurrentPlayer(this) && DAT_00A8E7AC == 0) {
+            FUN_00752700("EVA_RobotTanksBackOnline", -1, -1);
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5589,6 +5922,39 @@ void HouseClass::LostPoweredCenter(TechnoTypeClass* type)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x50E1B0  HouseClass::GainedPoweredCenter (__thiscall, ret 0x4)
+// NOTE: the retail body ignores its argument entirely and just reports whether
+// the powered-centre count at +0x2D8 is positive (`SETG AL`), so this is a
+// bool-returning predicate, not the void mutator YRpp declares
+// for this address. The name is kept from YRpp; the signature follows the bytes.
+bool HouseClass::GainedPoweredCenter(TechnoTypeClass* type)
+{
+    return PoweredUnitCenters > 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x50E280
+// Reactivate every on-map techno of this house whose type is `type`, walking the techno array
+// from the top, then play the "robot tanks back online" EVA line for the local player.
+void HouseClass::FUN_0050E280(TechnoTypeClass* type)
+{
+    if (type != 0) {
+        bool found = false;
+        for (int i = TechnoClass_Array.Count - 1; i >= 0; i--) {
+            TechnoClass* techno = TechnoClass_Array.Items[i];
+            if (techno->Owner == this && techno->vf_33() == type && !techno->InLimbo) {
+                techno->Reactivate();
+                found = true;
+            }
+        }
+        if (found && DAT_00A8E9A0 && ControlledByCurrentPlayer(this) && DAT_00A8E7AC == 0) {
+            FUN_00752700("EVA_RobotTanksBackOnline", -1, -1);
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5602,6 +5968,7 @@ ULONG __stdcall HouseClass::AddRef()
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5624,6 +5991,7 @@ ULONG __stdcall HouseClass::Release()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E360
 int HouseClass::vf_11()
 {
@@ -5638,12 +6006,14 @@ int HouseClass::vf_11()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E370
 int HouseClass::vf_16()
 {
     return ArrayIndex;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5687,6 +6057,7 @@ void Obj_0050E430::FUN_0050E430(unsigned char a1, unsigned char a2, unsigned cha
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E450
 // Stores several members; pops its stack arguments.
 Obj_0050E450* Obj_0050E450::FUN_0050E450(int a1, Arg2_0050E450* a2)
@@ -5698,6 +6069,7 @@ Obj_0050E450* Obj_0050E450::FUN_0050E450(int a1, Arg2_0050E450* a2)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5720,6 +6092,7 @@ bool Cell_0050E470::FUN_0050E470(const Cell_004FFD90* other)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TEMPLATE: GAMEMD 0x50E590
 // DynamicVectorClass<AngerStruct>::Slot5 (slot 5)
 template class DynamicVectorClass<AngerStruct>;
@@ -5732,10 +6105,12 @@ template class DynamicVectorClass<AngerStruct>;
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TEMPLATE: GAMEMD 0x50E600
 // DynamicVectorClass<ScoutStruct>::Slot5 (slot 5)
 template class DynamicVectorClass<ScoutStruct>;
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5762,6 +6137,7 @@ template class DynamicVectorClass<ScoutStruct>;
 // DynamicVectorClass<HouseClass::BuildChoiceClass*>::FindItemIndex (slot 4)
 template class VectorClass<HouseClass::BuildChoiceClass*>;
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5839,6 +6215,7 @@ template class VectorClass<bool>;
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050FC00
 // VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::operator==
 // FUNCTION: GAMEMD 0x0050FC60
@@ -5863,6 +6240,7 @@ template class VectorClass<DiscreteDistributionClass<BuildingTypeClass>::Distrib
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050F070
 // DynamicVectorClass<AngerStruct>::SetCapacity
 // FUNCTION: GAMEMD 0x0050F170
@@ -5871,6 +6249,7 @@ template class VectorClass<DiscreteDistributionClass<BuildingTypeClass>::Distrib
 // VTABLE: GAMEMD 0x007EA924 -- DynamicVectorClass<AngerStruct>.
 template class VectorClass<AngerStruct>;
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5895,12 +6274,14 @@ template class VectorClass<ScoutStruct>;
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50FF40
 // Empty function.
 void __cdecl FUN_0050FF40()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5948,6 +6329,7 @@ bool BasePlanningCellContainer::AddCapacity(int additionalCapacity)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

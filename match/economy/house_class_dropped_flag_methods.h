@@ -27,37 +27,7 @@
 #include "../_layout/house_type_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/cell.h"
+#include "../_layout/map_0087f7e8.h"
 
-struct Map_004FBF60
-{
-    // FUNCTION: GAMEMD 0x568300 (decl; reloc) — MapClass::CoordinatesLegal.
-    bool CoordinatesLegal(const CellStruct& cell);
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass* GetCellAt(const CellStruct& cell);
-    // FUNCTION: GAMEMD 0x56DC20 (decl; reloc) — MapClass::NearByLocation.
-    CellStruct* NearByLocation(CellStruct* out, const CellStruct& position,
-                               int speedType, int a4, int movementZone, bool alt,
-                               int spaceSizeX, int spaceSizeY, bool a9, bool a10,
-                               bool a11, bool ignoreOccupied,
-                               const CellStruct& closeTo, bool a14, bool buildable);
-    // The by-value form (YRpp's wrapper), expanded inline at the call site:
-    // its parameters become constant-initialised locals, which is what puts
-    // the repeated 1 in EAX (with a copy in ECX for SpaceSizeY) and the
-    // zeros in EDX, and reads the result back through the returned pointer.
-    CellStruct NearByLocation(const CellStruct& position, int speedType, int a4,
-                              int movementZone, bool alt, int spaceSizeX,
-                              int spaceSizeY, bool a9, bool a10, bool a11,
-                              bool ignoreOccupied, const CellStruct& closeTo,
-                              bool a14, bool buildable)
-    {
-        CellStruct outBuffer;
-        NearByLocation(&outBuffer, position, speedType, a4, movementZone, alt,
-                       spaceSizeX, spaceSizeY, a9, a10, a11, ignoreOccupied,
-                       closeTo, a14, buildable);
-        return outBuffer;
-    }
-};
-// GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
-extern Map_004FBF60 DAT_0087F7E8;
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_DROPPED_FLAG_METHODS_H

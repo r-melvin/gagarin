@@ -24,6 +24,7 @@
 #include "../_layout/unit_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/cell.h"
+#include "../_layout/map_0087f7e8.h"
 
 // Coordinate to cell (signed division by 256 per axis), by value. Cell has a
 // constructor, so VC6 returns it through a hidden pointer.
@@ -34,16 +35,5 @@ inline Cell CoordToCell_004FBE40(const CoordStruct& c)
     r.Y = (short)(c.Y / 256);
     return r;
 }
-
-struct Map_004FBE40
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x568300 (decl; reloc) — MapClass::CoordinatesLegal.
-    bool CoordinatesLegal(const CellStruct& cell);
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass* GetCellAt(const CellStruct& cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
-extern Map_004FBE40 DAT_0087F7E8;
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_FLAG_COORDS_METHODS_H

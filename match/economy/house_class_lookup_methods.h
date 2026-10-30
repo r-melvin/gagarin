@@ -17,20 +17,8 @@
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/house_class.h"
-
-// ---------------------------------------------------------------------------
-// HouseTypeClass — only ArrayIndex2 @0xB8 is touched (the loop key in
-// 0x502D30: `CMP [EBX+0xB8], ECX`, where EBX = house->Type).
-// AbstractTypeClass base = 0x98; FixedString<25> ParentCountry @0x98 + 3 align,
-// int ArrayIndex @0xB4, int ArrayIndex2 @0xB8 (YRpp).
-// ---------------------------------------------------------------------------
-class HouseTypeClass
-{
-public:
-    char _pad_base[0xB8];          // AbstractTypeClass + ParentCountry/ArrayIndex (P2)
-    int  ArrayIndex2;              // +0xB8
-};
-GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
+#include "../_layout/house_type_class.h"
+#include "../_layout/session_class.h"
 
 // ---------------------------------------------------------------------------
 // HouseClass — touched members:

@@ -8,21 +8,6 @@
 
 #include "house_class_accessor_methods.h"
 
-// FUNCTION: GAMEMD 0x4F9950  HouseClass::GiveMoney (__thiscall, ret 0x4)
-void HouseClass::GiveMoney(int amount)
-{
-    Balance += amount;
-}
-
-// FUNCTION: GAMEMD 0x4F9B50  HouseClass::MakeAlly (__thiscall, ret 0x8)
-// The by-index overload: resolve the house through HouseClass::Array and
-// forward to the by-pointer overload at 0x4F9B70. Retail reads the Items base
-// straight out of 0x00A8022C, which is HouseClass::Array (@0x00A80228) + 4 —
-// i.e. Array is a static *object*, not a pointer variable.
-void HouseClass::MakeAlly(int houseIndex, bool announce)
-{
-    MakeAlly(((HouseClass**)HouseClassArray.Items)[houseIndex], announce);
-}
 
 // FUNCTION: GAMEMD 0x50B730  HouseClass::IsControlledByHuman (__thiscall)
 // Outside a campaign only the explicit human-player flag counts; inside one, a
@@ -36,7 +21,7 @@ void HouseClass::MakeAlly(int houseIndex, bool announce)
 // (`XOR AL,AL` / `MOV AL,1`) while the return-expression form widens to EAX.
 bool HouseClass::IsControlledByHuman() const
 {
-    if (SessionGameMode != 0) {          // anything but GameMode::Campaign
+    if (Session_00A8B238.GameMode != 0) {          // anything but GameMode::Campaign
         return IsHumanPlayer;
     }
     bool result = IsHumanPlayer;
@@ -44,38 +29,3 @@ bool HouseClass::IsControlledByHuman() const
     return result;
 }
 
-// FUNCTION: GAMEMD 0x50BD10  HouseClass::ReshroudMap (__thiscall)
-// A spy satellite pins the map revealed, so the reshroud is skipped entirely.
-void HouseClass::ReshroudMap()
-{
-    if (!SpySatActive) {
-        MapInstance.Reshroud(this);
-    }
-}
-
-// FUNCTION: GAMEMD 0x50D9E0  HouseClass::GetInfSelfHealStep (__thiscall)
-int HouseClass::GetInfSelfHealStep() const
-{
-    return RulesGlobalPtr->SelfHealInfantryAmount * InfantrySelfHeal;
-}
-
-// FUNCTION: GAMEMD 0x50D9F0  HouseClass::GetUnitSelfHealStep (__thiscall)
-int HouseClass::GetUnitSelfHealStep() const
-{
-    return RulesGlobalPtr->SelfHealUnitAmount * UnitsSelfHeal;
-}
-
-// FUNCTION: GAMEMD 0x50E1B0  HouseClass::GainedPoweredCenter (__thiscall, ret 0x4)
-// NOTE: the retail body ignores its argument entirely and just reports whether
-// the powered-centre count at +0x2D8 is positive (`SETG AL`), so this is a
-// bool-returning predicate, not the void mutator YRpp declares
-// for this address. The name is kept from YRpp; the signature follows the bytes.
-bool HouseClass::GainedPoweredCenter(TechnoTypeClass* type)
-{
-    return PoweredUnitCenters > 0;
-}
-
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA80228
-DynamicVectorClassLayout HouseClassArray;
-// END defined globals

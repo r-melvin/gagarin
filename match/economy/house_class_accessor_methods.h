@@ -16,52 +16,13 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 #include "../_layout/house_class.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/map_0087f7e8.h"
+#include "../_layout/session_class.h"
 
 class HouseClass;
 class TechnoTypeClass;
 
-// ---------------------------------------------------------------------------
-// RulesClass shim — only the two self-heal step amounts are needed here.
-//
-// Confirmed from 0x50D9E0 / 0x50D9F0: MOV EAX,[0x008871E0] (the global
-// RulesClass pointer) then IMUL against [EAX+0x34] / [EAX+0x3C]. The names come
-// from YRpp's RulesClass run SelfHealInfantryFrames / SelfHealInfantryAmount /
-// SelfHealUnitFrames / SelfHealUnitAmount, which places the two *Amount* ints
-// at exactly +0x34 and +0x3C.
-// ---------------------------------------------------------------------------
-struct RulesSelfHealShim
-{
-    char _layout_pad_P2[0x34];       // +0x0000
-    int  SelfHealInfantryAmount;     // +0x0034  (IMUL operand @0x50D9E0)
-    char _pad38[0x3C - 0x38];        // +0x0038  (SelfHealUnitFrames)
-    int  SelfHealUnitAmount;         // +0x003C  (IMUL operand @0x50D9F0)
-};
-GG_STATIC_ASSERT(offsetof(RulesSelfHealShim, SelfHealInfantryAmount) == 0x34);
-GG_STATIC_ASSERT(offsetof(RulesSelfHealShim, SelfHealUnitAmount)     == 0x3C);
-
-// GLOBAL: GAMEMD 0x008871E0 — pointer to the active RulesClass instance.
-extern RulesSelfHealShim* RulesGlobalPtr;
-
-// ---------------------------------------------------------------------------
-// MapClass shim — ReshroudMap @0x50BD10 loads the instance address as an
-// *immediate* (`MOV ECX,0x87F7E8`), so MapClass::Instance is a static object at
-// 0x87F7E8, not a pointer variable. Only the one called method matters here.
-// ---------------------------------------------------------------------------
-struct MapShim
-{
-    void Reshroud(HouseClass* house);   // GAMEMD 0x577AB0 __thiscall (declared; reloc)
-};
-
-// GLOBAL: GAMEMD 0x0087F7E8 — the MapClass instance itself.
-extern MapShim MapInstance;
-
-// GLOBAL: GAMEMD 0x00A80228 — HouseClass::Array (the object; Items lands at
-// 0x00A8022C, which is the address MakeAlly @0x4F9B50 reads directly).
-extern DynamicVectorClassLayout HouseClassArray;
-
-// GLOBAL: GAMEMD 0x00A8B238 — SessionClass::Instance.GameMode. Campaign == 0;
-// IsControlledByHuman @0x50B730 branches on it being non-zero.
-extern int SessionGameMode;
 
 // ---------------------------------------------------------------------------
 // HouseClass — only the members these seven methods touch are modelled; the

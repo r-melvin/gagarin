@@ -20,6 +20,7 @@
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by ForceEnd).
 #include "../core/frame_counter.h"
 #include "../_layout/house_class.h"
+#include "../_layout/rules_class.h"
 
 // ---------------------------------------------------------------------------
 // WaypointPathClass — the per-slot "planning mode" path object.
@@ -28,22 +29,6 @@
 // a one-int constructor at 0x763810. Only the size + ctor signature matter for
 // the EnsurePlanningPathExists `new` pattern; full layout is P2.
 // ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// RulesClass shim — only the weed-storage capacity divisor @0x17D0 is needed.
-//
-// Confirmed from 0x4F9750: MOV EAX,[0x008871E0] (the global RulesClass*),
-// FIDIV dword ptr [EAX+0x17D0] — the int divisor for the fill ratio.
-// ---------------------------------------------------------------------------
-struct RulesShim
-{
-    char _layout_pad_P2[0x17D0];   // +0x0000
-    int  WeedStorageAmount;        // +0x17D0  (int; FIDIV operand)
-};
-GG_STATIC_ASSERT(offsetof(RulesShim, WeedStorageAmount) == 0x17D0);
-
-// GLOBAL: GAMEMD 0x008871E0 — pointer to the active RulesClass instance.
-extern RulesShim* RulesGlobalPtr;
 
 // ---------------------------------------------------------------------------
 // HouseClass — only the members these three methods touch are modelled; the

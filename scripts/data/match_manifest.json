@@ -22403,22 +22403,22 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_accessor_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9950",
   "sym": "?GiveMoney@HouseClass@@QAEXH@Z",
   "len": "0x15",
   "name": "GiveMoney",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_accessor_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9B50",
   "sym": "?MakeAlly@HouseClass@@QAEXH_N@Z",
   "len": "0x1A",
   "name": "MakeAlly",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/house_class_accessor_methods.cpp",
@@ -22430,40 +22430,40 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_accessor_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50BD10",
   "sym": "?ReshroudMap@HouseClass@@QAEXXZ",
   "len": "0x16",
   "name": "ReshroudMap",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_accessor_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50D9E0",
   "sym": "?GetInfSelfHealStep@HouseClass@@QBEHXZ",
   "len": "0x10",
   "name": "GetInfSelfHealStep",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_accessor_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50D9F0",
   "sym": "?GetUnitSelfHealStep@HouseClass@@QBEHXZ",
   "len": "0x10",
   "name": "GetUnitSelfHealStep",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_accessor_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50E1B0",
   "sym": "?GainedPoweredCenter@HouseClass@@QAE_NPAVTechnoTypeClass@@@Z",
   "len": "0x10",
   "name": "GainedPoweredCenter",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/House.cpp",
@@ -22565,7 +22565,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_dropped_flag_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FBF60",
   "sym": "?DroppedFlag@HouseClass@@QAE_NABUCellStruct@@_N@Z",
   "len": "0xFC",
@@ -22592,13 +22592,13 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_flag_coords_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FBE40",
   "sym": "?UpdateFlagCoords@HouseClass@@QAE_NPAVAbstractClass@@_N@Z",
   "len": "0x119",
   "name": "HouseClass::UpdateFlagCoords",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/House.cpp",
@@ -22610,22 +22610,22 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_lookup_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x502D30",
   "sym": "?FindByCountryIndex@HouseClass@@SIPAV1@H@Z",
   "len": "0x30",
   "name": "FindByCountryIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_lookup_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50B6F0",
   "sym": "?IsControlledByCurrentPlayer@HouseClass@@QBE_NXZ",
   "len": "0x34",
   "name": "IsControlledByCurrentPlayer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/House.cpp",
@@ -144145,31 +144145,31 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_radar_visible_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5092F0",
   "sym": "?FUN_005092F0@HouseClass@@QAEXPAV1@@Z",
   "len": "0xc1",
   "name": "HouseClass::FUN_005092F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ai/house_class_powered_center_back_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50E010",
   "sym": "?FUN_0050E010@HouseClass@@QAEXPAVTechnoTypeClass@@@Z",
   "len": "0xcb",
   "name": "HouseClass::FUN_0050E010",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ai/house_class_powered_center_back_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50E280",
   "sym": "?FUN_0050E280@HouseClass@@QAEXPAVTechnoTypeClass@@@Z",
   "len": "0xb3",
   "name": "HouseClass::FUN_0050E280",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/House.cpp",
