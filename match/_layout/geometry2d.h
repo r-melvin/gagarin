@@ -50,6 +50,8 @@ struct RectangleStruct {
     int X; int Y; int Width; int Height;
     // Declaration: GAMEMD 0x45A130 -- ECX result, point/width/height stacked.
     RectangleStruct* FromPointSize(const Point2D* point, int width, int height);
+    // Declaration: GAMEMD 0x42E410 -- the four-argument constructor: ECX result, x/y/width/height stacked.
+    RectangleStruct* Build(int x, int y, int width, int height);
 };
 #endif
 typedef RectangleStruct XYWHStruct;

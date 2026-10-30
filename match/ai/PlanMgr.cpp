@@ -517,6 +517,20 @@ extern const char STR_00836C80[];
 extern bool DAT_00AC4C08;
 // GLOBAL: GAMEMD 0xA8ECC8 -- the selection list's count.
 extern int DAT_00A8ECC8;
+// GLOBAL: GAMEMD 0xA8ECBC -- the selection list's items (count at 0xA8ECC8).
+extern ObjectClass** DAT_00A8ECBC;
+
+#include "../_layout/map_0087f7e8.h"
+
+// The checked techno test the selection walk expands inline: a null guard, then the flag-bit read.
+inline bool PlanningIsTechno(ObjectClass* object)
+{
+    if (object == 0) {
+        return false;
+    }
+    return object->Flags.IsTechno;
+}
+
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- fetch a message by key (key, 0, file, line).
 int FUN_00734E60(const char* key, int zero, const char* file, int line);
@@ -981,6 +995,28 @@ void PlanningNodeClass::FUN_00635310()
 RectangleStruct* FUN_0072AD20(RectangleStruct* out);
 #include "../renderer/composite_surface.h"
 
+// FUNCTION: GAMEMD 0x635350
+// PARTIAL: 96.0%, same instruction multiset; the intermediate sums of the overlap test and the list-grow
+// capacity add land in the other register of the pair.
+// Draw the node's marker box (8x8, centred on the first member's target) and, when it overlaps the tactical
+// view, put the node on the visible list.
+void PlanningNodeClass::FUN_00635350(unsigned int color)
+{
+    RectangleStruct clip;
+    {
+        RectangleStruct tmp;
+        clip = *FUN_0072AD20(&tmp);
+    }
+    Point2D center;
+    RectangleStruct box;
+    PlanningRectAround(&box, 8, *FUN_006339E0(&center, PlanningCoordOf(*Members.Items[0]->Event)));
+    DAT_0088731C->DrawRectEx(&clip, &box, color);
+    if (clip.X < box.Width + box.X && clip.Y < box.Height + box.Y && clip.Width + clip.X > box.X
+        && clip.Y + clip.Height > box.Y) {
+        PlanningListAdd(PlanningLists::DAT_00AC4C18, this);
+    }
+}
+
 // FUNCTION: GAMEMD 0x635560
 // PARTIAL: best 44.2%. Retail keeps the 0x634510 result pointer in ESI and
 // writes the +4 inflate straight into the box; this build copies first.
@@ -1128,6 +1164,44 @@ int Obj_00636550::FUN_00636550()
 int Obj_00636570::FUN_00636570()
 {
     return unknown_14 > 0 && (unknown_8C == -1 || unknown_8C > 0);
+}
+
+// Clear the playback marks of a node and of every branch it has.
+inline void PlanningClearMarks(PlanningNodeClass* node)
+{
+    node->unknown_B4 = -1;
+    int count = node->Branches.Count;
+    for (int i = 0; i < count; i++) {
+        node->Branches.Items[i]->unknown_74 = -1;
+    }
+    node->unknown_AC = -1;
+}
+
+// FUNCTION: GAMEMD 0x636CE0
+// PARTIAL: 88.1%, same instruction multiset; retail stores -1 to the node mark before loading the branch count,
+// this build schedules the store after the count load.
+// Drop the playback marks of the nodes a token has stepped through: the pending one first, then every node
+// from the current start (node 0 when none) to the end.
+void PlanningTokenClass::FUN_00636CE0()
+{
+    if (unknown_98) {
+        if (unknown_94 != -1) {
+            PlanningNodeClass* node = Nodes.Items[unknown_94];
+            if (node) {
+                PlanningClearMarks(node);
+            }
+        }
+        unknown_98 = false;
+    }
+    int start = unknown_8C == -1 ? 0 : unknown_8C;
+    int count = Nodes.Count;
+    for (int i = start; i < count; i++) {
+        PlanningNodeClass* node = Nodes.Items[i];
+        if (node) {
+            PlanningClearMarks(node);
+        }
+    }
+    unknown_8C = -1;
 }
 
 // FUNCTION: GAMEMD 0x636DA0
@@ -1647,6 +1721,37 @@ int FUN_00638B50(int a1)
     return (unsigned char)a1 == 9 || (unsigned char)a1 == 6 || (unsigned char)a1 == 7;
 }
 
+#include "../_layout/cell_class.h"
+
+// FUNCTION: GAMEMD 0x638B70
+// For a type-11 order, true when the target names nothing or when the object stands on the cell the target
+// resolves to.
+bool __fastcall FUN_00638B70(ObjectClass* object, int type, TargetClass target)
+{
+    if (type == 11) {
+        if (target.RTTI == 0) {
+            return true;
+        }
+        if (object != 0) {
+            CellStruct here = object->vf_110();
+            CellStruct there = object->vf_110();
+            CellClass* cell = target.FUN_006E7C20();
+            if (cell) {
+                there = cell->MapCoords;
+            } else {
+                ObjectClass* other = static_cast<ObjectClass*>(target.FUN_006E6F20());
+                if (other) {
+                    there = other->vf_110();
+                }
+            }
+            if (here.X == there.X && here.Y == there.Y) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x638C20
 // Branching.
 int FUN_00638C20(int a1)
@@ -1684,6 +1789,43 @@ bool FUN_00638C70(TechnoClass* techno)
     TargetClass target;
     target.FUN_006E6AB0(techno->Target);
     return PlanningMissionTargetOk(mission, target);
+}
+
+// Whether the order is a deploy (9), stop (6) or scatter (7): the ones the plan takes no target for.
+inline bool PlanningEventIsPlain(unsigned char type)
+{
+    return type == 9 || type == 6 || type == 7;
+}
+
+// FUNCTION: GAMEMD 0x638CE0
+// How the order sits with the last order on the unit's plan: 0 when it is a stop, scatter or deploy or the unit
+// already meets it, 1 when the last order is a move, 2 when it is an attack-type order on a target, else -1.
+int __fastcall FUN_00638CE0(TechnoClass* techno, EventClass* event)
+{
+    if (PlanningEventIsPlain(event->Type)) {
+        return 0;
+    }
+    int order = event->Data.MegaMission.Mission;
+    TargetClass goal = event->Data.MegaMission.Target;
+    if (FUN_00638B70(techno, order, goal)) {
+        return 0;
+    }
+    PlanningTokenClass* token = techno->FUN_00705D20();
+    if (token && token->Nodes.Count > 0) {
+        PlanningNodeClass* last = token->Nodes.Items[token->Nodes.Count - 1];
+        int index = last->FUN_00634290(token->Owner);
+        PlanningMemberClass* source = index == -1 ? 0 : last->Members.Items[index];
+        EventClass previous = *source->Event;
+        int mission = previous.Data.MegaMission.Mission;
+        if (PlanningMissionIsMove(mission)) {
+            return 1;
+        }
+        TargetClass target = previous.Data.MegaMission.Target;
+        if (PlanningMissionTargetOk(mission, target)) {
+            return 2;
+        }
+    }
+    return -1;
 }
 
 // FUNCTION: GAMEMD 0x00638DC0
@@ -1752,6 +1894,122 @@ found:
     }
 }
 
+
+inline bool PlanningRectHas(const RectangleStruct& rect, const Point2D& pt)
+{
+    if (pt.X >= rect.X && pt.X < rect.X + rect.Width) {
+        if (pt.Y >= rect.Y && pt.Y < rect.Y + rect.Height) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x638F90
+// PARTIAL: 96.7%, same instruction multiset; retail sums the box's X and width as X + W into EDX, this
+// build sums into the other register (operand order of the commutative ADD is not source-controlled).
+// The current node when the point lies within 4 pixels of its marker box, else none.
+PlanningNodeClass* __stdcall FUN_00638F90(int x, int y)
+{
+    if (DAT_00AC4CCC) {
+        CoordStruct coord = DAT_00AC4CCC->FUN_006343C0();
+        Point2D tmp;
+        Point2D center = *FUN_006339E0(&tmp, coord);
+        RectangleStruct built;
+        center.X -= 4;
+        center.Y -= 4;
+        built.Build(center.X, center.Y, 8, 8);
+        RectangleStruct box = built;
+        PlanningRectInflate(&box, 4);
+        Point2D point;
+        point.X = x;
+        point.Y = y;
+        if (PlanningRectHas(box, point)) {
+            return DAT_00AC4CCC;
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x639210
+// The node on the global list whose first order points at `coord`, optionally filtered by its number
+// (-1 matches any) and by the owning player's index (-1 matches any).
+PlanningNodeClass* __fastcall FUN_00639210(int player, int number, CoordStruct coord)
+{
+    int count = PlanningLists::DAT_00AC4B30.Count;
+    for (int i = 0; i < count; i++) {
+        PlanningNodeClass* node = PlanningLists::DAT_00AC4B30.Items[i];
+        CoordStruct target = PlanningCoordOf(*node->Members.Items[0]->Event);
+        if (target.X == coord.X && target.Y == coord.Y && target.Z == coord.Z) {
+            if (number == -1 || number == node->unknown_18) {
+                HouseClass* house = node->Members.Items[0]->Owner->Owner;
+                int index = house->ArrayIndex;
+                if (house->IsControlledByCurrentPlayer() && DAT_00A83D4C) {
+                    index = DAT_00A83D4C->ArrayIndex;
+                }
+                if (player == -1 || player == index) {
+                    return node;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6392D0
+// PARTIAL: 96.1%, same instruction multiset; the box sum X + W lands in the other register (as 0x638F90).
+// The first node on the global list whose marker box, grown by 4, holds the point.
+PlanningNodeClass* __stdcall FUN_006392D0(int x, int y)
+{
+    int count = PlanningLists::DAT_00AC4B30.Count;
+    for (int i = 0; i < count; i++) {
+        PlanningNodeClass* node = PlanningLists::DAT_00AC4B30.Items[i];
+        CoordStruct coord = node->FUN_006343C0();
+        Point2D tmp;
+        Point2D center = *FUN_006339E0(&tmp, coord);
+        RectangleStruct built;
+        center.X -= 4;
+        center.Y -= 4;
+        built.Build(center.X, center.Y, 8, 8);
+        RectangleStruct box = built;
+        PlanningRectInflate(&box, 4);
+        Point2D point;
+        point.X = x;
+        point.Y = y;
+        if (PlanningRectHas(box, point)) {
+            return node;
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6393A0
+// PARTIAL: 96.1%, same instruction multiset; the box sum X + W lands in the other register (as 0x638F90).
+// The first node on the node list whose marker box, grown by 4, holds the point.
+PlanningNodeClass* __stdcall FUN_006393A0(int x, int y)
+{
+    int count = PlanningLists::DAT_00AC4C18.Count;
+    for (int i = 0; i < count; i++) {
+        PlanningNodeClass* node = PlanningLists::DAT_00AC4C18.Items[i];
+        CoordStruct coord = node->FUN_006343C0();
+        Point2D tmp;
+        Point2D center = *FUN_006339E0(&tmp, coord);
+        RectangleStruct built;
+        center.X -= 4;
+        center.Y -= 4;
+        built.Build(center.X, center.Y, 8, 8);
+        RectangleStruct box = built;
+        PlanningRectInflate(&box, 4);
+        Point2D point;
+        point.X = x;
+        point.Y = y;
+        if (PlanningRectHas(box, point)) {
+            return node;
+        }
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x639470
 // The node on the list whose first order points at `coord`.
 PlanningNodeClass* FUN_00639470(CoordStruct coord)
@@ -1770,6 +2028,30 @@ PlanningNodeClass* FUN_00639470(CoordStruct coord)
         } while (i < count);
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x6394E0
+// Queue an order (type 0x2A) from `techno` to whatever the node's first order points at.
+void __fastcall FUN_006394E0(TechnoClass* techno, PlanningNodeClass* node)
+{
+    EventClass origin = *node->Members.Items[0]->Event;
+    TargetClass* target;
+    if (origin.Data.MegaMission.Target.RTTI) {
+        target = &origin.Data.MegaMission.Target;
+    } else if (origin.Data.MegaMission.Follow.RTTI) {
+        target = &origin.Data.MegaMission.Follow;
+    } else if (origin.Data.MegaMission.Destination.RTTI) {
+        target = &origin.Data.MegaMission.Destination;
+    } else {
+        return;
+    }
+    TargetAbstract* object = target->FUN_006E6E20();
+    if (object) {
+        TargetClass id;
+        TargetClass self;
+        EventClass event(DAT_00A83D4C->ArrayIndex, 0x2A, *self.FUN_006E6AB0(techno), *id.FUN_006E6AB0(object));
+        FUN_006521C0(event);
+    }
 }
 
 // FUNCTION: GAMEMD 0x639E30
@@ -1844,6 +2126,38 @@ int FUN_00639FB0(int house)
     return count;
 }
 
+// STRING: GAMEMD 0x836C34 -- "MSG:PlanningModeNoDeploy"
+extern const char STR_00836C34[];
+// STRING: GAMEMD 0x836C1C -- "MSG:PlanningModeNoStop"
+extern const char STR_00836C1C[];
+// STRING: GAMEMD 0x836C00 -- "MSG:PlanningModeNoScatter"
+extern const char STR_00836C00[];
+
+// 0x63A230 expanded where it is not called.
+inline void PlanningNoticeOnce(const char* key)
+{
+    if (!DAT_00AC4C08) {
+        DAT_00AC4C08 = true;
+        int text = FUN_00734E60(key, 0, STR_00836BD4, 0xCA1);
+        FUN_00730A90(text, 0x1E0);
+        FUN_00750920(RulesInstance->ScoldSound, 1.0f, 0x2000, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x639FD0
+// The refusal notice of 0x63A280, then the planning sound again.
+void __fastcall FUN_00639FD0(EventClass* event)
+{
+    if (event->Type == 9) {
+        PlanningNoticeOnce(STR_00836C34);
+    } else if (event->Type == 6) {
+        PlanningNoticeOnce(STR_00836C1C);
+    } else if (event->Type == 7) {
+        PlanningNoticeOnce(STR_00836C00);
+    }
+    FUN_00750920(RulesInstance->ScoldSound, 1.0f, 0x2000, 0);
+}
+
 // FUNCTION: GAMEMD 0x63A0D0
 void FUN_0063A0D0()
 {
@@ -1861,6 +2175,36 @@ extern const char STR_00836D0C[];
 extern const char STR_00836CF0[];
 // GLOBAL: GAMEMD 0xAC4BF4 -- how many times each planning help message has been shown.
 extern int DAT_00AC4BF4[];
+
+// STRING: GAMEMD 0x836CD0 -- "MSG:PlanningModeIntro1Button"
+extern const char STR_00836CD0[];
+// STRING: GAMEMD 0x836CB4 -- "MSG:PlanningModeIntro1Key"
+extern const char STR_00836CB4[];
+// STRING: GAMEMD 0x836C9C -- "MSG:PlanningModeIntro3"
+extern const char STR_00836C9C[];
+
+// FUNCTION: GAMEMD 0x63A120
+// Show an introduction help message the first time it is wanted (or again when `repeat` is set) and count it.
+void __fastcall FUN_0063A120(bool repeat, bool first)
+{
+    int kind = first ? (!repeat) : 2;
+    int limit = repeat ? DAT_00AC4BF4[kind] + 1 : 1;
+    if (DAT_00AC4BF4[kind] < limit) {
+        int text;
+        if (first) {
+            if (repeat) {
+                text = FUN_00734E60(STR_00836CD0, 0, STR_00836BD4, 0xCA1);
+            } else {
+                text = FUN_00734E60(STR_00836CB4, 0, STR_00836BD4, 0xCA1);
+            }
+        } else {
+            text = FUN_00734E60(STR_00836C9C, 0, STR_00836BD4, 0xCA1);
+        }
+        FUN_00730A90(text, 0x1E0);
+        DAT_00AC4BF4[kind]++;
+    }
+}
+
 
 // FUNCTION: GAMEMD 0x63A1B0
 // Show the loop (3) or delete (4) help message the first time it is wanted, and count the request.
@@ -1895,6 +2239,61 @@ void __fastcall FUN_0063A230(const char* key)
         int text = FUN_00734E60(key, 0, STR_00836BD4, 0xCA1);
         FUN_00730A90(text, 0x1E0);
         FUN_00750920(RulesInstance->ScoldSound, 1.0f, 0x2000, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x63A280
+// Tell the player once why an order cannot be planned: deploy (9), stop (6) or scatter (7).
+void __fastcall FUN_0063A280(EventClass* event)
+{
+    if (event->Type == 9) {
+        PlanningNoticeOnce(STR_00836C34);
+    } else if (event->Type == 6) {
+        PlanningNoticeOnce(STR_00836C1C);
+    } else if (event->Type == 7) {
+        PlanningNoticeOnce(STR_00836C00);
+    }
+}
+
+// STRING: GAMEMD 0x836D60 -- "MSG:PlanningModeNoAircraft"
+extern const char STR_00836D60[];
+// STRING: GAMEMD 0x836D44 -- "MSG:PlanningModeNoBuildings"
+extern const char STR_00836D44[];
+// STRING: GAMEMD 0x836D28 -- "MSG:PlanningModeNoUnknowns"
+extern const char STR_00836D28[];
+
+// FUNCTION: GAMEMD 0x63A360
+// Tell the player once which kind of object cannot be planned: aircraft (0), buildings (1) or unknowns (2).
+void __fastcall FUN_0063A360(int kind)
+{
+    if (kind == 0) {
+        PlanningNoticeOnce(STR_00836D60);
+    } else if (kind == 1) {
+        PlanningNoticeOnce(STR_00836D44);
+    } else if (kind == 2) {
+        PlanningNoticeOnce(STR_00836D28);
+    }
+}
+
+// STRING: GAMEMD 0x836BB8 -- "MSG:PostTerminatingCommand"
+extern const char STR_00836BB8[];
+// STRING: GAMEMD 0x836B9C -- "MSG:PostContinualCommand"
+extern const char STR_00836B9C[];
+// STRING: GAMEMD 0x836B8C -- "MSG:NodeMaximum"
+extern const char STR_00836B8C[];
+
+// FUNCTION: GAMEMD 0x63A4B0
+// Clear the tactical view's pending command, then tell the player once why the order was refused: it ends the
+// plan (0), it repeats (1) or the node limit was reached (2).
+void __fastcall FUN_0063A4B0(int kind)
+{
+    DAT_00887324->FUN_006DA740();
+    if (kind == 0) {
+        PlanningNoticeOnce(STR_00836BB8);
+    } else if (kind == 1) {
+        PlanningNoticeOnce(STR_00836B9C);
+    } else if (kind == 2) {
+        PlanningNoticeOnce(STR_00836B8C);
     }
 }
 
@@ -1955,6 +2354,95 @@ void __stdcall FUN_0063AB00(int x, int y)
     }
 }
 
+// The node being edited when the point lies within 4 pixels of its marker box, else none (0x638F90 expanded).
+inline PlanningNodeClass* PlanningNodeUnder(int x, int y)
+{
+    if (DAT_00AC4CCC) {
+        CoordStruct coord = DAT_00AC4CCC->FUN_006343C0();
+        Point2D tmp;
+        Point2D center = *FUN_006339E0(&tmp, coord);
+        RectangleStruct built;
+        center.X -= 4;
+        center.Y -= 4;
+        built.Build(center.X, center.Y, 8, 8);
+        RectangleStruct box = built;
+        PlanningRectInflate(&box, 4);
+        Point2D point;
+        point.X = x;
+        point.Y = y;
+        if (PlanningRectHas(box, point)) {
+            return DAT_00AC4CCC;
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x63AB60
+// While planning, with no drag in progress: tell the map whether the cursor is over the node being edited
+// (or the pending one), and report whether there is anything to show.
+bool __stdcall FUN_0063AB60(int x, int y)
+{
+    if (!DAT_00AC4CF4) {
+        return false;
+    }
+    if (DAT_00AC4CB0) {
+        return false;
+    }
+    PlanningNodeClass* pending = DAT_00AC4C38;
+    PlanningNodeClass* hit = PlanningNodeUnder(x, y);
+    if (pending == 0) {
+        if (hit == 0) {
+            return false;
+        }
+        DAT_0087F7E8.FUN_005BDA80(0, 1);
+    } else {
+        if (hit != pending) {
+            DAT_0087F7E8.FUN_005BDA80(0, 0);
+        } else {
+            DAT_0087F7E8.FUN_005BDA80(0, 1);
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x63AC70
+// PARTIAL: 88.8%, same instruction multiset; retail lays the `return 1` exit first and closes the loop
+// with `JGE exit; JMP top`, this build lays it after the other exits and closes with `JL top`.
+// How this node sits on the plan of the first selected unit that has one: 1 when the plan is open-ended,
+// 5 when this node is not on it, 2 when it is the last node, 3 when it is the one before, else keep looking
+// (-1 when no selected unit qualifies).
+int PlanningNodeClass::FUN_0063AC70()
+{
+    int selected = DAT_00A8ECC8;
+    int i = 0;
+    if (selected > 0) {
+        do {
+            ObjectClass* object = DAT_00A8ECBC[i];
+            if (PlanningIsTechno(object)) {
+                PlanningTokenClass* token = static_cast<TechnoClass*>(object)->FUN_00705D20();
+                if (token != 0) {
+                    if (token->unknown_94 > 0 || token->unknown_94 == 0) {
+                        return 1;
+                    }
+                    int index = token->Nodes.FindItemIndex(this);
+                    if (index == -1) {
+                        return 5;
+                    }
+                    int count = token->Nodes.Count;
+                    if (index == count - 1) {
+                        return 2;
+                    }
+                    if (index == count - 2) {
+                        return 3;
+                    }
+                }
+            }
+            i++;
+        } while (i < selected);
+    }
+    return -1;
+}
+
 // FUNCTION: GAMEMD 0x63AD30
 // Stores to a global.
 void FUN_0063AD30(PlanningNodeClass* a1)
@@ -1989,6 +2477,63 @@ TargetAbstract* FUN_0063B050(EventClass* event)
 void FUN_0063B090()
 {
     DAT_00AC4BF0 = 0;
+}
+
+// GLOBAL: GAMEMD 0xA8EC78 -- every techno (items at 0xA8EC7C, count at 0xA8EC88).
+extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
+
+// FUNCTION: GAMEMD 0x63B0A0
+// PARTIAL: 81.4%, same instruction multiset; retail loads the allied-check argument after the owner chain, and
+// the local player global before the techno pointer, this build loads them in the other order.
+// Rebuild the visible node list: drop the old one, then redraw every allied node and every allied unit.
+void FUN_0063B0A0()
+{
+    DynamicVectorClass<PlanningNodeClass*>& visible = PlanningLists::DAT_00AC4C18;
+    visible.Count = 0;
+    if (visible.Items != 0 && visible.IsAllocated) {
+        delete[] visible.Items;
+        visible.Items = 0;
+    }
+    visible.IsAllocated = false;
+    visible.Capacity = 0;
+    int nodes = PlanningLists::DAT_00AC4B30.Count;
+    for (int i = 0; i < nodes; i++) {
+        PlanningNodeClass* node = PlanningLists::DAT_00AC4B30.Items[i];
+        if (node->Members.Items[0]->Owner->Owner->IsAlliedWith(DAT_00A83D4C)) {
+            node->FUN_0063C690();
+        }
+    }
+    int technos = DAT_00A8EC78.Count;
+    for (int j = 0; j < technos; j++) {
+        TechnoClass* techno = DAT_00A8EC78.Items[j];
+        if (techno->Owner->IsAlliedWith(DAT_00A83D4C)) {
+            techno->FUN_0063B550();
+        }
+    }
+}
+
+#include "../_layout/foot_class.h"
+
+// The checked foot test the callers of 0x63BE10 expand inline: a null guard, then the flag-bit read.
+inline bool PlanningIsFoot(TechnoClass* object)
+{
+    if (object == 0) {
+        return false;
+    }
+    return object->Flags.IsFoot;
+}
+
+// FUNCTION: GAMEMD 0x63BE10
+// True when this is a unit (class 0xB) that has no destination and no target; a non-foot is idle too.
+bool __fastcall FUN_0063BE10(TechnoClass* techno)
+{
+    if (techno->vf_97() == 0xB) {
+        if (!PlanningIsFoot(techno)
+            || (static_cast<FootClass*>(techno)->Destination == 0 && static_cast<FootClass*>(techno)->Target == 0)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x63CA80
@@ -2043,6 +2588,35 @@ unsigned int FUN_0063D0F0(TechnoClass* techno)
 unsigned int FUN_0063D2D0(PlanningNodeClass* node)
 {
     return PlanningMarkerColor(node->Members.Items[0]->Owner);
+}
+
+// FUNCTION: GAMEMD 0x63D400
+// Outline a 6x6 box centred on a screen point, clipped to the tactical view.
+void __fastcall FUN_0063D400(unsigned int color, int unused, Point2D center)
+{
+    RectangleStruct clip;
+    {
+        RectangleStruct tmp;
+        clip = *FUN_0072AD20(&tmp);
+    }
+    RectangleStruct around;
+    RectangleStruct box = *PlanningRectAround(&around, 6, center);
+    DAT_0088731C->DrawRectEx(&clip, &box, color);
+}
+
+// FUNCTION: GAMEMD 0x63D480
+// Fill the inside of the 6x6 marker box of 0x63D400 (shrunk by one pixel per side).
+void __fastcall FUN_0063D480(unsigned int color, int unused, Point2D center)
+{
+    RectangleStruct clip;
+    {
+        RectangleStruct tmp;
+        clip = *FUN_0072AD20(&tmp);
+    }
+    RectangleStruct around;
+    RectangleStruct box = *PlanningRectAround(&around, 6, center);
+    PlanningRectInflate(&box, -1);
+    DAT_0088731C->FillRectEx(&clip, &box, color);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2503,12 +3077,36 @@ extern const char STR_00836AD4[] = "Loop Branch [%d];  Member count[%d];  Origin
 extern const char STR_00836B20[] = "  Member [%s];  Cell location[%d, %d]\n";
 // GLOBAL: GAMEMD 0x836B48
 extern const char STR_00836B48[] = "Branch [%d];  Member count[%d];  Origin event location[%d, %d, %d]\n";
+// GLOBAL: GAMEMD 0x836B8C
+extern const char STR_00836B8C[] = "MSG:NodeMaximum";
+// GLOBAL: GAMEMD 0x836B9C
+extern const char STR_00836B9C[] = "MSG:PostContinualCommand";
+// GLOBAL: GAMEMD 0x836BB8
+extern const char STR_00836BB8[] = "MSG:PostTerminatingCommand";
 // GLOBAL: GAMEMD 0x836BD4
 extern const char STR_00836BD4[] = "D:\\ra2mdpost\\PlanMgr.cpp";
 // GLOBAL: GAMEMD 0x836C80
 extern const char STR_00836C80[] = "MSG:PlanningModeNoGuardArea";
+// GLOBAL: GAMEMD 0x836C00
+extern const char STR_00836C00[] = "MSG:PlanningModeNoScatter";
+// GLOBAL: GAMEMD 0x836C1C
+extern const char STR_00836C1C[] = "MSG:PlanningModeNoStop";
+// GLOBAL: GAMEMD 0x836C34
+extern const char STR_00836C34[] = "MSG:PlanningModeNoDeploy";
+// GLOBAL: GAMEMD 0x836C9C
+extern const char STR_00836C9C[] = "MSG:PlanningModeIntro3";
+// GLOBAL: GAMEMD 0x836CB4
+extern const char STR_00836CB4[] = "MSG:PlanningModeIntro1Key";
+// GLOBAL: GAMEMD 0x836CD0
+extern const char STR_00836CD0[] = "MSG:PlanningModeIntro1Button";
 // GLOBAL: GAMEMD 0x836CF0
 extern const char STR_00836CF0[] = "MSG:PlanningModeDeleteHelp";
 // GLOBAL: GAMEMD 0x836D0C
 extern const char STR_00836D0C[] = "MSG:PlanningModeLoopHelp";
+// GLOBAL: GAMEMD 0x836D28
+extern const char STR_00836D28[] = "MSG:PlanningModeNoUnknowns";
+// GLOBAL: GAMEMD 0x836D44
+extern const char STR_00836D44[] = "MSG:PlanningModeNoBuildings";
+// GLOBAL: GAMEMD 0x836D60
+extern const char STR_00836D60[] = "MSG:PlanningModeNoAircraft";
 // END defined globals

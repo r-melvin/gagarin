@@ -147523,5 +147523,185 @@
   "name": "?FUN_00789500@@YIHPBDHE0@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x635350",
+  "sym": "?FUN_00635350@PlanningNodeClass@@QAEXI@Z",
+  "len": "0x135",
+  "name": "PlanningNodeClass::FUN_00635350",
+  "status": "partial",
+  "pct": 96.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x636CE0",
+  "sym": "?FUN_00636CE0@PlanningTokenClass@@QAEXXZ",
+  "len": "0xb0",
+  "name": "PlanningTokenClass::FUN_00636CE0",
+  "status": "partial",
+  "pct": 88.1
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x638B70",
+  "sym": "?FUN_00638B70@@YI_NPAVObjectClass@@HUTargetClass@@@Z",
+  "len": "0xa7",
+  "name": "?FUN_00638B70@@YI_NPAVObjectClass@@HUTargetClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x638CE0",
+  "sym": "?FUN_00638CE0@@YIHPAVTechnoClass@@PAVEventClass@@@Z",
+  "len": "0xdd",
+  "name": "?FUN_00638CE0@@YIHPAVTechnoClass@@PAVEventClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x638F90",
+  "sym": "?FUN_00638F90@@YGPAVPlanningNodeClass@@HH@Z",
+  "len": "0xad",
+  "name": "?FUN_00638F90@@YGPAVPlanningNodeClass@@HH@Z",
+  "status": "partial",
+  "pct": 96.7
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x639210",
+  "sym": "?FUN_00639210@@YIPAVPlanningNodeClass@@HHUCoordStruct@@@Z",
+  "len": "0xbb",
+  "name": "?FUN_00639210@@YIPAVPlanningNodeClass@@HHUCoordStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x6392D0",
+  "sym": "?FUN_006392D0@@YGPAVPlanningNodeClass@@HH@Z",
+  "len": "0xcf",
+  "name": "?FUN_006392D0@@YGPAVPlanningNodeClass@@HH@Z",
+  "status": "partial",
+  "pct": 96.1
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x6393A0",
+  "sym": "?FUN_006393A0@@YGPAVPlanningNodeClass@@HH@Z",
+  "len": "0xcf",
+  "name": "?FUN_006393A0@@YGPAVPlanningNodeClass@@HH@Z",
+  "status": "partial",
+  "pct": 96.1
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x6394E0",
+  "sym": "?FUN_006394E0@@YIXPAVTechnoClass@@PAVPlanningNodeClass@@@Z",
+  "len": "0xc1",
+  "name": "?FUN_006394E0@@YIXPAVTechnoClass@@PAVPlanningNodeClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x639FD0",
+  "sym": "?FUN_00639FD0@@YIXPAVEventClass@@@Z",
+  "len": "0xf1",
+  "name": "?FUN_00639FD0@@YIXPAVEventClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63A120",
+  "sym": "?FUN_0063A120@@YIX_N0@Z",
+  "len": "0x84",
+  "name": "?FUN_0063A120@@YIX_N0@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63A280",
+  "sym": "?FUN_0063A280@@YIXPAVEventClass@@@Z",
+  "len": "0xd8",
+  "name": "?FUN_0063A280@@YIXPAVEventClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63A360",
+  "sym": "?FUN_0063A360@@YIXH@Z",
+  "len": "0xdd",
+  "name": "?FUN_0063A360@@YIXH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63A4B0",
+  "sym": "?FUN_0063A4B0@@YIXH@Z",
+  "len": "0xed",
+  "name": "?FUN_0063A4B0@@YIXH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63AB60",
+  "sym": "?FUN_0063AB60@@YG_NHH@Z",
+  "len": "0xfc",
+  "name": "?FUN_0063AB60@@YG_NHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63AC70",
+  "sym": "?FUN_0063AC70@PlanningNodeClass@@QAEHXZ",
+  "len": "0xb6",
+  "name": "PlanningNodeClass::FUN_0063AC70",
+  "status": "partial",
+  "pct": 88.8
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63B0A0",
+  "sym": "?FUN_0063B0A0@@YIXXZ",
+  "len": "0xb0",
+  "name": "?FUN_0063B0A0@@YIXXZ",
+  "status": "partial",
+  "pct": 81.4
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63BE10",
+  "sym": "?FUN_0063BE10@@YI_NPAVTechnoClass@@@Z",
+  "len": "0x42",
+  "name": "?FUN_0063BE10@@YI_NPAVTechnoClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63D400",
+  "sym": "?FUN_0063D400@@YIXIHUPoint2D@@@Z",
+  "len": "0x72",
+  "name": "?FUN_0063D400@@YIXIHUPoint2D@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/PlanMgr.cpp",
+  "addr": "0x63D480",
+  "sym": "?FUN_0063D480@@YIXIHUPoint2D@@@Z",
+  "len": "0x7e",
+  "name": "?FUN_0063D480@@YIXIHUPoint2D@@@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

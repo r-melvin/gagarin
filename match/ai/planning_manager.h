@@ -143,6 +143,10 @@ public:
     void FUN_00635210();
     void FUN_006352D0();
     void FUN_00635310();
+    // FUNCTION: GAMEMD 0x63C690 (decl; reloc) -- no arguments.
+    void FUN_0063C690();
+    // FUNCTION: GAMEMD 0x635350
+    void FUN_00635350(unsigned int color);
     void FUN_00635560(unsigned int color);
     // FUNCTION: GAMEMD 0x63AC70 (decl; reloc) -- ECX is the node; the body reads only the selection list.
     int FUN_0063AC70();
@@ -209,6 +213,8 @@ public:
     // Declaration: GAMEMD 0x636590 -- hidden result pointer, packed EventClass.
     EventClass FUN_00636590();
     int FUN_00636DC0();
+    // FUNCTION: GAMEMD 0x636CE0
+    void FUN_00636CE0();
     void FUN_00636E00(PlanningNodeClass* node);
     PlanningNodeClass* FUN_00636E60(int index);
     PlanningNodeClass* FUN_00636EB0();

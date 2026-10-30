@@ -53,6 +53,8 @@ struct Map_0087F7E8
     void FUN_00578E60(int a1, int a2);
     // FUNCTION: GAMEMD 0x588AC0
     void FUN_00588AC0();
+    // FUNCTION: GAMEMD 0x5BDA80 (decl; reloc)
+    void FUN_005BDA80(int a, int b);
     // FUNCTION: GAMEMD 0x5BDB90
     void FUN_005BDB90(int, int);
     // FUNCTION: GAMEMD 0x654490 (declaration)
