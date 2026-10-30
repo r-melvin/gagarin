@@ -18,6 +18,7 @@ class HouseClass;
 class TeamTypeClass;
 class TagClass;
 class ScriptClass;
+struct ScriptActionNode;
 struct TeamMember_r14;
 struct ActionArg_r14;
 
@@ -90,6 +91,12 @@ public:
 
     // GAMEMD 0x6EC3A0 -- flag every member as scan-limited.
     void ScanLimit();
+    // FUNCTION: GAMEMD 0x6EAEE0 (declaration; actual provider pending).
+    void FUN_006EAEE0(AbstractClass**, AbstractClass**);
+    // FUNCTION: GAMEMD 0x6EDB50 (declaration; thiscall, RET 8).
+    void FUN_006EDB50(ScriptActionNode*, bool);
+    // FUNCTION: GAMEMD 0x6EF610 (declaration; thiscall, RET 8).
+    void FUN_006EF610(ScriptActionNode* action, bool enabled);
 
     // FUNCTION: GAMEMD 0x6EA870 (decl; reloc) -- TeamClass::LiberateMember.
     void LiberateMember(FootClass* foot, int idx, unsigned char count);

@@ -146670,5 +146670,23 @@
   "name": "SuperWeaponTypeClass::vf_25",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ai/tu235_team_class.cpp",
+  "addr": "0x6EDB50",
+  "sym": "?FUN_006EDB50@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
+  "len": "0x11e",
+  "name": "TeamClass::FUN_006EDB50",
+  "status": "partial",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tu235_team_class.cpp",
+  "addr": "0x6EF610",
+  "sym": "?FUN_006EF610@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
+  "len": "0xC0",
+  "name": "TeamClass::FUN_006EF610",
+  "status": "partial",
+  "pct": 100.0
  }
 ]

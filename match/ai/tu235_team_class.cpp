@@ -35,6 +35,8 @@
 //   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
 
 #include <stddef.h>
+#include "../_layout/foot_class.h"
+#include "../movement/loco_interfaces.h"
 #include "../_rt/gg_static_assert.h"
 
 struct Arg1_006EDEF0;
@@ -388,6 +390,9 @@ extern Lookup_00747370 DAT_00842DD4_obj;
 #include "../_layout/object_class.h"
 
 #include "team_class_methods.h"
+#include "../_layout/anim_class.h"
+#include "../_layout/anim_type_class.h"
+#include "../_layout/script_type_class.h"
 
 #include "team_class_missing_members_methods.h"
 
@@ -439,6 +444,9 @@ double DAT_00B0E988 = DAT_007E1718 / DAT_00B0E9A0;
 #include "../_layout/house_class.h"
 #include "../_layout/tag_class.h"
 #include "../core/vector_class_operations.h"
+
+// GLOBAL: GAMEMD 0x8B4150 -- AnimTypeClass::Array.
+extern DynamicVectorClass<AnimTypeClass*> DAT_008B4150;
 
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
@@ -738,6 +746,45 @@ void Obj_006EDB20::FUN_006EDB20(Arg1_006EDB20* a1, int a2)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// Native 6EDB50 entry reads these canonical object fields and COM slot 4.
+// GLOBAL: GAMEMD 0xA8E7AC
+extern int DAT_00A8E7AC;
+// Native target 0x40DD70 (declaration; native ECX input).
+// The body is annotated in core/whatami_dispatch_methods.cpp.
+// Physical ABI proposal; the differently typed existing provider is not unified here.
+TechnoClass* FUN_0040DD70(AbstractClass* object);
+void __stdcall _com_issue_error(long);
+GG_STATIC_ASSERT(offsetof(FootClass, IsInitiated) == 0x689);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->IsInitiated) == 1);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->Locomotor) == 4);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->NextTeamMember) == 4);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->Target) == 4);
+
+// FUNCTION: GAMEMD 0x6EDB50
+void TeamClass::FUN_006EDB50(ScriptActionNode*, bool)
+{
+    this->FUN_006EAEE0(&this->Member34, &this->unknown_38);
+    this->unknown_40 = this->Member34;
+    this->FUN_006EBAD0();
+    TechnoClass* target = FUN_0040DD70(this->Member34);
+    if (target) {
+        for (FootClass* foot = this->FirstUnit; foot; foot = foot->NextTeamMember) {
+            if (foot->IsAlive && foot->Health && (DAT_00A8E7AC || !foot->InLimbo) &&
+                (foot->IsInitiated || foot->vf_11() == 2)) {
+                if (foot->Target && foot->Target != target->Target) foot->vf_242(0);
+                if (target->Target) {
+                    if (!foot->Locomotor) _com_issue_error(0x80004003);
+                    if (!static_cast<ILocomotion*>(foot->Locomotor)->IsMoving() &&
+                        foot->IsArmed() && foot->vf_97() == 5) {
+                        foot->vf_122(1, false);
+                        foot->vf_242(target->Target);
+                    }
+                }
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6EDE10
 // Calls other functions.
 void Obj_006EDE10::FUN_006EDE10(Arg1_006EDE10* a1, int a2)
@@ -888,6 +935,33 @@ void Team_006EF4D0::GetTaskForceMissingMemberTypes(TypeVector_006EF4D0* out)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6EF610
+// Uses a packed ScriptActionNode argument to build the selected animation for
+// each current team member, then marks the team update complete.
+void TeamClass::FUN_006EF610(ScriptActionNode* action, bool enabled)
+{
+    int packed = action->Argument;
+    int typeIndex = packed & 0xFFFF;
+
+    if (enabled && typeIndex >= 0 && typeIndex < DAT_008B4150.Count) {
+        FootClass* member = FirstUnit;
+        int loopCount = packed >> 16;
+        loopCount &= 0xFFFF;
+        AnimTypeClass* type = DAT_008B4150.Items[typeIndex];
+
+        while (member != 0) {
+            AnimClass* animation = new AnimClass(type, member->vf_18(), 0,
+                                                 loopCount, 0x600, 0, false);
+            if (animation != 0) {
+                animation->FUN_00424B50(member);
+            }
+            member = member->NextTeamMember;
+        }
+    }
+
+    Done = true;
+}
+
 // FUNCTION: GAMEMD 0x6F0430
 // Returns a constant. Vtable slot 12 of TeamClass (RTTI).
 int TeamClass::vf_12()
