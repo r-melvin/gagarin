@@ -82757,18 +82757,18 @@
  {
   "tu": "match/core/trivial_tu019_methods.cpp",
   "addr": "0x41C170",
-  "sym": "?FUN_0041C170@Obj_0041C170@@QBEHXZ",
+  "sym": "?vf_12@AircraftClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0041C170::FUN_0041C170",
+  "name": "AircraftClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/trivial_tu019_methods.cpp",
   "addr": "0x41C180",
-  "sym": "?FUN_0041C180@Obj_0041C180@@QBEHXZ",
+  "sym": "?vf_11@AircraftClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0041C180::FUN_0041C180",
+  "name": "AircraftClass::vf_11",
   "status": "matched",
   "pct": 100
  },

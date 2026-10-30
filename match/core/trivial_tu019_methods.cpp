@@ -5,6 +5,7 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu019_methods.h"
+#include "../_layout/aircraft_class.h"
 
 // FUNCTION: GAMEMD 0x414A10
 // Empty function that pops its stack arguments.
@@ -119,14 +120,14 @@ void Obj_0041C160::FUN_0041C160(int a1)
 
 // FUNCTION: GAMEMD 0x41C170
 // Returns a constant. Vtable slot 12 of AircraftClass (RTTI).
-int Obj_0041C170::FUN_0041C170() const
+int AircraftClass::vf_12()
 {
     return 0x6D8;
 }
 
 // FUNCTION: GAMEMD 0x41C180
 // Returns a constant. Vtable slot 11 of AircraftClass (RTTI).
-int Obj_0041C180::FUN_0041C180() const
+int AircraftClass::vf_11()
 {
     return 2;
 }
