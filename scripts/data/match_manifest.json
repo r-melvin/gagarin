@@ -147873,5 +147873,32 @@
   "name": "HouseClass::FUN_0050C210",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x58D410",
+  "sym": "?FUN_0058D410@MapRegionClass@@QAEPAV?$DynamicVectorClass@VCell@@@@XZ",
+  "len": "0x18a",
+  "name": "MapRegionClass::FUN_0058D410",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x58E9B0",
+  "sym": "?FUN_0058E9B0@MapRegionClass@@QAE_NXZ",
+  "len": "0x207",
+  "name": "MapRegionClass::FUN_0058E9B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x58F0C0",
+  "sym": "?FUN_0058F0C0@MapRegionClass@@QAEXXZ",
+  "len": "0x1ff",
+  "name": "MapRegionClass::FUN_0058F0C0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

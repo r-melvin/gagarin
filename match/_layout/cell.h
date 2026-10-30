@@ -59,6 +59,8 @@ public:
     Cell() {}
     // Word stores for the coordinate pair at 0x688573/0x688588.
     Cell(short x, short y) { X = x; Y = y; }
+    // Whole-dword copy of a cell coordinate (list append at 0x58D410).
+    Cell(const CellStruct& cell) : CellStruct(cell) {}
     // The element comparison reads both signed-short coordinates (0x42F7F0/0x42F930).
     bool operator==(const Cell& other) const { return X == other.X && Y == other.Y; }
     bool operator!=(const Cell& other) const { return !(*this == other); }

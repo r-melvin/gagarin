@@ -101,7 +101,7 @@ class MapRegionClass
 {
 public:
     Obj_MapRegionOwned* unknown_00;
-    int unknown_04;
+    DynamicVectorClass<int>* unknown_04;
     int unknown_08;
     int unknown_0C;
     int unknown_10;
@@ -140,8 +140,14 @@ public:
     void FUN_0058C4A0(CellStruct* a1);
     // FUNCTION: GAMEMD 0x58D1C0 (declaration)
     void FUN_0058D1C0(int a1, int a2);
+    // FUNCTION: GAMEMD 0x58D410
+    DynamicVectorClass<Cell>* FUN_0058D410();
     // FUNCTION: GAMEMD 0x58D5A0
     void FUN_0058D5A0(char a1);
+    // FUNCTION: GAMEMD 0x58E9B0
+    bool FUN_0058E9B0();
+    // FUNCTION: GAMEMD 0x58F0C0
+    void FUN_0058F0C0();
     // Unclaimed (below partial bar), GAMEMD 0x58EEA0
     void FUN_0058EEA0();
 };

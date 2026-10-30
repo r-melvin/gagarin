@@ -104,6 +104,9 @@
 
 #include "../core/vector_class_operations.h"
 
+// The int vector's capacity constructor is out of line at 0x477BE0 (defined in another translation unit).
+extern template class VectorClass<int>;
+
 class MapRegionClass;
 
 // VTABLE: GAMEMD 0x7ED878 -- VectorClass<MapRegionClass*>.
@@ -738,6 +741,35 @@ void FUN_0058D010(char a1)
     }
 }
 
+// FUNCTION: GAMEMD 0x58D410
+// Collect this region's border cells: every cell of the region with a neighbour inside the diamond
+// that belongs to another region is appended once to a new list.
+DynamicVectorClass<Cell>* MapRegionClass::FUN_0058D410()
+{
+    DynamicVectorClass<Cell>* list = new DynamicVectorClass<Cell>;
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct own = it->MapCoords;
+        if (Inline_CellOwner(own) == unknown_08) {
+            bool border = false;
+            for (int f = 0; f < 8; f++) {
+                CellClass* adj = it->FUN_00481810(f);
+                CellStruct n = adj->MapCoords;
+                int x = n.X;
+                int y = n.Y;
+                if (y + x > DAT_00ABED04 && x - y < DAT_00ABED04 && y - x < DAT_00ABED04 && y + x <= DAT_00ABED08) {
+                    if (Inline_CellOwner(n) != unknown_08)
+                        border = true;
+                }
+            }
+            if (border)
+                list->AddItem(it->MapCoords);
+        }
+    }
+    return list;
+}
+
 // FUNCTION: GAMEMD 0x58D5A0
 void MapRegionClass::FUN_0058D5A0(char a1)
 {
@@ -790,6 +822,35 @@ DynamicVectorClass<Cell>* MapRegionClass::FUN_0058E5D0()
     return list;
 }
 
+// FUNCTION: GAMEMD 0x58E9B0
+// Flood this region outward from its border cells: every free in-diamond neighbour that is
+// allowed (flag at +0x4B) takes this region's id and is queued in turn.
+bool MapRegionClass::FUN_0058E9B0()
+{
+    DynamicVectorClass<Cell>* border = FUN_0058D410();
+    DynamicVectorClass<Cell> queue;
+    queue.CapacityIncrement = 50000;
+    for (int i = 0; i < border->Count; i++)
+        queue.AddItem(border->Items[i]);
+    delete border;
+    while (queue.GetCount() > 0) {
+        int last = queue.GetCount() - 1;
+        Cell c = queue.Items[last];
+        queue.Delete(last);
+        for (int f = 0; f < 8; f++) {
+            CellStruct adj = Inline_005A33F0(c, DAT_0089F688[f & 7]);
+            if (Inline_005942F0(adj)) {
+                Rec_50* rec = &DAT_00ABED10[adj.Y * DAT_0089C2DC + adj.X];
+                if (rec->unknown_38 == -1 && rec->unknown_4B) {
+                    rec->unknown_38 = unknown_08;
+                    queue.AddItem(adj);
+                }
+            }
+        }
+    }
+    return true;
+}
+
 // Unclaimed (below partial bar), GAMEMD 0x58EEA0
 void MapRegionClass::FUN_0058EEA0()
 {
@@ -805,6 +866,42 @@ void MapRegionClass::FUN_0058EEA0()
             DAT_00ABED10[j].unknown_38 = unknown_08;
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x58F0C0
+// Build this region's neighbour list: every other region touched by a border cell's eight
+// neighbours is listed once, then the cell count is recomputed.
+void MapRegionClass::FUN_0058F0C0()
+{
+    unknown_04 = new DynamicVectorClass<int>;
+    bool* touched = new bool[DAT_00ABED14];
+    for (int i = 0; i < DAT_00ABED14; i++)
+        touched[i] = false;
+    DynamicVectorClass<Cell>* border = FUN_0058D410();
+    for (int j = 0; j < border->Count; j++) {
+        Cell cell = border->Items[j];
+        for (int f = 0; f < 8; f++) {
+            CellStruct adj = Inline_005A33F0(cell, DAT_0089F688[f & 7]);
+            if (Inline_005942F0(adj) && DAT_00ABED10 != 0) {
+                int owner = DAT_00ABED10[adj.Y * DAT_0089C2DC + adj.X].unknown_38;
+                if (owner >= 0)
+                    touched[owner] = true;
+            }
+        }
+    }
+    for (int k = 0; k < DAT_00ABED14; k++) {
+        if (touched[k] && k != unknown_08)
+            unknown_04->AddItem(k);
+    }
+    unknown_0C = 0;
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int m = 0; m < n; m++) {
+        Rec_50* c = &DAT_00ABED10[m];
+        if (c->unknown_38 == unknown_08 && (c->unknown_00.X || c->unknown_00.Y))
+            unknown_0C++;
+    }
+    delete border;
+    delete[] touched;
 }
 
 // FUNCTION: GAMEMD 0x5904B0
