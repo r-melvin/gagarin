@@ -80,7 +80,7 @@
 #include "techno_class_passive_acquire_methods.h"
 
 #include "techno_class_reloading_methods.h"
-#include "spawn_manager_class_count_methods.h"
+#include "../_layout/spawn_manager_class.h"
 
 #include "../core/abstract_class_untargetable_methods.h"
 #include "../network/event_class_ctors.h"

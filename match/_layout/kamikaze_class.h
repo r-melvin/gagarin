@@ -39,6 +39,10 @@ public:
     // FUNCTION: GAMEMD 0x54E690 (out-of-line copy; the global's exit stub inlines it)
     ~Kamikaze();
 
+    // FUNCTION: GAMEMD 0x54E3B0 (decl; reloc)
+    void Add(AircraftClass* unit, AbstractClass* target);
+    // FUNCTION: GAMEMD 0x54E590 (decl; reloc)
+    void Remove(AircraftClass* unit);
     // FUNCTION: GAMEMD 0x54E4D0
     void Update();
     // FUNCTION: GAMEMD 0x54E6F0

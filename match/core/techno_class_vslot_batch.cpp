@@ -214,8 +214,8 @@ void TechnoClass::vf_232()
     vf_160(3);
     if (!(IsFootObject(this) && ((FootClass*)this)->IsAttackedByLocomotor)) {
         if (SpawnManager) {
-            ((SpawnManagerClass*)SpawnManager)->FUN_006B7100();
-            ((SpawnManagerClass*)SpawnManager)->FUN_006B7BB0();
+            ((SpawnManagerClass*)SpawnManager)->KillNodes();
+            ((SpawnManagerClass*)SpawnManager)->ResetTarget();
         }
         vf_55(true);
     }

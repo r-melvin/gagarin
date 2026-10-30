@@ -2371,67 +2371,67 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/spawn_manager_class_count_methods.cpp",
+  "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7D80",
   "sym": "?CountLaunchingSpawns@SpawnManagerClass@@QBEHXZ",
   "len": "0x55",
   "name": "CountLaunchingSpawns",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/spawn_manager_class_kill_nodes_methods.cpp",
+  "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7100",
-  "sym": "?KillNodes@SpawnManager_006B7100@@QAEXXZ",
+  "sym": "?KillNodes@SpawnManagerClass@@QAEXXZ",
   "len": "0x126",
   "name": "SpawnManagerClass::KillNodes",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/spawn_manager_class_methods.cpp",
+  "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7B90",
   "sym": "?SetTarget@SpawnManagerClass@@QAEXPAVAbstractClass@@@Z",
   "len": "0x11",
   "name": "SetTarget",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/spawn_manager_class_methods.cpp",
+  "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7D30",
   "sym": "?CountAliveSpawns@SpawnManagerClass@@QBEHXZ",
-  "len": "0x1E",
+  "len": "0x1e",
   "name": "CountAliveSpawns",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/spawn_manager_class_methods.cpp",
+  "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7D50",
   "sym": "?CountDockedSpawns@SpawnManagerClass@@QBEHXZ",
   "len": "0x24",
   "name": "CountDockedSpawns",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7BB0",
-  "sym": "?ResetTarget@SpawnManager_006B7BB0@@QAEXXZ",
+  "sym": "?ResetTarget@SpawnManagerClass@@QAEXXZ",
   "len": "0x85",
   "name": "SpawnManagerClass::ResetTarget",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7C60",
-  "sym": "?UnlinkPointer@SpawnManager_006B7BB0@@QAEXPAVAbstractClass@@@Z",
+  "sym": "?UnlinkPointer@SpawnManagerClass@@QAEXPAVAbstractClass@@@Z",
   "len": "0xce",
   "name": "SpawnManagerClass::UnlinkPointer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/super_class_charge_methods.cpp",
@@ -5056,13 +5056,13 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/spawn_manager_r19_5.cpp",
+  "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B8140",
   "sym": "??_GSpawnManagerClass@@UAEPAXI@Z",
   "len": "0x1e",
   "name": "SpawnManagerClass scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/super_class_r19_5.cpp",
@@ -86537,29 +86537,29 @@
  {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B7C40",
-  "sym": "?FUN_006B7C40@Obj_006B7C40@@QAEEXZ",
+  "sym": "?FUN_006B7C40@SpawnManagerClass@@QAEEXZ",
   "len": "0x17",
-  "name": "Obj_006B7C40::FUN_006B7C40",
+  "name": "SpawnManagerClass::FUN_006B7C40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B8120",
-  "sym": "?FUN_006B8120@Obj_006B8120@@QBEHXZ",
+  "sym": "?vf_12@SpawnManagerClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_006B8120::FUN_006B8120",
+  "name": "SpawnManagerClass::vf_12",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B8130",
-  "sym": "?FUN_006B8130@Obj_006B8130@@QBEHXZ",
+  "sym": "?vf_11@SpawnManagerClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_006B8130::FUN_006B8130",
+  "name": "SpawnManagerClass::vf_11",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu219_methods.cpp",
@@ -143507,13 +143507,13 @@
   "pct": 84.6
  },
  {
-  "tu": "match/combat/spawn_manager_r19_5.cpp",
+  "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B6FA0",
   "sym": "??0SpawnManagerClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x66",
   "name": "SpawnManagerClass::SpawnManagerClass(NoInit)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/super_weapon_type_r19_5.cpp",

@@ -4,9 +4,8 @@
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x6b6a00-0x6b88ef,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
-//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
-//   them with the canonical class re-mangles their symbols, so that is left to
-//   a separate rename-only change.
+//   The SpawnManagerClass methods of this range (0x6b6fa0-0x6b8140) live here on the
+//   canonical class (match/_layout/spawn_manager_class.h).
 //
 // Retail RTTI type descriptors name VectorClass<SpawnManagerClass*> and
 // DynamicVectorClass<SpawnManagerClass*>; each address below is the vtable slot body
@@ -74,37 +73,6 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SpawnManagerClass::SpawnControl* >) =
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_006B7C40;
-struct Obj_006B8120;
-struct Obj_006B8130;
-
-struct Obj_006B7C40
-{
-    char unknown_00[0x68];
-    int unknown_68;   // +0x0068
-    int unknown_6C;   // +0x006C
-    // FUNCTION: GAMEMD 0x6B7C40
-    unsigned char FUN_006B7C40();
-};
-GG_STATIC_ASSERT(offsetof(Obj_006B7C40, unknown_68) == 0x68);
-GG_STATIC_ASSERT(offsetof(Obj_006B7C40, unknown_6C) == 0x6C);
-
-struct Obj_006B8120
-{
-    // FUNCTION: GAMEMD 0x6B8120
-    int FUN_006B8120() const;
-};
-
-struct Obj_006B8130
-{
-    // FUNCTION: GAMEMD 0x6B8130
-    int FUN_006B8130() const;
-};
-
-
-
-
-#include "spawn_manager_class_reset_methods.h"
 
 #include "../core/deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"
@@ -213,6 +181,76 @@ double DAT_00B0B878 = DAT_00B0B828 / DAT_007F35D0;
 // GLOBAL: GAMEMD 0xB0B860
 double DAT_00B0B860 = DAT_007E1718 / DAT_00B0B878;
 
+// The canonical class headers follow the static initialisers: VC6 numbers the _$E/_$S
+// stubs in parse order and the type-list headers consume a number when seen earlier.
+#include "../_layout/techno_class.h"
+#include "../_layout/aircraft_class.h"
+#include "../_layout/aircraft_type_class.h"
+#include "../_layout/kamikaze_class.h"
+
+// FUNCTION: GAMEMD 0x6B6FA0
+// NoInit constructor (save-game load path): base NoInit constructor, an empty
+// growable node vector (step 10), both timers started at the current frame
+// with no time left, and the four COM vtable pointers.
+SpawnManagerClass::SpawnManagerClass(const AbstractNoInit& noInit)
+    : AbstractClass(noInit), SpawnedNodes(0, 0), SpawnTimer(0), UpdateTimer(0)
+{
+}
+
+
+// FUNCTION: GAMEMD 0x6B7100
+//
+// Kill every spawned unit and put its node into the dead state with a fresh
+// respawn countdown — immediate when the owner is still alive and flagged,
+// otherwise the regen rate. Walking the nodes from the top: a node already
+// dead is left alone; an idle or returning unit (0, 6) is simply taken off
+// the map; a unit on a kamikaze run (1) is first withdrawn from the
+// kamikaze manager; anything else is handed to the kamikaze manager against
+// the current target instead of being removed.
+void SpawnManagerClass::KillNodes()
+{
+    int duration;
+    if (Owner->Health > 0 && Owner->IsAlive != 0) {
+        duration = 0;
+    } else {
+        duration = unknown_30;
+    }
+
+    for (int i = SpawnedNodes.Count - 1; i >= 0; --i) {
+        SpawnControl* node = SpawnedNodes.Items[i];
+        int status = node->Status;
+        if (status != 7) {
+            if (status == 0 || status == 6) {
+                node->Status = 7;
+                SpawnedNodes.Items[i]->Unit->vf_62();
+                SpawnedNodes.Items[i]->Unit = 0;
+                SpawnedNodes.Items[i]->Timer = CDTimerClass(duration);
+            } else if (status == 1) {
+                DAT_00ABC5F8.Remove(node->Unit);
+                SpawnedNodes.Items[i]->Status = 7;
+                SpawnedNodes.Items[i]->Unit->vf_62();
+                SpawnedNodes.Items[i]->Unit = 0;
+                SpawnedNodes.Items[i]->Timer = CDTimerClass(duration);
+            } else {
+                node->Status = 7;
+                DAT_00ABC5F8.Add(SpawnedNodes.Items[i]->Unit, Target);
+                SpawnedNodes.Items[i]->Unit = 0;
+                SpawnedNodes.Items[i]->Timer = CDTimerClass(duration);
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6B7B90  (__thiscall)
+// Record a pending target. If it already equals the live Target, do nothing;
+// otherwise stash it in NewTarget for the next UpdateTarget pass.
+void SpawnManagerClass::SetTarget(AbstractClass* pTarget)
+{
+    if (pTarget != Target)
+        NewTarget = pTarget;
+}
+
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B7BB0
 //
@@ -223,18 +261,18 @@ double DAT_00B0B860 = DAT_007E1718 / DAT_00B0B878;
 // all cleared.
 // Under /Ob2 cl would fold this body into its callers; retail keeps the call.
 #pragma auto_inline(off)
-void SpawnManager_006B7BB0::ResetTarget()
+void SpawnManagerClass::ResetTarget()
 {
-    for (int i = 0; i < Count; ++i) {
-        SpawnControl_006B7BB0* node = Items[i];
-        if (node->Status == 2 && node->Unit->Type->At_D68 != 0) {
+    for (int i = 0; i < SpawnedNodes.Count; ++i) {
+        SpawnControl* node = SpawnedNodes.Items[i];
+        if (node->Status == 2 && node->Unit->Type->MissileSpawn != 0) {
             DAT_00ABC5F8.Add(node->Unit, Target);
-            DAT_00ABC5F8.UpdateTimer = CDTimer_006B7BB0(2);
-            UnlinkPointer((AbstractClass*)Items[i]->Unit);
+            DAT_00ABC5F8.UpdateTimer = CDTimerClass(2);
+            UnlinkPointer(SpawnedNodes.Items[i]->Unit);
         }
     }
 
-    Status = 0;
+    unknown_70 = 0;
     NewTarget = 0;
     Target = 0;
 }
@@ -243,12 +281,12 @@ void SpawnManager_006B7BB0::ResetTarget()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B7C40
 // Branching.
-unsigned char Obj_006B7C40::FUN_006B7C40()
+unsigned char SpawnManagerClass::FUN_006B7C40()
 {
-    if (unknown_6C != 0)
+    if (NewTarget != 0)
     {
-        unknown_68 = unknown_6C;
-        unknown_6C = 0;
+        Target = NewTarget;
+        NewTarget = 0;
         return 1;
     }
     return 0;
@@ -264,7 +302,7 @@ unsigned char Obj_006B7C40::FUN_006B7C40()
 // and whose node is not in the 1 state is left alone, any other is detached,
 // marked dead and given a fresh respawn countdown. Finally, if it was the
 // owner itself, every node is released and the target reset.
-void SpawnManager_006B7BB0::UnlinkPointer(AbstractClass* remove)
+void SpawnManagerClass::UnlinkPointer(AbstractClass* remove)
 {
     if (remove == Target) {
         Target = 0;
@@ -278,29 +316,98 @@ void SpawnManager_006B7BB0::UnlinkPointer(AbstractClass* remove)
         return;
     }
 
-    for (int i = Count - 1; i >= 0; --i) {
-        if (remove == (AbstractClass*)Items[i]->Unit) {
-            SpawnControl_006B7BB0* node = Items[i];
-            SpawnUnit_006B7BB0* unit = node->Unit;
-            if (unit->Health > 0 && unit->At_6CA == 0 && node->At_14 != 1)
+    for (int i = SpawnedNodes.Count - 1; i >= 0; --i) {
+        if (remove == SpawnedNodes.Items[i]->Unit) {
+            SpawnControl* node = SpawnedNodes.Items[i];
+            AircraftClass* unit = node->Unit;
+            if (unit->Health > 0 && unit->IsKamikaze == 0 && node->unknown_14 != 1)
                 return;
             node->Unit = 0;
-            Items[i]->Status = 7;
-            Items[i]->Timer = CDTimer_006B7BB0(RegenRate);
+            SpawnedNodes.Items[i]->Status = 7;
+            SpawnedNodes.Items[i]->Timer = CDTimerClass(unknown_30);
             return;
         }
     }
 
     if (remove == Owner) {
-        FUN_006B7100();
+        KillNodes();
         ResetTarget();
     }
+}
+
+// FUNCTION: GAMEMD 0x6B7D30  (__thiscall)
+// Count spawn nodes that are not Dead (Status != 7).
+int SpawnManagerClass::CountAliveSpawns() const
+{
+    int count = 0;
+    int n = SpawnedNodes.Count;
+    if (n > 0) {
+        SpawnManagerClass::SpawnControl** node = SpawnedNodes.Items;
+        do {
+            if ((*node)->Status != 7)
+                ++count;
+            ++node;
+            --n;
+        } while (n != 0);
+    }
+    return count;
+}
+
+// FUNCTION: GAMEMD 0x6B7D50  (__thiscall)
+// Count docked spawn nodes: Reloading (Status == 6) or Idle (Status == 0).
+int SpawnManagerClass::CountDockedSpawns() const
+{
+    int count = 0;
+    int n = SpawnedNodes.Count;
+    if (n > 0) {
+        SpawnManagerClass::SpawnControl** node = SpawnedNodes.Items;
+        do {
+            int status = (*node)->Status;
+            if (status == 6 || status == 0)
+                ++count;
+            ++node;
+            --n;
+        } while (n != 0);
+    }
+    return count;
+}
+
+// FUNCTION: GAMEMD 0x6B7D80  (__thiscall)
+// Count spawn nodes that are mid-launch. A node counts when Status == 1
+// (TakeOff); it also counts when Status == 2 (CoolDown) and its live Unit is
+// not flagged at +0x81 and the unit's type (GetType, vtable +0x84) carries the
+// launch flag at type +0xD68. Items / Count are re-read each pass (the virtual
+// call may mutate the vector).
+//
+// MATCH: 38/38 exact (100.0%). Phrasing note: the two Status comparisons must
+// read node->Status as independent memory expressions (NOT a single cached
+// `int status` local). cl CSEs them back to one load (matching retail's single
+// MOV ECX,[EAX+0x4]), but a cached local lets cl prove Status==1 and Status==2
+// mutually exclusive and tail-merge both `++count` sites into one shared INC,
+// which retail (build 8447) does not do. The two-read form keeps retail's
+// fall-through structure (Status==1 INC falls into the CMP ECX,2 re-test).
+int SpawnManagerClass::CountLaunchingSpawns() const
+{
+    int count = 0;
+    for (int i = 0; i < SpawnedNodes.Count; ++i) {
+        SpawnManagerClass::SpawnControl* node = SpawnedNodes.Items[i];
+        if (node->Status == 1)
+            ++count;
+        if (node->Status == 2) {
+            AircraftClass* unit = node->Unit;
+            if (unit != 0 && unit->InLimbo == 0) {
+                if (unit->vf_33()->MissileSpawn != 0)
+                    ++count;
+            }
+        }
+    }
+    return count;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B8120
 // Returns a constant. Vtable slot 12 of SpawnManagerClass (RTTI).
-int Obj_006B8120::FUN_006B8120() const
+int SpawnManagerClass::vf_12()
 {
     return 0x74;
 }
@@ -308,10 +415,13 @@ int Obj_006B8120::FUN_006B8120() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B8130
 // Returns a constant. Vtable slot 11 of SpawnManagerClass (RTTI).
-int Obj_006B8130::FUN_006B8130() const
+int SpawnManagerClass::vf_11()
 {
     return 0x41;
 }
+
+// SYNTHETIC: GAMEMD 0x6B8140 -- SpawnManagerClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TEMPLATE: GAMEMD 0x6B8190

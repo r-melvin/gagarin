@@ -35,6 +35,8 @@ public:
     {
         AircraftClass* Unit;     // +0x00
         int            Status;   // +0x04 SpawnNodeStatus (Idle=0, Launching=1, 2, Reloading=6, Dead=7)
+        CDTimerClass   Timer;    // +0x08 respawn countdown (UnlinkPointer 0x6B7C60, KillNodes 0x6B7100)
+        int            unknown_14; // +0x14 UnlinkPointer tests it against 1
     };
 
     // FUNCTION: GAMEMD 0x6B6FA0 -- NoInit constructor (load path).
@@ -48,12 +50,16 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x6B7DE0
     virtual void vf_23();                                                 // 23  0x6B7230
 
-    // FUNCTION: GAMEMD 0x6B7100 (decl; reloc) -- __thiscall.
-    void FUN_006B7100();
+    // FUNCTION: GAMEMD 0x6B7100 -- release every spawned node.
+    void KillNodes();
     // FUNCTION: GAMEMD 0x6B7B90
     void SetTarget(AbstractClass* pTarget);
-    // FUNCTION: GAMEMD 0x6B7BB0 (decl; reloc) -- __thiscall.
-    void FUN_006B7BB0();
+    // FUNCTION: GAMEMD 0x6B7BB0
+    void ResetTarget();
+    // FUNCTION: GAMEMD 0x6B7C40 -- promote NewTarget to Target; returns whether it did.
+    unsigned char FUN_006B7C40();
+    // FUNCTION: GAMEMD 0x6B7C60
+    void UnlinkPointer(AbstractClass* remove);
     // FUNCTION: GAMEMD 0x6B7D30
     int  CountAliveSpawns() const;
     // FUNCTION: GAMEMD 0x6B7D50
@@ -75,6 +81,8 @@ public:
 };
 GG_STATIC_ASSERT(offsetof(SpawnManagerClass::SpawnControl, Unit)   == 0x00);
 GG_STATIC_ASSERT(offsetof(SpawnManagerClass::SpawnControl, Status) == 0x04);
+GG_STATIC_ASSERT(offsetof(SpawnManagerClass::SpawnControl, Timer)  == 0x08);
+GG_STATIC_ASSERT(offsetof(SpawnManagerClass::SpawnControl, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(SpawnManagerClass, Owner)        == 0x24);
 GG_STATIC_ASSERT(offsetof(SpawnManagerClass, SpawnType)    == 0x28);
 GG_STATIC_ASSERT(offsetof(SpawnManagerClass, SpawnCount)   == 0x2C);
