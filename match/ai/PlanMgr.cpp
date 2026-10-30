@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
-// Placement lead: this file regresses under the project /Ob2 default, so a
-// definition it can see probably lived in another original file.
+// Pinned: this file regresses under the project /Ob2 default, but the address
+// windows place the callees in this original file, so it is not a placement
+// issue (likely inline budget or order).
 //   Original translation unit PlanMgr.cpp. The name is the source-file string at 0x836bd4
 //   in retail gamemd.exe v1.001, passed by the assert at 0x63747e inside this object's
 //   code range (0x6333d0-0x63f4bf). Functions are in ascending retail address order.

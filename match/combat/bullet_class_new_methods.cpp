@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | RTTI-confirmed-inheritance
-// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
-// Placement lead: this file regresses under the project /Ob2 default, so a
-// definition it can see probably lived in another original file.
+// Accepted /Ob2 partial drop: 0x46A310 2.4% -> 2.2%, 0x4690B0 3.8% -> 3.6%.
 // Retail method contracts, member accesses, and callees were read from the
 // pinned v1.001 image; native call contracts are noted at the relevant sites.
 #include "../_layout/bullet_class.h"
@@ -277,20 +275,6 @@ void BulletClass::FUN_004664C0(BulletTypeClass* type, AbstractClass* target,
     DamageMultiplier = 0x100;
     NextAnim = 0;
     SpawnNextAnim = 0;
-}
-
-// FUNCTION: GAMEMD 0x466560
-BulletClass::~BulletClass()
-{
-    AnnounceExpiredPointer(1);
-    if (SpawnNextAnim)
-        DAT_00B0F5B8.RemoveItem(this);
-    if (DAT_00A8E9A0)
-        ObjectClass::vf_53();
-    Type = 0;
-    Owner = 0;
-    NextAnim = 0;
-    DAT_00A8ED40.RemoveItem(this);
 }
 
 // FUNCTION: GAMEMD 0x4666C0

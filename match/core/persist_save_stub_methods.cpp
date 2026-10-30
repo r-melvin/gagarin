@@ -1,8 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
-// Placement lead: this file regresses under the project /Ob2 default, so a
-// definition it can see probably lived in another original file.
 //
 // IPersistStream::Save overrides that only chain to a base class. Each body
 // pushes its three stack arguments again and calls the base Save; the
@@ -20,6 +17,11 @@
 
 #include <objidl.h>
 #include "../_layout/anim_type_class.h"
+#include "../_layout/airstrike_class.h"
+#include "../_layout/neuron_class.h"
+#include "../_layout/disk_laser_class.h"
+#include "../_layout/super_class.h"
+#include "../_layout/super_weapon_type_class.h"
 #include "../_layout/light_source_class.h"
 #include "../_layout/rad_site_class.h"
 #include "../_layout/tag_class.h"
@@ -56,27 +58,6 @@
 
 
 
-class AirstrikeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-
-class NeuronClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-
-
-class DiskLaserClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
 class IsometricTileTypeView_00549D70 : public ObjectTypeClass
 {
 public:
@@ -88,26 +69,6 @@ class ParasiteClass : public AbstractClass
 public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
-
-
-
-class SuperClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class SuperWeaponTypeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-
-
-
-
-
 
 
 
@@ -197,15 +158,6 @@ HRESULT __stdcall IsometricTileTypeView_00549D70::Save(IStream* pStm, BOOL fClea
 
 // FUNCTION: GAMEMD 0x555110
 HRESULT __stdcall LightSourceClass::Save(IStream* pStm, BOOL fClearDirty)
-{
-    HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
-    if (hr >= 0)
-        hr = 0;
-    return hr;
-}
-
-// FUNCTION: GAMEMD 0x5F9950
-HRESULT __stdcall ObjectTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
     if (hr >= 0)

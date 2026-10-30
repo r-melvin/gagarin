@@ -26619,7 +26619,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x431E80",
   "sym": "?SetFileName@BufferIOFileClass@@UAEPBDPBD@Z",
   "len": "0x83",
@@ -26628,7 +26628,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x4324B0",
   "sym": "?Seek@BufferIOFileClass@@UAEHHH@Z",
   "len": "0xea",
@@ -26664,7 +26664,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F10",
   "sym": "?Exists@BufferIOFileClass@@UAE_NH@Z",
   "len": "0x16",
@@ -26673,7 +26673,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F50",
   "sym": "?OpenEx@BufferIOFileClass@@UAEHPBDI@Z",
   "len": "0x1F",
@@ -26682,7 +26682,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x4325A0",
   "sym": "?GetFileSize@BufferIOFileClass@@UAEHXZ",
   "len": "0x17",
@@ -26718,7 +26718,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_raw_methods.cpp",
   "addr": "0x65D1F0",
   "sym": "?GetFileTime@RawFileClass@@UAEKXZ",
   "len": "0x4D",
@@ -26790,7 +26790,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_raw_methods.cpp",
   "addr": "0x65CAC0",
   "sym": "?SetFileName@RawFileClass@@UAEPBDPBD@Z",
   "len": "0x6f",
@@ -26799,7 +26799,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_raw_methods.cpp",
   "addr": "0x65D2B0",
   "sym": "?Bias@RawFileClass@@QAEXHH@Z",
   "len": "0x6a",
@@ -26880,7 +26880,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_raw_methods.cpp",
   "addr": "0x65D190",
   "sym": "?DeleteFile@RawFileClass@@UAEHXZ",
   "len": "0x5F",
@@ -27933,7 +27933,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_raw_methods.cpp",
   "addr": "0x65CCE0",
   "sym": "?ReadBytes@RawFileClass@@UAEHPAXH@Z",
   "len": "0xEE",
@@ -27942,7 +27942,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_raw_methods.cpp",
   "addr": "0x65D0D0",
   "sym": "?GetFileSize@RawFileClass@@UAEHXZ",
   "len": "0x76",
@@ -27951,7 +27951,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_raw_methods.cpp",
   "addr": "0x65D240",
   "sym": "?SetFileTime@RawFileClass@@UAE_NK@Z",
   "len": "0x65",
@@ -45405,7 +45405,7 @@
   "len": "0x17B0",
   "name": "DSurface::unknown_3C",
   "status": "partial",
-  "pct": 0.7,
+  "pct": 0.6,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
  },
@@ -53094,7 +53094,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/persist_save_stub_methods.cpp",
+  "tu": "match/core/object_type_class_load.cpp",
   "addr": "0x5F9950",
   "sym": "?Save@ObjectTypeClass@@UAGJPAUIStream@@H@Z",
   "len": "0x1D",
@@ -73972,7 +73972,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/color_scheme_iterator_methods.cpp",
+  "tu": "match/renderer/color_scheme_entry_methods.cpp",
   "addr": "0x4F4CE0",
   "sym": "?Equals@Entry_00626690@@QAE_NPAU1@@Z",
   "len": "0x4f",
@@ -73981,7 +73981,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/color_scheme_iterator_methods.cpp",
+  "tu": "match/renderer/color_scheme_entry_methods.cpp",
   "addr": "0x4F4D30",
   "sym": "?FUN_004F4D30@Entry_00626690@@QAE_NPAU1@@Z",
   "len": "0x4f",
@@ -82980,7 +82980,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F30",
   "sym": "?HasHandle@BufferIOFileClass@@UAE_NXZ",
   "len": "0x1d",
@@ -91142,7 +91142,7 @@
   "len": "0xa5b",
   "name": "BuildingClass::vf_23",
   "status": "partial",
-  "pct": 5.6,
+  "pct": 4.9,
   "note": "Aligned diff_retail pct; multiset 749 vs 699 instructions. First 36 instructions exact, then the Location copy and branch layout shift."
  },
  {
@@ -96251,7 +96251,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/crc_pad_methods.cpp",
+  "tu": "match/core/crc_pad_record_methods.cpp",
   "addr": "0x4A2060",
   "sym": "?FUN_004A2060@Obj_004A2060@@QAEIXZ",
   "len": "0x44",
@@ -96260,7 +96260,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/crc_pad_methods.cpp",
+  "tu": "match/core/crc_pad_record_methods.cpp",
   "addr": "0x4A20F0",
   "sym": "?FUN_004A20F0@Obj_004A2060@@QAEIXZ",
   "len": "0x44",
@@ -104322,7 +104322,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "tu": "match/combat/bullet_class_dtor.cpp",
   "addr": "0x466560",
   "sym": "??1BulletClass@@UAE@XZ",
   "len": "0xfa",
@@ -104986,7 +104986,7 @@
   "len": "0xAC5",
   "name": "BulletClass::FUN_0046A310",
   "status": "partial",
-  "pct": 2.4
+  "pct": 2.2
  },
  {
   "tu": "match/movement/foot_class_methods.cpp",
@@ -105013,7 +105013,7 @@
   "len": "0x1254",
   "name": "BulletClass::FUN_004690B0",
   "status": "partial",
-  "pct": 3.8
+  "pct": 3.6
  },
  {
   "tu": "match/combat/bullet_class_new_methods.cpp",
@@ -105322,7 +105322,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/object_type_class_load.cpp",
+  "tu": "match/core/index_class_reset_005f9b60.cpp",
   "addr": "0x5F9B60",
   "sym": "?FUN_005F9B60@IndexClass@@QAEXXZ",
   "len": "0x20",
@@ -135859,7 +135859,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_team_methods.cpp",
+  "tu": "match/network/multiplayer_team_assign_methods.cpp",
   "addr": "0x5D8CB0",
   "sym": "?vf_2@MultiplayerTeam@@UAE_NH@Z",
   "len": "0x2d",

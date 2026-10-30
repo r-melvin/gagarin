@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
-// Placement lead: this file regresses under the project /Ob2 default, so a
-// definition it can see probably lived in another original file.
+// Placement lead: matched rows hold under the project /Ob2 default, but partial rows: 0x532150 (61.2% -> 2.5%: IndexClassC and the command constructors are expanded)
+// regress under it, so a definition they can see probably lived in another original file.
 //   Original translation unit Init.CPP. The name is the source-file string at 0x825fb8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x52c52d inside this object's
 //   code range (0x52b7c0-0x53910f). Functions are in ascending retail address order.

@@ -23,6 +23,8 @@ public:
     // FUNCTION: GAMEMD 0x43A440 (declaration; destructor; slot 8 = 0x43A9C0)
     virtual ~NeuronClass();
 
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x43A5B0
+
     int unknown_24;   // +0x24 ctor 0 (swizzled by Load 0x43A540)
     int unknown_28;   // +0x28 ctor 0 (swizzled by Load)
     int unknown_2C;   // +0x2C ctor 0 (swizzled by Load)

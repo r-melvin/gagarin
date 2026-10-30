@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 // VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
-// Placement lead: this file regresses under the project /Ob2 default, so a
-// definition it can see probably lived in another original file.
+// Pinned: this file regresses under the project /Ob2 default, but the address
+// windows place the callees in this original file, so it is not a placement
+// issue (likely inline budget or order).
 //   Original translation unit netshare.cpp. The name is the source-file string at 0x8317d8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5e3a50 inside this object's
 //   code range (0x5e2430-0x5ef18f). Functions are in ascending retail address order.
