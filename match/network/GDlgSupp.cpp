@@ -26,7 +26,9 @@
 // Small leaves (64 bytes or less) between 0x470000 and 0x500000 that other
 // translation units already declared as callees but nothing defined.
 
-#include <windows.h>
+#include "../economy/netshare_win.h"
+#include "../_layout/session_class.h"
+#include "../economy/netshare_slot_nodes.h"
 #include "../core/mathtbl_init_shapes.h"
 
 extern int DAT_00816108;
@@ -164,10 +166,153 @@ GG_STATIC_ASSERT(sizeof(DAT_008B40A0) == 8);
 // GLOBAL: GAMEMD 0x008B40A8
 MathTblCoord DAT_008B40A8;
 
+// STRING: GAMEMD 0x8229A8..0x8228AC -- the twelve side captions, "STT:PlayerSide...".
+extern char DAT_008229A8[];
+extern char DAT_00822990[];
+extern char DAT_00822978[];
+extern char DAT_00822964[];
+extern char DAT_0082294C[];
+extern char DAT_00822934[];
+extern char DAT_0082291C[];
+extern char DAT_00822908[];
+extern char DAT_008228F4[];
+extern char DAT_008228E0[];
+extern char DAT_008228C8[];
+extern char DAT_008228AC[];
+
+// FUNCTION: GAMEMD 0x4E38A0
+// Localised caption of a side index: -2 random, -3 observer, 0..9 the countries.
+const wchar_t* __fastcall FUN_004E38A0(int index)
+{
+    if (index == -2)
+        return FUN_00734E60(DAT_008229A8, 0, DAT_008229C0, 0xED);
+    if (index == -3)
+        return FUN_00734E60(DAT_00822990, 0, DAT_008229C0, 0xEF);
+    if (index == 0)
+        return FUN_00734E60(DAT_00822978, 0, DAT_008229C0, 0xF1);
+    if (index == 1)
+        return FUN_00734E60(DAT_00822964, 0, DAT_008229C0, 0xF3);
+    if (index == 2)
+        return FUN_00734E60(DAT_0082294C, 0, DAT_008229C0, 0xF5);
+    if (index == 3)
+        return FUN_00734E60(DAT_00822934, 0, DAT_008229C0, 0xF7);
+    if (index == 4)
+        return FUN_00734E60(DAT_0082291C, 0, DAT_008229C0, 0xF9);
+    if (index == 5)
+        return FUN_00734E60(DAT_00822908, 0, DAT_008229C0, 0xFB);
+    if (index == 6)
+        return FUN_00734E60(DAT_008228F4, 0, DAT_008229C0, 0xFD);
+    if (index == 7)
+        return FUN_00734E60(DAT_008228E0, 0, DAT_008229C0, 0xFF);
+    if (index == 8)
+        return FUN_00734E60(DAT_008228C8, 0, DAT_008229C0, 0x101);
+    if (index == 9)
+        return FUN_00734E60(DAT_008228AC, 0, DAT_008229C0, 0x103);
+    return 0;
+}
+
+// STRING: GAMEMD 0x822AC4..0x8229FC -- the ten colour captions, "STT:PlayerColor...".
+extern char DAT_00822AC4[];
+extern char DAT_00822AB0[];
+extern char DAT_00822A9C[];
+extern char DAT_00822A88[];
+extern char DAT_00822A70[];
+extern char DAT_00822A58[];
+extern char DAT_00822A40[];
+extern char DAT_00822A28[];
+extern char DAT_00822A14[];
+extern char DAT_008229FC[];
+
+// FUNCTION: GAMEMD 0x4E42A0
+// Localised caption of a colour index: -2 random, 0..7 the colours, 8 observer.
+const wchar_t* __fastcall FUN_004E42A0(int index)
+{
+    if (index == -2)
+        return FUN_00734E60(DAT_00822AC4, 0, DAT_008229C0, 0x1C1);
+    if (index == 0)
+        return FUN_00734E60(DAT_00822AB0, 0, DAT_008229C0, 0x1C3);
+    if (index == 1)
+        return FUN_00734E60(DAT_00822A9C, 0, DAT_008229C0, 0x1C5);
+    if (index == 2)
+        return FUN_00734E60(DAT_00822A88, 0, DAT_008229C0, 0x1C7);
+    if (index == 3)
+        return FUN_00734E60(DAT_00822A70, 0, DAT_008229C0, 0x1C9);
+    if (index == 4)
+        return FUN_00734E60(DAT_00822A58, 0, DAT_008229C0, 0x1CB);
+    if (index == 5)
+        return FUN_00734E60(DAT_00822A40, 0, DAT_008229C0, 0x1CD);
+    if (index == 6)
+        return FUN_00734E60(DAT_00822A28, 0, DAT_008229C0, 0x1CF);
+    if (index == 7)
+        return FUN_00734E60(DAT_00822A14, 0, DAT_008229C0, 0x1D1);
+    if (index == 8)
+        return FUN_00734E60(DAT_008229FC, 0, DAT_008229C0, 0x1D3);
+    return 0;
+}
+
+#include "../_layout/rec12_008b4038.h"
+extern Rec12_008B4038 DAT_008B4038[];
+// STRING: GAMEMD 0x822B68..0x822ADC -- the nine colour abbreviations, "GUI:...Abbrev".
+extern char DAT_00822B68[];
+extern char DAT_00822B58[];
+extern char DAT_00822B48[];
+extern char DAT_00822B38[];
+extern char DAT_00822B24[];
+extern char DAT_00822B10[];
+extern char DAT_00822AFC[];
+extern char DAT_00822AEC[];
+extern char DAT_00822ADC[];
+// GLOBAL: GAMEMD 0x8316A8 -- the nine colour values.
+extern int DAT_008316A8[9];
+
+// FUNCTION: GAMEMD 0x4E43C0
+// Fetch the nine colour abbreviations, then give each record its colour value and mark it used (-1).
+void __fastcall FUN_004E43C0()
+{
+    DAT_008B4038[0].name = FUN_00734E60(DAT_00822B68, 0, DAT_008229C0, 0x1DB);
+    DAT_008B4038[1].name = FUN_00734E60(DAT_00822B58, 0, DAT_008229C0, 0x1DC);
+    DAT_008B4038[2].name = FUN_00734E60(DAT_00822B48, 0, DAT_008229C0, 0x1DD);
+    DAT_008B4038[3].name = FUN_00734E60(DAT_00822B38, 0, DAT_008229C0, 0x1DE);
+    DAT_008B4038[4].name = FUN_00734E60(DAT_00822B24, 0, DAT_008229C0, 0x1DF);
+    DAT_008B4038[5].name = FUN_00734E60(DAT_00822B10, 0, DAT_008229C0, 0x1E0);
+    DAT_008B4038[6].name = FUN_00734E60(DAT_00822AFC, 0, DAT_008229C0, 0x1E1);
+    DAT_008B4038[7].name = FUN_00734E60(DAT_00822AEC, 0, DAT_008229C0, 0x1E2);
+    DAT_008B4038[8].name = FUN_00734E60(DAT_00822ADC, 0, DAT_008229C0, 0x1E3);
+    for (int i = 0; i < 9; i++) {
+        DAT_008B4038[i].colour = DAT_008316A8[i];
+        DAT_008B4038[i].key = -1;
+    }
+}
+
 // FUNCTION: GAMEMD 0x004E4580
 bool FUN_004E4580(int index)
 {
     return DAT_008B4040[index].key != -1;
+}
+
+// GLOBAL: GAMEMD 0xA8DA90 / 0xAC11B4 are NodeNameType slots (netshare_slot_nodes.h).
+
+// FUNCTION: GAMEMD 0x4E48E0
+// Refresh the house control of lobby slot `index` (ECX is the dialog, passed on unchanged).
+void __fastcall FUN_004E48E0(HWND dialog, int index)
+{
+    int state = Session_00A8B238.unknown_17C;
+    if (Session_00A8B238.unknown_180 == -2)
+        state = -2;
+    int control;
+    if (index == 0) control = 0x6A2;
+    else if (index == 1) control = 0x522;
+    else if (index == 2) control = 0x523;
+    else if (index == 3) control = 0x524;
+    else if (index == 4) control = 0x525;
+    else if (index == 5) control = 0x526;
+    else if (index == 6) control = 0x527;
+    else control = index == 7 ? 0x528 : -1;
+    if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
+        if (Slots[index] == ObserverNode && Slots[index]->unknown_6B == -1)
+            state = 8;
+    }
+    FUN_004E49A0(dialog, control, state);
 }
 
 // FUNCTION: GAMEMD 0x004E4E20
@@ -185,10 +330,67 @@ void __cdecl FUN_004E4F30()
     FUN_00734E60(DAT_00822B90, 0, DAT_008229C0, 0x2EB);
 }
 
+#include "../_layout/rec12_008b3f30.h"
+extern Rec12_008B3F30 DAT_008B3F30[];
+#include "../_layout/rec12_008b3fc0.h"
+extern Rec12_008B3FC0 DAT_008B3FC0[];
+// STRING: GAMEMD 0x822BA4..0x822BC4 -- the wide captions L"0".."8"; 0x822BC8..0x822BEC "LETTER_x".
+extern wchar_t DAT_00822BA4[];
+extern wchar_t DAT_00822BA8[];
+extern wchar_t DAT_00822BAC[];
+extern wchar_t DAT_00822BB0[];
+extern wchar_t DAT_00822BB4[];
+extern wchar_t DAT_00822BB8[];
+extern wchar_t DAT_00822BBC[];
+extern wchar_t DAT_00822BC0[];
+extern wchar_t DAT_00822BC4[];
+extern char DAT_00822BC8[];
+extern char DAT_00822BD4[];
+extern char DAT_00822BE0[];
+extern char DAT_00822BEC[];
+
+// FUNCTION: GAMEMD 0x4E4F50
+// Name the nine start-position records "1".."8","0" and mark them used (-1).
+void FUN_004E4F50()
+{
+    DAT_008B3F30[0].name = DAT_00822BC4;
+    DAT_008B3F30[1].name = DAT_00822BC0;
+    DAT_008B3F30[2].name = DAT_00822BBC;
+    DAT_008B3F30[3].name = DAT_00822BB8;
+    DAT_008B3F30[4].name = DAT_00822BB4;
+    DAT_008B3F30[5].name = DAT_00822BB0;
+    DAT_008B3F30[6].name = DAT_00822BAC;
+    DAT_008B3F30[7].name = DAT_00822BA8;
+    DAT_008B3F30[8].name = DAT_00822BA4;
+    for (int i = 0; i < 9; i++)
+        DAT_008B3F30[i].key = -1;
+}
+
 // FUNCTION: GAMEMD 0x004E50A0
 bool FUN_004E50A0(int index)
 {
     return DAT_008B3F38[index].key != -1;
+}
+
+// FUNCTION: GAMEMD 0x4E53D0
+// Refresh the colour control of lobby slot `index` (ECX is the dialog, passed on unchanged).
+void __fastcall FUN_004E53D0(HWND dialog, int index)
+{
+    int state = -2;
+    int control;
+    if (index == 0) control = 0x6A3;
+    else if (index == 1) control = 0x6A4;
+    else if (index == 2) control = 0x6A5;
+    else if (index == 3) control = 0x6A6;
+    else if (index == 4) control = 0x6A7;
+    else if (index == 5) control = 0x6A8;
+    else if (index == 6) control = 0x6AA;
+    else control = index == 7 ? 0x6AB : -1;
+    if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
+        if (Slots[index] == ObserverNode && Slots[index]->unknown_6B == -1)
+            state = 8;
+    }
+    FUN_004E5480(dialog, control, state);
 }
 
 // FUNCTION: GAMEMD 0x004E5900
@@ -197,6 +399,17 @@ int FUN_004E5900(HWND dialog, int controlId, int index)
     if (index == -1)
         index = (int)SendDlgItemMessageA(dialog, controlId, CB_GETCURSEL, 0, 0);
     return (int)SendDlgItemMessageA(dialog, controlId, CB_GETITEMDATA, index, 0);
+}
+
+// FUNCTION: GAMEMD 0x4E5AC0
+// Fetch the captions of the four letter choices and name the fifth "0".
+void FUN_004E5AC0()
+{
+    DAT_008B3FC0[0].name = FUN_00734E60(DAT_00822BEC, 0, DAT_008229C0, 0x437);
+    DAT_008B3FC0[1].name = FUN_00734E60(DAT_00822BE0, 0, DAT_008229C0, 0x438);
+    DAT_008B3FC0[2].name = FUN_00734E60(DAT_00822BD4, 0, DAT_008229C0, 0x439);
+    DAT_008B3FC0[3].name = FUN_00734E60(DAT_00822BC8, 0, DAT_008229C0, 0x43A);
+    DAT_008B3FC0[4].name = DAT_00822BA4;
 }
 
 // FUNCTION: GAMEMD 0x004E5B40

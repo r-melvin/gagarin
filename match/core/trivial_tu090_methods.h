@@ -15,7 +15,7 @@ extern char DAT_008229C0[];
 extern char DAT_00822B90[];
 
 // FUNCTION: GAMEMD 0x734E60 (declaration)
-void FUN_00734E60(void*, int, void*, int);
+wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
 
 // FUNCTION: GAMEMD 0x4E4F30
