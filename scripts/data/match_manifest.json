@@ -8901,7 +8901,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D03A0",
   "sym": "??_GFlyLocomotionClass@@UAEPAXI@Z",
   "len": "0x2b",
@@ -24960,7 +24960,7 @@
   "pct": 19.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFC40",
   "sym": "?FUN_004CFC40@FlyLocomotionClass@@QBEDXZ",
   "len": "0x32",
@@ -24969,7 +24969,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFC80",
   "sym": "?GetClassID@FlyLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -24978,7 +24978,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFCC0",
   "sym": "?Load@FlyLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x29",
@@ -24987,7 +24987,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFCF0",
   "sym": "?InWhichLayer@FlyLocomotionClass@@UAGHXZ",
   "len": "0x22",
@@ -24996,7 +24996,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFD20",
   "sym": "?PowerOff@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x64",
@@ -25005,7 +25005,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFD90",
   "sym": "?IsPowered@FlyLocomotionClass@@UAG_NXZ",
   "len": "0xD",
@@ -25014,7 +25014,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFDA0",
   "sym": "?IsIonSensitive@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x21",
@@ -104078,7 +104078,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4B4C50",
   "sym": "?IsReallyMovingNow@LocomotionClass@@UAG_NXZ",
   "len": "0x10",
@@ -104087,7 +104087,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D0510",
   "sym": "?QueryInterface@LocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -104096,7 +104096,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D0520",
   "sym": "?AddRef@LocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -104105,7 +104105,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D0530",
   "sym": "?Release@LocomotionClass@@W3AGKXZ",
   "len": "0xa",
