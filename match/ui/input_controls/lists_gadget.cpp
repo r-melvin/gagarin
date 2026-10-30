@@ -5,6 +5,7 @@
 //   0x4B55F0 -> 17.6%); every other function here scores identically with and without it.
 //   Lists cluster: GadgetClass slots that are shared by every gadget vtable (bodies ordered by address).
 #include "lists_views.h"
+#include "../gadget_class_color_methods.h"
 
 // FUNCTION: GAMEMD 0x488690
 // GadgetClass::MarkListToRedraw slot (+0x38): clears the "last list" global.
@@ -20,6 +21,17 @@ unsigned char GadgetClass::IsToRedraw()
     return IsToRepaint;
 }
 
+// FUNCTION: GAMEMD 0x4E12D0  GadgetClass::GetColorScheme (__fastcall, static)
+// Entry 1 of the colour-scheme collection, dereferenced to its first field.
+// A missing entry degrades to 0 rather than faulting.
+int GadgetClass::GetColorScheme()
+{
+    void* scheme = ColorSchemeCollection_GetItem(ColorSchemeCollection, 1);
+    if (scheme != 0)
+        return *(int*)scheme;
+
+    return 0;
+}
 // FUNCTION: GAMEMD 0x4E13F0
 // GadgetClass::Clicked slot (+0x80): a press inside the rectangle (or on the sticky/pressed gadget)
 // is forwarded to Action with the event bits this gadget listens for.
@@ -32,6 +44,109 @@ int GadgetClass::Clicked(unsigned* key, unsigned flags, int x, int y, int modifi
         }
     }
     return Action(flags, key, modifier);
+}
+
+// FUNCTION: GAMEMD 0x4E1450  GadgetClass::Enable (__thiscall)
+// Clears IsDisabled, flags a redraw, then drops focus through the vtable
+// (`jmp [eax+0x54]` — a tail call to slot 21, KillFocus).
+void GadgetClass::Enable()
+{
+    IsDisabled = 0;
+    IsToRepaint = 1;
+    KillFocus();
+}
+
+// FUNCTION: GAMEMD 0x4E1460  GadgetClass::Disable (__thiscall)
+// Same shape as Enable but sets IsDisabled; retail shares the constant 1 in AL
+// across both byte stores (`mov al,1; mov [ecx+0x1e],al; mov [ecx+0x1c],al`).
+void GadgetClass::Disable()
+{
+    IsDisabled = 1;
+    IsToRepaint = 1;
+    KillFocus();
+}
+
+// FUNCTION: GAMEMD 0x4E1470  GadgetClass::IsEnabled (__thiscall)
+// Not a vtable entry — a plain inline-able accessor emitted out of line.
+bool GadgetClass::IsEnabled() const
+{
+    return IsDisabled == 0;
+}
+
+// FUNCTION: GAMEMD 0x4E1480  GadgetClass::Remove (__thiscall)
+// Drops focus (virtual slot 0x54) then unlinks via the LinkClass base.
+LinkClass* GadgetClass::Remove()
+{
+    KillFocus();
+    return LinkClass::Remove();
+}
+
+// FUNCTION: GAMEMD 0x4E14A0  GadgetClass::GetNext (__thiscall)
+// Covariant forwarder to LinkClass::GetNext — retail is the bare tail `jmp`.
+LinkClass* GadgetClass::GetNext()
+{
+    return LinkClass::GetNext();
+}
+
+// FUNCTION: GAMEMD 0x4E14B0  GadgetClass::GetPrev (__thiscall)
+LinkClass* GadgetClass::GetPrev()
+{
+    return LinkClass::GetPrev();
+}
+
+// FUNCTION: GAMEMD 0x4E14C0  GadgetClass::DeleteList (__thiscall)
+void GadgetClass::DeleteList()
+{
+    // Walk back to the head of the list.
+    GadgetClass* cur  = this;
+    GadgetClass* prev = (GadgetClass*)cur->GetPrev();
+    while (prev != 0) {
+        cur  = (GadgetClass*)cur->GetPrev();
+        prev = (GadgetClass*)cur->GetPrev();
+    }
+
+    // Then destroy each gadget from head to tail.
+    while (cur != 0) {
+        cur->KillFocus();
+        GadgetClass* temp = cur;
+        cur = (GadgetClass*)cur->GetNext();
+        delete temp;
+    }
+}
+
+// FUNCTION: GAMEMD 0x4E1530  GadgetClass::Action (__thiscall, ret 0xC)
+// Base action handler: any non-zero flag set means "this gadget was hit" —
+// flag a redraw, run the sticky-capture state machine, and report handled.
+int GadgetClass::Action(unsigned flags, unsigned* key, int modifier)
+{
+    if (flags != 0) {
+        IsToRepaint = 1;
+        StickyProcess(flags);
+        return 1;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x4E1550  GadgetClass::Draw (__thiscall, ret 0x4)
+// Redraw when forced or when the redraw byte is set, and clear that byte. `forced` is dword-wide here (retail: `mov eax,[esp+4]; test eax,eax`) —
+// DrawAll below widens its own bool argument with `and edi,0xff` before pushing.
+int GadgetClass::Draw(int forced)
+{
+    if (forced || IsToRepaint) {
+        IsToRepaint = 0;
+        return 1;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x4E1570  GadgetClass::DrawAll (__thiscall)
+void GadgetClass::DrawAll(bool forced)
+{
+    GadgetClass* g = this;
+    while (g != 0) {
+        g->Draw(forced);
+        g = (GadgetClass*)g->GetNext();
+    }
 }
 
 // FUNCTION: GAMEMD 0x4E1640
@@ -163,4 +278,85 @@ GadgetClass* GadgetClass::ExtractGadget(unsigned id)
         }
     }
     return 0;
+}
+// FUNCTION: GAMEMD 0x4E1960  GadgetClass::MarkRedraw (__thiscall)
+void GadgetClass::MarkRedraw()
+{
+    IsToRepaint = 1;
+}
+
+// FUNCTION: GAMEMD 0x4E1970  GadgetClass::StickyProcess (__thiscall, ret 0x4)
+// Mouse-capture state machine. Flag bits confirmed from the retail immediates:
+//   0x11 = LEFTPRESS(0x01) | RIGHTPRESS(0x10)
+//   0x44 = LEFTRELEASE(0x04) | RIGHTRELEASE(0x40)
+// A sticky gadget grabs the capture on either press and releases it on either
+// release. Retail's fallthrough (`jmp` past the CMP after the store) confirms
+// the compiler knows GadgetClass_StuckOn == this on the taken branch.
+void GadgetClass::StickyProcess(unsigned flags)
+{
+    if (IsSticky && (flags & 0x11) != 0) {
+        GadgetClass_StuckOn = this;
+    }
+
+    if (GadgetClass_StuckOn == this && (flags & 0x44) != 0) {
+        GadgetClass_StuckOn = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x4E19A0  GadgetClass::SetFocus (__thiscall)
+void GadgetClass::SetFocus()
+{
+    if (GadgetClass_Focused != 0) {
+        GadgetClass_Focused->MarkRedraw();
+        GadgetClass_Focused->KillFocus();
+    }
+    this->Flags |= 0x100;
+    GadgetClass_Focused = this;
+}
+
+// FUNCTION: GAMEMD 0x4E19D0  GadgetClass::KillFocus (__thiscall)
+// Clears the focus bit only if *this* holds it. Retail clears bit 8 through AH
+// (`mov eax,[ecx+0x20]; and ah,0xfe; mov [ecx+0x20],eax`) — the VC6 byte-lane
+// idiom for `Flags &= ~0x100`.
+void GadgetClass::KillFocus()
+{
+    if (GadgetClass_Focused == this) {
+        Flags &= ~0x100;
+        GadgetClass_Focused = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x4E19F0  GadgetClass::IsFocused (__thiscall)
+bool GadgetClass::IsFocused()
+{
+    return this == GadgetClass_Focused;
+}
+
+// FUNCTION: GAMEMD 0x4E1A00  GadgetClass::IsListToRedraw (__thiscall)
+// Walks the list from `this` forward; true if any gadget is dirty. Retail opens
+// with `test ecx,ecx`, so the null check on `this` is in the source.
+int GadgetClass::IsListToRedraw()
+{
+    GadgetClass* g = this;
+    while (g != 0) {
+        if (g->IsToRepaint) {
+            return 1;
+        }
+        g = (GadgetClass*)g->GetNext();
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x4E1A20  GadgetClass::SetPosition (__thiscall, ret 0x8)
+void GadgetClass::SetPosition(int x, int y)
+{
+    X = x;
+    Y = y;
+}
+
+// FUNCTION: GAMEMD 0x4E1A40  GadgetClass::SetDimension (__thiscall, ret 0x8)
+void GadgetClass::SetDimension(int w, int h)
+{
+    Width = w;
+    Height = h;
 }
