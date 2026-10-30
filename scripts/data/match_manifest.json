@@ -148026,5 +148026,41 @@
   "name": "UnitClass::vf_241",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/asm/cpu_detect_object.asm",
+  "addr": "0x7C5F3D",
+  "sym": "_FUN_007C5F3D",
+  "len": "0xc2",
+  "name": "FUN_007C5F3D",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/asm/cpu_detect_object.asm",
+  "addr": "0x7C5FFF",
+  "sym": "_FUN_007C5FFF",
+  "len": "0x65",
+  "name": "FUN_007C5FFF",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/asm/cpu_detect_object.asm",
+  "addr": "0x7C6064",
+  "sym": "_FUN_007C6064",
+  "len": "0xe",
+  "name": "FUN_007C6064",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/asm/cpu_detect_object.asm",
+  "addr": "0x7C6072",
+  "sym": "_FUN_007C6072",
+  "len": "0x46",
+  "name": "FUN_007C6072",
+  "status": "matched",
+  "pct": 100
  }
 ]
