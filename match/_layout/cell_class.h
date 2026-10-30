@@ -86,7 +86,6 @@ public:
     // FUNCTION: GAMEMD 0x4834A0 (decl; reloc) -- canonical caller API alias; scoped provider remains in Cell_Class_004834A0.
     bool IsClearToMove(int speedType, bool ignoreInfantry, bool ignoreVehicles,
                        int zone, int movementZone, int level, bool isBridge);
-    int FUN_00485020(); // GAMEMD 0x485020; caller0x685078 tests EAX
     void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
     int FUN_00487D50(); // GAMEMD 0x487D50 (decl; reloc): Level + 4 * (Flags bit 7)
@@ -100,8 +99,6 @@ public:
     void FUN_004852D0();
     // FUNCTION: GAMEMD 0x486E70 (decl; reloc)
     void FUN_00486E70();
-    // FUNCTION: GAMEMD 0x47C520 (decl; reloc) -- no stack arguments; the building standing on the cell.
-    BuildingClass* FUN_0047C520();
 
     // Retail vtable 0x7E4EEC overrides these five slots of AbstractClass; the
     // bodies are not reconstructed here. They make CellClass a complete type.
@@ -139,10 +136,6 @@ public:
     bool FUN_004870D0(int index);
     // FUNCTION: GAMEMD 0x47B3A0 (decl; reloc)
     int GetFloorHeight(const Point2D& subcoords) const;
-    // FUNCTION: GAMEMD 0x481810 (decl; reloc)
-    // The adjacent cell in direction `facing` (0-7, offsets at 0x89F688);
-    // __thiscall, RET 4.
-    CellClass* FUN_00481810(unsigned int facing);
     // FUNCTION: GAMEMD 0x486380 (decl; reloc)
     bool FUN_00486380();
     // FUNCTION: GAMEMD 0x4863D0 (decl; reloc)
@@ -151,13 +144,6 @@ public:
     bool FUN_004865B0();
     // FUNCTION: GAMEMD 0x4865D0 (decl; reloc)
     char FUN_004865D0();
-    // FUNCTION: GAMEMD 0x486750 (decl; reloc)
-    // True when IsoTileTypeIndex lies in [0xAA0E28, 0xAA0E28 + 0x10) and that
-    // global is not -1.
-    bool FUN_00486750();
-    // FUNCTION: GAMEMD 0x486770 (decl; reloc)
-    // As 0x486750, against the global at 0xABAD1C.
-    bool FUN_00486770();
     // FUNCTION: GAMEMD 0x58C800 (decl; reloc) -- record for this cell (MapGen).
     struct Rec_0058C800Ret* FUN_0058C800();
     // FUNCTION: GAMEMD 0x4867B0 (decl; reloc)

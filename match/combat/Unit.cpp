@@ -172,7 +172,7 @@ bool UnitClass::vf_313()
         return false;
     }
 
-    if (this->Owner->FUN_0050B730()) {
+    if (this->Owner->IsControlledByHuman()) {
         return false;
     }
 
@@ -333,7 +333,7 @@ int UnitClass::vf_139()
         return 1;
     }
     if (!UnloadTimer.FUN_004A51D0()) {
-        UnloadTimer.FUN_004A5240(static_cast<UnitTypeClass*>(this->Type)->DeployTime);
+        UnloadTimer.StartTimer10(static_cast<UnitTypeClass*>(this->Type)->DeployTime);
     }
     return FootClass::vf_139();
 }
@@ -343,7 +343,7 @@ int UnitClass::vf_151()
 {
     IsHarvesting = 0;
     if (!UnloadTimer.FUN_004A51D0()) {
-        UnloadTimer.FUN_004A5240(static_cast<UnitTypeClass*>(this->Type)->DeployTime);
+        UnloadTimer.StartTimer10(static_cast<UnitTypeClass*>(this->Type)->DeployTime);
     }
     return FootClass::vf_151();
 }
@@ -385,7 +385,7 @@ void FUN_00740E50(Obj_00740E50* a1, int a2)
 // FUNCTION: GAMEMD 0x740E60
 void UnitClass::FUN_00740E60()
 {
-    UnloadTimer.FUN_004A5240(static_cast<UnitTypeClass*>(this->Type)->DeployTime);
+    UnloadTimer.StartTimer10(static_cast<UnitTypeClass*>(this->Type)->DeployTime);
 }
 
 // FUNCTION: GAMEMD 0x740E80  (__thiscall)

@@ -43,7 +43,6 @@ public:
 
     void Activate(unsigned long dwZero);                              // GAMEMD 0x554A60
     void Deactivate(unsigned long dwZero);                            // GAMEMD 0x554A80
-    void FUN_00554A80(char on);                                       // GAMEMD 0x554A80 (decl; reloc)
     void ChangeLevels(int nIntensity, TintStruct Tint, unsigned long mode); // GAMEMD 0x554AA0
     void Calculate(unsigned long dwZero);                             // GAMEMD 0x554AF0
 

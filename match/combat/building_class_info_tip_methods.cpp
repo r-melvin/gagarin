@@ -37,7 +37,7 @@ void Building_0043E7B0::DrawInfoTipAndSpiedSelection(Point_0043E7B0* pos,
 
     if (((1 << DAT_00A83D4C->Type->ArrayIndex2) & SpiedBy) && unknown_83) {
         FactoryClass* factory;
-        if (Owner->FUN_0050B730()) {
+        if (Owner->IsControlledByHuman()) {
             factory = Owner->GetPrimaryFactory(Type->At_EB8, Type->Naval, 0);
         } else {
             factory = Factory;

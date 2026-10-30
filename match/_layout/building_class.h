@@ -277,8 +277,6 @@ public:
     ObjectClass* FUN_0065AD40(int a1);
     // FUNCTION: GAMEMD 0x452260 (decl; reloc)
     void FUN_00452260();
-    // FUNCTION: GAMEMD 0x452360 (decl; reloc)
-    void FUN_00452360();
     // FUNCTION: GAMEMD 0x452DC0 (decl; reloc) -- one stack argument (RET 4).
     void FUN_00452DC0(int which);
     // FUNCTION: GAMEMD 0x4529E0 -- refresh all four sides once the building is placed.

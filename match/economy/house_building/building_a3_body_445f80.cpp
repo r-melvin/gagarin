@@ -343,7 +343,7 @@ afterEva:
 
     // The free unit of the building type.
     if (Type->unknown_EA0 && DAT_00A8E7AC == 0 && !flag && !DAT_00A8ED6B) {
-        if (!Owner->FUN_0050B730() || !unknown_300 || unknown_300 > Type->unknown_EA0->vf_43()) {
+        if (!Owner->IsControlledByHuman() || !unknown_300 || unknown_300 > Type->unknown_EA0->vf_43()) {
             HBCoord at = vf_18();
             HBCell base;
             base.X = (short)(at.X / 256);
@@ -406,7 +406,7 @@ afterEva:
                             }
                         }
                     }
-                    Owner->FUN_004F9950(unit->unknown_6C4->vf_46(Owner, 1));
+                    Owner->GiveMoney(unit->unknown_6C4->vf_46(Owner, 1));
                     unit->vf_8(1);
                 } else {
                 unitPlaced:
@@ -414,7 +414,7 @@ afterEva:
                     unit->vf_123();
                 }
             } else {
-                Owner->FUN_004F9950(Type->unknown_EA0->vf_46(Owner, 1));
+                Owner->GiveMoney(Type->unknown_EA0->vf_46(Owner, 1));
             }
         }
     }

@@ -1022,7 +1022,7 @@ void __fastcall FUN_00684C30()
     if (RulesInstance->OreTwinkle) {
         MapInstance.IteratorBegin_578350();
         while ((cell = MapInstance.IteratorNext_578290()) != 0) {
-            if (cell->FUN_00485020() &&
+            if (cell->GetContainedTiberiumValue() &&
                 ScenarioInstance->unknown_0218.RandomRanged(0, RulesInstance->OreTwinkleChance - 1) == 0)
                 new AnimClass(RulesInstance->OreTwinkle, cell->vf_18(), 0, 1, 0x600, 0, false);
         }
@@ -1521,7 +1521,7 @@ void __fastcall FUN_00686890(bool value)
         for (int index = 0; index < HouseClass_ArrayCount; ++index) {
             HouseClass* house = HouseClass_ArrayItems[index];
             if (!house->IsHumanPlayer && !house->Type->MultiplayPassive && DAT_00A8B274 < 1)
-                house->FUN_004FB920();
+                house->SDDTORAllAndTriggers();
         }
     }
     FUN_0048D080();
@@ -1556,7 +1556,7 @@ void __fastcall FUN_00686890(bool value)
             // IHouse subobject at +0x24; reference conversion preserves that ABI.
             int money = static_cast<IHouse&>(*HouseClass_ArrayItems[index]).vf_06();
             house = HouseClass_ArrayItems[index];
-            house->FUN_004F9950((int)(money * (RulesInstance->MultiplayerAICM.Items[house->AIDifficulty] * 0.01)));
+            house->GiveMoney((int)(money * (RulesInstance->MultiplayerAICM.Items[house->AIDifficulty] * 0.01)));
         }
         if (HouseClass_ArrayItems[index]->Type->MultiplayPassive)
             HouseClass_ArrayItems[index]->Type->WallOwner = false;
@@ -1768,7 +1768,7 @@ void __fastcall FUN_006886B0(bool value)
                 spent += type->vf_43();
                 created.AddItem(techno);
                 if (ScenarioInstance->unknown_0000 & 0x200) FUN_007500B0(1);
-                techno->vf_124(house->FUN_0050B730() ? 5 : 11);
+                techno->vf_124(house->IsControlledByHuman() ? 5 : 11);
             }
         }
     }

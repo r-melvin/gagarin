@@ -88,8 +88,6 @@ public:
     // FUNCTION: GAMEMD 0x465D40 -- const predicate; existing external spelling
     // below remains for callers whose source ownership is not recovered here.
     bool IsVehicle() const;
-    // FUNCTION: GAMEMD 0x465D40 (decl; reloc) -- no stack arguments, result in AL; BuildingClass slot 32 (0x457620) returns it.
-    bool FUN_00465D40();
 
     int               ArrayIndex;                  // +0xDF8
     CellStruct*       FoundationData;              // +0xDFC

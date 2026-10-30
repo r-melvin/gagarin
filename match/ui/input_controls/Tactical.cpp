@@ -2119,14 +2119,14 @@ CellStruct Tactical::FUN_006D6590(const Point2D* where)
         CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
         int candidateY = scanY - cell->Level * 15;
         if (cell->Flags & 0x100) {
-            CellClass* neighbor2 = cell->FUN_00481810(2);
-            CellClass* neighbor4 = cell->FUN_00481810(4);
+            CellClass* neighbor2 = cell->GetNeighbourCell(2);
+            CellClass* neighbor4 = cell->GetNeighbourCell(4);
             bool edge0 = false;
             if (cell->Flags & 0x800)
-                edge0 = !(cell->FUN_00481810(0)->Flags & 0x100);
+                edge0 = !(cell->GetNeighbourCell(0)->Flags & 0x100);
             bool edge6 = false;
             if (!(cell->Flags & 0x800))
-                edge6 = !(cell->FUN_00481810(6)->Flags & 0x100);
+                edge6 = !(cell->GetNeighbourCell(6)->Flags & 0x100);
             // The orientation mask is sampled after both optional callbacks.
             unsigned int orientation = cell->Flags & 0x800;
             bool edge4 = orientation && !(neighbor4->Flags & 0x100);
@@ -2500,7 +2500,7 @@ void Tactical::FUN_006D7840(const RectangleStruct* rectangle,
         for (int column = 0; column < columns; ++column) {
             if (MapInstance.FUN_00568300(&coordinate)) {
                 CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
-                int value = cell->FUN_00485020();
+                int value = cell->GetContainedTiberiumValue();
                 if ((cell->AltFlags & 0x10) && !cell->FUN_00487950() &&
                     (cell->LandType == 2 || value != 0) &&
                     !cell->FirstObject && !(cell->Flags & 0x1000)) {
@@ -3509,7 +3509,7 @@ void Tactical::FUN_006DA5C0(const TRect<int>* rectangle,
                             // access at+520; Type->UndeploysInto is+408, not Owner.
                             BuildingClass* building = static_cast<BuildingClass*>(object);
                             if (building->Type->UndeploysInto != 0 &&
-                                building->Type->FUN_00465D40())
+                                building->Type->IsVehicle())
                                 buildingAllowed = true;
                         }
                         HouseClass* owner = object->vf_15();

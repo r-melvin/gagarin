@@ -754,7 +754,7 @@ DynamicVectorClass<Cell>* MapRegionClass::FUN_0058D410()
         if (Inline_CellOwner(own) == unknown_08) {
             bool border = false;
             for (int f = 0; f < 8; f++) {
-                CellClass* adj = it->FUN_00481810(f);
+                CellClass* adj = it->GetNeighbourCell(f);
                 CellStruct n = adj->MapCoords;
                 int x = n.X;
                 int y = n.Y;
@@ -1358,7 +1358,7 @@ void FUN_0059B6D0()
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
         if (it->FUN_004865B0()) {
             for (int i = 0; i < 8; i += 2) {
-                CellClass* n = it->FUN_00481810(i);
+                CellClass* n = it->GetNeighbourCell(i);
                 if (n->FUN_00486380())
                     n->IsoTileTypeIndex = DAT_00AA0E18;
             }

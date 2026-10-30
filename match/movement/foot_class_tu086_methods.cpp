@@ -158,13 +158,13 @@ int FootClass::vf_133()
     }
     if (Destination == 0) {
         EnterIdleMode(false, true);
-        if (DAT_0087F7E8.FUN_00565730(&vf_18())->FUN_0047C520() != 0) {
+        if (DAT_0087F7E8.FUN_00565730(&vf_18())->GetBuilding() != 0) {
             vf_93(DAT_008B3DA8, true, false);
         }
     }
 idle:
     if (Target == 0) {
-        if (!Owner->FUN_0050B730()) {
+        if (!Owner->IsControlledByHuman()) {
             if (vf_11() != 0xF || !((InfantryClass*)this)->Type->Occupier) {
                 vf_242(0);
                 SetDestination(0, true);
@@ -195,7 +195,7 @@ int FootClass::vf_134()
     }
     if (Destination == 0) {
         EnterIdleMode(false, true);
-        if (DAT_0087F7E8.FUN_00565730(&vf_18())->FUN_0047C520() != 0) {
+        if (DAT_0087F7E8.FUN_00565730(&vf_18())->GetBuilding() != 0) {
             vf_93(DAT_008B3DA8, true, false);
         }
     }
@@ -455,7 +455,7 @@ void FootClass::vf_314(CellStruct center)
                         ((TechnoClass*)object)->vf_264();
                     }
                 }
-                BuildingClass* building = cell->FUN_0047C520();
+                BuildingClass* building = cell->GetBuilding();
                 if (building != 0 && building->Owner != DAT_00A83D4C && building->vf_26(0, 0) != 0) {
                     building->NeedsRedraw = 1;
                 }
@@ -494,7 +494,7 @@ void FootClass::vf_315(CellStruct center)
                             ((TechnoClass*)object)->vf_264();
                         }
                     }
-                    BuildingClass* building = cell->FUN_0047C520();
+                    BuildingClass* building = cell->GetBuilding();
                     if (building != 0 && building->Owner != DAT_00A83D4C && building->vf_26(0, 0) != 0) {
                         building->NeedsRedraw = 1;
                     }

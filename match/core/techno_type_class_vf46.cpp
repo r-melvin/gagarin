@@ -22,7 +22,7 @@ int TechnoTypeClass::vf_46(HouseClass* house, bool a2)
             return (int)(Soylent * first);
         }
         int price = (int)(vf_43() * second * first);
-        if (house->FUN_0050B730()) {
+        if (house->IsControlledByHuman()) {
             price = (int)(price * scale);
         }
         return price;

@@ -2253,7 +2253,7 @@ debris_phase_469d06:
         do {
             // Native 469EF6..469F43 selects the next neighbor and snapshots
             // setter arguments before each COM callback, not before the loop.
-            CellClass* neighboringCell = originalCell->FUN_00481810(phase);
+            CellClass* neighboringCell = originalCell->GetNeighbourCell(phase);
             const int originalHealth = effectConfig->Damage;
             WarheadTypeClass* originalWarhead = effectConfig->Warhead;
             TechnoClass* originalOwner = Owner;

@@ -242,17 +242,11 @@ public:
     int FUN_004FA910(int rtti, int index, bool naval); // GAMEMD 0x4FA910, RET 0xC
     void FUN_005054B0();    // GAMEMD 0x5054B0
 
-    // Declaration: GAMEMD 0x4FB920
-    void FUN_004FB920();
     // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- first house whose type has this country index; ECX carries it.
     static HouseClass* FindByCountryIndex(int country);
     // FUNCTION: GAMEMD 0x4F9790 (decl; reloc) -- one stack argument.
     FactoryClass* FUN_004F83C0(TechnoTypeClass* type); // GAMEMD 0x4F83C0, RET 4
     void FUN_004F9790(int unknownStackArg0);
-    // FUNCTION: GAMEMD 0x4F9950 (decl; reloc) -- one stack argument.
-    void FUN_004F9950(int unknownStackArg0);
-    // FUNCTION: GAMEMD 0x4FCE30 (decl; reloc)
-    double FUN_004FCE30();
     // FUNCTION: GAMEMD 0x4F9750 (decl; reloc) -- matched in economy/house_class_misc_methods.cpp.
     WaypointPathClass* EnsurePlanningPathExists(int index); // 0x504740, RET4
     WaypointClass* GetPlanningWaypointAt(const CellStruct* cell); // 0x5023B0
@@ -547,8 +541,6 @@ public:
     float GiveTiberium(float amount, int type); // GAMEMD 0x4F9610
     bool IsAlliedWith(const HouseClass* house) const;
     float FUN_0050C160() const; // GAMEMD 0x50C160
-    // FUNCTION: GAMEMD 0x50B730 (decl; reloc) -- no arguments, bool.
-    bool FUN_0050B730();
     // FUNCTION: GAMEMD 0x50BDF0 -- ECX=House, one TechnoType* stack argument,
     // float result in ST0, RET 4. Native body switches on slot 11.
     float FUN_0050BDF0(TechnoTypeClass* type);
@@ -558,8 +550,6 @@ public:
     void FUN_004F9B70(HouseClass* other, bool flag);
     // FUNCTION: GAMEMD 0x4F9F90 (decl; reloc) -- RET 8.
     void FUN_004F9F90(HouseClass* other, bool flag);
-    // FUNCTION: GAMEMD 0x50C8C0 (decl; reloc)
-    void FUN_0050C8C0();
     // FUNCTION: GAMEMD 0x50D290 (decl; reloc)
     void FUN_0050D290(HouseClass* other);
     // FUNCTION: GAMEMD 0x50D2D0 (decl; reloc)
@@ -740,10 +730,6 @@ public:
     void FUN_0050B1D0();
     // FUNCTION: GAMEMD 0x500B40 -- reads the house's INI section, RET 4.
     void FUN_00500B40(CCINIClass* ini);
-    // FUNCTION: GAMEMD 0x50BF60 -- no stack arguments (Ghidra: __fastcall, one unused ECX).
-    void FUN_0050BF60();
-    // FUNCTION: GAMEMD 0x50B6F0 -- 52 bytes, result in AL.
-    bool FUN_0050B6F0();
     // FUNCTION: GAMEMD 0x509140 -- three stack arguments (RET 0xC).
     void FUN_00509140(int a, char b, int c);
     // FUNCTION: GAMEMD 0x50DB00 (decl; reloc) -- one stack argument (RET 4).

@@ -38,16 +38,16 @@ Cell MapView_578460::FUN_00583820(const CellStruct* start, int zoneWordOffset, i
 
     for (;;) {
         if (first->Flags & 0x100) {
-            first = first->FUN_00481810(firstFacing);
+            first = first->GetNeighbourCell(firstFacing);
             if ((first->Flags & 0x100) == 0
-                && (first->FUN_00486750() || first->FUN_00486770())
+                && (first->IsBridgeTile() || first->IsWoodBridgeTile())
                 && first->LandType != 3)
                 firstEnd = first->MapCoords;
         }
         if (second->Flags & 0x100) {
-            second = second->FUN_00481810(secondFacing);
+            second = second->GetNeighbourCell(secondFacing);
             if ((second->Flags & 0x100) == 0
-                && (second->FUN_00486750() || second->FUN_00486770())
+                && (second->IsBridgeTile() || second->IsWoodBridgeTile())
                 && second->LandType != 3)
                 secondEnd = second->MapCoords;
         }

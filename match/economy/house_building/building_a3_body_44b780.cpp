@@ -223,7 +223,7 @@ int BuildingA3View::vf_147()
                         if (!techno->unknown_674->vf_24()) {
                             BA3TechnoView* generic = BA3AsTechno(FUN_0065AD30(0));
                             generic->unknown_674->vf_22();
-                            if (generic->unknown_218 == 0 || Owner->FUN_0050B730()) {
+                            if (generic->unknown_218 == 0 || Owner->IsControlledByHuman()) {
                                 HBCell cellTmp;
                         HBCell where = *vf_309(&cellTmp, FUN_0065AD30(0), DAT_0089C818);
                                 if (unknown_218) {
@@ -250,7 +250,7 @@ int BuildingA3View::vf_147()
                             }
                         }
                     }
-                } else if (!techno->unknown_3D0 || Owner->FUN_0050B730()) {
+                } else if (!techno->unknown_3D0 || Owner->IsControlledByHuman()) {
                     if (unknown_41A) {
                         FUN_00752700(s_EVA_Repairing_00818F18, -1, -1);
                     }
@@ -307,7 +307,7 @@ int BuildingA3View::vf_147()
                         BA3_PLAY_NAME(this, unknown_1018, unknown_1028, 3)
                         Status = 1;
                         BA3TechnoView* techno = BA3AsTechno(FUN_0065AD30(0));
-                        if (techno->unknown_218 != 0 && !Owner->FUN_0050B730()) {
+                        if (techno->unknown_218 != 0 && !Owner->IsControlledByHuman()) {
                             techno->vf_122(2, 0);
                             techno->vf_288(techno->unknown_218, 1);
                             techno->FUN_0070C610(0);

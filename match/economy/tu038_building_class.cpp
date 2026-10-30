@@ -1626,7 +1626,7 @@ int BuildingClass::vf_101(int a1, int message, int a3)
             if (other->CaptureManager && static_cast<CaptureManagerClass*>(other->CaptureManager)->IsControllingSomething()) {
                 return 10;
             }
-            if (other->FUN_007105E0()) {
+            if (other->IsMindControlled()) {
                 return 10;
             }
             return Ammo ? 1 : 10;
@@ -1966,7 +1966,7 @@ void BuildingClass::vf_313(Point2D* pos, RectangleStruct* clip)
 
     if (vf_97() == 0x10 && Type->DoorAnim) {
         if (UnloadTimer.FUN_004A51D0() || UnloadTimer.FUN_004A5110() || UnloadTimer.FUN_004A5130() || UnloadTimer.FUN_004A51B0()) {
-            int frame = (int)(UnloadTimer.FUN_004A52F0() * Type->DoorStages);
+            int frame = (int)(UnloadTimer.PercentageDone() * Type->DoorStages);
             if (UnloadTimer.FUN_004A5130()) {
                 frame = Type->DoorStages - frame;
             }
@@ -2357,7 +2357,7 @@ bool BuildingClass::vf_73(int mark)
             int angle = vf_281(vf_111()->Intensity_Normal);
             BuildingClass* techno = BA4As<BuildingClass>(this, 6);
             if (vf_88() || (Airstrike && Airstrike->Target == techno)) {
-                angle = FUN_0070E360(angle);
+                angle = GetEffectTintIntensity(angle);
             }
             LightTint = (short)angle;
             for (int k = 0; k < 21; k++) {
@@ -2443,7 +2443,7 @@ void BuildingClass::vf_23()
     }
 
     if (Type->bools_C8C[0x15])
-        TurretIsRotating = PrimaryFacing.FUN_004C9480();
+        TurretIsRotating = PrimaryFacing.IsRotating();
     else
         TurretIsRotating = 0;
 
@@ -2484,7 +2484,7 @@ void BuildingClass::vf_23()
         CashProductionTimer.TimeLeft = Type->ProduceCashDelay;
         if (!((HouseTypeClass*)Owner->Type)->MultiplayPassive && vf_212()) {
             if (Type->ProduceCashAmount > 0)
-                Owner->FUN_004F9950(Type->ProduceCashAmount);
+                Owner->GiveMoney(Type->ProduceCashAmount);
             else
                 Owner->FUN_004F9790(-Type->ProduceCashAmount);
         }
@@ -2521,7 +2521,7 @@ void BuildingClass::vf_23()
                 else
                     limit = Type->WeaponStage[stage - 1];
                 if (current < limit)
-                    FUN_0070DDD0(stage - 1);
+                    SetCurrentWeaponStage(stage - 1);
             }
         }
         if (vf_33()->IsGattling && FUN_0070DDF0() > 0)
@@ -2579,7 +2579,7 @@ void BuildingClass::vf_23()
             }
         }
         int count = Overpowerers.Count;
-        if (count >= 3 || (Owner->FUN_004FCE30() == DAT_007E1718 && HasPower && count >= 1))
+        if (count >= 3 || (Owner->GetPowerPercentage() == DAT_007E1718 && HasPower && count >= 1))
             IsOverpowered = true;
         else
             IsOverpowered = false;
@@ -2677,7 +2677,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
                 if (cellOwner == Owner && (mc->OverlayTypeIndex == 2 || mc->OverlayTypeIndex == 0 || mc->OverlayTypeIndex == 0x1A)) {
                     Owner->FUN_004FCE80(&mc->MapCoords, 1);
                 }
-                BuildingClass* neighbour = mc->FUN_0047C520();
+                BuildingClass* neighbour = mc->GetBuilding();
                 if (neighbour && neighbour->Type->bools_16A4[27]) {
                     if (neighbour->vf_14() == vf_14()) {
                         CellStruct copy = mc->MapCoords;
@@ -2769,7 +2769,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
     if (ok && Type->bools_16A4[26]) {
         LaserFenceFrame = 0;
         CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
-        BuildingClass* other = BA4At(cell)->FUN_0047C520();
+        BuildingClass* other = BA4At(cell)->GetBuilding();
         if (other && other->Type->bools_16A4[27]) {
             if (other->vf_14() == vf_14()) {
                 other->vf_62();
@@ -3035,7 +3035,7 @@ int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sour
                 FUN_00457DE0(0, 0);
             }
             if (LightSource) {
-                LightSource->FUN_00554A80(0);
+                LightSource->Deactivate(0);
             }
             vf_315(0, reinterpret_cast<int>(attacker), ignoreDefenses, reinterpret_cast<int>(cells));
             {
@@ -3131,8 +3131,8 @@ int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sour
             OwnerCountryIndex = attacker->vf_15()->ArrayIndex;
             if (CurrentMission != 0x13 && !Owner->FUN_004F9A90(attacker) && vf_254(0)->WeaponType
                 && !vf_254(0)->WeaponType->Projectile->unknown_2A4 && (!Target || !vf_235(Target))) {
-                if (attacker->vf_11() == 2 || (Owner->FUN_0050B730() && !Rules->PlayerReturnFire)) {
-                    if (!PrimaryFacing.FUN_004C9480() && vf_212()) {
+                if (attacker->vf_11() == 2 || (Owner->IsControlledByHuman() && !Rules->PlayerReturnFire)) {
+                    if (!PrimaryFacing.IsRotating() && vf_212()) {
                         DirStruct dir;
                         dir.Raw = 0;
                         dir.Raw = (unsigned short)(DAT_00A8B230->unknown_0218.Random() << 8);
@@ -4039,7 +4039,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         }
         if (Type->bools_16A4[41]) {
             oldOwner->FactoryPlants.RemoveItem(this);
-            oldOwner->FUN_0050BF60();
+            oldOwner->CalculateCostMultipliers();
         }
         oldOwner->Buildings.RemoveItem(this);
         if (Type->bools_16A4[40]) {
@@ -4091,7 +4091,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         if (Owner->ToCapture == this) {
             Owner->ToCapture = 0;
         }
-        if (oldOwner->FUN_0050B6F0() && Type->bools_16A4[21]) {
+        if (oldOwner->IsControlledByCurrentPlayer() && Type->bools_16A4[21]) {
             DAT_0088098C = 0;
             DAT_00880990 = 0;
             DAT_00880994 = -1;
@@ -4127,7 +4127,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         void* value = vf_121();
         int angle = vf_281(vf_111()->Intensity_Normal);
         if (vf_88() || (Airstrike && Airstrike->Target == FUN_00459F40())) {
-            angle = FUN_0070E360(angle);
+            angle = GetEffectTintIntensity(angle);
         }
         LightTint = (short)angle;
         FUN_00451F60(value, angle & 0xFFFF);
@@ -4475,7 +4475,7 @@ int BuildingClass::vf_132()
                     vf_123();
                     return 1;
                 }
-                if (PrimaryFacing.FUN_004C9480()) {
+                if (PrimaryFacing.IsRotating()) {
                     return 1;
                 }
                 DirStruct wanted = vf_314(Target);
@@ -4847,9 +4847,9 @@ int BuildingClass::vf_149()
             }
             if (!UnloadTimer.FUN_004A5110()) {
                 if (UnloadTimer.FUN_004A5130()) {
-                    UnloadTimer.FUN_004A5290();
+                    UnloadTimer.Update();
                 } else {
-                    UnloadTimer.FUN_004A51F0(Type->DeployTime);
+                    UnloadTimer.StartTimer11(Type->DeployTime);
                     where = Location;
                     FUN_007509E0(RulesInstance->GateDown, &where, 0);
                     DAT_00887324->FUN_006D2790(vf_75(), 0);
@@ -4865,7 +4865,7 @@ int BuildingClass::vf_149()
             return 0;
         case 3:
             {
-                UnloadTimer.FUN_004A5240(Type->DeployTime);
+                UnloadTimer.StartTimer10(Type->DeployTime);
                 MissionStatus = 4;
                 CoordStruct where = Location;
                 FUN_007509E0(RulesInstance->GateUp, &where, 0);
@@ -4908,7 +4908,7 @@ int BuildingClass::vf_149()
                 NeedsRedraw = 1;
             }
             if (UnloadTimer.FUN_004A5110() || UnloadTimer.FUN_004A5130() || UnloadTimer.FUN_004A51B0()) {
-                int v = (int)(UnloadTimer.FUN_004A52F0() * Type->GateStages);
+                int v = (int)(UnloadTimer.PercentageDone() * Type->GateStages);
                 if (v != GateStage) {
                     GateStage = (signed char)v;
                     NeedsRedraw = 1;
@@ -5798,7 +5798,7 @@ void BuildingClass::DisableStuff()
 {
     StuffEnabled = 0;
     if (LightSource != 0)
-        LightSource->FUN_00554A80(0);
+        LightSource->Deactivate(0);
     BuildingTypeClass* type = Type;
     if (type->bools_16A4[0x16C7 - 0x16A4]) {
         HasCloakingData = -1;
@@ -6614,7 +6614,7 @@ bool BuildingClass::vf_212()
         goto refuse;
     if (Health == 0)
         goto refuse;
-    if (Type->bools_1570[0x1573 - 0x1570] && Type->PowerDrain > 0 && Owner->FUN_004FCE30() < 1.0) {
+    if (Type->bools_1570[0x1573 - 0x1570] && Type->PowerDrain > 0 && Owner->GetPowerPercentage() < 1.0) {
         if (Overpowerers.Count < two)
             goto refuse;
     }
@@ -6786,7 +6786,7 @@ unsigned int BuildingClass::FUN_00455B90()
     unsigned int mask = 0;
     CellClass* cell = DAT_0087F7E8.FUN_00565730(&here);
     for (int dir = 0; dir < 8; dir += 2) {
-        BuildingClass* neighbour = cell->FUN_00481810(dir)->GetBuilding();
+        BuildingClass* neighbour = cell->GetNeighbourCell(dir)->GetBuilding();
         if (neighbour != 0 && neighbour->Type->bools_16A4[0x1C] && !neighbour->InLimbo && neighbour->IsAlive) {
             mask |= 1 << (dir >> 1);
         }
@@ -7231,7 +7231,7 @@ void Obj_004575B0::FUN_004575B0()
 // FUNCTION: GAMEMD 0x457620
 bool BuildingClass::vf_32()
 {
-    return Type->FUN_00465D40();
+    return Type->IsVehicle();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -7274,7 +7274,7 @@ void BuildingClass::vf_184()
 {
     for (int i = 0; i < DAT_00A83DF8; i++) {
         InfantryClass* unit = DAT_00A83DEC[i];
-        BuildingClass* building = DAT_0087F7E8.FUN_00565730(unit->vf_19(0))->FUN_0047C520();
+        BuildingClass* building = DAT_0087F7E8.FUN_00565730(unit->vf_19(0))->GetBuilding();
         if (unit->IsAlive && building && building == this) {
             if (unit->Destination == 0 || unit->Destination == building)
                 unit->vf_93(DAT_0089C848, 1, 1);

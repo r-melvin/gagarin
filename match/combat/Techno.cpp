@@ -2442,7 +2442,7 @@ void TechnoClass::vf_260(int)
                     watchers.Items[j]->vf_242(this);
                 }
             }
-            if (vf_11() == 1 && !Owner->FUN_0050B730()) {
+            if (vf_11() == 1 && !Owner->IsControlledByHuman()) {
                 vf_93(DAT_00B0EA90, true, false);
             }
             break;

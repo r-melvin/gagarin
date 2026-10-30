@@ -356,7 +356,7 @@ static inline bool IsObserverHouse(int house)
     HouseClass* h = HouseArray_00A80228.Items[house];
     if (h != 0) {
         for (int j = 0; j < PlayerList_00A8DA74.Count; j++) {
-            if (h->FUN_0050B730()
+            if (h->IsControlledByHuman()
                 && wcscmp(h->UIName, PlayerList_00A8DA74.Items[j]->Name) == 0) {
                 return PlayerList_00A8DA74.Items[j]->IsObserver();
             }
@@ -946,7 +946,7 @@ bool MultiplayerGameMode::vf_51(HouseClass* house, int* budget)
             if (DAT_00A8B230->unknown_0000 & 0x200) {
                 techno->unknown_150.Select(true);
             }
-            if (house->FUN_0050B730()) {
+            if (house->IsControlledByHuman()) {
                 (techno->*techno->Vtbl->vt_1F0)(5);
             } else {
                 (techno->*techno->Vtbl->vt_1F0)(11);

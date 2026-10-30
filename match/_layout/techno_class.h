@@ -105,14 +105,12 @@ struct TransitionTimer
     bool FUN_004A51B0();
     // FUNCTION: GAMEMD 0x4A51D0 (decl; reloc)
     bool FUN_004A51D0();
-    // FUNCTION: GAMEMD 0x4A52F0 (decl; reloc) -- how far the transition has progressed, 0..1.
-    double FUN_004A52F0();
     // FUNCTION: GAMEMD 0x4A51F0 (decl; reloc) -- starts the transition with a rate (double by value)
-    void FUN_004A51F0(double rate);
+    void StartTimer11(double rate);
     // FUNCTION: GAMEMD 0x4A5290 (decl; reloc) -- no stack arguments.
-    void FUN_004A5290();
+    void Update();
     // FUNCTION: GAMEMD 0x4A5240 (decl; reloc) -- starts the transition with a duration (double by value)
-    void FUN_004A5240(double value);
+    void StartTimer10(double value);
     // FUNCTION: GAMEMD 0x4A52F0 (decl; reloc) -- fraction of the transition done
     double PercentageDone();
 
@@ -206,8 +204,6 @@ public:
     void FUN_006F9E50();
     // FUNCTION: GAMEMD 0x70DDC0 (decl; reloc)
     int FUN_0070DDC0();
-    // FUNCTION: GAMEMD 0x70DDD0 (decl; reloc) -- one stack argument.
-    void FUN_0070DDD0(int unknownStackArg0);
     // FUNCTION: GAMEMD 0x70DDF0 (decl; reloc)
     int FUN_0070DDF0();
     // FUNCTION: GAMEMD 0x705D20 (decl; reloc) -- the planning token this unit is on.
@@ -227,8 +223,6 @@ public:
     int FUN_0070ED80(int flags);
     // FUNCTION: GAMEMD 0x70FB50 (decl; reloc)
     bool FUN_0070FB50();
-    // FUNCTION: GAMEMD 0x7105E0 (decl; reloc)
-    bool FUN_007105E0();
     // FUNCTION: GAMEMD 0x6F4AB0 (decl; reloc) -- the TechnoClass body of slot 101 (the radio-message handler),
     // called non-virtually by the overriding classes with the slot's three arguments.
     int FUN_006F4AB0(int a1, int event, int a3);
@@ -274,8 +268,6 @@ public:
     void FUN_0070DE70(int a);
     // FUNCTION: GAMEMD 0x70E000 -- one stack argument (RET 4).
     void FUN_0070E000(int a);
-    // FUNCTION: GAMEMD 0x70E360 -- one stack argument (RET 4), result in EAX.
-    int FUN_0070E360(int a);
 
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40

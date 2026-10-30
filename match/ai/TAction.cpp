@@ -513,7 +513,7 @@ bool TActionClass::FUN_006E09A0(HouseClass* house, ObjectClass* object, TriggerC
         BuildingClass* b = DAT_00A8EB44[i];
         if (b->IsAlive && b->IsOnMap && !b->InLimbo && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)
             && b->HasPower) {
-            b->FUN_00452360();
+            b->GoOffline();
             result = true;
         }
     }
@@ -971,7 +971,7 @@ bool TActionClass::FUN_006E3060(HouseClass* house, ObjectClass* object, TriggerC
     if (target == 0) {
         return false;
     }
-    target->FUN_0050C8C0();
+    target->Cheer();
     return true;
 }
 
