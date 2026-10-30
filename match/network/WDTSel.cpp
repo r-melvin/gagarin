@@ -41,6 +41,12 @@
 
 #include "../core/trivial_tu278_methods.h"
 
+#include "../_layout/wdt_selection.h"
+#include "../_layout/ini_class.h"
+#include "../_layout/theme_class.h"
+#include "../map/msanim_family_methods.h"
+#include "../platform/input_manager_class_methods.h"
+
 template <class T> class VectorClass;
 template <class T> class DynamicVectorClass;
 template <class T> class rc_ptr;
@@ -102,6 +108,115 @@ void __cdecl FUN_0076C270()
     DAT_00B72A78 = 0;
     DAT_00B72A70 = 0x80;
     DAT_00B72A74 = 0x80;
+}
+
+
+using WorldDominationTour::Selection;
+using WorldDominationTour::Territory;
+using WorldDominationTour::Map;
+
+// The view-control object at 0x887640 (slot 3 and 4 take no argument, slot 10 answers an int).
+class WDTDisplay_00887640
+{
+public:
+    virtual void vf_0();  virtual void vf_1();  virtual void vf_2();  virtual void vf_3();
+    virtual void vf_4();  virtual void vf_5();  virtual void vf_6();  virtual void vf_7();
+    virtual void vf_8();  virtual void vf_9();  virtual int vf_10();
+};
+// GLOBAL: GAMEMD 0x887640
+extern WDTDisplay_00887640* DAT_00887640_WDT;
+// GLOBAL: GAMEMD 0x88730C
+extern WDTScreenSurface* DAT_0088730C;
+// GLOBAL: GAMEMD 0x887310
+extern WDTScreenSurface* DAT_00887310;
+// GLOBAL: GAMEMD 0x87F770
+extern InputManagerClass* DAT_0087F770;
+// GLOBAL: GAMEMD 0xA83D10
+extern ThemeClass DAT_00A83D10;
+
+// FUNCTION: GAMEMD 0x76FF40 (decl; reloc) -- the territory of a map's list with the given identifier;
+// the result is built through the hidden pointer, the list in EDX.
+rc_ptr<Territory> FUN_0076FF40(DynamicVectorClass<rc_ptr<Territory> >* list, int id);
+
+// FUNCTION: GAMEMD 0x76C970
+// Read the four score thresholds and let the voices block read its own keys.
+void Selection::FUN_0076C970(INIClass* ini, const Wstring& section)
+{
+    Voices.FUN_00770550(ini, section);
+    {
+        Wstring key("WinningThreshold");
+        WinningThreshold = ini->FUN_005278F0(section, key, WinningThreshold);
+    }
+    {
+        Wstring key("MegaWinningThreshold");
+        MegaWinningThreshold = ini->FUN_005278F0(section, key, MegaWinningThreshold);
+    }
+    {
+        Wstring key("LosingThreshold");
+        LosingThreshold = ini->FUN_005278F0(section, key, LosingThreshold);
+    }
+    {
+        Wstring key("MegaLosingThreshold");
+        MegaLosingThreshold = ini->FUN_005278F0(section, key, MegaLosingThreshold);
+    }
+}
+
+// FUNCTION: GAMEMD 0x76D470
+void Selection::FUN_0076D470(const WDTPoint* point)
+{
+    int index = MapRef->FUN_00769330(point);
+    if (index != unknown_460) {
+        unknown_460 = index;
+        rc_ptr<Territory> territory = FUN_0076FF40(&MapRef->Territories, index);
+        FUN_0076DAD0(territory);
+    }
+}
+
+// FUNCTION: GAMEMD 0x76E9D0
+void Selection::FUN_0076E9D0()
+{
+    PauseWhileInactive();
+    while (DAT_0087F770->FUN_0054F000()) {
+        if (DAT_0087F770->FUN_0054F050() == 0x1B)
+            unknown_444 = true;
+    }
+}
+
+// FUNCTION: GAMEMD 0x76EAF0
+void Selection::FUN_0076EAF0(const Obj_007B66D0& text)
+{
+    RectangleStruct rect = MapRef->unknown_8C;
+    if (unknown_480 != 0) {
+        RemoveAnim(unknown_480);
+        DAT_0088730C->vf_2(&rect, DAT_00887310, &rect, 0, 1);
+        AddDirtyRect(rect);
+        unknown_480 = 0;
+    }
+    if (text.FUN_007B71B0() > 0) {
+        Obj_007B66D0 copy(text);
+        unknown_480 = new MSBitPrintAnim(copy, &rect, false);
+        unknown_480->SetStarted(true);
+        AddAnim(unknown_480);
+    }
+}
+
+// FUNCTION: GAMEMD 0x76ECD0
+void __fastcall FUN_0076ECD0(const rc_ptr<WorldDominationTour::Campaign>& campaign, unsigned int seed)
+{
+    DAT_0087F770->DoSomething();
+    Selection screen(campaign, seed);
+    screen.FUN_0076E750(seed);
+}
+
+// FUNCTION: GAMEMD 0x76EF80
+void FUN_0076EF80()
+{
+    DAT_00887640_WDT->vf_3();
+    DAT_00A83D10.QueueSong(-3);
+    DAT_00887310->vf_6(0);
+    DAT_0088730C->vf_6(0);
+    while (DAT_00887640_WDT->vf_10() < 0)
+        DAT_00887640_WDT->vf_4();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

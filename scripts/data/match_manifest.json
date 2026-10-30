@@ -24134,7 +24134,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD330",
-  "sym": "??0MSBitPrintAnim@@QAE@PBGPBURectangleStruct@@_N@Z",
+  "sym": "??0MSBitPrintAnim@@QAE@ABVObj_007B66D0@@PBURectangleStruct@@_N@Z",
   "len": "0x6e",
   "name": "MSBitPrintAnim::MSBitPrintAnim",
   "status": "matched",
@@ -147217,5 +147217,59 @@
   "name": "HouseClass::FUN_0050CAD0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76C970",
+  "sym": "?FUN_0076C970@Selection@WorldDominationTour@@QAEXPAVINIClass@@ABVWstring@@@Z",
+  "len": "0xe1",
+  "name": "?FUN_0076C970@Selection@WorldDominationTour@@QAEXPAVINIClass@@ABVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76D470",
+  "sym": "?FUN_0076D470@Selection@WorldDominationTour@@QAEXPBUWDTPoint@@@Z",
+  "len": "0x5b",
+  "name": "?FUN_0076D470@Selection@WorldDominationTour@@QAEXPBUWDTPoint@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76E9D0",
+  "sym": "?FUN_0076E9D0@Selection@WorldDominationTour@@QAEXXZ",
+  "len": "0x42",
+  "name": "?FUN_0076E9D0@Selection@WorldDominationTour@@QAEXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76EAF0",
+  "sym": "?FUN_0076EAF0@Selection@WorldDominationTour@@QAEXABVObj_007B66D0@@@Z",
+  "len": "0xe1",
+  "name": "?FUN_0076EAF0@Selection@WorldDominationTour@@QAEXABVObj_007B66D0@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76ECD0",
+  "sym": "?FUN_0076ECD0@@YIXABV?$rc_ptr@VCampaign@WorldDominationTour@@@@I@Z",
+  "len": "0x3e",
+  "name": "?FUN_0076ECD0@@YIXABV?$rc_ptr@VCampaign@WorldDominationTour@@@@I@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76EF80",
+  "sym": "?FUN_0076EF80@@YIXXZ",
+  "len": "0x5b",
+  "name": "?FUN_0076EF80@@YIXXZ",
+  "status": "partial",
+  "pct": 92.9
  }
 ]

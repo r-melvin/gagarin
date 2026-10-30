@@ -126,15 +126,20 @@ GG_STATIC_ASSERT(sizeof(MSTimerView) == 0xC);
 // the measured length at 0x7B71B0 (called from 0x5CE30D). 0x7B71B0 is
 // `MOV EAX,[ECX]; TEST EAX,EAX; JNZ; RET` falling into `wcslen`, so the length
 // is unsigned and the null buffer answers zero without a branch of its own.
+class Obj_007B66D0;
+
 class Obj_007B66D0_msanim_family_methods
 {
 public:
     wchar_t* Buffer;  // +0x00
 
     Obj_007B66D0_msanim_family_methods() {}
-    // The from-pointer constructor, reached at 0x5CD367 and 0x5CE4B9.
+    // The from-pointer constructor, reached at 0x5CE4B9.
     // FUNCTION: GAMEMD 0x7B6720 (decl; reloc)
     Obj_007B66D0_msanim_family_methods(const wchar_t* text);
+    // The same entry with the caller's string object pushed (the bit-print constructor's copy at 0x5CD367).
+    // FUNCTION: GAMEMD 0x7B6720 (decl; reloc)
+    Obj_007B66D0_msanim_family_methods(const Obj_007B66D0& other);
 
     // Written as a named member rather than a destructor: a member whose
     // destructor is non-trivial stops cl inlining the enclosing destructor,
@@ -659,9 +664,9 @@ public:
     bool            Centred;  // +0x31
 
     // FUNCTION: GAMEMD 0x5CD330
-    // The base takes the rectangle's two leading numbers, the text is built from the caller's pointer, and the
+    // The base takes the rectangle's two leading numbers, the text is copied from the caller's string, and the
     // whole rectangle is copied in afterwards.
-    MSBitPrintAnim(const wchar_t* text, const RectangleStruct* rect, bool centred);
+    MSBitPrintAnim(const Obj_007B66D0& text, const RectangleStruct* rect, bool centred);
 
     virtual ~MSBitPrintAnim();                              // slot 0, 0x5CED10 (out of line 0x5CD3A0)
 

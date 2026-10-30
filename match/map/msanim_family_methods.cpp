@@ -111,9 +111,9 @@ bool MSVQAnim::vf_7()
 }
 
 // FUNCTION: GAMEMD 0x5CD330
-// Build a bit-printed line: the base takes the rectangle's two leading numbers, the text is built from
-// the caller's pointer, and then the whole rectangle is copied in.
-MSBitPrintAnim::MSBitPrintAnim(const wchar_t* text, const RectangleStruct* rect, bool centred)
+// Build a bit-printed line: the base takes the rectangle's two leading numbers, the text is copied from
+// the caller's string, and then the whole rectangle is copied in.
+MSBitPrintAnim::MSBitPrintAnim(const Obj_007B66D0& text, const RectangleStruct* rect, bool centred)
     : MSAnim(rect->X, rect->Y), Text(text), Bounds(*rect), Started(false)
 {
     Centred = centred;
