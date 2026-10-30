@@ -89,3 +89,49 @@ bool XSurface::CopyFrom(RectangleStruct* destClip, RectangleStruct* destRect,
     BlitPlain<unsigned short> blitter;
     return BlitDriver(this, &d, src, &s, &blitter, 0, 3, 1000, 0);
 }
+
+// Lock-and-clip helper for a two-surface blit; its body is not part of this file.
+bool FUN_007BC040(Surface* destSurface, RectangleStruct* destSurfaceRect,
+                   RectangleStruct* destRect, Surface* srcSurface,
+                   RectangleStruct* srcSurfaceRect, RectangleStruct* srcRect,
+                   bool* overlapped, void** destPixels, void** srcPixels);
+
+// FUNCTION: GAMEMD 0x7BBFF0
+// Dead in retail (no callers).
+bool FUN_007BBFF0(Surface* destSurface, RectangleStruct* destRect, Surface* srcSurface,
+                  RectangleStruct* srcRect, bool* overlapped, void** destPixels,
+                  void** srcPixels)
+{
+    return FUN_007BC040(destSurface, &destSurface->GetRect(), destRect, srcSurface,
+                        &srcSurface->GetRect(), srcRect, overlapped, destPixels,
+                        srcPixels);
+}
+
+// FUNCTION: GAMEMD 0x7BC1F0
+// Dead in retail (no callers). Whole-rectangle copy through the plain blitters.
+bool FUN_007BC1F0(Surface* dest, RectangleStruct* destRect, Surface* src,
+                  RectangleStruct* srcRect)
+{
+    if (dest->GetBytesPerPixel() == 1) {
+        BlitPlain<unsigned char> blitter;
+        return BlitDriver(dest, destRect, src, srcRect, &blitter, 0, 3, 1000, 0);
+    } else {
+        BlitPlain<unsigned short> blitter;
+        return BlitDriver(dest, destRect, src, srcRect, &blitter, 0, 3, 1000, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x7BC250
+// Dead in retail (no callers). The same copy through the transparent blitters.
+bool FUN_007BC250(Surface* dest, RectangleStruct* destRect, Surface* src,
+                  RectangleStruct* srcRect)
+{
+    if (dest->GetBytesPerPixel() == 1) {
+        BlitTrans<unsigned char> blitter;
+        return BlitDriver(dest, destRect, src, srcRect, &blitter, 0, 3, 1000, 0);
+    } else {
+        BlitTrans<unsigned short> blitter;
+        return BlitDriver(dest, destRect, src, srcRect, &blitter, 0, 3, 1000, 0);
+    }
+}
+

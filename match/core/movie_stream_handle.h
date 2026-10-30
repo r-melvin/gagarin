@@ -24,7 +24,7 @@ struct MovieFrame_007BD470
     int unknown_14; // 0x14
     int unknown_18; // 0x18
     int unknown_1C; // 0x1c
-    unsigned char unknown_20[0x4];
+    int unknown_20; // 0x20
     int unknown_24; // 0x24
     int unknown_28; // 0x28
 };
@@ -35,6 +35,7 @@ GG_STATIC_ASSERT(offsetof(MovieFrame_007BD470, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(MovieFrame_007BD470, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(MovieFrame_007BD470, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(MovieFrame_007BD470, unknown_1C) == 0x1c);
+GG_STATIC_ASSERT(offsetof(MovieFrame_007BD470, unknown_20) == 0x20);
 GG_STATIC_ASSERT(offsetof(MovieFrame_007BD470, unknown_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(MovieFrame_007BD470, unknown_28) == 0x28);
 
@@ -45,15 +46,20 @@ struct MovieLoadBuffer_007BD470
     unsigned char* unknown_0; // 0x0
     MovieLoadBuffer_007BD470* unknown_4; // 0x4
     MovieLoadBuffer_007BD470* unknown_8; // 0x8
-    unsigned char unknown_C[0xc];
+    int unknown_C; // 0xc
+    int unknown_10; // 0x10
+    int unknown_14; // 0x14
 };
 GG_STATIC_ASSERT(offsetof(MovieLoadBuffer_007BD470, unknown_4) == 0x4);
 GG_STATIC_ASSERT(offsetof(MovieLoadBuffer_007BD470, unknown_8) == 0x8);
+GG_STATIC_ASSERT(offsetof(MovieLoadBuffer_007BD470, unknown_C) == 0xc);
+GG_STATIC_ASSERT(offsetof(MovieLoadBuffer_007BD470, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(MovieLoadBuffer_007BD470, unknown_14) == 0x14);
 
 typedef int (__cdecl *MovieIoFn_007BD470)(MovieHandle_007BD470* h, int op, void* buf, int size);
 typedef void* (__cdecl *MovieMemFn_007BD470)(MovieHandle_007BD470* h, int op, void* p, int size);
-typedef int (__cdecl *MoviePaletteFn_007BD470)(MovieHandle_007BD470* h, int op, int frame, int arg);
-typedef int (__cdecl *MovieFrameFn_007BD470)(int op, int frame);
+typedef int (__cdecl *MoviePaletteFn_007BD470)(MovieHandle_007BD470* h, int op, ...);
+typedef int (__cdecl *MovieFrameFn_007BD470)(MovieHandle_007BD470* h, int frame);
 typedef int (__cdecl *MovieAudioFn_007BD470)(MovieHandle_007BD470* h, int op, void* buf, int size);
 
 typedef int (*MovieStepFn_007BD470)(MovieHandle_007BD470* h);
@@ -263,7 +269,7 @@ struct MovieHandle_007BD470
     unsigned char unknown_188[0x18];
     MovieDrawState_007BD470 unknown_1A0; // 0x1a0
     MovieFrame_007BD470* unknown_6DC; // 0x6dc
-    unsigned char unknown_6E0[0x4];
+    int unknown_6E0; // 0x6e0
     MovieFrame_007BD470* unknown_6E4; // 0x6e4
     unsigned char* unknown_6E8; // 0x6e8
     MovieLoadBuffer_007BD470* unknown_6EC; // 0x6ec
@@ -339,6 +345,7 @@ GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_3F) == 0x3f);
 GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_40) == 0x40);
 GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_C8) == 0xc8);
 GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_E8) == 0xe8);
+GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_6E0) == 0x6e0);
 GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_11C) == 0x11c);
 GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_120) == 0x120);
 GG_STATIC_ASSERT(offsetof(MovieHandle_007BD470, unknown_128) == 0x128);

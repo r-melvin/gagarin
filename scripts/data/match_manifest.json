@@ -148134,5 +148134,86 @@
   "name": "?FUN_00735120@@YIPAGPBD@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/xsurface_blit.cpp",
+  "addr": "0x7BBFF0",
+  "sym": "?FUN_007BBFF0@@YI_NPAVSurface@@PAURectangleStruct@@01PA_NPAPAX3@Z",
+  "len": "0x4f",
+  "name": "?FUN_007BBFF0@@YI_NPAVSurface@@PAURectangleStruct@@01PA_NPAPAX3@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/xsurface_blit.cpp",
+  "addr": "0x7BC1F0",
+  "sym": "?FUN_007BC1F0@@YI_NPAVSurface@@PAURectangleStruct@@01@Z",
+  "len": "0x5b",
+  "name": "?FUN_007BC1F0@@YI_NPAVSurface@@PAURectangleStruct@@01@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/xsurface_blit.cpp",
+  "addr": "0x7BC250",
+  "sym": "?FUN_007BC250@@YI_NPAVSurface@@PAURectangleStruct@@01@Z",
+  "len": "0x5b",
+  "name": "?FUN_007BC250@@YI_NPAVSurface@@PAURectangleStruct@@01@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BEFE0",
+  "sym": "?FUN_007befe0@@YIXPAUMovieHandle_007BD470@@@Z",
+  "len": "0xcb",
+  "name": "?FUN_007befe0@@YIXPAUMovieHandle_007BD470@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BF0B0",
+  "sym": "?FUN_007bf0b0@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x8a",
+  "name": "?FUN_007bf0b0@@YIHPAUMovieHandle_007BD470@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BF190",
+  "sym": "?FUN_007bf190@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x81",
+  "name": "?FUN_007bf190@@YIHPAUMovieHandle_007BD470@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C1D90",
+  "sym": "?FUN_007c1d90@@YIHPAUMovieHandle_007BD470@@H@Z",
+  "len": "0x7c",
+  "name": "?FUN_007c1d90@@YIHPAUMovieHandle_007BD470@@H@Z",
+  "status": "partial",
+  "pct": 91.5
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C20B0",
+  "sym": "?FUN_007c20b0@@YIHPAUMovieHandle_007BD470@@H@Z",
+  "len": "0xc5",
+  "name": "?FUN_007c20b0@@YIHPAUMovieHandle_007BD470@@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C3750",
+  "sym": "?FUN_007c3750@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0xd0",
+  "name": "?FUN_007c3750@@YIHPAUMovieHandle_007BD470@@@Z",
+  "status": "partial",
+  "pct": 94.4
  }
 ]

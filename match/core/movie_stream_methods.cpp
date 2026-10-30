@@ -48,6 +48,8 @@ int FUN_007be660(MovieHandle_007BD470* h);
 int FUN_007bf470(MovieHandle_007BD470* h, int mode);
 char FUN_007c04e0(MovieHandle_007BD470* h, int frame);
 void FUN_007c06b0(MovieHandle_007BD470* h, int frame, int* out, int mode);
+void FUN_007befe0(MovieHandle_007BD470* h);
+void FUN_007be940(MovieHandle_007BD470* h, MovieFrame_007BD470* node);
 int FUN_007c0740(MovieHandle_007BD470* h, int frame, int groupSize, char audio, char reset, char* isKey);
 void* __cdecl FUN_007be5d0(MovieHandle_007BD470* h, int op, void* p, int size);
 void FUN_007c2c60(MovieHandle_007BD470* h);
@@ -735,6 +737,91 @@ int FUN_007bee20(MovieHandle_007BD470* h, MovieConfig_007BD470* config, MovieDra
     return frame;
 }
 
+// FUNCTION: GAMEMD 0x007befe0
+// Expands the pending blocks of the current drawer frame: the loader buffer, the
+// frame's own block run and its palette run.
+void FUN_007befe0(MovieHandle_007BD470* h)
+{
+    MovieFrame_007BD470* node = h->unknown_1A0.unknown_0;
+    MovieLoadBuffer_007BD470* buf = node->unknown_4;
+    if (!(h->unknown_1A0.unknown_4 & 2)) {
+        if (buf->unknown_C & 2) {
+            unsigned char* src;
+            if (h->unknown_154 & 1) {
+                src = h->unknown_6F0;
+                buf->unknown_C |= 4;
+            } else {
+                src = buf->unknown_0;
+            }
+            buf->unknown_14 = FUN_007c81db(buf->unknown_0 + buf->unknown_10, src, h->unknown_774);
+            buf->unknown_C &= ~2;
+        }
+        if (node->unknown_14 & 8) {
+            node->unknown_28 = FUN_007c81db(node->unknown_8 + node->unknown_24, node->unknown_8, h->unknown_770);
+            node->unknown_14 &= ~8;
+        }
+        if (node->unknown_14 & 0x10) {
+            unsigned char* src;
+            if (h->unknown_154 & 2) {
+                src = h->unknown_6E8;
+                node->unknown_14 |= 0x40;
+            } else {
+                src = node->unknown_0;
+            }
+            FUN_007c81db(node->unknown_0 + node->unknown_20, src, h->unknown_778);
+            node->unknown_14 &= ~0x10;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x007bf0b0
+// Drawer step that hands a palette change (the frame's own, or the pending one) to the palette
+// callback, runs the frame preparation and asks the frame callback whether to stop.
+int FUN_007bf0b0(MovieHandle_007BD470* h)
+{
+    MovieFrame_007BD470* node = h->unknown_6DC;
+    if ((node->unknown_14 & 4) || (h->unknown_1A0.unknown_4 & 1)) {
+        if (node->unknown_14 & 4) {
+            if (h->unknown_40.unknown_8) {
+                h->unknown_40.unknown_8(h, 2, node->unknown_8, node->unknown_28);
+            }
+        } else if (h->unknown_1A0.unknown_4 & 1) {
+            h->unknown_1A0.unknown_4 &= ~1;
+            if (h->unknown_40.unknown_8) {
+                h->unknown_40.unknown_8(h, 2, h->unknown_1A0.unknown_24, h->unknown_1A0.unknown_20);
+            }
+        }
+    }
+    FUN_007be940(h, node);
+    if (h->unknown_40.unknown_C && h->unknown_40.unknown_C(h, node->unknown_1C)) {
+        return -2;
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x007bf190
+// The same step without the frame preparation.
+int FUN_007bf190(MovieHandle_007BD470* h)
+{
+    MovieFrame_007BD470* node = h->unknown_6DC;
+    if ((node->unknown_14 & 4) || (h->unknown_1A0.unknown_4 & 1)) {
+        if (node->unknown_14 & 4) {
+            if (h->unknown_40.unknown_8) {
+                h->unknown_40.unknown_8(h, 2, node->unknown_8, node->unknown_28);
+            }
+        } else if (h->unknown_1A0.unknown_4 & 1) {
+            h->unknown_1A0.unknown_4 &= ~1;
+            if (h->unknown_40.unknown_8) {
+                h->unknown_40.unknown_8(h, 2, h->unknown_1A0.unknown_24, h->unknown_1A0.unknown_20);
+            }
+        }
+    }
+    if (h->unknown_40.unknown_C && h->unknown_40.unknown_C(h, node->unknown_1C)) {
+        return -2;
+    }
+    return -1;
+}
+
 // FUNCTION: GAMEMD 0x007bf240
 // Default file I/O callback: open/close/read/seek/length on a CRT handle.
 int __cdecl FUN_007bf240(MovieHandle_007BD470* h, int op, void* buf, int b)
@@ -1166,6 +1253,57 @@ int FUN_007c1be0(MovieHandle_007BD470* h)
         if (h->unknown_40.unknown_0(h, 5, h->unknown_760, CHUNK_LEN_BE(chunk.Size)) != 0) {
             return -4;
         }
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x007c1d90
+// Reads a (word-padded) run into the tail of the current loader buffer and files that buffer as
+// filled, marking the byte after the run for streams older than version 3.
+int FUN_007c1d90(MovieHandle_007BD470* h, int size)
+{
+    int len = (size + 1) & ~1;
+    MovieLoadBuffer_007BD470* buf = h->unknown_164;
+    int offset = h->unknown_768 - len;
+    unsigned char* dest = buf->unknown_0 + offset;
+    if (h->unknown_40.unknown_0(h, 5, dest, len) != 0) {
+        return -4;
+    }
+    h->unknown_174 = 0;
+    buf->unknown_C = 10;
+    buf->unknown_10 = offset;
+    h->unknown_168 = buf;
+    h->unknown_164 = buf->unknown_4;
+    if (h->unknown_E8.unknown_0 < 3) {
+        dest[size + 1] = 0x80;
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x007c20b0
+// Reads a (word-padded) run into the tail of the current frame node's block area, flags it as
+// pending and, for a single-palette stream, expands it straight into the pending palette.
+int FUN_007c20b0(MovieHandle_007BD470* h, int size)
+{
+    int len = (size + 1) & ~1;
+    MovieFrame_007BD470* node = h->unknown_170;
+    int offset = h->unknown_770 - len;
+    unsigned char* dest = node->unknown_8 + offset;
+    if (h->unknown_40.unknown_0(h, 5, dest, len) != 0) {
+        return -4;
+    }
+    node->unknown_14 |= 8;
+    node->unknown_24 = offset;
+    node->unknown_28 = size;
+    if (h->unknown_E8.unknown_0 < 3) {
+        dest[size + 1] = 0x80;
+    }
+    if (h->unknown_758 == 1) {
+        node->unknown_28 = FUN_007c81db(node->unknown_8 + node->unknown_24, node->unknown_8, h->unknown_770);
+        node->unknown_14 &= ~8;
+        memcpy(h->unknown_1A0.unknown_24, node->unknown_8, node->unknown_28);
+        h->unknown_1A0.unknown_20 = node->unknown_28;
+        h->unknown_1A0.unknown_4 |= 1;
     }
     return -1;
 }
@@ -1768,6 +1906,41 @@ int FUN_007c3270(MovieHandle_007BD470* h, unsigned char* buf, unsigned int w, un
     }
     h->unknown_150 |= 0x10;
     return -1;
+}
+
+// FUNCTION: GAMEMD 0x007c3750
+// Runs the deferred per-frame work of the shown node (pending palette and audio hooks, seek
+// housekeeping), steps the drawer, then retires the node's pending flags.
+int FUN_007c3750(MovieHandle_007BD470* h)
+{
+    MovieFrame_007BD470* node = h->unknown_6DC;
+    if (h->unknown_40.unknown_8) {
+        if (node->unknown_14 & 0x100) {
+            h->unknown_40.unknown_8(h, 4, node->unknown_1C, h->unknown_120);
+            node->unknown_14 &= ~0x100;
+        }
+        if (node->unknown_14 & 0x200) {
+            h->unknown_40.unknown_8(h, 5, node->unknown_1C, h->unknown_120);
+            node->unknown_14 &= ~0x200;
+        }
+        if (node->unknown_14 & 0x400) {
+            FUN_007be830(h, node->unknown_1C);
+            node->unknown_14 &= ~0x400;
+        }
+    }
+    int r = h->unknown_780(h);
+    h->unknown_6E0 = node->unknown_1C;
+    if (!(h->unknown_1A0.unknown_4 & 8)) {
+        node->unknown_18 = node->unknown_14;
+        node->unknown_14 = 0;
+        return r;
+    }
+    if (h->unknown_1A0.unknown_4 & 0x10) {
+        node->unknown_14 |= 0x800;
+        h->unknown_1A0.unknown_4 &= ~0x10;
+    }
+    h->unknown_1A0.unknown_4 &= ~8;
+    return r;
 }
 
 // FUNCTION: GAMEMD 0x007c3d60
