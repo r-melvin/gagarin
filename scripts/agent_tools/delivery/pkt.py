@@ -419,7 +419,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
     bk = os.path.join(D.BACKUPS, e["NAME"])
     if a.backup:
         os.makedirs(bk, exist_ok=True)
-        shutil.copytree(R, os.path.join(bk, "READY"), dirs_exist_ok=True)
+        shutil.copytree(R, os.path.join(bk, "READY"), dirs_exist_ok=True, symlinks=True)
         say("backed up to", bk)
     say("finish: %d exact, %d partial; gates rc %d; lint rc %d" % (nexact, npart, rc, lint.returncode))
     return 1 if rc or lint.returncode else 0
@@ -434,8 +434,12 @@ def held_backup(e):
     diff = L.git(wt, "diff", "--binary", "HEAD", "--", ".")
     open(os.path.join(dest, "worktree.diff"), "w").write(diff)
     if os.path.isdir(e["PKT_DIR"]):
+        # Copy only the small packet files: never the worktree, build output or symlinks
+        # (a followed toolchain link once made each backup ~80 GB and filled the drive).
         import shutil
-        shutil.copytree(e["PKT_DIR"], os.path.join(dest, "pkt_dir"), dirs_exist_ok=True)
+        skip = shutil.ignore_patterns("wt", "obj", "build-vc6", "toolchain", "__pycache__", "*.obj", "*.exe", "tmp*")
+        shutil.copytree(e["PKT_DIR"], os.path.join(dest, "pkt_dir"), dirs_exist_ok=True,
+                        symlinks=True, ignore=skip)
     say("held: worktree diff (%d bytes) backed up to %s" % (len(diff), dest))
 
 
