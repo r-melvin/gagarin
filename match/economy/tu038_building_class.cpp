@@ -2918,6 +2918,242 @@ refuse:
     return false;
 }
 
+#include "../_layout/techno_class.h"
+#include "../_layout/anim_class.h"
+#include "../_layout/warhead_type_class.h"
+#include "../_layout/capture_manager_class.h"
+#include "../combat/particles/system_class.h"
+#include "../core/randomizer.h"
+#include "house_building/building_a2_fold.h"
+
+// Moved from building_a2_damage.cpp (the BA2 parallel view family is retired); written against the canonical
+// BuildingClass, TechnoClass, ObjectClass, HouseClass, BuildingTypeClass, RulesClass and ScenarioClass.
+// The animation-name refresh the original expanded twice: the health ratio against the rules threshold decides
+// which of the two names of every damage-state animation slot is shown.
+inline void BuildingClass::RefreshAnimStates()
+{
+    double ratio = FUN_005F5C60();
+    bool low = ratio <= Rules->ConditionYellow;
+    if (IsDamaged != low) {
+        IsDamaged = low;
+        for (int i = 0; i < 0x15; i++) {
+            if (Anims[i]) {
+                char* name = low ? Type->BuildingAnim[i].Damaged : Type->BuildingAnim[i].Anim;
+                if (name && *name) {
+                    PlayAnim(name, i, low, 0, 0);
+                }
+            }
+        }
+    }
+}
+
+// PARTIAL: 1.6% (unchanged from the BA2 view; 745 retail vs 751 compiled instructions, 12 retail-only and 16
+// compiled-only by multiset, the positional score is low because of an early shift). Remaining delta: retail keeps the attacker in EBP and the zero constant in EBX (every null test is
+// `cmp ebp,ebx`; ours tests EDI), the frame is 0x8C where ours is 0x80 (retail keeps four hidden-pointer coordinate
+// results where canonical by-value slot 18 returns are copied), and the two expansions of the health-ratio refresh
+// are cross-jumped in ours but duplicated in retail.
+// FUNCTION: GAMEMD 0x442230
+// Slot 91, ReceiveDamage: the base-class damage run decides the resulting damage state; this override adds
+// the occupant bookkeeping and the destruction / state-change reactions on top. The slot keeps the base ABI
+// (void* warhead / source / house): the typed pointers are locals.
+int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sourceArg, bool ignoreDefenses,
+                         bool preventsPassengerEscape, void* houseArg)
+{
+    WarheadTypeClass* warhead = static_cast<WarheadTypeClass*>(warheadArg);
+    TechnoClass* attacker = static_cast<TechnoClass*>(sourceArg);
+    HouseClass* sourceHouse = static_cast<HouseClass*>(houseArg);
+    int result = 0;
+
+    if (this == attacker && !attacker->vf_33()->DamageSelf) {
+        return result;
+    }
+    FUN_005F5C60();
+    int stateBefore = FUN_0043EF90();
+    int i = 0;
+
+    if (attacker && !vf_32()) {
+        Owner->LATime = CurrentFrame;
+        Owner->LAEnemy = attacker->vf_15()->ArrayIndex;
+        FUN_00708080(attacker);
+    }
+
+    CellStruct* cells = static_cast<CellStruct*>(vf_66(0));
+    BuildingBVector<TechnoClass> occupants(0, 0);
+    for (; i < RadioLinks.Capacity; i++) {
+        TechnoClass* occupant = FUN_0065AD30(i);
+        if (occupant) {
+            occupants.AddItem(occupant);
+        }
+    }
+
+    if (Type->bools_16A4[27] && !ignoreDefenses) {
+        return 0;
+    }
+    if (Type->bools_16A4[18] && Type->Immune) {
+        return 0;
+    }
+
+    if (Health) {
+        result = FUN_00701900(damage, distance, warhead, attacker, ignoreDefenses, preventsPassengerEscape, sourceHouse);
+        if (!IsAlive) {
+            return result;
+        }
+        switch (result) {
+        case 5:
+            return result;
+        case 4:
+            if (BunkerLinkedItem) {
+                occupants.RemoveItem(BunkerLinkedItem);
+                FUN_004593A0();
+            }
+            if (CaptureManager) {
+                static_cast<CaptureManagerClass*>(CaptureManager)->FreeAll();
+            }
+            if (LocomotorTarget) {
+                FUN_0070FEE0(1);
+            }
+            for (i = 0; i < occupants.Count; i++) {
+                TechnoClass* occupant = occupants.Items[i];
+                CoordStruct a, b, c;
+                CoordStruct from = occupant->vf_18();
+                CoordStruct to = vf_18();
+                CoordStruct delta = *c.FUN_0041C230(to.X - from.X, to.Y - from.Y, to.Z - from.Z);
+                if (delta.FUN_0041C380() >= 256 && !Type->bools_16A4[39]) {
+                    vf_158(0x17, occupant);
+                    occupant->QueueUpToEnter = 0;
+                } else {
+                    int hurt = occupant->vf_33()->Strength * 10;
+                    occupant->vf_91(&hurt, 0, Rules->C4Warhead, 0, true, true, 0);
+                }
+            }
+            {
+                int capacity = occupants.Capacity;
+                occupants.Clear();
+                occupants.SetCapacity(capacity, 0);
+            }
+            if (Type->bools_1570[11]) {
+                FUN_00457DE0(0, 0);
+            }
+            if (LightSource) {
+                LightSource->FUN_00554A80(0);
+            }
+            vf_315(0, reinterpret_cast<int>(attacker), ignoreDefenses, reinterpret_cast<int>(cells));
+            {
+                int left = C4Timer.TimeLeft;
+                if (C4Timer.StartTime != -1) {
+                    int elapsed = CurrentFrame - C4Timer.StartTime;
+                    if (elapsed >= left) {
+                        break;
+                    }
+                    left -= elapsed;
+                }
+                if (left > 0) {
+                    vf_62();
+                    FUN_00441F60();
+                }
+            }
+            break;
+        case 2:
+            if (NaturalParticleSystem) {
+                static_cast<ParticleSystemClass*>(NaturalParticleSystem)->unknown_E8 = static_cast<ParticleSystemClass*>(NaturalParticleSystem)->unknown_E8 * 1.5f;
+            }
+            // fall through
+        case 3:
+            if (vf_33()->DamageSound == -1) {
+                CoordStruct where = Location;
+                FUN_00750E20(Rules->BuildingDamageSound, &where, 0);
+            }
+            while (!(cells->X == 0x7FFF && cells->Y == 0x7FFF)) {
+                CellStruct offset = *cells++;
+                CellStruct here = vf_110();
+                CoordStruct pos;
+                pos.X = (short)(offset.X + here.X) * 256 + 128;
+                pos.Y = (short)(offset.Y + here.Y) * 256 + 128;
+                pos.Z = 0;
+                pos.Z = DAT_0087F7E8.FUN_00578080(&pos);
+                if (!warhead->Sparky) {
+                    continue;
+                }
+                int rows = Type->GetFoundationHeight(false);
+                switch (DAT_00A8B230->unknown_0218.RandomRanged(0, rows + Type->GetFoundationWidth() + 5)) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    {
+                        CoordStruct scatter;
+                        AnimClass* anim = new AnimClass(const_cast<AnimTypeClass*>(Rules->list_0B74.Items[0]),
+                                                        *FUN_0049F420(&scatter, &pos, 0x60, 0), 0,
+                                                        DAT_00A8B230->unknown_0218.RandomRanged(1, 3), 0x600, 0, 0);
+                        if (anim) {
+                            anim->FUN_00424B50(this);
+                        }
+                    }
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    {
+                        CoordStruct scatter;
+                        AnimClass* anim = new AnimClass(const_cast<AnimTypeClass*>(Rules->list_0B74.Items[1]),
+                                                        *FUN_0049F420(&scatter, &pos, 0x60, 0), 0,
+                                                        DAT_00A8B230->unknown_0218.RandomRanged(1, 3), 0x600, 0, 0);
+                        if (anim) {
+                            anim->FUN_00424B50(this);
+                        }
+                    }
+                    break;
+                case 9:
+                    {
+                        CoordStruct scatter;
+                        AnimClass* anim = new AnimClass(const_cast<AnimTypeClass*>(Rules->list_0B74.Items[2]),
+                                                        *FUN_0049F420(&scatter, &pos, 0x60, 0), 0, 1, 0x600, 0, 0);
+                        if (anim) {
+                            anim->FUN_00424B50(this);
+                        }
+                    }
+                    break;
+                }
+            }
+            break;
+        }
+    }
+
+    if (!IsAlive) {
+        return 4;
+    }
+    if (attacker) {
+        if (result) {
+            if (!Type->Insignificant && !vf_32()) {
+                Owner->FUN_004F93E0(this);
+            }
+            OwnerCountryIndex = attacker->vf_15()->ArrayIndex;
+            if (CurrentMission != 0x13 && !Owner->FUN_004F9A90(attacker) && vf_254(0)->WeaponType
+                && !vf_254(0)->WeaponType->Projectile->unknown_2A4 && (!Target || !vf_235(Target))) {
+                if (attacker->vf_11() == 2 || (Owner->FUN_0050B730() && !Rules->PlayerReturnFire)) {
+                    if (!PrimaryFacing.FUN_004C9480() && vf_212()) {
+                        DirStruct dir;
+                        dir.Raw = 0;
+                        dir.Raw = (unsigned short)(DAT_00A8B230->unknown_0218.Random() << 8);
+                        PrimaryFacing.SetDesired(dir);
+                    }
+                } else {
+                    vf_242(attacker);
+                }
+            }
+        }
+    }
+    if (result) {
+        RefreshAnimStates();
+    }
+    if (stateBefore != FUN_0043EF90()) {
+        NeedsRedraw = 1;
+        RefreshAnimStates();
+    }
+    return result;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x442C40
@@ -4584,6 +4820,107 @@ HBDir* BuildingAView::vf_194(HBDir* out)
         *out = vf_314(Target);
     }
     return out;
+}
+
+// Moved from building_a2_state.cpp. CAPPED (partial, readable): 95.2% of the retail instructions align (96.9% with registers ignored); the positional
+// score is lower (66.7%) because of two small shifts. Remaining delta: (1) in the state-2 countdown retail keeps the
+// elapsed ticks in ECX and the remaining ticks in EAX, our register choice is the other way round (4 instructions);
+// (2) retail does not cross-jump the third timer start into the first one (3 stores). Variants tried: the 900.0 and
+// 1.0 constants as globals / literals, the frame (hoisted coordinate, 16-byte by-value result of slot 75), the order of
+// the timer stores and BState store, and four spellings of the elapsed/left comparison.
+// FUNCTION: GAMEMD 0x44E440
+// Slot 149, the construction (build-up) mission step: MissionStatus 0 starts the build-up animation, 1 and 4 wait for
+// it, 2 counts the timer down, 3 starts the sell-style reverse run; every path ends with the price query.
+int BuildingClass::vf_149()
+{
+    CoordStruct where;   // declared up front: the retail frame keeps it apart from the later temporaries
+    if (Type->bools_16A4[19]) {
+        switch (MissionStatus) {
+        case 0:
+            if (UnloadTimer.FUN_004A51B0()) {
+                RateTimer t;
+                t.Timer.TimeLeft = t.Rate = (int)(Type->GateCloseDelay * 900.0);
+                t.Timer.StartTime = CurrentFrame;
+                MissionStatus = 2;
+                GateTimer = t;
+                break;
+            }
+            if (!UnloadTimer.FUN_004A5110()) {
+                if (UnloadTimer.FUN_004A5130()) {
+                    UnloadTimer.FUN_004A5290();
+                } else {
+                    UnloadTimer.FUN_004A51F0(Type->DeployTime);
+                    where = Location;
+                    FUN_007509E0(RulesInstance->GateDown, &where, 0);
+                    DAT_00887324->FUN_006D2790(vf_75(), 0);
+                }
+            }
+            {
+                MissionStatus = 1;
+                RateTimer t;
+                t.Timer.TimeLeft = t.Rate = (int)(Type->GateCloseDelay * 900.0);
+                t.Timer.StartTime = CurrentFrame;
+                GateTimer = t;
+            }
+            return 0;
+        case 3:
+            {
+                UnloadTimer.FUN_004A5240(Type->DeployTime);
+                MissionStatus = 4;
+                CoordStruct where = Location;
+                FUN_007509E0(RulesInstance->GateUp, &where, 0);
+            }
+            return 0;
+        case 2:
+            if (!FUN_0044E3A0()) {
+                int duration = GateTimer.Rate;
+                if (duration) {
+                    int left = GateTimer.Timer.TimeLeft;
+                    if (GateTimer.Timer.StartTime != -1) {
+                        int elapsed = CurrentFrame - GateTimer.Timer.StartTime;
+                        if (elapsed >= left) {
+                            left = 0;
+                        } else {
+                            left = left - elapsed;
+                        }
+                    }
+                    if ((double)(duration - left) / duration != 1.0) {
+                        break;
+                    }
+                }
+                MissionStatus = 3;
+            } else {
+                RateTimer t;
+                t.Timer.TimeLeft = t.Rate = (int)(Type->GateCloseDelay * 900.0);
+                t.Timer.StartTime = CurrentFrame;
+                GateTimer = t;
+            }
+            break;
+        case 1:
+            if (UnloadTimer.FUN_004A51B0()) {
+                MissionStatus = 2;
+            }
+            // fall through
+        case 4:
+            if (UnloadTimer.FUN_004A51D0()) {
+                EnterIdleMode(false, 1);
+                MissionStatus = 5;
+                NeedsRedraw = 1;
+            }
+            if (UnloadTimer.FUN_004A5110() || UnloadTimer.FUN_004A5130() || UnloadTimer.FUN_004A51B0()) {
+                int v = (int)(UnloadTimer.FUN_004A52F0() * Type->GateStages);
+                if (v != GateStage) {
+                    GateStage = (signed char)v;
+                    NeedsRedraw = 1;
+                }
+            }
+            return 0;
+        }
+        int price = (int)(FUN_005B3A00()->Rate * 900.0);
+        return price + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+    }
+    vf_122(5, 0);
+    return 1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -48738,9 +48738,9 @@
   "pct": 4.4
  },
  {
-  "tu": "match/economy/house_building/building_a2_damage.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x442230",
-  "sym": "?vf_91@BA2Building@@UAEHPAHHPAUBA2Warhead@@PAVBA2Obj@@_N3PAVBA2House@@@Z",
+  "sym": "?vf_91@BuildingClass@@UAEHPAHHPAX1_N21@Z",
   "len": "0x9e7",
   "name": "BuildingClass::vf_91",
   "status": "partial",
@@ -49079,7 +49079,7 @@
   "note": "scored on the code span 0xb09 (the jump tables after it are not scored)"
  },
  {
-  "tu": "match/economy/house_building/building_a2_state.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x44E440",
   "sym": "?vf_149@BuildingClass@@UAEHXZ",
   "len": "0x355",

@@ -67,6 +67,8 @@ public:
     virtual void unused_slot_0();
     virtual void unused_slot_1();
     virtual bool SetCapacity(int capacity, void* mem);   // 2 (+8)
+    virtual void Clear();                                // 3 (+0xC)
+    virtual int FindItemIndex(T** item);                 // 4 (+0x10)
     T** Items;                   // +0x04
     int Capacity;                // +0x08
     bool IsInitialized;          // +0x0C
@@ -80,6 +82,20 @@ public:
     {
         if (Items && IsAllocated)
             operator delete(Items);
+    }
+
+    // DynamicVectorClass::RemoveItem, expanded inline.
+    bool RemoveItem(T* item)
+    {
+        int index = FindItemIndex(&item);
+        if (index != -1 && index < Count) {
+            Count = Count - 1;
+            for (; index < Count; ++index) {
+                Items[index] = Items[index + 1];
+            }
+            return true;
+        }
+        return false;
     }
 
     // DynamicVectorClass::AddItem, expanded inline.

@@ -12,4 +12,9 @@
 // FUNCTION: GAMEMD 0x7509E0 (read-only here) - plays a sound at a position (the sound id in ECX).
 void FUN_007509E0(int sound, CoordStruct* where, void* unused);
 
+// FUNCTION: GAMEMD 0x750E20 (read-only here) - plays a sound at a position (the sound id in ECX).
+void FUN_00750E20(int sound, CoordStruct* where, int flag);
+// FUNCTION: GAMEMD 0x49F420 (read-only here) - the scattered coordinate near a point (result buffer in ECX, point in EDX).
+CoordStruct* FUN_0049F420(CoordStruct* out, CoordStruct* from, int distance, int flag);
+
 #endif

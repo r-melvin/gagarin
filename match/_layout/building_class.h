@@ -143,6 +143,7 @@ public:
     virtual bool vf_40();                                               // 40  0x44F5C0
     virtual CoordStruct vf_41();                                       // 41  0x4500A0
     virtual void vf_60(CoordStruct* coord);                             // 60  0x453D60: sets cell flag 0x80
+    virtual int vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house); // 91 0x442230: ReceiveDamage
     virtual void vf_61(CoordStruct* coord);                             // 61  0x453DC0: clears it
     virtual const wchar_t* vf_36();                                     // 36  0x459ED0: the type's UIName
     virtual CoordStruct vf_18();                                        // 18  0x447AC0
@@ -264,6 +265,14 @@ public:
     // Declaration: GAMEMD 0x4566B0, ECX receiver, EAX integer range.
     int FUN_004566B0();
     int FUN_0043EF90();
+    // FUNCTION: GAMEMD 0x4593A0 (decl; reloc) -- __thiscall.
+    void FUN_004593A0();
+    // FUNCTION: GAMEMD 0x457DE0 (decl; reloc) -- two stack arguments.
+    void FUN_00457DE0(int a, int b);
+    // Inline helper of 0x442230 (no retail address): refreshes the damage-state animation names.
+    void RefreshAnimStates();
+    // Slot 235 of the primary table (0x3AC), called by 0x442230 with the target.
+    virtual bool vf_235(AbstractClass* target);
     // FUNCTION: GAMEMD 0x65AD40 (decl; reloc) -- one stack argument (RET 4); the object being worked on.
     ObjectClass* FUN_0065AD40(int a1);
     // FUNCTION: GAMEMD 0x452260 (decl; reloc)

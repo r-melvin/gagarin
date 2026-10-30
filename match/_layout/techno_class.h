@@ -193,6 +193,10 @@ public:
     void FUN_004DC340(); // ECX receiver, RET; render6D478E
     // CALLEE: GAMEMD 0x70FEE0 -- existing matched Techno_0070FEE0 provider; one bool arg, RET 4.
     void FUN_0070FEE0(bool clearTarget);
+    // FUNCTION: GAMEMD 0x701900 (decl; reloc) -- the TechnoClass body of slot 91 (ReceiveDamage), called non-virtually.
+    int FUN_00701900(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house);
+    // FUNCTION: GAMEMD 0x708080 (decl; reloc) -- one stack argument (the attacker).
+    void FUN_00708080(TechnoClass* attacker);
     // CALLEE: GAMEMD 0x710000 -- thiscall, RawBlock10 by value plus AbstractClass*, RET 0x14.
     void FUN_00710000(RawBlock10 locomotor, AbstractClass* target);
     // FUNCTION: GAMEMD 0x734270 (decl; reloc)
