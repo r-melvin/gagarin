@@ -130,8 +130,8 @@ char* __fastcall FUN_0046C4D0(unsigned int index)
 CoordStruct BulletTypeClass::vf_27(const CoordStruct& coord)
 {
     CoordStruct result = coord;
-    if (result.Z <= Map_0087F7E8.FUN_00578080(&result))
-        result.Z = Map_0087F7E8.FUN_00578080(&result) + 1;
+    if (result.Z <= Map_0087F7E8.GetZPos(&result))
+        result.Z = Map_0087F7E8.GetZPos(&result) + 1;
     return result;
 }
 

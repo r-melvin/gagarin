@@ -560,7 +560,7 @@ void BulletClass::vf_23()
         }
         if (bridgeOnEitherSide) {
           const int floorHeight =
-              Map_0087F7E8.FUN_00578080(&flightPosition) + DAT_0089DE64;
+              Map_0087F7E8.GetZPos(&flightPosition) + DAT_0089DE64;
           const int previousZ = previousPosition.Z;
           const int updatedZ = flightPosition.Z;
           if ((updatedZ > floorHeight && previousZ < floorHeight) ||
@@ -607,7 +607,7 @@ void BulletClass::vf_23()
                                      static_cast<int>(positionY),
                                      static_cast<int>(positionZ));
 
-        const int baseFloor = Map_0087F7E8.FUN_00578080(&updatedPosition);
+        const int baseFloor = Map_0087F7E8.GetZPos(&updatedPosition);
         const int bridgeHeight = baseFloor + DAT_0089DE64;
         CellClass* updatedCell =
             Map_0087F7E8.FUN_00565730(updatedPosition);
@@ -740,7 +740,7 @@ void BulletClass::vf_23()
           priorPosition.X = local_16c;
           priorPosition.Y = local_168;
           priorPosition.Z = local_164;
-          const int floorHeight = Map_0087F7E8.FUN_00578080(&nextPosition) +
+          const int floorHeight = Map_0087F7E8.GetZPos(&nextPosition) +
                                   DAT_0089DE64;
           CellClass* nextCell = Map_0087F7E8.FUN_00565730(nextPosition);
           bool bridgeOnEitherSide = (nextCell->Flags & 0x100) != 0;
@@ -1051,7 +1051,7 @@ void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
     int frame = vf_122();
     int height = vf_114();
     CoordStruct where = Location;
-    int floorHeight = Map_0087F7E8.FUN_00578080(&where);
+    int floorHeight = Map_0087F7E8.GetZPos(&where);
     if (!OnBridge) {
         where = Location;
         if ((Map_0087F7E8.FUN_00565730(where)->Flags & 0x100)
@@ -1184,7 +1184,7 @@ bool BulletClass::vf_124(const CoordStruct& source,
         if (intermediate.X != DAT_0089DE30.X
             || intermediate.Y != DAT_0089DE30.Y
             || intermediate.Z != DAT_0089DE30.Z) {
-            intermediate.Z = Map_0087F7E8.FUN_00578080(&intermediate);
+            intermediate.Z = Map_0087F7E8.GetZPos(&intermediate);
             vf_109(intermediate);
         } else {
             ObjectClass* obstacle = FUN_004CC100(&source, &destination, Type, house);

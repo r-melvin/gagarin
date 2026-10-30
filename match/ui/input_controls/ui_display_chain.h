@@ -309,8 +309,6 @@ public:
     CellClass* FUN_00565730(const CoordStruct& coord);
     // FUNCTION: GAMEMD 0x5865E0 (decl; reloc), __thiscall, RET 4.
     bool IsLocationFogged(const CoordStruct* coord) const;
-    // FUNCTION: GAMEMD 0x578080 (decl; reloc), __thiscall, RET 4.
-    int FUN_00578080(CoordStruct* where);
     // FUNCTION: GAMEMD 0x568350 (decl; reloc), CoordStruct by reference.
     bool FUN_00568350(const CoordStruct& coord);
     // FUNCTION: GAMEMD 0x5880A0 (decl; hidden CoordStruct result, RET 16).
