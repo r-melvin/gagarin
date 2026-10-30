@@ -144929,49 +144929,49 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/infantry_r23_methods.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x51F330",
   "sym": "?vf_266@InfantryClass@@UAEXXZ",
   "len": "0xa8",
   "name": "InfantryClass::vf_266",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/infantry_r23_methods.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x521B60",
   "sym": "?vf_128@InfantryClass@@UAE_NXZ",
   "len": "0xaf",
   "name": "InfantryClass::vf_128",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/infantry_r23_methods.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x522100",
   "sym": "?FUN_00522100@InfantryClass@@QAE_NXZ",
   "len": "0xc2",
   "name": "InfantryClass::FUN_00522100",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/infantry_r23_methods.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x523250",
   "sym": "?vf_44@InfantryClass@@UAE?AUCoordStruct@@HU2@@Z",
   "len": "0x9f",
   "name": "InfantryClass::vf_44",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/infantry_r23_methods.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x522550",
   "sym": "?FUN_00522550@InfantryClass@@QAEHXZ",
   "len": "0xa1",
   "name": "InfantryClass::FUN_00522550",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/house_class_r23_methods.cpp",
@@ -146616,13 +146616,13 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/infantry_disguise_5227f0.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x5227F0",
   "sym": "?vf_50@InfantryClass@@UAE_NPAVHouseClass@@@Z",
   "len": "0xb9",
   "name": "InfantryClass::vf_50",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_offset_tables_00579320.cpp",

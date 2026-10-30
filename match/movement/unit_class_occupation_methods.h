@@ -18,6 +18,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/unit_class.h"   // canonical UnitClass (FootClass spine, CoordStruct, CellStruct)
 #include "loco_interfaces.h"
+#include "loco_com.h"
 
 // CellClass — only the two occupation bitfields + the cell Flags dword that the
 // (un)mark methods touch are modelled. SubOccupation bit 0x20 = "Units".
@@ -47,26 +48,9 @@ public:
 // Bridge cell height delta added to the floor height before the on-bridge test.
 #define BridgeCellHeight (*reinterpret_cast<int*>(0x00B1D0AC))
 
-// ILocomotion is the canonical COM interface from loco_interfaces.h; slot 4
-// is IsMoving, which this method dispatches through the FootClass member.
-// _com_ptr_t<ILocomotion>::operator-> shape: NULL-check that raises E_POINTER,
-// then returns the (reloaded) interface pointer. Defined inline so it folds into
-// the call site exactly as retail's #import-generated smart pointer does.
-extern void __stdcall _com_issue_error(long hr);   // retail 0x7DC720, not matched
-
-struct ILocomotionPtr
-{
-    ILocomotion* m_pInterface;
-    ILocomotion* operator->() const
-    {
-        if (m_pInterface == 0)
-        {
-            _com_issue_error(0x80004003);   // E_POINTER
-        }
-        return m_pInterface;
-    }
-};
-
+// ILocomotionPtr is the canonical _com_ptr_t from loco_com.h; its operator-> carries the
+// NULL-check that raises E_POINTER through retail 0x7DC720. Slot 4 is IsMoving, which
+// this method dispatches through the FootClass member.
 // UnloadTimer::Start(double) — opens/begins the door transition (0x4A51F0,
 // __thiscall taking the door angle by value). Declared (no body) so cl emits a
 // relocatable __thiscall call.

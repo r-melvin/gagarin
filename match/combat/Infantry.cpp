@@ -58,6 +58,7 @@ extern double DAT_00A8F238;
 #include "../core/frame_counter.h"
 #include "../_layout/house_class.h"
 #include "../movement/loco_interfaces.h"
+#include "../movement/loco_com.h"
 #include "../_layout/building_class.h"
 #include "../_layout/cell_class.h"
 #include "../core/rules_class.h"
@@ -74,21 +75,8 @@ GG_STATIC_ASSERT(offsetof(InfantryClass, PanicDurationLeft) == 0x6D4);  // 0x521
 GG_STATIC_ASSERT(offsetof(InfantryClass, Technician)        == 0x6D9);  // 0x521C90
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, Fearless)      == 0xEBC);  // 0x521C10
 
-// The FootClass locomotor is an ILocomotion COM smart pointer. Dereferencing it
-// checks for null and raises E_POINTER through the library helper (retail 0x7DC720),
-// then reloads the interface pointer; the check is inlined at every use.
-extern void __stdcall _com_issue_error(long hr);
-struct ILocomotionPtr
-{
-    ILocomotion* m_pInterface;
-    ILocomotion* operator->() const
-    {
-        if (m_pInterface == 0) {
-            _com_issue_error(0x80004003);
-        }
-        return m_pInterface;
-    }
-};
+// The FootClass locomotor is the canonical ILocomotionPtr (_com_ptr_t, movement/loco_com.h);
+// dereferencing it raises E_POINTER through retail 0x7DC720 and the check is inlined at every use.
 GG_STATIC_ASSERT(offsetof(InfantryClass, Locomotor) == 0x674);
 static inline ILocomotionPtr* LocomotorOf(InfantryClass* unit)
 {
@@ -128,6 +116,11 @@ static inline int TimerRemaining(const CDTimerClass& timer)
 
 // GLOBAL: GAMEMD 0x8871E0
 #include "../_layout/rules_class.h"
+#include "../_layout/techno_class.h"
+#include "../core/mission_class_methods.h"
+#include "../core/randomizer.h"
+#include "../core/scenario_class_methods.h"
+#include "../_layout/geometry2d.h"
 extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA83D4C -- the local player's house.
 extern HouseClass* CurrentPlayer;
@@ -228,6 +221,33 @@ const wchar_t* InfantryClass::vf_36()
         return this->vf_51(true)->UIName;
     }
     return this->Type->UIName;
+}
+
+
+// GLOBAL: GAMEMD 0xA8B230
+extern ScenarioClass* DAT_00A8B230;
+
+// GLOBAL: GAMEMD 0x7E9AC0 -- CLSID of JumpjetLocomotionClass.
+extern const CLSID DAT_007E9AC0;
+
+// GLOBAL: GAMEMD 0x7EAF7C -- per-sequence table, 4 bytes an entry; the first byte is the one read.
+extern const unsigned char DAT_007EAF7C[][4];
+
+
+// FUNCTION: GAMEMD 0x51F330
+// Slot 266: re-pick a target for this infantry. Keep the current target if it is still valid for
+// the chosen weapon, else scan for a new one, and finally fall back to idle mode.
+void InfantryClass::vf_266()
+{
+    int weapon = vf_185(0);
+    if (Target && vf_234(Target, weapon))
+        return;
+    CoordStruct where = Location;
+    AbstractClass* found = vf_241(1, &where, false);
+    if ((Target || found) && (vf_242(found), found))
+        return;
+    if (CurrentMission != 5 && !vf_33()->bools_D94[0])
+        EnterIdleMode(false, true);
 }
 
 // FUNCTION: GAMEMD 0x51F540
@@ -424,6 +444,21 @@ void Obj_00521B40::FUN_00521B40()
     }
 }
 
+// FUNCTION: GAMEMD 0x521B60
+// Slot 128: true when the infantry is idle enough to be ordered about. Not while in mission 6 or
+// 0x15, firing or falling; while moving, only in certain states; finally gated by its sequence's flag.
+bool InfantryClass::vf_128()
+{
+    if (CurrentMission != 6 && CurrentMission != 0x15 && !IsFiring && !IsFallingDown) {
+        if ((*(ILocomotionPtr*)&Locomotor)->IsMovingNow()
+            && vf_97() != 5 && vf_97() != 0xF && (vf_97() != 1 || Target))
+            return false;
+        if (SequenceAnim == -1 || DAT_007EAF7C[SequenceAnim][0])
+            return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x521C10
 void InfantryClass::vf_326()
 {
@@ -502,6 +537,18 @@ void Obj_005220F0::FUN_005220F0()
     unknown_6D8 = 1;
 }
 
+// FUNCTION: GAMEMD 0x522100
+// True when the type is a jumpjet type and its locomotor reports the jumpjet locomotor's class ID.
+bool InfantryClass::FUN_00522100()
+{
+    if (!Type->bools_D94[0])
+        return false;
+    IPersistPtr persist(*(ILocomotionPtr*)&Locomotor);
+    CLSID id;
+    persist->GetClassID(&id);
+    return IsEqualCLSID(id, DAT_007E9AC0);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5224D0
 // Member getter (byte). Vtable slot 204 of InfantryClass (RTTI).
@@ -542,6 +589,23 @@ int InfantryClass::FUN_00522510()
 unsigned char Obj_00522540::FUN_00522540() const
 {
     return unknown_6C0->unknown_6AC;
+}
+
+// FUNCTION: GAMEMD 0x522550
+// Start deploying: a stationary infantry plays the deploy sequence and reports that sequence's second
+// field; a moving one stops, flags itself to deploy and returns a delay from its mission rate plus a
+// random 0-2.
+int InfantryClass::FUN_00522550()
+{
+    if (!(*(ILocomotionPtr*)&Locomotor)->IsMoving()) {
+        vf_342(0x1B, 0, 0);
+        return Type->Sequence[0x1B].unknown_04;
+    }
+    (*(ILocomotionPtr*)&Locomotor)->StopMoving();
+    ShouldDeploy = true;
+    MissionControlClass* control = FUN_005B3A00();
+    int delay = (int)(control->Rate * 900.0);
+    return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
 }
 
 // FUNCTION: GAMEMD 0x522600
@@ -622,6 +686,57 @@ void InfantryClass::vf_284()
     } else {
         this->Disguised = false;
     }
+}
+
+
+// A cell record, as far as the one test the disguise check makes.
+struct CellView_005227F0
+{
+    // FUNCTION: GAMEMD 0x4870F0 (decl; reloc)
+    bool FUN_004870F0(int houseIndex);
+};
+
+// The map object, as far as the cell lookup.
+struct MapView_005227F0
+{
+    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
+    CellView_005227F0* FUN_005657A0(CellStruct* cell);
+};
+// GLOBAL: GAMEMD 0x87F7E8 -- the map object.
+extern MapView_005227F0 DAT_0087F7E8_005227F0;
+
+// A house, as far as its alliance test.
+struct HouseView_005227F0
+{
+    // FUNCTION: GAMEMD 0x4F9A50 (decl; reloc)
+    bool FUN_004F9A50(HouseClass* other);
+};
+
+inline CellStruct CoordToCell_005227F0(const CoordStruct& where)
+{
+    CellStruct result;
+    result.X = where.X / 256;
+    result.Y = where.Y / 256;
+    return result;
+}
+
+
+// FUNCTION: GAMEMD 0x5227F0
+// Whether the house is fooled by this infantryman's disguise at its current cell.
+bool InfantryClass::vf_50(HouseClass* house)
+{
+    if (vf_49()) {
+        CellStruct cell = CoordToCell_005227F0(vf_18());
+        CellView_005227F0* cellRecord = DAT_0087F7E8_005227F0.FUN_005657A0(&cell);
+        if (!reinterpret_cast<HouseView_005227F0*>(Owner)->FUN_004F9A50(house) &&
+            !cellRecord->FUN_004870F0(house->ArrayIndex)) {
+            HouseClass* disguised = DisguisedAsHouse;
+            if (disguised == house || !disguised ||
+                reinterpret_cast<HouseView_005227F0*>(house)->FUN_004F9A50(disguised))
+                return true;
+        }
+    }
+    return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -745,6 +860,22 @@ bool InfantryClass::FUN_00522FC0()
     return this->vf_97() == 10;
 }
 
+// FUNCTION: GAMEMD 0x523250
+// Slot 44: while riding in an open-topped transport, take the transporter's coordinate offset by this
+// passenger's (negated) position in its cargo list; otherwise use the base TechnoClass answer.
+CoordStruct InfantryClass::vf_44(int a1, CoordStruct a2)
+{
+    if (InOpenToppedTransport && Transporter) {
+        int index = ((TechnoClass*)Transporter)->Passengers.IndexOf((FootClass*)this);
+        if (index) {
+            CoordStruct zero = { 0, 0, 0 };
+            return ((TechnoClass*)Transporter)->vf_44(-index, zero);
+        }
+    }
+    CoordStruct zero = { 0, 0, 0 };
+    return TechnoClass::vf_44(a1, zero);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5232F0
 // Returns a constant. Vtable slot 12 of InfantryClass (RTTI).
@@ -808,4 +939,11 @@ Obj_00523370* Obj_00523370::FUN_005233A0(IUnknown* p)
 extern const char DAT_00825560[] = "D:\\ra2mdpost\\Infantry.CPP";
 // GLOBAL: GAMEMD 0x7E9680
 extern const CLSID DAT_007E9680 = {0x0E272DC4, 0x9C0F, 0x11D1, {0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1}};
+// END defined globals
+
+
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E9AC0
+extern const CLSID DAT_007E9AC0 = {0x92612C46, 0xF71F, 0x11D1, {0xAC, 0x9F, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
 // END defined globals
