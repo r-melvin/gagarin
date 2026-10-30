@@ -22,21 +22,15 @@ struct RTTINameEntry
     const char* Name;   // +0x00
     int         Key;    // +0x04
 };
+GG_STATIC_ASSERT(offsetof(RTTINameEntry, Name) == 0x00);
+GG_STATIC_ASSERT(sizeof(((RTTINameEntry*)0)->Name) == 4);
 GG_STATIC_ASSERT(offsetof(RTTINameEntry, Key) == 0x04);
+GG_STATIC_ASSERT(sizeof(((RTTINameEntry*)0)->Key) == 4);
 GG_STATIC_ASSERT(sizeof(RTTINameEntry) == 0x08);
 
 extern RTTINameEntry RTTINames[RTTI_NAME_COUNT];
 
-// The owning class. Nothing at this address touches an instance, so no layout
-// is recovered here; the struct exists so the routine is spelled as the static
-// member it is rather than as a free function, and so the next address on this
-// class has somewhere to attach.
-class AbstractClass
-{
-public:
-    // Human-readable name for an AbstractType discriminant.
-    // (static __fastcall: the discriminant arrives in ECX.)
-    static const char* GetRTTIName(int rtti);   // GAMEMD 0x40DCB0
-};
+// Static member declaration and object model come from the canonical class.
+#include "../_layout/abstract_class.h"
 
 #endif  // GG_MATCH_CORE_ABSTRACT_CLASS_RTTI_METHODS_H

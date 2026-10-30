@@ -55,6 +55,9 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo,
                       public INoticeSink, public INoticeSource
 {
 public:
+    // FUNCTION: GAMEMD 0x40DCB0 (declaration; static fastcall, ECX discriminant)
+    static const char* GetRTTIName(int rtti);
+
     // FUNCTION: GAMEMD 0x410170 (declaration; native base constructor)
     AbstractClass();
     // FUNCTION: GAMEMD 0x4101C0 (declaration; no-initialisation constructor)
