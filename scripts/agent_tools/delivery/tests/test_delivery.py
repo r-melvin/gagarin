@@ -102,6 +102,27 @@ class TreeFacts(unittest.TestCase):
         self.assertIn(k.get("CellStruct", "struct"), ("class", "struct"))
 
 
+class LibraryFilter(unittest.TestCase):
+    def test_marks_parse_column_zero_only(self):
+        text = "// LIBRARY: GAMEMD 0x7c8962\n// WSOCK32!htonl\n  // LIBRARY: GAMEMD 0x401000\n// FUNCTION: GAMEMD 0x402000\n"
+        self.assertEqual(D.library_marks(text), [(0x7C8962, 1)])
+        self.assertEqual(D.body_claims(text), [(0x402000, 4)])
+
+    def test_tree_library_claims_are_not_source_claims(self):
+        t = tree()
+        lib = t.library_claims()
+        self.assertIn(0x7C8962, lib)
+        self.assertIn("match/_rt/library_functions.h", lib[0x7C8962])
+        self.assertNotIn(0x7C8962, t.claims())
+
+    def test_dispatch_refilter_drops_library_rows(self):
+        import dispatch
+        rows = [{"addr": a} for a in ("0x7C8962", "0x401000", "0x402000", "0x403000")]
+        keep, dropped = dispatch.refilter(rows, {0x401000: {}}, {0x402000: ["x.cpp"]}, {0x7C8962: ["lib.h"], 0x401000: ["lib.h"]})
+        self.assertEqual([r["addr"] for r in keep], ["0x403000"])
+        self.assertEqual(dropped, {"in_manifest": 1, "claimed": 1, "library": 1})
+
+
 class LintRules(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)

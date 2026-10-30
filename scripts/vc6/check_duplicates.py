@@ -25,6 +25,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 ANNOT = re.compile(r'(?m)^// (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0-9A-Fa-f]+)(.*)$')
 
 
+# A LIBRARY marker claims an address as statically linked library code, not as source. It is
+# never a body claim (so it cannot collide with one), but an address with both is reported.
+LIBRARY = re.compile(r'(?m)^// LIBRARY: GAMEMD (0x[0-9A-Fa-f]+)')
+
+
+def library_claims(text):
+    for m in LIBRARY.finditer(text):
+        yield int(m.group(1), 16)
+
+
 def claims(text):
     for m in ANNOT.finditer(text):
         # The tree marks a callee declaration as "(decl; reloc)". Match that
@@ -50,6 +60,17 @@ def main():
         for addr in claims(text):
             owner[addr].add(rel)
 
+    library = collections.defaultdict(set)
+    for ext in ('*.cpp', '*.c', '*.h'):
+        for path in glob.glob(os.path.join(ROOT, 'match', '**', ext), recursive=True):
+            with open(path, errors='ignore') as source:
+                for addr in library_claims(source.read()):
+                    library[addr].add(os.path.relpath(path, ROOT))
+    for addr in sorted(library):
+        if addr in owner:
+            print("NOTE       %#08x is marked LIBRARY (%s) and has a body in %s"
+                  % (addr, ', '.join(sorted(library[addr])), ', '.join(sorted(owner[addr]))))
+
     bad = 0
     for addr, tus in sorted(owner.items()):
         if len(tus) > 1:
@@ -67,7 +88,7 @@ def main():
                 print("ORPHAN     %s %#08x is in the manifest but not annotated there"
                       % (e['tu'], addr))
 
-    print("%d addresses with bodies, %d problems" % (len(owner), bad))
+    print("%d addresses with bodies, %d marked LIBRARY, %d problems" % (len(owner), len(library), bad))
     sys.exit(1 if bad else 0)
 
 

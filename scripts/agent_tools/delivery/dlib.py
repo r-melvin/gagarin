@@ -50,6 +50,7 @@ BINDINGS_CANDIDATES = [
 
 ANN = re.compile(r"^//\s?(FUNCTION|STUB|TEMPLATE|SYNTHETIC|LIBRARY):\s*GAMEMD\s+(0x[0-9A-Fa-f]+)(.*)$")
 CLAIM = re.compile(r"(?m)^// (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0-9A-Fa-f]+)(.*)$")
+LIBRARY_MARK = re.compile(r"(?m)^// LIBRARY: GAMEMD (0x[0-9A-Fa-f]+)")
 TU_WINDOW = re.compile(r"Original translation unit (\S+)\..*?code range \((0x[0-9a-fA-F]+)-(0x[0-9a-fA-F]+)\)", re.S)
 CLASS_DEF = re.compile(r"^[ \t]*(?:template\s*<[^>]*>\s*)?(class|struct)\s+(?:__declspec\([^)]*\)\s+)?([A-Za-z_]\w*)\b([^;{]*)\{", re.M)
 DECL_CONT = re.compile(r"^\s*//\s*\(\s*decl\b")
@@ -70,6 +71,12 @@ def body_claims(text):
         if m and not is_decl_marker(m.group(2), lines[i + 1] if i + 1 < len(lines) else None):
             out.append((int(m.group(1), 16), i + 1))
     return out
+
+
+def library_marks(text):
+    """[(addr, 1-based line)] of column-zero `// LIBRARY: GAMEMD 0xADDR` markers: statically
+    linked third-party or toolchain code, claimed as library, never as recovered source."""
+    return [(int(m.group(1), 16), text.count("\n", 0, m.start()) + 1) for m in LIBRARY_MARK.finditer(text)]
 
 
 CLASS_FWD = re.compile(r"^[ \t]*(class|struct)\s+([A-Za-z_]\w*)\s*;", re.M)
@@ -301,7 +308,7 @@ class Tree:
         else:
             allp = L.git(self.repo, "ls-tree", "-r", "-z", "--name-only", self.rev, text=False)
         self.paths = {p.decode() for p in allp.split(b"\0") if p}
-        self._windows = self._classes = self._claims = None
+        self._windows = self._classes = self._claims = self._library = None
 
     def read(self, path):
         return self.files.read(path)
@@ -370,6 +377,17 @@ class Tree:
                     d.setdefault(a, []).append(p)
             self._claims = d
         return self._claims
+
+    def library_claims(self):
+        """addr -> [paths] of LIBRARY markers in match/ sources and headers. These addresses are
+        claimed as library (the link supplies their bytes), not as source: claims() ignores them."""
+        if self._library is None:
+            d = {}
+            for p in sorted(self.cpps() + self.headers()):
+                for a, _ in library_marks(self.text(p) or ""):
+                    d.setdefault(a, []).append(p)
+            self._library = d
+        return self._library
 
 
 # ---------------------------------------------------------------- data sets

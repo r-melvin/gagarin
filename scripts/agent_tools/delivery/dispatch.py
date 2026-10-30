@@ -3,7 +3,8 @@
 
     dispatch.py [--worklist CSV] [--tree WT] [--out DIR] [--min N] [--top K]
 
-Drops rows already in the tip manifest or claimed by a body in the tree, groups the rest by
+Drops rows already in the tip manifest, claimed by a body in the tree, or marked LIBRARY
+(linked third-party / toolchain code, not source to recover), groups the rest by
 original TU (tu_id), and writes for each cluster a brief with: the migrated TU file to write
 into (one TU = one file) when it exists, the canonical headers of the owning classes, the
 addresses with CFG spans (not the padded worklist size), RA2-twin and family hints, and the
@@ -29,6 +30,22 @@ RULES = """## Rules (pktlint enforces them)
 """
 
 
+def refilter(rows, by_addr, claims, library):
+    """(kept rows, drop counts): manifest rows, body claims and LIBRARY markers leave the worklist."""
+    keep, dropped = [], {"in_manifest": 0, "claimed": 0, "library": 0}
+    for r in rows:
+        va = D.hx(r["addr"])
+        if va in by_addr:
+            dropped["in_manifest"] += 1
+        elif va in claims:
+            dropped["claimed"] += 1
+        elif va in library:
+            dropped["library"] += 1
+        else:
+            keep.append(r)
+    return keep, dropped
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--worklist")
@@ -44,16 +61,9 @@ def main(argv=None):
     os.makedirs(os.path.join(out, "briefs"), exist_ok=True)
     tree = D.Tree(a.tree, "HEAD")
     claims = tree.claims()
+    library = tree.library_claims()
     rows = list(csv.DictReader(open(wl)))
-    keep, dropped = [], {"in_manifest": 0, "claimed": 0}
-    for r in rows:
-        va = D.hx(r["addr"])
-        if va in tree.by_addr:
-            dropped["in_manifest"] += 1
-        elif va in claims:
-            dropped["claimed"] += 1
-        else:
-            keep.append(r)
+    keep, dropped = refilter(rows, tree.by_addr, claims, library)
     with open(os.path.join(out, "worklist_refiltered.csv"), "w") as f:
         w = csv.DictWriter(f, fieldnames=rows[0].keys())
         w.writeheader()
