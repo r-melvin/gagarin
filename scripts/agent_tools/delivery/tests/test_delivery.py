@@ -183,7 +183,7 @@ class LintRules(unittest.TestCase):
         self.assertEqual(self.rules({"match/x/d.cpp": ok}, [], {"sdd"}), [])
 
     def test_flags_and_thisnull_rules(self):
-        src = HEADER + "// VC6FLAGS: /MT /Ob2 /Gy /DNDEBUG /Gr /O2 /c /nologo\n// FUNCTION: GAMEMD 0x401000\nint Foo::f() { return this && Bar; }\n"
+        src = HEADER + "// VC6FLAGS: /MT /Ob2 /GR /Gy /DNDEBUG /Gr /O2 /c /nologo\n// FUNCTION: GAMEMD 0x401000\nint Foo::f() { return this && Bar; }\n"
         f = self.rules({"match/x/a.cpp": src}, [], {"flags", "thisnull"})
         self.assertEqual(sorted(x["rule"] for x in f), ["flags", "thisnull"], f)
         src = HEADER + "// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT\n// FUNCTION: GAMEMD 0x401000\nint Foo::f() { return Bar; }\n"
@@ -205,6 +205,8 @@ class LintRules(unittest.TestCase):
                 {"tu": "match/x/s.cpp", "addr": "0x6F4A40", "sym": "?s@@YAXXZ", "len": "0x10", "status": "matched", "pct": 100},
                 {"tu": "match/x/s.cpp", "addr": "0x6F7930", "sym": "?t@@YAXXZ", "len": "0x40", "status": "matched", "pct": 100}]
         f = self.rules({"match/x/s.cpp": HEADER}, rows, {"spans"})
+        if any("span check" in x["msg"] for x in f):
+            self.skipTest("no retail image (set GAMEMD_BINARY): the spans rule degrades to a warning")
         by = {x["addr"]: x["level"] for x in f}
         self.assertEqual(by.get("0x6F4A40"), "E")    # shorter than the 0x24 CFG span: unproven tail
         self.assertEqual(by.get("0x6F7930"), "E")    # 0x31 + INT3 padding counted as function bytes
