@@ -78579,7 +78579,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/movement/jumpjet_locomotion.cpp",
   "addr": "0x54DF50",
   "sym": "?AddRef@JumpjetLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -78588,7 +78588,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/movement/jumpjet_locomotion.cpp",
   "addr": "0x54DF60",
   "sym": "?Release@JumpjetLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -142372,7 +142372,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/jumpjet_locomotion_r17_methods.cpp",
+  "tu": "match/movement/jumpjet_locomotion.cpp",
   "addr": "0x54B7E0",
   "sym": "?Save@JumpjetLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xe5",

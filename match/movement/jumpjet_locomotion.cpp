@@ -232,6 +232,58 @@ static inline bool JumpjetIsSet(const LocoCoord& c)
 
 // LIBRARY: OLE32!OleLoadFromStream, IAT 0x7E15F8 (declared by <ole2.h>).
 
+// FUNCTION: GAMEMD 0x54AD30 (partial 82.6%: retail CSEs the facing address into EAX for SetDesired and recomputes it for 0x4C9300)
+HRESULT __stdcall JumpjetLocomotionClass::LinkToObject(FootClass* object)
+{
+    JumpjetFootView* foot = (JumpjetFootView*)object;
+    TurnRate = foot->vf_084()->JumpjetTurnRate;
+    Speed = foot->vf_084()->JumpjetSpeed;
+    Climb = foot->vf_084()->JumpjetClimb;
+    Crash = foot->vf_084()->JumpjetCrash;
+    int height = foot->vf_084()->JumpjetHeight;
+    int floor = DAT_00ABC5E8 + DAT_00ABC5E8;
+    Height = height > floor ? height : floor;
+    Accel = foot->vf_084()->JumpjetAccel;
+    Wobbles = foot->vf_084()->JumpjetWobbles;
+    unknown_38 = foot->vf_084()->unknown_D90;
+    NoWobbles = foot->vf_084()->JumpjetNoWobbles;
+    LocomotionFacing = JumpjetFacingView(TurnRate);
+    {
+        DirStruct turn;
+        turn.Raw = 0x4000;
+        LocomotionFacing.SetDesired(turn);
+    }
+    {
+        DirStruct turn;
+        turn.Raw = 0x4000;
+        ((JumpjetFacingView&)LocomotionFacing).FUN_004C9300(&turn);
+    }
+    return LocomotionClass::LinkToObject(object);
+}
+
+// FUNCTION: GAMEMD 0x54AE60
+LocoCoord __stdcall JumpjetLocomotionClass::Destination()
+{
+    LocoCoord c;
+    if (IsMoving()) {
+        c.X = DestCoord.X;
+        c.Y = DestCoord.Y;
+        c.Z = DestCoord.Z;
+        return c;
+    }
+    c.X = DAT_00ABC5A8.X;
+    c.Y = DAT_00ABC5A8.Y;
+    c.Z = DAT_00ABC5A8.Z;
+    return c;
+}
+
+// FUNCTION: GAMEMD 0x54B6E0
+void __stdcall JumpjetLocomotionClass::DoTurn(unsigned long dir)
+{
+    unsigned long desired = dir;
+    JumpjetFoot(this)->PrimaryFacing.FUN_004C9300(&desired);
+}
+
 // FUNCTION: GAMEMD 0x54B750
 HRESULT __stdcall JumpjetLocomotionClass::Load(IStream* pStm)
 {
@@ -246,6 +298,77 @@ HRESULT __stdcall JumpjetLocomotionClass::Load(IStream* pStm)
     return hr;
 }
 
+// FUNCTION: GAMEMD 0x54B7E0
+// Saves the base locomotor, then a flag byte and, when a locomotor is piggybacked,
+// that locomotor as an OLE persistent stream.
+HRESULT __stdcall JumpjetLocomotionClass::Save(IStream* pStm, BOOL fClearDirty)
+{
+    HRESULT hr = LocomotionClass::Save(pStm, fClearDirty);
+    if (hr >= 0) {
+        bool hasPiggyback;
+        if (Piggybackee != 0) {
+            hasPiggyback = true;
+            pStm->Write(&hasPiggyback, 1, 0);
+            IPersistStreamPtr persist(Piggybackee);
+            return OleSaveToStream(persist, pStm);
+        }
+        hasPiggyback = false;
+        pStm->Write(&hasPiggyback, 1, 0);
+    }
+    return hr;
+}
+
+// FUNCTION: GAMEMD 0x54B8D0
+int __stdcall JumpjetLocomotionClass::InWhichLayer()
+{
+    int height = JumpjetFoot(this)->vf_1C8();
+    if (!JumpjetFoot(this)->unknown_08C) {
+        LocoCoord here = JumpjetFoot(this)->Location;
+        if (DriveMap().FUN_00565730(&here)->Flags & 0x100) {
+            if (height >= DAT_00ABC5DC && !JumpjetFoot(this)->unknown_08D)
+                height -= DAT_00ABC5DC;
+        }
+    }
+    if (!JumpjetFoot(this)->vf_054())
+        return 2;
+    if (height == 0)
+        return 2;
+    return (height >= Height) + 3;
+}
+
+// FUNCTION: GAMEMD 0x54D930 (partial: retail copies the returned coordinate into the local before comparing)
+void __stdcall JumpjetLocomotionClass::MarkAllOccupationBits(int mark)
+{
+    if (mark == 0) {
+        LocoCoord head;
+        LocoCoord got = HeadToCoord();
+        head.X = got.X;
+        head.Y = got.Y;
+        head.Z = got.Z;
+        if (JumpjetIsSet(head) && (unknown_50 == 0 || unknown_90)) {
+            JumpjetFoot(this)->vf_0F4(&head);
+            unknown_90 = 0;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x54D9B0
+LocoCoord __stdcall JumpjetLocomotionClass::HeadToCoord()
+{
+    LocoCoord c;
+    if (unknown_50 == 0) {
+        LocoCoord here = JumpjetFoot(this)->Location;
+        c.X = here.X;
+        c.Y = here.Y;
+        c.Z = here.Z;
+        return c;
+    }
+    c.X = DestCoord.X;
+    c.Y = DestCoord.Y;
+    c.Z = DestCoord.Z;
+    return c;
+}
+
 // FUNCTION: GAMEMD 0x54DA00
 HRESULT __stdcall JumpjetLocomotionClass::BeginPiggyback(ILocomotion* loco)
 {
@@ -256,6 +379,39 @@ HRESULT __stdcall JumpjetLocomotionClass::BeginPiggyback(ILocomotion* loco)
         return S_OK;
     }
     return E_FAIL;
+}
+
+// FUNCTION: GAMEMD 0x54DA50
+HRESULT __stdcall JumpjetLocomotionClass::EndPiggyback(ILocomotion** out)
+{
+    if (!out)
+        return E_POINTER;
+    if (JumpjetFoot(this)) {
+        if (JumpjetFoot(this)->unknown_6AD || JumpjetFoot(this)->unknown_6AE) {
+            JumpjetFoot(this)->unknown_6AD = 0;
+            JumpjetFoot(this)->unknown_6AE = 0;
+            if (!JumpjetFoot(this)->unknown_21C->unknown_1EC
+                && JumpjetFoot(this)->vf_084()->unknown_5EC)
+                JumpjetFoot(this)->vf_1E8(10, 0);
+        }
+        JumpjetFoot(this)->unknown_428 = 0;
+        JumpjetFoot(this)->unknown_42C = 0;
+    }
+    if (Piggybackee) {
+        *out = Piggybackee;
+        Piggybackee.Detach();
+        return S_OK;
+    }
+    return S_FALSE;
+}
+
+// FUNCTION: GAMEMD 0x54DB00
+bool __stdcall JumpjetLocomotionClass::IsOkToEnd()
+{
+    if (!IsMoving() && Piggybackee != 0 && !unknown_91
+        && (!JumpjetFoot(this)->unknown_6AD || JumpjetFoot(this)->unknown_6AE))
+        return true;
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x54DB50
@@ -290,140 +446,16 @@ HRESULT __stdcall JumpjetLocomotionClass::QueryInterface(REFIID riid, void** ppv
     return hr;
 }
 
-// FUNCTION: GAMEMD 0x54B6E0
-void __stdcall JumpjetLocomotionClass::DoTurn(unsigned long dir)
+// FUNCTION: GAMEMD 0x0054DF50
+ULONG __stdcall JumpjetLocomotionClass::AddRef()
 {
-    unsigned long desired = dir;
-    JumpjetFoot(this)->PrimaryFacing.FUN_004C9300(&desired);
+    return LocomotionClass::AddRef();
 }
 
-// FUNCTION: GAMEMD 0x54DB00
-bool __stdcall JumpjetLocomotionClass::IsOkToEnd()
+// FUNCTION: GAMEMD 0x0054DF60
+ULONG __stdcall JumpjetLocomotionClass::Release()
 {
-    if (!IsMoving() && Piggybackee != 0 && !unknown_91
-        && (!JumpjetFoot(this)->unknown_6AD || JumpjetFoot(this)->unknown_6AE))
-        return true;
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x54D9B0
-LocoCoord __stdcall JumpjetLocomotionClass::HeadToCoord()
-{
-    LocoCoord c;
-    if (unknown_50 == 0) {
-        LocoCoord here = JumpjetFoot(this)->Location;
-        c.X = here.X;
-        c.Y = here.Y;
-        c.Z = here.Z;
-        return c;
-    }
-    c.X = DestCoord.X;
-    c.Y = DestCoord.Y;
-    c.Z = DestCoord.Z;
-    return c;
-}
-
-// FUNCTION: GAMEMD 0x54AE60
-LocoCoord __stdcall JumpjetLocomotionClass::Destination()
-{
-    LocoCoord c;
-    if (IsMoving()) {
-        c.X = DestCoord.X;
-        c.Y = DestCoord.Y;
-        c.Z = DestCoord.Z;
-        return c;
-    }
-    c.X = DAT_00ABC5A8.X;
-    c.Y = DAT_00ABC5A8.Y;
-    c.Z = DAT_00ABC5A8.Z;
-    return c;
-}
-
-// FUNCTION: GAMEMD 0x54D930 (partial: retail copies the returned coordinate into the local before comparing)
-void __stdcall JumpjetLocomotionClass::MarkAllOccupationBits(int mark)
-{
-    if (mark == 0) {
-        LocoCoord head;
-        LocoCoord got = HeadToCoord();
-        head.X = got.X;
-        head.Y = got.Y;
-        head.Z = got.Z;
-        if (JumpjetIsSet(head) && (unknown_50 == 0 || unknown_90)) {
-            JumpjetFoot(this)->vf_0F4(&head);
-            unknown_90 = 0;
-        }
-    }
-}
-
-// FUNCTION: GAMEMD 0x54DA50
-HRESULT __stdcall JumpjetLocomotionClass::EndPiggyback(ILocomotion** out)
-{
-    if (!out)
-        return E_POINTER;
-    if (JumpjetFoot(this)) {
-        if (JumpjetFoot(this)->unknown_6AD || JumpjetFoot(this)->unknown_6AE) {
-            JumpjetFoot(this)->unknown_6AD = 0;
-            JumpjetFoot(this)->unknown_6AE = 0;
-            if (!JumpjetFoot(this)->unknown_21C->unknown_1EC
-                && JumpjetFoot(this)->vf_084()->unknown_5EC)
-                JumpjetFoot(this)->vf_1E8(10, 0);
-        }
-        JumpjetFoot(this)->unknown_428 = 0;
-        JumpjetFoot(this)->unknown_42C = 0;
-    }
-    if (Piggybackee) {
-        *out = Piggybackee;
-        Piggybackee.Detach();
-        return S_OK;
-    }
-    return S_FALSE;
-}
-
-// FUNCTION: GAMEMD 0x54B8D0
-int __stdcall JumpjetLocomotionClass::InWhichLayer()
-{
-    int height = JumpjetFoot(this)->vf_1C8();
-    if (!JumpjetFoot(this)->unknown_08C) {
-        LocoCoord here = JumpjetFoot(this)->Location;
-        if (DriveMap().FUN_00565730(&here)->Flags & 0x100) {
-            if (height >= DAT_00ABC5DC && !JumpjetFoot(this)->unknown_08D)
-                height -= DAT_00ABC5DC;
-        }
-    }
-    if (!JumpjetFoot(this)->vf_054())
-        return 2;
-    if (height == 0)
-        return 2;
-    return (height >= Height) + 3;
-}
-
-// FUNCTION: GAMEMD 0x54AD30 (partial 82.6%: retail CSEs the facing address into EAX for SetDesired and recomputes it for 0x4C9300)
-HRESULT __stdcall JumpjetLocomotionClass::LinkToObject(FootClass* object)
-{
-    JumpjetFootView* foot = (JumpjetFootView*)object;
-    TurnRate = foot->vf_084()->JumpjetTurnRate;
-    Speed = foot->vf_084()->JumpjetSpeed;
-    Climb = foot->vf_084()->JumpjetClimb;
-    Crash = foot->vf_084()->JumpjetCrash;
-    int height = foot->vf_084()->JumpjetHeight;
-    int floor = DAT_00ABC5E8 + DAT_00ABC5E8;
-    Height = height > floor ? height : floor;
-    Accel = foot->vf_084()->JumpjetAccel;
-    Wobbles = foot->vf_084()->JumpjetWobbles;
-    unknown_38 = foot->vf_084()->unknown_D90;
-    NoWobbles = foot->vf_084()->JumpjetNoWobbles;
-    LocomotionFacing = JumpjetFacingView(TurnRate);
-    {
-        DirStruct turn;
-        turn.Raw = 0x4000;
-        LocomotionFacing.SetDesired(turn);
-    }
-    {
-        DirStruct turn;
-        turn.Raw = 0x4000;
-        ((JumpjetFacingView&)LocomotionFacing).FUN_004C9300(&turn);
-    }
-    return LocomotionClass::LinkToObject(object);
+    return LocomotionClass::Release();
 }
 
 // SYNTHETIC: GAMEMD 0x54DFA0 -- compiler-generated scalar deleting destructor.
