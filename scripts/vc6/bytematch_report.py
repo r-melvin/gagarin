@@ -61,7 +61,7 @@ def _safe_source(root: Path, raw: Any, addr: int) -> str:
     path = PurePosixPath(raw)
     if path.is_absolute() or ".." in path.parts or "\\" in raw:
         raise ValueError(f"0x{addr:08X}: unsafe source path {raw!r}")
-    if path.suffix.lower() not in {".cpp", ".c", ".cc", ".cxx"}:
+    if path.suffix.lower() not in {".cpp", ".c", ".cc", ".cxx", ".asm"}:
         raise ValueError(f"0x{addr:08X}: expected source file path, got {raw!r}")
     candidate = root.joinpath(*path.parts)
     if not candidate.is_file():
