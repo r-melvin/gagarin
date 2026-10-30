@@ -18,7 +18,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_register_methods.cpp",
+  "tu": "match/ai/ai_trigger_type_class_body.cpp",
   "addr": "0x41FD60",
   "sym": "?RegisterSuccess@AITriggerTypeClass@@QAEXXZ",
   "len": "0xbf",
@@ -27,7 +27,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_register_methods.cpp",
+  "tu": "match/ai/ai_trigger_type_class_body.cpp",
   "addr": "0x41FE20",
   "sym": "?RegisterFailure@AITriggerTypeClass@@QAEXXZ",
   "len": "0xbb",
