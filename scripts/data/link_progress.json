@@ -2,14 +2,14 @@
  "m0": {
   "by_kind": {
    "crt": 25,
-   "data": 2421,
-   "function": 4042,
+   "data": 2412,
+   "function": 4009,
    "import": 0,
    "vtable": 70
   },
   "duplicate_definitions": 0,
-  "objects": 1730,
-  "unresolved": 6558
+  "objects": 1712,
+  "unresolved": 6516
  },
  "m1": {
   "bytes_at_retail_address": 3836807,
@@ -60,8 +60,8 @@
     "diff_bytes": 0,
     "file": 442368,
     "library": 0,
-    "project": 2676349,
-    "retail": 894311,
+    "project": 2676353,
+    "retail": 894307,
     "va": 8462336,
     "vsize": 3570660
    },
@@ -69,8 +69,8 @@
     "diff_bytes": 0,
     "file": 196724,
     "library": 0,
-    "project": 114450,
-    "retail": 82274,
+    "project": 114386,
+    "retail": 82338,
     "va": 8261632,
     "vsize": 196724
    },
@@ -96,8 +96,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 4093124,
-   "retail": 4210946,
+   "project": 4093064,
+   "retail": 4211006,
    "vsize": 8391297
   }
  },
@@ -134,9 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "5144e0e1",
-  "m1": "5144e0e1",
+  "m0": "86bc6928",
+  "m1": "86bc6928",
   "m2": "ac2bd917",
-  "m3": "5144e0e1"
+  "m3": "86bc6928"
  }
 }
