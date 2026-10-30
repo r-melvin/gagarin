@@ -14,11 +14,11 @@
 class RadarTacticalGadget_00B04A10 : public GadgetClass {
 public:
     RadarTacticalGadget_00B04A10() : GadgetClass(0, 0, 0, 0, 0x9F, 1) {}
-    // SYNTHETIC: GAMEMD 0x00658780 -- implicit scalar deleting destructor (slot 0).
     // FUNCTION: GAMEMD 0x6539D0 (decl; reloc) -- slot 31 (Action).
     virtual int Action(unsigned flags, unsigned* key, int modifier);
 };
 
+// SYNTHETIC: GAMEMD 0x00658780 -- implicit scalar deleting destructor (slot 0) of RadarTacticalGadget_00B04A10
 struct RadarButtonStatics {
     // GLOBAL: GAMEMD 0x00B04A10
     static RadarTacticalGadget_00B04A10 Gadget_00B04A10;

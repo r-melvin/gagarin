@@ -53,6 +53,7 @@ static inline void GgReleaseModelStorage(Obj_00755D10* model)
     model->Block2 = 0;
 }
 
+// FUNCTION: GAMEMD 0x754900 -- Vector3D default constructor, defined in vector3d.h, emitted here for record-array construction.
 // FUNCTION: GAMEMD 0x755DB0
 int Obj_00755D10::FUN_00755DB0(FileClass* file, int unknown)
 {

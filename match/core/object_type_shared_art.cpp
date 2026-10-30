@@ -23,6 +23,7 @@ GG_STATIC_ASSERT(sizeof(GgSharedArtStorage) == 20);
 // GLOBAL: GAMEMD 0xAC1478
 GgSharedArtStorage DAT_00AC1478;
 
+// FUNCTION: GAMEMD 0x69E500 -- Obj_0069E430 destructor, defined in obj_0069e430.h, emitted here for the array cleanup.
 // FUNCTION: GAMEMD 0x5F76B0
 void FUN_005F76B0()
 {

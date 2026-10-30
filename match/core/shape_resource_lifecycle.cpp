@@ -15,6 +15,7 @@ extern int DAT_00B077B8;
 // GLOBAL: GAMEMD 0x00B077BC
 extern unsigned int DAT_00B077BC;
 
+// FUNCTION: GAMEMD 0x69E100 -- inline body declared in obj_0069e430.h, emitted out of line here.
 // FUNCTION: GAMEMD 0x69E090
 void FUN_0069E090(Obj_0069E430* resource)
 {

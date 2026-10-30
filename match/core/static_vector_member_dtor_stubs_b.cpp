@@ -46,6 +46,7 @@ struct StaticVectorHolder_00ABCA40 {
     // GLOBAL: GAMEMD 0x00ABCA40
     static DynamicVectorClass<LightSourceClass::PendingCellClass*> DAT_00ABCA40;
 };
+// SYNTHETIC: GAMEMD 0x005546C0 -- initialiser of DAT_00ABCA40
 // SYNTHETIC: GAMEMD 0x00554700 -- exit-time destructor stub of DAT_00ABCA40, guard byte 0x00ABC9C0 bit 0
 DynamicVectorClass<LightSourceClass::PendingCellClass*> StaticVectorHolder_00ABCA40::DAT_00ABCA40;
 
