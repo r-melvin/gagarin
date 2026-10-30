@@ -12,7 +12,7 @@
 #include "../ui/input_controls/ui_common.h"
 
 HWND __cdecl FUN_00775B10();
-BOOL __stdcall FUN_00775BC0(HWND window, LPARAM param);
+BOOL __stdcall ScaleChildEnumProc(HWND window, LPARAM param);
 
 // GLOBAL: GAMEMD 0xB73060
 extern char DAT_00B73060[];
@@ -44,8 +44,8 @@ CoordStruct* __fastcall FUN_0075F540(CoordStruct* out, const CoordStruct* b, con
 // Runs the child-window callback over every child with 1, then over the window itself with 0.
 void __fastcall FUN_00775BA0(HWND window)
 {
-    EnumChildWindows(window, (WNDENUMPROC)FUN_00775BC0, 1);
-    FUN_00775BC0(window, 0);
+    EnumChildWindows(window, (WNDENUMPROC)ScaleChildEnumProc, 1);
+    ScaleChildEnumProc(window, 0);
 }
 
 // FUNCTION: GAMEMD 0x776D40
