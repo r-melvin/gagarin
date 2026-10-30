@@ -20,10 +20,30 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cppsplit
 
 SR = os.environ.get('GAG_SCRATCH_ROOT') or os.path.join(os.path.dirname(os.environ.get('GAG_MAIN') or os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))), 'gagarin-scratch')
-TUMAP = SR + '/tumap2/tu_map_v2.csv'
-ASSERTS = SR + '/tumig1/assert_sites.json'
-INIT_DELTA = SR + '/trivgen/READY/manifest_delta_initialisers.json'
-INIT_SRC = SR + '/tumig1/initsrc'
+TUMAP = ASSERTS = INIT_DELTA = INIT_SRC = None
+
+
+def set_inputs(root):
+    """Point the scratch inputs (tumap2/, tumig1/, trivgen/) at ROOT."""
+    global SR, TUMAP, ASSERTS, INIT_DELTA, INIT_SRC
+    SR = os.path.abspath(root)
+    TUMAP = SR + '/tumap2/tu_map_v2.csv'
+    ASSERTS = SR + '/tumig1/assert_sites.json'
+    INIT_DELTA = SR + '/trivgen/READY/manifest_delta_initialisers.json'
+    INIT_SRC = SR + '/tumig1/initsrc'
+
+
+def check_inputs():
+    """Exit with a clear message when the required scratch inputs are missing."""
+    missing = [p for p in (TUMAP, ASSERTS) if not os.path.isfile(p)]
+    if missing:
+        raise SystemExit('tumigrate inputs not found under %s:\n  %s\n'
+                         'They are untracked scratch data (tumap2/tu_map_v2.csv, tumig1/assert_sites.json). '
+                         'Pass --inputs DIR (or set GAG_SCRATCH_ROOT) to the directory that holds tumap2/ and tumig1/.'
+                         % (SR, '\n  '.join(missing)))
+
+
+set_inputs(SR)
 DEFAULT_FLAGS = '/nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2'
 FLAG_RE = re.compile(r'^\s*//\s*VC6FLAGS:\s*(.*?)\s*$')
 INC_RE = re.compile(r'^(\s*#\s*include\s*")([^"]+)(".*)$')
@@ -186,6 +206,44 @@ def trim_blank(lines):
     return lines
 
 
+_NOT_DATA = re.compile(r'^(typedef|struct|class|union|enum|template|namespace|using|extern|friend|return|static|const|#)\b|^#')
+
+
+def externalise(lines):
+    """Global data definitions at depth 0 become `extern` declarations (initialiser dropped); the
+    definition stays in the file it came from. Statics, consts, functions, prototypes, typedefs and
+    aggregate definitions are left as they are."""
+    dep = cppsplit.depth_scan(lines)
+    out, i, n = [], 0, len(lines)
+    while i < n:
+        ln = lines[i]
+        t = re.sub(r'//.*', '', ln).strip()
+        if dep[i][0] != 0 or not t or t.startswith('#') or _NOT_DATA.match(t):
+            out.append(ln)
+            i += 1
+            continue
+        # one logical statement: to the line that ends at depth 0 with ';'
+        j = i
+        while j < n and not (dep[j][1] == 0 and re.sub(r'//.*', '', lines[j]).rstrip().endswith(';')):
+            if dep[j][1] == 0 and j > i and not lines[j].strip():
+                break
+            j += 1
+        if j >= n or not re.sub(r'//.*', '', lines[j]).rstrip().endswith(';'):
+            out.extend(lines[i:j + 1])
+            i = j + 1
+            continue
+        stmt = ' '.join(re.sub(r'//.*', '', x).strip() for x in lines[i:j + 1])
+        decl = stmt[:-1].split('=', 1)[0].strip() if '=' in stmt else stmt[:-1].strip()
+        single = ',' not in decl and '{' not in decl and '}' not in decl
+        is_data = '(' not in decl and single and re.search(r'[A-Za-z_]\w*\s*(\[[^\]]*\])*$', decl) and ' ' in decl.replace('*', ' * ')
+        if is_data and re.match(r'^[A-Za-z_][\w:<>\s\*&]*[\s\*&]\s*[A-Za-z_]\w*\s*(\[[^\]]*\])*$', decl):
+            out.append('extern ' + decl + ';')
+        else:
+            out.extend(lines[i:j + 1])
+        i = j + 1
+    return out
+
+
 def compose(tree, p, sites):
     """Pure: returns (dest_text, {rewritten path: text}, deleted)."""
     rewrites = {}
@@ -194,7 +252,9 @@ def compose(tree, p, sites):
     tags = ['own-binary-via-Ghidra']
     decl_blocks, notes, chunks = [], [], []
     deleted, rewritten, init_files = [], [], []
+    tail = []        # unmoved chunks of the destination itself, kept in place
     for f in p['files']:
+        is_dest = f['file'] == dest
         path = os.path.join(tree, f['file'])
         text = open(path).read()
         lines, pre_end, chs, inters = cppsplit.split(text)
@@ -208,12 +268,16 @@ def compose(tree, p, sites):
         if head:
             notes.append(head)
         block += trim_blank(pre)
+        keeps_defs = not f['whole'] and not is_dest
         rowset = set(f['rows']) | set(f.get('all_rows', []))
         spans = list(inters) + [(c['start'], c['end']) for c in chs
                                 if not any(x in f.get('all_rows', f['rows']) for x in c['addrs'])]
         for a, b in sorted(spans):
             if cppsplit.code_only(lines[a:b]) or re.search(r'^//\s?(FUNCTION|STUB|TEMPLATE|SYNTHETIC|LIBRARY):', '\n'.join(lines[a:b]), re.M):
                 block += [''] + trim_blank(rewrite_includes(lines[a:b], os.path.dirname(f['file']), destdir, tree))
+        if keeps_defs:
+            # the source file keeps its definitions; the new TU only sees extern declarations
+            block = externalise(block)
         decl_blocks.append(block)
         mv = set(f['move'])
         for ci in sorted(mv):
@@ -223,7 +287,13 @@ def compose(tree, p, sites):
             rowsin = [a for a in c['addrs'] if a in set(f['rows'])]
             key = min(rowsin)
             chunks.append((key, body))
-        if f['whole']:
+        if is_dest:
+            # destination already exists and contributes: merge into it (it is rewritten as the new
+            # TU; its unmoved chunks follow the moved ones, in place)
+            for ci, c in enumerate(chs):
+                if ci not in mv and any(a in set(f['all_rows']) for a in c['addrs']):
+                    tail.append(trim_blank(lines[c['start']:c['end']]))
+        elif f['whole']:
             deleted.append(f['file'])
         else:
             keep, i = [], 0
@@ -311,13 +381,15 @@ def compose(tree, p, sites):
     for b in decl_blocks:
         if b:
             text += [''] + b
-    for b in out_chunks:
+    for b in out_chunks + tail:
         text += [''] + b
     return '\n'.join(text) + '\n', rewrites, deleted
 
 
 def apply(tree, p, sites):
     dest = p['dest']
+    if os.path.exists(os.path.join(tree, dest)) and dest not in {f['file'] for f in p['files']}:
+        raise SystemExit('destination %s already exists and is not a contributor; refusing to overwrite it' % dest)
     dtext, rewrites, deleted = compose(tree, p, sites)
     for f, t in rewrites.items():
         open(os.path.join(tree, f), 'w').write(t)
@@ -354,7 +426,11 @@ def main():
     ap.add_argument('--exclude', action='append', default=[], help='FILE=reason')
     ap.add_argument('--dest')
     ap.add_argument('--plan')
+    ap.add_argument('--inputs', help='directory holding tumap2/, tumig1/ (and trivgen/); default $GAG_SCRATCH_ROOT or ../gagarin-scratch')
     a = ap.parse_args()
+    if a.inputs:
+        set_inputs(a.inputs)
+    check_inputs()
     if a.cmd == 'plan':
         ex = dict(x.split('=', 1) if '=' in x else (x, 'excluded') for x in a.exclude)
         print(json.dumps(plan(a.tree, a.tu, ex, a.dest), indent=1))

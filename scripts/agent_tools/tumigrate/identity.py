@@ -10,12 +10,76 @@ relocation list (offset, type, target), with compiler-numbered local labels
 ($SGnnn, $Lnnn, ...) normalised. Rows new in NEW_MANIFEST are listed, not
 compared. Exit 1 on any difference or missing section.
 """
-import json, os, re, sys
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'land'))
-import sectioncmp
+import json, os, re, subprocess, sys
 
+HERE = os.path.dirname(os.path.abspath(__file__))
 LOCAL = re.compile(r'^\$[A-Za-z]+\d+$')
 _cache = {}
+BIND = {}        # relocation target name -> address text, for names bound to the same address
+sectioncmp = None
+
+
+def _toplevel():
+    try:
+        return subprocess.run(['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True).stdout.strip()
+    except OSError:
+        return ''
+
+
+def find_land_dir():
+    """Directory holding sectioncmp.py: $GAG_LAND_DIR, next to the repo this script sits in,
+    then the git checkout of the current directory (so a copied identity.py still works)."""
+    top = _toplevel()
+    cands = [os.environ.get('GAG_LAND_DIR'), os.path.join(HERE, '..', 'land'),
+             os.path.join(os.getcwd(), 'scripts', 'agent_tools', 'land'),
+             os.path.join(top, 'scripts', 'agent_tools', 'land') if top else None]
+    for c in cands:
+        if c and os.path.isfile(os.path.join(c, 'sectioncmp.py')):
+            return os.path.abspath(c)
+    return None
+
+
+def load_sectioncmp():
+    """Import sectioncmp or exit 2 with a message (never continue without it)."""
+    global sectioncmp
+    if sectioncmp is None:
+        d = find_land_dir()
+        if d and d not in sys.path:
+            sys.path.insert(0, d)
+        try:
+            import sectioncmp as m
+        except ImportError:
+            sys.stderr.write('identity.py: cannot import sectioncmp (looked in $GAG_LAND_DIR, %s/../land, '
+                             './scripts/agent_tools/land); set GAG_LAND_DIR to scripts/agent_tools/land\n' % HERE)
+            sys.exit(2)
+        sectioncmp = m
+    return sectioncmp
+
+
+def load_bindings(manifests=()):
+    """name -> address from scripts/data/symbol_bindings.json (found like the land dir, or
+    $TUMIG_BINDINGS) plus the `sym`/`addr` pairs of the given manifests."""
+    top = _toplevel()
+    land = find_land_dir()
+    cands = [os.environ.get('TUMIG_BINDINGS'),
+             os.path.join(land, '..', '..', 'data', 'symbol_bindings.json') if land else None,
+             os.path.join(top, 'scripts', 'data', 'symbol_bindings.json') if top else None]
+    out = {}
+    for c in cands:
+        if c and os.path.isfile(c):
+            for k, v in json.load(open(c)).items():
+                out[k] = hex(int(str(v), 16))
+            break
+    for m in manifests:
+        for r in m:
+            if r.get('sym') and r.get('addr'):
+                out.setdefault(r['sym'], hex(int(r['addr'], 16)))
+    return out
+
+
+def canon(name):
+    a = BIND.get(name)
+    return '@' + a if a else name
 
 
 def sections(objdir, tu):
@@ -25,11 +89,11 @@ def sections(objdir, tu):
             _cache[p] = None
         else:
             out = {}
-            for k, (h, rel) in sectioncmp.coff(p).items():
+            for k, (h, rel) in load_sectioncmp().coff(p).items():
                 sn, _, sym = k.partition('|')
                 sym = sym.split('#')[0]
                 if sn.startswith('.text') and sym:
-                    rel = tuple((o, '$L' if LOCAL.match(n) else n, t) for o, n, t in rel)
+                    rel = tuple((o, '$L' if LOCAL.match(n) else canon(n), t) for o, n, t in rel)
                     out.setdefault(sym, (h, rel))
             _cache[p] = out
     return _cache[p]
@@ -37,12 +101,14 @@ def sections(objdir, tu):
 
 def main():
     bo, no, bm, nm = sys.argv[1:5]
+    load_sectioncmp()
     only = None
     if os.environ.get('TUMIG_ONLY'):
         only = {int(x, 16) for x in open(os.environ['TUMIG_ONLY']).read().split()}
     touched_files = set(sys.argv[6:]) if len(sys.argv) > 6 else set()
     base = {int(r['addr'], 16): r for r in json.load(open(bm))}
     new = {int(r['addr'], 16): r for r in json.load(open(nm))}
+    BIND.update(load_bindings([list(base.values()), list(new.values())]))
     bad, ok, added = [], 0, []
     for a, r in sorted(new.items()):
         b = base.get(a)

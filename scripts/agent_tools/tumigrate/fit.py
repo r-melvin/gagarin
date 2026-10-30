@@ -12,11 +12,11 @@ and stay byte-identical; leave the rest where they are, with the reason.
    repeated.
 Writes OUT/<tu>.fit.json (accepted, skipped with reasons, identity result).
 """
-import argparse, json, os, subprocess, sys, shutil, tempfile
+import argparse, json, os, re, subprocess, sys, shutil, tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import migrate
 
-SITES = json.load(open(migrate.ASSERTS))
+SITES = None   # loaded in main() once the inputs directory is known
 
 
 def cl(tree, relpath, text, objdir):
@@ -109,8 +109,18 @@ def main():
     ap.add_argument('--base-manifest', required=True)
     ap.add_argument('--out', required=True)
     ap.add_argument('--exclude', action='append', default=[])
+    ap.add_argument('--inputs', help='directory holding tumap2/ and tumig1/ (default $GAG_SCRATCH_ROOT or ../gagarin-scratch)')
     a = ap.parse_args()
+    global SITES
+    if a.inputs:
+        migrate.set_inputs(a.inputs)
+    migrate.check_inputs()
+    SITES = json.load(open(migrate.ASSERTS))
     tree = os.path.abspath(a.tree)
+    dirty = git(tree, 'status', '--porcelain', '--untracked-files=no').strip()
+    if dirty:
+        raise SystemExit('refusing to run: %s has uncommitted changes to tracked files (a failed fit reverts '
+                         'with git checkout, which would discard them). Commit or move them first:\n%s' % (tree, dirty))
     ex = dict(x.split('=', 1) if '=' in x else (x, 'excluded') for x in a.exclude)
     os.makedirs(a.out, exist_ok=True)
     tmp = tempfile.mkdtemp(prefix='tumig_')
@@ -138,12 +148,15 @@ def main():
         r = subprocess.run([sys.executable, os.path.join(os.path.dirname(__file__), 'identity.py'),
                             a.base_objs, objdir, a.base_manifest,
                             os.path.join(tree, 'scripts/data/match_manifest.json'), '--all-touched'] + touched,
-                           capture_output=True, text=True, env=dict(os.environ, TUMIG_ONLY=onlyf))
+                           capture_output=True, text=True,
+                           env=dict(os.environ, TUMIG_ONLY=onlyf,
+                                    GAG_LAND_DIR=os.path.join(tree, 'scripts/agent_tools/land')))
         print(r.stdout.strip())
         diffs = [l.split() for l in r.stdout.split('\n') if l.strip().startswith('DIFF')]
         mine = diffs
-        if r.returncode not in (0, 1):
-            raise SystemExit('identity crashed: ' + r.stderr[-2000:])
+        if r.returncode not in (0, 1) or not re.search(r'^identity: \d+ identical', r.stdout, re.M):
+            raise SystemExit('identity did not run (exit %d, no result line); nothing was compared:\n%s'
+                             % (r.returncode, r.stderr[-2000:]))
         if not mine:
             git(tree, 'add', '--', res['dest'], 'scripts/data/match_manifest.json', *res['rewritten'])
             git(tree, 'commit', '-q', '-m', 'WIP tumig %s' % a.tu)
@@ -154,9 +167,13 @@ def main():
             return
         # revert this TU's working changes (own worktree, explicit paths only)
         paths = [res['dest']] + res['deleted'] + res['rewritten'] + ['scripts/data/match_manifest.json']
-        git(tree, 'rm', '-q', '--cached', '-f', '--', res['dest'], check=False)
-        os.remove(os.path.join(tree, res['dest']))
-        git(tree, 'checkout', 'HEAD', '--', *[x for x in paths if x != res['dest']])
+        # a destination that existed at HEAD (merged into) is restored; a new one is removed
+        if subprocess.run(['git', '-C', tree, 'cat-file', '-e', 'HEAD:' + res['dest']], capture_output=True).returncode == 0:
+            git(tree, 'checkout', 'HEAD', '--', *paths)
+        else:
+            git(tree, 'rm', '-q', '--cached', '-f', '--', res['dest'], check=False)
+            os.remove(os.path.join(tree, res['dest']))
+            git(tree, 'checkout', 'HEAD', '--', *[x for x in paths if x != res['dest']])
         basetu = {int(r2['addr'], 16): r2['tu'] for r2 in json.load(open(a.base_manifest))}
         mine_files = {f['file'] for f in p['files']}
         for d in mine:
