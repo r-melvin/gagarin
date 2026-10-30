@@ -25,7 +25,8 @@ import argparse, atexit, concurrent.futures, json, os, shutil, subprocess, sys, 
 # --len deflated them. Refresh with scripts/vc6/refresh_partials.py.
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import changed_tus
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # loaded by path from other tools
+import changed_tus  # noqa: E402
 
 GHIDRA = os.path.expanduser("~/.cargo/bin/ghidra")
 
