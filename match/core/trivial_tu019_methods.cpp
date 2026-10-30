@@ -6,6 +6,12 @@
 
 #include "trivial_tu019_methods.h"
 #include "../_layout/aircraft_class.h"
+#include "../_layout/aircraft_type_class.h"
+
+GG_STATIC_ASSERT(offsetof(AircraftClass, Type) == 0x6C4);
+GG_STATIC_ASSERT(sizeof(((AircraftClass*)0)->Type) == 4);
+GG_STATIC_ASSERT(offsetof(AbstractTypeClass, UIName) == 0x60);
+GG_STATIC_ASSERT(sizeof(((AbstractTypeClass*)0)->UIName) == 4);
 
 // FUNCTION: GAMEMD 0x414A10
 // Empty function that pops its stack arguments.
@@ -134,14 +140,14 @@ int AircraftClass::vf_11()
 
 // FUNCTION: GAMEMD 0x41C1D0
 // Member getter (dword). Vtable slot 36 of AircraftClass (RTTI).
-int Obj_0041C1D0::FUN_0041C1D0() const
+const wchar_t* AircraftClass::vf_36()
 {
-    return unknown_6C4->unknown_60;
+    return Type->UIName;
 }
 
 // FUNCTION: GAMEMD 0x41C200
 // Member getter (dword). Vtable slot 34 of AircraftClass (RTTI).
-int Obj_0041C200::FUN_0041C200() const
+ObjectTypeClass* AircraftClass::vf_34()
 {
-    return unknown_6C4;
+    return Type;
 }

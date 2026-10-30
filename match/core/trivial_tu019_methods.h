@@ -25,9 +25,6 @@ struct Obj_0041C130;
 struct Obj_0041C140;
 struct Obj_0041C150;
 struct Obj_0041C160;
-struct Obj_0041C1D0;
-struct Obj_0041C1D0_6C4;
-struct Obj_0041C200;
 
 
 
@@ -165,32 +162,6 @@ struct Obj_0041C160
     void FUN_0041C160(int a1);
 };
 GG_STATIC_ASSERT(offsetof(Obj_0041C160, unknown_560) == 0x560);
-
-struct Obj_0041C1D0
-{
-    char unknown_00[0x6C4];
-    Obj_0041C1D0_6C4* unknown_6C4;   // +0x06C4
-    // FUNCTION: GAMEMD 0x41C1D0
-    int FUN_0041C1D0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0041C1D0, unknown_6C4) == 0x6C4);
-
-struct Obj_0041C1D0_6C4
-{
-    char unknown_00[0x60];
-    int unknown_60;   // +0x0060
-};
-GG_STATIC_ASSERT(offsetof(Obj_0041C1D0_6C4, unknown_60) == 0x60);
-
-struct Obj_0041C200
-{
-    char unknown_00[0x6C4];
-    int unknown_6C4;   // +0x06C4
-    // FUNCTION: GAMEMD 0x41C200
-    int FUN_0041C200() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0041C200, unknown_6C4) == 0x6C4);
-
 
 // FUNCTION: GAMEMD 0x414A10
 void __stdcall FUN_00414A10(int a1, int a2);

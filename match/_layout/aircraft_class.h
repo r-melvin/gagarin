@@ -39,6 +39,8 @@ public:
     // CALLEE: GAMEMD 0x00413D20 (decl; reloc) -- constructor as the class factory calls it.
     AircraftClass(int unknown_arg0 = 0, int unknown_arg1 = 0);
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x41B430
+    virtual ObjectTypeClass* vf_34(); // 34  0x41C200
+    virtual const wchar_t* vf_36(); // 36  0x41C1D0
     virtual int vf_11();   // 11  0x41C180
     virtual int vf_12();   // 12  0x41C170
     // +0x6C0: IFlyControl vptr; ctor: MOV [ESI+0x6C0],0x7E2250 @0x00413DA2;
