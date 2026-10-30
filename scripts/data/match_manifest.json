@@ -82998,20 +82998,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu036_methods.cpp",
+  "tu": "match/core/neuron_class.cpp",
   "addr": "0x43A9A0",
-  "sym": "?FUN_0043A9A0@Obj_0043A9A0@@QBEHXZ",
+  "sym": "?vf_11@NeuronClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0043A9A0::FUN_0043A9A0",
+  "name": "NeuronClass::vf_11",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu036_methods.cpp",
+  "tu": "match/core/neuron_class.cpp",
   "addr": "0x43A9B0",
-  "sym": "?FUN_0043A9B0@Obj_0043A9B0@@QBEHXZ",
+  "sym": "?vf_12@NeuronClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0043A9B0::FUN_0043A9B0",
+  "name": "NeuronClass::vf_12",
   "status": "matched",
   "pct": 100
  },

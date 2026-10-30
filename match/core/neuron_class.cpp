@@ -28,4 +28,16 @@ NeuronClass::~NeuronClass()
     Array.RemoveItem(this);
 }
 
+// FUNCTION: GAMEMD 0x43A9A0
+int NeuronClass::vf_11()
+{
+    return 0x3C;
+}
+
+// FUNCTION: GAMEMD 0x43A9B0
+int NeuronClass::vf_12()
+{
+    return 0x38;
+}
+
 // SYNTHETIC: GAMEMD 0x43A9C0 -- NeuronClass scalar deleting destructor (slot 8), the destructor expanded in place.
