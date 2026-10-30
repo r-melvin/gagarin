@@ -190,17 +190,6 @@ struct Obj_004863A0
 };
 GG_STATIC_ASSERT(offsetof(Obj_004863A0, unknown_38) == 0x38);
 
-// FUNCTION: GAMEMD 0x4863A0
-// True when the value lies in either of two runs (0x14 and 0xC long).
-bool Obj_004863A0::FUN_004863A0() const
-{
-    int v = unknown_38;
-    if ((v >= DAT_00ABC1D8 && v < DAT_00ABC1D8 + 0x14)
-        || (v >= DAT_00AA1058 && v < DAT_00AA1058 + 0xC)) {
-        return true;
-    }
-    return false;
-}
 
 // Run starts held in globals for the two range tests below.
 // GLOBAL: GAMEMD 0xABAD20
@@ -233,36 +222,6 @@ struct Obj_004865D0
 };
 GG_STATIC_ASSERT(offsetof(Obj_004865D0, unknown_38) == 0x38);
 
-// FUNCTION: GAMEMD 0x4865D0
-// True when the value at +0x38 lies in any of six runs.
-bool Obj_004865D0::FUN_004865D0() const
-{
-    int v = unknown_38;
-    if (v >= DAT_00ABAD28 && v < DAT_00ABAD28 + 0x2A) {
-        return true;
-    }
-    if ((v >= DAT_00AA0738 && v < DAT_00AA0738 + 0xE)
-        || (v >= DAT_00AA073C && v < DAT_00AA073C + 4)
-        || (v >= DAT_00ABB110 && v < DAT_00ABB110 + 4)
-        || (v >= DAT_00AA1050 && v < DAT_00AA1050 + 4)
-        || (v >= DAT_00AA10A0 && v < DAT_00AA10A0 + 4)) {
-        return true;
-    }
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x486690
-// True when the value at +0x38 lies in any of three runs.
-bool Obj_004865D0::FUN_00486690() const
-{
-    int v = unknown_38;
-    if ((v >= DAT_00ABAD20 && v < DAT_00ABAD20 + 0xB)
-        || (v >= DAT_00ABC1D4 && v < DAT_00ABC1D4 + 0x18)
-        || (v >= DAT_00AA10AC && v < DAT_00AA10AC + 0x42)) {
-        return true;
-    }
-    return false;
-}
 
 // Four counters at +0x14..+0x20.
 struct Obj_0048BAA0

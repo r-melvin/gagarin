@@ -32,6 +32,8 @@ public:
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
     // The cell object at a coordinate. __thiscall, one stack argument, RET 4.
     CellClass* FUN_005657A0(const CellStruct* cell);
+    // The same entry point taking the coordinate by reference (a temporary sum, as the neighbour lookup passes).
+    CellClass* FUN_005657A0(const CellStruct& cell);
 
     // FUNCTION: GAMEMD 0x583820
     // The nearest cell to `start` whose zone word at `zoneWordOffset` equals

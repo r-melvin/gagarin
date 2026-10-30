@@ -21,19 +21,6 @@ struct Obj_004870D0
 GG_STATIC_ASSERT(offsetof(Obj_004870D0, unknown_7C) == 0x7C);
 GG_STATIC_ASSERT(offsetof(Obj_004870D0, unknown_AC) == 0xAC);
 
-// FUNCTION: GAMEMD 0x4870D0
-// True when the entry in the first table is positive.
-bool Obj_004870D0::FUN_004870D0(int index) const
-{
-    return unknown_7C[index] > 0;
-}
-
-// FUNCTION: GAMEMD 0x4870F0
-// True when the entry in the second table is positive.
-bool Obj_004870D0::FUN_004870F0(int index) const
-{
-    return unknown_AC[index] > 0;
-}
 
 struct Obj_004A52D0
 {

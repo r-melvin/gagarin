@@ -5,12 +5,11 @@
 //   cross-checked against YRpp
 //   (reconfirmed numerically here). CellView_00481810 derives AbstractClass.
 //
-// CellView_00481810 — shroud / neighbour helpers. This TU models only the members the
-// three matched methods touch:
-//   * MapCoords     @0x24  (CellStruct, 4 bytes) — IsShrouded, GetNeighbourCell
-//   * AltFlags      @0x12c (int)                  — ReduceShroudCounter
-//   * ShroudCounter @0x130 (int)                  — ReduceShroudCounter
-//   * Flags         @0x140 (int)                  — ReduceShroudCounter
+// CellView_00481810 — shroud queries. GetNeighbourCell, ReduceShroudCounter and Unshroud now
+// live on the canonical CellClass in tu050_cell_class.cpp; this view keeps the two
+// location tests whose overlay-union Point2D cannot be built against the canonical
+// Point2D (it has constructors, so it cannot be a union member):
+//   * MapCoords     @0x24  (CellStruct, 4 bytes) — IsShrouded, FUN_004879B0
 #ifndef GG_MATCH_MAP_CELL_CLASS_SHROUD_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_SHROUD_METHODS_H
 
@@ -18,8 +17,6 @@
 #include "../_rt/gg_static_assert.h"
 
 // 2D short cell coordinate (sizeof == 4): the dword at [this+0x24].
-// Vector2D<short>::operator+ returns a temporary by value — GetNeighbourCell
-// passes MapCoords+AdjacentCell as that prvalue, so model the operator.
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
@@ -35,42 +32,27 @@ struct Point2D
 
 class CellView_00481810;
 
-// MapClass singleton — only the two helpers GetNeighbourCell / IsShrouded
+// MapClass singleton — only the two helpers IsShrouded / FUN_004879B0
 // forward to, declared (no body) so cl emits relocatable __thiscall calls.
 // The retail singleton object lives at the fixed address 0x87F7E8.
 class MapView_5657A0_3
 {
 public:
-    CellView_00481810* GetCellAt(CellStruct const& mapCoords) const;        // 0x5657A0
     bool       IsLocationShrouded(CoordStruct const& coords) const; // 0x586360
     bool       FUN_005865E0(CoordStruct const& coords) const;       // 0x5865E0
 };
-
-// AdjacentCell[FacingType] — the static {dX,dY} step table at 0x89F688.
-// Referenced by absolute address so cl emits the same displacement retail does.
-#define AdjacentCell (reinterpret_cast<CellStruct const*>(0x89F688))
 
 class CellView_00481810
 {
 public:
     char       _base[0x24];                 // +0x00  AbstractClass (vtable + base)
     CellStruct MapCoords;                    // +0x24
-    char       _pad28[0x12C - 0x28];         // +0x28
-    int        AltFlags;                     // +0x12C
-    int        ShroudCounter;                // +0x130
-    char       _pad134[0x140 - 0x134];       // +0x134
-    int        Flags;                        // +0x140
+    char       _pad28[0x148 - 0x28];         // +0x28
 
     // 0x47B3A0  CellView_00481810::GetFloorHeight — retail callee we are NOT matching;
     // declared (no body) so cl emits a relocatable __thiscall call.
     int GetFloorHeight(Point2D const& subcoords) const;
 
-    // 0x481810
-    CellView_00481810* GetNeighbourCell(int facing) const;
-    // 0x4876F0
-    void Unshroud();
-    // 0x487630
-    void ReduceShroudCounter();
     // 0x487950
     bool IsShrouded() const;
     // 0x4879B0
@@ -78,8 +60,5 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(CellView_00481810, MapCoords)     == 0x24);
-GG_STATIC_ASSERT(offsetof(CellView_00481810, AltFlags)      == 0x12C);
-GG_STATIC_ASSERT(offsetof(CellView_00481810, ShroudCounter) == 0x130);
-GG_STATIC_ASSERT(offsetof(CellView_00481810, Flags)         == 0x140);
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_SHROUD_METHODS_H

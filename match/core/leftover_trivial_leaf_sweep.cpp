@@ -10,11 +10,6 @@
 
 #include "leftover_trivial_leaf_sweep.h"
 
-// FUNCTION: GAMEMD 0x484F10
-bool __stdcall FUN_00484F10(int)
-{
-    return true;
-}
 
 // FUNCTION: GAMEMD 0x49FB60
 int FUN_0049FB60(LeafObj_0x10* self)

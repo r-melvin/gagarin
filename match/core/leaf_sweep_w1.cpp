@@ -262,11 +262,6 @@ struct Obj_00487110
     void SetBit(int bit);
 };
 
-// FUNCTION: GAMEMD 0x487110
-void Obj_00487110::SetBit(int bit)
-{
-    unknown_78 |= 1 << bit;
-}
 
 struct Obj_00487C80
 {
@@ -276,11 +271,6 @@ struct Obj_00487C80
     int Get_F8();
 };
 
-// FUNCTION: GAMEMD 0x487C80
-int Obj_00487C80::Get_F8()
-{
-    return unknown_F8;
-}
 
 struct Obj_00487D50
 {
@@ -293,11 +283,6 @@ struct Obj_00487D50
 };
 GG_STATIC_ASSERT(offsetof(Obj_00487D50, unknown_140) == 0x140);
 
-// FUNCTION: GAMEMD 0x487D50
-int Obj_00487D50::Combined()
-{
-    return unknown_11B + ((unknown_140 >> 7) & 1) * 4;
-}
 
 struct Obj_00430910
 {
@@ -677,11 +662,6 @@ struct Obj_00487130
     void ClearBit(int bit);
 };
 
-// FUNCTION: GAMEMD 0x487130
-void Obj_00487130::ClearBit(int bit)
-{
-    unknown_78 &= ~(1 << bit);
-}
 
 // FUNCTION: GAMEMD 0x49B430
 // ASCII hex digit for 0..15, else 0.

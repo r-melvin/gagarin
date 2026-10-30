@@ -28,12 +28,6 @@ struct Obj_00487C90
 };
 GG_STATIC_ASSERT(offsetof(Obj_00487C90, unknown_F0) == 0xF0);
 
-// FUNCTION: GAMEMD 0x487C90
-// Whether the stored double is above the shared constant.
-int Obj_00487C90::FUN_00487C90() const
-{
-    return unknown_F0 > DAT_007E1718;
-}
 
 // GLOBAL: GAMEMD 0xAA0E18
 extern int DAT_00AA0E18;
@@ -49,17 +43,6 @@ struct Obj_004867B0
 };
 GG_STATIC_ASSERT(offsetof(Obj_004867B0, unknown_38) == 0x38);
 
-// FUNCTION: GAMEMD 0x4867B0
-// Whether the stored value is one global, or falls in the sixteen values
-// starting at another.
-bool Obj_004867B0::FUN_004867B0() const
-{
-    int value = unknown_38;
-    if (value == DAT_00AA0E18 || (value >= DAT_00AA0748 && value < DAT_00AA0748 + 0x10)) {
-        return true;
-    }
-    return false;
-}
 
 // Four-byte-stride index into a table of 36-byte records.
 struct Rec36_0048B720

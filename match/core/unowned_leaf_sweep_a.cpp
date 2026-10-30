@@ -37,41 +37,12 @@ int FUN_005117D0(const char* name);
 
 #include "../_layout/obj_00483460.h"
 
-// FUNCTION: GAMEMD 0x00483460
-// Clear bit 0x10 of +0x140 and reset +0x50; true if the bit was set.
-bool FUN_00483460(Obj_00483460* self)
-{
-    unsigned int flags = self->unknown_140;
-    if (flags & 0x10) {
-        flags &= ~0x10;
-        self->unknown_50 = -1;
-        self->unknown_140 = flags;
-        return true;
-    }
-    return false;
-}
 
 #include "../_layout/obj_00485060.h"
 
-// FUNCTION: GAMEMD 0x00485060
-// Is +0x38 inside the 14-wide window that starts at the global 0xAA0738.
-int FUN_00485060(Obj_00485060* self)
-{
-    int value = self->unknown_38;
-    if (value >= DAT_00AA0738 && value < DAT_00AA0738 + 14) {
-        return 1;
-    }
-    return 0;
-}
 
 #include "../_layout/obj_004870b0.h"
 
-// FUNCTION: GAMEMD 0x004870B0
-// Is bit `bit` of +0x78 set.
-int Obj_004870B0::FUN_004870B0(int bit) const
-{
-    return (unknown_78 & (1 << bit)) != 0;
-}
 
 #include "../_layout/geometry2d.h"
 

@@ -4759,7 +4759,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487E80",
   "sym": "??_GCellClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -8388,13 +8388,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x484F10",
   "sym": "?FUN_00484F10@@YG_NH@Z",
   "len": "0x5",
   "name": "FUN_00484F10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
@@ -23240,40 +23240,40 @@
   "pct": 57.2
  },
  {
-  "tu": "match/map/cell_class_activate_veins_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486920",
   "sym": "?ActivateVeins@Cell_00486920@@QAEXXZ",
   "len": "0x14c",
   "name": "CellClass::ActivateVeins",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_bridge_tile_queries.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486750",
   "sym": "?IsBridgeTile@CellClass@@QAE_NXZ",
   "len": "0x1f",
   "name": "CellClass::IsBridgeTile",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_bridge_tile_queries.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486770",
   "sym": "?IsWoodBridgeTile@CellClass@@QAE_NXZ",
   "len": "0x1f",
   "name": "CellClass::IsWoodBridgeTile",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_bridge_tile_queries.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486790",
   "sym": "?IsTileInSet00AA0E24@CellClass@@QAE_NXZ",
   "len": "0x1a",
   "name": "CellClass::IsTileInSet00AA0E24",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_clear_to_move_methods.cpp",
@@ -23285,22 +23285,22 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_fog_cell_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486A70",
   "sym": "?FogCell@CellClass@@QAEXXZ",
   "len": "0x177",
   "name": "CellClass::FogCell",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_fog_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486BF0",
   "sym": "?CleanFog@CellClass@@QAEXXZ",
   "len": "0x5d",
   "name": "CleanFog",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_fogged_objects_methods.cpp",
@@ -23330,85 +23330,85 @@
   "pct": 96.6
  },
  {
-  "tu": "match/map/cell_class_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x484FF0",
   "sym": "?GetUIName@CellClass@@QBEPBGXZ",
   "len": "0x1D",
   "name": "GetUIName",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x485010",
   "sym": "?GetContainedTiberiumIndex@CellClass@@QBEHXZ",
   "len": "0x8",
   "name": "GetContainedTiberiumIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x485240",
   "sym": "?SetMapCoords@CellClass@@QAEXPBUCellStruct@@@Z",
   "len": "0xC",
   "name": "SetMapCoords",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487CB0",
   "sym": "?GetRadLevel@CellClass@@QAEHXZ",
   "len": "0x27",
   "name": "CellClass::GetRadLevel",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487CE0",
   "sym": "?RadLevel_Increase@CellClass@@QAEXN@Z",
   "len": "0x13",
   "name": "RadLevel_Increase",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_nearest_techno_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47C3D0",
   "sym": "?FindTechnoNearestTo@Cell_0047C3D0@@QAEPAUObj_0047C3D0@@PAUPoint_0047C3D0@@_NPAU2@@Z",
   "len": "0xfa",
   "name": "CellClass::FindTechnoNearestTo",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_occupier_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47EBA0",
   "sym": "?GetUnit@CellClass@@QBEPAVUnitClass@@_N@Z",
   "len": "0x43",
   "name": "CellClass::GetUnit",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_occupier_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47EBF0",
   "sym": "?GetAircraft@CellClass@@QBEPAVAircraftClass@@_N@Z",
   "len": "0x43",
   "name": "CellClass::GetAircraft",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_occupier_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47EC40",
   "sym": "?GetInfantry@CellClass@@QBEPAVInfantryClass@@_N@Z",
   "len": "0x43",
   "name": "CellClass::GetInfantry",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_overlay_connect_methods.cpp",
@@ -23420,58 +23420,58 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_query_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47C4D0",
   "sym": "?FindObjectOfType@CellClass@@QBEPAVObjectClass@@H_N@Z",
   "len": "0x49",
   "name": "FindObjectOfType",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_query_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47C520",
   "sym": "?GetBuilding@CellClass@@QBEPAVBuildingClass@@XZ",
   "len": "0x2F",
   "name": "GetBuilding",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_query_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47C550",
   "sym": "?GetTerrain@CellClass@@QBEPAVTerrainClass@@_N@Z",
   "len": "0x43",
   "name": "GetTerrain",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_query_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47C5A0",
   "sym": "?GetSomeObject@CellClass@@QAEPAVObjectClass@@HH@Z",
   "len": "0x79",
   "name": "CellClass::GetSomeObject",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_query_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483480",
   "sym": "?RevealCellObjects@CellClass@@QAEXXZ",
   "len": "0x1E",
   "name": "RevealCellObjects",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_query_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x484F20",
   "sym": "?GetTunnel@CellClass@@QBEPAUTunnelClass@@XZ",
   "len": "0x26",
   "name": "GetTunnel",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_rad_methods.cpp",
@@ -23492,67 +23492,67 @@
   "pct": 50
  },
  {
-  "tu": "match/map/cell_class_remove_content_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47EA90",
   "sym": "?RemoveContent@CellClass@@QAEXPAVObjectClass@@_N@Z",
   "len": "0x107",
   "name": "CellClass::RemoveContent",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_sensor_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487150",
   "sym": "?IncreaseSensorsOfHouse@CellClass@@QAEXH@Z",
   "len": "0xc",
   "name": "CellClass::IncreaseSensorsOfHouse",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_sensor_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487160",
   "sym": "?DecreaseSensorsOfHouse@CellClass@@QAEXH@Z",
   "len": "0xc",
   "name": "CellClass::DecreaseSensorsOfHouse",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_sensor_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487170",
   "sym": "?IncreaseDisguiseSensorsOfHouse@CellClass@@QAEXH@Z",
   "len": "0xf",
   "name": "CellClass::IncreaseDisguiseSensorsOfHouse",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_sensor_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487180",
   "sym": "?DecreaseDisguiseSensorsOfHouse@CellClass@@QAEXH@Z",
   "len": "0xf",
   "name": "CellClass::DecreaseDisguiseSensorsOfHouse",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_sensor_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487DF0",
   "sym": "?IsLandType5@CellClass@@QBE_NXZ",
   "len": "0xb",
   "name": "CellClass::IsLandType5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_sensor_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487E00",
   "sym": "?FUN_00487E00@CellClass@@QBE_NXZ",
   "len": "0x4c",
   "name": "CellClass::FUN_00487E00",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_sensor_methods.cpp",
@@ -23564,31 +23564,31 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_shroud_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x481810",
-  "sym": "?GetNeighbourCell@CellView_00481810@@QBEPAV1@H@Z",
+  "sym": "?GetNeighbourCell@CellClass@@QBEPAV1@H@Z",
   "len": "0x56",
   "name": "GetNeighbourCell",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_shroud_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487630",
-  "sym": "?ReduceShroudCounter@CellView_00481810@@QAEXXZ",
+  "sym": "?ReduceShroudCounter@CellClass@@QAEXXZ",
   "len": "0x5a",
   "name": "ReduceShroudCounter",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_shroud_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4876F0",
-  "sym": "?Unshroud@CellView_00481810@@QAEXXZ",
+  "sym": "?Unshroud@CellClass@@QAEXXZ",
   "len": "0x27",
   "name": "Unshroud",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_shroud_methods.cpp",
@@ -23600,7 +23600,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_spread_tiberium_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483780",
   "sym": "?SpreadTiberium@Cell_00483780@@QAE_ND@Z",
   "len": "0x154",
@@ -23618,49 +23618,49 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_threat_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x481870",
   "sym": "?UpdateThreat@CellClass@@QAEXIH@Z",
   "len": "0x6b",
   "name": "UpdateThreat",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_tiberium_germinate_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4838E0",
   "sym": "?CanTiberiumGerminate@Cell_004838E0@@QAE_NPAX@Z",
   "len": "0x110",
   "name": "CellClass::CanTiberiumGerminate",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_tiberium_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x485020",
   "sym": "?GetContainedTiberiumValue@CellClass@@QBEHXZ",
   "len": "0x33",
   "name": "GetContainedTiberiumValue",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_tiberium_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487690",
   "sym": "?IncreaseShroudCounter@CellClass@@QAEXXZ",
   "len": "0x53",
   "name": "IncreaseShroudCounter",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_wall_owner_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47D210",
   "sym": "?SetWallOwner@CellClass@@QAEXXZ",
   "len": "0x96",
   "name": "CellClass::SetWallOwner",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/display_class_foundation_methods.cpp",
@@ -33928,7 +33928,7 @@
   "name": "DynamicVectorClass<UnitClass*>::FindItemIndex"
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486840",
   "sym": "?vf_18@CellClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x49",
@@ -60628,40 +60628,40 @@
   "pct": 0.0
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483460",
   "sym": "?FUN_00483460@@YI_NPAUObj_00483460@@@Z",
   "len": "0x1f",
   "name": "FUN_00483460",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x485060",
   "sym": "?FUN_00485060@@YIHPAUObj_00485060@@@Z",
   "len": "0x1d",
   "name": "FUN_00485060",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4870B0",
   "sym": "?FUN_004870B0@Obj_004870B0@@QBEHH@Z",
   "len": "0x1b",
   "name": "Obj_004870B0::FUN_004870B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/member_setter_family_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487C70",
   "sym": "?FUN_00487C70@Setter_00487C70@@QAEXH@Z",
   "len": "0xd",
   "name": "Setter_00487C70::FUN_00487C70",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/unowned_leaf_sweep_a.cpp",
@@ -83286,88 +83286,88 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483610",
   "sym": "?FUN_00483610@Obj_00483610@@QBEHXZ",
   "len": "0xd",
   "name": "Obj_00483610::FUN_00483610",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x484A80",
   "sym": "?FUN_00484A80@@YGXPAUArg1_00484A80@@@Z",
   "len": "0xd",
   "name": "FUN_00484A80",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x484A90",
   "sym": "?FUN_00484A90@@YGXPAUArg1_00484A90@@@Z",
   "len": "0x16",
   "name": "FUN_00484A90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486380",
   "sym": "?FUN_00486380@Obj_00486380@@QAE_NXZ",
   "len": "0x14",
   "name": "Obj_00486380::FUN_00486380",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4865B0",
   "sym": "?FUN_004865B0@Obj_004865B0@@QAE_NXZ",
   "len": "0x1a",
   "name": "Obj_004865B0::FUN_004865B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486650",
   "sym": "?FUN_00486650@Obj_00486650@@QAE_NXZ",
   "len": "0x1a",
   "name": "Obj_00486650::FUN_00486650",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4866D0",
   "sym": "?FUN_004866D0@Obj_004866D0@@QAE_NXZ",
   "len": "0x1a",
   "name": "Obj_004866D0::FUN_004866D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486710",
   "sym": "?FUN_00486710@Obj_00486710@@QAE_NXZ",
   "len": "0x1a",
   "name": "Obj_00486710::FUN_00486710",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486730",
   "sym": "?FUN_00486730@Obj_00486730@@QAE_NXZ",
   "len": "0x1a",
   "name": "Obj_00486730::FUN_00486730",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4867E0",
   "sym": "?IsOnFloor@CellClass@@UBE_NXZ",
   "len": "0x1a",
@@ -83376,49 +83376,49 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486900",
   "sym": "?FUN_00486900@Obj_00486900@@QAEEXZ",
   "len": "0x17",
   "name": "Obj_00486900::FUN_00486900",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487E60",
   "sym": "?FUN_00487E60@Obj_00487E60@@QBEHXZ",
   "len": "0x6",
   "name": "Obj_00487E60::FUN_00487E60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487E70",
   "sym": "?FUN_00487E70@Obj_00487E70@@QBEHXZ",
   "len": "0x6",
   "name": "Obj_00487E70::FUN_00487E70",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486670",
   "sym": "?FUN_00486670@Obj_00486670@@QAE_NXZ",
   "len": "0x1a",
   "name": "Obj_00486670::FUN_00486670",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4866F0",
   "sym": "?FUN_004866F0@Obj_004866F0@@QAE_NXZ",
   "len": "0x1a",
   "name": "Obj_004866F0::FUN_004866F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu053_methods.cpp",
@@ -105032,7 +105032,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483C10",
   "sym": "?Save@CellClass@@UAGJPAUIStream@@H@Z",
   "len": "0x6f",
@@ -105041,7 +105041,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486890",
   "sym": "?vf_22@CellClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x6b",
@@ -105140,7 +105140,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47B360",
   "sym": "??0CellClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x36",
@@ -105149,7 +105149,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4839F0",
   "sym": "?Load@CellClass@@UAGJPAUIStream@@@Z",
   "len": "0x218",
@@ -105158,7 +105158,7 @@
   "pct": 15.4
  },
  {
-  "tu": "match/map/cell_class_get_coords.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487E50",
   "sym": "?vf_rtti_3@CellClass@@UAGHXZ",
   "len": "0x8",
@@ -133553,22 +133553,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc_range1_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4870D0",
   "sym": "?FUN_004870D0@Obj_004870D0@@QBE_NH@Z",
   "len": "0x11",
   "name": "Obj_004870D0::FUN_004870D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc_range1_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4870F0",
   "sym": "?FUN_004870F0@Obj_004870D0@@QBE_NH@Z",
   "len": "0x14",
   "name": "Obj_004870D0::FUN_004870F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc_range1_methods.cpp",
@@ -133742,7 +133742,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487110",
   "sym": "?SetBit@Obj_00487110@@QAEXH@Z",
   "len": "0x13",
@@ -133751,7 +133751,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487C80",
   "sym": "?Get_F8@Obj_00487C80@@QAEHXZ",
   "len": "0x7",
@@ -133760,7 +133760,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487D50",
   "sym": "?Combined@Obj_00487D50@@QAEHXZ",
   "len": "0x17",
@@ -133913,7 +133913,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487130",
   "sym": "?ClearBit@Obj_00487130@@QAEXH@Z",
   "len": "0x1a",
@@ -135605,22 +135605,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_helper_r8b_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x487C90",
   "sym": "?FUN_00487C90@Obj_00487C90@@QBEHXZ",
   "len": "0x1c",
   "name": "Obj_00487C90::FUN_00487C90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_helper_r8b_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4867B0",
   "sym": "?FUN_004867B0@Obj_004867B0@@QBE_NXZ",
   "len": "0x24",
   "name": "Obj_004867B0::FUN_004867B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_helper_r8b_methods.cpp",
@@ -136640,31 +136640,31 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc_w1_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4863A0",
   "sym": "?FUN_004863A0@Obj_004863A0@@QBE_NXZ",
   "len": "0x2b",
   "name": "Obj_004863A0::FUN_004863A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc_w1_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4865D0",
   "sym": "?FUN_004865D0@Obj_004865D0@@QBE_NXZ",
   "len": "0x72",
   "name": "Obj_004865D0::FUN_004865D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc_w1_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486690",
   "sym": "?FUN_00486690@Obj_004865D0@@QBE_NXZ",
   "len": "0x3c",
   "name": "Obj_004865D0::FUN_00486690",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc_w1_methods.cpp",
@@ -139286,40 +139286,40 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_sweep_r13_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483410",
   "sym": "?FUN_00483410@Cell_R13@@QAE_NH@Z",
   "len": "0x44",
   "name": "Cell_R13::FUN_00483410",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_r13_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483620",
   "sym": "?FUN_00483620@Cell_R13@@QAE_NXZ",
   "len": "0x70",
   "name": "Cell_R13::FUN_00483620",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_r13_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483690",
   "sym": "?FUN_00483690@Cell_R13@@QAE_NXZ",
   "len": "0x7d",
   "name": "Cell_R13::FUN_00483690",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_r13_w1.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x483710",
   "sym": "?FUN_00483710@Cell_R13@@QAE_NXZ",
   "len": "0x70",
   "name": "Cell_R13::FUN_00483710",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/house_class_r13_methods.cpp",
@@ -145163,13 +145163,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r24_1_leaf_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486E30",
   "sym": "?FUN_00486E30@Cell_00486E30@@QAEHXZ",
   "len": "0x36",
   "name": "Cell_00486E30::FUN_00486E30",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/r24_1_leaf_methods.cpp",
@@ -147273,7 +147273,7 @@
   "pct": 92.9
  },
  {
-  "tu": "match/map/cell_class_tu050.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x47BB60",
   "sym": "??1CellClass@@UAE@XZ",
   "len": "0x89",
@@ -147282,7 +147282,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_tu050.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x480110",
   "sym": "?FUN_00480110@CellClass@@QAEXPAUPoint2D@@@Z",
   "len": "0x6d",
@@ -147291,7 +147291,7 @@
   "pct": 80.0
  },
  {
-  "tu": "match/map/cell_class_tu050.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x485130",
   "sym": "?FUN_00485130@CellClass@@QAEXPAX@Z",
   "len": "0xca",
@@ -147300,7 +147300,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_tu050.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4863D0",
   "sym": "?FUN_004863D0@CellClass@@QAE_NXZ",
   "len": "0x1dd",

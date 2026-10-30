@@ -82,20 +82,6 @@ struct Cell_00486E30
 };
 GG_STATIC_ASSERT(offsetof(Cell_00486E30, MapCoords) == 0x24);
 
-// FUNCTION: GAMEMD 0x486E30
-//
-// If a veinhole monster covers this cell, hand the cell to it; otherwise let the
-// map's cell record for these coordinates react. Always returns 0.
-int Cell_00486E30::FUN_00486E30()
-{
-    Vein_00486E30* vein = FUN_0074CDB0(&MapCoords);
-    if (vein) {
-        vein->FUN_0074EF10(this);
-        return 0;
-    }
-    DAT_0087F7E8_00486E30.GetCellAt(&MapCoords)->FUN_00485590();
-    return 0;
-}
 
 // ---------------------------------------------------------------------------
 // 0x488210: a toggle-style gadget press handler (the +0x2D byte is the on flag).

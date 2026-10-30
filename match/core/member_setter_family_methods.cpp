@@ -4,14 +4,6 @@
 
 #include "member_setter_family_methods.h"
 
-// FUNCTION: GAMEMD 0x00487C70
-//
-// Store the argument into the member at +0xF8.
-void Setter_00487C70::FUN_00487C70(int value)
-{
-    *(int*)(Bytes + 0xF8) = value;
-}
-
 
 // FUNCTION: GAMEMD 0x00681110
 //
