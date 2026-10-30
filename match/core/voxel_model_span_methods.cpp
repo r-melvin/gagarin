@@ -50,20 +50,7 @@ struct VoxelSectionEntry
 };
 GG_STATIC_ASSERT(sizeof(VoxelSectionEntry) == 0x0C);   // array stride (index * 0x0C)
 
-struct VoxelDrawEntry
-{
-	void *Source;                 // +0x00
-	int Section;                  // +0x04
-	int Frame;                    // +0x08
-	int MinZCorner;               // +0x0C
-	Vector3D Min;                 // +0x10
-	Vector3D Max;                 // +0x1C
-	Vector3D Corners[8];          // +0x28
-};
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, Section) == 0x04);
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, Frame) == 0x08);
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, MinZCorner) == 0x0C);
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, Corners) == 0x28);
+#include "voxel_draw_entry.h"
 
 struct VoxelCornerView
 {

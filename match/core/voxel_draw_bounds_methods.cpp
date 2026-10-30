@@ -14,30 +14,7 @@
 #include "../_layout/matrix3d.h"
 #include "voxel_section_source.h"
 
-struct BoundsFloat3
-{
-	BoundsFloat3() {}
-	BoundsFloat3(float x, float y, float z) : X(x), Y(y), Z(z) {}
-	float X;
-	float Y;
-	float Z;
-};
-
-struct VoxelDrawEntry
-{
-	VoxelSectionSource *Source;   // +0x00
-	int Section;                  // +0x04
-	int Frame;                    // +0x08
-	int MinZCorner;               // +0x0C
-	BoundsFloat3 Min;             // +0x10
-	BoundsFloat3 Max;             // +0x1C
-	Vector3D Corners[8];          // +0x28
-};
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, MinZCorner) == 0x0C);
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, Min) == 0x10);
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, Max) == 0x1C);
-GG_STATIC_ASSERT(offsetof(VoxelDrawEntry, Corners) == 0x28);
-GG_STATIC_ASSERT(sizeof(VoxelDrawEntry) == 0x88);   // array stride (index * 0x88)
+#include "voxel_draw_entry.h"
 
 extern BoundsFloat3 DAT_00b2d5e0;
 extern int DAT_00b2d820;
