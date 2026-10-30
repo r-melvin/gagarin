@@ -84240,7 +84240,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu259_methods.cpp",
+  "tu": "match/combat/infantry_type_class_find_index_methods.cpp",
   "addr": "0x524790",
   "sym": "?vf_45@InfantryTypeClass@@UAEHXZ",
   "len": "0xC",

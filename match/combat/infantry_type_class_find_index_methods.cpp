@@ -5,6 +5,7 @@
 //   array at 0xA8E348 (Items +4, Count +0x10).
 
 #include "../_layout/infantry_type_class.h"
+#include "../_layout/rules_class.h"
 #include "../core/vector_class.h"
 #include "../core/header_init_shapes.h"
 
@@ -48,4 +49,10 @@ int InfantryTypeClass::FUN_00523C90(const char* name)
         }
     }
     return -1;
+}
+
+// FUNCTION: GAMEMD 0x524790
+int InfantryTypeClass::vf_45()
+{
+    return RulesInstance->IRepairStep;
 }
