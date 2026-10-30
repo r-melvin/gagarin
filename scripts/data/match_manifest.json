@@ -26916,13 +26916,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_abilities_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x477640",
   "sym": "?ReadAbilities@CCINIClass@@QAE?AUAbilitiesStruct@@PBD0ABU2@@Z",
   "len": "0xf5",
   "name": "CCINIClass::ReadAbilities",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccini_class_angle_point_methods.cpp",
@@ -27024,40 +27024,40 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_base_category_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x475A40",
   "sym": "?FUN_00475A40@CCINI_00475A40@@QAE_NPBD0H@Z",
   "len": "0x1e",
   "name": "FUN_00475A40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_base_category_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x475A60",
   "sym": "?ReadCategoryList@CCINI_00475A40@@QAEHPBD0H@Z",
   "len": "0x107",
   "name": "CCINIClass::ReadCategoryList",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_base_category_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x475B70",
   "sym": "?WriteCategoryList@CCINI_00475A40@@QAE_NPBD0H@Z",
   "len": "0xfb",
   "name": "CCINIClass::WriteCategoryList",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_crc_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x476D80",
   "sym": "?GetCRC@CCINI_00476D80@@QAEHXZ",
   "len": "0x9d",
   "name": "CCINIClass::GetCRC",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
@@ -27312,31 +27312,31 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_read3bytes_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x474B50",
   "sym": "?Read3Bytes@CCINIClass@@QAE?AUColorStruct@@PBD0ABU2@@Z",
   "len": "0xcf",
   "name": "CCINIClass::Read3Bytes",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_read_ccfile_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x4741F0",
   "sym": "?ReadCCFile@CCINI_004741F0@@QAEHPAUFile_004741F0@@_N1@Z",
   "len": "0x12d",
   "name": "CCINIClass::ReadCCFile",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_read_color_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x474C70",
   "sym": "?ReadColor@CCINIClass@@QAEPAUColorStruct@@PAU2@PBD1ABU2@@Z",
   "len": "0xdd",
   "name": "CCINIClass::ReadColor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccini_class_small_readers_methods.cpp",
@@ -27618,13 +27618,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_write_ccfile_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x474430",
   "sym": "?WriteCCFile@CCINI_00474430@@QAEHPAUFile_00474430@@_N@Z",
   "len": "0x102",
   "name": "CCINIClass::WriteCCFile",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/Ini.cpp",
@@ -40570,13 +40570,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_read_ccfile_methods.cpp",
+  "tu": "match/platform/ccini_class_type_list_methods.cpp",
   "addr": "0x474320",
-  "len": "0x10a",
   "sym": "?FUN_00474320@CCINI_004741F0@@QAEHPAUPipe_004741F0@@_N1@Z",
+  "len": "0x10a",
   "name": "FUN_00474320",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/CD.cpp",
