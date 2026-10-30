@@ -148296,5 +148296,32 @@
   "name": "RadioClass::RadioClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/Score.cpp",
+  "addr": "0x68ED80",
+  "sym": "?FUN_0068ED80@ScoreHost_0068ED80@@QAEHPAVHouseClass@@@Z",
+  "len": "0x192",
+  "name": "ScoreHost_0068ED80::FUN_0068ED80",
+  "status": "partial",
+  "pct": 95.0
+ },
+ {
+  "tu": "match/ui/Score.cpp",
+  "addr": "0x690A10",
+  "sym": "??0ScoreFullFontClass@@QAE@PAVConvertClass@@@Z",
+  "len": "0xc2",
+  "name": "ScoreFullFontClass::ScoreFullFontClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/Score.cpp",
+  "addr": "0x690AE0",
+  "sym": "??0ScoreBigFontClass@@QAE@PAVConvertClass@@@Z",
+  "len": "0xc2",
+  "name": "ScoreBigFontClass::ScoreBigFontClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

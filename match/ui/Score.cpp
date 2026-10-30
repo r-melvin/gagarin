@@ -146,6 +146,62 @@ double DAT_00B05558 = DAT_007E1718 / DAT_00B05578;
 // GLOBAL: GAMEMD 0x00B05568
 MathTblCoord DAT_00B05568;
 
+#include "../_layout/house_class.h"
+#include "../_layout/house_interfaces.h"
+
+// The score screen object; the efficiency calculation reads nothing of its own.
+struct ScoreHost_0068ED80
+{
+    // FUNCTION: GAMEMD 0x68ED80
+    int FUN_0068ED80(HouseClass* house);
+};
+
+
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
+extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+
+// FUNCTION: GAMEMD 0x68ED80
+// PARTIAL: 95.0% (instruction multiset identical, 120 of 120). Deltas: the two loads of StartingCredits and
+// HarvestedCredits ahead of the denominator come out in the opposite order (EAX/EDX swapped), and the denominator and
+// the vf_06 result swap their two stack slots ([esp+0x1c] / [esp+0x14]) in the money branch.
+// The mission efficiency of a house and its allies: the share of what was built that is still standing,
+// averaged with the share of the money that is still held, as a percentage.
+int ScoreHost_0068ED80::FUN_0068ED80(HouseClass* house)
+{
+    int remaining = 0;
+    int total = 0;
+    for (int i = 0; i < HouseClass_Array.Count; i++) {
+        HouseClass* other = HouseClass_Array.Items[i];
+        if ((house->IsAlliedWith(other) && other->IsAlliedWith(house)) || house == other) {
+            remaining += other->ActiveBuildingTypes.FUN_0049FB60();
+            remaining += other->ActiveUnitTypes.FUN_0049FB60();
+            remaining += other->ActiveInfantryTypes.FUN_0049FB60();
+            remaining += other->ActiveAircraftTypes.FUN_0049FB60();
+            total += other->TotalKilledBuildings + other->TotalKilledUnits;
+        }
+    }
+    total += remaining;
+    FUN_004068E0("Remaining: %ld, Total: %ld\n", remaining, total);
+    float buildEconomy;
+    if (total > 0)
+        buildEconomy = (float)remaining / total;
+    else
+        buildEconomy = 0;
+    FUN_004068E0("BuildEconomy = %f\n", buildEconomy);
+    FUN_004068E0("Money: %ld, Harvested: %ld, Initial: %ld\n", house->vf_06(), house->HarvestedCredits, house->StartingCredits);
+    int spent = house->StartingCredits;
+    spent += house->HarvestedCredits;
+    float moneyEconomy;
+    if (spent > 0)
+        moneyEconomy = (float)house->vf_06() / spent;
+    else
+        moneyEconomy = 0;
+    FUN_004068E0("MoneyEconomy = %f\n", moneyEconomy);
+    int efficiency = (int)(100.0 * ((buildEconomy + moneyEconomy) * 0.5));
+    FUN_004068E0("Efficiency: %ld\n", efficiency);
+    return efficiency;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x68FFE0
 void BlinkCursorHost_0068FFE0::FUN_0068FFE0(int x, int y)
@@ -190,6 +246,64 @@ void BlinkCursorHost_0068FFE0::FUN_0068FFE0(int x, int y)
 // Empty function.
 void __cdecl FUN_00690150()
 {
+}
+
+
+#include "../_layout/score_full_font_class.h"
+#include "../_layout/score_big_font_class.h"
+#include "../platform/ccfile_class.h"
+
+// FUNCTION: GAMEMD 0x690640 (decl; reloc) -- loads the shared glyph tables, ECX = font.
+void __fastcall FUN_00690640(ScoreFontClass* font);
+// GLOBAL: GAMEMD 0xB0558C -- number of live fonts.
+extern int DAT_00B0558C;
+// FUNCTION: GAMEMD 0x5B40B0 (decl; reloc), ECX=path, DL=force.
+void* __fastcall FUN_005B40B0(const char* path, bool force);
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
+extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+
+// The 0x690580 body, expanded inline into the derived font constructors.
+inline ScoreFontClass::ScoreFontClass(const InlineInit&)
+    : unknown_04(0), unknown_08(0), unknown_0C(0), unknown_14(0)
+{
+    FUN_00690640(this);
+    DAT_00B0558C++;
+}
+
+// FUNCTION: GAMEMD 0x690A10
+// The full-size score font: its shape comes from the mix files, else from disk.
+ScoreFullFontClass::ScoreFullFontClass(ConvertClass* convert) : ScoreFontClass(InlineInit())
+{
+    unknown_10 = 0;
+    unknown_0C = (int)FUN_005B40B0("FULLFNT3.SHP", false);
+    if (unknown_0C == 0) {
+        CCFileClass file("FULLFNT3.SHP");
+        unknown_0C = (int)file.ReadWholeFile();
+        unknown_10 = 1;
+        file.Close();
+        FUN_004068E0("ScoreScreen: Loaded FULLFNT3.SHP\n");
+    }
+    unknown_04 = 0xb;
+    unknown_14 = (int)convert;
+    unknown_08 = 0x15;
+}
+
+// FUNCTION: GAMEMD 0x690AE0
+// The big score font, loaded the same way.
+ScoreBigFontClass::ScoreBigFontClass(ConvertClass* convert) : ScoreFontClass(InlineInit())
+{
+    unknown_10 = 0;
+    unknown_0C = (int)FUN_005B40B0("BIGFONT.SHP", false);
+    if (unknown_0C == 0) {
+        CCFileClass file("BIGFONT.SHP");
+        unknown_0C = (int)file.ReadWholeFile();
+        unknown_10 = 1;
+        file.Close();
+        FUN_004068E0("ScoreScreen: Loaded BIGFONT.SHP\n");
+    }
+    unknown_04 = 0x14;
+    unknown_14 = (int)convert;
+    unknown_08 = 0x23;
 }
 
 

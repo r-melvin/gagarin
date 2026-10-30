@@ -14,7 +14,10 @@
 class ScoreFontClass
 {
 public:
+    // Tag for the constructor retail expands inline inside the derived font constructors.
+    struct InlineInit {};
     ScoreFontClass();                                           // 0x690580
+    ScoreFontClass(const InlineInit&);                          // the 0x690580 body, expanded inline
     ScoreFontClass(int a1, int a2, int a3, int a4);             // 0x6905B0 (__thiscall, RET 0x10)
     virtual ~ScoreFontClass();                                  // 0  0x691040: scalar deleting destructor shape
     virtual int vf_1(unsigned short ch);                                // 1  0x6907E0: RET 0x4
