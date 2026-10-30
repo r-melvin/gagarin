@@ -10,10 +10,12 @@
 // the retail RTTI tables; the base is the class that owns the called body
 // (AbstractClass::Save 0x410320, ObjectTypeClass::Save 0x5F9950 (below),
 // TechnoTypeClass::Save 0x716DC0, FootClass::Save 0x4DB690). The classes are
-// declared here only as views carrying Save: intermediate bases that do not
-// override it are elided, and no member is touched, so there is no layout.
-// The classes with a canonical header (AbstractClass, ObjectTypeClass,
-// TechnoTypeClass, FootClass and the family C classes) come from it.
+// declared here only as a view carrying Save where no canonical class can carry
+// it yet (IsometricTileTypeView_00549D70: the canonical IsometricTileTypeClass
+// is not derived from ObjectTypeClass and dispatches slot 39 through a typed
+// member-pointer table). The classes with a canonical header (AbstractClass,
+// ObjectTypeClass, TechnoTypeClass, FootClass, ParasiteClass and the family C
+// classes) come from it.
 
 #include <objidl.h>
 #include "../_layout/anim_type_class.h"
@@ -39,6 +41,7 @@
 #include "../_layout/trigger_class.h"
 #include "../_layout/voxel_anim_type_class.h"
 #include "../_layout/object_type_class.h"
+#include "../_layout/parasite_class.h"
 #include "../_layout/techno_type_class.h"
 #include "../_layout/foot_class.h"
 #include "../_layout/aircraft_class.h"
@@ -59,12 +62,6 @@
 
 
 class IsometricTileTypeView_00549D70 : public ObjectTypeClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
-class ParasiteClass : public AbstractClass
 {
 public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);

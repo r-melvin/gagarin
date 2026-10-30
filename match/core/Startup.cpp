@@ -51,6 +51,7 @@
 #include "../_layout/i_link_stream.h"
 #include "../combat/bullet_type_class.h"
 #include "../_layout/aircraft_class.h"
+#include "../_layout/parasite_class.h"
 #include "../_layout/aircraft_type_class.h"
 #include "../_layout/anim_class.h"
 #include "../_layout/infantry_class.h"
@@ -295,19 +296,6 @@ public:
     virtual int vf_11();
     virtual int vf_12();
     unsigned char unknown_[0x40 - sizeof(AbstractClass)];
-};
-
-// CALLEE: GAMEMD 0x00629210 (decl; reloc) -- ParasiteClass default constructor.
-class ParasiteClass : public AbstractClass
-{
-public:
-    ParasiteClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x58 - sizeof(AbstractClass)];
 };
 
 // CALLEE: GAMEMD 0x004385D0 (decl; reloc) -- BombClass default constructor.

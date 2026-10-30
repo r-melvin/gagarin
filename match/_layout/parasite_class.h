@@ -42,5 +42,6 @@ GG_STATIC_ASSERT(offsetof(ParasiteClass, TimerA) == 0x2C);
 GG_STATIC_ASSERT(offsetof(ParasiteClass, TimerB) == 0x38);
 GG_STATIC_ASSERT(offsetof(ParasiteClass, Subject) == 0x44);
 GG_STATIC_ASSERT(offsetof(ParasiteClass, unknown_54) == 0x54);
+GG_STATIC_ASSERT(sizeof(ParasiteClass) == 0x58);
 
 #endif  // GG_MATCH_LAYOUT_PARASITE_CLASS_H
