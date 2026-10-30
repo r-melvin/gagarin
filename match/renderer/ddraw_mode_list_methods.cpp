@@ -14,7 +14,7 @@
 #include "../core/vector_class.h"
 
 // Surface description as filled by the enumeration callback.
-struct DDModeDesc
+struct _DDSURFACEDESC
 {
     unsigned long Size;          // +0x00
     unsigned long Flags;         // +0x04
@@ -23,14 +23,14 @@ struct DDModeDesc
     char          unknown_10[0x44];
     unsigned long BitCount;      // +0x54 (pixel format at +0x48)
 };
-GG_STATIC_ASSERT(offsetof(DDModeDesc, Height) == 0x08);
-GG_STATIC_ASSERT(offsetof(DDModeDesc, Width) == 0x0C);
-GG_STATIC_ASSERT(offsetof(DDModeDesc, BitCount) == 0x54);
+GG_STATIC_ASSERT(offsetof(_DDSURFACEDESC, Height) == 0x08);
+GG_STATIC_ASSERT(offsetof(_DDSURFACEDESC, Width) == 0x0C);
+GG_STATIC_ASSERT(offsetof(_DDSURFACEDESC, BitCount) == 0x54);
 
 // The VectorClass capacity constructor stays out of line (0x4A4E30); the
 // DynamicVectorClass one is expanded in place.
-template<> inline DynamicVectorClass<DDModeDesc*>::DynamicVectorClass(int capacity, DDModeDesc** pMem)
-    : VectorClass<DDModeDesc*>(capacity, pMem)
+template<> inline DynamicVectorClass<_DDSURFACEDESC*>::DynamicVectorClass(int capacity, _DDSURFACEDESC** pMem)
+    : VectorClass<_DDSURFACEDESC*>(capacity, pMem)
 {
     this->CapacityIncrement = 10;
     this->Count = 0;
@@ -55,7 +55,7 @@ struct DDrawEnumView
 extern DDrawEnumView* DAT_008A0094;
 
 // FUNCTION: GAMEMD 0x4A4850 (decl; reloc) -- appends a copy of each mode.
-long __stdcall FUN_004a4850(DDModeDesc* desc, void* context);
+long __stdcall FUN_004a4850(_DDSURFACEDESC* desc, void* context);
 // FUNCTION: GAMEMD 0x4A48C0 (decl; reloc) -- qsort comparator over the pairs.
 int __cdecl FUN_004a48c0(void const* a, void const* b);
 
@@ -68,7 +68,7 @@ unsigned long* FUN_004a4900(unsigned long min_width, unsigned long min_height,
     {
         return 0;
     }
-    DynamicVectorClass<DDModeDesc*> modes;
+    DynamicVectorClass<_DDSURFACEDESC*> modes;
     if (DAT_008A0094->lpVtbl->EnumDisplayModes(DAT_008A0094, 0, 0, &modes, FUN_004a4850) != 0 || modes.GetCount() == 0)
     {
         return 0;
@@ -79,7 +79,7 @@ unsigned long* FUN_004a4900(unsigned long min_width, unsigned long min_height,
     int found = 0;
     for (int i = 0; i < modes.GetCount(); i++)
     {
-        DDModeDesc* desc = modes.Items[i];
+        _DDSURFACEDESC* desc = modes.Items[i];
         if (desc->Width <= max_width && desc->Height <= max_height
             && desc->Width >= min_width && desc->Height >= min_height
             && desc->BitCount == bit_count)

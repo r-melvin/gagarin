@@ -4509,7 +4509,7 @@
   {"addr":"0x4A4D60","tu":null,"tu_kind":"comdat","evidence":"vtable slot of template instantiation DynamicVectorClass<_DDSURFACEDESC*>","hint_tu":null},
   {"addr":"0x4A4D90","tu":null,"tu_kind":"comdat","evidence":"vtable slot of template instantiation VectorClass<_DDSURFACEDESC*>","hint_tu":null},
   {"addr":"0x4A4DE0","tu":null,"tu_kind":"comdat","evidence":"vtable slot of template instantiation DynamicVectorClass<_DDSURFACEDESC*>","hint_tu":null},
-  {"addr":"0x4A4E30","tu":null,"tu_kind":"comdat","evidence":"symbol shape ??0?$VectorClass@PAUDDModeDesc@@@@QAE@HP","hint_tu":null},
+  {"addr":"0x4A4E30","tu":null,"tu_kind":"comdat","evidence":"symbol shape ??0?$VectorClass@PAU_DDSURFACEDESC@@@@QAE@HP","hint_tu":null},
   {"addr":"0x4A4E80","tu":null,"tu_kind":"unknown","evidence":"no TU evidence; sorts between Credits.CPP and Display.CPP","bracket":["Credits.CPP","Display.CPP"]},
   {"addr":"0x4A4EA0","tu":null,"tu_kind":"unknown","evidence":"no TU evidence; sorts between Credits.CPP and Display.CPP","bracket":["Credits.CPP","Display.CPP"]},
   {"addr":"0x4A4ED0","tu":null,"tu_kind":"unknown","evidence":"no TU evidence; sorts between Credits.CPP and Display.CPP","bracket":["Credits.CPP","Display.CPP"]},
