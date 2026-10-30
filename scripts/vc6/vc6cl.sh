@@ -39,7 +39,7 @@ fi
 
 # cl.exe needs MSPDB60.DLL from Common\MSDev98\Bin on PATH, plus VC98\Bin.
 export WINEPATH="$VC98/Bin;$MSDEV/Bin"
-export INCLUDE="$VC98/Include"
+export INCLUDE="$VC98/Include;$VC98/ATL/Include"
 export LIB="$VC98/Lib"
 
 # Locked/bisected flag set. P0.5 bisects this against the leaf cluster, then
