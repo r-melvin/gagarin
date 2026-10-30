@@ -7,10 +7,26 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 #include "vector_class_operations.h"
+#include "vector_add_item_free.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/bomb_class.h"
 
-class BombClass;
+extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 
 // SYNTHETIC: GAMEMD 0x00438550 -- initialiser: constructs DAT_0089C668, registers 0x438590.
 // SYNTHETIC: GAMEMD 0x00438590 -- atexit cleanup: destroys DAT_0089C668.
 // GLOBAL: GAMEMD 0x0089C668
 DynamicVectorClass<BombClass*> DAT_0089C668;
+
+// FUNCTION: GAMEMD 0x4385D0 (__thiscall, no arguments)
+// Default constructor: clear the owner, target and tick-sound state, construct the audio
+// controller, take the ticking sound from the rules and enrol in the global bomb list.
+BombClass::BombClass() : TickSound(0)
+{
+    OwnerHouse = 0;
+    Target = 0;
+    Harmless = 0;
+    Audio.FUN_00405BE0();
+    unknown_50 = Rules->BombTickingSound;
+    DynamicVectorAddItemFree(&DAT_0089C668, this);
+}

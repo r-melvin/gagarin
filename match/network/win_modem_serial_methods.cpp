@@ -131,6 +131,7 @@ class WinModemClass
 {
 public:
 // SYNTHETIC: GAMEMD 0x775610 -- the scalar deleting destructor, expanded from the body below (/Ob2).
+    WinModemClass();                                                  // 0x774120
     virtual ~WinModemClass();                                         // 0x775610
     virtual HANDLE FUN_00774410(char* device, int baud, int parity,
                                     int wordLength, int stopBits);    // 0x774410
@@ -167,7 +168,8 @@ public:
     OVERLAPPED   unknown_3C;       // +0x003C
     bool         unknown_50;        // +0x0050
     bool         unknown_51;       // +0x0051
-    char         unknown_52[6];      // +0x0052
+    char         unknown_52[2];      // +0x0052
+    int          unknown_54;         // +0x0054
     int          unknown_58;             // +0x0058
     HANDLE       PortHandle;         // +0x005C
     int          unknown_60;           // +0x0060
@@ -176,7 +178,8 @@ public:
     char         unknown_6C[0x2000];  // +0x006C
     DCB          unknown_206C;          // +0x206C
 };
-GG_STATIC_ASSERT(offsetof(WinModemClass, unknown_4) == 0x04 &&
+GG_STATIC_ASSERT(offsetof(WinModemClass, unknown_54) == 0x54 &&
+                 offsetof(WinModemClass, unknown_4) == 0x04 &&
                  offsetof(WinModemClass, unknown_18) == 0x18 &&
                  offsetof(WinModemClass, unknown_1C) == 0x1C &&
                  offsetof(WinModemClass, unknown_24) == 0x24 &&
@@ -195,6 +198,27 @@ GG_STATIC_ASSERT(sizeof(WinModemClass) == 0x2088);
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT string comparison.
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);
+
+// FUNCTION: GAMEMD 0x774120
+// Constructor: allocate the 0x2000-byte receive ring, clear the counters and flags, mark the
+// port handle invalid.
+WinModemClass::WinModemClass()
+{
+    unknown_24 = new char[0x2000];
+    unknown_54 = 0;
+    unknown_58 = 0;
+    unknown_50 = false;
+    unknown_51 = false;
+    unknown_68 = 0;
+    unknown_64 = 0;
+    unknown_4 = 0;
+    unknown_8 = 0;
+    unknown_C = 0;
+    unknown_10 = 0;
+    unknown_14 = 0;
+    unknown_18 = 0;
+    PortHandle = (HANDLE)-1;
+}
 
 // FUNCTION: GAMEMD 0x774170
 // Closes the port handle if it is open and frees the receive ring.

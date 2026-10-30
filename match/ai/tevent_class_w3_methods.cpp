@@ -8,6 +8,7 @@
 #include "../FUNCTION.H"
 #include "tevent_class_methods.h"
 #include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;
@@ -17,6 +18,18 @@ extern SwizzleManagerClass DAT_00B0C110;
 extern DynamicVectorClass<TEventClass*> DAT_00B0F658;
 extern DynamicVectorClass<TEventClass*> DAT_00B0F670;
 extern DynamicVectorClass<TEventClass*> DAT_00B0F1A0;
+
+// FUNCTION: GAMEMD 0x71E6A0
+// Constructor: no linked event, no kind, no team; enrol in the three registries and record the
+// index in the first.
+TEventClass::TEventClass() : ArrayIndex(-1), NextEvent(0), EventKind(0), TeamType(0), String((const char*)0), unknown_54(0)
+{
+    DynamicVectorAddItemFree(&DAT_00B0F1A0, this);
+    ArrayIndex = DAT_00B0F1A0.FindItemIndex(this);
+    DynamicVectorAddItemFree(&DAT_00B0F658, this);
+    DynamicVectorAddItemFree(&DAT_00B0F670, this);
+    Value = 0;
+}
 
 // FUNCTION: GAMEMD 0x71E830
 // Leaves the registries; the scalar deleting destructor 0x71FA80 expands this body in place.

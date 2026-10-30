@@ -20,6 +20,8 @@ class NeuronClass : public AbstractClass
 public:
     // FUNCTION: GAMEMD 0x43A350 (declaration; constructor)
     NeuronClass();
+    // The stream loader's in-place construction (expanded inside Load 0x43A540).
+    NeuronClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
     // FUNCTION: GAMEMD 0x43A440 (declaration; destructor; slot 8 = 0x43A9C0)
     virtual ~NeuronClass();
 

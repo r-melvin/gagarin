@@ -49,6 +49,15 @@ extern unsigned char DAT_00B7801C;
 // STRING: GAMEMD 0x84D9C8 -- full network and node address.
 // LIBRARY: GAMEMD 0x7C8EF4 -- sprintf.
 
+// FUNCTION: GAMEMD 0x7B0D90 IPXInterfaceClass::IPXInterfaceClass (__thiscall, no arguments)
+// Chain the Winsock base constructor, then mark the three address fields as all-FF.
+IPXInterfaceClass::IPXInterfaceClass()
+{
+    memset(LocalNetwork, 0xFF, sizeof(LocalNetwork));
+    memset(BroadcastNode, 0xFF, sizeof(BroadcastNode));
+    memset(LocalNode, 0xFF, sizeof(LocalNode));
+}
+
 // FUNCTION: GAMEMD 0x7B0F50 IPXInterfaceClass::GetAdapterAddressString
 int IPXInterfaceClass::GetAdapterAddressString(int adapter, char* buffer, int bufferLen)
 {

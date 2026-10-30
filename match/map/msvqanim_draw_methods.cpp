@@ -36,3 +36,15 @@ void MSVQAnim::Draw(MouseSurfaceView* context, RectangleStruct* area)
                                         &rects->Source, 0, 1);
     }
 }
+
+// FUNCTION: GAMEMD 0x5CD240
+// Slot 8: while the animation is live, blit the movie's current frame into the player's
+// destination box on the surface.
+void MSVQAnim::Attach(void* target)
+{
+    if (Finished && Player != 0 && Movie != 0) {
+        RectangleStruct frame;
+        Surface->Blit(&((MSVQPlayerRects*)Player)->Dest, Movie, Movie->GetFrame(&frame, 0, 1));
+    }
+}
+

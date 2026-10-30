@@ -148323,5 +148323,68 @@
   "name": "ScoreBigFontClass::ScoreBigFontClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x4385D0",
+  "sym": "??0BombClass@@QAE@XZ",
+  "len": "0x9e",
+  "name": "BombClass::BombClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/neuron_class.cpp",
+  "addr": "0x43A540",
+  "sym": "?Load@NeuronClass@@UAGJPAUIStream@@@Z",
+  "len": "0x6f",
+  "name": "NeuronClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/msvqanim_draw_methods.cpp",
+  "addr": "0x5CD240",
+  "sym": "?Attach@MSVQAnim@@UAEXPAX@Z",
+  "len": "0x49",
+  "name": "MSVQAnim::Attach",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D04D0",
+  "sym": "?FUN_006D04D0@TabClass@@QAEXXZ",
+  "len": "0x1f",
+  "name": "TabClass::FUN_006D04D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "addr": "0x71E6A0",
+  "sym": "??0TEventClass@@QAE@XZ",
+  "len": "0x160",
+  "name": "TEventClass::TEventClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774120",
+  "sym": "??0WinModemClass@@QAE@XZ",
+  "len": "0x4a",
+  "name": "WinModemClass::WinModemClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/transport/ipx_interface_class_methods.cpp",
+  "addr": "0x7B0D90",
+  "sym": "??0IPXInterfaceClass@@QAE@XZ",
+  "len": "0x40",
+  "name": "IPXInterfaceClass::IPXInterfaceClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

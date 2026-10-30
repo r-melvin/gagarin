@@ -170,6 +170,15 @@ inline bool AnyCommandButtonDirty()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x6D04D0
+// Add every command-bar button to the screen.
+void TabClass::FUN_006D04D0()
+{
+    for (int index = 0; index < 25; ++index) {
+        vf_13(&CommandButtons_00B0C1C0[index]);
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D04F0
 bool TabClass::vf_54(int control)
 {
