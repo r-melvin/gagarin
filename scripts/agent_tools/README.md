@@ -50,6 +50,7 @@ Not shipped: `cache/` (rebuilt: `ghidra_functions.json` from the ghidra CLI, `vt
 | `attempts.py add/show/search/best/import` | what has already been tried at this address? | `<state>/orchestration/attempts.jsonl` |
 | `libmatch.py [LIB...]` | which .text functions are VC6 CRT, by bytes? | `<state>/orchestration/library_map.json` |
 | `refaudit.py [--json OUT]` | do unbound global references agree across TUs? | stdout / JSON |
+| `tpl_audit.py OBJDIR [--instances\|--divergent\|--multi-g]` | which objects define each template COMDAT, which one the link keeps (link order), does it equal retail, which COMDATs diverge, and are the multi-address `??_G` reached by direct calls? | stdout / JSON |
 | `aligned_diff.py --obj O --sym S --addr A --len L [--hunks]` | how close is a partial once insertions/deletions are aligned (LCS under diff_retail's reloc-normalised equality), and where are the mismatching runs? | stdout |
 
 ## ctx.py
@@ -94,7 +95,21 @@ main) and skips the row if the bytes outside relocation fields differ from retai
 external symbol with no manifest address it records retail dword − our addend. A symbol
 with two or more implied bases is listed with the fields and objects behind each base.
 
+## tpl_audit.py
+Read-only audit of template-instance COMDATs over a built objdir (`build-vc6/gate`). Link order is
+`stubgen.link_order` (the lowest retail address any manifest row of the TU claims), and LINK keeps
+the first definition of a COMDAT, so the first definer is the winner. `tpl_audit.py build-vc6/gate`
+prints one line per template symbol that two or more objects define (`>` marks the winner, `Y/N/?/-`
+is "winner equals retail at the symbol's first manifest address", size in hex) and then the divergent
+list (definers differing in size or relocation-normalised bytes). `--instances` groups per template
+class, `--instance SUBSTR` filters, `--all` adds non-template COMDATs, `--json OUT` saves the rows.
+`--multi-g` lists template `??_G` symbols the manifest places at 2+ retail addresses and runs
+`ghidra x-ref to` on each (CALL vs DATA references and the calling functions); `--no-ghidra` skips that.
+Equality needs `GAMEMD_BINARY`. Test: `python3 -m unittest test_tpl_audit` from this directory.
+
 ## Known limits
+- tpl_audit: instance names come from the repo's own demangler (`idiom_lift.demangle`); a symbol it cannot parse
+  falls back to the leading part of the template id. Equality compares only the symbol's first manifest address.
 - ctx: the CFG extent is only a lead (an indirect `jmp [table]` ends the walk, so a
   switch body can be cut short). Disassembly is linear objdump over that span.
 - classcheck: the member parser uses regular expressions (no bitfields, no commas inside template arguments,
