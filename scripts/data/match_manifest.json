@@ -142759,7 +142759,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4A10",
   "sym": "?FUN_007B4A10@Wstring@@QAE_NPBD@Z",
   "len": "0xaf",
@@ -142768,7 +142768,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4AC0",
   "sym": "?FUN_007B4AC0@Wstring@@QAE_NHPBD@Z",
   "len": "0x88",
@@ -142777,7 +142777,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4C20",
   "sym": "??YWstring@@QAEAAV0@PBD@Z",
   "len": "0xac",
@@ -142786,7 +142786,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4CD0",
   "sym": "??YWstring@@QAEAAV0@ABV0@@Z",
   "len": "0xc3",
@@ -142795,7 +142795,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B5AE0",
   "sym": "?FUN_007B5AE0@Wstring@@QAE_NHPBD@Z",
   "len": "0x50",
@@ -142804,7 +142804,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4B50",
   "sym": "?FUN_007B4B50@Wstring@@QAE_NPBV1@@Z",
   "len": "0xc3",
@@ -142813,7 +142813,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B5020",
   "sym": "?FUN_007B5020@Wstring@@QAE_NHH@Z",
   "len": "0xc4",
@@ -142822,7 +142822,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B5A40",
   "sym": "?FUN_007B5A40@Wstring@@QAE_NPBD@Z",
   "len": "0x6d",
@@ -142831,7 +142831,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B5230",
   "sym": "?FUN_007B5230@Wstring@@QAEXPBV1@@Z",
   "len": "0x101",
@@ -142840,7 +142840,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B5E30",
   "sym": "?FUN_007B5E30@Wstring@@QAE_ND@Z",
   "len": "0xde",
@@ -142849,7 +142849,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/string_class_s1_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B54D0",
   "sym": "?FUN_007B54D0@Wstring@@QAE_NPBDI@Z",
   "len": "0x162",
