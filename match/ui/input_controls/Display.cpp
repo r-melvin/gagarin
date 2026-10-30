@@ -119,6 +119,7 @@ struct DisplayButtonStatics {
 };
 // SYNTHETIC: GAMEMD 0x004A8630 -- initialiser of Layers
 // SYNTHETIC: GAMEMD 0x004A8680 -- guarded exit stub of Layers
+// SYNTHETIC: GAMEMD 0x004AEB50 -- implicit scalar deleting destructor of LayerClass (slot 0 of 0x7E6060)
 LayerClass DisplayLayerStatics::Layers[5];
 // SYNTHETIC: GAMEMD 0x004A86E0 -- initialiser of Button
 // SYNTHETIC: GAMEMD 0x004A8710 -- guarded exit stub of Button
