@@ -137,12 +137,20 @@ class Bundle:
         L.git(wt, "add", "--", MANIFEST)
         add = p.bindings_delta()
         corr, corr_errs = p.binding_corrections()
-        nb, bad = L.merge_bindings(wt, add, corr)
-        bad = ["binding_corrections.json: " + e for e in corr_errs] + bad
+        rekeys, _ = p.binding_rekeys()
+        try:
+            central = json.load(open(os.path.join(wt, L.BINDINGS)))
+        except Exception:
+            central = {}
+        rk_errs, rk_claimed = p.rekey_check(central)
+        nb, bad = L.merge_bindings(wt, add, corr, rekeys) if not rk_errs else (0, [])
+        bad = ["binding_corrections.json: " + e for e in corr_errs] + rk_errs + bad
         bad = list(p.binding_conflicts) + bad
         if bad:
             L.git(wt, "reset", "-q", "--hard", head)
             return False, "packet bindings (delta file / patch.diff hunks) contradict the central bindings: " + "; ".join(bad[:4])
+        for e in rk_claimed:
+            say("  note: re-key %s -> %s (%s): new key only added by the packet; the gate's relocation proof checks it" % (e["old"], e["new"], e["addr"]))
         if nb:
             L.git(wt, "add", "--", L.BINDINGS)
             say("  %d central bindings added or corrected from the packet (delta file, patch.diff hunks, binding_corrections.json)" % nb)

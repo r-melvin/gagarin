@@ -841,6 +841,28 @@ class BindingCorrectionsLint(unittest.TestCase):
         f = self.findings([self.entry(symbol="?not_in_central@@3HA")])
         self.assertEqual([x["level"] for x in f], ["E"])
 
+    def rekey_findings(self, removed, rekeys=None, extra_map=None):
+        p = packet(self.tmp, {"match/x/a.cpp": HEADER}, [])
+        central = json.loads(L.git(D.MAIN_REPO, "show", "HEAD:" + L.BINDINGS))
+        gone = {k: central[k] for k in removed}
+        body = "".join('-  "%s": "%s"\n' % kv for kv in gone.items())
+        open(os.path.join(p.dir, "patch.diff"), "a").write(
+            "diff --git a/%s b/%s\n--- a/%s\n+++ b/%s\n@@ -1,1 +1,0 @@\n%s" % ((L.BINDINGS,) * 4 + (body,)))
+        if rekeys is not None:
+            json.dump(rekeys, open(os.path.join(p.dir, "binding_rekeys.json"), "w"))
+        return [f for f in lint(p, {"bindings"}) if f["rule"] == "bindings"]
+
+    def test_unlisted_removed_key_is_an_error_at_lint(self):
+        central = json.loads(L.git(D.MAIN_REPO, "show", "HEAD:" + L.BINDINGS))
+        k = self.sym
+        f = self.rekey_findings([k])
+        self.assertEqual([x["level"] for x in f], ["E"])
+        self.assertIn("does not list", f[0]["msg"])
+        twin = next((n for n, a in central.items() if n != k and a == central[k]), None)
+        if twin:
+            f = self.rekey_findings([k], [dict(old=k, new=twin, addr=central[k])])
+            self.assertEqual([x for x in f if x["level"] == "E"], [])
+
     def test_no_file_no_findings(self):
         p = packet(self.tmp, {"match/x/a.cpp": HEADER}, [])
         self.assertEqual([x for x in lint(p, {"bindings"}) if x["rule"] == "bindings"], [])

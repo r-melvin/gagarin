@@ -600,9 +600,12 @@ class Packet:
         for k, c in corr.items():
             put(k, c["new_addr"], self.CORRECTIONS_NAME)
         added, removed = self.patch_bindings()
+        rk = {e["old"]: e for e in self.binding_rekeys()[0]}
         for k, v in removed.items():
             if k in corr and v == corr[k]["old_addr"] and added.get(k) == corr[k]["new_addr"]:
                 continue        # the patch hunk is exactly the sanctioned correction
+            if k in rk and rk[k]["addr"] == v and k not in added:
+                continue        # a listed re-key; rekey_errors / merge_bindings check the new key
             if k not in added or added[k] != v:
                 self.binding_conflicts.append("%s: patch.diff changes or removes the existing central entry %s" % (k, v))
         for k, v in added.items():
@@ -611,6 +614,119 @@ class Packet:
             if removed.get(k) != v:       # a re-added unchanged line (comma fix-up) is formatting only
                 put(k, v, "patch.diff")
         return out
+
+    REKEYS_NAME = "binding_rekeys.json"
+
+    def binding_rekeys(self):
+        """(entries, errors) from the packet's binding_rekeys.json (see parse_binding_rekeys)."""
+        return parse_binding_rekeys(os.path.join(self.dir, self.REKEYS_NAME))
+
+    def emitted_syms(self):
+        """{symbol: {addresses}} the packet itself says the gated build emits: its symbol maps and the
+        sym of every manifest delta row."""
+        out = {}
+        for f in self.symbol_map_files():
+            try:
+                for k, v in json.load(open(f)).items():
+                    out.setdefault(k, set()).add(norm_addr(v))
+            except Exception:
+                pass
+        try:
+            d = self.delta()
+            rows = self.delta_rows_all(d)
+        except Exception:
+            rows = []
+        for r in rows:
+            if isinstance(r, dict) and r.get("sym") and r.get("addr") is not None:
+                try:
+                    out.setdefault(r["sym"], set()).add(norm_addr(r["addr"]))
+                except Exception:
+                    pass
+        return out
+
+    @staticmethod
+    def delta_rows_all(d):
+        if isinstance(d, list):
+            return d
+        return list(d.get("add", [])) + [m["row"] for m in d.get("modify", [])]
+
+    def removed_keys(self):
+        """{symbol: address} central entries the patch.diff hunks remove outright (the key is not re-added)."""
+        added, removed = self.patch_bindings()
+        return {k: v for k, v in removed.items() if k not in added}
+
+    def derive_rekeys(self, central):
+        """binding_rekeys entries for every outright-removed key that has a new key at the SAME address in the
+        patched bindings (central + the packet's additions - its removals). Prefer a key the packet emits,
+        then one it adds, then the first by name. Removals with no such key are left out (genuine removals)."""
+        added, removed = self.patch_bindings()
+        removed = self.removed_keys()
+        emitted = self.emitted_syms()
+        final = dict(central)
+        final.update(self.bindings_delta_adds())
+        out = []
+        for k, v in sorted(removed.items()):
+            v = norm_addr(v)
+            cands = [n for n, a in final.items() if n != k and n not in removed and norm_addr(a) == v]
+            if not cands:
+                continue
+            cands.sort(key=lambda n: (v not in emitted.get(n, ()), n not in added, n))
+            out.append({"old": k, "new": cands[0], "addr": v})
+        return out
+
+    def bindings_delta_adds(self):
+        """{symbol: address} added by delta files and patch hunks (bindings_delta without the conflict bookkeeping)."""
+        saved = getattr(self, "binding_conflicts", [])
+        try:
+            return self.bindings_delta()
+        finally:
+            self.binding_conflicts = saved
+
+    def rekey_check(self, central):
+        """Strict check of the packet's removals against CENTRAL (the tracked bindings dict before the
+        packet). Returns (errors, claimed): every outright-removed key must be listed in
+        binding_rekeys.json with its own address; every listed re-key must be a removal in patch.diff, the
+        old key must carry that address centrally, and the new key must be bound to the same address
+        (centrally or by the packet) and evidenced as emitted by the build: named with that address in the
+        packet's symbol maps / manifest delta, or already a central key at that address (a landed, gated
+        binding). A new key the packet only adds to the bindings file itself is returned in CLAIMED (listed
+        old, new, addr) instead of failing: the gates' relocation proof checks it, and pktlint --strict
+        looks for it in the compiled objects."""
+        entries, errs = self.binding_rekeys()
+        errs, claimed = list(errs), []
+        removed = self.removed_keys()
+        listed = {}
+        for e in entries:
+            if e["old"] in listed:
+                errs.append("binding_rekeys: duplicate old key %s" % e["old"])
+            listed[e["old"]] = e
+        adds = self.bindings_delta_adds()
+        emitted = self.emitted_syms()
+        for k, v in sorted(removed.items()):
+            if k not in listed:
+                errs.append("patch.diff removes central key %s (%s) and binding_rekeys.json does not list it" % (k, v))
+        for k, e in sorted(listed.items()):
+            if k not in removed:
+                errs.append("binding_rekeys: %s is not removed by patch.diff" % k)
+                continue
+            if removed[k] != e["addr"]:
+                errs.append("binding_rekeys: %s removed at %s but listed at %s" % (k, removed[k], e["addr"]))
+            if k in central and norm_addr(central[k]) != e["addr"]:
+                errs.append("binding_rekeys: %s is %s centrally, listed %s" % (k, central[k], e["addr"]))
+            n = e["new"]
+            have = adds.get(n, central.get(n))
+            if n in removed:
+                errs.append("binding_rekeys: new key %s is itself removed" % n)
+            elif have is None or norm_addr(have) != e["addr"]:
+                errs.append("binding_rekeys: new key %s is not bound to %s after the packet (it is %s)" % (n, e["addr"], have))
+            elif e["addr"] in emitted.get(n, ()) or (n in central and norm_addr(central[n]) == e["addr"]):
+                pass
+            else:
+                claimed.append(e)
+        return errs, claimed
+
+    def rekey_errors(self, central):
+        return self.rekey_check(central)[0]
 
     def patch_bindings(self):
         """(added, removed) {symbol: address} from the hunks patch.diff holds for scripts/data/symbol_bindings.json."""
@@ -717,6 +833,34 @@ def norm_addr(v):
     return "0x%08X" % (v if isinstance(v, int) else int(v, 16))
 
 
+def parse_binding_rekeys(path):
+    """Read a packet's binding_rekeys.json: a list of {old, new, addr}. Returns (entries, errors); addr is
+    normalised to 0x%08X. Shape only; the removal / same-address / emitted checks are Packet.rekey_errors."""
+    if not os.path.isfile(path):
+        return [], []
+    try:
+        d = json.load(open(path))
+    except Exception as ex:
+        return [], ["binding_rekeys.json unreadable: %s" % ex]
+    if isinstance(d, dict) and isinstance(d.get("rekeys"), list):
+        d = d["rekeys"]
+    if not isinstance(d, list):
+        return [], ["binding_rekeys.json must be a list of {old, new, addr}"]
+    out, errs = [], []
+    for i, e in enumerate(d):
+        try:
+            if not (isinstance(e, dict) and isinstance(e.get("old"), str) and e["old"] and isinstance(e.get("new"), str) and e["new"]):
+                raise ValueError("needs string 'old' and 'new'")
+            if isinstance(e.get("addr"), bool):
+                raise ValueError("'addr' is not an address")
+            if e["old"] == e["new"]:
+                raise ValueError("old equals new")
+            out.append({"old": e["old"], "new": e["new"], "addr": norm_addr(e["addr"])})
+        except Exception as ex:
+            errs.append("binding_rekeys.json[%d]: %s" % (i, ex if isinstance(ex, ValueError) else "'addr' missing or not an address"))
+    return out, errs
+
+
 def parse_binding_corrections(path):
     """Read a packet's binding_corrections.json: a list of {symbol, old_addr, new_addr, evidence}.
     Returns (entries, errors); entries carry normalised 0x%08X addresses. Shape only; whether old_addr
@@ -767,14 +911,15 @@ def parse_binding_corrections(path):
     return out, errs
 
 
-def merge_bindings(tree, add, corrections=()):
+def merge_bindings(tree, add, corrections=(), rekeys=()):
     """Merge {symbol: address} into TREE's central bindings file in its tracked format
     (sorted keys, 0x%08X, indent=1). Returns (added, conflicts); nothing is written on a conflict.
     CORRECTIONS (parse_binding_corrections entries) are the one sanctioned way to change an existing
-    entry: each applies only when the central value still equals its old_addr; they count in `added`."""
+    entry: each applies only when the central value still equals its old_addr; they count in `added`.
+    REKEYS (parse_binding_rekeys entries) delete an old key once the new key is bound to the same address."""
     p = os.path.join(tree, BINDINGS)
     corr = {c["symbol"]: c for c in corrections}
-    if (not add and not corr) or not os.path.isfile(p):
+    if (not add and not corr and not rekeys) or not os.path.isfile(p):
         return 0, []
     raw = open(p).read()
     cur = json.loads(raw)
@@ -799,6 +944,15 @@ def merge_bindings(tree, add, corrections=()):
         elif k not in cur:
             cur[k] = v
             n += 1
+    for e in rekeys:
+        if e["new"] not in cur or norm_addr(cur[e["new"]]) != e["addr"]:
+            bad.append("%s: re-key target %s is not bound to %s centrally" % (e["old"], e["new"], e["addr"]))
+        elif e["old"] in cur:
+            if norm_addr(cur[e["old"]]) != e["addr"]:
+                bad.append("%s: re-key expects %s, central is %s" % (e["old"], e["addr"], cur[e["old"]]))
+            else:
+                del cur[e["old"]]
+                n += 1
     if bad:
         return 0, bad
     open(p, "w").write(json.dumps(dict(sorted(cur.items())), indent=1) + ("\n" if raw.endswith("\n") else ""))

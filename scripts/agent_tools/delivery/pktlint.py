@@ -35,7 +35,9 @@ enforces; nothing here needs a compiler except --strict.
   provenance   E new file without SPDX + Provenance header
   spans        E manifest len differs from the CFG-closed span (worklist sizes are padded; use CFG
                  spans) unless listed in spans_ok.txt; extent-audit overrides are honoured
-  bindings     E binding_corrections.json malformed, empty evidence, or old_addr not the current central value;
+  bindings     E patch.diff removes a central binding key that binding_rekeys.json does not list (or a listed
+                 re-key whose new key is not bound to the same address / not emitted by the build);
+               E binding_corrections.json malformed, empty evidence, or old_addr not the current central value;
                  W every valid correction (reviewer visibility: a packet is changing an existing central address)
   rekeys       W rekey / packet-map keys naming per-TU guard symbols (_$S<n>, _$E<n>), which the tools ignore
                  unless scoped 'tu::sym' in the central symbol_bindings.json
@@ -638,9 +640,19 @@ class Lint:
         entries, errs = self.p.binding_corrections()
         for e in errs:
             self.err("bindings", e)
+        raw = self.central_bindings_text()
+        try:
+            central0 = json.loads(raw)
+        except (TypeError, ValueError):
+            central0 = None
+        if central0 is not None:
+            errs, self.claimed_rekeys = self.p.rekey_check(central0)
+            for e in errs:
+                self.err("bindings", e)
+            for e in self.claimed_rekeys:
+                self.warn("bindings", "re-key %s -> %s (%s): the new key is only added by the packet's own bindings hunk; the gates' relocation proof and --strict (compiled objects) check it" % (e["old"], e["new"], e["addr"]))
         if not entries:
             return
-        raw = self.central_bindings_text()
         try:
             central = json.loads(raw)
         except (TypeError, ValueError):
@@ -738,6 +750,14 @@ class Lint:
                     self.err("strict", "%s does not compile: %s" % (tu, " | ".join(errl)), file=tu)
                 else:
                     objs[tu] = os.path.join(work, "obj", os.path.splitext(tu)[0] + ".obj")
+            claimed = getattr(self, "claimed_rekeys", [])
+            if claimed and objs:
+                names = set()
+                for o in objs.values():
+                    names |= {n for n, sec, v, scl in D.coff_symbols(o) if sec >= 0}
+                for e in claimed:
+                    if e["new"] not in names:
+                        self.warn("strict", "re-key target %s (%s) is in none of the %d compiled objects (may be used by an untouched TU)" % (e["new"], e["addr"], len(objs)))
             for r in prows:         # a partial's recorded pct must be the score the compiler gives now
                 obj = objs.get(r["tu"])
                 if not obj:

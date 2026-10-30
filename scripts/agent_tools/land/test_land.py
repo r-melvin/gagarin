@@ -587,6 +587,84 @@ class BindingCorrections(unittest.TestCase):
             self.assertTrue(r.binding_conflicts)      # no corrections file: still refused
 
 
+class BindingRekeys(unittest.TestCase):
+    """binding_rekeys.json: the sanctioned way for a packet to remove a central key whose symbol was renamed."""
+    CUR = {"o": "0x00000010", "n": "0x00000010", "x": "0x00000020"}
+
+    def pk(self, d, rekeys=None, removed=("o",), added=(), files=None):
+        rm = ['  "%s": "%s"' % (k, self.CUR[k]) for k in removed]
+        ad = ['  "%s": "%s"' % kv for kv in added]
+        f = {"patch.diff": bind_patch(ad, removed=rm)}
+        if rekeys is not None:
+            f["binding_rekeys.json"] = rekeys
+        f.update(files or {})
+        return mkpacket(d, f)
+
+    GOOD = [{"old": "o", "new": "n", "addr": "0x10"}]
+
+    def test_unlisted_removal_is_refused(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.pk(d)
+            p.bindings_delta()
+            self.assertTrue(p.binding_conflicts)
+            errs = p.rekey_errors(self.CUR)
+            self.assertEqual(len(errs), 1)
+            self.assertIn("does not list", errs[0])
+
+    def test_listed_collapse_onto_existing_key_passes(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.pk(d, self.GOOD)
+            self.assertEqual(p.bindings_delta(), {})
+            self.assertEqual(p.binding_conflicts, [])
+            self.assertEqual(p.rekey_check(self.CUR), ([], []))
+
+    def test_new_key_must_have_the_same_address(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.pk(d, [{"old": "o", "new": "x", "addr": "0x10"}])
+            self.assertIn("not bound to 0x00000010", p.rekey_errors(self.CUR)[0])
+            q = self.pk(os.path.join(d, "q"), [{"old": "o", "new": "gone", "addr": "0x10"}])
+            self.assertTrue(q.rekey_errors(self.CUR))
+
+    def test_wrong_listed_address_and_unremoved_old_are_errors(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.pk(d, [{"old": "o", "new": "n", "addr": "0x20"}])
+            self.assertTrue(any("listed at" in e for e in p.rekey_errors(self.CUR)))
+            q = self.pk(os.path.join(d, "q"), [{"old": "o", "new": "n", "addr": "0x10"}, {"old": "x", "new": "n", "addr": "0x20"}])
+            self.assertTrue(any("not removed by patch.diff" in e for e in q.rekey_errors(self.CUR)))
+
+    def test_added_new_key_is_claimed_unless_the_packet_emits_it(self):
+        with tempfile.TemporaryDirectory() as d:
+            rk = [{"old": "o", "new": "m", "addr": "0x10"}]
+            p = self.pk(d, rk, added=[("m", "0x00000010")])
+            self.assertEqual(p.rekey_check(self.CUR), ([], [dict(rk[0], addr="0x00000010")]))
+            q = self.pk(os.path.join(d, "q"), rk, added=[("m", "0x00000010")], files={"symbol_map.json": {"m": "0x10"}})
+            self.assertEqual(q.rekey_check(self.CUR), ([], []))
+
+    def test_merge_deletes_old_key_after_checking_new(self):
+        with tempfile.TemporaryDirectory() as d:
+            os.makedirs(os.path.join(d, "t/scripts/data"))
+            f = os.path.join(d, "t", L.BINDINGS)
+            open(f, "w").write(json.dumps(self.CUR, indent=1))
+            rk = [{"old": "o", "new": "n", "addr": "0x00000010"}]
+            self.assertEqual(L.merge_bindings(os.path.join(d, "t"), {}, (), rk), (1, []))
+            self.assertEqual(json.load(open(f)), {"n": "0x00000010", "x": "0x00000020"})
+            n, bad = L.merge_bindings(os.path.join(d, "t"), {}, (), [{"old": "n", "new": "x", "addr": "0x00000010"}])
+            self.assertEqual((n, len(bad)), (0, 1))
+            self.assertIn("n", json.load(open(f)))
+
+    def test_derive_rekeys_prefers_emitted_and_skips_genuine_removals(self):
+        with tempfile.TemporaryDirectory() as d:
+            cur = dict(self.CUR, z="0x00000010")
+            p = self.pk(d, removed=("o", "x"), added=[("m", "0x00000010")], files={"symbol_map.json": {"z": "0x10"}})
+            self.assertEqual(p.derive_rekeys(cur), [{"old": "o", "new": "z", "addr": "0x00000010"}])
+
+    def test_shape_errors(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = self.pk(d, [{"old": "o"}, {"old": "a", "new": "a", "addr": "0x1"}, "x"])
+            ents, errs = p.binding_rekeys()
+            self.assertEqual((ents, len(errs)), ([], 3))
+
+
 class PlacementDiff(unittest.TestCase):
     def test_classes_and_r3_exclusion(self):
         import placement_diff as P

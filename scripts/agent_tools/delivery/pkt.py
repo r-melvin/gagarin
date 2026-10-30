@@ -369,6 +369,17 @@ def cmd_finish(a):
     open(os.path.join(R, "patch.diff"), "w").write(diff)
     nexact = sum(r["status"] == "matched" for r in rows)
     npart = len(rows) - nexact
+    rkp = os.path.join(R, L.Packet.REKEYS_NAME)
+    try:
+        central = json.loads(L.git(e["WT"], "show", "%s:%s" % (base.rev, L.BINDINGS)))
+    except Exception:
+        central = {}
+    rekeys = L.Packet(R).derive_rekeys(central)
+    if rekeys:
+        json.dump(rekeys, open(rkp, "w"), indent=1)
+        say("binding_rekeys.json: %d removed central keys re-keyed (same address)" % len(rekeys))
+    elif os.path.isfile(rkp):
+        os.remove(rkp)
     readme = os.path.join(R, "README.md")
     if not os.path.isfile(readme):
         tus = sorted({r["tu"] for r in rows})
