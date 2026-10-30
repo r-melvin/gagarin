@@ -30,7 +30,7 @@ public:
     UnitTypeClass(int unknown_arg0 = 0);
     // Declaration: GAMEMD 0x747F20 -- slot45, full EAX scalar, no args.
     virtual int vf_45();
-    // Overrides recovered from retail (bodies in combat/unit_type_class_w3_methods.cpp).
+    // Overrides recovered from retail.
     virtual void vf_13(Obj_004A1D30* crc);              // 13  0x747F70
     virtual bool vf_25(CCINIClass* ini);                // 25  0x747620
     virtual CoordStruct vf_30();                        // 30  0x747590
@@ -46,6 +46,7 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     virtual int vf_11();                                // 11  0x748170
     virtual int vf_12();                                // 12  0x748160
+    virtual int vf_16();                                // 16  0x748180
     virtual bool vf_32(const CellStruct* cell, HouseClass* house); // 32 0x7474B0
     int          ArrayIndex;               // +0xDF8
     int          MovementRestrictedTo;     // +0xDFC (LandType enum)

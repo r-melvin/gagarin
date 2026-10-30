@@ -88155,7 +88155,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu259_methods.cpp",
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
   "addr": "0x747F20",
   "sym": "?vf_45@UnitTypeClass@@UAEHXZ",
   "len": "0xC",
@@ -88164,29 +88164,29 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/trivial_tu259_methods.cpp",
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
   "addr": "0x748160",
-  "sym": "?FUN_00748160@Obj_00748160@@QBEHXZ",
+  "sym": "?vf_12@UnitTypeClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_00748160::FUN_00748160",
+  "name": "UnitTypeClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu259_methods.cpp",
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
   "addr": "0x748170",
-  "sym": "?FUN_00748170@Obj_00748170@@QBEHXZ",
+  "sym": "?vf_11@UnitTypeClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_00748170::FUN_00748170",
+  "name": "UnitTypeClass::vf_11",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu259_methods.cpp",
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
   "addr": "0x748180",
-  "sym": "?FUN_00748180@Obj_00748180@@QBEHXZ",
+  "sym": "?vf_16@UnitTypeClass@@UAEHXZ",
   "len": "0x7",
-  "name": "Obj_00748180::FUN_00748180",
+  "name": "UnitTypeClass::vf_16",
   "status": "matched",
   "pct": 100
  },
@@ -134336,7 +134336,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_type_class_w3_methods.cpp",
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
   "addr": "0x747560",
   "sym": "?vf_35@UnitTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x2b",
@@ -134345,7 +134345,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_type_class_w3_methods.cpp",
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
   "addr": "0x747590",
   "sym": "?vf_30@UnitTypeClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x40",
@@ -134354,7 +134354,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_type_class_w3_methods.cpp",
+  "tu": "match/combat/unit_type_class_w3c_methods.cpp",
   "addr": "0x7475D0",
   "sym": "?vf_31@UnitTypeClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x24",
