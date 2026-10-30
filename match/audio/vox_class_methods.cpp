@@ -66,10 +66,10 @@ static __inline int VoxFindIndex(const char* pName)
     return -1;
 }
 
-void VoxClass::Play(const char* pName, int nUnk, int nUnk2)
+void VoxClass::Play(const char* pName, int type, int priority)
 {
     if (pName != 0)
-        PlayIndex(VoxFindIndex(pName), nUnk, nUnk2);
+        PlayIndex(VoxFindIndex(pName), type, priority);
 }
 
 // ---------------------------------------------------------------------------
@@ -91,7 +91,7 @@ void VoxClass::SilenceIndex(int index)
                 node->Detach();
             if (node == VoxCurrentNode)
                 VoxCurrentNode = 0;
-            node->Event->State = 2;
+            node->Entry->State = 2;
             VoxReleaseNode(node);
             node = ((VoxClass**)VoxArray.Items)[index]->GetActiveVoice();
         }

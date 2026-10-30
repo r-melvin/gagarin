@@ -88,6 +88,7 @@ struct VoxEvent
 GG_STATIC_ASSERT(offsetof(VoxEvent, State) == 0x50);
 
 #include "../_layout/obj_00407f40.h"
+#include "../_layout/vox_class.h"
 
 // FUNCTION: GAMEMD 0x752370 (decl; reloc) -- drop the current/queued voice.
 void FUN_00752370();
@@ -96,76 +97,5 @@ void FUN_00752370();
 extern VoxEvent* DAT_00B1D4C4;
 // GLOBAL: GAMEMD 0xB1D4CC -- the EVA streamer, if any.
 extern Obj_00407F40* DAT_00B1D4CC;
-
-struct VoxClass;
-
-// DynamicVectorClass<VoxClass*> -- vptr@0, Items@4, Capacity@8, IsInitialized
-// @0xC, IsAllocated@0xD, Count@0x10, CapacityIncrement@0x14. The retail
-// vtable order puts FindItemIndex at slot 4 ([vtbl+0x10]); the virtuals are
-// declared only so cl emits the indirect call, and the non-virtual Remove /
-// RemoveItem are the inlined bodies.
-class VoxVectorClass
-{
-public:
-    virtual ~VoxVectorClass();                                       // 0x00
-    virtual bool operator==(const VoxVectorClass& other) const;     // 0x04
-    virtual bool SetCapacity(int capacity, VoxClass** pMem);        // 0x08
-    virtual void Clear();                                            // 0x0C
-    virtual int  FindItemIndex(VoxClass* const& item) const;        // 0x10
-    virtual int  GetItemIndex(VoxClass* const* pItem) const;        // 0x14
-    virtual VoxClass* GetItem(int index) const;                     // 0x18
-
-    bool RemoveItem(int index)
-    {
-        if (index < this->Count)
-        {
-            --this->Count;
-            for (int i = index; i < this->Count; ++i)
-                this->Items[i] = this->Items[i + 1];
-            return true;
-        }
-        return false;
-    }
-
-    bool Remove(VoxClass* item)
-    {
-        int idx = this->FindItemIndex(item);
-        if (idx != -1)
-            return this->RemoveItem(idx);
-        return false;
-    }
-
-    VoxClass** Items;         // +0x0004
-    int   Capacity;           // +0x0008
-    bool  IsInitialized;      // +0x000C
-    bool  IsAllocated;        // +0x000D
-    int   Count;              // +0x0010
-    int   CapacityIncrement;  // +0x0014
-};
-GG_STATIC_ASSERT(offsetof(VoxVectorClass, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(VoxVectorClass, Count) == 0x10);
-GG_STATIC_ASSERT(sizeof(VoxVectorClass) == 0x18);
-
-struct VoxClass
-{
-    // GLOBAL: GAMEMD 0xB1D4A0 -- VoxClass::Array (Items 0xB1D4A4, Count 0xB1D4B0).
-    static VoxVectorClass Array;
-
-    // Unregisters the entry; expanded in place by DeleteAll's `delete`.
-    ~VoxClass()
-    {
-        Array.Remove(this);
-    }
-
-    // FUNCTION: GAMEMD 0x752700 (decl; reloc) -- the same entry vox_class_methods.h declares.
-    static void Play(const char* pName, int nUnk, int nUnk2);
-    // FUNCTION: GAMEMD 0x750E20
-    static void* PlayAtPos(int index, CoordStruct* coords, int unk);
-    // FUNCTION: GAMEMD 0x7531A0
-    static void DeleteAll();
-
-    char Name[0x28];          // +0x0000
-};
-GG_STATIC_ASSERT(offsetof(VoxClass, Name) == 0x00);
 
 #endif  // GG_MATCH_AUDIO_VOX_CLASS_PLAY_METHODS_H

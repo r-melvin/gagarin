@@ -25,19 +25,19 @@ VoxNode* VoxClass::GetActiveVoice()
 {
     VoxNode* node;
     for (node = DAT_00B1D3F0.FUN_004073C0(); node != 0; node = node->FUN_004073E0()) {
-        if (node->Event == this)
+        if (node->Entry == this)
             return node;
     }
-    if (DAT_00B1D4B8 != 0 && DAT_00B1D4B8->Event == this)
+    if (DAT_00B1D4B8 != 0 && DAT_00B1D4B8->Entry == this)
         return DAT_00B1D4B8;
     for (int i = 3; i >= 0; i--) {
         for (node = DAT_00B1D450[i].List.FUN_004073C0(); node != 0; node = node->FUN_004073E0()) {
-            if (node->Event == this)
+            if (node->Entry == this)
                 return node;
         }
     }
     for (node = DAT_00B1D3C8.FUN_004073C0(); node != 0; node = node->FUN_004073E0()) {
-        if (node->Event == this)
+        if (node->Entry == this)
             return node;
     }
     return 0;

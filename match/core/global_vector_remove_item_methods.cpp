@@ -6,16 +6,13 @@
 // file-scope vector. Five retail copies, one per
 // global vector; the element types of three of them are placeholders.
 #include "vector_class_operations.h"
+#include "../_layout/vox_class.h"
 
 // Owners: each function removes `this` from the global vector of its own class.
 // Item_<ADDR> are placeholder owners; VocClass and VoxClass carry no RTTI.
 struct VocClass
 {
     void FUN_007503F0();
-};
-struct VoxClass
-{
-    void FUN_00752D60();
 };
 class Item_0053CB90
 {
@@ -42,8 +39,6 @@ extern DynamicVectorClass<Item_0054FFB0*> DAT_00ABC878;
 extern DynamicVectorClass<Item_0065FD00*> DAT_00B04DA8;
 // GLOBAL: GAMEMD 0xB1D378
 extern DynamicVectorClass<VocClass*> DAT_00B1D378;
-// GLOBAL: GAMEMD 0xB1D4A0
-extern DynamicVectorClass<VoxClass*> DAT_00B1D4A0;
 
 // FUNCTION: GAMEMD 0x53CB90
 void Item_0053CB90::FUN_0053CB90()

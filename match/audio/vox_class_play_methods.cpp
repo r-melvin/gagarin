@@ -62,8 +62,8 @@ void* VoxClass::PlayAtPos(int index, CoordStruct* coords, int unk)
 //
 // Shutdown: silence the current event, stop the streamer, drop the queue, then
 // delete every table entry. Each `delete` expands the inline destructor, which
-// unregisters the entry from Array (virtual FindItemIndex + inlined RemoveItem)
-// before the block is freed; the loop runs until Array is empty.
+// unregisters the entry from DAT_00B1D4A0 (virtual FindItemIndex + inlined RemoveItem)
+// before the block is freed; the loop runs until the table is empty.
 void VoxClass::DeleteAll()
 {
     if (DAT_00B1D4C4 != 0) {
@@ -76,7 +76,7 @@ void VoxClass::DeleteAll()
 
     FUN_00752370();
 
-    while (Array.Count > 0) {
-        delete Array.Items[0];
+    while (DAT_00B1D4A0.Count > 0) {
+        delete DAT_00B1D4A0.Items[0];
     }
 }

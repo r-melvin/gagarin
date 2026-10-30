@@ -9,28 +9,28 @@
 // Speak one entry of the speech table. Nothing happens without an engine,
 // for an index out of range, while speech is suppressed, or when the entry
 // is already the one speaking; -1 for either setting means the entry's own
-// default. A top-priority line first empties the pending queue and stops
+// default. An interrupt-type line first empties the pending queue and stops
 // whatever is playing, and the entry is started unless its live node
-// already runs at the same priority.
-void VoxClass::PlayIndex(int index, int priority, int volume)
+// already runs with the same type.
+void VoxClass::PlayIndex(int index, int type, int priority)
 {
     if (DAT_00B1D4CC != 0 && index >= 0 && index < DAT_00B1D4B0
         && DAT_00B1D3D8 == 0) {
         VoxClass* entry = DAT_00B1D4A4[index];
         VoxClass* speaking = DAT_00B1D4C4;
         if (entry != speaking) {
+            if (type == -1) {
+                type = entry->Type;
+            }
             if (priority == -1) {
                 priority = entry->Priority;
             }
-            if (volume == -1) {
-                volume = entry->Volume;
-            }
 
-            if (speaking != 0 && priority == 2) {
+            if (speaking != 0 && type == 2) {
                 VoxNode* node = DAT_00B1D3C8.FUN_004073C0();
                 while (node != 0) {
                     FUN_00407450(node);
-                    node->Event->State = 2;
+                    node->Entry->State = 2;
                     gg_free(node);
                     node = DAT_00B1D3C8.FUN_004073C0();
                 }
@@ -47,8 +47,8 @@ void VoxClass::PlayIndex(int index, int priority, int volume)
             }
 
             VoxNode* live = entry->GetActiveVoice();
-            if (live == 0 || live->Priority != priority) {
-                FUN_00752590(entry, priority, volume);
+            if (live == 0 || live->Type != type) {
+                FUN_00752590(entry, type, priority);
             }
             FUN_00752760();
         }
