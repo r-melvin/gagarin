@@ -5744,11 +5744,11 @@
  {
   "tu": "match/core/dynamic_vector_ctor_methods.cpp",
   "addr": "0x42F670",
-  "sym": "??0DynamicVectorClass_0042F670@@QAE@IPBUElem_0042F670@@@Z",
+  "sym": "??0?$DynamicVectorClass@VCell@@@@QAE@HPAVCell@@@Z",
   "len": "0x75",
-  "name": "DynamicVectorClass_0042F670::ctor",
+  "name": "DynamicVectorClass<Cell>::DynamicVectorClass(int, Cell*)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_int_methods.cpp",

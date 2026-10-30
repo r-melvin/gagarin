@@ -31,6 +31,10 @@ struct Elem_0042F670
 };
 GG_STATIC_ASSERT(sizeof(Elem_0042F670) == 4);
 
+// Retail's VectorClass<Cell> (vtable 0x7E38D0). No longer instantiated: the constructor at
+// 0x42F670 is the real DynamicVectorClass<Cell>'s (dynamic_vector_ctor_methods.cpp). Kept
+// declared because dropping it renumbers the static-initialiser stubs of the TUs that
+// include this header (Session.cpp, Queue.cpp, Radar.cpp).
 struct VectorClass_0042F670
 {
     // VTABLE: GAMEMD 0x7E38D0
@@ -63,17 +67,5 @@ GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, Vector) == 0x4);
 GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, Capacity) == 0x8);
 GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, IsValid) == 0xC);
 GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, IsAllocated) == 0xD);
-
-struct DynamicVectorClass_0042F670 : VectorClass_0042F670
-{
-    // VTABLE: GAMEMD 0x7E3890
-    int Count;         // +0x0010
-    int CapacityIncrement;          // +0x0014
-
-    // FUNCTION: GAMEMD 0x42F670
-    DynamicVectorClass_0042F670(unsigned int size, const Elem_0042F670* array);
-};
-GG_STATIC_ASSERT(offsetof(DynamicVectorClass_0042F670, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(DynamicVectorClass_0042F670, CapacityIncrement) == 0x14);
 
 #endif  // GG_MATCH_CORE_DYNAMIC_VECTOR_CTOR_METHODS_H
