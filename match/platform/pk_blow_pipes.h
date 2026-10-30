@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// RTTI type names from the pinned image: 0x7EFDC8 .?AVBlowPipe@@,
-// 0x7EDF40 .?AVBlowStraw@@, 0x7EFDAC .?AVPKPipe@@, 0x7EFDE0 .?AVPKStraw@@.
+// Pinned-image TypeDescriptors: 0x836850 .?AVBlowPipe@@,
+// 0x82C338 .?AVBlowStraw@@, 0x836838 .?AVPKPipe@@, 0x836868 .?AVPKStraw@@.
+// Their corresponding vtables are 0x7EFDC8, 0x7EDF40, 0x7EFDAC, 0x7EFDE0.
 // Slot words are listed beside each VTABLE marker.
 //
 // Member evidence:

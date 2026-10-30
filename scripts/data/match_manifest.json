@@ -10863,7 +10863,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc30_methods.cpp",
+  "tu": "match/core/lazy_sink_forward_methods.cpp",
   "addr": "0x438060",
   "sym": "?FUN_00631D30@BlowPipe@@UAEHXZ",
   "len": "0x35",
@@ -50312,7 +50312,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/blow_pipe_put_methods.cpp",
+  "tu": "match/core/lazy_sink_forward_methods.cpp",
   "addr": "0x4380A0",
   "sym": "?FUN_00631D10@BlowPipe@@UAEHHH@Z",
   "len": "0x123",
