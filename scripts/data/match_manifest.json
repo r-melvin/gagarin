@@ -99631,9 +99631,9 @@
   "sym": "@lzo1x_decompress@20",
   "len": "0x1c9",
   "name": "lzo1x_decompress",
-  "status": "partial",
-  "pct": 5.3,
-  "note": "LZO 1.00 C decoder. Retail EOF returns -1 for unequal input/end; this vendor returns -8/-4. Original retail source version/API remains unidentified."
+  "status": "matched",
+  "pct": 100.0,
+  "note": "gagarin reconstruction derived from LZO 1.00 lzo1x_d.ch (shipped version unrecoverable); match/lib/lzo/lzo1x_decompress_ww.inc"
  },
  {
   "tu": "match/core/Scenario.cpp",

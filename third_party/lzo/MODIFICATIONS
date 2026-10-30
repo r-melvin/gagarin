@@ -30,5 +30,24 @@ Modifications (gagarin, 2026)
     /U_M_IX86                   no i386 unaligned-access paths
     /Dlzo_moff_t=lzo_ptrdiff_t  signed match offsets (selects the #else branch
     /Dlzo_cmoff_t=lzo_ptrdiff_t of the lzo_moff_t switch in src/lzo_conf.h)
-  and match/lib/lzo/lzo1x.c compiles lzo1x_1.c and lzo1x_d1.c as one
+  and match/lib/lzo/lzo1x.c compiles lzo1x_1.c and the decoder as one
   translation unit.
+
+Decoder reconstruction
+  The decoder is NOT the vendored lzo1x_d1.c. The LZO version that produced
+  the shipped decoder is unrecoverable (1.01 and 1.02 are not archived), and
+  neither 1.00 nor 1.03 reproduces it. match/lib/lzo/lzo1x_decompress_ww.inc is a
+  gagarin reconstruction derived from LZO 1.00's src/lzo1x_d.ch (GPL-2.0-or-later,
+  used here under GPL-3.0-or-later); it keeps 1.00's algorithm and structure and
+  differs from it as follows (all taken from the shipped code, not from a later
+  release):
+    - no overrun/lookbehind checks, no byte-order or alignment paths;
+    - the literal-run length is built as 15 (31, 7 for M3, M4) plus the zero
+      bytes plus the final byte, rather than "t += 15 + *ip++";
+    - the initial-literal copy shares the literal-run copy loop;
+    - the match chain has no M1 case; M1 is handled after the literal copy;
+    - the return is two-way (0 if all input was consumed, else -1).
+  LZO 1.03 (not vendored) was compared: its decoder adds "if (t < 4) goto
+  match_next" after the initial literals and preset-dictionary support, which
+  the shipped code lacks, so the reconstruction follows 1.00. The vendored
+  lzo1x_d1.c/lzo1x_d.ch stay in the tree unmodified but are no longer compiled.
