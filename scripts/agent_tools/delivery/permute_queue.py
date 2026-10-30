@@ -29,6 +29,42 @@ import landlib as L  # noqa: E402
 PAIRS = [os.environ.get("GAG_RA2_PAIRS", ""), os.path.join(L.SCRATCH_ROOT, "ra2diff/pairs.csv"), os.path.join(D.BACKUPS, "ra2diff/pairs.csv")]
 
 
+MULTISET_RE = re.compile(r"^multiset: (identical|retail-only.*)$", re.M)
+
+
+def parse_multiset(text):
+    """'identical' / 'retail-only ...' from diff_retail output, or None.
+
+    diff_retail prints 'multiset: identical (N vs N instructions) ...', so match the leading word only.
+    """
+    m = re.search(r"^multiset: (identical|retail-only.*)", text or "", re.M)
+    if not m:
+        return None
+    return "identical" if m.group(1).startswith("identical") else m.group(1)
+
+
+def manifest_pct(row):
+    try:
+        return float(row.get("pct"))
+    except (TypeError, ValueError):
+        return None
+
+
+def queue_entry(r, pct, ms, twin_identical):
+    """One queue row. A failed compile/score (pct None) falls back to the manifest pct, never to None."""
+    src = "diff_retail"
+    if pct is None:
+        pct, src = manifest_pct(r), "manifest"
+    return dict(addr=r["addr"], tu=r["tu"], sym=r["sym"], len=r["len"], pct=pct, pct_src=src if pct is not None else "none",
+                manifest_pct=r.get("pct"), multiset_identical=(ms == "identical"), multiset=ms or "",
+                ra2_twin_identical=twin_identical, rank=(0 if ms == "identical" else 1) + (0 if twin_identical else 1))
+
+
+def rank_queue(q):
+    """Multiset-identical first, then RA2-twin-identical, then highest pct."""
+    return sorted(q, key=lambda x: (x["rank"], -(x["pct"] or 0)))
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tree", default=D.MAIN_REPO)
@@ -68,8 +104,7 @@ def main(argv=None):
         if not obj:
             return r, None, None
         pct, text = D.diff_retail_pct(a.tree, obj, r)
-        ms = re.search(r"^multiset: (identical|retail-only.*)$", text, re.M)
-        return r, pct, (ms.group(1) if ms else None)
+        return r, pct, parse_multiset(text)
 
     with cf.ThreadPoolExecutor(min(a.jobs, D.MAX_JOBS)) as ex:
         res = list(ex.map(score, rows))
@@ -77,14 +112,12 @@ def main(argv=None):
     for r, pct, ms in res:
         tw = twins.get(D.hx(r["addr"]))
         twin_identical = bool(tw and tw[0] == "exact" and tw[1] >= 1.0)
-        q.append(dict(addr=r["addr"], tu=r["tu"], sym=r["sym"], len=r["len"], pct=pct, manifest_pct=r.get("pct"),
-                      multiset_identical=(ms == "identical"), multiset=ms or "", ra2_twin_identical=twin_identical,
-                      rank=(0 if ms == "identical" else 1) + (0 if twin_identical else 1)))
-    q.sort(key=lambda x: (x["rank"], -(x["pct"] or 0)))
+        q.append(queue_entry(r, pct, ms, twin_identical))
+    q = rank_queue(q)
     with open(os.path.join(out, "queue.tsv"), "w") as f:
-        f.write("addr\ttu\tsym\tlen\tpct\tmultiset_identical\tra2_twin_identical\tmultiset\n")
+        f.write("addr\ttu\tsym\tlen\tpct\tpct_src\tmultiset_identical\tra2_twin_identical\tmultiset\n")
         for x in q:
-            f.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (x["addr"], x["tu"], x["sym"], x["len"], x["pct"], x["multiset_identical"], x["ra2_twin_identical"], x["multiset"][:80]))
+            f.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (x["addr"], x["tu"], x["sym"], x["len"], x["pct"], x["pct_src"], x["multiset_identical"], x["ra2_twin_identical"], x["multiset"][:80]))
     n_ms = sum(x["multiset_identical"] for x in q)
     n_tw = sum(x["ra2_twin_identical"] for x in q)
     print("%d partial rows scored in %d TUs: %d multiset-identical, %d RA2-twin-identical, %d both; queue %s" % (

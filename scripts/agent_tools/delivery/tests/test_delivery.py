@@ -534,6 +534,64 @@ class Toolfix2(unittest.TestCase):
             self.assertIsNone(re.search(r"\[:-4\]", open(os.path.join(os.path.dirname(HERE), f)).read()), f)
 
 
+class Toolfix4(unittest.TestCase):
+    def test_multiset_parse_accepts_trailing_text(self):
+        import permute_queue as PQ
+        self.assertEqual(PQ.parse_multiset("multiset: identical (26 vs 26 instructions) - scheduling only\n"), "identical")
+        self.assertTrue(PQ.parse_multiset("multiset: retail-only {'jl': 1}  compiled-only {'jg': 1}").startswith("retail-only"))
+        self.assertIsNone(PQ.parse_multiset("match: 90.0%"))
+
+    def test_queue_falls_back_to_manifest_pct_and_ranks(self):
+        import permute_queue as PQ
+        base = dict(tu="a.cpp", sym="s", len="0x10")
+        rows = [
+            PQ.queue_entry(dict(base, addr="0x1", pct=40.0), None, None, False),         # score failed
+            PQ.queue_entry(dict(base, addr="0x2", pct=80.0), 85.0, "identical", False),
+            PQ.queue_entry(dict(base, addr="0x3", pct=90.0), 95.0, "retail-only {}", False),
+            PQ.queue_entry(dict(base, addr="0x4", pct=10.0), 20.0, "identical", True),
+        ]
+        self.assertEqual((rows[0]["pct"], rows[0]["pct_src"]), (40.0, "manifest"))
+        self.assertEqual([r["addr"] for r in PQ.rank_queue(rows)], ["0x4", "0x2", "0x3", "0x1"])
+
+    def test_rea_none_fallback_line_is_accepted(self):
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        base = "Base: 935745b\nWe used REA for nothing.\n"
+        tail = "\n## Proposed commit message\n```\nMatch\n\nCo-Authored-By: X <x@y>\n```\n"
+        bad = [f for f in lint(packet(tmp, {}, [], base + tail), {"rea"}) if f["rule"] == "rea"]
+        ok = [f for f in lint(packet(tmp, {}, [], base + "REA: none (ghidra CLI fallback)\n" + tail), {"rea"}) if f["rule"] == "rea"]
+        self.assertTrue(bad)
+        self.assertEqual(ok, [])
+
+    def test_done_held_backs_up_diff_then_removes(self):
+        import pkt
+        from unittest import mock
+        import subprocess
+        root = tempfile.mkdtemp(prefix="dlt_held_", dir=D.SCRATCH)
+        wt, bk, pd = (os.path.join(root, n) for n in ("wt", "bk", "pkt"))
+        os.makedirs(wt); os.makedirs(pd)
+        for c in (["init", "-q"], ["config", "user.email", "a@b"], ["config", "user.name", "n"]):
+            subprocess.run(["git", "-C", wt, *c], check=True)
+        open(os.path.join(wt, "a.cpp"), "w").write("one\n")
+        subprocess.run(["git", "-C", wt, "add", "a.cpp"], check=True)
+        subprocess.run(["git", "-C", wt, "commit", "-qm", "x"], check=True)
+        open(os.path.join(wt, "a.cpp"), "w").write("two\n")
+        open(os.path.join(wt, "new.cpp"), "w").write("fresh\n")
+        open(os.path.join(pd, "rows.tsv"), "w").write("0x1\n")
+        e = dict(NAME="held1", WT=wt, PKT_DIR=pd)
+        removed = []
+        with mock.patch.object(pkt, "load_env", return_value=e), mock.patch.object(D, "BACKUPS", bk), \
+                mock.patch.object(D, "remove_worktree", side_effect=lambda r, w: removed.append(w)):
+            pkt.cmd_done(type("A", (), {"force": False, "held": True})())
+        diff = open(os.path.join(bk, "held1", "HELD", "worktree.diff")).read()
+        self.assertIn("+two", diff)
+        self.assertIn("+fresh", diff)
+        self.assertTrue(os.path.isfile(os.path.join(bk, "held1", "HELD", "pkt_dir", "rows.tsv")))
+        self.assertEqual(removed, [wt])
+        with mock.patch.object(pkt, "load_env", return_value=e), mock.patch.object(D, "BACKUPS", bk):
+            with self.assertRaises(SystemExit):
+                pkt.cmd_done(type("A", (), {"force": False, "held": False})())
+
+
 class CreatedListGuard(unittest.TestCase):
     """Incident 2026-10-22: a sweep removed other agents' worktrees. The tools may remove only
     what they created."""
