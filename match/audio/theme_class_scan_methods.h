@@ -27,7 +27,7 @@
 // GLOBAL: GAMEMD 0xA8EC74 — the first scan gate.
 extern char DAT_00A8EC74;
 // GLOBAL: GAMEMD 0xA8ED64 — the second scan gate.
-extern char DAT_00A8ED64;
+extern bool DAT_00A8ED64;
 // FUNCTION: GAMEMD 0x407000 (decl; reloc) — the audio-available probe.
 int __cdecl FUN_00407000();
 // STRING: GAMEMD 0x844768 — ".WAV".
