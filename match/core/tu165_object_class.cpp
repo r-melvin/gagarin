@@ -67,14 +67,6 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "../_layout/rules_class.h"
 extern RulesClass* DAT_008871E0;
 
-// The audio controller's initialiser (0x405BE0, __thiscall, no arguments),
-// rerun over each controller a load brings in.
-struct AudioControllerInit
-{
-    // CALLEE: GAMEMD 0x405BE0 (declaration)
-    void FUN_00405BE0();
-};
-
 // CALLEE: GAMEMD 0x410380 (decl; reloc) -- AbstractClass's Load body.
 
 #include "cell_step_tables.h"
@@ -693,8 +685,8 @@ HRESULT __stdcall ObjectClass::Load(IStream* pStm)
     DAT_00B0C110.SwizzleManagerClass::vf_4(&AttachedBomb);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_18);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Parachute);
-    ((AudioControllerInit*)&AmbientSoundController)->FUN_00405BE0();
-    ((AudioControllerInit*)&CustomSoundController)->FUN_00405BE0();
+    AmbientSoundController.FUN_00405BE0();
+    CustomSoundController.FUN_00405BE0();
     LineTrailer = 0;
     return S_OK;
 }

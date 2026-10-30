@@ -10,21 +10,21 @@
 #include "leaf_accessor_methods.h"
 
 // FUNCTION: GAMEMD 0x405BE0
-void Obj_00405B00::FUN_00405BE0()
+void AudioController::FUN_00405BE0()
 {
-    unknown_0C = DAT_0087E294;
-    unknown_00 = 0;
-    unknown_04 = 0;
-    unknown_08 = 0;
+    AudioIndex = &AudioIDXData_Instance;
+    Event = 0;
+    Stamp = 0;
+    EventType = 0;
 }
 
 // FUNCTION: GAMEMD 0x405C00
-void Obj_00405B00::FUN_00405C00()
+void AudioController::FUN_00405C00()
 {
-    if (DAT_0087E2A0 != 0 && this->unknown_0C == (void*)DAT_0087E294) {
-        Voice_00405D40* voice = this->unknown_00;
+    if (DAT_0087E2A0 != 0 && this->AudioIndex == &AudioIDXData_Instance) {
+        AudioEvent* voice = this->Event;
         if (voice != 0) {
-            if (this->unknown_08 == voice->Token && this->unknown_04 == voice->Serial
+            if (this->EventType == voice->EventType && this->Stamp == voice->Serial
                 && (voice->Flags & 1) == 0) {
                 Peer_00405D40* peer = voice->Peer;
                 if (peer != 0 && voice == peer->Voice) {
@@ -47,14 +47,14 @@ void Obj_00405B00::FUN_00405C00()
                 voice->SubCount = 0;
                 voice->State = 4;
                 voice->Serial = 0;
-                voice->At_278 = 0;
+                voice->Controller = 0;
                 voice->Flags = voice->Flags | 1;
             }
-            this->unknown_00 = 0;
+            this->Event = 0;
         }
     }
-    this->unknown_08 = 0;
-    this->unknown_0C = 0;
+    this->EventType = 0;
+    this->AudioIndex = 0;
 }
 
 // FUNCTION: GAMEMD 0x406650

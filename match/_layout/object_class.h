@@ -42,30 +42,8 @@ struct Point2D;           // geometry2d.h
 #include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
-// AudioController — the "mofo" audio-event controller (sizeof = 0x14). Size
-// proven by the two back-to-back ctor calls FUN_0x00405BE0(this+0x3C) and
-// (this+0x50): the 0x14 stride is the AudioController size.
-#ifndef GG_MATCH_LAYOUT_AUDIOCONTROLLER_DEFINED
-#define GG_MATCH_LAYOUT_AUDIOCONTROLLER_DEFINED
-struct AudioController
-{
-    void* Event;        // +0x00  AudioEventTag* (truncation)
-    int   Stamp;        // +0x04
-    void* EventType;    // +0x08  VocClass* (truncation)
-    void* AudioIndex;   // +0x0C  AudioIDXData** (truncation)
-    int   Unused;       // +0x10
-
-    // FUNCTION: GAMEMD 0x405D40 (declaration)
-    void FUN_00405D40();
-    // FUNCTION: GAMEMD 0x405FD0 (declaration)
-    void FUN_00405FD0();
-    // FUNCTION: GAMEMD 0x406060 (decl; reloc) -- ends a looping voice (audio_end_looping_methods.cpp)
-    void FUN_00406060();
-};
-GG_STATIC_ASSERT(offsetof(AudioController, Stamp)     == 0x04);
-GG_STATIC_ASSERT(offsetof(AudioController, EventType) == 0x08);
-GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
-#endif  // GG_MATCH_LAYOUT_AUDIOCONTROLLER_DEFINED
+// AudioController (sizeof 0x14) lives in its own canonical header.
+#include "audio_controller.h"
 
 // ObjectClass  (0x24..0xAB, sizeof = 0xAC)
 // VTABLE: GAMEMD 0x7EF060

@@ -148,7 +148,7 @@ bool ObjectClass::vf_53()
     vf_55(1);
     vf_73(0);
     DAT_0087F7E8.FUN_004A9770(this);
-    AmbientSoundController.FUN_00405D40();
+    AmbientSoundController.Stop();
     CustomSoundController.FUN_00405FD0();
     if (vf_34() != 0 && vf_34()->IsLogic) {
         if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5 || vf_rtti_4() != -2) {

@@ -10,29 +10,26 @@
 #include <stddef.h>
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/audio_controller.h"
 #include "../platform/center_window_methods.h"
 #include "../ui/input_controls/ui_gadget.h"
 
 // ---------------------------------------------------------------------------
 // 0x7518A0: fire an audio event for the table entry at an index.
-struct AudioController_007518A0;
 struct VocEntry_007518A0
 {
-    void* Event;   // +0x00
+    AudioEventType* Event;   // +0x00
 };
 // GLOBAL: GAMEMD 0xB1D37C
 extern "C" VocEntry_007518A0** DAT_00B1D37C;
 // GLOBAL: GAMEMD 0xB1D388
 extern "C" int DAT_00B1D388;
-// FUNCTION: GAMEMD 0x4060F0 (decl; reloc)
-void __fastcall FUN_004060F0(AudioController_007518A0* pThis, void* event, void* eventType);
-
 // FUNCTION: GAMEMD 0x7518A0
 // Plays the entry at `index` when it is inside the table.
-void __fastcall FUN_007518A0(AudioController_007518A0* pThis, int index)
+void __fastcall FUN_007518A0(AudioController* pThis, int index)
 {
     if (index >= 0 && index < DAT_00B1D388) {
-        FUN_004060F0(pThis, 0, DAT_00B1D37C[index]->Event);
+        AudioController::SetEvent(pThis, 0, DAT_00B1D37C[index]->Event);
     }
 }
 

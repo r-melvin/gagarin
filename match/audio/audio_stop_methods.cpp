@@ -54,12 +54,12 @@
 // same instructions, and both mid-function pops land at the same offsets; the
 // block structure is identical and only the names EBX and EBP are exchanged.
 // There is no merged return block to split.
-void AudioHandle_00405D40::Stop()
+void AudioController::Stop()
 {
-    if (DAT_0087E2A0 != 0 && this->Owner == (void*)DAT_0087E294) {
-        Voice_00405D40* voice = this->Voice;
+    if (DAT_0087E2A0 != 0 && this->AudioIndex == &AudioIDXData_Instance) {
+        AudioEvent* voice = this->Event;
         if (voice != 0) {
-            if (this->Token == voice->Token && this->Serial == voice->Serial
+            if (this->EventType == voice->EventType && this->Stamp == voice->Serial
                 && (voice->Flags & 1) == 0) {
                 Peer_00405D40* peer = voice->Peer;
                 if (peer != 0 && voice == peer->Voice) {
@@ -85,13 +85,13 @@ void AudioHandle_00405D40::Stop()
                 voice->SubCount = 0;
                 voice->State = 4;
                 voice->Serial = 0;
-                voice->At_278 = 0;
+                voice->Controller = 0;
                 voice->Flags = voice->Flags | 1;
             }
 
-            this->Voice = 0;
+            this->Event = 0;
         }
     }
 
-    this->Token = 0;
+    this->EventType = 0;
 }

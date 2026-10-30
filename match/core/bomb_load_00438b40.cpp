@@ -26,8 +26,8 @@ struct BombLoadView_00438B40 {
     void* unknown_28;
     void* unknown_2C;
     char unknown_30[0xC];
-    Obj_00405B00 unknown_3C;
-    char unknown_4C[8];
+    AudioController unknown_3C;
+    char unknown_50[4];
     int unknown_54;
     // Inlined form of constructor 0x004386F0; no separate emitted body.
     inline BombLoadView_00438B40(int arg) {
@@ -48,7 +48,7 @@ GG_STATIC_ASSERT(offsetof(BombLoadView_00438B40, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(BombLoadView_00438B40, unknown_2C) == 0x2C);
 GG_STATIC_ASSERT(offsetof(BombLoadView_00438B40, unknown_30) == 0x30);
 GG_STATIC_ASSERT(offsetof(BombLoadView_00438B40, unknown_3C) == 0x3C);
-GG_STATIC_ASSERT(offsetof(BombLoadView_00438B40, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(BombLoadView_00438B40, unknown_50) == 0x50);
 GG_STATIC_ASSERT(offsetof(BombLoadView_00438B40, unknown_54) == 0x54);
 GG_STATIC_ASSERT(sizeof(BombLoadView_00438B40) == 0x58);
 

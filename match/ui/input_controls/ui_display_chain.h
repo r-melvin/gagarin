@@ -719,8 +719,7 @@ public:
     char unknown_14BC;
     unsigned char unknown_14BD;
     char unknown_14BE[2];
-    Obj_00405B00 unknown_14C0;
-    char unknown_14D0[4];
+    AudioController unknown_14C0;   // +0x14C0 (0x14; its Unused word is +0x14D0)
     int unknown_14D4;
     unsigned char unknown_14D8;
     unsigned char unknown_14D9;

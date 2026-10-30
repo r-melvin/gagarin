@@ -17,17 +17,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/audio_controller.h"
 
-// The "mofo" audio-event controller (0x14 bytes) and its two helpers.
-struct AudioController_0070E000
-{
-    char opaque[0x14];
-    // FUNCTION: GAMEMD 0x406060 (decl; reloc) — Audio::EndLooping.
-    void EndLooping();
-    // FUNCTION: GAMEMD 0x405D40 (decl; reloc) — stop the controller's voice.
-    void FUN_00405D40();
-};
-GG_STATIC_ASSERT(sizeof(AudioController_0070E000) == 0x14);
 
 struct Veterancy_0070E000
 {
@@ -63,10 +54,10 @@ struct Techno_0070E000
     char                      _pad148[8];                    // +0x0148
     Veterancy_0070E000        Veterancy;                     // +0x0150
     char                      _pad154[0x4A4 - 0x154];        // +0x0154
-    AudioController_0070E000  GattlingSoundController;       // +0x04A4
+    AudioController           GattlingSoundController;       // +0x04A4
     unsigned char             IsGattlingSoundPlaying;        // +0x04B8
     char                      _pad4B9[7];                    // +0x04B9
-    AudioController_0070E000  UnusedGattlingSoundController; // +0x04C0
+    AudioController           UnusedGattlingSoundController; // +0x04C0
     unsigned char             IsUnusedGattlingSoundPlaying;  // +0x04D4
 
     // FUNCTION: GAMEMD 0x70E000 — TechnoClass::GattlingRateDown.

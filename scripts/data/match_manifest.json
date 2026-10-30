@@ -1084,29 +1084,29 @@
  {
   "tu": "match/audio/audio.cpp",
   "addr": "0x4060F0",
-  "sym": "?SetEvent@AudioController@@SIXPAU1@PAXPAUVocClass@@@Z",
+  "sym": "?SetEvent@AudioController@@SIXPAU1@PAUAudioEvent@@PAUAudioEventType@@@Z",
   "len": "0x34",
   "name": "AudioController::SetEvent",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/audio.cpp",
   "addr": "0x406130",
-  "sym": "?GetEvent@AudioController@@QAEPAXXZ",
+  "sym": "?GetEvent@AudioController@@QAEPAUAudioEvent@@XZ",
   "len": "0x39",
   "name": "AudioController::GetEvent",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/audio.cpp",
   "addr": "0x406170",
-  "sym": "?GetEventType@AudioController@@QAEPAUVocClass@@XZ",
+  "sym": "?GetEventType@AudioController@@QAEPAUAudioEventType@@XZ",
   "len": "0x19",
   "name": "AudioController::GetEventType",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/audio.cpp",
@@ -1156,9 +1156,9 @@
  {
   "tu": "match/audio/audio_stop_methods.cpp",
   "addr": "0x405D40",
-  "sym": "?Stop@AudioHandle_00405D40@@QAEXXZ",
+  "sym": "?Stop@AudioController@@QAEXXZ",
   "len": "0x138",
-  "name": "Audio::Stop",
+  "name": "AudioController::Stop",
   "status": "partial",
   "pct": 64.2
  },
@@ -10793,9 +10793,9 @@
  {
   "tu": "match/core/small_misc2_methods.cpp",
   "addr": "0x405BE0",
-  "sym": "?FUN_00405BE0@Obj_00405B00@@QAEXXZ",
+  "sym": "?FUN_00405BE0@AudioController@@QAEXXZ",
   "len": "0x12",
-  "name": "FUN_00405BE0",
+  "name": "AudioController::FUN_00405BE0",
   "status": "matched",
   "pct": 100.0
  },
@@ -104638,9 +104638,9 @@
  {
   "tu": "match/core/small_misc2_methods.cpp",
   "addr": "0x405C00",
-  "sym": "?FUN_00405C00@Obj_00405B00@@QAEXXZ",
+  "sym": "?FUN_00405C00@AudioController@@QAEXXZ",
   "len": "0x13b",
-  "name": "Obj_00405B00::FUN_00405C00",
+  "name": "AudioController::FUN_00405C00",
   "status": "partial",
   "pct": 63.4
  },
@@ -142627,11 +142627,11 @@
  {
   "tu": "match/core/leaf_sweep_s3.cpp",
   "addr": "0x7518A0",
-  "sym": "?FUN_007518A0@@YIXPAUAudioController_007518A0@@H@Z",
+  "sym": "?FUN_007518A0@@YIXPAUAudioController@@H@Z",
   "len": "0x1f",
   "name": "FUN_007518A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_sweep_s3.cpp",

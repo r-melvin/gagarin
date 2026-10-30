@@ -17,12 +17,12 @@
 //   LIBRARY:  GAMEMD 0x7C8E25  bsearch    (CRT, reloc)
 
 #include "audio.h"
+#include "../_layout/audio_event.h"
 #include <stdlib.h>   // bsearch
 #include <string.h>   // _strcmpi
 
 // GLOBAL: GAMEMD 0x87E294 — the engine's single AudioIDXData instance pointer.
 // AudioController::AudioIndex points at this global when its handle is "live".
-extern AudioIDXData* AudioIDXData_Instance;
 
 // GLOBAL: GAMEMD 0x87E2A0 — audio-subsystem guard. When null, no controller can
 // resolve an event (every getter short-circuits to null).
@@ -92,7 +92,7 @@ void AudioIDXData::ClearCurrentSample()
 // stamp; if no explicit type was given it adopts the event's own; and back-links
 // the event to this controller.
 // ---------------------------------------------------------------------------
-void AudioController::SetEvent(AudioController* pThis, void* event, VocClass* eventType)
+void AudioController::SetEvent(AudioController* pThis, AudioEvent* event, AudioEventType* eventType)
 {
     if (pThis->AudioIndex == &AudioIDXData_Instance)
     {
@@ -100,10 +100,10 @@ void AudioController::SetEvent(AudioController* pThis, void* event, VocClass* ev
         pThis->EventType = eventType;
         if (event != 0)
         {
-            pThis->Stamp = *(unsigned int*)((char*)event + 0x138);
+            pThis->Stamp = event->Serial;
             if (eventType == 0)
-                pThis->EventType = *(VocClass**)((char*)event + 0x24);
-            *(AudioController**)((char*)event + 0x278) = pThis;
+                pThis->EventType = event->EventType;
+            event->Controller = pThis;
         }
     }
 }
@@ -116,15 +116,14 @@ void AudioController::SetEvent(AudioController* pThis, void* event, VocClass* ev
 // the event still the same one (its type and stamp unchanged). On any mismatch
 // the stale pointer is cleared and null returned.
 // ---------------------------------------------------------------------------
-void* AudioController::GetEvent()
+AudioEvent* AudioController::GetEvent()
 {
     if (g_AudioEnabled != 0 && this->AudioIndex == &AudioIDXData_Instance)
     {
-        void* ev = this->Event;
+        AudioEvent* ev = this->Event;
         if (ev != 0)
         {
-            if ((void*)this->EventType != *(void**)((char*)ev + 0x24) ||
-                this->Stamp != *(unsigned int*)((char*)ev + 0x138))
+            if (this->EventType != ev->EventType || this->Stamp != ev->Serial)
             {
                 ev = 0;
                 this->Event = 0;
@@ -141,7 +140,7 @@ void* AudioController::GetEvent()
 // The controller's bound event type, gated on the subsystem being up and the
 // handle being live.
 // ---------------------------------------------------------------------------
-VocClass* AudioController::GetEventType()
+AudioEventType* AudioController::GetEventType()
 {
     if (g_AudioEnabled != 0 && this->AudioIndex == &AudioIDXData_Instance)
         return this->EventType;

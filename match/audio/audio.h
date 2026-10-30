@@ -16,7 +16,7 @@
 #include <stddef.h>  // offsetof, size_t
 #include "../_rt/gg_static_assert.h"
 
-struct VocClass;   // opaque (only handled by pointer)
+#include "../_layout/audio_controller.h"
 
 // ---------------------------------------------------------------------------
 // AudioFileStub — the streamed-sample file object (RawFileClass in YRpp). Only
@@ -92,33 +92,6 @@ GG_STATIC_ASSERT(offsetof(AudioIDXData, Samples)          == 0x00);
 GG_STATIC_ASSERT(offsetof(AudioIDXData, CurrentSampleFile)== 0x110);
 #endif
 
-// ---------------------------------------------------------------------------
-// AudioController
-//   +0x00 Event      (MOV [ECX],EDX     @0x4060FD ; MOV EAX,[ECX] @0x406142)
-//   +0x04 Stamp      (MOV [ECX+4],ESI   @0x40610D ; MOV EDX,[ECX+4] @0x406153)
-//   +0x08 EventType  (MOV [ECX+8],EAX   @0x406101 ; MOV EAX,[ECX+8] @0x406182)
-//   +0x0C AudioIndex (CMP [ECX+0xc],0x87E294 @0x4060F0)
-// AudioIndex is an AudioIDXData** that, when valid, points at the global
-// AudioIDXData::Instance (address 0x87E294 — the CMP immediate).
-// ---------------------------------------------------------------------------
-struct AudioController
-{
-    static void SetEvent(AudioController* pThis, void* event, VocClass* eventType);  // GAMEMD 0x4060F0
-    void*      GetEvent();                                          // GAMEMD 0x406130 __thiscall
-    VocClass*  GetEventType();                                      // GAMEMD 0x406170 __thiscall
-    static VocClass* GetEventType(void* event);         // GAMEMD 0x406310 __fastcall
-
-    void*          Event;       // +0x00
-    unsigned int   Stamp;       // +0x04
-    VocClass*      EventType;    // +0x08
-    AudioIDXData** AudioIndex;   // +0x0C
-    unsigned int   Unused;      // +0x10
-};
-GG_STATIC_ASSERT(offsetof(AudioController, Stamp) == 0x04);
-#if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(AudioController, Event)      == 0x00);
-GG_STATIC_ASSERT(offsetof(AudioController, EventType)  == 0x08);
-GG_STATIC_ASSERT(offsetof(AudioController, AudioIndex) == 0x0C);
-#endif
+// AudioController: see match/_layout/audio_controller.h (the canonical definition).
 
 #endif  // GG_MATCH_AUDIO_AUDIO_H

@@ -662,7 +662,7 @@ Obj_00407F80* Pool_00402860::FUN_00407860(unsigned __int64 interval)
     strcpy(event->unknown_A4, DAT_008162C8);
     if (event->unknown_14)
     {
-        event->unknown_14->Voice = reinterpret_cast<Voice_00405D40*>(event);
+        event->unknown_14->Voice = reinterpret_cast<AudioEvent*>(event);
         // Retail installs 4079C0 as the generic context callback at +B0.
         event->unknown_14->unknown_B0 = reinterpret_cast<int (__fastcall*)(void*)>(FUN_004079C0);
         event->unknown_14->At_B8 = FUN_00407A30;

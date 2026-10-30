@@ -241,7 +241,7 @@ GG_STATIC_ASSERT(offsetof(RadarColorSamples_00B0FA1C, Blue) == 2);
 GG_STATIC_ASSERT(sizeof(RadarColorSamples_00B0FA1C) == 4);
 extern RadarColorSamples_00B0FA1C DAT_00B0FA1C;
 // FUNCTION: GAMEMD 0x406060 (decl; reloc) -- end the loop on Radar's +0x14C0 audio handle.
-void __fastcall FUN_00406060(Obj_00405B00* handle);
+void __fastcall FUN_00406060(AudioController* handle);
 // FUNCTION: GAMEMD 0x53BAE0 (decl; reloc)
 bool __cdecl FUN_0053BAE0();
 // FUNCTION: GAMEMD 0x753580 (decl; reloc)

@@ -24,6 +24,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/triple_timer_init_methods.h"
 #include "../core/tail_call_methods.h"
+#include "../_layout/audio_controller.h"
+#include "../_layout/audio_event.h"
 
 // GLOBAL: GAMEMD 0x87E2A0 — nonzero once the audio subsystem is up.
 extern int DAT_0087E2A0;
@@ -31,97 +33,6 @@ extern int DAT_0087E2A0;
 // against its address.
 extern char DAT_0087E294[];
 
-struct Voice_00405D40;
-
-// FUNCTION: GAMEMD 0x401F90 (decl; reloc) — release one voice sub-object.
 void FUN_00401F90(void* sub);
-
-struct Peer_00405D40
-{
-    char _pad000[0x10];
-    Timer_00401000 unknown_10;
-    char unknown_38[0x90 - 0x38];       // +0x0000
-    int  At_90;               // +0x0090
-    int At_94;
-    int  At_98;               // +0x0098
-    int  At_9C;               // +0x009C
-    char _pad0A0[0xB0 - 0xA0];
-    int (__fastcall* unknown_B0)(void*);
-    int  At_B4;               // +0x00B4
-    int (__fastcall* At_B8)(void*);               // +0x00B8
-    int (__fastcall* At_BC)(void*);               // +0x00BC
-    Voice_00405D40* Voice;    // +0x00C0
-    char unknown_C4[0x1A8 - 0xC4];
-    unsigned __int64 unknown_1A8;
-    unsigned __int64 unknown_1B0;
-    // FUNCTION: GAMEMD 0x402790 (decl; reloc)
-    void __fastcall FUN_00402790(Obj_00408500b*);
-    // FUNCTION: GAMEMD 0x402720 (decl; reloc)
-    int FUN_00402720();
-
-    // FUNCTION: GAMEMD 0x4025B0 (decl; reloc) — __thiscall forwarder.
-    void FUN_004025B0();
-    // FUNCTION: GAMEMD 0x4026F0 (decl; reloc) — __thiscall forwarder.
-    void FUN_004026F0();
-};
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_10) == 0x10);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_1A8) == 0x1A8);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_1B0) == 0x1B0);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_90) == 0x90);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_94) == 0x94);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_B0) == 0xB0);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_98) == 0x98);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_9C) == 0x9C);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_B4) == 0xB4);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_B8) == 0xB8);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_BC) == 0xBC);
-GG_STATIC_ASSERT(offsetof(Peer_00405D40, Voice) == 0xC0);
-
-struct Voice_00405D40
-{
-    char _pad000[0x18];       // +0x0000
-    union {
-        unsigned int  Flags;      // +0x0018  bit 0 = already stopped
-        unsigned char  FlagsLow;  // +0x0018  byte alias
-        unsigned short FlagsWord; // +0x0018  word alias — the second flag test
-                                  //          must differ in width from the
-                                  //          first or cl CSEs the two tests
-                                  //          into one load (see the .cpp).
-    };
-    int   State;              // +0x001C
-    char  _pad020[0x24 - 0x20];
-    void* Token;              // +0x0024
-    void* Subs[(0xA8 - 0x28) / 4];  // +0x0028
-    int   SubCount;           // +0x00A8
-    char  _pad0AC[0xB0 - 0xAC];
-    Peer_00405D40* Peer;      // +0x00B0
-    char  _pad0B4[0x138 - 0xB4];
-    int   Serial;             // +0x0138
-    char  _pad13C[0x278 - 0x13C];
-    int   At_278;             // +0x0278
-};
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, Flags) == 0x18);
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, State) == 0x1C);
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, Token) == 0x24);
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, Subs) == 0x28);
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, SubCount) == 0xA8);
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, Peer) == 0xB0);
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, Serial) == 0x138);
-GG_STATIC_ASSERT(offsetof(Voice_00405D40, At_278) == 0x278);
-
-// The caller's handle on a playing voice.
-struct AudioHandle_00405D40
-{
-    Voice_00405D40* Voice;    // +0x0000
-    int   Serial;             // +0x0004
-    void* Token;              // +0x0008
-    void* Owner;              // +0x000C
-
-    // FUNCTION: GAMEMD 0x405D40
-    void Stop();
-};
-GG_STATIC_ASSERT(offsetof(AudioHandle_00405D40, Serial) == 0x4);
-GG_STATIC_ASSERT(offsetof(AudioHandle_00405D40, Token) == 0x8);
-GG_STATIC_ASSERT(offsetof(AudioHandle_00405D40, Owner) == 0xC);
 
 #endif  // GG_MATCH_AUDIO_AUDIO_STOP_METHODS_H

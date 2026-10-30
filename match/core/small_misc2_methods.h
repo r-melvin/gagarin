@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "guarded_forward_methods.h"
+#include "../_layout/audio_controller.h"
 
 // GLOBAL: GAMEMD 0x87E8A0 — an interface pointer released through slot 0x48.
 extern IFace* DAT_0087E8A0;
@@ -29,7 +30,6 @@ const char* FUN_00473960(unsigned int index);
 
 
 
-struct Voice_00405D40;
 
 struct Obj_004072D0
 {
@@ -41,23 +41,6 @@ struct Obj_004072D0
     void FUN_004072D0();
 };
 
-struct Obj_00405B00
-{
-    Voice_00405D40* unknown_00;  // +0x0000
-    int   unknown_04;  // +0x0004
-    void* unknown_08;  // +0x0008
-    char* unknown_0C;  // +0x000C
-
-    // FUNCTION: GAMEMD 0x405BE0
-    void FUN_00405BE0();
-    // FUNCTION: GAMEMD 0x405C00
-    void FUN_00405C00();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_00) == 0x0);
-GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_08) == 0x8);
-GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_0C) == 0xC);
-GG_STATIC_ASSERT(sizeof(Obj_00405B00) == 0x10);
 
 // Callee-cleanup: no `ADD ESP` after the call, so __stdcall.
 void __stdcall FUN_00432E40(int a, int b, int c);

@@ -362,7 +362,7 @@ SidebarClass::SidebarClass()
 // REA Evidence: ev_1dd5458f92702204515ba913680947a6074d3d7212c547bcbcf63868c928ef9d
 // CFG-closed retail span [0x6A4F20, 0x6A4FF0), 0xD0 bytes; the RET 4 ends at 0x6A4FED.
 // Constructor calls the tagged DisplayClass initializer, three canonical vector forms,
-// two canonical elapsed timers, Obj_00405B00::FUN_00405BE0, and four StripClass elements.
+// two canonical elapsed timers, AudioController::FUN_00405BE0, and four StripClass elements.
 // FUNCTION: GAMEMD 0x6A4F20
 SidebarClass::SidebarClass(const Obj_005BDF70& noInit)
     : PowerClass(noInit)

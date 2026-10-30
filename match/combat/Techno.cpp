@@ -1800,7 +1800,7 @@ void TechnoClass::FUN_0070DE70(int a)
     }
     int stage = CurrentGattlingStage;
     WeaponTypeClass* weapon = vf_254(stage * 2)->WeaponType;
-    UnusedGattlingSoundController.FUN_00405D40();
+    UnusedGattlingSoundController.Stop();
     IsUnusedGattlingSoundPlaying = 0;
     if (stage >= 0 && stage < stages - 1) {
         int threshold;
@@ -1815,13 +1815,13 @@ void TechnoClass::FUN_0070DE70(int a)
                 CurrentGattlingStage = stage;
             }
             weapon = vf_254(stage * 2)->WeaponType;
-            GattlingSoundController.FUN_00405D40();
+            GattlingSoundController.Stop();
             IsGattlingSoundPlaying = 0;
         }
     }
     if (!IsGattlingSoundPlaying && weapon->Reports.Count > 0) {
         AudioController* controller = &GattlingSoundController;
-        controller->FUN_00405D40();
+        controller->Stop();
         unsigned int count = weapon->Reports.Count;
         CoordStruct where = Location;
         int sound = weapon->Reports.Items[DAT_00886B88.Random() % count];
@@ -1841,7 +1841,7 @@ void TechnoClass::FUN_0070DE70(int a)
 // stops.
 void Techno_0070E000::GattlingRateDown(int rate)
 {
-    GattlingSoundController.EndLooping();
+    GattlingSoundController.FUN_00406060();
     IsGattlingSoundPlaying = 0;
 
     int step = (this->*Vptr->GetTechnoType)()->RateDown * rate;
@@ -1854,8 +1854,8 @@ void Techno_0070E000::GattlingRateDown(int rate)
     int stage = CurrentGattlingStage;
     if (value == 0 && stage == 0) {
         if (IsUnusedGattlingSoundPlaying || IsGattlingSoundPlaying) {
-            GattlingSoundController.FUN_00405D40();
-            UnusedGattlingSoundController.FUN_00405D40();
+            GattlingSoundController.Stop();
+            UnusedGattlingSoundController.Stop();
             IsUnusedGattlingSoundPlaying = 0;
             IsGattlingSoundPlaying = 0;
         }
@@ -1874,7 +1874,7 @@ void Techno_0070E000::GattlingRateDown(int rate)
                     CurrentGattlingStage = stage;
                 }
                 (this->*Vptr->GetWeapon)(stage * 2);
-                UnusedGattlingSoundController.FUN_00405D40();
+                UnusedGattlingSoundController.Stop();
                 IsUnusedGattlingSoundPlaying = 0;
             }
         }
