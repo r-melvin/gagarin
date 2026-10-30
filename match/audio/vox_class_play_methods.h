@@ -157,6 +157,8 @@ struct VoxClass
         Array.Remove(this);
     }
 
+    // FUNCTION: GAMEMD 0x752700 (decl; reloc) -- the same entry vox_class_methods.h declares.
+    static void Play(const char* pName, int nUnk, int nUnk2);
     // FUNCTION: GAMEMD 0x750E20
     static void* PlayAtPos(int index, CoordStruct* coords, int unk);
     // FUNCTION: GAMEMD 0x7531A0

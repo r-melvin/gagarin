@@ -34,7 +34,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
 #include "../core/vector_class.h"
-#include "foot_class.h"        // CellStruct
+#include "cell.h"        // CellStruct
 #include "building_class.h"    // RectangleStruct
 
 class TagClass;

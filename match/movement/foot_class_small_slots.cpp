@@ -132,7 +132,7 @@ bool FootClass::vf_53()
         }
         MoveSoundAudioController.FUN_00405FD0();
         if (vf_33()->SensorsSight != 0) {
-            vf_315(*(int*)&DAT_008B3D88);
+            vf_315(DAT_008B3D88);
         }
         FootView_004DB260* self = (FootView_004DB260*)this;
         if ((self->*self->Vtbl->At_2F4)() != *(Cell const*)&DAT_008B3D88) {

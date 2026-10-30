@@ -210,6 +210,8 @@ public:
     PlanningTokenClass* FUN_00705D20();
     // Declaration: GAMEMD 0x6385C0 -- AL result, ordinary thiscall receiver.
     bool TryNextPlanningTokenNode();
+    // FUNCTION: GAMEMD 0x70FB50 (decl; reloc)
+    bool FUN_0070FB50();
     // FUNCTION: GAMEMD 0x70E260 (decl) -- non-virtual; true when the primary weapon slot names a type.
     int FUN_0070E260();
     // FUNCTION: GAMEMD 0x70DD00 (decl) -- non-virtual; latches CurrentTurretNumber into unknown_int_128 and reports a change.

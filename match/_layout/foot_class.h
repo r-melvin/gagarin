@@ -51,8 +51,8 @@ public:
     virtual bool vf_311();                                         // 311 0x4DC790
     virtual bool vf_312();                                         // 312 0x4DBFD0
     virtual bool vf_313();                                         // 313 0x41C060, native AL=false
-    virtual void vf_314(int a1);                                   // 314 0x4DE7B0
-    virtual void vf_315(int a1);                                   // 315 0x4DE940
+    virtual void vf_314(CellStruct center);                        // 314 0x4DE7B0: adds the sensor disc around the cell
+    virtual void vf_315(CellStruct center);                        // 315 0x4DE940: takes the sensor disc off
     virtual CoordStruct vf_316();                                  // 316 0x4D9FF0
     virtual void vf_125(int mission, AbstractClass* a2, AbstractClass* a3);              // 125 0x4D8F40
     virtual int vf_30();                                           // 30  0x4DB7E0
@@ -229,6 +229,29 @@ public:
     virtual int vf_29(ObjectClass* target, char flag);             // 29  0x4DDED0
     // FUNCTION: GAMEMD 0x4DC8C0 (decl; reloc) -- takes a waypoint; defined elsewhere.
     void FUN_004DC8C0(WaypointClass* waypoint);
+
+    // TU086 overrides (retail table 0x7E8C94).
+    virtual void vf_55(bool removed);                              // 55  0x4D9720
+    virtual bool vf_38();                                          // 38  0x4D9E70
+    virtual bool vf_54(const CoordStruct& coord, int a2);          // 54  0x4D7170
+    virtual bool vf_73(int mode);                                  // 73  0x4D3780
+    virtual int vf_28(CellStruct* cell, char a2, char a3);         // 28  0x4DDDE0
+    virtual void vf_238(void* a1);                                 // 238 0x4D98C0
+    virtual int vf_133();                                          // 133 0x4D4B20
+    virtual int vf_134();                                          // 134 0x4D4CB0
+    virtual bool vf_207();                                         // 207 0x4DFA70
+    virtual bool vf_208();                                         // 208 0x4DFB70
+    virtual bool vf_209();                                         // 209 0x4DFF40
+    virtual bool vf_210();                                         // 210 0x4DFCB0
+    virtual bool vf_211();                                         // 211 0x4DFE00
+    virtual bool vf_306();                                         // 306 0x4DF320
+    virtual void vf_307();                                         // 307 0x4DF3A0
+    // GAMEMD 0x4D97A0 (RET 4): how strongly this object wants to attack `target`; 0 when it should not.
+    int FUN_004D97A0(AbstractClass* target);
+    // GAMEMD 0x4DBA50 (slot 177; RET 4): hands the centre of the lepton cell at `from`'s slot-19 point to slot 179.
+    void FUN_004DBA50(TechnoClass* from);
+    // GAMEMD 0x4DE670 (RET 4): drops `passenger` from Passengers, plays the leave-transport sound when set.
+    void FUN_004DE670(FootClass* passenger);
 
     double FUN_004DC760();                                         // 0x4DC760 (team flag selects a constant, else unknown_530)
     // FUNCTION: GAMEMD 0x4DB0D0 -- non-virtual; offsets the draw point (arg 5) by the locomotor's shadow point, then draws.

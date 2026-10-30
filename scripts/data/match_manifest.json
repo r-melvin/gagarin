@@ -147316,5 +147316,194 @@
   "name": "??0CheckListClass@@QAE@HHHHHIPBX0@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D3780",
+  "sym": "?vf_73@FootClass@@UAE_NH@Z",
+  "len": "0x8a",
+  "name": "FootClass::vf_73",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D4B20",
+  "sym": "?vf_133@FootClass@@UAEHXZ",
+  "len": "0x184",
+  "name": "FootClass::vf_133",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D4CB0",
+  "sym": "?vf_134@FootClass@@UAEHXZ",
+  "len": "0x109",
+  "name": "FootClass::vf_134",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D7170",
+  "sym": "?vf_54@FootClass@@UAE_NABUCoordStruct@@H@Z",
+  "len": "0x1ba",
+  "name": "FootClass::vf_54",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D9720",
+  "sym": "?vf_55@FootClass@@UAEX_N@Z",
+  "len": "0x78",
+  "name": "FootClass::vf_55",
+  "status": "partial",
+  "pct": 87.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D97A0",
+  "sym": "?FUN_004D97A0@FootClass@@QAEHPAVAbstractClass@@@Z",
+  "len": "0x112",
+  "name": "FootClass::FUN_004D97A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D98C0",
+  "sym": "?vf_238@FootClass@@UAEXPAX@Z",
+  "len": "0x5b",
+  "name": "FootClass::vf_238",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D9E70",
+  "sym": "?vf_38@FootClass@@UAE_NXZ",
+  "len": "0xf7",
+  "name": "FootClass::vf_38",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DBA50",
+  "sym": "?FUN_004DBA50@FootClass@@QAEXPAVTechnoClass@@@Z",
+  "len": "0x76",
+  "name": "FootClass::FUN_004DBA50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DBED0",
+  "sym": "?vf_245@FootClass@@UAE_NPAVHouseClass@@_N@Z",
+  "len": "0xf5",
+  "name": "FootClass::vf_245",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DDDE0",
+  "sym": "?vf_28@FootClass@@UAEHPAUCellStruct@@DD@Z",
+  "len": "0xec",
+  "name": "FootClass::vf_28",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DE670",
+  "sym": "?FUN_004DE670@FootClass@@QAEXPAV1@@Z",
+  "len": "0x97",
+  "name": "FootClass::FUN_004DE670",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DE7B0",
+  "sym": "?vf_314@FootClass@@UAEXUCellStruct@@@Z",
+  "len": "0x18c",
+  "name": "FootClass::vf_314",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DE940",
+  "sym": "?vf_315@FootClass@@UAEXUCellStruct@@@Z",
+  "len": "0x19c",
+  "name": "FootClass::vf_315",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DF320",
+  "sym": "?vf_306@FootClass@@UAE_NXZ",
+  "len": "0x76",
+  "name": "FootClass::vf_306",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DF3A0",
+  "sym": "?vf_307@FootClass@@UAEXXZ",
+  "len": "0x110",
+  "name": "FootClass::vf_307",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DFA70",
+  "sym": "?vf_207@FootClass@@UAE_NXZ",
+  "len": "0xfe",
+  "name": "FootClass::vf_207",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DFB70",
+  "sym": "?vf_208@FootClass@@UAE_NXZ",
+  "len": "0x138",
+  "name": "FootClass::vf_208",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DFCB0",
+  "sym": "?vf_210@FootClass@@UAE_NXZ",
+  "len": "0x149",
+  "name": "FootClass::vf_210",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DFE00",
+  "sym": "?vf_211@FootClass@@UAE_NXZ",
+  "len": "0x13f",
+  "name": "FootClass::vf_211",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DFF40",
+  "sym": "?vf_209@FootClass@@UAE_NXZ",
+  "len": "0x137",
+  "name": "FootClass::vf_209",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

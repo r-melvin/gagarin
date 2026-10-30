@@ -139,6 +139,9 @@ struct Map_0087F7E8
     void FUN_005687F0(CellStruct* cell, BuildingClass* building);
     // FUNCTION: GAMEMD 0x5683C0 (decl; reloc) -- put a building's footprint on the cell map.
     void FUN_005683C0(CellStruct* cell, BuildingClass* building);
+    // FUNCTION: GAMEMD 0x5687F0 / 0x5683C0 (decl; reloc) -- the same two entries, for any placed object.
+    void FUN_005687F0(CellStruct* cell, ObjectClass* object);
+    void FUN_005683C0(CellStruct* cell, ObjectClass* object);
     // FUNCTION: GAMEMD 0x5678E0 (decl; reloc) -- reveal the map around a coordinate (five one-byte flags).
     void FUN_005678E0(const CoordStruct* where, int sight, HouseClass* house, char a, char b, char c, char d, char e);
     // FUNCTION: GAMEMD 0x4AA290 (decl; reloc) -- the building on a cell, with the screen point of the hit.
