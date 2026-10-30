@@ -5,7 +5,6 @@
 #include <string.h>
 #include "hooked_node_create_methods.h"
 
-#pragma intrinsic(memset)
 
 // FUNCTION: GAMEMD 0x402AF0
 //

@@ -8,8 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <new.h>
-#pragma intrinsic(memset)
-#pragma intrinsic(abs)
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/cell.h"
 #include "../_layout/geometry2d.h"

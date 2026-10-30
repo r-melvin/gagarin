@@ -5,7 +5,6 @@
 #include <string.h>
 #include "slot_array_factory_methods.h"
 
-#pragma intrinsic(memset)
 
 // FUNCTION: GAMEMD 0x4087F0
 //

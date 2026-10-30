@@ -10,7 +10,6 @@
 #include "../_layout/enum_connections_class.h"
 #include "../_layout/enum_connection_points_class.h"
 
-#pragma intrinsic(memcmp)
 
 // GLOBAL: GAMEMD 0x7F7C90 - IID_IUnknown
 extern const GUID DAT_007F7C90;

@@ -10,7 +10,6 @@
 #include <objbase.h>
 #include "../_layout/swizzle_manager_class.h"
 
-#pragma intrinsic(memcmp)
 
 // GLOBAL: GAMEMD 0x7F7C90
 extern const GUID DAT_007F7C90;

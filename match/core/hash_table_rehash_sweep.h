@@ -66,7 +66,6 @@
 #include "../_rt/gg_static_assert.h"
 
 extern "C" void* __cdecl memset(void* dst, int fill, unsigned int bytes);
-#pragma intrinsic(memset)
 
 // One node type per retail rehash, carrying that rehash's measured chain-link
 // displacement. The name is the address of the rehash it produces.

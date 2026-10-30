@@ -5,7 +5,6 @@
 #include <string.h>
 #include "aux_block_attach_methods.h"
 
-#pragma intrinsic(memset)
 
 // FUNCTION: GAMEMD 0x40A260
 //

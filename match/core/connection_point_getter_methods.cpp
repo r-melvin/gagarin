@@ -8,7 +8,6 @@
 #include <string.h>
 #include "../_layout/connection_point_class.h"
 
-#pragma intrinsic(memcmp)
 
 // GLOBAL: GAMEMD 0x7F7CD0 - IID_IConnectionPointContainer (SDK import library).
 extern "C" const IID IID_IConnectionPointContainer;

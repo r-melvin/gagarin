@@ -7,7 +7,6 @@
 #include "mathtbl_init_shapes.h"
 GG_STATIC_ASSERT(sizeof(double) == 8);
 #include <math.h>
-#pragma intrinsic(pow)
 
 // LIBRARY: GAMEMD 0x007C8FB0 — VC6 x87 _CIpow intrinsic runtime.
 // FUNCTION: GAMEMD 0x004CAC40 (decl; reloc) — one-double square-root helper.

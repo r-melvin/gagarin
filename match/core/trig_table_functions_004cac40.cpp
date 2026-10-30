@@ -25,7 +25,6 @@
 //   0x4CB480  odd arc table, float argument
 
 extern "C" int __cdecl abs(int);
-#pragma intrinsic(abs)
 
 // GLOBAL: GAMEMD 0x8223B0
 extern const float DAT_008223B0;

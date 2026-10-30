@@ -4,7 +4,6 @@
 // Provenance: own-binary-via-Ghidra
 #include <math.h>
 #include "mathtbl_init_shapes.h"
-#pragma intrinsic(pow)
 
 // Retail instructions at 0x4CB990 confirm four zeroed dword globals.
 
