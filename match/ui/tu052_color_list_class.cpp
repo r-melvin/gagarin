@@ -43,7 +43,7 @@ ColorListClass::~ColorListClass()
 // FUNCTION: GAMEMD 0x488850
 int ColorListClass::AddItem(const wchar_t* text, int color)
 {
-    Colors.Add(color);
+    Colors.AddItem(color);
     return ListClass::AddItem(text);
 }
 
