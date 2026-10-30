@@ -119,5 +119,36 @@ class PlanTests(unittest.TestCase):
         self.assertEqual(sizes, {"?stub_00401010@@YAXXZ": 0x20, "?stub_00401030@@YAXXZ": 0x10})
 
 
+class AsmObjectPlanTests(unittest.TestCase):
+    """A hand-written assembly object is one COMDAT holding two byte-packed routines."""
+    EXTENTS = [["0x401000", "0x10", "0x0", "none", "engine", []],
+               ["0x401010", "0x10", "0x0", "none", "engine", []],
+               ["0x401020", "0x10", "0x0", "none", "engine", []],
+               ["0x7C8A8E", "0x10", "0x0", "none", "crt", []]]
+    MANIFEST = [{"tu": "match/asm/o.asm", "addr": "0x401000", "sym": "_Head", "len": "0x10", "status": "matched"},
+                {"tu": "match/asm/o.asm", "addr": "0x401010", "sym": "_Tail", "len": "0x10", "status": "matched"}]
+
+    def test_interior_routine_shares_the_head_placement(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "obj/match/asm").mkdir(parents=True)
+            w = coffgen.ObjectWriter()
+            w.add_code_comdat(["_Head", "_Tail"], 0x20, 1)
+            data = bytearray(w.build())
+            symptr = int.from_bytes(data[8:12], "little")
+            idx = next(i for i, name, *_ in coffgen.read_symbols(bytes(data)) if name == "_Tail")
+            data[symptr + 18 * idx + 8:symptr + 18 * idx + 12] = (0x10).to_bytes(4, "little")   # interior label
+            (root / "obj/match/asm/o.obj").write_bytes(bytes(data))
+            (root / "obj/objects.json").write_text(json.dumps(
+                {"success": True, "objects": [{"object": "match/asm/o.obj", "source": "match/asm/o.asm"}]}))
+            result = stubgen.plan(root / "obj", set(), root / "out", manifest=self.MANIFEST,
+                                  extents=self.EXTENTS, symbol_bindings={})
+            order = (root / "out/order.txt").read_text().split()
+            self.assertEqual(order[:2], ["Head", "?stub_00401020@@YAXXZ"])
+            kinds = [(p["addr"], p["kind"]) for p in result["placed"]][:2]
+            self.assertEqual(kinds, [("0x401000", "matched"), ("0x401020", "stub")])
+
+
+
 if __name__ == "__main__":
     unittest.main()

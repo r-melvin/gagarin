@@ -13,6 +13,8 @@ build-vc6/
 *.exe
 *.pdb
 *.asm
+# ...except the hand-written assembly translation units (AGENTS.md "Hand-written assembly").
+!/match/asm/*.asm
 *.cod
 
 # Retail game asset archives (LEGAL.md).

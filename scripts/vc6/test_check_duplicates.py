@@ -53,6 +53,34 @@ class SyntheticOwnershipTests(unittest.TestCase):
         self.assertEqual(code, 1, output)
         self.assertIn('DUPLICATE', output)
 
+    def run_asm_gate(self, other_cpp):
+        with tempfile.TemporaryDirectory() as work:
+            root = Path(work)
+            source = root / 'match/asm/obj.asm'
+            source.parent.mkdir(parents=True)
+            source.write_text('; FUNCTION: GAMEMD 0x401000\nFUN_00401000 PROC C\n')
+            if other_cpp:
+                (root / 'match/test').mkdir()
+                (root / 'match/test/x.cpp').write_text('// FUNCTION: GAMEMD 0x401000\n')
+            manifest = root / 'scripts/data/match_manifest.json'
+            manifest.parent.mkdir(parents=True)
+            manifest.write_text(json.dumps([{'addr': '0x401000', 'tu': 'match/asm/obj.asm'}]))
+            output = io.StringIO()
+            with patch.object(check_duplicates, 'ROOT', str(root)), \
+                    contextlib.redirect_stdout(output), \
+                    self.assertRaises(SystemExit) as status:
+                check_duplicates.main()
+            return status.exception.code, output.getvalue()
+
+    def test_asm_annotation_owns_manifest_row(self):
+        code, output = self.run_asm_gate(False)
+        self.assertEqual(code, 0, output)
+
+    def test_asm_annotation_colliding_with_cpp_is_rejected(self):
+        code, output = self.run_asm_gate(True)
+        self.assertEqual(code, 1, output)
+        self.assertIn('DUPLICATE', output)
+
 
 if __name__ == '__main__':
     unittest.main()

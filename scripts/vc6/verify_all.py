@@ -73,13 +73,13 @@ def check_tu(n, tu, rows, objdir):
     """
     d = os.path.join(ROOT, os.path.dirname(tu))
     f = os.path.basename(tu)
-    obj = os.path.join(objdir, f"{n}_{f[:-4]}.obj")
+    obj = os.path.join(objdir, f"{n}_{os.path.splitext(f)[0]}.obj")
     if os.path.exists(obj):
         os.remove(obj)
     # Compiler output is unused. A Wine descendant can inherit a capture
     # pipe and prevent communicate() from reaching EOF after CL exits.
     compiled = subprocess.run(
-        ["bash", f"{ROOT}/scripts/vc6/vc6cl.sh", f"/Fo{obj}", f],
+        ["bash", f"{ROOT}/scripts/vc6/{'vc6asm.sh' if f.endswith('.asm') else 'vc6cl.sh'}", f"/Fo{obj}", f],
         cwd=d, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     if compiled.returncode != 0 or not os.path.exists(obj):
         return False, []

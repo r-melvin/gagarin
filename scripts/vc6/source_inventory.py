@@ -21,6 +21,7 @@ from typing import Any
 
 DEFAULT_MANIFEST = Path("scripts/data/match_manifest.json")
 DEFAULT_WRAPPER = Path("scripts/vc6/vc6cl.sh")
+ASM_FLAGS = "/nologo /c /coff"   # vc6asm.sh (ml.exe); keep in step with that script
 VC6_MARKER = re.compile(r"^\s*//\s*VC6FLAGS:\s*(.*?)\s*$")
 DEFAULT_FLAGS = re.compile(r'^DEFAULT_FLAGS="([^"]*)"\s*$')
 
@@ -125,7 +126,7 @@ def build_inventory(root: Path) -> tuple[dict[str, Any], int]:
             str(DEFAULT_WRAPPER),
         )
     )
-    tracked_cpp = sorted(path for path in tracked_paths if path.endswith((".cpp", ".c")))
+    tracked_cpp = sorted(path for path in tracked_paths if path.endswith((".cpp", ".c", ".asm")))
     manifest_text = read_tracked_text(root, str(DEFAULT_MANIFEST), tracked_paths)
     wrapper_text = read_tracked_text(root, str(DEFAULT_WRAPPER), tracked_paths)
     try:
@@ -154,7 +155,10 @@ def build_inventory(root: Path) -> tuple[dict[str, Any], int]:
             flag_value, flag_source = default_flags, "vc6cl.sh DEFAULT_FLAGS"
         else:
             source_text = read_tracked_text(root, relative, tracked_paths)
-            flag_value, flag_source = file_flags(source_text, default_flags)
+            if relative.endswith(".asm"):
+                flag_value, flag_source = ASM_FLAGS, "vc6asm.sh FLAGS"   # ml has no per-file override
+            else:
+                flag_value, flag_source = file_flags(source_text, default_flags)
 
         row_summary = summarize_rows(by_tu.get(relative, []))
         subsystem_tus[subsystem_for(relative)].append(

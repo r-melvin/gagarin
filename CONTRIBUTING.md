@@ -117,6 +117,9 @@ don't work on the same function.
    redundant pointer aliases, casts used only to steer codegen); see
    [AGENTS.md](AGENTS.md) for the one admissible `volatile`, on declarations
    of data proven shared with another thread or callback.
+   A routine that was hand-written assembly in the original (see the carve-out in
+   AGENTS.md) goes in `match/asm/<object>.asm` as MASM source, assembled by `scripts/vc6/vc6asm.sh`,
+   with `; FUNCTION: GAMEMD 0xADDR` annotations; the manifest row's `tu` is the `.asm` path.
    The default flags are `/nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob2` (set in `scripts/vc6/vc6cl.sh`),
    one project-wide set as the original build most likely used. A `// VC6FLAGS:` line replaces
    the whole set, so it must keep `/MT` and `/GR` (the original build had RTTI on; retail carries full MSVC RTTI). Files pinned without `/Ob2` are placement leads: a

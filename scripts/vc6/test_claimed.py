@@ -37,6 +37,13 @@ class ClaimedTests(unittest.TestCase):
         self.assertIn('unclaimed', output)
         self.assertNotIn('BODY', output)
 
+    def test_asm_semicolon_annotation_is_a_body(self):
+        status, output = self.run_claims(
+            {'match/asm/obj.asm': '; FUNCTION: GAMEMD 0x0043d030\nFUN_0043D030 PROC C\n'},
+            ['0x43D030'])
+        self.assertEqual(status, 1)
+        self.assertIn('BODY', output)
+
     def test_body_is_not_cancelled_by_later_callee_declaration(self):
         status, output = self.run_claims({'match/view.c':
             '// FUNCTION: GAMEMD 0x0043d030\nvoid f(void) {}\n'

@@ -48,9 +48,9 @@ BINDINGS_CANDIDATES = [
     os.path.join(BACKUPS, "fu-symmap/READY/symbol_bindings.json"),
 ]
 
-ANN = re.compile(r"^//\s?(FUNCTION|STUB|TEMPLATE|SYNTHETIC|LIBRARY):\s*GAMEMD\s+(0x[0-9A-Fa-f]+)(.*)$")
-CLAIM = re.compile(r"(?m)^// (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0-9A-Fa-f]+)(.*)$")
-LIBRARY_MARK = re.compile(r"(?m)^// LIBRARY: GAMEMD (0x[0-9A-Fa-f]+)")
+ANN = re.compile(r"^(?://|;)\s?(FUNCTION|STUB|TEMPLATE|SYNTHETIC|LIBRARY):\s*GAMEMD\s+(0x[0-9A-Fa-f]+)(.*)$")
+CLAIM = re.compile(r"(?m)^(?://|;) (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0-9A-Fa-f]+)(.*)$")
+LIBRARY_MARK = re.compile(r"(?m)^(?://|;) LIBRARY: GAMEMD (0x[0-9A-Fa-f]+)")
 TU_WINDOW = re.compile(r"Original translation unit (\S+)\..*?code range \((0x[0-9a-fA-F]+)-(0x[0-9a-fA-F]+)\)", re.S)
 CLASS_DEF = re.compile(r"^[ \t]*(?:template\s*<[^>]*>\s*)?(class|struct)\s+(?:__declspec\([^)]*\)\s+)?([A-Za-z_]\w*)\b([^;{]*)\{", re.M)
 DECL_CONT = re.compile(r"^\s*//\s*\(\s*decl\b")

@@ -103,6 +103,21 @@ against an instruction in the binary before it lands as a repo fact.
 - No inline `_asm`, naked functions or `#pragma optimize` to force a match. A
   readable partial beats a hack; asm is a last resort and needs the user's
   explicit approval for the specific function.
+- Hand-written assembly (carve-out). Inline asm in C/C++ stays forbidden. A routine
+  that was hand-written assembly in the original is not C++ and cannot be matched as
+  such; it is recovered as a separate MASM `.asm` translation unit under `match/asm/`
+  (one file per original object), assembled by the toolchain's `ml.exe` 6.15 through
+  `scripts/vc6/vc6asm.sh`. Evidence that a routine was assembly: a TASM/MASM
+  `PROC C USES`/`LOCAL` frame (push ebp, `add esp,-N`, USES pushes after the locals,
+  pop-leave-ret) that VC6 never emits, byte-packed routines with no alignment
+  between them, and `0xCC` padding between objects. Write it in natural MASM
+  (`PROC C USES ... , args`, `LOCAL`) so ml produces the bytes, in a `BYTE`-aligned
+  `_TEXT` segment when the object was byte-packed against its neighbours (`.CODE` is
+  16-aligned); pinning bytes with
+  `db` is a flagged last resort that needs the user's explicit approval for the
+  routine. Annotations are `; FUNCTION: GAMEMD 0xADDR` at column zero, and every
+  other rule here (provenance header, placeholder names, ascending addresses,
+  manifest rows proved by `verify_all.py`) applies unchanged.
 - Annotate every function, vtable, global and string with reccmp markers
   (`// FUNCTION: GAMEMD 0xADDR`, `VTABLE`, `GLOBAL`, `STRING`, plus `LIBRARY`,
   `STUB`, `TEMPLATE`, `SYNTHETIC` where they apply). Within a TU, order functions

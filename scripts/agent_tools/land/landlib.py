@@ -205,7 +205,7 @@ class RevFiles:
 
 # ---------------------------------------------------------------- include index
 INC_RE = re.compile(rb'^[ \t]*#[ \t]*include[ \t]*"([^"\n]+)"', re.M)
-SRC_EXT = (".cpp", ".c", ".cxx", ".cc")
+SRC_EXT = (".cpp", ".c", ".cxx", ".cc", ".asm")
 HDR_EXT = (".h", ".hpp", ".inl")
 FLAG_RE = re.compile(rb'^[ \t]*//[ \t]*VC6FLAGS:[ \t]*(.*?)[ \t]*$', re.M)
 

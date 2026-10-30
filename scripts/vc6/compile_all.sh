@@ -25,14 +25,15 @@ tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
 # 1. Every matching TU.
 while IFS= read -r tu; do
   d="$(dirname "$tu")"; f="$(basename "$tu")"
-  if ( cd "$d" && bash "$REPO/scripts/vc6/vc6cl.sh" /Fo"$tmp/$f.obj" "$f" ) \
+  drv=vc6cl.sh; case "$f" in *.asm) drv=vc6asm.sh ;; esac
+  if ( cd "$d" && bash "$REPO/scripts/vc6/$drv" /Fo"$tmp/$f.obj" "$f" ) \
        >"$tmp/log" 2>&1 && [ -f "$tmp/$f.obj" ]; then
     echo "  ok   $tu"
   else
     echo "  FAIL $tu"; grep -iE "error|fatal" "$tmp/log" | grep -v libEGL | head -3
     fail=1
   fi
-done < <(find match -name '*.cpp' -o -name '*.c' | sort)
+done < <(find match \( -name '*.cpp' -o -name '*.c' -o -name '*.asm' \) | sort)
 
 # 2. Every P2 layout header (compile-check its asserts via a throwaway includer).
 for h in match/_layout/*.h; do

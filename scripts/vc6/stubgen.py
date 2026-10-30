@@ -313,6 +313,26 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
                 trims.setdefault(obj, []).append(cut)
                 trimmed[va] = cut[1]
 
+    # A hand-written assembly object (.asm TU) is ONE COMDAT holding several routines, byte-packed.
+    # Only the first routine (the section's first symbol) is a COMDAT of its own; the other rows of
+    # the object are interior labels. They share the head's placement and are not ordered or stubbed
+    # separately (the head's slot grows to cover their extents, see the layout merge below).
+    absorbed_by = {}   # interior routine va -> head routine va
+    for va in sorted(provider):
+        row = provider_rows[va]
+        obj = tu_object.get(row["tu"])
+        if not row["tu"].endswith(".asm") or obj is None or row["sym"] in sizes_in.get(obj, {}):
+            continue
+        heads = [h for h in provider if h < va and provider_rows[h]["tu"] == row["tu"]
+                 and provider[h] in sizes_in[obj] and h not in absorbed_by]
+        if heads:
+            absorbed_by[va] = max(heads)
+    asm_heads = set(absorbed_by.values()) | {va for va, r in provider_rows.items()
+                                             if r["tu"].endswith(".asm") and va not in absorbed_by}
+    for va in absorbed_by:
+        del provider[va]
+        del provider_rows[va]
+
     # Model explicit same-address COMDAT sharing only after full code and
     # relocation equivalence to an existing matched provider is established.
     fold_providers, fold_definitions = {}, {}
@@ -344,7 +364,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     new_names = {}
     for va, names in sorted(names_at.items()):
         # Only code is ordered; data definitions stay where the project has them.
-        if va in provider or section_of(va) != ".text":
+        if va in provider or va in absorbed_by or section_of(va) != ".text":
             continue
         for name in sorted(names):
             if name in library_names or name in provided_names or name not in defined_in:
@@ -368,6 +388,18 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         tail_layout = tail_layout or taillink.load_layout()
         first = taillink.first_address(tail_layout)
         layout = [(va, min(slot, first - va) if va < first else slot, align) for va, slot, align in layout]
+    if absorbed_by:
+        merged = []
+        for item, e in zip(layout, ordered):
+            va, slot, align = item
+            if va in absorbed_by:
+                hva, hslot, halign = merged[-1][0]
+                if hva != absorbed_by[va] or hva + hslot != va:
+                    raise SystemExit(f"asm object routine 0x{va:X} does not follow its head 0x{absorbed_by[va]:X} in the extent layout")
+                merged[-1][0] = (hva, va + slot - hva, halign)
+                continue
+            merged.append([item, e])
+        layout, ordered = [m[0] for m in merged], [m[1] for m in merged]
     for (va, slot, align), e in zip(layout, ordered):
         if va in provider:
             sym = provider[va]
@@ -383,7 +415,8 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
                 oversize.append({"addr": f"0x{va:X}", "symbol": sym, "object_size": f"0x{size:X}",
                                  "retail_slot": f"0x{slot:X}"})
                 debt += size - slot
-            elif size < slot and (va + slot) % 16 or slot - size >= 16 or e[3] == "mixed" or va in trimmed:
+            elif size < slot and (va + slot) % 16 or slot - size >= 16 or e[3] == "mixed" or va in trimmed \
+                    or (size < slot and va in asm_heads):
                 # Retail keeps bytes after this function that the compiled COMDAT
                 # (padded to 16) does not cover: hold their place with a filler.
                 filler = f"?gap_{va:08X}@@YAXXZ"

@@ -48,7 +48,7 @@ def main(argv):
         return 2
 
     sources = []
-    for ext in ('*.cpp', '*.c', '*.h'):
+    for ext in ('*.cpp', '*.c', '*.asm', '*.h'):
         sources += glob.glob(os.path.join(ROOT, 'match', '**', ext), recursive=True)
     texts = {}
     for path in sources:

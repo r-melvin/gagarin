@@ -11,7 +11,8 @@
 #     left behind when a body is moved or deleted.
 #
 # Headers legitimately repeat their own TU's annotations, so only bodies in
-# .cpp and .c files both count as a claim.
+# .cpp, .c and .asm files count as a claim (an .asm annotation is the same line behind a
+# `;` comment marker).
 #
 # Usage:  scripts/vc6/check_duplicates.py
 # Exit 0 iff the annotation map is consistent.
@@ -22,7 +23,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 # common and harmless. Lines marked as a declaration annotate a callee defined
 # elsewhere, so they are not claims; neither is an indented mention inside a
 # provenance header.
-ANNOT = re.compile(r'(?m)^// (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0-9A-Fa-f]+)(.*)$')
+ANNOT = re.compile(r'(?m)^(?://|;) (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0-9A-Fa-f]+)(.*)$')
 
 
 # A LIBRARY marker claims an address as statically linked library code, not as source. It is
@@ -51,7 +52,7 @@ def main():
     # visible to this gate. Globbing only *.cpp would let a C TU silently
     # duplicate an address already owned by a C++ one.
     sources = []
-    for ext in ('*.cpp', '*.c'):
+    for ext in ('*.cpp', '*.c', '*.asm'):
         sources += glob.glob(os.path.join(ROOT, 'match', '**', ext), recursive=True)
     for path in sorted(sources):
         rel = os.path.relpath(path, ROOT)

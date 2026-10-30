@@ -28,6 +28,7 @@ import changed_tus
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CL = os.path.join(ROOT, "scripts/vc6/vc6cl.sh")
+ASM = os.path.join(ROOT, "scripts/vc6/vc6asm.sh")   # .asm units (ml.exe), AGENTS.md "Hand-written assembly"
 RC = os.path.join(ROOT, "scripts/vc6/vc6rc.sh")
 RESOURCE_SCRIPT = "match/rsrc/gamemd.rc"
 
@@ -40,7 +41,7 @@ def list_tus(root):
     found = []
     for base, _, names in os.walk(os.path.join(root, "match")):
         for name in names:
-            if name.endswith((".cpp", ".c")):
+            if name.endswith((".cpp", ".c", ".asm")):
                 found.append(os.path.relpath(os.path.join(base, name), root).replace(os.sep, "/"))
     return sorted(found)
 
@@ -62,7 +63,7 @@ def compile_one(root, tmp, directory, filename, objname):
     # for pipe EOF would then stall until that server exits. The wait below
     # returns as soon as the launcher itself exits.
     with open(obj + ".log", "w+", errors="replace") as log:
-        proc = subprocess.run(["bash", CL, f"/Fo{obj}", filename], cwd=os.path.join(root, directory),
+        proc = subprocess.run(["bash", ASM if filename.endswith(".asm") else CL, f"/Fo{obj}", filename], cwd=os.path.join(root, directory),
                               stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
         log.seek(0)
         output = log.read()

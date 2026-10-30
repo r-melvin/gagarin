@@ -33,7 +33,7 @@ def sha256(path):
 def input_hashes(root):
     inputs = {}
     for name in git_tracked_paths(root, "match", "third_party"):
-        if Path(name).suffix not in (".cpp", ".c", ".h", ".ch", ".rc"):
+        if Path(name).suffix not in (".cpp", ".c", ".asm", ".h", ".ch", ".rc"):
             continue
         path = root / name
         if path.is_symlink():
@@ -96,7 +96,8 @@ def compile_unit(root, out, unit, flags_override=None):
     with log.open("w", encoding="utf-8") as stream:
         try:
             process = subprocess.run(
-                ["bash", str(root / "scripts/vc6/vc6cl.sh"), "/Fo" + str(obj), source.name],
+                ["bash", str(root / "scripts/vc6" / ("vc6asm.sh" if source.suffix == ".asm" else "vc6cl.sh")),
+                 "/Fo" + str(obj), source.name],
                 cwd=source.parent, stdout=stream, stderr=subprocess.STDOUT,
             )
             code = process.returncode
@@ -149,7 +150,7 @@ def build(root, out, jobs):
         "inventory_warnings": inventory["warnings"],
         "input_sha256": inputs,
         "inputs_unchanged_during_build": inputs_unchanged,
-        "input_scope": "tracked match/*.cpp and *.h; external toolchain headers are not fingerprinted",
+        "input_scope": "tracked match/*.cpp, *.c, *.asm and *.h; external toolchain headers are not fingerprinted",
         "objects": results,
     }
     temporary = out / "objects.json.tmp"
