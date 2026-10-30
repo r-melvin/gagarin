@@ -99,6 +99,15 @@ public:
     // this destructor inline (it calls the AbstractClass destructor 0x4101F0).
     virtual ~CaptureManagerClass();
 
+    // The AbstractClass overrides in the retail table 0x7E4B40 (slots 3, 5, 6, 11, 12, 13). Their matched bodies
+    // (tu044_capture_manager_class.cpp) are still declared above as non-virtual members with legacy argument types.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x472960
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x472720
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x4728E0
+    virtual int vf_11();                                                  // 11  0x4729B0
+    virtual int vf_12();                                                  // 12  0x4729A0
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x4726F0
+
 
     CaptureControlNodeVector ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields
                                                //   @0x004717E6/0x004717E9/0x004717E2/0x004717FD/0x004717F6

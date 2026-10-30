@@ -24,7 +24,11 @@ public:
     virtual ~NeuronClass();
 
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x43A500
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x43A540
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x43A5B0
+    virtual int vf_11();                                                  // 11  0x43A9A0
+    virtual int vf_12();                                                  // 12  0x43A9B0
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x43A5D0
 
     int unknown_24;   // +0x24 ctor 0 (swizzled by Load 0x43A540)
     int unknown_28;   // +0x28 ctor 0 (swizzled by Load)

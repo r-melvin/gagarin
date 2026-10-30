@@ -188,18 +188,6 @@ public:
 
 
 
-// CALLEE: GAMEMD 0x00471890 (decl; reloc) -- CaptureManagerClass default constructor.
-class CaptureManagerClass : public AbstractClass
-{
-public:
-    CaptureManagerClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x50 - sizeof(AbstractClass)];
-};
 
 
 // CALLEE: GAMEMD 0x004385D0 (decl; reloc) -- BombClass default constructor.
@@ -368,18 +356,6 @@ public:
 };
 
 
-// CALLEE: GAMEMD 0x0043A350 (decl; reloc) -- NeuronClass default constructor.
-class NeuronClass : public AbstractClass
-{
-public:
-    NeuronClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x38 - sizeof(AbstractClass)];
-};
 
 // CALLEE: GAMEMD 0x004D08B0 (decl; reloc) -- FoggedObjectClass default constructor.
 #include "../_layout/fogged_object_class.h"
@@ -641,6 +617,8 @@ template class VectorClass<unsigned long>;
 #include "../_layout/factory_class.h"
 #include "../_layout/ai_trigger_type_class.h"
 #include "../_layout/tube_class.h"
+#include "../_layout/capture_manager_class.h"
+#include "../_layout/neuron_class.h"
 
 // class TClassFactory<CStreamClass>
 // TEMPLATE: GAMEMD 0x6BEE40
