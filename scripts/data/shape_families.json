@@ -533,7 +533,7 @@
      "status": "matched",
      "pct": 100,
      "tu": "match/ui/input_controls/display_gscreen.cpp",
-     "sym": "?QueryInterface@GScreenClass@@UAGJPBUDisplayGuid@@PAPAX@Z",
+     "sym": "?QueryInterface@GScreenClass@@UAGJABU_GUID@@PAPAX@Z",
      "name": "GScreenClass::QueryInterface",
      "rtti": [
       "DisplayClass[0]",
@@ -2997,7 +2997,7 @@
      "status": "matched",
      "pct": 100,
      "tu": "match/ui/input_controls/display_gscreen.cpp",
-     "sym": "?QueryInterface@GScreenClass@@UAGJPBUDisplayGuid@@PAPAX@Z",
+     "sym": "?QueryInterface@GScreenClass@@UAGJABU_GUID@@PAPAX@Z",
      "name": "GScreenClass::QueryInterface",
      "rtti": [
       "DisplayClass[0]",

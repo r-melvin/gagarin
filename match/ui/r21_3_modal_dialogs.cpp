@@ -53,3 +53,8 @@ void FUN_006586D0()
     DAT_00A8ED9C = DAT_00A8B230->unknown_35A2;
     DAT_0087F7E8.FUN_004F42F0(2);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8ED9C
+char DAT_00A8ED9C;
+// END defined globals

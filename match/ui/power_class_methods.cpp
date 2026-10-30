@@ -156,4 +156,10 @@ const wchar_t* PowerClass::vf_33(int id)
 int StripHeight_00B0B504;
 // GLOBAL: GAMEMD 0x7E3568
 extern const double DAT_007E3568 = 5.0;
+// GLOBAL: GAMEMD 0x836DA8
+extern const char STR_00836DA8[] = "TXT_POWER_DRAIN";
+// GLOBAL: GAMEMD 0x836DB8
+extern const char STR_00836DB8[] = "D:\\ra2mdpost\\Power.CPP";
+// GLOBAL: GAMEMD 0xAC4E74
+void* DAT_00AC4E74;
 // END defined globals

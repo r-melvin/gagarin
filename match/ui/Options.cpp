@@ -262,4 +262,6 @@ void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
 extern const double DAT_007EAA50 = 255.0;
 // GLOBAL: GAMEMD 0x7EF378
 extern const double DAT_007EF378 = 60.0;
+// GLOBAL: GAMEMD 0x833370
+extern const char DAT_00833370[] = "D:\\ra2mdpost\\Options.CPP";
 // END defined globals

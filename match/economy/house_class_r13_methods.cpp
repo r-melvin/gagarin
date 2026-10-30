@@ -379,4 +379,10 @@ BuildingClass* HouseClass::FUN_004F9670()
 int DAT_008243C8[9] = {-131, -130, -129, -1, 0, 1, 129, 130, 131};
 // GLOBAL: GAMEMD 0x8243EC
 int DAT_008243EC[9] = {2, 1, 2, 1, 0, 1, 2, 1, 2};
+// GLOBAL: GAMEMD 0xA8E34C
+void** DAT_00A8E34C;
+// GLOBAL: GAMEMD 0xA83CE4
+void** DAT_00A83CE4;
+// GLOBAL: GAMEMD 0xA83C6C
+void** DAT_00A83C6C;
 // END defined globals

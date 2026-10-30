@@ -44,3 +44,12 @@ have_item:
         (view->*view->Vtable->LoadFromINI)(ini);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x844A3C
+extern const char STR_00844A3C[] = "Triggers";
+// GLOBAL: GAMEMD 0x844A3C
+extern const char STR_00844A3C[];
+// GLOBAL: GAMEMD 0x844A3C
+extern const char STR_00844A3C[];
+// END defined globals

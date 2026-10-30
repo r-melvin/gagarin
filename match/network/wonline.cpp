@@ -4434,4 +4434,32 @@ int DAT_0084A234 = 10496;
 int DAT_007EEF34 = 16711935;
 // GLOBAL: GAMEMD 0x7EEF38
 int DAT_007EEF38 = 3166463;
+// GLOBAL: GAMEMD 0x829748
+extern const char DAT_00829748[] = "[open] %s";
+// GLOBAL: GAMEMD 0x82976C
+extern const char DAT_0082976C[] = ".html";
+// GLOBAL: GAMEMD 0x82AF10
+extern const char DAT_0082AF10[] = "w";
+// GLOBAL: GAMEMD 0x8313B0
+extern const char DAT_008313B0[] = "SOFTWARE\\Westwood\\Yuri's Revenge";
+// GLOBAL: GAMEMD 0x84A480
+extern const char DAT_0084A480[] = "L";
+// GLOBAL: GAMEMD 0x84B448
+extern const char DAT_0084B448[] = "http://apiregister.westwood.com/support/serialdup_%d.html";
+// GLOBAL: GAMEMD 0x84B484
+extern const char DAT_0084B484[] = "http://apiregister.westwood.com/support/serialbanned_%d.html";
+// GLOBAL: GAMEMD 0x84B4C4
+extern const char DAT_0084B4C4[] = "http://apiregister.westwood.com/support/disabled_%d.html";
+// GLOBAL: GAMEMD 0x84B500
+extern const char DAT_0084B500[] = "http://apiregister.westwood.com/support/banned_%d.html";
+// GLOBAL: GAMEMD 0x84B538
+extern const char DAT_0084B538[] = "http://apiregister.westwood.com/support/skuserialmismatch_%d.html";
+// GLOBAL: GAMEMD 0x84B57C
+extern const char DAT_0084B57C[] = "http://apiregister.westwood.com/support/serialunknown_%d.html";
+// GLOBAL: GAMEMD 0xA8B262
+char DAT_00A8B262;
+// GLOBAL: GAMEMD 0xAC4848
+PCXCache_00AC4848 DAT_00AC4848;
+// GLOBAL: GAMEMD 0xB77DC1
+char DAT_00B77DC1;
 // END defined globals

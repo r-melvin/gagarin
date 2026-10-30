@@ -132,4 +132,6 @@ MouseClass::MouseClass()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xABF2DD
 bool MouseCursorApplied;
+// GLOBAL: GAMEMD 0xABF2DC
+char MouseShapeFlag;
 // END defined globals

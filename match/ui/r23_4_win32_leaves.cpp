@@ -77,3 +77,10 @@ int __fastcall FUN_00776E10(HWND combo, int start, int data)
     }
     return -1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x84968C
+extern const char Key_0084968C[] = "X";
+// GLOBAL: GAMEMD 0x849E64
+extern const char Key_00849E64[] = "Y";
+// END defined globals

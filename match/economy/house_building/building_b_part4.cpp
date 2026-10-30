@@ -298,4 +298,8 @@ int BuildingClass::vf_258()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x89C848
 CoordStruct DAT_0089C848;
+// GLOBAL: GAMEMD 0xA83D4C
+HouseClass* BuildingBPlayer;
+// GLOBAL: GAMEMD 0xB73550
+int BuildingBGlobal_00B73550;
 // END defined globals

@@ -485,4 +485,6 @@ int TechnoClass::vf_199(int mode)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7E27F8
 double DAT_007E27F8 = 900.0;
+// GLOBAL: GAMEMD 0xA83D84
+OverlayRecord_00A83D84** DAT_00A83D84;
 // END defined globals

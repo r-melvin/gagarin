@@ -39,3 +39,8 @@ join:
         Fire_SW(Supers.FindItemIndex(super), cell);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8871E0
+RulesClass* DAT_008871E0;
+// END defined globals

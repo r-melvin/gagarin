@@ -504,4 +504,6 @@ int DAT_00818760[9] = {-1, 6, 1, 0, 7, 0, 8361364, 0, 1447116590};
 int DAT_0087DE28 = 0;
 // GLOBAL: GAMEMD 0x7E3810
 extern const double DAT_007E3810 = 1e-05;
+// GLOBAL: GAMEMD 0xB0F4EC
+Tiberium_R13Cell** DAT_00B0F4EC;
 // END defined globals

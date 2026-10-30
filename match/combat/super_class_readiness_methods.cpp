@@ -41,3 +41,16 @@ gg_wchar* SuperClass::NameReadiness() const
 
     return FUN_00734E60(DAT_0083FB2C, 0, DAT_00842510, 0x3B6);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x81B454
+extern const char DAT_0081B454[] = "TXT_READY";
+// GLOBAL: GAMEMD 0x83FB2C
+extern const char DAT_0083FB2C[] = "TXT_HOLD";
+// GLOBAL: GAMEMD 0x8424EC
+extern const char DAT_008424EC[] = "TXT_CHARGING";
+// GLOBAL: GAMEMD 0x8424FC
+extern const char DAT_008424FC[] = "TXT_FIRESTORM_ON";
+// GLOBAL: GAMEMD 0x842510
+extern const char DAT_00842510[] = "D:\\ra2mdpost\\Super.CPP";
+// END defined globals

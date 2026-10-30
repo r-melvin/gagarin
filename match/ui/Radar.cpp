@@ -1535,4 +1535,18 @@ int DAT_00B04A00;
 int DAT_00B04A04;
 // GLOBAL: GAMEMD 0x7F02A8
 extern const double DAT_007F02A8 = 60.0;
+// GLOBAL: GAMEMD 0x8392F4
+extern const char DAT_008392F4[] = "RadarClass::Init_Clear done\n";
+// GLOBAL: GAMEMD 0x839314
+extern const char DAT_00839314[] = "RadarClass::Init_Clear\n";
+// GLOBAL: GAMEMD 0x8393A0
+extern const char DAT_008393A0[] = "Tip:OptionsButton";
+// GLOBAL: GAMEMD 0x8393B4
+extern const char DAT_008393B4[] = "Tip:DiplomacyButton";
+// GLOBAL: GAMEMD 0x8393C8
+extern const char DAT_008393C8[] = "Tip:BriefingButton";
+// GLOBAL: GAMEMD 0xA8EB7C
+unsigned char DAT_00A8EB7C;
+// GLOBAL: GAMEMD 0xA8ED6B
+bool DisplayFlag_00A8ED6B;
 // END defined globals

@@ -62,3 +62,16 @@ void FUN_0072EAD0(Surface_0072E9F0* self, Rect_0072E9F0* rect)
     Point_0072E9F0 offset = {0, 0};
     FUN_004AED70(self, DAT_00B0FBB4, DAT_00B0FB1C, 0, &position, rect, 0x400, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0FB1C
+Shape_0072E9F0* DAT_00B0FB1C;
+// GLOBAL: GAMEMD 0xB0FB34
+Shape_0072E9F0* DAT_00B0FB34;
+// GLOBAL: GAMEMD 0xB0FBA8
+Convert_0072E9F0* DAT_00B0FBA8;
+// GLOBAL: GAMEMD 0xB0FBB4
+Convert_0072E9F0* DAT_00B0FBB4;
+// GLOBAL: GAMEMD 0xB0FC1C
+Point_0072E9F0* DAT_00B0FC1C;
+// END defined globals

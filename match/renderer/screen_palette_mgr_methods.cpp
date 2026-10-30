@@ -462,4 +462,70 @@ PaletteSet DAT_00B0FCC0;
 ScreenPaletteRes DAT_00B0FD38;
 // GLOBAL: GAMEMD 0xB0FD44
 ScreenPaletteRes DAT_00B0FD44;
+// GLOBAL: GAMEMD 0x844E14
+extern const char STR_00844E14[] = "AutoLoginQuery.PAL";
+// GLOBAL: GAMEMD 0x844E28
+extern const char STR_00844E28[] = "AutoLoginQuery.shp";
+// GLOBAL: GAMEMD 0x844E3C
+extern const char STR_00844E3C[] = "quickmatch.PAL";
+// GLOBAL: GAMEMD 0x844E4C
+extern const char STR_00844E4C[] = "quickmatch.shp";
+// GLOBAL: GAMEMD 0x84546C
+extern const char STR_0084546C[] = "MPYSCRN.PAL";
+// GLOBAL: GAMEMD 0x845478
+extern const char STR_00845478[] = "MPSSCRN.PAL";
+// GLOBAL: GAMEMD 0x845484
+extern const char STR_00845484[] = "MPASCRN.PAL";
+// GLOBAL: GAMEMD 0x8454CC
+extern const char STR_008454CC[] = "SPLDBR.PAL";
+// GLOBAL: GAMEMD 0x8454D8
+extern const char STR_008454D8[] = "LDSCRNS.PAL";
+// GLOBAL: GAMEMD 0x8454E4
+extern const char STR_008454E4[] = "LDSCRNA.PAL";
+// GLOBAL: GAMEMD 0x8454F0
+extern const char STR_008454F0[] = "LDSCRN.PAL";
+// GLOBAL: GAMEMD 0x844E14
+extern const char STR_00844E14[];
+// GLOBAL: GAMEMD 0x844E28
+extern const char STR_00844E28[];
+// GLOBAL: GAMEMD 0x844E3C
+extern const char STR_00844E3C[];
+// GLOBAL: GAMEMD 0x844E4C
+extern const char STR_00844E4C[];
+// GLOBAL: GAMEMD 0x84546C
+extern const char STR_0084546C[];
+// GLOBAL: GAMEMD 0x845478
+extern const char STR_00845478[];
+// GLOBAL: GAMEMD 0x845484
+extern const char STR_00845484[];
+// GLOBAL: GAMEMD 0x8454CC
+extern const char STR_008454CC[];
+// GLOBAL: GAMEMD 0x8454D8
+extern const char STR_008454D8[];
+// GLOBAL: GAMEMD 0x8454E4
+extern const char STR_008454E4[];
+// GLOBAL: GAMEMD 0x8454F0
+extern const char STR_008454F0[];
+// GLOBAL: GAMEMD 0x844E14
+extern const char STR_00844E14[];
+// GLOBAL: GAMEMD 0x844E28
+extern const char STR_00844E28[];
+// GLOBAL: GAMEMD 0x844E3C
+extern const char STR_00844E3C[];
+// GLOBAL: GAMEMD 0x844E4C
+extern const char STR_00844E4C[];
+// GLOBAL: GAMEMD 0x84546C
+extern const char STR_0084546C[];
+// GLOBAL: GAMEMD 0x845478
+extern const char STR_00845478[];
+// GLOBAL: GAMEMD 0x845484
+extern const char STR_00845484[];
+// GLOBAL: GAMEMD 0x8454CC
+extern const char STR_008454CC[];
+// GLOBAL: GAMEMD 0x8454D8
+extern const char STR_008454D8[];
+// GLOBAL: GAMEMD 0x8454E4
+extern const char STR_008454E4[];
+// GLOBAL: GAMEMD 0x8454F0
+extern const char STR_008454F0[];
 // END defined globals

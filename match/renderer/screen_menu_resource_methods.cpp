@@ -128,4 +128,28 @@ PaletteSet DAT_00B0FCF4;
 bool DAT_00B0FD5C;
 // GLOBAL: GAMEMD 0xB0FD60
 PaletteSet DAT_00B0FD60;
+// GLOBAL: GAMEMD 0x844DCC
+extern const char STR_00844DCC[] = "WOLSoundOptions.PAL";
+// GLOBAL: GAMEMD 0x844DE0
+extern const char STR_00844DE0[] = "WOLSoundOptions.shp";
+// GLOBAL: GAMEMD 0x844F1C
+extern const char STR_00844F1C[] = "MnScrnLMyInformation.PAL";
+// GLOBAL: GAMEMD 0x844F38
+extern const char STR_00844F38[] = "MnScrnLMyInformation.shp";
+// GLOBAL: GAMEMD 0x844DCC
+extern const char STR_00844DCC[];
+// GLOBAL: GAMEMD 0x844DE0
+extern const char STR_00844DE0[];
+// GLOBAL: GAMEMD 0x844F1C
+extern const char STR_00844F1C[];
+// GLOBAL: GAMEMD 0x844F38
+extern const char STR_00844F38[];
+// GLOBAL: GAMEMD 0x844DCC
+extern const char STR_00844DCC[];
+// GLOBAL: GAMEMD 0x844DE0
+extern const char STR_00844DE0[];
+// GLOBAL: GAMEMD 0x844F1C
+extern const char STR_00844F1C[];
+// GLOBAL: GAMEMD 0x844F38
+extern const char STR_00844F38[];
 // END defined globals

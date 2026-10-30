@@ -1079,4 +1079,8 @@ int DAT_00abf8c4;
 unsigned int DAT_00abf8c8[4];
 // GLOBAL: GAMEMD 0x82E174
 int DAT_0082E174 = 196610;
+// GLOBAL: GAMEMD 0x825FD0
+extern const char STR_00825FD0[] = "TXT_CANCEL";
+// GLOBAL: GAMEMD 0x82E134
+extern const char STR_0082E134[] = "D:\\ra2mdpost\\MPLayer.CPP";
 // END defined globals

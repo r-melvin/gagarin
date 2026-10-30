@@ -44,3 +44,8 @@ bool MultiplayerObserverTeam::vf_1(int playerIndex)
 
 // SYNTHETIC: GAMEMD 0x5C94D0 -- MultiplayerObserverTeam scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x82FD40
+extern const char DAT_0082FD40[] = "D:\\ra2mdpost\\MPObserver.cpp";
+// END defined globals

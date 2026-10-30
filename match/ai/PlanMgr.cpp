@@ -2495,3 +2495,20 @@ void FUN_0063F2E0(int x1, int y1, int x2, int y2, int side, int skip, ScanSpan_0
     }
     *cursor = span;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x836AD4
+extern const char STR_00836AD4[] = "Loop Branch [%d];  Member count[%d];  Origin event location[%d, %d, %d]\n";
+// GLOBAL: GAMEMD 0x836B20
+extern const char STR_00836B20[] = "  Member [%s];  Cell location[%d, %d]\n";
+// GLOBAL: GAMEMD 0x836B48
+extern const char STR_00836B48[] = "Branch [%d];  Member count[%d];  Origin event location[%d, %d, %d]\n";
+// GLOBAL: GAMEMD 0x836BD4
+extern const char STR_00836BD4[] = "D:\\ra2mdpost\\PlanMgr.cpp";
+// GLOBAL: GAMEMD 0x836C80
+extern const char STR_00836C80[] = "MSG:PlanningModeNoGuardArea";
+// GLOBAL: GAMEMD 0x836CF0
+extern const char STR_00836CF0[] = "MSG:PlanningModeDeleteHelp";
+// GLOBAL: GAMEMD 0x836D0C
+extern const char STR_00836D0C[] = "MSG:PlanningModeLoopHelp";
+// END defined globals

@@ -166,3 +166,8 @@ bool Obj_006E85B0::AllChildrenReady()
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x84226C
+extern const char STR_0084226C[] = "Error: Subtitle control file is not unicode!\n";
+// END defined globals

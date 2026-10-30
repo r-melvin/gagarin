@@ -33,3 +33,8 @@ int HouseTypeClass::FindIndexOfName(const char* name)
 
     return -1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83C98
+DynamicVectorClassLayout HouseTypeArray;
+// END defined globals

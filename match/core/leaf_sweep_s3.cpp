@@ -344,4 +344,8 @@ int DAT_00B73080;
 HWND DAT_00B730A0;
 // GLOBAL: GAMEMD 0x845728
 int Current_00845728 = 10;
+// GLOBAL: GAMEMD 0x8457BC
+extern const char Match_008457BC[] = "e";
+// GLOBAL: GAMEMD 0x849E2C
+extern const char HelpFile_00849E2C[] = "SUN.HLP";
 // END defined globals

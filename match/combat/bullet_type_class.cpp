@@ -260,3 +260,8 @@ ObjectClass* BulletTypeClass::vf_35(HouseClass* house)
 
 // SYNTHETIC: GAMEMD 0x46C890
 // Scalar deleting destructor emitted by VC6 from the ordinary destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E95D0
+extern const CLSID DAT_007E95D0 = {0x5AF2CE77, 0x0634, 0x11D2, {0xAC, 0xA4, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
+// END defined globals

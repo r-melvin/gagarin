@@ -35,3 +35,8 @@ void Obj_005BCC60::FUN_005BCC60(int a1, int a2, int a3, int a4)
     unknown_272C = a3;
     unknown_2730 = a4;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABF239
+unsigned char DAT_00ABF239;
+// END defined globals

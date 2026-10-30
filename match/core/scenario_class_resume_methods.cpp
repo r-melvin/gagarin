@@ -26,3 +26,8 @@ void ScenarioClass::ResumeGame()
     FUN_005BF500(false);
     FUN_00406F40();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x83D908
+extern const char DAT_0083D908[] = "Resume ElapsedTimer = %ld\n";
+// END defined globals

@@ -197,4 +197,6 @@ MSVQAnim::~MSVQAnim()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8EB98
 float DAT_00A8EB98;
+// GLOBAL: GAMEMD 0x88730C
+MSBlitSurface* DAT_0088730C;
 // END defined globals

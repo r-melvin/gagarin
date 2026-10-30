@@ -2999,4 +2999,68 @@ unsigned char DAT_008316E4 = 1;
 int DAT_008316E8 = -1;
 // GLOBAL: GAMEMD 0x7EEF18
 extern const double DAT_007EEF18 = 60.0;
+// GLOBAL: GAMEMD 0x831778
+extern const char DAT_00831778[] = "Sending public game options to %s\n";
+// GLOBAL: GAMEMD 0x83179C
+extern const char DAT_0083179C[] = "Sending private game options to %ls\n";
+// GLOBAL: GAMEMD 0x831A60
+extern const char DAT_00831A60[] = "Pregame setup for %d players.\n";
+// GLOBAL: GAMEMD 0xA8B263
+unsigned char DAT_00A8B263;
+// GLOBAL: GAMEMD 0xA8B29C
+int DAT_00A8B29C[8];
+// GLOBAL: GAMEMD 0xA8B2BC
+int DAT_00A8B2BC[8];
+// GLOBAL: GAMEMD 0xA8B320
+unsigned char DAT_00A8B320;
+// GLOBAL: GAMEMD 0xA8BB0C
+int SessionPlayerLimit;
+// GLOBAL: GAMEMD 0xA8E960
+Obj_00A8E960 DAT_00A8E960;
+// GLOBAL: GAMEMD 0xA8B548
+int MapPlayerLimit;
+// GLOBAL: GAMEMD 0xA8DA74
+NodeNameVector PlayerNodes;
+// GLOBAL: GAMEMD 0xB732F0
+void* DAT_00B732F0;
+// GLOBAL: GAMEMD 0x81B2AC
+extern const char STR_0081B2AC[] = "wolacpt.pcx";
+// GLOBAL: GAMEMD 0x81B2B8
+extern const char STR_0081B2B8[] = "wolhost.pcx";
+// GLOBAL: GAMEMD 0x831720
+extern const char STR_00831720[] = "@OpenObserver@";
+// GLOBAL: GAMEMD 0x831730
+extern const char STR_00831730[] = "@HardAI@";
+// GLOBAL: GAMEMD 0x83173C
+extern const char STR_0083173C[] = "@MediumAI@";
+// GLOBAL: GAMEMD 0x831748
+extern const char STR_00831748[] = "@EasyAI@";
+// GLOBAL: GAMEMD 0x831754
+extern const char STR_00831754[] = "@Waiting@";
+// GLOBAL: GAMEMD 0x831760
+extern const char STR_00831760[] = "@Closed@";
+// GLOBAL: GAMEMD 0x83176C
+extern const char STR_0083176C[] = "@Open@";
+// GLOBAL: GAMEMD 0x81B2AC
+extern const char STR_0081B2AC[];
+// GLOBAL: GAMEMD 0x81B2B8
+extern const char STR_0081B2B8[];
+// GLOBAL: GAMEMD 0x831720
+extern const char STR_00831720[];
+// GLOBAL: GAMEMD 0x831730
+extern const char STR_00831730[];
+// GLOBAL: GAMEMD 0x83173C
+extern const char STR_0083173C[];
+// GLOBAL: GAMEMD 0x831748
+extern const char STR_00831748[];
+// GLOBAL: GAMEMD 0x831754
+extern const char STR_00831754[];
+// GLOBAL: GAMEMD 0x831760
+extern const char STR_00831760[];
+// GLOBAL: GAMEMD 0x83176C
+extern const char STR_0083176C[];
+// GLOBAL: GAMEMD 0x81B2AC
+extern const char STR_0081B2AC[];
+// GLOBAL: GAMEMD 0x81B2B8
+extern const char STR_0081B2B8[];
 // END defined globals

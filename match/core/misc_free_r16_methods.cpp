@@ -221,4 +221,8 @@ int DAT_008A0DDC;
 int DAT_008A0DE0;
 // GLOBAL: GAMEMD 0x8A0DE4
 int DAT_008A0DE4;
+// GLOBAL: GAMEMD 0x847F3C
+extern const char STR_00847F3C[] = "%c%c";
+// GLOBAL: GAMEMD 0x847F44
+extern const char STR_00847F44[] = "%c";
 // END defined globals

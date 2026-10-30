@@ -50,3 +50,8 @@ bool Map_00578390::IsWithinUsableArea(Cell_00578390* cell, bool checkLevel)
         return true;
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xABDC50
+CellClass_00578390 InvalidCell_00578390;
+// END defined globals

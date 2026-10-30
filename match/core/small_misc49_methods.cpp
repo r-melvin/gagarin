@@ -31,3 +31,7 @@ void FUN_00428DE0(Obj_00428DE0* self)
     }
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x818688
+extern const char STR_00818688[] = "Freeing loaded image for %s\n";
+// END defined globals

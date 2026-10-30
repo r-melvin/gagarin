@@ -2192,3 +2192,8 @@ GG_STATIC_ASSERT(offsetof(EventQueue128, Head) == 0x08);
 GG_STATIC_ASSERT(offsetof(EventQueue128, List) == 0x0C);
 GG_STATIC_ASSERT(offsetof(EventQueue128, Time) == 0x378C);
 GG_STATIC_ASSERT(sizeof(EventQueue128) == 0x398C);
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0EA80
+CDTimerClass DAT_00B0EA80;
+// END defined globals

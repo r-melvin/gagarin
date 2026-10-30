@@ -74,3 +74,8 @@ bool HouseClass::GainedPoweredCenter(TechnoTypeClass* type)
 {
     return PoweredUnitCenters > 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA80228
+DynamicVectorClassLayout HouseClassArray;
+// END defined globals

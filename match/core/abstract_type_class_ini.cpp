@@ -62,3 +62,8 @@ bool AbstractTypeClass::vf_26(CCINIClass* ini)
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x817830
+extern const char STR_00817830[] = "D:\\ra2mdpost\\AbsType.cpp";
+// END defined globals

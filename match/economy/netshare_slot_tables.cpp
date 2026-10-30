@@ -334,4 +334,8 @@ void Fill_Team_List(void* target)
 int StartTable[8];
 // GLOBAL: GAMEMD 0xA8B2BC
 SlotTables SlotChoices;
+// GLOBAL: GAMEMD 0xA8B23C
+LobbyDialog_005EA920* LobbyDialog;
+// GLOBAL: GAMEMD 0xA8B238
+int SessionKind;
 // END defined globals

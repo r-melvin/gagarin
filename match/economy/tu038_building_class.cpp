@@ -3786,3 +3786,18 @@ long ComHolder_0045AEA0::FUN_0045AF20(IUnk** source)
 
     return hr;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x818164
+extern const char CivilianSideName_00458200[] = "Civilian";
+// GLOBAL: GAMEMD 0x8190C8
+extern const char EvaBuildingOnLine_00452260[] = "EVA_BuildingOnLine";
+// GLOBAL: GAMEMD 0x819108
+extern const char EvaBuildingOffLine[] = "EVA_BuildingOffLine";
+// GLOBAL: GAMEMD 0x81926C
+extern const char EvaStructureAbandoned_00458200[] = "EVA_StructureAbandoned";
+// GLOBAL: GAMEMD 0xA8B320
+bool BuildingBGlobal_00A8B320;
+// GLOBAL: GAMEMD 0xA80228
+HouseVector_00458200 HouseArray_00458200;
+// END defined globals

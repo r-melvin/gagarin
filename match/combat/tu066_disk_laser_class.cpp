@@ -364,4 +364,6 @@ int Obj_004A7C80::FUN_004A7C80() const
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7E5EC8
 extern const double DAT_007E5EC8 = 60.0;
+// GLOBAL: GAMEMD 0x7E5ED0
+extern const double DAT_007E5ED0 = 0.017453292519943295;
 // END defined globals

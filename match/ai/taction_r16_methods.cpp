@@ -171,3 +171,10 @@ bool TActionView_r16::FUN_006E2790(HouseClass* house, ObjectClass* object, Trigg
     DAT_00887324_r16->FUN_006D6070(&where);
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x887324
+TActionTactical_r16* DAT_00887324_r16;
+// GLOBAL: GAMEMD 0xA8B230
+WaypointLocator* WaypointLocatorPtr;
+// END defined globals

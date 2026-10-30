@@ -71,4 +71,8 @@ bool CellClass::IsTileInSet00AA0E24()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAA0E24
 int GgTileBase_00AA0E24;
+// GLOBAL: GAMEMD 0xAA0E28
+int GgBridgeTileBase;
+// GLOBAL: GAMEMD 0xABAD1C
+int GgWoodBridgeTileBase;
 // END defined globals

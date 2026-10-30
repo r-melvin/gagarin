@@ -1771,4 +1771,6 @@ HWND DisplayWindow_00B73554;
 int DAT_00820030[3] = {2, 3, 4};
 // GLOBAL: GAMEMD 0x7E6018
 extern const double DAT_007E6018 = 60.0;
+// GLOBAL: GAMEMD 0x8A03FC
+void* DisplayPlaceShape_008A03FC;
 // END defined globals

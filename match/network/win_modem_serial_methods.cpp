@@ -768,4 +768,54 @@ void WinModemClass::FUN_007754D0(DWORD errors, COMSTAT status)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8ED80
 bool DAT_00A8ED80;
+// GLOBAL: GAMEMD 0x8497A4
+extern const char STR_008497A4[] = "Closing serial port\n";
+// GLOBAL: GAMEMD 0x8497DC
+extern const char STR_008497DC[] = "SetCommTimeouts returned error code %s.\n";
+// GLOBAL: GAMEMD 0x849808
+extern const char STR_00849808[] = "GetCommState returned error code %s.\n";
+// GLOBAL: GAMEMD 0x849830
+extern const char STR_00849830[] = "SetCommState returned error %s.\n";
+// GLOBAL: GAMEMD 0x849854
+extern const char STR_00849854[] = "Port opened OK\n";
+// GLOBAL: GAMEMD 0x849864
+extern const char STR_00849864[] = "Failed to get valid port handle. Error: %s\n";
+// GLOBAL: GAMEMD 0x849890
+extern const char STR_00849890[] = "Opening serial port %s\n";
+// GLOBAL: GAMEMD 0x8498B0
+extern const char STR_008498B0[] = "Enter_Failsafe_Mode - EscapeCommFunction failed to set state of RTS line. Error code %d, %s\n";
+// GLOBAL: GAMEMD 0x849910
+extern const char STR_00849910[] = "GetCommState returned error %s.\n";
+// GLOBAL: GAMEMD 0x849934
+extern const char STR_00849934[] = "WinModemClass - Entering failsafe mode\n";
+// GLOBAL: GAMEMD 0x849AA4
+extern const char STR_00849AA4[] = "Writing to port handle failed with error %s\n";
+// GLOBAL: GAMEMD 0x849B68
+extern const char STR_00849B68[] = "Comm status - Character waiting for Tx\n";
+// GLOBAL: GAMEMD 0x849B90
+extern const char STR_00849B90[] = "Comm status - EOF character sent\n";
+// GLOBAL: GAMEMD 0x849BB4
+extern const char STR_00849BB4[] = "Comm status - Tx waiting, XOFF char sent\n";
+// GLOBAL: GAMEMD 0x849BE0
+extern const char STR_00849BE0[] = "Comm status - Tx waiting, XOFF char received\n";
+// GLOBAL: GAMEMD 0x849C10
+extern const char STR_00849C10[] = "Comm status - Tx waiting for RLSD signal\n";
+// GLOBAL: GAMEMD 0x849C3C
+extern const char STR_00849C3C[] = "Comm status - Tx waiting for DSR signal\n";
+// GLOBAL: GAMEMD 0x849C68
+extern const char STR_00849C68[] = "Comm status - Tx waiting for CTS signal\n";
+// GLOBAL: GAMEMD 0x849C94
+extern const char STR_00849C94[] = "Communications 'Transmit Queue Full' error detected.\n";
+// GLOBAL: GAMEMD 0x849CCC
+extern const char STR_00849CCC[] = "Communications 'Parity' error detected.\n";
+// GLOBAL: GAMEMD 0x849CF8
+extern const char STR_00849CF8[] = "Communications 'Receive Queue Overflow' error detected.\n";
+// GLOBAL: GAMEMD 0x849D34
+extern const char STR_00849D34[] = "Communications 'Receive Overrun' error detected.\n";
+// GLOBAL: GAMEMD 0x849D68
+extern const char STR_00849D68[] = "Communications 'IO' error detected.\n";
+// GLOBAL: GAMEMD 0x849D90
+extern const char STR_00849D90[] = "Communications 'Break' detected.\n";
+// GLOBAL: GAMEMD 0x849DB4
+extern const char STR_00849DB4[] = "Communications 'Framing' error detected.\n";
 // END defined globals

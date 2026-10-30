@@ -317,4 +317,6 @@ TileStep_00544E30** DAT_00AA107C;
 int DAT_00AA1088;
 // GLOBAL: GAMEMD 0x87DE2C
 int DAT_0087DE2C = 0;
+// GLOBAL: GAMEMD 0xAA0448
+int DebugWindowListActive;
 // END defined globals

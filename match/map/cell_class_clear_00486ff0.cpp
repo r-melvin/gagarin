@@ -55,3 +55,8 @@ bool CellClass::FUN_00486FF0()
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8ED2C
+IsoTileView_00486FF0** DAT_00A8ED2C;
+// END defined globals

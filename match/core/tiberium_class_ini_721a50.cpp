@@ -83,3 +83,8 @@ bool TiberiumClass::vf_25(CCINIClass* ini)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D84
+TiberiumImageSource_00A83D84* DAT_00A83D84;
+// END defined globals

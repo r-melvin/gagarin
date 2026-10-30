@@ -42,3 +42,10 @@ bool Rules_00674550::Read_Movies(CCINI_00674550* pINI)
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839D50
+extern const char STR_00839D50[] = "Movies";
+// GLOBAL: GAMEMD 0x839D50
+extern const char STR_00839D50[];
+// END defined globals

@@ -157,4 +157,6 @@ int DAT_00AA056C;
 int DAT_00AA0578;
 // GLOBAL: GAMEMD 0xAA05A4
 int DAT_00AA05A4;
+// GLOBAL: GAMEMD 0xAA0568
+unsigned short DAT_00AA0568;
 // END defined globals

@@ -45,4 +45,16 @@ bool RulesClass::Read_AdvancedCommandBar(CCINIClass* pINI, bool multiplayer)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8427CC
 int DefaultCommandIndex = -1;
+// GLOBAL: GAMEMD 0x839D10
+extern const char STR_00839D10[] = "ButtonList";
+// GLOBAL: GAMEMD 0x839D1C
+extern const char STR_00839D1C[] = "MultiplayerAdvancedCommandBar";
+// GLOBAL: GAMEMD 0x839D3C
+extern const char STR_00839D3C[] = "AdvancedCommandBar";
+// GLOBAL: GAMEMD 0x839D10
+extern const char STR_00839D10[];
+// GLOBAL: GAMEMD 0x839D1C
+extern const char STR_00839D1C[];
+// GLOBAL: GAMEMD 0x839D3C
+extern const char STR_00839D3C[];
 // END defined globals

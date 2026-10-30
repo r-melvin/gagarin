@@ -39,4 +39,6 @@ bool FUN_00534DE0()
 MixFileClass* DAT_00884E58;
 // GLOBAL: GAMEMD 0x884E5C
 MixFileClass* DAT_00884E5C;
+// GLOBAL: GAMEMD 0x81C320
+extern const char STR_0081C320[] = "     Releasing %s\n";
 // END defined globals

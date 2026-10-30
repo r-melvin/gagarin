@@ -783,3 +783,10 @@ Obj_00523370* Obj_00523370::FUN_005233A0(IUnknown* p)
     }
     return this;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x825560
+extern const char DAT_00825560[] = "D:\\ra2mdpost\\Infantry.CPP";
+// GLOBAL: GAMEMD 0x7E9680
+extern const CLSID DAT_007E9680 = {0x0E272DC4, 0x9C0F, 0x11D1, {0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1}};
+// END defined globals

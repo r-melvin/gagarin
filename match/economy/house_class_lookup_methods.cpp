@@ -70,3 +70,8 @@ bool HouseClass::IsControlledByCurrentPlayer() const
     }
     return this == CurrentPlayer;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B238
+int SessionGameMode;
+// END defined globals

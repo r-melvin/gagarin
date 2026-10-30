@@ -416,4 +416,6 @@ int FUN_00769540(unsigned int value)
 bool DAT_008487BC = true;
 // GLOBAL: GAMEMD 0x8487BD
 bool DAT_008487BD = true;
+// GLOBAL: GAMEMD 0x887310
+WDTScreenSurface* DAT_00887310;
 // END defined globals

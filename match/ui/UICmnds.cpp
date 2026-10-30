@@ -1425,14 +1425,8 @@ bool FUN_007342C0(AbstractClass* object)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0FE58
 unsigned char DAT_00B0FE58;
-// GLOBAL: GAMEMD 0xB0FE5C
-TechnoClass* SidebarTabObjectA;
-// GLOBAL: GAMEMD 0xB0FE60
-TechnoClass* SidebarTabObjectB;
 // GLOBAL: GAMEMD 0xB0FE64
 unsigned char DAT_00B0FE64;
-// GLOBAL: GAMEMD 0xB0FE65
-unsigned char DAT_00B0FE65;
 // GLOBAL: GAMEMD 0xB0FE68
 int DAT_00B0FE68;
 // GLOBAL: GAMEMD 0xB0FE6C
@@ -1445,4 +1439,10 @@ int DAT_00845554 = -1;
 int DAT_00845558 = -100;
 // GLOBAL: GAMEMD 0x84555C
 int DAT_0084555C = -100;
+// GLOBAL: GAMEMD 0xB0FE5C
+int DAT_00B0FE5C;
+// GLOBAL: GAMEMD 0xB0FE60
+int DAT_00B0FE60;
+// GLOBAL: GAMEMD 0xB0FE65
+bool IsTypeSelectingFlag;
 // END defined globals

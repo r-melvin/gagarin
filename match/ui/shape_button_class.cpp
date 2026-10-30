@@ -153,3 +153,30 @@ void ShapeButtonClass::SetToolTip(ShapeButtonClass* pButton,
         ToolTipManager_Instance->Add(tooltip);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x816E00
+extern const char STR_00816E00[] = "Stop";
+// GLOBAL: GAMEMD 0x816E44
+extern const char STR_00816E44[] = "Guard";
+// GLOBAL: GAMEMD 0x8256E4
+extern const char STR_008256E4[] = "Cheer";
+// GLOBAL: GAMEMD 0x825724
+extern const char STR_00825724[] = "Deploy";
+// GLOBAL: GAMEMD 0x827278
+extern const char STR_00827278[] = "PlanningMode";
+// GLOBAL: GAMEMD 0x827304
+extern const char STR_00827304[] = "TypeSelect";
+// GLOBAL: GAMEMD 0x8427FC
+extern const char STR_008427FC[] = "Beacon";
+// GLOBAL: GAMEMD 0x842804
+extern const char STR_00842804[] = "AttackMove";
+// GLOBAL: GAMEMD 0x842810
+extern const char STR_00842810[] = "Team03";
+// GLOBAL: GAMEMD 0x842818
+extern const char STR_00842818[] = "Team02";
+// GLOBAL: GAMEMD 0x842820
+extern const char STR_00842820[] = "Team01";
+// GLOBAL: GAMEMD 0x8427D0
+extern const char* const CommandNames[11] = {STR_00842820, STR_00842818, STR_00842810, STR_00827304, STR_00825724, STR_00842804, STR_00816E44, STR_008427FC, STR_00816E00, STR_00827278, STR_008256E4};
+// END defined globals

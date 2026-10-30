@@ -2446,4 +2446,344 @@ bool DAT_00B0FD51;
 PaletteSet DAT_00B0FD54;
 // GLOBAL: GAMEMD 0xB0FD5D
 bool DAT_00B0FD5D;
+// GLOBAL: GAMEMD 0x845530
+extern const char DAT_00845530[] = "WAITCYLO.PAL";
+// GLOBAL: GAMEMD 0x845540
+extern const char DAT_00845540[] = "WAITCYLO.SHP";
+// GLOBAL: GAMEMD 0xA8EB7C
+bool DAT_00A8EB7C;
+// GLOBAL: GAMEMD 0xB0FC10
+void* DAT_00B0FC10;
+// GLOBAL: GAMEMD 0xB0FC14
+void* DAT_00B0FC14;
+// GLOBAL: GAMEMD 0xB0FC20
+void* DAT_00B0FC20;
+// GLOBAL: GAMEMD 0xB0FB34
+WholeFileBlock* DAT_00B0FB34;
+// GLOBAL: GAMEMD 0xB0FC1C
+void* DAT_00B0FC1C;
+// GLOBAL: GAMEMD 0x844DF4
+extern const char STR_00844DF4[] = "WOLOptions.PAL";
+// GLOBAL: GAMEMD 0x844E04
+extern const char STR_00844E04[] = "WOLOptions.shp";
+// GLOBAL: GAMEMD 0x844E5C
+extern const char STR_00844E5C[] = "BuddyList.PAL";
+// GLOBAL: GAMEMD 0x844E6C
+extern const char STR_00844E6C[] = "BuddyList.shp";
+// GLOBAL: GAMEMD 0x844E7C
+extern const char STR_00844E7C[] = "NewNick2.PAL";
+// GLOBAL: GAMEMD 0x844E8C
+extern const char STR_00844E8C[] = "NewNick2.shp";
+// GLOBAL: GAMEMD 0x844E9C
+extern const char STR_00844E9C[] = "RegistrationScreen.PAL";
+// GLOBAL: GAMEMD 0x844EB4
+extern const char STR_00844EB4[] = "RegistrationScreen.shp";
+// GLOBAL: GAMEMD 0x844ECC
+extern const char STR_00844ECC[] = "LoginScreen.PAL";
+// GLOBAL: GAMEMD 0x844EDC
+extern const char STR_00844EDC[] = "LoginScreen.shp";
+// GLOBAL: GAMEMD 0x844EEC
+extern const char STR_00844EEC[] = "MultiplaySelection.PAL";
+// GLOBAL: GAMEMD 0x844F04
+extern const char STR_00844F04[] = "MultiplaySelection.shp";
+// GLOBAL: GAMEMD 0x844F54
+extern const char STR_00844F54[] = "MnScrnLCustomMatchLobby.pal";
+// GLOBAL: GAMEMD 0x844F70
+extern const char STR_00844F70[] = "MnScrnLCustomMatchLobby.shp";
+// GLOBAL: GAMEMD 0x844F8C
+extern const char STR_00844F8C[] = "MnScrnLCoopGameSetup.PAL";
+// GLOBAL: GAMEMD 0x844FA8
+extern const char STR_00844FA8[] = "MnScrnLCoopGameSetup.shp";
+// GLOBAL: GAMEMD 0x844FC4
+extern const char STR_00844FC4[] = "MnScrnLCustomizeBattle.PAL";
+// GLOBAL: GAMEMD 0x844FE0
+extern const char STR_00844FE0[] = "MnScrnLCustomizeBattle.shp";
+// GLOBAL: GAMEMD 0x8451D4
+extern const char STR_008451D4[] = "MPYSCRNL.SHP";
+// GLOBAL: GAMEMD 0x8451E4
+extern const char STR_008451E4[] = "MPSSCRNL.SHP";
+// GLOBAL: GAMEMD 0x8451F4
+extern const char STR_008451F4[] = "MPSSCRNS.SHP";
+// GLOBAL: GAMEMD 0x845204
+extern const char STR_00845204[] = "MPASCRNL.SHP";
+// GLOBAL: GAMEMD 0x845214
+extern const char STR_00845214[] = "MPASCRNS.SHP";
+// GLOBAL: GAMEMD 0x845224
+extern const char STR_00845224[] = "SYCRAMD.SHP";
+// GLOBAL: GAMEMD 0x845230
+extern const char STR_00845230[] = "SYCRTMD.SHP";
+// GLOBAL: GAMEMD 0x84523C
+extern const char STR_0084523C[] = "SYCRBKMD.SHP";
+// GLOBAL: GAMEMD 0x84524C
+extern const char STR_0084524C[] = "SSCRAMD.SHP";
+// GLOBAL: GAMEMD 0x845258
+extern const char STR_00845258[] = "SSCRASM.SHP";
+// GLOBAL: GAMEMD 0x845264
+extern const char STR_00845264[] = "SSCRTMD.SHP";
+// GLOBAL: GAMEMD 0x845270
+extern const char STR_00845270[] = "SSCRTSM.SHP";
+// GLOBAL: GAMEMD 0x84527C
+extern const char STR_0084527C[] = "SSCRBKMD.SHP";
+// GLOBAL: GAMEMD 0x84528C
+extern const char STR_0084528C[] = "SSCRBKSM.SHP";
+// GLOBAL: GAMEMD 0x84529C
+extern const char STR_0084529C[] = "ASCRAMD.SHP";
+// GLOBAL: GAMEMD 0x8452A8
+extern const char STR_008452A8[] = "ASCRASM.SHP";
+// GLOBAL: GAMEMD 0x8452B4
+extern const char STR_008452B4[] = "ASCRTMD.SHP";
+// GLOBAL: GAMEMD 0x8452C0
+extern const char STR_008452C0[] = "ASCRTSM.SHP";
+// GLOBAL: GAMEMD 0x8452CC
+extern const char STR_008452CC[] = "ASCRBKMD.SHP";
+// GLOBAL: GAMEMD 0x8452DC
+extern const char STR_008452DC[] = "ASCRBKSM.SHP";
+// GLOBAL: GAMEMD 0x8452EC
+extern const char STR_008452EC[] = "MNBTTN.SHP";
+// GLOBAL: GAMEMD 0x8452F8
+extern const char STR_008452F8[] = "PUDLGBGY.SHP";
+// GLOBAL: GAMEMD 0x845308
+extern const char STR_00845308[] = "PUDLGBGS.SHP";
+// GLOBAL: GAMEMD 0x845318
+extern const char STR_00845318[] = "PUDLGBGA.SHP";
+// GLOBAL: GAMEMD 0x845328
+extern const char STR_00845328[] = "PUDLGBGN.SHP";
+// GLOBAL: GAMEMD 0x845338
+extern const char STR_00845338[] = "SPLDBRL.SHP";
+// GLOBAL: GAMEMD 0x845344
+extern const char STR_00845344[] = "SPLDBRS.SHP";
+// GLOBAL: GAMEMD 0x845350
+extern const char STR_00845350[] = "TTLBR800.SHP";
+// GLOBAL: GAMEMD 0x845360
+extern const char STR_00845360[] = "TTLBR640.SHP";
+// GLOBAL: GAMEMD 0x845490
+extern const char STR_00845490[] = "YSCORE.PAL";
+// GLOBAL: GAMEMD 0x84549C
+extern const char STR_0084549C[] = "SSCORE.PAL";
+// GLOBAL: GAMEMD 0x8454A8
+extern const char STR_008454A8[] = "ASCORE.PAL";
+// GLOBAL: GAMEMD 0x8454FC
+extern const char STR_008454FC[] = "MAINBTTN.PAL";
+// GLOBAL: GAMEMD 0x84550C
+extern const char STR_0084550C[] = "DIALOG.PAL";
+// GLOBAL: GAMEMD 0x845518
+extern const char STR_00845518[] = "DIALOGY.PAL";
+// GLOBAL: GAMEMD 0x845524
+extern const char STR_00845524[] = "DIALOGN.PAL";
+// GLOBAL: GAMEMD 0x844DF4
+extern const char STR_00844DF4[];
+// GLOBAL: GAMEMD 0x844E04
+extern const char STR_00844E04[];
+// GLOBAL: GAMEMD 0x844E5C
+extern const char STR_00844E5C[];
+// GLOBAL: GAMEMD 0x844E6C
+extern const char STR_00844E6C[];
+// GLOBAL: GAMEMD 0x844E7C
+extern const char STR_00844E7C[];
+// GLOBAL: GAMEMD 0x844E8C
+extern const char STR_00844E8C[];
+// GLOBAL: GAMEMD 0x844E9C
+extern const char STR_00844E9C[];
+// GLOBAL: GAMEMD 0x844EB4
+extern const char STR_00844EB4[];
+// GLOBAL: GAMEMD 0x844ECC
+extern const char STR_00844ECC[];
+// GLOBAL: GAMEMD 0x844EDC
+extern const char STR_00844EDC[];
+// GLOBAL: GAMEMD 0x844EEC
+extern const char STR_00844EEC[];
+// GLOBAL: GAMEMD 0x844F04
+extern const char STR_00844F04[];
+// GLOBAL: GAMEMD 0x844F54
+extern const char STR_00844F54[];
+// GLOBAL: GAMEMD 0x844F70
+extern const char STR_00844F70[];
+// GLOBAL: GAMEMD 0x844F8C
+extern const char STR_00844F8C[];
+// GLOBAL: GAMEMD 0x844FA8
+extern const char STR_00844FA8[];
+// GLOBAL: GAMEMD 0x844FC4
+extern const char STR_00844FC4[];
+// GLOBAL: GAMEMD 0x844FE0
+extern const char STR_00844FE0[];
+// GLOBAL: GAMEMD 0x8451D4
+extern const char STR_008451D4[];
+// GLOBAL: GAMEMD 0x8451E4
+extern const char STR_008451E4[];
+// GLOBAL: GAMEMD 0x8451F4
+extern const char STR_008451F4[];
+// GLOBAL: GAMEMD 0x845204
+extern const char STR_00845204[];
+// GLOBAL: GAMEMD 0x845214
+extern const char STR_00845214[];
+// GLOBAL: GAMEMD 0x845224
+extern const char STR_00845224[];
+// GLOBAL: GAMEMD 0x845230
+extern const char STR_00845230[];
+// GLOBAL: GAMEMD 0x84523C
+extern const char STR_0084523C[];
+// GLOBAL: GAMEMD 0x84524C
+extern const char STR_0084524C[];
+// GLOBAL: GAMEMD 0x845258
+extern const char STR_00845258[];
+// GLOBAL: GAMEMD 0x845264
+extern const char STR_00845264[];
+// GLOBAL: GAMEMD 0x845270
+extern const char STR_00845270[];
+// GLOBAL: GAMEMD 0x84527C
+extern const char STR_0084527C[];
+// GLOBAL: GAMEMD 0x84528C
+extern const char STR_0084528C[];
+// GLOBAL: GAMEMD 0x84529C
+extern const char STR_0084529C[];
+// GLOBAL: GAMEMD 0x8452A8
+extern const char STR_008452A8[];
+// GLOBAL: GAMEMD 0x8452B4
+extern const char STR_008452B4[];
+// GLOBAL: GAMEMD 0x8452C0
+extern const char STR_008452C0[];
+// GLOBAL: GAMEMD 0x8452CC
+extern const char STR_008452CC[];
+// GLOBAL: GAMEMD 0x8452DC
+extern const char STR_008452DC[];
+// GLOBAL: GAMEMD 0x8452EC
+extern const char STR_008452EC[];
+// GLOBAL: GAMEMD 0x8452F8
+extern const char STR_008452F8[];
+// GLOBAL: GAMEMD 0x845308
+extern const char STR_00845308[];
+// GLOBAL: GAMEMD 0x845318
+extern const char STR_00845318[];
+// GLOBAL: GAMEMD 0x845328
+extern const char STR_00845328[];
+// GLOBAL: GAMEMD 0x845338
+extern const char STR_00845338[];
+// GLOBAL: GAMEMD 0x845344
+extern const char STR_00845344[];
+// GLOBAL: GAMEMD 0x845350
+extern const char STR_00845350[];
+// GLOBAL: GAMEMD 0x845360
+extern const char STR_00845360[];
+// GLOBAL: GAMEMD 0x845490
+extern const char STR_00845490[];
+// GLOBAL: GAMEMD 0x84549C
+extern const char STR_0084549C[];
+// GLOBAL: GAMEMD 0x8454A8
+extern const char STR_008454A8[];
+// GLOBAL: GAMEMD 0x8454FC
+extern const char STR_008454FC[];
+// GLOBAL: GAMEMD 0x84550C
+extern const char STR_0084550C[];
+// GLOBAL: GAMEMD 0x845518
+extern const char STR_00845518[];
+// GLOBAL: GAMEMD 0x845524
+extern const char STR_00845524[];
+// GLOBAL: GAMEMD 0x844DF4
+extern const char STR_00844DF4[];
+// GLOBAL: GAMEMD 0x844E04
+extern const char STR_00844E04[];
+// GLOBAL: GAMEMD 0x844E5C
+extern const char STR_00844E5C[];
+// GLOBAL: GAMEMD 0x844E6C
+extern const char STR_00844E6C[];
+// GLOBAL: GAMEMD 0x844E7C
+extern const char STR_00844E7C[];
+// GLOBAL: GAMEMD 0x844E8C
+extern const char STR_00844E8C[];
+// GLOBAL: GAMEMD 0x844E9C
+extern const char STR_00844E9C[];
+// GLOBAL: GAMEMD 0x844EB4
+extern const char STR_00844EB4[];
+// GLOBAL: GAMEMD 0x844ECC
+extern const char STR_00844ECC[];
+// GLOBAL: GAMEMD 0x844EDC
+extern const char STR_00844EDC[];
+// GLOBAL: GAMEMD 0x844EEC
+extern const char STR_00844EEC[];
+// GLOBAL: GAMEMD 0x844F04
+extern const char STR_00844F04[];
+// GLOBAL: GAMEMD 0x844F54
+extern const char STR_00844F54[];
+// GLOBAL: GAMEMD 0x844F70
+extern const char STR_00844F70[];
+// GLOBAL: GAMEMD 0x844F8C
+extern const char STR_00844F8C[];
+// GLOBAL: GAMEMD 0x844FA8
+extern const char STR_00844FA8[];
+// GLOBAL: GAMEMD 0x844FC4
+extern const char STR_00844FC4[];
+// GLOBAL: GAMEMD 0x844FE0
+extern const char STR_00844FE0[];
+// GLOBAL: GAMEMD 0x8451D4
+extern const char STR_008451D4[];
+// GLOBAL: GAMEMD 0x8451E4
+extern const char STR_008451E4[];
+// GLOBAL: GAMEMD 0x8451F4
+extern const char STR_008451F4[];
+// GLOBAL: GAMEMD 0x845204
+extern const char STR_00845204[];
+// GLOBAL: GAMEMD 0x845214
+extern const char STR_00845214[];
+// GLOBAL: GAMEMD 0x845224
+extern const char STR_00845224[];
+// GLOBAL: GAMEMD 0x845230
+extern const char STR_00845230[];
+// GLOBAL: GAMEMD 0x84523C
+extern const char STR_0084523C[];
+// GLOBAL: GAMEMD 0x84524C
+extern const char STR_0084524C[];
+// GLOBAL: GAMEMD 0x845258
+extern const char STR_00845258[];
+// GLOBAL: GAMEMD 0x845264
+extern const char STR_00845264[];
+// GLOBAL: GAMEMD 0x845270
+extern const char STR_00845270[];
+// GLOBAL: GAMEMD 0x84527C
+extern const char STR_0084527C[];
+// GLOBAL: GAMEMD 0x84528C
+extern const char STR_0084528C[];
+// GLOBAL: GAMEMD 0x84529C
+extern const char STR_0084529C[];
+// GLOBAL: GAMEMD 0x8452A8
+extern const char STR_008452A8[];
+// GLOBAL: GAMEMD 0x8452B4
+extern const char STR_008452B4[];
+// GLOBAL: GAMEMD 0x8452C0
+extern const char STR_008452C0[];
+// GLOBAL: GAMEMD 0x8452CC
+extern const char STR_008452CC[];
+// GLOBAL: GAMEMD 0x8452DC
+extern const char STR_008452DC[];
+// GLOBAL: GAMEMD 0x8452EC
+extern const char STR_008452EC[];
+// GLOBAL: GAMEMD 0x8452F8
+extern const char STR_008452F8[];
+// GLOBAL: GAMEMD 0x845308
+extern const char STR_00845308[];
+// GLOBAL: GAMEMD 0x845318
+extern const char STR_00845318[];
+// GLOBAL: GAMEMD 0x845328
+extern const char STR_00845328[];
+// GLOBAL: GAMEMD 0x845338
+extern const char STR_00845338[];
+// GLOBAL: GAMEMD 0x845344
+extern const char STR_00845344[];
+// GLOBAL: GAMEMD 0x845350
+extern const char STR_00845350[];
+// GLOBAL: GAMEMD 0x845360
+extern const char STR_00845360[];
+// GLOBAL: GAMEMD 0x845490
+extern const char STR_00845490[];
+// GLOBAL: GAMEMD 0x84549C
+extern const char STR_0084549C[];
+// GLOBAL: GAMEMD 0x8454A8
+extern const char STR_008454A8[];
+// GLOBAL: GAMEMD 0x8454FC
+extern const char STR_008454FC[];
+// GLOBAL: GAMEMD 0x84550C
+extern const char STR_0084550C[];
+// GLOBAL: GAMEMD 0x845518
+extern const char STR_00845518[];
+// GLOBAL: GAMEMD 0x845524
+extern const char STR_00845524[];
 // END defined globals

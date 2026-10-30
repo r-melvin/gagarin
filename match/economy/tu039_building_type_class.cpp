@@ -1841,4 +1841,6 @@ void* BufferHolderDtor::FUN_00466080(unsigned int flags)
 int TypesLevelHeight;
 // GLOBAL: GAMEMD 0x7E4530
 extern const double DAT_007E4530 = 60.0;
+// GLOBAL: GAMEMD 0x81834C
+extern const char TypesShpExtension[] = ".SHP";
 // END defined globals

@@ -247,4 +247,6 @@ int DAT_00b05560;
 int DAT_00b05588;
 // GLOBAL: GAMEMD 0x7F0EA0
 extern const double DAT_007F0EA0 = 60.0;
+// GLOBAL: GAMEMD 0x887310
+Surface_0068FFE0* DAT_00887310;
 // END defined globals

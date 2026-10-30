@@ -2677,4 +2677,46 @@ extern const double DAT_007F0E38 = 60.0;
 extern const double DAT_007F0E50 = 0.8;
 // GLOBAL: GAMEMD 0x7F0E58
 extern const double DAT_007F0E58 = 200.0;
+// GLOBAL: GAMEMD 0x817F6C
+extern const char STR_00817F6C[] = "%d";
+// GLOBAL: GAMEMD 0x825FB0
+extern const char STR_00825FB0[] = "TXT_OK";
+// GLOBAL: GAMEMD 0x82DB0C
+extern const char STR_0082DB0C[] = "Waypoints";
+// GLOBAL: GAMEMD 0x83D824
+extern const char STR_0083D824[] = "VariableNames";
+// GLOBAL: GAMEMD 0x83D868
+extern const char STR_0083D868[] = "Toggle display mode to %d x %d\n";
+// GLOBAL: GAMEMD 0x83D924
+extern const char STR_0083D924[] = "Toggle display mode back to shell res\n";
+// GLOBAL: GAMEMD 0x83DB34
+extern const char STR_0083DB34[] = "EVA_BattleControlTerminated";
+// GLOBAL: GAMEMD 0x83DB50
+extern const char STR_0083DB50[] = "Scenario ini load failed!\n";
+// GLOBAL: GAMEMD 0x83DB6C
+extern const char STR_0083DB6C[] = "Read_Scenario_INI - Filename is %s\n";
+// GLOBAL: GAMEMD 0x83DE1C
+extern const char STR_0083DE1C[] = "%s,%d";
+// GLOBAL: GAMEMD 0xA8ED9C
+unsigned char DAT_00A8ED9C;
+// GLOBAL: GAMEMD 0xB0F4EC
+TiberiumClass** TiberiumArrayItems;
+// GLOBAL: GAMEMD 0xB73550
+HWND DAT_00B73550;
+// GLOBAL: GAMEMD 0xA80238
+int HouseClass_ArrayCount;
+// GLOBAL: GAMEMD 0xA8022C
+HouseClass** HouseClass_ArrayItems;
+// GLOBAL: GAMEMD 0x82DB0C
+extern const char STR_0082DB0C[];
+// GLOBAL: GAMEMD 0x83D824
+extern const char STR_0083D824[];
+// GLOBAL: GAMEMD 0x82DB0C
+extern const char STR_0082DB0C[];
+// GLOBAL: GAMEMD 0x83D824
+extern const char STR_0083D824[];
+// GLOBAL: GAMEMD 0x82DB0C
+extern const char STR_0082DB0C[];
+// GLOBAL: GAMEMD 0x83D824
+extern const char STR_0083D824[];
 // END defined globals

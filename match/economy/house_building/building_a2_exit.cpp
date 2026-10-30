@@ -483,3 +483,8 @@ int BA2Building::vf_64(BA2Other* obj, HBCell where)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B238
+int DAT_00A8B238;
+// END defined globals

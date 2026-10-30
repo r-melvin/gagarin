@@ -131,4 +131,6 @@ int EntryTable_006A94F0::FUN_006A94F0(int index)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB05629
 unsigned char DAT_00B05629;
+// GLOBAL: GAMEMD 0xA8D610
+short DAT_00A8D610;
 // END defined globals

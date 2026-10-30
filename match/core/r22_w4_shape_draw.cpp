@@ -60,4 +60,6 @@ void __fastcall FUN_0072E730(Surface_0072E730* surface, const Rect_0072E730* rec
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8A00A4
 int DAT_008A00A4;
+// GLOBAL: GAMEMD 0xB0FC1C
+Point_0072E730* DAT_00B0FC1C;
 // END defined globals

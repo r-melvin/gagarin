@@ -83,3 +83,8 @@ void ConnListView_006638E0::SendKind6(unsigned char value)
         Manager_00A8E9C0.FUN_00541410(&packet, sizeof(packet), 1);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839CEC
+extern const char STR_00839CEC[] = "Sending TALK_PORT_BLITZ to router\n";
+// END defined globals

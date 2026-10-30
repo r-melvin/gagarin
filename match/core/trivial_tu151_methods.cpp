@@ -29,3 +29,8 @@ bool Obj_005CB430::FUN_005CB430()
     DAT_00A8B258 = true;
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B258
+bool DAT_00A8B258;
+// END defined globals

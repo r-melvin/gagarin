@@ -240,3 +240,34 @@ bool RulesClass::Read_Teams(CCINIClass* pINI)
     }
     return count > 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839DA8
+extern const char STR_00839DA8[] = "OverlayTypes";
+// GLOBAL: GAMEMD 0x839DB8
+extern const char STR_00839DB8[] = "SmudgeTypes";
+// GLOBAL: GAMEMD 0x839DC4
+extern const char STR_00839DC4[] = "Teams";
+// GLOBAL: GAMEMD 0x839DCC
+extern const char STR_00839DCC[] = "TerrainTypes";
+// GLOBAL: GAMEMD 0x839DDC
+extern const char STR_00839DDC[] = "BuildingTypes";
+// GLOBAL: GAMEMD 0x839DEC
+extern const char STR_00839DEC[] = "SuperWeaponTypes";
+// GLOBAL: GAMEMD 0x839E28
+extern const char STR_00839E28[] = "Countries";
+// GLOBAL: GAMEMD 0x839DA8
+extern const char STR_00839DA8[];
+// GLOBAL: GAMEMD 0x839DB8
+extern const char STR_00839DB8[];
+// GLOBAL: GAMEMD 0x839DC4
+extern const char STR_00839DC4[];
+// GLOBAL: GAMEMD 0x839DCC
+extern const char STR_00839DCC[];
+// GLOBAL: GAMEMD 0x839DDC
+extern const char STR_00839DDC[];
+// GLOBAL: GAMEMD 0x839DEC
+extern const char STR_00839DEC[];
+// GLOBAL: GAMEMD 0x839E28
+extern const char STR_00839E28[];
+// END defined globals

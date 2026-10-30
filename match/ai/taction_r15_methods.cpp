@@ -357,4 +357,8 @@ bool TActionClass::FUN_006E0EF0(HouseClass* house, ObjectClass* object, TriggerC
 InfantryClass** DAT_00A83DEC;
 // GLOBAL: GAMEMD 0xA83DF8
 int DAT_00A83DF8;
+// GLOBAL: GAMEMD 0x887640
+TActionR15Display* DAT_00887640_R15;
+// GLOBAL: GAMEMD 0x8871E0
+TActionR15Rules* DAT_008871E0_R15;
 // END defined globals

@@ -371,4 +371,6 @@ void* FUN_00420120(void* self)
 char** DAT_00A8B204;
 // GLOBAL: GAMEMD 0xA8B210
 int DAT_00A8B210;
+// GLOBAL: GAMEMD 0xA8B200
+AITriggerTypeVector_0041F490 DAT_00A8B200;
 // END defined globals

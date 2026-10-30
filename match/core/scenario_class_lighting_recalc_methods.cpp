@@ -49,4 +49,6 @@ void ScenarioClass::RecalcLighting(int r, int g, int b, bool tint)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87F698
 LightConvertVec_0053AD00 DAT_0087F698;
+// GLOBAL: GAMEMD 0xB054D0
+ColorSchemeVec_0053AD00 DAT_00B054D0;
 // END defined globals

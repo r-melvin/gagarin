@@ -42,3 +42,10 @@ void* LoadScreenClass_00642AD0::PickSideCaptionGadget()
     }
     return FindGadgetByCaption_0068CA50(STR_00836EB4, 1);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x836EB4
+extern const char STR_00836EB4[] = "SovietLoad";
+// GLOBAL: GAMEMD 0x836EC0
+extern const char STR_00836EC0[] = "AlliedLoad";
+// END defined globals

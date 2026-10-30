@@ -87,3 +87,18 @@ bool RulesClass::Read_AircraftTypes(CCINIClass* pINI)
     }
     return count > 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839E08
+extern const char STR_00839E08[] = "AircraftTypes";
+// GLOBAL: GAMEMD 0x839E18
+extern const char STR_00839E18[] = "VehicleTypes";
+// GLOBAL: GAMEMD 0x839E34
+extern const char STR_00839E34[] = "InfantryTypes";
+// GLOBAL: GAMEMD 0x839E08
+extern const char STR_00839E08[];
+// GLOBAL: GAMEMD 0x839E18
+extern const char STR_00839E18[];
+// GLOBAL: GAMEMD 0x839E34
+extern const char STR_00839E34[];
+// END defined globals

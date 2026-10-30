@@ -253,4 +253,12 @@ int __fastcall FUN_004E5000(int id)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAC4848
 PCX DAT_00AC4848;
+// GLOBAL: GAMEMD 0x835C90
+extern const char STR_00835C90[] = "pingr.pcx";
+// GLOBAL: GAMEMD 0x835C9C
+extern const char STR_00835C9C[] = "pingy.pcx";
+// GLOBAL: GAMEMD 0x835CA8
+extern const char STR_00835CA8[] = "pingg.pcx";
+// GLOBAL: GAMEMD 0x844B18
+extern const char* DAT_00844B18[3] = {STR_00835CA8, STR_00835C9C, STR_00835C90};
 // END defined globals

@@ -2914,4 +2914,70 @@ signed char DAT_0083ED14[9] = {3, 11, 21, 29, 13, 25, 17, 15, 5};
 int DAT_0083ED20 = -1;
 // GLOBAL: GAMEMD 0x7F1190
 extern const double DAT_007F1190 = 60.0;
+// GLOBAL: GAMEMD 0x8189B0
+extern const char STR_008189B0[] = "%d,%d,%d";
+// GLOBAL: GAMEMD 0x81BFE0
+extern const char STR_0081BFE0[] = "Digest";
+// GLOBAL: GAMEMD 0x81C000
+extern const char STR_0081C000[] = "%d,%d";
+// GLOBAL: GAMEMD 0x824E38
+extern const char STR_00824E38[] = "Credits";
+// GLOBAL: GAMEMD 0x82642C
+extern const char STR_0082642C[] = "MultiPlayer";
+// GLOBAL: GAMEMD 0x826444
+extern const char STR_00826444[] = "RA2MD.INI";
+// GLOBAL: GAMEMD 0x82BC30
+extern const char STR_0082BC30[] = "RandMap.Sed";
+// GLOBAL: GAMEMD 0x8332E8
+extern const char STR_008332E8[] = "GameSpeed";
+// GLOBAL: GAMEMD 0x83CF84
+extern const char STR_0083CF84[] = "BuildOffAlly";
+// GLOBAL: GAMEMD 0x83CF94
+extern const char STR_0083CF94[] = "SuperWeaponsAllowed";
+// GLOBAL: GAMEMD 0x83CFA8
+extern const char STR_0083CFA8[] = "ShortGame";
+// GLOBAL: GAMEMD 0x83D06C
+extern const char STR_0083D06C[] = "UnitCount";
+// GLOBAL: GAMEMD 0x83EEB8
+extern const char STR_0083EEB8[] = "D:\\ra2mdpost\\Session.CPP";
+// GLOBAL: GAMEMD 0x83EF9C
+extern const char STR_0083EF9C[] = "Slot%02d";
+// GLOBAL: GAMEMD 0x83EFA8
+extern const char STR_0083EFA8[] = "CratesAppear";
+// GLOBAL: GAMEMD 0x83EFB8
+extern const char STR_0083EFB8[] = "MCVRepacks";
+// GLOBAL: GAMEMD 0x83EFC4
+extern const char STR_0083EFC4[] = "ScenIndex";
+// GLOBAL: GAMEMD 0x83EFD0
+extern const char STR_0083EFD0[] = "GameMode";
+// GLOBAL: GAMEMD 0x83F110
+extern const char STR_0083F110[] = "LANScrollText";
+// GLOBAL: GAMEMD 0x83F120
+extern const char STR_0083F120[] = "WOLScrollText";
+// GLOBAL: GAMEMD 0x83F130
+extern const char STR_0083F130[] = "LANTaunts";
+// GLOBAL: GAMEMD 0x83F13C
+extern const char STR_0083F13C[] = "WOLTaunts";
+// GLOBAL: GAMEMD 0x83F3E4
+extern const char STR_0083F3E4[] = "No Digest";
+// GLOBAL: GAMEMD 0x83F4B8
+extern const char STR_0083F4B8[] = "MSG:NoDescription";
+// GLOBAL: GAMEMD 0x83F658
+extern const char STR_0083F658[] = "No File Name";
+// GLOBAL: GAMEMD 0x887368
+ToolTipManager* ToolTipManager_Instance;
+// GLOBAL: GAMEMD 0xA83D4C
+HouseClass* HouseClass_CurrentPlayer;
+// GLOBAL: GAMEMD 0xA8DA90
+NodeNameType* SlotPlayers_00A8DA90[8];
+// GLOBAL: GAMEMD 0x83EBBC
+extern const char STR_0083EBBC[] = "TXT_CUSTOM";
+// GLOBAL: GAMEMD 0x83ED24
+extern const char STR_0083ED24[] = "TXT_CWAIT_1170";
+// GLOBAL: GAMEMD 0x83ED34
+extern const char STR_0083ED34[] = "TXT_CWAIT_70NUM";
+// GLOBAL: GAMEMD 0x83ED44
+extern const char STR_0083ED44[] = "TXT_CWAIT_STAR70";
+// GLOBAL: GAMEMD 0x83ED04
+extern const char* const DAT_0083ED04[4] = {STR_0083ED44, STR_0083ED34, STR_0083ED24, STR_0083EBBC};
 // END defined globals

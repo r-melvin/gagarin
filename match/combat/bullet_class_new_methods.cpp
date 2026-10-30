@@ -2678,7 +2678,7 @@ extern const double DAT_007E2818 = -10430.060040584269;
 // GLOBAL: GAMEMD 0x7E2820
 extern const double DAT_007E2820 = 1.5707963267948966;
 // GLOBAL: GAMEMD 0x7E96E0
-extern const char rclsid_007E96E0[16] = {-55, 45, 39, 14, 15, -100, -47, 17, -73, 9, 0, -96, 36, -35, -81, -47};
+extern const CLSID DAT_007E96E0 = {0x0E272DC9, 0x9C0F, 0x11D1, {0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1}};
 // GLOBAL: GAMEMD 0x7F7C90
-extern const char riid_007F7C90[16] = {0, 0, 0, 0, 0, 0, 0, 0, -64, 0, 0, 0, 0, 0, 0, 70};
+extern const IID DAT_007F7C90 = {0x00000000, 0x0000, 0x0000, {0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46}};
 // END defined globals

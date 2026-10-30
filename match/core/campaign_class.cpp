@@ -137,3 +137,8 @@ int CampaignClass::vf_12() { return sizeof(CampaignClass); }
 int CampaignClass::vf_11() { return 0xA; }
 // SYNTHETIC: GAMEMD 0x46D090
 // CampaignClass scalar deleting destructor.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E9900
+extern const CLSID DAT_007E9900 = {0xFFDAC848, 0x1517, 0x11D2, {0x81, 0x75, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
+// END defined globals

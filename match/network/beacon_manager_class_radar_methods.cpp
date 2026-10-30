@@ -30,3 +30,8 @@ void BeaconManager_00431700::DrawRadar(Surface_00431700* surface, Rect_00431700 
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89C3B0
+BeaconManager_00431700 BeaconManagerInstance;
+// END defined globals

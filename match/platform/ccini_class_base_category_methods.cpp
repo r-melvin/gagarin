@@ -101,3 +101,14 @@ bool CCINI_00475A40::WriteCategoryList(const char* section, const char* key,
 
     return WriteString(section, key, buffer);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x81C014
+extern const char STR_0081C014[] = "RADAR";
+// GLOBAL: GAMEMD 0x81C01C
+extern const char STR_0081C01C[] = "BARRACKS";
+// GLOBAL: GAMEMD 0x81C028
+extern const char STR_0081C028[] = "FACTORY";
+// GLOBAL: GAMEMD 0x81C030
+extern const char STR_0081C030[] = "POWER";
+// END defined globals

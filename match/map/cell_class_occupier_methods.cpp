@@ -65,3 +65,8 @@ InfantryClass* CellClass::GetInfantry(bool alt) const
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8E9A0
+unsigned char CellOccupiersValid;
+// END defined globals

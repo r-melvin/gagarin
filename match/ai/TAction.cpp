@@ -1620,4 +1620,6 @@ DynamicVectorClass<TActionClass*> DAT_00B0F670;
 extern const double DAT_007E1718 = 1.0;
 // GLOBAL: GAMEMD 0x7F43B8
 extern const double DAT_007F43B8 = 60.0;
+// GLOBAL: GAMEMD 0x7E9800
+extern const CLSID DAT_007E9800 = {0x4F0EC392, 0x0A55, 0x11D2, {0xAC, 0xA7, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
 // END defined globals

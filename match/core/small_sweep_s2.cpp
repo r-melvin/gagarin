@@ -431,4 +431,22 @@ wchar_t* __fastcall FUN_00727D60(wchar_t* text)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB1D428
 int DAT_00B1D428;
+// GLOBAL: GAMEMD 0x845438
+extern const char STR_00845438[] = "SDBTNANM.PAL";
+// GLOBAL: GAMEMD 0x845448
+extern const char STR_00845448[] = "SHELL2.PAL";
+// GLOBAL: GAMEMD 0x845454
+extern const char STR_00845454[] = "SHELL.PAL";
+// GLOBAL: GAMEMD 0x845438
+extern const char STR_00845438[];
+// GLOBAL: GAMEMD 0x845448
+extern const char STR_00845448[];
+// GLOBAL: GAMEMD 0x845454
+extern const char STR_00845454[];
+// GLOBAL: GAMEMD 0x845438
+extern const char STR_00845438[];
+// GLOBAL: GAMEMD 0x845448
+extern const char STR_00845448[];
+// GLOBAL: GAMEMD 0x845454
+extern const char STR_00845454[];
 // END defined globals

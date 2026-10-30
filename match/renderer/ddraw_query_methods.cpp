@@ -95,4 +95,6 @@ void FUN_004A4830()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8A009C
 SurfaceView_008A009C* Surface_008A009C;
+// GLOBAL: GAMEMD 0x8A0094
+DirectDrawView_008A0094* DirectDraw_008A0094;
 // END defined globals

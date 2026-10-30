@@ -44,3 +44,8 @@ unsigned short VersionClass::FUN_0074FA20()
     MinorInit = 1;
     return 1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x84635C
+extern const char STR_0084635C[] = "VERSION.TXT";
+// END defined globals

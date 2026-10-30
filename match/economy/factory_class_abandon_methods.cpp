@@ -61,3 +61,8 @@ bool Factory_004C9FF0::AbandonProduction()
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8222AC
+extern const char DAT_008222AC[] = "Abandoning production of %s\n";
+// END defined globals

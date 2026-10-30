@@ -281,10 +281,10 @@ int SmudgeTypeClass::vf_16()
 // SYNTHETIC: GAMEMD 0x6B6160 — compiler-generated scalar deleting destructor emitted for the virtual destructor.
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA8EC18
-MapObjDynVector<SmudgeTypeClass*> SmudgeTypeArray;
 // GLOBAL: GAMEMD 0xB0B7A8
 MapObjCoord SmudgeOriginCoord;
 // GLOBAL: GAMEMD 0x7F34E8
 extern const double DAT_007F34E8 = 60.0;
+// GLOBAL: GAMEMD 0xA8EC18
+DynamicVectorClass<Obj_006B5440*> DAT_00A8EC18;
 // END defined globals

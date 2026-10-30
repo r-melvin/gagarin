@@ -35,3 +35,8 @@ int MapClass::GetThreatPosed(const CellStruct& cell, HouseClass* pHouse) const
     int qx = mc.X / 4;
     return pHouse->ThreatPosedEstimates[qy + 1][qx + 1];
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F924
+CellClass** Cells;
+// END defined globals

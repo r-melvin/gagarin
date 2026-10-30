@@ -47,3 +47,8 @@ HRESULT __stdcall ConnectionPointClass::GetConnectionPointContainer(IConnectionP
 {
     return Container->QueryInterface(IID_IConnectionPointContainer, (void**)ppCPC);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F7CC0
+extern const GUID DAT_007F7CC0 = {0xB196B286, 0xBAB4, 0x101A, {0xB6, 0x9C, 0x00, 0xAA, 0x00, 0x34, 0x1D, 0x07}};
+// END defined globals

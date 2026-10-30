@@ -137,3 +137,8 @@ bool CCINIClass::FUN_00475610(const char* section, const char* key, int value)
 
     return WriteString(section, key, name);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x81C008
+extern const char STR_0081C008[] = "<random>";
+// END defined globals

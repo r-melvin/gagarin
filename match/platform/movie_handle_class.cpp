@@ -486,4 +486,8 @@ void FUN_005C09A0()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xABF3F8
 MovieHandle* DAT_00ABF3F8;
+// GLOBAL: GAMEMD 0xA8EB60
+Obj_005FBF80 DAT_00A8EB60;
+// GLOBAL: GAMEMD 0xABF3F4
+Obj_005C01A0* DAT_00ABF3F4;
 // END defined globals

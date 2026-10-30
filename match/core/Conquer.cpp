@@ -477,4 +477,112 @@ TechnoTypeClass** InfantryTypeClass_ArrayItems;
 DynamicVectorClass<ObjectClass*> CurrentObjects;
 // GLOBAL: GAMEMD 0x7E51E0
 extern const double DAT_007E51E0 = 60.0;
+// GLOBAL: GAMEMD 0xA83C6C
+TechnoTypeClass** BuildingTypeClass_ArrayItems;
+// GLOBAL: GAMEMD 0xA8B21C
+TechnoTypeClass** AircraftTypeClass_ArrayItems;
+// GLOBAL: GAMEMD 0x817278
+extern const char STR_00817278[];
+// GLOBAL: GAMEMD 0x81BAE8
+extern const char STR_0081BAE8[];
+// GLOBAL: GAMEMD 0x81BB18
+extern const char STR_0081BB18[];
+// GLOBAL: GAMEMD 0x81758C
+extern const char STR_0081758C[] = "Air";
+// GLOBAL: GAMEMD 0x81AC58
+extern const char STR_0081AC58[] = "Wall";
+// GLOBAL: GAMEMD 0x81DB80
+extern const char STR_0081DB80[] = "Top";
+// GLOBAL: GAMEMD 0x81DB84
+extern const char STR_0081DB84[] = "Ground";
+// GLOBAL: GAMEMD 0x81DB8C
+extern const char STR_0081DB8C[] = "Surface";
+// GLOBAL: GAMEMD 0x81DB94
+extern const char STR_0081DB94[] = "Underground";
+// GLOBAL: GAMEMD 0x81DBA0
+extern const char STR_0081DBA0[] = "FloatBeach";
+// GLOBAL: GAMEMD 0x81DBAC
+extern const char STR_0081DBAC[] = "Float";
+// GLOBAL: GAMEMD 0x81DBB4
+extern const char STR_0081DBB4[] = "Winged";
+// GLOBAL: GAMEMD 0x81DBBC
+extern const char STR_0081DBBC[] = "Hover";
+// GLOBAL: GAMEMD 0x81DBC4
+extern const char STR_0081DBC4[] = "Wheel";
+// GLOBAL: GAMEMD 0x81DBCC
+extern const char STR_0081DBCC[] = "Track";
+// GLOBAL: GAMEMD 0x81DBD4
+extern const char STR_0081DBD4[] = "Foot";
+// GLOBAL: GAMEMD 0x81DBDC
+extern const char STR_0081DBDC[] = "Weeds";
+// GLOBAL: GAMEMD 0x81DBE4
+extern const char STR_0081DBE4[] = "Tunnel";
+// GLOBAL: GAMEMD 0x81DBEC
+extern const char STR_0081DBEC[] = "Railroad";
+// GLOBAL: GAMEMD 0x81DBF8
+extern const char STR_0081DBF8[] = "Ice";
+// GLOBAL: GAMEMD 0x81DBFC
+extern const char STR_0081DBFC[] = "Rough";
+// GLOBAL: GAMEMD 0x81DC04
+extern const char STR_0081DC04[] = "Beach";
+// GLOBAL: GAMEMD 0x81DC0C
+extern const char STR_0081DC0C[] = "Rock";
+// GLOBAL: GAMEMD 0x81DC14
+extern const char STR_0081DC14[] = "Road";
+// GLOBAL: GAMEMD 0x81DC1C
+extern const char STR_0081DC1C[] = "Clear";
+// GLOBAL: GAMEMD 0x81DA28
+extern const char* const LandTypeName[12] = {STR_0081DC1C, STR_0081DC14, STR_0081BAE8, STR_0081DC0C, STR_0081AC58, STR_00817278, STR_0081DC04, STR_0081DBFC, STR_0081DBF8, STR_0081DBEC, STR_0081DBE4, STR_0081DBDC};
+// GLOBAL: GAMEMD 0x81DA78
+extern const char* const DAT_0081DA78[5] = {STR_0081DB94, STR_0081DB8C, STR_0081DB84, STR_0081758C, STR_0081DB80};
+// GLOBAL: GAMEMD 0x81BB18
+extern const char STR_0081BB18[];
+// GLOBAL: GAMEMD 0x81DBA0
+extern const char STR_0081DBA0[];
+// GLOBAL: GAMEMD 0x81DBAC
+extern const char STR_0081DBAC[];
+// GLOBAL: GAMEMD 0x81DBB4
+extern const char STR_0081DBB4[];
+// GLOBAL: GAMEMD 0x81DBBC
+extern const char STR_0081DBBC[];
+// GLOBAL: GAMEMD 0x81DBC4
+extern const char STR_0081DBC4[];
+// GLOBAL: GAMEMD 0x81DBCC
+extern const char STR_0081DBCC[];
+// GLOBAL: GAMEMD 0x81DBD4
+extern const char STR_0081DBD4[];
+// GLOBAL: GAMEMD 0x81BB18
+extern const char STR_0081BB18[];
+// GLOBAL: GAMEMD 0x81DBA0
+extern const char STR_0081DBA0[];
+// GLOBAL: GAMEMD 0x81DBAC
+extern const char STR_0081DBAC[];
+// GLOBAL: GAMEMD 0x81DBB4
+extern const char STR_0081DBB4[];
+// GLOBAL: GAMEMD 0x81DBBC
+extern const char STR_0081DBBC[];
+// GLOBAL: GAMEMD 0x81DBC4
+extern const char STR_0081DBC4[];
+// GLOBAL: GAMEMD 0x81DBCC
+extern const char STR_0081DBCC[];
+// GLOBAL: GAMEMD 0x81DBD4
+extern const char STR_0081DBD4[];
+// GLOBAL: GAMEMD 0x81BB18
+extern const char STR_0081BB18[];
+// GLOBAL: GAMEMD 0x81DBA0
+extern const char STR_0081DBA0[];
+// GLOBAL: GAMEMD 0x81DBAC
+extern const char STR_0081DBAC[];
+// GLOBAL: GAMEMD 0x81DBB4
+extern const char STR_0081DBB4[];
+// GLOBAL: GAMEMD 0x81DBBC
+extern const char STR_0081DBBC[];
+// GLOBAL: GAMEMD 0x81DBC4
+extern const char STR_0081DBC4[];
+// GLOBAL: GAMEMD 0x81DBCC
+extern const char STR_0081DBCC[];
+// GLOBAL: GAMEMD 0x81DBD4
+extern const char STR_0081DBD4[];
+// GLOBAL: GAMEMD 0x81DA58
+extern const char* const DAT_0081DA58[8] = {STR_0081DBD4, STR_0081DBCC, STR_0081DBC4, STR_0081DBBC, STR_0081DBB4, STR_0081DBAC, STR_0081BB18, STR_0081DBA0};
 // END defined globals

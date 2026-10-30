@@ -687,4 +687,34 @@ DynamicVectorClass<AITriggerTypeClass*> AITriggerTypes;
 DynamicVectorClass<TechnoTypeClass*> DAT_00A8B218;
 // GLOBAL: GAMEMD 0xA8E348
 DynamicVectorClass<TechnoTypeClass*> DAT_00A8E348;
+// GLOBAL: GAMEMD 0x817474
+extern const char STR_00817474[] = "<none>";
+// GLOBAL: GAMEMD 0x817694
+extern const char STR_00817694[] = "none";
+// GLOBAL: GAMEMD 0x817F70
+extern const char STR_00817F70[] = ",";
+// GLOBAL: GAMEMD 0x817474
+extern const char STR_00817474[];
+// GLOBAL: GAMEMD 0x8180E0
+extern const char STR_008180E0[] = "AITriggerTypesEnable";
+// GLOBAL: GAMEMD 0x8180F8
+extern const char STR_008180F8[] = "AITriggerTypes";
+// GLOBAL: GAMEMD 0x81811C
+extern const char STR_0081811C[] = "<all>";
+// GLOBAL: GAMEMD 0x817474
+extern const char STR_00817474[];
+// GLOBAL: GAMEMD 0x8180E0
+extern const char STR_008180E0[];
+// GLOBAL: GAMEMD 0x8180F8
+extern const char STR_008180F8[];
+// GLOBAL: GAMEMD 0x81811C
+extern const char STR_0081811C[];
+// GLOBAL: GAMEMD 0x817474
+extern const char STR_00817474[];
+// GLOBAL: GAMEMD 0x8180E0
+extern const char STR_008180E0[];
+// GLOBAL: GAMEMD 0x8180F8
+extern const char STR_008180F8[];
+// GLOBAL: GAMEMD 0x81811C
+extern const char STR_0081811C[];
 // END defined globals

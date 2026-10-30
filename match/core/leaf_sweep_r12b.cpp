@@ -81,4 +81,6 @@ void Line_00774900::FUN_00774900(bool raise)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0F4F8
 int DAT_00B0F4F8;
+// GLOBAL: GAMEMD 0xB0F4EC
+CellTable_00722AB0** DAT_00B0F4EC;
 // END defined globals

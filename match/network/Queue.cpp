@@ -3937,4 +3937,26 @@ int DAT_00B77780;
 int DAT_00B77CE0;
 // GLOBAL: GAMEMD 0x7F0290
 extern const double DAT_007F0290 = 60.0;
+// GLOBAL: GAMEMD 0x837474
+extern const char STR_00837474[] = "TXT_QUEUE_FULL";
+// GLOBAL: GAMEMD 0x8374A0
+extern const char STR_008374A0[] = "D:\\ra2mdpost\\Queue.CPP";
+// GLOBAL: GAMEMD 0x837E98
+extern const char STR_00837E98[] = "FrameSendRate=%d\n";
+// GLOBAL: GAMEMD 0x837EAC
+extern const char STR_00837EAC[] = "Frame=%d\n";
+// GLOBAL: GAMEMD 0x837EB8
+extern const char STR_00837EB8[] = "MaxAhead=%d\n";
+// GLOBAL: GAMEMD 0x837EC8
+extern const char STR_00837EC8[] = "ID:         %d\n";
+// GLOBAL: GAMEMD 0x837ED8
+extern const char STR_00837ED8[] = "Frame:      %d\n";
+// GLOBAL: GAMEMD 0x837EE8
+extern const char STR_00837EE8[] = "Type:       %s\n";
+// GLOBAL: GAMEMD 0x837EF8
+extern const char STR_00837EF8[] = "--------- Event data: -------------------\n";
+// GLOBAL: GAMEMD 0x837F24
+extern const char STR_00837F24[] = "Packet received too late!\n";
+// GLOBAL: GAMEMD 0x8B40E8
+DynamicVectorClassLayout DAT_008B40E8;
 // END defined globals

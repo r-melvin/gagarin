@@ -40,4 +40,8 @@ bool RulesClass::Read_SpecialWeapons(CCINIClass* pINI)
 WarheadTypeClass** WarheadTypeItems;
 // GLOBAL: GAMEMD 0x8874D0
 int WarheadTypeCount;
+// GLOBAL: GAMEMD 0x839EB4
+extern const char STR_00839EB4[] = "SpecialWeapons";
+// GLOBAL: GAMEMD 0x839EB4
+extern const char STR_00839EB4[];
 // END defined globals

@@ -69,3 +69,8 @@ void BuildingClass::FUN_004529E0()
         CreateEndPost(true);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8E7AC
+int ScenarioInit_00A8E7AC;
+// END defined globals

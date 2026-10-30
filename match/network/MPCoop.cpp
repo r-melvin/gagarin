@@ -767,4 +767,10 @@ List_0089F518 DAT_0089F518;
 int DAT_00A8BB0C;
 // GLOBAL: GAMEMD 0xA8DA74
 DynamicVectorClassLayout MPGameModeArray;
+// GLOBAL: GAMEMD 0x82DC4C
+extern const char STR_0082DC4C[] = "D:\\ra2mdpost\\MPCoop.cpp";
+// GLOBAL: GAMEMD 0x82DC64
+extern const char STR_0082DC64[] = "NAME:COOPDESC%d%d";
+// GLOBAL: GAMEMD 0xA8DA90
+MPGameModeEntry* DAT_00A8DA90[8];
 // END defined globals

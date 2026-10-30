@@ -104,3 +104,8 @@ int TechnoClass::FUN_00707D20()
     }
     return crew;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x887324
+TacticalView_r21_4* TacticalInstance_r21_4;
+// END defined globals

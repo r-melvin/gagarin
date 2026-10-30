@@ -78,4 +78,8 @@ int DAT_00b2fb70;
 int DAT_00b43180;
 // GLOBAL: GAMEMD 0x8467E0
 int DAT_008467e0 = 1;
+// GLOBAL: GAMEMD 0xB1D5E0
+unsigned char DAT_00b1d5e0[256][256];
+// GLOBAL: GAMEMD 0xB2FF78
+unsigned char DAT_00b2ff78[256][256];
 // END defined globals

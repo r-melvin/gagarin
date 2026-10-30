@@ -383,3 +383,8 @@ finish:
     vf_122(5, 0);
     return 3;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x818F18
+extern const char s_EVA_Repairing_00818F18[] = "EVA_Repairing";
+// END defined globals

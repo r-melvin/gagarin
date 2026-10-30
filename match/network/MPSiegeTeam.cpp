@@ -86,3 +86,8 @@ MultiplayerSiegeAttackerTeam::~MultiplayerSiegeAttackerTeam()
 }
 
 // SYNTHETIC: GAMEMD 0x5CAF40 -- MultiplayerSiegeAttackerTeam scalar deleting destructor, emitted by the compiler from the virtual destructor above
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x82FFF4
+extern const char DAT_0082FFF4[] = "D:\\ra2mdpost\\MPSiegeTeam.cpp";
+// END defined globals

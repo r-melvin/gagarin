@@ -282,3 +282,8 @@ bool MultiplayerSiege::SpawnBaseUnits(HouseClass* house, int unknown)
     }
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x82FF2C
+extern const char DAT_0082FF2C[] = "D:\\ra2mdpost\\MPSiege.cpp";
+// END defined globals

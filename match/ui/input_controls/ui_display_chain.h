@@ -32,6 +32,7 @@
 #define GG_MATCH_UI_INPUT_CONTROLS_UI_DISPLAY_CHAIN_H
 
 #include <stddef.h>
+#include <objidl.h>   // IUnknown (VC98 SDK, LIBRARY)
 #include "../../_rt/gg_static_assert.h"
 #include "../../_layout/geometry2d.h"
 #include "../../_layout/abstract_class.h"
@@ -214,13 +215,20 @@ GG_STATIC_ASSERT(sizeof(MapWordEntry) == 4);
 
 // ---- GScreenClass ------------------------------------------------------------------------------------------------
 
+// IGameMap: the retail hierarchy descriptor of GScreenClass names a struct IGameMap with one base, IUnknown, between
+// GScreenClass and IUnknown (RTTI ".?AUIGameMap@@"). It adds no members of its own.
+struct __declspec(novtable) IGameMap : public IUnknown
+{
+};
+GG_STATIC_ASSERT(sizeof(IGameMap) == 4);
+
 // VTABLE: GAMEMD 0x7EA6FC (22 slots; COM-shaped: QueryInterface / AddRef / Release first)
-class GScreenClass
+class GScreenClass : public IGameMap
 {
 public:
-    virtual long __stdcall QueryInterface(const DisplayGuid* riid, void** ppv);   // 0   0x4F4240
-    virtual unsigned long __stdcall AddRef();                                     // 1   0x40D230
-    virtual unsigned long __stdcall Release();                                    // 2   0x40D240
+    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);            // 0   0x4F4240
+    virtual ULONG __stdcall AddRef();                                             // 1   0x40D230
+    virtual ULONG __stdcall Release();                                            // 2   0x40D240
     virtual void vf_03();                                                         // 3   0x4C9150 (__purecall)
     // FUNCTION: GAMEMD 0x4F4C00 (scalar deleting destructor; ??_G)
     virtual ~GScreenClass() {}                                                    // 4   0x4F4C00

@@ -628,4 +628,6 @@ MapObjCell OverlayNoCell;
 int OverlayPlacementArg = -1;
 // GLOBAL: GAMEMD 0x7EF390
 extern const double DAT_007EF390 = 60.0;
+// GLOBAL: GAMEMD 0x833490
+extern const char STR_00833490[] = "Overlay %s not really tiberium\n";
 // END defined globals

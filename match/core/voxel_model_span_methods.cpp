@@ -1002,4 +1002,6 @@ void FUN_007586f0(const Vector3D *a, const Vector3D *b, float k, int set)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB43184
 int DAT_00b43184;
+// GLOBAL: GAMEMD 0xB1D5E0
+unsigned char DAT_00b1d5e0[0x10000];
 // END defined globals

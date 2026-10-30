@@ -601,4 +601,72 @@ int DAT_00ABF9F4;
 int DAT_00ABF9F8;
 // GLOBAL: GAMEMD 0xAC1198
 HouseClass* DAT_00AC1198;
+// GLOBAL: GAMEMD 0x82FE24
+extern const char DAT_0082FE24[] = "D:\\ra2mdpost\\MPScore.cpp";
+// GLOBAL: GAMEMD 0x835A38
+extern const char STR_00835A38[] = "mpyscrnlbar10.pcx";
+// GLOBAL: GAMEMD 0x835A4C
+extern const char STR_00835A4C[] = "mpyscrnlbar09.pcx";
+// GLOBAL: GAMEMD 0x835A60
+extern const char STR_00835A60[] = "mpyscrnlbar08.pcx";
+// GLOBAL: GAMEMD 0x835A74
+extern const char STR_00835A74[] = "mpyscrnlbar07.pcx";
+// GLOBAL: GAMEMD 0x835A88
+extern const char STR_00835A88[] = "mpyscrnlbar06.pcx";
+// GLOBAL: GAMEMD 0x835A9C
+extern const char STR_00835A9C[] = "mpyscrnlbar05.pcx";
+// GLOBAL: GAMEMD 0x835AB0
+extern const char STR_00835AB0[] = "mpyscrnlbar04.pcx";
+// GLOBAL: GAMEMD 0x835AC4
+extern const char STR_00835AC4[] = "mpyscrnlbar03.pcx";
+// GLOBAL: GAMEMD 0x835AD8
+extern const char STR_00835AD8[] = "mpyscrnlbar02.pcx";
+// GLOBAL: GAMEMD 0x835AEC
+extern const char STR_00835AEC[] = "mpyscrnlbar01.pcx";
+// GLOBAL: GAMEMD 0x835B00
+extern const char STR_00835B00[] = "mpsscrnlbar10.pcx";
+// GLOBAL: GAMEMD 0x835B14
+extern const char STR_00835B14[] = "mpsscrnlbar09.pcx";
+// GLOBAL: GAMEMD 0x835B28
+extern const char STR_00835B28[] = "mpsscrnlbar08.pcx";
+// GLOBAL: GAMEMD 0x835B3C
+extern const char STR_00835B3C[] = "mpsscrnlbar07.pcx";
+// GLOBAL: GAMEMD 0x835B50
+extern const char STR_00835B50[] = "mpsscrnlbar06.pcx";
+// GLOBAL: GAMEMD 0x835B64
+extern const char STR_00835B64[] = "mpsscrnlbar05.pcx";
+// GLOBAL: GAMEMD 0x835B78
+extern const char STR_00835B78[] = "mpsscrnlbar04.pcx";
+// GLOBAL: GAMEMD 0x835B8C
+extern const char STR_00835B8C[] = "mpsscrnlbar03.pcx";
+// GLOBAL: GAMEMD 0x835BA0
+extern const char STR_00835BA0[] = "mpsscrnlbar02.pcx";
+// GLOBAL: GAMEMD 0x835BB4
+extern const char STR_00835BB4[] = "mpsscrnlbar01.pcx";
+// GLOBAL: GAMEMD 0x835BC8
+extern const char STR_00835BC8[] = "mpascrnlbar10.pcx";
+// GLOBAL: GAMEMD 0x835BDC
+extern const char STR_00835BDC[] = "mpascrnlbar09.pcx";
+// GLOBAL: GAMEMD 0x835BF0
+extern const char STR_00835BF0[] = "mpascrnlbar08.pcx";
+// GLOBAL: GAMEMD 0x835C04
+extern const char STR_00835C04[] = "mpascrnlbar07.pcx";
+// GLOBAL: GAMEMD 0x835C18
+extern const char STR_00835C18[] = "mpascrnlbar06.pcx";
+// GLOBAL: GAMEMD 0x835C2C
+extern const char STR_00835C2C[] = "mpascrnlbar05.pcx";
+// GLOBAL: GAMEMD 0x835C40
+extern const char STR_00835C40[] = "mpascrnlbar04.pcx";
+// GLOBAL: GAMEMD 0x835C54
+extern const char STR_00835C54[] = "mpascrnlbar03.pcx";
+// GLOBAL: GAMEMD 0x835C68
+extern const char STR_00835C68[] = "mpascrnlbar02.pcx";
+// GLOBAL: GAMEMD 0x835C7C
+extern const char STR_00835C7C[] = "mpascrnlbar01.pcx";
+// GLOBAL: GAMEMD 0x844B24
+extern const char* DAT_00844B24[10] = {STR_00835C7C, STR_00835C68, STR_00835C54, STR_00835C40, STR_00835C2C, STR_00835C18, STR_00835C04, STR_00835BF0, STR_00835BDC, STR_00835BC8};
+// GLOBAL: GAMEMD 0x844B4C
+extern const char* DAT_00844B4C[10] = {STR_00835BB4, STR_00835BA0, STR_00835B8C, STR_00835B78, STR_00835B64, STR_00835B50, STR_00835B3C, STR_00835B28, STR_00835B14, STR_00835B00};
+// GLOBAL: GAMEMD 0x844B74
+extern const char* DAT_00844B74[10] = {STR_00835AEC, STR_00835AD8, STR_00835AC4, STR_00835AB0, STR_00835A9C, STR_00835A88, STR_00835A74, STR_00835A60, STR_00835A4C, STR_00835A38};
 // END defined globals

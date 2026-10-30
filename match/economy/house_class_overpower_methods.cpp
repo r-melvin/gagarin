@@ -73,3 +73,8 @@ void HouseClass::Cheer()
     }
     VocClass::PlayGlobal(Rules->CheerSound, 1.0f, 0x2000, 0);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8EC78
+DynamicVectorClass_TechnoPtr TechnoArray;
+// END defined globals

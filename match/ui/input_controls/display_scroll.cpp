@@ -127,3 +127,10 @@ void ScrollClass::vf_35()
     if (GetCapture() == DisplayCaptureWindow_00B73550)
         ReleaseCapture();
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x884D44
+bool DisplayFlag_00884D44;
+// GLOBAL: GAMEMD 0xA8ED9C
+bool DisplayFlag_00A8ED9C;
+// END defined globals

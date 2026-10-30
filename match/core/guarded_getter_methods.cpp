@@ -57,3 +57,8 @@ void Obj_0042E600::FUN_0042E6D0(ShortPair delta)
     unknown_04 += delta.x;
     unknown_06 += delta.y;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x816204
+extern const char NoEventsString[] = "no events";
+// END defined globals

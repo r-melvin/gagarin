@@ -2608,3 +2608,8 @@ void __cdecl FUN_00538D40(void)
     }
     DAT_00A9F91C = 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8ECC8
+int DisplayCmdSelCount_00A8ECC8;
+// END defined globals

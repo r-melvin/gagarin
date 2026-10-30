@@ -334,4 +334,12 @@ void WWMouseClass::vf_14(int x, int y)
 bool MouseConvertFlag;
 // GLOBAL: GAMEMD 0xB78164
 WWMouseClass* DAT_00B78164;
+// GLOBAL: GAMEMD 0x886FA8
+int MouseViewBoundWidth;
+// GLOBAL: GAMEMD 0x886FB8
+int MouseViewOffset;
+// GLOBAL: GAMEMD 0x887300
+MouseSurfaceView* MouseSidebarSurface;
+// GLOBAL: GAMEMD 0xA8EB7C
+bool MouseDrawFlag;
 // END defined globals

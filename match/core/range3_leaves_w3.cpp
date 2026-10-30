@@ -240,4 +240,6 @@ int DAT_00B77E04;
 int DAT_00B77E08;
 // GLOBAL: GAMEMD 0x822D1C
 int DAT_00822D1C = 25;
+// GLOBAL: GAMEMD 0x817F6C
+extern const char DAT_00817F6C[] = "%d";
 // END defined globals

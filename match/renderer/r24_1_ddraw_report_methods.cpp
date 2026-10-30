@@ -193,4 +193,14 @@ void FUN_004a4700()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x81FC6C
 bool DAT_0081FC6C = true;
+// GLOBAL: GAMEMD 0x81FC70
+extern const char STR_0081FC70[] = "Direct X";
+// GLOBAL: GAMEMD 0x81FC7C
+extern const char STR_0081FC7C[] = "DDRAW.DLL Error code = %08X";
+// GLOBAL: GAMEMD 0x81FC98
+extern const char STR_0081FC98[] = "Direct Draw operation processed without error";
+// GLOBAL: GAMEMD 0x81FCC8
+extern const char STR_0081FCC8[] = "Note";
+// GLOBAL: GAMEMD 0x8A0094
+IDDrawRelease_004A40C0* DAT_008A0094;
 // END defined globals

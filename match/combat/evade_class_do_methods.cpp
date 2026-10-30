@@ -43,3 +43,8 @@ void EvadeClass::Do()
 
     ScenarioInstance_004C6210->At_35A0 = this->CarryOverStage;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83D4C
+House_004C6210* CurrentPlayer_004C6210;
+// END defined globals

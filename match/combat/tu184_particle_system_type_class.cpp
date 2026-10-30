@@ -328,4 +328,16 @@ int ParticleSystemTypeClass::vf_35(int a)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7F0068
 extern const double DAT_007F0068 = 60.0;
+// GLOBAL: GAMEMD 0x81D990
+extern const char STR_0081D990[];
+// GLOBAL: GAMEMD 0x836EF4
+extern const char STR_00836EF4[] = "Railgun";
+// GLOBAL: GAMEMD 0x836EFC
+extern const char STR_00836EFC[] = "Spark";
+// GLOBAL: GAMEMD 0x836F04
+extern const char STR_00836F04[] = "Fire";
+// GLOBAL: GAMEMD 0x836F0C
+extern const char STR_00836F0C[] = "Smoke";
+// GLOBAL: GAMEMD 0x836EE0
+extern const char* const DAT_00836EE0[5] = {STR_00836F0C, STR_0081D990, STR_00836F04, STR_00836EFC, STR_00836EF4};
 // END defined globals

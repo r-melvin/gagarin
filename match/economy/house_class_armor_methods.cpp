@@ -31,3 +31,8 @@ float HouseClass::GetArmorMultiplier(TechnoClass* subject)
 
     return DefaultArmorMultiplier;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E2AC8
+float DefaultArmorMultiplier = 1.0f;
+// END defined globals

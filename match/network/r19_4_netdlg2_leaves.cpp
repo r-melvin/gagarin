@@ -124,3 +124,8 @@ int __fastcall FUN_005DBEC0(const char* name)
     }
     return -1;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8D638
+NetshareKind8Packet_00A8D638 Kind8Packet_00A8D638;
+// END defined globals

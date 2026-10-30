@@ -37,3 +37,10 @@ bool Rules_00672230::Read_Maximums(CCINI_006743D0* pINI)
         Players = pINI->ReadInteger(MaximumsSection_00672230, "Players", Players);
     return true;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839E44
+extern const char STR_00839E44[] = "Maximums";
+// GLOBAL: GAMEMD 0x839E44
+extern const char STR_00839E44[];
+// END defined globals

@@ -159,3 +159,8 @@ void BuildingLightClass::FUN_00435BE0(int, int)
                                  firstLift, secondLift, false);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x887314
+Surface* DAT_00887314;
+// END defined globals

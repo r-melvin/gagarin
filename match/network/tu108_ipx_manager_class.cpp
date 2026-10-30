@@ -639,3 +639,8 @@ void IPXManagerClass::FUN_005430C0(unsigned int age)
         GlobalChannel->vf_17(age);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8DA74
+DynamicVectorClass<NodeNameType*> Players_00A8DA74;
+// END defined globals

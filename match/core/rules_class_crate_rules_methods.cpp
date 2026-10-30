@@ -55,3 +55,10 @@ bool RulesClass::Read_CrateRules(CCINIClass* pINI)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839E9C
+extern const char STR_00839E9C[] = "CrateRules";
+// GLOBAL: GAMEMD 0x839E9C
+extern const char STR_00839E9C[];
+// END defined globals

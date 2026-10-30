@@ -177,4 +177,32 @@ bool CCINI_00474910::WriteMovie(const char* section, const char* key, int index)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B4124
 MovieRecord** DAT_008B4124;
+// GLOBAL: GAMEMD 0x8173D0
+extern const char STR_008173D0[];
+// GLOBAL: GAMEMD 0x81BAD0
+extern const char STR_0081BAD0[] = "CrusherAll";
+// GLOBAL: GAMEMD 0x81BADC
+extern const char STR_0081BADC[] = "WaterBeach";
+// GLOBAL: GAMEMD 0x81BAE8
+extern const char STR_0081BAE8[] = "Water";
+// GLOBAL: GAMEMD 0x81BAF0
+extern const char STR_0081BAF0[] = "Fly";
+// GLOBAL: GAMEMD 0x81BAF4
+extern const char STR_0081BAF4[] = "InfantryDestroyer";
+// GLOBAL: GAMEMD 0x81BB08
+extern const char STR_0081BB08[] = "Subterannean";
+// GLOBAL: GAMEMD 0x81BB18
+extern const char STR_0081BB18[] = "Amphibious";
+// GLOBAL: GAMEMD 0x81BB24
+extern const char STR_0081BB24[] = "AmphibiousCrusher";
+// GLOBAL: GAMEMD 0x81BB38
+extern const char STR_0081BB38[] = "AmphibiousDestroyer";
+// GLOBAL: GAMEMD 0x81BB4C
+extern const char STR_0081BB4C[] = "Destroyer";
+// GLOBAL: GAMEMD 0x81BB58
+extern const char STR_0081BB58[] = "Crusher";
+// GLOBAL: GAMEMD 0x81BB60
+extern const char STR_0081BB60[] = "Normal";
+// GLOBAL: GAMEMD 0x81BA88
+extern const char* DAT_0081BA88[13] = {STR_0081BB60, STR_0081BB58, STR_0081BB4C, STR_0081BB38, STR_0081BB24, STR_0081BB18, STR_0081BB08, STR_008173D0, STR_0081BAF4, STR_0081BAF0, STR_0081BAE8, STR_0081BADC, STR_0081BAD0};
 // END defined globals

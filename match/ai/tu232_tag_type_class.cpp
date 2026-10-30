@@ -383,3 +383,16 @@ bool TagTypeClass::HasZoneEntryByEvent() const
 
 // SYNTHETIC: GAMEMD 0x6E64C0 -- TagTypeClass scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x842CCC
+extern const char STR_00842CCC[] = "%d,%s,%s";
+// GLOBAL: GAMEMD 0x842CD8
+extern const char STR_00842CD8[] = "%s,<none>";
+// GLOBAL: GAMEMD 0x842C3C
+extern const char STR_00842C3C[] = "Tags";
+// GLOBAL: GAMEMD 0x842C3C
+extern const char STR_00842C3C[];
+// GLOBAL: GAMEMD 0x842C3C
+extern const char STR_00842C3C[];
+// END defined globals

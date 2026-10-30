@@ -174,4 +174,6 @@ int GgCapV0;
 int GgCapV1;
 // GLOBAL: GAMEMD 0xABDC50
 BridgeCellClass InvalidCell;
+// GLOBAL: GAMEMD 0x89F688
+const BridgeCellStruct AdjacentCellOffset[8];
 // END defined globals

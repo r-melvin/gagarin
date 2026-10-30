@@ -315,3 +315,8 @@ HRESULT __stdcall AlphaShapeClass::GetClassID(CLSID* pClassID)
 // VectorClass<AlphaShapeClass*>::scalar deleting destructor
 // SYNTHETIC: GAMEMD 0x421B10
 // DynamicVectorClass<AlphaShapeClass*>::scalar deleting destructor
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E99A0
+extern const CLSID DAT_007E99A0 = {0x623C7584, 0x74E7, 0x11D2, {0xB8, 0xF5, 0x00, 0x60, 0x08, 0xC8, 0x09, 0xED}};
+// END defined globals

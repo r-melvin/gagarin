@@ -867,4 +867,42 @@ Rec_0046C4D0** DAT_00A83D9C;
 unsigned int DAT_00A83DA8;
 // GLOBAL: GAMEMD 0x7F0148
 extern const double DAT_007F0148 = 60.0;
+// GLOBAL: GAMEMD 0x81D990
+extern const char STR_0081D990[];
+// GLOBAL: GAMEMD 0x836EF4
+extern const char STR_00836EF4[];
+// GLOBAL: GAMEMD 0x836EFC
+extern const char STR_00836EFC[];
+// GLOBAL: GAMEMD 0x836F04
+extern const char STR_00836F04[];
+// GLOBAL: GAMEMD 0x836F0C
+extern const char STR_00836F0C[];
+// GLOBAL: GAMEMD 0x8173D0
+extern const char STR_008173D0[] = "Infantry";
+// GLOBAL: GAMEMD 0x83724C
+extern const char STR_0083724C[] = "Tech Buildings Only";
+// GLOBAL: GAMEMD 0x837260
+extern const char STR_00837260[] = "Occupiable Buildings Only";
+// GLOBAL: GAMEMD 0x83727C
+extern const char STR_0083727C[] = "Power Facilities";
+// GLOBAL: GAMEMD 0x837290
+extern const char STR_00837290[] = "Base Threats";
+// GLOBAL: GAMEMD 0x8372A0
+extern const char STR_008372A0[] = "Base Defenses";
+// GLOBAL: GAMEMD 0x8372B0
+extern const char STR_008372B0[] = "Factories";
+// GLOBAL: GAMEMD 0x8372BC
+extern const char STR_008372BC[] = "Vehicles - any";
+// GLOBAL: GAMEMD 0x8372CC
+extern const char STR_008372CC[] = "Harvesters";
+// GLOBAL: GAMEMD 0x8372D8
+extern const char STR_008372D8[] = "Buildings - any";
+// GLOBAL: GAMEMD 0x8372E8
+extern const char STR_008372E8[] = "Anything";
+// GLOBAL: GAMEMD 0x8372F4
+extern const char STR_008372F4[] = "N/A";
+// GLOBAL: GAMEMD 0x7F0248
+extern const char* const DAT_007F0248[12] = {STR_008372F4, STR_008372E8, STR_008372D8, STR_008372CC, STR_008173D0, STR_008372BC, STR_008372B0, STR_008372A0, STR_00837290, STR_0083727C, STR_00837260, STR_0083724C};
+// GLOBAL: GAMEMD 0x8370BC
+extern const char* const DAT_008370BC[5] = {STR_0081D990, STR_00836F0C, STR_00836F04, STR_00836EFC, STR_00836EF4};
 // END defined globals

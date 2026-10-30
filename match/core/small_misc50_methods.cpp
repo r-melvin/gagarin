@@ -61,3 +61,11 @@ void FUN_0044FE60(Ini_0044FE60* ini)
     }
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x818CE8
+extern const char STR_00818CE8[] = "Structures";
+// GLOBAL: GAMEMD 0x818CE8
+extern const char STR_00818CE8[];
+// GLOBAL: GAMEMD 0x818CE8
+extern const char STR_00818CE8[];
+// END defined globals

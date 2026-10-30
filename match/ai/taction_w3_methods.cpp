@@ -266,4 +266,6 @@ bool DAT_0088099B;
 bool DAT_0088099C;
 // GLOBAL: GAMEMD 0xA8ED9C
 bool DAT_00A8ED9C;
+// GLOBAL: GAMEMD 0x887640
+TActionPauseTarget* DAT_00887640;
 // END defined globals

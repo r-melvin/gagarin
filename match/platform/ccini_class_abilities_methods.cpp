@@ -31,3 +31,8 @@ AbilitiesStruct CCINIClass::ReadAbilities(const char* section, const char* key,
 
     return def;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x817F70
+extern const char DAT_00817F70[] = ",";
+// END defined globals

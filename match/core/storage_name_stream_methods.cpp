@@ -413,3 +413,8 @@ HRESULT __stdcall FUN_00682F00(IPropertySetStorage* sets, int propid, const FILE
     }
     return hr;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7F7D10
+extern const FMTID DAT_007F7D10 = {0xF29F85E0, 0x4FF9, 0x1068, {0xAB, 0x91, 0x08, 0x00, 0x2B, 0x27, 0xB3, 0xD9}};
+// END defined globals

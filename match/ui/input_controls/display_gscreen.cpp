@@ -33,12 +33,12 @@ GScreenClass::GScreenClass()
 // GScreenClass scalar deleting destructor, emitted from the inline destructor in ui_display_chain.h.
 
 // FUNCTION: GAMEMD 0x4F4240
-long __stdcall GScreenClass::QueryInterface(const DisplayGuid* riid, void** ppv)
+HRESULT __stdcall GScreenClass::QueryInterface(REFIID riid, void** ppv)
 {
     if (ppv == 0)
         return 0x80004003;
-    if (memcmp(riid, &IID_IUnknown_007F7C90, sizeof(DisplayGuid)) != 0
-        && memcmp(riid, &IID_GScreen_007EA6E8, sizeof(DisplayGuid)) != 0)
+    if (memcmp(&riid, &IID_IUnknown_007F7C90, sizeof(DisplayGuid)) != 0
+        && memcmp(&riid, &IID_GScreen_007EA6E8, sizeof(DisplayGuid)) != 0)
         return 0x80004002;
     *ppv = this;
     AddRef();
@@ -173,4 +173,8 @@ DisplayLayer* DisplayLayer_008A0E0C;
 DisplayLayer* DisplayLayer_008A0E10;
 // GLOBAL: GAMEMD 0xA9FA94
 bool DisplayFlag_00A9FA94;
+// GLOBAL: GAMEMD 0xA8EF54
+DisplayGadget* DisplayButtonList_00A8EF54;
+// GLOBAL: GAMEMD 0xA8ED84
+int DisplayCurrentFrame_00A8ED84;
 // END defined globals

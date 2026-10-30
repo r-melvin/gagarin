@@ -46,3 +46,12 @@ void __fastcall FUN_0071CB90(TerrainIniWriteView* ini)
         }
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8172E0
+extern const char STR_008172E0[] = "Terrain";
+// GLOBAL: GAMEMD 0x8172E0
+extern const char STR_008172E0[];
+// GLOBAL: GAMEMD 0x8172E0
+extern const char STR_008172E0[];
+// END defined globals

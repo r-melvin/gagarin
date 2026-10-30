@@ -601,4 +601,6 @@ template class VectorClass<ParasiteClass*>;
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7EF810
 extern const double DAT_007EF810 = 60.0;
+// GLOBAL: GAMEMD 0x7E98A0
+extern const CLSID DAT_007E98A0 = {0x1D016B81, 0xB24B, 0x11D3, {0xBE, 0x16, 0x00, 0x10, 0x4B, 0x62, 0xA1, 0x6C}};
 // END defined globals

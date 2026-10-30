@@ -558,3 +558,8 @@ bool TabClass::Notice(int id, int arg)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB0CB78
+int CommandSlotTable_00B0CB78[25];
+// END defined globals

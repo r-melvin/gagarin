@@ -37,3 +37,10 @@ int __stdcall PriorityQueueClassNode::SurfaceDataCount()
 {
     return (g_SurfaceHeight + 4) * g_SurfaceWidth * 2;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F8DC
+int g_SurfaceWidth;
+// GLOBAL: GAMEMD 0x87F8E0
+int g_SurfaceHeight;
+// END defined globals

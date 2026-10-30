@@ -44,3 +44,10 @@ bool RulesClass::Read_WallModel(CCINIClass* pINI)
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839E64
+extern const char STR_00839E64[] = "WallModel";
+// GLOBAL: GAMEMD 0x839E64
+extern const char STR_00839E64[];
+// END defined globals

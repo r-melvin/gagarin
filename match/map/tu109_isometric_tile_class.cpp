@@ -118,3 +118,10 @@ inline IsometricTileClass::~IsometricTileClass()
     DAT_0087F750.RemoveItem(this);
     reinterpret_cast<MapObjDynVector<void*>*>(&DAT_00B0F670)->RemoveItem(this);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F750
+MapObjDynVector<IsometricTileClass*> DAT_0087F750;
+// GLOBAL: GAMEMD 0xAA06D0
+MapObjCell DAT_00AA06D0;
+// END defined globals

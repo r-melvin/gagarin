@@ -984,4 +984,6 @@ int TeamClass::vf_11()
 int DAT_00A83D4C;
 // GLOBAL: GAMEMD 0x7F46F0
 extern const double DAT_007F46F0 = 60.0;
+// GLOBAL: GAMEMD 0xA83CE0
+VectorClass<void*> DAT_00A83CE0;
 // END defined globals

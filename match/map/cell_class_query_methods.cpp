@@ -124,3 +124,10 @@ ObjectClass* CellClass::GetSomeObject(int a, int b)
 
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B413C
+TunnelClass** TunnelArrayItems;
+// GLOBAL: GAMEMD 0x8B4148
+int TunnelArrayCount;
+// END defined globals

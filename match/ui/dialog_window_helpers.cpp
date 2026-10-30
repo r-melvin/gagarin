@@ -438,4 +438,18 @@ HIMAGELIST DAT_00B730A8;
 int DAT_00849DE0 = 300;
 // GLOBAL: GAMEMD 0x849DE4
 int DAT_00849DE4 = 163;
+// GLOBAL: GAMEMD 0x83370C
+extern const char STR_0083370C[] = "ComboBox";
+// GLOBAL: GAMEMD 0x849E34
+extern const char STR_00849E34[] = "LV%d";
+// GLOBAL: GAMEMD 0x849E3C
+extern const char STR_00849E3C[] = "SysListView32";
+// GLOBAL: GAMEMD 0x849E4C
+extern const char STR_00849E4C[] = "TV%d";
+// GLOBAL: GAMEMD 0x849E54
+extern const char STR_00849E54[] = "SysTreeView32";
+// GLOBAL: GAMEMD 0xB73098
+const char* DAT_00B73098;
+// GLOBAL: GAMEMD 0xB732F0
+HINSTANCE DAT_00B732F0;
 // END defined globals

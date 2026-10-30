@@ -26,3 +26,14 @@ int FUN_00727190(const char* name)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x844A04
+extern const char STR_00844A04[];
+// GLOBAL: GAMEMD 0x844A10
+extern const char STR_00844A10[];
+// GLOBAL: GAMEMD 0x844A20
+extern const char STR_00844A20[];
+// GLOBAL: GAMEMD 0x8449F8
+extern const char* const DAT_008449F8[3] = {STR_00844A20, STR_00844A10, STR_00844A04};
+// END defined globals

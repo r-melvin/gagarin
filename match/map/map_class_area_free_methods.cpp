@@ -56,3 +56,10 @@ bool Map_00586780::IsAreaFree(Rect_00586780* rect, int bit)
 
     return this->InLocalRadar(rect, true);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F924
+Cell_00586780** Cells_00586780;
+// GLOBAL: GAMEMD 0xABDC50
+Cell_00586780 InvalidCell_00586780;
+// END defined globals

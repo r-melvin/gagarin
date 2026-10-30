@@ -121,3 +121,38 @@ bool SuperWeaponTypeClass::vf_25(CCINIClass* ini)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x81834C
+extern const char STR_0081834C[] = ".SHP";
+// GLOBAL: GAMEMD 0x8204FC
+extern const char STR_DEFAULT_ICON[] = "XXICON.SHP";
+// GLOBAL: GAMEMD 0x7F4100
+extern const float DAT_007F4100 = 900.0f;
+// GLOBAL: GAMEMD 0x81BC5C
+extern const char STR_0081BC5C[];
+// GLOBAL: GAMEMD 0x81BC7C
+extern const char STR_0081BC7C[];
+// GLOBAL: GAMEMD 0x81BC88
+extern const char STR_0081BC88[];
+// GLOBAL: GAMEMD 0x81BC9C
+extern const char STR_0081BC9C[];
+// GLOBAL: GAMEMD 0x81BCA8
+extern const char STR_0081BCA8[];
+// GLOBAL: GAMEMD 0x81BCBC
+extern const char STR_0081BCBC[];
+// GLOBAL: GAMEMD 0x81BE1C
+extern const char STR_0081BE1C[];
+// GLOBAL: GAMEMD 0x81BE28
+extern const char STR_0081BE28[];
+// GLOBAL: GAMEMD 0x81BE34
+extern const char STR_0081BE34[];
+// GLOBAL: GAMEMD 0x81BE44
+extern const char STR_0081BE44[];
+// GLOBAL: GAMEMD 0x81BE54
+extern const char STR_0081BE54[];
+// GLOBAL: GAMEMD 0x8425F0
+extern const char STR_008425F0[] = "MultiMissile";
+// GLOBAL: GAMEMD 0x8425C0
+extern const char* const Names_008425C0[12] = {STR_008425F0, STR_0081BE54, STR_0081BE44, STR_0081BE34, STR_0081BE28, STR_0081BE1C, STR_0081BCBC, STR_0081BCA8, STR_0081BC9C, STR_0081BC88, STR_0081BC7C, STR_0081BC5C};
+// END defined globals

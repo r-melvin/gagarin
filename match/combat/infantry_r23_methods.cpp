@@ -96,3 +96,8 @@ int InfantryClass::FUN_00522550()
     int delay = (int)(control->Rate * 900.0);
     return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x7E9AC0
+extern const CLSID DAT_007E9AC0 = {0x92612C46, 0xF71F, 0x11D1, {0xAC, 0x9F, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
+// END defined globals

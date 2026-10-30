@@ -60,3 +60,8 @@ void MapView_4AC960::SetPlaceBeaconMode(int mode)
         Slot_50();
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x89C3B0
+BeaconManagerClass BeaconManager;
+// END defined globals

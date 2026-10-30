@@ -38,3 +38,8 @@ void* LoadScreenView_00642B60::PickCaptionGadget()
     }
     return FindGadgetByCaption_0068CA50(STR_00836EB4, 1);
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x836ECC
+extern const char STR_00836ECC[] = "LightGrey";
+// END defined globals

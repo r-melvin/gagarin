@@ -45,4 +45,10 @@ void ScenarioClass::PauseGame()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8B238
 Session_00683EB0 SessionInstance;
+// GLOBAL: GAMEMD 0x83D834
+unsigned int DAT_0083D834 = 0x4000;
+// GLOBAL: GAMEMD 0x83D8EC
+extern const char DAT_0083D8EC[] = "Paused ElapsedTimer = %ld\n";
+// GLOBAL: GAMEMD 0x887368
+ToolTip_00683EB0* DAT_00887368;
 // END defined globals

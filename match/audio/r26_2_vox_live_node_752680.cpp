@@ -42,3 +42,14 @@ VoxNode* VoxClass::GetActiveVoice()
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xB1D3C8
+VoxQueue_00752480 DAT_00B1D3C8;
+// GLOBAL: GAMEMD 0xB1D3F0
+VoxQueue_00752480 DAT_00B1D3F0;
+// GLOBAL: GAMEMD 0xB1D450
+VoxQueueSlot_00B1D450 DAT_00B1D450[4];
+// GLOBAL: GAMEMD 0xB1D4B8
+VoxNode* DAT_00B1D4B8;
+// END defined globals

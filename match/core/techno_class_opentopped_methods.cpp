@@ -16,3 +16,8 @@ void TechnoClass::EnteredOpenTopped(TechnoClass* who)
         LogicInstance.AddObject(who, false);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F778
+LogicClass LogicInstance;
+// END defined globals

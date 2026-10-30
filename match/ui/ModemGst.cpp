@@ -170,4 +170,6 @@ int DAT_00A8B3AC;
 extern const unsigned long DAT_008316A8[8] = {0xDE2DD, 0x1919FF, 0xE2742A, 0x2ED13E, 0x19A0FF, 0xE6D732, 0xBD2895, 0xEB9AFF};
 // GLOBAL: GAMEMD 0x7EEF44
 extern const unsigned long DefaultSchemeColor = 0x40FFFF;
+// GLOBAL: GAMEMD 0xA8B394
+int PlayerColor;
 // END defined globals

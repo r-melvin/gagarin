@@ -476,3 +476,8 @@ template class VectorClass<unsigned short*>;
 // TEMPLATE: GAMEMD 0x54A6E0
 // DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>::FindItemIndex (slot 4)
 template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xAA102C
+int DAT_00AA102C[5];
+// END defined globals

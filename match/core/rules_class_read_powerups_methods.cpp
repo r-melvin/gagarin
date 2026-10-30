@@ -80,4 +80,84 @@ char PowerupFlag_0089ECC0[19];
 int PowerupMoney_0081DA8C[19] = {50, 20, 1, 3, 5, 5, 20, 1, 1, 10, 10, 10, 1, 3, 1, 1, 1, 1, 1};
 // GLOBAL: GAMEMD 0x81DAD8
 int PowerupAnim_0081DAD8[19] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+// GLOBAL: GAMEMD 0x817278
+extern const char STR_00817278[] = "Tiberium";
+// GLOBAL: GAMEMD 0x81746C
+extern const char STR_0081746C[] = "Unit";
+// GLOBAL: GAMEMD 0x81D98C
+extern const char STR_0081D98C[] = "Pod";
+// GLOBAL: GAMEMD 0x81D990
+extern const char STR_0081D990[] = "Gas";
+// GLOBAL: GAMEMD 0x81D994
+extern const char STR_0081D994[] = "IonStorm";
+// GLOBAL: GAMEMD 0x81D9A0
+extern const char STR_0081D9A0[] = "Veteran";
+// GLOBAL: GAMEMD 0x81D9A8
+extern const char STR_0081D9A8[] = "Invulnerability";
+// GLOBAL: GAMEMD 0x81D9B8
+extern const char STR_0081D9B8[] = "ICBM";
+// GLOBAL: GAMEMD 0x81D9C0
+extern const char STR_0081D9C0[] = "Firepower";
+// GLOBAL: GAMEMD 0x81D9CC
+extern const char STR_0081D9CC[] = "Speed";
+// GLOBAL: GAMEMD 0x81D9D4
+extern const char STR_0081D9D4[] = "Armor";
+// GLOBAL: GAMEMD 0x81D9DC
+extern const char STR_0081D9DC[] = "Reveal";
+// GLOBAL: GAMEMD 0x81D9E4
+extern const char STR_0081D9E4[] = "Darkness";
+// GLOBAL: GAMEMD 0x81D9F0
+extern const char STR_0081D9F0[] = "Squad";
+// GLOBAL: GAMEMD 0x81D9F8
+extern const char STR_0081D9F8[] = "Napalm";
+// GLOBAL: GAMEMD 0x81DA00
+extern const char STR_0081DA00[] = "Explosion";
+// GLOBAL: GAMEMD 0x81DA0C
+extern const char STR_0081DA0C[] = "Cloak";
+// GLOBAL: GAMEMD 0x81DA14
+extern const char STR_0081DA14[] = "HealBase";
+// GLOBAL: GAMEMD 0x81DA20
+extern const char STR_0081DA20[] = "Money";
+// GLOBAL: GAMEMD 0x839D98
+extern const char STR_00839D98[] = "Powerups";
+// GLOBAL: GAMEMD 0x817278
+extern const char STR_00817278[];
+// GLOBAL: GAMEMD 0x81746C
+extern const char STR_0081746C[];
+// GLOBAL: GAMEMD 0x81D98C
+extern const char STR_0081D98C[];
+// GLOBAL: GAMEMD 0x81D990
+extern const char STR_0081D990[];
+// GLOBAL: GAMEMD 0x81D994
+extern const char STR_0081D994[];
+// GLOBAL: GAMEMD 0x81D9A0
+extern const char STR_0081D9A0[];
+// GLOBAL: GAMEMD 0x81D9A8
+extern const char STR_0081D9A8[];
+// GLOBAL: GAMEMD 0x81D9B8
+extern const char STR_0081D9B8[];
+// GLOBAL: GAMEMD 0x81D9C0
+extern const char STR_0081D9C0[];
+// GLOBAL: GAMEMD 0x81D9CC
+extern const char STR_0081D9CC[];
+// GLOBAL: GAMEMD 0x81D9D4
+extern const char STR_0081D9D4[];
+// GLOBAL: GAMEMD 0x81D9DC
+extern const char STR_0081D9DC[];
+// GLOBAL: GAMEMD 0x81D9E4
+extern const char STR_0081D9E4[];
+// GLOBAL: GAMEMD 0x81D9F0
+extern const char STR_0081D9F0[];
+// GLOBAL: GAMEMD 0x81D9F8
+extern const char STR_0081D9F8[];
+// GLOBAL: GAMEMD 0x81DA00
+extern const char STR_0081DA00[];
+// GLOBAL: GAMEMD 0x81DA0C
+extern const char STR_0081DA0C[];
+// GLOBAL: GAMEMD 0x81DA14
+extern const char STR_0081DA14[];
+// GLOBAL: GAMEMD 0x81DA20
+extern const char STR_0081DA20[];
+// GLOBAL: GAMEMD 0x839D98
+extern const char STR_00839D98[];
 // END defined globals

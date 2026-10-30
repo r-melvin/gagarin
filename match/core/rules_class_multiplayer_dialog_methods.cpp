@@ -51,3 +51,10 @@ bool RulesClass::Read_MultiplayerDialogSettings(CCINIClass* pINI)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x83079C
+extern const char STR_0083079C[] = "MultiplayerDialogSettings";
+// GLOBAL: GAMEMD 0x83079C
+extern const char STR_0083079C[];
+// END defined globals

@@ -50,3 +50,18 @@ void TriggerTypeClass::SaveToINIList(CCINI_00727880* ini)
         (view->*view->Vtable->Method)(ini);
     }
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x844A2C
+extern const char STR_00844A2C[] = "Events";
+// GLOBAL: GAMEMD 0x844A34
+extern const char STR_00844A34[] = "Actions";
+// GLOBAL: GAMEMD 0x844A2C
+extern const char STR_00844A2C[];
+// GLOBAL: GAMEMD 0x844A34
+extern const char STR_00844A34[];
+// GLOBAL: GAMEMD 0x844A2C
+extern const char STR_00844A2C[];
+// GLOBAL: GAMEMD 0x844A34
+extern const char STR_00844A34[];
+// END defined globals

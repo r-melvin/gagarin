@@ -57947,7 +57947,7 @@
  {
   "tu": "match/ui/input_controls/display_gscreen.cpp",
   "addr": "0x4F4240",
-  "sym": "?QueryInterface@GScreenClass@@UAGJPBUDisplayGuid@@PAPAX@Z",
+  "sym": "?QueryInterface@GScreenClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5B",
   "name": "GScreenClass::QueryInterface",
   "status": "matched",

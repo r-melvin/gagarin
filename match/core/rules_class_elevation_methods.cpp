@@ -42,3 +42,10 @@ bool RulesClass::Read_ElevationModel(CCINIClass* pINI)
 
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839E70
+extern const char STR_00839E70[] = "ElevationModel";
+// GLOBAL: GAMEMD 0x839E70
+extern const char STR_00839E70[];
+// END defined globals

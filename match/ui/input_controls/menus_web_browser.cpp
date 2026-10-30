@@ -123,4 +123,6 @@ MenusHResult __stdcall WebBrowser::Slot16(const wchar_t* login, const wchar_t* p
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8496B8
 extern const int MenusNavigateArg = 6357069;
+// GLOBAL: GAMEMD 0x815E74
+extern const char MenusPathSuffix[] = "\\";
 // END defined globals

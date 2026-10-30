@@ -116,3 +116,8 @@ int __stdcall FUN_00561350(HWND h, UINT msg, WPARAM w, LPARAM l)
     }
     return 0;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x82A2A8
+extern const char DAT_0082A2A8[] = "D:\\ra2mdpost\\MainOpt.cpp";
+// END defined globals

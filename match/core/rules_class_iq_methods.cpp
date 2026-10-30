@@ -34,3 +34,10 @@ bool Rules_00674240::Read_IQ(CCINI_00674240* pINI)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x824DD8
+extern const char STR_00824DD8[] = "IQ";
+// GLOBAL: GAMEMD 0x824DD8
+extern const char STR_00824DD8[];
+// END defined globals

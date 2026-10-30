@@ -63,3 +63,8 @@ int MessageListClass::Manage()
     }
     return changed;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x887338
+TimerStruct_005D4430 MessageTimer;
+// END defined globals

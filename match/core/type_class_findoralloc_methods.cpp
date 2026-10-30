@@ -59,3 +59,9 @@ WarheadTypeClass* WarheadTypeClass::FindOrAllocate(const char* id)
     return new WarheadTypeClass(id);
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x8B4150
+DynamicVectorClassLayout AnimTypeClassArray;
+// GLOBAL: GAMEMD 0x8874C0
+DynamicVectorClassLayout WarheadTypeClassArray;
+// END defined globals

@@ -33,3 +33,10 @@ bool Rules_006743D0::Read_JumpjetControls(CCINI_006743D0* pINI)
     }
     return false;
 }
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x839D58
+extern const char STR_00839D58[] = "JumpjetControls";
+// GLOBAL: GAMEMD 0x839D58
+extern const char STR_00839D58[];
+// END defined globals

@@ -91,3 +91,9 @@ int FUN_00717A70(LeafObj_0x04* self)
     return self->unknown_04;
 }
 
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x829FF4
+int DAT_00829FF4 = 15;
+// GLOBAL: GAMEMD 0x829FF8
+int DAT_00829FF8 = 5;
+// END defined globals

@@ -894,4 +894,10 @@ SearchPath_0047AE10* DAT_0089E410;
 unsigned int DAT_0089E418;
 // GLOBAL: GAMEMD 0xA8EB7C
 unsigned char SidebarSideFlag_00A8EB7C;
+// GLOBAL: GAMEMD 0x884B8F
+unsigned char SidebarNeedsRedraw_00884B8F;
+// GLOBAL: GAMEMD 0x89E414
+unsigned int DAT_0089E414;
+// GLOBAL: GAMEMD 0x886FA0
+RectangleStruct TacticalRect_00886FA0;
 // END defined globals
