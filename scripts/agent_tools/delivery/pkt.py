@@ -363,8 +363,9 @@ def cmd_finish(a):
             f.write("%s\t%s\t%s\t%s\t%s\n" % (r["addr"], r["sym"], r["pct"], "exact" if r["status"] == "matched" else "partial", r["tu"]))
     # patch: tracked changes + new files the worker added explicitly (never -A)
     L.git(e["WT"], "add", "--", *sorted({r["tu"] for r in rows}))
-    diff = L.git(e["WT"], "diff", "--cached", "--binary", base.rev, "--", ".", ":(exclude)%s" % D.MANIFEST)
-    diff += L.git(e["WT"], "diff", "--binary", "--", ".", ":(exclude)%s" % D.MANIFEST)
+    # one diff of the worktree against the base; untracked new files under match/ and scripts/ are
+    # intent-to-added first so new headers are never dropped
+    diff = D.worktree_patch(e["WT"], base.rev, [D.MANIFEST])
     open(os.path.join(R, "patch.diff"), "w").write(diff)
     nexact = sum(r["status"] == "matched" for r in rows)
     npart = len(rows) - nexact

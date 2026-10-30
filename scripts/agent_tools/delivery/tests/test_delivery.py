@@ -858,5 +858,54 @@ class BindingCorrectionsLint(unittest.TestCase):
         self.assertIsNotNone(D.guard_key_problem("_$E4"))
 
 
+class Toolfix1030b(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+
+    def test_worktree_patch_carries_untracked_new_files(self):
+        import subprocess
+        r = os.path.join(self.tmp, "repo")
+        os.makedirs(os.path.join(r, "match/_layout"))
+        os.makedirs(os.path.join(r, "match/x"))
+        g = lambda *a: subprocess.run(["git", "-C", r, "-c", "user.name=t", "-c", "user.email=t@t", *a], check=True, capture_output=True, text=True).stdout
+        g("init", "-q")
+        open(os.path.join(r, "match/x/a.cpp"), "w").write("a\n")
+        g("add", "."); g("commit", "-qm", "base")
+        base = g("rev-parse", "HEAD").strip()
+        open(os.path.join(r, "match/x/a.cpp"), "w").write("a\nb\n")
+        open(os.path.join(r, "match/_layout/new.h"), "w").write("#pragma once\n")
+        open(os.path.join(r, "match/x/b.asm"), "w").write("; FUNCTION: GAMEMD 0x401000\n")
+        diff = D.worktree_patch(r, base, ["match_manifest.json"])
+        self.assertEqual(sorted(d.path for d in D.split_patch(diff)), ["match/_layout/new.h", "match/x/a.cpp", "match/x/b.asm"])
+        self.assertIn("+#pragma once", diff)
+
+    def test_includes_rule(self):
+        hdr = "match/_layout/vqa_class.h"
+        self.assertNotIn(hdr, tree().paths)
+        src = HEADER + '#include "../_layout/vqa_class.h"\n#include <windows.h>\n'
+        p = packet(self.tmp, {"match/x/user.cpp": src}, [])
+        f = [x for x in lint(p, {"includes"}) if x["rule"] == "includes"]
+        self.assertEqual([x["level"] for x in f], ["E"])
+        p = packet(self.tmp, {"match/x/user.cpp": src, hdr: HEADER + "#pragma once\n"}, [])
+        self.assertEqual([x for x in lint(p, {"includes"}) if x["rule"] == "includes"], [])
+
+    def test_asm_claims_and_compile_driver(self):
+        asm = "; FUNCTION: GAMEMD 0x401000\nfoo proc\nfoo endp\n"
+        self.assertEqual([a for a, _ in D.body_claims(asm)], [0x401000])
+        p = packet(self.tmp, {"match/asm/foo.asm": asm}, [])
+        lt = pktlint.Lint(p, tree(), D.MAIN_REPO)
+        self.assertEqual(lt.patch_claims(), {"match/asm/foo.asm": {0x401000}})
+        calls = []
+        orig = L.run
+        L.run = lambda cmd, **kw: (calls.append(cmd), (1, ""))[1]
+        try:
+            D.compile_tu(self.tmp, "match/asm/foo.asm", os.path.join(self.tmp, "o", "foo.obj"))
+            D.compile_tu(self.tmp, "match/x/foo.cpp", os.path.join(self.tmp, "o", "foo2.obj"))
+        finally:
+            L.run = orig
+        self.assertTrue(calls[0][1].endswith("vc6asm.sh"))
+        self.assertTrue(calls[1][1].endswith("vc6cl.sh"))
+
+
 if __name__ == "__main__":
     unittest.main()

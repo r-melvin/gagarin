@@ -119,7 +119,7 @@ class Rebase:
         return None, sorted(dests.items())
 
     def apply(self):
-        new_cpps = {d.path: d for d in self.diffs if d.is_new and d.path.lower().endswith(L.SRC_EXT)}
+        new_cpps = {d.path: d for d in self.diffs if d.is_new and d.path.lower().endswith(L.SRC_EXT) and not d.path.lower().endswith(".asm")}
         self.merge_plan = {}       # src path -> dest TU
         if self.do_merge:
             for path in new_cpps:
@@ -479,7 +479,7 @@ class Rebase:
                     self.report.setdefault("fixed_lens", []).append(dict(addr=r["addr"], old=r["len"], new="0x%x" % span))
                     r["len"] = "0x%x" % span
         for d in self.diffs:
-            if not (d.is_new and d.path.lower().endswith(L.SRC_EXT)) or d.path in self.merge_plan:
+            if not (d.is_new and d.path.lower().endswith(L.SRC_EXT)) or d.path.lower().endswith(".asm") or d.path in self.merge_plan:
                 continue
             path = os.path.join(self.wt, d.path)
             if not os.path.isfile(path):

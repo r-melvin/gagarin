@@ -31,6 +31,7 @@ enforces; nothing here needs a compiler except --strict.
                  (carry-over) or whose len conflicts with an exact row unless marked as a change
   dupclaims    E a body claim for an address that already has a body in the tree
   order        E FUNCTION claims not in ascending address order within a .cpp
+  includes     E a quoted #include of a match/ file that neither exists at the base nor is added by the patch
   provenance   E new file without SPDX + Provenance header
   spans        E manifest len differs from the CFG-closed span (worklist sizes are padded; use CFG
                  spans) unless listed in spans_ok.txt; extent-audit overrides are honoured
@@ -50,6 +51,7 @@ import argparse
 import concurrent.futures as cf
 import json
 import os
+import posixpath
 import re
 import shutil
 import subprocess
@@ -555,6 +557,31 @@ class Lint:
                 bad = [hex(seq[i]) for i in range(1, len(seq)) if seq[i] < seq[i - 1]][:5]
                 self.err("order", "FUNCTION claims not in ascending address order (first out of order: %s)" % ", ".join(bad), file=d.path)
 
+    def includes(self):
+        """A quoted #include in a match/ source or header that resolves to no file at the base
+        and none the patch adds (an untracked header left out of patch.diff)."""
+        have = set(self.t.paths)
+        for d in self.diffs:
+            if d.is_delete:
+                have.discard(d.path)
+        have |= {d.path for d in self.diffs if d.is_new}
+        for d in self.diffs:
+            if d.is_delete or not d.path.startswith("match/") or not d.path.endswith(L.HDR_EXT + (".cpp", ".c", ".cxx", ".cc")):
+                continue
+            for ln, text in d.added_lines():
+                m = re.match(r'\s*#\s*include\s*"([^"]+)"', text)
+                if not m:
+                    continue
+                inc = m.group(1).replace("\\", "/")
+                rel = posixpath.normpath(posixpath.join(posixpath.dirname(d.path), inc))
+                if rel not in have and not rel.startswith("match/"):
+                    continue            # not a match/ path (vendored/system header): out of scope
+                tail = "/" + posixpath.normpath(inc)
+                if rel in have or inc in have or any(p.endswith(tail) for p in have if p.startswith(("match/", "third_party/"))):
+                    continue
+                self.err("includes", "#include \"%s\" resolves to %s, which neither exists at the base nor is added by the patch "
+                         "(untracked file missing from patch.diff?)" % (m.group(1), rel), file=d.path, line=ln)
+
     def provenance(self):
         for d in self.diffs:
             if d.is_new and d.path.startswith("match/") and d.path.lower().endswith(L.SRC_EXT + L.HDR_EXT):
@@ -771,7 +798,7 @@ class Lint:
 
     def run(self, do_strict=False, jobs=8, rules=None):
         order = ["shape", "paths", "stale", "words", "steering", "sdd", "flags", "thisnull", "views", "migrated", "inits", "delta_rules",
-                 "dupclaims", "order", "provenance", "spans", "bindings", "rekeys", "rea"]
+                 "dupclaims", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea"]
         for name in order:
             if rules and name.replace("_rules", "") not in rules:
                 continue

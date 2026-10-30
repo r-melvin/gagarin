@@ -526,10 +526,31 @@ def compile_tu(tree, tu, obj, log=None):
     os.makedirs(os.path.dirname(obj), exist_ok=True)
     if os.path.exists(obj):
         os.unlink(obj)
-    rc, text = L.run(["bash", os.path.join(tree, "scripts/vc6/vc6cl.sh"), "/Fo" + obj, os.path.basename(tu)],
+    drv = "vc6asm.sh" if tu.endswith(".asm") else "vc6cl.sh"       # hand-written assembly units go through MASM
+    rc, text = L.run(["bash", os.path.join(tree, "scripts/vc6", drv), "/Fo" + obj, os.path.basename(tu)],
                      cwd=os.path.join(tree, os.path.dirname(tu)), env=toolenv(), log=log)
     text = "\n".join(l for l in text.splitlines() if not re.search(r"libEGL|pci id|dri2|wineusb|fixme:", l, re.I))
     return (rc == 0 and os.path.isfile(obj)), text
+
+
+NEW_FILE_ROOTS = ("match", "scripts")
+
+
+def intent_add_new(wt, roots=NEW_FILE_ROOTS):
+    """`git add -N` every untracked, non-ignored file under match/ and scripts/ of worktree `wt`,
+    so a following `git diff <base>` carries it as a new file. Returns the paths."""
+    out = L.git(wt, "ls-files", "--others", "--exclude-standard", "-z", "--", *roots)
+    new = sorted(x for x in out.split("\0") if x)
+    if new:
+        L.git(wt, "add", "-N", "--", *new)
+    return new
+
+
+def worktree_patch(wt, base_rev, exclude=()):
+    """Binary patch of everything the worktree changed against base_rev (staged, unstaged and
+    new files under match/ and scripts/), minus the excluded paths."""
+    intent_add_new(wt)
+    return L.git(wt, "diff", "--binary", base_rev, "--", ".", *[":(exclude)%s" % x for x in exclude])
 
 
 def raw_match(tree, obj, row):
