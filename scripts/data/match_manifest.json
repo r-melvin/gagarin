@@ -25554,7 +25554,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AE980",
   "sym": "?TranslateX@Matrix3D@@QAEXM@Z",
   "len": "0x29",
@@ -25563,7 +25563,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AE9B0",
   "sym": "?TranslateY@Matrix3D@@QAEXM@Z",
   "len": "0x2A",
@@ -25572,7 +25572,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AE9E0",
   "sym": "?TranslateZ@Matrix3D@@QAEXM@Z",
   "len": "0x2A",
@@ -25590,7 +25590,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_more_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AEA10",
   "sym": "?Scale@Matrix3D@@QAEXM@Z",
   "len": "0x5b",
@@ -25599,7 +25599,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_more_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AEB20",
   "sym": "?ScaleZ@Matrix3D@@QAEXM@Z",
   "len": "0x21",
@@ -25608,7 +25608,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_rotate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AF000",
   "sym": "?RotateX@Matrix3D@@QAEXMM@Z",
   "len": "0x75",
@@ -25617,7 +25617,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_rotate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AF120",
   "sym": "?RotateY@Matrix3D@@QAEXMM@Z",
   "len": "0x79",
@@ -25626,7 +25626,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_scale_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AEAD0",
   "sym": "?ScaleX@Matrix3D@@QAEXM@Z",
   "len": "0x1F",
@@ -25635,7 +25635,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_scale_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AEAF0",
   "sym": "?ScaleY@Matrix3D@@QAEXM@Z",
   "len": "0x21",
@@ -25644,7 +25644,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_yrot_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AF410",
   "sym": "?GetYRotation@Matrix3D@@QBENXZ",
   "len": "0x5D",
@@ -28275,7 +28275,7 @@
   "pct": 5.1
  },
  {
-  "tu": "match/renderer/matrix3d_rotate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AEF60",
   "sym": "?RotateX@Matrix3D@@QAEXM@Z",
   "len": "0x9e",
@@ -28284,7 +28284,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/matrix3d_rotate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AF080",
   "sym": "?RotateY@Matrix3D@@QAEXM@Z",
   "len": "0x9c",
@@ -28293,7 +28293,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/matrix3d_rotate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AF1A0",
   "sym": "?RotateZ@Matrix3D@@QAEXM@Z",
   "len": "0x9c",
@@ -28302,7 +28302,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/matrix3d_translate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AE8F0",
   "sym": "?Translate@Matrix3D@@QAEXABUVector3D@@@Z",
   "len": "0x81",
@@ -28311,7 +28311,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/matrix3d_transpose_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AFC20",
   "sym": "?TransposeMatrix@Matrix3D@@SI?AU1@ABU1@@Z",
   "len": "0xB5",
@@ -103466,7 +103466,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/matrix3d_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AE610",
   "sym": "?FUN_005AE610@Matrix3D@@QAEAAU1@ABU1@@Z",
   "len": "0x16",
@@ -144461,7 +144461,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/matrix3d_prerotate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AEC40",
   "sym": "?PreRotateX@Matrix3D@@QAEXM@Z",
   "len": "0x108",
@@ -144470,7 +144470,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/matrix3d_prerotate_methods.cpp",
+  "tu": "match/movement/matrix3d_build_methods.cpp",
   "addr": "0x5AEE50",
   "sym": "?PreRotateZ@Matrix3D@@QAEXM@Z",
   "len": "0x106",
