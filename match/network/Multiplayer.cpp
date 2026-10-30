@@ -570,6 +570,20 @@ int MultiplayerGameMode::vf_17()
     return -1;
 }
 
+// FUNCTION: GAMEMD 0x5D63E0
+// Whether a session map entry is playable in this mode: entries that accept
+// every mode defer to slot 15, otherwise the entry's own mode list decides.
+bool MultiplayerGameMode::FUN_005D63E0(MultiMission* entry)
+{
+    if (entry->FUN_0069ADF0()) {
+        return vf_15();
+    }
+    if (!entry->unknown_17C && FUN_0077D940()) {
+        return false;
+    }
+    return entry->FUN_0069AE10(&unknown_30);
+}
+
 // FUNCTION: GAMEMD 0x5D6430
 int MultiplayerGameMode::vf_27()
 {
@@ -642,6 +656,28 @@ void MultiplayerGameMode::PopulateTeamDropdownForPlayer(void* hWnd, int idx)
     }
 }
 
+// FUNCTION: GAMEMD 0x5D6620
+// The team whose index is `index`, building the default team list first when
+// fewer than three exist.
+MPTeam* MultiplayerGameMode::FUN_005D6620(int index)
+{
+    if (Teams.Count < 3) {
+        for (int i = 0; i < Teams.Count; ++i) {
+            MultiplayerTeam* team = Teams.Items[i];
+            if (team != 0)
+                delete team;
+        }
+        Teams.Clear();
+        CreateMPTeams(Teams);
+    }
+    for (int i = 0; i < Teams.Count; ++i) {
+        MultiplayerTeam* team = Teams.Items[i];
+        if (team != 0 && team->unknown_08 == index)
+            return (MPTeam*)team;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x5D6690
 // The base team list: the observers first, then one team per index.
 void MultiplayerGameMode::CreateMPTeams(DynamicVectorClass<MultiplayerTeam*>& teams)
@@ -649,6 +685,18 @@ void MultiplayerGameMode::CreateMPTeams(DynamicVectorClass<MultiplayerTeam*>& te
     teams.AddItem(new MultiplayerObserverTeam);
     for (int i = 1; i <= DAT_00A8B548; ++i)
         teams.AddItem(FUN_005C1030(i));
+}
+
+// FUNCTION: GAMEMD 0x5D6750
+// Delete every team and empty the team list.
+void MultiplayerGameMode::FUN_005D6750()
+{
+    for (int i = 0; i < Teams.Count; ++i) {
+        MultiplayerTeam* team = Teams.Items[i];
+        if (team != 0)
+            delete team;
+    }
+    Teams.Clear();
 }
 
 // FUNCTION: GAMEMD 0x5D6790
