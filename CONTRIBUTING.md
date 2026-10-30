@@ -173,6 +173,16 @@ names. A name must be attested by the binary, or cross-checked against YRpp or
 Tiberian Sun structure and confirmed by the binary's behaviour. Never transcribe
 names or text from outside sources.
 
+### Generated lookup tables
+
+The sin, asin, tan, atan and square-root tables that `trig_table_functions_004cac40.cpp` reads are
+retail static data, but are not committed as literals. `scripts/vc6/gen_trig_tables.py` holds the formula
+for each (double arithmetic, stored to float by truncation, x87 66-bit pi reduction) and
+`build_project.py` writes the initialiser `.cpp` to `<out>/generated/` and compiles it as
+`match/core/trig_tables_data.cpp`. `gen_trig_tables.py --check` compares every entry with the image at
+`GAMEMD_BINARY`. `compile_all` does not need the generated unit (the readers only declare the tables), so
+the python-less CI image skips it. Do not track a `match/core/trig_tables_data.cpp`.
+
 ## Before opening a PR
 
 - `scripts/vc6/compile_all.sh` passes (CI runs this).

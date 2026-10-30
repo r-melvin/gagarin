@@ -16,10 +16,13 @@ from pathlib import Path
 import subprocess
 import sys
 
-from source_inventory import InventoryError, build_inventory, git_tracked_paths
+import gen_trig_tables
+from source_inventory import InventoryError, build_inventory, git_tracked_paths, read_vc6_default
 
 
 ROOT = Path(__file__).resolve().parents[2]
+GENERATOR = "scripts/vc6/gen_trig_tables.py"
+GENERATED_TU = "match/core/trig_tables_data.cpp"   # object name only; the source is written under <out>/generated
 
 
 def sha256(path):
@@ -35,7 +38,21 @@ def input_hashes(root):
         if path.is_symlink():
             raise InventoryError(f"refusing tracked symlink input: {name}")
         inputs[name] = sha256(path)
+    if (root / GENERATOR).is_file():
+        inputs[GENERATOR] = sha256(root / GENERATOR)   # the generated unit is a function of this file alone
     return inputs
+
+
+def generated_unit(root, out, tracked_units):
+    """Write the table unit the generator describes (gitignored build output) and return its unit record."""
+    if GENERATED_TU in tracked_units:
+        raise InventoryError(f"{GENERATED_TU} is tracked; the generated table unit would collide with it")
+    source = out / "generated" / Path(GENERATED_TU).name
+    source.parent.mkdir(parents=True, exist_ok=True)
+    source.write_text(gen_trig_tables.render(), encoding="utf-8", newline="\n")
+    flags = read_vc6_default((root / "scripts/vc6/vc6cl.sh").read_text(encoding="utf-8"))
+    return {"path": GENERATED_TU, "source": source, "vc6_flags": flags,
+            "vc6_flags_source": "vc6cl.sh DEFAULT_FLAGS", "row_count": 0}
 
 
 def check_index(root, out):
@@ -61,7 +78,7 @@ def check_index(root, out):
 
 def compile_unit(root, out, unit, flags_override=None):
     relative = Path(unit["path"])
-    source = root / relative
+    source = unit.get("source") or root / relative
     obj = out / relative.with_suffix(".obj")
     log = out / relative.with_suffix(".log")
     obj.parent.mkdir(parents=True, exist_ok=True)
@@ -100,6 +117,8 @@ def build(root, out, jobs):
     if status:
         raise InventoryError("source inventory has missing or symlink inputs; run source_inventory.py")
     units = [unit for group in inventory["subsystems"] for unit in group["translation_units"]]
+    if (root / GENERATOR).is_file():
+        units.append(generated_unit(root, out, {unit["path"] for unit in units}))
     inputs = input_hashes(root)
     override = os.environ.get("VC6_FLAGS") or None
     out.mkdir(parents=True, exist_ok=True)
