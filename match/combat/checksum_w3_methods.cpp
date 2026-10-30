@@ -5,6 +5,7 @@
 
 #include "../_layout/super_class.h"
 #include "../_layout/tube_class.h"
+#include "../_layout/tiberium_class.h"
 #include "../movement/waypoint_path_class_methods.h"
 #include "../_layout/super_weapon_type_class.h"
 #include "../_layout/slave_manager_class.h"
@@ -37,27 +38,6 @@ static inline int RttiInfoId(void* object)
     return reinterpret_cast<RttiInfoView*>(static_cast<char*>(object) + 4)->Slot4();
 }
 
-
-class TiberiumClass : public AbstractTypeClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-    char unknown_98[4];          // +0x98
-    int unknown_9C;              // +0x9C
-    char unknown_A0[8];          // +0xA0
-    int unknown_A8;              // +0xA8
-    char unknown_AC[0xC];        // +0xAC
-    int unknown_B8;              // +0xB8
-    int unknown_BC;              // +0xBC
-    int unknown_C0;              // +0xC0
-    char unknown_C4[0x20];       // +0xC4
-    int unknown_E4;              // +0xE4
-    int unknown_E8;              // +0xE8
-};
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_9C) == 0x9C);
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_A8) == 0xA8);
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_B8) == 0xB8);
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_E8) == 0xE8);
 
 // FUNCTION: GAMEMD 0x6CE020
 // Super weapon flags and charge state, plus the attached animation's identity.
@@ -180,9 +160,9 @@ void TiberiumClass::vf_13(Obj_004A1D30* crc)
     AbstractTypeClass::vf_13(crc);
     crc->FUN_004A1D50(unknown_9C);
     crc->FUN_004A1D50(unknown_A8);
-    crc->FUN_004A1D50(unknown_B8);
-    crc->FUN_004A1D50(unknown_BC);
-    crc->FUN_004A1D50(unknown_C0);
+    crc->FUN_004A1D50(Value);
+    crc->FUN_004A1D50(Power);
+    crc->FUN_004A1D50(Color);
     crc->FUN_004A1D50(unknown_E4);
     crc->FUN_004A1D50(unknown_E8);
 }

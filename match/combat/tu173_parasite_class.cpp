@@ -247,10 +247,7 @@ extern const CLSID DAT_007E9850;
 // GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
 extern const CLSID DAT_007E9830;
 
-class ParasiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
+#include "../_layout/parasite_class.h"
 
 #include "../core/vector_class_operations.h"
 

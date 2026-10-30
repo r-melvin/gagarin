@@ -91,11 +91,7 @@ struct NodeNameType;
 class ObjectTypeClass;
 class OverlayClass;
 class OverlayTypeClass;
-class OwnerTalkClass
-{
-public:
-    struct ConnectionListStruct;
-};
+#include "../_layout/owner_talk_class.h"
 class ParasiteClass;
 class ParticleClass;
 class ParticleSystemClass;
@@ -120,18 +116,10 @@ struct ScoutStruct;
 class ScriptTypeClass;
 class ShadowControlClass;
 class SideClass;
-class SlaveManagerClass
-{
-public:
-    struct SlaveControl;
-};
+#include "../_layout/slave_manager_class.h"
 class SmudgeClass;
 class SmudgeTypeClass;
-class SpawnManagerClass
-{
-public:
-    struct SpawnControl;
-};
+#include "../_layout/spawn_manager_class.h"
 class SpotLightClass;
 class SubTitle;
 struct SubzoneConnectionStruct;

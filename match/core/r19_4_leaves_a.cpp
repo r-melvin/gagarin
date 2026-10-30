@@ -20,10 +20,7 @@ struct Kind6Packet_00664750
     char unknown_02[0x150];
 };
 
-class OwnerTalkClass {
-public:
-    struct ConnectionListStruct;
-};
+#include "../_layout/owner_talk_class.h"
 
 // Record fields touched by this file's lookups: +0x00 id byte, +0x28 status byte.
 struct OwnerTalkClass::ConnectionListStruct {

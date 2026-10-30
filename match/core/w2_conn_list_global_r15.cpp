@@ -7,10 +7,7 @@
 // until the list is empty, then runs the inlined vector destructor.
 #include "vector_class_operations.h"
 
-class OwnerTalkClass {
-public:
-    struct ConnectionListStruct;
-};
+#include "../_layout/owner_talk_class.h"
 
 struct ConnListHolder_00B052D0 {
     DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*> List;

@@ -13,7 +13,7 @@
 // NeuronClass's primary vtable 0x7E3DF0 has its deleting destructor at slot 8
 // (+0x20; 0x43A9C0 reseats the NeuronClass vtables and frees the object), so
 // `delete` on an element is the `PUSH 1; CALL [EDX+0x20]` in 0x43A600. Its
-// first eight slots are placeholders here; nothing in this TU calls them.
+// slot 8 is declared by the canonical _layout/neuron_class.h.
 //
 // small_misc38_methods.h models the same object's release loop (0x43A670) as
 // an opaque prefix view; it is left as it is.
@@ -24,19 +24,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "vector_class_operations.h"
 
-class NeuronClass
-{
-public:
-    virtual void Slot00();
-    virtual void Slot04();
-    virtual void Slot08();
-    virtual void Slot0C();
-    virtual void Slot10();
-    virtual void Slot14();
-    virtual void Slot18();
-    virtual void Slot1C();
-    virtual ~NeuronClass();   // +0x20
-};
+#include "../_layout/neuron_class.h"
 
 // VTABLE: GAMEMD 0x7E3E74 -- BrainClass
 class BrainClass

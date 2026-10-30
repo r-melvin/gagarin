@@ -6,10 +6,7 @@
 // Pointer/scalar/enum element: no element layout is claimed.
 #include "vector_class_operations.h"
 
-class OwnerTalkClass {
-public:
-    struct ConnectionListStruct;
-};
+#include "../_layout/owner_talk_class.h"
 
 // TEMPLATE: GAMEMD 0x6647E0
 // DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*>::Slot5 (slot 5)

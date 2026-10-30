@@ -9,6 +9,7 @@
 #include "abstract_type_class.h"
 #include "cell.h"
 #include "frame_timer.h"
+#include "obj_004a1d30.h"
 #include "../core/vector_class.h"
 #include "../core/type_list.h"
 class AnimTypeClass;
@@ -107,6 +108,7 @@ public:
     virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize);     // 7   0x7220A0
     virtual int vf_11();
     virtual int vf_12();
+    virtual void vf_13(Obj_004A1D30* crc);   // 13  0x721DC0 (checksum; body in combat/checksum_w3_methods.cpp)
     // FUNCTION: GAMEMD 0x721A50 -- read the type's rules section.
     virtual bool vf_25(CCINIClass* ini);
     // UIName (+0x60, read by CellClass::GetUIName 0x484FF0) is the AbstractTypeClass member.

@@ -55,6 +55,7 @@
 #include "../_layout/temporal_class.h"
 #include "../_layout/tiberium_class.h"
 #include "../_layout/tube_class.h"
+#include "../_layout/parasite_class.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -167,7 +168,7 @@ extern const CLSID DAT_007E9850;
 // GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
 extern const CLSID DAT_007E9830;
 
-class ParasiteClass {
+class WaypointPathClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -176,10 +177,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 class SuperWeaponTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WaypointPathClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
