@@ -93,7 +93,7 @@ SmudgeTypeClass::SmudgeTypeClass(const char* id)
     Immune = true;
     AllowCellContent = false;
     DynamicVectorAddItemFree(&SmudgeTypeArray, this);
-    ArrayIndex = SmudgeTypeArray.FindIndex(this);
+    ArrayIndex = MapObjFindIndex(&SmudgeTypeArray, this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

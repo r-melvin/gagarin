@@ -53,7 +53,7 @@ double DAT_00B0B748 = DAT_007E1718 / DAT_00B0B760;
 SmudgeClass::SmudgeClass(SmudgeTypeClass* type, const MapObjCoord& coord, int arg3) : Type(type)
 {
     AbstractClass::vf_rtti_5();
-    SmudgeArray.AddItem(this);
+    MapObjAddItem(&SmudgeArray, this);
 
     if (coord.X != SmudgeEmptyCoord.X || coord.Y != SmudgeEmptyCoord.Y || coord.Z != SmudgeEmptyCoord.Z) {
         SmudgeCreateArg = arg3;
@@ -166,7 +166,7 @@ void SmudgeClass::vf_69(Point2D* where, RectangleStruct* clip)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8B1E0
-MapObjDynVector<SmudgeClass*> SmudgeArray;
+DynamicVectorClass<SmudgeClass*> SmudgeArray((AbstractNoInit()));
 // GLOBAL: GAMEMD 0xB0B728
 MapObjCoord SmudgeEmptyCoord;
 // GLOBAL: GAMEMD 0x83FFD8

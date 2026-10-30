@@ -21,7 +21,7 @@
 #include "../../_layout/geometry2d.h"
 
 // GLOBAL: GAMEMD 0xA8B1E0 - SmudgeClass::Array, every live smudge (vptr 0x7E9DA4).
-extern MapObjDynVector<SmudgeClass*> SmudgeArray;
+extern DynamicVectorClass<SmudgeClass*> SmudgeArray;
 
 // GLOBAL: GAMEMD 0xB0B728 - the all-zero coordinate the constructor compares its coordinate with.
 extern MapObjCoord SmudgeEmptyCoord;

@@ -105,7 +105,7 @@ TerrainClass::TerrainClass(TerrainTypeClass* type, const CellStruct* cell)
             ObjectClass::vf_62();
     }
     SetRate(0);
-    TerrainArray.AddItem(this);
+    MapObjAddItem(&TerrainArray, this);
     int id = vf_rtti_4();
     TerrainAbstractIndex.AddIndexInline(id, this);
 }
@@ -115,7 +115,7 @@ TerrainClass::TerrainClass(TerrainTypeClass* type, const CellStruct* cell)
 TerrainClass::TerrainClass()
     : Type(0), IsBurning(false), TimeToDie(false), unknown_D0(0), unknown_D4(0), ScreenPos(0, 0)
 {
-    TerrainArray.AddItem(this);
+    MapObjAddItem(&TerrainArray, this);
     int id = vf_rtti_4();
     TerrainAbstractIndex.AddIndexInline(id, this);
 }

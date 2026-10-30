@@ -27,12 +27,12 @@ class IsometricTileClass;
 
 // GLOBAL: GAMEMD 0x87F750 - every live IsometricTileClass (the constructor appends, the
 // destructor removes).
-extern MapObjDynVector<IsometricTileClass*> DAT_0087F750;
+extern DynamicVectorClass<IsometricTileClass*> DAT_0087F750;
 
 // GLOBAL: GAMEMD 0xA8ED28 - the tile type vector the constructor indexes. Its elements are
 // IsometricTileTypeClass objects; they are held here through their ObjectTypeClass-shaped base,
 // which is what slot 34 returns.
-extern MapObjDynVector<ObjectTypeClass*> DAT_00A8ED28;
+extern DynamicVectorClass<ObjectTypeClass*> DAT_00A8ED28;
 
 // GLOBAL: GAMEMD 0xAA06D0 - the cell value meaning "no placement" for the constructor.
 extern MapObjCell DAT_00AA06D0;

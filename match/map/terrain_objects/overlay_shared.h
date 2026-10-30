@@ -45,10 +45,10 @@ inline OverlayStaticCell OverlayMakeStaticCell(short x, short y)
 }
 
 // GLOBAL: GAMEMD 0xA8EC50 - OverlayClass::Array, every live overlay (DynamicVectorClass; read-only here).
-extern MapObjDynVector<OverlayClass*> OverlayArray;
+extern DynamicVectorClass<OverlayClass*> OverlayArray;
 // GLOBAL: GAMEMD 0xA83D80 - existing OverlayTypeClass_Array object; this typed view adds vector helpers.
 extern DynamicVectorClassLayout OverlayTypeClass_Array;
-#define OverlayTypeArray (*((MapObjDynVector<OverlayTypeClass*>*)&OverlayTypeClass_Array))
+#define OverlayTypeArray (*((DynamicVectorClass<OverlayTypeClass*>*)&OverlayTypeClass_Array))
 // GLOBAL: GAMEMD 0xA83D84 - retain the established direct Items-symbol view.
 extern OverlayTypeClass** DAT_00A83D84;
 #define OverlayTypeItems DAT_00A83D84

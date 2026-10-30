@@ -28,7 +28,7 @@
 #include "../../_layout/geometry2d.h"
 
 // GLOBAL: GAMEMD 0xA8EC18 - SmudgeTypeClass::Array, every smudge type (vptr 0x7E9DC4 side).
-extern MapObjDynVector<SmudgeTypeClass*> SmudgeTypeArray;
+extern DynamicVectorClass<SmudgeTypeClass*> SmudgeTypeArray;
 
 // VTABLE: GAMEMD 0x7F3528 (IPersistStream side) and GAMEMD 0x7F350C / 0x7F3504 / 0x7F34FC
 class SmudgeTypeClass : public ObjectTypeClass

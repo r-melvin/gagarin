@@ -114,8 +114,8 @@ TerrainTypeClass::TerrainTypeClass(const char* id) throw()
     RadarInvisible = true;
     LegalTarget = false;
     Insignificant = true;
-    TerrainTypeArray.AddItemEarlyOut(this);
-    ArrayIndex = TerrainTypeArray.FindIndex(this);
+    MapObjAddItemEarlyOut(&TerrainTypeArray, this);
+    ArrayIndex = MapObjFindIndex(&TerrainTypeArray, this);
     Strength = -1;
     Armor = 6;
 }

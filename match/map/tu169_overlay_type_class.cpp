@@ -80,8 +80,8 @@ OverlayTypeClass::OverlayTypeClass(const char* id)
     Selectable = 0;
     Insignificant = 1;
     AllowCellContent = 0;
-    OverlayTypeArray.AddItemEarlyOut(this);
-    ArrayIndex = OverlayTypeArray.FindIndex(this);
+    MapObjAddItemEarlyOut(&OverlayTypeArray, this);
+    ArrayIndex = MapObjFindIndex(&OverlayTypeArray, this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -23,9 +23,9 @@
 
 // GLOBAL: GAMEMD 0xA8E318 - the existing TerrainTypeClassArray storage.
 extern DynamicVectorClassLayout TerrainTypeClassArray;
-#define TerrainTypeArray (*((MapObjDynVector<TerrainTypeClass*>*)&TerrainTypeClassArray))
+#define TerrainTypeArray (*((DynamicVectorClass<TerrainTypeClass*>*)&TerrainTypeClassArray))
 // GLOBAL: GAMEMD 0xA8E988 - TerrainClass::Array, every live terrain object.
-extern MapObjDynVector<TerrainClass*> TerrainArray;
+extern DynamicVectorClass<TerrainClass*> TerrainArray;
 
 // GLOBAL: GAMEMD 0xB0ECF0 - the empty cell the placing constructor compares its cell against.
 extern MapObjCell TerrainEmptyCellValue;

@@ -41,7 +41,7 @@ IsometricTileClass::IsometricTileClass(int typeIndex, const MapObjCell* cell) : 
         MapObjCoord coord((cell->X << 8) + 0x80, (cell->Y << 8) + 0x80, 0);
         vf_54(coord, 0);
     }
-    DAT_0087F750.AddItem(this);
+    MapObjAddItem(&DAT_0087F750, this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -140,12 +140,10 @@ inline IsometricTileClass::~IsometricTileClass()
     vf_53();
     Type = 0;
     DAT_0087F750.RemoveItem(this);
-    reinterpret_cast<MapObjDynVector<void*>*>(&DAT_00B0F670)->RemoveItem(this);
+    reinterpret_cast<DynamicVectorClass<void*>*>(&DAT_00B0F670)->RemoveItem((void*)this);
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x87F750
-MapObjDynVector<IsometricTileClass*> DAT_0087F750;
 // GLOBAL: GAMEMD 0xAA06D0
 MapObjCell DAT_00AA06D0;
 // END defined globals

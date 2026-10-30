@@ -75,7 +75,7 @@ OverlayClass::OverlayClass(OverlayTypeClass* type, const CellStruct& cell, int a
     : Type(type)
 {
     AbstractClass::vf_rtti_5();
-    OverlayArray.AddItem(this);
+    MapObjAddItem(&OverlayArray, this);
 
     if (cell.X != OverlayNoCell.X || cell.Y != OverlayNoCell.Y)
     {
@@ -487,7 +487,7 @@ void OverlayClass::vf_70(Point2D* where, RectangleStruct* clip)
     const CoordStruct& location = Location;
     MapObjCoord heightCoord = location;
     int height = MapObjHeightScale(MapObjMap.GetHeight(&heightCoord));
-    int typeIndex = OverlayTypeArray.FindIndex(Type);
+    int typeIndex = MapObjFindIndex(&OverlayTypeArray, Type);
     OverlayTypeClass* type = OverlayTypeArray.Items[typeIndex];
 
     int yAdjust = 0;
@@ -504,7 +504,7 @@ void OverlayClass::vf_70(Point2D* where, RectangleStruct* clip)
     point.Y += MapObjClipRect.Y;
 
     if (Type->Tiberium) {
-        int index = OverlayTypeArray.FindIndex(Type);
+        int index = MapObjFindIndex(&OverlayTypeArray, Type);
         OverlayTiberiumView* tiberium = OverlayTiberiumTypes[OverlayTiberiumIndexOf(index)];
         OverlayPaletteView* palette = OverlayPalettes[tiberium->PaletteIndex];
         void* tiberiumShape = OverlayTypeArray.Items[tiberium->unknown_E0->ArrayIndex]->vf_39();
@@ -634,7 +634,7 @@ void OverlayClass::vf_69(Point2D* where, RectangleStruct* clip)
 // GLOBAL: GAMEMD 0xA83D80
 DynamicVectorClassLayout OverlayTypeClass_Array;
 // GLOBAL: GAMEMD 0xA8EC50
-MapObjDynVector<OverlayClass*> OverlayArray;
+DynamicVectorClass<OverlayClass*> OverlayArray((AbstractNoInit()));
 // GLOBAL: GAMEMD 0xAC1528
 MapObjCell OverlayNoCell;
 // GLOBAL: GAMEMD 0x8333BC
