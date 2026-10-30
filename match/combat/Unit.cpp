@@ -75,7 +75,11 @@ extern double DAT_00B1D0B0;
 #include "../_layout/temporal_class.h"
 #include "../_layout/obj_004a1d30.h"
 #include "../_layout/object_type_class.h"
+#include "weapon_type_class.h"
 #include "../_layout/team_class.h"
+
+// GLOBAL: GAMEMD 0xA8B230 -- the scenario.
+extern ScenarioClass* DAT_00A8B230;
 
 // Native error helper at 0x7DC720; the Unit call passes 0x80004003.
 void __stdcall FUN_007DC720(unsigned int hr);
@@ -188,6 +192,31 @@ bool UnitClass::vf_313()
     return cell->FUN_00487C10();
 }
 
+// FUNCTION: GAMEMD 0x737BA0
+// Place the unit on the map, face it, then restart its stage timer; a unit that is
+// neither small nor large visceroid starts at a random stage.
+bool UnitClass::vf_54(const CoordStruct& coord, int a2)
+{
+    if (FootClass::vf_54(coord, a2)) {
+        DirStruct dir;
+        dir.Raw = (unsigned short)((a2 & 0xFF) << 8);
+        SecondaryFacing.FUN_004C9300(&dir);
+        if (Cloakable && !IsInPlayfield) {
+            CloakState = 2;
+        }
+        UnitTypeClass* type = static_cast<UnitTypeClass*>(this->Type);
+        if (!type->SmallVisceroid && !type->LargeVisceroid) {
+            StageClass::Value = 0;
+            SetRate(0);
+            return true;
+        }
+        StageClass::Value = DAT_00A8B230->unknown_0218.RandomRanged(0, 0x1D);
+        SetRate(1);
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x7393B0
 // Empty function.
 void __cdecl FUN_007393B0()
@@ -264,9 +293,6 @@ struct UnitSlaveManagerView
 
 // GLOBAL: GAMEMD 0x8871E0 -- the rules.
 extern RulesClass* DAT_008871E0;
-
-// GLOBAL: GAMEMD 0xA8B230 -- the scenario.
-extern ScenarioClass* DAT_00A8B230;
 
 // The mission control record (canonical view).
 #include "../core/mission_class_methods.h"
@@ -429,6 +455,29 @@ double UnitClass::vf_173()
         return DAT_007E2800;
     }
     return (double)Tiberium.GetTotalAmount() / static_cast<UnitTypeClass*>(this->Type)->Storage;
+}
+
+// FUNCTION: GAMEMD 0x743190
+// Target scan. A human-run unit that must deploy to fire scans nothing; otherwise
+// the threat mask grows by what the weapons in use can hit before the FootClass scan.
+AbstractClass* UnitClass::vf_241(unsigned int threat, CoordStruct* coord, bool a3)
+{
+    if (Owner->IsControlledByHuman() && static_cast<UnitTypeClass*>(Type)->DeployToFire) {
+        return 0;
+    }
+    if ((threat & 0x1B978) == 0) {
+        if (FUN_0070DC60() && !static_cast<UnitTypeClass*>(Type)->IsGattling) {
+            threat |= vf_254(FUN_0070DD20())->WeaponType->AllowedThreats();
+        } else {
+            if (vf_254(0)->WeaponType) {
+                threat |= vf_254(0)->WeaponType->AllowedThreats();
+            }
+            if (vf_254(1)->WeaponType) {
+                threat |= vf_254(1)->WeaponType->AllowedThreats();
+            }
+        }
+    }
+    return FootClass::vf_241(threat, coord, a3);
 }
 
 // FUNCTION: GAMEMD 0x7438B0

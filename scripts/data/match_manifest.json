@@ -148017,5 +148017,23 @@
   "name": "Owner_00626C60::FUN_006274F0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Unit.cpp",
+  "addr": "0x737BA0",
+  "sym": "?vf_54@UnitClass@@UAE_NABUCoordStruct@@H@Z",
+  "len": "0xe8",
+  "name": "UnitClass::vf_54",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Unit.cpp",
+  "addr": "0x743190",
+  "sym": "?vf_241@UnitClass@@UAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z",
+  "len": "0xd6",
+  "name": "UnitClass::vf_241",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

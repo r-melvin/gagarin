@@ -82,6 +82,8 @@ public:
     virtual DirStruct vf_194();                         // 194 0x740F80
     virtual ObjectTypeClass* vf_51(bool a1);            // 51  0x7465B0
     virtual HouseClass* vf_52(bool a1);                 // 52  0x7465F0
+    virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x743190
+    virtual bool vf_54(const CoordStruct& coord, int a2); // 54  0x737BA0
     virtual void vf_284();                              // 284 0x746720
     virtual int vf_151();                               // 151 0x740B10
     virtual bool vf_53();                               // 53  0x7440B0
