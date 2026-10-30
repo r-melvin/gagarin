@@ -332,6 +332,7 @@ struct ColorTableFill_00626020
 GG_STATIC_ASSERT(sizeof(ColorTableFill_00626020) == 0x300);
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "../_rt/gg_static_assert.h"
 
 struct Rect_00621D30
@@ -382,6 +383,8 @@ extern "C" void __cdecl gg_free(void*);
 #include "../_layout/obj_007af000.h"
 
 #include "../core/trivial_tu171_methods.h"
+
+#include "../_layout/shp_struct.h"
 
 #include "../core/vector_class_operations.h"
 
@@ -3622,6 +3625,114 @@ bool FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd)
     return false;
 }
 
+// Unclaimed (below partial bar), GAMEMD 0x609E20  FUN_00609E20 (__fastcall)
+// Whether the control id is one of the buttons that belongs to the dialog
+// category stored for the key.
+int FUN_00609E20(int nKey, GG_HWND hCtl)
+{
+    MapValue_00602B90* value = Inline_00600CA0(nKey);
+    int category = value ? value->Field6C : 0;
+    int nCtlID = GetDlgCtrlID(hCtl);
+
+    if (category == 0x10D)
+    {
+        if (nCtlID == 0x5C1 || nCtlID == 0x5C0)
+            return true;
+    }
+    else if (category == 0xD9)
+    {
+        if (nCtlID == 0x5C1 || nCtlID == 0x6CA)
+            return true;
+    }
+    else if (category == 0xA3)
+    {
+        if (nCtlID == 0x4CF || nCtlID == 0x4D0)
+            return true;
+    }
+    else if (category == 0x105)
+    {
+        if (nCtlID == 0x620 || nCtlID == 0x621)
+            return true;
+    }
+    else if (category == 0xF0)
+        return nCtlID == 0x5C0;
+    else if (category == 0xCE)
+        return nCtlID == 0x5AE;
+    else if (category == 0x120)
+    {
+        if (nCtlID == 0x5AE || nCtlID == 0x2)
+            return true;
+    }
+    else if (category == 0x121)
+    {
+        if (nCtlID == 0x5AE || nCtlID == 0x5AF || nCtlID == 0x2)
+            return true;
+    }
+    else if (category == 0xEA)
+    {
+        if (nCtlID == 0x640 || nCtlID == 0x642 || nCtlID == 0x641 || nCtlID == 0x643 || nCtlID == 0x644 || nCtlID == 0x645 || nCtlID == 0x646 || nCtlID == 0x647)
+            return true;
+    }
+    else if (category == 0xB8)
+    {
+        if (nCtlID == 0x531 || nCtlID == 0x535)
+            return true;
+    }
+    else if (category == 0x11F)
+        return nCtlID == 0x5C0;
+    else if (category == 0x115)
+    {
+        if (nCtlID == 0x702 || nCtlID == 0x686)
+            return true;
+    }
+    else if (category == 0xD3)
+        return nCtlID == 0x2;
+    else if (category == 0xCF)
+    {
+        if (nCtlID == 0x5C2 || nCtlID == 0x2)
+            return true;
+    }
+    else if (category == 0xC3)
+    {
+        if (nCtlID == 0x1 || nCtlID == 0x2)
+            return true;
+    }
+    else if (category == 0x11B)
+    {
+        if (nCtlID == 0x5C2 || nCtlID == 0x686)
+            return true;
+    }
+    else if (category == 0xE1)
+    {
+        if (nCtlID == 0x1 || nCtlID == 0x2)
+            return true;
+    }
+    else if (category == 0x11E)
+    {
+        if (nCtlID == 0x5C2 || nCtlID == 0x686)
+            return true;
+    }
+    else if (category == 0xC4)
+    {
+        if (nCtlID == 0x58D || nCtlID == 0x58E)
+            return true;
+    }
+    else if (category == 0xD0)
+        return nCtlID == 0x1;
+    else if (category == 0xFC)
+    {
+        if (nCtlID == 0x1 || nCtlID == 0x2)
+            return true;
+    }
+    else if (category == 0x126)
+    {
+        if (nCtlID == 0x6 || nCtlID == 0x7)
+            return true;
+    }
+
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x60A100  FUN_0060A100
 bool FUN_0060A100(int nKey, GG_HWND hCtl)
 {
@@ -3772,10 +3883,8 @@ void FUN_0060B1D0(GG_HWND hWnd, RectangleStruct* pRect)
     int nShiftY = 0;
     if (!bFills)
     {
-        unsigned nParentY = (nParentH - DAT_007F5BF0) / 2;
-        nParentY = (((int)nParentY < 0) - 1) & nParentY;
-        unsigned nDesignY = (pRect->Y - DAT_007F5BF0) / 2;
-        nDesignY = nDesignY & (((int)nDesignY < 0) - 1);
+        int nParentY = Inline_DockMargin(false, nParentH, DAT_007F5BF0);
+        int nDesignY = Inline_DockMargin(false, pRect->Y, DAT_007F5BF0);
         nShiftY = nParentY - nDesignY;
     }
 
@@ -3791,6 +3900,91 @@ void FUN_0060B1D0(GG_HWND hWnd, RectangleStruct* pRect)
 
     MoveWindow(hWnd, (((rcParent.right - nInset) - nWidth) - nMarginX) - rcParent.left,
                (rcSelf.top - rcParent.top) + nShiftY, nWidth, nHeight, 0);
+}
+
+// GLOBAL: GAMEMD 0xB0FAC4 / 0xB0F9EC -- shape headers (width +2, height +4).
+extern SHPStruct* DAT_00B0FAC4;
+extern SHPStruct* DAT_00B0F9EC;
+// GLOBAL: GAMEMD 0xB0FC24 / 0xB0FC28 / 0xB0FC4C -- screen rectangles (Y +4, step +0xC).
+extern RectangleStruct* DAT_00B0FC24;
+extern RectangleStruct* DAT_00B0FC28;
+extern RectangleStruct* DAT_00B0FC4C;
+
+// Unclaimed (below partial bar), GAMEMD 0x60B350  FUN_0060B350 (__fastcall)
+// Docks a control at the bottom-right of its parent: against the margin
+// grid when the layout is centred, against the full-screen shape otherwise.
+void FUN_0060B350(GG_HWND hWnd)
+{
+    GG_RECT rcParent;
+    GG_RECT rcSelf;
+
+    GG_HWND hParent = GetParent(hWnd);
+    bool bFills = Session_00A8B238.FUN_0069BBE0();
+    GetWindowRect(hParent, &rcParent);
+    GetWindowRect(hWnd, &rcSelf);
+
+    int nParentW = rcParent.right - rcParent.left;
+    int nX;
+    int nY;
+    int nWidth;
+    int nHeight;
+
+    if (!bFills)
+    {
+        unsigned nMarginX = (nParentW - DAT_007F5BE4) / 2;
+        nMarginX = (((int)nMarginX < 0) - 1) & nMarginX;
+        nHeight = DAT_00B0FAC4->unknown_04;
+        nWidth = DAT_00B0FAC4->unknown_02;
+        nX = ((rcParent.right - nMarginX) - rcParent.left) - 0x9C;
+        nY = ((DAT_00B0FC28->Y - DAT_00B0FC24->Y) / DAT_00B0FC24->Height - 1) * DAT_00B0FC24->Height
+             + DAT_00B0FC24->Y;
+    }
+    else
+    {
+        nWidth = DAT_00B0F9EC->unknown_02;
+        nHeight = DAT_00B0F9EC->unknown_04;
+        nX = nParentW - 0x93;
+        nY = DAT_00B0FC4C->Y - nHeight;
+    }
+
+    MoveWindow(hWnd, nX, nY, nWidth, nHeight, 0);
+}
+
+// GLOBAL: GAMEMD 0xB0FC50 -- screen rectangle (Y +4).
+extern RectangleStruct* DAT_00B0FC50;
+
+// Unclaimed (below partial bar), GAMEMD 0x60B420  FUN_0060B420 (__fastcall)
+// Docks a control at the bottom-right of its parent's client area, inset by
+// the per-control value (or half the spare design width).
+void FUN_0060B420(GG_HWND hWnd)
+{
+    GG_RECT rcParent;
+    GG_RECT rcSelf;
+
+    GG_HWND hParent = GetParent(hWnd);
+    bool bFills = Session_00A8B238.FUN_0069BBE0();
+    GetClientRect(hParent, &rcParent);
+    GetWindowRect(hWnd, &rcSelf);
+
+    unsigned nMarginX = Inline_DockMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
+
+    int nWidth = rcSelf.right - rcSelf.left;
+    int nInset;
+    MapValue_00602B90* value = Inline_00600CA0((int)hWnd);
+
+    if (value && value->FieldDC)
+        nInset = value->FieldDC;
+    else
+        nInset = (DAT_007F5BF8 - nWidth) / 2;
+
+    int nBottom;
+    if (!bFills)
+        nBottom = DAT_00B0FC28->Y;
+    else
+        nBottom = DAT_00B0FC50->Y;
+
+    MoveWindow(hWnd, (((rcParent.right - nInset) - nWidth) - nMarginX) - rcParent.left,
+               nBottom - (rcSelf.bottom - rcSelf.top), nWidth, rcSelf.bottom - rcSelf.top, 0);
 }
 
 // FUNCTION: GAMEMD 0x60B550  FUN_0060B550 (__fastcall)
@@ -3816,6 +4010,40 @@ void FUN_0060B550(GG_HWND hWnd)
     int nY = (rcParent.bottom - nHeight) - nMarginY - 1;
 
     MoveWindow(hWnd, nX, nY, nWidth, nHeight, 0);
+}
+
+// Unclaimed (below partial bar), GAMEMD 0x60B610  FUN_0060B610 (__fastcall)
+// Docks a control against the bottom-right of its parent's client area, inset
+// by the per-control value (or half the spare design width), on the lower edge
+// of the layout rectangle.
+void FUN_0060B610(GG_HWND hWnd)
+{
+    GG_RECT rcParent;
+    GG_RECT rcSelf;
+
+    GG_HWND hParent = GetParent(hWnd);
+    bool bFills = Session_00A8B238.FUN_0069BBE0();
+    GetClientRect(hParent, &rcParent);
+    GetWindowRect(hWnd, &rcSelf);
+
+    unsigned nMarginX = Inline_DockMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
+
+    int nWidth = rcSelf.right - rcSelf.left;
+    int nHeight = rcSelf.bottom - rcSelf.top;
+    int nInset;
+    MapValue_00602B90* value = Inline_00600CA0((int)hWnd);
+
+    if (value && value->FieldDC)
+        nInset = value->FieldDC;
+    else
+        nInset = (DAT_007F5BF8 - nWidth) / 2;
+
+    RectangleStruct* pLayout = DAT_00B0FC50;
+    if (!bFills)
+        pLayout = DAT_00B0FC28;
+
+    MoveWindow(hWnd, (((rcParent.right - nInset) - nWidth) - nMarginX) - rcParent.left,
+               (pLayout->Height + pLayout->Y) - nHeight, nWidth, nHeight, 0);
 }
 
 // FUNCTION: GAMEMD 0x60B740  FUN_0060B740
@@ -4315,6 +4543,115 @@ void FUN_00612910()
     gg_free(block);
 }
 
+// FUNCTION: GAMEMD 0x620050 (decl; reloc) -- line between two points.
+void __fastcall FUN_00620050(void* pSurface, const Point2D* pFrom, const Point2D* pTo, int nColorA, int nColorB);
+
+// Unclaimed (below partial bar), GAMEMD 0x6205D0  FUN_006205D0 (__fastcall)
+// Bevelled frame: nWidth concentric rings, each drawn as four lines (top and
+// left in one shade, bottom and right in the other).
+void __fastcall FUN_006205D0(void* pSurface, const RectangleStruct* pRect, int nRaised, int nWidth,
+                             int nColorTop, int nColorBottom, int nColorLeft, int nColorRight)
+{
+    int aShade[2] = { 0xFFFF, 0 };
+    if (nRaised == 0)
+    {
+        aShade[1] = 0xFFFF;
+        aShade[0] = 0;
+    }
+
+    for (int i = 0; i < nWidth; i++)
+    {
+        Point2D e1, s1;
+        e1.X = pRect->X + pRect->Width - i - 2;
+        s1.X = pRect->X + i;
+        e1.Y = pRect->Y + i;
+        s1.Y = e1.Y;
+        FUN_00620050(pSurface, &s1, &e1, aShade[0], nColorTop);
+
+        Point2D e2, s2;
+        e2.X = pRect->X + pRect->Width - i - 1;
+        s2.X = pRect->X + i;
+        e2.Y = pRect->Y + pRect->Height - i - 1;
+        s2.Y = e2.Y;
+        FUN_00620050(pSurface, &s2, &e2, aShade[1], nColorBottom);
+
+        Point2D e3, s3;
+        e3.X = pRect->X + i;
+        s3.Y = pRect->Y + i + 1;
+        e3.Y = pRect->Y + pRect->Height - i - 1;
+        s3.X = e3.X;
+        FUN_00620050(pSurface, &s3, &e3, aShade[0], nColorLeft);
+
+        Point2D e4, s4;
+        e4.X = pRect->X + pRect->Width - i - 1;
+        s4.Y = pRect->Y + i;
+        e4.Y = pRect->Y + pRect->Height - i - 2;
+        s4.X = e4.X;
+        FUN_00620050(pSurface, &s4, &e4, aShade[1], nColorRight);
+    }
+}
+
+// FUNCTION: GAMEMD 0x620720  FUN_00620720 (__fastcall)
+// Draws a scroll-arrow image (up or down, released or pressed; the leading "g"
+// of its file name is dropped when nPrefix is zero) at the given rectangle.
+void FUN_00620720(Surface* pSurface, RectangleStruct* pRect, int nUp, int nPressed, char nPrefix)
+{
+    if (pSurface)
+    {
+        char szName[32];
+        char cState = 'r';
+        if (nPressed)
+            cState = 'p';
+
+        if (nUp)
+            sprintf(szName, "guparrow%c.pcx", cState);
+        else
+            sprintf(szName, "gdnarrow%c.pcx", cState);
+
+        Surface* pImage = (Surface*)DAT_00ac4848.GetSurface(szName + (nPrefix == 0), 0);
+        if (pImage)
+        {
+            RectangleStruct rcDest = *pRect;
+            rcDest.Width = pImage->GetWidth();
+            rcDest.Height = pImage->GetHeight();
+            RectangleStruct rcSource;
+            rcSource.Y = 0;
+            rcSource.X = 0;
+            rcSource.Width = pImage->GetWidth();
+            rcSource.Height = pImage->GetHeight();
+            pSurface->CopyFromPart(&rcDest, pImage, &rcSource, false, true);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x620F60  FUN_00620F60 (__fastcall)
+// Prints text into a rectangle with the given font (the session font when none
+// is given); same colour packing as 0x621040, no flags.
+int FUN_00620F60(Surface* pSurface, const unsigned short* pText, BitFontBounds* pBounds,
+                 BitFont* pFont, unsigned long nColor, int nUnused)
+{
+    unsigned char red = (unsigned char)nColor;
+    unsigned char green = (unsigned char)((unsigned short)nColor >> 8);
+    unsigned char blue = (unsigned char)(nColor >> 16);
+    unsigned nPixel = ((green >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1)
+                    | ((blue >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2)
+                    | ((red >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0);
+
+    int x = pBounds->Left;
+    int y = pBounds->Top;
+    int nWidth = pBounds->Right - x;
+    int nHeight = pBounds->Bottom - y;
+
+    if (pFont == 0)
+        pFont = DAT_0089C4D0;
+
+    pFont->FUN_00433C90(1);
+    pFont->FUN_00433CA0(pBounds);
+    pFont->FUN_00433C70((short)nPixel);
+    DAT_0089C4B8->FUN_00434CD0(pFont, pSurface, pText, x, y, nWidth, nHeight, 0, 0, 0);
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x621040  FUN_00621040 (__fastcall)
 // Prints text into a rectangle with the given font. The colour arrives as
 // a Win32 COLORREF (0x00BBGGRR) and is packed to the display's pixel format with the shift
@@ -4379,6 +4716,70 @@ float FUN_00621150(int nPosition)
     return fFactor;
 }
 
+// GLOBAL: GAMEMD 0xA8ED80 -- set while text output is enabled.
+extern bool DAT_00A8ED80;
+
+// FUNCTION: GAMEMD 0x6211D0  FUN_006211D0 (__fastcall)
+// Prints one line of text aligned inside a rectangle (nHAlign 1 centre, 2
+// about the midpoint, 3 and 4 against the left and right edge; nVAlign 1
+// centre, 2 and 3 about the top). The colour is a COLORREF packed to the
+// display's pixel format. Answers how far the text advanced.
+int FUN_006211D0(unsigned long nColor, BitFont* pFont, RectangleStruct* pBounds, const unsigned short* pText,
+                 int nArg5, int nHAlign, int nVAlign, Surface* pSurface, int nArg9)
+{
+    if (!DAT_00A8ED80)
+        return 0;
+
+    if (pSurface == 0)
+        pSurface = (Surface*)DAT_00887310;
+
+    unsigned char red = (unsigned char)nColor;
+    unsigned char green = (unsigned char)((unsigned short)nColor >> 8);
+    unsigned char blue = (unsigned char)(nColor >> 16);
+    unsigned nPixel = ((green >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1)
+                    | ((blue >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2)
+                    | ((red >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0);
+
+    int x = pBounds->X;
+    int y = pBounds->Y;
+    int nWidth = pBounds->Width;
+    int nHeight = pBounds->Height;
+
+    if (pFont == 0)
+        pFont = DAT_0089C4D0;
+
+    int nTextWidth;
+    int nTextHeight;
+    pFont->FUN_00433CF0(pText, &nTextWidth, &nTextHeight, nWidth);
+
+    if (nHAlign == 1)
+        x += ((nWidth - nTextWidth) + 1) / 2;
+    else if (nHAlign == 2)
+        x -= (nTextWidth + 1) / 2;
+    else if (nHAlign == 3)
+        x += -1 - nTextWidth;
+    else if (nHAlign == 4)
+        x += (nWidth - nTextWidth) - 1;
+
+    if (nVAlign == 1)
+        y += ((nHeight - nTextHeight) + 1) / 2;
+    else if (nVAlign == 2)
+        y -= (nTextHeight + 1) / 2;
+    else if (nVAlign == 3)
+        y += -1 - nTextHeight;
+
+    BitFontBounds clip;
+    clip.Left = pBounds->X;
+    clip.Top = pBounds->Y;
+    clip.Right = clip.Left + nWidth;
+    clip.Bottom = clip.Top + nHeight;
+
+    pFont->FUN_00433C90(1);
+    pFont->FUN_00433CA0(&clip);
+    pFont->FUN_00433C70((short)nPixel);
+    return DAT_0089C4B8->FUN_00434B90(pFont, pSurface, pText, x, y, nArg5, nArg9) - x;
+}
+
 // FUNCTION: GAMEMD 0x6213A0  FUN_006213A0 (__fastcall)
 // Owner-draw notice for a button (type 4): records the item state in the
 // control's entry (+0xE8) and repaints the item rectangle.
@@ -4413,6 +4814,50 @@ void FUN_006213A0(DrawItem_006213A0* pItem)
                 UpdateWindow(hWnd);
             }
         }
+    }
+}
+
+// GLOBAL: GAMEMD 0xAC48B8 / 0xAC48BA / 0xAC48BC -- per-channel pixel masks of the display format.
+extern unsigned short DAT_00AC48B8;
+extern unsigned short DAT_00AC48BA;
+extern unsigned short DAT_00AC48BC;
+
+// Unclaimed (below partial bar), GAMEMD 0x6219D0  FUN_006219D0 (__fastcall)
+// Darkens an L-shaped part of a rectangle of 16-bit pixels: every pixel is
+// halved per channel. The first nXWidth columns are covered for the full
+// height, and the rest of the width for the top nYHeight rows.
+void FUN_006219D0(RectangleStruct* pRect, Surface* pSurface, int nXWidth, int nYHeight)
+{
+    unsigned short* pBits = (unsigned short*)pSurface->Lock(Point2D(0, 0));
+
+    if (pBits)
+    {
+        int nPitch = (int)pSurface->GetPitch() / 2;
+
+        int y;
+        int x;
+
+        for (y = pRect->Y; y < pRect->Y + pRect->Height; y++)
+        {
+            for (x = pRect->X; x < pRect->X + nXWidth; x++)
+            {
+                unsigned short* pPixel = pBits + y * nPitch + x;
+                *pPixel = ((DAT_00AC48BA >> 1 & DAT_00AC48BA) | (DAT_00AC48B8 >> 1 & DAT_00AC48B8) |
+                           (DAT_00AC48BC >> 1)) & (*pPixel >> 1);
+            }
+        }
+
+        for (y = pRect->Y; y < pRect->Y + nYHeight; y++)
+        {
+            for (x = pRect->X + nXWidth; x < pRect->X + pRect->Width; x++)
+            {
+                unsigned short* pPixel = pBits + y * nPitch + x;
+                *pPixel = ((DAT_00AC48BA >> 1 & DAT_00AC48BA) | (DAT_00AC48B8 >> 1 & DAT_00AC48B8) |
+                           (DAT_00AC48BC >> 1)) & (*pPixel >> 1);
+            }
+        }
+
+        pSurface->Unlock();
     }
 }
 
@@ -5007,6 +5452,80 @@ bool OwnerDraw::SimpleDialogControl::Slot4() const
     return false;
 }
 
+// FUNCTION: GAMEMD 0x532100 (decl; reloc) -- __fastcall, one byte flag.
+void FUN_00532100(bool bFlag);
+
+// FUNCTION: GAMEMD 0x6241F0  FUN_006241F0 (__fastcall)
+// Runs a modal dialog on behalf of a dialog control: builds it, then pumps the
+// idle step until the control reports it is done, and answers the control's
+// result. UI::FocusOnWindow and UI::Updated are expanded here.
+int FUN_006241F0(unsigned short nDialogId, int (__stdcall* pProc)(GG_HWND, unsigned int, unsigned int, long),
+                 OwnerDraw::DialogControl* pControl)
+{
+    GG_HWND hDlg = UI_BeginDialog(nDialogId, pProc, (int)pControl);
+
+    if (hDlg == 0)
+    {
+        pControl->Slot1(0, 0);
+        return 0;
+    }
+
+    ShowWindow(hDlg, 1);
+    SetForegroundWindow(hDlg);
+    DAT_0087F770->DoSomething();
+
+    while (!pControl->Slot2() && !pControl->Slot4())
+    {
+        FUN_005D4D50();
+
+        if (SessionGameMode == 0 || SessionGameMode == 5 ||
+            InhibitFlag != 0 || InhibitWord != 0)
+        {
+            CallBack();
+        }
+        else if (!PredicateA() && PredicateB())
+        {
+            break;
+        }
+
+        FUN_00532100(false);
+    }
+
+    UI_EndDialog(hDlg);
+    return pControl->Slot3();
+}
+
+// IAT 0x7E14B? : USER32!GetClassNameA.
+extern "C" __declspec(dllimport) int __stdcall GetClassNameA(GG_HWND hWnd, char* pszClass, int nMax);
+
+// Unclaimed (below partial bar), GAMEMD 0x6242B0  FUN_006242B0 (__fastcall)
+// Whether a child window is one of the text-entry kinds: an edit control, the
+// custom edit class, a list box whose recorded kind is 1, or a combo box that
+// is not a drop-list.
+bool FUN_006242B0(GG_HWND hWnd)
+{
+    char szClass[128];
+    GetClassNameA(hWnd, szClass, 128);
+
+    if (strcmp(szClass, "Edit") == 0)
+        return true;
+
+    if (strcmp(szClass, "NewEdit") == 0)
+        return true;
+
+    if (strcmp(szClass, "ListBox") == 0)
+    {
+        MapValue_00602B90* value = Inline_00600CA0((int)hWnd);
+        if (value)
+            return value->Field68 == 1;
+    }
+
+    if (strcmp(szClass, "ComboBox") == 0)
+        return (GetWindowLongA(hWnd, -16) & 3) != 3;
+
+    return false;
+}
+
 // Compiler-generated scalar deleting destructor of DialogControl, emitted with its vtable 0x7EF720.
 // SYNTHETIC: GAMEMD 0x6244A0 -- OwnerDraw::DialogControl::`scalar deleting destructor'
 
@@ -5554,15 +6073,15 @@ void FUN_00626FF0()
     }
 }
 
-// Unclaimed (below partial bar), GAMEMD 0x6274F0  Owner_00626C60::FUN_006274F0 (__thiscall)
+// FUNCTION: GAMEMD 0x6274F0  Owner_00626C60::FUN_006274F0 (__thiscall)
 DynamicVectorClass<Obj_0068C8D0*>* Owner_00626C60::FUN_006274F0(const char* pszName)
 {
     PaletteKey_00626C60 key;
     key.FUN_004F4C30(pszName);
     Obj_00626250** ppPalette = Table->Find(key);
-    if (ppPalette)
-        return (*ppPalette)->unknown_100;
-    return 0;
+    if (ppPalette == 0)
+        return 0;
+    return (*ppPalette)->unknown_100;
 }
 
 // FUNCTION: GAMEMD 0x627A10  Owner_00626C60::FUN_00627A10 (__thiscall)

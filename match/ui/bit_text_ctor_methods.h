@@ -22,6 +22,8 @@ public:
 
     // FUNCTION: GAMEMD 0x434AD0
     BitText();
+    // FUNCTION: GAMEMD 0x434B90 (decl; reloc) -- the single-line draw; retail callers load the BitText global into ECX first.
+    int FUN_00434B90(BitFont*, Surface*, const unsigned short*, int, int, int, int);
     bool FUN_00434CD0(BitFont*, Surface*, const unsigned short*, int, int, int, int, int, int, int);
     bool FUN_004353F0(BitFont*, Surface*, const unsigned short*, int, int, int, int, int, int, int);
 };

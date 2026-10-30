@@ -147972,5 +147972,50 @@
   "name": "FUN_004ADFF0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x620720",
+  "sym": "?FUN_00620720@@YIXPAVSurface@@PAURectangleStruct@@HHD@Z",
+  "len": "0xeb",
+  "name": "?FUN_00620720@@YIXPAVSurface@@PAURectangleStruct@@HHD@Z",
+  "status": "partial",
+  "pct": 85.4
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x620F60",
+  "sym": "?FUN_00620F60@@YIHPAVSurface@@PBGPAUBitFontBounds@@PAVBitFont@@KH@Z",
+  "len": "0xdf",
+  "name": "?FUN_00620F60@@YIHPAVSurface@@PBGPAUBitFontBounds@@PAVBitFont@@KH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x6211D0",
+  "sym": "?FUN_006211D0@@YIHKPAVBitFont@@PAURectangleStruct@@PBGHHHPAVSurface@@H@Z",
+  "len": "0x1c5",
+  "name": "?FUN_006211D0@@YIHKPAVBitFont@@PAURectangleStruct@@PBGHHHPAVSurface@@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x6241F0",
+  "sym": "?FUN_006241F0@@YIHGP6GHPAXIIJ@ZPAVDialogControl@OwnerDraw@@@Z",
+  "len": "0xb6",
+  "name": "?FUN_006241F0@@YIHGP6GHPAXIIJ@ZPAVDialogControl@OwnerDraw@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x6274F0",
+  "sym": "?FUN_006274F0@Owner_00626C60@@QAEPAV?$DynamicVectorClass@PAUObj_0068C8D0@@@@PBD@Z",
+  "len": "0xa0",
+  "name": "Owner_00626C60::FUN_006274F0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

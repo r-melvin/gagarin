@@ -205,7 +205,7 @@ struct Owner_00626C60
     DynamicVectorClass<Obj_0068C8D0*>* FUN_00627590(const char* pszName);
     // FUNCTION: GAMEMD 0x627A10
     void FUN_00627A10(const char* pszName);
-    // Unclaimed (below partial bar), GAMEMD 0x6274F0 (__thiscall) -- the scheme list of the named palette, or null.
+    // FUNCTION: GAMEMD 0x6274F0 (__thiscall) -- the scheme list of the named palette, or null.
     DynamicVectorClass<Obj_0068C8D0*>* FUN_006274F0(const char* pszName);
 };
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, VecA) == 0x4);
