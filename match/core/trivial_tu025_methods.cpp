@@ -1,54 +1,42 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at each address below.
-//
-//   Ordered ascending by retail address.
-
-#include "trivial_tu025_methods.h"
+//   Native primary vtable 0x7E3608 and entry-origin disassembly.
+#include "../_layout/anim_type_class.h"
 
 // FUNCTION: GAMEMD 0x428C10
-// Branching. Vtable slot 10 of AnimTypeClass (RTTI).
-int Obj_00428C10::FUN_00428C10(int a1, int a2)
+void AnimTypeClass::vf_10(void* target, bool removed)
 {
-    int t1 = unknown_2C8;
-    if (t1 == a1)
-    {
-        unknown_2C8 = 0;
+    if (Next == target) {
+        Next = 0;
     }
-    return t1;
 }
 
 // FUNCTION: GAMEMD 0x428E50
-// Returns a constant. Vtable slot 11 of AnimTypeClass (RTTI).
-int Obj_00428E50::FUN_00428E50() const
+int AnimTypeClass::vf_11()
 {
     return 5;
 }
 
 // FUNCTION: GAMEMD 0x428E60
-// Member getter (dword). Vtable slot 16 of AnimTypeClass (RTTI).
-int Obj_00428E60::FUN_00428E60() const
+int AnimTypeClass::vf_16()
 {
-    return unknown_294;
+    return ArrayIndex;
 }
 
 // FUNCTION: GAMEMD 0x428E70
-// Returns a constant. Vtable slot 12 of AnimTypeClass (RTTI).
-int Obj_00428E70::FUN_00428E70() const
+int AnimTypeClass::vf_12()
 {
     return 0x378;
 }
 
 // FUNCTION: GAMEMD 0x428E80
-// Returns a constant boolean; pops its stack arguments. Vtable slot 32 of AnimTypeClass (RTTI).
-bool Obj_00428E80::FUN_00428E80(int a1, int a2) const
+bool AnimTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 {
     return false;
 }
 
 // FUNCTION: GAMEMD 0x428E90
-// Returns zero; pops its stack arguments. Vtable slot 35 of AnimTypeClass (RTTI).
-int Obj_00428E90::FUN_00428E90(int a1) const
+ObjectClass* AnimTypeClass::vf_35(HouseClass* house)
 {
     return 0;
 }

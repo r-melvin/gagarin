@@ -46,6 +46,10 @@ public:
     // Overrides of the slots ObjectTypeClass / AbstractClass leave pure (slots 3, 6, 11, 12, 32, 35).
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    // FUNCTION: GAMEMD 0x428C10
+    virtual void vf_10(void* target, bool removed);
+    // FUNCTION: GAMEMD 0x428E60
+    virtual int vf_16();
     virtual int vf_11();
     virtual int vf_12();
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);
@@ -138,6 +142,8 @@ GG_STATIC_ASSERT(offsetof(AnimTypeClass, unknown_2A4)        == 0x2A4);
 GG_STATIC_ASSERT(offsetof(AnimTypeClass, Damage)             == 0x2A8);
 GG_STATIC_ASSERT(offsetof(AnimTypeClass, Rate)               == 0x2B0);
 GG_STATIC_ASSERT(offsetof(AnimTypeClass, Next)               == 0x2C8);
+GG_STATIC_ASSERT(sizeof(((AnimTypeClass*)0)->Next) == 4);
+GG_STATIC_ASSERT(sizeof(((AnimTypeClass*)0)->ArrayIndex) == 4);
 GG_STATIC_ASSERT(offsetof(AnimTypeClass, RandomLoopDelay)    == 0x2DC);
 GG_STATIC_ASSERT(offsetof(AnimTypeClass, Translucency)       == 0x2EC);
 GG_STATIC_ASSERT(offsetof(AnimTypeClass, BounceAnim)         == 0x300);
