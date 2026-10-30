@@ -392,6 +392,10 @@ extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 #include "ccini_class_write_integer_methods.h"
 
 #include "ccini_class_type_list_methods.h"
+#include <windows.h>
+#include <objbase.h>
+#include "../core/string_class.h"
+#include "../platform/ccini_class_methods.h"
 
 // FUNCTION: GAMEMD 0x751520 (decl; reloc) -- name -> record, or 0.
 void* FUN_00751520(const char* name);
@@ -906,6 +910,132 @@ struct Obj_005289E0 {
     void FUN_00528660(int, int, int);
     void FUN_005289E0(int a, int b, int c);
 };
+// FUNCTION: GAMEMD 0x527640
+// WriteInteger with Wstring names: format 1 "%Xh", 2 "$%X", otherwise "%d".
+bool INIClass::WriteInteger(const Wstring& section, const Wstring& key, int value, int format)
+{
+    char buffer[0x200];
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    switch (format) {
+    case 1:
+        sprintf(buffer, "%Xh", value);
+        break;
+    case 2:
+        sprintf(buffer, "$%X", value);
+        break;
+    default:
+        sprintf(buffer, "%d", value);
+        break;
+    }
+    return WriteString(sectionText, keyText, buffer);
+}
+
+// FUNCTION: GAMEMD 0x527B90
+// Writes `guid` in its braced text form, converted to the ANSI code page through a local buffer.
+bool INIClass::FUN_00527B90(const char* section, const char* key, const GUID& guid)
+{
+    LPOLESTR wide = 0;
+    char buffer[128];
+
+    StringFromCLSID(guid, &wide);
+    if (WideCharToMultiByte(CP_ACP, 0, wide, -1, buffer, 128, 0, 0) == 0)
+        GetLastError();
+    CoTaskMemFree(wide);
+    return WriteString(section, key, buffer);
+}
+
+
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
+extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
+
+// Four ints read at +0/+4/+8/+0xC by 0x527C10.
+struct IniIntQuad { int A; int B; int C; int D; };
+GG_STATIC_ASSERT(offsetof(IniIntQuad, D) == 0xC);
+// Three ints read at +0/+4/+8 by 0x529BF0.
+struct IniIntTriple { int A; int B; int C; };
+GG_STATIC_ASSERT(offsetof(IniIntTriple, C) == 0x8);
+// Three floats read at +0/+4/+8 by 0x52A040 (FLD DWORD, widened for printf).
+struct IniFloatTriple { float A; float B; float C; };
+GG_STATIC_ASSERT(offsetof(IniFloatTriple, C) == 0x8);
+
+// Key object whose two encoders (0x631FC0, 0x631FE0) fill a buffer and return
+// the encoded length.
+class IniKeyBlockSource
+{
+public:
+    // FUNCTION: GAMEMD 0x631FC0 (decl; reloc)
+    int EncodeFirst(char* buffer) const;
+    // FUNCTION: GAMEMD 0x631FE0 (decl; reloc)
+    int EncodeSecond(char* buffer) const;
+};
+
+
+
+
+// FUNCTION: GAMEMD 0x527C10
+bool INIClass::WriteIntQuad(const char* section, const char* key, const IniIntQuad& value)
+{
+    char buffer[64];
+    sprintf(buffer, "%d,%d,%d,%d", value.A, value.B, value.C, value.D);
+    return WriteString(section, key, buffer);
+}
+
+// FUNCTION: GAMEMD 0x527C60
+// Writes "%d,%d,%d,%d" of the four values.
+bool INIClass::WriteIntQuad(const Wstring& section, const Wstring& key, const int* values)
+{
+    char buffer[0x40];
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    sprintf(buffer, "%d,%d,%d,%d", values[0], values[1], values[2], values[3]);
+    return WriteString(sectionText, keyText, buffer);
+}
+
+// FUNCTION: GAMEMD 0x528170
+// Writes `value` as upper-case hexadecimal text.
+bool INIClass::FUN_00528170(const char* section, const char* key, int value)
+{
+    char buffer[0x200];
+    sprintf(buffer, "%X", value);
+    return WriteString(section, key, buffer);
+}
+
+// FUNCTION: GAMEMD 0x5281C0
+// Writes `value` as upper-case hexadecimal text, names held in Wstring objects.
+bool INIClass::FUN_005281C0(const Wstring& section, const Wstring& key, int value)
+{
+    char buffer[0x200];
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    sprintf(buffer, "%X", value);
+    return WriteString(sectionText, keyText, buffer);
+}
+
+// FUNCTION: GAMEMD 0x5285B0
+// Writes a double with "%f".
+bool INIClass::WriteDouble(const char* section, const char* key, double value)
+{
+    char buffer[0x200];
+    double v = value;
+    sprintf(buffer, "%f", v);
+    return WriteString(section, key, buffer);
+}
+
+// FUNCTION: GAMEMD 0x528600
+// Writes a double with "%f".
+// PARTIAL: 93.3% -- retail computes the buffer address (LEA) before the FSTP of the double argument; the
+// two instructions come out swapped here.
+bool INIClass::WriteDouble(const Wstring& section, const Wstring& key, double value)
+{
+    char buffer[0x200];
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    double v = value;
+    sprintf(buffer, "%f", v);
+    return WriteString(sectionText, keyText, buffer);
+}
+
 // FUNCTION: GAMEMD 0x005289E0
 void Obj_005289E0::FUN_005289E0(int a, int b, int c)
 {
@@ -1006,6 +1136,18 @@ bool INIClass::WriteBool(const char* pSection, const char* pKey, bool bValue)
     return WriteString(pSection, pKey, "no");
 }
 
+// FUNCTION: GAMEMD 0x5295A0
+// WriteBool for names held in Wstring objects; the key's text is fetched first.
+bool INIClass::WriteBool(const Wstring& section, const Wstring& key, bool value)
+{
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    if (value) {
+        return WriteString(sectionText, keyText, "yes");
+    }
+    return WriteString(sectionText, keyText, "no");
+}
+
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x5297E0
 // 0x5297E0  INIClass::Write2Integers
@@ -1018,6 +1160,55 @@ bool INIClass::Write2Integers(const char* pSection, const char* pKey, int* pValu
     char buffer[56];
     sprintf(buffer, "%d,%d", pValues[0], pValues[1]);
     return WriteString(pSection, pKey, buffer);
+}
+
+// FUNCTION: GAMEMD 0x529820
+// Writes "%d,%d" of the first two values.
+bool INIClass::Write2Integers(const Wstring& section, const Wstring& key, const int* values)
+{
+    char buffer[56];
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    sprintf(buffer, "%d,%d", values[0], values[1]);
+    return WriteString(sectionText, keyText, buffer);
+}
+
+// FUNCTION: GAMEMD 0x529BF0
+bool INIClass::WriteIntTriple(const char* section, const char* key, const IniIntTriple& value)
+{
+    char buffer[56];
+    sprintf(buffer, "%d,%d,%d", value.A, value.B, value.C);
+    return WriteString(section, key, buffer);
+}
+
+// FUNCTION: GAMEMD 0x529C40
+// Writes "%d,%d,%d" of the three values.
+bool INIClass::WriteIntTriple(const Wstring& section, const Wstring& key, const int* values)
+{
+    char buffer[56];
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    sprintf(buffer, "%d,%d,%d", values[0], values[1], values[2]);
+    return WriteString(sectionText, keyText, buffer);
+}
+
+// FUNCTION: GAMEMD 0x52A040
+bool INIClass::WriteFloatTriple(const char* section, const char* key, const IniFloatTriple& value)
+{
+    char buffer[56];
+    sprintf(buffer, "%f,%f,%f", value.A, value.B, value.C);
+    return WriteString(section, key, buffer);
+}
+
+// FUNCTION: GAMEMD 0x52A0A0
+// Writes "%f,%f,%f" of the three floats.
+bool INIClass::WriteFloatTriple(const Wstring& section, const Wstring& key, const float* values)
+{
+    char buffer[56];
+    const char* keyText = key.FUN_007B5440();
+    const char* sectionText = section.FUN_007B5440();
+    sprintf(buffer, "%f,%f,%f", values[0], values[1], values[2]);
+    return WriteString(sectionText, keyText, buffer);
 }
 
 // FUNCTION: GAMEMD 0x52A4D0
@@ -1061,6 +1252,15 @@ INIClass::INIEntry* INISectionEntryView::FindEntry(const char* name)
 
 missing:
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x52A610
+bool CCINIClass::WriteKeyBlocks(const IniKeyBlockSource& key)
+{
+    char buffer[512];
+    WriteUUBlock("PublicKey", buffer, key.EncodeFirst(buffer));
+    WriteUUBlock("PrivateKey", buffer, key.EncodeSecond(buffer));
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x52A940

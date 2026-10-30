@@ -59295,31 +59295,31 @@
   "pct": 100
  },
  {
-  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x527C10",
   "sym": "?WriteIntQuad@INIClass@@QAE_NPBD0ABUIniIntQuad@@@Z",
   "len": "0x48",
   "name": "INIClass::WriteIntQuad",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x529BF0",
   "sym": "?WriteIntTriple@INIClass@@QAE_NPBD0ABUIniIntTriple@@@Z",
   "len": "0x44",
   "name": "INIClass::WriteIntTriple",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x52A040",
   "sym": "?WriteFloatTriple@INIClass@@QAE_NPBD0ABUIniFloatTriple@@@Z",
   "len": "0x53",
   "name": "INIClass::WriteFloatTriple",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/Ini.cpp",
@@ -59331,13 +59331,13 @@
   "pct": 37.0
  },
  {
-  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x52A610",
   "sym": "?WriteKeyBlocks@CCINIClass@@QAE_NABVIniKeyBlockSource@@@Z",
   "len": "0x5A",
   "name": "CCINIClass::WriteKeyBlocks",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Init.cpp",
@@ -141104,43 +141104,43 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x527640",
   "sym": "?WriteInteger@INIClass@@QAE_NABVWstring@@0HH@Z",
   "len": "0x90",
   "name": "INIClass::WriteInteger (Wstring names)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x527C60",
   "sym": "?WriteIntQuad@INIClass@@QAE_NABVWstring@@0PBH@Z",
   "len": "0x5a",
   "name": "INIClass::WriteIntQuad (Wstring names)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x528170",
   "sym": "?FUN_00528170@INIClass@@QAE_NPBD0H@Z",
   "len": "0x46",
   "name": "INIClass::FUN_00528170",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x5281C0",
   "sym": "?FUN_005281C0@INIClass@@QAE_NABVWstring@@0H@Z",
   "len": "0x5b",
   "name": "INIClass::FUN_005281C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x528600",
   "sym": "?WriteDouble@INIClass@@QAE_NABVWstring@@0N@Z",
   "len": "0x60",
@@ -141149,58 +141149,58 @@
   "pct": 93.3
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x5295A0",
   "sym": "?WriteBool@INIClass@@QAE_NABVWstring@@0_N@Z",
   "len": "0x46",
   "name": "INIClass::WriteBool (Wstring names)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x529820",
   "sym": "?Write2Integers@INIClass@@QAE_NABVWstring@@0PBH@Z",
   "len": "0x52",
   "name": "INIClass::Write2Integers (Wstring names)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x529C40",
   "sym": "?WriteIntTriple@INIClass@@QAE_NABVWstring@@0PBH@Z",
   "len": "0x56",
   "name": "INIClass::WriteIntTriple (Wstring names)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x52A0A0",
   "sym": "?WriteFloatTriple@INIClass@@QAE_NABVWstring@@0PBM@Z",
   "len": "0x65",
   "name": "INIClass::WriteFloatTriple (Wstring names)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x527B90",
   "sym": "?FUN_00527B90@INIClass@@QAE_NPBD0ABU_GUID@@@Z",
   "len": "0x7e",
   "name": "INIClass::FUN_00527B90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_r15_methods.cpp",
+  "tu": "match/platform/Ini.cpp",
   "addr": "0x5285B0",
   "sym": "?WriteDouble@INIClass@@QAE_NPBD0N@Z",
   "len": "0x4b",
   "name": "INIClass::WriteDouble",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/taction_r15_methods.cpp",
