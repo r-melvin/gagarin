@@ -199,7 +199,15 @@ def evidence(cls):
     ev["ctor_offsets"] = offs
     rt = [v for v in common.load_json("rtti_classes.json")["classes"].values() if v["demangled_name"] == cls]
     ev["rtti"] = rt[0] if rt else None
-    vts = json.loads((common.CACHE / "vtable_slots.json").read_text())["vtables"]
+    vtf = common.CACHE / "vtable_slots.json"
+    if vtf.exists():
+        vts = json.loads(vtf.read_text())["vtables"]
+    else:
+        print("classcheck: %s is missing, so vtable slot checks are skipped (reported unproven). Build it with:\n"
+              "  python3 scripts/orchestration/vtable_slots.py \"$GAMEMD_BINARY\" scripts/data/rtti_classes.json "
+              "scripts/agent_tools/cache/vtable_slots.json --manifest scripts/data/match_manifest.json" % vtf,
+              file=sys.stderr)
+        vts = []
     ev["vtables"] = [v for v in vts if v["class"] == cls]
     return ev
 
