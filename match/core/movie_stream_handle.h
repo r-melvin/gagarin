@@ -7,6 +7,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+class VQAClass;
 struct MovieHandle_007BD470;
 
 // Frame ring node: retail walks it through +0x0C and flags it at +0x14.
@@ -146,7 +147,8 @@ struct MovieConfig_007BD470
     unsigned char* unknown_54; // 0x54
     int unknown_58; // 0x58
     int unknown_5C; // 0x5c
-    unsigned char unknown_60[0x10];
+    unsigned char unknown_60[0xc];
+    VQAClass* unknown_6C; // 0x6c
     int unknown_70; // 0x70
     int unknown_74; // 0x74
     int unknown_78; // 0x78
@@ -174,6 +176,7 @@ GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_4C) == 0x4c);
 GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_54) == 0x54);
 GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_58) == 0x58);
 GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_5C) == 0x5c);
+GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_6C) == 0x6c);
 GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_70) == 0x70);
 GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_74) == 0x74);
 GG_STATIC_ASSERT(offsetof(MovieConfig_007BD470, unknown_78) == 0x78);

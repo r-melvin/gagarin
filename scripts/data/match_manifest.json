@@ -148401,5 +148401,86 @@
   "name": "ATL::CComObject<CDownloadEventSink>::Release",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x759260",
+  "sym": "??0VQAClass@@QAE@PBDIP6AHXZP6AXXZ2HH@Z",
+  "len": "0x2ac",
+  "name": "??0VQAClass@@QAE@PBDIP6AHXZP6AXXZ2HH@Z",
+  "status": "partial",
+  "pct": 97.5
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x759510",
+  "sym": "??1VQAClass@@QAE@XZ",
+  "len": "0x2f",
+  "name": "??1VQAClass@@QAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x759540",
+  "sym": "?FUN_00759540@VQAClass@@QAEHI@Z",
+  "len": "0x124",
+  "name": "VQAClass::FUN_00759540",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x759940",
+  "sym": "?FUN_00759940@VQAClass@@QAE_NH_N@Z",
+  "len": "0x27e",
+  "name": "VQAClass::FUN_00759940",
+  "status": "partial",
+  "pct": 92.7
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x759C30",
+  "sym": "?Advance_Frame@VQAClass@@QAE_NPA_N@Z",
+  "len": "0x1d9",
+  "name": "VQAClass::Advance_Frame",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x759FB0",
+  "sym": "?FUN_00759FB0@VQAClass@@QAEHHPAIH@Z",
+  "len": "0x119",
+  "name": "VQAClass::FUN_00759FB0",
+  "status": "partial",
+  "pct": 88.0
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x75A120",
+  "sym": "?FUN_0075A120@VQAClass@@QAEHHPAIH@Z",
+  "len": "0x14d",
+  "name": "VQAClass::FUN_0075A120",
+  "status": "partial",
+  "pct": 89.8
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x75A2B0",
+  "sym": "?FUN_0075A2B0@@YAHPAUMovieHandle_007BD470@@HPAIH@Z",
+  "len": "0x1f",
+  "name": "?FUN_0075A2B0@@YAHPAUMovieHandle_007BD470@@HPAIH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vqa_class_methods.cpp",
+  "addr": "0x75A350",
+  "sym": "?FUN_0075A350@@YAHPAUMovieHandle_007BD470@@HPAGI@Z",
+  "len": "0x8b",
+  "name": "?FUN_0075A350@@YAHPAUMovieHandle_007BD470@@HPAGI@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
