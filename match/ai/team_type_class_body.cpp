@@ -5,17 +5,11 @@
 //   /Ob2: the registry AddItem/RemoveItem bodies are expanded in place, and the
 //   scalar deleting destructor carries the destructor body inline.
 
-#include <new.h>
-#include "../_layout/team_type_class.h"
-#include "../_layout/house_class.h"
-#include "../_layout/swizzle_manager_class.h"
-#include "../core/vector_class_operations.h"
-#include "../_layout/obj_004a1d30.h"
+#include "../FUNCTION.H"
 #include "team_type_class_create_methods.h"
 #include "team_type_class_methods.h"
 #include "team_type_class_instance_methods.h"
 #include "team_type_class_taskforce_methods.h"
-#include "../_layout/house_type_class.h"
 #include "../platform/ccini_class_methods.h"
 
 // FUNCTION: GAMEMD 0x510F60 (decl; reloc) -- is this country index a pseudo-house code?

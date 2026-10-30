@@ -12,8 +12,8 @@
 // Campaign score classes: constructors, empty destructors and the compiler-emitted
 // scalar deleting destructors (0x471500, 0x471520).
 
+#include "../FUNCTION.H"
 #include "../core/house_index_lookup_methods.h"
-#include "../_layout/session_class.h"
 #include "../core/mathtbl_init_shapes.h"
 
 #include "../core/small_misc5_methods.h"
@@ -51,9 +51,6 @@ public:
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
-#include <stddef.h>
-#include <stdlib.h>
-#include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7E4A98
 extern const double DAT_007E4A98;

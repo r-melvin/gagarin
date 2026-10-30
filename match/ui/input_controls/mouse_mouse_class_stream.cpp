@@ -5,11 +5,8 @@
 //   (layout, slot and global evidence: mouse_mouse_class.h). IStream::Write is reached through vtable +0x10 and
 //   OleSaveToStream through the import at 0x7E15F4.
 
-#include <new.h>
-#include <string.h>
-#include "../../_layout/cell_class.h"
+#include "../../FUNCTION.H"
 #include "../../core/pair_vector_ctor_family_methods.h"
-#include "../../_layout/swizzle_manager_class.h"
 #include "mouse_mouse_class.h"
 
 // The stream stores a 0x10-byte value record. Its in-memory vector element is

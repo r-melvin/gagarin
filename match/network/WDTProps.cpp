@@ -8,7 +8,7 @@
 //   out-of-line destructor 0x76BED0 also expand inside the deleting wrapper
 //   0x76C030, as retail does.
 
-#include "world_domination_tour.h"
+#include "../FUNCTION.H"
 
 using WorldDominationTour::CampaignProperties;
 
@@ -24,8 +24,6 @@ extern const char STR_00889F64[];
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7F7280
 extern const double DAT_007F7280;

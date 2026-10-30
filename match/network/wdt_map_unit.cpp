@@ -8,13 +8,8 @@
 // ".?AVMap@WorldDominationTour@@" (0x7F7134, base ReferenceCounted) and
 // ".?AV?$rc_ptr@VMap@WorldDominationTour@@@@" (0x7F712C).
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../FUNCTION.H"
 #include "../core/header_tuning_globals.h"
-#include "../core/string_class.h"
-#include "../core/vector_class_operations.h"
-#include "../_layout/ms_anim.h"
-#include "wdt_rc_ptr.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -32,7 +27,6 @@ extern TuningCoordInit DAT_00B728F0;
 
 // ---- surfaces --------------------------------------------------------------------------------------------------------
 
-#include "wdt_map.h"
 
 
 // GLOBAL: GAMEMD 0x8487BC

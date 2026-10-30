@@ -11,6 +11,7 @@
 // deleting destructor in this translation unit; it is not a claim about a
 // retail function. SidebarClass's ordinary constructor is in Sidebar.cpp.
 
+#include "../../FUNCTION.H"
 #include "sidebar_class_layout.h"
 
 TabClass::TabClass()

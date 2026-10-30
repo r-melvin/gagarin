@@ -10,12 +10,9 @@
 //   The retail span has no C++ exception cleanup. /GX adds a cleanup funclet
 //   around trigger construction; the no-GX source build matches the full span.
 
-#include "../_layout/tag_class.h"
+#include "../FUNCTION.H"
 #include "tag_class_destroy_methods.h"
 #include "../core/abstract_registry.h"
-#include "../_layout/trigger_class.h"
-#include "../_layout/tag_type_class.h"
-#include "../_layout/trigger_type_class.h"
 
 // GLOBAL: GAMEMD 0xB0E700 — the CellStruct copied to TagClass::DefaultCoords.
 // The raw instruction loads one DWORD from this address.

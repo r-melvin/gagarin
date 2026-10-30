@@ -4,6 +4,7 @@
 //   0x5BDDC0, 0x5BDF30 and 0x5BDF50, all reached through the MouseClass primary vtable 0x7E1964 (layout, slot and
 //   global evidence: mouse_mouse_class.h). String: 'MOUSE.SHA' 0x82604C.
 
+#include "../../FUNCTION.H"
 #include "mouse_mouse_class.h"
 
 // The hot-spot and frame step the cursor entries share: pick the first frame of the row (the alternate set when the

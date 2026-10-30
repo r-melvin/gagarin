@@ -5,6 +5,7 @@
 //   0x565190, and RTTI address points 0x7ED404, 0x7ED4C0, 0x7ED4A0,
 //   0x7E3890, 0x7ED480, 0x7E38D0, and 0x7ED5A0.
 
+#include "../FUNCTION.H"
 #include "../core/pair_vector_ctor_family_methods.h"
 #include "../ui/input_controls/ui_display_chain.h"
 

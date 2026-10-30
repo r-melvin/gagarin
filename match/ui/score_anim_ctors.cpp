@@ -4,9 +4,7 @@
 //   ScoreAnimClass) and .?AVScoreAnimClass@@ (vtable 0x7F0EDC). The timer at +0x0C is the 3-dword
 //   clock stamp of match/_layout/ms_anim.h; the base constructor is expanded inline in the derived one.
 //   Address index: 0x690BB0, 0x690F30.
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
-#include "../_layout/ms_anim.h"
+#include "../FUNCTION.H"
 
 // VTABLE: GAMEMD 0x7F0EDC
 class ScoreAnimClass

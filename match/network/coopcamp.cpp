@@ -29,15 +29,13 @@
 // address-bound PodElem4 stand-ins; no complete pointee-layout or original-TU
 // claim is made.
 
+#include "../FUNCTION.H"
 #include <math.h>
 #include "../core/mathtbl_init_shapes.h"
 #pragma intrinsic(pow)
-#include "../_layout/ini_class.h"
-#include "../_layout/generic_list_inline.h"
 
 #include "../core/trivial_tu057_methods.h"
 
-#include "../core/vector_class_operations.h"
 
 template class DynamicVectorClass<char*>;
 
@@ -61,7 +59,6 @@ GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, CapacityIncrement) == 0x14);
 
-#include "../core/vector_class_operations.h"
 
 template class DynamicVectorClass<DynamicVectorClass<char*>*>;
 
@@ -87,8 +84,6 @@ GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, CapacityIncrement) == 0x14)
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
 
 // Declaration: GAMEMD 0x4CAC40 -- engine table helper; stacked double, ST0 result.
 double __cdecl FUN_004CAC40(double value);

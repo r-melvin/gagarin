@@ -9,9 +9,7 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
-#include <new.h>
-#include "../_layout/swizzle_manager_class.h"
-#include <stdlib.h>
+#include "../FUNCTION.H"
 #include "particles/particle_class.h"
 #include "../core/vector_add_item_free.h"
 

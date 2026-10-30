@@ -13,6 +13,7 @@
 // STRING: GAMEMD 0x82FFE4 "MP:DefenderTeam"
 // STRING: GAMEMD 0x830044 "MP:AttackerTeam"
 
+#include "../FUNCTION.H"
 #include "multiplayer_game_mode.h"
 #include "transport/conn_types.h"
 #include "../core/header_tuning_globals.h"

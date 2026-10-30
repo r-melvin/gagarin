@@ -17,11 +17,10 @@
 //
 //   MPCoop.cpp (0x5C10F0..0x5C5AEF).
 
+#include "../FUNCTION.H"
 #include "../core/vector_ctor_pod_family_methods.h"
 #include "../core/deleting_dtor_sweep.h"
 #include "transport/winsock_interface_class.h"
-#include "../_layout/pipe.h"
-#include "../_layout/straw.h"
 
 #include "../core/header_init_shapes.h"
 
@@ -31,13 +30,10 @@ extern double DAT_00ABF420;
 const double DAT_007EE268 = 60.0;
 
 
-#include <windows.h>
 #include "mp_cooperative.h"
-#include "../core/vector_class_operations.h"
 #include "mp_game_mode_class_methods.h"
 #include "../economy/house_class_accessor_methods.h"
 
-#include <string.h>
 
 // LIBRARY: GAMEMD 0x7CD680 -- CRT _strnicmp (cdecl, locale-flag fast path).
 extern "C" int __cdecl _strnicmp(const char* a, const char* b, size_t n);
@@ -76,7 +72,6 @@ GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Lists) == 0x10);
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "../core/vector_class_operations.h"
 struct MPlayerScoreType;
 
 // VTABLE: GAMEMD 0x7EE3D0 -- VectorClass<MPlayerScoreType*>.
@@ -99,7 +94,6 @@ GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, CapacityIncrement) =
 
 GG_STATIC_ASSERT(sizeof(MPlayerScoreType*) == 4);
 
-#include "../core/vector_class_operations.h"
 
 class CoopCampaignClass;
 
@@ -123,7 +117,6 @@ GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, CapacityIncreme
 
 GG_STATIC_ASSERT(sizeof(CoopCampaignClass*) == 4);
 
-#include "../core/vector_class_operations.h"
 
 struct NodeNameType;
 

@@ -8,12 +8,7 @@
 // declared in _layout/tag_type_class.h.
 //   /Ob2: the destructor expands the registry RemoveItem bodies in place.
 
-#include <new.h>
-#include "../_layout/tag_type_class.h"
-#include "../_layout/tag_class.h"
-#include "../_layout/trigger_type_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../movement/locomotion_load_support.h"
 #include "../core/abstract_registry.h"
 #include "../core/header_tuning_globals.h"

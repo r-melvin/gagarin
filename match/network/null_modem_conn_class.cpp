@@ -5,8 +5,7 @@
 //   0x48BE60 and allocates the packet buffer, the destructor frees it, and the compiler emits the
 //   scalar deleting destructor 0x5EF290 and the vtable from them.
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../FUNCTION.H"
 #include "transport/conn_types.h"
 
 // VTABLE: GAMEMD 0x7EEF90

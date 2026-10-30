@@ -7,16 +7,9 @@
 //
 // TerrainClass entries (layout and evidence: terrain_class.h).
 
-#include <new.h>
-#include "../_layout/swizzle_manager_class.h"
-#include <stdlib.h>
+#include "../FUNCTION.H"
 #include "terrain_objects/terrain_class.h"
 #include "terrain_objects/overlay_type_class.h"
-#include "../_layout/cell_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../_layout/rectangle_operations.h"
-#include "../_layout/tactical.h"
-#include "../_layout/tactical_viewport.h"
 // GLOBAL: GAMEMD 0x887324
 extern Tactical* DAT_00887324;
 

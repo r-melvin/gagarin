@@ -6,43 +6,22 @@
 // it after consolidation, while /Ob1 preserves that call and all matched rows.
 // Retail method contracts, member accesses, and callees were read from the
 // pinned v1.001 image; native call contracts are noted at the relevant sites.
-#include "../_layout/bullet_class.h"
+#include "../FUNCTION.H"
 #include "bullet_type_class.h"
 #include "weapon_type_class.h"
-#include "../_layout/capture_manager_class.h"
-#include "../_layout/house_type_class.h"
-#include "../_layout/temporal_class.h"
-#include "../_layout/unit_class.h"
-#include "../_layout/unit_type_class.h"
-#include "../_layout/voxel_anim_class.h"
-#include "../_layout/rad_site_class.h"
-#include "../_layout/tag_class.h"
 #include "../core/object_class_uninit_methods.h"
 #include "temporal_cell.h"
-#include "../_layout/techno_class.h"
-#include "../_layout/house_class.h"
-#include "../_layout/cell_class.h"
-#include "../_layout/map_0087f7e8.h"
-#include "../_layout/anim_class.h"
-#include "../_layout/warhead_type_class.h"
-#include "../_layout/rules_class.h"
-#include "../_layout/swizzle_manager_class.h"
-#include "../_layout/matrix3d.h"
-#include "../_layout/tactical.h"
 #include "../movement/matrix3d_native_helpers.h"
 #include "../ui/input_controls/ui_display_chain.h"
 #include "../core/randomizer.h"
 #include "../core/scenario_class_methods.h"
 #include "../core/vec3d_layout.h"
-#include "../core/vector_class_operations.h"
 #include "../core/vector_add_item_free.h"
 #include "../renderer/color_scheme_find_methods.h"
 #include "airstrike_class_methods.h"
 #include "parasite_class_infect_methods.h"
 #include "../core/small_misc35_methods.h"
 #include <new>
-#include <windows.h>
-#include <string.h>
 
 // These are engine functions, not recovered CRT implementations.
 // Declaration: GAMEMD 0x4CAC40
@@ -85,8 +64,6 @@ GG_STATIC_ASSERT(sizeof(DAT_007ED3D0[0]) == 4);
 extern int DAT_007F4890[32];
 // GLOBAL: GAMEMD 0x7F7C90 -- IID requested by the native spawn path.
 extern const IID DAT_007F7C90;
-#include "../_layout/scenario_ptr_00a8b230.h"
-#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0x89DE18
 extern DynamicVectorClass<BulletClass*> ScalableBullets;
 // GLOBAL: GAMEMD 0xB0F5B8 -- actual existing storage is AbstractClass* vector.

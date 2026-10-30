@@ -5,15 +5,8 @@
 //   destructor body inline.
 //   Construction, lifetime, and virtual overrides are ordered by retail address below.
 
-#include <new.h>
-#include <stdlib.h>
-#include "../_layout/unit_type_class.h"
-#include "../_layout/swizzle_manager_class.h"
-#include "../_layout/unit_class.h"
-#include "../_layout/facing_class.h"
-#include "../_layout/rules_class.h"
+#include "../FUNCTION.H"
 #include "../core/randomizer.h"
-#include "../core/vector_class_operations.h"
 
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, ArrayIndex) == 0xDF8);
 GG_STATIC_ASSERT(sizeof(((UnitTypeClass*)0)->ArrayIndex) == 4);

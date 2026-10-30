@@ -6,8 +6,7 @@
 // scalar deleting destructor now lives with its constructor in
 // match/network/null_modem_conn_class.cpp.
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../FUNCTION.H"
 #include "multiplayer_team.h"
 
 // FUNCTION: GAMEMD 0x5D8C50

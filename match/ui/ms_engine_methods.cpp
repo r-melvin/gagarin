@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x5D1AA0 (constructor), 0x5D1B30 (destructor) and 0x5D2700 (scalar deleting
 //   destructor); RTTI .?AVMSEngine@@ (vtable 0x7EEBD4); layout in match/_layout/ms_engine.h.
-#include "../core/vector_class_operations.h"
-#include "../_layout/ms_engine.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x5D1AA0
 // Reserve room for twenty rectangles and start with no animations or sound effects.

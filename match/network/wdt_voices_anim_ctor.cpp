@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Evidence: disassembly of 0x771850 (0x31 bytes); RTTI .?AVAnim@Voices@WorldDominationTour@@ (vtable
 //   0x7F7354, base MSAnim); layout in match/_layout/ms_anim.h.
-#include "../_layout/ms_anim.h"
-#include "../_layout/wdt_selection.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x7529E0 (decl; reloc) -- the scenario-side check slot 7 negates.
 bool FUN_007529E0();

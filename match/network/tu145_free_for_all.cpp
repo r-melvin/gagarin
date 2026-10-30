@@ -12,7 +12,7 @@
 // (header_init_shapes.h): two derived doubles and a {128, 128, 0} coordinate,
 // in __xc order. The divisor at 0x7EE410 reads 60.0 (ghidra memory read).
 
-#include <windows.h>
+#include "../FUNCTION.H"
 #include "free_for_all.h"
 #include "mp_game_mode_class_methods.h"
 #include "mpteams_methods.h"

@@ -9,7 +9,7 @@
 // ((WDTState*)Next.Pointer)->unknown_44[index] when index is below the count
 // at +0x24. Class names are the retail RTTI names.
 
-#include "world_domination_tour.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x76F470
 // The factory for a State over `state` positioned on row `index`, returned in

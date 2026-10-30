@@ -16,10 +16,10 @@
 //   Reuses the canonical header read-only. Members and callees the header does
 //   not declare are TU-local views below.
 
+#include "../FUNCTION.H"
 #include "../core/empty_function_family_methods.h"
 #include "../core/mathtbl_init_shapes.h"
 
-#include <string.h>
 #include "null_modem_class_methods.h"
 
 // GLOBAL: GAMEMD 0xB72D20 — the shared WinModemClass the serial layer owns.
@@ -28,7 +28,6 @@
 // STRING: GAMEMD 0x83234A — "COM3"
 // STRING: GAMEMD 0x83234F — "COM4"
 
-#include <string.h>
 #include "null_modem_class_methods.h"
 
 // Debug trace uses the shared cdecl declaration from conn_types.h.
@@ -118,8 +117,6 @@ GG_STATIC_ASSERT(offsetof(NullModemSettingsView, Setting44) == 0x44
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7EEFC8
 extern const double DAT_007EEFC8;

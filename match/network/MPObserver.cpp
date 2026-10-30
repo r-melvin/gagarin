@@ -17,10 +17,9 @@
 //
 //   block of MPObserver.cpp (its __FILE__ string 0x82FD40).
 
+#include "../FUNCTION.H"
 #include "../core/deleting_dtor_sweep.h"
 #include "transport/winsock_interface_class.h"
-#include "../_layout/pipe.h"
-#include "../_layout/straw.h"
 
 #include "../core/header_init_shapes.h"
 

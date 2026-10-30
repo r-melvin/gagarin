@@ -11,14 +11,12 @@
 // compiler output: the out-of-line destructors below make cl emit the tables and
 // the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
 
+#include "../FUNCTION.H"
 #include "../core/trivial_tu286_methods.h"
 
-#include "world_domination_tour.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;

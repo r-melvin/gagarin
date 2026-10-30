@@ -7,6 +7,7 @@
 // /Op): only /Ob2 moves anything, and it moves FUN_005C1030 from 67.6% (index
 // and allocation in swapped registers, same instructions) to retail's exact
 // register assignment; the other four rows are byte-identical either way.
+#include "../FUNCTION.H"
 #include "mp_battle_class.h"
 
 // FUNCTION: GAMEMD 0x7B7DD0 (decl; reloc)

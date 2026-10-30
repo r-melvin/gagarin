@@ -5,8 +5,7 @@
 // instantiations (retail 0x765F60-0x767080). The vector bodies are the
 // canonical VectorClass/DynamicVectorClass templates over rc_ptr<GameOption>,
 // whose RTTI names the two vtables 0x7F6FF4 and 0x7F6FD4.
-#include "world_domination_tour.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 
 // Byte readers whose addresses 0x7660F0 passes on; the object type is not
 // identified.

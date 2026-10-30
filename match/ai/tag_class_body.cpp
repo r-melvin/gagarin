@@ -8,17 +8,7 @@
 // itself is declared in _layout/tag_class.h.
 //   /Ob2: the destructor expands the vector FindItemIndex bodies in place.
 
-#include <new.h>
-#include "../_layout/tag_class.h"
-#include "../_layout/tag_type_class.h"
-#include "../_layout/trigger_class.h"
-#include "../_layout/trigger_type_class.h"
-#include "../_layout/house_class.h"
-#include "../_layout/house_type_class.h"
-#include "../_layout/object_class.h"
-#include "../_layout/cell_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../movement/locomotion_load_support.h"
 #include "tag_class_destroy_methods.h"
 #include "../core/abstract_registry.h"
@@ -64,7 +54,6 @@ extern int DAT_00A83DBC;
 HouseClass* FUN_00502D30(int index);
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map; 0x5657A0 returns the cell at a coordinate.
-#include "../_layout/map_0087f7e8.h"
 
 // The registries the destructor removes `this` from (abstract_registry.h holds their storage).
 static inline void Tag_RemoveFrom(DynamicVectorClassLayout* list, TagClass* tag)

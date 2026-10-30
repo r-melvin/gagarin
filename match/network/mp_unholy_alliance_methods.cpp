@@ -5,6 +5,7 @@
 //   (RTTI .?AVUnholyAlliance@@).
 //
 // Address index: 0x5CB3A0
+#include "../FUNCTION.H"
 #include "mp_game_mode_leaf_classes.h"
 
 // FUNCTION: GAMEMD 0x5CB3A0

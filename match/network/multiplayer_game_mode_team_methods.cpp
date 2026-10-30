@@ -6,8 +6,8 @@
 //
 // Address index: 0x5D5D20
 
+#include "../FUNCTION.H"
 #include "multiplayer_game_mode.h"
-#include "../core/vector_class_operations.h"
 #include "session_entry.h"
 #include "mpteams_methods.h"
 #include "../platform/ccini_class_methods.h"

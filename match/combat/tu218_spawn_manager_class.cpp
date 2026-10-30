@@ -46,7 +46,7 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 
 class SpawnManagerClass;
 
@@ -56,9 +56,7 @@ GG_STATIC_ASSERT(sizeof(SpawnManagerClass*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<SpawnManagerClass* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SpawnManagerClass* >) == 0x18);
 
-#include "../core/vector_class_operations.h"
 
-#include "../_layout/spawn_manager_class.h"
 
 template class DynamicVectorClass<SpawnManagerClass::SpawnControl*>;
 
@@ -70,16 +68,11 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SpawnManagerClass::SpawnControl* >) =
 //   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
 //   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
 
 
 #include "../core/deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"
-#include "../_layout/pipe.h"
-#include "../_layout/straw.h"
 
-#include "../core/vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;
@@ -183,10 +176,6 @@ double DAT_00B0B860 = DAT_007E1718 / DAT_00B0B878;
 
 // The canonical class headers follow the static initialisers: VC6 numbers the _$E/_$S
 // stubs in parse order and the type-list headers consume a number when seen earlier.
-#include "../_layout/techno_class.h"
-#include "../_layout/aircraft_class.h"
-#include "../_layout/aircraft_type_class.h"
-#include "../_layout/kamikaze_class.h"
 
 // FUNCTION: GAMEMD 0x6B6FA0
 // NoInit constructor (save-game load path): base NoInit constructor, an empty

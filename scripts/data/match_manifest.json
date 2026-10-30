@@ -47504,7 +47504,7 @@
  {
   "tu": "match/combat/tu174_particle_class.cpp",
   "addr": "0x62D760",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x1",
   "name": "ParticleClass::slot66_local_static_atexit",
   "status": "matched",
@@ -69367,7 +69367,7 @@
  {
   "tu": "match/ai/tag_class_body.cpp",
   "addr": "0x6E4B80",
-  "sym": "_$E5",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E770)",
   "status": "matched",
@@ -69376,7 +69376,7 @@
  {
   "tu": "match/ai/tag_class_body.cpp",
   "addr": "0x6E4BA0",
-  "sym": "_$E8",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E758)",
   "status": "matched",
@@ -69385,7 +69385,7 @@
  {
   "tu": "match/ai/tag_class_body.cpp",
   "addr": "0x6E4D20",
-  "sym": "_$E11",
+  "sym": "_$E23",
   "len": "0x1A",
   "name": "dynamic initializer (DAT_00B0E760)",
   "status": "matched",
@@ -69493,7 +69493,7 @@
  {
   "tu": "match/ai/tag_type_class_body.cpp",
   "addr": "0x6E5900",
-  "sym": "_$E4",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E808)",
   "status": "matched",
@@ -69502,7 +69502,7 @@
  {
   "tu": "match/ai/tag_type_class_body.cpp",
   "addr": "0x6E5920",
-  "sym": "_$E7",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E7F0)",
   "status": "matched",
@@ -69511,7 +69511,7 @@
  {
   "tu": "match/ai/tag_type_class_body.cpp",
   "addr": "0x6E5AA0",
-  "sym": "_$E10",
+  "sym": "_$E23",
   "len": "0x1A",
   "name": "dynamic initializer (DAT_00B0E7F8)",
   "status": "matched",
@@ -75756,7 +75756,7 @@
  {
   "tu": "match/ui/input_controls/display_scroll.cpp",
   "addr": "0x692080",
-  "sym": "_$E4",
+  "sym": "_$E19",
   "len": "0x13",
   "name": "_$E4",
   "status": "matched",
@@ -75765,7 +75765,7 @@
  {
   "tu": "match/ui/input_controls/display_scroll.cpp",
   "addr": "0x6920A0",
-  "sym": "_$E7",
+  "sym": "_$E22",
   "len": "0x13",
   "name": "_$E7",
   "status": "matched",
@@ -75774,7 +75774,7 @@
  {
   "tu": "match/ui/input_controls/display_scroll.cpp",
   "addr": "0x692220",
-  "sym": "_$E10",
+  "sym": "_$E25",
   "len": "0x1A",
   "name": "_$E10",
   "status": "matched",
@@ -89396,7 +89396,7 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D150",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "_$E2",
   "status": "matched",
@@ -89405,7 +89405,7 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D170",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "_$E5",
   "status": "matched",
@@ -89414,7 +89414,7 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D2F0",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0089E028)",
   "status": "matched",
@@ -89477,7 +89477,7 @@
  {
   "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B1B0",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "FUN_0049B1B0",
   "status": "matched",
@@ -89486,7 +89486,7 @@
  {
   "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B1D0",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x13",
   "name": "FUN_0049B1D0",
   "status": "matched",
@@ -89495,7 +89495,7 @@
  {
   "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B350",
-  "sym": "_$E11",
+  "sym": "_$E26",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0089F660)",
   "status": "matched",
@@ -90152,7 +90152,7 @@
  {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1400",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "_$E2",
   "status": "matched",
@@ -90161,7 +90161,7 @@
  {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1420",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "_$E5",
   "status": "matched",
@@ -90170,7 +90170,7 @@
  {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F15A0",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00AC1328)",
   "status": "matched",
@@ -101552,7 +101552,7 @@
  {
   "tu": "match/combat/tu174_particle_class.cpp",
   "addr": "0x62B400",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4A10)",
   "status": "matched",
@@ -101561,7 +101561,7 @@
  {
   "tu": "match/combat/tu174_particle_class.cpp",
   "addr": "0x62B420",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC49F8)",
   "status": "matched",
@@ -101597,7 +101597,7 @@
  {
   "tu": "match/combat/tu175_particle_system_class.cpp",
   "addr": "0x62DA70",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4A90)",
   "status": "matched",
@@ -101606,7 +101606,7 @@
  {
   "tu": "match/combat/tu175_particle_system_class.cpp",
   "addr": "0x62DA90",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4A78)",
   "status": "matched",
@@ -101777,7 +101777,7 @@
  {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B6A30",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0B878)",
   "status": "matched",
@@ -101786,7 +101786,7 @@
  {
   "tu": "match/combat/tu218_spawn_manager_class.cpp",
   "addr": "0x6B6A50",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0B860)",
   "status": "matched",
@@ -104103,7 +104103,7 @@
  {
   "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B180",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x28",
   "name": "compiler-generated initializer",
   "status": "matched",

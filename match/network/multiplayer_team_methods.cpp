@@ -6,6 +6,7 @@
 //
 // Address index: 0x5C1090 0x5C10B0 0x5C9470 0x5C94C0
 
+#include "../FUNCTION.H"
 #include "mp_battle_class.h"
 
 // FUNCTION: GAMEMD 0x5C1090

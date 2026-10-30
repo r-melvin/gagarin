@@ -9,12 +9,7 @@
 //   /Ob2: the scalar deleting destructor 0x726950 expands the destructor and
 //   the destructor expands the vector RemoveItem bodies in place.
 
-#include <new.h>
-#include "../_layout/trigger_class.h"
-#include "../_layout/trigger_type_class.h"
-#include "../_layout/house_type_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../movement/locomotion_load_support.h"
 #include "../core/abstract_registry.h"
 #include "tevent_class_methods.h"

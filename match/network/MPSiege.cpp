@@ -20,14 +20,10 @@
 // STRING: GAMEMD 0x82FF48 "Assigning Starting Points for Attacking house %d (%s)\n"
 // STRING: GAMEMD 0x82FF80 "Assigning Starting Points for Defending house %d (%s)\n"
 
-#include <string.h>
+#include "../FUNCTION.H"
 #include "multiplayer_game_mode.h"
 #include "transport/conn_types.h"
-#include "../_layout/house_class.h"
-#include "../_layout/house_type_class.h"
-#include "../_layout/building_class.h"
 #include "../core/header_tuning_globals.h"
-#include "../core/vector_class_operations.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -50,7 +46,6 @@ DynamicVectorClass<Cell> FUN_00688380(bool unknown);
 
 // GLOBAL: GAMEMD 0x8871E0 -- the rules object; 0x5CAB33 passes the address of
 // its +0x8AC member (a type list) to 0x5051E0.
-#include "../_layout/rules_class.h"
 extern RulesClass* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x688ED0 (decl; reloc) -- __fastcall: the building in ECX,

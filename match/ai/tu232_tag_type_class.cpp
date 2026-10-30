@@ -39,7 +39,7 @@
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
 
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 
 class TagTypeClass;
 
@@ -67,8 +67,6 @@ GG_STATIC_ASSERT(sizeof(TagTypeClass*) == 4);
 
 #include "tag_type_class_ini_methods.h"
 
-#include <stddef.h>
-#include "../_layout/tag_type_class.h"
 #include "../core/abstract_registry.h"
 
 extern "C" char* __cdecl strncpy(char*, const char*, unsigned int);
@@ -110,7 +108,6 @@ static inline bool TagTypeCtorAdd(TagTypeCtorVector* vector, TagTypeClass* item)
 
 // Native construction under GX adds exception cleanup absent from retail.
 #include "tag_type_class_load_list_methods.h"
-#include "../_layout/swizzle_manager_class.h"
 
 #include "tag_type_class_methods.h"
 
@@ -121,8 +118,6 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 
 #include "../core/deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"
-#include "../_layout/pipe.h"
-#include "../_layout/straw.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E5B60

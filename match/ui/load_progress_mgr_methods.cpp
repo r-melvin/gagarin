@@ -6,8 +6,7 @@
 //
 // Address index: 0x552AD0 0x552C90 0x554100 0x554150 0x554400
 
-#include "../_layout/load_progress_mgr.h"
-#include "../_layout/session_class.h"
+#include "../FUNCTION.H"
 #include "../core/trivial_tu117_methods.h"
 
 // GLOBAL: GAMEMD 0x8A00A4 / 0x8A00A8 -- current screen width and height.

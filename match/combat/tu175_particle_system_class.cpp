@@ -24,8 +24,8 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
+#include "../FUNCTION.H"
 #include "particles/system_class.h"
-#include "../_layout/swizzle_manager_class.h"
 #include "particles/particle_system_type_class.h"
 #include "particles/particle_class.h"
 

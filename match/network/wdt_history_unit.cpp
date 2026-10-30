@@ -8,10 +8,8 @@
 // 0x7F70DC, ".?AVReferenceCounted@@" 0x7F0954, ".?AV?$rc_ptr@VHistory@..."
 // 0x7F6F74, ".?AV?$rc_ptr@VWDTState@@@@" 0x7F70EC).
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../FUNCTION.H"
 #include "../core/header_tuning_globals.h"
-#include "world_domination_tour.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 

@@ -3,7 +3,7 @@
 //   Evidence: disassembly of 0x5CB6D0 (MSShapeAnim), 0x5CBD20 (MSFadeAnim) and 0x5CC250 (MSOverlayAnim); the
 //   RTTI chain and vtables 0x7EE910 / 0x7EE938 / 0x7EE960; layout in match/_layout/ms_anim.h. Each constructor
 //   expands its bases inline and stores its own vtable pointer after the member initialisers.
-#include "../_layout/ms_anim.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x5CB6C0
 // The base destructor: nothing but the vtable pointer seat (defined here so the derived destructors in this

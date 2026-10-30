@@ -3,9 +3,7 @@
 //   Constructor body read from the entry-bounded retail function at 0x435820
 //   (0x330 bytes, RET 4). Helper ABIs and globals are read from its call and
 //   load operands.
-#include "../_layout/building_light_class.h"
-#include "../core/vector_class_operations.h"
-#include "../_layout/layer_class.h"
+#include "../FUNCTION.H"
 #include "../core/rules_class.h"
 #include "../renderer/quaternion_matrix_methods.h"
 

@@ -15,10 +15,8 @@
 //   0x640450  PowerClass::vf_33
 // VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /Ob2 /MT
 
+#include "../FUNCTION.H"
 #include "input_controls/ui_display_chain.h"
-#include "../_layout/house_class.h"
-#include "../_layout/building_class.h"
-#include "../_layout/building_type_class_layout.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
 extern HouseClass* CurrentPlayer;

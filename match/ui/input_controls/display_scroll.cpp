@@ -5,6 +5,7 @@
 //   /Ob2: retail's __xc entries point at the initialiser bodies themselves
 //   (0x692080, 0x6920A0, 0x692220), with no forwarding stub.
 
+#include "../../FUNCTION.H"
 #include "display_scroll.h"
 #include "display_command.h"
 #include "../../core/header_tuning_globals.h"

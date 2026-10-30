@@ -3,8 +3,7 @@
 //   WDTTerritory and WDTState, their rc_ptr factories, and the
 //   VectorClass<rc_ptr<WDTTerritory>> members emitted beside them. Class names
 //   are the retail RTTI names; members are placeholders.
-#include "world_domination_tour.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x76AAB0
 rc_ptr<WDTTerritory> FUN_0076AAB0()
