@@ -196,21 +196,6 @@ HRESULT __stdcall AircraftTypeClass::Load(IStream* pStm)
     return 0;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x41CF80
-CoordStruct ObjectTypeClass::vf_27(const CoordStruct& coord)
-{
-    return coord;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x41CFA0
-void* ObjectTypeClass::vf_39()
-{
-    return Image;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x41CFB0
 int AircraftTypeClass::vf_11()
 {
