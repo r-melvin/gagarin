@@ -61,6 +61,9 @@ incoming path would land on an untracked file). STATUS.md rotation: `--status-pa
 
 ## Between batches
 
+After a batch lands, remove each landed packet's worktree (`pkt.py done` in it, or `git worktree remove`) and
+drop its ledger line, otherwise finished packets keep holding slots in the machine-wide worktree budget.
+
 After a landing, refresh the graphics (`scripts/orchestration/progress_svg.py`, `link_svg.py --refresh`)
 and the census (`scripts/vc6/extent_census.py`). Gates run parallel: `compile_all.sh --jobs 8`,
 `verify_all.py --jobs 8` (output identical to serial). pktlint now also rejects hand-written scalar
