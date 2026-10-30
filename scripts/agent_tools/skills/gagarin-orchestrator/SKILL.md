@@ -10,7 +10,7 @@ Use low reasoning effort for agents launched through this workflow.
 Law: AGENTS.md, CONTRIBUTING.md, LEGAL.md, `the standing directions in your brief`.
 `$DL = scripts/agent_tools/delivery`. Every tool below is
 deterministic and byte-gated; the model's work is only what the tools report back. Resource rules
-for every agent: `-j4`, two worktrees, disk scratch (`gagarin-scratch/`), no watch loops, and never
+for every agent: `-j4` and one worktree each, at most 8 worktrees and 24 compilers machine-wide (pkt.py budget), disk scratch (`gagarin-scratch/`), no watch loops, and never
 remove/prune/`--force` anything you did not create (the tools keep a created-path ledger).
 
 ## The loop

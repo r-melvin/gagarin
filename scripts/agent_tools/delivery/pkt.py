@@ -33,7 +33,7 @@ import landlib as L  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 SCRATCH_ROOT = os.path.dirname(D.SCRATCH)       # ../gagarin-scratch next to the main checkout
 BUDGET = dict(min_free_gb=float(os.environ.get("PKT_MIN_FREE_GB", "6")), max_swap_pct=80,
-              max_worktrees=int(os.environ.get("PKT_MAX_WORKTREES", "2")), max_cl=int(os.environ.get("PKT_MAX_CL", "12")))
+              max_worktrees=int(os.environ.get("PKT_MAX_WORKTREES", "8")), max_cl=int(os.environ.get("PKT_MAX_CL", "24")))
 
 
 def say(*a):

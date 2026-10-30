@@ -79,6 +79,6 @@ with later header changes, names, and demotions. Record decisions in the commit 
 
 ## Resource rules
 
-`-j4`, at most two worktrees at a time, disk scratch only (no /tmp), no watch loops.
+`-j4`, at most two worktrees per lander (8 machine-wide, enforced by pkt.py budget), disk scratch only (no /tmp), no watch loops.
 
 - NEVER find a PID with `pgrep -f <text>` from inside a shell whose own command line contains <text>: it matches the waiting shell itself and `tail --pid` then waits forever (hit twice on 2026-10-23). Record `$!` when you launch the job (`job & echo $! > job.pid`) and wait on that, or just run the job itself as the background command.
