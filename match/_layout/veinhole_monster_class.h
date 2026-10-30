@@ -28,7 +28,32 @@
 // CurrentState, is at 0xC8 == 0xAC + 0x1C. Field names are NOT established.
 #ifndef GG_MATCH_LAYOUT_VEINHOLELOGIC_DEFINED
 #define GG_MATCH_LAYOUT_VEINHOLELOGIC_DEFINED
-struct VeinholeLogic { unsigned char unknown_00[0x18]; char* SpreadData; /* +0x18 (object +0xC4): bool array indexed by cell index */ };
+// The veinhole stack begins at GrowthLogic+4 (object+0xB0). The initializer
+// allocates 0x14 bytes and stores its fields at +0/+4/+8/+0xC/+0x10; the two
+// sweep bodies read Count at +0. This prefix type names only the field used by
+// the sweeps; it does not claim a complete stack API.
+struct VeinholeGrowthStackPrefix
+{
+    int Count;  // +0x00, compared as a DWORD by 0x74CDF0 and 0x74EA30
+};
+GG_STATIC_ASSERT(sizeof(int) == 4);
+GG_STATIC_ASSERT(sizeof(VeinholeGrowthStackPrefix*) == 4);
+GG_STATIC_ASSERT(offsetof(VeinholeGrowthStackPrefix, Count) == 0x00);
+GG_STATIC_ASSERT(sizeof(VeinholeGrowthStackPrefix) == 4);
+
+struct VeinholeLogic
+{
+    unsigned long unknown_00;                // +0x00
+    VeinholeGrowthStackPrefix* unknown_04;   // +0x04 (object+0xB0)
+    unsigned char unknown_08[0x10];          // +0x08..+0x17
+    char* SpreadData;                        // +0x18 (object+0xC4)
+};
+GG_STATIC_ASSERT(offsetof(VeinholeLogic, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(VeinholeLogic, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(VeinholeLogic, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(VeinholeLogic, SpreadData) == 0x18);
+GG_STATIC_ASSERT(sizeof(char*) == 4);
+GG_STATIC_ASSERT(sizeof(unsigned long) == 4);
 GG_STATIC_ASSERT(sizeof(VeinholeLogic) == 0x1C);
 #endif
 
@@ -44,6 +69,9 @@ public:
     static void DeleteAll();                   // 0x74D760
     static void DeleteVeinholeGrowthData();    // 0x74E880
     static bool IsCellEligibleForVeinHole(const struct Cell_0074D670* cell);  // 0x74D670
+    static void UpdateAllVeinholes();           // 0x74CDF0
+    static void DestroyAll();                   // 0x74EA30
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6, 0x74EEE0
     void RecalculateSpread();                  // 0x74E6B0
     void Recalculate();                        // 0x74E930
     VeinholeLogic GrowthLogic;                 // +0xAC (0x1C) see note
@@ -65,6 +93,7 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, GrowthLogic)               == 0xAC);
+GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, GrowthLogic) + offsetof(VeinholeLogic, unknown_04) == 0xB0);
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, CurrentState)              == 0xC8);
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, NextState)                 == 0xCC);
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, MonsterFrameIdx)           == 0xD0);

@@ -1,35 +1,35 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Bytes matched against retail gamemd.exe v1.001 at 0x74CDF0, 0x74EA30,
-//   0x74EEE0 and 0x74EF00. YRpp consulted for method names only.
+// Provenance: own-binary-via-Ghidra
+//   Retail entry disassembly, RTTI and current canonical class/provider headers
+//   establish the member ABI, registry item type, field offsets and virtual
+//   slots used below. The original source-file identity is unknown; this is the
+//   project home for these VeinholeMonsterClass methods.
 
-#include "veinhole_monster_methods.h"
+#include <stdlib.h>
+#include "veinhole_monster_eligible_methods.h"
+#include "../_layout/staticvectorholder_00b1d290.h"
 
 // FUNCTION: GAMEMD 0x74CDF0
-//
-// The per-frame driver. Every registered monster is updated (top-down, the
-// Items pointer re-read each pass because Update may reallocate the registry),
-// then the dead-and-drained ones are deleted. The second loop is the body of
-// DestroyAll below, written out again: retail carries two copies of the sweep,
-// so the source did too. See DestroyAll for why the sweep is phrased the way it
-// is.
-void VeinholeMonsterView_0074CDF0::UpdateAllVeinholes()
+// Drive every registered monster, then retire dead monsters with no queued
+// growth nodes. Re-read Items after deletion because destruction may mutate the
+// registry storage.
+void VeinholeMonsterClass::UpdateAllVeinholes()
 {
     int i;
 
-    for (i = VeinholeArray.Count - 1; i >= 0; --i) {
-        VeinholeArray.Items[i]->Update();
+    for (i = StaticVectorHolder_00B1D290::DAT_00B1D290.Count - 1; i >= 0; --i) {
+        StaticVectorHolder_00B1D290::DAT_00B1D290.Items[i]->vf_23();
     }
 
-    i = VeinholeArray.Count - 1;
+    i = StaticVectorHolder_00B1D290::DAT_00B1D290.Count - 1;
     if (i >= 0) {
-        VeinholeMonsterView_0074CDF0** items = VeinholeArray.Items;
+        VeinholeMonsterClass** items = StaticVectorHolder_00B1D290::DAT_00B1D290.Items;
         do {
-            VeinholeMonsterView_0074CDF0* monster = items[i];
-            if (monster->IsDead && monster->unknown_B0->Count == 0) {
+            VeinholeMonsterClass* monster = items[i];
+            if (monster->IsDead && monster->GrowthLogic.unknown_04->Count == 0) {
                 if (monster) {
                     delete monster;
-                    items = VeinholeArray.Items;
+                    items = StaticVectorHolder_00B1D290::DAT_00B1D290.Items;
                 }
             }
             --i;
@@ -37,31 +37,51 @@ void VeinholeMonsterView_0074CDF0::UpdateAllVeinholes()
     }
 }
 
-// FUNCTION: GAMEMD 0x74EA30
-//
-// Delete every monster that is dead and has no growth nodes still queued.
-//
-// Phrasing is load-bearing. Retail keeps the registry's Items pointer in EAX
-// across the loop and reloads it only after the destructor call (the destructor
-// unlinks the monster, so the block may move). A plain `VeinholeArray.Items[i]`
-// in the loop makes our cl reload it every iteration and costs the byte load
-// its register (43.5%). Caching the pointer in a local and reloading it after
-// the delete restores the shape, but the reload has to sit inside an explicit
-// `if (monster)`: `delete` carries its own null test, and with the reload
-// outside that test the null path jumps to the reload instead of past it
-// (95.7%). VC6 folds the explicit test into delete's implicit one, so the
-// guard costs no instruction.
-void VeinholeMonsterView_0074CDF0::DestroyAll()
+// FUNCTION: GAMEMD 0x74D670
+// Reject a candidate that is too close to an existing monster or whose 3x3
+// cell neighborhood is not flat, above ground and of land type zero.
+bool VeinholeMonsterClass::IsCellEligibleForVeinHole(const Cell_0074D670* cell)
 {
-    int i = VeinholeArray.Count - 1;
+    if (DAT_00A8E7AC > 0)
+        return true;
+
+    for (int i = StaticVectorHolder_00B1D290::DAT_00B1D290.Count - 1; i >= 0; --i) {
+        VeinholeMonsterClass* monster = StaticVectorHolder_00B1D290::DAT_00B1D290.Items[i];
+        if (abs(cell->X - monster->Position.X) < 3
+            && abs(cell->Y - monster->Position.Y) < 3)
+            return false;
+    }
+
+    int level = MapInstance_0074D670.GetCellAt(cell)->Level;
+    if (level < 1)
+        return false;
+
+    for (int dy = -1; dy <= 1; ++dy) {
+        for (int dx = -1; dx <= 1; ++dx) {
+            Cell_0074D670 spot;
+            spot.X = cell->X + dx;
+            spot.Y = cell->Y + dy;
+            CellClass_0074D670* c = MapInstance_0074D670.Cell(spot);
+            if (c->SlopeIndex != 0 || c->LandType != 0 || c->Level != level)
+                return false;
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x74EA30
+// Delete every dead monster whose growth-node queue is empty.
+void VeinholeMonsterClass::DestroyAll()
+{
+    int i = StaticVectorHolder_00B1D290::DAT_00B1D290.Count - 1;
     if (i >= 0) {
-        VeinholeMonsterView_0074CDF0** items = VeinholeArray.Items;
+        VeinholeMonsterClass** items = StaticVectorHolder_00B1D290::DAT_00B1D290.Items;
         do {
-            VeinholeMonsterView_0074CDF0* monster = items[i];
-            if (monster->IsDead && monster->unknown_B0->Count == 0) {
+            VeinholeMonsterClass* monster = items[i];
+            if (monster->IsDead && monster->GrowthLogic.unknown_04->Count == 0) {
                 if (monster) {
                     delete monster;
-                    items = VeinholeArray.Items;
+                    items = StaticVectorHolder_00B1D290::DAT_00B1D290.Items;
                 }
             }
             --i;
@@ -70,18 +90,16 @@ void VeinholeMonsterView_0074CDF0::DestroyAll()
 }
 
 // FUNCTION: GAMEMD 0x74EEE0
-//
-// IPersistStream::Save — forwards the receiver and both stream arguments to the
-// shared object saver.
-long __stdcall VeinholeMonsterView_0074CDF0::Save(void* pStm, int fClearDirty)
+// The inherited COM Save contract is __stdcall with IStream* and BOOL. Its
+// base implementation is the partial shared helper at 0x410320.
+HRESULT __stdcall VeinholeMonsterClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    return FUN_00410320(this, pStm, fClearDirty);
+    return AbstractClass::Save(pStm, fClearDirty);
 }
 
-// FUNCTION: GAMEMD 0x74EF00
-//
-// The terrain type a veinhole is drawn as, taken from the rules.
-void* VeinholeMonsterView_0074CDF0::GetTerrainType()
+// FUNCTION: GAMEMD 0x74F330
+// Veinhole monsters sit in no layer.
+int VeinholeMonsterClass::vf_30()
 {
-    return RulesInstance->VeinholeTerrainType;
+    return -1;
 }

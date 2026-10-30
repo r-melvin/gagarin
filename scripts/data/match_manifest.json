@@ -24654,7 +24654,7 @@
   "pct": 20.7
  },
  {
-  "tu": "match/map/veinhole_monster_eligible_methods.cpp",
+  "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74D670",
   "sym": "?IsCellEligibleForVeinHole@VeinholeMonsterClass@@SI_NPBUCell_0074D670@@@Z",
   "len": "0xee",
@@ -24665,7 +24665,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74CDF0",
-  "sym": "?UpdateAllVeinholes@VeinholeMonsterView_0074CDF0@@SIXXZ",
+  "sym": "?UpdateAllVeinholes@VeinholeMonsterClass@@SIXXZ",
   "len": "0x5c",
   "name": "VeinholeMonsterClass::UpdateAllVeinholes",
   "status": "matched",
@@ -24674,7 +24674,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74EA30",
-  "sym": "?DestroyAll@VeinholeMonsterView_0074CDF0@@SIXXZ",
+  "sym": "?DestroyAll@VeinholeMonsterClass@@SIXXZ",
   "len": "0x3f",
   "name": "VeinholeMonsterClass::DestroyAll",
   "status": "matched",
@@ -24683,14 +24683,14 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74EEE0",
-  "sym": "?Save@VeinholeMonsterView_0074CDF0@@UAGJPAXH@Z",
+  "sym": "?Save@VeinholeMonsterClass@@UAGJPAUIStream@@H@Z",
   "len": "0x17",
   "name": "VeinholeMonsterClass::Save",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/map/veinhole_monster_methods.cpp",
+  "tu": "match/map/veinhole_monster_eligible_methods.cpp",
   "addr": "0x74EF00",
   "sym": "?GetTerrainType@VeinholeMonsterView_0074CDF0@@SIPAXXZ",
   "len": "0xc",
@@ -135316,7 +135316,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/voxel_anim_veinhole_w3_methods.cpp",
+  "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74F330",
   "sym": "?vf_30@VeinholeMonsterClass@@UAEHXZ",
   "len": "0x4",

@@ -5,7 +5,6 @@
 //   retail address order.
 
 #include "../_layout/voxel_anim_class.h"
-#include "../_layout/veinhole_monster_class.h"
 
 // A map cell, as far as the flag word VoxelAnimClass::vf_65 tests.
 struct VoxelAnimCellView
@@ -33,11 +32,4 @@ bool VoxelAnimClass::vf_65(RectangleStruct* rect, bool force, int a3)
         NeedsRedraw = true;
     }
     return ObjectClass::vf_65(rect, force, 0);
-}
-
-// FUNCTION: GAMEMD 0x74F330
-// Veinhole monsters sit in no layer.
-int VeinholeMonsterClass::vf_30()
-{
-    return -1;
 }
