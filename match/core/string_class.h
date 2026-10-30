@@ -68,6 +68,10 @@ public:
     bool FUN_007B5AB0(char ch, unsigned int index);
     // Declaration: GAMEMD 0x7B5B30 -- lower-case ASCII uppercase characters.
     void FUN_007B5B30();
+    // Declaration: GAMEMD 0x7B5B80 -- a copy with ASCII uppercase characters lower-cased (hidden result on the stack).
+    Wstring FUN_007B5B80() const;
+    // Declaration: GAMEMD 0x7B6630 -- whether any character of `set` occurs; one stack word.
+    bool FUN_007B6630(const char* set) const;
     // Declaration: GAMEMD 0x7B5C50 -- upper-case ASCII lowercase characters.
     void FUN_007B5C50();
     // Declaration: GAMEMD 0x7B5AE0 -- replace with a copy of up to `length` characters.

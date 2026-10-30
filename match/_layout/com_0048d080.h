@@ -33,6 +33,12 @@ struct Vtbl_00AC116C
     long (__stdcall* At_7C)(Obj_00AC116C* self, int value);
     char unknown_80[0x0C];
     long (__stdcall* At_8C)(Obj_00AC116C* self, unsigned long value);
+    char unknown_90[0x58];
+    // 0x77E1D0 / 0x77E300: the list-box selection, as a text (no selection) or a node chain.
+    long (__stdcall* At_E8)(Obj_00AC116C* self, const wchar_t* text);
+    long (__stdcall* At_EC)(Obj_00AC116C* self, const void* chain, const wchar_t* text);
+    long (__stdcall* At_F0)(Obj_00AC116C* self, const wchar_t* text);
+    long (__stdcall* At_F4)(Obj_00AC116C* self, const void* chain, const wchar_t* text);
 };
 struct Obj_00AC116C
 {
@@ -70,7 +76,7 @@ GG_STATIC_ASSERT(sizeof(((Obj_00AC1170*)0)->Vtbl) == 4);
 // All sizeof checks pin source projections, not complete external objects or tables.
 // Unconsumed result types, scalar signedness and text constness retain caller
 // projections; they do not establish original external C++ declarations.
-GG_STATIC_ASSERT(sizeof(Vtbl_00AC116C) == 0x90);
+GG_STATIC_ASSERT(sizeof(Vtbl_00AC116C) == 0xF8);
 GG_STATIC_ASSERT(sizeof(Vtbl_00AC1170) == 0x30);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_0C) == 0x0C);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_0C) == 4);
@@ -90,6 +96,10 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_7C) == 0x7C);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_7C) == 4);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_8C) == 0x8C);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_8C) == 4);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_E8) == 0xE8);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_EC) == 0xEC);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_F0) == 0xF0);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_F4) == 0xF4);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC1170, At_18) == 0x18);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC1170*)0)->At_18) == 4);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC1170, At_1C) == 0x1C);

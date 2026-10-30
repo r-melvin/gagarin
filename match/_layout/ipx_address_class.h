@@ -22,12 +22,21 @@ struct NetworkNumberType
 {
     unsigned long Number;
 };
+#pragma pack(push, 1)
 struct NodeAddressType
 {
-    unsigned char Node[6];
+    union {
+        unsigned char Node[6];
+        struct {
+            unsigned long Low;    // +0x00 (node bytes 0..3)
+            unsigned short High;  // +0x04 (node bytes 4..5)
+        };
+    };
 };
+#pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(NetworkNumberType, Number) == 0);
 GG_STATIC_ASSERT(offsetof(NodeAddressType, Node) == 0);
+GG_STATIC_ASSERT(offsetof(NodeAddressType, High) == 4);
 GG_STATIC_ASSERT(sizeof(NetworkNumberType) == 0x4);
 GG_STATIC_ASSERT(sizeof(NodeAddressType) == 0x6);
 

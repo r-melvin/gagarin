@@ -92428,9 +92428,8 @@
   "sym": "?FUN_007A2830@@YIXPAVWstring@@@Z",
   "len": "0x7f",
   "name": "?FUN_007A2830@@YIXPAVWstring@@@Z",
-  "status": "partial",
-  "pct": 7.5,
-  "note": "Aligned 92.5%: retail zeroes the first word of the local record before the loop."
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
@@ -146787,5 +146786,131 @@
   "name": "?FUN_005889F0@@YIHHH@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77E1D0",
+  "sym": "?FUN_0077E1D0@@YIHPAVObj_007B66D0@@@Z",
+  "len": "0x128",
+  "name": "?FUN_0077E1D0@@YIHPAVObj_007B66D0@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77E300",
+  "sym": "?FUN_0077E300@@YIHPAVObj_007B66D0@@@Z",
+  "len": "0x128",
+  "name": "?FUN_0077E300@@YIHPAVObj_007B66D0@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x78F5C0",
+  "sym": "?FUN_0078F5C0@@YIPAGPBG@Z",
+  "len": "0xe6",
+  "name": "?FUN_0078F5C0@@YIPAGPBG@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x796DE0",
+  "sym": "?FUN_00796DE0@@YIXXZ",
+  "len": "0xe7",
+  "name": "?FUN_00796DE0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x796ED0",
+  "sym": "?FUN_00796ED0@@YIXXZ",
+  "len": "0xe3",
+  "name": "?FUN_00796ED0@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x79C520",
+  "sym": "?FUN_0079C520@@YI_NPAVWstring@@@Z",
+  "len": "0x129",
+  "name": "?FUN_0079C520@@YI_NPAVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x79DA90",
+  "sym": "?FUN_0079DA90@@YI?AVWstring@@PAX@Z",
+  "len": "0xc0",
+  "name": "?FUN_0079DA90@@YI?AVWstring@@PAX@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7A2230",
+  "sym": "?FUN_007A2230@@YIXPBD000@Z",
+  "len": "0xf5",
+  "name": "?FUN_007A2230@@YIXPBD000@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7A28B0",
+  "sym": "?FUN_007A28B0@@YIXPBG@Z",
+  "len": "0xb5",
+  "name": "?FUN_007A28B0@@YIXPBG@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7A2FE0",
+  "sym": "?FUN_007A2FE0@@YGJPAXH0H@Z",
+  "len": "0xe7",
+  "name": "?FUN_007A2FE0@@YGJPAXH0H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7A8ED0",
+  "sym": "?FUN_007A8ED0@@YGHPAXHHPAUEntry_00B77908@@PBG@Z",
+  "len": "0xef",
+  "name": "?FUN_007A8ED0@@YGHPAXHHPAUEntry_00B77908@@PBG@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7A9110",
+  "sym": "?FUN_007A9110@@YGHPAXHPAUEntry_00B77908@@PBG@Z",
+  "len": "0xef",
+  "name": "?FUN_007A9110@@YGHPAXHPAUEntry_00B77908@@PBG@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7A9800",
+  "sym": "?FUN_007A9800@@YGJPAXH@Z",
+  "len": "0x16d",
+  "name": "?FUN_007A9800@@YGJPAXH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AA6D0",
+  "sym": "?FUN_007AA6D0@@YGJPAXH@Z",
+  "len": "0x19d",
+  "name": "?FUN_007AA6D0@@YGJPAXH@Z",
+  "status": "partial",
+  "pct": 83.8
  }
 ]

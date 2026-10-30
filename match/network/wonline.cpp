@@ -1892,6 +1892,94 @@ void FUN_0077E110()
     ThemeUpdate_0077D7A0(start);
 }
 
+// GLOBAL: GAMEMD 0xB766C0 -- the selection of the list box (item data of the selected rows).
+extern int DAT_00B766C0[];
+
+// FUNCTION: GAMEMD 0x77E1D0
+// Hands the selected records of the list box to the online service; false when nothing is selected.
+int __fastcall FUN_0077E1D0(Obj_007B66D0* text)
+{
+    HWND list = GetDlgItem((HWND)FUN_00775B10(), 0x53E);
+    int count = SendMessageA(list, 0x191, 0x20, (LPARAM)DAT_00B766C0);
+    if (count == 0) {
+        DAT_00AC116C->Vtbl->At_E8(DAT_00AC116C, text->FUN_007B7140());
+        return 0;
+    }
+    Entry_00B77908 record;
+    Entry_00B77908* head = NULL;
+    Entry_00B77908* tail = NULL;
+    memset(&record, 0, sizeof(record));
+    for (int i = 0; i < count; i++) {
+        int index = DAT_00B766C0[i];
+        if (index >= 0 && index < DAT_00B77900.count) {
+            record = DAT_00B77908[index];
+        }
+        Entry_00B77908* node = new Entry_00B77908;
+        *node = record;
+        node->Next = NULL;
+        if (i == 0) {
+            head = node;
+        }
+        if (tail != NULL) {
+            tail->Next = node;
+        }
+        tail = node;
+    }
+    if (head != NULL) {
+        DAT_00AC116C->Vtbl->At_EC(DAT_00AC116C, head, text->FUN_007B7140());
+        do {
+            Entry_00B77908* done = head;
+            head = head->Next;
+            delete done;
+        } while (head != NULL);
+    }
+    return 1;
+}
+
+// GLOBAL: GAMEMD 0xB7381C -- the selection of the list box (item data of the selected rows).
+extern int DAT_00B7381C[];
+
+// FUNCTION: GAMEMD 0x77E300
+// Hands the selected records of the list box to the online service; false when nothing is selected.
+int __fastcall FUN_0077E300(Obj_007B66D0* text)
+{
+    HWND list = GetDlgItem((HWND)FUN_00775B10(), 0x53E);
+    int count = SendMessageA(list, 0x191, 0x20, (LPARAM)DAT_00B7381C);
+    if (count == 0) {
+        DAT_00AC116C->Vtbl->At_F0(DAT_00AC116C, text->FUN_007B7140());
+        return 0;
+    }
+    Entry_00B77908 record;
+    Entry_00B77908* head = NULL;
+    Entry_00B77908* tail = NULL;
+    memset(&record, 0, sizeof(record));
+    for (int i = 0; i < count; i++) {
+        int index = DAT_00B7381C[i];
+        if (index >= 0 && index < DAT_00B77900.count) {
+            record = DAT_00B77908[index];
+        }
+        Entry_00B77908* node = new Entry_00B77908;
+        *node = record;
+        node->Next = NULL;
+        if (i == 0) {
+            head = node;
+        }
+        if (tail != NULL) {
+            tail->Next = node;
+        }
+        tail = node;
+    }
+    if (head != NULL) {
+        DAT_00AC116C->Vtbl->At_F4(DAT_00AC116C, head, text->FUN_007B7140());
+        do {
+            Entry_00B77908* done = head;
+            head = head->Next;
+            delete done;
+        } while (head != NULL);
+    }
+    return 1;
+}
+
 // FUNCTION: GAMEMD 0x77E820
 // Splits `text` at commas into five numbers and a name.
 Wstring& FUN_0077E820(char* text, int* a, int* b, int* c, int* d, int* e, Wstring* name)
@@ -2436,6 +2524,31 @@ BOOL CALLBACK FUN_0078DA30(HWND window, UINT message, WPARAM wparam, LPARAM lpar
     return 0;
 }
 
+// GLOBAL: GAMEMD 0xB75F6C -- the latency tooltip text buffer.
+extern wchar_t DAT_00B75F6C[];
+
+// FUNCTION: GAMEMD 0x78F5C0
+// The tooltip text for the latency icon of the player `name`.
+wchar_t* __fastcall FUN_0078F5C0(const wchar_t* name)
+{
+    int ping = DAT_00B76440[Find_Slot_By_Name(name)];
+    if (ping < 0) {
+        swprintf(DAT_00B75F6C, FUN_00734E60("TXT_LATENCY_ICON_TOOLTIP_NOPING", NULL, DAT_0084A430, 0x3D7D), name,
+            FUN_00734E60("TXT_UNKNOWN", NULL, DAT_0084A430, 0x3D7D),
+            FUN_00734E60("TXT_UNKNOWN_PING", NULL, DAT_0084A430, 0x3D7D));
+    } else if (ping < 300) {
+        swprintf(DAT_00B75F6C, FUN_00734E60("TXT_LATENCY_ICON_TOOLTIP_PING", NULL, DAT_0084A430, 0x3D7F), name,
+            FUN_00734E60("TXT_GOOD", NULL, DAT_0084A430, 0x3D7F), ping);
+    } else if (ping < 500) {
+        swprintf(DAT_00B75F6C, FUN_00734E60("TXT_LATENCY_ICON_TOOLTIP_PING", NULL, DAT_0084A430, 0x3D81), name,
+            FUN_00734E60("TXT_FAIR", NULL, DAT_0084A430, 0x3D81), ping);
+    } else {
+        swprintf(DAT_00B75F6C, FUN_00734E60("TXT_LATENCY_ICON_TOOLTIP_PING", NULL, DAT_0084A430, 0x3D83), name,
+            FUN_00734E60("TXT_POOR", NULL, DAT_0084A430, 0x3D83), ping);
+    }
+    return DAT_00B75F6C;
+}
+
 // FUNCTION: GAMEMD 0x78F6B0
 int FUN_0078F6B0(int id)
 {
@@ -2749,6 +2862,58 @@ int FUN_00796B30()
     return result;
 }
 
+// FUNCTION: GAMEMD 0x796DE0
+// Builds a node named "Ol Cruddy" with the fixed address 0A:02:51:52:00:00 and
+// appends it to the node vector at 0xA8DA74.
+void FUN_00796DE0()
+{
+    NodeNameType* node = new NodeNameType;
+    FUN_00735060(node->Name, "Ol Cruddy", -1);
+    node->unknown_7B = -1;
+    node->unknown_4B = 0;
+    node->unknown_53 = 3;
+
+    NetworkNumberType network;
+    NodeAddressType address;
+    network.Number = 0;
+    address.Node[5] = 0;
+    address.Node[4] = 0;
+    address.Node[3] = 0x52;
+    address.Node[2] = 0x51;
+    address.Node[1] = 2;
+    address.Node[0] = 0x0A;
+    node->Address.FUN_0053ED20(network, address, 0);
+
+    DynamicVectorAddItemFree(&DAT_00A8DA74, node);
+    DAT_00B7790C[DAT_00A8B54C++] = 100;
+}
+
+// FUNCTION: GAMEMD 0x796ED0
+// Builds a node named "Potato" with the fixed address 0A:02:14:61:00:00 and
+// appends it to the node vector at 0xA8DA74.
+void FUN_00796ED0()
+{
+    NodeNameType* node = new NodeNameType;
+    FUN_00735060(node->Name, "Potato", -1);
+    node->unknown_7B = -1;
+    node->unknown_4B = 0;
+    node->unknown_53 = 0;
+
+    NetworkNumberType network;
+    NodeAddressType address;
+    network.Number = 0;
+    address.Node[5] = 0;
+    address.Node[4] = 0;
+    address.Node[3] = 0x61;
+    address.Node[2] = 0x14;
+    address.Node[1] = 2;
+    address.Node[0] = 0x0A;
+    node->Address.FUN_0053ED20(network, address, 0);
+
+    DynamicVectorAddItemFree(&DAT_00A8DA74, node);
+    DAT_00B7790C[DAT_00A8B54C++] = 100;
+}
+
 // FUNCTION: GAMEMD 0x796FC0
 // Builds a node named "PotatoToo" with the fixed address 0A:02:50:FA:00:00 and
 // appends it to the node vector at 0xA8DA74.
@@ -2906,6 +3071,81 @@ bool FUN_0079BED0()
     return *value < 0 || *value > 2;
 }
 
+// FUNCTION: GAMEMD 0x79BF50
+// Enables the controls of the lobby dialog that need a selected name.
+void __fastcall FUN_0079BF50(HWND dialog)
+{
+    EnableWindow(GetDlgItem(dialog, 0x703), FUN_007B54B0(&DAT_00B76E24) > 0);
+    EnableWindow(GetDlgItem(dialog, 0x62D), FUN_0079BC80());
+    bool enable;
+    if (FUN_007B54B0(&DAT_00B76E24) == 0) {
+        enable = false;
+    } else {
+        int* value = FindValue_0079BED0(DAT_00B76990, DAT_00B76E24);
+        if (value == NULL) {
+            enable = false;
+        } else if (*value >= 0 && *value <= 2) {
+            enable = false;
+        } else {
+            enable = true;
+        }
+    }
+    EnableWindow(GetDlgItem(dialog, 0x5C2), enable);
+}
+
+// FUNCTION: GAMEMD 0x623F60 (decl; reloc) -- __fastcall: read list item `index` of the list box into the string.
+void FUN_00623F60(HWND window, int index, Obj_007B66D0* out);
+
+// FUNCTION: GAMEMD 0x79C520
+// Whether `name` may be used as a lobby name: not empty, not the login, free of the separators and not
+// already in the list at 0xB73AB0.
+bool __fastcall FUN_0079C520(Wstring* name)
+{
+    Wstring work(*name);
+    work.FUN_007B5B30();
+    if (name->Length() == 0) {
+        return false;
+    }
+    if (work.FUN_007B5B80() == DAT_00B73E40.FUN_007B5B80()) {
+        return false;
+    }
+    if (name->FUN_007B6630(" ,;")) {
+        return false;
+    }
+    for (int i = 0; i < DAT_00B73AA8.count; i++) {
+        Wstring item;
+        if (i >= 0 && i < DAT_00B73AA8.count) {
+            item = DAT_00B73AB0[i];
+        }
+        item.FUN_007B5B30();
+        if (item == work) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x79DA90
+// The name of the first list entry written as "(name)" with the brackets removed;
+// the stored name when no entry has that form.
+Wstring __fastcall FUN_0079DA90(HWND list)
+{
+    int index = SendMessageA(list, 0x188, 0, 0);
+    if (index == -1) {
+        index = 0;
+    }
+    while (index < SendMessageA(list, 0x18B, 0, 0)) {
+        Obj_007B66D0 text;
+        FUN_00623F60(list, index, &text);
+        if (text.FUN_007B7180(0) == 0x28 && text.FUN_007B7980(0x29)) {
+            text.FUN_007B6E20(0x28);
+            return FUN_007B7F90(text);
+        }
+        index++;
+    }
+    return DAT_00B76E24;
+}
+
 // FUNCTION: GAMEMD 0x79F0A0
 // Finds the record named like `name`, copying it to `out`; clears `out` when none.
 bool FUN_0079F0A0(Wstring* name, Vec_0079F0A0* list, Record_0079F0A0* out)
@@ -3061,6 +3301,44 @@ BOOL CALLBACK FUN_007A2110(HWND window, UINT message, WPARAM wparam, LPARAM lpar
     return 0;
 }
 
+// Declaration: GAMEMD 0x7350C0 (decl; reloc) -- narrow text of a wide name.
+const char* __fastcall FUN_007350C0(const unsigned short* name);
+// Declaration: the eight lobby slot names, wide (read as pointers).
+extern unsigned short* DAT_00A8DA90[8];
+// GLOBAL: GAMEMD 0xA8DBCC -- the slot addresses.
+extern IPXAddressClass DAT_00A8DBCC[8];
+// GLOBAL: GAMEMD 0xA8DC2C
+extern int DAT_00A8DC2C[8];
+// GLOBAL: GAMEMD 0xA8E230
+extern int DAT_00A8E230[8];
+
+// FUNCTION: GAMEMD 0x7A2230
+// Parses the three hex texts and files them under the slot named `name`.
+void __fastcall FUN_007A2230(const char* name, const char* first, const char* second, const char* third)
+{
+    if (name != NULL && first != NULL && second != NULL && third != NULL) {
+        int low = 0;
+        int mid = 0;
+        int high = 0;
+        sscanf(first, "%X", &low);
+        sscanf(second, "%X", &mid);
+        sscanf(third, "%X", &high);
+        for (int i = 0; i < 8; i++) {
+            if (_stricmp(name, FUN_007350C0(DAT_00A8DA90[i])) == 0) {
+                NodeAddressType node;
+                memset(&node, 0, sizeof(node));
+                node.Low = low;
+                NetworkNumberType network;
+                network.Number = 0;
+                DAT_00A8DBCC[i].FUN_0053ED20(network, node, 0);
+                DAT_00A8DC2C[i] = mid;
+                DAT_00A8E230[i] = high;
+                return;
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x7A2730
 void FUN_007A2730()
 {
@@ -3104,6 +3382,7 @@ void FUN_007A2800(int a, int b, int c)
 void FUN_007A2830(Wstring* name)
 {
     Entry_00B77908 record;
+    record.Flags = 0;
 
     for (int i = 0; i < DAT_00B77900.count; i++) {
         if (i >= 0 && i < DAT_00B77900.count) {
@@ -3112,6 +3391,33 @@ void FUN_007A2830(Wstring* name)
         if (_stricmp(name->FUN_007B5440(), record.unknown_24) == 0) {
             DAT_00AC116C->Vtbl->At_54(DAT_00AC116C, &record);
             return;
+        }
+    }
+}
+
+// The narrow text of a wide string.
+static inline Wstring NarrowOf(const wchar_t* text)
+{
+    Obj_007B66D0 wide(text);
+    return FUN_007B7F90(wide);
+}
+
+// FUNCTION: GAMEMD 0x7A28B0
+void __fastcall FUN_007A28B0(const wchar_t* text)
+{
+    if (text != NULL) {
+        Wstring name = NarrowOf(text);
+        Entry_00B77908 record;
+        record.Flags = 0;
+
+        for (int i = 0; i < DAT_00B77900.count; i++) {
+            if (i >= 0 && i < DAT_00B77900.count) {
+                record = DAT_00B77900.data[i];
+            }
+            if (_stricmp(name.FUN_007B5440(), record.unknown_24) == 0) {
+                DAT_00AC116C->Vtbl->At_54(DAT_00AC116C, &record);
+                break;
+            }
         }
     }
 }
@@ -3128,6 +3434,43 @@ void FUN_007A2970()
 
 // FUNCTION: GAMEMD 0x007A2FC0
 Obj_007A2FC0::Obj_007A2FC0() {}
+
+#include "world_domination_tour.h"
+
+// Declaration: GAMEMD 0x76ABA0 (decl; reloc) -- builds a WDTState from a received block.
+rc_ptr<WDTState> FUN_0076ABA0(void* source);
+// Declaration: GAMEMD 0x7B0220 (decl; reloc) -- stores the received state (current cycle).
+void FUN_007B0220(rc_ptr<WDTState>* state);
+// Declaration: GAMEMD 0x7B02A0 (decl; reloc) -- stores the received state (previous cycle).
+void FUN_007B02A0(rc_ptr<WDTState>* state);
+extern HANDLE DAT_00B73698;
+extern HANDLE DAT_00B736B0;
+extern int DAT_00B7646C;
+
+// FUNCTION: GAMEMD 0x7A2FE0
+// The WDT state callback of CNetUtilEventSink (string 0x84A988 attests the name).
+long __stdcall FUN_007A2FE0(void* self, int result, void* data, int length)
+{
+    if (result < 0 || length <= 0) {
+        SetEvent(DAT_00B73698);
+        return 0;
+    }
+    rc_ptr<WDTState> state = FUN_0076ABA0(data);
+    if (state.Get() == NULL || !state->FUN_0076B080()) {
+        FUN_004068E0("OnWDTState: NACK received from server\n");
+        SetEvent(DAT_00B736B0);
+    } else if (state->FUN_0076B090()) {
+        FUN_004068E0("OnWDTState: Previous cycle data received\n");
+        FUN_007B02A0(&state);
+        SetEvent(DAT_00B736B0);
+    } else {
+        FUN_004068E0("OnWDTState: Current cycle data received\n");
+        DAT_00B7646C = time(NULL) + state->unknown_28;
+        FUN_007B0220(&state);
+        SetEvent(DAT_00B736B0);
+    }
+    return 0;
+}
 
 
 // FUNCTION: GAMEMD 0x7A4070
@@ -3273,6 +3616,43 @@ int __stdcall FUN_007A8DA0(void* unused, int slot, int unused2, Entry_00B77908* 
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x7A8ED0
+// Prints a wide chat line (public format).
+int __stdcall FUN_007A8ED0(void* unused, int slot, int unused2, Entry_00B77908* entry, const wchar_t* text)
+{
+    if (DAT_00B77DC1) {
+        return 0;
+    }
+    if (slot < 0) {
+        return 0;
+    }
+    Obj_007B66D0 wide(text);
+    bool shown;
+    if (entry == NULL) {
+        shown = false;
+    } else if (entry->unknown_00[0] & 1) {
+        shown = true;
+    } else if (FUN_00775940(0xC2)) {
+        shown = true;
+    } else if (FUN_00775940(0xC9)) {
+        shown = true;
+    } else {
+        shown = (FUN_007B7D90(&wide) ? DAT_00B779C0 : DAT_00B779DC) != 0;
+    }
+    if (!shown)
+        return 0;
+    if (!FUN_0077D4C0(entry))
+        return 0;
+    {
+        int channel = DAT_007EEF2C;
+        if (entry->unknown_00[0] & 1)
+            channel = DAT_007EEF3C;
+        if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0)
+            FUN_005E2700(channel, DAT_0084AFB0, entry->unknown_24, wide.FUN_007B7100());
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x7A8FC0
 int __stdcall FUN_007A8FC0(void* unused, int slot, Entry_00B77908* entry, const char* text)
 {
@@ -3308,6 +3688,132 @@ int __stdcall FUN_007A8FC0(void* unused, int slot, Entry_00B77908* entry, const 
                     FUN_005E2700(channel, DAT_0084AFC8, entry->unknown_24, wide.FUN_007B7100());
                 }
             }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7A9110
+// Prints a wide chat line (private format).
+int __stdcall FUN_007A9110(void* unused, int slot, Entry_00B77908* entry, const wchar_t* text)
+{
+    if (DAT_00B77DC1) {
+        return 0;
+    }
+    if (slot < 0) {
+        return 0;
+    }
+    Obj_007B66D0 wide(text);
+    bool shown;
+    if (entry == NULL) {
+        shown = false;
+    } else if (entry->unknown_00[0] & 1) {
+        shown = true;
+    } else if (FUN_00775940(0xC2)) {
+        shown = true;
+    } else if (FUN_00775940(0xC9)) {
+        shown = true;
+    } else {
+        shown = (FUN_007B7D90(&wide) ? DAT_00B779C0 : DAT_00B779DC) != 0;
+    }
+    if (!shown)
+        return 0;
+    if (!FUN_0077D4C0(entry))
+        return 0;
+    {
+        int channel = DAT_007EEF30;
+        if (entry->unknown_00[0] & 1)
+            channel = DAT_007EEF3C;
+        if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0)
+            FUN_005E2700(channel, DAT_0084AFC8, entry->unknown_24, wide.FUN_007B7100());
+    }
+    return 0;
+}
+
+#include "../_layout/rules_class.h"
+#include "../ui/message_list_class_methods.h"
+#include "../ui/gadget_class_color_methods.h"
+
+// Declaration: GAMEMD 0x5E2790 (decl; reloc) -- appends a line to the second chat list.
+void __cdecl FUN_005E2790(int param, const wchar_t* format, ...);
+
+// FUNCTION: GAMEMD 0x7A9800
+// Slot of CChatEventSink: reports the result of a page the player sent.
+long __stdcall FUN_007A9800(void* self, int result)
+{
+    wchar_t text[128];
+
+    if (result == 0) {
+        FUN_005E2790(DAT_007EEF28, FUN_00734E60("TXT_PAGESENT", NULL, DAT_0084A430, 0x1FFD));
+        return 0;
+    }
+    if (result == 0x40134) {
+        swprintf(text, FUN_00734E60("TXT_PAGEDISABLED", NULL, DAT_0084A430, 0x2001));
+    } else if (result == 0x40133) {
+        swprintf(text, FUN_00734E60("TXT_PAGEUSERGONE", NULL, DAT_0084A430, 0x2003));
+    } else {
+        swprintf(text, FUN_00734E60("TXT_PAGEFAILED", NULL, DAT_0084A430, 0x2005));
+    }
+    HWND dialog = (HWND)FUN_00775B10();
+    if (dialog != NULL) {
+        if (GetDlgItem(dialog, 0x53F) != NULL) {
+            FUN_005E2700(DAT_007EEF28, text);
+            return 0;
+        }
+        if (GetDlgItem(dialog, 0x5B5) != NULL) {
+            FUN_005E2790(DAT_007EEF28, text);
+            return 0;
+        }
+    }
+    if (Session_00A8B238.FUN_0069BBE0()) {
+        int scheme = GadgetClass::GetColorScheme();
+        DAT_00A8BC60.FUN_005D3BA0(NULL, 0, text, scheme, 0x16, int(Rules->MessageDelay * 900.0), false);
+    }
+    return 0;
+}
+
+// GLOBAL: GAMEMD 0xB736A8
+extern HANDLE DAT_00B736A8;
+// GLOBAL: GAMEMD 0xB77DE8
+extern int DAT_00B77DE8;
+
+// FUNCTION: GAMEMD 0x7AA6D0
+// Slot of CChatEventSink: the connection to the server dropped.
+long __stdcall FUN_007AA6D0(void* self, int code)
+{
+    wchar_t text[256];
+
+    if (DAT_00B77DC0) {
+        SetEvent(DAT_00B736A8);
+        DAT_00B77DE8 = code;
+        return 0;
+    }
+    if (code == 0x4012F) {
+        if (DAT_00B77DC1) {
+            if (!DAT_00B77DC2) {
+                text[0] = 0;
+                swprintf(text, FUN_00734E60("TXT_WOL_CONNLOST", NULL, DAT_0084A430, 0x210C));
+                int scheme = GadgetClass::GetColorScheme();
+                DAT_00A8BC60.FUN_005D3BA0(NULL, 0, text, scheme, 0x16, int(Rules->MessageDelay * 900.0), false);
+                DAT_0087F7E8.FUN_004F42F0(0);
+                memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
+                memset(DAT_00B73BE8, 0, sizeof(DAT_00B73BE8));
+                DAT_00B77DC2 = 1;
+                DAT_00B77DD0 = 0;
+                FUN_004068E0("NetStatus disconnect ingame\n");
+                return 0;
+            }
+        } else {
+            if (FUN_00775940(0x113)) {
+                FUN_005E2CD0(FUN_00734E60("TXT_YOURE_DISCON", NULL, DAT_0084A430, 0x211E), 0, FUN_0077D710, false);
+            }
+            DAT_00B77DC0 = true;
+            DAT_00B77DC2 = 1;
+            SetEvent(DAT_00B73684[0]);
+            memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
+            memset(DAT_00B73BE8, 0, sizeof(DAT_00B73BE8));
+            DAT_00B77DD0 = 0;
+            FUN_004068E0("NetStatus disconnect not in game \n");
         }
     }
     return 0;

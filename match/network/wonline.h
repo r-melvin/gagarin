@@ -21,14 +21,21 @@ extern Wstring DAT_00B7778C;
 // The 0x6C-byte record of the table at 0xB77900 (count) / 0xB77908 (items).
 struct Entry_00B77908
 {
-    char unknown_00[0x18];   // +0x00
+    // The flag word at +0x00 (bit 0 = channel owner) is cleared by the record-search locals.
+    union {
+        char unknown_00[0x18];   // +0x00
+        int Flags;               // +0x00
+    };
     int unknown_18;          // +0x18 -- passed to slot +0x20 of the object at 0xAC1170 by 0x7A0F40
-    char unknown_1C[0x08];   // +0x1C
+    char unknown_1C[0x04];   // +0x1C
+    Entry_00B77908* Next;    // +0x20 -- chain link of the temporary lists built by 0x77E1D0 / 0x77E300
     char unknown_24[0x0A];   // +0x24 -- name compared with strcmp
     char unknown_2E[0x3E];   // +0x2E -- second name compared with strcmp
 };
 GG_STATIC_ASSERT(sizeof(Entry_00B77908) == 0x6C);
+GG_STATIC_ASSERT(offsetof(Entry_00B77908, Flags) == 0x00);
 GG_STATIC_ASSERT(offsetof(Entry_00B77908, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(Entry_00B77908, Next) == 0x20);
 GG_STATIC_ASSERT(offsetof(Entry_00B77908, unknown_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(Entry_00B77908, unknown_2E) == 0x2E);
 

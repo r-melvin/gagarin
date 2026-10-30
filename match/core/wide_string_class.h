@@ -151,6 +151,8 @@ public:
     void Resize(int count);                                    // 0x7B7060
     wchar_t FUN_007B7110(unsigned int index) const;            // 0x7B7110
     wchar_t FUN_007B7180(unsigned int index) const;            // 0x7B7180
+    // Declaration: GAMEMD 0x7B7980 (decl; reloc) -- __thiscall, one stack word: whether the character occurs.
+    bool FUN_007B7980(wchar_t ch);
     short Set(const wchar_t* src);                             // 0x7B7600
     bool FUN_007B7660(wchar_t ch, unsigned int index);         // 0x7B7660
     short Set(int count, const wchar_t* src);                  // 0x7B7690

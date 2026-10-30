@@ -20,6 +20,7 @@ struct MessageListClass
     TextLabelClass* FUN_005D3BA0(const wchar_t*, int, const wchar_t*, int, unsigned int, int, bool);
     // Declaration: GAMEMD 0x5D3FC0 -- four stack arguments.
     int FUN_005D3FC0(const wchar_t*, int, const wchar_t*, int);
+    void Draw(); // Declaration: GAMEMD 0x5D49A0
     void RemoveEdit(); // Declaration: GAMEMD 0x5D4390
     wchar_t* GetEditBuffer() const; // Declaration: GAMEMD 0x5D4400
     int Manage(); // Declaration: GAMEMD 0x5D4430

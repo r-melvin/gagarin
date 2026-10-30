@@ -100,14 +100,9 @@ GG_STATIC_ASSERT(offsetof(TipVtbl_004F4480, At_0C) == 0x0C);
 extern Tip_004F4480* DAT_00887368;
 
 // MessageListClass — the instance is the object itself (MOV ECX,0xA8BC60).
-struct MessageList_004F4480
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x5D49A0 (decl; reloc) — MessageListClass::Draw.
-    void Draw();
-};
+#include "message_list_class_methods.h"
 // GLOBAL: GAMEMD 0xA8BC60 — MessageListClass::Instance.
-extern MessageList_004F4480 DAT_00A8BC60;
+extern MessageListClass DAT_00A8BC60;
 
 // The map instance at 0x87F7E8 (only its redraw-counter bump at 0x578AC0 is reached).
 #include "../_layout/map_0087f7e8.h"
