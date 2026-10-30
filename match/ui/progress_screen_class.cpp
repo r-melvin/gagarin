@@ -11,6 +11,10 @@
 
 #include "progress_screen_class.h"
 #include "../renderer/surface_class.h"
+#include "../platform/file_system_load_whole_methods.h"
+
+// FUNCTION: GAMEMD 0x52FF90 (decl; reloc)
+void __fastcall FUN_0052FF90(const char* name, bool refresh);
 
 // GLOBAL: GAMEMD 0x88730C -- the primary surface.
 extern Surface* DAT_0088730C;
@@ -50,6 +54,36 @@ void ProgressScreenClass::SetSide(int idx)
 int ProgressScreenClass::GetSide()
 {
     return this->PlayerSide;
+}
+
+// FUNCTION: GAMEMD 0x642C20 (__thiscall, RET 0xC)
+// Replace the screen's data file buffer with the named file, then optionally show its picture
+// and remember the value.
+void ProgressScreenClass::LoadBackground(const char* file, const char* picture, int value)
+{
+    if (file != 0) {
+        if (Buffer != 0) {
+            if (BufferOwned) {
+                delete Buffer;
+                BufferOwned = false;
+            }
+            Buffer = 0;
+        }
+        Buffer = (char*)FileSystem_LoadWholeFileEx(file, &BufferOwned);
+        if (Buffer != 0) {
+            if (picture != 0) {
+                unknown_5C = picture;
+                FUN_0052FF90(picture, false);
+            }
+            unknown_74 = value;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x643E80
+void ProgressScreenClass::Slot0(int value)
+{
+    Field04 = value;
 }
 
 // BEGIN defined globals (define_globals.py)

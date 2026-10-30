@@ -58314,7 +58314,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_progress_screen.cpp",
+  "tu": "match/ui/progress_screen_class.cpp",
   "addr": "0x643E80",
   "sym": "?Slot0@ProgressScreenClass@@UAEXH@Z",
   "len": "0xA",
@@ -145936,7 +145936,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/r26_2_progress_load_background.cpp",
+  "tu": "match/ui/progress_screen_class.cpp",
   "addr": "0x642C20",
   "sym": "?LoadBackground@ProgressScreenClass@@QAEXPBD0H@Z",
   "len": "0x5d",
