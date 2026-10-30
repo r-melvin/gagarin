@@ -260,7 +260,7 @@ class Lint:
                         continue
                     if kind == "volatile":
                         decl = bool(re.match(r"\s*(extern\s+)?(static\s+)?(const\s+)?volatile\b|\s*volatile\b", code)) and \
-                            not re.search(r"[=(]", code.split("volatile", 1)[0]) and d.path.endswith(L.HDR_EXT + L.SRC_EXT)
+                            not re.search(r"[=(]", code.split("volatile", 1)[0]) and d.path.lower().endswith(L.HDR_EXT + L.SRC_EXT)
                         indented = text[:1] in (" ", "\t")
                         is_field_or_global = decl and (re.search(r";\s*$", code) and "(" not in code.split("volatile")[1].split(";")[0])
                         if is_field_or_global:
@@ -278,7 +278,7 @@ class Lint:
         """[(path, post_text, {added line numbers})] for added/changed C++ files under match/."""
         post = self.post_files()
         for d in self.diffs:
-            if not d.path.startswith("match/") or d.is_delete or not d.path.endswith(L.HDR_EXT + L.SRC_EXT):
+            if not d.path.startswith("match/") or d.is_delete or not d.path.lower().endswith(L.HDR_EXT + L.SRC_EXT):
                 continue
             text = post.get(d.path)
             if text is None:
@@ -355,13 +355,13 @@ class Lint:
             if not defs[n]:
                 del defs[n]
         for path, text in post.items():
-            if text is None or not path.endswith(L.HDR_EXT + L.SRC_EXT) or not path.startswith("match/"):
+            if text is None or not path.lower().endswith(L.HDR_EXT + L.SRC_EXT) or not path.startswith("match/"):
                 continue
             for m in D.CLASS_DEF.finditer(text):
                 defs.setdefault(m.group(2), []).append((path, m.group(1)))
 
         def canonical(path):
-            if not path.endswith(L.HDR_EXT):
+            if not path.lower().endswith(L.HDR_EXT):
                 return False
             if path.startswith("match/_layout/"):
                 return True
@@ -393,7 +393,7 @@ class Lint:
         windows = self.t.tu_windows()
         if not windows:
             return
-        new_cpps = {d.path for d in self.diffs if d.is_new and d.path.endswith(L.SRC_EXT)}
+        new_cpps = {d.path for d in self.diffs if d.is_new and d.path.lower().endswith(L.SRC_EXT)}
         hits = {}
         for r in self.rows:
             if r.get("tu") in new_cpps:
@@ -519,7 +519,7 @@ class Lint:
     def patch_claims(self):
         out = {}
         for d in self.diffs:
-            if not d.path.endswith(L.SRC_EXT):
+            if not d.path.lower().endswith(L.SRC_EXT):
                 continue
             added = d.added_lines()
             for i, (ln, text) in enumerate(added):
@@ -541,7 +541,7 @@ class Lint:
 
     def order(self):
         for d in self.diffs:
-            if not d.path.endswith(L.SRC_EXT) or d.is_delete:
+            if not d.path.lower().endswith(L.SRC_EXT) or d.is_delete:
                 continue
             text = d.new_content()
             if text is None:
@@ -557,7 +557,7 @@ class Lint:
 
     def provenance(self):
         for d in self.diffs:
-            if d.is_new and d.path.startswith("match/") and d.path.endswith(L.SRC_EXT + L.HDR_EXT):
+            if d.is_new and d.path.startswith("match/") and d.path.lower().endswith(L.SRC_EXT + L.HDR_EXT):
                 head = "\n".join(t for _, t in d.added_lines()[:8])
                 if "SPDX-License-Identifier" not in head:
                     self.err("provenance", "new file without an SPDX line in its header", file=d.path)

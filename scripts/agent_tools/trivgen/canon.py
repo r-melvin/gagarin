@@ -39,7 +39,9 @@ def owner_of(entries):
 @functools.lru_cache(None)
 def headers():
     idx = defaultdict(list)
-    for p in glob.glob(str(data.WT / "match") + "/**/*.h", recursive=True):
+    for p in glob.glob(str(data.WT / "match") + "/**/*", recursive=True):
+        if not p.lower().endswith(".h"):
+            continue
         if "trivial_tu" in p:
             continue
         tx = Path(p).read_text(errors="replace")

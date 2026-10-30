@@ -360,7 +360,7 @@ class Layouts:
         if self.loaded:
             return
         self.loaded = True
-        files = sorted(glob.glob(str(self.root / "**" / "*.h"), recursive=True))
+        files = sorted(f for f in glob.glob(str(self.root / "**" / "*"), recursive=True) if f.lower().endswith(".h"))
         for f in files:
             try:
                 text = Path(f).read_text(errors="replace")
@@ -582,7 +582,7 @@ class Names:
         if self._globals_loaded:
             return
         self._globals_loaded = True
-        for f in glob.glob(str(self.match_root / "**" / "*.h"), recursive=True):
+        for f in [g for g in glob.glob(str(self.match_root / "**" / "*"), recursive=True) if g.lower().endswith(".h")]:
             try:
                 lines = Path(f).read_text(errors="replace").split("\n")
             except OSError:

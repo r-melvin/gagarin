@@ -319,7 +319,7 @@ def compose(tree, p, sites):
         for s in srcs:
             text = open(os.path.join(INIT_SRC, s)).read()
             lines, pre_end, chs, inters = cppsplit.split(text)
-            hpath = os.path.join(INIT_SRC, s[:-4] + '.h')
+            hpath = os.path.join(INIT_SRC, os.path.splitext(s)[0] + '.h')
             htext = open(hpath).read().split('\n')
             # the header's declarations, without guard, provenance and the FUNCTION prototypes
             body = []

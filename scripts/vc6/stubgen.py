@@ -321,14 +321,14 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     for va in sorted(provider):
         row = provider_rows[va]
         obj = tu_object.get(row["tu"])
-        if not row["tu"].endswith(".asm") or obj is None or row["sym"] in sizes_in.get(obj, {}):
+        if not row["tu"].lower().endswith(".asm") or obj is None or row["sym"] in sizes_in.get(obj, {}):
             continue
         heads = [h for h in provider if h < va and provider_rows[h]["tu"] == row["tu"]
                  and provider[h] in sizes_in[obj] and h not in absorbed_by]
         if heads:
             absorbed_by[va] = max(heads)
     asm_heads = set(absorbed_by.values()) | {va for va, r in provider_rows.items()
-                                             if r["tu"].endswith(".asm") and va not in absorbed_by}
+                                             if r["tu"].lower().endswith(".asm") and va not in absorbed_by}
     for va in absorbed_by:
         del provider[va]
         del provider_rows[va]

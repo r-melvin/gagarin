@@ -13,6 +13,21 @@ import source_inventory
 
 
 class SourceInventoryTests(unittest.TestCase):
+    def test_upper_case_suffix_is_a_tracked_source(self):
+        with tempfile.TemporaryDirectory(prefix="gagarin_source_inventory_") as tmp:
+            root = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            (root / "scripts/data").mkdir(parents=True)
+            (root / "scripts/vc6").mkdir(parents=True)
+            (root / "match/core").mkdir(parents=True)
+            (root / "scripts/data/match_manifest.json").write_text("[]")
+            (root / "scripts/vc6/vc6cl.sh").write_text('DEFAULT_FLAGS="/nologo /c"\n')
+            (root / "match/core/House.CPP").write_text("// VC6FLAGS:\n")
+            subprocess.run(["git", "add", "scripts", "match"], cwd=root, check=True)
+            inventory, _ = source_inventory.build_inventory(root)
+            self.assertEqual(inventory["tracked_cpp_count"], 1)
+            self.assertEqual(inventory["tracked_cpp_without_manifest"], ["match/core/House.CPP"])
+
     def test_tracked_scope_flags_rows_warnings_and_missing_paths(self):
         with tempfile.TemporaryDirectory(prefix="gagarin_source_inventory_") as tmp:
             root = Path(tmp)

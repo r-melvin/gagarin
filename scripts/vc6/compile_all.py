@@ -41,14 +41,14 @@ def list_tus(root):
     found = []
     for base, _, names in os.walk(os.path.join(root, "match")):
         for name in names:
-            if name.endswith((".cpp", ".c", ".asm")):
+            if name.lower().endswith((".cpp", ".c", ".asm")):
                 found.append(os.path.relpath(os.path.join(base, name), root).replace(os.sep, "/"))
     return sorted(found)
 
 
 def list_headers(root):
     layout = os.path.join(root, "match/_layout")
-    return sorted(f"match/_layout/{n}" for n in os.listdir(layout) if n.endswith(".h"))
+    return sorted(f"match/_layout/{n}" for n in os.listdir(layout) if n.lower().endswith(".h"))
 
 
 def error_lines(log):
@@ -63,7 +63,7 @@ def compile_one(root, tmp, directory, filename, objname):
     # for pipe EOF would then stall until that server exits. The wait below
     # returns as soon as the launcher itself exits.
     with open(obj + ".log", "w+", errors="replace") as log:
-        proc = subprocess.run(["bash", ASM if filename.endswith(".asm") else CL, f"/Fo{obj}", filename], cwd=os.path.join(root, directory),
+        proc = subprocess.run(["bash", ASM if filename.lower().endswith(".asm") else CL, f"/Fo{obj}", filename], cwd=os.path.join(root, directory),
                               stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
         log.seek(0)
         output = log.read()
@@ -81,10 +81,11 @@ def check_tu(root, tmp, n, tu):
 
 
 def check_header(root, tmp, n, header):
-    base = os.path.basename(header)[:-2]
+    fname = os.path.basename(header)
+    base = os.path.splitext(fname)[0]
     includer = os.path.join(root, "match/_layout", f"_ca_{base}.cpp")
     with open(includer, "w") as stream:
-        stream.write(f'#include "{base}.h"\nint _chk_{base}(){{return 0;}}\n')
+        stream.write(f'#include "{fname}"\nint _chk_{base}(){{return 0;}}\n')
     try:
         ok, errs = compile_one(root, tmp, "match/_layout", f"_ca_{base}.cpp", f"h{n}_{base}.obj")
     finally:

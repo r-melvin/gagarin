@@ -119,7 +119,7 @@ class Rebase:
         return None, sorted(dests.items())
 
     def apply(self):
-        new_cpps = {d.path: d for d in self.diffs if d.is_new and d.path.endswith(L.SRC_EXT)}
+        new_cpps = {d.path: d for d in self.diffs if d.is_new and d.path.lower().endswith(L.SRC_EXT)}
         self.merge_plan = {}       # src path -> dest TU
         if self.do_merge:
             for path in new_cpps:
@@ -270,7 +270,7 @@ class Rebase:
             dest_rows = [r for r in self.tree.manifest if r["tu"] == dest and r["status"] == "matched"]
             dest_rows += [r for r in self.rows if r.get("tu") == dest and r.get("status") == "matched"]
             obj = os.path.join(self.work, "obj", os.path.splitext(dest)[0] + ".obj")
-            files = [dest] + [d.path for d in self.diffs if d.is_new and d.path.endswith(L.HDR_EXT)]
+            files = [dest] + [d.path for d in self.diffs if d.is_new and d.path.lower().endswith(L.HDR_EXT)]
             snap = {f: open(os.path.join(self.wt, f)).read() for f in files if os.path.isfile(os.path.join(self.wt, f))}
             drops, tried = [], set()
 
@@ -406,7 +406,7 @@ class Rebase:
         """Column-zero declaration lines (extern / prototype) and local class-view blocks of NAME
         in the merged TU and in packet-new headers, tagged tip/packet. Never inside a body."""
         out = []
-        files = [dest] + [d.path for d in self.diffs if d.is_new and d.path.endswith(L.HDR_EXT)]
+        files = [dest] + [d.path for d in self.diffs if d.is_new and d.path.lower().endswith(L.HDR_EXT)]
         rx = re.compile(r"^(?:extern\b[^;{}]*\b%s\b[^;{}]*;|[A-Za-z_][^;{}=]*\b%s\s*\([^;{}]*\)\s*;)\s*(//.*)?$" % (re.escape(name), re.escape(name)))
         crx = re.compile(r"^(?:template\s*<[^>]*>\s*)?(class|struct)\s+(?:__declspec\([^)]*\)\s+)?%s\b[^;]*$" % re.escape(name))
         for f in files:
@@ -479,7 +479,7 @@ class Rebase:
                     self.report.setdefault("fixed_lens", []).append(dict(addr=r["addr"], old=r["len"], new="0x%x" % span))
                     r["len"] = "0x%x" % span
         for d in self.diffs:
-            if not (d.is_new and d.path.endswith(L.SRC_EXT)) or d.path in self.merge_plan:
+            if not (d.is_new and d.path.lower().endswith(L.SRC_EXT)) or d.path in self.merge_plan:
                 continue
             path = os.path.join(self.wt, d.path)
             if not os.path.isfile(path):
@@ -662,7 +662,7 @@ class Rebase:
         msg = self.p.commit_message() or ""
         if self.report["merged"] and msg:
             sent = " ".join("The %s functions join the migrated %s in retail address order." % (
-                os.path.basename(m["srcs"][0]).replace(".cpp", "") if len(m["srcs"]) == 1 else "%d new files'" % len(m["srcs"]), m["dest"]) for m in self.report["merged"])
+                os.path.splitext(os.path.basename(m["srcs"][0]))[0] if len(m["srcs"]) == 1 else "%d new files'" % len(m["srcs"]), m["dest"]) for m in self.report["merged"])
             lines = msg.rstrip("\n").split("\n")
             trailer = [l for l in lines if l.startswith("Co-Authored-By:")]
             body = [l for l in lines if not l.startswith("Co-Authored-By:")]

@@ -27,7 +27,7 @@ def _grep_claims(root):
     """Column-zero body claims in .cpp/.c/.h under root (decl-only markers are not claims)."""
     out = set()
     r = subprocess.run(["grep", "-rhE", r"^// (FUNCTION|SYNTHETIC|TEMPLATE|LIBRARY|STUB): GAMEMD 0x[0-9A-Fa-f]+",
-                        str(root), "--include=*.cpp", "--include=*.c", "--include=*.h", "--include=*.inl",
+                        str(root), "--include=*.[cC][pP][pP]", "--include=*.[cC]", "--include=*.[hH]", "--include=*.[iI][nN][lL]",
                         "--exclude=trivial_tu*_methods.*"],
                        capture_output=True, text=True)
     for line in r.stdout.splitlines():

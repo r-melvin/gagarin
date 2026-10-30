@@ -68,6 +68,22 @@ class ObjectDirectoryTests(unittest.TestCase):
         self.assertNotEqual(os.path.dirname(first[0]), os.path.dirname(second[0]))
 
 
+class SuffixCaseTests(unittest.TestCase):
+    def test_object_name_keeps_stem_for_any_suffix_case(self):
+        for tu, stem in (('match/a/Tag.CPP', 'Tag'), ('match/a/Ion.cpp', 'Ion'),
+                         ('match/a/Raw.C', 'Raw'), ('match/a/low.c', 'low')):
+            seen = []
+
+            def fake_compile(cmd, **kwargs):
+                seen.append([a for a in cmd if a.startswith('/Fo')][0][3:])
+                return subprocess.CompletedProcess(cmd, 1)
+
+            with tempfile.TemporaryDirectory() as objdir, \
+                    patch.object(verify_all.subprocess, 'run', side_effect=fake_compile):
+                verify_all.check_tu(7, tu, [], objdir)
+                self.assertEqual(seen, [os.path.join(objdir, '7_%s.obj' % stem)], tu)
+
+
 class GateDecisionTests(unittest.TestCase):
     def run_gate(self, entries, match=True, compiles=True, compiler_status=0):
         with tempfile.TemporaryDirectory() as work:

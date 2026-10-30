@@ -92,7 +92,7 @@ def import_rows(existing):
     seen = {(r["addr"], r.get("import_source")) for r in existing}
     out = []
     root = common.WORKTREE
-    for p in sorted((root / "match").rglob("*.cpp")):
+    for p in sorted(q for q in (root / "match").rglob("*") if q.suffix.lower() == ".cpp"):
         lines = p.read_text(errors="replace").splitlines()
         rel = str(p.relative_to(root))
         flags = tu_flags(p)
@@ -141,7 +141,7 @@ def import_rows(existing):
         fm = re.search(r"VC6FLAGS:\s*([^\n(]*)", text)
         if fm:
             flags = fm.group(1).strip()
-        tum = re.search(r"(match/\S+\.cpp)", text)
+        tum = re.search(r"(match/\S+\.(?:cpp|CPP|Cpp))", text)
         for i, line in enumerate(text.splitlines()):
             m = MD_ROW.match(line)
             if not m:

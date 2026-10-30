@@ -126,7 +126,7 @@ def build_inventory(root: Path) -> tuple[dict[str, Any], int]:
             str(DEFAULT_WRAPPER),
         )
     )
-    tracked_cpp = sorted(path for path in tracked_paths if path.endswith((".cpp", ".c", ".asm")))
+    tracked_cpp = sorted(path for path in tracked_paths if path.lower().endswith((".cpp", ".c", ".asm")))
     manifest_text = read_tracked_text(root, str(DEFAULT_MANIFEST), tracked_paths)
     wrapper_text = read_tracked_text(root, str(DEFAULT_WRAPPER), tracked_paths)
     try:
@@ -155,7 +155,7 @@ def build_inventory(root: Path) -> tuple[dict[str, Any], int]:
             flag_value, flag_source = default_flags, "vc6cl.sh DEFAULT_FLAGS"
         else:
             source_text = read_tracked_text(root, relative, tracked_paths)
-            if relative.endswith(".asm"):
+            if relative.lower().endswith(".asm"):
                 flag_value, flag_source = ASM_FLAGS, "vc6asm.sh FLAGS"   # ml has no per-file override
             else:
                 flag_value, flag_source = file_flags(source_text, default_flags)

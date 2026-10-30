@@ -16,7 +16,7 @@ REPO = L.REPO
 
 
 def matched_body(addr):
-    for f in sorted(REPO.glob("match/**/*.cpp")):
+    for f in sorted((q for q in REPO.glob("match/**/*") if q.suffix.lower() == ".cpp")):
         t = f.read_text(errors="replace")
         m = re.search(r"// FUNCTION: GAMEMD 0x0*%X\b[^\n]*\n" % addr, t, re.I)
         if not m:

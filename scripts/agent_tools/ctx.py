@@ -110,7 +110,7 @@ def packet(va, want_xref=True, max_insns=400):
         out["claimed"] = cl.stdout.strip()
     except OSError:
         out["claimed"] = None
-    tus = sorted({r["tu"] for r in rows} | {a["file"] for a in out["annotations"] if a["file"].endswith(".cpp")})
+    tus = sorted({r["tu"] for r in rows} | {a["file"] for a in out["annotations"] if a["file"].lower().endswith(".cpp")})
     out["tus"] = [dict(tu=t, vc6flags=tu_flags(t)) for t in tus]
 
     insns = common.disasm(va, size) if size else []

@@ -13,6 +13,20 @@ from unittest.mock import patch
 import check_duplicates
 
 
+class SuffixCaseTests(unittest.TestCase):
+    def test_source_files_match_suffix_case_insensitively(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            for rel in ('House.CPP', 'Ion.cpp', 'Raw.C', 'Hdr.H', 'notes.txt'):
+                path = Path(tmp) / 'match' / 'core' / rel
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text('')
+            with patch.object(check_duplicates, 'ROOT', tmp):
+                got = sorted(Path(p).name for p in check_duplicates.source_files(('.cpp', '.c')))
+                allx = sorted(Path(p).name for p in check_duplicates.source_files(('.cpp', '.c', '.h')))
+        self.assertEqual(got, ['House.CPP', 'Ion.cpp', 'Raw.C'])
+        self.assertEqual(allx, ['Hdr.H', 'House.CPP', 'Ion.cpp', 'Raw.C'])
+
+
 class SyntheticOwnershipTests(unittest.TestCase):
     def run_gate(self, duplicate, marker="SYNTHETIC"):
         with tempfile.TemporaryDirectory() as work:

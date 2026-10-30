@@ -25,7 +25,7 @@ tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
 # 1. Every matching TU.
 while IFS= read -r tu; do
   d="$(dirname "$tu")"; f="$(basename "$tu")"
-  drv=vc6cl.sh; case "$f" in *.asm) drv=vc6asm.sh ;; esac
+  drv=vc6cl.sh; case "$f" in *.asm|*.ASM|*.Asm) drv=vc6asm.sh ;; esac
   rc=0
   ( cd "$d" && bash "$REPO/scripts/vc6/$drv" /Fo"$tmp/$f.obj" "$f" ) >"$tmp/log" 2>&1 || rc=$?
   if [ "$rc" -eq 0 ] && [ -f "$tmp/$f.obj" ]; then
@@ -38,12 +38,12 @@ while IFS= read -r tu; do
     echo "  FAIL $tu"; grep -iE "error|fatal" "$tmp/log" | grep -v libEGL | head -3
     fail=1
   fi
-done < <(find match \( -name '*.cpp' -o -name '*.c' -o -name '*.asm' \) | sort)
+done < <(find match \( -iname '*.cpp' -o -iname '*.c' -o -iname '*.asm' \) | sort)
 
 # 2. Every P2 layout header (compile-check its asserts via a throwaway includer).
-for h in match/_layout/*.h; do
-  base="$(basename "$h" .h)"
-  printf '#include "%s.h"\nint _chk_%s(){return 0;}\n' "$base" "$base" \
+while IFS= read -r h; do
+  hf="$(basename "$h")"; base="${hf%.*}"
+  printf '#include "%s"\nint _chk_%s(){return 0;}\n' "$hf" "$base" \
     > "match/_layout/_ca_$base.cpp"
   if ( cd match/_layout && bash "$REPO/scripts/vc6/vc6cl.sh" \
          /Fo"$tmp/$base.obj" "_ca_$base.cpp" ) >"$tmp/log" 2>&1 \
@@ -54,7 +54,7 @@ for h in match/_layout/*.h; do
     fail=1
   fi
   rm -f "match/_layout/_ca_$base.cpp"
-done
+done < <(find match/_layout -maxdepth 1 -iname '*.h' | sort)
 
 # 3. The reconstructed resource script (RC.EXE; the icon and cursor groups are not part of it).
 if [ -f match/rsrc/gamemd.rc ]; then

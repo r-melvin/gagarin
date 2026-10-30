@@ -30,7 +30,7 @@ OFF_RE = re.compile(r"GG_STATIC_ASSERT\(\s*offsetof\((\w+)\s*,\s*[\w\[\]]+\)\s*=
 def parse_headers(d):
     sizes, bases, members, asserted = {}, {}, defaultdict(list), defaultdict(set)
     for fn in sorted(os.listdir(d)):
-        if not fn.endswith(".h"):
+        if not fn.lower().endswith(".h"):
             continue
         cur = None
         for line in open(os.path.join(d, fn)):

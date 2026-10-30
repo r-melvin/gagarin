@@ -44,7 +44,7 @@ def declarations():
     out = collections.defaultdict(list)   # identifier -> [(path, "T name[..];")]
     for root, _, files in os.walk(ROOT / "match"):
         for f in files:
-            if f.endswith((".cpp", ".h")):
+            if f.lower().endswith((".cpp", ".h")):
                 p = Path(root) / f
                 for line in p.read_text(errors="replace").splitlines():
                     m = DECL.match(line)

@@ -42,7 +42,7 @@ def main():
     mat = [r for r in m if r["status"] == "matched"]
     par = sum(r["status"] == "partial" for r in m)
     tus = len({r["tu"] for r in m})
-    cpp = len(subprocess.run(["git", "ls-files", "match/**.cpp"], cwd=T, capture_output=True, text=True).stdout.split())
+    cpp = len(subprocess.run(["git", "ls-files", ":(icase)match/**.cpp"], cwd=T, capture_output=True, text=True).stdout.split())
     byt = sum(int(r["len"], 16) for r in mat)
     miss = pad["summary"]["matched_entries_missed"] if "summary" in pad else pad["matched_entries_missed"]
     f = lambda n: format(n, ",")

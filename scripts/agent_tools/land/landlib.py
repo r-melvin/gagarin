@@ -239,7 +239,7 @@ class IncludeIndex:
 
     def tus(self):
         # only match/ sources are translation units; vendored sources are reached by include
-        return [p for p in self.files.paths if p.endswith(SRC_EXT) and p.startswith("match/")]
+        return [p for p in self.files.paths if p.lower().endswith(SRC_EXT) and p.startswith("match/")]
 
     def closure(self, tu):
         """Ordered list of files (TU first) that influence the TU's object."""

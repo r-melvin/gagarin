@@ -35,5 +35,23 @@ class PipeInheritanceTests(unittest.TestCase):
             self.assertLess(took, 10)
 
 
+class SuffixCaseTests(unittest.TestCase):
+    def test_mixed_case_suffixes_are_listed_and_names_kept(self):
+        with tempfile.TemporaryDirectory() as work:
+            for rel in ("House.CPP", "Ion.cpp", "Tag.Cpp", "Raw.C", "low.c", "Skip.txt", "Hdr.H"):
+                path = os.path.join(work, "match", "core", rel)
+                os.makedirs(os.path.dirname(path), exist_ok=True)
+                open(path, "w").close()
+            os.makedirs(os.path.join(work, "match", "_layout"))
+            for rel in ("A.H", "b.h", "c.cpp"):
+                open(os.path.join(work, "match", "_layout", rel), "w").close()
+            self.assertEqual(compile_all.list_tus(work), [
+                "match/_layout/c.cpp",
+                "match/core/House.CPP", "match/core/Ion.cpp", "match/core/Raw.C",
+                "match/core/Tag.Cpp", "match/core/low.c"])
+            self.assertEqual(compile_all.list_headers(work),
+                             ["match/_layout/A.H", "match/_layout/b.h"])
+
+
 if __name__ == "__main__":
     unittest.main()

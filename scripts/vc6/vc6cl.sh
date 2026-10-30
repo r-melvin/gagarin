@@ -62,7 +62,7 @@ TU_FLAGS=""
 for arg in "$@"; do
   case "$arg" in
     /*|-*) ;;
-    *.cpp|*.c|*.cxx|*.cc)
+    *.[cC][pP][pP]|*.[cC]|*.[cC][xX][xX]|*.[cC][cC])
       if [[ -f "$arg" ]]; then
         line="$(grep -m1 -E '^[[:space:]]*//[[:space:]]*VC6FLAGS:' "$arg" || true)"
         if [[ -n "$line" ]]; then
@@ -100,7 +100,7 @@ ARGS=()
 for arg in "$@"; do
   case "$arg" in
     /*|-*) ARGS+=("$arg") ;;
-    *.cpp|*.c|*.cxx|*.cc)
+    *.[cC][pP][pP]|*.[cC]|*.[cC][xX][xX]|*.[cC][cC])
       if [[ -f "$arg" ]]; then
         abs="$(cd "$(dirname "$arg")" && pwd)/$(basename "$arg")"
         if [[ "$abs" == "$REPO"/* ]]; then

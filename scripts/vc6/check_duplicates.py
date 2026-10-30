@@ -31,6 +31,17 @@ ANNOT = re.compile(r'(?m)^(?://|;) (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0
 LIBRARY = re.compile(r'(?m)^// LIBRARY: GAMEMD (0x[0-9A-Fa-f]+)')
 
 
+def source_files(exts, root=None):
+    """Files under match/ whose suffix is in exts, compared case-insensitively
+    (Westwood names are mixed case: House.CPP, Ion.cpp). Paths are not altered."""
+    found = []
+    for base, _, names in os.walk(os.path.join(root or ROOT, 'match')):
+        for name in names:
+            if os.path.splitext(name)[1].lower() in exts:
+                found.append(os.path.join(base, name))
+    return found
+
+
 def library_claims(text):
     for m in LIBRARY.finditer(text):
         yield int(m.group(1), 16)
@@ -52,8 +63,7 @@ def main():
     # visible to this gate. Globbing only *.cpp would let a C TU silently
     # duplicate an address already owned by a C++ one.
     sources = []
-    for ext in ('*.cpp', '*.c', '*.asm'):
-        sources += glob.glob(os.path.join(ROOT, 'match', '**', ext), recursive=True)
+    sources = source_files(('.cpp', '.c', '.asm'))
     for path in sorted(sources):
         rel = os.path.relpath(path, ROOT)
         with open(path, errors='ignore') as source:
@@ -62,11 +72,10 @@ def main():
             owner[addr].add(rel)
 
     library = collections.defaultdict(set)
-    for ext in ('*.cpp', '*.c', '*.h'):
-        for path in glob.glob(os.path.join(ROOT, 'match', '**', ext), recursive=True):
-            with open(path, errors='ignore') as source:
-                for addr in library_claims(source.read()):
-                    library[addr].add(os.path.relpath(path, ROOT))
+    for path in source_files(('.cpp', '.c', '.h')):
+        with open(path, errors='ignore') as source:
+            for addr in library_claims(source.read()):
+                library[addr].add(os.path.relpath(path, ROOT))
     for addr in sorted(library):
         if addr in owner:
             print("NOTE       %#08x is marked LIBRARY (%s) and has a body in %s"

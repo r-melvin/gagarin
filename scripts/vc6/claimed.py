@@ -22,7 +22,7 @@ import os
 import re
 import sys
 
-from check_duplicates import ANNOT
+from check_duplicates import ANNOT, source_files
 
 ADDRESS = re.compile(r"\b0x[0-9a-f]+\b", re.I)
 
@@ -34,11 +34,11 @@ def line_kind(path, line, addr):
     """Classify an exact numeric address mention using the annotation gate."""
     if not any(int(m.group(), 16) == addr for m in ADDRESS.finditer(line)):
         return None
-    marker = ANNOT.match(line.lstrip() if path.endswith('.h') else line)
+    marker = ANNOT.match(line.lstrip() if path.lower().endswith('.h') else line)
     if marker and int(marker.group(1), 16) == addr:
         if 'decl;' in marker.group(2):
             return 'decl-only'
-        return 'declares' if path.endswith('.h') else 'BODY'
+        return 'declares' if path.lower().endswith('.h') else 'BODY'
     return 'reference'
 
 
@@ -48,8 +48,7 @@ def main(argv):
         return 2
 
     sources = []
-    for ext in ('*.cpp', '*.c', '*.asm', '*.h'):
-        sources += glob.glob(os.path.join(ROOT, 'match', '**', ext), recursive=True)
+    sources = source_files(('.cpp', '.c', '.asm', '.h'), ROOT)
     texts = {}
     for path in sources:
         with open(path, errors='ignore') as stream:

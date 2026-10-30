@@ -786,6 +786,13 @@ class Toolfix1030(unittest.TestCase):
         tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
         self.assertTrue(lint(packet(tmp, {"match/x/a.cpp": src}, []), {"thisnull"}))
 
+    def test_upper_case_suffix_is_linted_as_source(self):
+        src = HEADER + "// FUNCTION: GAMEMD 0x401000\nint Foo::f() { return this && 1; }\n"
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        f = [x for x in lint(packet(tmp, {"match/x/House.CPP": src}, []), {"thisnull"}) if x["rule"] == "thisnull"]
+        self.assertTrue(f)
+        self.assertTrue("match/x/House.CPP".lower().endswith(L.SRC_EXT))
+
     def test_pkt_init_refuses_existing_ready_patch(self):
         import pkt
         import types

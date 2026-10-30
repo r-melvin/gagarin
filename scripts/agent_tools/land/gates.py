@@ -129,7 +129,7 @@ class Ctx:
         for p in ch:
             if not (p.startswith("match/") or p in self.idx_new.known or p in self.idx_base.known):
                 continue
-            if p.endswith(L.SRC_EXT) and p in self.idx_new.known and p.startswith("match/"):
+            if p.lower().endswith(L.SRC_EXT) and p in self.idx_new.known and p.startswith("match/"):
                 tus.add(p)
             tus |= dep_new.get(p, set())
             tus |= {t for t in dep_base.get(p, set()) if t in self.idx_new.known}
@@ -193,7 +193,7 @@ def compile_one(tree, tu, dst, env, extra=()):
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     if os.path.exists(dst):
         os.unlink(dst)
-    drv = "vc6asm.sh" if tu.endswith(".asm") else "vc6cl.sh"
+    drv = "vc6asm.sh" if tu.lower().endswith(".asm") else "vc6cl.sh"
     rc, text = L.run(["bash", os.path.join(tree, "scripts/vc6", drv), *extra, "/Fo" + dst, os.path.basename(tu)],
                      cwd=os.path.join(tree, os.path.dirname(tu)), env=env, log=dst[:-4] + ".log")
     ok = rc == 0 and os.path.isfile(dst)
@@ -291,7 +291,7 @@ def layout(ctx):
     bad = []
 
     def one(h):
-        base = os.path.basename(h)[:-2]
+        base = os.path.splitext(os.path.basename(h))[0]
         inc = os.path.join(d, "_ca_%s.cpp" % base)
         rel = os.path.relpath(os.path.join(ctx.tree, h), d)
         open(inc, "w").write('#include "%s"\nint _chk_%s(){return 0;}\n' % (rel, base))
@@ -636,7 +636,7 @@ def lint(ctx):
     exe = shutil.which("reccmp-decomplint")
     if not exe:
         return "SKIP", "reccmp-decomplint not on PATH"
-    files = [p for p, s in ctx.changed.items() if p.startswith("match/") and p.endswith((".cpp", ".h")) and s != "D"]
+    files = [p for p, s in ctx.changed.items() if p.startswith("match/") and p.lower().endswith((".cpp", ".h")) and s != "D"]
     rx = re.compile(r"(error|warning): [a-z_]+")
 
     def types(path):

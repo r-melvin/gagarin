@@ -318,10 +318,10 @@ class Tree:
         return b.decode("utf-8", "replace") if b is not None else None
 
     def cpps(self):
-        return [p for p in self.files.paths if p.endswith(L.SRC_EXT)]
+        return [p for p in self.files.paths if p.lower().endswith(L.SRC_EXT)]
 
     def headers(self):
-        return [p for p in self.files.paths if p.endswith(L.HDR_EXT)]
+        return [p for p in self.files.paths if p.lower().endswith(L.HDR_EXT)]
 
     # migrated original TUs: file -> (name, lo, hi)
     def tu_windows(self):
@@ -349,7 +349,7 @@ class Tree:
         if self._classes is None:
             d = {}
             for p in self.files.paths:
-                if not p.endswith(L.HDR_EXT + L.SRC_EXT):
+                if not p.lower().endswith(L.HDR_EXT + L.SRC_EXT):
                     continue
                 for m in CLASS_DEF.finditer(self.text(p) or ""):
                     d.setdefault(m.group(2), []).append((p, m.group(1)))
@@ -362,7 +362,7 @@ class Tree:
         out = {}
         for name, defs in self.class_defs().items():
             for p, kw in defs:
-                if not p.endswith(L.HDR_EXT):
+                if not p.lower().endswith(L.HDR_EXT):
                     continue
                 if p.startswith("match/_layout/") or b"TypeDescriptor 0x" in (self.read(p) or b""):
                     out.setdefault(name, []).append(p)

@@ -55,7 +55,7 @@ def find_definitions(cls):
     pat = re.compile(r"^\s*(?:class|struct)\s+(?:__declspec\([^)]*\)\s*)?(" + re.escape(cls) + r")\s*(?::[^{;]*)?\{", re.M)
     view_pat = re.compile(r"^\s*(?:class|struct)\s+(\w*" + re.escape(cls.replace("Class", "")) + r"\w*View\w*)\b[^;{]*\{", re.M)
     for p in sorted((common.WORKTREE / "match").rglob("*")):
-        if p.suffix not in (".h", ".hpp", ".cpp"):
+        if p.suffix.lower() not in (".h", ".hpp", ".cpp"):
             continue
         t = p.read_text(errors="replace")
         rel = str(p.relative_to(common.WORKTREE))
@@ -302,7 +302,7 @@ def check(cls, header=None):
     rep["definition_probes"] = []
     canon = {m["name"]: m["offset"] for m in rep["members"]}
     for d in defs:
-        if d["file"] == header or not d["file"].endswith(".h"):
+        if d["file"] == header or not d["file"].lower().endswith(".h"):
             continue
         b, _ = class_body((common.WORKTREE / d["file"]).read_text(errors="replace"), cls)
         ms = parse_members(b or "")

@@ -72,7 +72,7 @@ def main():
     # lint: decomplint every touched file in new and base, serially like lint.sh
     files = subprocess.run(["git", "diff", "--name-only", "--diff-filter=AM", subprocess.check_output(
         ["git", "-C", B, "rev-parse", "HEAD"], text=True).strip(), "--", "match"], cwd=T, capture_output=True, text=True).stdout.split()
-    files = [f for f in files if f.endswith((".cpp", ".h"))]
+    files = [f for f in files if f.lower().endswith((".cpp", ".h"))]
     script = "; ".join("reccmp-decomplint --module GAMEMD '%s/%s'; [ -f '%s/%s' ] && reccmp-decomplint --module GAMEMD '%s/%s'" % (T, f, B, f, B, f)
                        for f in files) or "true"
     stage("lint", ["bash", "-c", script], T)

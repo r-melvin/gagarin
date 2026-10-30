@@ -150,7 +150,7 @@ def diff(found):
         kinds = {k for k, *_ in ann.get(a, [])}
         if "LIBRARY" in kinds:
             confirmed.append(r)
-        elif a in man or any(k in ("FUNCTION", "SYNTHETIC", "TEMPLATE", "STUB") and p.endswith(".cpp")
+        elif a in man or any(k in ("FUNCTION", "SYNTHETIC", "TEMPLATE", "STUB") and p.lower().endswith(".cpp")
                              and not re.search(r"decl|referenced|reloc", rest)
                              for k, p, _, rest in ann.get(a, [])):
             conflicts.append(dict(r, reason="address carries a non-LIBRARY body claim",

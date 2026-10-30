@@ -129,7 +129,7 @@ def analyse(tree, only=(), include_partial=False):
     files = []
     for dp, _, fs in os.walk(os.path.join(tree, "match")):
         for f in fs:
-            if f.endswith((".cpp", ".h", ".inl", ".c")):
+            if f.lower().endswith((".cpp", ".h", ".inl", ".c")):
                 p = os.path.join(dp, f)
                 files.append((os.path.relpath(p, tree), open(p, errors="replace").read()))
     asserts = {}
@@ -138,7 +138,7 @@ def analyse(tree, only=(), include_partial=False):
             asserts.setdefault((m.group(1), m.group(2)), int(m.group(3), 0))
     found = []
     for rel, text in files:
-        if rel.endswith(".cpp") and "Read" in text:
+        if rel.lower().endswith(".cpp") and "Read" in text:
             found += readers(rel, text, man)
     keep = []
     for r in found:
@@ -196,7 +196,7 @@ def analyse(tree, only=(), include_partial=False):
                 continue
             lines = text.split("\n")
             if rel not in bodies_cache:
-                bodies_cache[rel] = [(l0, l1, h) for h, _, l0, l1 in cppscan.function_bodies(text)] if rel.endswith(".cpp") else []
+                bodies_cache[rel] = [(l0, l1, h) for h, _, l0, l1 in cppscan.function_bodies(text)] if rel.lower().endswith(".cpp") else []
             meth = bodies_cache[rel]
             for k, ln in enumerate(lines, 1):
                 if not pat.search(ln) or ln.lstrip().startswith("//"):

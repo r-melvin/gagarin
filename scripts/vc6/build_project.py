@@ -33,7 +33,7 @@ def sha256(path):
 def input_hashes(root):
     inputs = {}
     for name in git_tracked_paths(root, "match", "third_party"):
-        if Path(name).suffix not in (".cpp", ".c", ".asm", ".h", ".ch", ".rc"):
+        if Path(name).suffix.lower() not in (".cpp", ".c", ".asm", ".h", ".ch", ".rc"):
             continue
         path = root / name
         if path.is_symlink():
@@ -96,7 +96,7 @@ def compile_unit(root, out, unit, flags_override=None):
     with log.open("w", encoding="utf-8") as stream:
         try:
             process = subprocess.run(
-                ["bash", str(root / "scripts/vc6" / ("vc6asm.sh" if source.suffix == ".asm" else "vc6cl.sh")),
+                ["bash", str(root / "scripts/vc6" / ("vc6asm.sh" if source.suffix.lower() == ".asm" else "vc6cl.sh")),
                  "/Fo" + str(obj), source.name],
                 cwd=source.parent, stdout=stream, stderr=subprocess.STDOUT,
             )

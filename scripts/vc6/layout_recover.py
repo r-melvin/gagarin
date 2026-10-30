@@ -248,8 +248,8 @@ def _read(p):
 class HeaderIndex(object):
     def __init__(self, root=REPO):
         self.root = root
-        lay = sorted(glob.glob(os.path.join(root, 'match', '_layout', '*.h')))
-        rest = sorted(f for f in glob.glob(os.path.join(root, 'match', '**', '*.h'), recursive=True) if f not in lay)
+        lay = sorted(g for g in glob.glob(os.path.join(root, 'match', '_layout', '*')) if g.lower().endswith('.h'))
+        rest = sorted(f for f in glob.glob(os.path.join(root, 'match', '**', '*'), recursive=True) if f.lower().endswith('.h') and f not in lay)
         self.files = lay + rest
         self.text = {f: _read(f) for f in self.files}
         self.sizes = dict(PRIM)

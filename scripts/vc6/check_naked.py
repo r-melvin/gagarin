@@ -30,7 +30,7 @@ def scan():
     """
     counts = {}
     for path in sorted((ROOT / "match").rglob("*")):
-        if path.suffix not in (".cpp", ".h"):
+        if path.suffix.lower() not in (".cpp", ".h"):
             continue
         n = 0
         for line in path.read_text(errors="replace").splitlines():

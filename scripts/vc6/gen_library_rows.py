@@ -41,7 +41,7 @@ THUNK_LEN = 6
 def existing_marks(exclude):
     out = set()
     for p in (ROOT / "match").rglob("*"):
-        if p.suffix in (".h", ".cpp", ".c") and p != exclude:
+        if p.suffix.lower() in (".h", ".cpp", ".c") and p != exclude:
             out.update(int(a, 16) for a in MARK.findall(p.read_text(errors="replace")))
     return out
 

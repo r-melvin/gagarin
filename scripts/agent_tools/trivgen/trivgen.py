@@ -136,7 +136,7 @@ def existing_basenames():
     names = set()
     for root in (WT / "match",):
         for p in root.rglob("*"):
-            if p.suffix in (".cpp", ".h", ".c"):
+            if p.suffix.lower() in (".cpp", ".h", ".c"):
                 names.add(p.name)
     return names
 
