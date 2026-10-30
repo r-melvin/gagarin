@@ -21,7 +21,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
             CellClass* mc = DAT_0087F7E8.FUN_00565730(where);
             HouseClass* cellOwner = 0;
             if (mc->WallOwnerIndex >= 0) {
-                cellOwner = DAT_00A8022C[mc->WallOwnerIndex];
+                cellOwner = HouseClass_Array.Items[mc->WallOwnerIndex];
             }
             if (cellOwner == Owner && (mc->OverlayTypeIndex == 2 || mc->OverlayTypeIndex == 0)) {
                 Owner->FUN_004FCE80(&mc->MapCoords, 1);
@@ -30,7 +30,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
             CellClass* mc = DAT_0087F7E8.FUN_00565730(where);
             HouseClass* cellOwner = 0;
             if (mc->WallOwnerIndex >= 0) {
-                cellOwner = DAT_00A8022C[mc->WallOwnerIndex];
+                cellOwner = HouseClass_Array.Items[mc->WallOwnerIndex];
             }
             if (cellOwner == Owner && mc->OverlayTypeIndex == Type->ToOverlay->ArrayIndex) {
                 Owner->FUN_004FCE80(&mc->MapCoords, 1);
@@ -41,7 +41,7 @@ bool BuildingClass::vf_54(const CoordStruct& where, int dir)
                 CellClass* mc = BA4At(*p + cell);
                 HouseClass* cellOwner = 0;
                 if (mc->WallOwnerIndex >= 0) {
-                    cellOwner = DAT_00A8022C[mc->WallOwnerIndex];
+                    cellOwner = HouseClass_Array.Items[mc->WallOwnerIndex];
                 }
                 if (cellOwner == Owner && (mc->OverlayTypeIndex == 2 || mc->OverlayTypeIndex == 0 || mc->OverlayTypeIndex == 0x1A)) {
                     Owner->FUN_004FCE80(&mc->MapCoords, 1);

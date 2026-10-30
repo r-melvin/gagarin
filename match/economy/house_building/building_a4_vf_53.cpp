@@ -105,7 +105,7 @@ bool BuildingClass::vf_53()
         }
         if (DAT_00887324) {
             RectangleStruct buf = vf_75();
-            DAT_00887324->FUN_006D2790(buf, 0);
+            DAT_00887324->FUN_006D2790(buf, false);
         }
         if (Spotlight) {
             Spotlight->vf_62();

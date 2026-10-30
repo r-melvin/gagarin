@@ -94,6 +94,7 @@ public:
     void FUN_006D2790(RectangleStruct requested, bool flag); // 0x6D2790, RET0x14
     bool FUN_006D8AE0(const Cell* cell) const;
     Coord_006D2280* FUN_006D2360(Coord_006D2280* out, const Point2D_006D2280* point);
+    CoordStruct* FUN_006D2360(CoordStruct* out, const int* xyz);   // 0x6D2360, the same entry on a coordinate triple
     Pair_006D9F80 FUN_006D6190() const;
     // Hidden CellStruct result then input pointer; both entries RET8.
     CellStruct FUN_006D6410(const CoordStruct* coordinate); // 0x6D6410
@@ -131,6 +132,7 @@ public:
     // FUNCTION: GAMEMD 0x6D2070 (decl; reloc) -- writes the projected point into `out` and returns it.
     Point2D* FUN_006D2070(Point2D* out, const Point2D* in);
     void FUN_006D2140(const CoordStruct& coord, Point2D* out);   // 0x6D2140, void-result view
+    Point2D FUN_006D2140(const CoordStruct& coord);   // 0x6D2140, the same entry with the point returned through the hidden pointer
     unsigned short unknown_24[64];
     int unknown_A4;
     int unknown_A8;

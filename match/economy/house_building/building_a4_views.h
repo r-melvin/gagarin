@@ -26,6 +26,9 @@
 #include "../../_layout/anim_type_class.h"
 #include "../../_layout/iso_tile_type_class.h"
 #include "../../_layout/map_0087f7e8.h"
+#include "../../_layout/tactical.h"
+#include "../../_layout/player_ptr_00a83d4c.h"
+#include "../../_layout/scenario_ptr_00a8b230.h"
 #include "../../_layout/matrix3d.h"
 #include "../../_layout/global_0089c818.h"
 #include "../../_layout/rules_class.h"
@@ -40,7 +43,6 @@
 class BuildingTypeClass;
 class HouseClass;
 class BuildingClass;
-struct BA4Screen;
 struct CellClass;
 
 // A pointer-sized vector (vptr, Items, Capacity, IsInitialized, IsAllocated, Count, CapacityIncrement; 0x18 bytes). Only
@@ -199,31 +201,14 @@ struct BA4Placed
 GG_STATIC_ASSERT(offsetof(BA4Placed, unknown_298) == 0x298);
 GG_STATIC_ASSERT(offsetof(BA4Placed, unknown_29C) == 0x29C);
 
-// The object at *0x887324 (partial).
-struct BA4Screen
-{
-    // FUNCTION: GAMEMD 0x6D2790 (read-only here) - the object pointer in ECX is not read.
-    void FUN_006D2790(RectangleStruct r, char flag);
-    // FUNCTION: GAMEMD 0x6D2360 (read-only here) - the object pointer in ECX is not read.
-    CoordStruct* FUN_006D2360(CoordStruct* out, const int* xyz);
-    // FUNCTION: GAMEMD 0x6D2140 (read-only here) - returned by value through a hidden pointer.
-    Point2D FUN_006D2140(const CoordStruct& in);
-};
-
-
-
 // The map object, the session object, the global tables and flags touched by the bodies.
 extern OverlayTypeClass** DAT_00A83D84;
-extern BA4Screen* DAT_00887324;
 
-extern HouseClass* DAT_00A83D4C;
 extern unsigned char DAT_00880CF4;
 extern int DAT_00A8E7AC;
 extern unsigned char DAT_00A8E9A0;
 extern BA4Placed** DAT_00A8EC1C;
-extern HouseClass** DAT_00A8022C;
 #include "../../core/scenario_class_methods.h"
-extern ScenarioClass* DAT_00A8B230;
 extern int DAT_0089C848;
 // LIBRARY: GAMEMD 0x7C8D20 (LIBRARY: _stricmp) / 0x7C91D0 (LIBRARY: strncpy)
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
