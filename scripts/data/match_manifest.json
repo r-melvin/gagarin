@@ -148482,5 +148482,14 @@
   "name": "?FUN_0075A350@@YAHPAUMovieHandle_007BD470@@HPAGI@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/MapGen.cpp",
+  "addr": "0x5A7640",
+  "sym": "?FUN_005A7640@@YIPAURect_4i@@PAU1@PAV?$DynamicVectorClass@VCell@@@@@Z",
+  "len": "0x95",
+  "name": "?FUN_005A7640@@YIPAURect_4i@@PAU1@PAV?$DynamicVectorClass@VCell@@@@@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

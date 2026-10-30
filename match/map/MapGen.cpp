@@ -1779,6 +1779,37 @@ bool FUN_005A7250(const Rect_005A7250* rect, bool allow_first, bool allow_second
     return true;
 }
 
+// FUNCTION: GAMEMD 0x5A7640
+// Bounding box of every cell in `list`, as origin and inclusive extent, starting from (999, 999)
+// and (0, 0).
+Rect_4i* __fastcall FUN_005A7640(Rect_4i* out, DynamicVectorClass<Cell>* list)
+{
+    CellStruct hi;
+    CellStruct lo;
+    hi.X = 0;
+    lo.X = 999;
+    hi.Y = 0;
+    lo.Y = 999;
+    for (int i = list->Count - 1; i >= 0; i--) {
+        Cell c = list->Items[i];
+        if (c.X < lo.X)
+            lo.X = c.X;
+        if (c.Y < lo.Y)
+            lo.Y = c.Y;
+        if (c.X > hi.X)
+            hi.X = c.X;
+        if (c.Y > hi.Y)
+            hi.Y = c.Y;
+    }
+    Rect_4i r;
+    r.unknown_00 = lo.X;
+    r.unknown_04 = lo.Y;
+    r.unknown_08 = hi.X - lo.X + 1;
+    r.unknown_0C = hi.Y - lo.Y + 1;
+    *out = r;
+    return out;
+}
+
 // FUNCTION: GAMEMD 0x5A7E90
 // For each sub-tile cell of tile `a1` placed at `a2` that lies on the map,
 // fetch the cell; where the tile has image data, reset its +0x38 word to
