@@ -812,7 +812,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_methods.cpp",
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
   "addr": "0x71F4E0",
   "sym": "?LoadFromINI@TEventClass@@QAEXXZ",
   "len": "0xd0",
@@ -821,7 +821,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_methods.cpp",
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
   "addr": "0x71F950",
   "sym": "?GetStateA@TEventClass@@QBE_NXZ",
   "len": "0x63",
@@ -830,7 +830,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_methods.cpp",
+  "tu": "match/ai/tevent_class_w3_methods.cpp",
   "addr": "0x71F9C0",
   "sym": "?GetStateB@TEventClass@@QBE_NXZ",
   "len": "0x63",
