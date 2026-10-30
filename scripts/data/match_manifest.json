@@ -59205,7 +59205,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A2B60",
   "sym": "?Read@CStreamClass@@UAGJPAXKPAK@Z",
   "len": "0x168",
@@ -100374,7 +100374,7 @@
   "pct": 32.6
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A2820",
   "sym": "??0CStreamClass@@QAE@XZ",
   "len": "0x56",
@@ -100383,7 +100383,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A2930",
   "sym": "?AddRef@CStreamClass@@UAGKXZ",
   "len": "0x1e",
@@ -100392,7 +100392,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A2950",
   "sym": "?Release@CStreamClass@@UAGKXZ",
   "len": "0x37",
@@ -100401,7 +100401,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A2990",
   "sym": "?QueryInterface@CStreamClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x87",
@@ -100410,7 +100410,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A3220",
   "sym": "?QueryInterface@CStreamClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -100419,7 +100419,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A3230",
   "sym": "?AddRef@CStreamClass@@W3AGKXZ",
   "len": "0xa",
@@ -100428,7 +100428,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/cstream_read_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A3240",
   "sym": "?Release@CStreamClass@@W3AGKXZ",
   "len": "0xa",
@@ -142354,7 +142354,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/cstream_class_r17_methods.cpp",
+  "tu": "match/core/cstream_forward_methods.cpp",
   "addr": "0x4A3020",
   "sym": "?FUN_004A3020@CStreamClass@@QAEJPADH@Z",
   "len": "0xb8",
