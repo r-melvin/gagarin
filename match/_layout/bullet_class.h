@@ -160,6 +160,9 @@ public:
     void FUN_0046B310();
     // FUNCTION: GAMEMD 0x46B280 -- register in ScalableBullets and rescale the type's spawn delay.
     void InitScalable();
+    // FUNCTION: GAMEMD 0x468430 -- caller passes the BulletClass* from the
+    // ScalableBullets vector; it clears an invalid target or falls back to its map cell.
+    void LoseTarget();
 
     BulletTypeClass* Type;               // +0xAC; ctor @0x00466391
     TechnoClass*   Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397

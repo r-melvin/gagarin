@@ -1750,16 +1750,16 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/bullet_class_lose_target_methods.cpp",
+  "tu": "match/combat/bullet_class_new_methods.cpp",
   "addr": "0x468430",
-  "sym": "?LoseTarget@BulletView_00468430@@QAEXXZ",
+  "sym": "?LoseTarget@BulletClass@@QAEXXZ",
   "len": "0xa4",
   "name": "BulletClass::LoseTarget",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/combat/bullet_class_scalable_methods.cpp",
+  "tu": "match/combat/bullet_class_new_methods.cpp",
   "addr": "0x46B280",
   "sym": "?InitScalable@BulletClass@@QAEXXZ",
   "len": "0x89",
@@ -104321,7 +104321,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/bullet_class_dtor.cpp",
+  "tu": "match/combat/bullet_class_new_methods.cpp",
   "addr": "0x466560",
   "sym": "??1BulletClass@@UAE@XZ",
   "len": "0xfa",
@@ -104984,7 +104984,7 @@
   "len": "0xAC5",
   "name": "BulletClass::FUN_0046A310",
   "status": "partial",
-  "pct": 2.2
+  "pct": 2.4
  },
  {
   "tu": "match/movement/foot_class_methods.cpp",
@@ -105011,7 +105011,7 @@
   "len": "0x1254",
   "name": "BulletClass::FUN_004690B0",
   "status": "partial",
-  "pct": 3.6
+  "pct": 3.8
  },
  {
   "tu": "match/combat/bullet_class_new_methods.cpp",

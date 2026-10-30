@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | RTTI-confirmed-inheritance
 // Accepted /Ob2 partial drop: 0x46A310 2.4% -> 2.2%, 0x4690B0 3.8% -> 3.6%.
+// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT /Ob1
+// Native 0x46B5C0 calls the out-of-line destructor at 0x466560; /Ob2 inlines
+// it after consolidation, while /Ob1 preserves that call and all matched rows.
 // Retail method contracts, member accesses, and callees were read from the
 // pinned v1.001 image; native call contracts are noted at the relevant sites.
 #include "../_layout/bullet_class.h"
@@ -19,6 +22,7 @@
 #include "../_layout/techno_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 #include "../_layout/anim_class.h"
 #include "../_layout/warhead_type_class.h"
 #include "../_layout/rules_class.h"
@@ -31,6 +35,7 @@
 #include "../core/scenario_class_methods.h"
 #include "../core/vec3d_layout.h"
 #include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
 #include "../renderer/color_scheme_find_methods.h"
 #include "airstrike_class_methods.h"
 #include "parasite_class_infect_methods.h"
@@ -275,6 +280,20 @@ void BulletClass::FUN_004664C0(BulletTypeClass* type, AbstractClass* target,
     DamageMultiplier = 0x100;
     NextAnim = 0;
     SpawnNextAnim = 0;
+}
+
+// FUNCTION: GAMEMD 0x466560
+BulletClass::~BulletClass()
+{
+    AnnounceExpiredPointer(1);
+    if (SpawnNextAnim)
+        DAT_00B0F5B8.RemoveItem(this);
+    if (DAT_00A8E9A0)
+        ObjectClass::vf_53();
+    Type = 0;
+    Owner = 0;
+    NextAnim = 0;
+    DAT_00A8ED40.RemoveItem(this);
 }
 
 // FUNCTION: GAMEMD 0x4666C0
@@ -1083,6 +1102,20 @@ void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
     FUN_004AED70(DAT_00887314, conversion, shape, frame, point, clip,
         0x2E00, 0, -30 - Tactical::AdjustForZ(FUN_005F5F30()), 0,
         1000, 0, 0, 0, zero);
+}
+
+// FUNCTION: GAMEMD 0x468430
+void BulletClass::LoseTarget()
+{
+    CellStruct cell = BulletCell(Target->vf_18());
+
+    if (DAT_00A8E7AC == 0 && !Target->IsInAir()
+        && (cell.X != DAT_0089DDF0.X || cell.Y != DAT_0089DDF0.Y)) {
+        Target = DAT_0087F7E8.FUN_005657A0(&cell);
+        return;
+    }
+
+    Target = 0;
 }
 
 // FUNCTION: GAMEMD 0x4684E0
@@ -2648,6 +2681,18 @@ ULONG __stdcall BulletClass::Release()
     if (count == 0)
         delete this;
     return count;
+}
+
+// FUNCTION: GAMEMD 0x46B280
+void BulletClass::InitScalable()
+{
+    DynamicVectorAddItemFree(&ScalableBullets, this);
+
+    int extra = ScalableBullets.Count - 5;
+    if (extra < 0)
+        extra = 0;
+
+    this->Type->SetScaledSpawnDelay(this->Type->unknown_2E4 + extra / 3);
 }
 
 // SYNTHETIC: GAMEMD 0x46B990 -- compiler-generated BulletClass AddRef adjustor thunk.
