@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x40DD20 and 0x40DD70.
 
 #include "whatami_dispatch_methods.h"
+#include "../_layout/techno_class.h"
 
 // FUNCTION: GAMEMD 0x40DD20
 WhatAmIHolder* FUN_0040DD20(WhatAmIHolder* self)
@@ -36,17 +37,18 @@ WhatAmIHolder* FUN_0040DD20(WhatAmIHolder* self)
 }
 
 // FUNCTION: GAMEMD 0x40DD70
-WhatAmIHolder* FUN_0040DD70(WhatAmIHolder* self)
+TechnoClass* FUN_0040DD70(AbstractClass* object)
 {
-    if (!self) {
+    if (!object) {
         return 0;
     }
 
-    switch (self->WhatAmI()) {
+    switch (object->vf_11()) {
     case 1:
     case 2:
     case 6:
-        return self;
+    case 15:
+        return static_cast<TechnoClass*>(object);
     case 3:
     case 4:
     case 5:
@@ -58,10 +60,7 @@ WhatAmIHolder* FUN_0040DD70(WhatAmIHolder* self)
     case 12:
     case 13:
     case 14:
+    default:
         return 0;
-    case 15:
-        return self;
     }
-
-    return 0;
 }

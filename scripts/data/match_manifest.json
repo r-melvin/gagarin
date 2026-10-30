@@ -22026,12 +22026,12 @@
  },
  {
   "tu": "match/core/whatami_dispatch_methods.cpp",
-  "addr": "0x40dd70",
-  "sym": "?FUN_0040DD70@@YIPAUWhatAmIHolder@@PAU1@@Z",
+  "addr": "0x40DD70",
+  "sym": "?FUN_0040DD70@@YIPAVTechnoClass@@PAVAbstractClass@@@Z",
   "len": "0x43",
   "name": "FUN_0040DD70",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/wide_string_class.cpp",
