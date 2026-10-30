@@ -3,26 +3,26 @@
   "by_kind": {
    "crt": 25,
    "data": 2466,
-   "function": 3995,
+   "function": 3993,
    "import": 0,
    "vtable": 70
   },
   "duplicate_definitions": 0,
   "objects": 1712,
-  "unresolved": 6556
+  "unresolved": 6554
  },
  "m1": {
-  "bytes_at_retail_address": 3836611,
+  "bytes_at_retail_address": 3836594,
   "drift_events": 0,
   "duplicates": 0,
-  "entries_at_retail_address": 19289,
+  "entries_at_retail_address": 19290,
   "entry_point_delta": 0,
   "link_exit_code": 0,
-  "matched_at_retail_address": 15533,
-  "matched_functions": 15533,
-  "ordered_bytes": 3836611,
-  "ordered_entries": 19289,
-  "stubs_placed": 3682,
+  "matched_at_retail_address": 15540,
+  "matched_functions": 15540,
+  "ordered_bytes": 3836594,
+  "ordered_entries": 19290,
+  "stubs_placed": 3675,
   "unresolved_after_stubs": 0
  },
  "m2": {
@@ -60,8 +60,8 @@
     "diff_bytes": 0,
     "file": 442368,
     "library": 0,
-    "project": 2693023,
-    "retail": 877637,
+    "project": 2693079,
+    "retail": 877581,
     "va": 8462336,
     "vsize": 3570660
    },
@@ -69,8 +69,8 @@
     "diff_bytes": 0,
     "file": 196724,
     "library": 0,
-    "project": 114844,
-    "retail": 81880,
+    "project": 115130,
+    "retail": 81594,
     "va": 8261632,
     "vsize": 196724
    },
@@ -87,8 +87,8 @@
     "diff_bytes": 0,
     "file": 4060045,
     "library": 87227,
-    "project": 1213740,
-    "retail": 2759078,
+    "project": 1214620,
+    "retail": 2758198,
     "va": 4198400,
     "vsize": 4060045
    }
@@ -96,8 +96,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 4114923,
-   "retail": 4189147,
+   "project": 4116145,
+   "retail": 4187925,
    "vsize": 8391297
   }
  },
@@ -134,9 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "84e88d3d",
-  "m1": "84e88d3d",
+  "m0": "93622b4a",
+  "m1": "93622b4a",
   "m2": "ac2bd917",
-  "m3": "84e88d3d"
+  "m3": "93622b4a"
  }
 }
