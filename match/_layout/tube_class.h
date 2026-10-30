@@ -16,10 +16,13 @@ struct TubeCell
     short Y;
 };
 
+// GLOBAL: GAMEMD 0xB0BC68 -- the cell record the class factory passes to the constructor.
+extern TubeCell DAT_00B0BC68;
+
 class TubeClass : public AbstractClass
 {
 public:
-    TubeClass(const TubeCell* cell, int direction);
+    TubeClass(const TubeCell* cell = &DAT_00B0BC68, int direction = 0);
     virtual ~TubeClass();
     // The stream loader's in-place construction: the base only (retail 0x410170).
     struct LoadTag {};

@@ -29,6 +29,8 @@ class AircraftTypeClass;
 class SpawnManagerClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x6B6EA0 (decl; reloc) -- default constructor.
+    SpawnManagerClass();
     // One spawned unit of the manager. Only the members the matched bodies
     // read are named; the node's total size is not asserted.
     struct SpawnControl

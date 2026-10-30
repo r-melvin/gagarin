@@ -145,61 +145,13 @@ public:
     unsigned char unknown_[0x4C - sizeof(AbstractClass)];
 };
 
-// CALLEE: GAMEMD 0x007216C0 (decl; reloc) -- TiberiumClass default constructor.
-class TiberiumClass : public AbstractClass
-{
-public:
-    TiberiumClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x128 - sizeof(AbstractClass)];
-};
 
-extern int DAT_00B0BC68;
 
-// CALLEE: GAMEMD 0x00727FD0 (decl; reloc) -- TubeClass default constructor.
-class TubeClass : public AbstractClass
-{
-public:
-    TubeClass(int* unknown_arg0 = &DAT_00B0BC68, int unknown_arg1 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x1C4 - sizeof(AbstractClass)];
-};
 
-// CALLEE: GAMEMD 0x0046CB60 (decl; reloc) -- CampaignClass default constructor.
-class CampaignClass : public AbstractClass
-{
-public:
-    CampaignClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x3A0 - sizeof(AbstractClass)];
-};
+
 
 #include "../_layout/building_light_class.h"
 
-// CALLEE: GAMEMD 0x00763730 (decl; reloc) -- WaypointPathClass default constructor.
-class WaypointPathClass : public AbstractClass
-{
-public:
-    WaypointPathClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x40 - sizeof(AbstractClass)];
-};
 
 #include "../_layout/temporal_class.h"
 #include "../ai/tevent_class_methods.h"
@@ -233,44 +185,8 @@ public:
     virtual ObjectClass* vf_35(HouseClass* owner);
 };
 
-// CALLEE: GAMEMD 0x0041D300 (decl; reloc) -- AirstrikeClass default constructor.
-class AirstrikeClass : public AbstractClass
-{
-public:
-    AirstrikeClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x60 - sizeof(AbstractClass)];
-};
 
-// CALLEE: GAMEMD 0x006B6EA0 (decl; reloc) -- SpawnManagerClass default constructor.
-class SpawnManagerClass : public AbstractClass
-{
-public:
-    SpawnManagerClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x74 - sizeof(AbstractClass)];
-};
 
-// CALLEE: GAMEMD 0x006AF360 (decl; reloc) -- SlaveManagerClass default constructor.
-class SlaveManagerClass : public AbstractClass
-{
-public:
-    SlaveManagerClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x64 - sizeof(AbstractClass)];
-};
 
 // CALLEE: GAMEMD 0x00471890 (decl; reloc) -- CaptureManagerClass default constructor.
 class CaptureManagerClass : public AbstractClass
@@ -285,18 +201,6 @@ public:
     unsigned char unknown_[0x50 - sizeof(AbstractClass)];
 };
 
-// CALLEE: GAMEMD 0x004A7A30 (decl; reloc) -- DiskLaserClass default constructor.
-class DiskLaserClass : public AbstractClass
-{
-public:
-    DiskLaserClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x40 - sizeof(AbstractClass)];
-};
 
 // CALLEE: GAMEMD 0x004385D0 (decl; reloc) -- BombClass default constructor.
 // CALLEE: GAMEMD 0x0065B1E0 (decl; reloc) -- RadSiteClass default constructor.
@@ -316,33 +220,9 @@ public:
 
 
 
-// CALLEE: GAMEMD 0x00726C80 (decl; reloc) -- TriggerTypeClass default constructor.
-class TriggerTypeClass : public AbstractClass
-{
-public:
-    TriggerTypeClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0xB4 - sizeof(AbstractClass)];
-};
 
 
 
-// CALLEE: GAMEMD 0x006E4DE0 (decl; reloc) -- TagClass default constructor.
-class TagClass : public AbstractClass
-{
-public:
-    TagClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x38 - sizeof(AbstractClass)];
-};
 
 
 
@@ -361,18 +241,6 @@ public:
     unsigned char unknown_[0x30C - sizeof(AbstractClass)];
 };
 
-// CALLEE: GAMEMD 0x005FE250 (decl; reloc) -- OverlayTypeClass default constructor.
-class OverlayTypeClass : public AbstractClass
-{
-public:
-    OverlayTypeClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x2BC - sizeof(AbstractClass)];
-};
 
 // CALLEE: GAMEMD 0x006B5260 (decl; reloc) -- SmudgeTypeClass default constructor.
 class SmudgeTypeClass : public AbstractClass
@@ -430,18 +298,6 @@ public:
     unsigned char unknown_[0x78 - sizeof(LocomotionClass)];
 };
 
-// CALLEE: GAMEMD 0x00661EC0 (decl; reloc) -- RocketLocomotionClass default constructor.
-class RocketLocomotionClass : public LocomotionClass
-{
-public:
-    RocketLocomotionClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual int Size();
-    virtual int __stdcall InWhichLayer();
-    unsigned char unknown_[0x60 - sizeof(LocomotionClass)];
-};
 
 // CALLEE: GAMEMD 0x004B5AB0 (decl; reloc) -- DropPodLocomotionClass default constructor.
 class DropPodLocomotionClass : public LocomotionClass
@@ -456,31 +312,7 @@ public:
     unsigned char unknown_[0x30 - sizeof(LocomotionClass)];
 };
 
-// CALLEE: GAMEMD 0x005AFEF0 (decl; reloc) -- MechLocomotionClass default constructor.
-class MechLocomotionClass : public LocomotionClass
-{
-public:
-    MechLocomotionClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual int Size();
-    virtual int __stdcall InWhichLayer();
-    unsigned char unknown_[0x34 - sizeof(LocomotionClass)];
-};
 
-// CALLEE: GAMEMD 0x004C98B0 (decl; reloc) -- FactoryClass default constructor.
-class FactoryClass : public AbstractClass
-{
-public:
-    FactoryClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x74 - sizeof(AbstractClass)];
-};
 
 
 // CALLEE: GAMEMD 0x0062BB20 (decl; reloc) -- ParticleClass default constructor.
@@ -535,18 +367,6 @@ public:
     unsigned char unknown_[0x310 - sizeof(AbstractClass)];
 };
 
-// CALLEE: GAMEMD 0x0041E350 (decl; reloc) -- AITriggerTypeClass default constructor.
-class AITriggerTypeClass : public AbstractClass
-{
-public:
-    AITriggerTypeClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x110 - sizeof(AbstractClass)];
-};
 
 // CALLEE: GAMEMD 0x0043A350 (decl; reloc) -- NeuronClass default constructor.
 class NeuronClass : public AbstractClass
@@ -806,6 +626,22 @@ template class VectorClass<unsigned long>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // VTABLE: GAMEMD 0x7F3768
+#include "../_layout/tiberium_class.h"
+#include "campaign_class.h"
+#include "../movement/waypoint_path_class_methods.h"
+#include "../_layout/airstrike_class.h"
+#include "../_layout/spawn_manager_class.h"
+#include "../_layout/slave_manager_class.h"
+#include "../_layout/disk_laser_class.h"
+#include "../_layout/trigger_type_class.h"
+#include "../_layout/tag_class.h"
+#include "../_layout/overlay_type_class.h"
+#include "../movement/rocket_locomotion.h"
+#include "../movement/mech_locomotion_class.h"
+#include "../_layout/factory_class.h"
+#include "../_layout/ai_trigger_type_class.h"
+#include "../_layout/tube_class.h"
+
 // class TClassFactory<CStreamClass>
 // TEMPLATE: GAMEMD 0x6BEE40
 // TClassFactory<CStreamClass>::TClassFactory
@@ -2135,7 +1971,7 @@ GG_STATIC_ASSERT(sizeof(GgClassFactoryRep) == 0x8);
 // GLOBAL: GAMEMD 0x8A0DEF
 char DAT_008A0DEF;
 // GLOBAL: GAMEMD 0xB0BC68
-int DAT_00B0BC68;
+TubeCell DAT_00B0BC68;
 // GLOBAL: GAMEMD 0xB0BCF5
 char DAT_00B0BCF5;
 // GLOBAL: GAMEMD 0xB732F0

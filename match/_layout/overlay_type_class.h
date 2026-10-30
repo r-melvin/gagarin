@@ -32,7 +32,7 @@ class OverlayTypeClass : public ObjectTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x5FE250 -- the named constructor (the INI loader calls it to allocate a type it has not seen).
-    OverlayTypeClass(const char* id);
+    OverlayTypeClass(const char* id = 0);
     // FUNCTION: GAMEMD 0x5FE3C0 -- no-init constructor (Load re-runs it to restore the vptrs).
     OverlayTypeClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x5FE470

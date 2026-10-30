@@ -14,7 +14,7 @@ class CampaignClass : public AbstractTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x46CB60
-    CampaignClass(const char* name) throw();
+    CampaignClass(const char* name = 0) throw();
     CampaignClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x46CC10
     virtual ~CampaignClass();

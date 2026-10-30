@@ -29,6 +29,8 @@ class AircraftTypeClass;
 class AirstrikeClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x41D300 (decl; reloc) -- default constructor.
+    AirstrikeClass();
     // FUNCTION: GAMEMD 0x41D380 (declaration; constructor) -- RET 4.
     AirstrikeClass(TechnoClass* owner);
     // FUNCTION: GAMEMD 0x41D490 (declaration; no-initialisation constructor)

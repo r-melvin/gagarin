@@ -55,6 +55,8 @@ class CaptureManagerClass : public AbstractClass
 {
 public:
     void DrawLinks(); // 0x472160
+    // FUNCTION: GAMEMD 0x471890 (decl; reloc) -- default constructor.
+    CaptureManagerClass();
     // FUNCTION: GAMEMD 0x4717D0 (declaration; constructor)
     CaptureManagerClass(void* owner, int maxControlNodes, bool infiniteMindControl);
     // FUNCTION: GAMEMD 0x471950 (no-initialisation constructor)

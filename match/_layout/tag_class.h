@@ -37,7 +37,7 @@ public:
     virtual void vf_10(void* target, bool removed);                       // 10  0x6E5610
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x6E56E0
     // FUNCTION: GAMEMD 0x6E4DE0 (declaration; constructor)
-    TagClass(TagTypeClass* type);
+    TagClass(TagTypeClass* type = 0);
     // The stream loader's in-place construction: only the four tables.
     TagClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
     // FUNCTION: GAMEMD 0x6E4F60 (declaration; destructor)

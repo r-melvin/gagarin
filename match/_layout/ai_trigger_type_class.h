@@ -51,7 +51,7 @@ class AITriggerTypeClass : public AbstractTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x41E350 (declaration)
-    AITriggerTypeClass(const char* id);
+    AITriggerTypeClass(const char* id = 0);
     // The stream loader's in-place construction: only the four tables.
     AITriggerTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x41E480 (declaration; destructor; slot 8 = 0x41FFF0)

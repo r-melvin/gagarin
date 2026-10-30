@@ -40,7 +40,7 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x727B30
     virtual void vf_10(void* target, bool removed);                       // 10  0x727090
     // FUNCTION: GAMEMD 0x726C80 (constructor declaration)
-    TriggerTypeClass(const char* id);
+    TriggerTypeClass(const char* id = 0);
     // Load re-runs the base no-init constructor (0x410960) and reinstalls the four vtables.
     TriggerTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
     // FUNCTION: GAMEMD 0x726E00 (decl; reloc) -- the destructor, called out of line from the scalar deleting destructor 0x727CD0.
