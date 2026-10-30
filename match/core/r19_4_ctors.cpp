@@ -5,8 +5,7 @@
 //
 // Address index: 0x65A7E0
 
-#include "../_layout/radio_class.h"
-#include "vector_class_operations.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x65A7E0
 // RadioClass no-init constructor: base chain, then the link vector's vtable only.

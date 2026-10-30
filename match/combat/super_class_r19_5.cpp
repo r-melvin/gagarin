@@ -4,8 +4,7 @@
 //   Implemented on the canonical SuperClass.
 //   Address index: 0x6CAEC0.
 
-#include "../_layout/super_class.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 
 // GLOBAL: GAMEMD 0xA83CB8 -- the super weapon array (defined in core/static_vector_init_stubs.cpp).
 extern DynamicVectorClass<SuperClass*> DAT_00A83CB8;

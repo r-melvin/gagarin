@@ -9,23 +9,14 @@
 // AITriggerTypeClass is declared in _layout/ai_trigger_type_class.h.
 //   /Ob2: the scalar deleting destructor 0x41FFF0 expands the destructor.
 
-#include <new.h>
-#include "../_layout/session_class.h"
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "../FUNCTION.H"
 #define _CTYPE_DISABLE_MACROS
 #include <ctype.h>
-#include "../_layout/ai_trigger_type_class.h"
 #include "ai_trigger_register_methods.h"
-#include "../_layout/obj_004a1d30.h"
 #include "../platform/ccini_class_methods.h"
-#include "../core/vector_class_operations.h"
 #include "../movement/locomotion_load_support.h"
 #include "../core/header_tuning_globals.h"
 #include "../economy/house_building/house_views.h"
-#include "../_layout/foot_class.h"
-#include "../_layout/team_type_class.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -65,7 +56,6 @@ extern DynamicVectorClass<AbstractTypeClass*> DAT_00A83C98;
 
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.
-#include "../_layout/map_0087f7e8.h"
 
 // STRING: GAMEMD 0x889F64 -- the shared empty default string.
 extern const char STR_00889F64[];

@@ -4,9 +4,7 @@
 //   (vtable 0x7E8B38): default constructor 0x4D08B0, stream writer 0x4D24A0
 //   (slot 6), slots 11 and 12, checksum 0x4D2810 (slot 13).
 
-#include "../_layout/fogged_object_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../core/vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0x8B3D10 -- every live fogged object (defined with its exit

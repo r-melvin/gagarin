@@ -13,10 +13,8 @@
 //   FUNCTION: GAMEMD 0x6B0CC0  SlaveManagerClass::SetStateIdle1
 //   FUNCTION: GAMEMD 0x6B0D10  SlaveManagerClass::SetStateIdle4
 
-#include "../_layout/slave_manager_class.h"
-#include "../_layout/infantry_class.h"
+#include "../FUNCTION.H"
 #include "slave_manager_class_methods.h"
-#include "../core/vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0xB0B5F0 -- the slave manager array.
 extern DynamicVectorClass<SlaveManagerClass*> DAT_00B0B5F0;
@@ -65,15 +63,15 @@ void SlaveManagerClass::vf_23()
 // FUNCTION: GAMEMD 0x6AF650
 // Create one slave from the manager's owner house, then initialize the new
 // InfantryClass and start its node timer.
-void SlaveManagerClass::CreateSlave(SlaveControl* Node)
+void SlaveManagerClass::CreateSlave(SlaveControl* Control)
 {
-    Node->Slave = static_cast<InfantryClass*>(this->SlaveType->vf_35(this->Owner->vf_15()));
-    if (Node->Slave) {
-        Node->Slave->vf_53();
-        Node->Slave->SlaveOwner = this->Owner;
-        Node->State = 0;
+    Control->Slave = static_cast<InfantryClass*>(this->SlaveType->vf_35(this->Owner->vf_15()));
+    if (Control->Slave) {
+        Control->Slave->vf_53();
+        Control->Slave->SlaveOwner = this->Owner;
+        Control->State = 0;
         CDTimerClass timer(0);
-        Node->RespawnTimer = timer;
+        Control->RespawnTimer = timer;
     }
 }
 

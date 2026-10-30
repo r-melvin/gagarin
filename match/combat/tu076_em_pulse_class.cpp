@@ -14,13 +14,8 @@
 // 8, 11, 12 and 13, in retail address order. EMPulseClass is declared in
 // _layout/empulse_class.h.
 
-#include <new.h>
-#include "../_layout/empulse_class.h"
-#include "../_layout/cell_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../core/header_tuning_globals.h"
-#include "../core/frame_counter.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -44,7 +39,6 @@ extern CellStruct DAT_008A3838;
 extern bool DAT_00A8E9A0;
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map: 0x5657E0 tests a cell, 0x5657A0 returns it.
-#include "../_layout/map_0087f7e8.h"
 
 // The append to EMPulseClass::Array, in the free-function shape of the inlined
 // DynamicVectorClass::AddItem (as TagPtrVector_AddItem in tag_class_destroy_methods.h).

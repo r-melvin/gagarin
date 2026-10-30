@@ -5,7 +5,7 @@
 //   is called by derived destructors (0x4109C0). Plain /O2 calls 0x4101F0.
 // Retail 0x4101F0 reinstalls the four AbstractClass vptrs and returns. The
 // interfaces have no destructors, so their tables are not restored.
-#include "../_layout/abstract_class.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x4101F0
 AbstractClass::~AbstractClass()

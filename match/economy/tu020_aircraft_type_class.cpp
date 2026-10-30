@@ -14,11 +14,8 @@
 // ObjectTypeClass slot 39 which the unit emits, in retail address order.
 // AircraftTypeClass is declared in _layout/aircraft_type_class.h.
 
-#include <new.h>
-#include "../_layout/aircraft_type_class.h"
+#include "../FUNCTION.H"
 #include "../platform/ccini_class_methods.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
 #include "../movement/locomotion_load_support.h"
 #include "../core/header_tuning_globals.h"
 

@@ -10,12 +10,7 @@
 // GAMEMD 0x7C8B3D -- operator delete.
 //   /Ob2: the constructors and destructors expand the registry vector bodies.
 
-#include <new.h>
-#include <stdio.h>
-#include <string.h>
-#include "../_layout/script_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../movement/locomotion_load_support.h"
 #include "../core/header_tuning_globals.h"
 #include "../platform/ccini_class_methods.h"

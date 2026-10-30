@@ -31301,7 +31301,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438550",
-  "sym": "_$E4",
+  "sym": "_$E19",
   "len": "0x3d",
   "name": "FUN_00438550",
   "status": "matched",
@@ -31310,7 +31310,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438590",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x3b",
   "name": "FUN_00438590",
   "status": "matched",
@@ -68350,7 +68350,7 @@
  {
   "tu": "match/economy/tu020_aircraft_type_class.cpp",
   "addr": "0x41C6D0",
-  "sym": "_$E3",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00889F50)",
   "status": "matched",
@@ -68359,7 +68359,7 @@
  {
   "tu": "match/economy/tu020_aircraft_type_class.cpp",
   "addr": "0x41C6F0",
-  "sym": "_$E6",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00889F30)",
   "status": "matched",
@@ -68368,7 +68368,7 @@
  {
   "tu": "match/economy/tu020_aircraft_type_class.cpp",
   "addr": "0x41C870",
-  "sym": "_$E9",
+  "sym": "_$E23",
   "len": "0x1A",
   "name": "dynamic initializer (DAT_00889F40)",
   "status": "matched",
@@ -68737,7 +68737,7 @@
  {
   "tu": "match/combat/tu076_em_pulse_class.cpp",
   "addr": "0x4C5030",
-  "sym": "_$E3",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_008A38A8)",
   "status": "matched",
@@ -68746,7 +68746,7 @@
  {
   "tu": "match/combat/tu076_em_pulse_class.cpp",
   "addr": "0x4C5050",
-  "sym": "_$E6",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_008A3890)",
   "status": "matched",
@@ -68755,7 +68755,7 @@
  {
   "tu": "match/combat/tu076_em_pulse_class.cpp",
   "addr": "0x4C51D0",
-  "sym": "_$E9",
+  "sym": "_$E23",
   "len": "0x1A",
   "name": "dynamic initializer (DAT_008A3898)",
   "status": "matched",
@@ -70105,7 +70105,7 @@
  {
   "tu": "match/ai/ai_trigger_type_class_body.cpp",
   "addr": "0x41E190",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0088A070)",
   "status": "matched",
@@ -70114,7 +70114,7 @@
  {
   "tu": "match/ai/ai_trigger_type_class_body.cpp",
   "addr": "0x41E1B0",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0088A058)",
   "status": "matched",
@@ -70123,7 +70123,7 @@
  {
   "tu": "match/ai/ai_trigger_type_class_body.cpp",
   "addr": "0x41E330",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0088A060)",
   "status": "matched",
@@ -75549,7 +75549,7 @@
  {
   "tu": "match/ai/script_class_body.cpp",
   "addr": "0x6911E0",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B05618)",
   "status": "matched",
@@ -75558,7 +75558,7 @@
  {
   "tu": "match/ai/script_class_body.cpp",
   "addr": "0x691200",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B05600)",
   "status": "matched",
@@ -75567,7 +75567,7 @@
  {
   "tu": "match/ai/script_class_body.cpp",
   "addr": "0x691380",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00B05608)",
   "status": "matched",
@@ -86768,7 +86768,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D8630",
-  "sym": "_$E4",
+  "sym": "_$E17",
   "len": "0x1",
   "name": "_$E3",
   "status": "matched",
@@ -86777,7 +86777,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DA350",
-  "sym": "_$E7",
+  "sym": "_$E20",
   "len": "0x1",
   "name": "_$E6",
   "status": "matched",
@@ -86795,7 +86795,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DC400",
-  "sym": "_$E12",
+  "sym": "_$E25",
   "len": "0x1",
   "name": "_$E11",
   "status": "matched",
@@ -86804,7 +86804,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DC410",
-  "sym": "_$E11",
+  "sym": "_$E24",
   "len": "0x1",
   "name": "_$E10",
   "status": "matched",
@@ -101183,7 +101183,7 @@
  {
   "tu": "match/combat/tu044_capture_manager_class.cpp",
   "addr": "0x471570",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0089E170)",
   "status": "matched",
@@ -101192,7 +101192,7 @@
  {
   "tu": "match/combat/tu044_capture_manager_class.cpp",
   "addr": "0x471590",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0089E158)",
   "status": "matched",
@@ -101489,7 +101489,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FC1A0",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC15D8)",
   "status": "matched",
@@ -101498,7 +101498,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FC1C0",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC15C0)",
   "status": "matched",

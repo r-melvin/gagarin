@@ -24,20 +24,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// RulesClass — only the three AI-trigger weight tunables are read.
-struct Rules_0041FD60
-{
-    char   _pad000[0xC0];                   // +0x0000
-    double AITriggerSuccessWeightDelta;     // +0x00C0
-    double AITriggerFailureWeightDelta;     // +0x00C8
-    double AITriggerTrackRecordCoefficient; // +0x00D0
-};
-GG_STATIC_ASSERT(offsetof(Rules_0041FD60, AITriggerSuccessWeightDelta) == 0xC0);
-GG_STATIC_ASSERT(offsetof(Rules_0041FD60, AITriggerFailureWeightDelta) == 0xC8);
-GG_STATIC_ASSERT(offsetof(Rules_0041FD60, AITriggerTrackRecordCoefficient) == 0xD0);
-
-// GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
-extern Rules_0041FD60* Rules;
+// RulesClass: the canonical layout supplies the three AI-trigger weight tunables read here.
+#include "../_layout/rules_class.h"
 
 // AITriggerTypeClass: the canonical class (weights +0xB8..+0xC8, Successes
 // +0x104, Attempts +0x108).

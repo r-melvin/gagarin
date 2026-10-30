@@ -9,12 +9,8 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
-#include <new.h>
-#include "../_layout/swizzle_manager_class.h"
-#include <stdlib.h>
+#include "../FUNCTION.H"
 #include "terrain_objects/overlay_class.h"
-#include "../_layout/object_class.h"
-#include "../_layout/anim_type_class.h"
 
 // Component-wise 16-bit cell addition (the original steps cells through an inline of this shape).
 inline MapObjCell OverlayCellAdd(const MapObjCell& a, const MapObjCell& b)
@@ -41,8 +37,6 @@ extern "C" const CLSID CLSID_Overlay =
 //   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
 //   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
 
 
 void __cdecl FUN_005FD230();

@@ -3,10 +3,7 @@
 //   SuperClass virtuals read off retail gamemd.exe v1.001 (vtable 0x7F3FE8).
 //   Functions are in ascending retail address order.
 
-#include <new.h>
-#include "../_layout/super_class.h"
-#include "../_layout/swizzle_manager_class.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 
 // GLOBAL: GAMEMD 0xB0F5B8 -- the registry of super weapons that carry an animation.
 extern DynamicVectorClass<AbstractClass*> DAT_00B0F5B8;

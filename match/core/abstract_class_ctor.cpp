@@ -5,7 +5,7 @@
 // constructors store their own tables (0x7E1FBC / 0x7E1FB4) before the
 // AbstractClass tables, as retail does; IPersistStream and IRTTITypeInfo are
 // novtable, so they store nothing.
-#include "../_layout/abstract_class.h"
+#include "../FUNCTION.H"
 
 // FUNCTION: GAMEMD 0x410170
 AbstractClass::AbstractClass()

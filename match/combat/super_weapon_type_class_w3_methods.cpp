@@ -5,11 +5,7 @@
 //   carries the destructor body inline.
 //   Address index: 0x6CE700 no-init ctor, 0x6CE740 dtor, 0x6CE800 Load, 0x6CEFE0 deleting dtor.
 
-#include <new.h>
-#include <stdlib.h>
-#include "../_layout/super_weapon_type_class.h"
-#include "../_layout/swizzle_manager_class.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 
 // GLOBAL: GAMEMD 0xA8E330 -- the super weapon type registry.
 extern DynamicVectorClass<SuperWeaponTypeClass*> DAT_00A8E330;

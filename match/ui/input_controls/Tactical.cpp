@@ -40,10 +40,8 @@
 // 728 == 0x2D8. The (Height >= 728) flag is added as an INTEGER (FIADD), so it
 // must stay an int operand in the expression, then 0.5 folds in as a double.
 
-#include <objidl.h>
+#include "../../FUNCTION.H"
 #include "../../core/cell_step_tables.h"
-#include "../../_layout/side_class.h"
-#include "../../_layout/wave_class.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -161,51 +159,30 @@ extern const CLSID DAT_007E9850;
 extern const CLSID DAT_007E9830;
 
 #include "../../combat/airstrike_class_methods.h"
-#include "../../_layout/anim_class.h"
-#include "../../_layout/anim_type_class.h"
-#include "../../_layout/bullet_class.h"
-#include "../../_layout/script_class.h"
-#include "../../_layout/script_type_class.h"
 #include "../../ai/taction_class_methods.h"
-#include "../../_layout/tag_type_class.h"
-#include "../../_layout/task_force_class.h"
-#include "../../_layout/team_class.h"
-#include "../../_layout/team_type_class.h"
 #include "../../ai/tevent_class_methods.h"
-#include "../../_layout/trigger_class.h"
-#include "../../_layout/voxel_anim_type_class.h"
-#include "../../_layout/warhead_type_class.h"
-#include "../../_layout/cell_class.h"
-#include "../../_layout/super_class.h"
 #include "../../combat/super_weapon_type_class_methods.h"
-#include "../../_layout/tactical.h"
 
 #include "../../core/trivial_tu229_methods.h"
 
-#include "../../core/vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "../../_layout/cell.h"
 
 template class DynamicVectorClass<Cell>;
 
-#include "../../_layout/base_node_class.h"
 
 template class DynamicVectorClass<BaseNodeClass>;
 
 template<class T> class TPoint3D { public: T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
 
-#include "../../_layout/geometry2d.h"
 template class DynamicVectorClass<Point2D>;
 
 template class DynamicVectorClass<TRect<int> >;
 
 
-#include "../../_layout/dirty_area.h"
 template class DynamicVectorClass<DirtyAreaStruct>;
 
-#include "../../renderer/tactical_class_client_to_coords_methods.h"
 
 #include "../../renderer/tactical_class_coords_to_screen_methods.h"
 
@@ -252,9 +229,7 @@ extern double AdjustForZ_Factor;   // GLOBAL: GAMEMD 0xB0CD48
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
-#include <stddef.h>
 #include "../../map/iso_tile_type_class_tile_data_methods.h"
-#include "../../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -326,7 +301,6 @@ void __cdecl FUN_006D1BF0()
     DAT_00B0CDD8 = DAT_00B0CD78 / (FUN_004CACB0(DAT_00B0CD88) * DAT_007E1728);
 }
 
-#include <string.h>
 // GLOBAL: GAMEMD 0xB0CD60
 extern int DAT_00B0CD60[4];
 // GLOBAL: GAMEMD 0xB0CD88
@@ -532,8 +506,6 @@ Coord_006D2280* Tactical::FUN_006D2360(Coord_006D2280* out,
     return out;
 }
 
-#include "../../_layout/rules_class.h"
-#include "../../core/frame_counter.h"
 #include "../../core/game_state_flags.h"
 extern unsigned char DAT_00A8ED6B; // GLOBAL: GAMEMD 0xA8ED6B (decl; reloc)
 // FUNCTION: GAMEMD 0x6D2540
@@ -586,7 +558,6 @@ void Tactical::vf_23()
     }
 }
 
-#include "../../_layout/rectangle_operations.h"
 extern DynamicVectorClass<DirtyAreaStruct> DAT_00B0CE78; // GLOBAL: GAMEMD 0xB0CE78 (decl; reloc)
 GG_STATIC_ASSERT(sizeof(RectangleStruct) == 16);
 GG_STATIC_ASSERT(offsetof(RectangleStruct, X) == 0);
@@ -697,8 +668,6 @@ void __stdcall FUN_006D2B50(int a1, int a2)
 extern "C" unsigned short* __cdecl FUN_007CA489(unsigned short* destination,
                                               const unsigned short* source);
 
-#include "../../_layout/tactical_viewport.h"
-#include "../../_layout/cell_class.h"
 #include "../../renderer/zbuffer_class_methods.h"
 extern void* DAT_00B73550; // GLOBAL: GAMEMD 0xB73550 (decl; reloc)
 
@@ -1121,10 +1090,6 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 }
 
 
-#include "../../_layout/house_class.h"
-#include "../../_layout/capture_manager_class.h"
-#include "../../_layout/super_class.h"
-#include "../../_layout/session_class.h"
 #include "../../combat/airstrike_class_methods.h"
 #include "../../combat/super_weapon_type_class_methods.h"
 #include "../../renderer/color_scheme_find_methods.h"
@@ -1563,7 +1528,6 @@ extern int DAT_00B0CE28;
 
 #include "../../ui/shape_header.h"
 #include "../../renderer/pixel_shift_view.h"
-#include "../../_layout/color_convert.h"
 // GLOBAL: GAMEMD 0xA8F794 (declaration)
 extern ShapeHeader* DAT_00A8F794;
 // GLOBAL: GAMEMD 0xA8F798 (declaration)
@@ -1619,8 +1583,6 @@ void Tactical::FUN_006D4E20(const unsigned short* text)
 }
 
 
-#include "../../_layout/building_class.h"
-#include "../../_layout/placement_object.h"
 // GLOBAL: GAMEMD 0x87F6C4 (declaration)
 extern ColorConvert* DAT_0087F6C4;
 // GLOBAL: GAMEMD 0x8A03FC (declaration)
@@ -1628,8 +1590,6 @@ extern ShapeHeader* DisplayPlaceShape_008A03FC;
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, GuardRange) == 0x5B8);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16BE - 0x16A4) == 0x16BE);
 
-#include "../../_layout/building_class.h"
-#include "../../_layout/placement_object.h"
 #include "../../map/terrain_objects/overlay_type_class.h"
 #include "mouse_ww_mouse_class.h"
 // GLOBAL: GAMEMD 0x88097C (declaration)
@@ -2421,7 +2381,6 @@ void Tactical::FUN_006D71E0(const RectangleStruct* rectangle)
     FUN_00421350(rectangle);
 }
 
-#include "../../_layout/pixel_fx_class.h"
 #include "../../core/fps_counter_methods.h"
 // GLOBAL: GAMEMD 0xABCD44
 extern unsigned int FPSCounter_CurrentFrameRate;
@@ -2920,7 +2879,6 @@ void Tactical::FUN_006D8B30()
     unknown_D8C = DAT_00B0CE34 / 15 + 4;
 }
 
-#include "../../_layout/object_class.h"
 
 // FUNCTION: GAMEMD 0x6D8C60
 void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
@@ -2937,14 +2895,10 @@ void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
     }
 }
 
-#include "../../_layout/building_class.h"
-#include "../../_layout/layer_class.h"
 
 #include "../../map/terrain_objects/terrain_class.h"
 
-#include "../../_layout/building_array.h"
 
-#include "../../_layout/scenario_ptr_00a8b230.h"
 
 // FUNCTION: GAMEMD 0x6D8DB0
 void Tactical::FUN_006D8DB0(bool argument)
@@ -3205,7 +3159,6 @@ void Tactical::FUN_006D9A50(RectangleStruct viewport)
     }
 }
 
-#include "../../_layout/building_array.h"
 
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1700) + sizeof(bool) == 0x1701);
 
@@ -3442,7 +3395,6 @@ void __stdcall FUN_006DA370(int a1)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-#include "../../_layout/object_class.h"
 
 #include "display_command.h"
 GG_STATIC_ASSERT(offsetof(DisplayClass, SavedPending) == 0x1190);
@@ -3598,8 +3550,6 @@ HRESULT __stdcall Tactical::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
-#include <new.h>
-#include "../../_layout/swizzle_manager_class.h"
 // GLOBAL: GAMEMD 0x87F7F4 (declaration)
 extern int DAT_0087F7F4;
 
@@ -3656,7 +3606,6 @@ void Tactical::FUN_006DA7D0(CellClass* cell)
     }
 }
 
-#include "../../_layout/current_objects.h"
 #include "../../renderer/pixel_shift_view.h"
 // GLOBAL: GAMEMD 0xA83CD9
 extern ColorStruct DAT_00A83CD9;
@@ -3737,7 +3686,6 @@ void Tactical::FUN_006DA9D0(bool argument)
 
 
 #include "../../movement/waypoint_path_class_methods.h"
-#include <string.h>
 #include <wchar.h>
 // Declaration: GAMEMD 0x5BE970/5BE990, one stack word, RET4.
 int __stdcall FUN_005BE970(int index);

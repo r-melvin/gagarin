@@ -6,10 +6,8 @@
 // 0x89C668 DynamicVectorClass<BombClass*> (vtable 0x7E17CC, base vtable 0x7E17EC).
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
-#include "vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "vector_add_item_free.h"
-#include "../_layout/rules_class.h"
-#include "../_layout/bomb_class.h"
 
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 

@@ -3,12 +3,7 @@
 // TU189 is a provisional grouping of this RadioClass address run. No original
 // filename is attested; the header-initializer bounds do not prove a complete TU.
 // RadioLinks' own RTTI at 0x816880 identifies VectorClass<TechnoClass*>.
-#include "../_layout/radio_class.h"
-#include <new.h>
-#include "../_layout/techno_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "vector_class_operations.h"
-#include "../_layout/swizzle_manager_class.h"
+#include "../FUNCTION.H"
 
 TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; checked type filter
 

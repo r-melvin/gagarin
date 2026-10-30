@@ -11,10 +11,7 @@
 // 0x71A700, GetClassID 0x71A720, GetWarpPerStep 0x71AB10, 0x71ABC0, JustLetGo
 // 0x71AD40, Detach 0x71ADE0 and 0x71AE50).
 
-#include <new.h>
-#include "../_layout/temporal_class.h"
-#include "../_layout/swizzle_manager_class.h"
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../core/header_tuning_globals.h"
 #include "temporal_cell.h"
 
@@ -55,10 +52,8 @@ static inline bool Temporal_AddItem(DynamicVectorClass<TemporalClass*>& v, Tempo
 }
 
 // GLOBAL: GAMEMD 0x8871E0
-#include "../_layout/rules_class.h"
 extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA83D4C
-#include "../_layout/house_class.h"
 extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8E7AC
 extern int DAT_00A8E7AC;

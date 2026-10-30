@@ -47,24 +47,16 @@
 // naming hypothesis. This uses the shared explicit-vptr layout;
 // the slot-call view does not establish the original virtual declaring class.
 
-#include "../_layout/object_class.h"
-#include "../_layout/session_class.h"
-#include "../_layout/swizzle_manager_class.h"
+#include "../FUNCTION.H"
 
 // CellStruct — 2D short cell coordinate (sizeof = 4). Self-guarded for reuse.
-#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-#include "../_layout/object_type_class.h"
-#include "../_layout/tag_class.h"
-#include "../_layout/cell_class.h"
-#include "../_layout/obj_004a1d30.h"
 #include "flight_level.h"
 
 // The map object at 0x87F7E8 (only the entry points used here).
 
 // GLOBAL: GAMEMD 0x8871E0
-#include "../_layout/rules_class.h"
 extern RulesClass* DAT_008871E0;
 
 // CALLEE: GAMEMD 0x410380 (decl; reloc) -- AbstractClass's Load body.
@@ -160,7 +152,6 @@ struct House_5F5280
     bool IsControlledByCurrentPlayer() const;
 };
 
-#include "../_layout/player_ptr_00a83d4c.h"
 // GLOBAL: GAMEMD 0xAC13BC -- the height a bridge adds.
 extern int DAT_00AC13BC;
 
@@ -193,9 +184,7 @@ static inline CellPair_5F5B90 CellPairOf(short x, short y)
 }
 
 // CALLEE: GAMEMD 0x7C5F00 -- __ftol, used by SetHealthPercentage.
-#include "../_layout/object_class.h"
 #include "rules_class.h"
-#include "../_layout/object_type_class.h"
 
 struct ObjectTagRefCountView
 {
@@ -228,8 +217,6 @@ GG_STATIC_ASSERT(sizeof(ObjectHealthGetType) == 4);
 
 #include "abstract_class_target_direction_methods.h"
 
-#include <stddef.h>
-#include "../_layout/object_class.h"
 
 GG_STATIC_ASSERT(offsetof(ObjectClass, Location) == 0x9C);
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x08);
@@ -240,7 +227,6 @@ GG_STATIC_ASSERT(sizeof(ObjectCellGetter) == 4);
 
 // /O1 changes register staging (four bytes); /O2 matches. Both /GX modes
 // match under /O2, so this function does not identify the exception flag.
-#include "../_layout/object_class.h"
 
 // Minimal primary-vtable call view: the observed target is entry 46 (+0xB8),
 // with no stack arguments and an int in EAX. This abstract view is never
@@ -294,8 +280,6 @@ GG_STATIC_ASSERT(sizeof(void*) == 4);
 
 #include "object_class_uninit_methods.h"
 
-#include "../_layout/object_class.h"
-#include "../_layout/map_0087f7e8.h"
 
 typedef CoordStruct* (IPersistStream::*ObjectYSortGetCoords)(CoordStruct*) const;
 struct ObjectYSortVtablePrefix

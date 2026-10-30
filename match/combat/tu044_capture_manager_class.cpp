@@ -52,9 +52,8 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
-#include "../core/vector_class_operations.h"
+#include "../FUNCTION.H"
 #include "../core/vector_add_item_free.h"
-#include "../_layout/capture_manager_class.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -81,9 +80,7 @@ GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, CapacityIncrement) == 0x14);
 
-#include "../core/vector_class_operations.h"
 
-#include "../_layout/control_node.h"
 
 // VTABLE: GAMEMD 0x7E4BC4 -- VectorClass<ControlNode*>.
 template class VectorClass<ControlNode*>;
@@ -105,10 +102,7 @@ GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, CapacityIncrement) ==
 
 GG_STATIC_ASSERT(sizeof(ControlNode*) == 4);
 
-#include "../_layout/capture_manager_class.h"
-#include "../_layout/obj_004a1d30.h"
 #include "../_rt/gg_istream.h"
-#include "../_layout/control_node.h"
 
 // The dword/int result is an ABI view, not a recovered original declaration.
 struct CaptureOwnerSubobject_4726F0
@@ -186,7 +180,6 @@ extern "C" long __stdcall FUN_00410320(void* subject, void* stream, int clearDir
 
 #include "../core/remove_last_matching_methods.h"
 
-#include "../core/vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;
