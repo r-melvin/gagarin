@@ -16,7 +16,7 @@
 // The count lands in the dead `pStm` parameter slot (pStm lives in EDI after
 // the null check) and each element in the one frame local; both reads are
 // early returns on a negative HRESULT.
-HRESULT LayerClass::Load(IStream_00551B90* pStm)
+HRESULT LayerClass::Load(IStream* pStm)
 {
     if (pStm == 0) {
         return 0x80004003;
@@ -29,7 +29,7 @@ HRESULT LayerClass::Load(IStream_00551B90* pStm)
     }
 
     for (int i = 0; i < count; i++) {
-        void* item;
+        ObjectClass* item;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0) {
             return hr;

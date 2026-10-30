@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
+#include "../_layout/layer_class.h"
 
 class AbstractClass;
 
@@ -25,10 +26,5 @@ typedef int (* WhatAmIFunc)(AbstractClass*);
 // GLOBAL: GAMEMD 0x008B40C8 — the logic list.
 extern DynamicVectorClassLayout LogicArray;
 
-class LogicClass
-{
-public:
-    void PointerGotInvalid(AbstractClass* invalid, bool removed);   // GAMEMD 0x55B880
-};
 
 #endif  // GG_MATCH_CORE_LOGIC_CLASS_POINTER_METHODS_H

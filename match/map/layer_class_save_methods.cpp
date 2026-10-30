@@ -11,7 +11,7 @@
 // HRESULT. The count is taken
 // into a local before the first write and the loop bound reads that local, not
 // the member — the Write call could have changed the object underneath.
-Gg_HRESULT LayerClass::Save(Gg_IStream* pStm)
+Gg_HRESULT LayerClass::Save(IStream* pStm)
 {
     if (pStm == 0)
         return GG_E_POINTER;
@@ -23,7 +23,7 @@ Gg_HRESULT LayerClass::Save(Gg_IStream* pStm)
         return hr;
 
     for (int i = 0; i < count; i++) {
-        hr = pStm->Write(&((void**)Items)[i], 4, 0);
+        hr = pStm->Write(&Items[i], 4, 0);
         if (hr < 0)
             return hr;
     }

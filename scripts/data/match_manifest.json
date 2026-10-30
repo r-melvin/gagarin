@@ -8741,7 +8741,7 @@
  {
   "tu": "match/core/logic_class_pointer_methods.cpp",
   "addr": "0x55B880",
-  "sym": "?PointerGotInvalid@LogicClass@@QAEXPAVAbstractClass@@_N@Z",
+  "sym": "?PointerGotInvalid@LogicClass@@UAEXPAVAbstractClass@@_N@Z",
   "len": "0x61",
   "name": "LogicClass::PointerGotInvalid",
   "status": "matched",
@@ -23728,7 +23728,7 @@
  {
   "tu": "match/map/map_class_add_object_methods.cpp",
   "addr": "0x5519B0",
-  "sym": "?AddObject@LayerClass@@QAE_NPAVObjectClass@@_N@Z",
+  "sym": "?AddObject@LayerClass@@UAE_NPAVObjectClass@@_N@Z",
   "len": "0x7c",
   "name": "LayerClass::AddObject",
   "status": "matched",
@@ -23764,7 +23764,7 @@
  {
   "tu": "match/map/layer_class_load_methods.cpp",
   "addr": "0x551B90",
-  "sym": "?Load@LayerClass@@QAEJPAUIStream_00551B90@@@Z",
+  "sym": "?Load@LayerClass@@QAEJPAUIStream@@@Z",
   "len": "0xc7",
   "name": "LayerClass::Load",
   "status": "matched",
@@ -23890,7 +23890,7 @@
  {
   "tu": "match/map/map_class_object_methods.cpp",
   "addr": "0x55BAA0",
-  "sym": "?AddObject@LogicClass@@QAE_NPAVObjectClass@@_N@Z",
+  "sym": "?AddObject@LogicClass@@UAE_NPAVObjectClass@@_N@Z",
   "len": "0x36",
   "name": "LogicClass::AddObject",
   "status": "matched",
@@ -23962,7 +23962,7 @@
  {
   "tu": "match/map/layer_class_save_methods.cpp",
   "addr": "0x551B20",
-  "sym": "?Save@LayerClass@@QAEJPAUGg_IStream@@@Z",
+  "sym": "?Save@LayerClass@@QAEJPAUIStream@@@Z",
   "len": "0x62",
   "name": "LayerClass::Save",
   "status": "matched",
