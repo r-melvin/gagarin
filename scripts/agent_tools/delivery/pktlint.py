@@ -81,7 +81,7 @@ def apply_outside_repo(work, patch_text):
 THIS_NULL = re.compile(
     r"\bthis\s*[!=]=\s*(?:0\b|NULL\b|nullptr\b)"
     r"|\b(?:0|NULL|nullptr)\s*[!=]=\s*this\b"
-    r"|!\s*this\b"
+    r"|!\s*this\b(?!\s*->)"
     r"|\b(?:if|while)\s*\(\s*this\s*\)"
     r"|(?:^|[(&|?,]|\breturn\b)\s*this\s*(?:&&|\|\||\?)")
 
