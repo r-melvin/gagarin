@@ -72,6 +72,8 @@ extern double DAT_00B0E688;
 #include "../_layout/trigger_class.h"
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/tag_type_class.h"
+#include "../_layout/team_type_class.h"
+#include "../_layout/obj_004a1d30.h"
 #include "../_layout/building_class.h"
 #include <new.h>
 #include "../_layout/object_class.h"
@@ -1382,6 +1384,23 @@ const char* TActionClass::FUN_006E4010()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6E3E50
+// Synchronisation checksum: the referenced objects' ids and the action parameter.
+void TActionClass::vf_13(Obj_004A1D30* crc)
+{
+    AbstractClass::vf_13(crc);
+    if (unknown_28)
+        crc->FUN_004A1D50(unknown_28->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_2C);
+    if (unknown_30)
+        crc->FUN_004A1D50(unknown_30->vf_rtti_4());
+    if (unknown_4C)
+        crc->FUN_004A1D50(unknown_4C->vf_rtti_4());
+    if (unknown_50)
+        crc->FUN_004A1D50(unknown_50->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_90);
+}
+
 // FUNCTION: GAMEMD 0x6E4020
 // Branching.
 unsigned char FUN_006E4020(Obj_006E4020* a1, int a2, int a3, int a4, int a5, int a6)
@@ -1435,14 +1454,8 @@ struct Rec_006E4360 {
 };
 GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_258) == 0x258);
 GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_264) == 0x264);
-struct Obj_006E4360 {
-    unsigned char unknown_00[0x90];
-    int unknown_90;
-    bool FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006E4360, unknown_90) == 0x90);
 // FUNCTION: GAMEMD 0x006E4360
-bool Obj_006E4360::FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4)
+bool TActionClass::FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4)
 {
     if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
         a1->unknown_258[unknown_90]->FUN_006CC290();
@@ -1463,14 +1476,8 @@ struct Rec_006E43A0 {
 };
 GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_258) == 0x258);
 GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_264) == 0x264);
-struct Obj_006E43A0 {
-    unsigned char unknown_00[0x90];
-    int unknown_90;
-    bool FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006E43A0, unknown_90) == 0x90);
 // FUNCTION: GAMEMD 0x006E43A0
-bool Obj_006E43A0::FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4)
+bool TActionClass::FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4)
 {
     if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
         a1->unknown_258[unknown_90]->FUN_006CE0B0();
@@ -1540,6 +1547,21 @@ bool __stdcall FUN_006E4540(void* p, int, int, int)
         return false;
     }
     FUN_0050DFF0(p);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x006E4560
+// Flash every building of the house whose type ID equals the action's text, for
+// the action's parameter. Fails when there is no house.
+bool TActionClass::FUN_006E4560(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (house == 0)
+        return false;
+    for (int i = house->Buildings.Count - 1; i >= 0; i--) {
+        BuildingClass* building = house->Buildings.Items[i];
+        if (strcmp(building->Type->ID, unknown_54) == 0)
+            building->DurationRemaining = unknown_90;
+    }
     return true;
 }
 

@@ -6,6 +6,7 @@
 //
 // Address index: 0x6E42D0 0x6E4320 0x6E47C0
 
+#include "taction_class_methods.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -25,19 +26,10 @@ struct Rec_006E42D0 {
 };
 GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_258) == 0x258);
 GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_264) == 0x264);
-struct Obj_006E42D0 {
-    unsigned char unknown_00[0x48];
-    int unknown_48;                 // +0x48: the percentage
-    unsigned char unknown_4C[0x44];
-    int unknown_90;                 // +0x90: the super weapon index
-    bool FUN_006E42D0(Rec_006E42D0* a1, int a2, int a3, int a4);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006E42D0, unknown_48) == 0x48);
-GG_STATIC_ASSERT(offsetof(Obj_006E42D0, unknown_90) == 0x90);
 
 // FUNCTION: GAMEMD 0x6E42D0
 // Sets the charge of one of the house's present super weapons to a percentage from 0 to 100.
-bool Obj_006E42D0::FUN_006E42D0(Rec_006E42D0* a1, int a2, int a3, int a4)
+bool TActionClass::FUN_006E42D0(Rec_006E42D0* a1, int a2, int a3, int a4)
 {
     if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
         Elem_006E42D0* super = a1->unknown_258[unknown_90];
@@ -62,19 +54,10 @@ struct Rec_006E4320 {
 };
 GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_258) == 0x258);
 GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_264) == 0x264);
-struct Obj_006E4320 {
-    unsigned char unknown_00[0x48];
-    int unknown_48;                 // +0x48: the recharge time
-    unsigned char unknown_4C[0x44];
-    int unknown_90;                 // +0x90: the super weapon index
-    bool FUN_006E4320(Rec_006E4320* a1, int a2, int a3, int a4);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006E4320, unknown_48) == 0x48);
-GG_STATIC_ASSERT(offsetof(Obj_006E4320, unknown_90) == 0x90);
 
 // FUNCTION: GAMEMD 0x6E4320
 // Sets the recharge time of one of the house's super weapons.
-bool Obj_006E4320::FUN_006E4320(Rec_006E4320* a1, int a2, int a3, int a4)
+bool TActionClass::FUN_006E4320(Rec_006E4320* a1, int a2, int a3, int a4)
 {
     if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
         a1->unknown_258[unknown_90]->FUN_006CC280(unknown_48);

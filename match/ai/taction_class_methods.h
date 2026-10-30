@@ -30,6 +30,11 @@ class TriggerTypeClass;
 struct CellStruct;
 struct CoordStruct;
 
+struct Rec_006E42D0;
+struct Rec_006E4320;
+struct Rec_006E4360;
+struct Rec_006E43A0;
+
 class TActionClass : public AbstractClass
 {
 public:
@@ -49,6 +54,15 @@ public:
     virtual int vf_16();                                                  // 16  0x6E4650
     // FUNCTION: GAMEMD 0x6DD2C0 (slot 10)
     virtual void vf_10(void* target, bool removed);
+
+    // FUNCTION: GAMEMD 0x006E42D0 (decl; reloc)
+    bool FUN_006E42D0(Rec_006E42D0* a1, int a2, int a3, int a4);
+    // FUNCTION: GAMEMD 0x006E4320 (decl; reloc)
+    bool FUN_006E4320(Rec_006E4320* a1, int a2, int a3, int a4);
+    // FUNCTION: GAMEMD 0x006E4360 (decl; reloc)
+    bool FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4);
+    // FUNCTION: GAMEMD 0x006E43A0 (decl; reloc)
+    bool FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4);
 
     // BEGIN GENERATED
     // FUNCTION: GAMEMD 0x6E0050
@@ -208,7 +222,7 @@ public:
     TeamTypeClass* unknown_30;       // +0x30
     Rect_4i       unknown_34;        // +0x34 map rectangle (x, y, width, height)
     int           unknown_44;        // +0x44 waypoint index
-    unsigned char unknown_48[4];     // +0x48
+    int           unknown_48;        // +0x48; DWORD reads 6E42FE and 6E433E
     TagTypeClass* unknown_4C;        // +0x4C
     TriggerTypeClass* unknown_50;    // +0x50
     char          unknown_54[0x19];  // +0x54
@@ -231,6 +245,8 @@ GG_STATIC_ASSERT(offsetof(TActionClass, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_30) == 0x30);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_34) == 0x34);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_44) == 0x44);
+GG_STATIC_ASSERT(offsetof(TActionClass, unknown_48) == 0x48);
+GG_STATIC_ASSERT(sizeof(((TActionClass*)0)->unknown_48) == 4);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_4C) == 0x4C);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_50) == 0x50);
 GG_STATIC_ASSERT(offsetof(TActionClass, unknown_6D) == 0x6D);
