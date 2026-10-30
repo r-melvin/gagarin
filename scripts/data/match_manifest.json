@@ -866,7 +866,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_destroy_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x7265C0",
   "sym": "?FireActions@TriggerClass@@QAE_NPAVObjectClass@@UCellStruct@@@Z",
   "len": "0x66",
@@ -875,7 +875,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_destroy_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x726720",
   "sym": "?Destroy@TriggerClass@@QAEXXZ",
   "len": "0x5C",
@@ -884,7 +884,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_event_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x726250",
   "sym": "?HasCrossesHorizontalLineEvent@TriggerClass@@QBE_NXZ",
   "len": "0x34",
@@ -893,7 +893,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_event_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x726290",
   "sym": "?HasCrossesVerticalLineEvent@TriggerClass@@QBE_NXZ",
   "len": "0x34",
@@ -902,7 +902,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_event_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x7262D0",
   "sym": "?HasZoneEntryByEvent@TriggerClass@@QBE_NXZ",
   "len": "0x37",
@@ -911,7 +911,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_event_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x726310",
   "sym": "?HasAllowWinAction@TriggerClass@@QBE_NXZ",
   "len": "0x37",
@@ -920,7 +920,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x7263A0",
   "sym": "?NotifyGlobalChanged@TriggerClass@@QAEXH@Z",
   "len": "0x2C",
@@ -929,7 +929,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x7263D0",
   "sym": "?NotifyLocalChanged@TriggerClass@@QAEXH@Z",
   "len": "0x2C",
@@ -938,7 +938,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_more_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x726350",
   "sym": "?HasGlobalSetOrClearedEvent@TriggerClass@@QBE_NH@Z",
   "len": "0x4e",
@@ -947,7 +947,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_more_methods.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x726630",
   "sym": "?GetInstance@TriggerClass@@SIPAV1@PAVTriggerTypeClass@@@Z",
   "len": "0x53",
@@ -35044,7 +35044,7 @@
   "name": "DynamicVectorClass<TriggerClass*>::FindItemIndex"
  },
  {
-  "tu": "match/ai/trigger_class_ctor.cpp",
+  "tu": "match/ai/trigger_class_body.cpp",
   "addr": "0x725FA0",
   "sym": "??0TriggerClass@@QAE@PAVTriggerTypeClass@@@Z",
   "len": "0x193",

@@ -18,6 +18,10 @@
 #include "../movement/locomotion_load_support.h"
 #include "../core/abstract_registry.h"
 #include "tevent_class_methods.h"
+#include "trigger_class_event_methods.h"
+#include "trigger_class_methods.h"
+#include "trigger_class_more_methods.h"
+#include "trigger_class_destroy_methods.h"
 
 // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- __fastcall, house for a country index.
 HouseClass* FUN_00502D30(int index);
@@ -28,6 +32,82 @@ static inline void Trigger_RemoveFrom(DynamicVectorClassLayout* list, TriggerCla
     reinterpret_cast<DynamicVectorClass<TriggerClass*>*>(list)->RemoveItem(trigger);
 }
 
+struct TriggerCtorTypeFlagsView
+{
+    unsigned char unknown_00[0x9C];
+    unsigned char Flags[4];
+};
+GG_STATIC_ASSERT(offsetof(TriggerCtorTypeFlagsView, Flags) == 0x9C);
+
+
+struct TriggerCtorPtrVector
+{
+    virtual ~TriggerCtorPtrVector();
+    virtual bool Equals(const TriggerCtorPtrVector& other) const;
+    virtual bool SetCapacity(int capacity, void* memory);
+
+    void* Items;
+    int Capacity;
+    unsigned char IsInitialized;
+    unsigned char IsAllocated;
+    unsigned char unknown_0E[2];
+    int Count;
+    int CapacityIncrement;
+};
+GG_STATIC_ASSERT(offsetof(TriggerCtorPtrVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(TriggerCtorPtrVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(TriggerCtorPtrVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(TriggerCtorPtrVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(TriggerCtorPtrVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(TriggerCtorPtrVector, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(TriggerCtorPtrVector) == 0x18);
+
+inline bool TriggerCtorVectorAddItem(TriggerCtorPtrVector* vector,
+                                     TriggerClass* item)
+{
+    if (vector->Count >= vector->Capacity) {
+        if (!vector->IsAllocated && vector->Capacity != 0)
+            return false;
+        if (vector->CapacityIncrement <= 0)
+            return false;
+        if (!vector->SetCapacity(vector->Capacity + vector->CapacityIncrement, 0))
+            return false;
+    }
+    int index = vector->Count++;
+    ((TriggerClass**)vector->Items)[index] = item;
+    return true;
+}
+
+// GLOBAL: GAMEMD 0x00A8B230 — ScenarioClass::Instance (pointer).
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
+
+// FUNCTION: GAMEMD 0x725FA0
+TriggerClass::TriggerClass(TriggerTypeClass* type)
+    : Type(type), AttachedTrigger(0), unknown_2C(0), Destroyed(0), Timer(0),
+      OccuredEvents(0), Enabled(true)
+{
+
+    TriggerCtorVectorAddItem(
+        reinterpret_cast<TriggerCtorPtrVector*>(&DAT_00B0F670), this);
+    TriggerCtorVectorAddItem(
+        reinterpret_cast<TriggerCtorPtrVector*>(&DAT_00B0F708), this);
+    TriggerCtorVectorAddItem(
+        reinterpret_cast<TriggerCtorPtrVector*>(&TriggerClass::Array), this);
+
+    if (this->Type != 0) {
+        this->ResetTimers();
+        TriggerCtorTypeFlagsView* typeFlags =
+            reinterpret_cast<TriggerCtorTypeFlagsView*>(this->Type);
+        if (typeFlags->Flags[3] == 0
+            || (DAT_00A8B230->Difficulty == 0 && typeFlags->Flags[0] == 0)
+            || (DAT_00A8B230->Difficulty == 1 && typeFlags->Flags[1] == 0)
+            || (DAT_00A8B230->Difficulty == 2 && typeFlags->Flags[2] == 0)) {
+            this->Enabled = false;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x726140
 TriggerClass::~TriggerClass()
 {
@@ -35,6 +115,93 @@ TriggerClass::~TriggerClass()
     Trigger_RemoveFrom(&TriggerClass::Array, this);
     Trigger_RemoveFrom(&DAT_00B0F670, this);
     Trigger_RemoveFrom(&DAT_00B0F708, this);
+}
+
+// FUNCTION: GAMEMD 0x726250  (__thiscall)
+// True if this trigger (or any attached trigger) holds a Crosses-Horizontal-Line
+// event.
+bool TriggerClass::HasCrossesHorizontalLineEvent() const
+{
+    if (this->AttachedTrigger)
+        return this->Type->HasCrossesHorizontalLineEvent()
+            || this->AttachedTrigger->HasCrossesHorizontalLineEvent();
+
+    return this->Type->HasCrossesHorizontalLineEvent();
+}
+
+// FUNCTION: GAMEMD 0x726290  (__thiscall)
+// True if this trigger (or any attached trigger) holds a Crosses-Vertical-Line
+// event.
+bool TriggerClass::HasCrossesVerticalLineEvent() const
+{
+    if (this->AttachedTrigger)
+        return this->Type->HasCrossesVerticalLineEvent()
+            || this->AttachedTrigger->HasCrossesVerticalLineEvent();
+
+    return this->Type->HasCrossesVerticalLineEvent();
+}
+
+// FUNCTION: GAMEMD 0x7262D0  (__thiscall)
+// True if this trigger's type, or the attached trigger's type, holds a
+// Zone-Entry-By event.
+bool TriggerClass::HasZoneEntryByEvent() const
+{
+    if (this->AttachedTrigger)
+        return this->Type->HasZoneEntryByEvent()
+            || this->AttachedTrigger->Type->HasZoneEntryByEvent();
+
+    return this->Type->HasZoneEntryByEvent();
+}
+
+// FUNCTION: GAMEMD 0x726310  (__thiscall)
+// True if this trigger's type, or the attached trigger's type, holds an
+// Allow-Win action.
+bool TriggerClass::HasAllowWinAction() const
+{
+    if (this->AttachedTrigger)
+        return this->Type->HasAllowWinAction()
+            || this->AttachedTrigger->Type->HasAllowWinAction();
+
+    return this->Type->HasAllowWinAction();
+}
+
+// FUNCTION: GAMEMD 0x726350  TriggerClass::HasGlobalSetOrClearedEvent (__thiscall)
+//
+// True if this trigger's Type — or, when an AttachedTrigger exists, either
+// Type — contains the given global-set/cleared event. With no AttachedTrigger
+// the lone Type predicate's bool is returned directly.
+// ---------------------------------------------------------------------------
+bool TriggerClass::HasGlobalSetOrClearedEvent(int idxGlobal) const
+{
+    if (this->AttachedTrigger)
+    {
+        return this->Type->HasGlobalSetOrClearedEvent(idxGlobal)
+            || this->AttachedTrigger->Type->HasGlobalSetOrClearedEvent(idxGlobal);
+    }
+    return this->Type->HasGlobalSetOrClearedEvent(idxGlobal);
+}
+
+// FUNCTION: GAMEMD 0x7263A0  (__thiscall)
+// Walk this trigger and its NextTrigger chain; for each trigger whose type has
+// a Global Set/Cleared event referencing idxGlobal, reset that trigger's timers.
+void TriggerClass::NotifyGlobalChanged(int idxGlobal)
+{
+    for (TriggerClass* trigger = this; trigger; trigger = trigger->NextTrigger)
+    {
+        if (trigger->Type->HasGlobalSetOrClearedEvent(idxGlobal))
+            trigger->ResetTimers();
+    }
+}
+
+// FUNCTION: GAMEMD 0x7263D0  (__thiscall)
+// As NotifyGlobalChanged, but for Local Set/Cleared events.
+void TriggerClass::NotifyLocalChanged(int idxLocal)
+{
+    for (TriggerClass* trigger = this; trigger; trigger = trigger->NextTrigger)
+    {
+        if (trigger->Type->HasLocalSetOrClearedEvent(idxLocal))
+            trigger->ResetTimers();
+    }
 }
 
 // FUNCTION: GAMEMD 0x7264C0
@@ -73,6 +240,54 @@ bool TriggerClass::FUN_007264C0(int event, ObjectClass* object, bool flag, bool 
     return result;
 }
 
+// FUNCTION: GAMEMD 0x7265C0  (__thiscall)
+// Walks the trigger type's action list; each action is Execute()d against the
+// trigger's owner house (HouseClass::FindByCountryIndex of the type's House).
+// Returns whether at least one action executed.
+bool TriggerClass::FireActions(ObjectClass* pObj, CellStruct location)
+{
+    if (this->Enabled && !this->Destroyed) {
+        bool result = false;
+        for (TActionClass* action = reinterpret_cast<TActionClass*>(this->Type->FirstAction); action != 0;
+             action = action->unknown_28) {
+            if (action->Execute(
+                    HouseClass::FindByCountryIndex(this->Type->House->ArrayIndex),
+                    pObj, this, location)) {
+                result = true;
+            }
+        }
+        return result;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x726630  TriggerClass::GetInstance (__fastcall — pType in ECX)
+//
+// The comparison is written with pType on the left. x86 has two encodings for a
+// register/memory compare and VC6 picks by operand order: `pType == item->Type`
+// gives retail's `3B` (`CMP ESI,[EBX+..]`), the other way round gives `39`
+// (`CMP [EBX+..],ESI`). One byte, and the only thing that was keeping this
+// function off byte parity.
+//
+// Returns the existing TriggerClass whose Type matches pType, scanning the
+// global Array linearly; if none is found a fresh instance is allocated and
+// constructed. A null pType (or a failed allocation) yields null.
+// ---------------------------------------------------------------------------
+TriggerClass* TriggerClass::GetInstance(TriggerTypeClass* pType)
+{
+    if (pType)
+    {
+        for (int i = 0; i < TriggerClass::Array.Count; ++i)
+        {
+            if (pType == ((TriggerClass**)TriggerClass::Array.Items)[i]->Type)
+                return ((TriggerClass**)TriggerClass::Array.Items)[i];
+        }
+
+        return new TriggerClass(pType);
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x726690
 void TriggerClass::vf_10(void* target, bool removed)
 {
@@ -103,6 +318,19 @@ void TriggerClass::FUN_007266E0(int index)
 bool TriggerClass::FUN_00726700(int index) const
 {
     return (OccuredEvents & (1 << index)) != 0;
+}
+
+// FUNCTION: GAMEMD 0x726720  (__thiscall)
+// Marks the trigger as destroyed and appends it to the global destruction queue.
+// The inlined AddItem reaches the virtual SetCapacity through the vector's own
+// `this` (slot 2, [vtable+0x08]) on the constant global object; the header's
+// AddItem carries the phrasing that keeps retail's register order (53.3% with
+// the member re-read at each use and the split `index = Count; Count = index +
+// 1;`, which sinks the vtable load below the pushes and emits an LEA).
+void TriggerClass::Destroy()
+{
+    this->Destroyed = true;
+    reinterpret_cast<TriggerPtrVector*>(&DAT_00B0F698)->AddItem(this);
 }
 
 // FUNCTION: GAMEMD 0x726780
