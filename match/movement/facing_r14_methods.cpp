@@ -8,12 +8,6 @@
 #include <stdlib.h>   // abs (the /O2 intrinsic: CDQ; XOR; SUB)
 #include "../_layout/facing_class.h"
 
-static inline DirStruct DirDifference(DirStruct a, DirStruct b)
-{
-    DirStruct r;
-    r.Raw = (unsigned short)(a.Raw - b.Raw);
-    return r;
-}
 
 // FUNCTION: GAMEMD 0x4C9530
 // PARTIAL: 95.5% (64/67 instructions). Remaining delta: retail keeps the desired direction in
@@ -29,11 +23,4 @@ DirStruct FacingClass::FUN_004C9530() const
     DirStruct result = DesiredFacing;
     result.Raw = (unsigned short)(result.Raw - cur.Raw);
     return result;
-}
-
-// FUNCTION: GAMEMD 0x4C95D0
-// Signed distance from the current (interpolated) direction to `other`.
-DirStruct FacingClass::FUN_004C95D0(const DirStruct* other) const
-{
-    return DirDifference(*other, Current());
 }

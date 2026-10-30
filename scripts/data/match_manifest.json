@@ -24780,7 +24780,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_methods.cpp",
+  "tu": "match/movement/facing_set_desired_methods.cpp",
   "addr": "0x4C9480",
   "sym": "?IsRotating@FacingClass@@QBE_NXZ",
   "len": "0x2D",
@@ -24789,7 +24789,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_methods.cpp",
+  "tu": "match/movement/facing_set_desired_methods.cpp",
   "addr": "0x4C94B0",
   "sym": "?IsRotatingCW@FacingClass@@QBE_NXZ",
   "len": "0x3C",
@@ -24798,7 +24798,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_methods.cpp",
+  "tu": "match/movement/facing_set_desired_methods.cpp",
   "addr": "0x4C94F0",
   "sym": "?IsRotatingCCW@FacingClass@@QBE_NXZ",
   "len": "0x3A",
@@ -104113,7 +104113,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/facing_methods.cpp",
+  "tu": "match/movement/facing_set_desired_methods.cpp",
   "addr": "0x4C93D0",
   "sym": "?FUN_004C93D0@FacingClass@@QBE?AUDirStruct@@XZ",
   "len": "0x99",
@@ -140347,7 +140347,7 @@
   "pct": 95.5
  },
  {
-  "tu": "match/movement/facing_r14_methods.cpp",
+  "tu": "match/movement/facing_set_desired_methods.cpp",
   "addr": "0x4C95D0",
   "sym": "?FUN_004C95D0@FacingClass@@QBE?AUDirStruct@@PBU2@@Z",
   "len": "0xa1",
