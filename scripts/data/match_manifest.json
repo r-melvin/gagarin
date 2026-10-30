@@ -2299,9 +2299,9 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/slave_manager_class_methods.cpp",
+  "tu": "match/combat/slave_manager_r19_5.cpp",
   "addr": "0x6B0A20",
-  "sym": "?LostSlave@SlaveManagerView_006B0A20@@QAEXPAUSlaveObject@@@Z",
+  "sym": "?LostSlave@SlaveManagerClass@@QAEXPAUSlaveObject@@@Z",
   "len": "0x6e",
   "name": "SlaveManagerClass::LostSlave",
   "status": "matched",
@@ -2326,11 +2326,11 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/slave_manager_class_more_methods.cpp",
+  "tu": "match/combat/slave_manager_r19_5.cpp",
   "addr": "0x6AF650",
-  "sym": "?CreateSlave@SlaveManagerView_006AF580@@QAEXPAUSlaveControl@@@Z",
+  "sym": "?CreateSlave@SlaveManagerClass@@QAEXPAUSlaveControl@1@@Z",
   "len": "0x62",
-  "name": "CreateSlave",
+  "name": "SlaveManagerClass::CreateSlave",
   "status": "matched",
   "pct": 100
  },
@@ -2344,9 +2344,9 @@
   "pct": 84.6
  },
  {
-  "tu": "match/combat/slave_manager_class_more_methods.cpp",
+  "tu": "match/combat/slave_manager_r19_5.cpp",
   "addr": "0x6B0490",
-  "sym": "?GuardAllSlaves@SlaveManagerView_006AF580@@QAEXXZ",
+  "sym": "?GuardAllSlaves@SlaveManagerClass@@QAEXXZ",
   "len": "0x2c",
   "name": "SlaveManagerClass::GuardAllSlaves",
   "status": "matched",

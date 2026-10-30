@@ -309,6 +309,10 @@ struct SlaveControl
 GG_STATIC_ASSERT(offsetof(SlaveControl, RespawnTimer) == 0x08);
 GG_STATIC_ASSERT(offsetof(SlaveControl, Slave) == 0x00);
 GG_STATIC_ASSERT(offsetof(SlaveControl, State) == 0x04);
+GG_STATIC_ASSERT(sizeof(SlaveObject*) == 0x04);
+GG_STATIC_ASSERT(sizeof(int) == 0x04);
+GG_STATIC_ASSERT(sizeof(SlaveTimerClass) == 0x0C);
+GG_STATIC_ASSERT(sizeof(SlaveControl) == 0x14);
 
 class SlaveManagerView_006B0A20
 {

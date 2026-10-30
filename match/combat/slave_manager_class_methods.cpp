@@ -8,25 +8,6 @@
 
 #include "slave_manager_class_methods.h"
 
-// FUNCTION: GAMEMD 0x6B0A20  SlaveManagerClass::LostSlave (__thiscall)
-// A slave died or was taken: search the nodes from the top for the one that
-// owns it, break its back-link, empty the node, mark it Dead and restart the
-// respawn countdown from the regen rate.
-void SlaveManagerView_006B0A20::LostSlave(SlaveObject* slave)
-{
-    for (int i = SlaveNodes.Count - 1; i >= 0; --i) {
-        if (((SlaveControl**)SlaveNodes.Items)[i]->Slave == slave) {
-            SlaveControl* node = ((SlaveControl**)SlaveNodes.Items)[i];
-            if (node->Slave)
-                node->Slave->SlaveOwner = 0;
-            node->Slave = 0;
-            node->State = 6;
-            node->RespawnTimer = SlaveTimerClass(RegenRate);
-            return;
-        }
-    }
-}
-
 // FUNCTION: GAMEMD 0x6B0C80  (__thiscall)
 // Reset the manager to Ready (State=0) at the current frame, then order every
 // live slave (State != Dead(6), Slave != null) back to Guard via vtable+0x3D0,

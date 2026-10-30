@@ -20,6 +20,7 @@
 class TechnoClass;
 class InfantryClass;
 class InfantryTypeClass;
+struct SlaveObject;
 
 // VTABLE: GAMEMD 0x007F31C8  SlaveManagerClass
 // VTABLE: GAMEMD 0x007F31AC  SlaveManagerClass::(+0x04)
@@ -67,6 +68,12 @@ public:
     void FUN_006AF6C0();
     // FUNCTION: GAMEMD 0x6AFD60 (decl; reloc)
     void FUN_006AFD60();
+    // FUNCTION: GAMEMD 0x6AF650 -- creates and initializes one slave.
+    void CreateSlave(SlaveControl* node);
+    // FUNCTION: GAMEMD 0x6B0490 -- orders every live slave to Guard.
+    void GuardAllSlaves();
+    // FUNCTION: GAMEMD 0x6B0A20 -- detaches a lost slave and restarts its timer.
+    void LostSlave(SlaveObject* slave);
     // Order every live slave to go idle and set State = 1 / 4 (0x6B0CC0 / 0x6B0D10).
     void SetStateIdle1();
     void SetStateIdle4();
@@ -74,6 +81,9 @@ public:
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass::SlaveControl, Slave)        == 0x00);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass::SlaveControl, State)        == 0x04);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass::SlaveControl, RespawnTimer) == 0x08);
+GG_STATIC_ASSERT(sizeof(InfantryClass*)                                   == 0x04);
+GG_STATIC_ASSERT(sizeof(int)                                              == 0x04);
+GG_STATIC_ASSERT(sizeof(CDTimerClass)                                     == 0x0C);
 GG_STATIC_ASSERT(sizeof(SlaveManagerClass::SlaveControl)                 == 0x14);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, Owner)         == 0x24);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveType)     == 0x28);
