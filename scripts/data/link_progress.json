@@ -8,7 +8,7 @@
    "vtable": 70
   },
   "duplicate_definitions": 0,
-  "objects": 1740,
+  "objects": 1730,
   "unresolved": 6558
  },
  "m1": {
@@ -69,8 +69,8 @@
     "diff_bytes": 0,
     "file": 196724,
     "library": 0,
-    "project": 114418,
-    "retail": 82306,
+    "project": 114450,
+    "retail": 82274,
     "va": 8261632,
     "vsize": 196724
    },
@@ -96,8 +96,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 4093092,
-   "retail": 4210978,
+   "project": 4093124,
+   "retail": 4210946,
    "vsize": 8391297
   }
  },
@@ -134,9 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "c47120b7",
-  "m1": "c47120b7",
+  "m0": "5144e0e1",
+  "m1": "5144e0e1",
   "m2": "ac2bd917",
-  "m3": "c47120b7"
+  "m3": "5144e0e1"
  }
 }
