@@ -146688,5 +146688,104 @@
   "name": "TeamClass::FUN_006EF610",
   "status": "partial",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/map_class_iso_coord_methods.cpp",
+  "addr": "0x565580",
+  "sym": "?FUN_00565580@MapClass@@QBEPAUCellStruct@@PAU2@PBU2@@Z",
+  "len": "0x39",
+  "name": "MapClass::FUN_00565580",
+  "status": "partial",
+  "pct": 5.0
+ },
+ {
+  "tu": "match/map/map_class_iso_coord_methods.cpp",
+  "addr": "0x5655C0",
+  "sym": "?FUN_005655C0@MapClass@@QBEPAUCellStruct@@PAU2@PBU2@@Z",
+  "len": "0x49",
+  "name": "MapClass::FUN_005655C0",
+  "status": "partial",
+  "pct": 8.3
+ },
+ {
+  "tu": "match/map/map_class_iso_coord_methods.cpp",
+  "addr": "0x565660",
+  "sym": "?FUN_00565660@MapClass@@QBEPAUCellStruct@@PAU2@PBU2@@Z",
+  "len": "0x6b",
+  "name": "MapClass::FUN_00565660",
+  "status": "partial",
+  "pct": 0.0
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x5659F0",
+  "sym": "?vf_07@MapClass@@UAEXXZ",
+  "len": "0xaa",
+  "name": "MapClass::vf_07",
+  "status": "partial",
+  "pct": 42.9
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x56AE40",
+  "sym": "?FUN_0056AE40@MapClass@@QBEHPAVPipe@@@Z",
+  "len": "0xf3",
+  "name": "MapClass::FUN_0056AE40",
+  "status": "partial",
+  "pct": 51.2
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x56BBE0",
+  "sym": "?vf_27@MapClass@@UAEXXZ",
+  "len": "0x6f",
+  "name": "MapClass::vf_27",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x56E890",
+  "sym": "?FUN_0056E890@MapClass@@QBE_NPBUCellStruct@@PAH1@Z",
+  "len": "0xf8",
+  "name": "MapClass::FUN_0056E890",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x581090",
+  "sym": "?FUN_00581090@MapClass@@QAEXXZ",
+  "len": "0xa6",
+  "name": "MapClass::FUN_00581090",
+  "status": "partial",
+  "pct": 73.8
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x5864A0",
+  "sym": "?FUN_005864A0@MapClass@@QBE_NPBUCoordStruct@@@Z",
+  "len": "0x135",
+  "name": "MapClass::FUN_005864A0",
+  "status": "partial",
+  "pct": 96.9
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x586AC0",
+  "sym": "?FUN_00586AC0@MapClass@@QBEPAUCellStruct@@PAU2@PBU2@_N@Z",
+  "len": "0x124",
+  "name": "MapClass::FUN_00586AC0",
+  "status": "partial",
+  "pct": 15.6
+ },
+ {
+  "tu": "match/map/trivial_tu127_methods.cpp",
+  "addr": "0x5889F0",
+  "sym": "?FUN_005889F0@@YIHHH@Z",
+  "len": "0xcb",
+  "name": "?FUN_005889F0@@YIHHH@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

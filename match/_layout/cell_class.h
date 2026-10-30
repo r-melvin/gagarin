@@ -302,7 +302,7 @@ public:
     unsigned int    GapsCoveringThisCell;    // +0x134 ctor @0x0047BD44
     unsigned char   VisibilityChanged;       // +0x138 ctor @0x0047BD4A
     unsigned char   align_139[3];            // +0x139 (PROTECTED_PROPERTY)
-    unsigned int    unknown_13C;             // +0x13C ctor @0x0047BD50
+    int             unknown_13C;             // +0x13C ctor @0x0047BD50 (read as signed at 0x5864A0)
     unsigned int    Flags;                   // +0x140 ctor read-modify-write AND 0xFF800000
                                              //   @0x0047BCC9..0x0047BD56 (a bitfield, low 23 bits cleared)
     unsigned char   padding_144[4];          // +0x144 (PROTECTED_PROPERTY; closes the object at 0x148)

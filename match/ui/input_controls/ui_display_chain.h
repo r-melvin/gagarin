@@ -283,6 +283,7 @@ struct Cell_00578540;           // map_class_usable_area_methods.cpp
 struct WarheadType_00489180;    // map_class_total_damage_methods.cpp
 struct Cell_0050DEF0;   // radar_class.h
 struct RadarDiamond;    // radar_class_more_methods.cpp
+class Pipe;
 class MapClass : public GScreenClass
 {
 public:
@@ -353,7 +354,10 @@ public:
     Point2D FUN_005654A0(const Point2D& in) const;
     Point2D FUN_005654E0(const Point2D& in) const;
     Point2D FUN_00565520(const Point2D& in) const;
+    CellStruct* FUN_00565580(CellStruct* out, const CellStruct* in) const;
+    CellStruct* FUN_005655C0(CellStruct* out, const CellStruct* in) const;
     CellStruct* FUN_00565610(CellStruct* out, const CellStruct* in) const;
+    CellStruct* FUN_00565660(CellStruct* out, const CellStruct* in) const;
     // FUNCTION: GAMEMD 0x56D3A0 -- the word lookup for a cell.
     unsigned int FUN_0056D3A0(const CellStruct* cell) const;
     // FUNCTION: GAMEMD 0x578460 (decl; reloc), const view / 0x5785F0 / 0x578540 -- usable-area tests.
@@ -362,6 +366,18 @@ public:
     bool IsWithinUsableArea(Cell_00578540* pCell, bool checkLevel) const;
     // FUNCTION: GAMEMD 0x578080 -- the floor height at a coordinate (second name for FUN_00578080).
     int GetZPos(CoordStruct* coords);
+    // FUNCTION: GAMEMD 0x581090 -- frees the map's tables, then the veinhole and tiberium logic.
+    void FUN_00581090();
+    // FUNCTION: GAMEMD 0x5864A0 -- whether the cell under a coordinate (or its facing-3 neighbour on odd levels) has a positive +0x13C.
+    bool FUN_005864A0(const CoordStruct* coords) const;
+    // FUNCTION: GAMEMD 0x586AC0 -- pulls a cell back inside the local map rectangle.
+    CellStruct* FUN_00586AC0(CellStruct* out, const CellStruct* cell, bool flag) const;
+    // FUNCTION: GAMEMD 0x56E890 -- finds the house whose base covers a cell: its sector and its type's +0xB8 value.
+    bool FUN_0056E890(const CellStruct* cell, int* houseTypeValue, int* sector) const;
+    // FUNCTION: GAMEMD 0x56AE40 -- sums the bytes of the owned cells' tile, height and level fed through an LCW pipe.
+    int FUN_0056AE40(Pipe* chain) const;
+    // FUNCTION: GAMEMD 0x56BD40 -- crate bookkeeping, called by slot 27 for each expired crate.
+    void FUN_0056BD40();
     // FUNCTION: GAMEMD 0x4F42D0 / 0x568300.
     void FUN_004F42D0();
     bool CoordinatesLegal(const CellStruct& cell) const;

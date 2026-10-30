@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Evidence: retail gamemd.exe v1.001 disassembly at 0x565470-0x565668 (0x565580, 0x5655C0 and 0x565660 are unmatched). MapClass keeps an
+//   Evidence: retail gamemd.exe v1.001 disassembly at 0x565470-0x565668. MapClass keeps an
 //   isometric projection origin at +0xF4 and two offsets at +0xFC/+0x100; these helpers
 //   convert between two 2D coordinate systems with them, on Point2D and on CellStruct.
 //
-// Address index: 0x565470 0x5654A0 0x5654E0 0x565520 0x565610
+// Address index: 0x565470 0x5654A0 0x5654E0 0x565520 0x565580 0x5655C0 0x565610 0x565660
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
@@ -57,6 +57,33 @@ Point2D MapClass::FUN_00565520(const Point2D& in) const
     return Point2D(q.X - p.X, q.Y - p.Y);
 }
 
+// FUNCTION: GAMEMD 0x565580
+// The projection of FUN_00565470 on a cell coordinate.
+CellStruct* MapClass::FUN_00565580(CellStruct* out, const CellStruct* in) const
+{
+    int f = MapRect.Width;
+    int x = in->X;
+    int y = in->Y;
+    CellStruct r;
+    r.X = (short)(x + ((y + 1) >> 1));
+    r.Y = (short)(f + (y >> 1) - x);
+    *out = r;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x5655C0
+// The projection of FUN_005654A0 on a cell coordinate.
+CellStruct* MapClass::FUN_005655C0(CellStruct* out, const CellStruct* in) const
+{
+    int x = in->X + LocalRect.X;
+    int y = in->Y + LocalRect.Y;
+    CellStruct r;
+    r.X = (short)(x + ((y + 1) >> 1));
+    r.Y = (short)(MapRect.Width + (y >> 1) - x);
+    *out = r;
+    return out;
+}
+
 // FUNCTION: GAMEMD 0x565610
 // The inverse projection of FUN_005654E0 on a cell coordinate.
 CellStruct* MapClass::FUN_00565610(CellStruct* out, const CellStruct* in) const
@@ -68,6 +95,21 @@ CellStruct* MapClass::FUN_00565610(CellStruct* out, const CellStruct* in) const
     CellStruct r;
     r.X = (short)((d >> 1) + f / 2);
     r.Y = (short)(x + y - f);
+    *out = r;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x565660
+// The inverse projection of FUN_00565520 on a cell coordinate.
+CellStruct* MapClass::FUN_00565660(CellStruct* out, const CellStruct* in) const
+{
+    int f = MapRect.Width;
+    int x = in->X;
+    int y = in->Y;
+    int d = (f & 1) ? x - y + 1 : x - y;
+    CellStruct r;
+    r.X = (short)((d >> 1) + f / 2 - LocalRect.X);
+    r.Y = (short)(x + y - f - LocalRect.Y);
     *out = r;
     return out;
 }

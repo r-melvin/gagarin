@@ -11,6 +11,8 @@ class CrateClass
 public:
     CDTimerClass Timer;
     CellStruct Location;
+    // FUNCTION: GAMEMD 0x4A1750 (declaration) -- clears the crate's slot and timer.
+    void FUN_004A1750();
 };
 GG_STATIC_ASSERT(offsetof(CrateClass, Timer) == 0x00);
 GG_STATIC_ASSERT(offsetof(CrateClass, Timer) + offsetof(CDTimerClass, StartTime) == 0x00);
