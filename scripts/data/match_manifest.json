@@ -87653,18 +87653,18 @@
  {
   "tu": "match/core/trivial_tu244_methods.cpp",
   "addr": "0x71FA50",
-  "sym": "?FUN_0071FA50@Obj_0071FA50@@QBEHXZ",
+  "sym": "?vf_12@TEventClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0071FA50::FUN_0071FA50",
+  "name": "TEventClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/trivial_tu244_methods.cpp",
   "addr": "0x71FA60",
-  "sym": "?FUN_0071FA60@Obj_0071FA60@@QBEHXZ",
+  "sym": "?vf_11@TEventClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0071FA60::FUN_0071FA60",
+  "name": "TEventClass::vf_11",
   "status": "matched",
   "pct": 100
  },
@@ -94962,9 +94962,9 @@
  {
   "tu": "match/core/trivial_tu244_b_methods.cpp",
   "addr": "0x71FA30",
-  "sym": "?FUN_0071FA30@Obj_0071FA30@@QBEHXZ",
+  "sym": "?FUN_0071FA30@TEventClass@@QAEPAXXZ",
   "len": "0x4",
-  "name": "Obj_0071FA30::FUN_0071FA30",
+  "name": "TEventClass::FUN_0071FA30",
   "status": "matched",
   "pct": 100
  },

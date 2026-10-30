@@ -5,6 +5,7 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu244_methods.h"
+#include "../ai/tevent_class_methods.h"
 
 // FUNCTION: GAMEMD 0x71FA40
 // Stores its argument in a member; pops its stack arguments.
@@ -15,14 +16,14 @@ void Obj_0071FA40::FUN_0071FA40(int a1)
 
 // FUNCTION: GAMEMD 0x71FA50
 // Returns a constant. Vtable slot 12 of TEventClass (RTTI).
-int Obj_0071FA50::FUN_0071FA50() const
+int TEventClass::vf_12()
 {
     return 0x58;
 }
 
 // FUNCTION: GAMEMD 0x71FA60
 // Returns a constant. Vtable slot 11 of TEventClass (RTTI).
-int Obj_0071FA60::FUN_0071FA60() const
+int TEventClass::vf_11()
 {
     return 0x30;
 }

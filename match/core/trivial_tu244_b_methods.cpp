@@ -4,11 +4,11 @@
 //
 //   Ordered ascending by retail address.
 
-#include "trivial_tu244_b_methods.h"
+#include "../ai/tevent_class_methods.h"
 
 // FUNCTION: GAMEMD 0x71FA30
 // Member getter (dword).
-int Obj_0071FA30::FUN_0071FA30() const
+void* TEventClass::FUN_0071FA30()
 {
     return unknown_54;
 }
