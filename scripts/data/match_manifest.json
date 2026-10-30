@@ -85016,63 +85016,63 @@
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C1CB0",
-  "sym": "?FUN_005C1CB0@Obj_005C1CB0@@QAEXXZ",
+  "sym": "?vf_9@MPCooperative@@UAEXXZ",
   "len": "0x8",
-  "name": "Obj_005C1CB0::FUN_005C1CB0",
+  "name": "MPCooperative::vf_9",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C36F0",
-  "sym": "?FUN_005C36F0@Obj_005C36F0@@QAEXXZ",
+  "sym": "?vf_35@MPCooperative@@UAE_NXZ",
   "len": "0x5",
-  "name": "Obj_005C36F0::FUN_005C36F0",
+  "name": "MPCooperative::vf_35",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C3700",
-  "sym": "?FUN_005C3700@Obj_005C3700@@QBE_NXZ",
+  "sym": "?vf_15@MPCooperative@@UAE_NXZ",
   "len": "0x3",
-  "name": "Obj_005C3700::FUN_005C3700",
+  "name": "MPCooperative::vf_15",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C42C0",
-  "sym": "?FUN_005C42C0@Obj_005C42C0@@QBEHXZ",
+  "sym": "?vf_38@MPCooperative@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_005C42C0::FUN_005C42C0",
+  "name": "MPCooperative::vf_38",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C4EE0",
-  "sym": "?FUN_005C4EE0@Obj_005C4EE0@@QBE_NXZ",
+  "sym": "?vf_1@MPCooperative@@UAE_NXZ",
   "len": "0x3",
-  "name": "Obj_005C4EE0::FUN_005C4EE0",
+  "name": "MPCooperative::vf_1",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C4EF0",
-  "sym": "?FUN_005C4EF0@Obj_005C4EF0@@QBE_NXZ",
+  "sym": "?vf_2@MPCooperative@@UAE_NXZ",
   "len": "0x3",
-  "name": "Obj_005C4EF0::FUN_005C4EF0",
+  "name": "MPCooperative::vf_2",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C4F00",
-  "sym": "?FUN_005C4F00@Obj_005C4F00@@QBE_NXZ",
+  "sym": "?vf_47@MPCooperative@@UAE_NXZ",
   "len": "0x3",
-  "name": "Obj_005C4F00::FUN_005C4F00",
+  "name": "MPCooperative::vf_47",
   "status": "matched",
   "pct": 100
  },

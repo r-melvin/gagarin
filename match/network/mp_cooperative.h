@@ -78,6 +78,28 @@ public:
     MPCooperative(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
     virtual ~MPCooperative();
 
+    // FUNCTION: GAMEMD 0x5C1CB0 (declaration; slot 9)
+    virtual void vf_9();
+
+    // FUNCTION: GAMEMD 0x5C36F0 (declaration; slot 35)
+    virtual bool vf_35();
+
+    // FUNCTION: GAMEMD 0x5C3700 (declaration; slot 15)
+    virtual bool vf_15();
+
+    // FUNCTION: GAMEMD 0x5C42C0 (declaration; slot 38)
+    virtual int vf_38();
+
+    // FUNCTION: GAMEMD 0x5C4EE0 (declaration; slot 1)
+    virtual bool vf_1();
+
+    // FUNCTION: GAMEMD 0x5C4EF0 (declaration; slot 2)
+    virtual bool vf_2();
+
+    // FUNCTION: GAMEMD 0x5C4F00 (declaration; slot 47)
+    virtual bool vf_47();
+
+
     void FUN_005C21D0(struct HWND__* dialog, bool show);
     void FUN_005C23B0(struct HWND__* dialog, int id);
     void FUN_005C2500(struct HWND__* dialog);
@@ -111,5 +133,18 @@ GG_STATIC_ASSERT(offsetof(MPCooperative, unknown_264) == 0x264);
 GG_STATIC_ASSERT(offsetof(MPCooperative, Campaigns) == 0x324);
 GG_STATIC_ASSERT(offsetof(MPCooperative, unknown_33C) == 0x33C);
 GG_STATIC_ASSERT(offsetof(MPCooperative, unknown_340) == 0x340);
+
+// Native 0x5C1CB0 writes one byte at +0x340.
+GG_STATIC_ASSERT(sizeof(((MPCooperative*)0)->unknown_340) == 1);
+// Plain table model for the native 52-slot address point at 0x7EE27C.
+struct MPCooperativeVtableLayoutEvidence { void* Slots[52]; };
+GG_STATIC_ASSERT(sizeof(MPCooperativeVtableLayoutEvidence) == 0xD0);
+GG_STATIC_ASSERT(offsetof(MPCooperativeVtableLayoutEvidence, Slots) + 1 * sizeof(void*) == 0x4);
+GG_STATIC_ASSERT(offsetof(MPCooperativeVtableLayoutEvidence, Slots) + 2 * sizeof(void*) == 0x8);
+GG_STATIC_ASSERT(offsetof(MPCooperativeVtableLayoutEvidence, Slots) + 9 * sizeof(void*) == 0x24);
+GG_STATIC_ASSERT(offsetof(MPCooperativeVtableLayoutEvidence, Slots) + 15 * sizeof(void*) == 0x3C);
+GG_STATIC_ASSERT(offsetof(MPCooperativeVtableLayoutEvidence, Slots) + 35 * sizeof(void*) == 0x8C);
+GG_STATIC_ASSERT(offsetof(MPCooperativeVtableLayoutEvidence, Slots) + 38 * sizeof(void*) == 0x98);
+GG_STATIC_ASSERT(offsetof(MPCooperativeVtableLayoutEvidence, Slots) + 47 * sizeof(void*) == 0xBC);
 
 #endif  // GG_MATCH_NETWORK_MP_COOPERATIVE_H

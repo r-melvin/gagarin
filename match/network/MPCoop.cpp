@@ -30,7 +30,6 @@ extern double DAT_00ABF420;
 // GLOBAL: GAMEMD 0x7EE268
 const double DAT_007EE268 = 60.0;
 
-#include "../core/trivial_tu144_methods.h"
 
 #include <windows.h>
 #include "mp_cooperative.h"
@@ -446,8 +445,8 @@ int FUN_005C1980()
 }
 
 // FUNCTION: GAMEMD 0x5C1CB0
-// Stores its argument in a member. Vtable slot 9 of MPCooperative (RTTI).
-void Obj_005C1CB0::FUN_005C1CB0()
+// Sets the byte at +0x340 to one. MPCooperative vtable slot 9.
+void MPCooperative::vf_9()
 {
     unknown_340 = 1;
 }
@@ -694,14 +693,14 @@ void MPCooperative::FUN_005C2D00(int house, DynamicVectorClassLayout* spots, boo
 
 // FUNCTION: GAMEMD 0x5C36F0
 // Tail-forwards to another function. Vtable slot 35 of MPCooperative (RTTI).
-void Obj_005C36F0::FUN_005C36F0()
+bool MPCooperative::vf_35()
 {
-    FUN_005D7570();
+    return MultiplayerGameMode::vf_35();
 }
 
 // FUNCTION: GAMEMD 0x5C3700
 // Returns a constant boolean. Vtable slot 15 of MPCooperative (RTTI).
-bool Obj_005C3700::FUN_005C3700() const
+bool MPCooperative::vf_15()
 {
     return false;
 }
@@ -728,7 +727,7 @@ bool MPCooperative::FUN_005C3EC0()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C42C0
 // Returns a constant. Vtable slot 38 of MPCooperative (RTTI).
-int Obj_005C42C0::FUN_005C42C0() const
+int MPCooperative::vf_38()
 {
     return 2;
 }
@@ -736,7 +735,7 @@ int Obj_005C42C0::FUN_005C42C0() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C4EE0
 // Returns a constant boolean. Vtable slot 1 of MPCooperative (RTTI).
-bool Obj_005C4EE0::FUN_005C4EE0() const
+bool MPCooperative::vf_1()
 {
     return true;
 }
@@ -744,7 +743,7 @@ bool Obj_005C4EE0::FUN_005C4EE0() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C4EF0
 // Returns a constant boolean. Vtable slot 2 of MPCooperative (RTTI).
-bool Obj_005C4EF0::FUN_005C4EF0() const
+bool MPCooperative::vf_2()
 {
     return true;
 }
@@ -752,7 +751,7 @@ bool Obj_005C4EF0::FUN_005C4EF0() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C4F00
 // Returns a constant boolean. Vtable slot 47 of MPCooperative (RTTI).
-bool Obj_005C4F00::FUN_005C4F00() const
+bool MPCooperative::vf_47()
 {
     return false;
 }
