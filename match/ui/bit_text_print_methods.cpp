@@ -19,12 +19,12 @@ int __stdcall FUN_00434B90(BitFont* font, Surface* surface, const unsigned short
     int result = arg4;
 
     if (font != 0) {
-        font->FUN_004348F0(surface);
+        font->Lock(surface);
         font->FUN_00434110(result);
 
         result = font->FUN_00434500(text, result, arg5, arg6, arg7);
 
-        font->FUN_00434990(surface);
+        font->UnLock(surface);
     }
 
     return result;

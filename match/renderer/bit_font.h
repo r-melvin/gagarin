@@ -78,13 +78,11 @@ public:
     void Reset();
     void FUN_00434700(); // GAMEMD 0x434700
     bool Intersect(LTRBStruct* out, LTRBStruct* a, LTRBStruct* b); // GAMEMD 0x434840
-    void FUN_004348F0(Surface*); // GAMEMD 0x4348F0, legacy spelling
     // FUNCTION: GAMEMD 0x433CE0 — ECX=this, one byte stack argument, RET 4.
     unsigned char SwapFlag(unsigned char value);
     // FUNCTION: GAMEMD 0x434100 — ECX=this, one dword stack argument, RET 4.
     int SwapTabWidth(int value);
     int FUN_00434500(const unsigned short*, int, int, int, int); // GAMEMD 0x434500
-    void FUN_00434990(Surface*); // GAMEMD 0x434990, legacy spelling
     short         FUN_00433C70(short color);          // GAMEMD 0x433C70: swaps +0x24, returns the old
     unsigned char FUN_00433C90(unsigned char value);  // GAMEMD 0x433C90: swaps +0x41, returns the old
     void          FUN_00433CA0(const BitFontBounds* bounds);  // GAMEMD 0x433CA0: +0x30..+0x3C, 0 clears
