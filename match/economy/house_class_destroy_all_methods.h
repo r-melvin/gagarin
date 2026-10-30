@@ -53,16 +53,8 @@ enum { ABSTRACT_TYPE_BUILDING = 6 };
 #include "../_layout/techno_type_class.h"
 
 
-// CaptureManagerClass — one predicate, reached as
-// `MOV ECX,[EAX+0x2bc]; PUSH ESI; CALL 0x472330` at 0x4FC71E. YRpp does not
-// bind 0x472330, so it keeps its placeholder name; what it does
-// is "is this techno one of mine", which is what lets DestroyAll spare a unit
-// that its original owner has since mind-controlled away.
-class CaptureManagerClass
-{
-public:
-    bool FUN_00472330(TechnoClass* techno);   // GAMEMD 0x472330
-};
+// Native 0x4FC71E calls the canonical CaptureManagerClass receiver.
+#include "../_layout/capture_manager_class.h"
 
 // TemporalClass: the canonical class; 0x71AD40 is its JustLetGo
 // (`MOV ECX,[ESI+0x278]; CALL 0x71AD40`).

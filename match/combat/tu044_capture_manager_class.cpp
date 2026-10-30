@@ -601,7 +601,7 @@ HouseClass* CaptureManagerClass::GetOriginalOwner(TechnoClass* unit) const
 // The slot walk runs backwards and re-reads both the key parameter and the slot
 // array on every iteration — retail reloads `[ESP+0x14]` and `[EDI+0x28]` inside
 // the loop rather than holding either.
-bool Obj_00472330::FUN_00472330(int key)
+bool CaptureManagerClass::FUN_00472330(TechnoClass* key)
 {
     int count = DAT_00A80238;
     int wanted = DAT_00818164.FUN_006A46D0();
@@ -615,8 +615,8 @@ bool Obj_00472330::FUN_00472330(int key)
     if (item == 0) {
         return false;
     }
-    for (int j = this->SlotCount - 1; j >= 0; j--) {
-        Slot_00472330* slot = this->Slots[j];
+    for (int j = this->ControlNodes.Count - 1; j >= 0; j--) {
+        Slot_00472330* slot = ((Slot_00472330**)this->ControlNodes.Items)[j];
         if (slot->Key == key) {
             slot->Value = item;
         }

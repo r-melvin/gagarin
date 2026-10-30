@@ -328,9 +328,9 @@
  {
   "tu": "match/combat/tu044_capture_manager_class.cpp",
   "addr": "0x472330",
-  "sym": "?FUN_00472330@Obj_00472330@@QAE_NH@Z",
+  "sym": "?FUN_00472330@CaptureManagerClass@@QAE_NPAVTechnoClass@@@Z",
   "len": "0x75",
-  "name": "Obj_00472330::FUN_00472330",
+  "name": "CaptureManagerClass::FUN_00472330",
   "status": "matched",
   "pct": 100
  },

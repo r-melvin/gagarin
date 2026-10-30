@@ -91,6 +91,8 @@ public:
     bool FUN_004722E0() const;
     // FUNCTION: GAMEMD 0x4722F0
     HouseClass* GetOriginalOwner(TechnoClass* unit) const;
+    // FUNCTION: GAMEMD 0x472330 (declaration; caller passes the controlled TechnoClass*)
+    bool FUN_00472330(TechnoClass* unit);
     // FUNCTION: GAMEMD 0x4723B0 (declaration-only ABI binding; ownership provisional)
     void FUN_004723B0(TechnoClass* unit);
     // FUNCTION: GAMEMD 0x472640

@@ -24,11 +24,21 @@ struct Item_00472330
 };
 GG_STATIC_ASSERT(offsetof(Item_00472330, Type) == 0x34);
 
+class TechnoClass;
+
 struct Slot_00472330
 {
-    int Key;                  // +0x0000
+    TechnoClass* Key;         // +0x0000; native 0x471DF0 stores captured unit
     Item_00472330* Value;     // +0x0004
 };
+
+// Native 0x472392 compares the unit pointer and 0x472396 writes the selected house.
+GG_STATIC_ASSERT(offsetof(Slot_00472330, Key) == 0x00);
+GG_STATIC_ASSERT(offsetof(Slot_00472330, Value) == 0x04);
+GG_STATIC_ASSERT(sizeof(((Slot_00472330*)0)->Key) == 4);
+GG_STATIC_ASSERT(sizeof(((Slot_00472330*)0)->Value) == 4);
+GG_STATIC_ASSERT(sizeof(((Item_00472330*)0)->Type) == 4);
+GG_STATIC_ASSERT(sizeof(((Type_00472330*)0)->At_BC) == 4);
 
 // GLOBAL: GAMEMD 0xA8022C — the item list.
 extern Item_00472330** DAT_00A8022C;
