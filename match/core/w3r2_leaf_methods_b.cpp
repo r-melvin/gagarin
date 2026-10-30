@@ -43,13 +43,6 @@ bool Owned_006EC220::FUN_006EC220(Chain_006EC220* ancestor) const
 // FUNCTION: GAMEMD 0x65AC40 (decl; reloc)
 void __stdcall FUN_0065AC40(int a, int b, int c);
 
-// FUNCTION: GAMEMD 0x70C250
-// Forwards its three arguments and reports zero.
-int __stdcall FUN_0070C250(int a, int b, int c)
-{
-    FUN_0065AC40(a, b, c);
-    return 0;
-}
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT string compare (cdecl, two pointers).
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);

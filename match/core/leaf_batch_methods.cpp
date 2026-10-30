@@ -51,19 +51,6 @@ int VQASession_00759E50::GetWidth() const { return this->Width; }
 int VQASession_00759E50::GetHeight() const { return this->Height; }
 
 // ============================================================================
-// TechnoClass_00707000 - offsets confirmed from disassembly
-// ============================================================================
-
-// FUNCTION: GAMEMD 0x0070DCF0
-int TechnoClass_00707000::GetCurrentTurret() const { return this->CurrentTurret; }
-
-// FUNCTION: GAMEMD 0x0070DDC0
-int TechnoClass_00707000::GetCaptureTarget() const { return this->CaptureTarget; }
-
-// FUNCTION: GAMEMD 0x0070DDF0
-int TechnoClass_00707000::GetAmmo() const { return this->Ammo; }
-
-// ============================================================================
 // Global function
 // ============================================================================
 

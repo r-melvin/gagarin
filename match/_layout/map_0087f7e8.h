@@ -75,6 +75,8 @@ struct Map_0087F7E8
     Cell_005A7250* GetCell(const CellStruct_005A7250& cell);
     // FUNCTION: GAMEMD 0x5673A0 (decl; reloc)
     void FUN_005673A0(CoordStruct* where, int sight, HouseClass* house, int a, int b, int c, int d, int e);
+    // The same entry point 0x5673A0, taking the coordinate by reference.
+    void FUN_005673A0(const CoordStruct& where, int sight, HouseClass* house, int a, int b, int c, int d, int e);
     // FUNCTION: GAMEMD 0x4ACAC0 (decl; reloc)
     void FUN_004ACAC0();
     // FUNCTION: GAMEMD 0x4A8BF0 (decl; reloc)
@@ -148,6 +150,8 @@ struct Map_0087F7E8
     void FUN_005683C0(CellStruct* cell, ObjectClass* object);
     // FUNCTION: GAMEMD 0x5678E0 (decl; reloc) -- reveal the map around a coordinate (five one-byte flags).
     void FUN_005678E0(const CoordStruct* where, int sight, HouseClass* house, char a, char b, char c, char d, char e);
+    // The same entry point 0x5678E0, taking the coordinate by reference and the flags as ints.
+    void FUN_005678E0(const CoordStruct& where, int sight, HouseClass* house, int a, int b, int c, int d, int e);
     // FUNCTION: GAMEMD 0x4AA290 (decl; reloc) -- the building on a cell, with the screen point of the hit.
     BuildingClass* FUN_004AA290(CellStruct* cell, Point2D* out);
     // FUNCTION: GAMEMD 0x656580 (decl; reloc) -- the foundation point list of a building type (one stack argument).

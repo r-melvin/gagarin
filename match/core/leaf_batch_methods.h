@@ -82,30 +82,6 @@ GG_STATIC_ASSERT(offsetof(VQASession_00759E50, Height) == 1308);
 GG_STATIC_ASSERT(offsetof(VQASession_00759E50, Flags) == 1360);
 
 // ============================================================================
-// TechnoClass subset
-// ============================================================================
-struct TechnoClass_00707000
-{
-    char _pad0[256];
-    char _pad100[36];        // 256+36 = 292
-    int CurrentTurret;       // +0x0124 (292)
-    char _pad128[24];        // 296 + 24 = 320
-    int CaptureTarget;       // +0x0140 (320)
-    int Ammo;                // +0x0144 (324)
-
-    // FUNCTION: GAMEMD 0x0070DCF0
-    int GetCurrentTurret() const;
-    // FUNCTION: GAMEMD 0x0070DDC0
-    int GetCaptureTarget() const;
-    // FUNCTION: GAMEMD 0x0070DDF0
-    int GetAmmo() const;
-};
-
-GG_STATIC_ASSERT(offsetof(TechnoClass_00707000, CurrentTurret) == 292);
-GG_STATIC_ASSERT(offsetof(TechnoClass_00707000, CaptureTarget) == 320);
-GG_STATIC_ASSERT(offsetof(TechnoClass_00707000, Ammo) == 324);
-
-// ============================================================================
 // SelectableClass subset - entry at 0x006DC420
 // ============================================================================
 struct SelectableClass_006D0000

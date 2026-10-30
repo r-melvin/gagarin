@@ -49,16 +49,7 @@ class HouseClass;
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0x0C);
 
-// ---------------------------------------------------------------------------
-// CaptureManagerClass — only its GetOriginalOwner lookup is referenced (the
-// mind-controller's capture manager resolves the original house). Declared-only
-// so cl emits a reloc-normalised CALL.
-// ---------------------------------------------------------------------------
-class CaptureManagerClass
-{
-public:
-    HouseClass* GetOriginalOwner(TechnoClass* unit);   // GAMEMD 0x4722F0 (referenced; matched elsewhere)
-};
+#include "../_layout/capture_manager_class.h"
 
 // ---------------------------------------------------------------------------
 // TechnoClass — minimal offset-pinned model for the three matched helpers.

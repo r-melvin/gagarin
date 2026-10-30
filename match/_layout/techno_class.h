@@ -320,7 +320,7 @@ public:
     virtual void vf_190(int a1);                                   // 190 0x459DC0
     virtual CellStruct vf_191(AbstractClass* target, int a2);         // 191 0x70AD50: forwards its first argument to slot 42
     virtual CoordStruct vf_192(int a1);                            // 192 0x6F3D60 (hidden result pointer + one argument, RET 8)
-    virtual int vf_193(int a1, int* a2);                          // 193 0x708C10
+    virtual int vf_193(int a1, CellStruct* a2);                          // 193 0x708C10
     virtual DirStruct vf_194();                                       // 194 0x708D70
     virtual int vf_195();                                          // 195 0x707D20
     virtual bool vf_196();                                          // 196 0x700D10

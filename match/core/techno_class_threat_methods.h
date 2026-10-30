@@ -21,7 +21,7 @@
 
 class TechnoView_0070F6E0;
 class HouseClass;
-struct TechnoVtbl;
+struct TechnoVtbl_0070F6E0;
 
 // Retail helper @0x481870 — the per-house threat-map mutator invoked through the
 // cell. It is a direct CALL with the cell in ECX and no stack cleanup after it,
@@ -43,7 +43,7 @@ public:
     // FUNCTION: GAMEMD 0x70F6E0  (__thiscall)
     void UpdateThreatInCell(CellClass* Cell);
 
-    TechnoVtbl*  Vfptr;                   // +0x000
+    TechnoVtbl_0070F6E0*  Vfptr;                   // +0x000
     char         _pad_004[0x508 - 0x004]; // +0x004 .. +0x507
     int          ThreatPosed;             // +0x508
 };
@@ -53,20 +53,20 @@ GG_STATIC_ASSERT(offsetof(TechnoView_0070F6E0, ThreatPosed) == 0x508);
 
 // The class has to be complete before these typedefs, or VC6 falls back to the
 // multiple-inheritance member-pointer form and emits a `this` adjustment.
-typedef HouseClass* (TechnoView_0070F6E0::*GetOwningHouseFn)();
-typedef int         (TechnoView_0070F6E0::*CalculateThreatFn)();
+typedef HouseClass* (TechnoView_0070F6E0::*GetOwningHouseFn_0070F6E0)();
+typedef int         (TechnoView_0070F6E0::*CalculateThreatFn_0070F6E0)();
 
 // Primary vtable slots reached from this TU.
 //   +0x038  GetOwningHouse()   no arguments, the owning house
 //   +0x2C0  CalculateThreat()  no arguments, the recomputed threat value
-struct TechnoVtbl
+struct TechnoVtbl_0070F6E0
 {
     char              _pad_000[0x038];          // 0x000
-    GetOwningHouseFn  At_38;                    // 0x038
+    GetOwningHouseFn_0070F6E0  At_38;                    // 0x038
     char              _pad_03C[0x2C0 - 0x03C];  // 0x03C
-    CalculateThreatFn At_2C0;                   // 0x2C0
+    CalculateThreatFn_0070F6E0 At_2C0;                   // 0x2C0
 };
-GG_STATIC_ASSERT(offsetof(TechnoVtbl, At_38)  == 0x038);
-GG_STATIC_ASSERT(offsetof(TechnoVtbl, At_2C0) == 0x2C0);
+GG_STATIC_ASSERT(offsetof(TechnoVtbl_0070F6E0, At_38)  == 0x038);
+GG_STATIC_ASSERT(offsetof(TechnoVtbl_0070F6E0, At_2C0) == 0x2C0);
 
 #endif  // GG_MATCH_CORE_TECHNO_CLASS_THREAT_METHODS_H
