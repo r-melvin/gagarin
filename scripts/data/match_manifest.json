@@ -5013,11 +5013,11 @@
  {
   "tu": "match/ui/radar_button_statics.cpp",
   "addr": "0x658780",
-  "sym": "??_GRadarTacticalGadget_00B04A10@@UAEPAXI@Z",
+  "sym": "??_GRTacticalClass@RadarClass@@UAEPAXI@Z",
   "len": "0x1e",
   "name": "FUN_00658780",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/w2_light_rad_dtors_r13.cpp",
@@ -128721,56 +128721,56 @@
  {
   "tu": "match/ui/radar_button_statics.cpp",
   "addr": "0x6528D0",
-  "sym": "_$E13",
+  "sym": "_$E15",
   "len": "0x16",
-  "name": "ShapeButtonClass static member dynamic initializer (RadarButtonF2_00B04978)",
+  "name": "_$E15",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/radar_button_statics.cpp",
   "addr": "0x6528F0",
-  "sym": "_$E11",
+  "sym": "_$E13",
   "len": "0x1f",
-  "name": "ShapeButtonClass static member guarded exit stub (RadarButtonF2_00B04978)",
+  "name": "_$E13",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/radar_button_statics.cpp",
   "addr": "0x652920",
-  "sym": "_$E18",
+  "sym": "_$E20",
   "len": "0x16",
-  "name": "ShapeButtonClass static member dynamic initializer (RadarButtonF3_00B04910)",
+  "name": "_$E20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/radar_button_statics.cpp",
   "addr": "0x652940",
-  "sym": "_$E16",
+  "sym": "_$E18",
   "len": "0x1f",
-  "name": "ShapeButtonClass static member guarded exit stub (RadarButtonF3_00B04910)",
+  "name": "_$E18",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/radar_button_statics.cpp",
   "addr": "0x652870",
-  "sym": "_$E8",
+  "sym": "_$E10",
   "len": "0x2f",
-  "name": "RadarClass::RTacticalClass static dynamic initializer (Gadget_00B04A10)",
+  "name": "_$E10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/radar_button_statics.cpp",
   "addr": "0x6528A0",
-  "sym": "_$E5",
+  "sym": "_$E7",
   "len": "0x1f",
-  "name": "RadarClass::RTacticalClass static guarded exit stub (Gadget_00B04A10)",
+  "name": "_$E7",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/timer_statics.cpp",

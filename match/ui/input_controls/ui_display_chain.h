@@ -626,6 +626,9 @@ GG_STATIC_ASSERT(sizeof(DisplayClass) == 0x11E4);
 class RadarClass : public DisplayClass
 {
 public:
+    // RTTI .?AVRTacticalClass@RadarClass@@ (type 0x839298, vtable 0x7F02BC): the radar's static tactical gadget,
+    // defined in match/ui/radar_button_statics.cpp.
+    class RTacticalClass;
     // FUNCTION: GAMEMD 0x652960 (decl; reloc) -- ordinary constructor.
     RadarClass();
     // FUNCTION: GAMEMD 0x6A4F20 (decl; partial) -- tagged load constructor, RET 4.
