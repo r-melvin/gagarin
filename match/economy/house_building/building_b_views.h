@@ -28,6 +28,7 @@
 #include "building_b_shared.h"
 #include "../../_layout/house_class.h"
 #include "../../_layout/color_struct.h"
+#include "../../_layout/player_ptr_00a83d4c.h"
 
 class BuildingBView;
 class BuildingBTypeView;
@@ -51,7 +52,6 @@ class BuildingBTacticalView;
 class BuildingBAudioView;
 class BuildingBOccupantView;
 class BuildingBOccupantTypeView;
-class BuildingBRulesView;
 
 // GLOBAL: GAMEMD 0xA8ED84 (the frame counter CDTimerClass compares against)
 extern int BuildingBFrame;
@@ -1106,19 +1106,6 @@ GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, Veterancy) == 0x150);
 GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, unknown_5A4) == 0x5A4);
 GG_STATIC_ASSERT(offsetof(BuildingBOccupantView, Type) == 0x6C0);
 
-// Partial view of the rules object at global 0x8871E0.
-class BuildingBRulesView
-{
-public:
-    char unknown_00[0x14F8];   // +0x0
-    int unknown_14F8;   // +0x14F8
-    int unknown_14FC;   // +0x14FC
-    int unknown_1500;   // +0x1500
-};
-GG_STATIC_ASSERT(offsetof(BuildingBRulesView, unknown_14F8) == 0x14F8);
-GG_STATIC_ASSERT(offsetof(BuildingBRulesView, unknown_14FC) == 0x14FC);
-GG_STATIC_ASSERT(offsetof(BuildingBRulesView, unknown_1500) == 0x1500);
-
 // Partial view of BuildingClass (derives TechnoClass at 0; sizeof 0x720).
 class BuildingBView
 {
@@ -1735,14 +1722,8 @@ extern int BuildingBBuildingCount;
 extern HBCell BuildingBEmptyCell;
 // GLOBAL: GAMEMD 0x89C848 (retail data, bound by address)
 extern HBCoord BuildingBEmptyCoord;
-// GLOBAL: GAMEMD 0x8871E0
-extern BuildingBRulesView* BuildingBRules;
 // GLOBAL: GAMEMD 0xB73550
 extern int BuildingBGlobal_00B73550;
-// GLOBAL: GAMEMD 0xA83D4C (the local player's house)
-extern HouseClass* BuildingBPlayer;
-// GLOBAL: GAMEMD 0xA8B320
-extern bool BuildingBGlobal_00A8B320;
 // GLOBAL: GAMEMD 0x87F7E8 (the map object; its address is passed in ECX)
 extern BuildingBMapView BuildingBMap;
 // GLOBAL: GAMEMD 0x887324 (pointer to the tactical object)

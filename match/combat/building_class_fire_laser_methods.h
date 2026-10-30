@@ -25,6 +25,7 @@ void* __cdecl operator new(unsigned int size);
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
 #include "../core/frame_counter.h"
+#include "../_layout/rules_class.h"
 
 struct Coord_0044ABD0
 {
@@ -45,17 +46,6 @@ struct Color_0044ABD0
 };
 GG_STATIC_ASSERT(sizeof(Color_0044ABD0) == 3);
 
-// RulesClass — the two prism-support words.
-struct Rules_0044ABD0
-{
-    char _pad000[0x4A4];      // +0x0000
-    int  At_4A4;              // +0x04A4  timer length
-    int  At_4A8;              // +0x04A8  laser duration
-};
-GG_STATIC_ASSERT(offsetof(Rules_0044ABD0, At_4A4) == 0x4A4);
-GG_STATIC_ASSERT(offsetof(Rules_0044ABD0, At_4A8) == 0x4A8);
-// GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
-extern Rules_0044ABD0* DAT_008871E0;
 
 // BuildingTypeClass — only the laser colour at +0x56FC.
 struct BuildingType_0044ABD0

@@ -132,7 +132,7 @@ class BA4Tracker
 {
 public:
     // FUNCTION: GAMEMD 0x62DC50 (read-only here)
-    BA4Tracker(ParticleSystemTypeClass* type, CoordStruct* where, CellClass* cell, int a, int* table, int b);
+    BA4Tracker(ParticleSystemTypeClass* type, CoordStruct* where, CellClass* cell, int a, const CoordStruct* table, int b);
     static void* operator new(unsigned int size);
 };
 
@@ -206,10 +206,10 @@ extern OverlayTypeClass** DAT_00A83D84;
 
 extern unsigned char DAT_00880CF4;
 extern int DAT_00A8E7AC;
-extern unsigned char DAT_00A8E9A0;
+extern char DAT_00A8E9A0;
 extern BA4Placed** DAT_00A8EC1C;
 #include "../../core/scenario_class_methods.h"
-extern int DAT_0089C848;
+extern CoordStruct DAT_0089C848;
 // LIBRARY: GAMEMD 0x7C8D20 (LIBRARY: _stricmp) / 0x7C91D0 (LIBRARY: strncpy)
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" char* __cdecl strncpy(char* dest, const char* src, unsigned int count);
@@ -238,7 +238,7 @@ extern unsigned char DAT_00818CB4;
 extern RectangleStruct DAT_00886FA0;
 extern const double DAT_007E4408;
 // FUNCTION: GAMEMD 0x4BBC90 (read-only here) - the pixel-format code of the display.
-int __cdecl FUN_004BBC90();
+int FUN_004BBC90();
 // FUNCTION: GAMEMD 0x6D20E0 (read-only here)
 int FUN_006D20E0(int key);
 

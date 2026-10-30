@@ -15497,6 +15497,7 @@
  "match/economy/house_building/building_b_part4.cpp::_?white@?7??vf_76@BuildingBView@@UAEXUBuildingBColor@@@Z@4VBuildingBWhite@@A": "0x0089C800",
  "match/economy/house_building/building_b_part4.cpp::_?white@?7??vf_76@BuildingBView@@UAEXUColorStruct@@@Z@4VBuildingBWhite@@A": "0x0089C800",
  "match/economy/tu020_aircraft_type_class.cpp::_DAT_007E2828": "0x007E2828",
+ "match/economy/tu038_building_class.cpp::_$E15": "0x00456970",
  "match/economy/tu038_building_class.cpp::_VoxelBarrelStep_00458810": "0x007E4408",
  "match/economy/tu039_building_type_class.cpp::_$E58": "0x0045EC80",
  "match/economy/tu039_building_type_class.cpp::_$E8": "0x0045EC80",

@@ -551,10 +551,12 @@ extern const char EvaBuildingOnLine_00452260[] = "EVA_BuildingOnLine";
 extern const char EvaBuildingOffLine[] = "EVA_BuildingOffLine";
 // GLOBAL: GAMEMD 0x81926C
 extern const char EvaStructureAbandoned_00458200[] = "EVA_StructureAbandoned";
-// GLOBAL: GAMEMD 0xA8B320
-bool BuildingBGlobal_00A8B320;
 // GLOBAL: GAMEMD 0xA80228
 HouseVector_00458200 HouseArray_00458200;
+// GLOBAL: GAMEMD 0x89C848
+CoordStruct DAT_0089C848;
+// GLOBAL: GAMEMD 0xB73550
+int BuildingBGlobal_00B73550;
 // END defined globals
 
 #include "../_layout/building_class.h"
@@ -1646,6 +1648,239 @@ void BuildingClass::vf_70(Point2D* point, RectangleStruct* clip)
     }
 }
 
+#include "house_building/building_a4_views.h"
+
+// The colour of one house-colour table entry in the display's pixel format: the format code selects which of
+// three packings are added (the format 2 packing is added on top of the format 1 one, which sits on top of
+// the base one).
+inline unsigned BA4PackColor(unsigned char r, unsigned char g, unsigned char b)
+{
+    unsigned value = 0;
+    switch (FUN_004BBC90()) {
+    case 2:
+        value |= (((((unsigned short)r) << 6) | (unsigned short)g) << 5) | (unsigned short)b;
+    case 1:
+        value |= (((((unsigned short)(g >> 1)) | (((unsigned short)r) << 5)) << 6) | (unsigned short)b);
+    }
+    value |= (((((unsigned short)(g >> 1)) | (((unsigned short)r) << 5)) << 5) | (unsigned short)b);
+    return value;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x43DA80
+void BuildingClass::vf_313(Point2D* pos, RectangleStruct* clip)
+{
+    CellStruct here = vf_110();
+    int i;
+
+    if (vf_97() == 0x10) {
+        if (UnloadTimer.FUN_004A5110() || UnloadTimer.FUN_004A51B0() || UnloadTimer.FUN_004A51D0() || UnloadTimer.FUN_004A5130()) {
+            if (IsTether) {
+                for (i = 0; i < RadioLinks.Capacity; i++) {
+                    ObjectClass* object = FUN_0065AD40(i);
+                    if (object && !object->InLimbo && object->vf_11() != 6) {
+                        CoordStruct a = object->vf_19(0);
+                        a.Z = object->Location.Z;
+                        if (DAT_00B73550 && !DAT_00A8ED6B && (DAT_00A8B230->unknown_0000 & 0x1000)) {
+                            CoordStruct q = object->Location;
+                            if (DAT_0087F7E8.IsLocationFogged(&q)) {
+                                continue;
+                            }
+                            if (DAT_0087F7E8.IsLocationFogged(&a)) {
+                                continue;
+                            }
+                        }
+                        Point2D screen = DAT_00887324->FUN_006D2140(object->vf_43());
+                        object->vf_69(&screen, clip);
+                    }
+                }
+            }
+        }
+    }
+
+    unsigned color = 0;
+    if (Airstrike) {
+        RulesColor_004B9BD0* c = &RulesInstance->ColorAdd[RulesInstance->LaserTargetColor];
+        color |= BA4PackColor(c->R, c->G, c->B);
+    }
+    if (vf_88() && ForceShielded == 1) {
+        RulesColor_004B9BD0* c = &RulesInstance->ColorAdd[RulesInstance->ForceShieldColor];
+        color |= BA4PackColor(c->R, c->G, c->B);
+    }
+
+    CoordStruct loc = vf_18();
+    CellStruct cell = BA4Off(loc.X / 256, loc.Y / 256);
+    if (BA4At(cell)->FUN_00487950()) {
+        color = 0;
+    }
+
+    if (vf_97() == 0x10 && Type->DoorAnim) {
+        if (UnloadTimer.FUN_004A51D0() || UnloadTimer.FUN_004A5110() || UnloadTimer.FUN_004A5130() || UnloadTimer.FUN_004A51B0()) {
+            int frame = (int)(UnloadTimer.FUN_004A52F0() * Type->DoorStages);
+            if (UnloadTimer.FUN_004A5130()) {
+                frame = Type->DoorStages - frame;
+            }
+            if (UnloadTimer.FUN_004A51D0()) {
+                frame = 0;
+            }
+            if (frame >= Type->DoorStages) {
+                frame = Type->DoorStages - 1;
+            }
+            if (frame < 0) {
+                frame = 0;
+            }
+            if (FUN_005F5C60() <= RulesInstance->ConditionYellow && Type->bools_1700[0]) {
+                frame += Type->DoorStages;
+            }
+            int sortKey = -5 - FUN_006D20E0(FUN_005F5F30());
+            FUN_00705E00(Type->DoorAnim, frame, pos, clip, 0, 0x100, sortKey, 0, 0,
+                         BA4At(cell)->Intensity_Normal, 0, 0, 0, 0, 0, 0);
+            if (UnloadTimer.FUN_004A5130() && frame == 0) {
+                NeedsRedraw = 1;
+            }
+        }
+    }
+
+    if (Type->bools_16A4[33]) {
+        bool inSale = false;
+        if (CurrentMission == 0x12 || QueuedMission == 0x12) {
+            if (StageClass::Value < Type->BuildingAnimFrame[0].Count + Type->BuildingAnimFrame[0].Frame - 1) {
+                inSale = true;
+            }
+        }
+        if (((CurrentMission != 0x13 || StageClass::Value < 1) && !inSale) || Type->bools_16A4[38]) {
+            int tint;
+            int shadowTint;
+            if (DAT_00887418) {
+                tint = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                shadowTint = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+            } else {
+                tint = -1;
+                shadowTint = -1;
+            }
+            int phaseA = 0;
+            int phaseB = 0;
+            if (Type->TurretVoxel.HVAData) {
+                phaseA = TurretAnimFrame % Type->TurretVoxel.HVAData->unknown_08;
+            }
+            if (Type->BarrelVoxel.HVAData) {
+                phaseB = TurretAnimFrame % Type->BarrelVoxel.HVAData->unknown_08;
+            }
+            tint |= (phaseA & 0xFF) << 16;
+            shadowTint |= (phaseB & 0xFF) << 16;
+
+            BA4Matrix matrix;
+            if (Type->TurretVoxel.unknown_00) {
+                int dirA = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                matrix.RotateZ((float)(dirA - 8) * (-0.19634954084936207));
+                matrix.TranslateX((float)(Type->TurretOffset / 8));
+                float vx = matrix.Row[0][3];
+                float vy = matrix.Row[1][3];
+                float vz = matrix.Row[2][3];
+                Vector3D negative(-vx, -vy, -vz);
+                Vector3D positive(vx, vy, vz);
+                BA4Matrix second = matrix;
+                second.Translate(negative);
+                if (TurretRecoil.State) {
+                    matrix.TranslateX(-TurretRecoil.TravelSoFar);
+                    tint = -1;
+                }
+                if (BarrelRecoil.State) {
+                    second.TranslateX(-BarrelRecoil.TravelSoFar);
+                    tint = -1;
+                }
+                int dirB = ((BarrelFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                second.RotateY(-((float)(dirB - 8) * (-0.19634954084936207)));
+                second.Translate(positive);
+                Point2D at;
+                at.X = pos->X + Type->BuildingAnim[9].X;
+                at.Y = pos->Y + Type->BuildingAnim[9].Y;
+                bool tail = false;
+                if (((PrimaryFacing.FUN_004C93D0().Whole >> 13) + 1 >> 1 & 3) > 0
+                    && ((PrimaryFacing.FUN_004C93D0().Whole >> 13) + 1 >> 1 & 3) < 3) {
+                    tail = true;
+                } else if (Type->BarrelVoxel.unknown_00 && Type->BarrelVoxel.HVAData) {
+                    BA4MatrixTemp product;
+                    BA4MatrixTemp defaults;
+                    vf_273(&Type->BarrelVoxel, 0, tint, &Type->VoxelTurretBarrelCache, clip, &at,
+                           FUN_005AF980(&product, defaults.FUN_00754BE0(), &second),
+                           BA4At(cell)->Intensity_Normal, color, 0);
+                }
+                {
+                    BA4MatrixTemp product;
+                    BA4MatrixTemp defaults;
+                    vf_273(&Type->TurretVoxel, 0, tint, &Type->VoxelShadowCache, clip, &at,
+                           FUN_005AF980(&product, defaults.FUN_00754BE0(), &matrix),
+                           BA4At(cell)->Intensity_Normal, color, 0);
+                }
+                if (tail && Type->BarrelVoxel.unknown_00 && Type->BarrelVoxel.HVAData) {
+                    BA4MatrixTemp product;
+                    BA4MatrixTemp defaults;
+                    vf_273(&Type->BarrelVoxel, 0, tint, &Type->VoxelTurretBarrelCache, clip, &at,
+                           FUN_005AF980(&product, defaults.FUN_00754BE0(), &second),
+                           BA4At(cell)->Intensity_Normal, color, 0);
+                }
+            } else if (Type->BarrelVoxel.unknown_00 && Type->BarrelVoxel.HVAData) {
+                float vx = matrix.Row[0][3];
+                float vy = matrix.Row[1][3];
+                float vz = matrix.Row[2][3];
+                Vector3D negative(-vx, -vy, -vz);
+                Vector3D positive(vx, vy, vz);
+                matrix.Translate(negative);
+                int dirA = ((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                matrix.RotateZ((float)(dirA - 8) * (-0.19634954084936207));
+                int dirB = ((BarrelFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F;
+                matrix.RotateY(-((float)(dirB - 8) * (-0.19634954084936207)));
+                matrix.Translate(positive);
+                Point2D at;
+                at.X = pos->X + Type->BuildingAnim[9].X;
+                at.Y = pos->Y + Type->BuildingAnim[9].Y;
+                BA4MatrixTemp product;
+                BA4MatrixTemp defaults;
+                vf_273(&Type->BarrelVoxel, 0, shadowTint, &Type->VoxelTurretBarrelCache, clip, &at,
+                       FUN_005AF980(&product, defaults.FUN_00754BE0(), &matrix),
+                       BA4At(cell)->Intensity_Normal, color, 0);
+            }
+        }
+    } else if (Type->bools_16A4[34]) {
+        bool inSale = false;
+        if (CurrentMission == 0x12 || QueuedMission == 0x12) {
+            if (StageClass::Value < Type->BuildingAnimFrame[0].Count + Type->BuildingAnimFrame[0].Frame - 1) {
+                inSale = true;
+            }
+        }
+        if (!(CurrentMission == 0x13 && StageClass::Value > 0) && !inSale) {
+            BA4MatrixTemp scratchMatrix;
+            BA4MatrixTemp matrix = *FUN_00458810(&scratchMatrix);
+            int angle = ((((PrimaryFacing.FUN_004C93D0().Whole >> 10) + 1 >> 1) & 0x1F) + DAT_00818CB0) % 32;
+            bool visible = angle <= 0x10;
+            AnimClass* child = Anims[9];
+            if (visible && child) {
+                if (DAT_00818CB4) {
+                    child->Invisible = 0;
+                }
+                child->vf_65(&DAT_00886FA0, 1, 0);
+                child->Invisible = 1;
+            }
+            Point2D at;
+            at.X = pos->X + Type->BuildingAnim[9].X;
+            at.Y = pos->Y + Type->BuildingAnim[9].Y;
+            BA4MatrixTemp product;
+            BA4MatrixTemp defaults;
+            vf_273(&Type->BarrelVoxel, 0, -1, &Type->VoxelMainCache, clip, &at,
+                   FUN_005AF980(&product, defaults.FUN_00754BE0(), &matrix),
+                   BA4At(cell)->Intensity_Normal, color, 0);
+            if (!visible && child) {
+                if (DAT_00818CB4) {
+                    child->Invisible = 0;
+                }
+                child->vf_65(&DAT_00886FA0, 1, 0);
+                child->Invisible = 1;
+            }
+        }
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43E900
@@ -1719,6 +1954,195 @@ int BuildingClass::FUN_0043EE50()
         }
     }
     return frame;
+}
+
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x43F180
+bool BuildingClass::vf_73(int mark)
+{
+    CellStruct cell;
+    int zero = 0;
+    int x;
+    int y;
+
+    if (!TechnoClass::vf_73(mark)) {
+        goto refuse;
+    }
+
+    cell = vf_110();
+
+    switch (mark) {
+    case 0:
+        DAT_0087F7E8.FUN_005687F0(&cell, this);
+        return true;
+
+    case 1:
+    case 3:
+        if (Type->ToTile) {
+            if (vf_107(BA4At(cell), -1, -1, 0, 1) == 0) {
+                int width = Type->GetFoundationWidth();
+                int height = Type->GetFoundationHeight(false);
+                bool placed = zero;
+
+                for (y = 0; y < height; y++) {
+                    for (x = 0; x < width; x++) {
+                        CellStruct c = cell + BA4Off(x, y);
+                        if (BA4At(c)->FUN_0047C620(Type->SpeedType, Type, Owner)
+                            && BA4At(c)->IsoTileTypeIndex != Type->ToTile->unknown_294
+                            && BA4At(c)->LandType != 1) {
+                            CellClass* mc = BA4At(c);
+                            if (mc->SmudgeTypeIndex != -1) {
+                                BA4Placed* placedType = DAT_00A8EC1C[mc->SmudgeTypeIndex];
+                                CellStruct base = mc->MapCoords;
+                                int index = mc->SmudgeData;
+                                base.X -= (short)(index % placedType->unknown_298);
+                                base.Y -= (short)(index / placedType->unknown_298);
+                                for (int j = 0; j < placedType->unknown_29C; j++) {
+                                    for (int i = 0; i < placedType->unknown_298; i++) {
+                                        BA4At(base + BA4Off(i, j))->SmudgeTypeIndex = -1;
+                                        BA4At(base + BA4Off(i, j))->FUN_004852D0();
+                                    }
+                                }
+                            }
+                            ObjectClass* created = (Type->ToTile->*(Type->ToTile->Vfptr->At_8C))(Owner);
+                            CoordStruct where;
+                            where.X = c.X * 256 + 128;
+                            where.Y = c.Y * 256 + 128;
+                            where.Z = zero;
+                            created->vf_54(where, 0);
+                            if (Owner == DAT_00A83D4C) {
+                                CoordStruct reveal;
+                                reveal.X = c.X * 256 + 128;
+                                reveal.Y = c.Y * 256 + 128;
+                                reveal.Z = zero;
+                                DAT_0087F7E8.FUN_005678E0(&reveal, 1, DAT_00A83D4C, zero, zero, zero, 1, zero);
+                                CoordStruct reveal2;
+                                reveal2.X = c.X * 256 + 128;
+                                reveal2.Y = c.Y * 256 + 128;
+                                reveal2.Z = zero;
+                                DAT_0087F7E8.FUN_005678E0(&reveal2, 1, DAT_00A83D4C, zero, zero, zero, 1, 1);
+                            }
+                            placed = true;
+                        }
+                    }
+                }
+                for (y = 0; y < height + 2; y++) {
+                    for (x = 0; x < width + 2; x++) {
+                        BA4At(cell + BA4Off(x - 1, y - 1))->FUN_00486E70();
+                    }
+                }
+                if (placed) {
+                    vf_160(3);
+                    vf_62();
+                    return true;
+                }
+            }
+            TechnoClass::vf_73(0);
+            goto refuse;
+        }
+        if (Type->bools_1570[1]) {
+            BA4Spawned* spawned = new BA4Spawned(Type->ToOverlay, &cell, Owner->Type->ArrayIndex2);
+            vf_160(3);
+            vf_62();
+            return true;
+        }
+        if (mark != 3) {
+            if (vf_107(BA4At(cell), -1, -1, 0, 1) != 0) {
+                goto refuse;
+            }
+        }
+        DAT_0087F7E8.FUN_005683C0(&cell, this);
+        {
+            CoordStruct where;
+            where.X = cell.X * 256 + 128;
+            where.Y = cell.Y * 256 + 128;
+            where.Z = zero;
+            vf_109(Type->vf_27(where));
+        }
+        {
+            CoordStruct center = vf_43();
+            for (int k = 0; k < 21; k++) {
+                if (Anims[k]) {
+                    CoordStruct scratchOffset;
+                    CoordStruct* offset = DAT_00887324->FUN_006D2360(&scratchOffset, &Type->BuildingAnim[k].X);
+                    CoordStruct sumScratch;
+                    CoordStruct sum = *sumScratch.FUN_0041C230(center.X + offset->X, offset->Y + center.Y, offset->Z + center.Z);
+                    Anims[k]->vf_109(sum);
+                }
+            }
+        }
+        {
+            int width = Type->GetFoundationWidth();
+            int height = Type->GetFoundationHeight(false);
+            for (y = 0; y < height; y++) {
+                for (x = 0; x < width; x++) {
+                    CellClass* mc = BA4At(cell + BA4Off(x, y));
+                    if (mc->SmudgeTypeIndex != -1) {
+                        BA4Placed* placedType = DAT_00A8EC1C[mc->SmudgeTypeIndex];
+                        CellStruct base = mc->MapCoords;
+                        int index = mc->SmudgeData;
+                        base.X -= (short)(index % placedType->unknown_298);
+                        base.Y -= (short)(index / placedType->unknown_298);
+                        for (int j = 0; j < placedType->unknown_29C; j++) {
+                            for (int i = 0; i < placedType->unknown_298; i++) {
+                                BA4At(base + BA4Off(i, j))->SmudgeTypeIndex = -1;
+                                BA4At(base + BA4Off(i, j))->FUN_004852D0();
+                            }
+                        }
+                    }
+                }
+            }
+            for (y = 0; y < height + 2; y++) {
+                for (x = 0; x < width + 2; x++) {
+                    BA4At(cell + BA4Off(x - 1, y - 1))->FUN_00486E70();
+                }
+            }
+        }
+        return true;
+
+    case 2:
+        {
+            void* value = vf_121();
+            int angle = vf_281(vf_111()->Intensity_Normal);
+            BuildingClass* techno = BA4As<BuildingClass>(this, 6);
+            if (vf_88() || (Airstrike && Airstrike->Target == techno)) {
+                angle = FUN_0070E360(angle);
+            }
+            LightTint = (short)angle;
+            for (int k = 0; k < 21; k++) {
+                AnimClass* anim = Anims[k];
+                if (anim) {
+                    if (anim->Type && anim->Type->ShouldUseCellDrawer) {
+                        anim->LightConvert = value;
+                        anim->TintColor = angle & 0xFFFF;
+                    }
+                    char facing = Translucency;
+                    if (facing == 0xF && vf_26(0, 0) == 5) {
+                        facing = 0x10;
+                    }
+                    for (int m = 0; m < 21; m++) {
+                        if (Anims[m]) {
+                            Anims[m]->TranslucencyLevel = facing;
+                        }
+                    }
+                }
+            }
+            char facing = Translucency;
+            if (facing == 0xF && vf_26(0, 0) == 5) {
+                facing = 0x10;
+            }
+            for (int m = 0; m < 21; m++) {
+                if (Anims[m]) {
+                    Anims[m]->TranslucencyLevel = facing;
+                }
+            }
+        }
+        break;
+    }
+    return true;
+refuse:
+    return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1963,6 +2387,287 @@ void BuildingClass::vf_23()
     vf_242(0);
 }
 
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x440580
+bool BuildingClass::vf_54(const CoordStruct& where, int dir)
+{
+    int i;
+    int x;
+    int y;
+    bool ok = vf_107(DAT_0087F7E8.FUN_00565730(where), -1, -1, 0, 1) == 0;
+
+    if (ok) {
+        if (Type == RulesInstance->WallTower) {
+            CellClass* mc = DAT_0087F7E8.FUN_00565730(where);
+            HouseClass* cellOwner = 0;
+            if (mc->WallOwnerIndex >= 0) {
+                cellOwner = HouseClass_Array.Items[mc->WallOwnerIndex];
+            }
+            if (cellOwner == Owner && (mc->OverlayTypeIndex == 2 || mc->OverlayTypeIndex == 0)) {
+                Owner->FUN_004FCE80(&mc->MapCoords, 1);
+            }
+        } else if (Type->ToOverlay) {
+            CellClass* mc = DAT_0087F7E8.FUN_00565730(where);
+            HouseClass* cellOwner = 0;
+            if (mc->WallOwnerIndex >= 0) {
+                cellOwner = HouseClass_Array.Items[mc->WallOwnerIndex];
+            }
+            if (cellOwner == Owner && mc->OverlayTypeIndex == Type->ToOverlay->ArrayIndex) {
+                Owner->FUN_004FCE80(&mc->MapCoords, 1);
+            }
+        } else if (Type->bools_16A4[19]) {
+            CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
+            for (CellStruct* p = Type->vf_36(1); !(p->X == 0x7FFF && p->Y == 0x7FFF); p++) {
+                CellClass* mc = BA4At(*p + cell);
+                HouseClass* cellOwner = 0;
+                if (mc->WallOwnerIndex >= 0) {
+                    cellOwner = HouseClass_Array.Items[mc->WallOwnerIndex];
+                }
+                if (cellOwner == Owner && (mc->OverlayTypeIndex == 2 || mc->OverlayTypeIndex == 0 || mc->OverlayTypeIndex == 0x1A)) {
+                    Owner->FUN_004FCE80(&mc->MapCoords, 1);
+                }
+                BuildingClass* neighbour = mc->FUN_0047C520();
+                if (neighbour && neighbour->Type->bools_16A4[27]) {
+                    if (neighbour->vf_14() == vf_14()) {
+                        CellStruct copy = mc->MapCoords;
+                        copy.FUN_00453240();
+                    }
+                }
+            }
+        }
+    }
+
+    if (Type->bools_1570[1]) {
+        if (vf_107(DAT_0087F7E8.FUN_00565730(where), -1, -1, 0, 1) == 0) {
+            ObjectClass* created = Type->ToOverlay->vf_35(Owner);
+            if (created && created->vf_54(where, 0)) {
+                DAT_0087F7E8.FUN_00565730(where)->WallOwnerIndex = Owner->ArrayIndex;
+                vf_157(3);
+                DAT_0087F7E8.FUN_005678E0(&where, Type->Sight, Owner, 0, 0, 0, 1, 0);
+                DAT_0087F7E8.FUN_005678E0(&where, Type->Sight, Owner, 0, 0, 0, 1, 1);
+                vf_62();
+                return true;
+            }
+        }
+        goto refuse;
+    }
+
+    if (Type->PowersUpBuilding) {
+        Point2D unused;
+        unused.X = 0;
+        unused.Y = 0;
+        CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
+        BuildingClass* other = DAT_0087F7E8.FUN_004AA290(&cell, &unused);
+        if (!other || other->vf_11() != 6) {
+            goto refuse;
+        }
+        BuildingTypeClass* thisType = Type;
+        if (Owner != other->Owner) {
+            goto refuse;
+        }
+        if (_stricmp(thisType->PowersUpBuilding, other->Type->ID) != 0) {
+            goto refuse;
+        }
+        int levels = thisType->PowersUpToLevel;
+        if (levels == -1) {
+            if (!(other->UpgradeLevel < other->Type->Upgrades)) {
+                if (other->UpgradeLevel != 0) {
+                    goto refuse;
+                }
+            }
+        } else {
+            if (levels <= 0 || levels > 3) {
+                goto refuse;
+            }
+            if (other->UpgradeLevel != 0) {
+                goto refuse;
+            }
+        }
+        Owner->RecheckRadar = 1;
+        Owner->RecheckPower = 1;
+        int count = Type->PowersUpToLevel;
+        if (count == -1) {
+            count = 1;
+        }
+        char* name = &other->Type->BuildingAnim[other->UpgradeLevel].Anim[0];
+        if (_stricmp(name, Type->ImageFile) != 0) {
+            strncpy(name, Type->ImageFile, 16);
+        }
+        for (; count != 0; count--) {
+            other->FUN_00451400();
+        }
+        other->Upgrades[other->UpgradeLevel] = Type;
+        Owner->FUN_0050B1D0();
+        Owner->RecheckTechTree = 1;
+        if (Type->bools_1760[3]) {
+            Owner->AcquiredThreatNode();
+        }
+        vf_62();
+        return true;
+    }
+
+    if (Type->bools_16A4[27]) {
+        DirStruct facing;
+        facing.Whole = dir;
+        if ((((facing.Whole >> 12) + 1) & 6) == 4) {
+            LaserFenceFrame = 8;
+        } else {
+            LaserFenceFrame = 12;
+        }
+    }
+    if (ok && Type->bools_16A4[26]) {
+        LaserFenceFrame = 0;
+        CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
+        BuildingClass* other = BA4At(cell)->FUN_0047C520();
+        if (other && other->Type->bools_16A4[27]) {
+            if (other->vf_14() == vf_14()) {
+                other->vf_62();
+            }
+        }
+    }
+    if (!TechnoClass::vf_54(where, dir)) {
+        goto refuse;
+    }
+    if (Type->bools_16A4[35]) {
+        Owner->HasCloakingRanges = 1;
+    }
+    if (!IsAlive) {
+        return true;
+    }
+    if (Session_00A8B238.GameMode && !Owner->IsControlledByHuman() && !Owner->Type->MultiplayPassive) {
+        ShouldRebuild = 1;
+    }
+    if (DAT_00A8B230->unknown_0000 & 0x1000) {
+        CellStruct here = vf_110();
+        CellStruct* p;
+        for (p = Type->vf_36(0); !(p->X == 0x7FFF && p->Y == 0x7FFF); p++) {
+            if (BA4At(p->FUN_0042D510(here))->Flags & 0x400000) {
+                goto skip;
+            }
+        }
+        FUN_00457AA0(0, 0, 0);
+    }
+skip:
+    if ((!Type->UndeploysInto || !Type->ResourceGatherer) && !vf_32()) {
+        FUN_00455F10(0);
+    }
+    {
+        int width = Type->GetFoundationWidth();
+        int height = Type->GetFoundationHeight(false);
+        CellStruct cell = BA4Off(where.X / 256, where.Y / 256);
+        for (y = 0; y < height + 2; y++) {
+            for (x = 0; x < width + 2; x++) {
+                BA4At(cell + BA4Off(x - 1, y - 1))->BlockedNeighbours++;
+            }
+        }
+    }
+    Owner->FUN_004FD150();
+    Owner->FUN_004FFA50(this);
+    Owner->RecheckTechTree = 1;
+    unknown_544 = 0;
+    if ((!DiscoveredByCurrentPlayer && (DAT_0087F7E8.FUN_00565730(where)->AltFlags & 0x10)) || Session_00A8B238.GameMode) {
+        vf_102(DAT_00A83D4C);
+    } else if (Type->LightIntensity) {
+        if (!LightSource) {
+            LightSourceClass* light = new LightSourceClass(vf_18(), Type->LightVisibility, Type->LightIntensity, Type->LightRedTint, Type->LightGreenTint, Type->LightBlueTint);
+            LightSource = light;
+        }
+        LightSource->Activate(0);
+    }
+    if (Type->bools_16A4[26] && !DAT_00A8E7AC && IsAlive && !InLimbo) {
+        FUN_00452DC0(0);
+        FUN_00452DC0(2);
+        FUN_00452DC0(4);
+        FUN_00452DC0(6);
+        CreateEndPost(true);
+    }
+    if (!Owner->IsControlledByHuman()) {
+        vf_102(Owner);
+    }
+    if (IsOwnedByCurrentPlayer) {
+        DAT_00880CF4 = 1;
+        DAT_0087F7E8.FUN_004F42F0(0);
+    }
+    if (Type->NaturalParticleSystem && !NaturalParticleSystem) {
+        CoordStruct offset = Type->NaturalParticleSystemLocation;
+        CoordStruct loc = Location;
+        CoordStruct target;
+        target.X = Location.X + offset.X;
+        target.Y = Location.Y + offset.Y;
+        target.Z = Location.Z + offset.Z;
+        NaturalParticleSystem = new BA4Tracker(Type->NaturalParticleSystem, &target, DAT_0087F7E8.FUN_00565730(&loc), 0, &DAT_0089C848, 0);
+    }
+    if (Type == RulesInstance->WallTower) {
+        CellStruct base = DAT_0087F7E8.FUN_00565730(where)->MapCoords;
+        BA4At(base + BA4Off(1, 0))->FUN_00480630(0);
+        BA4At(base + BA4Off(-1, 0))->FUN_00480630(0);
+        BA4At(base + BA4Off(0, 1))->FUN_00480630(0);
+        BA4At(base + BA4Off(0, -1))->FUN_00480630(0);
+    }
+    if (Type == RulesInstance->GDIGateOne || Type == RulesInstance->NodGateOne) {
+        CellStruct base = DAT_0087F7E8.FUN_00565730(where)->MapCoords;
+        BA4At(base + BA4Off(-1, 0))->FUN_00480630(0);
+        BA4At(base + BA4Off(3, 0))->FUN_00480630(0);
+    }
+    if (Type == RulesInstance->GDIGateTwo || Type == RulesInstance->NodGateTwo) {
+        CellStruct base = DAT_0087F7E8.FUN_00565730(where)->MapCoords;
+        BA4At(base + BA4Off(0, -1))->FUN_00480630(0);
+        BA4At(base + BA4Off(0, 3))->FUN_00480630(0);
+    }
+    if (Type->bools_154B[0]) {
+        Spotlight = new BuildingLightClass(this);
+    }
+    IsPrimaryFactory = 0;
+    if (Type->Factory) {
+        FUN_00448070(0);
+    }
+    for (i = 0; i < RulesInstance->list_08AC.Count; i++) {
+        if (RulesInstance->list_08AC.Items[i] == Type) {
+            Owner->ConYards.AddItem(this);
+            break;
+        }
+    }
+    if (Type->bools_16A4[5]) {
+        Owner->UnitRepairStations.AddItem(this);
+    }
+    if (Type->bools_16A4[9]) {
+        Owner->Grinders.AddItem(this);
+    }
+    if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+        Owner->Absorbers.AddItem(this);
+    }
+    if (Type->bools_16A4[7]) {
+        Owner->Bunkers.AddItem(this);
+    }
+    if (Type->bools_1570[11] && Type->TechLevel > -1) {
+        Owner->Occupiables.AddItem(this);
+    }
+    if (Type->bools_16A4[8]) {
+        Owner->CloningVats.AddItem(this);
+    }
+    if (Type->bools_16A4[12]) {
+        Owner->SecretLabs.AddItem(this);
+    }
+    if (Type->PsychicDetectionRadius > 0) {
+        Owner->PsychicDetectionBuildings.AddItem(this);
+    }
+    if (Type->bools_16A4[41]) {
+        Owner->FactoryPlants.AddItem(this);
+        Owner->CalculateCostMultipliers();
+    }
+    Owner->Buildings.AddItem(this);
+    if (!Owner->IsControlledByHuman()) {
+        Owner->Base.FUN_0042F260(this);
+    }
+    if (Type->Factory) {
+        Owner->Update_FactoriesQueues(Type->Factory, Type->Naval, 0);
+    }
+    return true;
+refuse:
+    return false;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x442C40
@@ -2008,7 +2713,7 @@ bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
     } else if (mode == 6 || mode == 1) {
         bool blocked = false;
         if (!Type->bools_16A4[0x16B9 - 0x16A4]
-            || (Owner->IsControlledByHuman() && Session_00A8B238.GameMode && DAT_00A8B320 && MindControlledBy == 0)) {
+            || (Owner->IsControlledByHuman() && Session_00A8B238.GameMode && Session_00A8B238.unknown_18.MCVRedeploy && MindControlledBy == 0)) {
             if (Type->UndeploysInto != 0 || vf_161()) {
                 FUN_00443860(cell, 1);
             }
@@ -2016,15 +2721,8 @@ bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
             blocked = true;
         }
         if (Type->UndeploysInto != 0 && !blocked) {
-            BATargetRef targetBuf;
-            BAEvent ev;
-            BAEvent* queued = ev.FUN_004C65E0(vf_14(), 0x16, *targetBuf.FUN_006E6AB0(this));
-            if (DAT_00A802C8.Count < 128) {
-                DAT_00A802C8.List[DAT_00A802C8.Head] = *queued;
-                DAT_00A802C8.unknown_378C[DAT_00A802C8.Head] = timeGetTime();
-                DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 0x7F;
-                DAT_00A802C8.Count++;
-            }
+            TargetClass targetBuf;
+            DAT_00A802C8.Add(EventClass(vf_14(), 0x16, *targetBuf.FUN_006E6AB0(this)));
         }
     }
     return true;
@@ -2093,6 +2791,134 @@ void BuildingClass::vf_312()
             break;
         }
     }
+}
+
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x445880
+bool BuildingClass::vf_53()
+{
+    int i;
+    bool result;
+    bool anyUpgradeFlag = false;
+    CoordStruct coord = Location;
+    CellStruct cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+
+    if (!InLimbo && Type != 0) {
+        for (i = 0; i < 8; i++) {
+            if (DamageFireAnims[i]) {
+                DamageFireAnims[i]->vf_62();
+                DamageFireAnims[i] = 0;
+            }
+        }
+        if (Type->bools_16A4[40] && ActuallyPlacedOnMap) {
+            Owner->NumOrePurifiers--;
+            if (Owner->NumOrePurifiers < 0) {
+                Owner->NumOrePurifiers = 0;
+            }
+        }
+        if (Type->bools_16A4[39] && ActuallyPlacedOnMap) {
+            Owner->AirportDocks -= Type->NumberOfDocks;
+            if (Owner->AirportDocks < 0) {
+                Owner->AirportDocks = 0;
+            }
+        }
+        if (Type->InfantryGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->InfantrySelfHeal -= Type->InfantryGainSelfHeal;
+            if (Owner->InfantrySelfHeal < 0) {
+                Owner->InfantrySelfHeal = 0;
+            }
+        }
+        if (Type->UnitsGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->UnitsSelfHeal -= Type->UnitsGainSelfHeal;
+            if (Owner->UnitsSelfHeal < 0) {
+                Owner->UnitsSelfHeal = 0;
+            }
+        }
+        if (Type->bools_16A4[26]) {
+            FUN_00452A40(0);
+        }
+        if (!DAT_00A8E7AC) {
+            if (Type->bools_16A4[36]) {
+                vf_318(DAT_0089C818.raw_dword);
+            }
+            if (Type->bools_D20[17]) {
+                vf_320(DAT_0089C818.raw_dword);
+            }
+            if ((!Type->UndeploysInto || !Type->ResourceGatherer) && !vf_32()) {
+                FUN_004561F0();
+            }
+        }
+        for (i = 0; i < 3; i++) {
+            if (Upgrades[i] && Upgrades[i]->bools_1760[3]) {
+                anyUpgradeFlag = true;
+                break;
+            }
+        }
+        if (!DAT_00A8E9A0) {
+            if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+                LaserFenceFrame = 0;
+            }
+            return true;
+        }
+        if (Type == RulesInstance->WallTower) {
+            for (i = 0; i < 8; i += 2) {
+                CellClass* mc = BA4At(cell + DAT_0089F688[i & 7]);
+                mc->FUN_00480630(0);
+                if (mc->OverlayTypeIndex != -1 && DAT_00A83D84[mc->OverlayTypeIndex]->Wall && mc->OverlayData < 0x10) {
+                    mc->FUN_00480CB0(200);
+                }
+            }
+        }
+        if (Type == RulesInstance->GDIGateOne || Type == RulesInstance->NodGateOne) {
+            BA4At(cell + BA4Off(-1, 0))->FUN_00480630(0);
+            BA4At(cell + BA4Off(3, 0))->FUN_00480630(0);
+        }
+        if (Type == RulesInstance->GDIGateTwo || Type == RulesInstance->NodGateTwo) {
+            BA4At(cell + BA4Off(0, -1))->FUN_00480630(0);
+            BA4At(cell + BA4Off(0, 3))->FUN_00480630(0);
+        }
+        if (!Type->ToTile) {
+            int width = Type->GetFoundationWidth();
+            int height = Type->GetFoundationHeight(false);
+            CellStruct scratch = vf_110();
+            CellStruct origin = scratch;
+            for (int y = 0; y < height + 2; y++) {
+                CellStruct corner = origin + BA4Off(-1, -1);
+                for (i = 0; i < width + 2; i++) {
+                    BA4At(corner + BA4Off(i, y))->BlockedNeighbours--;
+                }
+            }
+        }
+        if (DAT_00887324) {
+            RectangleStruct buf = vf_75();
+            DAT_00887324->FUN_006D2790(buf, false);
+        }
+        if (Spotlight) {
+            Spotlight->vf_62();
+        }
+        Owner->FUN_004FF980(this);
+        Owner->RecheckTechTree = 1;
+        Owner->FUN_004FD150();
+        if (Owner == DAT_00A83D4C) {
+            DAT_00880CF4 = 1;
+            DAT_0087F7E8.FUN_004F42F0(0);
+        }
+        Owner->FUN_0050A490(this);
+    }
+    result = TechnoClass::vf_53();
+    if (anyUpgradeFlag) {
+        Owner->AcquiredThreatNode();
+    }
+    if (Type->Factory) {
+        Owner->Update_FactoriesQueues(Type->Factory, Type->Naval, 0);
+    }
+    if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+        LaserFenceFrame = 0;
+    }
+    return result;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2573,6 +3399,329 @@ char BuildingClass::vf_316()
     return r;
 }
 
+#include "../_layout/bomb_class.h"
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x448260
+bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
+{
+    int i;
+
+    if (newOwner != Owner) {        if (AttachedBomb && !Type->bools_1570[11]) {
+            AttachedBomb->Disarm();
+        }
+        if (Type->bools_16A4[35]) {
+            newOwner->HasCloakingRanges = 1;
+        }
+        if (Owner->Type->MultiplayPassive && Type->ProduceCashStartup) {
+            newOwner->GiveMoney(Type->ProduceCashStartup);
+            CashProductionTimer = CDTimerClass(Type->ProduceCashDelay);
+        }
+        unsigned int bit = 1 << (newOwner->Type->ArrayIndex2);
+        if ((bit & DisplayProductionTo) != 0) {
+            DisplayProductionTo = DisplayProductionTo - bit;
+            if (Type->bools_16A4) {
+                Owner->RadarVisibleTo = 0;
+                int count = Owner->Buildings.Count;
+            for (i = 0; i < count; i++) {
+                    BuildingClass* b = Owner->Buildings.Items[i];
+                    if (b && !b->InLimbo && b->Type->bools_16A4) {
+                        Owner->RadarVisibleTo |= b->DisplayProductionTo;
+                    }
+                }
+                DAT_0087F7E8.FUN_004F42F0(2);
+            }
+        }
+        IsPrimaryFactory = 0;
+        if (Type->bools_16A4[26]) {
+            FUN_00452A40(0);
+        }
+        if (Owner->IsControlledByCurrentPlayer() || newOwner->IsControlledByCurrentPlayer()) {
+            if (!newOwner->Type->MultiplayPassive && announce) {
+                if (Type->bools_154B[7]) {
+                    if (Owner != newOwner) {
+                        if (Owner->IsControlledByCurrentPlayer()) {
+                            FUN_00752700(s_EVA_TechBuildingLost_00818FC4, -1, -1);
+                        }
+                        if (newOwner->IsControlledByCurrentPlayer() && newOwner->IsControlledByCurrentPlayer() && Type->CaptureEvaEvent != -1) {
+                            FUN_00752480(Type->CaptureEvaEvent, -1, -1);
+                        }
+                    }
+                } else {
+                    if (FUN_0065FA70(10, vf_110())) {
+                        FUN_00752700(s_EVA_BuildingCaptured_00818FAC, -1, -1);
+                    }
+                }
+            }
+            DAT_00880CF4 = 1;
+            DAT_0087F7E8.FUN_004F42F0(0);
+        }
+        NeedsRedraw = 1;
+        HasEngineer = 1;
+        if (Type->bools_154B[7]) {
+            StuffEnabled = 1;
+            if (LightSource) {
+                LightSource->Activate(0);
+            }
+            if (Type->bools_16A4[26]) {
+                CreateEndPost(false);
+            }
+            for (int k = 0; k < 21; k++) {
+                if (Type->BuildingAnim[k].Powered && Anims[k]) {
+                    Anims[k]->FUN_00425270();
+                }
+            }
+        }
+        if (Session_00A8B238.GameMode == 4 && !vf_33()->bools_C8C[19]) {
+            newOwner->CapturedBuildings.IncrementUnitTotal(Type->ArrayIndex);
+        }
+
+        BA4HeldList held;
+        for (i = 0; i < RadioLinks.Capacity; i++) {
+            TechnoClass* object = FUN_0065AD30(i);
+            if (object) {
+                if (!object->Flags.IsFoot) {
+                    object = 0;
+                } else if (vf_158(0x13, object) == 1) {
+                    bool inRange = false;
+                    if (!Type->bools_16A4[25]) {
+                        CoordStruct a = vf_42(object);
+                        CoordStruct b = object->vf_18();
+                        CoordStruct scratchC;
+                        CoordStruct diff = *scratchC.FUN_0041C230(b.X - a.X, b.Y - a.Y, b.Z - a.Z);
+                        inRange = diff.FUN_0041C380() < 0x40;
+                    } else {
+                        inRange = true;
+                    }
+                    if (inRange) {
+                        unsigned char flag = object->IsTether;
+                        object->vf_245(newOwner, 1);
+                        BA4Held* entry = new BA4Held(object, flag);
+                        held.AddItem(entry);
+                        continue;
+                    }
+                    vf_158(0x17, object);
+                    vf_158(3, object);
+                    continue;
+                }
+                vf_158(0x17, object);
+                vf_158(3, object);
+            }
+        }
+        if (Factory) {
+            Factory->AbandonProduction();
+            if (Factory) {
+                delete Factory;
+            }
+            Factory = 0;
+        }
+        Owner->FUN_004FF980(this);
+        HouseClass* oldOwner = Owner;
+        BA4TargetRef target;
+        target.FUN_006E6AB0(this);
+        HasBeenCaptured = 1;
+
+        for (i = 0; i < RulesInstance->list_08AC.Count; i++) {
+            if (RulesInstance->list_08AC.Items[i] == Type) {
+                oldOwner->ConYards.RemoveItem(this);
+                break;
+            }
+        }
+        if (Type->bools_16A4[5]) {
+            oldOwner->UnitRepairStations.RemoveItem(this);
+        }
+        if (Type->bools_16A4[9]) {
+            oldOwner->Grinders.RemoveItem(this);
+        }
+        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+            oldOwner->Absorbers.RemoveItem(this);
+        }
+        if (Type->bools_16A4[7]) {
+            oldOwner->Bunkers.RemoveItem(this);
+        }
+        if (Type->bools_1570[11] && Type->TechLevel > -1) {
+            oldOwner->Occupiables.RemoveItem(this);
+        }
+        if (Type->bools_16A4[8]) {
+            oldOwner->CloningVats.RemoveItem(this);
+        }
+        if (Type->bools_16A4[12]) {
+            oldOwner->SecretLabs.RemoveItem(this);
+        }
+        if (Type->PsychicDetectionRadius > 0) {
+            oldOwner->PsychicDetectionBuildings.RemoveItem(this);
+        }
+        if (Type->bools_16A4[41]) {
+            oldOwner->FactoryPlants.RemoveItem(this);
+            oldOwner->FUN_0050BF60();
+        }
+        oldOwner->Buildings.RemoveItem(this);
+        if (Type->bools_16A4[40]) {
+            oldOwner->NumOrePurifiers--;
+        }
+        if (Type->InfantryGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->InfantrySelfHeal -= Type->InfantryGainSelfHeal;
+            if (Owner->InfantrySelfHeal < 0) {
+                Owner->InfantrySelfHeal = 0;
+            }
+        }
+        if (Type->UnitsGainSelfHeal && ActuallyPlacedOnMap) {
+            Owner->UnitsSelfHeal -= Type->UnitsGainSelfHeal;
+            if (Owner->UnitsSelfHeal < 0) {
+                Owner->UnitsSelfHeal = 0;
+            }
+        }
+        if (Type->bools_16A4[39]) {
+            oldOwner->AirportDocks -= Type->NumberOfDocks;
+        }
+        if (Type->bools_16A4[35]) {
+            HasCloakingData = 0xFF;
+            if (!CloakRadius) {
+                CloakRadius = Type->CloakRadiusInCells;
+            }
+            NeedsRedraw = 1;
+            CloakRadius = 1;
+            vf_260(1);
+        }
+        if (Type->GapGenerator) {
+            vf_262();
+        }
+        vf_291(0, 0, 0, 0);
+        TechnoClass::vf_245(newOwner, true);
+        if (Type->bools_16A4[35] && vf_212() && Type->bools_16A4[35]) {
+            HasCloakingData = 1;
+            if (CloakRadius == Type->CloakRadiusInCells) {
+                CloakRadius = 0;
+            }
+            NeedsRedraw = 1;
+        }
+        if (Type->GapGenerator && vf_212()) {
+            vf_261();
+        }
+        FUN_00448070(0);
+        oldOwner->ToCapture = this;
+        oldOwner->FUN_004FD150();
+        Owner->FUN_004FD150();
+        if (Owner->ToCapture == this) {
+            Owner->ToCapture = 0;
+        }
+        if (oldOwner->FUN_0050B6F0() && Type->bools_16A4[21]) {
+            DAT_0088098C = 0;
+            DAT_00880990 = 0;
+            DAT_00880994 = -1;
+            DAT_0087F7E8.FUN_004A8BF0(0);
+        }
+        Owner->FUN_004FFA50(this);
+        IsBeingRepaired = 0;
+        vf_311(1);
+        if (Type->bools_16A4[26] && !DAT_00A8E7AC) {
+            if (IsAlive && !InLimbo) {
+                FUN_00452DC0(0);
+                FUN_00452DC0(2);
+                FUN_00452DC0(4);
+                FUN_00452DC0(6);
+                CreateEndPost(true);
+                if (DAT_00A8E7AC) {
+                    goto afterFacing;
+                }
+            }
+            if (Type->bools_16A4[26]) {
+                LaserFenceFrame = 0;
+            }
+        }
+    afterFacing:
+        if (Owner->IsControlledByCurrentPlayer()) {
+            vf_290(0, 0, 0, 0, 0);
+            DAT_0087F7E8.FUN_004F42F0(1);
+        }
+        bit = 1 << (newOwner->Type->ArrayIndex2);
+        if ((bit & DisplayProductionTo) != 0) {
+            DisplayProductionTo = ~bit & DisplayProductionTo;
+        }
+        void* value = vf_121();
+        int angle = vf_281(vf_111()->Intensity_Normal);
+        if (vf_88() || (Airstrike && Airstrike->Target == FUN_00459F40())) {
+            angle = FUN_0070E360(angle);
+        }
+        LightTint = (short)angle;
+        FUN_00451F60(value, angle & 0xFFFF);
+        FUN_00452170(Translucency);
+
+        for (i = 0; i < RulesInstance->list_08AC.Count; i++) {
+            if (RulesInstance->list_08AC.Items[i] == Type) {
+                newOwner->ConYards.AddItem(this);
+                break;
+            }
+        }
+        if (Type->bools_16A4[5]) {
+            newOwner->UnitRepairStations.AddItem(this);
+        }
+        if (Type->bools_16A4[9]) {
+            newOwner->Grinders.AddItem(this);
+        }
+        if (Type->bools_16A4[10] || Type->bools_16A4[11]) {
+            newOwner->Absorbers.AddItem(this);
+        }
+        if (Type->bools_16A4[7]) {
+            newOwner->Bunkers.AddItem(this);
+        }
+        if (Type->bools_1570[11] && Type->TechLevel > -1) {
+            newOwner->Occupiables.AddItem(this);
+        }
+        if (Type->bools_16A4[8]) {
+            newOwner->CloningVats.AddItem(this);
+        }
+        if (Type->bools_16A4[12]) {
+            newOwner->SecretLabs.AddItem(this);
+        }
+        if (Type->PsychicDetectionRadius > 0) {
+            newOwner->PsychicDetectionBuildings.AddItem(this);
+        }
+        if (Type->bools_16A4[41]) {
+            newOwner->FactoryPlants.AddItem(this);
+            newOwner->CalculateCostMultipliers();
+        }
+        newOwner->Buildings.AddItem(this);
+        if (Type->bools_16A4[40]) {
+            Owner->NumOrePurifiers++;
+        }
+        if (Type->InfantryGainSelfHeal) {
+            Owner->InfantrySelfHeal += Type->InfantryGainSelfHeal;
+        }
+        if (Type->UnitsGainSelfHeal) {
+            Owner->UnitsSelfHeal += Type->UnitsGainSelfHeal;
+        }
+        if (Type->bools_16A4[39]) {
+            Owner->AirportDocks += Type->NumberOfDocks;
+        }
+        if (Type->Factory) {
+            oldOwner->FUN_00509140(Type->Factory, Type->Naval, 0);
+            newOwner->Update_FactoriesQueues(Type->Factory, Type->Naval, 0);
+        }
+        for (i = 0; i < held.Count; i++) {
+            vf_158(2, held.Items[i]->Object);
+            if (held.Items[i]->Flag) {
+                IsTether = 1;
+                held.Items[i]->Object->IsTether = 1;
+            }
+        }
+        if (Session_00A8B238.GameMode && !newOwner->IsControlledByHuman() && InitialOwner != newOwner && !InitialOwner->Type->MultiplayPassive) {
+            while (UpgradeLevel > 0) {
+                int r = Upgrades[UpgradeLevel]->vf_46(Owner, 1);
+                Owner->GiveMoney(r);
+                FUN_00451690();
+                Owner->RecheckPower = 1;
+                Owner->RecheckRadar = 1;
+            }
+            vf_104(1);
+        }
+        oldOwner->RecheckTechTree = 1;
+        newOwner->RecheckTechTree = 1;
+        return true;
+    }
+    return false;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x449410
@@ -2809,15 +3958,277 @@ void Building_0044ABD0::FireLaser(Coord_0044ABD0 target)
         laser = laser->Construct(
             *(this->*this->Vtbl->GetFLH)(&flh, 0, Coord_0044ABD0(0, 0, 0)), target, 0, 1,
             this->Type->At_56FC, black, black,
-            DAT_008871E0->At_4A8, false, true, 1.0f, 0.0f);
+            RulesInstance->PrismSupportDuration, false, true, 1.0f, 0.0f);
         if (laser) {
             laser->IsHouseColor = true;
             laser->Thickness = 3;
         }
     }
 
-    this->At_2EC = CDTimer_0044ABD0(DAT_008871E0->At_4A4);
+    this->At_2EC = CDTimer_0044ABD0(RulesInstance->PrismSupportDelay);
     this->At_664 = 0;
+}
+
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x44ACF0
+int BuildingClass::vf_132()
+{
+    if (Type->bools_16A4[20]) {
+        switch (MissionStatus) {
+        case 0:
+            {
+                if (Type->bools_1570[3] && Type->PowerDrain > 0 && Owner->GetPowerPercentage() < 1.0) {
+                    return 1;
+                }
+                ObjectClass* techno = BA4As<ObjectClass>(Target, 2);
+                if (!Target || !techno || !techno->FUN_005F5F30()) {
+                    vf_242(0);
+                    MissionStatus = 0;
+                    vf_122(5, 0);
+                    vf_123();
+                    return 1;
+                }
+                if (PrimaryFacing.FUN_004C9480()) {
+                    return 1;
+                }
+                DirStruct wanted = vf_314(Target);
+                if (abs((short)0x2000) < abs((short)(PrimaryFacing.FUN_004C93D0().Raw - wanted.Raw))) {
+                    PrimaryFacing.SetDesired(vf_314(Target));
+                    return 1;
+                }
+                MissionStatus = 1;
+                return 1;
+            }
+        case 1:
+            {
+                ObjectClass* techno = BA4As<ObjectClass>(Target, 2);
+                if (!Target || !techno || !techno->FUN_005F5F30()) {
+                    vf_242(0);
+                    MissionStatus = 0;
+                    return 1;
+                }
+                int result = vf_240(Target, 0, 1);
+                if (result == 5 || result == 6 || result == 8) {
+                    vf_242(0);
+                    MissionStatus = 0;
+                    return 1;
+                }
+                if (result == 2) {
+                    MissionStatus = 0;
+                    return 1;
+                }
+                if (result != 0) {
+                    return 1;
+                }
+                vf_243(Target, 0);
+                vf_243(Target, 1);
+                MissionStatus = 0;
+                return 1;
+            }
+        default:
+            int base = (int)(FUN_005B3A00()->AARate * 900.0);
+            return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+        }
+    }
+
+    if (!Target) {
+        vf_242(0);
+        SupportingPrisms = 0;
+        if (vf_268()) {
+            FUN_00705D60();
+        }
+        if (vf_97() == 0x1C) {
+            return 1;
+        }
+        vf_122(5, 0);
+        vf_123();
+        return 1;
+    }
+
+    int direction = vf_185(Target);
+    IsReadyToCommence = 1;
+    int result = vf_240(Target, direction, 1);
+    if (result == 2) {
+        if (vf_255() && Type->bools_16A4[33]) {
+            DirStruct wanted = vf_314(Target);
+            int turn = Type->ROT;
+            if (!turn || !(abs((short)(turn << 8)) < abs((short)(PrimaryFacing.FUN_004C93D0().Raw - wanted.Raw)))) {
+                PrimaryFacing.FUN_004C9300(&wanted);
+                result = vf_240(Target, direction, 1);
+            }
+        }
+    }
+    switch (result) {
+    case 0:
+        if (UpgradeLevel != 0 && Upgrades[1] != 0) {
+            if (Upgrades[1]->FUN_00712130()) {
+                vf_243(Target, 0);
+                vf_243(Target, 1);
+            }
+        } else if (Type == RulesInstance->PrismType) {
+            BuildingClass* best = 0;
+            int bestDistance = 0x7FFFFFFF;
+            CoordStruct here = vf_43();
+            if (SupportingPrisms < RulesInstance->PrismSupportMax) {
+                int count = Owner->Buildings.Count;
+                for (int i = 0; i < count; i++) {
+                    BuildingClass* candidate = Owner->Buildings.Items[i];
+                    if (candidate && candidate->IsAlive && candidate->Type == RulesInstance->PrismType) {
+                        int length = candidate->RearmTimer.GetTimeLeft();
+                        if (length == 0 && candidate->DelayBeforeFiring == 0 && !candidate->IsBeingDrained()
+                            && candidate->vf_97() != 1 && candidate != this) {
+                            CoordStruct there = candidate->vf_43();
+                            double dx = here.X - there.X;
+                            double dy = there.Y - here.Y;
+                            float dz = here.Z - there.Z;
+                            int distance = (int)FUN_004CAC40(dx * dx + dz * dz + dy * dy);
+                            if (distance <= vf_90(1)) {
+                                if (!best || distance < bestDistance) {
+                                    best = candidate;
+                                    bestDistance = distance;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (best) {
+                    SupportingPrisms++;
+                    CoordStruct zero;
+                    zero.X = 0;
+                    zero.Y = 0;
+                    zero.Z = 0;
+                    CoordStruct where = vf_44(0, zero);
+                    best->DelayBeforeFiring = best->Type->DelayedFireDelay;
+                    best->PrismStage = 2;
+                    best->PrismTargetCoords = where;
+                    best->DestroyNthAnim(3);
+                    char* text;
+                    int flag;
+                    if (best->FUN_005F5C60() > RulesInstance->ConditionYellow) {
+                        text = &best->Type->BuildingAnim[10].Anim[0];
+                        flag = 0;
+                    } else {
+                        text = &best->Type->BuildingAnim[10].Damaged[0];
+                        flag = 1;
+                    }
+                    if (text && *text) {
+                        best->PlayAnim(text, 10, flag, 0, 0);
+                    }
+                    break;
+                }
+            }
+            CoordStruct cleared = {0, 0, 0};
+            DelayBeforeFiring = Type->DelayedFireDelay;
+            PrismTargetCoords = cleared;
+            PrismStage = 1;
+            DestroyNthAnim(3);
+            char* text;
+            int flag;
+            if (FUN_005F5C60() > RulesInstance->ConditionYellow) {
+                text = &Type->BuildingAnim[10].Anim[0];
+                flag = 0;
+            } else {
+                text = &Type->BuildingAnim[10].Damaged[0];
+                flag = 1;
+            }
+            if (text && *text) {
+                PlayAnim(text, 10, flag, 0, 0);
+            }
+        } else if (Type->bools_16A4[3]) {
+            CoordStruct cleared = {0, 0, 0};
+            DelayBeforeFiring = Type->DelayedFireDelay;
+            PrismTargetCoords = cleared;
+            PrismStage = 1;
+            DestroyNthAnim(3);
+            char* text;
+            int flag;
+            if (FUN_005F5C60() > RulesInstance->ConditionYellow) {
+                text = &Type->BuildingAnim[10].Anim[0];
+                flag = 0;
+            } else {
+                text = &Type->BuildingAnim[10].Damaged[0];
+                flag = 1;
+            }
+            if (text && *text) {
+                PlayAnim(text, 10, flag, 0, 0);
+            }
+        } else {
+            vf_243(Target, direction);
+        }
+        if (Type->IsGattling) {
+            FUN_0070DE70(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
+            return 1;
+        }
+        TurretAnimFrame++;
+        return 1;
+
+    case 1:
+    case 5:
+    case 6:
+    case 8:
+        vf_242(0);
+        SupportingPrisms = 0;
+        if (vf_268()) {
+            FUN_00705D60();
+        }
+        if (vf_97() == 0x1C) {
+            return 1;
+        }
+        if (Type->IsGattling) {
+            FUN_0070E000(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
+        }
+        vf_122(5, 0);
+        vf_123();
+        break;
+
+    case 2:
+        if (Target) {
+            PrimaryFacing.SetDesired(vf_314(Target));
+        }
+        if (Type->IsGattling) {
+            FUN_0070DE70(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
+        }
+        return 2;
+
+    case 3:
+        if (Target) {
+            PrimaryFacing.SetDesired(vf_314(Target));
+        }
+        if (Type->IsGattling) {
+            FUN_0070DE70(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
+            return 2;
+        }
+        TurretAnimFrame++;
+        return 2;
+
+    case 9:
+        vf_279(0);
+        if (Type->IsGattling) {
+            FUN_0070E000(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
+        }
+        break;
+
+    case 10:
+        if (Type->IsGattling) {
+            FUN_0070E000(MissionAccumulateTime);
+            MissionAccumulateTime = 0;
+        }
+        return 1;
+
+    default:
+        break;
+    }
+    if (Target) {
+        PrimaryFacing.SetDesired(vf_314(Target));
+    }
+    MissionAccumulateTime = 0;
+    return 1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -3223,7 +4634,7 @@ bool BuildingClass::vf_40()
             goto refuse;
         if (Session_00A8B238.GameMode == 0)
             goto refuse;
-        if (BuildingBGlobal_00A8B320 == 0)
+        if (Session_00A8B238.unknown_18.MCVRedeploy == 0)
             goto refuse;
         if (MindControlledBy == 0)
             goto allow;
@@ -3908,16 +5319,16 @@ void FUN_00452D40()
 {
     int i = 0;
 
-    while (i < DAT_00A8EB50) {
-        Obj_00452D40* obj = DAT_00A8EB44[i];
+    while (i < DAT_00A8EB40.Count) {
+        BuildingClass* obj = DAT_00A8EB40.Items[i];
 
-        if (obj != 0 && obj->Owner->At_16BE != 0 && DAT_00A8E7AC == 0
-            && obj->At_90 != 0 && obj->At_81 == 0) {
+        if (obj != 0 && obj->Type->bools_16A4[0x16BE - 0x16A4] != 0 && DAT_00A8E7AC == 0
+            && obj->IsAlive != 0 && obj->InLimbo == 0) {
             obj->FUN_00452DC0(0);
             obj->FUN_00452DC0(2);
             obj->FUN_00452DC0(4);
             obj->FUN_00452DC0(6);
-            obj->FUN_004533A0(1);
+            obj->CreateEndPost(true);
         }
 
         i++;
@@ -4222,8 +5633,8 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
                 }
             } else {
                 keep = unknown_41A || vf_202() || BuildingBGlobal_00B73550 == 0
-                    || (Session_00A8B238.GameMode != 0 && Owner != 0 && BuildingBPlayer != 0
-                        && BuildingBPlayer->IsAlliedWith(Owner) && Owner->IsAlliedWith(BuildingBPlayer));
+                    || (Session_00A8B238.GameMode != 0 && Owner != 0 && DAT_00A83D4C != 0
+                        && DAT_00A83D4C->IsAlliedWith(Owner) && Owner->IsAlliedWith(DAT_00A83D4C));
             }
             if (keep)
                 return 3;
@@ -4813,6 +6224,45 @@ void BuildingClass::vf_293()
     IsRadarTracked = 1;
 }
 
+// GLOBAL: GAMEMD 0xA83DEC / 0xA83DF8 -- InfantryClass array items and count.
+extern InfantryClass** DAT_00A83DEC;
+extern int DAT_00A83DF8;
+
+// The sum of two screen points.
+static inline Point2D PointSum(const Point2D& a, const Point2D& b)
+{
+    Point2D r;
+    r.X = a.X + b.X;
+    r.Y = a.Y + b.Y;
+    return r;
+}
+
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4565E0
+// Takes the building's foundation cells off the radar and stops tracking it.
+void BuildingClass::vf_294()
+{
+    DynamicVectorClass<Point2D>* foundation = DAT_0087F7E8.FUN_00656580(Type);
+    for (int i = 0; i < foundation->Count; i++) {
+        Point2D at = PointSum(RadarPosition, foundation->Items[i]);
+        DAT_0087F7E8.FUN_00655740(this, at.X, at.Y);
+    }
+    IsRadarTracked = false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x456640
+// Redraws the radar pixel of every foundation cell.
+void BuildingClass::vf_295()
+{
+    DynamicVectorClass<Point2D>* foundation = DAT_0087F7E8.FUN_00656580(Type);
+    for (int i = 0; i < foundation->Count; i++) {
+        Point2D point = PointSum(RadarPosition, foundation->Items[i]);
+        DAT_0087F7E8.FUN_006562D0(&point);
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4566B0
@@ -4882,12 +6332,95 @@ int BuildingClass_004566B0::GetRadialIndicatorRange()
     return result;
 }
 
+// The function-local white of the flashing glow; the empty destructor is registered with atexit (0x456970 is a RET).
+class BuildingBWhite : public ColorStruct
+{
+public:
+    BuildingBWhite()
+    {
+        R = 0xFF;
+        G = 0xFF;
+        B = 0xFF;
+    }
+    ~BuildingBWhite() {}
+};
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x456750
+void BuildingBView::vf_76(ColorStruct tint)
+{
+    int level = Func_4566B0();
+    if (level > 0 && HasPower && Owner->IsControlledByCurrentPlayer()) {
+        if (Type->unknown_1708) {
+            static BuildingBWhite white;
+            tint = Owner->Color;
+            unsigned int phase = (timeGetTime() >> 1) & 0x3FF;
+            if (!(phase & 0x200)) {
+                if (!(phase & 0x100))
+                    tint.FUN_006612C0(~phase & 0xFF, white);
+                HBCoord tmp;
+                BuildingBFunc_456980(0, 0, *vf_18(&tmp), tint, (float)level, 0, 1);
+            }
+            unsigned int spark = (unsigned int)((level + 0.5) / BuildingBFunc_4CAC40(2.0) * 60.0) * phase >> 10;
+            if (spark > 0x20) {
+                HBCoord tmp;
+                BuildingBFunc_456980(0, 0, *vf_18(&tmp), Owner->Color, (float)spark, 1, 1);
+            }
+        } else {
+            HBCoord tmp;
+            BuildingBFunc_456980(tint.R, 1, *vf_18(&tmp), Owner->Color, (float)level, 0, 1);
+        }
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x456970
 // Empty function.
 void __cdecl FUN_00456970()
 {
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x456E00
+// CAPPED at 95.2% (multiset identical, vptr register naming only: retail loads the vf_88 vptr into eax, cl into edx).
+// Variants tried: ||-chain kept here, an if/goto form, a split frame declaration, a local for the vf_111 result.
+void BuildingBView::vf_82(int a)
+{
+    if (a)
+        NeedsRedraw = true;
+    Func_6F9DD0(a);
+    int frame;
+    frame = vf_121();
+    BuildingBCellView* cell = vf_111();
+    int base = vf_281(cell->unknown_10A);
+    if (vf_88() || (unknown_294 && unknown_294->unknown_50 == BuildingBCastBuilding(this)))
+        base = Func_70E360(base);
+    unknown_short_700 = base;
+    unsigned int mask = (unsigned short)base;
+    for (int i = 0; i < 21; i++) {
+        BuildingBAnimObjView* anim = Anims[i];
+        if (anim) {
+            if (anim->unknown_C8 && anim->unknown_C8->unknown_35C) {
+                anim->unknown_D4 = frame;
+                anim->unknown_FC = mask;
+            }
+            ApplyAnimLevel();
+        }
+    }
+    ApplyAnimLevel();
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x456F80
+int BuildingClass::vf_281(int a)
+{
+    if ((DurationRemaining & 2) == 2) {
+        if (a > 0x5DC)
+            return a - 0x1F4;
+        return a + 0x1F4;
+    }
+    return a;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4942,6 +6475,54 @@ plain:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x457020
+// PARTIAL 67.4%, multiset identical. `return false` is the last statement, so
+// every refusal shares the final block and the two `return true` blocks stay
+// separate (retail has four return blocks). Remaining delta is register choice:
+// retail keeps `this` in edi, the two pixel offsets in ebx/ebp and &Location in
+// esi; cl keeps this in esi and the offsets in edi/ebx. Also tried: the corner
+// from the `here` copy (31.2%) and a &Location pointer local (no change).
+bool BuildingBView::vf_201(int* flag)
+{
+    if (Type->unknown_C9A)
+        return false;
+    if (InLimbo)
+        return false;
+    if (Owner->IsControlledByCurrentPlayer())
+        return unknown_41B ? true : false;
+    {
+        HBCoord tmp;
+        HBCell cell = BuildingBCellOf(*vf_18(&tmp));
+        if (!BuildingBMap.Func_578460(&cell, 1))
+            return false;
+    }
+    int widthPixels = (Type->Func_45ECA0(0) << 8) - 0x100;
+    int heightPixels = (Type->Func_45EC90() << 8) - 0x100;
+    bool blocked;
+    HBCoord here = Location;
+    if (BuildingBMap.Func_586360(&here)) {
+        HBCoord corner;
+        corner.X = Location.X + heightPixels;
+        corner.Y = Location.Y + widthPixels;
+        corner.Z = Location.Z;
+        if (BuildingBMap.Func_586360(&corner) && BuildingBGlobal_00B73550)
+            blocked = true;
+        else
+            blocked = false;
+    } else {
+        blocked = false;
+    }
+    if (unknown_220 != 2 && Translucency != 0xF && !IsFogged && !blocked)
+        return true;
+    if (vf_202()) {
+        if (!DAT_00A83D4C->IsAlliedWith(Owner) && !IsFogged && !blocked)
+            *flag = 1;
+        return true;
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4575B0
 //
@@ -4967,6 +6548,13 @@ void Obj_004575B0::FUN_004575B0()
     }
 
     (this->*this->Vptr->At_1A0)(one);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x457620
+bool BuildingClass::vf_32()
+{
+    return Type->FUN_00465D40();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5003,6 +6591,101 @@ int BuildingClass::SecondActiveSWIdx()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4576F0
+// Sends away every infantryman standing on this building's cell who is not heading elsewhere.
+void BuildingClass::vf_184()
+{
+    for (int i = 0; i < DAT_00A83DF8; i++) {
+        InfantryClass* unit = DAT_00A83DEC[i];
+        BuildingClass* building = DAT_0087F7E8.FUN_00565730(unit->vf_19(0))->FUN_0047C520();
+        if (unit->IsAlive && building && building == this) {
+            if (unit->Destination == 0 || unit->Destination == building)
+                unit->vf_93(DAT_0089C848, 1, 1);
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x457770
+// CAPPED at 15.4% (multiset: retail-only 5 `mov`, 2 `test`, 1 `add`; cl-only 1 `lea`, 2 `cmp`). Retail keeps the loop
+// counters and both cell counts in stack slots and tests the found object and the type flag through registers
+// (`mov cl,[eax+0xC9D]; test cl,cl`) where cl emits `cmp byte ptr`. Variants tried: operator+ cell sum, field-wise
+// cell sum, goto-based exits, hoisted loop variables, a type local for the flag.
+bool BuildingBView::vf_168()
+{
+    if (!Func_6FBDC0())
+        goto refuse;
+    {
+        HBCell tmp;
+        HBCell base = *vf_110(&tmp);
+        int width = Type->Func_45EC90();
+        int height = Type->Func_45ECA0(0);
+        int x;
+        int y;
+        for (x = -1; x <= width; x++) {
+            for (y = -1; y <= height; y++) {
+                HBPoint2D zero;
+                zero.X = 0;
+                zero.Y = 0;
+                HBCell cell;
+                cell.X = base.X + x;
+                cell.Y = base.Y + y;
+                BuildingBView* found = BuildingBMap.Func_5657A0(&cell)->Func_47C3D0(&zero, 0, 0);
+                if (found == this) {
+                    HBCell again = cell;
+                    found = BuildingBMap.Func_5657A0(&again)->Func_47EC40(0);
+                }
+                if (found && found->Owner != Owner && found->vf_33()->unknown_C9D)
+                    goto refuse;
+            }
+        }
+    }
+    return true;
+refuse:
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4578C0
+// CAPPED at 15.4% (multiset: retail-only 5 `mov`, 2 `test`, 1 `add`; cl-only 1 `lea`, 2 `cmp`). Retail keeps the loop
+// counters and both cell counts in stack slots and tests the found object and the type flag through registers
+// (`mov cl,[eax+0xC9D]; test cl,cl`) where cl emits `cmp byte ptr`. Variants tried: operator+ cell sum, field-wise
+// cell sum, goto-based exits, hoisted loop variables, a type local for the flag.
+bool BuildingBView::vf_169()
+{
+    if (Func_6FBC90())
+        goto accept;
+    {
+        HBCell tmp;
+        HBCell base = *vf_110(&tmp);
+        int width = Type->Func_45EC90();
+        int height = Type->Func_45ECA0(0);
+        int x;
+        int y;
+        for (x = -1; x <= width; x++) {
+            for (y = -1; y <= height; y++) {
+                HBPoint2D zero;
+                zero.X = 0;
+                zero.Y = 0;
+                HBCell cell;
+                cell.X = base.X + x;
+                cell.Y = base.Y + y;
+                BuildingBView* found = BuildingBMap.Func_5657A0(&cell)->Func_47C3D0(&zero, 0, 0);
+                if (found == this) {
+                    HBCell again = cell;
+                    found = BuildingBMap.Func_5657A0(&again)->Func_47EC40(0);
+                }
+                if (found && found->Owner != Owner && found->vf_33()->unknown_C9D)
+                    goto accept;
+            }
+        }
+    }
+    return false;
+accept:
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x457A10
 bool BuildingClass_00457A10::CheckFog()
 {
@@ -5014,6 +6697,22 @@ bool BuildingClass_00457A10::CheckFog()
         return false;
     }
     return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x457C90
+// Clears a planted C4 charge (its timer restarts idle) and starts the invulnerability timer.
+void BuildingClass::vf_85(int a, int b, bool c)
+{
+    if (C4Applied) {
+        C4Applied = false;
+        CDTimerClass idle;
+        idle.StartTime = CurrentFrame;
+        idle.TimeLeft = 0;
+        C4Timer = idle;
+        C4AppliedBy = 0;
+    }
+    FUN_0070E2B0(a, b, c);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5074,6 +6773,13 @@ bool Obj_00457CE0::CanBeOccupiedBy(Obj_00457CE0* infantry)
         }
     }
     return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4581F0
+int BuildingClass::vf_258()
+{
+    return Occupants.Count;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

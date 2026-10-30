@@ -48684,7 +48684,7 @@
   "pct": 15.6
  },
  {
-  "tu": "match/economy/house_building/building_a4_vf_313.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43DA80",
   "sym": "?vf_313@BuildingClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0xd22",
@@ -48711,16 +48711,16 @@
   "pct": 4.7
  },
  {
-  "tu": "match/economy/house_building/building_a4_vf_73.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43F180",
   "sym": "?vf_73@BuildingClass@@UAE_NH@Z",
-  "len": "0x98c",
+  "len": "0x98b",
   "name": "BuildingClass::vf_73",
   "status": "partial",
   "pct": 7.2
  },
  {
-  "tu": "match/economy/house_building/building_a4_vf_54.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x440580",
   "sym": "?vf_54@BuildingClass@@UAE_NABUCoordStruct@@H@Z",
   "len": "0x1069",
@@ -48803,7 +48803,7 @@
   "note": "raw bytes equal over the whole span (code plus its jump/index tables); the instruction decoder reads the tables as code (88.1%)"
  },
  {
-  "tu": "match/economy/house_building/building_a4_vf_53.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x445880",
   "sym": "?vf_53@BuildingClass@@UAE_NXZ",
   "len": "0x5c6",
@@ -48913,7 +48913,7 @@
   "pct": 81.7
  },
  {
-  "tu": "match/economy/house_building/building_a4_vf_245.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x448260",
   "sym": "?vf_245@BuildingClass@@UAE_NPAVHouseClass@@_N@Z",
   "len": "0x11a6",
@@ -48976,7 +48976,7 @@
   "pct": 6.7
  },
  {
-  "tu": "match/economy/house_building/building_a4_vf_132.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x44ACF0",
   "sym": "?vf_132@BuildingClass@@UAEHXZ",
   "len": "0xa35",
@@ -49313,7 +49313,7 @@
   "pct": 75.3
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4565E0",
   "sym": "?vf_294@BuildingClass@@UAEXXZ",
   "len": "0x5d",
@@ -49322,7 +49322,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x456640",
   "sym": "?vf_295@BuildingClass@@UAEXXZ",
   "len": "0x66",
@@ -49331,7 +49331,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x456750",
   "sym": "?vf_76@BuildingBView@@UAEXUColorStruct@@@Z",
   "len": "0x21a",
@@ -49340,7 +49340,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x456E00",
   "sym": "?vf_82@BuildingBView@@UAEXH@Z",
   "len": "0x180",
@@ -49349,7 +49349,7 @@
   "pct": 95.2
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x456F80",
   "sym": "?vf_281@BuildingClass@@UAEHH@Z",
   "len": "0x28",
@@ -49358,7 +49358,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x457020",
   "sym": "?vf_201@BuildingBView@@UAE_NPAH@Z",
   "len": "0x1b8",
@@ -49367,7 +49367,7 @@
   "pct": 67.4
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x457620",
   "sym": "?vf_32@BuildingClass@@UAE_NXZ",
   "len": "0xb",
@@ -49376,7 +49376,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4576F0",
   "sym": "?vf_184@BuildingClass@@UAEXXZ",
   "len": "0x7f",
@@ -49385,7 +49385,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x457770",
   "sym": "?vf_168@BuildingBView@@UAE_NXZ",
   "len": "0x147",
@@ -49394,7 +49394,7 @@
   "pct": 15.4
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4578C0",
   "sym": "?vf_169@BuildingBView@@UAE_NXZ",
   "len": "0x147",
@@ -49403,7 +49403,7 @@
   "pct": 15.4
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x457C90",
   "sym": "?vf_85@BuildingClass@@UAEXHH_N@Z",
   "len": "0x4e",
@@ -49412,7 +49412,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4581F0",
   "sym": "?vf_258@BuildingClass@@UAEHXZ",
   "len": "0x7",

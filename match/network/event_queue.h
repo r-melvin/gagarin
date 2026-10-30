@@ -31,6 +31,18 @@ struct EventQueue
     // EventQueue<128>::FUN_004F1AA0 -- append one event; false when the queue is full.
     int FUN_004F1AA0(const EventQueueItem* item);
 
+    // Inline append (no out-of-line copy in retail; e.g. inlined in 0x4436F0): stores the event and its send
+    // time at Head when the queue has room. The user's TU declares timeGetTime.
+    void Add(const EventQueueItem& item)
+    {
+        if (Count < N) {
+            List[Head] = item;
+            Time[Head] = timeGetTime();
+            Head = (Head + 1) & (N - 1);
+            Count++;
+        }
+    }
+
     EventQueue()
     {
         Count = 0;
@@ -40,5 +52,8 @@ struct EventQueue
 };
 
 typedef EventQueue<128> EventQueue128;
+
+// GLOBAL: GAMEMD 0xA802C8 -- the outgoing event queue.
+extern EventQueue<128> DAT_00A802C8;
 
 #endif  // GG_MATCH_NETWORK_EVENT_QUEUE_H

@@ -23,6 +23,7 @@
 #include "house_building_views.h"
 #include "../../_layout/cell_class.h"
 #include "../../_layout/map_0087f7e8.h"
+#include "../../network/event_queue.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 
@@ -32,42 +33,6 @@ class BuildingTypeClass;
 class BuildingAView;
 class BAProdView;
 struct BAFlashView;
-
-// A target reference (a 32-bit value and one tag byte; copied member-wise as five bytes, passed in eight).
-#pragma pack(push, 1)
-// Not merged: takes this cluster's BuildingClass view (see house_building_views.h).
-struct BATargetRef
-{
-    int           Value;   // +0x00
-    unsigned char Tag;     // +0x04
-    // FUNCTION: GAMEMD 0x6E6AB0 (read-only here) - builds the reference to a building in place.
-    BATargetRef* FUN_006E6AB0(BuildingClass* b);
-};
-#pragma pack(pop)
-GG_STATIC_ASSERT(sizeof(BATargetRef) == 5);
-
-// A queued network event (0x6F bytes; opaque here).
-struct BAEvent
-{
-    unsigned char bytes[0x6F];
-    BAEvent() {}
-    // FUNCTION: GAMEMD 0x4C65E0 (read-only here)
-    BAEvent* FUN_004C65E0(int owner, int kind, BATargetRef target);
-};
-GG_STATIC_ASSERT(sizeof(BAEvent) == 0x6F);
-
-// The outgoing event ring buffer (0x128 events) with its timestamps.
-struct BAEventQueue
-{
-    int     Count;          // +0x00
-    int     unknown_04;     // +0x04
-    int     Head;           // +0x08
-    BAEvent List[128];      // +0x0C
-    unsigned long unknown_378C[128];   // +0x378C
-};
-GG_STATIC_ASSERT(offsetof(BAEventQueue, Head) == 0x08);
-GG_STATIC_ASSERT(offsetof(BAEventQueue, List) == 0x0C);
-GG_STATIC_ASSERT(offsetof(BAEventQueue, unknown_378C) == 0x378C);
 
 // The member at BuildingClass +0x150 (partial): only the method reached from the registration code.
 struct BAFlashView
@@ -882,9 +847,6 @@ extern DynamicVectorClass<TechnoTypeClass*> DAT_00A8B218;
 extern DynamicVectorClass<TechnoTypeClass*> DAT_00A83C68;
 extern DynamicVectorClass<TechnoTypeClass*> DAT_00A8E348;
 extern DynamicVectorClass<TechnoTypeClass*> DAT_00A83CE0;
-// GLOBAL: GAMEMD 0xA802C8 (the outgoing event queue), 0xA8B238 / 0xA8B320
-extern BAEventQueue DAT_00A802C8;
-extern unsigned char DAT_00A8B320;
 // IMPORT: GAMEMD 0x7E1530 (winmm timeGetTime)
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 // GLOBAL: GAMEMD 0x8B41E0 - a vector of building pointers (the registration list).
