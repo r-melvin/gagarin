@@ -41,14 +41,14 @@ void VoxClass::PlayIndex(int index, int type, int priority)
                 if (DAT_00B1D4CC != 0) {
                     DAT_00B1D4CC->FUN_00407F40();
                 }
-                FUN_00752370();
+                VoxClass::ClearQueues();
                 DAT_00B1D4D0 = 0;
                 DAT_00B1D4D4 = 0;
             }
 
             VoxNode* live = entry->GetActiveVoice();
             if (live == 0 || live->Type != type) {
-                FUN_00752590(entry, type, priority);
+                VoxClass::Enqueue(entry, type, priority);
             }
             FUN_00752760();
         }

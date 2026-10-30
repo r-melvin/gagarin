@@ -78,8 +78,11 @@ struct AudioEventSink
 };
 GG_STATIC_ASSERT(offsetof(AudioEventSink, Timer) == 0);
 
-struct AudioEvent
+// A live event is a node of the ring at 0x87E180 (the link occupies +0x00..+0x0B).
+struct AudioEvent : ListNode
 {
+    // FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop: detach from the peer, release the sub-objects, mark finished
+    void FUN_004052F0();
     // FUNCTION: GAMEMD 0x406190 -- scale the clamped level by the descriptor's ramp and apply it to Sink
     void __fastcall FUN_00406190(unsigned level);
     // FUNCTION: GAMEMD 0x4061D0 -- AdjustAudioEventVolume
@@ -89,7 +92,7 @@ struct AudioEvent
     // FUNCTION: GAMEMD 0x406310 -- the descriptor this event plays
     AudioEventType* GetEventType();
 
-    char _pad000[0x18];       // +0x0000
+    char _pad00C[0x18 - 0x0C];  // +0x000C
     union {
         unsigned int  Flags;      // +0x0018  bit 0 = already stopped
         unsigned char  FlagsLow;  // +0x0018  byte alias
@@ -106,12 +109,24 @@ struct AudioEvent
     char  _pad0AC[0xB0 - 0xAC];
     Peer_00405D40* Peer;      // +0x00B0
     char  _pad0B4[0xB8 - 0xB4];
-    AudioEventSink Sink;      // +0x00B8
-    char  _pad0E0[0x108 - 0xE0];
-    Timer_00401000 Channel;   // +0x0108 (pan; initialized by 0x4062C0)
+    union {
+        Obj_00401000 Timers;      // +0x00B8  the three-timer group armed by 0x401000 at creation
+        struct {
+            AudioEventSink Sink;      // +0x00B8  (the group's first timer)
+            char  _pad0E0[0x108 - 0xE0];
+            Timer_00401000 Channel;   // +0x0108 (the third; pan; initialized by 0x4062C0)
+        };
+    };
     char  _pad130[0x138 - 0x130];
     unsigned int Serial;      // +0x0138
-    char  _pad13C[0x278 - 0x13C];
+    char  _pad13C[0x154 - 0x13C];
+    int   unknown_154;        // +0x0154  cleared at creation
+    int   unknown_158;        // +0x0158  cleared at creation (after the Sink timer is armed)
+    char  _pad15C[0x1E0 - 0x15C];
+    int   unknown_1E0;        // +0x01E0  cleared at creation
+    char  _pad1E4[0x268 - 0x1E4];
+    int   unknown_268;        // +0x0268  cleared at creation
+    char  _pad26C[0x278 - 0x26C];
     AudioController* Controller; // +0x0278 (stored by SetEvent)
     char  _pad27C[0x280 - 0x27C];
 };
@@ -121,9 +136,14 @@ GG_STATIC_ASSERT(offsetof(AudioEvent, EventType) == 0x24);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Subs) == 0x28);
 GG_STATIC_ASSERT(offsetof(AudioEvent, SubCount) == 0xA8);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Peer) == 0xB0);
+GG_STATIC_ASSERT(offsetof(AudioEvent, Timers) == 0xB8);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Sink) == 0xB8);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Channel) == 0x108);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Serial) == 0x138);
+GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_154) == 0x154);
+GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_158) == 0x158);
+GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_1E0) == 0x1E0);
+GG_STATIC_ASSERT(offsetof(AudioEvent, unknown_268) == 0x268);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Controller) == 0x278);
 GG_STATIC_ASSERT(sizeof(AudioEvent) == 0x280);
 

@@ -35,6 +35,10 @@ struct ListNode
     // EDX, nothing cleaned). A plain __thiscall member would push that second
     // argument and return `RET 4`, so the splices keep __fastcall while the
     // one-operand routines are ordinary __thiscall members.
+    // FUNCTION: GAMEMD 0x4072C0 -- initialise a list head
+    void FUN_004072C0();
+    // FUNCTION: GAMEMD 0x4072D0 -- re-arm: Prev = Next = self, Owner = 0
+    void FUN_004072D0();
     // FUNCTION: GAMEMD 0x4073B0
     int FUN_004073B0() const;
     // FUNCTION: GAMEMD 0x4073C0
@@ -66,6 +70,10 @@ struct Obj_00407520
 
     // FUNCTION: GAMEMD 0x407520
     void* FUN_00407520();
+    // FUNCTION: GAMEMD 0x407510 -- release the pool's block
+    void FUN_00407510();
+    // FUNCTION: GAMEMD 0x407530 -- hand a block back to the pool (this in ECX, the block in EDX)
+    void __fastcall FUN_00407530(void* block);
 };
 
 #endif  // GG_MATCH_CORE_INTRUSIVE_LIST_METHODS_H

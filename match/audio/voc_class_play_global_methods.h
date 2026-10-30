@@ -18,11 +18,6 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/voc_class.h"
 
-// FUNCTION: GAMEMD 0x405190 (decl; reloc) -- start a new event for a descriptor.
-AudioEvent* FUN_00405190(AudioEventType* type);
-// FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop an event.
-void FUN_004052F0(AudioEvent* event);
-
 // GLOBAL: GAMEMD 0x8464AC -- VocClass::VoicesEnabled.
 extern char DAT_008464AC;
 

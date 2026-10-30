@@ -29,7 +29,7 @@ AudioEvent* VocClass::PlayGlobal(
         handle = controller->GetEvent();
         if (handle != 0) {
             if (handle->GetEventType() != event) {
-                FUN_004052F0(handle);
+                handle->FUN_004052F0();
                 handle = 0;
             }
         }
@@ -41,7 +41,7 @@ AudioEvent* VocClass::PlayGlobal(
             vol = 0x4000;
 
         if (handle == 0)
-            handle = FUN_00405190(event);
+            handle = event->FUN_00405190();
 
         if (handle != 0) {
             handle->FUN_004061D0(vol);

@@ -52,7 +52,7 @@ int __fastcall FUN_007515C0(void* item)
 // Reset the voice state, then stop, release and clear the engine handle.
 void FUN_00752340()
 {
-    FUN_00752370();
+    VoxClass::ClearQueues();
     if (DAT_00B1D4CC != 0) {
         DAT_00B1D4CC->FUN_00407F40();
         DAT_00B1D4CC->FUN_00407A90();
@@ -74,7 +74,7 @@ void __fastcall FUN_007529A0(bool dropQueue)
         DAT_00B1D4CC->FUN_00407F40();
     }
     if (dropQueue) {
-        FUN_00752370();
+        VoxClass::ClearQueues();
     }
 }
 

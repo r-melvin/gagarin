@@ -60,10 +60,6 @@ extern int DAT_00B1D4D4;
 void FUN_00407450(VoxNode* node);
 // LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
-// FUNCTION: GAMEMD 0x752370 (decl; reloc) — reset the speech queue.
-void __cdecl FUN_00752370();
-// FUNCTION: GAMEMD 0x752590 (decl; reloc) — start an entry.
-void FUN_00752590(VoxClass* entry, int type, int priority);
 // FUNCTION: GAMEMD 0x752760 (decl; reloc) — pump the speech queue.
 void __cdecl FUN_00752760();
 

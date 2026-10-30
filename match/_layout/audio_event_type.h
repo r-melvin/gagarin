@@ -14,9 +14,17 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/triple_timer_init_methods.h"
+#include "../core/intrusive_list_methods.h"
 
-struct AudioEventType
+struct AudioEvent;
+
+// The descriptor is a node of the pool ring at 0x87E250 (the link occupies +0x00..+0x0B).
+struct AudioEventType : ListNode
 {
+    // FUNCTION: GAMEMD 0x4063B0 -- the descriptor named `name`, created on first use; 0 while audio is off
+    static AudioEventType* FUN_004063B0(const char* name);
+    // FUNCTION: GAMEMD 0x405190 -- start a new live event for this descriptor; 0 when none can be had
+    AudioEvent* FUN_00405190();
     // FUNCTION: GAMEMD 0x405130 -- Range, 0 while audio is off
     int FUN_00405130() const;
     // FUNCTION: GAMEMD 0x405140 -- MinVolume, 0 while audio is off
@@ -56,7 +64,6 @@ struct AudioEventType
     // FUNCTION: GAMEMD 0x406650 -- true when Control bit 0 is set and Loop is clear
     int FUN_00406650() const;
 
-    char           unknown_00[0x0C];   // +0x000  list link (re-armed by 0x4072D0)
     int            unknown_0C;         // +0x00C  cleared when a sample name does not resolve
     int            Control;            // +0x010  "Control": bit 0x20 arms Attack, 0x40 arms Decay
     int            Type;               // +0x014  "Type" flags

@@ -27,14 +27,6 @@
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x8);
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
-// The audio-event descriptor a voc entry owns at +0x00; only handled by
-// pointer here.
-// FUNCTION: GAMEMD 0x405190 (decl; reloc) -- start a new event for a descriptor.
-AudioEvent* FUN_00405190(AudioEventType* type);
-// FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop an event.
-void FUN_004052F0(AudioEvent* event);
-// FUNCTION: GAMEMD 0x750AC0 (decl; reloc) -- positional volume (float in ST0) and pan for a descriptor.
-float FUN_00750AC0(CoordStruct* coords, int* pan, AudioEventType* type);
 
 // GLOBAL: GAMEMD 0x8464AC -- VocClass::VoicesEnabled.
 extern char DAT_008464AC;

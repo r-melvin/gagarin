@@ -87,7 +87,7 @@ void VoxClass::SilenceIndex(int index)
         VoxNode* node = ((VoxClass**)VoxArray.Items)[index]->GetActiveVoice();
         while (node != 0)
         {
-            if (node->Link != node)
+            if (node->Next != node)
                 node->Detach();
             if (node == VoxCurrentNode)
                 VoxCurrentNode = 0;

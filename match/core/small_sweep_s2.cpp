@@ -207,7 +207,7 @@ void __fastcall FUN_007535D0()
     {
         DAT_00B1D4CC->FUN_00407F40();
     }
-    FUN_00752370();
+    VoxClass::ClearQueues();
     DAT_00B1D428 = 0;
     DAT_00B1D3D8 = 0;
 }

@@ -16,18 +16,19 @@
 #define GG_MATCH__LAYOUT_VOX_CLASS_H
 
 #include <stddef.h>
+#include <string.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
+#include "../core/intrusive_list_methods.h"
 
 class VoxClass;
+class CCINIClass;
+struct IStream;
 
-// One queued speech node (0x20 bytes). Link is the list Next word of the
-// embedded ListNode at +0x00.
-struct VoxNode
+// One queued speech node (0x20 bytes): a node of one of the queue lists, the entry it plays and its
+// priority, type and serial.
+struct VoxNode : ListNode
 {
-    char unknown_00[0x04];
-    VoxNode* Link;      // +0x04
-    char unknown_08[0x04];
     VoxClass* Entry;    // +0x0C: the speech entry the node plays
     int unknown_10;     // +0x10
     int Priority;       // +0x14
@@ -37,7 +38,6 @@ struct VoxNode
     void Detach();              // call target 0x407450
     VoxNode* FUN_004073E0();    // call target 0x4073E0: the next node in the list
 };
-GG_STATIC_ASSERT(offsetof(VoxNode, Link) == 0x04);
 GG_STATIC_ASSERT(offsetof(VoxNode, Entry) == 0x0C);
 GG_STATIC_ASSERT(offsetof(VoxNode, Priority) == 0x14);
 GG_STATIC_ASSERT(offsetof(VoxNode, Type) == 0x18);
@@ -54,12 +54,31 @@ extern DynamicVectorClass<VoxClass*> DAT_00B1D4A0;
 class VoxClass
 {
 public:
+    // Entry for eva.ini [DialogList]; expanded in place by ReadAll (0x753000).
+    VoxClass(const char* name)
+    {
+        Volume = 1.0f;
+        strcpy(Name, name);
+        Yuri[0] = 0;
+        Russian[0] = 0;
+        Allied[0] = 0;
+        Priority = 1;
+        Type = 0;
+        State = 2;
+        DynamicVectorClass<VoxClass*>& table = DAT_00B1D4A0;
+        table.AddItem(this);
+    }
     static void Play(const char* pName, int type, int priority);        // 0x752700
     static void PlayIndex(int index, int type, int priority);           // 0x752480
     static void SilenceIndex(int index);                                // 0x752A40
     VoxNode* GetActiveVoice();                                          // 0x752680
+    static void ClearQueues();                                          // 0x752370
+    static void Enqueue(VoxClass* entry, int type, int priority);       // 0x752590
+    static void ReadAll(CCINIClass* ini);                                // 0x753000
+    static long Load(IStream* stream);                                   // 0x7533F0
     static void DeleteAll();                                            // 0x7531A0
     void FUN_00752D60();                                                // 0x752D60
+    bool ReadINI(CCINIClass* ini);                                      // 0x752DB0
 
     // Unregisters the entry; expanded in place by DeleteAll's `delete`.
     ~VoxClass()

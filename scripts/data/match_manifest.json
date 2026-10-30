@@ -144389,7 +144389,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/voc_vox_r21_4_methods.cpp",
+  "tu": "match/audio/voc_class_methods.cpp",
   "addr": "0x750FA0",
   "sym": "?FUN_00750FA0@@YIXXZ",
   "len": "0x4d",
@@ -147701,6 +147701,105 @@
   "sym": "?FUN_0063D480@@YIXIHUPoint2D@@@Z",
   "len": "0x7e",
   "name": "?FUN_0063D480@@YIXIHUPoint2D@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio/audio_event_create_methods.cpp",
+  "addr": "0x405190",
+  "sym": "?FUN_00405190@AudioEventType@@QAEPAUAudioEvent@@XZ",
+  "len": "0x143",
+  "name": "AudioEventType::FUN_00405190",
+  "status": "partial",
+  "pct": 86.6
+ },
+ {
+  "tu": "match/audio/audio_event_create_methods.cpp",
+  "addr": "0x4063B0",
+  "sym": "?FUN_004063B0@AudioEventType@@SIPAU1@PBD@Z",
+  "len": "0xe2",
+  "name": "AudioEventType::FUN_004063B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio/voc_class_methods.cpp",
+  "addr": "0x750380",
+  "sym": "??0VocClass@@QAE@PBD@Z",
+  "len": "0x6d",
+  "name": "??0VocClass@@QAE@PBD@Z",
+  "status": "partial",
+  "pct": 88.2
+ },
+ {
+  "tu": "match/audio/voc_class_methods.cpp",
+  "addr": "0x750AC0",
+  "sym": "?GetPositionalVolume@VocClass@@SIMPAUCoordStruct@@PAHPAUAudioEventType@@@Z",
+  "len": "0x27a",
+  "name": "VocClass::GetPositionalVolume",
+  "status": "partial",
+  "pct": 99.0
+ },
+ {
+  "tu": "match/audio/voc_class_methods.cpp",
+  "addr": "0x7510D0",
+  "sym": "?ReadAll@VocClass@@SIXPAVCCINIClass@@@Z",
+  "len": "0x317",
+  "name": "VocClass::ReadAll",
+  "status": "partial",
+  "pct": 99.1
+ },
+ {
+  "tu": "match/audio/voc_class_methods.cpp",
+  "addr": "0x7513F0",
+  "sym": "?DeleteAll@VocClass@@SIXXZ",
+  "len": "0xdc",
+  "name": "VocClass::DeleteAll",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "addr": "0x752370",
+  "sym": "?ClearQueues@VoxClass@@SIXXZ",
+  "len": "0xed",
+  "name": "VoxClass::ClearQueues",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "addr": "0x752590",
+  "sym": "?Enqueue@VoxClass@@SIXPAV1@HH@Z",
+  "len": "0xe3",
+  "name": "VoxClass::Enqueue",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "addr": "0x752DB0",
+  "sym": "?ReadINI@VoxClass@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x248",
+  "name": "VoxClass::ReadINI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "addr": "0x753000",
+  "sym": "?ReadAll@VoxClass@@SIXPAVCCINIClass@@@Z",
+  "len": "0x1a0",
+  "name": "VoxClass::ReadAll",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "addr": "0x7533F0",
+  "sym": "?Load@VoxClass@@SIJPAUIStream@@@Z",
+  "len": "0xe5",
+  "name": "VoxClass::Load",
   "status": "matched",
   "pct": 100.0
  }

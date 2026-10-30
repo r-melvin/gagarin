@@ -54,9 +54,6 @@ GG_STATIC_ASSERT(offsetof(VoxEvent, State) == 0x50);
 #include "../_layout/vox_class.h"
 #include "../_layout/voc_class.h"
 
-// FUNCTION: GAMEMD 0x752370 (decl; reloc) -- drop the current/queued voice.
-void FUN_00752370();
-
 // GLOBAL: GAMEMD 0xB1D4C4 -- the currently playing EVA event, if any.
 extern VoxEvent* DAT_00B1D4C4;
 // GLOBAL: GAMEMD 0xB1D4CC -- the EVA streamer, if any.

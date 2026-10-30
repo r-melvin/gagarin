@@ -43,13 +43,13 @@ AudioEvent* VocClass::PlayAtPos(int index, CoordStruct* coords, int unk)
         return 0;
 
     node->Handle.FUN_00405BE0();
-    FUN_004072D0(&node->Link);
+    FUN_004072D0(node);
     node->Remaining = 0;
     node->Coords = *coords;
     node->Flags = unk;
 
     AudioEvent* result = VocClass::PlayAt(index, &node->Coords, &node->Handle);
-    (&DAT_00B1D320)->FUN_00407420(&node->Link);
+    (&DAT_00B1D320)->FUN_00407420(node);
 
     DAT_00B1D3A8++;
     if (DAT_00B1D3A8 > DAT_00B1D3AC)
@@ -74,7 +74,7 @@ void VoxClass::DeleteAll()
     if (DAT_00B1D4CC != 0)
         DAT_00B1D4CC->FUN_00407F40();
 
-    FUN_00752370();
+    VoxClass::ClearQueues();
 
     while (DAT_00B1D4A0.Count > 0) {
         delete DAT_00B1D4A0.Items[0];

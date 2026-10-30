@@ -35,7 +35,7 @@ AudioEvent* VocClass::PlayAt(
         handle = controller->GetEvent();
         if (handle != 0) {
             if (handle->GetEventType() != event) {
-                FUN_004052F0(handle);
+                handle->FUN_004052F0();
                 handle = 0;
             }
         }
@@ -43,14 +43,14 @@ AudioEvent* VocClass::PlayAt(
 
     if (event != 0) {
         int pan;
-        float volume = FUN_00750AC0(coords, &pan, event);
+        float volume = GetPositionalVolume(coords, &pan, event);
         if (volume > 0.0f) {
             unsigned int vol = (unsigned int)(int)(volume * 16384.0f);
             if (vol >= 0x4000)
                 vol = 0x4000;
 
             if (handle == 0)
-                handle = FUN_00405190(event);
+                handle = event->FUN_00405190();
 
             if (handle != 0) {
                 handle->FUN_004061D0(vol);
@@ -58,7 +58,7 @@ AudioEvent* VocClass::PlayAt(
             }
         } else {
             if (handle != 0) {
-                FUN_004052F0(handle);
+                handle->FUN_004052F0();
                 handle = 0;
             }
         }
