@@ -88506,29 +88506,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu269_methods.cpp",
+  "tu": "match/core/wave_class_small_methods.cpp",
   "addr": "0x75F880",
-  "sym": "?FUN_0075F880@Obj_0075F880@@QBEHXZ",
+  "sym": "?vf_12@WaveClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0075F880::FUN_0075F880",
+  "name": "WaveClass::vf_12",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu269_methods.cpp",
+  "tu": "match/core/wave_class_small_methods.cpp",
   "addr": "0x75F890",
-  "sym": "?FUN_0075F890@Obj_0075F890@@QBEHXZ",
+  "sym": "?vf_30@WaveClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_0075F890::FUN_0075F890",
+  "name": "WaveClass::vf_30",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu269_methods.cpp",
+  "tu": "match/core/wave_class_small_methods.cpp",
   "addr": "0x75F8A0",
-  "sym": "?FUN_0075F8A0@Obj_0075F8A0@@QBEHXZ",
+  "sym": "?vf_34@WaveClass@@UAEPAVObjectTypeClass@@XZ",
   "len": "0x3",
-  "name": "Obj_0075F8A0::FUN_0075F8A0",
+  "name": "WaveClass::vf_34",
   "status": "matched",
   "pct": 100
  },
@@ -88560,11 +88560,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu269_methods.cpp",
+  "tu": "match/core/wave_class_small_methods.cpp",
   "addr": "0x7631F0",
-  "sym": "?FUN_007631F0@Obj_007631F0@@QBEHXZ",
+  "sym": "?vf_11@WaveClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_007631F0::FUN_007631F0",
+  "name": "WaveClass::vf_11",
   "status": "matched",
   "pct": 100
  },
@@ -106093,7 +106093,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/wave_class_remove_methods.cpp",
+  "tu": "match/core/wave_class_small_methods.cpp",
   "addr": "0x75F980",
   "sym": "?vf_53@WaveClass@@UAE_NXZ",
   "len": "0x62",
