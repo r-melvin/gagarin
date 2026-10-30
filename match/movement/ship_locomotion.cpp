@@ -18,6 +18,9 @@
 #include "../_layout/ship_locomotion_class.h"
 #include "drive_support_views.h"
 
+GG_STATIC_ASSERT(sizeof(((ShipLocomotionClass*)0)->SpeedAccum) == 4);
+GG_STATIC_ASSERT(sizeof(((ShipLocomotionClass*)0)->Piggybackee) == 4);
+
 // Ship's foot is the same FootClass prefix the Drive bodies read.
 static inline DriveFootView* ShipFoot(ShipLocomotionClass* self)
 {
@@ -392,6 +395,12 @@ LocoPoint2D ShipLocomotionClass::FUN_006A3DB0(const LocoPoint2D* point, int* fac
     return LocoPoint2D(HeadTo.X + x, HeadTo.Y + y);
 }
 
+// FUNCTION: GAMEMD 0x6A3EA0
+int __stdcall ShipLocomotionClass::ZAdjust()
+{
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x6A3EB0
 int __stdcall ShipLocomotionClass::ZGradient()
 {
@@ -492,6 +501,12 @@ int __stdcall ShipLocomotionClass::GetTrackIndex()
     return TrackIndex;
 }
 
+// FUNCTION: GAMEMD 0x6A4250
+int __stdcall ShipLocomotionClass::GetSpeedAccum()
+{
+    return SpeedAccum;
+}
+
 // FUNCTION: GAMEMD 0x006A4260
 ULONG __stdcall ShipLocomotionClass::AddRef()
 {
@@ -502,6 +517,18 @@ ULONG __stdcall ShipLocomotionClass::AddRef()
 ULONG __stdcall ShipLocomotionClass::Release()
 {
     return LocomotionClass::Release();
+}
+
+// FUNCTION: GAMEMD 0x6A4280
+bool __stdcall ShipLocomotionClass::IsPiggybacking()
+{
+    return Piggybackee != 0;
+}
+
+// FUNCTION: GAMEMD 0x6A42A0
+int ShipLocomotionClass::Size()
+{
+    return 0x70;
 }
 
 // SYNTHETIC: GAMEMD 0x6A42B0 -- compiler-generated scalar deleting destructor.

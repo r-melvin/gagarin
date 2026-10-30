@@ -86409,38 +86409,38 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu209_methods.cpp",
+  "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A3EA0",
-  "sym": "?FUN_006A3EA0@Obj_006A3EA0@@QBEHH@Z",
+  "sym": "?ZAdjust@ShipLocomotionClass@@UAGHXZ",
   "len": "0x5",
-  "name": "Obj_006A3EA0::FUN_006A3EA0",
+  "name": "ShipLocomotionClass::ZAdjust",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu209_methods.cpp",
+  "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A4250",
-  "sym": "?FUN_006A4250@Obj_006A4250@@QBEHPAUArg1_006A4250@@@Z",
+  "sym": "?GetSpeedAccum@ShipLocomotionClass@@UAGHXZ",
   "len": "0xa",
-  "name": "Obj_006A4250::FUN_006A4250",
+  "name": "ShipLocomotionClass::GetSpeedAccum",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu209_methods.cpp",
+  "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A4280",
-  "sym": "?FUN_006A4280@Obj_006A4280@@QBE_NPAUArg1_006A4280@@@Z",
+  "sym": "?IsPiggybacking@ShipLocomotionClass@@UAG_NXZ",
   "len": "0x11",
-  "name": "Obj_006A4280::FUN_006A4280",
+  "name": "ShipLocomotionClass::IsPiggybacking",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu209_methods.cpp",
+  "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A42A0",
-  "sym": "?FUN_006A42A0@Obj_006A42A0@@QBEHXZ",
+  "sym": "?Size@ShipLocomotionClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_006A42A0::FUN_006A42A0",
+  "name": "ShipLocomotionClass::Size",
   "status": "matched",
   "pct": 100
  },
