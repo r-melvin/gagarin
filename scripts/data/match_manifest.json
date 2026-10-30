@@ -28185,7 +28185,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/effect_array_update_methods.cpp",
+  "tu": "match/renderer/shadow_block_list_methods.cpp",
   "addr": "0x5FFFA0",
   "sym": "?DrawAll@SpotLightClass@@SIXXZ",
   "len": "0x20",
@@ -143452,7 +143452,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/r19_4_spotlight_age.cpp",
+  "tu": "match/renderer/shadow_block_list_methods.cpp",
   "addr": "0x5FF320",
   "sym": "?AgeStep@SpotLightClass@@QAEXXZ",
   "len": "0x6d",

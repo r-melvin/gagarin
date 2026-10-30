@@ -8,9 +8,11 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x5FF250  SpotLightClass::SpotLightClass (__thiscall)
 //   FUNCTION: GAMEMD 0x5FF2D0  SpotLightClass::~SpotLightClass (__thiscall)
+//   FUNCTION: GAMEMD 0x5FF320  SpotLightClass::AgeStep (__thiscall)
 //   FUNCTION: GAMEMD 0x5FF390  FUN_005FF390
 //   FUNCTION: GAMEMD 0x5FF420  FUN_005FF420
 //   FUNCTION: GAMEMD 0x5FF800  FUN_005FF800
+//   FUNCTION: GAMEMD 0x5FFFA0  SpotLightClass::DrawAll (__fastcall, static)
 //   VTABLE:   GAMEMD 0x7E2070  BSurface
 //   VTABLE:   GAMEMD 0x7E2104  XSurface
 //   VTABLE:   GAMEMD 0x7E2198  Surface
@@ -44,6 +46,18 @@ SpotLightClass::~SpotLightClass() throw()
 {
     SpotlightArray_RemoveItem(this);
 }
+
+// FUNCTION: GAMEMD 0x5FF320
+// Age this entry by one sweep step; once it has reached 0x50, unregister and free it.
+void SpotLightClass::AgeStep()
+{
+    Age += 8;
+    if (Age >= 0x50 && this != 0) {
+        SpotlightArray_RemoveItem(this);
+        operator delete(this);
+    }
+}
+
 
 // DynamicVectorClass<T>::RemoveItem again, but reached as a free function over the
 // container with the element taken *by value*. Both shapes are needed: the
@@ -271,6 +285,15 @@ void FUN_005FF800()
         DAT_00AC1698[i] = 0;
     }
 }
+
+// FUNCTION: GAMEMD 0x5FFFA0  SpotLightClass::DrawAll (__fastcall, static)
+void SpotLightClass::DrawAll()
+{
+    for (int i = SpotlightArray.Count - 1; i >= 0; i--) {
+        ((SpotLightClass**)SpotlightArray.Items)[i]->Draw();
+    }
+}
+
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAC1698
