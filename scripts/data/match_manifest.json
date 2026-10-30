@@ -147801,5 +147801,41 @@
   "name": "VoxClass::Load",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu050_cell_class.cpp",
+  "addr": "0x4810A0",
+  "sym": "?FUN_004810A0@@YIHPAUCoordStruct@@@Z",
+  "len": "0x84",
+  "name": "?FUN_004810A0@@YIHPAUCoordStruct@@@Z",
+  "status": "partial",
+  "pct": 92.0
+ },
+ {
+  "tu": "match/map/tu050_cell_class.cpp",
+  "addr": "0x4818E0",
+  "sym": "?FUN_004818E0@CellClass@@QAEHD@Z",
+  "len": "0x11b",
+  "name": "CellClass::FUN_004818E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu050_cell_class.cpp",
+  "addr": "0x485390",
+  "sym": "?FUN_00485390@CellClass@@QAEIXZ",
+  "len": "0xc7",
+  "name": "CellClass::FUN_00485390",
+  "status": "partial",
+  "pct": 85.7
+ },
+ {
+  "tu": "match/map/tu050_cell_class.cpp",
+  "addr": "0x485460",
+  "sym": "?FUN_00485460@CellClass@@QAE_NXZ",
+  "len": "0x128",
+  "name": "CellClass::FUN_00485460",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

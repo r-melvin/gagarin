@@ -168,6 +168,12 @@ public:
     void FUN_0047F250(const Point2D* point, const RectangleStruct* clip, int level);
     // FUNCTION: GAMEMD 0x481130 (decl; reloc) -- true when the given slot's bit is clear in the (alt) occupation bits; RET 8.
     bool FUN_00481130(int slot, bool alt);
+    // FUNCTION: GAMEMD 0x4818E0 -- re-roll (when asked) and look up the tiberium overlay variant from the neighbour count; RET 4.
+    int FUN_004818E0(char reroll);
+    // FUNCTION: GAMEMD 0x485390 -- mask of the even directions whose neighbour holds a qualifying overlay.
+    unsigned int FUN_00485390();
+    // FUNCTION: GAMEMD 0x485460 -- whether the cell and its four even-direction neighbours avoid the blocking overlay and land types.
+    bool FUN_00485460();
 
     // Methods recovered in the map/ TUs (consolidated from per-TU views of this class).
     // GAMEMD 0x481870 -- fold this cell's threat into the other houses' tables.

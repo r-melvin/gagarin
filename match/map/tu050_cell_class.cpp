@@ -1621,6 +1621,8 @@ inline Obj_004838E0* Cell_004838E0::GetTerrain() const
 
 // GLOBAL: GAMEMD 0x886FA4
 extern int DAT_00886FA4;
+// GLOBAL: GAMEMD 0x81CD28 -- tiberium density frames, one byte per four-byte entry.
+extern unsigned char DAT_0081CD28[][4];
 
 // FUNCTION: GAMEMD 0x5FDCC0 (decl; reloc) -- overlay type draw offset, written through `out`.
 Point2D* __fastcall FUN_005FDCC0(Point2D* out, int typeIndex);
@@ -2087,18 +2089,38 @@ bool Cell_00480510::ConnectsToOverlay(int overlay, int direction)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4810A0
+// Which quarter of the cell a coordinate falls in (1 + bit 0 east, bit 1 south); 0 when it is
+// within 60 leptons of the cell centre.
+int __fastcall FUN_004810A0(CoordStruct* coord)
+{
+    int x = coord->X & 0xFF;
+    int y = coord->Y & 0xFF;
+    int dx = x - 0x80;
+    int dy = y - 0x80;
+    if ((int)FUN_004CAC40((double)dy * dy + (double)dx * dx) < 0x3C)
+        return 0;
+    int quarter = 0;
+    if (x > 0x80)
+        quarter = 1;
+    if (y > 0x80)
+        quarter |= 2;
+    if (quarter == 0)
+        return 0;
+    return quarter + 1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x481810  CellClass::GetNeighbourCell (__thiscall)
 //   For facing < 8 returns the cell at MapCoords + AdjacentCell[facing&7];
 //   otherwise returns this.
 CellClass* CellClass::GetNeighbourCell(int facing) const
 {
-    if ((unsigned int)facing < 8u)
-    {
-        CellStruct mc = this->MapCoords;
-        return DAT_0087F7E8.FUN_005657A0(mc + AdjacentCell[facing & 7]);
-    }
-    return const_cast<CellClass*>(this);
+    if ((unsigned int)facing >= 8u)
+        return const_cast<CellClass*>(this);
+    CellStruct mc = this->MapCoords;
+    return DAT_0087F7E8.FUN_005657A0(mc + AdjacentCell[facing & 7]);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2122,6 +2144,29 @@ void CellClass::UpdateThreat(unsigned int SourceHouse, int ThreatLevel)
             pHouse->FUN_004FA2E0(region, ThreatLevel);
         }
     }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4818E0
+int CellClass::FUN_004818E0(char reroll)
+{
+    int type;
+    if (OverlayTypeIndex == -1 || (type = OverlayTypeIndexToTiberium(OverlayTypeIndex)) == -1)
+        return 0;
+    int count = 0;
+    int value = TiberiumArrayItems[type]->Value;
+    if (reroll) {
+        TiberiumClass* tiberium = TiberiumArrayItems[type];
+        int low = tiberium->unknown_E0;
+        int high = low - 700 + tiberium->unknown_E8 * 700;
+        OverlayTypeIndex = DAT_00A8B230->unknown_0218.RandomRanged(low, high);
+    }
+    for (int i = 0; i < 8; ++i) {
+        if (OverlayTypeIndexToTiberium(GetNeighbourCell(i)->OverlayTypeIndex) == type)
+            ++count;
+    }
+    OverlayData = DAT_0081CD28[count % TiberiumArrayItems[type]->unknown_E4][0];
+    return (OverlayData + 1) * value;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2639,6 +2684,51 @@ HRESULT __stdcall CellClass::GetClassID(CLSID* pClassID)
 void CellClass::SetMapCoords(CellStruct const* coords)
 {
     this->MapCoords = *coords;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x485390
+// Mask of the four even directions (bit = facing / 2) whose neighbour cell holds a qualifying overlay.
+unsigned int CellClass::FUN_00485390()
+{
+    unsigned int mask = 0;
+    for (int i = 0; i < 4; ++i) {
+        CellClass* cell = GetNeighbourCell(i << 1);
+        int overlay = cell->OverlayTypeIndex;
+        if (overlay != -1 && (cell->SlopeIndex <= 0 || DAT_00A83D84[overlay]->IsVeins)) {
+            if (overlay == 0x7E || DAT_00A83D84[overlay]->IsVeins) {
+                if (overlay != 0x7E || cell->OverlayData >= 0x30)
+                    mask |= 1 << i;
+            }
+        }
+    }
+    return mask;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x485460
+// True when this cell and each even-direction neighbour avoid the blocking land types and overlays.
+bool CellClass::FUN_00485460()
+{
+    if (SlopeIndex > 4)
+        return false;
+    int land = LandType;
+    if (land == 2 || land == 3 || land == 8 || land == 6)
+        return false;
+    if (OverlayTypeIndex != -1 && !DAT_00A83D84[OverlayTypeIndex]->IsVeins)
+        return false;
+    for (int i = 0; i < 8; i += 2) {
+        CellClass* cell = GetNeighbourCell(i);
+        if (cell->SlopeIndex > 4 && SlopeIndex == 0
+            && (cell->OverlayTypeIndex == -1 || !DAT_00A83D84[cell->OverlayTypeIndex]->IsVeins))
+            return false;
+        int neighbourLand = cell->LandType;
+        if (neighbourLand == 2 || neighbourLand == 3 || neighbourLand == 8 || neighbourLand == 6)
+            return false;
+        if (cell->OverlayTypeIndex != -1 && !DAT_00A83D84[cell->OverlayTypeIndex]->IsVeins)
+            return false;
+    }
+    return true;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
