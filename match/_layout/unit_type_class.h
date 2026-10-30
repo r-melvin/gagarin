@@ -32,6 +32,7 @@ public:
     virtual int vf_45();
     // Overrides recovered from retail (bodies in combat/unit_type_class_w3_methods.cpp).
     virtual void vf_13(Obj_004A1D30* crc);              // 13  0x747F70
+    virtual bool vf_25(CCINIClass* ini);                // 25  0x747620
     virtual CoordStruct vf_30();                        // 30  0x747590
     virtual CoordStruct vf_31();                        // 31  0x7475D0
     virtual ObjectClass* vf_35(HouseClass* house);                   // 35  0x747560
@@ -74,8 +75,7 @@ public:
     int          StartDeathFrame;          // +0xE34
     int          MaxDeathCounter;          // +0xE38
     int          Facings;                  // +0xE3C
-    int          FiringSyncFrame0;         // +0xE40
-    int          FiringSyncFrame1;         // +0xE44
+    int          FiringSyncFrame[2];       // +0xE40 (0xE40..0xE47)
     int          BurstDelay[4];            // +0xE48 (0xE48..0xE57)
     SHPStruct*   AltImage;                 // +0xE58 (truncation)
     char         WalkFrames;               // +0xE5C

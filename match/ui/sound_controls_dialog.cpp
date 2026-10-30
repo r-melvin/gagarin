@@ -40,7 +40,7 @@ void FUN_006B6230()
 {
     int result = -1;
     FUN_004068E0("SoundControls: GameSpeed = %d, ScrollRate = %d, Detail = %d\n",
-                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.unknown_10, DAT_00A8EB60.unknown_18);
+                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.ScrollRate, DAT_00A8EB60.DetailLevel);
     DAT_00B0B800 = 0;
     unsigned short id = 0xD6;
     if (DAT_00A8E9A0) {
@@ -61,5 +61,5 @@ void FUN_006B6230()
         FUN_00622720(window);
     }
     FUN_004068E0("SoundControls: GameSpeed = %d, ScrollRate = %d, Detail = %d\n",
-                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.unknown_10, DAT_00A8EB60.unknown_18);
+                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.ScrollRate, DAT_00A8EB60.DetailLevel);
 }

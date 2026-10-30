@@ -18,6 +18,8 @@ struct ColorStruct
     ColorStruct(unsigned char r, unsigned char g, unsigned char b) : R(r), G(g), B(b) {}
     // Declaration: GAMEMD 0x6612C0, ratio and target pointer stacked, RET8.
     void FUN_006612C0(int ratio, const ColorStruct& target);
+    // Declaration: GAMEMD 0x50E430, three byte-sized stack arguments, RET 0xC.
+    void FUN_0050E430(unsigned char first, unsigned char second, unsigned char third);
 };
 
 GG_STATIC_ASSERT(offsetof(ColorStruct, R) == 0x00);

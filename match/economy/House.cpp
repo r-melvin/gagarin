@@ -1174,6 +1174,218 @@ int ObjectTypeClass::IsBuildCat5(int abstractID, int idx)
     return *(int*)(p + 0xE08);
 }
 
+// HouseClass INI reader (0x500B40): reads one house's section, named after its plain name. Every key
+// string, destination offset, reader call and default was read off the user's retail gamemd.exe v1.001
+// disassembly; field names are the INI key strings themselves.
+#include "../_layout/color_struct.h"
+#include "../_layout/scenario_ptr_00a8b230.h"
+#include "../core/scenario_class_methods.h"
+#include "../_layout/session_class.h"
+#include "../ui/game_options_class_methods.h"
+#include "../platform/ccini_class_methods.h"
+
+// GLOBAL: GAMEMD 0xA8EB60 -- the game options.
+extern GameOptionsClass DAT_00A8EB60;
+// GLOBAL: GAMEMD 0x8871E0 -- the active rules.
+#include "../_layout/rules_class.h"
+extern RulesClass* DAT_008871E0;
+// GLOBAL: GAMEMD 0xA8ED84 is the frame counter (core/frame_counter.h).
+
+// The readers this function uses that CCINIClass itself does not declare (same reader object in retail).
+class HouseIniView : public CCINIClass
+{
+public:
+    // FUNCTION: GAMEMD 0x475980 (decl; reloc) -- edge by name.
+    int ReadEdge(const char* section, const char* key, int fallback);
+    // FUNCTION: GAMEMD 0x475260 (decl; reloc) -- a list of house names as a bit mask.
+    unsigned int ReadHousesList(const char* section, const char* key, unsigned int fallback);
+};
+
+// A colour scheme record, as far as this body reads it: the converter and the palette index.
+struct ConvertView_00500B40
+{
+    int unknown_00;
+    int Format;                // +0x04 1 = bytes, otherwise words
+    char unknown_08[0x16C];
+    unsigned char* Pixels;     // +0x174 bytes when Format is 1, words otherwise
+    int Pixel(int index) const
+    {
+        int format = Format;
+        unsigned char* pixels = Pixels;
+        if (format == 1)
+            return pixels[index];
+        return ((unsigned short*)pixels)[index];
+    }
+};
+GG_STATIC_ASSERT(offsetof(ConvertView_00500B40, Format) == 0x04);
+GG_STATIC_ASSERT(offsetof(ConvertView_00500B40, Pixels) == 0x174);
+struct SchemeView_00500B40
+{
+    char unknown_000[0x30C];
+    ConvertView_00500B40* Convert;   // +0x30C
+    char unknown_310[0x20];
+    int PixelIndex;                  // +0x330
+};
+GG_STATIC_ASSERT(offsetof(SchemeView_00500B40, Convert) == 0x30C);
+GG_STATIC_ASSERT(offsetof(SchemeView_00500B40, PixelIndex) == 0x330);
+// GLOBAL: GAMEMD 0xB054D4 -- colour scheme records.
+extern SchemeView_00500B40** DAT_00B054D4;
+// GLOBAL: GAMEMD 0x8A0DD0..0x8A0DE4 -- the display's colour shift operands.
+extern short DAT_008A0DD0;
+extern int DAT_008A0DD4;
+extern short DAT_008A0DD8;
+extern int DAT_008A0DDC;
+extern short DAT_008A0DE0;
+extern int DAT_008A0DE4;
+// GLOBAL: GAMEMD 0x7E2800 -- 0.0 (double).
+extern const double DAT_007E2800;
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square root; __cdecl, one double.
+double __cdecl Sqrt_004CAC40(double value);
+// FUNCTION: GAMEMD 0x50B920 (decl; reloc) -- adjusts the three colour channels in place.
+void __fastcall FUN_0050B920(double* first, double* second, double* third);
+// FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- debug log (format, args...).
+void __cdecl FUN_004068E0(const char* format, ...);
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall string-table lookup.
+unsigned short* __fastcall FUN_00734E60(const char* label, int* out, const char* file, int line);
+// LIBRARY: GAMEMD 0x7CA422 (decl; reloc) -- CRT wcsncpy.
+unsigned short* __cdecl FUN_007CA422(unsigned short* destination, const unsigned short* source, int count);
+// LIBRARY: GAMEMD 0x7CA489 (decl; reloc) -- CRT wcscpy.
+unsigned short* __cdecl FUN_007CA489(unsigned short* destination, const unsigned short* source);
+
+// The inlined bounded-name assignment: the source is copied through a local, then onto the destination.
+static inline void AssignName32(char* destination, const char* source)
+{
+    char copy[0x20];
+    if (source == 0) {
+        copy[0] = 0;
+    } else {
+        strncpy(copy, source, 0x1f);
+        copy[0x1f] = 0;
+    }
+    if (copy != destination)
+        memcpy(destination, copy, 0x20);
+}
+// FUNCTION: GAMEMD 0x500B40
+// PARTIAL: 85.9% (instruction multiset identical, 427 of 427). The remaining delta is stack layout: retail
+// orders the three colour channel doubles B, R, G from the lowest slot (shared with the shift temporaries)
+// where this body gives R, G, B, which moves every access to them and the locals above; the registers of
+// the inlined pixel read also differ. Declaration order, assignment order and the zero-length branch order
+// do not change the slot order. The UI name buffer is 0x60 bytes: the retail frame is 0x40 bytes larger
+// than a 0x20 buffer gives.
+// Reads the house's section: tech level, credits, player control, the UI name, team ratios, IQ, edge,
+// colour (with its laser colour), allies and the team delay timer.
+void HouseClass::FUN_00500B40(CCINIClass* ini)
+{
+    char section[21];
+    strcpy(section, PlainName);
+    ini->Reset();
+    // STRING: GAMEMD 0x824E40
+    TechLevel = ini->ReadInteger(section, "TechLevel", DAT_00A8B230->unknown_1254);
+    // STRING: GAMEMD 0x824E38
+    StartingCredits = ini->ReadInteger(section, "Credits", 0) * 100;
+    // STRING: GAMEMD 0x824E28
+    IsInPlayerControl = ini->ReadBool(section, "PlayerControl", false);
+    if (IsInPlayerControl && Session_00A8B238.GameMode == 0) {
+        if (DAT_00A8EB60.Difficulty == 0)
+            Balance = DAT_008871E0->CampaignMoneyDeltaEasy + StartingCredits;
+        else if (DAT_00A8EB60.Difficulty == 2)
+            Balance = DAT_008871E0->CampaignMoneyDeltaHard + StartingCredits;
+        else
+            Balance = StartingCredits;
+        Balance = Balance > 0 ? Balance : 0;
+    } else {
+        Balance = StartingCredits;
+    }
+    char uiName[0x60];
+    // STRING: GAMEMD 0x81784C
+    // STRING: GAMEMD 0x81784C
+    ini->ReadString(section, "UIName", UINameString, uiName, 0x20);
+    AssignName32(UINameString, uiName);
+    if (UINameString[0]) {
+        // STRING: GAMEMD 0x824724
+        FUN_007CA422(UIName, FUN_00734E60(UINameString, 0, "D:\\ra2mdpost\\House.CPP", 0x213B), 0x20);
+        UIName[20] = 0;
+    } else {
+        FUN_007CA489(UIName, Type->UIName);
+    }
+    // STRING: GAMEMD 0x824E14
+    RatioAITriggerTeam = ini->ReadInteger(section, "RatioAITriggerTeam", RatioAITriggerTeam);
+    // STRING: GAMEMD 0x824E00
+    RatioTeamAircraft = ini->ReadInteger(section, "RatioTeamAircraft", 0x4B);
+    // STRING: GAMEMD 0x824DEC
+    RatioTeamInfantry = ini->ReadInteger(section, "RatioTeamInfantry", 0x4B);
+    // STRING: GAMEMD 0x824DDC
+    RatioTeamBuildings = ini->ReadInteger(section, "RatioTeamUnits", 0x4B);
+    SideIndex = Type->SideIndex;
+    if (SideIndex == -1)
+        SideIndex = 0;
+    int iq = ini->ReadInteger(section, "IQ", 0);
+    if (iq > DAT_008871E0->unknown_1434)
+        iq = 1;
+    IQLevel = iq;
+    IQLevel2 = iq;
+    // STRING: GAMEMD 0x824DD0
+    StartingEdge = static_cast<HouseIniView*>(ini)->ReadEdge(section, "Edge", -1);
+    // STRING: GAMEMD 0x81B138
+    ColorSchemeIndex = ini->ReadColorScheme(section, "Color", ColorSchemeIndex);
+    if (ColorSchemeIndex < 0)
+        ColorSchemeIndex = 5;
+    SchemeView_00500B40* scheme = DAT_00B054D4[ColorSchemeIndex];
+    if (scheme == 0) {
+        FUN_004068E0("********* Forcing House %s [%s] to color WHITE (from %d) because he biffed the initialization process!!!!", PlainName, Type->Name.Data, ColorSchemeIndex);
+        ColorSchemeIndex = 5;
+        scheme = DAT_00B054D4[5];
+    }
+    unsigned short pixel = scheme->Convert->Pixel(scheme->PixelIndex);
+    ColorStruct shifted;
+    shifted.R = (pixel >> DAT_008A0DD0) << DAT_008A0DD4;
+    shifted.G = (pixel >> DAT_008A0DE0) << DAT_008A0DE4;
+    shifted.B = (pixel >> DAT_008A0DD8) << DAT_008A0DDC;
+    Color = shifted;
+    double blue;
+    double red;
+    double green;
+    red = Color.R;
+    green = Color.G;
+    blue = Color.B;
+    double length = Sqrt_004CAC40(red * red + green * green + blue * blue);
+    if (length == DAT_007E2800) {
+        blue = 255.0;
+        green = 255.0;
+        red = 255.0;
+    } else {
+        red = red * 240.0 / length;
+        if (red > 255.0)
+            red = 255.0;
+        green = green * 240.0 / length;
+        if (green > 255.0)
+            green = 255.0;
+        blue = blue * 240.0 / length;
+        if (blue > 255.0)
+            blue = 255.0;
+        if (red < 96.0)
+            red = 0.0;
+        if (green < 96.0)
+            green = 0.0;
+        if (blue < 96.0)
+            blue = 0.0;
+    }
+    FUN_0050B920(&red, &green, &blue);
+    LaserColor.FUN_0050E430((unsigned char)(int)red, (unsigned char)(int)green, (unsigned char)(int)blue);
+    AIGeneral = 0;
+    FUN_004F9B70(DAT_00A8022C[ArrayIndex], false);
+    // STRING: GAMEMD 0x824D5C
+    unsigned int allies = static_cast<HouseIniView*>(ini)->ReadHousesList(section, "Allies", 0);
+    for (int i = 0; i < DAT_00A80238; i++) {
+        HouseClass* other = DAT_00A8022C[i];
+        if (allies & (1 << other->ArrayIndex))
+            FUN_004F9B70(other, false);
+    }
+    TeamDelayTimer = CDTimerClass(DAT_008871E0->TeamDelays.Items[AIDifficulty] + ArrayIndex * 175);
+    Base.FUN_0042EBE0(ini, section);
+    Base.unknown_74 = this;
+}
+
 // FUNCTION: GAMEMD 0x5013A0
 HRESULT __stdcall HouseClass::vf_13()
 {

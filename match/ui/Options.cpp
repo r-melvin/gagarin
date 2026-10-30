@@ -257,6 +257,129 @@ void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
     FUN_004068E0(STR_00832FC4, (double)VoiceVolume);
 }
 
+// The options INI object (the settings file the game reads at start-up).
+#include "../platform/ccini_class_methods.h"
+// GLOBAL: GAMEMD 0x8870C0 -- the options INI.
+extern CCINIClass DAT_008870C0;
+// GLOBAL: GAMEMD 0xA83D20 -- score repeat flag mirrored for the jukebox.
+extern bool DAT_00A83D20;
+// GLOBAL: GAMEMD 0xA83D22 -- score shuffle flag mirrored for the jukebox.
+extern bool DAT_00A83D22;
+// GLOBAL: GAMEMD 0xA8ED63 -- mode toggle flag.
+extern bool DAT_00A8ED63;
+// GLOBAL: GAMEMD 0x8A0DEE -- movie stretch capability.
+extern bool DAT_008A0DEE;
+// GLOBAL: GAMEMD 0x887734 -- the empty wide string.
+extern const wchar_t DAT_00887734[];
+// STRING: GAMEMD 0x82083C -- the wide separator " " (the int 0x20 read as a wide string).
+extern const wchar_t STR_0082083C[];
+// STRING: GAMEMD 0x889F64 -- the shared empty default text.
+extern const char STR_00889F64[];
+// LIBRARY: GAMEMD 0x7CB911 (decl; reloc) -- CRT wide string tokeniser.
+wchar_t* __cdecl FUN_007CB911(wchar_t* string, const wchar_t* separators);
+// LIBRARY: GAMEMD 0x7CB9B8 (decl; reloc) -- CRT wide string to long.
+long __cdecl FUN_007CB9B8(const wchar_t* string, wchar_t** end, int radix);
+// The side bar object at 0x87F7E8; its 0x6A4FF0 takes the cameo text flag.
+struct Sidebar_0087F7E8
+{
+    // FUNCTION: GAMEMD 0x6A4FF0 (decl; reloc)
+    void FUN_006A4FF0(bool cameoText);
+};
+// GLOBAL: GAMEMD 0x87F7E8
+extern Sidebar_0087F7E8 DAT_0087F7E8;
+// FUNCTION: GAMEMD 0x70D180 (decl; reloc) -- __fastcall, one byte flag.
+void __fastcall FUN_0070D180(bool flag);
+
+// FUNCTION: GAMEMD 0x5FA620
+// Reads the [Options], [Video], [Audio] and [Network] settings from the options INI, clamping and
+// logging each one, applies the volumes through the setters, then finishes through 0x5FB050.
+void GameOptionsClass::FUN_005FA620()
+{
+    wchar_t netId[200];
+
+    FUN_004068E0("--------- Loading SUN.INI settings ---------------\n");
+    GameSpeed = DAT_008870C0.ReadInteger("Options", "GameSpeed", GameSpeed);
+    FUN_004068E0("GameSpeed = %d\n", GameSpeed);
+    Difficulty = DAT_008870C0.ReadInteger("Options", "Difficulty", Difficulty);
+    Difficulty = Difficulty < 4 ? Difficulty : 4;
+    Difficulty = Difficulty > 0 ? Difficulty : 0;
+    FUN_004068E0("Difficulty = %d\n", Difficulty);
+    CampDifficulty = DAT_008870C0.ReadInteger("Options", "CampDifficulty", CampDifficulty);
+    CampDifficulty = CampDifficulty < 2 ? CampDifficulty : 2;
+    CampDifficulty = CampDifficulty > 0 ? CampDifficulty : 0;
+    FUN_004068E0("CampDifficulty = %d\n", CampDifficulty);
+    ScrollMethod = DAT_008870C0.ReadInteger("Options", "ScrollMethod", ScrollMethod);
+    FUN_004068E0("ScrollMethod = %d\n", ScrollMethod);
+    ScrollRate = DAT_008870C0.ReadInteger("Options", "ScrollRate", ScrollRate);
+    FUN_004068E0("ScrollRate = %d\n", ScrollRate);
+    AutoScroll = DAT_008870C0.ReadBool("Options", "AutoScroll", AutoScroll);
+    FUN_004068E0("AutoScroll is %s\n", AutoScroll == true ? "ON" : "OFF");
+    DetailLevel = DAT_008870C0.ReadInteger("Options", "DetailLevel", DetailLevel);
+    DetailLevel = DetailLevel < 2 ? DetailLevel : 2;
+    DetailLevel = DetailLevel > 0 ? DetailLevel : 0;
+    FUN_004068E0("DetailLevel = %d\n", DetailLevel);
+    SidebarOnRight = true;
+    FUN_004068E0("SideBar on %s\n", "RIGHT");
+    SidebarCameoText = DAT_008870C0.ReadBool("Options", "SidebarCameoText", SidebarCameoText);
+    FUN_004068E0("Sidebar Text is %s\n", SidebarCameoText == true ? "ON" : "OFF");
+    UnitActionLines = DAT_008870C0.ReadBool("Options", "UnitActionLines", UnitActionLines);
+    FUN_004068E0("ActionLines are %s\n", UnitActionLines == true ? "ON" : "OFF");
+    ShowHidden = DAT_008870C0.ReadBool("Options", "ShowHidden", ShowHidden);
+    FUN_004068E0("ShowHidden is %s\n", ShowHidden == true ? "ON" : "OFF");
+    ToolTips = DAT_008870C0.ReadBool("Options", "ToolTips", ToolTips);
+    FUN_004068E0("ToolTips are %s\n", ToolTips == true ? "ON" : "OFF");
+    ScreenWidth = DAT_008870C0.ReadInteger("Video", "ScreenWidth", ScreenWidth);
+    ScreenHeight = DAT_008870C0.ReadInteger("Video", "ScreenHeight", ScreenHeight);
+    FUN_004068E0("Resolution = %d X %d\n", ScreenWidth, ScreenHeight);
+    StretchMovies = DAT_008870C0.ReadBool("Video", "StretchMovies", StretchMovies);
+    StretchMovies = StretchMovies == true && DAT_008A0DEE == true;
+    FUN_004068E0("StretchMovies is %s\n", StretchMovies == true ? "ON" : "OFF");
+    AllowHiResModes = DAT_008870C0.ReadBool("Video", "AllowHiResModes", AllowHiResModes);
+    FUN_004068E0("AllowHiRes is %s\n", AllowHiResModes == true ? "ON" : "OFF");
+    DAT_00A8ED63 = DAT_008870C0.ReadBool("Video", "AllowModeToggle", DAT_00A8ED63);
+    AllowVRAMSidebar = DAT_008870C0.ReadBool("Video", "AllowVRAMSidebar", AllowVRAMSidebar);
+    SetSoundVolume((float)DAT_008870C0.ReadDouble("Audio", "SoundVolume", SoundVolume), false);
+    SetVoiceVolume((float)DAT_008870C0.ReadDouble("Audio", "VoiceVolume", VoiceVolume), false);
+    SetScoreVolume((float)DAT_008870C0.ReadDouble("Audio", "ScoreVolume", ScoreVolume), false);
+    DAT_00A83D20 = IsScoreRepeat = DAT_008870C0.ReadBool("Audio", "IsScoreRepeat", IsScoreRepeat);
+    FUN_004068E0("ScoreRepeat is %s\n", IsScoreRepeat == true ? "ON" : "OFF");
+    DAT_00A83D22 = IsScoreShuffle = DAT_008870C0.ReadBool("Audio", "IsScoreShuffle", IsScoreShuffle);
+    FUN_004068E0("ScoreShuffle is %s\n", IsScoreShuffle == true ? "ON" : "OFF");
+    InGameMusic = DAT_008870C0.ReadBool("Audio", "InGameMusic", InGameMusic);
+    NetID[0] = -1;
+    NetID[1] = -1;
+    DAT_008870C0.FUN_00528F00("Network", "NetID", DAT_00887734, netId, 200);
+    if (netId[0] != 0) {
+        wchar_t* character = netId;
+        do {
+            *character = ~*character;
+            if (*character == 0)
+                *character = 0xFFFF;
+            character++;
+        } while (*character != 0);
+        wchar_t* token = FUN_007CB911(netId, STR_0082083C);
+        if (token != 0) {
+            NetID[0] = FUN_007CB9B8(token, 0, 10) - 1;
+            token = FUN_007CB911(0, STR_0082083C);
+            if (token != 0)
+                NetID[1] = FUN_007CB9B8(token, 0, 10) - 1;
+        }
+    }
+    if (NetID[0] < -1 || NetID[0] >= 8)
+        NetID[0] = -1;
+    if (NetID[1] < -1 || NetID[1] >= 8)
+        NetID[1] = -1;
+    SoundLatency = DAT_008870C0.ReadInteger("Audio", "SoundLatency", SoundLatency);
+    FUN_004068E0("Emulated sound card latency default = %d\n", SoundLatency);
+    Socket = DAT_008870C0.ReadInteger("Network", "Socket", Socket);
+    NetCard = DAT_008870C0.ReadInteger("Network", "NetCard", NetCard);
+    DAT_008870C0.ReadString("Network", "DestNet", STR_00889F64, DestNet, 0x40);
+    FUN_004068E0("--------- Complete -------------------------------\n");
+    DAT_0087F7E8.FUN_006A4FF0(SidebarCameoText);
+    FUN_0070D180(UnitActionLines);
+    FUN_005FB050();
+}
+
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7EAA50
 extern const double DAT_007EAA50 = 255.0;

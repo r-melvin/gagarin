@@ -121,7 +121,7 @@ void Obj_004E1D00::FUN_004E1D00()
 {
     int result = -1;
     FUN_004068E0("GameControls: GameSpeed = %d, ScrollRate = %d, Detail = %d\n",
-                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.unknown_10, DAT_00A8EB60.unknown_18);
+                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.ScrollRate, DAT_00A8EB60.DetailLevel);
     if (DAT_00A8E9A0 == 1) {
         Window = (HWND)UI_BeginDialog(0xBBB, FUN_004E1FE0, 0);
     } else {
@@ -145,7 +145,7 @@ void Obj_004E1D00::FUN_004E1D00()
         UI_EndDialog(Window);
     }
     FUN_004068E0("GameControls: GameSpeed = %d, ScrollRate = %d, Detail = %d\n",
-                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.unknown_10, DAT_00A8EB60.unknown_18);
+                 DAT_00A8EB60.GameSpeed, DAT_00A8EB60.ScrollRate, DAT_00A8EB60.DetailLevel);
 }
 
 // FUNCTION: GAMEMD 0x4E1DE0
@@ -164,36 +164,36 @@ void Obj_004E1D00::FUN_004E1DE0()
     }
     item = GetDlgItem(Window, 0x52A);
     if (item) {
-        DAT_00A8EB60.unknown_10 = 6 - SendMessageA(item, 0x400, 0, 0);
+        DAT_00A8EB60.ScrollRate = 6 - SendMessageA(item, 0x400, 0, 0);
     }
     item = GetDlgItem(Window, 0x52B);
     if (item) {
         int detail = SendMessageA(item, 0x400, 0, 0);
-        if (DAT_00A8EB60.unknown_18 != detail) {
-            DAT_00A8EB60.unknown_18 = detail;
+        if (DAT_00A8EB60.DetailLevel != detail) {
+            DAT_00A8EB60.DetailLevel = detail;
             DAT_0087F7E8.FUN_004AE450();
         }
     }
     item = GetDlgItem(Window, 0x601);
     if (item) {
-        DAT_00A8EB60.unknown_1E = SendMessageA(item, BM_GETCHECK, 0, 0) == 1;
-        FUN_0070D180(DAT_00A8EB60.unknown_1E);
+        DAT_00A8EB60.UnitActionLines = SendMessageA(item, BM_GETCHECK, 0, 0) == 1;
+        FUN_0070D180(DAT_00A8EB60.UnitActionLines);
     }
     item = GetDlgItem(Window, 0x604);
     if (item) {
-        DAT_00A8EB60.unknown_1F = SendMessageA(item, BM_GETCHECK, 0, 0) == 1;
+        DAT_00A8EB60.ShowHidden = SendMessageA(item, BM_GETCHECK, 0, 0) == 1;
     }
     item = GetDlgItem(Window, 0x602);
     if (item) {
-        DAT_00A8EB60.unknown_20 = SendMessageA(item, BM_GETCHECK, 0, 0) == 1;
+        DAT_00A8EB60.ToolTips = SendMessageA(item, BM_GETCHECK, 0, 0) == 1;
         if (DAT_00887368 && DAT_00A8E9A0 == 1) {
-            DAT_00887368->SetState(DAT_00A8EB60.unknown_20);
+            DAT_00887368->SetState(DAT_00A8EB60.ToolTips);
         }
     }
     if (!DAT_00A8E9A0) {
         item = GetDlgItem(Window, 0x50F);
         if (item) {
-            DAT_00A8EB60.unknown_04 = SendMessageA(item, 0x400, 0, 0);
+            DAT_00A8EB60.Difficulty = SendMessageA(item, 0x400, 0, 0);
         }
     }
 }
@@ -280,25 +280,25 @@ int __stdcall FUN_004E1FE0(void* hwnd, unsigned message, unsigned wParam, long l
         if (item) {
             SendMessageA(item, 0x4AC, 0, 0);
             SendMessageA(item, 0x406, 1, 0x60000);
-            SendMessageA(item, 0x405, 1, 6 - DAT_00A8EB60.unknown_10);
+            SendMessageA(item, 0x405, 1, 6 - DAT_00A8EB60.ScrollRate);
         }
         item = GetDlgItem(window, 0x52B);
         if (item) {
             SendMessageA(item, 0x4AC, 0, 0);
             SendMessageA(item, 0x406, 1, 0x20000);
-            SendMessageA(item, 0x405, 1, DAT_00A8EB60.unknown_18);
+            SendMessageA(item, 0x405, 1, DAT_00A8EB60.DetailLevel);
         }
         item = GetDlgItem(window, 0x601);
         if (item) {
-            SendMessageA(item, BM_SETCHECK, DAT_00A8EB60.unknown_1E != 0, 0);
+            SendMessageA(item, BM_SETCHECK, DAT_00A8EB60.UnitActionLines != 0, 0);
         }
         item = GetDlgItem(window, 0x604);
         if (item) {
-            SendMessageA(item, BM_SETCHECK, DAT_00A8EB60.unknown_1F != 0, 0);
+            SendMessageA(item, BM_SETCHECK, DAT_00A8EB60.ShowHidden != 0, 0);
         }
         item = GetDlgItem(window, 0x602);
         if (item) {
-            SendMessageA(item, BM_SETCHECK, DAT_00A8EB60.unknown_20 != 0, 0);
+            SendMessageA(item, BM_SETCHECK, DAT_00A8EB60.ToolTips != 0, 0);
         }
         if (DAT_00A8E9A0 == 1) {
             item = GetDlgItem(window, 0x52D);
@@ -310,7 +310,7 @@ int __stdcall FUN_004E1FE0(void* hwnd, unsigned message, unsigned wParam, long l
             if (item) {
                 SendMessageA(item, 0x4AC, 0, 0);
                 SendMessageA(item, 0x406, 1, 0x20000);
-                SendMessageA(item, 0x405, 1, DAT_00A8EB60.unknown_04);
+                SendMessageA(item, 0x405, 1, DAT_00A8EB60.Difficulty);
             }
         }
         break;

@@ -146912,5 +146912,50 @@
   "name": "?FUN_007AA6D0@@YGJPAXH@Z",
   "status": "partial",
   "pct": 83.8
+ },
+ {
+  "tu": "match/combat/anim_type_class_ini_427d00.cpp",
+  "addr": "0x427D00",
+  "sym": "?vf_25@AnimTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0xAF6",
+  "name": "AnimTypeClass::vf_25",
+  "status": "partial",
+  "pct": 60.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x500B40",
+  "sym": "?FUN_00500B40@HouseClass@@QAEXPAVCCINIClass@@@Z",
+  "len": "0x615",
+  "name": "HouseClass::FUN_00500B40",
+  "status": "partial",
+  "pct": 85.9
+ },
+ {
+  "tu": "match/ui/Options.cpp",
+  "addr": "0x5FA620",
+  "sym": "?FUN_005FA620@GameOptionsClass@@QAEXXZ",
+  "len": "0x6F0",
+  "name": "GameOptionsClass::FUN_005FA620",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/unit_type_class_ini_747620.cpp",
+  "addr": "0x747620",
+  "sym": "?vf_25@UnitTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x88C",
+  "name": "UnitTypeClass::vf_25",
+  "status": "partial",
+  "pct": 99.7
+ },
+ {
+  "tu": "match/audio/voc_class_ini_750440.cpp",
+  "addr": "0x750440",
+  "sym": "?ReadINI@VocReader_00750440@@QAE_NPAVCCINIClass@@@Z",
+  "len": "0x4DE",
+  "name": "VocReader_00750440::ReadINI",
+  "status": "matched",
+  "pct": 100
  }
 ]

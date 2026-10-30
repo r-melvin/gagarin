@@ -51,6 +51,7 @@ public:
     virtual bool vf_32(const CellStruct* cell, HouseClass* house);
     virtual ObjectClass* vf_35(HouseClass* house);
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x4289D0
+    virtual bool vf_25(CCINIClass* ini);                           // 25  0x427D00
     // FUNCTION: GAMEMD 0x428B80 (decl; reloc), ECX=name, EAX=type pointer.
     static AnimTypeClass* FindOrAllocate(const char* id);
     // Slot 40, introduced by AnimTypeClass (41 slots in all; retail table 0x7E3608).

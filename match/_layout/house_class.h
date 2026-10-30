@@ -57,6 +57,7 @@ class WaypointClass;
 class BuildingClass;
 class TagClass;
 class SuperClass;
+class CCINIClass;
 #include "anger_scout_struct.h"
 
 // --- opaque blocks whose SIZE is proven but whose fields are not named -------
@@ -130,6 +131,8 @@ public:
     int FailedToPlaceNode(class BaseNodeClass* Node);   // GAMEMD 0x42F380
     // FUNCTION: GAMEMD 0x42F260 -- one stack argument (RET 4); BuildingClass 0x440580 passes itself (decl; reloc).
     void FUN_0042F260(BuildingClass* building);
+    // FUNCTION: GAMEMD 0x42EBE0 (decl; reloc) -- reads the base layout of a house's section, RET 8.
+    void FUN_0042EBE0(CCINIClass* ini, const char* section);
 };
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_04) == 4);
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_74) == 0x74);
@@ -707,6 +710,8 @@ public:
     void FUN_004FCE80(CellStruct* cell, char flag);
     // FUNCTION: GAMEMD 0x50B1D0
     void FUN_0050B1D0();
+    // FUNCTION: GAMEMD 0x500B40 -- reads the house's INI section, RET 4.
+    void FUN_00500B40(CCINIClass* ini);
     // FUNCTION: GAMEMD 0x50BF60 -- no stack arguments (Ghidra: __fastcall, one unused ECX).
     void FUN_0050BF60();
     // FUNCTION: GAMEMD 0x50B6F0 -- 52 bytes, result in AL.
