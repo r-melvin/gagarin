@@ -17,6 +17,17 @@ TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; c
 extern char DAT_00A8EC30[];
 
 // TU-WINDOW: past the proven header-initializer end 0x65A746.
+// FUNCTION: GAMEMD 0x65A750
+RadioClass::RadioClass()
+    : RadioLinks(1)
+{
+    RadioLinks[0] = 0;
+    for (int i = 0; i < 3; i++) {
+        LastCommands[i] = 0;
+    }
+}
+
+// TU-WINDOW: past the proven header-initializer end 0x65A746.
 // FUNCTION: GAMEMD 0x0065A970
 int RadioClass::vf_159(int command, void* data, RadioClass* peer)
 {

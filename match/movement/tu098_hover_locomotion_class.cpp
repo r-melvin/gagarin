@@ -897,6 +897,15 @@ bool Obj_00517560::FUN_00517590(Arg1_00517560* a1)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5175D0
+// Never returns: a one-instruction self-jump (a trap stub whose caller 0x5175E0 negates its result).
+bool Obj_005175E0::FUN_005175D0()
+{
+    for (;;) {
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005175E0
 bool Obj_005175E0::FUN_005175E0()
 {

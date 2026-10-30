@@ -136,6 +136,18 @@ double DAT_008B3CB0 = DAT_008B3C60 / DAT_007E89C8;
 // GLOBAL: GAMEMD 0x8B3C98
 double DAT_008B3C98 = DAT_007E1718 / DAT_008B3CB0;
 
+// GLOBAL: GAMEMD 0x8B3C78 -- the unset coordinate, {0, 0, 0}.
+extern const CoordStruct DAT_008B3C78;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4CC9A0
+FlyLocomotionClass::FlyLocomotionClass()
+    : AirportBound(false), Destination_(DAT_008B3C78), unknown_28(DAT_008B3C78), HasMoveOrder(false),
+      FlightLevel(0), TargetSpeed(0), CurrentSpeed(0), IsTakingOff(false), IsLanding(false),
+      WasLanding(false), IsSpinning(false), unknown_54(0), SpinCount(0), IsElevating(false)
+{
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ILocomotion slot +0x0C — bind the locomotor to a client. The base does the
 // binding; this override then records the aircraft type airport-bound flag.

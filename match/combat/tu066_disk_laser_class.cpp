@@ -36,6 +36,7 @@
 // Global query leaves, ordered ascending by retail address.
 
 #include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
 
 class DiskLaserClass;
 
@@ -89,6 +90,7 @@ struct Obj_004A7C80
 #include "../_layout/abstract_class.h"
 #include "../_layout/airstrike_class.h"
 #include "../_layout/disk_laser_class.h"
+#include "../_layout/swizzle_manager_class.h"
 #include "../_layout/temporal_class.h"
 
 #include "../_layout/aircraft_class.h"
@@ -281,6 +283,20 @@ void DiskLaser_004A7900::PointerGotInvalid(void* pInvalid)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4A7A30
+DiskLaserClass::DiskLaserClass()
+{
+    Owner = 0;
+    Target = 0;
+    unknown_2C = 0;
+    unknown_30 = 0;
+    unknown_34 = 0;
+    unknown_38 = 0;
+    unknown_3C = 0;
+    DynamicVectorAddItemFree(&DAT_008A0208, this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004A7AD0
 DiskLaserClass::DiskLaserClass(const AbstractNoInit& noInit) : AbstractClass(noInit)
 {
@@ -299,6 +315,20 @@ DiskLaserClass::~DiskLaserClass()
 void DiskLaserClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractClass::vf_13(crc);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4A7B90
+HRESULT __stdcall DiskLaserClass::Load(IStream* pStm)
+{
+    HRESULT hr = AbstractClass::Load(pStm);
+    if (hr >= 0) {
+        new (this) DiskLaserClass(AbstractNoInit());
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Target);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2C);
+    }
+    return hr;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -17,6 +17,10 @@
 //   0x41D7E0.
 
 #include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
+#include "../_layout/airstrike_class.h"
+#include "../_layout/techno_class.h"
+#include "../_layout/techno_type_class.h"
 class AirstrikeClass;
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -53,6 +57,25 @@ GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, CapacityIncrement) == 0x14);
 #include "airstrike_class_reset_target_methods.h"
 
 #include "../core/small_misc47_methods.h"
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x41D380
+AirstrikeClass::AirstrikeClass(TechnoClass* owner)
+{
+    DynamicVectorAddItemFree(&Array, this);
+    unknown_3C = false;
+    unknown_4C = owner;
+    unknown_3D = false;
+    unknown_24 = unknown_4C->vf_33()->AirstrikeTeam;
+    unknown_28 = unknown_4C->vf_33()->EliteAirstrikeTeam;
+    unknown_44 = unknown_4C->vf_33()->AirstrikeRechargeTime;
+    unknown_48 = unknown_4C->vf_33()->EliteAirstrikeRechargeTime;
+    unknown_54 = unknown_4C->vf_33()->AirstrikeTeamType;
+    AircraftTypeClass* elite = unknown_4C->vf_33()->EliteAirstrikeTeamType;
+    unknown_5C = 0;
+    unknown_58 = elite;
+    Target = 0;
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x41D7E0

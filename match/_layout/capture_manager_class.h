@@ -49,6 +49,18 @@ struct CaptureControlNodeVector : DynamicVectorClassLayout
         CapacityIncrement = 10;
         Count = 0;
     }
+    // The same empty vector built in the order the default CaptureManagerClass constructor (0x471890)
+    // stores it: Items, Capacity, the two flag bytes, the vtable, then the growth step and Count.
+    explicit CaptureControlNodeVector(int)
+    {
+        Items = 0;
+        Capacity = 0;
+        ((unsigned char*)&unknown_0C)[0] = 1;
+        ((unsigned char*)&unknown_0C)[1] = 0;
+        _vtable = (void*)0x7E4BA4;
+        CapacityIncrement = 10;
+        Count = 0;
+    }
 };
 
 class CaptureManagerClass : public AbstractClass

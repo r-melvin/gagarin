@@ -148233,5 +148233,68 @@
   "name": "Obj_004A1D30::FUN_004A1CA0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/tu021_airstrike_class.cpp",
+  "addr": "0x41D380",
+  "sym": "??0AirstrikeClass@@QAE@PAVTechnoClass@@@Z",
+  "len": "0x107",
+  "name": "AirstrikeClass::AirstrikeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/tu044_capture_manager_class.cpp",
+  "addr": "0x471890",
+  "sym": "??0CaptureManagerClass@@QAE@XZ",
+  "len": "0xb2",
+  "name": "CaptureManagerClass::CaptureManagerClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/tu066_disk_laser_class.cpp",
+  "addr": "0x4A7A30",
+  "sym": "??0DiskLaserClass@@QAE@XZ",
+  "len": "0x91",
+  "name": "DiskLaserClass::DiskLaserClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/tu066_disk_laser_class.cpp",
+  "addr": "0x4A7B90",
+  "sym": "?Load@DiskLaserClass@@UAGJPAUIStream@@@Z",
+  "len": "0x73",
+  "name": "DiskLaserClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "addr": "0x4CC9A0",
+  "sym": "??0FlyLocomotionClass@@QAE@XZ",
+  "len": "0x80",
+  "name": "FlyLocomotionClass::FlyLocomotionClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "addr": "0x5175D0",
+  "sym": "?FUN_005175D0@Obj_005175E0@@QAE_NXZ",
+  "len": "0x2",
+  "name": "Obj_005175E0::FUN_005175D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/tu189_radio_class.cpp",
+  "addr": "0x65A750",
+  "sym": "??0RadioClass@@QAE@XZ",
+  "len": "0x8a",
+  "name": "RadioClass::RadioClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

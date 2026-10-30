@@ -53,6 +53,7 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include "../core/vector_class_operations.h"
+#include "../core/vector_add_item_free.h"
 #include "../_layout/capture_manager_class.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -278,6 +279,24 @@ double DAT_0089E170 = DAT_0089E120 / DAT_007E4AC0;
 // SYNTHETIC: GAMEMD 0x471590
 // GLOBAL: GAMEMD 0x89E158
 double DAT_0089E158 = DAT_007E1718 / DAT_0089E170;
+
+// GLOBAL: GAMEMD 0x89E0F0 -- RTTI identifies DynamicVectorClass<CaptureManagerClass*>.
+extern DynamicVectorClass<CaptureManagerClass*> DAT_0089E0F0;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x471890
+// Default constructor: an empty control-node vector, one allowed node, and the manager registers itself.
+CaptureManagerClass::CaptureManagerClass()
+    : ControlNodes(0)
+{
+    Owner = 0;
+    MaxControlNodes = 1;
+    InfiniteMindControl = 0;
+    OverloadDeathSoundPlayed = 0;
+    OverloadDamageDelay = 30;
+    OverloadPipState = 0;
+    DynamicVectorAddItemFree(&DAT_0089E0F0, this);
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x471C90
