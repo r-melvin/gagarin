@@ -71,17 +71,20 @@ def _parse(path, full):
 
 
 DIR32 = 6
+REL32 = 0x14
 
 
 def resolved_equal(base_section, new_section, resolve):
-    """True when two (bytes, relocs) sections link to identical bytes once every absolute (DIR32) relocation
+    """True when two (bytes, relocs) sections link to identical bytes once every DIR32 and REL32 relocation
     target is resolved to an address: an immediate 0x87F7E8 with no relocation equals a relocation to a symbol
-    bound to 0x87F7E8 (the linked bytes are the same). RESOLVE(symbol) -> address or None. Any other
-    difference (other bytes, other relocation kinds, unresolvable or different targets) is not equal."""
+    bound to 0x87F7E8, and symbol X+0 equals symbol Y+k when addr(X) == addr(Y)+k (the in-place field is the
+    addend on both sides). A REL32 slot must carry a REL32 relocation on both sides (the section offset, hence
+    the pc-relative base, is the same). RESOLVE(symbol) -> address or None. Any other difference (other bytes,
+    other relocation kinds, unresolvable or different targets) is not equal."""
     (db, rb), (dn, rn) = base_section, new_section
     if len(db) != len(dn):
         return False
-    slots = {o for o, _, t in list(rb) + list(rn) if t == DIR32}
+    slots = {o for o, _, t in list(rb) + list(rn) if t in (DIR32, REL32)}
     if {x for x in rb if x[0] not in slots} != {x for x in rn if x[0] not in slots}:
         return False
     mb, mn = bytearray(db), bytearray(dn)
@@ -95,11 +98,19 @@ def resolved_equal(base_section, new_section, resolve):
     def value(data, rel, o):
         imm = struct.unpack_from("<I", data, o)[0]
         for ro, sym, t in rel:
-            if ro == o and t == DIR32:
+            if ro == o and t in (DIR32, REL32):
                 a = resolve(sym)
-                return ("abs", (a + imm) & 0xFFFFFFFF) if a is not None else ("sym", sym, imm)
-        return ("abs", imm)
-    return all(value(db, rb, o) == value(dn, rn, o) for o in slots)
+                return (t, (a + imm) & 0xFFFFFFFF) if a is not None else ("sym", sym, t, imm)
+        return (DIR32, imm)
+    for o in slots:
+        vb, vn = value(db, rb, o), value(dn, rn, o)
+        if vb != vn:
+            return False
+        kinds = {t for off, _, t in list(rb) + list(rn) if off == o}
+        if REL32 in kinds and not (any(off == o and t == REL32 for off, _, t in rb)
+                                   and any(off == o and t == REL32 for off, _, t in rn)):
+            return False    # a pc-relative slot against an absolute value or a bare displacement
+    return True
 
 
 def sections_resolved_equal(base_obj, new_obj, key, resolve):

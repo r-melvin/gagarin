@@ -466,6 +466,36 @@ class ResolvedSections(unittest.TestCase):
         res = {"a": 0x401000, "b": 0x401000}.get
         self.assertTrue(S.resolved_equal(self.sec(0, [(1, "a", 6)]), self.sec(0, [(1, "b", 6)]), res))
 
+    def rel(self, disp, rel=()):
+        import struct
+        return (b"\xe8" + struct.pack("<i", disp) + b"\xc3", list(rel))
+
+    def test_rel32_rename_same_address_equal(self):
+        import sectioncmp as S
+        res = {"?old@@YAXXZ": 0x452D40, "?new@@YAXXZ": 0x452D40}.get
+        self.assertTrue(S.resolved_equal(self.rel(-4, [(1, "?old@@YAXXZ", 0x14)]), self.rel(-4, [(1, "?new@@YAXXZ", 0x14)]), res))
+
+    def test_rel32_different_address_unequal(self):
+        import sectioncmp as S
+        res = {"?a@@YAXXZ": 0x452D40, "?b@@YAXXZ": 0x452D50}.get
+        self.assertFalse(S.resolved_equal(self.rel(-4, [(1, "?a@@YAXXZ", 0x14)]), self.rel(-4, [(1, "?b@@YAXXZ", 0x14)]), res))
+        res = {"a": 0x10, "b": 0x10}.get
+        self.assertFalse(S.resolved_equal(self.rel(-4, [(1, "a", 0x14)]), self.rel(-8, [(1, "b", 0x14)]), res))   # displacement differs
+        self.assertFalse(S.resolved_equal(self.rel(-4, [(1, "a", 0x14)]), self.rel(-4, [(1, "b", 6)]), res))    # rel vs abs kind
+
+    def test_dir32_x_to_y_plus_k_equal(self):
+        import sectioncmp as S
+        res = {"X": 0x87F7F8, "Y": 0x87F7E8}.get
+        self.assertTrue(S.resolved_equal(self.sec(0, [(1, "X", 6)]), self.sec(0x10, [(1, "Y", 6)]), res))
+        self.assertFalse(S.resolved_equal(self.sec(0, [(1, "X", 6)]), self.sec(0x14, [(1, "Y", 6)]), res))
+
+    def test_unresolvable_unequal(self):
+        import sectioncmp as S
+        res = {"a": 0x10}.get
+        self.assertFalse(S.resolved_equal(self.rel(-4, [(1, "a", 0x14)]), self.rel(-4, [(1, "nope", 0x14)]), res))
+        self.assertFalse(S.resolved_equal(self.rel(-4, [(1, "nope", 0x14)]), self.rel(-4, [(1, "a", 0x14)]), res))
+        self.assertFalse(S.resolved_equal(self.sec(0, [(1, "nope", 6)]), self.sec(0, [(1, "a", 6)]), res))
+
     def test_gate_uses_resolver(self):
         import gates
         rows = {"?f@@YAXXZ": {"sym": "?f@@YAXXZ", "addr": "0x5D0850", "len": "0x10", "status": "matched"}}
