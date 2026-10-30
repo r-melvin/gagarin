@@ -7,6 +7,7 @@
 
 #include "../ui/input_controls/ui_display_chain.h"
 #include "../ui/input_controls/display_scenario.h"
+#include "../_layout/cell_class.h"
 
 // FUNCTION: GAMEMD 0x545000 (decl; reloc) -- rebuilds the global light record and clears every cell's +0x34.
 void FUN_00545000();
@@ -19,7 +20,7 @@ void MapClass::FUN_004AE450()
 {
     FUN_00545000();
     Map_0087F7E8.FUN_00578350();
-    DisplayScCellObject* cell = Map_0087F7E8.FUN_00578290();
+    CellClass* cell = Map_0087F7E8.FUN_00578290();
     DAT_00ABDC84 = 0;
     while (cell != 0)
     {

@@ -300,6 +300,9 @@ bool MapClass::FUN_0056E890(const CellStruct* cell, int* houseTypeValue, int* se
     return false;
 }
 
+// Unclaimed (below partial bar): GAMEMD 0x578290 MapClass::FUN_00578290, the next cell of the iteration over
+// the owned-cell table (best 68.6%).
+
 // FUNCTION: GAMEMD 0x581090
 void MapClass::FUN_00581090()
 {

@@ -1374,11 +1374,11 @@ void DisplayClass::vf_32(DisplayScIni* ini)
         ground.Second = DisplayScGround_00AA0738;
     }
     FUN_00578350();
-    for (DisplayScCellObject* cell = FUN_00578290(); cell; cell = FUN_00578290())
+    for (CellClass* cell = FUN_00578290(); cell; cell = FUN_00578290())
     {
-        cell->unknown_38 = DisplayScScenario_00A8B230->Random_218.FUN_0065C7E0(0, ground.Base) + ground.Second;
-        cell->unknown_11B += (unsigned char)level;
-        cell->unknown_11A = 0;
+        cell->IsoTileTypeIndex = DisplayScScenario_00A8B230->Random_218.FUN_0065C7E0(0, ground.Base) + ground.Second;
+        cell->Level += (unsigned char)level;
+        cell->Height = 0;
     }
 
     DisplayScScenario_00A8B230->Theater = ini->FUN_00475870("Map", "Theater", 0);

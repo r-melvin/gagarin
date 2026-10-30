@@ -188,6 +188,7 @@ public:
     int GetRadLevel();                            // GAMEMD 0x487CB0
     int GetContainedTiberiumIndex() const;        // GAMEMD 0x485010
     bool FUN_00483690();                          // GAMEMD 0x483690
+    void FUN_00483E30(int v0, int v1, int v2, int v3, int v4, int v5);   // GAMEMD 0x483E30
     bool FUN_00483620();                          // GAMEMD 0x483620
     void SetMapCoords(CellStruct const* coords);  // GAMEMD 0x485240
     void RadLevel_Increase(double amount);        // GAMEMD 0x487CE0

@@ -348,7 +348,7 @@ public:
     void FUN_00577F30(void* house);
     // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the next cell of the iteration, or null. Two typed views again (the
     // display_scenario.h and mouse_mouse_class.h CellClass views).
-    DisplayScCellObject* FUN_00578290();
+    CellClass* FUN_00578290();
     MapSavedObject* NextSavedObject_00578290();
     // FUNCTION: GAMEMD 0x578350 (decl; reloc) -- rewind the cell-object iteration.
     void FUN_00578350();
@@ -417,7 +417,13 @@ public:
     DynamicVectorClass<Cell> ListA; // +0x00D4
     RectangleStruct MapRect;                         // +0x00EC [Map] Size (its address is the first argument of slot 28)
     RectangleStruct LocalRect;                       // +0x00FC [Map] LocalSize
-    char  unknown_10C[0x134 - 0x10C];                // +0x010C
+    int   unknown_10C;                               // +0x010C cell iterator, see 0x578290
+    int   unknown_110;                               // +0x0110
+    int   unknown_114;                               // +0x0114
+    CellClass** unknown_118;                         // +0x0118 cursor into the owned-cell table
+    int   unknown_11C;                               // +0x011C
+    int   unknown_120;                               // +0x0120
+    char  unknown_124[0x134 - 0x124];                // +0x0124
     int   unknown_134;                               // +0x0134 cleared by slot 24 0x565BC0
     VectorClass<CellClass*> Owned; // +0x0138
     int unknown_148; // +0x0148
@@ -440,6 +446,12 @@ GG_STATIC_ASSERT(offsetof(MapClass, Rings) == 0x8C);
 GG_STATIC_ASSERT(offsetof(MapClass, ListA) == 0xD4);
 GG_STATIC_ASSERT(offsetof(MapClass, MapRect) == 0xEC);
 GG_STATIC_ASSERT(offsetof(MapClass, LocalRect) == 0xFC);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_10C) == 0x10C);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_110) == 0x110);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_114) == 0x114);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_118) == 0x118);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_11C) == 0x11C);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_120) == 0x120);
 GG_STATIC_ASSERT(offsetof(MapClass, unknown_134) == 0x134);
 GG_STATIC_ASSERT(offsetof(MapClass, Owned) == 0x138);
 GG_STATIC_ASSERT(offsetof(MapClass, unknown_148) == 0x148);
