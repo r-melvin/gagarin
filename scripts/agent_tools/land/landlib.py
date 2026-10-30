@@ -562,6 +562,11 @@ class Packet:
         return d
 
     BINDING_DELTA_NAMES = ("symbol_bindings_delta.json", "binding_delta.json")
+    CORRECTIONS_NAME = "binding_corrections.json"
+
+    def binding_corrections(self):
+        """(entries, errors) from the packet's binding_corrections.json (see parse_binding_corrections)."""
+        return parse_binding_corrections(os.path.join(self.dir, self.CORRECTIONS_NAME))
 
     def bindings_delta(self):
         """{symbol: address} additions for the central scripts/data/symbol_bindings.json, from
@@ -571,6 +576,7 @@ class Packet:
         Returns {} when there is nothing."""
         self.binding_conflicts = []
         out = {}
+        corr = {c["symbol"]: c for c in self.binding_corrections()[0]}
 
         def put(k, v, src):
             v = "0x%08X" % (v if isinstance(v, int) else int(v, 16))
@@ -588,11 +594,17 @@ class Packet:
             for k, v in d.items():
                 if isinstance(v, (str, int)):
                     put(k, v, n)
+        for k, c in corr.items():
+            put(k, c["new_addr"], self.CORRECTIONS_NAME)
         added, removed = self.patch_bindings()
         for k, v in removed.items():
+            if k in corr and v == corr[k]["old_addr"] and added.get(k) == corr[k]["new_addr"]:
+                continue        # the patch hunk is exactly the sanctioned correction
             if k not in added or added[k] != v:
                 self.binding_conflicts.append("%s: patch.diff changes or removes the existing central entry %s" % (k, v))
         for k, v in added.items():
+            if k in corr and v == corr[k]["new_addr"]:
+                continue
             if removed.get(k) != v:       # a re-added unchanged line (comma fix-up) is formatting only
                 put(k, v, "patch.diff")
         return out
@@ -698,20 +710,88 @@ class Packet:
         return {int(x.split()[0], 16) for x in open(p) if x.strip() and not x.startswith("#")}
 
 
-def merge_bindings(tree, add):
+def norm_addr(v):
+    return "0x%08X" % (v if isinstance(v, int) else int(v, 16))
+
+
+def parse_binding_corrections(path):
+    """Read a packet's binding_corrections.json: a list of {symbol, old_addr, new_addr, evidence}.
+    Returns (entries, errors); entries carry normalised 0x%08X addresses. Shape only; whether old_addr
+    matches the central file is checked where the central file is at hand (merge_bindings, pktlint)."""
+    if not os.path.isfile(path):
+        return [], []
+    try:
+        d = json.load(open(path))
+    except Exception as ex:
+        return [], ["binding_corrections.json unreadable: %s" % ex]
+    if isinstance(d, dict) and isinstance(d.get("corrections"), list):
+        d = d["corrections"]
+    if not isinstance(d, list):
+        return [], ["binding_corrections.json must be a list of {symbol, old_addr, new_addr, evidence}"]
+    out, errs, seen = [], [], set()
+    for i, e in enumerate(d):
+        if not isinstance(e, dict):
+            errs.append("binding_corrections.json[%d]: not an object" % i)
+            continue
+        sym = e.get("symbol")
+        bad = False
+        if not isinstance(sym, str) or not sym:
+            errs.append("binding_corrections.json[%d]: missing 'symbol'" % i)
+            bad = True
+        addrs = {}
+        for f in ("old_addr", "new_addr"):
+            try:
+                if isinstance(e.get(f), bool):
+                    raise ValueError
+                addrs[f] = norm_addr(e[f])
+            except Exception:
+                errs.append("binding_corrections.json[%d] (%s): '%s' missing or not an address" % (i, sym, f))
+                bad = True
+        ev = e.get("evidence")
+        if not isinstance(ev, str) or not ev.strip():
+            errs.append("binding_corrections.json[%d] (%s): 'evidence' is empty (say why the central address is wrong)" % (i, sym))
+            bad = True
+        if bad:
+            continue
+        if addrs["old_addr"] == addrs["new_addr"]:
+            errs.append("binding_corrections.json[%d] (%s): old_addr equals new_addr" % (i, sym))
+            continue
+        if sym in seen:
+            errs.append("binding_corrections.json[%d]: duplicate symbol %s" % (i, sym))
+            continue
+        seen.add(sym)
+        out.append(dict(symbol=sym, old_addr=addrs["old_addr"], new_addr=addrs["new_addr"], evidence=ev.strip()))
+    return out, errs
+
+
+def merge_bindings(tree, add, corrections=()):
     """Merge {symbol: address} into TREE's central bindings file in its tracked format
-    (sorted keys, 0x%08X, indent=1). Returns (added, conflicts); nothing is written on a conflict."""
+    (sorted keys, 0x%08X, indent=1). Returns (added, conflicts); nothing is written on a conflict.
+    CORRECTIONS (parse_binding_corrections entries) are the one sanctioned way to change an existing
+    entry: each applies only when the central value still equals its old_addr; they count in `added`."""
     p = os.path.join(tree, BINDINGS)
-    if not add or not os.path.isfile(p):
+    corr = {c["symbol"]: c for c in corrections}
+    if (not add and not corr) or not os.path.isfile(p):
         return 0, []
     raw = open(p).read()
     cur = json.loads(raw)
     n, bad = 0, []
+    for k, c in corr.items():
+        if k not in cur:
+            bad.append("%s: correction names a symbol absent from the central bindings" % k)
+        elif cur[k] != c["old_addr"]:
+            bad.append("%s: correction expects central %s, central is %s" % (k, c["old_addr"], cur[k]))
+        else:
+            cur[k] = c["new_addr"]
+            n += 1
     for k, v in add.items():
         if k.startswith("$L"):
             continue
-        v = "0x%08X" % (v if isinstance(v, int) else int(v, 16))
-        if k in cur and cur[k] != v:
+        v = norm_addr(v)
+        if k in corr:
+            if v != corr[k]["new_addr"]:
+                bad.append("%s: packet %s contradicts its own correction to %s" % (k, v, corr[k]["new_addr"]))
+        elif k in cur and cur[k] != v:
             bad.append("%s: central %s, packet %s" % (k, cur[k], v))
         elif k not in cur:
             cur[k] = v

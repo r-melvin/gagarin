@@ -411,6 +411,23 @@ def cfg_span(addr):
     return ctx.cfg_extent(addr)
 
 
+# ---------------------------------------------------------------- per-TU guard symbols
+GUARD_SYM = re.compile(r"(?:^|::)(_?\$[SE]\d+)$")
+
+
+def guard_key_problem(key):
+    """Why a rekey / packet-map key naming a per-TU guard or atexit symbol (_$S<n>, _$E<n>) cannot work, else None.
+    Such names repeat in every TU: an unscoped key is not a usable binding, and a scoped 'tu::sym' key is
+    honoured only from the central scripts/data/symbol_bindings.json (verify_relocations._scoped), never
+    from a packet map or a rekey file."""
+    m = GUARD_SYM.search(key) if isinstance(key, str) else None
+    if not m:
+        return None
+    if "::" in key:
+        return "scoped guard key %s is honoured only from the central symbol_bindings.json" % key
+    return "per-TU guard symbol %s is ignored unless scoped as 'tu::%s' in the central symbol_bindings.json" % (key, m.group(1))
+
+
 # ---------------------------------------------------------------- COFF symbols
 def coff_symbols(obj):
     """[(name, section, value, storage_class)] of an i386 COFF object."""

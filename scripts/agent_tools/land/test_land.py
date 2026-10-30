@@ -434,5 +434,128 @@ class GatesFixes(unittest.TestCase):
         self.assertEqual(gates.unexplained_sections(rep, rows, {"?f@@YAXXZ"}, boom, str, str), ([], []))
 
 
+class ResolvedSections(unittest.TestCase):
+    """An absolute immediate that becomes a relocation to a symbol bound to that address is not a byte change."""
+    import struct as _st
+
+    def sec(self, imm, rel=(), tail=b"\xc3"):
+        import struct
+        return (b"\xb9" + struct.pack("<I", imm) + tail, list(rel))
+
+    def test_imm_equals_bound_reloc(self):
+        import sectioncmp as S
+        res = {"?DAT_0087F7E8@@3PADA": 0x87F7E8}.get
+        base = self.sec(0x87F7E8)
+        new = self.sec(0, [(1, "?DAT_0087F7E8@@3PADA", 6)])
+        self.assertTrue(S.resolved_equal(base, new, res))
+        self.assertTrue(S.resolved_equal(new, base, res))
+        self.assertTrue(S.resolved_equal(self.sec(0x10, [(1, "?DAT_0087F7E8@@3PADA", 6)]), self.sec(0x87F7F8), res))   # addend
+
+    def test_other_changes_fail(self):
+        import sectioncmp as S
+        res = {"?a@@3HA": 0x87F7E8}.get
+        new = self.sec(0, [(1, "?a@@3HA", 6)])
+        self.assertFalse(S.resolved_equal(self.sec(0x87F7EC), new, res))                        # different address
+        self.assertFalse(S.resolved_equal(self.sec(0x87F7E8, tail=b"\x90"), new, res))          # other byte differs
+        self.assertFalse(S.resolved_equal(self.sec(0x87F7E8), self.sec(0, [(1, "?unbound", 6)]), res))   # unresolvable
+        self.assertFalse(S.resolved_equal(self.sec(0x87F7E8), self.sec(0, [(1, "?a@@3HA", 0x14)]), res))   # not an absolute reloc
+        self.assertFalse(S.resolved_equal(self.sec(0x87F7E8), (new[0] + b"\0", new[1]), res))   # size
+
+    def test_two_relocs_to_same_address_equal(self):
+        import sectioncmp as S
+        res = {"a": 0x401000, "b": 0x401000}.get
+        self.assertTrue(S.resolved_equal(self.sec(0, [(1, "a", 6)]), self.sec(0, [(1, "b", 6)]), res))
+
+    def test_gate_uses_resolver(self):
+        import gates
+        rows = {"?f@@YAXXZ": {"sym": "?f@@YAXXZ", "addr": "0x5D0850", "len": "0x10", "status": "matched"}}
+        rep = {"changed": {"t.cpp": {"differ": [{"section": ".text|?f@@YAXXZ", "bytes_same": False, "reloc_diff": [], "reloc_count": [0, 1]}]}}}
+        def boom(obj, row):
+            return (False, 0.0)
+        self.assertEqual(len(gates.unexplained_sections(rep, rows, set(), boom, str, str)[0]), 1)
+        self.assertEqual(gates.unexplained_sections(rep, rows, set(), boom, str, str, lambda tu, k: True), ([], []))
+
+    def test_make_resolver_scoping(self):
+        import gates
+        with tempfile.TemporaryDirectory() as d:
+            os.makedirs(os.path.join(d, "scripts/data"))
+            json.dump({"x": "0x00000010", "a.cpp::_$S1": "0x00000020", "b.cpp::_$S1": "0x00000030"}, open(os.path.join(d, L.BINDINGS), "w"))
+            r = gates.make_resolver(d, ([{"sym": "m", "addr": "0x40"}],), "a.cpp")
+            self.assertEqual((r("x"), r("_$S1"), r("m"), r("zz")), (0x10, 0x20, 0x40, None))
+
+
+class BindingCorrections(unittest.TestCase):
+    def tree(self, d, cur):
+        os.makedirs(os.path.join(d, "t/scripts/data"))
+        open(os.path.join(d, "t", L.BINDINGS), "w").write(json.dumps(cur, indent=1))
+        return os.path.join(d, "t")
+
+    GOOD = [{"symbol": "w", "old_addr": "0x1", "new_addr": "0x2", "evidence": "disasm of 0x401000 shows the load from 0x2"}]
+
+    def test_parse_validates(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = os.path.join(d, "c.json")
+            self.assertEqual(L.parse_binding_corrections(f), ([], []))
+            for bad in ([{"symbol": "w", "old_addr": "0x1", "new_addr": "0x2", "evidence": " "}],
+                        [{"symbol": "w", "old_addr": "0x1", "new_addr": "0x2"}],
+                        [{"symbol": "w", "old_addr": "zz", "new_addr": "0x2", "evidence": "e"}],
+                        [{"old_addr": "0x1", "new_addr": "0x2", "evidence": "e"}],
+                        [{"symbol": "w", "old_addr": "0x1", "new_addr": "0x1", "evidence": "e"}], {"a": 1}):
+                json.dump(bad, open(f, "w"))
+                e, errs = L.parse_binding_corrections(f)
+                self.assertEqual((e, bool(errs)), ([], True), bad)
+            json.dump(self.GOOD, open(f, "w"))
+            e, errs = L.parse_binding_corrections(f)
+            self.assertEqual((errs, e[0]["old_addr"], e[0]["new_addr"]), ([], "0x00000001", "0x00000002"))
+
+    def test_merge_applies_only_when_old_matches(self):
+        with tempfile.TemporaryDirectory() as d:
+            t = self.tree(d, {"w": "0x00000001", "z": "0x00000009"})
+            c = L.parse_binding_corrections(self._write(d, self.GOOD))[0]
+            self.assertEqual(L.merge_bindings(t, {"w": "0x2"}, c), (1, []))
+            self.assertEqual(json.load(open(os.path.join(t, L.BINDINGS)))["w"], "0x00000002")
+            n, bad = L.merge_bindings(t, {"w": "0x2"}, c)     # central is now 0x2, not old_addr
+            self.assertEqual((n, len(bad)), (0, 1))
+            self.assertIn("expects central", bad[0])
+
+    def test_merge_rejects_missing_symbol_and_inconsistent_add(self):
+        with tempfile.TemporaryDirectory() as d:
+            t = self.tree(d, {"w": "0x00000001"})
+            c = L.parse_binding_corrections(self._write(d, self.GOOD))[0]
+            self.assertEqual(L.merge_bindings(t, {"w": "0x3"}, c)[0], 0)
+            c2 = [dict(c[0], symbol="nope")]
+            self.assertEqual(len(L.merge_bindings(t, {}, c2)[1]), 1)
+            self.assertEqual(open(os.path.join(t, L.BINDINGS)).read(), json.dumps({"w": "0x00000001"}, indent=1))
+
+    def test_silent_contradiction_still_refused(self):
+        with tempfile.TemporaryDirectory() as d:
+            t = self.tree(d, {"w": "0x00000001"})
+            n, bad = L.merge_bindings(t, {"w": "0x2"})
+            self.assertEqual((n, len(bad)), (0, 1))
+            p = mkpacket(os.path.join(d, "p"), {"binding_delta.json": {"w": "0x2"}})
+            n, bad = L.merge_bindings(t, p.bindings_delta(), p.binding_corrections()[0])
+            self.assertEqual((n, len(bad)), (0, 1))
+
+    def _write(self, d, entries):
+        f = os.path.join(d, "bc.json")
+        json.dump(entries, open(f, "w"))
+        return f
+
+    def test_packet_patch_hunk_allowed_only_as_the_correction(self):
+        with tempfile.TemporaryDirectory() as d:
+            files = {"binding_corrections.json": self.GOOD,
+                     "patch.diff": bind_patch(['  "w": "0x00000002"'], removed=['  "w": "0x00000001"'])}
+            p = mkpacket(os.path.join(d, "a"), files)
+            self.assertEqual(p.bindings_delta(), {"w": "0x00000002"})
+            self.assertEqual(p.binding_conflicts, [])
+            files["patch.diff"] = bind_patch(['  "w": "0x00000007"'], removed=['  "w": "0x00000001"'])
+            q = mkpacket(os.path.join(d, "b"), files)
+            q.bindings_delta()
+            self.assertTrue(q.binding_conflicts)
+            r = mkpacket(os.path.join(d, "c"), {"patch.diff": bind_patch(['  "w": "0x00000002"'], removed=['  "w": "0x00000001"'])})
+            r.bindings_delta()
+            self.assertTrue(r.binding_conflicts)      # no corrections file: still refused
+
+
 if __name__ == "__main__":
     unittest.main()

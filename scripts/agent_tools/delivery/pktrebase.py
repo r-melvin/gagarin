@@ -68,6 +68,10 @@ class Rebase:
             d = D.read_json(f)
             if isinstance(d, dict):
                 self.rekeys.update({k: v for k, v in d.items() if isinstance(v, str)})
+                for k in d:
+                    why = D.guard_key_problem(k)
+                    if why:
+                        say("  warning: rekey file %s: %s" % (os.path.basename(f), why))
         self.tree = D.Tree(self.repo, self.tip)
         self.work = D.scratch_dir("pktrebase_%s_" % packet.name)
         self.wt = os.path.join(self.work, "wt")
@@ -647,7 +651,7 @@ class Rebase:
         json.dump(delta, open(os.path.join(out, "manifest_delta.json"), "w"), indent=1)
         if getattr(self, "mapfile", None):
             shutil.copy(self.mapfile, os.path.join(out, "symbol_map_rebased.json"))
-        for f in ("results.tsv", "gates.log", "words_ok.txt", "waive_strict.txt", "spans_ok.txt", "symbol_bindings_delta.json", "binding_delta.json"):
+        for f in ("results.tsv", "gates.log", "words_ok.txt", "waive_strict.txt", "spans_ok.txt", "symbol_bindings_delta.json", "binding_delta.json", "binding_corrections.json"):
             src = os.path.join(self.p.dir, f)
             if os.path.isfile(src):
                 shutil.copy(src, os.path.join(out, f))

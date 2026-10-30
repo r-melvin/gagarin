@@ -136,14 +136,18 @@ class Bundle:
         open(os.path.join(wt, MANIFEST), "w").write(L.dump_manifest(merged))
         L.git(wt, "add", "--", MANIFEST)
         add = p.bindings_delta()
-        nb, bad = L.merge_bindings(wt, add)
+        corr, corr_errs = p.binding_corrections()
+        nb, bad = L.merge_bindings(wt, add, corr)
+        bad = ["binding_corrections.json: " + e for e in corr_errs] + bad
         bad = list(p.binding_conflicts) + bad
         if bad:
             L.git(wt, "reset", "-q", "--hard", head)
             return False, "packet bindings (delta file / patch.diff hunks) contradict the central bindings: " + "; ".join(bad[:4])
         if nb:
             L.git(wt, "add", "--", L.BINDINGS)
-            say("  %d central bindings added from the packet (delta file or patch.diff hunks)" % nb)
+            say("  %d central bindings added or corrected from the packet (delta file, patch.diff hunks, binding_corrections.json)" % nb)
+        for c in corr:
+            say("  CORRECTED central binding %s: %s -> %s (%s)" % (c["symbol"], c["old_addr"], c["new_addr"], c["evidence"][:100]))
         L.git(wt, "commit", "-q", "--no-verify", "-m", "wip packet %d %s" % (k, p.name))
         sha = L.git(wt, "rev-parse", "HEAD").strip()
         L.git(self.repo, "update-ref", "refs/land-wip/%s/%s-%d" % (self.id, tag, k), sha)

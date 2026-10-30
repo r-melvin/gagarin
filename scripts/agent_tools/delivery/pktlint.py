@@ -34,6 +34,10 @@ enforces; nothing here needs a compiler except --strict.
   provenance   E new file without SPDX + Provenance header
   spans        E manifest len differs from the CFG-closed span (worklist sizes are padded; use CFG
                  spans) unless listed in spans_ok.txt; extent-audit overrides are honoured
+  bindings     E binding_corrections.json malformed, empty evidence, or old_addr not the current central value;
+                 W every valid correction (reviewer visibility: a packet is changing an existing central address)
+  rekeys       W rekey / packet-map keys naming per-TU guard symbols (_$S<n>, _$E<n>), which the tools ignore
+                 unless scoped 'tu::sym' in the central symbol_bindings.json
   rea          E/W no REA Evidence IDs (ev_xxxxxxxx) in the packet's README/evidence (brief: REA primary)
   strict       (--strict) compile the touched TUs, raw_match + strict verify_relocations on every
                  matched row with the packet maps + derivable bindings; lists unbound targets;
@@ -56,6 +60,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import dlib as D  # noqa: E402
 import landlib as L  # noqa: E402
 import cppscan  # noqa: E402
+
+def norm(v):
+    return L.norm_addr(v)
+
 
 PROJECT_FLAGS = {"/nologo", "/c", "/O2", "/Gr", "/GR", "/DNDEBUG", "/Gy", "/MT", "/Ob2"}   # scripts/vc6/vc6cl.sh
 SDD_NAME = re.compile(r"scalar[ _]*deleting|deleting[ _]*d(?:e)?(?:structor|tor)|\?\?_G|vec(?:tor)?[ _]*deleting", re.I)
@@ -586,6 +594,62 @@ class Lint:
         except Exception as ex:
             self.warn("spans", "span check failed: %r" % (ex,))
 
+    def central_bindings_text(self):
+        """The tree's tracked central bindings file (Tree.read only holds match/), None when unreadable."""
+        try:
+            if self.t.rev:
+                return L.git(self.t.repo, "show", "%s:%s" % (self.t.rev, L.BINDINGS))
+            return open(os.path.join(self.t.repo, L.BINDINGS)).read()
+        except Exception:
+            return None
+
+    def bindings(self):
+        """binding_corrections.json: the one sanctioned way for a packet to CHANGE a central binding. Shape and
+        evidence are errors; old_addr must equal the current central value (E when it does not); every
+        valid correction is a warning so the reviewer sees the changed address."""
+        entries, errs = self.p.binding_corrections()
+        for e in errs:
+            self.err("bindings", e)
+        if not entries:
+            return
+        raw = self.central_bindings_text()
+        try:
+            central = json.loads(raw)
+        except (TypeError, ValueError):
+            central = {}
+            self.warn("bindings", "central bindings unreadable in the tree; old_addr not checked")
+            raw = None
+        for c in entries:
+            cur = central.get(c["symbol"])
+            if raw is not None and cur is None:
+                self.err("bindings", "correction for %s: not in the central bindings (add it via binding_delta.json instead)" % c["symbol"])
+            elif raw is not None and norm(cur) != c["old_addr"]:
+                self.err("bindings", "correction for %s: old_addr %s but central is %s" % (c["symbol"], c["old_addr"], cur))
+            else:
+                self.warn("bindings", "CORRECTS central binding %s: %s -> %s (evidence: %s)" % (
+                    c["symbol"], c["old_addr"], c["new_addr"], c["evidence"][:120]))
+
+    def rekeys(self):
+        """Rekey / map keys naming per-TU guard symbols (_$S<n>, _$E<n>) are silently ignored by the tools."""
+        keys = []
+        for f in self.p.symbol_map_files():
+            try:
+                keys += [(os.path.basename(f), k) for k in json.load(open(f))]
+            except Exception:
+                pass
+        rk = os.path.join(self.p.dir, "manifest_rekeys.json")
+        if os.path.isfile(rk):
+            try:
+                for r in json.load(open(rk)):
+                    if isinstance(r, dict):
+                        keys += [("manifest_rekeys.json", r.get("old_sym") or ""), ("manifest_rekeys.json", (r.get("new") or r).get("sym") or "")]
+            except Exception:
+                pass
+        for f, k in keys:
+            why = D.guard_key_problem(k)
+            if why:
+                self.warn("rekeys", "%s: %s" % (f, why), file=f)
+
     def rea(self):
         """The briefs require the REA skill/MCP as primary ground truth (ghidra CLI fallback,
         stated). Evidence IDs look like ev_18a3f84f; a packet citing none is flagged."""
@@ -704,7 +768,7 @@ class Lint:
 
     def run(self, do_strict=False, jobs=8, rules=None):
         order = ["shape", "paths", "stale", "words", "steering", "sdd", "flags", "thisnull", "views", "migrated", "inits", "delta_rules",
-                 "dupclaims", "order", "provenance", "spans", "rea"]
+                 "dupclaims", "order", "provenance", "spans", "bindings", "rekeys", "rea"]
         for name in order:
             if rules and name.replace("_rules", "") not in rules:
                 continue

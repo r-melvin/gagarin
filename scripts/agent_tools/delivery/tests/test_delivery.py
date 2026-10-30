@@ -721,5 +721,56 @@ class Toolfix1030(unittest.TestCase):
         self.assertEqual(open(os.path.join(root, "nm", "READY", "patch.diff")).read(), "keep\n")
 
 
+class BindingCorrectionsLint(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        central = json.loads(L.git(D.MAIN_REPO, "show", "HEAD:" + L.BINDINGS))
+        self.sym, self.cur = next((k, v) for k, v in central.items() if "::" not in k)
+        self.new = "0x%08X" % (int(self.cur, 16) + 4)
+
+    def findings(self, corrections, rule="bindings", extra=None):
+        p = packet(self.tmp, {"match/x/a.cpp": HEADER}, [])
+        json.dump(corrections, open(os.path.join(p.dir, "binding_corrections.json"), "w"))
+        for k, v in (extra or {}).items():
+            json.dump(v, open(os.path.join(p.dir, k), "w"))
+        return [f for f in lint(p, {rule}) if f["rule"] == rule]
+
+    def entry(self, **kw):
+        return dict(dict(symbol=self.sym, old_addr=self.cur, new_addr=self.new, evidence="disasm at 0x401000 loads from the new address"), **kw)
+
+    def test_valid_correction_is_a_warning(self):
+        f = self.findings([self.entry()])
+        self.assertEqual([x["level"] for x in f], ["W"])
+        self.assertIn("CORRECTS", f[0]["msg"])
+
+    def test_empty_evidence_and_shape_are_errors(self):
+        self.assertEqual([x["level"] for x in self.findings([self.entry(evidence="")])], ["E"])
+        self.assertEqual([x["level"] for x in self.findings([{"symbol": self.sym}])], ["E", "E", "E"])
+        self.assertEqual([x["level"] for x in self.findings({"not": "a list"})], ["E"])
+
+    def test_old_value_must_match_central(self):
+        f = self.findings([self.entry(old_addr="0x00000001")])
+        self.assertEqual([x["level"] for x in f], ["E"])
+        self.assertIn("central is", f[0]["msg"])
+        f = self.findings([self.entry(symbol="?not_in_central@@3HA")])
+        self.assertEqual([x["level"] for x in f], ["E"])
+
+    def test_no_file_no_findings(self):
+        p = packet(self.tmp, {"match/x/a.cpp": HEADER}, [])
+        self.assertEqual([x for x in lint(p, {"bindings"}) if x["rule"] == "bindings"], [])
+
+    def test_guard_symbol_keys_warn(self):
+        f = self.findings([], "rekeys", {"symbol_map_x.json": {"_$S12": "0x401000", "match/a.cpp::_$S3": "0x401004", "?ok@@3HA": "0x401008"}})
+        self.assertEqual(sorted(x["level"] for x in f), ["W", "W"])
+        self.assertTrue(any("honoured only from the central" in x["msg"] for x in f))
+        f = self.findings([], "rekeys", {"manifest_rekeys.json": [{"addr": "0x401000", "old_sym": "_$S5", "new": {"sym": "?n@@3HA"}}]})
+        self.assertEqual(len(f), 1)
+
+    def test_guard_key_problem(self):
+        self.assertIsNone(D.guard_key_problem("?f@@YAXXZ"))
+        self.assertIsNone(D.guard_key_problem("_$Sx"))
+        self.assertIsNotNone(D.guard_key_problem("_$E4"))
+
+
 if __name__ == "__main__":
     unittest.main()
