@@ -14,8 +14,9 @@
 // constructor loop over the new array, which a plain aggregate does not emit.
 // It also makes VC6 return Point2D through a hidden result pointer, as the
 // 0x53D8E0 helper does (LEA ECX,[ESP+0xC] before the call, [EAX] after).
-struct Point2D
+class Point2D
 {
+public:
     int X;  // +0x00
     int Y;  // +0x04
 

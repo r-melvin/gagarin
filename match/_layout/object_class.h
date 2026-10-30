@@ -33,7 +33,7 @@ struct CellStruct;
 class TechnoTypeClass;
 class CellClass;
 struct RectangleStruct;   // geometry2d.h
-struct Point2D;           // geometry2d.h
+class Point2D;           // geometry2d.h
 
 // --- shared instance-side leaf components -----------------------------------
 // Self-guarded so a downstream layer in the same chain can reuse them.

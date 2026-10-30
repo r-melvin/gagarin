@@ -13,7 +13,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_interfaces.h"
 
-struct Point2D;
+class Point2D;
 
 class LoadProgressMgr : public INoticeSink
 {

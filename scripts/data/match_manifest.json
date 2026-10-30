@@ -10379,7 +10379,7 @@
  {
   "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x45A130",
-  "sym": "?FromPointSize@RectangleStruct@@QAEPAU1@PBUPoint2D@@HH@Z",
+  "sym": "?FromPointSize@RectangleStruct@@QAEPAU1@PBVPoint2D@@HH@Z",
   "len": "0x21",
   "name": "RectangleStruct::FromPointSize",
   "status": "matched",
@@ -10919,12 +10919,12 @@
  },
  {
   "tu": "match/renderer/bsurface_class.cpp",
-  "addr": "0x4115f0",
-  "sym": "?Lock@BSurface@@UAEPAXUPoint2D@@@Z",
+  "addr": "0x4115F0",
+  "sym": "?Lock@BSurface@@UAEPAXVPoint2D@@@Z",
   "len": "0x31",
   "name": "BSurface::Lock",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu038_building_class.cpp",
@@ -12018,7 +12018,7 @@
  {
   "tu": "match/core/small_misc9_methods.cpp",
   "addr": "0x437F10",
-  "sym": "??HPoint2D@@QBE?AU0@ABU0@@Z",
+  "sym": "??HPoint2D@@QBE?AV0@ABV0@@Z",
   "len": "0x20",
   "name": "Point2D::operator+",
   "status": "matched",
@@ -23980,11 +23980,11 @@
  {
   "tu": "match/map/map_class_target_methods.cpp",
   "addr": "0x565730",
-  "sym": "?GetTargetCell@MapClass@@QAEPAVCellClass@@AAUPoint2D@@@Z",
+  "sym": "?GetTargetCell@MapClass@@QAEPAVCellClass@@AAVPoint2D@@@Z",
   "len": "0x68",
   "name": "GetTargetCell",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/map_class_threat_methods.cpp",
@@ -26079,11 +26079,11 @@
  {
   "tu": "match/network/Event.cpp",
   "addr": "0x4C6800",
-  "sym": "??0EventClass@@QAE@HHPAXABUPoint2D@@@Z",
+  "sym": "??0EventClass@@QAE@HHPAXABVPoint2D@@@Z",
   "len": "0x60",
   "name": "EventClass::EventClass(ANIMATION)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Event.cpp",
@@ -28547,7 +28547,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1F10",
-  "sym": "?CoordsToScreen@Tactical@@QAE?AUPoint2D@@PBUCoordStruct@@@Z",
+  "sym": "?CoordsToScreen@Tactical@@QAE?AVPoint2D@@PBUCoordStruct@@@Z",
   "len": "0xc8",
   "name": "Tactical::CoordsToScreen",
   "status": "matched",
@@ -29600,7 +29600,7 @@
  {
   "tu": "match/ui/tactical_class_coords_to_client_methods.cpp",
   "addr": "0x6D2140",
-  "sym": "?CoordsToClient@Tactical@@QAE_NPBUCoordStruct@@PAUPoint2D@@@Z",
+  "sym": "?CoordsToClient@Tactical@@QAE_NPBUCoordStruct@@PAVPoint2D@@@Z",
   "len": "0x132",
   "name": "Tactical::CoordsToClient",
   "status": "matched",
@@ -31824,11 +31824,11 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x411560",
-  "sym": "?Lock@XSurface@@UAEPAXUPoint2D@@@Z",
+  "sym": "?Lock@XSurface@@UAEPAXVPoint2D@@@Z",
   "len": "0xc",
   "name": "XSurface::Lock",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
@@ -31940,21 +31940,21 @@
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7baf10",
-  "sym": "?GetPixelClipped@XSurface@@UAEIABUPoint2D@@ABURectangleStruct@@@Z",
+  "addr": "0x7BAF10",
+  "sym": "?GetPixelClipped@XSurface@@UAEIABVPoint2D@@ABURectangleStruct@@@Z",
   "len": "0x77",
   "name": "XSurface::GetPixelClipped",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7baf90",
-  "sym": "?PutPixelClipped@XSurface@@UAE_NABUPoint2D@@IABURectangleStruct@@@Z",
+  "addr": "0x7BAF90",
+  "sym": "?PutPixelClipped@XSurface@@UAE_NABVPoint2D@@IABURectangleStruct@@@Z",
   "len": "0x82",
   "name": "XSurface::PutPixelClipped",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_int_methods.cpp",
@@ -44420,66 +44420,66 @@
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7ba5e0",
-  "sym": "?DrawLine@XSurface@@UAE_NPAUPoint2D@@0I@Z",
+  "addr": "0x7BA5E0",
+  "sym": "?DrawLine@XSurface@@UAE_NPAVPoint2D@@0I@Z",
   "len": "0x30",
   "name": "XSurface::DrawLine",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7bab30",
-  "sym": "?unknown_4C@XSurface@@UAEHPAUPoint2D@@0GPAEH_N@Z",
+  "addr": "0x7BAB30",
+  "sym": "?unknown_4C@XSurface@@UAEHPAVPoint2D@@0GPAEH_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_4C",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7bab40",
-  "sym": "?unknown_50@XSurface@@UAE_NPAUPoint2D@@0H_N@Z",
+  "addr": "0x7BAB40",
+  "sym": "?unknown_50@XSurface@@UAE_NPAVPoint2D@@0H_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_50",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7bab50",
-  "sym": "?unknown_34@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1IHH_N@Z",
+  "addr": "0x7BAB50",
+  "sym": "?unknown_34@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1IHH_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_34",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7bab60",
-  "sym": "?unknown_38@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1HHH_N@Z",
+  "addr": "0x7BAB60",
+  "sym": "?unknown_38@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1HHH_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_38",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7bab70",
-  "sym": "?unknown_3C@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEHH_N333M@Z",
+  "addr": "0x7BAB70",
+  "sym": "?unknown_3C@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1PAEHH_N333M@Z",
   "len": "0x5",
   "name": "XSurface::unknown_3C",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7bab80",
-  "sym": "?unknown_40@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEMHH@Z",
+  "addr": "0x7BAB80",
+  "sym": "?unknown_40@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1PAEMHH@Z",
   "len": "0x5",
   "name": "XSurface::unknown_40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
@@ -44501,21 +44501,21 @@
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7bae60",
-  "sym": "?GetPixel@XSurface@@UAEIPBUPoint2D@@@Z",
+  "addr": "0x7BAE60",
+  "sym": "?GetPixel@XSurface@@UAEIPBVPoint2D@@@Z",
   "len": "0x50",
   "name": "XSurface::GetPixel",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7baeb0",
-  "sym": "?PutPixel@XSurface@@UAE_NPBUPoint2D@@I@Z",
+  "addr": "0x7BAEB0",
+  "sym": "?PutPixel@XSurface@@UAE_NPBVPoint2D@@I@Z",
   "len": "0x59",
   "name": "XSurface::PutPixel",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
@@ -44579,36 +44579,30 @@
  },
  {
   "tu": "match/renderer/xsurface_line.cpp",
-  "addr": "0x7ba610",
-  "sym": "?DrawLineEx@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1I@Z",
+  "addr": "0x7BA610",
+  "sym": "?DrawLineEx@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1I@Z",
   "len": "0x2ad",
   "name": "XSurface::DrawLineEx",
   "status": "partial",
-  "pct": 1.8,
-  "metric": "instruction-position",
-  "note": "Frozen readable Surface M1 body; current instruction-position diagnostic is 1.8%, versus 1.9% in the submission. Not byte-exact; semantic equivalence unproven; capped."
+  "pct": 1.8
  },
  {
   "tu": "match/renderer/xsurface_line.cpp",
-  "addr": "0x7bab90",
-  "sym": "?DrawLineCallback@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1P6IX1@Z@Z",
+  "addr": "0x7BAB90",
+  "sym": "?DrawLineCallback@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1P6IX1@Z@Z",
   "len": "0x1ff",
   "name": "XSurface::DrawLineCallback",
   "status": "partial",
-  "pct": 5.7,
-  "metric": "instruction-position",
-  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+  "pct": 5.7
  },
  {
   "tu": "match/renderer/xsurface_line.cpp",
-  "addr": "0x7ba8c0",
-  "sym": "?DrawDottedLine@XSurface@@UAEIPAUPoint2D@@0IPAEI@Z",
+  "addr": "0x7BA8C0",
+  "sym": "?DrawDottedLine@XSurface@@UAEIPAVPoint2D@@0IPAEI@Z",
   "len": "0x26d",
   "name": "XSurface::DrawDottedLine",
   "status": "partial",
-  "pct": 1.2,
-  "metric": "instruction-position",
-  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+  "pct": 1.2
  },
  {
   "tu": "match/renderer/xsurface_ellipse.cpp",
@@ -45274,11 +45268,11 @@
  {
   "tu": "match/renderer/tu072_d_surface.cpp",
   "addr": "0x4BAD80",
-  "sym": "?Lock@DSurface@@UAEPAXUPoint2D@@@Z",
+  "sym": "?Lock@DSurface@@UAEPAXVPoint2D@@@Z",
   "len": "0x13b",
   "name": "DSurface::Lock",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/tu072_d_surface.cpp",
@@ -45379,79 +45373,65 @@
  {
   "tu": "match/renderer/tu072_d_surface.cpp",
   "addr": "0x4BFD30",
-  "sym": "?unknown_34@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1IHH_N@Z",
+  "sym": "?unknown_34@DSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1IHH_N@Z",
   "len": "0xA17",
   "name": "DSurface::unknown_34",
   "status": "partial",
-  "pct": 4.5,
-  "metric": "instruction-position",
-  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+  "pct": 4.5
  },
  {
   "tu": "match/renderer/tu072_d_surface.cpp",
   "addr": "0x4BBCA0",
-  "sym": "?unknown_38@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1HHH_N@Z",
+  "sym": "?unknown_38@DSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1HHH_N@Z",
   "len": "0xAAF",
   "name": "DSurface::unknown_38",
   "status": "partial",
-  "pct": 9.3,
-  "metric": "instruction-position",
-  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+  "pct": 9.3
  },
  {
   "tu": "match/renderer/dsurface_draw3c.cpp",
   "addr": "0x4BC750",
-  "sym": "?unknown_3C@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEHH_N333M@Z",
+  "sym": "?unknown_3C@DSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1PAEHH_N333M@Z",
   "len": "0x17B0",
   "name": "DSurface::unknown_3C",
   "status": "partial",
-  "pct": 0.6,
-  "metric": "instruction-position",
-  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+  "pct": 0.6
  },
  {
   "tu": "match/renderer/dsurface_draw40.cpp",
   "addr": "0x4BDF00",
-  "sym": "?unknown_40@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEMHH@Z",
+  "sym": "?unknown_40@DSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1PAEMHH@Z",
   "len": "0xAC2",
   "name": "DSurface::unknown_40",
   "status": "partial",
-  "pct": 6.6,
-  "metric": "instruction-position",
-  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+  "pct": 6.6
  },
  {
   "tu": "match/renderer/dsurface_draw4c.cpp",
   "addr": "0x4C0750",
-  "sym": "?unknown_4C@DSurface@@UAEHPAUPoint2D@@0GPAEH_N@Z",
+  "sym": "?unknown_4C@DSurface@@UAEHPAVPoint2D@@0GPAEH_N@Z",
   "len": "0x6de",
   "name": "DSurface::unknown_4C",
   "status": "partial",
-  "pct": 0.9,
-  "metric": "instruction-position",
-  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+  "pct": 0.9
  },
  {
   "tu": "match/renderer/dsurface_draw50.cpp",
   "addr": "0x4C0E30",
-  "sym": "?unknown_50@DSurface@@UAE_NPAUPoint2D@@0H_N@Z",
+  "sym": "?unknown_50@DSurface@@UAE_NPAVPoint2D@@0H_N@Z",
   "len": "0x601",
   "name": "DSurface::unknown_50",
   "status": "partial",
-  "pct": 1.6,
-  "metric": "instruction-position",
-  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+  "pct": 1.6
  },
  {
   "tu": "match/renderer/tu072_d_surface.cpp",
   "addr": "0x4BF750",
-  "sym": "?DrawLineGradient@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PBE2PAM3@Z",
+  "sym": "?DrawLineGradient@DSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1PBE2PAM3@Z",
   "len": "0x5db",
   "name": "DSurface::DrawLineGradient",
   "status": "partial",
-  "pct": 21.3,
-  "metric": "instruction-position",
-  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
+  "pct": 21.3
  },
  {
   "tu": "match/network/transport/Connect.cpp",
@@ -46750,7 +46730,7 @@
  {
   "tu": "match/map/tu242_terrain_class.cpp",
   "addr": "0x71C1B0",
-  "sym": "?vf_69@TerrainClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_69@TerrainClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x1ad",
   "name": "TerrainClass::vf_69",
   "status": "partial",
@@ -46759,7 +46739,7 @@
  {
   "tu": "match/map/tu242_terrain_class.cpp",
   "addr": "0x71C360",
-  "sym": "?vf_70@TerrainClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_70@TerrainClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x16d",
   "name": "TerrainClass::vf_70",
   "status": "partial",
@@ -47110,7 +47090,7 @@
  {
   "tu": "match/map/tu216_smudge_class.cpp",
   "addr": "0x6B4F90",
-  "sym": "?vf_69@SmudgeClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_69@SmudgeClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "SmudgeClass::vf_69",
   "status": "matched",
@@ -47155,7 +47135,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B55F0",
-  "sym": "?vf_40@SmudgeTypeClass@@UAEXPBUPoint2D@@PAURectangleStruct@@HHPBUCellStruct@@@Z",
+  "sym": "?vf_40@SmudgeTypeClass@@UAEXPBVPoint2D@@PAURectangleStruct@@HHPBUCellStruct@@@Z",
   "len": "0xd2",
   "name": "SmudgeTypeClass::vf_40",
   "status": "partial",
@@ -47263,7 +47243,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FE5A0",
-  "sym": "?vf_40@OverlayTypeClass@@UAEXPAUPoint2D@@PAURectangleStruct@@H@Z",
+  "sym": "?vf_40@OverlayTypeClass@@UAEXPAVPoint2D@@PAURectangleStruct@@H@Z",
   "len": "0x73",
   "name": "OverlayTypeClass::vf_40",
   "status": "partial",
@@ -47416,7 +47396,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FD970",
-  "sym": "?vf_70@OverlayClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_70@OverlayClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x349",
   "name": "OverlayClass::vf_70",
   "status": "partial",
@@ -47461,7 +47441,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FDF60",
-  "sym": "?vf_69@OverlayClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_69@OverlayClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "OverlayClass::vf_69",
   "status": "matched",
@@ -48686,7 +48666,7 @@
  {
   "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43DA80",
-  "sym": "?vf_313@BuildingClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_313@BuildingClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0xd22",
   "name": "BuildingClass::vf_313",
   "status": "partial",
@@ -52907,47 +52887,47 @@
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D05D0",
-  "sym": "?Slot5@?$DynamicVectorClass@UPoint2D@@@@UBEHPAUPoint2D@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@VPoint2D@@@@UBEHPAVPoint2D@@@Z",
   "len": "0x1B",
   "name": "DynamicVectorClass<Point2D>::Slot5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D05F0",
-  "sym": "?Slot6@?$VectorClass@UPoint2D@@@@UBE?AUPoint2D@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VPoint2D@@@@UBE?AVPoint2D@@H@Z",
   "len": "0x1C",
   "name": "VectorClass<Point2D>::Slot6",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D07F0",
-  "sym": "??8?$VectorClass@UPoint2D@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VPoint2D@@@@UBE_NABV0@@Z",
   "len": "0x52",
   "name": "VectorClass<Point2D>::operator==",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D0950",
-  "sym": "?FindItemIndex@?$VectorClass@UPoint2D@@@@UBEHABUPoint2D@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VPoint2D@@@@UBEHABVPoint2D@@@Z",
   "len": "0x46",
   "name": "VectorClass<Point2D>::FindItemIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D09A0",
-  "sym": "?Slot5@?$VectorClass@UPoint2D@@@@UBEHPAUPoint2D@@@Z",
+  "sym": "?Slot5@?$VectorClass@VPoint2D@@@@UBEHPAVPoint2D@@@Z",
   "len": "0x1B",
   "name": "VectorClass<Point2D>::Slot5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Multiplayer.cpp",
@@ -57434,11 +57414,11 @@
  {
   "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A9700",
-  "sym": "?vf_10@DisplayClass@@UAEXPAHPAUPoint2D@@@Z",
+  "sym": "?vf_10@DisplayClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x12",
   "name": "DisplayClass::vf_10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Display.cpp",
@@ -57515,16 +57495,16 @@
  {
   "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC310",
-  "sym": "?vf_45@DisplayClass@@UAEXPBUPoint2D@@@Z",
+  "sym": "?vf_45@DisplayClass@@UAEXPBVPoint2D@@@Z",
   "len": "0x61",
   "name": "DisplayClass::vf_45",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC380",
-  "sym": "?vf_47@DisplayClass@@UAEXPBUPoint2D@@@Z",
+  "sym": "?vf_47@DisplayClass@@UAEXPBVPoint2D@@@Z",
   "len": "0x167",
   "name": "DisplayClass::vf_47",
   "status": "partial",
@@ -57839,20 +57819,20 @@
  {
   "tu": "match/ui/input_controls/menus_graphic_menu_anim.cpp",
   "addr": "0x4F3090",
-  "sym": "?Slot2@GraphicMenuAnimItem@@UAE_NPBUPoint2D@@@Z",
+  "sym": "?Slot2@GraphicMenuAnimItem@@UAE_NPBVPoint2D@@@Z",
   "len": "0x42",
   "name": "GraphicMenuAnimItem::Slot2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
   "addr": "0x4F3640",
-  "sym": "?Slot2@GraphicMenuImageItem@@UAE_NPBUPoint2D@@@Z",
+  "sym": "?Slot2@GraphicMenuImageItem@@UAE_NPBVPoint2D@@@Z",
   "len": "0x42",
   "name": "GraphicMenuImageItem::Slot2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
@@ -57884,11 +57864,11 @@
  {
   "tu": "match/ui/input_controls/menus_graphic_menu_item.cpp",
   "addr": "0x4F3AF0",
-  "sym": "?Slot2@GraphicMenuItem@@UAE_NPBUPoint2D@@@Z",
+  "sym": "?Slot2@GraphicMenuItem@@UAE_NPBVPoint2D@@@Z",
   "len": "0x5",
   "name": "GraphicMenuItem::Slot2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/menus_graphic_menu_item.cpp",
@@ -58010,11 +57990,11 @@
  {
   "tu": "match/ui/input_controls/display_gscreen.cpp",
   "addr": "0x4F4BB0",
-  "sym": "?vf_10@GScreenClass@@UAEXPAHPAUPoint2D@@@Z",
+  "sym": "?vf_10@GScreenClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x42",
   "name": "GScreenClass::vf_10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/display_gscreen.cpp",
@@ -58244,7 +58224,7 @@
  {
   "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
   "addr": "0x5BDDC0",
-  "sym": "?vf_10@MouseClass@@UAEXPAHPAUPoint2D@@@Z",
+  "sym": "?vf_10@MouseClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x16D",
   "name": "MouseClass::vf_10",
   "status": "partial",
@@ -58334,11 +58314,11 @@
  {
   "tu": "match/ui/input_controls/display_scroll.cpp",
   "addr": "0x6922E0",
-  "sym": "?vf_10@ScrollClass@@UAEXPAHPAUPoint2D@@@Z",
+  "sym": "?vf_10@ScrollClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x1D",
   "name": "ScrollClass::vf_10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/display_scroll.cpp",
@@ -58361,11 +58341,11 @@
  {
   "tu": "match/ui/input_controls/display_scroll.cpp",
   "addr": "0x693880",
-  "sym": "?vf_44@ScrollClass@@UAEXPBUPoint2D@@@Z",
+  "sym": "?vf_44@ScrollClass@@UAEXPBVPoint2D@@@Z",
   "len": "0x3F",
   "name": "ScrollClass::vf_44",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/display_scroll.cpp",
@@ -58460,7 +58440,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_class_input.cpp",
   "addr": "0x6A7780",
-  "sym": "?vf_10@SidebarClass@@UAEXPAHPAUPoint2D@@@Z",
+  "sym": "?vf_10@SidebarClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x594",
   "name": "SidebarClass::vf_10",
   "status": "partial",
@@ -58721,7 +58701,7 @@
  {
   "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
   "addr": "0x6D0680",
-  "sym": "?vf_10@TabClass@@UAEXPAHPAUPoint2D@@@Z",
+  "sym": "?vf_10@TabClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x336",
   "name": "TabClass::vf_10",
   "status": "partial",
@@ -58919,11 +58899,11 @@
  {
   "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B8A00",
-  "sym": "?SetCursor@WWMouseClass@@UAEXPBUPoint2D@@PAUObj_0069E430@@H@Z",
+  "sym": "?SetCursor@WWMouseClass@@UAEXPBVPoint2D@@PAUObj_0069E430@@H@Z",
   "len": "0x247",
   "name": "WWMouseClass::SetCursor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/wwmous.cpp",
@@ -59018,11 +58998,11 @@
  {
   "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA360",
-  "sym": "?vf_13@WWMouseClass@@UAEPAUPoint2D@@PAU2@@Z",
+  "sym": "?vf_13@WWMouseClass@@UAEPAVPoint2D@@PAV2@@Z",
   "len": "0x12",
   "name": "WWMouseClass::vf_13",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/wwmous.cpp",
@@ -60666,7 +60646,7 @@
  {
   "tu": "match/core/unowned_leaf_sweep_a.cpp",
   "addr": "0x487F20",
-  "sym": "??GPoint2D@@QBE?AU0@ABU0@@Z",
+  "sym": "??GPoint2D@@QBE?AV0@ABV0@@Z",
   "len": "0x20",
   "name": "Point2D::operator-",
   "status": "matched",
@@ -64122,11 +64102,11 @@
  {
   "tu": "match/ai/planning_manager.cpp",
   "addr": "0x6339E0",
-  "sym": "?FUN_006339E0@@YIPAUPoint2D@@PAU1@ABUCoordStruct@@@Z",
+  "sym": "?FUN_006339E0@@YIPAVPoint2D@@PAV1@ABUCoordStruct@@@Z",
   "len": "0x3B",
   "name": "FUN_006339E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/planning_manager.cpp",
@@ -64320,11 +64300,11 @@
  {
   "tu": "match/ai/planning_manager.cpp",
   "addr": "0x633C60",
-  "sym": "?FUN_00633C60@PlanningBranchClass@@QAEPAUPoint2D@@PAU2@@Z",
+  "sym": "?FUN_00633C60@PlanningBranchClass@@QAEPAVPoint2D@@PAV2@@Z",
   "len": "0x5D",
   "name": "PlanningBranchClass::FUN_00633C60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/planning_manager.cpp",
@@ -64464,11 +64444,11 @@
  {
   "tu": "match/ai/planning_manager.cpp",
   "addr": "0x634400",
-  "sym": "?FUN_00634400@PlanningNodeClass@@QAEPAUPoint2D@@PAU2@@Z",
+  "sym": "?FUN_00634400@PlanningNodeClass@@QAEPAVPoint2D@@PAV2@@Z",
   "len": "0x63",
   "name": "PlanningNodeClass::FUN_00634400",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/planning_manager.cpp",
@@ -64482,9 +64462,9 @@
  {
   "tu": "match/ai/planning_manager.cpp",
   "addr": "0x634510",
-  "sym": "?FUN_00634510@@YIPAURectangleStruct@@PAU1@HUPoint2D@@@Z",
+  "sym": "?FUN_00634510@@YIPAURectangleStruct@@PAU1@HVPoint2D@@@Z",
   "len": "0x35",
-  "name": "?FUN_00634510@@YIPAURectangleStruct@@PAU1@HUPoint2D@@@Z",
+  "name": "?FUN_00634510@@YIPAURectangleStruct@@PAU1@HVPoint2D@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -64779,20 +64759,20 @@
  {
   "tu": "match/renderer/screen_resource_methods.cpp",
   "addr": "0x72A9C0",
-  "sym": "?FUN_0072A9C0@@YIPAUPoint2D@@PAU1@PBU1@@Z",
+  "sym": "?FUN_0072A9C0@@YIPAVPoint2D@@PAV1@PBV1@@Z",
   "len": "0xd",
   "name": "FUN_0072A9C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/screen_resource_methods.cpp",
   "addr": "0x72A9D0",
-  "sym": "?FUN_0072A9D0@@YIXPAUPoint2D@@PBU1@@Z",
+  "sym": "?FUN_0072A9D0@@YIXPAVPoint2D@@PBV1@@Z",
   "len": "0xb",
   "name": "FUN_0072A9D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/screen_resource_methods.cpp",
@@ -67713,7 +67693,7 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x426440",
-  "sym": "?vf_67@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_67@ObjectClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_67",
   "status": "matched",
@@ -67722,7 +67702,7 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x426450",
-  "sym": "?vf_68@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_68@ObjectClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_68",
   "status": "matched",
@@ -68199,11 +68179,11 @@
  {
   "tu": "match/core/mission_class_slots.cpp",
   "addr": "0x5B3A50",
-  "sym": "?vf_69@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_69@ObjectClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_69",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_class_slots_5f3e30.cpp",
@@ -70008,7 +69988,7 @@
  {
   "tu": "match/core/tu165_object_class.cpp",
   "addr": "0x5F65D0",
-  "sym": "?vf_70@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_70@ObjectClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x15",
   "name": "ObjectClass::vf_70",
   "status": "matched",
@@ -74154,7 +74134,7 @@
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543B00",
-  "sym": "?vf_69@IsometricTileClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_69@IsometricTileClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "IsometricTileClass::vf_69",
   "status": "matched",
@@ -74246,12 +74226,11 @@
  {
   "tu": "match/ui/tooltip_manager_message.cpp",
   "addr": "0x724A30",
-  "sym": "?FUN_00724A30@ToolTipManager@@QBEPBVToolTip@@ABUPoint2D@@@Z",
+  "sym": "?FUN_00724A30@ToolTipManager@@QBEPBVToolTip@@ABVPoint2D@@@Z",
   "len": "0x6f",
   "name": "ToolTipManager::FUN_00724A30",
   "status": "partial",
-  "pct": 63.5,
-  "note": "Retail places the found-return after the not-found exit; VC6 here keeps it in the loop. Capped after 3 loop variants."
+  "pct": 63.5
  },
  {
   "tu": "match/ai/trigger_class_body.cpp",
@@ -78950,7 +78929,7 @@
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D0850",
-  "sym": "?SetCapacity@?$VectorClass@UPoint2D@@@@UAE_NHPAUPoint2D@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VPoint2D@@@@UAE_NHPAVPoint2D@@@Z",
   "len": "0xd0",
   "name": "VectorClass<Point2D>::SetCapacity",
   "status": "matched",
@@ -78959,7 +78938,7 @@
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D09C0",
-  "sym": "?SetCapacity@?$DynamicVectorClass@UPoint2D@@@@UAE_NHPAUPoint2D@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@VPoint2D@@@@UAE_NHPAVPoint2D@@@Z",
   "len": "0xd6",
   "name": "DynamicVectorClass<Point2D>::SetCapacity",
   "status": "matched",
@@ -78968,7 +78947,7 @@
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D0AA0",
-  "sym": "?FindItemIndex@?$DynamicVectorClass@UPoint2D@@@@UBEHABUPoint2D@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@VPoint2D@@@@UBEHABVPoint2D@@@Z",
   "len": "0x36",
   "name": "DynamicVectorClass<Point2D>::FindItemIndex",
   "status": "matched",
@@ -91129,7 +91108,7 @@
  {
   "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43D030",
-  "sym": "?vf_70@BuildingClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_70@BuildingClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x257",
   "name": "BuildingClass::vf_70",
   "status": "partial",
@@ -93522,20 +93501,20 @@
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x634880",
-  "sym": "?FUN_00634880@PlanningNodeClass@@QAEPAUPoint2D@@PAU2@H@Z",
+  "sym": "?FUN_00634880@PlanningNodeClass@@QAEPAVPoint2D@@PAV2@H@Z",
   "len": "0x65",
   "name": "PlanningNodeClass::FUN_00634880",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x6348F0",
-  "sym": "?FUN_006348F0@PlanningNodeClass@@QAEPAUPoint2D@@PAU2@@Z",
+  "sym": "?FUN_006348F0@PlanningNodeClass@@QAEPAVPoint2D@@PAV2@@Z",
   "len": "0x5e",
   "name": "PlanningNodeClass::FUN_006348F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/PlanMgr.cpp",
@@ -97502,9 +97481,9 @@
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AC8D0",
-  "sym": "??0?$DynamicVectorClass@UElem_006AC8D0@@@@QAE@HPAUElem_006AC8D0@@@Z",
+  "sym": "??0?$DynamicVectorClass@VPoint2D@@@@QAE@HPAVPoint2D@@@Z",
   "len": "0x75",
-  "name": "DynamicVectorClass<Elem_006AC8D0>::DynamicVectorClass",
+  "name": "DynamicVectorClass<Point2D>::DynamicVectorClass",
   "status": "matched",
   "pct": 100.0
  },
@@ -103142,7 +103121,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DC4C0",
-  "sym": "??ZPoint2D@@QAEAAU0@ABU0@@Z",
+  "sym": "??ZPoint2D@@QAEAAV0@ABV0@@Z",
   "len": "0x1e",
   "name": "Point2D subtraction assignment",
   "status": "matched",
@@ -103169,7 +103148,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D6590",
-  "sym": "?FUN_006D6590@Tactical@@QAE?AUCellStruct@@PBUPoint2D@@@Z",
+  "sym": "?FUN_006D6590@Tactical@@QAE?AUCellStruct@@PBVPoint2D@@@Z",
   "len": "0x4f1",
   "name": "Tactical::FUN_006D6590",
   "status": "partial",
@@ -103178,9 +103157,9 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D6AD0",
-  "sym": "?FUN_006D6AD0@@YGHPAUPoint2D@@@Z",
+  "sym": "?FUN_006D6AD0@@YGHPAVPoint2D@@@Z",
   "len": "0x1c",
-  "name": "?FUN_006D6AD0@@YGHPAUPoint2D@@@Z",
+  "name": "?FUN_006D6AD0@@YGHPAVPoint2D@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -103305,7 +103284,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DA380",
-  "sym": "?FUN_006DA380@Tactical@@QAEPAVObjectClass@@PBUPoint2D@@@Z",
+  "sym": "?FUN_006DA380@Tactical@@QAEPAVObjectClass@@PBVPoint2D@@@Z",
   "len": "0x1d3",
   "name": "Tactical::FUN_006DA380",
   "status": "partial",
@@ -104331,7 +104310,7 @@
  {
   "tu": "match/combat/bullet_class_new_methods.cpp",
   "addr": "0x468090",
-  "sym": "?vf_69@BulletClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "sym": "?vf_69@BulletClass@@UAEXPAVPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x39b",
   "name": "BulletClass::vf_69",
   "status": "partial",
@@ -104412,7 +104391,7 @@
  {
   "tu": "match/ui/Radar.cpp",
   "addr": "0x653850",
-  "sym": "?vf_10@RadarClass@@UAEXPAHPAUPoint2D@@@Z",
+  "sym": "?vf_10@RadarClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x173",
   "name": "RadarClass::vf_10",
   "status": "partial",
@@ -104988,7 +104967,7 @@
  {
   "tu": "match/movement/foot_class_methods.cpp",
   "addr": "0x41C090",
-  "sym": "?vf_323@FootClass@@UAEXPAUSHPStruct@@HPAUPoint2D@@PAURectangleStruct@@HHHHHHHHHHHH@Z",
+  "sym": "?vf_323@FootClass@@UAEXPAUSHPStruct@@HPAVPoint2D@@PAURectangleStruct@@HHHHHHHHHHHH@Z",
   "len": "0x58",
   "name": "FootClass::vf_323",
   "status": "matched",
@@ -106266,7 +106245,7 @@
  {
   "tu": "match/movement/foot_class_small_slots.cpp",
   "addr": "0x4DAF10",
-  "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAUIndexClass@@PAURectangleStruct@@PAUPoint2D@@PAUMatrix3D@@HHH@Z",
+  "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAUIndexClass@@PAURectangleStruct@@PAVPoint2D@@PAUMatrix3D@@HHH@Z",
   "len": "0xa9",
   "name": "FootClass::vf_324",
   "status": "partial",
@@ -134643,7 +134622,7 @@
  {
   "tu": "match/ui/radar_class_more_methods.cpp",
   "addr": "0x655150",
-  "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBUPoint2D@@@Z",
+  "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBVPoint2D@@@Z",
   "len": "0x62",
   "name": "RadarClass::FUN_00655150",
   "status": "partial",
@@ -135660,38 +135639,38 @@
  {
   "tu": "match/map/map_class_iso_coord_methods.cpp",
   "addr": "0x565470",
-  "sym": "?FUN_00565470@MapClass@@QBE?AUPoint2D@@ABU2@@Z",
+  "sym": "?FUN_00565470@MapClass@@QBE?AVPoint2D@@ABV2@@Z",
   "len": "0x2e",
   "name": "MapClass::FUN_00565470",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/map_class_iso_coord_methods.cpp",
   "addr": "0x5654A0",
-  "sym": "?FUN_005654A0@MapClass@@QBE?AUPoint2D@@ABU2@@Z",
+  "sym": "?FUN_005654A0@MapClass@@QBE?AVPoint2D@@ABV2@@Z",
   "len": "0x3c",
   "name": "MapClass::FUN_005654A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/map_class_iso_coord_methods.cpp",
   "addr": "0x5654E0",
-  "sym": "?FUN_005654E0@MapClass@@QBE?AUPoint2D@@ABU2@@Z",
+  "sym": "?FUN_005654E0@MapClass@@QBE?AVPoint2D@@ABV2@@Z",
   "len": "0x3e",
   "name": "MapClass::FUN_005654E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/map_class_iso_coord_methods.cpp",
   "addr": "0x565520",
-  "sym": "?FUN_00565520@MapClass@@QBE?AUPoint2D@@ABU2@@Z",
+  "sym": "?FUN_00565520@MapClass@@QBE?AVPoint2D@@ABV2@@Z",
   "len": "0x5e",
   "name": "MapClass::FUN_00565520",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/map_class_iso_coord_methods.cpp",
@@ -137460,7 +137439,7 @@
  {
   "tu": "match/core/w3r2_leaf_methods_c.cpp",
   "addr": "0x6D84D0",
-  "sym": "?FUN_006D84D0@@YG?AUPoint2D@@PBU1@@Z",
+  "sym": "?FUN_006D84D0@@YG?AVPoint2D@@PBV1@@Z",
   "len": "0x59",
   "name": "FUN_006D84D0",
   "status": "partial",
@@ -140187,11 +140166,11 @@
  {
   "tu": "match/core/w2_vector_r13.cpp",
   "addr": "0x658D60",
-  "sym": "??0?$VectorClass@UPoint2D@@@@QAE@HPAUPoint2D@@@Z",
+  "sym": "??0?$VectorClass@VPoint2D@@@@QAE@HPAVPoint2D@@@Z",
   "len": "0x72",
-  "name": "??0?$VectorClass@UPoint2D@@@@QAE@HPAUPoint2D@@@Z",
+  "name": "??0?$VectorClass@VPoint2D@@@@QAE@HPAVPoint2D@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/w2_vector_r13.cpp",
@@ -141627,11 +141606,11 @@
  {
   "tu": "match/core/leaf_sweep_r16_w1.cpp",
   "addr": "0x53D8E0",
-  "sym": "?FUN_0053D8E0@@YI?AUPoint2D@@H@Z",
+  "sym": "?FUN_0053D8E0@@YI?AVPoint2D@@H@Z",
   "len": "0x71",
   "name": "FUN_0053D8E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_sweep_r16_w1.cpp",
@@ -142032,11 +142011,11 @@
  {
   "tu": "match/ui/radar_class_r16_methods.cpp",
   "addr": "0x6557F0",
-  "sym": "?FUN_006557F0@RadarView_R16@@QAEPAUPoint2D@@PAU2@PBU2@_N@Z",
+  "sym": "?FUN_006557F0@RadarView_R16@@QAEPAVPoint2D@@PAV2@PBV2@_N@Z",
   "len": "0x9d",
   "name": "RadarClass: map point to radar pixel (optionally clamped)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/radar_class_r16_methods.cpp",
@@ -142338,7 +142317,7 @@
  {
   "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x480180",
-  "sym": "?FUN_00480180@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@@Z",
+  "sym": "?FUN_00480180@CellClass@@QAEXPBVPoint2D@@PBURectangleStruct@@@Z",
   "len": "0x66",
   "name": "CellClass::FUN_00480180",
   "status": "matched",
@@ -142347,7 +142326,7 @@
  {
   "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4801F0",
-  "sym": "?FUN_004801F0@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@@Z",
+  "sym": "?FUN_004801F0@CellClass@@QAEXPBVPoint2D@@PBURectangleStruct@@@Z",
   "len": "0xac",
   "name": "CellClass::FUN_004801F0",
   "status": "matched",
@@ -142491,16 +142470,16 @@
  {
   "tu": "match/renderer/w2_thick_line_r17.cpp",
   "addr": "0x63D810",
-  "sym": "?FUN_0063D810@@YIXIIUPoint2D@@0D@Z",
+  "sym": "?FUN_0063D810@@YIXIIVPoint2D@@0D@Z",
   "len": "0xfc",
   "name": "FUN_0063D810",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/w2_thick_line_r17.cpp",
   "addr": "0x63D960",
-  "sym": "?FUN_0063D960@@YIXHIUPoint2D@@0@Z",
+  "sym": "?FUN_0063D960@@YIXHIVPoint2D@@0@Z",
   "len": "0x56",
   "name": "FUN_0063D960",
   "status": "partial",
@@ -146322,11 +146301,11 @@
  {
   "tu": "match/movement/foot_class_shadow_draw_004db0d0.cpp",
   "addr": "0x4DB0D0",
-  "sym": "?FUN_004DB0D0@FootClass@@QAEXHHHHHPAUPoint2D@@HHHHH@Z",
+  "sym": "?FUN_004DB0D0@FootClass@@QAEXHHHHHPAVPoint2D@@HHHHH@Z",
   "len": "0xCD",
   "name": "FootClass::FUN_004DB0D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu050_cell_class.cpp",
@@ -147274,7 +147253,7 @@
  {
   "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x480110",
-  "sym": "?FUN_00480110@CellClass@@QAEXPAUPoint2D@@@Z",
+  "sym": "?FUN_00480110@CellClass@@QAEXPAVPoint2D@@@Z",
   "len": "0x6d",
   "name": "CellClass::FUN_00480110",
   "status": "partial",
@@ -147679,18 +147658,18 @@
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x63D400",
-  "sym": "?FUN_0063D400@@YIXIHUPoint2D@@@Z",
+  "sym": "?FUN_0063D400@@YIXIHVPoint2D@@@Z",
   "len": "0x72",
-  "name": "?FUN_0063D400@@YIXIHUPoint2D@@@Z",
+  "name": "?FUN_0063D400@@YIXIHVPoint2D@@@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x63D480",
-  "sym": "?FUN_0063D480@@YIXIHUPoint2D@@@Z",
+  "sym": "?FUN_0063D480@@YIXIHVPoint2D@@@Z",
   "len": "0x7e",
-  "name": "?FUN_0063D480@@YIXIHUPoint2D@@@Z",
+  "name": "?FUN_0063D480@@YIXIHVPoint2D@@@Z",
   "status": "matched",
   "pct": 100.0
  },

@@ -18,7 +18,7 @@ class ObjectClass;
 class BuildingClass;
 class BuildingTypeClass;
 template<class T> class DynamicVectorClass;
-struct Point2D;
+class Point2D;
 struct CoordStruct;
 struct Triple_00747EB0;
 struct Triple_005247D0;

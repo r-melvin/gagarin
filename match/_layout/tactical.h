@@ -29,7 +29,7 @@ class ObjectClass;
 typedef void (__fastcall *Callback_006DA5C0)(ObjectClass* object);
 template<class T> class TRect;
 struct RectangleStruct;
-struct Point2D;
+class Point2D;
 // VTABLE: GAMEMD 0x007F4348
 // VTABLE: GAMEMD 0x007F432C
 // VTABLE: GAMEMD 0x007F4324

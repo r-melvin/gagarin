@@ -51,7 +51,7 @@ class TechnoClass;
 class WeaponTypeClass;
 class AnimClass;
 struct Matrix3D;
-struct Point2D;
+class Point2D;
 struct RectangleStruct;
 struct VoxelStruct;
 

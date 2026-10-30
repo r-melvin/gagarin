@@ -12,7 +12,7 @@
 // The map cell (read-only here).
 #include "../_layout/cell_class.h"
 #include "../_layout/map_0087f7e8.h"
-struct Point2D;
+class Point2D;
 
 // The map object at 0x87F7E8 (only the entry points used here).
 

@@ -20,8 +20,12 @@
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Vector2D<int> — the sub-cell coordinate passed by const-ref to GetFloorHeight.
-struct Point2D
+// class (not struct): retail's type descriptor is .?AVPoint2D. Kept as a local plain view
+// because the GetCellCoords-style bodies overlay it on a CellStruct in a union, which the
+// canonical geometry2d.h Point2D (user constructors) cannot be a member of.
+class Point2D
 {
+public:
     int X;  // +0x00
     int Y;  // +0x04
 };

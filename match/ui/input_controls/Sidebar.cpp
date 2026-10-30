@@ -40,6 +40,7 @@
 // (layout and evidence: sidebar_select_class.h).
 
 #include "../../core/vector_class_operations.h"
+#include "../../_layout/geometry2d.h"
 #include "../../_layout/session_class.h"
 #include "../../core/mathtbl_init_shapes.h"
 #include "../../core/deleting_dtor_sweep.h"
@@ -1692,14 +1693,13 @@ SidebarCameo* __fastcall FUN_006AC870(SidebarCameo* cameo)
     return cameo;
 }
 
-// The capacity constructor of a growable vector over an 8-byte plain element
-// (no element constructor, so the allocation has no counter header); the
+// The capacity constructor of a growable vector over Point2D elements
+// (an empty element constructor, so the allocation has no counter header); the
 // explicit instantiation also emits the other members, which are not claimed.
-struct Elem_006AC8D0 { int unknown_00; int unknown_04; Elem_006AC8D0() {} bool operator==(const Elem_006AC8D0& o) const { return unknown_00 == o.unknown_00 && unknown_04 == o.unknown_04; } bool operator!=(const Elem_006AC8D0& o) const { return !(*this == o); } };
 
 // FUNCTION: GAMEMD 0x006AC8D0
-// DynamicVectorClass<Elem_006AC8D0>::DynamicVectorClass
-template class DynamicVectorClass<Elem_006AC8D0>;
+// DynamicVectorClass<Point2D>::DynamicVectorClass
+template class DynamicVectorClass<Point2D>;
 
 // SYNTHETIC: GAMEMD 0x4AEBF0 -- DisplayClass scalar deleting destructor, emitted by the compiler from the virtual destructor
 
