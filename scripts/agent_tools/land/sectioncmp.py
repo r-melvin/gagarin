@@ -19,6 +19,15 @@ import sys
 
 
 def coff(path):
+    return _parse(path, False)
+
+
+def coff_full(path):
+    """{section key: (bytes, [(offset, symbol, type)])}; the keys coff() uses."""
+    return _parse(path, True)
+
+
+def _parse(path, full):
     d = open(path, "rb").read()
     nsec = struct.unpack_from("<H", d, 2)[0]
     symoff, nsym = struct.unpack_from("<II", d, 8)
@@ -57,8 +66,45 @@ def coff(path):
         while k2 in out:
             c += 1
             k2 = "%s#%d" % (key, c)
-        out[k2] = (hashlib.sha1(data).hexdigest(), tuple(rel))
+        out[k2] = (data, rel) if full else (hashlib.sha1(data).hexdigest(), tuple(rel))
     return out
+
+
+DIR32 = 6
+
+
+def resolved_equal(base_section, new_section, resolve):
+    """True when two (bytes, relocs) sections link to identical bytes once every absolute (DIR32) relocation
+    target is resolved to an address: an immediate 0x87F7E8 with no relocation equals a relocation to a symbol
+    bound to 0x87F7E8 (the linked bytes are the same). RESOLVE(symbol) -> address or None. Any other
+    difference (other bytes, other relocation kinds, unresolvable or different targets) is not equal."""
+    (db, rb), (dn, rn) = base_section, new_section
+    if len(db) != len(dn):
+        return False
+    slots = {o for o, _, t in list(rb) + list(rn) if t == DIR32}
+    if {x for x in rb if x[0] not in slots} != {x for x in rn if x[0] not in slots}:
+        return False
+    mb, mn = bytearray(db), bytearray(dn)
+    for o in slots:
+        if o + 4 > len(db):
+            return False
+        mb[o:o + 4] = mn[o:o + 4] = b"\0\0\0\0"
+    if mb != mn:
+        return False
+
+    def value(data, rel, o):
+        imm = struct.unpack_from("<I", data, o)[0]
+        for ro, sym, t in rel:
+            if ro == o and t == DIR32:
+                a = resolve(sym)
+                return ("abs", (a + imm) & 0xFFFFFFFF) if a is not None else ("sym", sym, imm)
+        return ("abs", imm)
+    return all(value(db, rb, o) == value(dn, rn, o) for o in slots)
+
+
+def sections_resolved_equal(base_obj, new_obj, key, resolve):
+    x, y = coff_full(base_obj), coff_full(new_obj)
+    return key in x and key in y and resolved_equal(x[key], y[key], resolve)
 
 
 def compare_object(bpath, npath):

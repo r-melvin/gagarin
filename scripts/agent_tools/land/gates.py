@@ -549,7 +549,27 @@ def raw_pct(tree, env, obj, row):
     return p.returncode == 0 and pct == 100.0, pct
 
 
-def unexplained_sections(rep, base_rows, touched, raw_fn, base_obj, new_obj):
+def make_resolver(tree, manifests, tu):
+    """symbol -> address for relocation targets: the central symbol_bindings.json (a scoped 'tu::sym' key only for TU)
+    plus every manifest row's sym/addr. None when unknown."""
+    table = {}
+    try:
+        central = json.load(open(os.path.join(tree, L.BINDINGS)))
+    except (OSError, ValueError):
+        central = {}
+    for k, v in central.items():
+        t, sep, name = k.partition("::")
+        if sep and t != tu:
+            continue
+        table[name if sep else k] = int(v, 16) if isinstance(v, str) else v
+    for rows in manifests:
+        for r in rows:
+            if r.get("sym") and r.get("addr") is not None:
+                table.setdefault(r["sym"], int(r["addr"], 16) if isinstance(r["addr"], str) else r["addr"])
+    return table.get
+
+
+def unexplained_sections(rep, base_rows, touched, raw_fn, base_obj, new_obj, resolved_eq=None):
     """Differing sections of matched functions the delta does not touch. Returns (unexplained, improved):
     a byte change is IMPROVED (not a failure) when the new bytes raw-match retail where the old bytes did
     not (e.g. a non-owner COMDAT copy moving to retail); a change away from retail, or between two
@@ -559,6 +579,8 @@ def unexplained_sections(rep, base_rows, touched, raw_fn, base_obj, new_obj):
         for d in r["differ"]:
             sym = d["section"].split("|", 1)[1].split("#")[0] if "|" in d["section"] else ""
             if sym in base_rows and sym not in touched and not d["bytes_same"]:
+                if resolved_eq and resolved_eq(tu, d["section"]):
+                    continue    # same linked bytes: an immediate became a relocation to a symbol bound to that address
                 row = base_rows[sym]
                 old_ok, old_pct = raw_fn(base_obj(tu), row)
                 new_ok, new_pct = raw_fn(new_obj(tu), row)
@@ -586,8 +608,15 @@ def sections(ctx):
     base_rows = {r["sym"]: r for r in ctx.base_files_manifest() if r.get("status") == "matched"}
     def raw_fn(obj, row):
         return raw_pct(ctx.tree, ctx.env, obj, row)
+    new_rows = json.load(open(os.path.join(ctx.tree, L.MANIFEST)))
+    resolvers = {}
+    def resolved_eq(tu, key):
+        if tu not in resolvers:
+            resolvers[tu] = make_resolver(ctx.tree, (list(base_rows.values()), new_rows), tu)
+        return S.sections_resolved_equal(objpath(ctx.objs_base, tu), objpath(ctx.objs_new, tu), key, resolvers[tu])
     unexpl, improved = unexplained_sections(rep, base_rows, touched, raw_fn,
-                                            lambda tu: objpath(ctx.objs_base, tu), lambda tu: objpath(ctx.objs_new, tu))
+                                            lambda tu: objpath(ctx.objs_base, tu), lambda tu: objpath(ctx.objs_new, tu),
+                                            resolved_eq)
     for tu, s_, b, a in improved:
         print("MATCHED FUNCTION IMPROVED", tu, s_, "%s%% -> %s%% vs retail (relocation-wildcarded)" % (b, a))
     for tu, s in unexpl[:20]:
