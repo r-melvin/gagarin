@@ -11,6 +11,8 @@
 #include "../_layout/swizzle_manager_class.h"
 #include "../_layout/tiberium_class.h"
 #include "../_layout/tube_class.h"
+#include "../_layout/slave_manager_class.h"
+#include "../_layout/spawn_manager_class.h"
 #include "../core/vector_class.h"
 #include "../combat/weapon_type_class.h"
 
@@ -18,19 +20,6 @@
 extern SwizzleManagerClass DAT_00B0C110;
 
 // ---- SlaveManagerClass (vtable 0x7F31C8) ----------------------------------------------------
-
-class SlaveManagerClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x6B1300
-    virtual int vf_11();
-    virtual int vf_12();
-    char unknown_24[0x38 - 0x24];
-    DynamicVectorClass<void*> SlaveNodes;   // +0x38 pointers to 0x14-byte records
-};
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) == 0x38);
 
 // FUNCTION: GAMEMD 0x6B1300
 // Writes the base state, the node count, then every node record.
@@ -54,30 +43,17 @@ HRESULT __stdcall SlaveManagerClass::Save(IStream* pStm, BOOL fClearDirty)
 
 // ---- SpawnManagerClass (vtable 0x7F3650) ----------------------------------------------------
 
-class SpawnManagerClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x6B80B0
-    virtual int vf_11();
-    virtual int vf_12();
-    char unknown_24[0x38 - 0x24];
-    DynamicVectorClass<void*> SpawnNodes;   // +0x38 pointers to 0x18-byte records
-};
-GG_STATIC_ASSERT(offsetof(SpawnManagerClass, SpawnNodes) == 0x38);
-
 // FUNCTION: GAMEMD 0x6B80B0
 // Writes the base state, the node count, then every node record.
 HRESULT __stdcall SpawnManagerClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
     if (hr >= 0) {
-        int count = SpawnNodes.Count;
+        int count = SpawnedNodes.Count;
         hr = pStm->Write(&count, 4, 0);
         if (hr >= 0) {
             for (int i = 0; i < count; i++) {
-                hr = pStm->Write(SpawnNodes.Items[i], 0x18, 0);
+                hr = pStm->Write(SpawnedNodes.Items[i], 0x18, 0);
                 if (hr < 0) {
                     break;
                 }

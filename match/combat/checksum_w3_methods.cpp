@@ -4,6 +4,8 @@
 //   read off retail gamemd.exe v1.001. Functions are in ascending retail address order.
 
 #include "../_layout/super_class.h"
+#include "../_layout/tube_class.h"
+#include "../movement/waypoint_path_class_methods.h"
 #include "../_layout/super_weapon_type_class.h"
 #include "../_layout/slave_manager_class.h"
 #include "../_layout/spawn_manager_class.h"
@@ -35,33 +37,6 @@ static inline int RttiInfoId(void* object)
     return reinterpret_cast<RttiInfoView*>(static_cast<char*>(object) + 4)->Slot4();
 }
 
-
-class TubeClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-    unsigned short unknown_24;   // +0x24
-    unsigned short unknown_26;   // +0x26
-    unsigned short unknown_28;   // +0x28
-    unsigned short unknown_2A;   // +0x2A
-    int unknown_2C;              // +0x2C
-    int unknown_30[100];         // +0x30
-    int unknown_1C0;             // +0x1C0
-};
-GG_STATIC_ASSERT(offsetof(TubeClass, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(TubeClass, unknown_30) == 0x30);
-GG_STATIC_ASSERT(offsetof(TubeClass, unknown_1C0) == 0x1C0);
-
-class WaypointPathClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-    int unknown_24;              // +0x24
-    char unknown_28[0x10];       // +0x28
-    int unknown_38;              // +0x38
-};
-GG_STATIC_ASSERT(offsetof(WaypointPathClass, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(WaypointPathClass, unknown_38) == 0x38);
 
 class TiberiumClass : public AbstractTypeClass
 {
@@ -155,15 +130,15 @@ void TriggerTypeClass::vf_13(Obj_004A1D30* crc)
 void TubeClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractClass::vf_13(crc);
-    crc->FUN_004A1D30(unknown_24);
-    crc->FUN_004A1D30(unknown_26);
-    crc->FUN_004A1D30(unknown_28);
-    crc->FUN_004A1D30(unknown_2A);
-    crc->FUN_004A1D50(unknown_2C);
+    crc->FUN_004A1D30(StartCell.X);
+    crc->FUN_004A1D30(StartCell.Y);
+    crc->FUN_004A1D30(EndCell.X);
+    crc->FUN_004A1D30(EndCell.Y);
+    crc->FUN_004A1D50(Direction);
     for (int i = 0; i < 100; i++) {
-        crc->FUN_004A1D50(unknown_30[i]);
+        crc->FUN_004A1D50(Steps[i]);
     }
-    crc->FUN_004A1D50(unknown_1C0);
+    crc->FUN_004A1D50(StepCount);
 }
 
 // FUNCTION: GAMEMD 0x763C00
@@ -171,8 +146,8 @@ void TubeClass::vf_13(Obj_004A1D30* crc)
 void WaypointPathClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractClass::vf_13(crc);
-    crc->FUN_004A1D50(unknown_24);
-    crc->FUN_004A1D50(unknown_38);
+    crc->FUN_004A1D50(CurrentWaypointIndex);
+    crc->FUN_004A1D50(Waypoints.Count);
 }
 
 // FUNCTION: GAMEMD 0x6CE910

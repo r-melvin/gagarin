@@ -91,12 +91,7 @@ struct Obj_004A7C80
 #include "../_layout/disk_laser_class.h"
 #include "../_layout/temporal_class.h"
 
-class AircraftClass : public AbstractClass
-{
-public:
-    virtual ULONG __stdcall AddRef();
-    virtual ULONG __stdcall Release();
-};
+#include "../_layout/aircraft_class.h"
 
 class LightSourceClass : public AbstractClass
 {

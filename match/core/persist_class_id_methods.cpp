@@ -46,6 +46,15 @@
 #include "../_layout/tag_class.h"
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/veinhole_monster_class.h"
+#include "../_layout/airstrike_class.h"
+#include "../_layout/neuron_class.h"
+#include "../_layout/disk_laser_class.h"
+#include "../_layout/factory_class.h"
+#include "../_layout/slave_manager_class.h"
+#include "../_layout/spawn_manager_class.h"
+#include "../_layout/temporal_class.h"
+#include "../_layout/tiberium_class.h"
+#include "../_layout/tube_class.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -158,31 +167,7 @@ extern const CLSID DAT_007E9850;
 // GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
 extern const CLSID DAT_007E9830;
 
-class AirstrikeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class NeuronClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class DiskLaserClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class FactoryClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class ParasiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SlaveManagerClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SpawnManagerClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -191,10 +176,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 class SuperWeaponTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TemporalClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
@@ -212,14 +193,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 
-class TiberiumClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TubeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 
 // FUNCTION: GAMEMD 0x0041C190
 HRESULT __stdcall AircraftClass::GetClassID(CLSID* pClassID)
