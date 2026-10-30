@@ -4930,13 +4930,13 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_seed_class_ctor.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x5AC270",
   "sym": "??_GMapSeedClass@@UAEPAXI@Z",
   "len": "0x1e",
   "name": "MapSeedClass scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/mp_battle_class.cpp",
@@ -106121,10 +106121,10 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/map_seed_forward_methods.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x597D50",
   "sym": "?DeleteMission@MapSeedClass@@UAE_NPBD@Z",
-  "len": "0xD",
+  "len": "0xd",
   "name": "MapSeedClass::DeleteMission",
   "status": "matched",
   "pct": 100.0
@@ -145721,13 +145721,13 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_seed_class_ctor.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x595680",
   "sym": "??0MapSeedClass@@QAE@XZ",
   "len": "0x8c",
   "name": "MapSeedClass::MapSeedClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/dialog_proc_52d640.cpp",

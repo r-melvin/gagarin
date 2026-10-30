@@ -150,6 +150,9 @@ GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, CapacityIncrement)
 
 GG_STATIC_ASSERT(sizeof(_WIN32_FIND_DATAA*) == 4);
 
+// SYNTHETIC: GAMEMD 0x5AC270 -- MapSeedClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5AC3A0
 // DynamicVectorClass<MapRegionClass*>::Clear
@@ -983,6 +986,22 @@ void FUN_00594700(int a1, int a2)
     }
 }
 
+// STRING: GAMEMD 0x82BA60 -- "SED"
+// FUNCTION: GAMEMD 0x595680
+// Set up the random-map save/load driver: default flags, the "SED" file extension and an empty
+// description buffer, filled from the localised text when one is loaded.
+MapSeedClass::MapSeedClass()
+    : unknown_38(0), unknown_3C(1), unknown_40(1), unknown_44(0), unknown_48(1), unknown_4C(0),
+      unknown_50(2), unknown_54(0), unknown_58(0), unknown_5C(0), unknown_60(0), unknown_64(0),
+      unknown_68(0), unknown_6C(0), unknown_70(0), unknown_74(-1)
+{
+    Extension = "SED";
+    unknown_78 = 0;
+    Description = (const wchar_t*)&unknown_78;
+    if (FUN_00734FD0())
+        FUN_007CA489(&unknown_78, FUN_00734E60(DAT_0082BA2C, 0, DAT_0082BA48, 0xF5E));
+}
+
 // FUNCTION: GAMEMD 0x595710
 void MapSeedClass::FUN_00595710()
 {
@@ -1146,6 +1165,12 @@ bool MapSeedClass::FUN_00597730(const char* a1)
 void Obj_00597D40::FUN_00597D40()
 {
     FUN_00558840();
+}
+
+// FUNCTION: GAMEMD 0x597D50
+bool MapSeedClass::DeleteMission(char const* filename)
+{
+    return LoadOptionsClass::DeleteMission(filename);
 }
 
 // FUNCTION: GAMEMD 0x597F80
