@@ -270,6 +270,8 @@ extern SessionClass Session_00A8B238;
 
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_04) == 4);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18.unknown_4C) == 0x64);
+// The byte at 0xA8B320 is Session_00A8B238 + 0xE8, i.e. unknown_18.MCVRedeploy (the options record starts at +0x18).
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18.MCVRedeploy) == 0xE8);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18.unknown_4C) == 0x20);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18.unknown_6C) == 0x84);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18.unknown_6C) == 0x20);

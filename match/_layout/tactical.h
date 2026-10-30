@@ -301,4 +301,7 @@ struct TacticalNoticeVtableLayout { void* vf_0; };
 GG_STATIC_ASSERT(offsetof(TacticalNoticeVtableLayout, vf_0) == 0);
 GG_STATIC_ASSERT(sizeof(TacticalNoticeVtableLayout) == 4);
 
+// GLOBAL: GAMEMD 0x887324 -- the Tactical object pointer (458 references; the one canonical spelling).
+extern Tactical* DAT_00887324;
+
 #endif

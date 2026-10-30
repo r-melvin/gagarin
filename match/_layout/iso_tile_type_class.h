@@ -144,4 +144,11 @@ struct IsoTileTypeVtbl
 GG_STATIC_ASSERT(offsetof(IsoTileTypeVtbl, At_8C) == 0x8C);
 GG_STATIC_ASSERT(offsetof(IsoTileTypeVtbl, At_9C) == 0x9C);
 
+
+// GLOBAL: GAMEMD 0xA8ED28 -- a DynamicVectorClass<IsometricTileTypeClass*> (Items at +4 = 0xA8ED2C); initialiser 0x4E76E0,
+// exit 0x4E7720. Declaration only (the template is forward-declared so no header gains an include): the object is defined
+// in core/static_vector_init_stubs.cpp (as DAT_00A8ED28).
+template<class T> class DynamicVectorClass;
+extern DynamicVectorClass<IsometricTileTypeClass*> IsometricTileTypeClass_Array;
+
 #endif  // GG_MATCH_LAYOUT_ISO_TILE_TYPE_CLASS_H

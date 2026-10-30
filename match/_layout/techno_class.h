@@ -741,4 +741,11 @@ GG_STATIC_ASSERT(offsetof(TechnoClass, QueueUpToEnter)           == 0x500);
 GG_STATIC_ASSERT(offsetof(TechnoClass, DisguisedAsHouse)         == 0x51C);
 GG_STATIC_ASSERT(sizeof(TechnoClass)                             == 0x520);
 
+
+// GLOBAL: GAMEMD 0xA8EC78 -- TechnoClass::Array, a DynamicVectorClass<TechnoClass*>; initialiser 0x4E79E0, exit 0x4E7A20.
+// Declaration only (the template is forward-declared so no header gains an include): the object is defined in
+// core/static_vector_init_stubs.cpp (as DAT_00A8EC78).
+template<class T> class DynamicVectorClass;
+extern DynamicVectorClass<TechnoClass*> TechnoClass_Array;
+
 #endif  // GG_MATCH_LAYOUT_TECHNO_CLASS_H

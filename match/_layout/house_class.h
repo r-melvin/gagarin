@@ -913,6 +913,14 @@ GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, Type) == 0);
 GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, Cell) == 4);
 GG_STATIC_ASSERT(sizeof(HouseClass::StartingTechnoStruct) == 8);
 
+
+// GLOBAL: GAMEMD 0xA80228 -- HouseClass::Array, a DynamicVectorClass<HouseClass*> (Items at +4 = 0xA8022C, Count at +0x10 =
+// 0xA80238); initialiser 0x4E6CE0, exit 0x4E6D20. Declaration only: the object is defined in
+// core/static_vector_dtor_stubs.cpp (as DAT_00A80228); this is the one canonical spelling for the folded views.
+extern DynamicVectorClass<HouseClass*> HouseClass_Array;
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<HouseClass*>, Items) == 4);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<HouseClass*>, Count) == 0x10);
+
 #endif  // GG_MATCH_LAYOUT_HOUSE_CLASS_H
 
 // House Load (0x00503040): native member receivers and swizzle address operands.

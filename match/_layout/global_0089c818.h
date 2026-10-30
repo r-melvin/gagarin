@@ -8,6 +8,7 @@
 #define GG_GLOBAL_0089C818_H
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "cell.h"   // CellStruct
 
 struct Global_0089C818_Words
 {
@@ -18,7 +19,10 @@ union Global_0089C818_View
 {
     unsigned int raw_dword;
     Global_0089C818_Words words;
+    CellStruct cell;
     Global_0089C818_View() { words.word_00 = 0; words.word_02 = 0; }
+    // The "no cell" reading of the dword: the same four bytes as a CellStruct.
+    operator CellStruct() const { return cell; }
 };
 GG_STATIC_ASSERT(sizeof(unsigned short) == 2);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
@@ -27,6 +31,7 @@ GG_STATIC_ASSERT(offsetof(Global_0089C818_Words, word_02) == 2);
 GG_STATIC_ASSERT(sizeof(Global_0089C818_Words) == 4);
 GG_STATIC_ASSERT(offsetof(Global_0089C818_View, raw_dword) == 0);
 GG_STATIC_ASSERT(offsetof(Global_0089C818_View, words) == 0);
+GG_STATIC_ASSERT(offsetof(Global_0089C818_View, cell) == 0);
 GG_STATIC_ASSERT(sizeof(Global_0089C818_View) == 4);
 
 // GLOBAL: GAMEMD 0x0089C818
