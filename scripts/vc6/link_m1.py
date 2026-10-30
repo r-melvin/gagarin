@@ -26,6 +26,10 @@ M3 flags on top of --hybrid (each leaves the default hybrid image unchanged):
                       come from the objects when their bytes and relocation targets equal retail's
                       (datasource.py); the rest stays retail fill. vtable_audit.py checks the vtables.
   --search-literals   also place string/float literals with no known address where retail holds them
+  --rsrc-from-project .rsrc comes from the project build (match/rsrc/gamemd.rc by RC.EXE, placeholder icon and
+                      cursor images, scripts/vc6/rsrc_pack.py) instead of the retail image; a stub link (no --hybrid)
+                      always links it
+  --rsrc-art-from-retail  byte comparison only: icon and cursor image data read from $GAMEMD_BINARY at link time
   --library-imports   experimental, does not reach section identity (imports.py explains why)
 
 Usage:
@@ -35,6 +39,7 @@ Usage:
 
 import argparse
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -46,6 +51,8 @@ import imports
 import link_diag
 import mapcheck
 import pindata
+import rsrc_decompile
+import rsrc_pack
 import stubgen
 import taillink
 
@@ -111,15 +118,49 @@ def link(objects, libs, out, includes=()):
     return proc.returncode, log
 
 
-def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False, search=(), library_imports=False):
+def rsrc_object(objdir, out, art_from_retail=False):
+    """COFF object (rsrc_pack.rsrc_object) for the project's resources (build_project.py wrote objdir/rsrc/gamemd.res), or None when
+    the object directory has none. art_from_retail swaps the icon and cursor image data for the ones in
+    $GAMEMD_BINARY (rsrc_pack.pack); that .res lives under `out`, which the caller keeps under build-vc6/."""
+    res = objdir / "rsrc/gamemd.res"
+    if not res.is_file():
+        return None
+    (out / "rsrc").mkdir(parents=True, exist_ok=True)
+    if art_from_retail:
+        res = rsrc_pack.pack(objdir / "rsrc/gamemd_rc.res", out / "rsrc/gamemd_art.res", True)
+    return rsrc_pack.rsrc_object(rsrc_pack.read_res(res.read_bytes()), out / "rsrc/gamemd_rsrc.obj")
+
+
+def rsrc_pieces(image, retail):
+    """Placement pieces for the project's .rsrc: the whole section less the icon and cursor image data
+    (placeholder or retail art, neither of which is recovered source) and the padding after it."""
+    locations = []
+    rsrc_decompile.read_resources(None, locations, image.read_bytes())
+    start, vsize, _, _ = retail.by_name[".rsrc"]
+    art = sorted((rva + 0x400000, size + (-size % 4)) for t, _, rva, size in locations if t in (1, 3))
+    pieces, cursor = [], start
+    for va, size in art:
+        if va > cursor:
+            pieces.append([".rsrc", cursor, va - cursor, "project", "rsrc"])
+        cursor = va + size
+    if cursor < start + vsize:
+        pieces.append([".rsrc", cursor, start + vsize - cursor, "project", "rsrc"])
+    return pieces
+
+
+def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False, search=(), library_imports=False,
+        rsrc=False, art_from_retail=False):
     out.mkdir(parents=True, exist_ok=True)
+    rsrc_obj = rsrc_object(objdir, out, art_from_retail) if rsrc else None
+    if rsrc and rsrc_obj is None:
+        raise SystemExit("link_m1: no resources in the object directory (build_project.py builds objdir/rsrc/gamemd.res)")
     retail = None
     linked_diff = {}
     reject = set()   # (VA, size) of source-placed data that did not come out equal to retail's bytes
     if hybrid:
         pin_data = order_tail = True
         retail = hybrid_module.Retail(pindata.retail_path())
-        data_obj, data_layout = hybrid_module.data_object(retail, library_imports=library_imports)
+        data_obj, data_layout = hybrid_module.data_object(retail, library_imports=library_imports, rsrc=rsrc_obj is None)
         (out / "hybrid_data.obj").write_bytes(data_obj)
     bink = out / "binkw32.lib"
     implib.build_from_def(ROOT / "scripts/vc6/binkw32.def", bink)
@@ -138,7 +179,8 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
                               source_data=source_data, data_reject=reject, data_search=search, library_imports=library_imports)
         objects = result["objects"]
         if source_data:
-            data_obj, data_layout = hybrid_module.data_object(retail, result["_data_pieces"], library_imports)
+            data_obj, data_layout = hybrid_module.data_object(retail, result["_data_pieces"], library_imports,
+                                                              rsrc=rsrc_obj is None)
             (out / "hybrid_data.obj").write_bytes(data_obj)
         includes = ()
         if hybrid:
@@ -147,6 +189,8 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
             if library_imports:   # pull the import library members in retail's slot order
                 includes = imports.import_symbols(retail, vc6 / "VC98/Lib", [bink],
                                                   {n for n, _ in result["thunk_names"]})[0] + includes
+        if rsrc_obj:
+            objects = objects + [rsrc_obj]
         code, log = link(objects, library_order(bink, library_imports), out, includes)
         unresolved, duplicates = link_diag.parse_link_log(log)
         rounds.append({"exit": code, "unresolved": len(unresolved), "duplicates": len(duplicates)})
@@ -167,6 +211,8 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
         for p in result.get("_data_pieces", ()):
             section = ".data" if p["va"] >= retail.by_name[".data"][0] else ".rdata"
             placement.append([section, p["va"], p["size"], "project", p["names"][0]])
+        if rsrc_obj and code == 0:
+            placement += rsrc_pieces(out / "m1.exe", retail)
         (out / "placement.json").write_text(json.dumps({"pieces": placement}) + "\n")
     if linked_diff:
         (out / "data_linked_diff.json").write_text(json.dumps(linked_diff, indent=1) + "\n")
@@ -203,6 +249,14 @@ def main(argv=None):
     ap.add_argument("--library-imports", action="store_true",
                     help="M3 (with --hybrid): the import address table, lookup tables, hint/name strings, descriptors "
                          "and the import thunks come from the import libraries, pulled in retail's slot order")
+    ap.add_argument("--rsrc-from-project", action="store_true",
+                    help="with --hybrid: .rsrc comes from the project build (objdir/rsrc/gamemd.res, RC.EXE and CVTRES) "
+                         "instead of the retail image; without --hybrid the project resources are always linked "
+                         "when the object directory has them")
+    ap.add_argument("--rsrc-art-from-retail", action="store_true",
+                    help="byte comparison only: the icon and cursor image data of the project .rsrc is read from "
+                         "$GAMEMD_BINARY at link time (the layout and group directories stay the project's); "
+                         "implies --rsrc-from-project; --out must be under build-vc6/")
     args = ap.parse_args(argv)
     out = args.out.resolve()
     if args.library_imports and not args.hybrid:
@@ -211,11 +265,19 @@ def main(argv=None):
         ap.error("--search-literals needs --source-data")
     if args.source_data and not args.hybrid:
         ap.error("--source-data needs --hybrid")
+    if args.rsrc_art_from_retail and ROOT / "build-vc6" not in out.parents:
+        ap.error("--rsrc-art-from-retail embeds retail artwork: --out must be under build-vc6/")
+    if args.rsrc_art_from_retail and not os.environ.get("GAMEMD_BINARY"):
+        ap.error("--rsrc-art-from-retail needs GAMEMD_BINARY")
+    if (args.rsrc_from_project or args.rsrc_art_from_retail) and not args.hybrid:
+        ap.error("--rsrc-from-project and --rsrc-art-from-retail need --hybrid (a stub link always links the project resources)")
     if args.hybrid and ROOT / "build-vc6" not in out.parents and out != ROOT / "build-vc6":
         ap.error("--hybrid embeds bytes of the retail image in its outputs: --out must be under build-vc6/")
     summary = run(args.objdir.resolve(), out, pin_data=args.pin_data, order_tail=args.order_tail, hybrid=args.hybrid,
                   source_data=args.source_data, search=("string", "float") if args.search_literals else (),
-                  library_imports=args.library_imports)
+                  library_imports=args.library_imports,
+                  rsrc=args.rsrc_from_project or args.rsrc_art_from_retail or not args.hybrid and (args.objdir / "rsrc/gamemd.res").is_file(),
+                  art_from_retail=args.rsrc_art_from_retail)
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")

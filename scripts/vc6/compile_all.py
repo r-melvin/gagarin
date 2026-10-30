@@ -14,7 +14,7 @@ layout spine still holds without the retail binary.
                    differs from git REF (default HEAD).
 
 Units are reported in byte (C-locale) path order, TUs first, then layout
-headers. Exit 0 iff every selected unit compiles clean.
+headers, then the resource script (match/rsrc/gamemd.rc, compiled by RC.EXE). Exit 0 iff every selected unit compiles clean.
 """
 import argparse
 import concurrent.futures
@@ -28,6 +28,8 @@ import changed_tus
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CL = os.path.join(ROOT, "scripts/vc6/vc6cl.sh")
+RC = os.path.join(ROOT, "scripts/vc6/vc6rc.sh")
+RESOURCE_SCRIPT = "match/rsrc/gamemd.rc"
 
 
 def default_jobs():
@@ -86,6 +88,20 @@ def check_header(root, tmp, n, header):
     return (f"  ok   {header} (asserts pass)" if ok else f"  FAIL {header}"), errs, ok
 
 
+def check_rc(root, tmp):
+    """The reconstructed resource script must compile with the period RC.EXE."""
+    res = os.path.join(tmp, "gamemd.res")
+    with open(res + ".log", "w+", errors="replace") as log:
+        proc = subprocess.run(["bash", RC, "/r", "/fo", res, os.path.basename(RESOURCE_SCRIPT)],
+                              cwd=os.path.join(root, os.path.dirname(RESOURCE_SCRIPT)), stdin=subprocess.DEVNULL,
+                              stdout=log, stderr=subprocess.STDOUT)
+        log.seek(0)
+        output = log.read()
+    ok = proc.returncode == 0 and os.path.isfile(res)
+    return (f"  ok   {RESOURCE_SCRIPT} (RC.EXE)" if ok else f"  FAIL {RESOURCE_SCRIPT}"), \
+        ([] if ok else error_lines(output)), ok
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--jobs", type=int, default=default_jobs())
@@ -106,6 +122,8 @@ def main(argv=None):
             concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as pool:
         futures = [pool.submit(check_tu, ROOT, tmp, n, tu) for n, tu in enumerate(tus)]
         futures += [pool.submit(check_header, ROOT, tmp, n, h) for n, h in enumerate(headers)]
+        if not args.changed and os.path.isfile(os.path.join(ROOT, RESOURCE_SCRIPT)):
+            futures.append(pool.submit(check_rc, ROOT, tmp))
         for future in futures:
             line, errs, ok = future.result()
             print(line)

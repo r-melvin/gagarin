@@ -17,6 +17,7 @@ import subprocess
 import sys
 
 import gen_trig_tables
+import rsrc_pack
 from source_inventory import InventoryError, build_inventory, git_tracked_paths, read_vc6_default
 
 
@@ -32,7 +33,7 @@ def sha256(path):
 def input_hashes(root):
     inputs = {}
     for name in git_tracked_paths(root, "match", "third_party"):
-        if Path(name).suffix not in (".cpp", ".c", ".h", ".ch"):
+        if Path(name).suffix not in (".cpp", ".c", ".h", ".ch", ".rc"):
             continue
         path = root / name
         if path.is_symlink():
@@ -155,6 +156,9 @@ def build(root, out, jobs):
     temporary.write_text(json.dumps(index, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     temporary.replace(index_path)
     print(f"{successful}/{len(units)} tracked translation units compiled; index: {index_path}")
+    if (root / "match/rsrc/gamemd.rc").is_file():
+        res = rsrc_pack.build(out / "rsrc/gamemd.res", root / "match/rsrc")
+        print(f"resources: {res} (match/rsrc/gamemd.rc via RC.EXE, icon and cursor placeholders)")
     if not inputs_unchanged:
         print("Inputs changed during compilation; rebuild before using these objects", file=sys.stderr)
     return 0 if index["success"] else 1

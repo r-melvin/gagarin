@@ -1,0 +1,9 @@
+# Icon and cursor groups of gamemd, in the form scripts/vc6/rsrc_pack.py reads.
+# kind group-id file image-ids (in the file's image order). The files are blank placeholders.
+# RC.EXE cannot number the images or read PNG-compressed ones, so the packer writes these.
+
+cursor 104  placeholder_cursor_104.cur   8
+icon   93   placeholder_icon_93.ico      1 2 3 4 8 9 10 11 12 13 14 15 16 17 18 19
+icon   160  placeholder_icon_160.ico     5
+icon   161  placeholder_icon_161.ico     6
+icon   162  placeholder_icon_162.ico     7

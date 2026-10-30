@@ -164,12 +164,13 @@ def region_sections(name, flags, va, size, retail, pieces):
     return out
 
 
-def data_object(retail, pieces=(), library_imports=False):
+def data_object(retail, pieces=(), library_imports=False, rsrc=True):
     """(object bytes, [(section name, VA, size)]) reproducing retail's .rdata, .data and .rsrc.
 
     pieces: source-placed definitions (datasource.assign) that replace retail fill; each lies inside one
     of the pieces below (initialised ones only: uninitialised definitions need no section).
-    library_imports: leave out the import tables ($5, $2, $3, $4, $6): the import libraries supply them."""
+    library_imports: leave out the import tables ($5, $2, $3, $4, $6): the import libraries supply them.
+    rsrc: False leaves .rsrc out; the project's own resource object (rsrc_pack.py, cvtres) supplies it."""
     r_start, r_vsize, _, _ = retail.by_name[".rdata"]
     iat, descriptors, terminator, ilt, names = retail.import_layout()
     r_end = r_start + r_vsize
@@ -190,7 +191,8 @@ def data_object(retail, pieces=(), library_imports=False):
     d_start, d_vsize, _, d_rawsize = retail.by_name[".data"]
     s_start, s_vsize, _, _ = retail.by_name[".rsrc"]
     regions.append((".data", d_start, d_rawsize))
-    regions.append((".rsrc$01", s_start, s_vsize))
+    if rsrc:
+        regions.append((".rsrc$01", s_start, s_vsize))
     pieces = sorted((p for p in pieces if p["data"] is not None), key=lambda p: p["va"])
     sections, layout = [], []
     for name, va, size in regions:

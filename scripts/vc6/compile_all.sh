@@ -50,5 +50,16 @@ for h in match/_layout/*.h; do
   rm -f "match/_layout/_ca_$base.cpp"
 done
 
+# 3. The reconstructed resource script (RC.EXE; the icon and cursor groups are not part of it).
+if [ -f match/rsrc/gamemd.rc ]; then
+  if ( cd match/rsrc && bash "$REPO/scripts/vc6/vc6rc.sh" /r /fo "$tmp/gamemd.res" gamemd.rc ) \
+       >"$tmp/log" 2>&1 && [ -f "$tmp/gamemd.res" ]; then
+    echo "  ok   match/rsrc/gamemd.rc (RC.EXE)"
+  else
+    echo "  FAIL match/rsrc/gamemd.rc"; grep -iE "error" "$tmp/log" | head -3
+    fail=1
+  fi
+fi
+
 [ "$fail" = 0 ] && echo "=== compile_all: ALL GREEN ===" || echo "=== compile_all: FAILURES ==="
 exit "$fail"

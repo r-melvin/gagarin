@@ -48,6 +48,15 @@ comments, data or names.
 Every source and header file carries a provenance header naming where its facts
 came from (see [CONTRIBUTING.md](CONTRIBUTING.md) for the tags).
 
+## Resources
+
+The resource script `match/rsrc/gamemd.rc` (dialogs, menu, version information) is reconstructed
+source, like the code. RA2/YR icon and cursor artwork is unreleased EA art and is never committed: the
+repository ships blank placeholder icons and a cursor with the retail groups' image counts, sizes and
+resource ids. An optional build step (`link_m1.py --rsrc-art-from-retail`) can read the artwork from the
+developer's own executable, at link time and under `build-vc6/` only, for byte comparison; the default
+build uses the placeholders.
+
 ## Vendored third-party code
 
 Third-party code that the retail executable links statically may be vendored
