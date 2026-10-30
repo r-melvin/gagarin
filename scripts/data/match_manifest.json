@@ -147136,5 +147136,86 @@
   "name": "?FUN_005A33F0@@YIXXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x4F93E0",
+  "sym": "?FUN_004F93E0@HouseClass@@QAEXPAVBuildingClass@@@Z",
+  "len": "0x227",
+  "name": "HouseClass::FUN_004F93E0",
+  "status": "partial",
+  "pct": 96.2
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x4FA910",
+  "sym": "?FUN_004FA910@HouseClass@@QAEHHH_N@Z",
+  "len": "0xc0",
+  "name": "HouseClass::FUN_004FA910",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x4FB840",
+  "sym": "?FUN_004FB840@HouseClass@@QAE_NPAVObjectClass@@PAVBuildingClass@@@Z",
+  "len": "0xdf",
+  "name": "HouseClass::FUN_004FB840",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x508150",
+  "sym": "?FUN_00508150@HouseClass@@QAEXXZ",
+  "len": "0x167",
+  "name": "HouseClass::FUN_00508150",
+  "status": "partial",
+  "pct": 96.8
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x508F60",
+  "sym": "?FUN_00508F60@HouseClass@@QAEXXZ",
+  "len": "0x139",
+  "name": "HouseClass::FUN_00508F60",
+  "status": "partial",
+  "pct": 97.9
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x509610",
+  "sym": "?FUN_00509610@HouseClass@@QAE_NPAVTeamTypeClass@@@Z",
+  "len": "0xed",
+  "name": "HouseClass::FUN_00509610",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x50A490",
+  "sym": "?FUN_0050A490@HouseClass@@QAEXPAVBuildingClass@@@Z",
+  "len": "0x122",
+  "name": "HouseClass::FUN_0050A490",
+  "status": "partial",
+  "pct": 95.5
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x50B760",
+  "sym": "?FUN_0050B760@HouseClass@@QAE_NPAVBuildingTypeClass@@PAUCellStruct@@@Z",
+  "len": "0xdb",
+  "name": "HouseClass::FUN_0050B760",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x50CAD0",
+  "sym": "?FUN_0050CAD0@HouseClass@@QAE_NPAVBaseNodeClass@@@Z",
+  "len": "0x119",
+  "name": "HouseClass::FUN_0050CAD0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

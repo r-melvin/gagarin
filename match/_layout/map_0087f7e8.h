@@ -75,6 +75,14 @@ struct Map_0087F7E8
     void FUN_004ACAC0();
     // FUNCTION: GAMEMD 0x4A8BF0 (decl; reloc)
     void FUN_004A8BF0(int a);
+    // The same entry point taking the active foundation (a pointer) instead of the cleared value.
+    void FUN_004A8BF0(void* foundation);
+    // FUNCTION: GAMEMD 0x4A91B0 (decl; reloc) -- the cell under an object, by reference (an rvalue result binds).
+    void FUN_004A91B0(CellStruct* out, const CellStruct& value);
+    // FUNCTION: GAMEMD 0x577AB0 (decl; reloc) -- one house argument (RET 4).
+    void FUN_00577AB0(HouseClass* house);
+    // FUNCTION: GAMEMD 0x577D90 (decl; reloc) -- one house argument (RET 4).
+    void FUN_00577D90(HouseClass* house);
     // FUNCTION: GAMEMD 0x4AC8C0 (decl; reloc)
     void FUN_004AC8C0(int a);
     // FUNCTION: GAMEMD 0x4AC660 (decl; reloc)

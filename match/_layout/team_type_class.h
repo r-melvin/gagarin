@@ -17,6 +17,7 @@
 #include "task_force_class.h"
 
 class HouseClass;
+class TechnoClass;
 class TeamClass;
 
 class TeamTypeClass : public AbstractTypeClass
@@ -50,6 +51,8 @@ public:
     static void ProcessAllTaskforces();
     // FUNCTION: GAMEMD 0x6F1FA0 -- derive the summary flags from the task force.
     void ProcessTaskForce();
+    // FUNCTION: GAMEMD 0x6F1E20 (decl; reloc) -- whether the techno can fill a slot of this team for the house, RET 8.
+    bool FUN_006F1E20(TechnoClass* techno, HouseClass* house);
     // GAMEMD 0x6F1F30 / 0x6F1F70 -- instance enumeration helpers.
     void FlashAllInstances(int duration);
     TeamClass* FindFirstInstance() const;

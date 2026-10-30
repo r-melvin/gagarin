@@ -126,7 +126,13 @@ public:
     virtual void __stdcall SaveToStream(IStream* stream);
     // Slot2: ECX receiver and one checksum pointer, RET4.
     virtual void ComputeCrc(Obj_004A1D30* crc);
-    unsigned char unknown_04[0x70];
+    unsigned char unknown_04[4];
+    class BaseNodeClass* unknown_08;   // +0x08 node vector items
+    unsigned char unknown_0C[8];
+    int unknown_14;         // +0x14 node vector count
+    unsigned char unknown_18[0x38];
+    CellStruct unknown_50;  // +0x50
+    unsigned char unknown_54[0x20];
     HouseClass* unknown_74; // 0x6869DB writes containing House at +0x5774
     int FailedToPlaceNode(class BaseNodeClass* Node);   // GAMEMD 0x42F380
     // FUNCTION: GAMEMD 0x42F260 -- one stack argument (RET 4); BuildingClass 0x440580 passes itself (decl; reloc).
@@ -135,6 +141,10 @@ public:
     void FUN_0042EBE0(CCINIClass* ini, const char* section);
 };
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_04) == 4);
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_50) == 0x50);
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_74) == 0x74);
 GG_STATIC_ASSERT(sizeof(BaseClass) == 0x78);
 #endif
@@ -149,6 +159,7 @@ GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 #endif
 
 class BuildingTypeClass;
+class BaseNodeClass;
 class HouseTypeClass;
 class TechnoTypeClass;
 class UnitTypeClass; class UnitClass; class FactoryClass; class TeamTypeClass;
@@ -216,6 +227,17 @@ public:
 
     // Declaration: GAMEMD 0x501640 -- ECX house at 0x64CA0D.
     void AllyAIHouses();
+    void FUN_00505180();    // GAMEMD 0x505180
+    void FUN_00508F60();    // GAMEMD 0x508F60
+    bool FUN_00509610(TeamTypeClass* team); // GAMEMD 0x509610, RET 4
+    void FUN_0050C210();    // GAMEMD 0x50C210
+    bool FUN_004FB840(ObjectClass* target, BuildingClass* object); // GAMEMD 0x4FB840, RET 8
+    bool FUN_0050CAD0(BaseNodeClass* node); // GAMEMD 0x50CAD0, RET 4
+    int FUN_004F6EC0(int difficulty); // GAMEMD 0x4F6EC0, RET 4
+    bool FUN_0050B760(BuildingTypeClass* type, CellStruct* cell); // GAMEMD 0x50B760, RET 8
+    void FUN_00508150();    // GAMEMD 0x508150
+    int FUN_004FA910(int rtti, int index, bool naval); // GAMEMD 0x4FA910, RET 0xC
+    void FUN_005054B0();    // GAMEMD 0x5054B0
 
     // Declaration: GAMEMD 0x4FB920
     void FUN_004FB920();
@@ -636,6 +658,8 @@ public:
     unsigned char Lose(bool savour);
     // FUNCTION: GAMEMD 0x4F93E0 (decl; reloc) -- takes the building by pointer; RET 4.
     void FUN_004F93E0(void* building);
+    // The same entry point taking the building it was raised for (the definition in House.cpp).
+    void FUN_004F93E0(BuildingClass* building);
     // FUNCTION: GAMEMD 0x50E0E0 -- one powering centre is gone; at zero the technos of `type` are deactivated; RET 4.
     void LostPoweredCenter(TechnoTypeClass* type);
     // FUNCTION: GAMEMD 0x500510 -- the primary factory for an RTTI class (naval picks ships over vehicles, combat picks defences over buildings); RET 0xC.

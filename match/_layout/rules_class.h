@@ -44,6 +44,23 @@ struct RulesColor_004B9BD0 : ColorStruct
 };
 
 // Merged observations and offset assertions from core/rules_class.h.
+// One difficulty row of the rules (0x50 bytes, three of them from RulesClass +0x1538). The nine doubles are
+// the ones HouseClass copies into its multiplier members (@0x4F6EC0).
+struct RulesDifficultyStruct
+{
+    double FirepowerMult;       // +0x00
+    double GroundspeedMult;     // +0x08
+    double AirspeedMult;        // +0x10
+    double ArmorMult;           // +0x18
+    double ROFMult;             // +0x20
+    double CostMult;            // +0x28
+    double BuildtimeMult;       // +0x30
+    double RepairDelay;         // +0x38
+    double BuildDelay;          // +0x40
+    unsigned char unknown_48[8];  // +0x48
+};
+GG_STATIC_ASSERT(sizeof(RulesDifficultyStruct) == 0x50);
+
 struct RulesClass
 {
     // FUNCTION: GAMEMD 0x664D20
@@ -770,7 +787,9 @@ struct RulesClass
     char unknown_1524[0x4];
     double HarvesterDumpRate;   // +0x1528
     int AtomDamage;   // +0x1530
-    char unknown_1534[0x104];
+    char unknown_1534[0x4];
+    RulesDifficultyStruct Difficulty[3];   // +0x1538
+    char unknown_1628[0x10];
     double GrowthRate;   // +0x1638
     double ShroudRate;   // +0x1640
     double FogRate;   // +0x1648
@@ -1609,6 +1628,8 @@ GG_STATIC_ASSERT(offsetof(RulesClass, BuildupTime) == 0x1518);
 GG_STATIC_ASSERT(offsetof(RulesClass, HarvesterLoadRate) == 0x1520);
 GG_STATIC_ASSERT(offsetof(RulesClass, HarvesterDumpRate) == 0x1528);
 GG_STATIC_ASSERT(offsetof(RulesClass, AtomDamage) == 0x1530);
+GG_STATIC_ASSERT(offsetof(RulesClass, Difficulty) == 0x1538);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1628) == 0x1628);
 GG_STATIC_ASSERT(offsetof(RulesClass, GrowthRate) == 0x1638);
 GG_STATIC_ASSERT(offsetof(RulesClass, ShroudRate) == 0x1640);
 GG_STATIC_ASSERT(offsetof(RulesClass, FogRate) == 0x1648);

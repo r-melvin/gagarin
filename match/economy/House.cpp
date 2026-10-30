@@ -73,6 +73,17 @@
 #include "../_layout/house_class.h"
 #include "../_layout/house_class_allied_inline.h"
 #include "../_layout/house_type_class.h"
+#include "../_layout/building_class.h"
+#include "../_layout/placement_object.h"
+#include "../_layout/tag_class.h"
+#include "../_layout/team_type_class.h"
+#include "../_layout/task_force_class.h"
+#include "../_layout/base_node_class.h"
+#include "../_layout/factory_class.h"
+#include "../_layout/map_0087f7e8.h"
+#include "../core/scenario_class_methods.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/player_ptr_00a83d4c.h"
 #include "../_layout/obj_004a1d30.h"
 // Native502D60 reads the country second index through this actual field.
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
@@ -109,6 +120,7 @@ static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 }
 
 #include <string.h>
+#include <stdlib.h>
 
 #pragma intrinsic(strcpy, strcmp)
 
@@ -396,6 +408,7 @@ extern const IID DAT_007E9550;
 #include "../_layout/techno_type_class.h"
 #include "../_layout/unit_type_class.h"
 #include "../_layout/cell_class.h"
+#include "../_layout/factory_class.h"
 #include "../_layout/map_0087f7e8.h"
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- VocClass::PlayAt.
@@ -860,6 +873,41 @@ void FUN_004F6EB0()
 {
 }
 
+// Unclaimed (below partial bar), GAMEMD 0x4F6EC0
+// Switches to the given difficulty row of the rules: loads the nine multipliers (scaled by the house
+// type's biases in a multiplayer game), restarts the team delay timer and returns the previous difficulty.
+int HouseClass::FUN_004F6EC0(int difficulty)
+{
+    int previous = AIDifficulty;
+    AIDifficulty = difficulty;
+    if (Session_00A8B238.GameMode != 0) {
+        FirepowerMultiplier = RulesInstance->Difficulty[difficulty].FirepowerMult * Type->FirepowerMult;
+        GroundspeedMultiplier = Type->GroundspeedMult * (RulesInstance->Difficulty[difficulty].GroundspeedMult * RulesInstance->GameSpeedBias);
+        AirspeedMultiplier = Type->AirspeedMult * (RulesInstance->Difficulty[difficulty].AirspeedMult * RulesInstance->GameSpeedBias);
+        ArmorMultiplier = RulesInstance->Difficulty[difficulty].ArmorMult * Type->ArmorMult;
+        ROFMultiplier = RulesInstance->Difficulty[difficulty].ROFMult * Type->ROFMult;
+        CostMultiplier = RulesInstance->Difficulty[difficulty].CostMult * Type->CostMult;
+        RepairDelay = RulesInstance->Difficulty[difficulty].RepairDelay;
+        BuildDelay = RulesInstance->Difficulty[difficulty].BuildDelay;
+        BuildTimeMultiplier = Type->BuildtimeMult * (RulesInstance->Difficulty[difficulty].BuildtimeMult * RulesInstance->GameSpeedBias);
+    } else {
+        FirepowerMultiplier = RulesInstance->Difficulty[difficulty].FirepowerMult;
+        GroundspeedMultiplier = RulesInstance->Difficulty[difficulty].GroundspeedMult
+            * RulesInstance->GameSpeedBias;
+        AirspeedMultiplier = RulesInstance->Difficulty[difficulty].AirspeedMult
+            * RulesInstance->GameSpeedBias;
+        ArmorMultiplier = RulesInstance->Difficulty[difficulty].ArmorMult;
+        ROFMultiplier = RulesInstance->Difficulty[difficulty].ROFMult;
+        CostMultiplier = RulesInstance->Difficulty[difficulty].CostMult;
+        RepairDelay = RulesInstance->Difficulty[difficulty].RepairDelay;
+        BuildDelay = RulesInstance->Difficulty[difficulty].BuildDelay;
+        BuildTimeMultiplier = RulesInstance->Difficulty[difficulty].BuildtimeMult
+            * RulesInstance->GameSpeedBias;
+    }
+    TeamDelayTimer = CDTimerClass(RulesInstance->TeamDelays.Items[difficulty] + ArrayIndex * 175);
+    return previous;
+}
+
 // FUNCTION: GAMEMD 0x4F7850
 // Stores several members.
 Obj_004F7850* Obj_004F7850::FUN_004F7850()
@@ -870,6 +918,70 @@ Obj_004F7850* Obj_004F7850::FUN_004F7850()
     unknown_0C = 0;
     unknown_10 = -1;
     return this;
+}
+
+// STRING: GAMEMD 0x824784 "EVA_OreMinerUnderAttack"
+extern const char STR_00824784[];
+// STRING: GAMEMD 0x824768 "EVA_OurBaseIsUnderAttack"
+extern const char STR_00824768[];
+// STRING: GAMEMD 0x82474C "EVA_OurAllyIsUnderAttack"
+extern const char STR_0082474C[];
+// FUNCTION: GAMEMD 0x65FA70 (decl; reloc) -- RadarEventClass::Create; the cell goes on the stack.
+bool __fastcall FUN_0065FA70(int type, CellStruct cell);
+// FUNCTION: GAMEMD 0x750920 (decl; reloc) -- VocClass::PlayGlobal.
+void* __fastcall FUN_00750920(int index, float volume, unsigned int pan, int* controller);
+
+// The cell holding a coordinate, taken through the reference so the caller's temporary is read in place.
+static inline CellStruct CellOfCoord(const CoordStruct& coord)
+{
+    CellStruct cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+    return cell;
+}
+
+// FUNCTION: GAMEMD 0x4F93E0
+// A building of this house is under attack: raises the radar event and the matching EVA line for the
+// local player (own base, own miner or an ally), then notifies the related tags.
+void HouseClass::FUN_004F93E0(BuildingClass* building)
+{
+    if (building != 0 && building->vf_32()) {
+        return;
+    }
+    bool controlled = IsControlledByCurrentPlayer_0050E0E0(this);
+    bool ally;
+    if (DAT_00A83D4C == 0 || DAT_00A83D4C == this || !IsAlliedWith(DAT_00A83D4C)
+        || (Session_00A8B238.GameMode != 0 && building->Owner->Type->MultiplayPassive)) {
+        ally = false;
+    } else {
+        ally = true;
+    }
+    if (controlled) {
+        if (building != 0 && building->Type != 0 && building->Type->UndeploysInto != 0
+            && building->Type->ResourceGatherer) {
+            CellStruct cell = CellOfCoord(building->vf_18());
+            if (FUN_0065FA70(4, cell)) {
+                Vox_0050E0E0::Play(STR_00824784, -1, -1);
+            }
+        } else {
+            CellStruct cell = CellOfCoord(building->vf_18());
+            if (FUN_0065FA70(3, cell)) {
+                Vox_0050E0E0::Play(STR_00824768, -1, -1);
+                FUN_00750920(RulesInstance->BaseUnderAttackSound, 1.0f, 0x2000, 0);
+            }
+        }
+    } else if (ally) {
+        CellStruct cell = CellOfCoord(building->vf_18());
+        if (FUN_0065FA70(0x10, cell)) {
+            Vox_0050E0E0::Play(STR_0082474C, -1, -1);
+            FUN_00750920(RulesInstance->BaseUnderAttackSound, 1.0f, 0x2000, 0);
+        }
+    }
+    // TAGLOOP-BEGIN
+    for (int i = 0; i < RelatedTags.Count; i++) {
+        RelatedTags.Items[i]->FUN_006E53A0(6, 0, DAT_00A8EF98, false, 0);
+    }
+    // TAGLOOP-END
 }
 
 // FUNCTION: GAMEMD 0x4F9970
@@ -906,6 +1018,61 @@ void HouseClass::UpdateAllSilos(int prevStorage, int prevTotalStorage)
 void HouseClass::FUN_004F9F70(int index, bool flag)
 {
     this->FUN_004F9F90((HouseClass*)HouseArray.Items[index], flag);
+}
+
+// FUNCTION: GAMEMD 0x6ABC60 (decl; reloc)
+int __fastcall FUN_006ABC60(int a, int b, int c);
+
+// FUNCTION: GAMEMD 0x4FA910
+// Puts the factory that serves the given type category on hold; returns 3 when there is none.
+int HouseClass::FUN_004FA910(int rtti, int index, bool naval)
+{
+    int buildCat;
+    if (index < 0) {
+        buildCat = 0;
+    } else {
+        buildCat = ObjectTypeClass::IsBuildCat5(rtti, index);
+    }
+
+    FactoryClass* factory;
+    switch (rtti) {
+    case 0xF:
+    case 0x10:
+        factory = Primary_ForInfantry;
+        break;
+    case 1:
+    case 0x28:
+        if (naval) {
+            factory = Primary_ForShips;
+        } else {
+            factory = Primary_ForVehicles;
+        }
+        break;
+    case 6:
+    case 7:
+        if (buildCat == 5) {
+            factory = Primary_ForDefenses;
+        } else {
+            factory = Primary_ForBuildings;
+        }
+        break;
+    case 2:
+    case 3:
+        factory = Primary_ForAircraft;
+        break;
+    default:
+        factory = 0;
+        break;
+    }
+
+    if (factory == 0) {
+        return 3;
+    }
+    factory->Suspend(true);
+    if (DAT_00A83D4C == this) {
+        DAT_0087F7E8.FUN_006A60A0(FUN_006ABC60(rtti, index, 0));
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x4FB6B0  HouseClass::RegisterJustBuilt (__thiscall, ret 4)
@@ -968,6 +1135,40 @@ void HouseClass::RegisterJustBuilt(TechnoClass* pTechno)
     }
 
     this->RecheckTechTree = 1;
+}
+
+// GLOBAL: GAMEMD 0x880994 / 0x88099A / 0x88099B / 0x88099C / 0x8809A0 -- placement state reset when placement starts.
+extern int DAT_00880994;
+extern bool DAT_0088099A;
+extern bool DAT_0088099B;
+extern bool DAT_0088099C;
+extern int DAT_008809A0;
+// FUNCTION: GAMEMD 0x48DC90 (decl; reloc) -- deselects everything.
+void __cdecl FUN_0048DC90();
+
+// FUNCTION: GAMEMD 0x4FB840
+// Starts placing `object` for the local player: clears the selection and the repair and sell modes,
+// records the placement state and marks the foundation under `target`.
+bool HouseClass::FUN_004FB840(ObjectClass* target, BuildingClass* object)
+{
+    if (this == DAT_00A83D4C && PlacementType_00880990 == 0 && target != 0 && object != 0) {
+        FUN_0048DC90();
+        DAT_0087F7E8.FUN_004AC8C0(0);
+        DAT_0087F7E8.FUN_004AC660(0);
+        DAT_0088099A = false;
+        DAT_0088099B = false;
+        DAT_0088099C = false;
+        DAT_008809A0 = -1;
+        PlacementType_00880990 = object->Type;
+        PlacementObject_0088098C = object;
+        DAT_00880994 = ArrayIndex;
+        DAT_0087F7E8.FUN_004A8BF0(object->vf_66(1));
+        CellStruct cell;
+        DAT_0087F7E8.FUN_004A91B0(&cell, target->vf_110());
+        target->vf_73(2);
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x4FB9B0
@@ -2143,6 +2344,45 @@ void __cdecl FUN_00506B80()
 {
 }
 
+// GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
+extern ScenarioClass* DAT_00A8B230;
+
+// FUNCTION: GAMEMD 0x508150
+// Estimates the enemy's mix of vehicles, aircraft and infantry from the costs of what its enemy house
+// owns (plus a flat 3000 and a difficulty-scaled random jitter) and stores the three shares.
+void HouseClass::FUN_00508150()
+{
+    if (EnemyHouseIndex == -1) {
+        PredictionEnemyInfantry = 0.33f;
+        PredictionEnemyAir = 0.33f;
+        PredictionEnemyArmor = 0.33f;
+        return;
+    }
+    HouseClass* enemy = DAT_00A8022C[EnemyHouseIndex];
+    int aircraft = enemy->TotalOwnedAircraftCost + 3000;
+    int vehicles = enemy->TotalOwnedVehicleCost + 3000;
+    int infantry = enemy->TotalOwnedInfantryCost + 3000;
+
+    int range;
+    range = (int)(aircraft * (RulesInstance->list_09A8.Items[AIDifficulty] * 0.01f));
+    aircraft += DAT_00A8B230->unknown_0218.RandomRanged(-range, range);
+    range = (int)(vehicles * (RulesInstance->list_09A8.Items[AIDifficulty] * 0.01f));
+    vehicles += DAT_00A8B230->unknown_0218.RandomRanged(-range, range);
+    range = (int)(infantry * (RulesInstance->list_09A8.Items[AIDifficulty] * 0.01f));
+    infantry += DAT_00A8B230->unknown_0218.RandomRanged(-range, range);
+
+    int total = aircraft + vehicles + infantry;
+    if (total <= 0) {
+        PredictionEnemyInfantry = 0.33f;
+        PredictionEnemyAir = 0.33f;
+        PredictionEnemyArmor = 0.33f;
+        return;
+    }
+    PredictionEnemyArmor = (float)vehicles / (float)total;
+    PredictionEnemyAir = (float)aircraft / (float)total;
+    PredictionEnemyInfantry = (float)infantry / (float)total;
+}
+
 // FUNCTION: GAMEMD 0x005095D0
 // Count the entries of the global vector at 0x8B40E8 whose +0x2C is this
 // object and whose +0x24 is `kind`, walking from the end.
@@ -2158,6 +2398,84 @@ int Obj_005095D0::FUN_005095D0(int kind)
     return count;
 }
 
+// GLOBAL: GAMEMD 0x8B3DC4 / 0x8B3DD0 -- a techno array, items and count.
+extern TechnoClass** DAT_008B3DC4;
+extern int DAT_008B3DD0;
+
+// FUNCTION: GAMEMD 0x508F60
+// Switches the house's spy-satellite reveal on or off: it is on while a live, active radar-type building
+// that is not being sold stays unpowered or inactive, and the local player hears the matching sound.
+void HouseClass::FUN_00508F60()
+{
+    int i;
+    RecheckRadar = 0;
+    for (i = 0; i < Buildings.Count; i++) {
+        BuildingClass* building = Buildings.Items[i];
+        if (building != 0 && building->Type->bools_16A4[1] && !building->InLimbo && building->IsOnMap) {
+            if (IsControlledByCurrentPlayer_0050E0E0(this) && !building->DiscoveredByCurrentPlayer
+                && Session_00A8B238.GameMode == 0) {
+                continue;
+            }
+            if (building->CurrentMission != 0x13 && building->QueuedMission != 0x13) {
+                if (!building->vf_117()) {
+                    if (SpySatActive) {
+                        return;
+                    }
+                    DAT_0087F7E8.FUN_00577D90(this);
+                    SpySatActive = 1;
+                    if (this == DAT_00A83D4C) {
+                        FUN_00750920(RulesInstance->SpySatActivationSound, 1.0f, 0x2000, 0);
+                    }
+                    return;
+                }
+                break;
+            }
+        }
+    }
+    if (SpySatActive) {
+        DAT_0087F7E8.FUN_00577AB0(this);
+        SpySatActive = 0;
+        if (this == DAT_00A83D4C) {
+            FUN_00750920(RulesInstance->SpySatDeactivationSound, 1.0f, 0x2000, 0);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x509610
+// Whether every slot of the team type's task force can be filled: the type is buildable by this house
+// or (outside multiplayer) some unit of this house of that type can join the team.
+bool HouseClass::FUN_00509610(TeamTypeClass* team)
+{
+    if (team != 0 && team->TaskForce != 0) {
+        for (int i = 0; i < team->TaskForce->EntryCount; i++) {
+            TechnoTypeClass* type = team->TaskForce->Entries[i].Type;
+            if (type == 0 || type->vf_37(true, true, false, this) == 0) {
+                if (Session_00A8B238.GameMode != 0) {
+                    return false;
+                }
+                int k = DAT_008B3DD0 - 1;
+                if (k < 0) {
+                    return false;
+                }
+                for (;;) {
+                    TechnoClass* techno = DAT_008B3DC4[k];
+                    if (techno->Owner == this
+                        && type == techno->vf_33()
+                        && team->FUN_006F1E20(techno, this)) {
+                        break;
+                    }
+                    k--;
+                    if (k < 0) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x509CC0
 // Empty function that pops its stack arguments.
 void __stdcall FUN_00509CC0(int a1)
@@ -2166,6 +2484,61 @@ void __stdcall FUN_00509CC0(int a1)
 
 // GLOBAL: GAMEMD 0x7E2AC8 -- default multiplier used by both native helpers.
 extern const float DAT_007E2AC8;
+
+// GLOBAL: GAMEMD 0xA8ED6B -- when set, base-node bookkeeping is skipped.
+extern unsigned char DAT_00A8ED6B;
+
+// FUNCTION: GAMEMD 0x50A490
+// A building of this house was destroyed: finds its base node, clears the other nodes that point at the
+// same cell and, for a defense in a multiplayer game, empties the node itself.
+void HouseClass::FUN_0050A490(BuildingClass* building)
+{
+    if (!DAT_00A8ED6B) {
+        CoordStruct coord = building->Location;
+        Cell cell((short)(coord.X / 256), (short)(coord.Y / 256));
+        for (int i = 0; i < Base.unknown_14; i++) {
+            BaseNodeClass* node = &Base.unknown_08[i];
+            if (node->unknown_00 == building->Type->ArrayIndex && node->unknown_04 == cell) {
+                Cell nodeCell = Base.unknown_08[i].unknown_04;
+                for (int j = 0; j < Base.unknown_14; j++) {
+                    if (i != j && Base.unknown_08[j].unknown_04 == nodeCell) {
+                        Base.unknown_08[j].unknown_04 = DAT_00A8EF98;
+                    }
+                }
+                if (building->Type->bools_1700[6] && Session_00A8B238.GameMode != 0) {
+                    Base.unknown_08[i].unknown_00 = -1;
+                    Base.unknown_08[i].unknown_04 = DAT_00A8EF98;
+                }
+                return;
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x50B760
+// In a multiplayer game, whether any cell within the base-spacing ring around a building footprint at
+// `cell` is marked as base space of this house. Outside multiplayer the answer is always yes.
+bool HouseClass::FUN_0050B760(BuildingTypeClass* type, CellStruct* cell)
+{
+    if (Session_00A8B238.GameMode == 0) {
+        return true;
+    }
+    int spacing = RulesInstance->AIBaseSpacing;
+    int width = type->GetFoundationWidth() + spacing * 2;
+    int height = type->GetFoundationHeight(false) + spacing * 2;
+    unsigned int bit = 1 << ArrayIndex;
+    for (int x = cell->X - spacing - 1; x < cell->X + width + 1; x++) {
+        for (int y = cell->Y - spacing - 1; y < cell->Y + height + 1; y++) {
+            CellStruct position;
+            position.X = x;
+            position.Y = y;
+            if (DAT_0087F7E8.FUN_005657A0(&position)->BaseSpacerOfHouses & bit) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 // FUNCTION: GAMEMD 0x50BDF0
 float HouseClass::FUN_0050BDF0(TechnoTypeClass* type)
@@ -2270,6 +2643,79 @@ int HouseClass::FindIndexByName(const char* name)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// Unclaimed (retail inlines 0x505180 here, which is not reconstructed), GAMEMD 0x50C210
+// Re-centres the base on the last live building of one of the base-centre types (the construction yards).
+void HouseClass::FUN_0050C210()
+{
+    for (int i = Buildings.Count - 1; i >= 0; i--) {
+        BuildingClass* building = Buildings.Items[i];
+        for (int j = 0; j < RulesInstance->list_08AC.Count; j++) {
+            if (RulesInstance->list_08AC.Items[j] == building->Type) {
+                if (!building->InLimbo) {
+                    if (building == 0) {
+                        return;
+                    }
+                    CoordStruct location = building->Location;
+                    Cell cell((short)(location.X / 256), (short)(location.Y / 256));
+                    BaseSpawnCell = cell;
+                    FUN_00505180();
+                    Base.unknown_08[0].unknown_04 = cell;
+                    Base.unknown_50 = cell;
+                    return;
+                }
+                break;
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x50CAD0
+// Whether the base node's building type may be (re)built now: miners are capped by difficulty, other
+// types wait out the replace delay or need a neighbouring building of this house.
+bool HouseClass::FUN_0050CAD0(BaseNodeClass* node)
+{
+    int index = node->unknown_00;
+    if (index < 0) {
+        return true;
+    }
+    if (index >= DAT_00A83C78) {
+        return false;
+    }
+    BuildingTypeClass* type = DAT_00A83C6C[index];
+    if (type->ResourceDestination && type->ResourceGatherer) {
+        if (CountResourceGatherers < RulesInstance->AISlaveMinerNumber.Items[AIDifficulty]) {
+            return true;
+        }
+        return false;
+    }
+    if (Session_00A8B238.GameMode == 0) {
+        return true;
+    }
+    if (type == 0) {
+        return false;
+    }
+    if (type->GetWeapon(0)->WeaponType != 0) {
+        return true;
+    }
+    if (type->bools_1570[1]) {
+        for (int facing = 0; facing < 8; facing++) {
+            CellClass* cell = DAT_0087F7E8.FUN_005657A0(&node->unknown_04);
+            BuildingClass* building = cell->GetNeighbourCell(facing)->GetBuilding();
+            if (building != 0 && building->Owner == this) {
+                return true;
+            }
+        }
+        return false;
+    }
+    if (type->PowerBonus > 0) {
+        return true;
+    }
+    if (LATime + RulesInstance->AIRestrictReplaceTime <= CurrentFrame) {
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x50D440
 //
 // Re-create the house's recorded starting forces, last entry first. Each
