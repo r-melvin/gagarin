@@ -12,7 +12,7 @@ lander, `../tumigrate/cppsplit.py`, `../common.py`/`ctx.py` for the pinned PE an
 | `pktlint.py` | READY-packet linter, 0.2-0.5 s per packet (`--strict` adds a compile + raw/strict proof of every matched row) |
 | `pktrebase.py` | re-apply a packet onto the tip: remap moved files, merge new files into migrated TU files in address order, retire clashing local views under byte identity, re-key, re-point the delta, derive bindings, prove rows, precise conflict report |
 | `batchland.py` | lint -> rebase onto the growing prefix -> `land_bundle.py` (one full gate per batch, bisect, one commit per packet) -> optional incremental gate per commit |
-| `pkt.py` | worker CLI: `budget`, `init`, `span`, `score`, `bind`, `finish`, `done` |
+| `pkt.py` | worker CLI: `budget`, `init`, `span`, `score`, `bind`, `finish`, `done` (`--held` for a held-only packet: backs up the worktree diff first) |
 | `flagsweep.py` | /Ob and /Op variants over every TU with partials (via `../cheap-near/flagprobe.py`); proposes VC6FLAGS changes only where no row drops; writes patch + pct delta |
 | `permute_queue.py` | ranks partial rows for the permuter (multiset-identical, RA2-twin-identical) and scaffolds `scripts/permuter/new_run.sh` dirs with the current body |
 | `skeleton.py` | compilable first draft per address from binary facts (receiver class and slot from RTTI vtables, convention, RET n, offset asserts, callee/global/string decls, disassembly comment); rows.tsv lines for `pkt.py score` |

@@ -112,7 +112,7 @@ python3 $DL/pkt.py finish        # results.tsv, manifest_delta.json, README skel
 Fill the README's "Held" section and the proposed commit message (trailer
 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`), then re-run `finish` until pktlint
 reports 0 errors. The packet is backed up to `~/Projects/backups/int-evidence/<name>/`.
-`python3 $DL/pkt.py done` removes only the worktree `init` created.
+`python3 $DL/pkt.py done` removes only the worktree `init` created. A held-only packet (nothing READY) uses `pkt.py done --held`, which saves the worktree diff to the backup dir first. A README that cites no REA Evidence IDs should say `REA: none (ghidra CLI fallback)` on its own line.
 
 ## Waiting on long jobs
 

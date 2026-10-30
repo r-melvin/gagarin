@@ -425,10 +425,26 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
     return 1 if rc or lint.returncode else 0
 
 
+def held_backup(e):
+    """--held: a packet with nothing READY (held-only). Save the worktree diff to the backup dir first."""
+    dest = os.path.join(D.BACKUPS, e["NAME"], "HELD")
+    os.makedirs(dest, exist_ok=True)
+    wt = e["WT"]
+    L.git(wt, "add", "-N", "--", ".", check=False)   # include new files in the diff; tracked content is untouched
+    diff = L.git(wt, "diff", "--binary", "HEAD", "--", ".")
+    open(os.path.join(dest, "worktree.diff"), "w").write(diff)
+    if os.path.isdir(e["PKT_DIR"]):
+        import shutil
+        shutil.copytree(e["PKT_DIR"], os.path.join(dest, "pkt_dir"), dirs_exist_ok=True)
+    say("held: worktree diff (%d bytes) backed up to %s" % (len(diff), dest))
+
+
 def cmd_done(a):
     e = load_env()
     bk = os.path.join(D.BACKUPS, e["NAME"], "READY")
-    if not os.path.isdir(bk) and not a.force:
+    if a.held:
+        held_backup(e)
+    elif not os.path.isdir(bk) and not a.force:
         raise SystemExit("no backup at %s: run `pkt.py finish` first (or --force)" % bk)
     try:
         D.remove_worktree(D.MAIN_REPO, e["WT"])
@@ -446,7 +462,7 @@ def main(argv=None):
     p = sp.add_parser("score"); p.add_argument("tu"); p.add_argument("addrs", nargs="*")
     sp.add_parser("bind")
     p = sp.add_parser("finish"); p.add_argument("--no-backup", dest="backup", action="store_false")
-    p = sp.add_parser("done"); p.add_argument("--force", action="store_true")
+    p = sp.add_parser("done"); p.add_argument("--force", action="store_true"); p.add_argument("--held", action="store_true", help="held-only packet (no READY): back up the worktree diff to the backup dir, then remove the worktree")
     a = ap.parse_args(argv)
     if a.cmd == "budget":
         ok, _ = budget()
