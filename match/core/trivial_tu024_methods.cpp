@@ -18,10 +18,3 @@ int __cdecl FUN_00426740()
 {
     return 0xB00;
 }
-
-// FUNCTION: GAMEMD 0x427290
-// Returns the address of a member. Vtable slot 4 of AnimFile (RTTI).
-int* Obj_00427290::FUN_00427290()
-{
-    return &unknown_50C;
-}

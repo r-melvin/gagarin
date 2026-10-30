@@ -10,16 +10,6 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/anim_class.h"
 
-struct Obj_00427290;
-
-struct Obj_00427290
-{
-    char unknown_00[0x50C];
-    int unknown_50C;   // +0x050C
-    // FUNCTION: GAMEMD 0x427290
-    int* FUN_00427290();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00427290, unknown_50C) == 0x50C);
 
 
 // FUNCTION: GAMEMD 0x423920

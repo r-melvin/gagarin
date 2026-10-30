@@ -94,8 +94,8 @@ public:
     virtual ~Animate() {}
     virtual bool vf_1(Delegate_00426750* delegate) = 0;
     virtual void vf_2() = 0;
-    virtual int* vf_3() = 0;
-    virtual int vf_4(int arg) = 0;
+    virtual int vf_3(int arg) = 0;
+    virtual SlotRgb_00426670* vf_4() = 0;
     virtual int vf_5() = 0;
     virtual int vf_6() = 0;
     virtual int vf_7() = 0;
@@ -109,7 +109,14 @@ public:
     Delegate_00426750* Delegate;   // +0x0084
     char              Retired;     // +0x0088
     char              Primed;      // +0x0089
-    char              _pad08A[0x50C - 0x8A];
+    char              unknown_8A[0xA0 - 0x8A];
+    unsigned short    unknown_A0;  // native slot 6 at 0x426A72
+    unsigned short    unknown_A2;  // native slot 7 at 0x426A82
+    char              unknown_A4[2];
+    char              unknown_A6;  // native slot 5 at 0x426A50
+    char              unknown_A7[0xCC - 0xA7];
+    int               unknown_CC;  // native slot 5 at 0x426A56
+    char              unknown_D0[0x50C - 0xD0];
     SlotRgb_00426670  Slots[0x100];      // +0x050C
     char              _pad80C[0x80E - 0x80C];
     AnimFrameEntry_00426990 Frames[1];   // +0x080E
@@ -135,15 +142,25 @@ public:
     virtual bool vf_1(Delegate_00426750* delegate);
     // FUNCTION: GAMEMD 0x426790 -- slot 2: the teardown
     virtual void vf_2();
-    // Slots 3-7 are defined elsewhere (0x427290, 0x426A90, 0x426A70, 0x426A50, 0x426A80).
-    virtual int* vf_3();
-    virtual int vf_4(int arg);
+    // Native 0x7E3584 slots 3-7: 426A90, 427290, 426A50, 426A70, 426A80.
+    virtual int vf_3(int arg);
+    virtual SlotRgb_00426670* vf_4();
     virtual int vf_5();
     virtual int vf_6();
     virtual int vf_7();
     // FUNCTION: GAMEMD 0x426E00 -- position the delegate on a frame and read it.
     bool FUN_00426E00(int frame);
 };
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, unknown_A0) == 0xa0);
+GG_STATIC_ASSERT(sizeof(((AnimFile_00426750*)0)->unknown_A0) == 2);
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, unknown_A2) == 0xa2);
+GG_STATIC_ASSERT(sizeof(((AnimFile_00426750*)0)->unknown_A2) == 2);
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, unknown_A6) == 0xa6);
+GG_STATIC_ASSERT(sizeof(((AnimFile_00426750*)0)->unknown_A6) == 1);
+GG_STATIC_ASSERT(offsetof(AnimFile_00426750, unknown_CC) == 0xcc);
+GG_STATIC_ASSERT(sizeof(((AnimFile_00426750*)0)->unknown_CC) == 4);
+GG_STATIC_ASSERT(sizeof(SlotRgb_00426670) == 3);
+GG_STATIC_ASSERT(sizeof(((AnimFile_00426750*)0)->Slots) == 0x300);
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Retired) == 0x88);
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Sub) == 0xE0C);
 GG_STATIC_ASSERT(offsetof(AnimFile_00426750, Buffer) == 0xE10);

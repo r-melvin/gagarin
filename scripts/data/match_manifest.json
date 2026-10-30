@@ -82854,11 +82854,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu024_methods.cpp",
+  "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x427290",
-  "sym": "?FUN_00427290@Obj_00427290@@QAEPAHXZ",
+  "sym": "?vf_4@AnimFile_00426750@@UAEPAUSlotRgb_00426670@@XZ",
   "len": "0x7",
-  "name": "Obj_00427290::FUN_00427290",
+  "name": "AnimFile_00426750::vf_4",
   "status": "matched",
   "pct": 100
  },
@@ -95971,20 +95971,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/field_read_leaf_methods.cpp",
+  "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x426A70",
-  "sym": "?FUN_00426A70@Obj_00426A70@@QAEHXZ",
+  "sym": "?vf_6@AnimFile_00426750@@UAEHXZ",
   "len": "0xa",
-  "name": "Obj_00426A70::FUN_00426A70",
+  "name": "AnimFile_00426750::vf_6",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/field_read_leaf_methods.cpp",
+  "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x426A80",
-  "sym": "?FUN_00426A80@Obj_00426A80@@QAEHXZ",
+  "sym": "?vf_7@AnimFile_00426750@@UAEHXZ",
   "len": "0xa",
-  "name": "Obj_00426A80::FUN_00426A80",
+  "name": "AnimFile_00426750::vf_7",
   "status": "matched",
   "pct": 100.0
  },
@@ -133670,11 +133670,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_w1.cpp",
+  "tu": "match/core/small_misc38_methods.cpp",
   "addr": "0x426A50",
-  "sym": "?AdjustedCount@Obj_00426A50@@QAEHXZ",
+  "sym": "?vf_5@AnimFile_00426750@@UAEHXZ",
   "len": "0x12",
-  "name": "Obj_00426A50::AdjustedCount",
+  "name": "AnimFile_00426750::vf_5",
   "status": "matched",
   "pct": 100.0
  },

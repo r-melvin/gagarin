@@ -128,27 +128,6 @@ void __fastcall FUN_004031B0(Obj_004031B0* self, const Block32_004031B0* source)
     self->unknown_44 = *source;
 }
 
-struct Obj_00426A50
-{
-    char Pad_00[0xA6];
-    char unknown_A6;
-    char Pad_A7[0xCC - 0xA7];
-    int  unknown_CC;
-    // FUNCTION: GAMEMD 0x426A50
-    int AdjustedCount();
-};
-GG_STATIC_ASSERT(offsetof(Obj_00426A50, unknown_CC) == 0xCC);
-
-// FUNCTION: GAMEMD 0x426A50
-// The +0xCC count, one less when the +0xA6 flag is set.
-int Obj_00426A50::AdjustedCount()
-{
-    int count = unknown_CC;
-    if (unknown_A6)
-        count--;
-    return count;
-}
-
 struct Obj_0042E100
 {
     char Pad_00[8];

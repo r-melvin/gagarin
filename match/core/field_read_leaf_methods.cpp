@@ -10,23 +10,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-#include "../_layout/obj_00426a70.h"
-
-#include "../_layout/obj_00426a80.h"
-
 #include "../_layout/rec_0046c4d0.h"
-
-// FUNCTION: GAMEMD 0x00426A70
-int Obj_00426A70::FUN_00426A70()
-{
-    return unknown_A0;
-}
-
-// FUNCTION: GAMEMD 0x00426A80
-int Obj_00426A80::FUN_00426A80()
-{
-    return unknown_A2;
-}
 
 extern int DAT_00889F64;
 extern Rec_0046C4D0** DAT_008B4154;
