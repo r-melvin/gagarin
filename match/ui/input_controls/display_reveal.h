@@ -29,7 +29,9 @@ class DisplayHouse;
 class DisplayCell
 {
 public:
-    char          unknown_000[0x120];   // +0x000
+    char          unknown_000[0x24];    // +0x000
+    CellStruct    MapCoords;            // +0x024
+    char          unknown_028[0x120 - 0x28];   // +0x028
     signed char   Layer0Value;          // +0x120
     signed char   Layer1Value;          // +0x121
     char          unknown_122[0x12C - 0x122];   // +0x122
@@ -37,6 +39,8 @@ public:
     char          unknown_130[0x140 - 0x130];   // +0x130
     unsigned long Flags140;             // +0x140
 
+    // FUNCTION: GAMEMD 0x486A70 (decl; reloc)
+    void FUN_00486A70();
     // FUNCTION: GAMEMD 0x486BF0 (decl; reloc)
     void CleanFog_00486BF0();
     // FUNCTION: GAMEMD 0x487630 (decl; reloc)
@@ -44,6 +48,7 @@ public:
     // FUNCTION: GAMEMD 0x487690 (decl; reloc)
     void IncreaseShroudCounter_00487690();
 };
+GG_STATIC_ASSERT(offsetof(DisplayCell, MapCoords) == 0x24);
 GG_STATIC_ASSERT(offsetof(DisplayCell, Layer0Value) == 0x120);
 GG_STATIC_ASSERT(offsetof(DisplayCell, Layer1Value) == 0x121);
 GG_STATIC_ASSERT(offsetof(DisplayCell, Flags12C) == 0x12C);

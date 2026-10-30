@@ -59,8 +59,13 @@ extern Layer_004AA2B0 DAT_008A0360[];
 // GLOBAL: GAMEMD 0x820030 — the three layer indices NextObject walks, in order.
 extern int DAT_00820030[3];
 
+// GLOBAL: GAMEMD 0x82003C — the three layer indices PrevObject walks, in order.
+extern int DAT_0082003C[3];
+
 struct Map_004AA2B0
 {
+    // FUNCTION: GAMEMD 0x4AA380 — the object before the one given (`this` never read).
+    Obj_004AA2B0* PrevObject(Obj_004AA2B0* current);
     // FUNCTION: GAMEMD 0x4AA2B0 — MapClass::NextObject (`this` never read).
     Obj_004AA2B0* NextObject(Obj_004AA2B0* current);
 };

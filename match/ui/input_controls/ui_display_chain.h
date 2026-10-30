@@ -532,10 +532,24 @@ public:
     void FUN_004AE750(DisplayCmdObject* target, CellStruct cell, int action);
     // FUNCTION: GAMEMD 0x4A91B0 (decl; reloc) -- RET 8.
     void FUN_004A91B0(CellStruct* out, void* arg);
+    // FUNCTION: GAMEMD 0x4A9650 (decl; reloc) -- RET 8; set or clear flag 4 (+0x12C) on every cell of the saved foundation.
+    void FUN_004A9650(const CellStruct* cell, bool set);
     // FUNCTION: GAMEMD 0x4AA2B0 (decl; reloc) -- RET 4; the object after the one given.
     DisplayCmdObject* FUN_004AA2B0(DisplayCmdObject* from);
     // FUNCTION: GAMEMD 0x4AA380 (decl; reloc) -- RET 4; the object before the one given.
     DisplayCmdObject* FUN_004AA380(DisplayCmdObject* from);
+    // FUNCTION: GAMEMD 0x4ACAC0 (decl; reloc) -- ECX only; walk the 512x512 cells and settle the lit ones.
+    void FUN_004ACAC0();
+    // FUNCTION: GAMEMD 0x4ACBC0 (decl; reloc) -- ECX only; re-derive the shroud of every cell that was lit.
+    void FUN_004ACBC0();
+    // FUNCTION: GAMEMD 0x4ACC50 (decl; reloc) -- RET 4; forget what is known of a cell and re-derive its neighbours.
+    void FUN_004ACC50(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x4ACDA0 (decl; reloc) -- RET 4; put a lit cell's neighbours back to the unlit state.
+    void FUN_004ACDA0(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x4ADEE0 (decl; reloc) -- RET 8; reveal around, or run the gap generator of, every techno.
+    void FUN_004ADEE0(bool skipBuildings, int arg);
+    // FUNCTION: GAMEMD 0x4ADFF0 (decl; reloc) -- RET 8; reveal around the techno objects of draw layer 2.
+    void FUN_004ADFF0(bool skipBuildings, int arg);
     // FUNCTION: GAMEMD 0x4AE290 (decl; reloc)
     void FUN_004AE290();
     // FUNCTION: GAMEMD 0x4AEB10 (decl; reloc)

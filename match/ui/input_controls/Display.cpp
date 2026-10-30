@@ -41,6 +41,11 @@
 
 #include "display_command.h"
 
+#include "../../_layout/techno_class.h"
+#include "../../_layout/techno_type_class.h"
+#include "../../_layout/rules_class.h"
+#include "../../_layout/player_ptr_00a83d4c.h"
+
 // Recolours the palette entries the highlight cycles through: eight consecutive entries filled from the colour ring,
 // starting `offset` entries into it.
 inline void DisplayCmdFillPalette(int offset)
@@ -289,6 +294,29 @@ void __cdecl FUN_004A8D40()
 // Empty function.
 void __cdecl FUN_004A8EA0()
 {
+}
+
+// FUNCTION: GAMEMD 0x4A9650
+void DisplayClass::FUN_004A9650(const CellStruct* cell, bool set)
+{
+    if (cell->X != DAT_008A03F8.X || cell->Y != DAT_008A03F8.Y)
+    {
+        CellStruct* offset = static_cast<CellStruct*>(SavedFoundation);
+        while (offset->X != 0x7FFF || offset->Y != 0x7FFF)
+        {
+            CellStruct* cur = offset;
+            offset++;
+            CellStruct at = *cur + *cell;
+            if (CoordinatesLegal(at))
+            {
+                DisplayCell* c = GetCellAt_005657A0(at);
+                if (set)
+                    c->Flags12C |= 4;
+                else
+                    c->Flags12C &= ~4;
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x4A9700
@@ -614,6 +642,37 @@ Obj_004AA2B0* Map_004AA2B0::NextObject(Obj_004AA2B0* current)
     for (int n = 0; n < 3; ++n) {
         for (int i = 0; i < DAT_008A0360[DAT_00820030[n]].Count; ++i) {
             Obj_004AA2B0* obj = DAT_008A0360[DAT_00820030[n]].Items[i];
+            if (obj != 0) {
+                Obj_004AA2B0* techno = (obj->AbstractFlags & 1) ? obj : 0;
+                if ((obj->*obj->Vptr->At_64)() && techno != 0
+                    && (techno->*techno->Vptr->At_13C)()) {
+                    if (first == 0)
+                        first = obj;
+                    if (found)
+                        return obj;
+                    if (current == obj)
+                        found = true;
+                }
+            }
+        }
+    }
+    return first;
+}
+
+// FUNCTION: GAMEMD 0x4AA380
+//
+// The reverse of NextObject: the three ordered layers walked from the last
+// item back, over the second layer table.
+Obj_004AA2B0* Map_004AA2B0::PrevObject(Obj_004AA2B0* current)
+{
+    Obj_004AA2B0* first = 0;
+    bool found = false;
+    if (current == 0)
+        found = true;
+
+    for (int n = 0; n < 3; ++n) {
+        for (int i = DAT_008A0360[DAT_0082003C[n]].Count - 1; i >= 0; --i) {
+            Obj_004AA2B0* obj = DAT_008A0360[DAT_0082003C[n]].Items[i];
             if (obj != 0) {
                 Obj_004AA2B0* techno = (obj->AbstractFlags & 1) ? obj : 0;
                 if ((obj->*obj->Vptr->At_64)() && techno != 0
@@ -1345,6 +1404,134 @@ void Map_004AC700::SetWaypointMode(int mode, bool somebool)
     }
 }
 
+// FUNCTION: GAMEMD 0x4ACAC0
+void DisplayClass::FUN_004ACAC0()
+{
+    for (int y = 0; y < 0x200; y++)
+    {
+        for (int x = 0; x < 0x200; x++)
+        {
+            CellStruct a;
+            a.X = x;
+            a.Y = y;
+            if (CoordinatesLegal(a))
+            {
+                CellStruct b;
+                b.X = x;
+                b.Y = y;
+                DisplayCell* c = GetCellAt_005657A0(b);
+                if (!(c->Flags12C & 0x10) && (c->Flags12C & 8))
+                    c->Flags140 |= 0x20;
+            }
+        }
+    }
+    for (y = 0; y < 0x200; y++)
+    {
+        for (int x = 0; x < 0x200; x++)
+        {
+            CellStruct a;
+            a.X = x;
+            a.Y = y;
+            if (CoordinatesLegal(a))
+            {
+                if (GetCellAt_005657A0(a)->Flags140 & 0x20)
+                {
+                    GetCellAt_005657A0(a)->Flags140 &= ~0x20;
+                    FUN_004ACDA0(&a);
+                }
+            }
+        }
+    }
+    FUN_004ADFF0(false, 0);
+    FlagToRedraw(1);
+}
+
+// FUNCTION: GAMEMD 0x4ACBC0
+void DisplayClass::FUN_004ACBC0()
+{
+    CellClass* cell;
+    FUN_00578350();
+    for (cell = FUN_00578290(); cell; cell = FUN_00578290())
+    {
+        unsigned int flags = cell->Flags;
+        if (!(flags & 1) && (flags & 2))
+            cell->Flags = flags | 0x40;
+    }
+    FUN_004ADFF0(false, 1);
+    FUN_00578350();
+    for (cell = FUN_00578290(); cell; cell = FUN_00578290())
+    {
+        if (cell->Flags & 0x40)
+        {
+            cell->Flags &= ~0x40;
+            CellStruct at = cell->MapCoords;
+            FUN_004ACC50(&at);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x4ACC50
+// PARTIAL (94.7%): identical instruction multiset; the one residual is the order of the two coordinate loads of the
+// neighbour sum (retail loads the cell's X before forming the table index, then the table's Y before the cell's Y; ours
+// loads both table entries first). Tried: operator+ both ways, an explicit per-axis sum, a named step reference, and a
+// helper with the mixed operand order.
+void DisplayClass::FUN_004ACC50(const CellStruct* cell)
+{
+    if (CoordinatesLegal(*cell))
+    {
+        DisplayCell* c = GetCellAt_005657A0(*cell);
+        bool known = false;
+        if (c->Flags140 & 3)
+            known = true;
+        c->Layer1Value = -2;
+        c->Flags140 &= ~3;
+        if (c->Flags12C & 8)
+            DisplayProjector_00887324->FUN_006DA7D0(c);
+
+        for (int i = 0; i < 8; i++)
+        {
+            CellStruct n = *cell + DAT_0089F688[i & 7];
+            DisplayCell* nc = GetCellAt_005657A0(n);
+            CellStruct at = nc->MapCoords;
+            int r = DisplayProjector_00887324->FUN_006D8700(&at, 1);
+            if (r == -2 && nc->Layer1Value != -2)
+                FUN_004ACC50(&n);
+            else if (((nc->Flags140 & 1) || r != nc->Layer1Value) && r >= 0 && nc->Layer1Value >= -1)
+            {
+                nc->Layer1Value = r;
+                nc->Flags140 = (nc->Flags140 & ~1) | 2;
+                DisplayProjector_00887324->FUN_006DA7D0(nc);
+            }
+        }
+        if (known)
+            c->FUN_00486A70();
+    }
+}
+
+// FUNCTION: GAMEMD 0x4ACDA0
+void DisplayClass::FUN_004ACDA0(const CellStruct* cell)
+{
+    if (CoordinatesLegal(*cell))
+    {
+        DisplayCell* c = GetCellAt_005657A0(*cell);
+        if (c->Flags12C & 8)
+        {
+            c->Flags12C &= ~0x18;
+            DisplayProjector_00887324->FUN_006DA7D0(c);
+            for (int i = 0; i < 8; i++)
+            {
+                CellStruct n = *cell + DAT_0089F688[i & 7];
+                DisplayCell* nc = GetCellAt_005657A0(n);
+                if (n.X != cell->X || n.Y != cell->Y)
+                {
+                    nc->Flags12C &= ~0x10;
+                    DisplayProjector_00887324->FUN_006DA7D0(nc);
+                }
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x4ACE70
 // Reads the [Map] part of a scenario: sizes, ground fill, theater, waypoints, tagged cells and the five packed
 // sections (through an off-screen surface used as the scratch buffer). Slot 32, thiscall, one INI argument.
@@ -1596,6 +1783,52 @@ void DisplayClass::vf_32(DisplayScIni* ini)
     DisplayScMapPacks_0087F7E8.FUN_00588990();
     DisplayScTheater_00822CF8 = DisplayScScenario_00A8B230->Theater;
     surface.Pixels.Clear();
+}
+
+// FUNCTION: GAMEMD 0x4ADEE0
+void DisplayClass::FUN_004ADEE0(bool skipBuildings, int arg)
+{
+    int count = TechnoClass_Array.Count;
+    for (int i = 0; i < count; i++)
+    {
+        TechnoClass* techno = TechnoClass_Array.Items[i];
+        if (techno && !techno->InLimbo && (techno->vf_11() != 6 || !skipBuildings))
+        {
+            if (techno->Owner->IsControlledByCurrentPlayer())
+            {
+                if (techno->DiscoveredByCurrentPlayer)
+                {
+                    techno->vf_291(0, 0, false, 0);
+                    if (techno->vf_33()->GapGenerator)
+                        techno->vf_262();
+                }
+            }
+            else if (techno->vf_11() == 6 && Rules->AllyReveal && techno->Owner->IsAlliedWith(DAT_00A83D4C))
+                techno->vf_291(0, arg, false, 0);
+            else if (techno->vf_33()->GapGenerator)
+                techno->vf_262();
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x4ADFF0
+void DisplayClass::FUN_004ADFF0(bool skipBuildings, int arg)
+{
+    for (int i = 0; i < DisplayLayerStatics::Layers[2].Count; i++)
+    {
+        ObjectClass* object = DisplayLayerStatics::Layers[2].Items[i];
+        if (object && object->Flags.IsTechno && (object->vf_11() != 6 || !skipBuildings))
+        {
+            TechnoClass* techno = static_cast<TechnoClass*>(object);
+            if (techno->Owner->IsControlledByCurrentPlayer())
+            {
+                if (techno->DiscoveredByCurrentPlayer)
+                    techno->vf_72(0, arg);
+            }
+            else if (object->vf_11() == 6 && Rules->AllyReveal && techno->Owner->IsAlliedWith(DAT_00A83D4C))
+                techno->vf_72(arg, 0);
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x4AE4F0

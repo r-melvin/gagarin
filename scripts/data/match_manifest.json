@@ -147900,5 +147900,77 @@
   "name": "MapRegionClass::FUN_0058F0C0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A9650",
+  "sym": "?FUN_004A9650@DisplayClass@@QAEXPBUCellStruct@@_N@Z",
+  "len": "0xa6",
+  "name": "FUN_004A9650",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4AA380",
+  "sym": "?PrevObject@Map_004AA2B0@@QAEPAUObj_004AA2B0@@PAU2@@Z",
+  "len": "0xb9",
+  "name": "PrevObject",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4ACAC0",
+  "sym": "?FUN_004ACAC0@DisplayClass@@QAEXXZ",
+  "len": "0xf2",
+  "name": "FUN_004ACAC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4ACBC0",
+  "sym": "?FUN_004ACBC0@DisplayClass@@QAEXXZ",
+  "len": "0x8e",
+  "name": "FUN_004ACBC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4ACC50",
+  "sym": "?FUN_004ACC50@DisplayClass@@QAEXPBUCellStruct@@@Z",
+  "len": "0x141",
+  "name": "FUN_004ACC50",
+  "status": "partial",
+  "pct": 94.7
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4ACDA0",
+  "sym": "?FUN_004ACDA0@DisplayClass@@QAEXPBUCellStruct@@@Z",
+  "len": "0xc4",
+  "name": "FUN_004ACDA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4ADEE0",
+  "sym": "?FUN_004ADEE0@DisplayClass@@QAEX_NH@Z",
+  "len": "0x10f",
+  "name": "FUN_004ADEE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4ADFF0",
+  "sym": "?FUN_004ADFF0@DisplayClass@@QAEX_NH@Z",
+  "len": "0xb8",
+  "name": "FUN_004ADFF0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
