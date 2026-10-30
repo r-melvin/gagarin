@@ -12,17 +12,17 @@
   "unresolved": 8478
  },
  "m1": {
-  "bytes_at_retail_address": 3837863,
+  "bytes_at_retail_address": 3837856,
   "drift_events": 0,
   "duplicates": 0,
   "entries_at_retail_address": 19292,
   "entry_point_delta": 0,
   "link_exit_code": 0,
-  "matched_at_retail_address": 15432,
-  "matched_functions": 15432,
-  "ordered_bytes": 3837863,
+  "matched_at_retail_address": 15433,
+  "matched_functions": 15433,
+  "ordered_bytes": 3837856,
   "ordered_entries": 19292,
-  "stubs_placed": 3786,
+  "stubs_placed": 3785,
   "unresolved_after_stubs": 0
  },
  "m2": {
@@ -87,8 +87,8 @@
     "diff_bytes": 0,
     "file": 4060045,
     "library": 87227,
-    "project": 1190705,
-    "retail": 2782113,
+    "project": 1191169,
+    "retail": 2781649,
     "va": 4198400,
     "vsize": 4060045
    }
@@ -96,8 +96,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 3980742,
-   "retail": 4323328,
+   "project": 3981206,
+   "retail": 4322864,
    "vsize": 8391297
   }
  },
@@ -134,9 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "1e329f82",
-  "m1": "1e329f82",
+  "m0": "34e7674e",
+  "m1": "34e7674e",
   "m2": "ac2bd917",
-  "m3": "1e329f82"
+  "m3": "34e7674e"
  }
 }
