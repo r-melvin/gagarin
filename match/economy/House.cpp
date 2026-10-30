@@ -293,7 +293,6 @@ struct StaticVectorHolder_00A8EFC8 {
 };
 
 #include <math.h>
-#pragma intrinsic(pow)
 #include "../core/header_init_shapes.h"
 #include "../core/mathtbl_init_shapes.h"
 #include "../_layout/cell.h"
@@ -463,7 +462,6 @@ static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 #include <stdlib.h>
 #include <stdio.h>
 
-#pragma intrinsic(strcpy, strcmp)
 
 #include "../ai/house_class_lost_powered_center_methods.h"
 
@@ -656,7 +654,6 @@ template class DynamicVectorClass<double>;
 #include "../_layout/building_type_class_layout.h"
 #include "house_building/house_class_core.h"
 
-#pragma intrinsic(memcmp)
 
 // ---- globals / read-only externals ----------------------------------------------------------------
 // GLOBAL: GAMEMD 0x7EA768 / 0x7E9B00 - IID_IHouse / IID_IPublicHouse. The library ids (IID_IUnknown

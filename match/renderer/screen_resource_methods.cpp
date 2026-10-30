@@ -17,7 +17,6 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include <math.h>
-#pragma intrinsic(pow)
 #include "screen_palette_mgr_methods.h"
 #include "../_layout/geometry2d.h"
 #include "../core/mathtbl_init_shapes.h"

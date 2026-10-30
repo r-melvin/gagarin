@@ -12,7 +12,6 @@
 
 #include <string.h>
 #include <math.h>
-#pragma intrinsic(pow)
 #include "../core/header_init_shapes.h"
 #include "../core/mathtbl_init_shapes.h"
 #include "transport/connman_class.h"

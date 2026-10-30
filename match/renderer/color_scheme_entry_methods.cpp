@@ -7,7 +7,6 @@
 #include "color_scheme_iterator_methods.h"
 
 extern "C" int __cdecl strcmp(const char* a, const char* b);
-#pragma intrinsic(strcmp)
 
 // FUNCTION: GAMEMD 0x4F4CE0
 // True when the two keys hold the same text.

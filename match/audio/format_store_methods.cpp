@@ -4,7 +4,6 @@
 // Calls 0x40A2C6 and 0x40A36D identify the source as AudioSampleData.
 #include <string.h>
 #include "pan_and_pitch_methods.h"
-#pragma intrinsic(memcmp, memcpy)
 
 // FUNCTION: GAMEMD 0x402800
 // Store a new audio format only when its 32-byte record differs.

@@ -62,7 +62,6 @@ extern int DAT_00B780A0;
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" size_t __cdecl strlen(const char* s);
-#pragma intrinsic(strlen)
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
@@ -132,7 +131,6 @@ extern "C" signed char DAT_0084E863;
 extern "C" const char DAT_0084E865[];
 
 extern "C" char* __cdecl strcpy(char* dst, const char* src);
-#pragma intrinsic(strcpy)
 extern "C" char* __cdecl _strupr(char* text);
 
 #include "../_layout/text_004f4cb0.h"

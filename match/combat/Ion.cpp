@@ -19,7 +19,6 @@
 // translation units already declared as callees but nothing defined.
 
 #include <math.h>
-#pragma intrinsic(pow)
 #include "lightning_storm_methods.h"
 
 #include "../core/techno_class_mindcontrol_query_methods.h"

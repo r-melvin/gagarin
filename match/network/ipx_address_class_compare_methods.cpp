@@ -3,7 +3,6 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x53F020..0x53F0B0.
 //
 #include <string.h>
-#pragma intrinsic(memcmp)
 #include "../_layout/ipx_address_class.h"
 
 // GLOBAL: GAMEMD 0x828140 -- transport mode.

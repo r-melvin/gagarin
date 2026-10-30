@@ -8,7 +8,6 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include <math.h>
-#pragma intrinsic(pow)
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1708

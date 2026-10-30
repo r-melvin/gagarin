@@ -7,7 +7,6 @@
 
 extern "C" char* __cdecl strcpy(char* dst, const char* src);
 extern "C" int __cdecl strcmp(const char* a, const char* b);
-#pragma intrinsic(strcpy, strcmp)
 
 // FUNCTION: GAMEMD 0x510D10
 // Add the eight "<Player @ X>" names to a combo box (0x143 = CB_ADDSTRING),

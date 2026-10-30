@@ -3,7 +3,6 @@
 // Retail 0x40A7C0..0x40A8FA configures the primary DirectSound buffer.
 #include "primary_sound_buffer_format.h"
 #include <string.h>
-#pragma intrinsic(memset)
 
 // FUNCTION: GAMEMD 0x40A7C0
 // Apply a PCM format and resume looping playback. Movie callers pass the

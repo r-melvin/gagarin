@@ -8,7 +8,6 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>
-#pragma intrinsic(pow)
 #include "../core/header_init_shapes.h"
 #include "../core/mathtbl_init_shapes.h"
 

@@ -7,7 +7,6 @@
 #include "display_gscreen.h"
 #include "../../renderer/dsurface_class.h"
 
-#pragma intrinsic(memcmp)
 
 // FUNCTION: GAMEMD 0x40D230
 unsigned long __stdcall GScreenClass::AddRef()

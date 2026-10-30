@@ -8,7 +8,6 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include <math.h>
-#pragma intrinsic(pow)
 
 // GLOBAL: GAMEMD 0x7E1708
 extern const double DAT_007E1708;

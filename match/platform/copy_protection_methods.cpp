@@ -22,7 +22,6 @@
 #include "../_layout/version_class.h"
 
 extern "C" int __cdecl strcmp(const char* a, const char* b);
-#pragma intrinsic(strcmp)
 
 void FUN_004068E0(const char*, ...);
 unsigned int __fastcall FUN_0074F760(void* versionRecord);

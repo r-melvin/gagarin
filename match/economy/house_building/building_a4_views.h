@@ -223,7 +223,6 @@ extern const double DAT_007E1718;
 double __cdecl FUN_004CAC40(double a);
 // LIBRARY: GAMEMD 0x7C5F00 is the compiler's float-to-int helper (LIBRARY: _ftol)
 extern "C" int __cdecl abs(int);
-#pragma intrinsic(abs)
 
 // The inline "is it this kind of object" cast of the original: the pointer or null, by the RTTI id of slot 11.
 template <class To, class From> inline To* BA4As(From* p, int id)
