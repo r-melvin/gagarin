@@ -20,6 +20,9 @@
 #include "_rt/gg_static_assert.h"
 
 
+// Constants and enumerations.
+#include "DEFINES.H"
+
 // Shared support headers (vector, timers, type lists, locomotion/COM glue).
 #include "_rt/gg_vslot.h"
 #include "core/bounded_text.h"
@@ -30,7 +33,7 @@
 #include "core/obj_00433c00.h"
 #include "core/string_class.h"
 #include "core/triple_timer_init_methods.h"
-#include "core/vector_class.h"
+#include "VECTOR.H"
 #include "core/wide_string_class.h"
 #include "economy/storage_class.h"
 #include "movement/loco_vtable_layout.h"
@@ -39,9 +42,6 @@
 #include "ui/message_list_class_methods.h"
 #include "core/small_struct_ctor_methods.h"
 #include "core/tail_call_methods.h"
-#include "core/type_list.h"
-#include "core/vector_class_dynamic_ctor.h"
-#include "core/vector_class_mutation.h"
 #include "network/wdt_rc_ptr.h"
 #include "platform/ccfile_class.h"
 #include "ui/gadget_class_methods.h"
@@ -56,14 +56,11 @@
 
 // Value types, interfaces and leaf records.
 #include "_layout/audio_0048d080.h"
-#include "_layout/drive_guid_data.h"
 #include "_layout/house_interfaces.h"
 #include "_layout/i_application.h"
 #include "_layout/i_link_stream.h"
 #include "_layout/i_swizzle.h"
 #include "_layout/owner_talk_class.h"
-#include "_layout/player_ptr_00a83d4c.h"
-#include "_layout/scenario_ptr_00a8b230.h"
 #include "_layout/aircraft_tracker_class.h"
 #include "_layout/anger_scout_struct.h"
 #include "_layout/application_class.h"
@@ -90,7 +87,6 @@
 #include "_layout/game_mode_options.h"
 #include "_layout/generic_list.h"
 #include "_layout/geometry2d.h"
-#include "_layout/global_0081c1d0.h"
 #include "_layout/graphic_menu.h"
 #include "_layout/guid_007e36c0.h"
 #include "_layout/iface_005bf500.h"
@@ -175,7 +171,6 @@
 #include "_layout/phone_entry_class.h"
 #include "_layout/pipe.h"
 #include "_layout/pixel_fx_class.h"
-#include "_layout/placement_object.h"
 #include "_layout/quad_0054a120.h"
 #include "_layout/quad_00645c30.h"
 #include "_layout/quad_006c95e0.h"
@@ -217,7 +212,6 @@
 #include "_layout/audio_event_type.h"
 #include "_layout/base64_straw.h"
 #include "_layout/base_node_class.h"
-#include "_layout/building_array.h"
 #include "_layout/callbackslots_00473ab0.h"
 #include "_layout/carryover_class.h"
 #include "_layout/cdvtableprefix_004790e0.h"
@@ -225,7 +219,6 @@
 #include "_layout/colortable_00626070.h"
 #include "_layout/conn_stat.h"
 #include "_layout/connection_point_class.h"
-#include "_layout/current_objects.h"
 #include "_layout/cursor_006915d0.h"
 #include "_layout/dirty_area.h"
 #include "_layout/ebolt_class.h"
@@ -263,7 +256,6 @@
 #include "_layout/sha_pipe.h"
 #include "_layout/surface_007bcf90.h"
 #include "_layout/swizzle_manager_class.h"
-#include "_layout/tactical_viewport.h"
 #include "_layout/theme_class.h"
 #include "_layout/vtbl_004d2790.h"
 
@@ -272,7 +264,6 @@
 #include "_layout/audio_event.h"
 #include "_layout/facing_class.h"
 #include "_layout/gbl_0087f7e8.h"
-#include "_layout/ini_index_defaults.h"
 #include "_layout/ini_nodes.h"
 #include "_layout/kamikaze_class.h"
 #include "_layout/load_progress_mgr.h"
@@ -374,6 +365,7 @@
 #include "_layout/house_class_human_inline.h"
 #include "_layout/light_source_class.h"
 
-// Game global declarations (the externs header) come last once it exists.
+// Game global declarations come last.
+#include "EXTERNS.H"
 
 #endif
