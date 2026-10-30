@@ -51,22 +51,14 @@ struct AircraftClass_0041B920
     char   _pad000[0x674];
     IFace* Interface;    // +0x0674
     char   _pad678[0x6C4 - 0x678];
-    int    TypeIndex;    // +0x06C4
+    AircraftTypeClass* TypeIndex;    // +0x06C4
 
-    // The two fallbacks are declared as members, not as free __fastcall
-    // functions taking the object. Both spellings produce `MOV ECX,ESI; CALL`,
-    // but the free-function form lets VC6 turn the tail position into a
-    // `JMP` - retail keeps `CALL; POP ESI; RET`, and only the member form
-    // suppresses the tail call.
+    // Fallback used by the predicate at 0x41B920.
     // FUNCTION: GAMEMD 0x4DE620
     int FUN_004DE620();
-    // FUNCTION: GAMEMD 0x5F6B60
-    int FUN_005F6B60();
 
     // FUNCTION: GAMEMD 0x41B920
     int FUN_0041B920();
-    // FUNCTION: GAMEMD 0x41B980
-    int FUN_0041B980();
 };
 GG_STATIC_ASSERT(offsetof(AircraftClass_0041B920, Interface) == 0x674);
 GG_STATIC_ASSERT(offsetof(AircraftClass_0041B920, TypeIndex) == 0x6C4);

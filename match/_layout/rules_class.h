@@ -332,7 +332,7 @@ struct RulesClass
     int V3RocketBodyLength;   // +0x4D8
     bool V3RocketLazyCurve;   // +0x4DC
     char unknown_4DD[0x3];
-    int V3RocketType;          // +0x4E0
+    AircraftTypeClass* V3RocketType;          // +0x4E0
     int DMislPauseFrames;   // +0x4E4
     int DMislTiltFrames;   // +0x4E8
     float DMislPitchInitial;   // +0x4EC
@@ -346,7 +346,7 @@ struct RulesClass
     int DMislBodyLength;   // +0x50C
     bool DMislLazyCurve;   // +0x510
     char unknown_511[0x3];
-    int DMislType;          // +0x514
+    AircraftTypeClass* DMislType;          // +0x514
     int CMislPauseFrames;   // +0x518
     int CMislTiltFrames;   // +0x51C
     float CMislPitchInitial;   // +0x520

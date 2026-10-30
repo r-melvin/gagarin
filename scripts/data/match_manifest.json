@@ -4435,10 +4435,10 @@
  },
  {
   "tu": "match/core/com_gated_predicate_methods.cpp",
-  "addr": "0x41b980",
-  "sym": "?FUN_0041B980@AircraftClass_0041B920@@QAEHXZ",
+  "addr": "0x41B980",
+  "sym": "?IsOnFloor@AircraftClass@@UBE_NXZ",
   "len": "0x52",
-  "name": "AircraftClass_0041B920::FUN_0041B980",
+  "name": "AircraftClass::IsOnFloor",
   "status": "matched",
   "pct": 100
  },

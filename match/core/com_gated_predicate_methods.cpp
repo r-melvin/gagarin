@@ -3,6 +3,16 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x41B920 and 0x41B980.
 
 #include "com_gated_predicate_methods.h"
+#include "../_layout/aircraft_class.h"
+#include "../movement/loco_interfaces.h"
+#include <comip.h>
+
+GG_STATIC_ASSERT(offsetof(AircraftClass, Type) == 0x6C4);
+GG_STATIC_ASSERT(offsetof(FootClass, Locomotor) == 0x674);
+GG_STATIC_ASSERT(sizeof(((AircraftClass*)0)->Type) == 4);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->Locomotor) == 4);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->V3RocketType) == 4);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->DMislType) == 4);
 
 // FUNCTION: GAMEMD 0x41B920
 //
@@ -20,7 +30,7 @@
 // as a single held local costs the second load.
 int AircraftClass_0041B920::FUN_0041B920()
 {
-    int type = TypeIndex;
+    AircraftTypeClass* type = TypeIndex;
     RulesClass* rules = RulesInstance;
 
     if (type != rules->V3RocketType && type != rules->DMislType) {
@@ -38,18 +48,18 @@ int AircraftClass_0041B920::FUN_0041B920()
 //
 // The same shape with the other fallback and the answer inverted: retail's
 // `INC EAX` after the `SBB` is `== 0` where the sibling's `NEG EAX` is `!= 0`.
-int AircraftClass_0041B920::FUN_0041B980()
+bool AircraftClass::IsOnFloor() const
 {
-    int type = TypeIndex;
+    AircraftTypeClass* type = Type;
     RulesClass* rules = RulesInstance;
 
     if (type != rules->V3RocketType && type != rules->DMislType) {
-        return FUN_005F6B60();
+        return ObjectClass::IsOnFloor();
     }
 
-    if (Interface == 0) {
-        FUN_007DC720(0x80004003);
+    if (Locomotor == 0) {
+        _com_issue_error(E_POINTER);
     }
 
-    return IFACE_CALL0B(Interface, 0x80) == 0;
+    return static_cast<ILocomotion*>(Locomotor)->IsMovingNow() == 0;
 }
