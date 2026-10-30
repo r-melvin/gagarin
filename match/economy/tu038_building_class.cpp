@@ -1,12 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Original translation unit TU038 of retail gamemd.exe v1.001; its source-file name is
-//   not attested by the binary, so the file keeps a placeholder name. Code range 0x43af40-0x45af9f,
-//   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
-//   ownership, neighbouring object bounds). Functions are in ascending retail address order.
-//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
-//   them with the canonical class re-mangles their symbols, so that is left to
-//   a separate rename-only change.
+//   Original translation unit TU038 of retail gamemd.exe v1.001 (BuildingClass); its source-file
+//   name is not attested by the binary, so the file keeps a placeholder name. Code range
+//   0x43af40-0x45af9f; this file holds the BuildingClass-owned functions (RTTI class ownership,
+//   vtable slots) and the rows that were already here, in ascending retail address order.
+//   Other-class rows of the range stay in their own files.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing them with the canonical
+//   class re-mangles their symbols, so that is left to a separate rename-only change.
+//
+//   The source-file name is not attested by the binary; the range was segmented from retail evidence
+//   (link-ordered static-initialiser table, RTTI class ownership, neighbouring object bounds).
 //
 //   First batch of the building-a cluster: the short BuildingClass virtual methods. Every body was read
 //   from the retail gamemd.exe v1.001 from its entry to its last RET, and every offset it touches is
@@ -63,6 +66,34 @@
 // Translation unit: BuildingClass::GetPowerDrain.
 //
 //   LIBRARY: GAMEMD 0x7C5F00  __ftol  (CRT double->long; the (int) cast; reloc)
+//
+//   Evidence: disassembly of 0x458750; the same sequence is inlined in the
+//   BuildingClass update body (building_class_update.cpp).
+//
+//   cross-checked against YRpp.
+//
+//   GLOBAL:   GAMEMD 0x00A83CBC g_SWArray (SWTypeClass** array Items)
+//
+//   Every displacement, constant and callee below was read off the user's retail
+//   gamemd.exe v1.001 with the local Ghidra CLI at the address in each annotation.
+//   The owning classes are not bound by RTTI or a binary string at these addresses,
+//   so each receiver keeps a placeholder name derived from its address.
+//
+// Round 12 small unowned leaves between 0x402000 and 0x540000. Ordered ascending by
+// retail address.
+//
+//   Retail gamemd.exe v1.001 disassembly at 0x451EA0; Anims at +0x55C and the
+//   AnimClass flag byte at +0x19D come from the canonical layouts.
+//
+//   0x451EA0  BuildingClass::SetAnimInvisible
+//   0x454CF0  BuildingClass::FUN_00454CF0
+//   0x454D30  BuildingClass::FUN_00454D30
+//   0x4598D0  BuildingClass::FUN_004598D0
+//
+//   Bodies disassembled from retail gamemd.exe v1.001 at the addresses below.
+//
+// BuildingClass members, ordered ascending by retail address.
+// Address index: 0x43EE50, 0x451F60, 0x4528A0.
 
 #include "house_building/building_a_views.h"
 #include "../_layout/session_class.h"
@@ -329,6 +360,1025 @@ static inline int BarrelFacingIndex_00458810(const DirStruct_00458810* dir)
 
 #include "building_class_power_output_methods.h"
 
+// The sum of two coordinates.
+static inline CoordStruct CoordSum(const CoordStruct& a, const CoordStruct& b)
+{
+    CoordStruct r;
+    r.X = a.X + b.X;
+    r.Y = a.Y + b.Y;
+    r.Z = a.Z + b.Z;
+    return r;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// Component addition inlined by the retail body at 0x4500CB..0x4500E0.
+static inline CoordStruct operator+(const CoordStruct& a, const CoordStruct& b)
+{
+    CoordStruct result;
+    result.X = a.X + b.X;
+    result.Y = a.Y + b.Y;
+    result.Z = a.Z + b.Z;
+    return result;
+}
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x818164
+extern const char CivilianSideName_00458200[] = "Civilian";
+// GLOBAL: GAMEMD 0x8190C8
+extern const char EvaBuildingOnLine_00452260[] = "EVA_BuildingOnLine";
+// GLOBAL: GAMEMD 0x819108
+extern const char EvaBuildingOffLine[] = "EVA_BuildingOffLine";
+// GLOBAL: GAMEMD 0x81926C
+extern const char EvaStructureAbandoned_00458200[] = "EVA_StructureAbandoned";
+// GLOBAL: GAMEMD 0xA8B320
+bool BuildingBGlobal_00A8B320;
+// GLOBAL: GAMEMD 0xA80228
+HouseVector_00458200 HouseArray_00458200;
+// END defined globals
+
+#include "../_layout/building_class.h"
+#include "../_layout/building_type_class_layout.h"
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+#include "../core/rules_class.h"
+
+extern "C" int __cdecl _stricmp(const char* a, const char* b);
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+
+#include "building_class.h"
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA83CBC
+SWChainNode** g_SWArray;
+// END defined globals
+
+#include <windows.h>
+#include "../_layout/house_class.h"
+#include "../_layout/player_ptr_00a83d4c.h"
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// ---------------------------------------------------------------------------
+// 0x402C40 / 0x4031D0: walk of a queue that hangs off a global holder.
+struct QNode_00402C40
+{
+    char Pad_00[0x18];
+    int  Value;
+    QNode_00402C40* FUN_004073E0();
+};
+GG_STATIC_ASSERT(offsetof(QNode_00402C40, Value) == 0x18);
+
+struct Queue_00402C40
+{
+    int Pad_00[3];
+    QNode_00402C40* FUN_004073C0();
+};
+GG_STATIC_ASSERT(sizeof(Queue_00402C40) == 0xC);
+
+struct QHolder_00402C40
+{
+    Queue_00402C40 First;   // +0x00
+    Queue_00402C40 Second;  // +0x0C
+};
+extern QHolder_00402C40* DAT_00815E98;
+
+struct QCursor_004031D0
+{
+    QNode_00402C40* Cur;
+    // FUNCTION: GAMEMD 0x4031D0
+    void Begin();
+};
+
+// ---------------------------------------------------------------------------
+// 0x417CA0: four-argument forwarder.
+struct Fwd_00417CA0
+{
+    int FUN_006FFBE0(int a, int b, int c, int d);
+    // FUNCTION: GAMEMD 0x417CA0
+    int Forward(int a, int b, int c, int d);
+};
+
+// ---------------------------------------------------------------------------
+// 0x422C70: refuse when a +0x184 pointer is set, otherwise forward to the base routine.
+struct Base_00422C70
+{
+    bool FUN_005F4B10(int a, int b, int c);
+};
+struct Obj_00422C70 : Base_00422C70
+{
+    char Pad_01[0x184 - 1];
+    void* Blocker;  // +0x184
+    // FUNCTION: GAMEMD 0x422C70
+    bool Try(int a, int b, int c);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00422C70, Blocker) == 0x184);
+
+// ---------------------------------------------------------------------------
+// 0x43A5D0: fold the object's state and an elapsed-frame delta into a CRC view.
+struct Crc_0043A5D0
+{
+    void FUN_004A1D50(int v);
+};
+struct CrcOwner_0043A5D0
+{
+    char Pad_00[0x30];
+    int  Stamp;  // +0x30
+    void FUN_00410410(Crc_0043A5D0* crc);
+    // FUNCTION: GAMEMD 0x43A5D0
+    void Crc(Crc_0043A5D0* crc);
+};
+extern int DAT_00A8ED84;
+
+// ---------------------------------------------------------------------------
+// 0x453370: reset a field when the house flag is set and the global is clear.
+struct Owner_00453370
+{
+    char Pad_00[0x16BE];
+    char Flag;  // +0x16BE
+};
+struct Obj_00453370
+{
+    char Pad_00[0x520];
+    Owner_00453370* Owner;  // +0x520
+    char Pad_524[0x618 - 0x524];
+    int  Field618;          // +0x618
+    // FUNCTION: GAMEMD 0x453370
+    void ClearIfOwnerFlag();
+};
+GG_STATIC_ASSERT(offsetof(Obj_00453370, Field618) == 0x618);
+extern int DAT_00A8E7AC;
+
+// ---------------------------------------------------------------------------
+// 0x4790B0: store a clamped mode value.
+extern char DAT_0089E3A0;
+extern int  DAT_0081C1D0;
+
+// ---------------------------------------------------------------------------
+// 0x47A6B0: open the device named by DAT_0081C5AC delete-on-close.
+extern char DAT_0081C5AC[];
+
+// ---------------------------------------------------------------------------
+// 0x47B130: close the search handle if open.
+extern HANDLE DAT_0081C8EC;
+
+// ---------------------------------------------------------------------------
+// 0x488480: byte at +4 of the list entry, or 0.
+struct Entry_00488480
+{
+    char Pad_00[4];
+    char Flag;  // +4
+};
+struct ListBase_00488480
+{
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void Changed();     // slot 18, +0x48
+    Entry_00488480* FUN_00557AC0(int index);
+};
+struct List_00488480 : ListBase_00488480
+{
+    // FUNCTION: GAMEMD 0x488450
+    void SetFlag(int index, char value);
+    // FUNCTION: GAMEMD 0x488480
+    char FlagAt(int index);
+};
+
+// ---------------------------------------------------------------------------
+// 0x48C600: elapsed time accumulated across a pause.
+struct Timer_0088733C
+{
+    int FUN_006C8C40();
+};
+extern int DAT_00887338;
+extern Timer_0088733C DAT_0088733C;
+extern int DAT_00887340;
+
+// ---------------------------------------------------------------------------
+// 0x5278F0: forward two mapped keys to the reader.
+struct Reader_005278F0
+{
+    int FUN_005276D0(int a, int b, int c);
+    // FUNCTION: GAMEMD 0x5278F0
+    int Read(int a, int b, int c);
+};
+int __fastcall FUN_007B5440(int v);
+
+// ---------------------------------------------------------------------------
+// 0x53D550: delete and clear every object in a global table.
+struct Deletable_0053D550
+{
+    virtual ~Deletable_0053D550();
+};
+extern Deletable_0053D550* DAT_00A9FFC8[80];
+
+// ---------------------------------------------------------------------------
+// 0x53EC40 / 0x53EC70: key state table.
+extern int   DAT_00AA0444;
+extern short DAT_00AA0168[256];
+
+// ===========================================================================
+// 0x4016B0: copy a descriptor's fields into one 0x24-byte table row.
+struct Row_004016B0
+{
+    char Pad_00[0x18];
+    int  Value;     // +0x18
+    int  Flags;     // +0x1C
+    char Pad_20[4];
+};
+GG_STATIC_ASSERT(sizeof(Row_004016B0) == 0x24);
+struct RowTable_004016B0
+{
+    Row_004016B0* Rows;
+};
+struct RowSrc_004016B0
+{
+    char Pad_00[8];
+    int  Value;     // +0x08
+    int  ModeA;     // +0x0C
+    int  ModeB;     // +0x10
+};
+
+// ---------------------------------------------------------------------------
+// 0x41B5E0: a flag that holds for most modes.
+struct Obj_0041B5E0
+{
+    char Pad_00[0xAC];
+    int  Mode;      // +0xAC
+    char Pad_B0[0x6D2 - 0xB0];
+    char Flag6D2;   // +0x6D2
+    char Pad_6D3;
+    char Flag6D4;   // +0x6D4
+    // FUNCTION: GAMEMD 0x41B5E0
+    bool Test();
+};
+GG_STATIC_ASSERT(offsetof(Obj_0041B5E0, Flag6D4) == 0x6D4);
+
+// ---------------------------------------------------------------------------
+// 0x41B610 / 0x41B660: CRC contribution and reference detach.
+struct CrcSink_0041B610
+{
+    void FUN_004A1CA0(bool v);
+    void FUN_004A1D50(int v);
+};
+struct CrcBase_0041B610
+{
+    void FUN_004DBAD0(CrcSink_0041B610* crc);
+    void FUN_004D9960(void* target, bool all);
+};
+struct Obj_0041B610 : CrcBase_0041B610
+{
+    char  Pad_01[0x6C4 - 1];
+    void* Ref6C4;           // +0x6C4
+    char  Pad_6C8;
+    bool  Flag6C9;          // +0x6C9
+    char  Pad_6CA[2];
+    void* Ref6CC;           // +0x6CC
+    bool  Flag6D0;          // +0x6D0
+    bool  Flag6D1;          // +0x6D1
+    char  Pad_6D2;
+    signed char Val6D3;     // +0x6D3
+    // FUNCTION: GAMEMD 0x41B610
+    void Crc(CrcSink_0041B610* crc);
+    // FUNCTION: GAMEMD 0x41B660
+    void Detach(void* target, bool all);
+};
+GG_STATIC_ASSERT(offsetof(Obj_0041B610, Ref6C4) == 0x6C4);
+GG_STATIC_ASSERT(offsetof(Obj_0041B610, Ref6CC) == 0x6CC);
+GG_STATIC_ASSERT(offsetof(Obj_0041B610, Val6D3) == 0x6D3);
+
+// ---------------------------------------------------------------------------
+// 0x42E0B0 / 0x42E110: a seven-value record with a double-valued rate limiter.
+struct Limiter_0042E0B0
+{
+    int    F0, F4, F8, FC, F10, F14, F18;
+    int    Pad_1C;
+    double Last;        // +0x20
+    double Prev;        // +0x28
+    bool   Armed;       // +0x30
+    char   Pad_31[3];
+    void FUN_0042E1C0();
+    // FUNCTION: GAMEMD 0x42E110
+    bool Update(double now);
+};
+GG_STATIC_ASSERT(offsetof(Limiter_0042E0B0, Prev) == 0x28);
+GG_STATIC_ASSERT(offsetof(Limiter_0042E0B0, Armed) == 0x30);
+
+// ---------------------------------------------------------------------------
+// 0x43C2A0: release each of eight owned objects through their release slot.
+struct Owned_0043C2A0
+{
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void v24();
+    virtual void v25();
+    virtual void v26();
+    virtual void v27();
+    virtual void v28();
+    virtual void v29();
+    virtual void v30();
+    virtual void v31();
+    virtual void v32();
+    virtual void v33();
+    virtual void v34();
+    virtual void v35();
+    virtual void v36();
+    virtual void v37();
+    virtual void v38();
+    virtual void v39();
+    virtual void v40();
+    virtual void v41();
+    virtual void v42();
+    virtual void v43();
+    virtual void v44();
+    virtual void v45();
+    virtual void v46();
+    virtual void v47();
+    virtual void v48();
+    virtual void v49();
+    virtual void v50();
+    virtual void v51();
+    virtual void v52();
+    virtual void v53();
+    virtual void v54();
+    virtual void v55();
+    virtual void v56();
+    virtual void v57();
+    virtual void v58();
+    virtual void v59();
+    virtual void v60();
+    virtual void v61();
+    virtual void Release();     // slot 62, +0xF8
+};
+struct Holder_0043C2A0
+{
+    char Pad_00[0x5C8];
+    Owned_0043C2A0* Items[8];   // +0x5C8
+    // FUNCTION: GAMEMD 0x43C2A0
+    void ReleaseAll();
+};
+GG_STATIC_ASSERT(offsetof(Holder_0043C2A0, Items) == 0x5C8);
+
+// ---------------------------------------------------------------------------
+// 0x45E8B0: store three values in the indexed 12-byte slot.
+struct Slot_0045E8B0
+{
+    int A;
+    int B;
+    int C;
+};
+struct Slots_0045E8B0
+{
+    char Pad_00[0xF04];
+    Slot_0045E8B0 Items[1];   // +0xF04
+    // FUNCTION: GAMEMD 0x45E8B0
+    void Set(int index, int a, int b, int c);
+};
+GG_STATIC_ASSERT(offsetof(Slots_0045E8B0, Items) == 0xF04);
+
+// ---------------------------------------------------------------------------
+// 0x46D430: clear the flag byte of every slot whose object reports true.
+struct Probe_0046D430
+{
+    bool FUN_005E93F0();
+};
+extern Probe_0046D430* DAT_00A8DA90[8];
+extern char DAT_0089E000[8];
+
+// ---------------------------------------------------------------------------
+// 0x474870: scale by 100/256 and forward.
+struct Fwd_00474870
+{
+    int FUN_005275C0(int a, int b, int c, int d);
+    // FUNCTION: GAMEMD 0x474870
+    int Percent(int a, int b, int c);
+};
+
+// ---------------------------------------------------------------------------
+// 0x476F70: forward with the text of a looked-up entry, or an empty default.
+extern char DAT_00817474[];
+struct Text_00476F70
+{
+    char Pad_00[0x24];
+    char Text[1];   // +0x24
+};
+struct Lookup_00476F70
+{
+    Text_00476F70* FUN_006E7330();
+};
+struct Sink_00476F70
+{
+    void FUN_00528660(int a, int b, const char* text);
+    // FUNCTION: GAMEMD 0x476F70
+    void Forward(int a, int b, Lookup_00476F70* l);
+};
+
+// ---------------------------------------------------------------------------
+// 0x48DF30: index of a name in the global name table, or -1.
+extern char** DAT_00ABF394;
+extern int    DAT_00ABF3A0;
+int __cdecl FUN_007C8D20(const char* a, const char* b);
+
+// ---------------------------------------------------------------------------
+// 0x49B720: delete every owned item, then the array itself.
+struct Pool_0049B720
+{
+    char Pad_00[0x3C];
+    char** Items;   // +0x3C
+    int    Count;   // +0x40
+    // FUNCTION: GAMEMD 0x49B720
+    void FreeAll();
+};
+GG_STATIC_ASSERT(offsetof(Pool_0049B720, Count) == 0x40);
+
+// ---------------------------------------------------------------------------
+// 0x44EF80: resolve an id through the object's slot 34, then ask the result.
+struct Resolved_0044EF80
+{
+    int FUN_0045EE70();
+};
+struct Target_0044EF80
+{
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual void v11();
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void v24();
+    virtual void v25();
+    virtual void v26();
+    virtual void v27();
+    virtual void v28();
+    virtual void v29();
+    virtual void v30();
+    virtual void v31();
+    virtual void v32();
+    virtual void v33();
+    virtual Resolved_0044EF80* Resolve(int a, int b);   // slot 34, +0x88
+};
+struct Owner_0044EF80
+{
+    char Pad_00[0x21C];
+    int  Context;   // +0x21C
+    // FUNCTION: GAMEMD 0x44EF80
+    int Lookup(Target_0044EF80* t, int a);
+};
+GG_STATIC_ASSERT(offsetof(Owner_0044EF80, Context) == 0x21C);
+
+// ---------------------------------------------------------------------------
+// 0x454D70: poke every linked node whose type is one of three values.
+struct Node_00454D70
+{
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual void v6();
+    virtual void v7();
+    virtual void v8();
+    virtual void v9();
+    virtual void v10();
+    virtual int Type();         // slot 11, +0x2C
+    virtual void v12();
+    virtual void v13();
+    virtual void v14();
+    virtual void v15();
+    virtual void v16();
+    virtual void v17();
+    virtual void v18();
+    virtual void v19();
+    virtual void v20();
+    virtual void v21();
+    virtual void v22();
+    virtual void v23();
+    virtual void v24();
+    virtual void v25();
+    virtual void v26();
+    virtual void v27();
+    virtual void v28();
+    virtual void v29();
+    virtual void v30();
+    virtual void v31();
+    virtual void v32();
+    virtual void v33();
+    virtual void v34();
+    virtual void v35();
+    virtual void v36();
+    virtual void v37();
+    virtual void v38();
+    virtual void v39();
+    virtual void v40();
+    virtual void v41();
+    virtual void v42();
+    virtual void v43();
+    virtual void v44();
+    virtual void v45();
+    virtual void v46();
+    virtual void v47();
+    virtual void v48();
+    virtual void v49();
+    virtual void v50();
+    virtual void v51();
+    virtual void v52();
+    virtual void v53();
+    virtual void v54();
+    virtual void v55();
+    virtual void v56();
+    virtual void v57();
+    virtual void v58();
+    virtual void v59();
+    virtual void v60();
+    virtual void v61();
+    virtual void v62();
+    virtual void v63();
+    virtual void v64();
+    virtual void v65();
+    virtual void v66();
+    virtual void v67();
+    virtual void v68();
+    virtual void v69();
+    virtual void v70();
+    virtual void v71();
+    virtual void v72();
+    virtual void v73();
+    virtual void v74();
+    virtual void v75();
+    virtual void v76();
+    virtual void v77();
+    virtual void v78();
+    virtual void v79();
+    virtual void v80();
+    virtual void v81();
+    virtual void v82();
+    virtual void v83();
+    virtual void v84();
+    virtual void v85();
+    virtual void v86();
+    virtual void v87();
+    virtual void v88();
+    virtual void v89();
+    virtual void v90();
+    virtual void v91();
+    virtual void v92();
+    virtual void v93();
+    virtual void v94();
+    virtual void v95();
+    virtual void v96();
+    virtual void v97();
+    virtual void v98();
+    virtual void v99();
+    virtual void v100();
+    virtual void v101();
+    virtual void v102();
+    virtual void v103();
+    virtual void v104();
+    virtual void v105();
+    virtual void v106();
+    virtual void v107();
+    virtual void v108();
+    virtual void v109();
+    virtual void v110();
+    virtual void v111();
+    virtual void v112();
+    virtual void v113();
+    virtual void v114();
+    virtual void v115();
+    virtual void v116();
+    virtual void v117();
+    virtual void v118();
+    virtual void v119();
+    virtual void v120();
+    virtual void v121();
+    virtual void v122();
+    virtual void v123();
+    virtual void v124();
+    virtual void v125();
+    virtual void v126();
+    virtual void v127();
+    virtual void v128();
+    virtual void v129();
+    virtual void v130();
+    virtual void v131();
+    virtual void v132();
+    virtual void v133();
+    virtual void v134();
+    virtual void v135();
+    virtual void v136();
+    virtual void v137();
+    virtual void v138();
+    virtual void v139();
+    virtual void v140();
+    virtual void v141();
+    virtual void v142();
+    virtual void v143();
+    virtual void v144();
+    virtual void v145();
+    virtual void v146();
+    virtual void v147();
+    virtual void v148();
+    virtual void v149();
+    virtual void v150();
+    virtual void v151();
+    virtual void v152();
+    virtual void v153();
+    virtual void v154();
+    virtual void v155();
+    virtual void v156();
+    virtual void v157();
+    virtual void v158();
+    virtual void v159();
+    virtual void v160();
+    virtual void v161();
+    virtual void v162();
+    virtual void v163();
+    virtual void v164();
+    virtual void v165();
+    virtual void v166();
+    virtual void v167();
+    virtual void v168();
+    virtual void v169();
+    virtual void v170();
+    virtual void v171();
+    virtual void v172();
+    virtual void v173();
+    virtual void v174();
+    virtual void v175();
+    virtual void v176();
+    virtual void v177();
+    virtual void v178();
+    virtual void v179();
+    virtual void v180();
+    virtual void v181();
+    virtual void v182();
+    virtual void v183();
+    virtual void v184();
+    virtual void v185();
+    virtual void v186();
+    virtual void v187();
+    virtual void v188();
+    virtual void v189();
+    virtual void v190();
+    virtual void v191();
+    virtual void v192();
+    virtual void v193();
+    virtual void v194();
+    virtual void v195();
+    virtual void v196();
+    virtual void v197();
+    virtual void v198();
+    virtual void v199();
+    virtual void v200();
+    virtual void v201();
+    virtual void v202();
+    virtual void v203();
+    virtual void v204();
+    virtual void v205();
+    virtual void v206();
+    virtual void v207();
+    virtual void v208();
+    virtual void v209();
+    virtual void v210();
+    virtual void v211();
+    virtual void v212();
+    virtual void v213();
+    virtual void v214();
+    virtual void v215();
+    virtual void v216();
+    virtual void v217();
+    virtual void v218();
+    virtual void v219();
+    virtual void v220();
+    virtual void v221();
+    virtual void v222();
+    virtual void v223();
+    virtual void v224();
+    virtual void v225();
+    virtual void v226();
+    virtual void v227();
+    virtual void v228();
+    virtual void v229();
+    virtual void v230();
+    virtual void v231();
+    virtual void v232();
+    virtual void v233();
+    virtual void v234();
+    virtual void v235();
+    virtual void v236();
+    virtual void v237();
+    virtual void v238();
+    virtual void v239();
+    virtual void v240();
+    virtual void v241();
+    virtual void v242();
+    virtual void v243();
+    virtual void v244();
+    virtual void v245();
+    virtual void v246();
+    virtual void v247();
+    virtual void v248();
+    virtual void v249();
+    virtual void v250();
+    virtual void v251();
+    virtual void v252();
+    virtual void v253();
+    virtual void v254();
+    virtual void v255();
+    virtual void v256();
+    virtual void v257();
+    virtual void v258();
+    virtual void v259();
+    virtual void v260();
+    virtual void v261();
+    virtual void v262();
+    virtual void v263();
+    virtual void Poke();        // slot 264, +0x420
+    char Pad_04[0x30 - 4];
+    Node_00454D70* Next;        // +0x30
+};
+GG_STATIC_ASSERT(offsetof(Node_00454D70, Next) == 0x30);
+struct Chain_00454D70
+{
+    char Pad_00[0xE4];
+    Node_00454D70* Head;        // +0xE4
+    // FUNCTION: GAMEMD 0x454D70
+    void PokeAll();
+};
+GG_STATIC_ASSERT(offsetof(Chain_00454D70, Head) == 0xE4);
+
+// ---------------------------------------------------------------------------
+// 0x486800: bit-mask test.
+struct Mask_00486800
+{
+    char  Pad_00[0x78];
+    int   Mask;         // +0x78
+    short Counts[1];    // +0x7C
+    // FUNCTION: GAMEMD 0x486800
+    bool Allowed(int bit);
+};
+GG_STATIC_ASSERT(offsetof(Mask_00486800, Counts) == 0x7C);
+
+// ---------------------------------------------------------------------------
+// 0x49D070: a slot table's checked fetch.
+struct Table_0049B610
+{
+    char  Used;         // +0x00
+    char  Pad_01[0x13];
+    int   F14;
+    int   F18;
+    char  F1C;
+    char  Pad_1D[0x13];
+    int   F30;
+    int   F34;
+    int   F38;
+    void** Items;       // +0x3C
+    int   Count;        // +0x40
+    int   F44;
+    int   F48, F4C, F50, F54, F58, F5C, F60, F64, F68;
+    char  Enabled;      // +0x6C
+    // FUNCTION: GAMEMD 0x49D070
+    bool Fetch(void** out, int index);
+};
+GG_STATIC_ASSERT(offsetof(Table_0049B610, Count) == 0x40);
+GG_STATIC_ASSERT(offsetof(Table_0049B610, Enabled) == 0x6C);
+
+// ---------------------------------------------------------------------------
+// 0x41A570 / 0x41C1E0: copy out the value held by the +0x3A0 sub-object.
+struct Val_0041A570
+{
+    int V;
+};
+struct Slot_0041A570
+{
+    Val_0041A570* FUN_004C93D0(Val_0041A570* out);
+};
+struct Obj_0041A570
+{
+    char Pad_00[0x3A0];
+    Slot_0041A570 Slot;     // +0x3A0
+    // FUNCTION: GAMEMD 0x41A570
+    Val_0041A570 Get_0041A570();
+};
+GG_STATIC_ASSERT(offsetof(Obj_0041A570, Slot) == 0x3A0);
+
+struct Val_0041C1E0
+{
+    int V;
+};
+struct Slot_0041C1E0
+{
+    Val_0041C1E0* FUN_004C93D0(Val_0041C1E0* out);
+};
+struct Obj_0041C1E0
+{
+    char Pad_00[0x3A0];
+    Slot_0041C1E0 Slot;     // +0x3A0
+    // FUNCTION: GAMEMD 0x41C1E0
+    Val_0041C1E0 Get_0041C1E0();
+};
+GG_STATIC_ASSERT(offsetof(Obj_0041C1E0, Slot) == 0x3A0);
+
+// ---------------------------------------------------------------------------
+// 0x430620: clear the 256-byte name at +0x0E and copy in up to 127 characters.
+char* __cdecl FUN_007CA422(char* dst, const char* src, int n);
+struct Named_00430620
+{
+    char Pad_00[0x0E];
+    char Name[0x100];   // +0x0E
+    // FUNCTION: GAMEMD 0x430620
+    void SetName(const char* s);
+};
+GG_STATIC_ASSERT(offsetof(Named_00430620, Name) == 0x0E);
+
+// ---------------------------------------------------------------------------
+// 0x487C10: per-index flag, unless a type-6 node is linked while the global is set.
+struct Row_00487C10
+{
+    char Flag;      // +0x00
+    char Pad_01[0x23];
+};
+GG_STATIC_ASSERT(sizeof(Row_00487C10) == 0x24);
+extern char DAT_00A8E9A0;
+extern Row_00487C10 DAT_0089EA60[];
+struct Owner_00487C10
+{
+    char Pad_00[0xE4];
+    Node_00454D70* Head;    // +0xE4
+    char Pad_E8[4];
+    int  Index;             // +0xEC
+    char Pad_F0[0x11C - 0xF0];
+    char Blocked;           // +0x11C
+    // FUNCTION: GAMEMD 0x487C10
+    char RowFlag();
+};
+GG_STATIC_ASSERT(offsetof(Owner_00487C10, Blocked) == 0x11C);
+
+// ---------------------------------------------------------------------------
+// 0x42CEB0: does list `index` already hold the ordered pair (low, high)?
+struct PairList_0042CEB0
+{
+    int  Pad_00;
+    unsigned* Items;    // +0x04
+    int  Pad_08[2];
+    int  Count;         // +0x10
+    int  Pad_14;
+};
+GG_STATIC_ASSERT(sizeof(PairList_0042CEB0) == 0x18);
+struct Pairs_0042CEB0
+{
+    char Pad_00[0x74];
+    PairList_0042CEB0 Lists[1];     // +0x74
+    // FUNCTION: GAMEMD 0x42CEB0
+    bool Has(unsigned short a, unsigned short b, int index);
+};
+GG_STATIC_ASSERT(offsetof(Pairs_0042CEB0, Lists) == 0x74);
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x88733C
+extern Timer_0088733C DAT_0088733C;
+// GLOBAL: GAMEMD 0x887340
+extern int DAT_00887340;
+// GLOBAL: GAMEMD 0x89E000
+extern char DAT_0089E000[8];
+// GLOBAL: GAMEMD 0x89E3A0
+extern char DAT_0089E3A0;
+// GLOBAL: GAMEMD 0xA8DA90
+extern Probe_0046D430* DAT_00A8DA90[8];
+// GLOBAL: GAMEMD 0xA9FFC8
+extern Deletable_0053D550* DAT_00A9FFC8[80];
+// GLOBAL: GAMEMD 0xAA0168
+extern short DAT_00AA0168[256];
+// GLOBAL: GAMEMD 0xAA0444
+extern int DAT_00AA0444;
+// GLOBAL: GAMEMD 0xABF3A0
+extern int DAT_00ABF3A0;
+// GLOBAL: GAMEMD 0x81C1D0
+extern int DAT_0081C1D0;
+// GLOBAL: GAMEMD 0x887338
+extern int DAT_00887338;
+// GLOBAL: GAMEMD 0xA8E9A0
+extern char DAT_00A8E9A0;
+// END defined globals
+
+#include "building_class.h"
+
+#include "../_layout/building_class.h"
+#include "../_layout/anim_class.h"
+#include "../_layout/anim_type_class.h"
+#include "../_layout/cell_class.h"
+#include "../core/abstract_class_distance3d_methods.h"
+
+// GLOBAL: GAMEMD 0x7F4890 -- 32-entry table of animation frames per facing step.
+extern int DAT_007F4890[32];
+
+#include "../combat/building_class_clear_bunker_methods.h"
+
+#include "../combat/building_class_disable_methods.h"
+
+#include "../combat/building_class_occupant_anims_methods.h"
+
+// Restart one animation slot with the artwork the building's current state
+// calls for: the damaged name once health has fallen to the yellow threshold,
+// otherwise the garrisoned name while somebody is inside, otherwise the plain
+// one. Retail inlines this five times over, once per slot, so it has to be
+// `__forceinline` here — plain `inline` gets four copies in and then leaves
+// the fifth as an out-of-line call, which costs 30 points on its own. The
+// marker has to sit on the DECLARATION in the header as well as on the
+// definition: with it on the definition alone cl still leaves the fifth copy
+// out of line (78.8% versus 100.0%).
+static __forceinline void PlayNthAnim(BuildingClass* self, int slot, int effectDelay)
+{
+    if (self->Anims[slot] != 0) {
+        int damaged = self->GetHealthPercentage()
+                      <= RulesInstance->ConditionYellow;
+        bool garrisoned = self->vf_258() > 0;
+
+        const char* animName;
+        if (damaged) {
+            animName = self->Type->BuildingAnim[slot].Damaged;
+        } else if (garrisoned) {
+            animName = self->Type->BuildingAnim[slot].Garrisoned;
+        } else {
+            animName = self->Type->BuildingAnim[slot].Anim;
+        }
+        if (animName && *animName) {
+            self->PlayAnim(animName, slot, damaged, garrisoned, effectDelay);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x43C2A0
+void Holder_0043C2A0::ReleaseAll()
+{
+    for (int i = 0; i < 8; ++i)
+    {
+        if (Items[i])
+        {
+            Items[i]->Release();
+            Items[i] = 0;
+        }
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43E900
 int BuildingClass::vf_187()
@@ -380,6 +1430,25 @@ DirStruct BuildingClass::vf_314(AbstractClass* target)
     DirStruct d;
     d.Raw = (short)((FUN_004CAE30((double)py - t.Y, (double)tx - px) - DAT_007E2820) * DAT_007E2818);
     return d;
+}
+
+// FUNCTION: GAMEMD 0x43EE50
+// When the building is in its active state and has its Anims[9] animation,
+// show the frame for the current primary facing (32 steps) and zero the
+// animation's step. Returns the frame, or 0 when nothing was done.
+int BuildingClass::FUN_0043EE50()
+{
+    int frame = 0;
+    if (vf_255() && Anims[9]) {
+        DirStruct facing = PrimaryFacing.FUN_004C93D0();
+        frame = DAT_007F4890[((facing.Whole >> 10) + 1 >> 1) & 0x1F];
+        AnimClass* anim = Anims[9];
+        if (anim) {
+            anim->Value = frame;
+            anim->Step = 0;
+        }
+    }
+    return frame;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1549,6 +2618,19 @@ void BuildingClass::vf_55(bool arg)
     ObjectClass::vf_55(arg);
 }
 
+// FUNCTION: GAMEMD 0x44EF80
+// PARTIAL: 80% -- the argument loads before the slot call are scheduled differently from retail.
+int Owner_0044EF80::Lookup(Target_0044EF80* t, int a)
+{
+    if (t)
+    {
+        int ctx = Context;
+        Resolved_0044EF80* r = t->Resolve(a, ctx);
+        return r->FUN_0045EE70();
+    }
+    return -1;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44F5C0
 bool BuildingClass::vf_40()
@@ -1573,16 +2655,6 @@ allow:
     return Type->UndeploysInto != 0;
 }
 
-// The sum of two coordinates.
-static inline CoordStruct CoordSum(const CoordStruct& a, const CoordStruct& b)
-{
-    CoordStruct r;
-    r.X = a.X + b.X;
-    r.Y = a.Y + b.Y;
-    r.Z = a.Z + b.Z;
-    return r;
-}
-
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44F640
 // CAPPED at 26.0% (13 of 50 instructions). Retail lays the equal-to-empty-coordinate path (the vf_18 copy) after
@@ -1600,17 +2672,6 @@ CoordStruct BuildingClass::vf_45(int)
     }
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// Component addition inlined by the retail body at 0x4500CB..0x4500E0.
-static inline CoordStruct operator+(const CoordStruct& a, const CoordStruct& b)
-{
-    CoordStruct result;
-    result.X = a.X + b.X;
-    result.Y = a.Y + b.Y;
-    result.Z = a.Z + b.Z;
-    return result;
-}
-
 // FUNCTION: GAMEMD 0x4500A0
 CoordStruct BuildingClass::vf_41()
 {
@@ -1623,6 +2684,60 @@ CoordStruct BuildingClass::vf_41()
 // Empty function.
 void __cdecl FUN_004503E0()
 {
+}
+
+// FUNCTION: GAMEMD 0x4504F0
+//
+// Record the prism stage, its target and the type's firing delay, drop animation
+// slot 3, then start slot 0xA (damaged name once health is at the yellow threshold).
+void BuildingClass::FUN_004504F0(int stage, const CoordStruct* target)
+{
+    DelayBeforeFiring = Type->DelayedFireDelay;
+    PrismStage = stage;
+    PrismTargetCoords = *target;
+
+    DestroyNthAnim(3);
+
+    int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+    const char* animName;
+    if (damaged) {
+        animName = Type->BuildingAnim[0xA].Damaged;
+    } else {
+        animName = Type->BuildingAnim[0xA].Anim;
+    }
+    if (animName && *animName) {
+        PlayAnim(animName, 0xA, damaged, false, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x450590
+//
+// Drop every overpowering unit whose target is no longer this building, then
+// recompute IsOverpowered: three or more overpowerers always count; one or two
+// count only on a fully powered house whose building has power.
+void BuildingClass::FUN_00450590()
+{
+    for (int i = Overpowerers.Count - 1; i >= 0; i--) {
+        if (Overpowerers.Items[i]->Target != this) {
+            if (i < Overpowerers.Count) {
+                Overpowerers.Count--;
+                for (int j = i; j < Overpowerers.Count; j++) {
+                    Overpowerers.Items[j] = Overpowerers.Items[j + 1];
+                }
+            }
+        }
+    }
+
+    int count = Overpowerers.Count;
+    if (count < 3) {
+        if (Owner->GetPowerPercentage() == DAT_007E1718 && HasPower && count >= 1) {
+            IsOverpowered = true;
+        } else {
+            IsOverpowered = false;
+        }
+    } else {
+        IsOverpowered = true;
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1688,6 +2803,64 @@ void Obj_00451750::FUN_00451750(int index, bool a, bool b, int extra)
     }
 }
 
+// FUNCTION: GAMEMD 0x451E40  (__thiscall)
+// Destroy one (or, for slot == -2, every) building animation. The kill is a
+// virtual scalar-deleting-destructor call through AnimClass vtable slot
+// 0x20 (`mov [vtbl]; push 1; call [vtbl+0x20]`).
+void BuildingClass::DestroyNthAnim(int slot)
+{
+    if (slot == -2)
+    {
+        AnimClass** p = &this->Anims[0];
+        for (int i = 0x15; i != 0; --i)
+        {
+            AnimClass* anim = *p;
+            if (anim)
+            {
+                *p = 0;
+                delete anim;
+            }
+            ++p;
+        }
+    }
+    else
+    {
+        AnimClass* anim = this->Anims[slot];
+        if (anim)
+        {
+            this->Anims[slot] = 0;
+            delete anim;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x451EA0
+// Hide one (or, for slot == -2, every) building animation.
+void BuildingClass::SetAnimInvisible(int slot)
+{
+    if (slot == -2)
+    {
+        AnimClass** p = &this->Anims[0];
+        for (int i = 0x15; i != 0; --i)
+        {
+            AnimClass* anim = *p;
+            if (anim)
+            {
+                anim->Invisible = 1;
+            }
+            ++p;
+        }
+    }
+    else
+    {
+        AnimClass* anim = this->Anims[slot];
+        if (anim)
+        {
+            anim->Invisible = 1;
+        }
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451EE0  BuildingClass::ToggleDamagedAnims (__thiscall, ret 0x4)
 // Swap the building between its healthy and damaged animation sets. Nothing
@@ -1716,6 +2889,30 @@ void BuildingClass::ToggleDamagedAnims(bool damaged)
     }
 }
 
+// FUNCTION: GAMEMD 0x451F60
+// For each live animation: hand cell-drawn types the given lighting and tint,
+// then set the translucency (15 becomes 16 while the building reports mission
+// type 5) on every animation.
+void BuildingClass::FUN_00451F60(void* lightConvert, int tint)
+{
+    for (int i = 0; i < 0x15; i++) {
+        AnimClass* anim = Anims[i];
+        if (anim) {
+            if (anim->Type && anim->Type->ShouldUseCellDrawer) {
+                anim->LightConvert = lightConvert;
+                anim->TintColor = tint;
+            }
+            int level = Translucency;
+            if (level == 0xF && vf_26(0, 0) == 5)
+                level = 0x10;
+            for (int j = 0; j < 0x15; j++) {
+                if (Anims[j])
+                    Anims[j]->TranslucencyLevel = level;
+            }
+        }
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452170
 void Obj_00452170::FUN_00452170(int value)
@@ -1739,6 +2936,47 @@ void Obj_00452170::FUN_00452170(int value)
         slot++;
         n--;
     } while (n != 0);
+}
+
+// FUNCTION: GAMEMD 0x4521C0  (__thiscall)
+// Suspend the active building anims while a temporal weapon targets us: stash
+// each anim's current frame in PausedAnimFrame and freeze it.
+void BuildingClass::DisableTemporal()
+{
+    this->HasPower = 0;
+    AnimClass** p = &this->Anims[0];
+    for (int i = 0x15; i != 0; --i)
+    {
+        AnimClass* anim = *p;
+        if (anim)
+        {
+            int saved = anim->Value;
+            anim->Paused = 1;
+            anim->Unpaused = 0;
+            anim->PausedAnimFrame = saved;
+            anim->UnderTemporal = 1;
+        }
+        ++p;
+    }
+}
+
+// FUNCTION: GAMEMD 0x452210  (__thiscall)
+// Resume the building anims when the temporal weapon releases us.
+void BuildingClass::EnableTemporal()
+{
+    this->HasPower = 1;
+    AnimClass** p = &this->Anims[0];
+    for (int i = 0x15; i != 0; --i)
+    {
+        AnimClass* anim = *p;
+        if (anim)
+        {
+            anim->Paused = 0;
+            anim->Unpaused = 1;
+            anim->UnderTemporal = 0;
+        }
+        ++p;
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1830,6 +3068,35 @@ void BuildingClass::EnableStuff()
     }
 }
 
+// FUNCTION: GAMEMD 0x452480  BuildingClass::DisableStuff
+//
+// Everything a powered-down building stops doing: the light goes off, a cloak
+// generator drops its field (remembering the radius if it had none yet), a
+// charged gap generator is collapsed through the virtual, the sensor-style
+// flag on the type gets its off call, and every enabled per-slot animation is
+// halted.
+void BuildingClass::DisableStuff()
+{
+    StuffEnabled = 0;
+    if (LightSource != 0)
+        LightSource->FUN_00554A80(0);
+    BuildingTypeClass* type = Type;
+    if (type->bools_16A4[0x16C7 - 0x16A4]) {
+        HasCloakingData = -1;
+        if (CloakRadius == 0)
+            CloakRadius = type->CloakRadiusInCells;
+        NeedsRedraw = 1;
+    }
+    if (type->GapGenerator && GeneratingGap)
+        vf_262();
+    if (Type->bools_16A4[0x16BE - 0x16A4])
+        CreateEndPost(0);
+    for (int i = 0; i < 0x15; ++i) {
+        if (Type->BuildingAnim[i].Powered && Anims[i])
+            Anims[i]->FUN_00425260();
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452540
 //
@@ -1856,6 +3123,22 @@ bool BuildingClass_00452540::MakeTraversable()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x4525F0  (__thiscall)
+// True if a unit may drive across this building's footprint. Always traversable
+// unless the type forbids it; then only certain (WhatAmI==0x18) buildings with
+// a passable cell qualify. WhatAmI is the virtual at vtable slot 0x184.
+bool BuildingClass::IsTraversable()
+{
+    if (!this->Type->bools_16A4[0x16B7 - 0x16A4])
+        return true;
+
+    int kind = this->vf_97();
+    if (kind == 0x18 && this->UnloadTimer.FUN_004A51B0())
+        return true;
+
+    return false;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452630
 bool BuildingClass::vf_37()
@@ -1867,6 +3150,30 @@ bool BuildingClass::vf_37()
     if (vf_32())
         return false;
     return TechnoClass::vf_37();
+}
+
+// FUNCTION: GAMEMD 0x452670
+//
+// Whether the upgrade type may be attached to this building for the house:
+// the house must own the building and the upgrade must name this building's
+// type. A slot of -1 is accepted while the building is below its type's upgrade
+// cap; otherwise (and for slots 1 to 3) the building must carry no upgrade yet.
+bool BuildingClass::FUN_00452670(BuildingTypeClass* upgrade, HouseClass* house)
+{
+    if (house == Owner && _stricmp(upgrade->PowersUpBuilding, Type->ID) == 0) {
+        int level = upgrade->PowersUpToLevel;
+        if (level != -1) {
+            if (level <= 0 || level > 3) {
+                return false;
+            }
+        } else if (UpgradeLevel < Type->Upgrades) {
+            return true;
+        }
+        if (!UpgradeLevel) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1912,6 +3219,24 @@ bool BuildingClass::vf_255()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x4528A0
+// PARTIAL: 78.7% -- instruction multiset identical; retail reads both centre
+// coordinates through one shared 12-byte stack slot (frame 0xC), this compiles
+// two (frame 0x14). Named locals, scoped blocks, const refs and a reused local
+// all keep two slots.
+// True when the target's centre lies within the type's psychic detection radius
+// (in cells) of this building's centre.
+bool BuildingClass::FUN_004528A0(AbstractClass* target)
+{
+    CoordStruct here = vf_18();
+    CoordStruct there = target->vf_18();
+    int dx = here.X - there.X;
+    int dy = here.Y - there.Y;
+    int dz = here.Z - there.Z;
+    int distance = (int)FUN_004CAC40((double)dx * dx + (double)dy * dy + (double)dz * dz);
+    return distance <= Type->PsychicDetectionRadius * 256;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452D40
 //
@@ -1943,6 +3268,13 @@ void FUN_00452D40()
 
         i++;
     }
+}
+
+// FUNCTION: GAMEMD 0x453370
+void Obj_00453370::ClearIfOwnerFlag()
+{
+    if (!DAT_00A8E7AC && Owner->Flag)
+        Field618 = 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2179,6 +3511,99 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
         return (level > 5) + 1;
     }
     return Func_703860(a, target);
+}
+
+// FUNCTION: GAMEMD 0x454730
+//
+// Drop animation slot 0x13, then restart each slot whose record is flagged in
+// the type, choosing the damaged name once health is at the yellow threshold.
+void BuildingClass::FUN_00454730()
+{
+    DestroyNthAnim(0x13);
+
+    for (int slot = 0; slot < 0x15; slot++) {
+        if (Type->BuildingAnim[slot].PoweredSpecial) {
+            int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+            const char* animName;
+            if (damaged) {
+                animName = Type->BuildingAnim[slot].Damaged;
+            } else {
+                animName = Type->BuildingAnim[slot].Anim;
+            }
+            if (animName && *animName) {
+                PlayAnim(animName, slot, damaged, false, 0);
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x454930
+//
+// Start animation slot 0x13 (damaged name once health is at the yellow
+// threshold), then drop every slot whose record is flagged in the type.
+void BuildingClass::FUN_00454930()
+{
+    int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+    const char* animName;
+    if (damaged) {
+        animName = Type->BuildingAnim[0x13].Damaged;
+    } else {
+        animName = Type->BuildingAnim[0x13].Anim;
+    }
+    if (animName && *animName) {
+        PlayAnim(animName, 0x13, damaged, false, 0);
+    }
+
+    for (int slot = 0; slot < 0x15; slot++) {
+        if (Type->BuildingAnim[slot].PoweredSpecial) {
+            DestroyNthAnim(slot);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x454CF0
+// For a type that carries the cloaking data bool: mark the data present, drop
+// the radius when it equals the type's, and request a redraw.
+void BuildingClass::FUN_00454CF0()
+{
+    if (Type->bools_16A4[0x23])
+    {
+        unsigned char radius = CloakRadius;
+        HasCloakingData = 1;
+        if (radius == Type->CloakRadiusInCells)
+        {
+            CloakRadius = 0;
+        }
+        NeedsRedraw = 1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x454D30
+// The opposite step: flag the data as reversed, restore the radius from the
+// type when it is zero, and request a redraw.
+void BuildingClass::FUN_00454D30()
+{
+    if (Type->bools_16A4[0x23])
+    {
+        unsigned char radius = CloakRadius;
+        HasCloakingData = -1;
+        if (radius == 0)
+        {
+            CloakRadius = Type->CloakRadiusInCells;
+        }
+        NeedsRedraw = 1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x454D70
+void Chain_00454D70::PokeAll()
+{
+    for (Node_00454D70* n = Head; n; n = n->Next)
+    {
+        int t = n->Type();
+        if (t == 1 || t == 0xF || t == 2)
+            n->Poke();
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2732,6 +4157,37 @@ void Obj_004575B0::FUN_004575B0()
     (this->*this->Vptr->At_1A0)(one);
 }
 
+// FUNCTION: GAMEMD 0x457630  (__thiscall)
+// Index of the first super-weapon this building hosts that is currently active
+// for the owning house; returns the raw type index (-1 sentinel) otherwise.
+int BuildingClass::FirstActiveSWIdx()
+{
+    int idx = this->Type->SuperWeapon;
+    if (idx != -1)
+    {
+        SWChainNode* node = g_SWArray[idx];
+        SWChainC8* sw = node->field_28->field_C8;
+        if (sw && !this->Owner->ActiveBuildingTypes.FUN_0049FAE0(sw->field_DF8))
+            return -1;
+    }
+    return this->Type->SuperWeapon;
+}
+
+// FUNCTION: GAMEMD 0x457690  (__thiscall)
+// As FirstActiveSWIdx, for the building's second hosted super-weapon.
+int BuildingClass::SecondActiveSWIdx()
+{
+    int idx = this->Type->SuperWeapon2;
+    if (idx != -1)
+    {
+        SWChainNode* node = g_SWArray[idx];
+        SWChainC8* sw = node->field_28->field_C8;
+        if (sw && !this->Owner->ActiveBuildingTypes.FUN_0049FAE0(sw->field_DF8))
+            return -1;
+    }
+    return this->Type->SuperWeapon2;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x457CE0
 //
@@ -2853,6 +4309,44 @@ void BuildingClass_00458200::UpdateGarrisonOwner()
     if ((this->*Vtbl->GetOccupantCount)() > 0 && Owner == civilian) {
         UpdateOccupantAnims();
         (this->*Vtbl->SetOwningHouse)(OccupantItems[0]->Owner, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x458330
+//
+// Refresh the idle animation and the four active ones after anything that
+// changes how the building should look — occupancy, ownership or damage.
+// The slot order is retail's: Idle first, then Active through ActiveFour.
+//
+// PARTIAL: 88.5% -- the damaged flag lives in EDI where retail uses EBX (so
+// retail tests it with `TEST BL,BL`); instruction multiset is identical. Two
+// levers from the earlier match are kept because they are plain code:
+//   * the damaged flag is an `int`, not a `bool` (dword MOV/XOR forms);
+//   * the name is selected through `Type->BuildingAnim[slot].Field` in each
+//     arm, and the flag is written as `GetHealthPercentage() <= ConditionYellow`.
+void BuildingClass::UpdateOccupantAnims()
+{
+    PlayNthAnim(this, ANIM_SLOT_IDLE_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_TWO_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_THREE_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_FOUR_00458330, 0);
+}
+
+// FUNCTION: GAMEMD 0x458750
+//
+// Restart the cash-production timer from the type's delay, then, unless the
+// owner is a passive multiplayer house and provided the building is active,
+// credit (positive amount) or debit (negative amount) the owner.
+void BuildingClass::FUN_00458750()
+{
+    CashProductionTimer = CDTimerClass(Type->ProduceCashDelay);
+
+    if (!((HouseTypeClass*)Owner->Type)->MultiplayPassive && vf_212()) {
+        if (Type->ProduceCashAmount > 0)
+            Owner->GiveMoney(Type->ProduceCashAmount);
+        else
+            Owner->FUN_004F9790(-Type->ProduceCashAmount);
     }
 }
 
@@ -3092,6 +4586,65 @@ void Building_004593A0::UnloadBunker()
     }
 }
 
+// FUNCTION: GAMEMD 0x459470  BuildingClass::ClearBunker (__thiscall)
+//
+// Tear the bunker link down: the two garrison animations are destroyed, the
+// bunker-exit sound plays at the building's own coordinates when the rules
+// name one, the two "bunker cleared" animations play in their healthy or
+// damaged spelling according to the building's health ratio, and then both
+// back-links are cleared and the building is sent through its mission slot.
+void BuildingClass::ClearBunker()
+{
+    DestroyNthAnim(10);
+    DestroyNthAnim(11);
+
+    if (BunkerLinkedItem != 0)
+    {
+        if (RulesInstance->BunkerWallsDownSound != -1)
+        {
+            CoordStruct coords = Location;
+            VocClass::PlayAt(RulesInstance->BunkerWallsDownSound, &coords, 0);
+        }
+
+        const char* name;
+        int damaged;
+
+        if (GetHealthPercentage() <= RulesInstance->ConditionYellow)
+        {
+            damaged = 1;
+            name = Type->BuildingAnim[12].Damaged;
+        }
+        else
+        {
+            damaged = 0;
+            name = Type->BuildingAnim[12].Anim;
+        }
+
+        if (name != 0 && *name != 0)
+            PlayAnim(name, 12, damaged, 0, 0);
+
+        if (GetHealthPercentage() <= RulesInstance->ConditionYellow)
+        {
+            damaged = 1;
+            name = Type->BuildingAnim[13].Damaged;
+        }
+        else
+        {
+            damaged = 0;
+            name = Type->BuildingAnim[13].Anim;
+        }
+
+        if (name != 0 && *name != 0)
+            PlayAnim(name, 13, damaged, 0, 0);
+
+        vf_157(3);
+        BunkerLinkedItem->BunkerLinkedItem = 0;
+        BunkerLinkedItem = 0;
+        TankBunkerState = 0;
+        vf_122(5, 0);
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459840
 // The first non-zero of three sub-object counters, falling back to the owner's
@@ -3132,6 +4685,20 @@ int BuildingClass::vf_182()
 int BuildingClass::vf_183()
 {
     return Type->AntiInfantryValue;
+}
+
+// FUNCTION: GAMEMD 0x4598D0
+// A type that undeploys and gathers resources never qualifies; otherwise the
+// answer is the negation of slot 32.
+bool BuildingClass::FUN_004598D0()
+{
+    BuildingTypeClass* type = Type;
+    if (type->UndeploysInto != 0 && type->ResourceGatherer)
+    {
+        return false;
+    }
+    bool result = !vf_32();
+    return result;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -3786,18 +5353,3 @@ long ComHolder_0045AEA0::FUN_0045AF20(IUnk** source)
 
     return hr;
 }
-
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x818164
-extern const char CivilianSideName_00458200[] = "Civilian";
-// GLOBAL: GAMEMD 0x8190C8
-extern const char EvaBuildingOnLine_00452260[] = "EVA_BuildingOnLine";
-// GLOBAL: GAMEMD 0x819108
-extern const char EvaBuildingOffLine[] = "EVA_BuildingOffLine";
-// GLOBAL: GAMEMD 0x81926C
-extern const char EvaStructureAbandoned_00458200[] = "EVA_StructureAbandoned";
-// GLOBAL: GAMEMD 0xA8B320
-bool BuildingBGlobal_00A8B320;
-// GLOBAL: GAMEMD 0xA80228
-HouseVector_00458200 HouseArray_00458200;
-// END defined globals

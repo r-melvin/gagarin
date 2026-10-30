@@ -131,12 +131,6 @@ struct Obj_00453370
 GG_STATIC_ASSERT(offsetof(Obj_00453370, Field618) == 0x618);
 extern int DAT_00A8E7AC;
 
-// FUNCTION: GAMEMD 0x453370
-void Obj_00453370::ClearIfOwnerFlag()
-{
-    if (!DAT_00A8E7AC && Owner->Flag)
-        Field618 = 0;
-}
 
 // ---------------------------------------------------------------------------
 // 0x4790B0: store a clamped mode value.
@@ -529,18 +523,6 @@ struct Holder_0043C2A0
 };
 GG_STATIC_ASSERT(offsetof(Holder_0043C2A0, Items) == 0x5C8);
 
-// FUNCTION: GAMEMD 0x43C2A0
-void Holder_0043C2A0::ReleaseAll()
-{
-    for (int i = 0; i < 8; ++i)
-    {
-        if (Items[i])
-        {
-            Items[i]->Release();
-            Items[i] = 0;
-        }
-    }
-}
 
 // ---------------------------------------------------------------------------
 // 0x45E8B0: store three values in the indexed 12-byte slot.
@@ -729,18 +711,6 @@ struct Owner_0044EF80
 };
 GG_STATIC_ASSERT(offsetof(Owner_0044EF80, Context) == 0x21C);
 
-// FUNCTION: GAMEMD 0x44EF80
-// PARTIAL: 80% -- the argument loads before the slot call are scheduled differently from retail.
-int Owner_0044EF80::Lookup(Target_0044EF80* t, int a)
-{
-    if (t)
-    {
-        int ctx = Context;
-        Resolved_0044EF80* r = t->Resolve(a, ctx);
-        return r->FUN_0045EE70();
-    }
-    return -1;
-}
 
 // ---------------------------------------------------------------------------
 // 0x454D70: poke every linked node whose type is one of three values.
@@ -1024,16 +994,6 @@ struct Chain_00454D70
 };
 GG_STATIC_ASSERT(offsetof(Chain_00454D70, Head) == 0xE4);
 
-// FUNCTION: GAMEMD 0x454D70
-void Chain_00454D70::PokeAll()
-{
-    for (Node_00454D70* n = Head; n; n = n->Next)
-    {
-        int t = n->Type();
-        if (t == 1 || t == 0xF || t == 2)
-            n->Poke();
-    }
-}
 
 // ---------------------------------------------------------------------------
 // 0x486800: bit-mask test.

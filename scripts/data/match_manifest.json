@@ -1606,7 +1606,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/building_class_clear_bunker_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x459470",
   "sym": "?ClearBunker@BuildingClass@@QAEXXZ",
   "len": "0x141",
@@ -1615,7 +1615,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/building_class_disable_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x452480",
   "sym": "?DisableStuff@BuildingClass@@QAEXXZ",
   "len": "0xbe",
@@ -1687,7 +1687,7 @@
   "pct": 85.5
  },
  {
-  "tu": "match/combat/building_class_occupant_anims_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x458330",
   "sym": "?UpdateOccupantAnims@BuildingClass@@QAEXXZ",
   "len": "0x290",
@@ -22160,58 +22160,58 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/building_class.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x451E40",
   "sym": "?DestroyNthAnim@BuildingClass@@QAEXH@Z",
   "len": "0x56",
   "name": "DestroyNthAnim",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4521C0",
   "sym": "?DisableTemporal@BuildingClass@@QAEXXZ",
   "len": "0x42",
   "name": "DisableTemporal",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x452210",
   "sym": "?EnableTemporal@BuildingClass@@QAEXXZ",
   "len": "0x36",
   "name": "EnableTemporal",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4525F0",
   "sym": "?IsTraversable@BuildingClass@@QAE_NXZ",
   "len": "0x3D",
   "name": "IsTraversable",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x457630",
   "sym": "?FirstActiveSWIdx@BuildingClass@@QAEHXZ",
   "len": "0x59",
   "name": "FirstActiveSWIdx",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x457690",
   "sym": "?SecondActiveSWIdx@BuildingClass@@QAEHXZ",
   "len": "0x59",
   "name": "SecondActiveSWIdx",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/Techno.cpp",
@@ -137045,40 +137045,40 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/building_class_anim_visibility_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x451EA0",
   "sym": "?SetAnimInvisible@BuildingClass@@QAEXH@Z",
   "len": "0x3f",
   "name": "BuildingClass::SetAnimInvisible",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class_anim_visibility_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x454CF0",
   "sym": "?FUN_00454CF0@BuildingClass@@QAEXXZ",
   "len": "0x36",
   "name": "BuildingClass::FUN_00454CF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class_anim_visibility_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x454D30",
   "sym": "?FUN_00454D30@BuildingClass@@QAEXXZ",
   "len": "0x35",
   "name": "BuildingClass::FUN_00454D30",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class_anim_visibility_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4598D0",
   "sym": "?FUN_004598D0@BuildingClass@@QAE_NXZ",
   "len": "0x2b",
   "name": "BuildingClass::FUN_004598D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/scenario_elapsed_timer_methods.cpp",
@@ -138485,13 +138485,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x453370",
   "sym": "?ClearIfOwnerFlag@Obj_00453370@@QAEXXZ",
   "len": "0x24",
   "name": "ClearIfOwnerFlag",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_sweep_r12_w1.cpp",
@@ -138629,13 +138629,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43C2A0",
   "sym": "?ReleaseAll@Holder_0043C2A0@@QAEXXZ",
   "len": "0x2a",
   "name": "ReleaseAll",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_sweep_r12_w1.cpp",
@@ -138692,13 +138692,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x454D70",
   "sym": "?PokeAll@Chain_00454D70@@QAEXXZ",
   "len": "0x34",
   "name": "PokeAll",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_sweep_r12_w1.cpp",
@@ -138764,13 +138764,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x44EF80",
   "sym": "?Lookup@Owner_0044EF80@@QAEHPAUTarget_0044EF80@@H@Z",
   "len": "0x2e",
   "name": "Lookup",
   "status": "partial",
-  "pct": 80
+  "pct": 80.0
  },
  {
   "tu": "match/core/w2_leaf_r12.cpp",
@@ -143624,16 +143624,16 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/building_class_r20_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x451F60",
   "sym": "?FUN_00451F60@BuildingClass@@QAEXPAXH@Z",
   "len": "0x98",
   "name": "BuildingClass::FUN_00451F60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class_r20_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43EE50",
   "sym": "?FUN_0043EE50@BuildingClass@@QAEHXZ",
   "len": "0x5d",
@@ -143642,7 +143642,7 @@
   "pct": 94.3
  },
  {
-  "tu": "match/economy/building_class_r20_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4528A0",
   "sym": "?FUN_004528A0@BuildingClass@@QAE_NPAVAbstractClass@@@Z",
   "len": "0x9e",
@@ -144848,58 +144848,58 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x450590",
   "sym": "?FUN_00450590@BuildingClass@@QAEXXZ",
   "len": "0x98",
   "name": "BuildingClass::FUN_00450590",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4504F0",
   "sym": "?FUN_004504F0@BuildingClass@@QAEXHPBUCoordStruct@@@Z",
   "len": "0x97",
   "name": "BuildingClass::FUN_004504F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x452670",
   "sym": "?FUN_00452670@BuildingClass@@QAE_NPAVBuildingTypeClass@@PAVHouseClass@@@Z",
   "len": "0x79",
   "name": "BuildingClass::FUN_00452670",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x454730",
   "sym": "?FUN_00454730@BuildingClass@@QAEXXZ",
   "len": "0x85",
   "name": "BuildingClass::FUN_00454730",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x454930",
   "sym": "?FUN_00454930@BuildingClass@@QAEXXZ",
   "len": "0x80",
   "name": "BuildingClass::FUN_00454930",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/building_class_cash_timer_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x458750",
   "sym": "?FUN_00458750@BuildingClass@@QAEXXZ",
   "len": "0x7e",
   "name": "BuildingClass::FUN_00458750",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/aircraft_fly_control_r23_methods.cpp",
