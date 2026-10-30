@@ -194,10 +194,10 @@ struct SidebarSelectClass : public ControlClass
     int unknown_30;                             // +0x30
     unsigned char Hover;                        // +0x34
 
-    // FUNCTION: GAMEMD 0x6AB990 -- slot 28 (OnMouseEnter).
-    virtual void v70();
-    // FUNCTION: GAMEMD 0x6AB9E0 -- slot 29 (OnMouseLeave).
-    virtual void v74();
+    // FUNCTION: GAMEMD 0x6AB990 -- slot 28 (OnMouseEnter; retail vtable 0x7F2FC8 field 29).
+    virtual void OnMouseEnter();
+    // FUNCTION: GAMEMD 0x6AB9E0 -- slot 29 (OnMouseLeave; retail vtable 0x7F2FC8 field 30).
+    virtual void OnMouseLeave();
     // FUNCTION: GAMEMD 0x6AAD00 -- slot 31 (Action).
     virtual int Action(unsigned flags, unsigned* key, int modifier);
 };

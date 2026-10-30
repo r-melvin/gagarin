@@ -58487,20 +58487,20 @@
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AB990",
-  "sym": "?v70@SidebarSelectClass@@UAEXXZ",
+  "sym": "?OnMouseEnter@SidebarSelectClass@@UAEXXZ",
   "len": "0x42",
-  "name": "SidebarSelectClass::v70",
+  "name": "SidebarSelectClass::OnMouseEnter",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AB9E0",
-  "sym": "?v74@SidebarSelectClass@@UAEXXZ",
+  "sym": "?OnMouseLeave@SidebarSelectClass@@UAEXXZ",
   "len": "0x35",
-  "name": "SidebarSelectClass::v74",
+  "name": "SidebarSelectClass::OnMouseLeave",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
@@ -73173,11 +73173,11 @@
  {
   "tu": "match/combat/temporal_class.cpp",
   "addr": "0x71A760",
-  "sym": "?FUN_0071A760@TemporalClass@@QAEXXZ",
+  "sym": "?vf_23@TemporalClass@@UAEXXZ",
   "len": "0x3B0",
-  "name": "TemporalClass::FUN_0071A760",
+  "name": "TemporalClass::vf_23",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/temporal_class.cpp",

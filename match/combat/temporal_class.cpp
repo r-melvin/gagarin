@@ -178,7 +178,7 @@ HRESULT __stdcall TemporalClass::Save(IStream* pStm, BOOL fClearDirty)
 }
 
 // FUNCTION: GAMEMD 0x71A760
-void TemporalClass::FUN_0071A760()
+void TemporalClass::vf_23()
 {
     if (Target && Target->unknown_278 == this && unknown_40) {
         Target->unknown_278 = 0;

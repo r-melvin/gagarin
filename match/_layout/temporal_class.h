@@ -535,8 +535,8 @@ public:
     virtual int vf_12();                                                  // 12  0x71B190
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x71A650
 
-    // FUNCTION: GAMEMD 0x71A760 (declaration)
-    void FUN_0071A760();
+    // FUNCTION: GAMEMD 0x71A760 (declaration; slot 23 of the primary vtable 0x7F517C)
+    virtual void vf_23();
     // FUNCTION: GAMEMD 0x71AB10 (decl; reloc) -- the warp per step of a chain;
     // defined in combat/temporal_class_methods.cpp under this name.
     int GetWarpPerStep(int depth = 0) const;

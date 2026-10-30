@@ -1395,7 +1395,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
 }
 
 // FUNCTION: GAMEMD 0x6AB990
-void SidebarSelectClass::v70()
+void SidebarSelectClass::OnMouseEnter()
 {
     ToolTipManager_Instance->SaveTimerDelay();
     ToolTipManager_Instance->SetTimerDelay(0);
@@ -1407,7 +1407,7 @@ void SidebarSelectClass::v70()
 }
 
 // FUNCTION: GAMEMD 0x6AB9E0
-void SidebarSelectClass::v74()
+void SidebarSelectClass::OnMouseLeave()
 {
     ToolTipManager_Instance->RestoreTimeDelay();
     Hover = 0;
