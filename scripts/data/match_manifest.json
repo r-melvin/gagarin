@@ -7281,7 +7281,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/guarded_forward_methods.cpp",
+  "tu": "match/core/small_misc20_methods.cpp",
   "addr": "0x437FC0",
   "sym": "??1BlockCipherView@@QAE@XZ",
   "len": "0xd",
@@ -10359,7 +10359,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc12_methods.cpp",
+  "tu": "match/core/small_misc20_methods.cpp",
   "addr": "0x437FD0",
   "sym": "?Key@BlockCipherView@@QAEXPBXH@Z",
   "len": "0x28",
@@ -27663,13 +27663,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/com_holder_ctor_methods.cpp",
+  "tu": "match/core/small_misc20_methods.cpp",
   "addr": "0x437F50",
   "sym": "??0BlockCipherView@@QAE@XZ",
   "len": "0x6e",
   "name": "BlockCipherView::BlockCipherView",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/copy_protection_methods.cpp",

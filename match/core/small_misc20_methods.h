@@ -10,7 +10,9 @@
 #include "intrusive_list_methods.h"
 #include "guarded_forward_methods.h"
 
-void __stdcall FUN_007DC720(unsigned int hr);
+// Signed status matches the shared COM-holder declaration; both use the
+// binary's 32-bit __stdcall reporter call.
+void __stdcall FUN_007DC720(long hr);
 
 // A COM slot taking three arguments.
 typedef long (__stdcall* Slot3)(IFace*, int, int, int);

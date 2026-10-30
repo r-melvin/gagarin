@@ -34,15 +34,3 @@ void* BSurface_00411650::FUN_00411650(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x437FD0
-// The two arguments reach the interface in the opposite order to the one they
-// arrive in: retail pushes the first parameter first, so it ends up rightmost.
-void BlockCipherView::Key(const void* key, int length)
-{
-    if (Interface == 0) {
-        FUN_007DC720(0x80004003);
-    }
-
-    IFACE_CALL2(Interface, 0xC, length, (int)key);
-}
-

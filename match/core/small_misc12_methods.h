@@ -11,7 +11,6 @@
 #include "guarded_forward_methods.h"
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
-void __stdcall FUN_007DC720(unsigned int hr);
 
 // A COM slot taking two arguments. __stdcall pushes right to left and the
 // object last, which is the order retail uses.
