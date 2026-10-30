@@ -11377,7 +11377,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/surface_desc_ctor_methods.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x433940",
   "sym": "??1BitFont@@UAE@XZ",
   "len": "0x4b",
@@ -28041,7 +28041,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/bit_font_lock_methods.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x4348F0",
   "sym": "?Lock@BitFont@@QAEXPAVSurface@@@Z",
   "len": "0x9d",
@@ -29589,7 +29589,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/surface_desc_ctor_methods.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x433880",
   "sym": "??0BitFont@@QAE@PBD@Z",
   "len": "0xbd",
@@ -30507,18 +30507,18 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/bit_font_state_exchange_methods.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x433CE0",
-  "sym": "?SwapFlag@BitFontStateView@@QAEEE@Z",
+  "sym": "?SwapFlag@BitFont@@QAEEE@Z",
   "len": "0xd",
   "name": "BitFont::SwapFlag",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/bit_font_state_exchange_methods.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x434100",
-  "sym": "?SwapTabWidth@BitFontStateView@@QAEHH@Z",
+  "sym": "?SwapTabWidth@BitFont@@QAEHH@Z",
   "len": "0xd",
   "name": "BitFont::SwapTabWidth",
   "status": "matched",
@@ -30561,7 +30561,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/bit_font_intersect_00434840.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x434840",
   "sym": "?Intersect@BitFont@@QAE_NPAULTRBStruct@@00@Z",
   "len": "0xa2",
@@ -30615,7 +30615,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/bit_font_decode_00434700.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x434700",
   "sym": "?FUN_00434700@BitFont@@QAEXXZ",
   "len": "0x84",
@@ -30750,7 +30750,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/surface_desc_ctor_methods.cpp",
+  "tu": "match/renderer/bit_font.cpp",
   "addr": "0x434A40",
   "sym": "??_GBitFont@@UAEPAXI@Z",
   "len": "0x62",

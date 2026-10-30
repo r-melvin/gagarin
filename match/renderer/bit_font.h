@@ -79,6 +79,10 @@ public:
     void FUN_00434700(); // GAMEMD 0x434700
     bool Intersect(LTRBStruct* out, LTRBStruct* a, LTRBStruct* b); // GAMEMD 0x434840
     void FUN_004348F0(Surface*); // GAMEMD 0x4348F0, legacy spelling
+    // FUNCTION: GAMEMD 0x433CE0 — ECX=this, one byte stack argument, RET 4.
+    unsigned char SwapFlag(unsigned char value);
+    // FUNCTION: GAMEMD 0x434100 — ECX=this, one dword stack argument, RET 4.
+    int SwapTabWidth(int value);
     int FUN_00434500(const unsigned short*, int, int, int, int); // GAMEMD 0x434500
     void FUN_00434990(Surface*); // GAMEMD 0x434990, legacy spelling
     short         FUN_00433C70(short color);          // GAMEMD 0x433C70: swaps +0x24, returns the old
@@ -124,8 +128,10 @@ GG_STATIC_ASSERT(offsetof(BitFont, unknown_20)   == 0x20);
 GG_STATIC_ASSERT(offsetof(BitFont, unknown_24)   == 0x24);
 GG_STATIC_ASSERT(offsetof(BitFont, unknown_26)   == 0x26);
 GG_STATIC_ASSERT(offsetof(BitFont, unknown_28)   == 0x28);
+GG_STATIC_ASSERT(sizeof(((BitFont*)0)->unknown_28) == 4);
 GG_STATIC_ASSERT(offsetof(BitFont, unknown_2C)   == 0x2C);
 GG_STATIC_ASSERT(offsetof(BitFont, unknown_40)   == 0x40);
+GG_STATIC_ASSERT(sizeof(((BitFont*)0)->unknown_40) == 1);
 GG_STATIC_ASSERT(sizeof(BitFont)                 == 0x44);
 #endif
 
