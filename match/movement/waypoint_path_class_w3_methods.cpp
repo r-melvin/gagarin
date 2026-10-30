@@ -75,6 +75,59 @@ WaypointPathClass::~WaypointPathClass()
     DAT_00B72608.RemoveItem(this);
 }
 
+// FUNCTION: GAMEMD 0x763980  (__thiscall)
+// Bounds-checked element accessor: return &Waypoints[idx], or null when idx is
+// out of [0, Count). The element address is `Items + idx*0xC`.
+WaypointClass* WaypointPathClass::GetWaypoint(int idx) const
+{
+    if (idx >= 0 && idx < Waypoints.Count)
+        return &Waypoints.Items[idx];
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x763AF0
+// Overwrites the point at an in-range index.
+void WaypointPathClass::SetWaypoint(int idx, const WaypointClass* pWaypoint)
+{
+    if (idx >= 0 && idx < Waypoints.Count) {
+        new (&Waypoints.Items[idx]) WaypointClass(*pWaypoint);
+    }
+}
+
+// FUNCTION: GAMEMD 0x763B30
+// Removes the point at an in-range index; the loop point is forgotten when it was that point
+// or the last one.
+void WaypointPathClass::RemoveWaypoint(int idx)
+{
+    if (idx >= 0 && idx < Waypoints.Count) {
+        if (idx == CurrentWaypointIndex || idx == Waypoints.Count - 1) {
+            CurrentWaypointIndex = -1;
+        }
+        Waypoints.Delete(idx);
+    }
+}
+
+// FUNCTION: GAMEMD 0x763BA0  (__thiscall)
+// Given a node pointer, return the node that follows it in the path. The index
+// is recovered via the vector's GetItemIndex virtual (slot 0x14); if the next
+// index would run off the end and a CurrentWaypointIndex is set (!= -1), wrap to
+// CurrentWaypointIndex. Returns null when the resulting index is out of range.
+WaypointClass* WaypointPathClass::GetWaypointAfter(WaypointClass* pWaypoint) const
+{
+    int index = Waypoints.Slot5(pWaypoint) + 1;
+    if (CurrentWaypointIndex != -1 && index == Waypoints.Count)
+        index = CurrentWaypointIndex;
+    if (index >= 0 && index < Waypoints.Count)
+        return &Waypoints.Items[index];
+    return 0;
+}
+// FUNCTION: GAMEMD 0x763BE0
+// Empties the point list and forgets the loop point.
+void WaypointPathClass::ClearWaypoints()
+{
+    Waypoints.Clear();
+    CurrentWaypointIndex = -1;
+}
 // FUNCTION: GAMEMD 0x763C70
 // Reads the stream, rebuilds the object in place and reads back the waypoint list.
 HRESULT __stdcall WaypointPathClass::Load(IStream* pStm)

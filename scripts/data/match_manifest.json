@@ -25861,7 +25861,7 @@
   "note": "Naked asm body replaced by C++ (user decision 2026-10-22). Multiset identical; one load of Z high half scheduled after the first sqrt spill instead of before."
  },
  {
-  "tu": "match/movement/waypoint_path_class_methods.cpp",
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763980",
   "sym": "?GetWaypoint@WaypointPathClass@@QBEPAVWaypointClass@@H@Z",
   "len": "0x1e",
@@ -25870,7 +25870,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_methods.cpp",
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763BA0",
   "sym": "?GetWaypointAfter@WaypointPathClass@@QBEPAVWaypointClass@@PAV2@@Z",
   "len": "0x3d",
@@ -139528,7 +139528,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_r12_methods.cpp",
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763AF0",
   "sym": "?SetWaypoint@WaypointPathClass@@QAEXHPBVWaypointClass@@@Z",
   "len": "0x31",
@@ -139537,7 +139537,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_r12_methods.cpp",
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763B30",
   "sym": "?RemoveWaypoint@WaypointPathClass@@QAEXH@Z",
   "len": "0x64",
@@ -139546,7 +139546,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_r12_methods.cpp",
+  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763BE0",
   "sym": "?ClearWaypoints@WaypointPathClass@@QAEXXZ",
   "len": "0x15",
