@@ -135,15 +135,6 @@ HRESULT __stdcall InfantryClass::Save(IStream* pStm, BOOL fClearDirty)
     return FootClass::Save(pStm, fClearDirty);
 }
 
-// FUNCTION: GAMEMD 0x5439F0
-HRESULT __stdcall IsometricTileClass::Save(IStream* pStm, BOOL fClearDirty)
-{
-    HRESULT hr = MapObjClassView::Save(pStm, fClearDirty);
-    if (hr >= 0)
-        hr = 0;
-    return hr;
-}
-
 // FUNCTION: GAMEMD 0x549D70
 HRESULT __stdcall IsometricTileTypeView_00549D70::Save(IStream* pStm, BOOL fClearDirty)
 {

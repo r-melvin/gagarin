@@ -24,12 +24,14 @@
 #include "terrain_common_types.h"
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
+#include "../../_layout/object_type_class.h"
+#include "../../_layout/geometry2d.h"
 
 // GLOBAL: GAMEMD 0xA8EC18 - SmudgeTypeClass::Array, every smudge type (vptr 0x7E9DC4 side).
 extern MapObjDynVector<SmudgeTypeClass*> SmudgeTypeArray;
 
 // VTABLE: GAMEMD 0x7F3528 (IPersistStream side) and GAMEMD 0x7F350C / 0x7F3504 / 0x7F34FC
-class SmudgeTypeClass : public MapObjTypeClassView
+class SmudgeTypeClass : public ObjectTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x6B5260
@@ -37,14 +39,15 @@ public:
     static void LoadFromIniList(int idxTheater); // existing row 0x6B5490
     // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
-    SmudgeTypeClass(const MapObjNoInit& noInit) : MapObjTypeClassView(noInit) {}
+    // FUNCTION: GAMEMD 0x6B5370 (body in tu217_smudge_type_class.cpp)
+    SmudgeTypeClass(const AbstractNoInit& noInit);
 
     // FUNCTION: GAMEMD 0x6B5F80 (read-only here, outside the cluster) - tested by SmudgeClass slot 73
     // with the object's cell and `true`; purpose not recovered.
-    bool Method_6B5F80(const MapObjCell* cell, bool flag);
+    bool Method_6B5F80(const CellStruct* cell, bool flag);
     // FUNCTION: GAMEMD 0x6B6080 (read-only here, outside the cluster) - walks the type's
     // Width x Height cells from the given cell; purpose not recovered.
-    void Method_6B6080(const MapObjCell* cell);
+    void Method_6B6080(const CellStruct* cell);
 
     // ---- primary table (IPersistStream side) overrides ---------------------------------------
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x6B58D0
@@ -53,16 +56,16 @@ public:
     // FUNCTION: GAMEMD 0x6B53A0 (destructor; slot 8 holds the scalar deleting destructor 0x6B6160,
     // which expands this body; the base body 0x5F7400 is out of line).
     virtual ~SmudgeTypeClass();
-    virtual int WhatAmI();                                                  // 11  0x6B6130
-    virtual int Size();                                                     // 12  0x6B6140
-    virtual void ComputeCRC(MapObjCrcView& crc);                            // 13  0x6B57F0
+    virtual int vf_11();                                                    // 11  0x6B6130
+    virtual int vf_12();                                                    // 12  0x6B6140
+    virtual void vf_13(Obj_004A1D30* crc);                                  // 13  0x6B57F0
     virtual int vf_16();                                                    // 16  0x6B6150
-    virtual bool ReadINI(MapObjIniView* ini);                               // 25  0x6B56D0
-    virtual bool vf_32(const MapObjCell* cell, MapObjHouseView* house);     // 32  0x6B5550
-    virtual void* vf_35(MapObjHouseView* house);                     // 35  0x6B55C0
+    virtual bool vf_25(CCINIClass* ini);                                    // 25  0x6B56D0
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house);          // 32  0x6B5550
+    virtual ObjectClass* vf_35(HouseClass* house);                          // 35  0x6B55C0
     // Slot 40 is not part of the shared ObjectTypeClass table (40 slots): SmudgeTypeClass adds it.
-    virtual void vf_40(const MapObjPoint* where, MapObjRect* clip, int index, int height,
-                       const MapObjCell* cell);                             // 40  0x6B55F0
+    virtual void vf_40(const Point2D* where, RectangleStruct* clip, int index, int height,
+                       const CellStruct* cell);                             // 40  0x6B55F0
 
     // ---- members (complete-object offsets) ---------------------------------------------------
     int            ArrayIndex;   // +0x294

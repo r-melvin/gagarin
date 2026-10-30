@@ -55,6 +55,7 @@
 #define GG_MATCH_MAP_TERRAIN_OBJECTS_TERRAIN_COMMON_VIEWS_H
 
 #include "../../_layout/cell.h"
+#include "../../_layout/geometry2d.h"
 #include "terrain_common_types.h"
 #include "terrain_vtable_layout.h"
 #include "terrain_common_vectors.h"
@@ -536,6 +537,8 @@ public:
     // temporaries, and an inline pointer forwarder for the other families changes their register
     // allocation, so every caller passes the cell itself.
     MapObjCellView* GetCellAt(const MapObjCell& cell);
+    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) - the same lookup, for a shared CellStruct argument.
+    MapObjCellView* GetCellAt(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) - the cell at a lepton coordinate.
     MapObjCellView* GetCellAtCoord(const MapObjCoord& coord);
     // FUNCTION: GAMEMD 0x568300 (decl; reloc) - true when the cell coordinate is on the map.
@@ -687,7 +690,7 @@ void* MapObjLoadShape(const char* path, bool flag);
 // zeros held in registers (`xor ecx,ecx; xor eax,eax; push ecx; push eax`) and reuses one of them
 // for the other zero arguments, which is what cl does for a by-value point built from (0, 0).
 void MapObjDrawShape(MapObjSurfaceView* surface, void* context, void* shape, int frame,
-                     MapObjPoint* where, MapObjRect* clip, int flags, int a6, int zAdjust,
+                     MapObjPoint* where, RectangleStruct* clip, int flags, int a6, int zAdjust,
                      int a8, int a9, int a10, int a11, int a12, MapObjPoint offset);
 // FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) - a height scaled by a float constant, __fastcall (ECX).
 int MapObjHeightScale(int value);

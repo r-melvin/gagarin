@@ -24503,7 +24503,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FE530",
-  "sym": "?vf_32@OverlayTypeClass@@UAE_NPBUMapObjCell@@PAUMapObjHouseView@@@Z",
+  "sym": "?vf_32@OverlayTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x33",
   "name": "OverlayTypeClass::vf_32",
   "status": "matched",
@@ -24512,7 +24512,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FE570",
-  "sym": "?vf_35@OverlayTypeClass@@UAEPAXPAUMapObjHouseView@@@Z",
+  "sym": "?vf_35@OverlayTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x2d",
   "name": "OverlayTypeClass::vf_35",
   "status": "matched",
@@ -47047,7 +47047,7 @@
  {
   "tu": "match/map/tu216_smudge_class.cpp",
   "addr": "0x6B4BE0",
-  "sym": "?Mark@SmudgeClass@@UAE_NH@Z",
+  "sym": "?vf_73@SmudgeClass@@UAE_NH@Z",
   "len": "0x88",
   "name": "SmudgeClass::Mark",
   "status": "partial",
@@ -47074,7 +47074,7 @@
  {
   "tu": "match/map/tu216_smudge_class.cpp",
   "addr": "0x6B4F20",
-  "sym": "?GetType@SmudgeClass@@UAEPAVMapObjTypeClassView@@XZ",
+  "sym": "?vf_34@SmudgeClass@@UAEPAVObjectTypeClass@@XZ",
   "len": "0x7",
   "name": "SmudgeClass::GetType",
   "status": "matched",
@@ -47083,7 +47083,7 @@
  {
   "tu": "match/map/tu216_smudge_class.cpp",
   "addr": "0x6B4F30",
-  "sym": "?Size@SmudgeClass@@UAEHXZ",
+  "sym": "?vf_12@SmudgeClass@@UAEHXZ",
   "len": "0x6",
   "name": "SmudgeClass::Size",
   "status": "matched",
@@ -47092,7 +47092,7 @@
  {
   "tu": "match/map/tu216_smudge_class.cpp",
   "addr": "0x6B4F40",
-  "sym": "?WhatAmI@SmudgeClass@@UAEHXZ",
+  "sym": "?vf_11@SmudgeClass@@UAEHXZ",
   "len": "0x6",
   "name": "SmudgeClass::WhatAmI",
   "status": "matched",
@@ -47110,7 +47110,7 @@
  {
   "tu": "match/map/tu216_smudge_class.cpp",
   "addr": "0x6B4F90",
-  "sym": "?vf_69@SmudgeClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "sym": "?vf_69@SmudgeClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "SmudgeClass::vf_69",
   "status": "matched",
@@ -47137,7 +47137,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B5550",
-  "sym": "?vf_32@SmudgeTypeClass@@UAE_NPBUMapObjCell@@PAUMapObjHouseView@@@Z",
+  "sym": "?vf_32@SmudgeTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x69",
   "name": "SmudgeTypeClass::vf_32",
   "status": "matched",
@@ -47146,7 +47146,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B55C0",
-  "sym": "?vf_35@SmudgeTypeClass@@UAEPAXPAUMapObjHouseView@@@Z",
+  "sym": "?vf_35@SmudgeTypeClass@@UAEPAVObjectClass@@PAVHouseClass@@@Z",
   "len": "0x2d",
   "name": "SmudgeTypeClass::vf_35",
   "status": "matched",
@@ -47155,7 +47155,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B55F0",
-  "sym": "?vf_40@SmudgeTypeClass@@UAEXPBUMapObjPoint@@PAUMapObjRect@@HHPBUMapObjCell@@@Z",
+  "sym": "?vf_40@SmudgeTypeClass@@UAEXPBUPoint2D@@PAURectangleStruct@@HHPBUCellStruct@@@Z",
   "len": "0xd2",
   "name": "SmudgeTypeClass::vf_40",
   "status": "partial",
@@ -47164,7 +47164,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B56D0",
-  "sym": "?ReadINI@SmudgeTypeClass@@UAE_NPAVMapObjIniView@@@Z",
+  "sym": "?vf_25@SmudgeTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x117",
   "name": "SmudgeTypeClass::ReadINI",
   "status": "matched",
@@ -47173,7 +47173,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B57F0",
-  "sym": "?ComputeCRC@SmudgeTypeClass@@UAEXAAVMapObjCrcView@@@Z",
+  "sym": "?vf_13@SmudgeTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x59",
   "name": "SmudgeTypeClass::ComputeCRC",
   "status": "matched",
@@ -47209,7 +47209,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B6130",
-  "sym": "?WhatAmI@SmudgeTypeClass@@UAEHXZ",
+  "sym": "?vf_11@SmudgeTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "SmudgeTypeClass::WhatAmI",
   "status": "matched",
@@ -47218,7 +47218,7 @@
  {
   "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B6140",
-  "sym": "?Size@SmudgeTypeClass@@UAEHXZ",
+  "sym": "?vf_12@SmudgeTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "SmudgeTypeClass::Size",
   "status": "matched",
@@ -47263,7 +47263,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FE5A0",
-  "sym": "?vf_40@OverlayTypeClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@H@Z",
+  "sym": "?vf_40@OverlayTypeClass@@UAEXPAUPoint2D@@PAURectangleStruct@@H@Z",
   "len": "0x73",
   "name": "OverlayTypeClass::vf_40",
   "status": "partial",
@@ -47272,7 +47272,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FE770",
-  "sym": "?ReadINI@OverlayTypeClass@@UAE_NPAVMapObjIniView@@@Z",
+  "sym": "?vf_25@OverlayTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x2bb",
   "name": "OverlayTypeClass::ReadINI",
   "status": "matched",
@@ -47281,7 +47281,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FEA30",
-  "sym": "?vf_27@OverlayTypeClass@@UAEPAUMapObjCoord@@PAU2@PBU2@@Z",
+  "sym": "?vf_27@OverlayTypeClass@@UAE?AUCoordStruct@@ABU2@@Z",
   "len": "0x1f",
   "name": "OverlayTypeClass::vf_27",
   "status": "matched",
@@ -47290,7 +47290,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FEA50",
-  "sym": "?ComputeCRC@OverlayTypeClass@@UAEXAAVMapObjCrcView@@@Z",
+  "sym": "?vf_13@OverlayTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x91",
   "name": "OverlayTypeClass::ComputeCRC",
   "status": "matched",
@@ -47335,7 +47335,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FEF00",
-  "sym": "?WhatAmI@OverlayTypeClass@@UAEHXZ",
+  "sym": "?vf_11@OverlayTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "OverlayTypeClass::WhatAmI",
   "status": "matched",
@@ -47344,7 +47344,7 @@
  {
   "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FEF10",
-  "sym": "?Size@OverlayTypeClass@@UAEHXZ",
+  "sym": "?vf_12@OverlayTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "OverlayTypeClass::Size",
   "status": "matched",
@@ -47371,7 +47371,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FC380",
-  "sym": "??0OverlayClass@@QAE@PAVOverlayTypeClass@@ABUMapObjCell@@H@Z",
+  "sym": "??0OverlayClass@@QAE@PAVOverlayTypeClass@@ABUCellStruct@@H@Z",
   "len": "0x149",
   "name": "OverlayClass::OverlayClass",
   "status": "matched",
@@ -47380,7 +47380,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FC570",
-  "sym": "?Mark@OverlayClass@@UAE_NH@Z",
+  "sym": "?vf_73@OverlayClass@@UAE_NH@Z",
   "len": "0xcb8",
   "name": "OverlayClass::Mark",
   "status": "partial",
@@ -47389,7 +47389,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FD270",
-  "sym": "?Unlimbo@OverlayClass@@UAE_NPBUMapObjCoord@@H@Z",
+  "sym": "?vf_54@OverlayClass@@UAE_NABUCoordStruct@@H@Z",
   "len": "0x6c",
   "name": "OverlayClass::Unlimbo",
   "status": "matched",
@@ -47416,7 +47416,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FD970",
-  "sym": "?vf_70@OverlayClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "sym": "?vf_70@OverlayClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x349",
   "name": "OverlayClass::vf_70",
   "status": "partial",
@@ -47425,7 +47425,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FDDE0",
-  "sym": "?GetType@OverlayClass@@UAEPAVMapObjTypeClassView@@XZ",
+  "sym": "?vf_34@OverlayClass@@UAEPAVObjectTypeClass@@XZ",
   "len": "0x7",
   "name": "OverlayClass::GetType",
   "status": "matched",
@@ -47434,7 +47434,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FDF00",
-  "sym": "?Size@OverlayClass@@UAEHXZ",
+  "sym": "?vf_12@OverlayClass@@UAEHXZ",
   "len": "0x6",
   "name": "OverlayClass::Size",
   "status": "matched",
@@ -47452,7 +47452,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FDF50",
-  "sym": "?WhatAmI@OverlayClass@@UAEHXZ",
+  "sym": "?vf_11@OverlayClass@@UAEHXZ",
   "len": "0x6",
   "name": "OverlayClass::WhatAmI",
   "status": "matched",
@@ -47461,7 +47461,7 @@
  {
   "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FDF60",
-  "sym": "?vf_69@OverlayClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "sym": "?vf_69@OverlayClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "OverlayClass::vf_69",
   "status": "matched",
@@ -52599,13 +52599,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/persist_save_stub_methods.cpp",
+  "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x5439F0",
   "sym": "?Save@IsometricTileClass@@UAGJPAUIStream@@H@Z",
   "len": "0x1D",
   "name": "IsometricTileClass::Save",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/persist_save_stub_methods.cpp",
@@ -74109,11 +74109,11 @@
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543A10",
-  "sym": "?Unlimbo@IsometricTileClass@@UAE_NPBUMapObjCoord@@H@Z",
+  "sym": "?vf_54@IsometricTileClass@@UAE_NABUCoordStruct@@H@Z",
   "len": "0x29",
   "name": "IsometricTileClass::Unlimbo",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
@@ -74127,38 +74127,38 @@
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543A90",
-  "sym": "?Size@IsometricTileClass@@UAEHXZ",
+  "sym": "?vf_12@IsometricTileClass@@UAEHXZ",
   "len": "0x6",
   "name": "IsometricTileClass::Size",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543AA0",
-  "sym": "?WhatAmI@IsometricTileClass@@UAEHXZ",
+  "sym": "?vf_11@IsometricTileClass@@UAEHXZ",
   "len": "0x6",
   "name": "IsometricTileClass::WhatAmI",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543AF0",
-  "sym": "?GetType@IsometricTileClass@@UAEPAVMapObjTypeClassView@@XZ",
+  "sym": "?vf_34@IsometricTileClass@@UAEPAVObjectTypeClass@@XZ",
   "len": "0x7",
   "name": "IsometricTileClass::GetType",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543B00",
-  "sym": "?vf_69@IsometricTileClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "sym": "?vf_69@IsometricTileClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "IsometricTileClass::vf_69",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
@@ -78543,7 +78543,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/persist_class_id_methods.cpp",
+  "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543AB0",
   "sym": "?GetClassID@IsometricTileClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -133157,13 +133157,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/type_class_noinit_ctors.cpp",
+  "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FE3C0",
   "sym": "??0OverlayTypeClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x2e",
   "name": "OverlayTypeClass::OverlayTypeClass(AbstractNoInit)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/type_class_noinit_ctors.cpp",
@@ -133175,13 +133175,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/type_class_noinit_ctors.cpp",
+  "tu": "match/map/tu217_smudge_type_class.cpp",
   "addr": "0x6B5370",
   "sym": "??0SmudgeTypeClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x2e",
   "name": "SmudgeTypeClass::SmudgeTypeClass(AbstractNoInit)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/type_class_noinit_ctors.cpp",
@@ -139916,22 +139916,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/w2_type_dtors_r13.cpp",
+  "tu": "match/map/tu168_overlay_class.cpp",
   "addr": "0x5FC4D0",
   "sym": "??1OverlayClass@@UAE@XZ",
   "len": "0x93",
   "name": "OverlayClass::~OverlayClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/w2_type_dtors_r13.cpp",
+  "tu": "match/map/tu169_overlay_type_class.cpp",
   "addr": "0x5FE3F0",
   "sym": "??1OverlayTypeClass@@UAE@XZ",
   "len": "0x79",
   "name": "OverlayTypeClass::~OverlayTypeClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/w2_side_class_r13.cpp",
@@ -145372,20 +145372,20 @@
  {
   "tu": "match/map/smudge_type_class_cells_r24_3.cpp",
   "addr": "0x6B6080",
-  "sym": "?Method_6B6080@SmudgeTypeClass@@QAEXPBUMapObjCell@@@Z",
+  "sym": "?Method_6B6080@SmudgeTypeClass@@QAEXPBUCellStruct@@@Z",
   "len": "0xa7",
   "name": "SmudgeTypeClass::Method_6B6080",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/smudge_type_class_cells_r24_3.cpp",
   "addr": "0x6B5F80",
-  "sym": "?Method_6B5F80@SmudgeTypeClass@@QAE_NPBUMapObjCell@@_N@Z",
+  "sym": "?Method_6B5F80@SmudgeTypeClass@@QAE_NPBUCellStruct@@_N@Z",
   "len": "0xf8",
   "name": "SmudgeTypeClass::Method_6B5F80",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/taction_map_reset_r24_3.cpp",

@@ -23,6 +23,10 @@
 #include "../core/vector_add_item_free.h"
 #include "terrain_objects/smudge_class.h"
 #include "terrain_objects/smudge_type_class.h"
+#include "../_layout/obj_004a1d30.h"
+#include "../platform/ccini_class_methods.h"
+// GLOBAL: GAMEMD 0x887180
+extern CCINIClass DAT_00887180;
 
 // GLOBAL: GAMEMD 0xB0B7A8 - the all-zero coordinate CreateObject creates its smudge at.
 extern MapObjCoord SmudgeOriginCoord;
@@ -79,15 +83,15 @@ double DAT_00B0B7C8 = DAT_007E1718 / DAT_00B0B7E0;
 // through an inline operator[] 94.5% (both CapacityIncrement + Capacity operand orders). The
 // terrain-module vector model stays.
 SmudgeTypeClass::SmudgeTypeClass(const char* id)
-    : MapObjTypeClassView(id), ArrayIndex(-1), Width(1), Height(1), Crater(false), Burn(false)
+    : ObjectTypeClass(id), ArrayIndex(-1), Width(1), Height(1), Crater(false), Burn(false)
 {
-    MapObjRttiBase::Create_ID();
-    unknown_22F = true;
-    unknown_230 = false;
-    unknown_231 = false;
-    unknown_232 = true;
-    unknown_233 = true;
-    unknown_235 = false;
+    AbstractClass::vf_rtti_5();
+    RadarInvisible = true;
+    Selectable = false;
+    LegalTarget = false;
+    Insignificant = true;
+    Immune = true;
+    AllowCellContent = false;
     DynamicVectorAddItemFree(&SmudgeTypeArray, this);
     ArrayIndex = SmudgeTypeArray.FindIndex(this);
 }
@@ -103,6 +107,13 @@ int Obj_006B5440::FUN_006B5440(const char* name)
         }
     }
     return -1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6B5370
+SmudgeTypeClass::SmudgeTypeClass(const AbstractNoInit& noInit)
+    : ObjectTypeClass(noInit)
+{
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -150,7 +161,7 @@ void SmudgeTypeClass::LoadFromIniList(int idxTheater)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B5550
-bool SmudgeTypeClass::vf_32(const MapObjCell* cell, MapObjHouseView* house)
+bool SmudgeTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 {
     if (new SmudgeClass(this, MapObjCoord(cell->X * 256 + 128, cell->Y * 256 + 128, 0), -1))
         return true;
@@ -159,7 +170,7 @@ bool SmudgeTypeClass::vf_32(const MapObjCell* cell, MapObjHouseView* house)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B55C0
-void* SmudgeTypeClass::vf_35(MapObjHouseView* house)
+ObjectClass* SmudgeTypeClass::vf_35(HouseClass* house)
 {
     return new SmudgeClass(this, SmudgeOriginCoord, -1);
 }
@@ -169,8 +180,8 @@ void* SmudgeTypeClass::vf_35(MapObjHouseView* house)
 // PARTIAL 76.2%, multiset identical. The zero arguments come from two zeroed registers because the
 // drawer's trailing offset is a point by value; retail zeroes EDX/ECX where cl picks ECX/EAX, and
 // the light and height pushes are scheduled differently.
-void SmudgeTypeClass::vf_40(const MapObjPoint* where, MapObjRect* clip, int index, int height,
-                            const MapObjCell* cell)
+void SmudgeTypeClass::vf_40(const Point2D* where, RectangleStruct* clip, int index, int height,
+                            const CellStruct* cell)
 {
     void* shape = vf_39();
     if (shape) {
@@ -189,15 +200,15 @@ void SmudgeTypeClass::vf_40(const MapObjPoint* where, MapObjRect* clip, int inde
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B56D0
-bool SmudgeTypeClass::ReadINI(MapObjIniView* ini)
+bool SmudgeTypeClass::vf_25(CCINIClass* ini)
 {
-    ini->ClearCache();
-    if (MapObjTypeClassView::ReadINI(ini)) {
+    ini->Reset();
+    if (ObjectTypeClass::vf_25(ini)) {
         // STRING: GAMEMD 0x8185F4 "Crater", 0x840028 "Burn", 0x82BBE4 "Width", 0x81A7A8 "Height"
         Crater = ini->ReadBool(ID, "Crater", Crater);
         Burn = ini->ReadBool(ID, "Burn", Burn);
-        Width = ini->ReadInt(ID, "Width", Width);
-        Height = ini->ReadInt(ID, "Height", Height);
+        Width = ini->ReadInteger(ID, "Width", Width);
+        Height = ini->ReadInteger(ID, "Height", Height);
         char path[0x200];
         // STRING: GAMEMD 0x81834C ".SHP"; the theater branch reads MapObjTheaters[...].Extension
         if (!Theater)
@@ -212,25 +223,25 @@ bool SmudgeTypeClass::ReadINI(MapObjIniView* ini)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B57F0
-void SmudgeTypeClass::ComputeCRC(MapObjCrcView& crc)
+void SmudgeTypeClass::vf_13(Obj_004A1D30* crc)
 {
-    MapObjTypeClassView::ComputeCRC(crc);
-    crc.AddInt(ArrayIndex);
-    crc.AddBool(Crater);
-    crc.AddBool(Burn);
-    crc.AddInt(Width);
-    crc.AddInt(Height);
+    AbstractTypeClass::vf_13(crc);
+    crc->FUN_004A1D50(ArrayIndex);
+    crc->FUN_004A1CA0(Crater);
+    crc->FUN_004A1CA0(Burn);
+    crc->FUN_004A1D50(Width);
+    crc->FUN_004A1D50(Height);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B5850
 HRESULT __stdcall SmudgeTypeClass::Load(IStream* pStm)
 {
-    HRESULT hr = MapObjTypeClassView::Load(pStm);
+    HRESULT hr = ObjectTypeClass::Load(pStm);
     if (hr >= 0) {
-        new (this) SmudgeTypeClass(MapObjNoInit());
-        LoadFixup();
-        PostLoad();
+        new (this) SmudgeTypeClass(AbstractNoInit());
+        FUN_005F8110();
+        FUN_005F9070();
         hr = 0;
     }
     return hr;
@@ -240,7 +251,7 @@ HRESULT __stdcall SmudgeTypeClass::Load(IStream* pStm)
 // FUNCTION: GAMEMD 0x6B58B0
 HRESULT __stdcall SmudgeTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT hr = MapObjTypeClassView::Save(pStm, fClearDirty);
+    HRESULT hr = ObjectTypeClass::Save(pStm, fClearDirty);
     if (hr >= 0)
         hr = 0;
     return hr;
@@ -258,14 +269,14 @@ HRESULT __stdcall SmudgeTypeClass::GetClassID(CLSID* pClassID)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B6130
-int SmudgeTypeClass::WhatAmI()
+int SmudgeTypeClass::vf_11()
 {
     return 0x1E;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B6140
-int SmudgeTypeClass::Size()
+int SmudgeTypeClass::vf_12()
 {
     return 0x2A4;
 }

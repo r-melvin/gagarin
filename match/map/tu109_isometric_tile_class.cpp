@@ -10,6 +10,10 @@
 #include <new.h>
 #include "../_layout/swizzle_manager_class.h"
 #include "terrain_objects/isometric_tile_class.h"
+#include "../_layout/object_class.h"
+
+// GLOBAL: GAMEMD 0x007E9640 -- CLSID of IsometricTileClass.
+extern const CLSID DAT_007E9640;
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718
@@ -35,7 +39,7 @@ IsometricTileClass::IsometricTileClass(int typeIndex, const MapObjCell* cell) : 
 {
     if (cell->X != DAT_00AA06D0.X || cell->Y != DAT_00AA06D0.Y) {
         MapObjCoord coord((cell->X << 8) + 0x80, (cell->Y << 8) + 0x80, 0);
-        Unlimbo(&coord, 0);
+        vf_54(coord, 0);
     }
     DAT_0087F750.AddItem(this);
 }
@@ -44,22 +48,32 @@ IsometricTileClass::IsometricTileClass(int typeIndex, const MapObjCell* cell) : 
 // FUNCTION: GAMEMD 0x543990
 HRESULT __stdcall IsometricTileClass::Load(IStream* pStm)
 {
-    HRESULT hr = MapObjClassView::Load(pStm);
+    HRESULT hr = ObjectClass::Load(pStm);
     if (hr >= 0) {
-        new (this) IsometricTileClass(MapObjNoInit());
+        new (this) IsometricTileClass(AbstractNoInit());
         DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     }
     return hr;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5439F0
+HRESULT __stdcall IsometricTileClass::Save(IStream* pStm, BOOL fClearDirty)
+{
+    HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
+    if (hr >= 0)
+        hr = 0;
+    return hr;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // Slot 54, inline because the constructor expands it.
 // FUNCTION: GAMEMD 0x543A10
-inline bool IsometricTileClass::Unlimbo(const MapObjCoord* where, int facing)
+inline bool IsometricTileClass::vf_54(const CoordStruct& where, int facing)
 {
-    unknown_81 = 0;
+    InLimbo = 0;
     vf_109(where);
-    return Mark(1);
+    return vf_73(1);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -67,12 +81,12 @@ inline bool IsometricTileClass::Unlimbo(const MapObjCoord* where, int facing)
 // FUNCTION: GAMEMD 0x543A40
 inline bool IsometricTileClass::vf_53()
 {
-    if (MapObjRemovalEnabled && !unknown_81) {
+    if (MapObjRemovalEnabled && !InLimbo) {
         vf_84();
         vf_55(1);
-        Mark(0);
-        unknown_81 = 1;
-        unknown_80 = 0;
+        vf_73(0);
+        InLimbo = 1;
+        NeedsRedraw = 0;
         return true;
     }
     return false;
@@ -80,28 +94,38 @@ inline bool IsometricTileClass::vf_53()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x543A90
-int IsometricTileClass::Size()
+int IsometricTileClass::vf_12()
 {
     return 0xB0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x543AA0
-int IsometricTileClass::WhatAmI()
+int IsometricTileClass::vf_11()
 {
     return 0x11;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x543AB0
+HRESULT __stdcall IsometricTileClass::GetClassID(CLSID* pClassID)
+{
+    if (pClassID == 0)
+        return E_POINTER;
+    *pClassID = DAT_007E9640;
+    return S_OK;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x543AF0
-MapObjTypeClassView* IsometricTileClass::GetType()
+ObjectTypeClass* IsometricTileClass::vf_34()
 {
     return Type;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x543B00
-void IsometricTileClass::vf_69(MapObjPoint* where, MapObjRect* clip)
+void IsometricTileClass::vf_69(Point2D* where, RectangleStruct* clip)
 {
 }
 

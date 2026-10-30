@@ -17,6 +17,8 @@
 #include "terrain_common_types.h"
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
+#include "../../_layout/object_class.h"
+#include "../../_layout/geometry2d.h"
 
 // GLOBAL: GAMEMD 0xA8B1E0 - SmudgeClass::Array, every live smudge (vptr 0x7E9DA4).
 extern MapObjDynVector<SmudgeClass*> SmudgeArray;
@@ -29,14 +31,14 @@ extern MapObjCoord SmudgeEmptyCoord;
 extern int SmudgeCreateArg;
 
 // VTABLE: GAMEMD 0x7F32FC (IPersistStream side) and GAMEMD 0x7F32D8 / 0x7F32F4 / 0x7F32D0
-class SmudgeClass : public MapObjClassView
+class SmudgeClass : public ObjectClass
 {
 public:
     // FUNCTION: GAMEMD 0x6B4A50
     SmudgeClass(SmudgeTypeClass* type, const MapObjCoord& coord, int arg3);
     // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
-    SmudgeClass(const MapObjNoInit& noInit) : MapObjClassView(noInit) {}
+    SmudgeClass(const AbstractNoInit& noInit) : ObjectClass(noInit) {}
 
     // ---- primary table (IPersistStream side) overrides ---------------------------------------
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x6B4F50
@@ -46,11 +48,11 @@ public:
     // inline (it is expanded into that entry, and the base body 0x5F3B80 is out of line).
     // FUNCTION: GAMEMD 0x6B4B40 (body in tu216_smudge_class.cpp)
     virtual ~SmudgeClass();
-    virtual int WhatAmI();                                                  // 11  0x6B4F40
-    virtual int Size();                                                     // 12  0x6B4F30
-    virtual MapObjTypeClassView* GetType();                                // 34  0x6B4F20
-    virtual void vf_69(MapObjPoint* where, MapObjRect* clip);                      // 69  0x6B4F90
-    virtual bool Mark(int arg);                                            // 73  0x6B4BE0
+    virtual int vf_11();                                                    // 11  0x6B4F40
+    virtual int vf_12();                                                    // 12  0x6B4F30
+    virtual ObjectTypeClass* vf_34();                                       // 34  0x6B4F20
+    virtual void vf_69(Point2D* where, RectangleStruct* clip);              // 69  0x6B4F90
+    virtual bool vf_73(int arg);                                            // 73  0x6B4BE0
 
     // ---- members (complete-object offsets) ---------------------------------------------------
     SmudgeTypeClass* Type;   // +0xAC

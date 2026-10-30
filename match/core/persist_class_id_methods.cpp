@@ -89,8 +89,6 @@ extern const CLSID DAT_007E9990;
 extern const CLSID DAT_007E9680;
 // GLOBAL: GAMEMD 0x007E95A0 -- CLSID of InfantryTypeClass.
 extern const CLSID DAT_007E95A0;
-// GLOBAL: GAMEMD 0x007E9640 -- CLSID of IsometricTileClass.
-extern const CLSID DAT_007E9640;
 // GLOBAL: GAMEMD 0x007E95F0 -- CLSID of IsometricTileTypeClass.
 extern const CLSID DAT_007E95F0;
 // GLOBAL: GAMEMD 0x007E9AC0 -- CLSID of JumpjetLocomotionClass.
@@ -181,10 +179,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 
-class IsometricTileClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class IsometricTileTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -316,15 +310,6 @@ HRESULT __stdcall InfantryTypeClass::GetClassID(CLSID* pClassID)
     if (pClassID == 0)
         return E_POINTER;
     *pClassID = DAT_007E95A0;
-    return S_OK;
-}
-
-// FUNCTION: GAMEMD 0x00543AB0
-HRESULT __stdcall IsometricTileClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E9640;
     return S_OK;
 }
 

@@ -11,6 +11,7 @@
 #include "../_layout/swizzle_manager_class.h"
 #include "terrain_objects/smudge_class.h"
 #include "terrain_objects/smudge_type_class.h"
+#include "../_layout/object_class.h"
 
 // GLOBAL: GAMEMD 0x7E9690 - CLSID of SmudgeClass (16 bytes read from the image).
 extern "C" const CLSID CLSID_Smudge =
@@ -51,13 +52,13 @@ double DAT_00B0B748 = DAT_007E1718 / DAT_00B0B760;
 // FUNCTION: GAMEMD 0x6B4A50
 SmudgeClass::SmudgeClass(SmudgeTypeClass* type, const MapObjCoord& coord, int arg3) : Type(type)
 {
-    MapObjRttiBase::Create_ID();
+    AbstractClass::vf_rtti_5();
     SmudgeArray.AddItem(this);
 
     if (coord.X != SmudgeEmptyCoord.X || coord.Y != SmudgeEmptyCoord.Y || coord.Z != SmudgeEmptyCoord.Z) {
         SmudgeCreateArg = arg3;
-        if (!Unlimbo(&coord, 0)) {
-            UnInit();
+        if (!vf_54(coord, 0)) {
+            vf_62();
             return;
         }
         SmudgeCreateArg = -1;
@@ -82,16 +83,15 @@ SmudgeClass::~SmudgeClass()
 // copy-constructed, address held in a pointer, goto / flag / inline-predicate shapes of the condition)
 // compiles the store after the global load with the copy in EDX, and the two `&cell` temporaries then
 // take ECX/EAX instead of EDX/EAX. Same instruction multiset otherwise.
-bool SmudgeClass::Mark(int arg)
+bool SmudgeClass::vf_73(int arg)
 {
-    if (MapObjClassView::Mark(arg)) {
+    if (ObjectClass::vf_73(arg)) {
         if (arg == 1 || arg == 3) {
-            MapObjCell cell;
-            cell = *vf_110(MapObjCell().Address());
+            CellStruct cell = vf_110();
             if (MapObjMarkGate > 0 || MapObjMarkGateFlag || Type->Method_6B5F80(&cell, true))
                 Type->Method_6B6080(&cell);
-            unknown_74 = 0;
-            UnInit();
+            IsOnMap = false;
+            vf_62();
             return true;
         }
     }
@@ -109,9 +109,9 @@ void __stdcall FUN_006B4C70(int a1)
 // FUNCTION: GAMEMD 0x6B4EA0
 HRESULT __stdcall SmudgeClass::Load(IStream* pStm)
 {
-    HRESULT hr = MapObjClassView::Load(pStm);
+    HRESULT hr = ObjectClass::Load(pStm);
     if (hr >= 0) {
-        new (this) SmudgeClass(MapObjNoInit());
+        new (this) SmudgeClass(AbstractNoInit());
         DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     }
     return hr;
@@ -121,26 +121,26 @@ HRESULT __stdcall SmudgeClass::Load(IStream* pStm)
 // FUNCTION: GAMEMD 0x6B4F00
 HRESULT __stdcall SmudgeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    return MapObjClassView::Save(pStm, fClearDirty);
+    return AbstractClass::Save(pStm, fClearDirty);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B4F20
-MapObjTypeClassView* SmudgeClass::GetType()
+ObjectTypeClass* SmudgeClass::vf_34()
 {
     return Type;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B4F30
-int SmudgeClass::Size()
+int SmudgeClass::vf_12()
 {
     return 0xB0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B4F40
-int SmudgeClass::WhatAmI()
+int SmudgeClass::vf_11()
 {
     return 0x1D;
 }
@@ -157,7 +157,7 @@ HRESULT __stdcall SmudgeClass::GetClassID(CLSID* pClassID)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6B4F90
-void SmudgeClass::vf_69(MapObjPoint* where, MapObjRect* clip)
+void SmudgeClass::vf_69(Point2D* where, RectangleStruct* clip)
 {
 }
 

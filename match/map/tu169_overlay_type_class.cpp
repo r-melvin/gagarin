@@ -26,6 +26,12 @@
 #include "../_layout/swizzle_manager_class.h"
 #include "terrain_objects/overlay_type_class.h"
 #include "terrain_objects/overlay_class.h"
+#include "../_layout/obj_004a1d30.h"
+#include "../_layout/anim_type_class.h"
+#include "../platform/ccini_class_methods.h"
+#include "../_layout/geometry2d.h"
+// GLOBAL: GAMEMD 0x887180
+extern CCINIClass DAT_00887180;
 
 // GLOBAL: GAMEMD 0x7E9600 - CLSID of OverlayTypeClass (16 bytes read from the image).
 extern "C" const CLSID CLSID_OverlayType =
@@ -63,19 +69,35 @@ double DAT_00AC1650 = DAT_007E1718 / DAT_00AC1668;
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FE250
 OverlayTypeClass::OverlayTypeClass(const char* id)
-    : MapObjTypeClassView(id), DamageLevels(1), Strength(1), NoUseTileLandType(true), DrawFlat(true),
+    : ObjectTypeClass(id), DamageLevels(1), Strength(1), NoUseTileLandType(true), DrawFlat(true),
       ArrayIndex(-1), Land(0), CellAnim(0), Wall(false), Tiberium(false), Crate(false),
       CrateTrigger(false), IsVeinholeMonster(false), IsVeins(false), unknown_2AF(false),
       Explodes(false), ChainReaction(false), Overrides(false), IsRubble(false), IsARock(false),
       RadarColor(0, 0, 0)
 {
-    MapObjRttiBase::Create_ID();
-    unknown_22F = 1;
-    unknown_230 = 0;
-    unknown_232 = 1;
-    unknown_235 = 0;
+    AbstractClass::vf_rtti_5();
+    RadarInvisible = 1;
+    Selectable = 0;
+    Insignificant = 1;
+    AllowCellContent = 0;
     OverlayTypeArray.AddItemEarlyOut(this);
     ArrayIndex = OverlayTypeArray.FindIndex(this);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5FE3C0
+OverlayTypeClass::OverlayTypeClass(const AbstractNoInit& noInit)
+    : ObjectTypeClass(noInit)
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5FE3F0
+// The scalar deleting destructor 0x5FEF30 expands this body; the base body 0x5F7400 is out of line.
+OverlayTypeClass::~OverlayTypeClass()
+{
+    AnnounceExpiredPointer(1);
+    OverlayTypeArray.RemoveItem(this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -130,7 +152,7 @@ void __cdecl FUN_005FE520()
 // FUNCTION: GAMEMD 0x5FE530
 // MIGRATED from match/map/overlay_type_class_methods.cpp (OverlayTypeClass::SpawnAtMapCoords); the
 // integrator retires the old row. The owning house is accepted and ignored (overlays have no owner).
-bool OverlayTypeClass::vf_32(const MapObjCell* where, MapObjHouseView* owner)
+bool OverlayTypeClass::vf_32(const CellStruct* where, HouseClass* owner)
 {
     if (new OverlayClass(this, *where, -1))
     {
@@ -144,7 +166,7 @@ bool OverlayTypeClass::vf_32(const MapObjCell* where, MapObjHouseView* owner)
 // FUNCTION: GAMEMD 0x5FE570
 // MIGRATED from match/map/overlay_type_class_methods.cpp (OverlayTypeClass::CreateObject); the
 // integrator retires the old row. Builds one unplaced overlay on the zero cell; the house is ignored.
-void* OverlayTypeClass::vf_35(MapObjHouseView* owner)
+ObjectClass* OverlayTypeClass::vf_35(HouseClass* owner)
 {
     return new OverlayClass(this, OverlayZeroCell, -1);
 }
@@ -155,7 +177,7 @@ void* OverlayTypeClass::vf_35(MapObjHouseView* owner)
 // trailing offset is a point by value). Remaining: retail keeps `where` in EDI and calls vf_39 inside
 // the argument pushes; through the inline drawer wrapper cl hoists the call, and through the plain
 // declaration (16.7%) it does not keep `where` in a register.
-void OverlayTypeClass::vf_40(MapObjPoint* where, MapObjRect* clip, int frame)
+void OverlayTypeClass::vf_40(Point2D* where, RectangleStruct* clip, int frame)
 {
     MapObjPoint point;
     point.X = where->X + MapObjClipRect.X;
@@ -228,13 +250,13 @@ void OverlayTypeClass::LoadArt(int idxTheater)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FE770
-bool OverlayTypeClass::ReadINI(MapObjIniView* ini)
+bool OverlayTypeClass::vf_25(CCINIClass* ini)
 {
-    ini->ClearCache();
-    if (MapObjTypeClassView::ReadINI(ini)) {
+    ini->Reset();
+    if (ObjectTypeClass::vf_25(ini)) {
 
-        Land = ini->ReadEnum(ID, "Land", Land);
-        Strength = ini->ReadInt(ID, "Strength", Strength);
+        Land = ini->FUN_004754B0(ID, "Land", Land);
+        Strength = ini->ReadInteger(ID, "Strength", Strength);
         Wall = ini->ReadBool(ID, "Wall", Wall);
         Tiberium = ini->ReadBool(ID, "Tiberium", Tiberium);
         Crate = ini->ReadBool(ID, "Crate", Crate);
@@ -243,14 +265,14 @@ bool OverlayTypeClass::ReadINI(MapObjIniView* ini)
         Overrides = ini->ReadBool(ID, "Overrides", Overrides);
 
         char animName[0x80];
-        MapObjTypeClassView* oldAnim = CellAnim;
+        AnimTypeClass* oldAnim = CellAnim;
         CellAnim = ini->ReadString(ID, "CellAnim", OverlayEmptyText, animName, 0x80)
-                       ? OverlayFindAnimType(animName) : oldAnim;
+                       ? AnimTypeClass::FindOrAllocate(animName) : oldAnim;
 
-        DamageLevels = MapObjArtIni.ReadInt(ImageFile, "DamageLevels", DamageLevels);
+        DamageLevels = DAT_00887180.ReadInteger(ImageFile, "DamageLevels", DamageLevels);
 
         if (Tiberium) {
-            unknown_9C = 6;
+            Armor = 6;
             if (Land == 0)
                 Land = 5;
         }
@@ -261,7 +283,7 @@ bool OverlayTypeClass::ReadINI(MapObjIniView* ini)
             Image = MapObjLoadShape(path, 1);
         }
 
-        RadarColor = ini->ReadColor(ID, "RadarColor", RadarColor);
+        RadarColor = ini->Read3Bytes(ID, "RadarColor", RadarColor);
         NoUseTileLandType = ini->ReadBool(ID, "NoUseTileLandType", NoUseTileLandType);
         IsVeinholeMonster = ini->ReadBool(ID, "IsVeinholeMonster", IsVeinholeMonster);
         IsVeins = ini->ReadBool(ID, "IsVeins", IsVeins);
@@ -276,37 +298,36 @@ bool OverlayTypeClass::ReadINI(MapObjIniView* ini)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FEA30
-MapObjCoord* OverlayTypeClass::vf_27(MapObjCoord* out, const MapObjCoord* in)
+CoordStruct OverlayTypeClass::vf_27(const CoordStruct& in)
 {
-    *out = *in;
-    return out;
+    return in;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FEA50
-void OverlayTypeClass::ComputeCRC(MapObjCrcView& crc)
+void OverlayTypeClass::vf_13(Obj_004A1D30* crc)
 {
-    MapObjTypeClassView::ComputeCRC(crc);
-    crc.AddInt(ArrayIndex);
-    crc.AddInt(Land);
-    crc.AddInt(DamageLevels);
-    crc.AddInt(Strength);
-    crc.AddBool(Wall);
-    crc.AddBool(Tiberium);
-    crc.AddBool(Crate);
-    crc.AddBool(CrateTrigger);
-    crc.AddBool(Explodes);
+    AbstractTypeClass::vf_13(crc);
+    crc->FUN_004A1D50(ArrayIndex);
+    crc->FUN_004A1D50(Land);
+    crc->FUN_004A1D50(DamageLevels);
+    crc->FUN_004A1D50(Strength);
+    crc->FUN_004A1CA0(Wall);
+    crc->FUN_004A1CA0(Tiberium);
+    crc->FUN_004A1CA0(Crate);
+    crc->FUN_004A1CA0(CrateTrigger);
+    crc->FUN_004A1CA0(Explodes);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FEAF0
 HRESULT __stdcall OverlayTypeClass::Load(IStream* pStm)
 {
-    HRESULT hr = MapObjTypeClassView::Load(pStm);
+    HRESULT hr = ObjectTypeClass::Load(pStm);
     if (hr >= 0) {
-        new (this) OverlayTypeClass(MapObjNoInit());
-        LoadFixup();
-        PostLoad();
+        new (this) OverlayTypeClass(AbstractNoInit());
+        FUN_005F8110();
+        FUN_005F9070();
         DAT_00B0C110.SwizzleManagerClass::vf_4(&CellAnim);
         if (!unknown_2AF) {
             char path[0x200];
@@ -328,7 +349,7 @@ HRESULT __stdcall OverlayTypeClass::Load(IStream* pStm)
 // FUNCTION: GAMEMD 0x5FEC10
 HRESULT __stdcall OverlayTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT hr = MapObjTypeClassView::Save(pStm, fClearDirty);
+    HRESULT hr = ObjectTypeClass::Save(pStm, fClearDirty);
     if (hr >= 0)
         hr = 0;
     return hr;
@@ -369,14 +390,14 @@ void* OverlayTypeClass::vf_39()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FEF00
-int OverlayTypeClass::WhatAmI()
+int OverlayTypeClass::vf_11()
 {
     return 0x15;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5FEF10
-int OverlayTypeClass::Size()
+int OverlayTypeClass::vf_12()
 {
     return 0x2BC;
 }

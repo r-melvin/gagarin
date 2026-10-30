@@ -36,7 +36,7 @@ struct Map_0087F7E8
     // FUNCTION: GAMEMD 0x56D230 (decl; reloc) -- the zone of a cell for a movement zone.
     int FUN_0056D230(const CellStruct& cell, int movementZone, bool isBridge);
     // FUNCTION: GAMEMD 0x568300 (decl; reloc) -- is the cell coordinate on the map (terrain-object cell view).
-    bool FUN_00568300(const MapObjCell* cell);
+    bool FUN_00568300(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x4F42F0
     void FUN_004F42F0(int);
     // FUNCTION: GAMEMD 0x568BB0 (declaration)

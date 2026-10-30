@@ -16,6 +16,9 @@
 #include <new.h>
 #include <objidl.h>   // IStream, IPersistStream, CLSID, HRESULT (VC98 SDK, LIBRARY)
 #include "../../_rt/gg_static_assert.h"
+#include "../../_layout/cell.h"
+#include "../../_layout/coord_struct.h"
+#include "../../_layout/geometry2d.h"
 
 class OverlayClass;
 class OverlayTypeClass;
@@ -28,14 +31,13 @@ class TerrainTypeClass;
 struct MapObjNoInit {};
 
 // Three-dword world coordinate (a lepton triple).
-struct MapObjCoord
+// Derives the shared CoordStruct (same three ints at +0x00) so a module coordinate binds to the
+// canonical CoordStruct parameters without a conversion; the module name keeps its own mangling.
+struct MapObjCoord : public CoordStruct
 {
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-
     MapObjCoord() {}
-    MapObjCoord(int x, int y, int z) : X(x), Y(y), Z(z) {}
+    MapObjCoord(int x, int y, int z) { X = x; Y = y; Z = z; }
+    MapObjCoord(const CoordStruct& c) : CoordStruct(c) {}
 };
 GG_STATIC_ASSERT(offsetof(MapObjCoord, X) == 0);
 GG_STATIC_ASSERT(offsetof(MapObjCoord, Y) == 4);
@@ -45,13 +47,12 @@ GG_STATIC_ASSERT(sizeof(MapObjCoord) == 0xC);
 // Map cell coordinate pair: two 16-bit halves (read as `MOVSX word [p]` / `MOVSX word [p+2]`). The user
 // constructors make it a non-POD, so a by-value return goes through a hidden pointer exactly as the
 // retail slot 110 does.
-struct MapObjCell
+// Derives the shared CellStruct (two shorts at +0x00) for the same reason as MapObjCoord.
+struct MapObjCell : public CellStruct
 {
-    short X;   // +0x00
-    short Y;   // +0x02
-
     MapObjCell() {}
-    MapObjCell(short x, short y) : X(x), Y(y) {}
+    MapObjCell(short x, short y) { X = x; Y = y; }
+    MapObjCell(const CellStruct& cell) : CellStruct(cell) {}
 
     // The address of this (typically a temporary): MapObjCell().Address() is the compiler-made buffer
     // that receives a hidden-pointer return, with the lifetime a by-value return would give it.
@@ -62,13 +63,12 @@ GG_STATIC_ASSERT(offsetof(MapObjCell, Y) == 2);
 GG_STATIC_ASSERT(sizeof(MapObjCell) == 4);
 
 // A screen position (x, y).
-struct MapObjPoint
+// Derives the shared Point2D (two ints at +0x00), as MapObjCoord derives CoordStruct.
+struct MapObjPoint : public Point2D
 {
-    int X;   // +0x00
-    int Y;   // +0x04
-
     MapObjPoint() {}
-    MapObjPoint(int x, int y) : X(x), Y(y) {}
+    MapObjPoint(int x, int y) { X = x; Y = y; }
+    MapObjPoint(const Point2D& p) : Point2D(p) {}
     MapObjPoint operator+(const MapObjPoint& b) const { return MapObjPoint(X + b.X, Y + b.Y); }
     MapObjPoint operator-(const MapObjPoint& b) const { return MapObjPoint(X - b.X, Y - b.Y); }
 };

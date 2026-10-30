@@ -30,7 +30,7 @@ static __inline CellClass* CellAt(CellStruct cell)
 // FUNCTION: GAMEMD 0x6B6080
 // Stamp this smudge type onto every cell of its Width x Height footprint starting
 // at `cell`, numbering the cells row by row, and redraw each one.
-void SmudgeTypeClass::Method_6B6080(const MapObjCell* cell)
+void SmudgeTypeClass::Method_6B6080(const CellStruct* cell)
 {
     for (int y = 0; y < Height; y++) {
         for (int x = 0; x < Width; x++) {
@@ -49,7 +49,7 @@ void SmudgeTypeClass::Method_6B6080(const MapObjCell* cell)
 // Can this smudge type be placed with its top corner at `cell`? Every cell of the
 // footprint must be free of a smudge, overlay and (unless `flag`) building, and
 // sit on a tile type that accepts smudges.
-bool SmudgeTypeClass::Method_6B5F80(const MapObjCell* cell, bool flag)
+bool SmudgeTypeClass::Method_6B5F80(const CellStruct* cell, bool flag)
 {
     for (int y = 0; y < Height; y++) {
         for (int x = 0; x < Width; x++) {

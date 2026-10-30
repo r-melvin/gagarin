@@ -217,11 +217,11 @@ void TerrainClass::vf_69(Point2D* where, RectangleStruct* clip)
             tint = cellView->Light;
         }
         int flags = (Type->IsAnimated || TimeToDie) ? 0x2E00 : 0x4E00;
-        MapObjDrawShape(MapObjSurface, context, image, frame, &point, reinterpret_cast<MapObjRect*>(clip), flags, 0, z - 12, 2, tint, 0, 0,
+        MapObjDrawShape(MapObjSurface, context, image, frame, &point, clip, flags, 0, z - 12, 2, tint, 0, 0,
                          0, MapObjPoint(0, 0));
         if (TerrainShadowsEnabled)
             MapObjDrawShape(MapObjSurface, cellView->Convert, image, frame + image->FrameCount / 2, &point,
-                             reinterpret_cast<MapObjRect*>(clip), flags | 1, 0, z - 3, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
+                             clip, flags | 1, 0, z - 3, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 
@@ -253,10 +253,10 @@ void TerrainClass::vf_70(Point2D* where, RectangleStruct* clip)
             context = cellView->Convert;
             tint = cellView->Light;
         }
-        MapObjDrawShape(MapObjSurface, context, image, frame, &point, reinterpret_cast<MapObjRect*>(clip), 0xE00, 0, z - 4, 2, tint, 0, 0, 0, MapObjPoint(0, 0));
+        MapObjDrawShape(MapObjSurface, context, image, frame, &point, clip, 0xE00, 0, z - 4, 2, tint, 0, 0, 0, MapObjPoint(0, 0));
         if (TerrainShadowsEnabled)
             MapObjDrawShape(MapObjSurface, cellView->Convert, image, frame + image->FrameCount / 2, &point,
-                             reinterpret_cast<MapObjRect*>(clip), 0x601, 0, z - 2, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
+                             clip, 0x601, 0, z - 2, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 

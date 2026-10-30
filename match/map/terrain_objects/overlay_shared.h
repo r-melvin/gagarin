@@ -13,6 +13,7 @@
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
 #include "../../_layout/vector_class.h"
+#include "../../_layout/geometry2d.h"
 
 // The element of the function-local static offset tables (the user-declared destructor is what makes
 // VC6 register an atexit stub, a bare RET, for each static). It derives from the cell so that
@@ -122,12 +123,11 @@ GG_STATIC_ASSERT(sizeof(OverlayFileView) == 0x6C);
 extern const char OverlayEmptyText[];
 // FUNCTION: GAMEMD 0x428B80 (decl; reloc) - finds the animation type of that name. __fastcall: the
 // name in ECX.
-MapObjTypeClassView* OverlayFindAnimType(const char* name);
 
 // The shape drawer through the inline the originals call it by: the arguments are evaluated into
 // the call sequence after the surrounding code instead of being hoisted above it.
 inline void OverlayDrawShapeInline(MapObjSurfaceView* surface, void* context, void* shape, int frame,
-                                   MapObjPoint* where, MapObjRect* clip, int flags, int a6,
+                                   MapObjPoint* where, RectangleStruct* clip, int flags, int a6,
                                    int zAdjust, int a8, int a9, int a10, int a11, int a12,
                                    MapObjPoint offset)
 {
