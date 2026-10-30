@@ -256,6 +256,31 @@ HRESULT __stdcall WalkLocomotionClass::QueryInterface(REFIID riid, void** ppv)
     return hr;
 }
 
+// FUNCTION: GAMEMD 0x75C850
+HRESULT __stdcall WalkLocomotionClass::BeginPiggyback(ILocomotion* loco)
+{
+    if (!loco)
+        return E_POINTER;
+    if (Piggybackee == 0) {
+        Piggybackee = loco;
+        return S_OK;
+    }
+    return E_FAIL;
+}
+
+// FUNCTION: GAMEMD 0x75C8A0
+HRESULT __stdcall WalkLocomotionClass::EndPiggyback(ILocomotion** out)
+{
+    if (!out)
+        return E_POINTER;
+    if (Piggybackee) {
+        *out = Piggybackee;
+        Piggybackee.Detach();
+        return S_OK;
+    }
+    return S_FALSE;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x75C8E0
 bool __stdcall WalkLocomotionClass::IsOkToEnd()
@@ -306,6 +331,24 @@ void __stdcall WalkLocomotionClass::ClearCoords()
 {
     unknown_1C = DAT_00B45BE8;
     MoveHeadTo = DAT_00B45BE8;
+}
+
+// FUNCTION: GAMEMD 0x0075CB80
+ULONG __stdcall WalkLocomotionClass::AddRef()
+{
+    return LocomotionClass::AddRef();
+}
+
+// FUNCTION: GAMEMD 0x0075CB90
+ULONG __stdcall WalkLocomotionClass::Release()
+{
+    return LocomotionClass::Release();
+}
+
+// FUNCTION: GAMEMD 0x75CBA0
+bool __stdcall WalkLocomotionClass::IsPiggybacking()
+{
+    return Piggybackee != 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

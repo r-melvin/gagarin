@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Four locomotors (Jumpjet, Ship, Teleport, Walk) override the IUnknown
+// Three locomotors (Jumpjet, Ship, Teleport) override the IUnknown
 // AddRef/Release slots of their primary table (slots 1 and 2) with a body that
 // only forwards to LocomotionClass::AddRef (0x55A950) / Release (0x55A970), as
 // DropPodLocomotionClass does at 0x4B66A0. The owning class of each address is
@@ -44,18 +44,6 @@ ULONG __stdcall TeleportLocomotionClass::AddRef()
 
 // FUNCTION: GAMEMD 0x0071A0F0
 ULONG __stdcall TeleportLocomotionClass::Release()
-{
-    return LocomotionClass::Release();
-}
-
-// FUNCTION: GAMEMD 0x0075CB80
-ULONG __stdcall WalkLocomotionClass::AddRef()
-{
-    return LocomotionClass::AddRef();
-}
-
-// FUNCTION: GAMEMD 0x0075CB90
-ULONG __stdcall WalkLocomotionClass::Release()
 {
     return LocomotionClass::Release();
 }

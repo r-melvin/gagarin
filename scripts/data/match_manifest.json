@@ -81216,7 +81216,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CB80",
   "sym": "?AddRef@WalkLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -81225,7 +81225,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CB90",
   "sym": "?Release@WalkLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -139682,7 +139682,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/walk_locomotion_r12_piggyback.cpp",
+  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C850",
   "sym": "?BeginPiggyback@WalkLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
@@ -139691,7 +139691,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/walk_locomotion_r12_piggyback.cpp",
+  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C8A0",
   "sym": "?EndPiggyback@WalkLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
@@ -139700,7 +139700,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/walk_locomotion_r12_piggyback.cpp",
+  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CBA0",
   "sym": "?IsPiggybacking@WalkLocomotionClass@@UAG_NXZ",
   "len": "0x11",
