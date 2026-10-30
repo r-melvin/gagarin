@@ -20,6 +20,12 @@ must account for those dependencies.
   `disasm`, `decompile`, `x-ref` and `memory read` (see `scripts/ghidra-cli`).
   Set `GHIDRA` if the binary isn't at `~/.cargo/bin/ghidra`.
 - The VC6 toolchain: run `scripts/vc6/fetch_toolchain.sh`.
+- Optional: `scripts/vc6/fetch_jwasm.sh` builds JWasm (pinned commit) into
+  `toolchain/bin/`. `vc6asm.sh` uses `ml.exe` when present and JWasm otherwise
+  (or when `VC6_ASM=jwasm`); CI has no `ml.exe`, so it assembles `match/asm/*.asm`
+  with JWasm and checks each `.text` against `scripts/vc6/asm_text_hashes.json`
+  (`check_asm_text.py`). JWasm is not a full ml clone (known: `cmp r8,r8` and
+  `movq mm,mm` encode differently); local ByteMatch uses ml.
 
 Check the setup with:
 
@@ -206,3 +212,7 @@ the python-less CI image skips it. Do not track a `match/core/trig_tables_data.c
 
 By contributing you agree that your work is released under GPLv3 with EA's
 Section 7 additional terms, as described in [LEGAL.md](LEGAL.md).
+
+JWasm is distributed under the Sybase Open Watcom Public Licence 1.0. It is
+fetched and built at CI/developer time from its upstream repository, is
+git-ignored under `toolchain/`, and is never committed or redistributed here.

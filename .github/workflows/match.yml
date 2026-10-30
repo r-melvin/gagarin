@@ -9,6 +9,9 @@
 #
 # The MS VC6 toolchain (itsmattkc/MSVC600) is MS-proprietary and is fetched at CI
 # time, never committed (see scripts/vc6/fetch_toolchain.sh + .gitignore).
+# That toolchain ships no ml.exe, so .asm units are assembled with JWasm (Sybase Open Watcom PL),
+# built from a pinned commit on the runner at CI time and never committed
+# (scripts/vc6/fetch_jwasm.sh); vc6asm.sh picks it when ml.exe is absent.
 name: match-gate
 on:
   push:
@@ -57,13 +60,27 @@ jobs:
           path: toolchain/MSVC600
           key: vc6-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('scripts/vc6/fetch_toolchain.sh') }}
 
+      # JWasm is libc-only and built on the runner (same ubuntu 24.04 as the container);
+      # the container sees toolchain/bin/jwasm through the /workspace mount.
+      - name: Restore the JWasm build
+        uses: actions/cache@v4
+        with:
+          path: toolchain/bin
+          key: jwasm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('scripts/vc6/fetch_jwasm.sh') }}
+
+      - name: Build JWasm from the pinned source (never committed)
+        run: bash scripts/vc6/fetch_jwasm.sh
+
       # Cache restores belong to the runner; Wine requires its prefix parent to
       # belong to the process UID. Keep both containers on that same UID.
       - name: Fetch the period MSVC6 toolchain (never committed)
         run: docker run --rm --user "$(id -u):$(id -g)" --env HOME=/tmp -v "$PWD:/workspace" gagarin-vc6-ci:latest bash scripts/vc6/fetch_toolchain.sh
 
       - name: Binary-free layout / compile regression gate
-        run: docker run --rm --user "$(id -u):$(id -g)" --env HOME=/tmp --env GAGARIN_ALLOW_NO_ML=1 -v "$PWD:/workspace" gagarin-vc6-ci:latest bash scripts/vc6/compile_all.sh
+        run: docker run --rm --user "$(id -u):$(id -g)" --env HOME=/tmp -v "$PWD:/workspace" gagarin-vc6-ci:latest bash scripts/vc6/compile_all.sh
+
+      - name: Assembled .text matches the expected hashes
+        run: docker run --rm --user "$(id -u):$(id -g)" --env HOME=/tmp -v "$PWD:/workspace" gagarin-vc6-ci:latest python3 scripts/vc6/check_asm_text.py
 
       - name: Export ByteMatch progress
         if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
