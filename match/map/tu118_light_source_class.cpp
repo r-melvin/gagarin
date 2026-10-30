@@ -87,20 +87,6 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<LightSourceClass::PendingCellClass* >
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Obj_00555130;
-struct Obj_00555140;
-
-struct Obj_00555130
-{
-    // FUNCTION: GAMEMD 0x555130
-    int FUN_00555130() const;
-};
-
-struct Obj_00555140
-{
-    // FUNCTION: GAMEMD 0x555140
-    int FUN_00555140() const;
-};
 
 
 
@@ -373,7 +359,7 @@ void FUN_00554D50(int budget, bool force)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x555130
 // Returns a constant. Vtable slot 12 of LightSourceClass (RTTI).
-int Obj_00555130::FUN_00555130() const
+int LightSourceClass::vf_12()
 {
     return 0x4C;
 }
@@ -381,7 +367,7 @@ int Obj_00555130::FUN_00555130() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x555140
 // Returns a constant. Vtable slot 11 of LightSourceClass (RTTI).
-int Obj_00555140::FUN_00555140() const
+int LightSourceClass::vf_11()
 {
     return 0x36;
 }

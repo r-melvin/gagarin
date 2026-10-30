@@ -84593,20 +84593,20 @@
  {
   "tu": "match/map/tu118_light_source_class.cpp",
   "addr": "0x555130",
-  "sym": "?FUN_00555130@Obj_00555130@@QBEHXZ",
+  "sym": "?vf_12@LightSourceClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_00555130::FUN_00555130",
+  "name": "LightSourceClass::vf_12",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu118_light_source_class.cpp",
   "addr": "0x555140",
-  "sym": "?FUN_00555140@Obj_00555140@@QBEHXZ",
+  "sym": "?vf_11@LightSourceClass@@UAEHXZ",
   "len": "0x6",
-  "name": "Obj_00555140::FUN_00555140",
+  "name": "LightSourceClass::vf_11",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/link_class_methods.cpp",
