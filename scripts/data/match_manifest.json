@@ -22304,7 +22304,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/factory_class_completed_methods.cpp",
+  "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4CA1A0",
   "sym": "?CompletedProduction@FactoryClass@@QAE_NXZ",
   "len": "0x86",
@@ -22349,7 +22349,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/factory_class_more_methods.cpp",
+  "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4C9E60",
   "sym": "?Suspend@FactoryClass@@QAE_N_N@Z",
   "len": "0x40",
@@ -22358,7 +22358,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/factory_class_more_methods.cpp",
+  "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4C9FB0",
   "sym": "?GetBuildTimeFrames@FactoryClass@@QBEHXZ",
   "len": "0x3B",
@@ -22367,7 +22367,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/factory_class_queue_methods.cpp",
+  "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4CA620",
   "sym": "?RemoveOneFromQueue@FactoryClass@@QAE_NPBVTechnoTypeClass@@@Z",
   "len": "0x43",
@@ -22376,7 +22376,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/factory_class_queue_methods.cpp",
+  "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4CA670",
   "sym": "?CountTotal@FactoryClass@@QBEHPBVTechnoTypeClass@@@Z",
   "len": "0x40",
@@ -22385,7 +22385,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/factory_class_start_methods.cpp",
+  "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4CA5A0",
   "sym": "?StartProduction@FactoryClass@@QAEXXZ",
   "len": "0x72",
@@ -143083,7 +143083,7 @@
   "pct": 87.5
  },
  {
-  "tu": "match/economy/factory_class_leftovers.cpp",
+  "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4C9E10",
   "sym": "?FUN_004C9E10@FactoryClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x4d",
