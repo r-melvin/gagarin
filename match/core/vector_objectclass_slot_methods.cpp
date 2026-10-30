@@ -22,6 +22,8 @@ class ObjectClass;
 // VectorClass<ObjectClass*>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x40CF00
 // DynamicVectorClass<ObjectClass*>::FindItemIndex (slot 4)
+// FUNCTION: GAMEMD 0x488030
+// DynamicVectorClass<ObjectClass*>::`scalar deleting destructor' (slot 0 of 0x7E4F64)
 template class VectorClass<ObjectClass*>;
 template class DynamicVectorClass<ObjectClass*>;
 

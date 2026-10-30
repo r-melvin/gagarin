@@ -173,10 +173,13 @@ template class VectorClass<SubzoneConnectionStruct>;
 
 // RGB providers are owned by vector_color_slot_methods.cpp.
 
-// FUNCTION: GAMEMD 0x00488030
+// FUNCTION: GAMEMD 0x0040CF30
 // FUNCTION: GAMEMD 0x004AEB50
 // VectorClass<ObjectClass*> -- reseats retail vtable 0x007E192C; locator 0x007FA9A0 -> type descriptor 0x00816AA8
-//   `.?AV?$VectorClass@PAVObjectClass@@@@`.
+//   `.?AV?$VectorClass@PAVObjectClass@@@@`. 0x40CF30 is slot 0 of that vtable. The identical
+//   bodies at 0x488030 (slot 0 of DynamicVectorClass<ObjectClass*>, 0x7E4F64) and 0x4AEB50
+//   (slot 0 of LayerClass, 0x7E6060) store the VectorClass vptr 0x7E192C because the Dynamic
+//   destructor inlines the base destructor; 0x488030 is bound in vector_objectclass_slot_methods.cpp.
 template class VectorClass<ObjectClass*>;
 
 // Nested char-vector instantiation moved to vector_nested_char_methods.cpp.

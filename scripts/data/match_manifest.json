@@ -3219,11 +3219,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_dtor_family_methods.cpp",
   "addr": "0x40CF30",
-  "sym": "?FUN_0040CF30@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVObjectClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0040CF30",
+  "name": "VectorClass<ObjectClass*>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100.0
  },
@@ -15436,13 +15436,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x00488030",
-  "sym": "??_G?$VectorClass@PAVObjectClass@@@@UAEPAXI@Z",
+  "tu": "match/core/vector_objectclass_slot_methods.cpp",
+  "addr": "0x488030",
+  "sym": "??_G?$DynamicVectorClass@PAVObjectClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ObjectClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ObjectClass*>::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_damagegroup_methods.cpp",
