@@ -193,7 +193,8 @@ def compile_one(tree, tu, dst, env, extra=()):
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     if os.path.exists(dst):
         os.unlink(dst)
-    rc, text = L.run(["bash", os.path.join(tree, "scripts/vc6/vc6cl.sh"), *extra, "/Fo" + dst, os.path.basename(tu)],
+    drv = "vc6asm.sh" if tu.endswith(".asm") else "vc6cl.sh"
+    rc, text = L.run(["bash", os.path.join(tree, "scripts/vc6", drv), *extra, "/Fo" + dst, os.path.basename(tu)],
                      cwd=os.path.join(tree, os.path.dirname(tu)), env=env, log=dst[:-4] + ".log")
     ok = rc == 0 and os.path.isfile(dst)
     if not ok and os.path.exists(dst):

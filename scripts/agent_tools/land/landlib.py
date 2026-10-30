@@ -314,6 +314,9 @@ def toolchain_salt(tree):
     except OSError:
         clid = "nocl"
     wrap = open(os.path.join(tree, "scripts/vc6/vc6cl.sh"), "rb").read()
+    for extra in ("scripts/vc6/vc6asm.sh", "scripts/vc6/comdatize.py"):
+        if os.path.isfile(os.path.join(tree, extra)):
+            wrap += open(os.path.join(tree, extra), "rb").read()
     return "|".join([clid, sha(wrap), os.environ.get("VC6_FLAGS", "")])
 
 
