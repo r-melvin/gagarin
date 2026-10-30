@@ -1,5 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | RE-findings-cross-check
+//   Disassembly of 0x486FF0 in retail gamemd.exe v1.001 (CellClass): the cell test used by
+//   TunnelLocomotionClass::CanEnterCell, built on 0x578540 and the cell's object list.
+//
+//   Offsets, globals and callees read off the user's retail gamemd.exe v1.001 with the
+//   local Ghidra CLI at the address in each annotation.
+//
+// Round 17 CellClass bodies, ascending by retail address.
+// Address index: 0x480180 0x4801F0
+//
 //   Original translation unit TU050 of retail gamemd.exe v1.001 (CellClass); its source-file
 //   name is not attested by the binary, so the file keeps a placeholder name. Code range
 //   0x47b150-0x4882cf; this file holds the CellClass-owned functions (RTTI class ownership,
@@ -95,6 +104,93 @@
 // CellClass tiberium / shroud accessors, ordered ascending by retail address.
 //
 //   CellClass members between 0x47B3A0 and 0x488280 (the inferred cell translation unit).
+
+#include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
+#include "../_layout/object_class.h"
+#include "../_layout/iso_tile_type_class.h"
+
+// GLOBAL: GAMEMD 0xA8E9A0
+extern unsigned char DAT_00A8E9A0;
+
+#include "cell_class_clear_to_move_methods.h"
+
+#include "cell_class_fogged_objects_methods.h"
+
+// The cell a coordinate falls in: the inlined signed divide by 256 of X and Y.
+static inline CellStruct CoordToCell_00486C50(CoordStruct coord)
+{
+    CellStruct cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+    return cell;
+}
+
+// The cell `offset` steps away from `cell` (the occupy-list entry's delta).
+static inline CellStruct OffsetCell_00486C50(CellStruct cell, const short* offset)
+{
+    CellStruct result;
+    result.X = (short)(cell.X + offset[0]);
+    result.Y = (short)(cell.Y + offset[1]);
+    return result;
+}
+
+#include "cell_class_mark_redraw_methods.h"
+
+// RectangleStruct::Union, expanded inline twice by cl at 0x486E70. An
+// invalid (zero/negative extent) operand simply yields the other one; the
+// general case grows a copy of the first rectangle left/up to cover the
+// second and then extends its right/bottom edge, the `+1` being retail's
+// inclusive-edge convention.
+static __forceinline RectangleStruct Union_00486E70(RectangleStruct const& b,
+                                                    RectangleStruct const& a)
+{
+    if (a.Width <= 0 || a.Height <= 0) {
+        return b;
+    }
+    if (b.Width <= 0 || b.Height <= 0) {
+        return a;
+    }
+
+    RectangleStruct r = a;
+    if (r.X > b.X) {
+        r.Width += r.X - b.X;
+        r.X = b.X;
+    }
+    if (r.Y > b.Y) {
+        r.Height += r.Y - b.Y;
+        r.Y = b.Y;
+    }
+    if (r.X + r.Width < b.X + b.Width) {
+        r.Width = b.X - r.X + b.Width + 1;
+    }
+    if (r.Y + r.Height < b.Y + b.Height) {
+        r.Height = b.Y + b.Height - r.Y + 1;
+    }
+    return r;
+}
+
+#include "cell_class_overlay_connect_methods.h"
+
+#include "../_layout/cell_class.h"
+#include "../_layout/tactical.h"
+#include "../_layout/iso_tile_type_class.h"
+#include "../_layout/geometry2d.h"
+
+extern int* DAT_0087F69C;                // GAMEMD 0x0087F69C
+
+// GLOBAL: GAMEMD 0x00887324 -- the tactical view.
+extern Tactical* DAT_00887324;
+
+#include "../core/scenario_class_methods.h"
+extern ScenarioClass* DAT_00A8B230;
+#include "../_layout/house_class.h"
+extern HouseClass* DAT_00A83D4C;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F69C
+int* DAT_0087F69C;
+// END defined globals
 
 #include <stdlib.h>
 #include <stddef.h>
@@ -861,6 +957,8 @@ extern int DAT_00829FF8;
 #include "../_rt/gg_static_assert.h"
 #include "../renderer/surface_class.h"
 #include "../_layout/color_convert.h"
+#include "../_layout/cell.h"
+#include "../_layout/map_0087f7e8.h"
 
 // ---------------------------------------------------------------------------
 // 0x42E150: a rectangle with a palette colour, drawn as an outline.
@@ -881,9 +979,6 @@ extern Surface* DAT_00887314;
 
 // ---------------------------------------------------------------------------
 // 0x486E30: a cell's veinhole check. The coordinate pair sits at +0x24.
-struct Coord_00486E30 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(Coord_00486E30) == 4);
-
 struct Cell_00486E30;
 
 // The veinhole monster found for a coordinate (receiver of the 0x74EF10 handler).
@@ -893,29 +988,13 @@ struct Vein_00486E30
     void FUN_0074EF10(Cell_00486E30* cell);
 };
 
-// The cell a map lookup returns (receiver of the 0x485590 handler).
-struct CellRef_00486E30
-{
-    // FUNCTION: GAMEMD 0x485590 (decl; reloc) -- react to the cell.
-    void FUN_00485590();
-};
-
-struct Map_00486E30
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- MapClass::GetCellAt.
-    CellRef_00486E30* GetCellAt(const Coord_00486E30* coord);
-};
-
-// GLOBAL: GAMEMD 0x87F7E8 -- the map object (used by address, ECX).
-extern Map_00486E30 DAT_0087F7E8_00486E30;
-
 // FUNCTION: GAMEMD 0x74CDB0 (decl; reloc) -- the veinhole monster covering a coordinate, or 0.
-Vein_00486E30* FUN_0074CDB0(const Coord_00486E30* coord);
+Vein_00486E30* FUN_0074CDB0(const CellStruct* coord);
 
 struct Cell_00486E30
 {
     char           _pad000[0x24];  // +0x0000
-    Coord_00486E30 MapCoords;      // +0x0024
+    CellStruct     MapCoords;      // +0x0024
 
     int FUN_00486E30();
 };
@@ -1224,18 +1303,9 @@ struct Obj_00524760
     CoordStruct FUN_00524760();
 };
 
-// GLOBAL: GAMEMD 0xA8ED38 -- number of chain heads.
-extern int DAT_00A8ED38;
-// GLOBAL: GAMEMD 0xA8ED2C -- the chain heads.
-extern Obj_00544E00** DAT_00A8ED2C;
-
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8A39FC
 extern unsigned char DAT_008A39FC;
-// GLOBAL: GAMEMD 0xA8ED2C
-extern Obj_00544E00** DAT_00A8ED2C;
-// GLOBAL: GAMEMD 0xA8ED38
-extern int DAT_00A8ED38;
 // GLOBAL: GAMEMD 0xAA0738
 extern int DAT_00AA0738;
 // GLOBAL: GAMEMD 0xAA073C
@@ -1540,11 +1610,6 @@ inline Obj_004838E0* Cell_004838E0::GetTerrain() const
     return 0;
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA8ED28
-IsoTileVector_004838E0 IsoTileArray_004838E0;
-// END defined globals
-
 #include "cell_class_tiberium_methods.h"
 
 #include "../core/vector_class_operations.h"
@@ -1591,6 +1656,9 @@ extern CellStruct DAT_0089E748;
 
 #include "cell_class_wall_owner_methods.h"
 
+// GLOBAL: GAMEMD 0x7E9930 -- CLSID of CellClass (defined, with the other class IDs, in core/persist_class_id_methods.cpp).
+extern const CLSID DAT_007E9930;
+
 #include "trivial_tu050_methods.h"
 
 // AdjacentCell[FacingType] -- the static {dX,dY} step table at 0x89F688.
@@ -1614,12 +1682,14 @@ int DAT_00ABC2B0;
 int DAT_00ABC2C8;
 // END defined globals
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47B360
 CellClass::CellClass(const AbstractNoInit& noInit)
     : AbstractClass(noInit), LightConvert(0), Passability(0)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47BB60
 CellClass::~CellClass()
 {
@@ -1639,6 +1709,7 @@ CellClass::~CellClass()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47C3D0
 //
 // Nearest techno in this cell's occupier list (ground or bridge) to a pixel
@@ -1689,6 +1760,7 @@ Obj_0047C3D0* Cell_0047C3D0::FindTechnoNearestTo(Point_0047C3D0* offset,
     return best;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47C4D0  (__thiscall)
 // Walk the selected occupier list, returning the first object whose runtime
 // AbstractType equals the requested discriminant.
@@ -1705,6 +1777,7 @@ ObjectClass* CellClass::FindObjectOfType(int abs, bool alt) const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47C520  (__thiscall)
 // First building occupying the cell (ground list only).
 BuildingClass* CellClass::GetBuilding() const
@@ -1720,6 +1793,7 @@ BuildingClass* CellClass::GetBuilding() const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47C550  (__thiscall)
 // First terrain object occupying the cell; `alt` selects the on-bridge list.
 TerrainClass* CellClass::GetTerrain(bool alt) const
@@ -1735,6 +1809,7 @@ TerrainClass* CellClass::GetTerrain(bool alt) const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47C5A0  CellClass::GetSomeObject (__thiscall, ret 0x8)
 // Three-stage lookup: an occupier of AbstractType 2, then whatever
 // FindObjectAt turns up, then an occupier of AbstractType 0x24 (terrain).
@@ -1772,6 +1847,7 @@ ObjectClass* CellClass::GetSomeObject(int a, int b)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47D210  CellClass::SetWallOwner (__thiscall)
 //
 // When the cell carries a wall overlay, find the nearest building whose owner
@@ -1799,6 +1875,7 @@ void CellClass::SetWallOwner()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47EA90
 //
 // Unlink an occupier from the cell's ground (or, with `alt`, on-bridge) singly
@@ -1846,6 +1923,7 @@ void CellClass::RemoveContent(ObjectClass* object, bool alt)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47EBA0  (__thiscall)
 // First unit occupying the cell; `alt` selects the on-bridge list.
 UnitClass* CellClass::GetUnit(bool alt) const
@@ -1861,6 +1939,7 @@ UnitClass* CellClass::GetUnit(bool alt) const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47EBF0  (__thiscall)
 // First aircraft occupying the cell; `alt` selects the on-bridge list.
 AircraftClass* CellClass::GetAircraft(bool alt) const
@@ -1876,6 +1955,7 @@ AircraftClass* CellClass::GetAircraft(bool alt) const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x47EC40  (__thiscall)
 // First infantry occupying the cell; `alt` selects the on-bridge list.
 InfantryClass* CellClass::GetInfantry(bool alt) const
@@ -1891,6 +1971,7 @@ InfantryClass* CellClass::GetInfantry(bool alt) const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x480110
 void CellClass::FUN_00480110(Point2D* out)
 {
@@ -1909,6 +1990,103 @@ void CellClass::FUN_00480110(Point2D* out)
     *out = pt;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x480180
+// Draws the first tile type at this cell's level and terrain intensity.
+void CellClass::FUN_00480180(const Point2D* point, const RectangleStruct* clip)
+{
+    (*IsometricTileTypeClass_Array.Items)->FUN_00547CF0(*DAT_0087F69C, 0, DAT_00887314, point->X, point->Y, *clip,
+                                  Level, (short)Intensity_Terrain, 1, 0, 0, 1, 0, 0);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4801F0
+// Refreshes the cell's visibility and fog levels from the tactical view and draws
+// the matching edge overlays.
+void CellClass::FUN_004801F0(const Point2D* point, const RectangleStruct* clip)
+{
+    signed char vis = DAT_00887324->FUN_006D8700(&MapCoords, 0);
+    Visibility = vis;
+    int level = vis;
+    if (level == -2)
+        level = 15;
+    else if (level == -1)
+        level = 0;
+    FUN_0047EFE0(point, clip, level);
+    signed char fog = DAT_00887324->FUN_006D8700(&MapCoords, 1);
+    Foggedness = fog;
+    if ((DAT_00A8B230->unknown_0000 & 0x1000) && !DAT_00A83D4C->Defeated) {
+        level = fog;
+        if (level == -2)
+            level = 15;
+        else if (level == -1)
+            level = 0;
+        FUN_0047F250(point, clip, level);
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x480510
+//
+// Does this cell join a wall of the given overlay from the given direction?
+// The same overlay always joins; asked about no overlay, any of the three
+// wall overlays counts. Otherwise a live gate building in the cell joins the
+// wall it belongs to along its own axis (directions 2/6 or 0/4), and the
+// wall tower joins the first two from every side.
+//
+// Health and Type are both read into locals before the health test: retail
+// loads the type ahead of `TEST ECX,ECX`, and testing `obj->Health` in the
+// same condition as WhatAmI defers the type load past the rules load.
+bool Cell_00480510::ConnectsToOverlay(int overlay, int direction)
+{
+    if (OverlayTypeIndex == overlay && OverlayTypeIndex != -1) {
+        return true;
+    }
+    if (overlay == -1) {
+        if (OverlayTypeIndex == 2 || OverlayTypeIndex == 0x1A || OverlayTypeIndex == 0xF3) {
+            return true;
+        }
+    } else {
+        if (overlay == 2 || overlay == 0) {
+            for (Obj_00480510* obj = FirstObject; obj != 0; obj = obj->NextObject) {
+                if ((obj->*obj->Vptr->WhatAmI)() == 6) {
+                    int health = obj->Health;
+                    BuildingType_00480510* type = obj->Type;
+                    if (health > 0) {
+                    if (type == Rules->GDIGateOne && (direction == 2 || direction == 6)) {
+                        return true;
+                    }
+                    if (type == Rules->GDIGateTwo && (direction == 0 || direction == 4)) {
+                        return true;
+                    }
+                    if (type == Rules->WallTower) {
+                        return true;
+                    }
+                    }
+                }
+            }
+        }
+        if (overlay == 0x1A) {
+            for (Obj_00480510* obj = FirstObject; obj != 0; obj = obj->NextObject) {
+                if ((obj->*obj->Vptr->WhatAmI)() == 6) {
+                    int health = obj->Health;
+                    BuildingType_00480510* type = obj->Type;
+                    if (health > 0) {
+                    if (type == Rules->NodGateOne && (direction == 2 || direction == 6)) {
+                        return true;
+                    }
+                    if (type == Rules->NodGateTwo && (direction == 0 || direction == 4)) {
+                        return true;
+                    }
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x481810  CellClass::GetNeighbourCell (__thiscall)
 //   For facing < 8 returns the cell at MapCoords + AdjacentCell[facing&7];
@@ -1923,6 +2101,7 @@ CellClass* CellClass::GetNeighbourCell(int facing) const
     return const_cast<CellClass*>(this);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x481870  (__thiscall)
 //
 // Called whenever anything moves: once to remove this cell's threat from the
@@ -1945,6 +2124,7 @@ void CellClass::UpdateThreat(unsigned int SourceHouse, int ThreatLevel)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483410
 // Claims the cell for `value` once, when a ground unit could move into it.
 bool Cell_R13::FUN_00483410(int value)
@@ -1958,6 +2138,7 @@ bool Cell_R13::FUN_00483410(int value)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x00483460
 // Clear bit 0x10 of +0x140 and reset +0x50; true if the bit was set.
 bool FUN_00483460(Obj_00483460* self)
@@ -1972,6 +2153,7 @@ bool FUN_00483460(Obj_00483460* self)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483480  CellClass::RevealCellObjects (__thiscall)
 // Walk the ground occupier list and let each object reveal itself (virtual slot
 // +0xFC). Nothing is read back, so the loop is a plain forward walk.
@@ -1982,6 +2164,90 @@ void CellClass::RevealCellObjects()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4834A0  CellClass::IsClearToMove (__thiscall, ret 0x1C)
+//
+// Can something of this speed type enter the cell? Flyers are never blocked.
+// A caller-supplied zone must agree with the cell's movement zone, and a
+// caller-supplied level must be either the cell's own level or, on a bridge
+// cell, the bridge deck four levels above it. Whichever of the two occupation
+// bytes applies must be empty once the caller's "ignore infantry" and "ignore
+// vehicles" masks have been applied, a wall overlay blocks everything except
+// the movement zones that can cross it, and finally the terrain must carry a
+// non-zero movement cost for this speed type — unless we are on the bridge
+// deck, where the terrain underneath does not matter.
+bool Cell_Class_004834A0::IsClearToMove(int speedType, bool ignoreInfantry,
+                                        bool ignoreVehicles, int zone,
+                                        int movementZone, int level, bool isBridge)
+{
+    if (speedType == 4) {
+        return true;
+    }
+
+    if (zone != -1) {
+        if (zone != DAT_0087F7E8.FUN_0056D230(this->MapCoords, movementZone,
+                                                     isBridge)) {
+            return false;
+        }
+    }
+
+    if (level != -1) {
+        if (level != this->Level) {
+            if (!(this->Flags & 0x100) || level != this->Level + 4) {
+                return false;
+            }
+        } else {
+            if ((this->Flags & 0x100) && !isBridge) {
+                return false;
+            }
+        }
+    }
+
+    bool onBridge = false;
+    int occupy;
+    if ((level == -1 || level == this->Level + 4) && (this->Flags & 0x100)) {
+        onBridge = true;
+        occupy = this->AltOccupationFlags;
+    } else {
+        occupy = this->OccupationFlags;
+    }
+
+    if (ignoreInfantry) {
+        occupy &= 0xE0;
+    }
+    if (ignoreVehicles) {
+        occupy &= 0x5F;
+    }
+    if (occupy != 0) {
+        return false;
+    }
+
+    int landType = this->LandType;
+
+    if (this->OverlayTypeIndex != -1) {
+        OverlayTypeClass* pOverlay = DAT_00A83D84[this->OverlayTypeIndex];
+        if (pOverlay != 0) {
+            if (pOverlay->Wall != 0) {
+                if (movementZone == 2 || movementZone == 3 || movementZone == 8
+                    || ((movementZone == 1 || movementZone == 4)
+                        && pOverlay->Crushable != 0)
+                    || movementZone == 0xC) {
+                    landType = 0;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+
+    if (Grounds_004834A0[landType].Cost[speedType] == DAT_007E1748 && !onBridge) {
+        return false;
+    }
+
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483610
 // Returns a computed value.
 int Obj_00483610::FUN_00483610() const
@@ -1989,6 +2255,7 @@ int Obj_00483610::FUN_00483610() const
     return (unknown_140 >> 8) & 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483620
 // True when the tiberium here is mature and rich enough to grow (no layer change).
 bool Cell_R13::FUN_00483620()
@@ -2008,6 +2275,7 @@ bool Cell_R13::FUN_00483620()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483690
 // True when the tiberium here is past halfway, unmarked, rich enough and unoccupied.
 bool Cell_R13::FUN_00483690()
@@ -2027,6 +2295,7 @@ bool Cell_R13::FUN_00483690()
     return empty;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483710
 // As 0x483620, then lays one unit of the tiberium down.
 bool Cell_R13::FUN_00483710()
@@ -2047,6 +2316,7 @@ bool Cell_R13::FUN_00483710()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483780
 //
 // PARTIAL (76.7%, 89/116; instruction multiset identical). Everything up to the
@@ -2126,6 +2396,7 @@ bool Cell_00483780::SpreadTiberium(char forced)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4838E0
 //
 // Can ore/gems spread into this cell?  The cell must be inside the usable map
@@ -2140,7 +2411,7 @@ bool Cell_004838E0::CanTiberiumGerminate(void* tiberium)
     Building_004838E0* bld;
     Terrain_004838E0* ter;
     int idx;
-    if (MapInstance_004838E0.IsWithinUsableArea(&this->MapCoords, true)
+    if (DAT_0087F7E8.FUN_00578460(&this->MapCoords, true)
         && !(this->Flags & 0x500)
         && !((bld = (Building_004838E0*)this->GetBuilding()) != 0
              && ((Obj_004838E0*)bld)->Health > 0
@@ -2152,13 +2423,14 @@ bool Cell_004838E0::CanTiberiumGerminate(void* tiberium)
         && this->OverlayTypeIndex == -1
         && !this->At_11C
         && ((idx = this->IsoTileTypeIndex) < 0
-            || idx >= IsoTileArray_004838E0.Count
-            || IsoTileArray_004838E0.Items[idx]->At_306)) {
+            || idx >= IsometricTileTypeClass_Array.Count
+            || IsometricTileTypeClass_Array.Items[idx]->unknown_306)) {
         return true;
     }
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4839F0
 HRESULT __stdcall CellClass::Load(IStream* pStm)
 {
@@ -2217,6 +2489,7 @@ HRESULT __stdcall CellClass::Load(IStream* pStm)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x483C10
 HRESULT __stdcall CellClass::Save(IStream* pStm, BOOL fClearDirty)
 {
@@ -2244,6 +2517,7 @@ HRESULT __stdcall CellClass::Save(IStream* pStm, BOOL fClearDirty)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x484A80
 // Updates one member in place.
 void __stdcall FUN_00484A80(Arg1_00484A80* a1)
@@ -2251,6 +2525,7 @@ void __stdcall FUN_00484A80(Arg1_00484A80* a1)
     a1->unknown_194++;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x484A90
 // Branching.
 void __stdcall FUN_00484A90(Arg1_00484A90* a1)
@@ -2261,12 +2536,14 @@ void __stdcall FUN_00484A90(Arg1_00484A90* a1)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x484F10
 bool __stdcall FUN_00484F10(int)
 {
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x484F20  CellClass::GetTunnel (__thiscall)
 // The tunnel index is a signed short, so both ends are checked: negative means
 // "no tunnel here", and the upper bound guards a stale index against the live
@@ -2279,6 +2556,7 @@ TunnelClass* CellClass::GetTunnel() const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x484FF0  CellClass::GetUIName (__thiscall)
 // Same overlay->tiberium lookup as GetContainedTiberiumIndex below, then the
 // tiberium type's UI name; a cell with no tiberium overlay yields a null name.
@@ -2291,6 +2569,7 @@ const wchar_t* CellClass::GetUIName() const
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x485010  CellClass::GetContainedTiberiumIndex (__thiscall)
 //   mov ecx,[ecx+0x44]; jmp 0x5fdd20  — forward OverlayTypeIndex to the lookup.
 int CellClass::GetContainedTiberiumIndex() const
@@ -2298,6 +2577,7 @@ int CellClass::GetContainedTiberiumIndex() const
     return OverlayTypeIndexToTiberium(this->OverlayTypeIndex);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x485020  CellClass::GetContainedTiberiumValue (__thiscall)
 //   ecx=[esi+0x44]; call 0x5fdd20; if eax==-1 return 0;
 //   edx=TiberiumArrayItems[eax]; return [edx+0xb8] * ([esi+0x11e] + 1).
@@ -2309,6 +2589,7 @@ int CellClass::GetContainedTiberiumValue() const
     return TiberiumArrayItems[idx]->Value * (this->OverlayData + 1);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x00485060
 // Is +0x38 inside the 14-wide window that starts at the global 0xAA0738.
 int FUN_00485060(Obj_00485060* self)
@@ -2320,6 +2601,7 @@ int FUN_00485060(Obj_00485060* self)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x485130
 void CellClass::FUN_00485130(void* target)
 {
@@ -2341,6 +2623,17 @@ void CellClass::FUN_00485130(void* target)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x00485200
+HRESULT __stdcall CellClass::GetClassID(CLSID* pClassID)
+{
+    if (pClassID == 0)
+        return E_POINTER;
+    *pClassID = DAT_007E9930;
+    return S_OK;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x485240  CellClass::SetMapCoords (__thiscall)
 //   mov eax,[esp+4]; mov edx,[eax]; mov [ecx+0x24],edx; ret 4
 void CellClass::SetMapCoords(CellStruct const* coords)
@@ -2348,6 +2641,7 @@ void CellClass::SetMapCoords(CellStruct const* coords)
     this->MapCoords = *coords;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486380
 // Branching.
 bool Obj_00486380::FUN_00486380()
@@ -2359,6 +2653,7 @@ bool Obj_00486380::FUN_00486380()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4863A0
 // True when the value lies in either of two runs (0x14 and 0xC long).
 bool Obj_004863A0::FUN_004863A0() const
@@ -2371,6 +2666,7 @@ bool Obj_004863A0::FUN_004863A0() const
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4863D0
 bool CellClass::FUN_004863D0()
 {
@@ -2419,6 +2715,7 @@ bool CellClass::FUN_004863D0()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4865B0
 // Branching.
 bool Obj_004865B0::FUN_004865B0()
@@ -2430,6 +2727,7 @@ bool Obj_004865B0::FUN_004865B0()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4865D0
 // True when the value at +0x38 lies in any of six runs.
 bool Obj_004865D0::FUN_004865D0() const
@@ -2448,6 +2746,7 @@ bool Obj_004865D0::FUN_004865D0() const
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486650
 // Branching.
 bool Obj_00486650::FUN_00486650()
@@ -2459,6 +2758,7 @@ bool Obj_00486650::FUN_00486650()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486670
 // Branching.
 bool Obj_00486670::FUN_00486670()
@@ -2470,6 +2770,7 @@ bool Obj_00486670::FUN_00486670()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486690
 // True when the value at +0x38 lies in any of three runs.
 bool Obj_004865D0::FUN_00486690() const
@@ -2483,6 +2784,7 @@ bool Obj_004865D0::FUN_00486690() const
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4866D0
 // Branching.
 bool Obj_004866D0::FUN_004866D0()
@@ -2494,6 +2796,7 @@ bool Obj_004866D0::FUN_004866D0()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4866F0
 // Branching.
 bool Obj_004866F0::FUN_004866F0()
@@ -2505,6 +2808,7 @@ bool Obj_004866F0::FUN_004866F0()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486710
 // Branching.
 bool Obj_00486710::FUN_00486710()
@@ -2516,6 +2820,7 @@ bool Obj_00486710::FUN_00486710()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486730
 // Branching.
 bool Obj_00486730::FUN_00486730()
@@ -2527,6 +2832,7 @@ bool Obj_00486730::FUN_00486730()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486750  (__thiscall)
 // Is this cell a concrete bridge tile?
 //
@@ -2551,6 +2857,7 @@ bool CellClass::IsBridgeTile()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486770  (__thiscall)
 // Is this cell a wooden bridge tile? Same window test against the wood set.
 bool CellClass::IsWoodBridgeTile()
@@ -2564,6 +2871,7 @@ bool CellClass::IsWoodBridgeTile()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486790  (__thiscall)
 // The same window test against the set at 0x00AA0E24, without the "-1 means
 // absent" guard the other two carry. Retail loads the member before the global
@@ -2577,6 +2885,7 @@ bool CellClass::IsTileInSet00AA0E24()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4867B0
 // Whether the stored value is one global, or falls in the sixteen values
 // starting at another.
@@ -2589,6 +2898,7 @@ bool Obj_004867B0::FUN_004867B0() const
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4867E0
 bool CellClass::IsOnFloor() const
 {
@@ -2599,6 +2909,7 @@ bool CellClass::IsOnFloor() const
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486840
 CoordStruct CellClass::vf_18()
 {
@@ -2610,6 +2921,7 @@ CoordStruct CellClass::vf_18()
     return result;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486890
 CoordStruct CellClass::vf_22()
 {
@@ -2623,6 +2935,7 @@ CoordStruct CellClass::vf_22()
     return vf_18();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486900
 // Branching.
 unsigned char Obj_00486900::FUN_00486900()
@@ -2634,6 +2947,7 @@ unsigned char Obj_00486900::FUN_00486900()
     return (unknown_38 == (DAT_00ABC2C8 + 1)) ? true : false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486920
 //
 // Wake the veins in a grown, flat vein cell the first time something
@@ -2664,7 +2978,7 @@ void Cell_00486920::ActivateVeins()
                         (Anim_00486920*)operator new(sizeof(Anim_00486920));
                     if (anim != 0) {
                         Coord_00486920 at = GetCornerCoords();
-                        anim->Construct(DAT_008871E0->At_E8, &at, 0, 1, 0x600, 0, 0);
+                        anim->Construct(Rules->VeinAttack, &at, 0, 1, 0x600, 0, 0);
                     }
                     Flags |= 0x20000;
                 }
@@ -2673,6 +2987,7 @@ void Cell_00486920::ActivateVeins()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486A70  CellClass::FogCell (__thiscall)
 //
 // Freeze what this cell currently shows into a fog snapshot. Only when the
@@ -2777,6 +3092,7 @@ void CellClass::FogCell()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486BF0  CellClass::CleanFog (__thiscall)
 //   Walks a small diagonal stripe of cells starting at this cell's MapCoords:
 //   i runs 1,3,5,...,13; each step the running coord steps (+1,+1). For every
@@ -2801,6 +3117,63 @@ void CellClass::CleanFog()
     } while (i < 15);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x486C50  CellClass::ClearFoggedObjects (__thiscall)
+//
+// Drop the cell's fog snapshot. Every fogged record is walked back to front;
+// each one's occupy list is stepped until the 0x7FFF/0x7FFF sentinel, and the
+// record is unregistered from every other cell it covered (the inlined
+// DynamicVectorClass::RemoveItem slide-down) before the record itself is
+// deleted. Finally the vector is cleared, deleted and the member zeroed.
+void CellClass::ClearFoggedObjects()
+{
+    if (FoggedObjects != 0)
+    {
+        for (int i = FoggedObjects->Count - 1; i >= 0; i--)
+        {
+            FoggedObjectClass* object = FoggedObjects->Items[i];
+
+            if (FUN_004D2790(object) != 0)
+            {
+                for (short* p = FUN_004D2790(object);
+                     p[0] != 0x7FFF || p[1] != 0x7FFF;
+                     p += 2)
+                {
+                    CellStruct cell = CoordToCell_00486C50(object->Coords);
+                    CellClass* other =
+                        DAT_0087F7E8.FUN_005657A0(OffsetCell_00486C50(cell, p));
+                    if (other != this)
+                    {
+                        DynamicVectorClass<FoggedObjectClass*>* v = other->FoggedObjects;
+                        if (v != 0)
+                        {
+                            int index = v->FindItemIndex(object);
+                            if (index != -1 && index < v->Count)
+                            {
+                                v->Count = v->Count - 1;
+                                for (int j = index; j < v->Count; ++j)
+                                    v->Items[j] = v->Items[j + 1];
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (object != 0)
+                delete object;
+        }
+
+        FoggedObjects->Clear();
+
+        DynamicVectorClass<FoggedObjectClass*>* v = FoggedObjects;
+        if (v != 0)
+            delete v;
+
+        FoggedObjects = 0;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x486E30
 //
 // If a veinhole monster covers this cell, hand the cell to it; otherwise let the
@@ -2812,10 +3185,99 @@ int Cell_00486E30::FUN_00486E30()
         vein->FUN_0074EF10(this);
         return 0;
     }
-    DAT_0087F7E8_00486E30.GetCellAt(&MapCoords)->FUN_00485590();
+    DAT_0087F7E8.FUN_005657A0(&MapCoords)->FUN_00485590();
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x486E70  CellClass::MarkForRedraw (__thiscall)
+//
+// Mark everything this cell draws as dirty: the union of the cell's own
+// screen rectangle, its overlapper rectangle and its occupier rectangle is
+// shifted into client space by the tactical origin and handed to the
+// tactical renderer, and the cell's radar pixel is flagged too.
+//
+// The argument order of the inlined Union matters: cl evaluates the argument
+// list right to left even when the callee is expanded inline, so the rect
+// that Union tests FIRST has to be written LAST in the call for its getter to
+// be the one called first. Writing it the other way round swaps every
+// register in both expansions (18.7% vs 96.6%).
+//
+// PARTIAL (96.6%, 144/149): the residual is the frame size only. Retail gives
+// the third getter's hidden-return temporary its own 16-byte slot
+// (`SUB ESP,0x40`, `LEA EAX,[ESP+0x40]`), cl 12.00.8804 overlaps it with the
+// second getter's dead slot (`SUB ESP,0x30`, `LEA EAX,[ESP+0x30]`); the only
+// other delta is EDI vs EBP for the 0x886FA4 load and its SUB, which follows
+// from that. Variants tried: all three getter results bound to named locals
+// (3.9%), the third one alone bound to a named local (18.9%), the client
+// rectangle declared ahead of the unions to claim an early slot (96.6%,
+// identical residual). This looks like the recorded 8447-vs-8804
+// frame-slot-merging class rather than a phrasing lever.
+// FRAME-LAYOUT CENSUS: this is one of the four partials whose entire residual
+// is the frame reservation constant. Six further variants were measured against
+// a labelled control in one compile and none moves the slot: the second union's
+// result in a fresh local rather than back into `area` (the thirty-second
+// batch's "a local whose address never escapes costs an extra rectangle"
+// lever), the same with the client rectangle declared first, the same with the
+// first union's result still read after the second so the two lifetimes overlap
+// (46.6%), the third getter's result named before the union (18.9%), and the
+// client built by whole-struct copy (52.2%). The three that keep retail's
+// instruction stream are byte-identical to the control at 96.6%. No
+// expression-level spelling reaches a frame-layout decision.
+//
+void CellClass::MarkForRedraw()
+{
+    RectangleStruct area = Union_00486E70(FUN_0047FB90(), FUN_0047FF80());
+    area = Union_00486E70(FUN_0047FDE0(), area);
+
+    RectangleStruct client;
+    client.X      = area.X - DAT_00886FA0;
+    client.Y      = area.Y - DAT_00886FA4;
+    client.Width  = area.Width;
+    client.Height = area.Height;
+    DAT_00887324->FUN_006D2790(client, false);
+
+    DAT_0087F7E8.FUN_006551C0(this->MapCoords);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x486FF0
+// True when the cell is outside the usable area, or when it has no blocking tile flag, slope,
+// cell flags, building or object of kind 0x24 on it.
+bool CellClass::FUN_00486FF0()
+{
+    if (!DAT_0087F7E8.FUN_00578540(this, true)) {
+        return true;
+    }
+    int tile = IsoTileTypeIndex;
+    if (tile < 0 || tile >= IsometricTileTypeClass_Array.Count
+        || IsometricTileTypeClass_Array.Items[tile]->unknown_305) {
+        if (SlopeIndex == 0 && !(Flags & 0x500)) {
+            if (DAT_00A8E9A0) {
+                ObjectClass* object = (ObjectClass*)FirstObject;
+                while (object && object->vf_11() != 6) {
+                    object = (ObjectClass*)object->NextObject;
+                }
+                if (object) {
+                    return false;
+                }
+            }
+            if (DAT_00A8E9A0) {
+                ObjectClass* object = (ObjectClass*)FirstObject;
+                while (object && object->vf_11() != 0x24) {
+                    object = (ObjectClass*)object->NextObject;
+                }
+                if (object) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004870B0
 // Is bit `bit` of +0x78 set.
 int Obj_004870B0::FUN_004870B0(int bit) const
@@ -2823,6 +3285,7 @@ int Obj_004870B0::FUN_004870B0(int bit) const
     return (unknown_78 & (1 << bit)) != 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4870D0
 // True when the entry in the first table is positive.
 bool Obj_004870D0::FUN_004870D0(int index) const
@@ -2830,6 +3293,7 @@ bool Obj_004870D0::FUN_004870D0(int index) const
     return unknown_7C[index] > 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4870F0
 // True when the entry in the second table is positive.
 bool Obj_004870D0::FUN_004870F0(int index) const
@@ -2837,18 +3301,21 @@ bool Obj_004870D0::FUN_004870F0(int index) const
     return unknown_AC[index] > 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487110
 void Obj_00487110::SetBit(int bit)
 {
     unknown_78 |= 1 << bit;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487130
 void Obj_00487130::ClearBit(int bit)
 {
     unknown_78 &= ~(1 << bit);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487150
 // Register one more sensor (a unit able to detect cloaked objects) belonging to
 // house `idxHouse` over this cell.
@@ -2857,6 +3324,7 @@ void CellClass::IncreaseSensorsOfHouse(int idxHouse)
     ++this->SensorsOfHouses[idxHouse];
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487160
 // Drop one sensor belonging to house `idxHouse` from this cell.
 void CellClass::DecreaseSensorsOfHouse(int idxHouse)
@@ -2864,6 +3332,7 @@ void CellClass::DecreaseSensorsOfHouse(int idxHouse)
     --this->SensorsOfHouses[idxHouse];
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487170
 // Register one more disguise-piercing sensor for house `idxHouse` over this
 // cell. Same counter shape as above against the second array.
@@ -2872,6 +3341,7 @@ void CellClass::IncreaseDisguiseSensorsOfHouse(int idxHouse)
     ++this->DisguiseSensorsOfHouses[idxHouse];
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487180
 // Drop one disguise-piercing sensor for house `idxHouse` from this cell.
 void CellClass::DecreaseDisguiseSensorsOfHouse(int idxHouse)
@@ -2879,6 +3349,7 @@ void CellClass::DecreaseDisguiseSensorsOfHouse(int idxHouse)
     --this->DisguiseSensorsOfHouses[idxHouse];
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487630  CellClass::ReduceShroudCounter (__thiscall)
 //   Decrements ShroudCounter (snapping a value of 1 to 0 first); once it hits
 //   zero either flags the cell shrouded (AltFlags |= 0x18) or, when already
@@ -2922,6 +3393,7 @@ shrouded:
     if (remaining <= 0 && (Flags & 0x20) == 0x20) Flags &= ~0x20;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487690  CellClass::IncreaseShroudCounter (__thiscall)
 //   normalise a -1 counter to 0, ++ it, clamp to GapsCoveringThisCell, and if it
 //   crossed up through zero set Flags |= 0x20.
@@ -2937,6 +3409,7 @@ void CellClass::IncreaseShroudCounter()
         this->Flags = (CellFlags)(this->Flags | 0x20);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4876F0  CellClass::Unshroud (__thiscall)
 // Force the cell visible: set the two "revealed" bits in AltFlags, and if the
 // cell still carries shroud counters, mark the shroud-redraw bit in Flags too.
@@ -2950,6 +3423,7 @@ void CellClass::Unshroud()
         Flags |= 0x20;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x00487C70
 //
 // Store the argument into the member at +0xF8.
@@ -2958,12 +3432,14 @@ void Setter_00487C70::FUN_00487C70(int value)
     *(int*)(Bytes + 0xF8) = value;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487C80
 int Obj_00487C80::Get_F8()
 {
     return unknown_F8;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487C90
 // Whether the stored double is above the shared constant.
 int Obj_00487C90::FUN_00487C90() const
@@ -2971,6 +3447,7 @@ int Obj_00487C90::FUN_00487C90() const
     return unknown_F0 > DAT_007E1718;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487CB0  CellClass::GetRadLevel (__thiscall)
 // The cell's radiation, clamped to the rules ceiling and truncated to an int.
 // Retail tail-jumps into the CRT double-to-long helper at 0x7C5F00 rather than
@@ -2991,6 +3468,7 @@ int CellClass::GetRadLevel()
     return (int)(rad < ceiling ? RadLevel : ceiling);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487CE0  CellClass::RadLevel_Increase (__thiscall)
 //   fld [esp+4]; fadd [ecx+0xf0]; fstp [ecx+0xf0]; ret 8
 void CellClass::RadLevel_Increase(double amount)
@@ -2998,12 +3476,14 @@ void CellClass::RadLevel_Increase(double amount)
     this->RadLevel += amount;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487D50
 int Obj_00487D50::Combined()
 {
     return unknown_11B + ((unknown_140 >> 7) & 1) * 4;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487DF0
 // One-line land-type predicate: true when the cell's LandType is 5.
 bool CellClass::IsLandType5() const
@@ -3014,6 +3494,7 @@ bool CellClass::IsLandType5() const
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487E00
 // Report whether the cell counts as covered for occupation-height purposes.
 // While the occupier list is valid the cell is walked for an occupier whose
@@ -3039,12 +3520,14 @@ bool CellClass::FUN_00487E00() const
     return this->OccupyHeightsCoveringMe != 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487E50
 int __stdcall CellClass::vf_rtti_3()
 {
     return 0x0B;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487E60
 // Returns a constant. Vtable slot 11 of CellClass (RTTI).
 int Obj_00487E60::FUN_00487E60() const
@@ -3052,6 +3535,7 @@ int Obj_00487E60::FUN_00487E60() const
     return 0xB;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487E70
 // Returns a constant. Vtable slot 12 of CellClass (RTTI).
 int Obj_00487E70::FUN_00487E70() const
@@ -3059,6 +3543,7 @@ int Obj_00487E70::FUN_00487E70() const
     return 0x148;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487E80
 // VC6 emits this scalar deleting destructor from CellClass's virtual destructor declaration.
 

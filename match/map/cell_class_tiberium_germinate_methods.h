@@ -17,23 +17,9 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-struct CellStruct_004838E0
-{
-    short X;                  // +0x0000
-    short Y;                  // +0x0002
-};
-GG_STATIC_ASSERT(sizeof(CellStruct_004838E0) == 4);
-
-// MapClass — only IsWithinUsableArea on the global instance.
-struct Map_004838E0
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x578460 (decl; reloc) — MapClass::IsWithinUsableArea(CellStruct const&, bool).
-    bool IsWithinUsableArea(const CellStruct_004838E0* cell, bool checkLevel);
-};
-// GLOBAL: GAMEMD 0x87F7E8 — the map instance.
-extern Map_004838E0 MapInstance_004838E0;
+#include "../_layout/cell.h"
+#include "../_layout/map_0087f7e8.h"
+#include "../_layout/iso_tile_type_class.h"
 
 // GLOBAL: GAMEMD 0xA8E9A0 — Unsorted::IsActive (byte), gates the occupier walk.
 extern unsigned char DAT_00A8E9A0;
@@ -104,35 +90,11 @@ GG_STATIC_ASSERT(sizeof(Ground_004838E0) == 0x24);
 // GLOBAL: GAMEMD 0x89EA60 — the ground-type table indexed by LandType.
 extern Ground_004838E0 GroundTable_004838E0[];
 
-// IsometricTileTypeClass — one byte at +0x306 tested.
-struct IsoTileType_004838E0
-{
-    char _pad000[0x306];      // +0x0000
-    char At_306;              // +0x0306
-};
-GG_STATIC_ASSERT(offsetof(IsoTileType_004838E0, At_306) == 0x306);
-
-// DynamicVectorClass<IsometricTileTypeClass*>: Items +4, Count +0x10.
-struct IsoTileVector_004838E0
-{
-    void* Vtbl;                       // +0x0000
-    IsoTileType_004838E0** Items;     // +0x0004
-    int   Capacity;                   // +0x0008
-    char  IsInitialized;              // +0x000C
-    char  IsAllocated;                // +0x000D
-    char  _pad00E[2];                 // +0x000E
-    int   Count;                      // +0x0010
-};
-GG_STATIC_ASSERT(offsetof(IsoTileVector_004838E0, Items) == 0x4);
-GG_STATIC_ASSERT(offsetof(IsoTileVector_004838E0, Count) == 0x10);
-// GLOBAL: GAMEMD 0xA8ED28 — IsometricTileTypeClass::Array.
-extern IsoTileVector_004838E0 IsoTileArray_004838E0;
-
 // CellClass — only the members the germination test reads.
 struct Cell_004838E0
 {
     char _pad000[0x24];               // +0x0000
-    CellStruct_004838E0 MapCoords;    // +0x0024
+    CellStruct          MapCoords;    // +0x0024
     char _pad028[0x10];               // +0x0028
     int  IsoTileTypeIndex;            // +0x0038
     char _pad03C[0x8];                // +0x003C

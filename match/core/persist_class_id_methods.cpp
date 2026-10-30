@@ -258,15 +258,6 @@ HRESULT __stdcall BulletClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
-// FUNCTION: GAMEMD 0x00485200
-HRESULT __stdcall CellClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E9930;
-    return S_OK;
-}
-
 // FUNCTION: GAMEMD 0x004A7C30
 HRESULT __stdcall DiskLaserClass::GetClassID(CLSID* pClassID)
 {

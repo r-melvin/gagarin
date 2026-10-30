@@ -15,25 +15,21 @@
 #include "../_layout/cell.h"
 #include "../core/cell_step_tables.h"
 #include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 class MapView_578460
 {
 public:
     // FUNCTION: GAMEMD 0x578460 (decl; reloc)
     // True when the cell lies inside the usable map area; the flag selects the
-    // level-adjusted test. __thiscall, two stack arguments, RET 8.
+    // level-adjusted test. __thiscall, two stack arguments, RET 8. (Called on `this`
+    // by the definition-on-view row 0x583820; other TUs use Map_0087F7E8.)
     bool FUN_00578460(const CellStruct* cell, bool useLevel);
 
     // FUNCTION: GAMEMD 0x578640
     // The same test against a cell-space rectangle (X, Y, Width, Height as ints) in place of the
     // whole map. __thiscall, three stack arguments, RET 0xC.
     bool FUN_00578640(const int* rect, const CellStruct* cell, bool useLevel);
-
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    // The cell object at a coordinate. __thiscall, one stack argument, RET 4.
-    CellClass* FUN_005657A0(const CellStruct* cell);
-    // The same entry point taking the coordinate by reference (a temporary sum, as the neighbour lookup passes).
-    CellClass* FUN_005657A0(const CellStruct& cell);
 
     // FUNCTION: GAMEMD 0x583820
     // The nearest cell to `start` whose zone word at `zoneWordOffset` equals
@@ -53,8 +49,7 @@ GG_STATIC_ASSERT(offsetof(MapView_578460, ZoneWords) == 0x70);
 GG_STATIC_ASSERT(offsetof(MapView_578460, MapWidth) == 0xF4);
 GG_STATIC_ASSERT(offsetof(MapView_578460, MapHeight) == 0xF8);
 
-// GLOBAL: GAMEMD 0x87F7E8 -- the map singleton.
-extern MapView_578460 DAT_0087F7E8;
+// GLOBAL: GAMEMD 0x87F7E8 -- the map singleton, declared once by _layout/map_0087f7e8.h (DAT_0087F7E8).
 // GLOBAL: GAMEMD 0x87F924 -- the 512 x 512 cell pointer table.
 extern CellClass** DAT_0087F924;
 // GLOBAL: GAMEMD 0xABDC50 -- the cell returned for an out-of-range lookup.

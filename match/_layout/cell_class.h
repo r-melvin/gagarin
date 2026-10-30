@@ -181,6 +181,8 @@ public:
     bool IsTileInSet00AA0E24();   // GAMEMD 0x486790
     void FogCell();
     void ClearFoggedObjects();
+    // FUNCTION: GAMEMD 0x485590 (decl; reloc) -- react to the cell (called through the map lookup).
+    void FUN_00485590();
     void CleanFog();
     bool TryAssignJumpjet(ObjectClass* object);   // GAMEMD 0x487D70
     void MarkForRedraw();

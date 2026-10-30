@@ -23276,13 +23276,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_clear_to_move_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4834A0",
   "sym": "?IsClearToMove@Cell_Class_004834A0@@QAE_NH_N0HHH0@Z",
   "len": "0x168",
-  "name": "CellClass::IsClearToMove",
+  "name": "Cell_Class_004834A0::IsClearToMove",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu050_cell_class.cpp",
@@ -23303,13 +23303,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_fogged_objects_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486C50",
-  "sym": "?ClearFoggedObjects@CellFog_00486C50@@QAEXXZ",
+  "sym": "?ClearFoggedObjects@CellClass@@QAEXXZ",
   "len": "0x13B",
   "name": "CellClass::ClearFoggedObjects",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_jumpjet_methods.cpp",
@@ -23321,7 +23321,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_mark_redraw_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486E70",
   "sym": "?MarkForRedraw@CellClass@@QAEXXZ",
   "len": "0x180",
@@ -23411,13 +23411,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_overlay_connect_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x480510",
   "sym": "?ConnectsToOverlay@Cell_00480510@@QAE_NHH@Z",
   "len": "0x11b",
-  "name": "CellClass::ConnectsToOverlay",
+  "name": "Cell_00480510::ConnectsToOverlay",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu050_cell_class.cpp",
@@ -76932,7 +76932,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/persist_class_id_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x485200",
   "sym": "?GetClassID@CellClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -142336,22 +142336,22 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_r17_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x480180",
   "sym": "?FUN_00480180@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@@Z",
   "len": "0x66",
   "name": "CellClass::FUN_00480180",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/cell_class_r17_methods.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x4801F0",
   "sym": "?FUN_004801F0@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@@Z",
   "len": "0xac",
   "name": "CellClass::FUN_004801F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/cstream_class_r17_methods.cpp",
@@ -146329,13 +146329,13 @@
   "pct": 100
  },
  {
-  "tu": "match/map/cell_class_clear_00486ff0.cpp",
+  "tu": "match/map/tu050_cell_class.cpp",
   "addr": "0x486FF0",
   "sym": "?FUN_00486FF0@CellClass@@QAE_NXZ",
   "len": "0xB6",
   "name": "CellClass::FUN_00486FF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/rules_class_ctor_665650.cpp",

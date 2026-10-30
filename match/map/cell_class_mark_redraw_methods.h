@@ -21,6 +21,7 @@
 
 #include <stddef.h>
 #include "../_layout/map_0087f7e8.h"
+#include "../_layout/tactical.h"
 #include "../_rt/gg_static_assert.h"
 
 #include "../_layout/cell.h"
@@ -35,13 +36,6 @@ GG_STATIC_ASSERT(sizeof(RectangleStruct)           == 0x10);
 extern int DAT_00886FA0;
 extern int DAT_00886FA4;
 
-struct Tactical_00486E70
-{
-    // FUNCTION: GAMEMD 0x6D2790 (decl; reloc) — register a dirty client rect.
-    void FUN_006D2790(RectangleStruct rect, bool flag);
-};
-// GLOBAL: GAMEMD 0x887324 — the tactical instance pointer.
-extern Tactical_00486E70* DAT_00887324;
 
 
 #include "../_layout/cell_class.h"

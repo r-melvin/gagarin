@@ -44,9 +44,8 @@ struct Vtbl_00480510
 };
 GG_STATIC_ASSERT(offsetof(Vtbl_00480510, WhatAmI) == 0x2C);
 
-// GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
+// GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance, declared by rules_class.h as `Rules`.
 #include "../_layout/rules_class.h"
-extern RulesClass* DAT_008871E0;
 
 // CellClass — OverlayTypeIndex and the ground occupier list head.
 struct Cell_00480510

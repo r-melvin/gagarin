@@ -23,19 +23,9 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/cell.h"
+#include "../_layout/map_0087f7e8.h"
 #include "terrain_objects/overlay_type_class.h"
-
-struct Cell_004834A0 { short X; short Y; };
-GG_STATIC_ASSERT(sizeof(Cell_004834A0) == 4);
-
-struct Map_004834A0
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x56D230 (decl; reloc) — MapClass::GetMovementZoneType.
-    int GetMovementZoneType(const Cell_004834A0& cell, int movementZone, bool isBridge);
-};
-// GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
-extern Map_004834A0 DAT_0087F7E8;
 
 // GLOBAL: GAMEMD 0xA83D84 — OverlayTypeClass::Array.Items.
 // Declared by the canonical overlay-type header.
@@ -57,7 +47,7 @@ extern const float DAT_007E1748;
 struct Cell_Class_004834A0
 {
     char           _pad0000[0x24];              // +0x0000
-    Cell_004834A0  MapCoords;                   // +0x0024
+    CellStruct     MapCoords;                   // +0x0024
     char           _pad0028[0x44 - 0x28];       // +0x0028
     int            OverlayTypeIndex;            // +0x0044
     char           _pad0048[0xEC - 0x48];       // +0x0048

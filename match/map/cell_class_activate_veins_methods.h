@@ -20,6 +20,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/rules_class.h"
 
 struct Coord_00486920
 {
@@ -81,24 +82,13 @@ struct ObjVtbl_00486920
 GG_STATIC_ASSERT(offsetof(ObjVtbl_00486920, GetTechnoType) == 0x84);
 GG_STATIC_ASSERT(offsetof(ObjVtbl_00486920, GetHeight)     == 0x1C8);
 
-// The animation type the vein activation plays.
-struct AnimType_00486920;
-struct Rules_00486920
-{
-    char                _pad000[0xE8];   // +0x0000
-    AnimType_00486920*  At_E8;           // +0x00E8
-};
-GG_STATIC_ASSERT(offsetof(Rules_00486920, At_E8) == 0xE8);
-// GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
-extern Rules_00486920* DAT_008871E0;
-
 // The animation object: 0x1C8 bytes from operator new, then constructed.
 struct Anim_00486920
 {
     char opaque[0x1C8];
 
     // FUNCTION: GAMEMD 0x421EA0 (decl; reloc) — AnimClass::AnimClass.
-    void Construct(AnimType_00486920* type, Coord_00486920* coord, int a3,
+    void Construct(AnimTypeClass* type, Coord_00486920* coord, int a3,
                    int a4, int a5, int a6, char a7);
 };
 GG_STATIC_ASSERT(sizeof(Anim_00486920) == 0x1C8);

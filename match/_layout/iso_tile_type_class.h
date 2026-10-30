@@ -12,6 +12,8 @@
 #include "vector_class.h"
 
 struct CellStruct;
+struct RectangleStruct;
+class Surface;
 class IsometricTileTypeClass;
 class IsometricTileClass;
 class ObjectClass;
@@ -71,6 +73,9 @@ public:
     IsometricTileClass* FUN_00549AE0(int unused);
     // Added with GAMEMD 0x547370.
     CellStruct* FUN_00547370();
+    // FUNCTION: GAMEMD 0x547CF0 (decl; reloc) -- draw one tile of the set (clip rectangle by value).
+    void FUN_00547CF0(int a, int b, Surface* surface, int x, int y, RectangleStruct clip, int level,
+                      int tint, int f1, int f2, int f3, int f4, int f5, int f6);
 
     IsoTileTypeVtbl* Vfptr;                    // +0x000
     char             _pad_004[0x024 - 0x004];
