@@ -136696,11 +136696,11 @@
  {
   "tu": "match/core/small_misc_w1_methods.cpp",
   "addr": "0x4D28D0",
-  "sym": "?FUN_004D28D0@Obj_004D28D0@@QBE?AUPair16_004D28D0@@XZ",
+  "sym": "?FUN_004D28D0@FoggedObjectClass@@QBE?AUFoggedShortPair@@XZ",
   "len": "0x37",
-  "name": "Obj_004D28D0::FUN_004D28D0",
+  "name": "FoggedObjectClass::FUN_004D28D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc_w1_methods.cpp",

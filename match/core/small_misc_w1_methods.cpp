@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "header_init_shapes.h"
+#include "../_layout/fogged_object_class.h"
 
 // A circular list whose sentinel sits at +0x0C; each node holds a key at +0x14
 // and a payload pointer at +0x18.
@@ -348,30 +349,13 @@ unsigned char Obj_004C6570::FUN_004C6570()
     return DAT_008A39FC++;
 }
 
-// Two shorts packed into a dword.
-struct Pair16_004D28D0
-{
-    short unknown_00;
-    short unknown_02;
-};
-struct Obj_004D28D0
-{
-    char unknown_00[0x34];
-    int unknown_34;   // +0x0034
-    int unknown_38;   // +0x0038
-    // FUNCTION: GAMEMD 0x4D28D0
-    Pair16_004D28D0 FUN_004D28D0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004D28D0, unknown_34) == 0x34);
-GG_STATIC_ASSERT(offsetof(Obj_004D28D0, unknown_38) == 0x38);
-
 // FUNCTION: GAMEMD 0x4D28D0
 // The two coordinates at +0x34 / +0x38 scaled down by 256 into a short pair.
-Pair16_004D28D0 Obj_004D28D0::FUN_004D28D0() const
+FoggedShortPair FoggedObjectClass::FUN_004D28D0() const
 {
-    Pair16_004D28D0 result;
-    result.unknown_00 = (short)(unknown_34 / 256);
-    result.unknown_02 = (short)(unknown_38 / 256);
+    FoggedShortPair result;
+    result.X = (short)(Coords.X / 256);
+    result.Y = (short)(Coords.Y / 256);
     return result;
 }
 

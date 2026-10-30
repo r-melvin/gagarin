@@ -38,6 +38,13 @@ struct FoggedRectInit : RectangleStruct
     FoggedRectInit& operator=(const RectangleStruct& r) { X = r.X; Y = r.Y; Width = r.Width; Height = r.Height; return *this; }
 };
 
+// Two shorts packed into a dword (the return of 0x4D28D0).
+struct FoggedShortPair
+{
+    short X;
+    short Y;
+};
+
 // VTABLE: GAMEMD 0x7E8B38 (IPersistStream side)
 // VTABLE: GAMEMD 0x7E8B1C (IRTTITypeInfo side, +0x04)
 // VTABLE: GAMEMD 0x7E8B14 (INoticeSink side, +0x08)
@@ -81,6 +88,9 @@ public:
     DynamicVectorClass<DrawRecord> DrawRecords;   // +0x5C  vtable 0x7E8BA0, capacity increment 10
     bool        unknown_74;     // +0x74  constructors store 1
     unsigned char _pad_75[3];   // +0x75
+
+    // FUNCTION: GAMEMD 0x4D28D0 -- the coordinate's X and Y scaled down by 256, packed as two shorts.
+    FoggedShortPair FUN_004D28D0() const;
 };
 GG_STATIC_ASSERT(offsetof(FoggedObjectClass, unknown_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(FoggedObjectClass, unknown_28) == 0x28);
