@@ -134075,175 +134075,175 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x740F80",
   "sym": "?vf_194@UnitClass@@UAE?AUDirStruct@@XZ",
   "len": "0x43",
   "name": "UnitClass::vf_194",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x744180",
   "sym": "?vf_167@UnitClass@@UAE_NXZ",
   "len": "0x30",
   "name": "UnitClass::vf_167",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746C90",
   "sym": "?IsUnderEMP@UnitClass@@UAE_NXZ",
   "len": "0x1b",
   "name": "UnitClass::IsUnderEMP",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746CD0",
   "sym": "?vf_185@UnitClass@@UAEHPAVAbstractClass@@@Z",
   "len": "0x30",
   "name": "UnitClass::vf_185",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746E30",
   "sym": "?vf_170@UnitClass@@UAE?AUDirStruct@@XZ",
   "len": "0x49",
   "name": "UnitClass::vf_170",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7414A0",
   "sym": "?vf_173@UnitClass@@UAENXZ",
   "len": "0x3e",
   "name": "UnitClass::vf_173",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7465B0",
   "sym": "?vf_51@UnitClass@@UAEPAVObjectTypeClass@@_N@Z",
   "len": "0x34",
   "name": "UnitClass::vf_51",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7465F0",
   "sym": "?vf_52@UnitClass@@UAEPAVHouseClass@@_N@Z",
   "len": "0x34",
   "name": "UnitClass::vf_52",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746630",
   "sym": "?FUN_00746630@UnitClass@@QAEXPAVObjectTypeClass@@@Z",
   "len": "0x35",
   "name": "UnitClass::FUN_00746630",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x740B10",
   "sym": "?vf_151@UnitClass@@UAEHXZ",
   "len": "0x41",
   "name": "UnitClass::vf_151",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746720",
   "sym": "?vf_284@UnitClass@@UAEXXZ",
   "len": "0x28",
   "name": "UnitClass::vf_284",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746D10",
   "sym": "?FUN_00746D10@UnitClass@@QAE_NXZ",
   "len": "0x41",
   "name": "UnitClass::FUN_00746D10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746DB0",
   "sym": "?FUN_00746DB0@UnitClass@@QAE_NXZ",
   "len": "0x1d",
   "name": "UnitClass::FUN_00746DB0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x744600",
   "sym": "?Save@UnitClass@@UAGJPAUIStream@@H@Z",
   "len": "0x32",
   "name": "UnitClass::Save",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7446E0",
   "sym": "?vf_10@UnitClass@@UAEXPAX_N@Z",
   "len": "0x38",
   "name": "UnitClass::vf_10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7463A0",
   "sym": "?vf_245@UnitClass@@UAE_NPAVHouseClass@@_N@Z",
   "len": "0x53",
   "name": "UnitClass::vf_245",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x740A90",
   "sym": "?vf_139@UnitClass@@UAEHXZ",
   "len": "0x74",
   "name": "UnitClass::vf_139",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7438B0",
   "sym": "?FUN_007438B0@UnitClass@@QAEHXZ",
   "len": "0x32",
   "name": "UnitClass::FUN_007438B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x740E60",
   "sym": "?FUN_00740E60@UnitClass@@QAEXXZ",
   "len": "0x20",
   "name": "UnitClass::FUN_00740E60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
@@ -135182,25 +135182,25 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x738890",
   "sym": "?vf_81@UnitClass@@UAE_NHPAVObjectClass@@H@Z",
   "len": "0x7d",
   "name": "UnitClass::vf_81",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7440B0",
   "sym": "?vf_53@UnitClass@@UAE_NXZ",
   "len": "0x50",
   "name": "UnitClass::vf_53",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3b_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x738910",
   "sym": "?vf_80@UnitClass@@UAE_NHPAUCellStruct@@HH@Z",
   "len": "0x58",
@@ -136082,40 +136082,40 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x744100",
   "sym": "?vf_136@UnitClass@@UAEHXZ",
   "len": "0x75",
   "name": "UnitClass::vf_136",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x740EF0",
   "sym": "?vf_147@UnitClass@@UAEHXZ",
   "len": "0x90",
   "name": "UnitClass::vf_147",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x744720",
   "sym": "?vf_56@UnitClass@@UAEXPAX@Z",
   "len": "0x7a",
   "name": "UnitClass::vf_56",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_vslot_w3c_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x73B0B0",
   "sym": "?vf_65@UnitClass@@UAE_NPAURectangleStruct@@_NH@Z",
   "len": "0x8c",
   "name": "UnitClass::vf_65",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/movie_handle_w3_methods.cpp",
@@ -137144,22 +137144,22 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_class_temporal_swap_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746420",
   "sym": "?vf_309@UnitClass@@UAEXH@Z",
   "len": "0xBC",
   "name": "UnitClass::vf_309",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_temporal_swap_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x7464E0",
   "sym": "?vf_310@UnitClass@@UAEXPAVFootClass@@@Z",
   "len": "0xC4",
   "name": "UnitClass::vf_310",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/w3r2_leaf_methods_a.cpp",
@@ -141743,7 +141743,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_r16_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x744640",
   "sym": "?FUN_00744640@UnitView_r16@@QAEXPAUObj_004A1D30@@@Z",
   "len": "0x9f",
@@ -141752,7 +141752,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/unit_class_r16_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x746750",
   "sym": "?FUN_00746750@UnitView_r16@@QAE_NPAVHouseClass@@@Z",
   "len": "0xb9",
@@ -144407,13 +144407,13 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_class_r21_4_methods.cpp",
+  "tu": "match/combat/Unit.cpp",
   "addr": "0x736C10",
   "sym": "?FUN_00736C10@UnitClass@@QAE_NXZ",
   "len": "0x81",
   "name": "UnitClass::FUN_00736C10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/streamer_open_methods.cpp",
