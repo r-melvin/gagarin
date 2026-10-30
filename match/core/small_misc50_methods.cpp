@@ -47,19 +47,6 @@ forward:
     return FUN_00410320(subject, second, third);
 }
 
-// FUNCTION: GAMEMD 0x44FE60
-void FUN_0044FE60(Ini_0044FE60* ini)
-{
-    ini->FUN_005257C0(DAT_007E3E88, 0);
-
-    for (int i = 0; i < DAT_00A8EB50; i++) {
-        Entry_0044FE60* entry = DAT_00A8EB44[i];
-
-        if (!entry->Skip && !entry->Settings->Skip) {
-            entry->FUN_0044FEC0(ini);
-        }
-    }
-}
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x818CE8

@@ -1633,13 +1633,13 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/building_class_fog_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x457A10",
   "sym": "?CheckFog@BuildingClass_00457A10@@QAE_NXZ",
   "len": "0x90",
   "name": "BuildingClass::CheckFog",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu038_building_class.cpp",
@@ -1678,7 +1678,7 @@
   "pct": 30.5
  },
  {
-  "tu": "match/combat/building_class_kill_occupants_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4585C0",
   "sym": "?KillOccupants@Building_004585C0@@QAEXPAUKiller_004585C0@@@Z",
   "len": "0x181",
@@ -10936,13 +10936,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc36_methods.cpp",
-  "addr": "0x4587d0",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "addr": "0x4587D0",
   "sym": "?FUN_004587D0@Obj_004587D0@@QAE_NPAUArg_004587D0@@@Z",
   "len": "0x31",
   "name": "Obj_004587D0::FUN_004587D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccfile_class.cpp",
@@ -11629,13 +11629,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc50_methods.cpp",
-  "addr": "0x44fe60",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "addr": "0x44FE60",
   "sym": "?FUN_0044FE60@@YIXPAUIni_0044FE60@@@Z",
   "len": "0x52",
   "name": "FUN_0044FE60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
@@ -11719,13 +11719,13 @@
   "pct": 76.2
  },
  {
-  "tu": "match/core/small_misc54_methods.cpp",
-  "addr": "0x449bc0",
+  "tu": "match/economy/tu038_building_class.cpp",
+  "addr": "0x449BC0",
   "sym": "?FUN_00449BC0@Obj_00449BC0@@QAE_NXZ",
   "len": "0x67",
   "name": "Obj_00449BC0::FUN_00449BC0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc55_methods.cpp",
@@ -23681,11 +23681,11 @@
   "pct": 100
  },
  {
-  "tu": "match/map/foundation_occupy_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x456580",
-  "sym": "?FUN_00456580@BuildingClass_00456580@@QAEXXZ",
+  "sym": "?vf_293@BuildingClass@@UAEXXZ",
   "len": "0x5d",
-  "name": "BuildingClass_00456580::FUN_00456580",
+  "name": "BuildingClass::vf_293",
   "status": "partial",
   "pct": 74.3
  },
@@ -30219,7 +30219,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/building_coord_00453840.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x453840",
   "sym": "?FUN_00453840@BuildingClass_00453840@@QAEPAUCoord_00453840@@PAU2@HHHH@Z",
   "len": "0x226",
@@ -91118,7 +91118,7 @@
   "note": "Aligned diff_retail pct over the full 0x5E9 span; multiset 440 vs 458 instructions. The new-expression allocates before the Payload copy in retail; the compiled order differs, shifting the whole prefix."
  },
  {
-  "tu": "match/ui/building_draw_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43CEA0",
   "sym": "?vf_65@BuildingClass@@UAE_NPAURectangleStruct@@_NH@Z",
   "len": "0x183",
@@ -91127,23 +91127,22 @@
   "pct": 32.4
  },
  {
-  "tu": "match/ui/building_draw_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43D030",
   "sym": "?vf_70@BuildingClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x257",
   "name": "BuildingClass::vf_70",
   "status": "partial",
-  "pct": 6.9
+  "pct": 7.8
  },
  {
-  "tu": "match/combat/building_class_update.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x43FB20",
   "sym": "?vf_23@BuildingClass@@UAEXXZ",
   "len": "0xa5b",
   "name": "BuildingClass::vf_23",
   "status": "partial",
-  "pct": 4.9,
-  "note": "Aligned diff_retail pct; multiset 749 vs 699 instructions. First 36 instructions exact, then the Location copy and branch layout shift."
+  "pct": 4.9
  },
  {
   "tu": "match/movement/foot_cell_ring_search_004cbc40.cpp",
@@ -141671,31 +141670,31 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/building_class_r16_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4529E0",
   "sym": "?FUN_004529E0@BuildingClass@@QAEXXZ",
   "len": "0x5f",
   "name": "BuildingClass::FUN_004529E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class_r16_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x44F7A0",
   "sym": "?FUN_0044F7A0@BuildingClass@@QAEXXZ",
   "len": "0x74",
   "name": "BuildingClass::FUN_0044F7A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/economy/building_class_r16_methods.cpp",
+  "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x455B90",
   "sym": "?FUN_00455B90@BuildingClass@@QAEIXZ",
   "len": "0x8a",
   "name": "BuildingClass::FUN_00455B90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/taction_r16_methods.cpp",

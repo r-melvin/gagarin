@@ -8,6 +8,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/building_class.h"
+#include "../_layout/building_array.h"
 
 // ---------------------------------------------------------------------------
 // 0x4253B0 — record where this object's key appears in the registry, then
@@ -63,31 +65,8 @@ long __stdcall FUN_004253B0(AnimClass_004253B0* subject, void* second, void* thi
 // +0x81 or the settings byte at +0x16BF is set; the step itself is a
 // __thiscall on the entry with the INI as its argument.
 // ---------------------------------------------------------------------------
-struct Settings_0044FE60
-{
-    char _pad000[0x16BF];
-    char Skip;   // +0x16BF
-};
-GG_STATIC_ASSERT(offsetof(Settings_0044FE60, Skip) == 0x16BF);
-
-struct Entry_0044FE60
-{
-    char              _pad000[0x81];
-    char              Skip;       // +0x0081
-    char              _pad082[0x520 - 0x82];
-    Settings_0044FE60* Settings;  // +0x0520
-
-    // FUNCTION: GAMEMD 0x44FEC0
-    void FUN_0044FEC0(void* ini);
-};
-GG_STATIC_ASSERT(offsetof(Entry_0044FE60, Skip) == 0x81);
-GG_STATIC_ASSERT(offsetof(Entry_0044FE60, Settings) == 0x520);
-
 // GLOBAL: GAMEMD 0x7E3E88 — holds the section name pointer.
 extern const char* DAT_007E3E88;
-// GLOBAL: GAMEMD 0xA8EB44 — the entry array; 0xA8EB50 is its count.
-extern Entry_0044FE60** DAT_00A8EB44;
-extern int              DAT_00A8EB50;
 
 struct Ini_0044FE60
 {

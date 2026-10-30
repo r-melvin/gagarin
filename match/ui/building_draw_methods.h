@@ -25,34 +25,11 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 #include "../_layout/shp_struct.h"
 
-// Rules object behind the pointer at 0x8871E0 (used prefix only).
-
-// GLOBAL: GAMEMD 0x8871E0 -- pointer to the rules object.
-#include "../_layout/rules_class.h"
-extern RulesClass* DAT_008871E0;
-
-// Map cell as far as these bodies read it.
-struct MapCell_0043D290
-{
-    char unknown_000[0x10A];
-    short unknown_10A;               // read with a sign-extending load
-};
-GG_STATIC_ASSERT(offsetof(MapCell_0043D290, unknown_10A) == 0x10A);
-
-// The map instance at 0x87F7E8 (RTTI .?AVMapClass@@).
-class MapView_5657A0_5
-{
-public:
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the cell at a cell coordinate; RET 4.
-    MapCell_0043D290* FUN_005657A0(const CellStruct& cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8
-extern MapView_5657A0_5 DAT_0087F7E8;
+#include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 // The screen transform at 0x887324 (RTTI .?AVTactical@@).
 #include "../_layout/tactical.h"
-// GLOBAL: GAMEMD 0x887324 -- pointer to the transform.
-extern Tactical* DAT_00887324;
 
 // The production factory as seen from the draw code (RTTI .?AVFactoryClass@@).
 #include "../_layout/factory_class.h"
@@ -66,8 +43,6 @@ extern RectangleStruct DAT_00886FA0;
 extern int DAT_0089DDBC;
 
 #include "../_layout/rectangle_operations.h"
-// FUNCTION: GAMEMD 0x487950 (decl; reloc) -- the cell's shroud test, ECX = cell.
-bool FUN_00487950(MapCell_0043D290* cell);
 // FUNCTION: GAMEMD 0x4BBC90 (decl; reloc) -- no arguments.
 int FUN_004BBC90();
 // FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) -- ECX = the value returned by slot 116.

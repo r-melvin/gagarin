@@ -20,24 +20,8 @@
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-// CellClass — only the flag word this method tests is modelled.
-struct CellClass_00457A10
-{
-    char _pad000[0x140];   // +0x0000
-    int  Flags;            // +0x0140  bit 0x400000 = fogged
-};
-GG_STATIC_ASSERT(offsetof(CellClass_00457A10, Flags) == 0x140);
-
-// The map singleton — only GetCellAt is reached (declared; reloc).
-struct MapClass_00457A10
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_00457A10* GetCellAt(CellStruct const& mapCoords);
-};
-
-// GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer:
-// retail loads its address as the immediate `MOV ECX,0x87F7E8`).
-extern MapClass_00457A10 MapInstance;
+#include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
 
 // BuildingTypeClass — only its vtable is reached (slot 0x90, GetFoundationData).
 struct TypeVtbl_00457A10;

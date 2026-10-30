@@ -1,5 +1,27 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// Accepted /Ob2 partial drop: 0x43FB20 5.6% -> 4.9%.
+//   Complete 0x43FB20..0x44057B body (0xA5B bytes, two RETs plus the shared
+//   exit) read from the entry-bounded retail function. RTTI COL 0x7FC360 names
+//   BuildingClass; its primary table 0x7E3EBC holds this function at slot 23.
+//   Virtual calls are slot offsets divided by four: 0x350 = 212, 0x184 = 97,
+//   0x1D4 = 117, 0x1D8 = 118, 0x200 = 128, 0x1EC = 123, 0x124 = 73,
+//   0x3C8 = 242, 0x3AC = 235, 0x16C = 91, 0x1B8 = 110, 0xAC = 43, 0xD4 = 53.
+//
+//   Full 0x226-byte function at 0x453840 confirmed from retail gamemd.exe
+//   v1.001 disassembly and focused REA evidence.
+//
+//   match/economy/house_building/building_a_methods_1.cpp.)
+//
+//   Bodies disassembled from retail gamemd.exe v1.001 at the addresses below.
+//
+// BuildingClass members, ordered ascending by retail address.
+// Address index: 0x44F7A0, 0x455B90, 0x4529E0.
+//
 //   Original translation unit TU038 of retail gamemd.exe v1.001 (BuildingClass); its source-file
 //   name is not attested by the binary, so the file keeps a placeholder name. Code range
 //   0x43af40-0x45af9f; this file holds the BuildingClass-owned functions (RTTI class ownership,
@@ -94,6 +116,148 @@
 //
 // BuildingClass members, ordered ascending by retail address.
 // Address index: 0x43EE50, 0x451F60, 0x4528A0.
+//
+//   See building_draw_methods.h. Slot numbers and offsets are those of the
+//   primary BuildingClass table at 0x7E3EBC; every field offset below is the
+//   one the instruction at the cited retail address uses.
+
+#include "../combat/building_class_fog_methods.h"
+
+// Is every foundation cell of this building fogged? Walks the type's
+// foundation list (terminated by a {0x7FFF,0x7FFF} entry), offsets each entry
+// by the building's own map coordinates and tests the fog bit on the cell;
+// the first clear cell answers false.
+//
+// The two coordinate locals are the whole frame (SUB ESP,8): `cell` is first
+// the out-parameter of the map-coords slot and then the argument handed to
+// GetCellAt, `base` the dereferenced result that VC6 hoists into EDI/BX and
+// whose slot the per-cell sum then reuses. Writing them as four locals costs
+// a third slot.
+//
+// MATCHED (100.0%, 50/50). The residual block-order delta (retail lays the
+// `XOR AL,AL` block directly after the loop's back-jump and the `MOV AL,1`
+// block last, VC6 the reverse) was a flattened function boundary, not a
+// compiler difference: retail's source has the foundation walk as its own
+// routine, and this method is the wrapper around it. Written as an inline
+// helper carrying the loop and both of its returns, with the wrapper spelled
+// as an explicit `if (!AllFogged(...)) { return false; } return true;`, the
+// failure block gains the second predecessor the earlier passes were hunting
+// for and cl places both blocks where retail has them. 92.0% to 100%.
+// Variants measured this pass: the same helper forwarded directly
+// (`return AllFogged(...)`, 92.0%, the old score); the helper taking `base`
+// as a const reference (92.0%); the cell test alone lifted into an inline
+// `CellFogged` helper with the loop left in place (63.5%); and the sense
+// inverted as an `AnyClear` helper negated by the wrapper (72.0%). Earlier
+// passes had tried, all at 92.0% or worse: while-loop with in-loop
+// `return false`; `for(;;)` with the terminator `break`ing to `return true`;
+// `for(;;)` with the terminator returning true and the clear cell `break`ing
+// to `return false`; gotos to labelled returns in retail's textual order;
+// `continue`-shaped bodies; a `for` with `++fd` in the header; and a
+// `bool fogged` flag set false on the clear cell and returned after the loop
+// (90.0%).
+//
+// The foundation walk itself: offset each entry by the building's map
+// coordinates and test the fog bit; the first clear cell answers false.
+static inline bool AllFogged_00457A10(CellStruct const* fd, CellStruct base,
+                                      CellStruct& cell)
+{
+    while (fd->X != 0x7FFF || fd->Y != 0x7FFF) {
+        CellStruct sum;
+        sum.X = fd->X + base.X;
+        sum.Y = fd->Y + base.Y;
+        cell = sum;
+        if (!(DAT_0087F7E8.FUN_005657A0(&cell)->Flags & 0x400000))
+            return false;
+        ++fd;
+    }
+    return true;
+}
+
+#include "../combat/building_class_kill_occupants_methods.h"
+
+#include "../_layout/building_class.h"
+#include "../_layout/building_type_class_layout.h"
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+#include "../_layout/anim_class.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/cell.h"
+#include "../combat/airstrike_class_methods.h"
+#include "../core/rules_class.h"
+#include "../core/frame_counter.h"
+#include "../map/map_class_methods.h"
+#include "../ui/tactical_class_coords_to_client_methods.h"
+#include "../_layout/map_0087f7e8.h"
+
+// FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- ECX = sound, EDX = coordinate,
+// one stack argument (the sound's audio controller).
+void FUN_007509E0(int sound, const CoordStruct* coordinate, AudioController* controller);
+
+// FUNCTION: GAMEMD 0x750D40 (decl; reloc) -- ECX = coordinate, EDX = audio controller.
+void FUN_00750D40(const CoordStruct* coordinate, AudioController* controller);
+
+// The global object whose method 0x5FB2E0 converts a rate.
+struct Global_00A8EB60
+{
+    // FUNCTION: GAMEMD 0x5FB2E0 (decl; reloc) -- one stack argument.
+    int FUN_005FB2E0(int rate);
+};
+
+// GLOBAL: GAMEMD 0xA8EB60
+extern Global_00A8EB60 DAT_00A8EB60;
+// GLOBAL: GAMEMD 0x887324 -- the tactical object.
+extern Tactical* DAT_00887324;
+// GLOBAL: GAMEMD 0xABAD1C
+extern int DAT_00ABAD1C;
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+
+// The frame timer's remaining time, expanded inline at each use: the whole
+// duration while unstarted, 0 once it has run out, otherwise what is left.
+static int TimeLeft(const CDTimerClass& timer)
+{
+    int left = timer.TimeLeft;
+    if (timer.StartTime != -1) {
+        int passed = CurrentFrame - timer.StartTime;
+        if (passed >= left)
+            return 0;
+        left -= passed;
+    }
+    return left;
+}
+
+#include "../combat/building_coord_00453840.h"
+
+#include "../core/small_misc36_methods.h"
+
+#include "../core/small_misc50_methods.h"
+
+#include "../_layout/abstract_type_class.h"
+// GLOBAL: GAMEMD 0x887734
+extern const wchar_t DAT_00887734[];
+// STRING: GAMEMD 0x817830
+extern const char STR_00817830[];
+
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc)
+wchar_t* __fastcall StringTable_LoadString(const char*, int*, const char*, int);
+
+// GLOBAL: GAMEMD 0x818CE8
+extern const char STR_00818CE8[];
+
+#include "../core/small_misc54_methods.h"
+
+#include "../_layout/building_class.h"
+#include "../_layout/house_class.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/map_0087f7e8.h"
+
+// GLOBAL: GAMEMD 0xA8E7AC -- nonzero while the scenario is being set up.
+extern int ScenarioInit_00A8E7AC;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8E7AC
+int ScenarioInit_00A8E7AC;
+// END defined globals
 
 #include "house_building/building_a_views.h"
 #include "../_layout/session_class.h"
@@ -161,10 +325,7 @@ extern "C" const CLSID CLSID_Building =
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-// GLOBAL: GAMEMD 0x89C818
-// The cell value slot 189 returns; its static initialiser 0x43B0E0 writes both
-// words.
-extern CellStruct DAT_0089C818;
+#include "../_layout/global_0089c818.h"
 
 #include "../core/vector_class_operations.h"
 class FoggedObjectClass;
@@ -1366,6 +1527,13 @@ static __forceinline void PlayNthAnim(BuildingClass* self, int slot, int effectD
     }
 }
 
+#include "../_layout/building_class.h"
+#include "../_layout/map_0087f7e8.h"
+#include "../core/vector_class.h"
+
+#include "../ui/building_draw_methods.h"
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43C2A0
 void Holder_0043C2A0::ReleaseAll()
 {
@@ -1379,6 +1547,106 @@ void Holder_0043C2A0::ReleaseAll()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x43CEA0
+// Redraws the part of the building that falls inside `rect`; returns whether
+// anything overlapped. Slot 65.
+bool BuildingClass::vf_65(RectangleStruct* rect, bool force, int draw)
+{
+    if (DAT_00A8ED6B == 0 && DAT_00B73550 != 0) {
+        if (!force && !NeedsRedraw)
+            return false;
+        if (!IsOnMap)
+            return false;
+        if (InLimbo)
+            return false;
+    }
+
+    RectangleStruct extent;
+    NeedsRedraw = false;
+    *rect = *FUN_00421B60(&extent, rect, &DAT_00886FA0, 0, 0);
+
+    int clipX = DAT_00886FA0.X;
+    int clipY = DAT_00886FA0.Y;
+    extent = vf_75();
+    int left = extent.X + clipX;
+    int top = extent.Y + clipY;
+    int right = left + extent.Width;
+    int bottom = top + extent.Height;
+
+    if (rect->X < right && rect->Y < bottom
+        && rect->X + rect->Width > left && rect->Y + rect->Height > top) {
+        Point2D point;
+        DAT_00887324->FUN_006D2140(vf_43(), &point);
+        if (rect->X > DAT_00886FA0.X)
+            point.X += DAT_00886FA0.X - rect->X;
+        if (rect->Y > DAT_00886FA0.Y)
+            point.Y += DAT_00886FA0.Y - rect->Y;
+        if (draw) {
+            if (!IsFogged)
+                vf_313(&point, rect);
+        } else {
+            vf_69(&point, rect);
+        }
+        return true;
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x43D030
+// Draws the building's deploy/undeploy shape in two strips around `point`.
+// Slot 70.
+void BuildingClass::vf_70(Point2D* point, RectangleStruct* clip)
+{
+    CellStruct cell = vf_110();
+    SHPStruct* shape = static_cast<SHPStruct*>(vf_27());
+    if (!shape)
+        return;
+    if (Type->bools_1700[1])
+        return;
+    if (vf_97() == 0x18 && !UnloadTimer.FUN_004A51D0())
+        return;
+    if (vf_97() == 0x10 && Type->DeployingAnim) {
+        ObjectClass* produced = Factory->FUN_004CA160();
+        if (produced && produced->vf_33()->bools_D94[0])
+            shape = Type->RoofDeployingAnim;
+        else
+            shape = Type->DeployingAnim;
+    }
+
+    Point2D origin = *point;
+    int halfHeight = shape->unknown_04 / 2;
+    int stripBottom = origin.Y - halfHeight;
+    RectangleStruct rect = *clip;
+    if (rect.Height > stripBottom)
+        rect.Height = stripBottom;
+    if (rect.Height > 0) {
+        FUN_00705E00(shape, FUN_0043EF90(), &origin, &rect, 0, 0x100,
+                     -2 - FUN_006D20E0(FUN_005F5F30()), 2, 0,
+                     DAT_0087F7E8.FUN_005657A0(&cell)->Intensity_Normal, 0, 0, 0, 0, 0, 0);
+    }
+
+    Point2D lowerOrigin(point->X, origin.Y - stripBottom);
+    rect = *clip;
+    rect.Y += stripBottom;
+    rect.Height = shape->unknown_04;
+    if (rect.Y + shape->unknown_04 > clip->Y + clip->Height)
+        rect.Height = clip->Y + clip->Height - rect.Y;
+    if (rect.Y < clip->Y) {
+        int clippedAway = rect.Y - clip->Y;
+        rect.Y = clip->Y;
+        rect.Height += clippedAway;
+        lowerOrigin.Y += clippedAway;
+    }
+    if (rect.Height > 0) {
+        FUN_00705E00(shape, FUN_0043EF90(), &lowerOrigin, &rect, 0, 0x100,
+                     -FUN_006D20E0(FUN_005F5F30()), 0, 0,
+                     DAT_0087F7E8.FUN_005657A0(&cell)->Intensity_Normal, 0, 0, 0, 0, 0, 0);
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43E900
 int BuildingClass::vf_187()
@@ -1394,6 +1662,7 @@ int BuildingClass::vf_187()
     return value;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43ED40
 //
@@ -1432,6 +1701,7 @@ DirStruct BuildingClass::vf_314(AbstractClass* target)
     return d;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43EE50
 // When the building is in its active state and has its Anims[9] animation,
 // show the frame for the current primary facing (32 steps) and zero the
@@ -1451,6 +1721,249 @@ int BuildingClass::FUN_0043EE50()
     return frame;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x43FB20
+void BuildingClass::vf_23()
+{
+    unsigned char working;
+    if (vf_212() && vf_97() != 0x12 && vf_97() != 0x13)
+        working = 1;
+    else
+        working = 0;
+
+    if (working != WasOnline) {
+        if (Type->WorkingSound != -1 || Type->NotWorkingSound != -1) {
+            Audio8.FUN_00405FD0();
+            CoordStruct location = Location;
+            if (working)
+                FUN_007509E0(Type->WorkingSound, &location, &Audio8);
+            else
+                FUN_007509E0(Type->NotWorkingSound, &location, &Audio8);
+        }
+        FUN_004549B0();
+        WasOnline = working;
+    } else {
+        if (Type->WorkingSound != -1 || Type->NotWorkingSound != -1) {
+            CoordStruct location = Location;
+            FUN_00750D40(&location, &Audio8);
+        }
+    }
+
+    unsigned char damaged;
+    if (Type->bools_1570[0xB])
+        damaged = GetHealthPercentage() <= RulesInstance->ConditionRed;
+    else
+        damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+    if (damaged != RequiresDamageFires) {
+        if (damaged) {
+            FUN_0043C0D0();
+        } else {
+            for (int i = 0; i < 8; i++) {
+                if (DamageFireAnims[i] != 0) {
+                    ((ObjectClass*)DamageFireAnims[i])->vf_62();
+                    DamageFireAnims[i] = 0;
+                }
+            }
+        }
+        RequiresDamageFires = damaged;
+    }
+
+    if (Type->bools_C8C[0x15])
+        TurretIsRotating = PrimaryFacing.FUN_004C9480();
+    else
+        TurretIsRotating = 0;
+
+    if (TemporalTargetingMe != 0)
+        ((AbstractClass*)TemporalTargetingMe)->vf_23();
+
+    if (vf_117() || vf_118()) {
+        // Active or occupied: spawn the type's anim at its muzzle points or, when
+        // there are none, at the building's own location.
+        if (Type->MaxNumberOccupants == 0 || RulesInstance->ChronoSparkle1 == 0) {
+            if (CurrentFrame % 0x18 == 0 && RulesInstance->ChronoSparkle1 != 0)
+                new AnimClass(RulesInstance->ChronoSparkle1, Location, 0, 1, 0x600, 0, false);
+        } else {
+            for (int index = 0; index < Type->MaxNumberOccupants; index++) {
+                if ((CurrentFrame + index) % 0x18 == 0 && RulesInstance->ChronoSparkle1 != 0) {
+                    Point2D projected;
+                    Point2D* point = DAT_00887324->FUN_006D2070(&projected, &Type->MuzzleFlash[index]);
+                    CoordStruct coordinate;
+                    coordinate.X = point->X;
+                    coordinate.Y = point->Y;
+                    coordinate.Z = 0;
+                    CoordStruct origin = vf_43();
+                    coordinate.X += origin.X;
+                    coordinate.Y += origin.Y;
+                    coordinate.Z += origin.Z;
+                    AnimClass* anim = new AnimClass(RulesInstance->ChronoSparkle1, coordinate, 0, 1, 0x600, 0, false);
+                    anim->ZAdjust = -200;
+                }
+            }
+        }
+        if (Target != 0)
+            vf_242(0);
+        return;
+    }
+
+    if (TimeLeft(CashProductionTimer) == 1) {
+        CashProductionTimer.StartTime = CurrentFrame;
+        CashProductionTimer.TimeLeft = Type->ProduceCashDelay;
+        if (!((HouseTypeClass*)Owner->Type)->MultiplayPassive && vf_212()) {
+            if (Type->ProduceCashAmount > 0)
+                Owner->FUN_004F9950(Type->ProduceCashAmount);
+            else
+                Owner->FUN_004F9790(-Type->ProduceCashAmount);
+        }
+    }
+
+    if (Airstrike != 0 && ((AirstrikeClass*)Airstrike)->Target == this)
+        vf_73(2);
+
+    if (Type->bools_16A4[0x14] && Target != 0 && !((AbstractClass*)Target)->IsInAir())
+        vf_242(0);
+
+    FUN_004509D0();
+    if (vf_128() && BState != 0 && vf_123())
+        IsReadyToCommence = false;
+    FUN_006F9E50();
+    if (!IsAlive)
+        return;
+
+    if (vf_33()->IsGattling && FUN_0070DDF0() > 0)
+        TurretAnimFrame++;
+
+    if (Ammo == 0 && !Type->bools_16A4[0x1D] && !Type->bools_16A4[0x1E])
+        Ammo = Type->Ammo;
+
+    if (vf_97() != 1) {
+        if (vf_33()->IsGattling && CurrentFrame - LastFireBulletFrame > RulesInstance->GuardAreaTargetingDelay + 5) {
+            FUN_0070DE40(Type->RateDown);
+            int current = FUN_0070DDF0();
+            int stage = FUN_0070DDC0();
+            if (stage > 0) {
+                int limit;
+                if (Veterancy.FUN_00750010())
+                    limit = Type->EliteStage[stage - 1];
+                else
+                    limit = Type->WeaponStage[stage - 1];
+                if (current < limit)
+                    FUN_0070DDD0(stage - 1);
+            }
+        }
+        if (vf_33()->IsGattling && FUN_0070DDF0() > 0)
+            TurretAnimFrame++;
+    }
+
+    if (vf_128() && vf_123())
+        IsReadyToCommence = false;
+
+    if (QueueBState != -1) {
+        if (BState != QueueBState) {
+            BuildingAnimFrameStruct* row = &Type->BuildingAnimFrame[QueueBState];
+            BState = QueueBState;
+            int duration = row->Rate;
+            if (BState == 0 || BState == 1)
+                duration = DAT_00A8EB60.FUN_005FB2E0(row->Rate);
+            StageClass::Timer.StartTime = CurrentFrame;
+            StageClass::Timer.TimeLeft = duration;
+            StageClass::Rate = duration;
+            StageClass::Value = row->Frame;
+        }
+        QueueBState = -1;
+    }
+
+    if (Health != unknown_544) {
+        Owner->RecheckPower = 1;
+        Owner->RecheckRadar = 1;
+        unknown_544 = Health;
+    }
+
+    if (Health == 0) {
+        for (int i = 0; i < 8; i++) {
+            if (DamageFireAnims[i] != 0) {
+                ((ObjectClass*)DamageFireAnims[i])->vf_62();
+                DamageFireAnims[i] = 0;
+            }
+        }
+        if (TimeLeft(C4Timer) != 0)
+            return;
+        vf_53();
+        FUN_00442D90((int)C4AppliedBy);
+        vf_62();
+        FUN_00441F60();
+        return;
+    }
+
+    FUN_004503F0();
+    if (Type->bools_1570[5]) {
+        TechnoClass** list = (TechnoClass**)Overpowerers.Items;
+        for (int i = Overpowerers.Count - 1; i >= 0; i--) {
+            if (list[i]->Target != this && i < Overpowerers.Count) {
+                Overpowerers.Count--;
+                for (int j = i; j < Overpowerers.Count; j++)
+                    list[j] = list[j + 1];
+            }
+        }
+        int count = Overpowerers.Count;
+        if (count >= 3 || (Owner->FUN_004FCE30() == DAT_007E1718 && HasPower && count >= 1))
+            IsOverpowered = true;
+        else
+            IsOverpowered = false;
+    }
+    if (Type->bools_1570[0xB])
+        FUN_00458200();
+    FUN_00450630();
+    if (Type->Factory != 0)
+        FUN_004500F0();
+
+    if (C4Applied) {
+        if (TimeLeft(C4Timer) == 0) {
+            if (Type->bools_16A4[0x12]) {
+                bool special = false;
+                for (int y = -2; y < 3; y++) {
+                    for (int x = -2; x < 3; x++) {
+                        CellStruct origin = vf_110();
+                        CellStruct first;
+                        first.X = origin.X + x;
+                        first.Y = origin.Y + y;
+                        int tile = DAT_0087F7E8.FUN_005657A0(&first)->IsoTileTypeIndex;
+                        origin = vf_110();
+                        CellStruct second;
+                        second.X = origin.X + x;
+                        second.Y = origin.Y + y;
+                        int overlay = DAT_0087F7E8.FUN_005657A0(&second)->OverlayTypeIndex;
+                        if ((tile >= DAT_00ABAD1C && tile < DAT_00ABAD1C + 0x10)
+                            || (overlay >= 0x4A && overlay <= 0x65))
+                            special = true;
+                    }
+                }
+                CellStruct cell = vf_110();
+                if (special)
+                    DAT_0087F7E8.FUN_00574C20(&cell);
+                else
+                    DAT_0087F7E8.FUN_00574000(&cell);
+                C4Applied = false;
+                C4AppliedBy = 0;
+            } else {
+                int damage = Health;
+                vf_91(&damage, 0, RulesInstance->C4Warhead, C4AppliedBy, true, false, 0);
+            }
+            if (!IsAlive)
+                return;
+            vf_73(2);
+        }
+    }
+
+    if (Target == 0)
+        return;
+    if (IsCloseEnoughToAttack((AbstractClass*)Target))
+        return;
+    if (((AbstractClass*)Target)->vf_11() == 2 && !((AbstractClass*)Target)->IsOnFloor())
+        return;
+    vf_242(0);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x442C40
 // CAPPED at 86.5% (multiset identical). Delta: retail loads the AddItem vptr before the capacity sum and uses EDX
@@ -1486,6 +1999,7 @@ void BuildingClass::vf_9()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4436F0
 bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 {
@@ -1517,6 +2031,7 @@ bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x443B90
 // CAPPED at 17.1%. Retail places the Base(0) fallback inline right after the first two tests and jumps back
 // to it from the later failures; the three shapes tried (target=0 else-if, if/else with a trailing call, early
@@ -1540,6 +2055,7 @@ void BuildingClass::vf_242(AbstractClass* target)
     TechnoClass::vf_242(target);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4456D0
 void BuildingClass::vf_312()
@@ -1580,6 +2096,7 @@ void BuildingClass::vf_312()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x445E50
 //
 // The facing towards the target (or the current facing without one). The two X differences are kept in
@@ -1594,6 +2111,7 @@ DirStruct BuildingClass::vf_170()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x445F00
 AbstractClass* BuildingClass::vf_241(unsigned int threat, CoordStruct* coord, bool a3)
 {
@@ -1606,6 +2124,7 @@ AbstractClass* BuildingClass::vf_241(unsigned int threat, CoordStruct* coord, bo
     return TechnoClass::vf_241(threat | 1, coord, a3);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x446FF0
 void BuildingClass::vf_103(int mode)
@@ -1651,6 +2170,7 @@ void BuildingClass::vf_103(int mode)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447110
 //
 // CAPPED (see the report): retail is a three-case switch on the mode whose "nothing to do" exits jump to the
@@ -1692,6 +2212,7 @@ void BuildingClass::vf_104(int mode)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447210
 // CAPPED at 3.3% (first transcription, two forms). Delta: retail pushes EDI after the early returns and has a 0xc frame;
@@ -1784,6 +2305,7 @@ checkTarget:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447540
 // CAPPED at 42.2%. Delta: retail keeps one separate "xor ebx,ebx; jmp done" per exit and a flat r==1||r==2 test; goto, else-if and split forms all give the same 42.2%.
 int BuildingClass::vf_28(CellStruct* cell, char a, char b)
@@ -1794,7 +2316,7 @@ int BuildingClass::vf_28(CellStruct* cell, char a, char b)
     }
     if (Type->UndeploysInto != 0 && a != 0) {
         r = TechnoClass::vf_28(cell, 0, b);
-        if (!DAT_0087F7E8.FUN_00586360(DAT_0087F7E8.FUN_005657A0(cell)->vf_18())
+        if (!DAT_0087F7E8.IsLocationShrouded(DAT_0087F7E8.FUN_005657A0(cell)->vf_18())
             && r == 1
             && DAT_0087F7E8.FUN_005657A0(cell)->LandType == 5
             && Type->ResourceDestination && Type->ResourceGatherer) {
@@ -1850,6 +2372,7 @@ done:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447AC0
 CoordStruct BuildingClass::vf_18()
 {
@@ -1865,6 +2388,7 @@ CoordStruct BuildingClass::vf_18()
     return temp;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447B20
 // CAPPED at 5.3%. Delta: retail keeps a 0x34 frame with a dead Location copy (Z=0, X, Y stores) and shares one
@@ -1944,6 +2468,7 @@ CoordStruct BuildingClass::vf_42(AbstractClass* arg)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447E00
 //
 // The straight-line distance to a target. CAPPED at 75.9% (instruction multiset identical): retail keeps
@@ -1954,6 +2479,7 @@ int BuildingClass::vf_310(AbstractClass* target)
     return Distance(vf_42(target), target->vf_18());
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447E90
 CoordStruct BuildingClass::vf_19(AbstractClass* arg)
@@ -1967,6 +2493,7 @@ CoordStruct BuildingClass::vf_19(AbstractClass* arg)
     return vf_42(arg);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x447F10
 //
@@ -2003,6 +2530,7 @@ int BuildingClass::vf_240(AbstractClass* target, int b, int c)
     return 5;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x448160
 // CAPPED at 81.7% (multiset identical). Delta: retail keeps the type pointer in EAX and the kind in ECX; the
@@ -2046,6 +2574,7 @@ char BuildingClass::vf_316()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x449410
 int BuildingClass::GetYSort() const
 {
@@ -2056,6 +2585,7 @@ int BuildingClass::GetYSort() const
     return base + ((flags->bools_16A4[0x16C5 - 0x16A4] ? 0x20 : 0) - (flags->bools_16A4[0x16B7 - 0x16A4] ? 0x10 : 0));
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x449440
 int BuildingClass::vf_107(CellClass* target, int a2, int a3, int a4, bool a5)
@@ -2068,6 +2598,7 @@ int BuildingClass::vf_107(CellClass* target, int a2, int a3, int a4, bool a5)
     return type->vf_42(&cell, Owner) ? 0 : 7;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4494C0
 bool BuildingClass::vf_38()
@@ -2085,6 +2616,7 @@ bool BuildingClass::vf_38()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4496B0
 // CAPPED at 41.5%. Delta: retail realigns the stack (AND ESP,-8, 0x38 frame), keeps a masked flag byte in a stack
@@ -2167,12 +2699,14 @@ int BuildingClass::vf_135()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x449A40
 int BuildingClass::vf_136()
 {
     return vf_135();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x449A50
 int BuildingClass::vf_145()
@@ -2217,6 +2751,37 @@ int BuildingClass::vf_145()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x449BC0
+bool Obj_00449BC0::FUN_00449BC0()
+{
+    // All seven refusals share the one `XOR AL,AL; POP ESI; RET` at 0x449C23,
+    // so they are a single trailing `return false` reached by one condition
+    // chain. There are two `MOV AL,0x1` sites though, so the early yes is its
+    // own statement. Written as seven early returns VC6 emits seven epilogues
+    // and scores 12.0%.
+    Settings_00449BC0* settings = Settings;
+
+    if (settings->Mode != 0) {
+        if (!settings->Strict) {
+            return true;
+        }
+
+        if (Session_00A8B238.GameMode != 0
+            && Subject != 0
+            && FUN_0050B730(Owner)
+            && Session_00A8B238.GameMode != 0
+            && Session_00A8B238.unknown_18.MCVRedeploy
+            && Blocker == 0) {
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44ABD0  BuildingClass::FireLaser (__thiscall, ret 0xC)
 //
 // Draw the prism support beam from this building's firing point to `target`:
@@ -2256,6 +2821,7 @@ void Building_0044ABD0::FireLaser(Coord_0044ABD0 target)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44B760
 int BuildingClass::vf_133()
 {
@@ -2263,12 +2829,14 @@ int BuildingClass::vf_133()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44B770
 int BuildingClass::vf_137()
 {
     return MissionClass::vf_137();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44D5D0
 bool BuildingClass::vf_102(HouseClass* house)
@@ -2290,6 +2858,7 @@ bool BuildingClass::vf_102(HouseClass* house)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44D6A0
 bool BuildingClass::EnterIdleMode(bool initial, bool a2)
 {
@@ -2305,6 +2874,7 @@ bool BuildingClass::EnterIdleMode(bool initial, bool a2)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44D700
 int BuildingClass::vf_174()
@@ -2323,6 +2893,7 @@ int BuildingClass::vf_174()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44D760
 void BuildingClass::vf_238(void* arg)
 {
@@ -2333,6 +2904,7 @@ void BuildingClass::vf_238(void* arg)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44D7D0
 //
@@ -2353,6 +2925,7 @@ HBDir* BuildingAView::vf_194(HBDir* out)
     return out;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44E7B0  BuildingClass::GetPowerOutput (__thiscall)
 // Base output is the type's PowerBonus, read before the warp-out test. A
@@ -2406,6 +2979,7 @@ int BuildingClass::GetPowerOutput()
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44E880  (__thiscall)
 //
@@ -2477,6 +3051,7 @@ int BuildingClass::GetPowerDrain()
     return drain;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44E8F0
 void BuildingAView::vf_10(BAObjView* ptr, bool removed)
@@ -2558,6 +3133,7 @@ void BuildingAView::vf_10(BAObjView* ptr, bool removed)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44EB10
 int BuildingClass::vf_195()
 {
@@ -2567,6 +3143,7 @@ int BuildingClass::vf_195()
     return TechnoClass::vf_195();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44EBF0
 // CAPPED at 67.4%. Delta: retail merges the type!=7 path into the fifth inlined slot copy (jump into the middle);
@@ -2618,6 +3195,7 @@ void BuildingClass::vf_55(bool arg)
     ObjectClass::vf_55(arg);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44EF80
 // PARTIAL: 80% -- the argument loads before the slot call are scheduled differently from retail.
 int Owner_0044EF80::Lookup(Target_0044EF80* t, int a)
@@ -2631,6 +3209,7 @@ int Owner_0044EF80::Lookup(Target_0044EF80* t, int a)
     return -1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44F5C0
 bool BuildingClass::vf_40()
@@ -2656,6 +3235,7 @@ allow:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44F640
 // CAPPED at 26.0% (13 of 50 instructions). Retail lays the equal-to-empty-coordinate path (the vf_18 copy) after
 // the non-equal path, entered by a final `je`; cl keeps it first behind `jne` for every spelling tried
@@ -2672,6 +3252,39 @@ CoordStruct BuildingClass::vf_45(int)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x44F7A0
+// Recompute the owner's radar-visibility mask as the OR of the display masks of
+// its live buildings whose type has the radar flag, then tell the map.
+void BuildingClass::FUN_0044F7A0()
+{
+    Owner->RadarVisibleTo = 0;
+    int count = Owner->Buildings.Count;
+    for (int i = 0; i < count; i++) {
+        BuildingClass* building = Owner->Buildings.Items[i];
+        if (building != 0 && !building->InLimbo && building->Type->bools_16A4[0]) {
+            Owner->RadarVisibleTo |= building->DisplayProductionTo;
+        }
+    }
+    DAT_0087F7E8.FUN_004F42F0(2);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x44FE60
+void FUN_0044FE60(Ini_0044FE60* ini)
+{
+    ini->FUN_005257C0(DAT_007E3E88, 0);
+
+    for (int i = 0; i < DAT_00A8EB40.Count; i++) {
+        BuildingClass* entry = DAT_00A8EB40.Items[i];
+
+        if (!entry->InLimbo && !entry->Type->bools_16A4[0x1B]) {
+            entry->FUN_0044FEC0(ini);
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4500A0
 CoordStruct BuildingClass::vf_41()
 {
@@ -2680,12 +3293,14 @@ CoordStruct BuildingClass::vf_41()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4503E0
 // Empty function.
 void __cdecl FUN_004503E0()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4504F0
 //
 // Record the prism stage, its target and the type's firing delay, drop animation
@@ -2710,6 +3325,7 @@ void BuildingClass::FUN_004504F0(int stage, const CoordStruct* target)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x450590
 //
 // Drop every overpowering unit whose target is no longer this building, then
@@ -2741,6 +3357,7 @@ void BuildingClass::FUN_00450590()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451330
 int BuildingClass::vf_180()
 {
@@ -2770,6 +3387,7 @@ int BuildingClass::vf_180()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4513D0
 void* BuildingClass::vf_27()
 {
@@ -2778,6 +3396,7 @@ void* BuildingClass::vf_27()
     return Type->vf_48();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451750
 //
@@ -2803,6 +3422,7 @@ void Obj_00451750::FUN_00451750(int index, bool a, bool b, int extra)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451E40  (__thiscall)
 // Destroy one (or, for slot == -2, every) building animation. The kill is a
 // virtual scalar-deleting-destructor call through AnimClass vtable slot
@@ -2834,6 +3454,7 @@ void BuildingClass::DestroyNthAnim(int slot)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451EA0
 // Hide one (or, for slot == -2, every) building animation.
 void BuildingClass::SetAnimInvisible(int slot)
@@ -2862,6 +3483,7 @@ void BuildingClass::SetAnimInvisible(int slot)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451EE0  BuildingClass::ToggleDamagedAnims (__thiscall, ret 0x4)
 // Swap the building between its healthy and damaged animation sets. Nothing
 // happens if it is already in the requested state.
@@ -2889,6 +3511,7 @@ void BuildingClass::ToggleDamagedAnims(bool damaged)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x451F60
 // For each live animation: hand cell-drawn types the given lighting and tint,
 // then set the translucency (15 becomes 16 while the building reports mission
@@ -2914,6 +3537,7 @@ void BuildingClass::FUN_00451F60(void* lightConvert, int tint)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452170
 void Obj_00452170::FUN_00452170(int value)
 {
@@ -2938,6 +3562,7 @@ void Obj_00452170::FUN_00452170(int value)
     } while (n != 0);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4521C0  (__thiscall)
 // Suspend the active building anims while a temporal weapon targets us: stash
 // each anim's current frame in PausedAnimFrame and freeze it.
@@ -2960,6 +3585,7 @@ void BuildingClass::DisableTemporal()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452210  (__thiscall)
 // Resume the building anims when the temporal weapon releases us.
 void BuildingClass::EnableTemporal()
@@ -2980,12 +3606,14 @@ void BuildingClass::EnableTemporal()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452250
 int BuildingClass::vf_321()
 {
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452260  BuildingClass::GoOnline (__thiscall)
 //
@@ -3014,6 +3642,7 @@ void BuildingClass_00452260::GoOnline()
         VoxClass_00452260::Play(EvaBuildingOnLine_00452260, -1, -1);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452360
 //
@@ -3044,6 +3673,7 @@ void BuildingClass::GoOffline()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452410  BuildingClass::EnableStuff (__thiscall)
 // Bring a building's attachments back online: its light source, its end post if
 // the type wants one, and every animation the type marks as enabled that the
@@ -3068,6 +3698,7 @@ void BuildingClass::EnableStuff()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452480  BuildingClass::DisableStuff
 //
 // Everything a powered-down building stops doing: the light goes off, a cloak
@@ -3098,6 +3729,7 @@ void BuildingClass::DisableStuff()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452540
 //
 // Ask a gate to let something through. Non-gates are always traversable.
@@ -3123,6 +3755,7 @@ bool BuildingClass_00452540::MakeTraversable()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4525F0  (__thiscall)
 // True if a unit may drive across this building's footprint. Always traversable
 // unless the type forbids it; then only certain (WhatAmI==0x18) buildings with
@@ -3140,6 +3773,7 @@ bool BuildingClass::IsTraversable()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452630
 bool BuildingClass::vf_37()
 {
@@ -3152,6 +3786,7 @@ bool BuildingClass::vf_37()
     return TechnoClass::vf_37();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452670
 //
 // Whether the upgrade type may be attached to this building for the house:
@@ -3176,6 +3811,7 @@ bool BuildingClass::FUN_00452670(BuildingTypeClass* upgrade, HouseClass* house)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4526F0
 // CAPPED at 48.0% (36 of 75 instructions; retail-only: 2 `add eax,imm` computing &Type->field after the load;
@@ -3205,6 +3841,7 @@ void BuildingBView::vf_254(int a)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4527D0
 bool BuildingClass::vf_255()
 {
@@ -3219,6 +3856,7 @@ bool BuildingClass::vf_255()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4528A0
 // PARTIAL: 78.7% -- instruction multiset identical; retail reads both centre
 // coordinates through one shared 12-byte stack slot (frame 0xC), this compiles
@@ -3237,6 +3875,22 @@ bool BuildingClass::FUN_004528A0(AbstractClass* target)
     return distance <= Type->PsychicDetectionRadius * 256;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4529E0
+// Once the scenario is running, for a live, owned building whose type has the
+// flag at +0x16BE set, refresh sides 0, 2, 4 and 6 and then the end post.
+void BuildingClass::FUN_004529E0()
+{
+    if (ScenarioInit_00A8E7AC == 0 && Type->bools_16A4[0x1A] && IsAlive && !InLimbo) {
+        FUN_00452DC0(0);
+        FUN_00452DC0(2);
+        FUN_00452DC0(4);
+        FUN_00452DC0(6);
+        CreateEndPost(true);
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x452D40
 //
@@ -3270,6 +3924,7 @@ void FUN_00452D40()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x453370
 void Obj_00453370::ClearIfOwnerFlag()
 {
@@ -3277,6 +3932,65 @@ void Obj_00453370::ClearIfOwnerFlag()
         Field618 = 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// Partial: after correcting the base call to pass Coord by value,
+// 7/194 instructions (3.6%) match. Frame layout and temporary lifetimes differ.
+// FUNCTION: GAMEMD 0x453840
+Coord_00453840* BuildingClass_00453840::FUN_00453840(
+    Coord_00453840* out, int mode, int, int, int)
+{
+    Point2D projected;
+    Coord_00453840 tmp;
+
+    if (At_520->At_157B && (this->*Vtbl->At_408)() > 0) {
+        const Point2D* offset = &At_520->At_1588 + At_69C;
+        Point2D* client = DAT_00887324->FUN_006D2070(
+            &projected, offset);
+        int cx = client->X;
+        int cy = client->Y;
+        Coord_00453840* base = (this->*Vtbl->At_AC)(&tmp);
+        return out->Set(base->X + cx, base->Y + cy, base->Z);
+    }
+
+    if (At_520->At_E44.X != 0xFFFF || At_520->At_E44.Y != 0xFFFF) {
+        Point2D* client = DAT_00887324->FUN_006D2070(
+            &projected, &At_520->At_E44);
+        int cx = client->X;
+        int cy = client->Y;
+        if (At_520->At_1764) {
+            Coord_00453840 zero = { 0, 0, 0 };
+            Coord_00453840* base = FUN_006F3AD0(&tmp, mode, zero);
+            return out->Set(base->X + cx, base->Y + cy, base->Z);
+        }
+        Coord_00453840* base = (this->*Vtbl->At_AC)(&tmp);
+        return out->Set(base->X + cx, base->Y + cy, base->Z);
+    }
+
+    if (At_520->At_16C6) {
+        Coord_00453840* result = FUN_00453BF0(&tmp, mode, 1);
+        return out->Set(result->X, result->Y, result->Z);
+    }
+
+    Coord_00453840 zero = { 0, 0, 0 };
+    Coord_00453840* base = FUN_006F3AD0(&tmp, mode, zero);
+    int x = base->X;
+    int y = base->Y;
+    int z = base->Z;
+
+    if (At_520->At_16C5) {
+        Point2D offset;
+        offset.X = At_520->At_11E0.X;
+        offset.Y = At_520->At_11E0.Y;
+        Point2D* client = DAT_00887324->FUN_006D2070(
+            &projected, &offset);
+        x += client->X;
+        y += client->Y;
+    }
+
+    return out->Set(x, y, z);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x453A70
 // The shared tail (vf_43 plus the pixel offset) sits inside the first block in retail and is entered by a
@@ -3329,6 +4043,7 @@ tail:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x453D60
 void BuildingClass::vf_60(CoordStruct* coord)
 {
@@ -3338,6 +4053,7 @@ void BuildingClass::vf_60(CoordStruct* coord)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x453DC0
 void BuildingClass::vf_61(CoordStruct* coord)
 {
@@ -3346,6 +4062,7 @@ void BuildingClass::vf_61(CoordStruct* coord)
     flags &= ~0x80u;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x453E20
 HRESULT __stdcall BuildingBView::Load(IStream* pStm)
@@ -3404,6 +4121,7 @@ HRESULT __stdcall BuildingBView::Load(IStream* pStm)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454190
 HRESULT __stdcall BuildingClass::Save(IStream* pStm, BOOL fClearDirty)
 {
@@ -3433,12 +4151,14 @@ HRESULT __stdcall BuildingClass::Save(IStream* pStm, BOOL fClearDirty)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454250
 bool BuildingClass::vf_128()
 {
     return IsReadyToCommence ? true : false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454260
 void BuildingClass::vf_13(Obj_004A1D30* crc)
@@ -3482,6 +4202,7 @@ void BuildingClass::vf_13(Obj_004A1D30* crc)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4544A0
 // Both arms compute one flag and share a single `return 3` / `return 5` pair,
 // which is retail's layout (one block each). Returning from inside the arms
@@ -3513,6 +4234,7 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
     return Func_703860(a, target);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454730
 //
 // Drop animation slot 0x13, then restart each slot whose record is flagged in
@@ -3537,6 +4259,7 @@ void BuildingClass::FUN_00454730()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454930
 //
 // Start animation slot 0x13 (damaged name once health is at the yellow
@@ -3561,6 +4284,7 @@ void BuildingClass::FUN_00454930()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454CF0
 // For a type that carries the cloaking data bool: mark the data present, drop
 // the radius when it equals the type's, and request a redraw.
@@ -3578,6 +4302,7 @@ void BuildingClass::FUN_00454CF0()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454D30
 // The opposite step: flag the data as reversed, restore the radius from the
 // type when it is zero, and request a redraw.
@@ -3595,6 +4320,7 @@ void BuildingClass::FUN_00454D30()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454D70
 void Chain_00454D70::PokeAll()
 {
@@ -3606,6 +4332,7 @@ void Chain_00454D70::PokeAll()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454DB0
 // CAPPED at 0.6% (5 of 648 instructions; 629 compiled; retail-only 18 `mov`, 5 `xor`, 2 `test`, `jge`, `jmp`;
@@ -3787,6 +4514,7 @@ void BuildingBView::vf_260(bool refresh)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4555D0
 // Every refusal shares one epilogue in retail; written as separate returns cl gives each its own.
 bool BuildingClass::vf_212()
@@ -3820,6 +4548,7 @@ refuse:
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4556D0
 // CAPPED at 3.8% (4 of 105). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
@@ -3856,6 +4585,7 @@ void BuildingBView::vf_318(HBCell cell)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455820
 // CAPPED at 24.3% (instruction multiset identical). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
@@ -3895,6 +4625,7 @@ void BuildingBView::vf_317(HBCell cell)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455980
 // CAPPED at 33.7% (multiset differs by 1 `mov`). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
 // ebx, the outer variable ebp, the inner variable esi and the squared outer variable edi; cl takes the radius in ebp and the
@@ -3924,6 +4655,7 @@ void BuildingBView::vf_320(HBCell cell)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455A80
 // CAPPED at 34.8% (multiset differs by 1 `mov`). Retail pushes one callee-saved register late (ahead of the loop nest) and gives the radius
@@ -3957,6 +4689,25 @@ void BuildingBView::vf_319(HBCell cell)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x455B90
+// One bit per edge neighbour (directions 0, 2, 4, 6 -> bits 0..3) that holds a
+// live, in-play building whose type has the flag at +0x16C0.
+unsigned int BuildingClass::FUN_00455B90()
+{
+    CoordStruct here = Location;
+    unsigned int mask = 0;
+    CellClass* cell = DAT_0087F7E8.FUN_00565730(&here);
+    for (int dir = 0; dir < 8; dir += 2) {
+        BuildingClass* neighbour = cell->FUN_00481810(dir)->GetBuilding();
+        if (neighbour != 0 && neighbour->Type->bools_16A4[0x1C] && !neighbour->InLimbo && neighbour->IsAlive) {
+            mask |= 1 << (dir >> 1);
+        }
+    }
+    return mask;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455C20
 // CAPPED at 75.3% (multiset identical, 89 instructions; the frame is 0x3C against retail 0x34, so every stack
 // offset after the prologue differs). Variants tried: field-by-field rect sums, an operator+ without the named
@@ -3984,6 +4735,7 @@ HBRect* BuildingBView::vf_75(HBRect* out)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455D50
 void BuildingClass::SetDestination(AbstractClass* target, bool a2)
 {
@@ -3995,6 +4747,7 @@ void BuildingClass::SetDestination(AbstractClass* target, bool a2)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x455DA0
 bool BuildingClass::vf_161()
 {
@@ -4005,6 +4758,62 @@ bool BuildingClass::vf_161()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x456580
+//
+// Mark every cell of the object's foundation as occupied by it, then record that
+// it is placed.
+//
+// PARTIAL (74.3%, 26/35) — identical multiset, scheduling only. Retail loads
+// the object's own coordinate before the foundation entry's in both sums
+// (`MOV EAX,[ESI+0x208]; MOV EDX,[ECX+EDI*8]; ADD EAX,EDX`), computes the x
+// sum first and pushes y, x, receiver; cl 8804 loads the entry's component
+// first in both sums and computes y first. Binding the entry to a pointer
+// local, which is what retail's `LEA ECX,[ECX+EDI*8]` between the two
+// component loads describes, lifts this from the 68.6% the earlier pass
+// recorded to 74.3% — the item address is formed once and both components
+// come off it.
+//
+// Variants measured this pass, all 74.3% unless noted: the entry as a pointer
+// local, as a `const&` and as a by-value copy (28.6%, a real struct copy);
+// the sums as `member; += entry`, as `entry + member`, and through an inline
+// `SumRL(b, a) { return a + b; }` helper exploiting cl's right-to-left
+// argument evaluation to make the member the first operand evaluated; the
+// whole cell-mark lifted into an inline helper taking the base coordinates
+// and the entry pointer (the flattened-boundary lever); an inline forwarder
+// with its parameters declared `(o, y, x)` so that cl's right-to-left order
+// evaluates x first, both with by-value and `const&` parameters; and the
+// base coordinates read through `const&` locals. The 68.6% forms (both sums
+// written inline in the call, and locals without the entry pointer) are
+// strictly worse. cl's load order inside a two-term sum is not reachable
+// from source here — the remaining nine positions are that tie-break.
+//
+// The cell count is re-read on every iteration — retail's `MOV EAX,[EBX+0x10]` at
+// 0x4565CA is inside the loop — so the bound stays a member read.
+//
+// TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply here.
+// Retail's callee-saved pushes sit exactly where ours do (prologue EBX, ESI,
+// EDI on both sides), the
+// number of epilogues agrees, and the compiled block order already matches,
+// so there are no merged return blocks to split. The residual is register
+// naming downstream of that, not a prologue hoist.
+void BuildingClass::vf_293()
+{
+    DynamicVectorClass<Point2D>* cells = DAT_0087F7E8.FUN_00656580(Type);
+
+    int i = 0;
+    while (i < cells->Count) {
+        Point2D* entry = &cells->Items[i];
+        int x = RadarPosition.X + entry->X;
+        int y = RadarPosition.Y + entry->Y;
+        DAT_0087F7E8.FUN_00655560(this, x, y);
+        i++;
+    }
+
+    IsRadarTracked = 1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4566B0
 //
@@ -4074,12 +4883,14 @@ int BuildingClass_004566B0::GetRadialIndicatorRange()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x456970
 // Empty function.
 void __cdecl FUN_00456970()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x456FB0
 //
@@ -4131,6 +4942,7 @@ plain:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4575B0
 //
 // Drain the whole array, last entry first, then run the finishing slot.
@@ -4157,6 +4969,7 @@ void Obj_004575B0::FUN_004575B0()
     (this->*this->Vptr->At_1A0)(one);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x457630  (__thiscall)
 // Index of the first super-weapon this building hosts that is currently active
 // for the owning house; returns the raw type index (-1 sentinel) otherwise.
@@ -4173,6 +4986,7 @@ int BuildingClass::FirstActiveSWIdx()
     return this->Type->SuperWeapon;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x457690  (__thiscall)
 // As FirstActiveSWIdx, for the building's second hosted super-weapon.
 int BuildingClass::SecondActiveSWIdx()
@@ -4188,6 +5002,21 @@ int BuildingClass::SecondActiveSWIdx()
     return this->Type->SuperWeapon2;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x457A10
+bool BuildingClass_00457A10::CheckFog()
+{
+    CellStruct cell;
+    CellStruct base = *(this->*this->Vtbl->GetMapCoords)(&cell);
+    CellStruct const* fd = (this->Type->*this->Type->Vtbl->GetFoundationData)(false);
+
+    if (!AllFogged_00457A10(fd, base, cell)) {
+        return false;
+    }
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x457CE0
 //
@@ -4247,6 +5076,7 @@ bool Obj_00457CE0::CanBeOccupiedBy(Obj_00457CE0* infantry)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458200
 //
@@ -4312,6 +5142,7 @@ void BuildingClass_00458200::UpdateGarrisonOwner()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458330
 //
 // Refresh the idle animation and the four active ones after anything that
@@ -4333,6 +5164,95 @@ void BuildingClass::UpdateOccupantAnims()
     PlayNthAnim(this, ANIM_SLOT_ACTIVE_FOUR_00458330, 0);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4585C0  BuildingClass::KillOccupants (__thiscall, ret 4)
+//
+// Empty a garrisonable building of its occupants. With no killer the
+// occupants simply run their own slot +0xF8 destruction; with a killer, each
+// occupant's firing port is projected to client space, an AnimClass is spawned
+// at that point offset by the building's own coordinate, the killer is
+// credited with the kill and the occupant is destroyed. Afterwards the
+// occupant vector is cleared and re-sized to its old capacity and the
+// building's recomputed slot +0x1BC value is applied.
+//
+// Two levers carried most of this: the killer == 0 arm has to be the source's
+// `if` body (retail lays it inline and the killer arm as the far block — the
+// reverse spelling inverts the whole layout), and the coordinate sum has to be
+// staged in its own struct and assigned whole (`sum.X = origin->X + where.X;
+// … where = sum;`), which keeps the three component loads together ahead of
+// the three stores instead of sinking each add to its store (72.6% -> 85.5%).
+// Binding the animation type to a local inside the allocation arm is what puts
+// the `MOV EAX,[EAX]` deref ahead of the `MOV ECX,<anim>`.
+//
+// PARTIAL (85.5%, 100/117): the instruction multiset is identical. The residual
+// is (a) retail storing the +0x69C counter before loading the occupant count
+// where cl emits the load first, (b) the client point's two components: retail
+// loads Y then X before storing either, cl loads and stores X then Y, and
+// (c) three EAX/ECX naming swaps around the slot +0xAC and Construct calls.
+// Variants tried: the client point staged in its own struct and assigned whole
+// (14.3% — it forces a real second frame slot), the Y component bound to a
+// local before the X store (14.4%), and the original arm order (72.6%).
+void Building_004585C0::KillOccupants(Killer_004585C0* killer)
+{
+    this->Unknown_69C = 0;
+
+    int i;
+    if (killer == 0)
+    {
+        for (i = this->Occupants.Count - 1; i >= 0; i--)
+        {
+            Occupant_004585C0* dying = this->Occupants.Items[i];
+            (dying->*dying->Vptr->At_F8)();
+        }
+    }
+    else
+    {
+        for (i = this->Occupants.Count - 1; i >= 0; i--)
+        {
+            Point2D  pt;
+            Coord_004585C0  where;
+            Point2D* client = DAT_00887324->FUN_006D2070(
+                &pt, &this->Type->OccupantOffsets[i]);
+            where.X = client->X;
+            where.Y = client->Y;
+            where.Z = 0;
+
+            Coord_004585C0  self;
+            Coord_004585C0* origin = (this->*this->Vptr->At_AC)(&self);
+            Coord_004585C0 sum;
+            sum.X = origin->X + where.X;
+            sum.Y = origin->Y + where.Y;
+            sum.Z = origin->Z + where.Z;
+            where = sum;
+
+            Anim_004585C0* anim =
+                (Anim_004585C0*)KillOccOperatorNew(0x1C8);
+            if (anim) {
+                AnimType_004585C0* type =
+                    (*(killer->*killer->Vptr->At_3F8)(
+                         0, &where, 0, 1, 0x600, 0, 0))->AnimType;
+                anim = anim->Construct(type);
+            } else {
+                anim = 0;
+            }
+            anim->Unknown_100 = 0xFFFFFF38;
+
+            Occupant_004585C0* victim = this->Occupants.Items[i];
+            (killer->*killer->Vptr->At_E0)(victim);
+
+            Occupant_004585C0* dying = this->Occupants.Items[i];
+            (dying->*dying->Vptr->At_F8)();
+        }
+    }
+
+    int capacity = this->Occupants.Capacity;
+    (this->Occupants.*this->Occupants.Vptr->Clear)();
+    (this->Occupants.*this->Occupants.Vptr->Resize)(capacity, 0);
+
+    this->FUN_0070F6E0((this->*this->Vptr->At_1BC)());
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458750
 //
 // Restart the cash-production timer from the type's delay, then, unless the
@@ -4350,6 +5270,20 @@ void BuildingClass::FUN_00458750()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4587D0
+bool Obj_004587D0::FUN_004587D0(Arg_004587D0* other)
+{
+    int derived = other->vt_08C(Owner);
+
+    // The pointer cast models this call slot's existing ABI view only.
+    void* context = (void*)DAT_0089C818.raw_dword;
+    bool accepted = vt_100(derived, context) != 0;
+
+    return accepted;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458810
 //
@@ -4397,6 +5331,7 @@ Matrix3D* BuildingClass_00458810::GetVoxelBarrelOffsetMatrix(
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4589C0
 int Obj_004589C0::FUN_004589C0()
 {
@@ -4409,6 +5344,7 @@ int Obj_004589C0::FUN_004589C0()
     return ((int)Storage.GetTotalAmount() * 4) / Settings->Divisor;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458A00
 //
@@ -4460,6 +5396,7 @@ bool BuildingClass::IsCellImpassable(CellClass* cell)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458A80
 // CAPPED at 10.4% (28 of 268 instructions; 267 retail vs 268 compiled; retail-only 2 `xor`, `jmp`, `jne`;
@@ -4519,6 +5456,7 @@ bool BuildingBView::vf_292(HBCoord* where, int dir)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458DB0
 bool BuildingClass::IsArmed()
 {
@@ -4528,12 +5466,14 @@ bool BuildingClass::IsArmed()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458DD0
 bool BuildingClass::vf_256()
 {
     return Type->bools_1570[0x157B - 0x1570] && Type->bools_1570[0x157C - 0x1570] && vf_258() > 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x458E00
 int BuildingClass::vf_257()
@@ -4544,6 +5484,7 @@ int BuildingClass::vf_257()
     return Type->GetFoundationHeight(false) / 2;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4593A0  BuildingClass::UnloadBunker
 //
@@ -4586,6 +5527,7 @@ void Building_004593A0::UnloadBunker()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459470  BuildingClass::ClearBunker (__thiscall)
 //
 // Tear the bunker link down: the two garrison animations are destroyed, the
@@ -4646,6 +5588,7 @@ void BuildingClass::ClearBunker()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459840
 // The first non-zero of three sub-object counters, falling back to the owner's
 // own field. All four returns share one epilogue.
@@ -4667,12 +5610,14 @@ int Obj_00459840::FUN_00459840() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459870
 int BuildingClass::vf_181()
 {
     return Type->AntiAirValue;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459880
 int BuildingClass::vf_182()
@@ -4681,12 +5626,14 @@ int BuildingClass::vf_182()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459890
 int BuildingClass::vf_183()
 {
     return Type->AntiInfantryValue;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4598D0
 // A type that undeploys and gathers resources never qualifies; otherwise the
 // answer is the negation of slot 32.
@@ -4701,6 +5648,7 @@ bool BuildingClass::FUN_004598D0()
     return result;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459900
 // CAPPED at 4.2% (239 retail vs 229 compiled instructions; retail-only 6 `mov`, 4 `lea`). Retail keeps the
@@ -4749,6 +5697,7 @@ void BuildingBView::vf_282()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // BLOCK-ORDER DELTA (status partial, 41.7% - 5/12). Retail branches *into* the
 // call (`JNZ` to a block placed after an earlier `POP ESI; RET`), so the
 // function carries two epilogues with the call block out of line. We emit one
@@ -4768,6 +5717,7 @@ void BuildingClass_00459C00::FUN_00459C00()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459C20
 void BuildingClass::vf_219()
 {
@@ -4781,12 +5731,14 @@ void BuildingClass::vf_219()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459D80
 bool TechnoClass::vf_164()
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459D90
 bool TechnoClass::vf_177(int a1)
@@ -4795,12 +5747,14 @@ bool TechnoClass::vf_177(int a1)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459DA0
 int TechnoClass::vf_188()
 {
     return 2;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459DB0
 CellStruct TechnoClass::vf_189()
@@ -4809,11 +5763,13 @@ CellStruct TechnoClass::vf_189()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459DC0
 void TechnoClass::vf_190(int a1)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459DD0
 bool TechnoClass::vf_200()
@@ -4822,11 +5778,13 @@ bool TechnoClass::vf_200()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459DE0
 void TechnoClass::vf_205()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459DF0
 bool TechnoClass::vf_207()
@@ -4835,12 +5793,14 @@ bool TechnoClass::vf_207()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E00
 bool TechnoClass::vf_208()
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E10
 bool TechnoClass::vf_209()
@@ -4849,12 +5809,14 @@ bool TechnoClass::vf_209()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E20
 bool TechnoClass::vf_210()
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E30
 bool TechnoClass::vf_211()
@@ -4863,12 +5825,14 @@ bool TechnoClass::vf_211()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E40
 bool TechnoClass::vf_224()
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E50
 bool TechnoClass::vf_247(int a1)
@@ -4877,11 +5841,13 @@ bool TechnoClass::vf_247(int a1)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E60
 void TechnoClass::vf_270(int a1, int a2)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E70
 int BuildingClass::vf_12()
@@ -4889,6 +5855,7 @@ int BuildingClass::vf_12()
     return 0x720;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459E80
 HRESULT __stdcall BuildingClass::GetClassID(CLSID* pClassID)
@@ -4900,12 +5867,14 @@ HRESULT __stdcall BuildingClass::GetClassID(CLSID* pClassID)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459EC0
 int BuildingClass::vf_11()
 {
     return 6;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459ED0
 const wchar_t* BuildingClass::vf_36()
@@ -4914,12 +5883,14 @@ const wchar_t* BuildingClass::vf_36()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459EE0
 ObjectTypeClass* BuildingClass::vf_34()
 {
     return Type;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459EF0
 // CAPPED at 41.2% (7 of 17 instructions; retail-only: `add ecx,-0x80`, `lea esi,[eax-0x80]`; cl-only: two
@@ -4936,6 +5907,7 @@ CoordStruct BuildingClass::vf_43()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459F40
 // Hand back the object only if it is of the expected kind. Retail computes the
 // selection branchlessly (`SUB 6; NEG; SBB; NOT; AND`), which is what the
@@ -4950,12 +5922,14 @@ Obj_00459F40* Obj_00459F40::FUN_00459F40()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459F60
 int Triple3i::FUN_00459F60(const Triple3i* other) const
 {
     return a == other->a && b == other->b && c == other->c;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x459FF0
 // DynamicVectorClass<InfantryClass*>::Clear
@@ -5006,6 +5980,7 @@ void* Obj_0045A000::FUN_0045A050()
     return Ptr;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45A070
 // DynamicVectorClass<FoggedObjectClass*>::Clear
@@ -5061,6 +6036,7 @@ void FUN_0045A0D0(BufferHolder* obj)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TEMPLATE: GAMEMD 0x45A100
 // DynamicVectorClass<Reestablish*>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x45A120
@@ -5080,6 +6056,7 @@ void FUN_0045A0D0(BufferHolder* obj)
 template class VectorClass<Reestablish*>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45A130
 RectangleStruct* RectangleStruct::FromPointSize(const Point2D* pair, int third, int fourth)
 {
@@ -5092,6 +6069,7 @@ RectangleStruct* RectangleStruct::FromPointSize(const Point2D* pair, int third, 
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45A160
 void Obj_00437FC0::FUN_0045A160()
 {
@@ -5101,6 +6079,7 @@ void Obj_00437FC0::FUN_0045A160()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45A170
 void Obj_00437FC0::FUN_0045A170()
 {
@@ -5109,6 +6088,7 @@ void Obj_00437FC0::FUN_0045A170()
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45A850
 void FUN_0045A850(BufferHolder* obj)
@@ -5124,6 +6104,7 @@ void FUN_0045A850(BufferHolder* obj)
     obj->Length = 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45ACE0
 void* BufferHolderDtor::FUN_0045ACE0(unsigned int flags)
@@ -5148,6 +6129,7 @@ void* BufferHolderDtor::FUN_0045ACE0(unsigned int flags)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45AD30
 void* BufferHolderDtor::FUN_0045AD30(unsigned int flags)
 {
@@ -5170,6 +6152,7 @@ void* BufferHolderDtor::FUN_0045AD30(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45ADD0
 // An index at or past the count fails; removing the last element succeeds with
@@ -5204,6 +6187,7 @@ bool Vector_0045ADD0::FUN_0045ADD0(int index)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45AE10
 bool Vector_0045ADD0::FUN_0045AE10(int index)
 {
@@ -5227,6 +6211,7 @@ bool Vector_0045ADD0::FUN_0045AE10(int index)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45AEA0
 //
@@ -5304,6 +6289,7 @@ long ComHolder_0045AEA0::FUN_0045AEA0(IUnk** source)
     return hr;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45AF20
 //

@@ -33,16 +33,8 @@
 struct Coord_004585C0 { int X; int Y; int Z; };
 GG_STATIC_ASSERT(sizeof(Coord_004585C0) == 0xC);
 
-struct Point_004585C0 { int X; int Y; };
-GG_STATIC_ASSERT(sizeof(Point_004585C0) == 8);
-
-struct Projector_004585C0
-{
-    // FUNCTION: GAMEMD 0x6D2070 (decl; reloc) — world -> client projection.
-    Point_004585C0* CoordsToClient(Point_004585C0* out, const int* in);
-};
-// GLOBAL: GAMEMD 0x887324 — the projector instance pointer.
-extern Projector_004585C0* DAT_00887324;
+#include "../_layout/geometry2d.h"
+#include "../_layout/tactical.h"
 
 // ---------------------------------------------------------------------------
 struct AnimType_004585C0;
@@ -140,7 +132,7 @@ GG_STATIC_ASSERT(offsetof(OccupantVecVtbl_004585C0, Clear) == 0xC);
 struct BuildingType_004585C0
 {
     char _pad0000[0x1588];               // +0x0000
-    int  OccupantOffsets[1][2];          // +0x1588  (8 bytes per occupant)
+    Point2D OccupantOffsets[1];          // +0x1588  (8 bytes per occupant)
 };
 GG_STATIC_ASSERT(offsetof(BuildingType_004585C0, OccupantOffsets) == 0x1588);
 

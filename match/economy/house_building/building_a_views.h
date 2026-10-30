@@ -22,6 +22,7 @@
 #include "../../audio/voc_class_play_global_methods.h"
 #include "house_building_views.h"
 #include "../../_layout/cell_class.h"
+#include "../../_layout/map_0087f7e8.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 
@@ -399,17 +400,6 @@ GG_STATIC_ASSERT(offsetof(BAObjView, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(BAObjView, Type) == 0xA0);
 GG_STATIC_ASSERT(offsetof(BAObjView, unknown_118) == 0x118);
 GG_STATIC_ASSERT(offsetof(BAObjView, unknown_520) == 0x520);
-
-// The map object (partial).
-struct BAMapView
-{
-    // FUNCTION: GAMEMD 0x5657A0 (read-only here)
-    CellClass* FUN_005657A0(CellStruct* cell);
-    // FUNCTION: GAMEMD 0x6A6300 (read-only here)
-    void FUN_006A6300(int kind, int index);
-    // FUNCTION: GAMEMD 0x586360 (read-only here)
-    bool FUN_00586360(const CoordStruct& where);
-};
 
 // Object behind the global at 0x87F770 (partial).
 struct BAGlobalAView
@@ -904,8 +894,6 @@ extern CoordStruct DAT_0089C848;
 // FUNCTION: GAMEMD 0x772A90 (read-only here) - one register argument: __fastcall.
 unsigned int FUN_00772A90(BAObjView* entry);
 
-// GLOBAL: GAMEMD 0x87F7E8 - the map object (its address is loaded into ECX).
-extern BAMapView DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xA8B230 / 0x8871E0
 #include "../../core/scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;

@@ -10,6 +10,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/geometry2d.h"
+#include "../_layout/tactical.h"
 
 struct Coord_00453840
 {
@@ -30,27 +32,16 @@ GG_STATIC_ASSERT(offsetof(Coord_00453840, X) == 0x0);
 GG_STATIC_ASSERT(offsetof(Coord_00453840, Y) == 0x4);
 GG_STATIC_ASSERT(offsetof(Coord_00453840, Z) == 0x8);
 
-struct Point_00453840
-{
-    int X;
-    int Y;
-};
-GG_STATIC_ASSERT(sizeof(Point_00453840) == 8);
-GG_STATIC_ASSERT(offsetof(Point_00453840, X) == 0x0);
-GG_STATIC_ASSERT(offsetof(Point_00453840, Y) == 0x4);
-
 struct TypeView_00453840
 {
     char unknown_000[0xE44];
-    int At_E44;
-    int At_E48;
+    Point2D At_E44;
     char unknown_E4C[0x394];
-    int At_11E0;
-    int At_11E4;
+    Point2D At_11E0;
     char unknown_11E8[0x393];
     unsigned char At_157B;
     char unknown_157C[0xC];
-    Point_00453840 At_1588;
+    Point2D At_1588;
     char unknown_1590[0x135];
     unsigned char At_16C5;
     unsigned char At_16C6;
@@ -58,9 +49,9 @@ struct TypeView_00453840
     unsigned char At_1764;
 };
 GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_E44) == 0xE44);
-GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_E48) == 0xE48);
+GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_E44.Y) == 0xE48);
 GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_11E0) == 0x11E0);
-GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_11E4) == 0x11E4);
+GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_11E0.Y) == 0x11E4);
 GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_157B) == 0x157B);
 GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_1588) == 0x1588);
 GG_STATIC_ASSERT(offsetof(TypeView_00453840, At_16C5) == 0x16C5);
@@ -105,12 +96,5 @@ GG_STATIC_ASSERT(offsetof(BuildingClassVtbl_00453840, At_408) == 0x408);
 GG_STATIC_ASSERT(sizeof(FnAC_00453840) == 4);
 GG_STATIC_ASSERT(sizeof(Fn408_00453840) == 4);
 GG_STATIC_ASSERT(sizeof(BuildingClassVtbl_00453840) == 0x40C);
-
-struct Projector_00453840
-{
-    Point_00453840* CoordsToClient(Point_00453840* out, const int* in);
-};
-// GLOBAL: GAMEMD 0x887324
-extern Projector_00453840* DAT_00887324;
 
 #endif  // GG_MATCH_COMBAT_BUILDING_COORD_00453840_H

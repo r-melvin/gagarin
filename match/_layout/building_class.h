@@ -129,6 +129,8 @@ public:
     void FUN_00454930();
     // FUNCTION: GAMEMD 0x4504F0 -- record the prism stage, target and firing delay, then switch to the charge animation (slot 0xA).
     void FUN_004504F0(int stage, const CoordStruct* target);
+    // FUNCTION: GAMEMD 0x44FEC0 (decl; reloc) -- the per-building INI step, one INI argument.
+    void FUN_0044FEC0(void* ini);
     // FUNCTION: GAMEMD 0x450590 -- drop overpowerers no longer aiming at this building, then refresh IsOverpowered.
     void FUN_00450590();
 
@@ -217,6 +219,7 @@ public:
     virtual int vf_135();                                          // 135 0x4496B0
     virtual void vf_85(int a1, int a2, bool a3);                   // 85  0x457C90
     virtual void vf_184();                                         // 184 0x4576F0
+    virtual void vf_293();                                         // 293 0x456580
     virtual void vf_294();                                         // 294 0x4565E0
     virtual bool IsArmed();                                        // 171 0x458DB0
     virtual bool vf_212();                                         // 212 0x4555D0
