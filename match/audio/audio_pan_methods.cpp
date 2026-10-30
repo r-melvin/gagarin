@@ -26,17 +26,16 @@
 // load was removed as match steering. (The positional score is 0.0% because
 // the one missing instruction shifts every later one.)
 // ---------------------------------------------------------------------------
-void AdjustAudioEventPanning(void* event, unsigned int pan)
+void AudioEvent::AdjustAudioEventPanning(unsigned pan)
 {
-    AudioEventTag* ev = (AudioEventTag*)event;
-    int type = ev->Type;
+    int type = State;
     if (type == 3)
     {
         if (pan > 0x4000)
             pan = 0x4000;
         else if ((int)pan < 0)
             pan = 0;
-        FUN_00407170(&ev->Channel, pan);
+        FUN_00407170(&Channel, pan);
     }
     else
     {
@@ -44,6 +43,6 @@ void AdjustAudioEventPanning(void* event, unsigned int pan)
             pan = 0x4000;
         else if ((int)pan < 0)
             pan = 0;
-        FUN_00407150(&ev->Channel, pan);
+        FUN_00407150(&Channel, pan);
     }
 }

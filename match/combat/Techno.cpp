@@ -1841,7 +1841,7 @@ void TechnoClass::FUN_0070DE70(int a)
 // stops.
 void Techno_0070E000::GattlingRateDown(int rate)
 {
-    GattlingSoundController.FUN_00406060();
+    GattlingSoundController.EndLooping();
     IsGattlingSoundPlaying = 0;
 
     int step = (this->*Vptr->GetTechnoType)()->RateDown * rate;

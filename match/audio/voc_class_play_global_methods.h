@@ -16,60 +16,14 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/vector_class.h"
+#include "../_layout/voc_class.h"
 
-// The audio-event descriptor a voc entry owns at +0x00; only handled by
-// pointer here.
-struct AudioEvent_00750920;
-
-// The live sample handle returned by the player; opaque here.
-struct AudioHandle_00750920;
-
-// Element of VocClass::Array: the event descriptor sits at +0x00.
-struct VocItem_00750920
-{
-    AudioEvent_00750920* Event;   // +0x0000
-};
-GG_STATIC_ASSERT(offsetof(VocItem_00750920, Event) == 0x00);
-
-// The per-object handle onto a live audio event (AudioController).
-struct AudioController_00750920
-{
-    // FUNCTION: GAMEMD 0x406130 (decl; reloc) -- the live handle, if any.
-    AudioHandle_00750920* GetEvent();
-};
-
-// FUNCTION: GAMEMD 0x406310 (decl; reloc) -- the event a handle is playing.
-AudioEvent_00750920* FUN_00406310(AudioHandle_00750920* handle);
-// FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop a handle.
-void FUN_004052F0(AudioHandle_00750920* handle);
-// FUNCTION: GAMEMD 0x405190 (decl; reloc) -- start a new handle for an event.
-AudioHandle_00750920* FUN_00405190(AudioEvent_00750920* event);
-// FUNCTION: GAMEMD 0x4061D0 (decl; reloc) -- AdjustAudioEventVolume.
-void FUN_004061D0(AudioHandle_00750920* handle, unsigned int volume);
-// FUNCTION: GAMEMD 0x406270 (decl; reloc) -- AdjustAudioEventPanning.
-void FUN_00406270(AudioHandle_00750920* handle, unsigned int pan);
-// FUNCTION: GAMEMD 0x4060F0 (decl; reloc) -- AudioController::SetEvent.
-void FUN_004060F0(AudioController_00750920* controller,
-                  AudioHandle_00750920* handle,
-                  AudioEvent_00750920* event);
+// FUNCTION: GAMEMD 0x405190 (decl; reloc) -- start a new event for a descriptor.
+AudioEvent* FUN_00405190(AudioEventType* type);
+// FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop an event.
+void FUN_004052F0(AudioEvent* event);
 
 // GLOBAL: GAMEMD 0x8464AC -- VocClass::VoicesEnabled.
 extern char DAT_008464AC;
-
-struct VocClass
-{
-    // GLOBAL: GAMEMD 0xB1D378 -- VocClass::Array (Items 0xB1D37C, Count 0xB1D388).
-    static DynamicVectorClassLayout Array;
-
-    // FUNCTION: GAMEMD 0x750920
-    // The pan is declared after the volume: callers issue the EDX load
-    // between the volume push and the controller push (0x50C8C0, 0x458200),
-    // which is cl's right-to-left order for this declaration. The volume
-    // still travels on the stack, so the body compiles the same either way.
-    static AudioHandle_00750920* PlayGlobal(
-        int index, float volume, unsigned int pan,
-        AudioController_00750920* controller);
-};
 
 #endif  // GG_MATCH_AUDIO_VOC_CLASS_PLAY_GLOBAL_METHODS_H

@@ -20,32 +20,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/vector_class.h"
+#include "../_layout/voc_class.h"
 
-// The audio-event object referenced by a VocClass's +0x00 slot. Its name getter
-// (retail 0x00405170, __thiscall, returns char*) is matched elsewhere; declared
-// here only so cl emits a (reloc-normalised) call.
-struct Obj_00405170
-{
-    const char* GetName();   // GAMEMD 0x00405170 (__thiscall) — referenced only
-};
-
-// Element of VocClass::Array. Only the +0x00 audio-event pointer is touched by
-// FindIndex.
-struct VocItem
-{
-    Obj_00405170* Event;  // +0x00
-};
-
-GG_STATIC_ASSERT(offsetof(VocItem, Event) == 0x00);
-
-// VocClass::Array global (DynamicVectorClass<VocClass*> @ 0x00B1D378).
-extern DynamicVectorClassLayout VocClass_Array;
-
-class VocClass
-{
-public:
-    static int FindIndex(const char* pName);  // GAMEMD 0x007514D0
-};
+// VocClass, its descriptor and the VocClass::Array global are defined in match/_layout/voc_class.h.
 
 #endif  // GG_MATCH_AUDIO_VOC_CLASS_METHODS_H

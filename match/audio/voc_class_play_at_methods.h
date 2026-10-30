@@ -21,7 +21,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/vector_class.h"
+#include "../_layout/voc_class.h"
 
 #include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x8);
@@ -29,55 +29,14 @@ GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 // The audio-event descriptor a voc entry owns at +0x00; only handled by
 // pointer here.
-struct AudioEvent_007509E0;
-
-// The live sample handle returned by the player; opaque here.
-struct AudioHandle_007509E0;
-
-// Element of VocClass::Array: the event descriptor sits at +0x00.
-struct VocItem_007509E0
-{
-    AudioEvent_007509E0* Event;   // +0x0000
-};
-GG_STATIC_ASSERT(offsetof(VocItem_007509E0, Event) == 0x00);
-
-// The per-object handle onto a live audio event (AudioController).
-struct AudioController_007509E0
-{
-    // FUNCTION: GAMEMD 0x406130 (decl; reloc) -- the live handle, if any.
-    AudioHandle_007509E0* GetEvent();
-};
-
-// FUNCTION: GAMEMD 0x406310 (decl; reloc) -- the event a handle is playing.
-AudioEvent_007509E0* FUN_00406310(AudioHandle_007509E0* handle);
-// FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop a handle.
-void FUN_004052F0(AudioHandle_007509E0* handle);
-// FUNCTION: GAMEMD 0x405190 (decl; reloc) -- start a new handle for an event.
-AudioHandle_007509E0* FUN_00405190(AudioEvent_007509E0* event);
-// FUNCTION: GAMEMD 0x4061D0 (decl; reloc) -- AdjustAudioEventVolume.
-void FUN_004061D0(AudioHandle_007509E0* handle, unsigned int volume);
-// FUNCTION: GAMEMD 0x406270 (decl; reloc) -- AdjustAudioEventPanning.
-void FUN_00406270(AudioHandle_007509E0* handle, int pan);
-// FUNCTION: GAMEMD 0x4060F0 (decl; reloc) -- AudioController::SetEvent.
-void FUN_004060F0(AudioController_007509E0* controller,
-                  AudioHandle_007509E0* handle,
-                  AudioEvent_007509E0* event);
-// FUNCTION: GAMEMD 0x750AC0 (decl; reloc) -- positional volume/pan for an
-// event heard from `coords`; writes the pan through `pan`.
-float FUN_00750AC0(CoordStruct* coords, int* pan,
-                   AudioEvent_007509E0* event);
+// FUNCTION: GAMEMD 0x405190 (decl; reloc) -- start a new event for a descriptor.
+AudioEvent* FUN_00405190(AudioEventType* type);
+// FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop an event.
+void FUN_004052F0(AudioEvent* event);
+// FUNCTION: GAMEMD 0x750AC0 (decl; reloc) -- positional volume (float in ST0) and pan for a descriptor.
+float FUN_00750AC0(CoordStruct* coords, int* pan, AudioEventType* type);
 
 // GLOBAL: GAMEMD 0x8464AC -- VocClass::VoicesEnabled.
 extern char DAT_008464AC;
-
-struct VocClass
-{
-    // GLOBAL: GAMEMD 0xB1D378 -- VocClass::Array (Items 0xB1D37C, Count 0xB1D388).
-    static DynamicVectorClassLayout Array;
-
-    // FUNCTION: GAMEMD 0x7509E0
-    static AudioHandle_007509E0* PlayAt(
-        int index, CoordStruct* coords, AudioController_007509E0* controller);
-};
 
 #endif  // GG_MATCH_AUDIO_VOC_CLASS_PLAY_AT_METHODS_H

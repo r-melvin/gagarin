@@ -19,6 +19,7 @@
 #include "../core/triple_timer_init_methods.h"
 #include "../core/tail_call_methods.h"
 #include "audio_controller.h"
+#include "audio_event_type.h"
 
 struct Peer_00405D40
 {
@@ -47,6 +48,10 @@ struct Peer_00405D40
     void FUN_004025B0();
     // FUNCTION: GAMEMD 0x4026F0 (decl; reloc) — __thiscall forwarder.
     void FUN_004026F0();
+    // FUNCTION: GAMEMD 0x4026A0 (decl; reloc) — __thiscall forwarder.
+    void FUN_004026A0();
+    // FUNCTION: GAMEMD 0x4026B0 (decl; reloc) — __thiscall forwarder.
+    void FUN_004026B0();
 };
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_1A8) == 0x1A8);
@@ -61,8 +66,29 @@ GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_B8) == 0xB8);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_BC) == 0xBC);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, Voice) == 0xC0);
 
+// A level sink at AudioEvent +0xB8: a ramp timer whose level is set, then latched.
+struct AudioEventSink
+{
+    Timer_00401000 Timer;   // +0x00
+    int Set(int scaled)
+    {
+        FUN_00407150(&Timer, scaled);
+        return FUN_004071C0(&Timer);
+    }
+};
+GG_STATIC_ASSERT(offsetof(AudioEventSink, Timer) == 0);
+
 struct AudioEvent
 {
+    // FUNCTION: GAMEMD 0x406190 -- scale the clamped level by the descriptor's ramp and apply it to Sink
+    void __fastcall FUN_00406190(unsigned level);
+    // FUNCTION: GAMEMD 0x4061D0 -- AdjustAudioEventVolume
+    int __fastcall FUN_004061D0(unsigned level);
+    // FUNCTION: GAMEMD 0x406270 -- AdjustAudioEventPanning
+    void __fastcall AdjustAudioEventPanning(unsigned pan);
+    // FUNCTION: GAMEMD 0x406310 -- the descriptor this event plays
+    AudioEventType* GetEventType();
+
     char _pad000[0x18];       // +0x0000
     union {
         unsigned int  Flags;      // +0x0018  bit 0 = already stopped
@@ -79,10 +105,15 @@ struct AudioEvent
     int   SubCount;           // +0x00A8
     char  _pad0AC[0xB0 - 0xAC];
     Peer_00405D40* Peer;      // +0x00B0
-    char  _pad0B4[0x138 - 0xB4];
+    char  _pad0B4[0xB8 - 0xB4];
+    AudioEventSink Sink;      // +0x00B8
+    char  _pad0E0[0x108 - 0xE0];
+    Timer_00401000 Channel;   // +0x0108 (pan; initialized by 0x4062C0)
+    char  _pad130[0x138 - 0x130];
     unsigned int Serial;      // +0x0138
     char  _pad13C[0x278 - 0x13C];
     AudioController* Controller; // +0x0278 (stored by SetEvent)
+    char  _pad27C[0x280 - 0x27C];
 };
 GG_STATIC_ASSERT(offsetof(AudioEvent, Flags) == 0x18);
 GG_STATIC_ASSERT(offsetof(AudioEvent, State) == 0x1C);
@@ -90,9 +121,11 @@ GG_STATIC_ASSERT(offsetof(AudioEvent, EventType) == 0x24);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Subs) == 0x28);
 GG_STATIC_ASSERT(offsetof(AudioEvent, SubCount) == 0xA8);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Peer) == 0xB0);
+GG_STATIC_ASSERT(offsetof(AudioEvent, Sink) == 0xB8);
+GG_STATIC_ASSERT(offsetof(AudioEvent, Channel) == 0x108);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Serial) == 0x138);
 GG_STATIC_ASSERT(offsetof(AudioEvent, Controller) == 0x278);
+GG_STATIC_ASSERT(sizeof(AudioEvent) == 0x280);
 
-// The caller's handle on a playing voice.
 
 #endif

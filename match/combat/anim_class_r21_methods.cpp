@@ -192,7 +192,7 @@ void AnimClass::vf_62()
     if (OwnerObject)
         static_cast<ObjectClass*>(OwnerObject)->vf_24(this);
     FUN_00424B50(0);
-    StartSoundAudioController.FUN_00406060();
+    StartSoundAudioController.EndLooping();
     if (!IsInert && Type && Type->StopSound != -1) {
         FUN_007509E0(Type->StopSound, vf_18(), &StopSoundAudioController);
     }

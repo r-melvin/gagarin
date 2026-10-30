@@ -9,6 +9,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/audio_event_type.h"
 
 // GLOBAL: GAMEMD 0x87E2A0 — nonzero once the audio subsystem is up.
 extern int DAT_0087E2A0;
@@ -63,22 +64,7 @@ void FUN_004026A0(Peer_00405FD0* peer);
 // FUNCTION: GAMEMD 0x4026B0
 void FUN_004026B0(Peer_00405FD0* peer);
 
-// The queue 0x4064A0 appends to: at most 0x20 sample indices, with the count
-// immediately after the array (`CMP [EDI+0x134],0x20` bounds it).
-struct Queue_004064A0
-{
-    char _pad000[0xC];       // +0x0000
-    int  field_0C;           // +0x000C  cleared when a name fails to resolve
-    char _pad010[0xA4];      // +0x0010
-    unsigned int Samples[0x20];  // +0x00B4
-    int  Count;              // +0x0134
-};
-GG_STATIC_ASSERT(offsetof(Queue_004064A0, Samples) == 0xB4);
-GG_STATIC_ASSERT(offsetof(Queue_004064A0, Count) == 0x134);
-
 // FUNCTION: GAMEMD 0x405FD0
 void FUN_00405FD0(Handle_00405FD0* handle);
-// FUNCTION: GAMEMD 0x4064A0
-int FUN_004064A0(Queue_004064A0* self, const char* name);
 
 #endif  // GG_MATCH_AUDIO_SAMPLE_REGISTRY_METHODS_H

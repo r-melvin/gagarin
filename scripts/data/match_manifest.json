@@ -1111,16 +1111,16 @@
  {
   "tu": "match/audio/audio.cpp",
   "addr": "0x406310",
-  "sym": "?GetEventType@AudioController@@SIPAUVocClass@@PAX@Z",
+  "sym": "?GetEventType@AudioEvent@@QAEPAUAudioEventType@@XZ",
   "len": "0x4",
   "name": "AudioController::GetEventType",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/audio_end_looping_methods.cpp",
   "addr": "0x406060",
-  "sym": "?EndLooping@AudioHandle_00406060@@QAEXXZ",
+  "sym": "?EndLooping@AudioController@@QAEXXZ",
   "len": "0x8e",
   "name": "Audio::EndLooping",
   "status": "partial",
@@ -1138,7 +1138,7 @@
  {
   "tu": "match/audio/audio_pan_methods.cpp",
   "addr": "0x406270",
-  "sym": "?AdjustAudioEventPanning@@YIXPAXI@Z",
+  "sym": "?AdjustAudioEventPanning@AudioEvent@@QAIXI@Z",
   "len": "0x48",
   "name": "AdjustAudioEventPanning",
   "status": "partial",
@@ -1230,7 +1230,7 @@
  {
   "tu": "match/audio/obj_00406500_setter_methods.cpp",
   "addr": "0x406520",
-  "sym": "?FUN_00406520@Obj_00406500@@QAIXH@Z",
+  "sym": "?FUN_00406520@AudioEventType@@QAIXH@Z",
   "len": "0x7",
   "name": "FUN_00406520",
   "status": "matched",
@@ -1239,7 +1239,7 @@
  {
   "tu": "match/audio/obj_00406500_setter_methods.cpp",
   "addr": "0x406530",
-  "sym": "?FUN_00406530@Obj_00406500@@QAIXH@Z",
+  "sym": "?FUN_00406530@AudioEventType@@QAIXH@Z",
   "len": "0x7",
   "name": "FUN_00406530",
   "status": "matched",
@@ -1248,7 +1248,7 @@
  {
   "tu": "match/audio/obj_00406500_setter_methods.cpp",
   "addr": "0x406540",
-  "sym": "?FUN_00406540@Obj_00406500@@QAIXH@Z",
+  "sym": "?FUN_00406540@AudioEventType@@QAIXH@Z",
   "len": "0x4",
   "name": "FUN_00406540",
   "status": "matched",
@@ -1257,7 +1257,7 @@
  {
   "tu": "match/audio/obj_00406500_setter_methods.cpp",
   "addr": "0x4065C0",
-  "sym": "?FUN_004065C0@Obj_00406500@@QAIXH@Z",
+  "sym": "?FUN_004065C0@AudioEventType@@QAIXH@Z",
   "len": "0x4",
   "name": "FUN_004065C0",
   "status": "matched",
@@ -1266,7 +1266,7 @@
  {
   "tu": "match/audio/obj_00406500_setter_methods.cpp",
   "addr": "0x4065D0",
-  "sym": "?FUN_004065D0@Obj_00406500@@QAIXH@Z",
+  "sym": "?FUN_004065D0@AudioEventType@@QAIXH@Z",
   "len": "0x4",
   "name": "FUN_004065D0",
   "status": "matched",
@@ -1275,7 +1275,7 @@
  {
   "tu": "match/audio/obj_00406500_setter_methods.cpp",
   "addr": "0x4065E0",
-  "sym": "?FUN_004065E0@Obj_00406500@@QAIXH@Z",
+  "sym": "?FUN_004065E0@AudioEventType@@QAIXH@Z",
   "len": "0x4",
   "name": "FUN_004065E0",
   "status": "matched",
@@ -1284,7 +1284,7 @@
  {
   "tu": "match/audio/obj_00406500_setter_methods.cpp",
   "addr": "0x406640",
-  "sym": "?FUN_00406640@Obj_00406500@@QAIXH@Z",
+  "sym": "?FUN_00406640@AudioEventType@@QAIXH@Z",
   "len": "0x4",
   "name": "FUN_00406640",
   "status": "matched",
@@ -1311,11 +1311,11 @@
  {
   "tu": "match/audio/sample_registry_methods.cpp",
   "addr": "0x4064A0",
-  "sym": "?FUN_004064A0@@YIHPAUQueue_004064A0@@PBD@Z",
+  "sym": "?FUN_004064A0@AudioEventType@@QAIHPBD@Z",
   "len": "0x7f",
   "name": "FUN_004064A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/streamer_thread_flush_methods.cpp",
@@ -1446,20 +1446,20 @@
  {
   "tu": "match/audio/voc_class_play_at_methods.cpp",
   "addr": "0x7509E0",
-  "sym": "?PlayAt@VocClass@@SIPAUAudioHandle_007509E0@@HPAUCoordStruct@@PAUAudioController_007509E0@@@Z",
+  "sym": "?PlayAt@VocClass@@SIPAUAudioEvent@@HPAUCoordStruct@@PAUAudioController@@@Z",
   "len": "0xdc",
   "name": "VocClass::PlayAt",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/voc_class_play_global_methods.cpp",
   "addr": "0x750920",
-  "sym": "?PlayGlobal@VocClass@@SIPAUAudioHandle_00750920@@HMIPAUAudioController_00750920@@@Z",
+  "sym": "?PlayGlobal@VocClass@@SIPAUAudioEvent@@HMIPAUAudioController@@@Z",
   "len": "0xBA",
   "name": "VocClass::PlayGlobal",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/audio/vox_class_methods.cpp",
@@ -1491,7 +1491,7 @@
  {
   "tu": "match/audio/vox_class_play_methods.cpp",
   "addr": "0x750E20",
-  "sym": "?PlayAtPos@VoxClass@@SIPAXHPAUCoordStruct@@H@Z",
+  "sym": "?PlayAtPos@VocClass@@SIPAUAudioEvent@@HPAUCoordStruct@@H@Z",
   "len": "0x98",
   "name": "VoxClass::PlayAtPos",
   "status": "partial",
@@ -4417,12 +4417,12 @@
  },
  {
   "tu": "match/core/clamped_scale_methods.cpp",
-  "addr": "0x4061d0",
-  "sym": "?FUN_004061D0@@YIHPAUObj_004061D0@@I@Z",
+  "addr": "0x4061D0",
+  "sym": "?FUN_004061D0@AudioEvent@@QAIHI@Z",
   "len": "0x73",
   "name": "FUN_004061D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/com_gated_predicate_methods.cpp",
@@ -6509,11 +6509,11 @@
  {
   "tu": "match/core/flag_and_clamp_methods.cpp",
   "addr": "0x406620",
-  "sym": "?FUN_00406620@@YIXPAUObj_00406600@@H@Z",
+  "sym": "?FUN_00406620@AudioEventType@@QAIXH@Z",
   "len": "0x1c",
   "name": "FUN_00406620",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/flag_and_clamp_methods.cpp",
@@ -7364,7 +7364,7 @@
  {
   "tu": "match/core/guarded_getter_methods.cpp",
   "addr": "0x405130",
-  "sym": "?FUN_00405130@Obj_00405100@@QBEHXZ",
+  "sym": "?FUN_00405130@AudioEventType@@QBEHXZ",
   "len": "0x10",
   "name": "FUN_00405130",
   "status": "matched",
@@ -7373,7 +7373,7 @@
  {
   "tu": "match/core/guarded_getter_methods.cpp",
   "addr": "0x405140",
-  "sym": "?FUN_00405140@Obj_00405100@@QBEMXZ",
+  "sym": "?FUN_00405140@AudioEventType@@QBEMXZ",
   "len": "0x14",
   "name": "FUN_00405140",
   "status": "matched",
@@ -7382,7 +7382,7 @@
  {
   "tu": "match/core/guarded_getter_methods.cpp",
   "addr": "0x405160",
-  "sym": "?FUN_00405160@Obj_00405100@@QBEHXZ",
+  "sym": "?FUN_00405160@AudioEventType@@QBEHXZ",
   "len": "0x10",
   "name": "FUN_00405160",
   "status": "matched",
@@ -7391,7 +7391,7 @@
  {
   "tu": "match/core/guarded_getter_methods.cpp",
   "addr": "0x405170",
-  "sym": "?FUN_00405170@Obj_00405100@@QBEPBDXZ",
+  "sym": "?FUN_00405170@AudioEventType@@QBEPBDXZ",
   "len": "0x12",
   "name": "FUN_00405170",
   "status": "matched",
@@ -10802,7 +10802,7 @@
  {
   "tu": "match/core/small_misc2_methods.cpp",
   "addr": "0x406650",
-  "sym": "?FUN_00406650@Obj_00406600b@@QBEHXZ",
+  "sym": "?FUN_00406650@AudioEventType@@QBEHXZ",
   "len": "0x16",
   "name": "FUN_00406650",
   "status": "matched",
@@ -10974,11 +10974,11 @@
  {
   "tu": "match/core/small_misc37_methods.cpp",
   "addr": "0x406550",
-  "sym": "?FUN_00406550@@YIXPAUObj_00406550@@H@Z",
+  "sym": "?FUN_00406550@AudioEventType@@QAIXH@Z",
   "len": "0x13",
   "name": "FUN_00406550",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_class_slots_41bdd0.cpp",
@@ -11442,11 +11442,11 @@
  {
   "tu": "match/core/small_misc48_methods.cpp",
   "addr": "0x406570",
-  "sym": "?FUN_00406570@Obj_00406570@@QAIXH@Z",
+  "sym": "?FUN_00406570@AudioEventType@@QAIXH@Z",
   "len": "0x4c",
   "name": "FUN_00406570",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc48_methods.cpp",
@@ -12936,7 +12936,7 @@
  {
   "tu": "match/core/tiny_leaf_methods.cpp",
   "addr": "0x4065F0",
-  "sym": "?FUN_004065F0@Obj_00406500b@@QAEXH@Z",
+  "sym": "?FUN_004065F0@AudioEventType@@QAEXM@Z",
   "len": "0xa",
   "name": "FUN_004065F0",
   "status": "matched",
@@ -12945,7 +12945,7 @@
  {
   "tu": "match/core/tiny_leaf_methods.cpp",
   "addr": "0x406600",
-  "sym": "?FUN_00406600@Obj_00406500b@@QAIXHH@Z",
+  "sym": "?FUN_00406600@AudioEventType@@QAIXHH@Z",
   "len": "0xd",
   "name": "FUN_00406600",
   "status": "matched",
@@ -12954,7 +12954,7 @@
  {
   "tu": "match/core/tiny_leaf_methods.cpp",
   "addr": "0x406610",
-  "sym": "?FUN_00406610@Obj_00406500b@@QAIXHH@Z",
+  "sym": "?FUN_00406610@AudioEventType@@QAIXHH@Z",
   "len": "0xd",
   "name": "FUN_00406610",
   "status": "matched",
@@ -139207,11 +139207,11 @@
  {
   "tu": "match/core/leaf_sweep_r13_w1.cpp",
   "addr": "0x406190",
-  "sym": "?FUN_00406190@@YIXPAUObj_004061D0@@I@Z",
+  "sym": "?FUN_00406190@AudioEvent@@QAIXI@Z",
   "len": "0x3c",
   "name": "FUN_00406190",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_sweep_r13_w1.cpp",
@@ -146951,11 +146951,11 @@
  {
   "tu": "match/audio/voc_class_ini_750440.cpp",
   "addr": "0x750440",
-  "sym": "?ReadINI@VocReader_00750440@@QAE_NPAVCCINIClass@@@Z",
+  "sym": "?ReadINI@VocClass@@QAE_NPAVCCINIClass@@@Z",
   "len": "0x4DE",
   "name": "VocReader_00750440::ReadINI",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/ownrdraw.cpp",

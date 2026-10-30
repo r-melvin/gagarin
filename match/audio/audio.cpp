@@ -10,7 +10,7 @@
 //   FUNCTION: GAMEMD 0x4060F0  AudioController::SetEvent          (__fastcall)
 //   FUNCTION: GAMEMD 0x406130  AudioController::GetEvent          (__thiscall)
 //   FUNCTION: GAMEMD 0x406170  AudioController::GetEventType      (__thiscall)
-//   FUNCTION: GAMEMD 0x406310  AudioController::GetEventType      (__fastcall, static)
+//   FUNCTION: GAMEMD 0x406310  AudioEvent::GetEventType           (__fastcall, 1 arg)
 //   GLOBAL:   GAMEMD 0x87E294  AudioIDXData::Instance   (AudioIDXData*)
 //   GLOBAL:   GAMEMD 0x87E2A0  g_AudioEnabled           (audio-pool guard ptr)
 //   LIBRARY:  GAMEMD 0x7C8D20  _strcmpi   (bsearch comparator; CRT, reloc)
@@ -150,12 +150,11 @@ AudioEventType* AudioController::GetEventType()
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x406310  (__fastcall: event=ECX)
 //
-// Read the type (VocClass*) directly out of a raw audio-event object. Not truly
-// a controller method; co-located with the controller's event helpers.
+// The descriptor an audio event plays (its +0x24 word).
 // ---------------------------------------------------------------------------
-VocClass* AudioController::GetEventType(void* event)
+AudioEventType* AudioEvent::GetEventType()
 {
-    return *(VocClass**)((char*)event + 0x24);
+    return EventType;
 }
 
 // BEGIN defined globals (define_globals.py)

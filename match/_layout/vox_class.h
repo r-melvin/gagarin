@@ -18,7 +18,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
-#include "coord_struct.h"
 
 class VoxClass;
 
@@ -59,7 +58,6 @@ public:
     static void PlayIndex(int index, int type, int priority);           // 0x752480
     static void SilenceIndex(int index);                                // 0x752A40
     VoxNode* GetActiveVoice();                                          // 0x752680
-    static void* PlayAtPos(int index, CoordStruct* coords, int unk);    // 0x750E20
     static void DeleteAll();                                            // 0x7531A0
     void FUN_00752D60();                                                // 0x752D60
 

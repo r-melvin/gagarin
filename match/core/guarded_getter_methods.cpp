@@ -7,33 +7,33 @@
 #include "guarded_getter_methods.h"
 
 // FUNCTION: GAMEMD 0x405130
-int Obj_00405100::FUN_00405130() const
+int AudioEventType::FUN_00405130() const
 {
     if (DAT_0087E2A0 == 0) {
         return 0;
     }
-    return unknown_50;
+    return Range;
 }
 
 // FUNCTION: GAMEMD 0x405140
 // The neutral value here is the float 0.0 loaded from 0x7E1748 rather than an
 // immediate - x87 has no way to push a constant other than 1.0 directly, so
 // even a literal zero comes from memory.
-float Obj_00405100::FUN_00405140() const
+float AudioEventType::FUN_00405140() const
 {
     if (DAT_0087E2A0 == 0) {
         return 0.0f;
     }
-    return unknown_54;
+    return MinVolume;
 }
 
 // FUNCTION: GAMEMD 0x405160
-int Obj_00405100::FUN_00405160() const
+int AudioEventType::FUN_00405160() const
 {
     if (DAT_0087E2A0 == 0) {
         return 0;
     }
-    return unknown_14;
+    return Type;
 }
 
 // FUNCTION: GAMEMD 0x405170
@@ -46,9 +46,9 @@ int Obj_00405100::FUN_00405160() const
 // `gate ? live : placeholder` loads the live value first and gets the branch
 // backwards; `gate == 0 ? placeholder : live` puts the placeholder in EAX
 // before the test, as retail has it.
-const char* Obj_00405100::FUN_00405170() const
+const char* AudioEventType::FUN_00405170() const
 {
-    return DAT_0087E2A0 == 0 ? NoEventsString : &unknown_6C;
+    return DAT_0087E2A0 == 0 ? NoEventsString : Name;
 }
 
 // FUNCTION: GAMEMD 0x42E6D0

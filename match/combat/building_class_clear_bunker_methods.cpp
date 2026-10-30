@@ -20,8 +20,8 @@ void BuildingClass::ClearBunker()
     {
         if (RulesInstance->BunkerWallsDownSound != -1)
         {
-            Coord_00459470 coords = Location;
-            VocClass_PlayAt_00459470(RulesInstance->BunkerWallsDownSound, &coords, 0);
+            CoordStruct coords = Location;
+            VocClass::PlayAt(RulesInstance->BunkerWallsDownSound, &coords, 0);
         }
 
         const char* name;

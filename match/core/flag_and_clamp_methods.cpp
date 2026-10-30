@@ -43,9 +43,9 @@ static __forceinline int ClampPercent(int value)
 }
 
 // FUNCTION: GAMEMD 0x406620
-void FUN_00406620(Obj_00406600* obj, int value)
+void AudioEventType::FUN_00406620(int value)
 {
-    obj->unknown_68 = ClampPercent(value);
+    VShift = ClampPercent(value);
 }
 
 // FUNCTION: GAMEMD 0x407000

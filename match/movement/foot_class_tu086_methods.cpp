@@ -26,6 +26,7 @@
 //   FUNCTION: GAMEMD 0x4DFE00  FootClass::vf_211 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DFF40  FootClass::vf_209 (__thiscall)
 
+#include "../_layout/voc_class.h"
 #include "../_layout/foot_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/team_class.h"
@@ -418,7 +419,7 @@ void FootClass::FUN_004DE670(FootClass* passenger)
     Passengers.RemovePassenger(passenger);
     if (passenger != 0 && vf_33()->LeaveTransportSound != -1) {
         CoordStruct where = Location;
-        VoxClass::PlayAtPos(vf_33()->LeaveTransportSound, &where, 0);
+        VocClass::PlayAtPos(vf_33()->LeaveTransportSound, &where, 0);
     }
     if (vf_33()->Gunner && Passengers.NumPassengers == 0) {
         vf_310(passenger);

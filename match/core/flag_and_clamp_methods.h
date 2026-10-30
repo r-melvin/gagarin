@@ -11,20 +11,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "triple_timer_init_methods.h"
+#include "../_layout/audio_event_type.h"
 
 // GLOBAL: GAMEMD 0x87E728
 extern void* DAT_0087E728;
 
 
-struct Obj_00406600
-{
-    char _pad00[0x68];
-    int  unknown_68;   // +0x0068
-};
-GG_STATIC_ASSERT(offsetof(Obj_00406600, unknown_68) == 0x68);
-
-// FUNCTION: GAMEMD 0x406620 — value arrives in EDX, so __fastcall, not __thiscall.
-void FUN_00406620(Obj_00406600* obj, int value);
 
 // FUNCTION: GAMEMD 0x407000
 bool __cdecl FUN_00407000();

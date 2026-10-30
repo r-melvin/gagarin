@@ -15,6 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/audio_event_type.h"
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
@@ -61,24 +62,6 @@ struct ListHead3
 struct FreeHead2 { void* First; };
 void FUN_00407530(FreeHead2* head, void* payload);   // FUNCTION: GAMEMD 0x407530
 
-struct Obj_00406500b
-{
-    char _pad00[0x54];
-    int  unknown_54;   // +0x0054
-    int  unknown_58;   // +0x0058
-    int  unknown_5C;   // +0x005C
-    int  unknown_60;   // +0x0060
-    int  unknown_64;   // +0x0064
-
-    // FUNCTION: GAMEMD 0x4065F0
-    void FUN_004065F0(int value);
-    // FUNCTION: GAMEMD 0x406600
-    void __fastcall FUN_00406600(int a, int b);
-    // FUNCTION: GAMEMD 0x406610
-    void __fastcall FUN_00406610(int a, int b);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00406500b, unknown_54) == 0x54);
-GG_STATIC_ASSERT(offsetof(Obj_00406500b, unknown_64) == 0x64);
 
 struct Target_00407B00 { char _pad[0x94]; int at94; int at98; int at9C; };
 struct Obj_00407B00

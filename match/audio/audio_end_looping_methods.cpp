@@ -56,34 +56,34 @@
 // __thiscall member call, volatile), so the two sites are one open class:
 // cl 8804 resolves the peer's home to ECX at the load and never materialises
 // retail's `MOV ECX,EAX`; the EDX flags update is downstream of that.
-void AudioHandle_00406060::EndLooping()
+void AudioController::EndLooping()
 {
-    Voice_00406060* voice;
-    Token_00406060* token;
-    Peer_00406060* peer;
+    AudioEvent* voice;
+    AudioEventType* token;
+    Peer_00405D40* peer;
 
-    if (DAT_0087E2A0 == 0) { this->Token = 0; return; }
-    if (this->Owner != (void*)DAT_0087E294) { this->Token = 0; return; }
-    voice = this->Voice;
-    if (voice == 0) { this->Token = 0; return; }
-    token = voice->Token;
-    if (this->Token != token) { this->Voice = 0; this->Token = 0; return; }
-    if (this->Serial != voice->Serial) { this->Voice = 0; this->Token = 0; return; }
-    if ((token->Flags & 1) == 0) { this->Token = 0; return; }
-    if (token->unknown_4C != 0) { this->Token = 0; return; }
-    if ((voice->FlagsLow & 0x20) != 0) { this->Voice = 0; this->Token = 0; return; }
+    if (DAT_0087E2A0 == 0) { this->EventType = 0; return; }
+    if (this->AudioIndex != &AudioIDXData_Instance) { this->EventType = 0; return; }
+    voice = this->Event;
+    if (voice == 0) { this->EventType = 0; return; }
+    token = voice->EventType;
+    if (this->EventType != token) { this->Event = 0; this->EventType = 0; return; }
+    if (this->Stamp != voice->Serial) { this->Event = 0; this->EventType = 0; return; }
+    if ((token->Control & 1) == 0) { this->EventType = 0; return; }
+    if (token->Loop != 0) { this->EventType = 0; return; }
+    if ((voice->FlagsLow & 0x20) != 0) { this->Event = 0; this->EventType = 0; return; }
 
     peer = voice->Peer;
     if (peer != 0 && voice == peer->Voice) {
         peer->FUN_004026A0();
         voice->Flags = voice->Flags | 0x60;
         voice->Peer->FUN_004026B0();
-        this->Voice = 0;
-        this->Token = 0;
+        this->Event = 0;
+        this->EventType = 0;
         return;
     }
 
     voice->Flags = voice->Flags | 0x60;
-    this->Voice = 0;
-    this->Token = 0;
+    this->Event = 0;
+    this->EventType = 0;
 }

@@ -5,24 +5,24 @@
 #include "small_misc48_methods.h"
 
 // FUNCTION: GAMEMD 0x406570
-void Obj_00406570::FUN_00406570(int flags)
+void AudioEventType::FUN_00406570(int flags)
 {
-    this->Flags = flags;
+    this->Control = flags;
 
     if (flags & 0x20) {
-        if (this->LatchA == 0) {
-            this->LatchA = 1;
+        if (this->Attack == 0) {
+            this->Attack = 1;
         }
     } else {
-        this->LatchA = 0;
+        this->Attack = 0;
     }
 
     if (flags & 0x40) {
-        if (this->LatchB == 0) {
-            this->LatchB = 1;
+        if (this->Decay == 0) {
+            this->Decay = 1;
         }
     } else {
-        this->LatchB = 0;
+        this->Decay = 0;
     }
 }
 

@@ -18,64 +18,8 @@
 
 #include <stddef.h>
 #include "triple_timer_init_methods.h"
+#include "../_layout/audio_event.h"
 #include "../_rt/gg_static_assert.h"
 
-struct Sink_004061D0;
-
-// FUNCTION: GAMEMD 0x407150 (decl; reloc) — the mode-not-3 setter. Takes the
-// scaled value in EDX (`SHL EDX,0x10; MOV [ECX+8],EDX` at 0x407154), so it is
-// a __fastcall free function, not a __thiscall member.
-
-
-// FUNCTION: GAMEMD 0x407170 (decl; reloc) — the mode-3 setter, reached by
-// `JMP` at 0x406204.
-
-
-// FUNCTION: GAMEMD 0x4071C0 (decl; reloc) — the post-set notify, reached by
-// `MOV ECX,ESI; POP ESI; JMP` at 0x40623B. Only ECX is loaded, so __fastcall
-// and __thiscall are both consistent with the bytes; __fastcall is what makes
-// VC6 tail-jump it (a __thiscall member here stays a `CALL; POP; RET`).
-
-struct Sink_004061D0
-{
-    Timer_00401000 Timer; // +0; 0x4061FE/0x406225 address the initialized timer
-    // The mode-not-3 path: set, then notify. Inlined into 0x4061D0, which is
-    // what keeps the `PUSH ESI` inside that branch (0x40621E) instead of the
-    // prologue.
-    int Set(int scaled)
-    {
-        FUN_00407150(&Timer, scaled);
-        return FUN_004071C0(&Timer);
-    }
-};
-
-GG_STATIC_ASSERT(offsetof(Sink_004061D0, Timer) == 0);
-
-struct Rate_004061D0
-{
-    char     _pad000[0x1C];
-    unsigned Value;   // +0x001C
-};
-GG_STATIC_ASSERT(offsetof(Rate_004061D0, Value) == 0x1C);
-
-struct Obj_004061D0
-{
-    char            _pad000[0x1C];
-    int             Mode;   // +0x001C
-    char            _pad020[0x24 - 0x20];
-    Rate_004061D0*  Rate;   // +0x0024
-    char            _pad028[0xB8 - 0x28];
-    Sink_004061D0   Sink;   // +0x00B8
-};
-GG_STATIC_ASSERT(offsetof(Obj_004061D0, Mode) == 0x1C);
-GG_STATIC_ASSERT(offsetof(Obj_004061D0, Rate) == 0x24);
-GG_STATIC_ASSERT(offsetof(Obj_004061D0, Sink) == 0xB8);
-
-// The level arrives in EDX with the object in ECX, so this is a __fastcall free
-// function rather than a member - a __thiscall method would take it on the
-// stack. Both paths end in a tail-jump to an int-returning setter, and the
-// result is passed through.
-// FUNCTION: GAMEMD 0x4061D0
-int FUN_004061D0(Obj_004061D0* self, unsigned level);
 
 #endif  // GG_MATCH_CORE_CLAMPED_SCALE_METHODS_H

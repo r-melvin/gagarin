@@ -13,22 +13,22 @@
 // different event is stopped so a fresh handle can be started. Volume is a
 // 0..1 float scaled to the 0..0x4000 fixed range. The controller, if any, is
 // re-bound to whatever handle results, and that handle is returned.
-AudioHandle_00750920* VocClass::PlayGlobal(
+AudioEvent* VocClass::PlayGlobal(
     int index, float volume, unsigned int pan,
-    AudioController_00750920* controller)
+    AudioController* controller)
 {
     if (DAT_008464AC == 0)
         return 0;
 
-    AudioEvent_00750920* event = 0;
+    AudioEventType* event = 0;
     if (index >= 0 && index < Array.Count)
-        event = ((VocItem_00750920**)Array.Items)[index]->Event;
+        event = ((VocClass**)Array.Items)[index]->EventType;
 
-    AudioHandle_00750920* handle = 0;
+    AudioEvent* handle = 0;
     if (controller != 0) {
         handle = controller->GetEvent();
         if (handle != 0) {
-            if (FUN_00406310(handle) != event) {
+            if (handle->GetEventType() != event) {
                 FUN_004052F0(handle);
                 handle = 0;
             }
@@ -44,13 +44,13 @@ AudioHandle_00750920* VocClass::PlayGlobal(
             handle = FUN_00405190(event);
 
         if (handle != 0) {
-            FUN_004061D0(handle, vol);
-            FUN_00406270(handle, pan);
+            handle->FUN_004061D0(vol);
+            handle->AdjustAudioEventPanning(pan);
         }
     }
 
     if (controller != 0)
-        FUN_004060F0(controller, handle, event);
+        AudioController::SetEvent(controller, handle, event);
 
     return handle;
 }

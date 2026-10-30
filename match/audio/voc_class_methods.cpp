@@ -18,14 +18,14 @@ int VocClass::FindIndex(const char* pName)
 {
     if (pName)
     {
-        for (int i = 0; i < VocClass_Array.Count; ++i)
+        for (int i = 0; i < Array.Count; ++i)
         {
-            // Reference item->Event twice (the null test and the call) so cl
+            // Reference item->EventType twice (the null test and the call) so cl
             // keeps `item` anchored in EAX and CSE-loads Event once into ECX,
             // matching retail's `mov eax,[eax+esi*4]; mov ecx,[eax]` pairing
             // (verified byte-for-byte; a single anchored event-pointer load).
-            VocItem* item = ((VocItem**)VocClass_Array.Items)[i];
-            const char* name = item->Event ? item->Event->GetName() : "Invalid Voc";
+            VocClass* item = ((VocClass**)Array.Items)[i];
+            const char* name = item->EventType ? item->EventType->FUN_00405170() : "Invalid Voc";
             if (gg_voc_stricmp(pName, name) == 0)
                 return i;
         }
@@ -35,5 +35,5 @@ int VocClass::FindIndex(const char* pName)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB1D378
-DynamicVectorClassLayout VocClass_Array;
+DynamicVectorClassLayout VocClass::Array;
 // END defined globals

@@ -11,17 +11,14 @@
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/audio_controller.h"
+#include "../_layout/voc_class.h"
 #include "../platform/center_window_methods.h"
 #include "../ui/input_controls/ui_gadget.h"
 
 // ---------------------------------------------------------------------------
 // 0x7518A0: fire an audio event for the table entry at an index.
-struct VocEntry_007518A0
-{
-    AudioEventType* Event;   // +0x00
-};
 // GLOBAL: GAMEMD 0xB1D37C
-extern "C" VocEntry_007518A0** DAT_00B1D37C;
+extern "C" VocClass** DAT_00B1D37C;
 // GLOBAL: GAMEMD 0xB1D388
 extern "C" int DAT_00B1D388;
 // FUNCTION: GAMEMD 0x7518A0
@@ -29,7 +26,7 @@ extern "C" int DAT_00B1D388;
 void __fastcall FUN_007518A0(AudioController* pThis, int index)
 {
     if (index >= 0 && index < DAT_00B1D388) {
-        AudioController::SetEvent(pThis, 0, DAT_00B1D37C[index]->Event);
+        AudioController::SetEvent(pThis, 0, DAT_00B1D37C[index]->EventType);
     }
 }
 

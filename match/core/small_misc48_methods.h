@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/audio_event_type.h"
 
 // ---------------------------------------------------------------------------
 // 0x406570 — record a flag word and arm or clear two latches from two of its
@@ -19,22 +20,6 @@
 // `PUSH ESI; MOV ESI,[ECX+0x138]; TEST ESI,ESI; POP ESI` - which is VC6's own
 // choice under the register pressure here, not something the source asks for.
 // ---------------------------------------------------------------------------
-struct Obj_00406570
-{
-    char _pad000[0x10];
-    int  Flags;      // +0x0010
-    char _pad014[0x138 - 0x14];
-    int  LatchA;     // +0x0138
-    int  LatchB;     // +0x013C
-
-    // A member, not a free function taking the object: the object is in ECX
-    // and the flag word in EDX, which is `__fastcall` on a member.
-    // FUNCTION: GAMEMD 0x406570
-    void __fastcall FUN_00406570(int flags);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00406570, Flags) == 0x10);
-GG_STATIC_ASSERT(offsetof(Obj_00406570, LatchA) == 0x138);
-GG_STATIC_ASSERT(offsetof(Obj_00406570, LatchB) == 0x13C);
 
 // ---------------------------------------------------------------------------
 // 0x407FB0 — on the first entry only, run one state transition under the

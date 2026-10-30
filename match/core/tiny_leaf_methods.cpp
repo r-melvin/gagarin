@@ -7,13 +7,13 @@
 #include "tiny_leaf_methods.h"
 
 // FUNCTION: GAMEMD 0x4065F0
-void Obj_00406500b::FUN_004065F0(int value) { unknown_54 = value; }
+void AudioEventType::FUN_004065F0(float value) { MinVolume = value; }
 
 // FUNCTION: GAMEMD 0x406600
-void Obj_00406500b::FUN_00406600(int a, int b) { unknown_58 = a; unknown_5C = b; }
+void AudioEventType::FUN_00406600(int a, int b) { DelayLow = a; DelayHigh = b; }
 
 // FUNCTION: GAMEMD 0x406610
-void Obj_00406500b::FUN_00406610(int a, int b) { unknown_60 = a; unknown_64 = b; }
+void AudioEventType::FUN_00406610(int a, int b) { FShiftLow = a; FShiftHigh = b; }
 
 // FUNCTION: GAMEMD 0x4068E0
 void __cdecl FUN_004068E0() { }

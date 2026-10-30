@@ -25,13 +25,6 @@ struct RadarView_R16 : public RadarClass
     void FUN_00656BE0(bool on, bool sound);
 };
 
-// The radar's activation timer at +0x14C0, restarted by 0x406060.
-struct RadarTimer_00406060
-{
-    // FUNCTION: GAMEMD 0x406060 (decl; reloc)
-    void FUN_00406060();
-};
-
 
 // GLOBAL: GAMEMD 0x8871E0 -- the rules object.
 #include "../_layout/rules_class.h"
@@ -115,14 +108,14 @@ void RadarView_R16::FUN_00656BE0(bool on, bool sound)
     if (on == true) {
         if (unknown_14AC == 0 || unknown_14AC == 2) {
             unknown_14AC = 3;
-            ((RadarTimer_00406060*)&unknown_14C0)->FUN_00406060();
+            unknown_14C0.EndLooping();
             if (sound) {
                 FUN_00750920(DAT_008871E0->RadarOn, 1.0f, 0x2000, 0);
             }
             FUN_004068E0("Radar: ACTIVATING\n");
         }
     } else {
-        ((RadarTimer_00406060*)&unknown_14C0)->FUN_00406060();
+        unknown_14C0.EndLooping();
         unknown_14AC = 2;
         if (sound) {
             FUN_00750920(DAT_008871E0->RadarOff, 1.0f, 0x2000, 0);

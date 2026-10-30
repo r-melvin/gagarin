@@ -9,6 +9,7 @@
 
 #include <stddef.h>
 #include "triple_timer_init_methods.h"
+#include "../_layout/audio_event_type.h"
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
@@ -83,14 +84,5 @@ void FUN_00405580(Obj_00405580* self);
 // ---------------------------------------------------------------------------
 // Callees: GAMEMD 0x407150 / 0x4071C0
 
-struct Obj_00406550
-{
-    char _pad000[0x18];
-    Timer_00401000 Sub;   // +0x18; 4063F5 allocates 0x148, 406424/458 initialize timer
-};
-GG_STATIC_ASSERT(offsetof(Obj_00406550, Sub) == 0x18);
-
-// FUNCTION: GAMEMD 0x406550
-void FUN_00406550(Obj_00406550* self, int value);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC37_METHODS_H

@@ -7,13 +7,10 @@
 // global vector; the element types of three of them are placeholders.
 #include "vector_class_operations.h"
 #include "../_layout/vox_class.h"
+#include "../_layout/voc_class.h"
 
 // Owners: each function removes `this` from the global vector of its own class.
 // Item_<ADDR> are placeholder owners; VocClass and VoxClass carry no RTTI.
-struct VocClass
-{
-    void FUN_007503F0();
-};
 class Item_0053CB90
 {
 public:

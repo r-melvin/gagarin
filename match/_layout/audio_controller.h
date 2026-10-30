@@ -18,7 +18,6 @@
 struct AudioIDXData;
 struct AudioEvent;
 struct AudioEventType;
-struct VocClass;
 
 struct AudioController
 {
@@ -31,16 +30,14 @@ struct AudioController
     void Stop();
     // FUNCTION: GAMEMD 0x405FD0 (decl; reloc)
     void FUN_00405FD0();
-    // FUNCTION: GAMEMD 0x406060 (decl; reloc) -- ends a looping voice (audio_end_looping_methods.cpp)
-    void FUN_00406060();
+    // FUNCTION: GAMEMD 0x406060 -- ends a looping voice (YRpp: Audio::EndLooping)
+    void EndLooping();
     // FUNCTION: GAMEMD 0x4060F0
     static void SetEvent(AudioController* pThis, AudioEvent* event, AudioEventType* eventType);
     // FUNCTION: GAMEMD 0x406130
     AudioEvent* GetEvent();
     // FUNCTION: GAMEMD 0x406170
     AudioEventType* GetEventType();
-    // FUNCTION: GAMEMD 0x406310 (the event's descriptor; moves to AudioEvent with the descriptor header)
-    static VocClass* GetEventType(void* event);
 
     AudioEvent*     Event;       // +0x00
     unsigned int    Stamp;       // +0x04

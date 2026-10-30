@@ -10,6 +10,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "guarded_forward_methods.h"
 #include "../_layout/audio_controller.h"
+#include "../_layout/audio_event_type.h"
 
 // GLOBAL: GAMEMD 0x87E8A0 — an interface pointer released through slot 0x48.
 extern IFace* DAT_0087E8A0;
@@ -57,16 +58,5 @@ struct Obj_00433000
 };
 GG_STATIC_ASSERT(offsetof(Obj_00433000, unknown_14) == 0x14);
 
-struct Obj_00406600b
-{
-    char _pad00[0x10];
-    int  Flags;        // +0x0010
-    char _pad14[0x4C - 0x14];
-    int  unknown_4C;   // +0x004C
-
-    // FUNCTION: GAMEMD 0x406650
-    int FUN_00406650() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00406600b, unknown_4C) == 0x4C);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC2_METHODS_H

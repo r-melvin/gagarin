@@ -27,28 +27,28 @@
 // kept here is the highest-scoring and structurally the retail order.
 // This pass added six more, all 91.4%: the three arm statements lifted into a
 // free inline `ArmNode(node, coords, unk)` helper; the same with the node
-// parameter as `VoxPlayNode* const&`; the coordinate copy alone in an inline
+// parameter as `VocVoiceNode* const&`; the coordinate copy alone in an inline
 // helper; the PlayAt call in an inline helper taking the node; the arm and the
 // call together in one inline helper; and the flat control spelling. The free
 // inline helper taking the object as a pointer parameter — the lever that
 // resolved 0x41D300, 0x6CB3A0 and 0x43B680 this pass — does not reach this
 // scheduler decision.
-void* VoxClass::PlayAtPos(int index, CoordStruct* coords, int unk)
+AudioEvent* VocClass::PlayAtPos(int index, CoordStruct* coords, int unk)
 {
     if (index < 0)
         return 0;
 
-    VoxPlayNode* node = (VoxPlayNode*)DAT_00B1D3A4->FUN_00407520();
+    VocVoiceNode* node = (VocVoiceNode*)DAT_00B1D3A4->FUN_00407520();
     if (node == 0)
         return 0;
 
     node->Handle.FUN_00405BE0();
     FUN_004072D0(&node->Link);
-    node->At_30 = 0;
+    node->Remaining = 0;
     node->Coords = *coords;
-    node->At_2C = unk;
+    node->Flags = unk;
 
-    void* result = VocClass::PlayAt(index, &node->Coords, &node->Handle);
+    AudioEvent* result = VocClass::PlayAt(index, &node->Coords, &node->Handle);
     (&DAT_00B1D320)->FUN_00407420(&node->Link);
 
     DAT_00B1D3A8++;

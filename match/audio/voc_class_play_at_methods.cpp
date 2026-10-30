@@ -20,21 +20,21 @@
 // (handle) and EDI (event) together ahead of the index test and keeps the
 // coordinates in EBX; with the event declared first the coordinates take EDI
 // and the event EBX (63.9%, pure register naming).
-AudioHandle_007509E0* VocClass::PlayAt(
-    int index, CoordStruct* coords, AudioController_007509E0* controller)
+AudioEvent* VocClass::PlayAt(
+    int index, CoordStruct* coords, AudioController* controller)
 {
     if (DAT_008464AC == 0)
         return 0;
 
-    AudioHandle_007509E0* handle = 0;
-    AudioEvent_007509E0* event = 0;
+    AudioEvent* handle = 0;
+    AudioEventType* event = 0;
     if (index >= 0 && index < Array.Count)
-        event = ((VocItem_007509E0**)Array.Items)[index]->Event;
+        event = ((VocClass**)Array.Items)[index]->EventType;
 
     if (controller != 0) {
         handle = controller->GetEvent();
         if (handle != 0) {
-            if (FUN_00406310(handle) != event) {
+            if (handle->GetEventType() != event) {
                 FUN_004052F0(handle);
                 handle = 0;
             }
@@ -53,8 +53,8 @@ AudioHandle_007509E0* VocClass::PlayAt(
                 handle = FUN_00405190(event);
 
             if (handle != 0) {
-                FUN_004061D0(handle, vol);
-                FUN_00406270(handle, pan);
+                handle->FUN_004061D0(vol);
+                handle->AdjustAudioEventPanning(pan);
             }
         } else {
             if (handle != 0) {
@@ -65,7 +65,7 @@ AudioHandle_007509E0* VocClass::PlayAt(
     }
 
     if (controller != 0)
-        FUN_004060F0(controller, handle, event);
+        AudioController::SetEvent(controller, handle, event);
 
     return handle;
 }

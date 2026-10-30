@@ -98,9 +98,9 @@ static inline unsigned Clamp_00406190(unsigned level)
 
 // FUNCTION: GAMEMD 0x406190
 // Scales the clamped level by the rate and applies it to the first sink.
-void __fastcall FUN_00406190(Obj_004061D0* self, unsigned level)
+void __fastcall AudioEvent::FUN_00406190(unsigned level)
 {
-    self->Sink.Set((self->Rate->Value >> 16) * Clamp_00406190(level) >> 14);
+    Sink.Set((EventType->Volume.Value >> 16) * Clamp_00406190(level) >> 14);
 }
 
 // ---------------------------------------------------------------------------

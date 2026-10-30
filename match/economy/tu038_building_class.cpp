@@ -1139,7 +1139,7 @@ int BuildingClass::vf_145()
                 PrimaryFacing.FUN_004C9300(&dir);
             }
             Type->ClearBuildUp();
-            Audio7.FUN_00406060();
+            Audio7.EndLooping();
             return 1;
         }
         break;

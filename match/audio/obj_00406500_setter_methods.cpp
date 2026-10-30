@@ -8,43 +8,43 @@
 #include "obj_00406500_setter_methods.h"
 
 // FUNCTION: GAMEMD 0x406520
-void Obj_00406500::FUN_00406520(int value)
+void AudioEventType::FUN_00406520(int value)
 {
-    this->unknown_138 = value;
+    this->Attack = value;
 }
 
 // FUNCTION: GAMEMD 0x406530
-void Obj_00406500::FUN_00406530(int value)
+void AudioEventType::FUN_00406530(int value)
 {
-    this->unknown_13C = value;
+    this->Decay = value;
 }
 
 // FUNCTION: GAMEMD 0x406540
-void Obj_00406500::FUN_00406540(int value)
+void AudioEventType::FUN_00406540(int value)
 {
-    this->unknown_40 = value;
+    this->Priority = value;
 }
 
 // FUNCTION: GAMEMD 0x4065C0
-void Obj_00406500::FUN_004065C0(int value)
+void AudioEventType::FUN_004065C0(int value)
 {
-    this->unknown_14 = value;
+    this->Type = value;
 }
 
 // FUNCTION: GAMEMD 0x4065D0
-void Obj_00406500::FUN_004065D0(int value)
+void AudioEventType::FUN_004065D0(int value)
 {
-    this->unknown_48 = value;
+    this->Limit = value;
 }
 
 // FUNCTION: GAMEMD 0x4065E0
-void Obj_00406500::FUN_004065E0(int value)
+void AudioEventType::FUN_004065E0(int value)
 {
-    this->unknown_50 = value;
+    this->Range = value;
 }
 
 // FUNCTION: GAMEMD 0x406640
-void Obj_00406500::FUN_00406640(int value)
+void AudioEventType::FUN_00406640(int value)
 {
-    this->unknown_4C = value;
+    this->Loop = value;
 }

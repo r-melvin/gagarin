@@ -31,12 +31,12 @@ static inline unsigned Clamp_004061D0(unsigned level)
 // sits inside the branch, and 0x4071C0 is declared __fastcall — as a
 // __thiscall member VC6 emits `CALL; POP ESI; RET` instead of retail's
 // `POP ESI; JMP`.
-int FUN_004061D0(Obj_004061D0* self, unsigned level)
+int AudioEvent::FUN_004061D0(unsigned level)
 {
-    if (self->Mode == 3) {
-        return FUN_00407170(&self->Sink.Timer,
-                            (self->Rate->Value >> 16) * Clamp_004061D0(level) >> 14);
+    if (State == 3) {
+        return FUN_00407170(&Sink.Timer,
+                            (EventType->Volume.Value >> 16) * Clamp_004061D0(level) >> 14);
     }
 
-    return self->Sink.Set((self->Rate->Value >> 16) * Clamp_004061D0(level) >> 14);
+    return Sink.Set((EventType->Volume.Value >> 16) * Clamp_004061D0(level) >> 14);
 }

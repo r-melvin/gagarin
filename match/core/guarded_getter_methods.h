@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/audio_event_type.h"
 
 // GLOBAL: GAMEMD 0x87E2A0 — the gate all four accessors below test first. Until
 // it is set they report neutral values rather than reading the object.
@@ -21,30 +22,6 @@ extern void* DAT_0087E2A0;
 // while the gate is clear.
 extern const char NoEventsString[];
 
-struct Obj_00405100
-{
-    char  _pad00[0x14];
-    int   unknown_14;    // +0x0014
-    char  _pad18[0x50 - 0x18];
-    int   unknown_50;    // +0x0050
-    float unknown_54;    // +0x0054
-    char  _pad58[0x6C - 0x58];
-    char  unknown_6C;    // +0x006C  (start of an inline buffer; only its address is taken)
-
-    // Declared ascending by retail address.
-    // FUNCTION: GAMEMD 0x405130
-    int FUN_00405130() const;
-    // FUNCTION: GAMEMD 0x405140
-    float FUN_00405140() const;
-    // FUNCTION: GAMEMD 0x405160
-    int FUN_00405160() const;
-    // FUNCTION: GAMEMD 0x405170
-    const char* FUN_00405170() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00405100, unknown_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(Obj_00405100, unknown_50) == 0x50);
-GG_STATIC_ASSERT(offsetof(Obj_00405100, unknown_54) == 0x54);
-GG_STATIC_ASSERT(offsetof(Obj_00405100, unknown_6C) == 0x6C);
 
 // A pair of shorts passed by value in one four-byte stack slot: retail reads
 // the halves separately with `MOV AX,[ESP+4]` and `MOV DX,[ESP+6]`, which is

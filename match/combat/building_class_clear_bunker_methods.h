@@ -16,15 +16,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/building_class.h"
+#include "../_layout/voc_class.h"
 #include "../core/rules_class.h"
 
-typedef CoordStruct Coord_00459470;
-
-struct AudioHandle_00459470;
-struct AudioController_00459470;
-
-// FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- VocClass::PlayAt.
-AudioHandle_00459470* VocClass_PlayAt_00459470(
-    int index, Coord_00459470* coords, AudioController_00459470* controller);
 
 #endif  // GG_MATCH_COMBAT_BUILDING_CLASS_CLEAR_BUNKER_METHODS_H

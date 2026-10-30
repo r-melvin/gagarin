@@ -98,9 +98,9 @@ void FUN_00405FD0(Handle_00405FD0* handle)
 //
 // Leading '$' and '#' are stripped before the lookup. They are prefixes the
 // caller may pass through verbatim, not part of any sample's name.
-int FUN_004064A0(Queue_004064A0* self, const char* name)
+int AudioEventType::FUN_004064A0(const char* name)
 {
-    if (self->Count == 0x20) {
+    if (this->SampleCount == 0x20) {
         return 0;
     }
 
@@ -111,13 +111,13 @@ int FUN_004064A0(Queue_004064A0* self, const char* name)
 
         unsigned int index = FUN_004015C0(DAT_0087E294, name);
         if (index != 0xFFFFFFFF) {
-            self->Samples[self->Count] = index;
-            self->Count = self->Count + 1;
+            this->Sounds[this->SampleCount] = index;
+            this->SampleCount = this->SampleCount + 1;
             return 1;
         }
 
         FUN_004068E0("Missing sample %s\n", name);
-        self->field_0C = 0;
+        this->unknown_0C = 0;
     }
 
     return 1;

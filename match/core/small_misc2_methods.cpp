@@ -59,9 +59,9 @@ void AudioController::FUN_00405C00()
 
 // FUNCTION: GAMEMD 0x406650
 // True only when the flag is set *and* the pointer is clear.
-int Obj_00406600b::FUN_00406650() const
+int AudioEventType::FUN_00406650() const
 {
-    return (Flags & 1) && unknown_4C == 0;
+    return (Control & 1) && Loop == 0;
 }
 
 // FUNCTION: GAMEMD 0x4072D0
