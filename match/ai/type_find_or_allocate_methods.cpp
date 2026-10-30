@@ -27,19 +27,3 @@ TagTypeClass* TagTypeClass::FindOrAllocate(const char* id)
     }
     return 0;
 }
-// FUNCTION: GAMEMD 0x00727AA0 (entry through RET at 0x727B22, 0x83 bytes)
-// GLOBAL: GAMEMD 0x8B4178 TriggerTypeClass::Array (Items +4, Count +0x10).
-// Calls constructor 0x726C80; sizeof(TriggerTypeClass) 0xB4.
-TriggerTypeClass* TriggerTypeClass::FindOrAllocate(const char* id)
-{
-    if (_strcmpi("<none>", id) != 0 && _strcmpi("none", id) != 0)
-    {
-        for (int i = 0; i < TriggerTypeClass::Array.Count; ++i)
-        {
-            if (_strcmpi(reinterpret_cast<TriggerTypeClass**>(TriggerTypeClass::Array.Items)[i]->ID, id) == 0)
-                return reinterpret_cast<TriggerTypeClass**>(TriggerTypeClass::Array.Items)[i];
-        }
-        return new TriggerTypeClass(id);
-    }
-    return 0;
-}

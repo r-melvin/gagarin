@@ -965,7 +965,7 @@
   "pct": 73.5
  },
  {
-  "tu": "match/ai/trigger_type_class_flags_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x727120",
   "sym": "?FindByNameOrID@TriggerTypeClass@@SIPAV1@PBD@Z",
   "len": "0x61",
@@ -974,7 +974,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_flags_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x7271E0",
   "sym": "?GetFlags@TriggerTypeClass@@QAEIXZ",
   "len": "0x58",
@@ -983,7 +983,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_load_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x7275D0",
   "sym": "?LoadFromINIList@TriggerTypeClass@@SIXPAUCCINI_007275D0@@@Z",
   "len": "0xc5",
@@ -992,7 +992,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x726F50",
   "sym": "?HasCrossesVerticalLineEvent@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1001,7 +1001,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x726F80",
   "sym": "?HasCrossesHorizontalLineEvent@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1010,7 +1010,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x726FB0",
   "sym": "?HasZoneEntryByEvent@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1019,7 +1019,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x726FE0",
   "sym": "?HasAllowWinAction@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1028,7 +1028,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_more_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x727010",
   "sym": "?HasGlobalSetOrClearedEvent@TriggerTypeClass@@QBE_NH@Z",
   "len": "0x34",
@@ -1037,7 +1037,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_more_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x727050",
   "sym": "?HasLocalSetOrClearedEvent@TriggerTypeClass@@QBE_NH@Z",
   "len": "0x34",
@@ -1046,7 +1046,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_save_list_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x727880",
   "sym": "?SaveToINIList@TriggerTypeClass@@SIXPAUCCINI_00727880@@@Z",
   "len": "0x153",
@@ -5129,7 +5129,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_type_class_load_stream.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x727CD0",
   "sym": "??_GTriggerTypeClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -13240,7 +13240,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/type_find_or_allocate_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x00727AA0",
   "sym": "?FindOrAllocate@TriggerTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
@@ -35620,7 +35620,7 @@
   "name": "DynamicVectorClass<MSTextEntry*>::FindItemIndex"
  },
  {
-  "tu": "match/ai/trigger_type_class_ctor.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x726C80",
   "sym": "??0TriggerTypeClass@@QAE@PBD@Z",
   "len": "0x176",
@@ -106112,7 +106112,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/trigger_type_class_load_stream.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x727BF0",
   "sym": "?Load@TriggerTypeClass@@UAGJPAUIStream@@@Z",
   "len": "0x89",
@@ -139457,7 +139457,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/trigger_type_class_r12_methods.cpp",
+  "tu": "match/ai/trivial_tu251_methods.cpp",
   "addr": "0x727090",
   "sym": "?vf_10@TriggerTypeClass@@UAEXPAX_N@Z",
   "len": "0x85",
