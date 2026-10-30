@@ -55,11 +55,17 @@ def error_lines(log):
 
 def compile_one(root, tmp, directory, filename, objname):
     obj = os.path.join(tmp, objname)
-    proc = subprocess.run(["bash", CL, f"/Fo{obj}", filename], cwd=os.path.join(root, directory),
-                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                          text=True, errors="replace")
+    # Capture the compiler output in a file, never a pipe: Wine may leave a
+    # wineserver running that inherits the child's stdout, and a reader waiting
+    # for pipe EOF would then stall until that server exits. The wait below
+    # returns as soon as the launcher itself exits.
+    with open(obj + ".log", "w+", errors="replace") as log:
+        proc = subprocess.run(["bash", CL, f"/Fo{obj}", filename], cwd=os.path.join(root, directory),
+                              stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
+        log.seek(0)
+        output = log.read()
     ok = proc.returncode == 0 and os.path.isfile(obj)
-    return ok, ([] if ok else error_lines(proc.stdout))
+    return ok, ([] if ok else error_lines(output))
 
 
 def check_tu(root, tmp, n, tu):
