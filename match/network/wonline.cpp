@@ -4066,6 +4066,17 @@ WonlineStringDialogControl::WonlineStringDialogControl()
 
 // SYNTHETIC: GAMEMD 0x7AC5D0 -- WonlineStringDialogControl::`scalar deleting destructor'
 
+#include "wol_event_sink_atl.h"
+
+// FUNCTION: GAMEMD 0x7AC6B0
+// ATL::CComObject<CChatEventSink>::Release (stock ATL 3.0 template instantiation).
+
+// FUNCTION: GAMEMD 0x7AC820
+// ATL::CComObject<CNetUtilEventSink>::Release (stock ATL 3.0 template instantiation).
+
+template class ATL::CComObject<CChatEventSink>;
+template class ATL::CComObject<CNetUtilEventSink>;
+
 
 // FUNCTION: GAMEMD 0x7AC970
 // DynamicVectorClass<tConnInfoStruct*>::Clear
@@ -4143,6 +4154,11 @@ template struct HashTable_006249A0<Wstring, int>;
 // FUNCTION: GAMEMD 0x7ACF70
 template struct HashTable_006249A0<Wstring, Value_007AE8E0>;
 
+// FUNCTION: GAMEMD 0x7AD410
+// ATL::CComObject<CDownloadEventSink>::CComObject (stock ATL 3.0 template instantiation).
+
+template class ATL::CComObject<CDownloadEventSink>;
+
 // FUNCTION: GAMEMD 0x7AD480
 int __stdcall FUN_007AD480(void* unused, unsigned int done, unsigned int total, int unused2, int seconds)
 {
@@ -4188,6 +4204,9 @@ int Obj_007AD610::FUN_007AD610(int a1) const
 {
     return 0;
 }
+
+// FUNCTION: GAMEMD 0x7AD640
+// ATL::CComObject<CDownloadEventSink>::Release (stock ATL 3.0 template instantiation).
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

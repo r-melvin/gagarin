@@ -148365,5 +148365,41 @@
   "name": "IPXInterfaceClass::IPXInterfaceClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AC6B0",
+  "sym": "?Release@?$CComObject@VCChatEventSink@@@ATL@@UAGKXZ",
+  "len": "0x4d",
+  "name": "ATL::CComObject<CChatEventSink>::Release",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AC820",
+  "sym": "?Release@?$CComObject@VCNetUtilEventSink@@@ATL@@UAGKXZ",
+  "len": "0x4d",
+  "name": "ATL::CComObject<CNetUtilEventSink>::Release",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD410",
+  "sym": "??0?$CComObject@VCDownloadEventSink@@@ATL@@QAE@PAX@Z",
+  "len": "0x2b",
+  "name": "ATL::CComObject<CDownloadEventSink>::CComObject",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD640",
+  "sym": "?Release@?$CComObject@VCDownloadEventSink@@@ATL@@UAGKXZ",
+  "len": "0x4d",
+  "name": "ATL::CComObject<CDownloadEventSink>::Release",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
