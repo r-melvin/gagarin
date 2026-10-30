@@ -10,19 +10,6 @@
 // FUNCTION: GAMEMD 0x5117D0 (decl; reloc) -- index of a house type by name.
 int __fastcall FUN_005117D0(const char* name);
 
-// FUNCTION: GAMEMD 0x505310
-// First unit type of the list whose owner mask includes this house's type.
-UnitTypeClass* HouseClass::FUN_00505310(const DynamicVectorClass<const UnitTypeClass*>& types)
-{
-    int index = FUN_005117D0(Type->ParentCountry);
-    unsigned mask = 1 << index;
-    for (int i = 0; i < types.Count; i++) {
-        if (types.Items[i]->OwnerFlags & mask) {
-            return const_cast<UnitTypeClass*>(types.Items[i]);
-        }
-    }
-    return 0;
-}
 
 // GLOBAL: GAMEMD 0xA83D4C -- the local player's house.
 extern HouseClass* CurrentPlayer;

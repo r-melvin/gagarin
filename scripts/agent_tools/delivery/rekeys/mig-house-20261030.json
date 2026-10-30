@@ -1,0 +1,17 @@
+{
+ "match/core/header_init_4f4ee0.cpp::_$E5": "match/economy/House.cpp::_$E19",
+ "match/core/header_init_4f4ee0.cpp::_$E8": "match/economy/House.cpp::_$E22",
+ "match/core/header_init_4f4ee0.cpp::_$E11": "match/economy/House.cpp::_$E25",
+ "match/core/header_init_4f4ee0.cpp::_$E14": "match/economy/House.cpp::_$E28",
+ "match/core/header_init_4f4ee0.cpp::_$E17": "match/economy/House.cpp::_$E31",
+ "match/core/header_init_4f4ee0.cpp::_$E20": "match/economy/House.cpp::_$E34",
+ "match/core/header_init_4f4ee0.cpp::_$E23": "match/economy/House.cpp::_$E37",
+ "match/core/header_init_4f4ee0.cpp::_$E26": "match/economy/House.cpp::_$E40",
+ "match/core/header_init_4f4ee0.cpp::_$E29": "match/economy/House.cpp::_$E43",
+ "match/core/header_init_4f4ee0.cpp::_$E32": "match/economy/House.cpp::_$E46",
+ "match/core/header_init_4f4ee0.cpp::_$E35": "match/economy/House.cpp::_$E49",
+ "match/core/header_init_4f4ee0.cpp::_$E38": "match/economy/House.cpp::_$E52",
+ "match/core/header_init_4f4ee0.cpp::_$E41": "match/economy/House.cpp::_$E55",
+ "match/core/static_vector_member_dtor_stubs_a.cpp::_$E35": "match/economy/House.cpp::_$E61",
+ "match/core/static_vector_member_dtor_stubs_a.cpp::_$E32": "match/economy/House.cpp::_$E58"
+}

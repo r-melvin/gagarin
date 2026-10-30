@@ -11,12 +11,6 @@
 
 #include "house_class_methods.h"
 
-// FUNCTION: GAMEMD 0x509130  HouseClass::AcquiredThreatNode (__thiscall)
-//   MOV byte ptr [ECX+0x1fb], 1 ; RET
-void HouseClass::AcquiredThreatNode()
-{
-    this->HasThreatNode = true;
-}
 
 // FUNCTION: GAMEMD 0x53A130  HouseClass::IonSensitivesShouldBeOffline (__thiscall)
 //   XOR AL,AL ; RET   (unconditional false)

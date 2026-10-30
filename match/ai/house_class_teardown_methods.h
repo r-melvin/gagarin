@@ -51,8 +51,6 @@ GG_STATIC_ASSERT(offsetof(HouseTriggerDeleteCallView, Type) == 0x24);
 #include "../_layout/house_class.h"
 
 
-// GLOBAL: GAMEMD 0xA8EC78 — TechnoClass::Array.
-extern DynamicVectorClassLayout TechnoArray;
 // GLOBAL: GAMEMD 0xA8EAE8 — TriggerClass::Array.
 #include "../_layout/trigger_class.h"
 

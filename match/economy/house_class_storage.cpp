@@ -23,13 +23,3 @@ int BaseClass::FailedToPlaceNode(BaseNodeClass* Node)
     return ++Node->Attempts;
 }
 
-// FUNCTION: GAMEMD 0x4F6E70   HouseClass::GetStoragePercentage  (__thiscall)
-// (int)OwnedTiberium.GetTotalAmount() == 0  -> ftol + TEST EAX (empty store
-// returns 0.0); otherwise the float total / int TotalStorage emits FIDIV.
-double HouseClass::GetStoragePercentage()
-{
-    if ((int)this->OwnedTiberium.GetTotalAmount() == 0) {
-        return 0.0;
-    }
-    return this->OwnedTiberium.GetTotalAmount() / this->TotalStorage;
-}

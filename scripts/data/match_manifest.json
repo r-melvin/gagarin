@@ -173,7 +173,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_fire_sw_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FAE50",
   "sym": "?Fire_SW@HouseClass@@QAE_NHABUCellStruct@@@Z",
   "len": "0xa6",
@@ -182,7 +182,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lightning_storm_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509E00",
   "sym": "?Fire_LightningStorm@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0xb4",
@@ -191,7 +191,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/house_class_lightning_storm_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509B20",
   "sym": "?FUN_00509B20@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0xa7",
@@ -200,7 +200,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lightning_storm_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509BD0",
   "sym": "?FUN_00509BD0@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0x31",
@@ -209,7 +209,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lightning_storm_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509C10",
   "sym": "?FUN_00509C10@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0xa7",
@@ -236,7 +236,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_paradrop_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509CD0",
   "sym": "?Fire_ParaDrop@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0x127",
@@ -245,7 +245,7 @@
   "pct": 43.3
  },
  {
-  "tu": "match/ai/house_class_pick_target_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50D170",
   "sym": "?PickTargetByType@HouseClass@@QAE?AVCell@@H@Z",
   "len": "0xde",
@@ -254,7 +254,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_planning_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x502460",
   "sym": "?GetPlanningWaypointProperties@HouseClass@@QAE_NPAVWaypointClass@@PAHPAE@Z",
   "len": "0x86",
@@ -263,7 +263,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/house_class_planning_waypoint_at_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5023B0",
   "sym": "?GetPlanningWaypointAt@HouseClass@@QAEPAVWaypointClass@@PBUCellStruct@@@Z",
   "len": "0xa3",
@@ -299,7 +299,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_teardown_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FB920",
   "sym": "?SDDTORAllAndTriggers@HouseClass@@QAEXXZ",
   "len": "0x8d",
@@ -22466,7 +22466,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_ally_ai_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x501640",
   "sym": "?AllyAIHouses@HouseClass@@QAEXXZ",
   "len": "0x10F",
@@ -22502,7 +22502,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_armor_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50BD30",
   "sym": "?GetArmorMultiplier@HouseClass@@QAEMPAVTechnoClass@@@Z",
   "len": "0xba",
@@ -22511,7 +22511,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_can_ally_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x501540",
   "sym": "?CanAlly@HouseClass@@QAE_NPAV1@@Z",
   "len": "0xfb",
@@ -22529,7 +22529,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_destroy_all_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FC6D0",
   "sym": "?DestroyAll@HouseClass@@QAEXXZ",
   "len": "0xb5",
@@ -22538,7 +22538,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_destroy_all_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FC790",
   "sym": "?DestroyAllBuildings@HouseClass@@QAEXXZ",
   "len": "0x8f",
@@ -22547,7 +22547,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_destroy_all_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FC820",
   "sym": "?DestroyAllNonBuildingsNonNaval@HouseClass@@QAEXXZ",
   "len": "0xab",
@@ -22556,7 +22556,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_destroy_all_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FC8D0",
   "sym": "?DestroyAllNonBuildingsNaval@HouseClass@@QAEXXZ",
   "len": "0xab",
@@ -22574,7 +22574,7 @@
   "pct": 23.9
  },
  {
-  "tu": "match/economy/house_class_factory_queues_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509140",
   "sym": "?UpdateFactoriesQueues@HouseClass@@QAEXH_NH@Z",
   "len": "0x1a6",
@@ -22601,7 +22601,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_flag_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FC060",
   "sym": "?PickedUpFlag@HouseClass@@QAEDPAVUnitClass@@_N@Z",
   "len": "0x4E",
@@ -22628,7 +22628,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509130",
   "sym": "?AcquiredThreatNode@HouseClass@@QAEXXZ",
   "len": "0x8",
@@ -22646,7 +22646,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_misc_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9750",
   "sym": "?GetWeedStoragePercentage@HouseClass@@QAENXZ",
   "len": "0x37",
@@ -22655,7 +22655,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_misc_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FCDC0",
   "sym": "?ForceEnd@HouseClass@@QAEXXZ",
   "len": "0x31",
@@ -22664,7 +22664,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_misc_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x504740",
   "sym": "?EnsurePlanningPathExists@HouseClass@@QAEPAVWaypointPathClass@@H@Z",
   "len": "0x43",
@@ -22673,7 +22673,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_overpower_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9AF0",
   "sym": "?CanOverpower@HouseClass@@QBE_NPAVTechnoClass@@@Z",
   "len": "0x57",
@@ -22682,7 +22682,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_overpower_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50C8C0",
   "sym": "?Cheer@HouseClass@@QAEXXZ",
   "len": "0x54",
@@ -22691,7 +22691,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_power_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FCE30",
   "sym": "?GetPowerPercentage@HouseClass@@QBENXZ",
   "len": "0x43",
@@ -22700,7 +22700,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_power_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50BC90",
   "sym": "?CreatePowerOutage@HouseClass@@QAEXH@Z",
   "len": "0x31",
@@ -22709,7 +22709,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_power_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50BCD0",
   "sym": "?CreateRadarOutage@HouseClass@@QAEXH@Z",
   "len": "0x31",
@@ -22718,7 +22718,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_prerequisites_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x505360",
   "sym": "?AllPrerequisitesAvailable@HouseClass@@QAE_NPAVTechnoTypeClass@@PAV?$DynamicVectorClass@PAVBuildingTypeClass@@@@H@Z",
   "len": "0x144",
@@ -22763,7 +22763,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_storage.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F6E70",
   "sym": "?GetStoragePercentage@HouseClass@@QAENXZ",
   "len": "0x33",
@@ -22772,7 +22772,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_tib_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9610",
   "sym": "?GiveTiberium@HouseClass@@QAEMMH@Z",
   "len": "0x57",
@@ -22781,7 +22781,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_tib_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x500510",
   "sym": "?GetPrimaryFactory@HouseClass@@QBEPAVFactoryClass@@H_NH@Z",
   "len": "0xa0",
@@ -78300,11 +78300,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/static_vector_member_dtor_stubs_a.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F5130",
-  "sym": "_$E32",
+  "sym": "_$E58",
   "len": "0x58",
-  "name": "_$E32",
+  "name": "_$E58",
   "status": "matched",
   "pct": 100.0
  },
@@ -78345,9 +78345,9 @@
   "pct": 100
  },
  {
-  "tu": "match/core/static_vector_member_dtor_stubs_a.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F50F0",
-  "sym": "_$E35",
+  "sym": "_$E61",
   "len": "0x3d",
   "name": "dynamic initializer (DAT_00A8EFC8)",
   "status": "matched",
@@ -89685,27 +89685,27 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F4F30",
-  "sym": "_$E8",
+  "sym": "_$E22",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00A8F030)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F4F50",
-  "sym": "_$E11",
+  "sym": "_$E25",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00A8F018)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F50D0",
-  "sym": "_$E41",
+  "sym": "_$E55",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00A8F020)",
   "status": "matched",
@@ -121439,90 +121439,90 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F4F00",
-  "sym": "_$E5",
+  "sym": "_$E19",
   "len": "0x28",
   "name": "dynamic initializer (DAT_00A8EFA0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F4F70",
-  "sym": "_$E14",
+  "sym": "_$E28",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00A8F010)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F4F90",
-  "sym": "_$E17",
+  "sym": "_$E31",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00A8EFE0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F4FB0",
-  "sym": "_$E20",
+  "sym": "_$E34",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00A8EF58)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F4FD0",
-  "sym": "_$E23",
+  "sym": "_$E37",
   "len": "0x31",
   "name": "dynamic initializer (DAT_00A8F038)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F5010",
-  "sym": "_$E26",
+  "sym": "_$E40",
   "len": "0x21",
   "name": "dynamic initializer (DAT_00A8EFF0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F5040",
-  "sym": "_$E29",
+  "sym": "_$E43",
   "len": "0x2c",
   "name": "dynamic initializer (DAT_00A8F008)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F5070",
-  "sym": "_$E32",
+  "sym": "_$E46",
   "len": "0x27",
   "name": "dynamic initializer (DAT_00A8F02C)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F50A0",
-  "sym": "_$E35",
+  "sym": "_$E49",
   "len": "0xf",
   "name": "dynamic initializer (DAT_00A8EF98)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_4f4ee0.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F50B0",
-  "sym": "_$E38",
+  "sym": "_$E52",
   "len": "0x12",
   "name": "dynamic initializer (DAT_00A8EFF8)",
   "status": "matched",
@@ -133130,7 +133130,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_edge_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50DA20",
   "sym": "?FUN_0050DA20@HouseClass@@QAEXUCellStruct@@@Z",
   "len": "0x19",
@@ -133139,7 +133139,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_edge_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50DAA0",
   "sym": "?FUN_0050DAA0@HouseClass@@QBEHXZ",
   "len": "0x12",
@@ -133148,7 +133148,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_edge_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50DAC0",
   "sym": "?FUN_0050DAC0@HouseClass@@QBEHXZ",
   "len": "0x27",
@@ -135326,7 +135326,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_planning_path_open_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5090F0",
   "sym": "?CanExtendSelectedPlanningPath@HouseClass@@QAE_NXZ",
   "len": "0x3d",
@@ -139322,7 +139322,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50D250",
   "sym": "?FUN_0050D250@HouseClass@@QAEXI@Z",
   "len": "0x36",
@@ -139331,7 +139331,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50D290",
   "sym": "?FUN_0050D290@HouseClass@@QAEXPAV1@@Z",
   "len": "0x39",
@@ -139340,7 +139340,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50D2D0",
   "sym": "?FUN_0050D2D0@HouseClass@@QAEXPAV1@@Z",
   "len": "0x43",
@@ -139349,7 +139349,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FA2E0",
   "sym": "?FUN_004FA2E0@HouseClass@@QAEXHH@Z",
   "len": "0x6a",
@@ -139358,7 +139358,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FBD00",
   "sym": "?FUN_004FBD00@HouseClass@@QAE_NH@Z",
   "len": "0x71",
@@ -139367,7 +139367,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FBD80",
   "sym": "?FUN_004FBD80@HouseClass@@QAEPAXHH@Z",
   "len": "0x78",
@@ -139376,7 +139376,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5005B0",
   "sym": "?FUN_005005B0@HouseClass@@QAEXH_NH@Z",
   "len": "0x66",
@@ -139385,7 +139385,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x500660",
   "sym": "?FUN_00500660@HouseClass@@QAEXH_NH@Z",
   "len": "0x64",
@@ -139394,7 +139394,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x500700",
   "sym": "?FUN_00500700@HouseClass@@QAEEH_NH@Z",
   "len": "0x63",
@@ -139403,7 +139403,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5007A0",
   "sym": "?FUN_005007A0@HouseClass@@QAEXH_NH0@Z",
   "len": "0x71",
@@ -139412,7 +139412,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x500910",
   "sym": "?FUN_00500910@HouseClass@@QAEHH_N@Z",
   "len": "0x55",
@@ -139421,7 +139421,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FD940",
   "sym": "?FUN_004FD940@HouseClass@@QAEHXZ",
   "len": "0x58",
@@ -139430,7 +139430,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9700",
   "sym": "?FUN_004F9700@HouseClass@@QAEXHH@Z",
   "len": "0x50",
@@ -139439,7 +139439,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r13_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9670",
   "sym": "?FUN_004F9670@HouseClass@@QAEPAVBuildingClass@@XZ",
   "len": "0x8d",
@@ -141554,7 +141554,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_r16_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x505310",
   "sym": "?FUN_00505310@HouseClass@@QAEPAVUnitTypeClass@@ABV?$DynamicVectorClass@PBVUnitTypeClass@@@@@Z",
   "len": "0x4f",
@@ -142427,7 +142427,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r17_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FC980",
   "sym": "?FUN_004FC980@HouseClass@@QAEDXZ",
   "len": "0x57",
@@ -142436,7 +142436,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_r17_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FF980",
   "sym": "?FUN_004FF980@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
@@ -142445,7 +142445,7 @@
   "pct": 88.9
  },
  {
-  "tu": "match/economy/house_class_r17_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FFA50",
   "sym": "?FUN_004FFA50@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x8b",
@@ -143111,7 +143111,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_leftovers_r19.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x501A20",
   "sym": "?FUN_00501A20@@YIXXZ",
   "len": "0x78",
@@ -143120,7 +143120,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_leftovers_r19.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5093C0",
   "sym": "?FUN_005093C0@HouseClass@@QAEXPAV1@@Z",
   "len": "0x40",
@@ -143660,7 +143660,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_planning_select_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x502290",
   "sym": "?SelectPlanningWaypoint@HouseClass@@QAE_NPBVWaypointClass@@@Z",
   "len": "0x52",
@@ -143669,7 +143669,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_planning_select_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5090A0",
   "sym": "?FindEmptyPlanningPath@HouseClass@@QAEHXZ",
   "len": "0x44",
@@ -143678,7 +143678,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_planning_select_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x5022F0",
   "sym": "?IsPlanningCellFreeOfOtherPaths@HouseClass@@QAE_NPBUCellStruct@@@Z",
   "len": "0xbf",
@@ -143687,7 +143687,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_planning_select_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x502160",
   "sym": "?AddPlanningWaypoint@HouseClass@@QAEXPBVWaypointClass@@@Z",
   "len": "0x126",
@@ -144137,7 +144137,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_defensive_cell_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x509EC0",
   "sym": "?FUN_00509EC0@HouseClass@@QAEXPAVSuperClass@@@Z",
   "len": "0x9f",
@@ -144173,7 +144173,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_base_center_coord_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x50DF30",
   "sym": "?FUN_0050DF30@HouseClass@@QBE?AUCoordStruct@@XZ",
   "len": "0xa4",
@@ -144182,7 +144182,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_update_supers_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4F9370",
   "sym": "?FUN_004F9370@HouseClass@@QAEXXZ",
   "len": "0x68",
@@ -144974,7 +144974,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_r23_methods.cpp",
+  "tu": "match/economy/House.cpp",
   "addr": "0x4FF700",
   "sym": "?FUN_004FF700@HouseClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x1cc",

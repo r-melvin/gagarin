@@ -15487,6 +15487,7 @@
  "match/economy/House.cpp::?Swizzle@DropshipStruct@@QAEXXZ": "0x004B6BB0",
  "match/economy/House.cpp::?WhatAmI@HouseClusterView@@UAEHXZ": "0x0050E360",
  "match/economy/House.cpp::?vf_16@HouseClusterView@@UAEHXZ": "0x0050E370",
+ "match/economy/House.cpp::_$S59": "0x00A8EF60",
  "match/economy/house_building/building_b_part4.cpp::_$E2": "0x00456970",
  "match/economy/house_building/building_b_part4.cpp::_?$S1@?7??vf_76@BuildingBView@@UAEXUBuildingBColor@@@Z@4EA": "0x0089C838",
  "match/economy/house_building/building_b_part4.cpp::_?$S1@?7??vf_76@BuildingBView@@UAEXUColorStruct@@@Z@4EA": "0x0089C838",
