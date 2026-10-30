@@ -147514,5 +147514,14 @@
   "name": "InfantryClass::FUN_00520260",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x789500",
+  "sym": "?FUN_00789500@@YIHPBDHE0@Z",
+  "len": "0x130",
+  "name": "?FUN_00789500@@YIHPBDHE0@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -33,7 +33,12 @@ struct Vtbl_00AC116C
     long (__stdcall* At_7C)(Obj_00AC116C* self, int value);
     char unknown_80[0x0C];
     long (__stdcall* At_8C)(Obj_00AC116C* self, unsigned long value);
-    char unknown_90[0x58];
+    // 0x789500: slot lookup (slot, text out, second out), slot store (slot, text, value, flag), slot text store.
+    long (__stdcall* At_90)(Obj_00AC116C* self, int slot, const char** text, int* value);
+    long (__stdcall* At_94)(Obj_00AC116C* self, int slot, const char* text, int value, int flag);
+    char unknown_98[0x30];
+    long (__stdcall* At_C8)(Obj_00AC116C* self, int slot, const char* text);
+    char unknown_CC[0x1C];
     // 0x77E1D0 / 0x77E300: the list-box selection, as a text (no selection) or a node chain.
     long (__stdcall* At_E8)(Obj_00AC116C* self, const wchar_t* text);
     long (__stdcall* At_EC)(Obj_00AC116C* self, const void* chain, const wchar_t* text);
@@ -96,6 +101,9 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_7C) == 0x7C);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_7C) == 4);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_8C) == 0x8C);
 GG_STATIC_ASSERT(sizeof(((Vtbl_00AC116C*)0)->At_8C) == 4);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_90) == 0x90);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_94) == 0x94);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_C8) == 0xC8);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_E8) == 0xE8);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_EC) == 0xEC);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_F0) == 0xF0);

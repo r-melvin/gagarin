@@ -2462,6 +2462,54 @@ int FUN_00788A30()
     return -1;
 }
 
+// GLOBAL: GAMEMD 0xA8B544
+extern int DAT_00A8B544;
+
+// FUNCTION: GAMEMD 0x789500
+// Finds the slot holding `name`, else the first empty slot, else the next in turn; stores the name and text there.
+int __fastcall FUN_00789500(const char* name, int value, unsigned char flag, const char* text2)
+{
+    const char* text;
+    int extra;
+    int slot = 0;
+    int i;
+    for (i = 1; i <= 0x20; i++) {
+        text = NULL;
+        extra = 0;
+        if (DAT_00AC116C->Vtbl->At_90(DAT_00AC116C, i, &text, &extra) == 0 && text != NULL && strcmp(text, name) == 0) {
+            slot = i;
+            break;
+        }
+    }
+    if (slot == 0) {
+        for (i = 1; i <= 0x20; i++) {
+            text = NULL;
+            extra = 0;
+            if (DAT_00AC116C->Vtbl->At_90(DAT_00AC116C, i, &text, &extra) != 0 || text == NULL || strlen(text) == 0) {
+                slot = i;
+                break;
+            }
+        }
+    }
+    if (slot == 0) {
+        int turn = DAT_00A8B544;
+        if (turn == -1) {
+            turn = 1;
+        }
+        slot = turn;
+        turn++;
+        DAT_00A8B544 = turn;
+        if (turn > 0x20) {
+            DAT_00A8B544 = 1;
+        }
+    }
+    if (slot != 0) {
+        DAT_00AC116C->Vtbl->At_94(DAT_00AC116C, slot, name, value, flag);
+        DAT_00AC116C->Vtbl->At_C8(DAT_00AC116C, slot, text2);
+    }
+    return slot;
+}
+
 // FUNCTION: GAMEMD 0x789630
 // The text of a record after its first ':' (the whole text when there is none).
 Wstring FUN_00789630(const char* record)
