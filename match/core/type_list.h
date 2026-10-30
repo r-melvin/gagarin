@@ -24,6 +24,12 @@ public:
     // Copy constructor: a separate function in retail (0x5255F0 for animation type lists) that the INI
     // readers call; defined in vector_class_operations.h, so TUs that only include this header call it.
     TypeList(const TypeList<T>& other);
+    // No-init constructor (vptr only), as the HouseTypeClass no-init constructor builds its veteran lists.
+    TypeList(const AbstractNoInit& noInit) : DynamicVectorClass<T>(noInit) {}
+    // DynamicVectorClass::AddItem with early returns and `Items[Count++] = item`, the form retail keeps out
+    // of line for the house type's veteran lists (0x512F20 / 0x5132F0 / 0x5136C0); defined where used
+    // (match/economy/house_building/types_shared.h).
+    bool AddItemEarlyOut(const T& item);
     // Nonvirtual stream helper declarations; selected specializations and
     // native entry addresses are declared in vector_stream_save_family_methods.h.
     int FUN_0067A4A0(IStream* stream);

@@ -108,9 +108,9 @@ public:
     float         IncomeMult;               // +0x148
     // RTTI: the three lists are VectorClass<const T*> (.?AV?$VectorClass@PBVInfantryTypeClass@@@@,
     // tables 0x7EAC28 / 0x7EAC48 / 0x7EAC68, stored by the destructor 0x512760).
-    TypesTypeList<const InfantryTypeClass*> VeteranInfantry;   // +0x14C
-    TypesTypeList<const UnitTypeClass*>     VeteranUnits;      // +0x168
-    TypesTypeList<const AircraftTypeClass*> VeteranAircraft;   // +0x184
+    TypeList<const InfantryTypeClass*> VeteranInfantry;   // +0x14C
+    TypeList<const UnitTypeClass*>     VeteranUnits;      // +0x168
+    TypeList<const AircraftTypeClass*> VeteranAircraft;   // +0x184
     char          Suffix[4];                // +0x1A0
     char          Prefix;                   // +0x1A4
     bool          Multiplay;                // +0x1A5

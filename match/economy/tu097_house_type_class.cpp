@@ -27,24 +27,24 @@ extern "C" const CLSID CLSID_HouseType =
 
 // Restores one veteran list from the stream: rebuilds the list in place, reads the count, then each
 // element, appending it.
-template <class T> inline void TypesLoadListImpl(IStream* stream, TypesTypeList<T>* list)
+template <class T> inline void TypesLoadListImpl(IStream* stream, TypeList<T>* list)
 {
-    new (list) TypesTypeList<T>;
+    new (list) TypeList<T>;
     int count;
     stream->Read(&count, 4, 0);
     for (int i = 0; i < count; ++i) {
         T item;
         stream->Read(&item, 4, 0);
-        list->AddItem(item);
+        list->AddItemEarlyOut(item);
     }
 }
 
-template <class T> inline void TypesLoadList(IStream* stream, TypesTypeList<T>* list)
+template <class T> inline void TypesLoadList(IStream* stream, TypeList<T>* list)
 {
     TypesLoadListImpl(stream, list);
 }
 
-template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
+template <class T> inline void TypesSwizzleList(TypeList<T>* list)
 {
     for (int i = 0; i < list->Count; ++i)
         DAT_00B0C110.SwizzleManagerClass::vf_4(&list->Items[i]);
@@ -54,17 +54,17 @@ template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
 // collected in order; without the key the existing list is returned unchanged. Retail expands this
 // inline once per list (the returned list is a copy, assigned to the member by the caller).
 #define TYPES_DEFINE_READ_LIST(TYPE, FIND, NAME)                                                       \
-    inline TypesTypeList<const TYPE*> NAME##Impl(CCINIClass* ini, const char* section, const char* key,   \
-                                           const TypesTypeList<const TYPE*>& current)                    \
+    inline TypeList<const TYPE*> NAME##Impl(CCINIClass* ini, const char* section, const char* key,   \
+                                           const TypeList<const TYPE*>& current)                    \
     {                                                                                                  \
         char buffer[0x80];                                                                             \
         if (ini->ReadString(section, key, TypesEmptyText, buffer, 0x80)) {                             \
-            TypesTypeList<const TYPE*> list;                                                           \
+            TypeList<const TYPE*> list;                                                           \
             for (char* name = strtok(buffer, ","); name; name = strtok(0, ",")) {                      \
                 if (*name) {                                                                           \
                     TYPE* type = FIND(name);                                                           \
                     if (type)                                                                          \
-                        list.AddItem(type);                                                            \
+                        list.AddItemEarlyOut(type);                                                            \
                 }                                                                                      \
             }                                                                                          \
             return list;                                                                               \
@@ -72,7 +72,7 @@ template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
         return current;                                                                                \
     }                                                                                                  \
     inline void NAME(CCINIClass* ini, const char* section, const char* key,                           \
-                     TypesTypeList<const TYPE*>& member)                                                \
+                     TypeList<const TYPE*>& member)                                                \
     {                                                                                                  \
         member = NAME##Impl(ini, section, key, member);                                                \
     }

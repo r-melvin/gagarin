@@ -27,6 +27,7 @@ struct AbstractNoInit;
 #include "house_building_com_bases.h"
 #include "../../core/vector_class.h"
 #include "../../core/vector_class_operations.h"
+#include "../../core/type_list.h"
 
 // GLOBAL: GAMEMD 0x7E9AE0 - IID of the IRTTITypeInfo interface (the +4 base of every type class); the
 // QueryInterface bodies compare against it. Declared, never defined here.
@@ -92,22 +93,11 @@ public:
 // object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone).
 void TypesAnnouncePointerExpired(void* object, bool removed);
 
-// TypeList<T> (match/_layout/techno_type_class.h: DynamicVectorClass plus one trailing dword, 0x1C).
-// The retail ctor expansion is `VectorClass(0, 0)` out of line, then the CapacityIncrement / Count
-// stores and its own vtable.
-template <class T> class TypesTypeList : public DynamicVectorClass<T>
-{
-public:
-    TypesTypeList() : DynamicVectorClass<T>(0, 0) {}
-    TypesTypeList(const AbstractNoInit& noInit) : DynamicVectorClass<T>(noInit) {}
-
-    // DynamicVectorClass::AddItem (out of line in retail: 0x512F20 / 0x5132F0 / 0x5136C0).
-    bool AddItem(const T& item);
-
-    int unknown_18;   // +0x18
-};
-
-template <class T> bool TypesTypeList<T>::AddItem(const T& item)
+// The house type's veteran lists are the canonical TypeList<T> (match/core/type_list.h: DynamicVectorClass plus
+// one trailing dword, 0x1C). The retail ctor expansion is `VectorClass(0, 0)` out of line, then the
+// CapacityIncrement / Count stores and its own vtable.
+// DynamicVectorClass::AddItem (out of line in retail: 0x512F20 / 0x5132F0 / 0x5136C0).
+template <class T> bool TypeList<T>::AddItemEarlyOut(const T& item)
 {
     if (this->Count >= this->Capacity) {
         if (!this->IsAllocated && this->Capacity != 0)
