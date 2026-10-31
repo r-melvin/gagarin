@@ -59,6 +59,13 @@
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.
 #include "../../core/game_state_flags.h"
+#include "../../audio/vox_class_methods.h"
+#include <new.h>
+#include "ui_display_chain.h"
+#include "../sidebar_class_methods.h"
+#include "../sidebar_class_repaint_methods.h"
+#include "../sidebar_class_scroll_methods.h"
+#include "../sidebar_class_tab_methods.h"
 
 // FUNCTION: GAMEMD 0x5BF450 (decl; reloc) -- releases the pump list.
 void FUN_005BF450();
@@ -338,6 +345,13 @@ double DAT_00B0B320 = DAT_007E1718 / DAT_00B0B398;
 // SYNTHETIC: GAMEMD 0x006A4BF0
 // GLOBAL: GAMEMD 0x00B0B388
 MathTblCoord DAT_00B0B388;
+
+// The vector deleting destructor is emitted when the array form of new is seen
+// for a class with a destructor; this helper does that and is itself dropped.
+static SidebarCameo* GgNewCameoArray(int n) { return new SidebarCameo[n]; }
+
+// SYNTHETIC: GAMEMD 0x6AC890
+// SidebarCameo::`vector deleting destructor'
 
 // REA Evidence: ev_2ae381b14ec2843cc91bb4231572d98ff6eb01c68dc88b2d17c3a381358b4d14
 // CFG-closed retail span [0x6A4E60, 0x6A4F11), 0xB1 bytes. TabClass constructor 0x6CFE20
@@ -749,6 +763,19 @@ void SidebarClass::FUN_006A5ED0()
     }
 }
 
+// FUNCTION: GAMEMD 0x6A60A0  SidebarClass::RepaintSidebar (__thiscall)
+//   this -> ECX,  tab -> [ESP+4]
+//   if (tab == ActiveTabIndex) { SidebarNeedsRedraw = 1;
+//     Tabs[tab].NeedsRedraw = 1; Instance->FlagToRedraw(0); }
+void SidebarClass::RepaintSidebar(int tab)
+{
+    if (tab == this->unknown_539C) {
+        this->At_53A6 = 1;
+        this->Strips[tab].At_3C = 1;
+        SidebarClass_Instance.GScreenClass::FlagToRedraw(0);
+    }
+}
+
 // FUNCTION: GAMEMD 0x6A60E0
 void SidebarClass::FUN_006A60E0(int tab)
 {
@@ -810,6 +837,114 @@ unsigned char SidebarClass::FUN_006A6290(int mode)
         }
     }
     return previous;
+}
+
+// GLOBAL: GAMEMD 0xB0B478 -- sidebar state flag, tested when no strip holds a cameo.
+extern int DAT_00B0B478;
+
+// FUNCTION: GAMEMD 0x6A67A0
+// Re-enable the given tab button if it was disabled, rebuilding the strip contents when it is the active
+// tab. When no strip holds any cameo and the flag is set, reset the sidebar scroll state first.
+void SidebarClass::FUN_006A67A0(int tab)
+{
+    int first = -1;
+    for (int i = 0; i < 4; i++) {
+        if (Strips[i].CameoCount > 0) {
+            first = i;
+            break;
+        }
+    }
+    if (first == -1 && DAT_00B0B478) {
+        unknown_5398 = 1;
+        unknown_5394 = 0;
+    }
+    if (!TabButtons_00B07C48[tab].IsEnabled()) {
+        TabButtons_00B07C48[tab].Enable();
+    }
+    if (tab == unknown_539C) {
+        FUN_006A6610();
+    }
+}
+
+// FUNCTION: GAMEMD 0x6A6A00
+//
+// Scrolls one sidebar column by one row. Refused while a dialog is up. A tab
+// of -1 means the active tab. Scrolling up only needs the column not to be at
+// the top; scrolling down first works out how many rows fit in the sidebar
+// (the strip height less the bottom margin, which shrinks when the scenario
+// flag at +0x34B8 is set, in 50-pixel rows), then allows the move while the
+// observer's view is below its row cap, or while a normal player still has
+// cameos below the last visible row. Either way the scroll target row moves
+// and the redraw hook fires.
+//
+// PARTIAL (74.7%, 62/83). Three register-scheduling deltas remain, all with
+// the same instruction multiset as retail:
+//   * the margin: retail loads the scenario flag into EAX, tests it, then
+//     materialises `MOV EAX,0x1A` between the TEST and the JZ; cl 8804 hoists
+//     the constant above the flag load and tests the flag in EDI;
+//   * the observer compare: retail loads TopRowIndex into EDI before the CDQ
+//     /SUB/SAR halving and adds it into EAX (`ADD EAX,EDI; CMP EAX,EDX`); ours
+//     halves first and adds into EDX (`ADD EDX,EAX; CMP EAX,EDX`), which then
+//     also flips the branch sense (JLE vs JGE);
+//   * the +0x48 increment/decrement temporaries and the vtable load use EAX
+//     in retail and EDX/EDI here.
+// Variants tried: margin as if/else, `= 0x1A; if (flag) = 0x12` (kept),
+// `= 0x12; if (!flag) = 0x1A`, ternary, `-= 8`, `0x1A - (flag ? 8 : 0)`, a
+// flag/bool local read first, the flag reused as the margin variable, and an
+// inlined helper (ternary/helper/`-` forms go branchless NEG/SBB/AND); the
+// compare as `top + rows/2 < limit`, `rows/2 + top < limit`, `limit > ...`
+// (kept: it stops VC6 cross-jumping the two compares), a named `top`, a named
+// `half`, a named `limit`, `top += rows/2`, and an inlined Half() helper; both
+// success bodies as early-outs feeding one shared body (loses the shared false
+// tail, 39.8%); strip as pointer, reference, and direct `Tabs[tab]`; the
+// redraw hook as pointer-to-member and as a real virtual; `up` as bool, char,
+// unsigned char and int; the function returning int. The remaining pattern
+// (an immediate hoisted above an unrelated load, temps preferring EDX over
+// EAX) matches the suspected 8447-vs-8804 scheduling class already recorded
+// in the methodology. Re-probed this pass: a `top` local bound inside the
+// observer arm, and `top` plus a named `half` with the sum written
+// `half + top` (both 74.7%, the sum still lands in top's register), and the
+// sum-first compare `half + top < limit` with those locals (51.8%, the two
+// compares cross-jump again).
+bool SidebarClass::Scroll(bool up, int tab)
+{
+    if (WSDialogCount) {
+        return false;
+    }
+    if (tab == -1) {
+        tab = this->unknown_539C;
+    }
+    StripClass* strip = &this->Strips[tab];
+
+    if (up) {
+        if (strip->TopRowIndex == 0) {
+            return false;
+        }
+        strip->At_48 = strip->At_48 - 1;
+        FlagToRedraw(0);
+        return true;
+    }
+
+    int margin = 0x1A;
+    if (ScenarioInstance->At_34B8) {
+        margin = 0x12;
+    }
+    int rows = (DAT_00886F9C - DAT_00B0B4F8 - margin - 7 + DAT_00886F94) / 50;
+
+    if (CurrentPlayer == Observer) {
+        if (DAT_00884CF8 > strip->TopRowIndex + rows / 2) {
+            strip->At_48 = strip->At_48 + 1;
+            FlagToRedraw(0);
+            return true;
+        }
+    } else {
+        if ((strip->TopRowIndex + rows) * 2 < strip->CameoCount) {
+            strip->At_48 = strip->At_48 + 1;
+            FlagToRedraw(0);
+            return true;
+        }
+    }
+    return false;
 }
 
 // Slot 16: draws the sidebar: backdrop shapes, the buttons, the open/close animation
@@ -964,6 +1099,181 @@ void __stdcall FUN_006A7760(int index)
 {
     // Retail steps 0x60 bytes from 0xB07C48 before calling ShapeButtonClass::StopFlashing.
     ((ShapeButtonClass*)&TabButtons_00B07C48[index])->StopFlashing();
+}
+
+// FUNCTION: GAMEMD 0x6A7D20
+// Ask every strip whether it has changed; when the active strip has, flag it for redraw, mark the
+// sidebar dirty and request a redraw.
+void SidebarClass::FUN_006A7D20()
+{
+    bool changed = false;
+    for (int i = 0; i < 4; i++) {
+        if (Strips[i].FUN_006AA600() && i == unknown_539C) {
+            Strips[i].At_3C = 1;
+            changed = true;
+        }
+    }
+    if (changed) {
+        At_53A6 = true;
+        FlagToRedraw(0);
+    }
+}
+
+// Number of cameo rows that fit in the sidebar (expanded inline by 0x6A7780,
+// twice in one path).
+inline int SidebarRowCount_006A7780()
+{
+    int margin = 0x1A;
+    if (DAT_00A8B230->unknown_34B8) {
+        margin = 0x12;
+    }
+    return (DAT_00886F9C - margin - StripY_00B0B4F8 + DAT_00886F94 - 7) / 50;
+}
+
+// Slot 10: per-frame sidebar input: scrolls the open/close animation, toggles the
+// observer panel state, handles the hotkeys for sell/repair/tab/scroll and ticks the
+// buttons.
+//
+// PARTIAL 46.6% (multiset: retail-only `sub`, `jmp`, `jge`; ours `mov` 3, `jl`). The
+// observer toggle is a `switch (control)` with `case 1` (retail's `dec eax; jz`), the old
+// state is kept as the field's own byte type (no `setne`), and the scroll-down test is
+// one condition so cl branches on each compare instead of materialising a flag (`setl`).
+// The PlayGlobal pan is declared after the volume. Remaining: retail shares one
+// PlayGlobal(Sound190) tail between the tab and scroll-down paths and lays the scroll arms
+// after the epilogue. Earlier attempts: the toggle as if/else of 1/0 (folded to `sete`),
+// the key dispatch as a `switch (code)` (jump table, 26.3%).
+// FUNCTION: GAMEMD 0x6A7780
+void SidebarClass::vf_10(int* key, Point2D* mouse)
+{
+    Point2D relative;
+    relative.X = mouse->X - SidebarRect_00886F90.X;
+    relative.Y = mouse->Y;
+    if (DAT_00A8ED6B == 0) {
+        vf_54(1);
+        for (int i = 0; i < 4; ++i) {
+            Strips[i].FUN_006A8B30(key, &relative);
+        }
+    }
+    if (At_53A5) {
+        if (unknown_5398 == 1) {
+            unknown_5394 = unknown_5394 + 1;
+            if (unknown_5394 > SideShapes_00B0B468[4]->Frames) {
+                unknown_5398 = 0;
+                unknown_5394 = 0;
+            }
+        } else if (unknown_5398 == -1) {
+            unknown_5394 = unknown_5394 - 1;
+            if (unknown_5394 < 0) {
+                unknown_5398 = 0;
+                unknown_5394 = 0;
+            }
+        }
+        int control = CurrentPlayer_00A83D4C->At_2F0 > 0;
+        unsigned char old = At_5514;
+        if (control == -1) {
+            control = (old == 0);
+        }
+        switch (control) {
+        case 1:
+            At_5514 = true;
+            break;
+        default:
+            At_5514 = false;
+            break;
+        }
+        if (old != At_5514) {
+            FlagToRedraw(0);
+            At_53A6 = 1;
+            if (!At_5514) {
+                vf_18(0, 0);
+            }
+        }
+        int code = *key;
+        if (code == 0x8066) {
+            VocClass::PlayGlobal(DAT_008871E0->GUIMainButtonSound, 1.0f, 0x2000, 0);
+            SetSellMode_004AC660(-1);
+        } else if (code == 0x8065) {
+            VocClass::PlayGlobal(DAT_008871E0->GUIMainButtonSound, 1.0f, 0x2000, 0);
+            SetRepairMode_004AC8C0(-1);
+        } else if (code >= 0x80CB && code < 0x80CF) {
+            int tab = code - 0x80CB;
+            if (tab != unknown_539C) {
+                TabButtons_00B07C48[unknown_539C].TurnOff();
+                StripClass* previous = &Strips[unknown_539C];
+                previous->At_1C = 0;
+                for (int i = 0; i < 60; ++i) {
+                    MapInstance_0087F7E8.FUN_004F4450(
+                        &CameoButtons_00B07E80[previous->RowBase * 60 + i]);
+                }
+                unknown_539C = tab;
+                TabButtons_00B07C48[tab].TurnOn();
+                StripClass* strip = &Strips[unknown_539C];
+                strip->At_1C = 1;
+                int rows = SidebarRowCount_006A7780() * 2;
+                for (int j = 0; j < rows; ++j) {
+                    CameoButtons_00B07E80[strip->RowBase * 60 + j].Zap();
+                    MapInstance_0087F7E8.AddButton(&CameoButtons_00B07E80[strip->RowBase * 60 + j]);
+                }
+                SidebarNeedsRedraw_00884B8F = 1;
+                FUN_006A6610();
+                At_53A7 = 1;
+            }
+            VocClass::PlayGlobal(DAT_008871E0->GUITabSound, 1.0f, 0x2000, 0);
+        } else if ((code & ~0x4000) == (ScrollDownButton_00B0B328.ID | 0x8000)) {
+            ScrollDownButton_00B0B328.At_2C = 0;
+            StripClass* strip = &Strips[unknown_539C];
+            int step = SidebarRowCount_006A7780();
+            if (CurrentPlayer_00A83D4C == Observer_00AC1198) {
+                step = 1;
+            }
+            int rows = SidebarRowCount_006A7780();
+            if ((CurrentPlayer_00A83D4C == Observer_00AC1198
+                    && strip->TopRowIndex + rows / 2 < ObserverRowLimit_00884CF8)
+                || (CurrentPlayer_00A83D4C != Observer_00AC1198
+                    && (strip->TopRowIndex + rows) * 2 < strip->CameoCount)) {
+                strip->At_48 = strip->At_48 + step;
+                VocClass::PlayGlobal(DAT_008871E0->GUITabSound, 1.0f, 0x2000, 0);
+            } else {
+                VocClass::PlayGlobal(DAT_008871E0->ScoldSound, 1.0f, 0x2000, 0);
+            }
+        } else if (code == (ScrollUpButton_00B0B408.ID | 0x8000)) {
+            ScrollUpButton_00B0B408.At_2C = 0;
+            StripClass* strip = &Strips[unknown_539C];
+            int rows = SidebarRowCount_006A7780();
+            if (CurrentPlayer_00A83D4C == Observer_00AC1198) {
+                rows = 1;
+            }
+            if (strip->TopRowIndex != 0) {
+                strip->At_48 = strip->At_48 - rows;
+                VocClass::PlayGlobal(DAT_008871E0->GUITabSound, 1.0f, 0x2000, 0);
+            } else {
+                VocClass::PlayGlobal(DAT_008871E0->ScoldSound, 1.0f, 0x2000, 0);
+            }
+        }
+        bool redraw = false;
+        for (int k = 0; k < 4; ++k) {
+            if (TabButtons_00B07C48[k].AI()) {
+                redraw = true;
+            }
+        }
+        if (redraw) {
+            At_53A6 = 1;
+            SidebarTouched_00B0B518 = 1;
+            SidebarNeedsRedraw_00884B8F = 1;
+            FlagToRedraw(0);
+        }
+    }
+    if (!SellMode) {
+        if (SellButton_00B07DF8.IsOn) {
+            SellButton_00B07DF8.TurnOff();
+        }
+    }
+    if (!RepairMode) {
+        if (RepairButton_00B0B3A0.IsOn) {
+            RepairButton_00B0B3A0.TurnOff();
+        }
+    }
+    PowerClass::vf_10(key, mouse);
 }
 
 // Slot 54: shows or hides the sidebar (-1 toggles); registers or removes every gadget
@@ -1140,6 +1450,32 @@ int __stdcall FUN_006A8180(unsigned int index)
         return (int)SuperWeaponTypeClass_Array.Items[index]->SidebarImage;
     }
     return 0;
+}
+
+// GLOBAL: GAMEMD 0xA8E7AC -- nonzero suppresses the EVA line.
+extern int DAT_00A8E7AC;
+
+// FUNCTION: GAMEMD 0x6A87F0
+// Add a cameo of this type and id to the strip unless it is full or already present, announce the
+// new construction options (except for type 0x1F, or when announcements are suppressed) and flag
+// the strip and sidebar for redraw.
+bool StripClass::FUN_006A87F0(int type, int id)
+{
+    if (CameoCount <= 0x4B) {
+        for (int i = 0; i < CameoCount; i++) {
+            if (Cameos[i].unknown_04.Word == type && Cameos[i].unknown_00 == id) {
+                return false;
+            }
+        }
+        if (!DAT_00A8E7AC && type != 0x1F) {
+            VoxClass::Play("EVA_NewConstructionOptions", -1, -1);
+        }
+        FUN_006A8710(type, id);
+        At_3C = 1;
+        SidebarNeedsRedraw_00884B8F = 1;
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x6A8B10
@@ -1470,6 +1806,40 @@ int __cdecl FUN_006ABC40()
 // GLOBAL: GAMEMD 0xB0B468 is declared in the layout header (SideShapes).
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- SidebarMixRetrieve, declared in the layout header too.
 
+// FUNCTION: GAMEMD 0x6ABCD0  SidebarClass::GetObjectTabIdx (static __fastcall)
+int SidebarClass::GetObjectTabIdx(int abs, int buildCat, int isNaval)
+{
+    if (abs == 0x10)
+        return 2;
+    if (abs == 0x28 || abs == 3)
+        return 3;
+    if (abs == 7)
+        return buildCat == 5;
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x6ABC60  SidebarClass::FUN_006ABC60 (__fastcall, static)
+// Which sidebar tab a buildable belongs in. Written as an if-chain, not a
+// switch: VC6 turns a switch over these values into a jump table (2% match),
+// while retail is a straight compare chain in source order with the fallthrough
+// -1 emitted before the return blocks.
+int SidebarClass::FUN_006ABC60(int abs, int idxType, int unused)
+{
+    if (abs == ABS_INFANTRYTYPE || abs == ABS_UNITTYPE)
+        return 2;
+
+    if (abs == ABS_UNIT || abs == ABS_INFANTRY || abs == ABS_AIRCRAFT || abs == ABS_BUILDING)
+        return 3;
+
+    if (abs == ABS_BUILDINGTYPE || abs == ABS_AIRCRAFTTYPE)
+        return GetCurrentSidebarContext() == 5;
+
+    if (abs == ABS_BUILDINGTYPE2 || abs == ABS_ABSTRACTTYPE || abs == ABS_SUPERWEAPON)
+        return 1;
+
+    return -1;
+}
+
 // Slot 34: repositions every sidebar gadget for the current layout (including the
 // 2-column cameo grid) and re-registers all tooltips.
 //
@@ -1767,4 +2137,6 @@ void* ConvertSurface_00887308;
 int CurrentFrame_00A8ED84;
 // GLOBAL: GAMEMD 0xB07C48
 SidebarButton TabButtons_00B07C48[4];
+// GLOBAL: GAMEMD 0xB0B478
+int DAT_00B0B478;
 // END defined globals

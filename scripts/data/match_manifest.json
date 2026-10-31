@@ -29526,7 +29526,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/sidebar_class_methods.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6ABCD0",
   "sym": "?GetObjectTabIdx@SidebarClass@@SIHHHH@Z",
   "len": "0x35",
@@ -29535,7 +29535,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/sidebar_class_repaint_methods.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A60A0",
   "sym": "?RepaintSidebar@SidebarClass@@QAEXH@Z",
   "len": "0x3B",
@@ -29544,7 +29544,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/sidebar_class_scroll_methods.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A6A00",
   "sym": "?Scroll@SidebarClass@@QAE_N_NH@Z",
   "len": "0xF0",
@@ -29562,7 +29562,7 @@
   "pct": 94.9
  },
  {
-  "tu": "match/ui/sidebar_class_tab_methods.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6ABC60",
   "sym": "?FUN_006ABC60@SidebarClass@@SIHHHH@Z",
   "len": "0x67",
@@ -58438,7 +58438,7 @@
   "pct": 9.9
  },
  {
-  "tu": "match/ui/input_controls/sidebar_class_input.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A7780",
   "sym": "?vf_10@SidebarClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x594",
@@ -143512,7 +143512,7 @@
   "pct": 82.5
  },
  {
-  "tu": "match/ui/input_controls/sidebar_r19_5.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AC890",
   "sym": "??_ESidebarCameo@@QAEPAXI@Z",
   "len": "0x3B",
@@ -144583,7 +144583,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/r22_3_sidebar_flags.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A7D20",
   "sym": "?FUN_006A7D20@SidebarClass@@QAEXXZ",
   "len": "0x4f",
@@ -144592,7 +144592,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/r22_3_sidebar_flags.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A67A0",
   "sym": "?FUN_006A67A0@SidebarClass@@QAEXH@Z",
   "len": "0x7b",
@@ -144601,7 +144601,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/r22_3_strip_add_cameo.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A87F0",
   "sym": "?FUN_006A87F0@StripClass@@QAE_NHH@Z",
   "len": "0x6d",
