@@ -6,7 +6,7 @@
 //   0x7C3670, 0x7C3690, 0x7C3710, 0x7C3840.
 
 #include "movie_stream_handle.h"
-#include "../renderer/trivial_tu296_methods.h"
+#include "../../renderer/trivial_tu296_methods.h"
 
 // The empty drawer (0x7BF220) installed when none is given.
 #define EMPTY_DRAWER ((MovieDrawFn_007BD470)FUN_007BF220)

@@ -5,7 +5,7 @@
 #ifndef GG_MOVIE_STREAM_HANDLE_H
 #define GG_MOVIE_STREAM_HANDLE_H
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 
 class VQAClass;
 struct MovieHandle_007BD470;

@@ -5,7 +5,7 @@
 
 #include <stddef.h>
 #include <stdlib.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 
 struct Obj_00759FA0
 {

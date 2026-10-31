@@ -5,7 +5,7 @@
 //   Address index: 0x7597A0, 0x759BC0.
 
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 #include "movie_stream_handle.h"
 
 int __fastcall FUN_007C2590(const char* name, MovieConfig_007BD470* config, MovieHandle_007BD470** out);

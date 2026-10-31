@@ -9,8 +9,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../_rt/gg_static_assert.h"
-#include "../_layout/vqa_class.h"
+#include "../../_rt/gg_static_assert.h"
+#include "../../_layout/vqa_class.h"
 
 struct VQAOwner_006C9C60
 {

@@ -9,7 +9,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/movie_stream_handle.h"
+#include "../wwlib/vqa/movie_stream_handle.h"
 #include "../platform/ccfile_class.h"
 
 struct StreamSampleView;

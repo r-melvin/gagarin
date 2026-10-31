@@ -60428,7 +60428,7 @@
   "pct": 2.9
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BD470",
   "sym": "?FUN_007bd470@@YAHPAUMovieHandle_007BD470@@@Z",
   "len": "0x14A",
@@ -60437,7 +60437,7 @@
   "pct": 1.7
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BD690",
   "sym": "?FUN_007bd690@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x8E2",
@@ -60446,7 +60446,7 @@
   "pct": 10.2
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BE4A0",
   "sym": "?FUN_007be4a0@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x12C",
@@ -60455,7 +60455,7 @@
   "pct": 12.4
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BE670",
   "sym": "?FUN_007be670@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x1BF",
@@ -60464,7 +60464,7 @@
   "pct": 4.7
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BEA80",
   "sym": "?FUN_007bea80@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x399",
@@ -60473,7 +60473,7 @@
   "pct": 0.9
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BEE20",
   "sym": "?FUN_007bee20@@YIHPAUMovieHandle_007BD470@@PAUMovieConfig_007BD470@@PAUMovieDrawState_007BD470@@PAUMovieFrame_007BD470@@I@Z",
   "len": "0x1B4",
@@ -60482,7 +60482,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BF240",
   "sym": "?FUN_007bf240@@YAHPAUMovieHandle_007BD470@@HPAXH@Z",
   "len": "0x132",
@@ -60491,7 +60491,7 @@
   "pct": 18.8
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C0530",
   "sym": "?FUN_007c0530@@YIHPAUMovieHandle_007BD470@@HH@Z",
   "len": "0x179",
@@ -60500,7 +60500,7 @@
   "pct": 46.3
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C0740",
   "sym": "?FUN_007c0740@@YIHPAUMovieHandle_007BD470@@HHDDPAD@Z",
   "len": "0x539",
@@ -60509,7 +60509,7 @@
   "pct": 2.6
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C1150",
   "sym": "?FUN_007c1150@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x153",
@@ -60518,7 +60518,7 @@
   "pct": 78.8
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C1A70",
   "sym": "?FUN_007c1a70@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x161",
@@ -60527,7 +60527,7 @@
   "pct": 78.6
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C1BE0",
   "sym": "?FUN_007c1be0@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x152",
@@ -60536,7 +60536,7 @@
   "pct": 78.8
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C2250",
   "sym": "?FUN_007c2250@@YIHPAUMovieHandle_007BD470@@H@Z",
   "len": "0x1BB",
@@ -60545,7 +60545,7 @@
   "pct": 98.8
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C2410",
   "sym": "?FUN_007c2410@@YIHPAUMovieHandle_007BD470@@I@Z",
   "len": "0x175",
@@ -60554,7 +60554,7 @@
   "pct": 95.1
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C2590",
   "sym": "?FUN_007c2590@@YIHPBDPAUMovieConfig_007BD470@@PAPAUMovieHandle_007BD470@@@Z",
   "len": "0x6C7",
@@ -60563,7 +60563,7 @@
   "pct": 9.9
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C2D00",
   "sym": "?FUN_007c2d00@@YIHPAUMovieHandle_007BD470@@HH@Z",
   "len": "0x3C2",
@@ -60572,7 +60572,7 @@
   "pct": 47.9
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C30D0",
   "sym": "?FUN_007c30d0@@YIHPAUMovieHandle_007BD470@@HH@Z",
   "len": "0x15D",
@@ -60581,7 +60581,7 @@
   "pct": 90.0
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C3270",
   "sym": "?FUN_007c3270@@YIHPAUMovieHandle_007BD470@@PAEIIHH@Z",
   "len": "0x1B8",
@@ -60590,7 +60590,7 @@
   "pct": 22.3
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C3D60",
   "sym": "?FUN_007c3d60@@YAXPAG00HHH@Z",
   "len": "0x146",
@@ -60599,7 +60599,7 @@
   "pct": 0.0
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C4260",
   "sym": "?FUN_007c4260@@YAXPAG00HHH@Z",
   "len": "0x13D",
@@ -136096,7 +136096,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7BE660",
   "sym": "?FUN_007be660@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0xa",
@@ -136105,7 +136105,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7BF230",
   "sym": "?FUN_007bf230@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x4",
@@ -136114,7 +136114,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C3230",
   "sym": "?FUN_007c3230@@YIHPAUMovieHandle_007BD470@@P6AXPAG11HHH@Z2@Z",
   "len": "0x3a",
@@ -136123,7 +136123,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C35B0",
   "sym": "?FUN_007c35b0@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0xa",
@@ -136132,7 +136132,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C3670",
   "sym": "?FUN_007c3670@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x16",
@@ -136141,7 +136141,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C3690",
   "sym": "?FUN_007c3690@@YIHPAUMovieHandle_007BD470@@H@Z",
   "len": "0x29",
@@ -136150,7 +136150,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C3710",
   "sym": "?FUN_007c3710@@YIHPAUMovieHandle_007BD470@@PAH11@Z",
   "len": "0x2c",
@@ -136159,7 +136159,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C3840",
   "sym": "?FUN_007c3840@@YIHPAUMovieHandle_007BD470@@PAH1@Z",
   "len": "0x20",
@@ -136168,7 +136168,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C0490",
   "sym": "?FUN_007c0490@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x41",
@@ -136177,7 +136177,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C04E0",
   "sym": "?FUN_007c04e0@@YIDPAUMovieHandle_007BD470@@H@Z",
   "len": "0x47",
@@ -136186,7 +136186,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C1130",
   "sym": "?FUN_007c1130@@YIHPAUMovieHandle_007BD470@@K@Z",
   "len": "0x1d",
@@ -136195,7 +136195,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/movie_handle_w3_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_handle_w3_methods.cpp",
   "addr": "0x7C1D40",
   "sym": "?FUN_007c1d40@@YIHPAUMovieHandle_007BD470@@K@Z",
   "len": "0x41",
@@ -144610,7 +144610,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r22_w4_stream_callbacks.cpp",
+  "tu": "match/wwlib/vqa/r22_w4_stream_callbacks.cpp",
   "addr": "0x759FA0",
   "sym": "?FUN_00759FA0@Obj_00759FA0@@QAEXXZ",
   "len": "0x6",
@@ -144619,7 +144619,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r22_w4_stream_callbacks.cpp",
+  "tu": "match/wwlib/vqa/r22_w4_stream_callbacks.cpp",
   "addr": "0x75A2F0",
   "sym": "?FUN_0075A2F0@@YAPAXHHPAII@Z",
   "len": "0x43",
@@ -144709,7 +144709,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r22_w4_movie_stream_close.cpp",
+  "tu": "match/wwlib/vqa/r22_w4_movie_stream_close.cpp",
   "addr": "0x7C2C60",
   "sym": "?FUN_007C2C60@@YIXPAUMovieStream_007C2C60@@@Z",
   "len": "0x9a",
@@ -145375,7 +145375,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r24_4_movie_player.cpp",
+  "tu": "match/wwlib/vqa/r24_4_movie_player.cpp",
   "addr": "0x7597A0",
   "sym": "?FUN_007597A0@MoviePlayer_r24@@QAE_NXZ",
   "len": "0x64",
@@ -145384,7 +145384,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r24_4_movie_player.cpp",
+  "tu": "match/wwlib/vqa/r24_4_movie_player.cpp",
   "addr": "0x759BC0",
   "sym": "?FUN_00759BC0@MoviePlayer_r24@@QAEXH@Z",
   "len": "0x65",
@@ -145393,7 +145393,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r24_4_movie_stream.cpp",
+  "tu": "match/wwlib/vqa/r24_4_movie_stream.cpp",
   "addr": "0x7BF140",
   "sym": "?FUN_007bf140@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x43",
@@ -145402,7 +145402,7 @@
   "pct": 90.9
  },
  {
-  "tu": "match/core/r24_4_movie_stream.cpp",
+  "tu": "match/wwlib/vqa/r24_4_movie_stream.cpp",
   "addr": "0x7C19F0",
   "sym": "?FUN_007c19f0@@YIHPAUMovieHandle_007BD470@@HPAH1@Z",
   "len": "0x7d",
@@ -145411,7 +145411,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r24_4_movie_stream.cpp",
+  "tu": "match/wwlib/vqa/r24_4_movie_stream.cpp",
   "addr": "0x7C3430",
   "sym": "?FUN_007c3430@@YIHPAUMovieHandle_007BD470@@HHH@Z",
   "len": "0x72",
@@ -148142,7 +148142,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BEFE0",
   "sym": "?FUN_007befe0@@YIXPAUMovieHandle_007BD470@@@Z",
   "len": "0xcb",
@@ -148151,7 +148151,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BF0B0",
   "sym": "?FUN_007bf0b0@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x8a",
@@ -148160,7 +148160,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7BF190",
   "sym": "?FUN_007bf190@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x81",
@@ -148169,7 +148169,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C1D90",
   "sym": "?FUN_007c1d90@@YIHPAUMovieHandle_007BD470@@H@Z",
   "len": "0x7c",
@@ -148178,7 +148178,7 @@
   "pct": 91.5
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C20B0",
   "sym": "?FUN_007c20b0@@YIHPAUMovieHandle_007BD470@@H@Z",
   "len": "0xc5",
@@ -148187,7 +148187,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "addr": "0x7C3750",
   "sym": "?FUN_007c3750@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0xd0",
@@ -148403,7 +148403,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x759260",
   "sym": "??0VQAClass@@QAE@PBDIP6AHXZP6AXXZ2HH@Z",
   "len": "0x2ac",
@@ -148412,7 +148412,7 @@
   "pct": 97.5
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x759510",
   "sym": "??1VQAClass@@QAE@XZ",
   "len": "0x2f",
@@ -148421,7 +148421,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x759540",
   "sym": "?FUN_00759540@VQAClass@@QAEHI@Z",
   "len": "0x124",
@@ -148430,7 +148430,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x759940",
   "sym": "?FUN_00759940@VQAClass@@QAE_NH_N@Z",
   "len": "0x27e",
@@ -148439,7 +148439,7 @@
   "pct": 92.7
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x759C30",
   "sym": "?Advance_Frame@VQAClass@@QAE_NPA_N@Z",
   "len": "0x1d9",
@@ -148448,7 +148448,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x759FB0",
   "sym": "?FUN_00759FB0@VQAClass@@QAEHHPAIH@Z",
   "len": "0x119",
@@ -148457,7 +148457,7 @@
   "pct": 88.0
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x75A120",
   "sym": "?FUN_0075A120@VQAClass@@QAEHHPAIH@Z",
   "len": "0x14d",
@@ -148466,7 +148466,7 @@
   "pct": 89.8
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x75A2B0",
   "sym": "?FUN_0075A2B0@@YAHPAUMovieHandle_007BD470@@HPAIH@Z",
   "len": "0x1f",
@@ -148475,7 +148475,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vqa_class_methods.cpp",
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
   "addr": "0x75A350",
   "sym": "?FUN_0075A350@@YAHPAUMovieHandle_007BD470@@HPAGI@Z",
   "len": "0x8b",
@@ -148565,7 +148565,7 @@
   "pct": 87.3
  },
  {
-  "tu": "match/asm/audio_frame_unpack_a_object.asm",
+  "tu": "match/wwlib/vqa/audio_frame_unpack_a_object.asm",
   "addr": "0x7C5BC0",
   "sym": "_FUN_007C5BC0",
   "len": "0x1e6",
@@ -148610,7 +148610,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/stream_codec_a_object.asm",
+  "tu": "match/wwlib/vqa/stream_codec_a_object.asm",
   "addr": "0x7C6270",
   "sym": "_FUN_007C6270",
   "len": "0x3c",
@@ -148619,7 +148619,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/stream_codec_a_object.asm",
+  "tu": "match/wwlib/vqa/stream_codec_a_object.asm",
   "addr": "0x7C62AC",
   "sym": "_FUN_007C62AC",
   "len": "0x367",
@@ -148637,7 +148637,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/stream_codec_b_object.asm",
+  "tu": "match/wwlib/vqa/stream_codec_b_object.asm",
   "addr": "0x7C6730",
   "sym": "_FUN_007C6730",
   "len": "0x22",
@@ -148646,7 +148646,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/stream_codec_b_object.asm",
+  "tu": "match/wwlib/vqa/stream_codec_b_object.asm",
   "addr": "0x7C6752",
   "sym": "_FUN_007C6752",
   "len": "0x416",
@@ -148655,7 +148655,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_a_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_a_object.asm",
   "addr": "0x7C6B70",
   "sym": "_FUN_007C6B70",
   "len": "0x109",
@@ -148664,7 +148664,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_a_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_a_object.asm",
   "addr": "0x7C6C79",
   "sym": "_FUN_007C6C79",
   "len": "0xc6",
@@ -148673,7 +148673,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C6D40",
   "sym": "_FUN_007C6D40",
   "len": "0x96",
@@ -148682,7 +148682,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C6DD6",
   "sym": "_FUN_007C6DD6",
   "len": "0xbe",
@@ -148691,7 +148691,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C6E94",
   "sym": "_FUN_007C6E94",
   "len": "0x9a",
@@ -148700,7 +148700,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C6F2E",
   "sym": "_FUN_007C6F2E",
   "len": "0x9a",
@@ -148709,7 +148709,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C6FC8",
   "sym": "_FUN_007C6FC8",
   "len": "0xfc",
@@ -148718,7 +148718,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C70C4",
   "sym": "_FUN_007C70C4",
   "len": "0xb0",
@@ -148727,7 +148727,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C7174",
   "sym": "_FUN_007C7174",
   "len": "0xf6",
@@ -148736,7 +148736,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "tu": "match/wwlib/vqa/codebook_block_expand_b_object.asm",
   "addr": "0x7C726A",
   "sym": "_FUN_007C726A",
   "len": "0xe4",
@@ -148745,7 +148745,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/stream_codec_c_object.asm",
+  "tu": "match/wwlib/vqa/stream_codec_c_object.asm",
   "addr": "0x7C7350",
   "sym": "_FUN_007C7350",
   "len": "0x21",
@@ -148754,7 +148754,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/stream_codec_c_object.asm",
+  "tu": "match/wwlib/vqa/stream_codec_c_object.asm",
   "addr": "0x7C7371",
   "sym": "_FUN_007C7371",
   "len": "0xbaf",
@@ -148763,7 +148763,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/audio_frame_unpack_b_object.asm",
+  "tu": "match/wwlib/vqa/audio_frame_unpack_b_object.asm",
   "addr": "0x7C7F20",
   "sym": "_FUN_007C7F20",
   "len": "0x1e8",
@@ -148772,7 +148772,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/command_byte_unpack_object.asm",
+  "tu": "match/wwlib/vqa/command_byte_unpack_object.asm",
   "addr": "0x7C8110",
   "sym": "_FUN_007C8110",
   "len": "0xcb",
@@ -148781,7 +148781,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/command_byte_unpack_object.asm",
+  "tu": "match/wwlib/vqa/command_byte_unpack_object.asm",
   "addr": "0x7C81DB",
   "sym": "_FUN_007C81DB",
   "len": "0x187",

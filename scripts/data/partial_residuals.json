@@ -5342,7 +5342,7 @@
  {
   "addr": "0x7BF140",
   "name": "FUN_007bf140",
-  "tu": "match/core/r24_4_movie_stream.cpp",
+  "tu": "match/wwlib/vqa/r24_4_movie_stream.cpp",
   "sym": "?FUN_007bf140@@YIHPAUMovieHandle_007BD470@@@Z",
   "len": "0x43",
   "manifest_pct": 90.9,
@@ -5363,7 +5363,7 @@
  {
   "addr": "0x7C2250",
   "name": "FUN_007c2250",
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "sym": "?FUN_007c2250@@YIHPAUMovieHandle_007BD470@@H@Z",
   "len": "0x1BB",
   "manifest_pct": 98.8,
@@ -5384,7 +5384,7 @@
  {
   "addr": "0x7C2410",
   "name": "FUN_007c2410",
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "sym": "?FUN_007c2410@@YIHPAUMovieHandle_007BD470@@I@Z",
   "len": "0x175",
   "manifest_pct": 95.1,
@@ -5405,7 +5405,7 @@
  {
   "addr": "0x7C30D0",
   "name": "FUN_007c30d0",
-  "tu": "match/core/movie_stream_methods.cpp",
+  "tu": "match/wwlib/vqa/movie_stream_methods.cpp",
   "sym": "?FUN_007c30d0@@YIHPAUMovieHandle_007BD470@@HH@Z",
   "len": "0x15D",
   "manifest_pct": 90.0,

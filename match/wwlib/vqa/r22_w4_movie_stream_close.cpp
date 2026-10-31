@@ -4,7 +4,7 @@
 //   Address index: 0x7C2C60.
 
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 
 // Movie stream object (same layout family as MovieStream_007BD210): two callbacks at +0x40/+0x44,
 // flag bytes at +0x84/+0xEA/+0x150, a buffer at +0x158, and a flag word at +0x7BC.
