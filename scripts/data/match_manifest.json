@@ -89691,7 +89691,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517870",
   "sym": "_$E5",
   "len": "0x13",
@@ -89700,7 +89700,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517890",
   "sym": "_$E8",
   "len": "0x13",
@@ -89709,7 +89709,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517A10",
   "sym": "_$E38",
   "len": "0x1a",
@@ -121858,7 +121858,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517840",
   "sym": "_$E2",
   "len": "0x28",
@@ -121867,7 +121867,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x5178B0",
   "sym": "_$E11",
   "len": "0x13",
@@ -121876,7 +121876,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x5178D0",
   "sym": "_$E14",
   "len": "0x13",
@@ -121885,7 +121885,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x5178F0",
   "sym": "_$E17",
   "len": "0x13",
@@ -121894,7 +121894,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517910",
   "sym": "_$E20",
   "len": "0x31",
@@ -121903,7 +121903,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517950",
   "sym": "_$E23",
   "len": "0x21",
@@ -121912,7 +121912,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517980",
   "sym": "_$E26",
   "len": "0x2c",
@@ -121921,7 +121921,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x5179B0",
   "sym": "_$E29",
   "len": "0x27",
@@ -121930,7 +121930,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x5179E0",
   "sym": "_$E32",
   "len": "0xf",
@@ -121939,7 +121939,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x5179F0",
   "sym": "_$E35",
   "len": "0x12",
@@ -121948,7 +121948,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_517840.cpp",
+  "tu": "match/combat/Infantry.cpp",
   "addr": "0x517A30",
   "sym": "_$E41",
   "len": "0x17",
