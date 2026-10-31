@@ -57817,7 +57817,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_graphic_menu_anim.cpp",
+  "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F3090",
   "sym": "?Slot2@GraphicMenuAnimItem@@UAE_NPBVPoint2D@@@Z",
   "len": "0x42",
@@ -137059,7 +137059,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/scenario_elapsed_timer_methods.cpp",
+  "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F1B00",
   "sym": "?FUN_004F1B00@ScenarioElapsedTimer@@QAEPAU1@H@Z",
   "len": "0x1a",
@@ -137068,7 +137068,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/scenario_elapsed_timer_methods.cpp",
+  "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F1B20",
   "sym": "?FUN_004F1B20@ScenarioElapsedTimer@@QAEHXZ",
   "len": "0x31",
@@ -138346,7 +138346,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/menus_graphic_menu_anim.cpp",
+  "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F3070",
   "sym": "??1GraphicMenuAnimItem@@UAE@XZ",
   "len": "0x1f",
@@ -138355,7 +138355,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/menus_graphic_menu_anim.cpp",
+  "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F30E0",
   "sym": "??_GGraphicMenuAnimItem@@UAEPAXI@Z",
   "len": "0x33",
@@ -141640,7 +141640,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_queue_r16_methods.cpp",
+  "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F1AA0",
   "sym": "?FUN_004F1AA0@?$EventQueue@$0IA@@@QAEHPBVEventClass@@@Z",
   "len": "0x5b",

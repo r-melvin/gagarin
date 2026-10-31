@@ -29,6 +29,9 @@
 #include "../core/position_below_limit_family_methods.h"
 
 #include "../core/trivial_tu092_methods.h"
+#include "../_layout/elapsed_timer.h"
+#include "../network/event_queue.h"
+#include "input_controls/menus_graphic_menu.h"
 
 template <class T> class VectorClass;
 template <class T> class DynamicVectorClass;
@@ -110,6 +113,52 @@ void __cdecl FUN_004F1710()
 {
 }
 
+// WinMM import: GAMEMD 0x007E1530 (timeGetTime).
+extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+
+// FUNCTION: GAMEMD 0x4F1AA0
+// Append `*item` at the head slot, stamp it with the wall-clock time, and
+// advance the head (modulo 128). Returns 0 when the queue already holds 128.
+template<>
+int EventQueue<128>::FUN_004F1AA0(const EventQueueItem* item)
+{
+    if (Count < 128) {
+        List[Head] = *item;
+        Time[Head] = timeGetTime();
+        Head = (Head + 1) & 0x7F;
+        Count++;
+        return 1;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x4F1B00
+// Out-of-line copy of the duration constructor: stamp the start tick and
+// store the duration.
+ScenarioElapsedTimer* ScenarioElapsedTimer::FUN_004F1B00(int ticks)
+{
+    unknown_00 = unknown_04.GetTime();
+    unknown_08 = ticks;
+    return this;
+}
+
+// FUNCTION: GAMEMD 0x4F1B20
+// Ticks remaining: the stored duration, less the time elapsed since the start
+// tick unless the timer is paused (start tick -1).
+int ScenarioElapsedTimer::FUN_004F1B20()
+{
+    int left = unknown_08;
+    if (unknown_00 != -1) {
+        int elapsed = unknown_04.GetTime();
+        elapsed -= unknown_00;
+        if (elapsed < left) {
+            return left - elapsed;
+        }
+        return 0;
+    }
+    return left;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4F2850
 // DynamicVectorClass<GraphicMenuItem*>::Clear
@@ -177,6 +226,25 @@ Obj_004F2B50* Obj_004F2B50::FUN_004F2B50()
 {
     unknown_08--;
     return this;
+}
+
+// FUNCTION: GAMEMD 0x4F3070
+// Releases the owned animation, then runs the base destructor. (The scalar deleting destructor 0x4F30E0 is
+// not reproduced: cl emits ??_G only beside a constructor, and the factory 0x4F2C70 expands it inline.)
+GraphicMenuAnimItem::~GraphicMenuAnimItem()
+{
+    delete Anim;
+}
+
+// SYNTHETIC: GAMEMD 0x4F30E0 -- GraphicMenuAnimItem::`scalar deleting destructor' (compiler-generated ??_G beside the out-of-line destructor)
+
+// FUNCTION: GAMEMD 0x4F3090
+// Hit test: true when the item is visible and the point lies inside its rectangle.
+bool GraphicMenuAnimItem::Slot2(const Point2D* point)
+{
+    return Visible
+        && point->X >= Rect.X && point->X < Rect.X + Rect.Width
+        && point->Y >= Rect.Y && point->Y < Rect.Y + Rect.Height;
 }
 
 // BEGIN defined globals (define_globals.py)
