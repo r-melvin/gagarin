@@ -89423,7 +89423,7 @@
  {
   "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BCA0",
-  "sym": "_$E2",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "_$E2",
   "status": "matched",
@@ -89432,7 +89432,7 @@
  {
   "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BCC0",
-  "sym": "_$E5",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "_$E5",
   "status": "matched",
@@ -89441,7 +89441,7 @@
  {
   "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BE40",
-  "sym": "_$E8",
+  "sym": "_$E38",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0089E8F8)",
   "status": "matched",
@@ -118294,7 +118294,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BC70",
   "sym": "_$E2",
   "len": "0x28",
@@ -118303,81 +118303,81 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BCE0",
-  "sym": "_$E5",
+  "sym": "_$E11",
   "len": "0x13",
   "name": "dynamic initializer (header group 3)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BD00",
-  "sym": "_$E8",
+  "sym": "_$E14",
   "len": "0x13",
   "name": "dynamic initializer (header group 4)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BD20",
-  "sym": "_$E11",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (header group 5)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BD40",
-  "sym": "_$E14",
+  "sym": "_$E20",
   "len": "0x31",
   "name": "dynamic initializer (header group 6)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BD80",
-  "sym": "_$E17",
+  "sym": "_$E23",
   "len": "0x21",
   "name": "dynamic initializer (header group 7)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BDB0",
-  "sym": "_$E20",
+  "sym": "_$E26",
   "len": "0x2c",
   "name": "dynamic initializer (header group 8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BDE0",
-  "sym": "_$E23",
+  "sym": "_$E29",
   "len": "0x27",
   "name": "dynamic initializer (header group 9)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BE10",
-  "sym": "_$E26",
+  "sym": "_$E32",
   "len": "0xf",
   "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0048bc70.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BE20",
-  "sym": "_$E29",
+  "sym": "_$E35",
   "len": "0x12",
   "name": "dynamic initializer (header group 11)",
   "status": "matched",
