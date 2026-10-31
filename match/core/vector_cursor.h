@@ -34,6 +34,10 @@ public:
     virtual VectorCursor* vf_02();
     virtual VectorCursor* vf_03();
 
+    // Inline front end over the slots: the cursor tests as "still in range" and steps with ++.
+    operator bool() { return vf_01(); }
+    VectorCursor& operator++() { return *vf_02(); }
+
     Container* unknown_04;  // +0x04
     unsigned int unknown_08;  // +0x08
 };

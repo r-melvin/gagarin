@@ -149256,5 +149256,32 @@
   "name": "FootClass::vf_104",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76DFD0",
+  "sym": "?FUN_0076DFD0@Selection@WorldDominationTour@@QAEXXZ",
+  "len": "0xb5",
+  "name": "?FUN_0076DFD0@Selection@WorldDominationTour@@QAEXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76E090",
+  "sym": "?FUN_0076E090@Selection@WorldDominationTour@@QAEXXZ",
+  "len": "0xed",
+  "name": "?FUN_0076E090@Selection@WorldDominationTour@@QAEXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/WDTSel.cpp",
+  "addr": "0x76EBE0",
+  "sym": "?FUN_0076EBE0@Selection@WorldDominationTour@@QAEXABVWstring@@@Z",
+  "len": "0x9e",
+  "name": "?FUN_0076EBE0@Selection@WorldDominationTour@@QAEXABVWstring@@@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

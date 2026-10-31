@@ -51,6 +51,7 @@ class Territory;
 }
 
 #include "../core/vector_cursor.h"
+#include "../_layout/map_stage_list.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -156,6 +157,39 @@ void Selection::FUN_0076D470(const WDTPoint* point)
     }
 }
 
+// FUNCTION: GAMEMD 0x76DFD0
+void Selection::FUN_0076DFD0()
+{
+    typedef VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*> > SfxCursor;
+    Wstring key("MapEnter");
+    if (key.FUN_007B47F0(0)) {
+        SfxCursor it(&Sfxs, 0);
+        for (; it && key == it.unknown_04->Items[it.unknown_08]->Name; ++it) {
+        }
+        if (it)
+            it.unknown_04->Items[it.unknown_08]->FUN_005D0590();
+    }
+}
+
+// FUNCTION: GAMEMD 0x76E090
+void Selection::FUN_0076E090()
+{
+    typedef VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*> > SfxCursor;
+    {
+        Wstring key("MapLeave");
+        if (key.FUN_007B47F0(0)) {
+            SfxCursor it(&Sfxs, 0);
+            for (; it && key == it.unknown_04->Items[it.unknown_08]->Name; ++it) {
+            }
+            if (it)
+                it.unknown_04->Items[it.unknown_08]->FUN_005D0590();
+        }
+    }
+    unknown_460 = -1;
+    rc_ptr<Territory> none;
+    FUN_0076DAD0(none);
+}
+
 // FUNCTION: GAMEMD 0x76E9D0
 void Selection::FUN_0076E9D0()
 {
@@ -181,6 +215,19 @@ void Selection::FUN_0076EAF0(const Obj_007B66D0& text)
         unknown_480 = new MSBitPrintAnim(copy, &rect, false);
         unknown_480->SetStarted(true);
         AddAnim(unknown_480);
+    }
+}
+
+// FUNCTION: GAMEMD 0x76EBE0
+void Selection::FUN_0076EBE0(const Wstring& name)
+{
+    typedef VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*> > SfxCursor;
+    if (name.FUN_007B47F0(0)) {
+        SfxCursor it(&Sfxs, 0);
+        for (; it && name == it.unknown_04->Items[it.unknown_08]->Name; ++it) {
+        }
+        if (it)
+            it.unknown_04->Items[it.unknown_08]->FUN_005D0590();
     }
 }
 
