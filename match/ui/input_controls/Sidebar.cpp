@@ -1432,6 +1432,23 @@ int SidebarSBGadgetClass::Action(unsigned flags, unsigned* key, int modifier)
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x6ABA60
+// Find the cameo with this type and id and store value in its pointer slot, then mark the strip
+// and the sidebar for redraw. False when the strip has no such cameo.
+bool StripClass::FUN_006ABA60(void* value, int type, int id)
+{
+    for (int i = 0; i < CameoCount; i++) {
+        if (Cameos[i].unknown_04.Word == type && Cameos[i].unknown_00 == id) {
+            Cameos[i].Pointer = value;
+            unknown_3D = 1;
+            At_3C = 1;
+            Map_0087F7E8.FlagToRedraw(0);
+            return true;
+        }
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x6ABAC0
 // Returns a comparison result.
 bool Obj_006ABAC0::FUN_006ABAC0() const

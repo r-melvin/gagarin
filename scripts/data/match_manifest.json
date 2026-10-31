@@ -144574,7 +144574,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/r22_3_strip_cameo.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6ABA60",
   "sym": "?FUN_006ABA60@StripClass@@QAE_NPAXHH@Z",
   "len": "0x5a",
