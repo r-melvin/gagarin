@@ -209,11 +209,15 @@ bool FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x60A100 (__fastcall)
 bool FUN_0060A100(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x60A180 (__stdcall)
-int __stdcall FUN_0060A180(GG_HWND hWnd, int unused);
+int __stdcall FUN_0060A180(GG_HWND hWnd, long unused);
 // FUNCTION: GAMEMD 0x60A250 (__stdcall)
 int __stdcall FUN_0060A250(GG_HWND hWnd, long lParam);
 // FUNCTION: GAMEMD 0x60A300 (__fastcall)
 bool FUN_0060A300(GG_HWND hWnd);
+// FUNCTION: GAMEMD 0x60A330 (decl; reloc) -- EnumChildWindows callback
+int __stdcall FUN_0060A330(GG_HWND hWnd, long lParam);
+// FUNCTION: GAMEMD 0x60AAB0 (decl; reloc) -- EnumChildWindows callback
+int __stdcall FUN_0060AAB0(GG_HWND hWnd, long lParam);
 // FUNCTION: GAMEMD 0x60AA60 (__stdcall)
 int __stdcall FUN_0060AA60(GG_HWND hWnd, int unused);
 // FUNCTION: GAMEMD 0x60B740 (__fastcall)

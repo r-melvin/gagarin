@@ -1546,6 +1546,12 @@ int FUN_00603DD0(GG_HWND hWnd, unsigned char nValue)
     return SendMessageA(hWnd, 0x4E6, 0, nValue);
 }
 
+// FUNCTION: GAMEMD 0x603DF0  FUN_00603DF0 (__fastcall)
+bool __fastcall FUN_00603DF0(GG_HWND hWnd)
+{
+    return (SendMessageA(hWnd, 0x4E7, 0, 0) != 0) ? true : false;
+}
+
 // FUNCTION: GAMEMD 0x603E10  FUN_00603E10
 int FUN_00603E10(GG_HWND hWnd, unsigned short nLow, unsigned short nHigh)
 {
@@ -3815,7 +3821,7 @@ bool FUN_0060A100(int nKey, GG_HWND hCtl)
 }
 
 // FUNCTION: GAMEMD 0x60A180  FUN_0060A180
-int __stdcall FUN_0060A180(GG_HWND hWnd, int unused)
+int __stdcall FUN_0060A180(GG_HWND hWnd, long unused)
 {
     GG_HWND hParent = GetParent(hWnd);
 
@@ -3834,6 +3840,14 @@ int __stdcall FUN_0060A180(GG_HWND hWnd, int unused)
     }
 
     return 1;
+}
+
+// FUNCTION: GAMEMD 0x60A230  FUN_0060A230 (__fastcall)
+int __fastcall FUN_0060A230(GG_HWND hWnd)
+{
+    DAT_00AC1CAC = 0;
+    EnumChildWindows(hWnd, FUN_0060A180, 0);
+    return DAT_00AC1CAC;
 }
 
 // FUNCTION: GAMEMD 0x60A250  FUN_0060A250
@@ -3866,6 +3880,12 @@ bool FUN_0060A300(GG_HWND hWnd)
     return DAT_00AC4894 >= 1;
 }
 
+// FUNCTION: GAMEMD 0x60A5A0  FUN_0060A5A0 (__fastcall)
+void __fastcall FUN_0060A5A0(GG_HWND hWnd)
+{
+    EnumChildWindows(hWnd, FUN_0060A330, 0);
+}
+
 // FUNCTION: GAMEMD 0x60AA60  FUN_0060AA60
 int __stdcall FUN_0060AA60(GG_HWND hWnd, int unused)
 {
@@ -3895,6 +3915,12 @@ extern int DAT_007F5BF8;
 static inline int Inline_CentreMargin(bool bFills, int nExtent, int nDesign)
 {
     return bFills ? 0 : ((nExtent - nDesign) / 2 < 0 ? 0 : (nExtent - nDesign) / 2);
+}
+
+// FUNCTION: GAMEMD 0x60AF40  FUN_0060AF40 (__fastcall)
+void __fastcall FUN_0060AF40(GG_HWND hWnd)
+{
+    EnumChildWindows(hWnd, FUN_0060AAB0, 0);
 }
 
 // FUNCTION: GAMEMD 0x60AF50  FUN_0060AF50 (__fastcall)
@@ -6394,6 +6420,8 @@ int DAT_00AC1B94;
 int DAT_00AC1B98;
 // GLOBAL: GAMEMD 0xAC1CA8
 int DAT_00AC1CA8;
+// GLOBAL: GAMEMD 0xAC1CAC
+int DAT_00AC1CAC;
 // GLOBAL: GAMEMD 0xAC1CB0
 int DAT_00AC1CB0;
 // GLOBAL: GAMEMD 0xAC1CB4

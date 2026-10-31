@@ -85434,11 +85434,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu171_b_methods.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x603DF0",
-  "sym": "?FUN_00603DF0@Obj_00603DF0@@QAE_NXZ",
+  "sym": "?FUN_00603DF0@@YI_NPAX@Z",
   "len": "0x16",
-  "name": "Obj_00603DF0::FUN_00603DF0",
+  "name": "FUN_00603DF0",
   "status": "matched",
   "pct": 100
  },
@@ -85452,29 +85452,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu171_b_methods.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x60A230",
-  "sym": "?FUN_0060A230@Obj_0060A230@@QAEHXZ",
+  "sym": "?FUN_0060A230@@YIHPAX@Z",
   "len": "0x1e",
-  "name": "Obj_0060A230::FUN_0060A230",
+  "name": "FUN_0060A230",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu171_c_methods.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x60A5A0",
-  "sym": "?FUN_0060A5A0@Obj_0060A5A0@@QAEXXZ",
+  "sym": "?FUN_0060A5A0@@YIXPAX@Z",
   "len": "0xf",
-  "name": "Obj_0060A5A0::FUN_0060A5A0",
+  "name": "FUN_0060A5A0",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu171_d_methods.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x60AF40",
-  "sym": "?FUN_0060AF40@Obj_0060AF40@@QAEXXZ",
+  "sym": "?FUN_0060AF40@@YIXPAX@Z",
   "len": "0xf",
-  "name": "Obj_0060AF40::FUN_0060AF40",
+  "name": "FUN_0060AF40",
   "status": "matched",
   "pct": 100
  },
@@ -91648,7 +91648,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x60A180",
-  "sym": "?FUN_0060A180@@YGHPAXH@Z",
+  "sym": "?FUN_0060A180@@YGHPAXJ@Z",
   "len": "0xa8",
   "name": "FUN_0060A180",
   "status": "matched",
