@@ -429,6 +429,24 @@ bool CD_004790E0::FUN_004790E0(int value)
     return FUN_004A8270(value);
 }
 
+struct CDGlobal_0089E3A8
+{
+    int Words[26];
+    CDGlobal_0089E3A8()
+    {
+        for (int i = 0; i < 26; ++i)
+        {
+            Words[i] = 0;
+        }
+    }
+    ~CDGlobal_0089E3A8() {}
+};
+
+// SYNTHETIC: GAMEMD 0x4796E0
+// SYNTHETIC: GAMEMD 0x479700 -- exit-time destructor stub
+// GLOBAL: GAMEMD 0x89E3A8
+CDGlobal_0089E3A8 DAT_0089E3A8;
+
 // FUNCTION: GAMEMD 0x479730
 // Empty function.
 void __cdecl FUN_00479730()
