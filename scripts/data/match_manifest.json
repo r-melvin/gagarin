@@ -77219,11 +77219,11 @@
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6CB0",
-  "sym": "_$E10",
+  "sym": "_$E23",
   "len": "0x3b",
-  "name": "DynamicVectorClass<DiskLaserClass*> exit destructor stub (DAT_008A0208)",
+  "name": "_$E23",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
@@ -90395,29 +90395,29 @@
  {
   "tu": "match/ui/Radar.cpp",
   "addr": "0x6526B0",
-  "sym": "_$E4",
+  "sym": "_$E19",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B049F8)",
+  "name": "_$E19",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Radar.cpp",
   "addr": "0x6526D0",
-  "sym": "_$E7",
+  "sym": "_$E22",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B049E0)",
+  "name": "_$E22",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Radar.cpp",
   "addr": "0x652850",
-  "sym": "_$E10",
+  "sym": "_$E25",
   "len": "0x1a",
-  "name": "dynamic initializer (DAT_00B049E8)",
+  "name": "_$E25",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Restate.cpp",
@@ -94590,11 +94590,11 @@
  {
   "tu": "match/ui/LoadDlg.cpp",
   "addr": "0x558810",
-  "sym": "?FUN_00558810@@YIHPAUObj_00558810@@HH@Z",
+  "sym": "?FUN_00558810@LoadOptionsClass@@QAEDPBG@Z",
   "len": "0x24",
   "name": "FUN_00558810",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/LoadDlg.cpp",
@@ -101201,29 +101201,29 @@
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6A90",
-  "sym": "_$E4",
+  "sym": "_$E17",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_008A0288)",
+  "name": "_$E17",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6AB0",
-  "sym": "_$E7",
+  "sym": "_$E20",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_008A0270)",
+  "name": "_$E20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6C70",
-  "sym": "_$E12",
+  "sym": "_$E25",
   "len": "0x3d",
-  "name": "dynamic initializer (DAT_008A0208)",
+  "name": "_$E25",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
@@ -101255,9 +101255,9 @@
  {
   "tu": "match/combat/tu066_disk_laser_class.cpp",
   "addr": "0x4A6CF0",
-  "sym": "_$E15",
+  "sym": "_$E28",
   "len": "0x4a6",
-  "name": "static initialiser (DAT_008A0180)",
+  "name": "_$E28",
   "status": "matched",
   "pct": 100.0
  },
@@ -101795,18 +101795,18 @@
  {
   "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6E88B0",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B0E9A0)",
+  "name": "_$E17",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6E88D0",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B0E988)",
+  "name": "_$E20",
   "status": "matched",
   "pct": 100.0
  },

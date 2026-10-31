@@ -34,8 +34,10 @@
 //   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
 //   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
 
+#include "../FUNCTION.H"
 #include <stddef.h>
 #include "../_layout/foot_class.h"
+#include "../_layout/player_ptr_00a83d4c.h"
 #include "../movement/loco_interfaces.h"
 #include "../_rt/gg_static_assert.h"
 
@@ -54,11 +56,7 @@ struct Obj_006EE1D0;
 #include "../_layout/map_0087f7e8.h"
 // GLOBAL: GAMEMD 0xA83D10
 extern char DAT_00A83D10[];
-// GLOBAL: GAMEMD 0xA83D4C
-extern int DAT_00A83D4C;
 
-// FUNCTION: GAMEMD 0x4FC9E0 (decl; reloc)
-void FUN_004FC9E0(int, int, int);
 // FUNCTION: GAMEMD 0x577BB0 (decl; reloc)
 void FUN_00577BB0(void*, int, int);
 // FUNCTION: GAMEMD 0x577F30 (decl; reloc)
@@ -179,14 +177,10 @@ struct Obj_006EDE10_28;
 struct Obj_006EDE60;
 struct Obj_006EDEC0;
 
-// GLOBAL: GAMEMD 0xA83D4C
-extern int DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8B230
 #include "../core/scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
-// FUNCTION: GAMEMD 0x4FCBD0 (decl; reloc)
-void FUN_004FCBD0(int, int, int);
 // FUNCTION: GAMEMD 0x5BF260 (decl; reloc)
 void FUN_005BF260(int, int, int, int, int);
 
@@ -879,7 +873,7 @@ void Obj_006EDE10::FUN_006EDE10(Arg1_006EDE10* a1, int a2)
 // Calls other functions.
 void FUN_006EDE40(Obj_006EDE40* a1, int a2, int a3, int a4)
 {
-    FUN_004FC9E0(DAT_00A83D4C, a2, 0);
+    DAT_00A83D4C->Win(false);
     a1->unknown_80 = 1;
 }
 
@@ -888,7 +882,7 @@ void FUN_006EDE40(Obj_006EDE40* a1, int a2, int a3, int a4)
 // Calls other functions.
 void FUN_006EDE60(Obj_006EDE60* a1, int a2, int a3, int a4)
 {
-    FUN_004FCBD0(DAT_00A83D4C, a2, 0);
+    DAT_00A83D4C->Lose(false);
     a1->unknown_80 = 1;
 }
 
@@ -1061,8 +1055,6 @@ int TeamClass::vf_11()
 // SYNTHETIC: GAMEMD 0x6F0450 -- compiler-generated TeamClass scalar deleting destructor.
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA83D4C
-int DAT_00A83D4C;
 // GLOBAL: GAMEMD 0x7F46F0
 extern const double DAT_007F46F0 = 60.0;
 // GLOBAL: GAMEMD 0xA83CE0

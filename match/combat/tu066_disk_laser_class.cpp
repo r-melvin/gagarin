@@ -35,6 +35,7 @@
 //
 // Global query leaves, ordered ascending by retail address.
 
+#include "../FUNCTION.H"
 #include "../core/vector_class_operations.h"
 #include "../core/vector_add_item_free.h"
 
@@ -94,18 +95,6 @@ struct Obj_004A7C80
 #include "../_layout/temporal_class.h"
 
 #include "../_layout/aircraft_class.h"
-
-class LightSourceClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-};
-
-class RadSiteClass : public AbstractClass
-{
-public:
-    virtual void vf_13(Obj_004A1D30* crc);
-};
 
 #include "../core/vector_class_operations.h"
 

@@ -5,7 +5,7 @@
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
 //   ownership, neighbouring object bounds). Functions are in ascending retail address order.
 //
-// HouseTypeClass entries (layout and evidence: types_house_type_class.h).
+// HouseTypeClass entries (layout and evidence: _layout/house_type_class.h).
 //
 // Raw PBVAircraftTypeClass RTTI identifies const pointer elements and the
 // TypeList -> DynamicVectorClass -> VectorClass zero-offset base chain.
@@ -14,12 +14,18 @@
 // Original TU boundaries, final link and complete TypeList size are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "house_building/types_house_type_class.h"
+#include "house_building/types_shared.h"
+#include "../_layout/obj_004a1d30.h"
+#include "../platform/ccini_class_methods.h"
+#include "../_layout/house_type_class.h"
+#include "../_layout/side_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../_layout/abstract_class.h"
 
 // GLOBAL: GAMEMD 0x8B4120 - SideClass::Array (read-only here).
-extern DynamicVectorClass<TypesSideView*> TypesSideArray;
+extern DynamicVectorClass<SideClass*> TypesSideArray;
+// GLOBAL: GAMEMD 0xA83C98 - HouseTypeClass::Array, every house type.
+extern DynamicVectorClass<HouseTypeClass*> TypesHouseTypeArray;
 
 // GLOBAL: GAMEMD 0x7E9630 - CLSID of HouseTypeClass (16 bytes read from the image).
 extern "C" const CLSID CLSID_HouseType =
@@ -178,7 +184,7 @@ bool HouseTypeClass::vf_25(CCINIClass* ini)
             strcpy(Suffix, buffer);
 
         ini->ReadString(ID.Data, "ParentCountry", ID.Data, buffer, 0x19);
-        ParentCountry = TypesFixedString<0x19>(buffer);
+        ParentCountry = FixedString<0x19>(buffer);
 
         ColorSchemeIndex = ini->ReadColorScheme(ID.Data, "Color", ColorSchemeIndex);
 
@@ -227,7 +233,7 @@ bool HouseTypeClass::vf_25(CCINIClass* ini)
         SideIndex = ini->FUN_004756F0(ID.Data, "Side", oldSide);
         if (SideIndex != oldSide) {
             if (oldSide != -1) {
-                DynamicVectorClass<int>& houseTypes = TypesSideArray.Items[oldSide]->HouseTypes;
+                DynamicVectorClass<int>& houseTypes = TypesSideArray.Items[oldSide]->unknown_98;
                 if (ArrayIndex2 < houseTypes.Count) {
                     houseTypes.Count = houseTypes.Count - 1;
                     for (int i = ArrayIndex2; i < houseTypes.Count; ++i)
@@ -235,7 +241,7 @@ bool HouseTypeClass::vf_25(CCINIClass* ini)
                 }
             }
             if (SideIndex != -1)
-                TypesAddItemEarlyOut(TypesSideArray.Items[SideIndex]->HouseTypes, ArrayIndex2);
+                TypesAddItemEarlyOut(TypesSideArray.Items[SideIndex]->unknown_98, ArrayIndex2);
         }
         return true;
     }
@@ -410,7 +416,12 @@ ULONG __stdcall HouseTypeClass::Release()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x512760 -- compiler-generated scalar deleting destructor.
+// SYNTHETIC: GAMEMD 0x512760 -- compiler-generated scalar deleting destructor, with this body expanded into it.
+HouseTypeClass::~HouseTypeClass()
+{
+    AnnounceExpiredPointer(1);
+    TypesHouseTypeArray.RemoveItem(this);
+}
 
 // SYNTHETIC: GAMEMD 0x5139E0
 // HouseTypeClass::QueryInterface`adjustor{4}' - IRTTITypeInfo table slot 0 (SUB [ESP+4],4; JMP 0x5125A0).

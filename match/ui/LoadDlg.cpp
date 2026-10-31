@@ -1,11 +1,6 @@
+#include "../FUNCTION.H"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-struct Obj_00558810;
-
-// GLOBAL: GAMEMD 0xA8B230
-extern int DAT_00A8B230;
-
 
 // Retail PAVFileEntryClass RTTI establishes the pointer element type and zero-offset
 // DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
@@ -38,37 +33,6 @@ GG_STATIC_ASSERT(offsetof(GgFileEntryClassDynamicVectorClass, CapacityIncrement)
 
 GG_STATIC_ASSERT(sizeof(FileEntryClass*) == 4);
 
-// FUNCTION: GAMEMD 0x558DD0 (decl; reloc)
-int FUN_00558DD0(Obj_00558810*, int);
-
-struct Obj_00558810
-{
-    char unknown_00[0x4];
-    int unknown_04;   // +0x0004
-    char unknown_08[0x4];
-    int unknown_0C;   // +0x000C
-};
-GG_STATIC_ASSERT(offsetof(Obj_00558810, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(Obj_00558810, unknown_0C) == 0xC);
-
-
-// FUNCTION: GAMEMD 0x558810
-int FUN_00558810(Obj_00558810* a1, int a2, int a3);
-
-// FUNCTION: GAMEMD 0x558810
-// Branching.
-int FUN_00558810(Obj_00558810* a1, int a2, int a3)
-{
-    a1->unknown_04 = 2;
-    if (a3 == 0)
-    {
-        a1->unknown_0C = DAT_00A8B230 + 0x1360;
-        return FUN_00558DD0(a1, a2);
-    }
-    a1->unknown_0C = a3;
-    return FUN_00558DD0(a1, a2);
-}
-
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit LoadDlg.CPP. The name is the source-file string at 0x829f5c
@@ -80,6 +44,8 @@ int FUN_00558810(Obj_00558810* a1, int a2, int a3)
 
 #include <string.h>
 #include "input_controls/menus_load_options.h"
+#include "../core/scenario_class.h"
+#include "../_layout/scenario_ptr_00a8b230.h"
 
 static const char LoadDlgFile[] = "D:\\ra2mdpost\\LoadDlg.CPP";
 
@@ -105,6 +71,17 @@ LoadOptionsClass::~LoadOptionsClass()
     for (int i = 0; i < Entries.Count; ++i)
         delete Entries.Items[i];
     Entries.Clear();
+}
+
+// FUNCTION: GAMEMD 0x558810
+// Load dialog entry: mode 2 with the given description, or the current scenario's name when none is given.
+char LoadOptionsClass::FUN_00558810(const wchar_t* a1)
+{
+    Mode = 2;
+    if (a1 == 0)
+        a1 = DAT_00A8B230->unknown_1360;
+    Description = a1;
+    return ProcessDialog();
 }
 
 // SYNTHETIC: GAMEMD 0x55A0D0

@@ -19,8 +19,8 @@
 //   the lists_* and controls_* sources.
 //
 //   This header supersedes the per-cluster copies of these classes; it is not to be included together with
-//   control_class.h, toggle_class_methods.h, shape_button_class.h or the
-//   list headers there, which retain separate derived-class declarations. GadgetClass is shared below.
+//   toggle_class_methods.h, shape_button_class.h or the list headers there, which retain separate
+//   derived-class declarations. GadgetClass and ControlClass are the canonical declarations (control_class.h).
 #ifndef GG_MATCH_UI_INPUT_CONTROLS_UI_GADGET_H
 #define GG_MATCH_UI_INPUT_CONTROLS_UI_GADGET_H
 
@@ -45,24 +45,8 @@ extern GadgetClass* GadgetClass_Hovered;
 // GadgetClass uses the shared canonical declaration.
 #include "../gadget_class_methods.h"
 
-// VTABLE: GAMEMD 0x007E528C
-class ControlClass : public GadgetClass
-{
-public:
-    ControlClass(int id, int x, int y, int w, int h, unsigned flags, char sticky);   // 0x48E520
-    ControlClass(const ControlClass& other);   // 0x48E570 (decl; reloc)
-
-    virtual unsigned GetID();                                                // 0x44  0x48E610
-    virtual int  Draw(int forced);                                           // 0x6C  0x48E620
-    virtual int  Action(unsigned flags, unsigned* key, int modifier);        // 0x7C  0x48E5A0
-    virtual void SetPeer(GadgetClass* peer);                                 // 0x84  0x48E600 (new slot 33)
-
-    unsigned     ID;      // +0x24
-    GadgetClass* Peer;    // +0x28  stored by 0x48E600; Draw (0x48E620) redraws it through slot +0x6C
-};
-GG_STATIC_ASSERT(offsetof(ControlClass, ID) == 0x24);
-GG_STATIC_ASSERT(offsetof(ControlClass, Peer) == 0x28);
-GG_STATIC_ASSERT(sizeof(ControlClass) == 0x2C);   // the Toggle/Gauge/List/Edit members start at +0x2C
+// ControlClass uses the shared canonical declaration.
+#include "../control_class.h"
 
 // VTABLE: GAMEMD 0x007E8118
 class ToggleClass : public ControlClass

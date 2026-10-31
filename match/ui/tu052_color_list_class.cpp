@@ -12,6 +12,7 @@
 //   Lists cluster: ColorListClass vtable bodies at 0x488960, 0x488980, 0x488EE0, 0x488F00.
 //   Every entry carries its own colour-scheme index in the Colors vector (parallel to the text vector).
 
+#include "../FUNCTION.H"
 #include "input_controls/lists_views.h"
 
 // The 8/16-bit palette-to-pixel lookup used for every highlight colour below.

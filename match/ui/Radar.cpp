@@ -51,6 +51,7 @@
 //
 //   GLOBAL:   GAMEMD 0x87F7E8   RadarClass::Instance
 
+#include "../FUNCTION.H"
 #include "../core/deleting_dtor_sweep.h"
 #include "../_layout/session_class.h"
 #include "../core/mathtbl_init_shapes.h"
@@ -457,10 +458,6 @@ class WaypointPathClass;
 namespace WorldDominationTour
 {
     class Centroid;
-    class Map
-    {
-        struct AnimationPalette;
-    };
 }  // namespace WorldDominationTour
 struct ZoneConnectionClass;
 struct _DDSURFACEDESC;
