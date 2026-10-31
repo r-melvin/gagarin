@@ -28538,7 +28538,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D2280",
-  "sym": "?ClientToCoords@Tactical_006D2280@@QAEPAUCoord_006D2280@@PAU2@PBUPoint2D_006D2280@@@Z",
+  "sym": "?ClientToCoords@Tactical_006D2280@@QAEPAUCoordStruct@@PAU2@PBUPoint2D_006D2280@@@Z",
   "len": "0xdf",
   "name": "Tactical::ClientToCoords",
   "status": "matched",
@@ -95040,7 +95040,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D2360",
-  "sym": "?FUN_006D2360@Tactical@@QAEPAUCoord_006D2280@@PAU2@PBUPoint2D_006D2280@@@Z",
+  "sym": "?FUN_006D2360@Tactical@@QAEPAUCoordStruct@@PAU2@PBUPoint2D_006D2280@@@Z",
   "len": "0xbe",
   "name": "FUN_006D2360",
   "status": "matched",

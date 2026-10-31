@@ -20,6 +20,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector3d.h"
 #include "../_layout/matrix3d.h"
+#include "../_layout/coord_struct.h"
+#include "../core/mathtbl_init_shapes.h"
 
 struct Point2D_006D2280
 {
@@ -28,18 +30,9 @@ struct Point2D_006D2280
 };
 GG_STATIC_ASSERT(sizeof(Point2D_006D2280) == 0x8);
 
-struct Coord_006D2280
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-    int Z;                    // +0x0008
-};
-GG_STATIC_ASSERT(sizeof(Coord_006D2280) == 0xC);
-GG_STATIC_ASSERT(offsetof(Coord_006D2280, Z) == 0x8);
-
 // GLOBAL: GAMEMD 0xB0CE08 — the "no coordinate" CoordStruct returned for a
 // client point outside the view.
-extern Coord_006D2280 DAT_00B0CE08;
+extern MathTblZero3 DAT_00B0CE08;
 // GLOBAL: GAMEMD 0xB0CE2C — view Y origin (added to the Y extent below).
 extern int DAT_00B0CE2C;
 // GLOBAL: GAMEMD 0xB0CE30 — view X extent.
@@ -55,7 +48,7 @@ struct Tactical_006D2280
     Matrix3D IsoTransformMatrix; // +0x0DE4
 
     // FUNCTION: GAMEMD 0x6D2280 — Tactical::ClientToCoords.
-    Coord_006D2280* ClientToCoords(Coord_006D2280* pDest,
+    CoordStruct* ClientToCoords(CoordStruct* pDest,
                                    const Point2D_006D2280* pClient);
 };
 GG_STATIC_ASSERT(offsetof(Tactical_006D2280, Offset_B0) == 0xB0);

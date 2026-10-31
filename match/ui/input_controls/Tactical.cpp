@@ -582,7 +582,7 @@ bool Tactical::CoordsToClient(const CoordStruct* pCoord, Point2D* pDest)
 // 3-dword copy off the returned pointer) exactly as in
 // Tactical::ApplyMatrix_Pixel, and the result is stored to pDest as one
 // struct so all three stores follow the second conversion.
-Coord_006D2280* Tactical_006D2280::ClientToCoords(Coord_006D2280* pDest,
+CoordStruct* Tactical_006D2280::ClientToCoords(CoordStruct* pDest,
                                                   const Point2D_006D2280* pClient)
 {
     if (pClient->X < DAT_00B0CE30 && pClient->Y < DAT_00B0CE34 + DAT_00B0CE2C) {
@@ -601,7 +601,7 @@ Coord_006D2280* Tactical_006D2280::ClientToCoords(Coord_006D2280* pDest,
             v = *Matrix3D::MatrixApply(&r, &this->IsoTransformMatrix, &v);
         }
 
-        Coord_006D2280 c;
+        CoordStruct c;
         c.X = (int)v.X;
         c.Y = (int)v.Y;
         c.Z = 0;
@@ -614,7 +614,7 @@ Coord_006D2280* Tactical_006D2280::ClientToCoords(Coord_006D2280* pDest,
 }
 
 // FUNCTION: GAMEMD 0x6D2360
-Coord_006D2280* Tactical::FUN_006D2360(Coord_006D2280* out,
+CoordStruct* Tactical::FUN_006D2360(CoordStruct* out,
                                        const Point2D_006D2280* point)
 {
     if (point->X < DAT_00B0CE30 && point->Y < DAT_00B0CE34) {
@@ -626,7 +626,7 @@ Coord_006D2280* Tactical::FUN_006D2360(Coord_006D2280* out,
             Vector3D transformed;
             vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
         }
-        Coord_006D2280 coordinate;
+        CoordStruct coordinate;
         coordinate.X = (int)vector.X;
         coordinate.Y = (int)vector.Y;
         coordinate.Z = 0;
@@ -4440,8 +4440,6 @@ int DAT_00886FAC;
 BitFont* DAT_0089C4D0;
 // GLOBAL: GAMEMD 0xB0CDD8
 double DAT_00B0CDD8;
-// GLOBAL: GAMEMD 0xB0CE08
-Coord_006D2280 DAT_00B0CE08;
 // GLOBAL: GAMEMD 0xB0CE18
 double DAT_00B0CE18;
 // GLOBAL: GAMEMD 0xB0CE2C

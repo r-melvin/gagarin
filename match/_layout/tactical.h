@@ -12,9 +12,6 @@
 #include "../renderer/tactical_class_client_to_coords_methods.h"
 GG_STATIC_ASSERT(offsetof(Point2D_006D2280, X) == 0);
 GG_STATIC_ASSERT(offsetof(Point2D_006D2280, Y) == 4);
-GG_STATIC_ASSERT(offsetof(Coord_006D2280, X) == 0);
-GG_STATIC_ASSERT(offsetof(Coord_006D2280, Y) == 4);
-GG_STATIC_ASSERT(offsetof(Coord_006D2280, Z) == 8);
 
 // External call target GAMEMD 0x00731D00: ECX supplies the value.
 void FUN_00731D00(int value);
@@ -93,7 +90,7 @@ public:
     void FUN_006D2B60(bool fullScreen, int dx, int dy, const RectangleStruct* clip); // 0x6D2B60, RET0x10
     void FUN_006D2790(RectangleStruct requested, bool flag); // 0x6D2790, RET0x14
     bool FUN_006D8AE0(const Cell* cell) const;
-    Coord_006D2280* FUN_006D2360(Coord_006D2280* out, const Point2D_006D2280* point);
+    CoordStruct* FUN_006D2360(CoordStruct* out, const Point2D_006D2280* point);
     CoordStruct* FUN_006D2360(CoordStruct* out, const int* xyz);   // 0x6D2360, the same entry on a coordinate triple
     Pair_006D9F80 FUN_006D6190() const;
     // Hidden CellStruct result then input pointer; both entries RET8.
