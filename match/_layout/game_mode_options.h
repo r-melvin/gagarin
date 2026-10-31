@@ -32,7 +32,8 @@ struct GameModeOptionsClass_Opt
     char  unknown_2C[0x4C - 0x2C];
     int   unknown_4C[8]; // native 0x69B540; Session+0x64
     int   unknown_6C[8]; // native 0x69B540; Session+0x84
-    char  unknown_8C[0xCC - 0x8C];
+    int   unknown_8C[8]; // Session+0xA4: the colour choice per slot (0x5EADA0 reads it)
+    int   unknown_AC[8]; // Session+0xC4: the team choice per slot (0x5EAE40 reads it)
     bool  unknown_CC;        // +0xCC  (allies-allowed)
     bool  HarvesterTruce;    // +0xCD
     bool  unknown_CE;        // +0xCE  (capture the flag)
@@ -74,6 +75,10 @@ GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_4C) == 0x4C);
 GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_4C) == 0x20);
 GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_6C) == 0x6C);
 GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_6C) == 0x20);
+GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_8C) == 0x8C);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_8C) == 0x20);
+GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_AC) == 0xAC);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_AC) == 0x20);
 GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_D1) == 0xD1);
 GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_D1) == 0x5B);
 GG_STATIC_ASSERT(sizeof(GameModeOptionsClass_Opt) == 0x12C);

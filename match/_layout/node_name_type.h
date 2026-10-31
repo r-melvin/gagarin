@@ -30,12 +30,17 @@ struct NodeNameType
     int unknown_7F;                   // +0x7F  stored by 0x5E3A36 (0 = no map, 2 = map transfer)
     unsigned char unknown_83[0x02];   // +0x83
 
+    // Declaration: GAMEMD 0x696F10 (decl; reloc) -- __thiscall, no arguments: the start-position
+    // reader (the fallback of 0x5EA920).
+    int FUN_00696F10();
     // Declaration: GAMEMD 0x696F20 (decl; reloc) -- __thiscall, no arguments: a
     // choice reader (the fallback of 0x46F810).
     int FUN_00696F20();
     // Declaration: GAMEMD 0x696F50 (decl; reloc) -- __thiscall, no arguments: a
     // choice reader (the fallback of 0x46F880).
     int FUN_00696F50();
+    // Declaration: GAMEMD 0x696F70 (decl; reloc) -- __thiscall, no arguments: the team reader.
+    int FUN_00696F70();
     // Declaration: GAMEMD 0x696F90 (decl; reloc) -- __thiscall, one argument: store
     // a choice pair at +0x4B/+0x4F (-2 stores 0 and -2, anything else stores the
     // value and -1); called with the start-position control's value.

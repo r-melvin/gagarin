@@ -14,6 +14,10 @@
 //   Bytes matched against the user's retail gamemd.exe v1.001 over
 //   0x5E8740..0x5E957E. Layout evidence and the retail source-file name are
 //   documented in netshare_slot_nodes.h.
+//   The slot-table readers 0x5EA8E0..0x5EAE40 (the former netshare_slot_tables.cpp) read the lobby
+//   state through the canonical Session_00A8B238 (SessionClass): the slot array at +0x2858 and the
+//   start, house, colour and team tables at +0x64, +0x84, +0xA4 and +0xC4 are one object, which is
+//   why retail reaches the slots at a fixed 0x27D4 displacement from the house table.
 //   Three of the bodies here — 0x5E8760, 0x5E93F0 and 0x5E94A0 — are not
 //   in the Ghidra function list, and were found by sweeping
 //   the address run as raw bytes and reading the twelve-byte 0x90 pads that
@@ -25,6 +29,15 @@
 
 #include "../economy/netshare_slot_nodes.h"
 #include "../core/mathtbl_init_shapes.h"
+#include "../_layout/session_class.h"
+
+extern "C" {
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
+int __cdecl sprintf(char* buffer, const char* format, ...);
+// FUNCTION: GAMEMD (inlined intrinsic) -- CRT strcat, which /O2 expands to the
+// REPNZ SCASB / REP MOVSD pair retail has at 0x5EABC2.
+char* __cdecl strcat(char* dst, const char* src);
+}
 
 // The playable count as the two release paths want it: one extra slot opens up
 // when the extra-slot flag is clear and there is room for it.
@@ -2468,6 +2481,320 @@ void FUN_005EA2A0(HWND dialog)
             image = DAT_00AC4848.GetSurface(DAT_008316D0, 0);
         }
         FUN_00603D30(control, image);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5EA8E0
+//
+// Is this slot settled? An AI is always settled, and a human is settled once
+// its ready flag reads 1. Retail lets the null slot fall into the flag test,
+// which the short-circuit reproduces exactly.
+int FUN_005EA8E0(int index)
+{
+    NodeNameType* node = Session_00A8B238.unknown_2858[index];
+
+    int ready = 0;
+    if ((node != 0 &&
+         (node == EasyAINode || node == MediumAINode || node == HardAINode)) ||
+        node->unknown_77 == 1) {
+        ready = 1;
+    }
+    return ready;
+}
+
+// FUNCTION: GAMEMD 0x5EA920
+//
+// The slot's start position. Inside a live lobby of the two session kinds that
+// place starts by hand, the dialog answers first and the slot only overrides
+// it; outside one the answer starts at -2.
+int FUN_005EA920(int index)
+{
+    int position = -2;
+    NodeNameType* node = Session_00A8B238.unknown_2858[index];
+    MultiplayerGameMode* dialog = Session_00A8B238.unknown_04;
+
+    if (dialog != 0 && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)) {
+        position = dialog->vf_10();
+    }
+
+    if (node != 0 &&
+        (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+        return Session_00A8B238.unknown_18.unknown_4C[index];
+    }
+
+    if (node != OpenNode && node != ClosedNode && node != WaitingNode) {
+        // An observer answers -3 here, not the -2 the other three give.
+        if (node == ObserverNode) {
+            return -3;
+        }
+        position = node->FUN_00696F10();
+    }
+    return position;
+}
+
+// FUNCTION: GAMEMD 0x5EA9B0
+//
+// The house this slot plays. An AI plays whatever the house table says; the
+// four non-playing singletons play nothing; a real player is asked.
+int FUN_005EA9B0(int index)
+{
+    NodeNameType* node = Session_00A8B238.unknown_2858[index];
+    if (node != 0 &&
+        (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+        return Session_00A8B238.unknown_18.unknown_6C[index];
+    }
+
+    if (node == OpenNode) {
+        return -2;
+    }
+    if (node == ClosedNode) {
+        return -2;
+    }
+    if (node == WaitingNode) {
+        return -2;
+    }
+    if (node == ObserverNode) {
+        return -2;
+    }
+    return node->FUN_00696F20();
+}
+
+// FUNCTION: GAMEMD 0x5EAA10
+//
+// The same reader against the colour table.
+int FUN_005EAA10(int index)
+{
+    NodeNameType* node = Session_00A8B238.unknown_2858[index];
+    if (node != 0 &&
+        (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+        return Session_00A8B238.unknown_18.unknown_8C[index];
+    }
+
+    if (node == OpenNode) {
+        return -2;
+    }
+    if (node == ClosedNode) {
+        return -2;
+    }
+    if (node == WaitingNode) {
+        return -2;
+    }
+    if (node == ObserverNode) {
+        return -2;
+    }
+    return node->FUN_00696F50();
+}
+
+// FUNCTION: GAMEMD 0x5EAA70
+//
+// The same reader against the team table.
+int FUN_005EAA70(int index)
+{
+    NodeNameType* node = Session_00A8B238.unknown_2858[index];
+    if (node != 0 &&
+        (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+        return Session_00A8B238.unknown_18.unknown_AC[index];
+    }
+
+    if (node == OpenNode) {
+        return -2;
+    }
+    if (node == ClosedNode) {
+        return -2;
+    }
+    if (node == WaitingNode) {
+        return -2;
+    }
+    if (node == ObserverNode) {
+        return -2;
+    }
+    return node->FUN_00696F70();
+}
+
+// FUNCTION: GAMEMD 0x5EAAD0
+//
+// The dialog control that draws a given slot: eight consecutive ids, and -1
+// for anything off the end. cl folds the last two arms into the
+// NEG/SBB/AND/ADD idiom retail has, so they are ordinary arms in the chain.
+int FUN_005EAAD0(int index)
+{
+    if (index == 0) {
+        return 0x6D2;
+    }
+    if (index == 1) {
+        return 0x6D3;
+    }
+    if (index == 2) {
+        return 0x6D4;
+    }
+    if (index == 3) {
+        return 0x6D5;
+    }
+    if (index == 4) {
+        return 0x6D6;
+    }
+    if (index == 5) {
+        return 0x6D7;
+    }
+    if (index == 6) {
+        return 0x6D8;
+    }
+    if (index == 7) {
+        return 0x6D9;
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x5EAB30
+//
+// Every slot's house as one comma-terminated decimal list, for the lobby
+// packet. The four-byte scratch buffer is retail's own: the frame carries
+// exactly one dword between the return address and the saved registers.
+void FUN_005EAB30(char* out)
+{
+    out[0] = '\0';
+    for (int i = 0; i < 8; i++) {
+        NodeNameType* node = Session_00A8B238.unknown_2858[i];
+
+        int value;
+        if (node != 0 &&
+            (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+            value = Session_00A8B238.unknown_18.unknown_6C[i];
+        } else if (node == OpenNode) {
+            value = -2;
+        } else if (node == ClosedNode) {
+            value = -2;
+        } else if (node == WaitingNode) {
+            value = -2;
+        } else if (node == ObserverNode) {
+            value = -2;
+        } else {
+            value = node->FUN_00696F20();
+        }
+
+        char text[4];
+        sprintf(text, "%d,", value);
+        strcat(out, text);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5EAC00
+//
+// The same list for the colour table.
+void FUN_005EAC00(char* out)
+{
+    out[0] = '\0';
+    for (int i = 0; i < 8; i++) {
+        NodeNameType* node = Session_00A8B238.unknown_2858[i];
+
+        int value;
+        if (node != 0 &&
+            (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+            value = Session_00A8B238.unknown_18.unknown_8C[i];
+        } else if (node == OpenNode) {
+            value = -2;
+        } else if (node == ClosedNode) {
+            value = -2;
+        } else if (node == WaitingNode) {
+            value = -2;
+        } else if (node == ObserverNode) {
+            value = -2;
+        } else {
+            value = node->FUN_00696F50();
+        }
+
+        char text[4];
+        sprintf(text, "%d,", value);
+        strcat(out, text);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5EACD0
+//
+// The same list for the team table.
+void FUN_005EACD0(char* out)
+{
+    out[0] = '\0';
+    for (int i = 0; i < 8; i++) {
+        NodeNameType* node = Session_00A8B238.unknown_2858[i];
+
+        int value;
+        if (node != 0 &&
+            (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+            value = Session_00A8B238.unknown_18.unknown_AC[i];
+        } else if (node == OpenNode) {
+            value = -2;
+        } else if (node == ClosedNode) {
+            value = -2;
+        } else if (node == WaitingNode) {
+            value = -2;
+        } else if (node == ObserverNode) {
+            value = -2;
+        } else {
+            value = node->FUN_00696F70();
+        }
+
+        char text[4];
+        sprintf(text, "%d,", value);
+        strcat(out, text);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5EADA0
+//
+// Push every slot's colour into the lobby's colour list control.
+void FUN_005EADA0(HWND target)
+{
+    for (int i = 0; i < 8; i++) {
+        int item = FUN_004E4E60(i);
+        NodeNameType* node = Session_00A8B238.unknown_2858[i];
+
+        int value;
+        if (node != 0 &&
+            (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+            value = Session_00A8B238.unknown_18.unknown_8C[i];
+        } else if (node == OpenNode) {
+            value = -2;
+        } else if (node == ClosedNode) {
+            value = -2;
+        } else if (node == WaitingNode) {
+            value = -2;
+        } else if (node == ObserverNode) {
+            value = -2;
+        } else {
+            value = node->FUN_00696F50();
+        }
+
+        FUN_004E5480(target, item, value);
+    }
+}
+
+// FUNCTION: GAMEMD 0x5EAE40
+//
+// The same for the team list control.
+void FUN_005EAE40(HWND target)
+{
+    for (int i = 0; i < 8; i++) {
+        int item = FUN_004E5940(i);
+        NodeNameType* node = Session_00A8B238.unknown_2858[i];
+
+        int value;
+        if (node != 0 &&
+            (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
+            value = Session_00A8B238.unknown_18.unknown_AC[i];
+        } else if (node == OpenNode) {
+            value = -2;
+        } else if (node == ClosedNode) {
+            value = -2;
+        } else if (node == WaitingNode) {
+            value = -2;
+        } else if (node == ObserverNode) {
+            value = -2;
+        } else {
+            value = node->FUN_00696F70();
+        }
+
+        FUN_004E5ED0(target, item, value);
     }
 }
 
