@@ -24,7 +24,7 @@ struct ListEntry_006255F0
     // Retail destroys an entry by expanding the two string destructors inline
     // (EntryRecord's copy constructor 0x6255F0), and also holds one standalone
     // copy at 0x624460. The class is the same in every TU; only the TU that
-    // holds the standalone copy (ownrdraw_list_entry_methods.cpp) defines
+    // holds the standalone copy (ownrdraw.cpp) defines
     // GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR to define the destructor itself.
     // Every other TU gets the inline definition below.
     ~ListEntry_006255F0();

@@ -136,6 +136,7 @@
 
 #include "widestring_006255f0.h"
 
+#define GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
 #include "listentry_006255f0.h"
 #include "../network/packet_class.h"
 #include "dialog_type_lookup_predicates.h"
@@ -262,6 +263,18 @@ MathTblZero4 DAT_00AC18B0;
 // SYNTHETIC: GAMEMD 0x600340
 // GLOBAL: GAMEMD 0xAC1B40
 double DAT_00AC1B40 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
+// FUNCTION: GAMEMD 0x624460
+ListEntry_006255F0::~ListEntry_006255F0()
+{
+}
+
+// FUNCTION: GAMEMD 0x6247D0
+ListEntry_006255F0::ListEntry_006255F0(const ListEntry_006255F0& other)
+    : Id(other.Id), Name(other.Name), Text(other.Text),
+      unknown_0C(other.unknown_0C), unknown_10(other.unknown_10), unknown_14(other.unknown_14)
+{
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x627D20
