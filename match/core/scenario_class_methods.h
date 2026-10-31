@@ -88,6 +88,8 @@ struct MapInstanceClass
     void FUN_00581F50(); // GAMEMD 0x581F50
     void FUN_00586BF0(); // GAMEMD 0x586BF0
     void FUN_006938C0(); // GAMEMD 0x6938C0, __thiscall
+    bool FUN_005BDC80(int cursor, bool flag); // GAMEMD 0x5BDC80, __thiscall
+    void FUN_005BDAA0(); // GAMEMD 0x5BDAA0, __thiscall
     void       IteratorBegin_578350();   // GAMEMD 0x578350  __thiscall
     CellClass* IteratorNext_578290();    // GAMEMD 0x578290  __thiscall
 };

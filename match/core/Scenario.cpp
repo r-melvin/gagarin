@@ -183,6 +183,9 @@ void __fastcall FUN_0072DEF0(); // GAMEMD 0x72DEF0
 void __fastcall FUN_007781A0(); // GAMEMD 0x7781A0
 void __fastcall FUN_0078ABF0(char flag, const wchar_t* text); // GAMEMD 0x78ABF0
 extern const char STR_0083D8C4[]; // STRING: GAMEMD 0x0083D8C4
+extern const char DAT_0083D8EC[]; // STRING: GAMEMD 0x0083D8EC
+extern const char DAT_0083D908[]; // STRING: GAMEMD 0x0083D908
+void FUN_005BF500(bool flag); // GAMEMD 0x5BF500
 extern const char STR_0083D8B0[]; // STRING: GAMEMD 0x0083D8B0
 extern const char STR_0083D890[]; // STRING: GAMEMD 0x0083D890
 extern const char STR_0083D888[]; // STRING: GAMEMD 0x0083D888
@@ -690,6 +693,67 @@ bool __fastcall FUN_00683AB0(const char* filename, bool flag, int index)
     }
     if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(0, EmptyName_00887734);
     return false;
+}
+
+// FUNCTION: GAMEMD 0x683EB0
+//
+// Freeze a running game: run the shutdown-path leaf, save the 0x87E758
+// object's level and drop it to 0x4000, then (in a campaign or skirmish
+// session only) log the elapsed-time reading and stop the clock. The 0x5BF500
+// flag is raised, the tooltips are switched off, the map is told to pause and
+// redraw its sidebar and render, and the mouse gets its slot-3 call plus the
+// slot-4 tail jump.
+//
+// Exact under the project default /Gr (static member, so fastcall). The
+// cdecl build of this body left two pure ordering deltas (91.0%): the POP ESI
+// position around the tooltip test, and ECX loaded after rather than before
+// the pushes for the two map calls. Neither moved under any source spelling.
+void ScenarioClass::PauseGame()
+{
+    FUN_00406F00();
+    DAT_0083D834 = FUN_004072B0(&DAT_0087E758->First);
+    FUN_00407150(&DAT_0087E758->First, 0x4000);
+
+    if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5) {
+        FUN_004068E0(DAT_0083D8EC, ScenarioInstance->unknown_0614.GetElapsed());
+        ScenarioInstance->unknown_0614.Pause();
+    }
+
+    FUN_005BF500(true);
+
+    if (DAT_00887368 != 0) {
+        DAT_00887368->SetState(false);
+    }
+
+    MapInstance.FUN_006938C0();
+    MapInstance.FUN_005BDC80(0, 0);
+    WWMouseClassInstance->vf_3();
+    MapInstance.FUN_004F42F0(2);
+    MapInstance.FUN_004F4480();
+    WWMouseClassInstance->vf_4();
+}
+
+// FUNCTION: GAMEMD 0x683FB0
+//
+// Bring a paused game back: restart the map, resume the elapsed-time clock and
+// log its reading, restore the tooltip state, hand the saved level back to the
+// 0x87E758 object and reset the saved value, drop the 0x5BF500 flag, and end
+// with the resume-all leaf as a tail jump.
+void ScenarioClass::ResumeGame()
+{
+    MapInstance.FUN_005BDAA0();
+
+    ScenarioInstance->unknown_0614.Resume();
+    FUN_004068E0(DAT_0083D908, ScenarioInstance->unknown_0614.GetElapsed());
+
+    if (DAT_00887368 != 0) {
+        DAT_00887368->SetState(DAT_00A8EB80);
+    }
+
+    FUN_00407150(&DAT_0087E758->First, DAT_0083D834);
+    DAT_0083D834 = 0x4000;
+    FUN_005BF500(false);
+    FUN_00406F40();
 }
 
 // FUNCTION: GAMEMD 0x684060
@@ -2687,6 +2751,10 @@ extern const char STR_0082DB0C[] = "Waypoints";
 extern const char STR_0083D824[] = "VariableNames";
 // GLOBAL: GAMEMD 0x83D868
 extern const char STR_0083D868[] = "Toggle display mode to %d x %d\n";
+// GLOBAL: GAMEMD 0x83D8EC
+extern const char DAT_0083D8EC[] = "Paused ElapsedTimer = %ld\n";
+// GLOBAL: GAMEMD 0x83D908
+extern const char DAT_0083D908[] = "Resume ElapsedTimer = %ld\n";
 // GLOBAL: GAMEMD 0x83D924
 extern const char STR_0083D924[] = "Toggle display mode back to shell res\n";
 // GLOBAL: GAMEMD 0x83DB34

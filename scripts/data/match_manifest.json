@@ -10179,7 +10179,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/scenario_class_pause_methods.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683EB0",
   "sym": "?PauseGame@ScenarioClass@@SIXXZ",
   "len": "0xfa",
@@ -10188,7 +10188,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/scenario_class_resume_methods.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683FB0",
   "sym": "?ResumeGame@ScenarioClass@@SIXXZ",
   "len": "0xa2",
