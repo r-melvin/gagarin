@@ -86,6 +86,7 @@
 #include "../core/global_getter_family_methods.h"
 
 #include <string.h>
+#include <math.h>
 
 
 // Retail PAVMapRegionClass RTTI establishes the pointer element type and zero-offset
@@ -569,6 +570,21 @@ bool FUN_0058BD80(int a1, int a2)
     }
 }
 
+// FUNCTION: GAMEMD 0x58BE20
+// Draws record cells at random until one is not the origin and returns it.
+// PARTIAL: 88.1% -- same instructions as retail (multiset identical); the final index/base
+// address arithmetic before the dword copy is scheduled differently (lea/shl target register).
+Cell FUN_0058BE20()
+{
+    int count = DAT_0089C2DC * DAT_0089C2DC;
+    unsigned int idx;
+    do {
+        idx = Inline_0058C320(count - 1);
+    } while (DAT_00ABED10[idx].unknown_00.X == 0 && DAT_00ABED10[idx].unknown_00.Y == 0);
+    Cell result = DAT_00ABED10[idx].unknown_00;
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x58BF70
 MapRegionClass::MapRegionClass(CellStruct a1)
     : unknown_00(0), unknown_04(0), unknown_08(DAT_00ABED14), unknown_0C(0),
@@ -725,6 +741,23 @@ void FUN_0058CE90()
             delete p;
     }
     DAT_00ABED14 = 0;
+}
+
+// FUNCTION: GAMEMD 0x58CF90
+// For every unassigned non-origin record cell that passes the 0x4865D0 or 0x4867B0 test, fetches
+// the cell's record (0x58C800).
+void FUN_0058CF90()
+{
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int i = 0; i < n; i++) {
+        CellStruct c = DAT_00ABED10[i].unknown_00;
+        CellClass* cell = DAT_0087F7E8.FUN_005657A0(&c);
+        Rec_50* r = &DAT_00ABED10[i];
+        if (r->unknown_38 == -1 && (r->unknown_00.X || r->unknown_00.Y)) {
+            if (cell->FUN_004865D0() || cell->FUN_004867B0())
+                cell->FUN_0058C800();
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x58D010
@@ -1296,6 +1329,60 @@ void Obj_00597FC0::FUN_00597FC0()
 void Obj_00597FE0::FUN_00597FE0()
 {
     FUN_00734E60(DAT_0082BC70, 0, DAT_0082BA48, 0x15D6);
+}
+
+// Gaussian generator built on a uniform [0,1) source (view name; the real name is unrecovered).
+struct GaussianRandom_005980C0
+{
+    unsigned char HaveSpare;            // +0x00
+    unsigned char unknown_01[7];
+    double Spare;                       // +0x08
+    double (__cdecl* Uniform)();        // +0x10
+
+    // FUNCTION: GAMEMD 0x5980C0
+    double Next();
+};
+GG_STATIC_ASSERT(offsetof(GaussianRandom_005980C0, Spare) == 0x08);
+GG_STATIC_ASSERT(offsetof(GaussianRandom_005980C0, Uniform) == 0x10);
+
+// FUNCTION: GAMEMD 0x598030
+// A random integer in [min, max] drawn from the generator's stream.
+int FUN_00598030(int min, int max)
+{
+    int value;
+    do {
+        value = (int)((double)(unsigned int)DAT_00ABE890.FUN_0065C780() * (double)(unsigned int)(max - min + 1) *
+                          2.3283064370807974e-10 +
+                      (double)(unsigned int)min);
+    } while ((unsigned int)value > (unsigned int)max);
+    return value;
+}
+
+// FUNCTION: GAMEMD 0x5980C0
+// Marsaglia polar method: hand back the spare value from the last pair if
+// there is one, otherwise draw points in the unit disc until one is usable
+// and keep the second deviate for the next call.
+double GaussianRandom_005980C0::Next()
+{
+    if (HaveSpare) {
+        HaveSpare = 0;
+        return Spare;
+    }
+    double x;
+    double y;
+    double s;
+    do {
+        do {
+            x = Uniform() * 2.0 - 1.0;
+            y = Uniform() * 2.0 - 1.0;
+            s = x * x + y * y;
+        } while (s >= 1.0);
+    } while (s == 0.0);
+    double ln = log(s);
+    double factor = FUN_004CAC40((-ln - ln) / s);
+    HaveSpare = 1;
+    Spare = factor * y;
+    return factor * x;
 }
 
 // FUNCTION: GAMEMD 0x598160

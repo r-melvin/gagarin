@@ -143161,7 +143161,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/MapGen_r3_methods.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58CF90",
   "sym": "?FUN_0058CF90@@YIXXZ",
   "len": "0x79",
@@ -143170,7 +143170,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/MapGen_r3_methods.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58BE20",
   "sym": "?FUN_0058BE20@@YI?AVCell@@XZ",
   "len": "0x7e",
@@ -143179,7 +143179,7 @@
   "pct": 88.1
  },
  {
-  "tu": "match/map/MapGen_r3_methods.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x598030",
   "sym": "?FUN_00598030@@YIHHH@Z",
   "len": "0x61",
@@ -144430,7 +144430,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/gaussian_random_methods.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x5980C0",
   "sym": "?Next@GaussianRandom_005980C0@@QAENXZ",
   "len": "0x9b",
