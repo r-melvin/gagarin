@@ -396,6 +396,30 @@ class Toolfix(unittest.TestCase):
         f = [x for x in lint(self.mk(view, [], name="view"), {"views"}) if x["rule"] == "views"]
         self.assertTrue(any(x["level"] == "E" and "canonical header" in x["msg"] for x in f))
 
+    def test_migrated_judges_the_window_after_the_patch(self):
+        """A patch that narrows a migrated TU's header window and moves the rows beyond it to a new
+        file is judged against the narrowed window; without the narrowing the same rows are flagged."""
+        import difflib
+        t = tree()
+        path = "match/combat/Techno.cpp"
+        old = t.text(path)
+        self.assertIn("(0x6f28a0-0x7108df)", old)
+        new = old.replace("(0x6f28a0-0x7108df)", "(0x6f28a0-0x6f4000)", 1)
+        diff = "".join(difflib.unified_diff(old.splitlines(True), new.splitlines(True), "a/" + path, "b/" + path))
+        patch = "diff --git a/%s b/%s\n%s" % (path, path, diff)
+        src = "// FUNCTION: GAMEMD 0x6F4A40\nvoid a() {}\n"
+        rows = [{"tu": "match/combat/Techno2.cpp", "addr": "0x6F4A40", "sym": "?a@@YAXXZ", "len": "0x24", "status": "matched", "pct": 100}]
+        add = mkpatch({"match/combat/Techno2.cpp": HEADER + src})
+        f = [x for x in lint(self.mk(patch + add, rows, name="narrowed"), {"migrated"}) if x["rule"] == "migrated"]
+        self.assertEqual(f, [], f)
+        f = [x for x in lint(self.mk(add, rows, name="stale"), {"migrated"}) if x["rule"] == "migrated"]
+        self.assertTrue(any(x["level"] == "E" and x["dest"] == path for x in f), f)
+        # a row still inside the narrowed window is flagged
+        rows2 = [dict(rows[0], addr="0x6F2900")]
+        add2 = mkpatch({"match/combat/Techno2.cpp": HEADER + "// FUNCTION: GAMEMD 0x6F2900\nvoid a() {}\n"})
+        f = [x for x in lint(self.mk(patch + add2, rows2, name="inside"), {"migrated"}) if x["rule"] == "migrated"]
+        self.assertTrue(any(x["level"] == "E" for x in f), f)
+
 
 class Toolfix2(unittest.TestCase):
     """Round 2: post_files scratch placement, per-file pkt rows, bind manifest, explicit change rows."""

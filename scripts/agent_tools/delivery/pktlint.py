@@ -393,15 +393,36 @@ class Lint:
                 else:
                     self.warn("views", "new definition of %s duplicates %s" % (name, ", ".join(others[:3])), file=d.path)
 
+    def post_windows(self):
+        """Migrated-TU windows after the patch: the base tree's windows, with the header window of any
+        original-TU file the patch touches re-read from its post-patch text (a deleted file drops out).
+        A packet that narrows a window to an attested edge and moves the rows beyond it to another file
+        is judged against the narrowed window, not the stale one."""
+        w = dict(self.t.tu_windows())
+        for path, text in self.post_files().items():
+            if not path.lower().endswith(L.SRC_EXT):
+                continue
+            if text is None:
+                w.pop(path, None)
+                continue
+            head = text[:1200]
+            m = D.TU_WINDOW.search(head) if "Original translation unit" in head else None
+            if m:
+                w[path] = (m.group(1), int(m.group(2), 16), int(m.group(3), 16))
+            else:
+                w.pop(path, None)
+        return w
+
     def migrated(self):
-        windows = self.t.tu_windows()
+        windows = self.post_windows()
         if not windows:
             return
         new_cpps = {d.path for d in self.diffs if d.is_new and d.path.lower().endswith(L.SRC_EXT)}
         hits = {}
         for r in self.rows:
             if r.get("tu") in new_cpps:
-                dest = self.t.tu_for_addr(D.hx(r["addr"]))
+                a = D.hx(r["addr"])
+                dest = next((p for p, (name, lo, hi) in windows.items() if lo <= a <= hi), None)
                 if dest and dest != r["tu"]:
                     hits.setdefault((r["tu"], dest), []).append(r["addr"])
         for (src, dest), addrs in sorted(hits.items()):
