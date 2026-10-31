@@ -18,8 +18,8 @@
 
 struct InputManagerClass
 {
-    int            unknown_00;          // +0x000
-    int            unknown_04;          // +0x004
+    int            MouseX;              // +0x000  pointer position recorded with the last mouse-button key event
+    int            MouseY;              // +0x004
     unsigned short unknown_08;          // +0x008
     unsigned short unknown_0A;          // +0x00A
     int            unknown_0C;          // +0x00C
@@ -37,6 +37,9 @@ struct InputManagerClass
     // FUNCTION: GAMEMD 0x54F050 (decl; reloc)
     // InputManagerClass::FUN_0054F050
     unsigned short FUN_0054F050();
+
+    // FUNCTION: GAMEMD 0x54F450 (decl; reloc) -- key code to character.
+    char FUN_0054F450(int key);
 
     // FUNCTION: GAMEMD 0x54F5C0 (decl; reloc) — key-state query.
     bool IsKeyPressed(int key) const;

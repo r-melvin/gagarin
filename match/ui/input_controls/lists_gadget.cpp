@@ -168,9 +168,9 @@ unsigned GadgetClass::Input()
         GadgetClass_Focused = 0;
     }
 
-    unsigned key = DAT_0087F770->Check() & 0xFFFF;
+    unsigned key = DAT_0087F770->FUN_0054F000() & 0xFFFF;
     if (key) {
-        key = DAT_0087F770->Get() & 0xFFFF;
+        key = DAT_0087F770->FUN_0054F050() & 0xFFFF;
     }
 
     int mx;
@@ -208,13 +208,13 @@ unsigned GadgetClass::Input()
     }
 
     unsigned modifier = 0;
-    if (DAT_0087F770->Down(DAT_00A8EC08) || DAT_0087F770->Down(DAT_00A8EC0C)) {
+    if (DAT_0087F770->IsKeyPressed(DAT_00A8EC08) || DAT_0087F770->IsKeyPressed(DAT_00A8EC0C)) {
         modifier = 1;
     }
-    if (DAT_0087F770->Down(DAT_00A8EC00) || DAT_0087F770->Down(DAT_00A8EC04)) {
+    if (DAT_0087F770->IsKeyPressed(DAT_00A8EC00) || DAT_0087F770->IsKeyPressed(DAT_00A8EC04)) {
         modifier |= 2;
     }
-    if (DAT_0087F770->Down(DAT_00A8EBF8) || DAT_0087F770->Down(DAT_00A8EBFC)) {
+    if (DAT_0087F770->IsKeyPressed(DAT_00A8EBF8) || DAT_0087F770->IsKeyPressed(DAT_00A8EBFC)) {
         modifier |= 4;
     }
 
@@ -223,12 +223,12 @@ unsigned GadgetClass::Input()
             flags = 0x100;
         }
     } else {
-        if (DAT_0087F770->Down(1)) {
+        if (DAT_0087F770->IsKeyPressed(1)) {
             flags |= 2;
         } else {
             flags |= 8;
         }
-        if (DAT_0087F770->Down(2)) {
+        if (DAT_0087F770->IsKeyPressed(2)) {
             flags |= 0x20;
         } else {
             flags |= 0x80;

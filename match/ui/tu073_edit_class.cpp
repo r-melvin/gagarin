@@ -339,7 +339,7 @@ int EditClass::Action(unsigned flags, unsigned* key, int modifier)
             KillFocus();
             return ControlClass::Action(0, key, 0);
         }
-        int ascii = DAT_0087F770->ToAscii(*key) & 0xFF;
+        int ascii = DAT_0087F770->FUN_0054F450(*key) & 0xFF;
         if ((*key & 0x1000) && ascii >= '0' && ascii <= '9') {
             *key &= ~0x1000u;
             if (!(flags & 0x44) && vf_38(ascii)) {
@@ -347,7 +347,7 @@ int EditClass::Action(unsigned flags, unsigned* key, int modifier)
                 *key = 0;
             }
         } else if ((!(*key & 0x1000) && ascii >= 0x20 && ascii < 0x100) || *key == 0xD || *key == 8) {
-            if (!(flags & 0x44) && vf_38(DAT_0087F770->ToAscii(*key))) {
+            if (!(flags & 0x44) && vf_38(DAT_0087F770->FUN_0054F450(*key))) {
                 flags &= ~0x100u;
                 *key = 0;
             }

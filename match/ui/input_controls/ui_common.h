@@ -120,20 +120,8 @@ public:
 // GLOBAL: GAMEMD 0x887640 -- the window-manager mouse singleton.
 extern Mouse* DAT_00887640;
 
-// Keyboard singleton (0x87F770): the first two dwords hold the pointer position recorded with the last
-// mouse-button key event; 0x54F000 Check, 0x54F050 Get, 0x54F5C0 Down, 0x54F450 ToAscii.
-struct Keyboard
-{
-    int MouseX;  // +0x00
-    int MouseY;  // +0x04
-
-    unsigned short Check();
-    unsigned short Get();
-    bool           Down(int key);
-    char           ToAscii(int key);
-};
-// GLOBAL: GAMEMD 0x87F770 -- the keyboard singleton.
-extern Keyboard* DAT_0087F770;
+// The keyboard singleton 0x87F770 is InputManagerClass (platform/input_manager_class_methods.h).
+#include "../../platform/input_manager_class_methods.h"
 
 #include "../../_layout/color_convert.h"
 // GLOBAL: GAMEMD 0x87F6C4 -- the palette lookup used by the gauges, lists and shape buttons.
