@@ -49,6 +49,7 @@
 #include "../../_layout/geometry2d.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
+#include <math.h>
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -255,6 +256,33 @@ extern int DAT_00B0CEB0;
 // GLOBAL: GAMEMD 0xB0CEB8
 extern double DAT_00B0CEB8;
 
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
+// GLOBAL: GAMEMD 0x7E1720
+extern const double DAT_007E1720;
+// GLOBAL: GAMEMD 0x7E1728
+extern const double DAT_007E1728;
+// GLOBAL: GAMEMD 0x7E1730
+extern const double DAT_007E1730;
+// GLOBAL: GAMEMD 0x7E1738
+extern const double DAT_007E1738;
+// GLOBAL: GAMEMD 0x7E1740
+extern const double DAT_007E1740;
+// GLOBAL: GAMEMD 0x7F4188
+extern const double DAT_007F4188;
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc)
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc)
+double __cdecl FUN_004CADE0(double value);
+
+// SYNTHETIC: GAMEMD 0x6D1830
+// GLOBAL: GAMEMD 0xB0CD78
+double DAT_00B0CD78 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
 // FUNCTION: GAMEMD 0x6D1860
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_006D1860()
@@ -268,6 +296,42 @@ void __cdecl FUN_006D1880()
 {
     DAT_00B0CEA0 = DAT_007E1718 / DAT_00B0CEB8;
 }
+
+// SYNTHETIC: GAMEMD 0x6D18A0
+// GLOBAL: GAMEMD 0xB0CE98
+double DAT_00B0CE98 = DAT_007E1720 * DAT_007F4188;
+
+// SYNTHETIC: GAMEMD 0x6D18C0
+// GLOBAL: GAMEMD 0xB0CD88
+double DAT_00B0CD88 = DAT_007E1728 * DAT_007F4188;
+
+// SYNTHETIC: GAMEMD 0x6D18E0
+// GLOBAL: GAMEMD 0xB0CD50
+double DAT_00B0CD50 = DAT_007E1730 * DAT_007F4188;
+
+// SYNTHETIC: GAMEMD 0x6D1900
+// GLOBAL: GAMEMD 0xB0CEC0
+int DAT_00B0CEC0 = (int)(DAT_007E1738 * (FUN_004CAD50(DAT_00B0CD50 - DAT_00B0CD88) * DAT_00B0CD78));
+
+// SYNTHETIC: GAMEMD 0x6D1940
+// GLOBAL: GAMEMD 0xB0CD90
+double DAT_00B0CD90 = FUN_004CADE0((double)DAT_00B0CEC0 * DAT_007E1740);
+
+// SYNTHETIC: GAMEMD 0x6D1970
+// GLOBAL: GAMEMD 0xB0CE20
+double DAT_00B0CE20 = FUN_004CADE0((double)(DAT_00B0CEC0 * 2) / DAT_00B0CD78);
+
+// SYNTHETIC: GAMEMD 0x6D19A0
+// GLOBAL: GAMEMD 0xB0CEB4
+int DAT_00B0CEB4 = (int)((double)(DAT_00B0CEC0 * 4) + DAT_007E1738);
+
+// SYNTHETIC: GAMEMD 0x6D19D0
+// GLOBAL: GAMEMD 0xB0CD74
+MathTblShortPair DAT_00B0CD74;
+
+// SYNTHETIC: GAMEMD 0x6D19E0
+// GLOBAL: GAMEMD 0xB0CE08
+MathTblZero3 DAT_00B0CE08;
 
 // FUNCTION: GAMEMD 0x6D1A00
 // Static-initialiser shape: stores constants to adjacent globals.
@@ -289,6 +353,14 @@ extern double DAT_00B0CDD8;
 // The existing table-trigonometry call at0x4CACB0 takes a cdecl double.
 extern "C" double __cdecl FUN_004CACB0(double angle);
 
+// SYNTHETIC: GAMEMD 0x6D1A20
+// GLOBAL: GAMEMD 0xB0CD60
+MathTblZero4 DAT_00B0CD60;
+
+// SYNTHETIC: GAMEMD 0x6D1A40
+// GLOBAL: GAMEMD 0xB0CE28
+MathTblZero4 DAT_00B0CE28;
+
 // FUNCTION: GAMEMD 0x6D1B00
 // Empty function.
 void __cdecl FUN_006D1B00()
@@ -308,8 +380,6 @@ void __cdecl FUN_006D1BF0()
     DAT_00B0CDD8 = DAT_00B0CD78 / (FUN_004CACB0(DAT_00B0CD88) * DAT_007E1728);
 }
 
-// GLOBAL: GAMEMD 0xB0CD60
-extern MathTblZero4 DAT_00B0CD60;
 // GLOBAL: GAMEMD 0xB0CD88
 extern double DAT_00B0CD88;
 // GLOBAL: GAMEMD 0xB0CE98
@@ -1287,8 +1357,6 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 #include "../../network/beacon_manager_class.h"
 #include <mmsystem.h>
 
-// GLOBAL: GAMEMD 0xB0CE28
-extern MathTblZero4 DAT_00B0CE28;
 // GLOBAL: GAMEMD 0x887314
 extern Surface* DAT_00887314;
 #include "../../renderer/dsurface_class.h"
@@ -1713,8 +1781,6 @@ void Tactical::FUN_006D4E00()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 
-// GLOBAL: GAMEMD 0xB0CE28
-extern MathTblZero4 DAT_00B0CE28;
 
 #include "../../ui/shape_header.h"
 #include "../../renderer/pixel_shift_view.h"
@@ -4472,4 +4538,6 @@ double AdjustForZ_Factor;
 ObjectClass** DAT_00A8ECBC;
 // GLOBAL: GAMEMD 0x7E9950
 extern const CLSID DAT_007E9950 = {0xCF56B38A, 0x240D, 0x11D2, {0x81, 0x7C, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
+// GLOBAL: GAMEMD 0x7F4188
+extern const double DAT_007F4188 = 0.017453292519943295;
 // END defined globals

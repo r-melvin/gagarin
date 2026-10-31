@@ -86768,7 +86768,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D8630",
-  "sym": "_$E17",
+  "sym": "_$E53",
   "len": "0x1",
   "name": "_$E3",
   "status": "matched",
@@ -86777,7 +86777,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DA350",
-  "sym": "_$E20",
+  "sym": "_$E56",
   "len": "0x1",
   "name": "_$E6",
   "status": "matched",
@@ -86795,7 +86795,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DC400",
-  "sym": "_$E25",
+  "sym": "_$E61",
   "len": "0x1",
   "name": "_$E11",
   "status": "matched",
@@ -86804,7 +86804,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DC410",
-  "sym": "_$E24",
+  "sym": "_$E60",
   "len": "0x1",
   "name": "_$E10",
   "status": "matched",
@@ -112741,108 +112741,108 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1830",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x28",
   "name": "dynamic initializer (DAT_00B0CD78)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D18A0",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0CE98)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D18C0",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0CD88)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D18E0",
-  "sym": "_$E11",
+  "sym": "_$E26",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0CD50)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1900",
-  "sym": "_$E14",
+  "sym": "_$E29",
   "len": "0x31",
   "name": "dynamic initializer (DAT_00B0CEC0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1940",
-  "sym": "_$E17",
+  "sym": "_$E32",
   "len": "0x21",
   "name": "dynamic initializer (DAT_00B0CD90)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1970",
-  "sym": "_$E20",
+  "sym": "_$E35",
   "len": "0x2c",
   "name": "dynamic initializer (DAT_00B0CE20)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D19A0",
-  "sym": "_$E23",
+  "sym": "_$E38",
   "len": "0x27",
   "name": "dynamic initializer (DAT_00B0CEB4)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D19D0",
-  "sym": "_$E26",
+  "sym": "_$E41",
   "len": "0xf",
   "name": "dynamic initializer (DAT_00B0CD74)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D19E0",
-  "sym": "_$E29",
+  "sym": "_$E44",
   "len": "0x12",
   "name": "dynamic initializer (DAT_00B0CE08)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1A20",
-  "sym": "_$E32",
+  "sym": "_$E47",
   "len": "0x17",
   "name": "dynamic initializer (DAT_00B0CD60)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6d1830.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1A40",
-  "sym": "_$E35",
+  "sym": "_$E50",
   "len": "0x17",
   "name": "dynamic initializer (DAT_00B0CE28)",
   "status": "matched",
