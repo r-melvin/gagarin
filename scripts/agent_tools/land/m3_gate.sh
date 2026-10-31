@@ -13,7 +13,7 @@
 #                   --distribution-patches --rsrc-from-project --rsrc-art-from-retail
 #   compare       compare_image.py --placement .../placement.json --json .../compare.json
 #   duplicates    check_duplicates.py
-#   unittests     python3 -m unittest discover -s scripts/vc6   (GAMEMD_BINARY unset, as the gate does)
+#   unittests     python3 -m unittest discover -s scripts/vc6, then -s scripts/agent_tools/wwstruct   (GAMEMD_BINARY unset, as the gate does)
 # --link-progress also runs the M1 link and refreshes link_progress (tracked files). It never touches scripts/data/link_progress.json or the progress SVGs unless --link-progress is
 # given, and it commits and pushes nothing. Logs and the summary go to DIR (default
 # WORKTREE/build-vc6/m3_gate); DIR/m3_gate_summary.json is printed last and holds: matched,
@@ -68,7 +68,7 @@ python3 scripts/vc6/compare_image.py --placement "$M3/placement.json" --json "$M
 crc=$?; [ -f "$M3/compare.json" ] && crc=0
 printf 'compare\t%s\n' "$crc" >> "$out/steps.tsv"; echo "compare rc=$crc"
 step duplicates "$out/gate-dup.log"      python3 scripts/vc6/check_duplicates.py
-step unittests  "$out/gate-unittest.log" env -u GAMEMD_BINARY python3 -m unittest discover -s scripts/vc6 -p 'test_*.py'
+step unittests  "$out/gate-unittest.log" env -u GAMEMD_BINARY bash -c "python3 -m unittest discover -s scripts/vc6 -p 'test_*.py' && python3 -m unittest discover -s scripts/agent_tools/wwstruct -p 'test_*.py'"
 if [ "$lp" = 1 ]; then
   step link_m1 "$out/gate-m1.log" python3 scripts/vc6/link_m1.py --objdir "$O" --out "$out/gate-link" --pin-data --order-tail
   step link_progress "$out/gate-link-progress.log" python3 scripts/orchestration/link_svg.py --refresh --diag build-vc6/svg-diag/report.json --m1 "$out/gate-link" --m3 "$M3"

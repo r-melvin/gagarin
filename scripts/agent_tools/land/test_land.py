@@ -714,5 +714,18 @@ class M3GateSummary(unittest.TestCase):
         self.assertFalse(S.summarize(d)["ok"])
 
 
+class AllowedPaths(unittest.TestCase):
+    def allowed(self, path):
+        return any(re.match(x, path) for x in L.ALLOWED_PATHS)
+
+    def test_wwstruct_tooling_is_allowed(self):
+        self.assertTrue(self.allowed("scripts/agent_tools/wwstruct/init_interleave.py"))
+        self.assertTrue(self.allowed("scripts/agent_tools/wwstruct/test_wwstruct.py"))
+
+    def test_other_tooling_is_not(self):
+        self.assertFalse(self.allowed("scripts/agent_tools/land/gates.py"))
+        self.assertFalse(self.allowed("scripts/agent_tools/wwstructure/x.py"))
+
+
 if __name__ == "__main__":
     unittest.main()

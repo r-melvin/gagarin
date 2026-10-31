@@ -45,6 +45,7 @@ import sectioncmp as S  # noqa: E402
 
 FORBID_RE = L.FORBID_RE
 ALLOWED_DEFAULT = L.ALLOWED_PATHS
+TEST_ROOTS = ["scripts/vc6", "scripts/agent_tools/wwstruct"]
 GATES = []
 
 
@@ -436,8 +437,14 @@ def tests(ctx):
     scripts_touched = any(p.startswith("scripts/") for p in ctx.changed)
     if ctx.mode == "inc" and not scripts_touched:
         return "SKIP", "no scripts/ change (inc mode); full mode always runs them"
-    rc, text = L.run([sys.executable, "-m", "unittest", "discover", "-s", "scripts/vc6", "-p", "test_*.py"],
-                     cwd=ctx.tree, env=ctx.env, log=os.path.join(ctx.run, "tests.log"))
+    # the match-oracle tests, then the Westwood-structure tooling tests (binary-free, 0.1 s)
+    rc, text = 0, ""
+    for root in TEST_ROOTS:
+        rc1, text1 = L.run([sys.executable, "-m", "unittest", "discover", "-s", root, "-p", "test_*.py"],
+                           cwd=ctx.tree, env=ctx.env, log=os.path.join(ctx.run, "tests.log"))
+        rc, text = rc or rc1, text1
+        if rc1:
+            break
     tail = text.strip().splitlines()[-3:]
     if rc:
         print("\n".join(tail))

@@ -108,7 +108,7 @@ run dir (`--run`, default `<scratch>/land-runs/run-*`).
 | layout | every `match/_layout/*.h` compiled standalone via an includer outside the tree (compile_all.sh wrote `_ca_*.cpp` into the tree) | only layout headers whose closure holds a changed file |
 | verify | every `matched` row (raw_match, then diff_retail), run in parallel from the built objects | same, affected TUs only |
 | strict | `raw_match` + strict `verify_relocations` on rows added/changed in the manifest (diff vs base, so no packet needed) | same |
-| tests | unittest discover | only if something under `scripts/` changed (the manifest counts, so effectively always; it takes 0.2 s) |
+| tests | unittest discover (`scripts/vc6`, then `scripts/agent_tools/wwstruct`) | only if something under `scripts/` changed (the manifest counts, so effectively always; it takes 0.2 s) |
 | dups, naked | `check_duplicates.py`, `check_naked.py` (whole tree, seconds) | same |
 | dupdefs | strong duplicate external symbols across all objects | same (unaffected objects from the cache; per-object symbol lists cached) |
 | sections | all objects vs base objects | affected objects only |

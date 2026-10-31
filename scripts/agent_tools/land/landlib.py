@@ -72,7 +72,8 @@ def load_forbid_re():
 
 FORBID_RE = load_forbid_re()
 BINDINGS = "scripts/data/symbol_bindings.json"
-ALLOWED_PATHS = [r"^match/", r"^scripts/data/[^/]+\.json$", r"^STATUS\.md$", r"^\.github/assets/progress\.svg$"]
+ALLOWED_PATHS = [r"^match/", r"^scripts/data/[^/]+\.json$", r"^STATUS\.md$", r"^\.github/assets/progress\.svg$",
+                 r"^scripts/agent_tools/wwstruct/"]
 
 
 def toolenv(extra=None):
