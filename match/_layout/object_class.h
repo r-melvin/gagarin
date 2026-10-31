@@ -83,6 +83,8 @@ public:
     // CALLEE: GAMEMD 0x5F6360 (decl; Bullet's native call passes an
     // AbstractClass target and receives the scalar distance in EAX.
     int FUN_005F6360(AbstractClass* target);
+    // FUNCTION: GAMEMD 0x5F6CB0 (decl; reloc) -- one stack argument.
+    void FUN_005F6CB0(int a);
     // FUNCTION: GAMEMD 0x5F6CD0
     bool IsCrushable(ObjectClass* crusher);
 

@@ -11,6 +11,8 @@
 //
 // Merged here from taction_class_methods.cpp (0x6E3EE0, 0x6E45E0) and taction_class_w3_methods.cpp
 // (0x6E42D0, 0x6E4320, 0x6E47C0); each keeps its own matching notes below.
+// Also merged: the handlers of taction_w3_methods.cpp, taction_r15_methods.cpp and taction_r16_methods.cpp, now
+// on the canonical classes (RulesClass, Tactical, the map, WWMouseClass, SuperClass, HouseClass, TeamClass).
 //
 // The six ID-resolving commands, ordered ascending by retail address.
 //
@@ -49,6 +51,15 @@
 #include "../_layout/gbl_0087f7e8.h"
 #include "../_layout/building_class.h"
 #include "../core/trivial_tu230_b_methods.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/tactical.h"
+#include "../_layout/team_class.h"
+#include "../_layout/super_class.h"
+#include "../_layout/house_type_class.h"
+#include "../_layout/infantry_class.h"
+#include "../_layout/building_light_class.h"
+#include "../platform/input_manager_class_methods.h"
+#include "../ui/input_controls/mouse_ww_mouse_class.h"
 
 // GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
 extern const CLSID DAT_007E9800;
@@ -284,23 +295,60 @@ static __inline HouseClass* FindActionHouse(TriggerClass* trigger, int index)
 }
 
 
-// The rules object (GLOBAL 0x8871E0); only the dword read here is named.
-struct TActionRulesView
-{
-    unsigned char unknown_00[0xFA8];
-    int unknown_FA8;                        // +0xFA8
-    unsigned char unknown_FAC[0x1668 - 0xFAC];
-    double unknown_1668;                    // +0x1668
-    double unknown_1670;                    // +0x1670
-};
-GG_STATIC_ASSERT(offsetof(TActionRulesView, unknown_FA8) == 0xFA8);
-GG_STATIC_ASSERT(offsetof(TActionRulesView, unknown_1668) == 0x1668);
-GG_STATIC_ASSERT(offsetof(TActionRulesView, unknown_1670) == 0x1670);
 // GLOBAL: GAMEMD 0x8871E0
-extern TActionRulesView* DAT_008871E0;
+extern RulesClass* DAT_008871E0;
+
+// FUNCTION: GAMEMD 0x6ABC60 (decl; reloc)
+int __fastcall FUN_006ABC60(int a, int b, int c);
+// GLOBAL: GAMEMD 0xA8ED9C
+extern bool DAT_00A8ED9C;
+// GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x88099A / 0x88099B / 0x88099C -- tactical-view state reset by action 0x24.
+extern int DAT_0088098C;
+extern int DAT_00880990;
+extern int DAT_00880994;
+extern bool DAT_0088099A;
+extern bool DAT_0088099B;
+extern bool DAT_0088099C;
+// FUNCTION: GAMEMD 0x684240 (decl; reloc)
+void __cdecl FUN_00684240();
+extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
+
+// GLOBAL: GAMEMD 0xA83DEC / 0xA83DF8 -- InfantryClass array items and count.
+extern InfantryClass** DAT_00A83DEC;
+extern int DAT_00A83DF8;
+// FUNCTION: GAMEMD 0x65FA70 (decl; reloc)
+void __fastcall FUN_0065FA70(int a, CellStruct cell);
+// FUNCTION: GAMEMD 0x6F1F70 (decl; reloc) -- the first live team of a team type.
+TeamClass* __fastcall FUN_006F1F70(TeamTypeClass* teamType);
+// FUNCTION: GAMEMD 0x70F120 (decl; reloc)
+void __fastcall FUN_0070F120(void* a, int b);
+// FUNCTION: GAMEMD 0x72DDB0 (decl; reloc)
+void __cdecl FUN_0072DDB0();
+// FUNCTION: GAMEMD 0x6842F0 (decl; reloc)
+void __fastcall FUN_006842F0(bool flag);
+// FUNCTION: GAMEMD 0x5BF260 (decl; reloc)
+void __fastcall FUN_005BF260(int a, int b, int c, int d, int e);
+// FUNCTION: GAMEMD 0x72DEF0 (decl; reloc)
+void __cdecl FUN_0072DEF0();
+// FUNCTION: GAMEMD 0x50C210 (decl; reloc) -- a step on the house.
+void __fastcall FUN_0050C210(HouseClass* house);
+// FUNCTION: GAMEMD 0x750E20 (decl; reloc)
+void __fastcall FUN_00750E20(int sound, CoordStruct* where, int unused);
+// FUNCTION: GAMEMD 0x750F40 (decl; reloc)
+void __fastcall FUN_00750F40(CoordStruct* where, int flag);
+
+// The centre of a cell as a coordinate.
+inline CoordStruct TActionCellToCoord(const CellStruct& cell)
+{
+    CoordStruct result;
+    result.X = cell.X * 256 + 128;
+    result.Y = cell.Y * 256 + 128;
+    result.Z = 0;
+    return result;
+}
 
 // FUNCTION: GAMEMD 0x48A620 (decl; reloc)
-void FUN_0048A620(int a, int b, CoordStruct where, char c, unsigned int d);
+void FUN_0048A620(int health, WarheadTypeClass* warhead, CoordStruct where, char c, unsigned int mask);
 
 // GLOBAL: GAMEMD 0xA8EB44 / 0xA8EB50 -- BuildingClass::Array items and count.
 extern BuildingClass** DAT_00A8EB44;
@@ -496,6 +544,20 @@ bool TActionClass::FUN_006E0080(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E01C0
+// Order every live foot-soldier or unit-less tagged object carrying this trigger to mission 5.
+bool TActionClass::FUN_006E01C0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    for (int i = 0; i < DAT_00A8EC88; i++) {
+        TechnoClass* t = DAT_00A8EC7C[i];
+        if (t->vf_11() != 6 && t->IsAlive && t->IsOnMap && t->AttachedTag && t->AttachedTag->ContainsTrigger(trigger)
+            && (t->vf_97() == 0 || t->vf_97() == 0x17)) {
+            t->vf_122(5, false);
+        }
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E0250
 // Stores its argument in a member; pops its stack arguments.
 bool Obj_006E0250::FUN_006E0250(int a1, int a2, int a3, int a4)
@@ -576,30 +638,38 @@ bool Obj_006E0440::FUN_006E0460(int, int, int, int)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E0480
+// Run the local player's house through its 0x4FCDC0 step.
+bool TActionClass::FUN_006E0480(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_00A83D4C->ForceEnd();
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E0790
 bool TActionClass::FUN_006E0790(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
-    int sound = DAT_008871E0->unknown_FA8;
+    WarheadTypeClass* warhead = DAT_008871E0->C4Warhead;
     CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_90);
-    FUN_0048A620(0x32, sound, where, 0, 0);
+    FUN_0048A620(0x32, warhead, where, 0, 0);
     return true;
 }
 
 // FUNCTION: GAMEMD 0x6E07F0
 bool TActionClass::FUN_006E07F0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
-    int sound = DAT_008871E0->unknown_FA8;
+    WarheadTypeClass* warhead = DAT_008871E0->C4Warhead;
     CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_90);
-    FUN_0048A620(100, sound, where, 0, 0);
+    FUN_0048A620(100, warhead, where, 0, 0);
     return true;
 }
 
 // FUNCTION: GAMEMD 0x6E0850
 bool TActionClass::FUN_006E0850(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
-    int sound = DAT_008871E0->unknown_FA8;
+    WarheadTypeClass* warhead = DAT_008871E0->C4Warhead;
     CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_90);
-    FUN_0048A620(300, sound, where, 0, 0);
+    FUN_0048A620(300, warhead, where, 0, 0);
     return true;
 }
 
@@ -611,6 +681,22 @@ bool TActionClass::FUN_006E08B0(HouseClass* house, ObjectClass* object, TriggerC
         BuildingClass* b = DAT_00A8EB44[i];
         if (b->IsAlive && b->IsOnMap && !b->InLimbo && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)) {
             b->vf_104(1);
+            result = true;
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6E0930
+// Run slot 325 on every live, mapped infantry carrying this trigger.
+bool TActionClass::FUN_006E0930(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    bool result = false;
+    for (int i = 0; i < DAT_00A83DF8; i++) {
+        InfantryClass* inf = DAT_00A83DEC[i];
+        if (inf->IsAlive && inf->IsOnMap && !inf->InLimbo && inf->AttachedTag
+            && inf->AttachedTag->ContainsTrigger(trigger)) {
+            inf->vf_325();
             result = true;
         }
     }
@@ -641,6 +727,55 @@ bool TActionClass::FUN_006E0A20(HouseClass* house, ObjectClass* object, TriggerC
         if (b->IsAlive && b->IsOnMap && !b->InLimbo && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)
             && !b->HasPower) {
             b->FUN_00452260();
+            result = true;
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6E0AA0
+// Give the named house to every live, mapped techno carrying this trigger (slot 245).
+bool TActionClass::FUN_006E0AA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0)
+        return false;
+    bool result = false;
+    for (int i = 0; i < DAT_00A8EC88; i++) {
+        TechnoClass* t = DAT_00A8EC7C[i];
+        if (t->IsAlive && t->IsOnMap && !t->InLimbo && t->AttachedTag && t->AttachedTag->ContainsTrigger(trigger)) {
+            t->vf_245(target, false);
+            result = true;
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6E0B60
+// Hand the named house to every techno of the given owner, buildings last (those that act as a yard
+// are handed over after the rest and then given their 0x4549B0 step).
+bool TActionClass::FUN_006E0B60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    bool result = false;
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0)
+        return false;
+    for (int i = 0; i < DAT_00A8EC88; i++) {
+        TechnoClass* t = DAT_00A8EC7C[i];
+        if (t->Owner == house) {
+            if (t == 0 || t->vf_11() != 6 || ((BuildingClass*)t)->Type == 0
+                || (!((BuildingClass*)t)->Type->bools_1570[3] && !((BuildingClass*)t)->Type->bools_1570[4])) {
+                DAT_00A8EC7C[i]->vf_245(target, false);
+                result = true;
+            }
+        }
+    }
+    for (int j = 0; j < DAT_00A8EC88; j++) {
+        TechnoClass* t = DAT_00A8EC7C[j];
+        if (t->Owner == house && t != 0 && t->vf_11() == 6 && ((BuildingClass*)t)->Type != 0
+            && (((BuildingClass*)t)->Type->bools_1570[3] || ((BuildingClass*)t)->Type->bools_1570[4])) {
+            DAT_00A8EC7C[j]->vf_245(target, false);
+            ((BuildingClass*)t)->FUN_004549B0();
             result = true;
         }
     }
@@ -704,6 +839,40 @@ unsigned char Obj_006E0ED0::FUN_006E0ED0(Arg1_006E0ED0* a1, int a2, int a3, int 
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x6E0EF0
+// PARTIAL: 96.1% -- identical instruction multiset; retail stores the auto-base flag before loading
+// the construction-yard count, this build loads the count first.
+// Switch the house's automatic base building on (re-centring its base on its first construction
+// yard) or off.
+bool TActionClass::FUN_006E0EF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (*(char*)&unknown_90 != 0) {
+        house->AutoBaseBuilding = 1;
+        int yards = house->ConYards.Count;
+        if (yards > 0) {
+            CoordStruct where = house->ConYards.Items[0]->Location;
+            Cell base;
+            base.X = (short)(where.X / 256);
+            base.Y = (short)(where.Y / 256);
+            house->FUN_0050E000(base);
+            *(Cell*)((char*)house + 0x5750) = base;
+        }
+        if (*(int*)((char*)house + 0x5714) == 0)
+            FUN_0050C210(house);
+    } else {
+        house->AutoBaseBuilding = 0;
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0F90
+// Run the map's 0x4ACAC0 step.
+bool TActionClass::FUN_006E0F90(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_0087F7E8.FUN_004ACAC0();
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E0FA0
 // Calls other functions.
 bool Obj_006E0FA0::FUN_006E0FA0(int a1, int a2, int a3, int a4)
@@ -757,6 +926,20 @@ bool TActionClass::FUN_006E1440(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E16D0
+// Bracket a redraw of the view around a 0x5BF260 step on the action's parameter.
+bool TActionClass::FUN_006E16D0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_0072DDB0();
+    WWMouseClassInstance->vf_5();
+    FUN_006842F0(false);
+    FUN_005BF260(unknown_90, -1, 1, 1, 1);
+    FUN_006842F0(true);
+    WWMouseClassInstance->CaptureMouse();
+    FUN_0072DEF0();
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1720
 // Calls other functions.
@@ -779,6 +962,70 @@ bool Obj_006E1740::FUN_006E1740(int a1, int a2, int a3, int a4)
 bool TActionClass::FUN_006E1760(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
     FUN_00750920(unknown_90, 1.0f, 0x2000, 0);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1830
+// The object standing in the cell under a coordinate: its building, else the first other occupant.
+ObjectClass* __fastcall FUN_006E1830(CoordStruct* coord)
+{
+    CellStruct tmp;
+    tmp.X = (short)(coord->X / 256);
+    tmp.Y = (short)(coord->Y / 256);
+    CellStruct at = tmp;
+    ObjectClass* o = 0;
+    if (at.X != DAT_00B0E680.X || at.Y != DAT_00B0E680.Y) {
+        CellClass* c = DAT_0087F7E8.FUN_005657A0(&at);
+        o = c->GetBuilding();
+        if (o == 0)
+            o = c->FUN_0047C550(false);
+    }
+    return o;
+}
+
+// FUNCTION: GAMEMD 0x6E18B0
+// Run the 0x5F6CB0 step on the occupant of the waypoint's cell, or play the sound at the spot if none.
+bool TActionClass::FUN_006E18B0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_44);
+    CellStruct tmp;
+    tmp.X = (short)(where.X / 256);
+    tmp.Y = (short)(where.Y / 256);
+    CellStruct at = tmp;
+    if (at.X != DAT_00B0E680.X || at.Y != DAT_00B0E680.Y) {
+        CellClass* c = DAT_0087F7E8.FUN_005657A0(&at);
+        ObjectClass* o = c->GetBuilding();
+        if (o == 0)
+            o = c->FUN_0047C550(false);
+        if (o != 0) {
+            o->FUN_005F6CB0(unknown_90);
+            return true;
+        }
+    }
+    FUN_00750E20(unknown_90, &where, 1);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1980
+// Run the 0x5F6CB0 step (with -1) on the occupant of the waypoint's cell, or the 0x750F40 step if none.
+bool TActionClass::FUN_006E1980(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_44);
+    CellStruct tmp;
+    tmp.X = (short)(where.X / 256);
+    tmp.Y = (short)(where.Y / 256);
+    CellStruct at = tmp;
+    if (at.X != DAT_00B0E680.X || at.Y != DAT_00B0E680.Y) {
+        CellClass* c = DAT_0087F7E8.FUN_005657A0(&at);
+        ObjectClass* o = c->GetBuilding();
+        if (o == 0)
+            o = c->FUN_0047C550(false);
+        if (o != 0) {
+            o->FUN_005F6CB0(-1);
+            return true;
+        }
+    }
+    FUN_00750F40(&where, 1);
     return true;
 }
 
@@ -805,6 +1052,55 @@ bool FUN_006E1B90(Obj_006E1B90* a1, int a2, int a3, int a4, int a5, int a6)
 bool Obj_006E1BB0::FUN_006E1BB0(int a1, int a2, int a3, int a4)
 {
     FUN_00752480(unknown_90, 2, -1);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1BD0
+// Give the house its super weapon, and refresh the sidebar when the house is the local player.
+bool TActionClass::FUN_006E1BD0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    house->Supers.Items[unknown_90]->FUN_006CB560(1, 0, 0);
+    if (DAT_00A83D4C == house) {
+        DAT_0087F7E8.FUN_006A6300(0x1f, unknown_90);
+        DAT_0087F7E8.FUN_006A60A0(FUN_006ABC60(0x1f, unknown_90, 0));
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1C40
+// Take the super weapon away and clear its hold flag, refreshing the sidebar for the local player.
+bool TActionClass::FUN_006E1C40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    house->Supers.Items[unknown_90]->FUN_006CB560(0, 0, 0);
+    house->Supers.Items[unknown_90]->CanHold = false;
+    if (DAT_00A83D4C == house) {
+        DAT_0087F7E8.FUN_006A6300(0x1f, unknown_90);
+        DAT_0087F7E8.FUN_006A60A0(FUN_006ABC60(0x1f, unknown_90, 0));
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1DC0
+// Apply one local-player step when the parameter names the player's colour scheme, the other if not.
+bool TActionClass::FUN_006E1DC0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_90 == DAT_00A83D4C->Type->ArrayIndex2) {
+        DAT_00A83D4C->Win(0);
+    } else {
+        DAT_00A83D4C->Lose(0);
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1E00
+// The mirror of the previous handler: the second step when the colour scheme matches.
+bool TActionClass::FUN_006E1E00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_90 != DAT_00A83D4C->Type->ArrayIndex2) {
+        DAT_00A83D4C->Win(0);
+    } else {
+        DAT_00A83D4C->Lose(0);
+    }
     return true;
 }
 
@@ -838,6 +1134,18 @@ bool TActionClass::FUN_006E1F00(HouseClass* house, ObjectClass* object, TriggerC
         return false;
     }
     target->AutocreateAllowed = 1;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1F60
+// Create the action's team while the setup flag is raised.
+bool TActionClass::FUN_006E1F60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_00A8E7AC++;
+    if (unknown_30) {
+        unknown_30->CreateTeam(0);
+    }
+    DAT_00A8E7AC--;
     return true;
 }
 
@@ -882,6 +1190,16 @@ unsigned char Obj_006E1FD0::FUN_006E1FD0(int a1, int a2, int a3, int a4)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x6E1FF0
+// Call the interface of the house named by the parameter, if there is one.
+bool TActionClass::FUN_006E1FF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (!target) return false;
+    target->IHouse_vf_14();
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E21D0
 // Returns a constant boolean; pops its stack arguments.
@@ -894,6 +1212,23 @@ struct Obj_006E26C0 {
     void FUN_00684290();
     bool FUN_006E26C0(int, int, int, int);
 };
+// FUNCTION: GAMEMD 0x6E2660
+// Reset the tactical view state.
+bool TActionClass::FUN_006E2660(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_0088098C = 0;
+    DAT_00880990 = 0;
+    DAT_00880994 = -1;
+    DAT_0087F7E8.FUN_004A8BF0(0);
+    DAT_0087F7E8.FUN_004AC8C0(0);
+    DAT_0087F7E8.FUN_004AC660(0);
+    DAT_0088099A = false;
+    DAT_0088099B = false;
+    DAT_0088099C = false;
+    FUN_00684240();
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x006E26C0
 bool Obj_006E26C0::FUN_006E26C0(int, int, int, int)
 {
@@ -905,10 +1240,66 @@ struct Obj_006E2850 {
     void FUN_007315A0();
     bool FUN_006E2850(int, int, int, int);
 };
+// FUNCTION: GAMEMD 0x6E26D0
+// Scroll the tactical view to the waypoint, lifted over bridge cells, with the parameter.
+bool TActionClass::FUN_006E26D0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct where = TActionCellToCoord(at);
+    where.Z = DAT_0087F7E8.FUN_00578080(&where);
+    if ((DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x100) ||
+        (DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x400))
+        where.Z += DAT_00B0E6D4;
+    DAT_00887324->FUN_006D2420(&where, unknown_90);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2790
+// Centre the tactical view on the waypoint, lifted over bridge cells.
+bool TActionClass::FUN_006E2790(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct where = TActionCellToCoord(at);
+    where.Z = DAT_0087F7E8.FUN_00578080(&where);
+    if ((DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x100) ||
+        (DAT_0087F7E8.FUN_005657A0(&at)->Flags & 0x400))
+        where.Z += DAT_00B0E6D4;
+    DAT_00887324->FUN_006D6070(&where);
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x006E2850
 bool Obj_006E2850::FUN_006E2850(int, int, int, int)
 {
     FUN_007315A0();
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2860
+// Pause: store the saved rate into the controller, then redraw and sleep a second.
+bool TActionClass::FUN_006E2860(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_00887324->unknown_C0 = DAT_008871E0->ZoomInFactor;
+    DAT_00A8ED9C = true;
+    DAT_0087F770->DoSomething();
+    WWMouseClassInstance->vf_3();
+    DAT_0087F7E8.FUN_006938C0();
+    DAT_0087F7E8.FUN_004F42F0(0);
+    DAT_0087F7E8.FUN_004F4480();
+    Sleep(1000);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E28E0
+// Resume: restore a rate of 1.0, mirror the session flag, and redraw.
+bool TActionClass::FUN_006E28E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_00887324->unknown_C0 = 1.0;
+    DAT_0087F770->DoSomething();
+    DAT_00A8ED9C = DAT_00A8B230->unknown_35A2;
+    WWMouseClassInstance->vf_4();
+    DAT_0087F7E8.FUN_004F42F0(0);
+    DAT_0087F7E8.FUN_004F4480();
     return true;
 }
 
@@ -919,6 +1310,22 @@ bool FUN_006E2950(int a1, int a2, int a3, int a4, int a5, int a6)
 {
     FUN_00577C90(&DAT_0087F7E8, a2, a3);
     return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2970
+// Give the spotlight of every live, mapped building carrying this trigger its 0x436BE0 step.
+bool TActionClass::FUN_006E2970(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    bool result = false;
+    for (int i = 0; i < DAT_00A8EB50; i++) {
+        BuildingClass* b = DAT_00A8EB44[i];
+        if (b->Health > 0 && b->IsAlive && b->IsOnMap && !b->InLimbo && b->Type->bools_154B[0] && b->Spotlight
+            && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)) {
+            b->Spotlight->FUN_00436BE0(unknown_90);
+            result = true;
+        }
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x6E2A10
@@ -996,6 +1403,14 @@ bool TActionClass::FUN_006E2B70(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E2BB0
+// Hand the action's parameter and its waypoint cell to 0x65FA70.
+bool TActionClass::FUN_006E2BB0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_0065FA70(unknown_90, DAT_00A8B230->GetWaypointCoords(unknown_44));
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2BE0
 // Calls other functions.
@@ -1019,7 +1434,7 @@ bool Obj_006E2C00::FUN_006E2C00(int a1, int a2, int a3, int a4)
 // Stores its argument in a member; pops its stack arguments.
 bool Obj_006E2E20::FUN_006E2E20(int a1, int a2, int a3, int a4)
 {
-    DAT_008871E0->unknown_1670 = unknown_90;
+    DAT_008871E0->AmbientChangeStep = unknown_90;
     return true;
 }
 
@@ -1028,7 +1443,7 @@ bool Obj_006E2E20::FUN_006E2E20(int a1, int a2, int a3, int a4)
 // Stores its argument in a member; pops its stack arguments.
 bool Obj_006E2E40::FUN_006E2E40(int a1, int a2, int a3, int a4)
 {
-    DAT_008871E0->unknown_1668 = unknown_90;
+    DAT_008871E0->AmbientChangeRate = unknown_90;
     return true;
 }
 
@@ -1045,6 +1460,15 @@ bool TActionClass::FUN_006E2EB0(HouseClass* house, ObjectClass* object, TriggerC
 {
     FUN_0053AD00(DAT_00A8B230->unknown_3534 * 10, unknown_90 * 10, DAT_00A8B230->unknown_353C * 10, 0);
     DAT_00A8B230->unknown_3538 = unknown_90;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2F00
+// Record the action's parameter in the session and scroll to it.
+bool TActionClass::FUN_006E2F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_0053AD00(DAT_00A8B230->unknown_3534 * 10, DAT_00A8B230->unknown_3538 * 10, unknown_90 * 10, 0);
+    DAT_00A8B230->unknown_353C = unknown_90;
     return true;
 }
 
@@ -1558,6 +1982,22 @@ unsigned char FUN_006E4020(Obj_006E4020* a1, int a2, int a3, int a4, int a5, int
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x6E4040
+// Run the 0x70F120 step on the team type's first live team (or on nothing).
+bool TActionClass::FUN_006E4040(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_30) {
+        TeamClass* team = FUN_006F1F70(unknown_30);
+        if (team) {
+            FUN_0070F120(team->FirstUnit, unknown_90);
+            return true;
+        }
+    } else {
+        FUN_0070F120(0, 0);
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E4080
 bool TActionClass::FUN_006E4080(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1868,8 +2308,28 @@ Block_006E47C0 Block_006E47C0::FUN_006E47C0(const Block_006E47C0& other)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x880D2C
 Obj_00880D2C DAT_00880D2C[4];
-// GLOBAL: GAMEMD 0x8871E0
-TActionRulesView* DAT_008871E0;
+// GLOBAL: GAMEMD 0x887324
+Tactical* DAT_00887324;
+// GLOBAL: GAMEMD 0x887640
+WWMouseClass* WWMouseClassInstance;
+// GLOBAL: GAMEMD 0x88098C
+int DAT_0088098C;
+// GLOBAL: GAMEMD 0x880990
+int DAT_00880990;
+// GLOBAL: GAMEMD 0x880994
+int DAT_00880994;
+// GLOBAL: GAMEMD 0x88099A
+bool DAT_0088099A;
+// GLOBAL: GAMEMD 0x88099B
+bool DAT_0088099B;
+// GLOBAL: GAMEMD 0x88099C
+bool DAT_0088099C;
+// GLOBAL: GAMEMD 0xA83DEC
+InfantryClass** DAT_00A83DEC;
+// GLOBAL: GAMEMD 0xA83DF8
+int DAT_00A83DF8;
+// GLOBAL: GAMEMD 0xA8ED9C
+bool DAT_00A8ED9C;
 // GLOBAL: GAMEMD 0x8B3DC4
 TechnoClass** DAT_008B3DC4;
 // GLOBAL: GAMEMD 0x8B3DD0

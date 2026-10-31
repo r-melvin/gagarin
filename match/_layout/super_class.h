@@ -38,6 +38,8 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);                  // slot13 0x6CE020
     // FUNCTION: GAMEMD 0x6CB4D0
     bool SetOnHold(bool onHold);
+    // FUNCTION: GAMEMD 0x6CB560 (decl; reloc)
+    void FUN_006CB560(int a, int b, int c);
     // FUNCTION: GAMEMD 0x6CB7B0
     bool Lose();
     // FUNCTION: GAMEMD 0x6CB820

@@ -113,6 +113,12 @@ public:
     bool FUN_006E1EA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E1F00
     bool FUN_006E1F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E1FF0
+    bool FUN_006E1FF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E26D0
+    bool FUN_006E26D0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+    // FUNCTION: GAMEMD 0x6E2790
+    bool FUN_006E2790(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E2A10
     bool FUN_006E2A10(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
     // FUNCTION: GAMEMD 0x6E2A50
