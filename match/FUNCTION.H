@@ -120,7 +120,6 @@
 #include "_layout/obj_004e1100.h"
 #include "_layout/obj_004f4c20.h"
 #include "_layout/obj_005095d0.h"
-#include "_layout/obj_005175e0.h"
 #include "_layout/obj_0053ecb0.h"
 #include "_layout/obj_005402b0.h"
 #include "_layout/obj_00589a30.h"

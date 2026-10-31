@@ -18,6 +18,7 @@ public:
     unsigned char Green;
     unsigned char Blue;
     RGBClass() : Red(0), Green(0), Blue(0) {}
+    RGBClass(unsigned char r, unsigned char g, unsigned char b) : Red(r), Green(g), Blue(b) {}
     bool operator==(const RGBClass& other) const
     { return Red == other.Red && Green == other.Green && Blue == other.Blue; }
     bool operator!=(const RGBClass& other) const { return !(*this == other); }

@@ -50367,20 +50367,20 @@
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x517360",
-  "sym": "?Adjust@HSVColour@@QAEXEABV1@@Z",
+  "sym": "?Adjust@HSVClass@@QAEXEABV1@@Z",
   "len": "0x86",
-  "name": "HSVColour::Adjust",
+  "name": "HSVClass::Adjust",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x5173F0",
-  "sym": "?Difference@HSVColour@@QBEHABV1@@Z",
+  "sym": "?Difference@HSVClass@@QBEHABV1@@Z",
   "len": "0x4e",
-  "name": "HSVColour::Difference",
+  "name": "HSVClass::Difference",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/compression_straw_ctors.cpp",
@@ -59259,11 +59259,11 @@
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x517440",
-  "sym": "?FUN_00517440@HSVTriple@@QBE?AURGBTripleValue@@XZ",
+  "sym": "?FUN_00517440@HSVClass@@QBE?AVRGBClass@@XZ",
   "len": "0x115",
-  "name": "HSVTriple::FUN_00517440",
-  "status": "partial",
-  "pct": 75.5
+  "name": "HSVClass::FUN_00517440",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/platform/Ini.cpp",
@@ -96401,9 +96401,9 @@
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x5175E0",
-  "sym": "?FUN_005175E0@Obj_005175E0@@QAE_NXZ",
+  "sym": "?FUN_005175E0@HSVClass@@QBI_NABV1@@Z",
   "len": "0xb",
-  "name": "Obj_005175E0::FUN_005175E0",
+  "name": "HSVClass::FUN_005175E0",
   "status": "matched",
   "pct": 100.0
  },
@@ -148261,9 +148261,9 @@
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x5175D0",
-  "sym": "?FUN_005175D0@Obj_005175E0@@QAE_NXZ",
+  "sym": "??8HSVClass@@QBI_NABV0@@Z",
   "len": "0x2",
-  "name": "Obj_005175E0::FUN_005175D0",
+  "name": "??8HSVClass@@QBI_NABV0@@Z",
   "status": "matched",
   "pct": 100.0
  },

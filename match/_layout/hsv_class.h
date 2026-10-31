@@ -11,6 +11,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+class RGBClass;
+
 class HSVClass
 {
 public:
@@ -19,10 +21,18 @@ public:
     unsigned char Value;        // +0x02
 
     HSVClass() : Hue(0), Saturation(0), Value(0) {}
-    // GAMEMD 0x5175D0 (declared; retail body is outside this unit)
+    // GAMEMD 0x5175D0 (defined in match/movement/tu098_hover_locomotion_class.cpp)
     bool __fastcall operator==(const HSVClass& o) const;
-    // GAMEMD 0x517590 (declared; retail body is outside this unit)
+    // GAMEMD 0x517590 (declared; the body is defined there on a placeholder receiver)
     bool operator!=(const HSVClass& o) const;
+    // GAMEMD 0x5175E0: the __fastcall wrapper that calls 0x5175D0 and negates it
+    bool __fastcall FUN_005175E0(const HSVClass& o) const;
+    // GAMEMD 0x517360: blend toward `other` by ratio/256 per channel
+    void Adjust(unsigned char ratio, const HSVClass& other);
+    // GAMEMD 0x5173F0: sum of squared channel differences
+    int Difference(const HSVClass& other) const;
+    // GAMEMD 0x517440: hue/saturation/value to red/green/blue, returned by value
+    RGBClass FUN_00517440() const;
 };
 GG_STATIC_ASSERT(offsetof(HSVClass, Hue) == 0);
 GG_STATIC_ASSERT(offsetof(HSVClass, Saturation) == 1);

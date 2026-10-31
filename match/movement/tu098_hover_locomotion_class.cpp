@@ -82,21 +82,6 @@ static inline LocoCoord CellCenter(const HoverCellCoord& cell)
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class HSVColour
-{
-public:
-    // FUNCTION: GAMEMD 0x517360
-    void Adjust(unsigned char ratio, const HSVColour& other);
-    // FUNCTION: GAMEMD 0x5173F0
-    int Difference(const HSVColour& other) const;
-
-    unsigned char Hue;          // +0x00
-    unsigned char Saturation;   // +0x01
-    unsigned char Value;        // +0x02
-};
-GG_STATIC_ASSERT(offsetof(HSVColour, Hue)        == 0x00);
-GG_STATIC_ASSERT(offsetof(HSVColour, Saturation) == 0x01);
-GG_STATIC_ASSERT(offsetof(HSVColour, Value)      == 0x02);
 
 #include "../core/deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"
@@ -110,7 +95,8 @@ const char* FUN_0048E090(unsigned int index);
 
 #include "../_layout/obj_004770b0.h"
 
-#include "../_layout/obj_005175e0.h"
+#include "../_layout/hsv_class.h"
+#include "../_layout/rgb_class.h"
 
 struct Obj_005176A0 {
     unsigned int Bits;
@@ -129,26 +115,7 @@ struct Obj_005176A0 {
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct RGBTripleValue
-{
-    unsigned char Red;    // +0x00
-    unsigned char Green;  // +0x01
-    unsigned char Blue;   // +0x02
-};
-GG_STATIC_ASSERT(offsetof(RGBTripleValue, Blue) == 2);
 
-class HSVTriple
-{
-public:
-    unsigned char Hue;          // +0x00
-    unsigned char Saturation;   // +0x01
-    unsigned char Value;        // +0x02
-
-    RGBTripleValue FUN_00517440() const;
-};
-GG_STATIC_ASSERT(offsetof(HSVTriple, Hue) == 0);
-GG_STATIC_ASSERT(offsetof(HSVTriple, Saturation) == 1);
-GG_STATIC_ASSERT(offsetof(HSVTriple, Value) == 2);
 
 //   Each entry point disassembled individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
@@ -825,7 +792,7 @@ int HoverLocomotionClass::Size()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x517360
-void HSVColour::Adjust(unsigned char ratio, const HSVColour& other)
+void HSVClass::Adjust(unsigned char ratio, const HSVClass& other)
 {
     Value = (unsigned char)(Value + ((other.Value - Value) * ratio) / 256);
     Saturation = (unsigned char)(Saturation + ((other.Saturation - Saturation) * ratio) / 256);
@@ -834,7 +801,7 @@ void HSVColour::Adjust(unsigned char ratio, const HSVColour& other)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5173F0
-int HSVColour::Difference(const HSVColour& other) const
+int HSVClass::Difference(const HSVClass& other) const
 {
     int hue = Hue - other.Hue;
     if (hue < 0) {
@@ -853,7 +820,7 @@ int HSVColour::Difference(const HSVColour& other) const
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x517440
-RGBTripleValue HSVTriple::FUN_00517440() const
+RGBClass HSVClass::FUN_00517440() const
 {
     int values[7];
     int hue = Hue;
@@ -870,15 +837,14 @@ RGBTripleValue HSVTriple::FUN_00517440() const
     values[4] = values[5];
     values[6] = ((255 - ((255 - frac) * sat) / 255) * val) / 255;
 
-    RGBTripleValue rgb;
     unsigned int index = scaled / 255;
     index += (index > 4) ? -4 : 2;
-    rgb.Red = (unsigned char)values[index];
+    int red = values[index];
     index += (index > 4) ? -4 : 2;
-    rgb.Blue = (unsigned char)values[index];
+    int blue = values[index];
     index += (index > 4) ? -4 : 2;
-    rgb.Green = (unsigned char)values[index];
-    return rgb;
+    int green = values[index];
+    return RGBClass(red, green, blue);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -900,7 +866,7 @@ bool Obj_00517560::FUN_00517590(Arg1_00517560* a1)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5175D0
 // Never returns: a one-instruction self-jump (a trap stub whose caller 0x5175E0 negates its result).
-bool Obj_005175E0::FUN_005175D0()
+bool __fastcall HSVClass::operator==(const HSVClass&) const
 {
     for (;;) {
     }
@@ -908,9 +874,9 @@ bool Obj_005175E0::FUN_005175D0()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005175E0
-bool Obj_005175E0::FUN_005175E0()
+bool __fastcall HSVClass::FUN_005175E0(const HSVClass& o) const
 {
-    return !FUN_005175D0();
+    return !(*this == o);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

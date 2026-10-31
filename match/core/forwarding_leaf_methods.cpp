@@ -24,7 +24,6 @@ void Obj_004770B0::FUN_004770B0(int a, int b, unsigned int c)
     FUN_00528660(a, b, FUN_0048E090(c));
 }
 
-#include "../_layout/obj_005175e0.h"
 
 #include "../_layout/rec_00549b50.h"
 #include "../_layout/obj_00549b50.h"
