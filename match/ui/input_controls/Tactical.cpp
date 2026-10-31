@@ -41,6 +41,7 @@
 // must stay an int operand in the expression, then 0.5 folds in as a double.
 
 #include "../../FUNCTION.H"
+#include "../../core/mathtbl_init_shapes.h"
 #include "../../core/cell_step_tables.h"
 #include "../../renderer/tactical_class_matrix_methods.h"
 #include "../tactical_class_coords_to_client_methods.h"
@@ -308,7 +309,7 @@ void __cdecl FUN_006D1BF0()
 }
 
 // GLOBAL: GAMEMD 0xB0CD60
-extern int DAT_00B0CD60[4];
+extern MathTblZero4 DAT_00B0CD60;
 // GLOBAL: GAMEMD 0xB0CD88
 extern double DAT_00B0CD88;
 // GLOBAL: GAMEMD 0xB0CE98
@@ -327,8 +328,8 @@ Tactical::Tactical()
       unknown_D8(0.0f), unknown_DC(0.0f), unknown_E0(0),
       unknown_D64(0, 0), unknown_D6C(0, 0), unknown_D74(0, 0),
       unknown_D7C(1), unknown_D7D(false), unknown_D7E(false),
-      unknown_D80(DAT_00B0CD60[0]), unknown_D84(DAT_00B0CD60[1]),
-      unknown_D88(DAT_00B0CD60[2]), unknown_D8C(DAT_00B0CD60[3]),
+      unknown_D80(DAT_00B0CD60.A), unknown_D84(DAT_00B0CD60.B),
+      unknown_D88(DAT_00B0CD60.C), unknown_D8C(DAT_00B0CD60.D),
       unknown_D90(0, 0), unknown_D98(0, 0), unknown_DA0(0), unknown_DB0(0)
 {
     memset(unknown_E4, 0, sizeof unknown_E4);
@@ -1287,7 +1288,7 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 #include <mmsystem.h>
 
 // GLOBAL: GAMEMD 0xB0CE28
-extern int DAT_00B0CE28;
+extern MathTblZero4 DAT_00B0CE28;
 // GLOBAL: GAMEMD 0x887314
 extern Surface* DAT_00887314;
 #include "../../renderer/dsurface_class.h"
@@ -1398,10 +1399,10 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
     if (mode != 2 && update) {
         int absX = dx < 0 ? -dx : dx;
         int absY = dy < 0 ? -dy : dy;
-        RectangleStruct source = { DAT_00B0CE28 + (dx < 0 ? -dx : 0),
+        RectangleStruct source = { DAT_00B0CE28.A + (dx < 0 ? -dx : 0),
                                    DAT_00B0CE2C + (dy < 0 ? -dy : 0),
                                    DAT_00B0CE30 - absX, DAT_00B0CE34 - absY };
-        RectangleStruct destination = { DAT_00B0CE28 + (dx > 0 ? dx : 0),
+        RectangleStruct destination = { DAT_00B0CE28.A + (dx > 0 ? dx : 0),
                                         DAT_00B0CE2C + (dy > 0 ? dy : 0),
                                         source.Width, source.Height };
         if (dx == 0 && dy == 0) {
@@ -1713,7 +1714,7 @@ void Tactical::FUN_006D4E00()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 
 // GLOBAL: GAMEMD 0xB0CE28
-extern int DAT_00B0CE28;
+extern MathTblZero4 DAT_00B0CE28;
 
 #include "../../ui/shape_header.h"
 #include "../../renderer/pixel_shift_view.h"
@@ -2113,7 +2114,7 @@ void Tactical::FUN_006D5C50(unsigned char mode, CellStruct origin)
 // FUNCTION: GAMEMD 0x6D5F60
 void Tactical::FUN_006D5F60(const TRect<int>* bounds)
 {
-    DAT_00B0CE28 = bounds->X;
+    DAT_00B0CE28.A = bounds->X;
     DAT_00B0CE2C = bounds->Y;
     DAT_00B0CE30 = bounds->Width;
     DAT_00B0CE34 = bounds->Height;
@@ -4443,8 +4444,6 @@ double DAT_00B0CDD8;
 Coord_006D2280 DAT_00B0CE08;
 // GLOBAL: GAMEMD 0xB0CE18
 double DAT_00B0CE18;
-// GLOBAL: GAMEMD 0xB0CE28
-int DAT_00B0CE28;
 // GLOBAL: GAMEMD 0xB0CE2C
 int DAT_00B0CE2C;
 // GLOBAL: GAMEMD 0xB0CE30
