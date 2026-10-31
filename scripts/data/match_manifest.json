@@ -89396,7 +89396,7 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D150",
-  "sym": "_$E17",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "_$E2",
   "status": "matched",
@@ -89405,7 +89405,7 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D170",
-  "sym": "_$E20",
+  "sym": "_$E23",
   "len": "0x13",
   "name": "_$E5",
   "status": "matched",
@@ -89414,7 +89414,7 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D2F0",
-  "sym": "_$E23",
+  "sym": "_$E53",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0089E028)",
   "status": "matched",
@@ -117736,90 +117736,90 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D120",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x28",
   "name": "dynamic initializer (header group 0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D190",
-  "sym": "_$E5",
+  "sym": "_$E26",
   "len": "0x13",
   "name": "dynamic initializer (header group 3)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D1B0",
-  "sym": "_$E8",
+  "sym": "_$E29",
   "len": "0x13",
   "name": "dynamic initializer (header group 4)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D1D0",
-  "sym": "_$E11",
+  "sym": "_$E32",
   "len": "0x13",
   "name": "dynamic initializer (header group 5)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D1F0",
-  "sym": "_$E14",
+  "sym": "_$E35",
   "len": "0x31",
   "name": "dynamic initializer (header group 6)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D230",
-  "sym": "_$E17",
+  "sym": "_$E38",
   "len": "0x21",
   "name": "dynamic initializer (header group 7)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D260",
-  "sym": "_$E20",
+  "sym": "_$E41",
   "len": "0x2c",
   "name": "dynamic initializer (header group 8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D290",
-  "sym": "_$E23",
+  "sym": "_$E44",
   "len": "0x27",
   "name": "dynamic initializer (header group 9)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D2C0",
-  "sym": "_$E26",
+  "sym": "_$E47",
   "len": "0xf",
   "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_0046d120.cpp",
+  "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D2D0",
-  "sym": "_$E29",
+  "sym": "_$E50",
   "len": "0x12",
   "name": "dynamic initializer (header group 11)",
   "status": "matched",
