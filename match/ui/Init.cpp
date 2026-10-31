@@ -64,6 +64,15 @@
 #include "../_layout/memory_buffer.h"
 #include <stdio.h>   // sprintf
 #include <string.h>  // strcpy, _strlwr, strstr
+#include <windows.h>
+#include "../platform/center_window_methods.h"
+#include <string.h>
+#include "../core/vector_class.h"
+#include "command_class.h"
+#include "../_layout/load_options_class.h"
+#include "../_layout/obj_005fbf80.h"
+#include <stddef.h>
+#include "../_layout/version_class.h"
 
 // LIBRARY: GAMEMD 0x007C8E17
 // FUN_007C8E17
@@ -84,6 +93,36 @@ extern unsigned char DAT_00A9F91C;
 
 // The source-file string every text load passes (0x825FB8).
 #define INIT_CPP "D:\\ra2mdpost\\Init.CPP"
+
+// FUNCTION: GAMEMD 0x52B9B0
+// Centres the banner control (id 0x71A) of a dialog on screens larger than 800x600, then sends it two
+// messages: 1 as wParam of 0x4E3, and the name of the artwork set to use (the 640-wide set when the
+// display is 640 pixels wide) with 0x4E4.
+void __fastcall FUN_0052B9B0(HWND dialog)
+{
+    HWND banner = GetDlgItem(dialog, 0x71A);
+    if (banner != 0) {
+        int x;
+        if (DAT_008A00A4 <= 800)
+            x = 0;
+        else
+            x = (DAT_008A00A4 - 800) / 2;
+        int y;
+        if (DAT_008A00A8 <= 600)
+            y = 0;
+        else
+            y = (DAT_008A00A8 - 600) / 2;
+        SetWindowPos(banner, 0, x, y, -1, -1, 0xD);
+        SendMessageA(banner, 0x4E3, 1, 0);
+        if (DAT_008A00A4 == 640) {
+            // STRING: GAMEMD 0x825CE8
+            SendMessageA(banner, 0x4E4, 0, (LPARAM) "Ra2ts_s");
+        } else {
+            // STRING: GAMEMD 0x825CE0
+            SendMessageA(banner, 0x4E4, 0, (LPARAM) "Ra2ts_l");
+        }
+    }
+}
 
 // SYNTHETIC: GAMEMD 0x535CD0 -- CreateTeamCommandClass scalar deleting destructor, emitted by the compiler from the virtual destructor
 // SYNTHETIC: GAMEMD 0x535D00 -- CommandClass scalar deleting destructor, emitted by the compiler from the virtual destructor
@@ -451,6 +490,27 @@ void FUN_0052CB80()
 {
 }
 
+// FUNCTION: GAMEMD 0x52D5B0
+// Close the dialog with a result per button: control 2 (cancel) gives 0, 0x53A gives 1 and
+// 0x53B gives 2. Everything else is left to the default handling.
+BOOL CALLBACK FUN_0052D5B0(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    if (message == WM_COMMAND) {
+        switch (wParam) {
+        case 2:
+            EndDialog(hwnd, 0);
+            break;
+        case 0x53A:
+            EndDialog(hwnd, 1);
+            return 0;
+        case 0x53B:
+            EndDialog(hwnd, 2);
+            return 0;
+        }
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x52D610
 // Empty function.
 void __cdecl FUN_0052D610()
@@ -467,6 +527,167 @@ void __cdecl FUN_0052D620()
 // Empty function.
 void __cdecl FUN_0052D630()
 {
+}
+
+// FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog handler.
+int __fastcall FUN_00622B50(HWND h, UINT msg, WPARAM w, LPARAM l);
+
+// FUNCTION: GAMEMD 0x52D640
+// Dialog procedure for the main-menu style screen: on init enable the "load game" button only
+// when the save directory holds saves, and on a button command store its result code through the
+// window's user data.
+int __stdcall FUN_0052D640(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r == 0) {
+        int* data = (int*)GetWindowLongA(h, 8);
+        switch (msg) {
+        case 0x111: {
+            int id = w & 0xFFFF;
+            switch (id) {
+            case 0x686:
+                *data = 0x12;
+                return 0;
+            case 0x579:
+                *data = 0xB;
+                return 0;
+            case 0x688:
+                *data = 8;
+                return 0;
+            case 0x68A:
+                *data = 0xA;
+                return 0;
+            case 0x689:
+                *data = 9;
+                return 0;
+            }
+            break;
+        }
+        case 0xF:
+        {
+            HWND item = GetDlgItem(h, 0x71A);
+            SendMessageA(item, 0x4F0, 0, 0);
+            break;
+        }
+        case 0x497: {
+            HWND button = GetDlgItem(h, 0x689);
+            if (button != 0) {
+                bool hasSaves = LoadOptionsClass().FUN_00559C20();
+                EnableWindow(button, hasSaves);
+                return 0;
+            }
+            break;
+        }
+        }
+        r = 0;
+    }
+    return r;
+}
+
+
+// GLOBAL: GAMEMD 0xA8EB60 -- the options object.
+extern Obj_005FBF80 DAT_00A8EB60;
+// GLOBAL: GAMEMD 0x825C80 -- the list selection remembered between visits.
+extern int DAT_00825C80;
+
+// FUNCTION: GAMEMD 0x52D870
+// Dialog procedure for a list-pick dialog: fill the list on init and
+// reselect the remembered row, and on a pick (or double click) store the
+// chosen row's item data through the window's user data.
+int __stdcall FUN_0052D870(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    bool picked = false;
+    HWND list = GetDlgItem(h, 0x744);
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r != 0) {
+        return r;
+    }
+    LRESULT* data = (LRESULT*)GetWindowLongA(h, 8);
+    switch (msg) {
+    case 0x497:
+        if (list != 0) {
+            DAT_00A8EB60.FUN_005FC000(list);
+            if (SendMessageA(list, 0x186, DAT_00825C80, 0) == -1) {
+                SendMessageA(list, 0x186, 0, 0);
+            }
+            break;
+        }
+        if (data == 0) {
+            return 0;
+        }
+        *data = -1;
+        return 0;
+    case 0x111: {
+        switch (w & 0xFFFF) {
+        case 0x686:
+            if (data != 0) {
+                *data = -1;
+            }
+            break;
+        case 0x744:
+            {
+                unsigned short notify = (unsigned short)(w >> 16);
+                if (notify == 0) {
+                    picked = true;
+                }
+            }
+            break;
+        case 0x745:
+            picked = true;
+            break;
+        }
+        break;
+    }
+    }
+    if (list != 0 && picked) {
+        DAT_00825C80 = SendMessageA(list, 0x188, 0, 0);
+        if (DAT_00825C80 != -1) {
+            LRESULT item = SendMessageA(list, 0x199, DAT_00825C80, 0);
+            if (item != 0 && data != 0) {
+                *data = item;
+            }
+        }
+    }
+    return 0;
+}
+
+
+// FUNCTION: GAMEMD 0x52D790
+// Dialog procedure: let the shared handler answer first. Otherwise a paint
+// message pokes the list control, and the four menu commands store their
+// result code through the window's user data.
+int __stdcall FUN_0052D790(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r == 0) {
+        unsigned int* data = (unsigned int*)GetWindowLongA(h, 8);
+        switch (msg) {
+        case 0x111:
+            switch (w & 0xFFFF) {
+            case 0x68D:
+                *data = 0xD;
+                return 0;
+            case 0x68E:
+                *data = 0xE;
+                return 0;
+            case 0x68F:
+                *data = 0xF;
+                return 0;
+            case 0x686:
+                *data = 0x12;
+                return 0;
+            }
+            break;
+        case 0xF:
+            {
+                HWND item = GetDlgItem(h, 0x71A);
+                SendMessageA(item, 0x4F0, 0, 0);
+            }
+            break;
+        }
+        r = 0;
+    }
+    return r;
 }
 
 // FUNCTION: GAMEMD 0x52F610
@@ -555,6 +776,74 @@ bool MixFileClass_Bootstrap()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- localised string lookup(label, index, file, line).
+const wchar_t* FUN_00734E60(const char* label, int index, const char* file, int line);
+// FUNCTION: GAMEMD 0x735120 (decl; reloc) -- ANSI to wide, ECX = text.
+const wchar_t* FUN_00735120(const char* text);
+// LIBRARY: GAMEMD 0x7CA564 -- CRT swprintf.
+int __cdecl swprintf(wchar_t* out, const wchar_t* format, ...);
+
+// GLOBAL: GAMEMD 0xA8ECE0 -- the network-protocol version record.
+extern VersionClass DAT_00A8ECE0;
+// GLOBAL: GAMEMD 0x825FB8 -- "D:\ra2mdpost\Init.CPP"
+extern char DAT_00825FB8[];
+// GLOBAL: GAMEMD 0x82696C -- "GUI:Version"
+extern char DAT_0082696C[];
+
+// STRING: GAMEMD 0x826960 -- L"%s %s"
+// FUNCTION: GAMEMD 0x531F60
+// Dialog procedure for the title screen: on init print the localised "Version" label and the game
+// version into the version caption, and on a button command store its result code through the
+// window's user data.
+int __stdcall FUN_00531F60(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r == 0) {
+        int* data = (int*)GetWindowLongA(h, 8);
+        switch (msg) {
+        case 0x111: {
+            int id = w & 0xFFFF;
+            switch (id) {
+            case 0x683:
+                *data = 1;
+                return 0;
+            case 0x684:
+                *data = 2;
+                return 0;
+            case 0x686:
+                *data = 4;
+                return 0;
+            case 0x3EE:
+                *data = 6;
+                return 0;
+            case 0x55C:
+                *data = 5;
+                return 0;
+            case 0x578:
+                *data = 3;
+                return 0;
+            }
+            break;
+        }
+        case 0xF: {
+            HWND item = GetDlgItem(h, 0x71A);
+            SendMessageA(item, 0x4F0, 0, 0);
+            break;
+        }
+        case 0x497: {
+            HWND caption = GetDlgItem(h, 0x71D);
+            wchar_t text[0x80];
+            swprintf(text, L"%s %s", FUN_00734E60(DAT_0082696C, 0, DAT_00825FB8, 0x1757),
+                     FUN_00735120(DAT_00A8ECE0.FUN_0074FAE0()));
+            SendMessageA(caption, 0x4B2, 0, (LPARAM)text);
+            return 0;
+        }
+        }
+        r = 0;
+    }
+    return r;
+}
+
 // FUNCTION: GAMEMD 0x00532130
 void FUN_00532130()
 {
@@ -564,6 +853,48 @@ void FUN_00532130()
 // Empty function.
 void __cdecl FUN_00532140()
 {
+}
+
+// GLOBAL: GAMEMD 0x87F658 -- every registered keyboard command (defined in static_vector_dtor_stubs.cpp).
+extern DynamicVectorClass<const CommandClass*> DAT_0087F658;
+
+// FUNCTION: GAMEMD 0x533F50
+// Run the keyboard command called `name`, if there is one.
+void FUN_00533F50(const char* name)
+{
+    for (int i = 0; i < DAT_0087F658.Count; ++i) {
+        if (strcmp(DAT_0087F658.Items[i]->vf_1(), name) == 0) {
+            DAT_0087F658.Items[i]->vf_8(0);
+            return;
+        }
+    }
+}
+
+extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+
+// GLOBAL: GAMEMD 0x884E58 -- the loaded NTRLMD.MIX archive.
+extern MixFileClass* DAT_00884E58;
+// GLOBAL: GAMEMD 0x884E5C -- the loaded NEUTRAL.MIX archive.
+extern MixFileClass* DAT_00884E5C;
+
+// GLOBAL: GAMEMD 0x81C320 -- "     Releasing %s\n"
+extern const char STR_0081C320[];
+
+// FUNCTION: GAMEMD 0x534DE0
+// Log and free the two neutral-theatre mix archives, NEUTRAL.MIX first.
+bool FUN_00534DE0()
+{
+    if (DAT_00884E5C) {
+        FUN_004068E0(STR_0081C320, DAT_00884E5C->FileName);
+        delete DAT_00884E5C;
+        DAT_00884E5C = 0;
+    }
+    if (DAT_00884E58) {
+        FUN_004068E0(STR_0081C320, DAT_00884E58->FileName);
+        delete DAT_00884E58;
+        DAT_00884E58 = 0;
+    }
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x5355C0
@@ -2612,4 +2943,12 @@ void __cdecl FUN_00538D40(void)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8ECC8
 int DisplayCmdSelCount_00A8ECC8;
+// GLOBAL: GAMEMD 0x825C80
+int DAT_00825C80 = -1;
+// GLOBAL: GAMEMD 0x884E58
+MixFileClass* DAT_00884E58;
+// GLOBAL: GAMEMD 0x884E5C
+MixFileClass* DAT_00884E5C;
+// GLOBAL: GAMEMD 0x81C320
+extern const char STR_0081C320[] = "     Releasing %s\n";
 // END defined globals

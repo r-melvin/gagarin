@@ -140425,7 +140425,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/dialog_proc_r14_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52D5B0",
   "sym": "?FUN_0052D5B0@@YGHPAUHWND__@@IIJ@Z",
   "len": "0x53",
@@ -143080,7 +143080,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/dialog_banner_0052b9b0.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52B9B0",
   "sym": "?FUN_0052B9B0@@YIXPAUHWND__@@@Z",
   "len": "0xa1",
@@ -144961,7 +144961,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/init_r23_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x534DE0",
   "sym": "?FUN_00534DE0@@YI_NXZ",
   "len": "0x6b",
@@ -145249,7 +145249,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/dialog_proc_main_menu.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52D790",
   "sym": "?FUN_0052D790@@YGHPAUHWND__@@IIJ@Z",
   "len": "0xb8",
@@ -145276,7 +145276,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/dialog_proc_52d870.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52D870",
   "sym": "?FUN_0052D870@@YGHPAUHWND__@@IIJ@Z",
   "len": "0x129",
@@ -145708,7 +145708,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/dialog_proc_52d640.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52D640",
   "sym": "?FUN_0052D640@@YGHPAUHWND__@@IIJ@Z",
   "len": "0x148",
@@ -145717,7 +145717,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/dialog_proc_531f60.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x531F60",
   "sym": "?FUN_00531F60@@YGHPAUHWND__@@IIJ@Z",
   "len": "0x19f",
@@ -145744,7 +145744,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_execute_by_name.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x533F50",
   "sym": "?FUN_00533F50@@YIXPBD@Z",
   "len": "0x74",
