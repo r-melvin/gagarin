@@ -8,20 +8,20 @@
    "vtable": 70
   },
   "duplicate_definitions": 0,
-  "objects": 1714,
+  "objects": 1709,
   "unresolved": 6457
  },
  "m1": {
-  "bytes_at_retail_address": 3836480,
+  "bytes_at_retail_address": 3836368,
   "drift_events": 0,
   "duplicates": 0,
-  "entries_at_retail_address": 19290,
+  "entries_at_retail_address": 19289,
   "entry_point_delta": 0,
   "link_exit_code": 0,
   "matched_at_retail_address": 15555,
   "matched_functions": 15555,
-  "ordered_bytes": 3836480,
-  "ordered_entries": 19290,
+  "ordered_bytes": 3836368,
+  "ordered_entries": 19289,
   "stubs_placed": 3660,
   "unresolved_after_stubs": 0
  },
@@ -134,9 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "bcbe0121",
-  "m1": "bcbe0121",
+  "m0": "023d4e08",
+  "m1": "023d4e08",
   "m2": "ac2bd917",
-  "m3": "bcbe0121"
+  "m3": "023d4e08"
  }
 }
