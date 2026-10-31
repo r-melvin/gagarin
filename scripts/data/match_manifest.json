@@ -135439,7 +135439,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E3320",
   "sym": "?FUN_004E3320@@YIHH@Z",
   "len": "0x60",
@@ -135448,7 +135448,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E3440",
   "sym": "?FUN_004E3440@@YIHH@Z",
   "len": "0x60",
@@ -135457,7 +135457,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E37D0",
   "sym": "?FUN_004E37D0@@YIHH@Z",
   "len": "0x60",
@@ -135466,7 +135466,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E41D0",
   "sym": "?FUN_004E41D0@@YIHH@Z",
   "len": "0x60",
@@ -135475,7 +135475,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E4E60",
   "sym": "?FUN_004E4E60@@YIHH@Z",
   "len": "0x60",
@@ -135484,7 +135484,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E5940",
   "sym": "?FUN_004E5940@@YIHH@Z",
   "len": "0x60",
@@ -135493,7 +135493,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E3830",
   "sym": "?FUN_004E3830@@YIHH@Z",
   "len": "0x69",
@@ -135502,7 +135502,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E4230",
   "sym": "?FUN_004E4230@@YIHH@Z",
   "len": "0x69",
@@ -135511,7 +135511,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E4EC0",
   "sym": "?FUN_004E4EC0@@YIHH@Z",
   "len": "0x69",
@@ -135520,7 +135520,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E59A0",
   "sym": "?FUN_004E59A0@@YIHH@Z",
   "len": "0x69",
@@ -135529,7 +135529,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E4170",
   "sym": "?FUN_004E4170@@YIHPAUHWND__@@HH@Z",
   "len": "0x56",
@@ -135538,7 +135538,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E4FC0",
   "sym": "?FUN_004E4FC0@@YIXH@Z",
   "len": "0x37",
@@ -135547,7 +135547,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E44E0",
   "sym": "?FUN_004E44E0@@YIHH@Z",
   "len": "0x91",
@@ -135556,7 +135556,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E5000",
   "sym": "?FUN_004E5000@@YIHH@Z",
   "len": "0x91",
@@ -135565,7 +135565,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/gdlg_supp_r8_methods.cpp",
+  "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E33F0",
   "sym": "?FUN_004E33F0@@YIPAXH@Z",
   "len": "0x4a",
