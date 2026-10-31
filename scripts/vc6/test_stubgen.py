@@ -119,6 +119,45 @@ class PlanTests(unittest.TestCase):
         self.assertEqual(sizes, {"?stub_00401010@@YAXXZ": 0x20, "?stub_00401030@@YAXXZ": 0x10})
 
 
+class DuplicateDefinerTests(unittest.TestCase):
+    """A name two TUs define (a scalar deleting destructor, COMDAT ANY): M1 sizes the slot from the matched
+    row's own body, not from whichever definer the link order puts first."""
+    EXTENTS = [["0x401000", "0x10", "0x0", "none", "engine", []],
+               ["0x401010", "0x30", "0x0", "none", "engine", []]]
+    MANIFEST = [{"tu": "match/x.cpp", "addr": "0x401000", "sym": "?X@@YAXXZ", "len": "0x10", "status": "matched"},
+                {"tu": "match/y.cpp", "addr": "0x401010", "sym": "?G@@YAXXZ", "len": "0x30", "status": "matched"}]
+
+    def plan(self, x_size, y_size):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            objdir = root / "obj"
+            (objdir / "match").mkdir(parents=True)
+            for name, syms in (("x", [(["?X@@YAXXZ"], 0x10), (["?G@@YAXXZ"], x_size)]),
+                               ("y", [(["?G@@YAXXZ"], y_size)])):
+                w = coffgen.ObjectWriter()
+                for names, size in syms:
+                    w.add_code_comdat(names, size)
+                w.set_anchor([])
+                (objdir / f"match/{name}.obj").write_bytes(w.build())
+            (objdir / "objects.json").write_text(json.dumps({"success": True, "objects": [
+                {"object": "match/x.obj", "source": "match/x.cpp"},
+                {"object": "match/y.obj", "source": "match/y.cpp"}]}))
+            result = stubgen.plan(objdir, set(), root / "out", manifest=self.MANIFEST, extents=self.EXTENTS,
+                                  symbol_bindings={})
+            return result, (root / "out/order.txt").read_text().split()
+
+    def test_differing_earlier_definer_does_not_win_the_slot(self):
+        result, order = self.plan(0x10, 0x30)
+        self.assertEqual(order, ["?X@@YAXXZ", "?dup_00401010@@YAXXZ"])
+        row = next(p for p in result["placed"] if p["addr"] == "0x401010")
+        self.assertEqual(row["object_size"], "0x30")
+        self.assertEqual(result["matched_symbol_at_several_addresses"], [{"addr": "0x401010", "symbol": "?G@@YAXXZ"}])
+
+    def test_identical_definers_keep_the_real_name(self):
+        result, order = self.plan(0x30, 0x30)
+        self.assertEqual(order, ["?X@@YAXXZ", "?G@@YAXXZ"])
+
+
 class AsmObjectPlanTests(unittest.TestCase):
     """A hand-written assembly object is one COMDAT holding two byte-packed routines."""
     EXTENTS = [["0x401000", "0x10", "0x0", "none", "engine", []],

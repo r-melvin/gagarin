@@ -164,6 +164,28 @@ def stub_layout(entries):
     return out
 
 
+def body_signature(parsed, symbol):
+    """(section bytes, [(offset, target name, kind)]) of the one COMDAT section that defines `symbol`,
+    or None when the object does not define it exactly once. Two definers with equal signatures
+    are the same body, whichever copy the linker keeps."""
+    if parsed is None:
+        return None
+    data, sections, symbols, _ = parsed
+    found = [s for s in symbols.values() if s["name"] == symbol and s["section"] in sections]
+    if len(found) != 1:
+        return None
+    sec = sections[found[0]["section"]]
+    if sec["uninitialized"]:
+        return None
+    raw = bytearray(data[sec["raw_ptr"]:sec["raw_ptr"] + sec["raw_size"]])
+    rels = []
+    for offset, idx, kind in sec["relocs"]:
+        raw[offset:offset + 4] = bytes(4)
+        tgt = symbols.get(idx)
+        rels.append((offset, tgt["name"] if tgt else idx, kind))
+    return bytes(raw), rels
+
+
 def order_name(sym):
     """Spelling of a linker symbol in a LINK 6 /ORDER file: LINK prepends "_" to
     every name that does not start with "?" or "@" (probe: link_m1 tests)."""
@@ -262,12 +284,20 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             sym = r["sym"]
             # hybrid: a name several TUs define (implicit members such as a scalar deleting destructor, COMDAT
             # ANY) may have different bodies; LINK keeps the first, so the row's own body takes a unique name.
+            # (Non-hybrid: the same rule, with the row's own body as the reference instead of retail.)
             # Only definers that come before the row's object in link order matter: LINK keeps the first
             # copy (COMDAT ANY), so a later copy never displaces this one, and the first definer is the
             # winner and keeps the real symbol.
-            shared = hybrid and obj is not None and obj in defined_in.get(sym, ()) and len(defined_in[sym]) > 1 \
-                and any(hybrid_module.function_matches(parsed_of(other), sym, va, hx(r["len"]), retail) is False
-                        for other in defined_in[sym][:defined_in[sym].index(obj)])
+            shared = obj is not None and obj in defined_in.get(sym, ()) and len(defined_in[sym]) > 1
+            if shared and hybrid:
+                shared = any(hybrid_module.function_matches(parsed_of(other), sym, va, hx(r["len"]), retail) is False
+                             for other in defined_in[sym][:defined_in[sym].index(obj)])
+            elif shared:
+                # M1 reads no retail image: the matched row's own body stands for retail's, so an earlier
+                # definer whose body differs from it must not win the slot by path order.
+                mine = body_signature(parsed_of(obj), sym)
+                shared = mine is not None and any(body_signature(parsed_of(other), sym) != mine
+                                                  for other in defined_in[sym][:defined_in[sym].index(obj)])
             if sym in defined_in and sym not in used and not shared:
                 provider[va] = sym
             elif obj is not None and sym in statics_in.get(obj, ()):

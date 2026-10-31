@@ -43,6 +43,37 @@ MILESTONES = [
 ]
 
 
+def m1_entry_figures(plan, publics):
+    """Ordered-entry figures of the M1 plan.
+
+    A `filler` entry (`?gap_<va>`) holds the tail of a slot whose matched entry already counts the whole
+    slot in its `len`, so counting it again double counts bytes (and made the totals move whenever a
+    duplicate-definer COMDAT started or stopped needing a filler). `ordered_*` and `*_at_retail_address`
+    therefore cover matched and stub entries only; fillers are reported on their own:
+      filler_entries / filler_bytes / filler_entries_at_retail_address
+      entries_by_kind: {kind: {entries, bytes, entries_at_retail_address, bytes_at_retail_address}}
+    (all kinds, filler included)."""
+    by_kind = {}
+    for p in plan:
+        k = by_kind.setdefault(p['kind'], {'entries': 0, 'bytes': 0, 'entries_at_retail_address': 0,
+                                           'bytes_at_retail_address': 0})
+        n = int(p['len'], 16)
+        k['entries'] += 1
+        k['bytes'] += n
+        if publics.get(p['symbol']) == int(p['addr'], 16):
+            k['entries_at_retail_address'] += 1
+            k['bytes_at_retail_address'] += n
+    real = [v for kind, v in by_kind.items() if kind != 'filler']
+    filler = by_kind.get('filler', {'entries': 0, 'bytes': 0, 'entries_at_retail_address': 0})
+    return {'ordered_entries': sum(v['entries'] for v in real),
+            'ordered_bytes': sum(v['bytes'] for v in real),
+            'entries_at_retail_address': sum(v['entries_at_retail_address'] for v in real),
+            'bytes_at_retail_address': sum(v['bytes_at_retail_address'] for v in real),
+            'filler_entries': filler['entries'], 'filler_bytes': filler['bytes'],
+            'filler_entries_at_retail_address': filler['entries_at_retail_address'],
+            'entries_by_kind': by_kind}
+
+
 def refresh(diag, m1dir, m2a=None, m1_pinned=None, m3=None, m2_hybrid=None, previous=None):
     """Collect the figures from link_diag.py and link_m1.py output (and the optional M2/M3 inputs).
 
@@ -54,7 +85,6 @@ def refresh(diag, m1dir, m2a=None, m1_pinned=None, m3=None, m2_hybrid=None, prev
     chk = json.load(open(os.path.join(m1dir, 'mapcheck.json')))
     plan = json.load(open(os.path.join(m1dir, 'stubs/plan.json')))['placed']
     publics, _ = mapcheck.parse_map(open(os.path.join(m1dir, 'm1.map'), encoding='latin-1').read())
-    at = [p for p in plan if publics.get(p['symbol']) == int(p['addr'], 16)]
     out = {
         'milestones': [{'id': i, 'name': n, 'state': s} for i, n, s in MILESTONES],
         'm0': {'unresolved': d['unresolved_total'], 'by_kind': d['counts'],
@@ -63,9 +93,7 @@ def refresh(diag, m1dir, m2a=None, m1_pinned=None, m3=None, m2_hybrid=None, prev
                'duplicates': len(rep['duplicates']), 'stubs_placed': rep['stubs_placed'],
                'matched_functions': chk['matched_functions'],
                'matched_at_retail_address': chk['matched_at_retail_address'],
-               'ordered_entries': chk['ordered_entries'], 'entries_at_retail_address': len(at),
-               'ordered_bytes': sum(int(p['len'], 16) for p in plan),
-               'bytes_at_retail_address': sum(int(p['len'], 16) for p in at),
+               **m1_entry_figures(plan, publics),
                'drift_events': chk['drift_events'],
                'entry_point_delta': chk['landmarks']['entry point (WinMainCRTStartup)']['delta']},
     }

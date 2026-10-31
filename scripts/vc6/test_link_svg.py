@@ -62,6 +62,22 @@ class LinkSvgTest(unittest.TestCase):
             self.assertIn("Unsigned image", svg)
             self.assertIn("entry point -16 bytes", svg)
 
+    def test_filler_is_reported_apart_not_double_counted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = self.fixture(tmp)
+            plan = json.loads((tmp / "m1/stubs/plan.json").read_text())
+            # ?B is a matched slot of 0x8 whose COMDAT is shorter; the filler holds the rest of the slot.
+            plan["placed"].append({"addr": "0x401044", "symbol": "?gap_00401040@@YAXXZ", "kind": "filler", "len": "0x4"})
+            (tmp / "m1/stubs/plan.json").write_text(json.dumps(plan))
+            (tmp / "m1/m1.map").write_text(MAP.replace(
+                "\n entry point", " 0001:00000044       ?gap_00401040@@YAXXZ       00401044 f   stubs.obj\n\n entry point"))
+            m1 = link_svg.refresh(tmp / "report.json", tmp / "m1")["m1"]
+            self.assertEqual((m1["ordered_entries"], m1["ordered_bytes"]), (3, 0x48))
+            self.assertEqual((m1["entries_at_retail_address"], m1["bytes_at_retail_address"]), (2, 0x18))
+            self.assertEqual((m1["filler_entries"], m1["filler_bytes"], m1["filler_entries_at_retail_address"]), (1, 4, 1))
+            self.assertEqual(m1["entries_by_kind"]["filler"]["bytes"], 4)
+            self.assertEqual(m1["entries_by_kind"]["matched"]["entries"], 2)
+
     def test_m2_m3_sections(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp = self.fixture(tmp)
