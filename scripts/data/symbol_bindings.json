@@ -15260,7 +15260,7 @@
  "match/core/header_init_004b67a0.cpp::_DAT_007E8378": "0x007E8378",
  "match/core/header_init_004ba3b0.cpp::_DAT_007E85B0": "0x007E85B0",
  "match/core/header_init_004c1b80.cpp::_DAT_007E8680": "0x007E8680",
- "match/core/header_init_004c35a0.cpp::_DAT_007E86D0": "0x007E86D0",
+ "match/ui/Egos.cpp::_DAT_007E86D0": "0x007E86D0",
  "match/core/header_init_004c4d00.cpp::_DAT_007E8720": "0x007E8720",
  "match/core/header_init_004c5000.cpp::_DAT_007E8730": "0x007E8730",
  "match/core/header_init_004c5ee0.cpp::_DAT_007E8810": "0x007E8810",

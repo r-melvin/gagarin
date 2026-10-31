@@ -18,6 +18,8 @@
 #include <stddef.h>
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
+#include <math.h>
+#include "../core/header_init_shapes.h"
 
 #include "../_layout/colorrgb_00661350.h"
 
@@ -66,6 +68,25 @@ GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(EgoClass*) == 4);
+
+// GLOBAL: GAMEMD 0x7E1708
+const double DAT_007E1708 = 2.0;
+// GLOBAL: GAMEMD 0x7E1710
+const double DAT_007E1710 = 256.0;
+// GLOBAL: GAMEMD 0x7E86C8
+const double DAT_007E86C8 = 60.0;
+// GLOBAL: GAMEMD 0x7E86D0 -- degrees to radians
+const double DAT_007E86D0 = 0.017453292519943295;
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CADE0(double value);
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+
+// SYNTHETIC: GAMEMD 0x4C35A0
+// GLOBAL: GAMEMD 0x8A0EE8
+double DAT_008A0EE8 = FUN_004CAC40(pow(DAT_007E1710, DAT_007E1708) * 2);
 
 // FUNCTION: GAMEMD 0x4C37D0
 // Fills a 256-byte table for the 16 remappable colours: entries 1..240 are blended
@@ -136,8 +157,6 @@ unsigned char* FUN_004c38e0(const ColorTable_00626070& palette, const RemapEntry
 
 // GLOBAL: GAMEMD 0x8A0EE8
 extern double DAT_008A0EE8;
-// GLOBAL: GAMEMD 0x7E86C8
-const double DAT_007E86C8 = 60.0;
 
 // SYNTHETIC: GAMEMD 0x4C35D0
 // GLOBAL: GAMEMD 0x8A0F38
@@ -145,6 +164,42 @@ double DAT_008A0F38 = DAT_008A0EE8 / DAT_007E86C8;
 // SYNTHETIC: GAMEMD 0x4C35F0
 // GLOBAL: GAMEMD 0x8A0F20
 double DAT_008A0F20 = 1.0 / DAT_008A0F38;
+// SYNTHETIC: GAMEMD 0x4C3610
+// GLOBAL: GAMEMD 0x8A0F18
+double DAT_008A0F18 = DAT_007E86D0 * 45.0;
+
+// SYNTHETIC: GAMEMD 0x4C3630
+// GLOBAL: GAMEMD 0x8A0EF0
+double DAT_008A0EF0 = DAT_007E86D0 * 60.0;
+
+// SYNTHETIC: GAMEMD 0x4C3650
+// GLOBAL: GAMEMD 0x8A0EC8
+double DAT_008A0EC8 = DAT_007E86D0 * 90.0;
+
+// SYNTHETIC: GAMEMD 0x4C3670
+// GLOBAL: GAMEMD 0x8A0F40
+int DAT_008A0F40 = (int)(FUN_004CAD50(DAT_008A0EC8 - DAT_008A0EF0) * DAT_008A0EE8 * 0.5);
+
+// SYNTHETIC: GAMEMD 0x4C36B0
+// GLOBAL: GAMEMD 0x8A0EF8
+double DAT_008A0EF8 = FUN_004CADE0(DAT_008A0F40 * 0.00390625);
+
+// SYNTHETIC: GAMEMD 0x4C36E0
+// GLOBAL: GAMEMD 0x8A0F10
+double DAT_008A0F10 = FUN_004CADE0((DAT_008A0F40 * 2) / DAT_008A0EE8);
+
+// SYNTHETIC: GAMEMD 0x4C3710
+// GLOBAL: GAMEMD 0x8A0F34
+int DAT_008A0F34 = (int)(DAT_008A0F40 * 4 + 0.5);
+
+// SYNTHETIC: GAMEMD 0x4C3740
+// GLOBAL: GAMEMD 0x8A0EE0
+HeaderCellInit DAT_008A0EE0(0, 0);
+
+// SYNTHETIC: GAMEMD 0x4C3750
+// GLOBAL: GAMEMD 0x8A0F00
+HeaderCoordInit DAT_008A0F00(0, 0, 0);
+
 // SYNTHETIC: GAMEMD 0x4C3770
 // GLOBAL: GAMEMD 0x8A0F28
 TuningCoordInit DAT_008A0F28(128, 128, 0);

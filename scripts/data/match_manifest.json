@@ -68629,7 +68629,7 @@
  {
   "tu": "match/ui/Egos.cpp",
   "addr": "0x4C35D0",
-  "sym": "_$E2",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "dynamic initializer (DAT_008A0F38)",
   "status": "matched",
@@ -68638,7 +68638,7 @@
  {
   "tu": "match/ui/Egos.cpp",
   "addr": "0x4C35F0",
-  "sym": "_$E5",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "dynamic initializer (DAT_008A0F20)",
   "status": "matched",
@@ -68647,7 +68647,7 @@
  {
   "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3770",
-  "sym": "_$E8",
+  "sym": "_$E38",
   "len": "0x1A",
   "name": "dynamic initializer (DAT_008A0F28)",
   "status": "matched",
@@ -119680,7 +119680,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C35A0",
   "sym": "_$E2",
   "len": "0x28",
@@ -119689,81 +119689,81 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3610",
-  "sym": "_$E5",
+  "sym": "_$E11",
   "len": "0x13",
   "name": "dynamic initializer (header group 3)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3630",
-  "sym": "_$E8",
+  "sym": "_$E14",
   "len": "0x13",
   "name": "dynamic initializer (header group 4)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3650",
-  "sym": "_$E11",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (header group 5)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3670",
-  "sym": "_$E14",
+  "sym": "_$E20",
   "len": "0x31",
   "name": "dynamic initializer (header group 6)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C36B0",
-  "sym": "_$E17",
+  "sym": "_$E23",
   "len": "0x21",
   "name": "dynamic initializer (header group 7)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C36E0",
-  "sym": "_$E20",
+  "sym": "_$E26",
   "len": "0x2c",
   "name": "dynamic initializer (header group 8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3710",
-  "sym": "_$E23",
+  "sym": "_$E29",
   "len": "0x27",
   "name": "dynamic initializer (header group 9)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3740",
-  "sym": "_$E26",
+  "sym": "_$E32",
   "len": "0xf",
   "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004c35a0.cpp",
+  "tu": "match/ui/Egos.cpp",
   "addr": "0x4C3750",
-  "sym": "_$E29",
+  "sym": "_$E35",
   "len": "0x12",
   "name": "dynamic initializer (header group 11)",
   "status": "matched",
