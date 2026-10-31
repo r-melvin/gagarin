@@ -35,6 +35,7 @@
 
 #include "taction_class_mode_methods.h"
 #include "../core/mathtbl_init_shapes.h"
+#include <math.h>
 
 #include "../core/id_resolve_command_sweep.h"
 
@@ -131,6 +132,33 @@ void FUN_0053B460(int value);
 // FUNCTION: GAMEMD 0x684060 (decl; reloc)
 void FUN_00684060(int value);
 
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
+// GLOBAL: GAMEMD 0x7E1720
+extern const double DAT_007E1720;
+// GLOBAL: GAMEMD 0x7E1728
+extern const double DAT_007E1728;
+// GLOBAL: GAMEMD 0x7E1730
+extern const double DAT_007E1730;
+// GLOBAL: GAMEMD 0x7E1738
+extern const double DAT_007E1738;
+// GLOBAL: GAMEMD 0x7E1740
+extern const double DAT_007E1740;
+// GLOBAL: GAMEMD 0x7F43C0
+extern const double DAT_007F43C0;
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc)
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc)
+double __cdecl FUN_004CADE0(double value);
+
+// SYNTHETIC: GAMEMD 0x6DCD70
+// GLOBAL: GAMEMD 0xB0E688
+double DAT_00B0E688 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E47F0
 // DynamicVectorClass<TActionClass*>::Clear
@@ -178,7 +206,7 @@ extern int DAT_00A8EAF8;
 extern TagClass** DAT_00B0E724;
 extern int DAT_00B0E730;
 // GLOBAL: GAMEMD 0xB0E680 -- the undefined cell.
-extern CellStruct DAT_00B0E680;
+extern MathTblShortPair DAT_00B0E680;
 // GLOBAL: GAMEMD 0xA8E7AC -- nonzero while the scenario is being set up.
 extern int DAT_00A8E7AC;
 
@@ -310,6 +338,42 @@ double DAT_00B0E6D8 = DAT_00B0E688 / DAT_007F43B8;
 // GLOBAL: GAMEMD 0x00B0E6C0
 double DAT_00B0E6C0 = DAT_007E1718 / DAT_00B0E6D8;
 
+// SYNTHETIC: GAMEMD 0x6DCDE0
+// GLOBAL: GAMEMD 0xB0E6B8
+double DAT_00B0E6B8 = DAT_007E1720 * DAT_007F43C0;
+
+// SYNTHETIC: GAMEMD 0x6DCE00
+// GLOBAL: GAMEMD 0xB0E690
+double DAT_00B0E690 = DAT_007E1728 * DAT_007F43C0;
+
+// SYNTHETIC: GAMEMD 0x6DCE20
+// GLOBAL: GAMEMD 0xB0E650
+double DAT_00B0E650 = DAT_007E1730 * DAT_007F43C0;
+
+// SYNTHETIC: GAMEMD 0x6DCE40
+// GLOBAL: GAMEMD 0xB0E6E0
+int DAT_00B0E6E0 = (int)(DAT_007E1738 * (FUN_004CAD50(DAT_00B0E650 - DAT_00B0E690) * DAT_00B0E688));
+
+// SYNTHETIC: GAMEMD 0x6DCE80
+// GLOBAL: GAMEMD 0xB0E698
+double DAT_00B0E698 = FUN_004CADE0((double)DAT_00B0E6E0 * DAT_007E1740);
+
+// SYNTHETIC: GAMEMD 0x6DCEB0
+// GLOBAL: GAMEMD 0xB0E6B0
+double DAT_00B0E6B0 = FUN_004CADE0((double)(DAT_00B0E6E0 * 2) / DAT_00B0E688);
+
+// SYNTHETIC: GAMEMD 0x6DCEE0
+// GLOBAL: GAMEMD 0xB0E6D4
+int DAT_00B0E6D4 = (int)((double)(DAT_00B0E6E0 * 4) + DAT_007E1738);
+
+// SYNTHETIC: GAMEMD 0x6DCF10
+// GLOBAL: GAMEMD 0xB0E680
+MathTblShortPair DAT_00B0E680;
+
+// SYNTHETIC: GAMEMD 0x6DCF20
+// GLOBAL: GAMEMD 0xB0E6A0
+MathTblZero3 DAT_00B0E6A0;
+
 // SYNTHETIC: GAMEMD 0x006DCF40
 // GLOBAL: GAMEMD 0x00B0E6C8
 MathTblCoord DAT_00B0E6C8;
@@ -329,6 +393,10 @@ struct Obj_006E4790
 };
 GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_00) == 0x0);
 GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_1F) == 0x1F);
+
+// SYNTHETIC: GAMEMD 0x6DCF60
+// GLOBAL: GAMEMD 0xB0E670
+MathTblZero4 DAT_00B0E670;
 
 // FUNCTION: GAMEMD 0x6DD1B0
 TActionClass::~TActionClass()
@@ -1779,8 +1847,6 @@ int DAT_00A8EB50;
 TechnoClass** DAT_00A8EC7C;
 // GLOBAL: GAMEMD 0xA8EC88
 int DAT_00A8EC88;
-// GLOBAL: GAMEMD 0xB0E680
-CellStruct DAT_00B0E680;
 // GLOBAL: GAMEMD 0xB0F658
 DynamicVectorClass<TActionClass*> DAT_00B0F658;
 // GLOBAL: GAMEMD 0xB0F670
@@ -1791,4 +1857,6 @@ extern const double DAT_007E1718 = 1.0;
 extern const double DAT_007F43B8 = 60.0;
 // GLOBAL: GAMEMD 0x7E9800
 extern const CLSID DAT_007E9800 = {0x4F0EC392, 0x0A55, 0x11D2, {0xAC, 0xA7, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
+// GLOBAL: GAMEMD 0x7F43C0
+extern const double DAT_007F43C0 = 0.017453292519943295;
 // END defined globals

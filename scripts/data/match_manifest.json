@@ -90764,7 +90764,7 @@
  {
   "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCDA0",
-  "sym": "_$E5",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E6D8)",
   "status": "matched",
@@ -90773,7 +90773,7 @@
  {
   "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCDC0",
-  "sym": "_$E8",
+  "sym": "_$E11",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E6C0)",
   "status": "matched",
@@ -90782,7 +90782,7 @@
  {
   "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCF40",
-  "sym": "_$E11",
+  "sym": "_$E41",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00B0E6C8)",
   "status": "matched",
@@ -112849,99 +112849,99 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCD70",
-  "sym": "_$E2",
+  "sym": "_$E5",
   "len": "0x28",
   "name": "dynamic initializer (DAT_00B0E688)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCDE0",
-  "sym": "_$E5",
+  "sym": "_$E14",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E6B8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCE00",
-  "sym": "_$E8",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E690)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCE20",
-  "sym": "_$E11",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E650)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCE40",
-  "sym": "_$E14",
+  "sym": "_$E23",
   "len": "0x31",
   "name": "dynamic initializer (DAT_00B0E6E0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCE80",
-  "sym": "_$E17",
+  "sym": "_$E26",
   "len": "0x21",
   "name": "dynamic initializer (DAT_00B0E698)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCEB0",
-  "sym": "_$E20",
+  "sym": "_$E29",
   "len": "0x2c",
   "name": "dynamic initializer (DAT_00B0E6B0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCEE0",
-  "sym": "_$E23",
+  "sym": "_$E32",
   "len": "0x27",
   "name": "dynamic initializer (DAT_00B0E6D4)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCF10",
-  "sym": "_$E26",
+  "sym": "_$E35",
   "len": "0xf",
   "name": "dynamic initializer (DAT_00B0E680)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCF20",
-  "sym": "_$E29",
+  "sym": "_$E38",
   "len": "0x12",
   "name": "dynamic initializer (DAT_00B0E6A0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_6dcd70.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6DCF60",
-  "sym": "_$E32",
+  "sym": "_$E44",
   "len": "0x17",
   "name": "dynamic initializer (DAT_00B0E670)",
   "status": "matched",
