@@ -475,7 +475,7 @@ class Rebase:
                 continue
             try:
                 span, why = D.cfg_span(D.hx(r["addr"]))
-            except Exception:
+            except (Exception, SystemExit):   # common.disasm exits when the window passes the end of .text
                 continue
             ln = D.hx(r["len"])
             if span and ln > span:
