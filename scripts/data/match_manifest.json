@@ -10143,7 +10143,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/scenario_class_lighting_recalc_methods.cpp",
+  "tu": "match/combat/Ion.cpp",
   "addr": "0x53AD00",
   "sym": "?RecalcLighting@ScenarioClass@@SIXHHH_N@Z",
   "len": "0xf6",
@@ -22637,7 +22637,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_methods.cpp",
+  "tu": "match/combat/Ion.cpp",
   "addr": "0x53A130",
   "sym": "?IonSensitivesShouldBeOffline@HouseClass@@QBE_NXZ",
   "len": "0x3",
@@ -84381,7 +84381,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_b_methods.cpp",
+  "tu": "match/combat/Ion.cpp",
   "addr": "0x53A0E0",
   "sym": "?FUN_0053A0E0@@YAHXZ",
   "len": "0x1b",

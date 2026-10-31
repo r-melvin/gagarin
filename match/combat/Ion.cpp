@@ -136,6 +136,8 @@ extern int DAT_00A9FA80;
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 #include "../core/vector_class_operations.h"
+#include "../economy/house_class_methods.h"
+#include "../core/scenario_class_lighting_recalc_methods.h"
 class AnimClass;
 
 // VTABLE: GAMEMD 0x7EBFEC -- VectorClass<const AnimClass*>.
@@ -190,6 +192,8 @@ void FUN_00539EA0(int a1)
 extern int DAT_00A9F9F8;
 // GLOBAL: GAMEMD 0xA9FAB4
 extern unsigned char DAT_00A9FAB4;
+// GLOBAL: GAMEMD 0xA9FAB8
+extern int DAT_00A9FAB8;
 // GLOBAL: GAMEMD 0xA9FACC
 extern int DAT_00A9FACC;
 // GLOBAL: GAMEMD 0xA9FAD0
@@ -229,6 +233,13 @@ void FUN_0053A0B0(int a1, int a2)
     }
 }
 
+// FUNCTION: GAMEMD 0x53A0E0
+// Branching.
+int __cdecl FUN_0053A0E0()
+{
+    return DAT_00A9FAB4 != 0 || DAT_00A9FAB8 > 0;
+}
+
 // FUNCTION: GAMEMD 0x53A110
 // Returns a comparison result.
 bool __cdecl FUN_0053A110()
@@ -243,6 +254,13 @@ bool __cdecl FUN_0053A120()
     return DAT_00A9FABC == 2;
 }
 
+// FUNCTION: GAMEMD 0x53A130  HouseClass::IonSensitivesShouldBeOffline (__thiscall)
+//   XOR AL,AL ; RET   (unconditional false)
+bool HouseClass::IonSensitivesShouldBeOffline() const
+{
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x53AB50  LightningStorm::Init (__fastcall, static)
 // Re-light the map for the storm, then raise the local player's flag. The
 // lighting call takes no arguments, so retail issues it before touching the
@@ -251,6 +269,48 @@ void LightningStorm::Init()
 {
     ScenarioClass::UpdateLighting();
     CurrentPlayer->RecheckRadar = true;
+}
+
+// FUNCTION: GAMEMD 0x53AD00
+//
+// Push a new ambient tint through every light converter: the registry of
+// converters, the converter of each colour scheme that has more than one
+// remap level, and the converters of every per-palette scheme vector the hash
+// iterator yields. Then the map re-sweeps its cell lighting and the sidebar is
+// flagged for redraw.
+void ScenarioClass::RecalcLighting(int r, int g, int b, bool tint)
+{
+    int i;
+
+    for (i = 0; i < DAT_0087F698.Count; i++) {
+        LightConvert_0053AD00* lc = DAT_0087F698.Items[i];
+        (lc->*lc->Vtbl->At_04)(r, g, b, tint);
+    }
+
+    for (i = 0; i < DAT_00B054D0.Count; i++) {
+        ColorScheme_0053AD00* scheme = DAT_00B054D0.Items[i];
+        if (scheme->At_310 > 1) {
+            LightConvert_0053AD00* lc = scheme->LightConvert;
+            (lc->*lc->Vtbl->At_04)(r, g, b, tint);
+        }
+    }
+
+    HashIterator_0053AD00 it;
+    it.At_00 = 0;
+    it.At_04 = 0;
+    it.At_08 = 0;
+    ColorSchemeVec_0053AD00* vec = FUN_00626690(&it);
+    while (vec != 0) {
+        int count = FUN_00626C60();
+        for (i = 0; i < count; i++) {
+            LightConvert_0053AD00* lc = vec->Items[i]->LightConvert;
+            (lc->*lc->Vtbl->At_04)(r, g, b, tint);
+        }
+        vec = FUN_00626690(&it);
+    }
+
+    MapInstance.FUN_004AE4C0();
+    MapInstance.FlagToRedraw(1);
 }
 
 // FUNCTION: GAMEMD 0x53B3F0
@@ -367,4 +427,10 @@ int DAT_00A9FAC0;
 int DAT_00A9FACC;
 // GLOBAL: GAMEMD 0xA9FAD0
 unsigned char DAT_00A9FAD0;
+// GLOBAL: GAMEMD 0xA9FAB8
+int DAT_00A9FAB8;
+// GLOBAL: GAMEMD 0x87F698
+LightConvertVec_0053AD00 DAT_0087F698;
+// GLOBAL: GAMEMD 0xB054D0
+ColorSchemeVec_0053AD00 DAT_00B054D0;
 // END defined globals
