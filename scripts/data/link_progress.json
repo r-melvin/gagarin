@@ -2,17 +2,17 @@
  "m0": {
   "by_kind": {
    "crt": 25,
-   "data": 2438,
-   "function": 3898,
+   "data": 2436,
+   "function": 3904,
    "import": 0,
    "vtable": 70
   },
   "duplicate_definitions": 0,
-  "objects": 1599,
-  "unresolved": 6431
+  "objects": 1600,
+  "unresolved": 6435
  },
  "m1": {
-  "bytes_at_retail_address": 3819343,
+  "bytes_at_retail_address": 3819182,
   "drift_events": 0,
   "duplicates": 0,
   "entries_at_retail_address": 19201,
@@ -24,16 +24,16 @@
     "entries_at_retail_address": 77
    },
    "matched": {
-    "bytes": 1094658,
-    "bytes_at_retail_address": 1094658,
-    "entries": 15567,
-    "entries_at_retail_address": 15567
+    "bytes": 1099233,
+    "bytes_at_retail_address": 1099233,
+    "entries": 15587,
+    "entries_at_retail_address": 15587
    },
    "stub": {
-    "bytes": 2724685,
-    "bytes_at_retail_address": 2724685,
-    "entries": 3634,
-    "entries_at_retail_address": 3634
+    "bytes": 2719949,
+    "bytes_at_retail_address": 2719949,
+    "entries": 3614,
+    "entries_at_retail_address": 3614
    }
   },
   "entry_point_delta": 0,
@@ -41,11 +41,11 @@
   "filler_entries": 77,
   "filler_entries_at_retail_address": 77,
   "link_exit_code": 0,
-  "matched_at_retail_address": 15567,
-  "matched_functions": 15567,
-  "ordered_bytes": 3819343,
+  "matched_at_retail_address": 15587,
+  "matched_functions": 15587,
+  "ordered_bytes": 3819182,
   "ordered_entries": 19201,
-  "stubs_placed": 3634,
+  "stubs_placed": 3614,
   "unresolved_after_stubs": 0
  },
  "m2": {
@@ -83,8 +83,8 @@
     "diff_bytes": 0,
     "file": 442368,
     "library": 0,
-    "project": 2693784,
-    "retail": 876876,
+    "project": 2693778,
+    "retail": 876882,
     "va": 8462336,
     "vsize": 3570660
    },
@@ -110,8 +110,8 @@
     "diff_bytes": 0,
     "file": 4060045,
     "library": 87227,
-    "project": 1227439,
-    "retail": 2745379,
+    "project": 1232175,
+    "retail": 2740643,
     "va": 4198400,
     "vsize": 4060045
    }
@@ -119,8 +119,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 4130531,
-   "retail": 4173539,
+   "project": 4135261,
+   "retail": 4168809,
    "vsize": 8391297
   }
  },
@@ -157,9 +157,9 @@
   }
  ],
  "snapshots": {
-  "m0": "1e5488b3",
-  "m1": "1e5488b3",
+  "m0": "4ad51da1",
+  "m1": "4ad51da1",
   "m2": "ac2bd917",
-  "m3": "1e5488b3"
+  "m3": "4ad51da1"
  }
 }
