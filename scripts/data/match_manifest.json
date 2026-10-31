@@ -145816,7 +145816,7 @@
   "pct": 96.7
  },
  {
-  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D1C20",
   "sym": "?AddAnim@MSEngine@@QAEHPAVMSAnim@@@Z",
   "len": "0x62",
@@ -145825,7 +145825,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D1C90",
   "sym": "?ReplaceAnim@MSEngine@@QAEXPAVMSAnim@@0@Z",
   "len": "0xe4",
@@ -145834,7 +145834,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D1D80",
   "sym": "?RemoveAnim@MSEngine@@QAEXPAVMSAnim@@@Z",
   "len": "0x62",
@@ -145843,7 +145843,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D1DF0",
   "sym": "?WaitForAnim@MSEngine@@QAEXPAVMSAnim@@I@Z",
   "len": "0x58",
@@ -145852,7 +145852,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D1E70",
   "sym": "?Draw@MSEngine@@QAEXPAVMouseSurfaceView@@@Z",
   "len": "0x157",
@@ -145861,7 +145861,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D2530",
   "sym": "?PauseWhileInactive@MSEngine@@QAEXXZ",
   "len": "0x97",
@@ -145870,7 +145870,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/ms_engine_screen_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D25D0",
   "sym": "?AddSfx@MSEngine@@QAE_NPBD0@Z",
   "len": "0x80",
