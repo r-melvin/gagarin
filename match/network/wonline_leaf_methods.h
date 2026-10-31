@@ -241,7 +241,7 @@ int FUN_0077EBA0(Wstring* name);
 extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
 
 // GLOBAL: GAMEMD 0xB77DC1
-extern char DAT_00B77DC1;
+extern bool DAT_00B77DC1;
 
 // GLOBAL: GAMEMD 0x7EEF28
 extern int DAT_007EEF28;

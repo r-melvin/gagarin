@@ -3667,6 +3667,40 @@ long __stdcall FUN_007A30D0(void* self, int result)
     return 0;
 }
 
+#define GG_EVENT_SINK_CLASS(NAME)                                              \
+    class NAME                                                                 \
+    {                                                                          \
+    public:                                                                    \
+        virtual long __stdcall QueryInterface(const GUID& iid, void** ppv);    \
+        virtual unsigned long __stdcall AddRef();                              \
+        long __stdcall OnStatus(int code, int value);                          \
+        long __stdcall OnLog(int code, int value);                             \
+        LONG m_dwRef;                                                          \
+    };
+
+// FUNCTION: GAMEMD 0x785740 (decl; reloc)
+void __fastcall FUN_00785740(int value);
+// FUNCTION: GAMEMD 0x5E2700 (decl; reloc)
+void __cdecl FUN_005E2700(int param, const wchar_t* format, ...);
+// GLOBAL: GAMEMD 0xB77DC1
+extern bool DAT_00B77DC1;
+// GLOBAL: GAMEMD 0x7EEF28
+extern int DAT_007EEF28;
+
+GG_EVENT_SINK_CLASS(ChatEventSink_r12)
+GG_EVENT_SINK_CLASS(NetUtilEventSink_r12)
+GG_EVENT_SINK_CLASS(DownloadEventSink_r12)
+
+// FUNCTION: GAMEMD 0x7A5220
+// Forwards the value for a non-negative code.
+long __stdcall ChatEventSink_r12::OnStatus(int code, int value)
+{
+    if (code >= 0) {
+        FUN_00785740(value);
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x7A5240
 int __stdcall FUN_007A5240(void* unused, int a1, int a2)
 {
@@ -3905,6 +3939,16 @@ long __stdcall FUN_007A9800(void* self, int result)
 extern HANDLE DAT_00B736A8;
 // GLOBAL: GAMEMD 0xB77DE8
 extern int DAT_00B77DE8;
+
+// FUNCTION: GAMEMD 0x7AA6A0
+// Logs the value for a non-negative code unless logging is switched off.
+long __stdcall ChatEventSink_r12::OnLog(int code, int value)
+{
+    if (!DAT_00B77DC1 && code >= 0) {
+        FUN_005E2700(DAT_007EEF28, L">>> %hs", value);
+    }
+    return 0;
+}
 
 // FUNCTION: GAMEMD 0x7AA6D0
 // Slot of CChatEventSink: the connection to the server dropped.
@@ -4149,8 +4193,86 @@ WonlineStringDialogControl::WonlineStringDialogControl()
 
 #include "wol_event_sink_atl.h"
 
+// FUNCTION: GAMEMD 0x7AC690
+unsigned long __stdcall ChatEventSink_r12::AddRef()
+{
+    return InterlockedIncrement(&m_dwRef);
+}
+
 // FUNCTION: GAMEMD 0x7AC6B0
 // ATL::CComObject<CChatEventSink>::Release (stock ATL 3.0 template instantiation).
+
+// An interface id as four words.
+struct GuidWords
+{
+    unsigned long Word0;
+    unsigned long Word1;
+    unsigned long Word2;
+    unsigned long Word3;
+};
+
+typedef long (__stdcall *InterfaceHandler)(void* object, const GuidWords* iid, void** out, unsigned long offset);
+
+// One interface table entry: id (null matches anything), offset of the interface inside the object and
+// a handler (the value 1 marks a plain offset entry; a null handler ends the table).
+struct InterfaceEntry
+{
+    const GuidWords* Iid;
+    unsigned long Offset;
+    InterfaceHandler Handler;
+};
+
+// GLOBAL: GAMEMD 0x7F7698 / 0x7F7650 / 0x7F7638 -- the interface tables.
+extern const InterfaceEntry DAT_007F7698[];
+extern const InterfaceEntry DAT_007F7650[];
+extern const InterfaceEntry DAT_007F7638[];
+
+// The shared walk: IUnknown is answered from the first entry's offset, otherwise the table is searched
+// for the id and the matching entry's offset or handler produces the interface.
+inline long InterfaceQuery(void* object, const InterfaceEntry* entries, const GuidWords* iid, void** out)
+{
+    if (out == 0) {
+        return 0x80004003;
+    }
+    *out = 0;
+    if (iid->Word0 == 0 && iid->Word1 == 0 && iid->Word2 == 0xC0 && iid->Word3 == 0x46000000) {
+        IUnknown* unknown = (IUnknown*)((char*)object + entries->Offset);
+        unknown->AddRef();
+        *out = unknown;
+        return 0;
+    }
+    while (entries->Handler != 0) {
+        BOOL blind = entries->Iid == 0;
+        if (blind || (entries->Iid->Word0 == iid->Word0 && entries->Iid->Word1 == iid->Word1
+                      && entries->Iid->Word2 == iid->Word2 && entries->Iid->Word3 == iid->Word3)) {
+            if (entries->Handler == (InterfaceHandler)1) {
+                IUnknown* unknown = (IUnknown*)((char*)object + entries->Offset);
+                unknown->AddRef();
+                *out = unknown;
+                return 0;
+            }
+            long result = entries->Handler(object, iid, out, entries->Offset);
+            if (result == 0 || (!blind && result < 0)) {
+                return result;
+            }
+        }
+        entries++;
+    }
+    return 0x80004002;
+}
+
+// FUNCTION: GAMEMD 0x7AC700
+// QueryInterface over the interface table at 0x7F7698.
+long __stdcall FUN_007AC700(void* object, const GuidWords* iid, void** out)
+{
+    return InterfaceQuery(object, DAT_007F7698, iid, out);
+}
+
+// FUNCTION: GAMEMD 0x7AC800
+unsigned long __stdcall NetUtilEventSink_r12::AddRef()
+{
+    return InterlockedIncrement(&m_dwRef);
+}
 
 // FUNCTION: GAMEMD 0x7AC820
 // ATL::CComObject<CNetUtilEventSink>::Release (stock ATL 3.0 template instantiation).
@@ -4158,6 +4280,13 @@ WonlineStringDialogControl::WonlineStringDialogControl()
 template class ATL::CComObject<CChatEventSink>;
 template class ATL::CComObject<CNetUtilEventSink>;
 
+
+// FUNCTION: GAMEMD 0x7AC870
+// QueryInterface over the interface table at 0x7F7650.
+long __stdcall FUN_007AC870(void* object, const GuidWords* iid, void** out)
+{
+    return InterfaceQuery(object, DAT_007F7650, iid, out);
+}
 
 // FUNCTION: GAMEMD 0x7AC970
 // DynamicVectorClass<tConnInfoStruct*>::Clear
@@ -4286,8 +4415,21 @@ int Obj_007AD610::FUN_007AD610(int a1) const
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x7AD620
+unsigned long __stdcall DownloadEventSink_r12::AddRef()
+{
+    return InterlockedIncrement(&m_dwRef);
+}
+
 // FUNCTION: GAMEMD 0x7AD640
 // ATL::CComObject<CDownloadEventSink>::Release (stock ATL 3.0 template instantiation).
+
+// FUNCTION: GAMEMD 0x7AD690
+// QueryInterface over the interface table at 0x7F7638.
+long __stdcall FUN_007AD690(void* object, const GuidWords* iid, void** out)
+{
+    return InterfaceQuery(object, DAT_007F7638, iid, out);
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -4609,7 +4751,9 @@ char DAT_00A8B262;
 // GLOBAL: GAMEMD 0xAC4848
 PCXCache_00AC4848 DAT_00AC4848;
 // GLOBAL: GAMEMD 0xB77DC1
-char DAT_00B77DC1;
+bool DAT_00B77DC1;
 // GLOBAL: GAMEMD 0x7F7518
 extern const double DAT_007F7518 = 0.017453292519943295;
+// GLOBAL: GAMEMD 0x7EEF28
+int DAT_007EEF28 = -1;
 // END defined globals

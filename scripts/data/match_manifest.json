@@ -139534,7 +139534,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/com_event_sink_r12_methods.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A5220",
   "sym": "?OnStatus@ChatEventSink_r12@@QAGJHH@Z",
   "len": "0x16",
@@ -139543,7 +139543,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/com_event_sink_r12_methods.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AA6A0",
   "sym": "?OnLog@ChatEventSink_r12@@QAGJHH@Z",
   "len": "0x2F",
@@ -139552,7 +139552,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/com_event_sink_r12_methods.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC690",
   "sym": "?AddRef@ChatEventSink_r12@@UAGKXZ",
   "len": "0x11",
@@ -139561,7 +139561,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/com_event_sink_r12_methods.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC800",
   "sym": "?AddRef@NetUtilEventSink_r12@@UAGKXZ",
   "len": "0x11",
@@ -139570,7 +139570,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/com_event_sink_r12_methods.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD620",
   "sym": "?AddRef@DownloadEventSink_r12@@UAGKXZ",
   "len": "0x11",
@@ -145672,7 +145672,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r25_3_com_query_interface.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC700",
   "sym": "?FUN_007AC700@@YGJPAXPBUGuidWords@@PAPAX@Z",
   "len": "0xf3",
@@ -145681,7 +145681,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r25_3_com_query_interface.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC870",
   "sym": "?FUN_007AC870@@YGJPAXPBUGuidWords@@PAPAX@Z",
   "len": "0xf3",
@@ -145690,7 +145690,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r25_3_com_query_interface.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD690",
   "sym": "?FUN_007AD690@@YGJPAXPBUGuidWords@@PAPAX@Z",
   "len": "0xf3",
