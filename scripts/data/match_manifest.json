@@ -2524,7 +2524,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_more_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CE1A0",
   "sym": "?ShouldFlashTab@SuperClass@@QBE_NXZ",
   "len": "0x4A",
@@ -2533,7 +2533,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_readiness_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CC2B0",
   "sym": "?NameReadiness@SuperClass@@QBEPAGXZ",
   "len": "0xa3",
@@ -90710,7 +90710,7 @@
  {
   "tu": "match/combat/Super.cpp",
   "addr": "0x6CAC40",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0C080)",
   "status": "matched",
@@ -90719,7 +90719,7 @@
  {
   "tu": "match/combat/Super.cpp",
   "addr": "0x6CAC60",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0C068)",
   "status": "matched",
@@ -90728,7 +90728,7 @@
  {
   "tu": "match/combat/Super.cpp",
   "addr": "0x6CADE0",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00B0C070)",
   "status": "matched",
@@ -135034,7 +135034,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_w3_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CDEF0",
   "sym": "?Load@SuperClass@@UAGJPAUIStream@@@Z",
   "len": "0xdb",
@@ -135043,7 +135043,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_w3_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CDFF0",
   "sym": "?vf_10@SuperClass@@UAEXPAX_N@Z",
   "len": "0x2b",
@@ -135052,7 +135052,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_w3_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CE1F0",
   "sym": "?vf_rtti_3@SuperClass@@UAGHXZ",
   "len": "0x8",

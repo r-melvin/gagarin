@@ -16,7 +16,10 @@
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
 
+#include "../FUNCTION.H"
 #include "super_class_methods.h"
+#include "super_class_readiness_methods.h"
+#include "super_class_more_methods.h"
 #include "../core/mathtbl_init_shapes.h"
 
 #include "trivial_tu225_methods.h"
@@ -96,6 +99,44 @@ unsigned char Obj_006CC2A0::FUN_006CC2A0() const
     return unknown_28->unknown_E6;
 }
 
+// FUNCTION: GAMEMD 0x6CC2B0
+//
+// The sidebar caption for a superweapon's state. A suspended weapon reads
+// "on hold" whatever else is true. A charge-drain weapon (Yuri's Psychic
+// Dominator style) names its drain state - charging, ready, or firing - and has
+// no caption for any other state. A plain weapon reads "ready" once charged and
+// nothing before.
+//
+// The drain state is a real `switch`: retail lowers the three dense cases to
+// `SUB ECX,0 / DEC ECX / DEC ECX` and places the case bodies 2, 1, 0 after
+// the fall-through default. Two shape points matter: the "on hold" caption is
+// the trailing block (the IsSuspended test jumps forward over everything, so
+// the body sits under `if (!IsSuspended)`), and the switch carries its own
+// `default: return 0;` - without it VC6 sinks the shared `XOR EAX,EAX; RET`
+// to the end and turns the last case test into a `JNE default` (34.7%).
+gg_wchar* SuperClass::NameReadiness() const
+{
+    if (!this->IsSuspended) {
+        if (this->Type->UseChargeDrain) {
+            switch (this->ChargeDrainState) {
+            case 0:
+                return FUN_00734E60(DAT_008424EC, 0, DAT_00842510, 0x397);
+            case 1:
+                return FUN_00734E60(DAT_0081B454, 0, DAT_00842510, 0x39A);
+            case 2:
+                return FUN_00734E60(DAT_008424FC, 0, DAT_00842510, 0x39D);
+            default:
+                return 0;
+            }
+        } else if (this->IsReady) {
+            return FUN_00734E60(DAT_0081B454, 0, DAT_00842510, 0x3B0);
+        }
+        return 0;
+    }
+
+    return FUN_00734E60(DAT_0083FB2C, 0, DAT_00842510, 0x3B6);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6CC360  SuperClass::CanFire (__thiscall)
 // A suspended superweapon can never fire. For charge-drain weapons readiness is
@@ -133,6 +174,98 @@ bool SuperClass::ShouldDrawProgress() const
         return true;
 
     return !IsReady;
+}
+
+// GLOBAL: GAMEMD 0xB0F5B8 -- the registry of super weapons that carry an animation.
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F5B8;
+// GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
+extern SwizzleManagerClass DAT_00B0C110;
+
+// Registry append, expanded in place: the growth increment is tested before the sum.
+static inline bool SuperRegistryAdd(DynamicVectorClass<AbstractClass*>* vector, AbstractClass* item)
+{
+    if (vector->Count >= vector->Capacity) {
+        if (!vector->IsAllocated && vector->Capacity != 0)
+            return false;
+        if (vector->CapacityIncrement <= 0)
+            return false;
+        if (!vector->SetCapacity(vector->Capacity + vector->CapacityIncrement, 0))
+            return false;
+    }
+    int index = vector->Count++;
+    vector->Items[index] = item;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6CDEF0
+HRESULT __stdcall SuperClass::Load(IStream* pStm)
+{
+    HRESULT hr = AbstractClass::Load(pStm);
+    if (hr < 0) {
+        return hr;
+    }
+    new (this) SuperClass(LoadTag());
+    if (Animation) {
+        SuperRegistryAdd(&DAT_00B0F5B8, this);
+    }
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Animation);
+    BlinkTimer_Low = 0;
+    BlinkTimer_High = 0;
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6CDFF0
+// Forget a pointer that is going away: the type's owner or type slot, or the animation.
+void SuperClass::vf_10(void* target, bool removed)
+{
+    if (target == Owner) {
+        Owner = 0;
+    }
+    if (target == Type) {
+        Type = 0;
+    }
+    if (target == Animation) {
+        Animation = 0;
+        AnimationGotInvalid = 1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6CE1A0  SuperClass::ShouldFlashTab (__thiscall)
+//   mov al,[ecx+0x70]; test al,al; jnz false        ; IsSuspended -> false
+//   mov eax,[ecx+0x28]; mov dl,[eax+0xe5]; test dl,dl; jz noDrain
+//     mov edx,[ecx+0x7c]; test edx,edx; jz false; jmp frames  ; ChargeDrainState
+//   noDrain: mov dl,[ecx+0x6f]; test dl,dl; jz false           ; IsReady
+//   frames: mov eax,[eax+0xe8]; cmp eax,-1; jnz chk; mov al,1; ret
+//   chk: test eax,eax; jz false; mov ecx,[ecx+0x74]; add ecx,eax
+//        mov eax,[0xa8ed84]; cmp ecx,eax; jle false; mov al,1; ret
+//   false: xor al,al; ret
+bool SuperClass::ShouldFlashTab() const
+{
+    if (!this->IsSuspended) {
+        if (this->Type->UseChargeDrain) {
+            if (this->ChargeDrainState == 0)
+                goto fail;
+        } else if (!this->IsReady) {
+            goto fail;
+        }
+
+        int frames = this->Type->FlashSidebarTabFrames;
+        if (frames == -1)
+            return true;
+        if (frames != 0 && this->ReadyFrame + frames > CurrentFrame)
+            return true;
+    }
+fail:
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6CE1F0
+// The RTTI id of a super weapon.
+int __stdcall SuperClass::vf_rtti_3()
+{
+    return 0x39;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -188,4 +321,14 @@ bool ItemVector_0063DFD0::FUN_00006CE2D0(int item)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7F3FA8
 extern const double DAT_007F3FA8 = 60.0;
+// GLOBAL: GAMEMD 0x81B454
+extern const char DAT_0081B454[] = "TXT_READY";
+// GLOBAL: GAMEMD 0x83FB2C
+extern const char DAT_0083FB2C[] = "TXT_HOLD";
+// GLOBAL: GAMEMD 0x8424EC
+extern const char DAT_008424EC[] = "TXT_CHARGING";
+// GLOBAL: GAMEMD 0x8424FC
+extern const char DAT_008424FC[] = "TXT_FIRESTORM_ON";
+// GLOBAL: GAMEMD 0x842510
+extern const char DAT_00842510[] = "D:\\ra2mdpost\\Super.CPP";
 // END defined globals
