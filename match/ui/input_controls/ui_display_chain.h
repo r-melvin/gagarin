@@ -290,7 +290,7 @@ GG_STATIC_ASSERT(sizeof(RadarArrayHolder) == 0x10);
 struct Cell_00578540;           // map_class_usable_area_methods.cpp
 struct WarheadType_00489180;    // map_class_total_damage_methods.cpp
 struct Cell_0050DEF0;   // radar_class.h
-struct RadarDiamond;    // radar_class_more_methods.cpp
+struct RadarDiamond;    // Radar.cpp
 class Pipe;
 class MapClass : public GScreenClass
 {
@@ -688,6 +688,12 @@ public:
     struct RadarDiamond FUN_00655050(const Cell_0050DEF0& cell);
     // FUNCTION: GAMEMD 0x655150 -- radar-space point to cell; hidden result, RET 8.
     Cell_0050DEF0 FUN_00655150(const Point2D* point);
+    // FUNCTION: GAMEMD 0x6550C0 -- map cell to radar screen position; RET 4.
+    struct RadarDiamond FUN_006550C0(const Cell_0050DEF0* cell);
+    // FUNCTION: GAMEMD 0x6551C0 -- queue a cell for redraw once; RET 4.
+    void FUN_006551C0(const Cell* cell);
+    // FUNCTION: GAMEMD 0x6557F0 -- map point to radar pixel position, optionally clamped; RET 0xC.
+    Point2D* FUN_006557F0(Point2D* out, const Point2D* point, bool clamp);
     // FUNCTION: GAMEMD 0x656BE0 (decl; reloc) -- RET 8.
     void FUN_00656BE0(bool on, int flag);
     // FUNCTION: GAMEMD 0x656DF0 -- switch the tactical map on or off; RET 4.

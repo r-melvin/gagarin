@@ -134548,7 +134548,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x652E50",
   "sym": "?FUN_00652E50@RadarClass@@QAEX_N@Z",
   "len": "0x38",
@@ -134557,7 +134557,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x653810",
   "sym": "?vf_36@RadarClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
   "len": "0x17",
@@ -134566,7 +134566,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x653F70",
   "sym": "?vf_52@RadarClass@@UAEXPBUCoordStruct@@@Z",
   "len": "0x13",
@@ -134575,7 +134575,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x655050",
   "sym": "?FUN_00655050@RadarClass@@QAE?AURadarDiamond@@ABUCell_0050DEF0@@@Z",
   "len": "0x61",
@@ -134584,7 +134584,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x655890",
   "sym": "?FUN_00655890@RadarKey_00655890@@QAEHXZ",
   "len": "0x14",
@@ -134593,7 +134593,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x6558B0",
   "sym": "?FUN_006558B0@RadarKey_006558B0@@QAEHXZ",
   "len": "0x15",
@@ -134602,7 +134602,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x656DF0",
   "sym": "?FUN_00656DF0@RadarClass@@QAEX_N@Z",
   "len": "0x5a",
@@ -134611,7 +134611,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x656E90",
   "sym": "?FUN_00656E90@RadarClass@@QAEX_N@Z",
   "len": "0x28",
@@ -134620,7 +134620,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x655150",
   "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBVPoint2D@@@Z",
   "len": "0x62",
@@ -141991,27 +141991,27 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_r16_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x6550C0",
-  "sym": "?FUN_006550C0@RadarView_R16@@QAE?AURadarDiamond_006550C0@@PBUCell_0050DEF0@@@Z",
+  "sym": "?FUN_006550C0@RadarClass@@QAE?AURadarDiamond@@PBUCell_0050DEF0@@@Z",
   "len": "0x8e",
   "name": "RadarClass: map cell to radar screen position",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_r16_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x6551C0",
-  "sym": "?FUN_006551C0@RadarView_R16@@QAEXPBVCell@@@Z",
+  "sym": "?FUN_006551C0@RadarClass@@QAEXPBVCell@@@Z",
   "len": "0x8b",
   "name": "RadarClass: queue a cell for redraw once",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_class_r16_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x6557F0",
-  "sym": "?FUN_006557F0@RadarView_R16@@QAEPAVPoint2D@@PAV2@PBV2@_N@Z",
+  "sym": "?FUN_006557F0@RadarClass@@QAEPAVPoint2D@@PAV2@PBV2@_N@Z",
   "len": "0x9d",
   "name": "RadarClass: map point to radar pixel (optionally clamped)",
   "status": "matched",

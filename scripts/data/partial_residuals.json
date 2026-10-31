@@ -3361,7 +3361,7 @@
  {
   "addr": "0x655150",
   "name": "RadarClass::FUN_00655150",
-  "tu": "match/ui/radar_class_more_methods.cpp",
+  "tu": "match/ui/Radar.cpp",
   "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBVPoint2D@@@Z",
   "len": "0x62",
   "manifest_pct": 91.3,

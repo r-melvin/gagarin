@@ -77,6 +77,7 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 #include "../_layout/rules_class.h"
 #include "../_layout/techno_class.h"
 #include "../core/leftover_trivial_leaf_sweep.h"
+#include "../_layout/tactical.h"
 
 // GLOBAL: GAMEMD 0x00A8EC78
 extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
@@ -491,10 +492,197 @@ struct Obj_00653F90 {
     void FUN_00578460(int, int);
     void FUN_00653F90(int a);
 };
+struct RadarDiamond
+{
+    int X;
+    int Y;
+    int Mode;
+    int Valid;
+};
+
+// Hash keys over small integer records, used through function pointers by the radar code (0x652960 and
+// 0x6558D0 take the address of 0x6558B0).
+struct RadarKey_00655890
+{
+    int A;
+    int B;
+    int FUN_00655890();
+};
+
+struct RadarKey_006558B0
+{
+    int A;
+    int B;
+    int C;
+    int FUN_006558B0();
+};
+
+// GLOBAL: GAMEMD 0x7E5168
+extern const float DAT_007E5168;
+
+// GLOBAL: GAMEMD 0x7F0424
+extern const float DAT_007F0424;
+
+// FUNCTION: GAMEMD 0x652E50
+// Add (or remove) the two radar buttons to the screen's button list.
+void RadarClass::FUN_00652E50(bool on)
+{
+    if (on) {
+        AddButton((DisplayGadget*)&RadarButtonF2_00B04978);
+        AddButton((DisplayGadget*)&RadarButtonF3_00B04910);
+    } else {
+        vf_13((DisplayGadget*)&RadarButtonF2_00B04978);
+        vf_13((DisplayGadget*)&RadarButtonF3_00B04910);
+    }
+}
+
+// FUNCTION: GAMEMD 0x653810
+bool RadarClass::vf_36(CellStruct* cell, DisplayHouse* house)
+{
+    bool r = DisplayClass::vf_36(cell, house) != 0;
+    return r;
+}
+
+// GLOBAL: GAMEMD 0x887324
+extern Tactical* DAT_00887324;
+
+// FUNCTION: GAMEMD 0x653F70
+// Centre the tactical view on a coordinate.
+void RadarClass::vf_52(const CoordStruct* where)
+{
+    DAT_00887324->FUN_006D6070(where);
+}
+
 // FUNCTION: GAMEMD 0x00653F90
 void Obj_00653F90::FUN_00653F90(int a)
 {
     FUN_00578460(a, 1);
+}
+
+// FUNCTION: GAMEMD 0x655050
+// Convert a map cell to the radar's diamond coordinates; mode 1 marks an edge column.
+RadarDiamond RadarClass::FUN_00655050(const Cell_0050DEF0& cell)
+{
+    int cx = cell.X;
+    int cy = cell.Y;
+    int x = unknown_1490 - cy + cx;
+    int y = cy - unknown_1498 + cx;
+    int mode = 2;
+    if (x == -1) {
+        x = 0;
+        mode = 1;
+    } else if (x == LocalRect.Width * 2 - 1) {
+        mode = 1;
+    }
+    RadarDiamond r;
+    r.X = x;
+    r.Y = y;
+    r.Mode = mode;
+    r.Valid = 1;
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x6550C0
+// Convert a map cell to the radar's screen position (scaled by the radar zoom).
+RadarDiamond RadarClass::FUN_006550C0(const Cell_0050DEF0* cell)
+{
+    int cx = cell->X;
+    int cy = cell->Y;
+    int left = RadarBounds.X;
+    int x = (int)((double)(unknown_1490 - cy + cx) * *(float*)&unknown_1488 + left);
+    int y = (int)((double)(cy - unknown_1498 + cx) * *(float*)&unknown_1488 + RadarBounds.Y);
+    if (x == left - 1) {
+        x++;
+    }
+    RadarDiamond r;
+    r.X = x;
+    r.Y = y;
+    r.Mode = 1;
+    r.Valid = 1;
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x655150
+// Convert a radar-space point back to the map cell under it.
+// PARTIAL: 91.3% -- same instructions; retail stores the first result word before the second multiply.
+Cell_0050DEF0 RadarClass::FUN_00655150(const Point2D* point)
+{
+    double x = (double)point->X / *(float*)&unknown_1488 - unknown_1490;
+    double y = (double)point->Y / *(float*)&unknown_1488 + unknown_1498;
+    Cell_0050DEF0 result;
+    int ix = (int)((x + y) * DAT_007E5168 + 0.5);
+    double d = y - x;
+    result.X = (short)ix;
+    result.Y = (short)(int)(d * DAT_007E5168 + 0.5);
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6551C0
+// Queue a cell for the radar's redraw list (once) and flag the radar dirty.
+void RadarClass::FUN_006551C0(const Cell* cell)
+{
+    for (int i = unknown_1224.Count - 1; i >= 0; i--) {
+        if (unknown_1224.Items[i] == *cell) {
+            return;
+        }
+    }
+    unknown_1224.AddItem(*cell);
+    unknown_14D9 = 1;
+}
+
+// FUNCTION: GAMEMD 0x6557F0
+// Convert a map point to the radar's pixel position at the fixed scale, optionally clamped to the radar's size.
+Point2D* RadarClass::FUN_006557F0(Point2D* out, const Point2D* point, bool clamp)
+{
+    int cx = point->X;
+    int cy = point->Y;
+    double dx = (double)((unknown_1490 << 8) - cy + cx) * *(float*)&unknown_1488;
+    int x = (int)(dx * DAT_007F0424);
+    double dy = (double)(cy - (unknown_1498 << 8) + cx) * *(float*)&unknown_1488;
+    int y = (int)(dy * DAT_007F0424);
+    if (clamp) {
+        if (x < 0) {
+            x = 0;
+        }
+        if (x >= RadarBounds.Width) {
+            x = RadarBounds.Width - 1;
+        }
+        if (y < 0) {
+            y = 0;
+        }
+        if (y >= RadarBounds.Height) {
+            y = RadarBounds.Height - 1;
+        }
+    }
+    out->X = x;
+    out->Y = y;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x655890
+int RadarKey_00655890::FUN_00655890()
+{
+    return A + B * 251;
+}
+
+// FUNCTION: GAMEMD 0x6558B0
+int RadarKey_006558B0::FUN_006558B0()
+{
+    return B + C * 251;
+}
+
+// FUNCTION: GAMEMD 0x656DF0
+// Switch the tactical map on or off, log it, and apply the change.
+void RadarClass::FUN_00656DF0(bool on)
+{
+    if (unknown_14D8 != on) {
+        unknown_14D8 = on;
+        FUN_004068E0("Radar: TacticalMap availability is %s\n", on ? "on" : "off");
+        if (unknown_14B0 == 1)
+            FUN_00656BE0(on, 1);
+        else
+            FUN_00656CB0(1, 1);
+    }
 }
 
 // FUNCTION: GAMEMD 0x656E50
@@ -1463,6 +1651,16 @@ int Obj_00656E70::FUN_00656E70()
     return unknown_14B0 == 3 && unknown_14AC == 1;
 }
 
+// FUNCTION: GAMEMD 0x656E90
+void RadarClass::FUN_00656E90(bool force)
+{
+    int v = 1;
+    unknown_14D9 = v;
+    if (!unknown_14DA && !force)
+        v = 0;
+    unknown_14DA = v;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x658770
 void Radar_00658770::FUN_00658770(void* arg)
@@ -1534,4 +1732,6 @@ extern const char DAT_008393C8[] = "Tip:BriefingButton";
 unsigned char DAT_00A8EB7C;
 // GLOBAL: GAMEMD 0xA8ED6B
 bool DisplayFlag_00A8ED6B;
+// GLOBAL: GAMEMD 0x7F0424
+extern const float DAT_007F0424 = 0.00390625f;
 // END defined globals
