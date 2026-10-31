@@ -14113,7 +14113,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x005384c0",
   "sym": "?Clear@?$DynamicVectorClass@PAVCCINIClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -16787,7 +16787,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x00538A90",
   "sym": "??_G?$VectorClass@PAVCCINIClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -16796,7 +16796,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x00538AE0",
   "sym": "??_G?$DynamicVectorClass@PAVCCINIClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -19514,7 +19514,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x00538610",
   "sym": "?Clear@?$VectorClass@PAVCCINIClass@@@@UAEXXZ",
   "len": "0x27",
@@ -36065,7 +36065,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVCCINIClass@@@@UBEHPAPAVCCINIClass@@@Z",
   "name": "DynamicVectorClass<CCINIClass*>::Slot5"
  },
@@ -36074,7 +36074,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "?Slot6@?$VectorClass@PAVCCINIClass@@@@UBEPAVCCINIClass@@H@Z",
   "name": "VectorClass<CCINIClass*>::Slot6"
  },
@@ -36083,7 +36083,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "??8?$VectorClass@PAVCCINIClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<CCINIClass*>::operator=="
  },
@@ -36092,7 +36092,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVCCINIClass@@@@UAE_NHPAPAVCCINIClass@@@Z",
   "name": "VectorClass<CCINIClass*>::SetCapacity"
  },
@@ -36101,7 +36101,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVCCINIClass@@@@UBEHABQAVCCINIClass@@@Z",
   "name": "VectorClass<CCINIClass*>::FindItemIndex"
  },
@@ -36110,7 +36110,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "?Slot5@?$VectorClass@PAVCCINIClass@@@@UBEHPAPAVCCINIClass@@@Z",
   "name": "VectorClass<CCINIClass*>::Slot5"
  },
@@ -36119,7 +36119,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVCCINIClass@@@@UAE_NHPAPAVCCINIClass@@@Z",
   "name": "DynamicVectorClass<CCINIClass*>::SetCapacity"
  },
@@ -36128,7 +36128,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_cciniclass_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVCCINIClass@@@@UBEHABQAVCCINIClass@@@Z",
   "name": "DynamicVectorClass<CCINIClass*>::FindItemIndex"
  },

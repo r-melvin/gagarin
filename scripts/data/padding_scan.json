@@ -6639,13 +6639,13 @@
   },
   {
    "addr": "0x5384C0",
-   "tu": "match/core/vector_cciniclass_methods.cpp",
+   "tu": "match/ui/Init.cpp",
    "name": "DynamicVectorClass<CCINIClass*>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538750",
-   "tu": "match/core/vector_cciniclass_methods.cpp",
+   "tu": "match/ui/Init.cpp",
    "name": "DynamicVectorClass<CCINIClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },

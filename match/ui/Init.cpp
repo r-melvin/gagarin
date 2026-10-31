@@ -73,6 +73,7 @@
 #include "../_layout/obj_005fbf80.h"
 #include <stddef.h>
 #include "../_layout/version_class.h"
+#include "../core/vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x007C8E17
 // FUN_007C8E17
@@ -2793,6 +2794,64 @@ inline bool IndexClassC::IsPresentImpl(const int& id) const
 
     return false;
 }
+
+class CCINIClass;
+
+// FUNCTION: GAMEMD 0x5384C0
+// DynamicVectorClass<CCINIClass*>::Clear
+
+// FUNCTION: GAMEMD 0x5384F0
+// DynamicVectorClass<CCINIClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x538510
+// VectorClass<CCINIClass*>::Slot6
+
+// FUNCTION: GAMEMD 0x538520
+// VectorClass<CCINIClass*>::operator==
+
+// FUNCTION: GAMEMD 0x538560
+// VectorClass<CCINIClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x538610
+// VectorClass<CCINIClass*>::Clear
+
+// FUNCTION: GAMEMD 0x538640
+// VectorClass<CCINIClass*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x538680
+// VectorClass<CCINIClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x5386A0
+// DynamicVectorClass<CCINIClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x538750
+// DynamicVectorClass<CCINIClass*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x538A90
+// VectorClass<CCINIClass*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x538AE0
+// DynamicVectorClass<CCINIClass*>::scalar deleting destructor
+
+// VTABLE: GAMEMD 0x7EB80C -- VectorClass<CCINIClass*>.
+template class VectorClass<CCINIClass*>;
+typedef VectorClass<CCINIClass*> GgCCINIClassVectorClass;
+GG_STATIC_ASSERT(offsetof(GgCCINIClassVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7EB82C -- DynamicVectorClass<CCINIClass*>.
+template class DynamicVectorClass<CCINIClass*>;
+typedef DynamicVectorClass<CCINIClass*> GgCCINIClassDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(CCINIClass*) == 4);
 
 // FUNCTION: GAMEMD 0x5387D0
 bool IndexClassC::AddIndex(const int& id, void* const& data)
