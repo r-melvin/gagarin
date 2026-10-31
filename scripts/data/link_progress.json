@@ -2,14 +2,14 @@
  "m0": {
   "by_kind": {
    "crt": 25,
-   "data": 2438,
+   "data": 2437,
    "function": 3924,
    "import": 0,
    "vtable": 70
   },
   "duplicate_definitions": 0,
-  "objects": 1709,
-  "unresolved": 6457
+  "objects": 1696,
+  "unresolved": 6456
  },
  "m1": {
   "bytes_at_retail_address": 3836368,
@@ -134,9 +134,9 @@
   }
  ],
  "snapshots": {
-  "m0": "023d4e08",
-  "m1": "023d4e08",
+  "m0": "6566ace6",
+  "m1": "6566ace6",
   "m2": "ac2bd917",
-  "m3": "023d4e08"
+  "m3": "6566ace6"
  }
 }
