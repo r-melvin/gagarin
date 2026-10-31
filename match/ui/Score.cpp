@@ -40,6 +40,8 @@
 
 
 #include "../_layout/geometry2d.h"
+#include "../_layout/score_font_class.h"
+#include "../_layout/ms_anim.h"
 
 // Draw surface: slot +0x08 is a rectangle copy, slot +0x30 a line draw.
 class Surface_0068FFE0
@@ -270,6 +272,142 @@ inline ScoreFontClass::ScoreFontClass(const InlineInit&)
     DAT_00B0558C++;
 }
 
+
+// GLOBAL: GAMEMD 0xB0558C -- number of live fonts.
+extern int DAT_00B0558C;
+
+struct SharedGlyphSlot_00B05590
+{
+    void* Table;     // +0x00
+    bool Loaded;     // +0x04
+    char unknown_05[3];
+};
+// GLOBAL: GAMEMD 0xB05590 -- the three shared glyph tables.
+extern SharedGlyphSlot_00B05590 DAT_00B05590[3];
+
+// FUNCTION: GAMEMD 0x690580
+ScoreFontClass::ScoreFontClass()
+    : unknown_04(0), unknown_08(0), unknown_0C(0), unknown_14(0)
+{
+    FUN_00690640(this);
+    DAT_00B0558C++;
+}
+
+// FUNCTION: GAMEMD 0x6905B0
+ScoreFontClass::ScoreFontClass(int a1, int a2, int a3, int a4)
+    : unknown_04(a1), unknown_08(a2), unknown_0C(a3), unknown_14(a4)
+{
+    FUN_00690640(this);
+    DAT_00B0558C++;
+}
+
+// FUNCTION: GAMEMD 0x6905F0
+ScoreFontClass::~ScoreFontClass()
+{
+    if (unknown_0C != 0 && unknown_10 == 1) {
+        operator delete((void*)unknown_0C);
+        unknown_0C = 0;
+        unknown_10 = 0;
+    }
+    DAT_00B0558C--;
+    if (DAT_00B0558C == 0) {
+        for (int i = 0; i < 3; i++) {
+            DAT_00B05590[i].Table = 0;
+            DAT_00B05590[i].Loaded = false;
+        }
+    }
+}
+// SYNTHETIC: GAMEMD 0x691040 -- ScoreFontClass::`scalar deleting destructor' (vtable 0x7F0EF0 slot 0).
+
+// FUNCTION: GAMEMD 0x6907A0
+int ScoreFontClass::vf_2(const unsigned short* text)
+{
+    int width = 0;
+    unsigned short ch = *text;
+    while (ch != 0) {
+        text++;
+        width += vf_1(ch) + 1;
+        ch = *text;
+    }
+    return width;
+}
+
+extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
+
+// GLOBAL: GAMEMD 0xA8ED80 -- set once the pending operation has completed.
+extern bool DAT_00A8ED80;
+
+// FUNCTION: GAMEMD 0x5D4D50 (decl; reloc) -- pump pending window messages.
+void FUN_005D4D50();
+
+// A child object stored in the host's list (only vtable slots 1 and 2 are used here).
+struct Child_006904C0 {
+    virtual void Slot0();
+    virtual void Begin();
+    virtual void End();
+};
+
+struct Host_006904C0 {
+    char _pad00[0x20];
+    Child_006904C0** Children;   // +0x20
+    char _pad24[0x08];
+    int ChildCount;              // +0x2C
+
+    // FUNCTION: GAMEMD 0x6904C0 (__thiscall)
+    void FUN_006904C0();
+};
+
+// FUNCTION: GAMEMD 0x6904C0
+// Tell every child to begin, wait (pumping messages) until the completion flag is set, then
+// tell every child to end. Does nothing when the flag is already set.
+void Host_006904C0::FUN_006904C0()
+{
+    if (DAT_00A8ED80 != true) {
+        for (int i = 0; i < ChildCount; i++) {
+            Children[i]->Begin();
+        }
+        while (!DAT_00A8ED80) {
+            Sleep(500);
+            FUN_005D4D50();
+        }
+        for (int j = 0; j < ChildCount; j++) {
+            Children[j]->End();
+        }
+    }
+}
+
+extern "C" int __cdecl _stricmp(const char*, const char*);
+
+// FUNCTION: GAMEMD 0x407000 (decl; reloc) -- true once the session object exists.
+int SessionExists();
+
+struct NamedEntry_00690530 {
+    const char* Name;   // +0x00
+};
+
+struct NameList_00690530 {
+    char unknown_00[0x38];
+    NamedEntry_00690530** Items;   // +0x38
+    char unknown_3C[8];
+    int Count;                     // +0x44
+
+    // FUNCTION: GAMEMD 0x690530 (__thiscall)
+    void Find(const char* name, int unused);
+};
+
+// FUNCTION: GAMEMD 0x690530
+// Walk the entry list comparing names case-insensitively until one matches.
+void NameList_00690530::Find(const char* name, int unused)
+{
+    if (name != 0 && SessionExists()) {
+        for (int i = 0; i < Count; i++) {
+            const char* entry = Items[i]->Name;
+            if (_stricmp(name, entry) == 0)
+                break;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x690A10
 // The full-size score font: its shape comes from the mix files, else from disk.
 ScoreFullFontClass::ScoreFullFontClass(ConvertClass* convert) : ScoreFontClass(InlineInit())
@@ -326,6 +464,71 @@ GG_STATIC_ASSERT(offsetof(Obj_00690EF0, unknown_00) == 0x0);
 GG_STATIC_ASSERT(offsetof(Obj_00690EF0, unknown_04) == 0x4);
 GG_STATIC_ASSERT(offsetof(Obj_00690EF0, unknown_08) == 0x8);
 
+// VTABLE: GAMEMD 0x7F0EDC
+class ScoreAnimClass
+{
+public:
+    ScoreAnimClass(int x, int y, int param);
+    virtual ~ScoreAnimClass() {}
+
+    int     X;       // +0x04
+    int     Y;       // +0x08
+    MSTimer Timer;   // +0x0C
+    int     Param;   // +0x18
+};
+GG_STATIC_ASSERT(offsetof(ScoreAnimClass, X) == 0x4);
+GG_STATIC_ASSERT(offsetof(ScoreAnimClass, Y) == 0x8);
+GG_STATIC_ASSERT(offsetof(ScoreAnimClass, Timer) == 0xC);
+GG_STATIC_ASSERT(offsetof(ScoreAnimClass, Param) == 0x18);
+GG_STATIC_ASSERT(sizeof(ScoreAnimClass) == 0x1C);
+
+// VTABLE: GAMEMD 0x7F0EC8
+class ScoreTimeClass : public ScoreAnimClass
+{
+public:
+    ScoreTimeClass(int x, int y, int param, int a, int b, int c);
+    virtual ~ScoreTimeClass() {}
+
+    int Field1C;   // +0x1C
+    int Field20;   // +0x20
+    int Field24;   // +0x24
+    int Field28;   // +0x28
+};
+GG_STATIC_ASSERT(offsetof(ScoreTimeClass, Field1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(ScoreTimeClass, Field28) == 0x28);
+GG_STATIC_ASSERT(sizeof(ScoreTimeClass) == 0x2C);
+
+// VTABLE: GAMEMD 0x7F0EB4
+class ScorePrintClass : public ScoreAnimClass
+{
+public:
+    ScorePrintClass(int a, int b, int c, int d, char e);
+    virtual ~ScorePrintClass() {}
+
+    int  Field1C;   // +0x1C
+    int  Field20;   // +0x20
+    char Field24;   // +0x24
+    int  Field28;   // +0x28
+};
+GG_STATIC_ASSERT(offsetof(ScorePrintClass, Field1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(ScorePrintClass, Field24) == 0x24);
+GG_STATIC_ASSERT(offsetof(ScorePrintClass, Field28) == 0x28);
+GG_STATIC_ASSERT(sizeof(ScorePrintClass) == 0x2C);
+
+// FUNCTION: GAMEMD 0x690BB0
+// Builds the timed score animation: the base fields, then the three extra words.
+ScoreTimeClass::ScoreTimeClass(int x, int y, int param, int a, int b, int c)
+    : ScoreAnimClass(x, y, param), Field1C(0), Field20(a), Field24(b), Field28(c)
+{
+}
+
+// FUNCTION: GAMEMD 0x690D10
+// Builds the printed score animation (first argument is the base parameter).
+ScorePrintClass::ScorePrintClass(int a, int b, int c, int d, char e)
+    : ScoreAnimClass(b, c, a), Field1C(0), Field20(0), Field24(e), Field28(d)
+{
+}
+
 // FUNCTION: GAMEMD 0x690EF0
 // Branching.
 Obj_00690EF0* Obj_00690EF0::FUN_00690EF0(int a1, int a2)
@@ -354,6 +557,17 @@ void Obj_00690F20::FUN_00690F20()
     }
 }
 
+// FUNCTION: GAMEMD 0x690F30
+// Stamps the clock and stores the position and parameter.
+ScoreAnimClass::ScoreAnimClass(int x, int y, int param) : X(x), Y(y), Param(param)
+{
+}
+
+// Compiler-generated scalar deleting destructors, emitted with the vtables above.
+// SYNTHETIC: GAMEMD 0x690FE0
+// SYNTHETIC: GAMEMD 0x691000
+// SYNTHETIC: GAMEMD 0x691020
+
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB05560
 int DAT_00b05560;
@@ -363,4 +577,8 @@ int DAT_00b05588;
 extern const double DAT_007F0EA0 = 60.0;
 // GLOBAL: GAMEMD 0x887310
 Surface_0068FFE0* DAT_00887310;
+// GLOBAL: GAMEMD 0xB0558C
+int DAT_00B0558C;
+// GLOBAL: GAMEMD 0xB05590
+SharedGlyphSlot_00B05590 DAT_00B05590[3];
 // END defined globals

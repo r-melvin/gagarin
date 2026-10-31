@@ -106081,7 +106081,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/score_font_width_methods.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x6907A0",
   "sym": "?vf_2@ScoreFontClass@@UAEHPBG@Z",
   "len": "0x32",
@@ -133423,7 +133423,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/score_font_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x690580",
   "sym": "??0ScoreFontClass@@QAE@XZ",
   "len": "0x2b",
@@ -133432,7 +133432,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/score_font_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x6905B0",
   "sym": "??0ScoreFontClass@@QAE@HHHH@Z",
   "len": "0x3d",
@@ -133441,7 +133441,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/score_font_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x6905F0",
   "sym": "??1ScoreFontClass@@UAE@XZ",
   "len": "0x4c",
@@ -133450,7 +133450,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/score_font_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x691040",
   "sym": "??_GScoreFontClass@@UAEPAXI@Z",
   "len": "0x60",
@@ -144547,7 +144547,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/r22_3_score_host.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x6904C0",
   "sym": "?FUN_006904C0@Host_006904C0@@QAEXXZ",
   "len": "0x6c",
@@ -145906,7 +145906,7 @@
   "pct": 91.5
  },
  {
-  "tu": "match/ui/r26_2_name_scan_690530.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x690530",
   "sym": "?Find@NameList_00690530@@QAEXPBDH@Z",
   "len": "0x43",
@@ -146389,7 +146389,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_anim_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x690BB0",
   "sym": "??0ScoreTimeClass@@QAE@HHHHHH@Z",
   "len": "0x4c",
@@ -146398,7 +146398,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_anim_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x690F30",
   "sym": "??0ScoreAnimClass@@QAE@HHH@Z",
   "len": "0x36",
@@ -146407,7 +146407,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_anim_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x690D10",
   "sym": "??0ScorePrintClass@@QAE@HHHHD@Z",
   "len": "0x48",
@@ -146416,7 +146416,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_anim_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x690FE0",
   "sym": "??_GScoreAnimClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -146425,7 +146425,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_anim_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x691000",
   "sym": "??_GScoreTimeClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -146434,7 +146434,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_anim_ctors.cpp",
+  "tu": "match/ui/Score.cpp",
   "addr": "0x691020",
   "sym": "??_GScorePrintClass@@UAEPAXI@Z",
   "len": "0x20",
