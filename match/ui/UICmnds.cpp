@@ -34,6 +34,7 @@
 #include "../network/event_queue.h"
 #include "../_layout/tactical.h"
 #include "input_controls/ui_display_chain.h"
+#include "../core/dynamic_vector_ctor_pod_family_methods.h"
 
 // Sidebar "tab object" globals @ 0x00B0FE5C / 0x00B0FE60. Declared-only so cl
 // emits reloc-normalised absolute stores/compares.
@@ -1435,6 +1436,13 @@ bool FUN_007342C0(AbstractClass* object)
     if (!object) return false;
     return object->Flags.IsTechno;
 }
+
+GG_DYNVECTOR_CTOR_POD_DECL(DynamicVectorClass_00734330);
+
+// FUNCTION: GAMEMD 0x00734330
+// VTABLE: GAMEMD 0x7EE0D4
+// VTABLE: GAMEMD 0x7EE0B4
+GG_DYNVECTOR_CTOR_POD_BODY(DynamicVectorClass_00734330, 0x7EE0D4, 0x7EE0B4)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0FE58
