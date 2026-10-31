@@ -135763,7 +135763,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/load_progress_mgr_methods.cpp",
+  "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x552AD0",
   "sym": "??0LoadProgressMgr@@QAE@XZ",
   "len": "0x35",
@@ -135772,7 +135772,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/load_progress_mgr_methods.cpp",
+  "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x552C90",
   "sym": "?FUN_00552C90@LoadProgressMgr@@QAEHXZ",
   "len": "0x27",
@@ -135781,7 +135781,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/load_progress_mgr_methods.cpp",
+  "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x554400",
   "sym": "?Notice@LoadProgressMgr@@UAE_NHH@Z",
   "len": "0x2d",
@@ -135790,7 +135790,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/load_progress_mgr_methods.cpp",
+  "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x554100",
   "sym": "?FUN_00554100@@YIXPAUPoint_00554100@@@Z",
   "len": "0x42",
@@ -135799,7 +135799,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/load_progress_mgr_methods.cpp",
+  "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x554150",
   "sym": "?FUN_00554150@@YIPAURect_00554150@@PAU1@@Z",
   "len": "0x6c",
@@ -145303,7 +145303,7 @@
   "pct": 81.2
  },
  {
-  "tu": "match/ui/load_progress_mgr_cleanup.cpp",
+  "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x554370",
   "sym": "?FUN_00554370@LoadProgressMgr@@QAEXXZ",
   "len": "0x8f",
