@@ -144700,7 +144700,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/r22_w4_mouse_cursor_pos.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9DF0",
   "sym": "?Method_7B9DF0@WWMouseClass@@QAEXPAH0@Z",
   "len": "0x35",
@@ -145069,7 +145069,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/wwmous_r23_4.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B86B0",
   "sym": "?FUN_007B86B0@@YIXXZ",
   "len": "0x74",

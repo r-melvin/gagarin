@@ -21,6 +21,8 @@
 #include "mouse_ww_mouse_lock.h"
 
 #include "mouse_ww_mouse_lock.h"
+#include <windows.h>
+#include "mouse_ww_mouse_class.h"
 
 // The save-under restore that vf_3, vf_5 and SetCursor share: copy the saved background back onto the
 // screen at the cursor rectangle.
@@ -81,6 +83,37 @@ void FUN_007B84D0(int a1, int a2)
         {
             FUN_007BA090(DAT_00B78164, a2);
         }
+    }
+}
+
+// The thread control block at 0xB78138 is shared with the mouse thread: CreateThread at 0x7B8562 passes
+// its address as lpParameter to the thread procedure 0x7B8610, which reads the stop request (+0x00,
+// 0x7B8624/0x7B8691) and writes the acknowledgement (+0x08, 0x7B861A). This function writes the request
+// (0x7B86C0) and polls the acknowledgement (0x7B86D0/0x7B86DF).
+// GLOBAL: GAMEMD 0xB78138 -- the mouse thread's stop request.
+extern volatile int DAT_00B78138;
+// GLOBAL: GAMEMD 0xB78140 -- set by the mouse thread once it has noticed the request.
+extern volatile int DAT_00B78140;
+// GLOBAL: GAMEMD 0xB78154 -- the mouse thread handle.
+extern HANDLE DAT_00B78154;
+// GLOBAL: GAMEMD 0xB7816C -- the mouse thread is running.
+extern int DAT_00B7816C;
+
+// FUNCTION: GAMEMD 0x7B86B0
+// Stops the mouse thread (request, spin until acknowledged, wait up to 5 s) and closes its handles.
+void FUN_007B86B0()
+{
+    if (DAT_00B7816C) {
+        DAT_00B78138 = 1;
+        while (DAT_00B78140 == 0)
+            Sleep(0);
+        WaitForSingleObject(DAT_00B78154, 5000);
+        CloseHandle(DAT_00B78154);
+        DAT_00B7816C = 0;
+    }
+    if (MouseMutex) {
+        CloseHandle(MouseMutex);
+        MouseMutex = 0;
     }
 }
 
@@ -285,6 +318,17 @@ void WWMouseClass::ConvertCoords(int* x, int* y)
 // SYNTHETIC: GAMEMD 0x7BA300
 // Mouse scalar deleting destructor.
 
+// FUNCTION: GAMEMD 0x7B9DF0
+// Reads the OS cursor position into *x / *y, then converts it through vtable slot 17 (ConvertCoords).
+void WWMouseClass::Method_7B9DF0(int* x, int* y)
+{
+    POINT p;
+    GetCursorPos(&p);
+    *x = p.x;
+    *y = p.y;
+    ConvertCoords(x, y);
+}
+
 // FUNCTION: GAMEMD 0x7BA320
 bool WWMouseClass::IsMouseHidden()
 {
@@ -342,4 +386,8 @@ int MouseViewOffset;
 MouseSurfaceView* MouseSidebarSurface;
 // GLOBAL: GAMEMD 0xA8EB7C
 bool MouseDrawFlag;
+// GLOBAL: GAMEMD 0xB78154
+HANDLE DAT_00B78154;
+// GLOBAL: GAMEMD 0xB7816C
+int DAT_00B7816C;
 // END defined globals
