@@ -35,6 +35,10 @@
 // canonical header declares them yet).
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "vector_class_operations.h"
+#include <stdio.h>
+#include "vector_add_item_free.h"
+#include "bounded_text.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -63,28 +67,31 @@ double DAT_00887710 = DAT_007E1718 / DAT_00887728;
 // GLOBAL: GAMEMD 0x00887718
 MathTblCoord DAT_00887718;
 
-// The registry, seen through the slot it calls (an ABI view, not the template).
-class AbstractTypeRegistryView
-{
-public:
-    virtual void Slot00();
-    virtual void Slot04();
-    virtual void Slot08();
-    virtual void Slot0C();
-    virtual int FindItemIndex(AbstractTypeClass* const& item) const;
-    AbstractTypeClass** Items;   // +0x04
-    int Capacity;                // +0x08
-    int unknown_0C;              // +0x0C
-    int Count;                   // +0x10
-};
-GG_STATIC_ASSERT(offsetof(AbstractTypeRegistryView, Count) == 0x10);
 // GLOBAL: GAMEMD 0xA8E968
-extern AbstractTypeRegistryView DAT_00A8E968;
+extern DynamicVectorClass<AbstractTypeClass*> DAT_00A8E968;
+// GLOBAL: GAMEMD 0x887734
+extern const wchar_t DAT_00887734[];
+
+// FUNCTION: GAMEMD 0x410800
+AbstractTypeClass::AbstractTypeClass(const char* id)
+{
+    if (id == 0) {
+        char generated[16];
+        // STRING: GAMEMD 0x817828
+        sprintf(generated, "%08X", this);
+        GgBoundedText<25>(generated).CopyTo(ID);
+    } else {
+        GgBoundedText<25>(id).CopyTo(ID);
+    }
+    GgBoundedText<49>(ID).CopyTo(Name);
+    UIName = DAT_00887734;
+    DynamicVectorAddItemFree(&DAT_00A8E968, this);
+}
 
 // FUNCTION: GAMEMD 0x4109C0
 AbstractTypeClass::~AbstractTypeClass()
 {
-    AbstractTypeRegistryView* registry = &DAT_00A8E968;
+    DynamicVectorClass<AbstractTypeClass*>* registry = &DAT_00A8E968;
     int index = registry->FindItemIndex(this);
     if (index != -1 && index < registry->Count) {
         --registry->Count;
@@ -110,7 +117,6 @@ extern const wchar_t DAT_00887734[];
 wchar_t* __fastcall StringTable_LoadString(const char* label, int* output,
                                                const char* file, int line);
 
-#include "bounded_text.h"
 GG_STATIC_ASSERT(sizeof(GgBoundedText<49>) == 49);
 GG_STATIC_ASSERT(sizeof(GgBoundedText<32>) == 32);
 GG_STATIC_ASSERT(offsetof(AbstractTypeClass, ID) == 0x24);
