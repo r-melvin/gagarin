@@ -15650,5 +15650,19 @@
  "match/ui/input_controls/display_scroll.cpp::_DAT_007F1078": "0x007F1078",
  "match/ui/input_controls/w2_mouse_timer_global_r15.cpp::_$S4": "0x00ABF250",
  "match/ui/shape_button_statics.cpp::_$S6": "0x00B0C1AC",
- "match/ui/tu056_control_class.cpp::_$S4": "0x0089ED10"
+ "match/ui/tu056_control_class.cpp::_$S4": "0x0089ED10",
+ "?FUN_007c81db@@YAHPAE0H@Z": "0x007C81DB",
+ "?FUN_007C3690@@YIHPAUMovieHandle_007BD470@@H@Z": "0x007C3690",
+ "?FUN_007C2D00@@YIHPAUMovieHandle_007BD470@@HH@Z": "0x007C2D00",
+ "?FUN_0075A120@VQAClass@@QAEHHPAIH@Z": "0x0075A120",
+ "?FUN_007C3710@@YIHPAUMovieHandle_007BD470@@PAH11@Z": "0x007C3710",
+ "?FUN_00748220@@YIXH@Z": "0x00748220",
+ "?FUN_007483B0@@YIXXZ": "0x007483B0",
+ "?FUN_007C6B70@@YIXXZ": "0x007C6B70",
+ "?FUN_007C3230@@YIHPAUMovieHandle_007BD470@@P6IXXZ1@Z": "0x007C3230",
+ "?DAT_00A8ED80@@3DA": "0x00A8ED80",
+ "?FUN_004A4780@@YIXPAE@Z": "0x004A4780",
+ "?FUN_007C3990@@YIIPAUMovieHandle_007BD470@@@Z": "0x007C3990",
+ "?FUN_006C9C60@VQAOwner_006C9C60@@QAEXI@Z": "0x006C9C60",
+ "?DAT_00B45BA4@@3DA": "0x00B45BA4"
 }
