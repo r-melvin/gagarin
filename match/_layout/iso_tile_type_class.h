@@ -69,6 +69,10 @@ public:
 
     // Declared ascending by retail address (reccmp/isle TU discipline).
     // Slot 39 (0x544CB0), the loaded tile-set header: the ObjectTypeClass::Image member (+0xA4) holds it, loaded on first use.
+    // The slot is the ObjectTypeClass virtual vf_39: the base body (0x41CFA0) returns Image (+0xA4) and OverlayTypeClass
+    // (0x5FEDE0) overrides it with a lazy loader too. The retail binary carries class names only (RTTI), no method names,
+    // and an override must keep the base's name or it declares a new slot, so the slot keeps the placeholder vf_39 and
+    // the descriptive accessor below is a non-virtual wrapper.
     virtual void* vf_39();
     TileImageHeader* GetTileData() { return static_cast<TileImageHeader*>(vf_39()); }
     int              GetMorphType(int idx);   // GAMEMD 0x5471B0
