@@ -67,6 +67,7 @@ extern "C" void __cdecl GameDelete(void* pMem);
 // canonical header declares them yet).
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0x7E3A18
 extern const double DAT_007E3A18;
@@ -91,6 +92,18 @@ GG_STATIC_ASSERT(sizeof(DAT_0089C450) == 8);
 // GLOBAL: GAMEMD 0x0089C458
 MathTblCoord DAT_0089C458;
 GG_STATIC_ASSERT(sizeof(DAT_0089C458) == 0xC);
+
+extern HeaderCoordInit DAT_0089C430;  // GAMEMD 0x0089C430, the "no location" coordinate
+
+// FUNCTION: GAMEMD 0x430210
+// Start at the "no location" coordinate with both state bits clear and the label emptied.
+BeaconClass::BeaconClass()
+{
+    Coord = DAT_0089C430;
+    Bitfield &= 0xFC;
+    for (int i = 0; i < 0x40; i++)
+        ((int*)&_gap0D[1])[i] = 0;
+}
 
 // FUNCTION: GAMEMD 0x430580
 // Empty function that pops its stack arguments.
