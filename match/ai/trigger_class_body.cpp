@@ -9,6 +9,7 @@
 //   /Ob2: the scalar deleting destructor 0x726950 expands the destructor and
 //   the destructor expands the vector RemoveItem bodies in place.
 
+#include "../DEFINES.H"
 #include "../FUNCTION.H"
 #include "../movement/locomotion_load_support.h"
 #include "../core/abstract_registry.h"

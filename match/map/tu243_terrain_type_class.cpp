@@ -29,14 +29,17 @@
 //    subscript produces.
 
 #include <new.h>
-#include "../_layout/obj_0069e430.h"
+#include <stddef.h>
 #include <stdlib.h>
-#include "terrain_objects/terrain_type_class.h"
-#include "terrain_objects/terrain_class.h"
 #include "../_layout/obj_004a1d30.h"
-#include "../platform/ccini_class_methods.h"
-#include "../ui/shape_header.h"
+#include "../_layout/obj_0069e430.h"
+#include "../_rt/gg_static_assert.h"
 #include "../core/scenario_class_methods.h"
+#include "../core/type_class_findoralloc_methods.h"
+#include "../platform/ccini_class_methods.h"
+#include "terrain_objects/terrain_class.h"
+#include "terrain_objects/terrain_type_class.h"
+#include "../ui/shape_header.h"
 // GLOBAL: GAMEMD 0x887180
 extern CCINIClass DAT_00887180;
 
@@ -44,14 +47,11 @@ extern CCINIClass DAT_00887180;
 extern "C" const CLSID CLSID_TerrainType =
     { 0x5AF2CE7B, 0x0634, 0x11D2, { 0xAC, 0xA4, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5 } };
 
-#include "../core/type_class_findoralloc_methods.h"
 
 //   Each entry point disassembled individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
 //   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
 
 
 

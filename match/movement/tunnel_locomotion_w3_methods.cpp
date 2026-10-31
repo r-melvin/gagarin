@@ -3,6 +3,7 @@
 //   Small ILocomotion overrides of TunnelLocomotionClass read off retail gamemd.exe
 //   v1.001 (ILocomotion vtable 0x7F5A24). Functions are in ascending retail address order.
 
+#include "../VECTOR.H"
 #include "../FUNCTION.H"
 #include <new.h>
 #include "tunnel_locomotion_w3_methods.h"

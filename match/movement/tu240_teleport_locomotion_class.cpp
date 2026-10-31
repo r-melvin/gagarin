@@ -13,6 +13,7 @@
 // 0x7180A0, GetClassID 0x719C60, InWhichLayer 0x719E20, EndPiggyback 0x719EE0,
 // AddRef 0x71A0E0, Release 0x71A0F0 and the adjustor thunks.
 
+#include "../DEFINES.H"
 #include <new.h>
 #include "../_layout/teleport_locomotion_class.h"
 #include "../core/header_tuning_globals.h"

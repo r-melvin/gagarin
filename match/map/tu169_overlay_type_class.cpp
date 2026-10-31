@@ -22,6 +22,7 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
+#include "../DEFINES.H"
 #include <new.h>
 #include "../_layout/swizzle_manager_class.h"
 #include "terrain_objects/overlay_type_class.h"

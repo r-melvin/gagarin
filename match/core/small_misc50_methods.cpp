@@ -2,6 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at 0x410960.
 
+#include "../DEFINES.H"
 #include "small_misc50_methods.h"
 
 #include "../_layout/abstract_type_class.h"
