@@ -94,7 +94,7 @@ def main():
     P = os.path.join(root, "packets")
     os.makedirs(P)
     cls = "match/core/abstract_class_slots.cpp"
-    cls2 = "match/core/abstract_type_class_dtor.cpp"
+    cls2 = "match/core/AbsType.cpp"
     row = {"tu": cls, "addr": "0x410450", "sym": "?IsDirty@AbstractClass@@UAGJXZ", "len": "0x11",
            "name": "dup", "status": "matched", "pct": 100}
     pk = {
