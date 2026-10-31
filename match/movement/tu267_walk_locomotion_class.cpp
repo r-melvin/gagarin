@@ -23,6 +23,7 @@
 
 #include <new.h>
 #include "walk_locomotion_class.h"
+#include "../_layout/cell_class.h"   // CellClass: the map cell lookup result
 #include "../core/header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals --------------
@@ -155,7 +156,7 @@ void __stdcall WalkLocomotionClass::MoveTo(LocoCoord to)
         return;
     unknown_1C = to;
     if (to.X != DAT_00B45BE8.X || to.Y != DAT_00B45BE8.Y || to.Z != DAT_00B45BE8.Z) {
-        if (WalkCellAt(to)->Flags & 0x100)
+        if (DAT_0087F7E8.FUN_00565730(to)->Flags & 0x100)
             unknown_1C.Z += LocoHeightScale(0x3C);
         unknown_34 = true;
     } else if (WalkIsEmpty(MoveHeadTo)) {

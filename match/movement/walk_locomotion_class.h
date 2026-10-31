@@ -28,7 +28,7 @@ inline bool WalkIsEmpty(const LocoCoord& c)
     return c.X == DAT_00B45BE8.X && c.Y == DAT_00B45BE8.Y && c.Z == DAT_00B45BE8.Z;
 }
 
-// A coordinate with a user-declared copy, as handed to the cell lookup.
+// A coordinate with a user-declared copy (the Walk bodies use it as a local value).
 struct WalkCoord : LocoCoord
 {
     WalkCoord() {}
@@ -415,17 +415,6 @@ GG_STATIC_ASSERT(offsetof(WalkFootView, PrimaryFacing) == 0x388);
 GG_STATIC_ASSERT(offsetof(WalkFootView, unknown_578) == 0x578);
 GG_STATIC_ASSERT(offsetof(WalkFootView, unknown_6AD) == 0x6AD);
 inline WalkFootView* WalkFoot(FootClass* f) { return (WalkFootView*)f; }
-
-struct WalkCellView
-{
-    char         unknown_000[0x140];
-    unsigned int Flags;                               // +0x140
-};
-GG_STATIC_ASSERT(offsetof(WalkCellView, Flags) == 0x140);
-inline WalkCellView* WalkCellAt(const WalkCoord& c)
-{
-    return (WalkCellView*)DAT_0087F7E8.GetCellAt(c);
-}
 
 // FUNCTION: GAMEMD 0x6D2120 (decl; reloc), address-scoped integer helper.
 int LocoHeightScale(int value);

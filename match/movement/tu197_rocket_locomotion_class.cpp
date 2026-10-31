@@ -14,6 +14,7 @@
 // Each body is what cl emits for one file-scope variable's initialiser, so each
 // is a plain `void __cdecl` with the assignment as its whole content.
 
+#include "../FUNCTION.H"
 #include "rocket_locomotion_globals.h"
 
 #include "rocket_locomotion.h"
@@ -165,7 +166,7 @@ bool __stdcall RocketLocomotionClass::Process()
             if (Armed) {
                 ((RocketFootView*)LinkedTo)->vf_124(0);
                 Armed = false;
-                ((RocketMapView*)&DAT_0087F7E8)->Submit(LinkedTo);
+                DAT_0087F7E8.FUN_004A9720(LinkedTo);
                 ((RocketFootView*)LinkedTo)->vf_124(1);
             }
         } else {
@@ -223,7 +224,7 @@ bool __stdcall RocketLocomotionClass::Process()
         if (!Armed) {
             ((RocketFootView*)LinkedTo)->vf_124(0);
             Armed = true;
-            ((RocketMapView*)&DAT_0087F7E8)->Submit(LinkedTo);
+            DAT_0087F7E8.FUN_004A9720(LinkedTo);
             ((RocketFootView*)LinkedTo)->vf_124(1);
         }
         Elevation = spec->unknown_18 + Elevation;
@@ -340,10 +341,10 @@ bool __stdcall RocketLocomotionClass::Process()
                 int length = PhaseTimer.Rate;
                 if ((double)(length - PhaseTimer.RemainingSubtract()) / (double)length != 1.0) {
                     loc.Z = spec->unknown_14 + loc.Z;
-                    RocketCellCoord cell;
+                    CellStruct cell;
                     cell.X = (short)((loc.X + ((loc.X >> 31) & 0xFF)) >> 8);
                     cell.Y = (short)((loc.Y + ((loc.Y >> 31) & 0xFF)) >> 8);
-                    if (((RocketMapView*)&DAT_0087F7E8)->FUN_00568300(&cell))
+                    if (DAT_0087F7E8.FUN_00568300(&cell))
                         ((RocketFootView*)LinkedTo)->vf_1B4(&loc);
                     break;
                 }
@@ -386,10 +387,10 @@ bool __stdcall RocketLocomotionClass::Process()
         p.X = x;
         p.Y = y;
         p.Z = z;
-        RocketCellCoord cell;
+        CellStruct cell;
         cell.X = (short)((x + ((x >> 31) & 0xFF)) >> 8);
         cell.Y = (short)((y + ((y >> 31) & 0xFF)) >> 8);
-        if (((RocketMapView*)&DAT_0087F7E8)->FUN_00568300(&cell))
+        if (DAT_0087F7E8.FUN_00568300(&cell))
             ((RocketFootView*)LinkedTo)->vf_1B4(&p);
         RocketCellCoord now = ((RocketFootView*)LinkedTo)->vf_1B8();
         if ((now.X != ((RocketFootView*)LinkedTo)->unknown_560.X || now.Y != ((RocketFootView*)LinkedTo)->unknown_560.Y)

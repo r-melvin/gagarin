@@ -421,15 +421,6 @@ GG_STATIC_ASSERT(offsetof(MechFootLayoutView, Location)==0x9C);
 GG_STATIC_ASSERT(offsetof(MechFootLayoutView, PrimaryFacing)==0x388);
 inline MechFootLayoutView* MechFoot(FootClass* f) { return (MechFootLayoutView*)f; }
 
-struct MechCellLayoutView {
-    char unknown_000[0x140];
-    unsigned int Flags;
-};
-GG_STATIC_ASSERT(offsetof(MechCellLayoutView, unknown_000)==0);
-GG_STATIC_ASSERT(offsetof(MechCellLayoutView, Flags)==0x140);
-inline MechCellLayoutView* MechCellAt(const MechCoord& c) {
-    return (MechCellLayoutView*)DAT_0087F7E8.GetCellAt(c);
-}
 inline void MechUnmarkAt(MechFootLayoutView* f, const MechCoord& c) { f->vf_0F4(&c); }
 
 // FUNCTION: GAMEMD 0x6D2120 (decl; reloc), address-scoped integer helper.

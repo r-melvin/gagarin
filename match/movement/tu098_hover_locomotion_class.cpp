@@ -37,6 +37,7 @@
 // values sit in a local table and each output channel steps two entries
 // further round it. 21 callers (scheme tint lookups among them).
 
+#include "../FUNCTION.H"
 #include <math.h>
 #include <stdlib.h>
 #include <new.h>
@@ -225,7 +226,7 @@ Matrix3D __stdcall HoverLocomotionClass::DrawMatrix(unsigned int* key)
     if (fabs(HoverFoot(LinkedTo)->AngleSideways) < 0.005 && fabs(HoverFoot(LinkedTo)->AngleForwards) < 0.005) {
         if (!IsPowered()) {
             LocoCoord location = HoverFoot(LinkedTo)->Location;
-            int slope = HoverMap().GetCellAt(&location)->SlopeIndex;
+            int slope = DAT_0087F7E8.FUN_00565730(&location)->SlopeIndex;
             Matrix3D m = FUN_007559B0(slope);
             m.RotateZ((float)(((int)((((HoverFoot(LinkedTo)->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
                               * -0.19634954084936207));
@@ -398,7 +399,7 @@ bool __stdcall HoverLocomotionClass::Process()
                 HoverFoot(LinkedTo)->Slot_124(0);
                 HoverFoot(LinkedTo)->Slot_1B4(&target);
                 HoverFoot(LinkedTo)->FUN_005F6060(slotValue);
-                HoverObjectView* cellView = HoverMap().GetCellAt(&target);
+                CellClass* cellView = DAT_0087F7E8.FUN_00565730(&target);
                 if (!HoverFoot(LinkedTo)->unknown_08C && (cellView->Flags & 0x100)) {
                     if (HoverFoot(LinkedTo)->Slot_1C8() >= DAT_00A8F1B4)
                         HoverFoot(LinkedTo)->unknown_08C = 1;
@@ -437,11 +438,11 @@ finish:
         }
         if (!IsRocking) {
             LocoCoord loc = HoverFoot(LinkedTo)->Location;
-            HoverMap().GetCellAt(&loc)->FUN_00486920();
+            FUN_00486920(DAT_0087F7E8.FUN_00565730(&loc));
             LocoCoord loc2 = HoverFoot(LinkedTo)->Location;
-            if (HoverMap().GetCellAt(&loc2)->unknown_0EC == 2) {
+            if (DAT_0087F7E8.FUN_00565730(&loc2)->LandType == 2) {
                 LocoCoord loc3 = HoverFoot(LinkedTo)->Location;
-                if (loc3.Z < HoverMap().GetHeightAt(&loc3) + DAT_00A8F1C0)
+                if (loc3.Z < DAT_0087F7E8.FUN_00578080(&loc3) + DAT_00A8F1C0)
                     HoverFoot(LinkedTo)->Slot_0EC();
             }
         }
@@ -501,12 +502,12 @@ void __stdcall HoverLocomotionClass::MoveTo(LocoCoord to)
         if (HoverFoot(LinkedTo)->House->IonSensitivesShouldBeOffline())
             PowerOff();
     }
-    Destination_.Z = HoverMap().GetHeightAt(&Destination_);
+    Destination_.Z = DAT_0087F7E8.FUN_00578080(&Destination_);
     LocoCoord target;
     target.X = to.X;
     target.Y = to.Y;
     target.Z = to.Z;
-    if (HoverMap().GetCellAt(&target)->Flags & 0x100)
+    if (DAT_0087F7E8.FUN_00565730(&target)->Flags & 0x100)
         Destination_.Z += DAT_00A8F1B4;
     if (to.X == DAT_00A8F180.X && to.Y == DAT_00A8F180.Y && to.Z == DAT_00A8F180.Z)
         return;
@@ -637,12 +638,12 @@ bool __stdcall HoverLocomotionClass::IsIonSensitive()
                 return false;
         }
     }
-    HoverObjectView* building;
+    BuildingClass* building;
     {
         LocoCoord location = HoverFoot(LinkedTo)->Location;
-        building = HoverMap().GetCellAt(&location)->FUN_0047C520();
+        building = DAT_0087F7E8.FUN_00565730(&location)->GetBuilding();
     }
-    if (building != 0 && building->unknown_520->unknown_16BD) {
+    if (building != 0 && building->Type->bools_16A4[25]) {
         LocoCoord buildingLocation = building->Location;
         HoverCellCoord buildingCell = CellOf(buildingLocation);
         LocoCoord footLocation = HoverFoot(LinkedTo)->Location;
@@ -672,14 +673,14 @@ bool __stdcall HoverLocomotionClass::Push(unsigned long dir)
         HoverCellCoord buffer;
         HoverCellCoord* current = HoverFoot(LinkedTo)->Slot_1B8(&buffer);
         HoverCellCoord next = AddCell(*current, DAT_0089F688[((dir >> 12) + 1 >> 1) & 7]);
-        if (HoverFoot(LinkedTo)->Slot_1AC(HoverMap().GetCellAtCell(&next), -1, -1, 0, 1) == 0) {
+        if (HoverFoot(LinkedTo)->Slot_1AC(DAT_0087F7E8.FUN_005657A0(&next), -1, -1, 0, 1) == 0) {
             Blocked = true;
             if (IsMoving()) {
                 HoverFoot(LinkedTo)->PathDirection0 = -1;
                 if (!(HeadTo.X == DAT_00A8F180.X && HeadTo.Y == DAT_00A8F180.Y && HeadTo.Z == DAT_00A8F180.Z))
                     HoverFoot(LinkedTo)->Slot_0F4(&HeadTo);
                 HeadTo = CellCenter(next);
-                HeadTo.Z = HoverMap().GetHeightAt(&HeadTo);
+                HeadTo.Z = DAT_0087F7E8.FUN_00578080(&HeadTo);
                 LocoCoord location = HoverFoot(LinkedTo)->Location;
                 if (location.Z >= HeadTo.Z + DAT_00A8F1C0 * 3)
                     HeadTo.Z += DAT_00A8F1B4;

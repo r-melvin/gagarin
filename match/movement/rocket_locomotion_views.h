@@ -51,8 +51,6 @@ GG_STATIC_ASSERT(offsetof(RocketAnimTypeArray,Items)==4); GG_STATIC_ASSERT(sizeo
 struct RocketAnimView { char opaque[0x1C8]; RocketAnimView(void*, LocoCoord*, int,int,int,int,char); };
 GG_STATIC_ASSERT(sizeof(RocketAnimView)==0x1C8);
 struct RocketObjectView;
-struct RocketMapView { char unknown_00[4]; void Submit(FootClass* foot); bool FUN_00568300(RocketCellCoord* cell); };
-GG_STATIC_ASSERT(sizeof(RocketMapView)==4);
 struct RocketFootVirtuals {
     virtual void vf_000();
     virtual void vf_004();

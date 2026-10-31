@@ -35,6 +35,7 @@
 //   Provenance note: own-binary-via-Ghidra (gamemd.exe v1.001 entry-bounded x87 loads, calls and stores).
 //
 //   Provenance note: own-binary-via-Ghidra (gamemd.exe v1.001 entry-origin x87 loads and stores).
+#include "../FUNCTION.H"
 #include <new.h>
 #include "droppod_locomotion.h"
 

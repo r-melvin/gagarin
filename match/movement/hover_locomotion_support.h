@@ -12,22 +12,17 @@
 #include "../map/pair_0042d490.h"       // canonical Pair_0042D490 and DAT_0089F688
 
 // Two-short cell-coordinate value used by Hover bodies and out-parameter calls.
-struct HoverCellCoord
+struct HoverCellCoord : CellStruct
 {
-    short X;
-    short Y;
-
     HoverCellCoord() {}
-    HoverCellCoord(short x, short y) : X(x), Y(y) {}
+    HoverCellCoord(short x, short y) { X = x; Y = y; }
     explicit HoverCellCoord(const LocoCoord& coord)
-        : X((short)(coord.X / 256)), Y((short)(coord.Y / 256)) {}
+    { X = (short)(coord.X / 256); Y = (short)(coord.Y / 256); }
     bool operator==(const HoverCellCoord& other) const
     { return X == other.X && Y == other.Y; }
     // FUNCTION: GAMEMD 0x50E470 (decl; reloc)
     bool FUN_0050E470(const HoverCellCoord* other);
 };
-GG_STATIC_ASSERT(offsetof(HoverCellCoord, X) == 0x00);
-GG_STATIC_ASSERT(offsetof(HoverCellCoord, Y) == 0x02);
 GG_STATIC_ASSERT(sizeof(HoverCellCoord) == 0x04);
 GG_STATIC_ASSERT(offsetof(Pair_0042D490, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(Pair_0042D490, Y) == 0x02);
@@ -108,8 +103,6 @@ GG_STATIC_ASSERT(sizeof(HoverObjectVirtuals) == 0x04);
 
 struct HoverObjectView : HoverObjectVirtuals
 {
-    // FUNCTION: GAMEMD 0x486920 (decl; reloc)
-    void FUN_00486920();
     // FUNCTION: GAMEMD 0x47C520 (decl; reloc)
     HoverObjectView* FUN_0047C520();
     char unknown_004[0x09C - 0x004];
@@ -208,22 +201,10 @@ struct HoverAnimView
 };
 GG_STATIC_ASSERT(sizeof(HoverAnimView) == 0x1C8);
 
-// Method-only Map prefix view. The singleton itself is the canonical LocoMap
-// object declared in loco_foot.h; Hover accesses its same storage through this view.
-struct HoverMapView
-{
-    char unknown_000[0x04];
-    // FUNCTION: GAMEMD 0x565730 (decl; reloc)
-    HoverObjectView* GetCellAt(const LocoCoord* coord);
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    HoverObjectView* GetCellAtCell(const HoverCellCoord* cell);
-    // FUNCTION: GAMEMD 0x578080 (decl; reloc)
-    int GetHeightAt(const LocoCoord* coord);
-};
-GG_STATIC_ASSERT(offsetof(HoverMapView, unknown_000) == 0x00);
-GG_STATIC_ASSERT(sizeof(HoverMapView) == 0x04);
-inline HoverMapView& HoverMap()
-{ return *(HoverMapView*)(void*)&DAT_0087F7E8; }
+// FUNCTION: GAMEMD 0x486920 (decl; reloc) - CellClass method, ECX = the cell, no stack arguments. Declared here
+// rather than as a CellClass member: one more member of that class changes the code generated for unrelated
+// translation units that include it.
+void __fastcall FUN_00486920(CellClass* cell);
 
 // FootClass slots called by Hover. Unused slots are placeholders only, keeping
 // the observed vtable indices; only Hover-used signatures carry arguments/results.
@@ -337,7 +318,7 @@ struct HoverFootVirtuals
     virtual void Slot_1A0();
     virtual void Slot_1A4();
     virtual void Slot_1A8();
-    virtual int Slot_1AC(HoverObjectView* cell, int a, int b, int c, int d);
+    virtual int Slot_1AC(CellClass* cell, int a, int b, int c, int d);
     virtual void Slot_1B0();
     virtual void Slot_1B4(LocoCoord* coord);
     virtual HoverCellCoord* Slot_1B8(HoverCellCoord* out);

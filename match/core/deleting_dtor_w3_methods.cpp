@@ -5,25 +5,9 @@
 //   is only reached through the deleting form, so it is expanded in place.
 //   Address index: 0x728710 TubeClass.
 
+#include "../FUNCTION.H"
 #include "../_layout/abstract_class.h"
 #include "../core/vector_class_operations.h"
-
-// A map cell, as far as the tube index the tube destructor clears.
-struct TubeCellView
-{
-    char unknown_00[0x116];
-    short TubeIndex;   // +0x116
-};
-GG_STATIC_ASSERT(offsetof(TubeCellView, TubeIndex) == 0x116);
-
-struct TubeCell;
-struct TubeMapView
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the cell at a cell coordinate.
-    TubeCellView* GetCellAt(const TubeCell* cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8 -- MapClass::Instance (an object, not a pointer).
-extern TubeMapView DAT_0087F7E8;
 
 #include "../_layout/tube_class.h"
 
@@ -59,7 +43,7 @@ static inline int TubeIndexOf(TubeClass* tube)
 
 // FUNCTION: GAMEMD 0x727FD0
 // Registers a tube and points its start cell at the new registry index.
-TubeClass::TubeClass(const TubeCell* cell, int direction)
+TubeClass::TubeClass(const CellStruct* cell, int direction)
     : StartCell(*cell), EndCell(*cell), Direction(direction), StepCount(0)
 {
     vf_rtti_5();
@@ -68,7 +52,7 @@ TubeClass::TubeClass(const TubeCell* cell, int direction)
     }
     TubeRegistryAdd(&DAT_008B4138, this);
     if (cell->X != 0 || cell->Y != 0) {
-        TubeCellView* mapCell = DAT_0087F7E8.GetCellAt(cell);
+        CellClass* mapCell = DAT_0087F7E8.FUN_005657A0(cell);
         int index = TubeIndexOf(this);
         mapCell->TubeIndex = (short)index;
     }
@@ -78,7 +62,7 @@ TubeClass::TubeClass(const TubeCell* cell, int direction)
 TubeClass::~TubeClass()
 {
     AnnounceExpiredPointer(1);
-    TubeCellView* cell = DAT_0087F7E8.GetCellAt(&StartCell);
+    CellClass* cell = DAT_0087F7E8.FUN_005657A0(&StartCell);
     if (cell) {
         int index = TubeIndexOf(this);
         if (cell->TubeIndex == index) {

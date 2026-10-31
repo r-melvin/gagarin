@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <new.h>
 #include "mech_locomotion_class.h"
+#include "../_layout/cell_class.h"   // CellClass: the map cell lookup result
 
 // GLOBAL: GAMEMD 0x7E9AA0
 extern "C" const CLSID CLSID_MechLocomotion =
@@ -111,7 +112,7 @@ void __stdcall MechLocomotionClass::MoveTo(LocoCoord to)
         || MechFoot(LinkedTo)->vf_1D4() || MechFoot(LinkedTo)->vf_1D8())
         return;
     unknown_18 = to;
-    if (MechCellAt(to)->Flags & 0x100)
+    if (DAT_0087F7E8.FUN_00565730(to)->Flags & 0x100)
         unknown_18.Z += LocoHeightScale(0x3C);
     Moving = true;
 }

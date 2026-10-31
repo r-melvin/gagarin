@@ -25,22 +25,8 @@ extern "C" double __cdecl FUN_004CAD00(double angle);
 // GLOBAL: GAMEMD 0x7E2810 — radians per binary-angle unit, negated.
 extern const double DAT_007E2810;
 
-// The scenario randomizer; only the raw draw is called.
-struct Random_0049F420
-{
-    // FUNCTION: GAMEMD 0x65C780 (decl; reloc) — Randomizer::Random.
-    int Random();
-};
-
-// ScenarioClass — only Random @0x218 is touched.
-struct Scenario_0049F420
-{
-    char             _pad000[0x218];   // +0x0000
-    Random_0049F420  Random;           // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(Scenario_0049F420, Random) == 0x218);
-// GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-extern Scenario_0049F420* DAT_00A8B230;
+// (The scenario at 0xA8B230 is the canonical ScenarioClass* DAT_00A8B230 of _layout/scenario_ptr_00a8b230.h; its
+// randomizer sits at +0x218 and is called through Randomizer::Random 0x65C780.)
 
 // A binary angle: the facing byte sits in the high half of the 16-bit value.
 // The bit-fields use an int container and the value is built through the

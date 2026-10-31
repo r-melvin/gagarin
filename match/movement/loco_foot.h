@@ -16,6 +16,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "loco_interfaces.h"
+#include "../_layout/map_0087f7e8.h"   // the one declaration of DAT_0087F7E8 (the map object)
 
 // A binary-angle direction. The user-declared constructor is what makes VC6
 // return it through a hidden pointer (a POD this size would come back in EAX);
@@ -63,26 +64,6 @@ GG_STATIC_ASSERT(offsetof(LocoFootView_0055A730, Vtbl) == 0x00);
 GG_STATIC_ASSERT(sizeof(LocoFootVtbl*) == 4);
 GG_STATIC_ASSERT(offsetof(LocoFootView_0055A730, Location)      == 0x09C);
 GG_STATIC_ASSERT(offsetof(LocoFootView_0055A730, PrimaryFacing) == 0x388);
-
-// MapClass cell lookup used by ShadowMatrix (0x55A7D0 passes the map object in
-// ECX and one pointer on the stack, callee pops: `CALL 0x565730`).
-struct LocoCell
-{
-    char          unknown_000[0x11C];
-    unsigned char SlopeIndex;                         // +0x11C
-};
-GG_STATIC_ASSERT(offsetof(LocoCell, SlopeIndex) == 0x11C);
-
-struct LocoMap
-{
-    char opaque[4];
-
-    // FUNCTION: GAMEMD 0x565730 (decl; reloc) - MapClass::GetCellAt (__thiscall).
-    LocoCell* GetCellAt(const LocoCoord& coord);
-};
-
-// GLOBAL: GAMEMD 0x87F7E8 - the map object (ShadowMatrix `MOV ECX,0x87F7E8`).
-extern LocoMap DAT_0087F7E8;
 
 // GLOBAL: GAMEMD 0xABCC78 - 3-dword coordinate constant copied by Destination.
 extern LocoCoord DAT_00ABCC78;

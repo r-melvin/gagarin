@@ -46,13 +46,11 @@ struct HoverCoordView : public LocoCoord
 };
 GG_STATIC_ASSERT(sizeof(HoverCoordView) == sizeof(LocoCoord));
 
-// GLOBAL: GAMEMD 0x87F7E8 is declared once as LocoMap in loco_foot.h; Hover
-// accesses that storage through the narrow HoverMapView accessor.
+// GLOBAL: GAMEMD 0x87F7E8 is the canonical Map_0087F7E8 DAT_0087F7E8 (map_0087f7e8.h, via loco_foot.h).
 // GLOBAL: GAMEMD 0x8871E0 - rules pointer read by Hover Process
 extern HoverRulesView* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA8B230 - scenario pointer used by Hover PowerOff/Shove
 #include "../core/scenario_class_methods.h"
-extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0xA8ED84 - frame counter read by Hover Process
 extern int DAT_00A8ED84;
 // GLOBAL: GAMEMD 0xA8F180 - three-dword coordinate value read by Hover bodies

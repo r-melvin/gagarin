@@ -22,6 +22,7 @@
 #include <objidl.h>        // IUnknown, IPersist, IPersistStream, IStream (VC98 SDK, LIBRARY)
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/matrix3d.h"
+#include "../_layout/coord_struct.h"
 
 // ---------------------------------------------------------------------------
 // Value types that appear in interface signatures.
@@ -30,12 +31,7 @@
 // Three-dword world coordinate (YRpp CoordStruct). Passed by value as 12 stack
 // bytes (MoveTo RET 0x10, ForceImmediateDestination RET 0x10, ForceTrack RET
 // 0x14, IsMovingHere RET 0x10) and returned through an out pointer.
-struct LocoCoord
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
+typedef CoordStruct LocoCoord;
 GG_STATIC_ASSERT(offsetof(LocoCoord, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(LocoCoord, Y) == 0x04);
 GG_STATIC_ASSERT(offsetof(LocoCoord, Z) == 0x08);

@@ -21,6 +21,7 @@
 //
 //   Class and slot identities follow the native tables recorded in the shared headers.
 
+#include "../FUNCTION.H"
 #include "loco_base.h"
 #include "locomotion_load_support.h"
 #include "loco_foot.h"
@@ -91,7 +92,7 @@ Matrix3D __stdcall LocomotionClass::DrawMatrix(unsigned int* key)
 Matrix3D __stdcall LocomotionClass::ShadowMatrix(unsigned int* key)
 {
     LocoCoord coord = reinterpret_cast<LocoFootView_0055A730*>(LinkedTo)->Location;
-    int slope = DAT_0087F7E8.GetCellAt(coord)->SlopeIndex;
+    int slope = DAT_0087F7E8.FUN_00565730(coord)->SlopeIndex;
     Matrix3D m = FUN_007559B0(slope);
 
     m.RotateZ((float)(((int)((((reinterpret_cast<LocoFootView_0055A730*>(LinkedTo)->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)

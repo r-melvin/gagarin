@@ -8,21 +8,15 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
-
-// A tube's start and end cells are copied from one dword.
-struct TubeCell
-{
-    short X;
-    short Y;
-};
+#include "cell.h"
 
 // GLOBAL: GAMEMD 0xB0BC68 -- the cell record the class factory passes to the constructor.
-extern TubeCell DAT_00B0BC68;
+extern CellStruct DAT_00B0BC68;
 
 class TubeClass : public AbstractClass
 {
 public:
-    TubeClass(const TubeCell* cell = &DAT_00B0BC68, int direction = 0);
+    TubeClass(const CellStruct* cell = &DAT_00B0BC68, int direction = 0);
     virtual ~TubeClass();
     // The stream loader's in-place construction: the base only (retail 0x410170).
     struct LoadTag {};
@@ -33,8 +27,8 @@ public:
     virtual int vf_11();
     virtual int vf_12();
     virtual void vf_13(struct Obj_004A1D30* crc);                      // 13  0x728630
-    TubeCell StartCell;      // +0x24
-    TubeCell EndCell;        // +0x28
+    CellStruct StartCell;      // +0x24
+    CellStruct EndCell;        // +0x28
     int Direction;           // +0x2C
     int Steps[100];          // +0x30
     int StepCount;           // +0x1C0

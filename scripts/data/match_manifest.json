@@ -25070,7 +25070,7 @@
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCAE0",
-  "sym": "?Destination@FlyLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@FlyLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
   "name": "FlyLocomotionClass::Destination",
   "status": "matched",
@@ -25655,128 +25655,128 @@
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661CB0",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x28",
-  "name": "Init_DAT_00B04E20",
+  "name": "_$E17",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661CE0",
-  "sym": "_$E5",
+  "sym": "_$E20",
   "len": "0x13",
-  "name": "Init_DAT_00B04E70",
+  "name": "_$E20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D00",
-  "sym": "_$E8",
+  "sym": "_$E23",
   "len": "0x13",
-  "name": "Init_DAT_00B04E58",
+  "name": "_$E23",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D20",
-  "sym": "_$E11",
+  "sym": "_$E26",
   "len": "0x13",
-  "name": "Init_DAT_00B04E50",
+  "name": "_$E26",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D40",
-  "sym": "_$E14",
+  "sym": "_$E29",
   "len": "0x13",
-  "name": "Init_DAT_00B04E28",
+  "name": "_$E29",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D60",
-  "sym": "_$E17",
+  "sym": "_$E32",
   "len": "0x13",
-  "name": "Init_DAT_00B04E00",
+  "name": "_$E32",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D80",
-  "sym": "_$E20",
+  "sym": "_$E35",
   "len": "0x31",
-  "name": "Init_DAT_00B04E78",
+  "name": "_$E35",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661DC0",
-  "sym": "_$E23",
+  "sym": "_$E38",
   "len": "0x21",
-  "name": "Init_DAT_00B04E30",
+  "name": "_$E38",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661DF0",
-  "sym": "_$E26",
+  "sym": "_$E41",
   "len": "0x2c",
-  "name": "Init_DAT_00B04E48",
+  "name": "_$E41",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E20",
-  "sym": "_$E29",
+  "sym": "_$E44",
   "len": "0x27",
-  "name": "Init_DAT_00B04E6C",
+  "name": "_$E44",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E50",
-  "sym": "_$E32",
+  "sym": "_$E47",
   "len": "0xf",
-  "name": "Init_DAT_00B04E18",
+  "name": "_$E47",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E60",
-  "sym": "_$E35",
+  "sym": "_$E50",
   "len": "0x12",
-  "name": "Init_DAT_00B04E38",
+  "name": "_$E50",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E80",
-  "sym": "_$E38",
+  "sym": "_$E53",
   "len": "0x1a",
-  "name": "Init_DAT_00B04E60",
+  "name": "_$E53",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661EA0",
-  "sym": "_$E41",
+  "sym": "_$E56",
   "len": "0x17",
-  "name": "Init_DAT_00B04E08",
+  "name": "_$E56",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/Techno.cpp",
@@ -47810,7 +47810,7 @@
  {
   "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC00",
-  "sym": "?ForceImmediateDestination@LocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?ForceImmediateDestination@LocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x3",
   "name": "LocomotionClass::ForceImmediateDestination",
   "status": "matched",
@@ -47819,7 +47819,7 @@
  {
   "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC10",
-  "sym": "?ForceTrack@LocomotionClass@@UAGXHULocoCoord@@@Z",
+  "sym": "?ForceTrack@LocomotionClass@@UAGXHUCoordStruct@@@Z",
   "len": "0x3",
   "name": "LocomotionClass::ForceTrack",
   "status": "matched",
@@ -47855,7 +47855,7 @@
  {
   "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC50",
-  "sym": "?MoveTo@LocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@LocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x3",
   "name": "LocomotionClass::MoveTo",
   "status": "matched",
@@ -47873,7 +47873,7 @@
  {
   "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC70",
-  "sym": "?Destination@LocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@LocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x27",
   "name": "LocomotionClass::Destination",
   "status": "matched",
@@ -47882,7 +47882,7 @@
  {
   "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ACA0",
-  "sym": "?HeadToCoord@LocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?HeadToCoord@LocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x2c",
   "name": "LocomotionClass::HeadToCoord",
   "status": "matched",
@@ -48008,25 +48008,25 @@
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x514CB0",
-  "sym": "?Destination@HoverLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@HoverLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x5C",
   "name": "HoverLocomotionClass::Destination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x514D10",
-  "sym": "?HeadToCoord@HoverLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?HeadToCoord@HoverLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
   "name": "HoverLocomotionClass::HeadToCoord",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x514D90",
-  "sym": "?MoveTo@HoverLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@HoverLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x1DA",
   "name": "HoverLocomotionClass::MoveTo",
   "status": "partial",
@@ -48134,11 +48134,11 @@
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x517210",
-  "sym": "?IsMovingHere@HoverLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "sym": "?IsMovingHere@HoverLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x99",
   "name": "HoverLocomotionClass::IsMovingHere",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
@@ -48170,16 +48170,16 @@
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
   "addr": "0x5AFF80",
-  "sym": "?Destination@MechLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@MechLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
   "name": "MechLocomotionClass::Destination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
   "addr": "0x5AFFE0",
-  "sym": "?HeadToCoord@MechLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?HeadToCoord@MechLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
   "name": "MechLocomotionClass::HeadToCoord",
   "status": "partial",
@@ -48197,11 +48197,11 @@
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B0080",
-  "sym": "?MoveTo@MechLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@MechLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x95",
   "name": "MechLocomotionClass::MoveTo",
   "status": "partial",
-  "pct": 39.6
+  "pct": 38.3
  },
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
@@ -48224,11 +48224,11 @@
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B01A0",
-  "sym": "?ForceImmediateDestination@MechLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?ForceImmediateDestination@MechLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x20",
   "name": "MechLocomotionClass::ForceImmediateDestination",
   "status": "partial",
-  "pct": 0
+  "pct": 0.0
  },
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
@@ -48278,11 +48278,11 @@
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B1AA0",
-  "sym": "?IsMovingHere@MechLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "sym": "?IsMovingHere@MechLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x99",
   "name": "MechLocomotionClass::IsMovingHere",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu133_mech_locomotion_class.cpp",
@@ -48323,7 +48323,7 @@
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661FB0",
-  "sym": "?Destination@RocketLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@RocketLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
   "name": "RocketLocomotionClass::Destination",
   "status": "matched",
@@ -48342,7 +48342,7 @@
  {
   "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
   "addr": "0x6632E0",
-  "sym": "?MoveTo@RocketLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@RocketLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xDA",
   "name": "RocketLocomotionClass::MoveTo",
   "status": "partial",
@@ -48432,7 +48432,7 @@
  {
   "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5B40",
-  "sym": "?Destination@DropPodLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@DropPodLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
   "name": "DropPodLocomotionClass::Destination",
   "status": "matched",
@@ -48450,7 +48450,7 @@
  {
   "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6040",
-  "sym": "?MoveTo@DropPodLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@DropPodLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x1b8",
   "name": "DropPodLocomotionClass::MoveTo",
   "status": "partial",
@@ -72919,11 +72919,11 @@
  {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718100",
-  "sym": "?MoveTo@TeleportLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@TeleportLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x123",
   "name": "TeleportLocomotionClass::MoveTo",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
@@ -72937,7 +72937,7 @@
  {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718260",
-  "sym": "?FUN_00718260@TeleportLocomotionClass@@QAE_NULocoCoord@@_N@Z",
+  "sym": "?FUN_00718260@TeleportLocomotionClass@@QAE_NUCoordStruct@@_N@Z",
   "len": "0x53B",
   "name": "TeleportLocomotionClass::FUN_00718260",
   "status": "partial",
@@ -72946,7 +72946,7 @@
  {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
   "addr": "0x7187A0",
-  "sym": "?FUN_007187A0@TeleportLocomotionClass@@QAEXULocoCoord@@@Z",
+  "sym": "?FUN_007187A0@TeleportLocomotionClass@@QAEXUCoordStruct@@@Z",
   "len": "0x3C2",
   "name": "TeleportLocomotionClass::FUN_007187A0",
   "status": "partial",
@@ -72955,7 +72955,7 @@
  {
   "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718B70",
-  "sym": "?FUN_00718B70@TeleportLocomotionClass@@QAE_NPBULocoCoord@@@Z",
+  "sym": "?FUN_00718B70@TeleportLocomotionClass@@QAE_NPBUCoordStruct@@@Z",
   "len": "0x74E",
   "name": "TeleportLocomotionClass::FUN_00718B70",
   "status": "partial",
@@ -73468,16 +73468,16 @@
  {
   "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75ABA0",
-  "sym": "?Destination@WalkLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@WalkLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
   "name": "WalkLocomotionClass::Destination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AC00",
-  "sym": "?HeadToCoord@WalkLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?HeadToCoord@WalkLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
   "name": "WalkLocomotionClass::HeadToCoord",
   "status": "partial",
@@ -73495,11 +73495,11 @@
  {
   "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75ACB0",
-  "sym": "?MoveTo@WalkLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@WalkLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xe1",
   "name": "WalkLocomotionClass::MoveTo",
   "status": "partial",
-  "pct": 32.4
+  "pct": 6.8
  },
  {
   "tu": "match/movement/tu267_walk_locomotion_class.cpp",
@@ -73522,11 +73522,11 @@
  {
   "tu": "match/movement/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AE30",
-  "sym": "?ForceImmediateDestination@WalkLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?ForceImmediateDestination@WalkLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x83",
   "name": "WalkLocomotionClass::ForceImmediateDestination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu267_walk_locomotion_class.cpp",
@@ -75234,25 +75234,25 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4AFC90",
-  "sym": "?Destination@DriveLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@DriveLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
   "name": "DriveLocomotionClass::Destination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4AFCC0",
-  "sym": "?HeadToCoord@DriveLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?HeadToCoord@DriveLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
   "name": "DriveLocomotionClass::HeadToCoord",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4AFD40",
-  "sym": "?MoveTo@DriveLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@DriveLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xb5",
   "name": "DriveLocomotionClass::MoveTo",
   "status": "partial",
@@ -75297,7 +75297,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B0AD0",
-  "sym": "?FUN_004B0AD0@DriveLocomotionClass@@QAEXPBULocoCoord@@H@Z",
+  "sym": "?FUN_004B0AD0@DriveLocomotionClass@@QAEXPBUCoordStruct@@H@Z",
   "len": "0x16e",
   "name": "DriveLocomotionClass::FUN_004B0AD0",
   "status": "partial",
@@ -75306,7 +75306,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B0C40",
-  "sym": "?ForceTrack@DriveLocomotionClass@@UAGXHULocoCoord@@@Z",
+  "sym": "?ForceTrack@DriveLocomotionClass@@UAGXHUCoordStruct@@@Z",
   "len": "0x15e",
   "name": "DriveLocomotionClass::ForceTrack",
   "status": "partial",
@@ -75324,7 +75324,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B0DF0",
-  "sym": "?FUN_004B0DF0@DriveLocomotionClass@@QAE_NPBULocoCoord@@@Z",
+  "sym": "?FUN_004B0DF0@DriveLocomotionClass@@QAE_NPBUCoordStruct@@@Z",
   "len": "0xf2",
   "name": "DriveLocomotionClass::FUN_004B0DF0",
   "status": "partial",
@@ -75396,7 +75396,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B4920",
-  "sym": "?IsMovingHere@DriveLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "sym": "?IsMovingHere@DriveLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x1d7",
   "name": "DriveLocomotionClass::IsMovingHere",
   "status": "partial",
@@ -75477,7 +75477,7 @@
  {
   "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6630",
-  "sym": "?IsMovingHere@LocomotionClass@@UAG_NULocoCoord@@@Z",
+  "sym": "?IsMovingHere@LocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x5",
   "name": "LocomotionClass::IsMovingHere",
   "status": "matched",
@@ -96500,11 +96500,11 @@
  {
   "tu": "match/movement/tu098_hover_locomotion_class.cpp",
   "addr": "0x517310",
-  "sym": "?Fun_00517310@HoverCoordView@@QAE_NPBULocoCoord@@@Z",
+  "sym": "?Fun_00517310@HoverCoordView@@QAE_NPBUCoordStruct@@@Z",
   "len": "0x25",
   "name": "HoverCoordView::Fun_00517310",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/Infantry.cpp",
@@ -100589,7 +100589,7 @@
  {
   "tu": "match/movement/jumpjet_locomotion.cpp",
   "addr": "0x54D9B0",
-  "sym": "?HeadToCoord@JumpjetLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?HeadToCoord@JumpjetLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x4E",
   "name": "JumpjetLocomotionClass::HeadToCoord",
   "status": "matched",
@@ -100598,7 +100598,7 @@
  {
   "tu": "match/movement/jumpjet_locomotion.cpp",
   "addr": "0x54AE60",
-  "sym": "?Destination@JumpjetLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@JumpjetLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
   "name": "JumpjetLocomotionClass::Destination",
   "status": "matched",
@@ -100805,7 +100805,7 @@
  {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x69F3A0",
-  "sym": "?Destination@ShipLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@ShipLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
   "name": "ShipLocomotionClass::Destination",
   "status": "matched",
@@ -100859,7 +100859,7 @@
  {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x69F3D0",
-  "sym": "?HeadToCoord@ShipLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?HeadToCoord@ShipLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
   "name": "ShipLocomotionClass::HeadToCoord",
   "status": "matched",
@@ -100886,11 +100886,11 @@
  {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A04C0",
-  "sym": "?FUN_006A04C0@ShipLocomotionClass@@QAE_NPBULocoCoord@@@Z",
-  "len": "0xF3",
+  "sym": "?FUN_006A04C0@ShipLocomotionClass@@QAE_NPBUCoordStruct@@@Z",
+  "len": "0xf2",
   "name": "ShipLocomotionClass::FUN_006A04C0",
   "status": "partial",
-  "pct": 83.3
+  "pct": 84.3
  },
  {
   "tu": "match/movement/ship_locomotion.cpp",
@@ -100967,7 +100967,7 @@
  {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x69F450",
-  "sym": "?MoveTo@ShipLocomotionClass@@UAGXULocoCoord@@@Z",
+  "sym": "?MoveTo@ShipLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xB5",
   "name": "ShipLocomotionClass::MoveTo",
   "status": "partial",
@@ -100976,7 +100976,7 @@
  {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A0310",
-  "sym": "?ForceTrack@ShipLocomotionClass@@UAGXHULocoCoord@@@Z",
+  "sym": "?ForceTrack@ShipLocomotionClass@@UAGXHUCoordStruct@@@Z",
   "len": "0x15E",
   "name": "ShipLocomotionClass::ForceTrack",
   "status": "partial",
@@ -100985,7 +100985,7 @@
  {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x6A3F50",
-  "sym": "?IsMovingHere@ShipLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "sym": "?IsMovingHere@ShipLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x1D7",
   "name": "ShipLocomotionClass::IsMovingHere",
   "status": "partial",
@@ -134289,11 +134289,11 @@
  {
   "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x728A90",
-  "sym": "?Destination@TunnelLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "sym": "?Destination@TunnelLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x52",
   "name": "TunnelLocomotionClass::Destination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
@@ -135855,11 +135855,11 @@
  {
   "tu": "match/core/deleting_dtor_w3_methods.cpp",
   "addr": "0x727FD0",
-  "sym": "??0TubeClass@@QAE@PBUTubeCell@@H@Z",
+  "sym": "??0TubeClass@@QAE@PBUCellStruct@@H@Z",
   "len": "0xf6",
   "name": "TubeClass::TubeClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/deleting_dtor_w3_methods.cpp",

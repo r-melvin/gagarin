@@ -3,6 +3,7 @@
 //   Small ILocomotion overrides of TunnelLocomotionClass read off retail gamemd.exe
 //   v1.001 (ILocomotion vtable 0x7F5A24). Functions are in ascending retail address order.
 
+#include "../FUNCTION.H"
 #include <new.h>
 #include "tunnel_locomotion_w3_methods.h"
 #include "../_layout/foot_class.h"
@@ -38,20 +39,6 @@ HRESULT __stdcall TunnelLocomotionClass::Load(IStream* pStm)
     return hr;
 }
 
-// The map's cell lookup and the cell test used by CanEnterCell.
-struct TunnelCellView
-{
-    // FUNCTION: GAMEMD 0x486FF0 (decl; reloc)
-    bool FUN_00486FF0();
-};
-struct TunnelMapView
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- MapClass::GetCellAt
-    TunnelCellView* FUN_005657A0(const CellStruct* cell);
-};
-// GLOBAL: GAMEMD 0x87F7E8 -- the map object.
-extern TunnelMapView TunnelMap_0087F7E8;
 // GLOBAL: GAMEMD 0xA8ED6B -- when set, every cell is enterable.
 extern bool DAT_00A8ED6B;
 
@@ -78,7 +65,7 @@ int __stdcall TunnelLocomotionClass::CanEnterCell(int cell)
         CellStruct c;
         c.X = reinterpret_cast<CellStruct*>(&cell)->X;
         c.Y = reinterpret_cast<CellStruct*>(&cell)->Y;
-        if (!TunnelMap_0087F7E8.FUN_005657A0(&c)->FUN_00486FF0()) {
+        if (!DAT_0087F7E8.FUN_005657A0(&c)->FUN_00486FF0()) {
             return 7;
         }
     }
