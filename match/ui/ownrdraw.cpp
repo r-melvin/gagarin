@@ -139,6 +139,7 @@
 #include "listentry_006255f0.h"
 #include "../network/packet_class.h"
 #include "dialog_type_lookup_predicates.h"
+#include "../renderer/color_scheme_count_methods.h"
 
 class EntryList_006255F0
 {
@@ -6377,6 +6378,42 @@ int ColorScheme_00626C60::GetNumberOfSchemes()
         DAT_00AC48F0 = new Owner_00626C60();
     }
     return DAT_00AC48F0->VecA->Count;
+}
+
+static inline PaletteEntry_00626C60* Inline_00626690_a(Table_00626C60* table, PaletteIter_00626C60* it)
+{
+    if (it->Done != 0) {
+        return 0;
+    }
+    while (it->Bucket < table->NumBuckets) {
+        Bucket_00626C60* bucket = &table->Buckets[it->Bucket];
+        while (it->Index < bucket->Count) {
+            PaletteEntry_00626C60* entry = &bucket->Entries[it->Index];
+            it->Index++;
+            if (!entry->Key.FUN_004F4CA0()) {
+                return entry;
+            }
+        }
+        it->Index = 0;
+        it->Bucket = it->Bucket + 1;
+    }
+    it->Done = 1;
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x626690
+DynamicVectorClass<Obj_0068C8D0*>* __fastcall GetPaletteSchemesFromIterator(PaletteIter_00626C60* it)
+{
+    Table_00626C60* table = DAT_00AC48F0->Table;
+    PaletteEntry_00626C60* entry = Inline_00626690_a(table, it);
+    if (entry == 0) {
+        return 0;
+    }
+    Obj_00626250** value = DAT_00AC48F0->Table->Find(entry->Key);
+    if (value == 0) {
+        return 0;
+    }
+    return (*value)->unknown_100;
 }
 
 // FUNCTION: GAMEMD 0x626FF0  FUN_00626FF0

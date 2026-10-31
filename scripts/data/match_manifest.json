@@ -28086,9 +28086,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/color_scheme_iterator_methods.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x626690",
-  "sym": "?GetPaletteSchemesFromIterator@@YIPAUColorSchemeVec_00626690@@PAUHashIterator_00626690@@@Z",
+  "sym": "?GetPaletteSchemesFromIterator@@YIPAV?$DynamicVectorClass@PAUObj_0068C8D0@@@@PAUPaletteIter_00626C60@@@Z",
   "len": "0x101",
   "name": "ColorScheme::GetPaletteSchemesFromIterator",
   "status": "matched",
