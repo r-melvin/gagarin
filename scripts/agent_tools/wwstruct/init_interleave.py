@@ -371,12 +371,15 @@ def renumber_rows_text(manifest_text, mapping):
 
 def rank_remap(old_keys, old_syms, new_syms):
     """Binding keys `_$S<n>` follow by rank: old_syms/new_syms are [(section, offset, name)] of the old/new object.
-    Returns {old_name: new_name}; counts must agree."""
+    Returns {old_name: new_name}; the new object may hold more symbols (ranks are then counted from the end)."""
     o, n = sorted(old_syms), sorted(new_syms)
-    if len(o) != len(n):
+    if len(o) > len(n):
         raise ValueError("%d old vs %d new _$S symbols" % (len(o), len(n)))
+    # A fragment that adds file-scoped data puts the new symbols before the destination's last ones (it is folded in
+    # at lower retail addresses), so the old symbols keep their rank counted from the end.
+    shift = len(n) - len(o)
     rank = {s[2]: i for i, s in enumerate(o)}
-    return {k: n[rank[k]][2] for k in old_keys if k in rank}
+    return {k: n[rank[k] + shift][2] for k in old_keys if k in rank}
 
 
 def digest_multiset(syms):

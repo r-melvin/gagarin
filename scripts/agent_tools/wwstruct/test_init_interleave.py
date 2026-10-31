@@ -140,7 +140,10 @@ class Renumber(unittest.TestCase):
         new = [(1, 0, "_$S9"), (1, 4, "_$S12")]
         self.assertEqual(I.rank_remap(["_$S3", "_$S6"], old, new), {"_$S3": "_$S9", "_$S6": "_$S12"})
         with self.assertRaises(ValueError):
-            I.rank_remap(["_$S3"], old, new[:1])
+            I.rank_remap(["_$S3", "_$S6"], old, new[:1])
+        # a fragment that adds file-scoped data: the destination's symbols keep their rank from the end
+        grown = [(1, 0, "_$S2"), (1, 4, "_$S4"), (1, 8, "_$S9"), (2, 0, "_$S12")]
+        self.assertEqual(I.rank_remap(["_$S3", "_$S6"], old, grown), {"_$S3": "_$S9", "_$S6": "_$S12"})
 
     def test_digest_multiset_ignores_statics(self):
         d = I.digest_multiset([{"name": "_$E2", "digest": "a"}, {"name": "_$S3", "digest": "b"}])
