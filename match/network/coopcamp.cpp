@@ -32,6 +32,10 @@
 #include "../FUNCTION.H"
 #include <math.h>
 #include "../core/mathtbl_init_shapes.h"
+#include <string.h>
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+#include "../_layout/node_name_type.h"
 #pragma intrinsic(pow)
 
 #include "../core/trivial_tu057_methods.h"
@@ -172,6 +176,72 @@ struct Obj_0049D0F0
 GG_STATIC_ASSERT(offsetof(Obj_0049D0F0, unknown_30) == 0x30);
 GG_STATIC_ASSERT(offsetof(Obj_0049D0F0, unknown_34) == 0x34);
 GG_STATIC_ASSERT(offsetof(Obj_0049D0F0, unknown_6C) == 0x6C);
+
+extern char DAT_0089F118[];
+
+// The value of one hexadecimal digit, 0 for any other character.
+inline int HexDigit(char c)
+{
+    if (c <= '9' && c >= '0')
+        return c - '0';
+    if (c <= 'f' && c >= 'a')
+        return c - 'a' + 10;
+    if (c <= 'F' && c >= 'A')
+        return c - 'A' + 10;
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x49B540
+// Copies a string into the shared decode buffer, turning "=" followed by up to two
+// hexadecimal digits into the byte they spell; returns the buffer.
+char* __fastcall FUN_0049B540(const char* text)
+{
+    char* out = DAT_0089F118;
+    while (*text != 0) {
+        if (*text == '=') {
+            if (text[1] == 0)
+                break;
+            *out = HexDigit(text[1]);
+            text++;
+            if (text[1] != 0) {
+                *out = *out << 4;
+                *out |= HexDigit(text[1]);
+                text++;
+            }
+        } else {
+            *out = *text;
+        }
+        text++;
+        out++;
+    }
+    *out = 0;
+    return DAT_0089F118;
+}
+
+// Two short name strings stored back to back; only the starts of the two
+// buffers are established by the body (the length of the second is not).
+struct NamePair_0049B760
+{
+    char First[0x1C];   // +0x00
+    char Second[1];     // +0x1C
+    void FUN_0049B760(const unsigned short* first, const unsigned short* second);
+};
+GG_STATIC_ASSERT(offsetof(NamePair_0049B760, First) == 0x00);
+GG_STATIC_ASSERT(offsetof(NamePair_0049B760, Second) == 0x1C);
+
+// FUNCTION: GAMEMD 0x49B760
+// Stores two UTF16 names as narrow strings, or an empty string for a missing name.
+void NamePair_0049B760::FUN_0049B760(const unsigned short* first, const unsigned short* second)
+{
+    if (first)
+        strcpy(First, NarrowName_007350C0(first));
+    else
+        First[0] = 0;
+    if (second)
+        strcpy(Second, NarrowName_007350C0(second));
+    else
+        Second[0] = 0;
+}
 
 // FUNCTION: GAMEMD 0x49D0C0
 // Branching.

@@ -144763,7 +144763,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/name_pair_methods.cpp",
+  "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B760",
   "sym": "?FUN_0049B760@NamePair_0049B760@@QAEXPBG0@Z",
   "len": "0x75",
@@ -144772,7 +144772,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/hex_escape_decode_methods.cpp",
+  "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B540",
   "sym": "?FUN_0049B540@@YIPADPBD@Z",
   "len": "0xce",
