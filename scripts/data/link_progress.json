@@ -2,13 +2,13 @@
  "m0": {
   "by_kind": {
    "crt": 25,
-   "data": 2436,
-   "function": 3901,
+   "data": 2435,
+   "function": 3902,
    "import": 0,
    "vtable": 70
   },
   "duplicate_definitions": 0,
-  "objects": 1597,
+  "objects": 1589,
   "unresolved": 6432
  },
  "m1": {
@@ -83,8 +83,8 @@
     "diff_bytes": 0,
     "file": 442368,
     "library": 0,
-    "project": 2693809,
-    "retail": 876851,
+    "project": 2693813,
+    "retail": 876847,
     "va": 8462336,
     "vsize": 3570660
    },
@@ -119,8 +119,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 4136236,
-   "retail": 4167834,
+   "project": 4136240,
+   "retail": 4167830,
    "vsize": 8391297
   }
  },
@@ -157,9 +157,9 @@
   }
  ],
  "snapshots": {
-  "m0": "95b21d6b",
-  "m1": "95b21d6b",
+  "m0": "57f786cf",
+  "m1": "57f786cf",
   "m2": "ac2bd917",
-  "m3": "95b21d6b"
+  "m3": "57f786cf"
  }
 }
