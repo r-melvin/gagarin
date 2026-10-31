@@ -40,6 +40,7 @@ FN_RE = re.compile(r"^// FUNCTION: GAMEMD 0x([0-9A-Fa-f]+)")
 SY_RE = re.compile(r"^// SYNTHETIC: GAMEMD 0x([0-9A-Fa-f]+)")
 GL_BEGIN = "// BEGIN defined globals"
 GL_END = "// END defined globals"
+PLACE = "first"    # insert_pos policy: "first" (first ascending transition) or "maxbelow"
 
 
 # ---------------------------------------------------------------- text step (pure, unit-tested)
@@ -96,6 +97,21 @@ def insert_pos(D, addr):
     """Line index before the first anchor above ADDR that follows an anchor at or below it (the files are not globally
     sorted); else before the first anchor above ADDR; else the 'defined globals' block or the end. Leading plain
     comment lines of that anchor stay with it."""
+    if PLACE == "maxbelow":
+        # a file whose anchors run in several ascending passes: go after the last anchor holding the highest address at or
+        # below ADDR (a chunk then lands between its retail neighbours even when a later pass carries them)
+        anchors = [(i, anchor(l)) for i, l in enumerate(D) if anchor(l) is not None]
+        m = re.search(r"code range \((0x[0-9a-f]+)-(0x[0-9a-f]+)\)", "\n".join(D[:60]))
+        lo = int(m.group(1), 16) - 0x100 if m else 0    # anchors below the object's range are emitted templates, not its code
+        below = [(a, i) for i, a in anchors if lo <= a <= addr]
+        if below:
+            j = max(below)[1]
+            nxt = next((i for i, a in anchors if i > j), None)
+            if nxt is None:
+                return next((i for i, l in enumerate(D) if l.startswith(GL_BEGIN)), len(D))
+            while nxt > 0 and D[nxt - 1].startswith("//") and anchor(D[nxt - 1]) is None:
+                nxt -= 1
+            return nxt
     prev, first = None, None
     for i, l in enumerate(D):
         a = anchor(l)
@@ -612,6 +628,8 @@ def main(argv=None):
     f.add_argument("--run")
     f.add_argument("--msg-dir")
     f.add_argument("--no-commit", action="store_true")
+    f.add_argument("--place", choices=("first", "maxbelow"), default="first",
+                   help="chunk placement among the destination's anchors (maxbelow: after the highest anchor at or below the chunk)")
     f.add_argument("--keep", action="store_true", help="leave the failed state in WT for inspection")
     m = sub.add_parser("merge")
     m.add_argument("--dest", required=True)
@@ -624,6 +642,8 @@ def main(argv=None):
             print(s, rep)
         Path(a.dest).write_text(t)
         return 0
+    global PLACE
+    PLACE = a.place
     return fold(a)
 
 
