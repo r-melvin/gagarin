@@ -4966,7 +4966,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ms_engine_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D2700",
   "sym": "??_GMSEngine@@UAEPAXI@Z",
   "len": "0x1e",
@@ -84939,7 +84939,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ms_engine_methods.cpp",
+  "tu": "match/ui/MapSel.cpp",
   "addr": "0x5AE590",
   "sym": "?OnRedraw@MSEngine@@UAEXPAVMouseSurfaceView@@@Z",
   "len": "0x3",
@@ -85119,7 +85119,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ms_engine_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D26F0",
   "sym": "?Process@MSEngine@@UAEXXZ",
   "len": "0x1",
@@ -145798,7 +145798,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ms_engine_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D1AA0",
   "sym": "??0MSEngine@@QAE@XZ",
   "len": "0x81",
@@ -145807,7 +145807,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/ms_engine_methods.cpp",
+  "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5D1B30",
   "sym": "??1MSEngine@@UAE@XZ",
   "len": "0xed",

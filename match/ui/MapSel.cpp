@@ -21,6 +21,7 @@
 // canonical header declares them yet).
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/ms_engine.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -62,6 +63,11 @@ void __stdcall FUN_005AE570(int a1)
 // FUNCTION: GAMEMD 0x5AE580
 // Empty function that pops its stack arguments.
 void __stdcall FUN_005AE580(int a1)
+{
+}
+
+// FUNCTION: GAMEMD 0x5AE590
+void MSEngine::OnRedraw(MouseSurfaceView* surface)
 {
 }
 
