@@ -15240,7 +15240,7 @@
  "match/core/header_init_00488f90.cpp::_DAT_007E5128": "0x007E5128",
  "match/core/header_init_00488f90.cpp::_DAT_007E5130": "0x007E5130",
  "match/core/header_init_0048bc70.cpp::_DAT_007E51A8": "0x007E51A8",
- "match/core/header_init_0048c6b0.cpp::_DAT_007E51E8": "0x007E51E8",
+ "match/core/Conquer.cpp::_DAT_007E51E8": "0x007E51E8",
  "match/core/header_init_0048e290.cpp::_DAT_007E5200": "0x007E5200",
  "match/core/header_init_0048e290.cpp::_DAT_007E5208": "0x007E5208",
  "match/core/header_init_0049b180.cpp::_DAT_007E5BB8": "0x007E5BB8",

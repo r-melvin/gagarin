@@ -39,6 +39,8 @@
 #include "techno_type_class_getbytype_methods.h"
 
 #include "theater_methods.h"
+#include <math.h>
+#include "header_init_shapes.h"
 
 // The fixed global array. Its address (0x7E1B78) and the end sentinel
 // (&Array[6] == 0x7E1E18) are emitted as relocations and normalised by the
@@ -175,6 +177,25 @@ extern const double DAT_007E51E0;
 // GLOBAL: GAMEMD 0x89E948
 extern double DAT_0089E948;
 
+// GLOBAL: GAMEMD 0x7E1708
+const double DAT_007E1708 = 2.0;
+// GLOBAL: GAMEMD 0x7E1710
+const double DAT_007E1710 = 256.0;
+// GLOBAL: GAMEMD 0x7E51E8 -- degrees to radians
+const double DAT_007E51E8 = 0.017453292519943295;
+
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CADE0(double value);
+
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+
+// SYNTHETIC: GAMEMD 0x48C6B0
+// GLOBAL: GAMEMD 0x89E948
+double DAT_0089E948 = FUN_004CAC40(pow(DAT_007E1710, DAT_007E1708) * 2);
+
 // SYNTHETIC: GAMEMD 0x0048C6E0
 // GLOBAL: GAMEMD 0x0089E9A0
 double DAT_0089E9A0 = DAT_0089E948 / DAT_007E51E0;
@@ -182,6 +203,42 @@ double DAT_0089E9A0 = DAT_0089E948 / DAT_007E51E0;
 // SYNTHETIC: GAMEMD 0x0048C700
 // GLOBAL: GAMEMD 0x0089E988
 double DAT_0089E988 = DAT_007E1718 / DAT_0089E9A0;
+
+// SYNTHETIC: GAMEMD 0x48C720
+// GLOBAL: GAMEMD 0x89E980
+double DAT_0089E980 = DAT_007E51E8 * 45.0;
+
+// SYNTHETIC: GAMEMD 0x48C740
+// GLOBAL: GAMEMD 0x89E958
+double DAT_0089E958 = DAT_007E51E8 * 60.0;
+
+// SYNTHETIC: GAMEMD 0x48C760
+// GLOBAL: GAMEMD 0x89E918
+double DAT_0089E918 = DAT_007E51E8 * 90.0;
+
+// SYNTHETIC: GAMEMD 0x48C780
+// GLOBAL: GAMEMD 0x89E9A8
+int DAT_0089E9A8 = (int)(FUN_004CAD50(DAT_0089E918 - DAT_0089E958) * DAT_0089E948 * 0.5);
+
+// SYNTHETIC: GAMEMD 0x48C7C0
+// GLOBAL: GAMEMD 0x89E960
+double DAT_0089E960 = FUN_004CADE0(DAT_0089E9A8 * 0.00390625);
+
+// SYNTHETIC: GAMEMD 0x48C7F0
+// GLOBAL: GAMEMD 0x89E978
+double DAT_0089E978 = FUN_004CADE0((DAT_0089E9A8 * 2) / DAT_0089E948);
+
+// SYNTHETIC: GAMEMD 0x48C820
+// GLOBAL: GAMEMD 0x89E99C
+int DAT_0089E99C = (int)(DAT_0089E9A8 * 4 + 0.5);
+
+// SYNTHETIC: GAMEMD 0x48C850
+// GLOBAL: GAMEMD 0x89E940
+HeaderCellInit DAT_0089E940(0, 0);
+
+// SYNTHETIC: GAMEMD 0x48C860
+// GLOBAL: GAMEMD 0x89E968
+HeaderCoordInit DAT_0089E968(0, 0, 0);
 
 // SYNTHETIC: GAMEMD 0x0048C880
 // GLOBAL: GAMEMD 0x0089E990
