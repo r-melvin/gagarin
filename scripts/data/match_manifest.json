@@ -12583,7 +12583,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_house.cpp",
+  "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x6339B0",
   "sym": "?GetControllingHouse@TechnoClass@@QBEHXZ",
   "len": "0x25",
@@ -141964,7 +141964,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/w2_planning_color_r16.cpp",
+  "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x63CF10",
   "sym": "?FUN_0063CF10@@YIIPAUTechnoOwner_0063CF10@@@Z",
   "len": "0xa5",
@@ -141973,7 +141973,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/w2_planning_color_r16.cpp",
+  "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x63CFC0",
   "sym": "?FUN_0063CFC0@@YIIPAUTechnoOwner_0063CF10@@@Z",
   "len": "0xa5",
@@ -141982,7 +141982,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/w2_planning_color_r16.cpp",
+  "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x63D070",
   "sym": "?FUN_0063D070@@YIIPBUColorStruct@@0H@Z",
   "len": "0x78",
@@ -142468,7 +142468,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/w2_thick_line_r17.cpp",
+  "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x63D810",
   "sym": "?FUN_0063D810@@YIXIIVPoint2D@@0D@Z",
   "len": "0xfc",
@@ -142477,7 +142477,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/w2_thick_line_r17.cpp",
+  "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x63D960",
   "sym": "?FUN_0063D960@@YIXHIVPoint2D@@0@Z",
   "len": "0x56",

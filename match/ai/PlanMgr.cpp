@@ -89,6 +89,17 @@
 #include "techno_class_clear_tokens_methods.h"
 
 #include "techno_class_planning_node_helpers.h"
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+#include "../_layout/color_struct.h"
+#include "../_layout/house_class.h"
+#include "../renderer/pixel_pack_methods.h"
+#include "../_layout/player_ptr_00a83d4c.h"
+#include "../core/techno_class_house.h"
+#include <stdlib.h>
+#include "../renderer/dsurface_class.h"
+#include "../renderer/composite_surface.h"
+#include "../_layout/tactical_viewport.h"
 
 int DAT_00AC4B84[24];
 
@@ -336,6 +347,134 @@ struct tagCONNECTDATA;
 
 #include "../core/vector_class_operations.h"
 class EventClass;
+
+// The packing as the two marker-colour functions below expand it: the green term is
+// combined first, then blue, then red (the shared PackPixel orders the terms R, G, B).
+inline unsigned int PackPixelGBR(const ColorStruct& color)
+{
+    unsigned char red = color.R >> gg_b_translucent_pixel_format.loss0;
+    unsigned char green = color.G >> gg_b_translucent_pixel_format.loss1;
+    unsigned char blue = color.B >> gg_b_translucent_pixel_format.loss2;
+    return (green << gg_b_translucent_pixel_format.pos1) | (blue << gg_b_translucent_pixel_format.pos2) | (red << gg_b_translucent_pixel_format.pos0);
+}
+
+// Only the owning house of a techno is read here.
+struct TechnoOwner_0063CF10
+{
+    char _pad000[0x21C];    // +0x0000
+    HouseClass* Owner;      // +0x021C
+};
+GG_STATIC_ASSERT(offsetof(TechnoOwner_0063CF10, Owner) == 0x21C);
+
+// GLOBAL: GAMEMD 0xA8022C -- HouseClass::Array.Items.
+extern HouseClass** DAT_00A8022C;
+// GLOBAL: GAMEMD 0xA83CD9 -- the colour a planning marker is drawn in normally.
+extern ColorStruct DAT_00A83CD9;
+// GLOBAL: GAMEMD 0xA80220 -- white, the colour of a selected or current-node member.
+extern ColorStruct DAT_00A80220;
+
+HouseClass* CurrentPlayer = NULL;
+
+// FUNCTION: GAMEMD 0x6339B0  (__thiscall)
+// Returns the controlling house's ArrayIndex. The Owner's index by default, but
+// substituted with CurrentPlayer's index when the Owner is the local human
+// player. Retail loads Owner (+0x21C), pre-computes Owner->ArrayIndex (+0x30)
+// into ESI, then short-circuits IsControlledByCurrentPlayer() && CurrentPlayer.
+int TechnoClass::GetControllingHouse() const
+{
+    HouseClass* owner = this->Owner;
+    int id = owner->ArrayIndex;
+    if (owner->IsControlledByCurrentPlayer() && CurrentPlayer != NULL)
+        return CurrentPlayer->ArrayIndex;
+    return id;
+}
+
+// FUNCTION: GAMEMD 0x63CF10
+// The owner's colour blended 80 toward the normal marker colour, packed to the native format.
+unsigned int __fastcall FUN_0063CF10(TechnoOwner_0063CF10* techno)
+{
+    int index = techno->Owner->ArrayIndex;
+    if (techno->Owner->IsControlledByCurrentPlayer() && DAT_00A83D4C) {
+        index = DAT_00A83D4C->ArrayIndex;
+    }
+    ColorStruct color = DAT_00A8022C[index]->Color;
+    color.FUN_006612C0(0x50, DAT_00A83CD9);
+    return PackPixelGBR(color);
+}
+
+// FUNCTION: GAMEMD 0x63CFC0
+// The owner's colour blended 100 toward white, packed to the native format.
+unsigned int __fastcall FUN_0063CFC0(TechnoOwner_0063CF10* techno)
+{
+    int index = techno->Owner->ArrayIndex;
+    if (techno->Owner->IsControlledByCurrentPlayer() && DAT_00A83D4C) {
+        index = DAT_00A83D4C->ArrayIndex;
+    }
+    ColorStruct color = DAT_00A8022C[index]->Color;
+    color.FUN_006612C0(100, DAT_00A80220);
+    return PackPixelGBR(color);
+}
+
+// FUNCTION: GAMEMD 0x63D070
+// Blend a colour toward a target by `ratio` and pack the result into the native pixel format.
+unsigned int __fastcall FUN_0063D070(const ColorStruct* color, const ColorStruct* target, int ratio)
+{
+    ColorStruct blended = *color;
+    blended.FUN_006612C0(ratio, *target);
+    return PackPixel(blended);
+}
+
+// WinMM import: GAMEMD 0x007E1530 (timeGetTime).
+extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+
+// GLOBAL: GAMEMD 0x836880 -- the 16-entry dot pattern.
+extern unsigned char DAT_00836880[16];
+
+// FUNCTION: GAMEMD 0x63D810
+// Draw one line, offset sideways by `shift` (in Y for a mostly horizontal line, otherwise in X),
+// clipped to the viewport; dotted lines animate with the clock.
+void __fastcall FUN_0063D810(unsigned int shift, unsigned int color, Point2D a, Point2D b,
+                             char dotted)
+{
+    bool xm = abs(b.X - a.X) > abs(b.Y - a.Y);
+    unsigned int dx = (xm ? 0 : shift);
+    unsigned int dy = (xm ? shift : 0);
+    unsigned int phase;
+    a.X += dx;
+    a.Y += dy;
+    b.X += dx;
+    b.Y += dy;
+    RectangleStruct clip = Viewport_00886FA0;
+    if (ClipLine(&a, &b, &clip)) {
+        if (dotted) {
+            phase = (int)-(int)timeGetTime() >> 5 & 0xF;
+            DAT_0088731C->DrawDottedLine(&a, &b, color, DAT_00836880, phase);
+            return;
+        }
+        DAT_0088731C->DrawLine(&a, &b, color);
+    }
+}
+
+// FUNCTION: GAMEMD 0x63D960
+// PARTIAL: 79.1% -- the same instruction multiset as retail; retail loads and pushes the four
+// coordinate words one at a time through EAX, the compiler hoists two into ECX/EDX first.
+// Draw a dotted band two lines narrower than `width`.
+void __fastcall FUN_0063D960(int width, unsigned int color, Point2D a, Point2D b)
+{
+    int inner = width - 2;
+    int half;
+    int i;
+    if (inner <= 0) {
+        i = 0;
+        half = 0;
+    } else {
+        half = inner / 2;
+        i = half - inner + 1;
+    }
+    for (; i <= half; i++) {
+        FUN_0063D810(i, color, a, b, 1);
+    }
+}
 
 // FUNCTION: GAMEMD 0x0063EFB0
 // vtable constant: 0x7EFE64
@@ -3094,4 +3233,6 @@ extern const char STR_00836D28[] = "MSG:PlanningModeNoUnknowns";
 extern const char STR_00836D44[] = "MSG:PlanningModeNoBuildings";
 // GLOBAL: GAMEMD 0x836D60
 extern const char STR_00836D60[] = "MSG:PlanningModeNoAircraft";
+// GLOBAL: GAMEMD 0x836880
+unsigned char DAT_00836880[16] = {1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1};
 // END defined globals
