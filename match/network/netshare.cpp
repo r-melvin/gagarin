@@ -2485,6 +2485,7 @@ void FUN_005EA2A0(HWND dialog)
 }
 
 // FUNCTION: GAMEMD 0x5EA8E0
+// Descriptive label Slot_Is_AI_Or_Ready: an unattested description of the role, not a name from the binary.
 //
 // Is this slot settled? An AI is always settled, and a human is settled once
 // its ready flag reads 1. Retail lets the null slot fall into the flag test,
@@ -2503,6 +2504,7 @@ int FUN_005EA8E0(int index)
 }
 
 // FUNCTION: GAMEMD 0x5EA920
+// Descriptive label Slot_Start_Position: an unattested description of the role, not a name from the binary.
 //
 // The slot's start position. Inside a live lobby of the two session kinds that
 // place starts by hand, the dialog answers first and the slot only overrides
@@ -2533,6 +2535,7 @@ int FUN_005EA920(int index)
 }
 
 // FUNCTION: GAMEMD 0x5EA9B0
+// Descriptive label Slot_House: an unattested description of the role, not a name from the binary.
 //
 // The house this slot plays. An AI plays whatever the house table says; the
 // four non-playing singletons play nothing; a real player is asked.
@@ -2560,6 +2563,7 @@ int FUN_005EA9B0(int index)
 }
 
 // FUNCTION: GAMEMD 0x5EAA10
+// Descriptive label Slot_Colour: an unattested description of the role, not a name from the binary.
 //
 // The same reader against the colour table.
 int FUN_005EAA10(int index)
@@ -2586,6 +2590,7 @@ int FUN_005EAA10(int index)
 }
 
 // FUNCTION: GAMEMD 0x5EAA70
+// Descriptive label Slot_Team: an unattested description of the role, not a name from the binary.
 //
 // The same reader against the team table.
 int FUN_005EAA70(int index)
@@ -2612,6 +2617,7 @@ int FUN_005EAA70(int index)
 }
 
 // FUNCTION: GAMEMD 0x5EAAD0
+// Descriptive label Slot_Control_Id: an unattested description of the role, not a name from the binary.
 //
 // The dialog control that draws a given slot: eight consecutive ids, and -1
 // for anything off the end. cl folds the last two arms into the
@@ -2646,6 +2652,7 @@ int FUN_005EAAD0(int index)
 }
 
 // FUNCTION: GAMEMD 0x5EAB30
+// Descriptive label Format_House_List: an unattested description of the role, not a name from the binary.
 //
 // Every slot's house as one comma-terminated decimal list, for the lobby
 // packet. The four-byte scratch buffer is retail's own: the frame carries
@@ -2679,6 +2686,7 @@ void FUN_005EAB30(char* out)
 }
 
 // FUNCTION: GAMEMD 0x5EAC00
+// Descriptive label Format_Colour_List: an unattested description of the role, not a name from the binary.
 //
 // The same list for the colour table.
 void FUN_005EAC00(char* out)
@@ -2710,6 +2718,7 @@ void FUN_005EAC00(char* out)
 }
 
 // FUNCTION: GAMEMD 0x5EACD0
+// Descriptive label Format_Team_List: an unattested description of the role, not a name from the binary.
 //
 // The same list for the team table.
 void FUN_005EACD0(char* out)
@@ -2741,6 +2750,7 @@ void FUN_005EACD0(char* out)
 }
 
 // FUNCTION: GAMEMD 0x5EADA0
+// Descriptive label Fill_Colour_List: an unattested description of the role, not a name from the binary.
 //
 // Push every slot's colour into the lobby's colour list control.
 void FUN_005EADA0(HWND target)
@@ -2770,6 +2780,7 @@ void FUN_005EADA0(HWND target)
 }
 
 // FUNCTION: GAMEMD 0x5EAE40
+// Descriptive label Fill_Team_List: an unattested description of the role, not a name from the binary.
 //
 // The same for the team list control.
 void FUN_005EAE40(HWND target)
