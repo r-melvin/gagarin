@@ -5811,7 +5811,7 @@
   },
   {
    "addr": "0x4C3A20",
-   "tu": "match/ui/ego_class.cpp",
+   "tu": "match/ui/Egos.cpp",
    "name": "FUN_004C3A20",
    "reason": "no-preceding-CC-or-90"
   },
