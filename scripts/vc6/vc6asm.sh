@@ -2,7 +2,8 @@
 # vc6asm.sh — assemble hand-written assembly with the period MASM (ml.exe 6.15) under Wine.
 #
 # Sibling of vc6cl.sh (same toolchain root, WINEPREFIX/WINEPATH and the checkout-independent
-# source alias). Used only for the .asm translation units under match/asm/, which recover
+# source alias). Used only for the .asm translation units (Westwood library asm under match/wwlib/,
+# e.g. match/wwlib/vqa/; other asm under match/asm/), which recover
 # routines that were hand-written assembly in the original (AGENTS.md "Hand-written assembly").
 # After assembling, comdatize.py marks the .text section COMDAT (selection ANY) so that LINK can
 # place the object through /ORDER; ml has no option for it.

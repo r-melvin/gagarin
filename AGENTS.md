@@ -105,8 +105,9 @@ against an instruction in the binary before it lands as a repo fact.
   explicit approval for the specific function.
 - Hand-written assembly (carve-out). Inline asm in C/C++ stays forbidden. A routine
   that was hand-written assembly in the original is not C++ and cannot be matched as
-  such; it is recovered as a separate MASM `.asm` translation unit under `match/asm/`
-  (one file per original object), assembled by the toolchain's `ml.exe` 6.15 through
+  such; it is recovered as a separate MASM `.asm` translation unit (one file per
+  original object): hand-written Westwood library asm lives with its library under
+  `match/wwlib/` (e.g. `match/wwlib/vqa/`), and `match/asm/` holds only non-library asm; assembled by the toolchain's `ml.exe` 6.15 through
   `scripts/vc6/vc6asm.sh`. Evidence that a routine was assembly: a TASM/MASM
   `PROC C USES`/`LOCAL` frame (push ebp, `add esp,-N`, USES pushes after the locals,
   pop-leave-ret) that VC6 never emits, byte-packed routines with no alignment
