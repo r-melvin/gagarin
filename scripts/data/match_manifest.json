@@ -90251,7 +90251,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600370",
-  "sym": "_$E3",
+  "sym": "_$E9",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC48A0)",
   "status": "matched",
@@ -90260,7 +90260,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600390",
-  "sym": "_$E6",
+  "sym": "_$E12",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4838)",
   "status": "matched",
@@ -90269,7 +90269,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600510",
-  "sym": "_$E9",
+  "sym": "_$E42",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00AC4888)",
   "status": "matched",
@@ -99182,7 +99182,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6107A0",
-  "sym": "_$E12",
+  "sym": "_$E45",
   "len": "0x31",
   "name": "?FUN_006107A0@@YIXXZ",
   "status": "matched",
@@ -107746,7 +107746,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600320",
   "sym": "_$E2",
   "len": "0x17",
@@ -107755,7 +107755,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600340",
   "sym": "_$E5",
   "len": "0x28",
@@ -107764,81 +107764,81 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6003B0",
-  "sym": "_$E8",
+  "sym": "_$E15",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4830)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6003D0",
-  "sym": "_$E11",
+  "sym": "_$E18",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC1B88)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6003F0",
-  "sym": "_$E14",
+  "sym": "_$E21",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC1898)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600410",
-  "sym": "_$E17",
+  "sym": "_$E24",
   "len": "0x31",
   "name": "dynamic initializer (DAT_00AC48AC)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600450",
-  "sym": "_$E20",
+  "sym": "_$E27",
   "len": "0x21",
   "name": "dynamic initializer (DAT_00AC1CA0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x600480",
-  "sym": "_$E23",
+  "sym": "_$E30",
   "len": "0x2c",
   "name": "dynamic initializer (DAT_00AC4610)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6004B0",
-  "sym": "_$E26",
+  "sym": "_$E33",
   "len": "0x27",
   "name": "dynamic initializer (DAT_00AC489C)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6004E0",
-  "sym": "_$E29",
+  "sym": "_$E36",
   "len": "0xf",
   "name": "dynamic initializer (DAT_00AC1B38)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_600320.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6004F0",
-  "sym": "_$E32",
+  "sym": "_$E39",
   "len": "0x12",
   "name": "dynamic initializer (DAT_00AC1DF8)",
   "status": "matched",
