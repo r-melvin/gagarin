@@ -337,6 +337,54 @@ class Tree:
             self._windows = w
         return self._windows
 
+    def tu_windows_after(self, diffs):
+        """The migrated-TU windows as they stand once DIFFS (split_patch results) are applied: the tree's
+        windows, with the header window of every original-TU .cpp the patch adds or modifies re-read from
+        its post-patch text, and a deleted file dropped. A modified file whose hunks do not apply keeps its
+        window. Used to decide whether a new file's rows lie in a window the same patch narrows."""
+        w = dict(self.tu_windows())
+        tmp = scratch_dir("tuwin_")
+        try:
+            for i, d in enumerate(diffs):
+                if d.path == MANIFEST or not d.path.lower().endswith(L.SRC_EXT):
+                    continue
+                if d.is_delete:
+                    w.pop(d.path, None)
+                    continue
+                if d.is_new:
+                    text = d.new_content()
+                else:
+                    old = self.text(d.old)
+                    if old is None:
+                        continue
+                    work = os.path.join(tmp, str(i))
+                    os.makedirs(os.path.join(work, os.path.dirname(d.old)), exist_ok=True)
+                    with open(os.path.join(work, d.old), "w", newline="") as f:
+                        f.write(old)
+                    env = {k: v for k, v in os.environ.items() if k not in ("GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE")}
+                    env["GIT_CEILING_DIRECTORIES"] = os.path.dirname(os.path.abspath(work))
+                    r = subprocess.run(["git", "apply", "--whitespace=nowarn", "-"], cwd=work, input=d.text, text=True,
+                                       capture_output=True, env=env)
+                    if r.returncode or not os.path.isfile(os.path.join(work, d.path)):
+                        continue
+                    text = open(os.path.join(work, d.path), errors="replace").read()
+                head = (text or "")[:1200]
+                m = TU_WINDOW.search(head) if "Original translation unit" in head else None
+                if m:
+                    w[d.path] = (m.group(1), int(m.group(2), 16), int(m.group(3), 16))
+                else:
+                    w.pop(d.path, None)
+        finally:
+            remove_dir(tmp)
+        return w
+
+    @staticmethod
+    def window_for_addr(windows, a):
+        for p, (name, lo, hi) in windows.items():
+            if lo <= a <= hi:
+                return p
+        return None
+
     def tu_for_addr(self, a):
         """The migrated TU file whose proven code range holds address a, if any."""
         for p, (name, lo, hi) in self.tu_windows().items():

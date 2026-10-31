@@ -420,6 +420,24 @@ class Toolfix(unittest.TestCase):
         f = [x for x in lint(self.mk(patch + add2, rows2, name="inside"), {"migrated"}) if x["rule"] == "migrated"]
         self.assertTrue(any(x["level"] == "E" for x in f), f)
 
+    def test_rebase_windows_follow_the_patch(self):
+        """pktrebase decides merges from the windows after the patch: a patch that narrows Techno.cpp's
+        window lets a new file's rows at 0x6F4A40 stay in their own file; the stale window would merge them."""
+        import difflib
+        t = tree()
+        path = "match/combat/Techno.cpp"
+        old = t.text(path)
+        new = old.replace("(0x6f28a0-0x7108df)", "(0x6f28a0-0x6f4000)", 1)
+        diff = "".join(difflib.unified_diff(old.splitlines(True), new.splitlines(True), "a/" + path, "b/" + path))
+        diffs = D.split_patch("diff --git a/%s b/%s\n%s" % (path, path, diff))
+        self.assertEqual(D.Tree.window_for_addr(t.tu_windows(), 0x6F4A40), path)
+        after = t.tu_windows_after(diffs)
+        self.assertIsNone(D.Tree.window_for_addr(after, 0x6F4A40))
+        self.assertEqual(D.Tree.window_for_addr(after, 0x6F2900), path)
+        # the unpatched tree is untouched, and the rebase tool uses the post-patch windows
+        self.assertEqual(D.Tree.window_for_addr(t.tu_windows(), 0x6F4A40), path)
+        self.assertIn("tu_windows_after", open(os.path.join(os.path.dirname(HERE), "pktrebase.py")).read())
+
 
 class Toolfix2(unittest.TestCase):
     """Round 2: post_files scratch placement, per-file pkt rows, bind manifest, explicit change rows."""

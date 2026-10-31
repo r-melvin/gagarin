@@ -122,11 +122,16 @@ class Rebase:
         new_cpps = {d.path: d for d in self.diffs if d.is_new and d.path.lower().endswith(L.SRC_EXT) and not d.path.lower().endswith(".asm")}
         self.merge_plan = {}       # src path -> dest TU
         if self.do_merge:
+            # windows after the patch: a packet that narrows a migrated TU's window and moves the rows beyond
+            # it into a new file must not have that file merged back
+            windows = self.tree.tu_windows_after(self.diffs)
             for path in new_cpps:
                 dests = {}
                 for r in self.rows:
                     if r.get("tu") == path:
-                        dest = self.tree.tu_for_addr(D.hx(r["addr"]))
+                        dest = D.Tree.window_for_addr(windows, D.hx(r["addr"]))
+                        if dest == path:
+                            dest = None
                         dests.setdefault(dest, []).append(r["addr"])
                 real = {k: v for k, v in dests.items() if k}
                 if not real:
