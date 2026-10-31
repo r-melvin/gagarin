@@ -89504,7 +89504,7 @@
  {
   "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2190",
-  "sym": "_$E2",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0089F950)",
   "status": "matched",
@@ -89513,7 +89513,7 @@
  {
   "tu": "match/platform/Credits.cpp",
   "addr": "0x4A21B0",
-  "sym": "_$E5",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "dynamic initializer (DAT_0089F938)",
   "status": "matched",
@@ -89522,7 +89522,7 @@
  {
   "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2330",
-  "sym": "_$E8",
+  "sym": "_$E38",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_0089F940)",
   "status": "matched",
@@ -118969,7 +118969,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2160",
   "sym": "_$E2",
   "len": "0x28",
@@ -118978,81 +118978,81 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A21D0",
-  "sym": "_$E5",
+  "sym": "_$E11",
   "len": "0x13",
   "name": "dynamic initializer (header group 3)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A21F0",
-  "sym": "_$E8",
+  "sym": "_$E14",
   "len": "0x13",
   "name": "dynamic initializer (header group 4)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2210",
-  "sym": "_$E11",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (header group 5)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2230",
-  "sym": "_$E14",
+  "sym": "_$E20",
   "len": "0x31",
   "name": "dynamic initializer (header group 6)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2270",
-  "sym": "_$E17",
+  "sym": "_$E23",
   "len": "0x21",
   "name": "dynamic initializer (header group 7)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A22A0",
-  "sym": "_$E20",
+  "sym": "_$E26",
   "len": "0x2c",
   "name": "dynamic initializer (header group 8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A22D0",
-  "sym": "_$E23",
+  "sym": "_$E29",
   "len": "0x27",
   "name": "dynamic initializer (header group 9)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2300",
-  "sym": "_$E26",
+  "sym": "_$E32",
   "len": "0xf",
   "name": "dynamic initializer (header group 10)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_004a2160.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2310",
-  "sym": "_$E29",
+  "sym": "_$E35",
   "len": "0x12",
   "name": "dynamic initializer (header group 11)",
   "status": "matched",

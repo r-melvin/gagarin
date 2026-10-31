@@ -15250,7 +15250,7 @@
  "match/core/header_init_0049fd50.cpp::_DAT_007E5C78": "0x007E5C78",
  "match/core/header_init_004a1560.cpp::_DAT_007E5D68": "0x007E5D68",
  "match/core/header_init_004a1560.cpp::_DAT_007E5D70": "0x007E5D70",
- "match/core/header_init_004a2160.cpp::_DAT_007E5D88": "0x007E5D88",
+ "match/platform/Credits.cpp::_DAT_007E5D88": "0x007E5D88",
  "match/core/header_init_004a4ea0.cpp::_DAT_007E5E28": "0x007E5E28",
  "match/core/header_init_004a4ea0.cpp::_DAT_007E5E30": "0x007E5E30",
  "match/core/header_init_004a6a60.cpp::_DAT_007E5ED0": "0x007E5ED0",
