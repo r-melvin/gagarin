@@ -133333,7 +133333,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/packet_class_list.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x625AB0",
   "sym": "??1PacketClass@@QAE@XZ",
   "len": "0x29",
@@ -133342,7 +133342,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/packet_class_list.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x625AE0",
   "sym": "?AddField@PacketClass@@QAEXPAVFieldClass@@@Z",
   "len": "0x10",
@@ -133351,7 +133351,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/packet_class_list.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x625D20",
   "sym": "?FindField@PacketClass@@QAEPAVFieldClass@@PBD@Z",
   "len": "0x32",
@@ -143413,7 +143413,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/r19_4_chunk_lookup.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x625EF0",
   "sym": "?CopyString@ChunkList_00625EF0@@QAE_NPBDPAD@Z",
   "len": "0x62",
@@ -143422,7 +143422,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/r19_4_chunk_lookup.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x625FB0",
   "sym": "?CopyBytes@ChunkList_00625EF0@@QAE_NPBDPAXPAI@Z",
   "len": "0x6f",
@@ -144511,7 +144511,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/r22_3_vector24.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x624810",
   "sym": "?FUN_00624810@Vector24_00624810@@QAE_NXZ",
   "len": "0x87",
@@ -144520,7 +144520,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/r22_3_vector24.cpp",
+  "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x6248A0",
   "sym": "?FUN_006248A0@Vector24_00624810@@QAE_NXZ",
   "len": "0x88",

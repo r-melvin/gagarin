@@ -136,6 +136,7 @@
 #include "widestring_006255f0.h"
 
 #include "listentry_006255f0.h"
+#include "../network/packet_class.h"
 
 class EntryList_006255F0
 {
@@ -5546,6 +5547,73 @@ void Obj_006244E0::FUN_006244E0()
 }
 
 // FUNCTION: GAMEMD 0x624760  HashTable_006249A0<int, MapValue_00602B90>::Find
+struct Vector24_00624810
+{
+    int   Count;       // +0x00
+    int   Capacity;    // +0x04
+    char* Items;       // +0x08
+
+    // FUNCTION: GAMEMD 0x624810 (__thiscall)
+    bool FUN_00624810();
+    // FUNCTION: GAMEMD 0x6248A0 (__thiscall)
+    bool FUN_006248A0();
+};
+GG_STATIC_ASSERT(offsetof(Vector24_00624810, Capacity) == 0x04);
+GG_STATIC_ASSERT(offsetof(Vector24_00624810, Items) == 0x08);
+GG_STATIC_ASSERT(sizeof(Vector24_00624810) == 0x0C);
+
+// FUNCTION: GAMEMD 0x624810
+// Doubles the storage (at least ten elements) once the count reaches the
+// capacity; the new storage is zeroed before the old contents are copied in.
+bool Vector24_00624810::FUN_00624810()
+{
+    if (Count < Capacity)
+        return false;
+
+    int nNew = Count * 2;
+
+    if (nNew < 10)
+        nNew = 10;
+
+    char* pNew = new char[nNew * 24];
+    memset(pNew, 0, nNew * 24);
+
+    if (Items)
+        memcpy(pNew, Items, Count * 24);
+
+    delete Items;
+    Capacity = nNew;
+    Items = pNew;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6248A0
+// Halves the storage (never below ten elements) when the count has fallen
+// to a third of the capacity.
+bool Vector24_00624810::FUN_006248A0()
+{
+    if (Count * 3 > Capacity)
+        return false;
+
+    int nNew = Capacity / 2;
+
+    if (nNew < 10)
+        nNew = 10;
+
+    if (nNew >= Capacity)
+        return false;
+
+    char* pNew = new char[nNew * 24];
+
+    if (Items)
+        memcpy(pNew, Items, Count * 24);
+
+    delete Items;
+    Items = pNew;
+    Capacity = nNew;
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x624930  HashTable_006249A0<int, int>::Find
 template<class KEY, class VALUE>
 bool HashTable_006249A0<KEY, VALUE>::Find(const KEY& key, VALUE*& pValue)
@@ -5790,6 +5858,38 @@ struct Obj_00625D60 {
     bool FUN_00625DB0(const char* key, unsigned char* out);
 };
 GG_STATIC_ASSERT(offsetof(Obj_00625D60, unknown_04) == 0x04);
+// FUNCTION: GAMEMD 0x625AB0
+// Destroys every field in the packet's list.
+PacketClass::~PacketClass()
+{
+    FieldClass* field = Head;
+    while (field) {
+        FieldClass* next = field->Next;
+        delete field;
+        field = next;
+    }
+}
+
+// FUNCTION: GAMEMD 0x625AE0
+// Pushes a field on the front of the list.
+void PacketClass::AddField(FieldClass* field)
+{
+    field->Next = Head;
+    Head = field;
+}
+
+// FUNCTION: GAMEMD 0x625D20
+// Finds the first field whose four-character ID matches, or returns null.
+FieldClass* PacketClass::FindField(const char* id)
+{
+    for (FieldClass* field = Head; field; field = field->Next) {
+        if (strncmp(id, field->ID, 4) == 0) {
+            return field;
+        }
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x00625D60
 bool Obj_00625D60::FUN_00625D60(const char* key, unsigned char* out)
 {
@@ -5881,6 +5981,47 @@ bool Obj_00625EA0::FUN_00625EA0(const char* key, unsigned int* out)
     return node ? true : false;
 }
 
+struct ChunkNode_00625EF0
+{
+    char               Tag[4];       // +0x00
+    unsigned short     unknown_04;
+    unsigned short     Size;         // +0x06
+    const char*        Data;         // +0x08
+    ChunkNode_00625EF0* Next;        // +0x0C
+};
+GG_STATIC_ASSERT(offsetof(ChunkNode_00625EF0, Size) == 0x06);
+GG_STATIC_ASSERT(offsetof(ChunkNode_00625EF0, Next) == 0x0C);
+
+struct ChunkList_00625EF0
+{
+    int                 unknown_00;
+    ChunkNode_00625EF0* First;       // +0x04
+
+    ChunkNode_00625EF0* Find(const char* tag)
+    {
+        for (ChunkNode_00625EF0* node = First; node != 0; node = node->Next) {
+            if (strncmp(tag, node->Tag, 4) == 0) {
+                return node;
+            }
+        }
+        return 0;
+    }
+    bool CopyString(const char* tag, char* out);
+    bool CopyBytes(const char* tag, void* out, unsigned int* size);
+};
+GG_STATIC_ASSERT(offsetof(ChunkList_00625EF0, First) == 0x04);
+
+// FUNCTION: GAMEMD 0x625EF0
+// Copy the string held by the chunk with the given tag; false when there is none.
+bool ChunkList_00625EF0::CopyString(const char* tag, char* out)
+{
+    ChunkNode_00625EF0* node = Find(tag);
+    if (node != 0) {
+        strcpy(out, node->Data);
+    }
+    return node ? true : false;
+}
+
 // FUNCTION: GAMEMD 0x00625F60
 bool Obj_00625EA0::FUN_00625F60(const char* key, unsigned int* out)
 {
@@ -5925,6 +6066,22 @@ PacketClass::PacketClass(char* pBuffer)
         pField->Next = Head;
         Head = pField;
     }
+}
+
+// FUNCTION: GAMEMD 0x625FB0
+// Copy up to *size bytes of the chunk with the given tag and report its full size.
+bool ChunkList_00625EF0::CopyBytes(const char* tag, void* out, unsigned int* size)
+{
+    ChunkNode_00625EF0* node = Find(tag);
+    if (node != 0) {
+        int count = *size;
+        if (node->Size < count) {
+            count = node->Size;
+        }
+        memcpy(out, node->Data, count);
+        *size = node->Size;
+    }
+    return node ? true : false;
 }
 
 // FUNCTION: GAMEMD 0x626020
