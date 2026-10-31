@@ -15157,7 +15157,7 @@
  "match/combat/airstrike_class.cpp::_DAT_007E2928": "0x007E2928",
  "match/combat/evade_unit_globals.cpp::_$E11": "0x004C6130",
  "match/combat/evade_unit_globals.cpp::_DAT_007E8808": "0x007E8808",
- "match/combat/techno_static_timers.cpp::_$S5": "0x00B0EA38",
+ "match/combat/Techno.cpp::_$S8": "0x00B0EA38",
  "match/combat/temporal_class.cpp::_DAT_007F5100": "0x007F5100",
  "match/combat/tu076_em_pulse_class.cpp::_DAT_007E8728": "0x007E8728",
  "match/combat/tu174_particle_class.cpp::_?$S22@?1??vf_66@ParticleClass@@UAEPAUParticleCellCoord@@PAX@Z@4EA": "0x00AC4998",

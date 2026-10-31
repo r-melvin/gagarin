@@ -263,6 +263,7 @@
 #include <windows.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/cell.h"
+#include "techno_static_timers.h"
 
 struct TypeView_006FBFA0 {
     unsigned char unknown_00[0x1A6];
@@ -1007,6 +1008,13 @@ void __fastcall FUN_004AED70(void* surface, void* conversion, void* shape,
     int frame, const Point2D* point, RectangleStruct* clip, int flags,
     int a8, int z, int a10, int intensity, int a12, int a13, int a14,
     Point2D offset);
+
+// SYNTHETIC: GAMEMD 0x006F2AB0 -- initialiser of TechnoStatics::FrameTimer
+// SYNTHETIC: GAMEMD 0x006F2AD0 -- exit stub of TechnoStatics::FrameTimer, guard byte 0xB0EA38 bit 0
+TechnoStaticFrameTimer TechnoStatics::FrameTimer;
+// SYNTHETIC: GAMEMD 0x006F2AF0 -- initialiser of TechnoStatics::ClockTimer
+// SYNTHETIC: GAMEMD 0x006F2B20 -- exit stub of TechnoStatics::ClockTimer, guard byte 0xB0EA38 bit 1
+TechnoStaticClockTimer TechnoStatics::ClockTimer;
 
 // FUNCTION: GAMEMD 0x70A990
 // Draw the rank pip beside this object: the veteran or elite frame, or the

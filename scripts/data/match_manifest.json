@@ -142702,9 +142702,9 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_static_timers.cpp",
+  "tu": "match/combat/Techno.cpp",
   "addr": "0x6F2B20",
-  "sym": "_$E10",
+  "sym": "_$E13",
   "len": "0x15",
   "name": "TechnoStatics::ClockTimer exit stub",
   "status": "matched",
@@ -146059,27 +146059,27 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_static_timers.cpp",
+  "tu": "match/combat/Techno.cpp",
   "addr": "0x6F2AB0",
-  "sym": "_$E7",
+  "sym": "_$E10",
   "len": "0x20",
   "name": "TechnoStatics::FrameTimer dynamic initializer",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_static_timers.cpp",
+  "tu": "match/combat/Techno.cpp",
   "addr": "0x6F2AD0",
-  "sym": "_$E4",
+  "sym": "_$E7",
   "len": "0x15",
   "name": "TechnoStatics::FrameTimer exit stub",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_static_timers.cpp",
+  "tu": "match/combat/Techno.cpp",
   "addr": "0x6F2AF0",
-  "sym": "_$E12",
+  "sym": "_$E15",
   "len": "0x25",
   "name": "TechnoStatics::ClockTimer dynamic initializer",
   "status": "matched",
