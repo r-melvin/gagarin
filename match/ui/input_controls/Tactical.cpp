@@ -638,6 +638,65 @@ Coord_006D2280* Tactical::FUN_006D2360(Coord_006D2280* out,
 
 #include "../../core/game_state_flags.h"
 extern unsigned char DAT_00A8ED6B; // GLOBAL: GAMEMD 0xA8ED6B (decl; reloc)
+// GLOBAL: GAMEMD 0x8428EC -- per-speed scroll step table (float; 0.0015,
+// 0.003, 0.0075, 0.03, ...).
+extern float DAT_008428EC[];
+
+// Lepton (x, y) to the un-normalised iso pixel offset as a cell pair, read through
+// a pointer to a two-int local (the inlined CoordsToScreen shape: the address-taken
+// local spills Y into the temporary's second slot and reloads it).
+static inline Pair_006D9F80 IsoProjectPair(const int* p)
+{
+    Pair_006D9F80 r;
+    r.unknown_00 = p[0] * 60 / 2;
+    r.unknown_04 = p[0] * 30 / 2;
+    r.unknown_00 += p[1] * -60 / 2;
+    r.unknown_04 += p[1] * 30 / 2;
+    return r;
+}
+
+// Tactical::CoordsToScreen (0x6D1F10) inlined with AdjustForZ (0x6D20E0) inlined,
+// the point returned by value.
+static inline Pair_006D9F80 InlineCoordsToScreenPair(const CoordStruct* pCoord)
+{
+    int xy[2];
+    xy[0] = pCoord->X;
+    xy[1] = pCoord->Y;
+
+    Pair_006D9F80 r = IsoProjectPair(xy);
+    r.unknown_00 /= 256;
+    r.unknown_04 /= 256;
+    r.unknown_04 -= AdjustForZ(pCoord->Z);
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x6D2420
+//
+// Start a smooth scroll of the tactical view towards a world coordinate.
+// The progress counter is reset and the per-frame step taken from the speed
+// table; the coordinate is projected to its iso screen point (CoordsToScreen
+// and AdjustForZ inlined), taken relative to the view offset and back again,
+// and recorded as the target of the move, while the current view position
+// is recorded as its start.
+//
+// Phrasing that matters: the target point is stored as one struct
+// assignment (X then Y); per-member stores come out Y first (97.8%).
+void Tactical::FUN_006D2420(const CoordStruct* pCoord, int speed)
+{
+    this->unknown_DC = 0;
+    this->unknown_D8 = DAT_008428EC[speed];
+
+    Pair_006D9F80 pt = InlineCoordsToScreenPair(pCoord);
+    pt.unknown_00 -= this->unknown_B0.unknown_00;
+    pt.unknown_04 -= this->unknown_B0.unknown_04;
+    pt.unknown_00 += this->unknown_B0.unknown_00;
+    pt.unknown_04 += this->unknown_B0.unknown_04;
+
+    this->unknown_D0 = pt;
+    this->unknown_C8.unknown_00 = this->unknown_D64.unknown_00;
+    this->unknown_C8.unknown_04 = this->unknown_D64.unknown_04;
+}
+
 // FUNCTION: GAMEMD 0x6D2540
 void Tactical::vf_23()
 {

@@ -29607,9 +29607,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/tactical_class_focus_methods.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D2420",
-  "sym": "?FocusOn@Tactical_006D2420@@QAEXPBUCoord_006D2420@@H@Z",
+  "sym": "?FUN_006D2420@Tactical@@QAEXPBUCoordStruct@@H@Z",
   "len": "0x11B",
   "name": "Tactical::FocusOn",
   "status": "matched",
