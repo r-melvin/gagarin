@@ -42,6 +42,12 @@
 
 #include "../../FUNCTION.H"
 #include "../../core/cell_step_tables.h"
+#include "../../renderer/tactical_class_matrix_methods.h"
+#include "../tactical_class_coords_to_client_methods.h"
+#include "../../renderer/tactical_class_selectable_methods.h"
+#include "../../_layout/geometry2d.h"
+#include <stddef.h>
+#include "../../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -396,6 +402,71 @@ Point2D Tactical::CoordsToScreen(const CoordStruct* pCoord)
     return r;
 }
 
+// Lepton-space (x, y) to the un-normalised iso pixel offset: a 60x30 cell,
+// phrased as the retail halves of the cell size, x-terms first then y-terms.
+// This has to be a separate inline returning by value: the temporary VC6
+// materialises for the returned struct is what gives retail its 8-byte frame
+// and the dead spill of X (`MOV [ESP+8],ECX`) — the same computation written
+// straight into the caller's local, or into the destination, drops both.
+// `-60` must be a literal multiply: VC6 expands it as `SHL 4; SUB; NEG; SHL 2`
+// and only folds it into a subtraction when the sum is in the same expression.
+static inline Point2D IsoProject(int x, int y)
+{
+    Point2D r;
+    r.X = x * 60 / 2;
+    r.Y = x * 30 / 2;
+    r.X += y * -60 / 2;
+    r.Y += y * 30 / 2;
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x6D1FE0
+//
+// Pixel offset of a lepton-space (x, y): X = (x - y) * 30 / 256 and
+// Y = (x + y) * 15 / 256, via the half-cell products above and a signed
+// divide by the 256 leptons per cell. `this` is unused; the result is
+// written to pDest as one Point2D and pDest is returned. x and y are read
+// into named locals first so x claims ESI ahead of y (VC6 evaluates the
+// inline's arguments right-to-left otherwise, which swaps ESI/EDI).
+int* Tactical::AdjustForZShapeMove(int* pDest, const int* pClient)
+{
+    int x = pClient[0];
+    int y = pClient[1];
+
+    Point2D r = IsoProject(x, y);
+    r.X /= 256;
+    r.Y /= 256;
+
+    *(Point2D*)pDest = r;
+    return pDest;
+}
+
+// FUNCTION: GAMEMD 0x6D2070
+//
+// Runs an integer 2-D pixel offset through the iso transform matrix at +0xDE4
+// (Z is taken as 0) and truncates the transformed X/Y back to ints in pOut.
+// The helper's result is copied back into the input vector (the 3-dword copy
+// off the returned pointer), both `__ftol` conversions are done into a
+// Point2D, and that is stored to pOut as one struct so both stores follow
+// the second conversion.
+int* Tactical::ApplyMatrix_Pixel(int* pOut, const int* pIn)
+{
+    Vector3D v;
+    Vector3D r;
+
+    v.X = (float)pIn[0];
+    v.Z = 0.0f;
+    v.Y = (float)pIn[1];
+
+    v = *Matrix3D::MatrixApply(&r, &this->unknown_DE4, &v);
+
+    Point2D pt;
+    pt.X = (int)v.X;
+    pt.Y = (int)v.Y;
+    *(Point2D*)pOut = pt;
+    return pOut;
+}
+
 // FUNCTION: GAMEMD 0x6D20E0  Tactical::AdjustForZ (__fastcall)
 int Tactical::AdjustForZ(int Height)
 {
@@ -428,6 +499,65 @@ extern Record_00B0CEC8 DAT_00B0CEC8[];
 int FUN_006D2120(int value)
 {
     return (int)((value - 0.5) * DAT_00B0CDD8);
+}
+
+// Tactical::CoordsToScreen (0x6D1F10) inlined.
+static inline void InlineCoordsToScreen(Point2D* pDest, const CoordStruct* pCoord)
+{
+    int xy[2];
+    xy[0] = pCoord->X;
+    xy[1] = pCoord->Y;
+
+    Point2D r = IsoProject(xy);
+    r.X /= 256;
+    r.Y /= 256;
+    r.Y -= AdjustForZ(pCoord->Z);
+
+    *pDest = r;
+}
+
+// Is the client point within 360 x 180 pixels of the view rectangle. Takes
+// the two scalars so the compares run on volatile register copies after the
+// callee-saved pops (`MOV ECX,EDI; MOV EAX,ESI; POP; POP; POP; CMP`); each
+// false exit is its own `XOR AL,AL; ADD ESP,8; RET 8` and the last test is
+// a named bool so it ends in a bare `SETLE AL`.
+static inline bool InView(int x, int y)
+{
+    if (x < -360) {
+        return false;
+    }
+    if (x > DAT_00B0CE30 + 360) {
+        return false;
+    }
+    if (y < -180) {
+        return false;
+    }
+    bool inside = y <= DAT_00B0CE34 + 180;
+    return inside;
+}
+
+// FUNCTION: GAMEMD 0x6D2140
+//
+// World coordinate to a client (view-relative) point: the raw iso screen
+// point is stored to pDest, the view offset (read first as one Point2D into
+// ECX/EBP) is subtracted from it in place with a reload through pDest, and
+// the result says whether the point lies within 360 pixels horizontally and
+// 180 pixels vertically of the view rectangle. The per-axis copy right after
+// each in-place store is what interleaves `MOV [EAX],EDI; MOV ECX,EDI;
+// MOV [EAX+4],ESI; MOV EAX,ESI`; a struct copy or a by-value helper argument
+// puts both stores before both copies (98.1%), and testing pDest's fields
+// directly keeps the pops inside the branches (63.2%).
+bool Tactical::CoordsToClient(const CoordStruct* pCoord, Point2D* pDest)
+{
+    InlineCoordsToScreen(pDest, pCoord);
+
+    Pair_006D9F80 off = this->unknown_B0;
+    pDest->X -= off.unknown_00;
+    int x = pDest->X;
+    pDest->Y -= off.unknown_04;
+    int y = pDest->Y;
+
+    return InView(x, y);
 }
 
 // FUNCTION: GAMEMD 0x6D2280
@@ -2700,6 +2830,25 @@ void Tactical::FUN_006D8260(void* unused, const RectangleStruct* rectangle)
     }
 }
 
+// FUNCTION: GAMEMD 0x6D8640 (decl; reloc) -- adjusts a coordinate in place, reporting whether it did.
+bool __stdcall FUN_006D8640(Point2D* point);
+
+// FUNCTION: GAMEMD 0x6D84D0
+// PARTIAL: 80.6% -- identical instruction multiset; retail copies the two words into the temporary
+// before taking its address, this order takes the address first (field-wise, constructor and
+// aggregate copies tried).
+// The adjusted copy of a coordinate, or the coordinate unchanged when the adjustment fails or is disabled.
+Point2D __stdcall FUN_006D84D0(const Point2D* point)
+{
+    int x = point->X;
+    int y = point->Y;
+    Point2D adjusted(x, y);
+    if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B) {
+        return adjusted;
+    }
+    return *point;
+}
+
 // FUNCTION: GAMEMD 0x6D8530
 void Tactical::FUN_006D8530(int direction, int distance)
 {
@@ -3225,6 +3374,42 @@ void Tactical::FUN_006D9CE0(int x, int y, int width, int height)
     }
 }
 
+// FUNCTION: GAMEMD 0x6D9EF0
+//
+// Queues an object for selection at a client point. Refused when the queue is
+// full (500) or the point is more than 32 pixels outside the view bound; on
+// success the point is converted to tactical space by adding the view origin,
+// stored with the object at the old count, and the count is bumped.
+//
+// Two struct copies carry the match: the view origin is read as one Point2D
+// (both `[ECX+0xB0]`/`[ECX+0xB4]` loads land before either add), and the
+// point is stored into the queue entry as one Point2D, which is what makes
+// VC6 re-read the count once and address both stores as `[EAX*4+disp]` off a
+// single `LEA EAX,[EAX+EAX*2]` instead of hoisting `&entry` with a SHL.
+bool Tactical::AddSelectable(void* pTechno, int x, int y)
+{
+    int count = this->unknown_DB0;
+
+    if (count != 500
+        && x >= -32 && x <= DAT_00886FA8 + 32
+        && y >= -32 && y <= DAT_00886FAC + 32)
+    {
+        TacticalSelectables[count].Techno = pTechno;
+
+        Point2D pos;
+        pos.X = this->unknown_B0.unknown_00;
+        pos.Y = this->unknown_B0.unknown_04;
+        Point2D pt;
+        pt.X = x + pos.X;
+        pt.Y = y + pos.Y;
+        TacticalSelectables[this->unknown_DB0].Point = pt;
+
+        this->unknown_DB0 = this->unknown_DB0 + 1;
+        return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x6D9F80
 void Tactical::FUN_006D9F80(const Pair_006D9F80* value)
 {
@@ -3385,6 +3570,14 @@ int Tactical::FUN_006DA230(int direction)
                                 (unknown_D64.unknown_04 - next.unknown_04) * 3 + 4];
     }
     return direction;
+}
+
+// FUNCTION: GAMEMD 0x6DA360
+// Copies the dword at src to dst and returns dst; the third argument is ignored.
+int* __stdcall FUN_006DA360(int* dst, int* src, int unused)
+{
+    *dst = *src;
+    return dst;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

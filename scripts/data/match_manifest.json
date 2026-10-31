@@ -28554,7 +28554,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/tactical_class_matrix_methods.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1FE0",
   "sym": "?AdjustForZShapeMove@Tactical@@QAEPAHPAHPBH@Z",
   "len": "0x84",
@@ -28563,7 +28563,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/tactical_class_matrix_methods.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D2070",
   "sym": "?ApplyMatrix_Pixel@Tactical@@QAEPAHPAHPBH@Z",
   "len": "0x6b",
@@ -28572,7 +28572,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/tactical_class_selectable_methods.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D9EF0",
   "sym": "?AddSelectable@Tactical@@QAE_NPAXHH@Z",
   "len": "0x8b",
@@ -29598,7 +29598,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/tactical_class_coords_to_client_methods.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D2140",
   "sym": "?CoordsToClient@Tactical@@QAE_NPBUCoordStruct@@PAVPoint2D@@@Z",
   "len": "0x132",
@@ -137437,7 +137437,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/w3r2_leaf_methods_c.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D84D0",
   "sym": "?FUN_006D84D0@@YG?AVPoint2D@@PBV1@@Z",
   "len": "0x59",
@@ -146380,7 +146380,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_sweep_s2_31.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DA360",
   "sym": "?FUN_006DA360@@YGPAHPAH0H@Z",
   "len": "0xf",

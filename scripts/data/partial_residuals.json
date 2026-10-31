@@ -4256,7 +4256,7 @@
  {
   "addr": "0x6D84D0",
   "name": "FUN_006D84D0",
-  "tu": "match/core/w3r2_leaf_methods_c.cpp",
+  "tu": "match/ui/input_controls/Tactical.cpp",
   "sym": "?FUN_006D84D0@@YG?AVPoint2D@@PBV1@@Z",
   "len": "0x59",
   "manifest_pct": 80.6,
