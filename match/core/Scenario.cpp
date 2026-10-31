@@ -69,6 +69,8 @@
 #include "leftover_trivial_leaf_sweep.h"
 #include "trivial_tu207_methods.h"
 #include "../ui/game_options_class_methods.h"
+#include <math.h>
+#include "../combat/particles/particle_common_types.h"
 
 #include "../_layout/load_progress_mgr.h"
 #include "../_layout/dialog_005d3490.h"
@@ -150,7 +152,7 @@ extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
 #include "../_layout/building_array.h"
 extern int HouseClass_ArrayCount; // GLOBAL: GAMEMD 0x00A80238
 extern TiberiumClass** TiberiumArrayItems; // GLOBAL: GAMEMD 0x00B0F4EC
-extern ParticleCoord DAT_00B05488; // GLOBAL: GAMEMD 0x00B05488
+extern ParticleZeroInit DAT_00B05488;
 extern const char STR_0083DA90[]; // STRING: GAMEMD 0x0083DA90 (decl)
 int __fastcall FUN_00644630(const char* id); // GAMEMD 0x644630; ECX=id, no stack args
 void __fastcall FUN_0075F020(); // GAMEMD 0x75F020
@@ -555,6 +557,31 @@ extern const double DAT_007F0E38;
 // GLOBAL: GAMEMD 0xB05460
 extern double DAT_00B05460;
 
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
+// GLOBAL: GAMEMD 0x7E1720
+extern const double DAT_007E1720;
+// GLOBAL: GAMEMD 0x7E1728
+extern const double DAT_007E1728;
+// GLOBAL: GAMEMD 0x7E1730
+extern const double DAT_007E1730;
+// GLOBAL: GAMEMD 0x7E1738
+extern const double DAT_007E1738;
+// GLOBAL: GAMEMD 0x7E1740
+extern const double DAT_007E1740;
+// GLOBAL: GAMEMD 0x7F0E40
+extern const double DAT_007F0E40;
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc)
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc)
+double __cdecl FUN_004CADE0(double value);
+
+// SYNTHETIC: GAMEMD 0x683070
+// GLOBAL: GAMEMD 0xB05460
+double DAT_00B05460 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
 // SYNTHETIC: GAMEMD 0x006830A0
 // GLOBAL: GAMEMD 0x00B054C0
 double DAT_00B054C0 = DAT_00B05460 / DAT_007F0E38;
@@ -563,9 +590,49 @@ double DAT_00B054C0 = DAT_00B05460 / DAT_007F0E38;
 // GLOBAL: GAMEMD 0x00B054A8
 double DAT_00B054A8 = DAT_007E1718 / DAT_00B054C0;
 
+// SYNTHETIC: GAMEMD 0x6830E0
+// GLOBAL: GAMEMD 0xB054A0
+double DAT_00B054A0 = DAT_007E1720 * DAT_007F0E40;
+
+// SYNTHETIC: GAMEMD 0x683100
+// GLOBAL: GAMEMD 0xB05468
+double DAT_00B05468 = DAT_007E1728 * DAT_007F0E40;
+
+// SYNTHETIC: GAMEMD 0x683120
+// GLOBAL: GAMEMD 0xB05440
+double DAT_00B05440 = DAT_007E1730 * DAT_007F0E40;
+
+// SYNTHETIC: GAMEMD 0x683140
+// GLOBAL: GAMEMD 0xB054C8
+int DAT_00B054C8 = (int)(DAT_007E1738 * (FUN_004CAD50(DAT_00B05440 - DAT_00B05468) * DAT_00B05460));
+
+// SYNTHETIC: GAMEMD 0x683180
+// GLOBAL: GAMEMD 0xB05470
+double DAT_00B05470 = FUN_004CADE0((double)DAT_00B054C8 * DAT_007E1740);
+
+// SYNTHETIC: GAMEMD 0x6831B0
+// GLOBAL: GAMEMD 0xB05498
+double DAT_00B05498 = FUN_004CADE0((double)(DAT_00B054C8 * 2) / DAT_00B05460);
+
+// SYNTHETIC: GAMEMD 0x6831E0
+// GLOBAL: GAMEMD 0xB054BC
+int DAT_00B054BC = (int)((double)(DAT_00B054C8 * 4) + DAT_007E1738);
+
+// SYNTHETIC: GAMEMD 0x683210
+// GLOBAL: GAMEMD 0xB05458
+MathTblShortPair DAT_00B05458;
+
+// SYNTHETIC: GAMEMD 0x683220
+// GLOBAL: GAMEMD 0xB05488
+ParticleZeroInit DAT_00B05488;
+
 // SYNTHETIC: GAMEMD 0x00683240
 // GLOBAL: GAMEMD 0x00B054B0
 MathTblCoord DAT_00B054B0;
+
+// SYNTHETIC: GAMEMD 0x683260
+// GLOBAL: GAMEMD 0xB05448
+MathTblZero4 DAT_00B05448;
 
 // FUNCTION: GAMEMD 0x6832B0
 // Empty function.
@@ -2804,4 +2871,6 @@ extern const char STR_0083D824[];
 extern const char STR_0082DB0C[];
 // GLOBAL: GAMEMD 0x83D824
 extern const char STR_0083D824[];
+// GLOBAL: GAMEMD 0x7F0E40
+extern const double DAT_007F0E40 = 0.017453292519943295;
 // END defined globals

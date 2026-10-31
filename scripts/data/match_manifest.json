@@ -90458,7 +90458,7 @@
  {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x6830A0",
-  "sym": "_$E4",
+  "sym": "_$E7",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B054C0)",
   "status": "matched",
@@ -90467,7 +90467,7 @@
  {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x6830C0",
-  "sym": "_$E7",
+  "sym": "_$E10",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B054A8)",
   "status": "matched",
@@ -90476,7 +90476,7 @@
  {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x683240",
-  "sym": "_$E10",
+  "sym": "_$E40",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00B054B0)",
   "status": "matched",
@@ -110113,99 +110113,99 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683070",
-  "sym": "_$E2",
+  "sym": "_$E4",
   "len": "0x28",
   "name": "dynamic initializer (DAT_00B05460)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x6830E0",
-  "sym": "_$E5",
+  "sym": "_$E13",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B054A0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683100",
-  "sym": "_$E8",
+  "sym": "_$E16",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B05468)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683120",
-  "sym": "_$E11",
+  "sym": "_$E19",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B05440)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683140",
-  "sym": "_$E14",
+  "sym": "_$E22",
   "len": "0x31",
   "name": "dynamic initializer (DAT_00B054C8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683180",
-  "sym": "_$E17",
+  "sym": "_$E25",
   "len": "0x21",
   "name": "dynamic initializer (DAT_00B05470)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x6831B0",
-  "sym": "_$E20",
+  "sym": "_$E28",
   "len": "0x2c",
   "name": "dynamic initializer (DAT_00B05498)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x6831E0",
-  "sym": "_$E23",
+  "sym": "_$E31",
   "len": "0x27",
   "name": "dynamic initializer (DAT_00B054BC)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683210",
-  "sym": "_$E26",
+  "sym": "_$E34",
   "len": "0xf",
   "name": "dynamic initializer (DAT_00B05458)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683220",
-  "sym": "_$E29",
+  "sym": "_$E37",
   "len": "0x12",
   "name": "dynamic initializer (DAT_00B05488)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_683070.cpp",
+  "tu": "match/core/Scenario.cpp",
   "addr": "0x683260",
-  "sym": "_$E32",
+  "sym": "_$E43",
   "len": "0x17",
   "name": "dynamic initializer (DAT_00B05448)",
   "status": "matched",
