@@ -75826,7 +75826,7 @@
   "pct": 22.8
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B6C0",
   "sym": "_$E5",
   "len": "0x13",
@@ -75835,7 +75835,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B6E0",
   "sym": "_$E8",
   "len": "0x13",
@@ -75844,7 +75844,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B860",
   "sym": "_$E38",
   "len": "0x1a",
@@ -75855,7 +75855,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B8F0",
-  "sym": "_$E2",
+  "sym": "_$E44",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B73AE0)",
   "status": "matched",
@@ -75864,7 +75864,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C050",
-  "sym": "_$E47",
+  "sym": "_$E89",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B76640)",
   "status": "partial",
@@ -75873,7 +75873,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA20",
-  "sym": "_$E127",
+  "sym": "_$E169",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B73ACC)",
   "status": "matched",
@@ -75882,7 +75882,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA50",
-  "sym": "_$E132",
+  "sym": "_$E174",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76E24)",
   "status": "matched",
@@ -75891,7 +75891,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CCD0",
-  "sym": "_$E142",
+  "sym": "_$E184",
   "len": "0x137",
   "name": "atexit cleanup (DAT_00B76608)",
   "status": "partial",
@@ -75900,7 +75900,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CE10",
-  "sym": "_$E147",
+  "sym": "_$E189",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B765F0)",
   "status": "matched",
@@ -75909,7 +75909,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CE30",
-  "sym": "_$E150",
+  "sym": "_$E192",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73E3C)",
   "status": "matched",
@@ -75918,7 +75918,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF30",
-  "sym": "_$E163",
+  "sym": "_$E205",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76AC4)",
   "status": "matched",
@@ -75945,7 +75945,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF90",
-  "sym": "_$E168",
+  "sym": "_$E210",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76E34)",
   "status": "matched",
@@ -75954,7 +75954,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFC0",
-  "sym": "_$E173",
+  "sym": "_$E215",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B73B30)",
   "status": "matched",
@@ -75963,7 +75963,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFF0",
-  "sym": "_$E178",
+  "sym": "_$E220",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B7622C)",
   "status": "matched",
@@ -75972,7 +75972,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D020",
-  "sym": "_$E183",
+  "sym": "_$E225",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76908)",
   "status": "matched",
@@ -75981,7 +75981,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D050",
-  "sym": "_$E188",
+  "sym": "_$E230",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B77794)",
   "status": "matched",
@@ -75990,7 +75990,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D080",
-  "sym": "_$E193",
+  "sym": "_$E235",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B778F4)",
   "status": "matched",
@@ -75999,7 +75999,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0B0",
-  "sym": "_$E198",
+  "sym": "_$E240",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B778FC)",
   "status": "matched",
@@ -76008,7 +76008,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0E0",
-  "sym": "_$E203",
+  "sym": "_$E245",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B765EC)",
   "status": "matched",
@@ -76017,7 +76017,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D110",
-  "sym": "_$E208",
+  "sym": "_$E250",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76900)",
   "status": "matched",
@@ -76035,7 +76035,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D1C0",
-  "sym": "_$E213",
+  "sym": "_$E255",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B76230)",
   "status": "matched",
@@ -76228,7 +76228,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77DA10",
-  "sym": "_$E218",
+  "sym": "_$E260",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B73E40)",
   "status": "matched",
@@ -76237,7 +76237,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77DA40",
-  "sym": "_$E223",
+  "sym": "_$E265",
   "len": "0xa",
   "name": "atexit cleanup (DAT_00B7778C)",
   "status": "matched",
@@ -81926,7 +81926,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B920",
-  "sym": "_$E7",
+  "sym": "_$E49",
   "len": "0x17",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81935,7 +81935,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B960",
-  "sym": "_$E12",
+  "sym": "_$E54",
   "len": "0x17",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81944,7 +81944,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B9A0",
-  "sym": "_$E17",
+  "sym": "_$E59",
   "len": "0x17",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81953,7 +81953,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B9E0",
-  "sym": "_$E22",
+  "sym": "_$E64",
   "len": "0x17",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81962,7 +81962,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77BA20",
-  "sym": "_$E27",
+  "sym": "_$E69",
   "len": "0x17",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81971,7 +81971,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C370",
-  "sym": "_$E57",
+  "sym": "_$E99",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81980,7 +81980,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C600",
-  "sym": "_$E72",
+  "sym": "_$E114",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81989,7 +81989,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C720",
-  "sym": "_$E87",
+  "sym": "_$E129",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -81998,7 +81998,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C780",
-  "sym": "_$E92",
+  "sym": "_$E134",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82007,7 +82007,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C7E0",
-  "sym": "_$E97",
+  "sym": "_$E139",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82016,7 +82016,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C840",
-  "sym": "_$E102",
+  "sym": "_$E144",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82025,7 +82025,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C8A0",
-  "sym": "_$E107",
+  "sym": "_$E149",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82034,7 +82034,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C900",
-  "sym": "_$E112",
+  "sym": "_$E154",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82043,7 +82043,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C960",
-  "sym": "_$E117",
+  "sym": "_$E159",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82052,7 +82052,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C9C0",
-  "sym": "_$E122",
+  "sym": "_$E164",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82061,7 +82061,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CE70",
-  "sym": "_$E153",
+  "sym": "_$E195",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -82070,7 +82070,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CED0",
-  "sym": "_$E158",
+  "sym": "_$E200",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -98219,7 +98219,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C5A0",
-  "sym": "_$E67",
+  "sym": "_$E109",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -98228,7 +98228,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C660",
-  "sym": "_$E77",
+  "sym": "_$E119",
   "len": "0x3e",
   "name": "atexit cleanup (inlined destructor of the global it releases)",
   "status": "matched",
@@ -103518,7 +103518,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B8D0",
-  "sym": "_$E4",
+  "sym": "_$E46",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73AE0)",
   "status": "matched",
@@ -103527,7 +103527,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA00",
-  "sym": "_$E129",
+  "sym": "_$E171",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73ACC)",
   "status": "matched",
@@ -103536,7 +103536,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CA30",
-  "sym": "_$E134",
+  "sym": "_$E176",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76E24)",
   "status": "matched",
@@ -103545,7 +103545,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF10",
-  "sym": "_$E165",
+  "sym": "_$E207",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76AC4)",
   "status": "matched",
@@ -103554,7 +103554,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CF70",
-  "sym": "_$E170",
+  "sym": "_$E212",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76E34)",
   "status": "matched",
@@ -103563,7 +103563,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFA0",
-  "sym": "_$E175",
+  "sym": "_$E217",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73B30)",
   "status": "matched",
@@ -103572,7 +103572,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CFD0",
-  "sym": "_$E180",
+  "sym": "_$E222",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B7622C)",
   "status": "matched",
@@ -103581,7 +103581,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D000",
-  "sym": "_$E185",
+  "sym": "_$E227",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76908)",
   "status": "matched",
@@ -103590,7 +103590,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D030",
-  "sym": "_$E190",
+  "sym": "_$E232",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B77794)",
   "status": "matched",
@@ -103599,7 +103599,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D060",
-  "sym": "_$E195",
+  "sym": "_$E237",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B778F4)",
   "status": "matched",
@@ -103608,7 +103608,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D090",
-  "sym": "_$E200",
+  "sym": "_$E242",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B778FC)",
   "status": "matched",
@@ -103617,7 +103617,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0C0",
-  "sym": "_$E205",
+  "sym": "_$E247",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B765EC)",
   "status": "matched",
@@ -103626,7 +103626,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D0F0",
-  "sym": "_$E210",
+  "sym": "_$E252",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76900)",
   "status": "matched",
@@ -103635,7 +103635,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D9F0",
-  "sym": "_$E220",
+  "sym": "_$E262",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B73E40)",
   "status": "matched",
@@ -103644,7 +103644,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77DA20",
-  "sym": "_$E225",
+  "sym": "_$E267",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B7778C)",
   "status": "matched",
@@ -103653,7 +103653,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D1A0",
-  "sym": "_$E215",
+  "sym": "_$E257",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76230)",
   "status": "matched",
@@ -103662,7 +103662,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B900",
-  "sym": "_$E9",
+  "sym": "_$E51",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B778D8)",
   "status": "matched",
@@ -103671,7 +103671,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B940",
-  "sym": "_$E14",
+  "sym": "_$E56",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B73E10)",
   "status": "matched",
@@ -103680,7 +103680,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B980",
-  "sym": "_$E19",
+  "sym": "_$E61",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76AE0)",
   "status": "matched",
@@ -103689,7 +103689,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77B9C0",
-  "sym": "_$E24",
+  "sym": "_$E66",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B77900)",
   "status": "matched",
@@ -103698,7 +103698,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77BA00",
-  "sym": "_$E29",
+  "sym": "_$E71",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76520)",
   "status": "matched",
@@ -103707,7 +103707,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C350",
-  "sym": "_$E59",
+  "sym": "_$E101",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B777A0)",
   "status": "matched",
@@ -103716,7 +103716,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C580",
-  "sym": "_$E69",
+  "sym": "_$E111",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B765F8)",
   "status": "matched",
@@ -103725,7 +103725,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C5E0",
-  "sym": "_$E74",
+  "sym": "_$E116",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B73BD8)",
   "status": "matched",
@@ -103734,7 +103734,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C640",
-  "sym": "_$E79",
+  "sym": "_$E121",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B736F8)",
   "status": "matched",
@@ -103743,7 +103743,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C6A0",
-  "sym": "_$E84",
+  "sym": "_$E126",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76B00)",
   "status": "matched",
@@ -103752,7 +103752,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C6C0",
-  "sym": "_$E82",
+  "sym": "_$E124",
   "len": "0x3e",
   "name": "atexit cleanup (DAT_00B76B00)",
   "status": "matched",
@@ -103761,7 +103761,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C700",
-  "sym": "_$E89",
+  "sym": "_$E131",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76510)",
   "status": "matched",
@@ -103770,7 +103770,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C760",
-  "sym": "_$E94",
+  "sym": "_$E136",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B73AE8)",
   "status": "matched",
@@ -103779,7 +103779,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C7C0",
-  "sym": "_$E99",
+  "sym": "_$E141",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B77820)",
   "status": "matched",
@@ -103788,7 +103788,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C820",
-  "sym": "_$E104",
+  "sym": "_$E146",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B73708)",
   "status": "matched",
@@ -103797,7 +103797,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C880",
-  "sym": "_$E109",
+  "sym": "_$E151",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76188)",
   "status": "matched",
@@ -103806,7 +103806,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C8E0",
-  "sym": "_$E114",
+  "sym": "_$E156",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B73AA8)",
   "status": "matched",
@@ -103815,7 +103815,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C940",
-  "sym": "_$E119",
+  "sym": "_$E161",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76980)",
   "status": "matched",
@@ -103824,7 +103824,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77C9A0",
-  "sym": "_$E124",
+  "sym": "_$E166",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B779B0)",
   "status": "matched",
@@ -103833,7 +103833,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CE50",
-  "sym": "_$E155",
+  "sym": "_$E197",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76AD0)",
   "status": "matched",
@@ -103842,7 +103842,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77CEB0",
-  "sym": "_$E160",
+  "sym": "_$E202",
   "len": "0x1d",
   "name": "dynamic initializer (DAT_00B76970)",
   "status": "matched",
@@ -103851,7 +103851,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77ba40",
-  "sym": "_$E34",
+  "sym": "_$E76",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B768C0)",
   "status": "matched",
@@ -103860,7 +103860,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77bae0",
-  "sym": "_$E32",
+  "sym": "_$E74",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B768C0)",
   "status": "partial",
@@ -103869,7 +103869,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77bc10",
-  "sym": "_$E39",
+  "sym": "_$E81",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B73AF8)",
   "status": "matched",
@@ -103878,7 +103878,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77bcb0",
-  "sym": "_$E37",
+  "sym": "_$E79",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B73AF8)",
   "status": "partial",
@@ -103887,7 +103887,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77bde0",
-  "sym": "_$E44",
+  "sym": "_$E86",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B77D80)",
   "status": "matched",
@@ -103896,7 +103896,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77be80",
-  "sym": "_$E42",
+  "sym": "_$E84",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B77D80)",
   "status": "partial",
@@ -103905,7 +103905,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77bfb0",
-  "sym": "_$E49",
+  "sym": "_$E91",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B76640)",
   "status": "matched",
@@ -103914,7 +103914,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77c180",
-  "sym": "_$E54",
+  "sym": "_$E96",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B76680)",
   "status": "matched",
@@ -103923,7 +103923,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77c220",
-  "sym": "_$E52",
+  "sym": "_$E94",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B76680)",
   "status": "partial",
@@ -103932,7 +103932,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77c3b0",
-  "sym": "_$E64",
+  "sym": "_$E106",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B76530)",
   "status": "matched",
@@ -103941,7 +103941,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77c450",
-  "sym": "_$E62",
+  "sym": "_$E104",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B76530)",
   "status": "partial",
@@ -103950,7 +103950,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77ca60",
-  "sym": "_$E139",
+  "sym": "_$E181",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B76990)",
   "status": "matched",
@@ -103959,7 +103959,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77cb00",
-  "sym": "_$E137",
+  "sym": "_$E179",
   "len": "0x12e",
   "name": "atexit cleanup (DAT_00B76990)",
   "status": "partial",
@@ -103968,7 +103968,7 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77cc30",
-  "sym": "_$E144",
+  "sym": "_$E186",
   "len": "0x94",
   "name": "dynamic initializer (DAT_00B76608)",
   "status": "matched",
@@ -115207,7 +115207,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B690",
   "sym": "_$E2",
   "len": "0x28",
@@ -115216,7 +115216,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B700",
   "sym": "_$E11",
   "len": "0x13",
@@ -115225,7 +115225,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B720",
   "sym": "_$E14",
   "len": "0x13",
@@ -115234,7 +115234,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B740",
   "sym": "_$E17",
   "len": "0x13",
@@ -115243,7 +115243,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B760",
   "sym": "_$E20",
   "len": "0x31",
@@ -115252,7 +115252,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B7A0",
   "sym": "_$E23",
   "len": "0x21",
@@ -115261,7 +115261,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B7D0",
   "sym": "_$E26",
   "len": "0x2c",
@@ -115270,7 +115270,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B800",
   "sym": "_$E29",
   "len": "0x27",
@@ -115279,7 +115279,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B830",
   "sym": "_$E32",
   "len": "0xf",
@@ -115288,7 +115288,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B840",
   "sym": "_$E35",
   "len": "0x12",
@@ -115297,7 +115297,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_77b690.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B880",
   "sym": "_$E41",
   "len": "0x17",
