@@ -104,6 +104,10 @@
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 #include "../core/vector_class_operations.h"
+#include "../_layout/cell.h"
+#include "../core/trivial_tu130_methods.h"
+#include "MapGen.h"
+#include "../_layout/cell_class.h"
 
 // The int vector's capacity constructor is out of line at 0x477BE0 (defined in another translation unit).
 extern template class VectorClass<int>;
@@ -156,6 +160,205 @@ GG_STATIC_ASSERT(sizeof(_WIN32_FIND_DATAA*) == 4);
 
 // SYNTHETIC: GAMEMD 0x5AC270 -- MapSeedClass scalar deleting destructor, emitted by the compiler from the
 // virtual destructor where this TU seats the vtable.
+
+// The uniform [0, 1) draw that retail expands in place here (its out-of-line
+// copy is 0x598000): the raw 32-bit draw scaled by 2^-32.
+static inline double UniformDraw()
+{
+    unsigned int draw = DAT_00ABE890.FUN_0065C780();
+    return (double)draw * 2.3283064370807974e-10;
+}
+
+// FUNCTION: GAMEMD 0x59D480
+// PARTIAL: 92.1% -- same instruction multiset as retail; cl emits the 10.0 factor as a
+// double constant (FMUL qword) where retail multiplies by the float constant, and loads the
+// distance before the 0.5 factor where retail loads 0.5 first.
+// Score a candidate cell against another: half the straight-line distance
+// plus a random jitter of up to ten, less a small penalty per `penalty` point.
+float __stdcall FUN_0059D480(const CellStruct* from, const CellStruct* to, int penalty)
+{
+    int dx = from->X - to->X;
+    int dy = from->Y - to->Y;
+    float distance = FUN_004CAC40((double)(dy * dy + dx * dx));
+    double u = UniformDraw();
+    return u * 10.0f + 0.5f * distance - penalty * 0.02f;
+}
+
+// GLOBAL: GAMEMD 0x89C2DC -- map side length in cells.
+extern int DAT_0089C2DC;
+
+// FUNCTION: GAMEMD 0x58BEA0
+// Draws record cells at random until one is a non-origin cell that passes the 0x486380 test; gives up
+// with the origin after 200 draws. The result is written through the pointer, which is also returned.
+// PARTIAL: 94.3% -- same instructions as retail (multiset identical); the index scratch register for the
+// record copy is eax where retail uses ecx.
+CellStruct* __fastcall FUN_0058BEA0(CellStruct* out)
+{
+    int tries = 0;
+    for (;;) {
+        unsigned int n = DAT_0089C2DC * DAT_0089C2DC;
+        unsigned int idx;
+        do {
+            idx = Inline_0058C320(n - 1);
+        } while (DAT_00ABED10[idx].unknown_00.X == 0 && DAT_00ABED10[idx].unknown_00.Y == 0);
+        CellStruct c = DAT_00ABED10[idx].unknown_00;
+        tries++;
+        if (tries > 200)
+            break;
+        if (DAT_0087F7E8.FUN_005657A0(&c)->FUN_00486380()) {
+            *out = c;
+            return out;
+        }
+    }
+    CellStruct z;
+    z.X = 0;
+    z.Y = 0;
+    *out = z;
+    return out;
+}
+
+// A cell coordinate pair viewed as the receiver of the grid accessors.
+struct GridCell
+{
+    short X;
+    short Y;
+
+    // FUNCTION: GAMEMD 0x58C1C0
+    int FUN_0058C1C0() const;
+    // FUNCTION: GAMEMD 0x58C1F0
+    unsigned char FUN_0058C1F0() const;
+    // FUNCTION: GAMEMD 0x58C240
+    void FUN_0058C240() const;
+    // FUNCTION: GAMEMD 0x58C2A0
+    Rec_50* FUN_0058C2A0() const;
+    // FUNCTION: GAMEMD 0x58D0A0
+    int FUN_0058D0A0() const;
+};
+GG_STATIC_ASSERT(sizeof(GridCell) == 4);
+
+#define GRID_REC(cell) (DAT_00ABED10[(cell).Y * DAT_0089C2DC + (cell).X])
+
+// FUNCTION: GAMEMD 0x58C1C0
+// True when the cell's flag byte at +0x45 is clear.
+int GridCell::FUN_0058C1C0() const
+{
+    return GRID_REC(*this).unknown_45 == 0;
+}
+
+// FUNCTION: GAMEMD 0x58C1F0
+// The cell record's byte at +0x44.
+unsigned char GridCell::FUN_0058C1F0() const
+{
+    return GRID_REC(*this).unknown_44;
+}
+
+// FUNCTION: GAMEMD 0x58C240
+// Clear the cell record's flag byte at +0x45.
+void GridCell::FUN_0058C240() const
+{
+    GRID_REC(*this).unknown_45 = 0;
+}
+
+// FUNCTION: GAMEMD 0x58C2A0
+// The record of this cell.
+Rec_50* GridCell::FUN_0058C2A0() const
+{
+    return &GRID_REC(*this);
+}
+
+// FUNCTION: GAMEMD 0x58C2C0
+// The record at a linear index.
+Rec_50* __fastcall FUN_0058C2C0(int index)
+{
+    return &DAT_00ABED10[index];
+}
+
+// FUNCTION: GAMEMD 0x58D0A0
+// The record's +0x38 field, or -1 before the grid exists.
+int GridCell::FUN_0058D0A0() const
+{
+    if (DAT_00ABED10 == 0) {
+        return -1;
+    }
+    return GRID_REC(*this).unknown_38;
+}
+
+// FUNCTION: GAMEMD 0x58C270
+// Clear the flag byte at +0x45 of every record. Retail indexes the one-past-the-end
+// record on every pass (the loop variable is not used in the subscript).
+void FUN_0058C270()
+{
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int i = 0; i < n; i++) {
+        DAT_00ABED10[n].unknown_45 = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x58C6C0
+// Reset the +0x3C field of every record to -1.
+void FUN_0058C6C0()
+{
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int i = 0; i < n; i++) {
+        DAT_00ABED10[i].unknown_3C = -1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x58D070
+// Store the +0x38 field of the cell's record, once the grid exists.
+void FUN_0058D070(const GridCell* cell, int value)
+{
+    if (DAT_00ABED10 != 0) {
+        GRID_REC(*cell).unknown_38 = value;
+    }
+}
+
+// FUNCTION: GAMEMD 0x58D0D0
+// Store the +0x3C field of the cell's record.
+void FUN_0058D0D0(const GridCell* cell, int value)
+{
+    GRID_REC(*cell).unknown_3C = value;
+}
+
+// FUNCTION: GAMEMD 0x58D100
+// The +0x3C field of the cell's record.
+int FUN_0058D100(const GridCell* cell)
+{
+    return GRID_REC(*cell).unknown_3C;
+}
+
+// FUNCTION: GAMEMD 0x5A0090
+// Store the +0x38 field of the cell's record, once the grid exists.
+void __stdcall FUN_005A0090(const GridCell* cell, int value)
+{
+    if (DAT_00ABED10 != 0) {
+        GRID_REC(*cell).unknown_38 = value;
+    }
+}
+
+// FUNCTION: GAMEMD 0x5A00C0
+// The +0x38 field of the cell's record, or -1 before the grid exists.
+int __stdcall FUN_005A00C0(const GridCell* cell)
+{
+    if (DAT_00ABED10 == 0) {
+        return -1;
+    }
+    return GRID_REC(*cell).unknown_38;
+}
+
+// FUNCTION: GAMEMD 0x5A0100
+// Store the +0x3C field of the cell's record.
+void __stdcall FUN_005A0100(const GridCell* cell, int value)
+{
+    GRID_REC(*cell).unknown_3C = value;
+}
+
+// FUNCTION: GAMEMD 0x5A0130
+// The +0x3C field of the cell's record.
+int __stdcall FUN_005A0130(const GridCell* cell)
+{
+    return GRID_REC(*cell).unknown_3C;
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5AC3A0
@@ -2378,4 +2581,6 @@ double DAT_007ED7F8 = 0.001;
 extern const double DAT_007ED800 = 5.0;
 // GLOBAL: GAMEMD 0x7ED808
 extern const double DAT_007ED808 = 5.0;
+// GLOBAL: GAMEMD 0x89C2DC
+int DAT_0089C2DC;
 // END defined globals

@@ -132973,7 +132973,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58C1C0",
   "sym": "?FUN_0058C1C0@GridCell@@QBEHXZ",
   "len": "0x2a",
@@ -132982,7 +132982,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58C1F0",
   "sym": "?FUN_0058C1F0@GridCell@@QBEEXZ",
   "len": "0x20",
@@ -132991,7 +132991,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58C240",
   "sym": "?FUN_0058C240@GridCell@@QBEXXZ",
   "len": "0x21",
@@ -133000,7 +133000,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58C270",
   "sym": "?FUN_0058C270@@YIXXZ",
   "len": "0x23",
@@ -133009,7 +133009,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58C2A0",
   "sym": "?FUN_0058C2A0@GridCell@@QBEPAURec_50@@XZ",
   "len": "0x1f",
@@ -133018,7 +133018,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58C2C0",
   "sym": "?FUN_0058C2C0@@YIPAURec_50@@H@Z",
   "len": "0xf",
@@ -133027,7 +133027,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58C6C0",
   "sym": "?FUN_0058C6C0@@YIXXZ",
   "len": "0x25",
@@ -133036,7 +133036,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58D070",
   "sym": "?FUN_0058D070@@YIXPBUGridCell@@H@Z",
   "len": "0x27",
@@ -133045,7 +133045,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58D0A0",
   "sym": "?FUN_0058D0A0@GridCell@@QBEHXZ",
   "len": "0x29",
@@ -133054,7 +133054,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58D0D0",
   "sym": "?FUN_0058D0D0@@YIXPBUGridCell@@H@Z",
   "len": "0x21",
@@ -133063,7 +133063,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58D100",
   "sym": "?FUN_0058D100@@YIHPBUGridCell@@@Z",
   "len": "0x20",
@@ -133072,7 +133072,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x5A0090",
   "sym": "?FUN_005A0090@@YGXPBUGridCell@@H@Z",
   "len": "0x2f",
@@ -133081,7 +133081,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x5A00C0",
   "sym": "?FUN_005A00C0@@YGHPBUGridCell@@@Z",
   "len": "0x31",
@@ -133090,7 +133090,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x5A0100",
   "sym": "?FUN_005A0100@@YGXPBUGridCell@@H@Z",
   "len": "0x2b",
@@ -133099,7 +133099,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_grid_accessors.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x5A0130",
   "sym": "?FUN_005A0130@@YGHPBUGridCell@@@Z",
   "len": "0x26",
@@ -144484,7 +144484,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/cell_distance_score_methods.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x59D480",
   "sym": "?FUN_0059D480@@YGMPBUCellStruct@@0H@Z",
   "len": "0x89",
@@ -145600,7 +145600,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/MapGen_r25_methods.cpp",
+  "tu": "match/map/MapGen.cpp",
   "addr": "0x58BEA0",
   "sym": "?FUN_0058BEA0@@YIPAUCellStruct@@PAU1@@Z",
   "len": "0xce",
