@@ -75,6 +75,8 @@
 #include "../network/transport/winsock_interface_class.h"
 #include "../ui/message_list_class_methods.h"
 #include "../_layout/map_seed_class.h"
+#include "../renderer/color_scheme_find_methods.h"
+#include "vector_add_item_free.h"
 extern char DAT_00ABDFD8[]; // GLOBAL: GAMEMD 0xABDFD8
 
 
@@ -2581,6 +2583,21 @@ ConvertClass* __fastcall FUN_0068C500(const ScenarioHSVRecord* hsv,
     ConvertClass* result = (ConvertClass*)FUN_007C8E17(sizeof(ConvertClass));
     if (result) return result->FUN_0048E740((ColorStruct_0072ADE0*)palette.unknown_000, second, surface, 1, 0);
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x68C650
+// Empty colour scheme: zeroed palette records, no name, no converter, shade 1; registers itself
+// in the global scheme list and records its index.
+ColorScheme::ColorScheme() throw()
+{
+    Name = 0;
+    unknown_308[0] = 0;
+    unknown_308[1] = 0;
+    unknown_308[2] = 0;
+    unknown_30C = 0;
+    unknown_310 = 1;
+    DynamicVectorAddItemFree(&ColorSchemeArray, this);
+    unknown_000 = ColorSchemeArray.Count;
 }
 
 // FUNCTION: GAMEMD 0x68C710
