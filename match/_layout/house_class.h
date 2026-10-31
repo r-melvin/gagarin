@@ -737,6 +737,8 @@ public:
     void FUN_0050DB00(BuildingClass* building);
     // FUNCTION: GAMEMD 0x4FAA10 (decl; reloc) -- two stack arguments (RET 8).
     void FUN_004FAA10(int kind, int value);
+    // FUNCTION: GAMEMD 0x50AF10 (decl; reloc) -- no stack arguments.
+    void FUN_0050AF10();
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses

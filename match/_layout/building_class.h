@@ -279,6 +279,10 @@ public:
     void FUN_00452260();
     // FUNCTION: GAMEMD 0x452DC0 (decl; reloc) -- one stack argument (RET 4).
     void FUN_00452DC0(int which);
+    // FUNCTION: GAMEMD 0x44EB60 -- one FactoryClass* stack argument (RET 4).
+    void FUN_0044EB60(FactoryClass* factory);
+    // FUNCTION: GAMEMD 0x44F6E0 -- two stack arguments (RET 8); result is the first argument.
+    CellStruct* FUN_0044F6E0(CellStruct* out, int dir);
     // FUNCTION: GAMEMD 0x4529E0 -- refresh all four sides once the building is placed.
     void FUN_004529E0();
     // FUNCTION: GAMEMD 0x44F7A0 -- rebuild the owner's radar-visibility mask from its live buildings.
@@ -308,7 +312,7 @@ public:
     // FUNCTION: GAMEMD 0x452170 -- one stack argument.
     void FUN_00452170(int a);
     // FUNCTION: GAMEMD 0x451690
-    void FUN_00451690();
+    bool FUN_00451690();
     // FUNCTION: GAMEMD 0x44E3A0
     bool FUN_0044E3A0();
     // FUNCTION: GAMEMD 0x458810 -- builds the turret/barrel draw matrix in the caller's slot and returns it.

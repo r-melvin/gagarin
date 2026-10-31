@@ -149193,5 +149193,32 @@
   "name": "AircraftClass::FUN_0041A9E0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/economy/tu038_building_class.cpp",
+  "addr": "0x44EB60",
+  "sym": "?FUN_0044EB60@BuildingClass@@QAEXPAVFactoryClass@@@Z",
+  "len": "0x84",
+  "name": "BuildingClass::FUN_0044EB60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/tu038_building_class.cpp",
+  "addr": "0x44F6E0",
+  "sym": "?FUN_0044F6E0@BuildingClass@@QAEPAUCellStruct@@PAU2@H@Z",
+  "len": "0xb8",
+  "name": "BuildingClass::FUN_0044F6E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/tu038_building_class.cpp",
+  "addr": "0x451690",
+  "sym": "?FUN_00451690@BuildingClass@@QAE_NXZ",
+  "len": "0xb3",
+  "name": "BuildingClass::FUN_00451690",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

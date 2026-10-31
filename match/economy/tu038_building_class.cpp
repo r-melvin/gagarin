@@ -5141,6 +5141,24 @@ int BuildingClass::vf_195()
     return TechnoClass::vf_195();
 }
 
+// FUNCTION: GAMEMD 0x44EB60
+// With the owner told, give back the production object of the factory: while the building is
+// flagged InLimbo, a failed CanBuild check hands the cost back to the owner.
+void BuildingClass::FUN_0044EB60(FactoryClass* factory)
+{
+    if (factory) {
+        BAProdView* prod = FUN_004CA160(factory);
+        bool saved = InLimbo;
+        InLimbo = 1;
+        if (prod) {
+            if (!prod->vf_33()->vf_37(1, 0, 0, Owner)) {
+                Owner->FUN_004FAA10(Type->Factory, prod->vf_33()->vf_16(0, 0));
+            }
+        }
+        InLimbo = saved;
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44EBF0
@@ -5340,6 +5358,44 @@ CoordStruct BuildingClass::vf_45(int)
     }
 }
 
+// GLOBAL: GAMEMD 0x87F90C
+extern int DAT_0087F90C;
+// GLOBAL: GAMEMD 0x87F910
+extern int DAT_0087F910;
+// GLOBAL: GAMEMD 0x87F914
+extern int DAT_0087F914;
+// GLOBAL: GAMEMD 0x87F918
+extern int DAT_0087F918;
+
+// FUNCTION: GAMEMD 0x44F6E0
+// The cell next to this building's centre, pushed 6 cells (5 along the other axis) away from the
+// map centre on each axis; direction 0 zeroes the X push and 2 zeroes the Y push.
+CellStruct* BuildingClass::FUN_0044F6E0(CellStruct* out, int dir)
+{
+    int dx = 6;
+    int dy = 5;
+    CellStruct cell = Coord2Cell(vf_18());
+    switch (dir) {
+    case 0:
+        dx = 0;
+        break;
+    case 2:
+        dy = 0;
+        break;
+    }
+    if (cell.X - DAT_0087F90C > DAT_0087F914 / 2) {
+        dx = -dx;
+    }
+    if (cell.Y - DAT_0087F910 > DAT_0087F918 / 2) {
+        dy = -dy;
+    }
+    CellStruct r;
+    r.X = (short)(dx + cell.X);
+    r.Y = (short)(dy + cell.Y);
+    *out = r;
+    return out;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x44F7A0
 // Recompute the owner's radar-visibility mask as the OR of the display masks of
@@ -5482,6 +5538,38 @@ void* BuildingClass::vf_27()
     if (BState && ActuallyPlacedOnMap)
         return Type->vf_39();
     return Type->vf_48();
+}
+
+// FUNCTION: GAMEMD 0x451690
+// Remove the newest upgrade: its animation goes, and the owner is told when the upgrade carried a
+// super weapon.
+bool BuildingClass::FUN_00451690()
+{
+    if (!UpgradeLevel) {
+        return false;
+    }
+    bool hasSuper = false;
+    BuildingTypeClass* up = Upgrades[UpgradeLevel - 1];
+    if (up && up->SuperWeapon != -1) {
+        hasSuper = true;
+    }
+    if (Upgrades[UpgradeLevel - 1] && Upgrades[UpgradeLevel - 1]->bools_C8C[0xCA1 - 0xC8C]) {
+        DestroyNthAnim(9);
+        Upgrades[UpgradeLevel - 1] = 0;
+        UpgradeLevel = 0;
+        unknown_5FC = (unsigned int)-1;
+        if (hasSuper) {
+            Owner->FUN_0050AF10();
+        }
+        return true;
+    }
+    DestroyNthAnim(UpgradeLevel - 1);
+    UpgradeLevel--;
+    Upgrades[UpgradeLevel] = 0;
+    if (hasSuper) {
+        Owner->FUN_0050AF10();
+    }
+    return true;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
