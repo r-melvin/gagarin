@@ -243,8 +243,8 @@ public:
     unsigned short  DisguiseSensorsOfHouses[0x18]; // +0xAC .. 0xDB ctor REP STOSD x0xC @0x0047BD82
     unsigned int    BaseSpacerOfHouses;      // +0xDC ctor @0x0047BC76
     void*           Jumpjet;                 // +0xE0 FootClass*; ctor @0x0047BC7C
-    void*           FirstObject;             // +0xE4 ObjectClass*; ctor @0x0047BC82
-    void*           AltObject;               // +0xE8 ObjectClass*; ctor @0x0047BC88
+    ObjectClass*    FirstObject;             // +0xE4 ctor @0x0047BC82
+    ObjectClass*    AltObject;               // +0xE8 ctor @0x0047BC88
     int             LandType;                // +0xEC ctor @0x0047BC93
     double          RadLevel;                // +0xF0 (8) ctor zeroes both halves @0x0047BC99/0x0047BCCF
     void*           RadSite;                 // +0xF8 RadSiteClass*; ctor @0x0047BCD5
