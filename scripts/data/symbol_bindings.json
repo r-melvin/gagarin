@@ -15374,7 +15374,7 @@
  "match/core/header_init_5bbf70.cpp::_DAT_007EDF80": "0x007EDF80",
  "match/core/header_init_5bd7e0.cpp::_DAT_007EDF98": "0x007EDF98",
  "match/core/header_init_5bd7e0.cpp::_DAT_007EDFA0": "0x007EDFA0",
- "match/core/header_init_5c10f0.cpp::_DAT_007EE270": "0x007EE270",
+ "match/network/MPCoop.cpp::_DAT_007EE270": "0x007EE270",
  "match/core/header_init_5c5ad0.cpp::_DAT_007EE418": "0x007EE418",
  "match/core/header_init_5c91d0.cpp::_DAT_007EE5E8": "0x007EE5E8",
  "match/core/header_init_5c94f0.cpp::_DAT_007EE6E0": "0x007EE6E0",
