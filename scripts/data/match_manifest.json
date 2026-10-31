@@ -2461,7 +2461,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_lose_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CB7B0",
   "sym": "?Lose@SuperClass@@QAE_NXZ",
   "len": "0x61",
@@ -5065,7 +5065,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/super_class_r19_5.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CE220",
   "sym": "??_GSuperClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -143503,7 +143503,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_r19_5.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CAEC0",
   "sym": "??0SuperClass@@QAE@XZ",
   "len": "0xC7",

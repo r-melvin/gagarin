@@ -4162,7 +4162,7 @@
  {
   "addr": "0x6CAEC0",
   "name": "SuperClass::SuperClass()",
-  "tu": "match/combat/super_class_r19_5.cpp",
+  "tu": "match/combat/Super.cpp",
   "sym": "??0SuperClass@@QAE@XZ",
   "len": "0xC7",
   "manifest_pct": 82.5,

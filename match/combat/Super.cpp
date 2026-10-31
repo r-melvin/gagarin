@@ -37,6 +37,7 @@
 // canonical header declares them yet).
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "super_class_lose_methods.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -56,6 +57,47 @@ double DAT_00B0C068 = DAT_007E1718 / DAT_00B0C080;
 // SYNTHETIC: GAMEMD 0x006CADE0
 // GLOBAL: GAMEMD 0x00B0C070
 MathTblCoord DAT_00B0C070;
+
+// FUNCTION: GAMEMD 0x6CB7B0  SuperClass::Lose (__thiscall)
+// Take a superweapon away from its house: clear both state flags and pull it
+// off the sidebar timer list. Losing one the house never had is a no-op.
+// The list removal is the inline DynamicVectorClass::RemoveItem. Its
+// FindItemIndex call goes through `this` inside the inlined member, so cl
+// keeps retail's indirect dispatch (`MOV EDX,[0xA83D50]; CALL [EDX+0x10]`).
+bool SuperClass::Lose()
+{
+    if (IsPresent)
+    {
+        IsReady = false;
+        IsPresent = false;
+
+        ShowTimers.RemoveItem(this);
+
+        return true;
+    }
+
+    return false;
+}
+
+// GLOBAL: GAMEMD 0xA83CB8 -- the super weapon array (defined in core/static_vector_init_stubs.cpp).
+extern DynamicVectorClass<SuperClass*> DAT_00A83CB8;
+// GLOBAL: GAMEMD 0xB0C000 -- the "no cell" sentinel.
+extern CellStruct DAT_00B0C000;
+
+// FUNCTION: GAMEMD 0x6CAEC0
+// Default constructor: an unowned, untyped super weapon with no charge, then
+// registered in the global array.
+SuperClass::SuperClass()
+    : CustomChargeTime(-1), Type(0), Owner(0), RechargeTimer(0), BlinkState(0), BlinkTimer_Low(0),
+      BlinkTimer_High(0), SpecialSoundDuration(-1), CanHold(true), ChronoMapCoords(DAT_00B0C000),
+      Animation(0), AnimationGotInvalid(false), IsPresent(false), IsOneTime(false), IsReady(false),
+      IsSuspended(false), ChargeDrainState(-1)
+{
+    DAT_00A83CB8.AddItem(this);
+}
+
+// SYNTHETIC: GAMEMD 0x6CE220 -- SuperClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.
 
 // FUNCTION: GAMEMD 0x6CB820  SuperClass::SetReadiness (__thiscall)
 //   mov al,[esp+4]; mov [ecx+0x6f],al; ret 4

@@ -413,7 +413,7 @@
   },
   {
    "addr": "0x6CB7B0",
-   "tu": "match/combat/super_class_lose_methods.cpp",
+   "tu": "match/combat/Super.cpp",
    "removed": "vector pointer and this aliases",
    "previous_status": "matched",
    "previous_pct": 100,
