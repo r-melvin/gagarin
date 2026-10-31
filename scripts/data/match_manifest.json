@@ -425,7 +425,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/taction_class_methods.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6E3EE0",
   "sym": "?GetFlags@TActionClass@@SIHH@Z",
   "len": "0x8a",
@@ -434,7 +434,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/taction_class_methods.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6E45E0",
   "sym": "?FindHouseByIndex@TActionClass@@SGHPAXH@Z",
   "len": "0x4D",
@@ -5192,7 +5192,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/abstract_type_class_dtor.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x4109C0",
   "sym": "??1AbstractTypeClass@@UAE@XZ",
   "len": "0x72",
@@ -5201,7 +5201,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/abstract_type_class_dtor.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x410C30",
   "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
   "len": "0x86",
@@ -7749,7 +7749,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/abstract_type_class_ini.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x410b90",
   "sym": "?vf_26@AbstractTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x47",
@@ -105316,7 +105316,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/abstract_type_class_ini.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x410A60",
   "sym": "?vf_25@AbstractTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x12b",
@@ -137347,7 +137347,7 @@
   "pct": 81.7
  },
  {
-  "tu": "match/ai/taction_class_w3_methods.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6E42D0",
   "sym": "?FUN_006E42D0@TActionClass@@QAE_NPAURec_006E42D0@@HHH@Z",
   "len": "0x4c",
@@ -137356,7 +137356,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/taction_class_w3_methods.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6E4320",
   "sym": "?FUN_006E4320@TActionClass@@QAE_NPAURec_006E4320@@HHH@Z",
   "len": "0x3a",
@@ -137365,7 +137365,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/taction_class_w3_methods.cpp",
+  "tu": "match/ai/TAction.cpp",
   "addr": "0x6E47C0",
   "sym": "?FUN_006E47C0@Block_006E47C0@@QAE?AU1@ABU1@@Z",
   "len": "0x29",
@@ -145924,7 +145924,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/r26_2_unique_id_69a340.cpp",
+  "tu": "match/network/Session.cpp",
   "addr": "0x69A340",
   "sym": "?FUN_0069A340@@YIKXZ",
   "len": "0x68",

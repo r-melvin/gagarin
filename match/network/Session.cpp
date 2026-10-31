@@ -1900,6 +1900,20 @@ void SessionClass::FUN_0069A1F0()
     unknown_28FC.Clear();
 }
 
+// FUNCTION: GAMEMD 0x69A340
+// Build a checksum from the tick count, FUN_0048DD50 and the PATH environment string.
+unsigned long FUN_0069A340()
+{
+    unsigned long value = timeGetTime();
+    FUN_0064DE80(&value, FUN_0048DD50());
+    const char* path = getenv("PATH");
+    if (path) {
+        for (unsigned int index = 0; index < strlen(path); ++index)
+            FUN_0064DE80(&value, path[index]);
+    }
+    return value;
+}
+
 // FUNCTION: GAMEMD 0x69A3B0
 MultiMission::MultiMission(INIClass* ini, const char* section)
     : unknown_188(), unknown_1A4()

@@ -9,6 +9,9 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 //
+// Merged here from taction_class_methods.cpp (0x6E3EE0, 0x6E45E0) and taction_class_w3_methods.cpp
+// (0x6E42D0, 0x6E4320, 0x6E47C0); each keeps its own matching notes below.
+//
 // The six ID-resolving commands, ordered ascending by retail address.
 //
 // Two phrasing points carry the whole body. The three failure exits have to be
@@ -1351,6 +1354,39 @@ HRESULT __stdcall TActionClass::Load(IStream* pStm)
     return 0;
 }
 
+// External callees reached by FindHouseByIndex. Declared (no body) so cl emits a
+// relocatable CALL; the reloc is normalised by the differ. Each single-argument
+// callee takes its argument in ECX (modelled as __fastcall).
+//   0x726910 — resolve the "current/special" house from the source pointer.
+//   0x510F60 — predicate over a raw house index (returns bool in AL).
+//   0x510ED0 — house lookup when the predicate holds.
+//   0x502D30 — house lookup otherwise.
+int TActionClass_Sub726910(void* pSource);
+bool TActionClass_Sub510F60(int index);
+int TActionClass_Sub510ED0(int index);
+int TActionClass_Sub502D30(int index);
+
+// FUNCTION: GAMEMD 0x6E3EE0  (__fastcall)
+// Sparse switch over the action id: a handful of ids carry flag bit 0x2, the
+// rest return 0. cl lowers this to the `add ecx,-0xe` range-reduce + a packed
+// byte index table feeding a 2-entry jump table.
+int TActionClass::GetFlags(int actionKind)
+{
+    int flags = 0;
+    switch (actionKind)
+    {
+    case 0xE:
+    case 0x20:
+    case 0x3C:
+    case 0x3D:
+    case 0x3E:
+    case 0x5B:
+    case 0x6F:
+        flags = 2;
+    }
+    return flags;
+}
+
 // FUNCTION: GAMEMD 0x6E3F70
 CoordStruct TActionClass::FUN_006E3F70()
 {
@@ -1437,6 +1473,62 @@ bool TActionClass::FUN_006E4150(HouseClass* house, ObjectClass* object, TriggerC
     int index = FindNamedIndex(unknown_54);
     if (index < DAT_00A8EB10 && index >= 0) {
         MapInstance.FUN_006AC5F0(DAT_00A8EB04[index], unknown_90);
+        return true;
+    }
+    return false;
+}
+
+struct Elem_006E42D0 {
+    unsigned char unknown_00[0x6D];
+    unsigned char unknown_6D;       // +0x6D: the super weapon is present
+    // FUNCTION: GAMEMD 0x6CC1E0 (decl; reloc) -- SuperClass::SetCharge.
+    void FUN_006CC1E0(int percentage);
+};
+GG_STATIC_ASSERT(offsetof(Elem_006E42D0, unknown_6D) == 0x6D);
+struct Rec_006E42D0 {
+    unsigned char unknown_00[0x258];
+    Elem_006E42D0** unknown_258;    // +0x258: the house's super weapons
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;                // +0x264: their count
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_264) == 0x264);
+
+// FUNCTION: GAMEMD 0x6E42D0
+// Sets the charge of one of the house's present super weapons to a percentage from 0 to 100.
+bool TActionClass::FUN_006E42D0(Rec_006E42D0* a1, int a2, int a3, int a4)
+{
+    if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
+        Elem_006E42D0* super = a1->unknown_258[unknown_90];
+        if (super->unknown_6D && unknown_48 >= 0 && unknown_48 <= 100) {
+            super->FUN_006CC1E0(unknown_48);
+            return true;
+        }
+    }
+    return false;
+}
+
+struct Elem_006E4320 {
+    // FUNCTION: GAMEMD 0x6CC280 (decl; reloc) -- SuperClass::SetRechargeTime.
+    void FUN_006CC280(int time);
+};
+struct Rec_006E4320 {
+    unsigned char unknown_00[0x258];
+    Elem_006E4320** unknown_258;
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_264) == 0x264);
+
+// FUNCTION: GAMEMD 0x6E4320
+// Sets the recharge time of one of the house's super weapons.
+bool TActionClass::FUN_006E4320(Rec_006E4320* a1, int a2, int a3, int a4)
+{
+    if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
+        a1->unknown_258[unknown_90]->FUN_006CC280(unknown_48);
         return true;
     }
     return false;
@@ -1565,6 +1657,43 @@ bool TActionClass::FUN_006E4560(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E45E0  (__stdcall)
+//
+// Null source -> none. Index 0x2325 is the special "source's own" house. Index
+// -1 -> none. Otherwise a predicate picks between two index-based lookups.
+//
+// Retail defers `push esi` past the leading `pSource == 0` guard, so the null
+// path returns via `xor eax,eax; ret 8` with no saved-register traffic. cl only
+// produces that when the guard is the sole statement of the outer function and
+// the ESI-using body is a separate __inline helper it expands after the guard:
+// the inlined body brings its own register save. Writing the whole chain in one
+// body (any nesting, own-block returns, a switch over the index, or a result
+// local) puts `push esi` in the prologue and a `pop esi` on the null path
+// (3.4%..14.3%). Bytes are identical to retail (raw_match.py 100%, 4 reloc
+// slots); diff_retail.py alone reads 26.7% because objdump splits the inlined
+// helper's `$L` block labels at odd offsets inside the `jnz`/`call` pair.
+static __inline int find_house_inner(void* pSource, int index)
+{
+    if (index == 0x2325)
+        return TActionClass_Sub726910(pSource);
+
+    if (index == -1)
+        return 0;
+
+    if (TActionClass_Sub510F60(index))
+        return TActionClass_Sub510ED0(index);
+
+    return TActionClass_Sub502D30(index);
+}
+
+int __stdcall TActionClass::FindHouseByIndex(void* pSource, int index)
+{
+    if (pSource == 0)
+        return 0;
+
+    return find_house_inner(pSource, index);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4630
 // Returns a constant. Vtable slot 12 of TActionClass (RTTI).
@@ -1607,6 +1736,24 @@ Obj_006E4790* Obj_006E4790::FUN_006E4790(int a1)
     FUN_007C91D0(this, a1, 0x1F);
     unknown_1F = 0;
     return this;
+}
+
+// A 32-byte block that assigns by block copy and hands back a copy of itself.
+struct Block_006E47C0 {
+    int Words[8];
+
+    Block_006E47C0 FUN_006E47C0(const Block_006E47C0& other);
+};
+GG_STATIC_ASSERT(sizeof(Block_006E47C0) == 0x20);
+
+// FUNCTION: GAMEMD 0x6E47C0
+// Copies the other block over this one (unless it is this one) and returns a copy of the result.
+Block_006E47C0 Block_006E47C0::FUN_006E47C0(const Block_006E47C0& other)
+{
+    if (&other != this) {
+        *this = other;
+    }
+    return *this;
 }
 
 // BEGIN defined globals (define_globals.py)

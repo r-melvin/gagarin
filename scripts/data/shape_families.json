@@ -386,7 +386,7 @@
      "n_insns": 40,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "tu": "match/core/AbsType.cpp",
      "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
      "name": "AbstractTypeClass scalar deleting destructor",
      "rtti": [
@@ -450,7 +450,7 @@
      "n_insns": 34,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "tu": "match/core/AbsType.cpp",
      "sym": "??1AbstractTypeClass@@UAE@XZ",
      "name": "AbstractTypeClass::~AbstractTypeClass"
     },
@@ -2716,7 +2716,7 @@
      "n_insns": 40,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "tu": "match/core/AbsType.cpp",
      "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
      "name": "AbstractTypeClass scalar deleting destructor",
      "rtti": [
@@ -2780,7 +2780,7 @@
      "n_insns": 34,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/abstract_type_class_dtor.cpp",
+     "tu": "match/core/AbsType.cpp",
      "sym": "??1AbstractTypeClass@@UAE@XZ",
      "name": "AbstractTypeClass::~AbstractTypeClass"
     },
