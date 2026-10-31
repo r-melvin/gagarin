@@ -17,14 +17,9 @@ typedef unsigned short wchar_t;
 // Out-of-line destructor 0x7B46F0 (a four-byte member: a string handle).
 #include "../_layout/member_7b46f0.h"
 
-// Out-of-line destructor 0x7B6760 (a four-byte member).
-class Member_7B6760
-{
-public:
-    Member_7B6760(const wchar_t* text);   // 0x7B66D0
-    ~Member_7B6760();
-    void* Data;
-};
+// The wide-string members (out-of-line constructor 0x7B66D0 and destructor 0x7B6760) are the canonical
+// Obj_007B66D0.
+#include "../core/wide_string_class.h"
 
 // ReferenceCounted, rc_ptr_base and rc_ptr<T> are the canonical ones in
 // wdt_rc_ptr.h (rc_ptr_base.cpp has the out-of-line members).
@@ -33,6 +28,7 @@ public:
 
 class WDTTerritory;
 class WDTState;
+class MSAnim;
 
 namespace WorldDominationTour {
 
@@ -102,11 +98,16 @@ class Territory : public ReferenceCounted
 {
 public:
     ~Territory();   // 0x76FD10
+    // FUNCTION: GAMEMD 0x76FF20 -- stores the animation pointer.
+    void FUN_0076FF20(MSAnim* anim);
+    // FUNCTION: GAMEMD 0x76FF30 -- hands the animation pointer out and clears it.
+    MSAnim* FUN_0076FF30();
     int unknown_08;            // +0x08
-    Member_7B6760 Member_0C;   // +0x0C
+    Obj_007B66D0 Member_0C;   // +0x0C
     char unknown_10[0x10];     // +0x10
     Member_7B46F0 Member_20;   // +0x20
-    char unknown_24[0xC];      // +0x24 (operator new(0x30) at 0x76F916)
+    char unknown_24[8];        // +0x24 (operator new(0x30) at 0x76F916)
+    MSAnim* unknown_2C;        // +0x2C the animation shown on the territory
 
     // FUNCTION: GAMEMD 0x76F970 (decl; reloc) -- builds a territory from five values.
     Territory(int a, void* b, char* c, unsigned int* d, unsigned int* e);
@@ -202,14 +203,15 @@ public:
     int unknown_08;            // +0x08
     Member_7B46F0 Member_0C;   // +0x0C
     char unknown_10[0x2C];     // +0x10
-    Member_7B6760 Member_3C;   // +0x3C
-    Member_7B6760 Member_40;   // +0x40
+    Obj_007B66D0 Member_3C;   // +0x3C
+    Obj_007B66D0 Member_40;   // +0x40
 };
 
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Conflict, Territory) == 0x08);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::State, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, Member_0C) == 0x0C);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, Member_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(WorldDominationTour::Territory, unknown_2C) == 0x2C);
 GG_STATIC_ASSERT(sizeof(WorldDominationTour::Territory) == 0x30);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_18) == 0x18);
@@ -299,8 +301,8 @@ public:
     Member_7B46F0 FUN_0076BFF0() const;
 
     rc_ptr<WDTState> State;      // +0x08
-    Member_7B6760 Member_10;     // +0x10 short description (wide)
-    Member_7B6760 Member_14;     // +0x14 long description (wide)
+    Obj_007B66D0 Member_10;     // +0x10 short description (wide)
+    Obj_007B66D0 Member_14;     // +0x14 long description (wide)
 };
 
 GG_STATIC_ASSERT(sizeof(CampaignProperties) == 0x18);   // operator new(0x18) at 0x76BE96

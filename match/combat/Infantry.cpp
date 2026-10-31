@@ -226,10 +226,10 @@ bool InfantryClass::vf_53()
 }
 
 // FUNCTION: GAMEMD 0x51DF60
-int InfantryClass::vf_243(AbstractClass* a1, int a2)
+BulletClass* InfantryClass::vf_243(AbstractClass* a1, int a2)
 {
     this->IsFiring = 0;
-    int result = TechnoClass::vf_243(a1, a2);
+    BulletClass* result = TechnoClass::vf_243(a1, a2);
     if (result && !this->InLimbo && this->Type->Fraidycat && this->Ammo == 0) {
         this->PanicDurationLeft = 300;
         if (this->vf_97() == 1 || this->vf_97() == 15) {

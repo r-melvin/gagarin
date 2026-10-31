@@ -14,8 +14,6 @@ struct Obj_00767EC0;
 struct Obj_00769C20;
 struct Obj_00769C40;
 struct Obj_00769D70;
-struct Obj_0076A5A0;
-struct Obj_0076A5B0;
 
 struct Arg1_00769C20
 {
@@ -62,24 +60,6 @@ struct Obj_00769D70
 GG_STATIC_ASSERT(offsetof(Obj_00769D70, unknown_00) == 0x0);
 GG_STATIC_ASSERT(offsetof(Obj_00769D70, unknown_04) == 0x4);
 GG_STATIC_ASSERT(offsetof(Obj_00769D70, unknown_08) == 0x8);
-
-struct Obj_0076A5A0
-{
-    char unknown_00[0x8];
-    int unknown_08;   // +0x0008
-    // FUNCTION: GAMEMD 0x76A5A0
-    Obj_0076A5A0* FUN_0076A5A0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_0076A5A0, unknown_08) == 0x8);
-
-struct Obj_0076A5B0
-{
-    char unknown_00[0x8];
-    int unknown_08;   // +0x0008
-    // FUNCTION: GAMEMD 0x76A5B0
-    Obj_0076A5B0* FUN_0076A5B0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_0076A5B0, unknown_08) == 0x8);
 
 
 // FUNCTION: GAMEMD 0x769D70

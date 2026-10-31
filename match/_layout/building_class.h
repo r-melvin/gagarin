@@ -104,6 +104,8 @@ public:
     // FUNCTION: GAMEMD 0x43E7B0 (decl; reloc)
     // 6D9576..7A passes Point2D* and RectangleStruct*; callee forwards clip.
     void FUN_0043E7B0(Point2D* position, RectangleStruct* clip);
+    // FUNCTION: GAMEMD 0x44ABD0 (decl; reloc) -- draw the prism support beam to the coordinate (RET 0xC).
+    void FUN_0044ABD0(CoordStruct target);
     // FUNCTION: GAMEMD 0x4500F0 (decl; reloc)
     void FUN_004500F0();
     // FUNCTION: GAMEMD 0x4503F0 (decl; reloc)
@@ -360,7 +362,7 @@ public:
     unsigned char  HasExtraPowerBonus;    // +0x668 ctor @0x0043B89B
     unsigned char  HasExtraPowerDrain;    // +0x669 ctor @0x0043B8AB
     unsigned char  align_66A[2];          // +0x66A
-    DynamicVectorClassLayoutOf<TechnoClass*> Overpowerers;      // +0x66C (0x18) ctor vptr @0x0043B8CA, fields
+    DynamicVectorClass<TechnoClass*> Overpowerers;                   // +0x66C (0x18) ctor vptr @0x0043B8CA, fields
                                           //   @0x0043B8B1/0x0043B8B7/0x0043B8BD/0x0043B8C4/0x0043B8D6/0x0043B8D0
     DynamicVectorClassLayoutOf<InfantryClass*> Occupants;         // +0x684 (0x18) ctor vptr @0x0043B8F5, fields
                                           //   @0x0043B8DC/0x0043B8E2/0x0043B8E8/0x0043B8EF/0x0043B901/0x0043B8FB
@@ -403,7 +405,7 @@ public:
     signed char    GateStage;             // +0x703 ctor @0x0043B9E2
     int            PrismStage;            // +0x704 ctor @0x0043B9E8
     CoordStruct    PrismTargetCoords;     // +0x708 (0xC) ctor LEA EDX,[ESI+0x708] @0x0043BA1C
-    unsigned int   DelayBeforeFiring;     // +0x714 ctor @0x0043B9EE
+    int            DelayBeforeFiring;     // +0x714 ctor @0x0043B9EE; counted down and tested signed at 0x4503F0
     int            TankBunkerState;       // +0x718 ctor @0x0043B9F4
     unsigned int   unknown_71C;           // +0x71C NOT confirmed — see header note; closes the object at 0x720
     // FUNCTION: GAMEMD 0x457CE0 (decl; reloc) -- can the infantry occupy this building (one stack argument).

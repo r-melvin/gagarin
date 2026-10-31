@@ -69,6 +69,10 @@ public:
     void Run(int frames);
     // 0x5D2530: while the program is inactive pause the animations, sleep and pump messages, then resume them.
     void PauseWhileInactive();
+    // FUNCTION: GAMEMD 0x5D1E50 (decl; reloc) -- raise the redraw flag and draw to the screen surface.
+    void FUN_005D1E50();
+    // FUNCTION: GAMEMD 0x5D26C0 (decl; reloc) -- hand the argument to every queued animation (slot 8).
+    void FUN_005D26C0(const RectangleStruct* area);
     // 0x5D25D0: queue a sound effect; false when an argument is null or the list cannot grow.
     bool AddSfx(const char* name, const char* unused);
 

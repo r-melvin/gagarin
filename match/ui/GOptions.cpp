@@ -11,15 +11,6 @@
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
 //
-// VectorCursor<T, Container>: a small polymorphic cursor over a vector. RTTI
-// names eight instantiations (".?AV?$VectorCursor@...") with one vtable each;
-// every scalar deleting destructor stores its own instantiation's vtable,
-// frees the object when bit 0 of the flag is set and returns `this`, so the
-// destructor is an empty virtual one. These bodies are compiler output: the
-// explicit instantiations compile the inline constructor, which emits each
-// vtable and its `??_G`. The class (members included) is core/vector_cursor.h.
-// The element and container types are only named here, never defined.
-
 #include "../core/deleting_dtor_sweep.h"
 #include "../core/mathtbl_init_shapes.h"
 #include "../network/transport/winsock_interface_class.h"
@@ -28,27 +19,11 @@
 #include <math.h>
 #include "../core/header_init_shapes.h"
 
-#include "../core/position_below_limit_family_methods.h"
 
 #include "../core/trivial_tu092_methods.h"
 #include "../_layout/elapsed_timer.h"
 #include "../network/event_queue.h"
 #include "input_controls/menus_graphic_menu.h"
-
-template <class T> class VectorClass;
-template <class T> class DynamicVectorClass;
-template <class T> class rc_ptr;
-template <class T> class TRect;
-class GraphicMenuItem;
-class MSSfxEntry;
-class MSAnim;
-namespace WorldDominationTour {
-class Conflict;
-class GameOption;
-class Territory;
-}
-
-#include "../core/vector_cursor.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -250,38 +225,6 @@ int ScenarioElapsedTimer::FUN_004F1B20()
 
 // SYNTHETIC: GAMEMD 0x4F2BB0
 // DynamicVectorClass<GraphicMenuItem*>::scalar deleting destructor
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x004F28B0
-//
-// Is this cursor still inside its owner's limit.
-bool FUN_004F28B0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x4F28C0
-// VectorCursor<GraphicMenuItem*> (vtable 0x7EA644)
-template class VectorCursor<GraphicMenuItem*, DynamicVectorClass<GraphicMenuItem*> >;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x4F2B40
-// Updates one member in place. Vtable slot 2 of VectorCursor<GraphicMenuItem*, DynamicVectorClass<GraphicMenuItem*>> (RTTI).
-Obj_004F2B40* Obj_004F2B40::FUN_004F2B40()
-{
-    unknown_08++;
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x4F2B50
-// Updates one member in place. Vtable slot 3 of VectorCursor<GraphicMenuItem*, DynamicVectorClass<GraphicMenuItem*>> (RTTI).
-Obj_004F2B50* Obj_004F2B50::FUN_004F2B50()
-{
-    unknown_08--;
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x4F3070
 // Releases the owned animation, then runs the base destructor. (The scalar deleting destructor 0x4F30E0 is

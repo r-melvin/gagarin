@@ -2570,7 +2570,7 @@ void BuildingClass::vf_23()
 
     FUN_004503F0();
     if (Type->bools_1570[5]) {
-        TechnoClass** list = (TechnoClass**)Overpowerers.Items;
+        TechnoClass** list = Overpowerers.Items;
         for (int i = Overpowerers.Count - 1; i >= 0; i--) {
             if (list[i]->Target != this && i < Overpowerers.Count) {
                 Overpowerers.Count--;
@@ -6030,6 +6030,16 @@ bool BuildingClass::vf_255()
         }
     }
     return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x452820
+// Make `owner` the last of the overpowering objects: take it out of the list when it is already there, then
+// append it.
+void BuildingClass::FUN_00452820(TechnoClass* owner)
+{
+    Overpowerers.RemoveItem(owner);
+    Overpowerers.AddItem(owner);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

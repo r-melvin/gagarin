@@ -3750,9 +3750,9 @@ CellStruct TechnoClass::vf_191(AbstractClass* a1, int a2)
 
 // FUNCTION: GAMEMD 0x70ADA0
 // Forward the owner house to the type's slot 46 with a zero second argument.
-void TechnoClass::vf_175()
+int TechnoClass::vf_175()
 {
-    vf_33()->vf_46(Owner, 0);
+    return vf_33()->vf_46(Owner, 0);
 }
 
 // FUNCTION: GAMEMD 0x70ADC0

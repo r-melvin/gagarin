@@ -52039,13 +52039,13 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/GOptions.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x4F28C0",
   "sym": "??_G?$VectorCursor@PAVGraphicMenuItem@@V?$DynamicVectorClass@PAVGraphicMenuItem@@@@@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "VectorCursor<GraphicMenuItem *, DynamicVectorClass<GraphicMenuItem *>>::scalar_deleting_dtor",
+  "name": "VectorCursor::scalar_deleting_dtor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_cursor_ddtors.cpp",
@@ -57079,31 +57079,31 @@
   "pct": 100
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F100",
   "sym": "??_G?$VectorCursor@PAVMSSfxEntry@@V?$DynamicVectorClass@PAVMSSfxEntry@@@@@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "VectorCursor<MSSfxEntry *, DynamicVectorClass<MSSfxEntry *>>::scalar_deleting_dtor",
+  "name": "VectorCursor::scalar_deleting_dtor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F120",
   "sym": "??_G?$VectorCursor@V?$rc_ptr@VTerritory@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "VectorCursor<rc_ptr<WorldDominationTour::Territory>, DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>>::scalar_deleting_dtor",
+  "name": "VectorCursor::scalar_deleting_dtor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F140",
   "sym": "??_G?$VectorCursor@PAVMSAnim@@V?$DynamicVectorClass@PAVMSAnim@@@@@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "VectorCursor<MSAnim *, DynamicVectorClass<MSAnim *>>::scalar_deleting_dtor",
+  "name": "VectorCursor::scalar_deleting_dtor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/wdt_state_unit.cpp",
@@ -60842,22 +60842,22 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/GOptions.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x4F28B0",
-  "sym": "?FUN_004F28B0@@YI_NPAUCursor_004F28B0@@@Z",
+  "sym": "?vf_01@?$VectorCursor@PAVGraphicMenuItem@@V?$DynamicVectorClass@PAVGraphicMenuItem@@@@@@UAE_NXZ",
   "len": "0xe",
-  "name": "FUN_004F28B0",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/position_below_limit_family_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x4F3FC0",
-  "sym": "?FUN_004F3FC0@@YI_NPAUCursor_004F28B0@@@Z",
+  "sym": "?vf_01@?$VectorCursor@IV?$DynamicVectorClass@I@@@@UAE_NXZ",
   "len": "0xe",
-  "name": "FUN_004F3FC0",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/unowned_leaf_sweep_a.cpp",
@@ -61481,49 +61481,49 @@
   "pct": 100
  },
  {
-  "tu": "match/core/position_below_limit_family_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x765700",
-  "sym": "?FUN_00765700@@YI_NPAUCursor_004F28B0@@@Z",
+  "sym": "?vf_01@?$VectorCursor@V?$rc_ptr@VConflict@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VConflict@WorldDominationTour@@@@@@@@UAE_NXZ",
   "len": "0xe",
-  "name": "FUN_00765700",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/position_below_limit_family_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x766920",
-  "sym": "?FUN_00766920@@YI_NPAUCursor_004F28B0@@@Z",
+  "sym": "?vf_01@?$VectorCursor@V?$rc_ptr@VGameOption@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@@@UAE_NXZ",
   "len": "0xe",
-  "name": "FUN_00766920",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F0B0",
-  "sym": "?FUN_0076F0B0@@YI_NPAUCursor_004F28B0@@@Z",
+  "sym": "?vf_01@?$VectorCursor@PAVMSSfxEntry@@V?$DynamicVectorClass@PAVMSSfxEntry@@@@@@UAE_NXZ",
   "len": "0xe",
-  "name": "FUN_0076F0B0",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F0E0",
-  "sym": "?FUN_0076F0E0@@YI_NPAUCursor_004F28B0@@@Z",
+  "sym": "?vf_01@?$VectorCursor@V?$rc_ptr@VTerritory@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@@@UAE_NXZ",
   "len": "0xe",
-  "name": "FUN_0076F0E0",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F0F0",
-  "sym": "?FUN_0076F0F0@@YI_NPAUCursor_004F28B0@@@Z",
+  "sym": "?vf_01@?$VectorCursor@PAVMSAnim@@V?$DynamicVectorClass@PAVMSAnim@@@@@@UAE_NXZ",
   "len": "0xe",
-  "name": "FUN_0076F0F0",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/unowned_leaf_sweep_c.cpp",
@@ -73801,11 +73801,11 @@
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x7692F0",
-  "sym": "?FUN_007692F0@Map@WorldDominationTour@@QAEXPAVWDTMapView@@PAVWDTMapArg@@@Z",
+  "sym": "?FUN_007692F0@Map@WorldDominationTour@@QAEXPAVMSEngine@@PAVWDTMapArg@@@Z",
   "len": "0x3d",
-  "name": "WorldDominationTour::Map::FUN_007692F0",
+  "name": "?FUN_007692F0@Map@WorldDominationTour@@QAEXPAVMSEngine@@PAVWDTMapArg@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/wdt_map_unit.cpp",
@@ -73819,20 +73819,20 @@
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x7693A0",
-  "sym": "?FUN_007693A0@Map@WorldDominationTour@@QAEXPAVWDTMapView@@_N@Z",
+  "sym": "?FUN_007693A0@Map@WorldDominationTour@@QAEXPAVMSEngine@@_N@Z",
   "len": "0x45",
-  "name": "WorldDominationTour::Map::FUN_007693A0",
+  "name": "?FUN_007693A0@Map@WorldDominationTour@@QAEXPAVMSEngine@@_N@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x7693F0",
-  "sym": "?FUN_007693F0@Map@WorldDominationTour@@QAEXPAVWDTMapView@@_N@Z",
+  "sym": "?FUN_007693F0@Map@WorldDominationTour@@QAEXPAVMSEngine@@_N@Z",
   "len": "0x45",
-  "name": "WorldDominationTour::Map::FUN_007693F0",
+  "name": "?FUN_007693F0@Map@WorldDominationTour@@QAEXPAVMSEngine@@_N@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/wdt_map_unit.cpp",
@@ -83904,22 +83904,22 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/GOptions.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x4F2B40",
-  "sym": "?FUN_004F2B40@Obj_004F2B40@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@PAVGraphicMenuItem@@V?$DynamicVectorClass@PAVGraphicMenuItem@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_004F2B40::FUN_004F2B40",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/GOptions.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x4F2B50",
-  "sym": "?FUN_004F2B50@Obj_004F2B50@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@PAVGraphicMenuItem@@V?$DynamicVectorClass@PAVGraphicMenuItem@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_004F2B50::FUN_004F2B50",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu093_methods.cpp",
@@ -83940,22 +83940,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu093_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x4F3FF0",
-  "sym": "?FUN_004F3FF0@Obj_004F3FF0@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@IV?$DynamicVectorClass@I@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_004F3FF0::FUN_004F3FF0",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu093_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x4F4000",
-  "sym": "?FUN_004F4000@Obj_004F4000@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@IV?$DynamicVectorClass@I@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_004F4000::FUN_004F4000",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/House.cpp",
@@ -88575,40 +88575,40 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu271_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x765B40",
-  "sym": "?FUN_00765B40@Obj_00765B40@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@V?$rc_ptr@VConflict@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VConflict@WorldDominationTour@@@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_00765B40::FUN_00765B40",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu271_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x765B50",
-  "sym": "?FUN_00765B50@Obj_00765B50@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@V?$rc_ptr@VConflict@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VConflict@WorldDominationTour@@@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_00765B50::FUN_00765B50",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu272_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x766FA0",
-  "sym": "?FUN_00766FA0@Obj_00766FA0@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@V?$rc_ptr@VGameOption@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_00766FA0::FUN_00766FA0",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu272_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x766FB0",
-  "sym": "?FUN_00766FB0@Obj_00766FB0@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@V?$rc_ptr@VGameOption@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_00766FB0::FUN_00766FB0",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu275_methods.cpp",
@@ -88647,22 +88647,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu275_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76A5A0",
-  "sym": "?FUN_0076A5A0@Obj_0076A5A0@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@V?$TRect@H@@V?$VectorClass@V?$TRect@H@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076A5A0::FUN_0076A5A0",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu275_methods.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76A5B0",
-  "sym": "?FUN_0076A5B0@Obj_0076A5B0@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@V?$TRect@H@@V?$VectorClass@V?$TRect@H@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076A5B0::FUN_0076A5B0",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/WDTSel.cpp",
@@ -88674,76 +88674,76 @@
   "pct": 100
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F160",
-  "sym": "?FUN_0076F160@Obj_0076F160@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@PAVMSSfxEntry@@V?$DynamicVectorClass@PAVMSSfxEntry@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076F160::FUN_0076F160",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F170",
-  "sym": "?FUN_0076F170@Obj_0076F170@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@PAVMSSfxEntry@@V?$DynamicVectorClass@PAVMSSfxEntry@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076F170::FUN_0076F170",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F180",
-  "sym": "?FUN_0076F180@Obj_0076F180@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@V?$rc_ptr@VTerritory@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076F180::FUN_0076F180",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F190",
-  "sym": "?FUN_0076F190@Obj_0076F190@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@V?$rc_ptr@VTerritory@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076F190::FUN_0076F190",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F1A0",
-  "sym": "?FUN_0076F1A0@Obj_0076F1A0@@QAEPAU1@XZ",
+  "sym": "?vf_02@?$VectorCursor@PAVMSAnim@@V?$DynamicVectorClass@PAVMSAnim@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076F1A0::FUN_0076F1A0",
+  "name": "VectorCursor::vf_02",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/WDTSel.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x76F1B0",
-  "sym": "?FUN_0076F1B0@Obj_0076F1B0@@QAEPAU1@XZ",
+  "sym": "?vf_03@?$VectorCursor@PAVMSAnim@@V?$DynamicVectorClass@PAVMSAnim@@@@@@UAEPAV1@XZ",
   "len": "0x6",
-  "name": "Obj_0076F1B0::FUN_0076F1B0",
+  "name": "VectorCursor::vf_03",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/WDTTerr.cpp",
   "addr": "0x76FF20",
-  "sym": "?FUN_0076FF20@Obj_0076FF20@@QAEXH@Z",
+  "sym": "?FUN_0076FF20@Territory@WorldDominationTour@@QAEXPAVMSAnim@@@Z",
   "len": "0xa",
-  "name": "Obj_0076FF20::FUN_0076FF20",
+  "name": "?FUN_0076FF20@Territory@WorldDominationTour@@QAEXPAVMSAnim@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/WDTTerr.cpp",
   "addr": "0x76FF30",
-  "sym": "?FUN_0076FF30@Obj_0076FF30@@QAEHXZ",
+  "sym": "?FUN_0076FF30@Territory@WorldDominationTour@@QAEPAVMSAnim@@XZ",
   "len": "0xb",
-  "name": "Obj_0076FF30::FUN_0076FF30",
+  "name": "?FUN_0076FF30@Territory@WorldDominationTour@@QAEPAVMSAnim@@XZ",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/WDTTerr.cpp",
@@ -92844,7 +92844,7 @@
  {
   "tu": "match/combat/Infantry.cpp",
   "addr": "0x51DF60",
-  "sym": "?vf_243@InfantryClass@@UAEHPAVAbstractClass@@H@Z",
+  "sym": "?vf_243@InfantryClass@@UAEPAVBulletClass@@PAVAbstractClass@@H@Z",
   "len": "0x83",
   "name": "InfantryClass::vf_243",
   "status": "matched",
@@ -105966,7 +105966,7 @@
  {
   "tu": "match/combat/Techno.cpp",
   "addr": "0x70ADA0",
-  "sym": "?vf_175@TechnoClass@@UAEXXZ",
+  "sym": "?vf_175@TechnoClass@@UAEHXZ",
   "len": "0x20",
   "name": "TechnoClass::vf_175",
   "status": "matched",
@@ -139624,11 +139624,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_sweep_r12a.cpp",
+  "tu": "match/core/vector_cursor_ddtors.cpp",
   "addr": "0x769D60",
-  "sym": "?FUN_00769D60@@YI_NPAUCursor_00769D60@@@Z",
-  "len": "0xE",
-  "name": "FUN_00769D60",
+  "sym": "?vf_01@?$VectorCursor@V?$TRect@H@@V?$VectorClass@V?$TRect@H@@@@@@UAE_NXZ",
+  "len": "0xe",
+  "name": "VectorCursor::vf_01",
   "status": "matched",
   "pct": 100.0
  },
@@ -149078,7 +149078,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/tu127_zone_precheck.cpp",
+  "tu": "match/map/trivial_tu127_methods.cpp",
   "addr": "0x56D100",
   "sym": "?FUN_0056D100@MapClass@@QAE_NPBUCellStruct@@0H_N11@Z",
   "len": "0x122",
@@ -149236,6 +149236,24 @@
   "sym": "?FUN_004DA030@FootClass@@QAEXXZ",
   "len": "0xaf",
   "name": "FootClass::FUN_004DA030",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/tu038_building_class.cpp",
+  "addr": "0x452820",
+  "sym": "?FUN_00452820@BuildingClass@@QAEXPAVTechnoClass@@@Z",
+  "len": "0x80",
+  "name": "BuildingClass::FUN_00452820",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D9F70",
+  "sym": "?vf_104@FootClass@@UAEXH@Z",
+  "len": "0x7d",
+  "name": "FootClass::vf_104",
   "status": "matched",
   "pct": 100.0
  }

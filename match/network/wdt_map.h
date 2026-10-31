@@ -13,6 +13,9 @@
 #include "wdt_rc_ptr.h"
 #include "../_layout/geometry2d.h"
 
+class MSEngine;
+class MSAnim;
+
 // The drawing surface as this unit reaches it: slot 10 (+0x28) takes a point
 // and answers an int (0x769386), slots 31 and 32 (+0x7C, +0x80) answer the
 // two extents (0x767F06/0x767F0F, 0x76935A/0x769370).
@@ -58,18 +61,6 @@ public:
     virtual void vf_1(int arg);
 };
 
-// The object 0x7692F0 and the two show/hide setters drive (their first argument).
-class WDTMapView
-{
-public:
-    // FUNCTION: GAMEMD 0x5D1DF0 (decl; reloc)
-    void FUN_005D1DF0(void* item, int time);
-    // FUNCTION: GAMEMD 0x5D1E50 (decl; reloc)
-    void FUN_005D1E50();
-    // FUNCTION: GAMEMD 0x5D26C0 (decl; reloc)
-    void FUN_005D26C0(const struct WDTRect* area);
-};
-
 // The second argument of 0x7692F0.
 class WDTMapArg
 {
@@ -85,15 +76,6 @@ public:
     // FUNCTION: GAMEMD 0x5CC6A0 (decl; reloc)
     void FUN_005CC6A0(int value);
 };
-
-struct WDTRect
-{
-    int X;        // +0x00
-    int Y;        // +0x04
-    int Width;    // +0x08
-    int Height;   // +0x0C
-};
-GG_STATIC_ASSERT(sizeof(WDTRect) == 0x10);
 
 // The palette object an AnimationPalette holds (freed through slot 0).
 class WDTPalette : public WDTOwned
@@ -135,17 +117,17 @@ public:
     virtual ~Map();
 
     WDTPalette* FUN_007691E0(const Wstring& name);
-    void FUN_007692F0(WDTMapView* view, WDTMapArg* arg);
+    void FUN_007692F0(MSEngine* view, WDTMapArg* arg);
     int FUN_00769330(const WDTPoint* point);
-    void FUN_007693A0(WDTMapView* view, bool on);
-    void FUN_007693F0(WDTMapView* view, bool on);
+    void FUN_007693A0(MSEngine* view, bool on);
+    void FUN_007693F0(MSEngine* view, bool on);
     int FUN_00769440(const WDTPoint* point);
 
     int unknown_08;                                    // +0x08
     int unknown_0C;                                    // +0x0C
     int unknown_10;                                    // +0x10
     WDTOwned* unknown_14;                              // +0x14
-    void* unknown_18;                                  // +0x18
+    MSAnim* unknown_18;                                // +0x18
     WDTMember_1C* unknown_1C;                          // +0x1C
     int unknown_20;                                    // +0x20
     WDTSurface* unknown_24;                            // +0x24
@@ -155,7 +137,7 @@ public:
     int unknown_48;                                    // +0x48
     int unknown_4C;                                    // +0x4C
     int unknown_50;                                    // +0x50
-    WDTRect unknown_54;                                // +0x54
+    RectangleStruct unknown_54;                        // +0x54
     WDTMember_64* unknown_64;                          // +0x64
     bool unknown_68;                                   // +0x68
     int unknown_6C;                                    // +0x6C

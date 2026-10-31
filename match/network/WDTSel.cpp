@@ -19,15 +19,6 @@
 //
 // The seven vtable-seating base destructors, ordered ascending by address.
 //
-// VectorCursor<T, Container>: a small polymorphic cursor over a vector. RTTI
-// names eight instantiations (".?AV?$VectorCursor@...") with one vtable each;
-// every scalar deleting destructor stores its own instantiation's vtable,
-// frees the object when bit 0 of the flag is set and returns `this`, so the
-// destructor is an empty virtual one. These bodies are compiler output: the
-// explicit instantiations compile the inline constructor, which emits each
-// vtable and its `??_G`. The class (members included) is core/vector_cursor.h.
-// The element and container types are only named here, never defined.
-
 #include "../core/deleting_dtor_sweep.h"
 #include "transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
@@ -35,7 +26,6 @@
 
 #include "../core/leftover_trivial_leaf_sweep.h"
 
-#include "../core/position_below_limit_family_methods.h"
 
 #include "../core/seat_vtable_tail_dtor_sweep.h"
 
@@ -241,100 +231,4 @@ int FUN_0076F070(LeafObj_0x04* self)
 int FUN_0076F080(LeafObj_0x04* self)
 {
     return self->unknown_04;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x0076F0B0
-//
-// Is this cursor still inside its owner's limit.
-bool FUN_0076F0B0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x0076F0E0
-//
-// Is this cursor still inside its owner's limit.
-bool FUN_0076F0E0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x0076F0F0
-//
-// Is this cursor still inside its owner's limit.
-bool FUN_0076F0F0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x76F100
-// VectorCursor<MSSfxEntry*> (vtable 0x7F72C4)
-template class VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*> >;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x76F120
-// VectorCursor<rc_ptr<Territory> > (vtable 0x7F72D8)
-template class VectorCursor<rc_ptr<WorldDominationTour::Territory>, DynamicVectorClass<rc_ptr<WorldDominationTour::Territory> > >;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// SYNTHETIC: GAMEMD 0x76F140
-// VectorCursor<MSAnim*> (vtable 0x7F72EC)
-template class VectorCursor<MSAnim*, DynamicVectorClass<MSAnim*> >;
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76F160
-// Updates one member in place. Vtable slot 2 of VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*>> (RTTI).
-Obj_0076F160* Obj_0076F160::FUN_0076F160()
-{
-    unknown_08++;
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76F170
-// Updates one member in place. Vtable slot 3 of VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*>> (RTTI).
-Obj_0076F170* Obj_0076F170::FUN_0076F170()
-{
-    unknown_08--;
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76F180
-// Updates one member in place. Vtable slot 2 of VectorCursor<WorldDominationTour::VTerritory::V?$rc_ptr::V?$DynamicVectorClass::rc_ptr<WorldDominationTour::Territory>> (RTTI).
-Obj_0076F180* Obj_0076F180::FUN_0076F180()
-{
-    unknown_08++;
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76F190
-// Updates one member in place. Vtable slot 3 of VectorCursor<WorldDominationTour::VTerritory::V?$rc_ptr::V?$DynamicVectorClass::rc_ptr<WorldDominationTour::Territory>> (RTTI).
-Obj_0076F190* Obj_0076F190::FUN_0076F190()
-{
-    unknown_08--;
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76F1A0
-// Updates one member in place. Vtable slot 2 of VectorCursor<MSAnim*, DynamicVectorClass<MSAnim*>> (RTTI).
-Obj_0076F1A0* Obj_0076F1A0::FUN_0076F1A0()
-{
-    unknown_08++;
-    return this;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x76F1B0
-// Updates one member in place. Vtable slot 3 of VectorCursor<MSAnim*, DynamicVectorClass<MSAnim*>> (RTTI).
-Obj_0076F1B0* Obj_0076F1B0::FUN_0076F1B0()
-{
-    unknown_08--;
-    return this;
 }

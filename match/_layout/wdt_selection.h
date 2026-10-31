@@ -59,18 +59,28 @@ public:
     void FUN_0076D470(const WDTPoint* point);
     // FUNCTION: GAMEMD 0x76DAD0 (decl; reloc) -- RET 4.
     bool FUN_0076DAD0(const rc_ptr<Territory>& territory);
+    // FUNCTION: GAMEMD 0x76DED0 (decl; reloc) -- take the animation off every territory of the map and remove it.
+    void FUN_0076DED0();
     // FUNCTION: GAMEMD 0x76DFD0 (decl; reloc)
     void FUN_0076DFD0();
     // FUNCTION: GAMEMD 0x76E090 (decl; reloc)
     void FUN_0076E090();
+    // FUNCTION: GAMEMD 0x76E180 (decl; reloc)
+    void FUN_0076E180();
+    // FUNCTION: GAMEMD 0x76E290 (decl; reloc)
+    void FUN_0076E290();
     // FUNCTION: GAMEMD 0x76E750 (decl; reloc) -- RET 4.
     void FUN_0076E750(unsigned int arg);
     // FUNCTION: GAMEMD 0x76E9D0 (decl; reloc)
     void FUN_0076E9D0();
+    // FUNCTION: GAMEMD 0x76EA20 (decl; reloc) -- RET 8: show a text on the map.
+    void FUN_0076EA20(const Obj_007B66D0& text, int arg);
     // FUNCTION: GAMEMD 0x76EAF0 (decl; reloc) -- RET 4.
     void FUN_0076EAF0(const Obj_007B66D0& text);
     // FUNCTION: GAMEMD 0x76EBE0 (decl; reloc) -- RET 4.
     void FUN_0076EBE0(const Wstring& name);
+    // FUNCTION: GAMEMD 0x76EC80 (decl; reloc)
+    void FUN_0076EC80();
 
     rc_ptr<Campaign> CampaignRef;   // +0x48 (pointer +0x4C)
     char           unknown_050[8];

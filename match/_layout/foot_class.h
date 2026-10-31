@@ -239,6 +239,7 @@ public:
     // TU086 overrides (retail table 0x7E8C94).
     virtual void vf_55(bool removed);                              // 55  0x4D9720
     virtual bool vf_38();                                          // 38  0x4D9E70
+    virtual void vf_104(int a1);                                   // 104 0x4D9F70
     virtual bool vf_54(const CoordStruct& coord, int a2);          // 54  0x4D7170
     virtual bool vf_73(int mode);                                  // 73  0x4D3780
     virtual int vf_28(CellStruct* cell, char a2, char a3);         // 28  0x4DDDE0

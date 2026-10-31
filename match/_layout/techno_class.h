@@ -42,6 +42,7 @@ struct RawBlock10; // exact 16-byte value type defined by WarheadTypeClass layou
 #ifndef GG_MATCH_LAYOUT_PASSENGERSCLASS_DEFINED
 #define GG_MATCH_LAYOUT_PASSENGERSCLASS_DEFINED
 class FootClass;
+class BulletClass;
 struct PassengersClass
 {
     FootClass* RemoveFirstPassenger();                // GAMEMD 0x473430
@@ -314,7 +315,7 @@ public:
     virtual bool vf_172();                                         // 172 0x70C620
     virtual double vf_173();                                       // 173 0x708BC0
     virtual int vf_174();                                          // 174 0x708C30
-    virtual void vf_175();                                         // 175 0x70ADA0
+    virtual int vf_175();                                          // 175 0x70ADA0; the refund amount
     virtual int vf_176();                                          // 176 0x708B40
     virtual bool vf_177(int a1);                                   // 177 0x459D90
     virtual void vf_178(int a1, int a2);                           // 178 0x6FDA00
@@ -382,7 +383,7 @@ public:
     virtual int vf_240(AbstractClass* target, int a2, int a3);    // 240 0x6FC0B0: returns a result code 0..10; BuildingClass 0x44ACF0 passes its Target
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x6F8DF0; FootClass 0x4D9920 tests the threat bits and the result pointer
     virtual void vf_242(AbstractClass* target);                                  // 242 0x6FCDB0
-    virtual int vf_243(AbstractClass* target, int a2);            // 243 0x6FDD50; BuildingClass 0x44ACF0 passes its Target
+    virtual BulletClass* vf_243(AbstractClass* target, int a2);   // 243 0x6FDD50 (returns the projectile fired); BuildingClass 0x44ACF0 passes its Target
     virtual void CancelAndGoIdle();                                // 244 0x70F850
     virtual bool vf_245(HouseClass* house, bool a2);               // 245 0x7014A0 (RET 8)
     // CALLEE: GAMEMD 0x70B280 -- slot 246, CoordStruct* / float / bool, RET 0xC.

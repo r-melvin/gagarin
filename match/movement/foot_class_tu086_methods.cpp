@@ -13,6 +13,7 @@
 //   FUNCTION: GAMEMD 0x4D97A0  FootClass::FUN_004D97A0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D98C0  FootClass::vf_238 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D9E70  FootClass::vf_38 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D9F70  FootClass::vf_104 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DA030  FootClass::FUN_004DA030 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBA50  FootClass::FUN_004DBA50 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBED0  FootClass::vf_245 (__thiscall)
@@ -29,6 +30,7 @@
 //   FUNCTION: GAMEMD 0x4DFF40  FootClass::vf_209 (__thiscall)
 
 #include "../_layout/voc_class.h"
+#include "../_layout/rules_class.h"
 #include "../_layout/foot_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/team_class.h"
@@ -371,6 +373,23 @@ bool FootClass::vf_38()
         }
     }
     return TechnoClass::vf_38();
+}
+
+// FUNCTION: GAMEMD 0x4D9F70
+// Slot 104. Given a non-null argument: announce the sale to the local player, pay out the refund, then run
+// slots 232, 53 and 62.
+void FootClass::vf_104(int a1)
+{
+    if (a1) {
+        if (Owner->IsControlledByCurrentPlayer()) {
+            VoxClass::Play("EVA_UnitSold", -1, -1);
+            VocClass::PlayGlobal(RulesInstance->SellSound, 1.0f, 0x2000, 0);
+        }
+        Owner->GiveMoney(vf_175());
+        vf_232();
+        vf_53();
+        vf_62();
+    }
 }
 
 // FUNCTION: GAMEMD 0x4DA030

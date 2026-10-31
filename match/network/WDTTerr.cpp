@@ -12,7 +12,6 @@
 // the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
 
 #include "../FUNCTION.H"
-#include "../core/trivial_tu280_methods.h"
 
 
 // Globals written by this TU's static initialisers (placeholder names; no
@@ -74,17 +73,17 @@ WorldDominationTour::Territory::~Territory()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76FF20
 // Stores its argument in a member; pops its stack arguments.
-void Obj_0076FF20::FUN_0076FF20(int a1)
+void WorldDominationTour::Territory::FUN_0076FF20(MSAnim* anim)
 {
-    unknown_2C = a1;
+    unknown_2C = anim;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76FF30
 // Stores its argument in a member.
-int Obj_0076FF30::FUN_0076FF30()
+MSAnim* WorldDominationTour::Territory::FUN_0076FF30()
 {
-    int t1 = unknown_2C;
+    MSAnim* t1 = unknown_2C;
     unknown_2C = 0;
     return t1;
 }

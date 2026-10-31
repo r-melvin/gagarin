@@ -24,6 +24,9 @@ GG_STATIC_ASSERT(sizeof(MSAnimEntry) == 0x10);
 
 class MSSfxEntry {
 public:
+    // FUNCTION: GAMEMD 0x5D0590 (decl; reloc) -- an empty method (a single RET).
+    void FUN_005D0590();
+
     Wstring Name;                    // +0, 5D0470 string construction
     unsigned char unknown_04;
     unsigned char unknown_05[3];

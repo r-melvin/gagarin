@@ -39,19 +39,3 @@ Obj_00769D70* FUN_00769D70(Obj_00769D70* a1, int a2)
     a1->unknown_00 = 0x7F71CC;
     return a1;
 }
-
-// FUNCTION: GAMEMD 0x76A5A0
-// Updates one member in place. Vtable slot 2 of VectorCursor<H::V?$TRect::V?$VectorClass::TRect<int>> (RTTI).
-Obj_0076A5A0* Obj_0076A5A0::FUN_0076A5A0()
-{
-    unknown_08++;
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x76A5B0
-// Updates one member in place. Vtable slot 3 of VectorCursor<H::V?$TRect::V?$VectorClass::TRect<int>> (RTTI).
-Obj_0076A5B0* Obj_0076A5B0::FUN_0076A5B0()
-{
-    unknown_08--;
-    return this;
-}

@@ -10,6 +10,7 @@
 
 #include "../FUNCTION.H"
 #include "../core/header_tuning_globals.h"
+#include "../_layout/ms_engine.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -171,11 +172,11 @@ Map::AnimationPalette::~AnimationPalette()
 }
 
 // FUNCTION: GAMEMD 0x7692F0
-void Map::FUN_007692F0(WDTMapView* view, WDTMapArg* arg)
+void Map::FUN_007692F0(MSEngine* view, WDTMapArg* arg)
 {
     if (unknown_18 != 0) {
         arg->FUN_007714B0(0, 1, 0);
-        view->FUN_005D1DF0(unknown_18, 300000);
+        view->WaitForAnim(unknown_18, 300000);
     }
     if (unknown_1C != 0)
         unknown_1C->vf_1(1);
@@ -198,7 +199,7 @@ int Map::FUN_00769330(const WDTPoint* point)
 }
 
 // FUNCTION: GAMEMD 0x7693A0
-void Map::FUN_007693A0(WDTMapView* view, bool on)
+void Map::FUN_007693A0(MSEngine* view, bool on)
 {
     if (unknown_74 != on) {
         unknown_74 = on;
@@ -209,7 +210,7 @@ void Map::FUN_007693A0(WDTMapView* view, bool on)
 }
 
 // FUNCTION: GAMEMD 0x7693F0
-void Map::FUN_007693F0(WDTMapView* view, bool on)
+void Map::FUN_007693F0(MSEngine* view, bool on)
 {
     if (unknown_68 != on) {
         unknown_68 = on;

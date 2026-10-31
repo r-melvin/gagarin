@@ -147,27 +147,6 @@ void Holder_0075E440::FUN_0075E440(void* item, int unused)
 }
 
 // ---------------------------------------------------------------------------
-// 0x769D60: whether the first index is below the other object's.
-struct Bound_00769D60
-{
-    int unknown_0;
-    int unknown_4;
-    unsigned int Limit;  // +0x08
-};
-struct Cursor_00769D60
-{
-    int unknown_0;
-    Bound_00769D60* Bound;  // +0x04
-    unsigned int Index;     // +0x08
-};
-
-// FUNCTION: GAMEMD 0x769D60
-bool __fastcall FUN_00769D60(Cursor_00769D60* c)
-{
-    return c->Index < c->Bound->Limit;
-}
-
-// ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x74F620
 // Zeroes every slot of a vein growth stack and resets its top.
 void __fastcall FUN_0074F620(GrowthStack_0074E8A0* stack)
