@@ -90179,7 +90179,7 @@
  {
   "tu": "match/ui/Options.cpp",
   "addr": "0x5FA100",
-  "sym": "_$E2",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "_$E2",
   "status": "matched",
@@ -90188,7 +90188,7 @@
  {
   "tu": "match/ui/Options.cpp",
   "addr": "0x5FA120",
-  "sym": "_$E5",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "_$E5",
   "status": "matched",
@@ -90197,7 +90197,7 @@
  {
   "tu": "match/ui/Options.cpp",
   "addr": "0x5FA2A0",
-  "sym": "_$E8",
+  "sym": "_$E38",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00AC14F0)",
   "status": "matched",
@@ -107521,7 +107521,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA0D0",
   "sym": "_$E2",
   "len": "0x28",
@@ -107530,90 +107530,90 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA140",
-  "sym": "_$E5",
+  "sym": "_$E11",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC14E0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA160",
-  "sym": "_$E8",
+  "sym": "_$E14",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC14B8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA180",
-  "sym": "_$E11",
+  "sym": "_$E17",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC1490)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA1A0",
-  "sym": "_$E14",
+  "sym": "_$E20",
   "len": "0x31",
   "name": "dynamic initializer (DAT_00AC1508)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA1E0",
-  "sym": "_$E17",
+  "sym": "_$E23",
   "len": "0x21",
   "name": "dynamic initializer (DAT_00AC14C0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA210",
-  "sym": "_$E20",
+  "sym": "_$E26",
   "len": "0x2c",
   "name": "dynamic initializer (DAT_00AC14D8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA240",
-  "sym": "_$E23",
+  "sym": "_$E29",
   "len": "0x27",
   "name": "dynamic initializer (DAT_00AC14FC)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA270",
-  "sym": "_$E26",
+  "sym": "_$E32",
   "len": "0xf",
   "name": "dynamic initializer (DAT_00AC14A8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA280",
-  "sym": "_$E29",
+  "sym": "_$E35",
   "len": "0x12",
   "name": "dynamic initializer (DAT_00AC14C8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/mathtbl_init_5fa0d0.cpp",
+  "tu": "match/ui/Options.cpp",
   "addr": "0x5FA2C0",
-  "sym": "_$E32",
+  "sym": "_$E41",
   "len": "0x17",
   "name": "dynamic initializer (DAT_00AC1498)",
   "status": "matched",
