@@ -1563,7 +1563,7 @@ static inline void AdvanceStage(StageClass& stage)
 #include "../_layout/cell_class.h"
 #include "../_layout/map_0087f7e8.h"
 
-extern float __cdecl FUN_004CAC40(double value);
+extern double __cdecl FUN_004CAC40(double value);
 
 // GLOBAL: GAMEMD 0xB0EB34
 extern int DAT_00B0EB34;
