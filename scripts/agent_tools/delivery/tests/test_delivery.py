@@ -926,9 +926,9 @@ class Toolfix1030b(unittest.TestCase):
         self.assertIn("+#pragma once", diff)
 
     def test_includes_rule(self):
-        hdr = "match/_layout/vqa_class.h"
+        hdr = "match/_layout/zz_absent_include_probe.h"
         self.assertNotIn(hdr, tree().paths)
-        src = HEADER + '#include "../_layout/vqa_class.h"\n#include <windows.h>\n'
+        src = HEADER + '#include "../_layout/zz_absent_include_probe.h"\n#include <windows.h>\n'
         p = packet(self.tmp, {"match/x/user.cpp": src}, [])
         f = [x for x in lint(p, {"includes"}) if x["rule"] == "includes"]
         self.assertEqual([x["level"] for x in f], ["E"])
