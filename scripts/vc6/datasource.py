@@ -33,6 +33,7 @@ DIR32 = coffgen.REL_DIR32
 PIN = re.compile(r"@pin([0-9A-F]{8})$")
 SKIP_SECTIONS = (".text", ".debug", ".drectve", ".pdata", ".xdata", ".CRT$XCU")
 CRT_INIT = ".CRT$XCU"
+PAD_MAX = 8   # alignment padding after a plain-section symbol is shorter than the most aligned type (a double)
 TU_SCOPED = re.compile(r"_\$[ES]\d+$")
 
 
@@ -218,6 +219,15 @@ def candidates(path, parsed, final, address_of, resolver, retail, regions, searc
             if bad:
                 reject(name, kind, sec["name"], bad, size, va)
                 continue
+            if ours != want:
+                first = next(i for i in range(size) if ours[i] != want[i])
+                if not flags & SCN_COMDAT and 0 < first and size - first < PAD_MAX and not any(ours[first:]) \
+                        and all(r[0] + 4 <= first for r in relocs):
+                    # In a plain section the symbol's extent runs to the next symbol, so the zero padding the
+                    # compiler put before a more aligned neighbour (or section end) belongs to it. Retail has
+                    # something else there: the symbol ends where the match ends.
+                    size, body = first, body[:first]
+                    ours, want = ours[:first], want[:first]
             if ours != want:
                 first = next(i for i in range(size) if ours[i] != want[i])
                 reject(name, kind, sec["name"], f"contents differ from retail (first at +0x{first:X})", size, va)

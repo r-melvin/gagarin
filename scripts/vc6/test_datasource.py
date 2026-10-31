@@ -96,6 +96,28 @@ class CandidateTests(Fixture):
         accepted, rejected = self.run_candidates(obj, {"_a": DATA + 0x100, "_b": DATA + 0x104})
         self.assertEqual(sorted((c["names"][0], c["size"]) for c in accepted), [("_a", 4), ("_b", 4)])
 
+    def test_alignment_padding_after_the_last_plain_symbol_is_not_part_of_it(self):
+        # a float at +0 then a double at +8: the 4 bytes between are zero padding, retail has data there
+        want = self.literal(DATA + 0x100, 4)
+        self.retail.patch(DATA + 0x104, b"\x01\x02\x03\x04")
+        body = want + bytes(4) + self.literal(DATA + 0x108, 8)
+        obj = build([(".data", 0xC0400040, body, [])], [("_f", 0, 1, 2, None), ("_d", 8, 1, 2, None)])
+        accepted, rejected = self.run_candidates(obj, {"_f": DATA + 0x100, "_d": DATA + 0x108})
+        self.assertEqual(sorted((c["names"][0], c["size"], len(c["data"])) for c in accepted), [("_d", 8, 8), ("_f", 4, 4)])
+        self.assertEqual(rejected, [])
+        # a mismatch before the padding, or non-zero bytes after it, is still a difference
+        body = bytes(4) + bytes(4) + self.literal(DATA + 0x108, 8)
+        self.retail.patch(DATA + 0x100, b"\x09\x09\x09\x09")
+        obj = build([(".data", 0xC0400040, body, [])], [("_f", 0, 1, 2, None), ("_d", 8, 1, 2, None)])
+        accepted, rejected = self.run_candidates(obj, {"_f": DATA + 0x100, "_d": DATA + 0x108})
+        self.assertEqual([c["names"][0] for c in accepted], ["_d"])
+        self.assertIn("contents differ", rejected[0]["why"])
+        body = want + b"\x00\x00\x00\x07" + self.literal(DATA + 0x108, 8)
+        obj = build([(".data", 0xC0400040, body, [])], [("_f", 0, 1, 2, None), ("_d", 8, 1, 2, None)])
+        self.retail.patch(DATA + 0x100, want)
+        accepted, rejected = self.run_candidates(obj, {"_f": DATA + 0x100, "_d": DATA + 0x108})
+        self.assertEqual([c["names"][0] for c in accepted], ["_d"])
+
     def test_a_name_defined_at_several_addresses_resolves_to_the_instance_at_the_slots_address(self):
         # scalar deleting destructor ??_G: one name, instances at 0x401230 (the name) and 0x401300 (?dup_...)
         self.retail.patch(RDATA + 0x140, struct.pack("<I", 0x401300))
