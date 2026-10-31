@@ -225,7 +225,14 @@ def merge_into(dest_text, frag_text, rel_prefix=None):
     keep = []
     for item in prelude_items(F["prelude"]):
         names = item_names(item)
-        if names and all((first_use(D, n) is not None and first_use(D, n) < p0) for n in names):
+        stmt = [l for l in item if not l.startswith("//")]
+        if stmt and "=" in stmt[0].split("(")[0]:
+            # a definition is redundant only when the destination already defines the object (an `extern` declaration
+            # alone leaves the bytes to the retail fill, which lowers the project byte count)
+            redundant = all(any(re.match(r"^(extern\s+)?const\s+\w+\s+%s\s*=" % n, l) for l in D[:p0]) for n in names)
+        else:
+            redundant = all((first_use(D, n) is not None and first_use(D, n) < p0) for n in names)
+        if names and redundant:
             report["dropped"].append(names)
             continue
         keep.append(item)

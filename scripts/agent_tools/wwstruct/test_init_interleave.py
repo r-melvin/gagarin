@@ -82,6 +82,13 @@ class TextStep(unittest.TestCase):
         out, _ = I.merge_into(DEST, FRAG)
         self.assertLess(out.index("const double DAT_007E1708"), out.index("SYNTHETIC: GAMEMD 0x48BC70"))
 
+    def test_declaration_only_does_not_drop_the_definition(self):
+        dest = DEST.replace("extern const double DAT_007E51A0;",
+                            "extern const double DAT_007E51A0;\nextern const double DAT_007E1708;")
+        out, rep = I.merge_into(dest, FRAG)
+        self.assertIn("const double DAT_007E1708 = 2.0;", out)
+        self.assertNotIn(["DAT_007E1708"], rep["dropped"])
+
     def test_retype_extern_and_placeholder_definition(self):
         dest = DEST.replace("extern const double DAT_007E51A0;",
                             "extern const double DAT_007E51A0;\nextern int DAT_0089E8D0;")
