@@ -10,6 +10,7 @@
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 #include "../core/vector_class_operations.h"
+#include "../platform/window_moving_methods.h"
 
 class FileEntryClass;
 
@@ -141,6 +142,143 @@ struct SavedGameEntry_00559D30 {
     FILETIME LastWrite;   // +0x1AC
 };
 GG_STATIC_ASSERT(offsetof(SavedGameEntry_00559D30, LastWrite) == 0x1AC);
+
+// FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog handler.
+int __fastcall FUN_00622B50(HWND h, UINT msg, WPARAM w, LPARAM l);
+// FUNCTION: GAMEMD 0x607FD0 (decl; reloc)
+void FUN_00607FD0(HWND h);
+
+// FUNCTION: GAMEMD 0x558A30
+// PARTIAL: 81.2% -- same instruction multiset except two je/jne pairs: retail tests the three
+// command ids with forward je branches and bodies out of line; an if-chain nests them
+// (a switch on the id adds two register copies, 7.9%).
+// Dialog procedure: after the shared handler, repaint, clamp the window while
+// it is being moved, record the chosen command and prime the list control.
+int __stdcall FUN_00558A30(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r == 0) {
+        switch (msg) {
+        case 0x111: {
+            unsigned int notify = w >> 16;
+            int id = w & 0xFFFF;
+            int* data = (int*)GetWindowLongA(h, 8);
+            if (id == 0x40F) {
+                if (notify == 0) {
+                    data[6] = 0x40F;
+                    return 0;
+                }
+            } else if (id == 0x525) {
+                if (notify == 2) {
+                    LRESULT count = SendMessageA((HWND)l, 0x18B, 0, 0);
+                    if (count > 0) {
+                        data[6] = 0x40F;
+                        return 0;
+                    }
+                }
+            } else if (id == 0x686) {
+                data[6] = 2;
+                return 0;
+            }
+            break;
+        }
+        case 0xF:
+            FUN_00607FD0(h);
+            return 1;
+        case 0x216:
+            return OnWindowMoving(h, w, (Rect_00776D80*)l);
+        case 0x497:
+            SendDlgItemMessageA(h, 0x525, 0x4A6, 0xF9, 2);
+            SendDlgItemMessageA(h, 0x525, 0x4A6, 0x38, 0xFF);
+            SendDlgItemMessageA(h, 0x525, 0x4A6, 0, 0x13B);
+            break;
+        }
+        r = 0;
+    }
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x5588E0 (decl; reloc)
+void FUN_005588E0(HWND h, unsigned int id, LPARAM control, unsigned int notify);
+
+// FUNCTION: GAMEMD 0x558B90
+// Dialog procedure: repaint, clamp the window while it is being moved,
+// forward commands, prime both list controls and latch the result code.
+int __stdcall FUN_00558B90(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r == 0) {
+        switch (msg) {
+        case 0x111:
+            FUN_005588E0(h, w & 0xFFFF, l, w >> 16);
+            return 0;
+        case 0xF:
+            FUN_00607FD0(h);
+            return 1;
+        case 0x216:
+            return OnWindowMoving(h, w, (Rect_00776D80*)l);
+        case 0x497: {
+            SendMessageA(GetDlgItem(h, 0x526), 0xC5, 0x4F, 0);
+            SendDlgItemMessageA(h, 0x527, 0x4A6, 0xF9, 2);
+            SendDlgItemMessageA(h, 0x527, 0x4A6, 0x38, 0xFF);
+            SendDlgItemMessageA(h, 0x527, 0x4A6, 0, 0x13B);
+            break;
+        }
+        case 0x4DA: {
+            int* data = (int*)GetWindowLongA(h, 8);
+            data[6] = 1;
+            return 0;
+        }
+        }
+        r = 0;
+    }
+    return r;
+}
+
+
+// FUNCTION: GAMEMD 0x558CB0
+// Dialog procedure: after the shared handler, clamp the window while it is
+// being moved, repaint, set the result code for two buttons and prime the
+// list control's three settings.
+int __stdcall FUN_00558CB0(HWND h, UINT msg, WPARAM w, LPARAM l)
+{
+    int r = FUN_00622B50(h, msg, w, l);
+    if (r == 0) {
+        switch (msg) {
+        case 0x111: {
+            unsigned int notify = w >> 16;
+            int* data = (int*)GetWindowLongA(h, 8);
+            switch (w & 0xFFFF) {
+            case 0x686:
+                if (notify == 0) {
+                    data[6] = 2;
+                    return 0;
+                }
+                break;
+            case 0x6C8:
+                if (notify == 0) {
+                    data[6] = 1;
+                    return 0;
+                }
+                break;
+            }
+            break;
+        }
+        case 0xF:
+            FUN_00607FD0(h);
+            return 1;
+        case 0x216:
+            return OnWindowMoving(h, w, (Rect_00776D80*)l);
+        case 0x497:
+            SendDlgItemMessageA(h, 0x528, 0x4A6, 0xF9, 2);
+            SendDlgItemMessageA(h, 0x528, 0x4A6, 0x38, 0xFF);
+            SendDlgItemMessageA(h, 0x528, 0x4A6, 0, 0x13B);
+            break;
+        }
+        r = 0;
+    }
+    return r;
+}
 
 // FUNCTION: GAMEMD 0x559D30
 int __cdecl FUN_00559D30(SavedGameEntry_00559D30** a, SavedGameEntry_00559D30** b)
