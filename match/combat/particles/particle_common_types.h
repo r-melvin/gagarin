@@ -29,6 +29,14 @@ struct ParticleCoord
 };
 GG_STATIC_ASSERT(sizeof(ParticleCoord) == 0xC);
 
+// An all-zero ParticleCoord whose constructor leaves a dynamic initialiser (stores of 0 to X, Y and Z) in the
+// translation unit that defines it, as the retail header-level object does.
+struct ParticleZeroInit : ParticleCoord
+{
+    ParticleZeroInit() { X = 0; Y = 0; Z = 0; }
+};
+GG_STATIC_ASSERT(sizeof(ParticleZeroInit) == 0xC);
+
 inline ParticleCoord operator-(ParticleCoord a, ParticleCoord b)
 {
     return ParticleCoord(a.X - b.X, a.Y - b.Y, a.Z - b.Z);

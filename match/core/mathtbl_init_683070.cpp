@@ -5,6 +5,7 @@
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>
 #include "mathtbl_init_shapes.h"
+#include "../combat/particles/particle_common_types.h"
 
 // GLOBAL: GAMEMD 0x7E1708
 extern const double DAT_007E1708;
@@ -58,7 +59,7 @@ int DAT_00B054BC = (int)((double)(DAT_00B054C8 * 4) + DAT_007E1738);
 MathTblShortPair DAT_00B05458;
 // SYNTHETIC: GAMEMD 0x683220
 // GLOBAL: GAMEMD 0xB05488
-MathTblZero3 DAT_00B05488;
+ParticleZeroInit DAT_00B05488;
 // SYNTHETIC: GAMEMD 0x683260
 // GLOBAL: GAMEMD 0xB05448
 MathTblZero4 DAT_00B05448;
