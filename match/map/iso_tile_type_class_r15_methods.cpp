@@ -36,7 +36,7 @@ extern int DAT_008288E4[];
 // Table value for the sub-tile at `idx` (wrapped on the sub-tile count), or zero.
 int IsometricTileTypeClass::FUN_00544BE0(int idx)
 {
-    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+    TileImageHeader* data = GetTileData();
 
     if (data != 0) {
         SubTileView_r15* tile = (SubTileView_r15*)data->SubTiles[idx % (data->Height * data->Width)];
@@ -51,10 +51,10 @@ int IsometricTileTypeClass::FUN_00544BE0(int idx)
 // Whether sub-tile `idx` has an image; with `load` set, the tile set is loaded first if needed.
 bool IsometricTileTypeClass::FUN_00544C20(int idx, bool load)
 {
-    if (load && this->unknown_A4 == 0 && this->TileDataLoadable) {
+    if (load && this->Image == 0 && this->TileDataLoadable) {
         this->LoadTileData();
     }
-    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+    TileImageHeader* data = GetTileData();
     if (data != 0 && idx < data->Height * data->Width && data->SubTiles[idx] != 0) {
         return true;
     }
@@ -65,10 +65,10 @@ bool IsometricTileTypeClass::FUN_00544C20(int idx, bool load)
 // Loads the tile set on first use and reports whether it is present.
 bool IsometricTileTypeClass::FUN_00544C80()
 {
-    if (this->unknown_A4 == 0 && this->TileDataLoadable) {
+    if (this->Image == 0 && this->TileDataLoadable) {
         this->LoadTileData();
     }
-    return this->unknown_A4 != 0;
+    return this->Image != 0;
 }
 
 // FUNCTION: GAMEMD 0x544CE0
@@ -89,7 +89,7 @@ int IsometricTileTypeClass::FUN_00544CE0(const char* name)
 // For a sub-tile with bit 0 of its flag word set, the span +0x18 minus +0x04; else zero.
 int IsometricTileTypeClass::FUN_00549A60(int idx)
 {
-    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+    TileImageHeader* data = GetTileData();
 
     if (data != 0 && idx < data->Height * data->Width) {
         SubTileView_r15* tile = (SubTileView_r15*)data->SubTiles[idx];

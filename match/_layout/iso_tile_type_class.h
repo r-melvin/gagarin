@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "vector_class.h"
+#include "object_type_class.h"
 
 struct CellStruct;
 struct RectangleStruct;
@@ -18,7 +19,6 @@ class IsometricTileTypeClass;
 class IsometricTileClass;
 class ObjectClass;
 class HouseClass;
-struct IsoTileTypeVtbl;
 
 // One sub-tile image inside a loaded .tmp tile set.
 struct SubTileImage
@@ -47,13 +47,30 @@ GG_STATIC_ASSERT(offsetof(TileImageHeader, Width) == 0x00);
 GG_STATIC_ASSERT(offsetof(TileImageHeader, Height) == 0x04);
 GG_STATIC_ASSERT(offsetof(TileImageHeader, SubTiles) == 0x10);
 
-class IsometricTileTypeClass
+// VTABLE: GAMEMD 0x007ECC48  IsometricTileTypeClass (RTTI base chain: ObjectTypeClass, AbstractTypeClass, AbstractClass)
+class IsometricTileTypeClass : public ObjectTypeClass
 {
 public:
     struct TileInsertType; // nested pointer type attested by TU110 vector RTTI
 
+    // FUNCTION: GAMEMD 0x5447C0 (decl; reloc) -- the named constructor. Its first argument is forwarded to the
+    // ObjectTypeClass constructor (0x5F7090, the ID text), the second is stored at +0x294, the fourth and fifth
+    // (low byte) at +0x2DC and +0x2EC. TClassFactory<IsometricTileTypeClass> (0x6C2F90) passes five zeros.
+    IsometricTileTypeClass(const char* id = 0, int arg1 = 0, int arg2 = 0, int arg3 = 0, int arg4 = 0);
+    // Slot 8 (deleting destructor 0x54A170).
+    virtual ~IsometricTileTypeClass();
+
+    // Overrides of the slots ObjectTypeClass leaves pure (retail table 0x7ECC48); declared only, bodies elsewhere.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x549D90
+    virtual int vf_11();                                                  // 11  0x54A140
+    virtual int vf_12();                                                  // 12  0x54A150
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house);        // 32  0x549AA0
+    virtual ObjectClass* vf_35(HouseClass* house);                        // 35  0x549AE0 (also FUN_00549AE0 below)
+
     // Declared ascending by retail address (reccmp/isle TU discipline).
-    TileImageHeader* GetTileData();          // GAMEMD 0x544CB0  slot +0x9C
+    // Slot 39 (0x544CB0), the loaded tile-set header: the ObjectTypeClass::Image member (+0xA4) holds it, loaded on first use.
+    virtual void* vf_39();
+    TileImageHeader* GetTileData() { return static_cast<TileImageHeader*>(vf_39()); }
     int              GetMorphType(int idx);   // GAMEMD 0x5471B0
     bool             GetConnectFlag(int idx); // GAMEMD 0x5471F0
 
@@ -77,12 +94,6 @@ public:
     void FUN_00547CF0(int a, int b, Surface* surface, int x, int y, RectangleStruct clip, int level,
                       int tint, int f1, int f2, int f3, int f4, int f5, int f6);
 
-    IsoTileTypeVtbl* Vfptr;                    // +0x000
-    char             _pad_004[0x024 - 0x004];
-    char             ID[0x19];                 // +0x024 type name (AbstractTypeClass::ID)
-    char             _pad_03D[0x0A4 - 0x03D];
-    TileImageHeader* unknown_A4;                 // +0x0A4
-    char             _pad_0A8[0x294 - 0x0A8];
     int              unknown_294;              // +0x294 copied into CellClass +0x38 at 0x5A6C10
     int              unknown_298;              // +0x298 ctor = 0xFFFF @0x5447E4
     int              unknown_29C;              // +0x29C ctor = 0xFFFF @0x5447EA
@@ -114,9 +125,6 @@ public:
     char             _pad_307[1];              // +0x307
     int              unknown_308;              // +0x308 ctor = 0 @0x5448C2
 };
-GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, Vfptr)            == 0x000);
-GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, ID)                 == 0x024);
-GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_A4)         == 0x0A4);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_294)        == 0x294);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E4)        == 0x2E4);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E8)        == 0x2E8);
@@ -131,24 +139,6 @@ GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_305)        == 0x305);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_308)        == 0x308);
 // sizeof from the allocation `PUSH 0x30C; CALL 0x7C8E17` at 0x6C2FBC.
 GG_STATIC_ASSERT(sizeof(IsometricTileTypeClass)                        == 0x30C);
-
-// The class has to be complete before this typedef, or VC6 falls back to the
-// multiple-inheritance member-pointer form and emits a `this` adjustment.
-typedef TileImageHeader* (IsometricTileTypeClass::*GetTileDataFn)();
-
-// Slot 35 (CreateObject, 0x549AE0) takes the owning house; FUN_00549AE0 declares it with an int and its own result type.
-typedef ObjectClass* (IsometricTileTypeClass::*CreateObjectFn)(HouseClass*);
-
-struct IsoTileTypeVtbl
-{
-    char           _pad_000[0x8C];
-    CreateObjectFn At_8C;   // +0x8C slot 35
-    char           _pad_090[0x9C - 0x90];
-    GetTileDataFn  At_9C;   // +0x9C
-};
-GG_STATIC_ASSERT(offsetof(IsoTileTypeVtbl, At_8C) == 0x8C);
-GG_STATIC_ASSERT(offsetof(IsoTileTypeVtbl, At_9C) == 0x9C);
-
 
 // GLOBAL: GAMEMD 0xA8ED28 -- a DynamicVectorClass<IsometricTileTypeClass*> (Items at +4 = 0xA8ED2C); initialiser 0x4E76E0,
 // exit 0x4E7720. Declaration only (the template is forward-declared so no header gains an include): the object is defined

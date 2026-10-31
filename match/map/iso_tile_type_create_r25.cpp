@@ -14,7 +14,7 @@ extern MapObjCell DAT_00AA105C;
 // Creates a tile object of this type, loading the tile data first if it is still pending.
 IsometricTileClass* IsometricTileTypeClass::FUN_00549AE0(int)
 {
-    if (unknown_A4 == 0 && TileDataLoadable)
+    if (Image == 0 && TileDataLoadable)
         LoadTileData();
     return new IsometricTileClass(unknown_294, &DAT_00AA105C);
 }

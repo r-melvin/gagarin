@@ -1747,7 +1747,7 @@ bool FUN_005A6BA0(CellStruct* a1)
 void FUN_005A6C10(int a1, CellStruct* a2, int a3, int a4)
 {
     IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
-    TileImageHeader* d = (t->*t->Vfptr->At_9C)();
+    TileImageHeader* d = t->GetTileData();
     if (d != 0) {
         for (int y = 0; y < t->unknown_2E8; y++) {
             for (int x = 0; x < t->unknown_2E4; x++) {
@@ -1843,7 +1843,7 @@ Rect_4i* __fastcall FUN_005A7640(Rect_4i* out, DynamicVectorClass<Cell>* list)
 void FUN_005A7E90(int a1, CellStruct* a2)
 {
     IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
-    TileImageHeader* d = (t->*t->Vfptr->At_9C)();
+    TileImageHeader* d = t->GetTileData();
     if (d != 0) {
         for (int y = 0; y < t->unknown_2E8; y++) {
             for (int x = 0; x < t->unknown_2E4; x++) {
@@ -1864,7 +1864,7 @@ void FUN_005A7E90(int a1, CellStruct* a2)
 void FUN_005A7FA0(int a1, CellStruct* a2, char a3)
 {
     IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
-    TileImageHeader* d = (t->*t->Vfptr->At_9C)();
+    TileImageHeader* d = t->GetTileData();
     if (d != 0) {
         for (int y = 0; y < t->unknown_2E8; y++) {
             for (int x = 0; x < t->unknown_2E4; x++) {

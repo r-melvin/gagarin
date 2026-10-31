@@ -185,8 +185,9 @@ public:
     void FUN_004F9F70(int index, bool flag);
     // FUNCTION: GAMEMD 0x4FCE00 - stores the starting credits and balance (third argument) and the colour index (first).
     void FUN_004FCE00(int colorIndex, int unused, int credits);
-    // Declaration: GAMEMD 0x4F54A0 -- recovered body currently on legacy owner.
-    HouseClass(HouseTypeClass* type);
+    // Declaration: GAMEMD 0x4F54A0 -- recovered body currently on legacy owner. TClassFactory<HouseClass>
+    // (0x6C3E90) calls it with a null type (`push 0`), so the argument defaults to null.
+    HouseClass(HouseTypeClass* type = 0);
     // Declaration: GAMEMD 0x4F5190 -- forwards this opaque argument to4101C0.
     HouseClass(const AbstractNoInit& noInit);
     // External ordinary destructor: the native deleting provider50E380 calls4F7140.

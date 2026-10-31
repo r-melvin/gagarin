@@ -12,7 +12,7 @@
 //   The retail class name is IsometricTileTypeClass.
 //
 //   Member offsets confirmed numerically from the bodies:
-//     +0x0A4  unknown_A4   `MOV EAX,[ESI+0xa4]`, twice in 0x544CB0
+//     +0x0A4  Image         `MOV EAX,[ESI+0xa4]`, twice in 0x544CB0
 //     +0x2F4  the byte gating the lazy load, `MOV CL,[ESI+0x2f4]`
 //   Tile-image header, reached through slot +0x9C:
 //     +0x00 / +0x04  the two dimensions, multiplied to give the sub-tile count

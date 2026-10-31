@@ -22,6 +22,10 @@
 class SuperWeaponTypeClass : public AbstractTypeClass
 {
 public:
+    // FUNCTION: GAMEMD 0x6CE5B0 (decl; reloc) -- the named constructor: forwards its argument to the
+    // AbstractTypeClass constructor (0x410800, the ID text). TClassFactory<SuperWeaponTypeClass> (0x6BF510)
+    // calls it with a null id (`push 0`).
+    SuperWeaponTypeClass(const char* id = 0);
     // FUNCTION: GAMEMD 0x6CE700 (no-initialisation constructor)
     SuperWeaponTypeClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x6CE740 (destructor; slot 8 = 0x6CEFE0)

@@ -28,7 +28,9 @@ template<class T>
 class TClassFactory : public IClassFactory
 {
 public:
-    TClassFactory() : RefCount(0) {}
+    // Declared only: retail calls the constructor out of line at every site, so its body is
+    // defined next to the explicit instantiations (ClassFactoryInst.cpp).
+    TClassFactory();
 
     // IUnknown
     STDMETHOD(QueryInterface)(REFIID riid, void** ppv)

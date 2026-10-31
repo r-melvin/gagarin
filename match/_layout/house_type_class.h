@@ -60,7 +60,8 @@ class HouseTypeClass : public AbstractTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x5113F0 -- the named constructor.
-    HouseTypeClass(const char* id);
+    // TClassFactory<HouseTypeClass> (0x6C3D10) calls it with a null id (`push 0`), so the argument defaults to null.
+    HouseTypeClass(const char* id = 0);
     // FUNCTION: GAMEMD 0x511650 -- the no-init constructor.
     HouseTypeClass(const AbstractNoInit& noInit);
 

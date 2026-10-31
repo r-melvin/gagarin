@@ -2605,7 +2605,7 @@ void Tactical::FUN_006D7F20(const CellStruct* coordinate,
                 IsometricTileTypeClass* tile = DAT_00A8ED2C[tileIndex];
                 if (!tile)
                     continue;
-                TileImageHeader* image = (tile->*tile->Vfptr->At_9C)();
+                TileImageHeader* image = tile->GetTileData();
                 if (!image)
                     continue;
                 int index = height;

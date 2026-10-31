@@ -39,7 +39,7 @@ GG_STATIC_ASSERT(offsetof(SubTileView_r21, unknown_24) == 0x24);
 // bit 0 flag is set. False when the tile set is unavailable.
 bool IsometricTileTypeClass::FUN_00547150(int idx, int* outA, int* outB)
 {
-    TileHeaderView_r21* data = (TileHeaderView_r21*)(this->*this->Vfptr->At_9C)();
+    TileHeaderView_r21* data = (TileHeaderView_r21*)vf_39();
     if (data != 0) {
         SubTileView_r21* tile = (SubTileView_r21*)data->SubTiles[idx % (data->Height * data->Width)];
         *outA = data->unknown_08;

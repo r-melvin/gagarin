@@ -2255,7 +2255,7 @@ bool BuildingClass::vf_73(int mark)
                                     }
                                 }
                             }
-                            ObjectClass* created = (Type->ToTile->*(Type->ToTile->Vfptr->At_8C))(Owner);
+                            ObjectClass* created = Type->ToTile->vf_35(Owner);
                             CoordStruct where;
                             where.X = c.X * 256 + 128;
                             where.Y = c.Y * 256 + 128;

@@ -246,18 +246,18 @@ Quad_0054A120 Gbl_00ABC2D0[40] = {
     Quad_0054A120(0, 0, 0, 0)
 };
 
-// FUNCTION: GAMEMD 0x544CB0  (__thiscall)
+// FUNCTION: GAMEMD 0x544CB0  (__thiscall, vtable slot 39)
 // The loaded tile-set header, loading it on first use. Retail reads the member
 // once up front and again only inside the loading arm, so the source keeps the
 // first read in a local and refreshes it after the load rather than re-reading
 // the member on the way out.
-TileImageHeader* IsometricTileTypeClass::GetTileData()
+void* IsometricTileTypeClass::vf_39()
 {
-    TileImageHeader* data = this->unknown_A4;
+    void* data = this->Image;
 
     if (data == 0 && this->TileDataLoadable) {
         this->LoadTileData();
-        data = this->unknown_A4;
+        data = this->Image;
     }
     return data;
 }
@@ -290,7 +290,7 @@ bool __cdecl FUN_00544FF0()
 // and the return is int.
 int IsometricTileTypeClass::GetMorphType(int idx)
 {
-    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+    TileImageHeader* data = GetTileData();
 
     if (data != 0) {
         SubTileImage* tile = data->SubTiles[idx % (data->Height * data->Width)];
@@ -314,7 +314,7 @@ int IsometricTileTypeClass::GetMorphType(int idx)
 // its sibling at 0x5471B0.
 bool IsometricTileTypeClass::GetConnectFlag(int idx)
 {
-    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+    TileImageHeader* data = GetTileData();
 
     if (data != 0) {
         SubTileImage* tile = data->SubTiles[idx % (data->Height * data->Width)];
