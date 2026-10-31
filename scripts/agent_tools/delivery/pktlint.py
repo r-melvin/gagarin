@@ -43,6 +43,10 @@ enforces; nothing here needs a compiler except --strict.
                  unless scoped 'tu::sym' in the central symbol_bindings.json
   rea          E/W no REA Evidence IDs (ev_xxxxxxxx) in the packet's README/evidence (brief: REA primary);
                a line 'REA: none (ghidra CLI fallback)' states the fallback and silences it
+  partial-bar  E a NEW partial row below the project's partial bar: len < 0x400 needs pct >= 80.0; len >= 0x400 needs
+                 pct >= 60.0 AND an identical instruction multiset (diff_retail's 'multiset: identical', checked under
+                 --strict; without --strict an unverified multiset is a warning). pct is diff_retail's positional
+                 score, the same one --strict compares to. W for an existing tree partial whose row is unchanged (legacy)
   strict       (--strict) compile the touched TUs, raw_match + strict verify_relocations on every
                  matched row with the packet maps + derivable bindings; lists unbound targets;
                  E a partial row whose recorded pct differs from the compiled score (diff_retail, tolerance 0.05)
@@ -737,6 +741,39 @@ class Lint:
         else:
             self.err("rea", "no REA Evidence IDs and no statement of the RE tool used (brief: REA primary, ghidra fallback stated)")
 
+    # ------------------------------------------------------------ partial-bar
+    BAR_SMALL, BAR_SMALL_PCT, BAR_BIG_PCT = 0x400, 80.0, 60.0
+
+    def partial_legacy(self, r):
+        """True when R is a partial row already in the tree and unchanged (same tu/sym/len/status/pct)."""
+        try:
+            cur = self.t.by_addr.get(D.hx(r["addr"]))
+        except Exception:
+            return False
+        return bool(cur and cur.get("status") == "partial" and self.same_row(cur, r))
+
+    def partial_bar(self):
+        for r in self.rows:
+            if r.get("status") != "partial" or "addr" not in r:
+                continue
+            a = r["addr"]
+            try:
+                n = D.hx(r["len"])
+            except Exception:
+                continue            # the delta rule reports a malformed len
+            pct = r.get("pct")
+            legacy = self.partial_legacy(r)
+            level = self.warn if legacy else self.err
+            tag = " (legacy row, unchanged)" if legacy else ""
+            if not isinstance(pct, (int, float)):
+                level("partial-bar", "partial row %s has no numeric pct%s" % (a, tag), addr=a)
+                continue
+            need = self.BAR_SMALL_PCT if n < self.BAR_SMALL else self.BAR_BIG_PCT
+            if pct < need:
+                level("partial-bar", "partial row %s (len 0x%x) pct %s is below the bar %.1f%s" % (a, n, pct, need, tag), addr=a)
+            elif n >= self.BAR_SMALL and not legacy and not getattr(self, "do_strict", False):
+                self.warn("partial-bar", "partial row %s (len 0x%x, %.1f%%): identical instruction multiset not verified; run pktlint --strict" % (a, n, pct), addr=a)
+
     # ------------------------------------------------------------ --strict
     def strict(self, jobs):
         """Compile the touched TUs in a scratch worktree with the patch applied and prove every
@@ -789,6 +826,9 @@ class Lint:
                 elif abs(pct - float(r["pct"])) > 0.05:
                     self.err("strict", "partial row %s records pct %s but the compiled score is %s" % (r["addr"], r["pct"], pct),
                              addr=r["addr"], recorded=r["pct"], compiled=pct)
+                if (pct is not None and D.hx(r["len"]) >= self.BAR_SMALL and not self.partial_legacy(r)
+                        and "multiset: identical" not in text and pct < 100.0):
+                    self.err("partial-bar", "partial row %s (len %s) is 1 KB or more and its instruction multiset is not identical to retail" % (r["addr"], r["len"]), addr=r["addr"])
             if not rows:
                 return
             maps = list(self.p.symbol_map_files())
@@ -839,9 +879,10 @@ class Lint:
 
     def run(self, do_strict=False, jobs=8, rules=None):
         order = ["shape", "paths", "stale", "words", "steering", "sdd", "flags", "thisnull", "views", "migrated", "inits", "delta_rules",
-                 "dupclaims", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea"]
+                 "dupclaims", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar"]
+        self.do_strict = do_strict
         for name in order:
-            if rules and name.replace("_rules", "") not in rules:
+            if rules and name.replace("_rules", "").replace("_", "-") not in rules:
                 continue
             try:
                 getattr(self, name)()

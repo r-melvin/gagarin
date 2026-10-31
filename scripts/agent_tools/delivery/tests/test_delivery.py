@@ -793,6 +793,42 @@ class NewTools(unittest.TestCase):
                          [("Foo", "Cost", "Cost", "0x401000"), ("Foo", "Speed", "Speed", "0x401000")])
 
 
+class PartialBar(unittest.TestCase):
+    def rows(self, specs):
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        rows = [{"tu": "match/x/a.cpp", "addr": "0x%X" % (0x7F0000 + i * 0x2000), "sym": "?f%d@@YAXXZ" % i, "len": ln,
+                 "status": "partial", "pct": pct} for i, (ln, pct) in enumerate(specs)]
+        src = HEADER + "".join("// FUNCTION: GAMEMD %s\nvoid f%d() {}\n" % (r["addr"], i) for i, r in enumerate(rows))
+        return [x for x in lint(packet(tmp, {"match/x/a.cpp": src}, rows), {"partial-bar"}) if x["rule"] == "partial-bar"]
+
+    def test_bar(self):
+        f = self.rows([("0x3ff", 79.9), ("0x3ff", 80.0), ("0x400", 59.9), ("0x400", 60.0), ("0x10", 22.4)])
+        errs = sorted(x["addr"] for x in f if x["level"] == "E")
+        self.assertEqual(errs, ["0x7F0000", "0x7F4000", "0x7F8000"])
+        warn = [x for x in f if x["level"] == "W"]
+        self.assertEqual([x["addr"] for x in warn], ["0x7F6000"])      # 1 KB at 60.0: multiset unverified without --strict
+        self.assertIn("multiset", warn[0]["msg"])
+
+    def test_legacy_row_warns_not_errors(self):
+        cur = next(r for r in tree().by_addr.values() if r.get("status") == "matched")
+        old = dict(cur, status="partial", pct=10.0)
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        lt = pktlint.Lint(packet(tmp, {"match/x/a.cpp": HEADER}, []), tree(), D.MAIN_REPO)
+        lt.t = types_ns(by_addr={D.hx(old["addr"]): old})
+        lt.rows = [dict(old)]
+        lt.partial_bar()
+        self.assertEqual([x["level"] for x in lt.findings], ["W"])
+        lt.findings = []
+        lt.rows = [dict(old, pct=11.0)]                 # pct changed: a new result, so the bar applies
+        lt.partial_bar()
+        self.assertEqual([x["level"] for x in lt.findings], ["E"])
+
+
+def types_ns(**kw):
+    import types
+    return types.SimpleNamespace(**kw)
+
+
 class Toolfix1030(unittest.TestCase):
     PLAIN = ("--- a/match/x/a.cpp\t2026-10-30 10:00:00\n+++ b/match/x/a.cpp\t2026-10-30 10:00:01\n@@ -1,2 +1,3 @@\n l1\n+l2\n l3\n"
              "--- /dev/null\n+++ b/match/x/n.h\n@@ -0,0 +1,1 @@\n+h\n")

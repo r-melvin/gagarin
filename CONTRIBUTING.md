@@ -104,6 +104,14 @@ address, symbol, length, status (`matched` or `partial`) and percentage.
 first targets are small leaf `__thiscall` accessors, and `partial` rows close
 to 100%.
 
+A `partial` row must meet the partial bar, which `pktlint` enforces as the
+`partial-bar` rule: under 1 KB (`len < 0x400`) it needs `pct >= 80.0`; at 1 KB
+or more it needs `pct >= 60.0` and an identical instruction multiset
+(`diff_retail.py` prints `multiset: identical`; `pktlint --strict` checks it).
+`pct` is the positional `diff_retail.py` score recorded in the manifest. Below the
+bar is an error for new or re-scored partial rows and a warning for existing
+partial rows left unchanged.
+
 Open an issue or draft PR naming the addresses you're taking, so two people
 don't work on the same function.
 
