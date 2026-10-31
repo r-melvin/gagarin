@@ -6261,7 +6261,7 @@
   },
   {
    "addr": "0x50EE50",
-   "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+   "tu": "match/economy/House.cpp",
    "name": "DynamicVectorClass<HouseClass::StartingTechnoStruct*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
