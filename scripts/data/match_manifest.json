@@ -149031,5 +149031,113 @@
   "name": "_FUN_007E02CB",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_cell_pack_readers.cpp",
+  "addr": "0x56B5A0",
+  "sym": "?FUN_0056B5A0@MapClass@@QAE_NPAVStraw@@@Z",
+  "len": "0x1d6",
+  "name": "MapClass::FUN_0056B5A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_cell_pack_readers.cpp",
+  "addr": "0x56B780",
+  "sym": "?FUN_0056B780@MapClass@@QAE_NPAVStraw@@@Z",
+  "len": "0x114",
+  "name": "MapClass::FUN_0056B780",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_cell_pack_readers.cpp",
+  "addr": "0x56B8A0",
+  "sym": "?FUN_0056B8A0@MapClass@@QAE_NPAVStraw@@@Z",
+  "len": "0xfa",
+  "name": "MapClass::FUN_0056B8A0",
+  "status": "partial",
+  "pct": 96.4
+ },
+ {
+  "tu": "match/map/tu127_cell_pack_readers.cpp",
+  "addr": "0x56B9A0",
+  "sym": "?FUN_0056B9A0@MapClass@@QAE_NPAVStraw@@@Z",
+  "len": "0x114",
+  "name": "MapClass::FUN_0056B9A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_cell_pack_readers.cpp",
+  "addr": "0x56BAC0",
+  "sym": "?FUN_0056BAC0@MapClass@@QAE_NPAVStraw@@@Z",
+  "len": "0x120",
+  "name": "MapClass::FUN_0056BAC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_zone_precheck.cpp",
+  "addr": "0x56D100",
+  "sym": "?FUN_0056D100@MapClass@@QAE_NPBUCellStruct@@0H_N11@Z",
+  "len": "0x122",
+  "name": "MapClass::FUN_0056D100",
+  "status": "partial",
+  "pct": 91.9
+ },
+ {
+  "tu": "match/map/tu127_block_clear.cpp",
+  "addr": "0x56E7C0",
+  "sym": "?FUN_0056E7C0@MapClass@@QAE_NPBUCellStruct@@HHHHHH_N1@Z",
+  "len": "0xce",
+  "name": "MapClass::FUN_0056E7C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_bridge_h_breakers.cpp",
+  "addr": "0x56F690",
+  "sym": "?Break_0056F690@BridgeSpanWalker@@QAEXPAUBridgeCellStruct@@I@Z",
+  "len": "0x105",
+  "name": "BridgeSpanWalker::Break_0056F690",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_bridge_h_breakers.cpp",
+  "addr": "0x56F7A0",
+  "sym": "?Break_0056F7A0@BridgeSpanWalker@@QAEXPAUBridgeCellStruct@@I@Z",
+  "len": "0x107",
+  "name": "BridgeSpanWalker::Break_0056F7A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_bridge_h_breakers.cpp",
+  "addr": "0x572B80",
+  "sym": "?Break_00572B80@BridgeSpanWalker@@QAEXPAUBridgeCellStruct@@I@Z",
+  "len": "0x105",
+  "name": "BridgeSpanWalker::Break_00572B80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_bridge_h_breakers.cpp",
+  "addr": "0x572C90",
+  "sym": "?Break_00572C90@BridgeSpanWalker@@QAEXPAUBridgeCellStruct@@I@Z",
+  "len": "0x107",
+  "name": "BridgeSpanWalker::Break_00572C90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/tu127_block_clear.cpp",
+  "addr": "0x57B790",
+  "sym": "?FUN_0057B790@MapClass@@QAEXPBUCellStruct@@@Z",
+  "len": "0xd3",
+  "name": "MapClass::FUN_0057B790",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -121,6 +121,11 @@ struct BridgeSpanWalker
     void Break_0056EE40(BridgeCellStruct* cell, unsigned facing);
     void Break_00572230(BridgeCellStruct* cell, unsigned facing);
     void Break_00572330(BridgeCellStruct* cell, unsigned facing);
+    // The four horizontal-set breakers: the same step and bump over overlay indices 9..14, classified against the H sets.
+    void Break_0056F690(BridgeCellStruct* cell, unsigned facing);
+    void Break_0056F7A0(BridgeCellStruct* cell, unsigned facing);
+    void Break_00572B80(BridgeCellStruct* cell, unsigned facing);
+    void Break_00572C90(BridgeCellStruct* cell, unsigned facing);
 };
 
 // Per-instance tile-set globals. Each retail body reads its own three, so each

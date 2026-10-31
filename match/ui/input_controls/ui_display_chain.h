@@ -292,6 +292,7 @@ struct WarheadType_00489180;    // map_class_total_damage_methods.cpp
 struct Cell_0050DEF0;   // radar_class.h
 struct RadarDiamond;    // Radar.cpp
 class Pipe;
+class Straw;
 class MapClass : public GScreenClass
 {
 public:
@@ -350,6 +351,21 @@ public:
     MapSavedObject* NextSavedObject_00578290();
     // FUNCTION: GAMEMD 0x578350 (decl; reloc) -- rewind the cell-object iteration.
     void FUN_00578350();
+    // FUNCTION: GAMEMD 0x56D100 -- whether two cells lie in the same movement zone for a pre-check of a path (RET 0x18; -1 = no zone).
+    bool FUN_0056D100(const CellStruct* from, const CellStruct* to, int zone, bool fromBridge, bool toBridge, bool checkEdge);
+    // FUNCTION: GAMEMD 0x56E7C0 -- whether every cell of a w x h block from `origin` is clear to move into (RET 0x24; `this` is not read).
+    bool FUN_0056E7C0(const CellStruct* origin, int width, int height, int speedType, int zone, int movementZone,
+                      int level, bool isBridge, bool requireNoOverlay);
+    // FUNCTION: GAMEMD 0x57B790 -- flag the cell at `cell` once for every point of an 11 x 11 block within radius 5 (RET 4; `this` is not read).
+    void FUN_0057B790(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x56B5A0 -- read the tile index, height and level of the 128 x 128 start-up cells from a straw (RET 4).
+    bool FUN_0056B5A0(Straw* straw);
+    // FUNCTION: GAMEMD 0x56B780 / 0x56B8A0 / 0x56B9A0 / 0x56BAC0 -- read the per-cell tile data of the map from a straw (RET 4).
+    // 0x56B780 decompresses through an LCW straw it builds over the argument, 0x56B9A0 and 0x56BAC0 through an LZO straw.
+    bool FUN_0056B780(Straw* straw);
+    bool FUN_0056B8A0(Straw* straw);
+    bool FUN_0056B9A0(Straw* straw);
+    bool FUN_0056BAC0(Straw* straw);
     // FUNCTION: GAMEMD 0x4AE450 -- reset every cell's light after a detail-level change, then request a redraw.
     void FUN_004AE450();
 
