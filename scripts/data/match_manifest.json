@@ -23663,7 +23663,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/display_class_foundation_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A94F0",
   "sym": "?FoundationBoundsSize@DisplayClass@@QBE?AUCellStruct@@PBU2@@Z",
   "len": "0xa9",
@@ -23672,7 +23672,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/display_class_foundation_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A95A0",
   "sym": "?MarkFoundation@DisplayClass@@QAEXPBUCellStruct@@_N@Z",
   "len": "0xa6",
@@ -141541,7 +141541,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_class_r16_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AE9B0",
   "sym": "?FUN_004AE9B0@@YGHHPBUCellStruct@@@Z",
   "len": "0x47",
@@ -145879,7 +145879,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map/map_class_detail_level_004ae450.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AE450",
   "sym": "?FUN_004AE450@MapClass@@QAEXXZ",
   "len": "0x62",

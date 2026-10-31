@@ -302,6 +302,79 @@ void __cdecl FUN_004A8EA0()
 {
 }
 
+#ifndef max
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#endif
+#ifndef min
+#define min(a, b) (((a) < (b)) ? (a) : (b))
+#endif
+
+GG_STATIC_ASSERT(offsetof(CellClass, AltFlags) == 0x12C);
+
+// FUNCTION: GAMEMD 0x4A94F0  DisplayClass::FoundationBoundsSize (__thiscall, ret 0x8)
+//
+// Bounding-box size, in cells, of a foundation offset list. The list is a
+// run of CellStruct offsets ended by (0x7FFF, 0x7FFF); each axis's extent is
+// max - min + 1 clamped to at least 1. A null list yields (0, 0). The 4-byte
+// struct comes back through the hidden return pointer (a member function),
+// which is why RET is 8 with `this` unused.
+CellStruct DisplayClass::FoundationBoundsSize(CellStruct const* foundation) const
+{
+    CellStruct size;
+    int minX = 0x200;
+    int maxX = -0x200;
+    int minY = 0x200;
+    int maxY = -0x200;
+
+    size.X = 0;
+    size.Y = 0;
+
+    if (foundation != 0) {
+        while (foundation->X != 0x7FFF || foundation->Y != 0x7FFF) {
+            int x = foundation->X;
+            int y = foundation->Y;
+            maxX = max(maxX, x);
+            minX = min(minX, x);
+            maxY = max(maxY, y);
+            minY = min(minY, y);
+            foundation++;
+        }
+        size.X = (short)max(1, maxX - minX + 1);
+        size.Y = (short)max(1, maxY - minY + 1);
+    }
+    return size;
+}
+
+// FUNCTION: GAMEMD 0x4A95A0  DisplayClass::MarkFoundation (__thiscall, ret 0x8)
+//
+// Set (or clear) the foundation bit on every cell of the current foundation
+// placed at `baseCell`. The sentinel base cell at 0x8A03F8 is a no-op; every
+// offset in CurrentFoundationData is added to the base, checked for legality
+// and, when legal, has bit 1 of its cell's flags word set or cleared.
+//
+// The post-increment is its own statement: `*data++ + *baseCell` in one
+// expression lets VC6 hoist the base-X load ahead of the pointer copy and
+// scores 84.6%; naming the element first reproduces retail's "copy pointer,
+// load both halves, add both halves" order exactly.
+void DisplayClass::MarkFoundation(CellStruct const* baseCell, bool mark)
+{
+    if (baseCell->X != DAT_008A03F8.X || baseCell->Y != DAT_008A03F8.Y) {
+        CellStruct const* data = static_cast<CellStruct const*>(CurrentFoundation);
+        while (data->X != 0x7FFF || data->Y != 0x7FFF) {
+            CellStruct const* offset = data++;
+            CellStruct cell = *offset + *baseCell;
+            if (CoordinatesLegal(cell)) {
+                DisplayCell* pCell = GetCellAt_005657A0(cell);
+                if (mark) {
+                    pCell->Flags12C |= 2;
+                } else {
+                    pCell->Flags12C &= ~2;
+                }
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x4A9650
 void DisplayClass::FUN_004A9650(const CellStruct* cell, bool set)
 {
@@ -2059,6 +2132,27 @@ void DisplayClass::FUN_004ADFF0(bool skipBuildings, int arg)
     }
 }
 
+// FUNCTION: GAMEMD 0x545000 (decl; reloc) -- rebuilds the global light record and clears every cell's +0x34.
+void FUN_00545000();
+// GLOBAL: GAMEMD 0xABDC84
+extern int DAT_00ABDC84;
+
+// FUNCTION: GAMEMD 0x4AE450
+// Rebuilds the light record, then resets every cell's light values to the neutral level and asks for a redraw.
+void MapClass::FUN_004AE450()
+{
+    FUN_00545000();
+    Map_0087F7E8.FUN_00578350();
+    CellClass* cell = Map_0087F7E8.FUN_00578290();
+    DAT_00ABDC84 = 0;
+    while (cell != 0)
+    {
+        cell->FUN_00483E30(0, 0x10000, 0, 1000, 1000, 1000);
+        cell = Map_0087F7E8.FUN_00578290();
+    }
+    FlagToRedraw(1);
+}
+
 // FUNCTION: GAMEMD 0x4AE4C0  (static)
 // Walk every cell of the map via the spiral iterator and recompute its tinted
 // lighting. Iterator begin @0x578350 primes the walk; next @0x578290 returns
@@ -2184,6 +2278,30 @@ long DisplayClass::vf_31(IStream* stream)
     return result;
 }
 
+// FUNCTION: GAMEMD 0x4AE9B0
+// Maps a planning-mode action id to the id used when the current player has a
+// planning waypoint at `cell`: 1,2 -> 0x2D; 3,9,0xB -> 0x32; 5,6 -> 0x31;
+// anything else (or no waypoint there) is returned unchanged.
+int __stdcall FUN_004AE9B0(int action, const CellStruct* cell)
+{
+    if (CurrentPlayer->GetPlanningWaypointAt(cell) != 0) {
+        switch (action) {
+        case 1:
+        case 2:
+            return 0x2D;
+        case 5:
+        case 6:
+            return 0x31;
+        case 3:
+        case 9:
+        case 0xB:
+            action = 0x32;
+            break;
+        }
+    }
+    return action;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4AEA20
 // ECX is unused; one stack index and RET4. Original member/free scope unproved.
@@ -2252,4 +2370,8 @@ extern const double DAT_007E6018 = 60.0;
 void* DisplayPlaceShape_008A03FC;
 // GLOBAL: GAMEMD 0x89C3B0
 BeaconManagerClass BeaconManager;
+// GLOBAL: GAMEMD 0xABDC84
+int DAT_00ABDC84;
+// GLOBAL: GAMEMD 0x8A03F8 -- the "no cell" sentinel pair MarkFoundation refuses.
+Cell_004A8BF0 DAT_008A03F8;
 // END defined globals
