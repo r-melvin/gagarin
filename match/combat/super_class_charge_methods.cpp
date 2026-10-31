@@ -43,31 +43,5 @@ bool SuperClass::StopPreclickAnim(bool unused)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x6CC1E0  SuperClass::SetCharge (__thiscall, ret 0x4)
-//
-// Sets the recharge progress to a percentage (0..100) of the full recharge
-// time. The remaining frames are the recharge time less the charged fraction
-// ((int)(percentage * 0.01f * rechargeTime), the __ftol call); a remainder of
-// zero also marks the weapon ready. The clock is resumed if it was stopped and
-// then replaced wholesale by a fresh CDTimerClass(remaining) — a 12-byte copy
-// whose middle dword is the temporary's uninitialised CurrentTime slot.
-//
-// The explicit parentheses are load-bearing: `percentage * 0.01f * rechargeTime`
-// unparenthesised makes VC6 emit FILD; FIMUL rechargeTime; FMUL 0.01f (90.0%),
-// while `(percentage * 0.01f) * rechargeTime` gives retail's FILD; FMUL 0.01f;
-// FIMUL rechargeTime.
-void SuperClass::SetCharge(int percentage)
-{
-    if (this->IsPresent && percentage >= 0 && percentage <= 100) {
-        int rechargeTime = this->GetRechargeTime();
-        int remaining = rechargeTime - (int)((percentage * 0.01f) * rechargeTime);
-        if (remaining == 0) {
-            this->IsReady = true;
-        }
-        this->RechargeTimer.Resume();
-        this->RechargeTimer = CDTimerClass(remaining);
-    }
-}
-
 // SuperClass::Reset (0x6CE0B0) is unmatched for the same reason (72.7% with the
 // plain Pause; the previous body forced the second `CMP ESI,-1` with the alias).

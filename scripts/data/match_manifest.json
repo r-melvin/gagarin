@@ -2443,7 +2443,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/super_class_charge_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CC1E0",
   "sym": "?SetCharge@SuperClass@@QAEXH@Z",
   "len": "0x78",
@@ -141757,9 +141757,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/super_class_r16_methods.cpp",
+  "tu": "match/combat/Super.cpp",
   "addr": "0x6CB2E0",
-  "sym": "?FUN_006CB2E0@SuperView_r16@@QAEXXZ",
+  "sym": "?FUN_006CB2E0@SuperClass@@QAEXXZ",
   "len": "0xb9",
   "name": "SuperClass::FUN_006CB2E0",
   "status": "matched",

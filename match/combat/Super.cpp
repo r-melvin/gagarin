@@ -9,6 +9,9 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 //
+// Also merged: SuperClass::FUN_006CB2E0 (0x6CB2E0) and SuperClass::SetCharge (0x6CC1E0), now on the canonical
+// SuperClass and registry (DynamicVectorClass<AbstractClass*> at 0xB0F5B8).
+//
 // SuperClass recharge-state accessors. Functions ordered ascending by retail
 // address. Offsets confirmed numerically against the retail disassembly.
 //
@@ -28,6 +31,8 @@
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
+#include "../_layout/anim_class.h"
+#include "../core/frame_counter.h"
 
 #include "../core/empty_function_family_methods.h"
 
@@ -57,6 +62,33 @@ double DAT_00B0C068 = DAT_007E1718 / DAT_00B0C080;
 // SYNTHETIC: GAMEMD 0x006CADE0
 // GLOBAL: GAMEMD 0x00B0C070
 MathTblCoord DAT_00B0C070;
+
+// GLOBAL: GAMEMD 0xB0F5B8 -- the registry of super weapons that carry an animation.
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F5B8;
+
+// CDTimerClass::Resume as retail inlined it into SetCharge: restart the clock if it was
+// stopped. (Pause is not defined here: plain Pause scores 50.9% in SetOnHold, which stays unmatched.)
+inline void CDTimerClass::Resume()
+{
+    if (this->StartTime == -1) {
+        this->StartTime = CurrentFrame;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6CB2E0
+// Let go of the animation and take the super weapon off the list, once per reason it was on it.
+void SuperClass::FUN_006CB2E0()
+{
+    if (Animation) {
+        Animation->RemainingIterations = 0;
+        Animation = 0;
+        DAT_00B0F5B8.RemoveItem(this);
+    }
+    if (AnimationGotInvalid) {
+        DAT_00B0F5B8.RemoveItem(this);
+        AnimationGotInvalid = 0;
+    }
+}
 
 // FUNCTION: GAMEMD 0x6CB7B0  SuperClass::Lose (__thiscall)
 // Take a superweapon away from its house: clear both state flags and pull it
@@ -109,6 +141,32 @@ void SuperClass::SetReadiness(bool ready)
 // FUNCTION: GAMEMD 0x006CC070
 void FUN_006CC070()
 {
+}
+
+// FUNCTION: GAMEMD 0x6CC1E0  SuperClass::SetCharge (__thiscall, ret 0x4)
+//
+// Sets the recharge progress to a percentage (0..100) of the full recharge
+// time. The remaining frames are the recharge time less the charged fraction
+// ((int)(percentage * 0.01f * rechargeTime), the __ftol call); a remainder of
+// zero also marks the weapon ready. The clock is resumed if it was stopped and
+// then replaced wholesale by a fresh CDTimerClass(remaining) -- a 12-byte copy
+// whose middle dword is the temporary's uninitialised CurrentTime slot.
+//
+// The explicit parentheses are load-bearing: `percentage * 0.01f * rechargeTime`
+// unparenthesised makes VC6 emit FILD; FIMUL rechargeTime; FMUL 0.01f (90.0%),
+// while `(percentage * 0.01f) * rechargeTime` gives retail's FILD; FMUL 0.01f;
+// FIMUL rechargeTime.
+void SuperClass::SetCharge(int percentage)
+{
+    if (this->IsPresent && percentage >= 0 && percentage <= 100) {
+        int rechargeTime = this->GetRechargeTime();
+        int remaining = rechargeTime - (int)((percentage * 0.01f) * rechargeTime);
+        if (remaining == 0) {
+            this->IsReady = true;
+        }
+        this->RechargeTimer.Resume();
+        this->RechargeTimer = CDTimerClass(remaining);
+    }
 }
 
 // FUNCTION: GAMEMD 0x6CC260  SuperClass::GetRechargeTime (__thiscall)
@@ -218,8 +276,6 @@ bool SuperClass::ShouldDrawProgress() const
     return !IsReady;
 }
 
-// GLOBAL: GAMEMD 0xB0F5B8 -- the registry of super weapons that carry an animation.
-extern DynamicVectorClass<AbstractClass*> DAT_00B0F5B8;
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;
 

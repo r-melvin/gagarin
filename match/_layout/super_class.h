@@ -36,6 +36,8 @@ public:
     virtual int vf_12();                                    // slot12 0x6CE210
     virtual int __stdcall vf_rtti_3();                      // +4 table slot3 0x6CE1F0
     virtual void vf_13(Obj_004A1D30* crc);                  // slot13 0x6CE020
+    // FUNCTION: GAMEMD 0x6CB2E0
+    void FUN_006CB2E0();
     // FUNCTION: GAMEMD 0x6CB4D0
     bool SetOnHold(bool onHold);
     // FUNCTION: GAMEMD 0x6CB560 (decl; reloc)
