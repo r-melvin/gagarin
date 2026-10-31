@@ -8,7 +8,7 @@
    "vtable": 70
   },
   "duplicate_definitions": 0,
-  "objects": 1601,
+  "objects": 1584,
   "unresolved": 6409
  },
  "m1": {
@@ -157,9 +157,9 @@
   }
  ],
  "snapshots": {
-  "m0": "40abad06",
-  "m1": "40abad06",
+  "m0": "9dab2273",
+  "m1": "9dab2273",
   "m2": "ac2bd917",
-  "m3": "40abad06"
+  "m3": "9dab2273"
  }
 }
