@@ -65,6 +65,13 @@ void __stdcall FUN_005AE580(int a1)
 {
 }
 
+// FUNCTION: GAMEMD 0x5AE5E0
+Matrix3D& Matrix3D::FUN_005AE5E0(const Matrix3D& source)
+{
+    *this = source;
+    return *this;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5AE860  (__thiscall)
 // Reset to the identity transform. Retail is fully unrolled: 1.0f's bit
