@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/map_0087f7e8.h"
 
 struct Arg1_006E0ED0;
 struct Arg1_006E3300;
@@ -41,13 +42,12 @@ struct Obj_006E3890;
 struct Obj_006E3B40;
 struct Obj_006E4020;
 
-// GLOBAL: GAMEMD 0x87F7E8
-extern char DAT_0087F7E8[];
+// GLOBAL: GAMEMD 0x87F7E8 -- the one shared Map_0087F7E8 (declared in the layout header).
 // GLOBAL: GAMEMD 0xA83D10
 extern char DAT_00A83D10[];
 
 // FUNCTION: GAMEMD 0x577C90 (declaration)
-void FUN_00577C90(void*, int, int);
+void FUN_00577C90(Map_0087F7E8*, int, int);
 // FUNCTION: GAMEMD 0x5BF390 (declaration)
 void FUN_005BF390(int, bool);
 // FUNCTION: GAMEMD 0x65D8E0 (declaration)

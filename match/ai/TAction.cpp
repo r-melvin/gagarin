@@ -44,6 +44,11 @@
 #include <objidl.h>
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
+#include "taction_class_methods.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/gbl_0087f7e8.h"
+#include "../_layout/building_class.h"
+#include "../core/trivial_tu230_b_methods.h"
 
 // GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
 extern const CLSID DAT_007E9800;
@@ -158,6 +163,42 @@ double __cdecl FUN_004CADE0(double value);
 // SYNTHETIC: GAMEMD 0x6DCD70
 // GLOBAL: GAMEMD 0xB0E688
 double DAT_00B0E688 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
+// GLOBAL: GAMEMD 0xA8EB44 / 0xA8EB50 -- BuildingClass::Array items and count.
+extern BuildingClass** DAT_00A8EB44;
+extern int DAT_00A8EB50;
+
+// GLOBAL: GAMEMD 0x87F8E4 -- the map rectangle.
+extern Rect_4i DAT_0087F8E4;
+
+
+// FUNCTION: GAMEMD 0x006E21E0
+// Set the map rectangle from the action, then rebuild the map around it: refresh
+// every cell, recalculate the zones and tell every building to re-read the map.
+bool TActionClass::FUN_006E21E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_0087F8E4 = unknown_34;
+    DAT_0087F7E8.FUN_00655990();
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* c;
+    while ((c = DAT_0087F7E8.FUN_00578290()) != 0)
+        c->FUN_0047D2B0(-1);
+    DAT_0087F7E8.FUN_0056C510();
+    DAT_0087F7E8.FUN_00581F50();
+    DAT_0087F7E8.FUN_00657CE0();
+    for (int i = DAT_00A8EB50 - 1; i >= 0; i--)
+        DAT_00A8EB44[i]->vf_296(1);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2C20
+// Calls other functions.
+bool __stdcall FUN_006E2C20(int a1, int a2, int a3, int a4)
+{
+    DAT_0087F7E8.FUN_00588AC0();
+    DAT_0087F7E8.FUN_004F42F0(1);
+    return true;
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E47F0
@@ -876,7 +917,7 @@ bool Obj_006E2850::FUN_006E2850(int, int, int, int)
 // Calls other functions.
 bool FUN_006E2950(int a1, int a2, int a3, int a4, int a5, int a6)
 {
-    FUN_00577C90(DAT_0087F7E8, a2, a3);
+    FUN_00577C90(&DAT_0087F7E8, a2, a3);
     return true;
 }
 
@@ -1859,4 +1900,6 @@ extern const double DAT_007F43B8 = 60.0;
 extern const CLSID DAT_007E9800 = {0x4F0EC392, 0x0A55, 0x11D2, {0xAC, 0xA7, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
 // GLOBAL: GAMEMD 0x7F43C0
 extern const double DAT_007F43C0 = 0.017453292519943295;
+// GLOBAL: GAMEMD 0x87F8E4
+Rect_4i DAT_0087F8E4;
 // END defined globals
