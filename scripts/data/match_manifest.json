@@ -83238,7 +83238,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu048_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x4790A0",
   "sym": "?FUN_004790A0@Obj_004790A0@@QAEXXZ",
   "len": "0xd",
@@ -137095,7 +137095,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_cd_ctors_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x47A9D0",
   "sym": "??0CDFileClass@@QAE@PBD@Z",
   "len": "0x24",
@@ -137104,7 +137104,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_cd_ctors_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x47AA00",
   "sym": "??0CDFileClass@@QAE@ABVWstring@@@Z",
   "len": "0x29",
@@ -137113,7 +137113,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_cd_ctors_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x47AA30",
   "sym": "??0CDFileClass@@QAE@XZ",
   "len": "0x16",
@@ -140371,7 +140371,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/cd_volume_ioctl_r14_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x479900",
   "sym": "?FUN_00479900@@YGPAXD@Z",
   "len": "0xa1",
@@ -140380,7 +140380,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/cd_volume_ioctl_r14_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x4799D0",
   "sym": "?FUN_004799D0@@YG_NPAX@Z",
   "len": "0x65",
@@ -140389,7 +140389,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/cd_volume_ioctl_r14_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x479A40",
   "sym": "?FUN_00479A40@@YG_NPAX@Z",
   "len": "0x65",
@@ -140398,7 +140398,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/cd_volume_ioctl_r14_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x479AB0",
   "sym": "?FUN_00479AB0@@YG_NPAX@Z",
   "len": "0x45",
@@ -140407,7 +140407,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/cd_volume_ioctl_r14_methods.cpp",
+  "tu": "match/platform/CD.cpp",
   "addr": "0x479B00",
   "sym": "?FUN_00479B00@@YG_NPAX_N@Z",
   "len": "0x50",

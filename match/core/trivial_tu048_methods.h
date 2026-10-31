@@ -12,7 +12,7 @@
 struct Obj_004790A0;
 
 // GLOBAL: GAMEMD 0x89E414
-extern int DAT_0089E414;
+extern unsigned int DAT_0089E414;
 
 // FUNCTION: GAMEMD 0x4A80D0 (declaration)
 void FUN_004A80D0(int, Obj_004790A0*);

@@ -43,6 +43,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/global_0081c1d0.h"
 #include <stddef.h>
+#include "../core/trivial_tu048_methods.h"
+#include "../core/string_class.h"
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 
@@ -132,6 +134,7 @@ struct PreventRemoval
     BYTE Prevent;
 };
 
+#define INVALID_HANDLE_VALUE ((HANDLE)-1)
 #define MAKEWORD(a, b) ((WORD)(((BYTE)(a)) | ((WORD)((BYTE)(b))) << 8))
 
 class CDDriveControl
@@ -410,6 +413,13 @@ wchar_t* CCToolTip::GetToolTipText(unsigned int id)
     return MapInstance_0087F7E8.FUN_006D1800(id);
 }
 
+// FUNCTION: GAMEMD 0x4790A0
+// Tail-calls a method on a member object.
+void Obj_004790A0::FUN_004790A0()
+{
+    FUN_004A80D0(DAT_0089E414, this);
+}
+
 // FUNCTION: GAMEMD 0x004790E0 (44 bytes, ending RET 4)
 bool CD_004790E0::FUN_004790E0(int value)
 {
@@ -485,6 +495,87 @@ void CDDriveControl::FUN_00479740(char drive)
         Sleep(500);
     }
     CloseHandle(device);
+}
+
+// FUNCTION: GAMEMD 0x479900
+// Open the drive `drive` (0 = A:) as a raw volume: removable and CD drives only, the former
+// for read and write, the latter read-only. Returns INVALID_HANDLE_VALUE on failure.
+HANDLE __stdcall FUN_00479900(char drive)
+{
+    char root[8];
+    char device[8];
+    sprintf(root, "%c:\\", drive + 'A');
+    unsigned type = GetDriveTypeA(root);
+    DWORD access;
+    switch (type) {
+    case 2:
+        access = 0xC0000000;
+        break;
+    case 5:
+        access = 0x80000000;
+        break;
+    default:
+        FUN_004068E0("Attempt to open non-removable volume for locking or ejection\n");
+        return INVALID_HANDLE_VALUE;
+    }
+    sprintf(device, "\\\\.\\%c:", drive + 'A');
+    HANDLE handle = CreateFileA(device, access, 3, 0, 3, 0, 0);
+    if (handle == INVALID_HANDLE_VALUE)
+        FUN_004068E0("Unable to open drive %c: for ejection\n", drive + 'A');
+    return handle;
+}
+
+// FUNCTION: GAMEMD 0x4799D0
+// Lock the volume (FSCTL_LOCK_VOLUME), retrying up to twenty times half a second apart.
+bool __stdcall FUN_004799D0(HANDLE volume)
+{
+    for (int attempt = 0; attempt < 20; attempt++) {
+        DWORD returned;
+        int ok = DeviceIoControl(volume, 0x90018, 0, 0, 0, 0, &returned, 0);
+        if (ok)
+            return true;
+        FUN_004068E0("DeviceIoControl failed to lock volume. Error %d - %s\n", GetLastError(), ok);
+        Sleep(500);
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x479A40
+// Unlock the volume (FSCTL_UNLOCK_VOLUME) with the same retry loop.
+bool __stdcall FUN_00479A40(HANDLE volume)
+{
+    for (int attempt = 0; attempt < 20; attempt++) {
+        DWORD returned;
+        int ok = DeviceIoControl(volume, 0x9001C, 0, 0, 0, 0, &returned, 0);
+        if (ok)
+            return true;
+        FUN_004068E0("DeviceIoControl failed to unlock volume. Error %d - %s\n", GetLastError(), ok);
+        Sleep(500);
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x479AB0
+// Dismount the volume (FSCTL_DISMOUNT_VOLUME); one attempt.
+bool __stdcall FUN_00479AB0(HANDLE volume)
+{
+    DWORD returned;
+    bool ok = DeviceIoControl(volume, 0x90020, 0, 0, 0, 0, &returned, 0) != 0;
+    if (!ok)
+        FUN_004068E0("DeviceIoControl failed to dismount volume. Error %d - %s\n", GetLastError(), 0);
+    return ok;
+}
+
+// FUNCTION: GAMEMD 0x479B00
+// Allow or prevent media removal (IOCTL_STORAGE_MEDIA_REMOVAL); one attempt.
+bool __stdcall FUN_00479B00(HANDLE volume, bool prevent)
+{
+    DWORD returned;
+    unsigned char request = prevent;
+    bool ok = DeviceIoControl(volume, 0x2D4804, &request, 1, 0, 0, &returned, 0) != 0;
+    if (!ok)
+        FUN_004068E0("DeviceIoControl failed to prevent media removal. Error %d - %s\n", GetLastError(), 0);
+    return ok;
 }
 
 // FUNCTION: GAMEMD 0x479BA0
@@ -767,6 +858,24 @@ bool __stdcall CDDriveControl::FUN_0047a6f0(CDDriveControl* self, HANDLE device,
         Sleep(1000);
     } while (retries > 0);
     return false;
+}
+
+// FUNCTION: GAMEMD 0x47A9D0
+CDFileClass::CDFileClass(const char* pFileName) : IsDisabled(false)
+{
+    CDFileClass::SetFileName(pFileName);
+}
+
+// FUNCTION: GAMEMD 0x47AA00
+CDFileClass::CDFileClass(const Wstring& name) : IsDisabled(false)
+{
+    const char* filename = name.FUN_007B5440();
+    CDFileClass::SetFileName(filename);
+}
+
+// FUNCTION: GAMEMD 0x47AA30
+CDFileClass::CDFileClass() : IsDisabled(false)
+{
 }
 
 // FUNCTION: GAMEMD 0x47AAB0  CDFileClass::Open (__thiscall)
