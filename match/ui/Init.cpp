@@ -1,8 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /GR /DNDEBUG /Gy /MT
-// Placement lead: matched rows hold under the project /Ob2 default, but partial rows: 0x532150 (61.2% -> 2.5%: IndexClassC and the command constructors are expanded)
-// regress under it, so a definition they can see probably lived in another original file.
 //   Original translation unit Init.CPP. The name is the source-file string at 0x825fb8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x52c52d inside this object's
 //   code range (0x52b7c0-0x53910f). Functions are in ascending retail address order.
@@ -54,6 +51,8 @@
 
 #include "../core/empty_function_family_methods.h"
 #include "../_layout/session_class.h"
+#include "../core/header_init_shapes.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include "../core/pair_vector_grow_sweep.h"
 
@@ -2963,6 +2962,17 @@ bool GrowPairVector::Grow_538B80(int extra)
 fail:
     return false;
 }
+
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CADE0(double value);
+
+// SYNTHETIC: GAMEMD 0x538C20
+// GLOBAL: GAMEMD 0xA8F908
+MathTblZero4 DAT_00A8F908;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538D40

@@ -122191,9 +122191,9 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_538c20.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538C20",
-  "sym": "_$E2",
+  "sym": "_$E6",
   "len": "0x17",
   "name": "dynamic initializer (DAT_00A8F908)",
   "status": "matched",
