@@ -95,6 +95,8 @@
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
+#include "../core/header_init_shapes.h"
+#include "../core/mathtbl_init_shapes.h"
 
 #include "../core/empty_function_family_methods.h"
 
@@ -665,6 +667,17 @@ template class VectorClass<MSSfxEntry*>;
 // VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>.
 // VTABLE: GAMEMD 0x007EEB54 -- DynamicVectorClass<Point2D>.
 template class VectorClass<Point2D>;
+
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CADE0(double value);
+
+// SYNTHETIC: GAMEMD 0x5D1A80
+// GLOBAL: GAMEMD 0xABFBC0
+MathTblZero4 DAT_00ABFBC0;
 
 // FUNCTION: GAMEMD 0x005D2720
 // FUNCTION: GAMEMD 0x005D2750
