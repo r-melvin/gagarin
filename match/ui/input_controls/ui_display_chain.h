@@ -1277,6 +1277,9 @@ public:
 
     // FUNCTION: GAMEMD 0x5BDA40 (native constructor)
     MouseClass();
+
+    // FUNCTION: GAMEMD 0x5BDB90 (decl; reloc) -- RET 8, ECX (the map object) unused: a cursor-table row lookup.
+    int FUN_005BDB90(int index, bool alternate);
 };
 GG_STATIC_ASSERT(offsetof(MouseClass, CursorFlag) == 0x555C);
 GG_STATIC_ASSERT(offsetof(MouseClass, CursorIndex) == 0x5560);

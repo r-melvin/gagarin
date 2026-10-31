@@ -592,6 +592,20 @@ int FUN_00731CC0()
     return (int)&DAT_00000016;
 }
 
+// FUNCTION: GAMEMD 0x731CD0
+// Calls other functions.
+void __cdecl FUN_00731CD0()
+{
+    Map_0087F7E8.FUN_005BDB90(0x4D, 0);
+}
+
+// FUNCTION: GAMEMD 0x731CE0
+// Calls other functions.
+void __cdecl FUN_00731CE0()
+{
+    Map_0087F7E8.FUN_005BDB90(0x4C, 0);
+}
+
 // FUNCTION: GAMEMD 0x731CF0
 // Stores to a global.
 void __cdecl FUN_00731CF0()
