@@ -12,6 +12,7 @@
 #include "../ui/ui_updated_methods.h"
 #include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
+#include <string.h>
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -180,6 +181,32 @@ void PhoneBookDialog_006316E0::FUN_00631B20()
     if (item) {
         SendMessageA(item, 0xF1, !own, 0);
     }
+}
+
+// LIBRARY: GAMEMD 0x7CA5D3 (decl; reloc) -- CRT wcscmp.
+extern "C" int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
+
+// A list entry: a wide display name at +0x70 and a narrow key at +0x9A.
+struct NameEntry_00631C10
+{
+    char    unknown_00[0x70];
+    wchar_t DisplayName[21];   // +0x70
+    char    Key[1];            // +0x9A
+};
+GG_STATIC_ASSERT(offsetof(NameEntry_00631C10, DisplayName) == 0x70);
+GG_STATIC_ASSERT(offsetof(NameEntry_00631C10, Key) == 0x9A);
+
+// FUNCTION: GAMEMD 0x631C10
+// Order two entries by display name, then by key (qsort comparator over entry pointers).
+int __cdecl CompareNameEntries_00631C10(NameEntry_00631C10** a, NameEntry_00631C10** b)
+{
+    NameEntry_00631C10* left = *a;
+    NameEntry_00631C10* right = *b;
+    int result = wcscmp(left->DisplayName, right->DisplayName);
+    if (result != 0) {
+        return result;
+    }
+    return strcmp(left->Key, right->Key);
 }
 
 // BEGIN defined globals (define_globals.py)
