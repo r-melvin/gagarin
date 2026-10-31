@@ -73,6 +73,22 @@ LoadOptionsClass::~LoadOptionsClass()
     Entries.Clear();
 }
 
+// The Win32 file-delete import. Retail calls it indirectly through the IAT
+// (`call dword ptr [__imp__DeleteFileA@4]`); declaring it dllimport makes our
+// cl emit the identical `ff 15` form (reloc-normalised by the differ).
+extern "C" __declspec(dllimport) int __stdcall DeleteFileA(const char* lpFileName);
+
+// FUNCTION: GAMEMD 0x5587F0  (__thiscall)
+// Open the savegame browser in Load mode: set Mode=Load, clear the Save
+// Description, then tail-call the shared dialog worker (0x558DD0), whose bool
+// result becomes ours.
+bool LoadOptionsClass::LoadDialog()
+{
+    this->Mode = LOM_Load;
+    this->Description = 0;
+    return this->ProcessDialog();
+}
+
 // FUNCTION: GAMEMD 0x558810
 // Load dialog entry: mode 2 with the given description, or the current scenario's name when none is given.
 char LoadOptionsClass::FUN_00558810(const wchar_t* a1)
@@ -95,6 +111,8 @@ char LoadOptionsClass::FUN_00558810(const wchar_t* a1)
 // canonical header declares them yet).
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/load_options_class.h"
+#include <windows.h>
 
 // GLOBAL: GAMEMD 0x7ED2D0
 extern const double DAT_007ED2D0;
@@ -117,6 +135,20 @@ extern double DAT_00ABCC18;
 
 GG_STATIC_ASSERT(sizeof(DAT_00ABCC30) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00ABCC18) == 8);
+
+struct SavedGameEntry_00559D30 {
+    char unknown_00[0x1AC];
+    FILETIME LastWrite;   // +0x1AC
+};
+GG_STATIC_ASSERT(offsetof(SavedGameEntry_00559D30, LastWrite) == 0x1AC);
+
+// FUNCTION: GAMEMD 0x559D30
+int __cdecl FUN_00559D30(SavedGameEntry_00559D30** a, SavedGameEntry_00559D30** b)
+{
+    const FILETIME* left = &(*a)->LastWrite;
+    const FILETIME* right = &(*b)->LastWrite;
+    return -CompareFileTime(left, right);
+}
 
 // FUNCTION: GAMEMD 0x559D60
 // Runs the loading dialog around the game load: the cursor count is saved, the dialog shown, and the
@@ -153,6 +185,18 @@ bool LoadOptionsClass::Slot2(const char* fileName, const wchar_t* description)
     if (dialog)
         MenusEndDialog(dialog);
     return ok;
+}
+
+// FUNCTION: GAMEMD 0x559EB0  (__thiscall, vtable slot 3; ECX unused)
+// Delete one savegame file; report success only when DeleteFileA returns
+// exactly 1 (TRUE).
+bool LoadOptionsClass::DeleteMission(const char* pFilename)
+{
+    // Bind the comparison to a bool local so cl emits the lean `cmp eax,1;
+    // sete al` tail (retail's exact form) instead of the branchless
+    // dec/neg/sbb/inc equality idiom it picks when `== 1` is returned inline.
+    bool succeeded = (DeleteFileA(pFilename) == 1);
+    return succeeded;
 }
 
 // FUNCTION: GAMEMD 0x559ED0

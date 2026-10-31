@@ -29220,7 +29220,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/load_options_class_methods.cpp",
+  "tu": "match/ui/LoadDlg.cpp",
   "addr": "0x5587F0",
   "sym": "?LoadDialog@LoadOptionsClass@@QAE_NXZ",
   "len": "0x13",
@@ -29229,7 +29229,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/load_options_class_methods.cpp",
+  "tu": "match/ui/LoadDlg.cpp",
   "addr": "0x559EB0",
   "sym": "?DeleteMission@LoadOptionsClass@@UAE_NPBD@Z",
   "len": "0x14",
@@ -141514,7 +141514,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/w2_load_list_compare_r15.cpp",
+  "tu": "match/ui/LoadDlg.cpp",
   "addr": "0x559D30",
   "sym": "?FUN_00559D30@@YAHPAPAUSavedGameEntry_00559D30@@0@Z",
   "len": "0x22",
