@@ -25,6 +25,8 @@
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
+#include <math.h>
+#include "../core/header_init_shapes.h"
 
 #include "../core/position_below_limit_family_methods.h"
 
@@ -90,6 +92,23 @@ GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, CapacityIncrement
 
 GG_STATIC_ASSERT(sizeof(GraphicMenuItem*) == 4);
 
+// GLOBAL: GAMEMD 0x7E1708
+const double DAT_007E1708 = 2.0;
+// GLOBAL: GAMEMD 0x7E1710
+const double DAT_007E1710 = 256.0;
+// GLOBAL: GAMEMD 0x7EA5E8 -- degrees to radians
+const double DAT_007EA5E8 = 0.017453292519943295;
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CADE0(double value);
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
+double __cdecl FUN_004CAC40(double value);
+
+// SYNTHETIC: GAMEMD 0x4F0EF0
+// GLOBAL: GAMEMD 0xA8EE00
+double DAT_00A8EE00 = FUN_004CAC40(pow(DAT_007E1710, DAT_007E1708) * 2);
+
 // SYNTHETIC: GAMEMD 0x004F0F20
 // dynamic initializer for DAT_00A8EE70
 // GLOBAL: GAMEMD 0x00A8EE70
@@ -102,6 +121,42 @@ double DAT_00A8EE58 = 1.0 / DAT_00A8EE70;
 
 GG_STATIC_ASSERT(sizeof(DAT_00A8EE70) == 8);
 GG_STATIC_ASSERT(sizeof(DAT_00A8EE58) == 8);
+
+// SYNTHETIC: GAMEMD 0x4F0F60
+// GLOBAL: GAMEMD 0xA8EE50
+double DAT_00A8EE50 = DAT_007EA5E8 * 45.0;
+
+// SYNTHETIC: GAMEMD 0x4F0F80
+// GLOBAL: GAMEMD 0xA8EE08
+double DAT_00A8EE08 = DAT_007EA5E8 * 60.0;
+
+// SYNTHETIC: GAMEMD 0x4F0FA0
+// GLOBAL: GAMEMD 0xA8EDE0
+double DAT_00A8EDE0 = DAT_007EA5E8 * 90.0;
+
+// SYNTHETIC: GAMEMD 0x4F0FC0
+// GLOBAL: GAMEMD 0xA8EE78
+int DAT_00A8EE78 = (int)(FUN_004CAD50(DAT_00A8EDE0 - DAT_00A8EE08) * DAT_00A8EE00 * 0.5);
+
+// SYNTHETIC: GAMEMD 0x4F1000
+// GLOBAL: GAMEMD 0xA8EE10
+double DAT_00A8EE10 = FUN_004CADE0(DAT_00A8EE78 * 0.00390625);
+
+// SYNTHETIC: GAMEMD 0x4F1030
+// GLOBAL: GAMEMD 0xA8EE28
+double DAT_00A8EE28 = FUN_004CADE0((DAT_00A8EE78 * 2) / DAT_00A8EE00);
+
+// SYNTHETIC: GAMEMD 0x4F1060
+// GLOBAL: GAMEMD 0xA8EE6C
+int DAT_00A8EE6C = (int)(DAT_00A8EE78 * 4 + 0.5);
+
+// SYNTHETIC: GAMEMD 0x4F1090
+// GLOBAL: GAMEMD 0xA8EDFC
+HeaderCellInit DAT_00A8EDFC(0, 0);
+
+// SYNTHETIC: GAMEMD 0x4F10A0
+// GLOBAL: GAMEMD 0xA8EE18
+HeaderCoordInit DAT_00A8EE18(0, 0, 0);
 
 // SYNTHETIC: GAMEMD 0x004F10C0
 // GLOBAL: GAMEMD 0x00A8EE60
