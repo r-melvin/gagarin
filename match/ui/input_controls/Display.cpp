@@ -89,6 +89,11 @@ inline CellStruct CellStructSum(const CellStruct& a, const CellStruct& b)
 // canonical header declares them yet).
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
+#include "../../core/scenario_class_methods.h"
+#include "../../map/map_class_beacon_mode_methods.h"
+#include "../../map/map_class_mode_methods.h"
+#include "../../map/map_class_sublocation_methods.h"
+#include "../display_class_submit_methods.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -324,6 +329,26 @@ void DisplayClass::FUN_004A9650(const CellStruct* cell, bool set)
 void DisplayClass::vf_10(int* key, Point2D* where)
 {
     GScreenClass::vf_10(key, where);
+}
+
+// FUNCTION: GAMEMD 0x4A9720  DisplayClass::Submit (__thiscall, ret 0x4)
+// Put an object into its draw layer. An object already filed somewhere is
+// pulled out first, an object that belongs nowhere (-1) is dropped, and only a
+// successful insert updates the remembered layer. Layer 2 is the sorted one.
+void DisplayClass::Submit(ObjectClass* object)
+{
+    if (object == 0)
+        return;
+
+    if (object->LastLayer != -1)
+        Remove(object);
+
+    int layer = object->vf_30();
+    if (layer == -1)
+        return;
+
+    if (DisplayLayers[layer].AddObject(object, layer == 2))
+        object->LastLayer = layer;
 }
 
 // FUNCTION: GAMEMD 0x4A9840
@@ -1342,6 +1367,44 @@ void DisplayClass::vf_47(const Point2D* where)
     }
 }
 
+// FUNCTION: GAMEMD 0x4AC660  MapClass::SetSellMode (__thiscall, ret 0x4)
+void MapView_4AC660::SetSellMode(int mode)
+{
+    bool want = SellMode;
+
+    switch (mode) {
+    case -1:
+        want = !SellMode;
+        break;
+    case 0:
+        want = false;
+        break;
+    case 1:
+        want = (bool)mode;
+        break;
+    }
+
+    if (want != SellMode && unknown_11A8 == 0)
+    {
+        Slot_48(0, 0);
+
+        RepairMode = false;
+        TogglePowerMode = false;
+        unknown_11B3 = false;
+        unknown_11B4 = false;
+
+        if (want && CurrentPlayer->OwnedBuildings > 0)
+        {
+            SellMode = true;
+            ModeEntered();
+            return;
+        }
+
+        SellMode = false;
+        Slot_50();
+    }
+}
+
 // FUNCTION: GAMEMD 0x4AC700  MapClass::SetWaypointMode (__thiscall, ret 0x8)
 //
 // The waypoint cursor-mode setter, same tri-state as the sell/repair/power
@@ -1403,6 +1466,170 @@ void Map_004AC700::SetWaypointMode(int mode, bool somebool)
             (DAT_00887640->*DAT_00887640->Vtbl->At_10)();
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x4AC820  MapClass::SetTogglePowerMode (__thiscall, ret 0x4)
+void MapView_4AC660::SetTogglePowerMode(int mode)
+{
+    bool want = TogglePowerMode;
+
+    switch (mode) {
+    case -1:
+        want = !TogglePowerMode;
+        break;
+    case 0:
+        want = false;
+        break;
+    case 1:
+        want = (bool)mode;
+        break;
+    }
+
+    if (want != TogglePowerMode && unknown_11A8 == 0)
+    {
+        Slot_48(0, 0);
+
+        RepairMode = false;
+        SellMode = false;
+        unknown_11B3 = false;
+        unknown_11B4 = false;
+
+        if (want && CurrentPlayer->OwnedBuildings > 0)
+        {
+            TogglePowerMode = true;
+            ModeEntered();
+            return;
+        }
+
+        TogglePowerMode = false;
+        Slot_50();
+    }
+}
+
+// FUNCTION: GAMEMD 0x4AC8C0  MapClass::SetRepairMode (__thiscall, ret 0x4)
+void MapView_4AC660::SetRepairMode(int mode)
+{
+    bool want = RepairMode;
+
+    switch (mode) {
+    case -1:
+        want = !RepairMode;
+        break;
+    case 0:
+        want = false;
+        break;
+    case 1:
+        want = (bool)mode;
+        break;
+    }
+
+    if (want != RepairMode && unknown_11A8 == 0)
+    {
+        SellMode = false;
+        TogglePowerMode = false;
+        unknown_11B3 = false;
+        unknown_11B4 = false;
+
+        Slot_48(0, 0);
+
+        if (want && CurrentPlayer->OwnedBuildings > 0)
+        {
+            RepairMode = true;
+            ModeEntered();
+            return;
+        }
+
+        RepairMode = false;
+        Slot_50();
+    }
+}
+
+// FUNCTION: GAMEMD 0x4AC960  MapClass::SetPlaceBeaconMode (__thiscall, ret 0x4)
+//
+// The fourth cursor-mode setter, same tri-state as the sell/repair/power
+// ones (-1 toggles, 0 clears, 1 sets, anything else leaves it alone). It
+// differs in its gate: entering the mode is refused unless the beacon manager
+// says the local player may still place one, and that check runs *before* the
+// other four flags are cleared and the +0x48 slot is called, whereas the
+// others test the player's counter after.
+//
+// The starting value of the wanted flag is read from RepairMode (+0x11B0),
+// not from PlaceBeaconMode (+0x11B4): retail's `MOV BL,[ESI+0x11B0]` at
+// entry against `CMP BL,[ESI+0x11B4]` after the switch. That is almost
+// certainly a copy-paste slip in the original (the sibling setters seed from
+// their own flag), but it is what the bytes say, and it is why there is no
+// CSE copy here where the siblings keep one: the two reads are of different
+// members. Seeding from PlaceBeaconMode was the only reason this sat at 10.7%.
+void MapView_4AC960::SetPlaceBeaconMode(int mode)
+{
+    bool want = RepairMode;
+
+    switch (mode) {
+    case -1:
+        want = !want;
+        break;
+    case 0:
+        want = false;
+        break;
+    case 1:
+        want = (bool)mode;
+        break;
+    }
+
+    if (want != PlaceBeaconMode && unknown_11A8 == 0)
+    {
+        if (want && !BeaconManager.CanPlaceBeacon(CurrentPlayer->ArrayIndex)) {
+            want = false;
+        }
+
+        SellMode = false;
+        TogglePowerMode = false;
+        unknown_11B3 = false;
+        RepairMode = false;
+
+        Slot_48(0, 0);
+
+        if (want)
+        {
+            PlaceBeaconMode = true;
+            ModeEntered();
+            return;
+        }
+
+        PlaceBeaconMode = false;
+        Slot_50();
+    }
+}
+
+// FUNCTION: GAMEMD 0x4ACA10
+//
+// Pick the infantry sub-cell position nearest a coordinate. Looks up the cell
+// under the coordinate on the map singleton (not on `this`, which is never
+// read), decides whether the coordinate is on the cell's bridge (the cell
+// carries one and Z is at or above four levels over the ground), and hands the
+// search to the cell.
+//
+// Returned by value through the hidden 12-byte result slot; the callee's own
+// result lands in a temporary and is copied out through the pointer the callee
+// returns (`MOV EDX,EAX` then three dword pairs off EDX), which is what a bare
+// `return callee(...)` of a by-value struct produces.
+//
+// The bridge test is passed as the argument expression itself: bound to a bool
+// local first, VC6 spills it to a stack byte and reloads it (51.3%); inline it
+// materialises the 0/1 in ECX (`MOV ECX,1 / XOR ECX,ECX`) as retail does.
+// The copy-out tail is sensitive to the receiver: as a `static __stdcall`
+// function with the same stack shape the two `MOV ECX,EAX` / `POP ESI` slots
+// swap with the neighbouring loads (89.7%); as a __thiscall member they match.
+// Naming the result (`CoordStruct r = ...; return r;`) copies through a second
+// local (10.0%), and a pointer-returning callee dereferenced on return is the
+// same 89.7% under __stdcall.
+CoordStruct MapClass::PickInfantrySublocation(const CoordStruct& coords, bool ignoreContents)
+{
+    CellClass* cell = DAT_0087F7E8.GetCellAt(coords);
+
+    return cell->FindInfantrySubposition(coords, ignoreContents,
+        (cell->Flags & 0x100) != 0 && coords.Z >= (cell->Level + 4) * DAT_008A0740,
+        false);
 }
 
 // FUNCTION: GAMEMD 0x4ACAC0
@@ -1832,6 +2059,22 @@ void DisplayClass::FUN_004ADFF0(bool skipBuildings, int arg)
     }
 }
 
+// FUNCTION: GAMEMD 0x4AE4C0  (static)
+// Walk every cell of the map via the spiral iterator and recompute its tinted
+// lighting. Iterator begin @0x578350 primes the walk; next @0x578290 returns
+// each CellClass* (NULL terminates); 0x484680 is the per-cell recalc.
+void ScenarioClass::UpdateCellLighting()
+{
+    MapInstance.IteratorBegin_578350();
+
+    CellClass* cell = MapInstance.IteratorNext_578290();
+    while (cell != 0)
+    {
+        cell->RecalcAttributes_484680();
+        cell = MapInstance.IteratorNext_578290();
+    }
+}
+
 // FUNCTION: GAMEMD 0x4AE4F0
 const wchar_t* DisplayClass::vf_33(int id)
 {
@@ -2007,4 +2250,6 @@ int DAT_00820030[3] = {2, 3, 4};
 extern const double DAT_007E6018 = 60.0;
 // GLOBAL: GAMEMD 0x8A03FC
 void* DisplayPlaceShape_008A03FC;
+// GLOBAL: GAMEMD 0x89C3B0
+BeaconManagerClass BeaconManager;
 // END defined globals

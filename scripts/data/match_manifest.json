@@ -10152,7 +10152,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/scenario_class_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AE4C0",
   "sym": "?UpdateCellLighting@ScenarioClass@@SIXXZ",
   "len": "0x2E",
@@ -23753,7 +23753,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_beacon_mode_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC960",
   "sym": "?SetPlaceBeaconMode@MapView_4AC960@@QAEXH@Z",
   "len": "0xa7",
@@ -23825,7 +23825,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_mode_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC660",
   "sym": "?SetSellMode@MapView_4AC660@@QAEXH@Z",
   "len": "0x98",
@@ -23834,7 +23834,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_mode_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC820",
   "sym": "?SetTogglePowerMode@MapView_4AC660@@QAEXH@Z",
   "len": "0x98",
@@ -23843,7 +23843,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_mode_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC8C0",
   "sym": "?SetRepairMode@MapView_4AC660@@QAEXH@Z",
   "len": "0x98",
@@ -23969,7 +23969,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_sublocation_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4ACA10",
   "sym": "?PickInfantrySublocation@MapClass@@QAE?AUCoordStruct@@ABU2@_N@Z",
   "len": "0x73",
@@ -28842,7 +28842,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/display_class_submit_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A9720",
   "sym": "?Submit@DisplayClass@@QAEXPAVObjectClass@@@Z",
   "len": "0x4D",
