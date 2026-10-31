@@ -570,12 +570,8 @@ SessionProfile_00697F10::SessionProfile_00697F10()
 extern unsigned int DAT_00B73E44[0x800];
 // GLOBAL: GAMEMD 0xB76338 -- observed written/read extent only.
 extern unsigned int DAT_00B76338[0x40];
-// GLOBAL: GAMEMD 0xB07740 -- observed written/read extent only.
-extern unsigned int DAT_00B07740;
-// GLOBAL: GAMEMD 0xB07744 -- observed written/read extent only.
-extern unsigned int DAT_00B07744;
-// GLOBAL: GAMEMD 0xB07748 -- observed written/read extent only.
-extern unsigned int DAT_00B07748;
+// GLOBAL: GAMEMD 0xB07740 -- the zeroed coordinate its initialiser (0x696ED0) clears; three reads below.
+extern MathTblZero3 DAT_00B07740;
 extern const char STR_0083EEAC[]; // STRING: GAMEMD 0x83EEAC (decl; reloc)
 extern const char STR_00889F64[]; // STRING: GAMEMD 0x889F64 (decl; reloc)
 
@@ -695,9 +691,9 @@ SessionClass::SessionClass()
     unknown_30B0 = 0;
     unknown_30B4 = 0;
     // Preserve three global reads, even though initial image values are zero.
-    unknown_30B8 = DAT_00B07740;
-    unknown_30BC = DAT_00B07744;
-    unknown_30C0 = DAT_00B07748;
+    unknown_30B8 = DAT_00B07740.X;
+    unknown_30BC = DAT_00B07740.Y;
+    unknown_30C0 = DAT_00B07740.Z;
     unknown_30C8 = 0; // Second native write retained.
     unknown_30CC = 0;
     unknown_30D0 = 0;
