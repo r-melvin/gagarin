@@ -66,6 +66,7 @@
 #include "../sidebar_class_repaint_methods.h"
 #include "../sidebar_class_scroll_methods.h"
 #include "../sidebar_class_tab_methods.h"
+#include "sidebar_select_class.h"
 
 // FUNCTION: GAMEMD 0x5BF450 (decl; reloc) -- releases the pump list.
 void FUN_005BF450();
@@ -349,6 +350,55 @@ MathTblCoord DAT_00B0B388;
 // The vector deleting destructor is emitted when the array form of new is seen
 // for a class with a destructor; this helper does that and is itself dropped.
 static SidebarCameo* GgNewCameoArray(int n) { return new SidebarCameo[n]; }
+
+struct SidebarGadgetStatics {
+    // GLOBAL: GAMEMD 0x00B07E58
+    static SidebarSBGadgetClass SBGadget_00B07E58;
+};
+
+// SYNTHETIC: GAMEMD 0x006A4C10 -- initialiser of SBGadget_00B07E58
+// SYNTHETIC: GAMEMD 0x006A4C40 -- guarded exit stub of SBGadget_00B07E58
+SidebarSBGadgetClass SidebarGadgetStatics::SBGadget_00B07E58(0, 0, 1, 1, 8, 0);
+
+// Not a retail function. The retail unit allocates a ShapeButtonClass array earlier, which
+// instantiates the vector constructor/destructor helpers before these members are defined;
+// without that first use VC6 starts a second guard byte after the array member (so bits 8
+// and 0x10 would land in a new byte). This stand-in reproduces that ordering only.
+ShapeButtonClass* SidebarButtonArrayStandIn() { return new ShapeButtonClass[3]; }
+
+struct SidebarButtonStatics {
+    // GLOBAL: GAMEMD 0x00B07DF8
+    static ShapeButtonClass SellButton_00B07DF8;
+    // GLOBAL: GAMEMD 0x00B0B3A0
+    static ShapeButtonClass RepairButton_00B0B3A0;
+    // GLOBAL: GAMEMD 0x00B07C48
+    static ShapeButtonClass ButtonArray_00B07C48[4];
+    // GLOBAL: GAMEMD 0x00B0B328
+    static ShapeButtonClass Button_00B0B328;
+    // GLOBAL: GAMEMD 0x00B0B408
+    static ShapeButtonClass Button_00B0B408;
+    // GLOBAL: GAMEMD 0x00B07E80
+    static SidebarSelectClass SelectArray_00B07E80[240];
+};
+
+// SYNTHETIC: GAMEMD 0x006A4C60 -- initialiser of SellButton_00B07DF8
+// SYNTHETIC: GAMEMD 0x006A4C80 -- guarded exit stub of SellButton_00B07DF8
+ShapeButtonClass SidebarButtonStatics::SellButton_00B07DF8;
+// SYNTHETIC: GAMEMD 0x006A4CA0 -- initialiser of RepairButton_00B0B3A0
+// SYNTHETIC: GAMEMD 0x006A4CC0 -- guarded exit stub of RepairButton_00B0B3A0
+ShapeButtonClass SidebarButtonStatics::RepairButton_00B0B3A0;
+// SYNTHETIC: GAMEMD 0x006A4CE0 -- initialiser of ButtonArray_00B07C48
+// SYNTHETIC: GAMEMD 0x006A4D10 -- guarded exit stub of ButtonArray_00B07C48
+ShapeButtonClass SidebarButtonStatics::ButtonArray_00B07C48[4];
+// SYNTHETIC: GAMEMD 0x006A4D40 -- initialiser of Button_00B0B328
+// SYNTHETIC: GAMEMD 0x006A4D60 -- guarded exit stub of Button_00B0B328
+ShapeButtonClass SidebarButtonStatics::Button_00B0B328;
+// SYNTHETIC: GAMEMD 0x006A4D80 -- initialiser of Button_00B0B408
+// SYNTHETIC: GAMEMD 0x006A4DA0 -- guarded exit stub of Button_00B0B408
+ShapeButtonClass SidebarButtonStatics::Button_00B0B408;
+// SYNTHETIC: GAMEMD 0x006A4DC0 -- initialiser of SelectArray_00B07E80
+// SYNTHETIC: GAMEMD 0x006A4E10 -- guarded exit stub of SelectArray_00B07E80
+SidebarSelectClass SidebarButtonStatics::SelectArray_00B07E80[240];
 
 // SYNTHETIC: GAMEMD 0x6AC890
 // SidebarCameo::`vector deleting destructor'
@@ -1486,6 +1536,25 @@ void FUN_006A8B10(Obj_006A8B10* a1, int a2)
     FUN_004F42F0(DAT_0087F7E8, a2, 0);
 }
 
+// FUNCTION: GAMEMD 0x6AACB0
+SidebarSelectClass::SidebarSelectClass()
+    : ControlClass(0, 0, 0, 0x3C, 0x30, 0x19, 0), Owner(0), unknown_30(0)
+{
+}
+
+// FUNCTION: GAMEMD 0x6AACE0
+void SidebarSelectClass::FUN_006AACE0(SelectOwnerStrip* owner, int value)
+{
+    Owner = owner;
+    unknown_30 = value;
+}
+
+// SYNTHETIC: GAMEMD 0x6AC780 -- SidebarSelectClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.
+
+// SYNTHETIC: GAMEMD 0x6AC7A0 -- SidebarSBGadgetClass scalar deleting destructor, emitted by the compiler from the
+// virtual destructor where this TU seats the vtable.
+
 // Slot 31: click handling on a build entry: queues the production / hold / cancel /
 // place events, plays the EVA lines and keeps the build timer of the entry current;
 // super weapon entries (type 0x1F) arm or fire the weapon.
@@ -2140,3 +2209,4 @@ SidebarButton TabButtons_00B07C48[4];
 // GLOBAL: GAMEMD 0xB0B478
 int DAT_00B0B478;
 // END defined globals
+

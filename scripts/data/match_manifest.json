@@ -5029,7 +5029,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AC780",
   "sym": "??_GSidebarSelectClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -5038,7 +5038,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AC7A0",
   "sym": "??_GSidebarSBGadgetClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -128500,133 +128500,133 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4C60",
-  "sym": "_$E21",
+  "sym": "_$E31",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::SellButton_00B07DF8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4CA0",
-  "sym": "_$E26",
+  "sym": "_$E36",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::RepairButton_00B0B3A0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4CE0",
-  "sym": "_$E31",
+  "sym": "_$E41",
   "len": "0x29",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::ButtonArray_00B07C48)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4D40",
-  "sym": "_$E36",
+  "sym": "_$E46",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::Button_00B0B328)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4D80",
-  "sym": "_$E41",
+  "sym": "_$E51",
   "len": "0x16",
   "name": "ShapeButtonClass static member dynamic initializer (SidebarButtonStatics::Button_00B0B408)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4C80",
-  "sym": "_$E18",
+  "sym": "_$E28",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (SellButton_00B07DF8)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4CC0",
-  "sym": "_$E24",
+  "sym": "_$E34",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (RepairButton_00B0B3A0)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4D10",
-  "sym": "_$E29",
+  "sym": "_$E39",
   "len": "0x30",
   "name": "ShapeButtonClass static member guarded exit stub (ButtonArray_00B07C48)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4D60",
-  "sym": "_$E34",
+  "sym": "_$E44",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (Button_00B0B328)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4DA0",
-  "sym": "_$E39",
+  "sym": "_$E49",
   "len": "0x1f",
   "name": "ShapeButtonClass static member guarded exit stub (Button_00B0B408)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4C10",
-  "sym": "_$E9",
+  "sym": "_$E19",
   "len": "0x2c",
   "name": "dynamic initializer (SBGadget_00B07E58)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4C40",
-  "sym": "_$E6",
+  "sym": "_$E16",
   "len": "0x1f",
   "name": "atexit cleanup (SBGadget_00B07E58)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4DC0",
-  "sym": "_$E46",
+  "sym": "_$E56",
   "len": "0x43",
   "name": "dynamic initializer (SelectArray_00B07E80)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6A4E10",
-  "sym": "_$E44",
+  "sym": "_$E54",
   "len": "0x30",
   "name": "atexit cleanup (SelectArray_00B07E80)",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AACB0",
   "sym": "??0SidebarSelectClass@@QAE@XZ",
   "len": "0x2e",
@@ -128635,7 +128635,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_button_statics.cpp",
+  "tu": "match/ui/input_controls/Sidebar.cpp",
   "addr": "0x6AACE0",
   "sym": "?FUN_006AACE0@SidebarSelectClass@@QAEXPAUSelectOwnerStrip@@H@Z",
   "len": "0x11",
