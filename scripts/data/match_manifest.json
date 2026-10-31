@@ -145420,7 +145420,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/r24_4_persona.cpp",
+  "tu": "match/network/WOLPersonaInformation.cpp",
   "addr": "0x77A700",
   "sym": "?FUN_0077A700@Persona_0077A700@@QAEXHH@Z",
   "len": "0x60",
@@ -145429,7 +145429,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/r24_4_persona.cpp",
+  "tu": "match/network/WOLPersonaInformation.cpp",
   "addr": "0x77A7C0",
   "sym": "?FUN_0077A7C0@Persona_0077A700@@QAEXPBUPersonaSrc_0077A7C0@@@Z",
   "len": "0x7d",
