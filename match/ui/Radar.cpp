@@ -70,6 +70,8 @@
 #include "ui_updated_methods.h"
 #include "../_layout/map_0087f7e8.h"
 #include "../core/scenario_class_methods.h"
+#include "shape_button_class.h"
+#include "input_controls/ui_display_chain.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
@@ -770,6 +772,37 @@ double DAT_00B049E0 = DAT_007E1718 / DAT_00B049F8;
 // SYNTHETIC: GAMEMD 0x00652850
 // GLOBAL: GAMEMD 0x00B049E8
 MathTblCoord DAT_00B049E8;
+
+// RTTI: .?AVRTacticalClass@RadarClass@@ (type 0x839298, COL 0x808378, vtable 0x7F02BC). It
+// derives GadgetClass and overrides slot 0 (scalar deleting destructor 0x658780) and slot 31
+// (Action 0x6539D0).
+// VTABLE: GAMEMD 0x7F02BC
+class RadarClass::RTacticalClass : public GadgetClass {
+public:
+    RTacticalClass() : GadgetClass(0, 0, 0, 0, 0x9F, 1) {}
+    // FUNCTION: GAMEMD 0x6539D0 (decl; reloc) -- slot 31 (Action).
+    virtual int Action(unsigned flags, unsigned* key, int modifier);
+};
+
+// SYNTHETIC: GAMEMD 0x00658780 -- implicit scalar deleting destructor (slot 0) of RadarClass::RTacticalClass
+struct RadarButtonStatics {
+    // GLOBAL: GAMEMD 0x00B04A10
+    static RadarClass::RTacticalClass Gadget_00B04A10;
+    // GLOBAL: GAMEMD 0x00B04978
+    static ShapeButtonClass RadarButtonF2_00B04978;
+    // GLOBAL: GAMEMD 0x00B04910
+    static ShapeButtonClass RadarButtonF3_00B04910;
+};
+
+// SYNTHETIC: GAMEMD 0x00652870 -- initialiser of Gadget_00B04A10
+// SYNTHETIC: GAMEMD 0x006528A0 -- guarded exit stub of Gadget_00B04A10
+RadarClass::RTacticalClass RadarButtonStatics::Gadget_00B04A10;
+// SYNTHETIC: GAMEMD 0x006528D0 -- initialiser of RadarButtonF2_00B04978
+// SYNTHETIC: GAMEMD 0x006528F0 -- exit-time destructor stub of RadarButtonF2_00B04978
+ShapeButtonClass RadarButtonStatics::RadarButtonF2_00B04978;
+// SYNTHETIC: GAMEMD 0x00652920 -- initialiser of RadarButtonF3_00B04910
+// SYNTHETIC: GAMEMD 0x00652940 -- exit-time destructor stub of RadarButtonF3_00B04910
+ShapeButtonClass RadarButtonStatics::RadarButtonF3_00B04910;
 
 // FUNCTION: GAMEMD 0x6528C0
 // Empty function.

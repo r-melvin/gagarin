@@ -625,7 +625,7 @@ class RadarClass : public DisplayClass
 {
 public:
     // RTTI .?AVRTacticalClass@RadarClass@@ (type 0x839298, vtable 0x7F02BC): the radar's static tactical gadget,
-    // defined in match/ui/radar_button_statics.cpp.
+    // defined in match/ui/Radar.cpp.
     class RTacticalClass;
     // FUNCTION: GAMEMD 0x652960 (decl; reloc) -- ordinary constructor.
     RadarClass();

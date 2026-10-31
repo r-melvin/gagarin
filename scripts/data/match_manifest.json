@@ -5011,7 +5011,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_button_statics.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x658780",
   "sym": "??_GRTacticalClass@RadarClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -128698,54 +128698,54 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/radar_button_statics.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x6528D0",
-  "sym": "_$E15",
+  "sym": "_$E39",
   "len": "0x16",
   "name": "_$E15",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/ui/radar_button_statics.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x6528F0",
-  "sym": "_$E13",
+  "sym": "_$E37",
   "len": "0x1f",
   "name": "_$E13",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/ui/radar_button_statics.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x652920",
-  "sym": "_$E20",
+  "sym": "_$E44",
   "len": "0x16",
   "name": "_$E20",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/ui/radar_button_statics.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x652940",
-  "sym": "_$E18",
+  "sym": "_$E42",
   "len": "0x1f",
   "name": "_$E18",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/ui/radar_button_statics.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x652870",
-  "sym": "_$E10",
+  "sym": "_$E34",
   "len": "0x2f",
   "name": "_$E10",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/ui/radar_button_statics.cpp",
+  "tu": "match/ui/Radar.cpp",
   "addr": "0x6528A0",
-  "sym": "_$E7",
+  "sym": "_$E31",
   "len": "0x1f",
   "name": "_$E7",
   "status": "matched",

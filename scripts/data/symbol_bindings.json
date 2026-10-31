@@ -15616,7 +15616,7 @@
  "match/ui/input_controls/Sidebar.cpp::_$S29": "0x00B07BB1",
  "match/ui/input_controls/Sidebar.cpp::_$S17": "0x00B07BB0",
  "match/ui/input_controls/w2_mouse_timer_global_r15.cpp::_$S4": "0x00ABF250",
- "match/ui/radar_button_statics.cpp::_$S8": "0x00B048A8",
+ "match/ui/Radar.cpp::_$S32": "0x00B048A8",
  "match/ui/shape_button_statics.cpp::_$S6": "0x00B0C1AC",
  "match/ui/tu056_control_class.cpp::_$S4": "0x0089ED10"
 }
