@@ -360,6 +360,7 @@ extern const char STR_00837828[];
 
 #include "command_packet_layouts.h"
 #include "../_layout/session_class.h"
+#include "../core/vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0xB779C4
 extern int DAT_00B779C4;
@@ -1565,6 +1566,27 @@ void FUN_0064AAE0(HWND dialog, int player)
             &Players_00A8DA78[i]->Address, 0, 0);
     }
     FUN_0064AD10(Players_00A8DA78[0]->unknown_6F, Players_00A8DA78[player]->unknown_6F);
+}
+
+// A 0x1C7-byte record kept in the global pointer list at 0xA8BB28.
+struct Record_0064AC90
+{
+    char Bytes[0x1C7];
+
+    // FUNCTION: GAMEMD 0x64AC90 (__thiscall)
+    void FUN_0064AC90();
+};
+
+// GLOBAL: GAMEMD 0xA8BB28
+extern DynamicVectorClass<Record_0064AC90*> DAT_00A8BB28;
+
+// FUNCTION: GAMEMD 0x64AC90
+// Append a heap copy of this record to the global list.
+void Record_0064AC90::FUN_0064AC90()
+{
+    Record_0064AC90* copy = new Record_0064AC90;
+    *copy = *this;
+    DynamicVectorAddItemFree(&DAT_00A8BB28, copy);
 }
 
 // FUNCTION: GAMEMD 0x64AD10
