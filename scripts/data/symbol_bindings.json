@@ -15596,7 +15596,7 @@
  "match/ui/Score.cpp::_?$S1@?1??FUN_0068FFE0@BlinkCursorHost_0068FFE0@@QAEXHH@Z@4EA": "0x00B054F0",
  "match/ui/Score.cpp::_?blink@?1??FUN_0068FFE0@BlinkCursorHost_0068FFE0@@QAEXHH@Z@4VCountdownTimer_0068FFE0@@A": "0x00B05528",
  "match/ui/ego_class.cpp::_DAT_007E86C8": "0x007E86C8",
- "match/ui/game_controls_dialog.cpp::_DAT_007E9370": "0x007E9370",
+ "match/ui/GameDlg.cpp::_DAT_007E9370": "0x007E9370",
  "match/ui/input_controls/Display.cpp::_$S16": "0x008A03E1",
  "match/ui/input_controls/Display.cpp::_$S22": "0x008A03E0",
  "match/ui/input_controls/Tactical.cpp::_?$S10@?N@??FUN_006DBE20@Tactical@@QAEXXZ@4EA": "0x00B0CE90",

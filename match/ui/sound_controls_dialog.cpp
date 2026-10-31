@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   The sound-controls dialog runner at 0x6B6230 of retail gamemd.exe v1.001; the string 0x840030
 //   ("SoundControls: GameSpeed = %d, ...") names the dialog. Same shape as the game-controls
-//   runner in game_controls_dialog.cpp.
+//   runner in GameDlg.cpp.
 //
 // Address index: 0x6B6230
 #include <windows.h>

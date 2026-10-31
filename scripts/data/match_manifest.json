@@ -68942,7 +68942,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E1B40",
   "sym": "_$E2",
   "len": "0x13",
@@ -68951,7 +68951,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E1B60",
   "sym": "_$E5",
   "len": "0x13",
@@ -68960,7 +68960,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E1CE0",
   "sym": "_$E8",
   "len": "0x1A",
@@ -68969,7 +68969,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E1D00",
   "sym": "?FUN_004E1D00@Obj_004E1D00@@QAEXXZ",
   "len": "0xDB",
@@ -68978,7 +68978,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E1DE0",
   "sym": "?FUN_004E1DE0@Obj_004E1D00@@QAEXXZ",
   "len": "0x1FF",
@@ -68987,7 +68987,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E1FE0",
   "sym": "?FUN_004E1FE0@@YGHPAXIIJ@Z",
   "len": "0x3DC",
@@ -68996,7 +68996,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E23C0",
   "sym": "?FUN_004E23C0@@YIXPAUHWND__@@H0I@Z",
   "len": "0x73",
@@ -69005,7 +69005,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E2440",
   "sym": "_$E11",
   "len": "0xC",
@@ -69014,7 +69014,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/game_controls_dialog.cpp",
+  "tu": "match/ui/GameDlg.cpp",
   "addr": "0x4E2480",
   "sym": "?FUN_004E2480@@YIKXZ",
   "len": "0x17",
