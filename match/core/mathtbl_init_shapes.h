@@ -10,12 +10,11 @@
 
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/coord_struct.h"
+#include "../_layout/cell.h"
 
-struct MathTblShortPair
+struct MathTblShortPair : CellStruct
 {
-    short X;
-    short Y;
-    MathTblShortPair() : X(0), Y(0) {}
+    MathTblShortPair() { X = 0; Y = 0; }
 };
 GG_STATIC_ASSERT(sizeof(MathTblShortPair) == 4);
 
