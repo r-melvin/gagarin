@@ -523,10 +523,10 @@ class Lint:
         return bool(r.get("op") in ("change", "remove") or r.get("_change"))
 
     @staticmethod
-    def same_row(cur, r):
+    def same_row(cur, r, ignore_tu=False):
         def n(x):
-            return (x.get("tu"), x.get("sym"), D.hx(x["len"]) if x.get("len") else None, x.get("status"),
-                    float(x["pct"]) if x.get("pct") is not None else None)
+            return (None if ignore_tu else x.get("tu"), x.get("sym"), D.hx(x["len"]) if x.get("len") else None,
+                    x.get("status"), float(x["pct"]) if x.get("pct") is not None else None)
         try:
             return n(cur) == n(r)
         except Exception:
@@ -591,7 +591,9 @@ class Lint:
         for d in self.diffs:
             if d.is_delete:
                 have.discard(d.path)
-        have |= {d.path for d in self.diffs if d.is_new}
+            elif d.is_rename:
+                have.discard(d.old)
+        have |= {d.path for d in self.diffs if d.is_new or d.is_rename}
         for d in self.diffs:
             if d.is_delete or not d.path.startswith("match/") or not d.path.endswith(L.HDR_EXT + (".cpp", ".c", ".cxx", ".cc")):
                 continue
@@ -745,12 +747,13 @@ class Lint:
     BAR_SMALL, BAR_SMALL_PCT, BAR_BIG_PCT = 0x400, 80.0, 60.0
 
     def partial_legacy(self, r):
-        """True when R is a partial row already in the tree and unchanged (same tu/sym/len/status/pct)."""
+        """True when R is a partial row already in the tree and unchanged (same sym/len/status/pct; a row that
+        only moved to another translation unit, a path-only restructure, is not a new partial)."""
         try:
             cur = self.t.by_addr.get(D.hx(r["addr"]))
         except Exception:
             return False
-        return bool(cur and cur.get("status") == "partial" and self.same_row(cur, r))
+        return bool(cur and cur.get("status") == "partial" and self.same_row(cur, r, ignore_tu=True))
 
     def partial_bar(self):
         for r in self.rows:

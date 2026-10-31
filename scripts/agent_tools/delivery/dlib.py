@@ -216,6 +216,7 @@ class FileDiff:
         self.old, self.new = m.group(1), m.group(2)
         self.is_new = bool(re.search(r"^new file mode", text, re.M)) or "\n--- /dev/null" in text
         self.is_delete = bool(re.search(r"^deleted file mode", text, re.M)) or "\n+++ /dev/null" in text
+        self.is_rename = bool(re.search(r"^rename to ", text, re.M)) and self.old != self.new
         self.mode_symlink = bool(re.search(r"^(new|old|deleted file) mode 120000", text, re.M))
         self.path = self.old if self.is_delete else self.new
 

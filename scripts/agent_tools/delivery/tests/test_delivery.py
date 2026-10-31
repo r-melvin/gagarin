@@ -823,6 +823,16 @@ class PartialBar(unittest.TestCase):
         lt.partial_bar()
         self.assertEqual([x["level"] for x in lt.findings], ["E"])
 
+    def test_moved_legacy_partial_is_not_new(self):
+        cur = next(r for r in tree().by_addr.values() if r.get("status") == "matched")
+        old = dict(cur, status="partial", pct=10.0)
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        lt = pktlint.Lint(packet(tmp, {"match/x/a.cpp": HEADER}, []), tree(), D.MAIN_REPO)
+        lt.t = types_ns(by_addr={D.hx(old["addr"]): old})
+        lt.rows = [dict(old, tu="match/elsewhere/moved.cpp")]      # path-only restructure: same sym/len/status/pct
+        lt.partial_bar()
+        self.assertEqual([x["level"] for x in lt.findings], ["W"])
+
 
 def types_ns(**kw):
     import types
@@ -988,6 +998,17 @@ class Toolfix1030b(unittest.TestCase):
         self.assertEqual([x["level"] for x in f], ["E"])
         p = packet(self.tmp, {"match/x/user.cpp": src, hdr: HEADER + "#pragma once\n"}, [])
         self.assertEqual([x for x in lint(p, {"includes"}) if x["rule"] == "includes"], [])
+
+    def test_includes_rule_follows_renames(self):
+        patch = ("diff --git a/match/old/h.h b/match/new/h.h\nsimilarity index 100%\nrename from match/old/h.h\nrename to match/new/h.h\n"
+                 "diff --git a/match/old/u.cpp b/match/new/u.cpp\nsimilarity index 90%\nrename from match/old/u.cpp\nrename to match/new/u.cpp\n"
+                 "index 1..2 100644\n--- a/match/old/u.cpp\n+++ b/match/new/u.cpp\n@@ -1,1 +1,1 @@\n-int x;\n+#include \"h.h\"\n")
+        lt = pktlint.Lint(packet(self.tmp, {"match/x/a.cpp": HEADER}, []), tree(), D.MAIN_REPO)
+        lt.diffs = D.split_patch(patch)
+        lt.t = types_ns(paths={"match/old/h.h", "match/old/u.cpp"})
+        lt.includes()
+        self.assertEqual(lt.findings, [])
+        self.assertTrue(lt.diffs[0].is_rename)
 
     def test_asm_claims_and_compile_driver(self):
         asm = "; FUNCTION: GAMEMD 0x401000\nfoo proc\nfoo endp\n"
