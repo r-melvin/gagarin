@@ -149139,5 +149139,59 @@
   "name": "MapClass::FUN_0057B790",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ai/tu019_aircraft_query_interface.cpp",
+  "addr": "0x414290",
+  "sym": "?QueryInterface@AircraftClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x5f",
+  "name": "AircraftClass::QueryInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "addr": "0x4157C0",
+  "sym": "?FUN_004157C0@Aircraft_004155F0@@QAEHXZ",
+  "len": "0x112",
+  "name": "Aircraft_004155F0::FUN_004157C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "addr": "0x415A50",
+  "sym": "?FUN_00415A50@Aircraft_004155F0@@QAEHXZ",
+  "len": "0xb9",
+  "name": "Aircraft_004155F0::FUN_00415A50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "addr": "0x4195A0",
+  "sym": "?FUN_004195A0@Aircraft_004155F0@@QAEHPAU1@PAUCell_004155F0@@@Z",
+  "len": "0x104",
+  "name": "Aircraft_004155F0::FUN_004195A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "addr": "0x41A940",
+  "sym": "?FUN_0041A940@Aircraft_004155F0@@QAEHXZ",
+  "len": "0x9d",
+  "name": "Aircraft_004155F0::FUN_0041A940",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ai/tu019_aircraft_target_check.cpp",
+  "addr": "0x41A9E0",
+  "sym": "?FUN_0041A9E0@AircraftClass@@QAEHPAVAbstractClass@@HH@Z",
+  "len": "0x9f",
+  "name": "AircraftClass::FUN_0041A9E0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
