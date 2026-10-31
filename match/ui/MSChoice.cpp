@@ -706,3 +706,7 @@ template class VectorClass<MSAnim*>;
 // FUNCTION: GAMEMD 0x005D2D40
 // FUNCTION: GAMEMD 0x005D2D90
 template class VectorClass<MSSfx*>;
+
+// SYNTHETIC: GAMEMD 0x5D2DE0
+// GLOBAL: GAMEMD 0xABFBD0
+MathTblZero4 DAT_00ABFBD0;
