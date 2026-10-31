@@ -1,3 +1,18 @@
 {
-  "cpu_detect_object.asm": "a5a133f3362c3dfd1e4e6075cbac52a43cfa1de9af3b1d27c0dada99c9f103f1"
+  "audio_frame_unpack_a_object.asm": "61d5e747db9aee809a6381cd19c63f5eed8a3d097e33a0b4097e2126c4add1ea",
+  "audio_frame_unpack_b_object.asm": "fe05fb6ef3db42c31d6c8fa48ffa3f37eb430d284665d0620b4ef0916853d655",
+  "codebook_block_expand_a_object.asm": "f28a832bdee644f4d4ee52e8ca9d44f9e349de8c71ed282f79e180c31761f5eb",
+  "codebook_block_expand_b_object.asm": "eafc977af0d883cf76793125eca16553d88ba74507bf3aab35ef2a82c223eee9",
+  "command_byte_unpack_object.asm": "abc76eb4fc219dcf5442b8d18a42d53a46e26d1669b1315a508a8ffed8597063",
+  "cpu_detect_object.asm": "a5a133f3362c3dfd1e4e6075cbac52a43cfa1de9af3b1d27c0dada99c9f103f1",
+  "depth_tested_span_draw_object.asm": "0cf7fe8a84d7a30e8c371953644a0a76c7e72e94ba7002c006889fc55456975b",
+  "masked_row_blend16_object.asm": "9203915520d5c3d13a0b367e91176dd8214616e859d81295a5ef27cf961e420a",
+  "masked_row_modulate16_object.asm": "c0a6e51fb20351ff0fddd7a34a2576fd8a733959e7a95077de252e69a8700d03",
+  "palette_blend_table_object.asm": "6bb568b0b01c9aec5b877739ca961ab540f69efccaa8f82609fd1b4f6cb50801",
+  "rect_clip_object.asm": "0cad36dff97f7baa47d6762eac016f781a2004e71891904419bb17e38747192a",
+  "step_table_draw_object.asm": "7f39b26a9ff31ac85b2ba21307e4a1c9478e5db04d2460cf4c6e6068ddf65b5c",
+  "stream_codec_a_object.asm": "d1c0892f0e98c9de3f953df843ebf1c89318da3b593d5e07719b7602a8edd880",
+  "stream_codec_b_object.asm": "947474e8b6ae50e0e36b4c3c2057f2a2b1a7c4d718a4e8f77d9af224a05a754d",
+  "stream_codec_c_object.asm": "045c91d60cc16636f315edea749ad0c09a4afe1b78a6f18542748a859dafaf14",
+  "terrain_height_fix_object.asm": "82b24a30d847440a343c76ed37ea0ad643ed4994eb11885875a2e438b515bd22"
 }

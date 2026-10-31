@@ -148563,5 +148563,473 @@
   "name": "TechnoClass::FUN_0070ED80",
   "status": "partial",
   "pct": 87.3
+ },
+ {
+  "tu": "match/asm/audio_frame_unpack_a_object.asm",
+  "addr": "0x7C5BC0",
+  "sym": "_FUN_007C5BC0",
+  "len": "0x1e6",
+  "name": "_FUN_007C5BC0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/rect_clip_object.asm",
+  "addr": "0x7C5DB0",
+  "sym": "_FUN_007C5DB0",
+  "len": "0xce",
+  "name": "_FUN_007C5DB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/rect_clip_object.asm",
+  "addr": "0x7C5E7E",
+  "sym": "_FUN_007C5E7E",
+  "len": "0x60",
+  "name": "_FUN_007C5E7E",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/depth_tested_span_draw_object.asm",
+  "addr": "0x7C60C0",
+  "sym": "_FUN_007C60C0",
+  "len": "0x10f",
+  "name": "_FUN_007C60C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/depth_tested_span_draw_object.asm",
+  "addr": "0x7C61CF",
+  "sym": "_FUN_007C61CF",
+  "len": "0x94",
+  "name": "_FUN_007C61CF",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/stream_codec_a_object.asm",
+  "addr": "0x7C6270",
+  "sym": "_FUN_007C6270",
+  "len": "0x3c",
+  "name": "_FUN_007C6270",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/stream_codec_a_object.asm",
+  "addr": "0x7C62AC",
+  "sym": "_FUN_007C62AC",
+  "len": "0x367",
+  "name": "_FUN_007C62AC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/terrain_height_fix_object.asm",
+  "addr": "0x7C6620",
+  "sym": "_FUN_007C6620",
+  "len": "0x10a",
+  "name": "_FUN_007C6620",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/stream_codec_b_object.asm",
+  "addr": "0x7C6730",
+  "sym": "_FUN_007C6730",
+  "len": "0x22",
+  "name": "_FUN_007C6730",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/stream_codec_b_object.asm",
+  "addr": "0x7C6752",
+  "sym": "_FUN_007C6752",
+  "len": "0x416",
+  "name": "_FUN_007C6752",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_a_object.asm",
+  "addr": "0x7C6B70",
+  "sym": "_FUN_007C6B70",
+  "len": "0x109",
+  "name": "_FUN_007C6B70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_a_object.asm",
+  "addr": "0x7C6C79",
+  "sym": "_FUN_007C6C79",
+  "len": "0xc6",
+  "name": "_FUN_007C6C79",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C6D40",
+  "sym": "_FUN_007C6D40",
+  "len": "0x96",
+  "name": "_FUN_007C6D40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C6DD6",
+  "sym": "_FUN_007C6DD6",
+  "len": "0xbe",
+  "name": "_FUN_007C6DD6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C6E94",
+  "sym": "_FUN_007C6E94",
+  "len": "0x9a",
+  "name": "_FUN_007C6E94",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C6F2E",
+  "sym": "_FUN_007C6F2E",
+  "len": "0x9a",
+  "name": "_FUN_007C6F2E",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C6FC8",
+  "sym": "_FUN_007C6FC8",
+  "len": "0xfc",
+  "name": "_FUN_007C6FC8",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C70C4",
+  "sym": "_FUN_007C70C4",
+  "len": "0xb0",
+  "name": "_FUN_007C70C4",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C7174",
+  "sym": "_FUN_007C7174",
+  "len": "0xf6",
+  "name": "_FUN_007C7174",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/codebook_block_expand_b_object.asm",
+  "addr": "0x7C726A",
+  "sym": "_FUN_007C726A",
+  "len": "0xe4",
+  "name": "_FUN_007C726A",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/stream_codec_c_object.asm",
+  "addr": "0x7C7350",
+  "sym": "_FUN_007C7350",
+  "len": "0x21",
+  "name": "_FUN_007C7350",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/stream_codec_c_object.asm",
+  "addr": "0x7C7371",
+  "sym": "_FUN_007C7371",
+  "len": "0xbaf",
+  "name": "_FUN_007C7371",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/audio_frame_unpack_b_object.asm",
+  "addr": "0x7C7F20",
+  "sym": "_FUN_007C7F20",
+  "len": "0x1e8",
+  "name": "_FUN_007C7F20",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/command_byte_unpack_object.asm",
+  "addr": "0x7C8110",
+  "sym": "_FUN_007C8110",
+  "len": "0xcb",
+  "name": "_FUN_007C8110",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/command_byte_unpack_object.asm",
+  "addr": "0x7C81DB",
+  "sym": "_FUN_007C81DB",
+  "len": "0x187",
+  "name": "_FUN_007C81DB",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DE200",
+  "sym": "_FUN_007DE200",
+  "len": "0x33a",
+  "name": "_FUN_007DE200",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DE53A",
+  "sym": "_FUN_007DE53A",
+  "len": "0x340",
+  "name": "_FUN_007DE53A",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DE87A",
+  "sym": "_FUN_007DE87A",
+  "len": "0x340",
+  "name": "_FUN_007DE87A",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DEBBA",
+  "sym": "_FUN_007DEBBA",
+  "len": "0x340",
+  "name": "_FUN_007DEBBA",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DEEFA",
+  "sym": "_FUN_007DEEFA",
+  "len": "0xdd",
+  "name": "_FUN_007DEEFA",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DEFD7",
+  "sym": "_FUN_007DEFD7",
+  "len": "0xdd",
+  "name": "_FUN_007DEFD7",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DF0B4",
+  "sym": "_FUN_007DF0B4",
+  "len": "0xdd",
+  "name": "_FUN_007DF0B4",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_blend16_object.asm",
+  "addr": "0x7DF191",
+  "sym": "_FUN_007DF191",
+  "len": "0xdd",
+  "name": "_FUN_007DF191",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "addr": "0x7DF280",
+  "sym": "_FUN_007DF280",
+  "len": "0x142",
+  "name": "_FUN_007DF280",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "addr": "0x7DF3C2",
+  "sym": "_FUN_007DF3C2",
+  "len": "0x13e",
+  "name": "_FUN_007DF3C2",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "addr": "0x7DF500",
+  "sym": "_FUN_007DF500",
+  "len": "0x140",
+  "name": "_FUN_007DF500",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "addr": "0x7DF640",
+  "sym": "_FUN_007DF640",
+  "len": "0x141",
+  "name": "_FUN_007DF640",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DF7C0",
+  "sym": "_FUN_007DF7C0",
+  "len": "0xf8",
+  "name": "_FUN_007DF7C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DF8C0",
+  "sym": "_FUN_007DF8C0",
+  "len": "0xf7",
+  "name": "_FUN_007DF8C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DF9C0",
+  "sym": "_FUN_007DF9C0",
+  "len": "0x109",
+  "name": "_FUN_007DF9C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DFAE0",
+  "sym": "_FUN_007DFAE0",
+  "len": "0x109",
+  "name": "_FUN_007DFAE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DFC00",
+  "sym": "_FUN_007DFC00",
+  "len": "0xf6",
+  "name": "_FUN_007DFC00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DFD00",
+  "sym": "_FUN_007DFD00",
+  "len": "0xf6",
+  "name": "_FUN_007DFD00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DFE00",
+  "sym": "_FUN_007DFE00",
+  "len": "0xfc",
+  "name": "_FUN_007DFE00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/step_table_draw_object.asm",
+  "addr": "0x7DFF00",
+  "sym": "_FUN_007DFF00",
+  "len": "0xfc",
+  "name": "_FUN_007DFF00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/palette_blend_table_object.asm",
+  "addr": "0x7E0000",
+  "sym": "_FUN_007E0000",
+  "len": "0x1",
+  "name": "_FUN_007E0000",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/palette_blend_table_object.asm",
+  "addr": "0x7E0001",
+  "sym": "_FUN_007E0001",
+  "len": "0xa5",
+  "name": "_FUN_007E0001",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/palette_blend_table_object.asm",
+  "addr": "0x7E00A6",
+  "sym": "_FUN_007E00A6",
+  "len": "0xca",
+  "name": "_FUN_007E00A6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/palette_blend_table_object.asm",
+  "addr": "0x7E0170",
+  "sym": "_FUN_007E0170",
+  "len": "0x62",
+  "name": "_FUN_007E0170",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/palette_blend_table_object.asm",
+  "addr": "0x7E01D2",
+  "sym": "_FUN_007E01D2",
+  "len": "0x29",
+  "name": "_FUN_007E01D2",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/palette_blend_table_object.asm",
+  "addr": "0x7E01FB",
+  "sym": "_FUN_007E01FB",
+  "len": "0xd0",
+  "name": "_FUN_007E01FB",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/asm/palette_blend_table_object.asm",
+  "addr": "0x7E02CB",
+  "sym": "_FUN_007E02CB",
+  "len": "0xc2",
+  "name": "_FUN_007E02CB",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
