@@ -149220,5 +149220,23 @@
   "name": "BuildingClass::FUN_00451690",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4D4FC0",
+  "sym": "?FUN_004D4FC0@FootClass@@QAEPAVBuildingClass@@XZ",
+  "len": "0xa4",
+  "name": "FootClass::FUN_004D4FC0",
+  "status": "partial",
+  "pct": 88.7
+ },
+ {
+  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "addr": "0x4DA030",
+  "sym": "?FUN_004DA030@FootClass@@QAEXXZ",
+  "len": "0xaf",
+  "name": "FootClass::FUN_004DA030",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -42,6 +42,18 @@ struct NavVector_004DA0E0
     int   Count;                   // +0x0010
     int   CapacityIncrement;       // +0x0014
 
+    // DynamicVectorClass::Delete(index), expanded inline (0x4DA030).
+    bool Delete(int index)
+    {
+        if (index < Count) {
+            Count--;
+            for (int i = index; i < Count; i++)
+                Items[i] = Items[i + 1];
+            return true;
+        }
+        return false;
+    }
+
     // DynamicVectorClass::AddItem, expanded inline by VC6 at the call site.
     // Same phrasing as match/map/cell_class_tag_methods.h (0x485250).
     bool AddItem(AbstractClass* item)

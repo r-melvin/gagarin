@@ -33,6 +33,7 @@
 #include "cell.h"            // CellStruct, Cell
 
 class TeamClass;
+class BuildingClass;
 struct Matrix3D;
 struct VoxelStruct;
 struct IndexClass;
@@ -122,6 +123,11 @@ public:
     void UpdatePassengerCoords();
     // GAMEMD 0x629E90 (RET 0xC): three wake animations around (x, y, z).
     void CreateWakes(int x, int y, int z);
+
+    // FUNCTION: GAMEMD 0x4D4FC0 -- the first of the eight adjacent cells holding a building of the same owner with the type flag at +0x1575.
+    BuildingClass* FUN_004D4FC0();
+    // FUNCTION: GAMEMD 0x4DA030 -- with no destination, pop the first queued waypoint and make it the destination (re-queued when the loop flag is set).
+    void FUN_004DA030();
 
     int             PlanningPathIdx;                  // +0x520 (ctor = -1)
     CellStruct      WaypointNearbyAccessibleCellDelta;// +0x524 (4)

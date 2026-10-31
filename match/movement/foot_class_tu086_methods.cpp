@@ -7,11 +7,13 @@
 //   FUNCTION: GAMEMD 0x4D3780  FootClass::vf_73 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D4B20  FootClass::vf_133 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D4CB0  FootClass::vf_134 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D4FC0  FootClass::FUN_004D4FC0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D7170  FootClass::vf_54 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D9720  FootClass::vf_55 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D97A0  FootClass::FUN_004D97A0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D98C0  FootClass::vf_238 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D9E70  FootClass::vf_38 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DA030  FootClass::FUN_004DA030 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBA50  FootClass::FUN_004DBA50 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBED0  FootClass::vf_245 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DDDE0  FootClass::vf_28 (__thiscall)
@@ -47,6 +49,7 @@
 #include "../_layout/cell_class.h"
 #include "../_layout/map_0087f7e8.h"
 #include "../core/cell_step_tables.h"
+#include "foot_class_nav_list_methods.h"
 #include "../_layout/player_ptr_00a83d4c.h"
 
 // GLOBAL: GAMEMD 0x8B3D88 -- the "no cell" sentinel.
@@ -204,6 +207,32 @@ wait:
     return base + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
 }
 
+static inline CellStruct FootStepCell(const CellStruct& here, int facing)
+{
+    CellStruct cell;
+    const CellStruct& step = DAT_0089F688[facing];
+    cell.X = step.X + here.X;
+    cell.Y = here.Y + step.Y;
+    return cell;
+}
+
+// FUNCTION: GAMEMD 0x4D4FC0
+// Of the eight cells around this object's cell, the first with a building of the same owner whose
+// type has the flag at +0x1575; null when none.
+BuildingClass* FootClass::FUN_004D4FC0()
+{
+    for (int i = 0; i < 8; i++) {
+        CellStruct cell = FootStepCell(vf_110(), i & 7);
+        BuildingClass* building = DAT_0087F7E8.FUN_005657A0(&cell)->GetBuilding();
+        if (building && building->Type->bools_1570[5]) {
+            if (building->vf_15() == vf_15()) {
+                return building;
+            }
+        }
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x4D7170
 // Slot 54. Places the object on the map through the base slot, then unlimbos the locomotor and powers it
 // down for an ion-sensitive one while the owner's ion sensitives are offline (up otherwise), clears the
@@ -342,6 +371,23 @@ bool FootClass::vf_38()
         }
     }
     return TechnoClass::vf_38();
+}
+
+// FUNCTION: GAMEMD 0x4DA030
+// With no destination and a queued waypoint, make the first waypoint the destination and take it off
+// the queue; with the loop flag set it goes back on the end.
+void FootClass::FUN_004DA030()
+{
+    if (Destination == 0 && NavQueue.Count != 0) {
+        AbstractClass* next = ((NavVector_004DA0E0*)&NavQueue)->Items[0];
+        if (next) {
+            SetDestination(next, 1);
+            ((NavVector_004DA0E0*)&NavQueue)->Delete(0);
+            if (unknown_bool_6B1) {
+                ((NavVector_004DA0E0*)&NavQueue)->AddItem(next);
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x4DBA50
