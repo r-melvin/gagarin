@@ -183,17 +183,14 @@ void VoxelModel::FUN_00756bb0()
 {
 	for (unsigned int i = 0; i < SectionCount; i++) {
 		VoxelSection_00756590 &header = Sections[i];
-		int sx = header.SizeX;
-		int sy = header.SizeY;
-		int sz = header.SizeZ;
-		header.Corners[0] = VoxelPoint(sx * 0.5f, sy * 0.5f, -sz * 0.5f);
-		header.Corners[1] = VoxelPoint(sx * 0.5f, -sy * 0.5f, -sz * 0.5f);
-		header.Corners[2] = VoxelPoint(-sx * 0.5f, -sy * 0.5f, -sz * 0.5f);
-		header.Corners[3] = VoxelPoint(-sx * 0.5f, sy * 0.5f, -sz * 0.5f);
-		header.Corners[4] = VoxelPoint(sx * 0.5f, sy * 0.5f, sz * 0.5f);
-		header.Corners[5] = VoxelPoint(sx * 0.5f, -sy * 0.5f, sz * 0.5f);
-		header.Corners[6] = VoxelPoint(-sx * 0.5f, -sy * 0.5f, sz * 0.5f);
-		header.Corners[7] = VoxelPoint(-sx * 0.5f, sy * 0.5f, sz * 0.5f);
+		header.Corners[0] = VoxelPoint(header.SizeX * 0.5f, header.SizeY * 0.5f, -header.SizeZ * 0.5f);
+		header.Corners[1] = VoxelPoint(header.SizeX * 0.5f, -header.SizeY * 0.5f, -header.SizeZ * 0.5f);
+		header.Corners[2] = VoxelPoint(-header.SizeX * 0.5f, -header.SizeY * 0.5f, -header.SizeZ * 0.5f);
+		header.Corners[3] = VoxelPoint(-header.SizeX * 0.5f, header.SizeY * 0.5f, -header.SizeZ * 0.5f);
+		header.Corners[4] = VoxelPoint(header.SizeX * 0.5f, header.SizeY * 0.5f, header.SizeZ * 0.5f);
+		header.Corners[5] = VoxelPoint(header.SizeX * 0.5f, -header.SizeY * 0.5f, header.SizeZ * 0.5f);
+		header.Corners[6] = VoxelPoint(-header.SizeX * 0.5f, -header.SizeY * 0.5f, header.SizeZ * 0.5f);
+		header.Corners[7] = VoxelPoint(-header.SizeX * 0.5f, header.SizeY * 0.5f, header.SizeZ * 0.5f);
 	}
 }
 

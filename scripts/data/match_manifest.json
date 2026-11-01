@@ -60767,12 +60767,10 @@
   "tu": "match/voxel_model_span_methods.cpp",
   "addr": "0x756BB0",
   "sym": "?FUN_00756bb0@VoxelModel@@QAEXXZ",
-  "len": "0x21E",
+  "len": "0x21e",
   "name": "VoxelModel::FUN_00756bb0",
-  "status": "partial",
-  "pct": 98.7,
-  "best_pct": 98.7,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/voxel_model_span_methods.cpp",
@@ -101110,10 +101108,8 @@
   "sym": "?FUN_007A8FC0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
   "len": "0x142",
   "name": "?FUN_007A8FC0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
-  "status": "partial",
-  "pct": 97.2,
-  "best_pct": 97.2,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wonline.cpp",
@@ -150237,10 +150233,8 @@
   "sym": "??0VQAClass@@QAE@PBDIP6AHXZP6AXXZ2HH@Z",
   "len": "0x2ac",
   "name": "??0VQAClass@@QAE@PBDIP6AHXZP6AXXZ2HH@Z",
-  "status": "partial",
-  "pct": 97.5,
-  "best_pct": 97.5,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wwlib/vqa/vqa_class_methods.cpp",

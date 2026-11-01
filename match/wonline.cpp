@@ -3819,40 +3819,43 @@ int __stdcall FUN_007A8ED0(void* unused, int slot, int unused2, Entry_00B77908* 
 // FUNCTION: GAMEMD 0x7A8FC0
 int __stdcall FUN_007A8FC0(void* unused, int slot, Entry_00B77908* entry, const char* text)
 {
-    if (!DAT_00B77DC1 && slot >= 0) {
-        if (IsOnlineMode()) {
-            if (entry->unknown_00[0] & 1) {
-                FUN_007A16B0(text, true);
-            } else {
-                FUN_004068E0("Received message from non-channel owner %s: %s\n", entry->unknown_24, text);
-            }
+    if (DAT_00B77DC1)
+        return 0;
+    if (slot < 0)
+        return 0;
+    if (IsOnlineMode()) {
+        if (entry->unknown_00[0] & 1) {
+            FUN_007A16B0(text, true);
         } else {
-            bool shown;
-            {
-                Wstring name(text);
-                if (entry == NULL) {
-                    shown = false;
-                } else if (entry->unknown_00[0] & 1) {
-                    shown = true;
-                } else if (FUN_00775940(0xC2)) {
-                    shown = true;
-                } else if (FUN_00775940(0xC9)) {
-                    shown = true;
-                } else {
-                    shown = DAT_00B779C0 != 0;
-                }
-            }
-            if (shown && FUN_0077D4C0(entry)) {
-                Obj_007B66D0 wide = FUN_007B7ED0(text);
-                int channel = DAT_007EEF30;
-                if (entry->unknown_00[0] & 1)
-                    channel = DAT_007EEF3C;
-                if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
-                    FUN_005E2700(channel, DAT_0084AFC8, entry->unknown_24, wide.FUN_007B7100());
-                }
-            }
+            FUN_004068E0("Received message from non-channel owner %s: %s\n", entry->unknown_24, text);
+        }
+        return 0;
+    }
+    bool shown;
+    {
+        Wstring name(text);
+        if (entry == NULL) {
+            shown = false;
+        } else if (entry->unknown_00[0] & 1) {
+            shown = true;
+        } else if (FUN_00775940(0xC2)) {
+            shown = true;
+        } else if (FUN_00775940(0xC9)) {
+            shown = true;
+        } else {
+            shown = DAT_00B779C0 != 0;
         }
     }
+    if (!shown)
+        return 0;
+    if (!FUN_0077D4C0(entry))
+        return 0;
+    Obj_007B66D0 wide = FUN_007B7ED0(text);
+    int channel = DAT_007EEF30;
+    if (entry->unknown_00[0] & 1)
+        channel = DAT_007EEF3C;
+    if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0)
+        FUN_005E2700(channel, DAT_0084AFC8, entry->unknown_24, wide.FUN_007B7100());
     return 0;
 }
 

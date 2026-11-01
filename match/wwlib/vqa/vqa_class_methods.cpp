@@ -79,8 +79,6 @@ int __cdecl FUN_0075A350(MovieHandle_007BD470* h, int op, unsigned short* buf, u
 
 // FUNCTION: GAMEMD 0x759260
 //
-// PARTIAL: 97.5% -- same 160 instructions; the compiler hoists the store of +0x544 ahead of +0x548
-// where retail stores +0x548 first (statement-order permutations of the three handler stores tried).
 // Builds the playback object: file member, callback table, flag words from the option bits.
 VQAClass::VQAClass(const char* name, unsigned int mode, int (__cdecl *h540)(), void (__cdecl *h544)(),
                    void (__cdecl *cb548)(), int a6, int a7)
@@ -163,8 +161,8 @@ VQAClass::VQAClass(const char* name, unsigned int mode, int (__cdecl *h540)(), v
     unknown_510 = -1;
     PaletteDirty = false;
     Handler540 = h540;
-    Callback548 = cb548;
     Handler544 = h544;
+    Callback548 = cb548;
     FileOpen = false;
     Active = false;
     Sleeping = false;
