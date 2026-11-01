@@ -5002,7 +5002,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x6404B0",
   "sym": "??_GPowerClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -90331,7 +90331,7 @@
  {
   "tu": "match/Power.cpp",
   "addr": "0x63F4F0",
-  "sym": "_$E2",
+  "sym": "_$E19",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4E68)",
   "status": "matched",
@@ -90340,7 +90340,7 @@
  {
   "tu": "match/Power.cpp",
   "addr": "0x63F510",
-  "sym": "_$E5",
+  "sym": "_$E22",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AC4E50)",
   "status": "matched",
@@ -90349,7 +90349,7 @@
  {
   "tu": "match/Power.cpp",
   "addr": "0x63F690",
-  "sym": "_$E8",
+  "sym": "_$E25",
   "len": "0x1a",
   "name": "dynamic initializer (DAT_00AC4E58)",
   "status": "matched",
@@ -134457,7 +134457,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63F6B0",
   "sym": "??0PowerClass@@QAE@XZ",
   "len": "0x77",
@@ -134466,7 +134466,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63F730",
   "sym": "?vf_07@PowerClass@@UAEXXZ",
   "len": "0x7b",
@@ -134475,7 +134475,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63F7E0",
   "sym": "?vf_50@PowerClass@@UAEXXZ",
   "len": "0x24",
@@ -134484,7 +134484,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63F810",
   "sym": "?FUN_0063F810@PowerClass@@QAEXXZ",
   "len": "0x35",
@@ -134493,7 +134493,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63F8F0",
   "sym": "?FUN_0063F8F0@PowerClass@@QAEHXZ",
   "len": "0x49",
@@ -134502,7 +134502,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63F940",
   "sym": "?FUN_0063F940@@YIHXZ",
   "len": "0x19",
@@ -134511,7 +134511,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63FDC0",
   "sym": "?FUN_0063FDC0@PowerClass@@QAEXXZ",
   "len": "0x6a",
@@ -134520,7 +134520,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x63FE30",
   "sym": "?FUN_0063FE30@PowerClass@@QAEXXZ",
   "len": "0x6a",
@@ -134529,7 +134529,7 @@
   "pct": 100
  },
  {
-  "tu": "match/power_class_methods.cpp",
+  "tu": "match/Power.cpp",
   "addr": "0x640450",
   "sym": "?vf_33@PowerClass@@UAEPBGH@Z",
   "len": "0x53",
