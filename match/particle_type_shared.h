@@ -8,7 +8,7 @@
 #include "particle_common_types.h"
 #include "particle_common_vectors.h"
 #include "particle_common_views.h"
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 
 // GLOBAL: GAMEMD 0xA83D98 - ParticleTypeClass::Array.
 extern ParticleDynVector<ParticleTypeClass*> ParticleTypeArray;

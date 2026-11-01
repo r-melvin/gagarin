@@ -12,7 +12,7 @@
 #include "_layout/locomotion_class.h"
 
 // GLOBAL: GAMEMD 0x00A8ED84 -- frame count read by the timer helper.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTime) == 0x00);
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);

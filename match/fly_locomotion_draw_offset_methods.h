@@ -6,7 +6,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/com_interfaces.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 // GLOBAL: GAMEMD 0x822410
 extern const IID IID_00822410;
 // LIBRARY: GAMEMD 0x7DC720 (decl; reloc)

@@ -10,7 +10,7 @@
 // and IPiggyback (+0x18) adjustor thunks.
 //
 // The destructor body 0x69ECF0 stays scored by ComRel_0069ECF0
-// (match/core/multi_vtable_dtor_family_methods.cpp).
+// (match/multi_vtable_dtor_family_methods.cpp).
 
 #include <new.h>
 #include <math.h>
@@ -533,7 +533,7 @@ int ShipLocomotionClass::Size()
 
 // SYNTHETIC: GAMEMD 0x6A42B0 -- compiler-generated scalar deleting destructor.
 // The destructor body (releases Piggybackee) is the same code as 0x69ECF0,
-// which stays scored by ComRel_0069ECF0 (match/core/multi_vtable_dtor_family_methods.cpp).
+// which stays scored by ComRel_0069ECF0 (match/multi_vtable_dtor_family_methods.cpp).
 ShipLocomotionClass::~ShipLocomotionClass() {}
 
 // SYNTHETIC: GAMEMD 0x6A4300 -- compiler-generated ILocomotion QI adjustor thunk (this -= 0x4).

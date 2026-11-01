@@ -26,7 +26,7 @@
 // they compile here as a by-product and are not claimed. The globals' retail
 // addresses are bound for verification through the per-TU symbol map.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class AlphaShapeClass;
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -188,7 +188,7 @@ extern const CLSID DAT_007E9850;
 extern const CLSID DAT_007E9830;
 
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;

@@ -30,7 +30,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/building_class.h"
-#include "core/rules_class.h"
+#include "rules_class.h"
 
 
 // BuildingAnimSlot, as far as this method uses it.

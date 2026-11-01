@@ -10,9 +10,9 @@
 
 #include "_layout/tiberium_class.h"
 #include "_layout/cell_class.h"
-#include "core/scenario_class_methods.h"
-#include "core/frame_counter.h"
-#include "core/vector_class.h"
+#include "scenario_class_methods.h"
+#include "frame_counter.h"
+#include "vector_class.h"
 #include <stdlib.h>
 
 #include "_layout/scenario_ptr_00a8b230.h"

@@ -178,7 +178,7 @@ struct Obj_006EDE60;
 struct Obj_006EDEC0;
 
 // GLOBAL: GAMEMD 0xA8B230
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x5BF260 (decl; reloc)
@@ -301,7 +301,7 @@ void FUN_006EDEC0(Obj_006EDEC0* a1, int a2, Arg1_006EDEC0* a3, int a4);
 
 
 #include <stddef.h>
-#include "core/vector_class.h"
+#include "vector_class.h"
 #include "_rt/gg_static_assert.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT case-insensitive string compare (cdecl, two pointers).
@@ -394,7 +394,7 @@ extern Lookup_00747370 DAT_00842DD4_obj;
 
 #include "team_class_mission_target_methods.h"
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
@@ -438,7 +438,7 @@ double DAT_00B0E988 = DAT_007E1718 / DAT_00B0E9A0;
 #include "_layout/team_type_class.h"
 #include "_layout/house_class.h"
 #include "_layout/tag_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0x8B4150 -- AnimTypeClass::Array.
 extern DynamicVectorClass<AnimTypeClass*> DAT_008B4150;

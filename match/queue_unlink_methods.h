@@ -11,7 +11,7 @@
 #include "_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 struct Node_0041DC80
 {

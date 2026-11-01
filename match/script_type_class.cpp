@@ -31,7 +31,7 @@
 // the body scores 98.5% / 96.0%; as a free inline function taking the array as
 // its first pointer parameter — AddItem_ScriptTypeArray below — the identical
 // body scores 100% on both functions. The lever was found at 0x41D300
-// (match/core/registered_object_ctor_methods.cpp) and transferred here
+// (match/registered_object_ctor_methods.cpp) and transferred here
 // unchanged; 0x6CB3A0 is the third site.
 
 #include "script_type_class.h"

@@ -6,8 +6,8 @@
 // Vector element identities come from RTTI at 8301A0/830200/830268.
 #ifndef GG_MATCH_LAYOUT_MAP_STAGE_LIST_H
 #define GG_MATCH_LAYOUT_MAP_STAGE_LIST_H
-#include "../core/string_class.h"
-#include "../core/vector_class_operations.h"
+#include "../string_class.h"
+#include "../vector_class_operations.h"
 
 class MSAnimEntry {
 public:

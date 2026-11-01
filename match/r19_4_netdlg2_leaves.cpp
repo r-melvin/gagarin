@@ -19,7 +19,7 @@
 #include "netshare_common.h"
 #include "_layout/node_name_type.h"
 #include "connman_class.h"
-#include "core/init_misc_methods.h"
+#include "init_misc_methods.h"
 #include "netshare_slot_nodes.h"
 
 // FUNCTION: GAMEMD 0x775B10 (decl; reloc) -- the current dialog window.

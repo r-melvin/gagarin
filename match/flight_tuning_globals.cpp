@@ -8,8 +8,8 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CAC40(double value);

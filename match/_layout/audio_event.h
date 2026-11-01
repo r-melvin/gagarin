@@ -16,8 +16,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/triple_timer_init_methods.h"
-#include "../core/tail_call_methods.h"
+#include "../triple_timer_init_methods.h"
+#include "../tail_call_methods.h"
 #include "audio_controller.h"
 #include "audio_event_type.h"
 

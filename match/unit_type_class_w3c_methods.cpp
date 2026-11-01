@@ -6,7 +6,7 @@
 //   Construction, lifetime, and virtual overrides are ordered by retail address below.
 
 #include "FUNCTION.H"
-#include "core/randomizer.h"
+#include "randomizer.h"
 
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, ArrayIndex) == 0xDF8);
 GG_STATIC_ASSERT(sizeof(((UnitTypeClass*)0)->ArrayIndex) == 4);
@@ -27,7 +27,7 @@ extern const char STR_0081834C[];
 void* __fastcall FUN_005B40B0(const char* name, bool flag);
 
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 

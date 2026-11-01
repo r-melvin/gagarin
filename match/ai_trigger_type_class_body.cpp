@@ -15,7 +15,7 @@
 #include "ai_trigger_register_methods.h"
 #include "ccini_class_methods.h"
 #include "locomotion_load_support.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 #include "house_views.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------

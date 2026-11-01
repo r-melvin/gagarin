@@ -6,9 +6,9 @@
 //   code range (0x4b67a0-0x4ba3af). Functions are in ascending retail address order.
 
 #include <math.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #pragma intrinsic(pow)
-#include "core/empty_function_family_methods.h"
+#include "empty_function_family_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -31,7 +31,7 @@
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 struct ButtonFadeEffect;
 
@@ -55,7 +55,7 @@ GG_STATIC_ASSERT(offsetof(GgButtonfadeeffectDynamicVectorClass, CapacityIncremen
 
 GG_STATIC_ASSERT(sizeof(ButtonFadeEffect*) == 4);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 struct CrossDissolveEffect;
 

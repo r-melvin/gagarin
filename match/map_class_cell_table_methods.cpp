@@ -10,7 +10,7 @@
 
 #include <new.h>
 #include "ui_display_chain.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/cell_class.h"
 
 // FUNCTION: GAMEMD 0x565AA0

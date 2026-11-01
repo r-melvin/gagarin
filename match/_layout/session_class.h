@@ -7,7 +7,7 @@
 #define GG_MATCH_LAYOUT_SESSION_CLASS_H
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 #include "ipx_address_class.h"
 #include "session_record.h"
 #include "elapsed_timer.h"

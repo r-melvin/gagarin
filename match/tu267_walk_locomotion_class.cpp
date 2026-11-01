@@ -24,7 +24,7 @@
 #include <new.h>
 #include "walk_locomotion_class.h"
 #include "_layout/cell_class.h"   // CellClass: the map cell lookup result
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals --------------
 

@@ -169,14 +169,14 @@ CellClass InvalidCell;
 #include "_layout/session_class.h"
 #include "ui_display_chain.h"
 #include <stdlib.h>
-#include "core/lcw_pipe.h"
+#include "lcw_pipe.h"
 #include "_layout/house_class.h"
 #include "_layout/house_type_class.h"
 #include "veinhole_monster_deleteall_methods.h"
 #include "_layout/tiberium_class.h"
 #include "map_class_location_shrouded_methods.h"
 #include "crate_class.h"
-#include "core/unsorted_callback_methods.h"
+#include "unsorted_callback_methods.h"
 #include "wwlib/surface/zbuffer_class_methods.h"
 #include "wwlib/surface/drawing.h"
 

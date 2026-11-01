@@ -7,7 +7,7 @@
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include <windows.h>
 #include "_rt/gg_static_assert.h"
 #include "null_modem_class_methods.h"

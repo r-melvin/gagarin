@@ -5,7 +5,7 @@
 //   the same bodies inline (/Ob2 expands the out-of-line functions into them).
 
 #include "_layout/kamikaze_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // FUNCTION: GAMEMD 0x54E360
 //

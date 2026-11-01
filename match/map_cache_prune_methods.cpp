@@ -6,9 +6,9 @@
 // WIN32_FIND_DATAA ABI. RTTI tables 0x7ED92C/0x7ED94C identify the canonical
 // VectorClass/DynamicVectorClass pointer specialization.
 #include <windows.h>
-#include "core/vector_find_data.h"
-#include "core/vector_class_dynamic_ctor.h"
-#include "core/vector_class_mutation.h"
+#include "vector_find_data.h"
+#include "vector_class_dynamic_ctor.h"
+#include "vector_class_mutation.h"
 
 template class VectorClass<WIN32_FIND_DATAA*>;
 template class DynamicVectorClass<WIN32_FIND_DATAA*>;

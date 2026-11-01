@@ -16,7 +16,7 @@
 #include "DEFINES.H"
 #include <new.h>
 #include "_layout/teleport_locomotion_class.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new (CRT), called by the new-expressions.
 // LIBRARY: GAMEMD 0x7C5F00 -- _ftol (CRT), the double-to-int conversions.

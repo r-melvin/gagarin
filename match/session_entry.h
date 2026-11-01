@@ -11,9 +11,9 @@
 #define GG_MATCH_NETWORK_SESSION_ENTRY_H
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/disk_id.h"
-#include "core/type_list.h"
-#include "core/string_class.h"
+#include "disk_id.h"
+#include "type_list.h"
+#include "string_class.h"
 class INIClass;
 class MultiMission
 {

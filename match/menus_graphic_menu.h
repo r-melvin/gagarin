@@ -16,7 +16,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "ui_common.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 // Point2D and Rect (ui_common.h) are the module-wide point and rectangle views.
 

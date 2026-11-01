@@ -82,7 +82,7 @@ extern Tactical_00729E50* DAT_00887324;
 // GLOBAL: GAMEMD 0x87F7E8 — map object passed as ECX to GetZPos.
 extern Map_00729E50 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xA8ED84 — frame value read by the progress calculation.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 // GLOBAL: GAMEMD 0x844A9C — integer scale added in switch cases.
 extern int DAT_00844A9C;
 // GLOBAL: GAMEMD 0x844A98 — integer scale used by modes 5 and 6.

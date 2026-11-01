@@ -16,7 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "object_class.h"
 #include "facing_class.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 class CellClass;
 

@@ -53,7 +53,7 @@ class WaypointClass;
 #include "foot_class.h"       // CellStruct
 #include "vector_class.h"     // DynamicVectorClass
 #include "components.h"       // ColorStruct
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 class BuildingClass;
 class TagClass;
 class SuperClass;

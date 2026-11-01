@@ -11,7 +11,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
 #include "foot_class.h"   // CellStruct
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 class TechnoClass;
 struct Obj_004A1D30;

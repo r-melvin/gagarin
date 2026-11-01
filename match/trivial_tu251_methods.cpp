@@ -6,7 +6,7 @@
 
 #include "FUNCTION.H"
 #include "trivial_tu251_methods.h"
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 #include "trigger_type_class_methods.h"
 #include "trigger_type_class_more_methods.h"
 #include "trigger_type_class_flags_methods.h"

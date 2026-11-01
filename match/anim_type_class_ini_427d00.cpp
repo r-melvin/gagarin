@@ -6,7 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "_layout/anim_type_class.h"
-#include "core/rules_class_ini_support.h"
+#include "rules_class_ini_support.h"
 
 // GLOBAL: GAMEMD 0x887180 -- the art INI selected by the native immediate receivers.
 extern CCINIClass DAT_00887180;

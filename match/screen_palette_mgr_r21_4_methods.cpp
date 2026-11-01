@@ -18,7 +18,7 @@
 //   0x730670  FUN_00730670
 
 #include "screen_palette_mgr_methods.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 
 // GLOBAL: GAMEMD 0xB0FBE0 -- the screen resources are loaded.
 extern char DAT_00B0FBE0_r21_4;

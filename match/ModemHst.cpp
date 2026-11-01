@@ -12,7 +12,7 @@
 //
 // The nine tail-jump thunks, ordered ascending by retail address.
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
@@ -25,7 +25,7 @@
 // Opens subkey name under root; returns 0 on failure.
 HKEY FUN_007741c0(HKEY root, const char* name, int flags);
 
-#include "core/tail_jmp_thunk_sweep.h"
+#include "tail_jmp_thunk_sweep.h"
 
 #include "wol_scenario_color_methods.h"
 

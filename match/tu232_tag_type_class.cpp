@@ -67,7 +67,7 @@ GG_STATIC_ASSERT(sizeof(TagTypeClass*) == 4);
 
 #include "tag_type_class_ini_methods.h"
 
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 
 extern "C" char* __cdecl strncpy(char*, const char*, unsigned int);
 
@@ -116,7 +116,7 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 
 #include "tag_type_class_save_methods.h"
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

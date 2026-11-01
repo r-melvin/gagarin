@@ -6,7 +6,7 @@
 //   EAX,EAX; four absolute dword stores to 0x89C4C0..0x89C4CC; RET. Address
 //   references to each global were confirmed independently in Ghidra.
 #include "bit_font_global_reset_00434ab0.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 // SYNTHETIC: GAMEMD 0x00434AB0
 // GLOBAL: GAMEMD 0x0089C4C0

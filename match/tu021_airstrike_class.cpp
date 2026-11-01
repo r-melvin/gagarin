@@ -17,7 +17,7 @@
 //   0x41D7E0.
 
 #include "FUNCTION.H"
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 class AirstrikeClass;
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -53,7 +53,7 @@ GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, CapacityIncrement) == 0x14);
 
 #include "airstrike_class_reset_target_methods.h"
 
-#include "core/small_misc47_methods.h"
+#include "small_misc47_methods.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x41D380

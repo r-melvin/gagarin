@@ -13,7 +13,7 @@
 #include "_layout/foot_class.h"
 #include "_layout/building_class.h"
 #include "_layout/techno_type_class.h"
-#include "core/mission_class_methods.h"
+#include "mission_class_methods.h"
 #include "loco_com.h"
 #include "_layout/unit_class.h"
 #include "_layout/matrix3d.h"
@@ -74,7 +74,7 @@ extern RulesClass* DAT_008871E0;
 
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x6EC300 (declaration) -- whether the linked team accepts the move.

@@ -14,7 +14,7 @@ GG_STATIC_ASSERT(sizeof(SearchRecord8_00589290) == 8);
 // Prefix view: entry 0x589290 copies complete 8-byte elements. The search at
 // 0x5892D0 was re-identified from RTTI as slot 4 (FindItemIndex) of the
 // DynamicVectorClass<SubzoneConnectionStruct> vtable 0x7ED5A0 and moved to
-// match/core/pair_vector_ctor_family_methods.cpp.
+// match/pair_vector_ctor_family_methods.cpp.
 struct SearchVector8_00589290 {
     char unknown_00[4];
     SearchRecord8_00589290* Data;

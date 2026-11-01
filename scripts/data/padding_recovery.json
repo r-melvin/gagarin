@@ -118,7 +118,7 @@
   {
    "addr": "0x5BCB60",
    "length": "0x30",
-   "source": "match/core/coordinate_005bcb60.cpp",
+   "source": "match/coordinate_005bcb60.cpp",
    "status": "matched at 100% by scripts/vc6/verify_all.py",
    "rea_evidence_id": "ev_4353112a6c0c05e5162a14e34587fd21193317f45be91f381fad25f026067933",
    "analysis_target": {
@@ -263,7 +263,7 @@
   {
    "addr": "0x4CB9B0",
    "length": "0x28",
-   "source": "match/core/static_reset_004cb990.cpp",
+   "source": "match/static_reset_004cb990.cpp",
    "rea_evidence_id": "ev_3b017d634887ac983d6c5c63b43d184d69d8836fffdfce6eec637780cde37cb1",
    "analysis_target": {
     "entry_point": "0x4cb9b0",
@@ -315,7 +315,7 @@
   {
    "addr": "0x4CBA40",
    "length": "0x13",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_d3c8cd0ef686838c84737674bdb2cc2ccde12b1a6df1819564915c18b38413f6",
    "analysis_target": {
     "entry_point": "0x4cba40",
@@ -341,7 +341,7 @@
   {
    "addr": "0x4CBA60",
    "length": "0x13",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_c5852e3161184c2167721d16d296881a22a10fc6e7ce24f5e37ff00b28a05e9e",
    "analysis_target": {
     "entry_point": "0x4cba60",
@@ -367,7 +367,7 @@
   {
    "addr": "0x4CBA80",
    "length": "0x31",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_ec2a01d0b93b4bc681b51d99226eb3d0146164377a5deda7828929885adaf02c",
    "analysis_target": {
     "entry_point": "0x4cba80",
@@ -393,7 +393,7 @@
   {
    "addr": "0x4CBAC0",
    "length": "0x21",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_ddf08740d1032fffcd0aa11e465624e6f786d876a0cf22e41f8bb83af16c12b9",
    "analysis_target": {
     "entry_point": "0x4cbac0",
@@ -419,7 +419,7 @@
   {
    "addr": "0x4CBAF0",
    "length": "0x2c",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_22ded13cceabb39bedf8eec93cf9b1f84e29a38d37c7bfe22bdcb59db437ba45",
    "analysis_target": {
     "entry_point": "0x4cbaf0",
@@ -445,7 +445,7 @@
   {
    "addr": "0x4CBB20",
    "length": "0x27",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_81e53d1a64d7cc711fd8a2a9d2d2c78a49a244980c6cee3cab6e89621c75d28f",
    "analysis_target": {
     "entry_point": "0x4cbb20",
@@ -471,7 +471,7 @@
   {
    "addr": "0x4CBB50",
    "length": "0xf",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_46f0170111280894e957edb08ba1c5925a6e22fd3e8970bf37d1693351a4d4e5",
    "analysis_target": {
     "entry_point": "0x4cbb50",
@@ -497,7 +497,7 @@
   {
    "addr": "0x4CBB60",
    "length": "0x12",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_09e49fcd5e094f853c01c2050a12be77bd1864d8e4e6ed137ae8a6dd88300e23",
    "analysis_target": {
     "entry_point": "0x4cbb60",
@@ -523,7 +523,7 @@
   {
    "addr": "0x4CBB80",
    "length": "0x1a",
-   "source": "match/core/math_initializers_004cba40.cpp",
+   "source": "match/math_initializers_004cba40.cpp",
    "rea_evidence_id": "ev_cce9a1d890deebf286612e455f6d4f056b53539c72698ab55df90855591e5c5a",
    "analysis_target": {
     "entry_point": "0x4cbb80",
@@ -885,7 +885,7 @@
   {
    "addr": "0x4CB9B0",
    "subsystem": "core",
-   "source": "match/core/static_reset_004cb990.cpp",
+   "source": "match/static_reset_004cb990.cpp",
    "evidence": [
     "Retail loads256.0 from7E1710 then2.0 from7E1708 before7C8FB0",
     "VC6 CRT LIBC.LIB pow.obj __CIpow exactly matches all25 wrapper bytes at7C8FB0",
@@ -912,7 +912,7 @@
    "oracle": "scripts/vc6/verify_all.py",
    "verified_rows": [
     {
-     "tu": "match/core/static_reset_004cb990.cpp",
+     "tu": "match/static_reset_004cb990.cpp",
      "addr": "0x4CB990",
      "sym": "_FUN_004CB990",
      "len": "0x17",
@@ -921,7 +921,7 @@
      "pct": 100
     },
     {
-     "tu": "match/core/static_reset_004cb990.cpp",
+     "tu": "match/static_reset_004cb990.cpp",
      "addr": "0x4CB9E0",
      "sym": "_FUN_004CB9E0",
      "len": "0x13",
@@ -930,7 +930,7 @@
      "pct": 100
     },
     {
-     "tu": "match/core/static_reset_004cb990.cpp",
+     "tu": "match/static_reset_004cb990.cpp",
      "addr": "0x4CBA00",
      "sym": "_FUN_004CBA00",
      "len": "0x13",
@@ -939,7 +939,7 @@
      "pct": 100
     },
     {
-     "tu": "match/core/static_reset_004cb990.cpp",
+     "tu": "match/static_reset_004cb990.cpp",
      "addr": "0x4CBA20",
      "sym": "_FUN_004CBA20",
      "len": "0x13",

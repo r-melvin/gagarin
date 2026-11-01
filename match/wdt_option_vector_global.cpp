@@ -6,7 +6,7 @@
 // the run-time initialiser (constructor plus atexit registration) fuses into one function
 // and the exit stub 0x7660B0 sits 0x40 after it.
 #include "world_domination_tour.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 typedef rc_ptr<WorldDominationTour::GameOption> OptionPtr;
 

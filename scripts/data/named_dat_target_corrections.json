@@ -67,7 +67,7 @@
   },
   {
    "addr": "0x00438410",
-   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+   "tu": "match/dynamic_bomb_vector_00438410.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -86,7 +86,7 @@
   },
   {
    "addr": "0x439510",
-   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "tu": "match/periodic_state_updates_00439480.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -105,7 +105,7 @@
   },
   {
    "addr": "0x439530",
-   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "tu": "match/periodic_state_updates_00439480.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -124,7 +124,7 @@
   },
   {
    "addr": "0x439550",
-   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "tu": "match/periodic_state_updates_00439480.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -143,7 +143,7 @@
   },
   {
    "addr": "0x439570",
-   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "tu": "match/periodic_state_updates_00439480.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -162,7 +162,7 @@
   },
   {
    "addr": "0x43afb0",
-   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "tu": "match/math_global_updates_0043af70.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -181,7 +181,7 @@
   },
   {
    "addr": "0x43afd0",
-   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "tu": "match/math_global_updates_0043af70.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -200,7 +200,7 @@
   },
   {
    "addr": "0x43aff0",
-   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "tu": "match/math_global_updates_0043af70.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -219,7 +219,7 @@
   },
   {
    "addr": "0x43b010",
-   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "tu": "match/math_global_updates_0043af70.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -238,7 +238,7 @@
   },
   {
    "addr": "0x473200",
-   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "tu": "match/math_global_updates_004731c0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -257,7 +257,7 @@
   },
   {
    "addr": "0x473220",
-   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "tu": "match/math_global_updates_004731c0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -276,7 +276,7 @@
   },
   {
    "addr": "0x473240",
-   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "tu": "match/math_global_updates_004731c0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -295,7 +295,7 @@
   },
   {
    "addr": "0x473260",
-   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "tu": "match/math_global_updates_004731c0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -314,7 +314,7 @@
   },
   {
    "addr": "0x4735B0",
-   "tu": "match/core/math_global_updates_00473570.cpp",
+   "tu": "match/math_global_updates_00473570.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -333,7 +333,7 @@
   },
   {
    "addr": "0x4735D0",
-   "tu": "match/core/math_global_updates_00473570.cpp",
+   "tu": "match/math_global_updates_00473570.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -352,7 +352,7 @@
   },
   {
    "addr": "0x4735F0",
-   "tu": "match/core/math_global_updates_00473570.cpp",
+   "tu": "match/math_global_updates_00473570.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -371,7 +371,7 @@
   },
   {
    "addr": "0x473610",
-   "tu": "match/core/math_global_updates_00473570.cpp",
+   "tu": "match/math_global_updates_00473570.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -390,7 +390,7 @@
   },
   {
    "addr": "0x474050",
-   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "tu": "match/math_global_updates_00473fe0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -409,7 +409,7 @@
   },
   {
    "addr": "0x474070",
-   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "tu": "match/math_global_updates_00473fe0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -428,7 +428,7 @@
   },
   {
    "addr": "0x474090",
-   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "tu": "match/math_global_updates_00473fe0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -447,7 +447,7 @@
   },
   {
    "addr": "0x4740b0",
-   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "tu": "match/math_global_updates_00473fe0.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -588,7 +588,7 @@
   },
   {
    "addr": "0x4CBA20",
-   "tu": "match/core/static_reset_004cb990.cpp",
+   "tu": "match/static_reset_004cb990.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -607,7 +607,7 @@
   },
   {
    "addr": "0x4CBA40",
-   "tu": "match/core/math_initializers_004cba40.cpp",
+   "tu": "match/math_initializers_004cba40.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -626,7 +626,7 @@
   },
   {
    "addr": "0x4CBA60",
-   "tu": "match/core/math_initializers_004cba40.cpp",
+   "tu": "match/math_initializers_004cba40.cpp",
    "correction": "x87 operand order",
    "fields": [
     {
@@ -645,7 +645,7 @@
   },
   {
    "addr": "0x4CBA80",
-   "tu": "match/core/math_initializers_004cba40.cpp",
+   "tu": "match/math_initializers_004cba40.cpp",
    "correction": "x87 operand order",
    "fields": [
     {

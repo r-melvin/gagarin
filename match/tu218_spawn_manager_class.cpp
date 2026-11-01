@@ -70,7 +70,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SpawnManagerClass::SpawnControl* >) =
 
 
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 
 
@@ -156,7 +156,7 @@ class WeaponTypeClass;
 struct HWND__;
 
 
-#include "core/vector_resize_family_methods.h"
+#include "vector_resize_family_methods.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

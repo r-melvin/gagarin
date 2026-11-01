@@ -24,7 +24,7 @@
 #include "_rt/gg_vslot.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 // GLOBAL: GAMEMD 0xA8E7AC — Unsorted::ScenarioInit.
 extern int DAT_00A8E7AC;
 

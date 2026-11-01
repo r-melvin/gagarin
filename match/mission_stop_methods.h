@@ -10,7 +10,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
-#include "core/rules_class.h"
+#include "rules_class.h"
 
 // Declaration order matters — see match/_rt/gg_vslot.h. The class must be
 // complete before the member-function-pointer types, or VC6 uses the 8-byte

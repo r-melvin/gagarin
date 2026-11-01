@@ -6,8 +6,8 @@
 
 #include "_layout/infantry_type_class.h"
 #include "_layout/rules_class.h"
-#include "core/vector_class.h"
-#include "core/header_init_shapes.h"
+#include "vector_class.h"
+#include "header_init_shapes.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT _strcmpi.
 extern "C" int __cdecl _strcmpi(const char*, const char*);

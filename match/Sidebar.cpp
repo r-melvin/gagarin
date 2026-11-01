@@ -39,18 +39,18 @@
 // SidebarClass::StripClass::SelectClass and SidebarClass::SBGadgetClass slots
 // (layout and evidence: sidebar_select_class.h).
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/geometry2d.h"
 #include "_layout/session_class.h"
-#include "core/mathtbl_init_shapes.h"
-#include "core/deleting_dtor_sweep.h"
+#include "mathtbl_init_shapes.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 
-#include "core/stdcall_forward_sweep.h"
+#include "stdcall_forward_sweep.h"
 
 #include "sidebar_class_layout.h"
 #include "shape_button_class.h"
@@ -58,7 +58,7 @@
 #include "super_weapon_type_class_methods.h"
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.
-#include "core/game_state_flags.h"
+#include "game_state_flags.h"
 #include "vox_class_methods.h"
 #include <new.h>
 #include "ui_display_chain.h"

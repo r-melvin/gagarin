@@ -9,8 +9,8 @@
 //   Reads the product serial from the registry and unscrambles it with the
 //   bytes of the local key file.
 
-#include "core/trivial_tu160_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "trivial_tu160_methods.h"
+#include "mathtbl_init_shapes.h"
 
 #include <windows.h>
 #include <stdio.h>

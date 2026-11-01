@@ -22,7 +22,7 @@
 #include "_layout/vector_class.h"
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 class SlaveManagerView_006AF580;
 struct SlaveManagerHandle;

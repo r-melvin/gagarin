@@ -4,8 +4,8 @@
 //   +0..+2, Owner +4, Decrement +8, ActiveSlot +0xC, then the 32 ring entries
 //   from +0x10 (x,y,z,flag); the global trail list is at 0xABCB78.
 
-#include "core/vector_class_operations.h"
-#include "core/header_init_shapes.h"
+#include "vector_class_operations.h"
+#include "header_init_shapes.h"
 #include "line_trail.h"
 
 // GLOBAL: GAMEMD 0xABCB50 -- the "no point" coordinate stamped into unused ring entries.

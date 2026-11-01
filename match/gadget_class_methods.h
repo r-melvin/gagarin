@@ -31,9 +31,9 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/link_class_methods.h"
+#include "link_class_methods.h"
 
-// GadgetClass derives from the real LinkClass base (match/core/link_class_methods.h):
+// GadgetClass derives from the real LinkClass base (match/link_class_methods.h):
 // vtable slots 0x00..0x24 and the vptr/Next/Previous prefix come from the base,
 // and GadgetClass appends its own slots from 0x28 (Input) onward. Modelling the
 // base for real (rather than inlining its prefix) is what lets Remove() below be

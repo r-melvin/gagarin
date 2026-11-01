@@ -62,9 +62,9 @@
 // Retail RTTI names VectorClass<Wstring> and DynamicVectorClass<Wstring> (4-byte string-handle elements).
 // The element copy ctor 0x7B4690 (__thiscall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
 
-#include "core/triple_timer_init_methods.h"
+#include "triple_timer_init_methods.h"
 #include "_layout/session_class.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "ccini_class_methods.h"
 #include "ccfile_class.h"
 #include <stdio.h>
@@ -147,7 +147,7 @@ extern const char STR_0083F3E4[];
 // GLOBAL: GAMEMD 0x82BC30
 extern const char STR_0082BC30[];
 
-#include "core/empty_function_family_methods.h"
+#include "empty_function_family_methods.h"
 
 #include <stddef.h>
 #include "_layout/phone_entry_class.h"
@@ -225,7 +225,7 @@ GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, Length) == 0x2C);
 GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, PartialCount) == 0x30);
 GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, Partial) == 0x34);
 
-#include "core/trivial_tu207_methods.h"
+#include "trivial_tu207_methods.h"
 
 #include <windows.h>
 #include <mmsystem.h>
@@ -319,9 +319,9 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 // GLOBAL: GAMEMD 0x008B4124
 extern "C" Type_006A46D0** DAT_008B4124;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
-#include "core/disk_id.h"
+#include "disk_id.h"
 
 
 // Retail PAUGlobalPacketType RTTI establishes the pointer element type and zero-offset
@@ -331,7 +331,7 @@ extern "C" Type_006A46D0** DAT_008B4124;
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 struct GlobalPacketType;
 
@@ -398,7 +398,7 @@ GG_STATIC_ASSERT(sizeof(DiskID) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<DiskID >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<DiskID >) == 0x18);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MultiMission;
 
@@ -408,7 +408,7 @@ GG_STATIC_ASSERT(sizeof(MultiMission*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<MultiMission* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<MultiMission* >) == 0x18);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class PhoneEntryClass;
 
@@ -418,9 +418,9 @@ GG_STATIC_ASSERT(sizeof(PhoneEntryClass*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<PhoneEntryClass* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PhoneEntryClass* >) == 0x18);
 
-#include "core/vector_resize_family_methods.h"
+#include "vector_resize_family_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 
 struct Obj_00696F90;
@@ -863,7 +863,7 @@ bool SessionClass::FUN_00697E70(void* house)
 extern signed char DAT_0083ED14[9];
 GG_STATIC_ASSERT(sizeof(DAT_0083ED14) == 9);
 
-#include "core/rules_class.h"
+#include "rules_class.h"
 #include "ccini_class_methods.h"
 #include "multiplayer_game_mode.h"
 // Declaration: GAMEMD 0x5D5E10 -- no incoming arguments, pointerEAX, RET.
@@ -949,8 +949,8 @@ extern const char STR_0083F1C0[]; // STRING: GAMEMD 0x0083F1C0 (decl; reloc)
 extern const char STR_0083F1AC[]; // STRING: GAMEMD 0x0083F1AC (decl; reloc)
 extern "C" int __cdecl fprintf(FILE*, const char*, ...); // LIBRARY: GAMEMD 0x7CA7D8 (decl; VC6 CRT)
 #include "_layout/rules_class.h"
-#include "core/randomizer.h"
-#include "core/trivial_tu158_methods.h"
+#include "randomizer.h"
+#include "trivial_tu158_methods.h"
 #include "mp_game_mode_class_get_methods.h"
 #include "ui_display_chain.h"
 #include <stdlib.h>
@@ -1429,7 +1429,7 @@ int SessionClass::FUN_0069B720()
 
 // 0x69C9F3/0x69CA21 write array cookies for four-byte elements.
 // 0x69CA81 calls the nontrivial assignment at 0x7B4940.
-#include "core/string_class.h"
+#include "string_class.h"
 
 template class DynamicVectorClass<Wstring>;
 
@@ -1590,8 +1590,8 @@ int Obj_0069ACC0::FUN_0069ACC0() const
 }
 
 #include "_layout/house_class.h"
-#include "core/scenario_class_methods.h"
-#include "core/vector_class_operations.h"
+#include "scenario_class_methods.h"
+#include "vector_class_operations.h"
 // GLOBAL: GAMEMD 0xA8B230
 extern ScenarioClass* ScenarioInstance;
 // Declaration: GLOBAL GAMEMD 0xA80228 -- existing house-vector owner.

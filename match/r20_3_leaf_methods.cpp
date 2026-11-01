@@ -8,7 +8,7 @@
 #include <windows.h>
 #include <objidl.h>
 #include <stddef.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "_layout/frame_timer.h"
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +16,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/geometry2d.h"
 #include "_layout/obj_0069e430.h"
-#include "core/packed_006c9940.h"
+#include "packed_006c9940.h"
 
 // The load screen's backdrop shape sits at +0x54 (see LoadScreenClass_00642AD0).
 struct LoadScreenShapeView_00642E00

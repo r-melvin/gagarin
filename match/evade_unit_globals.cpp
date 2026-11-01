@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 
 // GLOBAL: GAMEMD 0x8A38D8
 extern double DAT_008A38D8;

@@ -17,8 +17,8 @@
 #include "audio_controller.h"
 #include "audio_event.h"
 #include "audio_event_type.h"
-#include "../core/intrusive_list_methods.h"
-#include "../core/vector_class.h"
+#include "../intrusive_list_methods.h"
+#include "../vector_class.h"
 
 class CCINIClass;
 struct IStream;

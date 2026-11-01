@@ -12,7 +12,7 @@
 #include "DEFINES.H"
 #include "FUNCTION.H"
 #include "locomotion_load_support.h"
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 #include "tevent_class_methods.h"
 #include "trigger_class_event_methods.h"
 #include "trigger_class_methods.h"
@@ -75,7 +75,7 @@ inline bool TriggerCtorVectorAddItem(TriggerCtorPtrVector* vector,
 }
 
 // GLOBAL: GAMEMD 0x00A8B230 — ScenarioClass::Instance (pointer).
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x725FA0

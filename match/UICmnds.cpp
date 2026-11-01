@@ -15,7 +15,7 @@
 #include "_layout/session_class.h"
 #include "_layout/house_class.h"
 #include "_layout/techno_type_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include <stdlib.h>
 #include <string.h>
 #include "voc_class_play_global_methods.h"
@@ -30,18 +30,18 @@
 #include <stdio.h>
 #include "message_list_class_methods.h"
 #include "input_manager_class_methods.h"
-#include "core/rules_class.h"
+#include "rules_class.h"
 #include "event_queue.h"
 #include "_layout/tactical.h"
 #include "ui_display_chain.h"
-#include "core/dynamic_vector_ctor_pod_family_methods.h"
+#include "dynamic_vector_ctor_pod_family_methods.h"
 
 // Sidebar "tab object" globals @ 0x00B0FE5C / 0x00B0FE60. Declared-only so cl
 // emits reloc-normalised absolute stores/compares.
 extern TechnoClass* SidebarTabObjectA;   // 0x00B0FE5C
 extern TechnoClass* SidebarTabObjectB;   // 0x00B0FE60
 
-#include "core/trivial_tu256_methods.h"
+#include "trivial_tu256_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -106,7 +106,7 @@ extern const char DAT_0084566C[] = "MSG:Elite";
 //
 // Global query leaves, ordered ascending by retail address.
 
-#include "core/global_getter_family_methods.h"
+#include "global_getter_family_methods.h"
 
 #include "system_query_methods.h"
 

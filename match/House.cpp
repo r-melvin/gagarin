@@ -256,9 +256,9 @@
 //   GLOBAL:   GAMEMD 0xA83D4C   HouseClass::CurrentPlayer  (HouseClass*)
 //   GLOBAL:   GAMEMD 0xA8B238   SessionClass::Instance.GameMode  (int; Campaign==0)
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/house_class.h"
-#include "core/vector_ctor_pod_family_methods.h"
+#include "vector_ctor_pod_family_methods.h"
 
 class AlphaLightingRemapClass;
 class BulletClass;
@@ -295,8 +295,8 @@ struct StaticVectorHolder_00A8EFC8 {
 };
 
 #include <math.h>
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "_layout/cell.h"
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
@@ -348,7 +348,7 @@ CoordStruct EmptyCoord_00A8EFF8;
 // END defined globals
 
 #include "_layout/house_class.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 
 // GLOBAL: GAMEMD 0x8871E0
@@ -422,7 +422,7 @@ extern SidebarView_004F9370 Sidebar_0087F7E8_004F9370;
 #include "_layout/base_node_class.h"
 #include "_layout/factory_class.h"
 #include "_layout/map_0087f7e8.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "_layout/rules_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
 #include "_layout/obj_004a1d30.h"
@@ -468,19 +468,19 @@ static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 #include "house_class_lost_powered_center_methods.h"
 
 
-#include "core/empty_function_family_methods.h"
+#include "empty_function_family_methods.h"
 
-#include "core/general_structures.h"
+#include "general_structures.h"
 
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 
-#include "core/member_setter_family_methods.h"
+#include "member_setter_family_methods.h"
 
-#include "core/object_type_class.h"
+#include "object_type_class.h"
 
-#include "core/positive_field_predicates.h"
+#include "positive_field_predicates.h"
 
-#include "core/trivial_tu095_methods.h"
+#include "trivial_tu095_methods.h"
 
 #include <windows.h>
 #include <stddef.h>
@@ -569,8 +569,8 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 // GLOBAL: GAMEMD 0x008B4124
 extern "C" Type_006A46D0** DAT_008B4124;
 
-#include "core/vector_class_operations.h"
-#include "core/zone_connection_class.h"
+#include "vector_class_operations.h"
+#include "zone_connection_class.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -594,7 +594,7 @@ class AITriggerTypeClass;
 
 template class DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*> >;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 
 template class DynamicVectorClass<HouseClass::BuildChoiceClass*>;
@@ -603,21 +603,21 @@ GG_STATIC_ASSERT(sizeof(HouseClass::BuildChoiceClass*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<HouseClass::BuildChoiceClass* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<HouseClass::BuildChoiceClass* >) == 0x18);
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<ScoutStruct>;
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<AngerStruct>;
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<SwizzlePointerClass>;
 
@@ -625,7 +625,7 @@ template<class K,class V> struct HashObject { K Key; V Value; HashObject() {} Ha
 
 template class DynamicVectorClass<HashObject<unsigned int,unsigned int> >;
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<HashObject<unsigned int,SubzoneConnectionStruct> >;
 
@@ -637,11 +637,11 @@ struct AcceleratorTracker { int A; int B; AcceleratorTracker() : A(0), B(0) {} b
 
 template class DynamicVectorClass<AcceleratorTracker>;
 
-#include "core/undo_info_struct.h"
+#include "undo_info_struct.h"
 
 template class DynamicVectorClass<UndoInfoStruct>;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -682,8 +682,8 @@ extern unsigned char HouseMainObject;
 // Original TU boundaries, final link and complete TypeList size are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
-#include "core/type_list.h"
+#include "vector_class_operations.h"
+#include "type_list.h"
 class TeamTypeClass;
 
 // VTABLE: GAMEMD 0x7EA9E4 -- VectorClass<const TeamTypeClass*>.
@@ -853,7 +853,7 @@ void __cdecl FUN_0048DC90();
 // disassembly; field names are the INI key strings themselves.
 #include "_layout/color_struct.h"
 #include "_layout/scenario_ptr_00a8b230.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "_layout/session_class.h"
 #include "game_options_class_methods.h"
 #include "ccini_class_methods.h"
@@ -1043,7 +1043,7 @@ float DefaultArmorMultiplier = 1.0f;
 #include "house_class_destroy_all_methods.h"
 
 #include "_layout/house_class.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 #include "house_class_factory_queues_methods.h"
 
@@ -1100,7 +1100,7 @@ DynamicVectorClass_TiberiumPtr TiberiumArray;
 #include "_layout/house_class.h"
 #include "_layout/building_class.h"
 #include "_layout/building_type_class_layout.h"
-#include "core/guarded_getter_methods.h"
+#include "guarded_getter_methods.h"
 #include "_rt/gg_vslot.h"
 
 // Vtable slot +0x3D4 of a building: run with the house and a flag. The receiver
@@ -1179,7 +1179,7 @@ DynamicVectorClass_TechnoPtr TechnoArray;
 #include "_layout/house_class.h"
 #include "_layout/session_class.h"
 #include "_layout/techno_class.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
 extern HouseClass* CurrentPlayer;
@@ -1203,7 +1203,7 @@ static inline bool ControlledByCurrentPlayer(HouseClass* house)
 #include "_layout/house_class.h"
 #include "_layout/house_type_class.h"
 #include "_layout/techno_type_class.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 #include "_layout/map_0087f7e8.h"
 
 // GLOBAL: GAMEMD 0xA83D4C

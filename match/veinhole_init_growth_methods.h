@@ -64,7 +64,7 @@ struct Stack_0074DE90
 
     // The constructor body, expanded by hand: under /GX a real `new T` wraps
     // the allocation in an exception frame retail does not have (the banked
-    // rule, see match/core/campaign_class.cpp).
+    // rule, see match/campaign_class.cpp).
     inline Stack_0074DE90* Construct()
     {
         int n = DAT_008871E0->MaxVeinholeGrowth;

@@ -8,14 +8,14 @@
 #include <new.h>
 #include "_layout/voxel_anim_type_class.h"
 #include "_layout/swizzle_manager_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "_layout/techno_type_class.h"
 #include "_layout/voxel_resource_data.h"
 #include "ccfile_class.h"
-#include "core/rules_class_ini_support.h"
+#include "rules_class_ini_support.h"
 
 // GLOBAL: GAMEMD 0x7E2800
 extern const double DAT_007E2800;

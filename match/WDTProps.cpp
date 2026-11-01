@@ -13,7 +13,7 @@
 using WorldDominationTour::CampaignProperties;
 
 
-#include "core/global_getter_family_methods.h"
+#include "global_getter_family_methods.h"
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall string-table lookup.
 wchar_t* StringTable_LoadString(const char* label, int* out,

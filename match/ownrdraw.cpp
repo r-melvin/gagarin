@@ -24,7 +24,7 @@
 // Class names and the base relation come from the retail RTTI descriptors;
 // the owning class of each body is the class whose vtable slot 0 holds it.
 // Slot 0 is modelled as an ordinary virtual holding the deleting wrapper, as
-// FileClass does in match/core/ram_file_class.h: these classes are never
+// FileClass does in match/ram_file_class.h: these classes are never
 // constructed in this translation unit, so cl would not emit their tables or
 // a compiler-generated `??_G`. The classes are opaque views; no member is
 // touched, so there is no layout to assert.
@@ -123,11 +123,11 @@
 // gateout: CALL 0x48D080 (CallBack), fall through to
 // false:   XOR AL,AL / RET      ; return false
 
-#include "core/const_store_leaf_sweep.h"
-#include "core/mathtbl_init_shapes.h"
+#include "const_store_leaf_sweep.h"
+#include "mathtbl_init_shapes.h"
 #include <math.h>
 
-#include "core/empty_function_family_methods.h"
+#include "empty_function_family_methods.h"
 
 #include <new.h>
 #include <string.h>
@@ -209,7 +209,7 @@ extern "C" void __cdecl gg_free(void*);
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class ColorScheme;
 
@@ -353,9 +353,9 @@ extern char DAT_00B77F78;
 extern char DAT_0084E7C0;
 extern char DAT_0084E7C4;
 
-#include "core/hash_bucket_mask_sweep.h"
+#include "hash_bucket_mask_sweep.h"
 
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 
 #include "_rt/gg_static_assert.h"
 #include <stddef.h>
@@ -430,11 +430,11 @@ extern "C" void __cdecl gg_free(void*);
 
 #include "_layout/obj_007af000.h"
 
-#include "core/trivial_tu171_methods.h"
+#include "trivial_tu171_methods.h"
 
 #include "_layout/shp_struct.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -582,9 +582,9 @@ extern double DAT_00AC1B40;
 #include "packet_class.h"
 #include "bit_font_print_methods.h"
 #include "_layout/rules_class.h"
-#include "core/hash_table_rehash_sweep.h"
-#include "core/global_getter_family_methods.h"
-#include "core/trivial_tu181_methods.h"
+#include "hash_table_rehash_sweep.h"
+#include "global_getter_family_methods.h"
+#include "trivial_tu181_methods.h"
 #include "ownrdraw_dialog_control.h"
 #include "voc_class_play_global_methods.h"
 

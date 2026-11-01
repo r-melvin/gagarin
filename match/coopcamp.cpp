@@ -31,14 +31,14 @@
 
 #include "FUNCTION.H"
 #include <math.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include <string.h>
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/node_name_type.h"
 #pragma intrinsic(pow)
 
-#include "core/trivial_tu057_methods.h"
+#include "trivial_tu057_methods.h"
 
 
 template class DynamicVectorClass<char*>;

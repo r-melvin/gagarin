@@ -11,7 +11,7 @@
 
 #include "FUNCTION.H"
 #include "particle_class.h"
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 
 extern "C" const CLSID CLSID_Particle;
 

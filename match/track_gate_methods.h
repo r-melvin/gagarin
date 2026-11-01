@@ -9,7 +9,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/randomizer.h"
+#include "randomizer.h"
 
 struct Desc_00405AC0
 {

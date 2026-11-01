@@ -14,8 +14,8 @@
 #include "terrain_common_views.h"
 #include "_layout/cell.h"
 #include "_layout/cell_offset.h"
-#include "core/frame_counter.h"
-#include "core/abstract_index_cast_sweep.h"
+#include "frame_counter.h"
+#include "abstract_index_cast_sweep.h"
 #include "_layout/vector_class.h"
 
 // The candidate view at 0xA8ED84 aliases the canonical frame-counter symbol.

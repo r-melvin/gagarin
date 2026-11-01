@@ -1,0 +1,41 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// The run-time initialiser shapes that open many retail translation units: a
+// header-level group of globals each TU gets its own copy of. Each copy is
+// initialised by three compiler-generated functions in __xc order:
+//   A = X / 60.0     (FLD [X]; FDIV [the TU's own 60.0]; FSTP [A])
+//   B = 1.0 / A      (FLD [1.0]; FDIV [A]; FSTP [B])
+//   C = {128, 128, 0}  (MOV EAX,0x80; Z = 0; X = EAX; Y = EAX)
+// C's initialiser exists only because its type had a constructor (a brace
+// initialiser would be static data); the tree's CoordStruct is an aggregate,
+// so this view supplies one, storing in the order retail does.
+#ifndef GG_MATCH_CORE_HEADER_INIT_SHAPES_H
+#define GG_MATCH_CORE_HEADER_INIT_SHAPES_H
+
+#include "_rt/gg_static_assert.h"
+
+#include "_layout/coord_struct.h"
+GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
+
+struct HeaderCoordInit : CoordStruct
+{
+    HeaderCoordInit(int x, int y, int z) { X = x; Y = y; Z = z; }
+};
+GG_STATIC_ASSERT(sizeof(HeaderCoordInit) == 0xC);
+
+#include "_layout/cell.h"
+
+struct HeaderCellInit : CellStruct
+{
+    HeaderCellInit(short x, short y) { X = x; Y = y; }
+};
+
+// Four zeroed ints (a rectangle or four-slot record with a user constructor).
+struct HeaderZeroQuad
+{
+    int a, b, c, d;
+    HeaderZeroQuad(int v) { a = v; b = v; c = v; d = v; }
+};
+GG_STATIC_ASSERT(sizeof(HeaderZeroQuad) == 0x10);
+
+#endif  // GG_MATCH_CORE_HEADER_INIT_SHAPES_H

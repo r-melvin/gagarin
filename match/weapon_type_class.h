@@ -18,8 +18,8 @@
 #include "_layout/abstract_type_class.h"
 #include "_layout/obj_004a1d30.h"
 #include "bullet_type_class.h"
-#include "core/vector_class.h"
-#include "core/type_list.h"
+#include "vector_class.h"
+#include "type_list.h"
 #include "_layout/color_struct.h"
 
 class WarheadTypeClass;  // Warhead member is only stored as a pointer here.

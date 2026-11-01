@@ -18,7 +18,7 @@
 #include "storage_class.h"
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by ForceEnd).
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 #include "_layout/house_class.h"
 #include "_layout/rules_class.h"
 

@@ -182,7 +182,7 @@ extern int* DAT_0087F69C;                // GAMEMD 0x0087F69C
 // GLOBAL: GAMEMD 0x00887324 -- the tactical view.
 extern Tactical* DAT_00887324;
 
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 #include "_layout/house_class.h"
 extern HouseClass* DAT_00A83D4C;
@@ -300,11 +300,11 @@ extern int DAT_00AA0E18;
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
-#include "core/intrusive_list_methods.h"
-#include "core/clamped_scale_methods.h"
-#include "core/triple_timer_init_methods.h"
-#include "core/vector_class.h"
-#include "core/vector_class_operations.h"
+#include "intrusive_list_methods.h"
+#include "clamped_scale_methods.h"
+#include "triple_timer_init_methods.h"
+#include "vector_class.h"
+#include "vector_class_operations.h"
 
 // ---------------------------------------------------------------------------
 // 0x402900 / 0x402BB0 / 0x402C40 - walkers over the pending-node list that hangs
@@ -491,7 +491,7 @@ GG_STATIC_ASSERT(offsetof(Tiberium_R13Cell, unknown_E4) == 0xE4);
 
 
 // GLOBAL: GAMEMD 0xA8B230
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0xB0F4EC
 extern Tiberium_R13Cell** DAT_00B0F4EC;
@@ -942,7 +942,7 @@ extern Obj_00A9FA9C* DAT_00A9FA9C;
 extern int DAT_00828140;
 // END defined globals
 
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x829FF4
@@ -951,7 +951,7 @@ extern int DAT_00829FF4;
 extern int DAT_00829FF8;
 // END defined globals
 
-#include "core/member_setter_family_methods.h"
+#include "member_setter_family_methods.h"
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
@@ -1085,7 +1085,7 @@ GG_STATIC_ASSERT(offsetof(Obj_004F2680, unknown_50) == 0x50);
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 #include "_layout/fogged_object_class.h"
 
 // A circular list whose sentinel sits at +0x0C; each node holds a key at +0x14
@@ -1450,12 +1450,12 @@ int GgWoodBridgeTileBase;
 // makes cl emit `mov ecx,0x87F7E8` exactly as retail does.
 #define MapInstance (reinterpret_cast<MapView_5657A0_2*>(0x87F7E8))
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/cell_class.h"
 #include "_layout/geometry2d.h"
 #include "cell_flag_search_shared.h"
 #include "_layout/swizzle_manager_class.h"
-#include "core/stream_persist_methods.h"
+#include "stream_persist_methods.h"
 #include <new.h>
 
 namespace CellLoadABIAssertions {
@@ -1610,7 +1610,7 @@ inline Obj_004838E0* Cell_004838E0::GetTerrain() const
 
 #include "cell_class_tiberium_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/cell_class.h"
 #include "_layout/light_convert_class.h"
 #include "_layout/pixel_fx_class.h"

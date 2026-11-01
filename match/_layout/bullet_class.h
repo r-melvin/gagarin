@@ -43,7 +43,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "object_class.h"     // ObjectClass spine + CoordStruct
 #include "foot_class.h"       // CellStruct
-#include "../core/small_struct_ctor_methods.h"
+#include "../small_struct_ctor_methods.h"
 
 class BulletTypeClass;
 class WarheadTypeClass;

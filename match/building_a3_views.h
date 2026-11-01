@@ -15,11 +15,11 @@
 #include "_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "_layout/house_class.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 class BA3ObjView;
 struct BA3Chain1View;

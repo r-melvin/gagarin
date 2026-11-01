@@ -413,7 +413,7 @@ inline const unsigned short* FindTablePrime(unsigned short key)
 //   block of MPLayer.CPP (its __FILE__ string 0x82E134 is the one passed to
 //   the string-table loads below).
 
-#include "core/global_getter_family_methods.h"
+#include "global_getter_family_methods.h"
 
 #include "mp_game_mode_leaf_classes.h"
 

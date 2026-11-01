@@ -27,12 +27,12 @@ extern int DAT_0083ED20;
 #include "game_options_class_methods.h"
 extern GameOptionsClass DAT_00A8EB60;
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 // GLOBAL: GAMEMD 0xB07784 — a frame deadline re-armed at CurrentFrame + 3.
 extern int DAT_00B07784;
 
 // Canonical Scenario layout: 0x69BAB0 reads its byte at +0x35A2.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "_layout/scenario_ptr_00a8b230.h"
 
 // FUNCTION: GAMEMD 0x684240 (decl; reloc) — no arguments, no cleanup.

@@ -13,7 +13,7 @@
 //   GLOBAL:   GAMEMD 0xB0F698  shared pending-delete list (vector-shaped)
 
 #include "tag_class_destroy_methods.h"
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 
 // Registry accesses use the shared TagClass::Array storage at 0xB0E720.
 

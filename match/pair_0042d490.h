@@ -6,7 +6,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 
 struct Pair_0042D490
 {

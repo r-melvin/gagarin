@@ -3,7 +3,7 @@
 //   AnimTypeClass members read off retail gamemd.exe v1.001 (vtable 0x7E3608).
 //   Address index: 0x4289D0, 0x428EA0
 #include "FUNCTION.H"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0xB0F670 -- the registry every abstract object leaves when destroyed.
 extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;

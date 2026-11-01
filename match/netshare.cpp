@@ -28,7 +28,7 @@
 //   0x7C8B3D operator delete (all reloc).
 
 #include "netshare_slot_nodes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "_layout/session_class.h"
 
 extern "C" {
@@ -111,7 +111,7 @@ extern wchar_t DAT_00AC029C[512];
 // final link and complete object sizes remain unestablished.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class MultiMission;
 
 // VTABLE: GAMEMD 0x7EEF50 -- VectorClass<const MultiMission*>.
@@ -266,7 +266,7 @@ extern const char DAT_00831A60[];
 
 // ScenarioClass::Instance (0xA8B230): only the +0x1254 member is stored here.
 // GLOBAL: GAMEMD 0xA8B230
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // The object at 0xA8E960: a flags dword at +0x00, and the empty member 0x6B8B10
@@ -670,7 +670,7 @@ static inline int Slot_Picture_Control(int index)
 
 #include "netshare_common.h"
 #include "netshare_slot_nodes.h"
-#include "core/string_class.h"
+#include "string_class.h"
 
 extern "C" {
 // LIBRARY: GAMEMD 0x7CA45F (decl; reloc) -- CRT wcscat.
@@ -802,7 +802,7 @@ static inline int Combo_Item_Data(HWND dialog, int control, int index)
 
 #include "netshare_common.h"
 #include "netshare_slot_nodes.h"
-#include "core/string_class.h"
+#include "string_class.h"
 
 // GLOBAL: GAMEMD 0x831704..0x83171C -- char pointers to the slot-kind tokens
 // "@Open@", "@Closed@", "@Waiting@", "@EasyAI@", "@MediumAI@", "@HardAI@" and
@@ -880,7 +880,7 @@ double DAT_00AC10E8 = DAT_007E1718 / DAT_00AC1160;
 // GLOBAL: GAMEMD 0x00AC1148
 MathTblCoord DAT_00AC1148;
 
-#include "core/string_class.h"
+#include "string_class.h"
 
 // Key hash of a narrow string object: seeded with the length, then for each
 // character adds the signed character value and its index and rotates the

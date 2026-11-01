@@ -4,7 +4,7 @@
 //   Address index: 0x74BB20 registry lookup.
 
 #include "_layout/voxel_anim_type_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 

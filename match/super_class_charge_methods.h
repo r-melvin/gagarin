@@ -28,7 +28,7 @@
 #include "_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x00A8ED84 — Unsorted::CurrentFrame, the global frame counter.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 #include "_layout/frame_timer.h"
 #include "_layout/super_class.h"
 

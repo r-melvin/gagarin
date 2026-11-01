@@ -5,7 +5,7 @@
 // registers 0x6E5B20 through atexit at 0x7C978A. Full initializer span 61 bytes.
 // Ob2 fuses the initializer and registration helpers as in retail; no GX.
 #include "_layout/tag_type_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 typedef DynamicVectorClass<TagTypeClass*> TagTypeRegistry;
 GG_STATIC_ASSERT(offsetof(TagTypeRegistry, Items) == 4);
 GG_STATIC_ASSERT(offsetof(TagTypeRegistry, Capacity) == 8);

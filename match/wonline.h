@@ -9,14 +9,14 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-#include "core/string_class.h"
+#include "string_class.h"
 
 // GLOBAL: GAMEMD 0xB73E40 -- the stored login holder; defined in wonline.cpp (its cleanup is 0x77DA10).
 extern Wstring DAT_00B73E40;
 // GLOBAL: GAMEMD 0xB7778C -- the stored password holder; defined in wonline.cpp (its cleanup is 0x77DA40).
 extern Wstring DAT_00B7778C;
 
-#include "core/wide_string_class.h"
+#include "wide_string_class.h"
 
 // The 0x6C-byte record of the table at 0xB77900 (count) / 0xB77908 (items).
 struct Entry_00B77908

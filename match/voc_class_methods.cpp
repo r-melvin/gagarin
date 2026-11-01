@@ -21,8 +21,8 @@
 #include <objidl.h>
 #include "voc_class_methods.h"
 #include "ccini_class_methods.h"
-#include "core/small_misc39_methods.h"
-#include "core/vector_class_operations.h"
+#include "small_misc39_methods.h"
+#include "vector_class_operations.h"
 #include "_layout/tactical.h"
 #include "_layout/cell_class.h"
 #include "_layout/map_0087f7e8.h"

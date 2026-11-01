@@ -18,8 +18,8 @@
 #include <stddef.h>
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/vector_class_operations.h"
-#include "../core/intrusive_list_methods.h"
+#include "../vector_class_operations.h"
+#include "../intrusive_list_methods.h"
 
 class VoxClass;
 class CCINIClass;

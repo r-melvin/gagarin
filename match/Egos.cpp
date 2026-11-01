@@ -19,14 +19,14 @@
 #include <string.h>
 #include "_rt/gg_static_assert.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 #include "_layout/colorrgb_00661350.h"
 
 #include "_layout/colortable_00626070.h"
 #include <wchar.h>
 #include "ego_class.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 
 struct RemapEntry
 {
@@ -45,7 +45,7 @@ GG_STATIC_ASSERT(sizeof(RemapEntry) == 4);   // entry pointer steps by 4
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class EgoClass;
 

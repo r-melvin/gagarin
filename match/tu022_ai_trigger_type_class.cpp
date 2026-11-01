@@ -24,7 +24,7 @@
 // three early `return 0` statements it scores 15.8% - every rejection gets its
 // own inline epilogue and everything after shifts.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class AlphaLightingRemapClass;
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -60,9 +60,9 @@ GG_STATIC_ASSERT(offsetof(GgAlphaLightingRemapDynamicVector, CapacityIncrement) 
 
 #include "threshold_compare_methods.h"
 
-#include "core/const_return_stub_methods.h"
+#include "const_return_stub_methods.h"
 
-#include "core/find_or_allocate_methods.h"
+#include "find_or_allocate_methods.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x41EAF0

@@ -23,10 +23,10 @@
 #include "FUNCTION.H"
 #include "multiplayer_game_mode.h"
 #include "conn_types.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 

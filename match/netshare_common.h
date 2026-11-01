@@ -13,7 +13,7 @@
 #include <stddef.h>
 #include <stdarg.h>
 #include "_rt/gg_static_assert.h"
-#include "core/wide_string_class.h"
+#include "wide_string_class.h"
 #include "connman_class.h"
 
 extern "C" {

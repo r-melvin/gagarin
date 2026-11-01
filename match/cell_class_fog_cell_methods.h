@@ -36,7 +36,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance (a pointer).
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // ---------------------------------------------------------------------------
@@ -72,7 +72,7 @@ struct FogVec_00486A70
 
     // The constructor body, expanded by hand: under /GX a real `new T` wraps
     // the allocation in an exception frame with an unwind funclet that retail
-    // does not have (the banked rule, see match/core/campaign_class.cpp).
+    // does not have (the banked rule, see match/campaign_class.cpp).
     inline FogVec_00486A70* Construct()
     {
         this->Base.Items         = 0;

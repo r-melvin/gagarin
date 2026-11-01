@@ -7,12 +7,12 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 
-#include "core/triple_timer_init_methods.h"
-#include "core/empty_function_family_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "triple_timer_init_methods.h"
+#include "empty_function_family_methods.h"
+#include "mathtbl_init_shapes.h"
 #include <math.h>
 
-#include "core/trivial_tu167_methods.h"
+#include "trivial_tu167_methods.h"
 
 #include "game_options_class_methods.h"
 

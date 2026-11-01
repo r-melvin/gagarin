@@ -50,7 +50,7 @@ GG_STATIC_ASSERT(sizeof(CoordStruct_00629E90) == 0xC);
 
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 struct AnimTypeClass_00629E90;

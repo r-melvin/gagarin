@@ -7,8 +7,8 @@
 
 #include "FUNCTION.H"
 #include "tevent_class_methods.h"
-#include "core/vector_class_operations.h"
-#include "core/vector_add_item_free.h"
+#include "vector_class_operations.h"
+#include "vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;

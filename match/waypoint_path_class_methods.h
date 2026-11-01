@@ -17,7 +17,7 @@
 #include "_layout/abstract_class.h"
 
 #include "_layout/waypoint_class.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 // WaypointPathClass : AbstractClass (COM base 0x00..0x23).
 class WaypointPathClass : public AbstractClass

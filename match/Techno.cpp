@@ -578,7 +578,7 @@ extern RulesClass* DAT_008871E0;
 #include "techno_class_reloading_methods.h"
 #include "_layout/spawn_manager_class.h"
 
-#include "core/abstract_class_untargetable_methods.h"
+#include "abstract_class_untargetable_methods.h"
 #include "event_class_ctors.h"
 #include "event_queue.h"
 
@@ -594,15 +594,15 @@ extern int DAT_00B1D5E0[0x4000];
 extern void* DAT_00B77F54;
 extern void* DAT_00B77F60;
 
-#include "core/member_setter_family_methods.h"
+#include "member_setter_family_methods.h"
 
-#include "core/pair_vector_grow_sweep.h"
+#include "pair_vector_grow_sweep.h"
 
-#include "core/tail_jmp_thunk_sweep.h"
+#include "tail_jmp_thunk_sweep.h"
 
 
 
-#include "core/trivial_tu237_methods.h"
+#include "trivial_tu237_methods.h"
 
 #include <windows.h>
 #include <imm.h>
@@ -763,7 +763,7 @@ extern double DAT_00B0EB28;
 #include "_layout/techno_class.h"
 #include "_layout/techno_type_class.h"
 #include "weapon_type_class.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 #include "_layout/cell_class.h"
 #include "_layout/house_class.h"
 
@@ -844,7 +844,7 @@ extern int DAT_00A8E7AC;
 // GLOBAL: GAMEMD 0xB0EA50
 extern CellStruct DAT_00B0EA50;
 
-#include "core/techno_class_kill_passengers_methods.h"
+#include "techno_class_kill_passengers_methods.h"
 
 // The null-safe FootClass cast retail inlined at the loop's back edge: null
 // stays null, anything without the AbstractClass foot bit (+0x14, mask 4)
@@ -878,7 +878,7 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 
 #include "_layout/unit_class.h"
 #include "_layout/ebolt_class.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 #include "cell_class_bridge_tile_queries.h"
 
 #include "techno_class_drawer_methods.h"
@@ -995,7 +995,7 @@ int TechnoClass::vf_90(int weapon)
 
 // GLOBAL: GAMEMD 0x84314C -- the two-letter name tested by the voice routine.
 extern "C" const char DAT_0084314C[];
-#include "core/randomizer.h"
+#include "randomizer.h"
 
 // GLOBAL: GAMEMD 0xAC147C -- the pip shape file.
 extern SHPStruct* DAT_00AC147C;
@@ -1206,7 +1206,7 @@ public:
 #include "_layout/techno_type_class.h"
 #include "_layout/house_class.h"
 #include "_layout/house_type_class.h"
-#include "core/randomizer.h"
+#include "randomizer.h"
 
 // The tactical view object (GLOBAL 0x887324): only the word at +0xB4 is read.
 struct TacticalView_r21_4
@@ -1269,7 +1269,7 @@ static inline BuildingClass* AsBuilding(AbstractClass* object)
 }
 
 #include "_layout/techno_class.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 
 #include "_layout/scenario_ptr_00a8b230.h"
 // GLOBAL: GAMEMD 0xA8E7AC -- nonzero while a scenario is being set up.
@@ -1278,7 +1278,7 @@ extern int DAT_00A8E7AC;
 #include "_layout/techno_class.h"
 #include "_layout/techno_type_class.h"
 
-#include "core/techno_class_disguise.h"
+#include "techno_class_disguise.h"
 
 #include "_layout/techno_class.h"
 #include "_layout/temporal_class.h"
@@ -1290,7 +1290,7 @@ GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->TemporalImUsing) == 4);
 GG_STATIC_ASSERT(offsetof(TemporalClass, Target) == 0x28);
 GG_STATIC_ASSERT(sizeof(((TemporalClass*)0)->Target) == 4);
 
-#include "core/techno_class_mc.h"
+#include "techno_class_mc.h"
 
 #include "_layout/techno_class.h"
 #include "_layout/techno_type_class.h"
@@ -1300,29 +1300,29 @@ GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->bools_C8C[8]) == 1);
 GG_STATIC_ASSERT(offsetof(TechnoClass, IsTether) == 0x418);
 GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->IsTether) == 1);
 
-#include "core/techno_class_opentopped_methods.h"
+#include "techno_class_opentopped_methods.h"
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87F778
 LogicClass LogicInstance;
 // END defined globals
 
-#include "core/techno_class_owner_methods.h"
+#include "techno_class_owner_methods.h"
 
 // Sidebar "tab object" globals @ 0x00B0FE5C / 0x00B0FE60. Declared-only so cl
 // emits reloc-normalised absolute stores/compares.
 extern TechnoClass* SidebarTabObjectA;   // 0x00B0FE5C
 extern TechnoClass* SidebarTabObjectB;   // 0x00B0FE60
 
-#include "core/techno_class_setters.h"
+#include "techno_class_setters.h"
 
-#include "core/techno_class_voice_methods.h"
+#include "techno_class_voice_methods.h"
 
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // A link up a chain of owners (the link lives at +0x54 here and at +0x5D8 in the owner).
 struct Owned_006EC220
@@ -1423,7 +1423,7 @@ GG_STATIC_ASSERT(offsetof(IntPair_00723CA0, Second) == 0x04);
 #include "_layout/warhead_type_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
 #include "input_manager_class_methods.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "weapon_type_class.h"
 
 // GLOBAL: GAMEMD 0xA8B230 -- the current scenario.
@@ -1523,10 +1523,10 @@ OverlayTypeClass** DAT_00A83D84;
 #include "_layout/rules_class.h"
 #include "_layout/map_0087f7e8.h"
 #include "_layout/scenario_ptr_00a8b230.h"
-#include "core/scenario_class_methods.h"
-#include "core/vector_class_operations.h"
-#include "core/vector_class_mutation.h"
-#include "core/mathtbl_init_shapes.h"
+#include "scenario_class_methods.h"
+#include "vector_class_operations.h"
+#include "vector_class_mutation.h"
+#include "mathtbl_init_shapes.h"
 
 // GLOBAL: GAMEMD 0xA8EC78 -- TechnoClass::Array.
 extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
@@ -1576,13 +1576,13 @@ static inline double ElevationCap()
 #include "_layout/techno_class.h"
 #include "_layout/techno_type_class.h"
 #include "_layout/foot_class.h"
-#include "core/randomizer.h"
+#include "randomizer.h"
 #include "_layout/rules_class.h"
 #include "_layout/tactical.h"
 #include "_layout/building_class.h"
 #include "_layout/cell_class.h"
 #include "_layout/house_class.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // Null-tolerant "as FootClass" casts, as retail inlined them into callers that
 // pass `this` (the null test is in the retail bytes at 0x6FCD67 / 0x700D13).
@@ -1772,9 +1772,9 @@ GG_STATIC_ASSERT(offsetof(Techno_0070FE50, DrainAnim) == 0x1D4);
 #include "_layout/techno_type_class.h"
 #include "_layout/capture_manager_class.h"
 
-#include "core/techno_class_threat_methods.h"
+#include "techno_class_threat_methods.h"
 
-#include "core/techno_class_weapon_methods.h"
+#include "techno_class_weapon_methods.h"
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"

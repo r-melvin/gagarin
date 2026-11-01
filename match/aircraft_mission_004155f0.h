@@ -11,7 +11,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
 #include "_layout/cell_class.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 
 struct Coord_004155F0 { int X, Y, Z; };
 GG_STATIC_ASSERT(offsetof(Coord_004155F0, X) == 0);

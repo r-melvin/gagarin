@@ -33,7 +33,7 @@
 #include "loco_base.h"
 #include "rocket_locomotion_views.h"
 #include "loco_foot.h"
-#include "core/vector_array_init_methods.h"
+#include "vector_array_init_methods.h"
 #include "aircraft_tracker_class.h"
 #include "aircraft_tracker_update_methods.h"
 #include "rocket_locomotion_globals_view.h"

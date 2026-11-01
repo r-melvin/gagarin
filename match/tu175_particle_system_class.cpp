@@ -70,7 +70,7 @@ extern int DAT_00AC4A8C;
 // coordinate by the (type, coord) overload (push 0xAC4A58). Reloc-normalised.
 extern ParticleCoord DAT_00AC4A58;
 
-#include "core/member_setter_family_methods.h"
+#include "member_setter_family_methods.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

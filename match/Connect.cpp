@@ -5,10 +5,10 @@
 //   code range (0x48bc70-0x48c6af). Functions are in ascending retail address order.
 
 #include <string.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "conn_types.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // VTABLE: GAMEMD 0x7E51B4  ConnectionClass (10 slots, slot 9 = _purecall 0x4C9150)
 // Expansion rows outside the M1 30-row table: the standalone constructor at

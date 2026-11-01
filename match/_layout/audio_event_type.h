@@ -13,8 +13,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/triple_timer_init_methods.h"
-#include "../core/intrusive_list_methods.h"
+#include "../triple_timer_init_methods.h"
+#include "../intrusive_list_methods.h"
 
 struct AudioEvent;
 

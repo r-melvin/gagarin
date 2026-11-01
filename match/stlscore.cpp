@@ -9,8 +9,8 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 
-#include "core/trivial_tu223_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "trivial_tu223_methods.h"
+#include "mathtbl_init_shapes.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

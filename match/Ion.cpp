@@ -21,9 +21,9 @@
 #include <math.h>
 #include "lightning_storm_methods.h"
 
-#include "core/techno_class_mindcontrol_query_methods.h"
+#include "techno_class_mindcontrol_query_methods.h"
 
-#include "core/trivial_tu104_methods.h"
+#include "trivial_tu104_methods.h"
 
 #include <windows.h>
 #include <stddef.h>
@@ -135,9 +135,9 @@ extern int DAT_00A9FA80;
 // final link and complete object sizes remain unestablished.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "house_class_methods.h"
-#include "core/scenario_class_lighting_recalc_methods.h"
+#include "scenario_class_lighting_recalc_methods.h"
 class AnimClass;
 
 // VTABLE: GAMEMD 0x7EBFEC -- VectorClass<const AnimClass*>.

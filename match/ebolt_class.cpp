@@ -7,7 +7,7 @@
 
 #include "_layout/ebolt_class.h"
 #include "_layout/unit_class.h"
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // FUNCTION: GAMEMD 0x4C1E10
 //

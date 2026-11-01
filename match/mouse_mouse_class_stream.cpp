@@ -6,7 +6,7 @@
 //   OleSaveToStream through the import at 0x7E15F4.
 
 #include "FUNCTION.H"
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 #include "mouse_mouse_class.h"
 
 // The stream stores a 0x10-byte value record. Its in-memory vector element is

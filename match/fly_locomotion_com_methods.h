@@ -31,7 +31,7 @@
 
 
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // GLOBAL: GAMEMD 0x7E9A80 -- the native class identifier.

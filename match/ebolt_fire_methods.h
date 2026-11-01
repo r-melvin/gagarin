@@ -18,10 +18,10 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/randomizer.h"
+#include "randomizer.h"
 #include "_layout/coord_struct.h"
 #include "_layout/ebolt_class.h"
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 #include "_layout/rules_class.h"

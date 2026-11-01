@@ -83,7 +83,7 @@ static inline LocoCoord CellCenter(const HoverCellCoord& cell)
 #include "_rt/gg_static_assert.h"
 
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"

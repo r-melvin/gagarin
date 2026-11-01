@@ -8,13 +8,13 @@
 // leaving the native direct ObjectTypeClass constructor call and four vptr stores.
 
 #include "bullet_type_class.h"
-#include "core/abstract_registry.h"
-#include "core/vector_class_operations.h"
+#include "abstract_registry.h"
+#include "vector_class_operations.h"
 #include "_layout/swizzle_manager_class.h"
 #include "_layout/obj_004a1d30.h"
 #include "ui_display_chain.h"
 #include <new.h>
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0x7E95D0 -- native BulletTypeClass CLSID, copied at 0x46C760.
 extern const CLSID DAT_007E95D0;

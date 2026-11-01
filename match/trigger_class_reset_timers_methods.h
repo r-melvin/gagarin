@@ -21,7 +21,7 @@
 #include "_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // A frame-clocked countdown (YRpp CDTimerClass). The clock slot at +0x04 is
 // never written by the constructor, which is exactly what retail shows: the
@@ -39,7 +39,7 @@ struct Random_00726400
 
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // TEventClass — one node of the trigger type's event list.

@@ -11,7 +11,7 @@
 #include "netshare_slot_nodes.h"
 #include <stddef.h>
 #include "wonline.h"
-#include "core/hash_table_view.h"
+#include "hash_table_view.h"
 #include "_rt/gg_static_assert.h"
 #include "_layout/theme_class.h"
 

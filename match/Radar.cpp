@@ -52,15 +52,15 @@
 //   GLOBAL:   GAMEMD 0x87F7E8   RadarClass::Instance
 
 #include "FUNCTION.H"
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "_layout/session_class.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/stdcall_forward_sweep.h"
+#include "stdcall_forward_sweep.h"
 
-#include "core/trivial_tu187_methods.h"
+#include "trivial_tu187_methods.h"
 
 #include <windows.h>
 #include <new>
@@ -69,7 +69,7 @@
 #include "input_manager_class_methods.h"
 #include "ui_updated_methods.h"
 #include "_layout/map_0087f7e8.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "shape_button_class.h"
 #include "ui_display_chain.h"
 
@@ -82,7 +82,7 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 #include "shape_button_class.h"
 #include "_layout/rules_class.h"
 #include "_layout/techno_class.h"
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 #include "_layout/tactical.h"
 
 // GLOBAL: GAMEMD 0x00A8EC78
@@ -176,7 +176,7 @@ extern unsigned char DAT_00A8EB7C;
 // GLOBAL: GAMEMD 0x00A8EDA0
 extern int DAT_00A8EDA0;
 // GLOBAL: GAMEMD 0x00A8B230 -- scenario object pointer, used at native offset +0x34B8.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0x00A8B23C -- game-mode object pointer.
 extern MultiplayerGameMode* DAT_00A8B23C;
@@ -326,7 +326,7 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 // GLOBAL: GAMEMD 0x008B4124
 extern "C" Type_006A46D0** DAT_008B4124;
 
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 // ---------------------------------------------------------------------------
 // The element types, declared exactly as their RTTI manglings require: a `V`
@@ -359,7 +359,7 @@ class CoopCampaignClass;
 struct CrossDissolveEffect;
 struct DamageGroup;
 struct DirtyAreaStruct;
-#include "core/disk_id.h"
+#include "disk_id.h"
 class DiskLaserClass;
 template<class T0> class DynamicVectorClass;
 class EBolt;
@@ -478,7 +478,7 @@ struct tagCONNECTDATA;
 
 // Actual-template layout assertions are in vector_class_layout_asserts.cpp.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 
 struct Obj_00656E50;
@@ -700,15 +700,15 @@ int Obj_00656E50::FUN_00656E50()
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<ScoutStruct>;
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<AngerStruct>;
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<SwizzlePointerClass>;
 
@@ -716,7 +716,7 @@ template<class K,class V> struct HashObject { K Key; V Value; HashObject() {} Ha
 
 template class DynamicVectorClass<HashObject<unsigned int,unsigned int> >;
 
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 
 template class DynamicVectorClass<HashObject<unsigned int,SubzoneConnectionStruct> >;
 
@@ -745,7 +745,7 @@ struct AcceleratorTracker { int A; int B; AcceleratorTracker() : A(0), B(0) {} b
 
 template class DynamicVectorClass<AcceleratorTracker>;
 
-#include "core/undo_info_struct.h"
+#include "undo_info_struct.h"
 
 template class DynamicVectorClass<UndoInfoStruct>;
 

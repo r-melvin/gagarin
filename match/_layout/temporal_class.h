@@ -23,8 +23,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
-#include "../core/vector_class.h"
-#include "../core/frame_counter.h"
+#include "../vector_class.h"
+#include "../frame_counter.h"
 
 struct Obj_004A1D30;
 struct TemporalTechnoView;

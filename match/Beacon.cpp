@@ -18,7 +18,7 @@
 //   cross-checked against YRpp.
 
 #include "slot_grid_find_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
@@ -44,9 +44,9 @@ GG_STATIC_ASSERT(offsetof(BenchTimer, Total)   == 0x08);
 GG_STATIC_ASSERT(offsetof(BenchTimer, Count)   == 0x0C);
 GG_STATIC_ASSERT(offsetof(BenchTimer, Samples) == 0x10);
 
-#include "core/ctor_431b20_methods.h"
+#include "ctor_431b20_methods.h"
 
-#include "core/small_misc14_methods.h"
+#include "small_misc14_methods.h"
 
 #include "beacon_class_methods.h"
 
@@ -67,7 +67,7 @@ extern "C" void __cdecl GameDelete(void* pMem);
 // canonical header declares them yet).
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0x7E3A18
 extern const double DAT_007E3A18;

@@ -12,7 +12,7 @@
 
 #include "FUNCTION.H"
 #include "tag_class_destroy_methods.h"
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 
 // GLOBAL: GAMEMD 0xB0E700 — the CellStruct copied to TagClass::DefaultCoords.
 // The raw instruction loads one DWORD from this address.

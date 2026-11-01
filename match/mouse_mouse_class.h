@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include "mouse_ww_mouse_class.h"
 #include <ole2.h>
-#include "core/game_timing_methods.h"
+#include "game_timing_methods.h"
 #include "ui_display_chain.h"
 
 // One row of the cursor table at 0x82D028 (stride 0x1C).

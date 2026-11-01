@@ -19,7 +19,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 // ThemeControl -- one registered score's metadata (YRpp order).
 struct ThemeControl

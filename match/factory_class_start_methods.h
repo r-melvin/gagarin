@@ -8,13 +8,13 @@
 //   QueuedObjects at 0x40, hence Items @0x44 and Count @0x50, exactly the
 //   offsets the body uses. QueuedObjects is the canonical
 //   DynamicVectorClass<TechnoTypeClass*>; its own offsets are asserted in
-//   match/core/vector_class_layout_asserts.cpp.
+//   match/vector_class_layout_asserts.cpp.
 #ifndef GG_MATCH_ECONOMY_FACTORY_CLASS_START_METHODS_H
 #define GG_MATCH_ECONOMY_FACTORY_CLASS_START_METHODS_H
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/house_class.h"
 #include "_layout/factory_class.h"
 

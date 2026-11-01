@@ -43,8 +43,8 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/global_0081c1d0.h"
 #include <stddef.h>
-#include "core/trivial_tu048_methods.h"
-#include "core/string_class.h"
+#include "trivial_tu048_methods.h"
+#include "string_class.h"
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 
@@ -201,7 +201,7 @@ extern unsigned int DAT_0089E418;
 GG_STATIC_ASSERT(sizeof(DAT_0089E414) == 4);
 GG_STATIC_ASSERT(sizeof(DAT_0089E418) == 4);
 
-#include "core/trivial_tu049_methods.h"
+#include "trivial_tu049_methods.h"
 
 #include "ccfile_class.h"
 

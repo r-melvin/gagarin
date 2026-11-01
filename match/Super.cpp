@@ -23,20 +23,20 @@
 #include "super_class_methods.h"
 #include "super_class_readiness_methods.h"
 #include "super_class_more_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 #include "trivial_tu225_methods.h"
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 #include "_layout/anim_class.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
-#include "core/empty_function_family_methods.h"
+#include "empty_function_family_methods.h"
 
-#include "core/vector_remove_item_family_methods.h"
+#include "vector_remove_item_family_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

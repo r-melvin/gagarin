@@ -4,10 +4,10 @@
 //   in retail gamemd.exe v1.001, passed by the assert at 0x7af863 inside this object's
 //   code range (0x7af0b0-0x7b0b9f). Functions are in ascending retail address order.
 
-#include "core/global_getter_family_methods.h"
+#include "global_getter_family_methods.h"
 
-#include "core/trivial_tu289_methods.h"
-#include "core/string_class.h"
+#include "trivial_tu289_methods.h"
+#include "string_class.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

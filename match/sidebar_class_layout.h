@@ -414,7 +414,7 @@ extern int DAT_00886F94;
 // GLOBAL: GAMEMD 0xA8EB7C -- which side the sidebar is on (compared against 1 / non-zero).
 extern unsigned char SidebarSideFlag_00A8EB7C;
 
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 #include "_layout/rules_class.h"

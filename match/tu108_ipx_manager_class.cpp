@@ -12,11 +12,11 @@
 
 #include <string.h>
 #include <math.h>
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "connman_class.h"
 #include "ipx_interface_class.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 // ---- run-time initialised copies of the shared tuning globals -------------
 // The unit's header group, in retail __xc order (0x5406E0-0x5408E6).

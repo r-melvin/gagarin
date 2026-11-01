@@ -9,7 +9,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/cell.h"
 #include "_layout/coord_struct.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 inline bool operator==(const CoordStruct& a, const CoordStruct& b)
 {

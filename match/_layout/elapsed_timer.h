@@ -7,7 +7,7 @@
 // Inline operations have no separately claimed retail entry point.
 #ifndef GG_MATCH_LAYOUT_ELAPSED_TIMER_H
 #define GG_MATCH_LAYOUT_ELAPSED_TIMER_H
-#include "../core/game_timing_methods.h"
+#include "../game_timing_methods.h"
 
 // Existing opaque no-initialization tag; its retail identity is not asserted.
 struct AbstractNoInit;

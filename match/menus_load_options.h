@@ -17,7 +17,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 #include "ui_common.h"
 #include "_layout/load_options_class.h"
 

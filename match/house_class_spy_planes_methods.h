@@ -6,7 +6,7 @@
 //   taking the house in ECX, an aircraft-type index in EDX and four stack
 //   arguments, read back as `[ESP+0x1C]`..`[ESP+0x28]` relative to the
 //   0x18-byte frame. Globals: the aircraft-type item array 0xA8B21C (indexed
-//   `[EAX+EDX*4]`, the same array as match/core/find_by_name_methods.h),
+//   `[EAX+EDX*4]`, the same array as match/find_by_name_methods.h),
 //   Unsorted::ScenarioInit 0xA8E7AC (read/INC/store around each creating
 //   call and read/DEC/store after it, as in
 //   match/factory_class_abandon_methods.cpp), MapClass::Instance as

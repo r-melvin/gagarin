@@ -7,7 +7,7 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 
-#include "core/trivial_tu117_methods.h"
+#include "trivial_tu117_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

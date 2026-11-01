@@ -33,9 +33,9 @@
 #include "_layout/global_0089c818.h"
 #include "_layout/rules_class.h"
 #include "_layout/unit_tracker_class.h"
-#include "core/mission_class_methods.h"
-#include "core/vector_class_operations.h"
-#include "core/cell_step_tables.h"
+#include "mission_class_methods.h"
+#include "vector_class_operations.h"
+#include "cell_step_tables.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
@@ -208,7 +208,7 @@ extern unsigned char DAT_00880CF4;
 extern int DAT_00A8E7AC;
 extern char DAT_00A8E9A0;
 extern BA4Placed** DAT_00A8EC1C;
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern CoordStruct DAT_0089C848;
 // LIBRARY: GAMEMD 0x7C8D20 (LIBRARY: _stricmp) / 0x7C91D0 (LIBRARY: strncpy)
 extern "C" int __cdecl _stricmp(const char* a, const char* b);

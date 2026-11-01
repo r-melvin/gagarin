@@ -7,7 +7,7 @@
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7F3138

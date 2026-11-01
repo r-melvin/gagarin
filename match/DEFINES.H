@@ -6,6 +6,6 @@
 #ifndef GG_MATCH_DEFINES_H
 #define GG_MATCH_DEFINES_H
 
-#include "core/disk_id.h"
+#include "disk_id.h"
 
 #endif

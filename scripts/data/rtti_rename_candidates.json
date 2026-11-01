@@ -30,7 +30,7 @@
    "addr": "0x447ac0",
    "name": "Obj_00447AC0::FUN_00447AC0",
    "sym": "?FUN_00447AC0@Obj_00447AC0@@QAE?AUPoint_00447AC0@@XZ",
-   "tu": "match/core/small_misc52_methods.cpp",
+   "tu": "match/small_misc52_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -43,7 +43,7 @@
    "addr": "0x449410",
    "name": "FUN_00449410",
    "sym": "?FUN_00449410@Obj_00449410@@QAEHXZ",
-   "tu": "match/core/small_misc19_methods.cpp",
+   "tu": "match/small_misc19_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -56,7 +56,7 @@
    "addr": "0x44eb10",
    "name": "Obj_0044EB10::FUN_0044EB10",
    "sym": "?FUN_0044EB10@Obj_0044EB10@@QAEHXZ",
-   "tu": "match/core/small_misc48_methods.cpp",
+   "tu": "match/small_misc48_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -82,7 +82,7 @@
    "addr": "0x452630",
    "name": "Obj_00452630::FUN_00452630",
    "sym": "?FUN_00452630@Obj_00452630@@QAE_NXZ",
-   "tu": "match/core/small_misc38_methods.cpp",
+   "tu": "match/small_misc38_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -95,7 +95,7 @@
    "addr": "0x455d50",
    "name": "Obj_00455D50::FUN_00455D50",
    "sym": "?FUN_00455D50@Obj_00455D50@@QAEXPAX0@Z",
-   "tu": "match/core/small_misc47_methods.cpp",
+   "tu": "match/small_misc47_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -108,7 +108,7 @@
    "addr": "0x455da0",
    "name": "Obj_00455D50::FUN_00455DA0",
    "sym": "?FUN_00455DA0@Obj_00455D50@@QAE_NXZ",
-   "tu": "match/core/small_misc47_methods.cpp",
+   "tu": "match/small_misc47_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -134,7 +134,7 @@
    "addr": "0x458DB0",
    "name": "FUN_00458DB0",
    "sym": "?FUN_00458DB0@Obj_00458DB0@@QAE_NXZ",
-   "tu": "match/core/small_misc4_methods.cpp",
+   "tu": "match/small_misc4_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -147,7 +147,7 @@
    "addr": "0x458e00",
    "name": "Obj_00458E00::FUN_00458E00",
    "sym": "?FUN_00458E00@Obj_00458E00@@QAEHXZ",
-   "tu": "match/core/small_misc46_methods.cpp",
+   "tu": "match/small_misc46_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -160,7 +160,7 @@
    "addr": "0x459C00",
    "name": "FUN_00459C00",
    "sym": "?FUN_00459C00@Obj_00459C00@@QAEXXZ",
-   "tu": "match/core/small_misc4_methods.cpp",
+   "tu": "match/small_misc4_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -173,7 +173,7 @@
    "addr": "0x459F20",
    "name": "FUN_00459F20",
    "sym": "?FUN_00459F20@Obj_00459F00@@QAEPAXI@Z",
-   "tu": "match/core/deleting_dtor_methods.cpp",
+   "tu": "match/deleting_dtor_methods.cpp",
    "classes": [
     {
      "cls": "BuildingClass",
@@ -201,7 +201,7 @@
    "addr": "0x417f80",
    "name": "Obj_00417F80::FUN_00417F80",
    "sym": "?FUN_00417F80@Obj_00417F80@@QAEHHHH@Z",
-   "tu": "match/core/small_misc52_methods.cpp",
+   "tu": "match/small_misc52_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",
@@ -214,7 +214,7 @@
    "addr": "0x41A590",
    "name": "FUN_0041A590",
    "sym": "?FUN_0041A590@Obj_0041A590@@QAEXHHH@Z",
-   "tu": "match/core/small_misc9_methods.cpp",
+   "tu": "match/small_misc9_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",
@@ -227,7 +227,7 @@
    "addr": "0x41ADC0",
    "name": "FUN_0041ADC0",
    "sym": "?FUN_0041ADC0@Obj_0041ADC0@@QAEXXZ",
-   "tu": "match/core/small_misc10_methods.cpp",
+   "tu": "match/small_misc10_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",
@@ -253,7 +253,7 @@
    "addr": "0x41b920",
    "name": "Obj_0041B920::FUN_0041B920",
    "sym": "?FUN_0041B920@Obj_0041B920@@QAEHXZ",
-   "tu": "match/core/com_gated_predicate_methods.cpp",
+   "tu": "match/com_gated_predicate_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",
@@ -266,7 +266,7 @@
    "addr": "0x41b980",
    "name": "Obj_0041B920::FUN_0041B980",
    "sym": "?FUN_0041B980@Obj_0041B920@@QAEHXZ",
-   "tu": "match/core/com_gated_predicate_methods.cpp",
+   "tu": "match/com_gated_predicate_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",
@@ -279,7 +279,7 @@
    "addr": "0x41C210",
    "name": "FUN_0041C210",
    "sym": "?FUN_0041C210@Obj_0041C200b@@QAEPAXI@Z",
-   "tu": "match/core/deleting_dtor_methods.cpp",
+   "tu": "match/deleting_dtor_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",
@@ -294,7 +294,7 @@
    "addr": "0x40B6A0",
    "name": "FUN_0040B6A0",
    "sym": "?FUN_0040B6A0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<TechnoClass*>",
@@ -307,7 +307,7 @@
    "addr": "0x40BAE0",
    "name": "FUN_0040BAE0",
    "sym": "?FUN_0040BAE0@VectorResize@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_methods.cpp",
+   "tu": "match/vector_resize_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<TechnoClass*>",
@@ -320,7 +320,7 @@
    "addr": "0x40BB90",
    "name": "FUN_0040BB90",
    "sym": "?FUN_0040BB90@Obj_0040BB90@@QAEHPBQAX@Z",
-   "tu": "match/core/small_misc11_methods.cpp",
+   "tu": "match/small_misc11_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<TechnoClass*>",
@@ -333,7 +333,7 @@
    "addr": "0x40BCB0",
    "name": "FUN_0040BCB0",
    "sym": "?FUN_0040BCB0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<TechnoClass*>",
@@ -348,7 +348,7 @@
    "addr": "0x422BC0",
    "name": "FUN_00422BC0",
    "sym": "?FUN_00422BC0@Obj_00422B00@@QAEHXZ",
-   "tu": "match/core/misc_leaf_methods.cpp",
+   "tu": "match/misc_leaf_methods.cpp",
    "classes": [
     {
      "cls": "AnimClass",
@@ -361,7 +361,7 @@
    "addr": "0x422BE0",
    "name": "Obj_00422BE0::FUN_00422BE0",
    "sym": "?FUN_00422BE0@Obj_00422BE0@@QAE?AUCoord_00422BE0@@XZ",
-   "tu": "match/core/combined_coords_methods.cpp",
+   "tu": "match/combined_coords_methods.cpp",
    "classes": [
     {
      "cls": "AnimClass",
@@ -374,7 +374,7 @@
    "addr": "0x4253b0",
    "name": "FUN_004253B0",
    "sym": "?FUN_004253B0@@YGJPAUSubject_004253B0@@PAX1@Z",
-   "tu": "match/core/small_misc50_methods.cpp",
+   "tu": "match/small_misc50_methods.cpp",
    "classes": [
     {
      "cls": "AnimClass",
@@ -387,7 +387,7 @@
    "addr": "0x426590",
    "name": "FUN_00426590",
    "sym": "?FUN_00426590@Obj_00426500@@QAEPAXI@Z",
-   "tu": "match/core/deleting_dtor_methods.cpp",
+   "tu": "match/deleting_dtor_methods.cpp",
    "classes": [
     {
      "cls": "AnimClass",
@@ -415,7 +415,7 @@
    "addr": "0x411630",
    "name": "FUN_00411630",
    "sym": "?FUN_00411630@Obj_00411500@@QBEHXZ",
-   "tu": "match/core/leaf_accessor_methods.cpp",
+   "tu": "match/leaf_accessor_methods.cpp",
    "classes": [
     {
      "cls": "BSurface",
@@ -428,7 +428,7 @@
    "addr": "0x411640",
    "name": "FUN_00411640",
    "sym": "?FUN_00411640@Obj_00411600@@QAEHXZ",
-   "tu": "match/core/misc_leaf_methods.cpp",
+   "tu": "match/misc_leaf_methods.cpp",
    "classes": [
     {
      "cls": "BSurface",
@@ -441,7 +441,7 @@
    "addr": "0x411650",
    "name": "FUN_00411650",
    "sym": "?FUN_00411650@Obj_00411650@@QAEPAXI@Z",
-   "tu": "match/core/small_misc12_methods.cpp",
+   "tu": "match/small_misc12_methods.cpp",
    "classes": [
     {
      "cls": "BSurface",
@@ -456,7 +456,7 @@
    "addr": "0x45E880",
    "name": "FUN_0045E880",
    "sym": "?FUN_0045E880@Obj_0045E880@@QAEPADH@Z",
-   "tu": "match/core/small_misc15_methods.cpp",
+   "tu": "match/small_misc15_methods.cpp",
    "classes": [
     {
      "cls": "BuildingTypeClass",
@@ -482,7 +482,7 @@
    "addr": "0x465DC0",
    "name": "FUN_00465DC0",
    "sym": "?FUN_00465DC0@Obj_00465D00b@@QAEPAXI@Z",
-   "tu": "match/core/deleting_dtor_methods.cpp",
+   "tu": "match/deleting_dtor_methods.cpp",
    "classes": [
     {
      "cls": "BuildingTypeClass",
@@ -497,7 +497,7 @@
    "addr": "0x42D540",
    "name": "FUN_0042D540",
    "sym": "?FUN_0042D540@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<unsigned int>",
@@ -510,7 +510,7 @@
    "addr": "0x42D780",
    "name": "FUN_0042D780",
    "sym": "?FUN_0042D780@VectorResize@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_methods.cpp",
+   "tu": "match/vector_resize_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<unsigned int>",
@@ -523,7 +523,7 @@
    "addr": "0x42DB60",
    "name": "FUN_0042DB60",
    "sym": "?FUN_0042DB60@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<unsigned int>",
@@ -538,7 +538,7 @@
    "addr": "0x45A070",
    "name": "FUN_0045A070",
    "sym": "?FUN_0045A070@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<FoggedObjectClass*>",
@@ -551,7 +551,7 @@
    "addr": "0x45A680",
    "name": "FUN_0045A680",
    "sym": "?FUN_0045A680@VectorResize@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_methods.cpp",
+   "tu": "match/vector_resize_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<FoggedObjectClass*>",
@@ -564,7 +564,7 @@
    "addr": "0x45AB00",
    "name": "FUN_0045AB00",
    "sym": "?FUN_0045AB00@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<FoggedObjectClass*>",
@@ -579,7 +579,7 @@
    "addr": "0x472A80",
    "name": "FUN_00472A80",
    "sym": "?FUN_00472A80@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<ControlNode*>",
@@ -592,7 +592,7 @@
    "addr": "0x472CC0",
    "name": "FUN_00472CC0",
    "sym": "?FUN_00472CC0@VectorResize@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_methods.cpp",
+   "tu": "match/vector_resize_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<ControlNode*>",
@@ -605,7 +605,7 @@
    "addr": "0x473050",
    "name": "FUN_00473050",
    "sym": "?FUN_00473050@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<ControlNode*>",
@@ -620,7 +620,7 @@
    "addr": "0x4DA2B0",
    "name": "thunk_FUN_005b2ef0",
    "sym": "?FUN_004DA2B0@@YIXPAX@Z",
-   "tu": "match/core/tail_jmp_thunk_sweep.cpp",
+   "tu": "match/tail_jmp_thunk_sweep.cpp",
    "classes": [
     {
      "cls": "FootClass",
@@ -633,7 +633,7 @@
    "addr": "0x4DB250",
    "name": "FUN_004DB250",
    "sym": "?FUN_004DB250@@YGXII@Z",
-   "tu": "match/core/misc_leaf_methods.cpp",
+   "tu": "match/misc_leaf_methods.cpp",
    "classes": [
     {
      "cls": "FootClass",
@@ -661,7 +661,7 @@
    "addr": "0x429420",
    "name": "FUN_00429420",
    "sym": "?FUN_00429420@@YGJPAXPAPAG@Z",
-   "tu": "match/core/small_misc10_methods.cpp",
+   "tu": "match/small_misc10_methods.cpp",
    "classes": [
     {
      "cls": "ApplicationClass",
@@ -674,7 +674,7 @@
    "addr": "0x429450",
    "name": "FUN_00429450",
    "sym": "?FUN_00429450@@YGJPAXPAPAG@Z",
-   "tu": "match/core/small_misc10_methods.cpp",
+   "tu": "match/small_misc10_methods.cpp",
    "classes": [
     {
      "cls": "ApplicationClass",
@@ -687,7 +687,7 @@
    "addr": "0x429500",
    "name": "FUN_00429500",
    "sym": "?FUN_00429500@@YGJPAXPAH@Z",
-   "tu": "match/core/small_misc42_methods.cpp",
+   "tu": "match/small_misc42_methods.cpp",
    "classes": [
     {
      "cls": "ApplicationClass",
@@ -702,7 +702,7 @@
    "addr": "0x426750",
    "name": "Obj_00426750::FUN_00426750",
    "sym": "?FUN_00426750@Obj_00426750@@QAE_NPAUDelegate_00426750@@@Z",
-   "tu": "match/core/small_misc38_methods.cpp",
+   "tu": "match/small_misc38_methods.cpp",
    "classes": [
     {
      "cls": "AnimFile",
@@ -715,7 +715,7 @@
    "addr": "0x426790",
    "name": "Obj_00426750::FUN_00426790",
    "sym": "?FUN_00426790@Obj_00426750@@QAEXXZ",
-   "tu": "match/core/small_misc38_methods.cpp",
+   "tu": "match/small_misc38_methods.cpp",
    "classes": [
     {
      "cls": "AnimFile",
@@ -743,7 +743,7 @@
    "addr": "0x40B270",
    "name": "FUN_0040B270",
    "sym": "?FUN_0040B270@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<SubzoneConnectionStruct>",
@@ -756,7 +756,7 @@
    "addr": "0x40B300",
    "name": "FUN_0040B300",
    "sym": "?FUN_0040B300@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<SubzoneConnectionStruct>",
@@ -771,7 +771,7 @@
    "addr": "0x40B7F0",
    "name": "FUN_0040B7F0",
    "sym": "?FUN_0040B7F0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<BombClass*>",
@@ -784,7 +784,7 @@
    "addr": "0x40BBC0",
    "name": "FUN_0040BBC0",
    "sym": "?FUN_0040BBC0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<BombClass*>",
@@ -799,7 +799,7 @@
    "addr": "0x40B640",
    "name": "FUN_0040B640",
    "sym": "?FUN_0040B640@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<BombClass*>",
@@ -812,7 +812,7 @@
    "addr": "0x40BC10",
    "name": "FUN_0040BC10",
    "sym": "?FUN_0040BC10@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<BombClass*>",
@@ -827,7 +827,7 @@
    "addr": "0x40BA50",
    "name": "FUN_0040BA50",
    "sym": "?FUN_0040BA50@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<TechnoClass*>",
@@ -840,7 +840,7 @@
    "addr": "0x40BC60",
    "name": "FUN_0040BC60",
    "sym": "?FUN_0040BC60@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<TechnoClass*>",
@@ -855,7 +855,7 @@
    "addr": "0x40BFA0",
    "name": "FUN_0040BFA0",
    "sym": "?FUN_0040BFA0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<CommandClass*>",
@@ -868,7 +868,7 @@
    "addr": "0x40C110",
    "name": "FUN_0040C110",
    "sym": "?FUN_0040C110@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<CommandClass*>",
@@ -883,7 +883,7 @@
    "addr": "0x40BE50",
    "name": "FUN_0040BE50",
    "sym": "?FUN_0040BE50@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<CommandClass*>",
@@ -896,7 +896,7 @@
    "addr": "0x40C160",
    "name": "FUN_0040C160",
    "sym": "?FUN_0040C160@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<CommandClass*>",
@@ -911,7 +911,7 @@
    "addr": "0x40C380",
    "name": "FUN_0040C380",
    "sym": "?FUN_0040C380@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<LightConvertClass*>",
@@ -924,7 +924,7 @@
    "addr": "0x40C4F0",
    "name": "FUN_0040C4F0",
    "sym": "?FUN_0040C4F0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<LightConvertClass*>",
@@ -939,7 +939,7 @@
    "addr": "0x40C230",
    "name": "FUN_0040C230",
    "sym": "?FUN_0040C230@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<LightConvertClass*>",
@@ -952,7 +952,7 @@
    "addr": "0x40C540",
    "name": "FUN_0040C540",
    "sym": "?FUN_0040C540@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<LightConvertClass*>",
@@ -967,7 +967,7 @@
    "addr": "0x40C970",
    "name": "FUN_0040C970",
    "sym": "?FUN_0040C970@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<IsometricTileClass*>",
@@ -980,7 +980,7 @@
    "addr": "0x40CAE0",
    "name": "FUN_0040CAE0",
    "sym": "?FUN_0040CAE0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<IsometricTileClass*>",
@@ -995,7 +995,7 @@
    "addr": "0x40C820",
    "name": "FUN_0040C820",
    "sym": "?FUN_0040C820@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<IsometricTileClass*>",
@@ -1008,7 +1008,7 @@
    "addr": "0x40CB30",
    "name": "FUN_0040CB30",
    "sym": "?FUN_0040CB30@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<IsometricTileClass*>",
@@ -1023,7 +1023,7 @@
    "addr": "0x40CDC0",
    "name": "FUN_0040CDC0",
    "sym": "?FUN_0040CDC0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ObjectClass*>",
@@ -1036,7 +1036,7 @@
    "addr": "0x40CF30",
    "name": "FUN_0040CF30",
    "sym": "?FUN_0040CF30@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ObjectClass*>",
@@ -1051,7 +1051,7 @@
    "addr": "0x40D690",
    "name": "FUN_0040D690",
    "sym": "?FUN_0040D690@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<MixFileClass*>",
@@ -1064,7 +1064,7 @@
    "addr": "0x40D800",
    "name": "FUN_0040D800",
    "sym": "?FUN_0040D800@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<MixFileClass*>",
@@ -1079,7 +1079,7 @@
    "addr": "0x40D540",
    "name": "FUN_0040D540",
    "sym": "?FUN_0040D540@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<MixFileClass*>",
@@ -1092,7 +1092,7 @@
    "addr": "0x40D850",
    "name": "FUN_0040D850",
    "sym": "?FUN_0040D850@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<MixFileClass*>",
@@ -1107,7 +1107,7 @@
    "addr": "0x40E940",
    "name": "FUN_0040E940",
    "sym": "?FUN_0040E940@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ScriptClass*>",
@@ -1120,7 +1120,7 @@
    "addr": "0x40EAB0",
    "name": "FUN_0040EAB0",
    "sym": "?FUN_0040EAB0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ScriptClass*>",
@@ -1135,7 +1135,7 @@
    "addr": "0x40E7F0",
    "name": "FUN_0040E7F0",
    "sym": "?FUN_0040E7F0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<ScriptClass*>",
@@ -1148,7 +1148,7 @@
    "addr": "0x40EB00",
    "name": "FUN_0040EB00",
    "sym": "?FUN_0040EB00@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<ScriptClass*>",
@@ -1163,7 +1163,7 @@
    "addr": "0x40F010",
    "name": "FUN_0040F010",
    "sym": "?FUN_0040F010@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<VoxelAnimClass*>",
@@ -1176,7 +1176,7 @@
    "addr": "0x40F180",
    "name": "FUN_0040F180",
    "sym": "?FUN_0040F180@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<VoxelAnimClass*>",
@@ -1191,7 +1191,7 @@
    "addr": "0x40EEC0",
    "name": "FUN_0040EEC0",
    "sym": "?FUN_0040EEC0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<VoxelAnimClass*>",
@@ -1204,7 +1204,7 @@
    "addr": "0x40F1D0",
    "name": "FUN_0040F1D0",
    "sym": "?FUN_0040F1D0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<VoxelAnimClass*>",
@@ -1219,7 +1219,7 @@
    "addr": "0x40F730",
    "name": "FUN_0040F730",
    "sym": "?FUN_0040F730@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<WarheadTypeClass*>",
@@ -1232,7 +1232,7 @@
    "addr": "0x40F8A0",
    "name": "FUN_0040F8A0",
    "sym": "?FUN_0040F8A0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<WarheadTypeClass*>",
@@ -1247,7 +1247,7 @@
    "addr": "0x40F5E0",
    "name": "FUN_0040F5E0",
    "sym": "?FUN_0040F5E0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<WarheadTypeClass*>",
@@ -1260,7 +1260,7 @@
    "addr": "0x40F8F0",
    "name": "FUN_0040F8F0",
    "sym": "?FUN_0040F8F0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<WarheadTypeClass*>",
@@ -1275,7 +1275,7 @@
    "addr": "0x40FD00",
    "name": "FUN_0040FD00",
    "sym": "?FUN_0040FD00@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<WeaponTypeClass*>",
@@ -1288,7 +1288,7 @@
    "addr": "0x40FE70",
    "name": "FUN_0040FE70",
    "sym": "?FUN_0040FE70@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<WeaponTypeClass*>",
@@ -1303,7 +1303,7 @@
    "addr": "0x40FBB0",
    "name": "FUN_0040FBB0",
    "sym": "?FUN_0040FBB0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<WeaponTypeClass*>",
@@ -1316,7 +1316,7 @@
    "addr": "0x40FEC0",
    "name": "FUN_0040FEC0",
    "sym": "?FUN_0040FEC0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<WeaponTypeClass*>",
@@ -1331,7 +1331,7 @@
    "addr": "0x41DF30",
    "name": "FUN_0041DF30",
    "sym": "?FUN_0041DF30@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<AirstrikeClass*>",
@@ -1344,7 +1344,7 @@
    "addr": "0x41E0A0",
    "name": "FUN_0041E0A0",
    "sym": "?FUN_0041E0A0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<AirstrikeClass*>",
@@ -1359,7 +1359,7 @@
    "addr": "0x41DDE0",
    "name": "FUN_0041DDE0",
    "sym": "?FUN_0041DDE0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<AirstrikeClass*>",
@@ -1372,7 +1372,7 @@
    "addr": "0x41E0F0",
    "name": "FUN_0041E0F0",
    "sym": "?FUN_0041E0F0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<AirstrikeClass*>",
@@ -1387,7 +1387,7 @@
    "addr": "0x420630",
    "name": "FUN_00420630",
    "sym": "?FUN_00420630@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<AlphaLightingRemapClass*>",
@@ -1400,7 +1400,7 @@
    "addr": "0x4204C0",
    "name": "FUN_004204C0",
    "sym": "?FUN_004204C0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<AlphaLightingRemapClass*>",
@@ -1415,7 +1415,7 @@
    "addr": "0x420680",
    "name": "FUN_00420680",
    "sym": "?FUN_00420680@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<AlphaLightingRemapClass*>",
@@ -1428,7 +1428,7 @@
    "addr": "0x420370",
    "name": "FUN_00420370",
    "sym": "?FUN_00420370@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<AlphaLightingRemapClass*>",
@@ -1443,7 +1443,7 @@
    "addr": "0x421AC0",
    "name": "FUN_00421AC0",
    "sym": "?FUN_00421AC0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<AlphaShapeClass*>",
@@ -1456,7 +1456,7 @@
    "addr": "0x421950",
    "name": "FUN_00421950",
    "sym": "?FUN_00421950@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<AlphaShapeClass*>",
@@ -1471,7 +1471,7 @@
    "addr": "0x421B10",
    "name": "FUN_00421B10",
    "sym": "?FUN_00421B10@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<AlphaShapeClass*>",
@@ -1484,7 +1484,7 @@
    "addr": "0x421800",
    "name": "FUN_00421800",
    "sym": "?FUN_00421800@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<AlphaShapeClass*>",
@@ -1499,7 +1499,7 @@
    "addr": "0x42DB10",
    "name": "FUN_0042DB10",
    "sym": "?FUN_0042DB10@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<unsigned int>",
@@ -1512,7 +1512,7 @@
    "addr": "0x42D6F0",
    "name": "FUN_0042D6F0",
    "sym": "?FUN_0042D6F0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<unsigned int>",
@@ -1527,7 +1527,7 @@
    "addr": "0x42DBB0",
    "name": "FUN_0042DBB0",
    "sym": "?FUN_0042DBB0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<unsigned short>",
@@ -1540,7 +1540,7 @@
    "addr": "0x42D9A0",
    "name": "FUN_0042D9A0",
    "sym": "?FUN_0042D9A0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<unsigned short>",
@@ -1555,7 +1555,7 @@
    "addr": "0x42DC00",
    "name": "FUN_0042DC00",
    "sym": "?FUN_0042DC00@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<unsigned short>",
@@ -1568,7 +1568,7 @@
    "addr": "0x42D5A0",
    "name": "FUN_0042D5A0",
    "sym": "?FUN_0042D5A0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<unsigned short>",
@@ -1583,7 +1583,7 @@
    "addr": "0x42F970",
    "name": "FUN_0042F970",
    "sym": "?FUN_0042F970@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<BaseNodeClass>",
@@ -1596,7 +1596,7 @@
    "addr": "0x42F3A0",
    "name": "FUN_0042F3A0",
    "sym": "?FUN_0042F3A0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<BaseNodeClass>",
@@ -1611,7 +1611,7 @@
    "addr": "0x42FB50",
    "name": "FUN_0042FB50",
    "sym": "?FUN_0042FB50@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<BaseNodeClass>",
@@ -1624,7 +1624,7 @@
    "addr": "0x42FAB0",
    "name": "FUN_0042FAB0",
    "sym": "?FUN_0042FAB0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<BaseNodeClass>",
@@ -1639,7 +1639,7 @@
    "addr": "0x42FBA0",
    "name": "FUN_0042FBA0",
    "sym": "?FUN_0042FBA0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<Cell>",
@@ -1652,7 +1652,7 @@
    "addr": "0x42F7C0",
    "name": "FUN_0042F7C0",
    "sym": "?FUN_0042F7C0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<Cell>",
@@ -1667,7 +1667,7 @@
    "addr": "0x42FBF0",
    "name": "FUN_0042FBF0",
    "sym": "?FUN_0042FBF0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<Cell>",
@@ -1680,7 +1680,7 @@
    "addr": "0x42F420",
    "name": "FUN_0042F420",
    "sym": "?FUN_0042F420@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<Cell>",
@@ -1695,7 +1695,7 @@
    "addr": "0x43ACB0",
    "name": "FUN_0043ACB0",
    "sym": "?FUN_0043ACB0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<NeuronClass*>",
@@ -1708,7 +1708,7 @@
    "addr": "0x43AC20",
    "name": "FUN_0043AC20",
    "sym": "?FUN_0043AC20@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<NeuronClass*>",
@@ -1723,7 +1723,7 @@
    "addr": "0x45A9C0",
    "name": "FUN_0045A9C0",
    "sym": "?FUN_0045A9C0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ParticleSystemTypeClass*>",
@@ -1736,7 +1736,7 @@
    "addr": "0x45A270",
    "name": "FUN_0045A270",
    "sym": "?FUN_0045A270@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ParticleSystemTypeClass*>",
@@ -1751,7 +1751,7 @@
    "addr": "0x45AAB0",
    "name": "FUN_0045AAB0",
    "sym": "?FUN_0045AAB0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<InfantryClass*>",
@@ -1764,7 +1764,7 @@
    "addr": "0x459FF0",
    "name": "FUN_00459FF0",
    "sym": "?FUN_00459FF0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<InfantryClass*>",
@@ -1779,7 +1779,7 @@
    "addr": "0x45AC90",
    "name": "FUN_0045AC90",
    "sym": "?FUN_0045AC90@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<FoggedObjectClass*>",
@@ -1792,7 +1792,7 @@
    "addr": "0x45AC00",
    "name": "FUN_0045AC00",
    "sym": "?FUN_0045AC00@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<FoggedObjectClass*>",
@@ -1807,7 +1807,7 @@
    "addr": "0x45ACE0",
    "name": "FUN_0045ACE0",
    "sym": "?FUN_0045ACE0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<Reestablish*>",
@@ -1820,7 +1820,7 @@
    "addr": "0x45A850",
    "name": "FUN_0045A850",
    "sym": "?FUN_0045A850@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<Reestablish*>",
@@ -1835,7 +1835,7 @@
    "addr": "0x45AD30",
    "name": "FUN_0045AD30",
    "sym": "?FUN_0045AD30@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<Reestablish*>",
@@ -1848,7 +1848,7 @@
    "addr": "0x45A0D0",
    "name": "FUN_0045A0D0",
    "sym": "?FUN_0045A0D0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<Reestablish*>",
@@ -1863,7 +1863,7 @@
    "addr": "0x466080",
    "name": "FUN_00466080",
    "sym": "?FUN_00466080@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<TPoint3D<int>>",
@@ -1876,7 +1876,7 @@
    "addr": "0x465F50",
    "name": "FUN_00465F50",
    "sym": "?FUN_00465F50@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<TPoint3D<int>>",
@@ -1891,7 +1891,7 @@
    "addr": "0x46B8C0",
    "name": "FUN_0046B8C0",
    "sym": "?FUN_0046B8C0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<BulletClass*>",
@@ -1904,7 +1904,7 @@
    "addr": "0x46B750",
    "name": "FUN_0046B750",
    "sym": "?FUN_0046B750@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<BulletClass*>",
@@ -1919,7 +1919,7 @@
    "addr": "0x46B910",
    "name": "FUN_0046B910",
    "sym": "?FUN_0046B910@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<BulletClass*>",
@@ -1932,7 +1932,7 @@
    "addr": "0x46B5E0",
    "name": "FUN_0046B5E0",
    "sym": "?FUN_0046B5E0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<BulletClass*>",
@@ -1947,7 +1947,7 @@
    "addr": "0x473000",
    "name": "FUN_00473000",
    "sym": "?FUN_00473000@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ControlNode*>",
@@ -1960,7 +1960,7 @@
    "addr": "0x472C30",
    "name": "FUN_00472C30",
    "sym": "?FUN_00472C30@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<ControlNode*>",
@@ -1975,7 +1975,7 @@
    "addr": "0x4730A0",
    "name": "FUN_004730A0",
    "sym": "?FUN_004730A0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<CaptureManagerClass*>",
@@ -1988,7 +1988,7 @@
    "addr": "0x472E90",
    "name": "FUN_00472E90",
    "sym": "?FUN_00472E90@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<CaptureManagerClass*>",
@@ -2003,7 +2003,7 @@
    "addr": "0x4730F0",
    "name": "FUN_004730F0",
    "sym": "?FUN_004730F0@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<CaptureManagerClass*>",
@@ -2016,7 +2016,7 @@
    "addr": "0x472AE0",
    "name": "FUN_00472AE0",
    "sym": "?FUN_00472AE0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<CaptureManagerClass*>",
@@ -2072,7 +2072,7 @@
    "addr": "0x63F7B0",
    "name": "thunk_FUN_00652cf0",
    "sym": "?FUN_0063F7B0@@YIXPAX@Z",
-   "tu": "match/core/tail_jmp_thunk_sweep.cpp",
+   "tu": "match/tail_jmp_thunk_sweep.cpp",
    "classes": [
     {
      "cls": "PowerClass",
@@ -2100,7 +2100,7 @@
    "addr": "0x711E80",
    "name": "FUN_00711E80",
    "sym": "?FUN_00711E80@@YA_NXZ",
-   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+   "tu": "match/leftover_trivial_leaf_sweep.cpp",
    "classes": [
     {
      "cls": "TechnoTypeClass",
@@ -2115,7 +2115,7 @@
    "addr": "0x4F42A0",
    "name": "FUN_004F42A0",
    "sym": "?FUN_004F42A0@@YGXXZ",
-   "tu": "match/core/misc_leaf_methods.cpp",
+   "tu": "match/misc_leaf_methods.cpp",
    "classes": [
     {
      "cls": "GScreenClass",
@@ -2143,7 +2143,7 @@
    "addr": "0x765B60",
    "name": "FUN_00765B60",
    "sym": "?FUN_00765B60@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WorldDominationTour::Conflict>>",
@@ -2156,7 +2156,7 @@
    "addr": "0x00765960",
    "name": "FUN_0000765960",
    "sym": "?FUN_0000765960@@YIXPAUVirtVector_00765960@@@Z",
-   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "tu": "match/vector_virtual_dtor_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WorldDominationTour::Conflict>>",
@@ -2171,7 +2171,7 @@
    "addr": "0x766FC0",
    "name": "FUN_00766FC0",
    "sym": "?FUN_00766FC0@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>",
@@ -2184,7 +2184,7 @@
    "addr": "0x00766d30",
    "name": "FUN_0000766D30",
    "sym": "?FUN_0000766D30@@YIXPAUVirtVector_00765960@@@Z",
-   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "tu": "match/vector_virtual_dtor_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>",
@@ -2199,7 +2199,7 @@
    "addr": "0x76A5C0",
    "name": "FUN_0076A5C0",
    "sym": "?FUN_0076A5C0@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WorldDominationTour::Territory>>",
@@ -2212,7 +2212,7 @@
    "addr": "0x00769f50",
    "name": "FUN_0000769F50",
    "sym": "?FUN_0000769F50@@YIXPAUVirtVector_00765960@@@Z",
-   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "tu": "match/vector_virtual_dtor_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WorldDominationTour::Territory>>",
@@ -2227,7 +2227,7 @@
    "addr": "0x76BBC0",
    "name": "FUN_0076BBC0",
    "sym": "?FUN_0076BBC0@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WDTTerritory>>",
@@ -2240,7 +2240,7 @@
    "addr": "0x0076b9e0",
    "name": "FUN_000076B9E0",
    "sym": "?FUN_000076B9E0@@YIXPAUVirtVector_00765960@@@Z",
-   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "tu": "match/vector_virtual_dtor_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<rc_ptr<WDTTerritory>>",
@@ -2255,7 +2255,7 @@
    "addr": "0x49EA70",
    "name": "VectorResizeFamily::FUN_49EA70",
    "sym": "?FUN_49EA70@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<char*>",
@@ -2268,7 +2268,7 @@
    "addr": "0x5C0C50",
    "name": "VectorResizeFamily::FUN_5C0C50",
    "sym": "?FUN_5C0C50@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<char*>",
@@ -2311,7 +2311,7 @@
    "addr": "0x40CC20",
    "name": "FUN_0040CC20",
    "sym": "?FUN_0040CC20@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "LogicClass",
@@ -2326,7 +2326,7 @@
    "addr": "0x45AA10",
    "name": "FUN_0045AA10",
    "sym": "?FUN_0045AA10@BufferHolderDtor@@QAEPAXI@Z",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<ParticleSystemTypeClass*>",
@@ -2341,7 +2341,7 @@
    "addr": "0x45A4D0",
    "name": "FUN_0045A4D0",
    "sym": "?FUN_0045A4D0@@YIXPAUBufferHolder@@@Z",
-   "tu": "match/core/buffer_release_methods.cpp",
+   "tu": "match/buffer_release_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<InfantryClass*>",
@@ -2911,7 +2911,7 @@
    "addr": "0x40E4A0",
    "name": "FUN_0040E4A0",
    "sym": "?FUN_0040E4A0@Obj_0040E400@@QAEPAXI@Z",
-   "tu": "match/core/deleting_dtor_methods.cpp",
+   "tu": "match/deleting_dtor_methods.cpp",
    "classes": [
     {
      "cls": "CCINIClass",
@@ -2926,7 +2926,7 @@
    "addr": "0x46B5C0",
    "name": "FUN_0046B5C0",
    "sym": "?FUN_0046B5C0@Obj_0046B500@@QAEPAXI@Z",
-   "tu": "match/core/deleting_dtor_methods.cpp",
+   "tu": "match/deleting_dtor_methods.cpp",
    "classes": [
     {
      "cls": "BulletClass",
@@ -2941,7 +2941,7 @@
    "addr": "0x473920",
    "name": "FUN_00473920",
    "sym": "?FUN_00473920@Obj_00473900@@QAEPAXI@Z",
-   "tu": "match/core/deleting_dtor_methods.cpp",
+   "tu": "match/deleting_dtor_methods.cpp",
    "classes": [
     {
      "cls": "CarryoverClass",
@@ -4366,7 +4366,7 @@
    "addr": "0x4BAD60",
    "name": "FUN_004BAD60",
    "sym": "?FUN_004BAD60@@YIHPAULeafObj_0x10@@@Z",
-   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+   "tu": "match/leftover_trivial_leaf_sweep.cpp",
    "classes": [
     {
      "cls": "DSurface",
@@ -4381,7 +4381,7 @@
    "addr": "0x4D03A0",
    "name": "FUN_004D03A0",
    "sym": "?FUN_004D03A0@@YIPAUMultiVtableObject@@PAU1@HD@Z",
-   "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+   "tu": "match/multi_vtable_dtor_family_methods.cpp",
    "classes": [
     {
      "cls": "FlyLocomotionClass",
@@ -4396,7 +4396,7 @@
    "addr": "0x5172C0",
    "name": "FUN_005172C0",
    "sym": "?FUN_005172C0@@YIPAUMultiVtableObject@@PAU1@HD@Z",
-   "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+   "tu": "match/multi_vtable_dtor_family_methods.cpp",
    "classes": [
     {
      "cls": "HoverLocomotionClass",
@@ -4411,7 +4411,7 @@
    "addr": "0x5B1B50",
    "name": "FUN_005B1B50",
    "sym": "?FUN_005B1B50@@YIPAUMultiVtableObject@@PAU1@HD@Z",
-   "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+   "tu": "match/multi_vtable_dtor_family_methods.cpp",
    "classes": [
     {
      "cls": "MechLocomotionClass",
@@ -4426,7 +4426,7 @@
    "addr": "0x41CB20",
    "name": "FUN_0041CB20",
    "sym": "?FUN_0041CB20@Obj_0041CB20@@QAEPADH@Z",
-   "tu": "match/core/small_misc15_methods.cpp",
+   "tu": "match/small_misc15_methods.cpp",
    "classes": [
     {
      "cls": "AircraftTypeClass",
@@ -4456,7 +4456,7 @@
    "addr": "0x4019a0",
    "name": "BufferHolder_004019A0::FUN_004019A0",
    "sym": "?FUN_004019A0@BufferHolder_004019A0@@QAEPAXD@Z",
-   "tu": "match/core/small_misc37_methods.cpp",
+   "tu": "match/small_misc37_methods.cpp",
    "classes": [
     {
      "cls": "CCFileClass",
@@ -4471,7 +4471,7 @@
    "addr": "0x40e390",
    "name": "Node_0040E390::FUN_0040E390",
    "sym": "?FUN_0040E390@Node_0040E390@@QAEPAXD@Z",
-   "tu": "match/core/small_misc42_methods.cpp",
+   "tu": "match/small_misc42_methods.cpp",
    "classes": [
     {
      "cls": "GenericNode",
@@ -4486,7 +4486,7 @@
    "addr": "0x432610",
    "name": "Obj_00432610::FUN_00432610",
    "sym": "?FUN_00432610@Obj_00432610@@QAEPAXD@Z",
-   "tu": "match/core/small_misc49_methods.cpp",
+   "tu": "match/small_misc49_methods.cpp",
    "classes": [
     {
      "cls": "BufferIOFileClass",
@@ -4501,7 +4501,7 @@
    "addr": "0x42f180",
    "name": "Table_0042F180::FUN_0042F180",
    "sym": "?FUN_0042F180@Table_0042F180@@QAEXPAUSink_0042F180@@@Z",
-   "tu": "match/core/small_misc55_methods.cpp",
+   "tu": "match/small_misc55_methods.cpp",
    "classes": [
     {
      "cls": "BaseClass",
@@ -4516,7 +4516,7 @@
    "addr": "0x437030",
    "name": "FUN_00437030",
    "sym": "?FUN_00437030@Obj_00437030@@QAE_NXZ",
-   "tu": "match/core/small_misc6_methods.cpp",
+   "tu": "match/small_misc6_methods.cpp",
    "classes": [
     {
      "cls": "BuildingLightClass",
@@ -4531,7 +4531,7 @@
    "addr": "0x401950",
    "name": "FUN_00401950",
    "sym": "?FUN_00401950@Obj_00401950@@QAEPAXI@Z",
-   "tu": "match/core/small_misc8_methods.cpp",
+   "tu": "match/small_misc8_methods.cpp",
    "classes": [
     {
      "cls": "CDFileClass",
@@ -4561,7 +4561,7 @@
    "addr": "0x4E0D80",
    "name": "FUN_004E0D80",
    "sym": "?FUN_004E0D80@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>",
@@ -4576,7 +4576,7 @@
    "addr": "0x4E0E20",
    "name": "FUN_004E0E20",
    "sym": "?FUN_004E0E20@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>",
@@ -4591,7 +4591,7 @@
    "addr": "0x510400",
    "name": "FUN_00510400",
    "sym": "?FUN_00510400@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>",
@@ -4606,7 +4606,7 @@
    "addr": "0x5104A0",
    "name": "FUN_005104A0",
    "sym": "?FUN_005104A0@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>",
@@ -4621,7 +4621,7 @@
    "addr": "0x6F2680",
    "name": "FUN_006F2680",
    "sym": "?FUN_006F2680@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>",
@@ -4636,7 +4636,7 @@
    "addr": "0x6F2720",
    "name": "FUN_006F2720",
    "sym": "?FUN_006F2720@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>",
@@ -4651,7 +4651,7 @@
    "addr": "0x763FF0",
    "name": "FUN_00763FF0",
    "sym": "?FUN_00763FF0@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<WaypointClass>",
@@ -4666,7 +4666,7 @@
    "addr": "0x764050",
    "name": "FUN_00764050",
    "sym": "?FUN_00764050@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
-   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "tu": "match/vector_object_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "VectorClass<WaypointClass>",
@@ -4681,7 +4681,7 @@
    "addr": "0x765C20",
    "name": "FUN_00765C20",
    "sym": "?FUN_00765C20@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<rc_ptr<WorldDominationTour::Conflict>>",
@@ -4696,7 +4696,7 @@
    "addr": "0x767080",
    "name": "FUN_00767080",
    "sym": "?FUN_00767080@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<rc_ptr<WorldDominationTour::GameOption>>",
@@ -4711,7 +4711,7 @@
    "addr": "0x76A680",
    "name": "FUN_0076A680",
    "sym": "?FUN_0076A680@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>",
@@ -4726,7 +4726,7 @@
    "addr": "0x76BC10",
    "name": "FUN_0076BC10",
    "sym": "?FUN_0076BC10@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
-   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "tu": "match/vector_polymorphic_sdd_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<rc_ptr<WDTTerritory>>",
@@ -4741,7 +4741,7 @@
    "addr": "0x49ED30",
    "name": "VectorResizeFamily::FUN_49ED30",
    "sym": "?FUN_49ED30@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<DynamicVectorClass<char*>*>",
@@ -4756,7 +4756,7 @@
    "addr": "0x4A13C0",
    "name": "VectorResizeFamily::FUN_4A13C0",
    "sym": "?FUN_4A13C0@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<IConnectionPoint*>",
@@ -4771,7 +4771,7 @@
    "addr": "0x4CAA70",
    "name": "VectorResizeFamily::FUN_4CAA70",
    "sym": "?FUN_4CAA70@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<TechnoTypeClass*>",
@@ -4786,7 +4786,7 @@
    "addr": "0x4E04A0",
    "name": "VectorResizeFamily::FUN_4E04A0",
    "sym": "?FUN_4E04A0@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<AbstractClass*>",
@@ -4801,7 +4801,7 @@
    "addr": "0x4E95E0",
    "name": "VectorResizeFamily::FUN_4E95E0",
    "sym": "?FUN_4E95E0@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<BuildingClass*>",
@@ -4816,7 +4816,7 @@
    "addr": "0x4E9840",
    "name": "VectorResizeFamily::FUN_4E9840",
    "sym": "?FUN_4E9840@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<SuperClass*>",
@@ -4831,7 +4831,7 @@
    "addr": "0x4EA1C0",
    "name": "VectorResizeFamily::FUN_4EA1C0",
    "sym": "?FUN_4EA1C0@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<TeamClass*>",
@@ -4846,7 +4846,7 @@
    "addr": "0x4EBD60",
    "name": "VectorResizeFamily::FUN_4EBD60",
    "sym": "?FUN_4EBD60@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<HouseClass*>",
@@ -4861,7 +4861,7 @@
    "addr": "0x4EDEA0",
    "name": "VectorResizeFamily::FUN_4EDEA0",
    "sym": "?FUN_4EDEA0@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<UnitTypeClass*>",
@@ -4876,7 +4876,7 @@
    "addr": "0x4EE360",
    "name": "VectorResizeFamily::FUN_4EE360",
    "sym": "?FUN_4EE360@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<InfantryTypeClass*>",
@@ -4891,7 +4891,7 @@
    "addr": "0x4F2A60",
    "name": "VectorResizeFamily::FUN_4F2A60",
    "sym": "?FUN_4F2A60@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<GraphicMenuItem*>",
@@ -4906,7 +4906,7 @@
    "addr": "0x5AC820",
    "name": "VectorResizeFamily::FUN_5AC820",
    "sym": "?FUN_5AC820@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<MapRegionClass*>",
@@ -4921,7 +4921,7 @@
    "addr": "0x5AD010",
    "name": "VectorResizeFamily::FUN_5AD010",
    "sym": "?FUN_5AD010@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<CellClass*>",
@@ -4936,7 +4936,7 @@
    "addr": "0x5C5510",
    "name": "VectorResizeFamily::FUN_5C5510",
    "sym": "?FUN_5C5510@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<NodeNameType*>",
@@ -4951,7 +4951,7 @@
    "addr": "0x5D0C60",
    "name": "VectorResizeFamily::FUN_5D0C60",
    "sym": "?FUN_5D0C60@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<MSTextEntry*>",
@@ -4966,7 +4966,7 @@
    "addr": "0x5D0EC0",
    "name": "VectorResizeFamily::FUN_5D0EC0",
    "sym": "?FUN_5D0EC0@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<MapSelection*>",
@@ -4981,7 +4981,7 @@
    "addr": "0x5D8730",
    "name": "VectorResizeFamily::FUN_5D8730",
    "sym": "?FUN_5D8730@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<MultiplayerGameMode*>",
@@ -4996,7 +4996,7 @@
    "addr": "0x627F90",
    "name": "VectorResizeFamily::FUN_627F90",
    "sym": "?FUN_627F90@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<ColorScheme*>",
@@ -5011,7 +5011,7 @@
    "addr": "0x69C890",
    "name": "VectorResizeFamily::FUN_69C890",
    "sym": "?FUN_69C890@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "TypeList<DiskID>",
@@ -5026,7 +5026,7 @@
    "addr": "0x6B15F0",
    "name": "VectorResizeFamily::FUN_6B15F0",
    "sym": "?FUN_6B15F0@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<SlaveManagerClass::SlaveControl*>",
@@ -5041,7 +5041,7 @@
    "addr": "0x6B8400",
    "name": "VectorResizeFamily::FUN_6B8400",
    "sym": "?FUN_6B8400@VectorResizeFamily@@QAE_NHPAPAX@Z",
-   "tu": "match/core/vector_resize_family_methods.cpp",
+   "tu": "match/vector_resize_family_methods.cpp",
    "classes": [
     {
      "cls": "DynamicVectorClass<SpawnManagerClass::SpawnControl*>",

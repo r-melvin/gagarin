@@ -13,7 +13,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/cell.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 #include "_layout/cell_class.h"
 #include "_layout/map_0087f7e8.h"
 

@@ -3,7 +3,7 @@
 //   The seven-slot VectorClass / DynamicVectorClass shape every pointer array of the terrain-objects
 //   module uses (OverlayClass::Array 0xA8EC50, OverlayTypeClass::Array 0xA83D80, SmudgeClass::Array
 //   0xA8B1E0, SmudgeTypeClass::Array 0xA8EC18, TerrainTypeClass::Array 0xA8E318, TerrainClass::Array
-//   0xA8E988). Layout and slot order are those of match/core/vector_class.h; the inlined AddItem /
+//   0xA8E988). Layout and slot order are those of match/vector_class.h; the inlined AddItem /
 //   RemoveItem reach SetCapacity (slot 2, [vptr+8]) and FindItemIndex (slot 4, [vptr+0x10]) through the
 //   same vtable slots as retail.
 //
@@ -31,8 +31,8 @@
 #define GG_MATCH_MAP_TERRAIN_OBJECTS_TERRAIN_COMMON_VECTORS_H
 
 #include "terrain_common_types.h"
-#include "core/vector_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class.h"
+#include "vector_class_operations.h"
 
 // The helpers take the vector and reach SetCapacity through its vtable slot 2, exactly as the inlined
 // member bodies did.

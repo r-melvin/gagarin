@@ -28,7 +28,7 @@
 extern RulesClass* DAT_008871E0;
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // Declaration order matters — see match/_rt/gg_vslot.h.

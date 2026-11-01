@@ -5,7 +5,7 @@
 //   (slot 6), slots 11 and 12, checksum 0x4D2810 (slot 13).
 
 #include "FUNCTION.H"
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0x8B3D10 -- every live fogged object (defined with its exit
 // stub in core/static_vector_member_dtor_stubs_a.cpp).

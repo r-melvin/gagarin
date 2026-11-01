@@ -25,7 +25,7 @@ GG_STATIC_ASSERT(offsetof(HouseClass, RecheckRadar) == 0x5779);
 // this machine.
 extern HouseClass* CurrentPlayer;
 
-#include "core/scenario_class.h"
+#include "scenario_class.h"
 
 struct LightningStorm
 {

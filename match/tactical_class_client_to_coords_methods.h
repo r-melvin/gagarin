@@ -21,7 +21,7 @@
 #include "_layout/vector3d.h"
 #include "_layout/matrix3d.h"
 #include "_layout/coord_struct.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 struct Point2D_006D2280
 {

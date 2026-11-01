@@ -6,5 +6,5 @@
 #include "_layout/capture_manager_class.h"
 #include "_layout/control_node.h"
 #include "_layout/techno_class.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 #endif

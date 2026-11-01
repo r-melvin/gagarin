@@ -41,7 +41,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/hsv_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // ---------------------------------------------------------------------------
 // ScratchEntry: the 0x104-byte element.

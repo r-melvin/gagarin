@@ -91,20 +91,20 @@
 //   GLOBAL:   GAMEMD 0x87E728  the campaign session pointer
 //   LIBRARY:  GAMEMD 0x7C8B3D  operator delete (CRT; excluded from the match)
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
-#include "core/empty_function_family_methods.h"
+#include "empty_function_family_methods.h"
 
-#include "core/tail_jmp_thunk_sweep.h"
+#include "tail_jmp_thunk_sweep.h"
 
-#include "core/trivial_tu153_methods.h"
+#include "trivial_tu153_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -132,7 +132,7 @@ template class DynamicVectorClass<TRect<int> >;
 #include "_layout/dirty_area.h"
 template class DynamicVectorClass<DirtyAreaStruct>;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class MapSelection;
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -162,7 +162,7 @@ GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MapStage;
 
@@ -192,7 +192,7 @@ GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MSAnim;
 
@@ -222,7 +222,7 @@ GG_STATIC_ASSERT(offsetof(GgMSAnimDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgMSAnimDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMSAnimDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MSAnimEntry;
 
@@ -248,7 +248,7 @@ GG_STATIC_ASSERT(offsetof(GgMsAnimEntryDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgMsAnimEntryDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMsAnimEntryDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MSSfx;
 
@@ -278,7 +278,7 @@ GG_STATIC_ASSERT(offsetof(GgMSSfxDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgMSSfxDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMSSfxDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MSSfxEntry;
 
@@ -324,7 +324,7 @@ GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, CapacityIncrement) == 0x14)
 // element compare in operator== and FindItemIndex is Point2D's member-wise
 // equality from geometry2d.h.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MSTextEntry;
 
@@ -348,7 +348,7 @@ GG_STATIC_ASSERT(offsetof(GgMSTextEntryDynamicVectorClass, CapacityIncrement) ==
 
 GG_STATIC_ASSERT(sizeof(MSTextEntry*) == 4);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/geometry2d.h"
 
 template class DynamicVectorClass<Point2D>;

@@ -11,11 +11,11 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/cell.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 #include "_layout/map_seed_class.h"
 #include "iso_tile_type_class_tile_data_methods.h"
-#include "core/vector_class_operations.h"
-#include "core/trivial_tu130_methods.h"
+#include "vector_class_operations.h"
+#include "trivial_tu130_methods.h"
 
 // 8-byte value written through a pointer passed in ECX (0x58BB00).
 struct Pair_8

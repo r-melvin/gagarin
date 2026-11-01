@@ -50,7 +50,7 @@ int IsBuildCat5_006A5F20(int abs, int idx);
 struct TechnoType_006A5F20;
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // MapClass — only the sidebar repaint request is called, through the
 // immediate 0x87F7E8.

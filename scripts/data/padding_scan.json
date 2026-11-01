@@ -4869,103 +4869,103 @@
  "matched_entries_missed": [
   {
    "addr": "0x401000",
-   "tu": "match/core/triple_timer_init_methods.cpp",
+   "tu": "match/triple_timer_init_methods.cpp",
    "name": "FUN_00401000",
    "reason": "section-start"
   },
   {
    "addr": "0x4025B0",
-   "tu": "match/core/dispatch_state_methods.cpp",
+   "tu": "match/dispatch_state_methods.cpp",
    "name": "FUN_004025B0",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x402C00",
-   "tu": "match/core/list_holder_methods.cpp",
+   "tu": "match/list_holder_methods.cpp",
    "name": "FUN_00402C00",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4038A0",
-   "tu": "match/core/small_struct_ctor_methods.cpp",
+   "tu": "match/small_struct_ctor_methods.cpp",
    "name": "FUN_004038A0",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x405140",
-   "tu": "match/core/guarded_getter_methods.cpp",
+   "tu": "match/guarded_getter_methods.cpp",
    "name": "FUN_00405140",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x405170",
-   "tu": "match/core/guarded_getter_methods.cpp",
+   "tu": "match/guarded_getter_methods.cpp",
    "name": "FUN_00405170",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4073C0",
-   "tu": "match/core/intrusive_list_methods.cpp",
+   "tu": "match/intrusive_list_methods.cpp",
    "name": "FUN_004073C0",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4080C0",
-   "tu": "match/core/tail_call_methods.cpp",
+   "tu": "match/tail_call_methods.cpp",
    "name": "FUN_004080C0",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x408230",
-   "tu": "match/core/floored_decrement_methods.cpp",
+   "tu": "match/floored_decrement_methods.cpp",
    "name": "FUN_00408230",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40A950",
-   "tu": "match/core/small_misc44_methods.cpp",
+   "tu": "match/small_misc44_methods.cpp",
    "name": "FUN_0040A950",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40B270",
-   "tu": "match/core/vector_clear_family_methods.cpp",
+   "tu": "match/vector_clear_family_methods.cpp",
    "name": "VectorClass<SubzoneConnectionStruct>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40B930",
-   "tu": "match/core/vector_bombclass_methods.cpp",
+   "tu": "match/vector_bombclass_methods.cpp",
    "name": "DynamicVectorClass<BombClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40BB90",
-   "tu": "match/core/vector_technoclass_methods.cpp",
+   "tu": "match/vector_technoclass_methods.cpp",
    "name": "DynamicVectorClass<TechnoClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40C0E0",
-   "tu": "match/core/vector_commandclass_slot_methods.cpp",
+   "tu": "match/vector_commandclass_slot_methods.cpp",
    "name": "DynamicVectorClass<CommandClass const *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40C4C0",
-   "tu": "match/core/vector_lightconvertclass_methods.cpp",
+   "tu": "match/vector_lightconvertclass_methods.cpp",
    "name": "DynamicVectorClass<LightConvertClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40CAB0",
-   "tu": "match/core/vector_isometrictileclass_slot_methods.cpp",
+   "tu": "match/vector_isometrictileclass_slot_methods.cpp",
    "name": "DynamicVectorClass<IsometricTileClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40CF00",
-   "tu": "match/core/vector_objectclass_slot_methods.cpp",
+   "tu": "match/vector_objectclass_slot_methods.cpp",
    "name": "DynamicVectorClass<ObjectClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -4977,37 +4977,37 @@
   },
   {
    "addr": "0x40D7D0",
-   "tu": "match/core/vector_mixfileclass_slot_methods.cpp",
+   "tu": "match/vector_mixfileclass_slot_methods.cpp",
    "name": "DynamicVectorClass<MixFileClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40EA80",
-   "tu": "match/core/vector_scriptclass_slot_methods.cpp",
+   "tu": "match/vector_scriptclass_slot_methods.cpp",
    "name": "DynamicVectorClass<ScriptClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40F150",
-   "tu": "match/core/vector_voxelanimclass_slot_methods.cpp",
+   "tu": "match/vector_voxelanimclass_slot_methods.cpp",
    "name": "DynamicVectorClass<VoxelAnimClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40F870",
-   "tu": "match/core/vector_warheadtypeclass_methods.cpp",
+   "tu": "match/vector_warheadtypeclass_methods.cpp",
    "name": "DynamicVectorClass<WarheadTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x40FE40",
-   "tu": "match/core/vector_weapontypeclass_slot_methods.cpp",
+   "tu": "match/vector_weapontypeclass_slot_methods.cpp",
    "name": "DynamicVectorClass<WeaponTypeClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x410220",
-   "tu": "match/core/tiny_leaf_methods.cpp",
+   "tu": "match/tiny_leaf_methods.cpp",
    "name": "FUN_00410220",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5025,7 +5025,7 @@
   },
   {
    "addr": "0x417FD0",
-   "tu": "match/core/leaf_accessor_methods.cpp",
+   "tu": "match/leaf_accessor_methods.cpp",
    "name": "FUN_00417FD0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5061,31 +5061,31 @@
   },
   {
    "addr": "0x427290",
-   "tu": "match/core/trivial_tu024_methods.cpp",
+   "tu": "match/trivial_tu024_methods.cpp",
    "name": "Obj_00427290::FUN_00427290",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x42D830",
-   "tu": "match/core/vector_add_item_methods.cpp",
+   "tu": "match/vector_add_item_methods.cpp",
    "name": "VectorAddTarget::FUN_0042D830",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x42D880",
-   "tu": "match/core/vector_uint_slot_methods.cpp",
+   "tu": "match/vector_uint_slot_methods.cpp",
    "name": "DynamicVectorClass<unsigned int>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x42F1E0",
-   "tu": "match/core/triple_vector_host_methods.cpp",
+   "tu": "match/triple_vector_host_methods.cpp",
    "name": "Host_0042F1E0::Ctor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x42FCB0",
-   "tu": "match/core/vector_class_ctor_methods.cpp",
+   "tu": "match/vector_class_ctor_methods.cpp",
    "name": "NarrowVectorClass_0042FCB0::Ctor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5097,19 +5097,19 @@
   },
   {
    "addr": "0x433C00",
-   "tu": "match/core/small_misc19_methods.cpp",
+   "tu": "match/small_misc19_methods.cpp",
    "name": "FUN_00433C00",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x433C90",
-   "tu": "match/core/small_struct_ctor_methods.cpp",
+   "tu": "match/small_struct_ctor_methods.cpp",
    "name": "FUN_00433C90",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x433ED0",
-   "tu": "match/core/small_misc16_methods.cpp",
+   "tu": "match/small_misc16_methods.cpp",
    "name": "Obj_00433CF0::FUN_00433ED0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5121,7 +5121,7 @@
   },
   {
    "addr": "0x437F30",
-   "tu": "match/core/misc_leaf_methods.cpp",
+   "tu": "match/misc_leaf_methods.cpp",
    "name": "FUN_00437F30",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5133,7 +5133,7 @@
   },
   {
    "addr": "0x438A90",
-   "tu": "match/core/bomb_serialize_00438a90.cpp",
+   "tu": "match/bomb_serialize_00438a90.cpp",
    "name": "BombSerializeView_00438A90::FUN_00438A90",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5151,7 +5151,7 @@
   },
   {
    "addr": "0x4589C0",
-   "tu": "match/core/small_misc39_methods.cpp",
+   "tu": "match/small_misc39_methods.cpp",
    "name": "Obj_004589C0::FUN_004589C0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5163,7 +5163,7 @@
   },
   {
    "addr": "0x45A3B0",
-   "tu": "match/core/vector_particlesystemtype_methods.cpp",
+   "tu": "match/vector_particlesystemtype_methods.cpp",
    "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5187,19 +5187,19 @@
   },
   {
    "addr": "0x465FD0",
-   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+   "tu": "match/vector_cell_geometry_slot_methods.cpp",
    "name": "VectorClass<TPoint3D<int>>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x466080",
-   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "tu": "match/buffer_holder_dtor_methods.cpp",
    "name": "FUN_00466080",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x46B890",
-   "tu": "match/core/vector_bulletclass_methods.cpp",
+   "tu": "match/vector_bulletclass_methods.cpp",
    "name": "DynamicVectorClass<BulletClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5241,25 +5241,25 @@
   },
   {
    "addr": "0x477EC0",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_00477EC0::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x477F10",
-   "tu": "match/core/vector_int_methods.cpp",
+   "tu": "match/vector_int_methods.cpp",
    "name": "DynamicVectorClass<int>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4781F0",
-   "tu": "match/core/vector_technotype_methods.cpp",
+   "tu": "match/vector_technotype_methods.cpp",
    "name": "DynamicVectorClass<TechnoTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x488030",
-   "tu": "match/core/vector_dtor_family_methods.cpp",
+   "tu": "match/vector_dtor_family_methods.cpp",
    "name": "VectorClass<ObjectClass*>::`scalar deleting destructor'",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5271,7 +5271,7 @@
   },
   {
    "addr": "0x48AFA0",
-   "tu": "match/core/vector_damagegroup_methods.cpp",
+   "tu": "match/vector_damagegroup_methods.cpp",
    "name": "DynamicVectorClass<DamageGroup*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5739,25 +5739,25 @@
   },
   {
    "addr": "0x49FB60",
-   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+   "tu": "match/leftover_trivial_leaf_sweep.cpp",
    "name": "FUN_0049FB60",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4A1200",
-   "tu": "match/core/vector_small_struct_slot_methods.cpp",
+   "tu": "match/vector_small_struct_slot_methods.cpp",
    "name": "DynamicVectorClass<tagCONNECTDATA>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4A1470",
-   "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+   "tu": "match/vector_iconnectionpoint_methods.cpp",
    "name": "DynamicVectorClass<IConnectionPoint*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4A4D60",
-   "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+   "tu": "match/vector_ddsurfacedesc_methods.cpp",
    "name": "DynamicVectorClass<_DDSURFACEDESC*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5781,7 +5781,7 @@
   },
   {
    "addr": "0x4AAD20",
-   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+   "tu": "match/leftover_trivial_leaf_sweep.cpp",
    "name": "FUN_004AAD20",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5823,7 +5823,7 @@
   },
   {
    "addr": "0x4C5DF0",
-   "tu": "match/core/vector_empulseclass_methods.cpp",
+   "tu": "match/vector_empulseclass_methods.cpp",
    "name": "DynamicVectorClass<EMPulseClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5865,7 +5865,7 @@
   },
   {
    "addr": "0x4CAB20",
-   "tu": "match/core/vector_const_technotype_methods.cpp",
+   "tu": "match/vector_const_technotype_methods.cpp",
    "name": "DynamicVectorClass<const TechnoTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5889,25 +5889,25 @@
   },
   {
    "addr": "0x4D2E40",
-   "tu": "match/core/pair_vector_grow_sweep.cpp",
+   "tu": "match/pair_vector_grow_sweep.cpp",
    "name": "FUN_004d2e40",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4DA020",
-   "tu": "match/core/trivial_tu086_methods.cpp",
+   "tu": "match/trivial_tu086_methods.cpp",
    "name": "FUN_004DA020",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E0550",
-   "tu": "match/core/vector_abstractclass_methods.cpp",
+   "tu": "match/vector_abstractclass_methods.cpp",
    "name": "DynamicVectorClass<AbstractClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E07B0",
-   "tu": "match/core/vector_footclass_methods.cpp",
+   "tu": "match/vector_footclass_methods.cpp",
    "name": "DynamicVectorClass<FootClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5943,253 +5943,253 @@
   },
   {
    "addr": "0x4E8290",
-   "tu": "match/core/vector_tagclass_methods.cpp",
+   "tu": "match/vector_tagclass_methods.cpp",
    "name": "DynamicVectorClass<TagClass*>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E9430",
-   "tu": "match/core/vector_tagclass_methods.cpp",
+   "tu": "match/vector_tagclass_methods.cpp",
    "name": "DynamicVectorClass<TagClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E9690",
-   "tu": "match/core/vector_buildingclass_methods.cpp",
+   "tu": "match/vector_buildingclass_methods.cpp",
    "name": "DynamicVectorClass<BuildingClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E98F0",
-   "tu": "match/core/vector_superclass_slot_methods.cpp",
+   "tu": "match/vector_superclass_slot_methods.cpp",
    "name": "DynamicVectorClass<SuperClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E9B50",
-   "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+   "tu": "match/vector_aitriggertypeclass_methods.cpp",
    "name": "DynamicVectorClass<AITriggerTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E9DB0",
-   "tu": "match/core/vector_buildinglightclass_methods.cpp",
+   "tu": "match/vector_buildinglightclass_methods.cpp",
    "name": "DynamicVectorClass<BuildingLightClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EA010",
-   "tu": "match/core/vector_particleclass_methods.cpp",
+   "tu": "match/vector_particleclass_methods.cpp",
    "name": "DynamicVectorClass<ParticleClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EA270",
-   "tu": "match/core/vector_teamclass_methods.cpp",
+   "tu": "match/vector_teamclass_methods.cpp",
    "name": "DynamicVectorClass<TeamClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EA650",
-   "tu": "match/core/vector_triggerclass_methods.cpp",
+   "tu": "match/vector_triggerclass_methods.cpp",
    "name": "DynamicVectorClass<TriggerClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EA8B0",
-   "tu": "match/core/vector_triggertypeclass_methods.cpp",
+   "tu": "match/vector_triggertypeclass_methods.cpp",
    "name": "DynamicVectorClass<TriggerTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EAB10",
-   "tu": "match/core/vector_tubeclass_methods.cpp",
+   "tu": "match/vector_tubeclass_methods.cpp",
    "name": "DynamicVectorClass<TubeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EAD70",
-   "tu": "match/core/vector_particlesystemclass_methods.cpp",
+   "tu": "match/vector_particlesystemclass_methods.cpp",
    "name": "DynamicVectorClass<ParticleSystemClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EAFD0",
-   "tu": "match/core/vector_waveclass_methods.cpp",
+   "tu": "match/vector_waveclass_methods.cpp",
    "name": "DynamicVectorClass<WaveClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EB230",
-   "tu": "match/core/vector_overlayclass_methods.cpp",
+   "tu": "match/vector_overlayclass_methods.cpp",
    "name": "DynamicVectorClass<OverlayClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EB490",
-   "tu": "match/core/vector_smudgeclass_methods.cpp",
+   "tu": "match/vector_smudgeclass_methods.cpp",
    "name": "DynamicVectorClass<SmudgeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EB6F0",
-   "tu": "match/core/vector_terrainclass_methods.cpp",
+   "tu": "match/vector_terrainclass_methods.cpp",
    "name": "DynamicVectorClass<TerrainClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EB950",
-   "tu": "match/core/vector_aircraftclass_methods.cpp",
+   "tu": "match/vector_aircraftclass_methods.cpp",
    "name": "DynamicVectorClass<AircraftClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EBBB0",
-   "tu": "match/core/vector_unitclass_methods.cpp",
+   "tu": "match/vector_unitclass_methods.cpp",
    "name": "DynamicVectorClass<UnitClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EBE10",
-   "tu": "match/core/vector_houseclass_methods.cpp",
+   "tu": "match/vector_houseclass_methods.cpp",
    "name": "DynamicVectorClass<HouseClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EC070",
-   "tu": "match/core/vector_animclass_ptr_methods.cpp",
+   "tu": "match/vector_animclass_ptr_methods.cpp",
    "name": "DynamicVectorClass<AnimClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EC2D0",
-   "tu": "match/core/vector_factoryclass_methods.cpp",
+   "tu": "match/vector_factoryclass_methods.cpp",
    "name": "DynamicVectorClass<FactoryClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EC530",
-   "tu": "match/core/vector_campaignclass_methods.cpp",
+   "tu": "match/vector_campaignclass_methods.cpp",
    "name": "DynamicVectorClass<CampaignClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EC790",
-   "tu": "match/core/vector_sideclass_methods.cpp",
+   "tu": "match/vector_sideclass_methods.cpp",
    "name": "DynamicVectorClass<SideClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EC9F0",
-   "tu": "match/core/vector_housetypeclass_methods.cpp",
+   "tu": "match/vector_housetypeclass_methods.cpp",
    "name": "DynamicVectorClass<HouseTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4ECC50",
-   "tu": "match/core/vector_taskforceclass_methods.cpp",
+   "tu": "match/vector_taskforceclass_methods.cpp",
    "name": "DynamicVectorClass<TaskForceClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4ECEB0",
-   "tu": "match/core/vector_teamtypeclass_methods.cpp",
+   "tu": "match/vector_teamtypeclass_methods.cpp",
    "name": "DynamicVectorClass<TeamTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4ED110",
-   "tu": "match/core/vector_scripttypeclass_methods.cpp",
+   "tu": "match/vector_scripttypeclass_methods.cpp",
    "name": "DynamicVectorClass<ScriptTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4ED370",
-   "tu": "match/core/vector_overlaytypeclass_methods.cpp",
+   "tu": "match/vector_overlaytypeclass_methods.cpp",
    "name": "DynamicVectorClass<OverlayTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4ED5D0",
-   "tu": "match/core/vector_smudgetypeclass_methods.cpp",
+   "tu": "match/vector_smudgetypeclass_methods.cpp",
    "name": "DynamicVectorClass<SmudgeTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4ED830",
-   "tu": "match/core/vector_terraintypeclass_methods.cpp",
+   "tu": "match/vector_terraintypeclass_methods.cpp",
    "name": "DynamicVectorClass<TerrainTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EDA90",
-   "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+   "tu": "match/vector_buildingtypeclass_methods.cpp",
    "name": "DynamicVectorClass<BuildingTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EDCF0",
-   "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+   "tu": "match/vector_aircrafttypeclass_methods.cpp",
    "name": "DynamicVectorClass<AircraftTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EDF50",
-   "tu": "match/core/vector_unittypeclass_methods.cpp",
+   "tu": "match/vector_unittypeclass_methods.cpp",
    "name": "DynamicVectorClass<UnitTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EE1B0",
-   "tu": "match/core/vector_animtypeclass_methods.cpp",
+   "tu": "match/vector_animtypeclass_methods.cpp",
    "name": "DynamicVectorClass<AnimTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EE410",
-   "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+   "tu": "match/vector_infantrytypeclass_methods.cpp",
    "name": "DynamicVectorClass<InfantryTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EE670",
-   "tu": "match/core/vector_bullettypeclass_methods.cpp",
+   "tu": "match/vector_bullettypeclass_methods.cpp",
    "name": "DynamicVectorClass<BulletTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EE8D0",
-   "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+   "tu": "match/vector_voxelanimtypeclass_methods.cpp",
    "name": "DynamicVectorClass<VoxelAnimTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EEB30",
-   "tu": "match/core/vector_isometrictiletypeclass_methods.cpp",
+   "tu": "match/vector_isometrictiletypeclass_methods.cpp",
    "name": "DynamicVectorClass<IsometricTileTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EED90",
-   "tu": "match/core/vector_particletypeclass_methods.cpp",
+   "tu": "match/vector_particletypeclass_methods.cpp",
    "name": "DynamicVectorClass<ParticleTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EEFF0",
-   "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+   "tu": "match/vector_particlesystemtypeclass_methods.cpp",
    "name": "DynamicVectorClass<ParticleSystemTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EF250",
-   "tu": "match/core/vector_superweapontypeclass_methods.cpp",
+   "tu": "match/vector_superweapontypeclass_methods.cpp",
    "name": "DynamicVectorClass<SuperWeaponTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4EF4B0",
-   "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+   "tu": "match/vector_abstracttypeclass_methods.cpp",
    "name": "DynamicVectorClass<AbstractTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6213,13 +6213,13 @@
   },
   {
    "addr": "0x4F3FF0",
-   "tu": "match/core/trivial_tu093_methods.cpp",
+   "tu": "match/trivial_tu093_methods.cpp",
    "name": "Obj_004F3FF0::FUN_004F3FF0",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4F4C20",
-   "tu": "match/core/unowned_leaf_sweep_a.cpp",
+   "tu": "match/unowned_leaf_sweep_a.cpp",
    "name": "Obj_004F4C20::Obj_004F4C20",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6249,13 +6249,13 @@
   },
   {
    "addr": "0x50DA00",
-   "tu": "match/core/member_setter_family_methods.cpp",
+   "tu": "match/member_setter_family_methods.cpp",
    "name": "Setter_00487C70::FUN_0050DA00",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x50EB40",
-   "tu": "match/core/vector_buildingtype_methods.cpp",
+   "tu": "match/vector_buildingtype_methods.cpp",
    "name": "DynamicVectorClass<const BuildingTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6267,13 +6267,13 @@
   },
   {
    "addr": "0x50EFD0",
-   "tu": "match/core/vector_clear_family_methods.cpp",
+   "tu": "match/vector_clear_family_methods.cpp",
    "name": "VectorClass<AngerStruct>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x50F300",
-   "tu": "match/core/vector_clear_family_methods.cpp",
+   "tu": "match/vector_clear_family_methods.cpp",
    "name": "VectorClass<ScoutStruct>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6291,31 +6291,31 @@
   },
   {
    "addr": "0x512F20",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_00512F20::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x512F70",
-   "tu": "match/core/vector_infantrytype_methods.cpp",
+   "tu": "match/vector_infantrytype_methods.cpp",
    "name": "DynamicVectorClass<const InfantryTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5132F0",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_005132F0::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x513340",
-   "tu": "match/core/vector_unittype_methods.cpp",
+   "tu": "match/vector_unittype_methods.cpp",
    "name": "DynamicVectorClass<const UnitTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5136C0",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_005136C0::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6339,13 +6339,13 @@
   },
   {
    "addr": "0x5253B0",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_005253B0::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x525400",
-   "tu": "match/core/vector_animtype_methods.cpp",
+   "tu": "match/vector_animtype_methods.cpp",
    "name": "DynamicVectorClass<const AnimTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6375,19 +6375,19 @@
   },
   {
    "addr": "0x5360B0",
-   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+   "tu": "match/vtable_seating_ctor_family_methods.cpp",
    "name": "Seat1_007EBE8C::ctor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5361A0",
-   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+   "tu": "match/vtable_seating_ctor_family_methods.cpp",
    "name": "Seat1_007EBEB4::ctor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x536290",
-   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+   "tu": "match/vtable_seating_ctor_family_methods.cpp",
    "name": "Seat1_007EBEDC::ctor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6657,19 +6657,19 @@
   },
   {
    "addr": "0x53DCD0",
-   "tu": "match/core/vector_ionblastclass_methods.cpp",
+   "tu": "match/vector_ionblastclass_methods.cpp",
    "name": "DynamicVectorClass<IonBlastClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x53EC90",
-   "tu": "match/core/unowned_leaf_sweep_b.cpp",
+   "tu": "match/unowned_leaf_sweep_b.cpp",
    "name": "FUN_0053EC90",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x53ECB0",
-   "tu": "match/core/unowned_leaf_sweep_b.cpp",
+   "tu": "match/unowned_leaf_sweep_b.cpp",
    "name": "Obj_0053ECB0::Obj_0053ECB0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6723,13 +6723,13 @@
   },
   {
    "addr": "0x54EB20",
-   "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+   "tu": "match/vector_kamikazecontrol_methods.cpp",
    "name": "DynamicVectorClass<KamikazeControl*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x551560",
-   "tu": "match/core/vector_laserdrawclass_methods.cpp",
+   "tu": "match/vector_laserdrawclass_methods.cpp",
    "name": "DynamicVectorClass<LaserDrawClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6753,13 +6753,13 @@
   },
   {
    "addr": "0x556EB0",
-   "tu": "match/core/vector_linetrail_methods.cpp",
+   "tu": "match/vector_linetrail_methods.cpp",
    "name": "DynamicVectorClass<LineTrail*>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x557140",
-   "tu": "match/core/vector_linetrail_methods.cpp",
+   "tu": "match/vector_linetrail_methods.cpp",
    "name": "DynamicVectorClass<LineTrail*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6771,7 +6771,7 @@
   },
   {
    "addr": "0x558470",
-   "tu": "match/core/vector_const_ushort_methods.cpp",
+   "tu": "match/vector_const_ushort_methods.cpp",
    "name": "DynamicVectorClass<const unsigned short*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6813,7 +6813,7 @@
   },
   {
    "addr": "0x589190",
-   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+   "tu": "match/pair_vector_ctor_family_methods.cpp",
    "name": "DynamicVectorClass<SubzoneConnectionStruct>::SetCapacity",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6831,7 +6831,7 @@
   },
   {
    "addr": "0x58A7B0",
-   "tu": "match/core/vector_clear_family_methods.cpp",
+   "tu": "match/vector_clear_family_methods.cpp",
    "name": "VectorClass<HashObject<unsigned int, unsigned int>>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6855,19 +6855,19 @@
   },
   {
    "addr": "0x5AD0C0",
-   "tu": "match/core/vector_cellclass_slot_methods.cpp",
+   "tu": "match/vector_cellclass_slot_methods.cpp",
    "name": "DynamicVectorClass<CellClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5AD820",
-   "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+   "tu": "match/vector_ctor_pod_family_methods.cpp",
    "name": "VectorClass_005AD820::Ctor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5ADAB0",
-   "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+   "tu": "match/vector_ctor_pod_family_methods.cpp",
    "name": "VectorClass_005ADAB0::Ctor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6945,7 +6945,7 @@
   },
   {
    "addr": "0x5C0D00",
-   "tu": "match/core/vector_const_char_methods.cpp",
+   "tu": "match/vector_const_char_methods.cpp",
    "name": "DynamicVectorClass<const char*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6981,7 +6981,7 @@
   },
   {
    "addr": "0x5D0920",
-   "tu": "match/core/vector_clear_family_methods.cpp",
+   "tu": "match/vector_clear_family_methods.cpp",
    "name": "VectorClass<Point2D>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7029,13 +7029,13 @@
   },
   {
    "addr": "0x5D5380",
-   "tu": "match/core/vector_hwnd_methods.cpp",
+   "tu": "match/vector_hwnd_methods.cpp",
    "name": "DynamicVectorClass<HWND__*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5D5500",
-   "tu": "match/core/vector_clear_family_methods.cpp",
+   "tu": "match/vector_clear_family_methods.cpp",
    "name": "VectorClass<AcceleratorTracker>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7095,7 +7095,7 @@
   },
   {
    "addr": "0x5D8FC0",
-   "tu": "match/core/const_store_leaf_sweep.cpp",
+   "tu": "match/const_store_leaf_sweep.cpp",
    "name": "FUN_005d8fc0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7107,7 +7107,7 @@
   },
   {
    "addr": "0x5EEE40",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_005EEE40::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7143,25 +7143,25 @@
   },
   {
    "addr": "0x5F9B80",
-   "tu": "match/core/vector_objecttypeclass_methods.cpp",
+   "tu": "match/vector_objecttypeclass_methods.cpp",
    "name": "VectorClass<ObjectTypeClass*>::operator==",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5F9DB0",
-   "tu": "match/core/vector_objecttypeclass_methods.cpp",
+   "tu": "match/vector_objecttypeclass_methods.cpp",
    "name": "DynamicVectorClass<ObjectTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5FFFC0",
-   "tu": "match/core/vector_spotlightclass_methods.cpp",
+   "tu": "match/vector_spotlightclass_methods.cpp",
    "name": "DynamicVectorClass<SpotLightClass*>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x600250",
-   "tu": "match/core/vector_spotlightclass_methods.cpp",
+   "tu": "match/vector_spotlightclass_methods.cpp",
    "name": "DynamicVectorClass<SpotLightClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7191,13 +7191,13 @@
   },
   {
    "addr": "0x6281F0",
-   "tu": "match/core/vector_color_slot_methods.cpp",
+   "tu": "match/vector_color_slot_methods.cpp",
    "name": "VectorClass<HSVClass>::operator==",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x628760",
-   "tu": "match/core/vector_dtor_family_methods.cpp",
+   "tu": "match/vector_dtor_family_methods.cpp",
    "name": "VectorClass<HSVClass>::`scalar deleting destructor'",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7221,13 +7221,13 @@
   },
   {
    "addr": "0x631D30",
-   "tu": "match/core/pipe_class_methods.cpp",
+   "tu": "match/pipe_class_methods.cpp",
    "name": "Pipe::FUN_00631D30()",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x633130",
-   "tu": "match/core/pk_pipe_straw_io_methods.cpp",
+   "tu": "match/pk_pipe_straw_io_methods.cpp",
    "name": "PKStraw::FUN_006C98E0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7257,19 +7257,19 @@
   },
   {
    "addr": "0x63E540",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_0063E540::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x63E590",
-   "tu": "match/core/vector_remove_index_family_methods.cpp",
+   "tu": "match/vector_remove_index_family_methods.cpp",
    "name": "RemoveVector_0063E590::RemoveItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x63E880",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_0063E880::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7281,7 +7281,7 @@
   },
   {
    "addr": "0x63EB80",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_0063EB80::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7293,13 +7293,13 @@
   },
   {
    "addr": "0x658AF0",
-   "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+   "tu": "match/vector_pair_hash_slot_methods.cpp",
    "name": "VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x65A470",
-   "tu": "match/core/vector_radbeam_methods.cpp",
+   "tu": "match/vector_radbeam_methods.cpp",
    "name": "DynamicVectorClass<RadBeam*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7323,13 +7323,13 @@
   },
   {
    "addr": "0x65C180",
-   "tu": "match/core/vector_radsiteclass_slot_methods.cpp",
+   "tu": "match/vector_radsiteclass_slot_methods.cpp",
    "name": "DynamicVectorClass<RadSiteClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x660F10",
-   "tu": "match/core/vector_remove_index_family_methods.cpp",
+   "tu": "match/vector_remove_index_family_methods.cpp",
    "name": "RemoveVector_00660F10::RemoveItem",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7341,13 +7341,13 @@
   },
   {
    "addr": "0x6647B0",
-   "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+   "tu": "match/dynamic_vector_clear_family_methods.cpp",
    "name": "DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x664A40",
-   "tu": "match/core/vector_ownertalkclass_connectionliststruct_slot_methods.cpp",
+   "tu": "match/vector_ownertalkclass_connectionliststruct_slot_methods.cpp",
    "name": "DynamicVectorClass<OwnerTalkClass::ConnectionListStruct *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7359,37 +7359,37 @@
   },
   {
    "addr": "0x67AD80",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_0067AD80::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x67ADD0",
-   "tu": "match/core/vector_voxelanimtype_methods.cpp",
+   "tu": "match/vector_voxelanimtype_methods.cpp",
    "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x67B100",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_0067B100::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x67B150",
-   "tu": "match/core/vector_smudgetype_methods.cpp",
+   "tu": "match/vector_smudgetype_methods.cpp",
    "name": "DynamicVectorClass<const SmudgeTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x67B480",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_0067B480::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x67B4D0",
-   "tu": "match/core/vector_terraintype_methods.cpp",
+   "tu": "match/vector_terraintype_methods.cpp",
    "name": "DynamicVectorClass<const TerrainTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7407,7 +7407,7 @@
   },
   {
    "addr": "0x67BFA0",
-   "tu": "match/core/vector_class_assign_family_methods.cpp",
+   "tu": "match/vector_class_assign_family_methods.cpp",
    "name": "Vec_0067BFA0::operator=",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7425,7 +7425,7 @@
   },
   {
    "addr": "0x691160",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_00691160::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7437,7 +7437,7 @@
   },
   {
    "addr": "0x696F20",
-   "tu": "match/core/unowned_leaf_sweep_b.cpp",
+   "tu": "match/unowned_leaf_sweep_b.cpp",
    "name": "Obj_00696F10::FUN_00696F20",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7473,7 +7473,7 @@
   },
   {
    "addr": "0x6A4FF0",
-   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+   "tu": "match/leftover_trivial_leaf_sweep.cpp",
    "name": "FUN_006A4FF0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7485,25 +7485,25 @@
   },
   {
    "addr": "0x6B16A0",
-   "tu": "match/core/vector_slavemanagerclass_slavecontrol_slot_methods.cpp",
+   "tu": "match/vector_slavemanagerclass_slavecontrol_slot_methods.cpp",
    "name": "DynamicVectorClass<SlaveManagerClass::SlaveControl *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x6B1900",
-   "tu": "match/core/vector_slavemanagerclass_slot_methods.cpp",
+   "tu": "match/vector_slavemanagerclass_slot_methods.cpp",
    "name": "DynamicVectorClass<SlaveManagerClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x6B4620",
-   "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+   "tu": "match/vector_pair_hash_slot_methods.cpp",
    "name": "VectorClass<UndoInfoStruct>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x6B47A0",
-   "tu": "match/core/vector_dtor_family_methods.cpp",
+   "tu": "match/vector_dtor_family_methods.cpp",
    "name": "VectorClass<UndoInfoStruct>::`scalar deleting destructor'",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7983,7 +7983,7 @@
   },
   {
    "addr": "0x6C6400",
-   "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
+   "tu": "match/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_006C6400::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8001,7 +8001,7 @@
   },
   {
    "addr": "0x6CA910",
-   "tu": "match/core/vector_subtitle_methods.cpp",
+   "tu": "match/vector_subtitle_methods.cpp",
    "name": "DynamicVectorClass<SubTitle*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8013,13 +8013,13 @@
   },
   {
    "addr": "0x6CF690",
-   "tu": "match/core/vector_clear_family_methods.cpp",
+   "tu": "match/vector_clear_family_methods.cpp",
    "name": "VectorClass<SwizzlePointerClass>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x6DCC00",
-   "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+   "tu": "match/vector_shadowcontrolclass_methods.cpp",
    "name": "DynamicVectorClass<ShadowControlClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8055,13 +8055,13 @@
   },
   {
    "addr": "0x6EC540",
-   "tu": "match/core/persist_save_stub_methods.cpp",
+   "tu": "match/persist_save_stub_methods.cpp",
    "name": "TeamClass::Save",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x6EF5F0",
-   "tu": "match/core/unowned_leaf_sweep_c.cpp",
+   "tu": "match/unowned_leaf_sweep_c.cpp",
    "name": "Obj_006EF5F0::FUN_006EF5F0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8115,7 +8115,7 @@
   },
   {
    "addr": "0x717D20",
-   "tu": "match/core/vector_particlesystemtype_methods.cpp",
+   "tu": "match/vector_particlesystemtype_methods.cpp",
    "name": "TypeList<const ParticleSystemTypeClass*>::copy constructor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8133,7 +8133,7 @@
   },
   {
    "addr": "0x71FE30",
-   "tu": "match/core/vector_teventclass_methods.cpp",
+   "tu": "match/vector_teventclass_methods.cpp",
    "name": "DynamicVectorClass<TEventClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8145,13 +8145,13 @@
   },
   {
    "addr": "0x7213B0",
-   "tu": "match/core/vector_themecontrol_slot_methods.cpp",
+   "tu": "match/vector_themecontrol_slot_methods.cpp",
    "name": "DynamicVectorClass<ThemeControl *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7239C0",
-   "tu": "match/core/vector_tiberiumclass_methods.cpp",
+   "tu": "match/vector_tiberiumclass_methods.cpp",
    "name": "DynamicVectorClass<TiberiumClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8163,7 +8163,7 @@
   },
   {
    "addr": "0x7281E0",
-   "tu": "match/core/persist_save_stub_methods.cpp",
+   "tu": "match/persist_save_stub_methods.cpp",
    "name": "TubeClass::Save",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8175,7 +8175,7 @@
   },
   {
    "addr": "0x7343E0",
-   "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+   "tu": "match/vector_ctor_pod_family_methods.cpp",
    "name": "VectorClass_007343E0::Ctor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8217,19 +8217,19 @@
   },
   {
    "addr": "0x74F5F0",
-   "tu": "match/core/vector_veinholemonsterclass_methods.cpp",
+   "tu": "match/vector_veinholemonsterclass_methods.cpp",
    "name": "DynamicVectorClass<VeinholeMonsterClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x74FEF0",
-   "tu": "match/core/unowned_leaf_sweep_c.cpp",
+   "tu": "match/unowned_leaf_sweep_c.cpp",
    "name": "FUN_0074FEF0",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x751B60",
-   "tu": "match/core/vector_vocclass_methods.cpp",
+   "tu": "match/vector_vocclass_methods.cpp",
    "name": "DynamicVectorClass<VocClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8247,61 +8247,61 @@
   },
   {
    "addr": "0x753510",
-   "tu": "match/core/unowned_leaf_sweep_c.cpp",
+   "tu": "match/unowned_leaf_sweep_c.cpp",
    "name": "FUN_00753510",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x753650",
-   "tu": "match/core/vector_voxclass_methods.cpp",
+   "tu": "match/vector_voxclass_methods.cpp",
    "name": "DynamicVectorClass<VoxClass*>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7538E0",
-   "tu": "match/core/vector_voxclass_methods.cpp",
+   "tu": "match/vector_voxclass_methods.cpp",
    "name": "DynamicVectorClass<VoxClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7564B0",
-   "tu": "match/core/voxel_unit_block_00754940.cpp",
+   "tu": "match/voxel_unit_block_00754940.cpp",
    "name": "VoxelSectionSource::FUN_007564b0",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x75A6C0",
-   "tu": "match/core/vector_moviehandle_methods.cpp",
+   "tu": "match/vector_moviehandle_methods.cpp",
    "name": "DynamicVectorClass<MovieHandle*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x75E690",
-   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+   "tu": "match/vtable_seating_ctor_family_methods.cpp",
    "name": "Seat0A_007F0D3C::ctor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7632D0",
-   "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+   "tu": "match/dynamic_vector_ctor_pod_family_methods.cpp",
    "name": "DynamicVectorClass_007632D0::Ctor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7642B0",
-   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
+   "tu": "match/vector_dtor_element_slot_methods.cpp",
    "name": "VectorClass<WaypointClass>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x764460",
-   "tu": "match/core/vector_waypointpathclass_methods.cpp",
+   "tu": "match/vector_waypointpathclass_methods.cpp",
    "name": "VectorClass<WaypointPathClass*>::operator==",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x764690",
-   "tu": "match/core/vector_waypointpathclass_methods.cpp",
+   "tu": "match/vector_waypointpathclass_methods.cpp",
    "name": "DynamicVectorClass<WaypointPathClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8319,19 +8319,19 @@
   },
   {
    "addr": "0x769DE0",
-   "tu": "match/core/vector_wdt_territory_methods.cpp",
+   "tu": "match/vector_wdt_territory_methods.cpp",
    "name": "VectorClass<rc_ptr<WorldDominationTour::Territory>>::operator==",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x76A360",
-   "tu": "match/core/vector_animationpalette_methods.cpp",
+   "tu": "match/vector_animationpalette_methods.cpp",
    "name": "DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x76A570",
-   "tu": "match/core/vector_small_struct_slot_methods.cpp",
+   "tu": "match/vector_small_struct_slot_methods.cpp",
    "name": "VectorClass<WorldDominationTour::Centroid>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8349,13 +8349,13 @@
   },
   {
    "addr": "0x76F120",
-   "tu": "match/core/vector_cursor_ddtors.cpp",
+   "tu": "match/vector_cursor_ddtors.cpp",
    "name": "VectorCursor<rc_ptr<WorldDominationTour::Territory>, DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x76F140",
-   "tu": "match/core/vector_cursor_ddtors.cpp",
+   "tu": "match/vector_cursor_ddtors.cpp",
    "name": "VectorCursor<MSAnim *, DynamicVectorClass<MSAnim *>>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8367,7 +8367,7 @@
   },
   {
    "addr": "0x771A00",
-   "tu": "match/core/vector_vtable_plain_dtor_family_methods.cpp",
+   "tu": "match/vector_vtable_plain_dtor_family_methods.cpp",
    "name": "FUN_00771A00",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8433,13 +8433,13 @@
   },
   {
    "addr": "0x7B4550",
-   "tu": "match/core/vector_unsigned_char_ptr_methods.cpp",
+   "tu": "match/vector_unsigned_char_ptr_methods.cpp",
    "name": "DynamicVectorClass<unsigned char*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7B5400",
-   "tu": "match/core/member_or_default_sweep.cpp",
+   "tu": "match/member_or_default_sweep.cpp",
    "name": "FUN_007b5400",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8451,7 +8451,7 @@
   },
   {
    "addr": "0x7BA450",
-   "tu": "match/core/file_pipe_methods.cpp",
+   "tu": "match/file_pipe_methods.cpp",
    "name": "FilePipe::FUN_00477740",
    "reason": "no-preceding-CC-or-90"
   },

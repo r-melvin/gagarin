@@ -16,7 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
 #include "frame_timer.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 class TechnoClass;
 class AircraftClass;

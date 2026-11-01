@@ -36,8 +36,8 @@
 // Global query leaves, ordered ascending by retail address.
 
 #include "FUNCTION.H"
-#include "core/vector_class_operations.h"
-#include "core/vector_add_item_free.h"
+#include "vector_class_operations.h"
+#include "vector_add_item_free.h"
 
 class DiskLaserClass;
 
@@ -96,7 +96,7 @@ struct Obj_004A7C80
 
 #include "_layout/aircraft_class.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;

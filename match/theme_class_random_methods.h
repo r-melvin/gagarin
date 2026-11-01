@@ -17,6 +17,6 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/theme_class.h"
-#include "core/randomizer.h"   // Randomizer::RandomRanged @0x65C7E0
+#include "randomizer.h"   // Randomizer::RandomRanged @0x65C7E0
 
 #endif  // GG_MATCH_AUDIO_THEME_CLASS_RANDOM_METHODS_H

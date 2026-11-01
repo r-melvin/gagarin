@@ -20,7 +20,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-#include "core/game_timing_methods.h"
+#include "game_timing_methods.h"
 #include "message_list_class_methods.h"
 
 // An elapsed-time timer: while started (StartTime != -1) its value is the

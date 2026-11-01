@@ -19,12 +19,12 @@ typedef unsigned short wchar_t;
 
 // The wide-string members (out-of-line constructor 0x7B66D0 and destructor 0x7B6760) are the canonical
 // Obj_007B66D0.
-#include "core/wide_string_class.h"
+#include "wide_string_class.h"
 
 // ReferenceCounted, rc_ptr_base and rc_ptr<T> are the canonical ones in
 // wdt_rc_ptr.h (rc_ptr_base.cpp has the out-of-line members).
 #include "wdt_rc_ptr.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 class WDTTerritory;
 class WDTState;

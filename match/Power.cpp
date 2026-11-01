@@ -15,15 +15,15 @@
 //
 // The nine tail-jump thunks, ordered ascending by retail address.
 
-#include "core/deleting_dtor_sweep.h"
-#include "core/mathtbl_init_shapes.h"
+#include "deleting_dtor_sweep.h"
+#include "mathtbl_init_shapes.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/tail_jmp_thunk_sweep.h"
+#include "tail_jmp_thunk_sweep.h"
 
-#include "core/trivial_tu181_methods.h"
+#include "trivial_tu181_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

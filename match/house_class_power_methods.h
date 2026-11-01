@@ -27,7 +27,7 @@
 // Unsorted::CurrentFrame — the global frame counter at 0x00A8ED84. Loaded via
 // the absolute-moffs32 form (opcode A1) in both outage helpers; the reloc is
 // normalised by the differ.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // ---------------------------------------------------------------------------
 // CDTimerClass (TimerStruct<FrameTimer>) — a 12-byte countdown timer. The

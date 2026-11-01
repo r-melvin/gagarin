@@ -19,7 +19,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 
 // Component-wise 16-bit sums use CellStruct::operator+ (_layout/cell.h).
 
@@ -79,7 +79,7 @@ public:
 extern DisplayMapInstance DisplayMap_0087F7E8;
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // DisplayClass (slots 36..39) and MapClass::GetCellAt_005657A0 are declared in ui_display_chain.h.

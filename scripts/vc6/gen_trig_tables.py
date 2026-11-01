@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Provenance: own-binary-via-Ghidra (the table shapes and indexing come from the matched readers in
-# match/core/trig_table_functions_004cac40.cpp); the formulas below were fitted and then verified
+# match/trig_table_functions_004cac40.cpp); the formulas below were fitted and then verified
 # bit-for-bit against the pinned image, which this file does not embed.
 """Generate the trig / arc / square-root lookup tables as a C++ translation unit.
 

@@ -44,7 +44,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../loco_base.h"
 #include "../loco_com.h"
-#include "../core/frame_counter.h"
+#include "../frame_counter.h"
 
 // The unit's "no coordinate" value: three dwords zeroed by its initialiser
 // 0x717FA0 and copied into Destination / unknown_28 by the constructor.

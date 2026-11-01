@@ -10,7 +10,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/link_class_methods.h"
+#include "../link_class_methods.h"
 
 class CarryoverClass : public LinkClass
 {

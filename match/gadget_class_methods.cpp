@@ -24,7 +24,7 @@ extern GadgetClass* GadgetClass_StuckOn;    // 0x008B3E88
 // GadgetClass::GetNext/GetPrev/Remove below forward to the LinkClass base with
 // explicitly-qualified (non-virtual) calls — LinkClass::GetNext @0x556620,
 // LinkClass::GetPrev @0x556630, LinkClass::Remove @0x556730 — matching retail's
-// direct `jmp`/`call` to those addresses. See match/core/link_class_methods.h.
+// direct `jmp`/`call` to those addresses. See match/link_class_methods.h.
 
 // FUNCTION: GAMEMD 0x4E15A0  GadgetClass::ExtractGadgetAt (__thiscall)
 // Walk the list from this gadget and return the smallest enabled one whose

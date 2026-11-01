@@ -29,7 +29,7 @@
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by the
 // inlined FrameTimer when stamping ActionTimer.StartTime).
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // ---------------------------------------------------------------------------
 // FrameTimer — empty clock policy whose value is Unsorted::CurrentFrame. As a

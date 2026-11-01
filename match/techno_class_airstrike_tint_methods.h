@@ -14,7 +14,7 @@
 #include "_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the engine frame counter.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // CDTimer_0070E4B0 — frame count-down timer (sizeof = 0xC). GetTimeLeft is the
 // inlined read seen at 0x70E4B0..0x70E4D3.

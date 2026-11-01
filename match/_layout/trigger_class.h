@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include "abstract_class.h"
 #include "vector_class.h"
-#include "../core/frame_counter.h"
+#include "../frame_counter.h"
 class TriggerTypeClass;
 struct Obj_004A1D30;
 class ObjectClass;

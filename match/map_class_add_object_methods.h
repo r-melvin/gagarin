@@ -6,6 +6,6 @@
 #define GG_MATCH_MAP_MAP_CLASS_ADD_OBJECT_METHODS_H
 
 #include "_layout/layer_class.h"
-#include "core/vector_class_mutation.h"
+#include "vector_class_mutation.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_ADD_OBJECT_METHODS_H

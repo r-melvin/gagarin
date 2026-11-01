@@ -7,7 +7,7 @@
 #include "pixel_shift_view.h"
 #include "bit_font_print_methods.h"
 #include "wwlib/surface/drawing.h"
-#include "core/small_struct_ctor_methods.h"
+#include "small_struct_ctor_methods.h"
 
 // 3-byte colour with the blend routine at 0x6612C0 (thiscall; alpha and the
 // target colour pointer on the stack).

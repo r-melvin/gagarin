@@ -41,8 +41,8 @@
 // must stay an int operand in the expression, then 0.5 folds in as a double.
 
 #include "FUNCTION.H"
-#include "core/mathtbl_init_shapes.h"
-#include "core/cell_step_tables.h"
+#include "mathtbl_init_shapes.h"
+#include "cell_step_tables.h"
 #include "tactical_class_matrix_methods.h"
 #include "tactical_class_coords_to_client_methods.h"
 #include "tactical_class_selectable_methods.h"
@@ -171,7 +171,7 @@ extern const CLSID DAT_007E9830;
 #include "tevent_class_methods.h"
 #include "super_weapon_type_class_methods.h"
 
-#include "core/trivial_tu229_methods.h"
+#include "trivial_tu229_methods.h"
 
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -707,7 +707,7 @@ CoordStruct* Tactical::FUN_006D2360(CoordStruct* out,
     return out;
 }
 
-#include "core/game_state_flags.h"
+#include "game_state_flags.h"
 extern unsigned char DAT_00A8ED6B; // GLOBAL: GAMEMD 0xA8ED6B (decl; reloc)
 // GLOBAL: GAMEMD 0x8428EC -- per-speed scroll step table (float; 0.0015,
 // 0.003, 0.0075, 0.03, ...).
@@ -1353,7 +1353,7 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 #include "airstrike_class_methods.h"
 #include "super_weapon_type_class_methods.h"
 #include "color_scheme_find_methods.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "beacon_manager_class.h"
 #include <mmsystem.h>
 
@@ -1679,7 +1679,7 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
 }
 
 #include "bit_font.h"
-#include "core/spin_wait_methods.h"
+#include "spin_wait_methods.h"
 #include "audio_time_methods.h"
 // Declaration: GAMEMD 0x4A60D0; flags in ECX are unused by this retail getter.
 BitFont* FUN_004A60D0(int flags);
@@ -2637,7 +2637,7 @@ void Tactical::FUN_006D71E0(const RectangleStruct* rectangle)
     FUN_00421350(rectangle);
 }
 
-#include "core/fps_counter_methods.h"
+#include "fps_counter_methods.h"
 // GLOBAL: GAMEMD 0xABCD44
 extern unsigned int FPSCounter_CurrentFrameRate;
 // GLOBAL: GAMEMD 0xA8EB78

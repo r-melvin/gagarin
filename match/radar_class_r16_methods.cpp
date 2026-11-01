@@ -7,7 +7,7 @@
 // Address index: 0x656BE0
 
 #include "radar_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 struct RadarView_R16 : public RadarClass
 {

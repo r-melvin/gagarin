@@ -20,7 +20,7 @@
 #include "abstract_class.h"
 #include "coord_struct.h"
 #include "geometry2d.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 struct Obj_004A1D30;
 

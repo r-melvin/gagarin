@@ -92,12 +92,12 @@
 //   and comparator 0x52B6A0; the search at 0x52B6D0 (__fastcall: table in
 //   ECX, count in EDX, key pointer pushed); the fallback cell 0xB78830.
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/index_class.h"
+#include "index_class.h"
 
 // Grows the table to hold `amount` more entries, copying the live entries over
 // node by node and dropping the cached node because the array moved. The new
@@ -233,7 +233,7 @@ inline bool IndexClassB::IsPresentImpl(const int& id) const
     return false;
 }
 
-#include "core/pair_vector_grow_sweep.h"
+#include "pair_vector_grow_sweep.h"
 
 #include <objidl.h>
 #include "_layout/side_class.h"
@@ -368,9 +368,9 @@ extern const CLSID DAT_007E9830;
 // Kept local: the canonical header reaches _layout/components.h, whose IndexClass collides with core/index_class.h in this TU.
 // Kept local: the canonical header reaches _layout/components.h, whose IndexClass collides with core/index_class.h in this TU.
 
-#include "core/same_object_test_sweep.h"
+#include "same_object_test_sweep.h"
 
-#include "core/trivial_tu100_methods.h"
+#include "trivial_tu100_methods.h"
 
 #include "ccini_class_get_section_methods.h"
 
@@ -394,7 +394,7 @@ extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 #include "ccini_class_type_list_methods.h"
 #include <windows.h>
 #include <objbase.h>
-#include "core/string_class.h"
+#include "string_class.h"
 #include "ccini_class_methods.h"
 
 // FUNCTION: GAMEMD 0x751520 (decl; reloc) -- name -> record, or 0.

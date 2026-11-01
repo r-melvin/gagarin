@@ -4,7 +4,7 @@
 // The cursor animation timer global at 0xABF2A0 (see MouseCursorTimer in mouse_mouse_class.h):
 // start tick at +0, the clock member at +4 (its empty destructor is the only exit work) and
 // a zeroed delay at +8. Retail's initialiser is 0x5BD9F0 and its exit stub is 0x5BDA20.
-#include "core/game_timing_methods.h"
+#include "game_timing_methods.h"
 
 struct MouseTimerValue_00ABF2A0 {
     GameTimerClass Timer;

@@ -12,9 +12,9 @@
 
 #include "FUNCTION.H"
 #include "locomotion_load_support.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 #include "ccini_class_methods.h"
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 
 // FUNCTION: GAMEMD 0x727CF0 (decl; reloc) -- trims a buffer in place.
 void FUN_00727CF0(char* buffer);

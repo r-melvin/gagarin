@@ -44,8 +44,8 @@ GG_STATIC_ASSERT(sizeof(SoundBuffer_0040A7B0) == 4);
 // The getter is declared with its recovered ABI in leaf_accessor_methods.h.
 // Its returned owner carries AudioSampleData at +0x44; the accesses here
 // select sample rate +0x4C, channels +0x50 and bytes per sample +0x54.
-#include "core/leaf_accessor_methods.h"
-#include "core/floored_decrement_methods.h"
+#include "leaf_accessor_methods.h"
+#include "floored_decrement_methods.h"
 GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_44) +
     offsetof(AudioSampleData, SampleRate) == 0x4C);
 GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_44) +

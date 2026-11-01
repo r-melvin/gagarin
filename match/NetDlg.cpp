@@ -6,9 +6,9 @@
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5da7ba inside this object's
 //   code range (0x5da4d0-0x5dacef). Functions are in ascending retail address order.
 
-#include "core/init_misc_methods.h"
+#include "init_misc_methods.h"
 #include "_layout/session_class.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "winsock_interface_class.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no

@@ -34,8 +34,8 @@
 // `Obj_<ADDR>` declaring only the members the body touches, with offset
 // asserts; interface objects reached through COM slots use the objbase types.
 
-#include "core/vector_class_operations.h"
-#include "core/header_init_shapes.h"
+#include "vector_class_operations.h"
+#include "header_init_shapes.h"
 
 #include "iso_tile_type_class_tile_data_methods.h"
 
@@ -45,7 +45,7 @@ GG_STATIC_ASSERT(sizeof(IsometricTileTypeClass::TileInsertType*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<IsometricTileTypeClass::TileInsertType* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<IsometricTileTypeClass::TileInsertType* >) == 0x18);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 template class DynamicVectorClass<unsigned short*>;
 
@@ -90,7 +90,7 @@ void __cdecl FUN_00544DF0();
 bool __cdecl FUN_00544FF0();
 
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
@@ -324,7 +324,7 @@ bool IsometricTileTypeClass::GetConnectFlag(int idx)
     return false;
 }
 
-// GLOBAL: GAMEMD 0xAA105C -- the empty cell, defined in match/core/header_init_543c40.cpp
+// GLOBAL: GAMEMD 0xAA105C -- the empty cell, defined in match/header_init_543c40.cpp
 extern const HeaderCellInit DAT_00AA105C;
 // GLOBAL: GAMEMD 0xAA102C -- five tile-set ids
 extern int DAT_00AA102C[5];

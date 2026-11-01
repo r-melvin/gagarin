@@ -25,14 +25,14 @@
 //   image are FreeForAll, Megawealth, UnholyAlliance, MultiplayerSiege,
 //   MPCooperative, MultiplayerBattle and MultiplayerManBattle, with the nested
 //   MultiplayerGameMode::Initializer<T> / ::InitializerBase. Layout agrees with
-//   match/core/vector_array_init_methods.h (VectorClass 0x10, +0x10 count,
+//   match/vector_array_init_methods.h (VectorClass 0x10, +0x10 count,
 //   +0x14 growth step).
 #ifndef GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_GET_METHODS_H
 #define GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_GET_METHODS_H
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "multiplayer_game_mode.h"
 
 // One game mode. Only the member the lookup compares is modelled.

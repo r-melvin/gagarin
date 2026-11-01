@@ -9,7 +9,7 @@
 // ".?AV?$rc_ptr@VMap@WorldDominationTour@@@@" (0x7F712C).
 
 #include "FUNCTION.H"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 #include "_layout/ms_engine.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------

@@ -8,7 +8,7 @@
 #include "FUNCTION.H"
 #include "display_scroll.h"
 #include "display_command.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 
 // FUNCTION: GAMEMD 0x63AB60 (decl; reloc) -- RET 8.
 bool __stdcall FUN_0063AB60(int x, int y);

@@ -25,9 +25,9 @@
 #define GG_MATCH_UI_INPUT_CONTROLS_UI_GADGET_H
 
 #include "ui_common.h"
-#include "core/link_class_methods.h"
+#include "link_class_methods.h"
 #include "_layout/memory_buffer.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8B3D operator delete
 void __cdecl operator delete(void* block);

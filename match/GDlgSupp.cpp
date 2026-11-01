@@ -29,13 +29,13 @@
 #include "netshare_win.h"
 #include "_layout/session_class.h"
 #include "netshare_slot_nodes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include <windows.h>
 #include "pcx_get_surface_methods.h"
 #include "_layout/rec12_008b3f38.h"
 #include "_layout/rec12_008b4040.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 extern int DAT_00816108;
 #include "_layout/rec12_008b4040.h"
@@ -63,7 +63,7 @@ extern unsigned char DAT_00B0FE58;
 extern unsigned char DAT_008464AC;
 extern int DAT_00B780A0;
 
-#include "core/trivial_tu090_methods.h"
+#include "trivial_tu090_methods.h"
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"

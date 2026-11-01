@@ -25,7 +25,7 @@
 // they compile here as a by-product and are not claimed. The globals' retail
 // addresses are bound for verification through the per-TU symbol map.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class TemporalClass;
 
@@ -55,7 +55,7 @@ GG_STATIC_ASSERT(sizeof(TemporalClass*) == 4);
 
 #include "temporal_class_warp_target_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;

@@ -10,7 +10,7 @@
 #include <stddef.h>
 #include "loco_interfaces.h"
 #include "loco_com.h"
-#include "core/coordinate_storage_008a0820.h"
+#include "coordinate_storage_008a0820.h"
 #include "_rt/gg_static_assert.h"
 
 struct DropPodObjectView;

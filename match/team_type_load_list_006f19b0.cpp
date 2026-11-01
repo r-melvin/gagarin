@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 // Retail 0x6F19B0, read instruction by instruction from gamemd.exe v1.001: loads every entry of
 // the [TeamTypes] section, the TeamType counterpart of ScriptTypeClass::LoadFromINIList.
-#include "core/type_find_or_allocate_family_methods.h"
+#include "type_find_or_allocate_family_methods.h"
 #include "script_type_class.h"
 
 // Dispatch-only view of a team type's primary vtable: LoadFromINI is slot 25 (offset 0x64).

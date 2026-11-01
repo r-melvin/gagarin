@@ -1,0 +1,70 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
+//   local Ghidra CLI (member-access disassembly at 0x70F7E0 / 0x70F820 /
+//   0x734270). Names cross-checked against YRpp (every offset reconfirmed numerically below from the matched
+//   bodies). Only the members the matched bodies touch are modelled; the full
+//   layout is the committed spine (match/_layout/techno_class.h) / P2.
+//
+// This TU matches three TechnoClass query/mutator helpers:
+//   * TargetingTimerFinished — true once the inlined TargetingTimer countdown
+//     (a CDTimerClass::GetTimeLeft) has reached 0.
+//   * GetOriginalOwner       — the house that originally owned this object:
+//     defers to the mind-controller's CaptureManager when mind-controlled,
+//     else OriginallyOwnedByHouse when controlled by a house, else the Owner.
+//   * ClearSidebarTabObject   — clears this object out of the two sidebar
+//     "tab object" globals (and clears both when invoked on a null this).
+// Confirmed offsets (from the matched bodies):
+//   * TechnoClass::TargetingTimer.StartTime  +0x180  `MOV EDX,[ECX+0x180]`
+//   * TechnoClass::TargetingTimer.TimeLeft   +0x188  `MOV EAX,[ECX+0x188]`
+//   * TechnoClass::Owner                     +0x21C  `MOV EAX,[ECX+0x21C]`
+//   * TechnoClass::CaptureManager            +0x2BC  `MOV ECX,[EAX+0x2BC]`
+//   * TechnoClass::MindControlledBy          +0x2C0  `MOV EAX,[ECX+0x2C0]`
+//   * TechnoClass::MindControlledByHouse     +0x2CC  `MOV EAX,[ECX+0x2CC]`
+//   * TechnoClass::OriginallyOwnedByHouse    +0x2E0  `MOV EAX,[ECX+0x2E0]`
+//   * Unsorted::CurrentFrame  global @ 0x00A8ED84   `MOV ECX,[0x00A8ED84]`
+//   * sidebar tab object globals @ 0x00B0FE5C / 0x00B0FE60
+#ifndef GG_MATCH_CORE_TECHNO_CLASS_OWNER_METHODS_H
+#define GG_MATCH_CORE_TECHNO_CLASS_OWNER_METHODS_H
+
+#include <stddef.h>
+#include "_rt/gg_static_assert.h"
+
+#ifndef NULL
+#define NULL 0
+#endif
+
+class TechnoClass;
+class HouseClass;
+
+// Unsorted::CurrentFrame — global game-frame counter @ 0x00A8ED84. Declared-only
+// so cl emits a reloc-normalised absolute load.
+#include "frame_counter.h"
+
+// ---------------------------------------------------------------------------
+// CDTimerClass — count-down frame timer (sizeof 0xC). StartTime @0, an
+// accumulator/clock slot @4 (untouched here), TimeLeft @8. Matches the spine.
+// ---------------------------------------------------------------------------
+#include "_layout/frame_timer.h"
+GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
+GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0x0C);
+
+#include "_layout/capture_manager_class.h"
+
+// ---------------------------------------------------------------------------
+// TechnoClass — minimal offset-pinned model for the three matched helpers.
+// The pad gaps stand in for the full RadioClass/MissionClass/ObjectClass/
+// TechnoClass spine (match/_layout/techno_class.h); only the touched members
+// are named.
+// ---------------------------------------------------------------------------
+#include "_layout/techno_class.h"
+
+
+GG_STATIC_ASSERT(offsetof(TechnoClass, TargetingTimer)         == 0x180);
+GG_STATIC_ASSERT(offsetof(TechnoClass, Owner)                  == 0x21C);
+GG_STATIC_ASSERT(offsetof(TechnoClass, CaptureManager)         == 0x2BC);
+GG_STATIC_ASSERT(offsetof(TechnoClass, MindControlledBy)       == 0x2C0);
+GG_STATIC_ASSERT(offsetof(TechnoClass, MindControlledByHouse)  == 0x2CC);
+GG_STATIC_ASSERT(offsetof(TechnoClass, OriginallyOwnedByHouse) == 0x2E0);
+
+#endif  // GG_MATCH_CORE_TECHNO_CLASS_OWNER_METHODS_H

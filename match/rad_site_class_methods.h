@@ -15,7 +15,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/rules_class.h"
+#include "rules_class.h"
 
 // CellStruct - map cell coordinate (short X, short Y); 4 bytes. SetBaseCell
 // copies it as a single dword (mov edx,[eax]; mov [ecx+0x40],edx).

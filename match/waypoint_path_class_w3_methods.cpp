@@ -7,7 +7,7 @@
 
 #include <new.h>
 #include "waypoint_path_class_methods.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0xB72608 -- the waypoint path registry.
 extern DynamicVectorClass<WaypointPathClass*> DAT_00B72608;

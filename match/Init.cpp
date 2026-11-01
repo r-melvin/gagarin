@@ -49,15 +49,15 @@
 // string-table loader (0x734E60, __fastcall: label in ECX, null in EDX, file
 // and line pushed); the line numbers are the retail immediates.
 
-#include "core/empty_function_family_methods.h"
+#include "empty_function_family_methods.h"
 #include "_layout/session_class.h"
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
-#include "core/pair_vector_grow_sweep.h"
+#include "pair_vector_grow_sweep.h"
 
 
-#include "core/trivial_tu102_methods.h"
+#include "trivial_tu102_methods.h"
 
 #include "mix_file_class.h"
 #include "_layout/memory_buffer.h"
@@ -66,13 +66,13 @@
 #include <windows.h>
 #include "center_window_methods.h"
 #include <string.h>
-#include "core/vector_class.h"
+#include "vector_class.h"
 #include "command_class.h"
 #include "_layout/load_options_class.h"
 #include "_layout/obj_005fbf80.h"
 #include <stddef.h>
 #include "_layout/version_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x007C8E17
 // FUN_007C8E17
@@ -86,7 +86,7 @@ extern unsigned char DAT_00A8F91C[256][256];
 extern unsigned char DAT_00A9F91C;
 
 #include "command_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "ui_display_chain.h"
 #include "display_command.h"
 #include "ccfile_class.h"

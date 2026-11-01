@@ -19,7 +19,7 @@
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84. Read by the
 // inlined FrameTimer when Suspend stamps Production.Timer.StartTime.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // ---------------------------------------------------------------------------
 // TechnoClass — only TimeToBuild() is reached (a real retail member at

@@ -7,7 +7,7 @@
 #ifndef GG_MATCH_LAYOUT_TAG_TYPE_CLASS_H
 #define GG_MATCH_LAYOUT_TAG_TYPE_CLASS_H
 #include "abstract_type_class.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 class TriggerTypeClass;
 struct Obj_004A1D30;
 struct TagINI_006E6080;

@@ -77,13 +77,13 @@
 //
 // The theater tile-link table's element, step and slot constructors. Bodies are
 
-#include "core/vector_ctor_pod_family_methods.h"
-#include "core/deleting_dtor_sweep.h"
+#include "vector_ctor_pod_family_methods.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/global_getter_family_methods.h"
+#include "global_getter_family_methods.h"
 
 #include <string.h>
 #include <math.h>
@@ -103,9 +103,9 @@
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/cell.h"
-#include "core/trivial_tu130_methods.h"
+#include "trivial_tu130_methods.h"
 #include "MapGen.h"
 #include "_layout/cell_class.h"
 
@@ -134,9 +134,9 @@ GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, CapacityIncrement)
 
 GG_STATIC_ASSERT(sizeof(MapRegionClass*) == 4);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
-#include "core/vector_find_data.h"
+#include "vector_find_data.h"
 
 // VTABLE: GAMEMD 0x7ED92C -- VectorClass<_WIN32_FIND_DATAA*>.
 template class VectorClass<_WIN32_FIND_DATAA*>;
@@ -459,18 +459,18 @@ extern int DAT_00B1D5E0[0x4000];
 extern void* DAT_00B77F54;
 extern void* DAT_00B77F60;
 
-#include "core/pair_vector_grow_sweep.h"
+#include "pair_vector_grow_sweep.h"
 
-#include "core/trivial_tu130_methods.h"
+#include "trivial_tu130_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "MapGen.h"
 #include <windows.h>
-#include "core/trivial_tu055_methods.h"
+#include "trivial_tu055_methods.h"
 #include "ui_focus_methods.h"
 #include "ui_updated_methods.h"
 #include "ccfile_class.h"
-#include "core/vtable_seating_ctor_family_methods.h"
+#include "vtable_seating_ctor_family_methods.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -498,7 +498,7 @@ template class DynamicVectorClass<TRect<int> >;
 #include "_layout/dirty_area.h"
 template class DynamicVectorClass<DirtyAreaStruct>;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 template class DynamicVectorClass<double>;
 
@@ -506,9 +506,9 @@ GG_STATIC_ASSERT(sizeof(double) == 8);
 GG_STATIC_ASSERT(sizeof(VectorClass<double >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<double >) == 0x18);
 
-#include "core/vector_resize_family_methods.h"
+#include "vector_resize_family_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 

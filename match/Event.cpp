@@ -29,9 +29,9 @@
 // Functions ordered ascending by retail address.
 
 #include "event_class_ctors.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

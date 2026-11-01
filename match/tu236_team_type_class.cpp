@@ -22,8 +22,8 @@
 //   CALLEE:   GAMEMD 0x6F1FA0   TeamTypeClass::ProcessTaskForce
 //   CALLEE:   GAMEMD 0x510F60   FUN_00510F60 / 0x510ED0 FindHouseByCountryIndex
 
-#include "core/vector_class_operations.h"
-#include "core/zone_connection_class.h"
+#include "vector_class_operations.h"
+#include "zone_connection_class.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 

@@ -16,7 +16,7 @@
 
 #include <stddef.h>
 #include "_layout/session_class.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 #include "_rt/gg_static_assert.h"
 #include "house_building_layout.h"
 #include "voc_class_play_global_methods.h"
@@ -857,7 +857,7 @@ extern CoordStruct DAT_0089C848;
 unsigned int FUN_00772A90(BAObjView* entry);
 
 // GLOBAL: GAMEMD 0xA8B230 / 0x8871E0
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 

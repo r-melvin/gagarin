@@ -19,7 +19,7 @@
 #include "_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the engine frame counter.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // CDTimerClass — StartTime, the frame-clock functor cell, TimeLeft (0xC bytes).
 // Constructing one from a duration stamps the current frame and the duration

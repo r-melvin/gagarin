@@ -19,7 +19,7 @@
 #include <math.h>
 #include "screen_palette_mgr_methods.h"
 #include "_layout/geometry2d.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 // GLOBAL: GAMEMD 0x844B9C
 extern const char* DAT_00844B9C;

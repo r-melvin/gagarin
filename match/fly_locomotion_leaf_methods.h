@@ -190,7 +190,7 @@ GG_STATIC_ASSERT(offsetof(FlyLocoObject, LocomotorVptr) == 0x04 &&
 
 
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // The base whose destructor the derived one tail-jumps to. A layout-

@@ -38,7 +38,7 @@ extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8022C — HouseClass::Array.Items.
 extern HouseClass** DAT_00A8022C;
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 struct Beacon_00431700
 {

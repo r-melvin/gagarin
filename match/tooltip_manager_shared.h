@@ -12,9 +12,9 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/geometry2d.h"
-#include "core/vector_class_operations.h"
-#include "core/sort_then_search_sweep.h"
-#include "core/sorted_pair_search_family_methods.h"
+#include "vector_class_operations.h"
+#include "sort_then_search_sweep.h"
+#include "sorted_pair_search_family_methods.h"
 
 // Add copies this 0x1C-byte descriptor. The caller at 0x6D09C0 writes the
 // fields at these offsets; Process reads GadgetID and Text from the record.

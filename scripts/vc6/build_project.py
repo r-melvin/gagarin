@@ -23,7 +23,7 @@ from source_inventory import InventoryError, build_inventory, git_tracked_paths,
 
 ROOT = Path(__file__).resolve().parents[2]
 GENERATOR = "scripts/vc6/gen_trig_tables.py"
-GENERATED_TU = "match/core/trig_tables_data.cpp"   # object name only; the source is written under <out>/generated
+GENERATED_TU = "match/trig_tables_data.cpp"   # object name only; the source is written under <out>/generated
 
 
 def sha256(path):

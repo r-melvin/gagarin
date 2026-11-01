@@ -36,11 +36,11 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/geometry2d.h"
 #include "_layout/abstract_class.h"
-#include "core/dynamic_vector_ctor_methods.h"
-#include "core/vector_class_operations.h"
-#include "core/pair_vector_ctor_family_methods.h"
-#include "core/zone_connection_class.h"
-#include "core/small_misc2_methods.h"
+#include "dynamic_vector_ctor_methods.h"
+#include "vector_class_operations.h"
+#include "pair_vector_ctor_family_methods.h"
+#include "zone_connection_class.h"
+#include "small_misc2_methods.h"
 #include "_layout/elapsed_timer.h"
 
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Point2D>) == 0x18);

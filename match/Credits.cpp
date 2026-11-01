@@ -9,14 +9,14 @@
 // Straw slot 2 takes a destination pointer and a signed byte count.
 
 #include "buffer_straws.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;

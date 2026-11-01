@@ -18,7 +18,7 @@
 #include "_layout/bomb_class.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter (`MOV EDI,[0xA8ED84]`).
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 

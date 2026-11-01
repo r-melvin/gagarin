@@ -10,9 +10,9 @@
 #include "input_manager_class_methods.h"
 #include "movie_handle_class.h"
 #include "_layout/session_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include <string.h>
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 #include "_layout/map_0087f7e8.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- _stricmp.
@@ -98,7 +98,7 @@ extern int DAT_008809DC;
 // GLOBAL: GAMEMD 0x87F770
 extern InputManagerClass* DAT_0087F770;
 // 0x406BA6 stores an Obj_00401000 address into this timer target.
-#include "core/triple_timer_init_methods.h"
+#include "triple_timer_init_methods.h"
 // GLOBAL: GAMEMD 0x87E750
 extern Obj_00401000* DAT_0087E750;
 // GLOBAL: GAMEMD 0x87E758

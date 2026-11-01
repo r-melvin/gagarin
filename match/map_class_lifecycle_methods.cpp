@@ -6,7 +6,7 @@
 //   0x7E3890, 0x7ED480, 0x7E38D0, and 0x7ED5A0.
 
 #include "FUNCTION.H"
-#include "core/pair_vector_ctor_family_methods.h"
+#include "pair_vector_ctor_family_methods.h"
 #include "ui_display_chain.h"
 
 // These no-argument native helpers are called by MapClass::~MapClass in the

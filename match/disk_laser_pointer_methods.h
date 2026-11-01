@@ -8,7 +8,7 @@
 //   [0xB0F6A8],EAX` Count, `MOV CL,[0xB0F6A5]` IsAllocated, `MOV
 //   ECX,[0xB0F6AC]` CapacityIncrement, `MOV EAX,[0xB0F698]; CALL [EAX+8]`
 //   SetCapacity, `MOV ECX,[0xB0F69C]` Items. The same vector is already bound
-//   as the pending-delete list in match/core/object_class_uninit_methods.h
+//   as the pending-delete list in match/object_class_uninit_methods.h
 //   and match/tag_class_destroy_methods.h. Names for the method and the
 //   members (DiskLaserClass::PointerGotInvalid, Owner, Target, unknown_30)
 //   from YRpp (names only).
@@ -35,7 +35,7 @@ public:
     virtual bool SetCapacity(int capacity, void** pMem);                  // +0x08
 
     // DynamicVectorClass::AddItem, expanded inline at both call sites. The
-    // same phrasing as match/core/object_class_uninit_methods.h: Capacity
+    // same phrasing as match/object_class_uninit_methods.h: Capacity
     // bound to a local keeps the new size in ECX ahead of the vtable load.
     bool AddItem(DiskLaser_004A7900* item)
     {
@@ -70,7 +70,7 @@ GG_STATIC_ASSERT(offsetof(PendingVector_004A7900, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(PendingVector_004A7900)                      == 0x18);
 
 // GLOBAL: GAMEMD 0xB0F698 -- the pending-delete DynamicVectorClass.
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 
 struct DiskLaser_004A7900
 {

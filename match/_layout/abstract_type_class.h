@@ -17,7 +17,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
-#include "../core/bounded_text.h"
+#include "../bounded_text.h"
 
 class CCINIClass;
 

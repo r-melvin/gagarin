@@ -26,7 +26,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "object_type_class.h"   // ObjectTypeClass (sizeof 0x294), AbilitiesStruct
 #include "vector_class.h"        // DynamicVectorClassLayout (sizeof 0x18)
-#include "../core/type_list.h"  // RTTI-backed TypeList<T> hierarchy and typed fields
+#include "../type_list.h"  // RTTI-backed TypeList<T> hierarchy and typed fields
 
 // ---------------------------------------------------------------------------
 // Local component structs (sizes proven by the oracle doc).

@@ -29,13 +29,13 @@
 // Class names and the base relation come from the retail RTTI descriptors;
 // the owning class of each body is the class whose vtable slot 0 holds it.
 // Slot 0 is modelled as an ordinary virtual holding the deleting wrapper, as
-// FileClass does in match/core/ram_file_class.h: these classes are never
+// FileClass does in match/ram_file_class.h: these classes are never
 // constructed in this translation unit, so cl would not emit their tables or
 // a compiler-generated `??_G`. The classes are opaque views; no member is
 // touched, so there is no layout to assert.
 
 #include <stddef.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "_rt/gg_static_assert.h"
 
 
@@ -122,7 +122,7 @@ public:
 GG_STATIC_ASSERT(offsetof(BlinkCursorHost_0068FFE0, Surface) == 0x08);
 GG_STATIC_ASSERT(offsetof(BlinkCursorHost_0068FFE0, CursorColor) == 0x18);
 
-#include "core/trivial_tu202_methods.h"
+#include "trivial_tu202_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

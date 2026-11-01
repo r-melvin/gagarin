@@ -24,7 +24,7 @@
 void* __cdecl operator new(unsigned int size);
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 #include "_layout/rules_class.h"
 
 struct Coord_0044ABD0

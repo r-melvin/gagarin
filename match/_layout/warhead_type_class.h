@@ -13,7 +13,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_type_class.h"
 #include "obj_004a1d30.h"
-#include "../core/type_list.h"
+#include "../type_list.h"
 
 // Pointer / TypeList / GUID members read as undefined4 / fixed-size blocks in
 // the decomp. Pointers become real 4-byte pointers to opaque forward decls;

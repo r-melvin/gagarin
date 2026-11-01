@@ -19,7 +19,7 @@ class TechnoClass;
 class HouseClass;
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by TimeToExplode).
-#include "../core/frame_counter.h"
+#include "../frame_counter.h"
 
 class BombClass : public AbstractClass
 {

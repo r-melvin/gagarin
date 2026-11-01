@@ -239,7 +239,7 @@
 // by the matching initialiser. The initialisers (__xc table entries) are left to
 // the translation-unit migration and compile here as a by-product, unclaimed.
 
-#include "core/cached_resource_dtor_family_methods.h"
+#include "cached_resource_dtor_family_methods.h"
 
 #include "wwlib/blitters/b_lucent25_blit.h"
 #include "wwlib/blitters/r_shared_zwrap.h"
@@ -342,7 +342,7 @@ template class BlitTranslucent50NonzeroAlpha<unsigned short>;
 template class BlitTranslucent50ZeroAlpha<unsigned short>;
 template class BlitTranslucentWriteAlpha<unsigned short>;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class ConvertClass;
 
@@ -400,12 +400,12 @@ template class RLEBlitTransXlatZReadWrite<unsigned char>;
 
 #include "wwlib/blitters/r_lucent75.h"
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class ConvertClass;
 

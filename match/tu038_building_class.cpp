@@ -183,8 +183,8 @@ static inline bool AllFogged_00457A10(CellStruct const* fd, CellStruct base,
 #include "_layout/cell_class.h"
 #include "_layout/cell.h"
 #include "airstrike_class_methods.h"
-#include "core/rules_class.h"
-#include "core/frame_counter.h"
+#include "rules_class.h"
+#include "frame_counter.h"
 #include "map_class_methods.h"
 #include "tactical_class_coords_to_client_methods.h"
 #include "_layout/map_0087f7e8.h"
@@ -229,9 +229,9 @@ static int TimeLeft(const CDTimerClass& timer)
 
 #include "building_coord_00453840.h"
 
-#include "core/small_misc36_methods.h"
+#include "small_misc36_methods.h"
 
-#include "core/small_misc50_methods.h"
+#include "small_misc50_methods.h"
 
 #include "_layout/abstract_type_class.h"
 // GLOBAL: GAMEMD 0x887734
@@ -245,7 +245,7 @@ wchar_t* __fastcall StringTable_LoadString(const char*, int*, const char*, int);
 // GLOBAL: GAMEMD 0x818CE8
 extern const char STR_00818CE8[];
 
-#include "core/small_misc54_methods.h"
+#include "small_misc54_methods.h"
 
 #include "_layout/building_class.h"
 #include "_layout/house_class.h"
@@ -328,7 +328,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 #include "_layout/global_0089c818.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class FoggedObjectClass;
 
 // VTABLE: GAMEMD 0x7E4514 -- VectorClass<FoggedObjectClass*>.
@@ -351,7 +351,7 @@ GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, CapacityIncreme
 
 GG_STATIC_ASSERT(sizeof(FoggedObjectClass*) == 4);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class InfantryClass;
 
 // VTABLE: GAMEMD 0x7E43E8 -- VectorClass<InfantryClass*>.
@@ -383,7 +383,7 @@ GG_STATIC_ASSERT(sizeof(InfantryClass*) == 4);
 #include "_layout/building_class.h"
 #include "_layout/house_class.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class Reestablish;
 
@@ -403,7 +403,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Reestablish* >) == 0x18);
 #include "_layout/infantry_class.h"
 #include "_layout/anim_class.h"
 #include "_layout/obj_004a1d30.h"
-#include "core/mission_class_methods.h"
+#include "mission_class_methods.h"
 
 #include <stdlib.h>
 #include "building_a_views.h"
@@ -437,15 +437,15 @@ static inline CellStruct CellOfCoord(const CoordStruct& c)
     return r;
 }
 
-#include "core/buffer_holder_dtor_methods.h"
+#include "buffer_holder_dtor_methods.h"
 
-#include "core/buffer_release_methods.h"
+#include "buffer_release_methods.h"
 
-#include "core/com_holder_query_methods.h"
+#include "com_holder_query_methods.h"
 
-#include "core/guarded_forward_methods.h"
+#include "guarded_forward_methods.h"
 
-#include "core/small_misc25_methods.h"
+#include "small_misc25_methods.h"
 
 //   Each entry point disassembled individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
@@ -500,23 +500,23 @@ static inline int BarrelFacingIndex_00458810(const DirStruct_00458810* dir)
     return (int)((((dir->Raw >> 10) + 1) >> 1) & 0x1F) - 8;
 }
 
-#include "core/small_misc12_methods.h"
+#include "small_misc12_methods.h"
 
-#include "core/small_misc15_methods.h"
+#include "small_misc15_methods.h"
 
-#include "core/small_misc19_methods.h"
+#include "small_misc19_methods.h"
 
-#include "core/small_misc39_methods.h"
+#include "small_misc39_methods.h"
 
-#include "core/small_misc3_methods.h"
+#include "small_misc3_methods.h"
 
-#include "core/small_misc41_methods.h"
+#include "small_misc41_methods.h"
 
-#include "core/small_misc4_methods.h"
+#include "small_misc4_methods.h"
 
-#include "core/small_misc53_methods.h"
+#include "small_misc53_methods.h"
 
-#include "core/small_misc8_methods.h"
+#include "small_misc8_methods.h"
 
 #include "building_class_power_methods.h"
 
@@ -564,7 +564,7 @@ int BuildingBGlobal_00B73550;
 #include "_layout/building_type_class_layout.h"
 #include "_layout/house_class.h"
 #include "_layout/house_type_class.h"
-#include "core/rules_class.h"
+#include "rules_class.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
@@ -1489,7 +1489,7 @@ extern char DAT_00A8E9A0;
 #include "_layout/anim_class.h"
 #include "_layout/anim_type_class.h"
 #include "_layout/cell_class.h"
-#include "core/abstract_class_distance3d_methods.h"
+#include "abstract_class_distance3d_methods.h"
 
 // GLOBAL: GAMEMD 0x7F4890 -- 32-entry table of animation frames per facing step.
 extern int DAT_007F4890[32];
@@ -1527,7 +1527,7 @@ static inline void PlayNthAnim(BuildingClass* self, int slot, int effectDelay)
 
 #include "_layout/building_class.h"
 #include "_layout/map_0087f7e8.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 #include "building_draw_methods.h"
 
@@ -2923,7 +2923,7 @@ refuse:
 #include "_layout/warhead_type_class.h"
 #include "_layout/capture_manager_class.h"
 #include "system_class.h"
-#include "core/randomizer.h"
+#include "randomizer.h"
 #include "building_a2_fold.h"
 
 // Moved from building_a2_damage.cpp (the BA2 parallel view family is retired); written against the canonical

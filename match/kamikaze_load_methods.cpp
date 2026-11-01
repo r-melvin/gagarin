@@ -6,7 +6,7 @@
 #include "_layout/aircraft_class.h"
 #include "_layout/cell_class.h"
 #include "_layout/swizzle_manager_class.h"
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 
 // FUNCTION: GAMEMD 0x54E4D0
 //

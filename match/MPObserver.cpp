@@ -18,10 +18,10 @@
 //   block of MPObserver.cpp (its __FILE__ string 0x82FD40).
 
 #include "FUNCTION.H"
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0xABF8F8
 extern double DAT_00ABF8F8;

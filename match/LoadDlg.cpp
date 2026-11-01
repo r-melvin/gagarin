@@ -9,7 +9,7 @@
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "window_moving_methods.h"
 
 class FileEntryClass;
@@ -45,7 +45,7 @@ GG_STATIC_ASSERT(sizeof(FileEntryClass*) == 4);
 
 #include <string.h>
 #include "menus_load_options.h"
-#include "core/scenario_class.h"
+#include "scenario_class.h"
 #include "_layout/scenario_ptr_00a8b230.h"
 
 static const char LoadDlgFile[] = "D:\\ra2mdpost\\LoadDlg.CPP";

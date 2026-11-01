@@ -18,7 +18,7 @@
 // LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — the CRT free.
 extern "C" void __cdecl gg_free(void* block);
 // LIBRARY: GAMEMD 0x7C93E8 (decl; reloc) — the other free (the pool release
-// already modelled in match/core/small_misc46_methods.h).
+// already modelled in match/small_misc46_methods.h).
 extern "C" void __cdecl FUN_007C93E8(void* block);
 
 #include "_layout/sorted_tree_node.h"

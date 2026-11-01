@@ -56,7 +56,7 @@
 #include <string.h>
 #include "dsurface_class.h"
 
-#include "core/global_getter_family_methods.h"
+#include "global_getter_family_methods.h"
 
 #include <string.h>
 #include "dsurface_class.h"

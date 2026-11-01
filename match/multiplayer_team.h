@@ -16,7 +16,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/wide_string_class.h"
+#include "wide_string_class.h"
 
 // VTABLE: GAMEMD 0x7EEEDC
 class MultiplayerTeam

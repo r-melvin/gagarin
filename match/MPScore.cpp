@@ -31,8 +31,8 @@
 #include "_layout/theme_class.h"
 #include "_layout/house_class.h"
 #include "_layout/house_type_class.h"
-#include "core/header_tuning_globals.h"
-#include "core/vector_class.h"
+#include "header_tuning_globals.h"
+#include "vector_class.h"
 #include "pcx_get_surface_methods.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------

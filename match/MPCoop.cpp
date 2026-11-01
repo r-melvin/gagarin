@@ -18,14 +18,14 @@
 //   MPCoop.cpp (0x5C10F0..0x5C5AEF).
 
 #include "FUNCTION.H"
-#include "core/vector_ctor_pod_family_methods.h"
-#include "core/deleting_dtor_sweep.h"
+#include "vector_ctor_pod_family_methods.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0xABF420
 extern double DAT_00ABF420;

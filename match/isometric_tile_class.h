@@ -18,7 +18,7 @@
 #include "terrain_common_types.h"
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 #include "_layout/object_class.h"
 #include "_layout/object_type_class.h"
 #include "_layout/geometry2d.h"

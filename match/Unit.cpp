@@ -21,19 +21,19 @@
 
 #include "unit_class_should_crash_methods.h"
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/same_object_test_sweep.h"
+#include "same_object_test_sweep.h"
 
 #include "trivial_tu258_methods.h"
 
 #include <stdlib.h>
 #include "unit_class_astar_attempt_methods.h"
 
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "unit_class_occupation_methods.h"
 #include "ui_display_chain.h"
 
@@ -66,11 +66,11 @@ extern double DAT_00B1D0B0;
 #include "_layout/building_type_class_layout.h"
 #include "_layout/cell_class.h"
 #include "_layout/house_class.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 #include "_layout/ebolt_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
 #include "_layout/tag_class.h"
-#include "core/randomizer.h"
+#include "randomizer.h"
 #include "_layout/rules_class.h"
 #include "_layout/temporal_class.h"
 #include "_layout/obj_004a1d30.h"
@@ -295,7 +295,7 @@ struct UnitSlaveManagerView
 extern RulesClass* DAT_008871E0;
 
 // The mission control record (canonical view).
-#include "core/mission_class_methods.h"
+#include "mission_class_methods.h"
 
 // GLOBAL: GAMEMD 0xB1CFB8 -- the cell passed with tag events when there is none.
 extern CellStruct DAT_00B1CFB8;

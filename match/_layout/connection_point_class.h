@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include <ocidl.h>
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 // Element comparison for the vector template's out-of-line members (never called by the matched code).
 inline bool operator==(const tagCONNECTDATA& a, const tagCONNECTDATA& b) { return a.pUnk == b.pUnk && a.dwCookie == b.dwCookie; }

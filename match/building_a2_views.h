@@ -14,7 +14,7 @@
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
 #include "house_building_layout.h"
-#include "core/cell_step_tables.h"
+#include "cell_step_tables.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
@@ -1519,7 +1519,7 @@ GG_STATIC_ASSERT(offsetof(BA2Building, unknown_703) == 0x703);
 
 // GLOBAL: GAMEMD 0x8871E0 / 0xA8B230 / 0x887324 - the rules, the source object and the screen object.
 extern BA2Rules* RulesInstance_8871E0;
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 extern BA2Screen* DAT_00887324;
 // GLOBAL: GAMEMD 0x87F7E8 - the map; 0x89C818 - the invalid cell.

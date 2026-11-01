@@ -2450,7 +2450,7 @@ executable reproduction remains unfinished.
 
 ## Historical snapshot: LCWPipe and remaining Straw callers
 
-The native [LCWPipe implementation](match/core/lcw_pipe.cpp) replaces two
+The native [LCWPipe implementation](match/lcw_pipe.cpp) replaces two
 generic destructor bindings and adds an exact flush entry at `0x5522D0`.
 Its input method at `0x5520A0` remains a 99% partial with two register-allocation
 byte differences. All 31 relocation fields across the four integrated spans
@@ -2552,7 +2552,7 @@ reproduction remains unfinished.
 
 ## Previous verified integration: TeamClass vectors, CD search paths and INI stream read
 
-The native [TeamClass pointer-vector implementation](match/core/vector_teamclass_methods.cpp)
+The native [TeamClass pointer-vector implementation](match/vector_teamclass_methods.cpp)
 contains twelve entries across `VectorClass<TeamClass*>` and
 `DynamicVectorClass<TeamClass*>`: seven new matches and five migrated address
 claims, including the Dynamic `SetCapacity` row previously represented by a
@@ -2605,14 +2605,14 @@ now owns 12 existing address claims; it adds no new match rows. The obsolete
 tables pass conditional seven-slot checks against their project objects.
 
 Eight math routines at `0x4740B0` through `0x4741D0` were added to the
-[address-ordered math implementation](match/core/math_global_updates_00473fe0.cpp),
+[address-ordered math implementation](match/math_global_updates_00473fe0.cpp),
 and the [scalar state update at `0x47ADA0`](match/core/cd_global_state_update_methods.cpp)
 adds one more exact match. Helper arguments and x87 results use compiler ABI
 views; their
 original return types, owning class and startup role remain unestablished.
 
 Nine calls across six consumers now use the shared
-[`MemoryBuffer::Clear`](match/core/memory_buffer_methods.cpp): INI CacheStraw,
+[`MemoryBuffer::Clear`](match/memory_buffer_methods.cpp): INI CacheStraw,
 MixFile, Convert, PCX preview, MS animation and smudge loading.
 The old free-function symbol's unresolved object references fell from eight to
 two, both in the separately scoped CcFile time-method views. CacheStraw records
@@ -2640,7 +2640,7 @@ helpers. Complete executable reproduction remains unfinished.
 
 The native mutable-pointer vector implementations for
 [MapSelection](match/core/vector_mapselection_methods.cpp),
-[ParticleClass](match/core/vector_particleclass_methods.cpp) and
+[ParticleClass](match/vector_particleclass_methods.cpp) and
 [LightSourceClass](match/core/vector_lightsourceclass_methods.cpp) add **23
 exact matches** and migrate 13 prior claims. Each implementation covers 12
 entries across `VectorClass<T*>` and `DynamicVectorClass<T*>`; retail RTTI
@@ -2650,7 +2650,7 @@ The exact flags are `/O2 /DNDEBUG /Gy` with `/GX` disabled: each dynamic
 deleting-destructor full body requires `/GX` off; with `/GX`, its emitted
 COMDAT is shorter than the retail span.
 
-The address-scoped [CD slot-0 method view](match/core/cd_callback_00473ab0.cpp)
+The address-scoped [CD slot-0 method view](match/cd_callback_00473ab0.cpp)
 also adds one exact match: its full 44-byte span at `0x4790E0` ends in `RET 4`.
 The entry uses an ECX receiver, one stack dword, reads global byte `0x89E3A0`,
 and writes a dword at receiver offset `+4`. RTTI associates its table at
@@ -2678,7 +2678,7 @@ helpers. The complete executable target remains unfinished.
 
 Three native mutable-pointer vector implementations added 24 exact matches
 and migrated 12 prior claims: [AlphaShapeClass](match/core/vector_alphashapeclass_methods.cpp),
-[LightConvertClass](match/core/vector_lightconvertclass_methods.cpp) and
+[LightConvertClass](match/vector_lightconvertclass_methods.cpp) and
 [EventClass](match/core/vector_eventclass_methods.cpp). Each covers 12 entries
 across `VectorClass<T*>` and `DynamicVectorClass<T*>`; retail RTTI confirms the
 element types and zero-offset dynamic-to-base chains. Their six integrated
@@ -2686,7 +2686,7 @@ seven-slot tables passed conditional 7/7 checks. The selected flags were
 `/O2 /DNDEBUG /Gy` with `/GX` disabled: the dynamic deleting-body full span
 requires `/GX` off, while the base deleting body also matched under `/GX`.
 
-The [CD callback view](match/core/cd_callback_00473ab0.cpp) matched the
+The [CD callback view](match/cd_callback_00473ab0.cpp) matched the
 40-byte entry at `0x473AB0`. The callback uses slot zero of the RTTI-backed
 three-slot `CD` table at `0x7E4C30`. Its local eight-byte stack reservation
 does not establish the complete `CD` size; the source models only an
@@ -2697,7 +2697,7 @@ views; original owner and method signature are unknown. A [shared declaration
 for `0x81C1D0`](match/_layout/global_0081c1d0.h) retains the existing C++
 `g_FileSearchMode` symbol used by the callback and MixFile.
 
-The [math-global update implementation](match/core/math_global_updates_00473fe0.cpp)
+The [math-global update implementation](match/math_global_updates_00473fe0.cpp)
 added six address-ordered routines. Its `double` return declaration for
 `0x4CAC40` is an ABI view only; the helper's original return type remains
 unconfirmed. That batch added 31 new matches (24 vector bodies, six math
@@ -2726,11 +2726,11 @@ helpers. The complete executable target remained unfinished.
 
 ## Previous verified integration: HouseType/AlphaLightingRemap vectors and table routines
 
-The native [HouseTypeClass vector implementation](match/core/vector_housetypeclass_methods.cpp)
+The native [HouseTypeClass vector implementation](match/vector_housetypeclass_methods.cpp)
 and [AlphaLightingRemapClass vector implementation](match/core/vector_alphalightingremapclass_methods.cpp)
 each add eight new exact matches and migrate four prior address claims. Their
 four integrated seven-slot tables pass conditional 7/7 checks. The new
-[table lookup and reset routines](match/core/static_table_lookup_00473940.cpp)
+[table lookup and reset routines](match/static_table_lookup_00473940.cpp)
 add two matches: the lookup observes an 11-row, eight-byte-stride prefix with a
 pointer at offset `+0` and an uninterpreted four-byte gap at `+4`, returning
 STRING `0x817474` for out-of-range indices. The reset routine writes four
@@ -2738,7 +2738,7 @@ dwords at `0x89E280` through `0x89E28C`. The table at `0x81B7C8` and fallback
 string at `0x817474` are in the writable `.data` section. The source's `__fastcall` and `void` declarations are
 ABI bindings, not claims about original ownership or source signatures.
 
-The [math-global update implementation](match/core/math_global_updates_00473570.cpp)
+The [math-global update implementation](match/math_global_updates_00473570.cpp)
 adds eight exact routines. With the two vector pairs, the batch adds 26 new
 matches and migrates eight prior claims. Two helper functions at `0x4CAD50`
 and `0x4CADE0` remain unclaimed after bounded source probes; their original
@@ -2766,15 +2766,15 @@ helpers. The complete executable target remains unfinished.
 ## Previous verified integration: Airstrike/Bomb vectors and math-global updates
 
 The native [AirstrikeClass vector implementation](match/core/vector_airstrikeclass_methods.cpp)
-and [BombClass vector implementation](match/core/vector_bombclass_methods.cpp)
+and [BombClass vector implementation](match/vector_bombclass_methods.cpp)
 each contain 12 matched entries: eight new matches and four migrated address
 claims. Their four integrated seven-slot tables pass conditional 7/7 checks.
 Neither pair claims a standalone constructor or original translation-unit
 ownership.
 
-The [math-global update implementation](match/core/math_global_updates_004731c0.cpp)
+The [math-global update implementation](match/math_global_updates_004731c0.cpp)
 now contains 13 exact, address-ordered routines, and the new
-[473570 math-global implementation](match/core/math_global_updates_00473570.cpp)
+[473570 math-global implementation](match/math_global_updates_00473570.cpp)
 contains five. Together with the vector pairs, the batch adds 29 new exact
 matches and migrates eight prior claims. The routines use C linkage and
 `void` result ABI bindings; global declarations follow observed access widths.
@@ -2812,7 +2812,7 @@ bindings were rechecked against retail bytes.
 The native [CaptureManager vector implementation](match/core/vector_capturemanager_methods.cpp)
 adds eight matched entries and migrates four prior address claims into the
 VectorClass and DynamicVectorClass specializations. Both integrated seven-slot
-tables pass conditional 7/7 checks. The [math-global update implementation](match/core/math_global_updates_004731c0.cpp)
+tables pass conditional 7/7 checks. The [math-global update implementation](match/math_global_updates_004731c0.cpp)
 adds five exact, address-ordered routines with C linkage and `void` result
 ABI bindings. Referenced storage types follow the observed access widths;
 original function names, ownership and startup role are unknown. The old BufferHolderDtor and
@@ -2961,7 +2961,7 @@ buffer-release and generic resize views into this class-specific TU; no old
 row was dropped.
 
 Two new exact entries at `0x43B110` and `0x43B130` bring
-[the grouped math TU](match/core/math_global_updates_0043af70.cpp) to thirteen
+[the grouped math TU](match/math_global_updates_0043af70.cpp) to thirteen
 matched rows. They write only observed dword values at the confirmed globals;
 the source grouping does not establish original ownership or startup role.
 
@@ -2999,7 +2999,7 @@ signedness, semantic owner or pointer interpretation. The existing
 observed argument slot.
 
 Two new exact entries at `0x43B0E0` and `0x43B0F0` bring
-[the grouped math TU](match/core/math_global_updates_0043af70.cpp) to eleven
+[the grouped math TU](match/math_global_updates_0043af70.cpp) to eleven
 matched rows. `0x43B0E0` clears the two observed words; `0x43B0F0` clears three
 32-bit globals. The source grouping does not establish original ownership or
 startup role.
@@ -3028,7 +3028,7 @@ link closure and complete executable reproduction remained unfinished.
 
 ## Previous integration: BulletTypeClass vectors, SpotLightClass spelling and grouped math updates
 
-The [`BulletTypeClass*`](match/core/vector_bullettypeclass_methods.cpp) vector
+The [`BulletTypeClass*`](match/vector_bullettypeclass_methods.cpp) vector
 pair adds **eight exact matches** and migrates four existing claims. Retail
 RTTI establishes the pointer element type and zero-offset
 DynamicVectorClass-to-VectorClass base chain. Its two seven-slot tables pass
@@ -3044,7 +3044,7 @@ standalone `SpotLightClass` RTTI descriptor was found, and the registry remains
 an opaque vector view. The partial builder at `0x5FF420` remains a free routine.
 
 The neutral
-[math update implementation](match/core/math_global_updates_0043af70.cpp)
+[math update implementation](match/math_global_updates_0043af70.cpp)
 contains nine exact entries: two earlier ratios, five previously added
 operations at `0x43AFB0`, `0x43AFD0`, `0x43AFF0`, `0x43B010` and `0x43B050`,
 and two new operations at `0x43B080` and `0x43B0B0`. The entries load and store
@@ -3073,7 +3073,7 @@ link closure and complete executable reproduction remain unfinished.
 ## Previous verified integration: `_WIN32_FIND_DATAA` and SpotLightClass vectors; grouped math updates
 
 The [`_WIN32_FIND_DATAA*`](match/core/vector_win32_find_dataa_methods.cpp) and
-[`SpotLightClass*`](match/core/vector_spotlightclass_methods.cpp) vector pairs
+[`SpotLightClass*`](match/vector_spotlightclass_methods.cpp) vector pairs
 add **16 exact matches** and migrate eight existing claims: eight new and four
 migrated for each pair. Retail RTTI establishes the pointer element types and
 zero-offset DynamicVectorClass-to-VectorClass base chains. All four affected
@@ -3083,7 +3083,7 @@ disabled. No constructors, TypeList specializations, pointee layouts, complete
 object sizes, original TU boundaries or final-link selection are claimed.
 
 The neutral
-[math update implementation](match/core/math_global_updates_0043af70.cpp)
+[math update implementation](match/math_global_updates_0043af70.cpp)
 contains seven exact entries: two earlier ratios and five new operations at
 `0x43AFB0`, `0x43AFD0`, `0x43AFF0`, `0x43B010` and `0x43B050`. The entries load
 and store the observed globals, use read-only `.rdata` constants, and call the
@@ -3122,7 +3122,7 @@ specializations, pointee layouts, complete object sizes, original TU boundaries
 or final-link selection are claimed.
 
 The address-scoped prefix view in
-[buffer_prefix_methods.cpp](match/core/buffer_prefix_methods.cpp) now records
+[buffer_prefix_methods.cpp](match/buffer_prefix_methods.cpp) now records
 the entries at `0x43AF10` and `0x43AF20`, alongside five earlier entries. Their
 observed fields are at `+0`, `+4` and `+8`; the 12-byte view is only a minimum
 prefix, and class identity, full size and original ownership remain unknown.
@@ -3162,7 +3162,7 @@ HouseClass declaration; it adds no data member or layout claim.
 
 Four new entries at `0x43AD80`, `0x43ADF0`, `0x43AEB0` and `0x43AEF0` are
 grouped with the earlier `0x43AD40` entry in
-[buffer_prefix_methods.cpp](match/core/buffer_prefix_methods.cpp). Each uses
+[buffer_prefix_methods.cpp](match/buffer_prefix_methods.cpp). Each uses
 an address-scoped 12-byte C prefix view with observed fields at `+0`, `+4` and
 `+8`; the complete object size and original class identities remain unknown.
 The grouping is provisional organization and does not claim a shared original
@@ -3225,8 +3225,8 @@ link closure and complete executable reproduction remain unfinished.
 
 ## Previous verified integration: IonBlastClass and LaserDrawClass vectors
 
-The [IonBlastClass](match/core/vector_ionblastclass_methods.cpp) and
-[LaserDrawClass](match/core/vector_laserdrawclass_methods.cpp) pointer-vector
+The [IonBlastClass](match/vector_ionblastclass_methods.cpp) and
+[LaserDrawClass](match/vector_laserdrawclass_methods.cpp) pointer-vector
 pairs add **16 exact matches** and migrate eight existing claims: each adds
 eight new bodies and moves four existing rows. Retail RTTI establishes their
 pointer element types and zero-offset DynamicVectorClass-to-VectorClass base
@@ -3265,7 +3265,7 @@ link closure and complete executable reproduction remain unfinished.
 ## Previous verified integration: E-Bolt/RadBeam vectors and native MemoryBuffer overloads
 
 The [E-Bolt](match/core/vector_ebolt_methods.cpp) and
-[RadBeam](match/core/vector_radbeam_methods.cpp) pointer-vector pairs add
+[RadBeam](match/vector_radbeam_methods.cpp) pointer-vector pairs add
 **16 exact matches** and migrate eight existing claims: each adds eight new
 bodies and moves four existing rows. Retail RTTI establishes the pointer
 element types and zero-offset DynamicVectorClass-to-VectorClass base chains.
@@ -3339,7 +3339,7 @@ and work continued on the independent cleanup callers above.
 ## Previous verified integration: MemoryBuffer cleanup and AnimClass/ButtonFadeEffect vectors
 
 The existing `MemoryBuffer::Clear` row at `0x43AE50` is now bound to the shared
-type in [memory_buffer_methods.cpp](match/core/memory_buffer_methods.cpp). Its
+type in [memory_buffer_methods.cpp](match/memory_buffer_methods.cpp). Its
 full 0x28-byte body matches retail; instructions establish conditional freeing
 through the ownership byte and unconditional clearing of the pointer, size and
 ownership byte. The BSurface member at `+0x14` now uses `MemoryBuffer`, and its
@@ -3349,7 +3349,7 @@ read headers also use the shared layout, preserving four existing exact rows.
 Other direct `FUN_0043AE50` adapters and caller views remain; this is not a
 repository-wide caller migration or a destructor claim.
 
-The mutable [AnimClass pointer-vector](match/core/vector_animclass_ptr_methods.cpp)
+The mutable [AnimClass pointer-vector](match/vector_animclass_ptr_methods.cpp)
 and [ButtonFadeEffect pointer-vector](match/core/vector_buttonfadeeffect_methods.cpp)
 clusters add 16 exact matches and migrate eight existing claims: each adds
 eight new bodies and moves four existing rows. The mutable AnimClass cluster
@@ -3379,7 +3379,7 @@ link closure and complete executable reproduction remain unfinished.
 ## Previous verified integration: shared MemoryBuffer and Subtitle/MapRegion vectors
 
 The constructor at `0x43AD00` now has a native `MemoryBuffer` binding in
-[memory_buffer_methods.cpp](match/core/memory_buffer_methods.cpp); its complete
+[memory_buffer_methods.cpp](match/memory_buffer_methods.cpp); its complete
 `0x31`-byte body matches retail. The shared layout asserts the pointer at `+0`,
 size at `+4`, ownership byte at `+8`, and total size `0x0C`. The size is also
 bounded by `CCFileClass::Close` using the `Buffer` at `+0x58` and `Position` at
@@ -3389,7 +3389,7 @@ CCFileClass rows still pass their focused check. The former
 `Owned_0043AD00` stand-in is removed. Other local MemoryBuffer views, including
 the CCFile read and I/O views, remain to be consolidated.
 
-Native [SubTitle](match/core/vector_subtitle_methods.cpp) and
+Native [SubTitle](match/vector_subtitle_methods.cpp) and
 [MapRegionClass](match/core/vector_mapregionclass_methods.cpp) vector
 specializations cover 24 rows: 15 new exact matches and nine migrated claims.
 SubTitle contributes eight new rows and four migrations; MapRegionClass adds
@@ -3434,7 +3434,7 @@ binding are removed. The GenericNode, GenericList, and INI list primary tables
 pass direct one-slot checks against current objects. This does not recover all
 callers, original hierarchy, or the complete GenericNode virtual API.
 
-The [ShadowControlClass pointer-vector](match/core/vector_shadowcontrolclass_methods.cpp)
+The [ShadowControlClass pointer-vector](match/vector_shadowcontrolclass_methods.cpp)
 and [nested WinsockBufferType pointer-vector](match/core/vector_winsockbuffer_methods.cpp)
 specializations add **16 exact matches** and migrate eight existing family
 claims: eight new bodies and four migrated bindings per specialization.
@@ -3461,12 +3461,12 @@ link closure and complete executable reproduction remain unfinished.
 
 ## Previous verified integration: six media and network pointer-vector pairs
 
-The [VocClass](match/core/vector_vocclass_methods.cpp),
-[VoxClass](match/core/vector_voxclass_methods.cpp),
-[MovieHandle](match/core/vector_moviehandle_methods.cpp),
-[WaypointPathClass](match/core/vector_waypointpathclass_methods.cpp),
+The [VocClass](match/vector_vocclass_methods.cpp),
+[VoxClass](match/vector_voxclass_methods.cpp),
+[MovieHandle](match/vector_moviehandle_methods.cpp),
+[WaypointPathClass](match/vector_waypointpathclass_methods.cpp),
 [tConnInfoStruct](match/core/vector_tconninfostruct_methods.cpp) and
-[unsigned-char pointer](match/core/vector_unsigned_char_ptr_methods.cpp)
+[unsigned-char pointer](match/vector_unsigned_char_ptr_methods.cpp)
 pairs add **48 exact matches** and migrate 24 existing claims. Each pair has
 eight new bodies and four moved bindings. Retail RTTI and function bodies
 support the pointer element types and zero-offset `DynamicVectorClass` base
@@ -3500,12 +3500,12 @@ link closure and complete executable reproduction remain unfinished.
 
 ## Previous verified integration: six native pointer-vector pairs
 
-The [TriggerTypeClass](match/core/vector_triggertypeclass_methods.cpp),
+The [TriggerTypeClass](match/vector_triggertypeclass_methods.cpp),
 [TActionClass](match/core/vector_tactionclass_methods.cpp),
-[TEventClass](match/core/vector_teventclass_methods.cpp),
+[TEventClass](match/vector_teventclass_methods.cpp),
 [TemporalClass](match/core/vector_temporalclass_methods.cpp),
-[TiberiumClass](match/core/vector_tiberiumclass_methods.cpp) and
-[VeinholeMonsterClass](match/core/vector_veinholemonsterclass_methods.cpp)
+[TiberiumClass](match/vector_tiberiumclass_methods.cpp) and
+[VeinholeMonsterClass](match/vector_veinholemonsterclass_methods.cpp)
 pointer-vector pairs added **48 exact matches** and migrated 24 existing
 claims. Each pair contained twelve distinct matched bodies. Retail RTTI
 confirmed the pointer types and zero-offset `DynamicVectorClass` to
@@ -3566,7 +3566,7 @@ but the cleanup and complete-image fidelity remain unfinished.
 `TagTypes` object, which removes the guard and matches 0x6E5B20.)
 
 The [DiskLaserClass](match/core/vector_disklaserclass_methods.cpp),
-[EMPulseClass](match/core/vector_empulseclass_methods.cpp),
+[EMPulseClass](match/vector_empulseclass_methods.cpp),
 [GraphicMenuItem](match/core/vector_graphicmenuitem_methods.cpp) and
 [TagTypeClass](match/core/vector_tagtypeclass_methods.cpp) pointer-vector pairs
 add **31 exact matches** and migrate seventeen existing claims. GraphicMenuItem
@@ -3657,7 +3657,7 @@ retail address. This does not claim recovered native virtual declarations or
 complete-image identity. All 18 initially affected existing functions retain
 their matches.
 
-The [FactoryClass](match/core/vector_factoryclass_methods.cpp),
+The [FactoryClass](match/vector_factoryclass_methods.cpp),
 [FileEntryClass](match/core/vector_fileentryclass_methods.cpp) and
 [ConvertClass](match/core/vector_convertclass_methods.cpp) pointer-vector pairs
 add **24 exact matches** and migrate twelve existing claims. Each pair's two
@@ -3701,8 +3701,8 @@ exist in the project, replacing one incorrect shared placeholder. The affected
 matched methods retain their matches, and both existing index partial bodies
 are unchanged.
 
-The [DamageGroup pointer vectors](match/core/vector_damagegroup_methods.cpp)
-and [BuildingLightClass pointer vectors](match/core/vector_buildinglightclass_methods.cpp)
+The [DamageGroup pointer vectors](match/vector_damagegroup_methods.cpp)
+and [BuildingLightClass pointer vectors](match/vector_buildinglightclass_methods.cpp)
 add **16 exact matches** and migrate eight existing claims. Each pair has two
 seven-slot tables verified conditionally against its project object with
 `--weak-defaults`; this is not final-link proof. GX/no-GX probes establish the
@@ -3749,7 +3749,7 @@ now use their native classes, registries and `new` expressions. Both full
 131-byte bodies retain their matches with no-GX flags. Tag INI loading calls
 the canonical TriggerTypeClass factory, removing its free-function alias.
 
-The [TechnoClass pointer vector pair](match/core/vector_technoclass_methods.cpp)
+The [TechnoClass pointer vector pair](match/vector_technoclass_methods.cpp)
 adds **six exact matches** and migrates six existing buffer-release, deleting,
 resize and lookup claims. Both seven-slot tables pass conditional checks. Full
 REA spans and GX/no-GX probes support the pair; constructor and copy methods
@@ -3863,13 +3863,13 @@ The native GetInstance expression is exact with no-GX flags. Three matching
 strategies were exhausted; the remaining delta stays documented rather than
 being counted as exact.
 
-The [native AbstractClass destructor](match/core/abstract_class_dtor.cpp)
+The [native AbstractClass destructor](match/abstract_class_dtor.cpp)
 preserves the existing full 28-byte match, replacing its opaque host. This
 resolves the native base destructor call. The TagClass destructor still has
 no committed implementation: its capped local candidate reached 57.5%
 (127/221 instructions; 94 differences) and remains outside the manifest.
 
-[Shared registry storage](match/core/abstract_registry.cpp) now binds the
+[Shared registry storage](match/abstract_registry.cpp) now binds the
 vector-shaped prefixes at `0xB0F670`, `0xB0F698`, and `0xB0F708`. In particular,
 `0xB0F698` is used by TagClass, TriggerClass, DiskLaser and ObjectClass; the
 previous TagClass-specific member name was too narrow. Their storage aliases
@@ -3885,9 +3885,9 @@ starts and observed writes; it does not alone prove every array bound or the
 closing size. TriggerTypeClass declarations now consistently use the RTTI
 `class` key while retaining their existing prefix views.
 
-The [VoxelAnimTypeClass](match/core/vector_voxelanimtypeclass_methods.cpp),
-[ScriptTypeClass](match/core/vector_scripttypeclass_methods.cpp), and
-[TriggerClass](match/core/vector_triggerclass_methods.cpp) vector pairs contain
+The [VoxelAnimTypeClass](match/vector_voxelanimtypeclass_methods.cpp),
+[ScriptTypeClass](match/vector_scripttypeclass_methods.cpp), and
+[TriggerClass](match/vector_triggerclass_methods.cpp) vector pairs contain
 36 exact rows: 24 new matches and 12 migrated claims. Their six seven-slot tables
 pass conditional `--weak-defaults` checks on project objects. Full REA entry
 spans and GX/no-GX probes support each native pair; no-GX reproduces the full
@@ -3934,13 +3934,13 @@ storage evidence; this does not prove runtime setup. TagTypeClass's raw RTTI
 name confirms `class`, and the source class key and affected manglings now agree.
 All eight affected TagTypeClass bodies remain exact.
 
-The [AbstractClass constructor](match/core/abstract_class_ctor.cpp) is also
+The [AbstractClass constructor](match/abstract_class_ctor.cpp) is also
 represented by its native C++ constructor, preserving the preceding partial
 body's bytes and relocation offsets exactly. It remains a 71-byte partial row
 at the recorded 81.2%; this migration adds no exact-match claim.
 
-The [WarheadTypeClass](match/core/vector_warheadtypeclass_methods.cpp) and
-[SuperWeaponTypeClass](match/core/vector_superweapontypeclass_methods.cpp) vector
+The [WarheadTypeClass](match/vector_warheadtypeclass_methods.cpp) and
+[SuperWeaponTypeClass](match/vector_superweapontypeclass_methods.cpp) vector
 pairs contain 24 exact rows: 16 new matches and eight migrated claims. The
 Warhead migrations replace four incorrect BufferHolder owner models. Their
 four seven-slot tables pass conditional `--weak-defaults` checks on project
@@ -3964,8 +3964,8 @@ dynamic Clear rows plus one DiskID stand-in, and 16 resize rows. The separate
 
 ## Previous verified integration: native type vectors and shared TagClass storage
 
-The [SmudgeTypeClass](match/core/vector_smudgetypeclass_methods.cpp) and
-[OverlayTypeClass](match/core/vector_overlaytypeclass_methods.cpp) vector pairs
+The [SmudgeTypeClass](match/vector_smudgetypeclass_methods.cpp) and
+[OverlayTypeClass](match/vector_overlaytypeclass_methods.cpp) vector pairs
 contain 24 exact rows: 16 new matches and eight migrated claims. Their four
 RTTI-backed seven-slot tables pass conditional `--weak-defaults` checks against
 project objects. GX/no-GX probes pin no-GX for the full derived deleting bodies.
@@ -3997,8 +3997,8 @@ dynamic Clear rows plus one DiskID stand-in, and 16 resize rows.
 
 ## Previous verified integration: shared object accessors and a pinned-image oracle
 
-The [InfantryTypeClass](match/core/vector_infantrytypeclass_methods.cpp) and
-[TerrainTypeClass](match/core/vector_terraintypeclass_methods.cpp) vector pairs
+The [InfantryTypeClass](match/vector_infantrytypeclass_methods.cpp) and
+[TerrainTypeClass](match/vector_terraintypeclass_methods.cpp) vector pairs
 contain 24 exact rows: 15 new matches and nine migrated claims. Each pair has
 two RTTI-backed seven-slot tables. All four pass scoped checks against project
 objects with conditional `--weak-defaults` resolution. GX/no-GX probes pin the
@@ -4017,7 +4017,7 @@ consult-only hypotheses where the binary does not establish their spelling.
 
 The [level methods](match/core/object_class_level_methods.cpp) now reuse the
 shared `CellClass` layout and assert each consumed field and slot offset.
-All three remain exact. [FlightLevel](match/core/flight_level.cpp) has one
+All three remain exact. [FlightLevel](match/flight_level.cpp) has one
 four-byte BSS definition, matching the pinned PE's loader-zero tail; this does
 not claim knowledge of later runtime initialization. The Team attach call and
 two Building health checks now use native ObjectClass declarations. The
@@ -4048,8 +4048,8 @@ dynamic Clear rows plus one DiskID stand-in, and 16 resize rows.
 
 ## Previous verified integration: ObjectClass sorting and native type vectors
 
-The [AircraftTypeClass](match/core/vector_aircrafttypeclass_methods.cpp) and
-[UnitTypeClass](match/core/vector_unittypeclass_methods.cpp) vector pairs contain
+The [AircraftTypeClass](match/vector_aircrafttypeclass_methods.cpp) and
+[UnitTypeClass](match/vector_unittypeclass_methods.cpp) vector pairs contain
 24 exact rows: 15 new matches and nine migrated claims, including the Unit
 resize body at `0x4EDEA0`. All four RTTI-backed seven-slot tables pass scoped
 checks against project objects with conditional `--weak-defaults` resolution.
@@ -4090,8 +4090,8 @@ dynamic Clear rows plus one DiskID stand-in, and 17 resize rows.
 
 ## Previous verified integration: native type vectors and shared class declarations
 
-The native [AnimTypeClass](match/core/vector_animtypeclass_methods.cpp) and
-[BuildingTypeClass](match/core/vector_buildingtypeclass_methods.cpp) vector pairs
+The native [AnimTypeClass](match/vector_animtypeclass_methods.cpp) and
+[BuildingTypeClass](match/vector_buildingtypeclass_methods.cpp) vector pairs
 contain 24 exact function rows: 16 new matches and eight migrated claims.
 Each pair has two RTTI-backed seven-slot tables; all four pass scoped checks
 against the project objects with conditional `--weak-defaults` resolution.
@@ -4124,14 +4124,14 @@ These are intermediate verification results, not whole-image identity.
 
 ## Previous verified integration: ObjectClass health and TerrainClass / ParticleSystemClass vectors
 
-Native vector clusters for [TerrainClass](match/core/vector_terrainclass_methods.cpp)
-and [ParticleSystemClass](match/core/vector_particlesystemclass_methods.cpp)
+Native vector clusters for [TerrainClass](match/vector_terrainclass_methods.cpp)
+and [ParticleSystemClass](match/vector_particlesystemclass_methods.cpp)
 add 24 address rows: 16 new exact matches and eight migrated claims. Both
 classes have two RTTI-backed seven-slot tables. All four tables passed
 conditional seven-slot checks against project objects using `--weak-defaults`,
 without manual symbol maps.
 
-The shared [ObjectClass health implementation](match/core/object_class_health_methods.cpp)
+The shared [ObjectClass health implementation](match/object_class_health_methods.cpp)
 contains three full-span matches: `GetHealthPercentage` at `0x5F5C60` (32
 bytes), `FUN_005F5D20` (112 bytes), and `GetHealthStatus` at `0x5F5DD0`
 (169 bytes). The predicate name at `0x5F5D20` remains unconfirmed by the
@@ -4139,7 +4139,7 @@ binary. The three sparse Building views now inherit the confirmed `ObjectClass`
 prefix and call its native health method; the intermediate direct-base
 hierarchy is not reconstructed.
 
-The shared [RulesClass view](match/core/rules_class.h) asserts the observed
+The shared [RulesClass view](match/rules_class.h) asserts the observed
 fields at `+0x244`, `+0x54C`, `+0x1700`, `+0x1708`, and `+0x1804`. Its consumers
 use the canonical `RulesInstance` pointer. This is a sparse layout; it makes
 no full-size or complete-class claim. The integrated objects now reference the
@@ -4171,8 +4171,8 @@ function claim. No field-value fact is certified from that probe.
 ## Previous verified integration: AircraftClass, UnitClass, CellClass and CurrentFrame
 
 Two native vector clusters add 24 address rows across
-[AircraftClass](match/core/vector_aircraftclass_methods.cpp) and
-[UnitClass](match/core/vector_unitclass_methods.cpp): 16 new matched claims and
+[AircraftClass](match/vector_aircraftclass_methods.cpp) and
+[UnitClass](match/vector_unitclass_methods.cpp): 16 new matched claims and
 eight migrated claims. Each class has vector-template methods; all four
 affected vector tables passed conditional seven-slot checks against project
 objects using `--weak-defaults` without manual symbol maps.
@@ -4182,8 +4182,8 @@ focused 100% comparison over its complete 73-byte span. It uses the existing
 explicit-vptr `CellClass` layout to bind a nonvirtual const-member symbol. This
 does not establish the complete virtual hierarchy or vtable.
 
-The shared [`CurrentFrame` declaration](match/core/frame_counter.h) and its
-[single definition](match/core/frame_counter.cpp) use address `0xA8ED84`. The
+The shared [`CurrentFrame` declaration](match/frame_counter.h) and its
+[single definition](match/frame_counter.cpp) use address `0xA8ED84`. The
 retail operand audit validated 96 `DIR32` references to that address across 68
 matched functions in 41 translation units. The PE maps `.data` from VA
 `0x812000` with virtual size `0x367BE4`, while only `0x6C000` bytes are
@@ -4202,7 +4202,7 @@ The `/dll /noentry /nodefaultlib` diagnostic at that snapshot reported zero
 `LNK2005` duplicate definitions, 6,538 `LNK2001` unresolved-reference lines
 and 4,255 unique unresolved symbols (`LNK1120`), down from 4,283. This
 diagnostic excludes default libraries and does not establish engine link closure. The shared
-[RulesClass layout and declaration](match/core/rules_class.h) use the observed
+[RulesClass layout and declaration](match/rules_class.h) use the observed
 member offsets at `0x54C` and `0x1804`, and one
 [`RulesInstance` definition](match/rad_site_class_methods.cpp) serves
 both consumers. The `CurrentFrame` audit found one 4-byte BSS definition and
@@ -4269,8 +4269,8 @@ unverified.
 ## Previous fully verified batch: HouseClass and TagClass vectors
 
 The mutable-pointer `HouseClass*` and `TagClass*` clusters add 24 address rows
-across [HouseClass](match/core/vector_houseclass_methods.cpp) and
-[TagClass](match/core/vector_tagclass_methods.cpp): 15 new exact matches and
+across [HouseClass](match/vector_houseclass_methods.cpp) and
+[TagClass](match/vector_tagclass_methods.cpp): 15 new exact matches and
 nine migrated claims. Each class has two RTTI-backed seven-slot tables; no
 TypeList specialization, constructor, or complete object-size claim is made.
 The sources assert the accessed vector member offsets and 4-byte pointer size.
@@ -4304,9 +4304,9 @@ default at compile time.
 
 Three mutable-pointer vector clusters are integrated: 12 entries each for
 `AbstractClass*`, `FootClass*` and `BuildingClass*`, across
-[AbstractClass](match/core/vector_abstractclass_methods.cpp),
-[FootClass](match/core/vector_footclass_methods.cpp) and
-[BuildingClass](match/core/vector_buildingclass_methods.cpp). Together they
+[AbstractClass](match/vector_abstractclass_methods.cpp),
+[FootClass](match/vector_footclass_methods.cpp) and
+[BuildingClass](match/vector_buildingclass_methods.cpp). Together they
 contain 36 address rows: 22 new exact-match candidates and 14 migrated claims.
 Each class has two RTTI-backed seven-slot tables; no TypeList specialization or
 constructor claim is made. The implementations assert the accessed member
@@ -4346,9 +4346,9 @@ Westwood's original source files.
 Five native vector-class translation units contain 66 function rows: 12 in
 [AnimClass](match/core/vector_animclass_methods.cpp), 13 in
 [MultiMissionClass](match/core/vector_multimission_methods.cpp), 12 for
-[`const char*`](match/core/vector_const_char_methods.cpp), 12 for
-[`const unsigned short*`](match/core/vector_const_ushort_methods.cpp), and 17
-for [SmudgeTypeClass](match/core/vector_smudgetype_methods.cpp). The batch adds
+[`const char*`](match/vector_const_char_methods.cpp), 12 for
+[`const unsigned short*`](match/vector_const_ushort_methods.cpp), and 17
+for [SmudgeTypeClass](match/vector_smudgetype_methods.cpp). The batch adds
 38 exact rows and migrates 28 address claims. MultiMission's
 probe used `/Ob2` with `/GX` disabled. The corrected SmudgeType probe also used
 the no-`/GX` candidate; all 17 typed rows compared 100% over their checked
@@ -4394,7 +4394,7 @@ structure has been recovered.
 | Milestone | Current state and evidence | Completion gate |
 | --- | --- | --- |
 | Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
-| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/gadget_class_methods.h), [StorageClass](match/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
+| Shared classes and inheritance | Partial. [LinkClass](match/link_class_methods.h), [GadgetClass](match/gadget_class_methods.h), [StorageClass](match/storage_class.h) and the [vector templates](match/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
 | Integrated project build | A tracked-source object build exists in [build_project.py](scripts/vc6/build_project.py). The M0 diagnostic link and the M1 address-faithful stub link complete (see the top of this file); no runnable engine build exists yet. The existing compile gate also compiles translation units separately. | Resolve remaining project dependencies, establish an integrated engine link, and account for library dependencies. |
 | Whole-image identity | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | No byte-identical executable is promised; retain per-function verification as the matching standard. |
@@ -4452,7 +4452,7 @@ Verified consolidation steps:
   member offsets. Its owned-buffer view now has a shared header. Lock, lifetime
   code and ABuffer's separate `BSurfaceLayout` call interface remain to consolidate;
   complete size and all inherited signatures are unconfirmed.
-- [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
+- [VectorClass and DynamicVectorClass](match/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
   `CountedVector::Destroy` stand-ins. The family files bind 58 base and 56
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
@@ -4460,8 +4460,8 @@ Verified consolidation steps:
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
   and two compiler-generated scalar deleting destructors. ToolTipManager uses
   these templates with its RTTI-confirmed const element type.
-  [Layout assertions](match/core/vector_class_layout_asserts.cpp) check actual
-  template members and sizes under VC6. The [int specialization](match/core/vector_int_methods.cpp)
+  [Layout assertions](match/vector_class_layout_asserts.cpp) check actual
+  template members and sizes under VC6. The [int specialization](match/vector_int_methods.cpp)
   binds fifteen entries, including both seven-slot tables' distinct methods,
   copy constructor and two capacity constructors. The separate TypeList<int>
   specialization has three entries, including its default constructor. All
@@ -4476,7 +4476,7 @@ Verified consolidation steps:
   Capacity elements. Additional emitted methods and other copy specializations
   remain unverified.
   The two const SmudgeType capacity constructors are now in the native
-  [SmudgeType implementation](match/core/vector_smudgetype_methods.cpp).
+  [SmudgeType implementation](match/vector_smudgetype_methods.cpp).
   Capacity constructors for BuildingType, VoxelAnimType, TerrainType and
   ParticleSystemType now reside in their native class implementations, as do
   those for UnitType, AircraftType and InfantryType. AnimType, int and mutable
@@ -4485,9 +4485,9 @@ Verified consolidation steps:
   final-link selection remains unverified.
   Three native no-`/GX` class-cluster implementations cover 51 matched
   functions, 17 each across the vector templates for `const UnitTypeClass*`,
-  `const AircraftTypeClass*` and `const InfantryTypeClass*`: [UnitTypeClass](match/core/vector_unittype_methods.cpp),
+  `const AircraftTypeClass*` and `const InfantryTypeClass*`: [UnitTypeClass](match/vector_unittype_methods.cpp),
   [AircraftTypeClass](match/core/vector_aircrafttype_methods.cpp) and
-  [InfantryTypeClass](match/core/vector_infantrytype_methods.cpp). They add 22
+  [InfantryTypeClass](match/vector_infantrytype_methods.cpp). They add 22
   exact matches and rehome 29 prior address claims. The UnitType cluster has a `TypeList` default constructor at
   `0x67A740`; its copy constructor is `TypeList` at `0x513740`. AircraftType
   has a `TypeList` default constructor at `0x512960` and copy constructor at
@@ -4500,16 +4500,16 @@ Verified consolidation steps:
   Four more native no-`/GX` class clusters cover 68 matched functions across
   `const BuildingTypeClass*` (17), `const VoxelAnimTypeClass*` (18),
   `const TerrainTypeClass*` (16) and `const ParticleSystemTypeClass*` (17):
-  [BuildingTypeClass](match/core/vector_buildingtype_methods.cpp),
-  [VoxelAnimTypeClass](match/core/vector_voxelanimtype_methods.cpp),
-  [TerrainTypeClass](match/core/vector_terraintype_methods.cpp) and
-  [ParticleSystemTypeClass](match/core/vector_particlesystemtype_methods.cpp).
+  [BuildingTypeClass](match/vector_buildingtype_methods.cpp),
+  [VoxelAnimTypeClass](match/vector_voxelanimtype_methods.cpp),
+  [TerrainTypeClass](match/vector_terraintype_methods.cpp) and
+  [ParticleSystemTypeClass](match/vector_particlesystemtype_methods.cpp).
   They add 28 exact matches and rehome 40 existing address claims. Their twelve
   seven-slot tables pass conditional COFF weak-default checks against retail;
   final-link resolution remains unverified. Their implementations assert the member
   offsets they use, without claiming complete object sizes.
   The AnimType pointer implementation in
-  [vector_animtype_methods.cpp](match/core/vector_animtype_methods.cpp) covers
+  [vector_animtype_methods.cpp](match/vector_animtype_methods.cpp) covers
   seventeen matched functions across
   `VectorClass<const AnimTypeClass*>`,
   `DynamicVectorClass<const AnimTypeClass*>` and
@@ -4526,7 +4526,7 @@ Verified consolidation steps:
   specialization above. Three additional native vector clusters cover 40
   entries across [TeamTypeClass](match/core/vector_teamtype_methods.cpp),
   [MPlayerScoreType](match/core/vector_mplayer_score_methods.cpp) and
-  [const TechnoTypeClass](match/core/vector_const_technotype_methods.cpp).
+  [const TechnoTypeClass](match/vector_const_technotype_methods.cpp).
   TeamType and MPlayerScoreType each cover 14 entries, adding eight exact
   matches and rehoming six claims apiece. The const-TechnoType cluster covers
   12 entries, adding seven exact matches and rehoming five claims. TeamType
@@ -4556,9 +4556,9 @@ Verified consolidation steps:
   original source-file ownership remain incomplete.
   The resize helpers retain eight address-specific family views and two other
   generic resize helpers. SmudgeType's `0x67B050` SetCapacity body now has a native binding.
-- [TypeList](match/core/type_list.h): the int specialization has three native
+- [TypeList](match/type_list.h): the int specialization has three native
   entries: its copy constructor, default constructor and generated deleting
-  destructor in [one implementation](match/core/typelist_int_methods.cpp).
+  destructor in [one implementation](match/typelist_int_methods.cpp).
   The SmudgeType pointer default is now in its native class implementation.
   AnimType, BuildingType, VoxelAnimType, TerrainType, ParticleSystemType,
   UnitType, AircraftType and InfantryType defaults are in their native class
@@ -4571,7 +4571,7 @@ Verified consolidation steps:
 - Shared [2D geometry](match/_layout/geometry2d.h): renderer, radar, building
   layout and cell-redraw declarations use one XYWH `RectangleStruct` definition.
   BitFont's left/top/right/bottom bounds remain a distinct asserted type.
-- [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
+- [Periodic state updates](match/periodic_state_updates_00439480.cpp): nine
   recovered routines use one address-ordered implementation and shared global
   declarations. Their original class or file ownership is not established.
 

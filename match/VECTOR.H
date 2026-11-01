@@ -6,9 +6,9 @@
 #ifndef GG_MATCH_VECTOR_H
 #define GG_MATCH_VECTOR_H
 
-#include "core/vector_class.h"
-#include "core/type_list.h"
-#include "core/vector_class_dynamic_ctor.h"
-#include "core/vector_class_mutation.h"
+#include "vector_class.h"
+#include "type_list.h"
+#include "vector_class_dynamic_ctor.h"
+#include "vector_class_mutation.h"
 
 #endif

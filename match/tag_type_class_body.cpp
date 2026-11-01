@@ -10,8 +10,8 @@
 
 #include "FUNCTION.H"
 #include "locomotion_load_support.h"
-#include "core/abstract_registry.h"
-#include "core/header_tuning_globals.h"
+#include "abstract_registry.h"
+#include "header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 

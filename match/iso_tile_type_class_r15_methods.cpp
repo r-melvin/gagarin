@@ -8,7 +8,7 @@
 // Address index: 0x544BE0 0x544C20 0x544C80 0x544CE0 0x549A60
 #include <string.h>
 #include "iso_tile_type_class_tile_data_methods.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 // GLOBAL: GAMEMD 0xA8ED28 -- every IsometricTileTypeClass, in tile order.
 extern DynamicVectorClass<IsometricTileTypeClass*> DAT_00A8ED28;

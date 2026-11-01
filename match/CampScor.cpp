@@ -13,16 +13,16 @@
 // scalar deleting destructors (0x471500, 0x471520).
 
 #include "FUNCTION.H"
-#include "core/house_index_lookup_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "house_index_lookup_methods.h"
+#include "mathtbl_init_shapes.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
-#include "core/small_misc5_methods.h"
+#include "small_misc5_methods.h"
 
-#include "core/small_misc7_methods.h"
+#include "small_misc7_methods.h"
 
-#include "core/trivial_tu043_methods.h"
+#include "trivial_tu043_methods.h"
 
 #include "dialog_enable_methods.h"
 

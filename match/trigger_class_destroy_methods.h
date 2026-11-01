@@ -89,7 +89,7 @@ GG_STATIC_ASSERT(offsetof(TriggerClass, Destroyed) == 0x30);
 GG_STATIC_ASSERT(offsetof(TriggerClass, Enabled)   == 0x44);
 
 // The retail global cleanup vector (relocation-normalised by the differ).
-#include "core/abstract_registry.h"
+#include "abstract_registry.h"
 #include "_layout/house_class.h"
 
 #endif  // GG_MATCH_AI_TRIGGER_CLASS_DESTROY_METHODS_H

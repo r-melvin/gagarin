@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "mix_file_class.h"
-#include "core/mix_file_list_00abefd8.h"
+#include "mix_file_list_00abefd8.h"
 #include "_layout/crc_00476d80.h"
 #include "_layout/sorted_tree_node.h"
 

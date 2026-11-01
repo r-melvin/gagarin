@@ -62,14 +62,14 @@
 //   Globals are views of what each body reads; their owners' classes are
 //   not modelled here.
 
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
-#include "core/trivial_tu156_methods.h"
+#include "trivial_tu156_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MultiplayerGameMode;
 
@@ -79,7 +79,7 @@ GG_STATIC_ASSERT(sizeof(MultiplayerGameMode*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<MultiplayerGameMode* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<MultiplayerGameMode* >) == 0x18);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class MultiplayerTeam;
 
@@ -109,7 +109,7 @@ GG_STATIC_ASSERT(offsetof(GgMultiplayerTeamDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgMultiplayerTeamDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMultiplayerTeamDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_resize_family_methods.h"
+#include "vector_resize_family_methods.h"
 
 // No /GX: retail inlines the DynamicVectorClass constructor around the
 // static guard with no EH frame; under /GX cl calls the whole constructor.
@@ -269,7 +269,7 @@ template class MultiplayerGameMode::Initializer<MPCooperative>;
 #include "_layout/house_type_class.h"
 #include "ccini_class_methods.h"
 #include "ccfile_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_rt/gg_vslot.h"
 
 // GLOBAL: GAMEMD 0xA80228 -- the house array (Items 0xA8022C, Count 0xA80238).
@@ -278,7 +278,7 @@ extern DynamicVectorClass<HouseClass*> HouseArray_00A80228;
 
 
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 #include "session_entry.h"

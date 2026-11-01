@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 #ifndef GG_MATCH_LAYOUT_CURRENT_OBJECTS_H
 #define GG_MATCH_LAYOUT_CURRENT_OBJECTS_H
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 class ObjectClass;
 // RTTI: native vptr7E4F64 -> COL7FD0B0 -> TD816AD8 names
 // DynamicVectorClass<ObjectClass*>. Store at4E7D5D targets A8ECB8.

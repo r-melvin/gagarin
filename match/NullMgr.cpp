@@ -17,8 +17,8 @@
 //   not declare are TU-local views below.
 
 #include "FUNCTION.H"
-#include "core/empty_function_family_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "empty_function_family_methods.h"
+#include "mathtbl_init_shapes.h"
 
 #include "null_modem_class_methods.h"
 

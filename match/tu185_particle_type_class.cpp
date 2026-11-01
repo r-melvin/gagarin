@@ -387,8 +387,8 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 // GLOBAL: GAMEMD 0x008B4124
 extern "C" Type_006A46D0** DAT_008B4124;
 
-#include "core/vector_class_operations.h"
-#include "core/vector_add_item_free.h"
+#include "vector_class_operations.h"
+#include "vector_add_item_free.h"
 #include "_layout/map_0087f7e8.h"
 
 

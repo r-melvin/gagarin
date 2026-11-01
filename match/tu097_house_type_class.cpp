@@ -87,8 +87,8 @@ TYPES_DEFINE_READ_LIST(InfantryTypeClass, TypesFindInfantryType, TypesReadInfant
 TYPES_DEFINE_READ_LIST(UnitTypeClass, TypesFindUnitType, TypesReadUnitList)
 TYPES_DEFINE_READ_LIST(AircraftTypeClass, TypesFindAircraftType, TypesReadAircraftList)
 
-#include "core/vector_class_operations.h"
-#include "core/type_list.h"
+#include "vector_class_operations.h"
+#include "type_list.h"
 class AircraftTypeClass;
 
 // VTABLE: GAMEMD 0x7EAC68 -- VectorClass<const AircraftTypeClass*>.

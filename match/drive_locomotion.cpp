@@ -12,7 +12,7 @@
 // ZGradient 0x4B4880, and the large track bodies DrawMatrix 0x4AFF60
 // and Process 0x4B0500.
 // The destructor body 0x4AF5E0 stays scored by ComRel_004AF5E0
-// (match/core/multi_vtable_dtor_family_methods.cpp).
+// (match/multi_vtable_dtor_family_methods.cpp).
 
 #include <new.h>
 #include <math.h>

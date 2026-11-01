@@ -14,7 +14,7 @@
 #define GG_MATCH_AUDIO_AUDIO_PAN_METHODS_H
 
 #include <stddef.h>  // offsetof, size_t
-#include "core/triple_timer_init_methods.h"
+#include "triple_timer_init_methods.h"
 #include "_rt/gg_static_assert.h"
 #include "_layout/audio_event.h"
 

@@ -7,13 +7,13 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
-#include "core/mathtbl_init_shapes.h"
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 #include <objidl.h>
 #include "_layout/side_class.h"
@@ -22,9 +22,9 @@
 // GLOBAL: GAMEMD 0x007E9680 -- CLSID of InfantryClass.
 extern const CLSID DAT_007E9680;
 
-#include "core/trivial_tu099_b_methods.h"
+#include "trivial_tu099_b_methods.h"
 
-#include "core/trivial_tu099_methods.h"
+#include "trivial_tu099_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -58,13 +58,13 @@ extern double DAT_00A8F238;
 
 #include "_layout/infantry_class.h"
 #include "_layout/obj_004a1d30.h"
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 #include "_layout/house_class.h"
 #include "loco_interfaces.h"
 #include "loco_com.h"
 #include "_layout/building_class.h"
 #include "_layout/cell_class.h"
-#include "core/rules_class.h"
+#include "rules_class.h"
 #include "_layout/map_0087f7e8.h"
 #include "_layout/team_class.h"
 
@@ -120,9 +120,9 @@ static inline int TimerRemaining(const CDTimerClass& timer)
 // GLOBAL: GAMEMD 0x8871E0
 #include "_layout/rules_class.h"
 #include "_layout/techno_class.h"
-#include "core/mission_class_methods.h"
-#include "core/randomizer.h"
-#include "core/scenario_class_methods.h"
+#include "mission_class_methods.h"
+#include "randomizer.h"
+#include "scenario_class_methods.h"
 #include "_layout/geometry2d.h"
 extern RulesClass* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA83D4C -- the local player's house.

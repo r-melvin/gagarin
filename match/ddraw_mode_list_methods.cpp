@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 // Surface description as filled by the enumeration callback.
 struct _DDSURFACEDESC

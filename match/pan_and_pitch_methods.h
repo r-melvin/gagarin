@@ -9,7 +9,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/triple_timer_init_methods.h"
+#include "triple_timer_init_methods.h"
 #include "audio_sample_methods.h"
 
 // GLOBAL: GAMEMD 0x816380 — the volume curve.

@@ -36,7 +36,7 @@ extern bool DAT_00A8ED64;
 #include "_layout/house_type_class.h"
 extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x407000 (decl; reloc) — audio engine present.

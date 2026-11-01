@@ -24,10 +24,10 @@
 // DisplayClass scenario/help-text entries (layout and evidence: display_scenario.h).
 
 #include "_layout/object_class.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include "_layout/house_class.h"
 #include "_layout/cell.h"
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 
 #include "map_class_next_object_methods.h"
 
@@ -89,7 +89,7 @@ inline CellStruct CellStructSum(const CellStruct& a, const CellStruct& b)
 // canonical header declares them yet).
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "map_class_beacon_mode_methods.h"
 #include "map_class_mode_methods.h"
 #include "map_class_sublocation_methods.h"

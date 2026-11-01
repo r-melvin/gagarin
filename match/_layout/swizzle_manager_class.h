@@ -13,7 +13,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "i_swizzle.h"
 #include "swizzle_pointer_class.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 class SwizzleManagerClass : public ISwizzle
 {

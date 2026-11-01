@@ -12,7 +12,7 @@
 // the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
 
 #include "FUNCTION.H"
-#include "core/trivial_tu286_methods.h"
+#include "trivial_tu286_methods.h"
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 

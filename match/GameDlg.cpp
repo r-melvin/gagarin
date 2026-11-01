@@ -13,7 +13,7 @@
 #include "tooltip_manager_shared.h"
 #include "event_queue.h"
 #include "_layout/house_class.h"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 

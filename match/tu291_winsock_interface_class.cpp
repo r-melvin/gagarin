@@ -58,7 +58,7 @@ extern const int DAT_0084DD9C;
 // GLOBAL: GAMEMD 0x84DDA0 -- socket receive-buffer size.
 extern const int DAT_0084DDA0;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "winsock_interface_class.h"
 
 // VTABLE: GAMEMD 0x7F7A3C -- VectorClass<WinsockInterfaceClass::WinsockBufferType*>.
@@ -84,7 +84,7 @@ GG_STATIC_ASSERT(sizeof(WinsockInterfaceClass::WinsockBufferType*) == 4);
 #include <new>
 #include "winsock_interface_class.h"
 
-#include "core/global_getter_family_methods.h"
+#include "global_getter_family_methods.h"
 
 //   Each entry point disassembled individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder

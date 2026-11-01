@@ -34,7 +34,7 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class EBolt;
 
@@ -94,7 +94,7 @@ struct Obj_004C2C30
 };
 
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;

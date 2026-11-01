@@ -11,7 +11,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 #include "_layout/super_class.h"
 

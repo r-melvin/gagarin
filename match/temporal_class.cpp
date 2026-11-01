@@ -12,7 +12,7 @@
 // 0x71AD40, Detach 0x71ADE0 and 0x71AE50).
 
 #include "FUNCTION.H"
-#include "core/header_tuning_globals.h"
+#include "header_tuning_globals.h"
 #include "temporal_cell.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new (CRT), called by the new-expressions.

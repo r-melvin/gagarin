@@ -11,16 +11,16 @@
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
 //
-#include "core/deleting_dtor_sweep.h"
-#include "core/mathtbl_init_shapes.h"
+#include "deleting_dtor_sweep.h"
+#include "mathtbl_init_shapes.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 #include <math.h>
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 
-#include "core/trivial_tu092_methods.h"
+#include "trivial_tu092_methods.h"
 #include "_layout/elapsed_timer.h"
 #include "event_queue.h"
 #include "menus_graphic_menu.h"
@@ -43,7 +43,7 @@ extern double DAT_00A8EE00;
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class GraphicMenuItem;
 

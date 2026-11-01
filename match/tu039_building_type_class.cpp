@@ -59,9 +59,9 @@ extern "C" void __cdecl gg_free(void*);
 extern "C" const CLSID CLSID_BuildingType =
     { 0xAE8B33DB, 0x061C, 0x11D2, { 0xAC, 0xA4, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5 } };
 
-#include "core/guarded_forward_methods.h"
+#include "guarded_forward_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -103,25 +103,25 @@ template class DynamicVectorClass<DirtyAreaStruct>;
 void __cdecl FUN_0045EC80();
 
 
-#include "core/find_by_name_methods.h"
+#include "find_by_name_methods.h"
 
-#include "core/small_misc51_methods.h"
+#include "small_misc51_methods.h"
 
 #include "threat_budget_methods.h"
 
-#include "core/buffer_holder_dtor_methods.h"
+#include "buffer_holder_dtor_methods.h"
 
-#include "core/buffer_release_methods.h"
+#include "buffer_release_methods.h"
 
-#include "core/const_return_stub_methods.h"
+#include "const_return_stub_methods.h"
 
-#include "core/find_or_allocate_methods.h"
+#include "find_or_allocate_methods.h"
 
-#include "core/leaf_accessor_methods.h"
+#include "leaf_accessor_methods.h"
 
-#include "core/name_value_lookup_methods.h"
+#include "name_value_lookup_methods.h"
 
-#include "core/small_misc50_methods.h"
+#include "small_misc50_methods.h"
 
 #include <stdio.h>
 #include <stdlib.h>

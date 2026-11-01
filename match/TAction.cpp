@@ -36,12 +36,12 @@
 // it in slot 3.
 
 #include "taction_class_mode_methods.h"
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include <math.h>
 
-#include "core/id_resolve_command_sweep.h"
+#include "id_resolve_command_sweep.h"
 
-#include "core/leftover_predicate_sweep.h"
+#include "leftover_predicate_sweep.h"
 
 #include <objidl.h>
 #include "_layout/side_class.h"
@@ -50,7 +50,7 @@
 #include "_layout/cell_class.h"
 #include "_layout/gbl_0087f7e8.h"
 #include "_layout/building_class.h"
-#include "core/trivial_tu230_b_methods.h"
+#include "trivial_tu230_b_methods.h"
 #include "_layout/rules_class.h"
 #include "_layout/tactical.h"
 #include "_layout/team_class.h"
@@ -64,7 +64,7 @@
 // GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
 extern const CLSID DAT_007E9800;
 
-#include "core/trivial_tu230_methods.h"
+#include "trivial_tu230_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -86,7 +86,7 @@ extern double DAT_00B0E688;
 //   unknown_) derived from an address or offset in that binary.
 
 #include "taction_class_methods.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "_layout/house_class.h"
 #include "_layout/tag_class.h"
 #include "_layout/trigger_class.h"
@@ -99,8 +99,8 @@ extern double DAT_00B0E688;
 #include "_layout/object_class.h"
 #include <string.h>
 #include "locomotion_load_support.h"
-#include "core/vector_class_operations.h"
-#include "core/frame_counter.h"
+#include "vector_class_operations.h"
+#include "frame_counter.h"
 
 // ---- external state and callees, bound by address ----
 
@@ -115,7 +115,7 @@ extern ScenarioClass* DAT_00A8B230;
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class TActionClass;
 

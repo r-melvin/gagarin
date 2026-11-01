@@ -8,8 +8,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include "hover_locomotion_class.h"
-#include "core/small_misc23_methods.h"
-#include "core/cell_step_tables.h"
+#include "small_misc23_methods.h"
+#include "cell_step_tables.h"
 
 // True when any component differs from the empty coordinate DAT_00A8F180.
 static inline bool IsCoordSet(const LocoCoord& c)

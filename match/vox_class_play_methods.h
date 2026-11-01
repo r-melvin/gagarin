@@ -22,7 +22,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/intrusive_list_methods.h"   // ListNode / Obj_00407520 / FUN_00407420
+#include "intrusive_list_methods.h"   // ListNode / Obj_00407520 / FUN_00407420
 
 #include "_layout/coord_struct.h"
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x8);

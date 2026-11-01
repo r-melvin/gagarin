@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include <ocidl.h>
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 class EnumConnectionPointsClass : public IEnumConnectionPoints
 {

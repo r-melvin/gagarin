@@ -8,7 +8,7 @@
 #include "_layout/foot_class.h"
 #include "_layout/techno_type_class.h"
 #include "_layout/cell_class.h"
-#include "core/mission_class_methods.h"
+#include "mission_class_methods.h"
 #include "loco_com.h"
 
 // FUNCTION: GAMEMD 0x6EC300 (decl; reloc) -- asks the team whether it is enabled.

@@ -23,7 +23,7 @@ struct CellWords : CellStruct
     CellWords(int x, int y) { X = x; Y = y; }
 };
 
-// Constructor at 0x42D470 (row owned by match/core/small_struct_ctor_methods.cpp, which
+// Constructor at 0x42D470 (row owned by match/small_struct_ctor_methods.cpp, which
 // models the out-of-line copy that call sites outside the big tables keep).
 class CellOffset : public CellWords
 {

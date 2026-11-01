@@ -53,7 +53,7 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include "FUNCTION.H"
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -178,7 +178,7 @@ extern "C" long __stdcall FUN_00410320(void* subject, void* stream, int clearDir
 
 #include "capture_manager_free_unit_methods.h"
 
-#include "core/remove_last_matching_methods.h"
+#include "remove_last_matching_methods.h"
 
 
 class AITriggerTypeClass;
@@ -263,7 +263,7 @@ class WeaponTypeClass;
 struct HWND__;
 
 
-#include "core/vector_ctor_methods.h"
+#include "vector_ctor_methods.h"
 
 // SYNTHETIC: GAMEMD 0x471570
 // GLOBAL: GAMEMD 0x89E170

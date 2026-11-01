@@ -21,7 +21,7 @@
   "functions": [
     {
       "address": "0x0040DD20",
-      "source": "match/core/whatami_dispatch_methods.cpp",
+      "source": "match/whatami_dispatch_methods.cpp",
       "symbol": "?FUN_0040DD20@@YIPAUWhatAmIHolder@@PAU1@@Z",
       "old_size": 41,
       "corrected_size": 67,
@@ -37,7 +37,7 @@
     },
     {
       "address": "0x0040DD70",
-      "source": "match/core/whatami_dispatch_methods.cpp",
+      "source": "match/whatami_dispatch_methods.cpp",
       "symbol": "?FUN_0040DD70@@YIPAUWhatAmIHolder@@PAU1@@Z",
       "old_size": 41,
       "corrected_size": 67,
@@ -109,7 +109,7 @@
     },
     {
       "address": "0x4734B0",
-      "source": "match/core/techno_class.cpp",
+      "source": "match/techno_class.cpp",
       "symbol": "?RemovePassenger@PassengersClass@@QAEXPAVFootClass@@@Z",
       "old_size": 72,
       "corrected_size": 74,
@@ -124,7 +124,7 @@
     },
     {
       "address": "0x473500",
-      "source": "match/core/techno_class.cpp",
+      "source": "match/techno_class.cpp",
       "symbol": "?IndexOf@PassengersClass@@QBEHPAVFootClass@@@Z",
       "old_size": 48,
       "corrected_size": 50,
@@ -252,7 +252,7 @@
     },
     {
       "address": "0x4E8CF0",
-      "source": "match/core/vector_smudgetypeclass_methods.cpp",
+      "source": "match/vector_smudgetypeclass_methods.cpp",
       "symbol": "?Slot5@?$DynamicVectorClass@PAVSmudgeTypeClass@@@@UBEHPAPAVSmudgeTypeClass@@@Z",
       "old_size": 12,
       "corrected_size": 27,
@@ -432,7 +432,7 @@
     },
     {
       "address": "0x00556700",
-      "source": "match/core/link_class_addhead_addtail.cpp",
+      "source": "match/link_class_addhead_addtail.cpp",
       "symbol": "?AddTail@LinkClass@@UAEPAU1@AAU1@@Z",
       "old_size": 39,
       "corrected_size": 41,
@@ -446,7 +446,7 @@
     },
     {
       "address": "0x0055B880",
-      "source": "match/core/logic_class_pointer_methods.cpp",
+      "source": "match/logic_class_pointer_methods.cpp",
       "symbol": "?PointerGotInvalid@LogicClass@@QAEXPAUAbstractClass@@_N@Z",
       "old_size": 95,
       "corrected_size": 97,
@@ -530,7 +530,7 @@
     },
     {
       "address": "0x65A3C0",
-      "source": "match/core/vector_radbeam_methods.cpp",
+      "source": "match/vector_radbeam_methods.cpp",
       "symbol": "?SetCapacity@?$DynamicVectorClass@PAVRadBeam@@@@UAE_NHPAPAVRadBeam@@@Z",
       "old_size": 167,
       "corrected_size": 176,
@@ -559,7 +559,7 @@
     },
     {
       "address": "0x0065C340",
-      "source": "match/core/ram_file_class.cpp",
+      "source": "match/ram_file_class.cpp",
       "symbol": "?OpenEx@RAMFileClass@@UAEHPBDH@Z",
       "old_size": 11,
       "corrected_size": 13,
@@ -573,7 +573,7 @@
     },
     {
       "address": "0x65C610",
-      "source": "match/core/ram_file_class.cpp",
+      "source": "match/ram_file_class.cpp",
       "symbol": "?DeletingDtor@FileClass@@UAEPAXI@Z",
       "old_size": 30,
       "corrected_size": 32,
@@ -603,7 +603,7 @@
     },
     {
       "address": "0x0067A6B0",
-      "source": "match/core/vector_smudgetype_methods.cpp",
+      "source": "match/vector_smudgetype_methods.cpp",
       "symbol": "?Slot5@?$DynamicVectorClass@PBVSmudgeTypeClass@@@@UBEHPAPBVSmudgeTypeClass@@@Z",
       "old_size": 12,
       "corrected_size": 27,

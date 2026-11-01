@@ -7,7 +7,7 @@
 #ifndef GG_MATCH_LAYOUT_LAYER_CLASS_H
 #define GG_MATCH_LAYOUT_LAYER_CLASS_H
 
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 class ObjectClass;
 class AbstractClass;

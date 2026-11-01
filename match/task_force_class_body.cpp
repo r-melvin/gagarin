@@ -8,7 +8,7 @@
 #include "_layout/session_class.h"
 #include "_layout/task_force_class.h"
 #include "_layout/swizzle_manager_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0xA8E8D0 -- the task force registry.
 extern DynamicVectorClass<TaskForceClass*> DAT_00A8E8D0;

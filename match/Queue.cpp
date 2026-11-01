@@ -32,7 +32,7 @@
 // /Ob2 expands proven global array constructors/destructors; __xc order is
 // confirmed by ev_182d7497bcb677f15b6407900116870a45444b90af558c3036740f7b8ac401a4.
 #include <string.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #include <wchar.h>
 #include <time.h>
 #include <stdio.h>
@@ -46,9 +46,9 @@ extern int DAT_00B1D5E0[0x4000];
 extern void* DAT_00B77F54;
 extern void* DAT_00B77F60;
 
-#include "core/pair_vector_grow_sweep.h"
+#include "pair_vector_grow_sweep.h"
 
-#include "core/trivial_tu186_methods.h"
+#include "trivial_tu186_methods.h"
 #include "event_queue.h"
 #include "_layout/house_class.h"
 #include "_layout/house_type_class.h"
@@ -65,7 +65,7 @@ extern void* DAT_00B77F60;
 #include "pixel_shift_view.h"
 #include "_layout/com_0048d080.h"
 #include "_layout/dialog_005d3490.h"
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 #include "_layout/infantry_class.h"
 #include "_layout/unit_class.h"
 #include "_layout/aircraft_class.h"
@@ -79,7 +79,7 @@ extern void* DAT_00B77F60;
 #include "loco_interfaces.h"
 #include "_layout/conn_stat.h"
 #include "_layout/version_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/cell.h"
 #include "_layout/astar_00746000.h"
 #include "_layout/obj_004a1d30.h"
@@ -133,7 +133,7 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 // GLOBAL: GAMEMD 0xA8D58C
 extern CCFileClass DAT_00A8D58C;
 // GLOBAL: GAMEMD 0xA8D5F8
-#include "core/game_state_flags.h"
+#include "game_state_flags.h"
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0xAC50F8
@@ -361,7 +361,7 @@ extern const char STR_00837828[];
 
 #include "command_packet_layouts.h"
 #include "_layout/session_class.h"
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0xB779C4
 extern int DAT_00B779C4;

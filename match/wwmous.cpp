@@ -14,7 +14,7 @@
 //   0x7B9A60 and 0x7B9C30, all reached through the WWMouseClass vtable 0x7F7B2C (layout, slot and global evidence:
 //   mouse_ww_mouse_class.h). Strings: 'Capture_Mouse()\n' 0x84E690, 'Release_Mouse()\n' 0x84E6A4.
 
-#include "core/trivial_tu293_methods.h"
+#include "trivial_tu293_methods.h"
 
 
 

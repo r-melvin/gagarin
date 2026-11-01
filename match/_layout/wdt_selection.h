@@ -11,8 +11,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "ms_engine.h"
-#include "../core/string_class.h"
-#include "../core/wide_string_class.h"
+#include "../string_class.h"
+#include "../wide_string_class.h"
 #include "../wdt_map.h"
 #include "../world_domination_tour.h"
 

@@ -23,7 +23,7 @@
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_type_class.h"
-#include "../core/type_list.h"
+#include "../type_list.h"
 
 class InfantryTypeClass;
 class UnitTypeClass;

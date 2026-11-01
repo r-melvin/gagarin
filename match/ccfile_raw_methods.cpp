@@ -12,7 +12,7 @@
 // Functions are ordered ascending by retail address.
 //
 #include "ccfile_class.h"
-#include "core/string_class.h"
+#include "string_class.h"
 #include <string.h>
 #include "_layout/cd_search_path.h"
 #include <windows.h>

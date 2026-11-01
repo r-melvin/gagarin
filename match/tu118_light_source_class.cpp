@@ -38,7 +38,7 @@
 //   0x5657A0 (cell coordinates by reference); 0x484050 reads six light values
 //   (two dwords, four words) and 0x483E30 writes them back.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class LightSourceClass;
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -70,7 +70,7 @@ GG_STATIC_ASSERT(offsetof(GgLightSourceClassDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgLightSourceClassDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgLightSourceClassDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 #include "_layout/light_source_class.h"
 
@@ -91,9 +91,9 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<LightSourceClass::PendingCellClass* >
 
 
 
-#include "core/scenario_class_lighting_methods.h"
+#include "scenario_class_lighting_methods.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;

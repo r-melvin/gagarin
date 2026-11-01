@@ -85,7 +85,7 @@
 // of that specialization (slot owner read from the retail vtables).
 // Pointer/scalar/enum element: no element layout is claimed.
 
-#include "core/vector_ctor_pod_family_methods.h"
+#include "vector_ctor_pod_family_methods.h"
 #include "techno_class_clear_tokens_methods.h"
 
 #include "techno_class_planning_node_helpers.h"
@@ -95,7 +95,7 @@
 #include "_layout/house_class.h"
 #include "pixel_pack_methods.h"
 #include "_layout/player_ptr_00a83d4c.h"
-#include "core/techno_class_house.h"
+#include "techno_class_house.h"
 #include <stdlib.h>
 #include "dsurface_class.h"
 #include "composite_surface.h"
@@ -128,7 +128,7 @@ extern unsigned char DAT_00B0FE58;
 extern unsigned char DAT_008464AC;
 extern int DAT_00B780A0;
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 struct Obj_005D4E70;
 extern DynamicVectorClass<Obj_005D4E70*> DAT_00ABFC90;
@@ -175,15 +175,15 @@ GG_STATIC_ASSERT(offsetof(ScanBuffer_0063F080, Spans) == 0x08);
 
 void FUN_0063F2E0(int x1, int y1, int x2, int y2, int side, int skip, ScanSpan_0063F080** cursor);
 
-#include "core/rect_contains_point_methods.h"
+#include "rect_contains_point_methods.h"
 
-#include "core/tail_jmp_thunk_sweep.h"
+#include "tail_jmp_thunk_sweep.h"
 
-#include "core/trivial_tu180_b_methods.h"
+#include "trivial_tu180_b_methods.h"
 
-#include "core/trivial_tu180_methods.h"
+#include "trivial_tu180_methods.h"
 
-#include "core/vector_class.h"
+#include "vector_class.h"
 
 #include "_layout/house_class.h"
 
@@ -218,7 +218,7 @@ class CoopCampaignClass;
 struct CrossDissolveEffect;
 struct DamageGroup;
 struct DirtyAreaStruct;
-#include "core/disk_id.h"
+#include "disk_id.h"
 class DiskLaserClass;
 template<class T0> class DynamicVectorClass;
 class EBolt;
@@ -345,7 +345,7 @@ struct tagCONNECTDATA;
 
 // Actual-template layout assertions are in vector_class_layout_asserts.cpp.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 class EventClass;
 
 // The packing as the two marker-colour functions below expand it: the green term is
@@ -503,7 +503,7 @@ GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class PlanningBranchClass;
 
@@ -513,7 +513,7 @@ GG_STATIC_ASSERT(sizeof(PlanningBranchClass*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<PlanningBranchClass* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningBranchClass* >) == 0x18);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class PlanningMemberClass;
 
@@ -523,7 +523,7 @@ GG_STATIC_ASSERT(sizeof(PlanningMemberClass*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<PlanningMemberClass* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningMemberClass* >) == 0x18);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class PlanningNodeClass;
 
@@ -553,7 +553,7 @@ GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, unknown_0E) == 0x0E)
 GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, CapacityIncrement) == 0x14);
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class PlanningTokenClass;
 
@@ -563,7 +563,7 @@ GG_STATIC_ASSERT(sizeof(PlanningTokenClass*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<PlanningTokenClass* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 
-#include "core/vector_remove_item_family_methods.h"
+#include "vector_remove_item_family_methods.h"
 
 #include "pixel_pack_methods.h"
 
@@ -631,7 +631,7 @@ extern int DAT_00AC4B84[24];
 
 
 // The rules object (RulesInstance, 0x8871E0).
-#include "core/rules_class.h"
+#include "rules_class.h"
 
 // FUNCTION: GAMEMD 0x750920 (decl; reloc) -- VocClass::PlayGlobal(index, flags, volume, controller).
 // The volume is declared ahead of the pan so that `MOV EDX,0x2000` falls between the two pushes, as in retail.

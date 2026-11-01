@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "_layout/super_weapon_type_class.h"
-#include "core/rules_class_ini_support.h"
-#include "core/bounded_text.h"
+#include "rules_class_ini_support.h"
+#include "bounded_text.h"
 
 // GLOBAL: GAMEMD 0x7E2800 -- 0.0, read from memory rather than FLDZ.
 extern const double DAT_007E2800;

@@ -33,6 +33,6 @@ class TechnoTypeClass;
 
 
 #include "_layout/factory_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 #endif  // GG_MATCH_ECONOMY_FACTORY_CLASS_QUEUE_METHODS_H

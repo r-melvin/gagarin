@@ -24,7 +24,7 @@
   },
   {
    "addr": "0x5520a0",
-   "tu": "match/core/lcw_pipe.cpp",
+   "tu": "match/lcw_pipe.cpp",
    "removed": "canceling counter updates used only for register allocation",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -33,7 +33,7 @@
   },
   {
    "addr": "0x4087F0",
-   "tu": "match/core/slot_array_factory_methods.cpp",
+   "tu": "match/slot_array_factory_methods.cpp",
    "removed": "interior-member cursor and offset casts used only for register allocation",
    "previous_status": "partial",
    "previous_pct": 86.2,
@@ -42,7 +42,7 @@
   },
   {
    "addr": "0x408930",
-   "tu": "match/core/small_misc32_methods.cpp",
+   "tu": "match/small_misc32_methods.cpp",
    "removed": "double receiver alias and volatile flag cast",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -99,7 +99,7 @@
   },
   {
    "addr": "0x402440",
-   "tu": "match/core/dispatch_state_methods.cpp",
+   "tu": "match/dispatch_state_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -109,7 +109,7 @@
   },
   {
    "addr": "0x402600",
-   "tu": "match/core/dispatch_state_methods.cpp",
+   "tu": "match/dispatch_state_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -119,7 +119,7 @@
   },
   {
    "addr": "0x402650",
-   "tu": "match/core/dispatch_state_methods.cpp",
+   "tu": "match/dispatch_state_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -130,7 +130,7 @@
   },
   {
    "addr": "0x402720",
-   "tu": "match/core/dispatch_state_methods.cpp",
+   "tu": "match/dispatch_state_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -140,7 +140,7 @@
   },
   {
    "addr": "0x402860",
-   "tu": "match/core/floored_decrement_methods.cpp",
+   "tu": "match/floored_decrement_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -150,7 +150,7 @@
   },
   {
    "addr": "0x4028B0",
-   "tu": "match/core/floored_decrement_methods.cpp",
+   "tu": "match/floored_decrement_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -160,7 +160,7 @@
   },
   {
    "addr": "0x4034b0",
-   "tu": "match/core/floored_decrement_methods.cpp",
+   "tu": "match/floored_decrement_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "partial",
    "previous_pct": 33.3,
@@ -170,7 +170,7 @@
   },
   {
    "addr": "0x403530",
-   "tu": "match/core/floored_decrement_methods.cpp",
+   "tu": "match/floored_decrement_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -180,7 +180,7 @@
   },
   {
    "addr": "0x402AF0",
-   "tu": "match/core/hooked_node_create_methods.cpp",
+   "tu": "match/hooked_node_create_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -190,7 +190,7 @@
   },
   {
    "addr": "0x408D40",
-   "tu": "match/core/leaf_accessor_methods.cpp",
+   "tu": "match/leaf_accessor_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -200,7 +200,7 @@
   },
   {
    "addr": "0x409320",
-   "tu": "match/core/leaf_accessor_methods.cpp",
+   "tu": "match/leaf_accessor_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -210,7 +210,7 @@
   },
   {
    "addr": "0x402330",
-   "tu": "match/core/paired_object_methods.cpp",
+   "tu": "match/paired_object_methods.cpp",
    "removed": "volatile qualifier on shared member Obj_00402190::field_A8",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -221,7 +221,7 @@
   },
   {
    "addr": "0x4024A0",
-   "tu": "match/core/paired_object_methods.cpp",
+   "tu": "match/paired_object_methods.cpp",
    "removed": "volatile read-modify-write of field_A4",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -232,7 +232,7 @@
   },
   {
    "addr": "0x4026C0",
-   "tu": "match/core/small_misc11_methods.cpp",
+   "tu": "match/small_misc11_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -242,7 +242,7 @@
   },
   {
    "addr": "0x4026F0",
-   "tu": "match/core/small_misc11_methods.cpp",
+   "tu": "match/small_misc11_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -252,7 +252,7 @@
   },
   {
    "addr": "0x408200",
-   "tu": "match/core/small_misc20_methods.cpp",
+   "tu": "match/small_misc20_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -262,7 +262,7 @@
   },
   {
    "addr": "0x403870",
-   "tu": "match/core/small_misc33_methods.cpp",
+   "tu": "match/small_misc33_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -272,7 +272,7 @@
   },
   {
    "addr": "0x4023f0",
-   "tu": "match/core/small_misc37_methods.cpp",
+   "tu": "match/small_misc37_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -282,7 +282,7 @@
   },
   {
    "addr": "0x405580",
-   "tu": "match/core/small_misc37_methods.cpp",
+   "tu": "match/small_misc37_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -292,7 +292,7 @@
   },
   {
    "addr": "0x403820",
-   "tu": "match/core/small_misc40_methods.cpp",
+   "tu": "match/small_misc40_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -302,7 +302,7 @@
   },
   {
    "addr": "0x408d30",
-   "tu": "match/core/small_misc40_methods.cpp",
+   "tu": "match/small_misc40_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -312,7 +312,7 @@
   },
   {
    "addr": "0x405040",
-   "tu": "match/core/small_misc43_methods.cpp",
+   "tu": "match/small_misc43_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "partial",
    "previous_pct": 13.9,
@@ -322,7 +322,7 @@
   },
   {
    "addr": "0x4053e0",
-   "tu": "match/core/small_misc43_methods.cpp",
+   "tu": "match/small_misc43_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "partial",
    "previous_pct": 27.3,
@@ -332,7 +332,7 @@
   },
   {
    "addr": "0x405430",
-   "tu": "match/core/small_misc43_methods.cpp",
+   "tu": "match/small_misc43_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "partial",
    "previous_pct": 50.0,
@@ -342,7 +342,7 @@
   },
   {
    "addr": "0x404dd0",
-   "tu": "match/core/small_misc45_methods.cpp",
+   "tu": "match/small_misc45_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -352,7 +352,7 @@
   },
   {
    "addr": "0x408000",
-   "tu": "match/core/small_misc48_methods.cpp",
+   "tu": "match/small_misc48_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -362,7 +362,7 @@
   },
   {
    "addr": "0x4038A0",
-   "tu": "match/core/small_struct_ctor_methods.cpp",
+   "tu": "match/small_struct_ctor_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -372,7 +372,7 @@
   },
   {
    "addr": "0x4038C0",
-   "tu": "match/core/small_struct_ctor_methods.cpp",
+   "tu": "match/small_struct_ctor_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -382,7 +382,7 @@
   },
   {
    "addr": "0x4072E0",
-   "tu": "match/core/sorted_list_insert_methods.cpp",
+   "tu": "match/sorted_list_insert_methods.cpp",
    "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
    "previous_status": "partial",
    "previous_pct": 26.3,
@@ -392,7 +392,7 @@
   },
   {
    "addr": "0x4734B0",
-   "tu": "match/core/techno_class.cpp",
+   "tu": "match/techno_class.cpp",
    "removed": "redundant FootClass** alias on the list cursor (permuter-found register steering)",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -424,7 +424,7 @@
   },
   {
    "addr": "0x41c2e0",
-   "tu": "match/core/angle_from_points_methods.cpp",
+   "tu": "match/angle_from_points_methods.cpp",
    "removed": "discarded comma operand",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -434,7 +434,7 @@
   },
   {
    "addr": "0x4103E0",
-   "tu": "match/core/small_misc17_methods.cpp",
+   "tu": "match/small_misc17_methods.cpp",
    "removed": "volatile out-parameter stores",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -455,7 +455,7 @@
   },
   {
    "addr": "0x432690",
-   "tu": "match/core/small_misc22_methods.cpp",
+   "tu": "match/small_misc22_methods.cpp",
    "removed": "volatile field-clear casts",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -465,7 +465,7 @@
   },
   {
    "addr": "0x410170",
-   "tu": "match/core/abstract_class_ctor.cpp",
+   "tu": "match/abstract_class_ctor.cpp",
    "removed": "volatile vptr, UniqueID and flag-byte casts",
    "previous_status": "partial",
    "previous_pct": 81.2,
@@ -476,7 +476,7 @@
   },
   {
    "addr": "0x45e520",
-   "tu": "match/core/small_misc50_methods.cpp",
+   "tu": "match/small_misc50_methods.cpp",
    "removed": "volatile byte store",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -486,7 +486,7 @@
   },
   {
    "addr": "0x43a600",
-   "tu": "match/core/vector_owner_dtor_methods.cpp",
+   "tu": "match/vector_owner_dtor_methods.cpp",
    "removed": "count pointer alias",
    "previous_status": "matched",
    "previous_pct": 100.0,

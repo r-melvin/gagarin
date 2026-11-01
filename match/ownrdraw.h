@@ -18,10 +18,10 @@
 
 #include <stddef.h>
 #include <string.h>
-#include "core/wide_string_class.h"
-#include "core/string_class.h"
-#include "core/hash_table_view.h"
-#include "core/vector_class.h"
+#include "wide_string_class.h"
+#include "string_class.h"
+#include "hash_table_view.h"
+#include "vector_class.h"
 #include "dialog_type_lookup_predicates.h"
 #include "dialog_control_group_lookup.h"
 #include "control_id_predicate_methods.h"

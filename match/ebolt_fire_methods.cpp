@@ -3,8 +3,8 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4C2A60.
 
 #include "ebolt_fire_methods.h"
-#include "core/vector_class_operations.h"
-#include "core/vector_add_item_free.h"
+#include "vector_class_operations.h"
+#include "vector_add_item_free.h"
 
 // FUNCTION: GAMEMD 0x4C2A60
 //

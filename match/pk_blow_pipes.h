@@ -25,7 +25,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
-#include "core/pkey_layout.h"
+#include "pkey_layout.h"
 
 // The block cipher object reached through BlowPipe/BlowStraw +0x0C. Both
 // helpers are __thiscall with three stack words (RET 0xC).

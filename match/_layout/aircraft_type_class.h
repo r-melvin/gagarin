@@ -17,7 +17,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "techno_type_class.h"
-#include "../core/vector_class.h"   // TechnoTypeClass (sizeof 0xDF8), AnimTypeClass
+#include "../vector_class.h"   // TechnoTypeClass (sizeof 0xDF8), AnimTypeClass
 
 // ---------------------------------------------------------------------------
 // AircraftTypeClass  (0xDF8..0xE0F, sizeof = 0xE10)

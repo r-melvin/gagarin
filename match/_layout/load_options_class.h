@@ -20,7 +20,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/vector_class.h"
+#include "../vector_class.h"
 
 // LoadOptionsMode (YRpp, reconfirmed from the disasm:
 // LoadDialog stores 1 into Mode@+4, SaveDialog stores 2, DeleteDialog stores 3).

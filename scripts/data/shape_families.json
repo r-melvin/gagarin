@@ -39,7 +39,7 @@
      "n_insns": 11,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/deleting_dtor_methods.cpp",
+     "tu": "match/deleting_dtor_methods.cpp",
      "sym": "?FUN_0040E4A0@Obj_0040E400@@QAEPAXI@Z",
      "name": "FUN_0040E4A0",
      "rtti": [
@@ -386,7 +386,7 @@
      "n_insns": 40,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/AbsType.cpp",
+     "tu": "match/AbsType.cpp",
      "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
      "name": "AbstractTypeClass scalar deleting destructor",
      "rtti": [
@@ -450,7 +450,7 @@
      "n_insns": 34,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/AbsType.cpp",
+     "tu": "match/AbsType.cpp",
      "sym": "??1AbstractTypeClass@@UAE@XZ",
      "name": "AbstractTypeClass::~AbstractTypeClass"
     },
@@ -479,7 +479,7 @@
      "n_insns": 12,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/leaf_sweep_r13_w1.cpp",
+     "tu": "match/leaf_sweep_r13_w1.cpp",
      "sym": "?Destroy@Obj_004115A0@@QAEPAXE@Z",
      "name": "Obj_004115A0::Destroy",
      "rtti": [
@@ -569,7 +569,7 @@
      "n_insns": 24,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/function_static_r20.cpp",
+     "tu": "match/function_static_r20.cpp",
      "sym": "?FUN_0041CB70@@YGPAUCellPairStatic_00889F20@@H@Z",
      "name": "FUN_0041CB70",
      "rtti": [
@@ -677,7 +677,7 @@
      "n_insns": 12,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/static_vector_dtor_stubs.cpp",
+     "tu": "match/static_vector_dtor_stubs.cpp",
      "sym": "_$E4",
      "name": "dynamic initializer (static vector, fused atexit)"
     },
@@ -875,7 +875,7 @@
      "n_insns": 9,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/global_reset_leaf_methods.cpp",
+     "tu": "match/global_reset_leaf_methods.cpp",
      "sym": "?FUN_00753540@@YIXXZ",
      "name": "FUN_00753540"
     },
@@ -904,7 +904,7 @@
      "n_insns": 9,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/w2_vector_r13.cpp",
+     "tu": "match/w2_vector_r13.cpp",
      "sym": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ",
      "name": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ"
     },
@@ -933,7 +933,7 @@
      "n_insns": 2,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/abstract_class_dtor.cpp",
+     "tu": "match/abstract_class_dtor.cpp",
      "sym": "?QueryInterface@AbstractClass@@W3AGJABU_GUID@@PAPAX@Z",
      "name": "AbstractClass::QueryInterface (IRTTITypeInfo adjustor)",
      "rtti": [
@@ -988,7 +988,7 @@
      "n_insns": 10,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/leaf_sweep_r12_w1.cpp",
+     "tu": "match/leaf_sweep_r12_w1.cpp",
      "sym": "?Forward@Fwd_00417CA0@@QAEHHHHH@Z",
      "name": "Forward",
      "rtti": [
@@ -1023,7 +1023,7 @@
      "n_insns": 6,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/header_init_0040adc0.cpp",
+     "tu": "match/header_init_0040adc0.cpp",
      "sym": "_$E4",
      "name": "dynamic initializer (DAT_0087E8A8)"
     },
@@ -1052,7 +1052,7 @@
      "n_insns": 1,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/trivial_tu155_methods.cpp",
+     "tu": "match/trivial_tu155_methods.cpp",
      "sym": "?FUN_005D58A0@@YAXXZ",
      "name": "FUN_005D58A0"
     },
@@ -2247,7 +2247,7 @@
      "n_insns": 11,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/deleting_dtor_methods.cpp",
+     "tu": "match/deleting_dtor_methods.cpp",
      "sym": "?FUN_0040E4A0@Obj_0040E400@@QAEPAXI@Z",
      "name": "FUN_0040E4A0",
      "rtti": [
@@ -2393,7 +2393,7 @@
      "n_insns": 48,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/leaf_sweep_r12a.cpp",
+     "tu": "match/leaf_sweep_r12a.cpp",
      "sym": "?FUN_0074E8A0@@YIXPAUVein_0074E8A0@@@Z",
      "name": "FUN_0074E8A0"
     },
@@ -2629,7 +2629,7 @@
      "n_insns": 67,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/hash_table_rehash_sweep.cpp",
+     "tu": "match/hash_table_rehash_sweep.cpp",
      "sym": "?Grow@?$HashTable@UNode_005EF010@@@@QAEXXZ",
      "name": "HashTable<Node_005EF010>::Grow"
     },
@@ -2716,7 +2716,7 @@
      "n_insns": 40,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/AbsType.cpp",
+     "tu": "match/AbsType.cpp",
      "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
      "name": "AbstractTypeClass scalar deleting destructor",
      "rtti": [
@@ -2780,7 +2780,7 @@
      "n_insns": 34,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/AbsType.cpp",
+     "tu": "match/AbsType.cpp",
      "sym": "??1AbstractTypeClass@@UAE@XZ",
      "name": "AbstractTypeClass::~AbstractTypeClass"
     },
@@ -2844,7 +2844,7 @@
      "n_insns": 46,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/tu189_radio_class.cpp",
+     "tu": "match/tu189_radio_class.cpp",
      "sym": "?Save@RadioClass@@UAGJPAUIStream@@H@Z",
      "name": "RadioClass::Save",
      "rtti": [
@@ -2908,7 +2908,7 @@
      "n_insns": 12,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/leaf_sweep_r13_w1.cpp",
+     "tu": "match/leaf_sweep_r13_w1.cpp",
      "sym": "?Destroy@Obj_004115A0@@QAEPAXE@Z",
      "name": "Obj_004115A0::Destroy",
      "rtti": [
@@ -2961,7 +2961,7 @@
      "n_insns": 24,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/function_static_r20.cpp",
+     "tu": "match/function_static_r20.cpp",
      "sym": "?FUN_0041CB70@@YGPAUCellPairStatic_00889F20@@H@Z",
      "name": "FUN_0041CB70",
      "rtti": [
@@ -3033,7 +3033,7 @@
      "n_insns": 21,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/static_vector_member_dtor_stubs_a.cpp",
+     "tu": "match/static_vector_member_dtor_stubs_a.cpp",
      "sym": "_$E3",
      "name": "DynamicVectorClass<AlphaLightingRemapClass*> guarded exit destructor stub (DAT_0088A080)"
     },
@@ -3062,7 +3062,7 @@
      "n_insns": 16,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/leaf_sweep_w1c.cpp",
+     "tu": "match/leaf_sweep_w1c.cpp",
      "sym": "??0Obj_00523980@@QAE@H@Z",
      "name": "Obj_00523980"
     },
@@ -3135,7 +3135,7 @@
      "n_insns": 2,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/abstract_class_dtor.cpp",
+     "tu": "match/abstract_class_dtor.cpp",
      "sym": "?QueryInterface@AbstractClass@@W3AGJABU_GUID@@PAPAX@Z",
      "name": "AbstractClass::QueryInterface (IRTTITypeInfo adjustor)",
      "rtti": [
@@ -3217,7 +3217,7 @@
      "n_insns": 12,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/static_vector_dtor_stubs.cpp",
+     "tu": "match/static_vector_dtor_stubs.cpp",
      "sym": "_$E4",
      "name": "dynamic initializer (static vector, fused atexit)"
     },
@@ -3380,7 +3380,7 @@
      "n_insns": 15,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+     "tu": "match/multi_vtable_dtor_family_methods.cpp",
      "sym": "??1ComRel_004AF5E0@@UAE@XZ",
      "name": "ComRel_004AF5E0::dtor"
     },
@@ -3444,7 +3444,7 @@
      "n_insns": 9,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/core/global_reset_leaf_methods.cpp",
+     "tu": "match/global_reset_leaf_methods.cpp",
      "sym": "?FUN_00753540@@YIXXZ",
      "name": "FUN_00753540"
     },
@@ -3473,7 +3473,7 @@
      "n_insns": 9,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/w2_vector_r13.cpp",
+     "tu": "match/w2_vector_r13.cpp",
      "sym": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ",
      "name": "??_F?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@QAEXXZ"
     },
@@ -3502,7 +3502,7 @@
      "n_insns": 10,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/leaf_sweep_r12_w1.cpp",
+     "tu": "match/leaf_sweep_r12_w1.cpp",
      "sym": "?Forward@Fwd_00417CA0@@QAEHHHHH@Z",
      "name": "Forward",
      "rtti": [
@@ -3537,7 +3537,7 @@
      "n_insns": 6,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/header_init_0040adc0.cpp",
+     "tu": "match/header_init_0040adc0.cpp",
      "sym": "_$E4",
      "name": "dynamic initializer (DAT_0087E8A8)"
     },
@@ -3566,7 +3566,7 @@
      "n_insns": 1,
      "status": "matched",
      "pct": 100,
-     "tu": "match/core/trivial_tu155_methods.cpp",
+     "tu": "match/trivial_tu155_methods.cpp",
      "sym": "?FUN_005D58A0@@YAXXZ",
      "name": "FUN_005D58A0"
     },

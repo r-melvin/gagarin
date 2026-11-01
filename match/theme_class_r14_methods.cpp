@@ -11,7 +11,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 #include "_layout/theme_class.h"
 #include "theme_class_ai_methods.h"
 #include "theme_class_queue_methods.h"

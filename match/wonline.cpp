@@ -11,13 +11,13 @@
 #include <windows.h>
 #include "_layout/session_class.h"
 #include <math.h>
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 #undef LocalHandle
 #include <stdio.h>
 #include <string.h>
 #include "wonline.h"
-#include "core/header_init_shapes.h"
-#include "core/hash_table_view.h"
+#include "header_init_shapes.h"
+#include "hash_table_view.h"
 #include "_layout/theme_class.h"
 #include "input_manager_class_methods.h"
 #include "ui_begin_dialog_methods.h"
@@ -123,7 +123,7 @@ const double DAT_007F7510 = 60.0;
 #include <windows.h>
 #undef LocalHandle
 #include "netshare_slot_nodes.h"
-#include "core/base_ctor_vtable_seat_sweep.h"
+#include "base_ctor_vtable_seat_sweep.h"
 
 #include <stddef.h>
 #include <string.h>
@@ -241,9 +241,9 @@ bool ChainedHashTable<Key, Value>::Remove(const Key& key, Value* value)
     return found;
 }
 
-#include "core/const_store_leaf_sweep.h"
+#include "const_store_leaf_sweep.h"
 
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
@@ -258,7 +258,7 @@ extern "C" void __cdecl gg_free(void*);
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 struct tConnInfoStruct;
 
@@ -341,7 +341,7 @@ extern char DAT_00B77F78;
 extern char DAT_0084E7C0;
 extern char DAT_0084E7C4;
 
-#include "core/grow_list.h"
+#include "grow_list.h"
 #include "_rt/gg_static_assert.h"
 
 // The two plain record element types (copied with REP MOVSD).
@@ -354,7 +354,7 @@ struct GrowListRecord10C
     int unknown_00[0x43];
 };
 
-#include "core/hash_bucket_mask_sweep.h"
+#include "hash_bucket_mask_sweep.h"
 
 #include <stddef.h>
 #include <string.h>
@@ -374,9 +374,9 @@ extern "C" void __cdecl gg_free(void*);
 
 #include "_layout/obj_007af000.h"
 
-#include "core/seat_vtable_tail_dtor_sweep.h"
+#include "seat_vtable_tail_dtor_sweep.h"
 
-#include "core/trivial_tu288_methods.h"
+#include "trivial_tu288_methods.h"
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
@@ -515,7 +515,7 @@ static inline void ThemeUpdate_0077D7A0(bool start)
 // "D:\ra2mdpost\wonline.cpp"). The body is the shared template of
 // core/hash_table_rehash_sweep.h; only the chain-link displacement differs.
 
-#include "core/hash_table_rehash_sweep.h"
+#include "hash_table_rehash_sweep.h"
 
 // Chain link at +0x110 (a 0x10C-byte value after the key word).
 GG_REHASH_NODE(007AEC00, 110);
@@ -885,9 +885,9 @@ struct Obj_00793CD0
     void FUN_00793CD0();
 };
 
-#include "core/vector_class.h"
-#include "core/vector_class_operations.h"
-#include "core/vector_add_item_free.h"
+#include "vector_class.h"
+#include "vector_class_operations.h"
+#include "vector_add_item_free.h"
 
 // GLOBAL: GAMEMD 0xA8DA74 -- the lobby's node vector (DynamicVectorClass<NodeNameType*>, vtable 0x7EE370).
 extern DynamicVectorClass<NodeNameType*> DAT_00A8DA74;
@@ -1253,7 +1253,7 @@ extern bool DAT_00A8ED9C;
 #include "_layout/map_0087f7e8.h"
 
 // GLOBAL: GAMEMD 0xA8B230
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 

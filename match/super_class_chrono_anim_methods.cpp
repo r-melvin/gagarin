@@ -21,7 +21,7 @@
 // as. It is the shape of the inlined append: written as a member of the
 // vector the body scores 95.7%, written as a free inline function taking the
 // vector as its first pointer parameter the same body scores 100%. Same lever
-// as 0x41D300 in match/core/registered_object_ctor_methods.cpp, found there
+// as 0x41D300 in match/registered_object_ctor_methods.cpp, found there
 // first and confirmed here on the first try.
 //
 // Coord phrasings tried in earlier passes (all with the member spelling):

@@ -11,8 +11,8 @@
 #include "_layout/ipx_address_class.h"
 #include "winsock_interface_class.h"
 #include "ipx_interface_class.h"
-#include "core/randomizer.h"
-#include "core/global_getter_family_methods.h"
+#include "randomizer.h"
+#include "global_getter_family_methods.h"
 
 // GLOBAL: GAMEMD 0xB7801C -- set after malformed packet discard.
 extern unsigned char DAT_00B7801C;

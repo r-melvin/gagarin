@@ -25,7 +25,7 @@
 //     (synthetic), BeginPiggyback 0x4B63B0, EndPiggyback 0x4B6400, IsOkToEnd
 //     0x4B6440, PiggybackCLSID 0x4B64E0, IsPiggybacking 0x4B66C0.
 //   Constructor 0x4B5AB0. The ordinary destructor body 0x4B5B00 stays scored
-//   by ComRel_004B5B00 in match/core/multi_vtable_dtor_family_methods.cpp: an
+//   by ComRel_004B5B00 in match/multi_vtable_dtor_family_methods.cpp: an
 //   out-of-line empty destructor here matches 0x4B5B00 but shrinks the deleting
 //   wrapper 0x4B66F0 from 0x41 to 0x20 bytes, so this source keeps the inline
 //   form and claims only the wrapper.
@@ -46,7 +46,7 @@ extern "C" const CLSID CLSID_DropPodLocomotion =
 // LIBRARY: OLE32!OleLoadFromStream / OleSaveToStream, IAT 0x7E15F8 / 0x7E15F4
 // (declared by <ole2.h>).
 
-#include "core/coordinate_storage_008a0820.h"
+#include "coordinate_storage_008a0820.h"
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B5AB0
 DropPodLocomotionClass::DropPodLocomotionClass()

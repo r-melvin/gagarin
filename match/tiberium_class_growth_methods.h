@@ -29,11 +29,11 @@ struct Cell_007235A0
 GG_STATIC_ASSERT(sizeof(Cell_007235A0) == 0x4);
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance (pointer).
-#include "core/scenario_class_methods.h"
+#include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;
 
 // CellClass — only the overlay data byte is read.

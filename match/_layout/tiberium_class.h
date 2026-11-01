@@ -10,8 +10,8 @@
 #include "cell.h"
 #include "frame_timer.h"
 #include "obj_004a1d30.h"
-#include "../core/vector_class.h"
-#include "../core/type_list.h"
+#include "../vector_class.h"
+#include "../type_list.h"
 class AnimTypeClass;
 // 8-byte queue entry: a cell and its float priority.
 struct TiberiumQueueNode

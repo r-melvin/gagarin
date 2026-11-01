@@ -17,7 +17,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/building_class.h"
 #include "_layout/voc_class.h"
-#include "core/rules_class.h"
+#include "rules_class.h"
 
 
 #endif  // GG_MATCH_COMBAT_BUILDING_CLASS_CLEAR_BUNKER_METHODS_H

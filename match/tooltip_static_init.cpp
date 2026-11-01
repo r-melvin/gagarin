@@ -7,7 +7,7 @@
 //   range 0x723A90-0x7250BF of retail gamemd.exe v1.001. Each is a four-word
 //   global whose constructor stores zero to every word.
 
-#include "core/mathtbl_init_shapes.h"
+#include "mathtbl_init_shapes.h"
 
 // SYNTHETIC: GAMEMD 0x723E40
 // GLOBAL: GAMEMD 0xB0F598

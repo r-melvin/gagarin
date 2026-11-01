@@ -4,7 +4,7 @@
 
 #include "_layout/ebolt_class.h"
 #include "_layout/unit_class.h"
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 void __cdecl operator delete(void*);
 

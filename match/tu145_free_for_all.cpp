@@ -20,7 +20,7 @@
 // FUNCTION: GAMEMD 0x623840 (decl; reloc) -- empty a combo box.
 int FUN_00623840(HWND hWnd);
 
-#include "core/header_init_shapes.h"
+#include "header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0xABF4C0
 extern double DAT_00ABF4C0;

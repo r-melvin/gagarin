@@ -20,7 +20,7 @@
 //   out-of-line _$E thunk behind a jump).
 
 #include <new.h>
-#include "core/vector_add_item_free.h"
+#include "vector_add_item_free.h"
 #include "smudge_class.h"
 #include "smudge_type_class.h"
 #include "_layout/obj_004a1d30.h"
@@ -35,7 +35,7 @@ extern MapObjCoord SmudgeOriginCoord;
 extern "C" const CLSID CLSID_SmudgeType =
     { 0x5AF2CE78, 0x0634, 0x11D2, { 0xAC, 0xA4, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5 } };
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT string compare (cdecl, two pointers).
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);

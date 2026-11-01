@@ -2,7 +2,7 @@
  {
   "addr": "0x401EF0",
   "name": "Mgr_00401B00::FUN_00401EF0",
-  "tu": "match/core/r24_1_drain_walkers.cpp",
+  "tu": "match/r24_1_drain_walkers.cpp",
   "sym": "?FUN_00401EF0@Mgr_00401B00@@QAEHXZ",
   "len": "0x8b",
   "manifest_pct": 94.3,
@@ -23,7 +23,7 @@
  {
   "addr": "0x402860",
   "name": "FUN_00402860",
-  "tu": "match/core/floored_decrement_methods.cpp",
+  "tu": "match/floored_decrement_methods.cpp",
   "sym": "?FUN_00402860@@YIXPAUOwner_00402860@@PAUMember_00402860@@@Z",
   "len": "0x4b",
   "manifest_pct": 89.5,
@@ -44,7 +44,7 @@
  {
   "addr": "0x402AF0",
   "name": "FUN_00402AF0",
-  "tu": "match/core/hooked_node_create_methods.cpp",
+  "tu": "match/hooked_node_create_methods.cpp",
   "sym": "?FUN_00402AF0@@YIPAUNode_00402AF0@@PAUOwner_00402AF0@@@Z",
   "len": "0x8e",
   "manifest_pct": 96.5,
@@ -65,7 +65,7 @@
  {
   "addr": "0x403530",
   "name": "FUN_00403530",
-  "tu": "match/core/floored_decrement_methods.cpp",
+  "tu": "match/floored_decrement_methods.cpp",
   "sym": "?FUN_00403530@@YIHPAUPool_00402860@@H@Z",
   "len": "0x76",
   "manifest_pct": 86.8,
@@ -87,7 +87,7 @@
  {
   "addr": "0x404dd0",
   "name": "FUN_00404DD0",
-  "tu": "match/core/small_misc45_methods.cpp",
+  "tu": "match/small_misc45_methods.cpp",
   "sym": "?FUN_00404DD0@@YIXPAUObj_00404DD0@@@Z",
   "len": "0x49",
   "manifest_pct": 91.3,
@@ -108,7 +108,7 @@
  {
   "addr": "0x4050C0",
   "name": "FUN_004050C0",
-  "tu": "match/core/timer_ring_release_004050c0.cpp",
+  "tu": "match/timer_ring_release_004050c0.cpp",
   "sym": "?FUN_004050C0@@YAXXZ",
   "len": "0x65",
   "manifest_pct": 87.5,
@@ -129,7 +129,7 @@
  {
   "addr": "0x406B10",
   "name": "FUN_00406B10",
-  "tu": "match/core/module_tu002.cpp",
+  "tu": "match/module_tu002.cpp",
   "sym": "?FUN_00406B10@@YIHH@Z",
   "len": "0x222",
   "manifest_pct": 98.4,
@@ -150,7 +150,7 @@
  {
   "addr": "0x407550",
   "name": "FUN_00407550",
-  "tu": "match/core/module_tu002.cpp",
+  "tu": "match/module_tu002.cpp",
   "sym": "?FUN_00407550@@YIHXZ",
   "len": "0x12e",
   "manifest_pct": 88.0,
@@ -171,7 +171,7 @@
  {
   "addr": "0x408270",
   "name": "FUN_00408270",
-  "tu": "match/core/tick_all_workers_methods.cpp",
+  "tu": "match/tick_all_workers_methods.cpp",
   "sym": "?FUN_00408270@@YIXXZ",
   "len": "0x7b",
   "manifest_pct": 93.0,
@@ -193,7 +193,7 @@
  {
   "addr": "0x40A670",
   "name": "FUN_0040A670",
-  "tu": "match/core/module_tu002.cpp",
+  "tu": "match/module_tu002.cpp",
   "sym": "?FUN_0040A670@Voice_0040A6D0@@QAEHXZ",
   "len": "0x24",
   "manifest_pct": 86.7,
@@ -215,7 +215,7 @@
  {
   "addr": "0x40A6A0",
   "name": "FUN_0040A6A0",
-  "tu": "match/core/module_tu002.cpp",
+  "tu": "match/module_tu002.cpp",
   "sym": "?FUN_0040A6A0@Voice_0040A6D0@@QAEHXZ",
   "len": "0x2a",
   "manifest_pct": 89.5,
@@ -280,7 +280,7 @@
  {
   "addr": "0x412550",
   "name": "FUN_00412550",
-  "tu": "match/core/audio_stream_slot_methods.cpp",
+  "tu": "match/audio_stream_slot_methods.cpp",
   "sym": "?FUN_00412550@@YAXXZ",
   "len": "0x43",
   "manifest_pct": 88.2,
@@ -301,7 +301,7 @@
  {
   "addr": "0x4125A0",
   "name": "FUN_004125a0",
-  "tu": "match/core/audio_stream_slot_methods.cpp",
+  "tu": "match/audio_stream_slot_methods.cpp",
   "sym": "?FUN_004125a0@@YAXXZ",
   "len": "0x49",
   "manifest_pct": 80.0,
@@ -344,7 +344,7 @@
  {
   "addr": "0x41c2e0",
   "name": "Vector_0041C2E0::FUN_0041C2E0",
-  "tu": "match/core/angle_from_points_methods.cpp",
+  "tu": "match/angle_from_points_methods.cpp",
   "sym": "?FUN_0041C2E0@Vector_0041C2E0@@QAE?AUAngle16_0041C2E0@@XZ",
   "len": "0x63",
   "manifest_pct": 88.6,
@@ -388,7 +388,7 @@
  {
   "addr": "0x42EAD0",
   "name": "Obj_0042EAD0::FindByKey",
-  "tu": "match/core/leaf_sweep_r13_w1.cpp",
+  "tu": "match/leaf_sweep_r13_w1.cpp",
   "sym": "?FindByKey@Obj_0042EAD0@@QAEPAURec_0042EAD0@@PBUKey_0042EAD0@@@Z",
   "len": "0x48",
   "manifest_pct": 94.3,
@@ -412,7 +412,7 @@
  {
   "addr": "0x430590",
   "name": "Obj_00430590::FUN_00430590",
-  "tu": "match/core/leaf_sweep_r16_w1.cpp",
+  "tu": "match/leaf_sweep_r16_w1.cpp",
   "sym": "?FUN_00430590@Obj_00430590@@QAEXHHHH@Z",
   "len": "0x4e",
   "manifest_pct": 84.6,
@@ -479,7 +479,7 @@
  {
   "addr": "0x436DA0",
   "name": "BuildingLightClass::FUN_00436DA0",
-  "tu": "match/core/r24_1_building_light_methods.cpp",
+  "tu": "match/r24_1_building_light_methods.cpp",
   "sym": "?FUN_00436DA0@BuildingLightClass@@QAEHXZ",
   "len": "0xdd",
   "manifest_pct": 82.1,
@@ -503,7 +503,7 @@
  {
   "addr": "0x436E80",
   "name": "BuildingLightClass::FUN_00436E80",
-  "tu": "match/core/r24_1_building_light_methods.cpp",
+  "tu": "match/r24_1_building_light_methods.cpp",
   "sym": "?FUN_00436E80@BuildingLightClass@@QAEHXZ",
   "len": "0xbd",
   "manifest_pct": 90.4,
@@ -632,7 +632,7 @@
  {
   "addr": "0x44EF80",
   "name": "Lookup",
-  "tu": "match/core/leaf_sweep_r12_w1.cpp",
+  "tu": "match/leaf_sweep_r12_w1.cpp",
   "sym": "?Lookup@Owner_0044EF80@@QAEHPAUTarget_0044EF80@@H@Z",
   "len": "0x2e",
   "manifest_pct": 80,
@@ -865,7 +865,7 @@
  {
   "addr": "0x4734B0",
   "name": "PassengersClass::RemovePassenger",
-  "tu": "match/core/techno_class.cpp",
+  "tu": "match/techno_class.cpp",
   "sym": "?RemovePassenger@PassengersClass@@QAEXPAVFootView_00473460@@@Z",
   "len": "0x4a",
   "manifest_pct": 97.1,
@@ -1038,7 +1038,7 @@
  {
   "addr": "0x4A0010",
   "name": "EnumConnectionsClass::Release",
-  "tu": "match/core/enum_connections_clone.cpp",
+  "tu": "match/enum_connections_clone.cpp",
   "sym": "?Release@EnumConnectionsClass@@UAGKXZ",
   "len": "0x9D",
   "manifest_pct": 93.1,
@@ -1059,7 +1059,7 @@
  {
   "addr": "0x4A00B0",
   "name": "EnumConnectionsClass::Next",
-  "tu": "match/core/enum_connections_next_methods.cpp",
+  "tu": "match/enum_connections_next_methods.cpp",
   "sym": "?Next@EnumConnectionsClass@@UAGJKPAUtagCONNECTDATA@@PAK@Z",
   "len": "0xA6",
   "manifest_pct": 95.4,
@@ -1080,7 +1080,7 @@
  {
   "addr": "0x4A0190",
   "name": "EnumConnectionsClass::Clone",
-  "tu": "match/core/enum_connections_clone.cpp",
+  "tu": "match/enum_connections_clone.cpp",
   "sym": "?Clone@EnumConnectionsClass@@UAGJPAPAUIEnumConnections@@@Z",
   "len": "0x116",
   "manifest_pct": 95.1,
@@ -1101,7 +1101,7 @@
  {
   "addr": "0x4A02B0",
   "name": "EnumConnectionsClass::EnumConnectionsClass(vector)",
-  "tu": "match/core/enum_connections_clone.cpp",
+  "tu": "match/enum_connections_clone.cpp",
   "sym": "??0EnumConnectionsClass@@QAE@ABV?$DynamicVectorClass@UtagCONNECTDATA@@@@@Z",
   "len": "0xC2",
   "manifest_pct": 91.9,
@@ -1122,7 +1122,7 @@
  {
   "addr": "0x4A0380",
   "name": "EnumConnectionsClass::EnumConnectionsClass(copy)",
-  "tu": "match/core/enum_connections_clone.cpp",
+  "tu": "match/enum_connections_clone.cpp",
   "sym": "??0EnumConnectionsClass@@QAE@ABV0@@Z",
   "len": "0xD0",
   "manifest_pct": 93.5,
@@ -1143,7 +1143,7 @@
  {
   "addr": "0x4A0450",
   "name": "EnumConnectionsClass::~EnumConnectionsClass",
-  "tu": "match/core/enum_connections_clone.cpp",
+  "tu": "match/enum_connections_clone.cpp",
   "sym": "??1EnumConnectionsClass@@QAE@XZ",
   "len": "0x5d",
   "manifest_pct": 94.9,
@@ -1164,7 +1164,7 @@
  {
   "addr": "0x4A08D0",
   "name": "ConnectionPointClass::~ConnectionPointClass",
-  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "tu": "match/connection_point_lifetime_methods.cpp",
   "sym": "??1ConnectionPointClass@@QAE@XZ",
   "len": "0x47",
   "manifest_pct": 100.0,
@@ -1180,7 +1180,7 @@
  {
   "addr": "0x4A09B0",
   "name": "EnumConnectionPointsClass::Release",
-  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "tu": "match/connection_point_lifetime_methods.cpp",
   "sym": "?Release@EnumConnectionPointsClass@@UAGKXZ",
   "len": "0x9d",
   "manifest_pct": 93.1,
@@ -1201,7 +1201,7 @@
  {
   "addr": "0x4A0A50",
   "name": "EnumConnectionPointsClass::Next",
-  "tu": "match/core/enum_connections_next_methods.cpp",
+  "tu": "match/enum_connections_next_methods.cpp",
   "sym": "?Next@EnumConnectionPointsClass@@UAGJKPAPAUIConnectionPoint@@PAK@Z",
   "len": "0x9F",
   "manifest_pct": 95.2,
@@ -1222,7 +1222,7 @@
  {
   "addr": "0x4A0B20",
   "name": "EnumConnectionPointsClass::Clone",
-  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "tu": "match/enum_connection_points_clone_methods.cpp",
   "sym": "?Clone@EnumConnectionPointsClass@@UAGJPAPAUIEnumConnectionPoints@@@Z",
   "len": "0xFC",
   "manifest_pct": 95.7,
@@ -1243,7 +1243,7 @@
  {
   "addr": "0x4A0C20",
   "name": "EnumConnectionPointsClass::EnumConnectionPointsClass",
-  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "tu": "match/enum_connection_points_clone_methods.cpp",
   "sym": "??0EnumConnectionPointsClass@@QAE@ABV?$DynamicVectorClass@PAUIConnectionPoint@@@@@Z",
   "len": "0xB8",
   "manifest_pct": 94.4,
@@ -1264,7 +1264,7 @@
  {
   "addr": "0x4A0CE0",
   "name": "EnumConnectionPointsClass::EnumConnectionPointsClass",
-  "tu": "match/core/enum_connection_points_clone_methods.cpp",
+  "tu": "match/enum_connection_points_clone_methods.cpp",
   "sym": "??0EnumConnectionPointsClass@@QAE@ABV0@@Z",
   "len": "0xC2",
   "manifest_pct": 94.5,
@@ -1285,7 +1285,7 @@
  {
   "addr": "0x4A0DB0",
   "name": "EnumConnectionPointsClass::~EnumConnectionPointsClass",
-  "tu": "match/core/connection_point_lifetime_methods.cpp",
+  "tu": "match/connection_point_lifetime_methods.cpp",
   "sym": "??1EnumConnectionPointsClass@@QAE@XZ",
   "len": "0x5d",
   "manifest_pct": 94.9,
@@ -1306,7 +1306,7 @@
  {
   "addr": "0x4A1FF0",
   "name": "FUN_004A1FF0",
-  "tu": "match/core/crc_pad_methods.cpp",
+  "tu": "match/crc_pad_methods.cpp",
   "sym": "?FUN_004A1FF0@@YIIPBDI@Z",
   "len": "0x33",
   "manifest_pct": 90.0,
@@ -1957,7 +1957,7 @@
  {
   "addr": "0x544E00",
   "name": "Obj_00544E00::FUN_00544E00",
-  "tu": "match/core/small_misc_w1_methods.cpp",
+  "tu": "match/small_misc_w1_methods.cpp",
   "sym": "?FUN_00544E00@Obj_00544E00@@QAEPAU1@H@Z",
   "len": "0x2c",
   "manifest_pct": 89.5,
@@ -2097,7 +2097,7 @@
  {
   "addr": "0x55C350",
   "name": "LZOPipe::FUN_00631D10",
-  "tu": "match/core/lzo_pipe_put.cpp",
+  "tu": "match/lzo_pipe_put.cpp",
   "sym": "?FUN_00631D10@LZOPipe@@UAEHHH@Z",
   "len": "0x28B",
   "manifest_pct": 99.1,
@@ -2119,7 +2119,7 @@
  {
   "addr": "0x55C5E0",
   "name": "LZOPipe::FUN_00631D30",
-  "tu": "match/core/lzo_pipe_put.cpp",
+  "tu": "match/lzo_pipe_put.cpp",
   "sym": "?FUN_00631D30@LZOPipe@@UAEHXZ",
   "len": "0xe9",
   "manifest_pct": 100.0,
@@ -3000,7 +3000,7 @@
  {
   "addr": "0x5F4EC0",
   "name": "ObjectClass::vf_54",
-  "tu": "match/core/object_class_slots_5f4d30.cpp",
+  "tu": "match/object_class_slots_5f4d30.cpp",
   "sym": "?vf_54@ObjectClass@@UAE_NABUCoordStruct@@H@Z",
   "len": "0x36f",
   "manifest_pct": 83.4,
@@ -3024,7 +3024,7 @@
  {
   "addr": "0x5F6360",
   "name": "AbstractClass::DistanceFrom3D",
-  "tu": "match/core/tu165_object_class.cpp",
+  "tu": "match/tu165_object_class.cpp",
   "sym": "?DistanceFrom3D@Obj_005F6360@@QAEHPAU1@@Z",
   "len": "0xd5",
   "manifest_pct": 92.9,
@@ -3047,7 +3047,7 @@
  {
   "addr": "0x5F7900",
   "name": "ObjectTypeClass::vf_37",
-  "tu": "match/core/object_type_class_factory_query.cpp",
+  "tu": "match/object_type_class_factory_query.cpp",
   "sym": "?vf_37@ObjectTypeClass@@UAEPAX_N00PAX@Z",
   "len": "0x18C",
   "manifest_pct": 92.5,
@@ -3090,7 +3090,7 @@
  {
   "addr": "0x620870",
   "name": "FUN_00620870",
-  "tu": "match/core/w2_leaf_r14.cpp",
+  "tu": "match/w2_leaf_r14.cpp",
   "sym": "?FUN_00620870@@YIIG@Z",
   "len": "0x79",
   "manifest_pct": 84.4,
@@ -3111,7 +3111,7 @@
  {
   "addr": "0x631300",
   "name": "Dialog: remember selected list entry and copy its text into the edit control",
-  "tu": "match/core/w2_leaf_r16.cpp",
+  "tu": "match/w2_leaf_r16.cpp",
   "sym": "?FUN_00631300@Dlg_00631300@@QAEXXZ",
   "len": "0x7f",
   "manifest_pct": 98.0,
@@ -3133,7 +3133,7 @@
  {
   "addr": "0x632050",
   "name": "FUN_00632050",
-  "tu": "match/core/pk_key_generate_methods.cpp",
+  "tu": "match/pk_key_generate_methods.cpp",
   "sym": "?FUN_00632050@@YIXPAVStraw@@HPAVPKey_00632740@@1@Z",
   "len": "0x6EB",
   "manifest_pct": 89.8,
@@ -3163,7 +3163,7 @@
  {
   "addr": "0x632DC0",
   "name": "PKPipe::FUN_00631D10",
-  "tu": "match/core/pk_pipe_straw_io_methods.cpp",
+  "tu": "match/pk_pipe_straw_io_methods.cpp",
   "sym": "?FUN_00631D10@PKPipe@@UAEHHH@Z",
   "len": "0x168",
   "manifest_pct": 88.3,
@@ -3382,7 +3382,7 @@
  {
   "addr": "0x658910",
   "name": "Obj_00658910::FUN_00658910",
-  "tu": "match/core/w2_leaf_r13.cpp",
+  "tu": "match/w2_leaf_r13.cpp",
   "sym": "?FUN_00658910@Obj_00658910@@QBE_NPBU1@@Z",
   "len": "0x5c",
   "manifest_pct": 91.1,
@@ -3406,7 +3406,7 @@
  {
   "addr": "0x65A970",
   "name": "RadioClass::vf_159",
-  "tu": "match/core/tu189_radio_class.cpp",
+  "tu": "match/tu189_radio_class.cpp",
   "sym": "?vf_159@RadioClass@@UAEHHPAXPAV1@@Z",
   "len": "0x105",
   "manifest_pct": 89.3,
@@ -3476,7 +3476,7 @@
  {
   "addr": "0x664D20",
   "name": "RulesClass::RulesClass(AbstractNoInit)",
-  "tu": "match/core/rules_class_construct_methods.cpp",
+  "tu": "match/rules_class_construct_methods.cpp",
   "sym": "??0RulesClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x92a",
   "manifest_pct": 95.1,
@@ -3503,7 +3503,7 @@
  {
   "addr": "0x665650",
   "name": "RulesClass::RulesClass",
-  "tu": "match/core/rules_class_ctor_665650.cpp",
+  "tu": "match/rules_class_ctor_665650.cpp",
   "sym": "??0RulesClass@@QAE@XZ",
   "len": "0x23d7",
   "manifest_pct": 99.8,
@@ -3525,7 +3525,7 @@
  {
   "addr": "0x66BBB0",
   "name": "RulesClass::Read_CombatDamage",
-  "tu": "match/core/rules_class_combat_damage_methods.cpp",
+  "tu": "match/rules_class_combat_damage_methods.cpp",
   "sym": "?Read_CombatDamage@RulesClass@@QAE_NPAVCCINIClass@@@Z",
   "len": "0x13B5",
   "manifest_pct": 92.2,
@@ -3549,7 +3549,7 @@
  {
   "addr": "0x66D480",
   "name": "RulesClass::Read_ColorAdd",
-  "tu": "match/core/rules_class_color_add_methods.cpp",
+  "tu": "match/rules_class_color_add_methods.cpp",
   "sym": "?Read_ColorAdd@RulesClass@@QAE_NPAVCCINIClass@@@Z",
   "len": "0xaa",
   "manifest_pct": 81.8,
@@ -3573,7 +3573,7 @@
  {
   "addr": "0x682640",
   "name": "FUN_00682640",
-  "tu": "match/core/storage_name_stream_methods.cpp",
+  "tu": "match/storage_name_stream_methods.cpp",
   "sym": "?FUN_00682640@@YGJPAUIStorage@@HPBD@Z",
   "len": "0x137",
   "manifest_pct": 94.6,
@@ -3595,7 +3595,7 @@
  {
   "addr": "0x682780",
   "name": "FUN_00682780",
-  "tu": "match/core/storage_name_stream_methods.cpp",
+  "tu": "match/storage_name_stream_methods.cpp",
   "sym": "?FUN_00682780@@YGJPAUIStorage@@HPBG@Z",
   "len": "0xf8",
   "manifest_pct": 98.1,
@@ -3617,7 +3617,7 @@
  {
   "addr": "0x682880",
   "name": "FUN_00682880",
-  "tu": "match/core/storage_name_stream_methods.cpp",
+  "tu": "match/storage_name_stream_methods.cpp",
   "sym": "?FUN_00682880@@YGJPAUIPropertySetStorage@@HPBD@Z",
   "len": "0x11f",
   "manifest_pct": 92.6,
@@ -3639,7 +3639,7 @@
  {
   "addr": "0x689310",
   "name": "ScenarioClass::FUN_00689310",
-  "tu": "match/core/Scenario.cpp",
+  "tu": "match/Scenario.cpp",
   "sym": "?FUN_00689310@ScenarioClass@@QAEXPAUGg_IStream@@@Z",
   "len": "0x153",
   "manifest_pct": 88.6,
@@ -3671,7 +3671,7 @@
  {
   "addr": "0x689D30",
   "name": "ScenarioClass::ReadStartPoints",
-  "tu": "match/core/Scenario.cpp",
+  "tu": "match/Scenario.cpp",
   "sym": "?ReadStartPoints@Scenario_00689D30@@QAE_NPAUCCINI_00689D30@@@Z",
   "len": "0x15c",
   "manifest_pct": 94.0,
@@ -3695,7 +3695,7 @@
  {
   "addr": "0x68C3B0",
   "name": "?FUN_0068C3B0@@YIPAXPBXPAUPaletteClass@@1PAX2HHHHPBE@Z",
-  "tu": "match/core/Scenario.cpp",
+  "tu": "match/Scenario.cpp",
   "sym": "?FUN_0068C3B0@@YIPAXPBXPAUPaletteClass@@1PAX2HHHHPBE@Z",
   "len": "0x14b",
   "manifest_pct": 87.6,
@@ -3717,7 +3717,7 @@
  {
   "addr": "0x696590",
   "name": "Dialog: fill the four-entry list control and select the matching entry",
-  "tu": "match/core/w2_leaf_r16.cpp",
+  "tu": "match/w2_leaf_r16.cpp",
   "sym": "?FUN_00696590@Dlg_006966D0@@QAEXXZ",
   "len": "0x74",
   "manifest_pct": 87.8,
@@ -3850,7 +3850,7 @@
  {
   "addr": "0x69E900",
   "name": "Obj_0069E430 frame bit 1",
-  "tu": "match/core/obj_0069e430.cpp",
+  "tu": "match/obj_0069e430.cpp",
   "sym": "?FUN_0069E900@Obj_0069E430@@QAE_NI@Z",
   "len": "0x30",
   "manifest_pct": 88.2,
@@ -3896,7 +3896,7 @@
  {
   "addr": "0x6A4780",
   "name": "SideClass::Load",
-  "tu": "match/core/w2_side_class_r13.cpp",
+  "tu": "match/w2_side_class_r13.cpp",
   "sym": "?Load@SideClass@@UAGJPAUIStream@@@Z",
   "len": "0x111",
   "manifest_pct": 88.0,
@@ -4138,7 +4138,7 @@
  {
   "addr": "0x6B8AF0",
   "name": "Packed_006B8AF0::FUN_006B8AF0",
-  "tu": "match/core/leaf_sweep_r14_w3.cpp",
+  "tu": "match/leaf_sweep_r14_w3.cpp",
   "sym": "?FUN_006B8AF0@Packed_006B8AF0@@QBE_NPBU1@@Z",
   "len": "0x1F",
   "manifest_pct": 91.7,
@@ -4720,7 +4720,7 @@
  {
   "addr": "0x74BEE0",
   "name": "FillBuf_0074BEE0::ClearZero",
-  "tu": "match/core/leaf_r17_w3.cpp",
+  "tu": "match/leaf_r17_w3.cpp",
   "sym": "?ClearZero@FillBuf_0074BEE0@@QAEXXZ",
   "len": "0x26",
   "manifest_pct": 87.5,
@@ -4741,7 +4741,7 @@
  {
   "addr": "0x74BF10",
   "name": "FillBuf_0074BEE0::ClearOnes",
-  "tu": "match/core/leaf_r17_w3.cpp",
+  "tu": "match/leaf_r17_w3.cpp",
   "sym": "?ClearOnes@FillBuf_0074BEE0@@QAEXXZ",
   "len": "0x23",
   "manifest_pct": 87.5,
@@ -4805,7 +4805,7 @@
  {
   "addr": "0x751040",
   "name": "FUN_00751040",
-  "tu": "match/core/unowned_leaf_sweep_c.cpp",
+  "tu": "match/unowned_leaf_sweep_c.cpp",
   "sym": "?FUN_00751040@@YIXXZ",
   "len": "0x3a",
   "manifest_pct": 81.8,
@@ -4827,7 +4827,7 @@
  {
   "addr": "0x756BB0",
   "name": "VoxelModel::FUN_00756bb0",
-  "tu": "match/core/voxel_model_span_methods.cpp",
+  "tu": "match/voxel_model_span_methods.cpp",
   "sym": "?FUN_00756bb0@VoxelModel@@QAEXXZ",
   "len": "0x21E",
   "manifest_pct": 98.7,
@@ -4849,7 +4849,7 @@
  {
   "addr": "0x758670",
   "name": "FUN_00758670",
-  "tu": "match/core/r24_4_shade_table.cpp",
+  "tu": "match/r24_4_shade_table.cpp",
   "sym": "?FUN_00758670@@YIXABUNormal_r24@@H@Z",
   "len": "0x78",
   "manifest_pct": 95.2,
@@ -4877,7 +4877,7 @@
  {
   "addr": "0x75EBE0",
   "name": "WaveClass::WaveClass",
-  "tu": "match/core/wave_class_dtor_methods.cpp",
+  "tu": "match/wave_class_dtor_methods.cpp",
   "sym": "??0WaveClass@@QAE@XZ",
   "len": "0x14c",
   "manifest_pct": 81.7,
@@ -5231,7 +5231,7 @@
  {
   "addr": "0x7B53B0",
   "name": "Wstring::Copy_Padded",
-  "tu": "match/core/string_class_methods.cpp",
+  "tu": "match/string_class_methods.cpp",
   "sym": "?Copy_Padded@Wstring@@QBEXPADI@Z",
   "len": "0x50",
   "manifest_pct": 88.9,
@@ -5253,7 +5253,7 @@
  {
   "addr": "0x7B6E20",
   "name": "Obj_007B66D0::FUN_007B6E20",
-  "tu": "match/core/wide_string_class.cpp",
+  "tu": "match/wide_string_class.cpp",
   "sym": "?FUN_007B6E20@Obj_007B66D0@@QAE_NG@Z",
   "len": "0x9d",
   "manifest_pct": 98.6,
@@ -5275,7 +5275,7 @@
  {
   "addr": "0x7B6F40",
   "name": "Obj_007B66D0::FUN_007B6F40",
-  "tu": "match/core/wide_string_class.cpp",
+  "tu": "match/wide_string_class.cpp",
   "sym": "?FUN_007B6F40@Obj_007B66D0@@QAEXPBV1@@Z",
   "len": "0xf6",
   "manifest_pct": 97.9,
@@ -5296,7 +5296,7 @@
  {
   "addr": "0x7B7180",
   "name": "Obj_007B66D0::FUN_007B7180",
-  "tu": "match/core/wide_string_class.cpp",
+  "tu": "match/wide_string_class.cpp",
   "sym": "?FUN_007B7180@Obj_007B66D0@@QBEGI@Z",
   "len": "0x26",
   "manifest_pct": 93.8,

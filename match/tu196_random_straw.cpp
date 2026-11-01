@@ -56,7 +56,7 @@
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class RadarEventClass;
 
@@ -194,7 +194,7 @@ struct ZeroRunCodec_00661530
     int Decode(const unsigned char* source, unsigned char* dest, int length);
 };
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 struct Item_0065FD50;
 // GLOBAL: GAMEMD 0xB04DA8 -- the registry.
@@ -246,7 +246,7 @@ extern ColorRGB_00661350 DAT_00A83CD9;
 
 #include "_layout/rgb_class.h"
 
-#include "core/vector_class_operations.h"
+#include "vector_class_operations.h"
 
 class AnimClass;
 class IonBlastClass;

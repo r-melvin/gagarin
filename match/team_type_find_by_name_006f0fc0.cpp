@@ -3,7 +3,7 @@
 // Retail 0x6F0FC0, read instruction by instruction from gamemd.exe v1.001: scans the TeamType
 // array (items at 0xA8ECA4, count at 0xA8ECB0) for a case-insensitive match on the ID (+0x24)
 // or the name (+0x64).
-#include "core/type_find_or_allocate_family_methods.h"
+#include "type_find_or_allocate_family_methods.h"
 
 // FUNCTION: GAMEMD 0x6F0FC0
 // Returns the team type whose ID or name equals the text, or null.

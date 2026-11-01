@@ -7,8 +7,8 @@
 //   0x6B2430  FUN_006B2430  append one undo record
 //   0x6B24A0  FUN_006B24A0  replay the list newest-first and empty it
 
-#include "core/vector_class_operations.h"
-#include "core/undo_info_struct.h"
+#include "vector_class_operations.h"
+#include "undo_info_struct.h"
 
 // GLOBAL: GAMEMD 0xB0B650
 extern DynamicVectorClass<UndoInfoStruct> DAT_00B0B650;

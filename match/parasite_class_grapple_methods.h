@@ -19,7 +19,7 @@
 #include "_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-#include "core/frame_counter.h"
+#include "frame_counter.h"
 
 // A frame-clocked countdown (YRpp CDTimerClass). The clock slot at +0x04 is
 // never written by the constructor, which is exactly what retail shows: the

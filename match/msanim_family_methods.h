@@ -59,7 +59,7 @@
 //
 // The clock at +0x14 is a member object, not a pointer: retail takes its
 // address with LEA and calls 0x6C8C40 (the same GetTime the game timer at
-// 0xB0BD2C uses, already modelled in match/core/game_timing_methods.h).
+// 0xB0BD2C uses, already modelled in match/game_timing_methods.h).
 // The three dwords at +0x10..+0x18 are one twelve-byte timer: the print
 // animation's constructor builds a fresh one at 0x5CD5E9 and assigns it in
 // whole, and cl's elimination of the temporary's own two stores against that
@@ -72,7 +72,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/ms_anim.h"
-#include "core/string_class.h"
+#include "string_class.h"
 
 // MSVC6 has no native `wchar_t`; the CRT headers typedef it and this
 // translation unit is standalone, so it declares the same typedef itself.

@@ -8,8 +8,8 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "core/string_class.h"
-#include "core/vector_class.h"
+#include "string_class.h"
+#include "vector_class.h"
 #include "wdt_rc_ptr.h"
 #include "_layout/geometry2d.h"
 

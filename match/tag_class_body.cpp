@@ -11,8 +11,8 @@
 #include "FUNCTION.H"
 #include "locomotion_load_support.h"
 #include "tag_class_destroy_methods.h"
-#include "core/abstract_registry.h"
-#include "core/header_tuning_globals.h"
+#include "abstract_registry.h"
+#include "header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -36,7 +36,7 @@ TuningCoordInit DAT_00B0E760(128, 128, 0);
 // GLOBAL: GAMEMD 0xA8E9A0
 extern bool DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0xA8ED5C
-#include "core/game_state_flags.h"
+#include "game_state_flags.h"
 // GLOBAL: GAMEMD 0xA8ED6B
 extern bool DAT_00A8ED6B;
 // GLOBAL: GAMEMD 0xB0E700 -- the "no cell" value (defined in tag_class_array.cpp).

@@ -19,17 +19,17 @@
 //
 // The seven vtable-seating base destructors, ordered ascending by address.
 //
-#include "core/deleting_dtor_sweep.h"
+#include "deleting_dtor_sweep.h"
 #include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 
-#include "core/leftover_trivial_leaf_sweep.h"
+#include "leftover_trivial_leaf_sweep.h"
 
 
-#include "core/seat_vtable_tail_dtor_sweep.h"
+#include "seat_vtable_tail_dtor_sweep.h"
 
-#include "core/trivial_tu278_methods.h"
+#include "trivial_tu278_methods.h"
 
 #include "_layout/wdt_selection.h"
 #include "_layout/ini_class.h"
@@ -50,7 +50,7 @@ class GameOption;
 class Territory;
 }
 
-#include "core/vector_cursor.h"
+#include "vector_cursor.h"
 #include "_layout/map_stage_list.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
