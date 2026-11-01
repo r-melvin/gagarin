@@ -5,6 +5,7 @@
 #define GG_MATCH_SCREEN_RESOURCE_GLOBALS_H
 
 #include "screen_palette_mgr_methods.h"
+#include "screen_wholefile_block_globals.h"   // DAT_00B0FAD0, DAT_00B0FB10, DAT_00B0FB30, DAT_00B0FB48
 
 // GLOBAL: GAMEMD 0x844B9C
 extern const char* DAT_00844B9C;
@@ -442,8 +443,6 @@ extern WholeFileBlock* DAT_00B0FAC0;
 extern WholeFileBlock* DAT_00B0FAC4;
 // GLOBAL: GAMEMD 0xB0FACC
 extern WholeFileBlock* DAT_00B0FACC;
-// GLOBAL: GAMEMD 0xB0FAD0
-extern WholeFileBlock* DAT_00B0FAD0;
 // GLOBAL: GAMEMD 0xB0FAE8
 extern WholeFileBlock* DAT_00B0FAE8;
 // GLOBAL: GAMEMD 0xB0FAF8
@@ -452,16 +451,10 @@ extern WholeFileBlock* DAT_00B0FAF8;
 extern WholeFileBlock* DAT_00B0FB00;
 // GLOBAL: GAMEMD 0xB0FB0C
 extern WholeFileBlock* DAT_00B0FB0C;
-// GLOBAL: GAMEMD 0xB0FB10
-extern WholeFileBlock* DAT_00B0FB10;
 // GLOBAL: GAMEMD 0xB0FB2C
 extern WholeFileBlock* DAT_00B0FB2C;
-// GLOBAL: GAMEMD 0xB0FB30
-extern WholeFileBlock* DAT_00B0FB30;
 // GLOBAL: GAMEMD 0xB0FB34
 extern WholeFileBlock* DAT_00B0FB34;
-// GLOBAL: GAMEMD 0xB0FB48
-extern WholeFileBlock* DAT_00B0FB48;
 // GLOBAL: GAMEMD 0xB0FB50
 extern WholeFileBlock* DAT_00B0FB50;
 // GLOBAL: GAMEMD 0xB0FB54
