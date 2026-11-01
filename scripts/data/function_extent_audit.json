@@ -743,7 +743,7 @@
     },
     {
       "address": "0x00721210",
-      "source": "match/audio/theme_class_find_methods.cpp",
+      "source": "match/theme_class_find_methods.cpp",
       "symbol": "?FindIndex@ThemeClass@@QBEHPBD@Z",
       "old_size": 81,
       "corrected_size": 83,

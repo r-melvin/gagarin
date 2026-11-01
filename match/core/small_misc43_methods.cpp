@@ -3,7 +3,7 @@
 //   Bytes compared against retail gamemd.exe v1.001 at each annotated address below.
 
 #include "small_misc43_methods.h"
-#include "../audio/audio_time_methods.h"
+#include "../audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x4053E0
 // REGISTER-PRESSURE DELTA (status partial, 18.2%). With an ordinary state

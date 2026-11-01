@@ -9,7 +9,7 @@
 #include <string.h>
 #include "../_layout/rules_class.h"
 #include "../platform/ccini_class_methods.h"
-#include "../audio/voc_class_methods.h"
+#include "../voc_class_methods.h"
 #include "../_layout/warhead_type_class.h"
 
 void* MapObjLoadShape(const char* path, bool flag);   // GAMEMD 0x5B40B0

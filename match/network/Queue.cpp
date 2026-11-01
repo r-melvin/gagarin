@@ -60,7 +60,7 @@ extern void* DAT_00B77F60;
 #include "../_layout/tactical.h"
 #include "../_layout/rules_class.h"
 #include "../ui/message_list_class_methods.h"
-#include "../audio/voc_class_play_global_methods.h"
+#include "../voc_class_play_global_methods.h"
 #include "../wwlib/surface/surface_class.h"
 #include "../renderer/pixel_shift_view.h"
 #include "../_layout/com_0048d080.h"

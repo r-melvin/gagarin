@@ -586,7 +586,7 @@ extern double DAT_00AC1B40;
 #include "../core/global_getter_family_methods.h"
 #include "../core/trivial_tu181_methods.h"
 #include "ownrdraw_dialog_control.h"
-#include "../audio/voc_class_play_global_methods.h"
+#include "../voc_class_play_global_methods.h"
 
 // The probe every function here opens with, expanded inline. Same shape as
 // the one proven at 0x602B90: the inner `n ? &n->Value : 0` guard is the first

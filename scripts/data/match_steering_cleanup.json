@@ -69,7 +69,7 @@
   },
   {
    "addr": "0x406270",
-   "tu": "match/audio/audio_pan_methods.cpp",
+   "tu": "match/audio_pan_methods.cpp",
    "removed": "volatile read of the event type",
    "previous_status": "matched",
    "previous_pct": 100,

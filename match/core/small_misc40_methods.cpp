@@ -4,7 +4,7 @@
 
 #include "small_misc40_methods.h"
 #include "triple_timer_init_methods.h"
-#include "../audio/audio_time_methods.h"
+#include "../audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x403820
 void FUN_00403820(Obj_00403820* self)

@@ -36,7 +36,7 @@
 #include "../_layout/team_class.h"
 #include "../_layout/team_type_class.h"
 #include "../_layout/techno_type_class.h"
-#include "../audio/vox_class_play_methods.h"
+#include "../vox_class_play_methods.h"
 #include "loco_com.h"
 #include "../_layout/aircraft_tracker_class.h"
 #include "../_layout/coord_struct.h"

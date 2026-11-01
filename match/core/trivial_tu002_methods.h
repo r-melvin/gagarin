@@ -11,7 +11,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "intrusive_list_methods.h"
 #include "tail_call_methods.h"
-#include "../audio/audio_sample_methods.h"
+#include "../audio_sample_methods.h"
 
 struct Gbl_0087E8A8;
 struct Obj_00407060;

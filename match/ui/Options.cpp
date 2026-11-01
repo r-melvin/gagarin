@@ -295,7 +295,7 @@ extern char STR_00832FC4[];
 extern RulesClass* DAT_008871E0;
 
 // VocClass::PlayGlobal 0x750920, called with a sound index, pan and volume.
-#include "../audio/voc_class_play_global_methods.h"
+#include "../voc_class_play_global_methods.h"
 
 // FUNCTION: GAMEMD 0x5FA4A0
 // Clamp and store the score volume, push it to the score channel and the jukebox, log it.

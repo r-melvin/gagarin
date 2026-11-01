@@ -1064,7 +1064,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/audio.cpp",
+  "tu": "match/audio.cpp",
   "addr": "0x4015C0",
   "sym": "?FindSampleIndex@AudioIDXData@@SIHPBU1@PBD@Z",
   "len": "0x37",
@@ -1073,7 +1073,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/audio.cpp",
+  "tu": "match/audio.cpp",
   "addr": "0x401910",
   "sym": "?ClearCurrentSample@AudioIDXData@@QAEXXZ",
   "len": "0x29",
@@ -1082,7 +1082,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/audio.cpp",
+  "tu": "match/audio.cpp",
   "addr": "0x4060F0",
   "sym": "?SetEvent@AudioController@@SIXPAU1@PAUAudioEvent@@PAUAudioEventType@@@Z",
   "len": "0x34",
@@ -1091,7 +1091,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/audio.cpp",
+  "tu": "match/audio.cpp",
   "addr": "0x406130",
   "sym": "?GetEvent@AudioController@@QAEPAUAudioEvent@@XZ",
   "len": "0x39",
@@ -1100,7 +1100,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/audio.cpp",
+  "tu": "match/audio.cpp",
   "addr": "0x406170",
   "sym": "?GetEventType@AudioController@@QAEPAUAudioEventType@@XZ",
   "len": "0x19",
@@ -1109,7 +1109,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/audio.cpp",
+  "tu": "match/audio.cpp",
   "addr": "0x406310",
   "sym": "?GetEventType@AudioEvent@@QAEPAUAudioEventType@@XZ",
   "len": "0x4",
@@ -1118,7 +1118,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/audio_end_looping_methods.cpp",
+  "tu": "match/audio_end_looping_methods.cpp",
   "addr": "0x406060",
   "sym": "?EndLooping@AudioController@@QAEXXZ",
   "len": "0x8e",
@@ -1127,7 +1127,7 @@
   "pct": 35.2
  },
  {
-  "tu": "match/audio/audio_idx_data_destroy_methods.cpp",
+  "tu": "match/audio_idx_data_destroy_methods.cpp",
   "addr": "0x401580",
   "sym": "?FUN_00401580@AudioIDXData@@QAEXXZ",
   "len": "0x3d",
@@ -1136,7 +1136,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/audio_pan_methods.cpp",
+  "tu": "match/audio_pan_methods.cpp",
   "addr": "0x406270",
   "sym": "?AdjustAudioEventPanning@AudioEvent@@QAIXI@Z",
   "len": "0x48",
@@ -1145,7 +1145,7 @@
   "pct": 0.0
  },
  {
-  "tu": "match/audio/audio_sample_methods.cpp",
+  "tu": "match/audio_sample_methods.cpp",
   "addr": "0x401640",
   "sym": "?GetSampleInformation@AudioIDXData@@QBIPAUAudioSampleData@@HPAU2@@Z",
   "len": "0x61",
@@ -1154,7 +1154,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/audio_stop_methods.cpp",
+  "tu": "match/audio_stop_methods.cpp",
   "addr": "0x405D40",
   "sym": "?Stop@AudioController@@QAEXXZ",
   "len": "0x138",
@@ -1163,7 +1163,7 @@
   "pct": 64.2
  },
  {
-  "tu": "match/audio/audio_time_methods.cpp",
+  "tu": "match/audio_time_methods.cpp",
   "addr": "0x4093B0",
   "sym": "?Unsorted_AudioGetTime@@YI_JXZ",
   "len": "0x10",
@@ -1172,7 +1172,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/audio_time_methods.cpp",
+  "tu": "match/audio_time_methods.cpp",
   "addr": "0x4093C0",
   "sym": "?FUN_004093C0@@YI_JXZ",
   "len": "0x2f",
@@ -1182,7 +1182,7 @@
   "note": "Game-owned QPC reader. Full native entry span and all four relocation targets verified; scalar frequency/callback storage widths and zero-fill/runtime initialization confirmed. Candidate status must pass verify_all before delivery."
  },
  {
-  "tu": "match/audio/dsound_access_methods.cpp",
+  "tu": "match/dsound_access_methods.cpp",
   "addr": "0x409FF0",
   "sym": "?FUN_00409FF0@@YAXXZ",
   "len": "0x94",
@@ -1192,7 +1192,7 @@
   "note": "volatile removed from DAT_0087E878 (no thread evidence). Retail reloads the count after the clamp; cl reuses EAX and adds one jmp, shifting the positional score."
  },
  {
-  "tu": "match/audio/dsound_access_methods.cpp",
+  "tu": "match/dsound_access_methods.cpp",
   "addr": "0x40A770",
   "sym": "?FUN_0040A770@@YAHXZ",
   "len": "0x6",
@@ -1201,7 +1201,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/dsound_access_methods.cpp",
+  "tu": "match/dsound_access_methods.cpp",
   "addr": "0x40A780",
   "sym": "?FUN_0040A780@@YAHXZ",
   "len": "0xe",
@@ -1210,7 +1210,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/dsound_access_methods.cpp",
+  "tu": "match/dsound_access_methods.cpp",
   "addr": "0x40A790",
   "sym": "?FUN_0040A790@@YAHXZ",
   "len": "0xe",
@@ -1219,7 +1219,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/dsound_access_methods.cpp",
+  "tu": "match/dsound_access_methods.cpp",
   "addr": "0x40A7B0",
   "sym": "?FUN_0040A7B0@@YAPAUSoundBuffer_0040A7B0@@XZ",
   "len": "0x6",
@@ -1228,7 +1228,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/obj_00406500_setter_methods.cpp",
+  "tu": "match/obj_00406500_setter_methods.cpp",
   "addr": "0x406520",
   "sym": "?FUN_00406520@AudioEventType@@QAIXH@Z",
   "len": "0x7",
@@ -1237,7 +1237,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/obj_00406500_setter_methods.cpp",
+  "tu": "match/obj_00406500_setter_methods.cpp",
   "addr": "0x406530",
   "sym": "?FUN_00406530@AudioEventType@@QAIXH@Z",
   "len": "0x7",
@@ -1246,7 +1246,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/obj_00406500_setter_methods.cpp",
+  "tu": "match/obj_00406500_setter_methods.cpp",
   "addr": "0x406540",
   "sym": "?FUN_00406540@AudioEventType@@QAIXH@Z",
   "len": "0x4",
@@ -1255,7 +1255,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/obj_00406500_setter_methods.cpp",
+  "tu": "match/obj_00406500_setter_methods.cpp",
   "addr": "0x4065C0",
   "sym": "?FUN_004065C0@AudioEventType@@QAIXH@Z",
   "len": "0x4",
@@ -1264,7 +1264,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/obj_00406500_setter_methods.cpp",
+  "tu": "match/obj_00406500_setter_methods.cpp",
   "addr": "0x4065D0",
   "sym": "?FUN_004065D0@AudioEventType@@QAIXH@Z",
   "len": "0x4",
@@ -1273,7 +1273,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/obj_00406500_setter_methods.cpp",
+  "tu": "match/obj_00406500_setter_methods.cpp",
   "addr": "0x4065E0",
   "sym": "?FUN_004065E0@AudioEventType@@QAIXH@Z",
   "len": "0x4",
@@ -1282,7 +1282,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/obj_00406500_setter_methods.cpp",
+  "tu": "match/obj_00406500_setter_methods.cpp",
   "addr": "0x406640",
   "sym": "?FUN_00406640@AudioEventType@@QAIXH@Z",
   "len": "0x4",
@@ -1291,7 +1291,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/pan_and_pitch_methods.cpp",
+  "tu": "match/pan_and_pitch_methods.cpp",
   "addr": "0x40A6D0",
   "sym": "?FUN_0040A6D0@Voice_0040A6D0@@QAEHXZ",
   "len": "0x99",
@@ -1300,7 +1300,7 @@
   "pct": 96.4
  },
  {
-  "tu": "match/audio/sample_registry_methods.cpp",
+  "tu": "match/sample_registry_methods.cpp",
   "addr": "0x405FD0",
   "sym": "?FUN_00405FD0@@YIXPAUHandle_00405FD0@@@Z",
   "len": "0x83",
@@ -1309,7 +1309,7 @@
   "pct": 34.0
  },
  {
-  "tu": "match/audio/sample_registry_methods.cpp",
+  "tu": "match/sample_registry_methods.cpp",
   "addr": "0x4064A0",
   "sym": "?FUN_004064A0@AudioEventType@@QAIHPBD@Z",
   "len": "0x7f",
@@ -1318,7 +1318,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/streamer_thread_flush_methods.cpp",
+  "tu": "match/streamer_thread_flush_methods.cpp",
   "addr": "0x53E6B0",
   "sym": "?FUN_0053E6B0@@YAXXZ",
   "len": "0x6c",
@@ -1327,7 +1327,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x7209D0",
   "sym": "?AI@ThemeClass@@QAEXXZ",
   "len": "0xad",
@@ -1336,7 +1336,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_find_methods.cpp",
+  "tu": "match/theme_class_find_methods.cpp",
   "addr": "0x721210",
   "sym": "?FindIndex@ThemeClass@@QBEHPBD@Z",
   "len": "0x53",
@@ -1345,7 +1345,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_methods.cpp",
+  "tu": "match/theme_class_methods.cpp",
   "addr": "0x720940",
   "sym": "?GetName@ThemeClass@@QBEPBDI@Z",
   "len": "0x1C",
@@ -1354,7 +1354,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_methods.cpp",
+  "tu": "match/theme_class_methods.cpp",
   "addr": "0x7209B0",
   "sym": "?GetUIName@ThemeClass@@QBEPBGI@Z",
   "len": "0x1E",
@@ -1363,7 +1363,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_methods.cpp",
+  "tu": "match/theme_class_methods.cpp",
   "addr": "0x720E50",
   "sym": "?GetLength@ThemeClass@@QBEHI@Z",
   "len": "0x24",
@@ -1372,7 +1372,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_methods.cpp",
+  "tu": "match/theme_class_methods.cpp",
   "addr": "0x721270",
   "sym": "?GetID@ThemeClass@@QBEPBDH@Z",
   "len": "0x1E",
@@ -1381,7 +1381,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720B20",
   "sym": "?QueueSong@ThemeClass@@QAEXH@Z",
   "len": "0x86",
@@ -1390,7 +1390,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x721140",
   "sym": "?IsAvailable@ThemeClass@@QBE_NH@Z",
   "len": "0x93",
@@ -1399,7 +1399,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720A80",
   "sym": "?GetRandomIndex@ThemeClass@@QAEHH@Z",
   "len": "0xa0",
@@ -1408,7 +1408,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x7207F0",
   "sym": "?Scan@ThemeClass@@QAEXXZ",
   "len": "0x149",
@@ -1417,7 +1417,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720EA0",
   "sym": "?Stop@ThemeClass@@QAEX_N@Z",
   "len": "0xC3",
@@ -1426,7 +1426,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/track_gate_methods.cpp",
+  "tu": "match/track_gate_methods.cpp",
   "addr": "0x405AC0",
   "sym": "?FUN_00405AC0@@YIHPAUOwner_00405AC0@@@Z",
   "len": "0x84",
@@ -1435,7 +1435,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/voc_class_methods.cpp",
+  "tu": "match/voc_class_methods.cpp",
   "addr": "0x7514D0",
   "sym": "?FindIndex@VocClass@@SIHPBD@Z",
   "len": "0x50",
@@ -1444,7 +1444,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/voc_class_play_at_methods.cpp",
+  "tu": "match/voc_class_play_at_methods.cpp",
   "addr": "0x7509E0",
   "sym": "?PlayAt@VocClass@@SIPAUAudioEvent@@HPAUCoordStruct@@PAUAudioController@@@Z",
   "len": "0xdc",
@@ -1453,7 +1453,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/voc_class_play_global_methods.cpp",
+  "tu": "match/voc_class_play_global_methods.cpp",
   "addr": "0x750920",
   "sym": "?PlayGlobal@VocClass@@SIPAUAudioEvent@@HMIPAUAudioController@@@Z",
   "len": "0xBA",
@@ -1462,7 +1462,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/vox_class_methods.cpp",
+  "tu": "match/vox_class_methods.cpp",
   "addr": "0x752700",
   "sym": "?Play@VoxClass@@SIXPBDHH@Z",
   "len": "0x5f",
@@ -1471,7 +1471,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/vox_class_methods.cpp",
+  "tu": "match/vox_class_methods.cpp",
   "addr": "0x752A40",
   "sym": "?SilenceIndex@VoxClass@@SIXH@Z",
   "len": "0x6b",
@@ -1480,7 +1480,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/vox_class_play_index_methods.cpp",
+  "tu": "match/vox_class_play_index_methods.cpp",
   "addr": "0x752480",
   "sym": "?PlayIndex@VoxClass@@SIXHHH@Z",
   "len": "0x104",
@@ -1489,7 +1489,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/vox_class_play_methods.cpp",
+  "tu": "match/vox_class_play_methods.cpp",
   "addr": "0x750E20",
   "sym": "?PlayAtPos@VocClass@@SIPAUAudioEvent@@HPAUCoordStruct@@H@Z",
   "len": "0x98",
@@ -1498,7 +1498,7 @@
   "pct": 91.4
  },
  {
-  "tu": "match/audio/vox_class_play_methods.cpp",
+  "tu": "match/vox_class_play_methods.cpp",
   "addr": "0x7531A0",
   "sym": "?DeleteAll@VoxClass@@SIXXZ",
   "len": "0xa2",
@@ -3093,7 +3093,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/format_store_methods.cpp",
+  "tu": "match/format_store_methods.cpp",
   "addr": "0x402800",
   "sym": "?FUN_00402800@Voice_0040A6D0@@QAIHPBUAudioSampleData@@@Z",
   "len": "0x48",
@@ -28338,7 +28338,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/primary_sound_buffer_format.cpp",
+  "tu": "match/primary_sound_buffer_format.cpp",
   "addr": "0x40A7C0",
   "sym": "?FUN_0040A7C0@@YIXHHH@Z",
   "len": "0x85",
@@ -28347,7 +28347,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/primary_sound_buffer_format.cpp",
+  "tu": "match/primary_sound_buffer_format.cpp",
   "addr": "0x40A850",
   "sym": "?FUN_0040A850@@YIXXZ",
   "len": "0xab",
@@ -50563,7 +50563,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/audio_stream_forward_methods.cpp",
+  "tu": "match/audio_stream_forward_methods.cpp",
   "addr": "0x752CA0",
   "sym": "?FUN_00752CA0@@YIXXZ",
   "len": "0x10",
@@ -50572,7 +50572,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/audio_stream_forward_methods.cpp",
+  "tu": "match/audio_stream_forward_methods.cpp",
   "addr": "0x753500",
   "sym": "?FUN_00753500@@YIXXZ",
   "len": "0x10",
@@ -140434,7 +140434,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720E80",
   "sym": "?FadeStream@ThemeClass@@QAEXXZ",
   "len": "0x15",
@@ -140443,7 +140443,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720F70",
   "sym": "?Suspend@ThemeClass@@QAEXXZ",
   "len": "0x55",
@@ -140452,7 +140452,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720FD0",
   "sym": "?FUN_00720FD0@ThemeClass@@QAE_NXZ",
   "len": "0x36",
@@ -140461,7 +140461,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x721010",
   "sym": "?SaveIndexes@ThemeClass@@QAEJPAUThemeSaveStream_00721010@@@Z",
   "len": "0x2D",
@@ -140569,7 +140569,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/voc_vox_r14_methods.cpp",
+  "tu": "match/voc_vox_r14_methods.cpp",
   "addr": "0x7515C0",
   "sym": "?FUN_007515C0@@YIHPAX@Z",
   "len": "0x24",
@@ -140578,7 +140578,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/voc_vox_r14_methods.cpp",
+  "tu": "match/voc_vox_r14_methods.cpp",
   "addr": "0x752340",
   "sym": "?FUN_00752340@@YIXXZ",
   "len": "0x2A",
@@ -140587,7 +140587,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/voc_vox_r14_methods.cpp",
+  "tu": "match/voc_vox_r14_methods.cpp",
   "addr": "0x7529A0",
   "sym": "?FUN_007529A0@@YIX_N@Z",
   "len": "0x37",
@@ -140596,7 +140596,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/voc_vox_r14_methods.cpp",
+  "tu": "match/voc_vox_r14_methods.cpp",
   "addr": "0x752B40",
   "sym": "?FUN_00752B40@@YIXXZ",
   "len": "0x25",
@@ -140605,7 +140605,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/voc_vox_r14_methods.cpp",
+  "tu": "match/voc_vox_r14_methods.cpp",
   "addr": "0x7532A0",
   "sym": "?FUN_007532A0@@YI_NH@Z",
   "len": "0x21",
@@ -144358,7 +144358,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/voc_vox_r21_4_methods.cpp",
+  "tu": "match/voc_vox_r21_4_methods.cpp",
   "addr": "0x750F40",
   "sym": "?FUN_00750F40@@YIXPBUSampleKey_r21_4@@I@Z",
   "len": "0x52",
@@ -144367,7 +144367,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/voc_class_methods.cpp",
+  "tu": "match/voc_class_methods.cpp",
   "addr": "0x750FA0",
   "sym": "?FUN_00750FA0@@YIXXZ",
   "len": "0x4d",
@@ -144394,7 +144394,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/streamer_open_methods.cpp",
+  "tu": "match/streamer_open_methods.cpp",
   "addr": "0x53E4F0",
   "sym": "?FUN_0053E4F0@@YIHPBD@Z",
   "len": "0x5f",
@@ -144403,7 +144403,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/streamer_open_methods.cpp",
+  "tu": "match/streamer_open_methods.cpp",
   "addr": "0x53E550",
   "sym": "?FUN_0053E550@@YIHPBD@Z",
   "len": "0x9b",
@@ -144412,7 +144412,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/streamer_open_methods.cpp",
+  "tu": "match/streamer_open_methods.cpp",
   "addr": "0x53E5F0",
   "sym": "?FUN_0053E5F0@@YAXXZ",
   "len": "0xb5",
@@ -145726,7 +145726,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720960",
   "sym": "??0ThemeClass@@QAE@XZ",
   "len": "0x41",
@@ -145735,7 +145735,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/theme_class_r14_methods.cpp",
+  "tu": "match/theme_class_r14_methods.cpp",
   "addr": "0x720770",
   "sym": "?Clear@ThemeClass@@QAEXXZ",
   "len": "0x71",
@@ -145933,7 +145933,7 @@
   "pct": 100
  },
  {
-  "tu": "match/audio/r26_2_vox_live_node_752680.cpp",
+  "tu": "match/r26_2_vox_live_node_752680.cpp",
   "addr": "0x752680",
   "sym": "?GetActiveVoice@VoxClass@@QAEPAUVoxNode@@XZ",
   "len": "0x7e",
@@ -145942,7 +145942,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/r26_2_vox_busy_7529e0.cpp",
+  "tu": "match/r26_2_vox_busy_7529e0.cpp",
   "addr": "0x7529E0",
   "sym": "?FUN_007529E0@@YIHXZ",
   "len": "0x56",
@@ -146918,7 +146918,7 @@
   "pct": 99.7
  },
  {
-  "tu": "match/audio/voc_class_ini_750440.cpp",
+  "tu": "match/voc_class_ini_750440.cpp",
   "addr": "0x750440",
   "sym": "?ReadINI@VocClass@@QAE_NPAVCCINIClass@@@Z",
   "len": "0x4DE",
@@ -147674,7 +147674,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/audio_event_create_methods.cpp",
+  "tu": "match/audio_event_create_methods.cpp",
   "addr": "0x405190",
   "sym": "?FUN_00405190@AudioEventType@@QAEPAUAudioEvent@@XZ",
   "len": "0x143",
@@ -147683,7 +147683,7 @@
   "pct": 86.6
  },
  {
-  "tu": "match/audio/audio_event_create_methods.cpp",
+  "tu": "match/audio_event_create_methods.cpp",
   "addr": "0x4063B0",
   "sym": "?FUN_004063B0@AudioEventType@@SIPAU1@PBD@Z",
   "len": "0xe2",
@@ -147692,7 +147692,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/voc_class_methods.cpp",
+  "tu": "match/voc_class_methods.cpp",
   "addr": "0x750380",
   "sym": "??0VocClass@@QAE@PBD@Z",
   "len": "0x6d",
@@ -147701,7 +147701,7 @@
   "pct": 88.2
  },
  {
-  "tu": "match/audio/voc_class_methods.cpp",
+  "tu": "match/voc_class_methods.cpp",
   "addr": "0x750AC0",
   "sym": "?GetPositionalVolume@VocClass@@SIMPAUCoordStruct@@PAHPAUAudioEventType@@@Z",
   "len": "0x27a",
@@ -147710,7 +147710,7 @@
   "pct": 99.0
  },
  {
-  "tu": "match/audio/voc_class_methods.cpp",
+  "tu": "match/voc_class_methods.cpp",
   "addr": "0x7510D0",
   "sym": "?ReadAll@VocClass@@SIXPAVCCINIClass@@@Z",
   "len": "0x317",
@@ -147719,7 +147719,7 @@
   "pct": 99.1
  },
  {
-  "tu": "match/audio/voc_class_methods.cpp",
+  "tu": "match/voc_class_methods.cpp",
   "addr": "0x7513F0",
   "sym": "?DeleteAll@VocClass@@SIXXZ",
   "len": "0xdc",
@@ -147728,7 +147728,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "tu": "match/vox_class_queue_methods.cpp",
   "addr": "0x752370",
   "sym": "?ClearQueues@VoxClass@@SIXXZ",
   "len": "0xed",
@@ -147737,7 +147737,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "tu": "match/vox_class_queue_methods.cpp",
   "addr": "0x752590",
   "sym": "?Enqueue@VoxClass@@SIXPAV1@HH@Z",
   "len": "0xe3",
@@ -147746,7 +147746,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "tu": "match/vox_class_queue_methods.cpp",
   "addr": "0x752DB0",
   "sym": "?ReadINI@VoxClass@@QAE_NPAVCCINIClass@@@Z",
   "len": "0x248",
@@ -147755,7 +147755,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "tu": "match/vox_class_queue_methods.cpp",
   "addr": "0x753000",
   "sym": "?ReadAll@VoxClass@@SIXPAVCCINIClass@@@Z",
   "len": "0x1a0",
@@ -147764,7 +147764,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/audio/vox_class_queue_methods.cpp",
+  "tu": "match/vox_class_queue_methods.cpp",
   "addr": "0x7533F0",
   "sym": "?Load@VoxClass@@SIJPAUIStream@@@Z",
   "len": "0xe5",

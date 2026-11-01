@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 #include "triple_timer_init_methods.h"
-#include "../audio/audio_time_methods.h"
+#include "../audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x407150
 unsigned FUN_00407150(Timer_00401000* timer, int value)

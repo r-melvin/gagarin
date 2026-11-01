@@ -1680,7 +1680,7 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
 
 #include "../../renderer/bit_font.h"
 #include "../../core/spin_wait_methods.h"
-#include "../../audio/audio_time_methods.h"
+#include "../../audio_time_methods.h"
 // Declaration: GAMEMD 0x4A60D0; flags in ECX are unused by this retail getter.
 BitFont* FUN_004A60D0(int flags);
 // Declaration: GAMEMD 0x4A61C0; caller-cleaned hidden result then fixed args.

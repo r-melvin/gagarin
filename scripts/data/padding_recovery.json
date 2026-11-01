@@ -869,7 +869,7 @@
     "The retail PE import descriptor identifies DSOUND.dll ordinal 1."
    ],
    "scope": "Confirms the shutdown resource belongs to the audio module; nearby legacy surface terminology needs review.",
-   "source": "match/audio/dsound_access_methods.cpp"
+   "source": "match/dsound_access_methods.cpp"
   },
   {
    "addr": "0x729E50",

@@ -8,7 +8,7 @@
 #include "vector_class_operations.h"
 #include "../platform/ccfile_class.h"
 #include "../platform/ccini_class_methods.h"
-#include "../audio/voc_class_methods.h"
+#include "../voc_class_methods.h"
 
 // ImageFile, assigns empty AlphaImageFile, and appends this to the type registry.
 // GLOBAL: GAMEMD 0x889F64

@@ -33,7 +33,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "intrusive_list_methods.h"
-#include "../audio/audio_sample_methods.h"
+#include "../audio_sample_methods.h"
 #include "triple_timer_init_methods.h"
 #include "small_misc40_methods.h"
 

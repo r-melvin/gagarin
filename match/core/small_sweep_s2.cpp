@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include "../_rt/gg_static_assert.h"
 #include "../renderer/screen_palette_mgr_methods.h"
-#include "../audio/vox_class_play_index_methods.h"
+#include "../vox_class_play_index_methods.h"
 
 void FUN_00730530();
 void __fastcall FUN_0072FC60(int a, int b);

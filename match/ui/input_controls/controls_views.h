@@ -9,7 +9,7 @@
 #define GG_MATCH_UI_INPUT_CONTROLS_CONTROLS_VIEWS_H
 
 #include "ui_gadget.h"
-#include "../../audio/voc_class_play_global_methods.h"
+#include "../../voc_class_play_global_methods.h"
 
 // The rules object behind [0x8871E0]; +0x6C4 holds a sound index.
 struct ControlsRules

@@ -59,7 +59,7 @@
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.
 #include "../../core/game_state_flags.h"
-#include "../../audio/vox_class_methods.h"
+#include "../../vox_class_methods.h"
 #include <new.h>
 #include "ui_display_chain.h"
 #include "../sidebar_class_methods.h"

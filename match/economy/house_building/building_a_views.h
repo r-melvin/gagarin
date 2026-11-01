@@ -19,7 +19,7 @@
 #include "../../core/vector_class.h"
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
-#include "../../audio/voc_class_play_global_methods.h"
+#include "../../voc_class_play_global_methods.h"
 #include "house_building_views.h"
 #include "../../_layout/cell_class.h"
 #include "../../_layout/map_0087f7e8.h"

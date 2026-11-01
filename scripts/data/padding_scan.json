@@ -8235,13 +8235,13 @@
   },
   {
    "addr": "0x752480",
-   "tu": "match/audio/vox_class_play_index_methods.cpp",
+   "tu": "match/vox_class_play_index_methods.cpp",
    "name": "VoxClass::PlayIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7531A0",
-   "tu": "match/audio/vox_class_play_methods.cpp",
+   "tu": "match/vox_class_play_methods.cpp",
    "name": "VoxClass::DeleteAll",
    "reason": "no-preceding-CC-or-90"
   },

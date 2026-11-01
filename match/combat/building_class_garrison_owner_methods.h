@@ -35,7 +35,7 @@
 #include "../_layout/object_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
-#include "../audio/voc_class_play_global_methods.h"
+#include "../voc_class_play_global_methods.h"
 
 // 2D short cell coordinate, passed to the radar event by value.
 struct CellStruct_00458200

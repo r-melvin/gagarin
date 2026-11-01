@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4070B0 and 0x4080F0.
 
 #include "spin_wait_methods.h"
-#include "../audio/audio_time_methods.h"
+#include "../audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x4070B0
 void FUN_004070B0(Timer_00401000* self)

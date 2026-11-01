@@ -237,7 +237,7 @@
  {
   "addr": "0x40A6D0",
   "name": "Voice_0040A6D0::FUN_0040A6D0",
-  "tu": "match/audio/pan_and_pitch_methods.cpp",
+  "tu": "match/pan_and_pitch_methods.cpp",
   "sym": "?FUN_0040A6D0@Voice_0040A6D0@@QAEHXZ",
   "len": "0x99",
   "manifest_pct": 96.4,
@@ -4784,7 +4784,7 @@
  {
   "addr": "0x750E20",
   "name": "VoxClass::PlayAtPos",
-  "tu": "match/audio/vox_class_play_methods.cpp",
+  "tu": "match/vox_class_play_methods.cpp",
   "sym": "?PlayAtPos@VoxClass@@SIPAXHPAUCoordStruct@@H@Z",
   "len": "0x98",
   "manifest_pct": 91.4,

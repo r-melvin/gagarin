@@ -10,8 +10,8 @@
 #include <ctype.h>
 #include "../_rt/gg_static_assert.h"
 #include "../network/wdt_rc_ptr.h"
-#include "../audio/voc_class_play_at_methods.h"
-#include "../audio/vox_class_play_index_methods.h"
+#include "../voc_class_play_at_methods.h"
+#include "../vox_class_play_index_methods.h"
 
 namespace WorldDominationTour {
 class Territory;

@@ -6,7 +6,7 @@
 
 #include "small_misc20_methods.h"
 #include "small_misc12_methods.h"
-#include "../audio/audio_stop_methods.h"
+#include "../audio_stop_methods.h"
 #include "../platform/pk_blow_pipes.h"
 #include "../platform/com_holder_ctor_methods.h"
 

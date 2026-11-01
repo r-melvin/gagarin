@@ -12,8 +12,8 @@
 #include "small_misc32_methods.h"
 #include <string.h>
 #include "../platform/ccfile_class.h"
-#include "../audio/audio_time_methods.h"
-#include "../audio/audio_stop_methods.h"
+#include "../audio_time_methods.h"
+#include "../audio_stop_methods.h"
 #include <windows.h>
 #include "module_tu002_stream.h"
 #include "module_tu002_sound.h"
@@ -43,11 +43,11 @@ GG_STATIC_ASSERT(offsetof(DSCAPS, dwSize) == 0);
 #include "list_holder_methods.h"
 #include "floored_decrement_methods.h"
 #include "slot_array_factory_methods.h"
-#include "../audio/dsound_access_methods.h"
-#include "../audio/theme_class_ai_methods.h"
+#include "../dsound_access_methods.h"
+#include "../theme_class_ai_methods.h"
 #include "../platform/mix_file_class.h"
 #include "sorted_list_insert_methods.h"
-#include "../audio/pan_and_pitch_methods.h"
+#include "../pan_and_pitch_methods.h"
 
 GG_STATIC_ASSERT(sizeof(AudioSampleData) == 0x20); // 0x4085A0 clears 8 DWORDs
 

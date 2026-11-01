@@ -18,7 +18,7 @@
 #include "../core/vector_class_operations.h"
 #include <stdlib.h>
 #include <string.h>
-#include "../audio/voc_class_play_global_methods.h"
+#include "../voc_class_play_global_methods.h"
 #include "../_layout/infantry_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/unit_class.h"

@@ -5,7 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "small_misc2_methods.h"
-#include "../audio/audio_stop_methods.h"
+#include "../audio_stop_methods.h"
 #include "dispatch_state_methods.h"
 #include "leaf_accessor_methods.h"
 

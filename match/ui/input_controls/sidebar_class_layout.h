@@ -19,7 +19,7 @@
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
 #include "../tooltip_manager_shared.h"
-#include "../../audio/voc_class_play_global_methods.h"
+#include "../../voc_class_play_global_methods.h"
 
 // ---------------------------------------------------------------------------
 // Shared call views

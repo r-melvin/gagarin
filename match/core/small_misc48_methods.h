@@ -74,7 +74,7 @@ void FUN_00402650(void* subject);
 // ---------------------------------------------------------------------------
 extern "C" __declspec(dllimport) int __stdcall QueryPerformanceFrequency(__int64*);  // IAT 0x7E11D8
 
-#include "../audio/audio_time_methods.h"
+#include "../audio_time_methods.h"
 
 // FUNCTION: GAMEMD 0x409360
 void __cdecl FUN_00409360();

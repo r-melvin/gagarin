@@ -42,7 +42,7 @@
 #include "../combat/evade_class_do_methods.h"
 #include "spin_wait_methods.h"
 #include "../network/transport/conn_types.h"
-#include "../audio/vox_class_methods.h"
+#include "../vox_class_methods.h"
 #include "campaign_class.h"
 #include "../_layout/house_type_class.h"
 #include "../_layout/house_class.h"

@@ -1164,7 +1164,7 @@ void** DAT_00A83CE4;
 // END defined globals
 
 #include "house_class_overpower_methods.h"
-#include "../audio/voc_class_play_global_methods.h"
+#include "../voc_class_play_global_methods.h"
 #include "../_layout/rules_class.h"
 
 #include "house_class_destroy_all_methods.h"
