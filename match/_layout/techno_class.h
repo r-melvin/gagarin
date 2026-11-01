@@ -226,6 +226,8 @@ public:
     int FUN_0070ED80(int flags);
     // FUNCTION: GAMEMD 0x70FB50 (decl; reloc)
     bool FUN_0070FB50();
+    // FUNCTION: GAMEMD 0x6F7220 (decl; reloc) -- is the target within the weapon's range from a coordinate (RET 0xC).
+    bool FUN_006F7220(CoordStruct* coord, AbstractClass* target, WeaponTypeClass* weapon);
     // FUNCTION: GAMEMD 0x6F4AB0 (decl; reloc) -- the TechnoClass body of slot 101 (the radio-message handler),
     // called non-virtually by the overriding classes with the slot's three arguments.
     int FUN_006F4AB0(int a1, int event, int a3);
@@ -293,6 +295,8 @@ public:
     virtual void vf_72(int a1, int a2);                            // 72  0x70ADC0: reveal the map around this object
     virtual void vf_82(int a1);                                    // 82  0x6F9DD0
     virtual int vf_90(int weapon);                                 // 90  0x7012C0: the range of a weapon, cut to the shortest passenger range when open-topped
+    virtual void vf_99(int mark);                                  // 99  0x6F5090: the change notification, mark 2 = placed
+    virtual int vf_101(int a1, int event, int a3);                 // 101 0x6F4AB0: the radio message handler
     virtual void vf_86();                                          // 86  0x70E340
     virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
     virtual bool vf_89(const CoordStruct& coord, int a2);          // 89  0x6F7970

@@ -179,6 +179,7 @@ public:
     void CleanFog();
     bool TryAssignJumpjet(ObjectClass* object);   // GAMEMD 0x487D70
     void MarkForRedraw();
+    void ActivateVeins();                         // GAMEMD 0x486920
     const wchar_t* GetUIName() const;             // GAMEMD 0x484FF0
     int GetRadLevel();                            // GAMEMD 0x487CB0
     int GetContainedTiberiumIndex() const;        // GAMEMD 0x485010

@@ -149345,5 +149345,23 @@
   "name": "FootClass::vf_308",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x6F5090",
+  "sym": "?vf_99@TechnoClass@@UAEXH@Z",
+  "len": "0xff",
+  "name": "TechnoClass::vf_99",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x6F77B0",
+  "sym": "?vf_234@TechnoClass@@UAE_NPAVAbstractClass@@H@Z",
+  "len": "0x116",
+  "name": "TechnoClass::vf_234",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

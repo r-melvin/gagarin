@@ -1565,8 +1565,7 @@ static inline void AdvanceStage(StageClass& stage)
 
 extern double __cdecl FUN_004CAC40(double value);
 
-// GLOBAL: GAMEMD 0xB0EB34
-extern int DAT_00B0EB34;
+#include "techno_math_globals.h"
 
 static inline double ElevationCap()
 {
@@ -2134,6 +2133,181 @@ bool TechnoClass::vf_73(int mode)
     return false;
 }
 
+#include "_layout/parasite_class.h"
+#include "_layout/aircraft_type_class.h"
+
+// Unclaimed (below partial bar), GAMEMD 0x6F4AB0
+// Slot 101, the radio message handler of the techno layer. Messages are kept numeric; the result
+// is 1 for accepted, 10 for refused, 0x20/0x21 for the repair step (cannot pay / finished). The
+// slot keeps the base signature: a1 is the sender (TechnoClass*), a3 points at the in/out
+// object pointer.
+int TechnoClass::vf_101(int a1, int message, int a3)
+{
+    TechnoClass* from = reinterpret_cast<TechnoClass*>(a1);
+    AbstractClass** param = reinterpret_cast<AbstractClass**>(a3);
+
+    switch (message) {
+    case 0x1e: {
+        WeaponStruct* weapon = GetPrimaryWeapon();
+        if (weapon && weapon->WeaponType) {
+            vf_242(*param);
+            vf_122(1, false);
+            return 1;
+        }
+        break;
+    }
+    case 0x18:
+        if (vf_11() == 2) {
+            if (static_cast<AircraftClass*>(this)->Type->AirportBound) {
+                break;
+            }
+        }
+        if (!IsTether) {
+            IsTether = true;
+            vf_158(0x18, from);
+            return 1;
+        }
+        break;
+    case 0x19:
+        if (IsTether) {
+            IsTether = false;
+            vf_158(0x19, from);
+            return 1;
+        }
+        break;
+    case 0x1a:
+        if (!IsAlternativeTether) {
+            IsAlternativeTether = true;
+            vf_158(0x1a, from);
+            return 1;
+        }
+        break;
+    case 0x1b:
+        if (IsAlternativeTether) {
+            IsAlternativeTether = false;
+            vf_158(0x1b, from);
+            return 1;
+        }
+        break;
+    case 8:
+        vf_158(0x19, from);
+        return vf_158(3, from);
+    case 3:
+        if (IsTether && from->IsTether) {
+            vf_158(0x19, from);
+        }
+        RadioClass::vf_101(a1, message, a3);
+        return 1;
+    case 7:
+    case 9:
+    case 0x16:
+        vf_158(0x18, from);
+        RadioClass::vf_101(a1, message, a3);
+        return 1;
+    case 0x1f: {
+        int ammo = Ammo;
+        if (ammo == vf_33()->Ammo) {
+            return 10;
+        }
+        Ammo = ammo + 1;
+        return 1;
+    }
+    case 0x1c: {
+        if (GetHealthPercentage() < Rules->unknown_16F8) {
+            int cost = vf_33()->vf_44();
+            int step = vf_33()->vf_45();
+            if (step <= 1) {
+                step = 1;
+            }
+            if (Owner->vf_06() >= cost) {
+                if (cost) {
+                    Owner->FUN_004F9790(cost);
+                }
+                Health += step;
+                EstimatedHealth += step;
+                FootClass* foot = Flags.IsFoot ? static_cast<FootClass*>(this) : 0;
+                if (foot && foot->ParasiteEatingMe) {
+                    static_cast<ParasiteClass*>(static_cast<FootClass*>(foot->ParasiteEatingMe)->ParasiteImUsing)->TimerA = CDTimerClass(0x32);
+                    static_cast<ParasiteClass*>(static_cast<FootClass*>(foot->ParasiteEatingMe)->ParasiteImUsing)->FUN_0062A4A0();
+                }
+                if ((GetHealthPercentage() > Rules->ConditionYellow || vf_114() < -10) && DamageParticleSystem) {
+                    static_cast<ObjectClass*>(DamageParticleSystem)->vf_62();
+                }
+                if (GetHealthPercentage() < Rules->unknown_16F8) {
+                    return 1;
+                }
+                int strength = vf_33()->Strength;
+                Health = strength;
+                EstimatedHealth = strength;
+                return 0x21;
+            }
+            return 0x20;
+        }
+        return 10;
+    }
+    }
+    return RadioClass::vf_101(a1, message, a3);
+}
+
+// Unclaimed (below partial bar), GAMEMD 0x6F4EB0
+// Slot 264: this object has just become visible in its cell. A cloaked one the current player's side
+// has no sight of is uncloaked; when the cell is the owner's and the object may cloak now, every
+// object that targets it from a house with sight of the cell is told to look at it again.
+void TechnoClass::vf_264()
+{
+    CellClass* cell = DAT_0087F7E8.FUN_005657A0(CoordToCell(vf_18()));
+    if (CloakState == 2 && CurrentPlayer && Owner != CurrentPlayer
+        && !cell->FUN_004870D0(CurrentPlayer->ArrayIndex)) {
+        vf_84();
+    }
+    if (cell->FUN_004870B0(Owner->ArrayIndex) && vf_168()) {
+        DynamicVectorClass<TechnoClass*> watchers;
+        for (int i = DAT_00A8EC78.Count - 1; i >= 0; i--) {
+            TechnoClass* other = DAT_00A8EC78.Items[i];
+            if (other->Target == this) {
+                if (DAT_0087F7E8.FUN_00565730(vf_18())->FUN_004870D0(other->Owner->ArrayIndex)
+                    || other->Owner == Owner) {
+                    watchers.AddItem(other);
+                }
+            }
+        }
+        vf_280(false);
+        for (int j = watchers.Count - 1; j >= 0; j--) {
+            watchers.Items[j]->vf_242(this);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6F5090
+// Slot 99, the change notification: when the object is placed (mark 2) it frees any
+// temporal beam held on it, tells the engine its cell, fires tag event 0x22, marks
+// the object as in the playfield when its cell is usable, shows it to the current
+// player if the cell is revealed, and wakes the veins in that cell.
+void TechnoClass::vf_99(int mark)
+{
+    if (mark == 2) {
+        if (TemporalImUsing && TemporalImUsing->Target) {
+            TemporalImUsing->FUN_0071ABC0();
+        }
+        CellStruct cell = CoordToCell(vf_18());
+        vf_264();
+        if (AttachedTag) {
+            AttachedTag->FUN_006E53A0(0x22, this, DAT_00B0EA50, false, 0);
+        }
+        if (!IsInPlayfield) {
+            if (DAT_0087F7E8.FUN_00578460(&cell, true)) {
+                IsInPlayfield = true;
+            }
+        }
+        if (!DiscoveredByCurrentPlayer) {
+            if (DAT_0087F7E8.FUN_005657A0(&cell)->AltFlags & 0x10) {
+                vf_102(CurrentPlayer);
+            }
+        }
+        DAT_0087F7E8.FUN_005657A0(&cell)->ActivateVeins();
+    }
+}
+
 // FUNCTION: GAMEMD 0x6F6030
 // One segment of the line above: from `a` to the point three quarters of the
 // way to `b`, higher end first.
@@ -2219,6 +2393,29 @@ int TechnoClass::FUN_006F70E0(AbstractClass* target)
 bool TechnoClass::IsCloseEnoughToAttack(AbstractClass* target)
 {
     return vf_234(target, vf_185(target));
+}
+
+// FUNCTION: GAMEMD 0x6F77B0
+// Slot 234: is the target within the range of the given weapon. The range test is made from this
+// object's coordinates, or from its cell's when the weapon ranges by cell, raised on a bridge,
+// and at the target's height when this object is airborne.
+bool TechnoClass::vf_234(AbstractClass* target, int weapon)
+{
+    if (!target) {
+        return true;
+    }
+    CoordStruct coord = vf_18();
+    WeaponTypeClass* weaponType = vf_254(weapon)->WeaponType;
+    if (weaponType && weaponType->CellRangefinding) {
+        coord = DAT_0087F7E8.FUN_005657A0(CoordToCell(vf_18()))->vf_18();
+        if (OnBridge) {
+            coord.Z += DAT_00B0EB24;
+        }
+    }
+    if (IsInAir()) {
+        coord.Z = target->vf_18().Z;
+    }
+    return FUN_006F7220(&coord, target, weaponType);
 }
 
 // FUNCTION: GAMEMD 0x6F78D0
