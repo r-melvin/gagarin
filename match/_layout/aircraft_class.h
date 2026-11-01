@@ -67,7 +67,7 @@ public:
     virtual bool vf_123();                                      // 123 0x41B870
     virtual void vf_124(int mission);                           // 124 0x41B9F0
     virtual void SetDestination(AbstractClass* target, bool a2); // 288 0x41AA80
-    virtual void* vf_330(DynamicVectorClassLayout* a1, int a2, int a3);// 330 0x41BBD0
+    virtual void* vf_330(DynamicVectorClass<AbstractClass*>* a1, int a2, int a3);// 330 0x41BBD0
     // IPersist::GetClassID (slot 3), 0x41C190.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     // IPersistStream::Save (slot 6), 0x41B5C0: chains FootClass::Save.

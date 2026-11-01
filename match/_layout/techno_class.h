@@ -24,7 +24,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "flasher_class.h"
 #include "radio_class.h"      // RadioClass spine + CDTimerClass + CoordStruct + AudioController
-#include "vector_class.h"     // VectorClass / DynamicVectorClass
+#include "vector_class.h"     // VectorClassLayout views
+#include "../vector_class.h"  // VectorClass / DynamicVectorClass
 
 class TemporalClass;
 class WeaponTypeClass;
@@ -634,12 +635,9 @@ public:
     unsigned char      unknown_bool_43A;         // +0x43A (bool)
     unsigned char      align_43B;                // +0x43B
     unsigned int       unknown_43C;              // +0x43C
-    // TODO(vector-shape): DynamicVectorClassLayoutOf<T> stands in for DynamicVectorClass<T> until the vector inline-shape work lands.
-    DynamicVectorClassLayoutOf<int> CurrentTargetThreatValues;// +0x440 (0x18; vptr 0x7E4E78)
-    // TODO(vector-shape): stands in for DynamicVectorClass<AbstractClass*> until the vector inline-shape work lands.
-    DynamicVectorClassLayoutOf<AbstractClass*> CurrentTargets;           // +0x458 (0x18; vptr 0x7E91EC)
-    // TODO(vector-shape): stands in for DynamicVectorClass<AbstractClass*> until the vector inline-shape work lands.
-    DynamicVectorClassLayoutOf<AbstractClass*> AttackedTargets;          // +0x470 (0x18; vptr 0x7E91EC)
+    DynamicVectorClass<int> CurrentTargetThreatValues;// +0x440 (0x18; vptr 0x7E4E78)
+    DynamicVectorClass<AbstractClass*> CurrentTargets;           // +0x458 (0x18; vptr 0x7E91EC)
+    DynamicVectorClass<AbstractClass*> AttackedTargets;          // +0x470 (0x18; vptr 0x7E91EC)
     AudioController    TurretRotateSoundController; // +0x488 (0x14; ctor FUN_00405BE0)
     int                IsTurretRotateSoundPlaying;  // +0x49C (BOOL, ctor = 1)
     int                TurretIsRotating;            // +0x4A0 (BOOL)

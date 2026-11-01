@@ -89,7 +89,7 @@ CoordStruct FootClass::vf_316()
 //   MOV EAX,[ECX+0x5AC] ; ADD ECX,0x5AC ; JMP [EAX+0x0C]
 void FootClass::ClearNavigationList()
 {
-    ((NavVector*)&this->NavQueue)->Clear();
+    (&this->NavQueue)->Clear();
 }
 
 // FUNCTION: GAMEMD 0x4DBFD0
@@ -129,13 +129,13 @@ void* FootClass::vf_332(void* a1, int a2, int a3)
 // FUNCTION: GAMEMD 0x4DF040
 // Query slot 331 for each list entry and keep the closest result. An empty
 // current pick, an unset distance, or a result with byte +0x3D3 set replaces it.
-void* FootClass::vf_330(DynamicVectorClassLayout* a1, int a2, int a3)
+void* FootClass::vf_330(DynamicVectorClass<AbstractClass*>* a1, int a2, int a3)
 {
     void* best = 0;
     int bestDistance = -1;
     for (int i = 0; i < a1->Count; i++) {
         int distance = -1;
-        void* found = this->vf_331(((void**)a1->Items)[i], a2, a3, &distance);
+        void* found = this->vf_331(a1->Items[i], a2, a3, &distance);
         if (found != 0) {
             if (best == 0 || distance < bestDistance || bestDistance == -1
                 || ((char*)found)[0x3D3] != 0) {

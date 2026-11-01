@@ -447,10 +447,10 @@ void FUN_00740EE0(Obj_00740EE0* a1, int a2)
 // mission rate.
 int UnitClass::vf_147()
 {
-    void* contact = vf_330(reinterpret_cast<DynamicVectorClassLayout*>((char*)DAT_008871E0 + 0x850), 0, 0);
+    void* contact = vf_330(reinterpret_cast<DynamicVectorClass<AbstractClass*>*>((char*)DAT_008871E0 + 0x850), 0, 0);
     IsHarvesting = false;
     if (contact == 0) {
-        if (vf_330(reinterpret_cast<DynamicVectorClassLayout*>((char*)DAT_008871E0 + 0x850), 0, 1)) {
+        if (vf_330(reinterpret_cast<DynamicVectorClass<AbstractClass*>*>((char*)DAT_008871E0 + 0x850), 0, 1)) {
             EnterIdleMode(false, true);
         }
     } else if (vf_158(2, static_cast<RadioClass*>(contact)) == 1) {

@@ -30438,11 +30438,11 @@
  {
   "tu": "match/aircraft_helpers_0041bb30.cpp",
   "addr": "0x41BBD0",
+  "sym": "?vf_330@AircraftClass@@UAEPAXPAV?$DynamicVectorClass@PAVAbstractClass@@@@HH@Z",
   "len": "0x60",
-  "sym": "?vf_330@AircraftClass@@UAEPAXPAUDynamicVectorClassLayout@@HH@Z",
   "name": "AircraftClass::vf_330",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/tunnel_locomotion_z_adjust.cpp",
@@ -106646,7 +106646,7 @@
  {
   "tu": "match/foot_class_methods.cpp",
   "addr": "0x4DF040",
-  "sym": "?vf_330@FootClass@@UAEPAXPAUDynamicVectorClassLayout@@HH@Z",
+  "sym": "?vf_330@FootClass@@UAEPAXPAV?$DynamicVectorClass@PAVAbstractClass@@@@HH@Z",
   "len": "0x81",
   "name": "FootClass::vf_330",
   "status": "matched",

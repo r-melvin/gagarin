@@ -24,7 +24,7 @@ void FootClass::QueueNavigationList(AbstractClass* target)
         if (this->NavQueue.Count == 0) {
             this->unknown_bool_6B1 = 0;
         }
-        ((NavVector_004DA0E0*)&this->NavQueue)->AddItem(target);
+        this->NavQueue.AddItem(target);
     }
 
     if (this->Destination == 0 && this->vf_97() == 5) {

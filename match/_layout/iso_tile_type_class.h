@@ -9,7 +9,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "vector_class.h"
+#include "../vector_class.h"
 #include "object_type_class.h"
 
 struct CellStruct;
@@ -102,7 +102,7 @@ public:
     int              unknown_298;              // +0x298 ctor = 0xFFFF @0x5447E4
     int              unknown_29C;              // +0x29C ctor = 0xFFFF @0x5447EA
     int              unknown_2A0;              // +0x2A0 ctor = 0 @0x5447F0
-    DynamicVectorClassLayout unknown_vec_2A4;  // +0x2A4 (0x18) DynamicVectorClass<unsigned short*>: vptr 0x7ECCEC (RTTI .?AV?$DynamicVectorClass@PAG@@) @0x544811,
+    DynamicVectorClass<unsigned short*> unknown_vec_2A4;  // +0x2A4 (0x18) DynamicVectorClass<unsigned short*>: vptr 0x7ECCEC (RTTI .?AV?$DynamicVectorClass@PAG@@) @0x544811,
                                                //   Count 0 @0x544825, CapacityIncrement 0xA @0x54481B
     int              unknown_2BC;              // +0x2BC ctor = 0 @0x544868
     int              unknown_2C0;              // +0x2C0 ctor @0x544836

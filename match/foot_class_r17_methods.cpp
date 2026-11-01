@@ -103,7 +103,7 @@ HRESULT __stdcall FootClass::Save(IStream* pStm, BOOL fClearDirty)
         if (wr < 0)
             return wr;
         for (int i = 0; i < count; i++) {
-            wr = pStm->Write(&((int*)unknown_abstract_array_588.Items)[i], 4, 0);
+            wr = pStm->Write(&unknown_abstract_array_588.Items[i], 4, 0);
             if (wr < 0)
                 return wr;
         }
@@ -112,7 +112,7 @@ HRESULT __stdcall FootClass::Save(IStream* pStm, BOOL fClearDirty)
         if (wr < 0)
             return wr;
         for (int j = 0; j < count; j++) {
-            wr = pStm->Write(&((int*)NavQueue.Items)[j], 4, 0);
+            wr = pStm->Write(&NavQueue.Items[j], 4, 0);
             if (wr < 0)
                 return wr;
         }

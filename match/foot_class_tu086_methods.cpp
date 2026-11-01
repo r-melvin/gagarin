@@ -404,12 +404,12 @@ void FootClass::vf_104(int a1)
 void FootClass::FUN_004DA030()
 {
     if (Destination == 0 && NavQueue.Count != 0) {
-        AbstractClass* next = ((NavVector_004DA0E0*)&NavQueue)->Items[0];
+        AbstractClass* next = NavQueue.Items[0];
         if (next) {
             SetDestination(next, 1);
-            ((NavVector_004DA0E0*)&NavQueue)->Delete(0);
+            NavQueue.Delete(0);
             if (unknown_bool_6B1) {
-                ((NavVector_004DA0E0*)&NavQueue)->AddItem(next);
+                NavQueue.AddItem(next);
             }
         }
     }

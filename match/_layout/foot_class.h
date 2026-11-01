@@ -28,7 +28,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "techno_class.h"     // TechnoClass spine + CDTimerClass + CoordStruct + AudioController
-#include "vector_class.h"     // DynamicVectorClass
+#include "../vector_class.h"  // DynamicVectorClass
 
 #include "cell.h"            // CellStruct, Cell
 
@@ -79,7 +79,7 @@ public:
     virtual void vf_327();                                         // 327 0x41C110
     virtual void vf_328(int a1);                                   // 328 0x41C120
     virtual void vf_329();                                         // 329 0x4D9C00
-    virtual void* vf_330(DynamicVectorClassLayout* a1, int a2, int a3);// 330 0x4DF040
+    virtual void* vf_330(DynamicVectorClass<AbstractClass*>* a1, int a2, int a3);// 330 0x4DF040
     virtual void* vf_331(void* a1, int a2, int a3, int* a4);      // 331 0x4DEE80
     virtual void* vf_332(void* a1, int a2, int a3);                // 332 0x4DEE50
     virtual void vf_333(int a1, int a2);                           // 333 0x41C130
@@ -152,11 +152,11 @@ public:
     unsigned int    unused_574;                       // +0x574
     double          SpeedPercentage;                  // +0x578
     double          SpeedMultiplier;                  // +0x580 (ctor = 1.0)
-    DynamicVectorClassLayout unknown_abstract_array_588;    // +0x588 (0x18; vptr 0x7E91EC)
+    DynamicVectorClass<AbstractClass*> unknown_abstract_array_588;    // +0x588 (0x18; vptr 0x7E91EC)
     void*           unknown_5A0;                       // +0x5A0 AbstractClass*
     void*           Destination;                       // +0x5A4 AbstractClass*
     void*           LastDestination;                   // +0x5A8 AbstractClass*
-    DynamicVectorClassLayout NavQueue;                       // +0x5AC (0x18; vptr 0x7E91EC)
+    DynamicVectorClass<AbstractClass*> NavQueue;                       // +0x5AC (0x18; vptr 0x7E91EC)
     int             MegaMission;                       // +0x5C4 (Mission enum, ctor = -1)
     void*           MegaDestination;                   // +0x5C8 AbstractClass*
     void*           MegaTarget;                        // +0x5CC AbstractClass*

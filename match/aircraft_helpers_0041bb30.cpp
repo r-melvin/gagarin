@@ -38,7 +38,7 @@ void AircraftClass::vf_125(int mission, AbstractClass* a2, AbstractClass* a3)
 // FUNCTION: GAMEMD 0x41BBD0
 // Airport-bound aircraft keep a dock that still answers radio query 0xF with
 // 1; otherwise pick a new one with the FootClass slot-330 search.
-void* AircraftClass::vf_330(DynamicVectorClassLayout* a1, int, int a3)
+void* AircraftClass::vf_330(DynamicVectorClass<AbstractClass*>* a1, int, int a3)
 {
     if (Type->AirportBound && DockNowHeadingTo != 0) {
         if (this->vf_158(0xF, (RadioClass*)DockNowHeadingTo) != 1) {

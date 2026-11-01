@@ -368,7 +368,7 @@ public:
     unsigned char  align_66A[2];          // +0x66A
     DynamicVectorClass<TechnoClass*> Overpowerers;                   // +0x66C (0x18) ctor vptr @0x0043B8CA, fields
                                           //   @0x0043B8B1/0x0043B8B7/0x0043B8BD/0x0043B8C4/0x0043B8D6/0x0043B8D0
-    DynamicVectorClassLayoutOf<InfantryClass*> Occupants;         // +0x684 (0x18) ctor vptr @0x0043B8F5, fields
+    DynamicVectorClass<InfantryClass*> Occupants;         // +0x684 (0x18) ctor vptr @0x0043B8F5, fields
                                           //   @0x0043B8DC/0x0043B8E2/0x0043B8E8/0x0043B8EF/0x0043B901/0x0043B8FB
     int            FiringOccupantIndex;   // +0x69C ctor @0x0043B907
     AudioController Audio7;               // +0x6A0 (0x14) ctor LEA ECX,[ESI+0x6A0]; CALL 0x00405BE0 @0x0043BA85
