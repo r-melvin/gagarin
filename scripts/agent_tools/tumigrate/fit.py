@@ -230,7 +230,11 @@ def main():
         mine_files = {f['file'] for f in p['files']}
         for d in mine:
             f = basetu.get(int(d[1], 16))
-            if f in mine_files:
+            if f == res['dest']:
+                # the destination is never dropped: a differing row of its own was changed by what was merged in
+                for g in sorted(mine_files - {f}):
+                    ex[g] = 'merging it changes the bytes of %s in the destination (%s)' % (d[1], d[2])
+            elif f in mine_files:
                 ex[f] = 'moved bytes differ at %s (%s)' % (d[1], d[2])
             else:
                 raise SystemExit('unattributed identity difference: %s' % d)
