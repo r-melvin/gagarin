@@ -421,6 +421,44 @@ def partial_dips(old, new):
     return out
 
 
+PARTIAL_DROP_TOLERANCE = 2.0
+
+
+def partial_regressions(old, new, measured, tol=PARTIAL_DROP_TOLERANCE):
+    """Partial rows that re-measure more than `tol` points below the base manifest's pct.
+
+    OLD/NEW are the base and new manifest rows; MEASURED is {address: pct} from scoring the
+    new tree's compiled objects (partial_score.score). A row is judged only when the base row is a
+    partial with a numeric pct. A drop is accepted only when the packet's manifest row
+    explicitly lowers it: its pct is at (or below) the measurement and it carries a non-empty
+    `lowered_reason`. Returns (failures, accepted): failures are (addr, name, was, now, why);
+    accepted are (addr, name, was, now, reason).
+    """
+    o = {A(r): r for r in old}
+    n = {A(r): r for r in new}
+    fails, accepted = [], []
+    for addr, now in sorted(measured.items()):
+        b = o.get(addr)
+        if not b or b.get("status") != "partial" or not isinstance(b.get("pct"), (int, float)):
+            continue
+        was = b["pct"]
+        if now >= was - tol:
+            continue
+        r = n.get(addr) or {}
+        reason = str(r.get("lowered_reason") or "").strip()
+        lowered = isinstance(r.get("pct"), (int, float)) and r["pct"] <= now + 0.05 and r["pct"] < was
+        name = r.get("name") or b.get("name")
+        if lowered and reason:
+            accepted.append((b["addr"], name, was, now, reason))
+        elif lowered:
+            fails.append((b["addr"], name, was, now, "manifest row lowers pct to %s but has no lowered_reason" % r["pct"]))
+        else:
+            fails.append((b["addr"], name, was, now,
+                          "re-measures %.1f points below the base pct; fix the source, or lower the row (pct and lowered_reason) in the manifest delta"
+                          % (was - now)))
+    return fails, accepted
+
+
 def parse_delta(d):
     """Return a list of (op, row, old) from the delta formats seen in packets.
 

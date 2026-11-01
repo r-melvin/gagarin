@@ -11,6 +11,9 @@
 import argparse, json
 import tempfile, os, subprocess, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import partial_score
+
 # A partial keeps best_pct (highest score ever recorded) beside pct (the current score): a re-measure may
 # lower pct, never best_pct. A dip is listed as a warning, not a failure.
 
@@ -25,6 +28,8 @@ def main():
     args = ap.parse_args()
     entries = json.load(open(args.manifest))
     changed = []
+    skips = partial_score.patch_skips(ROOT)
+    tried = compile_fails = 0
     head = subprocess.run(["git", "-C", ROOT, "rev-parse", "--short=8", "HEAD"], capture_output=True, text=True).stdout.strip()
     for e in entries:
         if e["status"] == "matched":
@@ -34,6 +39,7 @@ def main():
         # stale-object fault that was fixed in match.sh: it silently rewrote
         # manifest percentages from a build that no longer matched the source.
         # It wrote 0.0% for an entry that measures 56.6% when compiled.
+        tried += 1
         fd, obj = tempfile.mkstemp(suffix=".obj", prefix="refresh_")
         os.close(fd)
         os.unlink(obj)
@@ -50,18 +56,16 @@ def main():
             if os.path.exists(obj):
                 os.unlink(obj)
             print(f"  COMPILE FAIL {e['addr']}  {e['tu']} — not scoring")
+            compile_fails += 1
             continue
         # The differ requires the explicit manifest span; it must not infer
-        # a potentially truncated extent from Ghidra's function record.
-        out = subprocess.run(
-            ["python3", os.path.join(ROOT, "scripts/vc6/diff_retail.py"), "--obj", obj,
-             "--sym", e["sym"], "--addr", e["addr"], "--len", e["len"]],
-            capture_output=True, text=True).stdout.strip()
+        # a potentially truncated extent from Ghidra's function record. A function with a
+        # distribution patch is scored past the patched prologue (partial_score.py).
+        pct = partial_score.score(ROOT, obj, e, skips)
         os.unlink(obj)
-        if not out.endswith("%"):
+        if pct is None:
             print(f"  skip (no score) {e['addr']}")
             continue
-        pct = float(out.splitlines()[-1].split(":")[1].strip().rstrip("%"))
         prior_best = e.get("best_pct", e.get("pct", 0))
         if abs(pct - e.get("pct", 0)) > 0.05:
             changed.append((e["addr"], e.get("pct", 0), pct, e["tu"]))
@@ -70,6 +74,11 @@ def main():
             e["best_pct"], e["best_at"] = pct, head
         elif "best_pct" not in e:
             e["best_pct"] = prior_best
+    if tried and compile_fails == tried:
+        # Every row failed to compile: a broken toolchain or environment, not a result. Report
+        # it and leave the manifest as it was.
+        print(f"ERROR: all {tried} partial rows failed to compile; nothing was measured", file=sys.stderr)
+        return 1
     json.dump(entries, open(args.manifest, "w"), indent=1)
     open(args.manifest, "a").write("\n")
     for a, was, now, tu in changed:

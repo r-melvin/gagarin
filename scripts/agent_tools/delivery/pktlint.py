@@ -513,7 +513,7 @@ class Lint:
                         self.err("delta", "row %s best_pct %s lowers the recorded best %s (best only rises)" % (
                             a, bp, prior.get("best_pct", prior.get("pct"))), addr=a)
             extra = set(r) - {"tu", "addr", "sym", "len", "name", "status", "pct", "note", "qualification", "metric", "pct_metric", "op", "old",
-                                   "best_pct", "best_at"}
+                                   "best_pct", "best_at", "lowered_reason"}
             if extra:
                 self.err("delta", "row %s has unexpected keys %s" % (a, sorted(extra)))
             tu = r.get("tu")

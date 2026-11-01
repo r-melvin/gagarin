@@ -775,6 +775,37 @@ class BestScore(unittest.TestCase):
         dips = L.partial_dips(old, new)
         self.assertEqual([(d[0], d[2], d[3], d[4]) for d in dips], [("0x401000", 70.0, 60.0, 80.0)])
 
+    def test_partial_regressions_drop_over_two_points_fails(self):
+        old = [self.prow(pct=96.9), self.prow("0x401010", pct=50.0), row("0x401020")]
+        new = [dict(r) for r in old]
+        fails, ok = L.partial_regressions(old, new, {0x401000: 49.4, 0x401010: 48.5, 0x401020: 1.0})
+        self.assertEqual([f[0] for f in fails], ["0x401000"])       # 1.5 points is inside the tolerance; matched rows are not judged
+        self.assertEqual(ok, [])
+
+    def test_partial_regressions_exactly_two_points_passes(self):
+        old = [self.prow(pct=70.0)]
+        self.assertEqual(L.partial_regressions(old, old, {0x401000: 68.0}), ([], []))
+        self.assertEqual(len(L.partial_regressions(old, old, {0x401000: 67.9})[0]), 1)
+
+    def test_partial_regressions_rising_or_new_rows_are_fine(self):
+        old = [self.prow(pct=70.0)]
+        self.assertEqual(L.partial_regressions(old, old, {0x401000: 99.0, 0x409999: 1.0}), ([], []))
+
+    def test_partial_regressions_declared_lowering_needs_a_reason(self):
+        old = [self.prow(pct=96.9)]
+        lowered = [self.prow(pct=49.4)]
+        fails, ok = L.partial_regressions(old, lowered, {0x401000: 49.4})
+        self.assertEqual(len(fails), 1)
+        self.assertIn("lowered_reason", fails[0][4])
+        withreason = [dict(self.prow(pct=49.4), lowered_reason="new exact row inlines into this caller")]
+        fails, ok = L.partial_regressions(old, withreason, {0x401000: 49.4})
+        self.assertEqual((fails, [o[:4] for o in ok]), ([], [("0x401000", "f0x401000", 96.9, 49.4)]))
+
+    def test_partial_regressions_reason_without_a_lowered_pct_does_not_excuse(self):
+        old = [self.prow(pct=96.9)]
+        kept = [dict(self.prow(pct=96.9), lowered_reason="x")]
+        self.assertEqual(len(L.partial_regressions(old, kept, {0x401000: 49.4})[0]), 1)
+
     def test_backfill_and_ledger(self):
         sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         import best_score as B

@@ -43,6 +43,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import landlib as L  # noqa: E402
 import sectioncmp as S  # noqa: E402
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "vc6"))
+import partial_score as PS  # noqa: E402
+
 FORBID_RE = L.FORBID_RE
 ALLOWED_DEFAULT = L.ALLOWED_PATHS
 TEST_ROOTS = ["scripts/vc6", "scripts/agent_tools/wwstruct"]
@@ -88,6 +91,7 @@ class Ctx:
             self.changed[parts[i + 1]] = parts[i][0]
         # manifest delta
         bm = self.base_files_manifest()
+        self.base_man = bm
         nm, _ = L.load_manifest(os.path.join(self.tree, L.MANIFEST))
         self.man = nm
         self.added, self.changed_rows, self.removed = L.manifest_diff(bm, nm)
@@ -346,6 +350,8 @@ def verify(ctx):
     work = []
     fail_tus = []
     partial = 0
+    remeasure = []      # (tu, obj, row): partial rows the base also holds as partial
+    base_partial = {L.A(r) for r in ctx.base_man if r.get("status") == "partial"}
     for tu in scope:
         o = objpath(ctx.objs_new, tu)
         if not os.path.isfile(o):
@@ -357,6 +363,8 @@ def verify(ctx):
                 work.append((tu, o, r))
             else:
                 partial += 1
+                if L.A(r) in base_partial:
+                    remeasure.append((tu, o, r))
     os.environ["GAMEMD_BINARY"] = L.BINARY
 
     def one(w):
@@ -373,13 +381,44 @@ def verify(ctx):
             if not ok:
                 regressed.append((tu, r))
                 print("  REGRESSED %s::%s %s -> %s" % (tu, r.get("name"), r["addr"], pc))
+    # Partial rows are re-measured, not just compile-checked: a header or source change elsewhere in
+    # the TU can collapse one (an inline body becoming visible, a changed include order) while every
+    # matched row still verifies. A drop of more than 2 points below the base manifest pct fails,
+    # unless the packet's manifest row lowers it with a lowered_reason.
+    skips = PS.patch_skips(ctx.tree)
+
+    def measure(w):
+        tu, o, r = w
+        try:
+            return r, PS.score(ctx.tree, o, r, skips)
+        except Exception as ex:
+            print("  PARTIAL MEASURE ERROR %s %s: %r" % (tu, r["addr"], ex))
+            return r, None
+
+    measured, unscored = {}, 0
+    with cf.ThreadPoolExecutor(ctx.jobs) as ex:
+        for r, pc in ex.map(measure, remeasure):
+            if pc is None:
+                unscored += 1
+            else:
+                measured[L.A(r)] = pc
+    pfail, paccepted = L.partial_regressions(ctx.base_man, ctx.man, measured)
+    for addr, name, was, now, why in pfail:
+        print("  PARTIAL REGRESSED %s %s: %s -> %.1f: %s" % (addr, name, was, now, why))
+    for addr, name, was, now, why in paccepted:
+        print("  PARTIAL LOWERED (declared) %s %s: %s -> %.1f: %s" % (addr, name, was, now, why))
     for addr, name, was, now, best in ctx.partial_dips:     # warning only: a partial's current score may dip
         print("  WARN partial dip %s %s: %s -> %s (best %s)" % (addr, name, was, now, best))
-    detail = "%d TUs, %d matched rows re-proved, %d partial rows compile-checked, %d regressed, %d compile fails, %d partial dips (warn)" % (
-        len(scope), len(work), partial, len(regressed), len(fail_tus), len(ctx.partial_dips))
+    detail = ("%d TUs, %d matched rows re-proved, %d partial rows compile-checked (%d re-measured, %d unscored), "
+              "%d regressed, %d partial regressed, %d compile fails, %d partial dips (warn)") % (
+        len(scope), len(work), partial, len(measured), unscored, len(regressed), len(pfail), len(fail_tus),
+        len(ctx.partial_dips))
     ctx.verify_summary = {"tus": len(scope), "rows": len(work), "regressed": sorted(r["addr"] for _, r in regressed),
+                          "partials_measured": len(measured), "partials_unscored": unscored,
+                          "partial_regressed": [list(f[:4]) for f in pfail],
+                          "partial_lowered": [list(f[:4]) for f in paccepted],
                           "partial_dips": [list(d) for d in ctx.partial_dips]}
-    return ("FAIL" if regressed or fail_tus else "PASS"), detail
+    return ("FAIL" if regressed or fail_tus or pfail else "PASS"), detail
 
 
 @gate
