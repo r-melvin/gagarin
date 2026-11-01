@@ -309,7 +309,7 @@ int FootClass::FUN_004D97A0(AbstractClass* target)
         }
         if (Target == 0 || !Target->Flags.IsTechno || !((TechnoClass*)Target)->IsArmed()) {
             bool teamAllows;
-            if (Team != 0 && Team->Type->Flag_F6) {
+            if (Team != 0 && Team->Type->IsBaseDefense) {
                 teamAllows = true;
             } else {
                 teamAllows = false;

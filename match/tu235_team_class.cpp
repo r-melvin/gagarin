@@ -459,12 +459,12 @@ GG_STATIC_ASSERT(offsetof(TeamClass, unknown_2C) == 0x2C);
 GG_STATIC_ASSERT(offsetof(TeamClass, unknown_70) == 0x70);
 GG_STATIC_ASSERT(offsetof(TeamClass, unknown_74) == 0x74);
 GG_STATIC_ASSERT(offsetof(TeamClass, unknown_84) == 0x84);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Flag_F6) == 0xF6);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, IsBaseDefense) == 0xF6);
 GG_STATIC_ASSERT(offsetof(HouseClass, BaseDefenseTeamCount) == 0x566C);
 GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->BaseDefenseTeamCount) == 4);
 GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_2C) == 4);
 GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_70) == 4);
-GG_STATIC_ASSERT(sizeof(((TeamTypeClass*)0)->Flag_F6) == 1);
+GG_STATIC_ASSERT(sizeof(((TeamTypeClass*)0)->IsBaseDefense) == 1);
 GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_74) == 1);
 GG_STATIC_ASSERT(sizeof(((TeamClass*)0)->unknown_84) == 1);
 
@@ -478,7 +478,7 @@ TeamClass::~TeamClass()
             else trigger->RegisterFailure();
         }
     }
-    if (unknown_2C && Type && Type->Flag_F6)
+    if (unknown_2C && Type && Type->IsBaseDefense)
         --unknown_2C->BaseDefenseTeamCount;
     if (DAT_00A8E9A0 && Type) {
         while (FirstUnit) LiberateMember(FirstUnit, -1, 0);

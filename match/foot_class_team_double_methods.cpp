@@ -17,7 +17,7 @@ extern const double DAT_007E1718;
 // fixed constant; everyone else reports the stored double.
 double FootClass::FUN_004DC760()
 {
-    if (this->Team != 0 && this->Team->Type->Flag_F2) {
+    if (this->Team != 0 && this->Team->Type->AvoidThreats) {
         return DAT_007E1718;
     }
     return this->unknown_530;

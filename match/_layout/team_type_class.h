@@ -65,62 +65,62 @@ public:
 
     int            ArrayIndex;      // +0x98  index in the type array
     int            Group;           // +0x9C
-    int            unknown_A0;      // +0xA0
-    bool           Flag_A4;         // +0xA4
-    bool           Flag_A5;         // +0xA5
-    bool           Flag_A6;         // +0xA6
-    bool           Flag_A7;         // +0xA7
-    bool           Flag_A8;         // +0xA8
-    bool           Flag_A9;         // +0xA9
-    bool           Flag_AA;         // +0xAA
-    bool           Flag_AB;         // +0xAB
-    bool           Flag_AC;         // +0xAC
-    bool           Flag_AD;         // +0xAD
-    bool           Flag_AE;         // +0xAE
-    bool           Flag_AF;         // +0xAF
-    bool           Flag_B0;         // +0xB0
-    bool           Flag_B1;         // +0xB1
+    int            VeteranLevel;      // +0xA0
+    bool           Loadable;         // +0xA4
+    bool           Full;         // +0xA5
+    bool           Annoyance;         // +0xA6
+    bool           GuardSlower;         // +0xA7
+    bool           Recruiter;         // +0xA8
+    bool           Autocreate;         // +0xA9
+    bool           Prebuild;         // +0xAA
+    bool           Reinforce;         // +0xAB
+    bool           Whiner;         // +0xAC
+    bool           Aggressive;         // +0xAD
+    bool           LooseRecruit;         // +0xAE
+    bool           Suicide;         // +0xAF
+    bool           Droppod;         // +0xB0
+    bool           UseTransportOrigin;         // +0xB1
     bool           Flag_B2;         // +0xB2
-    bool           Flag_B3;         // +0xB3
-    int            unknown_B4;      // +0xB4
+    bool           OnTransOnly;         // +0xB3
+    int            Priority;      // +0xB4
     int            Max;             // +0xB8 instance cap, -1 = none
     int            unknown_BC;      // +0xBC
-    int            unknown_C0;      // +0xC0
+    int            MindControlDecision;      // +0xC0
     HouseClass*    Owner;           // +0xC4 owner house (INI "House")
     int            idxHouse;        // +0xC8 country index while no house is set
-    int            unknown_CC;      // +0xCC
-    AbstractClass* Ptr_D0;          // +0xD0 tag type (INI "Tag")
+    int            TechLevel;      // +0xCC
+    AbstractClass* Tag;          // +0xD0 tag type (INI "Tag")
     int            Waypoint;        // +0xD4 INI "Waypoint"
     int            TransportWaypoint; // +0xD8 INI "TransportWaypoint"
     int            InstanceCount;   // +0xDC live instances (compared against Max in campaign mode)
-    AbstractClass* Ptr_E0;          // +0xE0 script type (INI "Script")
+    AbstractClass* Script;          // +0xE0 script type (INI "Script")
     TaskForceClass* TaskForce;      // +0xE4 task force (INI "TaskForce"; GetGroup reads its +0x98)
     int            unknown_E8;      // +0xE8
     int            unknown_EC;      // +0xEC
     bool           Flag_F0;         // +0xF0
     bool           Flag_F1;         // +0xF1
-    bool           Flag_F2;         // +0xF2
-    bool           Flag_F3;         // +0xF3
-    bool           Flag_F4;         // +0xF4
-    bool           Flag_F5;         // +0xF5
-    bool           Flag_F6;         // +0xF6
-    bool           Flag_F7;         // +0xF7
+    bool           AvoidThreats;         // +0xF2
+    bool           IonImmune;         // +0xF3
+    bool           TransportsReturnOnUnload;         // +0xF4
+    bool           AreTeamMembersRecruitable;         // +0xF5
+    bool           IsBaseDefense;         // +0xF6
+    bool           OnlyTargetHouseEnemy;         // +0xF7
 };
 
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, ArrayIndex) == 0x98);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Group) == 0x9C);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Flag_A4) == 0xA4);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, unknown_B4) == 0xB4);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Loadable) == 0xA4);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Priority) == 0xB4);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Max) == 0xB8);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Owner) == 0xC4);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, idxHouse) == 0xC8);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, Waypoint) == 0xD4);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, TransportWaypoint) == 0xD8);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, InstanceCount) == 0xDC);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Ptr_D0) == 0xD0);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Ptr_E0) == 0xE0);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Tag) == 0xD0);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, Script) == 0xE0);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, TaskForce) == 0xE4);
-GG_STATIC_ASSERT(offsetof(TeamTypeClass, Flag_F7) == 0xF7);
+GG_STATIC_ASSERT(offsetof(TeamTypeClass, OnlyTargetHouseEnemy) == 0xF7);
 GG_STATIC_ASSERT(sizeof(TeamTypeClass) == 0xF8);
 
 #endif

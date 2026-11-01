@@ -63,46 +63,46 @@ TeamTypeClass::TeamTypeClass(const char* id)
     : AbstractTypeClass(id),
       ArrayIndex(-1),
       Group(-1),
-      unknown_A0(1),
-      Flag_A4(false),
-      Flag_A5(false),
-      Flag_A6(false),
-      Flag_A7(false),
-      Flag_A8(false),
-      Flag_A9(false),
-      Flag_AA(false),
-      Flag_AB(false),
-      Flag_AC(false),
-      Flag_AD(false),
-      Flag_AE(false),
-      Flag_AF(false),
-      Flag_B0(false),
-      Flag_B1(false),
+      VeteranLevel(1),
+      Loadable(false),
+      Full(false),
+      Annoyance(false),
+      GuardSlower(false),
+      Recruiter(false),
+      Autocreate(false),
+      Prebuild(false),
+      Reinforce(false),
+      Whiner(false),
+      Aggressive(false),
+      LooseRecruit(false),
+      Suicide(false),
+      Droppod(false),
+      UseTransportOrigin(false),
       Flag_B2(false),
-      Flag_B3(false),
-      unknown_B4(7),
+      OnTransOnly(false),
+      Priority(7),
       Max(-1),
       unknown_BC(0),
-      unknown_C0(0),
+      MindControlDecision(0),
       Owner(0),
       idxHouse(-1),
-      unknown_CC(0),
-      Ptr_D0(0),
+      TechLevel(0),
+      Tag(0),
       Waypoint(-1),
       TransportWaypoint(-1),
       InstanceCount(0),
-      Ptr_E0(0),
+      Script(0),
       TaskForce(0),
       unknown_E8(0),
       unknown_EC(9),
       Flag_F0(true),
       Flag_F1(false),
-      Flag_F2(false),
-      Flag_F3(false),
-      Flag_F4(false),
-      Flag_F5(true),
-      Flag_F6(false),
-      Flag_F7(false)
+      AvoidThreats(false),
+      IonImmune(false),
+      TransportsReturnOnUnload(false),
+      AreTeamMembersRecruitable(true),
+      IsBaseDefense(false),
+      OnlyTargetHouseEnemy(false)
 {
     TeamTypeRegistryAdd(&DAT_00A8ECA0, this);
     ArrayIndex = DAT_00A8ECA0.FindItemIndex(this);
@@ -174,45 +174,45 @@ bool TeamTypeClass::vf_25(CCINIClass* ini)
             Owner = FUN_00502D30(country);
             idxHouse = -1;
         }
-        unknown_A0 = ini->FUN_005276D0(ID.Data, "VeteranLevel", unknown_A0);
-        unknown_C0 = ini->FUN_005276D0(ID.Data, "MindControlDecision", unknown_C0);
-        Flag_A4 = ini->FUN_005295F0(ID.Data, "Loadable", Flag_A4);
-        Flag_A5 = ini->FUN_005295F0(ID.Data, "Full", Flag_A5);
-        Flag_A6 = ini->FUN_005295F0(ID.Data, "Annoyance", Flag_A6);
-        Flag_A7 = ini->FUN_005295F0(ID.Data, "GuardSlower", Flag_A7);
-        Flag_A9 = ini->FUN_005295F0(ID.Data, "Autocreate", Flag_A9);
-        Flag_AA = ini->FUN_005295F0(ID.Data, "Prebuild", Flag_AA);
-        Flag_AB = ini->FUN_005295F0(ID.Data, "Reinforce", Flag_AB);
-        Flag_B0 = ini->FUN_005295F0(ID.Data, "Droppod", Flag_B0);
-        Flag_B1 = ini->FUN_005295F0(ID.Data, "UseTransportOrigin", Flag_B1);
-        Flag_A8 = ini->FUN_005295F0(ID.Data, "Recruiter", Flag_A8);
-        Flag_AC = ini->FUN_005295F0(ID.Data, "Whiner", Flag_AC);
-        Flag_AF = ini->FUN_005295F0(ID.Data, "Suicide", Flag_AF);
-        Flag_AE = ini->FUN_005295F0(ID.Data, "LooseRecruit", Flag_AE);
-        Flag_AD = ini->FUN_005295F0(ID.Data, "Aggressive", Flag_AD);
-        Flag_B3 = ini->FUN_005295F0(ID.Data, "OnTransOnly", Flag_B3);
-        unknown_B4 = ini->FUN_005276D0(ID.Data, "Priority", unknown_B4);
+        VeteranLevel = ini->FUN_005276D0(ID.Data, "VeteranLevel", VeteranLevel);
+        MindControlDecision = ini->FUN_005276D0(ID.Data, "MindControlDecision", MindControlDecision);
+        Loadable = ini->FUN_005295F0(ID.Data, "Loadable", Loadable);
+        Full = ini->FUN_005295F0(ID.Data, "Full", Full);
+        Annoyance = ini->FUN_005295F0(ID.Data, "Annoyance", Annoyance);
+        GuardSlower = ini->FUN_005295F0(ID.Data, "GuardSlower", GuardSlower);
+        Autocreate = ini->FUN_005295F0(ID.Data, "Autocreate", Autocreate);
+        Prebuild = ini->FUN_005295F0(ID.Data, "Prebuild", Prebuild);
+        Reinforce = ini->FUN_005295F0(ID.Data, "Reinforce", Reinforce);
+        Droppod = ini->FUN_005295F0(ID.Data, "Droppod", Droppod);
+        UseTransportOrigin = ini->FUN_005295F0(ID.Data, "UseTransportOrigin", UseTransportOrigin);
+        Recruiter = ini->FUN_005295F0(ID.Data, "Recruiter", Recruiter);
+        Whiner = ini->FUN_005295F0(ID.Data, "Whiner", Whiner);
+        Suicide = ini->FUN_005295F0(ID.Data, "Suicide", Suicide);
+        LooseRecruit = ini->FUN_005295F0(ID.Data, "LooseRecruit", LooseRecruit);
+        Aggressive = ini->FUN_005295F0(ID.Data, "Aggressive", Aggressive);
+        OnTransOnly = ini->FUN_005295F0(ID.Data, "OnTransOnly", OnTransOnly);
+        Priority = ini->FUN_005276D0(ID.Data, "Priority", Priority);
         Max = ini->FUN_005276D0(ID.Data, "Max", Max);
-        unknown_CC = ini->FUN_005276D0(ID.Data, "TechLevel", unknown_CC);
-        AbstractClass* tag = Ptr_D0;
-        Ptr_D0 = ini->FUN_00528A10(ID.Data, "Tag", DAT_00889F64, buffer, 128) ? FUN_006E6310(buffer) : tag;
+        TechLevel = ini->FUN_005276D0(ID.Data, "TechLevel", TechLevel);
+        AbstractClass* tag = Tag;
+        Tag = ini->FUN_00528A10(ID.Data, "Tag", DAT_00889F64, buffer, 128) ? FUN_006E6310(buffer) : tag;
         Group = ini->FUN_005276D0(ID.Data, "Group", Group);
-        Flag_F2 = ini->FUN_005295F0(ID.Data, "AvoidThreats", Flag_F2);
-        Flag_F3 = ini->FUN_005295F0(ID.Data, "IonImmune", Flag_F3);
-        Flag_F6 = ini->FUN_005295F0(ID.Data, "IsBaseDefense", Flag_F6);
-        Flag_F7 = ini->FUN_005295F0(ID.Data, "OnlyTargetHouseEnemy", Flag_F7);
-        Flag_F4 = ini->FUN_005295F0(ID.Data, "TransportsReturnOnUnload", Flag_F4);
-        Flag_F5 = ini->FUN_005295F0(ID.Data, "AreTeamMembersRecruitable", Flag_F5);
+        AvoidThreats = ini->FUN_005295F0(ID.Data, "AvoidThreats", AvoidThreats);
+        IonImmune = ini->FUN_005295F0(ID.Data, "IonImmune", IonImmune);
+        IsBaseDefense = ini->FUN_005295F0(ID.Data, "IsBaseDefense", IsBaseDefense);
+        OnlyTargetHouseEnemy = ini->FUN_005295F0(ID.Data, "OnlyTargetHouseEnemy", OnlyTargetHouseEnemy);
+        TransportsReturnOnUnload = ini->FUN_005295F0(ID.Data, "TransportsReturnOnUnload", TransportsReturnOnUnload);
+        AreTeamMembersRecruitable = ini->FUN_005295F0(ID.Data, "AreTeamMembersRecruitable", AreTeamMembersRecruitable);
         if (ini->FUN_00528A10(ID.Data, "Waypoint", FUN_00763610(Waypoint), waypoint, 64) > 0) {
             Waypoint = FUN_00763690(waypoint);
         }
         if (ini->FUN_00528A10(ID.Data, "TransportWaypoint", FUN_00763610(TransportWaypoint), waypoint, 64) > 0) {
             TransportWaypoint = FUN_00763690(waypoint);
         }
-        AbstractClass* script = Ptr_E0;
+        AbstractClass* script = Script;
         AbstractClass* newScript = ini->FUN_00528A10(ID.Data, "Script", DAT_00889F64, buffer, 128) ? FUN_00691C00(buffer) : script;
         TaskForceClass* taskForce = TaskForce;
-        Ptr_E0 = newScript;
+        Script = newScript;
         TaskForce = ini->FUN_00528A10(ID.Data, "TaskForce", DAT_00889F64, buffer, 128) ? static_cast<TaskForceClass*>(FUN_006E85F0(buffer)) : taskForce;
         if (!TaskForce) {
             if (DAT_00A8E8D0.Count <= 0) {
@@ -220,11 +220,11 @@ bool TeamTypeClass::vf_25(CCINIClass* ini)
             }
             TaskForce = static_cast<TaskForceClass*>(DAT_00A8E8D0.Items[0]);
         }
-        if (!Ptr_E0) {
+        if (!Script) {
             if (DAT_008B41C8.Count <= 0) {
                 return false;
             }
-            Ptr_E0 = DAT_008B41C8.Items[0];
+            Script = DAT_008B41C8.Items[0];
         }
         return true;
     }
@@ -241,41 +241,41 @@ bool TeamTypeClass::vf_26(CCINIClass* ini)
         } else if (FUN_00510F60(idxHouse)) {
             house = idxHouse;
         }
-        ini->WriteInteger(ID.Data, "VeteranLevel", unknown_A0, 0);
-        ini->WriteInteger(ID.Data, "MindControlDecision", unknown_C0, 0);
-        ini->WriteBool(ID.Data, "Loadable", Flag_A4);
-        ini->WriteBool(ID.Data, "Full", Flag_A5);
-        ini->WriteBool(ID.Data, "Annoyance", Flag_A6);
-        ini->WriteBool(ID.Data, "GuardSlower", Flag_A7);
+        ini->WriteInteger(ID.Data, "VeteranLevel", VeteranLevel, 0);
+        ini->WriteInteger(ID.Data, "MindControlDecision", MindControlDecision, 0);
+        ini->WriteBool(ID.Data, "Loadable", Loadable);
+        ini->WriteBool(ID.Data, "Full", Full);
+        ini->WriteBool(ID.Data, "Annoyance", Annoyance);
+        ini->WriteBool(ID.Data, "GuardSlower", GuardSlower);
         ini->FUN_00475610(ID.Data, "House", house);
-        ini->WriteBool(ID.Data, "Recruiter", Flag_A8);
-        ini->WriteBool(ID.Data, "Autocreate", Flag_A9);
-        ini->WriteBool(ID.Data, "Prebuild", Flag_AA);
-        ini->WriteBool(ID.Data, "Reinforce", Flag_AB);
-        ini->WriteBool(ID.Data, "Droppod", Flag_B0);
-        ini->WriteBool(ID.Data, "UseTransportOrigin", Flag_B1);
-        ini->WriteBool(ID.Data, "Whiner", Flag_AC);
-        ini->WriteBool(ID.Data, "LooseRecruit", Flag_AE);
-        ini->WriteBool(ID.Data, "Aggressive", Flag_AD);
-        ini->WriteBool(ID.Data, "Suicide", Flag_AF);
-        ini->WriteInteger(ID.Data, "Priority", unknown_B4, 0);
+        ini->WriteBool(ID.Data, "Recruiter", Recruiter);
+        ini->WriteBool(ID.Data, "Autocreate", Autocreate);
+        ini->WriteBool(ID.Data, "Prebuild", Prebuild);
+        ini->WriteBool(ID.Data, "Reinforce", Reinforce);
+        ini->WriteBool(ID.Data, "Droppod", Droppod);
+        ini->WriteBool(ID.Data, "UseTransportOrigin", UseTransportOrigin);
+        ini->WriteBool(ID.Data, "Whiner", Whiner);
+        ini->WriteBool(ID.Data, "LooseRecruit", LooseRecruit);
+        ini->WriteBool(ID.Data, "Aggressive", Aggressive);
+        ini->WriteBool(ID.Data, "Suicide", Suicide);
+        ini->WriteInteger(ID.Data, "Priority", Priority, 0);
         ini->WriteInteger(ID.Data, "Max", Max, 0);
-        ini->WriteInteger(ID.Data, "TechLevel", unknown_CC, 0);
+        ini->WriteInteger(ID.Data, "TechLevel", TechLevel, 0);
         ini->WriteInteger(ID.Data, "Group", Group, 0);
-        ini->WriteBool(ID.Data, "OnTransOnly", Flag_B3);
-        ini->WriteBool(ID.Data, "AvoidThreats", Flag_F2);
-        ini->WriteBool(ID.Data, "IonImmune", Flag_F3);
-        ini->WriteBool(ID.Data, "TransportsReturnOnUnload", Flag_F4);
-        ini->WriteBool(ID.Data, "AreTeamMembersRecruitable", Flag_F5);
-        ini->WriteBool(ID.Data, "IsBaseDefense", Flag_F6);
-        ini->WriteBool(ID.Data, "OnlyTargetHouseEnemy", Flag_F7);
-        if (Ptr_D0) {
-            ini->WriteString(ID.Data, "Tag", static_cast<AbstractTypeClass*>(Ptr_D0)->ID.Data);
+        ini->WriteBool(ID.Data, "OnTransOnly", OnTransOnly);
+        ini->WriteBool(ID.Data, "AvoidThreats", AvoidThreats);
+        ini->WriteBool(ID.Data, "IonImmune", IonImmune);
+        ini->WriteBool(ID.Data, "TransportsReturnOnUnload", TransportsReturnOnUnload);
+        ini->WriteBool(ID.Data, "AreTeamMembersRecruitable", AreTeamMembersRecruitable);
+        ini->WriteBool(ID.Data, "IsBaseDefense", IsBaseDefense);
+        ini->WriteBool(ID.Data, "OnlyTargetHouseEnemy", OnlyTargetHouseEnemy);
+        if (Tag) {
+            ini->WriteString(ID.Data, "Tag", static_cast<AbstractTypeClass*>(Tag)->ID.Data);
         }
         ini->WriteString(ID.Data, "Waypoint", FUN_00763610(Waypoint));
         ini->WriteString(ID.Data, "TransportWaypoint", FUN_00763610(TransportWaypoint));
-        if (Ptr_E0) {
-            ini->WriteString(ID.Data, "Script", static_cast<AbstractTypeClass*>(Ptr_E0)->ID.Data);
+        if (Script) {
+            ini->WriteString(ID.Data, "Script", static_cast<AbstractTypeClass*>(Script)->ID.Data);
         }
         if (TaskForce) {
             ini->WriteString(ID.Data, "TaskForce", static_cast<AbstractTypeClass*>(TaskForce)->ID.Data);
@@ -330,8 +330,8 @@ HRESULT __stdcall TeamTypeClass::Load(IStream* pStm)
     }
     new (this) TeamTypeClass(AbstractNoInit());
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&Ptr_D0);
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&Ptr_E0);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Tag);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Script);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&TaskForce);
     return 0;
 }
@@ -342,17 +342,17 @@ void TeamTypeClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractTypeClass::vf_13(crc);
     crc->FUN_004A1D50(Group);
-    crc->FUN_004A1CA0(Flag_A8);
-    crc->FUN_004A1CA0(Flag_A9);
-    crc->FUN_004A1CA0(Flag_AA);
-    crc->FUN_004A1CA0(Flag_AB);
-    crc->FUN_004A1CA0(Flag_AC);
-    crc->FUN_004A1CA0(Flag_AD);
-    crc->FUN_004A1CA0(Flag_AE);
-    crc->FUN_004A1CA0(Flag_AF);
-    crc->FUN_004A1CA0(Flag_B0);
-    crc->FUN_004A1CA0(Flag_B1);
-    crc->FUN_004A1D50(unknown_B4);
+    crc->FUN_004A1CA0(Recruiter);
+    crc->FUN_004A1CA0(Autocreate);
+    crc->FUN_004A1CA0(Prebuild);
+    crc->FUN_004A1CA0(Reinforce);
+    crc->FUN_004A1CA0(Whiner);
+    crc->FUN_004A1CA0(Aggressive);
+    crc->FUN_004A1CA0(LooseRecruit);
+    crc->FUN_004A1CA0(Suicide);
+    crc->FUN_004A1CA0(Droppod);
+    crc->FUN_004A1CA0(UseTransportOrigin);
+    crc->FUN_004A1D50(Priority);
     crc->FUN_004A1D50(Max);
     crc->FUN_004A1D50(unknown_BC);
     if (Owner) {
@@ -361,15 +361,15 @@ void TeamTypeClass::vf_13(Obj_004A1D30* crc)
     if (Owner) {
         crc->FUN_004A1D50(Owner->vf_rtti_4());
     }
-    crc->FUN_004A1D50(unknown_CC);
-    if (Ptr_D0) {
-        crc->FUN_004A1D50(Ptr_D0->vf_rtti_4());
+    crc->FUN_004A1D50(TechLevel);
+    if (Tag) {
+        crc->FUN_004A1D50(Tag->vf_rtti_4());
     }
     crc->FUN_004A1D50(Waypoint);
     crc->FUN_004A1D50(TransportWaypoint);
     crc->FUN_004A1D50(InstanceCount);
-    if (Ptr_E0) {
-        crc->FUN_004A1D50(Ptr_E0->vf_rtti_4());
+    if (Script) {
+        crc->FUN_004A1D50(Script->vf_rtti_4());
     }
     if (TaskForce) {
         crc->FUN_004A1D50(TaskForce->vf_rtti_4());
@@ -421,7 +421,7 @@ void TeamTypeClass::ProcessTaskForce()
         this->unknown_EC = FUN_005889F0(type->MovementZone, this->unknown_EC);
     }
 
-    if (this->Flag_F6) {
+    if (this->IsBaseDefense) {
         this->Flag_F0 = false;
     }
 }
