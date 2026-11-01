@@ -25,7 +25,7 @@ CoordStruct FootClass::vf_267()
             return ((AbstractClass*)unknown_5A0)->vf_22();
         }
         if (Destination != 0) {
-            return ((AbstractClass*)Destination)->vf_22();
+            return Destination->vf_22();
         }
     }
     return TechnoClass::vf_267();

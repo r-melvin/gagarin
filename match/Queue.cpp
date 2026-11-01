@@ -3026,7 +3026,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
         DAT_00AC51FC = (unsigned(DAT_00AC51FC) << 1 | unsigned(DAT_00AC51FC) >> 31) + contribution;
         QueueTargetDiagnostic target = QueueDiagnosticTarget(item->Target);
         QueueTargetDiagnostic destination =
-            QueueDiagnosticTarget(static_cast<AbstractClass*>(item->Destination));
+            QueueDiagnosticTarget(item->Destination);
         unsigned facing = QueueLogHeading(&item->PrimaryFacing);
         InfantryTypeClass* type = item->Type;
         int speed = int(item->SpeedPercentage * DAT_007E1710);
@@ -3063,7 +3063,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
         DAT_00AC51FC = (unsigned(DAT_00AC51FC) << 1 | unsigned(DAT_00AC51FC) >> 31) + contribution;
         QueueTargetDiagnostic target = QueueDiagnosticTarget(item->Target);
         QueueTargetDiagnostic destination =
-            QueueDiagnosticTarget(static_cast<AbstractClass*>(item->Destination));
+            QueueDiagnosticTarget(item->Destination);
         // Native resolves all three COM smart-pointer accesses before facing
         // callbacks, then invokes speed/index/track in that order.
         ILocomotion* speedInterface = QueueLogLocomotor(item);
@@ -3725,7 +3725,7 @@ void FUN_00650A90(int index)
         out->unknown_20 = static_cast<unsigned char>(item->Owner->ArrayIndex);
         out->unknown_08[23] = 0;
         strncpy(out->unknown_08, item->Type->ID, 23);
-        out->unknown_40 = QueueLogTarget(static_cast<AbstractClass*>(item->Destination), out->unknown_44);
+        out->unknown_40 = QueueLogTarget(item->Destination, out->unknown_44);
         out->unknown_24 = QueueLogTarget(item->Target, out->unknown_28);
         ++out;
         ++total;
@@ -3744,7 +3744,7 @@ void FUN_00650A90(int index)
         out->unknown_5C = QueueLogLocomotor(item)->GetSpeedAccum();
         out->unknown_08[23] = 0;
         strncpy(out->unknown_08, static_cast<UnitTypeClass*>(item->Type)->ID, 23);
-        out->unknown_40 = QueueLogTarget(static_cast<AbstractClass*>(item->Destination), out->unknown_44);
+        out->unknown_40 = QueueLogTarget(item->Destination, out->unknown_44);
         out->unknown_24 = QueueLogTarget(item->Target, out->unknown_28);
         ++out;
         ++total;
@@ -3760,7 +3760,7 @@ void FUN_00650A90(int index)
         out->unknown_20 = static_cast<unsigned char>(item->Owner->ArrayIndex);
         out->unknown_08[23] = 0;
         strncpy(out->unknown_08, static_cast<AircraftTypeClass*>(item->Type)->ID, 23);
-        out->unknown_40 = QueueLogTarget(static_cast<AbstractClass*>(item->Destination), out->unknown_44);
+        out->unknown_40 = QueueLogTarget(item->Destination, out->unknown_44);
         out->unknown_24 = QueueLogTarget(item->Target, out->unknown_28);
         ++out;
         ++total;

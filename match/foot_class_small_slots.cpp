@@ -259,7 +259,7 @@ bool FootClass::vf_311()
         return false;
     }
     if (vf_33()->bools_C8C[8] && Destination != 0) {
-        if (DAT_0087F7E8.FUN_005785F0(((AbstractClass*)Destination)->vf_18())) {
+        if (DAT_0087F7E8.FUN_005785F0(Destination->vf_18())) {
             return false;
         }
     }
