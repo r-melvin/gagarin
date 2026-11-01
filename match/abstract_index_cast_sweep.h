@@ -144,6 +144,16 @@ struct AbstractIndexTable
     IndexNode* SearchForNode(const int& id);
     bool       IsPresent(const int& id);
     void**     FetchIndex(const int& id);
+
+    // The Load bodies' (terrain 0x71CDA0, building 0x453E20) forms of the same table: the removal shifts the tail
+    // down one slot, zeroes the freed slot and drops the cache; the append leaves the growth as a call.
+    // FUNCTION: GAMEMD 0x41C500 (decl; reloc) -- grows the table by `amount` entries.
+    bool       Grow(int amount);
+    // FUNCTION: GAMEMD 0x41C590 (decl; reloc) -- the out-of-line sorted search the building Load calls.
+    IndexNode* Find(const int* key);
+    void       RemoveIndex(const int& id);
+    void       RemoveIndexByFind(const int& id);
+    void       AddIndexOutOfLine(const int& id, void* const& data);
 };
 GG_STATIC_ASSERT(sizeof(AbstractIndexTable) == 0x14);
 
@@ -159,6 +169,8 @@ extern "C" int __cdecl FUN_0041C610(const void* a, const void* b);  // GAMEMD 0x
 
 // FUNCTION: GAMEMD 0x523440 (decl; reloc) -- __fastcall sorted search: table in ECX, count in EDX, key by pointer.
 IndexNode* FUN_00523440(IndexNode* table, int count, const IndexNode* key);
+// The same search with the key passed as a bare integer, as the Load bodies hold it.
+IndexNode* FUN_00523440(IndexNode* table, int count, const int* key);
 
 inline IndexNode* AbstractIndexTable::SearchForNode(const int& id)
 {
@@ -173,6 +185,65 @@ inline IndexNode* AbstractIndexTable::SearchForNode(const int& id)
     IndexNode key;
     key.ID = id;
     return FUN_00523440(IndexTable, IndexCount, &key);
+}
+
+// The sorted-index removal, expanded in the terrain Load (the search is the inline sort and the call to 0x523440).
+inline void AbstractIndexTable::RemoveIndex(const int& id)
+{
+    if (IndexCount) {
+        if (!IsSorted) {
+            FUN_007C8B48(IndexTable, IndexCount, sizeof(IndexNode), FUN_0041C610);
+            Archive = 0;
+            IsSorted = true;
+        }
+        int key = id;
+        IndexNode* node = FUN_00523440(IndexTable, IndexCount, &key);
+        if (node) {
+            int found = node - IndexTable;
+            if (found != -1) {
+                for (int i = found + 1; i < IndexCount; i++) {
+                    IndexTable[i - 1].ID = IndexTable[i].ID;
+                    IndexTable[i - 1].Data = IndexTable[i].Data;
+                }
+                IndexCount--;
+                IndexTable[IndexCount].ID = 0;
+                IndexTable[IndexCount].Data = 0;
+                Archive = 0;
+            }
+        }
+    }
+}
+
+// The same removal with the search left as a call to 0x41C590 (the building Load).
+inline void AbstractIndexTable::RemoveIndexByFind(const int& id)
+{
+    IndexNode* node = Find(&id);
+    if (node) {
+        int found = node - IndexTable;
+        if (found != -1) {
+            for (int i = found + 1; i < IndexCount; i++) {
+                IndexTable[i - 1].ID = IndexTable[i].ID;
+                IndexTable[i - 1].Data = IndexTable[i].Data;
+            }
+            IndexCount--;
+            IndexTable[IndexCount].ID = 0;
+            IndexTable[IndexCount].Data = 0;
+            Archive = 0;
+        }
+    }
+}
+
+// The append, expanded in the Load bodies with the growth left as a call.
+inline void AbstractIndexTable::AddIndexOutOfLine(const int& id, void* const& data)
+{
+    if (IndexCount + 1 > IndexSize) {
+        if (!Grow(IndexSize == 0 ? 10 : IndexSize))
+            return;
+    }
+    IndexTable[IndexCount].ID = id;
+    IndexTable[IndexCount].Data = data;
+    IndexCount++;
+    IsSorted = false;
 }
 
 inline bool AbstractIndexTable::IsPresent(const int& id)

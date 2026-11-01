@@ -426,12 +426,12 @@ bool TerrainClass::vf_65(RectangleStruct* rect, bool force, int unused)
 // stores, dropping single stores (probe only), a zeroed-node struct assignment.
 HRESULT __stdcall TerrainClass::Load(IStream* pStm)
 {
-    TerrainAbstractIndex.RemoveIndex(vf_rtti_4());
+    AbstractIndexView.RemoveIndex(vf_rtti_4());
     HRESULT hr = ObjectClass::Load(pStm);
     if (hr >= 0) {
         new (this) TerrainClass(AbstractNoInit());
         int id = vf_rtti_4();
-        TerrainAbstractIndex.AddIndexOutOfLine(id, this);
+        AbstractIndexView.AddIndexOutOfLine(id, this);
         DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     }
     return hr;

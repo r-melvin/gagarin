@@ -10,33 +10,14 @@
 
 #include <unknwn.h>
 #include "os_version_info.h"
+#include "_layout/index.h"
 
-// Heap-owning five-field record: the constructor zeroes the fields and the
-// destructor frees the block, then zeroes them again (the exit-time stub at
-// 0x40BDA0 is the inlined destructor).
-struct Obj_0087F680
-{
-    int* Block;
-    int Count;
-    int Capacity;
-    unsigned char Owned;
-    int Extra;
-    Obj_0087F680() : Block(0), Count(0), Capacity(0), Owned(0), Extra(0) {}
-    ~Obj_0087F680()
-    {
-        delete Block;
-        Block = 0;
-        Count = 0;
-        Capacity = 0;
-        Owned = 0;
-        Extra = 0;
-    }
-};
-
+// The key-to-command index (the exit-time destructor stub at 0x40BDA0 is the inlined destructor).
+class CommandClass;
 // SYNTHETIC: GAMEMD 0x40BD70
 // SYNTHETIC: GAMEMD 0x40BDA0 -- exit-time destructor stub
 // GLOBAL: GAMEMD 0x87F680
-Obj_0087F680 DAT_0087F680;
+IndexClass<int, const CommandClass*> DAT_0087F680;
 
 // A screen rectangle {0, 0, 640, 400} built by its constructor.
 struct Rect_00886FA0

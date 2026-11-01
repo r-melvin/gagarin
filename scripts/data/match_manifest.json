@@ -7757,54 +7757,54 @@
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B0A0",
-  "sym": "?AddIndex@?$IndexClass@HPAUINIEntry@INIClass@@@@QAE_NABHABQAUINIEntry@INIClass@@@Z",
+  "sym": "?FUN_0052B0A0@?$IndexClass@HPAUINIEntry@INIClass@@@@QAE_NABHABQAUINIEntry@INIClass@@@Z",
   "len": "0xc7",
-  "name": "IndexClass<int,INIEntry*>::AddIndex",
+  "name": "IndexClass<int,INIEntry*>::FUN_0052B0A0",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B170",
-  "sym": "?IsPresent@?$IndexClass@HPAUINIEntry@INIClass@@@@QBE_NABH@Z",
+  "sym": "?FUN_0052B170@?$IndexClass@HPAUINIEntry@INIClass@@@@QAE_NABH@Z",
   "len": "0x97",
-  "name": "IndexClass<int,INIEntry*>::IsPresent",
+  "name": "IndexClass<int,INIEntry*>::FUN_0052B170",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B210",
-  "sym": "?FetchIndex@?$IndexClass@HPAUINIEntry@INIClass@@@@QBEABQAUINIEntry@INIClass@@ABH@Z",
+  "sym": "?FUN_0052B210@?$IndexClass@HPAUINIEntry@INIClass@@@@QAEABQAUINIEntry@INIClass@@ABH@Z",
   "len": "0x95",
-  "name": "IndexClass<int,INIEntry*>::FetchIndex",
+  "name": "IndexClass<int,INIEntry*>::FUN_0052B210",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B2B0",
-  "sym": "?RemoveIndex@?$IndexClass@HPAUINIEntry@INIClass@@@@QAE_NABH@Z",
+  "sym": "?RemoveIndex@?$IndexClass@HPAUINISection@INIClass@@@@QAE_NABH@Z",
   "len": "0xd5",
-  "name": "IndexClass<int,INIEntry*>::RemoveIndex",
+  "name": "IndexClass<int,INISection*>::RemoveIndex",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B390",
-  "sym": "?IsPresent@?$IndexClass@HPAUINISection@INIClass@@@@QBE_NABH@Z",
+  "sym": "?FUN_0052B390@?$IndexClass@HPAUINISection@INIClass@@@@QAE_NABH@Z",
   "len": "0x97",
-  "name": "IndexClass<int,INISection*>::IsPresent",
+  "name": "IndexClass<int,INISection*>::FUN_0052B390",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B430",
-  "sym": "?FetchIndex@?$IndexClass@HPAUINISection@INIClass@@@@QBEABQAUINISection@INIClass@@ABH@Z",
+  "sym": "?FUN_0052B430@?$IndexClass@HPAUINISection@INIClass@@@@QAEABQAUINISection@INIClass@@ABH@Z",
   "len": "0x95",
-  "name": "IndexClass<int,INISection*>::FetchIndex",
+  "name": "IndexClass<int,INISection*>::FUN_0052B430",
   "status": "matched",
   "pct": 100.0
  },
@@ -97275,7 +97275,7 @@
  {
   "tu": "match/coopcamp.cpp",
   "addr": "0x49EA10",
-  "sym": "??0Obj_0049EA10@@QAE@XZ",
+  "sym": "??0IndexClassRaw@@QAE@XZ",
   "len": "0x13",
   "name": "Obj_0049EA10::Obj_0049EA10",
   "status": "matched",
@@ -97706,27 +97706,27 @@
  {
   "tu": "match/Init.cpp",
   "addr": "0x5387D0",
-  "sym": "?AddIndex@IndexClassC@@QAE_NABHABQAX@Z",
+  "sym": "?FUN_005387D0@?$IndexClass@HPBVCommandClass@@@@QAE_NABHABQBVCommandClass@@@Z",
   "len": "0xc7",
-  "name": "IndexClassC::AddIndex",
+  "name": "IndexClass<int,const CommandClass*>::FUN_005387D0",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/Init.cpp",
   "addr": "0x5388A0",
-  "sym": "?RemoveIndex@IndexClassC@@QAE_NABH@Z",
+  "sym": "?RemoveIndex@?$IndexClass@HPBVCommandClass@@@@QAE_NABH@Z",
   "len": "0xd5",
-  "name": "IndexClassC::RemoveIndex",
+  "name": "IndexClass<int,const CommandClass*>::RemoveIndex",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/Init.cpp",
   "addr": "0x538980",
-  "sym": "?IsPresent@IndexClassC@@QBE_NABH@Z",
+  "sym": "?FUN_00538980@?$IndexClass@HPBVCommandClass@@@@QAE_NABH@Z",
   "len": "0x97",
-  "name": "IndexClassC::IsPresent",
+  "name": "IndexClass<int,const CommandClass*>::FUN_00538980",
   "status": "matched",
   "pct": 100.0
  },
@@ -123657,11 +123657,11 @@
  {
   "tu": "match/Ini.cpp",
   "addr": "0x5256D0",
-  "sym": "_$E4",
+  "sym": "_$E3",
   "len": "0x17",
-  "name": "dynamic initializer (DAT_00A8F2D0)",
+  "name": "_$E3",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/header_init_52b7a0.cpp",
@@ -123765,11 +123765,11 @@
  {
   "tu": "match/Init.cpp",
   "addr": "0x538C20",
-  "sym": "_$E6",
+  "sym": "_$E5",
   "len": "0x17",
-  "name": "dynamic initializer (DAT_00A8F908)",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/header_init_539110.cpp",
@@ -151211,9 +151211,9 @@
  {
   "tu": "match/Init.cpp",
   "addr": "0x48BC20",
-  "sym": "?Comparator@IndexClassC@@SAHPBX0@Z",
+  "sym": "?Comparator@?$IndexClass@HPBVCommandClass@@@@SAHPBX0@Z",
   "len": "0x22",
-  "name": "IndexClassC::Comparator",
+  "name": "IndexClass<int,const CommandClass*>::Comparator",
   "status": "matched",
   "pct": 100.0
  },

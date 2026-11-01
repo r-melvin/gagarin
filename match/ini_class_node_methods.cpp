@@ -121,8 +121,6 @@ INIClass::INISection::~INISection()
         FUN_007C8B3D(Comments);
         Comments = next;
     }
-
-    EntryIndex.Clear();
 }
 
 // CRCEngine::CRCEngine - seed the running value and clear the staging word.

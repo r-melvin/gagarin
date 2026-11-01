@@ -10,31 +10,15 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_rt/crt_allocator.h"
+#include "_layout/index.h"
 
 
-struct StaticIndex_008B3CC0 {
-    void* IndexTable;   // +0x00
-    int   IndexCount;   // +0x04
-    int   IndexSize;    // +0x08
-    char  IsSorted;     // +0x0C
-    void* Archive;      // +0x10
-    StaticIndex_008B3CC0() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(0), Archive(0) {}
-    ~StaticIndex_008B3CC0()
-    {
-        FUN_007C8B3D(IndexTable);
-        IndexTable = 0;
-        IndexCount = 0;
-        IndexSize = 0;
-        IsSorted = 0;
-        Archive = 0;
-    }
-};
-GG_STATIC_ASSERT(sizeof(StaticIndex_008B3CC0) == 0x14);
+GG_STATIC_ASSERT(sizeof(IndexClass<int, void*>) == 0x14);
 
 struct StaticIndexHolder_008B3CC0 {
     // GLOBAL: GAMEMD 0x008B3CC0
-    static StaticIndex_008B3CC0 DAT_008B3CC0;
+    static IndexClass<int, void*> DAT_008B3CC0;
 };
 // SYNTHETIC: GAMEMD 0x004D0820 -- exit-time destructor stub of DAT_008B3CC0, guard byte 0x008B3CD4 bit 0
 // SYNTHETIC: GAMEMD 0x004D07F0 -- initialiser of DAT_008B3CC0
-StaticIndex_008B3CC0 StaticIndexHolder_008B3CC0::DAT_008B3CC0;
+IndexClass<int, void*> StaticIndexHolder_008B3CC0::DAT_008B3CC0;

@@ -53,6 +53,7 @@
 #include "_layout/session_class.h"
 #include "header_init_shapes.h"
 #include "mathtbl_init_shapes.h"
+#include "_layout/index.h"
 
 #include "pair_vector_grow_sweep.h"
 
@@ -2600,43 +2601,13 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);
 extern "C" void __cdecl FUN_007C8B48(void* base, unsigned int num, unsigned int width,
                                      int (__cdecl* compare)(const void*, const void*));
 
-// The third retail instantiation of the {ID, Data} index (see Ini.cpp for the
-// first two): same layout and bodies, its own comparator (0x48BC20, declared
-// here only so the sort call is a relocatable reference).
-class IndexClassC
-{
-public:
-    struct NodeElement
-    {
-        int   ID;
-        void* Data;
-        NodeElement() throw() {}
-        static void* operator new[](unsigned int size) { return FUN_007C8E17(size); }
-    };
-
-    // FUNCTION: GAMEMD 0x5387D0
-    bool AddIndex(const int& id, void* const& data);
-    // FUNCTION: GAMEMD 0x5388A0
-    bool RemoveIndex(const int& id);
-    // FUNCTION: GAMEMD 0x538980
-    bool IsPresent(const int& id) const;
-
-    static int __cdecl Comparator(const void* ptr1, const void* ptr2);
-
-    inline bool IncreaseTableSize(int amount);
-    inline NodeElement* SearchForNode(const int& id) const;
-    inline bool IsPresentImpl(const int& id) const;
-
-    NodeElement* IndexTable;   // +0x00
-    int          IndexCount;   // +0x04
-    int          IndexSize;    // +0x08
-    bool         IsSorted;     // +0x0C
-    NodeElement* Archive;      // +0x10
-};
-GG_STATIC_ASSERT(offsetof(IndexClassC, Archive) == 0x10 && sizeof(IndexClassC) == 0x14);
+// The key-to-command index is the third retail instantiation of the {ID, Data} index (see _layout/index.h): its
+// own comparator at 0x48BC20 and out-of-line copies at 0x5387D0 (AddIndex), 0x5388A0 (RemoveIndex) and 0x538980
+// (IsPresent). The retail copy of RemoveIndex is phrased as an explicit specialisation below.
+template<> bool IndexClass<int, const CommandClass*>::RemoveIndex(const int& id);
 
 // GLOBAL: GAMEMD 0x87F680 -- the key-to-command index (typed here as the third {ID, Data} index).
-extern IndexClassC DAT_0087F680;
+extern IndexClass<int, const CommandClass*> DAT_0087F680;
 // GLOBAL: GAMEMD 0x87F658 -- every registered keyboard command.
 extern DynamicVectorClass<const CommandClass*> DAT_0087F658;
 // FUNCTION: GAMEMD 0x533D20 (decl; reloc)
@@ -2754,88 +2725,15 @@ void FUN_00532150()
     if (DAT_0087F680.IsPresent(0x2E)) {
         DAT_0087F680.RemoveIndex(0x2E);
     }
-    DAT_0087F680.AddIndex(0x2E, (void* const&)del);
-    if (DAT_0087F680.IsPresent(0x1B)) {
+    DAT_0087F680.FUN_005387D0(0x2E, del);
+    if (DAT_0087F680.FUN_00538980(0x1B)) {
         DAT_0087F680.RemoveIndex(0x1B);
     }
-    DAT_0087F680.AddIndex(0x1B, (void* const&)options);
-    if (DAT_0087F680.IsPresent(0x20)) {
+    DAT_0087F680.FUN_005387D0(0x1B, options);
+    if (DAT_0087F680.FUN_00538980(0x20)) {
         DAT_0087F680.RemoveIndex(0x20);
     }
-    DAT_0087F680.AddIndex(0x20, (void* const&)centerREvent);
-}
-
-inline bool IndexClassC::IncreaseTableSize(int amount)
-{
-    if (amount < 0) return false;
-
-    int total = IndexSize + amount;
-    NodeElement* table = new NodeElement[total];
-    if (table != 0) {
-
-        for (int index = 0; index < IndexCount; index++) {
-            table[index] = IndexTable[index];
-        }
-
-        FUN_007C8B3D(IndexTable);
-        IndexTable = table;
-        IndexSize += amount;
-        Archive = 0;
-
-        return true;
-    }
-
-    return false;
-}
-
-inline IndexClassC::NodeElement* IndexClassC::SearchForNode(const int& id) const
-{
-    if (!IsSorted) {
-        FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
-        ((IndexClassC*)this)->Archive = 0;
-        ((IndexClassC*)this)->IsSorted = true;
-    }
-
-    int num = IndexCount;
-    int key = id;
-    NodeElement* base = IndexTable;
-
-    while (num > 0) {
-        int half = num / 2;
-        NodeElement* mid = &base[half];
-
-        if (mid->ID > key) {
-            num = half;
-        } else {
-            if (mid->ID == key) {
-                return mid;
-            }
-            base = mid + 1;
-            num += -1 - half;
-        }
-    }
-
-    return 0;
-}
-
-inline bool IndexClassC::IsPresentImpl(const int& id) const
-{
-    if (IndexCount == 0) {
-        return false;
-    }
-
-    if (Archive != 0 && Archive->ID == id) {
-        return true;
-    }
-
-    NodeElement* nodeptr = SearchForNode(id);
-
-    if (nodeptr != 0) {
-        ((IndexClassC*)this)->Archive = nodeptr;
-        return true;
-    }
-
-    return false;
+    DAT_0087F680.FUN_005387D0(0x20, centerREvent);
 }
 
 class CCINIClass;
@@ -2897,7 +2795,8 @@ GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, CapacityIncrement) == 
 GG_STATIC_ASSERT(sizeof(CCINIClass*) == 4);
 
 // FUNCTION: GAMEMD 0x48BC20
-int __cdecl IndexClassC::Comparator(const void* ptr1, const void* ptr2)
+template<>
+int __cdecl IndexClass<int, const CommandClass*>::Comparator(const void* ptr1, const void* ptr2)
 {
     if (*(const int*)ptr1 == *(const int*)ptr2) {
         return 0;
@@ -2909,24 +2808,15 @@ int __cdecl IndexClassC::Comparator(const void* ptr1, const void* ptr2)
 }
 
 // FUNCTION: GAMEMD 0x5387D0
-bool IndexClassC::AddIndex(const int& id, void* const& data)
+template<>
+bool IndexClass<int, const CommandClass*>::FUN_005387D0(const int& id, const CommandClass* const& data)
 {
-    if (IndexCount + 1 > IndexSize) {
-        if (!IncreaseTableSize(IndexSize == 0 ? 10 : IndexSize)) {
-            return false;
-        }
-    }
-
-    IndexTable[IndexCount].ID = id;
-    IndexTable[IndexCount].Data = data;
-    IndexCount++;
-    IsSorted = false;
-
-    return true;
+    return AddIndex(id, data);
 }
 
 // FUNCTION: GAMEMD 0x5388A0
-bool IndexClassC::RemoveIndex(const int& id)
+template<>
+bool IndexClass<int, const CommandClass*>::RemoveIndex(const int& id)
 {
     NodeElement* nodeptr = 0;
 
@@ -2983,9 +2873,10 @@ bool IndexClassC::RemoveIndex(const int& id)
 }
 
 // FUNCTION: GAMEMD 0x538980
-bool IndexClassC::IsPresent(const int& id) const
+template<>
+bool IndexClass<int, const CommandClass*>::FUN_00538980(const int& id)
 {
-    return IsPresentImpl(id);
+    return IsPresent(id);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

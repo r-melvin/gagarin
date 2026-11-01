@@ -41,13 +41,7 @@ GG_STATIC_ASSERT(offsetof(CRC_00526960, Index) == 0x08);
 GG_STATIC_ASSERT(sizeof(CRC_00526960) == 0x0C);
 
 // A node of the section index: the CRC of the section name and the section.
-struct IndexNode_00526960
-{
-    int                  ID;      // +0x0000
-    INIClass::INISection* Data;    // +0x0004
-};
-GG_STATIC_ASSERT(offsetof(IndexNode_00526960, Data) == 0x04);
-GG_STATIC_ASSERT(sizeof(IndexNode_00526960) == 0x08);
+typedef IndexClass<int, INIClass::INISection*>::NodeElement IndexNode_00526960;
 
 // GLOBAL: GAMEMD 0xB7882C -- the index's static "nothing" value, handed back
 // by reference when the key is absent.

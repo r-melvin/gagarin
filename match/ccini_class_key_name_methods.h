@@ -44,12 +44,7 @@ GG_STATIC_ASSERT(offsetof(CRC_00526CC0, Index) == 0x08);
 GG_STATIC_ASSERT(sizeof(CRC_00526CC0) == 0x0C);
 
 // A node of the section index: the CRC of the section name and the section.
-struct IndexNode_00526CC0
-{
-    int                  ID;      // +0x0000
-    INIClass::INISection* Data;    // +0x0004
-};
-GG_STATIC_ASSERT(sizeof(IndexNode_00526CC0) == 0x08);
+typedef IndexClass<int, INIClass::INISection*>::NodeElement IndexNode_00526CC0;
 
 // Typed call/read view of the CRC-keyed section index.
 struct Index_00526CC0

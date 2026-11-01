@@ -22,14 +22,18 @@
 //                                          0x41C500 growth, 0x41C590 SearchForNode, 0x41C610 Comparator,
 //                                          0x523440 binary search. Dummy 0xB78828.
 //   IndexClass<int, INIClass::INIEntry*>   INIClass entry lookups (0x52B080..0x52B2B0, 0x52B6A0), dummy 0xB78830;
-//                                          explicit specialisation in index_class.h (its bodies are phrased as
-//                                          retail's copies are, with const members and no empty-table test in
-//                                          the search).
+//                                          out-of-line copies FUN_0052B0A0 / 0x52B170 / 0x52B210 (Ini.cpp).
 //   IndexClass<int, INIClass::INISection*> INIClass section lookups (0x52B390, 0x52B430, 0x52B720), dummy 0xB7882C.
 //   IndexClass<int, void*>                 the four ObjectTypeClass voxel caches (Clear at 0x5F9B60); the value
 //                                          type is a four-byte placeholder, only the node width reaches the code.
-// Other index instantiations still carry per-TU views (IndexClassC in Init.cpp, IndexClassRaw, the ccini
-// IndexNode_* views, StaticIndex_008B3CC0, BuildingBIndexView) and are to be folded into this template.
+// Further instantiations: <int, const CommandClass*> (the key-to-command index at 0x87F680; Init.cpp), the INI pair
+// above, and <int, void*> standing in for the INIClass / INISection index members (IndexClassRaw). Where retail's
+// out-of-line copy is phrased differently from the template (the removals at 0x52B2B0 and 0x5388A0, the comparators)
+// the TU holds it as an explicit specialisation of that member.
+// Second forms still held as per-TU views: the lookup with the sort expanded and the search left as a call to
+// 0x523440 (AbstractIndexTable in abstract_index_cast_sweep.h: 0x6E6E20 and the terrain / building Load bodies), the
+// five sort-then-search lookups at 0x41C590, 0x52B4F0, 0x52B620, 0x55F6E0 and 0x7107E0 (sort_then_search_sweep.h)
+// and the section-index probes GetKeyCount / GetKeyName make through Index_00526960 / Index_00526CC0 (ccini).
 //
 // The constructors of the global expand AddIndex with the growth inline (0x413D20, 0x43B740, 0x517A50,
 // 0x7353C0, 0x71BB90, 0x71BDF0, 0x74C5B0, 0x74EA70); the Load bodies (0x41B430, 0x453E20, 0x521960, 0x71CDA0,
@@ -55,7 +59,7 @@ public:
         NodeElement() {}
     };
 
-    IndexClass() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(false), Archive(0) {}
+    IndexClass();
     ~IndexClass() { Clear(); }
 
     void Clear();
@@ -82,7 +86,24 @@ public:
     bool FUN_0041C500(int amount);
     // FUNCTION: GAMEMD 0x523440 -- the __fastcall binary search over a sorted node array.
     static NodeElement* FUN_00523440(NodeElement* table, int count, const NodeElement* key);
+
+    // The INI instantiations' out-of-line copies (defined in Ini.cpp): <int, INIEntry*> at 0x52B0A0 (AddIndex), 0x52B170
+    // (IsPresent), 0x52B210 (FetchIndex); <int, INISection*> at 0x52B390 (IsPresent) and
+    // 0x52B430 (FetchIndex), whose RemoveIndex at 0x52B2B0 is an explicit specialisation in Ini.cpp. The command-key instantiation <int, const CommandClass*> (Init.cpp) at 0x5387D0
+    // (AddIndex) and 0x538980 (IsPresent); its RemoveIndex at 0x5388A0 is an explicit specialisation in Init.cpp.
+    bool FUN_0052B0A0(const T& id, const U& data);
+    bool FUN_0052B170(const T& id);
+    const U& FUN_0052B210(const T& id);
+    bool FUN_0052B390(const T& id);
+    const U& FUN_0052B430(const T& id);
+    bool FUN_005387D0(const T& id, const U& data);
+    bool FUN_00538980(const T& id);
 };
+
+template<class T, class U>
+IndexClass<T, U>::IndexClass() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(false), Archive(0)
+{
+}
 
 template<class T, class U>
 void IndexClass<T, U>::Clear()

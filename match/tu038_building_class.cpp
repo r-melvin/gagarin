@@ -6248,13 +6248,13 @@ void BuildingClass::vf_61(CoordStruct* coord)
 HRESULT __stdcall BuildingBView::Load(IStream* pStm)
 {
     int id = Rtti.Fetch_ID();
-    BuildingBAbstractIndex.RemoveIndex(id);
+    AbstractIndexView.RemoveIndexByFind(id);
     HRESULT hr = Func_70BF50(pStm);
     if (hr < 0)
         return hr;
     new (this) BuildingBView(HBNoInit());
     int newId = Rtti.Fetch_ID();
-    BuildingBAbstractIndex.AddIndexOutOfLine(newId, this);
+    AbstractIndexView.AddIndexOutOfLine(newId, this);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&Factory);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&C4AppliedBy);

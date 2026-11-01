@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include <objidl.h>   // IStream, HRESULT (VC98 SDK, LIBRARY)
 #include "_rt/gg_static_assert.h"
+#include "abstract_index_cast_sweep.h"
 #include "house_building_views.h"
 #include "house_building_com_bases.h"
 #include "house_building_views.h"
@@ -114,59 +115,5 @@ public:
     }
 };
 
-
-// The pointer index of every ObjectClass (global IndexClass at 0xB0E840).
-struct BuildingBIndexNode
-{
-    int   ID;     // +0x00
-    void* Data;   // +0x04
-    BuildingBIndexNode() {}
-};
-GG_STATIC_ASSERT(sizeof(BuildingBIndexNode) == 8);
-struct BuildingBIndexView
-{
-    BuildingBIndexNode* IndexTable;   // +0x00
-    int                 IndexCount;   // +0x04
-    int                 IndexSize;    // +0x08
-    bool                IsSorted;     // +0x0C
-    BuildingBIndexNode* Archive;      // +0x10
-
-    // FUNCTION: GAMEMD 0x41C500 (read-only here) - grows the table by `amount` entries.
-    bool Grow(int amount);
-    // FUNCTION: GAMEMD 0x41C590 (read-only here) - the sorted search; returns the node or 0.
-    BuildingBIndexNode* Find(const int* key);
-
-    void RemoveIndex(const int& id)
-    {
-        BuildingBIndexNode* node = Find(&id);
-        if (node) {
-            int found = node - IndexTable;
-            if (found != -1) {
-                for (int i = found + 1; i < IndexCount; i++) {
-                    IndexTable[i - 1].ID = IndexTable[i].ID;
-                    IndexTable[i - 1].Data = IndexTable[i].Data;
-                }
-                IndexCount--;
-                IndexTable[IndexCount].ID = 0;
-                IndexTable[IndexCount].Data = 0;
-                Archive = 0;
-            }
-        }
-    }
-    void AddIndexOutOfLine(const int& id, void* const& data)
-    {
-        if (IndexCount + 1 > IndexSize) {
-            if (!Grow(IndexSize == 0 ? 10 : IndexSize))
-                return;
-        }
-        IndexTable[IndexCount].ID = id;
-        IndexTable[IndexCount].Data = data;
-        IndexCount++;
-        IsSorted = false;
-    }
-};
-GG_STATIC_ASSERT(sizeof(BuildingBIndexView) == 0x14);
-// GLOBAL: GAMEMD 0xB0E840
-extern BuildingBIndexView BuildingBAbstractIndex;
 
 #endif
