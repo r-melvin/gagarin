@@ -78,6 +78,16 @@ extern "C" __declspec(dllimport) int __stdcall InvalidateRect(GG_HWND hWnd,
 // IAT 0x7E14C4: USER32!GetClientRect.
 extern "C" __declspec(dllimport) int __stdcall GetClientRect(GG_HWND hWnd, GG_RECT* lpRect);
 
+// IAT 0x7E14D4: USER32!CreateWindowExA.
+extern "C" __declspec(dllimport) GG_HWND __stdcall CreateWindowExA(unsigned long dwExStyle, const char* lpClassName,
+                                                                  const char* lpWindowName, unsigned long dwStyle,
+                                                                  int x, int y, int nWidth, int nHeight,
+                                                                  GG_HWND hWndParent, void* hMenu,
+                                                                  void* hInstance, void* lpParam);
+
+// GLOBAL: GAMEMD 0xB732F0 -- the module handle.
+extern void* DAT_00B732F0;
+
 // FUNCTION: GAMEMD 0x775690 (decl; reloc) -- __fastcall: a control's rectangle.
 void FUN_00775690(GG_HWND window, GG_RECT* rect);
 

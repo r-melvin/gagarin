@@ -149300,5 +149300,14 @@
   "name": "BuildingClass::FUN_004547C0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x60F320",
+  "sym": "?FUN_0060F320@@YGHPAXJ@Z",
+  "len": "0x181",
+  "name": "?FUN_0060F320@@YGHPAXJ@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

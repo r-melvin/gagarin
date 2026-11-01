@@ -4045,21 +4045,14 @@ void FUN_0060B1D0(GG_HWND hWnd, RectangleStruct* pRect)
     GetWindowRect(hParent, &rcParent);
     GetWindowRect(hWnd, &rcSelf);
 
-    int nParentW = rcParent.right - rcParent.left;
-    unsigned nMarginX = 0;
-    if (!bFills)
-    {
-        nMarginX = (nParentW - DAT_007F5BE4) / 2;
-        nMarginX = (((int)nMarginX < 0) - 1) & nMarginX;
-    }
+    unsigned nMarginX = Inline_DockMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
 
     int nParentH = rcParent.bottom - rcParent.top;
     int nShiftY = 0;
     if (!bFills)
     {
-        int nParentY = Inline_DockMargin(false, nParentH, DAT_007F5BF0);
-        int nDesignY = Inline_DockMargin(false, pRect->Y, DAT_007F5BF0);
-        nShiftY = nParentY - nDesignY;
+        nShiftY = Inline_DockMargin(false, nParentH, DAT_007F5BF0)
+                  - Inline_DockMargin(false, pRect->Y, DAT_007F5BF0);
     }
 
     int nWidth = rcSelf.right - rcSelf.left;
@@ -4107,9 +4100,9 @@ void FUN_0060B350(GG_HWND hWnd)
     {
         unsigned nMarginX = (nParentW - DAT_007F5BE4) / 2;
         nMarginX = (((int)nMarginX < 0) - 1) & nMarginX;
-        nHeight = DAT_00B0FAC4->unknown_04;
-        nWidth = DAT_00B0FAC4->unknown_02;
         nX = ((rcParent.right - nMarginX) - rcParent.left) - 0x9C;
+        nWidth = DAT_00B0FAC4->unknown_02;
+        nHeight = DAT_00B0FAC4->unknown_04;
         nY = ((DAT_00B0FC28->Y - DAT_00B0FC24->Y) / DAT_00B0FC24->Height - 1) * DAT_00B0FC24->Height
              + DAT_00B0FC24->Y;
     }
@@ -4587,6 +4580,72 @@ long __stdcall FUN_0060D520(HWND__* hwnd, unsigned int msg, unsigned int wparam,
     return DefWindowProcA(hwnd, msg, wparam, lparam);
 }
 
+// Two words hung on the replacement list box through GWL_USERDATA (-21).
+// +0x00: written "NewEdit" at 0x60F436, read at 0x60FB7B (0x60F9A0 measures it and
+// compares it with the same string at 0x60FD06). +0x04: written with the edit
+// control's GWL_STYLE at 0x60F43F; no reader of this offset was found in
+// 0x60F9A0, 0x610570 or 0x610CA0 (they only free the block).
+struct EditSwap_0060F320 {
+    const char* unknown_00;
+    long unknown_04;
+};
+GG_STATIC_ASSERT(offsetof(EditSwap_0060F320, unknown_04) == 0x04);
+GG_STATIC_ASSERT(sizeof(EditSwap_0060F320) == 0x08);
+
+// FUNCTION: GAMEMD 0x60F320  FUN_0060F320 (__stdcall)
+// EnumChildWindows callback: every visible, enabled edit control is swapped
+// for a list box of the same rectangle and id.
+int __stdcall FUN_0060F320(GG_HWND hWnd, long lParam)
+{
+    char szClass[128];
+    GG_RECT rcChild;
+    GG_RECT rcParent;
+
+    long lStyle = GetWindowLongA(hWnd, -16);
+    SetWindowLongA(hWnd, -21, 0);
+
+    if ((lStyle & 0x10000000) != 0 && (lStyle & 0x8000000) == 0)
+    {
+        GetClassNameA(hWnd, szClass, 128);
+
+        if (strcmp(szClass, "Edit") == 0)
+        {
+            GG_HWND hParent = GetParent(hWnd);
+            FUN_00775690(hWnd, &rcChild);
+            FUN_00775690(hParent, &rcParent);
+
+            int nX = rcChild.left - rcParent.left;
+            int nY = rcChild.top - rcParent.top;
+
+            unsigned long dwStyle = 0x40000110;
+            if ((lStyle & 0x10000) != 0)
+                dwStyle = 0x40010110;
+
+            GG_HWND hList = CreateWindowExA(0, "ListBox", 0, dwStyle,
+                                            nX, nY,
+                                            rcChild.right - rcChild.left,
+                                            rcChild.bottom - rcChild.top,
+                                            hParent, 0, DAT_00B732F0, 0);
+
+            EditSwap_0060F320* pSwap = new EditSwap_0060F320;
+            pSwap->unknown_00 = "NewEdit";
+            pSwap->unknown_04 = GetWindowLongA(hWnd, -16);
+            SetWindowLongA(hList, -21, (long)pSwap);
+
+            EnableWindow(hWnd, 0);
+            ShowWindow(hWnd, 0);
+            EnableWindow(hList, 1);
+            ShowWindow(hList, 1);
+
+            long lId = GetWindowLongA(hWnd, -12);
+            SetWindowLongA(hWnd, -12, GetWindowLongA(hList, -12));
+            SetWindowLongA(hList, -12, lId);
+        }
+    }
+
+    return 1;
+}
+
 // The tooltip globals 0xAC1CB8..0xAC1DD4 are declared in ownrdraw.h.
 
 // SYNTHETIC: GAMEMD 0x6107A0 -- initialiser: constructs DAT_00AC1CB8 (clears the tooltip state).
@@ -4716,6 +4775,10 @@ void FUN_00612910()
     DAT_00AC1DE0.count = 0;
     gg_free(block);
 }
+
+// Unclaimed, GAMEMD 0x612A60: subclass window procedure (WM_CTLCOLOREDIT 0x133, else CallWindowProcA).
+// Blocked on the canonical hash-table find/insert inline: retail probes 0xAC1B48 and 0xAC1B00 with the
+// key taken by reference (the address of the argument slot is hashed).
 
 // FUNCTION: GAMEMD 0x620050 (decl; reloc) -- line between two points.
 void __fastcall FUN_00620050(void* pSurface, const Point2D* pFrom, const Point2D* pTo, int nColorA, int nColorB);
