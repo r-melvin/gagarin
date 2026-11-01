@@ -15,6 +15,7 @@
 #include "_rt/gg_static_assert.h"
 #include "wide_string_class.h"
 #include "connman_class.h"
+#include "scenario_session_globals.h"
 
 extern "C" {
 // LIBRARY: GAMEMD 0x7CA858 (decl; reloc) -- CRT vswprintf (three-argument form).
@@ -59,8 +60,6 @@ GG_STATIC_ASSERT(offsetof(NetsharePacket, Name) == 0x04 &&
                  offsetof(NetsharePacket, unknown_1C3) == 0x1C3 &&
                  sizeof(NetsharePacket) == 0x1C7);
 
-// GLOBAL: GAMEMD 0xA8B394
-extern int DAT_00A8B394;
 // FUNCTION: GAMEMD 0x5DAC00 (decl; reloc) -- __fastcall: hash of a wide name.
 int FUN_005DAC00(const wchar_t* name);
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- the debug log printf; declared

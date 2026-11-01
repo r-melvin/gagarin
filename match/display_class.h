@@ -17,6 +17,7 @@
 #include "tooltip_manager_shared.h"
 #include "gadget_class_methods.h"
 #include "_layout/layer_class.h"
+#include "scenario_session_globals.h"
 
 // ---- foreign objects the entries reach ----------------------------------------------------------------------
 
@@ -72,8 +73,6 @@ public:
 
 // GLOBAL: GAMEMD 0xA8ED6B -- Unsorted::ArmageddonMode (byte).
 extern bool DisplayFlag_00A8ED6B;
-// GLOBAL: GAMEMD 0xA8ED9D (byte, set by vf_35)
-extern bool DisplayFlag_00A8ED9D;
 
 // GLOBAL: GAMEMD 0x8A03FC -- the PLACE.SHP shape.
 extern void* DisplayPlaceShape_008A03FC;

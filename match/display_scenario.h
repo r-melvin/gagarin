@@ -18,6 +18,7 @@
 #include "ui_display_chain.h"
 #include "mouse_ww_mouse_class.h"
 #include "shared_constants_globals.h"
+#include "scenario_session_globals.h"
 
 // A lepton coordinate (three dwords: the sprintf arguments are X and Y divided by 256).
 struct DisplayScCoord
@@ -112,8 +113,6 @@ extern DisplayScMap DisplayScMap_0087F7E8;
 
 // GLOBAL: GAMEMD 0x886FA0 / 0x886FA4 -- tactical view origin.
 extern Point2D DisplayScOrigin_00886FA0;
-// GLOBAL: GAMEMD 0xA8F7D8 -- coordinate debug display on.
-extern bool DisplayScFlag_00A8F7D8;
 // GLOBAL: GAMEMD 0xB73550 -- non-zero while the map draws tile by tile.
 extern int DisplayScDrawing_00B73550;
 // GLOBAL: GAMEMD 0x8A0630 -- shared text buffer.
@@ -300,7 +299,6 @@ extern int DisplayScGround_00AA10B0;
 extern int DisplayScGround_00AA0738;
 // GLOBAL: GAMEMD 0xA8ED6B / 0xA8ED5D (bytes) / 0xA8ED7C (int).
 extern bool DisplayScFlag_00A8ED6B;
-extern bool DisplayScFlag_00A8ED5D;
 extern int  DisplayScValue_00A8ED7C;
 // GLOBAL: GAMEMD 0x822CF8 -- the theater last loaded.
 extern int DisplayScTheater_00822CF8;

@@ -8,6 +8,7 @@
 #include "sidebar_class_layout.h"
 #include "tooltip_manager_shared.h"
 #include "mouse_ww_mouse_class.h"
+#include "scenario_session_globals.h"
 
 // GLOBAL: GAMEMD 0xB0C148 -- the 25 command-bar button shapes.
 extern SidebarShapeFile* CommandShapes_00B0C148[25];
@@ -224,8 +225,6 @@ extern int CurrentFrame_00A8ED84;
 // (BarRecord_00B0FC58 above.)
 // GLOBAL: GAMEMD 0x7F5BFC -- height term of the tooltip area.
 extern int TipHeight_007F5BFC;
-// GLOBAL: GAMEMD 0xA8B538 -- non-zero while input is locked.
-extern int InputLocked_00A8B538;
 // Command indices of the named commands handled by the hotkey chain.
 // GLOBAL: GAMEMD 0xB0CD24, 0xB0CB3C, 0xB0C1B8, 0xB0CB20, 0xB0CB68, 0xB0CB6C, 0xB0CB38
 extern int CommandIndexA_00B0CD24;
@@ -353,7 +352,7 @@ void TabClass::vf_10(int* key, Point2D* mouse)
             FlagToRedraw(0);
         }
     } else if (code == 0x80F1) {
-        if (InputLocked_00A8B538 == 0) {
+        if (DAT_00A8B538 == 0) {
             VocClass::PlayGlobal(DAT_008871E0->GUIOpenSound, 1.0f, 0x2000, 0);
             if (!At_5544) {
                 vf_13(&CommandButtonB_00B0CC40);

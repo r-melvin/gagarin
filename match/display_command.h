@@ -19,6 +19,7 @@
 #include "mapobj_globals.h"
 #include "sidebar_display_globals.h"
 #include "engine_core_globals.h"
+#include "scenario_session_globals.h"
 
 
 class DisplayCmdTechno;
@@ -411,10 +412,6 @@ extern DisplayCmdMarker DisplayCmdMarker_0089C3B0;
 extern bool DisplayCmdFlag_00A8ED5C;
 // GLOBAL: GAMEMD 0xA8E9A0 (byte)
 extern bool DisplayCmdFlag_00A8E9A0;
-// GLOBAL: GAMEMD 0xA8ED9D (byte)
-extern bool DisplayCmdFlag_00A8ED9D;
-// GLOBAL: GAMEMD 0xA8B538
-extern int DisplayCmdValue_00A8B538;
 // GLOBAL: GAMEMD 0x8A0740
 extern int DisplayCmdScale_008A0740;
 // GLOBAL: GAMEMD 0x88098C

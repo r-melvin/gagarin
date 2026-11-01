@@ -73,6 +73,7 @@
 #include <stddef.h>
 #include "_layout/version_class.h"
 #include "vector_class_operations.h"
+#include "scenario_session_globals.h"
 
 // LIBRARY: GAMEMD 0x007C8E17
 // FUN_007C8E17
@@ -193,8 +194,6 @@ extern bool DAT_00A8B8B4;
 extern bool DAT_00A8B8B5;
 // GLOBAL: GAMEMD 0xB04880
 extern bool DAT_00B04880;
-// GLOBAL: GAMEMD 0xA8F7D8
-extern bool DAT_00A8F7D8;
 // GLOBAL: GAMEMD 0xA8F2F8
 extern char DAT_00A8F2F8[];
 
@@ -369,16 +368,12 @@ struct CommandFrameSource
 };
 // GLOBAL: GAMEMD 0xA8D610
 extern CommandFrameSource DAT_00A8D610;
-// GLOBAL: GAMEMD 0xA8B538
-extern int DAT_00A8B538;
 // GLOBAL: GAMEMD 0x825C88 -- the last taunt time (-1 = never).
 extern int DAT_00825C88;
 // GLOBAL: GAMEMD 0xA8D110
 extern bool DAT_00A8D110;
 // GLOBAL: GAMEMD 0xA8D111
 extern bool DAT_00A8D111;
-// GLOBAL: GAMEMD 0xA8B394
-extern int DAT_00A8B394;
 // GLOBAL: GAMEMD 0xA8D108
 extern bool DAT_00A8D108[];
 // GLOBAL: GAMEMD 0xA8DBA0
@@ -1298,7 +1293,7 @@ void TauntCommandClass::vf_8(int key) const
                 CommandTauntPacket packet;
                 packet.Command = 0x1D;
                 strcpy(packet.Name, DAT_00A8DA78[0]->FUN_007350C0());
-                packet.unknown_31 = DAT_00A8B394;
+                packet.unknown_31 = PlayerColor;
                 packet.unknown_35 = DAT_00A8D610.FUN_005DAC00();
                 packet.Colour = DAT_00A8DA78[0]->unknown_4B;
                 packet.Taunt = unknown_04;

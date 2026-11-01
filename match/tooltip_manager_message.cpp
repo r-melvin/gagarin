@@ -7,6 +7,7 @@
 // bodies (Remove in particular) only match without /Ob2. Bodies ascending by
 // retail address.
 #include "tooltip_manager_shared.h"
+#include "scenario_session_globals.h"
 
 // USER32 KillTimer, reached through the IAT slot at 0x7e148c (reloc-normalised).
 extern "C" __declspec(dllimport) int __stdcall KillTimer(void* hWnd,
@@ -31,9 +32,6 @@ struct tagMSG
 GG_STATIC_ASSERT(offsetof(tagMSG, message) == 0x04);
 GG_STATIC_ASSERT(offsetof(tagMSG, wParam) == 0x08);
 GG_STATIC_ASSERT(sizeof(tagMSG) == 0x1C);
-
-// GLOBAL: GAMEMD 0xA8F7D8 -- coordinate debug display on.
-extern bool DisplayScFlag_00A8F7D8;
 
 // FUNCTION: GAMEMD 0x7240B0
 // Stops the 'PITT' timer, redraws the area of a showing tip, then frees the
@@ -70,7 +68,7 @@ void ToolTipManager::FUN_00724200(const tagMSG* msg)
         FUN_00724BE0();
         break;
     case 0x200:
-        if (ToolTipDelay != 0 && !DisplayScFlag_00A8F7D8) {
+        if (ToolTipDelay != 0 && !DAT_00A8F7D8) {
             KillTimer(hWnd, 0x54544950);
             SetTimer(hWnd, 0x54544950, ToolTipDelay, 0);
             FUN_00724BE0();

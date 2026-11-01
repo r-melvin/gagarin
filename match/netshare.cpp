@@ -539,9 +539,6 @@ HWND FUN_00775940(int id);
 #include "netshare_win.h"
 #include "netshare_slot_inline.h"
 
-// GLOBAL: GAMEMD 0xA8B27C -- a per-slot choice table (eight ints) cleared with
-// the start table when a slot stops being an AI.
-extern int DAT_00A8B27C[8];
 // GLOBAL: GAMEMD 0xA8B29C -- the start-position choice table (eight ints).
 extern int DAT_00A8B29C[8];
 // GLOBAL: GAMEMD 0xA8B2FC -- the team-choice table (eight ints).
@@ -616,7 +613,6 @@ extern const char* DAT_008316CC;
 extern const char* DAT_008316D0;
 
 // GLOBAL: GAMEMD 0xA8B27C, 0xA8B29C, 0xA8B2BC -- per-slot choice tables (eight ints each).
-extern int DAT_00A8B27C[8];
 extern int DAT_00A8B29C[8];
 extern int DAT_00A8B2BC[8];
 
@@ -1411,7 +1407,7 @@ void FUN_005E3720(const char* text)
     packet.Command = 0x17;
     strcpy(packet.Name, LocalHandle);
     strcpy(packet.Text, text);
-    packet.unknown_1BF = DAT_00A8B394;
+    packet.unknown_1BF = PlayerColor;
     packet.unknown_1C3 = FUN_005DAC00(BlankName);
     for (int i = 1; i < PlayerNodes.Count; i++) {
         NodeNameType* node = PlayerNodes.Vector[i];

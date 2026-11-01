@@ -12,6 +12,7 @@
 #include "mathtbl_init_shapes.h"
 #include "_rt/gg_static_assert.h"
 #include "scenario_session_globals.h"
+#include "house_type_arrays_globals.h"
 
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc)
 void __cdecl FUN_0048D080();
@@ -69,10 +70,6 @@ extern char STR_0082C460[];
 extern char STR_00832F74[];
 // STRING: GAMEMD 0x832F88 -- "ScoreRepeat is %s\n"
 extern char STR_00832F88[];
-// GLOBAL: GAMEMD 0xA83D20
-extern char DAT_00A83D20;
-// GLOBAL: GAMEMD 0xA83D22
-extern char DAT_00A83D22;
 
 // Jukebox option block: repeat flag at +0x44, shuffle flag at +0x46.
 struct ScoreOptions_005FA440

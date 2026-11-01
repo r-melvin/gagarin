@@ -9,11 +9,10 @@
 #include <stddef.h>
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
+#include "scenario_session_globals.h"
 
 // GLOBAL: GAMEMD 0x87F7E8
 extern char DAT_0087F7E8[];
-// GLOBAL: GAMEMD 0xA8B538
-extern int DAT_00A8B538;
 // GLOBAL: GAMEMD 0xB0FE58
 extern unsigned char DAT_00B0FE58;
 // GLOBAL: GAMEMD 0xB0FE65

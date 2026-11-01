@@ -14,6 +14,7 @@
 #include "event_queue.h"
 #include "_layout/house_class.h"
 #include "header_tuning_globals.h"
+#include "scenario_session_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -77,8 +78,6 @@ wchar_t* StringTable_LoadString(const char* label, int* out, const char* file, i
 int __cdecl FUN_00407000();
 // GLOBAL: GAMEMD 0xA8EDDC
 extern bool DAT_00A8EDDC;
-// GLOBAL: GAMEMD 0xA8B538
-extern int DAT_00A8B538;
 
 // The slider captions: game speed, scroll rate, detail and difficulty.
 // GLOBAL: GAMEMD 0x822730

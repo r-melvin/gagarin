@@ -905,8 +905,6 @@ extern DynamicVectorClass<NodeNameType*> DAT_00A8DA74;
 extern int DAT_00A8B54C;
 // GLOBAL: GAMEMD 0xB7790C -- an int per node, indexed by 0xA8B54C.
 extern int DAT_00B7790C[];
-// GLOBAL: GAMEMD 0xA8BB1C -- a copy of the last address (12 bytes).
-extern IPXAddressClass DAT_00A8BB1C;
 
 // A 0x10C-byte record whose name sits at +0x34.
 struct Record_0079F0A0

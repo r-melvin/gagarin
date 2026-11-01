@@ -19,6 +19,7 @@
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
 #include "shared_constants_globals.h"
+#include "scenario_session_globals.h"
 
 
 class BA2Obj;
@@ -1541,7 +1542,6 @@ extern int DAT_0087F8E8;
 extern int DAT_0087F8EC;
 extern int DAT_0087F8F0;
 extern unsigned char DAT_00A8B320;
-extern int DAT_00A8EC88;
 extern BA2Tech** DAT_00A8EC7C;
 extern int DAT_0089F6F0;
 extern int DAT_0089F6F4;

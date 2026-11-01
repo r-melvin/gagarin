@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
+#include "scenario_session_globals.h"
 
 struct Abstract_0070D4A0;
 struct Vtbl_0070D4A0;
@@ -74,8 +75,6 @@ GG_STATIC_ASSERT(offsetof(Vtbl_0070D4A0, At_3C8) == 0x3C8);
 
 // GLOBAL: GAMEMD 0xA8EC7C — TechnoClass::Array.Items.
 extern Techno_0070D4A0** DAT_00A8EC7C;
-// GLOBAL: GAMEMD 0xA8EC88 — TechnoClass::Array.Count.
-extern int DAT_00A8EC88;
 
 // An entry of the second array; two object references at +0x3C / +0x40.
 struct Ref_0070D4A0

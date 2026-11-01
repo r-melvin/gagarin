@@ -306,7 +306,6 @@ extern TechnoClass** DAT_008B3DC4;
 extern int DAT_008B3DD0;
 // GLOBAL: GAMEMD 0xA8EC7C / 0xA8EC88 -- a techno array, items and count.
 extern TechnoClass** DAT_00A8EC7C;
-extern int DAT_00A8EC88;
 // GLOBAL: GAMEMD 0xA8020C / 0xA80218 -- an object array, items and count.
 extern ObjectClass** DAT_00A8020C;
 extern int DAT_00A80218;

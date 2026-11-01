@@ -33,6 +33,7 @@
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
+#include "scenario_session_globals.h"
 
 struct Techno_004CFE80;
 
@@ -209,8 +210,6 @@ GG_STATIC_ASSERT(offsetof(TechnoVtbl_004CFE80, At_2C) == 0x2C &&
 
 // GLOBAL: GAMEMD 0xA8EC7C — the scanned object array.
 extern Techno_004CFE80** ObjectArray_00A8EC7C;
-// GLOBAL: GAMEMD 0xA8EC88 — its count.
-extern int ObjectCount_00A8EC88;
 
 
 

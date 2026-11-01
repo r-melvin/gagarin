@@ -12,6 +12,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "shared_constants_globals.h"
+#include "scenario_session_globals.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;

@@ -264,6 +264,7 @@
 #include "engine_core_globals.h"
 #include "mapobj_globals.h"
 #include "shared_constants_globals.h"
+#include "house_type_arrays_globals.h"
 
 class AlphaLightingRemapClass;
 class BulletClass;
@@ -737,7 +738,6 @@ extern HouseDynVector<HouseClusterView*> HouseListB0F720;
 // GLOBAL: GAMEMD 0xA8B228 / 0xA8E358 / 0xA83CF0 / 0xA83C78 - the type-array counts the unit trackers are sized from.
 extern int HouseAircraftTypeCount;
 extern int HouseInfantryTypeCount;
-extern int HouseUnitTypeCount;
 extern int HouseBuildingTypeCount;
 // GLOBAL: GAMEMD 0x889F64 - the default interface name text copied into UINameString.
 extern char HouseDefaultName[];

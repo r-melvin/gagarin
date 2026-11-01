@@ -26,6 +26,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "shared_constants_globals.h"
+#include "scenario_session_globals.h"
 
 struct HWND__;
 typedef HWND__* HWND_;
@@ -42,9 +43,6 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ wnd,
 #define GG_CB_SETCURSEL 0x14E
 #define GG_CBM_SETCOLOR 0x498
 #define GG_CB_GETITEMDATA 0x150
-
-// GLOBAL: GAMEMD 0xA8B394 — the local player's chosen colour index.
-extern int PlayerColor;
 
 // GLOBAL: GAMEMD 0x7EEF44 — the RGB value used when the index is out of range.
 extern const unsigned long DefaultSchemeColor;

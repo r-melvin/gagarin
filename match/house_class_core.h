@@ -10,6 +10,7 @@
 //   or a body in this cluster touches the offset; the rest are positional.
 #ifndef GG_MATCH_ECONOMY_HOUSE_BUILDING_HOUSE_CLASS_CORE_H
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_HOUSE_CLASS_CORE_H
+#include "scenario_session_globals.h"
 
 class WaypointPathClass;
 class WaypointClass;
@@ -384,7 +385,6 @@ GG_STATIC_ASSERT(sizeof(HouseSuperObject) == 0x80);
 
 // GLOBAL: GAMEMD 0xA8E334 / 0xA8E340 - the super-weapon type array (Items / Count).
 extern void** HouseSuperTypeItems;
-extern int HouseSuperTypeCount;
 
 // The connection-point source object the constructor allocates (0x34 bytes, allocated at 0x4F64AB;
 // constructor read-only here). Only the IUnknown slots are called.

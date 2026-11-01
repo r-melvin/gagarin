@@ -3,6 +3,7 @@
 #include <string.h>
 #include "connman_class.h"
 #include "winsock_interface_class.h"
+#include "scenario_session_globals.h"
 
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);   // CRT _strcmpi
 
@@ -16,8 +17,6 @@ extern int MaxAhead;
 // GLOBAL: GAMEMD 0xA8E2C8, 0xA8D60E, 0xA8E2D0 -- byte flags.
 // GLOBAL: GAMEMD 0xA8E2C8
 extern bool Flag_00A8E2C8;
-// GLOBAL: GAMEMD 0xA8D60E
-extern bool Flag_00A8D60E;
 // GLOBAL: GAMEMD 0xA8E2D0
 extern bool Flag_00A8E2D0;
 // GLOBAL: GAMEMD 0xA8E7AC (int flag), 0xA8ED84 (frame counter), 0xA80238 (house count).
@@ -31,8 +30,6 @@ extern int HouseCount_00A80238;
 extern NodeNameType* SlotPlayers_00A8DA90[8];
 // GLOBAL: GAMEMD 0xA8E2B2 -- per-player port words.
 extern unsigned short Ports_00A8E2B2[];
-// GLOBAL: GAMEMD 0xA8BB1C -- last router address copy (0xA8DBA4 / 0xA8DBBC: conn_types.h).
-extern IPXAddressClass Address_00A8BB1C;
 
 // External helper at 0x7350C0 (not an assigned entry): narrow a UTF-16 name into a
 // static ring buffer; ECX = source: __fastcall with one register argument.
@@ -345,7 +342,7 @@ int IPXManagerClass::Service()
                         break;
                     }
                 }
-                if (Flag_00A8D60E || ConnectionCount == 0) {
+                if (InhibitFlag || ConnectionCount == 0) {
                     continue;
                 }
                 if (HouseCount_00A80238 <= Players_00A8DA78[i]->unknown_6F) {
@@ -358,8 +355,8 @@ int IPXManagerClass::Service()
                              Frame_00A8ED84, MulticastChannel->Address.FUN_0053F0E0(0), addr.FUN_0053F0E0(0));
                 MulticastChannel->Address = addr;
                 MulticastChannel->Address.FUN_0053F200(port);
-                Address_00A8BB1C = addr;
-                Address_00A8BB1C.FUN_0053F200(port);
+                DAT_00A8BB1C = addr;
+                DAT_00A8BB1C.FUN_0053F200(port);
                 Address_00A8DBA4 = addr;
                 Address_00A8DBA4.FUN_0053F200(port);
                 *(unsigned short*)&Port_00A8DBBC = port;
@@ -439,7 +436,7 @@ int IPXManagerClass::Service()
                                          Frame_00A8ED84, MulticastChannel->Address.FUN_0053F0E0(0), addr.FUN_0053F0E0(0));
                             Players_00A8DA78[i]->Address = addr;
                             MulticastChannel->Address = addr;
-                            Address_00A8BB1C = addr;
+                            DAT_00A8BB1C = addr;
                             Address_00A8DBA4 = addr;
                             IdMap_00B052D0.FUN_00664240(Players_00A8DA78[i]->unknown_6F, &addr);
                         }

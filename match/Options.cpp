@@ -21,6 +21,7 @@
 #include <stddef.h>
 #include <windows.h>
 #include "_rt/gg_static_assert.h"
+#include "house_type_arrays_globals.h"
 
 // GLOBAL: GAMEMD 0x7EF378
 extern const double DAT_007EF378;
@@ -334,10 +335,6 @@ void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
 #include "ccini_class_methods.h"
 // GLOBAL: GAMEMD 0x8870C0 -- the options INI.
 extern CCINIClass DAT_008870C0;
-// GLOBAL: GAMEMD 0xA83D20 -- score repeat flag mirrored for the jukebox.
-extern bool DAT_00A83D20;
-// GLOBAL: GAMEMD 0xA83D22 -- score shuffle flag mirrored for the jukebox.
-extern bool DAT_00A83D22;
 // GLOBAL: GAMEMD 0xA8ED63 -- mode toggle flag.
 extern bool DAT_00A8ED63;
 // GLOBAL: GAMEMD 0x8A0DEE -- movie stretch capability.

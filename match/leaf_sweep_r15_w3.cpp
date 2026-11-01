@@ -5,6 +5,7 @@
 //   Address index: 0x6E8180, 0x718090, 0x747370, 0x75A810, 0x7B6630.
 
 #include <string.h>
+#include "house_type_arrays_globals.h"
 
 // ---------------------------------------------------------------------------
 // 0x6E8180: the item of a named array whose name (at +0x24) matches, else null.
@@ -38,13 +39,12 @@ struct Named_00747370
 };
 // GLOBAL: GAMEMD 0xA83CE4 / 0xA83CF0 -- the array's items and count.
 extern Named_00747370** DAT_00A83CE4;
-extern int DAT_00A83CF0;
 
 // FUNCTION: GAMEMD 0x747370
 int __fastcall FUN_00747370(const char* name)
 {
     if (name) {
-        for (int i = 0; i < DAT_00A83CF0; i++) {
+        for (int i = 0; i < HouseUnitTypeCount; i++) {
             if (_stricmp(DAT_00A83CE4[i]->Name, name) == 0)
                 return i;
         }
@@ -112,7 +112,7 @@ bool Str_007B6630::HasAnyOf(const char* set)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA83CF0
-int DAT_00A83CF0;
+int HouseUnitTypeCount;
 // GLOBAL: GAMEMD 0xA8E8D4
 Named_006E8180** DAT_00A8E8D4;
 // GLOBAL: GAMEMD 0xA8E8E0

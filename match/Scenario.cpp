@@ -136,7 +136,6 @@ extern int DAT_00A8B570; // GLOBAL: GAMEMD 0xA8B570
 extern unsigned int DAT_00A8DA90[8]; // GLOBAL: GAMEMD 0xA8DA90
 extern unsigned int DAT_00A8B2BC[8]; // GLOBAL: GAMEMD 0xA8B2BC
 extern unsigned int DAT_00A8B29C[8]; // GLOBAL: GAMEMD 0xA8B29C
-extern unsigned int DAT_00A8B27C[8]; // GLOBAL: GAMEMD 0xA8B27C
 extern const wchar_t DAT_00887734[]; // GLOBAL: GAMEMD 0x887734
 extern const char STR_0083DB0C[]; // STRING: GAMEMD 0x83DB0C
 void __fastcall FUN_00648350(); // FUNCTION: GAMEMD 0x648350 (decl)
@@ -173,7 +172,6 @@ extern const char STR_00830990[]; // STRING: GAMEMD 0x00830990
 TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; checked type filter
 void __fastcall FUN_007500B0(int value); // GAMEMD 0x7500B0
 double __cdecl FUN_004CAC40(double value); // GAMEMD 0x4CAC40
-extern unsigned char DAT_00A8ED5D; // GLOBAL: GAMEMD 0x00A8ED5D
 extern char DAT_00A83E48[]; // GLOBAL: GAMEMD 0x00A83E48
 extern int DAT_00A8B254; // GLOBAL: GAMEMD 0x00A8B254
 extern Obj_0069ACC0** DAT_00A8B8CC; // GLOBAL: GAMEMD 0x00A8B8CC

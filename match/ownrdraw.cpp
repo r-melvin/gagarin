@@ -141,6 +141,7 @@
 #include "packet_class.h"
 #include "dialog_type_lookup_predicates.h"
 #include "color_scheme_count_methods.h"
+#include "scenario_session_globals.h"
 
 class EntryList_006255F0
 {
@@ -543,7 +544,6 @@ int __stdcall FUN_006232B0(GG_HWND hDlg, unsigned int uMsg, unsigned int wParam,
 
 // Engine globals read by Updated (absolute dword/byte loads in the disasm).
 extern int           SessionGameMode; // GAMEMD 0xA8B238 (first field of the session)
-extern unsigned char InhibitFlag;     // GAMEMD 0xA8D60E
 extern int           InhibitWord;     // GAMEMD 0xA8DAB4
 
 // Helper functions called by Updated (direct CALLs; result is bool in AL where used).

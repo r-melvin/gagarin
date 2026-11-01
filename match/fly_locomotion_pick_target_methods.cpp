@@ -7,6 +7,7 @@
 //   gamemd.exe v1.001.
 #include "fly_locomotion_pick_target_methods.h"
 #include "_layout/session_class.h"
+#include "scenario_session_globals.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // VTABLE: GAMEMD 0x7E192C — the base vector's vtable.
@@ -67,7 +68,7 @@ void __stdcall FlyLocoPick::PickTarget()
         owned = 0;
     }
 
-    for (int i = ObjectCount_00A8EC88 - 1; i >= 0; i--) {
+    for (int i = DAT_00A8EC88 - 1; i >= 0; i--) {
         Techno_004CFE80* candidate = ObjectArray_00A8EC7C[i];
 
         if (owned == 0) {

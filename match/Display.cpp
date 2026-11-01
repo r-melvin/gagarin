@@ -49,6 +49,7 @@
 #include "sidebar_display_globals.h"
 #include "engine_core_globals.h"
 #include "shared_constants_globals.h"
+#include "scenario_session_globals.h"
 
 // Recolours the palette entries the highlight cycles through: eight consecutive entries filled from the colour ring,
 // starting `offset` entries into it.
@@ -1214,7 +1215,7 @@ void DisplayClass::vf_48(int, CellStruct* cell, DisplayCmdObject* target, int ac
         unknown_11CF = false;
         vf_18(0, a5);
         unknown_11D0 = false;
-        DisplayCmdFlag_00A8ED9D = true;
+        DAT_00A8ED9D = true;
         if (!proceed)
         {
             FUN_00731CF0();
@@ -1325,7 +1326,7 @@ process:
     }
     else if (action == 0x3C)
     {
-        if (!DisplayCmdValue_00A8B538)
+        if (!DAT_00A8B538)
         {
             DisplayCmdCellObj* cellObj = DisplayCmdMap_0087F7E8.GetCellAt_005657A0(cell);
             DisplayCmdVec3 where;
@@ -2078,7 +2079,7 @@ void DisplayClass::vf_32(DisplayScIni* ini)
     Session_00A8B238.FUN_0069AE90(0x44);
     FUN_0048D080();
 
-    bool flag = DisplayScFlag_00A8ED6B || DisplayScFlag_00A8ED5D;
+    bool flag = DisplayScFlag_00A8ED6B || DAT_00A8ED5D;
     FUN_00546DA0(flag, DisplayScScenario_00A8B230->Flag_34BD);
     Session_00A8B238.FUN_0069AE90(0x45);
     FUN_0048D080();
@@ -2198,7 +2199,7 @@ const wchar_t* DisplayClass::vf_33(int id)
     bool flagB;
     DisplayScMap_0087F7E8.FUN_00692300(screen, &cell, &coord, &object, &flagA, &flagB);
 
-    if (DisplayScFlag_00A8F7D8)
+    if (DAT_00A8F7D8)
     {
         _swprintf(DisplayScText_008A0630, L"(%d,%d)", coord.X / 256, coord.Y / 256);
         return DisplayScText_008A0630;
@@ -2321,7 +2322,7 @@ void DisplayClass::vf_35()
         DisplayTactical_00887324->FUN_006DA160();
     unknown_11CF = false;
     unknown_11D0 = false;
-    DisplayFlag_00A8ED9D = true;
+    DAT_00A8ED9D = true;
     vf_18(0, false);
 }
 
@@ -2363,7 +2364,7 @@ bool DAT_00884D44;
 // GLOBAL: GAMEMD 0x8A072C
 void* DisplayShadowShape_008A072C;
 // GLOBAL: GAMEMD 0xA8ED9D
-bool DisplayFlag_00A8ED9D;
+bool DAT_00A8ED9D;
 // GLOBAL: GAMEMD 0xB73554
 HWND DisplayWindow_00B73554;
 // GLOBAL: GAMEMD 0x820030
