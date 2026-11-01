@@ -3,7 +3,7 @@
 # Provenance: original project tooling.
 """Mapping generator for the structure migration: current source file -> target <Name>.CPP (report only, no moves).
 
-  tu_mapping.py [--json OUT] [--tsv OUT] [--file SUBSTR ...] [--split]
+  tu_mapping.py [--json OUT] [--tsv OUT] [--file SUBSTR ...] [--split] [--tu-map CSV]
 
 Inputs: scripts/data/original_tu_map.json (link_order windows and per-function evidence) and
 scripts/data/match_manifest.json (which current file holds each function). Rules, applied per function:
@@ -13,6 +13,10 @@ scripts/data/match_manifest.json (which current file holds each function). Rules
      where Family is the class name without the trailing "Class" (TriggerTypeClass -> TriggerType)
   3. comdat                                                                    -> no TU (header or instantiation TU)
   4. unknown                                                                   -> stays (no target)
+The binary is the source of truth for TU names: with `--tu-map CSV` (the tumigrate TU map, whose rows carry the
+full code range of a TU and the source-file string an assert in that range passes), every function inside the range
+of a TU named by such an assert maps to that name, ahead of the class-family guess of rule 2 (so Ini.CPP is not
+InfantryType.CPP, LdPrgMgr.cpp is not LoadProgressMgr.CPP, WorldDom.cpp is not a dialog control).
 A current file gets a target when every attributed (rules 1-2) function in it maps to the same one; it is
 "split" when two or more targets occur, "unplaced" when none does. Files that would merge are listed per
 target. Addresses never appear in a target name. Nothing is moved.
@@ -21,6 +25,7 @@ target. Addresses never appear in a target name. Nothing is moved.
 import argparse
 import bisect
 import collections
+import csv
 import json
 import re
 import sys
@@ -40,10 +45,23 @@ def class_of(tu):
     return m.group(1) if m else None
 
 
-def classify(entry, windows, starts):
+def attested_ranges(rows):
+    """[(lo, hi, name)] of the TUs whose name an assert in their code range attests (tumigrate TU map rows)."""
+    out = []
+    for r in rows:
+        if r.get("name_confidence") == "assert" and r.get("text_lo") and r.get("text_hi"):
+            out.append((int(r["text_lo"], 16), int(r["text_hi"], 16), r["name_or_bound"]))
+    return sorted(out)
+
+
+def classify(entry, windows, starts, attested=()):
     """-> (kind, target or None) for one original_tu_map function entry."""
     kind = entry["tu_kind"]
     addr = int(entry["addr"], 16)
+    if kind != "comdat":
+        for lo, hi, name in attested:
+            if lo <= addr <= hi:
+                return "attested-range", name
     if kind == "witnessed":
         return "attested", entry["tu"]
     i = bisect.bisect_right(starts, addr) - 1
@@ -58,12 +76,13 @@ def classify(entry, windows, starts):
     return kind, None
 
 
-def build(tu_map=None, manifest=None):
+def build(tu_map=None, manifest=None, tu_map_rows=None):
     tu_map = tu_map or json.loads((wwlib.DATA / "original_tu_map.json").read_text())
     manifest = manifest or json.loads((wwlib.DATA / "match_manifest.json").read_text())
     windows = sorted((int(w["lo"], 16), int(w["hi"], 16), w["tu"]) for w in tu_map["link_order"])
     starts = [w[0] for w in windows]
-    per_addr = {e["addr"].upper().replace("0X", "0x"): classify(e, windows, starts) for e in tu_map["functions"]}
+    attested = attested_ranges(tu_map_rows or [])
+    per_addr = {e["addr"].upper().replace("0X", "0x"): classify(e, windows, starts, attested) for e in tu_map["functions"]}
     files = collections.defaultdict(lambda: collections.Counter())
     for row in manifest:
         key = row["addr"].upper().replace("0X", "0x")
@@ -101,9 +120,11 @@ def main(argv=None):
     ap.add_argument("--json")
     ap.add_argument("--tsv")
     ap.add_argument("--file", action="append", default=[], help="only current files containing this substring")
+    ap.add_argument("--tu-map", help="tumigrate TU map CSV (tumap2/tu_map_v2.csv): TU names attested by an assert win over class-family guesses")
     ap.add_argument("--split", action="store_true", help="list split files with their target histogram")
     args = ap.parse_args(argv)
-    mapping = build()
+    rows = list(csv.DictReader(open(args.tu_map))) if args.tu_map else None
+    mapping = build(tu_map_rows=rows)
     sel = {f: e for f, e in mapping.items() if not args.file or any(s in f for s in args.file)}
     count = collections.Counter(e["status"] for e in sel.values())
     for f, e in sel.items():

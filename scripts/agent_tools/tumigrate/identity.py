@@ -14,6 +14,7 @@ import json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOCAL = re.compile(r'^\$[A-Za-z]+\d+$')
+INIT_SYM = re.compile(r'^_\$[ES]\d+$')
 _cache = {}
 BIND = {}        # relocation target name -> address text, for names bound to the same address
 sectioncmp = None
@@ -119,7 +120,7 @@ def main():
             continue
         if b['tu'] == r['tu'] and b['tu'] not in touched_files:
             continue
-        if b['sym'] != r['sym']:
+        if b['sym'] != r['sym'] and not (INIT_SYM.match(b['sym']) and INIT_SYM.match(r['sym'])):
             bad.append((hex(a), 'symbol changed', b['sym'], r['sym']))
             continue
         x = sections(bo, b['tu'])
@@ -127,7 +128,7 @@ def main():
         if x is None or y is None:
             bad.append((hex(a), 'object missing', b['tu'], r['tu']))
             continue
-        sx, sy = x.get(r['sym']), y.get(r['sym'])
+        sx, sy = x.get(b['sym']), y.get(r['sym'])   # a merge renumbers the compiler's _$E/_$S symbols
         if sx is None and sy is None:
             print("  ABSENT-BOTH", hex(a), r["sym"]); ok += 1
             continue

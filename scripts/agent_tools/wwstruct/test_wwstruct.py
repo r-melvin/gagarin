@@ -126,6 +126,24 @@ class Mapping(unittest.TestCase):
         self.assertEqual(m["match/c.cpp"]["status"], "split")
         self.assertEqual(m["match/d.cpp"]["status"], "unplaced")
 
+    def test_attested_name_wins_over_class_family(self):
+        tu_map = {"link_order": [{"tu": "Ini.CPP", "lo": "0x1100", "hi": "0x1100"}],
+                  "functions": [
+                      {"addr": "0x1100", "tu": "Ini.CPP", "tu_kind": "witnessed"},
+                      {"addr": "0x1200", "tu": "class:InfantryTypeClass", "tu_kind": "inferred-class"},
+                      {"addr": "0x1300", "tu": "class:InfantryTypeClass", "tu_kind": "inferred-contiguity"},
+                      {"addr": "0x1400", "tu": None, "tu_kind": "comdat"},
+                      {"addr": "0x9000", "tu": "class:InfantryTypeClass", "tu_kind": "inferred-class"},
+                  ]}
+        manifest = [{"tu": "match/infantry_type.cpp", "addr": "0x1200"}, {"tu": "match/infantry_type.cpp", "addr": "0x1300"},
+                    {"tu": "match/infantry_type.cpp", "addr": "0x1400"}, {"tu": "match/other.cpp", "addr": "0x9000"}]
+        rows = [{"name_or_bound": "Ini.CPP", "name_confidence": "assert", "text_lo": "0x1000", "text_hi": "0x1fff"},
+                {"name_or_bound": "Guess.CPP", "name_confidence": "low", "text_lo": "0x9000", "text_hi": "0x9fff"}]
+        self.assertEqual(tu_mapping.build(tu_map, manifest)["match/infantry_type.cpp"]["target"], "InfantryType.CPP")
+        m = tu_mapping.build(tu_map, manifest, tu_map_rows=rows)
+        self.assertEqual(m["match/infantry_type.cpp"]["target"], "Ini.CPP")
+        self.assertEqual(m["match/other.cpp"]["target"], "InfantryType.CPP")   # only assert-attested names override
+
 
 if __name__ == "__main__":
     unittest.main()

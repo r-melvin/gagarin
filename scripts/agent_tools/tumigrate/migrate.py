@@ -18,6 +18,7 @@ own globals.
 import argparse, csv, json, os, re, subprocess, sys, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cppsplit
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'wwstruct'))
 
 SR = os.environ.get('GAG_SCRATCH_ROOT') or os.path.join(os.path.dirname(os.environ.get('GAG_MAIN') or os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))), 'gagarin-scratch')
 TUMAP = ASSERTS = INIT_DELTA = INIT_SRC = None
@@ -73,9 +74,25 @@ def header_block(lines):
     return i
 
 
+def attested_dest(row, dest):
+    """DEST with its file name replaced by the assert-attested TU name when the TU map says an assert names the TU
+    (name_confidence 'assert') and DEST spells another name. Without DEST (or an attested name) returns DEST."""
+    if dest is None or row.get('name_confidence') != 'assert':
+        return dest
+    want = row['name_or_bound'][:-4] + '.cpp'
+    if os.path.basename(dest).lower() == want.lower():
+        return dest
+    return os.path.join(os.path.dirname(dest), want)
+
+
 def plan(tree, tu, excludes, dest):
     t = tu_row(tu)
     lo, hi = int(t['text_lo'], 16), int(t['text_hi'], 16)
+    # the binary is the source of truth for the name: a TU named by an assert in its range keeps that name, whatever
+    # a class-family guess (or a caller's --dest) says
+    attested = attested_dest(t, dest)
+    if attested != dest:
+        dest = attested
     hi_e, lo_l = int(t['hi_earliest'], 16), int(t['lo_latest'], 16)
     man = json.load(open(os.path.join(tree, 'scripts/data/match_manifest.json')))
     byfile = collections.defaultdict(list)
@@ -144,6 +161,22 @@ def plan(tree, tu, excludes, dest):
         d = dirs.most_common(1)[0][0] if dirs else 'match'
         stem = t['name_or_bound']
         dest = os.path.join(d, stem[:-4] + '.cpp')
+    # an existing destination always takes part: it is rewritten as the merged TU, so it has to be a contributor
+    # (with its own rows, or with none when it holds no row of this TU's range)
+    if (os.path.isfile(os.path.join(tree, dest)) and dest not in excludes
+            and dest not in {f['file'] for f in files} and dest not in {s['file'] for s in skipped}):
+        text = open(os.path.join(tree, dest), errors='strict').read()
+        lines, pre_end, chunks, inters = cppsplit.split(text)
+        fl = flags_of(text)
+        if fl != chosen and files:
+            skipped.append(dict(file=dest, why='existing destination: VC6FLAGS %s differ from the TU set %s' % (fl, chosen)))
+        else:
+            if not files:
+                chosen = fl
+            files.append(dict(file=dest, flags=fl, whole=False, move=[],
+                              all_rows=sorted(int(r['addr'], 16) for r in byfile[dest]), rows=[],
+                              notes=['existing destination with no row in the TU range']))
+    files.sort(key=lambda f: f['file'])
     return dict(tu=tu, name=t['name_or_bound'], lo=lo, hi=hi, hi_earliest=hi_e, lo_latest=lo_l,
                 sub=int(t['sub_index']), dest=dest, flags=chosen, files=files, skipped=skipped,
                 inits=[r['addr'] for r in inits])
@@ -244,6 +277,87 @@ def externalise(lines):
     return out
 
 
+GENERATED_HDR = re.compile(r'^//\s+(Original translation unit .*|in retail gamemd\.exe v1\.001, passed by the assert.*|'
+                           r'code range \(.*|Obj_/Gbl_ views below .*|them with the canonical class.*|a separate rename-only change\.)$')
+
+
+def drop_generated_header(lines):
+    """The dest file's own generated header sentences (this tool writes them again for the merged TU)."""
+    return [ln for ln in lines if not GENERATED_HDR.match(ln)]
+
+
+def declared_in(tree, destdir, texts, depth=3, seen=None):
+    """Names of free functions that `texts` (and the project headers they include, `depth` levels) declare."""
+    seen = set() if seen is None else seen
+    names = set()
+    for text in texts:
+        names.update(h['name'] for h in cppsplit.heads(text))
+        if depth <= 0:
+            continue
+        for ln in text.split('\n'):
+            m = INC_RE.match(ln)
+            if not m:
+                continue
+            path = os.path.normpath(os.path.join(tree, destdir, m.group(2)))
+            if path in seen or not os.path.isfile(path):
+                continue
+            seen.add(path)
+            names |= declared_in(tree, destdir, [open(path, errors='replace').read()], depth - 1, seen)
+    return names
+
+
+FWD_NOTE = '// Forward declaration: defined below, in ascending retail address order.'
+
+
+def insert_before_use(lines, name, proto):
+    """Insert `proto` before the top-level construct (with its leading comment block) that first uses `name`.
+    Returns (lines, inserted)."""
+    rx = re.compile(r'\b%s\b' % re.escape(name))
+    clean = cppsplit.strip_noncode('\n'.join(lines)).split('\n')
+    i = next((k for k, ln in enumerate(clean) if rx.search(ln)), None)
+    if i is None:
+        return lines, False
+    dep = cppsplit.depth_scan(lines)
+    j = i
+    while j > 0 and dep[j][0] != 0:
+        j -= 1
+    while j > 0:   # a signature or statement head spread over several lines
+        prev = clean[j - 1].strip()
+        if not prev or prev.startswith('#') or prev[-1] in ';}{' or dep[j - 1][1] != 0:
+            break
+        j -= 1
+    while j > 0 and cppsplit.is_comment(lines[j - 1]):
+        j -= 1
+    return lines[:j] + [FWD_NOTE, proto, ''] + lines[j:], True
+
+
+def forward_declarations(tree, destdir, decl_blocks, bodies):
+    """Prototypes for the free functions that earlier code uses before the chunk that defines or declares them.
+    `decl_blocks` (hoisted file preambles and interstitials, edited in place) get the prototype before the construct
+    that first uses the name; uses by an earlier chunk of `bodies` (address order) are covered by the returned
+    [proto] list, placed after the hoisted blocks. A name the hoisted blocks or an included header already declare
+    is left to them (the canonical header wins)."""
+    known = declared_in(tree, destdir, ['\n'.join('\n'.join(b) for b in decl_blocks)])
+    cleaned = [cppsplit.strip_noncode('\n'.join(b)) for b in bodies]
+    out, done = [], set()
+    for k, body in enumerate(bodies):
+        for h in cppsplit.heads('\n'.join(body)):
+            nm = h['name']
+            if nm in known or nm in done:
+                continue
+            rx = re.compile(r'\b%s\b' % re.escape(nm))
+            for bi, blk in enumerate(decl_blocks):
+                if rx.search(cppsplit.strip_noncode('\n'.join(blk))):
+                    decl_blocks[bi], ok = insert_before_use(blk, nm, h['proto'])
+                    if ok:
+                        done.add(nm)
+                    break
+            if nm not in done and any(rx.search(cleaned[j]) for j in range(k)):
+                out.append(h['proto'])
+                done.add(nm)
+    return out
+
+
 def compose(tree, p, sites):
     """Pure: returns (dest_text, {rewritten path: text}, deleted)."""
     rewrites = {}
@@ -261,7 +375,7 @@ def compose(tree, p, sites):
         hb = header_block(lines[:pre_end])
         head, tg = strip_markers(lines[:hb])
         tags += tg
-        head = clean_notes(trim_blank(head))
+        head = clean_notes(trim_blank(drop_generated_header(head) if is_dest else head))
         pre = [ln for ln in lines[hb:pre_end] if not FLAG_RE.match(ln)]
         pre = rewrite_includes(pre, os.path.dirname(f['file']), destdir, tree)
         block = []
@@ -375,12 +489,16 @@ def compose(tree, p, sites):
         hdr += ['//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing',
                 '//   them with the canonical class re-mangles their symbols, so that is left to',
                 '//   a separate rename-only change.']
+    fwd = forward_declarations(tree, destdir, decl_blocks, out_chunks)
     text = hdr
     for n in notes:
         text += ['//'] + n
     for b in decl_blocks:
         if b:
             text += [''] + b
+    if fwd:
+        text += ['', '// Forward declarations: these are defined below, in ascending retail address order, but used by',
+                 '// an earlier function.'] + fwd
     for b in out_chunks + tail:
         text += [''] + b
     return '\n'.join(text) + '\n', rewrites, deleted
@@ -412,10 +530,19 @@ def apply(tree, p, sites):
             r = dict(delta[a]); r['tu'] = dest
             man.append(r)
     open(mp, 'w').write(json.dumps(man, indent=1))
+    # file-scoped central bindings (`SRC::key`) of a deleted contributor follow the code into the new file
+    rekeyed = []
+    bp = os.path.join(tree, 'scripts/data/symbol_bindings.json')
+    if deleted and os.path.isfile(bp):
+        import init_interleave
+        bt, rekeyed = init_interleave.rekey_bindings_text(open(bp).read(), deleted, dest)
+        if rekeyed:
+            open(bp, 'w').write(bt)
     for f in deleted:
         subprocess.run(['git', '-C', tree, 'rm', '-q', '-f', f], check=True)
     subprocess.run(['git', '-C', tree, 'add', '--', dest], check=True)
-    return dict(dest=dest, moved_rows=n, init_rows=len(init_rows), deleted=deleted, rewritten=sorted(rewrites))
+    return dict(dest=dest, moved_rows=n, init_rows=len(init_rows), deleted=deleted, rewritten=sorted(rewrites),
+                bindings_rekeyed=len(rekeyed))
 
 
 def main():

@@ -78,6 +78,70 @@ def split(text):
     if prev < n: inters.append((prev, n))
     return lines, pre_end, chunks, inters
 
+def strip_noncode(text):
+    """Text with comments removed and string/char literal contents blanked (newlines kept)."""
+    out, i, n = [], 0, len(text)
+    while i < n:
+        c = text[i]
+        if text.startswith('//', i):
+            while i < n and text[i] != '\n':
+                i += 1
+        elif text.startswith('/*', i):
+            j = text.find('*/', i + 2)
+            j = n if j < 0 else j + 2
+            out.append('\n' * text.count('\n', i, j))
+            i = j
+        elif c in '"\'':
+            j = i + 1
+            while j < n and text[j] != c:
+                j += 2 if text[j] == '\\' else 1
+            out.append(c + c)
+            i = j + 1
+        else:
+            out.append(c)
+            i += 1
+    return ''.join(out)
+
+
+_FUNC_HEAD = re.compile(r'^(?P<pre>[^()=]*?[\w\*&>\s])\b(?P<name>[A-Za-z_]\w*)\s*\((?P<args>.*)\)\s*(?:const)?\s*$', re.S)
+_NOT_PRE = re.compile(r'\b(operator|typedef|template|return|using|friend|class|struct|union|enum|namespace)\b|::\s*$')
+
+
+def heads(text):
+    """Free-function definitions and declarations at brace depth 0: [{name, proto, kind}], kind 'def' or 'decl'.
+    `proto` is the whitespace-collapsed declaration with a trailing ';'. Member functions (qualified names),
+    operators, templates and non-function statements are not reported."""
+    code = '\n'.join(l for l in strip_noncode(text).split('\n') if not l.lstrip().startswith('#'))
+    out, cur, depth, i, n = [], [], 0, 0, len(code)
+    while i < n:
+        c = code[i]
+        if c == '{':
+            if depth == 0:
+                _emit(out, ''.join(cur), 'def')
+                cur = []
+            depth += 1
+        elif c == '}':
+            depth -= 1
+            if depth == 0:
+                cur = []
+        elif depth == 0:
+            if c == ';':
+                _emit(out, ''.join(cur), 'decl')
+                cur = []
+            else:
+                cur.append(c)
+        i += 1
+    return out
+
+
+def _emit(out, head, kind):
+    head = ' '.join(head.split())
+    m = _FUNC_HEAD.match(head)
+    if not m or _NOT_PRE.search(m.group('pre')) or 'extern "' in head:
+        return
+    out.append(dict(name=m.group('name'), proto=head + ';', kind=kind))
+
+
 def code_only(lines):
     """Lines that are not blank, comments or preprocessor-free noise."""
     out = []; inblock = False
