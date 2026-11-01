@@ -20,8 +20,16 @@ compiled instruction streams:
                    branches differ only by inversion/mirroring (je<->jne, jl<->jg,
                    ...), possibly with a jmp added or removed
   missing-extra    the instruction multiset differs (mnemonics or operand shapes)
+  commutative-swap every register difference is an operand swap of a commutative op
+                   (`add eax,ecx` vs `add ecx,eax`) or a swapped base/index (reccmp
+                   patch_mov_commutative); route to source_perm --only commute
+  cmp-swap         every register difference is `cmp a,b` vs `cmp b,a` (reccmp patch_cmp_swaps)
   reloc-or-table   streams look identical but the score is below 100 (relocation
                    target, switch table or float literal)
+
+Every row also gets `regpredict` (scripts/vc6/regpredict.py: the homm3 first-fit register model,
+B1/B8/B14/B16 labels with a lever hint), and `parked` = "B16" when the only residual is a
+transposition of an identical instruction multiset (no known lever; the permuter skips it).
 
 A row can carry several labels. `eligible` is true when no missing-extra or
 constant label is present, i.e. the permuter has something to search.
@@ -43,6 +51,7 @@ import tempfile
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from diff_retail import canon_mnemonic  # noqa: E402
+import regpredict  # noqa: E402
 
 REG_RE = re.compile(
     r"\b(e(?:ax|bx|cx|dx|si|di|bp|sp)|ax|bx|cx|dx|si|di|bp|sp"
@@ -193,6 +202,7 @@ def classify(retail, comp, relocs=(), base=0):
     shape_r = collections.Counter(x[0] for x in Rn)
     shape_c = collections.Counter(x[0] for x in Cn)
     labels = []
+    kinds = []
     if shape_r != shape_c:
         res["only_retail_shapes"] = dict(shape_r - shape_c)
         res["only_compiled_shapes"] = dict(shape_c - shape_r)
@@ -221,6 +231,7 @@ def classify(retail, comp, relocs=(), base=0):
         for r, c in zip(R, C):
             if r[1] != c[1]:
                 nreg += 1
+                kinds.append(regpredict.operand_swap_kind(r[0], r[1], c[1]))
             if r[2] != c[2]:
                 nstk += 1
             if r[3] != c[3]:
@@ -239,6 +250,9 @@ def classify(retail, comp, relocs=(), base=0):
     res.update({"reg_diffs": nreg, "stack_diffs": nstk, "imm_diffs": nimm})
     if nreg:
         labels.append("register-swap")
+        if len(R) == len(C) and kinds and all(kinds):
+            labels.append("cmp-swap" if set(kinds) == {"cmp"} else "commutative-swap")
+            res["operand_swaps"] = len(kinds)
     if nstk:
         labels.append("stack-slot")
     if nimm:
@@ -246,13 +260,18 @@ def classify(retail, comp, relocs=(), base=0):
     if not labels:
         labels = ["reloc-or-table"]
     res["labels"] = labels
+    pred = regpredict.predict(R, C)
+    if pred:
+        res["regpredict"] = pred
+        if pred["label"] == "B16-schedule":
+            res["parked"] = "B16"
     return res
 
 
 PRIORITY = ["missing-extra", "constant", "branch-polarity", "scheduling", "branch-target",
-            "register-swap", "stack-slot", "reloc-or-table"]
+            "commutative-swap", "cmp-swap", "register-swap", "stack-slot", "reloc-or-table"]
 PERMUTABLE = {"register-swap", "stack-slot", "scheduling", "branch-polarity",
-              "branch-target"}
+              "branch-target", "commutative-swap", "cmp-swap"}
 
 
 def primary(labels):
@@ -307,7 +326,7 @@ def run_tu(tu, rows):
             rec.update(res)
             rec["primary"] = primary(res["labels"])
             rec["eligible"] = (bool(res["labels"]) and
-                               set(res["labels"]) <= PERMUTABLE)
+                               set(res["labels"]) <= PERMUTABLE and not res.get("parked"))
             out.append(rec)
     return out
 

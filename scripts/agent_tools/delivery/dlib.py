@@ -88,6 +88,18 @@ STEER = [
     ("pragma-optimize", re.compile(r"#\s*pragma\s+optimize")),
     ("const-condition", re.compile(r"\bif\s*\(\s*(1|0|true|false)\s*\)|\bwhile\s*\(\s*0\s*\)")),
     ("volatile", re.compile(r"\bvolatile\b")),
+    # Thief3-Decomp accept.py gate: inline asm / _emit / naked / goto / codegen pragmas / literal exe addresses
+    ("_emit", re.compile(r"\b_?_emit\b")),
+    ("codegen-pragma", re.compile(r"#\s*pragma\s+(?:inline_depth|inline_recursion|auto_inline|function|check_stack)\b")),
+    ("exe-address-cast", re.compile(r"\)\s*\(?\s*0x[4-9a-fA-F][0-9a-fA-F]{5}\b|_cast\s*<.*>\s*\(\s*0x[4-9a-fA-F][0-9a-fA-F]{5}\b")),
+]
+# Findings that warn instead of failing: goto is real control flow in many recovered functions, so it needs the
+# retail CFG as evidence rather than a ban; the others are plausible constants or ABI offsets.
+STEER_WARN = [
+    ("goto", re.compile(r"\bgoto\s+\w+\s*;")),
+    ("intrinsic-pragma", re.compile(r"#\s*pragma\s+intrinsic\b")),
+    ("exe-address-literal", re.compile(r"(?<![\w.])0x[4-9][0-9a-fA-F]{5}\b")),
+    ("pointer-offset-cast", re.compile(r"\(\s*(?:unsigned\s+)?(?:char|BYTE|void|DWORD|int)\s*\*\s*\)\s*\w+(?:(?:->|\.)\w+)*\s*\+\s*(?:0x[0-9a-fA-F]+|\d+)")),
 ]
 VOLATILE_EVIDENCE = re.compile(r"CreateThread|thread|callback|timer|critical section|timeSetEvent|waveOut|IDirectSound", re.I)
 

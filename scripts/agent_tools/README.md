@@ -31,6 +31,7 @@ With no file the `words` rule is disabled and a warning is printed on every run.
 | land | `delivery/pktlint.py`, `delivery/pktrebase.py`, `delivery/batchland.py` / `land/land_bundle.sh`, `land/inc_gates.sh`, `land/verify_safe.sh` |
 | full M3 gate for one worktree | `land/m3_gate.sh WORKTREE [--full]` (JSON summary: matched, partials, differing bytes per section, project bytes, placement.json); `land/placement_diff.py OLD NEW` classifies changed pieces |
 | structure migration (measure only) | `wwstruct/chd_census.py OBJDIR [--base OBJDIR]` (RTTI `??_R3` attributes per object vs retail), `wwstruct/emitter_map.py OBJDIR [--against OBJDIR]` (which object the link keeps per shared COMDAT), `wwstruct/static_init_dump.py OBJDIR [--against OBJDIR]` (`_$E`/`_$S` per TU), `wwstruct/tu_mapping.py` (current file -> target `<Name>.CPP`, report only); tests: `wwstruct/test_wwstruct.py` |
+| triage the partials | `partial_triage.py` (class, delta and routing per partial row: register-only, order-only/parked B16, stack-only, inline-shape, structural), then `../permuter/source_perm.py` for the permuter/commute rows; `regmine.py` for what edits did to which diff patterns |
 | lead lists (report only) | `delivery/placement_leads.py`, `delivery/ini_names.py`, `delivery/flagsweep.py`, `delivery/permute_queue.py` |
 
 Skills (`skills/`, installed with `skills/install.sh`): `gagarin-packet-worker`, `gagarin-lander`,
@@ -42,7 +43,7 @@ pattern: it matches the waiting shell itself and the wait never ends. Wait on th
 (`m3_gate.sh` exits 0 iff every step passed) or on the PID you saved from `$!`.
 
 Tests: `delivery` (`python3 -m unittest tests.test_delivery`), `land` (`python3 -m unittest test_land`,
-`python3 selftest.py`), `trivgen` (`python3 -m unittest test_trivgen`), all from their own directory.
+`python3 selftest.py`), `trivgen` (`python3 -m unittest test_trivgen`), `partial_triage`/`regmine`/`attempts` (`python3 -m unittest test_partial_triage test_regmine test_attempts` here), `regpredict`/`residual_classify` (`scripts/vc6`), `source_perm` (`scripts/permuter`, `python3 -m unittest test_source_perm`), all from their own directory.
 
 Not shipped: `cache/` (rebuilt: `ghidra_functions.json` from the ghidra CLI, `vtable_slots.json` from
 `../vc6/vtable_slots.py`), caches, run outputs, one-off scripts of past migrations.
@@ -54,11 +55,37 @@ Not shipped: `cache/` (rebuilt: `ghidra_functions.json` from the ghidra CLI, `vt
 | `ctx.py ADDR [--json]` | everything about one function before you draft it | stdout |
 | `vslot_owners.py [--tsv OUT] [--class C]` | which class does each virtual function belong to by the RTTI vtables holding it, and which manifest rows sit under a stand-in, a class outside that chain or no class (the rehoming worklist)? | stdout / TSV / JSON |
 | `classcheck.py CLASS [--header H]` | does this header's layout agree with the binary, and which other headers define the class? | `<state>/orchestration/class_reports/CLASS.json` |
-| `attempts.py add/show/search/best/import` | what has already been tried at this address? | `<state>/orchestration/attempts.jsonl` |
+| `attempts.py add/show/search/best/import/check/defer` | what has already been tried at this address, and may another attempt run (cap 12, patience 4, no identical source, defer is an outcome)? | `<state>/orchestration/attempts.jsonl` |
+| `partial_triage.py [--out DIR] [-j 4]` | which class (register-only, order-only, stack-only, inline-shape, structural) is each partial row, how many instructions must change, and where does it route (permuter, `source_perm --only commute`, parked B16, reccmp-stackcmp, inline library, manual)? | `DIR/triage.tsv`, `summary.json` (absolute paths; each TU compiled once, 4 parallel) |
+| `regmine.py [--ledger L] [--ready-glob G]` | which source edit fixed or failed to fix which diff pattern, from the attempts ledger and held-packet notes? | markdown rulebook under the main checkout's untracked `.scratch/regmine/` |
 | `libmatch.py [LIB...]` | which .text functions are VC6 CRT, by bytes? | `<state>/orchestration/library_map.json` |
 | `refaudit.py [--json OUT]` | do unbound global references agree across TUs? | stdout / JSON |
 | `tpl_audit.py OBJDIR [--instances\|--divergent\|--multi-g]` | which objects define each template COMDAT, which one the link keeps (link order), does it equal retail, which COMDATs diverge, and are the multi-address `??_G` reached by direct calls? | stdout / JSON |
 | `aligned_diff.py --obj O --sym S --addr A --len L [--hunks]` | how close is a partial once insertions/deletions are aligned (LCS under diff_retail's reloc-normalised equality), and where are the mismatching runs? | stdout |
+
+## partial_triage.py
+Reuses `scripts/vc6/residual_classify.py` (labels, now including `commutative-swap` and `cmp-swap`, the
+reccmp operand-swap patches) and `scripts/vc6/regpredict.py` (the homm3 first-fit register model for C2 12.00.8447:
+EAX, ECX, EDX, ESI, EDI, EBX, EBP; call-crossing values lose EAX/ECX/EDX; labels B1 role swap/rebind/call-crossing,
+B8 zero-CSE, B16 schedule, with a lever hint; a minimal model, so expect labels, not matches). Classes: `register-only`,
+`order-only` (identical instruction multiset transposed = B16, no known lever: routed `parked (B16)` so workers stop
+spending on it; a branch-layout-only difference stays with the permuter), `stack-only`, `inline-shape` (the length delta
+sits >= 60% in call-vs-inlined alignment hunks), `structural`; plus `reloc-only`, `compile-fail`, `no-score`.
+`delta` = max(retail, compiled) minus the LCS of the masked instructions. A relative `--out` is made absolute, an object
+the compiler did not write is `compile-fail`, never skipped. `permute_queue.py --triage triage.tsv` leaves parked rows
+out. Tests: `python3 -m unittest test_partial_triage` here, `test_regpredict test_residual_classify` in `scripts/vc6`.
+
+## source_perm.py (scripts/permuter)
+Non-steering permuter on the real TU. A readability/anti-steering filter is on by default (`--no-filter` is for
+diagnostics; nothing it finds is landable): mutations are built to preserve semantics (statements only move when a
+conservative effects model proves they commute), and every candidate is linted against the base body (no new casts,
+`volatile`, `register`, pragmas, asm, pointer aliases, locals the base does not declare, dummy locals or self-assignments,
+scope-only blocks, duplicated statements or helpers, unreadable statements). Passes: swap, move, declorder, hoist, sink,
+inline, split (name a temporary: restores base names, or `--temp 'TYPE NAME = EXPR'` hints that the worker names),
+ifelse, earlyret/unelse, forwhile, commute, marker (`--markers FILE` with `PERM_GENERAL(a, b)` / `PERM_LINESWAP(...)`
+alternatives, decomp-permuter style; landed text never has markers). `--only commute,swap` / `--skip` pick passes. The
+certified diff is classified (stmt-reorder, decl-order, named-local-split/merge, loop-form, if-else-arms,
+early-return-shape, operand-order) and printed with the mutation chain. Tests: `python3 -m unittest test_source_perm`.
 
 ## ctx.py
 `ctx.py 0x552060` prints the extent (`function_extent_audit.json` if listed,

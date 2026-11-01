@@ -122,6 +122,20 @@ class LibraryFilter(unittest.TestCase):
         self.assertEqual([r["addr"] for r in keep], ["0x403000"])
         self.assertEqual(dropped, {"in_manifest": 1, "claimed": 1, "library": 1})
 
+    def test_permute_queue_reads_parked_rows(self):
+        import permute_queue as PQ
+        p = os.path.join(tempfile.mkdtemp(prefix="pq_", dir=D.SCRATCH), "t.tsv")
+        with open(p, "w") as f:
+            f.write("addr\troute\n0x401000\tparked (B16)\n0x402000\tpermuter\n")
+        self.assertEqual(PQ.parked_addrs(p), {0x401000})
+
+    def test_dispatch_untried_drops_ledger_addresses(self):
+        import dispatch
+        rows = [{"addr": a} for a in ("0x401000", "0x402000", "0x403000")]
+        keep, dropped = dispatch.refilter(rows, {}, {}, {}, tried={0x402000})
+        self.assertEqual([r["addr"] for r in keep], ["0x401000", "0x403000"])
+        self.assertEqual(dropped["tried"], 1)
+
 
 class LintRules(unittest.TestCase):
     def setUp(self):
@@ -144,6 +158,46 @@ class LintRules(unittest.TestCase):
         self.assertIn("inline-asm", msgs)
         self.assertIn("volatile on an access", msgs)
         self.assertIn("const-condition", msgs)
+
+    def test_thief3_gate_forms(self):
+        src = HEADER + textwrap.dedent("""
+            // FUNCTION: GAMEMD 0x401000
+            int f(int *p) {
+                __asm _emit 0x90
+                #pragma inline_depth(0)
+                #pragma auto_inline(off)
+                int *q = (int *)0x87E878;
+                void (*fn)() = reinterpret_cast<void (*)()>(0x4A0450);
+                return *q;
+            }
+            """)
+        f = self.rules({"match/x/c.cpp": src}, [], {"steering"})
+        errs = " ".join(x["msg"] for x in f if x["level"] == "E")
+        for kind in ("_emit", "codegen-pragma", "exe-address-cast"):
+            self.assertIn(kind, errs)
+        self.assertEqual(sum(1 for x in f if x["level"] == "E" and "exe-address-cast" in x["msg"]), 2)
+
+    def test_goto_and_bare_literals_only_warn(self):
+        src = HEADER + textwrap.dedent("""
+            // FUNCTION: GAMEMD 0x401000
+            int g(char *p) {
+                int n = 0x500000;
+                if (n) goto done;
+                n = *(int *)((char *)p + 0x1c);
+            done:
+                return n;   // 0x4A0450 in a comment is fine
+            }
+            """)
+        f = self.rules({"match/x/d.cpp": src}, [], {"steering"})
+        self.assertEqual([x for x in f if x["level"] == "E"], [])
+        msgs = " ".join(x["msg"] for x in f)
+        for kind in ("goto", "exe-address-literal", "pointer-offset-cast"):
+            self.assertIn(kind, msgs)
+        self.assertNotIn("0x4A0450", msgs)
+
+    def test_pragma_pack_and_once_are_fine(self):
+        src = HEADER + "#pragma pack(push, 1)\nstruct S { int a; };\n#pragma pack(pop)\n"
+        self.assertEqual(self.rules({"match/x/e.h": src}, [], {"steering"}), [])
 
     def test_volatile_declaration_needs_evidence(self):
         src = HEADER + "// shared with the thread procedure started by CreateThread at 0x401234\nextern volatile int DAT_0087E878;\n"

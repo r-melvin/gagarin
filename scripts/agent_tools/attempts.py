@@ -9,6 +9,16 @@ Usage:
                 [--flags "/O2 ..."] [--positional P] [--multiset M]
                 [--delta "ecx vs eax in memmove arg"] [--agent claude] [--src FILE]
   attempts.py show ADDR          every attempt at ADDR, oldest first
+  attempts.py check ADDR [--src FILE]
+                                 would `add` be accepted? exit 3 + reason when it would be refused
+  attempts.py defer ADDR --reason TEXT
+                                 record "deferred" (a valid outcome, not a failure) and close the address
+
+Refusal rules (Thief3-Decomp try.py), applied by `add` and `check` to the attempts recorded at ADDR
+(imported rows only feed the best score): at most 12 attempts; no more after 4 in a row without a
+new best score; a source file (sha256) identical to an earlier attempt is refused; a deferred
+address is refused until `add --reopen`. `add --force` skips the checks (say why in --variant).
+A refusal means defer: `attempts.py defer ADDR --reason ...`.
   attempts.py search TEXT        case-insensitive substring over all fields
   attempts.py best ADDR          the highest raw score recorded for ADDR
   attempts.py import             seed from cap comments in match/**/*.cpp and
@@ -65,6 +75,40 @@ def fmt(r):
     if r.get("delta"):
         s.append(f"\n    delta: {r['delta']}")
     return " ".join(s)
+
+
+MAX_ATTEMPTS = 12
+PATIENCE = 4
+
+
+def refusal(rows, addr, sha=None, reopen=False):
+    """Why a new attempt at addr must not be run/recorded, or None."""
+    rs = for_addr(rows, addr)
+    attempts = [r for r in rs if r.get("status") != "deferred"]
+    recorded = [r for r in attempts if r.get("status") == "recorded"]
+    if not reopen and rs and rs[-1].get("status") == "deferred":
+        return "deferred on %s (%s)" % (rs[-1].get("date"), rs[-1].get("delta") or rs[-1].get("variant"))
+    if sha:
+        for r in recorded:
+            if r.get("source_sha") == sha:
+                return "source is byte-identical to the attempt of %s (%s)" % (r.get("date"), r.get("variant"))
+    if len(recorded) >= MAX_ATTEMPTS:
+        return "%d attempts recorded (cap %d)" % (len(recorded), MAX_ATTEMPTS)
+    top, streak = None, 0
+    for r in attempts:
+        raw = r.get("raw")
+        if raw is not None and (top is None or raw > top):
+            top, streak = raw, 0
+        elif r.get("status") == "recorded":
+            streak += 1
+    if streak >= PATIENCE:
+        return "%d attempts in a row without a new best (patience %d, best %s)" % (streak, PATIENCE, top)
+    return None
+
+
+def tried_addrs(rows):
+    """Addresses with any ledger row, including a defer."""
+    return {int(r["addr"], 16) for r in rows}
 
 
 def for_addr(rows, addr):
@@ -179,16 +223,43 @@ def main(argv=None):
         sub.add_parser(c).add_argument("addr")
     sub.add_parser("search").add_argument("text")
     sub.add_parser("import")
+    c = sub.add_parser("check")
+    c.add_argument("addr")
+    c.add_argument("--src", type=Path)
+    c.add_argument("--reopen", action="store_true")
+    d = sub.add_parser("defer")
+    d.add_argument("addr")
+    d.add_argument("--reason", required=True)
+    d.add_argument("--tu")
+    d.add_argument("--agent", default="unknown")
+    a.add_argument("--force", action="store_true", help="skip the refusal rules")
+    a.add_argument("--reopen", action="store_true", help="allow an attempt at a deferred address")
     args = ap.parse_args(argv)
     rows = load(args.ledger)
 
     if args.cmd == "add":
         src = Path(args.src) if args.src else common.WORKTREE / args.tu
         sha = hashlib.sha256(src.read_bytes()).hexdigest() if src.exists() else None
+        why = None if args.force else refusal(rows, args.addr, sha, args.reopen)
+        if why:
+            print("refused %s: %s\ndefer instead: attempts.py defer %s --reason TEXT" % (norm(args.addr), why, norm(args.addr)))
+            return 3
         r = dict(addr=norm(args.addr), tu=args.tu, flags=args.flags or tu_flags(src), source_sha=sha,
                  variant=args.variant, raw=args.raw, positional=args.positional, multiset=args.multiset,
                  delta=args.delta, agent=args.agent, date=datetime.date.today().isoformat(),
                  status="recorded")
+        append(args.ledger, [r])
+        print(fmt(r))
+    elif args.cmd == "check":
+        sha = hashlib.sha256(args.src.read_bytes()).hexdigest() if args.src and args.src.exists() else None
+        why = refusal(rows, args.addr, sha, args.reopen)
+        print("refused %s: %s\ndefer instead: attempts.py defer %s --reason TEXT" % (norm(args.addr), why, norm(args.addr))
+              if why else "ok %s" % norm(args.addr))
+        return 3 if why else 0
+    elif args.cmd == "defer":
+        r = dict(addr=norm(args.addr), tu=args.tu, flags=None, source_sha=None, variant="deferred", raw=None,
+                 positional=None, multiset=None, delta=args.reason, agent=args.agent,
+                 date=datetime.date.today().isoformat(), status="deferred")
         append(args.ledger, [r])
         print(fmt(r))
     elif args.cmd == "show":

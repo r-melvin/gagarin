@@ -13,7 +13,9 @@ enforces; nothing here needs a compiler except --strict.
   paths        E paths outside match/, scripts/data/*.json, STATUS.md, progress.svg; symlinks
   stale        E patch does not apply on the tree (3-way, temporary GIT_INDEX_FILE; writes no git metadata)
   words        E forbidden words in added lines / commit message (shipping hygiene)
-  steering     E __asm, naked, #pragma optimize, constant conditions; volatile on a non-declaration
+  steering     E __asm, _emit, naked, codegen pragmas (optimize, inline_depth, inline_recursion, auto_inline,
+                 function, check_stack), a cast of a literal image address, constant conditions; volatile on a non-declaration
+               W goto, #pragma intrinsic, a bare literal in the image address range, `(char*)p + 0x1c` pointer-offset casts
                W volatile on a declaration without thread/callback evidence beside it
   sdd          E a hand-written scalar deleting destructor (a function body that tests a flags bit with `& 1` and
                  deletes `this`, or one named like one); the compiler emits ??_G from the declared virtual destructor.
@@ -281,6 +283,9 @@ class Lint:
                     if kind == "const-condition" and re.search(r"\bwhile\s*\(\s*0\s*\)", code) and ln > 1:
                         continue   # do {...} while (0) macro idiom
                     self.err("steering", "%s: %s" % (kind, text.strip()[:100]), file=d.path, line=ln)
+                for kind, rx in D.STEER_WARN:
+                    if rx.search(code if kind != "intrinsic-pragma" else text):
+                        self.warn("steering", "%s (needs binary evidence): %s" % (kind, text.strip()[:100]), file=d.path, line=ln)
 
     def _added_post(self):
         """[(path, post_text, {added line numbers})] for added/changed C++ files under match/."""

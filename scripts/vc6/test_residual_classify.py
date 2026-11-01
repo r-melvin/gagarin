@@ -97,5 +97,46 @@ class ClassifyTest(unittest.TestCase):
         self.assertNotIn("constant", rc.PERMUTABLE)
 
 
+class SwapLabelsTest(unittest.TestCase):
+    def test_commutative_swap(self):
+        r = ["mov eax,ecx", "add eax,edx", "ret"]
+        c = ["mov eax,ecx", "add edx,eax", "ret"]
+        self.assertEqual(labels(r, c), ["register-swap", "commutative-swap"])
+
+    def test_mixed_register_diff_is_not_a_pure_swap(self):
+        r = ["mov eax,ecx", "add eax,edx", "ret"]
+        c = ["mov edx,ecx", "add edx,eax", "ret"]
+        self.assertNotIn("commutative-swap", labels(r, c))
+
+    def test_base_index_swap(self):
+        r = ["mov eax,[ecx+edx]", "ret"]
+        c = ["mov eax,[edx+ecx]", "ret"]
+        self.assertIn("commutative-swap", labels(r, c))
+
+    def test_scaled_index_is_not_swappable(self):
+        r = ["mov eax,[ecx+edx*4]", "ret"]
+        c = ["mov eax,[edx+ecx*4]", "ret"]
+        self.assertEqual(labels(r, c), ["register-swap"])
+
+    def test_cmp_swap(self):
+        r = ["cmp eax,ecx", "ret"]
+        c = ["cmp ecx,eax", "ret"]
+        self.assertEqual(labels(r, c), ["register-swap", "cmp-swap"])
+
+    def test_sub_is_not_commutative(self):
+        self.assertEqual(labels(["sub eax,ecx", "ret"], ["sub ecx,eax", "ret"]), ["register-swap"])
+
+    def test_pure_transposition_is_parked(self):
+        r = stream("dec eax", "test eax,eax", "mov [esi+0x1c],eax")
+        c = stream("dec eax", "mov [esi+0x1c],eax", "test eax,eax")
+        res = rc.classify(r, c)
+        self.assertEqual(res["parked"], "B16")
+        self.assertEqual(res["regpredict"]["label"], "B16-schedule")
+
+    def test_register_swap_is_not_parked(self):
+        res = rc.classify(stream("mov eax,ecx", "ret"), stream("mov edx,ecx", "ret"))
+        self.assertNotIn("parked", res)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -65,18 +65,35 @@ def rank_queue(q):
     return sorted(q, key=lambda x: (x["rank"], -(x["pct"] or 0)))
 
 
+def parked_addrs(tsv):
+    """Addresses partial_triage.py routed to 'parked (B16)': a transposition of an identical instruction
+    multiset, with no known lever (homm3 behavior-catalog B16), so no worker time goes to them."""
+    out = set()
+    with open(tsv) as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            if row.get("route", "").startswith("parked"):
+                out.add(D.hx(row["addr"]))
+    return out
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tree", default=D.MAIN_REPO)
     ap.add_argument("--limit", type=int, default=0, help="limit the number of TUs compiled")
     ap.add_argument("--out")
     ap.add_argument("--scaffold", type=int, default=0)
+    ap.add_argument("--triage", help="partial_triage.py triage.tsv: rows it parked (B16) are left out of the queue")
+    ap.add_argument("--include-parked", action="store_true", help="keep parked rows when --triage is given")
     ap.add_argument("--jobs", type=int, default=D.MAX_JOBS)
     a = ap.parse_args(argv)
     out = a.out or D.scratch_dir("permute_queue_")
     os.makedirs(out, exist_ok=True)
     man = json.load(open(os.path.join(a.tree, D.MANIFEST)))
     partial = [r for r in man if r["status"] != "matched"]
+    if a.triage and not a.include_parked:
+        parked = parked_addrs(a.triage)
+        partial = [r for r in partial if D.hx(r["addr"]) not in parked]
+        print("left out %d parked (B16) rows" % len(parked))
     tus = sorted({r["tu"] for r in partial})
     if a.limit:
         tus = tus[:a.limit]

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """dispatch.py: refilter the worklist against the tip and write one cluster brief per TU.
 
-    dispatch.py [--worklist CSV] [--tree WT] [--out DIR] [--min N] [--top K]
+    dispatch.py [--worklist CSV] [--tree WT] [--out DIR] [--min N] [--top K] [--untried]
 
 Drops rows already in the tip manifest, claimed by a body in the tree, or marked LIBRARY
 (linked third-party / toolchain code, not source to recover), groups the rest by
@@ -30,9 +30,13 @@ RULES = """## Rules (pktlint enforces them)
 """
 
 
-def refilter(rows, by_addr, claims, library):
-    """(kept rows, drop counts): manifest rows, body claims and LIBRARY markers leave the worklist."""
+def refilter(rows, by_addr, claims, library, tried=None):
+    """(kept rows, drop counts): manifest rows, body claims and LIBRARY markers leave the worklist.
+
+    With `tried` (a set of addresses with any attempts.py ledger row, a defer included) those leave too."""
     keep, dropped = [], {"in_manifest": 0, "claimed": 0, "library": 0}
+    if tried is not None:
+        dropped["tried"] = 0
     for r in rows:
         va = D.hx(r["addr"])
         if va in by_addr:
@@ -41,6 +45,8 @@ def refilter(rows, by_addr, claims, library):
             dropped["claimed"] += 1
         elif va in library:
             dropped["library"] += 1
+        elif tried is not None and va in tried:
+            dropped["tried"] += 1
         else:
             keep.append(r)
     return keep, dropped
@@ -53,6 +59,9 @@ def main(argv=None):
     ap.add_argument("--out")
     ap.add_argument("--min", type=int, default=5, help="minimum rows per cluster")
     ap.add_argument("--top", type=int, default=30, help="write briefs for the top K clusters")
+    ap.add_argument("--untried", action="store_true",
+                    help="drop addresses that already have an attempts.py ledger row (attempted or deferred)")
+    ap.add_argument("--ledger", help="attempts ledger for --untried (default: the state ledger)")
     a = ap.parse_args(argv)
     wl = a.worklist or D.first_existing(WORKLISTS)
     if not wl:
@@ -63,7 +72,12 @@ def main(argv=None):
     claims = tree.claims()
     library = tree.library_claims()
     rows = list(csv.DictReader(open(wl)))
-    keep, dropped = refilter(rows, tree.by_addr, claims, library)
+    tried = None
+    if a.untried:
+        import attempts
+        from pathlib import Path
+        tried = attempts.tried_addrs(attempts.load(Path(a.ledger) if a.ledger else attempts.LEDGER))
+    keep, dropped = refilter(rows, tree.by_addr, claims, library, tried)
     with open(os.path.join(out, "worklist_refiltered.csv"), "w") as f:
         w = csv.DictWriter(f, fieldnames=rows[0].keys())
         w.writeheader()
