@@ -28,8 +28,8 @@ order"); `split` then pulls EXPR into NAME before the one statement that spells 
 filter accepts a local the base does not declare. --only/--skip choose mutation names (for a row routed
 as a commutative or cmp swap: --only commute,swap).
 
-Readability / anti-steering filter (on by default; --no-filter turns it off for
-diagnostics only, and nothing found that way is eligible to land). Mutations are
+Readability / anti-steering filter (always on; there is no command-line switch to
+disable it). Mutations are
 built to preserve semantics: two statements are only reordered when a conservative
 effects model (locals, memory, calls, jumps) proves they commute. Every candidate is
 then linted against the base body and rejected when it adds a cast, `volatile`,
@@ -1446,11 +1446,9 @@ def main():
     ap.add_argument("--markers", metavar="FILE",
                     help="function body with PERM_GENERAL(a, b, ...) / PERM_LINESWAP(lines) alternatives; "
                          "its first alternatives must equal the current body; landed text never contains markers")
-    ap.add_argument("--no-filter", action="store_true",
-                    help="disable the readability/anti-steering filter (diagnostics only; never landable)")
     a = ap.parse_args()
     sys.exit(run(a.tu, int(a.addr, 16), a.sym, int(a.len, 16), a.minutes, a.seed,
-                 os.path.abspath(a.out), filt=not a.no_filter,
+                 os.path.abspath(a.out), filt=True,
                  only=[x for x in a.only.split(",") if x], skip=[x for x in a.skip.split(",") if x],
                  temps=a.temp, markers=a.markers))
 

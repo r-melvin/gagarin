@@ -76,8 +76,7 @@ the compiler did not write is `compile-fail`, never skipped. `permute_queue.py -
 out. Tests: `python3 -m unittest test_partial_triage` here, `test_regpredict test_residual_classify` in `scripts/vc6`.
 
 ## source_perm.py (scripts/permuter)
-Non-steering permuter on the real TU. A readability/anti-steering filter is on by default (`--no-filter` is for
-diagnostics; nothing it finds is landable): mutations are built to preserve semantics (statements only move when a
+Non-steering permuter on the real TU. A readability/anti-steering filter is always on: mutations are built to preserve semantics (statements only move when a
 conservative effects model proves they commute), and every candidate is linted against the base body (no new casts,
 `volatile`, `register`, pragmas, asm, pointer aliases, locals the base does not declare, dummy locals or self-assignments,
 scope-only blocks, duplicated statements or helpers, unreadable statements). Passes: swap, move, declorder, hoist, sink,
