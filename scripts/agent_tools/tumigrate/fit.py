@@ -190,6 +190,12 @@ def main():
             raise SystemExit('initialiser order of %s differs from retail: %s' % (res['dest'], e))
         if renum:
             print('renumbered %d initialiser rows' % len(renum))
+        try:   # the CRT runs the .CRT$XCU entries in object order: it has to be the contributors' order, retail's for rows
+            initorder.verify(tree, res['dest'], objdir, a.base_objs,
+                             [f['file'] for f in p['files'] if f['whole'] or f['file'] == res['dest']])
+        except initorder.OrderError as e:
+            revert(tree, res)
+            raise SystemExit('dynamic-initialiser run order of %s differs from retail: %s' % (res['dest'], e))
         cur = json.load(open(os.path.join(tree, 'scripts/data/match_manifest.json')))
         tset = set(touched)
         onlyf = os.path.join(tmp, 'only.txt')

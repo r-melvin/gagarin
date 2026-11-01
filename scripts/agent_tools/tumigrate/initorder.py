@@ -51,6 +51,69 @@ def symbol_digest(path, sym):
     return None
 
 
+def xcu_sequence(path):
+    """Dynamic-initialiser run order of an object: its `.CRT$XCU` entries in section order, as
+    [(target `_$E` symbol, digest of the target's section bytes)]. This is the order the CRT runs them in."""
+    import wwlib
+    import coffgen
+    if not os.path.isfile(path):
+        return None
+    data = open(path, 'rb').read()
+    secs = wwlib.sections(data)
+    syms = {i: (n, s) for i, n, v, s, scl, _ in coffgen.read_symbols(data)}
+    out = []
+    for k, sec in enumerate(secs, 1):
+        if sec[0] != '.CRT$XCU':
+            continue
+        for _off, si, _typ in wwlib.section_relocs(data, k):
+            n, s = syms[si]
+            out.append((n, hashlib.sha256(wwlib.section_bytes(data, secs, s)).hexdigest()[:12] if s > 0 else None))
+    return out
+
+
+def is_subsequence(small, big):
+    it = iter(big)
+    return all(any(x == y for y in it) for x in small)
+
+
+def check_xcu(new_seq, base_seqs, rows):
+    """The merged object runs the same initialisers in the same order. new_seq/base_seqs: xcu_sequence() results
+    (the bases are the whole contributors' objects); rows: [(addr, current `_$E` name)]. Needs
+    (1) every base initialiser present (as a multiset of body digests),
+    (2) each base object's own order kept (its digests are a subsequence of the new sequence), and
+    (3) the rows that have an entry run in retail address order. Raises OrderError with the first failure."""
+    nd = [d for _, d in new_seq]
+    have = {}
+    for d in nd:
+        have[d] = have.get(d, 0) + 1
+    for bi, b in enumerate(base_seqs):
+        bd = [d for _, d in b]
+        for d in bd:
+            have[d] = have.get(d, 0) - 1
+        if not is_subsequence(bd, nd):
+            raise OrderError('initialisers of contributor %d run in a different order than in their own object' % bi)
+    if any(v < 0 for v in have.values()):
+        raise OrderError('an initialiser of a contributor is missing from the merged object')
+    pos = {n: i for i, (n, _) in enumerate(new_seq)}
+    last, last_addr = -1, None
+    for a, s in sorted(rows):
+        if s in pos:
+            if pos[s] < last:
+                raise OrderError('initialiser 0x%X (%s) runs before 0x%X: not in retail address order' % (a, s, last_addr))
+            last, last_addr = pos[s], a
+    return True
+
+
+def verify(tree, dest, objdir, base_objs, files):
+    """check_xcu for the freshly built `dest` against the base objects of `files` (source files that moved whole,
+    and the destination itself)."""
+    mp = os.path.join(tree, 'scripts/data/match_manifest.json')
+    rows = [(int(r['addr'], 16), r['sym']) for r in json.load(open(mp)) if r['tu'] == dest and E_RE.match(r['sym'])]
+    new = xcu_sequence(os.path.join(objdir, dest[:-4] + '.obj'))
+    bases = [xcu_sequence(os.path.join(base_objs, f[:-4] + '.obj')) for f in files]
+    check_xcu(new or [], [b for b in bases if b], rows)
+
+
 def pair(rows, syms, want=None):
     """rows: [(addr, old_sym)]; syms: [(section number, offset, name, digest)] in emission order; want: {addr: digest of the
     row's bytes in the base object} or None. The n-th row by retail address is the n-th symbol. When the object holds

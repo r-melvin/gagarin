@@ -259,6 +259,32 @@ class TypeConflict(unittest.TestCase):
                          "p: a.cpp(9) : error C2065: 'x' : undeclared identifier")
 
 
+class DefinedGlobalsLast(unittest.TestCase):
+    def setUp(self):
+        self.tree = tempfile.mkdtemp(prefix="tumig_g_")
+        self.addCleanup(shutil.rmtree, self.tree, True)
+
+    def test_split_defined_globals(self):
+        keep, blocks = migrate.split_defined_globals(
+            ["typedef int T;", "// BEGIN defined globals (x)", "Foo g;", "// END defined globals", "int k;"])
+        self.assertEqual(keep, ["typedef int T;", "int k;"])
+        self.assertEqual(blocks, [["// BEGIN defined globals (x)", "Foo g;", "// END defined globals"]])
+
+    def test_trailing_definitions_are_not_hoisted_in_front_of_the_functions(self):
+        # `Foo g;` has a constructor: its dynamic initialiser has to run after the initialisers of the functions' file part
+        write(os.path.join(self.tree, "match/x/a.cpp"),
+              HDR + "struct Foo { Foo(); };\nextern Foo g;\n\n// FUNCTION: GAMEMD 0x401000\nint A()\n{\n    return 1;\n}\n\n"
+              "// BEGIN defined globals (x)\nFoo g;\n// END defined globals\n")
+        write(os.path.join(self.tree, "match/x/b.cpp"), HDR + "// SYNTHETIC: GAMEMD 0x401800\nFoo h;\n")
+        p = plan("match/x/new.cpp", [
+            dict(file="match/x/a.cpp", flags="", whole=True, move=[0], all_rows=[0x401000], rows=[0x401000], notes=[]),
+            dict(file="match/x/b.cpp", flags="", whole=True, move=[0], all_rows=[0x401800], rows=[0x401800], notes=[])])
+        text, _, _ = migrate.compose(self.tree, p, SITES)
+        self.assertLess(text.index("int A()"), text.index("Foo h;"))
+        self.assertLess(text.index("Foo h;"), text.index("\nFoo g;"))
+        self.assertEqual(text.count("Foo g;"), 2)   # the extern declaration and the definition
+
+
 class InitOrder(unittest.TestCase):
     S = lambda self, n, d: (n, 0, "_$E%d" % n, d)
 
@@ -267,6 +293,16 @@ class InitOrder(unittest.TestCase):
         syms = [self.S(19, "a"), self.S(22, "b"), self.S(25, "c")]
         want = {0x63F4F0: "a", 0x63F510: "b", 0x63F690: "c"}
         self.assertEqual(initorder.pair(rows, syms, want), {0x63F4F0: "_$E19", 0x63F510: "_$E22", 0x63F690: "_$E25"})
+
+    def test_check_xcu(self):
+        a, b, c = ("_$E4", "A"), ("_$E7", "B"), ("_$E9", "C")
+        self.assertTrue(initorder.check_xcu([a, b, c], [[a, b], [c]], [(0x10, "_$E4"), (0x20, "_$E9")]))
+        with self.assertRaises(initorder.OrderError):      # a base object's own order changed
+            initorder.check_xcu([b, a, c], [[a, b]], [])
+        with self.assertRaises(initorder.OrderError):      # an initialiser is gone
+            initorder.check_xcu([a, b], [[a, b, c]], [])
+        with self.assertRaises(initorder.OrderError):      # rows out of retail address order
+            initorder.check_xcu([a, b], [[a, b]], [(0x10, "_$E7"), (0x20, "_$E4")])
 
     def test_object_inits_are_in_section_order_not_name_order(self):
         import wwlib

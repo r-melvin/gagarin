@@ -281,6 +281,28 @@ GENERATED_HDR = re.compile(r'^//\s+(Original translation unit .*|in retail gamem
                            r'code range \(.*|Obj_/Gbl_ views below .*|them with the canonical class.*|a separate rename-only change\.)$')
 
 
+DG_BEGIN = '// BEGIN defined globals'
+DG_END = '// END defined globals'
+
+
+def split_defined_globals(seg):
+    """-> (seg without its `defined globals` blocks, [block lines ...]) (markers included, one list per block)."""
+    keep, blocks, cur = [], [], None
+    for ln in seg:
+        if cur is None and ln.startswith(DG_BEGIN):
+            cur = [ln]
+        elif cur is not None:
+            cur.append(ln)
+            if ln.startswith(DG_END):
+                blocks.append(cur)
+                cur = None
+        else:
+            keep.append(ln)
+    if cur is not None:    # unterminated: leave it where it is
+        keep += cur
+    return keep, blocks
+
+
 def drop_generated_header(lines):
     """The dest file's own generated header sentences (this tool writes them again for the merged TU)."""
     return [ln for ln in lines if not GENERATED_HDR.match(ln)]
@@ -367,6 +389,7 @@ def compose(tree, p, sites):
     decl_blocks, notes, chunks = [], [], []
     deleted, rewritten, init_files = [], [], []
     tail = []        # unmoved chunks of the destination itself, kept in place
+    late = []        # `defined globals` blocks of the contributors (data definitions, file order), emitted last
     for f in p['files']:
         is_dest = f['file'] == dest
         path = os.path.join(tree, f['file'])
@@ -387,8 +410,14 @@ def compose(tree, p, sites):
         spans = list(inters) + [(c['start'], c['end']) for c in chs
                                 if not any(x in f.get('all_rows', f['rows']) for x in c['addrs'])]
         for a, b in sorted(spans):
-            if cppsplit.code_only(lines[a:b]) or re.search(r'^//\s?(FUNCTION|STUB|TEMPLATE|SYNTHETIC|LIBRARY):', '\n'.join(lines[a:b]), re.M):
-                block += [''] + trim_blank(rewrite_includes(lines[a:b], os.path.dirname(f['file']), destdir, tree))
+            seg = lines[a:b]
+            if not keeps_defs:
+                # a `defined globals` block sits at the end of its file, after every function: its dynamic
+                # initialisers run after theirs. Hoisting it would run them first, so it is kept for the end.
+                seg, got = split_defined_globals(seg)
+                late += got
+            if cppsplit.code_only(seg) or re.search(r'^//\s?(FUNCTION|STUB|TEMPLATE|SYNTHETIC|LIBRARY):', '\n'.join(seg), re.M):
+                block += [''] + trim_blank(rewrite_includes(seg, os.path.dirname(f['file']), destdir, tree))
         if keeps_defs:
             # the source file keeps its definitions; the new TU only sees extern declarations
             block = externalise(block)
@@ -499,7 +528,7 @@ def compose(tree, p, sites):
     if fwd:
         text += ['', '// Forward declarations: these are defined below, in ascending retail address order, but used by',
                  '// an earlier function.'] + fwd
-    for b in out_chunks + tail:
+    for b in out_chunks + tail + late:
         text += [''] + b
     return '\n'.join(text) + '\n', rewrites, deleted
 
