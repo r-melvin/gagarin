@@ -10,13 +10,10 @@
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
 #include "scenario_session_globals.h"
+#include "palette_screen_globals.h"
 
 // GLOBAL: GAMEMD 0x87F7E8
 extern char DAT_0087F7E8[];
-// GLOBAL: GAMEMD 0xB0FE58
-extern unsigned char DAT_00B0FE58;
-// GLOBAL: GAMEMD 0xB0FE65
-extern unsigned char DAT_00B0FE65;
 // GLOBAL: GAMEMD 0xB0FE68
 extern int DAT_00B0FE68;
 

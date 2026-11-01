@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "cell_coord_globals.h"
 
 struct Gptr_00887368;
 struct Obj_006D0FB0;
@@ -17,12 +18,8 @@ struct Obj_006D15F0;
 extern int DAT_0087F6CC;
 // GLOBAL: GAMEMD 0x887368
 extern Gptr_00887368* DAT_00887368;
-// GLOBAL: GAMEMD 0xB0CC20
-extern int DAT_00B0CC20;
 // GLOBAL: GAMEMD 0xB0CC40
 extern char DAT_00B0CC40[];
-// GLOBAL: GAMEMD 0xB0CD28
-extern int DAT_00B0CD28;
 
 struct Gptr_00887368
 {

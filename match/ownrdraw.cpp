@@ -142,6 +142,7 @@
 #include "dialog_type_lookup_predicates.h"
 #include "color_scheme_count_methods.h"
 #include "scenario_session_globals.h"
+#include "platform_online_globals.h"
 
 class EntryList_006255F0
 {
@@ -332,10 +333,7 @@ extern CountedBlock DAT_00AC1DE0;
 extern CountedBlock DAT_00B0BD50;
 extern char DAT_00B2FF78;
 extern CountedBlock DAT_00B72F38;
-extern CountedBlock DAT_00B778D8;
 extern CountedBlock DAT_00B73E10;
-extern CountedBlock DAT_00B76AE0;
-extern CountedBlock DAT_00B77900;
 extern CountedBlock DAT_00B76520;
 extern CountedStringArray DAT_00B777A0;
 extern CountedStringArray DAT_00B73BD8;

@@ -43,6 +43,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "super_class_lose_methods.h"
+#include "cell_coord_globals.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -113,8 +114,6 @@ bool SuperClass::Lose()
 
 // GLOBAL: GAMEMD 0xA83CB8 -- the super weapon array (defined in core/static_vector_init_stubs.cpp).
 extern DynamicVectorClass<SuperClass*> DAT_00A83CB8;
-// GLOBAL: GAMEMD 0xB0C000 -- the "no cell" sentinel.
-extern CellStruct DAT_00B0C000;
 
 // FUNCTION: GAMEMD 0x6CAEC0
 // Default constructor: an unowned, untyped super weapon with no charge, then

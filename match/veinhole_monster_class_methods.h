@@ -18,6 +18,7 @@
 // CellStruct - map cell coordinate (short X, short Y); 4 bytes.
 // GetVeinholeMonsterFrom reads pCell->X @[ecx] and pCell->Y @[ecx+2].
 #include "_layout/cell.h"
+#include "vox_audio_globals.h"
 
 // Theater - per-theater data table, a 6-entry array of 0x70-byte records at
 // GAMEMD 0x007E1B78 (YRpp). LoadVeinholeArt only touches the
@@ -53,7 +54,6 @@ extern Theater TheaterArray[6];
 extern DynamicVectorClassLayout VeinholeArray;
 
 // VeinholeMonster::VeinSHPData cache pointer @0x00B1D2EC.
-extern void* VeinSHPData;
 
 // CellStruct -> linear cell index (GAMEMD 0x0042B1C0, __fastcall); used to
 // probe a monster's per-cell affection map.

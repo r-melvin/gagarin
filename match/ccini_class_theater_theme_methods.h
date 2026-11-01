@@ -24,6 +24,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/theme_class.h"
 #include "shared_constants_globals.h"
+#include "runtime_misc_globals.h"
 
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];
@@ -85,10 +86,6 @@ GG_STATIC_ASSERT(offsetof(MovieTypeVector, Items) == 0x04 &&
 extern MovieTypeVector DAT_008B4120;
 
 // The 0x00ABF394 name table and its count one dword-triple later.
-// GLOBAL: GAMEMD 0xABF394 — pointer to an array of name pointers.
-extern const char** DAT_00ABF394;
-// GLOBAL: GAMEMD 0xABF3A0 — how many entries that array holds.
-extern unsigned int DAT_00ABF3A0;
 
 // One theater record. `LEA EDX,[EAX*8]; SUB EDX,EAX; SHL EDX,4` is a stride
 // of 0x70, and the name is the record's own first field (inline, not a

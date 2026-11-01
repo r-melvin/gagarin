@@ -19,6 +19,7 @@
 #include "mouse_ww_mouse_class.h"
 #include "shared_constants_globals.h"
 #include "scenario_session_globals.h"
+#include "runtime_misc_globals.h"
 
 // A lepton coordinate (three dwords: the sprintf arguments are X and Y divided by 256).
 struct DisplayScCoord
@@ -296,7 +297,6 @@ extern const char* const DisplayScPackName_007E6028[5];
 extern char DisplayScEmpty_00889F64[];
 // GLOBAL: GAMEMD 0xAA10B0 / 0xAA0738 -- ground values for Clear / Water.
 extern int DisplayScGround_00AA10B0;
-extern int DisplayScGround_00AA0738;
 // GLOBAL: GAMEMD 0xA8ED6B / 0xA8ED5D (bytes) / 0xA8ED7C (int).
 extern bool DisplayScFlag_00A8ED6B;
 extern int  DisplayScValue_00A8ED7C;

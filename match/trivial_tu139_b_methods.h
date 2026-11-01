@@ -13,8 +13,6 @@
 struct Obj_005BCC40;
 struct Obj_005BCC60;
 
-// GLOBAL: GAMEMD 0xABF23A
-extern unsigned char DAT_00ABF23A;
 // GLOBAL: GAMEMD 0xABF240
 extern int DAT_00ABF240;
 

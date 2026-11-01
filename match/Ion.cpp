@@ -189,8 +189,6 @@ void FUN_00539EA0(int a1)
 }
 
 
-// GLOBAL: GAMEMD 0xA9FAB4
-extern unsigned char DAT_00A9FAB4;
 // GLOBAL: GAMEMD 0xA9FAB8
 extern int DAT_00A9FAB8;
 // GLOBAL: GAMEMD 0xA9FACC

@@ -53,8 +53,6 @@ GG_STATIC_ASSERT(offsetof(VoxEvent, State) == 0x50);
 #include "_layout/vox_class.h"
 #include "_layout/voc_class.h"
 
-// GLOBAL: GAMEMD 0xB1D4C4 -- the currently playing EVA event, if any.
-extern VoxEvent* DAT_00B1D4C4;
 // GLOBAL: GAMEMD 0xB1D4CC -- the EVA streamer, if any.
 extern Obj_00407F40* DAT_00B1D4CC;
 

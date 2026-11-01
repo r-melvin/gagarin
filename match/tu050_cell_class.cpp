@@ -112,6 +112,7 @@
 #include "engine_core_globals.h"
 #include "mapobj_globals.h"
 #include "shared_constants_globals.h"
+#include "runtime_misc_globals.h"
 
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
@@ -1180,8 +1181,6 @@ extern int DAT_00ABC1D4;
 extern int DAT_00AA10AC;
 // GLOBAL: GAMEMD 0xABAD28
 extern int DAT_00ABAD28;
-// GLOBAL: GAMEMD 0xAA0738
-extern int DAT_00AA0738;
 // GLOBAL: GAMEMD 0xAA073C
 extern int DAT_00AA073C;
 // GLOBAL: GAMEMD 0xABB110
@@ -1302,8 +1301,6 @@ struct Obj_00524760
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8A39FC
 extern unsigned char DAT_008A39FC;
-// GLOBAL: GAMEMD 0xAA0738
-extern int DAT_00AA0738;
 // GLOBAL: GAMEMD 0xAA073C
 extern int DAT_00AA073C;
 // GLOBAL: GAMEMD 0xAA1050
@@ -1347,8 +1344,6 @@ extern "C" size_t __cdecl strlen(const char* s);
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
-// GLOBAL: GAMEMD 0x00AA0738
-extern "C" int DAT_00AA0738;
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 
@@ -1488,8 +1483,6 @@ extern "C" HRESULT __stdcall FUN_00410320(void* subject, void* stream,
                                           int clearDirty);
 // GLOBAL: GAMEMD 0x0089E7B4
 extern int DAT_0089E7B4;
-// GLOBAL: GAMEMD 0x00AA0738
-extern int DAT_00AA0738;
 
 #include "cell_class_methods.h"
 

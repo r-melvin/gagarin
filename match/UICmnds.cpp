@@ -35,6 +35,7 @@
 #include "_layout/tactical.h"
 #include "ui_display_chain.h"
 #include "dynamic_vector_ctor_pod_family_methods.h"
+#include "palette_screen_globals.h"
 
 // Sidebar "tab object" globals @ 0x00B0FE5C / 0x00B0FE60. Declared-only so cl
 // emits reloc-normalised absolute stores/compares.
@@ -958,10 +959,10 @@ bool FUN_00732C30(TechnoClass* object, DynamicVectorClass<const char*>* list)
 // Branching.
 void __cdecl FUN_00732CA0()
 {
-    if (DAT_00B0FE65 == 0)
+    if (IsTypeSelectingFlag == 0)
     {
-        unsigned char t1 = DAT_00B0FE65;
-        DAT_00B0FE65 = 1;
+        unsigned char t1 = IsTypeSelectingFlag;
+        IsTypeSelectingFlag = 1;
         int c0 = timeGetTime();
         DAT_00B0FE68 = c0;
     }
@@ -971,8 +972,8 @@ void __cdecl FUN_00732CA0()
 // FUNCTION: GAMEMD 0x732CC0
 void __cdecl FUN_00732CC0()
 {
-    if (DAT_00B0FE65) {
-        DAT_00B0FE65 = 0;
+    if (IsTypeSelectingFlag) {
+        IsTypeSelectingFlag = 0;
         if (abs(int(timeGetTime() - DAT_00B0FE68)) <= 500) {
             FUN_00732950();
             Map_0087F7E8.GScreenClass::FlagToRedraw(1);

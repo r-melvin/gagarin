@@ -37,6 +37,9 @@
 #include <math.h>
 #include "header_init_shapes.h"
 #include "shared_constants_globals.h"
+#include "cell_coord_globals.h"
+#include "palette_screen_globals.h"
+#include "runtime_misc_globals.h"
 
 extern int DAT_00816108;
 #include "_layout/rec12_008b4040.h"
@@ -45,8 +48,6 @@ extern Rec12_008B4040 DAT_008B4040[];
 extern Rec12_008B3F38 DAT_008B3F38[];
 #include "_layout/rec12_008b3fc8.h"
 extern Rec12_008B3FC8 DAT_008B3FC8[];
-extern unsigned char DAT_00A9FAB4;
-extern unsigned char DAT_00ABCD58;
 extern int DAT_00ABED0C;
 extern int DAT_00ABF168[];
 #include "_layout/rec28_0082d028.h"
@@ -58,9 +59,7 @@ extern int DAT_00AC4BF0;
 extern int DAT_007F0248[];
 #include "_layout/rec16_007f0998.h"
 extern Rec16_007F0998 DAT_007F0998[];
-extern int DAT_00B0CB78[];
 extern int DAT_008449F8[];
-extern unsigned char DAT_00B0FE58;
 extern unsigned char DAT_008464AC;
 extern int DAT_00B780A0;
 
@@ -74,8 +73,6 @@ extern "C" size_t __cdecl strlen(const char* s);
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
-// GLOBAL: GAMEMD 0x00AA0738
-extern "C" int DAT_00AA0738;
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 

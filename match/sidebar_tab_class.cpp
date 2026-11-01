@@ -9,11 +9,8 @@
 #include "tooltip_manager_shared.h"
 #include "mouse_ww_mouse_class.h"
 #include "scenario_session_globals.h"
-
-// GLOBAL: GAMEMD 0xB0C148 -- the 25 command-bar button shapes.
-extern SidebarShapeFile* CommandShapes_00B0C148[25];
-// GLOBAL: GAMEMD 0xB0CBDC -- "owns the memory" flag of each command-bar shape.
-extern bool CommandShapeOwned_00B0CBDC[25];
+#include "cell_coord_globals.h"
+#include "palette_screen_globals.h"
 
 // FUNCTION: GAMEMD 0x6D0270
 void TabClass::vf_50()
@@ -89,8 +86,6 @@ void TabClass::vf_53()
 // GLOBAL: GAMEMD 0xB0CCB0 / 0xB0CC40 -- the two extra command-bar buttons.
 extern SidebarButton CommandButtonA_00B0CCB0;
 extern SidebarButton CommandButtonB_00B0CC40;
-// GLOBAL: GAMEMD 0xB0FA90 -- the shape both buttons display.
-extern SidebarShapeFile* CommandButtonShape_00B0FA90;
 // GLOBAL: GAMEMD 0xB0FC60 / 0xB0FC64 -- pointers to the two button rectangles.
 extern SidebarTabRect* ButtonRectA_00B0FC60;
 extern SidebarTabRect* ButtonRectB_00B0FC64;
@@ -104,7 +99,7 @@ void TabClass::vf_08()
     if (DAT_00A8ED6B == 0) {
         if (SidebarTabBarEnabled()) {
             FUN_006D0FD0();
-            SidebarShapeFile* shape = CommandButtonShape_00B0FA90;
+            SidebarShapeFile* shape = DAT_00B0FA90;
             CommandButtonA_00B0CCB0.ID = 0xF0;
             CommandButtonA_00B0CCB0.At_50 = ConvertA_0087F6CC;
             CommandButtonA_00B0CCB0.IsOn = 0;
@@ -129,8 +124,6 @@ void TabClass::vf_08()
 extern SidebarButton CommandButtons_00B0C1C0[25];
 // GLOBAL: GAMEMD 0xB0CC1C -- index into the command slot table of the active command.
 extern int ActiveCommandIndex_00B0CC1C;
-// GLOBAL: GAMEMD 0xB0CB78 -- command slot per command index.
-extern int CommandSlotTable_00B0CB78[25];
 
 // What ShapeButtonClass::SetToolTip (0x6D09C0) does, expanded inline.
 inline void SetButtonToolTip(SidebarButton* button, const char* text)
@@ -152,7 +145,7 @@ inline void SetButtonToolTip(SidebarButton* button, const char* text)
 // ShapeButtonClass::GetButton (0x6CFD40) expanded inline over the command bar.
 inline SidebarButton* GetCommandButton(int index)
 {
-    int slot = CommandSlotTable_00B0CB78[index];
+    int slot = ButtonIndexTable[index];
     if (slot >= 0 && slot < 0x19) {
         return &CommandButtons_00B0C1C0[slot];
     }
@@ -234,9 +227,6 @@ extern int CommandIndexD_00B0CB20;
 extern int CommandIndexE_00B0CB68;
 extern int CommandIndexF_00B0CB6C;
 extern int CommandIndexG_00B0CB38;
-// GLOBAL: GAMEMD 0xB0CC20 / 0xB0CD28 -- first and last command of the numbered range.
-extern int CommandRangeFirst_00B0CC20;
-extern int CommandRangeLast_00B0CD28;
 // FUNCTION: GAMEMD 0x731AF0 (decl; reloc)
 // Command handlers; signatures are reconciled in their original TU.
 void FUN_00731AF0();
@@ -321,8 +311,8 @@ void TabClass::vf_10(int* key, Point2D* mouse)
             }
         } else if (command == CommandIndexF_00B0CB6C) {
             FUN_00730EA0();
-        } else if (command >= CommandRangeFirst_00B0CC20 && command <= CommandRangeLast_00B0CD28) {
-            int number = command - CommandRangeFirst_00B0CC20 + 1;
+        } else if (command >= DAT_00B0CC20 && command <= DAT_00B0CD28) {
+            int number = command - DAT_00B0CC20 + 1;
             if (FUN_00730A10(number) == 0) {
                 FUN_00731060(number);
             } else if (FUN_00730990(number)) {
@@ -365,8 +355,8 @@ void TabClass::vf_10(int* key, Point2D* mouse)
         }
     } else if (code >= 0xC0D6 && code < 0xC0EF) {
         int command = (code & ~0xC000) - 0xD6;
-        if (command >= CommandRangeFirst_00B0CC20 && command <= CommandRangeLast_00B0CD28) {
-            FUN_007310D0(command - CommandRangeFirst_00B0CC20 + 1);
+        if (command >= DAT_00B0CC20 && command <= DAT_00B0CD28) {
+            FUN_007310D0(command - DAT_00B0CC20 + 1);
         }
     }
     unknown_551C.FUN_004A2600(0);
@@ -399,7 +389,6 @@ extern int* EndX_00B0FC6C;
 // GLOBAL: GAMEMD 0xB0FB08 / 0xB0FA3C / 0xB0FA90 / 0xB0FAA8 / 0xB0FABC -- shapes drawn by the bar.
 extern SidebarShapeFile* BarShapeBackdrop_00B0FB08;
 extern SidebarShapeFile* BarShapeTop_00B0FA3C;
-extern SidebarShapeFile* BarShapeThumb_00B0FA90;
 extern SidebarShapeFile* BarShapeSlot_00B0FAA8;
 extern SidebarShapeFile* BarShapeEnd_00B0FABC;
 // GLOBAL: GAMEMD 0xB0F9E4 -- number of slot pieces drawn.
@@ -484,7 +473,7 @@ void TabClass::vf_16(bool forced)
         SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, BarShapeBackdrop_00B0FB08, 0,
                          &origin, (SidebarSurface_00887300->*SidebarSurface_00887300->Vtbl->At_78)(&scratch),
                          0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
         unknown_551C.FUN_004A2370(true);
         if (redraw) {
             SidebarAreaRect clip = *(CurrentSurface_00887314->*CurrentSurface_00887314->Vtbl->At_78)(&scratch);
@@ -503,7 +492,7 @@ void TabClass::vf_16(bool forced)
             } else {
                 position = *ButtonPointB_00B0FC64;
             }
-            SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, BarShapeThumb_00B0FA90, 0,
+            SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, DAT_00B0FA90, 0,
                              &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
             if (At_5544) {
                 position.X = SlotArea_00B0FC68->X;
@@ -575,5 +564,5 @@ const wchar_t* TabClass::vf_33(int id)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0CB78
-int CommandSlotTable_00B0CB78[25];
+int ButtonIndexTable[25];
 // END defined globals

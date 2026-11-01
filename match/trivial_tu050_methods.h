@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 struct Arg1_00484A80;
 struct Arg1_00484A90;
@@ -26,8 +27,6 @@ struct Obj_00487E70;
 
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
-// GLOBAL: GAMEMD 0xAA0738
-extern int DAT_00AA0738;
 // GLOBAL: GAMEMD 0xAA0E20
 extern int DAT_00AA0E20;
 // GLOBAL: GAMEMD 0xAA1094

@@ -18,6 +18,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "vox_class_methods.h"
+#include "vox_audio_globals.h"
 
 // The pending-node list.
 struct VoxQueue_00752480
@@ -49,8 +50,6 @@ extern int DAT_00B1D4B0;
 extern VoxClass** DAT_00B1D4A4;
 // GLOBAL: GAMEMD 0xB1D3D8 — non-zero while speech is suppressed.
 extern int DAT_00B1D3D8;
-// GLOBAL: GAMEMD 0xB1D4C4 — the entry currently speaking.
-extern VoxClass* DAT_00B1D4C4;
 // GLOBAL: GAMEMD 0xB1D4D0 — the queued entry counter.
 extern int DAT_00B1D4D0;
 // GLOBAL: GAMEMD 0xB1D4D4 — the queued frame counter.

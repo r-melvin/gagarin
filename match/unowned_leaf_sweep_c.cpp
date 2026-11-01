@@ -14,6 +14,9 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "shared_constants_globals.h"
+#include "cell_coord_globals.h"
+#include "palette_screen_globals.h"
+#include "platform_online_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
@@ -30,13 +33,10 @@ Quad_006C95E0::Quad_006C95E0()
     unknown_C = 0;
 }
 
-// GLOBAL: GAMEMD 0x00B0CB78
-extern "C" int DAT_00B0CB78[];
-
 // FUNCTION: GAMEMD 0x006CFD20
 void FUN_006CFD20(int index, int value)
 {
-    DAT_00B0CB78[index] = value;
+    ButtonIndexTable[index] = value;
 }
 
 #include "_layout/rect_006cfdb0.h"
@@ -113,8 +113,6 @@ int FUN_00726910(Obj_00726910* self)
 
 // GLOBAL: GAMEMD 0x00B0FE54
 extern "C" int DAT_00B0FE54;
-// GLOBAL: GAMEMD 0x00B0FE58
-extern "C" char DAT_00B0FE58;
 
 // FUNCTION: GAMEMD 0x00731D00
 void FUN_00731D00(int value)
@@ -290,8 +288,6 @@ void FUN_00774950(Obj_00774950* self)
 
 // GLOBAL: GAMEMD 0x00B73550
 extern "C" HWND DAT_00B73550;
-// GLOBAL: GAMEMD 0x00B7355C
-extern "C" HIMC DAT_00B7355C;
 
 // FUNCTION: GAMEMD 0x00778180
 void FUN_00778180()

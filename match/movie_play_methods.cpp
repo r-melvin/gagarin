@@ -16,6 +16,7 @@
 #include "_layout/map_0087f7e8.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "runtime_misc_globals.h"
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
 void __cdecl FUN_004068E0(const char* format, ...);
@@ -79,10 +80,6 @@ struct Obj_005BF360
 
 // GLOBAL: GAMEMD 0xABF35C -- set while playback has the sound/scroll state paused.
 extern bool DAT_00ABF35C;
-// GLOBAL: GAMEMD 0xABF394 -- movie name table.
-extern char** DAT_00ABF394;
-// GLOBAL: GAMEMD 0xABF3A0 -- its entry count.
-extern int DAT_00ABF3A0;
 // GLOBAL: GAMEMD 0x887300
 extern void* DAT_00887300;
 // GLOBAL: GAMEMD 0x88730C

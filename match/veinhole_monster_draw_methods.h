@@ -19,6 +19,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "vox_audio_globals.h"
 
 struct Cell_0074D490  { short X; short Y; };
 struct Point_0074D490 { int X; int Y; };
@@ -64,9 +65,6 @@ extern Tactical_0074D490* DAT_00887324;
 
 // GLOBAL: GAMEMD 0x887314 -- the surface/blitter instance handed to 0x4AED70.
 extern void* DAT_00887314;
-
-// GLOBAL: GAMEMD 0xB1D2EC -- the veinhole shape resource.
-extern void* DAT_00B1D2EC;
 
 // GLOBAL: GAMEMD 0x886FA4 -- the tactical view's Y origin.
 extern int DAT_00886FA4;

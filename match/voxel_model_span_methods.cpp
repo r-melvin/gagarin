@@ -16,6 +16,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/matrix3d.h"
 #include "shared_constants_globals.h"
+#include "platform_online_globals.h"
 
 struct VoxelPoint
 {
@@ -118,8 +119,6 @@ extern unsigned char DAT_00b2ff78[0x10000];
 extern VoxelStepPair DAT_00b45590[];
 // GLOBAL: GAMEMD 0xB41178  DAT_00b41178 (shade x colour lookup, 256 per row)
 extern unsigned char DAT_00b41178[][256];
-// GLOBAL: GAMEMD 0xB45990  DAT_00b45990 (shade per normal index; filled by 0x7586F0)
-extern unsigned char DAT_00b45990[];
 
 // FUNCTION: GAMEMD 0x756590
 void VoxelModel::FUN_00756590(VoxelDrawEntry *entry, Vector3D *origin)
@@ -475,7 +474,7 @@ void __cdecl FUN_007575a0(VoxelSpanParams *params)
 						do {
 							unsigned char colour = *data++;
 							unsigned char normal = *data++;
-							unsigned char lit = DAT_00b41178[DAT_00b45990[normal]][colour];
+							unsigned char lit = DAT_00b41178[DAT_00B45990[normal]][colour];
 							DAT_00b2ff78[(py & 0xFF00) | (px >> 8)] = lit;
 							DAT_00b2ff78[((py & 0xFF00) | (px >> 8)) + 1] = lit;
 							px += params->StepZ[0];
@@ -526,7 +525,7 @@ void __cdecl FUN_00757790(VoxelSpanParams *params)
 						remaining -= count;
 						int n = count;
 						do {
-							unsigned char shade = DAT_00b45990[*data--];
+							unsigned char shade = DAT_00B45990[*data--];
 							data--;
 							unsigned char lit = DAT_00b41178[shade][data[1]];
 							DAT_00b2ff78[(py & 0xFF00) | (px >> 8)] = lit;
@@ -600,7 +599,7 @@ void __cdecl FUN_00757980(VoxelSpanParams *params)
 								unsigned char normal = *data++;
 								DAT_00b1d5e0[index] = (unsigned char)(pz >> 8);
 								DAT_00b1d5e0[index + 1] = (unsigned char)(pz >> 8);
-								unsigned char lit = DAT_00b41178[DAT_00b45990[normal]][colour];
+								unsigned char lit = DAT_00b41178[DAT_00B45990[normal]][colour];
 								DAT_00b2ff78[index] = lit;
 								DAT_00b2ff78[index + 1] = lit;
 							} else {
@@ -667,7 +666,7 @@ void __cdecl FUN_00757bf0(VoxelSpanParams *params)
 								unsigned char colour = *data--;
 								DAT_00b1d5e0[index] = (unsigned char)(pz >> 8);
 								DAT_00b1d5e0[index + 1] = (unsigned char)(pz >> 8);
-								unsigned char lit = DAT_00b41178[DAT_00b45990[normal]][colour];
+								unsigned char lit = DAT_00b41178[DAT_00B45990[normal]][colour];
 								DAT_00b2ff78[index] = lit;
 								DAT_00b2ff78[index + 1] = lit;
 							} else {
@@ -972,13 +971,13 @@ void FUN_007586f0(const Vector3D *a, const Vector3D *b, float k, int set)
 			s1 = 0.0f;
 		float s = s1 + v;
 		if (s < 0.0)
-			DAT_00b45990[i] = 0;
+			DAT_00B45990[i] = 0;
 		else
-			DAT_00b45990[i] = (unsigned char)(s * 16.0f);
+			DAT_00B45990[i] = (unsigned char)(s * 16.0f);
 	}
-	DAT_00b45990[255] = 0x10;
-	DAT_00b45990[254] = 0x10;
-	DAT_00b45990[253] = 0x10;
+	DAT_00B45990[255] = 0x10;
+	DAT_00B45990[254] = 0x10;
+	DAT_00B45990[253] = 0x10;
 }
 
 // BEGIN defined globals (define_globals.py)

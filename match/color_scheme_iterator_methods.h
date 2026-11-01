@@ -16,6 +16,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 // DynamicVectorClass<ColorScheme*> view (the returned per-palette vector).
 struct ColorSchemeVec_00626690;
@@ -75,8 +76,6 @@ struct Owner_00626690
     Table_00626690* Table;             // +0x000C
 };
 GG_STATIC_ASSERT(offsetof(Owner_00626690, Table) == 0xC);
-// GLOBAL: GAMEMD 0xAC48F0 — the palette-table owner.
-extern Owner_00626690* DAT_00AC48F0;
 
 // The 12-byte iterator handed in ECX (bucket, index, done).
 struct HashIterator_00626690

@@ -24,6 +24,7 @@
 #include <new>
 #include "engine_core_globals.h"
 #include "shared_constants_globals.h"
+#include "runtime_misc_globals.h"
 
 // These are engine functions, not recovered CRT implementations.
 // Declaration: GAMEMD 0x4CAC40
@@ -88,8 +89,6 @@ extern void* DAT_0087F6C4;
 extern void* DAT_00887314;
 // GLOBAL: GAMEMD 0xABCD3C
 extern int DAT_00ABCD3C;
-// GLOBAL: GAMEMD 0xABD490 -- four-byte CellStruct offset records; extent not asserted here.
-extern CellStruct DAT_00ABD490[];
 GG_STATIC_ASSERT(sizeof(DAT_00ABD490[0]) == 4);
 // GLOBAL: GAMEMD 0xA8ED84
 extern int DAT_00A8ED84;

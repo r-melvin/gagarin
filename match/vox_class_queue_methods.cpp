@@ -10,6 +10,7 @@
 #include "ccini_class_methods.h"
 #include "_layout/vox_class.h"
 #include "_layout/obj_00407f40.h"
+#include "vox_audio_globals.h"
 
 
 // STRING: GAMEMD 0x889F64 -- the shared empty default text.
@@ -28,8 +29,6 @@ extern int DAT_00B1D4BC;
 extern int DAT_00B1D4C0;
 // GLOBAL: GAMEMD 0xB1D4A4 -- the speech entry table (VoxClass::Array Items).
 // GLOBAL: GAMEMD 0xB1D4B0 -- how many entries there are.
-// GLOBAL: GAMEMD 0xB1D4C4 -- the entry currently speaking.
-extern VoxClass* DAT_00B1D4C4;
 // GLOBAL: GAMEMD 0xB1D4CC -- the speech engine.
 extern Obj_00407F40* DAT_00B1D4CC;
 

@@ -7,11 +7,7 @@
 
 #include "sidebar_class_layout.h"
 #include "file_system_load_whole_methods.h"
-
-// GLOBAL: GAMEMD 0xB0C148 -- the 25 command-bar button shapes.
-extern SidebarShapeFile* CommandShapes_00B0C148[25];
-// GLOBAL: GAMEMD 0xB0CBDC -- "owns the memory" flag of each command-bar shape.
-extern bool CommandShapeOwned_00B0CBDC[25];
+#include "cell_coord_globals.h"
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 

@@ -16,14 +16,11 @@
 #include <string.h>
 #include "_layout/cd_search_path.h"
 #include <windows.h>
+#include "cell_coord_globals.h"
 // Preserve the native RawFile method name; call the Win32 import explicitly.
 #undef DeleteFile
 
 
-
-// GLOBAL: GAMEMD 0xB04BEC
-// Existing byte flag read at 0x65CD71 and cleared at 0x65CDB1; storage unowned.
-extern bool IsReadingAudioFile;
 
 
 // Native 0x65D240 local-frame and imported Win32 record layout.

@@ -8,13 +8,12 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 struct Obj_005BCC30;
 struct Obj_005BCCE0;
 struct Obj_005BCD70;
 
-// GLOBAL: GAMEMD 0xABF23A
-extern unsigned char DAT_00ABF23A;
 // GLOBAL: GAMEMD 0xABF23C
 extern int DAT_00ABF23C;
 

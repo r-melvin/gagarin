@@ -43,6 +43,7 @@
 #include "header_init_shapes.h"
 #include <string.h>
 #include "shared_constants_globals.h"
+#include "runtime_misc_globals.h"
 
 // The fixed global array. Its address (0x7E1B78) and the end sentinel
 // (&Array[6] == 0x7E1E18) are emitted as relocations and normalised by the
@@ -59,8 +60,6 @@ extern Theater Theater_Array[6];
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
-// GLOBAL: GAMEMD 0x00AA0738
-extern "C" int DAT_00AA0738;
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 

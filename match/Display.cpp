@@ -50,6 +50,7 @@
 #include "engine_core_globals.h"
 #include "shared_constants_globals.h"
 #include "scenario_session_globals.h"
+#include "runtime_misc_globals.h"
 
 // Recolours the palette entries the highlight cycles through: eight consecutive entries filled from the colour ring,
 // starting `offset` entries into it.
@@ -1864,7 +1865,7 @@ void DisplayClass::vf_32(DisplayScIni* ini)
     if (FUN_007C8D20(fill, "Water") == 0)
     {
         ground.Base = 3;
-        ground.Second = DisplayScGround_00AA0738;
+        ground.Second = DAT_00AA0738;
     }
     FUN_00578350();
     for (CellClass* cell = FUN_00578290(); cell; cell = FUN_00578290())

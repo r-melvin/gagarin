@@ -8,9 +8,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-
-// GLOBAL: GAMEMD 0xB7355C
-extern int DAT_00B7355C;
+#include "platform_online_globals.h"
 
 // LIBRARY: GAMEMD 0x7C8A3A (declaration)
 void __stdcall FUN_007C8A3A(int, int);

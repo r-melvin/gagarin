@@ -8,9 +8,8 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
-// GLOBAL: GAMEMD 0xA9FAB4
-extern bool DAT_00A9FAB4;
 // GLOBAL: GAMEMD 0xA9FAB8
 extern int DAT_00A9FAB8;
 

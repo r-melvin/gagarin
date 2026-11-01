@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 class PlanningNotify;
 class PlanningNodeClass;
@@ -41,8 +42,6 @@ struct Obj_0063D520;
 extern char DAT_00836BD4[];
 // GLOBAL: GAMEMD 0xAC4C90
 extern int DAT_00AC4C90;
-// GLOBAL: GAMEMD 0xAC4CF4
-extern bool DAT_00AC4CF4;
 
 // FUNCTION: GAMEMD 0x730A90 (declaration)
 void FUN_00730A90(int, int);

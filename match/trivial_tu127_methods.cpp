@@ -8,6 +8,7 @@
 #include "_layout/cell_class.h"
 #include "_layout/cell.h"
 #include "_layout/cell_offset.h"
+#include "runtime_misc_globals.h"
 // SYNTHETIC: GAMEMD 0x561900 -- dynamic initialiser for DAT_00ABD490: tail-jumps to the aggregate fill at 0x561910
 // SYNTHETIC: GAMEMD 0x561910 -- aggregate fill of the offset table
 // GLOBAL: GAMEMD 0xABD490

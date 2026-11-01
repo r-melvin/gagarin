@@ -5,8 +5,7 @@
 #ifndef GG_MATCH_MOVEMENT_MATRIX3D_NATIVE_HELPERS_H
 #define GG_MATCH_MOVEMENT_MATRIX3D_NATIVE_HELPERS_H
 #include "_layout/matrix3d.h"
-// GLOBAL: GAMEMD 0xB45188
-extern "C" Matrix3D DAT_00B45188[];
+#include "platform_online_globals.h"
 // Native function 0x7559B0; annotated definition in core/unowned_leaf_sweep_c.cpp.
 Matrix3D FUN_007559B0(int index);
 // Native 0x5AF980: hidden ECX result, EDX left matrix, right matrix on stack.

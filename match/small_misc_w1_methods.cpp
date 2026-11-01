@@ -8,6 +8,7 @@
 #include "header_init_shapes.h"
 #include "_layout/fogged_object_class.h"
 #include "engine_core_globals.h"
+#include "runtime_misc_globals.h"
 
 // A circular list whose sentinel sits at +0x0C; each node holds a key at +0x14
 // and a payload pointer at +0x18.
@@ -199,8 +200,6 @@ extern int DAT_00ABC1D4;
 extern int DAT_00AA10AC;
 // GLOBAL: GAMEMD 0xABAD28
 extern int DAT_00ABAD28;
-// GLOBAL: GAMEMD 0xAA0738
-extern int DAT_00AA0738;
 // GLOBAL: GAMEMD 0xAA073C
 extern int DAT_00AA073C;
 // GLOBAL: GAMEMD 0xABB110

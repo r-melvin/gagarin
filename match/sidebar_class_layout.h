@@ -22,6 +22,7 @@
 #include "voc_class_play_global_methods.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "cell_coord_globals.h"
 
 // ---------------------------------------------------------------------------
 // Shared call views
@@ -351,8 +352,6 @@ extern SidebarHouse* CurrentPlayer_00A83D4C;
 extern SidebarHouse* Observer_00AC1198;
 // GLOBAL: GAMEMD 0x884CF8 -- observer-mode row limit.
 extern int ObserverRowLimit_00884CF8;
-// GLOBAL: GAMEMD 0xB0B518 -- byte set when the sidebar surface was touched.
-extern unsigned char SidebarTouched_00B0B518;
 
 // The sidebar's static button objects (all 0x60-byte ShapeButtonClass views).
 // GLOBAL: GAMEMD 0xB07DF8 -- the sell button.

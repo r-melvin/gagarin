@@ -14,6 +14,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "vox_class_play_index_methods.h"
+#include "vox_audio_globals.h"
 
 class StreamView_00752B40
 {

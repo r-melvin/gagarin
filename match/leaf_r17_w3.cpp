@@ -10,11 +10,11 @@
 #include "voxel_shade_palette.h"
 #include "string_class.h"
 #include "world_domination_tour.h"
+#include "palette_screen_globals.h"
+#include "platform_online_globals.h"
 
 // GLOBAL: GAMEMD 0xB1D4E0
 extern unsigned char DAT_00B1D4E0[256];
-// GLOBAL: GAMEMD 0xB45990
-extern unsigned char DAT_00B45990[256];
 
 // 0x74BEE0 / 0x74BF10: reset the cursor and fill the byte buffer.
 struct FillBuf_0074BEE0
@@ -321,7 +321,6 @@ extern Shape_0072E860* DAT_00B0F9DC;
 extern Shape_0072E860* DAT_00B0FB1C;
 extern Shape_0072E860* DAT_00B0FAF8;
 extern Shape_0072E860* DAT_00B0FB34;
-extern Shape_0072E860* DAT_00B0FB00;
 // GLOBAL: GAMEMD 0xB0FBCC / 0xB0FBB4 / 0xB0FBA8 - converts.
 extern Convert_0072E860* DAT_00B0FBCC;
 extern Convert_0072E860* DAT_00B0FBB4;

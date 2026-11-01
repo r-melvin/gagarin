@@ -125,6 +125,7 @@
 #include "display_objects_globals.h"
 #include "engine_core_globals.h"
 #include "shared_constants_globals.h"
+#include "runtime_misc_globals.h"
 
 // Is every foundation cell of this building fogged? Walks the type's
 // foundation list (terminated by a {0x7FFF,0x7FFF} entry), offsets each entry
@@ -979,8 +980,6 @@ struct Sink_00476F70
 
 // ---------------------------------------------------------------------------
 // 0x48DF30: index of a name in the global name table, or -1.
-extern char** DAT_00ABF394;
-extern int    DAT_00ABF3A0;
 int __cdecl FUN_007C8D20(const char* a, const char* b);
 
 // ---------------------------------------------------------------------------
@@ -1470,8 +1469,6 @@ extern Deletable_0053D550* DAT_00A9FFC8[80];
 extern short DAT_00AA0168[256];
 // GLOBAL: GAMEMD 0xAA0444
 extern int DAT_00AA0444;
-// GLOBAL: GAMEMD 0xABF3A0
-extern int DAT_00ABF3A0;
 // GLOBAL: GAMEMD 0x81C1D0
 extern int DAT_0081C1D0;
 // GLOBAL: GAMEMD 0x887338

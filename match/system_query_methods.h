@@ -8,10 +8,7 @@
 // a scaled system clock, and a global flag read.
 #ifndef GG_MATCH_PLATFORM_SYSTEM_QUERY_METHODS_H
 #define GG_MATCH_PLATFORM_SYSTEM_QUERY_METHODS_H
-
-// GLOBAL: GAMEMD 0x00B0FE65 — the "player is type-selecting" flag (a double
-// click selects every unit of the same type on screen).
-extern bool IsTypeSelectingFlag;
+#include "palette_screen_globals.h"
 
 // CD number the engine reports for the currently required disc. Retail is the
 // constant 2 (`MOV EAX,0x2; RET`) — YR ships a single disc, so the multi-disc

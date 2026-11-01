@@ -265,6 +265,9 @@
 #include "_layout/cell.h"
 #include "techno_static_timers.h"
 #include "shared_constants_globals.h"
+#include "cell_coord_globals.h"
+#include "palette_screen_globals.h"
+#include "platform_online_globals.h"
 
 struct TypeView_006FBFA0 {
     unsigned char unknown_00[0x1A6];
@@ -614,9 +617,6 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 #include "_layout/quad_006c95e0.h"
 
-// GLOBAL: GAMEMD 0x00B0CB78
-extern "C" int DAT_00B0CB78[];
-
 #include "_layout/rect_006cfdb0.h"
 
 // GLOBAL: GAMEMD 0x00B0FC60
@@ -647,8 +647,6 @@ extern "C" char DAT_00843108;
 
 // GLOBAL: GAMEMD 0x00B0FE54
 extern "C" int DAT_00B0FE54;
-// GLOBAL: GAMEMD 0x00B0FE58
-extern "C" char DAT_00B0FE58;
 
 // GLOBAL: GAMEMD 0x008463B8 (eighteen string pointers)
 extern "C" const char* const DAT_008463B8[18];
@@ -691,9 +689,6 @@ struct Record_007559B0
     int unknown_0[12];
 };
 
-// GLOBAL: GAMEMD 0x00B45188 (48-byte records)
-extern "C" Record_007559B0 DAT_00B45188[];
-
 // 0x4068E0: cdecl text sink taking a format string (callee only).
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
@@ -701,8 +696,6 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 // GLOBAL: GAMEMD 0x00B73550
 extern "C" HWND DAT_00B73550;
-// GLOBAL: GAMEMD 0x00B7355C
-extern "C" HIMC DAT_00B7355C;
 
 // GLOBAL: GAMEMD 0x00B76B24
 extern "C" int DAT_00B76B24;

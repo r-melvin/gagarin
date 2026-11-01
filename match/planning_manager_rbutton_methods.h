@@ -10,9 +10,8 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
-// GLOBAL: GAMEMD 0xAC4CF4 — planning mode active (YRpp name).
-extern bool DAT_00AC4CF4;
 // GLOBAL: GAMEMD 0xAC4CB0 — cleared on every right-button release.
 extern bool DAT_00AC4CB0;
 // GLOBAL: GAMEMD 0xA8ECC8

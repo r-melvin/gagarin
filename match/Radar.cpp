@@ -74,6 +74,7 @@
 #include "ui_display_chain.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "cell_coord_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
@@ -238,8 +239,6 @@ extern ShapeButtonClass RadarButtonF3_00B04910;
 extern ShapeButtonClass RepairButton_00B0B3A0;
 // GLOBAL: GAMEMD 0x00B07DF8
 extern ShapeButtonClass SellButton_00B07DF8;
-// GLOBAL: GAMEMD 0x00B0B518
-extern unsigned char SidebarTouched_00B0B518;
 // GLOBAL: GAMEMD 0x00B0FA1C (three channel bytes at +0..+2; accessed as a dword and byte fields)
 struct RadarColorSamples_00B0FA1C { unsigned char Red, Green, Blue, unknown_03; };
 GG_STATIC_ASSERT(offsetof(RadarColorSamples_00B0FA1C, Green) == 1);
@@ -1180,7 +1179,7 @@ void RadarClass::vf_16(bool forced)
         unknown_1210 = y;
         unknown_1214 = width;
         unknown_1218 = height;
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
     }
 
     if (DAT_00B04964 != 0) {
@@ -1213,7 +1212,7 @@ void RadarClass::vf_16(bool forced)
         unknown_1210 = y;
         unknown_1214 = width;
         unknown_1218 = height;
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
     }
 }
 

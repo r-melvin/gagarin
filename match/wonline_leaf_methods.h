@@ -14,6 +14,7 @@
 #include "hash_table_view.h"
 #include "_rt/gg_static_assert.h"
 #include "_layout/theme_class.h"
+#include "platform_online_globals.h"
 
 // FUNCTION: GAMEMD 0x775B10 (decl; reloc)
 void* FUN_00775B10();
@@ -55,7 +56,6 @@ struct Vec_00B778D8
         operator delete(block);
     }
 };
-extern Vec_00B778D8 DAT_00B778D8;
 
 // FUNCTION: GAMEMD 0x7864C0 (decl; reloc)
 bool FUN_007864C0(Record_00B778E0* record);
@@ -140,7 +140,6 @@ struct Vec_00B77900
         operator delete(block);
     }
 };
-extern Vec_00B77900 DAT_00B77900;
 GG_STATIC_ASSERT(offsetof(Vec_00B77900, count) == 0x00);
 GG_STATIC_ASSERT(offsetof(Vec_00B77900, data) == 0x08);
 GG_STATIC_ASSERT(sizeof(Vec_00B77900) == 0x0C);
@@ -345,7 +344,6 @@ struct Vec_00B76AE0
         operator delete(block);
     }
 };
-extern Vec_00B76AE0 DAT_00B76AE0;
 
 struct Item_007830C0
 {

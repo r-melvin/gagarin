@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "display_objects_globals.h"
+#include "runtime_misc_globals.h"
 
 // ---------------------------------------------------------------------------
 // 0x402C40 / 0x4031D0: walk of a queue that hangs off a global holder.
@@ -613,8 +614,6 @@ void Sink_00476F70::Forward(int a, int b, Lookup_00476F70* l)
 
 // ---------------------------------------------------------------------------
 // 0x48DF30: index of a name in the global name table, or -1.
-extern char** DAT_00ABF394;
-extern int    DAT_00ABF3A0;
 int __cdecl FUN_007C8D20(const char* a, const char* b);
 
 // FUNCTION: GAMEMD 0x48DF30

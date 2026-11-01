@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
+#include "cell_coord_globals.h"
 
 // GLOBAL: GAMEMD 0xA8ED84
 extern int CurrentFrame;
@@ -41,10 +42,6 @@ bool Packed_006B8AF0::FUN_006B8AF0(const Packed_006B8AF0* other) const
 // ---------------------------------------------------------------------------
 // 0x6CFC80: release one sidebar command shape slot.
 struct SidebarShapeFile;
-// GLOBAL: GAMEMD 0xB0CBDC
-extern bool CommandShapeOwned_00B0CBDC[];
-// GLOBAL: GAMEMD 0xB0C148
-extern SidebarShapeFile* CommandShapes_00B0C148[];
 
 // FUNCTION: GAMEMD 0x6CFC80
 //

@@ -27,6 +27,7 @@
 #include "mouse_ww_mouse_class.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "cell_coord_globals.h"
 
 // GLOBAL: GAMEMD 0x886F90 -- sidebar rectangle.
 extern RectangleStruct SidebarRect_00886F90;
@@ -34,8 +35,6 @@ extern RectangleStruct SidebarRect_00886F90;
 extern RectangleStruct TacticalRect_00886FA0;
 // GLOBAL: GAMEMD 0x884B8E -- set when a tooltip touches the sidebar (byte store).
 extern unsigned char TipTouchedSidebar_00884B8E;
-// GLOBAL: GAMEMD 0xB0B518 -- byte set when the tooltip is drawn on the sidebar surface.
-extern unsigned char SidebarSurfaceUsed_00B0B518;
 
 // WWMouseClass::Instance (GLOBAL 0x887640; slot 10 GetHideCount) is WWMouseClassInstance, mouse_ww_mouse_class.h.
 

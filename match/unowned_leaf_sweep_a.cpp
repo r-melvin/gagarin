@@ -11,14 +11,13 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "shared_constants_globals.h"
+#include "runtime_misc_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" size_t __cdecl strlen(const char* s);
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
-// GLOBAL: GAMEMD 0x00AA0738
-extern "C" int DAT_00AA0738;
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 

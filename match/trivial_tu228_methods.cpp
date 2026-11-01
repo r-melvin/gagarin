@@ -5,6 +5,7 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu228_methods.h"
+#include "cell_coord_globals.h"
 
 // FUNCTION: GAMEMD 0x6CFDF0
 // Branching.

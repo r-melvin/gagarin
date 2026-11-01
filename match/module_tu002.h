@@ -10,6 +10,7 @@
 #include "dsound_access_methods.h"
 #include "theme_class_ai_methods.h"
 #include "mix_file_class.h"
+#include "cell_coord_globals.h"
 
 // GLOBAL: GAMEMD 0x87E448
 extern double DAT_0087E448;
@@ -102,8 +103,6 @@ extern HANDLE DAT_0087E7F0;
 extern DWORD DAT_0087E7F4;
 // GLOBAL: GAMEMD 0x87E820
 extern int DAT_0087E820;
-// GLOBAL: GAMEMD 0xB04BEC
-extern bool DAT_00B04BEC;
 // STRING: GAMEMD 0x81628C
 // "Unable to change the priority of the Streamer Thread - %s\n"
 extern const char DAT_0081628C[];

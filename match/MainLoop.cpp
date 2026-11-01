@@ -19,6 +19,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "mathtbl_consts.h"
+#include "runtime_misc_globals.h"
 
 // GLOBAL: GAMEMD 0x7ED3A0
 extern const double DAT_007ED3A0;

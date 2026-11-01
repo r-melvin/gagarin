@@ -3,6 +3,7 @@
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x74D490.
 
 #include "veinhole_monster_draw_methods.h"
+#include "vox_audio_globals.h"
 
 // FUNCTION: GAMEMD 0x74D490  VeinholeMonsterClass::DrawIt (__thiscall)
 //
@@ -30,7 +31,7 @@ void Monster_0074D490::DrawIt()
     if (IsDead)
         return;
 
-    void* shape = DAT_00B1D2EC;
+    void* shape = VeinSHPData;
     void* palette = unknown_FC;
 
     Coord_0074D490 coord;

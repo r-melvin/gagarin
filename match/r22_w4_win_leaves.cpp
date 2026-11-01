@@ -10,6 +10,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/coord_struct.h"
 #include "ui_common.h"
+#include "platform_online_globals.h"
 
 HWND __cdecl FUN_00775B10();
 BOOL __stdcall ScaleChildEnumProc(HWND window, LPARAM param);
@@ -22,7 +23,6 @@ extern short DAT_00B73318;
 extern int DAT_00B73564;
 extern int DAT_00B73568;
 extern int DAT_00B7356C;
-extern int DAT_00B7355C;
 
 // LIBRARY: GAMEMD 0x7C8A28 (declaration) -- import thunk for ImmNotifyIME.
 int __stdcall FUN_007C8A28(int himc, int action, int index, int value);

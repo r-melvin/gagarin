@@ -448,8 +448,6 @@ extern WholeFileBlock* DAT_00B0FACC;
 extern WholeFileBlock* DAT_00B0FAE8;
 // GLOBAL: GAMEMD 0xB0FAF8
 extern WholeFileBlock* DAT_00B0FAF8;
-// GLOBAL: GAMEMD 0xB0FB00
-extern WholeFileBlock* DAT_00B0FB00;
 // GLOBAL: GAMEMD 0xB0FB0C
 extern WholeFileBlock* DAT_00B0FB0C;
 // GLOBAL: GAMEMD 0xB0FB2C

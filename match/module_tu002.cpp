@@ -19,6 +19,7 @@
 #include "module_tu002_sound.h"
 #include <mmsystem.h>
 #include <dsound.h>
+#include "cell_coord_globals.h"
 
 // Native record extents: 0x40A0DD..0x40A0F6 clears the 18-byte format;
 // 0x40A126..0x40A153 clears five descriptor words; 0x40A1AA initializes the
@@ -398,10 +399,10 @@ DWORD __stdcall FUN_00407680(void* parameter)
             if (event->unknown_0C & 4)
             {
                 EnterCriticalSection(&DAT_0087E7F8);
-                DAT_00B04BEC = true;
+                IsReadingAudioFile = true;
                 int transferred;
                 int result = event->unknown_34->FUN_00408F80(event->unknown_7C, event->unknown_9C, &transferred);
-                DAT_00B04BEC = false;
+                IsReadingAudioFile = false;
                 event->unknown_9C -= transferred;
                 if (event->unknown_9C < 1 || result == 2 || result == 0) event->unknown_0C &= ~4;
                 LeaveCriticalSection(&DAT_0087E7F8);
@@ -586,9 +587,9 @@ int __fastcall Obj_00407F80::FUN_00407B60(const char* name, int mode)
             if (unknown_9C < bytes) bytes = unknown_9C;
         }
         int transferred;
-        DAT_00B04BEC = true;
+        IsReadingAudioFile = true;
         int result = unknown_34->FUN_00408F80(unknown_7C, bytes, &transferred);
-        DAT_00B04BEC = false;
+        IsReadingAudioFile = false;
         unknown_9C -= transferred;
         if (unknown_9C < 1 || result == 2 || result == 0) unknown_0C &= ~4;
         LeaveCriticalSection(&DAT_0087E7F8);

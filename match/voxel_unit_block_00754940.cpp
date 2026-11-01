@@ -14,6 +14,7 @@
 #include "_layout/quaternion.h"
 #include "voxel_section_source.h"
 #include "mathtbl_init_shapes.h"
+#include "platform_online_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals --------------
 

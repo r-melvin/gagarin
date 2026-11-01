@@ -8,9 +8,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-
-// GLOBAL: GAMEMD 0xABCD58
-extern unsigned char DAT_00ABCD58;
+#include "runtime_misc_globals.h"
 
 
 // FUNCTION: GAMEMD 0x55CC00

@@ -35,6 +35,7 @@
 #include "_rt/gg_static_assert.h"
 #include "dir16_operator_methods.h"
 #include "shared_constants_globals.h"
+#include "runtime_misc_globals.h"
 
 // Callees defined outside this translation unit carry a `// CALLEE:` marker
 // rather than `// FUNCTION:`. They are declarations, not bodies, and claiming
@@ -152,10 +153,6 @@ public:
 extern MapView_578080_2 MapClass_Instance;
 // GLOBAL: GAMEMD 0x00ABEF10
 extern CoordStruct GG_UnsetCoord;
-// GLOBAL: GAMEMD 0x00ABEF44
-extern int GG_BridgeRise;
-// GLOBAL: GAMEMD 0x00ABEF50
-extern int GG_LevelHeight;
 
 // FUNCTION: GAMEMD 0x005B20F0
 int FlightPathStep(CoordStruct* coord, VelocityClass* velocity,

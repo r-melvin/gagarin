@@ -48,6 +48,7 @@
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
 #include "display_objects_globals.h"
+#include "cell_coord_globals.h"
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 
@@ -355,7 +356,7 @@ void CCToolTip::DrawText(ToolTipManagerData& from)
             if (OnSidebar != 1 || from.X < limit) return;
             surface = DAT_00887300;
             x = from.X - limit;
-            SidebarSurfaceUsed_00B0B518 = 1;
+            DAT_00B0B518 = 1;
         }
     } else {
         int limit = SidebarRect_00886F90.X + SidebarRect_00886F90.Width;
@@ -365,7 +366,7 @@ void CCToolTip::DrawText(ToolTipManagerData& from)
         } else {
             if (OnSidebar != 1 || from.X + from.Width >= limit) return;
             surface = DAT_00887300;
-            SidebarSurfaceUsed_00B0B518 = 1;
+            DAT_00B0B518 = 1;
         }
     }
     if (!surface) return;

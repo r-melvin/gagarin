@@ -9,9 +9,8 @@
 
 #include "shape_button_class.h"
 #include "tooltip_manager_shared.h"
+#include "cell_coord_globals.h"
 
-// GLOBAL: GAMEMD 0x00B0CB78 (index-to-slot table)
-extern int ButtonIndexTable[];
 // GLOBAL: GAMEMD 0x00B0C1C0 (25 objects at 0x60-byte stride)
 extern ShapeButtonClass ButtonArray[];
 

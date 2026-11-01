@@ -13,6 +13,7 @@
 #include "pixel_shift_view.h"
 #include "palette_screen_globals.h"
 #include "platform_online_globals.h"
+#include "runtime_misc_globals.h"
 
 // GLOBAL: GAMEMD 0x1
 extern int DAT_00000001;
@@ -31,18 +32,12 @@ extern int DAT_0082E174;
 // GLOBAL: GAMEMD 0x89C4D0
 class BitFont;
 extern BitFont* DAT_0089C4D0;
-// GLOBAL: GAMEMD 0xA9FAB4
-extern char DAT_00A9FAB4;
 // GLOBAL: GAMEMD 0xAA0444
 extern int DAT_00AA0444;
-// GLOBAL: GAMEMD 0xABCD58
-extern char DAT_00ABCD58;
 // GLOBAL: GAMEMD 0xABED0C
 extern int DAT_00ABED0C;
 // GLOBAL: GAMEMD 0xAC4BF0
 extern int DAT_00AC4BF0;
-// GLOBAL: GAMEMD 0xAC4CF4
-extern char DAT_00AC4CF4;
 // GLOBAL: GAMEMD 0xB0FB60
 extern int DAT_00B0FB60;
 // GLOBAL: GAMEMD 0xB0FB68

@@ -83,6 +83,7 @@
 #include "mapobj_globals.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "runtime_misc_globals.h"
 extern char DAT_00ABDFD8[]; // GLOBAL: GAMEMD 0xABDFD8
 
 
@@ -175,7 +176,6 @@ double __cdecl FUN_004CAC40(double value); // GAMEMD 0x4CAC40
 extern char DAT_00A83E48[]; // GLOBAL: GAMEMD 0x00A83E48
 extern int DAT_00A8B254; // GLOBAL: GAMEMD 0x00A8B254
 extern Obj_0069ACC0** DAT_00A8B8CC; // GLOBAL: GAMEMD 0x00A8B8CC
-extern char** DAT_00ABF394; // GLOBAL: GAMEMD 0x00ABF394
 extern int DAT_00A8DAB4; // GLOBAL: GAMEMD 0x00A8DAB4
 extern GameOptionsClass DAT_00A8EB60; // GLOBAL: GAMEMD 0x00A8EB60
 void __fastcall FUN_004790B0(int value); // GAMEMD 0x4790B0

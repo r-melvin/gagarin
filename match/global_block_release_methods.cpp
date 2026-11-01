@@ -13,6 +13,7 @@
 //   out-of-line _$E thunk behind a jump).
 //
 // LIBRARY: GAMEMD 0x7C8B3D -- CRT free.
+#include "platform_online_globals.h"
 extern "C" void __cdecl gg_free(void*);
 // FUNCTION: GAMEMD 0x007B46F0 (decl; reloc) -- string object destructor (this in ECX).
 extern void FUN_007B46F0(void* self);
@@ -39,10 +40,7 @@ struct CountedStringArray {
 
 extern CountedBlock DAT_00AC1DE0;
 extern char DAT_00B2FF78;
-extern CountedBlock DAT_00B778D8;
 extern CountedBlock DAT_00B73E10;
-extern CountedBlock DAT_00B76AE0;
-extern CountedBlock DAT_00B77900;
 extern CountedBlock DAT_00B76520;
 extern CountedStringArray DAT_00B777A0;
 extern CountedStringArray DAT_00B73BD8;

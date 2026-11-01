@@ -25,6 +25,7 @@
 #include "gscreen_class_render_methods.h"
 #include "_layout/com_0048d080.h"
 #include "scenario_session_globals.h"
+#include "platform_online_globals.h"
 
 // Provisional source storage owner; original definition TU is not attested.
 // Native globals are pointer slots in the PE zero-filled data tail.

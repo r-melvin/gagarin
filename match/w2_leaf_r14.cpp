@@ -11,6 +11,7 @@
 #include "_layout/load_options_class.h"
 #include "vector_class_operations.h"
 #include "mapobj_globals.h"
+#include "runtime_misc_globals.h"
 
 // FUNCTION: GAMEMD 0x5BECC0
 // Mirror the lower triangle of a 256x256 byte matrix into the upper triangle.
@@ -137,9 +138,6 @@ struct Obj_005BD2A0
 GG_STATIC_ASSERT(offsetof(Obj_005BD2A0, mode) == 0x2710);
 GG_STATIC_ASSERT(offsetof(Obj_005BD2A0, left) == 0x271C);
 GG_STATIC_ASSERT(offsetof(Obj_005BD2A0, top) == 0x2720);
-
-// GLOBAL: GAMEMD 0xABF23A
-extern unsigned char DAT_00ABF23A;
 
 // FUNCTION: GAMEMD 0x5BD2A0
 void Obj_005BD2A0::FUN_005BD2A0(const char* text, int a, int b, int c)

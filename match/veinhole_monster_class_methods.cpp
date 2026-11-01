@@ -9,6 +9,7 @@
 //   FUNCTION: GAMEMD 0x74D450  VeinholeMonsterClass::LoadVeinholeArt        (__fastcall)
 
 #include "veinhole_monster_class_methods.h"
+#include "vox_audio_globals.h"
 
 // FUNCTION: GAMEMD 0x74CD60  (__fastcall)
 // Scan the registry back-to-front for the monster whose home cell exactly

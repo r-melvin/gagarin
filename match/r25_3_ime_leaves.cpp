@@ -7,9 +7,7 @@
 #include <windows.h>
 #include <string.h>
 #include <stdlib.h>
-
-// GLOBAL: GAMEMD 0xB7355C -- the IME input context.
-extern int DAT_00B7355C;
+#include "platform_online_globals.h"
 
 // LIBRARY: GAMEMD 0x7C8A34 (declaration) -- import thunk for ImmGetCompositionStringA.
 int __stdcall FUN_007C8A34(int himc, int index, char* buffer, int size);

@@ -16,6 +16,7 @@
 #include "iso_tile_type_class_tile_data_methods.h"
 #include "vector_class_operations.h"
 #include "trivial_tu130_methods.h"
+#include "runtime_misc_globals.h"
 
 // 8-byte value written through a pointer passed in ECX (0x58BB00).
 struct Pair_8
@@ -291,8 +292,6 @@ extern int* DAT_00ABE27C;
 extern IsometricTileTypeClass** DAT_00A8ED2C;
 // GLOBAL: GAMEMD 0xABAD28
 extern int DAT_00ABAD28;
-// GLOBAL: GAMEMD 0xAA0738
-extern int DAT_00AA0738;
 // GLOBAL: GAMEMD 0xAA0E18
 extern int DAT_00AA0E18;
 // GLOBAL: GAMEMD 0xABE304

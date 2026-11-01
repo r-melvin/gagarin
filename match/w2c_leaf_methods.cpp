@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <windows.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 // FUNCTION: GAMEMD 0x00693B50
 // A duration by kind: 0x2A30 for kind 4, otherwise 0xE10.
@@ -339,8 +340,6 @@ void __stdcall FUN_005C21A0(HWND dialog)
 
 // GLOBAL: GAMEMD 0xABF238
 extern bool DAT_00ABF238;
-// GLOBAL: GAMEMD 0xABF23A
-extern bool DAT_00ABF23A;
 // GLOBAL: GAMEMD 0xABF234
 extern HWND DAT_00ABF234;
 // GLOBAL: GAMEMD 0xABF240

@@ -19,6 +19,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 — operator new (CRT; reloc).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
@@ -211,9 +212,6 @@ struct Owner_00626C60
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, VecA) == 0x4);
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, Table) == 0xC);
 GG_STATIC_ASSERT(sizeof(Owner_00626C60) == 0x10);
-
-// GLOBAL: GAMEMD 0xAC48F0 — the palette-table owner.
-extern Owner_00626C60* DAT_00AC48F0;
 
 struct ColorScheme_00626C60
 {

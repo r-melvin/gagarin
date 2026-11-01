@@ -4,15 +4,10 @@
 //   Address index: 0x7559D0 0x755A40.
 
 #include "quaternion_matrix_methods.h"
+#include "platform_online_globals.h"
 
 // GLOBAL: GAMEMD 0xB43F10 -- the first rotation matrix table (0x30 bytes each).
 extern Matrix3D DAT_00B43F10[];
-// GLOBAL: GAMEMD 0xB44348 -- the first quaternion table.
-extern QuaternionEntry DAT_00B44348[];
-// GLOBAL: GAMEMD 0xB43188 -- the second quaternion table.
-extern QuaternionEntry DAT_00B43188[];
-// GLOBAL: GAMEMD 0xB45188 -- the second rotation matrix table.
-extern Matrix3D DAT_00B45188[];
 
 // FUNCTION: GAMEMD 0x7559D0
 // The rotation between two table entries as a matrix: the table matrix when

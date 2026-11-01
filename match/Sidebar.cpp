@@ -70,6 +70,7 @@
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
 #include "engine_core_globals.h"
+#include "cell_coord_globals.h"
 
 // FUNCTION: GAMEMD 0x5BF450 (decl; reloc) -- releases the pump list.
 void FUN_005BF450();
@@ -89,7 +90,7 @@ extern SidebarClipRect ClipRect_008809F4;
 // GLOBAL: GAMEMD 0xB07DC8 -- source of the clip rectangle.
 extern SidebarClipRect BackdropRect_00B07DC8;
 // GLOBAL: GAMEMD 0xB0B518 -- accumulated "something was redrawn" flag.
-// (SidebarTouched_00B0B518 in the layout header.)
+// (DAT_00B0B518 in the layout header.)
 
 // Number of cameo rows that fit in the sidebar (expanded inline by 0x6A6C30).
 inline int SidebarRowCount()
@@ -1043,36 +1044,36 @@ void SidebarClass::vf_16(bool forced)
             DrawSidebarShape(5, unknown_5394, StripY_00B0B4F8, &bounds);
             DrawSidebarShape(6, unknown_5394, StripY_00B0B4F8, &bounds);
         }
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
     }
     Strips[unknown_539C].FUN_006A9540(At_53A7);
     PowerClass::vf_16(forced || drewBackground);
     if (SellButton_00B07DF8.At_54) {
         SellButton_00B07DF8.At_54 = false;
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
     }
     if (RepairButton_00B0B3A0.At_54) {
         RepairButton_00B0B3A0.At_54 = false;
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
     }
     for (int k = 0; k < 4; ++k) {
         if (TabButtons_00B07C48[k].At_54) {
             TabButtons_00B07C48[k].At_54 = false;
-            SidebarTouched_00B0B518 = 1;
+            DAT_00B0B518 = 1;
         }
     }
     if (ScrollDownButton_00B0B328.At_54) {
         ScrollDownButton_00B0B328.At_54 = false;
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
     }
     if (ScrollUpButton_00B0B408.At_54) {
         ScrollUpButton_00B0B408.At_54 = false;
-        SidebarTouched_00B0B518 = 1;
+        DAT_00B0B518 = 1;
     }
     if (ToolTipManager_Instance) {
         ToolTipManager_Instance->Draw(true);
     }
-    FUN_006A70E0(SidebarTouched_00B0B518 || At_53A7);
+    FUN_006A70E0(DAT_00B0B518 || At_53A7);
     At_53A6 = false;
     At_53A7 = false;
     CurrentSurface_00887314 = previous;
@@ -1305,7 +1306,7 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
         }
         if (redraw) {
             At_53A6 = 1;
-            SidebarTouched_00B0B518 = 1;
+            DAT_00B0B518 = 1;
             DAT_00884B8F = 1;
             FlagToRedraw(0);
         }
@@ -1806,7 +1807,7 @@ void SidebarSelectClass::OnMouseEnter()
     Owner->At_3C = 1;
     Map_0087F7E8.FlagToRedraw(0);
     DAT_00884B8F = 1;
-    SelectHoverChanged_00B0B518 = 1;
+    DAT_00B0B518 = 1;
 }
 
 // FUNCTION: GAMEMD 0x6AB9E0
@@ -1817,7 +1818,7 @@ void SidebarSelectClass::OnMouseLeave()
     Owner->At_3C = 1;
     Map_0087F7E8.FlagToRedraw(0);
     DAT_00884B8F = 1;
-    SelectHoverChanged_00B0B518 = 1;
+    DAT_00B0B518 = 1;
 }
 
 // FUNCTION: GAMEMD 0x6ABA20
@@ -2190,7 +2191,7 @@ int ColumnStep_00B0B4FC;
 // GLOBAL: GAMEMD 0xB0B500
 int RowStep_00B0B500;
 // GLOBAL: GAMEMD 0xB0B518
-unsigned char SelectHoverChanged_00B0B518;
+unsigned char DAT_00B0B518;
 // GLOBAL: GAMEMD 0x7F2F30
 extern const double DAT_007F2F30 = 60.0;
 // GLOBAL: GAMEMD 0x87F6CC
