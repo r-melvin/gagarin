@@ -379,5 +379,5 @@ int WalkLocomotionClass::Size()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB45BE8
-LocoCoord DAT_00B45BE8;
+extern LocoCoord DAT_00B45BE8;
 // END defined globals

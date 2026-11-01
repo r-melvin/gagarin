@@ -32,7 +32,3 @@ void FUN_00753500()
     }
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB1D4D8
-StreamView_00B1D4D8* DAT_00B1D4D8;
-// END defined globals

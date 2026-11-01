@@ -547,8 +547,6 @@ extern bool DAT_00822CF2;
 void* __fastcall FUN_0047C520(void* arg);
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB0EA50
-CellStruct DAT_00B0EA50;
 // GLOBAL: GAMEMD 0x822CF2
 bool DAT_00822CF2 = true;
 // END defined globals
@@ -887,7 +885,7 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 // GLOBAL: GAMEMD 0xA83D4C
 HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xB054D0
-ColorSchemeVec_00705D70 DAT_00B054D0;
+extern ColorSchemeVec_00705D70 DAT_00B054D0;
 
 #include "_layout/house_type_class.h"
 #include "ui_display_chain.h"

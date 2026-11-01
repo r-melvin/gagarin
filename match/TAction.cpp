@@ -2540,10 +2540,6 @@ int DAT_00A8EB50;
 TechnoClass** DAT_00A8EC7C;
 // GLOBAL: GAMEMD 0xA8EC88
 int DAT_00A8EC88;
-// GLOBAL: GAMEMD 0xB0F658
-DynamicVectorClass<TActionClass*> DAT_00B0F658;
-// GLOBAL: GAMEMD 0xB0F670
-DynamicVectorClass<TActionClass*> DAT_00B0F670;
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718 = 1.0;
 // GLOBAL: GAMEMD 0x7F43B8
@@ -2552,8 +2548,6 @@ extern const double DAT_007F43B8 = 60.0;
 extern const CLSID DAT_007E9800 = {0x4F0EC392, 0x0A55, 0x11D2, {0xAC, 0xA7, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
 // GLOBAL: GAMEMD 0x7F43C0
 extern const double DAT_007F43C0 = 0.017453292519943295;
-// GLOBAL: GAMEMD 0x87F8E4
-Rect_4i DAT_0087F8E4;
 // END defined globals
 
 // BEGIN defined globals (define_globals.py)

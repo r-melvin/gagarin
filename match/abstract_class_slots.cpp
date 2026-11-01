@@ -112,7 +112,3 @@ void AbstractClass::vf_0(int arg)
 {
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x887680
-CoordStruct DAT_00887680;
-// END defined globals

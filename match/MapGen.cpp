@@ -2546,7 +2546,7 @@ template class VectorClass<TRect<int> >;
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xABDF90
-DynamicVectorClass<MapRegionClass*> DAT_00ABDF90;
+extern DynamicVectorClass<MapRegionClass*> DAT_00ABDF90;
 // GLOBAL: GAMEMD 0xABDFB8
 Gbl_00ABDFB8 DAT_00ABDFB8;
 // GLOBAL: GAMEMD 0xABDFD0

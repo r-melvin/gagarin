@@ -7,6 +7,7 @@
 // and stores, with calls only where the retail instructions show them.
 #include "periodic_state_updates_00439480.h"
 #include "mathtbl_init_shapes.h"
+#include "mathtbl_consts.h"
 #include "trig_table_functions_004cac40.h"
 
 // LIBRARY: GAMEMD 0x007C5F00 — VC6 __ftol runtime
@@ -53,14 +54,4 @@ double DAT_0089C748 = FUN_004CADE0( static_cast<double>(DAT_0089C778 * 2) / DAT_
 double DAT_007E3D70 = 60.0;
 // GLOBAL: GAMEMD 0x7E3D78
 double DAT_007E3D78 = 0.017453292519943295;
-// GLOBAL: GAMEMD 0x7E1720
-double DAT_007E1720 = 45.0;
-// GLOBAL: GAMEMD 0x7E1728
-double DAT_007E1728 = 60.0;
-// GLOBAL: GAMEMD 0x7E1730
-double DAT_007E1730 = 90.0;
-// GLOBAL: GAMEMD 0x7E1738
-double DAT_007E1738 = 0.5;
-// GLOBAL: GAMEMD 0x7E1740
-double DAT_007E1740 = 0.00390625;
 // END defined globals

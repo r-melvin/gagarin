@@ -555,7 +555,7 @@ extern const char EvaStructureAbandoned_00458200[] = "EVA_StructureAbandoned";
 // GLOBAL: GAMEMD 0xA80228
 HouseVector_00458200 HouseArray_00458200;
 // GLOBAL: GAMEMD 0x89C848
-CoordStruct DAT_0089C848;
+extern CoordStruct DAT_0089C848;
 // GLOBAL: GAMEMD 0xB73550
 int BuildingBGlobal_00B73550;
 // END defined globals

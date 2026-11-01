@@ -86,7 +86,3 @@ void ProgressScreenClass::Slot0(int value)
     Field04 = value;
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x88730C
-Surface* DAT_0088730C;
-// END defined globals

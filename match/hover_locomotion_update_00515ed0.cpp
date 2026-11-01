@@ -134,5 +134,5 @@ void HoverLocomotionClass::Fun_00515ED0()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8F180
-LocoCoord DAT_00A8F180;
+extern LocoCoord DAT_00A8F180;
 // END defined globals

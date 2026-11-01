@@ -197,7 +197,3 @@ void FUN_004C5ED0()
 {
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x8A3838
-CellStruct DAT_008A3838;
-// END defined globals

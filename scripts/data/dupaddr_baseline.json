@@ -99,56 +99,6 @@
     "name": "FUN_006C98E0"
    }
   ],
-  "0x007E1720": [
-   {
-    "tu": "match/mathtbl_init_435610.cpp",
-    "name": "DAT_007E1720"
-   },
-   {
-    "tu": "match/periodic_state_updates_00439480.cpp",
-    "name": "DAT_007E1720"
-   }
-  ],
-  "0x007E1728": [
-   {
-    "tu": "match/mathtbl_init_435610.cpp",
-    "name": "DAT_007E1728"
-   },
-   {
-    "tu": "match/periodic_state_updates_00439480.cpp",
-    "name": "DAT_007E1728"
-   }
-  ],
-  "0x007E1730": [
-   {
-    "tu": "match/mathtbl_init_435610.cpp",
-    "name": "DAT_007E1730"
-   },
-   {
-    "tu": "match/periodic_state_updates_00439480.cpp",
-    "name": "DAT_007E1730"
-   }
-  ],
-  "0x007E1738": [
-   {
-    "tu": "match/bullet_class_new_methods.cpp",
-    "name": "DAT_007E1738"
-   },
-   {
-    "tu": "match/periodic_state_updates_00439480.cpp",
-    "name": "DAT_007E1738"
-   }
-  ],
-  "0x007E1740": [
-   {
-    "tu": "match/mathtbl_init_435610.cpp",
-    "name": "DAT_007E1740"
-   },
-   {
-    "tu": "match/periodic_state_updates_00439480.cpp",
-    "name": "DAT_007E1740"
-   }
-  ],
   "0x007E2AC8": [
    {
     "tu": "match/House.cpp",
@@ -273,16 +223,6 @@
     "name": "DAT_0087E728c"
    }
   ],
-  "0x0087E7F8": [
-   {
-    "tu": "match/module_tu002.cpp",
-    "name": "DAT_0087E7F8"
-   },
-   {
-    "tu": "match/small_misc28_methods.cpp",
-    "name": "DAT_0087E7F8"
-   }
-  ],
   "0x0087E8A8": [
    {
     "tu": "match/header_init_0040adc0.cpp",
@@ -291,26 +231,6 @@
    {
     "tu": "match/tu056_control_class.cpp",
     "name": "TheResourceRegistry"
-   }
-  ],
-  "0x0087E8B8": [
-   {
-    "tu": "match/Unit.cpp",
-    "name": "DAT_0087E8B8"
-   },
-   {
-    "tu": "match/header_init_0040adc0.cpp",
-    "name": "DAT_0087E8B8"
-   }
-  ],
-  "0x0087F698": [
-   {
-    "tu": "match/Ion.cpp",
-    "name": "DAT_0087F698"
-   },
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_0087F698"
    }
   ],
   "0x0087F6CC": [
@@ -357,16 +277,6 @@
     "name": "g_SurfaceHeight"
    }
   ],
-  "0x0087F8E4": [
-   {
-    "tu": "match/TAction.cpp",
-    "name": "DAT_0087F8E4"
-   },
-   {
-    "tu": "match/Tactical.cpp",
-    "name": "DAT_0087F8E4"
-   }
-  ],
   "0x0087F924": [
    {
     "tu": "match/map_class_area_free_methods.cpp",
@@ -401,16 +311,6 @@
     "name": "DisplayFlag_00884D44"
    }
   ],
-  "0x00885780": [
-   {
-    "tu": "match/colour_table_statics.cpp",
-    "name": "DAT_00885780"
-   },
-   {
-    "tu": "match/spawn_effect_methods.cpp",
-    "name": "DAT_00885780"
-   }
-  ],
   "0x00886F90": [
    {
     "tu": "match/CD.cpp",
@@ -441,16 +341,6 @@
     "name": "MouseViewBoundWidth"
    }
   ],
-  "0x00886FB0": [
-   {
-    "tu": "match/screen_resource_methods.cpp",
-    "name": "DAT_00886FB0"
-   },
-   {
-    "tu": "match/static_object_inits.cpp",
-    "name": "DAT_00886FB0"
-   }
-  ],
   "0x00886FB8": [
    {
     "tu": "match/Scenario.cpp",
@@ -471,16 +361,6 @@
     "name": "RulesInstance"
    }
   ],
-  "0x008872FC": [
-   {
-    "tu": "match/composite_surface.cpp",
-    "name": "DAT_008872FC"
-   },
-   {
-    "tu": "match/leaf_sweep_r12a.cpp",
-    "name": "DAT_008872FC"
-   }
-  ],
   "0x00887308": [
    {
     "tu": "match/Scenario.cpp",
@@ -489,24 +369,6 @@
    {
     "tu": "match/Sidebar.cpp",
     "name": "ConvertSurface_00887308"
-   }
-  ],
-  "0x0088730C": [
-   {
-    "tu": "match/Scenario.cpp",
-    "name": "DAT_0088730C"
-   },
-   {
-    "tu": "match/msanim_early_methods.cpp",
-    "name": "DAT_0088730C"
-   },
-   {
-    "tu": "match/progress_screen_class.cpp",
-    "name": "DAT_0088730C"
-   },
-   {
-    "tu": "match/w2c_leaf_methods.cpp",
-    "name": "DAT_0088730C"
    }
   ],
   "0x00887310": [
@@ -603,26 +465,6 @@
     "name": "WeaponTypeClass_Array"
    }
   ],
-  "0x00887680": [
-   {
-    "tu": "match/abstract_class_slots.cpp",
-    "name": "DAT_00887680"
-   },
-   {
-    "tu": "match/header_init_0040ff90.cpp",
-    "name": "DAT_00887680"
-   }
-  ],
-  "0x00887850": [
-   {
-    "tu": "match/aircraft_tracker_class.cpp",
-    "name": "DAT_00887850"
-   },
-   {
-    "tu": "match/header_init_00412660.cpp",
-    "name": "DAT_00887850"
-   }
-  ],
   "0x00887888": [
    {
     "tu": "match/Scenario.cpp",
@@ -635,16 +477,6 @@
    {
     "tu": "match/vector_array_init_methods.cpp",
     "name": "DAT_00887888"
-   }
-  ],
-  "0x00889FB8": [
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00889FB8"
-   },
-   {
-    "tu": "match/tu021_airstrike_class.cpp",
-    "name": "DAT_00889FB8"
    }
   ],
   "0x0089A29C": [
@@ -683,16 +515,6 @@
    {
     "tu": "match/msanim_family_methods.cpp",
     "name": "TheGameFont"
-   }
-  ],
-  "0x0089C848": [
-   {
-    "tu": "match/math_global_updates_0043af70.cpp",
-    "name": "DAT_0089C848"
-   },
-   {
-    "tu": "match/tu038_building_class.cpp",
-    "name": "DAT_0089C848"
    }
   ],
   "0x0089DDB8": [
@@ -753,16 +575,6 @@
     "name": "DAT_008A0360"
    }
   ],
-  "0x008A03F8": [
-   {
-    "tu": "match/Display.cpp",
-    "name": "DAT_008A03F8"
-   },
-   {
-    "tu": "match/header_init_004a8440.cpp",
-    "name": "DAT_008A03F8"
-   }
-  ],
   "0x008A0DD0": [
    {
     "tu": "match/misc_free_r16_methods.cpp",
@@ -771,26 +583,6 @@
    {
     "tu": "match/pixel_shift_globals_008a0dd0.cpp",
     "name": "gg_b_translucent_pixel_format"
-   }
-  ],
-  "0x008A3838": [
-   {
-    "tu": "match/header_init_004c5000.cpp",
-    "name": "DAT_008A3838"
-   },
-   {
-    "tu": "match/tu076_em_pulse_class.cpp",
-    "name": "DAT_008A3838"
-   }
-  ],
-  "0x008A38E0": [
-   {
-    "tu": "match/Scenario.cpp",
-    "name": "DAT_008A38E0"
-   },
-   {
-    "tu": "match/evade_unit_globals.cpp",
-    "name": "DAT_008A38E0"
    }
   ],
   "0x008B3D88": [
@@ -811,16 +603,6 @@
     "name": "DAT_008B3D88"
    }
   ],
-  "0x008B3F14": [
-   {
-    "tu": "match/GameDlg.cpp",
-    "name": "DAT_008B3F14"
-   },
-   {
-    "tu": "match/leaf_sweep_w1c.cpp",
-    "name": "DAT_008B3F14"
-   }
-  ],
   "0x008B40C8": [
    {
     "tu": "match/logic_class_pointer_methods.cpp",
@@ -829,20 +611,6 @@
    {
     "tu": "match/static_vector_init_stubs.cpp",
     "name": "DAT_008B40C8"
-   }
-  ],
-  "0x008B40E8": [
-   {
-    "tu": "match/House.cpp",
-    "name": "DAT_008B40E8"
-   },
-   {
-    "tu": "match/Queue.cpp",
-    "name": "DAT_008B40E8"
-   },
-   {
-    "tu": "match/static_vector_init_stubs.cpp",
-    "name": "DAT_008B40E8"
    }
   ],
   "0x008B413C": [
@@ -899,16 +667,6 @@
     "name": "DAT_008B41C8"
    }
   ],
-  "0x00A80208": [
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00A80208"
-   },
-   {
-    "tu": "match/tu175_particle_system_class.cpp",
-    "name": "DAT_00A80208"
-   }
-  ],
   "0x00A80228": [
    {
     "tu": "match/house_class_lookup_methods.cpp",
@@ -943,16 +701,6 @@
     "name": "HouseClass_ArrayCount"
    }
   ],
-  "0x00A83C68": [
-   {
-    "tu": "match/ai_trigger_type_class_body.cpp",
-    "name": "DAT_00A83C68"
-   },
-   {
-    "tu": "match/static_vector_init_stubs.cpp",
-    "name": "DAT_00A83C68"
-   }
-  ],
   "0x00A83C6C": [
    {
     "tu": "match/Conquer.cpp",
@@ -979,20 +727,6 @@
    {
     "tu": "match/static_vector_init_stubs.cpp",
     "name": "DAT_00A83C98"
-   }
-  ],
-  "0x00A83CE0": [
-   {
-    "tu": "match/ai_trigger_type_class_body.cpp",
-    "name": "DAT_00A83CE0"
-   },
-   {
-    "tu": "match/static_vector_init_stubs.cpp",
-    "name": "DAT_00A83CE0"
-   },
-   {
-    "tu": "match/tu235_team_class.cpp",
-    "name": "DAT_00A83CE0"
    }
   ],
   "0x00A83CE4": [
@@ -1047,20 +781,6 @@
     "name": "OverlayTypeClass_Array"
    }
   ],
-  "0x00A83D84": [
-   {
-    "tu": "match/Techno.cpp",
-    "name": "DAT_00A83D84"
-   },
-   {
-    "tu": "match/anim_class_r21_methods.cpp",
-    "name": "DAT_00A83D84"
-   },
-   {
-    "tu": "match/tiberium_class_ini_721a50.cpp",
-    "name": "DAT_00A83D84"
-   }
-  ],
   "0x00A83D98": [
    {
     "tu": "match/static_vector_init_stubs.cpp",
@@ -1105,16 +825,6 @@
     "name": "DAT_00A8B200"
    }
   ],
-  "0x00A8B218": [
-   {
-    "tu": "match/ai_trigger_type_class_body.cpp",
-    "name": "DAT_00A8B218"
-   },
-   {
-    "tu": "match/static_vector_init_stubs.cpp",
-    "name": "DAT_00A8B218"
-   }
-  ],
   "0x00A8B21C": [
    {
     "tu": "match/Conquer.cpp",
@@ -1153,40 +863,6 @@
     "name": "Session_00A8B238"
    }
   ],
-  "0x00A8B258": [
-   {
-    "tu": "match/Scenario.cpp",
-    "name": "DAT_00A8B258"
-   },
-   {
-    "tu": "match/trivial_tu151_methods.cpp",
-    "name": "DAT_00A8B258"
-   },
-   {
-    "tu": "match/w2_leaf_r12.cpp",
-    "name": "DAT_00A8B258"
-   }
-  ],
-  "0x00A8B262": [
-   {
-    "tu": "match/netshare.cpp",
-    "name": "DAT_00A8B262"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00A8B262"
-   }
-  ],
-  "0x00A8B263": [
-   {
-    "tu": "match/House.cpp",
-    "name": "DAT_00A8B263"
-   },
-   {
-    "tu": "match/netshare.cpp",
-    "name": "DAT_00A8B263"
-   }
-  ],
   "0x00A8B550": [
    {
     "tu": "match/Queue.cpp",
@@ -1205,16 +881,6 @@
    {
     "tu": "match/netshare.cpp",
     "name": "SessionPlayerLimit"
-   }
-  ],
-  "0x00A8D610": [
-   {
-    "tu": "match/Scenario.cpp",
-    "name": "DAT_00A8D610"
-   },
-   {
-    "tu": "match/w2_leaf2_r17.cpp",
-    "name": "DAT_00A8D610"
    }
   ],
   "0x00A8D638": [
@@ -1307,16 +973,6 @@
     "name": "InhibitWord"
    }
   ],
-  "0x00A8DAC0": [
-   {
-    "tu": "match/NullDlg.cpp",
-    "name": "DAT_00A8DAC0"
-   },
-   {
-    "tu": "match/PhoneEd.cpp",
-    "name": "DAT_00A8DAC0"
-   }
-  ],
   "0x00A8E318": [
    {
     "tu": "match/static_vector_init_stubs.cpp",
@@ -1337,16 +993,6 @@
     "name": "SuperWeaponTypeClass_Array"
    }
   ],
-  "0x00A8E348": [
-   {
-    "tu": "match/ai_trigger_type_class_body.cpp",
-    "name": "DAT_00A8E348"
-   },
-   {
-    "tu": "match/static_vector_init_stubs.cpp",
-    "name": "DAT_00A8E348"
-   }
-  ],
   "0x00A8E34C": [
    {
     "tu": "match/Conquer.cpp",
@@ -1365,16 +1011,6 @@
    {
     "tu": "match/Scenario.cpp",
     "name": "DAT_00A8E378"
-   }
-  ],
-  "0x00A8E960": [
-   {
-    "tu": "match/intro_movie_play.cpp",
-    "name": "DAT_00A8E960"
-   },
-   {
-    "tu": "match/netshare.cpp",
-    "name": "DAT_00A8E960"
    }
   ],
   "0x00A8E9A0": [
@@ -1399,20 +1035,6 @@
    {
     "tu": "match/trigger_class_array.cpp",
     "name": "Array"
-   }
-  ],
-  "0x00A8EB60": [
-   {
-    "tu": "match/Queue.cpp",
-    "name": "DAT_00A8EB60"
-   },
-   {
-    "tu": "match/global_objects_004e62d0.cpp",
-    "name": "DAT_00A8EB60"
-   },
-   {
-    "tu": "match/movie_handle_class.cpp",
-    "name": "DAT_00A8EB60"
    }
   ],
   "0x00A8EB7C": [
@@ -1451,16 +1073,6 @@
    {
     "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
     "name": "DAT_00A8EB88_r21_4"
-   }
-  ],
-  "0x00A8EC18": [
-   {
-    "tu": "match/static_vector_init_stubs.cpp",
-    "name": "DAT_00A8EC18"
-   },
-   {
-    "tu": "match/tu217_smudge_type_class.cpp",
-    "name": "DAT_00A8EC18"
    }
   ],
   "0x00A8EC50": [
@@ -1519,16 +1131,6 @@
    {
     "tu": "match/static_vector_init_stubs.cpp",
     "name": "DAT_00A8ECB8"
-   }
-  ],
-  "0x00A8ED2C": [
-   {
-    "tu": "match/r25_3_cell_checks.cpp",
-    "name": "DAT_00A8ED2C"
-   },
-   {
-    "tu": "match/small_misc_w1_methods.cpp",
-    "name": "DAT_00A8ED2C"
    }
   ],
   "0x00A8ED6B": [
@@ -1615,26 +1217,6 @@
     "name": "HouseEmptyCoord"
    }
   ],
-  "0x00A8F180": [
-   {
-    "tu": "match/header_init_513a10.cpp",
-    "name": "DAT_00A8F180"
-   },
-   {
-    "tu": "match/hover_locomotion_update_00515ed0.cpp",
-    "name": "DAT_00A8F180"
-   }
-  ],
-  "0x00A9F9F8": [
-   {
-    "tu": "match/Ion.cpp",
-    "name": "DAT_00A9F9F8"
-   },
-   {
-    "tu": "match/header_init_539110.cpp",
-    "name": "DAT_00A9F9F8"
-   }
-  ],
   "0x00AA0118": [
    {
     "tu": "match/ion_blast_draw_methods.cpp",
@@ -1675,26 +1257,6 @@
     "name": "DAT_00AA044C"
    }
   ],
-  "0x00AA0568": [
-   {
-    "tu": "match/leaf_sweep_r25_w1.cpp",
-    "name": "DAT_00AA0568"
-   },
-   {
-    "tu": "match/small_leaf_r17_w1.cpp",
-    "name": "DAT_00AA0568"
-   }
-  ],
-  "0x00AA06D0": [
-   {
-    "tu": "match/header_init_543120.cpp",
-    "name": "DAT_00AA06D0"
-   },
-   {
-    "tu": "match/tu109_isometric_tile_class.cpp",
-    "name": "DAT_00AA06D0"
-   }
-  ],
   "0x00AA0E28": [
    {
     "tu": "match/bridge_span_break_methods.cpp",
@@ -1715,26 +1277,6 @@
     "name": "GgWoodBridgeTileBase"
    }
   ],
-  "0x00ABCA00": [
-   {
-    "tu": "match/header_init_554430.cpp",
-    "name": "DAT_00ABCA00"
-   },
-   {
-    "tu": "match/w2_light_rad_dtors_r13.cpp",
-    "name": "DAT_00ABCA00"
-   }
-  ],
-  "0x00ABCC78": [
-   {
-    "tu": "match/header_init_55a4b0.cpp",
-    "name": "DAT_00ABCC78"
-   },
-   {
-    "tu": "match/tu122_locomotion_class.cpp",
-    "name": "DAT_00ABCC78"
-   }
-  ],
   "0x00ABDC50": [
    {
     "tu": "match/bridge_span_break_methods.cpp",
@@ -1753,36 +1295,6 @@
     "name": "InvalidCell"
    }
   ],
-  "0x00ABDF90": [
-   {
-    "tu": "match/MapGen.cpp",
-    "name": "DAT_00ABDF90"
-   },
-   {
-    "tu": "match/static_vector_member_dtor_stubs_b.cpp",
-    "name": "DAT_00ABDF90"
-   }
-  ],
-  "0x00ABEE10": [
-   {
-    "tu": "match/header_init_5afce0.cpp",
-    "name": "DAT_00ABEE10"
-   },
-   {
-    "tu": "match/tu133_mech_locomotion_class.cpp",
-    "name": "DAT_00ABEE10"
-   }
-  ],
-  "0x00ABF239": [
-   {
-    "tu": "match/debug_window_show_methods.cpp",
-    "name": "DAT_00ABF239"
-   },
-   {
-    "tu": "match/trivial_tu139_b_methods.cpp",
-    "name": "DAT_00ABF239"
-   }
-  ],
   "0x00ABF2DC": [
    {
     "tu": "match/mouse_mouse_class_methods.cpp",
@@ -1791,26 +1303,6 @@
    {
     "tu": "match/trivial_tu140_methods.cpp",
     "name": "DAT_00ABF2DC"
-   }
-  ],
-  "0x00ABF3F4": [
-   {
-    "tu": "match/global_leaf_helper_methods.cpp",
-    "name": "DAT_00ABF3F4"
-   },
-   {
-    "tu": "match/movie_handle_class.cpp",
-    "name": "DAT_00ABF3F4"
-   }
-  ],
-  "0x00AC11B4": [
-   {
-    "tu": "match/CampScor.cpp",
-    "name": "DAT_00AC11B4"
-   },
-   {
-    "tu": "match/leaf_sweep_w1c.cpp",
-    "name": "DAT_00AC11B4"
    }
   ],
   "0x00AC13C8": [
@@ -1853,16 +1345,6 @@
     "name": "DAT_00AC1678"
    }
   ],
-  "0x00AC1B00": [
-   {
-    "tu": "match/ownrdraw.cpp",
-    "name": "DAT_00AC1B00"
-   },
-   {
-    "tu": "match/r19_4_hash_tables.cpp",
-    "name": "DAT_00AC1B00"
-   }
-  ],
   "0x00AC4848": [
    {
     "tu": "match/GDlgSupp.cpp",
@@ -1891,50 +1373,6 @@
     "name": "ParticleEmptyCoord"
    }
   ],
-  "0x00AC4A58": [
-   {
-    "tu": "match/mathtbl_init_62da40.cpp",
-    "name": "DAT_00AC4A58"
-   },
-   {
-    "tu": "match/tu175_particle_system_class.cpp",
-    "name": "DAT_00AC4A58"
-   }
-  ],
-  "0x00B04C38": [
-   {
-    "tu": "match/house_class_spy_planes_methods.cpp",
-    "name": "DAT_00B04C38"
-   },
-   {
-    "tu": "match/mathtbl_init_65d6c0.cpp",
-    "name": "DAT_00B04C38"
-   }
-  ],
-  "0x00B04D48": [
-   {
-    "tu": "match/w2_leaf_r12.cpp",
-    "name": "DAT_00B04D48"
-   },
-   {
-    "tu": "match/w2_leaf_r16.cpp",
-    "name": "DAT_00B04D48"
-   }
-  ],
-  "0x00B04D68": [
-   {
-    "tu": "match/mathtbl_init_65f7a0.cpp",
-    "name": "DAT_00B04D68"
-   },
-   {
-    "tu": "match/w2_leaf_r12.cpp",
-    "name": "DAT_00B04D68"
-   },
-   {
-    "tu": "match/w2_leaf_r16.cpp",
-    "name": "DAT_00B04D68"
-   }
-  ],
   "0x00B05458": [
    {
     "tu": "match/Scenario.cpp",
@@ -1943,30 +1381,6 @@
    {
     "tu": "match/Scenario.cpp",
     "name": "WaypointUndefined"
-   }
-  ],
-  "0x00B054D0": [
-   {
-    "tu": "match/Ion.cpp",
-    "name": "DAT_00B054D0"
-   },
-   {
-    "tu": "match/Techno.cpp",
-    "name": "DAT_00B054D0"
-   },
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00B054D0"
-   }
-  ],
-  "0x00B077A0": [
-   {
-    "tu": "match/obj_0069e430.cpp",
-    "name": "DAT_00B077A0"
-   },
-   {
-    "tu": "match/w2_leaf_r12.cpp",
-    "name": "DAT_00B077A0"
    }
   ],
   "0x00B07BC0": [
@@ -2009,16 +1423,6 @@
     "name": "ScrollUpButton_00B0B408"
    }
   ],
-  "0x00B0B5B8": [
-   {
-    "tu": "match/mathtbl_init_6aef10.cpp",
-    "name": "DAT_00B0B5B8"
-   },
-   {
-    "tu": "match/slave_manager_class_wake_methods.cpp",
-    "name": "DAT_00B0B5B8"
-   }
-  ],
   "0x00B0B728": [
    {
     "tu": "match/mathtbl_init_6b4840.cpp",
@@ -2039,26 +1443,6 @@
     "name": "SmudgeOriginCoord"
    }
   ],
-  "0x00B0BC68": [
-   {
-    "tu": "match/Startup.cpp",
-    "name": "DAT_00B0BC68"
-   },
-   {
-    "tu": "match/mathtbl_init_6bb050.cpp",
-    "name": "DAT_00B0BC68"
-   }
-  ],
-  "0x00B0E700": [
-   {
-    "tu": "match/mathtbl_init_6e4b50.cpp",
-    "name": "DAT_00B0E700"
-   },
-   {
-    "tu": "match/tag_class_array.cpp",
-    "name": "DAT_00B0E700"
-   }
-  ],
   "0x00B0E720": [
    {
     "tu": "match/static_vector_dtor_stubs.cpp",
@@ -2067,26 +1451,6 @@
    {
     "tu": "match/tag_class_array.cpp",
     "name": "Array"
-   }
-  ],
-  "0x00B0E830": [
-   {
-    "tu": "match/abstract_index_cast_sweep.cpp",
-    "name": "DAT_00B0E830"
-   },
-   {
-    "tu": "match/mathtbl_init_6e6840.cpp",
-    "name": "DAT_00B0E830"
-   }
-  ],
-  "0x00B0E948": [
-   {
-    "tu": "match/mathtbl_init_6e8880.cpp",
-    "name": "DAT_00B0E948"
-   },
-   {
-    "tu": "match/team_mission_handlers_006eddc0.cpp",
-    "name": "DAT_00B0E948"
    }
   ],
   "0x00B0E9C8": [
@@ -2099,16 +1463,6 @@
     "name": "DefaultWaypointCell"
    }
   ],
-  "0x00B0EA50": [
-   {
-    "tu": "match/Techno.cpp",
-    "name": "DAT_00B0EA50"
-   },
-   {
-    "tu": "match/mathtbl_init_6f28a0.cpp",
-    "name": "DAT_00B0EA50"
-   }
-  ],
   "0x00B0EA80": [
    {
     "tu": "match/Techno.cpp",
@@ -2117,16 +1471,6 @@
    {
     "tu": "match/Techno.cpp",
     "name": "FrameTimer"
-   }
-  ],
-  "0x00B0EBF8": [
-   {
-    "tu": "match/mathtbl_init_717df0.cpp",
-    "name": "DAT_00B0EBF8"
-   },
-   {
-    "tu": "match/tu240_teleport_locomotion_class.cpp",
-    "name": "DAT_00B0EBF8"
    }
   ],
   "0x00B0ED7C": [
@@ -2167,74 +1511,6 @@
     "name": "DAT_00B0F4EC"
    }
   ],
-  "0x00B0F658": [
-   {
-    "tu": "match/TAction.cpp",
-    "name": "DAT_00B0F658"
-   },
-   {
-    "tu": "match/abstract_registry.cpp",
-    "name": "DAT_00B0F658"
-   },
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00B0F658"
-   }
-  ],
-  "0x00B0F670": [
-   {
-    "tu": "match/TAction.cpp",
-    "name": "DAT_00B0F670"
-   },
-   {
-    "tu": "match/abstract_registry.cpp",
-    "name": "DAT_00B0F670"
-   },
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00B0F670"
-   }
-  ],
-  "0x00B0F698": [
-   {
-    "tu": "match/abstract_registry.cpp",
-    "name": "DAT_00B0F698"
-   },
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00B0F698"
-   }
-  ],
-  "0x00B0F708": [
-   {
-    "tu": "match/abstract_registry.cpp",
-    "name": "DAT_00B0F708"
-   },
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00B0F708"
-   }
-  ],
-  "0x00B0F720": [
-   {
-    "tu": "match/static_vector_dtor_stubs.cpp",
-    "name": "DAT_00B0F720"
-   },
-   {
-    "tu": "match/tu175_particle_system_class.cpp",
-    "name": "DAT_00B0F720"
-   }
-  ],
-  "0x00B0F910": [
-   {
-    "tu": "match/mathtbl_init_7287f0.cpp",
-    "name": "DAT_00B0F910"
-   },
-   {
-    "tu": "match/tunnel_locomotion_w3_methods.cpp",
-    "name": "DAT_00B0F910"
-   }
-  ],
   "0x00B0F9D8": [
    {
     "tu": "match/s1_quick_sweep.cpp",
@@ -2243,26 +1519,6 @@
    {
     "tu": "match/screen_resource_methods.cpp",
     "name": "DAT_00B0F9D8"
-   }
-  ],
-  "0x00B0F9DC": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0F9DC"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0F9DC"
-   }
-  ],
-  "0x00B0FA04": [
-   {
-    "tu": "match/leaf_sweep_s3.cpp",
-    "name": "DAT_00B0FA04"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FA04"
    }
   ],
   "0x00B0FA1C": [
@@ -2285,16 +1541,6 @@
     "name": "DAT_00B0FAA0"
    }
   ],
-  "0x00B0FAF8": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FAF8"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FAF8"
-   }
-  ],
   "0x00B0FB04": [
    {
     "tu": "match/s1_quick_sweep.cpp",
@@ -2305,78 +1551,6 @@
     "name": "DAT_00B0FB04"
    }
   ],
-  "0x00B0FB1C": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FB1C"
-   },
-   {
-    "tu": "match/shape_draw_pair_methods.cpp",
-    "name": "DAT_00B0FB1C"
-   }
-  ],
-  "0x00B0FB34": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FB34"
-   },
-   {
-    "tu": "match/screen_resource_methods.cpp",
-    "name": "DAT_00B0FB34"
-   },
-   {
-    "tu": "match/shape_draw_pair_methods.cpp",
-    "name": "DAT_00B0FB34"
-   }
-  ],
-  "0x00B0FB50": [
-   {
-    "tu": "match/leaf_sweep_s3.cpp",
-    "name": "DAT_00B0FB50"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FB50"
-   }
-  ],
-  "0x00B0FBA8": [
-   {
-    "tu": "match/global_getter_family_methods.cpp",
-    "name": "DAT_00B0FBA8"
-   },
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FBA8"
-   },
-   {
-    "tu": "match/shape_draw_pair_methods.cpp",
-    "name": "DAT_00B0FBA8"
-   }
-  ],
-  "0x00B0FBB4": [
-   {
-    "tu": "match/global_getter_family_methods.cpp",
-    "name": "DAT_00B0FBB4"
-   },
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FBB4"
-   },
-   {
-    "tu": "match/shape_draw_pair_methods.cpp",
-    "name": "DAT_00B0FBB4"
-   }
-  ],
-  "0x00B0FBCC": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FBCC"
-   },
-   {
-    "tu": "match/leaf_sweep_s3.cpp",
-    "name": "DAT_00B0FBCC"
-   }
-  ],
   "0x00B0FBE0": [
    {
     "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
@@ -2385,56 +1559,6 @@
    {
     "tu": "match/screen_resource_methods.cpp",
     "name": "DAT_00B0FBE0"
-   }
-  ],
-  "0x00B0FBE4": [
-   {
-    "tu": "match/global_getter_family_methods.cpp",
-    "name": "DAT_00B0FBE4"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FBE4"
-   }
-  ],
-  "0x00B0FBEC": [
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FBEC"
-   },
-   {
-    "tu": "match/trivial_tu255_methods.cpp",
-    "name": "DAT_00B0FBEC"
-   }
-  ],
-  "0x00B0FBF4": [
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FBF4"
-   },
-   {
-    "tu": "match/trivial_tu255_methods.cpp",
-    "name": "DAT_00B0FBF4"
-   }
-  ],
-  "0x00B0FBFC": [
-   {
-    "tu": "match/global_getter_family_methods.cpp",
-    "name": "DAT_00B0FBFC"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FBFC"
-   }
-  ],
-  "0x00B0FC04": [
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FC04"
-   },
-   {
-    "tu": "match/trivial_tu255_methods.cpp",
-    "name": "DAT_00B0FC04"
    }
   ],
   "0x00B0FC0C": [
@@ -2455,54 +1579,6 @@
    {
     "tu": "match/screen_resource_methods.cpp",
     "name": "DAT_00B0FC10"
-   }
-  ],
-  "0x00B0FC14": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FC14"
-   },
-   {
-    "tu": "match/screen_resource_methods.cpp",
-    "name": "DAT_00B0FC14"
-   }
-  ],
-  "0x00B0FC1C": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FC1C"
-   },
-   {
-    "tu": "match/r22_w4_shape_draw.cpp",
-    "name": "DAT_00B0FC1C"
-   },
-   {
-    "tu": "match/screen_resource_methods.cpp",
-    "name": "DAT_00B0FC1C"
-   },
-   {
-    "tu": "match/shape_draw_pair_methods.cpp",
-    "name": "DAT_00B0FC1C"
-   }
-  ],
-  "0x00B0FC20": [
-   {
-    "tu": "match/leaf_r17_w3.cpp",
-    "name": "DAT_00B0FC20"
-   },
-   {
-    "tu": "match/screen_resource_methods.cpp",
-    "name": "DAT_00B0FC20"
-   }
-  ],
-  "0x00B1CFB8": [
-   {
-    "tu": "match/Unit.cpp",
-    "name": "DAT_00B1CFB8"
-   },
-   {
-    "tu": "match/mathtbl_init_735180.cpp",
-    "name": "DAT_00B1CFB8"
    }
   ],
   "0x00B1D290": [
@@ -2589,20 +1665,6 @@
     "name": "VoxCurrentNode"
    }
   ],
-  "0x00B1D4D8": [
-   {
-    "tu": "match/audio_stream_forward_methods.cpp",
-    "name": "DAT_00B1D4D8"
-   },
-   {
-    "tu": "match/global_reset_leaf_methods.cpp",
-    "name": "DAT_00B1D4D8"
-   },
-   {
-    "tu": "match/voc_vox_r14_methods.cpp",
-    "name": "DAT_00B1D4D8"
-   }
-  ],
   "0x00B1D5E0": [
    {
     "tu": "match/global_leaf_helper_methods.cpp",
@@ -2645,16 +1707,6 @@
     "name": "DAT_00b2ff78"
    }
   ],
-  "0x00B45BE8": [
-   {
-    "tu": "match/mathtbl_init_75a880.cpp",
-    "name": "DAT_00B45BE8"
-   },
-   {
-    "tu": "match/tu267_walk_locomotion_class.cpp",
-    "name": "DAT_00B45BE8"
-   }
-  ],
   "0x00B732F0": [
    {
     "tu": "match/Startup.cpp",
@@ -2685,106 +1737,6 @@
    {
     "tu": "match/tu038_building_class.cpp",
     "name": "BuildingBGlobal_00B73550"
-   }
-  ],
-  "0x00B736F8": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B736F8"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B736F8"
-   }
-  ],
-  "0x00B73708": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B73708"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B73708"
-   }
-  ],
-  "0x00B73AE8": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B73AE8"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B73AE8"
-   }
-  ],
-  "0x00B73BD8": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B73BD8"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B73BD8"
-   }
-  ],
-  "0x00B76188": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B76188"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B76188"
-   }
-  ],
-  "0x00B76510": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B76510"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B76510"
-   }
-  ],
-  "0x00B76B00": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B76B00"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B76B00"
-   }
-  ],
-  "0x00B77820": [
-   {
-    "tu": "match/grow_list_handle_tables_methods.cpp",
-    "name": "DAT_00B77820"
-   },
-   {
-    "tu": "match/wonline.cpp",
-    "name": "DAT_00B77820"
-   }
-  ],
-  "0x00B77F58": [
-   {
-    "tu": "match/WorldDom.cpp",
-    "name": "DAT_00B77F58"
-   },
-   {
-    "tu": "match/wdt_rc_ptr_statics.cpp",
-    "name": "DAT_00B77F58"
-   }
-  ],
-  "0x00B77F68": [
-   {
-    "tu": "match/WorldDom.cpp",
-    "name": "DAT_00B77F68"
-   },
-   {
-    "tu": "match/wdt_rc_ptr_statics.cpp",
-    "name": "DAT_00B77F68"
    }
   ]
  }

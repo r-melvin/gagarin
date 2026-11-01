@@ -84,8 +84,6 @@ int FUN_0053F540()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xAA0568
-int DAT_00AA0568;
 // GLOBAL: GAMEMD 0xAA05AC
 int DAT_00AA05AC;
 // END defined globals

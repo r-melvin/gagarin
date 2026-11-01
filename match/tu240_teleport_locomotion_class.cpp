@@ -819,5 +819,5 @@ int TeleportLocomotionClass::Size()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0EBF8
-LocoCoord DAT_00B0EBF8;
+extern LocoCoord DAT_00B0EBF8;
 // END defined globals

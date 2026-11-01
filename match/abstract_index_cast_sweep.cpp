@@ -350,8 +350,6 @@ CellClass* TargetClass::FUN_006E7C20()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB0E830
-CellStruct DAT_00B0E830;
 // GLOBAL: GAMEMD 0xB78828
 void* IndexErrorValue;
 // END defined globals

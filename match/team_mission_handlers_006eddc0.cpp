@@ -931,8 +931,6 @@ bool Member_006EDDC0::FUN_006EF9E0()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA83C6C
 TypeView_006EE310** DAT_00A83C6C;
-// GLOBAL: GAMEMD 0xB0E948
-int DAT_00B0E948;
 // GLOBAL: GAMEMD 0xA8022C
 HouseClass** DAT_00A8022C;
 // END defined globals

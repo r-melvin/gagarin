@@ -415,8 +415,6 @@ bool TechnoClass::CanBePermaMindControlled()
 // DynamicVectorClass<const AnimClass*>::scalar deleting destructor
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA9F9F8
-int DAT_00A9F9F8;
 // GLOBAL: GAMEMD 0xA9FAB4
 unsigned char DAT_00A9FAB4;
 // GLOBAL: GAMEMD 0xA9FABC
@@ -430,7 +428,7 @@ unsigned char DAT_00A9FAD0;
 // GLOBAL: GAMEMD 0xA9FAB8
 int DAT_00A9FAB8;
 // GLOBAL: GAMEMD 0x87F698
-LightConvertVec_0053AD00 DAT_0087F698;
+extern LightConvertVec_0053AD00 DAT_0087F698;
 // GLOBAL: GAMEMD 0xB054D0
-ColorSchemeVec_0053AD00 DAT_00B054D0;
+extern ColorSchemeVec_0053AD00 DAT_00B054D0;
 // END defined globals

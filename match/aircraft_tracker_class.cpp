@@ -105,5 +105,5 @@ void AircraftTrackerClass::Clear()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x887850
-CellStruct_004134A0 DAT_00887850;
+extern CellStruct_004134A0 DAT_00887850;
 // END defined globals

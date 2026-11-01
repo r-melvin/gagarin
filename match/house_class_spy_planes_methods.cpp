@@ -76,7 +76,7 @@ int __fastcall HouseClass::SendSpyPlanes(int typeIndex, int count, int a2,
 // GLOBAL: GAMEMD 0xA8B21C
 AircraftTypeClass** DAT_00A8B21C;
 // GLOBAL: GAMEMD 0xB04C38
-CellStruct DAT_00B04C38;
+extern CellStruct DAT_00B04C38;
 // GLOBAL: GAMEMD 0x87F7E8
 MapClass_0065EAB0 MapInstance_0065EAB0;
 // END defined globals

@@ -121,7 +121,7 @@ char* Obj_0069E430::FUN_0069E740(unsigned int index)
 }
 
 // GLOBAL: GAMEMD 0x00B077A0
-RectangleStruct DAT_00B077A0;
+extern RectangleStruct DAT_00B077A0;
 
 // FUNCTION: GAMEMD 0x69E7E0
 RectangleStruct Obj_0069E430::FUN_0069E7E0(unsigned int index)

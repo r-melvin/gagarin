@@ -2373,5 +2373,5 @@ BeaconManagerClass BeaconManager;
 // GLOBAL: GAMEMD 0xABDC84
 int DAT_00ABDC84;
 // GLOBAL: GAMEMD 0x8A03F8 -- the "no cell" sentinel pair MarkFoundation refuses.
-Cell_004A8BF0 DAT_008A03F8;
+extern Cell_004A8BF0 DAT_008A03F8;
 // END defined globals

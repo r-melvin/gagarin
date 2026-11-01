@@ -6,10 +6,10 @@
 #include "abstract_registry.h"
 GG_STATIC_ASSERT(sizeof(DynamicVectorClassLayout) == 0x18);
 // GLOBAL: GAMEMD 0xB0F658
-DynamicVectorClassLayout DAT_00B0F658;
+extern DynamicVectorClassLayout DAT_00B0F658;
 // GLOBAL: GAMEMD 0xB0F670
-DynamicVectorClassLayout DAT_00B0F670;
+extern DynamicVectorClassLayout DAT_00B0F670;
 // GLOBAL: GAMEMD 0xB0F698
-DynamicVectorClassLayout DAT_00B0F698;
+extern DynamicVectorClassLayout DAT_00B0F698;
 // GLOBAL: GAMEMD 0xB0F708
-DynamicVectorClassLayout DAT_00B0F708;
+extern DynamicVectorClassLayout DAT_00B0F708;

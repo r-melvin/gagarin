@@ -199,12 +199,6 @@ TextButtonClass::TextButtonClass() : ToggleClass(0, 0, 0, 0, 0)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB0FA04
-int DAT_00B0FA04;
-// GLOBAL: GAMEMD 0xB0FB50
-int DAT_00B0FB50;
-// GLOBAL: GAMEMD 0xB0FBCC
-int DAT_00B0FBCC;
 // GLOBAL: GAMEMD 0xB73080
 int DAT_00B73080;
 // GLOBAL: GAMEMD 0xB730A0

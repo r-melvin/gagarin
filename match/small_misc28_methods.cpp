@@ -28,5 +28,5 @@ void Obj_00407F40::FUN_00407F40()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87E7F8
-CRITICAL_SECTION_ DAT_0087E7F8;
+extern CRITICAL_SECTION_ DAT_0087E7F8;
 // END defined globals

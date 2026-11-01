@@ -212,6 +212,4 @@ int __cdecl CompareNameEntries_00631C10(NameEntry_00631C10** a, NameEntry_00631C
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7EFD90
 extern const double DAT_007EFD90 = 60.0;
-// GLOBAL: GAMEMD 0xA8DAC0
-PhoneSettings_00631B20 DAT_00A8DAC0;
 // END defined globals

@@ -145,5 +145,5 @@ inline IsometricTileClass::~IsometricTileClass()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAA06D0
-MapObjCell DAT_00AA06D0;
+extern MapObjCell DAT_00AA06D0;
 // END defined globals

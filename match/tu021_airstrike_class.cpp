@@ -332,5 +332,5 @@ void Owner_0041DC80::FUN_0041DC80(Node_0041DC80* node)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x889FB8
-AirstrikeVec_0041DB40 DAT_00889FB8;
+extern AirstrikeVec_0041DB40 DAT_00889FB8;
 // END defined globals

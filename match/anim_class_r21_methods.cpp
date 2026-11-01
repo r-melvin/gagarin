@@ -131,8 +131,6 @@ void AnimClass::vf_62()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA83D84
-OverlayView_004260F0** DAT_00A83D84;
 // GLOBAL: GAMEMD 0xA8E9AC
 AnimClass** DAT_00A8E9AC;
 // GLOBAL: GAMEMD 0xA8E9B8

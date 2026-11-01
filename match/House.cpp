@@ -379,7 +379,7 @@ inline Cell HouseClass::GetBaseCenter() const
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B40E8
-TeamVector_0050D170 DAT_008B40E8;
+extern TeamVector_0050D170 DAT_008B40E8;
 // END defined globals
 
 #include "house_class_planning_methods.h"
@@ -1002,8 +1002,6 @@ struct Obj_004FD120
 unsigned char HouseMainObject;
 // GLOBAL: GAMEMD 0xA83C78
 int DAT_00A83C78;
-// GLOBAL: GAMEMD 0xA8B263
-char DAT_00A8B263;
 // GLOBAL: GAMEMD 0x824E4C
 extern const char STR_00824E4C[] = "EVA_RobotTanksOffline";
 // GLOBAL: GAMEMD 0xA80238

@@ -8,6 +8,6 @@
 
 GG_STATIC_ASSERT(sizeof(DSurface*) == 4);
 // GLOBAL: GAMEMD 0x8872FC
-DSurface* DAT_008872FC;
+extern DSurface* DAT_008872FC;
 // GLOBAL: GAMEMD 0x88731C
 DSurface* DAT_0088731C;

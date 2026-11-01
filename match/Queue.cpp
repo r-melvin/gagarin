@@ -4002,8 +4002,6 @@ int DAT_00A8B8BC;
 unsigned char DAT_00A8B8C1;
 // GLOBAL: GAMEMD 0xA8B8C2
 unsigned char DAT_00A8B8C2;
-// GLOBAL: GAMEMD 0xA8EB60
-int DAT_00A8EB60;
 // GLOBAL: GAMEMD 0xA8EDA0
 int DAT_00A8EDA0;
 // GLOBAL: GAMEMD 0xB04874
@@ -4048,8 +4046,6 @@ extern const char STR_00837EE8[] = "Type:       %s\n";
 extern const char STR_00837EF8[] = "--------- Event data: -------------------\n";
 // GLOBAL: GAMEMD 0x837F24
 extern const char STR_00837F24[] = "Packet received too late!\n";
-// GLOBAL: GAMEMD 0x8B40E8
-DynamicVectorClassLayout DAT_008B40E8;
 // GLOBAL: GAMEMD 0x7F0298
 extern const double DAT_007F0298 = 0.017453292519943295;
 // END defined globals

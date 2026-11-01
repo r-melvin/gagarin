@@ -10,4 +10,4 @@ DynamicVectorClassLayout TagClass::Array;
 
 // GLOBAL: GAMEMD 0xB0E700
 // Four loader-zero bytes read by the TagClass constructor.
-CellStruct DAT_00B0E700;
+extern CellStruct DAT_00B0E700;

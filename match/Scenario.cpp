@@ -2755,8 +2755,6 @@ ToolTipManager* DAT_00887368;
 WinsockInterfaceClass* Interface_00887628;
 // GLOBAL: GAMEMD 0x887888
 AircraftTrackerClass AircraftTracker;
-// GLOBAL: GAMEMD 0x8A38E0
-EvadeClass DAT_008A38E0;
 // GLOBAL: GAMEMD 0xA83C9C
 HouseTypeClass** DAT_00A83C9C;
 // GLOBAL: GAMEMD 0xA83CF8

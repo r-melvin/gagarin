@@ -219,5 +219,5 @@ int MechLocomotionClass::Size()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xABEE10
-LocoCoord DAT_00ABEE10;
+extern LocoCoord DAT_00ABEE10;
 // END defined globals

@@ -110,8 +110,6 @@ void FUN_007B0350(void* replacement)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xABF3F4
-void* DAT_00ABF3F4;
 // GLOBAL: GAMEMD 0xB1D5E0
 int DAT_00B1D5E0[0x4000];
 // GLOBAL: GAMEMD 0xB2FF78

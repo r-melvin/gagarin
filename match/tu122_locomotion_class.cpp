@@ -425,5 +425,5 @@ int __stdcall LocomotionClass::ApparentSpeed()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xABCC78
-LocoCoord DAT_00ABCC78;
+extern LocoCoord DAT_00ABCC78;
 // END defined globals

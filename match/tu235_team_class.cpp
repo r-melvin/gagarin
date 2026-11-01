@@ -1056,6 +1056,4 @@ int TeamClass::vf_11()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7F46F0
 extern const double DAT_007F46F0 = 60.0;
-// GLOBAL: GAMEMD 0xA83CE0
-VectorClass<void*> DAT_00A83CE0;
 // END defined globals
