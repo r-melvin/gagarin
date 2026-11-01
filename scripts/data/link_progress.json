@@ -12,7 +12,7 @@
   "unresolved": 6432
  },
  "m1": {
-  "bytes_at_retail_address": 3819163,
+  "bytes_at_retail_address": 3819160,
   "drift_events": 0,
   "duplicates": 0,
   "entries_at_retail_address": 19201,
@@ -24,16 +24,16 @@
     "entries_at_retail_address": 77
    },
    "matched": {
-    "bytes": 1100062,
-    "bytes_at_retail_address": 1100062,
-    "entries": 15592,
-    "entries_at_retail_address": 15592
+    "bytes": 1100203,
+    "bytes_at_retail_address": 1100203,
+    "entries": 15593,
+    "entries_at_retail_address": 15593
    },
    "stub": {
-    "bytes": 2719101,
-    "bytes_at_retail_address": 2719101,
-    "entries": 3609,
-    "entries_at_retail_address": 3609
+    "bytes": 2718957,
+    "bytes_at_retail_address": 2718957,
+    "entries": 3608,
+    "entries_at_retail_address": 3608
    }
   },
   "entry_point_delta": 0,
@@ -41,11 +41,11 @@
   "filler_entries": 77,
   "filler_entries_at_retail_address": 77,
   "link_exit_code": 0,
-  "matched_at_retail_address": 15592,
-  "matched_functions": 15592,
-  "ordered_bytes": 3819163,
+  "matched_at_retail_address": 15593,
+  "matched_functions": 15593,
+  "ordered_bytes": 3819160,
   "ordered_entries": 19201,
-  "stubs_placed": 3609,
+  "stubs_placed": 3608,
   "unresolved_after_stubs": 0
  },
  "m2": {
@@ -110,8 +110,8 @@
     "diff_bytes": 0,
     "file": 4060045,
     "library": 87227,
-    "project": 1233023,
-    "retail": 2739795,
+    "project": 1233167,
+    "retail": 2739651,
     "va": 4198400,
     "vsize": 4060045
    }
@@ -119,8 +119,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 4136304,
-   "retail": 4167766,
+   "project": 4136448,
+   "retail": 4167622,
    "vsize": 8391297
   }
  },
@@ -157,9 +157,9 @@
   }
  ],
  "snapshots": {
-  "m0": "e0b94d4e",
-  "m1": "e0b94d4e",
+  "m0": "2e2550f9",
+  "m1": "2e2550f9",
   "m2": "ac2bd917",
-  "m3": "e0b94d4e"
+  "m3": "2e2550f9"
  }
 }
