@@ -1,26 +1,16 @@
 #include "mathtbl_init_shapes.h"
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 // SPDX-License-Identifier: GPL-3.0-or-later
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | original
 // Retail constants and global addresses read from gamemd.exe v1.001.
 
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) — binary math helper.
-extern double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) — binary math helper.
-extern double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x7C5F00 — MSVC x87 conversion helper emitted for int casts.
 
 // GLOBAL: GAMEMD 0x007E89B0 — radians per degree, numeric value 0.017453292519943295.
 extern "C" const double DAT_007E89B0;
-// GLOBAL: GAMEMD 0x007E1728 — numeric value 60.0.
-extern "C" const double DAT_007E1728;
-// GLOBAL: GAMEMD 0x007E1730 — numeric value 90.0.
-extern "C" const double DAT_007E1730;
-// GLOBAL: GAMEMD 0x007E1738 — numeric value 0.5.
-extern "C" const double DAT_007E1738;
-// GLOBAL: GAMEMD 0x007E1740 — numeric value 0.00390625.
-extern "C" const double DAT_007E1740;
 
 // GLOBAL: GAMEMD 0x008B3B50
 extern "C" double DAT_008B3B50;

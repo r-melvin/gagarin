@@ -8,6 +8,7 @@
 #include "header_init_shapes.h"
 #include "winmm_timer_methods.h"
 #include "system_query_methods.h"
+#include "trig_table_functions_004cac40.h"
 
 // GLOBAL: GAMEMD 0x7E1708
 const double DAT_007E1708 = 2.0;
@@ -18,13 +19,7 @@ const double DAT_007E1B10 = 60.0;
 // GLOBAL: GAMEMD 0x7E1B18 -- degrees to radians
 const double DAT_007E1B18 = 0.017453292519943295;
 
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CADE0(double value);
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAC40(double value);
 
 // SYNTHETIC: GAMEMD 0x40E580
 // GLOBAL: GAMEMD 0x887288

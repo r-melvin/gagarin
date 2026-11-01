@@ -21,6 +21,7 @@
 #include "_layout/geometry2d.h"
 #include "mathtbl_init_shapes.h"
 #include "screen_resource_globals.h"
+#include "trig_table_functions_004cac40.h"
 
 // GLOBAL: GAMEMD 0x845530
 extern const char DAT_00845530[];
@@ -41,12 +42,6 @@ extern bool DAT_00A8ED6B;
 // GLOBAL: GAMEMD 0xAC10C8
 extern int DAT_00AC10C8;
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square-root helper, __cdecl, double in and out.
-double __cdecl FUN_004CAC40(double value);
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x7C8FB0 -- x87 _CIpow, emitted by VC6's pow intrinsic.
 
 // FUNCTION: GAMEMD 0x534E50 (decl; reloc)

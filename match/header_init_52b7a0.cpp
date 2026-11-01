@@ -8,18 +8,10 @@
 #include "header_init_shapes.h"
 #include "mathtbl_init_shapes.h"
 #include "pk_key_pipes.h"
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAC40(double value);
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CADE0(double value);
 
-// GLOBAL: GAMEMD 0x7E1708
-extern const double DAT_007E1708;
-// GLOBAL: GAMEMD 0x7E1710
-extern const double DAT_007E1710;
 // GLOBAL: GAMEMD 0x7EB7F8
 const double DAT_007EB7F8 = 60.0;
 // GLOBAL: GAMEMD 0x7EB800

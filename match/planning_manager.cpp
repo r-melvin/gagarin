@@ -15,9 +15,8 @@
 #include "planning_manager.h"
 
 #include "_layout/tactical.h"
+#include "trig_table_functions_004cac40.h"
 
-// GLOBAL: GAMEMD 0x887324
-extern Tactical* DAT_00887324;
 // GLOBAL: GAMEMD 0x886FA0 -- the view origin added to every converted point.
 extern Point2D DAT_00886FA0;
 
@@ -33,10 +32,6 @@ const double DAT_007EFDF0 = 60.0;
 // GLOBAL: GAMEMD 0x7EFDF8
 const double DAT_007EFDF8 = 0.017453292519943295;
 
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CADE0(double value);
 
 // SYNTHETIC: GAMEMD 0x633400
 // GLOBAL: GAMEMD 0xAC4CE8

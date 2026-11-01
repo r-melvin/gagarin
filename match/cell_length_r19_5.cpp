@@ -4,9 +4,8 @@
 //   Address index: 0x6B1A70.
 
 #include "_layout/cell.h"
+#include "trig_table_functions_004cac40.h"
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
-double __cdecl FUN_004CAC40(double value);
 
 // FUNCTION: GAMEMD 0x6B1A70
 // Length of a cell offset in cells, truncated: sqrt(X*X + Y*Y).

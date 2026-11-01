@@ -39,6 +39,7 @@
 #pragma intrinsic(pow)
 
 #include "trivial_tu057_methods.h"
+#include "trig_table_functions_004cac40.h"
 
 
 template class DynamicVectorClass<char*>;
@@ -89,8 +90,6 @@ GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, CapacityIncrement) == 0x14)
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 
-// Declaration: GAMEMD 0x4CAC40 -- engine table helper; stacked double, ST0 result.
-double __cdecl FUN_004CAC40(double value);
 
 
 // SYNTHETIC: GAMEMD 0x49B180

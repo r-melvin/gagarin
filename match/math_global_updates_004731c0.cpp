@@ -7,6 +7,8 @@
 // Address grouping does not establish original ownership or startup role.
 #include "_rt/gg_static_assert.h"
 #include "mathtbl_init_shapes.h"
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 GG_STATIC_ASSERT(sizeof(double) == 8);
 GG_STATIC_ASSERT(sizeof(int) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned short) == 2);
@@ -23,24 +25,7 @@ extern "C" double DAT_0089E1A0;
 extern "C" const double DAT_007E4BE0;
 // GLOBAL: GAMEMD 0x007E4BE8 (double 0.017453292519943295 in .rdata)
 extern "C" const double DAT_007E4BE8;
-// GLOBAL: GAMEMD 0x007E1720 (double 45.0 in .rdata)
-extern "C" const double DAT_007E1720;
-// GLOBAL: GAMEMD 0x007E1728 (double 60.0 in .rdata)
-extern "C" const double DAT_007E1728;
-// GLOBAL: GAMEMD 0x007E1730 (double 90.0 in .rdata)
-extern "C" const double DAT_007E1730;
 
-// GLOBAL: GAMEMD 0x0089E1F8 (written at 0x47328B, read at 0x4732A0 and 0x4732D1; .data dword)
-// GLOBAL: GAMEMD 0x0089E1B0 (written at 0x4732B7; .data double)
-// GLOBAL: GAMEMD 0x0089E1C8 (written at 0x4732F2; .data double)
-// GLOBAL: GAMEMD 0x007E1738 (double 0.5 in .rdata)
-extern "C" const double DAT_007E1738;
-// GLOBAL: GAMEMD 0x007E1740 (double 0.00390625 in .rdata)
-extern "C" const double DAT_007E1740;
-// FUNCTION: GAMEMD 0x004CAD50 (decl; reloc; 8-byte argument, x87 result; return type is an ABI view)
-extern "C" double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x004CADE0 (decl; reloc; 8-byte argument, x87 result; return type is an ABI view)
-extern "C" double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x007C5F00 -- VC6 __ftol conversion helper.
 // GLOBAL: GAMEMD 0x0089E1EC (dword written at 0x473320)
 // GLOBAL: GAMEMD 0x0089E1B8 (dword written at 0x473342)

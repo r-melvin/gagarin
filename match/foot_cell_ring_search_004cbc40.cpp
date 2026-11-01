@@ -9,9 +9,8 @@
 //   zero is the result.
 #include "_layout/foot_class.h"
 #include "cell_flag_search_shared.h"
+#include "trig_table_functions_004cac40.h"
 
-// FUNCTION: GAMEMD 0x4CAE30 (decl; reloc) -- two-argument arctangent, __cdecl.
-double __cdecl FUN_004CAE30(double y, double x);
 // LIBRARY: GAMEMD 0x7C5F00 -- the double-to-int conversion behind (int).
 
 // GLOBAL: GAMEMD 0x7E2820

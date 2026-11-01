@@ -8,9 +8,8 @@
 //   The result is written through a hidden pointer (the type has a
 //   constructor), and the function is __stdcall with RET 0xC.
 #include "cell_flag_search_shared.h"
+#include "trig_table_functions_004cac40.h"
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square root, __cdecl.
-double __cdecl FUN_004CAC40(double value);
 // LIBRARY: GAMEMD 0x7C5F00 -- the double-to-int conversion behind (int).
 
 // FUNCTION: GAMEMD 0x5835D0

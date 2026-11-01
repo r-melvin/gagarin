@@ -48,6 +48,7 @@ GG_STATIC_ASSERT(offsetof(DSCAPS, dwSize) == 0);
 #include "mix_file_class.h"
 #include "sorted_list_insert_methods.h"
 #include "pan_and_pitch_methods.h"
+#include "mathtbl_consts.h"
 
 GG_STATIC_ASSERT(sizeof(AudioSampleData) == 0x20); // 0x4085A0 clears 8 DWORDs
 
@@ -57,8 +58,6 @@ extern double DAT_0087E448;
 extern const double DAT_007E1750;
 // GLOBAL: GAMEMD 0x87E698
 extern double DAT_0087E698;
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x87E680
 extern double DAT_0087E680;
 // GLOBAL: GAMEMD 0x87E690

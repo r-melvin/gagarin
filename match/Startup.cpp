@@ -56,9 +56,8 @@ extern const char STR_00840BB0[];
 // canonical header declares them yet).
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "mathtbl_consts.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F3700
 extern const double DAT_007F3700;
 // GLOBAL: GAMEMD 0xB0BC70

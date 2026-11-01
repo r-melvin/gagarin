@@ -13,6 +13,8 @@
 #include "_rt/gg_static_assert.h"
 #include "mathtbl_init_shapes.h"
 #include "_layout/global_0089c818.h"
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 GG_STATIC_ASSERT(sizeof(double) == 8);
 GG_STATIC_ASSERT(sizeof(int) == 4);
 
@@ -20,13 +22,6 @@ extern "C" double DAT_0089C820; // GLOBAL: GAMEMD 0x0089C820
 extern "C" const double DAT_007E3E78; // GLOBAL: GAMEMD 0x007E3E78
 
 extern "C" const double DAT_007E3E80; // GLOBAL: GAMEMD 0x007E3E80
-extern "C" const double DAT_007E1720; // GLOBAL: GAMEMD 0x007E1720
-extern "C" const double DAT_007E1728; // GLOBAL: GAMEMD 0x007E1728
-extern "C" const double DAT_007E1730; // GLOBAL: GAMEMD 0x007E1730
-extern "C" const double DAT_007E1738; // GLOBAL: GAMEMD 0x007E1738
-extern "C" double __cdecl FUN_004CAD50(double value); // FUNCTION: GAMEMD 0x004CAD50 (decl; reloc)
-extern "C" const double DAT_007E1740; // GLOBAL: GAMEMD 0x007E1740
-extern "C" double __cdecl FUN_004CADE0(double value); // FUNCTION: GAMEMD 0x004CADE0 (decl; reloc)
 // LIBRARY: GAMEMD 0x7C5F00 -- VC6 __ftol conversion helper.
 
 

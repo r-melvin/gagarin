@@ -4,6 +4,8 @@
 // Provenance: own-binary-via-Ghidra
 #include <math.h>
 #include "mathtbl_init_shapes.h"
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 
 // Retail instructions at 0x4CB990 confirm four zeroed dword globals.
 
@@ -17,15 +19,7 @@ extern "C" const double DAT_007E89A8;
 // GLOBAL: GAMEMD 0x7E1718
 // GLOBAL: GAMEMD 0x7E89B0
 extern "C" const double DAT_007E89B0;
-// GLOBAL: GAMEMD 0x7E1720
-extern "C" const double DAT_007E1720;
 
-// GLOBAL: GAMEMD 0x7E1710 — retail constant 256.0.
-extern "C" const double DAT_007E1710;
-// GLOBAL: GAMEMD 0x7E1708 — retail constant 2.0.
-extern "C" const double DAT_007E1708;
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) — square-root helper.
-extern double __cdecl FUN_004CAC40(double value);
 // LIBRARY: GAMEMD 0x7C8FB0 — x87 _CIpow; emitted by VC6's pow intrinsic.
 
 // SYNTHETIC: GAMEMD 0x004CB9B0

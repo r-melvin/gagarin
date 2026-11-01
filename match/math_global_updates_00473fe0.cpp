@@ -7,38 +7,18 @@
 #include "mathtbl_init_shapes.h"
 GG_STATIC_ASSERT(sizeof(double) == 8);
 #include <math.h>
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 
-// LIBRARY: GAMEMD 0x007C8FB0 — VC6 x87 _CIpow intrinsic runtime.
-// FUNCTION: GAMEMD 0x004CAC40 (decl; reloc) — one-double square-root helper.
-extern "C" double __cdecl FUN_004CAC40(double value);
-// GLOBAL: GAMEMD 0x007E1710 (retail double constant 256.0)
-extern "C" const double DAT_007E1710;
-// GLOBAL: GAMEMD 0x007E1708 (retail double constant 2.0)
-extern "C" const double DAT_007E1708;
 // GLOBAL: GAMEMD 0x0089E2B0 (store at 0x473FFE)
 
 
 // GLOBAL: GAMEMD 0x007E4C48 (binary value 0.017453292519943295)
 extern "C" const double DAT_007E4C48;
-// GLOBAL: GAMEMD 0x007E1728 (binary value 60.0)
-extern "C" const double DAT_007E1728;
 
 // GLOBAL: GAMEMD 0x007E4C40
 extern "C" const double DAT_007E4C40;
-// GLOBAL: GAMEMD 0x007E1720 (45.0)
-extern "C" const double DAT_007E1720;
-// GLOBAL: GAMEMD 0x007E1730 (90.0)
-extern "C" const double DAT_007E1730;
 
-// FUNCTION: GAMEMD 0x004CAD50 (decl; reloc) 8-byte argument/x87 result; body in unowned_leaf_sweep_a.cpp
-extern "C" double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x004CADE0 (decl; reloc) 8-byte argument/x87 result; body in trig_table_functions_004cac40.cpp
-extern "C" double __cdecl FUN_004CADE0(double value);
-// LIBRARY: GAMEMD 0x007C5F00 -- VC6 __ftol conversion helper.
-// GLOBAL: GAMEMD 0x007E1738 (double 0.5)
-extern "C" const double DAT_007E1738;
-// GLOBAL: GAMEMD 0x007E1740 (double 0.00390625)
-extern "C" const double DAT_007E1740;
 // Storage widths are instruction-confirmed; original owner/grouping is unknown.
 GG_STATIC_ASSERT(sizeof(int) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned short) == 2);

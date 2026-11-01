@@ -7,6 +7,8 @@
 // Address grouping does not establish an original TU or startup role.
 #include "_rt/gg_static_assert.h"
 #include "mathtbl_init_shapes.h"
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 GG_STATIC_ASSERT(sizeof(double) == 8);
 GG_STATIC_ASSERT(sizeof(int) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
@@ -24,25 +26,7 @@ extern "C" double DAT_0089E220;
 extern "C" const double DAT_007E4BF0;
 // GLOBAL: GAMEMD 0x007E4BF8 (read-only .rdata double 0.017453292519943295)
 extern "C" const double DAT_007E4BF8;
-// GLOBAL: GAMEMD 0x007E1720 (read-only .rdata double 45.0)
-extern "C" const double DAT_007E1720;
-// GLOBAL: GAMEMD 0x007E1728 (read-only .rdata double 60.0)
-extern "C" const double DAT_007E1728;
-// GLOBAL: GAMEMD 0x007E1730 (read-only .rdata double 90.0)
-extern "C" const double DAT_007E1730;
 
-// GLOBAL: GAMEMD 0x0089E278 (written by 0x47363B; read by 0x473650/680/6B0; .data dword)
-// GLOBAL: GAMEMD 0x0089E230 (written by 0x473667; .data qword)
-// GLOBAL: GAMEMD 0x0089E248 (written by 0x4736A2; .data qword)
-// GLOBAL: GAMEMD 0x0089E26C (written by 0x4736D0; .data dword)
-// GLOBAL: GAMEMD 0x007E1738 (read-only .rdata double 0.5)
-extern "C" const double DAT_007E1738;
-// GLOBAL: GAMEMD 0x007E1740 (read-only .rdata double 0.00390625)
-extern "C" const double DAT_007E1740;
-// FUNCTION: GAMEMD 0x004CAD50 (decl; reloc; 8-byte argument, x87 result; return type is an ABI view)
-extern "C" double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x004CADE0 (decl; reloc; 8-byte argument, x87 result; return type is an ABI view)
-extern "C" double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x007C5F00 -- VC6 __ftol conversion helper.
 // GLOBAL: GAMEMD 0x0089E238 (dword cleared at 0x4736F2)
 // GLOBAL: GAMEMD 0x0089E23C (dword cleared at 0x4736F7)

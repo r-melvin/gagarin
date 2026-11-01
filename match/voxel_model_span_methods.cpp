@@ -51,6 +51,7 @@ struct VoxelSectionEntry
 GG_STATIC_ASSERT(sizeof(VoxelSectionEntry) == 0x0C);   // array stride (index * 0x0C)
 
 #include "voxel_draw_entry.h"
+#include "trig_table_functions_004cac40.h"
 
 struct VoxelCornerView
 {
@@ -941,8 +942,6 @@ void __cdecl FUN_00758430(VoxelSpanParams *params)
 	}
 }
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- sqrt(double).
-extern "C" double __cdecl FUN_004CAC40(double v);
 // GLOBAL: GAMEMD 0x8469E0  DAT_008469e0 (normal vector table per set)
 extern Vector3D *DAT_008469e0[];
 // GLOBAL: GAMEMD 0x8469F4  DAT_008469f4 (normal count per set)

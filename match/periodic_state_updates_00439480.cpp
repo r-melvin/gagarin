@@ -7,11 +7,8 @@
 // and stores, with calls only where the retail instructions show them.
 #include "periodic_state_updates_00439480.h"
 #include "mathtbl_init_shapes.h"
+#include "trig_table_functions_004cac40.h"
 
-// FUNCTION: GAMEMD 0x004CAD50 (decl; reloc)
-extern "C" double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x004CADE0 (decl; reloc)
-extern "C" double __cdecl FUN_004CADE0(double value);
 // LIBRARY: GAMEMD 0x007C5F00 — VC6 __ftol runtime
 // VC6 emits this retail x87-control-word rounding helper for __int64 conversion.
 

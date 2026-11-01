@@ -16,9 +16,8 @@
 // canonical header declares them yet).
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "mathtbl_consts.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F3F48
 extern const double DAT_007F3F48;
 // GLOBAL: GAMEMD 0xB0BEF0

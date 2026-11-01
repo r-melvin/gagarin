@@ -56,6 +56,7 @@ GG_STATIC_ASSERT(offsetof(GgButtonfadeeffectDynamicVectorClass, CapacityIncremen
 GG_STATIC_ASSERT(sizeof(ButtonFadeEffect*) == 4);
 
 #include "vector_class_operations.h"
+#include "trig_table_functions_004cac40.h"
 
 struct CrossDissolveEffect;
 
@@ -79,8 +80,6 @@ GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, CapacityIncre
 
 GG_STATIC_ASSERT(sizeof(CrossDissolveEffect*) == 4);
 
-// Declaration: GAMEMD 0x4CAC40 -- engine helper, stacked double/ST0 result.
-double __cdecl FUN_004CAC40(double value);
 
 // SYNTHETIC: GAMEMD 0x4B67A0
 // GLOBAL: GAMEMD 0x8A08A8

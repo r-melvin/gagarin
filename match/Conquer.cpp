@@ -55,6 +55,7 @@ extern "C" int __cdecl _stricmp(const char* s1, const char* s2);
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "trig_table_functions_004cac40.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" size_t __cdecl strlen(const char* s);
@@ -72,8 +73,6 @@ extern "C" const char* const DAT_0081DA28[12];
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 
-// 0x4CAC40: x87 helper taking one double and returning one (callee only).
-double __cdecl FUN_004CAC40(double value);
 // 0x5117D0: name -> index, -1 when absent (callee only).
 int FUN_005117D0(const char* name);
 
@@ -184,10 +183,6 @@ const double DAT_007E1710 = 256.0;
 // GLOBAL: GAMEMD 0x7E51E8 -- degrees to radians
 const double DAT_007E51E8 = 0.017453292519943295;
 
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CADE0(double value);
 
 
 // SYNTHETIC: GAMEMD 0x48C6B0

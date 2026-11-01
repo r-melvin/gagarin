@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Disassembly of 0x48ABC0 in retail gamemd.exe v1.001; constants read from the same image.
 
-extern float __cdecl FUN_004CAC40(double value);
+#include "trig_table_functions_004cac40.h"
 
 // FUNCTION: GAMEMD 0x48ABC0
 // Tests whether a ballistic arc reaches a target: a is the horizontal reach, b the

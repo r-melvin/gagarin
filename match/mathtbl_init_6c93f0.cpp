@@ -5,33 +5,13 @@
 //   out-of-line _$E thunk behind a jump).
 #include <math.h>
 #include "mathtbl_init_shapes.h"
+#include "mathtbl_consts.h"
+#include "trig_table_functions_004cac40.h"
 
-// GLOBAL: GAMEMD 0x7E1708
-extern const double DAT_007E1708;
-// GLOBAL: GAMEMD 0x7E1710
-extern const double DAT_007E1710;
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
-// GLOBAL: GAMEMD 0x7E1720
-extern const double DAT_007E1720;
-// GLOBAL: GAMEMD 0x7E1728
-extern const double DAT_007E1728;
-// GLOBAL: GAMEMD 0x7E1730
-extern const double DAT_007E1730;
-// GLOBAL: GAMEMD 0x7E1738
-extern const double DAT_007E1738;
-// GLOBAL: GAMEMD 0x7E1740
-extern const double DAT_007E1740;
 // GLOBAL: GAMEMD 0x7F3F58
 extern const double DAT_007F3F58;
 // GLOBAL: GAMEMD 0x7F3F60
 extern const double DAT_007F3F60;
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
-double __cdecl FUN_004CAC40(double value);
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc)
-double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc)
-double __cdecl FUN_004CADE0(double value);
 
 // SYNTHETIC: GAMEMD 0x6C93F0
 // GLOBAL: GAMEMD 0xB0BF78

@@ -6,9 +6,8 @@
 #include "_layout/matrix3d.h"
 #include "matrix3d_rotate_methods.h"
 #include <math.h>
+#include "trig_table_functions_004cac40.h"
 
-// Existing runtime call used by the heading methods; source body unchanged.
-extern "C" double __cdecl FUN_004CAE30(double y, double x);
 
 GG_STATIC_ASSERT(offsetof(Matrix3D, Row) + sizeof(((Matrix3D*)0)->Row[0]) * 0 + sizeof(float) * 0 == 0x00);
 GG_STATIC_ASSERT(offsetof(Matrix3D, Row) + sizeof(((Matrix3D*)0)->Row[0]) * 0 + sizeof(float) * 1 == 0x04);

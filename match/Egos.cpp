@@ -46,6 +46,7 @@ GG_STATIC_ASSERT(sizeof(RemapEntry) == 4);   // entry pointer steps by 4
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 #include "vector_class_operations.h"
+#include "trig_table_functions_004cac40.h"
 
 class EgoClass;
 
@@ -77,12 +78,6 @@ const double DAT_007E1710 = 256.0;
 const double DAT_007E86C8 = 60.0;
 // GLOBAL: GAMEMD 0x7E86D0 -- degrees to radians
 const double DAT_007E86D0 = 0.017453292519943295;
-// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAD50(double value);
-// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CADE0(double value);
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAC40(double value);
 
 // SYNTHETIC: GAMEMD 0x4C35A0
 // GLOBAL: GAMEMD 0x8A0EE8
