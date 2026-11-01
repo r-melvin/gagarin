@@ -34,6 +34,9 @@ enforces; nothing here needs a compiler except --strict.
                  not create or touch, matched without 100, claiming addresses with no body in the patch; rows already in the manifest
                  (carry-over) or whose len conflicts with an exact row unless marked as a change
   dupclaims    E a body claim for an address that already has a body in the tree
+  dupaddr      E a GLOBAL-annotated definition (not extern/static/internal const) for an address that another file of the
+                 tree already defines, whatever the type or mangling (the dupdefs gate compares mangled names only).
+                 Source-level and conservative; the land gate `dupaddr` checks the objects
   order        E FUNCTION claims not in ascending address order within a .cpp
   includes     E a quoted #include of a match/ file that neither exists at the base nor is added by the patch
   provenance   E new file without SPDX + Provenance header
@@ -80,6 +83,8 @@ import dlib as D
 import unclaimed as U  # noqa: E402
 import landlib as L  # noqa: E402
 import cppscan  # noqa: E402
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "land"))
+import dupaddr as DA  # noqa: E402
 
 def norm(v):
     return L.norm_addr(v)
@@ -603,6 +608,37 @@ class Lint:
                 elif owners:
                     self.err("dupclaims", "0x%X already has a body in %s" % (a, ", ".join(owners)), file=tu)
 
+    def dupaddr(self):
+        """A new annotated global definition at an address another tree file already defines (any type)."""
+        post = self.post_files()
+        added = {}
+        for path, text in post.items():
+            if text is None or not path.lower().endswith(DA.SRC_EXT):
+                continue
+            old = set(DA.source_defs(self.t.text(path) or "")) if path in self.t.paths else set()
+            for addr, ident, kind in DA.source_defs(text):
+                if (addr, ident, kind) not in old:
+                    added.setdefault(addr, []).append((path, ident))
+        if not added:
+            return
+        idx = getattr(self.t, "_dupaddr_idx", None)
+        if idx is None:
+            idx = {}
+            for p in self.t.cpps():
+                if p in post:
+                    continue
+                for addr, ident, kind in DA.source_defs(self.t.text(p) or ""):
+                    idx.setdefault(addr, []).append((p, ident))
+            self.t._dupaddr_idx = idx
+        for addr, new in sorted(added.items()):
+            others = idx.get(addr, [])
+            for path, ident in new:
+                owners = others + [x for x in new if x[0] != path]
+                if owners:
+                    self.err("dupaddr", "0x%08X: %s defines %s, but %s already define(s) it (one definition per retail address; "
+                             "declare it extern from the shared header instead)" % (
+                                 addr, path, ident, ", ".join("%s:%s" % o for o in owners[:3])), file=path)
+
     def order(self):
         for d in self.diffs:
             if not d.path.lower().endswith(L.SRC_EXT) or d.is_delete:
@@ -980,7 +1016,7 @@ class Lint:
 
     def run(self, do_strict=False, jobs=8, rules=None):
         order = ["shape", "paths", "c2probe", "stale", "words", "steering", "sdd", "flags", "thisnull", "views", "migrated", "inits", "delta_rules",
-                 "dupclaims", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar", "unclaimed_callee"]
+                 "dupclaims", "dupaddr", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar", "unclaimed_callee"]
         self.do_strict = do_strict
         for name in order:
             if rules and name.replace("_rules", "").replace("_", "-") not in rules:

@@ -34,6 +34,7 @@ $L/verify_safe.sh --shard 0/8 --jobs 4        # or --tu match/x/y.cpp ... ; run 
 | file | role |
 |---|---|
 | `land_bundle.sh` / `land_bundle.py` | the bundle lander (below) |
+| `dupaddr.py` / `test_dupaddr.py` | the address-level duplicate-definition check behind the `dupaddr` gate (CLI: `--objs DIR [--baseline F] [--write-baseline F]`); pktlint has a source-level `dupaddr` rule |
 | `gates.py` (+ `inc_gates.sh`, `full_gates.sh`) | all gates, `--mode inc` (default for prep/bisect) or `--mode full` (the bundle gate) |
 | `landlib.py` | packet parsing, manifest-delta merge with collision checks, include index, git helpers |
 | `sectioncmp.py` | sections.py + secmatch.py merged: per-object COFF section comparison (header timestamps ignored) |
@@ -111,6 +112,7 @@ run dir (`--run`, default `<scratch>/land-runs/run-*`).
 | tests | unittest discover (`scripts/vc6`, then `scripts/agent_tools/wwstruct`) | only if something under `scripts/` changed (the manifest counts, so effectively always; it takes 0.2 s) |
 | dups, naked | `check_duplicates.py`, `check_naked.py` (whole tree, seconds) | same |
 | dupdefs | strong duplicate external symbols across all objects | same (unaffected objects from the cache; per-object symbol lists cached) |
+| dupaddr | two or more strong definitions bound to ONE retail address, whatever their mangling (dupdefs compares mangled names, so `void* DAT_X` + `WholeFileBlock* DAT_X` pass it). Binding: `// GLOBAL:` annotation of a non-extern/non-static/non-const declaration (cross-checked against the object's external symbols), `symbol_bindings.json`, `DAT_/FUN_/PTR_<addr>` names, manifest `sym`. Declarations never count. **Ratchet**: addresses in `scripts/data/dupaddr_baseline.json` are legacy; the gate fails on an address not in it or a TU that joins a legacy one, and prints baseline entries that are now fixed (drop them) | same |
 | sections | all objects vs base objects | affected objects only |
 | lint | `reccmp-decomplint` on touched files, new error types vs the base file | same |
 | words | added lines + commit message vs the forbidden-word list; paths outside the allowed set | same |

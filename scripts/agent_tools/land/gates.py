@@ -13,7 +13,7 @@ Modes
   full  Everything, from scratch: build_project --jobs N + --check into a per-run
         dir (replaces compile_all.sh, verify_all's own compiles and the separate
         project build: one compile pass), every matched manifest row verified,
-        unit tests, check_duplicates, dupdefs over all objects, check_naked,
+        unit tests, check_duplicates, dupdefs and dupaddr over all objects, check_naked,
         section comparison of every object against independently built base
         objects (cache-assisted, see README), lint, words, strict relocation
         checks on the changed rows. The compile cache is NOT used for the new side.
@@ -537,28 +537,37 @@ def strong_defs(tree_vt, path):
     return out
 
 
-@gate
-def dupdefs(ctx):
-    """External symbols defined (non-COMDAT or NODUPLICATES) in more than one object, whole tree."""
+def tu_strong_names(ctx):
+    """({tu: strong external names}, [tus without an object]) over the whole tree; per-object lists are cached by closure key."""
     spec = importlib.util.spec_from_file_location("vt_tree", os.path.join(ctx.tree, "scripts/vc6/verify_vtable.py"))
     vt = importlib.util.module_from_spec(spec)
     sys.path.insert(0, os.path.join(ctx.tree, "scripts/vc6"))
     spec.loader.exec_module(vt)
-    defs, missing = {}, []
+    per, missing = {}, []
     sd = os.path.join(L.CACHE, "symdefs")
     os.makedirs(sd, exist_ok=True)
     for tu in ctx.tus:
         key = ctx.new_keys.get(tu) or ctx.idx_new.key(tu, ctx.salt)
         sp = os.path.join(sd, key + ".json")
         if ctx.mode != "full" and os.path.isfile(sp):
-            names = json.load(open(sp))
+            per[tu] = json.load(open(sp))
         else:
             o = objpath(ctx.objs_new, tu)
             if not os.path.isfile(o):
                 missing.append(tu)
                 continue
-            names = strong_defs(vt, o)
-            json.dump(names, open(sp, "w"))
+            per[tu] = strong_defs(vt, o)
+            json.dump(per[tu], open(sp, "w"))
+    return per, missing
+
+
+@gate
+def dupdefs(ctx):
+    """External symbols defined (non-COMDAT or NODUPLICATES) in more than one object, whole tree."""
+    per, missing = tu_strong_names(ctx)
+    ctx.strong_names = per
+    defs = {}
+    for tu, names in per.items():
         for n in names:
             defs.setdefault(n, []).append(tu)
     bad = {k: v for k, v in defs.items() if len(v) > 1}
@@ -568,6 +577,29 @@ def dupdefs(ctx):
         print("no object for", missing[:10])
     return ("FAIL" if bad or missing else "PASS"), "%d symbols, %d strong duplicates, %d objects missing" % (
         len(defs), len(bad), len(missing))
+
+
+@gate
+def dupaddr(ctx):
+    """Two or more strong definitions bound to one retail address, whatever their mangling (dupaddr.py).
+    Ratchet: addresses in scripts/data/dupaddr_baseline.json are legacy; a new address, or a new TU at a legacy one, fails."""
+    import dupaddr as DA
+    per = getattr(ctx, "strong_names", None)
+    if per is None:
+        per, _ = tu_strong_names(ctx)
+    tus = sorted(set(ctx.tus) | set(per))
+    viol = DA.violations(DA.collect(ctx.tree, tus, lambda tu: per.get(tu)))
+    try:
+        base = json.load(open(os.path.join(ctx.tree, DA.BASELINE)))
+    except (OSError, ValueError):
+        base = {"addresses": {}}
+    new, fixed = DA.new_violations(viol, base)
+    for a, mem in sorted(new.items())[:30]:
+        print("DUPADDR %s %s" % (DA.hx(a), "; ".join("%s:%s" % (tu, n) for tu, n, _ in mem)))
+    if fixed:
+        print("dupaddr baseline entries now fixed (drop them from %s): %s" % (DA.BASELINE, " ".join(DA.hx(a) for a in fixed[:20])))
+    return ("FAIL" if new else "PASS"), "%d violating addresses (%d legacy in baseline, %d new), %d baseline entries fixed" % (
+        len(viol), len(viol) - len(new), len(new), len(fixed))
 
 
 def ensure_base_objects(ctx, tus):

@@ -236,6 +236,17 @@ class LintRules(unittest.TestCase):
         self.assertIn("no FUNCTION/SYNTHETIC/TEMPLATE body claim", msgs)      # 0x400FF0 has no body
         self.assertTrue(any("replaces an existing row" in x["msg"] for x in f))   # 0x6F4A40 is matched on main
 
+    def test_dupaddr_rule(self):
+        # 0xB0FB10 is defined (as WholeFileBlock*) in the tree: a new void* definition elsewhere must fail, an extern must not
+        dup = HEADER + "// GLOBAL: GAMEMD 0x00B0FB10\nvoid* DAT_00B0FB10;\n"
+        ext = HEADER + "// GLOBAL: GAMEMD 0x00B0FB10\nextern void* DAT_00B0FB10;\n"
+        self.assertTrue(any(x["level"] == "E" for x in self.rules({"match/x/a.cpp": dup}, [], {"dupaddr"})))
+        self.assertEqual(self.rules({"match/x/a.cpp": ext}, [], {"dupaddr"}), [])
+        # two new files defining one fresh address
+        two = {"match/x/a.cpp": HEADER + "// GLOBAL: GAMEMD 0x00FFFF00\nint DAT_00FFFF00;\n",
+               "match/x/b.cpp": HEADER + "// GLOBAL: GAMEMD 0x00FFFF00\nlong DAT_00FFFF00;\n"}
+        self.assertEqual(len(self.rules(two, [], {"dupaddr"})), 2)
+
     def test_sdd_rule(self):
         hand = HEADER + textwrap.dedent("""
             // FUNCTION: GAMEMD 0x401000
