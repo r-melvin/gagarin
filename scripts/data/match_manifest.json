@@ -61611,8 +61611,8 @@
   "sym": "?FUN_007B7180@Obj_007B66D0@@QBEGI@Z",
   "len": "0x26",
   "name": "Obj_007B66D0::FUN_007B7180",
-  "status": "partial",
-  "pct": 93.8
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/wide_string_class.cpp",

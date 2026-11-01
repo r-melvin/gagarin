@@ -210,13 +210,10 @@ wchar_t Obj_007B66D0::FUN_007B7110(unsigned int index) const
 
 // FUNCTION: GAMEMD 0x7B7180
 //
-// A second copy of 0x7B7110.
+// A second copy of 0x7B7110; the ternary form is what yields the retail zero-return.
 wchar_t Obj_007B66D0::FUN_007B7180(unsigned int index) const
 {
-    if (index < wcslen(Buffer)) {
-        return Buffer[index];
-    }
-    return 0;
+    return index < wcslen(Buffer) ? Buffer[index] : L'\0';
 }
 
 // FUNCTION: GAMEMD 0x7B7600
