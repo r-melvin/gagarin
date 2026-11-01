@@ -1,0 +1,20 @@
+{
+ "?DAT_00A8B258@@3EA": "?DAT_00A8B258@@3DA",
+ "?DAT_00A8B258@@3_NA": "?DAT_00A8B258@@3DA",
+ "?DAT_00A8B262@@3DA": "?DAT_00A8B262@@3EA",
+ "?DAT_00A8B263@@3DA": "?DAT_00A8B263@@3EA",
+ "?DAT_00A8BB0C@@3HA": "?SessionPlayerLimit@@3HA",
+ "?DAT_00A8DA8C@@3HA": "?SelectedSlotIndex@@3HA",
+ "?DAT_00A8E378@@3_NA": "?MenusLoadFlagB@@3_NA",
+ "?DAT_00A8EB7C@@3EA": "?MouseDrawFlag@@3EA",
+ "?DAT_00A8EB7C@@3_NA": "?MouseDrawFlag@@3EA",
+ "?DAT_00A8EB84_r21_4@@3HA": "?DAT_00A8EB84@@3HA",
+ "?DAT_00A8EB88_r21_4@@3HA": "?DAT_00A8EB88@@3HA",
+ "?DAT_00A8EC74@@3DA": "?DAT_00A8EC74@@3_NA",
+ "?DAT_00A8ED9C@@3DA": "?DAT_00A8ED9C@@3_NA",
+ "?DAT_00A8ED9C@@3EA": "?DAT_00A8ED9C@@3_NA",
+ "?DisplayFlag_00A8ED9C@@3_NA": "?DAT_00A8ED9C@@3_NA",
+ "?MouseDrawFlag@@3_NA": "?MouseDrawFlag@@3EA",
+ "?ScoresPresent_00A8EC74@@3_NA": "?DAT_00A8EC74@@3_NA",
+ "?SidebarSideFlag_00A8EB7C@@3EA": "?MouseDrawFlag@@3EA"
+}

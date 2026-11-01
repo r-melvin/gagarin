@@ -1,0 +1,12 @@
+{
+ "?DAT_00AA0374@@3HA": "?DebugWindowListCapacity@@3HA",
+ "?DAT_00AA0448@@3HA": "?DebugWindowListActive@@3HA",
+ "?DAT_00ABF239@@3EA": "?DAT_00ABF239@@3_NA",
+ "?DAT_00AC13C8@@3HA": "?FlightLevel@@3HA",
+ "?DAT_00B0E700@@3UCellStruct@@A": "?DAT_00B0E700@@3UMathTblShortPair@@A",
+ "?DAT_00B0E9C8@@3UMathTblShortPair@@A": "?DefaultWaypointCell@@3UMathTblShortPair@@A",
+ "?DAT_00B0FBE0_r21_4@@3DA": "?DAT_00B0FBE0@@3DA",
+ "?DAT_00B0FC0C_r21_4@@3DA": "?DAT_00B0FC0C@@3DA",
+ "?DAT_00B77F58@@3HA": "?DAT_00B77F58@@3V?$rc_ptr@VWDTState@@@@A",
+ "?DefaultWaypointCell@@3UCellStruct@@A": "?DefaultWaypointCell@@3UMathTblShortPair@@A"
+}

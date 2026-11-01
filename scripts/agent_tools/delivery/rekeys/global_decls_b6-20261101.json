@@ -1,0 +1,22 @@
+{
+ "?CommandButtonShape_00B0FA90@@3PAUSidebarShapeFile@@A": "?DAT_00B0FA90@@3PAUSidebarShapeFile@@A",
+ "?CommandSlotTable_00B0CB78@@3PAHA": "?ButtonIndexTable@@3PAHA",
+ "?DAT_00A9FAB4@@3DA": "?DAT_00A9FAB4@@3EA",
+ "?DAT_00ABCD58@@3DA": "?DAT_00ABCD58@@3EA",
+ "?DAT_00ABD490@@3PAUCellStruct@@A": "?DAT_00ABD490@@3PAVCellOffset@@A",
+ "?DAT_00ABEF44@@3HA": "?GG_BridgeRise@@3HA",
+ "?DAT_00ABEF50@@3HA": "?GG_LevelHeight@@3HA",
+ "?DAT_00ABF23A@@3EA": "?DAT_00ABF23A@@3_NA",
+ "?DAT_00ABF394@@3PAPBDA": "?DAT_00ABF394@@3PAPADA",
+ "?DAT_00ABF3A0@@3IA": "?DAT_00ABF3A0@@3HA",
+ "?DAT_00AC4CF4@@3DA": "?DAT_00AC4CF4@@3_NA",
+ "?DAT_00B0C000@@3UCellStruct@@A": "?DAT_00B0C000@@3UMathTblShortPair@@A",
+ "?DAT_00B0CB78@@3PAHA": "?ButtonIndexTable@@3PAHA",
+ "?DAT_00B0FE65@@3EA": "?IsTypeSelectingFlag@@3_NA",
+ "?DAT_00B1D4C4@@3PAUVoxEvent@@A": "?DAT_00B1D4C4@@3PAVVoxClass@@A",
+ "?SelectHoverChanged_00B0B518@@3EA": "?DAT_00B0B518@@3EA",
+ "_DAT_00B0CB78": "?ButtonIndexTable@@3PAHA",
+ "_DAT_00B0FE58": "?DAT_00B0FE58@@3EA",
+ "_DAT_00B45188": "?DAT_00B45188@@3PAUMatrix3D@@A",
+ "_DAT_00B7355C": "?DAT_00B7355C@@3HA"
+}
