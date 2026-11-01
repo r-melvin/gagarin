@@ -420,6 +420,13 @@ ParticleTypeClass::ParticleTypeClass(const char* id)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x644DD0
+ParticleTypeClass::ParticleTypeClass(const ParticleStandaloneInit& init)
+    : ParticleTypeObjectView(init), ColorList(init)
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x644F50
 // CAPPED: the frozen candidate remains partial at the recorded 22.4% positional instruction score.
 // Its current source is preserved; this annotation does not assert that all other instructions align.

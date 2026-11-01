@@ -71,6 +71,8 @@ public:
     ParticleDynVector(int capacity, T* mem) : ParticleVector<T>(capacity, mem) {}
     // The full dynamic-vector constructor (type constructor 0x644BE0): growth step 10, no items.
     ParticleDynVector() : ParticleVector<T>(0u, 0) { CapacityIncrement = 10; Count = 0; }
+    // The same construction with the base's inline default constructor (the type's standalone no-init copy 0x644DD0).
+    ParticleDynVector(const ParticleStandaloneInit&) : ParticleVector<T>() { CapacityIncrement = 10; Count = 0; }
 
     bool AddItem(const T& item)
     {

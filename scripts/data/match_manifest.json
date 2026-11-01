@@ -151321,5 +151321,52 @@
   "name": "TechnoClass::TechnoClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/iso_tile_type_class_r15_methods.cpp",
+  "addr": "0x544A00",
+  "sym": "??0IsometricTileTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x63",
+  "name": "IsometricTileTypeClass::IsometricTileTypeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu185_particle_type_class.cpp",
+  "addr": "0x644DD0",
+  "sym": "??0ParticleTypeClass@@QAE@ABUParticleStandaloneInit@@@Z",
+  "len": "0x63",
+  "name": "ParticleTypeClass::ParticleTypeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/swizzle_manager_class.cpp",
+  "addr": "0x6CF180",
+  "sym": "??0SwizzleManagerClass@@QAE@XZ",
+  "len": "0x4f",
+  "name": "SwizzleManagerClass::SwizzleManagerClass",
+  "status": "partial",
+  "pct": 81.8,
+  "best_pct": 81.8,
+  "best_at": "89297c41"
+ },
+ {
+  "tu": "match/weapon_type_class.cpp",
+  "addr": "0x771C70",
+  "sym": "??0WeaponTypeClass@@QAE@PBD@Z",
+  "len": "0x281",
+  "name": "WeaponTypeClass::WeaponTypeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/weapon_type_class.cpp",
+  "addr": "0x771F00",
+  "sym": "??0WeaponTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x49",
+  "name": "WeaponTypeClass::WeaponTypeClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

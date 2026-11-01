@@ -29,6 +29,7 @@ public:
     ParticleColorList(int capacity, ParticleColor* mem) : ParticleDynVector<ParticleColor>(capacity, mem) {}
 
     ParticleColorList() {}
+    ParticleColorList(const ParticleStandaloneInit& init) : ParticleDynVector<ParticleColor>(init) {}
     int unknown_18;   // +0x18
 };
 GG_STATIC_ASSERT(offsetof(ParticleColorList, Items) == 0x04);

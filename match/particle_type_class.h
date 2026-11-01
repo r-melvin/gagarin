@@ -49,6 +49,8 @@ public:
     // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs and the colour list's vptr without touching any other member.
     ParticleTypeClass(const ParticleNoInit& noInit) : ParticleTypeObjectView(noInit), ColorList(0, 0) {}
+    // FUNCTION: GAMEMD 0x644DD0 -- the standalone copy of the no-init construction (no callers).
+    ParticleTypeClass(const ParticleStandaloneInit& init);
 
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x645620
     virtual HRESULT __stdcall Load(IStream* pStm);                          // 5   0x645660

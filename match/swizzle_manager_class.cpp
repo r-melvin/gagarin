@@ -7,6 +7,16 @@
 #include "_layout/swizzle_manager_class.h"
 #include "vector_class_operations.h"
 
+// FUNCTION: GAMEMD 0x6CF180
+SwizzleManagerClass::SwizzleManagerClass()
+    : unknown_04(),
+      unknown_1C()
+{
+    unknown_1C.CapacityIncrement = 1000;
+    unknown_04.CapacityIncrement = 1000;
+    unknown_1C.CapacityIncrement = 1000;
+}
+
 // FUNCTION: GAMEMD 0x6CF1D0
 SwizzleManagerClass::~SwizzleManagerClass()
 {

@@ -40,6 +40,10 @@ class WeaponTypeClass : public AbstractTypeClass
 public:
     // CALLEE: GAMEMD 0x00771C70 (decl; reloc) -- constructor as the class factory calls it.
     WeaponTypeClass(int unknown_arg0 = 0);
+    // FUNCTION: GAMEMD 0x771C70 -- the named constructor (the class factory passes its identifier).
+    WeaponTypeClass(const char* id);
+    // FUNCTION: GAMEMD 0x771F00 -- the no-init constructor (vptr stores only, Load's placement construction).
+    WeaponTypeClass(const AbstractNoInit& noInit);
     virtual int vf_11();   // 11  0x7730E0
     virtual int vf_12();   // 12  0x7730D0
     virtual void vf_13(Obj_004A1D30* crc);   // 13  0x772AE0
@@ -50,11 +54,6 @@ public:
     void CalculateSpeed();
     // FUNCTION: GAMEMD 0x772A90  (__thiscall)
     int AllowedThreats();
-
-    // GAMEMD 0x771C70  WeaponTypeClass::WeaponTypeClass(const char*) (__thiscall;
-    // returns `this` in EAX). Declared (no body) so FindOrAllocate emits the
-    // reloc'd construct call; matched in its own TU.
-    WeaponTypeClass* Construct(const char* id);
 
     // IPersist::GetClassID (slot 3), 0x772C90; body in core/persist_class_id_methods.cpp.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -207,25 +206,8 @@ GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->IsElectricBolt) == 1);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->RadLevel) == 4);
 GG_STATIC_ASSERT(sizeof(WeaponTypeClass)               == 0x160);
 
-// VectorClass head for WeaponTypeClass::Array (DynamicVectorClass of pointers).
-//   Array @0x887568  =>  &Items == 0x88756C, &Count == 0x887578 (both confirmed
-//   by the absolute loads in FindOrAllocate).
-struct WeaponTypeVector
-{
-    void*              vtable;        // +0x00
-    WeaponTypeClass**  Items;        // +0x04
-    int                Capacity;     // +0x08
-    int                IsAllocated;  // +0x0C
-    int                Count;        // +0x10
-};
-
-#if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(WeaponTypeVector, Items) == 0x04);  // pointer-width-sensitive
-GG_STATIC_ASSERT(offsetof(WeaponTypeVector, Count) == 0x10);
-#endif
-
 // GLOBAL: GAMEMD 0x887568 — WeaponTypeClass::Array.
-extern WeaponTypeVector WeaponTypeClass_Array;
+extern DynamicVectorClass<WeaponTypeClass*> WeaponTypeClass_Array;
 
 // ---------------------------------------------------------------------------
 // Externals touched by CalculateSpeed (declared, no body — calls become relocs):

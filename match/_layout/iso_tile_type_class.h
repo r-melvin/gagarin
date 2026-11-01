@@ -57,6 +57,8 @@ public:
     // ObjectTypeClass constructor (0x5F7090, the ID text), the second is stored at +0x294, the fourth and fifth
     // (low byte) at +0x2DC and +0x2EC. TClassFactory<IsometricTileTypeClass> (0x6C2F90) passes five zeros.
     IsometricTileTypeClass(const char* id = 0, int arg1 = 0, int arg2 = 0, int arg3 = 0, int arg4 = 0);
+    // FUNCTION: GAMEMD 0x544A00 -- the no-init constructor (no callers): base no-init chain, then the tile vector's default construction.
+    IsometricTileTypeClass(const AbstractNoInit& noInit);
     // Slot 8 (deleting destructor 0x54A170).
     virtual ~IsometricTileTypeClass();
 

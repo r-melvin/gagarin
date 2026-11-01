@@ -57,6 +57,9 @@ GG_STATIC_ASSERT(sizeof(ParticleColor) == 3);
 
 // Marker for the no-initialisation constructors (Load's placement new re-runs the vptr stores).
 struct ParticleNoInit {};
+// Selects the constructors of the standalone type constructor 0x644DD0 (no callers; the default vector
+// constructor expanded inline, unlike Load's placement construction). Placeholder name.
+struct ParticleStandaloneInit : ParticleNoInit {};
 
 // Clip rectangle handed to the draw slot (x, y, width, height).
 struct ParticleRect

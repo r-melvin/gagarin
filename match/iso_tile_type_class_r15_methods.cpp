@@ -5,10 +5,11 @@
 //   (retail RTTI, see iso_tile_type_class_tile_data_methods.h); the slot +0x9C call is
 //   GetTileData.
 //
-// Address index: 0x544BE0 0x544C20 0x544C80 0x544CE0 0x549A60
+// Address index: 0x544A00 0x544BE0 0x544C20 0x544C80 0x544CE0 0x549A60
 #include <string.h>
 #include "iso_tile_type_class_tile_data_methods.h"
 #include "vector_class.h"
+#include "vector_class_operations.h"
 
 // GLOBAL: GAMEMD 0xA8ED28 -- every IsometricTileTypeClass, in tile order.
 extern DynamicVectorClass<IsometricTileTypeClass*> DAT_00A8ED28;
@@ -31,6 +32,12 @@ GG_STATIC_ASSERT(offsetof(SubTileView_r15, unknown_29) == 0x29);
 
 // GLOBAL: GAMEMD 0x8288E4 -- value table indexed by the sub-tile's +0x29 byte.
 extern int DAT_008288E4[];
+
+// FUNCTION: GAMEMD 0x544A00
+IsometricTileTypeClass::IsometricTileTypeClass(const AbstractNoInit& noInit)
+    : ObjectTypeClass(noInit), unknown_vec_2A4()
+{
+}
 
 // FUNCTION: GAMEMD 0x544BE0
 // Table value for the sub-tile at `idx` (wrapped on the sub-tile count), or zero.
