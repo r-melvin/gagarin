@@ -11,7 +11,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../ui/control_class.h"
+#include "../control_class.h"
 
 struct DialPoint
 {

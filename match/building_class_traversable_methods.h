@@ -11,7 +11,7 @@
 //   (BuildingClass::IsTraversable) inlined. Names cross-checked against
 //   YRpp BuildingClass::MakeTraversable / TransitionTimer::AreStates* /
 //   MissionClass (re-derived here). The timer's size (0x20) is
-//   the one already asserted in match/ui/transition_timer_more_methods.h.
+//   the one already asserted in match/transition_timer_more_methods.h.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_TRAVERSABLE_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_TRAVERSABLE_METHODS_H
 

@@ -1,0 +1,4543 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// /Ob2 inlines the real destructor into the scalar deleting destructor
+// at 0x6DC470; /Ob1 leaves a call and scores12.5%. All prior exact rows
+// in this TU remain raw-exact under this flag.
+//   Original translation unit Tactical.CPP. The name is the source-file string at 0x842a64
+//   in retail gamemd.exe v1.001, passed by the assert at 0x6d4ad7 inside this object's
+//   code range (0x6d1830-0x6dcd6f). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// Retail IPersist::GetClassID (slot 3 of each class's primary vtable) copies a
+// 16-byte CLSID global to the caller and returns E_POINTER for a null pointer.
+// The owning class of each address is read from the RTTI-named vtable that holds
+// it in slot 3. Each class is declared here only as far as this one virtual
+// (no layout is claimed); the bodies move into the canonical class once it exists.
+//
+// Retail RTTI names VectorClass/DynamicVectorClass over Cell, BaseNodeClass, TPoint3D<int>, Point2D,
+// TRect<int> and DirtyAreaStruct. Element layouts and compare shapes are read from the FindItemIndex,
+// Slot5, Slot6 and SetCapacity bodies; field names are placeholders.
+//
+//   LIBRARY:  GAMEMD 0x7C5F00  __ftol                (referenced; reloc)
+//
+//   Names cross-checked against YRpp.
+//
+//   GLOBAL:   GAMEMD 0xB0CD48   double  sin60 * pixelsPerLepton  (runtime-init)
+//   GLOBAL:   GAMEMD 0x7E1738   double  0.5  (rounding bias)
+//   LIBRARY:  GAMEMD 0x7C5F00   __ftol  (CRT double->long; excluded from match)
+//
+// Disassembly (0x6D20E0, len 0x3C):
+//   SUB ESP,8 ; CMP ECX,0x2D8 ; MOV [ESP+4],ECX ; MOV [ESP],0
+//   JL +8     ; MOV [ESP],1                      <- int(Height >= 728)
+//   FILD [ESP+4]                                 <- (double)Height
+//   FMUL [0xB0CD48]                              <- * const
+//   FIADD [ESP]                                  <- + int(Height >= 728)
+//   FADD [0x7E1738]                              <- + 0.5
+//   CALL __ftol ; ADD ESP,8 ; RET                <- (int) cast
+//
+// 728 == 0x2D8. The (Height >= 728) flag is added as an INTEGER (FIADD), so it
+// must stay an int operand in the expression, then 0.5 folds in as a double.
+
+#include "FUNCTION.H"
+#include "core/mathtbl_init_shapes.h"
+#include "core/cell_step_tables.h"
+#include "tactical_class_matrix_methods.h"
+#include "tactical_class_coords_to_client_methods.h"
+#include "tactical_class_selectable_methods.h"
+#include "_layout/geometry2d.h"
+#include <stddef.h>
+#include "_rt/gg_static_assert.h"
+#include <math.h>
+
+// GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
+extern const CLSID DAT_007E9660;
+// GLOBAL: GAMEMD 0x007E95B0 -- CLSID of AircraftTypeClass.
+extern const CLSID DAT_007E95B0;
+// GLOBAL: GAMEMD 0x007E98E0 -- CLSID of AirstrikeClass.
+extern const CLSID DAT_007E98E0;
+// GLOBAL: GAMEMD 0x007E9960 -- CLSID of AITriggerTypeClass.
+extern const CLSID DAT_007E9960;
+// GLOBAL: GAMEMD 0x007E99A0 -- CLSID of AlphaShapeClass.
+extern const CLSID DAT_007E99A0;
+// GLOBAL: GAMEMD 0x007E9670 -- CLSID of AnimClass.
+extern const CLSID DAT_007E9670;
+// GLOBAL: GAMEMD 0x007E9620 -- CLSID of AnimTypeClass.
+extern const CLSID DAT_007E9620;
+// GLOBAL: GAMEMD 0x007E9980 -- CLSID of NeuronClass.
+extern const CLSID DAT_007E9980;
+// GLOBAL: GAMEMD 0x007E96E0 -- CLSID of BulletClass.
+extern const CLSID DAT_007E96E0;
+// GLOBAL: GAMEMD 0x007E95D0 -- CLSID of BulletTypeClass.
+extern const CLSID DAT_007E95D0;
+// GLOBAL: GAMEMD 0x007E9900 -- CLSID of CampaignClass.
+extern const CLSID DAT_007E9900;
+// GLOBAL: GAMEMD 0x007E9930 -- CLSID of CellClass.
+extern const CLSID DAT_007E9930;
+// GLOBAL: GAMEMD 0x007E9890 -- CLSID of DiskLaserClass.
+extern const CLSID DAT_007E9890;
+// GLOBAL: GAMEMD 0x007E9940 -- CLSID of EMPulseClass.
+extern const CLSID DAT_007E9940;
+// GLOBAL: GAMEMD 0x007E9820 -- CLSID of FactoryClass.
+extern const CLSID DAT_007E9820;
+// GLOBAL: GAMEMD 0x007E9990 -- CLSID of FoggedObjectClass.
+extern const CLSID DAT_007E9990;
+// GLOBAL: GAMEMD 0x007E9680 -- CLSID of InfantryClass.
+extern const CLSID DAT_007E9680;
+// GLOBAL: GAMEMD 0x007E95A0 -- CLSID of InfantryTypeClass.
+extern const CLSID DAT_007E95A0;
+// GLOBAL: GAMEMD 0x007E9640 -- CLSID of IsometricTileClass.
+extern const CLSID DAT_007E9640;
+// GLOBAL: GAMEMD 0x007E95F0 -- CLSID of IsometricTileTypeClass.
+extern const CLSID DAT_007E95F0;
+// GLOBAL: GAMEMD 0x007E9AC0 -- CLSID of JumpjetLocomotionClass.
+extern const CLSID DAT_007E9AC0;
+// GLOBAL: GAMEMD 0x007E98F0 -- CLSID of LightSourceClass.
+extern const CLSID DAT_007E98F0;
+// GLOBAL: GAMEMD 0x007E98A0 -- CLSID of ParasiteClass.
+extern const CLSID DAT_007E98A0;
+// GLOBAL: GAMEMD 0x007E98C0 -- CLSID of RadSiteClass.
+extern const CLSID DAT_007E98C0;
+// GLOBAL: GAMEMD 0x007E97A0 -- CLSID of ScriptClass.
+extern const CLSID DAT_007E97A0;
+// GLOBAL: GAMEMD 0x007E97B0 -- CLSID of ScriptTypeClass.
+extern const CLSID DAT_007E97B0;
+// GLOBAL: GAMEMD 0x007E9AB0 -- CLSID of ShipLocomotionClass.
+extern const CLSID DAT_007E9AB0;
+// GLOBAL: GAMEMD 0x007E9910 -- CLSID of SideClass.
+extern const CLSID DAT_007E9910;
+// GLOBAL: GAMEMD 0x007E9870 -- CLSID of SlaveManagerClass.
+extern const CLSID DAT_007E9870;
+// GLOBAL: GAMEMD 0x007E9860 -- CLSID of SpawnManagerClass.
+extern const CLSID DAT_007E9860;
+// GLOBAL: GAMEMD 0x007E9580 -- CLSID of SuperClass.
+extern const CLSID DAT_007E9580;
+// GLOBAL: GAMEMD 0x007E9570 -- CLSID of SuperWeaponTypeClass.
+extern const CLSID DAT_007E9570;
+// GLOBAL: GAMEMD 0x007E9950 -- CLSID of Tactical.
+extern const CLSID DAT_007E9950;
+// GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
+extern const CLSID DAT_007E9800;
+// GLOBAL: GAMEMD 0x007E97C0 -- CLSID of TagClass.
+extern const CLSID DAT_007E97C0;
+// GLOBAL: GAMEMD 0x007E97D0 -- CLSID of TagTypeClass.
+extern const CLSID DAT_007E97D0;
+// GLOBAL: GAMEMD 0x007E9770 -- CLSID of TaskForceClass.
+extern const CLSID DAT_007E9770;
+// GLOBAL: GAMEMD 0x007E9760 -- CLSID of TeamClass.
+extern const CLSID DAT_007E9760;
+// GLOBAL: GAMEMD 0x007E9780 -- CLSID of TeamTypeClass.
+extern const CLSID DAT_007E9780;
+// GLOBAL: GAMEMD 0x007E9A90 -- CLSID of TeleportLocomotionClass.
+extern const CLSID DAT_007E9A90;
+// GLOBAL: GAMEMD 0x007E98D0 -- CLSID of TemporalClass.
+extern const CLSID DAT_007E98D0;
+// GLOBAL: GAMEMD 0x007E9810 -- CLSID of TEventClass.
+extern const CLSID DAT_007E9810;
+// GLOBAL: GAMEMD 0x007E9920 -- CLSID of TiberiumClass.
+extern const CLSID DAT_007E9920;
+// GLOBAL: GAMEMD 0x007E97E0 -- CLSID of TriggerClass.
+extern const CLSID DAT_007E97E0;
+// GLOBAL: GAMEMD 0x007E97F0 -- CLSID of TriggerTypeClass.
+extern const CLSID DAT_007E97F0;
+// GLOBAL: GAMEMD 0x007E9750 -- CLSID of TubeClass.
+extern const CLSID DAT_007E9750;
+// GLOBAL: GAMEMD 0x007E9A50 -- CLSID of TunnelLocomotionClass.
+extern const CLSID DAT_007E9A50;
+// GLOBAL: GAMEMD 0x007E96F0 -- CLSID of UnitClass.
+extern const CLSID DAT_007E96F0;
+// GLOBAL: GAMEMD 0x007E9590 -- CLSID of UnitTypeClass.
+extern const CLSID DAT_007E9590;
+// GLOBAL: GAMEMD 0x007E9650 -- CLSID of VoxelAnimClass.
+extern const CLSID DAT_007E9650;
+// GLOBAL: GAMEMD 0x007E9790 -- CLSID of VoxelAnimTypeClass.
+extern const CLSID DAT_007E9790;
+// GLOBAL: GAMEMD 0x007E99B0 -- CLSID of VeinholeMonsterClass.
+extern const CLSID DAT_007E99B0;
+// GLOBAL: GAMEMD 0x007E9A60 -- CLSID of WalkLocomotionClass.
+extern const CLSID DAT_007E9A60;
+// GLOBAL: GAMEMD 0x007E9840 -- CLSID of WarheadTypeClass.
+extern const CLSID DAT_007E9840;
+// GLOBAL: GAMEMD 0x007E9720 -- CLSID of WaveClass.
+extern const CLSID DAT_007E9720;
+// GLOBAL: GAMEMD 0x007E9850 -- CLSID of WaypointPathClass.
+extern const CLSID DAT_007E9850;
+// GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
+extern const CLSID DAT_007E9830;
+
+#include "airstrike_class_methods.h"
+#include "taction_class_methods.h"
+#include "tevent_class_methods.h"
+#include "super_weapon_type_class_methods.h"
+
+#include "core/trivial_tu229_methods.h"
+
+
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+
+template class DynamicVectorClass<Cell>;
+
+
+template class DynamicVectorClass<BaseNodeClass>;
+
+template<class T> class TPoint3D { public: T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
+
+template class DynamicVectorClass<Point2D>;
+
+template class DynamicVectorClass<TRect<int> >;
+
+
+template class DynamicVectorClass<DirtyAreaStruct>;
+
+
+#include "tactical_class_coords_to_screen_methods.h"
+
+// Lepton (x, y) to the un-normalised iso pixel offset, read through a pointer
+// to a two-int local. This is the pClient shape of the sibling
+// Tactical::AdjustForZShapeMove (match/renderer/tactical_class_matrix_
+// methods.cpp) and it is what retail inlined here: the address-taken local
+// makes VC6 store Y into the temporary's second slot and reload it
+// (`MOV [ESP+0x10],EAX; MOV EDI,[ESP+0x10]`), while X is forwarded straight
+// into ESI. With plain int arguments, or with a struct passed by value or
+// reference, that spill and reload vanish and the Z load and the bias store
+// move ahead of the first LEA (9.7%). The struct returned by value is what
+// produces the dead X spill into the temporary's first slot, which Z later
+// reuses for its FILD.
+static inline Point2D IsoProject(const int* p)
+{
+    Point2D r;
+    r.X = p[0] * 60 / 2;
+    r.Y = p[0] * 30 / 2;
+    r.X += p[1] * -60 / 2;
+    r.Y += p[1] * 30 / 2;
+    return r;
+}
+
+// Height in leptons to the rounded pixel lift, (int)(z * scale + bias + 0.5)
+// with bias 1 once the height reaches a bridge level (728 leptons). This is
+// Tactical::AdjustForZ (0x6D20E0, match/ui/tactical_class_methods.cpp)
+// inlined; the bias lands in the dead pCoord parameter slot.
+static inline int AdjustForZ(int z)
+{
+    int bias = 0;
+    if (z >= 728) {
+        bias = 1;
+    }
+    return (int)(z * DAT_00B0CD48 + bias + 0.5);
+}
+
+
+// The scaling factor lives at the fixed global address 0xB0CD48 (runtime-init
+// double). Referenced as an extern symbol so cl emits a direct memory operand
+// `fmul [factor]` (reloc-normalised to the retail `fmul [0xB0CD48]`), rather
+// than the register-indirect form a `*(double*)0xB0CD48` pointer literal forces.
+extern double AdjustForZ_Factor;   // GLOBAL: GAMEMD 0xB0CD48
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include "iso_tile_type_class_tile_data_methods.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7F4180
+extern const double DAT_007F4180;
+// GLOBAL: GAMEMD 0xB0CD78
+extern double DAT_00B0CD78;
+// GLOBAL: GAMEMD 0xB0CEA0
+extern double DAT_00B0CEA0;
+// GLOBAL: GAMEMD 0xB0CEA8
+extern int DAT_00B0CEA8;
+// GLOBAL: GAMEMD 0xB0CEAC
+extern int DAT_00B0CEAC;
+// GLOBAL: GAMEMD 0xB0CEB0
+extern int DAT_00B0CEB0;
+// GLOBAL: GAMEMD 0xB0CEB8
+extern double DAT_00B0CEB8;
+
+// GLOBAL: GAMEMD 0x7E1708
+extern const double DAT_007E1708;
+// GLOBAL: GAMEMD 0x7E1710
+extern const double DAT_007E1710;
+// GLOBAL: GAMEMD 0x7E1720
+extern const double DAT_007E1720;
+// GLOBAL: GAMEMD 0x7E1728
+extern const double DAT_007E1728;
+// GLOBAL: GAMEMD 0x7E1730
+extern const double DAT_007E1730;
+// GLOBAL: GAMEMD 0x7E1738
+extern const double DAT_007E1738;
+// GLOBAL: GAMEMD 0x7E1740
+extern const double DAT_007E1740;
+// GLOBAL: GAMEMD 0x7F4188
+extern const double DAT_007F4188;
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x4CAD50 (decl; reloc)
+double __cdecl FUN_004CAD50(double value);
+// FUNCTION: GAMEMD 0x4CADE0 (decl; reloc)
+double __cdecl FUN_004CADE0(double value);
+
+// SYNTHETIC: GAMEMD 0x6D1830
+// GLOBAL: GAMEMD 0xB0CD78
+double DAT_00B0CD78 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
+// FUNCTION: GAMEMD 0x6D1860
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_006D1860()
+{
+    DAT_00B0CEB8 = DAT_00B0CD78 / DAT_007F4180;
+}
+
+// FUNCTION: GAMEMD 0x6D1880
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_006D1880()
+{
+    DAT_00B0CEA0 = DAT_007E1718 / DAT_00B0CEB8;
+}
+
+// SYNTHETIC: GAMEMD 0x6D18A0
+// GLOBAL: GAMEMD 0xB0CE98
+double DAT_00B0CE98 = DAT_007E1720 * DAT_007F4188;
+
+// SYNTHETIC: GAMEMD 0x6D18C0
+// GLOBAL: GAMEMD 0xB0CD88
+double DAT_00B0CD88 = DAT_007E1728 * DAT_007F4188;
+
+// SYNTHETIC: GAMEMD 0x6D18E0
+// GLOBAL: GAMEMD 0xB0CD50
+double DAT_00B0CD50 = DAT_007E1730 * DAT_007F4188;
+
+// SYNTHETIC: GAMEMD 0x6D1900
+// GLOBAL: GAMEMD 0xB0CEC0
+int DAT_00B0CEC0 = (int)(DAT_007E1738 * (FUN_004CAD50(DAT_00B0CD50 - DAT_00B0CD88) * DAT_00B0CD78));
+
+// SYNTHETIC: GAMEMD 0x6D1940
+// GLOBAL: GAMEMD 0xB0CD90
+double DAT_00B0CD90 = FUN_004CADE0((double)DAT_00B0CEC0 * DAT_007E1740);
+
+// SYNTHETIC: GAMEMD 0x6D1970
+// GLOBAL: GAMEMD 0xB0CE20
+double DAT_00B0CE20 = FUN_004CADE0((double)(DAT_00B0CEC0 * 2) / DAT_00B0CD78);
+
+// SYNTHETIC: GAMEMD 0x6D19A0
+// GLOBAL: GAMEMD 0xB0CEB4
+int DAT_00B0CEB4 = (int)((double)(DAT_00B0CEC0 * 4) + DAT_007E1738);
+
+// SYNTHETIC: GAMEMD 0x6D19D0
+// GLOBAL: GAMEMD 0xB0CD74
+MathTblShortPair DAT_00B0CD74;
+
+// SYNTHETIC: GAMEMD 0x6D19E0
+// GLOBAL: GAMEMD 0xB0CE08
+MathTblZero3 DAT_00B0CE08;
+
+// FUNCTION: GAMEMD 0x6D1A00
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_006D1A00()
+{
+    DAT_00B0CEB0 = 0;
+    DAT_00B0CEA8 = 0x80;
+    DAT_00B0CEAC = 0x80;
+}
+
+// GLOBAL: GAMEMD 0x7E1728
+extern "C" const double DAT_007E1728;
+// GLOBAL: GAMEMD 0xB0CD88
+extern double DAT_00B0CD88;
+// GLOBAL: GAMEMD 0xB0CE18
+extern double DAT_00B0CE18;
+// GLOBAL: GAMEMD 0xB0CDD8
+extern double DAT_00B0CDD8;
+// The existing table-trigonometry call at0x4CACB0 takes a cdecl double.
+extern "C" double __cdecl FUN_004CACB0(double angle);
+
+// SYNTHETIC: GAMEMD 0x6D1A20
+// GLOBAL: GAMEMD 0xB0CD60
+MathTblZero4 DAT_00B0CD60;
+
+// SYNTHETIC: GAMEMD 0x6D1A40
+// GLOBAL: GAMEMD 0xB0CE28
+MathTblZero4 DAT_00B0CE28;
+
+// FUNCTION: GAMEMD 0x6D1B00
+// Empty function.
+void __cdecl FUN_006D1B00()
+{
+}
+
+// FUNCTION: GAMEMD 0x6D1BB0
+void __cdecl FUN_006D1BB0()
+{
+    DAT_00B0CE18 = DAT_007E1728 / DAT_00B0CD78;
+    DAT_00B0CD48 = FUN_004CACB0(DAT_00B0CD88) * DAT_00B0CE18;
+}
+
+// FUNCTION: GAMEMD 0x6D1BF0
+void __cdecl FUN_006D1BF0()
+{
+    DAT_00B0CDD8 = DAT_00B0CD78 / (FUN_004CACB0(DAT_00B0CD88) * DAT_007E1728);
+}
+
+// GLOBAL: GAMEMD 0xB0CD88
+extern double DAT_00B0CD88;
+// GLOBAL: GAMEMD 0xB0CE98
+extern double DAT_00B0CE98;
+// GLOBAL: GAMEMD 0xB0CD78
+extern double DAT_00B0CD78;
+// GLOBAL: GAMEMD 0x887324
+extern Tactical* DAT_00887324;
+
+// FUNCTION: GAMEMD 0x6D1C20
+Tactical::Tactical()
+    : unknown_A8(-1), unknown_AC(false), unknown_AD(false),
+      unknown_B0(0, 0), unknown_B8(0, 0), unknown_C0(1.0),
+      unknown_C8(DAT_00B0CE08.X, DAT_00B0CE08.Y),
+      unknown_D0(DAT_00B0CE08.X, DAT_00B0CE08.Y),
+      unknown_D8(0.0f), unknown_DC(0.0f), unknown_E0(0),
+      unknown_D64(0, 0), unknown_D6C(0, 0), unknown_D74(0, 0),
+      unknown_D7C(1), unknown_D7D(false), unknown_D7E(false),
+      unknown_D80(DAT_00B0CD60.A), unknown_D84(DAT_00B0CD60.B),
+      unknown_D88(DAT_00B0CD60.C), unknown_D8C(DAT_00B0CD60.D),
+      unknown_D90(0, 0), unknown_D98(0, 0), unknown_DA0(0), unknown_DB0(0)
+{
+    memset(unknown_E4, 0, sizeof unknown_E4);
+    unknown_24[0] = 0;
+    unknown_A4 = -1;
+    unknown_DB4.MakeIdentity();
+    unknown_DB4.RotateX((float)DAT_00B0CD88);
+    unknown_DB4.RotateZ((float)DAT_00B0CE98);
+    unknown_DB4.Scale((float)(60.0f / DAT_00B0CD78));
+    unknown_DE4.Row[0][0] = 4.26669979095459f;
+    unknown_DE4.Row[0][1] = 8.53339958190918f;
+    unknown_DE4.Row[0][2] = 0.0f;
+    unknown_DE4.Row[0][3] = 0.0f;
+    unknown_DE4.Row[1][0] = -4.26669979095459f;
+    unknown_DE4.Row[1][1] = 8.53339958190918f;
+    unknown_DE4.Row[1][2] = 0.0f;
+    unknown_DE4.Row[1][3] = 0.0f;
+    unknown_DE4.Row[2][0] = 0.0f;
+    unknown_DE4.Row[2][1] = 0.0f;
+    unknown_DE4.Row[2][2] = 1.0f;
+    unknown_DE4.Row[2][3] = 0.0f;
+    DAT_00887324 = this;
+}
+
+// GLOBAL: GAMEMD 0x887324
+extern Tactical* DAT_00887324;
+
+// FUNCTION: GAMEMD 0x6D1E30
+Tactical::Tactical(const AbstractNoInit& noInit)
+    : AbstractClass(noInit)
+{
+}
+
+// FUNCTION: GAMEMD 0x6D1E80
+Tactical::~Tactical()
+{
+    DAT_00887324 = 0;
+}
+
+// FUNCTION: GAMEMD 0x6D1EB0
+Pair_006D9F80* Pair_006D9F80::FUN_006D1EB0(int x, int y)
+{
+    int coordinates[2];
+    coordinates[0] = x;
+    coordinates[1] = y;
+    Point2D projected = IsoProject(coordinates);
+    unknown_00 = projected.X;
+    unknown_04 = projected.Y;
+    return this;
+}
+
+// FUNCTION: GAMEMD 0x6D1F10
+//
+// World coordinate to the raw iso screen point: the (x, y) leptons go through
+// the 60x30 projection and a signed divide by 256, then the height lift is
+// subtracted from Y. Z is read off pCoord only when the lift is computed, which
+// keeps pCoord in EBX across the projection and lets Z take over EBX after it.
+// Point2D returns through the MSVC6 hidden stack result pointer; EAX returns
+// that pointer. The value-return form preserves the exact200-byte body.
+Point2D Tactical::CoordsToScreen(const CoordStruct* pCoord)
+{
+    int xy[2];
+    xy[0] = pCoord->X;
+    xy[1] = pCoord->Y;
+
+    Point2D r = IsoProject(xy);
+    r.X /= 256;
+    r.Y /= 256;
+    r.Y -= AdjustForZ(pCoord->Z);
+
+    return r;
+}
+
+// Lepton-space (x, y) to the un-normalised iso pixel offset: a 60x30 cell,
+// phrased as the retail halves of the cell size, x-terms first then y-terms.
+// This has to be a separate inline returning by value: the temporary VC6
+// materialises for the returned struct is what gives retail its 8-byte frame
+// and the dead spill of X (`MOV [ESP+8],ECX`) — the same computation written
+// straight into the caller's local, or into the destination, drops both.
+// `-60` must be a literal multiply: VC6 expands it as `SHL 4; SUB; NEG; SHL 2`
+// and only folds it into a subtraction when the sum is in the same expression.
+static inline Point2D IsoProject(int x, int y)
+{
+    Point2D r;
+    r.X = x * 60 / 2;
+    r.Y = x * 30 / 2;
+    r.X += y * -60 / 2;
+    r.Y += y * 30 / 2;
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x6D1FE0
+//
+// Pixel offset of a lepton-space (x, y): X = (x - y) * 30 / 256 and
+// Y = (x + y) * 15 / 256, via the half-cell products above and a signed
+// divide by the 256 leptons per cell. `this` is unused; the result is
+// written to pDest as one Point2D and pDest is returned. x and y are read
+// into named locals first so x claims ESI ahead of y (VC6 evaluates the
+// inline's arguments right-to-left otherwise, which swaps ESI/EDI).
+int* Tactical::AdjustForZShapeMove(int* pDest, const int* pClient)
+{
+    int x = pClient[0];
+    int y = pClient[1];
+
+    Point2D r = IsoProject(x, y);
+    r.X /= 256;
+    r.Y /= 256;
+
+    *(Point2D*)pDest = r;
+    return pDest;
+}
+
+// FUNCTION: GAMEMD 0x6D2070
+//
+// Runs an integer 2-D pixel offset through the iso transform matrix at +0xDE4
+// (Z is taken as 0) and truncates the transformed X/Y back to ints in pOut.
+// The helper's result is copied back into the input vector (the 3-dword copy
+// off the returned pointer), both `__ftol` conversions are done into a
+// Point2D, and that is stored to pOut as one struct so both stores follow
+// the second conversion.
+int* Tactical::ApplyMatrix_Pixel(int* pOut, const int* pIn)
+{
+    Vector3D v;
+    Vector3D r;
+
+    v.X = (float)pIn[0];
+    v.Z = 0.0f;
+    v.Y = (float)pIn[1];
+
+    v = *Matrix3D::MatrixApply(&r, &this->unknown_DE4, &v);
+
+    Point2D pt;
+    pt.X = (int)v.X;
+    pt.Y = (int)v.Y;
+    *(Point2D*)pOut = pt;
+    return pOut;
+}
+
+// FUNCTION: GAMEMD 0x6D20E0  Tactical::AdjustForZ (__fastcall)
+int Tactical::AdjustForZ(int Height)
+{
+    int bias = 0;
+    if (Height >= 728) {
+        bias = 1;
+    }
+    return (int)(Height * AdjustForZ_Factor + bias + 0.5);
+}
+
+// GLOBAL: GAMEMD 0xB0CDD8
+extern double DAT_00B0CDD8;
+
+// The table is indexed in 12-byte records; only its first word is read here.
+struct Record_00B0CEC8
+{
+    ObjectClass* unknown_00;
+    int unknown_04;
+    int unknown_08;
+};
+GG_STATIC_ASSERT(offsetof(Record_00B0CEC8, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(Record_00B0CEC8, unknown_04) == 4);
+GG_STATIC_ASSERT(offsetof(Record_00B0CEC8, unknown_08) == 8);
+GG_STATIC_ASSERT(sizeof(Record_00B0CEC8) == 12);
+// GLOBAL: GAMEMD 0xB0CEC8
+extern Record_00B0CEC8 DAT_00B0CEC8[];
+
+// FUNCTION: GAMEMD 0x6D2120
+// ECX supplies the integer; FILD, subtract 0.5, scale, and CRT conversion.
+int FUN_006D2120(int value)
+{
+    return (int)((value - 0.5) * DAT_00B0CDD8);
+}
+
+// Tactical::CoordsToScreen (0x6D1F10) inlined.
+static inline void InlineCoordsToScreen(Point2D* pDest, const CoordStruct* pCoord)
+{
+    int xy[2];
+    xy[0] = pCoord->X;
+    xy[1] = pCoord->Y;
+
+    Point2D r = IsoProject(xy);
+    r.X /= 256;
+    r.Y /= 256;
+    r.Y -= AdjustForZ(pCoord->Z);
+
+    *pDest = r;
+}
+
+// Is the client point within 360 x 180 pixels of the view rectangle. Takes
+// the two scalars so the compares run on volatile register copies after the
+// callee-saved pops (`MOV ECX,EDI; MOV EAX,ESI; POP; POP; POP; CMP`); each
+// false exit is its own `XOR AL,AL; ADD ESP,8; RET 8` and the last test is
+// a named bool so it ends in a bare `SETLE AL`.
+static inline bool InView(int x, int y)
+{
+    if (x < -360) {
+        return false;
+    }
+    if (x > DAT_00B0CE30 + 360) {
+        return false;
+    }
+    if (y < -180) {
+        return false;
+    }
+    bool inside = y <= DAT_00B0CE34 + 180;
+    return inside;
+}
+
+// FUNCTION: GAMEMD 0x6D2140
+//
+// World coordinate to a client (view-relative) point: the raw iso screen
+// point is stored to pDest, the view offset (read first as one Point2D into
+// ECX/EBP) is subtracted from it in place with a reload through pDest, and
+// the result says whether the point lies within 360 pixels horizontally and
+// 180 pixels vertically of the view rectangle. The per-axis copy right after
+// each in-place store is what interleaves `MOV [EAX],EDI; MOV ECX,EDI;
+// MOV [EAX+4],ESI; MOV EAX,ESI`; a struct copy or a by-value helper argument
+// puts both stores before both copies (98.1%), and testing pDest's fields
+// directly keeps the pops inside the branches (63.2%).
+bool Tactical::CoordsToClient(const CoordStruct* pCoord, Point2D* pDest)
+{
+    InlineCoordsToScreen(pDest, pCoord);
+
+    Pair_006D9F80 off = this->unknown_B0;
+    pDest->X -= off.unknown_00;
+    int x = pDest->X;
+    pDest->Y -= off.unknown_04;
+    int y = pDest->Y;
+
+    return InView(x, y);
+}
+
+// FUNCTION: GAMEMD 0x6D2280
+//
+// Client (screen) point to a world coordinate — the inverse of
+// Tactical::CoordsToScreen. A point outside the view's X/Y extents gets
+// the "no coordinate" global. Otherwise the point is shifted by the view
+// offset, run through the iso transform matrix at +0xDE4 as a float vector
+// (Z taken as 0), and the transformed X/Y are truncated back to ints; Z of
+// the result is 0.
+//
+// Phrasing (each piece load-bearing, 65.6% -> 100%): the shifted point is a
+// Point2D local in its own block, so its two int slots are written before
+// the first FILD and are then reused by the apply helper's result vector in
+// the next block (retail's 0x18-byte frame: r low, v high); the view offset
+// is read as one Point2D (`MOV EAX,[ECX+0xB0]; MOV EDX,[ECX+0xB4]` back to
+// back), which is also what puts the client X/Y in EDI/ESI and the limits in
+// EDX — member-wise reads of the offset give the caller-saved allocation. The
+// Y limit is written `DAT_00B0CE34 + DAT_00B0CE2C` so the +0x34 global is
+// loaded first. The helper's result is copied back into the input vector (the
+// 3-dword copy off the returned pointer) exactly as in
+// Tactical::ApplyMatrix_Pixel, and the result is stored to pDest as one
+// struct so all three stores follow the second conversion.
+CoordStruct* Tactical_006D2280::ClientToCoords(CoordStruct* pDest,
+                                                  const Point2D_006D2280* pClient)
+{
+    if (pClient->X < DAT_00B0CE30 && pClient->Y < DAT_00B0CE34 + DAT_00B0CE2C) {
+        Vector3D v;
+        {
+            Point2D_006D2280 pt;
+            Point2D_006D2280 off = this->Offset_B0;
+            pt.X = pClient->X + off.X;
+            pt.Y = pClient->Y + off.Y;
+            v.X = (float)pt.X;
+            v.Y = (float)pt.Y;
+            v.Z = 0.0f;
+        }
+        {
+            Vector3D r;
+            v = *Matrix3D::MatrixApply(&r, &this->IsoTransformMatrix, &v);
+        }
+
+        CoordStruct c;
+        c.X = (int)v.X;
+        c.Y = (int)v.Y;
+        c.Z = 0;
+        *pDest = c;
+        return pDest;
+    }
+
+    *pDest = DAT_00B0CE08;
+    return pDest;
+}
+
+// FUNCTION: GAMEMD 0x6D2360
+CoordStruct* Tactical::FUN_006D2360(CoordStruct* out,
+                                       const Point2D_006D2280* point)
+{
+    if (point->X < DAT_00B0CE30 && point->Y < DAT_00B0CE34) {
+        Vector3D vector;
+        vector.X = (float)point->X;
+        vector.Y = (float)point->Y;
+        vector.Z = 0.0f;
+        {
+            Vector3D transformed;
+            vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+        }
+        CoordStruct coordinate;
+        coordinate.X = (int)vector.X;
+        coordinate.Y = (int)vector.Y;
+        coordinate.Z = 0;
+        *out = coordinate;
+        return out;
+    }
+    *out = DAT_00B0CE08;
+    return out;
+}
+
+#include "core/game_state_flags.h"
+extern unsigned char DAT_00A8ED6B; // GLOBAL: GAMEMD 0xA8ED6B (decl; reloc)
+// GLOBAL: GAMEMD 0x8428EC -- per-speed scroll step table (float; 0.0015,
+// 0.003, 0.0075, 0.03, ...).
+extern float DAT_008428EC[];
+
+// Lepton (x, y) to the un-normalised iso pixel offset as a cell pair, read through
+// a pointer to a two-int local (the inlined CoordsToScreen shape: the address-taken
+// local spills Y into the temporary's second slot and reloads it).
+static inline Pair_006D9F80 IsoProjectPair(const int* p)
+{
+    Pair_006D9F80 r;
+    r.unknown_00 = p[0] * 60 / 2;
+    r.unknown_04 = p[0] * 30 / 2;
+    r.unknown_00 += p[1] * -60 / 2;
+    r.unknown_04 += p[1] * 30 / 2;
+    return r;
+}
+
+// Tactical::CoordsToScreen (0x6D1F10) inlined with AdjustForZ (0x6D20E0) inlined,
+// the point returned by value.
+static inline Pair_006D9F80 InlineCoordsToScreenPair(const CoordStruct* pCoord)
+{
+    int xy[2];
+    xy[0] = pCoord->X;
+    xy[1] = pCoord->Y;
+
+    Pair_006D9F80 r = IsoProjectPair(xy);
+    r.unknown_00 /= 256;
+    r.unknown_04 /= 256;
+    r.unknown_04 -= AdjustForZ(pCoord->Z);
+    return r;
+}
+
+// FUNCTION: GAMEMD 0x6D2420
+//
+// Start a smooth scroll of the tactical view towards a world coordinate.
+// The progress counter is reset and the per-frame step taken from the speed
+// table; the coordinate is projected to its iso screen point (CoordsToScreen
+// and AdjustForZ inlined), taken relative to the view offset and back again,
+// and recorded as the target of the move, while the current view position
+// is recorded as its start.
+//
+// Phrasing that matters: the target point is stored as one struct
+// assignment (X then Y); per-member stores come out Y first (97.8%).
+void Tactical::FUN_006D2420(const CoordStruct* pCoord, int speed)
+{
+    this->unknown_DC = 0;
+    this->unknown_D8 = DAT_008428EC[speed];
+
+    Pair_006D9F80 pt = InlineCoordsToScreenPair(pCoord);
+    pt.unknown_00 -= this->unknown_B0.unknown_00;
+    pt.unknown_04 -= this->unknown_B0.unknown_04;
+    pt.unknown_00 += this->unknown_B0.unknown_00;
+    pt.unknown_04 += this->unknown_B0.unknown_04;
+
+    this->unknown_D0 = pt;
+    this->unknown_C8.unknown_00 = this->unknown_D64.unknown_00;
+    this->unknown_C8.unknown_04 = this->unknown_D64.unknown_04;
+}
+
+// FUNCTION: GAMEMD 0x6D2540
+void Tactical::vf_23()
+{
+    bool moved = false;
+    if (DAT_00A8D5F8 & 2) return;
+    if (unknown_A8 != CurrentFrame) {
+        if (DAT_00A8ED5C &&
+            (unknown_D0.unknown_00 != DAT_00B0CE08.X ||
+             unknown_D0.unknown_04 != DAT_00B0CE08.Y) && unknown_D8 != 0.0f) {
+            unknown_DC += unknown_D8;
+            if (unknown_DC > 1.0) unknown_DC = 1.0f;
+            Pair_006D9F80 temporary;
+            Pair_006D9F80 next = *FUN_0075F5C0(&temporary, &unknown_C8,
+                                                   &unknown_D0, unknown_DC);
+            if (unknown_DC >= 1.0) {
+                unknown_D0 = Pair_006D9F80(0, 0);
+                unknown_C8 = Pair_006D9F80(0, 0);
+                unknown_D8 = 0.0f;
+                unknown_DC = 0.0f;
+            }
+            Pair_006D9F80 adjusted = next;
+            Pair_006D9F80 result;
+            if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B)
+                result = adjusted;
+            else
+                result = next;
+            unknown_D74 = unknown_D64 = result;
+            FUN_006D8B30();
+            unknown_D7D = true;
+            moved = true;
+        }
+        if (unknown_DA4.GetTimeLeft() == 0) {
+            unknown_DA4 = ScenarioElapsedTimer(Rules->WaypointAnimationSpeed);
+            ++unknown_DA0;
+        }
+    }
+    unknown_A8 = CurrentFrame;
+    if (!(unknown_D74 == unknown_D64) && !moved) {
+        Pair_006D9F80 adjusted = unknown_D74;
+        Pair_006D9F80 result;
+        if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B)
+            result = adjusted;
+        else
+            result = unknown_D74;
+        unknown_D74 = unknown_D64 = result;
+        FUN_006D8B30();
+        unknown_D7D = true;
+    }
+}
+
+extern DynamicVectorClass<DirtyAreaStruct> DAT_00B0CE78; // GLOBAL: GAMEMD 0xB0CE78 (decl; reloc)
+GG_STATIC_ASSERT(sizeof(RectangleStruct) == 16);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, X) == 0);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, Y) == 4);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, Width) == 8);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, Height) == 12);
+GG_STATIC_ASSERT(sizeof(DirtyAreaStruct) == 20);
+GG_STATIC_ASSERT(offsetof(DirtyAreaStruct, Rect) == 0);
+GG_STATIC_ASSERT(offsetof(DirtyAreaStruct, unknown_10) == 16);
+typedef DynamicVectorClass<DirtyAreaStruct> TacticalDirtyVector;
+GG_STATIC_ASSERT(sizeof(TacticalDirtyVector) == 24);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, Items) == 4);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, Capacity) == 8);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, IsAllocated) == 13);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, Count) == 16);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, CapacityIncrement) == 20);
+
+
+// FUNCTION: GAMEMD 0x6D2790
+void Tactical::FUN_006D2790(RectangleStruct requested, bool flag)
+{
+    int best = -1;
+    int bestArea = 0x7FFFFFFF;
+    for (int index = 0; index < DAT_00B0CE78.Count; ++index) {
+        RectangleStruct current = { DAT_00B0CE78.Items[index].Rect.X,
+            DAT_00B0CE78.Items[index].Rect.Y, DAT_00B0CE78.Items[index].Rect.Width,
+            DAT_00B0CE78.Items[index].Rect.Height };
+        RectangleStruct temporary;
+        RectangleStruct overlap = *FUN_00421B60(&temporary, &current, &requested, 0, 0);
+        int unitedX, unitedY, unitedWidth, unitedHeight;
+        if (current.Width <= 0 || current.Height <= 0) {
+            unitedX = requested.X; unitedY = requested.Y;
+            unitedWidth = requested.Width; unitedHeight = requested.Height;
+        } else if (requested.Width <= 0 || requested.Height <= 0) {
+            unitedX = current.X; unitedY = current.Y;
+            unitedWidth = current.Width; unitedHeight = current.Height;
+        } else {
+            unitedX = current.X; unitedY = current.Y;
+            unitedWidth = current.Width; unitedHeight = current.Height;
+            if (unitedX > requested.X) {
+                unitedWidth += unitedX - requested.X;
+                unitedX = requested.X;
+            }
+            if (unitedY > requested.Y) {
+                unitedHeight += unitedY - requested.Y;
+                unitedY = requested.Y;
+            }
+            if (unitedX + unitedWidth < requested.X + requested.Width)
+                unitedWidth = requested.Width - unitedX + 1 + requested.X;
+            if (unitedY + unitedHeight < requested.Y + requested.Height)
+                unitedHeight = requested.Y - unitedY + 1 + requested.Y;
+        }
+        if (overlap.Width > 0 && overlap.Height > 0) {
+            if (overlap.X == requested.X && overlap.Y == requested.Y &&
+                overlap.Width == requested.Width && overlap.Height == requested.Height) {
+                if (!flag || DAT_00B0CE78.Items[index].unknown_10)
+                    return;
+            } else if (overlap.X == current.X && overlap.Y == current.Y &&
+                       overlap.Width == current.Width && overlap.Height == current.Height) {
+                if (flag || !DAT_00B0CE78.Items[index].unknown_10) {
+                    DAT_00B0CE78.Delete(index);
+                    --index;
+                }
+            } else {
+                int area = unitedWidth * unitedHeight;
+                if (area < requested.Width * requested.Height + current.Height * current.Width &&
+                    area < bestArea) {
+                    best = index;
+                    bestArea = area;
+                }
+            }
+        }
+    }
+    if (best != -1) {
+        // Native leaves a previously recorded best index unchanged when an
+        // earlier vector element is deleted. Preserve that observed behavior.
+        bool combinedFlag = flag || DAT_00B0CE78.Items[best].unknown_10;
+        RectangleStruct temporary;
+        DirtyAreaStruct merged;
+        RectangleStruct selected = { DAT_00B0CE78.Items[best].Rect.X,
+            DAT_00B0CE78.Items[best].Rect.Y, DAT_00B0CE78.Items[best].Rect.Width,
+            DAT_00B0CE78.Items[best].Rect.Height };
+        RectangleStruct result = *FUN_00487F40(&temporary, &requested, &selected);
+        merged.Rect.X = result.X;
+        merged.Rect.Y = result.Y;
+        merged.Rect.Width = result.Width;
+        merged.Rect.Height = result.Height;
+        merged.unknown_10 = combinedFlag;
+        DAT_00B0CE78.Items[best] = merged;
+        return;
+    }
+    DirtyAreaStruct appended;
+    appended.Rect.X = requested.X;
+    appended.Rect.Y = requested.Y;
+    appended.Rect.Width = requested.Width;
+    appended.Rect.Height = requested.Height;
+    appended.unknown_10 = flag;
+    DAT_00B0CE78.AddItem(appended);
+}
+
+// FUNCTION: GAMEMD 0x6D2B50
+// Empty function that pops its stack arguments.
+void __stdcall FUN_006D2B50(int a1, int a2)
+{
+}
+
+// LIBRARY: GAMEMD 0x7CA489 -- null-terminated 16-bit string copy.
+extern "C" unsigned short* __cdecl FUN_007CA489(unsigned short* destination,
+                                              const unsigned short* source);
+
+#include "wwlib/surface/zbuffer_class_methods.h"
+extern void* DAT_00B73550; // GLOBAL: GAMEMD 0xB73550 (decl; reloc)
+
+// FUNCTION: GAMEMD 0x6D2B60
+void Tactical::FUN_006D2B60(bool fullScreen, int dx, int dy,
+                           const RectangleStruct* clip)
+{
+    if (!fullScreen) {
+        int count = DAT_00B0CE78.Count;
+        if (count != 0) {
+            for (int index = count - 1; index >= 0; --index) {
+                RectangleStruct moved;
+                moved.X = DAT_00B0CE78.Items[index].Rect.X;
+                moved.Y = DAT_00B0CE78.Items[index].Rect.Y;
+                moved.Width = DAT_00B0CE78.Items[index].Rect.Width;
+                moved.Height = DAT_00B0CE78.Items[index].Rect.Height;
+                moved.X += dx;
+                moved.Y += dy;
+
+                // Both Point2D values contain the same viewport-origin read.
+                // Native calls487F20 rather than substituting a constant zero.
+                Point2D viewportOrigin(Viewport_00886FA0.X, Viewport_00886FA0.Y);
+                Point2D windowOrigin = viewportOrigin;
+                int width = Viewport_00886FA0.Width;
+                int height = Viewport_00886FA0.Height;
+                Point2D relative = windowOrigin - viewportOrigin;
+                RectangleStruct builder;
+                RectangleStruct bounds = *builder.FromPointSize(&relative, width, height);
+                RectangleStruct temporary;
+                moved = *FUN_00421B60(&temporary, &bounds, &moved, 0, 0);
+
+                // Reload Items after callbacks. Write only first16bytes;
+                // existing dirty flag+10 and padding are left untouched here.
+                DAT_00B0CE78.Items[index].Rect.X = moved.X;
+                DAT_00B0CE78.Items[index].Rect.Y = moved.Y;
+                DAT_00B0CE78.Items[index].Rect.Width = moved.Width;
+                DAT_00B0CE78.Items[index].Rect.Height = moved.Height;
+                if (moved.Width <= 0 || moved.Height <= 0) {
+                    if (index < DAT_00B0CE78.Count) {
+                        --DAT_00B0CE78.Count;
+                        // Native REP5DWORD copies the complete20-byte record,
+                        // including flag/padding; emitted assignment needs QA.
+                        for (int next = index; next < DAT_00B0CE78.Count; ++next)
+                            DAT_00B0CE78.Items[next] = DAT_00B0CE78.Items[next + 1];
+                    }
+                } else {
+                    ZBuffer_00887644->FUN_007BCFB0(moved);
+                }
+            }
+        }
+    }
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (CellClass** cellEntry = unknown_E4; cellEntry < unknown_E4 + unknown_E0; ++cellEntry) {
+            CellClass* cell = *cellEntry;
+            CoordStruct temporary;
+            CoordStruct coordinate = *cell->GetCellCoords(&temporary);
+            coordinate.Z = 0;
+            Point2D projected = CoordsToScreen(&coordinate);
+            Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
+                             projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
+            if (DAT_00B73550 != 0) {
+                CellClass* currentCell = *cellEntry;
+                currentCell->FUN_00480180(&location, clip);
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D2DE0
+void Tactical::FUN_006D2DE0(const RectangleStruct* first,
+                           const RectangleStruct* second, bool fullScreen)
+{
+    if (fullScreen) {
+        FUN_006D7560(&Viewport_00886FA0, &Viewport_00886FA0);
+    } else {
+        if (first->Width > 0 && first->Height > 0)
+            FUN_006D7560(first, first);
+        if (second->Width > 0 && second->Height > 0)
+            FUN_006D7560(second, second);
+    }
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
+            int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+            int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+            CoordStruct coordinate;
+            coordinate.FUN_0041C230(x, y, 0);
+            CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+            RectangleStruct view;
+            view.X = projected.X - unknown_B0.unknown_00 - 30;
+            view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+            view.Width = 60;
+            view.Height = 30;
+            // Clipping is eligibility only: render receives original view,
+            // not the clipped rectangle. Reload the array entry after callback.
+            RectangleStruct temporary;
+            RectangleStruct clipped = *FUN_00421B60(&temporary, &Viewport_00886FA0,
+                                                       &view, 0, 0);
+            if (clipped.Width > 0 && clipped.Height > 0) {
+                CellStruct cellCoordinate =
+                    unknown_E4[index]->MapCoords;
+                FUN_006D7F20(&cellCoordinate, &view);
+            }
+        }
+    }
+    // Count is captured once; array base and viewport Y reload after every
+    // callback. No erasure, flag filter or clear occurs in these two functions.
+    int count = DAT_00B0CE78.Count;
+    if (count != 0 && !fullScreen) {
+        for (int index = count - 1; index >= 0; --index) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[index].Rect.X;
+            view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0)
+                FUN_006D7560(&view, &view);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D3040
+void Tactical::FUN_006D3040(const RectangleStruct* first,
+                           const RectangleStruct* second, bool fullScreen)
+{
+    if (fullScreen) {
+        FUN_006D7C00(&Viewport_00886FA0, &Viewport_00886FA0);
+    } else {
+        if (first->Width > 0 && first->Height > 0)
+            FUN_006D7C00(first, first);
+        if (second->Width > 0 && second->Height > 0)
+            FUN_006D7C00(second, second);
+    }
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
+            int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+            int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+            CoordStruct coordinate;
+            coordinate.FUN_0041C230(x, y, 0);
+            CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+            RectangleStruct view;
+            view.X = projected.X - unknown_B0.unknown_00 - 30;
+            view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+            view.Width = 60;
+            view.Height = 30;
+            // Native keeps projected rectangle separate from the clipped
+            // result, then passes the same clipped pointer in BOTH positions.
+            RectangleStruct temporary;
+            RectangleStruct clipped = *FUN_00421B60(&temporary, &Viewport_00886FA0,
+                                                       &view, 0, 0);
+            if (clipped.Width > 0 && clipped.Height > 0)
+                FUN_006D7C00(&clipped, &clipped);
+        }
+    }
+    // Count is captured once; array base and viewport Y reload after every
+    // callback. No erasure, flag filter or clear occurs in these two functions.
+    int count = DAT_00B0CE78.Count;
+    if (count != 0) {
+        for (int index = count - 1; index >= 0; --index) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[index].Rect.X;
+            view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0)
+                FUN_006D7C00(&view, &view);
+        }
+    }
+}
+
+#include "rectangle_dispatch.h"
+
+// FUNCTION: GAMEMD 0x6D3290
+void Tactical::FUN_006D3290(const RectangleStruct* first,
+                           const RectangleStruct* second, bool fullScreen)
+{
+    if (fullScreen) {
+        FUN_006D6D10(&Viewport_00886FA0);
+    } else {
+        if (first->Width > 0 && first->Height > 0)
+            FUN_006D6D10(first);
+        if (second->Width > 0 && second->Height > 0)
+            FUN_006D6D10(second);
+    }
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
+            int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+            int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+            CoordStruct coordinate = { x, y, 0 };
+            Point2D projected = CoordsToScreen(&coordinate);
+            RectangleStruct view;
+            view.X = projected.X - unknown_B0.unknown_00 - 30;
+            view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+            view.Width = 60;
+            view.Height = 30;
+            FUN_006D6D10(&view);
+        }
+    }
+    // Count is captured once; array base and viewport Y reload after every
+    // callback. No erasure, flag filter or clear occurs in these two functions.
+    int count = DAT_00B0CE78.Count;
+    if (count != 0) {
+        for (int index = count - 1; index >= 0; --index) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[index].Rect.X;
+            view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0)
+                FUN_006D6D10(&view);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D3470
+void Tactical::FUN_006D3470(const RectangleStruct* first,
+                           const RectangleStruct* second, bool fullScreen)
+{
+    if (fullScreen) {
+        FUN_004D1890(&Viewport_00886FA0);
+    } else {
+        if (first->Width > 0 && first->Height > 0)
+            FUN_004D1890(first);
+        if (second->Width > 0 && second->Height > 0)
+            FUN_004D1890(second);
+    }
+    if (!fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
+            int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+            int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+            CoordStruct coordinate;
+            coordinate.FUN_0041C230(x, y, 0);
+            CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+            RectangleStruct view;
+            view.X = projected.X - unknown_B0.unknown_00 - 30;
+            view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+            view.Width = 60;
+            view.Height = 30;
+            FUN_004D1890(&view);
+        }
+    }
+    // Count is captured once; array base and viewport Y reload after every
+    // callback. No erasure, flag filter or clear occurs in these two functions.
+    int count = DAT_00B0CE78.Count;
+    if (count != 0) {
+        for (int index = count - 1; index >= 0; --index) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[index].Rect.X;
+            view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0)
+                FUN_004D1890(&view);
+        }
+    }
+}
+
+#include "wwlib/surface/drawing.h"
+
+// FUNCTION: GAMEMD 0x6D3660
+void Tactical::FUN_006D3660(const RectangleStruct* first,
+                           const RectangleStruct* second,
+                           const RectangleStruct* clip, bool fullScreen)
+{
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            CellClass* cell = unknown_E4[index];
+            CoordStruct temporary;
+            CoordStruct coordinate = *cell->GetCellCoords(&temporary);
+            coordinate.Z = 0;
+            Point2D projected = CoordsToScreen(&coordinate);
+            Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
+                             projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
+            if (DAT_00B73550 != 0) {
+                // Native reloads array entry after480A30/projection callbacks.
+                CellClass* currentCell = unknown_E4[index];
+                currentCell->FUN_004801F0(&location, clip);
+            }
+            // ECX=&location,EDX=clip; call occurs whether or not B73550 is on.
+            FUN_00420F40(&location, clip);
+        }
+    }
+    if (fullScreen)
+        FUN_006D71E0(&Viewport_00886FA0);
+    // Native reads dimensions even in full mode, then tests fullScreen.
+    if (first->Width > 0 && first->Height > 0 && !fullScreen)
+        FUN_006D71E0(first);
+    if (second->Width > 0 && second->Height > 0 && !fullScreen)
+        FUN_006D71E0(second);
+
+    // Forward scan with live count, including full mode. Items base reloaded
+    // after intersection, and after render callbacks, rather than snapshotted.
+    for (int index = 0; index < DAT_00B0CE78.Count; ++index) {
+        RectangleStruct view;
+        view.X = DAT_00B0CE78.Items[index].Rect.X + Viewport_00886FA0.X;
+        view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+        view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+        view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+        RectangleStruct temporary;
+        RectangleStruct clipped = *FUN_00421B60(&temporary, &view, clip, 0, 0);
+        if (DAT_00B0CE78.Items[index].unknown_10 != 0) {
+            // No positive-size test: native invokes both calls even if the
+            // intersection is empty.411330 consumes a16-byte byvalue XYWH.
+            ABuffer_0087E8A4->FUN_00411330(clipped);
+            FUN_006D71E0(&clipped);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D3870
+void Tactical::FUN_006D3870(const RectangleStruct* first, const RectangleStruct* second,
+                          bool fullScreen)
+{
+    for (int index = 0; index < unknown_E0; ++index) {
+        CellClass* cell = unknown_E4[index];
+        int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+        int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+        CoordStruct coordinate;
+        coordinate.FUN_0041C230(x, y, 0);
+        CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+        RectangleStruct view;
+        view.X = projected.X - unknown_B0.unknown_00 - 30;
+        view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+        view.Width = 60;
+        view.Height = 30;
+        RectangleStruct clip = view;
+        FUN_006D9920(true, &view, &clip);
+    }
+    // Native captures count once, then reloads the array base after callbacks.
+    int dirtyCount = DAT_00B0CE78.Count;
+    if (dirtyCount != 0) {
+        for (int dirtyIndex = dirtyCount - 1; dirtyIndex >= 0; --dirtyIndex) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[dirtyIndex].Rect.X;
+            view.Y = DAT_00B0CE78.Items[dirtyIndex].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[dirtyIndex].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[dirtyIndex].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0) {
+                RectangleStruct clip = view;
+                FUN_006D9920(true, &view, &clip);
+            }
+        }
+    }
+    if (fullScreen) {
+        FUN_006D9920(true, &Viewport_00886FA0, &Viewport_00886FA0);
+        return;
+    }
+    if (first->Width > 0 && first->Height > 0)
+        FUN_006D9920(true, first, first);
+    if (second->Width > 0 && second->Height > 0)
+        FUN_006D9920(true, second, second);
+}
+
+// FUNCTION: GAMEMD 0x6D3AC0
+void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct* second,
+                          bool fullScreen)
+{
+    for (int index = 0; index < unknown_E0; ++index) {
+        CellClass* cell = unknown_E4[index];
+        int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+        int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+        CoordStruct coordinate;
+        coordinate.FUN_0041C230(x, y, 0);
+        CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+        RectangleStruct view;
+        view.X = projected.X - unknown_B0.unknown_00 - 30;
+        view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+        view.Width = 60;
+        view.Height = 30;
+        RectangleStruct clip = view;
+        FUN_006D97D0(true, &view, &clip);
+    }
+    // Native captures count once, then reloads the array base after callbacks.
+    int dirtyCount = DAT_00B0CE78.Count;
+    if (dirtyCount != 0) {
+        for (int dirtyIndex = dirtyCount - 1; dirtyIndex >= 0; --dirtyIndex) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[dirtyIndex].Rect.X;
+            view.Y = DAT_00B0CE78.Items[dirtyIndex].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[dirtyIndex].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[dirtyIndex].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0) {
+                RectangleStruct clip = view;
+                FUN_006D97D0(true, &view, &clip);
+            }
+        }
+    }
+    if (fullScreen) {
+        FUN_006D97D0(true, &Viewport_00886FA0, &Viewport_00886FA0);
+        return;
+    }
+    if (first->Width > 0 && first->Height > 0)
+        FUN_006D97D0(true, first, first);
+    if (second->Width > 0 && second->Height > 0)
+        FUN_006D97D0(true, second, second);
+}
+
+
+#include "airstrike_class_methods.h"
+#include "super_weapon_type_class_methods.h"
+#include "color_scheme_find_methods.h"
+#include "core/scenario_class_methods.h"
+#include "beacon_manager_class.h"
+#include <mmsystem.h>
+
+// GLOBAL: GAMEMD 0x887314
+extern Surface* DAT_00887314;
+#include "dsurface_class.h"
+#include "composite_surface.h"
+// GLOBAL: GAMEMD 0xB0E63C
+extern bool DAT_00B0E63C;
+// GLOBAL: GAMEMD 0xA8EC78
+extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
+// GLOBAL: GAMEMD 0xA83D50
+extern DynamicVectorClass<SuperClass*> DAT_00A83D50;
+// GLOBAL: GAMEMD 0x89C3B0
+extern BeaconManagerClass BeaconManagerInstance;
+// GLOBAL: GAMEMD 0xA8B230
+extern ScenarioClass* ScenarioInstance;
+// GLOBAL: GAMEMD 0xA83D4C
+extern HouseClass* CurrentPlayer;
+// GLOBAL: GAMEMD 0xA8022C
+extern HouseClass** HouseClass_ArrayItems;
+// GLOBAL: GAMEMD 0xA80238
+extern int HouseClass_ArrayCount;
+// GLOBAL: GAMEMD 0x843108
+extern bool DAT_00843108;
+// GLOBAL: GAMEMD 0x842900
+extern int DAT_00842900;
+// GLOBAL: GAMEMD 0x7ECE60
+extern const double DAT_007ECE60;
+// GLOBAL: GAMEMD 0x7F43B0
+extern const double DAT_007F43B0;
+// Declaration: STRING GAMEMD 0x842A50
+extern const char STR_00842A50[];
+// Declaration: STRING GAMEMD 0x842A64
+extern const char STR_00842A64[];
+// Declaration: GAMEMD 0x006D4B50 (decl; reloc)
+void FUN_006D4B50(int row, ColorScheme* color, int seconds, const wchar_t* label, unsigned int* blinkClock, unsigned char* blinkState);
+// Declaration: GAMEMD 0x00705860 (decl; reloc)
+void __stdcall FUN_00705860(CoordStruct start, CoordStruct end);
+// Declaration: GAMEMD 0x004CACB0 (decl; reloc)
+extern "C" double __cdecl FUN_004CACB0(double value);
+// Declaration: GAMEMD 0x004CAD00 (decl; reloc)
+extern "C" double __cdecl FUN_004CAD00(double value);
+// Declaration: GAMEMD 0x00734E60 (decl; reloc)
+const wchar_t* FUN_00734E60(const char*, int*, const char*, int);
+// Declaration: GAMEMD 0x0053D850 (decl; reloc)
+void FUN_0053D850();
+// Declaration: GAMEMD 0x005FFFA0 (decl; reloc)
+void FUN_005FFFA0();
+// Declaration: GAMEMD 0x00550240 (decl; reloc)
+void FUN_00550240();
+// Declaration: GAMEMD 0x004C2830 (decl; reloc)
+void FUN_004C2830();
+// Declaration: GAMEMD 0x00556D40 (decl; reloc)
+void FUN_00556D40();
+// Declaration: GAMEMD 0x006591B0 (decl; reloc)
+void FUN_006591B0();
+// Declaration: GAMEMD 0x00637AA0 (decl; reloc)
+char FUN_00637AA0();
+// Declaration: GAMEMD 0x0063B0A0 (decl; reloc)
+void FUN_0063B0A0();
+// Declaration: GAMEMD 0x0063B150 (decl; reloc)
+void FUN_0063B150();
+// Declaration: GAMEMD 0x0063B2F0 (decl; reloc)
+void FUN_0063B2F0();
+
+GG_STATIC_ASSERT(offsetof(TechnoClass, CaptureManager) == 0x2BC);
+GG_STATIC_ASSERT(offsetof(TechnoClass, Airstrike) == 0x294);
+GG_STATIC_ASSERT(offsetof(HouseClass, PowerBlackoutTimer) == 0x2A4);
+GG_STATIC_ASSERT(offsetof(ObjectClass, IsSelected) == 0x83);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<TechnoClass*>) == 0x18);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<TechnoClass*>, Items) == 4);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<TechnoClass*>, Count) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SuperClass*>) == 0x18);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<SuperClass*>, Items) == 4);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<SuperClass*>, Count) == 0x10);
+
+// FUNCTION: GAMEMD 0x6D3D10
+void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
+{
+    unknown_DB0 = 0;
+    // Native reserves/stores a complete16-byte rectangle argument, RET16.
+    bool buildingChanged = FUN_006D9B50(Viewport_00886FA0);
+    int dx = unknown_B8.unknown_00 - unknown_B0.unknown_00;
+    int dy = unknown_B8.unknown_04 - unknown_B0.unknown_04;
+    if (mode == 0) {
+        int absX = dx < 0 ? -dx : dx;
+        int absY = dy < 0 ? -dy : dy;
+        if (absX >= Viewport_00886FA0.Width || absY >= Viewport_00886FA0.Height) {
+            full = true;
+            DAT_00B0E63C = true;
+        } else {
+            DAT_00B0E63C = false;
+        }
+    } else if (DAT_00B0E63C) {
+        full = true;
+    }
+    if (full) { dx = 0; dy = 0; }
+
+    // These nested tests retain both distinct native early exits. D7C is
+    // not an unconditional redraw request when buildingChanged is false.
+    bool update = true;
+    if (!full && !buildingChanged) {
+        if (!unknown_D7C && DAT_00B0CE78.Count == 0 && !unknown_D7D &&
+            unknown_D64 == unknown_D6C) {
+            update = false;
+        } else if (!unknown_D7D && DAT_00B0CE78.Count == 0 && unknown_B0 == unknown_B8) {
+            update = false;
+        }
+    }
+    if (mode != 2 && update) {
+        int absX = dx < 0 ? -dx : dx;
+        int absY = dy < 0 ? -dy : dy;
+        RectangleStruct source = { DAT_00B0CE28.A + (dx < 0 ? -dx : 0),
+                                   DAT_00B0CE2C + (dy < 0 ? -dy : 0),
+                                   DAT_00B0CE30 - absX, DAT_00B0CE34 - absY };
+        RectangleStruct destination = { DAT_00B0CE28.A + (dx > 0 ? dx : 0),
+                                        DAT_00B0CE2C + (dy > 0 ? dy : 0),
+                                        source.Width, source.Height };
+        if (dx == 0 && dy == 0) {
+            if (full && (mode == 0 || mode == 3)) {
+                ZBuffer_00887644->Fill(0xFFFF);
+                ABuffer_0087E8A4->Fill(0x7F);
+            }
+        } else {
+            if (mode == 0 || mode == 3)
+                DAT_0088731C->CopyFromPart(&destination, DAT_008872FC, &source, false, true);
+            if (mode == 0 || mode == 3)
+                ZBuffer_00887644->FUN_007BCB50(-dx, -dy, 0xFFFF); // dependency: existing buffer owner
+            if (mode == 0 || mode == 3)
+                ABuffer_0087E8A4->FUN_00410ED0(-dx, -dy, 0x7F); // dependency: existing buffer owner
+            if (mode == 0 || mode == 3) {
+                DSurface* previous = DAT_0088731C;
+                DAT_0088731C = DAT_008872FC;
+                DAT_008872FC = previous;
+                surface = DAT_0088731C;
+                DAT_00887314 = surface;
+            }
+        }
+        // Native mode0 returns here, before synchronizing B8/D6C below.
+        if (mode == 0) return;
+        if (!DAT_00A8ED6B) {
+            RectangleStruct expanded = { Viewport_00886FA0.X - 64, Viewport_00886FA0.Y - 64,
+                                         Viewport_00886FA0.Width + 128, Viewport_00886FA0.Height + 128 };
+            FUN_006D9A50(expanded); // same16-byte by-value rectangle proposal
+        }
+        Surface* previous = DAT_00887314;
+        DAT_00887314 = DAT_008872FC;
+        DAT_008872FC->Lock(Point2D(0, 0));
+        if (mode == 1 || mode == 3) {
+            bool right = unknown_B0.unknown_00 < unknown_B8.unknown_00;
+            bool left = unknown_B8.unknown_00 < unknown_B0.unknown_00;
+            bool down = unknown_B0.unknown_04 < unknown_B8.unknown_04;
+            bool up = unknown_B8.unknown_04 < unknown_B0.unknown_04;
+            RectangleStruct stripLeft = { Viewport_00886FA0.X, Viewport_00886FA0.Y, absX, Viewport_00886FA0.Height };
+            RectangleStruct stripRight = { Viewport_00886FA0.X - absX + Viewport_00886FA0.Width,
+                                           Viewport_00886FA0.Y, absX, Viewport_00886FA0.Height };
+            RectangleStruct clippedLeft, clippedRight;
+            FUN_00421B60(&clippedLeft, &stripLeft, &Viewport_00886FA0, 0, 0);
+            FUN_00421B60(&clippedRight, &stripRight, &Viewport_00886FA0, 0, 0);
+            int horizontalX = Viewport_00886FA0.X + (right ? absX : 0);
+            int horizontalWidth = Viewport_00886FA0.Width - ((right || left) ? absX : 0);
+            RectangleStruct stripTop = { horizontalX, Viewport_00886FA0.Y, horizontalWidth, absY };
+            RectangleStruct stripBottom = { horizontalX, Viewport_00886FA0.Y - absY + Viewport_00886FA0.Height,
+                                            horizontalWidth, absY };
+            RectangleStruct clippedTop, clippedBottom;
+            FUN_00421B60(&clippedTop, &stripTop, &Viewport_00886FA0, 0, 0);
+            FUN_00421B60(&clippedBottom, &stripBottom, &Viewport_00886FA0, 0, 0);
+            RectangleStruct overlap = { Viewport_00886FA0.X + (right ? absX : 0),
+                                        Viewport_00886FA0.Y + (down ? absY : 0),
+                                        Viewport_00886FA0.Width - absX, Viewport_00886FA0.Height - absY };
+            RectangleStruct horizontal = { 0, 0, 0, 0 };
+            RectangleStruct vertical = { 0, 0, 0, 0 };
+            if (right) horizontal = clippedLeft;
+            else if (left) horizontal = clippedRight;
+            if (down) vertical = clippedTop;
+            else if (up) vertical = clippedBottom;
+            // Native dispatch order6D4471..6D44F7.
+            FUN_006D2B60(full, dx, dy, &overlap);
+            FUN_006D3660(&horizontal, &vertical, &overlap, full);
+            FUN_006D2DE0(&horizontal, &vertical, full);
+            FUN_006D3470(&horizontal, &vertical, full);
+            FUN_006D3290(&horizontal, &vertical, full);
+            FUN_006D3AC0(&horizontal, &vertical, full);
+            FUN_006D3040(&horizontal, &vertical, full);
+            FUN_006D3870(&horizontal, &vertical, full);
+            // Native reverse removal decrementsCount and shifts remaining
+            //20-byte entries; do not replace this with an assumed Clear().
+            for (int index = DAT_00B0CE78.Count - 1; index >= 0; --index) {
+                if (index < DAT_00B0CE78.Count) {
+                    --DAT_00B0CE78.Count;
+                    for (int next = index; next < DAT_00B0CE78.Count; ++next)
+                        DAT_00B0CE78.Items[next] = DAT_00B0CE78.Items[next + 1];
+                }
+            }
+            DAT_00887314->Unlock();
+            DAT_00887314 = previous;
+            unknown_E0 = 0;
+        }
+        // Modes other than1/3 deliberately do not unlock/restore in native.
+    }
+
+    unknown_D6C = unknown_D64;
+    unknown_B8 = unknown_B0;
+    if (mode == 1 || mode == 3) {
+        DAT_00887314->CopyFromPart(&Viewport_00886FA0, DAT_008872FC, &Viewport_00886FA0, false, true);
+        if (mode == 1) return;
+    }
+    if (mode != 2 && mode != 3) return;
+    // 6D45F2..461A reloads XYWH after the virtual blit callback.
+    FUN_006D9CE0(Viewport_00886FA0.X, Viewport_00886FA0.Y, Viewport_00886FA0.Width, Viewport_00886FA0.Height);
+    surface->Lock(Point2D(0, 0));
+    Surface* previous = DAT_00887314;
+    DAT_00887314 = surface;
+    FUN_006DAD60(false);
+    FUN_006DA9D0(false);
+    FUN_006D5030(false);
+    FUN_0053D850();
+    FUN_006D8DB0(true);
+    FUN_005FFFA0();
+    FUN_00550240();
+    FUN_004C2830();
+    FUN_00556D40();
+    FUN_006591B0();
+    FUN_006DBE20();
+    // Native reserves XYWH16, then pushes Surface*: first parameter is Surface*.
+    BeaconManagerInstance.Draw(DAT_00887314, Viewport_00886FA0);
+    FUN_006DA180();
+    FUN_006DAD60(true);
+    FUN_006DA9D0(true);
+    FUN_006D5030(true);
+    bool special = FUN_00637AA0() != 0;
+    if (special) { FUN_0063B0A0(); FUN_0063B150(); }
+    const int count = DAT_00A8EC78.Count;
+    for (int index = 0; index < count; ++index) {
+        TechnoClass* techno = DAT_00A8EC78.Items[index];
+        if (techno->Owner->IsControlledByCurrentPlayer()) {
+            if (special) continue;
+            if (techno->IsSelected && DAT_00843108) techno->vf_270(0, 0);
+        } else {
+            // Address placeholders retain the observed ECX/AL and ECX/RET ABI;
+            // original source-level method names remain unrecovered.
+            if (techno->FUN_0043B150() && techno && techno->Flags.IsFoot && !techno->InLimbo)
+                techno->FUN_004DC340();
+            if (special) continue;
+        }
+        if (techno->Health != 0) {
+            CaptureManagerClass* manager = static_cast<CaptureManagerClass*>(techno->CaptureManager);
+            if (manager && manager->NeedsToDrawLinks())
+                static_cast<CaptureManagerClass*>(techno->CaptureManager)->DrawLinks();
+            if (techno->Health != 0 && techno->MindControlledBy) {
+                TechnoClass* controller = static_cast<TechnoClass*>(techno->MindControlledBy);
+                CaptureManagerClass* controllerManager = static_cast<CaptureManagerClass*>(controller->CaptureManager);
+                if (controllerManager && controllerManager->NeedsToDrawLinks())
+                    static_cast<CaptureManagerClass*>(static_cast<TechnoClass*>(techno->MindControlledBy)->CaptureManager)->DrawLinks();
+            }
+        }
+        AirstrikeClass* airstrike = static_cast<AirstrikeClass*>(techno->Airstrike);
+        if (airstrike && airstrike->unknown_4C == techno) {
+            // Native preserves Target across vf11 and timeGetTime callbacks.
+            ObjectClass* targetObject = airstrike->Target;
+            if (targetObject && targetObject->vf_11() == 6) {
+            unsigned int phaseBits = timeGetTime() >> (DAT_00842900 & 31);
+            CoordStruct target = targetObject->vf_18();
+            double phase = (double)phaseBits;
+            CoordStruct endpoint;
+            endpoint.Z = (int)(FUN_004CACB0(phase) * DAT_007ECE60 + target.Z);
+            endpoint.X = (int)(FUN_004CAD00(phase * DAT_007F43B0) * DAT_007ECE60 + target.X);
+            endpoint.Y = target.Y;
+            // Slot44 takes four DWORD arguments plus a hidden result.
+            // The endpoint is already built when its virtual callback runs.
+            CoordStruct origin = { 0, 0, 0 };
+            FUN_00705860(techno->vf_44(0, origin), endpoint);
+            }
+        }
+    }
+    if (special) FUN_0063B2F0();
+    // 6D491F..492B passes the live GLOBAL address twice after overlay calls.
+    FUN_006D7840(&Viewport_00886FA0, &Viewport_00886FA0);
+    DAT_00887314 = previous;
+    surface->Unlock();
+
+    int row = 0;
+    if (ScenarioInstance->Timer_11E8.IsOn()) {
+        FUN_006D4B50(row, ColorSchemeArray.Items[CurrentPlayer->ColorSchemeIndex],
+                     ScenarioInstance->Timer_11E8.GetTimeLeft() / 15,
+                     ScenarioInstance->unknown_11F4, 0, 0);
+        ++row;
+    }
+    const int superCount = DAT_00A83D50.Count;
+    for (int superIndex = 0; superIndex < superCount; ++superIndex) {
+        SuperClass* super = DAT_00A83D50.Items[superIndex];
+        if (super->IsSuspended && Session_00A8B238.GameMode == 0 &&
+            super->RechargeTimer.GetTimeLeft() == super->GetRechargeTime())
+            continue;
+        // Native6D4A08 reloads Items after GetRechargeTime can alter globals.
+        super = DAT_00A83D50.Items[superIndex];
+        // Keep the native timer reread after GetRechargeTime's call.
+        FUN_006D4B50(row,
+                     ColorSchemeArray.Items[static_cast<HouseClass*>(super->Owner)->ColorSchemeIndex],
+                     super->RechargeTimer.GetTimeLeft() / 15,
+                     static_cast<SuperWeaponTypeClass*>(super->Type)->UIName,
+                     &super->BlinkTimer_Low, &super->BlinkState);
+        ++row;
+    }
+    const int houseCount = HouseClass_ArrayCount;
+    for (int houseIndex = 0; houseIndex < houseCount; ++houseIndex) {
+        HouseClass* house = HouseClass_ArrayItems[houseIndex];
+        int remaining = house->PowerBlackoutTimer.GetTimeLeft();
+        if (remaining > 0) {
+            // ECXstringID, EDX0, stackfile+line; label bytes not invented.
+            // 6D4AE1 captures the color ENTRY address before localization;
+            // 6D4B06 loads its value after the callback.
+            ColorScheme** colorEntry = &ColorSchemeArray.Items[house->ColorSchemeIndex];
+            const wchar_t* label = FUN_00734E60(STR_00842A50, 0, STR_00842A64, 0x1C4);
+            FUN_006D4B50(row, *colorEntry, remaining / 15, label, 0, 0);
+            ++row;
+        }
+    }
+    FUN_006D4E20(unknown_24);
+    unknown_D7C = 0;
+    unknown_D7D = false;
+}
+
+#include "bit_font.h"
+#include "core/spin_wait_methods.h"
+#include "audio_time_methods.h"
+// Declaration: GAMEMD 0x4A60D0; flags in ECX are unused by this retail getter.
+BitFont* FUN_004A60D0(int flags);
+// Declaration: GAMEMD 0x4A61C0; caller-cleaned hidden result then fixed args.
+Point2D __cdecl FUN_004A61C0(const unsigned short* text, Surface* surface,
+    RectangleStruct* clip, Point2D* position, ColorScheme* scheme,
+    int background, int flags, ...);
+// Declaration: LIBRARY GAMEMD 0x7CA564, CRT source out of scope
+extern "C" int __cdecl FUN_007CA564(unsigned short*, const unsigned short*, ...);
+// Declaration: STRING GAMEMD 0x842A80
+extern const unsigned short STR_00842A80[];
+// Declaration: STRING GAMEMD 0x842A94
+extern const unsigned short STR_00842A94[];
+// Declaration: STRING GAMEMD 0x842AB0
+extern const unsigned short STR_00842AB0[];
+// Declaration: STRING GAMEMD 0x842ACC
+extern const unsigned short STR_00842ACC[];
+// Declaration: STRING GAMEMD 0x842AD8
+extern const unsigned short STR_00842AD8[];
+
+// FUNCTION: GAMEMD 0x6D4B50
+void __fastcall FUN_006D4B50(int row, ColorScheme* scheme, int seconds,
+                            const unsigned short* label,
+                            unsigned int* blinkClock,
+                            unsigned char* blinkState)
+{
+    BitFont* font = FUN_004A60D0(0x4618);
+    int hours = (seconds / 60) / 60;
+    int minutes = (seconds / 60) % 60;
+    int remainder = seconds % 60;
+    unsigned short combined[256];
+    unsigned short labelText[256];
+    unsigned short timeText[256];
+    // All three formatting calls exist in each native branch, including the
+    // combined string that this function does not subsequently draw.
+    if (hours != 0) {
+        FUN_007CA564(combined, STR_00842AD8, label, hours, minutes, remainder);
+        FUN_007CA564(labelText, STR_00842ACC, label);
+        FUN_007CA564(timeText, STR_00842AB0, hours, minutes, remainder);
+    } else {
+        FUN_007CA564(combined, STR_00842A94, label, minutes, remainder);
+        FUN_007CA564(labelText, STR_00842ACC, label);
+        FUN_007CA564(timeText, STR_00842A80, minutes, remainder);
+    }
+    int timeWidth = 0;
+    font->FUN_00433CF0(timeText, &timeWidth, 0, Viewport_00886FA0.Width);
+    ColorScheme* timeScheme = scheme;
+    if (seconds == 0 && blinkClock != 0 && blinkState != 0) {
+        // Native compares high then low DWORD unsigned, and samples again
+        // when writing a deadline; do not reuse the first clock sample.
+        unsigned __int64 now = Unsorted_AudioGetTime();
+        unsigned __int64 deadline = ((unsigned __int64)blinkClock[1] << 32) | blinkClock[0];
+        if (deadline <= now) {
+            deadline = (unsigned __int64)Unsorted_AudioGetTime() + 1000;
+            blinkClock[0] = (unsigned int)deadline;
+            blinkClock[1] = (unsigned int)(deadline >> 32);
+            *blinkState = (*blinkState == 0);
+        }
+        if (*blinkState != 0)
+            timeScheme = ColorSchemeArray.Items[5];
+    }
+    int rowNumber = row + 1;
+    Point2D labelPosition(Viewport_00886FA0.Width - timeWidth - 3,
+                          Viewport_00886FA0.Height - (font->unknown_1C + 2) * rowNumber);
+    // +78 is canonical GetRect(): only its hidden result is popped by the
+    // virtual call. Remaining stack arguments belong to the cdecl print.
+    RectangleStruct labelClip = DAT_0088731C->GetRect();
+    FUN_004A61C0(labelText, DAT_0088731C, &labelClip,
+                  &labelPosition, scheme, 0, 0x4618);
+
+    // Native rereads font line advance, viewport dimensions and surface
+    // after the first GetRect/print callbacks. Do not retain their values.
+    Point2D timePosition(Viewport_00886FA0.Width - 3,
+                         Viewport_00886FA0.Height - (font->unknown_1C + 2) * rowNumber);
+    RectangleStruct timeClip = DAT_0088731C->GetRect();
+    FUN_004A61C0(timeText, DAT_0088731C, &timeClip,
+                  &timePosition, timeScheme, 0, 0x4618);
+}
+
+// FUNCTION: GAMEMD 0x6D4DB0
+void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)
+{
+    if (text == 0) {
+        FUN_006D4E00();
+    } else {
+        FUN_007CA489(unknown_24, text);
+    }
+    unknown_A4 = mode;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6D4E00
+// Stores several members.
+void Tactical::FUN_006D4E00()
+{
+    unknown_A4 = -1;
+    unknown_24[0] = 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+
+
+#include "shape_header.h"
+#include "pixel_shift_view.h"
+// GLOBAL: GAMEMD 0xA8F794 (declaration)
+extern ShapeHeader* DAT_00A8F794;
+// GLOBAL: GAMEMD 0xA8F798 (declaration)
+extern ColorConvert* DAT_00A8F798;
+// GLOBAL: GAMEMD 0x89C4D0 (declaration)
+extern BitFont* DAT_0089C4D0;
+// Declaration: LIBRARY GAMEMD 0x7CA405, CRT wcslen
+unsigned int __cdecl FUN_007CA405(const unsigned short* text);
+// Declaration: GAMEMD 0x434B90, seven stack words, RET28
+int __stdcall FUN_00434B90(BitFont* font, Surface* surface, const unsigned short* text,
+    int x, int y, int a, int b);
+// Declaration: GAMEMD 0x4AED70, ECXsurface/EDXconvert, RET56
+void FUN_004AED70(Surface* surface, ColorConvert* convert, ShapeHeader* shape,
+    int frame, Point2D* position, RectangleStruct* clip, int flags,
+    int a8, int a9, int a10, int a11, int a12, int a13, int a14, Point2D offset);
+
+// FUNCTION: GAMEMD 0x6D4E20
+void Tactical::FUN_006D4E20(const unsigned short* text)
+{
+    if (DAT_00A8ED6B) return;
+    if ((!text || !FUN_007CA405(text)) && unknown_A4 == -1) return;
+    if (!DAT_0088731C->unknown_84()) return;
+
+    int frame = unknown_A4;
+    if (frame != -1 && DAT_00A8F798 && DAT_00A8F794 &&
+        DAT_00A8F794->Frames > frame) {
+        Point2D centered((Viewport_00886FA0.Width - DAT_00A8F794->Width) / 2,
+                         (Viewport_00886FA0.Height - DAT_00A8F794->Height) / 2);
+        Point2D offset(0, 0);
+        FUN_004AED70(DAT_0088731C, DAT_00A8F798, DAT_00A8F794,
+                      frame, &centered, &Viewport_00886FA0,
+                      0, 0, 0, 0, 1000, 0, 0, 0, offset);
+        return;
+    }
+    if (!text || FUN_007CA405(text) <= 0) return;
+
+    BitFont* font = DAT_0089C4D0;
+    RectangleStruct viewport = Viewport_00886FA0;
+    int textWidth;
+    int textHeight;
+    const BTranslucentPixelFormat& pixel = gg_b_translucent_pixel_format;
+    unsigned int white = ((255 >> pixel.loss2) << pixel.pos2) |
+                         ((255 >> pixel.loss1) << pixel.pos1) |
+                         ((255 >> pixel.loss0) << pixel.pos0);
+    font->FUN_00433CF0(text, &textWidth, &textHeight, viewport.Width);
+    int x = viewport.X + (viewport.Width - textWidth) / 2;
+    int y = viewport.Y + (viewport.Height - textHeight) / 2;
+    BitFontBounds bounds = {viewport.X, viewport.Y, viewport.X + viewport.Width, viewport.Y + viewport.Height};
+    font->FUN_00433C90(1);
+    font->FUN_00433CA0(&bounds);
+    font->FUN_00433C70((unsigned short)white);
+    FUN_00434B90(font, DAT_0088731C, text, x, y, 0, 0);
+}
+
+
+// GLOBAL: GAMEMD 0x87F6C4 (declaration)
+extern ColorConvert* DAT_0087F6C4;
+// GLOBAL: GAMEMD 0x8A03FC (declaration)
+extern ShapeHeader* DisplayPlaceShape_008A03FC;
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, GuardRange) == 0x5B8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16BE - 0x16A4) == 0x16BE);
+
+#include "overlay_type_class.h"
+#include "mouse_ww_mouse_class.h"
+// GLOBAL: GAMEMD 0x88097C (declaration)
+extern ObjectTypeClass* DAT_0088097C;
+// GLOBAL: GAMEMD 0x880964 (declaration)
+extern CellStruct* DAT_00880964;
+// GLOBAL: GAMEMD 0x880974 (declaration)
+extern CellStruct* DAT_00880974;
+// GLOBAL: GAMEMD 0x88095C (declaration)
+extern CellStruct DAT_0088095C;
+// GLOBAL: GAMEMD 0x880960 (declaration)
+extern CellStruct DAT_00880960;
+// Distinct native component addresses; no enclosing pair identity inferred.
+// GLOBAL: GAMEMD 0x88096A (declaration)
+extern short DAT_0088096A;
+// GLOBAL: GAMEMD 0x88096C (declaration)
+extern short DAT_0088096C;
+// GLOBAL: GAMEMD 0x88096E (declaration)
+extern short DAT_0088096E;
+// GLOBAL: GAMEMD 0x880970 (declaration)
+extern short DAT_00880970;
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16B7 - 0x16A4) == 0x16B7);
+GG_STATIC_ASSERT(offsetof(OverlayTypeClass, Wall) == 0x2A8);
+
+// FUNCTION: GAMEMD 0x6D5030
+void Tactical::FUN_006D5030(bool argument)
+{
+    CellStruct begin;
+    begin.X = 0;
+    begin.Y = 0;
+    if (PlacementType_00880990) {
+        Point2D temporary;
+        Point2D mouse = *WWMouseClassInstance->vf_13(&temporary);
+        if (mouse.X < Viewport_00886FA0.X ||
+            mouse.X >= Viewport_00886FA0.X + Viewport_00886FA0.Width ||
+            mouse.Y < Viewport_00886FA0.Y ||
+            mouse.Y >= Viewport_00886FA0.Y + Viewport_00886FA0.Height)
+            return;
+        CellStruct end;
+        int kind = PlacementType_00880990->vf_11();
+        if (kind == 7 && static_cast<BuildingTypeClass*>(PlacementType_00880990)->bools_16A4[0x16B7 - 0x16A4]) {
+            end.X = 3;
+            end.Y = 3;
+            begin.X = -1;
+            begin.Y = -1;
+        } else {
+            end = MapInstance.FUN_004A94F0(DAT_00880964);
+        }
+        bool all = true;
+        for (int x = begin.X; x < end.X; ++x) {
+            for (int y = begin.Y; y < end.Y; ++y) {
+                CellStruct offset;
+                offset.X = x;
+                offset.Y = y;
+                CellStruct coordinate = offset + DAT_0088095C + DAT_00880960;
+                CoordStruct center;
+                center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
+                                    (coordinate.Y * 256 + 128) / 256 * 256, 0);
+                CoordStruct copiedCenter = center;
+                Point2D position = CoordsToScreen(&copiedCenter);
+                position.X -= unknown_B0.unknown_00;
+                position.Y -= unknown_B0.unknown_04;
+                position.X -= 30;
+                if (MapInstance.FUN_00568300(&coordinate)) {
+                    // Always call even after all becomes false; skipped illegal
+                    // cells do not change this sticky accumulated result.
+                    bool result = MapInstance.FUN_005657A0(&coordinate)->FUN_0047EC90(
+                        &position, &Viewport_00886FA0, argument);
+                    all = result && all;
+                }
+            }
+        }
+        kind = PlacementType_00880990->vf_11();
+        if (DAT_00A8ED6B && PlacementObject_0088098C) {
+            CellStruct coordinate = begin + DAT_0088095C + DAT_00880960;
+            CoordStruct center;
+            center.X = coordinate.X * 256 + 128;
+            center.Y = coordinate.Y * 256 + 128;
+            center.Z = 0;
+            if (kind == 7) {
+                CoordStruct aligned;
+                aligned.FUN_0041C230(center.X / 256 * 256,
+                                     center.Y / 256 * 256, 0);
+                center = aligned;
+            }
+            center.Z = MapInstance.FUN_00578080(&center);
+            PlacementObject_0088098C->vf_109(center);
+            Point2D position = CoordsToScreen(&center);
+            position.X -= unknown_B0.unknown_00;
+            position.Y -= unknown_B0.unknown_04;
+            if (kind != 18)
+                PlacementObject_0088098C->vf_70(&position, &Viewport_00886FA0);
+        }
+        if (all && PlacementObject_0088098C && PlacementObject_0088098C->vf_11() == 6) {
+            BuildingClass* building = static_cast<BuildingClass*>(PlacementObject_0088098C);
+            BuildingTypeClass* type = building->Type;
+            if (type->bools_16A4[0x16BE - 0x16A4]) {
+                Cell origin(begin.X, begin.Y);
+                CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
+                FUN_006D5730(argument, coordinate);
+            } else if (type->bools_16A4[0x16C0 - 0x16A4]) {
+                Cell origin(begin.X, begin.Y);
+                CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
+                FUN_006D59D0(argument, coordinate);
+            } else if (type->ToOverlay && type->ToOverlay->Wall) {
+                Cell origin(begin.X, begin.Y);
+                CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
+                FUN_006D5C50(argument, coordinate);
+            }
+        }
+    }
+    if (!DAT_00A8ED6B && DAT_0088097C) {
+        CellStruct end;
+        int kind = DAT_0088097C->vf_11();
+        if (kind == 7 && static_cast<BuildingTypeClass*>(DAT_0088097C)->bools_16A4[0x16B7 - 0x16A4]) {
+            end.X = 3;
+            end.Y = 3;
+            begin.X = -1;
+            begin.Y = -1;
+        } else {
+            end = MapInstance.FUN_004A94F0(DAT_00880974);
+        }
+        for (int x = begin.X; x < end.X; ++x) {
+            for (int y = begin.Y; y < end.Y; ++y) {
+                CellStruct coordinate;
+                // Native second-pass coordinates differ from the first pair's
+                // global component addresses; retain their exact bindings.
+                coordinate.X = x + DAT_0088096A;
+                coordinate.X += DAT_0088096E;
+                coordinate.Y = y + DAT_0088096C;
+                coordinate.Y += DAT_00880970;
+                int worldX = (coordinate.X * 256 + 128) / 256 * 256;
+                int worldY = (coordinate.Y * 256 + 128) / 256 * 256;
+                int rawX = worldX * 60 / 2 + worldY * -60 / 2;
+                int rawY = worldX * 30 / 2 + worldY * 30 / 2;
+                Point2D position(rawX / 256 - unknown_B0.unknown_00 - 30,
+                                 rawY / 256 - unknown_B0.unknown_04);
+                if (MapInstance.FUN_00568300(&coordinate))
+                    MapInstance.FUN_005657A0(&coordinate)->FUN_0047EC90(
+                        &position, &Viewport_00886FA0, argument);
+            }
+        }
+    }
+}
+
+
+// FUNCTION: GAMEMD 0x6D5730
+void Tactical::FUN_006D5730(unsigned char mode, CellStruct origin)
+{
+    for (int direction = 0; direction < 8; direction += 2) {
+        CellStruct current = origin;
+        int count = 0;
+        // Caller6D53E7..6D544B checks placement slot11 == 6.
+        BuildingClass* placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+        int range = placement->Type->GuardRange >> 8;
+        if (range <= 0)
+            continue;
+        // Native keeps this entry address and reloads it after draw callbacks.
+        const CellStruct& step = DAT_0089F688[direction & 7];
+        BuildingClass* building = 0;
+        while (count < range) {
+            current.X += step.X;
+            current.Y += step.Y;
+            building = MapInstance.FUN_005657A0(&current)->GetBuilding();
+            if (building)
+                break; // ANY building ends this scan, even an unsuitable one.
+            CellClass* cell = MapInstance.FUN_005657A0(&current);
+            if (cell->FUN_0047C550(0) || cell->SlopeIndex > 0 || cell->Passability != 0)
+                break;
+            ++count;
+        }
+        if (!building || !building->Type->bools_16A4[0x16BE - 0x16A4] ||
+            !building->Owner->IsControlledByCurrentPlayer() || count <= 0)
+            continue;
+        unsigned int flags = mode ? 0x10606 : 0x20606;
+        CellStruct draw;
+        draw.X = origin.X + step.X;
+        draw.Y = origin.Y + step.Y;
+        for (int index = 0; index < count; ++index) {
+            int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int firstY = -1 - firstLevel * 15;
+            int secondLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int z = -2 - secondLevel * 15;
+            CoordStruct center;
+            center.X = (draw.X * 256 + 128) / 256 * 256;
+            center.Y = (draw.Y * 256 + 128) / 256 * 256;
+            center.Z = 0;
+            Point2D projected = CoordsToScreen(&center);
+            Point2D marker(projected.X - unknown_B0.unknown_00,
+                           projected.Y - unknown_B0.unknown_04 + firstY);
+            FUN_004AED70(DAT_00887314, DAT_0087F6C4,
+                         DisplayPlaceShape_008A03FC, 0, &marker,
+                         &Viewport_00886FA0, flags, 0, z, 0, 1000,
+                         0, 0, 0, Point2D(0, 0));
+            draw.X += step.X;
+            draw.Y += step.Y;
+        }
+    }
+}
+
+
+#include "overlay_type_class.h"
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SpeedType) == 0x67C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ToOverlay) == 0xE54);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16C0 - 0x16A4) == 0x16C0);
+
+// FUNCTION: GAMEMD 0x6D59D0
+void Tactical::FUN_006D59D0(unsigned char mode, CellStruct origin)
+{
+    for (int direction = 0; direction < 8; direction += 2) {
+        CellStruct current = origin;
+        int count = 0;
+        BuildingClass* placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+        BuildingTypeClass* type = placement->Type;
+        int range = type->GuardRange >> 8;
+        if (range <= 0)
+            continue;
+        const CellStruct& step = DAT_0089F688[direction & 7];
+        bool found = false;
+        while (count < range) {
+            current = current + step;
+            BuildingClass* building = MapInstance.FUN_005657A0(&current)->GetBuilding();
+            if (building && building->Type->bools_16A4[0x16C0 - 0x16A4] &&
+                building->Owner->IsControlledByCurrentPlayer()) {
+                found = true;
+                break;
+            }
+            // An unsuitable building follows the SAME placement test as an
+            // empty cell. Snapshot these arguments before the lookup callback.
+            HouseClass* owner = CurrentPlayer;
+            int speedType = type->SpeedType;
+            if (!MapInstance.FUN_005657A0(&current)->FUN_0047C620(
+                    speedType, type, owner))
+                break;
+            ++count;
+        }
+        if (!found || count <= 0)
+            continue;
+        unsigned int flags = mode ? 0x10606 : 0x20606;
+        CellStruct draw = origin + step;
+        for (int index = 0; index < count; ++index) {
+            int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int firstY = -1 - firstLevel * 15;
+            int secondLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int z = -2 - secondLevel * 15;
+            CoordStruct center;
+            center.X = (draw.X * 256 + 128) / 256 * 256;
+            center.Y = (draw.Y * 256 + 128) / 256 * 256;
+            center.Z = 0;
+            Point2D projected = CoordsToScreen(&center);
+            Point2D marker(projected.X - unknown_B0.unknown_00,
+                           projected.Y - unknown_B0.unknown_04 + firstY);
+            FUN_004AED70(DAT_00887314, DAT_0087F6C4,
+                         DisplayPlaceShape_008A03FC, 0, &marker,
+                         &Viewport_00886FA0, flags, 0, z, 0, 1000,
+                         0, 0, 0, Point2D(0, 0));
+            draw = draw + step;
+        }
+    }
+}
+
+// Evidence: ev_0ebcb310f10018926435614b8aef2acd369841ed3b5888280bf2d84e6a803cfc
+// FUNCTION: GAMEMD 0x6D5C50
+void Tactical::FUN_006D5C50(unsigned char mode, CellStruct origin)
+{
+    // Caller6D53E7 checks placement type6 before this family is dispatched.
+    BuildingClass* placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+    OverlayTypeClass* overlay = placement->Type->ToOverlay;
+    if (!overlay)
+        return;
+    for (int direction = 0; direction < 8; direction += 2) {
+        CellStruct current = origin;
+        int count = 0;
+        // Reload placement/type for EACH direction after earlier callbacks.
+        placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+        BuildingTypeClass* type = placement->Type;
+        int range = type->GuardRange >> 8;
+        if (range <= 0)
+            continue;
+        const CellStruct& step = DAT_0089F688[direction & 7];
+        bool found = false;
+        do {
+            current = current + step;
+            CellClass* cell = MapInstance.FUN_005657A0(&current);
+            int overlayIndex = cell->OverlayTypeIndex;
+            if (overlayIndex != -1 && overlayIndex == overlay->ArrayIndex) {
+                // Native repeats the lookup and reloads the house before the
+                // owner comparison, rather than reusing the earlier cell.
+                CellClass* ownedCell = MapInstance.FUN_005657A0(&current);
+                if (CurrentPlayer->ArrayIndex == ownedCell->WallOwnerIndex) {
+                    found = true;
+                    break;
+                }
+            }
+            // These arguments are read before the lookup call in native:
+            // preserve their snapshots across the cell lookup callback.
+            HouseClass* owner = CurrentPlayer;
+            int speedType = type->SpeedType;
+            if (!MapInstance.FUN_005657A0(&current)->FUN_0047C620(
+                    speedType, type, owner))
+                break;
+            ++count;
+        } while (count < range);
+        if (!found || count <= 0)
+            continue;
+        unsigned int flags = mode ? 0x10606 : 0x20606;
+        CellStruct draw = origin + step;
+        for (int index = 0; index < count; ++index) {
+            int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int firstY = -1 - firstLevel * 15;
+            int secondLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int z = -2 - secondLevel * 15;
+            int worldX = (draw.X * 256 + 128) / 256 * 256;
+            int worldY = (draw.Y * 256 + 128) / 256 * 256;
+            Pair_006D9F80 temporary;
+            Pair_006D9F80 raw = *temporary.FUN_006D1EB0(worldX, worldY);
+            int x = raw.unknown_00 / 256;
+            int y = raw.unknown_04 / 256 - Tactical::AdjustForZ(0);
+            Point2D position(x, y);
+            Point2D viewport(unknown_B0.unknown_00, unknown_B0.unknown_04);
+            position -= viewport;
+            Point2D marker(position.X, position.Y + firstY);
+            FUN_004AED70(DAT_00887314, DAT_0087F6C4,
+                         DisplayPlaceShape_008A03FC, 0, &marker,
+                         &Viewport_00886FA0, flags, 0, z, 0, 1000,
+                         0, 0, 0, Point2D(0, 0));
+            draw = draw + step;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D5F60
+void Tactical::FUN_006D5F60(const TRect<int>* bounds)
+{
+    DAT_00B0CE28.A = bounds->X;
+    DAT_00B0CE2C = bounds->Y;
+    DAT_00B0CE30 = bounds->Width;
+    DAT_00B0CE34 = bounds->Height;
+    Pair_006D9F80 checked = unknown_D74;
+    Pair_006D9F80 result;
+    if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0)
+        result = checked;
+    else
+        result = unknown_D74;
+    unknown_D74 = unknown_D64 = result;
+    FUN_006D8B30();
+    unknown_D7D = true;
+}
+
+// FUNCTION: GAMEMD 0x6D6000
+void Tactical::FUN_006D6000(const Pair_006D9F80* point)
+{
+    Pair_006D9F80 checked = *point;
+    Pair_006D9F80 result;
+    if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0)
+        result = checked;
+    else
+        result = *point;
+    unknown_D74 = unknown_D64 = result;
+    FUN_006D8B30();
+    unknown_D7D = true;
+}
+
+// FUNCTION: GAMEMD 0x6D6170
+// Stores several members; pops its stack arguments.
+Arg1_006D6170* Obj_006D6170::FUN_006D6170(Arg1_006D6170* a1)
+{
+    a1->unknown_00 = unknown_D64;
+    a1->unknown_04 = unknown_D68;
+    return a1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6D6190
+Pair_006D9F80 Tactical::FUN_006D6190() const
+{
+    Pair_006D9F80 offset = unknown_B0;
+    Pair_006D9F80 position = unknown_D64;
+    position.unknown_00 -= offset.unknown_00;
+    position.unknown_04 -= offset.unknown_04;
+    return position;
+}
+
+// FUNCTION: GAMEMD 0x6D61C0
+void FUN_006D61C0(int x, int y, int* outX, int* outY)
+{
+    *outX = x * 60 / 2;
+    *outY = x * 30 / 2;
+    *outX += y * -60 / 2;
+    *outY += y * 30 / 2;
+}
+
+// FUNCTION: GAMEMD 0x6D6220
+void FUN_006D6220(int x, int y, int* outX, int* outY)
+{
+    *outX = (x + 2 * y) * 15 / 576 - 65536;
+    *outY = (2 * y - x) * 15 / 576 + 65536;
+}
+
+// FUNCTION: GAMEMD 0x6D6280
+void __stdcall FUN_006D6280(int x, int y, int* outX, int* outY)
+{
+    x *= 256;
+    y *= 256;
+    *outX = (x + 2 * y) * 15 / 576 - 65536;
+    *outY = (2 * y - x) * 15 / 576 + 65536;
+}
+
+// FUNCTION: GAMEMD 0x6D62E0
+void __stdcall FUN_006D62E0(int x, int y, int* outX, int* outY)
+{
+    *outX = x * 60 / 2;
+    *outY = x * 30 / 2;
+    *outX += y * -60 / 2;
+    *outY += y * 30 / 2;
+    *outX /= 256;
+    *outY /= 256;
+    *outX += 15360;
+}
+
+// GLOBAL: GAMEMD 0x842904
+extern int DAT_00842904;
+// GLOBAL: GAMEMD 0x842908
+extern int DAT_00842908;
+
+// FUNCTION: GAMEMD 0x6D6370
+void __stdcall FUN_006D6370(int x, int y, int* outX, int* outY)
+{
+    x *= 256;
+    y *= 256;
+    int resultX = (x + 2 * y) * 15 / 576 - 65536;
+    int resultY = (2 * y - x) * 15 / 576 + 65536;
+    if (DAT_00842904 == -1 && DAT_00842908 == -1) {
+        DAT_00842908 = 65536;
+        DAT_00842904 = -65536;
+    }
+    resultX -= DAT_00842904;
+    resultY -= DAT_00842908;
+    *outX = resultX;
+    *outY = resultY;
+}
+
+// Cell picking: 6D6473/648E and6D6753/6760 read signed level and flags;
+// 6D6895/6899 read the cell coordinate pair before projection.
+GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
+GG_STATIC_ASSERT(offsetof(CellClass, Level) == 0x11B);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->Level) == 1);
+GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
+GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0);
+GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 2);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_B0) == 0xB0);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_DE4) == 0xDE4);
+
+static inline CellStruct CellFromWorld_006D6410(int x, int y)
+{
+    CellStruct result;
+    result.X = x / 256;
+    result.Y = y / 256;
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6D6410
+CellStruct Tactical::FUN_006D6410(const CoordStruct* coordinate)
+{
+    CellStruct original = CellFromWorld_006D6410(coordinate->X, coordinate->Y);
+    int worldX = original.X * 256 + 128;
+    int worldY = original.Y * 256 + 128;
+    bool originalFlag = (MapInstance.FUN_005657A0(&original)->Flags & 0x1000) != 0;
+    // Native performs the lookup twice; retain that call sequence.
+    int originalLevel = MapInstance.FUN_005657A0(&original)->Level;
+    worldX += 1536;
+    worldY += 1536;
+    for (;;) {
+        worldX -= 8;
+        worldY -= 8;
+        CellStruct candidate = CellFromWorld_006D6410(worldX, worldY);
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        int levelDifference = cell->Level - originalLevel;
+        if (originalFlag)
+            levelDifference += ((cell->Flags >> 8) & 1) * 4;
+        // Native compares narrowed signed shorts, not full 32-bit quotients.
+        CellStruct adjusted = CellFromWorld_006D6410(worldX - levelDifference * 128,
+                                                      worldY - levelDifference * 128);
+        if (adjusted.X <= original.X && adjusted.Y <= original.Y) {
+            return candidate;
+        }
+        if (candidate.X == original.X && candidate.Y == original.Y) {
+            return original;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D6590
+CellStruct Tactical::FUN_006D6590(const Point2D* where)
+{
+    int x = where->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = where->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    int worldX = vector.X;
+    int worldY = vector.Y;
+    CellStruct initial;
+    initial.X = worldX / 256;
+    initial.Y = worldY / 256;
+    CoordStruct fraction;
+    fraction.X = worldX & 255;
+    fraction.Y = worldY & 255;
+    fraction.Z = 0;
+    CoordsToScreen(&fraction); // Native ignores the projected fractional point.
+
+    // Read the caller's point and globals again after the projection call.
+    int pointX = where->X - Viewport_00886FA0.X;
+    int pointY = where->Y - Viewport_00886FA0.Y;
+    int scanY = pointY + 180;
+    for (int step = 0; step < 180; ++step, --scanY) {
+        int screenX = unknown_B0.unknown_00 + pointX;
+        int screenY = unknown_B0.unknown_04 + scanY;
+        Vector3D sample(screenX, screenY, 0.0f);
+        Vector3D sampleResult;
+        sample = *Matrix3D::MatrixApply(&sampleResult, &unknown_DE4, &sample);
+        int sampleX = sample.X;
+        int sampleY = sample.Y;
+        CellStruct coordinate;
+        coordinate.X = sampleX / 256;
+        coordinate.Y = sampleY / 256;
+        CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+        int candidateY = scanY - cell->Level * 15;
+        if (cell->Flags & 0x100) {
+            CellClass* neighbor2 = cell->GetNeighbourCell(2);
+            CellClass* neighbor4 = cell->GetNeighbourCell(4);
+            bool edge0 = false;
+            if (cell->Flags & 0x800)
+                edge0 = !(cell->GetNeighbourCell(0)->Flags & 0x100);
+            bool edge6 = false;
+            if (!(cell->Flags & 0x800))
+                edge6 = !(cell->GetNeighbourCell(6)->Flags & 0x100);
+            // The orientation mask is sampled after both optional callbacks.
+            unsigned int orientation = cell->Flags & 0x800;
+            bool edge4 = orientation && !(neighbor4->Flags & 0x100);
+            bool edge2 = !orientation && !(neighbor2->Flags & 0x100);
+            bool levelEdge2 = false;
+            if (orientation) {
+                int difference = cell->Level - neighbor2->Level;
+                if (difference < 0)
+                    difference = -difference;
+                if (difference <= 1)
+                    levelEdge2 = !(neighbor2->Flags & 0x100);
+            }
+            bool levelEdge4 = false;
+            if (!orientation) {
+                int difference = cell->Level - neighbor4->Level;
+                if (difference < 0)
+                    difference = -difference;
+                if (difference <= 1)
+                    levelEdge4 = !(neighbor4->Flags & 0x100);
+            }
+            CoordStruct corner;
+            corner.X = cell->MapCoords.X * 256;
+            corner.Y = cell->MapCoords.Y * 256;
+            corner.Z = 0;
+            Point2D projected = CoordsToScreen(&corner);
+            int cornerX = projected.X - unknown_B0.unknown_00;
+            int cornerY = projected.Y - unknown_B0.unknown_04;
+            cornerY += (cell->Level * -30) / 2;
+            if (cornerY <= pointY) {
+                if (edge4 || levelEdge4) {
+                    coordinate.Y += 1;
+                    return coordinate;
+                }
+                if (edge2 || levelEdge2) {
+                    coordinate.X += 1;
+                    return coordinate;
+                }
+            }
+            if (!edge0 && !edge6) {
+                candidateY -= (cell->Flags & 0x100) ? 60 : 0;
+            } else {
+                int dx = pointX - cornerX;
+                int dy = pointY - cornerY;
+                if ((edge0 && dy - dx / 2 > 15) ||
+                    (edge6 && dx / 2 + dy > 15))
+                    candidateY -= (cell->Flags & 0x100) ? 60 : 0;
+            }
+        }
+        if (candidateY <= pointY) {
+            return coordinate;
+        }
+    }
+    return initial;
+}
+
+GG_STATIC_ASSERT(offsetof(CellClass, SlopeIndex) == 0x11C);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->SlopeIndex) == 1);
+
+// FUNCTION: GAMEMD 0x6D6AD0
+// Incoming register arguments are unused; one stack position pointer, RET4.
+int __stdcall FUN_006D6AD0(Point2D* location)
+{
+    return MapInstance.FUN_00565730(location)->SlopeIndex;
+}
+
+GG_STATIC_ASSERT(offsetof(CellClass, OverlayTypeIndex) == 0x44);
+GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
+GG_STATIC_ASSERT(sizeof(RectangleStruct) == 16);
+
+// FUNCTION: GAMEMD 0x6D6BB0
+CellClass* __stdcall FUN_006D6BB0(const CellStruct* original)
+{
+    int index;
+    Cell candidate = Cell(original->X + 2, original->Y);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && (cell->Flags & 0x800))
+            return cell;
+        ++candidate.Y;
+    }
+    candidate = Cell(original->X + 1, original->Y);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && (cell->Flags & 0x800))
+            return cell;
+        ++candidate.Y;
+    }
+    candidate = Cell(original->X, original->Y + 2);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && !(cell->Flags & 0x800))
+            return cell;
+        ++candidate.X;
+    }
+    candidate = Cell(original->X, original->Y + 1);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && !(cell->Flags & 0x800))
+            return cell;
+        ++candidate.X;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6D6D10
+void Tactical::FUN_006D6D10(const RectangleStruct* rectangle)
+{
+    // The input origin is transformed through Tactical's inverse matrix.
+    Vector3D screen((float)(rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X),
+                    (float)(rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y),
+                    0.0f);
+    Vector3D transformed;
+    screen = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &screen);
+    CoordStruct world;
+    world.X = (int)screen.X;
+    world.Y = (int)screen.Y;
+    world.Z = 0;
+    if (world.Y < 0) world.Y = 0;
+    if (world.X < 0) world.X = 0;
+    CellClass* origin = MapInstance.FUN_00565730(&world);
+    CellStruct base = origin->MapCoords;
+    base.X -= 4;
+    base.Y -= 2;
+
+    const int lastRow = rectangle->Height / 15 + 21;
+    const int columns = rectangle->Width / 60 + 4;
+    RectangleStruct clippedStorage;
+    RectangleStruct clipped = *FUN_00421B60(&clippedStorage, &Viewport_00886FA0,
+                                             rectangle, 0, 0);
+    int row;
+    for (row = lastRow; row >= 0; --row) {
+        CellStruct coordinate;
+        coordinate.X = base.X + row / 2;
+        coordinate.Y = base.Y + (row + 1) / 2;
+        for (int remaining = columns; remaining > 0; --remaining) {
+            if (MapInstance.FUN_00568300(&coordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                if (cell->OverlayTypeIndex != -1) {
+                    RectangleStruct bounds = cell->FUN_0047FB90();
+                    RectangleStruct intersection;
+                    RectangleStruct* result = FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (result->Width > 0 && result->Height > 0) {
+                        CoordStruct center;
+                        center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
+                                            (coordinate.Y * 256 + 128) / 256 * 256, 0);
+                        CoordStruct copiedCenter = center;
+                        Point2D location = CoordsToScreen(&copiedCenter);
+                        location.X -= unknown_B0.unknown_00 + 30;
+                        location.Y -= unknown_B0.unknown_04;
+                        cell->FUN_0047F6A0(&location, &clipped);
+                    }
+                }
+            }
+            ++coordinate.X;
+            --coordinate.Y;
+        }
+    }
+
+    for (row = lastRow; row >= 0; --row) {
+        CellStruct coordinate;
+        coordinate.X = base.X + row / 2;
+        coordinate.Y = base.Y + (row + 1) / 2;
+        for (int remaining = columns; remaining > 0; --remaining) {
+            if (MapInstance.FUN_00568300(&coordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                if (cell->OverlayTypeIndex != -1) {
+                    RectangleStruct bounds = cell->FUN_0047FDE0();
+                    RectangleStruct intersection;
+                    RectangleStruct* result = FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (result->Width > 0 && result->Height > 0) {
+                        CoordStruct center;
+                        center.X = (coordinate.X * 256 + 128) / 256 * 256;
+                        center.Y = (coordinate.Y * 256 + 128) / 256 * 256;
+                        center.Z = 0;
+                        Point2D location;
+                        FUN_006D2140(&center, &location);
+                        location.X -= 30;
+                        cell->FUN_0047F510(&location, &clipped);
+                    }
+                }
+            }
+            ++coordinate.X;
+            --coordinate.Y;
+        }
+    }
+}
+
+// Callee 0x421350 takes the supplied rectangle in ECX; source identity held.
+// Declaration: GAMEMD 0x421350, rectangle in ECX, no stack arguments, RET
+void __fastcall FUN_00421350(const RectangleStruct* rectangle);
+
+// The caller supplies an XYWH rectangle (RET 4). Tactical is ECX.
+// FUNCTION: GAMEMD 0x6D71E0
+void Tactical::FUN_006D71E0(const RectangleStruct* rectangle)
+{
+    int screenX = unknown_B0.unknown_00 + rectangle->X - Viewport_00886FA0.X;
+    int screenY = unknown_B0.unknown_04 + rectangle->Y - Viewport_00886FA0.Y;
+    Vector3D screen((float)screenX, (float)screenY, 0.0f);
+    Vector3D transformed;
+    screen = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &screen);
+    CoordStruct world;
+    world.FUN_0041C230((int)screen.X, (int)screen.Y, 0);
+    if (world.X < 0) world.X = 0;
+    if (world.Y < 0) world.Y = 0;
+    CellClass* origin = MapInstance.FUN_00565730(&world);
+    CellStruct base = origin->MapCoords;
+    base.X -= 2;
+
+    const int rows = rectangle->Height / 15 + 17;
+    const int columns = rectangle->Width / 60 + 4;
+    if (DAT_00B73550 && rows > 0) {
+        for (int row = 0; row < rows; ++row) {
+            CellStruct offset;
+            offset.X = row / 2;
+            offset.Y = (row + 1) / 2;
+            CellStruct coordinate;
+            coordinate.X = base.X + offset.X;
+            coordinate.Y = base.Y + offset.Y;
+            for (int column = 0; column < columns; ++column) {
+                if (MapInstance.FUN_00568300(&coordinate)) {
+                    // Native performs the map lookup even though this caller
+                    // does not use the returned cell until after projection.
+                    CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                    CoordStruct center;
+                    center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
+                                        (coordinate.Y * 256 + 128) / 256 * 256, 0);
+                    CoordStruct copiedCenter = center;
+                    Point2D position = CoordsToScreen(&copiedCenter);
+                    Point2D scroll(unknown_B0.unknown_00, unknown_B0.unknown_04);
+                    position -= scroll;
+                    position.X -= 30;
+                    RectangleStruct tile = {position.X,
+                                            position.Y + Viewport_00886FA0.Y,
+                                            60, 30};
+                    RectangleStruct firstStorage;
+                    RectangleStruct first = *FUN_00421B60(&firstStorage, &tile,
+                                                            rectangle, 0, 0);
+                    RectangleStruct viewportStorage;
+                    RectangleStruct clipped = *FUN_00421B60(&viewportStorage,
+                                          &Viewport_00886FA0, &first, 0, 0);
+                    if (clipped.Width > 0 && clipped.Height > 0) {
+                        Point2D absolute(Viewport_00886FA0.X + position.X,
+                                         Viewport_00886FA0.Y + position.Y);
+                        cell->FUN_004801F0(&absolute, &clipped);
+                    }
+                }
+                ++coordinate.X;
+                --coordinate.Y;
+            }
+        }
+    }
+    FUN_00421350(rectangle);
+}
+
+#include "core/fps_counter_methods.h"
+// GLOBAL: GAMEMD 0xABCD44
+extern unsigned int FPSCounter_CurrentFrameRate;
+// GLOBAL: GAMEMD 0xA8EB78
+extern int dword_A8EB78;
+// GLOBAL: GAMEMD 0xB0E640
+extern unsigned int DAT_00B0E640;
+GG_STATIC_ASSERT(offsetof(CellClass, PixelFX) == 0xFC);
+GG_STATIC_ASSERT(offsetof(CellClass, AltFlags) == 0x12C);
+GG_STATIC_ASSERT(offsetof(CellClass, LandType) == 0xEC);
+GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xE4);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, Lock) == 0x5C);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, Unlock) == 0x60);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, GetBytesPerPixel) == 0x70);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, GetPitch) == 0x74);
+
+// FUNCTION: GAMEMD 0x6D7560
+void Tactical::FUN_006D7560(const RectangleStruct* rectangle,
+                           const RectangleStruct* clip)
+{
+    int x = rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    // Two float->integer conversions use CRT__ftol, X then Y. Do not call the
+    // library helper manually or replace truncation with a rounding function.
+    int worldX = vector.X;
+    int worldY = vector.Y;
+    CoordStruct coordinate;
+    coordinate.FUN_0041C230(worldX, worldY, 0);
+    CellStruct base;
+    base.X = coordinate.X / 256;
+    base.Y = coordinate.Y / 256;
+    base.X -= 2;
+    int rows = rectangle->Height / 15 + 17;
+    int columns = rectangle->Width / 60 + 4;
+    for (int row = 0; row < rows; ++row) {
+        CellStruct offset;
+        int nextRow = row + 1;
+        offset.X = row / 2;
+        offset.Y = nextRow / 2;
+        CellStruct cellCoordinate;
+        cellCoordinate.X = base.X + offset.X;
+        cellCoordinate.Y = base.Y + offset.Y;
+        for (int remaining = columns; remaining > 0; --remaining) {
+            if (MapInstance.FUN_00568300(&cellCoordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&cellCoordinate);
+                RectangleStruct bounds = cell->FUN_0047FF80();
+                RectangleStruct temporary;
+                RectangleStruct* intersection =
+                    FUN_00421B60(&temporary, rectangle, &bounds, 0, 0);
+                int intersectionWidth = intersection->Width;
+                int intersectionHeight = intersection->Height;
+                // Native performs center construction and projection even
+                // when bounds/intersection are empty; predicate follows them.
+                int centerX = (cellCoordinate.X * 256 + 128) / 256 * 256;
+                int centerY = (cellCoordinate.Y * 256 + 128) / 256 * 256;
+                CoordStruct center;
+                center.FUN_0041C230(centerX, centerY, 0);
+                CoordStruct copiedCenter = center;
+                Point2D position;
+                FUN_006D2140(&copiedCenter, &position); // Native ignores bool result.
+                position.X -= 30;
+                if (bounds.Width > 0 && bounds.Height > 0 &&
+                    intersectionWidth > 0 && intersectionHeight > 0)
+                    cell->FUN_00480350(&position, clip, 0);
+            }
+            ++cellCoordinate.X;
+            --cellCoordinate.Y;
+        }
+    }
+}
+
+
+// FUNCTION: GAMEMD 0x6D7840
+void Tactical::FUN_006D7840(const RectangleStruct* rectangle,
+                           const RectangleStruct* clip)
+{
+    unsigned int minimumFrameRate = Detail::GetMinFrameRate();
+    if (FPSCounter_CurrentFrameRate < minimumFrameRate)
+        return;
+    if (DAT_00887314->GetBytesPerPixel() != 2)
+        return;
+    if (!dword_A8EB78)
+        return;
+    // 6D7863 requires two-byte pixels;6D7BB4 stores one WORD through this buffer.
+    unsigned char* pixels = static_cast<unsigned char*>(
+        DAT_00887314->Lock(Point2D(0, 0)));
+    if (!pixels)
+        return;
+    unsigned int now = timeGetTime();
+    unsigned int elapsed = now - DAT_00B0E640;
+    DAT_00B0E640 = now;
+    if (elapsed > 1000)
+        elapsed = 1000;
+    unsigned int pitch = DAT_00887314->GetPitch();
+    int x = rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    Point2D world(vector.X, vector.Y);
+    CellStruct base;
+    base.X = world.X / 256;
+    base.Y = world.Y / 256;
+    int rows = rectangle->Height / 15 + 17;
+    int columns = rectangle->Width / 60 + 4;
+    base.X -= 2;
+    for (int row = 0; row < rows; ++row) {
+        CellStruct offset;
+        offset.X = row / 2;
+        offset.Y = (row + 1) / 2;
+        CellStruct coordinate;
+        coordinate.X = base.X + offset.X;
+        coordinate.Y = base.Y + offset.Y;
+        for (int column = 0; column < columns; ++column) {
+            if (MapInstance.FUN_00568300(&coordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                int value = cell->GetContainedTiberiumValue();
+                if ((cell->AltFlags & 0x10) && !cell->FUN_00487950() &&
+                    (cell->LandType == 2 || value != 0) &&
+                    !cell->FirstObject && !(cell->Flags & 0x1000)) {
+                    PixelFXClass* effect = cell->PixelFX;
+                    bool enabled = value != 0;
+                    if (!effect) {
+                        effect = new PixelFXClass(enabled);
+                        cell->PixelFX = effect; // Null allocation also stored.
+                    } else if (effect->unknown_10 >= 0x2000) {
+                        effect->FUN_00631D40(enabled);
+                    }
+                    if (effect && effect->FUN_00631EE0(elapsed)) {
+                        RectangleStruct bounds = cell->FUN_0047FF80();
+                        int pixelX = bounds.X + bounds.Width / 2 + effect->unknown_30;
+                        int pixelY = bounds.Y + bounds.Height / 2 + effect->unknown_34;
+                        // Native uses four ordered comparisons, with live clip
+                        // reads after the bounds callback; no cached clip copy.
+                        if (pixelX >= clip->X && pixelX < clip->X + clip->Width &&
+                            pixelY >= clip->Y && pixelY < clip->Y + clip->Height) {
+                            effect->FUN_00631E50(elapsed);
+                            int color =
+                                ((effect->unknown_0C >> gg_b_translucent_pixel_format.loss2)
+                                    << gg_b_translucent_pixel_format.pos2) |
+                                ((effect->unknown_08 >> gg_b_translucent_pixel_format.loss1)
+                                    << gg_b_translucent_pixel_format.pos1) |
+                                ((effect->unknown_04 >> gg_b_translucent_pixel_format.loss0)
+                                    << gg_b_translucent_pixel_format.pos0);
+                            // Proven storage boundary: locked surface byte pitch,
+                            // two bytes per pixel checked above, native WORD store.
+                            *reinterpret_cast<unsigned short*>(pixels + pitch * pixelY + pixelX * 2) = color;
+                        }
+                    }
+                }
+            }
+            ++coordinate.X;
+            --coordinate.Y;
+        }
+    }
+    // Receiver is reloaded from the global, rather than the original lock owner.
+    DAT_00887314->Unlock();
+}
+
+// GLOBAL: GAMEMD 0xA8ED2C
+extern IsometricTileTypeClass** DAT_00A8ED2C;
+
+// FUNCTION: GAMEMD 0x6D7F20
+void Tactical::FUN_006D7F20(const CellStruct* coordinate,
+                           const RectangleStruct* unused)
+{
+    CellClass* cell = MapInstance.FUN_005657A0(coordinate);
+    CoordStruct center;
+    center.X = (coordinate->X * 256 + 128) / 256 * 256;
+    center.Y = (coordinate->Y * 256 + 128) / 256 * 256;
+    center.Z = 0;
+    Point2D projected = CoordsToScreen(&center);
+    Point2D position(projected.X - unknown_B0.unknown_00,
+                     projected.Y - unknown_B0.unknown_04);
+    if (cell->Level < 2) {
+        position.X -= 30;
+        cell->FUN_00480350(&position, &Viewport_00886FA0, 0);
+    }
+    // The coordinate pointer is reread after projection and optional drawing.
+    int baseX = coordinate->X;
+    int baseY = coordinate->Y;
+    for (int level = 0; level < 24; level += 2, ++baseX, ++baseY) {
+        for (int direction = 0; direction < 3; ++direction) {
+            int x = baseX + (direction + 1) / 2;
+            int y = baseY - direction / 2 + 1;
+            CellStruct legalCoordinate;
+            legalCoordinate.X = x;
+            legalCoordinate.Y = y;
+            if (!MapInstance.FUN_00568300(&legalCoordinate))
+                continue;
+            CellStruct lookupCoordinate;
+            lookupCoordinate.X = x;
+            lookupCoordinate.Y = y;
+            CellClass* neighbor = MapInstance.FUN_005657A0(&lookupCoordinate);
+            int neighborLevel = neighbor->Level;
+            bool draw;
+            if (direction == 1)
+                draw = neighborLevel > level && neighborLevel < level + 4;
+            else
+                draw = neighborLevel == level + 1;
+            // Native CMP/JLE at6D807C and MOVSX at6D809E prove signed +11D.
+            if (neighbor->unknown_11D > 0 && !draw) {
+                int difference = neighborLevel - level;
+                if (direction == 1) {
+                    if (difference + 1 <= 0 &&
+                        neighbor->unknown_11D + difference + 1 > 0)
+                        draw = true;
+                } else {
+                    if (difference < 0 && neighbor->unknown_11D + difference >= 0)
+                        draw = true;
+                }
+            }
+            if (neighborLevel == level && !draw) {
+                // Native MOVZX here, despite signed Height declaration.
+                unsigned char height = neighbor->Height;
+                int tileIndex = neighbor->IsoTileTypeIndex;
+                if (tileIndex == 0xFFFF || tileIndex == 0xFF)
+                    continue;
+                IsometricTileTypeClass* tile = DAT_00A8ED2C[tileIndex];
+                if (!tile)
+                    continue;
+                TileImageHeader* image = tile->GetTileData();
+                if (!image)
+                    continue;
+                int index = height;
+                int last = image->Width * image->Height - 1;
+                if (index >= last)
+                    index = last;
+                SubTileImage* subTile = image->SubTiles[index];
+                if (!subTile || !(subTile->unknown_bits & 1))
+                    continue;
+            } else if (!draw) {
+                continue;
+            }
+            // x/y remain full integers above; the native draw path explicitly
+            // sign-extends their low shorts before constructing the center.
+            CellStruct drawCoordinate;
+            drawCoordinate.X = x;
+            drawCoordinate.Y = y;
+            CoordStruct drawCenter;
+            drawCenter.X = (drawCoordinate.X * 256 + 128) / 256 * 256;
+            drawCenter.Y = (drawCoordinate.Y * 256 + 128) / 256 * 256;
+            drawCenter.Z = 0;
+            Pair_006D9F80 rawTemporary;
+            Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(drawCenter.X, drawCenter.Y);
+            int screenX = raw.unknown_00 / 256;
+            int screenY = raw.unknown_04 / 256 - Tactical::AdjustForZ(0);
+            Point2D drawPosition(screenX - unknown_B0.unknown_00 - 30,
+                                 screenY - unknown_B0.unknown_04);
+            MapInstance.FUN_005657A0(&drawCoordinate)->FUN_00480350(
+                &drawPosition, &Viewport_00886FA0, 0);
+        }
+    }
+}
+
+// Entry-origin retail disassembly: 619 bytes through 6D84CA. REA's current
+// catalog lacks this procedure; no decompiler output is used for this body.
+// The first four-byte stack slot is unused. Its original type is unresolved;
+// void* below is an ABI-sized placeholder pending caller/interface evidence.
+// FUNCTION: GAMEMD 0x6D8260
+void Tactical::FUN_006D8260(void* unused, const RectangleStruct* rectangle)
+{
+    int x = rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    int worldX = vector.X;
+    int worldY = vector.Y;
+    CoordStruct coordinate;
+    coordinate.X = worldX;
+    coordinate.Y = worldY;
+    coordinate.Z = 0;
+    if (coordinate.Y < 0) {
+        coordinate.X -= coordinate.Y;
+        coordinate.Y = 0;
+    }
+    if (coordinate.X < 0) {
+        coordinate.Y -= coordinate.X;
+        coordinate.X = 0;
+    }
+    CellClass* target = MapInstance.FUN_00565730(&coordinate);
+    CellStruct base = target->MapCoords;
+    base.X -= 2;
+    base.Y += 3;
+    int rows = rectangle->Height / 15 + 20;
+    int columns = rectangle->Width / 60 + 7;
+    for (int row = 0; row < rows; ++row) {
+        CellStruct offset;
+        offset.X = row / 2;
+        offset.Y = (row + 1) / 2;
+        CellStruct cellCoordinate;
+        cellCoordinate.X = base.X + offset.X;
+        cellCoordinate.Y = base.Y + offset.Y;
+        for (int column = 0; column < columns; ++column) {
+            if (MapInstance.FUN_00568300(&cellCoordinate)) {
+                CoordStruct center;
+                center.X = (cellCoordinate.X * 256 + 128) / 256 * 256;
+                center.Y = (cellCoordinate.Y * 256 + 128) / 256 * 256;
+                center.Z = 0;
+                Point2D position = CoordsToScreen(&center);
+                Point2D origin(unknown_B0.unknown_00, unknown_B0.unknown_04);
+                position -= origin;
+                position.X -= 30;
+                // Native pushes these two pointers before calling GetCell;
+                // GetCell consumes only its own coordinate argument (RET4),
+                // leaving both pointers for the following Cell call (RET8).
+                MapInstance.FUN_005657A0(&cellCoordinate)->FUN_004802A0(
+                    &position, rectangle);
+            }
+            ++cellCoordinate.X;
+            --cellCoordinate.Y;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D8640 (decl; reloc) -- adjusts a coordinate in place, reporting whether it did.
+bool __stdcall FUN_006D8640(Point2D* point);
+
+// FUNCTION: GAMEMD 0x6D84D0
+// PARTIAL: 80.6% -- identical instruction multiset; retail copies the two words into the temporary
+// before taking its address, this order takes the address first (field-wise, constructor and
+// aggregate copies tried).
+// The adjusted copy of a coordinate, or the coordinate unchanged when the adjustment fails or is disabled.
+Point2D __stdcall FUN_006D84D0(const Point2D* point)
+{
+    int x = point->X;
+    int y = point->Y;
+    Point2D adjusted(x, y);
+    if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B) {
+        return adjusted;
+    }
+    return *point;
+}
+
+// FUNCTION: GAMEMD 0x6D8530
+void Tactical::FUN_006D8530(int direction, int distance)
+{
+// SYNTHETIC: GAMEMD 0x6D8630
+// Generated array cleanup, one-byte RET. Guard at0xB0CDE0 is compiler-generated.
+// GLOBAL: GAMEMD 0xB0CE38
+    static Pair_006D9F80 offsets[8] = {
+        Pair_006D9F80(0, -1), Pair_006D9F80(1, -1),
+        Pair_006D9F80(1, 0), Pair_006D9F80(1, 1),
+        Pair_006D9F80(0, 1), Pair_006D9F80(-1, 1),
+        Pair_006D9F80(-1, 0), Pair_006D9F80(-1, -1)
+    };
+    GG_STATIC_ASSERT(sizeof(offsets) == 0x40);
+    Pair_006D9F80 old = unknown_D64;
+    Pair_006D9F80 next(offsets[direction].unknown_00 * distance + old.unknown_00,
+                      offsets[direction].unknown_04 * distance + old.unknown_04);
+    if (!(old == next)) {
+        Pair_006D9F80 delta(next.unknown_00 - old.unknown_00,
+                            next.unknown_04 - old.unknown_04);
+        unknown_D74.unknown_00 += delta.unknown_00;
+        unknown_D74.unknown_04 += delta.unknown_04;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// GLOBAL: GAMEMD 0x87F8DC
+extern int DAT_0087F8DC;
+// GLOBAL: GAMEMD 0x87F8E4
+extern int DAT_0087F8E4;
+// GLOBAL: GAMEMD 0x87F8E8
+extern int DAT_0087F8E8;
+// GLOBAL: GAMEMD 0x87F8EC
+extern int DAT_0087F8EC;
+// GLOBAL: GAMEMD 0x87F8F0
+extern int DAT_0087F8F0;
+// GLOBAL: GAMEMD 0x886FA8
+extern int DAT_00886FA8;
+// GLOBAL: GAMEMD 0x886FAC
+extern int DAT_00886FAC;
+
+// FUNCTION: GAMEMD 0x6D8640
+bool Tactical::FUN_006D8640(Pair_006D9F80* point)
+{
+    int left = DAT_00886FA8 / 2 + (2 * DAT_0087F8E4 - DAT_0087F8DC) * 30;
+    int right = DAT_0087F8EC * 60 - DAT_00886FA8 + left;
+    int top = (DAT_0087F8DC - 5 + 2 * DAT_0087F8E8) * 15 + DAT_00886FAC / 2;
+    int bottom = (DAT_0087F8F0 * 60 + 270) / 2 - DAT_00886FAC + top;
+    bool changed = false;
+    if (point->unknown_04 < top) {
+        changed = true;
+        point->unknown_04 = top;
+    } else if (point->unknown_04 > bottom) {
+        point->unknown_04 = bottom;
+        changed = true;
+    }
+    if (point->unknown_00 < left) {
+        point->unknown_00 = left;
+        return true;
+    }
+    if (point->unknown_00 > right) {
+        point->unknown_00 = right;
+        return true;
+    }
+    return changed;
+}
+
+GG_STATIC_ASSERT(offsetof(Cell, X) == 0);
+GG_STATIC_ASSERT(offsetof(Cell, Y) == 2);
+GG_STATIC_ASSERT(sizeof(Cell) == 4);
+
+// GLOBAL: GAMEMD 0x7F4194
+extern const signed char DAT_007F4194[256];
+
+// Native receives `this` in ECX but does not read it. Two stack arguments,
+// RET8. The existing display owner declares an int return; caller 4801F0
+// consumes the low byte. The lookup path explicitly sign-extends a byte.
+// FUNCTION: GAMEMD 0x6D8700
+int Tactical::FUN_006D8700(const CellStruct* coordinate, int layer)
+{
+    CellClass* center = MapInstance.FUN_005657A0(coordinate);
+    int absent = -1;
+    unsigned int mask = 0;
+    Cell neighbor;
+    // Native tests the low byte of the stack argument at6D8718.
+    if (static_cast<unsigned char>(layer)) {
+        if ((center->Flags & 3) == 0) absent = -2;
+        if ((center->Flags & 2) == 0) return absent;
+
+        neighbor = Cell(coordinate->X - 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x40;
+        neighbor = Cell(coordinate->X, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x80;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x01;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x20;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x02;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x10;
+        neighbor = Cell(coordinate->X, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x08;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x04;
+    } else {
+        if ((center->AltFlags & 0x18) == 0) absent = -2;
+        if ((center->AltFlags & 8) == 0) return absent;
+
+        neighbor = Cell(coordinate->X - 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x40;
+        neighbor = Cell(coordinate->X, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x80;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x01;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x20;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x02;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x10;
+        neighbor = Cell(coordinate->X, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x08;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x04;
+    }
+    return DAT_007F4194[mask];
+}
+
+// FUNCTION: GAMEMD 0x6D8AE0
+bool Tactical::FUN_006D8AE0(const Cell* cell) const
+{
+    int x = cell->X;
+    int y = cell->Y;
+    if (x >= unknown_D80 && x < unknown_D80 + unknown_D88
+        && y >= unknown_D84 && y < unknown_D84 + unknown_D8C)
+        return true;
+    return false;
+}
+
+// Integer input pair is converted at 0x6D8B84 and 0x6D8BA5.
+static inline void ConvertPairVector_006D8B30(Vector3D& vector,
+                                              const Pair_006D9F80& point)
+{
+    vector.X = (float)point.unknown_00;
+    vector.Y = (float)point.unknown_04;
+    vector.Z = 0.0f;
+}
+
+// Float-to-pair conversion is expanded at native 0x6D8BCF/0x6D8BDA.
+static inline Pair_006D9F80 ConvertVectorPair_006D8B30(const Vector3D& vector)
+{
+    Pair_006D9F80 point;
+    point.unknown_00 = (int)vector.X;
+    point.unknown_04 = (int)vector.Y;
+    return point;
+}
+
+// FUNCTION: GAMEMD 0x6D8B30
+void Tactical::FUN_006D8B30()
+{
+    Pair_006D9F80 center = unknown_D64;
+    unknown_B0.unknown_00 = center.unknown_00;
+    unknown_B0.unknown_04 = center.unknown_04;
+    unknown_B0.unknown_00 = center.unknown_00 - DAT_00B0CE30 / 2;
+    unknown_B0.unknown_04 = center.unknown_04 - DAT_00B0CE34 / 2;
+    Vector3D transformed;
+    Pair_006D9F80 relative;
+    relative.unknown_00 = unknown_B0.unknown_00 - 60;
+    relative.unknown_04 = unknown_B0.unknown_04 - 30;
+    Vector3D vector;
+    ConvertPairVector_006D8B30(vector, relative);
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    Pair_006D9F80 point = ConvertVectorPair_006D8B30(vector);
+    unknown_D80 = point.unknown_00 / 256;
+    unknown_D84 = point.unknown_04 / 256;
+    unknown_D88 = DAT_00B0CE30 / 60 + 2;
+    unknown_D8C = DAT_00B0CE34 / 15 + 4;
+}
+
+
+// FUNCTION: GAMEMD 0x6D8C60
+void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
+{
+    Point2D point = DAT_00887324->CoordsToScreen(&object->vf_18());
+    Pair_006D9F80 offset = DAT_00887324->unknown_B0;
+    point.X -= offset.unknown_00;
+    point.Y -= offset.unknown_04;
+    if (point.X >= -360 && point.X <= DAT_00B0CE30 + 360 &&
+        point.Y >= -180 && point.Y <= DAT_00B0CE34 + 180) {
+        // 0x6D8D86/0x6D8D97 pass the address of this two-int point.
+        object->vf_67(&point, clip);
+        object->vf_68(&point, clip);
+    }
+}
+
+
+#include "terrain_class.h"
+
+
+
+// FUNCTION: GAMEMD 0x6D8DB0
+void Tactical::FUN_006D8DB0(bool argument)
+{
+    int width = Viewport_00886FA0.Width;
+    int originX = unknown_B0.unknown_00;
+    int height = Viewport_00886FA0.Height;
+    int originY = unknown_B0.unknown_04;
+    Vector3D first(originX + width / 2, originY - height, 0.0f);
+    Vector3D transformed;
+    first = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &first);
+    int left = first.X;
+    int top = first.Y;
+    Vector3D second(originX + width * 2, originY + height / 2, 0.0f);
+    second = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &second);
+    int right = second.X;
+    // Native third vector's Y is the original height, NOT second-vector Y.
+    Vector3D third(originX - width, height, 0.0f);
+    third = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &third);
+    int bottom = third.Y;
+    int extentX = (right - left) * 2;
+    int extentY = (bottom - top) * 2;
+
+    for (int layer = 0; layer < 5; ++layer) {
+        for (int index = 0; index < DisplayLayers[layer].Count; ++index) {
+            ObjectClass* object = DisplayLayers[layer].Items[index];
+            // Native stores this byte BEFORE its null test; do not add a guard.
+            object->IsVisible = false;
+            if (object && object->Flags.IsFoot) {
+                CoordStruct location = object->Location;
+                if (location.X < left || location.X >= left + extentX ||
+                    location.Y < top || location.Y >= top + extentY)
+                    continue;
+                object->vf_19(0); // Hidden coordinate result discarded, call retained.
+                if ((DAT_00A8B230->unknown_0000 & 0x1000) &&
+                    MapInstance.FUN_005865E0(&location))
+                    continue;
+                CoordStruct coordinate = object->vf_18();
+                Tactical* tactical = DAT_00887324;
+                Point2D position = tactical->CoordsToScreen(&coordinate);
+                position.X -= tactical->unknown_B0.unknown_00;
+                position.Y -= tactical->unknown_B0.unknown_04;
+                if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                    position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                    continue;
+                object->IsVisible = true;
+                object->vf_67(&position, &Viewport_00886FA0);
+                object->vf_65(&Viewport_00886FA0, argument, 0);
+            } else if (object && object->Flags.IsTechno) {
+                CoordStruct location = object->Location;
+                if (location.X < left || location.X >= left + extentX ||
+                    location.Y < top || location.Y >= top + extentY)
+                    continue;
+                object->IsVisible = true;
+                Point2D position;
+                CoordStruct coordinate = object->vf_18();
+                if (DAT_00887324->FUN_006D2140(&coordinate, &position)) {
+                    object->vf_67(&position, &Viewport_00886FA0);
+                    object->vf_68(&position, &Viewport_00886FA0);
+                }
+                object->vf_65(&Viewport_00886FA0, argument, 1);
+            } else {
+                int kind = object->vf_11();
+                if (kind == 4) {
+                    CoordStruct location = object->vf_18();
+                    if (location.X < left || location.X >= left + extentX ||
+                        location.Y < top || location.Y >= top + extentY)
+                        continue;
+                    // Native kind4 and Type+0x374 identify the canonical Anim layout.
+                    AnimClass* animation = static_cast<AnimClass*>(object);
+                    object->IsVisible = true;
+                    if (!animation->IsBuildingAnim && animation->Type->ShouldFogRemove) {
+                        CoordStruct coordinate = object->vf_18();
+                        if (MapInstance.FUN_005865E0(&coordinate))
+                            continue;
+                    }
+                    object->vf_65(&Viewport_00886FA0, argument, 0);
+                } else if (kind == 36) {
+                    // Native kind36; Terrain has the canonical ObjectClass base.
+                    TerrainClass* terrain = static_cast<TerrainClass*>(object);
+                    if (!terrain->Type->IsAnimated && !terrain->TimeToDie)
+                        continue;
+                    CoordStruct location = object->Location;
+                    if (location.X < left || location.X >= left + extentX ||
+                        location.Y < top || location.Y >= top + extentY)
+                        continue;
+                    if (MapInstance.FUN_005865E0(&location))
+                        continue;
+                    object->IsVisible = true;
+                    object->vf_65(&Viewport_00886FA0, argument, 0);
+                } else {
+                    CoordStruct location = object->Location;
+                    if (location.X < left || location.X >= left + extentX ||
+                        location.Y < top || location.Y >= top + extentY)
+                        continue;
+                    CoordStruct coordinate = object->vf_18();
+                    Tactical* tactical = DAT_00887324;
+                    Pair_006D9F80 rawTemporary;
+                    Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(coordinate.X, coordinate.Y);
+                    int screenX = raw.unknown_00 / 256;
+                    int screenY = raw.unknown_04 / 256 - Tactical::AdjustForZ(coordinate.Z);
+                    Point2D position(screenX, screenY);
+                    Point2D origin(tactical->unknown_B0.unknown_00,
+                                   tactical->unknown_B0.unknown_04);
+                    position -= origin;
+                    if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                        position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                        continue;
+                    object->IsVisible = true;
+                    object->vf_67(&position, &Viewport_00886FA0);
+                    object->vf_65(&Viewport_00886FA0, argument, 0);
+                }
+            }
+        }
+        if (layer == 2) {
+            for (int index = 0; index < DAT_00A8EB40.Count; ++index) {
+                BuildingClass* building = DAT_00A8EB40.Items[index];
+                if (!building->IsOnMap || !building->IsVisible)
+                    continue;
+                CoordStruct coordinate = building->vf_43();
+                Tactical* tactical = DAT_00887324;
+                Pair_006D9F80 rawTemporary;
+                Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(coordinate.X, coordinate.Y);
+                int screenX = raw.unknown_00 / 256;
+                int screenY = raw.unknown_04 / 256 - Tactical::AdjustForZ(coordinate.Z);
+                Point2D position(screenX - tactical->unknown_B0.unknown_00,
+                                 screenY - tactical->unknown_B0.unknown_04);
+                if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                    position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                    continue;
+                // Four globals loaded into a rectangle snapshot. Native's
+                // CMP ECX,ECX makes 9550 dead; the copied Y makes 9563 dead.
+                int clipWidth = Viewport_00886FA0.Width;
+                int clipX = Viewport_00886FA0.X;
+                int clipY = Viewport_00886FA0.Y;
+                int clipHeight = Viewport_00886FA0.Height;
+                RectangleStruct clip = { clipX, clipY, clipWidth, clipHeight };
+                // Blocks9550/9563 cannot execute: their comparisons use
+                // the same value or its unchanged local copy. Omit those
+                // dead adjustments rather than inventing live clipping.
+                building->FUN_0043E7B0(&position, &clip);
+            }
+        }
+    }
+    for (layer = 0; layer < 5; ++layer) {
+        // Final pass snapshots Count once per layer; Items reloads each entry.
+        int count = DisplayLayers[layer].Count;
+        for (int index = 0; index < count; ++index) {
+            ObjectClass* object = DisplayLayers[layer].Items[index];
+            if (!object->IsVisible || !object || !object->Flags.IsTechno)
+                continue;
+            if (object->Flags.IsFoot) {
+                object->vf_19(0);
+                if (DAT_00B73550 && !DAT_00A8ED6B &&
+                    (DAT_00A8B230->unknown_0000 & 0x1000)) {
+                    CoordStruct location = object->Location;
+                    if (MapInstance.FUN_005865E0(&location))
+                        continue;
+                }
+            }
+            CoordStruct coordinate = object->vf_18();
+            // This final projection is inlined native integer math, not an
+            // extra helper call or a float conversion suggested by pseudocode.
+            int rawX = coordinate.X * 60 / 2 + coordinate.Y * -60 / 2;
+            int rawY = coordinate.X * 30 / 2 + coordinate.Y * 30 / 2;
+            int screenX = rawX / 256;
+            int screenY = rawY / 256;
+            int bias = coordinate.Z >= 728 ? 1 : 0;
+            int lift = coordinate.Z * DAT_00B0CD48 + bias + 0.5;
+            screenY -= lift;
+            Tactical* tactical = DAT_00887324;
+            Point2D position(screenX - tactical->unknown_B0.unknown_00,
+                             screenY - tactical->unknown_B0.unknown_04);
+            if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                continue;
+            object->vf_68(&position, &Viewport_00886FA0);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D97D0
+void Tactical::FUN_006D97D0(bool force, const RectangleStruct* view, const RectangleStruct* clip)
+{
+    RectangleStruct temporary;
+    RectangleStruct bounds = *FUN_00421B60(&temporary, view, clip, 0, 0);
+    for (int index = DisplayLayers[2].Count - 1; index >= 0; --index) {
+        ObjectClass* object = DisplayLayers[2].Items[index];
+        if (object->vf_11() != 0x24 || object->vf_17())
+            continue;
+        // Terrain table7F522C slot11 returns24; RTTI ObjectClass base is at0
+        // (COL80C3E0, base descriptor7FB3D0), now the actual C++ base.
+        TerrainClass* terrain = static_cast<TerrainClass*>(object);
+        if (terrain->Type->IsAnimated || terrain->TimeToDie)
+            continue;
+        int originX = Viewport_00886FA0.X;
+        int originY = Viewport_00886FA0.Y;
+        RectangleStruct objectBounds = object->vf_75();
+        int left = objectBounds.X + originX;
+        int top = objectBounds.Y + originY;
+        if (left >= bounds.X + bounds.Width ||
+            top >= bounds.Y + bounds.Height ||
+            left + objectBounds.Width <= bounds.X ||
+            top + objectBounds.Height <= bounds.Y)
+            continue;
+        RectangleStruct originalClip = *clip;
+        object->vf_65(&originalClip, force, 0);
+        object->NeedsRedraw = false;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D9920
+void Tactical::FUN_006D9920(bool force, const RectangleStruct* view, const RectangleStruct* clip)
+{
+    RectangleStruct temporary;
+    RectangleStruct bounds = *FUN_00421B60(&temporary, view, clip, 0, 0);
+    for (int index = 0; index < DisplayLayers[2].Count; ++index) {
+        ObjectClass* object = DisplayLayers[2].Items[index];
+        if (object->vf_11() != 6)
+            continue;
+        BuildingClass* building = static_cast<BuildingClass*>(object);
+        if (building->IsFogged && !DAT_00A8ED6B)
+            continue;
+        int originX = Viewport_00886FA0.X;
+        int originY = Viewport_00886FA0.Y;
+        RectangleStruct objectBounds = object->vf_75();
+        objectBounds.X += originX;
+        objectBounds.Y += originY;
+        if (objectBounds.X >= bounds.X + bounds.Width ||
+            objectBounds.Y >= bounds.Y + bounds.Height ||
+            objectBounds.X + objectBounds.Width <= bounds.X ||
+            objectBounds.Y + objectBounds.Height <= bounds.Y)
+            continue;
+        RectangleStruct originalClip = *clip;
+        object->vf_65(&originalClip, force, 0);
+        object->NeedsRedraw = false;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D9A50
+void Tactical::FUN_006D9A50(RectangleStruct viewport)
+{
+    for (int index = 0; index < DisplayLayers[2].Count; ++index) {
+        ObjectClass* object = DisplayLayers[2].Items[index];
+        if (object->vf_11() == 6 && object->NeedsRedraw) {
+            RectangleStruct bounds = object->vf_75();
+            int left = bounds.X + Viewport_00886FA0.X;
+            int top = bounds.Y + Viewport_00886FA0.Y;
+            if (viewport.X < left + bounds.Width &&
+                viewport.Y < top + bounds.Height &&
+                left < viewport.X + viewport.Width &&
+                top < viewport.Y + viewport.Height) {
+                // 6D9AF4..6D9B15 forwards the original bounds, untranslated.
+                FUN_006D2790(bounds, false);
+                object->NeedsRedraw = false;
+            }
+        }
+    }
+}
+
+
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1700) + sizeof(bool) == 0x1701);
+
+// FUNCTION: GAMEMD 0x6D9B50
+bool Tactical::FUN_006D9B50(RectangleStruct viewport)
+{
+    const int left = unknown_B0.unknown_00 + viewport.X;
+    const int top = unknown_B0.unknown_04 + viewport.Y;
+    const int right = unknown_B0.unknown_00 + viewport.Width + viewport.X;
+    const int bottom = unknown_B0.unknown_04 + viewport.Height + viewport.Y;
+    for (int index = 0; index < DAT_00A8EB40.Count; ++index) {
+        BuildingClass* building = DAT_00A8EB40.Items[index];
+        // Native byte tests at 0x6D9BAB/+0x90,0x6D9BB9/+0x80,0x6D9BC7/+0x74.
+        // The canonical ObjectClass header already asserts all three offsets.
+        if (building->IsAlive && building->NeedsRedraw && building->IsOnMap) {
+            CoordStruct coordinate = building->vf_43();
+            Point2D projected;
+            projected.X = coordinate.X * 60 / 2 + coordinate.Y * -60 / 2;
+            projected.Y = coordinate.X * 30 / 2 + coordinate.Y * 30 / 2;
+            const int screenX = projected.X / 256;
+            const int screenY = projected.Y / 256 - AdjustForZ(coordinate.Z);
+            if (screenX >= left && screenX <= right && screenY >= top && screenY <= bottom)
+                return true;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6D9CE0
+void Tactical::FUN_006D9CE0(int x, int y, int width, int height)
+{
+    int left = unknown_B0.unknown_00 + x;
+    int top = unknown_B0.unknown_04 + y;
+    int right = unknown_B0.unknown_00 + width + x;
+    int bottom = unknown_B0.unknown_04 + height + y;
+    for (int index = 0; index < DAT_00A8EB40.Count; ++index) {
+        BuildingClass* building = DAT_00A8EB40.Items[index];
+        if (building->IsAlive && building->IsOnMap && !building->Type->bools_1700[1]) {
+            // Native reads Location directly; do not replace with vf43.
+            CoordStruct coordinate = building->Location;
+            Point2D projected;
+            projected.X = coordinate.X * 60 / 2;
+            projected.Y = coordinate.X * 30 / 2;
+            projected.X += coordinate.Y * -60 / 2;
+            projected.Y += coordinate.Y * 30 / 2;
+            int screenX = projected.X / 256;
+            int screenY = projected.Y / 256 - AdjustForZ(coordinate.Z);
+            if (screenX >= left && screenX <= right && screenY >= top && screenY <= bottom) {
+                int clientX = screenX - unknown_B0.unknown_00;
+                int clientY = screenY - unknown_B0.unknown_04;
+                if (unknown_DB0 != 500 && clientX >= -32 && clientX <= Viewport_00886FA0.Width + 32 &&
+                    clientY >= -32 && clientY <= Viewport_00886FA0.Height + 32) {
+                    DAT_00B0CEC8[unknown_DB0].unknown_00 = building;
+                    int originX = unknown_B0.unknown_00;
+                    int originY = unknown_B0.unknown_04;
+                    // Native6D9EA4 captures one index for both coordinate stores.
+                    int recordIndex = unknown_DB0;
+                    DAT_00B0CEC8[recordIndex].unknown_04 = originX + clientX;
+                    DAT_00B0CEC8[recordIndex].unknown_08 = originY + clientY;
+                    ++unknown_DB0;
+                }
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D9EF0
+//
+// Queues an object for selection at a client point. Refused when the queue is
+// full (500) or the point is more than 32 pixels outside the view bound; on
+// success the point is converted to tactical space by adding the view origin,
+// stored with the object at the old count, and the count is bumped.
+//
+// Two struct copies carry the match: the view origin is read as one Point2D
+// (both `[ECX+0xB0]`/`[ECX+0xB4]` loads land before either add), and the
+// point is stored into the queue entry as one Point2D, which is what makes
+// VC6 re-read the count once and address both stores as `[EAX*4+disp]` off a
+// single `LEA EAX,[EAX+EAX*2]` instead of hoisting `&entry` with a SHL.
+bool Tactical::AddSelectable(void* pTechno, int x, int y)
+{
+    int count = this->unknown_DB0;
+
+    if (count != 500
+        && x >= -32 && x <= DAT_00886FA8 + 32
+        && y >= -32 && y <= DAT_00886FAC + 32)
+    {
+        TacticalSelectables[count].Techno = pTechno;
+
+        Point2D pos;
+        pos.X = this->unknown_B0.unknown_00;
+        pos.Y = this->unknown_B0.unknown_04;
+        Point2D pt;
+        pt.X = x + pos.X;
+        pt.Y = y + pos.Y;
+        TacticalSelectables[this->unknown_DB0].Point = pt;
+
+        this->unknown_DB0 = this->unknown_DB0 + 1;
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6D9F80
+void Tactical::FUN_006D9F80(const Pair_006D9F80* value)
+{
+    if (unknown_D90.unknown_00 == 0 && unknown_D90.unknown_04 == 0) {
+        unknown_D90 = *value;
+        unknown_D98 = *value;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D9FC0
+void Tactical::FUN_006D9FC0(const Pair_006D9F80* value)
+{
+    if (unknown_D90.unknown_00 != 0 || unknown_D90.unknown_04 != 0)
+        unknown_D98 = *value;
+}
+
+template class TRect<int>;
+typedef TRect<int> Rect_006D9FF0;
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, X) == 0);
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, Y) == 4);
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, Width) == 8);
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, Height) == 12);
+GG_STATIC_ASSERT(sizeof(Rect_006D9FF0) == 16);
+
+// FUNCTION: GAMEMD 0x6D9FF0
+void Tactical::FUN_006D9FF0(Callback_006DA5C0 callback)
+{
+    if (!(unknown_D90 == Pair_006D9F80(0, 0))) {
+        int left = unknown_D90.unknown_00;
+        int right = unknown_D98.unknown_00;
+        int top = unknown_D90.unknown_04;
+        int bottom = unknown_D98.unknown_04;
+        if (left > right) {
+            int temporary = left;
+            left = right;
+            right = temporary;
+        }
+        if (top > bottom) {
+            int temporary = top;
+            top = bottom;
+            bottom = temporary;
+        }
+        TRect<int> rectangle;
+        rectangle.X = left;
+        rectangle.Y = top;
+        rectangle.Width = right - left + 1;
+        rectangle.Height = bottom - top + 1;
+        FUN_006DA5C0(&rectangle, callback);
+        unknown_D90 = Pair_006D9F80(0, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6DA080
+int Tactical::FUN_006DA080() const
+{
+    int left = unknown_D90.unknown_00;
+    int right = unknown_D98.unknown_00;
+    int top = unknown_D90.unknown_04;
+    int bottom = unknown_D98.unknown_04;
+    if (left > right) {
+        int temporary = left;
+        left = right;
+        right = temporary;
+    }
+    if (top > bottom) {
+        int temporary = top;
+        top = bottom;
+        bottom = temporary;
+    }
+    TRect<int> rectangle;
+    rectangle.X = left;
+    rectangle.Y = top;
+    rectangle.Width = right - left + 1;
+    rectangle.Height = bottom - top + 1;
+    if (rectangle.Width > 0 && rectangle.Height > 0) {
+        int i = 0;
+        if (unknown_DB0 > 0) {
+            for (;;) {
+            if (DAT_00B0CEC8[i].unknown_00 != 0 && DAT_00B0CEC8[i].unknown_00->IsAlive) {
+                int originX = unknown_B0.unknown_00;
+                int x = DAT_00B0CEC8[i].unknown_04 - originX;
+                int originY = unknown_B0.unknown_04;
+                int y = DAT_00B0CEC8[i].unknown_08 - originY;
+                if (x >= rectangle.X && x < rectangle.X + rectangle.Width
+                    && y >= rectangle.Y && y < rectangle.Y + rectangle.Height)
+                    return 1;
+            }
+                ++i;
+                if (i >= unknown_DB0) break;
+            }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6DA160
+void Tactical::FUN_006DA160()
+{
+    Pair_006D9F80 value(0, 0);
+    unknown_D90 = value;
+    unknown_D98 = value;
+}
+
+// FUNCTION: GAMEMD 0x6DA180
+void Tactical::FUN_006DA180()
+{
+    if (!(unknown_D90 == Pair_006D9F80(0, 0))) {
+        int left = unknown_D90.unknown_00;
+        int right = unknown_D98.unknown_00;
+        int top = unknown_D90.unknown_04;
+        int bottom = unknown_D98.unknown_04;
+        if (right < left) {
+            int temporary = left;
+            left = right;
+            right = temporary;
+        }
+        if (bottom < top) {
+            int temporary = top;
+            top = bottom;
+            bottom = temporary;
+        }
+        int width = right - left + 1;
+        int height = bottom - top + 1;
+        unsigned color = DAT_0087F6C4->Lookup(15);
+        RectangleStruct rectangle;
+        rectangle.X = left;
+        rectangle.Y = top;
+        rectangle.Width = width;
+        rectangle.Height = height;
+        DAT_00887314->DrawRectEx(&Viewport_00886FA0, &rectangle, color);
+    }
+}
+
+// GLOBAL: GAMEMD 0x84290C
+// Nine signed-offset lookup entries; retail indexes the middle at0x84291C.
+extern const int DAT_0084290C[9];
+
+// FUNCTION: GAMEMD 0x6DA230
+int Tactical::FUN_006DA230(int direction)
+{
+// SYNTHETIC: GAMEMD 0x6DA350
+// Generated cleanup for this function-local array.
+// GLOBAL: GAMEMD 0xB0CD98
+    static Pair_006D9F80 offsets[8] = {
+        Pair_006D9F80(0, -1), Pair_006D9F80(1, -1),
+        Pair_006D9F80(1, 0), Pair_006D9F80(1, 1),
+        Pair_006D9F80(0, 1), Pair_006D9F80(-1, 1),
+        Pair_006D9F80(-1, 0), Pair_006D9F80(-1, -1)
+    };
+    Pair_006D9F80 current = unknown_D64;
+    Pair_006D9F80 next(offsets[direction].unknown_00 + current.unknown_00,
+                      offsets[direction].unknown_04 + current.unknown_04);
+    if (!(next == current)) {
+        Pair_006D9F80 checked = next;
+        if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0)
+            next = checked;
+        direction = DAT_0084290C[(unknown_D64.unknown_00 - next.unknown_00) +
+                                (unknown_D64.unknown_04 - next.unknown_04) * 3 + 4];
+    }
+    return direction;
+}
+
+// FUNCTION: GAMEMD 0x6DA360
+// Copies the dword at src to dst and returns dst; the third argument is ignored.
+int* __stdcall FUN_006DA360(int* dst, int* src, int unused)
+{
+    *dst = *src;
+    return dst;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6DA370
+// Empty function that pops its stack arguments.
+void __stdcall FUN_006DA370(int a1)
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+
+#include "display_command.h"
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedPending) == 0x1190);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedType) == 0x1194);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedField) == 0x1198);
+
+#include "terrain_type_class.h"
+// Declaration: GAMEMD 0x40DD20; same pointer returned for native kinds1/2/6/15.
+TechnoClass* FUN_0040DD20(ObjectClass* object);
+
+// FUNCTION: GAMEMD 0x6DA380
+ObjectClass* Tactical::FUN_006DA380(const Point2D* point)
+{
+    // Native snapshots these relative-to-Tactical coordinates before callbacks.
+    int pickX = unknown_B0.unknown_00 + point->X;
+    int pickY = unknown_B0.unknown_04 + point->Y;
+    ObjectClass* best = 0;
+    unsigned int bestDistance = 0xFFFFFFFF;
+    for (int index = 0; index < unknown_DB0; ++index) {
+        ObjectClass* object = DAT_00B0CEC8[index].unknown_00;
+        if (!object) continue;
+        TechnoClass* techno = FUN_0040DD20(object);
+        bool eligible = false;
+        if (techno) {
+            if (object->IsAlive && !techno->InLimbo) {
+                eligible = true;
+                if (!techno->IsOwnedByCurrentPlayer && techno->CloakState == 2) {
+                    // PUSH house index precedes vf18 hidden result. It remains
+                    // pending across vf18 and565730 as4870D0's stack argument.
+                    int houseIndex = CurrentPlayer->ArrayIndex;
+                    CoordStruct location = techno->vf_18();
+                    CellClass* cell = MapInstance.FUN_00565730(&location);
+                    if (!cell->FUN_004870D0(houseIndex)) eligible = false;
+                }
+            }
+        } else {
+            // Preserve all three virtual type queries, including the third
+            // after type's own vf11 callback. Native kind37 is RTTI TerrainTypeClass.
+            if (object->vf_34() != 0 && object->vf_34()->vf_11() == 37) {
+                eligible = reinterpret_cast<TerrainTypeClass*>(object->vf_34())->IsVeinhole;
+            }
+        }
+        if (eligible) {
+            int dx = DAT_00B0CEC8[index].unknown_04 - pickX;
+            int dy = DAT_00B0CEC8[index].unknown_08 - pickY;
+            // Both squares are native signed32-bit IMUL values, converted to
+            // x87 separately.7E1738 is primary double0.5.7C5F00 is CRT__ftol.
+            unsigned int distance = dx * dx + 0.5 * (dy * dy);
+            if (distance < bestDistance && distance < 200) {
+                bestDistance = distance;
+                best = object;
+            }
+        }
+    }
+    if (best) return best;
+
+    // Fallback rereads the caller's point and current viewport origin AFTER
+    // every scan callback, unlike pickX/pickY's entry snapshot above.
+    Point2D absolute(point->X + Viewport_00886FA0.X,
+                     point->Y + Viewport_00886FA0.Y);
+    CellStruct cellCoordinate = FUN_006D6590(&absolute);
+    CellClass* cell = MapInstance.FUN_005657A0(&cellCoordinate);
+    return static_cast<ObjectClass*>(cell->FirstObject);
+}
+
+// FUNCTION: GAMEMD 0x6DA560
+void Tactical::vf_10(void* target, bool removed)
+{
+    for (int index = 0; index < 500; ++index) {
+        if (DAT_00B0CEC8[index].unknown_00 == target)
+            DAT_00B0CEC8[index].unknown_00 = 0;
+    }
+    if (target == Map_0087F7E8.SavedPending) {
+        DisplayCmdMap_0087F7E8.FUN_004A8D50(0);
+        Map_0087F7E8.SavedPending = 0;
+        Map_0087F7E8.SavedType = 0;
+        Map_0087F7E8.SavedField = -1;
+    }
+}
+
+#include "system_query_methods.h"
+// GLOBAL: GAMEMD 0x822CF2
+extern bool DAT_00822CF2;
+// Declaration: GAMEMD 0x7327D0; ID string in ECX.
+void FUN_007327D0(const char* text);
+
+// FUNCTION: GAMEMD 0x6DA5C0
+void Tactical::FUN_006DA5C0(const TRect<int>* rectangle,
+                           Callback_006DA5C0 callback)
+{
+    DAT_00822CF2 = true;
+    if (rectangle->Width > 0 && rectangle->Height > 0) {
+        // Re-read DB0 after each callback: the native loop is not bounded by
+        // an entry snapshot. Record pointer itself advances12 bytes each time.
+        for (int index = 0; index < unknown_DB0; ++index) {
+            ObjectClass* object = DAT_00B0CEC8[index].unknown_00;
+            if (object && object->IsAlive) {
+                Pair_006D9F80 offset = unknown_B0;
+                int x = DAT_00B0CEC8[index].unknown_04 - offset.unknown_00;
+                int y = DAT_00B0CEC8[index].unknown_08 - offset.unknown_04;
+                if (x >= rectangle->X && x < rectangle->X + rectangle->Width &&
+                    y >= rectangle->Y && y < rectangle->Y + rectangle->Height) {
+
+                    if (Unsorted_IsTypeSelecting()) {
+                        // Native slot88 result+24 is AbstractTypeClass::ID. The
+                        // object is nonnull but the returned type is not checked.
+                        FUN_007327D0(object->vf_34()->ID);
+                    } else if (!callback) {
+                        bool buildingAllowed = false;
+                        if (object->vf_11() == 6) {
+                            // Kind6 branch proves the BuildingClass-specific Type
+                            // access at+520; Type->UndeploysInto is+408, not Owner.
+                            BuildingClass* building = static_cast<BuildingClass*>(object);
+                            if (building->Type->UndeploysInto != 0 &&
+                                building->Type->IsVehicle())
+                                buildingAllowed = true;
+                        }
+                        HouseClass* owner = object->vf_15();
+                        if (owner && owner->IsControlledByCurrentPlayer() &&
+                            object->vf_78() &&
+                            (object->vf_11() != 6 || buildingAllowed) &&
+                            object->vf_83())
+                            DAT_00822CF2 = false;
+                    } else {
+                        callback(object);
+                    }
+                }
+            }
+        }
+    }
+    DAT_00822CF2 = true;
+}
+
+// GLOBAL: GAMEMD 0xA8ECBC
+extern ObjectClass** DAT_00A8ECBC;
+// GLOBAL: GAMEMD 0xA8ECC8
+extern int DAT_00A8ECC8;
+
+// FUNCTION: GAMEMD 0x6DA740
+void Tactical::FUN_006DA740()
+{
+    while (DAT_00A8ECC8 != 0)
+        DAT_00A8ECBC[0]->vf_84();
+    FUN_00731D00(0);
+}
+
+// FUNCTION: GAMEMD 0x006DBCE0
+HRESULT __stdcall Tactical::GetClassID(CLSID* pClassID)
+{
+    if (pClassID == 0)
+        return E_POINTER;
+    *pClassID = DAT_007E9950;
+    return S_OK;
+}
+
+// GLOBAL: GAMEMD 0x87F7F4 (declaration)
+extern int DAT_0087F7F4;
+
+// FUNCTION: GAMEMD 0x6DA770
+bool Tactical::FUN_006DA770()
+{
+    if (DAT_00A8ECC8 == 1) {
+        ObjectClass* object = DAT_00A8ECBC[0];
+        if (object->vf_15() != 0) {
+            bool controlled;
+            if (Session_00A8B238.GameMode == 0)
+                controlled = object->vf_15()->IsInPlayerControl != 0;
+            else
+                controlled = object->vf_15()->IsControlledByCurrentPlayer();
+            if (!controlled) {
+                object->vf_84();
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6DA7D0
+void Tactical::FUN_006DA7D0(CellClass* cell)
+{
+    if (DAT_0087F7F4 != 0 || cell->unknown_5C == CurrentFrame ||
+        (!(cell->AltFlags & 8) && !cell->VisibilityChanged))
+        return;
+    cell->unknown_5C = CurrentFrame;
+    CoordStruct coordinate;
+    cell->GetCellCoords(&coordinate);
+    Point2D projected;
+    projected.X = coordinate.X * 60 / 2;
+    projected.Y = coordinate.X * 30 / 2;
+    projected.X += coordinate.Y * -60 / 2;
+    projected.Y += coordinate.Y * 30 / 2;
+    // Native both AltFlags8/10 branches have identical XY projection and
+    // explicitly pass zero to AdjustForZ; do not substitute coordinate.Z.
+    int screenX = projected.X / 256;
+    int screenY = projected.Y / 256 - AdjustForZ(0);
+    screenX -= unknown_B0.unknown_00;
+    screenY -= unknown_B0.unknown_04;
+    if (screenX >= Viewport_00886FA0.X - 30 && screenY >= -30 &&
+        screenX <= Viewport_00886FA0.Width + Viewport_00886FA0.X + 30 &&
+        screenY <= Viewport_00886FA0.Height + Viewport_00886FA0.Y + 15) {
+        if (unknown_E0 < 799) {
+            unknown_E4[unknown_E0] = cell;
+            ++unknown_E0;
+        }
+        // Native clears/sets these even when the queue is full.
+        cell->VisibilityChanged = 0;
+        unknown_D7D = true;
+    }
+}
+
+#include "pixel_shift_view.h"
+// GLOBAL: GAMEMD 0xA83CD9
+extern ColorStruct DAT_00A83CD9;
+// GLOBAL: GAMEMD 0xB0CEB4
+extern int DAT_00B0CEB4;
+// GLOBAL: GAMEMD 0x842930
+extern unsigned char DAT_00842930[];
+
+// FUNCTION: GAMEMD 0x6DA9D0
+void Tactical::FUN_006DA9D0(bool argument)
+{
+    int phase = (0x7FFFFFFF - CurrentFrame) % 15;
+    unsigned int background =
+        ((DAT_00A83CD9.B >> gg_b_translucent_pixel_format.loss2)
+            << gg_b_translucent_pixel_format.pos2) |
+        ((DAT_00A83CD9.G >> gg_b_translucent_pixel_format.loss1)
+            << gg_b_translucent_pixel_format.pos1) |
+        ((DAT_00A83CD9.R >> gg_b_translucent_pixel_format.loss0)
+            << gg_b_translucent_pixel_format.pos0);
+    // Reverse traversal snapshots the initial count, reloads Items each entry.
+    for (int index = CurrentObjects.Count - 1; index >= 0; --index) {
+        ObjectClass* object = CurrentObjects.Items[index];
+        if (object->vf_11() != 6 || !object->IsAlive || !object->IsSelected)
+            continue;
+        // Primary459EC0 returns6; BuildingClass RTTI/table corroborates this boundary.
+        BuildingClass* building = static_cast<BuildingClass*>(object);
+        if (building->Owner != CurrentPlayer || !building->vf_161() ||
+            !building->ArchiveTarget)
+            continue;
+        CoordStruct coordinate = building->vf_18();
+        CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+        Point2D start(projected.X - unknown_B0.unknown_00 + Viewport_00886FA0.X,
+                      projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y);
+        // AbstractClass already owns the coordinate-returning slot18.
+        CoordStruct targetCoordinate = building->ArchiveTarget->vf_18();
+        CoordStruct ground = targetCoordinate;
+        ground.Z = MapInstance.FUN_00578080(&ground);
+        CellClass* cell = MapInstance.FUN_00565730(&ground);
+        if (cell->Flags & 0x100)
+            ground.Z += DAT_00B0CEB4;
+        Pair_006D9F80 rawTemporary;
+        Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(ground.X, ground.Y);
+        int endX = raw.unknown_00 / 256;
+        int endY = raw.unknown_04 / 256 - Tactical::AdjustForZ(ground.Z);
+        Point2D end(endX, endY);
+        Point2D origin(unknown_B0.unknown_00, unknown_B0.unknown_04);
+        end -= origin;
+        end.X += Viewport_00886FA0.X;
+        end.Y += Viewport_00886FA0.Y;
+        start.Y += 2;
+        end.Y += 2;
+        if (ClipLine(&start, &end, &Viewport_00886FA0))
+            DAT_00887314->unknown_4C(&start, &end, background,
+                                    DAT_00842930, phase, argument);
+        // Owner and its color are read again after the first optional surface
+        // callback. ClipLine edits the SAME two endpoints used by later lines.
+        HouseClass* owner = building->Owner;
+        unsigned int color =
+            ((owner->Color.B >> gg_b_translucent_pixel_format.loss2)
+                << gg_b_translucent_pixel_format.pos2) |
+            ((owner->Color.G >> gg_b_translucent_pixel_format.loss1)
+                << gg_b_translucent_pixel_format.pos1) |
+            ((owner->Color.R >> gg_b_translucent_pixel_format.loss0)
+                << gg_b_translucent_pixel_format.pos0);
+        --start.Y;
+        --end.Y;
+        if (ClipLine(&start, &end, &Viewport_00886FA0))
+            DAT_00887314->unknown_4C(&start, &end, color,
+                                    DAT_00842930, phase, argument);
+        --start.Y;
+        --end.Y;
+        if (ClipLine(&start, &end, &Viewport_00886FA0))
+            DAT_00887314->unknown_4C(&start, &end, color,
+                                    DAT_00842930, phase, argument);
+    }
+}
+
+
+#include "waypoint_path_class_methods.h"
+#include <wchar.h>
+// Declaration: GAMEMD 0x5BE970/5BE990, one stack word, RET4.
+int __stdcall FUN_005BE970(int index);
+int __stdcall FUN_005BE990(int index);
+// Declaration: GAMEMD 0x5B40B0, assetnameECX/flagDL, raw asset pointer.
+void* FUN_005B40B0(const char* name, bool flag);
+// Declaration: GAMEMD 0x4AEA20, one stack index, RET4; ECX unused.
+void __stdcall FUN_004AEA20(int index);
+// GLOBAL: GAMEMD 0xB0E644
+extern ShapeHeader* DAT_00B0E644;
+// GLOBAL: GAMEMD 0xB0CD80
+extern wchar_t DAT_00B0CD80[];
+struct ColorScheme;
+// GLOBAL: GAMEMD 0xB054D4
+extern ColorScheme** DAT_00B054D4;
+// GLOBAL: GAMEMD 0x842940
+extern unsigned char DAT_00842940[];
+// Declaration: GAMEMD 0x4A6010, resultECX/textEDX, RET28.
+void FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface,
+    RectangleStruct* clip, Point2D* position, ColorScheme* scheme,
+    int background, int flags, int extra);
+// STRING: GAMEMD 0x82604C -- "MOUSE.SHA"
+// STRING: GAMEMD 0x81B3D0 -- L"%d"
+
+// FUNCTION: GAMEMD 0x6DAD60
+void Tactical::FUN_006DAD60(bool argument)
+{
+    int phase = (0x7FFFFFFF - CurrentFrame) % 15;
+    int firstFrame = FUN_005BE970(60);
+    int frameCount = FUN_005BE990(60);
+    int frame = unknown_DA0 % frameCount + firstFrame;
+    if (DAT_00A8ED6B)
+        return;
+    unsigned short* palette = static_cast<unsigned short*>(DAT_0087F6C8->ColorTable) + 1;
+    unsigned short savedPalette[8];
+    memcpy(savedPalette, palette, sizeof savedPalette);
+    if (!DAT_00B0E644)
+        DAT_00B0E644 = static_cast<ShapeHeader*>(FUN_005B40B0("MOUSE.SHA", false));
+    int originY = Viewport_00886FA0.Y + 1;
+    int scheme = ScenarioInstance->unknown_1258 == 1 ? 12 : 14;
+    for (int pathIndex = 0; pathIndex < 12; ++pathIndex) {
+        CurrentPlayer->EnsurePlanningPathExists(pathIndex);
+        int count = CurrentPlayer->PlanningPaths[pathIndex]->Waypoints.Count;
+        if (count != 0)
+            FUN_004AEA20(pathIndex);
+        for (int index = 0; index < count; ++index) {
+            WaypointClass* waypoint =
+                CurrentPlayer->PlanningPaths[pathIndex]->GetWaypoint(index);
+            Pair_006D9F80 rawTemporary;
+            Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(waypoint->X, waypoint->Y);
+            int x = raw.unknown_00 / 256;
+            int y = raw.unknown_04 / 256 - Tactical::AdjustForZ(waypoint->Z);
+            Point2D start(x, y);
+            Point2D origin(unknown_B0.unknown_00, unknown_B0.unknown_04);
+            start -= origin;
+            bool visible = false;
+            if (start.X >= -360 && start.X <= DAT_00B0CE30 + 360 &&
+                start.Y >= -180 && start.Y <= DAT_00B0CE34 + 180) {
+                // Native passes the original node's coordinate storage.
+                if (argument)
+                    visible = MapInstance.FUN_00586360(waypoint);
+                else
+                    visible = !MapInstance.FUN_00586360(waypoint);
+            }
+            start.Y += Viewport_00886FA0.Y;
+            if (visible) {
+                Point2D marker(start.X, start.Y - originY);
+                FUN_004AED70(DAT_00887314, DAT_0087F6C8,
+                             DAT_00B0E644, frame, &marker, &Viewport_00886FA0,
+                             0x600, 0, 0, 0, 1000, 0, 0, 0, Point2D(0, 0));
+                swprintf(DAT_00B0CD80, L"%d", index);
+                Point2D label(start.X - 1, start.Y - originY - 25);
+                Point2D textResult;
+                FUN_004A6010(&textResult, DAT_00B0CD80, DAT_00887314,
+                             &Viewport_00886FA0, &label, DAT_00B054D4[scheme],
+                             0, 0x109, 1);
+            }
+            // The current house and path pointer are loaded again AFTER all
+            // optional marker/text callbacks; preserve the original node pointer.
+            WaypointClass* next =
+                CurrentPlayer->PlanningPaths[pathIndex]->GetWaypointAfter(waypoint);
+            if (!next)
+                continue;
+            Pair_006D9F80 nextTemporary;
+            Pair_006D9F80 nextRaw = *nextTemporary.FUN_006D1EB0(next->X, next->Y);
+            int z = next->Z;
+            int endX = nextRaw.unknown_00 / 256;
+            int endY = nextRaw.unknown_04 / 256;
+            int bias = z >= 728 ? 1 : 0;
+            int lift = z * AdjustForZ_Factor + bias + 0.5;
+            endY -= lift;
+            Point2D end(endX - unknown_B0.unknown_00,
+                        endY - unknown_B0.unknown_04 + Viewport_00886FA0.Y);
+            if (!ClipLine(&start, &end, &Viewport_00886FA0))
+                continue;
+            bool selected = pathIndex == CurrentPlayer->SelectedPathIndex;
+            unsigned int color = DAT_0087F6C8->Lookup(3);
+            if (selected) {
+                phase = DAT_00887314->unknown_4C(&start, &end, color,
+                                                DAT_00842940, phase, argument);
+            } else {
+                DAT_00887314->unknown_50(&start, &end, color, argument);
+            }
+        }
+    }
+    // Restore the ORIGINAL saved palette pointer, not a reloaded global owner.
+    memcpy(palette, savedPalette, sizeof savedPalette);
+}
+
+// FUNCTION: GAMEMD 0x6DB210
+void Tactical::FUN_006DB210()
+{
+    MapInstance.IteratorBegin_578350();
+    CellClass* cell = MapInstance.IteratorNext_578290();
+    const BTranslucentPixelFormat& pixel = gg_b_translucent_pixel_format;
+    unsigned int yellow = ((255 >> pixel.loss1) << pixel.pos1) |
+                          ((255 >> pixel.loss0) << pixel.pos0) |
+                          ((0 >> pixel.loss2) << pixel.pos2);
+    unsigned int magenta = ((255 >> pixel.loss2) << pixel.pos2) |
+                           ((0 >> pixel.loss1) << pixel.pos1) |
+                           ((255 >> pixel.loss0) << pixel.pos0);
+    unsigned int cyan = ((0 >> pixel.loss0) << pixel.pos0) |
+                        ((255 >> pixel.loss2) << pixel.pos2) |
+                        ((255 >> pixel.loss1) << pixel.pos1);
+
+    while (cell) {
+        ObjectClass* first = static_cast<ObjectClass*>(cell->FirstObject);
+        if (first) {
+            CoordStruct cellCoordinate;
+            CoordStruct firstCell = *cell->GetCellCoords(&cellCoordinate);
+            Point2D cellPoint = CoordsToScreen(&firstCell);
+            cellPoint.X -= unknown_B0.unknown_00;
+            cellPoint.Y -= unknown_B0.unknown_04;
+
+            CoordStruct firstCoordinate = first->vf_18();
+            Point2D objectPoint = CoordsToScreen(&firstCoordinate);
+            objectPoint.X -= unknown_B0.unknown_00;
+            objectPoint.Y -= unknown_B0.unknown_04;
+            RectangleStruct dot = { cellPoint.X - 1, cellPoint.Y - 1, 3, 3 };
+            DAT_00887314->FillRectEx(&Viewport_00886FA0, &dot, yellow);
+            DAT_00887314->DrawLineEx(&Viewport_00886FA0, &cellPoint,
+                                     &objectPoint, yellow);
+        }
+
+        ObjectClass* alternate = static_cast<ObjectClass*>(cell->AltObject);
+        if (alternate) {
+            CoordStruct cellCoordinate;
+            CoordStruct firstCell = *cell->GetCellCoords(&cellCoordinate);
+            Point2D cellPoint = CoordsToScreen(&firstCell);
+            cellPoint.X -= unknown_B0.unknown_00;
+            cellPoint.Y -= unknown_B0.unknown_04 + 60;
+
+            CoordStruct alternateCoordinate = alternate->vf_18();
+            Point2D objectPoint = CoordsToScreen(&alternateCoordinate);
+            objectPoint.X -= unknown_B0.unknown_00;
+            objectPoint.Y -= unknown_B0.unknown_04;
+            RectangleStruct dot = { cellPoint.X - 1, cellPoint.Y - 1, 3, 3 };
+            DAT_00887314->FillRectEx(&Viewport_00886FA0, &dot, cyan);
+            DAT_00887314->DrawLineEx(&Viewport_00886FA0, &cellPoint,
+                                     &objectPoint, cyan);
+        }
+        cell = MapInstance.IteratorNext_578290();
+    }
+
+    for (int index = DAT_00A8E360.Count - 1; index >= 0; --index) {
+        ObjectClass* object = DAT_00A8E360.Items[index];
+        if (!object->NextObject) continue;
+
+        CoordStruct coordinate = object->vf_18();
+        Point2D objectPoint = CoordsToScreen(&coordinate);
+        objectPoint.X -= unknown_B0.unknown_00;
+        objectPoint.Y -= unknown_B0.unknown_04;
+
+        // Native reloads NextObject after the first virtual coordinate callback.
+        CoordStruct nextCoordinate = static_cast<ObjectClass*>(object->NextObject)->vf_18();
+        Point2D nextPoint;
+        FUN_006D2140(&nextCoordinate, &nextPoint);
+        DAT_00887314->DrawLineEx(&Viewport_00886FA0, &objectPoint,
+                                 &nextPoint, magenta);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6DB620
+void Tactical::FUN_006DB620()
+{
+    MapInstance.IteratorBegin_578350();
+    CellClass* cell = MapInstance.IteratorNext_578290();
+    const BTranslucentPixelFormat& pixel = gg_b_translucent_pixel_format;
+    unsigned int color = ((0 >> pixel.loss2) << pixel.pos2) |
+                         ((255 >> pixel.loss1) << pixel.pos1) |
+                         ((255 >> pixel.loss0) << pixel.pos0);
+
+    while (cell) {
+        RectangleStruct cellBounds = cell->FUN_0047FF80();
+        RectangleStruct temporary;
+        RectangleStruct visible = *FUN_00421B60(&temporary, &cellBounds,
+                                                 &Viewport_00886FA0, 0, 0);
+        if (visible.Width > 0 && visible.Height > 0) {
+            CoordStruct cellCoordinate;
+            CoordStruct coordinate = *cell->GetCellCoords(&cellCoordinate);
+            Point2D point = CoordsToScreen(&coordinate);
+            point.X -= unknown_B0.unknown_00 + 2;
+            point.Y = point.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y - 2;
+            RectangleStruct dot = { point.X, point.Y, 4, 4 };
+
+            if (cell->OccupationBits & 0x04) {
+                Point2D offset(10, 0);
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->OccupationBits & 0x10) {
+                Point2D offset(0, 6);
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->OccupationBits & 0x08) {
+                Point2D offset(-10, 0);
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->OccupationBits & 0xE0)
+                DAT_00887314->FillRect(&dot, color);
+
+            if (cell->AltOccupationBits & 0x04) {
+                Point2D offset(10, -60);
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->AltOccupationBits & 0x10) {
+                Point2D offset(0, -66);
+                Point2D shifted(dot.X + offset.X, dot.Y + offset.Y);
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->AltOccupationBits & 0x08) {
+                Point2D shifted(dot.X - 10, dot.Y - 60);
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->AltOccupationBits & 0xE0) {
+                RectangleStruct marker = { dot.X, dot.Y - 60, dot.Width, dot.Height };
+                DAT_00887314->FillRect(&marker, color);
+            }
+        }
+        cell = MapInstance.IteratorNext_578290();
+    }
+}
+
+// FUNCTION: GAMEMD 0x6DBB60
+bool Tactical::vf_24(const CoordStruct* first, const CoordStruct* second,
+                     unsigned int color, bool mode)
+{
+    Pair_006D9F80 firstProjection;
+    firstProjection.FUN_006D1EB0(first->X, first->Y);
+    Point2D firstPoint;
+    firstPoint.X = firstProjection.unknown_00 / 256;
+    firstPoint.Y = firstProjection.unknown_04 / 256 - AdjustForZ(first->Z);
+    firstPoint.X -= unknown_B0.unknown_00;
+    firstPoint.Y -= unknown_B0.unknown_04;
+
+    Pair_006D9F80 secondProjection;
+    secondProjection.FUN_006D1EB0(second->X, second->Y);
+    Point2D secondPoint;
+    secondPoint.X = secondProjection.unknown_00 / 256;
+    secondPoint.Y = secondProjection.unknown_04 / 256 - AdjustForZ(second->Z);
+    secondPoint.X -= unknown_B0.unknown_00;
+    secondPoint.Y -= unknown_B0.unknown_04;
+
+    // Native reloads both endpoint heights after projection callbacks.
+    int secondZ = second->Z;
+    int secondBias = secondZ >= 728 ? 1 : 0;
+    int firstZ = first->Z;
+    int firstBias = firstZ >= 728 ? 1 : 0;
+    Surface* surface = DAT_00887314;
+    int secondDepth = 14 - (int)(secondZ * AdjustForZ_Factor + secondBias + 0.5);
+    int firstDepth = 14 - (int)(firstZ * AdjustForZ_Factor + firstBias + 0.5);
+    surface->unknown_34(&Viewport_00886FA0, &firstPoint, &secondPoint,
+                        color, firstDepth, secondDepth, mode);
+    return true; // Native ignores the Surface result and returnsAL1.
+}
+
+
+// FUNCTION: GAMEMD 0x6DBD20
+HRESULT __stdcall Tactical::Load(IStream* stream)
+{
+    HRESULT hr = AbstractClass::Load(stream);
+    if (hr < 0) return hr;
+    new (this) Tactical(AbstractNoInit());
+    unknown_DB0 = 0;
+    for (int i = 0; i < unknown_E0; ++i) {
+        // 0x6DBD69 passes this four-byte pointer-field address to 0x6CF240.
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E4[i]);
+    }
+    Pair_006D9F80 point = unknown_D64;
+    if (FUN_006D8640(&point) && !DAT_00A8ED6B) {
+        unknown_D64 = point;
+        unknown_D74 = point;
+    } else {
+        unknown_D74 = unknown_D64;
+    }
+    FUN_006D8B30();
+    unknown_D7D = true;
+    return 0;
+}
+
+// GLOBAL: GAMEMD 0xA8EB7E
+extern unsigned char DAT_00A8EB7E;
+// GLOBAL: GAMEMD 0x8809A0
+extern int DAT_008809A0;
+// GLOBAL: GAMEMD 0x842950
+extern int DAT_00842950;
+// GLOBAL: GAMEMD 0x842954
+extern int DAT_00842954;
+// GLOBAL: GAMEMD 0xB0E648
+extern int DAT_00B0E648;
+// GLOBAL: GAMEMD 0xB0E64C
+extern int DAT_00B0E64C;
+// Declaration: GAMEMD 0x456980, CL/DL flags, coordinate/color values, RET28.
+void FUN_00456980(char first, char second, CoordStruct center, ColorStruct color,
+                  float range, char a6, char a7);
+// Declaration: GAMEMD 0x4CAC40, cdecl double input/result.
+double __cdecl FUN_004CAC40(double value);
+
+// FUNCTION: GAMEMD 0x6DBE20
+void Tactical::FUN_006DBE20()
+{
+    int selectedCount = DAT_00A8ECC8;
+    for (int index = 0; index < selectedCount; ++index) {
+        ObjectClass* object = DAT_00A8ECBC[index];
+        if (object->vf_34() && object->vf_34()->HasRadialIndicator)
+            object->vf_76(1);
+    }
+    if (!DAT_00A8EB7E) return;
+    ObjectClass* selected = PlacementObject_0088098C;
+    if (selected && selected->vf_11() == 6) {
+        BuildingClass* building = static_cast<BuildingClass*>(selected);
+        int range = building->FUN_004566B0();
+        if (range <= 0) return;
+        CellStruct cellPosition = DAT_0088095C;
+        CoordStruct temporary;
+        CoordStruct center = *MapInstance.FUN_005657A0(&cellPosition)->GetCellCoords(&temporary);
+        // GLOBAL: GAMEMD 0xB0CE14
+        static ColorStruct DAT_00B0CE14(0, 0, 0);
+        DAT_00B0E648 += DAT_00842950 * 10;
+        if (DAT_00B0E648 >= 100) DAT_00842950 = -1;
+        else if (DAT_00B0E648 <= 0) DAT_00842950 = 1;
+        ColorStruct color = building->Owner->Color;
+        color.FUN_006612C0(DAT_00B0E648, DAT_00B0CE14);
+        // The second query, after the blend callback, supplies drawing AND distance bounds.
+        range = building->FUN_004566B0();
+        FUN_00456980(0, 1, center, color, (float)range, 0, 1);
+        int buildingCount = CurrentPlayer->Buildings.Count;
+        int minimum = 0x7FFFFFFF;
+        for (int candidateIndex = 0; candidateIndex < buildingCount; ++candidateIndex) {
+            BuildingClass* candidate = CurrentPlayer->Buildings.Items[candidateIndex];
+            if (!candidate || !candidate->IsAlive || candidate == building || candidate->Type != building->Type)
+                continue;
+            CellStruct target = DAT_0088095C;
+            CoordStruct coordinate = candidate->vf_18();
+            short x = (short)(coordinate.X / 256);
+            short y = (short)(coordinate.Y / 256);
+            short dx = (short)(target.X - x);
+            short dy = (short)(target.Y - y);
+            int distance = (short)(int)FUN_004CAC40((double)dx * dx + (double)dy * dy);
+            if (distance <= range * 2 && distance < minimum)
+                minimum = distance;
+        }
+        for (candidateIndex = 0; candidateIndex < buildingCount; ++candidateIndex) {
+            BuildingClass* candidate = CurrentPlayer->Buildings.Items[candidateIndex];
+            if (!candidate || !candidate->IsAlive || candidate == building || candidate->Type != building->Type)
+                continue;
+            CellStruct target = DAT_0088095C;
+            CoordStruct coordinate = candidate->vf_18();
+            short x = (short)(coordinate.X / 256);
+            short y = (short)(coordinate.Y / 256);
+            short dx = (short)(target.X - x);
+            short dy = (short)(target.Y - y);
+            int distance = (short)(int)FUN_004CAC40((double)dx * dx + (double)dy * dy);
+            if (distance == minimum) candidate->vf_76(0);
+        }
+        return;
+    }
+    if (DAT_008809A0 == -1) return;
+    SuperWeaponTypeClass* type = SuperWeaponTypeClass_Array.Items[DAT_008809A0];
+    float scale = type->Range;
+    if (!(scale > 0.0f)) return;
+    CellStruct cellPosition = DAT_0088095C;
+    CoordStruct temporary;
+    CoordStruct center = *MapInstance.FUN_005657A0(&cellPosition)->GetCellCoords(&temporary);
+    center.X -= 126;
+    center.Y -= 126;
+    // GLOBAL: GAMEMD 0xB0CD70
+    static ColorStruct DAT_00B0CD70(0, 0, 0);
+    int direction = DAT_00842954;
+    int level = DAT_00B0E64C + direction * 10;
+    DAT_00B0E64C = level;
+    if (level >= 100) { direction = -1; DAT_00842954 = direction; }
+    else if (level <= 0) { direction = 1; DAT_00842954 = direction; }
+    ColorStruct baseColor = HouseClass_ArrayItems[CurrentPlayer->ArrayIndex]->Color;
+    ColorStruct color(0, 0, 0);
+    int count = type->LineMultiplier;
+    if (count > 0) {
+        if ((float)count * scale < 0.0f) return;
+        int step = 0;
+        do {
+            color = baseColor;
+            level += direction * 10;
+            if (level >= 100) direction = -1;
+            else if (level <= 0) direction = 1;
+            color.FUN_006612C0(level, DAT_00B0CD70);
+            FUN_00456980(0, 1, center, color, (float)step / (float)type->LineMultiplier, 0, 0);
+            ++step;
+            // Native TEST AH,0x41 repeats for less/equal OR unordered.
+        } while (!((float)step > (float)type->LineMultiplier * scale));
+        return;
+    }
+    baseColor.FUN_006612C0(level, DAT_00B0CD70);
+    FUN_00456980(0, 1, center, baseColor, scale, 0, 1);
+}
+
+// SYNTHETIC: GAMEMD 0x6DC400
+// Compiler cleanup for FUN_006DBE20's local static DAT_00B0CD70.
+// SYNTHETIC: GAMEMD 0x6DC410
+// Compiler cleanup for FUN_006DBE20's local static DAT_00B0CE14.
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6DC430
+ObjectClass* Tactical::FUN_006DC430(int index)
+{
+    return DAT_00B0CEC8[index].unknown_00;
+}
+
+// FUNCTION: GAMEMD 0x6DC450
+// Returns a constant. Vtable slot 11 of Tactical (RTTI).
+int Obj_006DC450::FUN_006DC450() const
+{
+    return 0x38;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6DC460
+// Returns a constant. Vtable slot 12 of Tactical (RTTI).
+int Obj_006DC460::FUN_006DC460() const
+{
+    return 0xE18;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// SYNTHETIC: GAMEMD 0x006DC470
+// Tactical::scalar deleting destructor
+
+GG_STATIC_ASSERT(offsetof(VectorClass<DirtyAreaStruct>, Items) == 4);
+GG_STATIC_ASSERT(sizeof(((VectorClass<DirtyAreaStruct>*)0)->Items) == 4);
+
+// FUNCTION: GAMEMD 0x6DC4C0
+Point2D& Point2D::operator-=(Point2D const& other)
+{
+    X -= other.X;
+    Y -= other.Y;
+    return *this;
+}
+
+// FUNCTION: GAMEMD 0x006DC510
+// DynamicVectorClass<DirtyAreaStruct>::Slot5
+// FUNCTION: GAMEMD 0x6DC540
+// VectorClass<DirtyAreaStruct>::Slot6
+// FUNCTION: GAMEMD 0x006DC5E0
+// VectorClass<DirtyAreaStruct>::operator==
+// FUNCTION: GAMEMD 0x006DC660
+// VectorClass<DirtyAreaStruct>::SetCapacity
+// FUNCTION: GAMEMD 0x006DC7B0
+// VectorClass<DirtyAreaStruct>::FindItemIndex
+// FUNCTION: GAMEMD 0x006DC820
+// VectorClass<DirtyAreaStruct>::Slot5
+// FUNCTION: GAMEMD 0x006DC970
+// DynamicVectorClass<DirtyAreaStruct>::FindItemIndex
+template class VectorClass<DirtyAreaStruct>;
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0x87F8E8
+int DAT_0087F8E8;
+// GLOBAL: GAMEMD 0x87F8EC
+int DAT_0087F8EC;
+// GLOBAL: GAMEMD 0x87F8F0
+int DAT_0087F8F0;
+// GLOBAL: GAMEMD 0x886FAC
+int DAT_00886FAC;
+// GLOBAL: GAMEMD 0x89C4D0
+BitFont* DAT_0089C4D0;
+// GLOBAL: GAMEMD 0xB0CDD8
+double DAT_00B0CDD8;
+// GLOBAL: GAMEMD 0xB0CE18
+double DAT_00B0CE18;
+// GLOBAL: GAMEMD 0xB0CE2C
+int DAT_00B0CE2C;
+// GLOBAL: GAMEMD 0xB0CE30
+int DAT_00B0CE30;
+// GLOBAL: GAMEMD 0xB0CE34
+int DAT_00B0CE34;
+// GLOBAL: GAMEMD 0xB0CEA0
+double DAT_00B0CEA0;
+// GLOBAL: GAMEMD 0xB0CEA8
+int DAT_00B0CEA8;
+// GLOBAL: GAMEMD 0xB0CEAC
+int DAT_00B0CEAC;
+// GLOBAL: GAMEMD 0xB0CEB0
+int DAT_00B0CEB0;
+// GLOBAL: GAMEMD 0xB0CEB8
+double DAT_00B0CEB8;
+// GLOBAL: GAMEMD 0x842904
+int DAT_00842904 = -1;
+// GLOBAL: GAMEMD 0x842908
+int DAT_00842908 = -1;
+// GLOBAL: GAMEMD 0x7F4180
+extern const double DAT_007F4180 = 60.0;
+// GLOBAL: GAMEMD 0x87F8E4
+int DAT_0087F8E4;
+// GLOBAL: GAMEMD 0xB0CD48
+double AdjustForZ_Factor;
+// GLOBAL: GAMEMD 0xA8ECBC
+ObjectClass** DAT_00A8ECBC;
+// GLOBAL: GAMEMD 0x7E9950
+extern const CLSID DAT_007E9950 = {0xCF56B38A, 0x240D, 0x11D2, {0x81, 0x7C, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5}};
+// GLOBAL: GAMEMD 0x7F4188
+extern const double DAT_007F4188 = 0.017453292519943295;
+// END defined globals

@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/coord_struct.h"
-#include "../ui/input_controls/ui_common.h"
+#include "../ui_common.h"
 
 HWND __cdecl FUN_00775B10();
 BOOL __stdcall ScaleChildEnumProc(HWND window, LPARAM param);

@@ -20,9 +20,9 @@
 #include "core/hash_table_view.h"
 #include "_layout/theme_class.h"
 #include "input_manager_class_methods.h"
-#include "ui/ui_begin_dialog_methods.h"
-#include "ui/ui_updated_methods.h"
-#include "ui/gscreen_class_render_methods.h"
+#include "ui_begin_dialog_methods.h"
+#include "ui_updated_methods.h"
+#include "gscreen_class_render_methods.h"
 #include "_layout/com_0048d080.h"
 
 // Provisional source storage owner; original definition TU is not attested.
@@ -391,7 +391,7 @@ public:
 };
 
 
-#include "ui/ownrdraw_dialog_control.h"
+#include "ownrdraw_dialog_control.h"
 
 // VTABLE: GAMEMD 0x7F7624
 class SimpleWonlineDialogControl : public OwnerDraw::SimpleDialogControl
@@ -3894,8 +3894,8 @@ int __stdcall FUN_007A9110(void* unused, int slot, Entry_00B77908* entry, const 
 }
 
 #include "_layout/rules_class.h"
-#include "ui/message_list_class_methods.h"
-#include "ui/gadget_class_color_methods.h"
+#include "message_list_class_methods.h"
+#include "gadget_class_color_methods.h"
 
 // Declaration: GAMEMD 0x5E2790 (decl; reloc) -- appends a line to the second chat list.
 void __cdecl FUN_005E2790(int param, const wchar_t* format, ...);

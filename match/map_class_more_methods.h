@@ -22,7 +22,7 @@
 #include "_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 0x4);
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_MORE_METHODS_H

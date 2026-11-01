@@ -422,7 +422,7 @@ void FUN_00431B80(void* self);
 
 // The 0x6C-byte stack file object both builders open the PCX through. Only the
 // pieces these two functions touch are named; the teardown is the same inline
-// five-step sequence match/ui/preview_class_pcx_methods.h records at 0x641DB0
+// five-step sequence match/preview_class_pcx_methods.h records at 0x641DB0
 // (0x7E16B0 at +0, +0x64 zeroed, 0x43AE50 on +0x58, 0x7E1668 at +0, 0x431B80).
 struct MSFileClass
 {
@@ -796,7 +796,7 @@ GG_STATIC_ASSERT(offsetof(MSPCXAnim, Surface) == 0x1C
               && offsetof(MSPCXAnim, Bounds) == 0x2C);
 
 // 0x89C4B8 is the BitText receiver and 0x89C4D0 is its BitFont.
-#include "ui/bit_font_print_methods.h"
+#include "bit_font_print_methods.h"
 
 // GLOBAL: GAMEMD 0xABFBB0 — four adjacent dwords the map-stage screen clears
 // together at 0x5CEDB0. Modelled as one struct so the four stores keep their

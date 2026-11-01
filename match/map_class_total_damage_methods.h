@@ -46,6 +46,6 @@ extern Scenario_00489180* ScenarioInstance;
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern Rules_00489180* RulesInstance;
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_TOTAL_DAMAGE_METHODS_H

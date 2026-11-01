@@ -249,7 +249,7 @@
      "n_insns": 34,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ui/Score.cpp",
+     "tu": "match/Score.cpp",
      "sym": "??_GScoreFontClass@@UAEPAXI@Z",
      "name": "ScoreFontClass scalar deleting destructor",
      "rtti": [
@@ -532,7 +532,7 @@
      "n_insns": 37,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ui/input_controls/display_gscreen.cpp",
+     "tu": "match/display_gscreen.cpp",
      "sym": "?QueryInterface@GScreenClass@@UAGJABU_GUID@@PAPAX@Z",
      "name": "GScreenClass::QueryInterface",
      "rtti": [
@@ -2492,7 +2492,7 @@
      "n_insns": 34,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ui/Score.cpp",
+     "tu": "match/Score.cpp",
      "sym": "??_GScoreFontClass@@UAEPAXI@Z",
      "name": "ScoreFontClass scalar deleting destructor",
      "rtti": [
@@ -2600,7 +2600,7 @@
      "n_insns": 52,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ui/input_controls/Display.cpp",
+     "tu": "match/Display.cpp",
      "sym": "?MarkFoundation@DisplayClass@@QAEXPBUCellStruct@@_N@Z",
      "name": "DisplayClass::MarkFoundation"
     },
@@ -2687,7 +2687,7 @@
      "n_insns": 31,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ui/MPScore.cpp",
+     "tu": "match/MPScore.cpp",
      "sym": "?FUN_005C9720@Obj_005C9700@@QAEXXZ",
      "name": "Obj_005C9700::FUN_005C9720"
     },
@@ -2996,7 +2996,7 @@
      "n_insns": 37,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ui/input_controls/display_gscreen.cpp",
+     "tu": "match/display_gscreen.cpp",
      "sym": "?QueryInterface@GScreenClass@@UAGJABU_GUID@@PAPAX@Z",
      "name": "GScreenClass::QueryInterface",
      "rtti": [

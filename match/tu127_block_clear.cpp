@@ -8,7 +8,7 @@
 // Address index: 0x56E7C0 0x57B790
 
 #include "_layout/cell_class.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map object.
 extern MapClass DAT_0087F7E8;

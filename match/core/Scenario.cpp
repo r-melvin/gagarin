@@ -38,7 +38,7 @@
 #include "../class_sweep_00581f50.h"
 #include "frame_counter.h"
 #include "../_layout/theme_class.h"
-#include "../ui/tooltip_manager_shared.h"
+#include "../tooltip_manager_shared.h"
 #include "../evade_class_do_methods.h"
 #include "spin_wait_methods.h"
 #include "../conn_types.h"
@@ -68,14 +68,14 @@
 #include "../_layout/infantry_type_class.h"
 #include "leftover_trivial_leaf_sweep.h"
 #include "trivial_tu207_methods.h"
-#include "../ui/game_options_class_methods.h"
+#include "../game_options_class_methods.h"
 #include <math.h>
 #include "../particle_common_types.h"
 
 #include "../_layout/load_progress_mgr.h"
 #include "../_layout/dialog_005d3490.h"
 #include "../winsock_interface_class.h"
-#include "../ui/message_list_class_methods.h"
+#include "../message_list_class_methods.h"
 #include "../_layout/map_seed_class.h"
 #include "../color_scheme_find_methods.h"
 #include "vector_add_item_free.h"
@@ -265,7 +265,7 @@ extern int DAT_008B41F0;
 
 #include "trivial_tu201_methods.h"
 
-#include "../ui/input_controls/mouse_ww_mouse_class.h"
+#include "../mouse_ww_mouse_class.h"
 #include "../input_manager_class_methods.h"
 
 #include <windows.h>

@@ -4971,7 +4971,7 @@
   },
   {
    "addr": "0x40D230",
-   "tu": "match/ui/input_controls/display_gscreen.cpp",
+   "tu": "match/display_gscreen.cpp",
    "name": "GScreenClass::AddRef",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5115,7 +5115,7 @@
   },
   {
    "addr": "0x434B90",
-   "tu": "match/ui/bit_text_print_methods.cpp",
+   "tu": "match/bit_text_print_methods.cpp",
    "name": "FUN_00434B90",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5775,7 +5775,7 @@
   },
   {
    "addr": "0x4A94F0",
-   "tu": "match/ui/input_controls/Display.cpp",
+   "tu": "match/Display.cpp",
    "name": "DisplayClass::FoundationBoundsSize",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5811,7 +5811,7 @@
   },
   {
    "addr": "0x4C3A20",
-   "tu": "match/ui/Egos.cpp",
+   "tu": "match/Egos.cpp",
    "name": "FUN_004C3A20",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5913,25 +5913,25 @@
   },
   {
    "addr": "0x4E1570",
-   "tu": "match/ui/gadget_class_methods.cpp",
+   "tu": "match/gadget_class_methods.cpp",
    "name": "DrawAll",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E19A0",
-   "tu": "match/ui/gadget_class_methods.cpp",
+   "tu": "match/gadget_class_methods.cpp",
    "name": "SetFocus",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E25A0",
-   "tu": "match/ui/input_controls/controls_gauge.cpp",
+   "tu": "match/controls_gauge.cpp",
    "name": "GaugeClass::SetValue",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4E30A0",
-   "tu": "match/ui/input_controls/controls_gauge.cpp",
+   "tu": "match/controls_gauge.cpp",
    "name": "GaugeClass::GetValue",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6639,13 +6639,13 @@
   },
   {
    "addr": "0x5384C0",
-   "tu": "match/ui/Init.cpp",
+   "tu": "match/Init.cpp",
    "name": "DynamicVectorClass<CCINIClass*>::Clear",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538750",
-   "tu": "match/ui/Init.cpp",
+   "tu": "match/Init.cpp",
    "name": "DynamicVectorClass<CCINIClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6765,7 +6765,7 @@
   },
   {
    "addr": "0x557920",
-   "tu": "match/ui/input_controls/lists_list.cpp",
+   "tu": "match/lists_list.cpp",
    "name": "ListClass::Draw",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8373,7 +8373,7 @@
   },
   {
    "addr": "0x773AB0",
-   "tu": "match/ui/input_controls/menus_web_browser.cpp",
+   "tu": "match/menus_web_browser.cpp",
    "name": "WebBrowser::Release",
    "reason": "no-preceding-CC-or-90"
   },

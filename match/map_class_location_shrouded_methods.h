@@ -34,6 +34,6 @@ extern CellClass** Cells_00586360;
 // GLOBAL: GAMEMD 0xABDC50 — MapClass::InvalidCell (MapCoords at 0xABDC74).
 extern CellClass   InvalidCell_00586360;
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_LOCATION_SHROUDED_METHODS_H

@@ -24,7 +24,7 @@ extern char DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0x83ED20 — the game speed saved across a pause (-1 = none).
 extern int DAT_0083ED20;
 // GLOBAL: GAMEMD 0xA8EB60 — GameOptionsClass::Instance; first dword is the speed.
-#include "ui/game_options_class_methods.h"
+#include "game_options_class_methods.h"
 extern GameOptionsClass DAT_00A8EB60;
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
 #include "core/frame_counter.h"
@@ -38,7 +38,7 @@ extern int DAT_00B07784;
 // FUNCTION: GAMEMD 0x684240 (decl; reloc) — no arguments, no cleanup.
 void __cdecl FUN_00684240(void);
 
-#include "ui/input_controls/mouse_ww_mouse_class.h"
+#include "mouse_ww_mouse_class.h"
 // GLOBAL: GAMEMD 0x87E758
 struct Obj_00401000;
 extern Obj_00401000* DAT_0087E758;

@@ -5,7 +5,7 @@
 //   overrides only slot 0; slots 1-4 are SimpleDialogControl's.
 //   Address index: 0x7AF500 (destructor), 0x7B0440 (scalar deleting destructor).
 #include "FUNCTION.H"
-#include "ui/ownrdraw_dialog_control.h"
+#include "ownrdraw_dialog_control.h"
 
 // What the three owned pointers point at: polymorphic objects released through their slot 0.
 struct Obj_007AF500

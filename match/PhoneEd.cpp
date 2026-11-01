@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include "core/mathtbl_init_shapes.h"
 #include <windows.h>
-#include "ui/ui_updated_methods.h"
+#include "ui_updated_methods.h"
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
 #include <string.h>

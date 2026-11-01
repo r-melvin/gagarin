@@ -7,7 +7,7 @@
 
 #include "FUNCTION.H"
 #include "core/pair_vector_ctor_family_methods.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // These no-argument native helpers are called by MapClass::~MapClass in the
 // observed order. The free-function convention is the project default /Gr.

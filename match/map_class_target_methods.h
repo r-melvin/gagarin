@@ -30,6 +30,6 @@ GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 // or empty), at fixed retail address 0xABDC50.
 #define InvalidCell (*reinterpret_cast<CellClass*>(0x00ABDC50))
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_TARGET_METHODS_H

@@ -9,7 +9,7 @@
 #include "_layout/foot_class.h"
 #include "_layout/techno_type_class.h"
 #include <new.h>
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 #include "_layout/cell_class.h"
 #include "matrix3d_native_helpers.h"
 #include "locomotion_rotation_step.h"

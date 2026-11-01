@@ -37,6 +37,6 @@ extern CellClass   SpareCell;
 // Map cell pitch: the index is `cellY * 512 + cellX` (`SHL ECX,9`).
 #define MAP_CELL_PITCH 512
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_ZPOS_METHODS_H

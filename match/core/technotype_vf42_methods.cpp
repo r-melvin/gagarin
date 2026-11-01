@@ -6,7 +6,7 @@
 #include "../_layout/techno_type_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/building_type_class_layout.h"
-#include "../ui/input_controls/ui_display_chain.h"
+#include "../ui_display_chain.h"
 
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SpeedType) == 0x67C);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->SpeedType) == 4);

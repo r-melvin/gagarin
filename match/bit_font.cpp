@@ -18,7 +18,7 @@
 //   FUNCTION: GAMEMD 0x434990   BitFont::UnLock                (__thiscall)
 
 #include "bit_font.h"
-#include "ui/surface_desc_ctor_methods.h"
+#include "surface_desc_ctor_methods.h"
 #include <stddef.h>
 #include <stdlib.h>
 

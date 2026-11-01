@@ -186,7 +186,7 @@ static inline bool AllFogged_00457A10(CellStruct const* fd, CellStruct base,
 #include "core/rules_class.h"
 #include "core/frame_counter.h"
 #include "map_class_methods.h"
-#include "ui/tactical_class_coords_to_client_methods.h"
+#include "tactical_class_coords_to_client_methods.h"
 #include "_layout/map_0087f7e8.h"
 #include "map_class_area_methods.h"
 
@@ -1529,7 +1529,7 @@ static inline void PlayNthAnim(BuildingClass* self, int slot, int effectDelay)
 #include "_layout/map_0087f7e8.h"
 #include "core/vector_class.h"
 
-#include "ui/building_draw_methods.h"
+#include "building_draw_methods.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x43C2A0

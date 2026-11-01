@@ -22,7 +22,7 @@ class HashString { public: char unknown_00[0x100]; HashString(const HashString& 
 template<class K,class V> struct HashObject { K Key; V Value; HashObject() {} HashObject(const HashObject<K,V>& o) : Key(o.Key), Value(o.Value) {} bool operator==(const HashObject<K,V>& o) const { return Key==o.Key; } bool operator!=(const HashObject<K,V>& o) const { return !(*this==o); } };
 template<> struct HashObject<HashString,SchemeNode*> { HashString Key; SchemeNode* Value; HashObject(); HashObject(const HashObject<HashString,SchemeNode*>& o) : Key(o.Key), Value(o.Value) {} bool __fastcall operator==(const HashObject<HashString,SchemeNode*>& o) const; bool __fastcall operator!=(const HashObject<HashString,SchemeNode*>& o) const; };
 struct RadarTrackingStruct { int unknown_00; int unknown_04; int unknown_08; RadarTrackingStruct() {} RadarTrackingStruct(const RadarTrackingStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08) {} bool operator==(const RadarTrackingStruct& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const RadarTrackingStruct& o) const { return !(*this==o); } };
-#include "../ui/input_controls/ui_display_chain.h"
+#include "../ui_display_chain.h"
 
 typedef HashObject<unsigned int,unsigned int> HO_II;
 typedef HashObject<unsigned int,SubzoneConnectionStruct> HO_SCS;

@@ -467,8 +467,8 @@ extern void* DAT_00B77F60;
 #include "MapGen.h"
 #include <windows.h>
 #include "core/trivial_tu055_methods.h"
-#include "ui/ui_focus_methods.h"
-#include "ui/ui_updated_methods.h"
+#include "ui_focus_methods.h"
+#include "ui_updated_methods.h"
 #include "ccfile_class.h"
 #include "core/vtable_seating_ctor_family_methods.h"
 

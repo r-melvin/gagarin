@@ -567,7 +567,7 @@
   },
   {
    "addr": "0x4882D0",
-   "tu": "match/ui/check_list_class_methods.cpp",
+   "tu": "match/check_list_class_methods.cpp",
    "removed": "volatile vptr store",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -577,7 +577,7 @@
   },
   {
    "addr": "0x4886E0",
-   "tu": "match/ui/check_list_class_methods.cpp",
+   "tu": "match/check_list_class_methods.cpp",
    "removed": "volatile vptr store",
    "previous_status": "matched",
    "previous_pct": 100,

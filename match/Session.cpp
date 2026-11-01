@@ -116,11 +116,11 @@ GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
 extern "C" wchar_t* __cdecl _wcsdup(const wchar_t*);
 // GLOBAL: GAMEMD 0x83ED04 -- four label pointers.
 extern const char* const DAT_0083ED04[4];
-#include "ui/shape_button_class.h"
+#include "shape_button_class.h"
 // GLOBAL: GAMEMD 0x87F6C4
 extern ColorConvert* DAT_0087F6C4;
 #include <objidl.h>
-#include "ui/tooltip_manager_shared.h"
+#include "tooltip_manager_shared.h"
 // GLOBAL: GAMEMD 0x887368
 extern ToolTipManager* ToolTipManager_Instance;
 // Declarations: zero-argument helpers called by native 0x69BB40.
@@ -952,7 +952,7 @@ extern "C" int __cdecl fprintf(FILE*, const char*, ...); // LIBRARY: GAMEMD 0x7C
 #include "core/randomizer.h"
 #include "core/trivial_tu158_methods.h"
 #include "mp_game_mode_class_get_methods.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 #include <stdlib.h>
 #include <string.h>
 #include <wchar.h>

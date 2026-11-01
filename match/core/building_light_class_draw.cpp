@@ -10,8 +10,8 @@
 #include "../wwlib/surface/surface_class.h"
 #include "../matrix3d_rotate_methods.h"
 #include "../core/rules_class.h"
-#include "../ui/tactical_class_coords_to_client_methods.h"
-#include "../ui/tactical_class_position_methods.h"
+#include "../tactical_class_coords_to_client_methods.h"
+#include "../tactical_class_position_methods.h"
 #include "../_layout/map_0087f7e8.h"
 
 // LIBRARY: GAMEMD 0x7C5F00 (decl; reloc) -- __ftol.

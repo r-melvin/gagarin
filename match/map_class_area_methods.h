@@ -30,6 +30,6 @@ inline CellStruct Coord2Cell(const CoordStruct& coords)
     return c;
 }
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_AREA_METHODS_H

@@ -12,7 +12,7 @@
 #include "_layout/cell_class.h"
 #include "_layout/straw.h"
 #include "compression_straws.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // GLOBAL: GAMEMD 0xABDC50 -- the cell returned for an out-of-range lookup.
 extern CellClass DAT_00ABDC50;

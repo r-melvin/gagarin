@@ -889,7 +889,7 @@ HouseClass* DAT_00A83D4C;
 ColorSchemeVec_00705D70 DAT_00B054D0;
 
 #include "_layout/house_type_class.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 #include "_layout/map_0087f7e8.h"
 

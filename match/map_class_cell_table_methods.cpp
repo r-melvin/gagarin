@@ -9,7 +9,7 @@
 // Address index: 0x565AA0 0x565B00 0x565BC0
 
 #include <new.h>
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 #include "core/vector_class_operations.h"
 #include "_layout/cell_class.h"
 

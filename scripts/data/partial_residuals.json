@@ -435,7 +435,7 @@
  {
   "addr": "0x434B40",
   "name": "FUN_00434B40",
-  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "tu": "match/bit_font_entries_00434b10.cpp",
   "sym": "?FUN_00434B40@@YGHPAUBitFont_00434B40@@PAVSurface@@HHH@Z",
   "len": "0x50",
   "manifest_pct": 91.4,
@@ -457,7 +457,7 @@
  {
   "addr": "0x434BF0",
   "name": "FUN_00434BF0",
-  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "tu": "match/bit_font_entries_00434b10.cpp",
   "sym": "?FUN_00434BF0@@YGHPAUBitFont_00434B40@@PAVSurface@@HHHH@Z",
   "len": "0xe0",
   "manifest_pct": 81.6,
@@ -1016,7 +1016,7 @@
  {
   "addr": "0x494690",
   "name": "BlitTranslucentWriteAlpha<unsigned short>::BlitCopy",
-  "tu": "match/ui/tu056_control_class.cpp",
+  "tu": "match/tu056_control_class.cpp",
   "sym": "?BlitCopy@?$BlitTranslucentWriteAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x1f5",
   "manifest_pct": 88.0,
@@ -1350,7 +1350,7 @@
  {
   "addr": "0x4A8960",
   "name": "DisplayClass::vf_42",
-  "tu": "match/ui/input_controls/Display.cpp",
+  "tu": "match/Display.cpp",
   "sym": "?vf_42@DisplayClass@@UAEXPBURectangleStruct@@@Z",
   "len": "0x284",
   "manifest_pct": 92.0,
@@ -1372,7 +1372,7 @@
  {
   "addr": "0x4AC380",
   "name": "DisplayClass::vf_47",
-  "tu": "match/ui/input_controls/Display.cpp",
+  "tu": "match/Display.cpp",
   "sym": "?vf_47@DisplayClass@@UAEXPBVPoint2D@@@Z",
   "len": "0x167",
   "manifest_pct": 95.1,
@@ -1519,7 +1519,7 @@
  {
   "addr": "0x4E15A0",
   "name": "GadgetClass::ExtractGadgetAt",
-  "tu": "match/ui/gadget_class_methods.cpp",
+  "tu": "match/gadget_class_methods.cpp",
   "sym": "?ExtractGadgetAt@GadgetClass@@QAEPAV1@HH@Z",
   "len": "0x94",
   "manifest_pct": 89.1,
@@ -1541,7 +1541,7 @@
  {
   "addr": "0x4E1640",
   "name": "GadgetClass::Input",
-  "tu": "match/ui/input_controls/lists_gadget.cpp",
+  "tu": "match/lists_gadget.cpp",
   "sym": "?Input@GadgetClass@@UAEIXZ",
   "len": "0x2DC",
   "manifest_pct": 89.2,
@@ -1565,7 +1565,7 @@
  {
   "addr": "0x4F4320",
   "name": "GScreenClass::Input",
-  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "tu": "match/display_gscreen.cpp",
   "sym": "?Input@GScreenClass@@UAEXPAH00@Z",
   "len": "0xC5",
   "manifest_pct": 81.2,
@@ -1885,7 +1885,7 @@
  {
   "addr": "0x538D40",
   "name": "FUN_00538D40",
-  "tu": "match/ui/Init.cpp",
+  "tu": "match/Init.cpp",
   "sym": "?FUN_00538D40@@YAXXZ",
   "len": "0x12D",
   "manifest_pct": 86.8,
@@ -2006,7 +2006,7 @@
  {
   "addr": "0x557830",
   "name": "ListClass::Action",
-  "tu": "match/ui/input_controls/lists_list.cpp",
+  "tu": "match/lists_list.cpp",
   "sym": "?Action@ListClass@@UAEHIPAIH@Z",
   "len": "0xf0",
   "manifest_pct": 96.8,
@@ -2027,7 +2027,7 @@
  {
   "addr": "0x558790",
   "name": "LoadOptionsClass::~LoadOptionsClass",
-  "tu": "match/ui/LoadDlg.cpp",
+  "tu": "match/LoadDlg.cpp",
   "sym": "??1LoadOptionsClass@@UAE@XZ",
   "len": "0x60",
   "manifest_pct": 94.9,
@@ -2048,7 +2048,7 @@
  {
   "addr": "0x558A30",
   "name": "FUN_00558A30",
-  "tu": "match/ui/LoadDlg.cpp",
+  "tu": "match/LoadDlg.cpp",
   "sym": "?FUN_00558A30@@YGHPAUHWND__@@IIJ@Z",
   "len": "0x155",
   "manifest_pct": 81.2,
@@ -2076,7 +2076,7 @@
  {
   "addr": "0x55A0D0",
   "name": "LoadOptionsClass::scalar deleting destructor",
-  "tu": "match/ui/LoadDlg.cpp",
+  "tu": "match/LoadDlg.cpp",
   "sym": "??_GLoadOptionsClass@@UAEPAXI@Z",
   "len": "0x7c",
   "manifest_pct": 95.5,
@@ -2593,7 +2593,7 @@
  {
   "addr": "0x5BDDC0",
   "name": "MouseClass::vf_10",
-  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "tu": "match/mouse_mouse_class_methods.cpp",
   "sym": "?vf_10@MouseClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x16D",
   "manifest_pct": 92.6,
@@ -2615,7 +2615,7 @@
  {
   "addr": "0x5BDF70",
   "name": "MouseClass::vf_30",
-  "tu": "match/ui/input_controls/mouse_mouse_class_stream.cpp",
+  "tu": "match/mouse_mouse_class_stream.cpp",
   "sym": "?vf_30@MouseClass@@UAEJPAUIStream@@@Z",
   "len": "0x752",
   "manifest_pct": 84.1,
@@ -2781,7 +2781,7 @@
  {
   "addr": "0x5CF5F0",
   "name": "MapStageList",
-  "tu": "match/ui/MSChoice.cpp",
+  "tu": "match/MSChoice.cpp",
   "sym": "?ClearAll@MapStageList@@QAEXXZ",
   "len": "0xbf",
   "manifest_pct": 90.3,
@@ -2802,7 +2802,7 @@
  {
   "addr": "0x5D1B30",
   "name": "MSEngine::~MSEngine",
-  "tu": "match/ui/MSChoice.cpp",
+  "tu": "match/MSChoice.cpp",
   "sym": "??1MSEngine@@UAE@XZ",
   "len": "0xed",
   "manifest_pct": 96.7,
@@ -3069,7 +3069,7 @@
  {
   "addr": "0x60C7D0",
   "name": "?FUN_0060C7D0@@YI_NH@Z",
-  "tu": "match/ui/ownrdraw.cpp",
+  "tu": "match/ownrdraw.cpp",
   "sym": "?FUN_0060C7D0@@YI_NH@Z",
   "len": "0xf7",
   "manifest_pct": 97.5,
@@ -3242,7 +3242,7 @@
  {
   "addr": "0x6425F0",
   "name": "PreviewClass::CreatePreviewSurface",
-  "tu": "match/ui/preview_class_surface_methods.cpp",
+  "tu": "match/preview_class_surface_methods.cpp",
   "sym": "?CreatePreviewSurface@PreviewClass_006425F0@@QAEXPAUPreviewData_006425F0@@@Z",
   "len": "0x14D",
   "manifest_pct": 87.3,
@@ -3339,7 +3339,7 @@
  {
   "addr": "0x652CF0",
   "name": "RadarClass::vf_05",
-  "tu": "match/ui/Radar.cpp",
+  "tu": "match/Radar.cpp",
   "sym": "?vf_05@RadarClass@@UAEXXZ",
   "len": "0xa0",
   "manifest_pct": 82.8,
@@ -3361,7 +3361,7 @@
  {
   "addr": "0x655150",
   "name": "RadarClass::FUN_00655150",
-  "tu": "match/ui/Radar.cpp",
+  "tu": "match/Radar.cpp",
   "sym": "?FUN_00655150@RadarClass@@QAE?AUCell_0050DEF0@@PBVPoint2D@@@Z",
   "len": "0x62",
   "manifest_pct": 91.3,
@@ -3918,7 +3918,7 @@
  {
   "addr": "0x6A7590",
   "name": "SidebarClass::SetTab",
-  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "tu": "match/Sidebar.cpp",
   "sym": "?SetTab@Sidebar_006A7590@@QAEXH@Z",
   "len": "0x156",
   "manifest_pct": 94.9,
@@ -3940,7 +3940,7 @@
  {
   "addr": "0x6A7D70",
   "name": "SidebarClass::vf_54",
-  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "tu": "match/Sidebar.cpp",
   "sym": "?vf_54@SidebarClass@@UAE_NH@Z",
   "len": "0x30F",
   "manifest_pct": 86.0,
@@ -3963,7 +3963,7 @@
  {
   "addr": "0x6ABD30",
   "name": "SidebarClass::vf_34",
-  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "tu": "match/Sidebar.cpp",
   "sym": "?vf_34@SidebarClass@@UAEXXZ",
   "len": "0x4D3",
   "manifest_pct": 98.1,
@@ -4070,7 +4070,7 @@
  {
   "addr": "0x6B2430",
   "name": "FUN_006B2430",
-  "tu": "match/ui/r23_3_undo_info_list.cpp",
+  "tu": "match/r23_3_undo_info_list.cpp",
   "sym": "?FUN_006B2430@@YIXPBHH@Z",
   "len": "0x6f",
   "manifest_pct": 90,
@@ -4114,7 +4114,7 @@
  {
   "addr": "0x6B6230",
   "name": "FUN_006B6230",
-  "tu": "match/ui/sound_controls_dialog.cpp",
+  "tu": "match/sound_controls_dialog.cpp",
   "sym": "?FUN_006B6230@@YIXXZ",
   "len": "0xc5",
   "manifest_pct": 91.8,
@@ -4188,7 +4188,7 @@
  {
   "addr": "0x6D0680",
   "name": "TabClass::vf_10",
-  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "tu": "match/sidebar_tab_class.cpp",
   "sym": "?vf_10@TabClass@@UAEXPAHPAVPoint2D@@@Z",
   "len": "0x336",
   "manifest_pct": 96.9,
@@ -4210,7 +4210,7 @@
  {
   "addr": "0x6D2540",
   "name": "Tactical::vf_23",
-  "tu": "match/ui/input_controls/Tactical.cpp",
+  "tu": "match/Tactical.cpp",
   "sym": "?vf_23@Tactical@@UAEXXZ",
   "len": "0x24a",
   "manifest_pct": 93.4,
@@ -4234,7 +4234,7 @@
  {
   "addr": "0x6D6070",
   "name": "Tactical::SetTacticalPosition",
-  "tu": "match/ui/tactical_class_position_methods.cpp",
+  "tu": "match/tactical_class_position_methods.cpp",
   "sym": "?SetTacticalPosition@Tactical_006D6070@@QAEXPBUCoord_006D6070@@@Z",
   "len": "0xff",
   "manifest_pct": 92.4,
@@ -4256,7 +4256,7 @@
  {
   "addr": "0x6D84D0",
   "name": "FUN_006D84D0",
-  "tu": "match/ui/input_controls/Tactical.cpp",
+  "tu": "match/Tactical.cpp",
   "sym": "?FUN_006D84D0@@YG?AVPoint2D@@PBV1@@Z",
   "len": "0x59",
   "manifest_pct": 80.6,
@@ -4279,7 +4279,7 @@
  {
   "addr": "0x6DA080",
   "name": "FUN_006DA080",
-  "tu": "match/ui/input_controls/Tactical.cpp",
+  "tu": "match/Tactical.cpp",
   "sym": "?FUN_006DA080@Tactical@@QBEHXZ",
   "len": "0xd5",
   "manifest_pct": 82.5,
@@ -4302,7 +4302,7 @@
  {
   "addr": "0x6DA180",
   "name": "Tactical::FUN_006DA180",
-  "tu": "match/ui/input_controls/Tactical.cpp",
+  "tu": "match/Tactical.cpp",
   "sym": "?FUN_006DA180@Tactical@@QAEXXZ",
   "len": "0xa8",
   "manifest_pct": 100.0,
@@ -4318,7 +4318,7 @@
  {
   "addr": "0x6DA230",
   "name": "Tactical::FUN_006DA230",
-  "tu": "match/ui/input_controls/Tactical.cpp",
+  "tu": "match/Tactical.cpp",
   "sym": "?FUN_006DA230@Tactical@@QAEHH@Z",
   "len": "0x11c",
   "manifest_pct": 91.0,
@@ -4340,7 +4340,7 @@
  {
   "addr": "0x6DA5C0",
   "name": "Tactical::FUN_006DA5C0",
-  "tu": "match/ui/input_controls/Tactical.cpp",
+  "tu": "match/Tactical.cpp",
   "sym": "?FUN_006DA5C0@Tactical@@QAEXPBV?$TRect@H@@P6IXPAVObjectClass@@@Z@Z",
   "len": "0x17c",
   "manifest_pct": 95.8,
@@ -4627,7 +4627,7 @@
  {
   "addr": "0x724730",
   "name": "ToolTipManager::Remove",
-  "tu": "match/ui/ToolTip.cpp",
+  "tu": "match/ToolTip.cpp",
   "sym": "?Remove@ToolTipManager@@QAEXI@Z",
   "len": "0x181",
   "manifest_pct": 97.2,
@@ -4651,7 +4651,7 @@
  {
   "addr": "0x732C30",
   "name": "FUN_00732C30",
-  "tu": "match/ui/UICmnds.cpp",
+  "tu": "match/UICmnds.cpp",
   "sym": "?FUN_00732C30@@YI_NPAVTechnoClass@@PAV?$DynamicVectorClass@PBD@@@Z",
   "len": "0x68",
   "manifest_pct": 94.0,
@@ -4673,7 +4673,7 @@
  {
   "addr": "0x732CC0",
   "name": "FUN_00732CC0",
-  "tu": "match/ui/UICmnds.cpp",
+  "tu": "match/UICmnds.cpp",
   "sym": "?FUN_00732CC0@@YAXXZ",
   "len": "0x3a",
   "manifest_pct": 87.5,

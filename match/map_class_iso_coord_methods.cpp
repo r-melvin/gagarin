@@ -11,7 +11,7 @@
 #include "_layout/geometry2d.h"
 #include "_layout/cell.h"
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // FUNCTION: GAMEMD 0x565470
 // Projects a point: X + half of Y rounded up, origin + half of Y - X.

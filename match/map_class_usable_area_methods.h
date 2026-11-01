@@ -31,6 +31,6 @@ GG_STATIC_ASSERT(offsetof(Cell_00578540, Y)          == 0x26);
 GG_STATIC_ASSERT(offsetof(Cell_00578540, Level)      == 0x11B);
 GG_STATIC_ASSERT(offsetof(Cell_00578540, SlopeIndex) == 0x11C);
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_USABLE_AREA_METHODS_H

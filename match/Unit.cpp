@@ -35,7 +35,7 @@
 
 #include "core/scenario_class_methods.h"
 #include "unit_class_occupation_methods.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

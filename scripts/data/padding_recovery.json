@@ -219,7 +219,7 @@
   {
    "addr": "0x435340",
    "length": "0xa4",
-   "source": "match/ui/font_shadow_00435340.cpp",
+   "source": "match/font_shadow_00435340.cpp",
    "status": "matched100 by scripts/vc6/verify_all.py",
    "rea_evidence_id": "ev_95ea396b11ba77e430fbacaf2a6899e4d5424256fb5112076eaa89f3ef2a240b",
    "analysis_target": {

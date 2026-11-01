@@ -12,7 +12,7 @@
 #include "core/vector_class_operations.h"
 #include "_layout/swizzle_manager_class.h"
 #include "_layout/obj_004a1d30.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 #include <new.h>
 #include "core/vector_add_item_free.h"
 

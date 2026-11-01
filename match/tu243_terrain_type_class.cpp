@@ -39,7 +39,7 @@
 #include "ccini_class_methods.h"
 #include "terrain_class.h"
 #include "terrain_type_class.h"
-#include "ui/shape_header.h"
+#include "shape_header.h"
 // GLOBAL: GAMEMD 0x887180
 extern CCINIClass DAT_00887180;
 

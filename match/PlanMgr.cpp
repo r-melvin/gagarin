@@ -568,7 +568,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 #include "pixel_pack_methods.h"
 
 #include <stdlib.h>
-#include "ui/planning_manager_rbutton_methods.h"
+#include "planning_manager_rbutton_methods.h"
 
 
 // ---- from the former planning_node_methods.cpp ----
@@ -584,7 +584,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 #include "_layout/house_class.h"
 #include "_layout/object_type_class.h"
 #include "dsurface_class.h"
-#include "ui/input_controls/mouse_ww_mouse_class.h"
+#include "mouse_ww_mouse_class.h"
 
 #include "_layout/tactical.h"
 

@@ -13,7 +13,7 @@
 #include "../_layout/audio_controller.h"
 #include "../_layout/voc_class.h"
 #include "../center_window_methods.h"
-#include "../ui/input_controls/ui_gadget.h"
+#include "../ui_gadget.h"
 
 // ---------------------------------------------------------------------------
 // 0x7518A0: fire an audio event for the table entry at an index.

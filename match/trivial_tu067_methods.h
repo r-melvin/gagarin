@@ -8,7 +8,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 struct Obj_004AEB30;
 struct Obj_004AEBA0;

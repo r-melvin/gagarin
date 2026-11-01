@@ -12,7 +12,7 @@
 #include "_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, Level) == 0x11B);
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // In-place clamps; the retail code stores through the member between them.
 inline void ClampMax(int& x, int limit) { x = x < limit ? x : limit; }

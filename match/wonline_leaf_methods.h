@@ -7,7 +7,7 @@
 #ifndef GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
 #define GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
 
-#include "ui/ui_window_contracts.h"
+#include "ui_window_contracts.h"
 #include "netshare_slot_nodes.h"
 #include <stddef.h>
 #include "wonline.h"

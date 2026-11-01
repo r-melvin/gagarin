@@ -26,7 +26,7 @@ GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
 // GLOBAL: GAMEMD 0x8A0740 — the height of one cell level in leptons.
 extern int DAT_008A0740;
 
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer:
 // retail loads its address as the immediate `MOV ECX,0x87F7E8`).

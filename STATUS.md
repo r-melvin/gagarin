@@ -4236,7 +4236,7 @@ The two prior duplicate-definition conflicts were addressed by sharing the
 [RadSiteClass declarations](match/rad_site_class_methods.h) and keeping
 one `RulesInstance` definition in the shared
 [implementation](match/rad_site_class_methods.cpp). The [SidebarClass
-declarations](match/ui/sidebar_class_methods.h) are also shared; the distinct
+declarations](match/sidebar_class_methods.h) are also shared; the distinct
 classifier at `0x6ABC60` remains separate from `GetObjectTabIdx` at `0x6ABCD0`.
 The latest diagnostic reports zero `LNK2005` conflicts after these changes.
 
@@ -4394,7 +4394,7 @@ structure has been recovered.
 | Milestone | Current state and evidence | Completion gate |
 | --- | --- | --- |
 | Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
-| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h), [StorageClass](match/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
+| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/gadget_class_methods.h), [StorageClass](match/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
 | Integrated project build | A tracked-source object build exists in [build_project.py](scripts/vc6/build_project.py). The M0 diagnostic link and the M1 address-faithful stub link complete (see the top of this file); no runnable engine build exists yet. The existing compile gate also compiles translation units separately. | Resolve remaining project dependencies, establish an integrated engine link, and account for library dependencies. |
 | Whole-image identity | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | No byte-identical executable is promised; retain per-function verification as the matching standard. |
@@ -4409,19 +4409,19 @@ files after consolidation can represent progress without adding new matches.
 
 Verified consolidation steps:
 
-- [ShapeButtonClass](match/ui/shape_button_class.h): the recovered methods
-  share one declaration and one [implementation](match/ui/shape_button_class.cpp),
+- [ShapeButtonClass](match/shape_button_class.h): the recovered methods
+  share one declaration and one [implementation](match/shape_button_class.cpp),
   replacing three conflicting declarations and three implementation files.
   The eight earlier methods retain their exact matches; the regular destructor
   and compiler-generated deleting destructor now use the real class. The
   declaration inherits the
   confirmed `ToggleClass → ControlClass → GadgetClass → LinkClass` chain;
   the full set of methods for those classes is still incomplete.
-- [ControlClass](match/ui/control_class.h) and [ToggleClass](match/ui/toggle_class_methods.h):
+- [ControlClass](match/control_class.h) and [ToggleClass](match/toggle_class_methods.h):
   shared inheritance replaces Toggle's separate constructor prefix view and
   opaque virtual table. Five Control methods and three Toggle methods match;
-  the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is exact.
-- [ToolTipManager](match/ui/tooltip_manager_shared.h): seventeen verified family functions
+  the [Gadget constructor](match/gadget_class_ctor.cpp) is exact.
+- [ToolTipManager](match/tooltip_manager_shared.h): seventeen verified family functions
   share one declaration and [implementation](match/ui/tooltip_manager.cpp), also
   used by ShapeButton's tooltip calls. The embedded vector now uses the shared
   `DynamicVectorClass<const ToolTip*>` template and its confirmed base. The partial Find view remains separate;

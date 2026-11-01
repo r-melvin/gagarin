@@ -29,7 +29,7 @@ extern double DAT_00ABF8F8;
 const double DAT_007EE5E0 = 60.0;
 
 #include "mp_game_mode_leaf_classes.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 
 // GLOBAL: GAMEMD 0xABF948
 extern double DAT_00ABF948;

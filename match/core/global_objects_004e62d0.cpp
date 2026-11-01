@@ -14,7 +14,7 @@
 #include "mission_class_methods.h"
 #include "../_layout/version_class.h"
 #include "../random_straw.h"
-#include "../ui/game_options_class_methods.h"
+#include "../game_options_class_methods.h"
 #include "../event_queue.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------

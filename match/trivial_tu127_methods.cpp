@@ -167,7 +167,7 @@ CellClass InvalidCell;
 // Includes for the method bodies below come after the table initialisers so that the
 // translation unit's _$E initialiser numbering is unchanged.
 #include "_layout/session_class.h"
-#include "ui/input_controls/ui_display_chain.h"
+#include "ui_display_chain.h"
 #include <stdlib.h>
 #include "core/lcw_pipe.h"
 #include "_layout/house_class.h"
