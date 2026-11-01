@@ -20,6 +20,7 @@ import atexit as _ax
 _ax.register(os.unlink, _wf.name)
 import dlib as D  # noqa: E402
 import pktlint  # noqa: E402
+import unclaimed as U  # noqa: E402
 import landlib as L  # noqa: E402
 
 TREE = None
@@ -1126,6 +1127,99 @@ class Toolfix1030b(unittest.TestCase):
             L.run = orig
         self.assertTrue(calls[0][1].endswith("vc6asm.sh"))
         self.assertTrue(calls[1][1].endswith("vc6cl.sh"))
+
+
+class UnclaimedCallee(unittest.TestCase):
+    """pktlint rule unclaimed-callee: an unannotated definition that a matched function of its TU relocates to."""
+    SRC = HEADER + textwrap.dedent("""
+        // Annotated: fine.
+        // FUNCTION: GAMEMD 0x401000
+        int Annotated(int n) { return n ? Annotated(n - 1) * 3 : 1; }
+
+        int Orphan(int n) { return n ? Orphan(n - 1) * 5 : 2; }
+
+        // FUNCTION: GAMEMD 0x401100
+        int Caller(int n) { return Annotated(n) + Orphan(n); }
+        """)
+
+    def test_find_flags_same_file_reference(self):
+        c = U.find({"match/a.cpp": self.SRC}, {0x401000, 0x401100})
+        self.assertEqual([(x["sym"], x["callers"][0][2]) for x in c], [("Orphan", 0x401100)])
+
+    def test_find_ignores_unmatched_caller_annotated_def_and_in_class_bodies(self):
+        self.assertEqual(U.find({"match/a.cpp": self.SRC}, {0x401000}), [])      # caller not exact
+        src = HEADER + textwrap.dedent("""
+            struct S { int Get() { return 1; } };
+            // FUNCTION: GAMEMD 0x401100
+            int Caller(S* s) { return s->Get(); }
+            """)
+        self.assertEqual(U.find({"match/a.cpp": src}, {0x401100}), [])
+
+    def test_find_qualified_names_and_annotation_above_comments(self):
+        src = HEADER + textwrap.dedent("""
+            // FUNCTION: GAMEMD 0x401000
+            // a comment between the marker and the signature
+            int Foo::Bar(int a)
+            {
+                return a;
+            }
+
+            // Unclaimed (below partial bar), GAMEMD 0x401050
+            int Foo::FUN_00401050(int a)
+            {
+                return Bar(a);
+            }
+
+            // FUNCTION: GAMEMD 0x401100
+            int Foo::Baz(int a) { return FUN_00401050(a); }
+            """)
+        c = U.find({"match/a.cpp": src}, {0x401000, 0x401100})
+        self.assertEqual([x["sym"] for x in c], ["Foo::FUN_00401050"])
+
+    def test_obj_violations_reads_relocations(self):
+        import struct
+
+        def sec(name, chars, raw, rel):
+            return dict(name=name, chars=chars, raw=raw, rel=rel)
+        # symbols: 0 caller (sec1), 1 callee (sec2), 2 claimed (sec3), 3 external
+        syms = [("caller", 1), ("callee", 2), ("claimed", 3), ("ext", 0)]
+        secs = [sec(".text", 0x60000020, b"\x90" * 8, [(1, 1), (4, 2), (5, 3)]),
+                sec(".text", 0x60000020, b"\xc3", []), sec(".text", 0x60000020, b"\xc3", [])]
+        strtab = b"\0\0\0\0"
+        st = b""
+        for n, sn in syms:
+            st += n.encode().ljust(8, b"\0") + struct.pack("<IhHBB", 0, sn, 0x20, 2, 0)
+        off = 20 + 40 * len(secs)
+        body, hdrs = b"", b""
+        for s_ in secs:
+            raw_ptr = off + len(body)
+            body += s_["raw"]
+            rel_ptr = off + len(body)
+            for va, idx in s_["rel"]:
+                body += struct.pack("<IIH", va, idx, 6)
+            hdrs += s_["name"].encode().ljust(8, b"\0") + struct.pack("<IIIIIIHHI", 0, 0, len(s_["raw"]), raw_ptr, rel_ptr, 0, len(s_["rel"]), 0, s_["chars"])
+        d = struct.pack("<HHIIIHH", 0x14C, len(secs), 0, off + len(body), len(syms), 0, 0) + hdrs + body + st + strtab
+        path = os.path.join(tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH), "x.obj")
+        with open(path, "wb") as fh:
+            fh.write(d)
+        self.assertEqual(U.obj_violations(path, {"caller"}, {"claimed"}), [("caller", "callee")])
+        self.assertEqual(U.obj_violations(path, {"caller"}, {"claimed", "callee"}), [])
+        self.assertEqual(U.obj_violations(path, set(), set()), [])
+
+    @unittest.skipUnless(os.path.isdir(L.TOOLCHAIN), "needs the VC6 toolchain")
+    def test_lint_rule_end_to_end(self):
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        free = [a for a in range(0x1F0000, 0x1F9000, 0x100) if a not in tree().by_addr][:2]
+        src = self.SRC.replace("0x401000", hex(free[0])).replace("0x401100", hex(free[1]))
+        rows = [dict(tu="match/x/uc.cpp", addr=hex(a), sym="?%s@@YIHH@Z" % n, len="0x20", name=n, status="matched", pct=100.0)
+                for a, n in zip(free, ("Annotated", "Caller"))]
+        f = [x for x in lint(packet(tmp, {"match/x/uc.cpp": src}, rows), {"unclaimed-callee"}) if x["rule"] == "unclaimed-callee"]
+        self.assertEqual([x["level"] for x in f], ["E"], f)
+        self.assertIn("Orphan", f[0]["msg"])
+        # the same body as a declaration only leaves nothing to report
+        decl = src.replace("int Orphan(int n) { return n ? Orphan(n - 1) * 5 : 2; }", "int Orphan(int n);")
+        f = [x for x in lint(packet(tmp, {"match/x/uc.cpp": decl}, rows), {"unclaimed-callee"}) if x["rule"] == "unclaimed-callee"]
+        self.assertEqual(f, [])
 
 
 if __name__ == "__main__":

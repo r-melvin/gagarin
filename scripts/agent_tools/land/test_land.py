@@ -790,3 +790,39 @@ class BestScore(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DurableAt(unittest.TestCase):
+    """best_at must name a commit that lands: a packet rebased onto a throwaway prefix commit gets the base."""
+    def setUp(self):
+        import subprocess
+        self.d = tempfile.mkdtemp()
+        self.sp = subprocess
+        def g(*a):
+            return self.sp.run(["git", "-C", self.d, "-c", "user.name=t", "-c", "user.email=t@t"] + list(a),
+                               capture_output=True, text=True, check=True).stdout.strip()
+        self.g = g
+        g("init", "-q")
+        g("commit", "-q", "--allow-empty", "-m", "one")
+        self.one = g("rev-parse", "HEAD")
+        g("commit", "-q", "--allow-empty", "-m", "two")
+        self.two = g("rev-parse", "HEAD")
+        g("checkout", "-q", "-b", "wipbranch", self.two)
+        g("commit", "-q", "--allow-empty", "-m", "wip 2 packet")
+        self.wip = g("rev-parse", "HEAD")
+
+    def test_base_on_the_branch_is_kept(self):
+        self.assertEqual(L.durable_at(self.d, self.one, self.two), self.one[:8])
+
+    def test_prefix_commit_falls_back_to_bundle_base(self):
+        self.assertEqual(L.durable_at(self.d, self.wip, self.two), self.two[:8])
+
+    def test_unknown_or_missing_falls_back(self):
+        self.assertEqual(L.durable_at(self.d, "deadbeef", self.two), self.two[:8])
+        self.assertEqual(L.durable_at(self.d, None, self.two), self.two[:8])
+
+    def test_stamped_row_uses_it(self):
+        at = L.durable_at(self.d, self.wip, self.two)
+        r = dict(row("0x401000"), status="partial", pct=91.1)
+        m, e, _ = L.merge_deltas([], [("p", [r])], at=at)
+        self.assertEqual(m[0]["best_at"], self.two[:8])

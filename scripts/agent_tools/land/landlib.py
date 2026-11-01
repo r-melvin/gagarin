@@ -127,6 +127,23 @@ def rev_parse(tree, rev):
     return git(tree, "rev-parse", "--verify", rev + "^{commit}").strip()
 
 
+def durable_at(repo, sha, base):
+    """The sha a measured score is attributed to (`best_at`): the packet's base sha when that commit is
+    reachable from BASE (the bundle's real base on the branch), else BASE itself. A bundle rebases packets
+    onto throwaway prefix commits (`wip N name`); naming one would leave best_at pointing at a commit that
+    never lands. Returns an 8-char sha."""
+    base = rev_parse(repo, base)
+    if sha:
+        try:
+            full = rev_parse(repo, sha)
+            r = subprocess.run(["git", "-C", repo, "merge-base", "--is-ancestor", full, base], capture_output=True)
+            if r.returncode == 0:
+                return full[:8]
+        except Exception:
+            pass
+    return base[:8]
+
+
 # ---------------------------------------------------------------- file providers
 INCLUDE_ROOTS = ("match", "third_party")      # tracked roots a quoted include may resolve into
 VENDORED_PATHS = [r"^third_party/lzo/"]       # upstream text kept as shipped: exempt from the words gate

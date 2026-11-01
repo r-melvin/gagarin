@@ -47,6 +47,10 @@ enforces; nothing here needs a compiler except --strict.
                  unless scoped 'tu::sym' in the central symbol_bindings.json
   rea          E/W no REA Evidence IDs (ev_xxxxxxxx) in the packet's README/evidence (brief: REA primary);
                a line 'REA: none (ghidra CLI fallback)' states the fallback and silences it
+  unclaimed-callee  E an out-of-line function DEFINITION with no FUNCTION/SYNTHETIC/TEMPLATE/LIBRARY annotation whose symbol a matched
+                 (exact) function of the same TU references by relocation (call or address-of): the unannotated body is linked
+                 past retail .text and the caller's relocation points at the copy (M3 differs). Make it a declaration only.
+                 Source candidates (unclaimed.py) are confirmed by compiling the post-patch TU and reading its relocations
   partial-bar  E a NEW partial row below the project's partial bar: len < 0x400 needs pct >= 80.0; len >= 0x400 needs
                  pct >= 60.0 AND an identical instruction multiset (diff_retail's 'multiset: identical', checked under
                  --strict; without --strict an unverified multiset is a warning). pct is diff_retail's positional
@@ -72,7 +76,8 @@ import tempfile
 import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import dlib as D  # noqa: E402
+import dlib as D
+import unclaimed as U  # noqa: E402
 import landlib as L  # noqa: E402
 import cppscan  # noqa: E402
 
@@ -823,6 +828,54 @@ class Lint:
                 self.warn("partial-bar", "partial row %s (len 0x%x, %.1f%%): identical instruction multiset not verified; run pktlint --strict" % (a, n, pct), addr=a)
 
     # ------------------------------------------------------------ --strict
+    def unclaimed_callee(self):
+        """An unannotated definition that a matched function of its TU references (see unclaimed.py). The tree after the
+        patch and the delta is scanned; a finding counts when the patch touches the definition's or the caller's file or
+        the delta touches the caller's address. Candidates are confirmed from the compiled post-patch object."""
+        cpps = {p: (self.t.text(p) or "") for p in self.t.cpps() if p.startswith("match/")}
+        patched = set()
+        for path, text in self.post_files().items():
+            patched.add(path)
+            if path.startswith("match/") and path.lower().endswith(L.SRC_EXT):
+                if text is None:
+                    cpps.pop(path, None)
+                else:
+                    cpps[path] = text
+        matched = {a for a, r in self.t.by_addr.items() if r.get("status") == "matched"}
+        delta_addrs = set()
+        for op, row, old in self.ops:
+            a = D.hx(row["addr"])
+            delta_addrs.add(a)
+            if op != "remove" and row.get("status") == "matched":
+                matched.add(a)
+            else:
+                matched.discard(a)
+        cands = [c for c in U.find(cpps, matched)
+                 if c["file"] in patched or any(x[0] in patched or x[2] in delta_addrs for x in c["callers"])]
+        if not cands:
+            return
+        work = D.scratch_dir("pktlint_uc_")
+        wt = D.add_worktree(self.repo, os.path.join(work, "wt"), self.t.rev or "HEAD")
+        try:
+            body = "".join(d.text for d in self.diffs if d.path != D.MANIFEST)
+            r = subprocess.run(["git", "-C", wt, "apply", "--3way", "--index", "--whitespace=nowarn", "-"], input=body, text=True, capture_output=True)
+            if r.returncode:
+                self.warn("unclaimed-callee", "cannot apply the patch to confirm %d source candidate(s): %s" % (len(cands), r.stderr.strip()[:160]))
+                return
+            man, _ = L.load_manifest(os.path.join(wt, D.MANIFEST))
+            merged, errs, _ = L.merge_deltas(man, [(self.p.name, self.delta)])
+            if errs:
+                self.warn("unclaimed-callee", "delta does not merge, candidates not confirmed: " + "; ".join(errs[:2]))
+                return
+            found, bad = U.confirm(wt, cands, merged, os.path.join(work, "obj"), 4)
+            for f, why in bad:
+                self.warn("unclaimed-callee", "%s does not compile, so its unannotated definitions were not checked: %s" % (f, why), file=f)
+            for f in found:
+                self.err("unclaimed-callee", U.describe(f), file=f["file"], line=f["line"])
+        finally:
+            D.remove_worktree(self.repo, wt)
+            D.remove_dir(work)
+
     def strict(self, jobs):
         """Compile the touched TUs in a scratch worktree with the patch applied and prove every
         matched delta row: raw_match, then strict verify_relocations with the packet maps,
@@ -927,7 +980,7 @@ class Lint:
 
     def run(self, do_strict=False, jobs=8, rules=None):
         order = ["shape", "paths", "c2probe", "stale", "words", "steering", "sdd", "flags", "thisnull", "views", "migrated", "inits", "delta_rules",
-                 "dupclaims", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar"]
+                 "dupclaims", "order", "includes", "provenance", "spans", "bindings", "rekeys", "rea", "partial_bar", "unclaimed_callee"]
         self.do_strict = do_strict
         for name in order:
             if rules and name.replace("_rules", "").replace("_", "-") not in rules:

@@ -42,25 +42,34 @@ _BLOCK = re.compile(r"\b(class|struct|union|namespace|enum)\b|extern\s*\"")
 
 
 def function_bodies(text):
+    return [r[:4] for r in function_defs(text)]
+
+
+def function_defs(text):
+    """function_bodies plus a fifth field: True when the body sits inside a class/struct/union block (an
+    in-class, implicitly inline definition)."""
     s = strip_code(text)
     res = []
-    stack = []          # (is_function, header, start_index)
+    stack = []          # (is_function, header, start_index, is_class_block)
     last = 0            # index after the previous top-of-scope ; { or }
     for i, c in enumerate(s):
         if c == "{":
             header = s[last:i]
+            is_cls = False
             if not stack or not stack[-1][0]:
                 is_fn = bool(re.search(r"\)\s*(const\s*)?(throw\s*\([^)]*\)\s*)?(:[^{;]*)?$", header.strip()) or
                              re.search(r"\)\s*(const\s*)?$", header.strip())) and not _BLOCK.search(header.split("(")[0])
+                is_cls = not is_fn and bool(re.search(r"\b(class|struct|union)\b", header.split("(")[0]))
             else:
                 is_fn = True        # nested braces inside a function body
-            stack.append((is_fn, header, i))
+            stack.append((is_fn, header, i, is_cls))
             last = i + 1
         elif c == "}":
             if stack:
-                is_fn, header, start = stack.pop()
-                if is_fn and not any(f for f, _, _ in stack):
-                    res.append((header.strip(), s[start + 1:i], s.count("\n", 0, start) + 1, s.count("\n", 0, i) + 1))
+                is_fn, header, start, _ = stack.pop()
+                if is_fn and not any(f for f, _, _, _ in stack):
+                    res.append((header.strip(), s[start + 1:i], s.count("\n", 0, start) + 1, s.count("\n", 0, i) + 1,
+                                any(k for _, _, _, k in stack)))
             last = i + 1
         elif c == ";" and (not stack or not stack[-1][0]):
             last = i + 1
