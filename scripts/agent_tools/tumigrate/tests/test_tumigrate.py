@@ -270,6 +270,16 @@ class DefinedGlobalsLast(unittest.TestCase):
         self.assertEqual(keep, ["typedef int T;", "int k;"])
         self.assertEqual(blocks, [["// BEGIN defined globals (x)", "Foo g;", "// END defined globals"]])
 
+    def test_assert_on_a_chunk_variable_stays_behind_it(self):
+        write(os.path.join(self.tree, "match/x/a.cpp"),
+              HDR + "struct S { int a; };\nGG_STATIC_ASSERT(sizeof(S) == 4);\n\n// SYNTHETIC: GAMEMD 0x401000\ndouble g = 1.0 / h;\n"
+              "\nGG_STATIC_ASSERT(sizeof(g) == 8);\nGG_STATIC_ASSERT(sizeof(S) == 4);\n")
+        p = plan("match/x/new.cpp", [dict(file="match/x/a.cpp", flags="", whole=True, move=[0],
+                                         all_rows=[0x401000], rows=[0x401000], notes=[])])
+        text, _, _ = migrate.compose(self.tree, p, SITES)
+        self.assertLess(text.index("double g ="), text.index("sizeof(g)"))
+        self.assertEqual(text.count("sizeof(S) == 4"), 2)
+
     def test_trailing_definitions_are_not_hoisted_in_front_of_the_functions(self):
         # `Foo g;` has a constructor: its dynamic initialiser has to run after the initialisers of the functions' file part
         write(os.path.join(self.tree, "match/x/a.cpp"),

@@ -167,6 +167,11 @@ def main():
     tmp = tempfile.mkdtemp(prefix='tumig_')
     for rnd in range(6):
         p = fit(tree, a.tu, ex, tmp)
+        if not p['inits'] and p['files'] and all(f['file'] == p['dest'] for f in p['files']):
+            # the destination already is the whole TU: rewriting it would only reorder its text
+            json.dump(dict(plan=p, applied=None), open(os.path.join(a.out, a.tu + '.fit.json'), 'w'), indent=1)
+            print(a.tu, 'already in place:', p['dest'], 'holds every movable row; nothing to merge')
+            return
         if not p['files'] and not p['inits']:
             json.dump(dict(plan=p, applied=None), open(os.path.join(a.out, a.tu + '.fit.json'), 'w'), indent=1)
             print(a.tu, 'nothing movable')

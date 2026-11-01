@@ -281,6 +281,27 @@ GENERATED_HDR = re.compile(r'^//\s+(Original translation unit .*|in retail gamem
                            r'code range \(.*|Obj_/Gbl_ views below .*|them with the canonical class.*|a separate rename-only change\.)$')
 
 
+ASSERT_RE = re.compile(r'^\s*GG_STATIC_ASSERT\(.*\);\s*$')
+_WORD = re.compile(r'[A-Za-z_]\w*')
+
+
+def take_dependent_asserts(seg, chunk_body):
+    """-> (seg without them, [assert lines]): the single-line static asserts of `seg` (the code right behind a chunk)
+    that name a variable the chunk defines at file scope. They have to stay behind that definition, so they move with
+    the chunk instead of being hoisted in front of it."""
+    dep = cppsplit.depth_scan(chunk_body)
+    top = cppsplit.strip_noncode('\n'.join(ln for ln, d in zip(chunk_body, dep) if d[0] == 0)) if chunk_body else ''
+    rest, taken = [], []
+    for ln in seg:
+        if ASSERT_RE.match(ln):
+            names = [w for w in _WORD.findall(ln) if w not in ('GG_STATIC_ASSERT', 'sizeof', 'offsetof')]
+            if any(re.search(r'\b%s\b\s*(=|\[|;|\()' % re.escape(w), top) for w in names):
+                taken.append(ln)
+                continue
+        rest.append(ln)
+    return rest, taken
+
+
 DG_BEGIN = '// BEGIN defined globals'
 DG_END = '// END defined globals'
 
@@ -409,8 +430,16 @@ def compose(tree, p, sites):
         rowset = set(f['rows']) | set(f.get('all_rows', []))
         spans = list(inters) + [(c['start'], c['end']) for c in chs
                                 if not any(x in f.get('all_rows', f['rows']) for x in c['addrs'])]
+        mv = set(f['move'])
+        follow = {}
+        ends = {chs[ci]['end']: ci for ci in mv}
         for a, b in sorted(spans):
             seg = lines[a:b]
+            if a in ends and not keeps_defs:
+                ci = ends[a]
+                seg, taken = take_dependent_asserts(seg, lines[chs[ci]['start']:chs[ci]['end']])
+                if taken:
+                    follow[ci] = taken
             if not keeps_defs:
                 # a `defined globals` block sits at the end of its file, after every function: its dynamic
                 # initialisers run after theirs. Hoisting it would run them first, so it is kept for the end.
@@ -422,10 +451,9 @@ def compose(tree, p, sites):
             # the source file keeps its definitions; the new TU only sees extern declarations
             block = externalise(block)
         decl_blocks.append(block)
-        mv = set(f['move'])
         for ci in sorted(mv):
             c = chs[ci]
-            body = trim_blank(lines[c['start']:c['end']])
+            body = trim_blank(lines[c['start']:c['end']]) + follow.get(ci, [])
             key = min(a for a in c['addrs'] if a in set(f['rows']) or True)
             rowsin = [a for a in c['addrs'] if a in set(f['rows'])]
             key = min(rowsin)
