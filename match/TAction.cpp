@@ -1,6 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
-//   out-of-line _$E thunk behind a jump).
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit TAction.CPP. The name is the source-file string at 0x842bf8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6de10c inside this object's
@@ -8,6 +6,9 @@
 //   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
+//
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 //
 // Merged here from taction_class_methods.cpp (0x6E3EE0, 0x6E45E0) and taction_class_w3_methods.cpp
 // (0x6E42D0, 0x6E4320, 0x6E47C0); each keeps its own matching notes below.
@@ -34,6 +35,14 @@
 // 16-byte CLSID global to the caller and returns E_POINTER for a null pointer.
 // The owning class of each address is read from the RTTI-named vtable that holds
 // it in slot 3.
+//
+//   TActionClass effect handlers read off retail gamemd.exe v1.001 (TAction.CPP, code range
+//   0x6dcd70-0x6e4b4f), round 16. The class is a view named for this TU (TActionView_r16) that
+//   carries only the members these bodies touch; the handlers are __thiscall
+//   (house, object, trigger, cell) and return true after their effect.
+//
+// Address index (ascending):
+//   0x6E0110
 
 #include "taction_class_mode_methods.h"
 #include "mathtbl_init_shapes.h"
@@ -164,16 +173,15 @@ extern const double DAT_007E1738;
 extern const double DAT_007E1740;
 // GLOBAL: GAMEMD 0x7F43C0
 extern const double DAT_007F43C0;
+
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
 double __cdecl FUN_004CAC40(double value);
+
 // FUNCTION: GAMEMD 0x4CAD50 (decl; reloc)
 double __cdecl FUN_004CAD50(double value);
+
 // FUNCTION: GAMEMD 0x4CADE0 (decl; reloc)
 double __cdecl FUN_004CADE0(double value);
-
-// SYNTHETIC: GAMEMD 0x6DCD70
-// GLOBAL: GAMEMD 0xB0E688
-double DAT_00B0E688 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
 
 // GLOBAL: GAMEMD 0xA8EB44 / 0xA8EB50 -- BuildingClass::Array items and count.
 extern BuildingClass** DAT_00A8EB44;
@@ -181,75 +189,6 @@ extern int DAT_00A8EB50;
 
 // GLOBAL: GAMEMD 0x87F8E4 -- the map rectangle.
 extern Rect_4i DAT_0087F8E4;
-
-
-// FUNCTION: GAMEMD 0x006E21E0
-// Set the map rectangle from the action, then rebuild the map around it: refresh
-// every cell, recalculate the zones and tell every building to re-read the map.
-bool TActionClass::FUN_006E21E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
-{
-    DAT_0087F8E4 = unknown_34;
-    DAT_0087F7E8.FUN_00655990();
-    DAT_0087F7E8.FUN_00578350();
-    CellClass* c;
-    while ((c = DAT_0087F7E8.FUN_00578290()) != 0)
-        c->FUN_0047D2B0(-1);
-    DAT_0087F7E8.FUN_0056C510();
-    DAT_0087F7E8.FUN_00581F50();
-    DAT_0087F7E8.FUN_00657CE0();
-    for (int i = DAT_00A8EB50 - 1; i >= 0; i--)
-        DAT_00A8EB44[i]->vf_296(1);
-    return true;
-}
-
-// FUNCTION: GAMEMD 0x6E2C20
-// Calls other functions.
-bool __stdcall FUN_006E2C20(int a1, int a2, int a3, int a4)
-{
-    DAT_0087F7E8.FUN_00588AC0();
-    DAT_0087F7E8.FUN_004F42F0(1);
-    return true;
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6E47F0
-// DynamicVectorClass<TActionClass*>::Clear
-
-// FUNCTION: GAMEMD 0x6E4820
-// DynamicVectorClass<TActionClass*>::Slot5
-
-// FUNCTION: GAMEMD 0x6E4840
-// VectorClass<TActionClass*>::Slot6
-
-// FUNCTION: GAMEMD 0x6E4850
-// VectorClass<TActionClass*>::operator==
-
-// FUNCTION: GAMEMD 0x6E4890
-// VectorClass<TActionClass*>::SetCapacity
-
-// FUNCTION: GAMEMD 0x6E4940
-// VectorClass<TActionClass*>::Clear
-
-// FUNCTION: GAMEMD 0x6E4970
-// VectorClass<TActionClass*>::FindItemIndex
-
-// FUNCTION: GAMEMD 0x6E49B0
-// VectorClass<TActionClass*>::Slot5
-
-// FUNCTION: GAMEMD 0x6E49D0
-// DynamicVectorClass<TActionClass*>::SetCapacity
-
-// FUNCTION: GAMEMD 0x6E4A80
-// DynamicVectorClass<TActionClass*>::FindItemIndex
-
-// SYNTHETIC: GAMEMD 0x6E4AB0
-// VectorClass<TActionClass*>::scalar deleting destructor
-
-// SYNTHETIC: GAMEMD 0x6E4B00
-// DynamicVectorClass<TActionClass*>::scalar deleting destructor
-
-// FUNCTION: GAMEMD 0x750920 (decl; reloc)
-void* FUN_00750920(int index, float volume, unsigned int pan, void* controller);
 
 // GLOBAL: GAMEMD 0xA8EAEC / 0xA8EAF8 -- TriggerClass::Array items and count.
 extern TriggerClass** DAT_00A8EAEC;
@@ -300,6 +239,7 @@ extern RulesClass* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x6ABC60 (decl; reloc)
 int __fastcall FUN_006ABC60(int a, int b, int c);
+
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DAT_00A8ED9C;
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x88099A / 0x88099B / 0x88099C -- tactical-view state reset by action 0x24.
@@ -309,31 +249,43 @@ extern int DAT_00880994;
 extern bool DAT_0088099A;
 extern bool DAT_0088099B;
 extern bool DAT_0088099C;
+
 // FUNCTION: GAMEMD 0x684240 (decl; reloc)
 void __cdecl FUN_00684240();
+
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
 
 // GLOBAL: GAMEMD 0xA83DEC / 0xA83DF8 -- InfantryClass array items and count.
 extern InfantryClass** DAT_00A83DEC;
 extern int DAT_00A83DF8;
+
 // FUNCTION: GAMEMD 0x65FA70 (decl; reloc)
 void __fastcall FUN_0065FA70(int a, CellStruct cell);
+
 // FUNCTION: GAMEMD 0x6F1F70 (decl; reloc) -- the first live team of a team type.
 TeamClass* __fastcall FUN_006F1F70(TeamTypeClass* teamType);
+
 // FUNCTION: GAMEMD 0x70F120 (decl; reloc)
 void __fastcall FUN_0070F120(void* a, int b);
+
 // FUNCTION: GAMEMD 0x72DDB0 (decl; reloc)
 void __cdecl FUN_0072DDB0();
+
 // FUNCTION: GAMEMD 0x6842F0 (decl; reloc)
 void __fastcall FUN_006842F0(bool flag);
+
 // FUNCTION: GAMEMD 0x5BF260 (decl; reloc)
 void __fastcall FUN_005BF260(int a, int b, int c, int d, int e);
+
 // FUNCTION: GAMEMD 0x72DEF0 (decl; reloc)
 void __cdecl FUN_0072DEF0();
+
 // FUNCTION: GAMEMD 0x50C210 (decl; reloc) -- a step on the house.
 void __fastcall FUN_0050C210(HouseClass* house);
+
 // FUNCTION: GAMEMD 0x750E20 (decl; reloc)
 void __fastcall FUN_00750E20(int sound, CoordStruct* where, int unused);
+
 // FUNCTION: GAMEMD 0x750F40 (decl; reloc)
 void __fastcall FUN_00750F40(CoordStruct* where, int flag);
 
@@ -419,6 +371,183 @@ GG_STATIC_ASSERT(offsetof(TActionRegistry, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(TActionRegistry, Count) == 0x10);
 GG_STATIC_ASSERT(sizeof(TActionRegistry) == 0x18);
 
+struct Obj_006E4790;
+
+// LIBRARY: GAMEMD 0x7C91D0 (decl; reloc)
+void __cdecl FUN_007C91D0(Obj_006E4790*, int, int);
+
+struct Obj_006E4790
+{
+    unsigned char unknown_00;   // +0x0000
+    char unknown_01[0x1E];
+    unsigned char unknown_1F;   // +0x001F
+    // FUNCTION: GAMEMD 0x6E4790
+    Obj_006E4790* FUN_006E4790(int a1);
+};
+GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_1F) == 0x1F);
+
+extern HouseClass* DAT_00A83D4C;
+
+struct Obj_006E0440 {
+    bool FUN_006E0440(int, int, int, int);
+    bool FUN_006E0460(int, int, int, int);
+};
+
+struct Obj_006E26C0 {
+    void FUN_00684290();
+    bool FUN_006E26C0(int, int, int, int);
+};
+
+struct Obj_006E2850 {
+    void FUN_007315A0();
+    bool FUN_006E2850(int, int, int, int);
+};
+
+// External callees reached by FindHouseByIndex. Declared (no body) so cl emits a
+// relocatable CALL; the reloc is normalised by the differ. Each single-argument
+// callee takes its argument in ECX (modelled as __fastcall).
+//   0x726910 — resolve the "current/special" house from the source pointer.
+//   0x510F60 — predicate over a raw house index (returns bool in AL).
+//   0x510ED0 — house lookup when the predicate holds.
+//   0x502D30 — house lookup otherwise.
+int TActionClass_Sub726910(void* pSource);
+bool TActionClass_Sub510F60(int index);
+int TActionClass_Sub510ED0(int index);
+int TActionClass_Sub502D30(int index);
+
+struct Elem_006E42D0 {
+    unsigned char unknown_00[0x6D];
+    unsigned char unknown_6D;       // +0x6D: the super weapon is present
+    // FUNCTION: GAMEMD 0x6CC1E0 (decl; reloc) -- SuperClass::SetCharge.
+    void FUN_006CC1E0(int percentage);
+};
+GG_STATIC_ASSERT(offsetof(Elem_006E42D0, unknown_6D) == 0x6D);
+struct Rec_006E42D0 {
+    unsigned char unknown_00[0x258];
+    Elem_006E42D0** unknown_258;    // +0x258: the house's super weapons
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;                // +0x264: their count
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_264) == 0x264);
+
+struct Elem_006E4320 {
+    // FUNCTION: GAMEMD 0x6CC280 (decl; reloc) -- SuperClass::SetRechargeTime.
+    void FUN_006CC280(int time);
+};
+struct Rec_006E4320 {
+    unsigned char unknown_00[0x258];
+    Elem_006E4320** unknown_258;
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_264) == 0x264);
+
+struct Elem_006E4360 {
+    void FUN_006CC290();
+};
+struct Rec_006E4360 {
+    unsigned char unknown_00[0x258];
+    Elem_006E4360** unknown_258;
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_264) == 0x264);
+
+struct Elem_006E43A0 {
+    void FUN_006CE0B0();
+};
+struct Rec_006E43A0 {
+    unsigned char unknown_00[0x258];
+    Elem_006E43A0** unknown_258;
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_264) == 0x264);
+
+// Forward declaration: defined below, in ascending retail address order.
+static __inline int find_house_inner(void* pSource, int index);
+
+int __stdcall TActionClass::FindHouseByIndex(void* pSource, int index)
+{
+    if (pSource == 0)
+        return 0;
+
+    return find_house_inner(pSource, index);
+}
+
+GG_STATIC_ASSERT(offsetof(TActionClass, unknown_24) == 0x24);
+GG_STATIC_ASSERT(sizeof(((TActionClass*)0)->unknown_24) == 4);
+
+// A 32-byte block that assigns by block copy and hands back a copy of itself.
+struct Block_006E47C0 {
+    int Words[8];
+
+    Block_006E47C0 FUN_006E47C0(const Block_006E47C0& other);
+};
+GG_STATIC_ASSERT(sizeof(Block_006E47C0) == 0x20);
+
+#include <stddef.h>
+#include "_rt/gg_static_assert.h"
+#include "_layout/cell.h"
+#include "_layout/coord_struct.h"
+#include "team_type_class_methods.h"
+#include "system_class.h"
+
+class HouseClass;
+class ObjectClass;
+class TriggerClass;
+
+// The map object, as far as the height query.
+struct TActionMap_r16
+{
+    // FUNCTION: GAMEMD 0x578080 (decl; reloc) -- the height at a coordinate.
+    int FUN_00578080(CoordStruct* where);
+};
+// GLOBAL: GAMEMD 0x87F7E8 -- the map object.
+extern TActionMap_r16 DAT_0087F7E8_r16;
+
+// GLOBAL: GAMEMD 0xB0E6A0 -- the owner coordinate handed to a new particle system.
+extern ParticleCoord DAT_00B0E6A0_r16;
+
+inline CoordStruct TActionR16_CellToCoord(const CellStruct& cell)
+{
+    CoordStruct result;
+    result.X = cell.X * 256 + 128;
+    result.Y = cell.Y * 256 + 128;
+    result.Z = 0;
+    return result;
+}
+
+class TActionView_r16
+{
+public:
+    bool FUN_006E0110(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell);
+
+    char unknown_00[0x44];
+    int Waypoint;          // +0x44
+    char unknown_48[0x90 - 0x48];
+    int Param1;            // +0x90
+};
+GG_STATIC_ASSERT(offsetof(TActionView_r16, Waypoint) == 0x44);
+GG_STATIC_ASSERT(offsetof(TActionView_r16, Param1) == 0x90);
+
+// Forward declarations: these are defined below, in ascending retail address order, but used by
+// an earlier function.
+void* FUN_00750920(int index, float volume, unsigned int pan, void* controller);
+
+// SYNTHETIC: GAMEMD 0x6DCD70
+// GLOBAL: GAMEMD 0xB0E688
+double DAT_00B0E688 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));
+
 // SYNTHETIC: GAMEMD 0x006DCDA0
 // GLOBAL: GAMEMD 0x00B0E6D8
 double DAT_00B0E6D8 = DAT_00B0E688 / DAT_007F43B8;
@@ -466,22 +595,6 @@ MathTblZero3 DAT_00B0E6A0;
 // SYNTHETIC: GAMEMD 0x006DCF40
 // GLOBAL: GAMEMD 0x00B0E6C8
 MathTblCoord DAT_00B0E6C8;
-
-struct Obj_006E4790;
-
-// LIBRARY: GAMEMD 0x7C91D0 (decl; reloc)
-void __cdecl FUN_007C91D0(Obj_006E4790*, int, int);
-
-struct Obj_006E4790
-{
-    unsigned char unknown_00;   // +0x0000
-    char unknown_01[0x1E];
-    unsigned char unknown_1F;   // +0x001F
-    // FUNCTION: GAMEMD 0x6E4790
-    Obj_006E4790* FUN_006E4790(int a1);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_00) == 0x0);
-GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_1F) == 0x1F);
 
 // SYNTHETIC: GAMEMD 0x6DCF60
 // GLOBAL: GAMEMD 0xB0E670
@@ -541,6 +654,20 @@ bool TActionClass::FUN_006E0080(HouseClass* house, ObjectClass* object, TriggerC
             }
         }
     }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0110
+// Create the particle system named by the parameter at the waypoint's cell centre.
+bool TActionView_r16::FUN_006E0110(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct at;
+    at = *WaypointLocatorPtr->GetCoords(&at, Waypoint);
+    CoordStruct where = TActionR16_CellToCoord(at);
+    CoordStruct height = TActionR16_CellToCoord(at);
+    where.Z = DAT_0087F7E8_r16.FUN_00578080(&height);
+    new ParticleSystemClass(((ParticleSystemTypeClass**)DAT_00A83D68.Items)[Param1],
+                            *reinterpret_cast<ParticleCoord*>(&where), 0, 0, DAT_00B0E6A0_r16, 0);
     return true;
 }
 
@@ -619,18 +746,13 @@ bool TActionClass::FUN_006E03B0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
-extern HouseClass* DAT_00A83D4C;
-
-struct Obj_006E0440 {
-    bool FUN_006E0440(int, int, int, int);
-    bool FUN_006E0460(int, int, int, int);
-};
 // FUNCTION: GAMEMD 0x006E0440
 bool Obj_006E0440::FUN_006E0440(int, int, int, int)
 {
     DAT_00A83D4C->Win(1);
     return true;
 }
+
 // FUNCTION: GAMEMD 0x006E0460
 bool Obj_006E0440::FUN_006E0460(int, int, int, int)
 {
@@ -926,6 +1048,7 @@ bool TActionClass::FUN_006E1440(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E16D0
 // Bracket a redraw of the view around a 0x5BF260 step on the action's parameter.
 bool TActionClass::FUN_006E16D0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -941,6 +1064,7 @@ bool TActionClass::FUN_006E16D0(HouseClass* house, ObjectClass* object, TriggerC
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1720
 // Calls other functions.
 bool Obj_006E1720::FUN_006E1720(int a1, int a2, int a3, int a4)
@@ -950,6 +1074,7 @@ bool Obj_006E1720::FUN_006E1720(int a1, int a2, int a3, int a4)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1740
 // Calls other functions.
 bool Obj_006E1740::FUN_006E1740(int a1, int a2, int a3, int a4)
@@ -958,6 +1083,7 @@ bool Obj_006E1740::FUN_006E1740(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1760
 bool TActionClass::FUN_006E1760(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -965,6 +1091,7 @@ bool TActionClass::FUN_006E1760(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1830
 // The object standing in the cell under a coordinate: its building, else the first other occupant.
 ObjectClass* __fastcall FUN_006E1830(CoordStruct* coord)
@@ -983,6 +1110,7 @@ ObjectClass* __fastcall FUN_006E1830(CoordStruct* coord)
     return o;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E18B0
 // Run the 0x5F6CB0 step on the occupant of the waypoint's cell, or play the sound at the spot if none.
 bool TActionClass::FUN_006E18B0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1006,6 +1134,7 @@ bool TActionClass::FUN_006E18B0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1980
 // Run the 0x5F6CB0 step (with -1) on the occupant of the waypoint's cell, or the 0x750F40 step if none.
 bool TActionClass::FUN_006E1980(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1029,6 +1158,7 @@ bool TActionClass::FUN_006E1980(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1A40
 bool TActionClass::FUN_006E1A40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1037,6 +1167,7 @@ bool TActionClass::FUN_006E1A40(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1B90
 // Calls other functions.
@@ -1047,6 +1178,7 @@ bool FUN_006E1B90(Obj_006E1B90* a1, int a2, int a3, int a4, int a5, int a6)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1BB0
 // Calls other functions.
 bool Obj_006E1BB0::FUN_006E1BB0(int a1, int a2, int a3, int a4)
@@ -1055,6 +1187,7 @@ bool Obj_006E1BB0::FUN_006E1BB0(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1BD0
 // Give the house its super weapon, and refresh the sidebar when the house is the local player.
 bool TActionClass::FUN_006E1BD0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1067,6 +1200,7 @@ bool TActionClass::FUN_006E1BD0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1C40
 // Take the super weapon away and clear its hold flag, refreshing the sidebar for the local player.
 bool TActionClass::FUN_006E1C40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1080,6 +1214,7 @@ bool TActionClass::FUN_006E1C40(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1DC0
 // Apply one local-player step when the parameter names the player's colour scheme, the other if not.
 bool TActionClass::FUN_006E1DC0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1092,6 +1227,7 @@ bool TActionClass::FUN_006E1DC0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1E00
 // The mirror of the previous handler: the second step when the colour scheme matches.
 bool TActionClass::FUN_006E1E00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1104,6 +1240,7 @@ bool TActionClass::FUN_006E1E00(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1E40
 bool TActionClass::FUN_006E1E40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1115,6 +1252,7 @@ bool TActionClass::FUN_006E1E40(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1EA0
 bool TActionClass::FUN_006E1EA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1126,6 +1264,7 @@ bool TActionClass::FUN_006E1EA0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1F00
 bool TActionClass::FUN_006E1F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1137,6 +1276,7 @@ bool TActionClass::FUN_006E1F00(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1F60
 // Create the action's team while the setup flag is raised.
 bool TActionClass::FUN_006E1F60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1149,6 +1289,7 @@ bool TActionClass::FUN_006E1F60(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1F90
 // Branching.
@@ -1163,6 +1304,7 @@ unsigned char Obj_006E1F90::FUN_006E1F90(int a1, int a2, int a3, int a4)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1FB0
 // Branching.
 unsigned char FUN_006E1FB0(Obj_006E1FB0* a1, int a2, int a3, int a4, int a5, int a6)
@@ -1174,6 +1316,7 @@ unsigned char FUN_006E1FB0(Obj_006E1FB0* a1, int a2, int a3, int a4, int a5, int
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1FD0
 // Branching.
@@ -1190,6 +1333,7 @@ unsigned char Obj_006E1FD0::FUN_006E1FD0(int a1, int a2, int a3, int a4)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1FF0
 // Call the interface of the house named by the parameter, if there is one.
 bool TActionClass::FUN_006E1FF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1201,6 +1345,7 @@ bool TActionClass::FUN_006E1FF0(HouseClass* house, ObjectClass* object, TriggerC
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E21D0
 // Returns a constant boolean; pops its stack arguments.
 bool __stdcall FUN_006E21D0(int a1, int a2, int a3, int a4)
@@ -1208,10 +1353,27 @@ bool __stdcall FUN_006E21D0(int a1, int a2, int a3, int a4)
     return true;
 }
 
-struct Obj_006E26C0 {
-    void FUN_00684290();
-    bool FUN_006E26C0(int, int, int, int);
-};
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x006E21E0
+// Set the map rectangle from the action, then rebuild the map around it: refresh
+// every cell, recalculate the zones and tell every building to re-read the map.
+bool TActionClass::FUN_006E21E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_0087F8E4 = unknown_34;
+    DAT_0087F7E8.FUN_00655990();
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* c;
+    while ((c = DAT_0087F7E8.FUN_00578290()) != 0)
+        c->FUN_0047D2B0(-1);
+    DAT_0087F7E8.FUN_0056C510();
+    DAT_0087F7E8.FUN_00581F50();
+    DAT_0087F7E8.FUN_00657CE0();
+    for (int i = DAT_00A8EB50 - 1; i >= 0; i--)
+        DAT_00A8EB44[i]->vf_296(1);
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2660
 // Reset the tactical view state.
 bool TActionClass::FUN_006E2660(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1229,6 +1391,7 @@ bool TActionClass::FUN_006E2660(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E26C0
 bool Obj_006E26C0::FUN_006E26C0(int, int, int, int)
 {
@@ -1236,10 +1399,7 @@ bool Obj_006E26C0::FUN_006E26C0(int, int, int, int)
     return true;
 }
 
-struct Obj_006E2850 {
-    void FUN_007315A0();
-    bool FUN_006E2850(int, int, int, int);
-};
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E26D0
 // Scroll the tactical view to the waypoint, lifted over bridge cells, with the parameter.
 bool TActionClass::FUN_006E26D0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1254,6 +1414,7 @@ bool TActionClass::FUN_006E26D0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2790
 // Centre the tactical view on the waypoint, lifted over bridge cells.
 bool TActionClass::FUN_006E2790(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1268,6 +1429,7 @@ bool TActionClass::FUN_006E2790(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E2850
 bool Obj_006E2850::FUN_006E2850(int, int, int, int)
 {
@@ -1275,6 +1437,7 @@ bool Obj_006E2850::FUN_006E2850(int, int, int, int)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2860
 // Pause: store the saved rate into the controller, then redraw and sleep a second.
 bool TActionClass::FUN_006E2860(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1290,6 +1453,7 @@ bool TActionClass::FUN_006E2860(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E28E0
 // Resume: restore a rate of 1.0, mirror the session flag, and redraw.
 bool TActionClass::FUN_006E28E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1304,6 +1468,7 @@ bool TActionClass::FUN_006E28E0(HouseClass* house, ObjectClass* object, TriggerC
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2950
 // Calls other functions.
 bool FUN_006E2950(int a1, int a2, int a3, int a4, int a5, int a6)
@@ -1312,6 +1477,7 @@ bool FUN_006E2950(int a1, int a2, int a3, int a4, int a5, int a6)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2970
 // Give the spotlight of every live, mapped building carrying this trigger its 0x436BE0 step.
 bool TActionClass::FUN_006E2970(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1328,6 +1494,7 @@ bool TActionClass::FUN_006E2970(HouseClass* house, ObjectClass* object, TriggerC
     return result;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2A10
 bool TActionClass::FUN_006E2A10(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1341,6 +1508,7 @@ bool TActionClass::FUN_006E2A10(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2A50
 bool TActionClass::FUN_006E2A50(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1358,6 +1526,7 @@ bool TActionClass::FUN_006E2A50(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2AA0
 bool TActionClass::FUN_006E2AA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1371,6 +1540,7 @@ bool TActionClass::FUN_006E2AA0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2AF0
 bool TActionClass::FUN_006E2AF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1390,6 +1560,7 @@ bool TActionClass::FUN_006E2AF0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2B70
 bool TActionClass::FUN_006E2B70(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1403,6 +1574,7 @@ bool TActionClass::FUN_006E2B70(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2BB0
 // Hand the action's parameter and its waypoint cell to 0x65FA70.
 bool TActionClass::FUN_006E2BB0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1411,6 +1583,7 @@ bool TActionClass::FUN_006E2BB0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2BE0
 // Calls other functions.
@@ -1421,6 +1594,7 @@ bool Obj_006E2BE0::FUN_006E2BE0(int a1, int a2, int a3, int a4)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2C00
 // Calls other functions.
 bool Obj_006E2C00::FUN_006E2C00(int a1, int a2, int a3, int a4)
@@ -1429,6 +1603,17 @@ bool Obj_006E2C00::FUN_006E2C00(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6E2C20
+// Calls other functions.
+bool __stdcall FUN_006E2C20(int a1, int a2, int a3, int a4)
+{
+    DAT_0087F7E8.FUN_00588AC0();
+    DAT_0087F7E8.FUN_004F42F0(1);
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2E20
 // Stores its argument in a member; pops its stack arguments.
@@ -1439,6 +1624,7 @@ bool Obj_006E2E20::FUN_006E2E20(int a1, int a2, int a3, int a4)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2E40
 // Stores its argument in a member; pops its stack arguments.
 bool Obj_006E2E40::FUN_006E2E40(int a1, int a2, int a3, int a4)
@@ -1447,6 +1633,7 @@ bool Obj_006E2E40::FUN_006E2E40(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2E60
 bool TActionClass::FUN_006E2E60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1455,6 +1642,7 @@ bool TActionClass::FUN_006E2E60(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2EB0
 bool TActionClass::FUN_006E2EB0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1463,6 +1651,7 @@ bool TActionClass::FUN_006E2EB0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2F00
 // Record the action's parameter in the session and scroll to it.
 bool TActionClass::FUN_006E2F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1472,6 +1661,7 @@ bool TActionClass::FUN_006E2F00(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2F50
 bool TActionClass::FUN_006E2F50(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1482,6 +1672,7 @@ bool TActionClass::FUN_006E2F50(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2F90
 bool TActionClass::FUN_006E2F90(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1489,6 +1680,7 @@ bool TActionClass::FUN_006E2F90(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3000
 bool TActionClass::FUN_006E3000(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1500,6 +1692,7 @@ bool TActionClass::FUN_006E3000(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3060
 bool TActionClass::FUN_006E3060(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1511,6 +1704,7 @@ bool TActionClass::FUN_006E3060(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E30C0
 bool IdCommandOwner::FUN_006E30C0(int, int, int, void* handle, int)
@@ -1538,6 +1732,7 @@ fail:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3120
 bool IdCommandOwner::FUN_006E3120(int, int, int, void* handle, int)
 {
@@ -1563,6 +1758,7 @@ fail:
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3180
 bool IdCommandOwner::FUN_006E3180(int, int, int, void* handle, int)
@@ -1590,6 +1786,7 @@ fail:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E31E0
 bool IdCommandOwner::FUN_006E31E0(int, int, int, void* handle, int)
 {
@@ -1615,6 +1812,7 @@ fail:
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3240
 bool IdCommandOwner::FUN_006E3240(int, int, int, void* handle, int)
@@ -1642,6 +1840,7 @@ fail:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E32A0
 bool IdCommandOwner::FUN_006E32A0(int, int, int, void* handle, int)
 {
@@ -1668,6 +1867,7 @@ fail:
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3300
 // Branching.
 unsigned char Obj_006E3300::FUN_006E3300(Arg1_006E3300* a1, int a2, int a3, int a4)
@@ -1679,6 +1879,7 @@ unsigned char Obj_006E3300::FUN_006E3300(Arg1_006E3300* a1, int a2, int a3, int 
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3320
 // Branching.
@@ -1692,6 +1893,7 @@ unsigned char Obj_006E3320::FUN_006E3320(Arg1_006E3320* a1, int a2, int a3, int 
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3340
 // Branching.
 unsigned char Obj_006E3340::FUN_006E3340(Arg1_006E3340* a1, int a2, int a3, int a4)
@@ -1704,6 +1906,7 @@ unsigned char Obj_006E3340::FUN_006E3340(Arg1_006E3340* a1, int a2, int a3, int 
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3360
 // Branching.
 unsigned char Obj_006E3360::FUN_006E3360(Arg1_006E3360* a1, int a2, int a3, int a4)
@@ -1715,6 +1918,7 @@ unsigned char Obj_006E3360::FUN_006E3360(Arg1_006E3360* a1, int a2, int a3, int 
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3380
 bool TActionClass::FUN_006E3380(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1728,6 +1932,7 @@ bool TActionClass::FUN_006E3380(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3890
 // Branching.
@@ -1744,6 +1949,7 @@ unsigned char Obj_006E3890::FUN_006E3890(int a1, int a2, int a3, int a4)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E38B0
 bool TActionClass::FUN_006E38B0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -1751,6 +1957,7 @@ bool TActionClass::FUN_006E38B0(HouseClass* house, ObjectClass* object, TriggerC
     return MapInstance.FUN_0056BEC0(where, unknown_90);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3B20
 // Stores its argument in a member; pops its stack arguments.
@@ -1761,6 +1968,7 @@ bool __stdcall FUN_006E3B20(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3B40
 // Branching.
@@ -1774,6 +1982,7 @@ unsigned char Obj_006E3B40::FUN_006E3B40(Arg1_006E3B40* a1, int a2, int a3, int 
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3B60  TActionClass::GetMode
 //
@@ -1863,6 +2072,7 @@ int TActionClass_006E3B60::GetMode(int kind)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E3D70
 HRESULT __stdcall TActionClass::GetClassID(CLSID* pClassID)
 {
@@ -1872,6 +2082,7 @@ HRESULT __stdcall TActionClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3DB0
 HRESULT __stdcall TActionClass::Load(IStream* pStm)
 {
@@ -1887,18 +2098,26 @@ HRESULT __stdcall TActionClass::Load(IStream* pStm)
     return 0;
 }
 
-// External callees reached by FindHouseByIndex. Declared (no body) so cl emits a
-// relocatable CALL; the reloc is normalised by the differ. Each single-argument
-// callee takes its argument in ECX (modelled as __fastcall).
-//   0x726910 — resolve the "current/special" house from the source pointer.
-//   0x510F60 — predicate over a raw house index (returns bool in AL).
-//   0x510ED0 — house lookup when the predicate holds.
-//   0x502D30 — house lookup otherwise.
-int TActionClass_Sub726910(void* pSource);
-bool TActionClass_Sub510F60(int index);
-int TActionClass_Sub510ED0(int index);
-int TActionClass_Sub502D30(int index);
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6E3E50
+// Synchronisation checksum: the referenced objects' ids and the action parameter.
+void TActionClass::vf_13(Obj_004A1D30* crc)
+{
+    AbstractClass::vf_13(crc);
+    if (unknown_28)
+        crc->FUN_004A1D50(unknown_28->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_2C);
+    if (unknown_30)
+        crc->FUN_004A1D50(unknown_30->vf_rtti_4());
+    if (unknown_4C)
+        crc->FUN_004A1D50(unknown_4C->vf_rtti_4());
+    if (unknown_50)
+        crc->FUN_004A1D50(unknown_50->vf_rtti_4());
+    crc->FUN_004A1D50(unknown_90);
+}
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3EE0  (__fastcall)
 // Sparse switch over the action id: a handful of ids carry flag bit 0x2, the
 // rest return 0. cl lowers this to the `add ecx,-0xe` range-reduce + a packed
@@ -1920,12 +2139,14 @@ int TActionClass::GetFlags(int actionKind)
     return flags;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3F70
 CoordStruct TActionClass::FUN_006E3F70()
 {
     return DAT_00A8B230->FUN_0068BD00(unknown_90);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3FB0
 void TActionClass::FUN_006E3FB0(const unsigned char* text)
 {
@@ -1946,6 +2167,7 @@ void TActionClass::FUN_006E3FB0(const unsigned char* text)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4010
 const char* TActionClass::FUN_006E4010()
 {
@@ -1953,23 +2175,6 @@ const char* TActionClass::FUN_006E4010()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6E3E50
-// Synchronisation checksum: the referenced objects' ids and the action parameter.
-void TActionClass::vf_13(Obj_004A1D30* crc)
-{
-    AbstractClass::vf_13(crc);
-    if (unknown_28)
-        crc->FUN_004A1D50(unknown_28->vf_rtti_4());
-    crc->FUN_004A1D50(unknown_2C);
-    if (unknown_30)
-        crc->FUN_004A1D50(unknown_30->vf_rtti_4());
-    if (unknown_4C)
-        crc->FUN_004A1D50(unknown_4C->vf_rtti_4());
-    if (unknown_50)
-        crc->FUN_004A1D50(unknown_50->vf_rtti_4());
-    crc->FUN_004A1D50(unknown_90);
-}
-
 // FUNCTION: GAMEMD 0x6E4020
 // Branching.
 unsigned char FUN_006E4020(Obj_006E4020* a1, int a2, int a3, int a4, int a5, int a6)
@@ -1982,6 +2187,7 @@ unsigned char FUN_006E4020(Obj_006E4020* a1, int a2, int a3, int a4, int a5, int
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4040
 // Run the 0x70F120 step on the team type's first live team (or on nothing).
 bool TActionClass::FUN_006E4040(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
@@ -1998,6 +2204,7 @@ bool TActionClass::FUN_006E4040(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4080
 bool TActionClass::FUN_006E4080(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -2005,6 +2212,7 @@ bool TActionClass::FUN_006E4080(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4100
 bool TActionClass::FUN_006E4100(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -2016,6 +2224,7 @@ bool TActionClass::FUN_006E4100(HouseClass* house, ObjectClass* object, TriggerC
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4150
 bool TActionClass::FUN_006E4150(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -2027,23 +2236,7 @@ bool TActionClass::FUN_006E4150(HouseClass* house, ObjectClass* object, TriggerC
     return false;
 }
 
-struct Elem_006E42D0 {
-    unsigned char unknown_00[0x6D];
-    unsigned char unknown_6D;       // +0x6D: the super weapon is present
-    // FUNCTION: GAMEMD 0x6CC1E0 (decl; reloc) -- SuperClass::SetCharge.
-    void FUN_006CC1E0(int percentage);
-};
-GG_STATIC_ASSERT(offsetof(Elem_006E42D0, unknown_6D) == 0x6D);
-struct Rec_006E42D0 {
-    unsigned char unknown_00[0x258];
-    Elem_006E42D0** unknown_258;    // +0x258: the house's super weapons
-    int unknown_25C;
-    int unknown_260;
-    int unknown_264;                // +0x264: their count
-};
-GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_258) == 0x258);
-GG_STATIC_ASSERT(offsetof(Rec_006E42D0, unknown_264) == 0x264);
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E42D0
 // Sets the charge of one of the house's present super weapons to a percentage from 0 to 100.
 bool TActionClass::FUN_006E42D0(Rec_006E42D0* a1, int a2, int a3, int a4)
@@ -2058,20 +2251,7 @@ bool TActionClass::FUN_006E42D0(Rec_006E42D0* a1, int a2, int a3, int a4)
     return false;
 }
 
-struct Elem_006E4320 {
-    // FUNCTION: GAMEMD 0x6CC280 (decl; reloc) -- SuperClass::SetRechargeTime.
-    void FUN_006CC280(int time);
-};
-struct Rec_006E4320 {
-    unsigned char unknown_00[0x258];
-    Elem_006E4320** unknown_258;
-    int unknown_25C;
-    int unknown_260;
-    int unknown_264;
-};
-GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_258) == 0x258);
-GG_STATIC_ASSERT(offsetof(Rec_006E4320, unknown_264) == 0x264);
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4320
 // Sets the recharge time of one of the house's super weapons.
 bool TActionClass::FUN_006E4320(Rec_006E4320* a1, int a2, int a3, int a4)
@@ -2083,18 +2263,7 @@ bool TActionClass::FUN_006E4320(Rec_006E4320* a1, int a2, int a3, int a4)
     return false;
 }
 
-struct Elem_006E4360 {
-    void FUN_006CC290();
-};
-struct Rec_006E4360 {
-    unsigned char unknown_00[0x258];
-    Elem_006E4360** unknown_258;
-    int unknown_25C;
-    int unknown_260;
-    int unknown_264;
-};
-GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_258) == 0x258);
-GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_264) == 0x264);
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E4360
 bool TActionClass::FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4)
 {
@@ -2105,18 +2274,7 @@ bool TActionClass::FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4)
     return false;
 }
 
-struct Elem_006E43A0 {
-    void FUN_006CE0B0();
-};
-struct Rec_006E43A0 {
-    unsigned char unknown_00[0x258];
-    Elem_006E43A0** unknown_258;
-    int unknown_25C;
-    int unknown_260;
-    int unknown_264;
-};
-GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_258) == 0x258);
-GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_264) == 0x264);
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E43A0
 bool TActionClass::FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4)
 {
@@ -2127,6 +2285,7 @@ bool TActionClass::FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4)
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E43E0
 bool TActionClass::FUN_006E43E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -2141,6 +2300,7 @@ bool TActionClass::FUN_006E43E0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4460
 bool TActionClass::FUN_006E4460(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -2156,6 +2316,7 @@ bool TActionClass::FUN_006E4460(HouseClass* house, ObjectClass* object, TriggerC
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E44C0
 bool __stdcall FUN_006E44C0(void* p, int, int, int)
 {
@@ -2166,6 +2327,7 @@ bool __stdcall FUN_006E44C0(void* p, int, int, int)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E44E0
 bool TActionClass::FUN_006E44E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -2181,6 +2343,7 @@ bool TActionClass::FUN_006E44E0(HouseClass* house, ObjectClass* object, TriggerC
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E4540
 bool __stdcall FUN_006E4540(void* p, int, int, int)
 {
@@ -2191,6 +2354,7 @@ bool __stdcall FUN_006E4540(void* p, int, int, int)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E4560
 // Flash every building of the house whose type ID equals the action's text, for
 // the action's parameter. Fails when there is no house.
@@ -2206,6 +2370,7 @@ bool TActionClass::FUN_006E4560(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E45E0  (__stdcall)
 //
 // Null source -> none. Index 0x2325 is the special "source's own" house. Index
@@ -2235,14 +2400,7 @@ static __inline int find_house_inner(void* pSource, int index)
     return TActionClass_Sub502D30(index);
 }
 
-int __stdcall TActionClass::FindHouseByIndex(void* pSource, int index)
-{
-    if (pSource == 0)
-        return 0;
-
-    return find_house_inner(pSource, index);
-}
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4630
 // Returns a constant. Vtable slot 12 of TActionClass (RTTI).
@@ -2252,6 +2410,7 @@ int TActionClass::vf_12()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4640
 // Returns a constant. Vtable slot 11 of TActionClass (RTTI).
 int TActionClass::vf_11()
@@ -2259,9 +2418,7 @@ int TActionClass::vf_11()
     return 0x2F;
 }
 
-GG_STATIC_ASSERT(offsetof(TActionClass, unknown_24) == 0x24);
-GG_STATIC_ASSERT(sizeof(((TActionClass*)0)->unknown_24) == 4);
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4650
 // Member getter (dword). Vtable slot 16 of TActionClass (RTTI).
@@ -2271,6 +2428,7 @@ int TActionClass::vf_16()
     return *(int*)unknown_24;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x6E4660 -- scalar deleting destructor.
 
 // FUNCTION: GAMEMD 0x6E4790
@@ -2287,14 +2445,7 @@ Obj_006E4790* Obj_006E4790::FUN_006E4790(int a1)
     return this;
 }
 
-// A 32-byte block that assigns by block copy and hands back a copy of itself.
-struct Block_006E47C0 {
-    int Words[8];
-
-    Block_006E47C0 FUN_006E47C0(const Block_006E47C0& other);
-};
-GG_STATIC_ASSERT(sizeof(Block_006E47C0) == 0x20);
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E47C0
 // Copies the other block over this one (unless it is this one) and returns a copy of the result.
 Block_006E47C0 Block_006E47C0::FUN_006E47C0(const Block_006E47C0& other)
@@ -2304,6 +2455,47 @@ Block_006E47C0 Block_006E47C0::FUN_006E47C0(const Block_006E47C0& other)
     }
     return *this;
 }
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6E47F0
+// DynamicVectorClass<TActionClass*>::Clear
+
+// FUNCTION: GAMEMD 0x6E4820
+// DynamicVectorClass<TActionClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x6E4840
+// VectorClass<TActionClass*>::Slot6
+
+// FUNCTION: GAMEMD 0x6E4850
+// VectorClass<TActionClass*>::operator==
+
+// FUNCTION: GAMEMD 0x6E4890
+// VectorClass<TActionClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x6E4940
+// VectorClass<TActionClass*>::Clear
+
+// FUNCTION: GAMEMD 0x6E4970
+// VectorClass<TActionClass*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x6E49B0
+// VectorClass<TActionClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x6E49D0
+// DynamicVectorClass<TActionClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x6E4A80
+// DynamicVectorClass<TActionClass*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x6E4AB0
+// VectorClass<TActionClass*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x6E4B00
+// DynamicVectorClass<TActionClass*>::scalar deleting destructor
+
+// FUNCTION: GAMEMD 0x750920 (decl; reloc)
+void* FUN_00750920(int index, float volume, unsigned int pan, void* controller);
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x880D2C
@@ -2362,4 +2554,9 @@ extern const CLSID DAT_007E9800 = {0x4F0EC392, 0x0A55, 0x11D2, {0xAC, 0xA7, 0x00
 extern const double DAT_007F43C0 = 0.017453292519943295;
 // GLOBAL: GAMEMD 0x87F8E4
 Rect_4i DAT_0087F8E4;
+// END defined globals
+
+// BEGIN defined globals (define_globals.py)
+// GLOBAL: GAMEMD 0xA8B230
+WaypointLocator* WaypointLocatorPtr;
 // END defined globals
