@@ -14,12 +14,11 @@
 
 // FUNCTION: GAMEMD 0x5D5D20
 // Delete every team and empty the list, then the owned INI.
-// PARTIAL (96.4%): identical instruction multiset; retail stores the vtable
-// pointer before loading Teams.Count, cl loads the count first. Tried: local
-// loop index, direct Items[] tests, an explicit null test on the INI.
+// The count is read through the vector's inline GetCount(): the call's receiver is the
+// vector, so cl keeps the vtable-pointer store ahead of the first count load as retail does.
 MultiplayerGameMode::~MultiplayerGameMode()
 {
-    for (int i = 0; i < Teams.Count; ++i) {
+    for (int i = 0; i < Teams.GetCount(); ++i) {
         MultiplayerTeam* team = Teams.Items[i];
         if (team != 0)
             delete team;

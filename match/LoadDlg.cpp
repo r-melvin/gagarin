@@ -64,12 +64,12 @@ LoadOptionsClass::LoadOptionsClass()
 }
 
 // FUNCTION: GAMEMD 0x558790
-// PARTIAL: 94.9% -- same instructions as retail; cl stores the vtable pointer after loading the entry count,
-// where retail stores it first (ten loop spellings tried, including the earlier six on the deleting copy).
+// The count is read through the vector's inline GetCount(), which keeps the vtable-pointer
+// store ahead of that load as retail has it.
 // Release every list entry, then clear the vector (its base destructor then runs inline).
 LoadOptionsClass::~LoadOptionsClass()
 {
-    for (int i = 0; i < Entries.Count; ++i)
+    for (int i = 0; i < Entries.GetCount(); ++i)
         delete Entries.Items[i];
     Entries.Clear();
 }
@@ -103,10 +103,8 @@ char LoadOptionsClass::FUN_00558810(const wchar_t* a1)
 
 // SYNTHETIC: GAMEMD 0x55A0D0
 // LoadOptionsClass::scalar deleting destructor (compiler-generated ??_G; scored from the harness, see menus.rows.tsv)
-// CAPPED at 95.5% (42 of 44 instructions; multiset identical). Retail stores the vtable (`MOV [EDI],0x7ED2E4`)
-// before it loads the entry count (`MOV EAX,[EDI+0x30]`); cl loads the count first. Six loop spellings
-// (for, while, loop variable outside, element copied to a local, `if (Count > 0) do/while`, `Count > i`) all
-// give the same two-instruction swap or worse. The destructor is inline in menus_load_options.h.
+// Exact (100%) now that the destructor reads the count through GetCount(); it keeps the vtable
+// store (`MOV [EDI],0x7ED2E4`) ahead of the entry-count load as retail has it.
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

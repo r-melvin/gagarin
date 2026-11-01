@@ -39,13 +39,8 @@ EnumConnectionPointsClass::EnumConnectionPointsClass(
     const DynamicVectorClass<IConnectionPoint*>& points)
     : Index(0), RefCount(0), Points(points)
 {
-    int i = 0;
-    if (i < Points.Count) {
-        do {
-            Points.Items[i]->AddRef();
-            ++i;
-        } while (i < Points.Count);
-    }
+    for (int i = 0; i < Points.GetCount(); ++i)
+        Points.Items[i]->AddRef();
 }
 
 // FUNCTION: GAMEMD 0x4A0CE0
@@ -53,11 +48,6 @@ EnumConnectionPointsClass::EnumConnectionPointsClass(
     const EnumConnectionPointsClass& other)
     : Index(other.Index), RefCount(0), Points(other.Points)
 {
-    int i = 0;
-    if (i < Points.Count) {
-        do {
-            Points.Items[i]->AddRef();
-            ++i;
-        } while (i < Points.Count);
-    }
+    for (int i = 0; i < Points.GetCount(); ++i)
+        Points.Items[i]->AddRef();
 }

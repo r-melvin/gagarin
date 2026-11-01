@@ -48,6 +48,6 @@ ULONG __stdcall EnumConnectionPointsClass::Release() {
 }
 // FUNCTION: GAMEMD 0x4A0DB0
 EnumConnectionPointsClass::~EnumConnectionPointsClass() {
-    for (int i = 0; i < Points.Count; ++i) Points.Items[i]->Release();
+    for (int i = 0; i < Points.GetCount(); ++i) Points.Items[i]->Release();
     Points.Clear();
 }

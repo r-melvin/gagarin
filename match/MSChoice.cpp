@@ -716,12 +716,12 @@ MSEngine::MSEngine()
 }
 
 // FUNCTION: GAMEMD 0x5D1B30
-// PARTIAL: 96.7% -- same instructions as retail; cl stores the vtable pointer after loading the first vector's
-// count and pushing EDI, where retail stores it first (the same swap as LoadOptionsClass::~LoadOptionsClass).
+// The first count is read through the vector's inline GetCount(), which keeps the vtable-pointer
+// store ahead of that load as retail has it.
 // Destroy every sound effect, then every animation, then the vectors themselves.
 MSEngine::~MSEngine()
 {
-    for (int i = 0; i < Sfxs.Count; ++i)
+    for (int i = 0; i < Sfxs.GetCount(); ++i)
         delete Sfxs.Items[i];
     Sfxs.Clear();
     for (int j = 0; j < Anims.Count; ++j)

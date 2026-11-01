@@ -52,7 +52,7 @@ HRESULT __stdcall EnumConnectionsClass::Clone(IEnumConnections** ppEnum)
 EnumConnectionsClass::EnumConnectionsClass(const DynamicVectorClass<tagCONNECTDATA>& connections)
     : Connections(connections), Index(0), RefCount(0)
 {
-    for (int i = 0; i < Connections.Count; ++i)
+    for (int i = 0; i < Connections.GetCount(); ++i)
         Connections.Items[i].pUnk->AddRef();
 }
 
@@ -62,12 +62,12 @@ EnumConnectionsClass::EnumConnectionsClass(const DynamicVectorClass<tagCONNECTDA
 EnumConnectionsClass::EnumConnectionsClass(const EnumConnectionsClass& other)
     : Connections(other.Connections), Index(other.Index), RefCount(0)
 {
-    for (int i = 0; i < Connections.Count; ++i)
+    for (int i = 0; i < Connections.GetCount(); ++i)
         Connections.Items[i].pUnk->AddRef();
 }
 
 // FUNCTION: GAMEMD 0x4A0450
 EnumConnectionsClass::~EnumConnectionsClass() {
-    for (int i = 0; i < Connections.Count; ++i) Connections.Items[i].pUnk->Release();
+    for (int i = 0; i < Connections.GetCount(); ++i) Connections.Items[i].pUnk->Release();
     Connections.Clear();
 }
