@@ -722,6 +722,12 @@ class AllowedPaths(unittest.TestCase):
         self.assertTrue(self.allowed("scripts/agent_tools/wwstruct/init_interleave.py"))
         self.assertTrue(self.allowed("scripts/agent_tools/wwstruct/test_wwstruct.py"))
 
+    def test_generated_progress_assets_are_allowed(self):
+        self.assertTrue(self.allowed(".github/assets/progress.svg"))
+        self.assertTrue(self.allowed(".github/assets/link_progress.svg"))
+        self.assertTrue(self.allowed("scripts/data/link_progress.json"))
+        self.assertFalse(self.allowed(".github/assets/other.svg"))
+
     def test_other_tooling_is_not(self):
         self.assertFalse(self.allowed("scripts/agent_tools/land/gates.py"))
         self.assertFalse(self.allowed("scripts/agent_tools/wwstructure/x.py"))
