@@ -8,7 +8,7 @@
 #ifndef GG_MATCH_RENDERER_DSURFACE_CLASS_H
 #define GG_MATCH_RENDERER_DSURFACE_CLASS_H
 
-#include "surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 #include "pixel_shift_view.h"
 
 // ---------------------------------------------------------------------------

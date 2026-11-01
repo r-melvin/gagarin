@@ -7965,7 +7965,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x411540",
   "sym": "?GetWidth@Surface@@UBEHXZ",
   "len": "0x4",
@@ -7974,7 +7974,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x411550",
   "sym": "?GetHeight@Surface@@UBEHXZ",
   "len": "0x4",
@@ -7983,7 +7983,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x411570",
   "sym": "?Unlock@XSurface@@UAE_NXZ",
   "len": "0xa",
@@ -7992,7 +7992,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/bsurface_class.cpp",
+  "tu": "match/wwlib/surface/bsurface_class.cpp",
   "addr": "0x411630",
   "sym": "?GetBytesPerPixel@BSurface@@UAEHXZ",
   "len": "0x4",
@@ -8802,7 +8802,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/bsurface_class.cpp",
+  "tu": "match/wwlib/surface/bsurface_class.cpp",
   "addr": "0x411640",
   "sym": "?GetPitch@BSurface@@UAEIXZ",
   "len": "0xe",
@@ -10431,7 +10431,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x411510",
   "sym": "?GetRect@Surface@@UBE?AURectangleStruct@@XZ",
   "len": "0x24",
@@ -10918,7 +10918,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/bsurface_class.cpp",
+  "tu": "match/wwlib/surface/bsurface_class.cpp",
   "addr": "0x4115F0",
   "sym": "?Lock@BSurface@@UAEPAXVPoint2D@@@Z",
   "len": "0x31",
@@ -21818,7 +21818,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x4aec60",
   "sym": "??0Surface@@QAE@HH@Z",
   "len": "0x19",
@@ -28104,7 +28104,7 @@
   "pct": 17.3
  },
  {
-  "tu": "match/renderer/drawing.cpp",
+  "tu": "match/wwlib/surface/drawing.cpp",
   "addr": "0x410E50",
   "sym": "?ReleaseSurface@ABuffer@@QAEXXZ",
   "len": "0x19",
@@ -28113,7 +28113,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/drawing.cpp",
+  "tu": "match/wwlib/surface/drawing.cpp",
   "addr": "0x4112D0",
   "sym": "?Fill@ABuffer@@QAE_NG@Z",
   "len": "0x39",
@@ -28122,7 +28122,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/drawing.cpp",
+  "tu": "match/wwlib/surface/drawing.cpp",
   "addr": "0x411310",
   "sym": "?FillRect@ABuffer@@QAE_NGURectangleStruct@@@Z",
   "len": "0x1B",
@@ -28131,7 +28131,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/drawing.cpp",
+  "tu": "match/wwlib/surface/drawing.cpp",
   "addr": "0x4114B0",
   "sym": "?GetBuffer@ABuffer@@QAEPAXHH@Z",
   "len": "0x34",
@@ -28140,7 +28140,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/drawing.cpp",
+  "tu": "match/wwlib/surface/drawing.cpp",
   "addr": "0x4355D0",
   "sym": "?RGB_To_Int@Drawing@@SIHHHH@Z",
   "len": "0x3F",
@@ -28149,7 +28149,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/drawing.cpp",
+  "tu": "match/wwlib/surface/drawing.cpp",
   "addr": "0x410DC0",
   "sym": "?FUN_00410DC0@ABuffer@@QAEXPAVBSurfaceLayout@@HHHH@Z",
   "len": "0x89",
@@ -28158,7 +28158,7 @@
   "pct": 93.1
  },
  {
-  "tu": "match/renderer/zbuffer_class_methods.cpp",
+  "tu": "match/wwlib/surface/zbuffer_class_methods.cpp",
   "addr": "0x7BCF50",
   "sym": "?Fill@ZBuffer@@QAE_NG@Z",
   "len": "0x39",
@@ -28167,7 +28167,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/drawing_more_methods.cpp",
+  "tu": "match/wwlib/surface/drawing_more_methods.cpp",
   "addr": "0x7BD130",
   "sym": "?GetBuffer@AlphaBuffer@@QAEPAXHH@Z",
   "len": "0x34",
@@ -28617,7 +28617,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/zbuffer_class_methods.cpp",
+  "tu": "match/wwlib/surface/zbuffer_class_methods.cpp",
   "addr": "0x7BCAE0",
   "sym": "?ReleaseSurface@ZBuffer@@QAEXXZ",
   "len": "0xE",
@@ -31795,7 +31795,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x4114f0",
   "sym": "?unknown_64@Surface@@UAE_NII@Z",
   "len": "0x5",
@@ -31804,7 +31804,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x411500",
   "sym": "?unknown_68@Surface@@UAE_NII@Z",
   "len": "0x5",
@@ -31813,7 +31813,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x4115c0",
   "sym": "?unknown_84@Surface@@UAE_NXZ",
   "len": "0x3",
@@ -31822,7 +31822,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x411560",
   "sym": "?Lock@XSurface@@UAEPAXVPoint2D@@@Z",
   "len": "0xc",
@@ -31831,7 +31831,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x411580",
   "sym": "?IsLocked@XSurface@@UAE_NXZ",
   "len": "0xb",
@@ -31840,7 +31840,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x411590",
   "sym": "?unknown_84@XSurface@@UAE_NXZ",
   "len": "0x3",
@@ -31858,7 +31858,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/surface_class.cpp",
+  "tu": "match/wwlib/surface/surface_class.cpp",
   "addr": "0x4115d0",
   "sym": "??_GSurface@@UAEPAXI@Z",
   "len": "0x20",
@@ -31939,7 +31939,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAF10",
   "sym": "?GetPixelClipped@XSurface@@UAEIABVPoint2D@@ABURectangleStruct@@@Z",
   "len": "0x77",
@@ -31948,7 +31948,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAF90",
   "sym": "?PutPixelClipped@XSurface@@UAE_NABVPoint2D@@IABURectangleStruct@@@Z",
   "len": "0x82",
@@ -32029,7 +32029,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7bb020",
   "sym": "?FillRect@XSurface@@UAE_NPAURectangleStruct@@I@Z",
   "len": "0x29",
@@ -44419,7 +44419,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BA5E0",
   "sym": "?DrawLine@XSurface@@UAE_NPAVPoint2D@@0I@Z",
   "len": "0x30",
@@ -44428,7 +44428,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAB30",
   "sym": "?unknown_4C@XSurface@@UAEHPAVPoint2D@@0GPAEH_N@Z",
   "len": "0x5",
@@ -44437,7 +44437,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAB40",
   "sym": "?unknown_50@XSurface@@UAE_NPAVPoint2D@@0H_N@Z",
   "len": "0x5",
@@ -44446,7 +44446,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAB50",
   "sym": "?unknown_34@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1IHH_N@Z",
   "len": "0x5",
@@ -44455,7 +44455,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAB60",
   "sym": "?unknown_38@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1HHH_N@Z",
   "len": "0x5",
@@ -44464,7 +44464,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAB70",
   "sym": "?unknown_3C@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1PAEHH_N333M@Z",
   "len": "0x5",
@@ -44473,7 +44473,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAB80",
   "sym": "?unknown_40@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1PAEMHH@Z",
   "len": "0x5",
@@ -44482,7 +44482,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7bad90",
   "sym": "?DrawRect@XSurface@@UAE_NPAURectangleStruct@@I@Z",
   "len": "0x2b",
@@ -44491,7 +44491,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7badc0",
   "sym": "?DrawRectEx@XSurface@@UAE_NPAURectangleStruct@@0I@Z",
   "len": "0x9e",
@@ -44500,7 +44500,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAE60",
   "sym": "?GetPixel@XSurface@@UAEIPBVPoint2D@@@Z",
   "len": "0x50",
@@ -44509,7 +44509,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7BAEB0",
   "sym": "?PutPixel@XSurface@@UAE_NPBVPoint2D@@I@Z",
   "len": "0x59",
@@ -44518,7 +44518,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7bb340",
   "sym": "?unknown_1C@XSurface@@UAE_NPAURectangleStruct@@0H@Z",
   "len": "0x5",
@@ -44527,7 +44527,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_class.cpp",
+  "tu": "match/wwlib/surface/xsurface_class.cpp",
   "addr": "0x7bbab0",
   "sym": "?Fill@XSurface@@UAE_NI@Z",
   "len": "0x33",
@@ -44536,7 +44536,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_blit.cpp",
+  "tu": "match/wwlib/surface/xsurface_blit.cpp",
   "addr": "0x7bbaf0",
   "sym": "?CopyFromWhole@XSurface@@UAE_NPAVSurface@@_N1@Z",
   "len": "0x91",
@@ -44545,7 +44545,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_blit.cpp",
+  "tu": "match/wwlib/surface/xsurface_blit.cpp",
   "addr": "0x7bbb90",
   "sym": "?CopyFromPart@XSurface@@UAE_NPAURectangleStruct@@PAVSurface@@0_N2@Z",
   "len": "0x153",
@@ -44556,7 +44556,7 @@
   "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
  },
  {
-  "tu": "match/renderer/xsurface_blit.cpp",
+  "tu": "match/wwlib/surface/xsurface_blit.cpp",
   "addr": "0x7bbcf0",
   "sym": "?CopyFrom@XSurface@@UAE_NPAURectangleStruct@@0PAVSurface@@00_N2@Z",
   "len": "0x126",
@@ -44567,7 +44567,7 @@
   "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
  },
  {
-  "tu": "match/renderer/xsurface_fill.cpp",
+  "tu": "match/wwlib/surface/xsurface_fill.cpp",
   "addr": "0x7bb050",
   "sym": "?FillRectEx@XSurface@@UAE_NPAURectangleStruct@@0I@Z",
   "len": "0x2ec",
@@ -44578,7 +44578,7 @@
   "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
  },
  {
-  "tu": "match/renderer/xsurface_line.cpp",
+  "tu": "match/wwlib/surface/xsurface_line.cpp",
   "addr": "0x7BA610",
   "sym": "?DrawLineEx@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1I@Z",
   "len": "0x2ad",
@@ -44587,7 +44587,7 @@
   "pct": 1.8
  },
  {
-  "tu": "match/renderer/xsurface_line.cpp",
+  "tu": "match/wwlib/surface/xsurface_line.cpp",
   "addr": "0x7BAB90",
   "sym": "?DrawLineCallback@XSurface@@UAE_NPAURectangleStruct@@PAVPoint2D@@1P6IX1@Z@Z",
   "len": "0x1ff",
@@ -44596,7 +44596,7 @@
   "pct": 5.7
  },
  {
-  "tu": "match/renderer/xsurface_line.cpp",
+  "tu": "match/wwlib/surface/xsurface_line.cpp",
   "addr": "0x7BA8C0",
   "sym": "?DrawDottedLine@XSurface@@UAEIPAVPoint2D@@0IPAEI@Z",
   "len": "0x26d",
@@ -44605,7 +44605,7 @@
   "pct": 1.2
  },
  {
-  "tu": "match/renderer/xsurface_ellipse.cpp",
+  "tu": "match/wwlib/surface/xsurface_ellipse.cpp",
   "addr": "0x7bb350",
   "sym": "?DrawEllipse@XSurface@@UAE_NHHHHURectangleStruct@@I@Z",
   "len": "0x5c6",
@@ -60419,7 +60419,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/xsurface_circle_methods.cpp",
+  "tu": "match/wwlib/surface/xsurface_circle_methods.cpp",
   "addr": "0x7BB920",
   "sym": "?FUN_007BB920@XSurface@@QAEXHHHURectangleStruct@@I@Z",
   "len": "0x189",
@@ -143044,7 +143044,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/word_fill_methods.cpp",
+  "tu": "match/wwlib/surface/word_fill_methods.cpp",
   "addr": "0x410E70",
   "sym": "?FUN_00410E70@@YGXPAGHG@Z",
   "len": "0x56",
@@ -148115,7 +148115,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_blit.cpp",
+  "tu": "match/wwlib/surface/xsurface_blit.cpp",
   "addr": "0x7BBFF0",
   "sym": "?FUN_007BBFF0@@YI_NPAVSurface@@PAURectangleStruct@@01PA_NPAPAX3@Z",
   "len": "0x4f",
@@ -148124,7 +148124,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_blit.cpp",
+  "tu": "match/wwlib/surface/xsurface_blit.cpp",
   "addr": "0x7BC1F0",
   "sym": "?FUN_007BC1F0@@YI_NPAVSurface@@PAURectangleStruct@@01@Z",
   "len": "0x5b",
@@ -148133,7 +148133,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/xsurface_blit.cpp",
+  "tu": "match/wwlib/surface/xsurface_blit.cpp",
   "addr": "0x7BC250",
   "sym": "?FUN_007BC250@@YI_NPAVSurface@@PAURectangleStruct@@01@Z",
   "len": "0x5b",

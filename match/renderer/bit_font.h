@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-#include "surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 
 // ---------------------------------------------------------------------------
 // BitFont::InternalData — the loaded font's glyph table. Offsets confirmed from

@@ -11,7 +11,7 @@
 //   0x4114B0   ABuffer::GetBuffer       (__thiscall)
 //   0x4355D0   Drawing::RGB_To_Int      (__fastcall)
 
-#include "pixel_shift_view.h"
+#include "../../renderer/pixel_shift_view.h"
 #include "drawing.h"
 
 // Pixel shift cells are owned by the shared reconstruction storage.

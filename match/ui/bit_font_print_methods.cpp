@@ -6,7 +6,7 @@
 //   globals at 0x8A0DD0..0x8A0DE4.
 #include "../renderer/pixel_shift_view.h"
 #include "bit_font_print_methods.h"
-#include "../renderer/drawing.h"
+#include "../wwlib/surface/drawing.h"
 #include "../core/small_struct_ctor_methods.h"
 
 // 3-byte colour with the blend routine at 0x6612C0 (thiscall; alpha and the

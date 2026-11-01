@@ -6,7 +6,7 @@
 // body in the separate TU unless that ownership is explicitly revisited.
 
 #include "input_controls/ui_display_chain.h"
-#include "../renderer/bsurface_class.h"
+#include "../wwlib/surface/bsurface_class.h"
 #include "../renderer/dsurface_class.h"
 #include "../_rt/gg_static_assert.h"
 #include <new>

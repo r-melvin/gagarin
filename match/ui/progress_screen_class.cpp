@@ -10,7 +10,7 @@
 //   FUNCTION: GAMEMD 0x642B20   ProgressScreenClass::GetSide   (__thiscall)
 
 #include "progress_screen_class.h"
-#include "../renderer/surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 #include "../platform/file_system_load_whole_methods.h"
 
 // FUNCTION: GAMEMD 0x52FF90 (decl; reloc)

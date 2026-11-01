@@ -7,11 +7,11 @@
 #define GG_MATCH_RENDERER_DRAWING_MORE_METHODS_H
 
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 
 // RectangleStruct — {X, Y, Width, Height}, 16 bytes. Fill builds one full-extent
 // rect by value and forwards it to the surface's FillRect virtual.
-#include "../_layout/geometry2d.h"
+#include "../../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
 
 // ---------------------------------------------------------------------------

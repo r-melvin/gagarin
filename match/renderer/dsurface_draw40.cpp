@@ -8,8 +8,8 @@
 // Names of the arguments are inferred from the body; unknown_40 keeps its slot name.
 #include <stdlib.h>
 #include "dsurface_class.h"
-#include "drawing.h"
-#include "drawing_more_methods.h"
+#include "../wwlib/surface/drawing.h"
+#include "../wwlib/surface/drawing_more_methods.h"
 #include "../wwlib/blitters/r_shared_zwrap.h"
 #include "../wwlib/blitters/b_shared_alpha.h"
 

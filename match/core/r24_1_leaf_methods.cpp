@@ -8,7 +8,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../renderer/surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 #include "../_layout/color_convert.h"
 
 // ---------------------------------------------------------------------------

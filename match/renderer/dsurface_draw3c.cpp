@@ -4,8 +4,8 @@
 // Provenance: own-binary-via-Ghidra. DSurface slot +0x3C (0x4BC750): depth-tested, anti-aliased line on a | YRpp-cross-check
 // 16-bit surface. The candidate uses a readable loop structure and remains partial.
 #include "dsurface_class.h"
-#include "drawing.h"
-#include "drawing_more_methods.h"
+#include "../wwlib/surface/drawing.h"
+#include "../wwlib/surface/drawing_more_methods.h"
 #include "../wwlib/blitters/r_shared_zwrap.h"
 #include "../wwlib/blitters/b_shared_alpha.h"
 

@@ -258,7 +258,7 @@
  {
   "addr": "0x410DC0",
   "name": "ABuffer::FUN_00410DC0",
-  "tu": "match/renderer/drawing.cpp",
+  "tu": "match/wwlib/surface/drawing.cpp",
   "sym": "?FUN_00410DC0@ABuffer@@QAEXPAVBSurfaceLayout@@HHHH@Z",
   "len": "0x89",
   "manifest_pct": 93.1,
@@ -5320,7 +5320,7 @@
  {
   "addr": "0x7bbb90",
   "name": "XSurface::CopyFromPart",
-  "tu": "match/renderer/xsurface_blit.cpp",
+  "tu": "match/wwlib/surface/xsurface_blit.cpp",
   "sym": "?CopyFromPart@XSurface@@UAE_NPAURectangleStruct@@PAVSurface@@0_N2@Z",
   "len": "0x153",
   "manifest_pct": 85.1,

@@ -7,8 +7,8 @@
 #define GG_MATCH_RENDER_SURFACES_SURFACE_H
 
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
-#include "../_layout/geometry2d.h"
+#include "../../_rt/gg_static_assert.h"
+#include "../../_layout/geometry2d.h"
 
 class Surface;
 class Blitter;

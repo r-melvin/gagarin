@@ -5013,13 +5013,13 @@
   },
   {
    "addr": "0x4115C0",
-   "tu": "match/renderer/surface_class.cpp",
+   "tu": "match/wwlib/surface/surface_class.cpp",
    "name": "Surface::unknown_84",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4115F0",
-   "tu": "match/renderer/bsurface_class.cpp",
+   "tu": "match/wwlib/surface/bsurface_class.cpp",
    "name": "BSurface::Lock",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8457,7 +8457,7 @@
   },
   {
    "addr": "0x7BAEB0",
-   "tu": "match/renderer/xsurface_class.cpp",
+   "tu": "match/wwlib/surface/xsurface_class.cpp",
    "name": "XSurface::PutPixel",
    "reason": "no-preceding-CC-or-90"
   },

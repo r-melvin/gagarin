@@ -26,7 +26,7 @@
 #include "dialog_control_group_lookup.h"
 #include "control_id_predicate_methods.h"
 #include "../platform/window_moving_methods.h"
-#include "../renderer/surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 
 // IAT 0x7E14A4: USER32!SendMessageA.
 extern "C" __declspec(dllimport) long __stdcall SendMessageA(GG_HWND hWnd,

@@ -15,11 +15,11 @@
 #define GG_MATCH_RENDERER_DRAWING_H
 
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 
 // RectangleStruct — {X, Y, Width, Height}, 16 bytes. ABuffer::Bounds is one of
 // these at +0x00; Fill/FillRect build/pass one by value (RET 0x14 == 4+16).
-#include "../_layout/geometry2d.h"
+#include "../../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
 
 // ---------------------------------------------------------------------------

@@ -5,7 +5,7 @@
 // lockstep with the line. Span is CFG-closed (0x4C0E30..0x4C1431).
 #include <stdlib.h>
 #include "dsurface_class.h"
-#include "drawing.h"
+#include "../wwlib/surface/drawing.h"
 #include "../wwlib/blitters/b_shared_alpha.h"
 // LIBRARY: abs (CRT intrinsic, cdq/xor/sub inline)
 

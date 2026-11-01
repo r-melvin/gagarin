@@ -177,8 +177,8 @@ CellClass InvalidCell;
 #include "map_class_location_shrouded_methods.h"
 #include "crate_class.h"
 #include "../core/unsorted_callback_methods.h"
-#include "../renderer/zbuffer_class_methods.h"
-#include "../renderer/drawing.h"
+#include "../wwlib/surface/zbuffer_class_methods.h"
+#include "../wwlib/surface/drawing.h"
 
 // GLOBAL: GAMEMD 0xABD480 -- the "no cell" coordinate.
 extern CellStruct DAT_00ABD480;

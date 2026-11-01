@@ -16,7 +16,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-#include "surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 
 #include "bit_font.h"
 

@@ -6,7 +6,7 @@
 #ifndef GG_MATCH_RENDERER_ZBUFFER_CLASS_METHODS_H
 #define GG_MATCH_RENDERER_ZBUFFER_CLASS_METHODS_H
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 #include "surface_class.h"
 struct ZBuffer
 {

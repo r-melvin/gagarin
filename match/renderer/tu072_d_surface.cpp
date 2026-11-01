@@ -180,8 +180,8 @@ static inline RectangleStruct Intersect(const RectangleStruct* a, const Rectangl
 
 #include <math.h>
 #include "dsurface_class.h"
-#include "drawing.h"
-#include "drawing_more_methods.h"
+#include "../wwlib/surface/drawing.h"
+#include "../wwlib/surface/drawing_more_methods.h"
 #include "../wwlib/blitters/r_shared_zwrap.h"
 #include "../wwlib/blitters/b_shared_alpha.h"
 
@@ -242,7 +242,7 @@ static inline unsigned short Shade(unsigned int alpha, unsigned int ch0, unsigne
 
 #include <stdlib.h>
 #include "dsurface_class.h"
-#include "drawing_more_methods.h"
+#include "../wwlib/surface/drawing_more_methods.h"
 #include "../wwlib/blitters/r_shared_zwrap.h"
 
 // Address-scoped prefix view for data read through 0x887644. Only method-accessed fields are represented; offsets are read from

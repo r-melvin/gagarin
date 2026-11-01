@@ -7,7 +7,7 @@
 #include "../_layout/building_light_class.h"
 #include "../renderer/shadow_block_list_methods.h"
 #include "../map/map_class_methods.h"
-#include "../renderer/surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 #include "../renderer/matrix3d_rotate_methods.h"
 #include "../core/rules_class.h"
 #include "../ui/tactical_class_coords_to_client_methods.h"

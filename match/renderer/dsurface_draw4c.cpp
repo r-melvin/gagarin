@@ -6,7 +6,7 @@
 // This readable candidate remains partial; the source technique behind the unmatched retail instructions
 // is not established.
 #include "dsurface_class.h"
-#include "drawing.h"
+#include "../wwlib/surface/drawing.h"
 #include "../wwlib/blitters/b_shared_alpha.h"
 
 // The layer object behind global 0x87E8A4 (same object the blitter module calls the alpha buffer).

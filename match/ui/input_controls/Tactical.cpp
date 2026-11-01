@@ -928,7 +928,7 @@ void __stdcall FUN_006D2B50(int a1, int a2)
 extern "C" unsigned short* __cdecl FUN_007CA489(unsigned short* destination,
                                               const unsigned short* source);
 
-#include "../../renderer/zbuffer_class_methods.h"
+#include "../../wwlib/surface/zbuffer_class_methods.h"
 extern void* DAT_00B73550; // GLOBAL: GAMEMD 0xB73550 (decl; reloc)
 
 // FUNCTION: GAMEMD 0x6D2B60
@@ -1203,7 +1203,7 @@ void Tactical::FUN_006D3470(const RectangleStruct* first,
     }
 }
 
-#include "../../renderer/drawing.h"
+#include "../../wwlib/surface/drawing.h"
 
 // FUNCTION: GAMEMD 0x6D3660
 void Tactical::FUN_006D3660(const RectangleStruct* first,

@@ -955,7 +955,7 @@ extern int DAT_00829FF8;
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../renderer/surface_class.h"
+#include "../wwlib/surface/surface_class.h"
 #include "../_layout/color_convert.h"
 #include "../_layout/cell.h"
 #include "../_layout/map_0087f7e8.h"
