@@ -60,14 +60,12 @@ void FUN_0063F7B0(void* self)
 int FUN_0063F7C0(Obj_0063F7C0* a1, int a2)
 {
     FUN_00652E90(a1, a2);
-    int c1 = FUN_004A38D0(DAT_00836D9C, DAT_00AC4E78);
-    DAT_00AC4E74 = c1;
+    int c1 = FUN_004A38D0(DAT_00836D9C, &DAT_00AC4E78);
+    DAT_00AC4E74 = (void*)c1;
     return c1;
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xAC4E74
-int DAT_00AC4E74;
 // GLOBAL: GAMEMD 0x7EFF40
 extern const double DAT_007EFF40 = 60.0;
 // END defined globals

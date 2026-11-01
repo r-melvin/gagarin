@@ -14,9 +14,13 @@ struct Obj_0063F7C0;
 // GLOBAL: GAMEMD 0x836D9C
 extern char DAT_00836D9C[];
 // GLOBAL: GAMEMD 0xAC4E74
-extern int DAT_00AC4E74;
+// Pointer to the buffer FUN_004A38D0 returns: written from EAX at 0x63F7D4 and pushed to
+// operator delete at 0x63F7EE/0x63F7F3 (dword accesses; the other readers use it as a base).
+extern void* DAT_00AC4E74;
 // GLOBAL: GAMEMD 0xAC4E78
-extern char DAT_00AC4E78[];
+// Byte flag: tested at 0x63F7E5 (mov al), cleared at 0x63F7FC (mov byte ptr, 0) and its address is
+// the out-parameter (EDX) of FUN_004A38D0 at 0x63F7C5.
+extern bool DAT_00AC4E78;
 
 // FUNCTION: GAMEMD 0x4A38D0 (declaration)
 int FUN_004A38D0(void*, void*);
