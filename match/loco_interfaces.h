@@ -90,7 +90,7 @@ extern "C" const IID IID_IPiggyback;
 // primary table, i.e. QI/AddRef/Release, get an adjustor). So a plain C++
 // override reproduces retail; never hand-model the `this` shift.
 // ---------------------------------------------------------------------------
-struct __declspec(novtable) ILocomotion : public IUnknown
+struct __declspec(uuid("070F3290-9841-11D1-B709-00A024DDAFD1")) __declspec(novtable) ILocomotion : public IUnknown
 {
 public:
     // Slot 3 +0x0C. Stores the object into LinkedTo then Owner; returns S_OK.

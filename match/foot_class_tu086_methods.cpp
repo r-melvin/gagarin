@@ -249,11 +249,11 @@ BuildingClass* FootClass::FUN_004D4FC0()
 bool FootClass::vf_54(const CoordStruct& coord, int a2)
 {
     if (TechnoClass::vf_54(coord, a2)) {
-        (*(ILocomotionPtr*)&Locomotor)->Unlimbo();
-        if (Owner->IonSensitivesShouldBeOffline() && (*(ILocomotionPtr*)&Locomotor)->IsIonSensitive()) {
-            (*(ILocomotionPtr*)&Locomotor)->PowerOff();
+        Locomotor->Unlimbo();
+        if (Owner->IonSensitivesShouldBeOffline() && Locomotor->IsIonSensitive()) {
+            Locomotor->PowerOff();
         } else {
-            (*(ILocomotionPtr*)&Locomotor)->PowerOn();
+            Locomotor->PowerOn();
         }
         vf_102(Owner);
         PathDirections[0] = -1;
@@ -422,7 +422,7 @@ int FootClass::vf_187()
 {
     int adjust = 0;
     if (Locomotor != 0) {
-        adjust = (*(ILocomotionPtr*)&Locomotor)->ZAdjust();
+        adjust = Locomotor->ZAdjust();
     }
     int column = vf_33()->ZFudgeColumn * FUN_00703E70();
     int tunnel = vf_33()->ZFudgeTunnel * FUN_00704000();

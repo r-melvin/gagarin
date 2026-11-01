@@ -23,6 +23,7 @@
 #define GG_MATCH_LAYOUT_TECHNO_TYPE_CLASS_H
 
 #include <stddef.h>
+#include <objbase.h>   // CLSID
 #include "../_rt/gg_static_assert.h"
 #include "object_type_class.h"   // ObjectTypeClass (sizeof 0x294), AbilitiesStruct
 #include "vector_class.h"        // DynamicVectorClassLayout (sizeof 0x18)
@@ -35,15 +36,7 @@
 // CoordStruct - lepton 3-space coordinate (size = 0xC); now provided, guarded,
 // by object_type_class.h.
 
-// _GUID - Locomotor class id (size = 0x10).
-struct GUIDStruct
-{
-    unsigned long  Data1;     // +0x00
-    unsigned short Data2;     // +0x04
-    unsigned short Data3;     // +0x06
-    unsigned char  Data4[8];  // +0x08
-};
-GG_STATIC_ASSERT(sizeof(GUIDStruct) == 0x10);
+GG_STATIC_ASSERT(sizeof(CLSID) == 0x10);   // Locomotor class id
 
 // TypeList<T> - DynamicVectorClass (0x18) + a trailing unknown_18 dword (0x1C).
 struct TypeListLayout
@@ -178,7 +171,7 @@ public:
     int             CloakingSpeed;                  // +0x310
     TypeList<const VoxelAnimTypeClass*> DebrisTypes;                    // +0x314
     TypeList<int> DebrisMaximums;                 // +0x330 (TypeList<int>)
-    GUIDStruct      Locomotor;                      // +0x34C (0x10)
+    CLSID           Locomotor;                      // +0x34C (0x10)
     unsigned char   align_35C[4];                   // +0x35C
     double          VoxelScaleX;                    // +0x360
     double          VoxelScaleY;                    // +0x368

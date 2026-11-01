@@ -101,7 +101,7 @@ GG_STATIC_ASSERT(offsetof(BuildingView_4DB9B0, unknown_520) == 0x520);
 // mission goes idle and answers 1; otherwise the mission rate times 900 plus a scenario random draw.
 int FootClass::vf_139()
 {
-    if (Destination == 0 && !(*(ILocomotionPtr*)&Locomotor)->IsMoving()
+    if (Destination == 0 && !Locomotor->IsMoving()
         && QueuedMission == -1) {
         EnterIdleMode(false, true);
         return 1;
@@ -127,8 +127,8 @@ bool FootClass::vf_53()
             vf_320();
         }
         if (Locomotor != 0) {
-            (*(ILocomotionPtr*)&Locomotor)->MarkAllOccupationBits(0);
-            (*(ILocomotionPtr*)&Locomotor)->ClearCoords();
+            Locomotor->MarkAllOccupationBits(0);
+            Locomotor->ClearCoords();
         }
         MoveSoundAudioController.FUN_00405FD0();
         if (vf_33()->SensorsSight != 0) {
@@ -186,7 +186,7 @@ bool FootClass::vf_126()
 int FootClass::vf_188()
 {
     if (this->Locomotor != 0) {
-        return (*(ILocomotionPtr*)&this->Locomotor)->ZGradient();
+        return this->Locomotor->ZGradient();
     }
     return 2;
 }
@@ -195,7 +195,7 @@ int FootClass::vf_188()
 // The locomotor's layer.
 int FootClass::vf_30()
 {
-    return (*(ILocomotionPtr*)&this->Locomotor)->InWhichLayer();
+    return this->Locomotor->InWhichLayer();
 }
 
 // FUNCTION: GAMEMD 0x4DE770
@@ -217,7 +217,7 @@ void FootClass::vf_324(VoxelStruct* a1, int a2, int a3, IndexClass<int, void*>* 
     point.X = a6->X;
     point.Y = a6->Y;
     if (Locomotor != 0) {
-        LocoPoint2D draw = (*(ILocomotionPtr*)&Locomotor)->DrawPoint();
+        LocoPoint2D draw = Locomotor->DrawPoint();
         Point2D sum;
         sum.X = a6->X + draw.X;
         sum.Y = a6->Y + draw.Y;

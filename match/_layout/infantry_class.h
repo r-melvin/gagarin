@@ -23,13 +23,15 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
+class HouseClass;
 #include "infantry_type_class.h"
 
 class InfantryClass : public FootClass
 {
 public:
-    // CALLEE: GAMEMD 0x00517A50 (decl; reloc) -- constructor as the class factory calls it.
-    InfantryClass(int unknown_arg0 = 0, int unknown_arg1 = 0);
+    // CALLEE: GAMEMD 0x00517A50 (decl; reloc) -- constructor (type, owner), RET 8; the class factory calls it with (0, 0): the type is stored at +0x6C0 and the
+    // owner is handed to the FootClass constructor (0x4D31E0).
+    InfantryClass(InfantryTypeClass* type = 0, HouseClass* owner = 0);
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x521960
     virtual int vf_11();   // 11  0x523340
     virtual int vf_12();   // 12  0x5232F0

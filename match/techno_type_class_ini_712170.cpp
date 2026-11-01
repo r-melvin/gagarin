@@ -57,7 +57,7 @@ public:
     // FUNCTION: GAMEMD 0x477640 (decl; reloc) -- ability list; raw ABI: the result buffer is the first stack argument and comes back in EAX.
     AbilitiesStruct* ReadAbilitiesRaw(AbilitiesStruct* result, const char* section, const char* key, const AbilitiesStruct* fallback);
     // FUNCTION: GAMEMD 0x527920 (decl; reloc) -- a GUID; the default goes by value.
-    GUIDStruct ReadGUID(const char* section, const char* key, GUIDStruct fallback);
+    CLSID ReadGUID(const char* section, const char* key, CLSID fallback);
 };
 // The assignment 0x7179D0 of an ability block, in the same raw ABI: result buffer first, EAX = result.
 struct AbilitiesView : AbilitiesStruct

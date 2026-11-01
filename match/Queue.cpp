@@ -694,7 +694,7 @@ static inline ILocomotion* QueueLogLocomotor(FootClass* foot)
 {
     // Genuine COM interface boundary at Foot+674, checks at650Fxx; reload
     // after _com_issue_error matches the canonical smart-pointer operation.
-    if (!foot->Locomotor) _com_issue_error(0x80004003);
+    if (foot->Locomotor == 0) _com_issue_error(0x80004003);
     return static_cast<ILocomotion*>(foot->Locomotor);
 }
 

@@ -151395,5 +151395,23 @@
   "name": "ObjectClass::ObjectClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu019_aircraft_target_check.cpp",
+  "addr": "0x413D20",
+  "sym": "??0AircraftClass@@QAE@PAVAircraftTypeClass@@PAVHouseClass@@@Z",
+  "len": "0x251",
+  "name": "??0AircraftClass@@QAE@PAVAircraftTypeClass@@PAVHouseClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Infantry.cpp",
+  "addr": "0x517A50",
+  "sym": "??0InfantryClass@@QAE@PAVInfantryTypeClass@@PAVHouseClass@@@Z",
+  "len": "0x269",
+  "name": "??0InfantryClass@@QAE@PAVInfantryTypeClass@@PAVHouseClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

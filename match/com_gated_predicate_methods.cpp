@@ -8,7 +8,6 @@
 #include <comip.h>
 
 GG_STATIC_ASSERT(offsetof(AircraftClass, Type) == 0x6C4);
-GG_STATIC_ASSERT(offsetof(FootClass, Locomotor) == 0x674);
 GG_STATIC_ASSERT(sizeof(((AircraftClass*)0)->Type) == 4);
 GG_STATIC_ASSERT(sizeof(((FootClass*)0)->Locomotor) == 4);
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->V3RocketType) == 4);

@@ -6,10 +6,45 @@
 // transport with nobody aboard answers 1; otherwise a non-fighter whose turret facing differs from the
 // direction to the target by more than half a quadrant answers 2.
 //
-// Address index: 0x41A9E0
+// Address index: 0x413D20, 0x41A9E0
+//
+// The constructor (0x413D20) runs the FootClass constructor, stores the type and the member defaults, then
+// creates the locomotor through the smart pointer's CreateInstance (inlined on the member: CoCreateInstance,
+// OleRun, QueryInterface, Release), links it, runs vf_9 and joins the aircraft list and the abstract index.
 
 #include <stdlib.h>
 #include "_layout/aircraft_class.h"
+#include "_layout/aircraft_type_class.h"
+#include "abstract_index_cast_sweep.h"
+#include "vector_class_mutation.h"
+
+// GLOBAL: GAMEMD 0xA8E390 -- every AircraftClass joins this list.
+extern DynamicVectorClass<AircraftClass*> DAT_00A8E390;
+
+// FUNCTION: GAMEMD 0x413D20
+AircraftClass::AircraftClass(AircraftTypeClass* type, HouseClass* owner)
+    : FootClass(owner),
+      Type(type),
+      ShouldLoseAmmo(0),
+      HasPassengers(0),
+      IsKamikaze(0),
+      DockNowHeadingTo(0),
+      unknown_bool_6D0(0),
+      unknown_bool_6D1(0),
+      IsLocked(0),
+      NumParadropsLeft(5),
+      IsCarryallNotLanding(1),
+      IsReturningFromAttackRun(1)
+{
+    vf_rtti_5();
+    if (Type) {
+        Locomotor.CreateInstance(Type->Locomotor, 0, 7);
+        Locomotor->LinkToObject(this);
+    }
+    vf_9();
+    DAT_00A8E390.AddItem(this);
+    AbstractIndex.AddIndex(vf_rtti_4(), this);
+}
 
 // FUNCTION: GAMEMD 0x41A9E0
 int AircraftClass::FUN_0041A9E0(AbstractClass* target, int a2, bool a3)

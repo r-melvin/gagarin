@@ -57,6 +57,8 @@ extern double DAT_00A8F238;
 //   vtable 0x7EB058); the vf_N and FUN_ names are placeholders.
 
 #include "_layout/infantry_class.h"
+#include "abstract_index_cast_sweep.h"
+#include "vector_class_mutation.h"
 #include "_layout/obj_004a1d30.h"
 #include "frame_counter.h"
 #include "_layout/house_class.h"
@@ -77,14 +79,6 @@ GG_STATIC_ASSERT(offsetof(InfantryClass, SequenceAnim)      == 0x6C4);  // 0x522
 GG_STATIC_ASSERT(offsetof(InfantryClass, PanicDurationLeft) == 0x6D4);  // 0x521C10
 GG_STATIC_ASSERT(offsetof(InfantryClass, Technician)        == 0x6D9);  // 0x521C90
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, Fearless)      == 0xEBC);  // 0x521C10
-
-// The FootClass locomotor is the canonical ILocomotionPtr (_com_ptr_t, movement/loco_com.h);
-// dereferencing it raises E_POINTER through retail 0x7DC720 and the check is inlined at every use.
-GG_STATIC_ASSERT(offsetof(InfantryClass, Locomotor) == 0x674);
-static inline ILocomotionPtr* LocomotorOf(InfantryClass* unit)
-{
-    return reinterpret_cast<ILocomotionPtr*>(&unit->Locomotor);
-}
 
 // The map singleton (GAMEMD 0x87F7E8): the two lookups the occupation methods use.
 class MapView_565730
@@ -206,6 +200,37 @@ HeaderCoordInit DAT_00A8F228(128, 128, 0);
 // GLOBAL: GAMEMD 0xA8F1D0
 MathTblZero4 DAT_00A8F1D0;
 
+// GLOBAL: GAMEMD 0xA83DE8 -- every InfantryClass joins this list.
+extern DynamicVectorClass<InfantryClass*> DAT_00A83DE8;
+
+// FUNCTION: GAMEMD 0x517A50
+InfantryClass::InfantryClass(InfantryTypeClass* type, HouseClass* owner)
+    : FootClass(owner),
+      Type(type),
+      SequenceAnim(-1),
+      unknown_Timer_6C8(0),
+      PanicDurationLeft(0),
+      PermanentBerzerk(false),
+      Technician(false),
+      unknown_bool_6DA(false),
+      Crawling(false),
+      unknown_bool_6DC(false),
+      unknown_bool_6DD(false),
+      unknown_6E0(0),
+      ShouldDeploy(false),
+      unknown_int_6E8(2)
+{
+    vf_rtti_5();
+    DAT_00A83DE8.AddItem(this);
+    vf_9();
+    if (Type) {
+        Locomotor.CreateInstance(Type->Locomotor, 0, 7);
+        Locomotor->LinkToObject(this);
+    }
+    PrimaryFacing.FUN_004C9680(0x7F);
+    AbstractIndex.AddIndex(vf_rtti_4(), this);
+}
+
 // FUNCTION: GAMEMD 0x51AA10
 void InfantryClass::vf_10(void* a1, bool a2)
 {
@@ -218,7 +243,7 @@ void InfantryClass::vf_10(void* a1, bool a2)
 // FUNCTION: GAMEMD 0x51DF10
 bool InfantryClass::vf_53()
 {
-    (*LocomotorOf(this))->StopMovementAnimation();
+    Locomotor->StopMovementAnimation();
     this->unknown_int_6E8 = 2;
     this->Crawling = false;
     this->SequenceAnim = 0;
@@ -524,7 +549,7 @@ void Obj_00521B40::FUN_00521B40()
 bool InfantryClass::vf_128()
 {
     if (CurrentMission != 6 && CurrentMission != 0x15 && !IsFiring && !IsFallingDown) {
-        if ((*(ILocomotionPtr*)&Locomotor)->IsMovingNow()
+        if (Locomotor->IsMovingNow()
             && vf_97() != 5 && vf_97() != 0xF && (vf_97() != 1 || Target))
             return false;
         if (SequenceAnim == -1 || DAT_007EAF7C[SequenceAnim][0])
@@ -617,7 +642,7 @@ bool InfantryClass::FUN_00522100()
 {
     if (!Type->bools_D94[0])
         return false;
-    IPersistPtr persist(*(ILocomotionPtr*)&Locomotor);
+    IPersistPtr persist(Locomotor);
     CLSID id;
     persist->GetClassID(&id);
     return IsEqualCLSID(id, DAT_007E9AC0);
@@ -671,11 +696,11 @@ unsigned char Obj_00522540::FUN_00522540() const
 // random 0-2.
 int InfantryClass::FUN_00522550()
 {
-    if (!(*(ILocomotionPtr*)&Locomotor)->IsMoving()) {
+    if (!Locomotor->IsMoving()) {
         vf_342(0x1B, 0, 0);
         return Type->Sequence[0x1B].unknown_04;
     }
-    (*(ILocomotionPtr*)&Locomotor)->StopMoving();
+    Locomotor->StopMoving();
     ShouldDeploy = true;
     MissionControlClass* control = FUN_005B3A00();
     int delay = (int)(control->Rate * 900.0);

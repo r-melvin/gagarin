@@ -21,7 +21,7 @@
 bool FootClass::IsCloakable()
 {
     if (TechnoClass::IsCloakable()) {
-        if (!vf_33()->bools_C8C[7] || !(*(ILocomotionPtr*)&Locomotor)->IsMovingNow())
+        if (!vf_33()->bools_C8C[7] || !Locomotor->IsMovingNow())
             return true;
     }
     return false;

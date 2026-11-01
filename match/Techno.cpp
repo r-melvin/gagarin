@@ -3042,10 +3042,10 @@ int TechnoClass::vf_240(AbstractClass* target, int weaponIndex, bool ignoreRange
     }
     if (weapon->Warhead && weapon->Warhead->IsLocomotor && target->Flags.IsFoot && ((ObjectClass*)target)->vf_33()->JumpJet) {
         FootClass* foot = AsFootByFlag(target);
-        if (!foot->Locomotor) {
+        if (foot->Locomotor == 0) {
             FUN_007DC720(0x80004003);
         }
-        if (foot->Locomotor->IsMovingNow()) {
+        if (static_cast<ILocomotion*>(foot->Locomotor)->IsMovingNow()) {
             return 5;
         }
     }

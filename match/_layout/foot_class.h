@@ -31,9 +31,10 @@
 #include "../vector_class.h"  // DynamicVectorClass
 
 #include "cell.h"            // CellStruct, Cell
+#include <comdef.h>
+#include "../loco_interfaces.h"   // ILocomotion
 
 class TeamClass;
-struct ILocomotion;
 class BuildingClass;
 struct Matrix3D;
 struct VoxelStruct;
@@ -175,7 +176,10 @@ public:
     CDTimerClass    unknown_timer_650;                 // +0x650 (0xC)
     CDTimerClass    SightTimer;                        // +0x65C (0xC)
     CDTimerClass    BlockagePathTimer;                 // +0x668 (0xC)
-    ILocomotion*    Locomotor;                         // +0x674 ILocomotionPtr (COM ptr)
+    // The smart pointer is instantiated on the type's own uuid (__uuidof), which is why the inlined CreateInstance
+    // reads the 0x817BB0 / 0x817BC0 GUID objects rather than the IID_ILocomotion at 0x7ED358.
+    typedef _com_ptr_t<_com_IIID<ILocomotion, &__uuidof(ILocomotion)> > LocomotorPtr;
+    LocomotorPtr    Locomotor;                         // +0x674 COM smart pointer (one interface pointer)
     CoordStruct     unknown_point3d_678;               // +0x678 (0xC)
     signed char     TubeIndex;                         // +0x684 (ctor = -1)
     signed char     TubeFaceIndex;                     // +0x685
@@ -292,7 +296,8 @@ GG_STATIC_ASSERT(offsetof(FootClass, NextTeamMember)            == 0x5D8);
 GG_STATIC_ASSERT(offsetof(FootClass, PathDirections)            == 0x5E0);
 GG_STATIC_ASSERT(offsetof(FootClass, PathDelayTimer)            == 0x640);
 GG_STATIC_ASSERT(offsetof(FootClass, BlockagePathTimer)         == 0x668);
-GG_STATIC_ASSERT(offsetof(FootClass, Locomotor)                 == 0x674);
+// offsetof is unavailable for Locomotor (the smart pointer overloads operator&); the members around it pin 0x674.
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->Locomotor)             == 4);
 GG_STATIC_ASSERT(offsetof(FootClass, unknown_point3d_678)       == 0x678);
 GG_STATIC_ASSERT(offsetof(FootClass, TubeIndex)                 == 0x684);
 GG_STATIC_ASSERT(offsetof(FootClass, ParalysisTimer)            == 0x6A0);

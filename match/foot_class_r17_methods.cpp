@@ -38,7 +38,7 @@ int FootClass::vf_107(CellClass* cell, int a2, int a3, int a4, bool a5)
 {
     if (Locomotor != 0 && a5) {
         int coords = *(int*)&cell->MapCoords;
-        return (*(ILocomotionPtr*)&Locomotor)->CanEnterCell(coords);
+        return Locomotor->CanEnterCell(coords);
     }
     return 0;
 }
@@ -68,7 +68,7 @@ struct TechnoView_004DA4E0 : TechnoClass
 int FootClass::vf_26(int a1, int a2)
 {
     if (Locomotor != 0) {
-        int r = (*(ILocomotionPtr*)&Locomotor)->VisualCharacter(a1);
+        int r = Locomotor->VisualCharacter(a1);
         if (r != 0)
             return r;
     }

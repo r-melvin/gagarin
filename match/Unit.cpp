@@ -82,9 +82,6 @@ extern double DAT_00B1D0B0;
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
 extern ScenarioClass* DAT_00A8B230;
 
-// Native error helper at 0x7DC720; the Unit call passes 0x80004003.
-void __stdcall FUN_007DC720(unsigned int hr);
-
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_007351B0()
 {
@@ -144,12 +141,7 @@ void UnitClass::vf_265()
 {
     UnitTypeClass* type = static_cast<UnitTypeClass*>(this->Type);
     if (!type->MobileFire) {
-        if (!this->Locomotor) {
-            FUN_007DC720(0x80004003u);
-        }
-
-        ILocomotion* locomotor = static_cast<ILocomotion*>(this->Locomotor);
-        if (locomotor->IsMoving()) {
+        if (this->Locomotor->IsMoving()) {
             const int remaining = this->ReloadTimer.GetTimeLeft();
             if (remaining > 0) {
                 this->ReloadTimer = CDTimerClass(remaining + 1);
@@ -427,8 +419,7 @@ void UnitClass::FUN_00740E60()
 // carries the inlined NULL-guard that raises E_POINTER.
 void UnitClass::APCOpenDoor()
 {
-    ILocomotionPtr* loco = reinterpret_cast<ILocomotionPtr*>(&this->Locomotor);
-    if (!(*loco)->IsMoving() && !this->unknown_bool_6AF)
+    if (!this->Locomotor->IsMoving() && !this->unknown_bool_6AF)
     {
         reinterpret_cast<DoorTimer*>(&this->UnloadTimer)->Start(
             *reinterpret_cast<double*>(reinterpret_cast<char*>(this->Type) + 0x3C8));

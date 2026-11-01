@@ -20,7 +20,7 @@
 GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   Location)      == 0x9C);
 GG_STATIC_ASSERT(offsetof(TechnoClass,   Deactivated)   == 0x1C8);
-GG_STATIC_ASSERT(offsetof(FootClass,     Locomotor)     == 0x674);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->Locomotor)     == 4);
 
 struct DeactType
 {

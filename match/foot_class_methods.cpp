@@ -135,7 +135,7 @@ void FootClass::vf_337(double a1)
 // Stop the locomotor through its checked COM pointer.
 bool FootClass::vf_320()
 {
-    (*(ILocomotionPtr*)&Locomotor)->StopMoving();
+    Locomotor->StopMoving();
     return false;
 }
 
@@ -147,8 +147,8 @@ bool FootClass::vf_319(const CoordStruct& a1)
     to.X = a1.X;
     to.Y = a1.Y;
     to.Z = a1.Z;
-    (*(ILocomotionPtr*)&Locomotor)->MoveTo(to);
-    return (*(ILocomotionPtr*)&Locomotor)->IsMoving() != 0;
+    Locomotor->MoveTo(to);
+    return Locomotor->IsMoving() != 0;
 }
 
 // FUNCTION: GAMEMD 0x4D8F40

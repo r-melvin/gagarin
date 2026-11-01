@@ -835,7 +835,7 @@ void TeamClass::FUN_006EDB50(ScriptActionNode*, bool)
                 (foot->IsInitiated || foot->vf_11() == 2)) {
                 if (foot->Target && foot->Target != target->Target) foot->vf_242(0);
                 if (target->Target) {
-                    if (!foot->Locomotor) _com_issue_error(0x80004003);
+                    if (foot->Locomotor == 0) _com_issue_error(0x80004003);
                     if (!static_cast<ILocomotion*>(foot->Locomotor)->IsMoving() &&
                         foot->IsArmed() && foot->vf_97() == 5) {
                         foot->vf_122(1, false);
