@@ -11262,8 +11262,6 @@
  "?Scroll@SidebarClass@@QAE_N_NH@Z": "0x006A6A00",
  "?ScrollDownButton_00B0B328@@3USidebarButton@@A": "0x00B0B328",
  "?ScrollUpButton_00B0B408@@3USidebarButton@@A": "0x00B0B408",
- "?SearchForNode@Index_00526960@@QAEPAUIndexNode_00526960@@ABH@Z": "0x0052B620",
- "?SearchForNode@Index_00526CC0@@QAEPAUIndexNode_00526CC0@@ABH@Z": "0x0052B620",
  "?SectorOf@HouseClass@@QAEHABUCoordStruct@@@Z": "0x004FFB20",
  "?Seek@BufferIOFileClass@@UAEHHH@Z": "0x004324B0",
  "?Seek@CCFileClass@@UAEHHH@Z": "0x00473BA0",
