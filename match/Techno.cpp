@@ -718,17 +718,17 @@ extern "C" int DAT_00B76B24;
 // GLOBAL: GAMEMD 0x00B76B30
 extern "C" Flags_0077D940 DAT_00B76B30;
 
-#include "movement/locomotion_begin_drain_methods.h"
+#include "locomotion_begin_drain_methods.h"
 
-#include "movement/locomotion_com_helpers.h"
+#include "locomotion_com_helpers.h"
 
-#include "movement/locomotion_forget_pointer_methods.h"
+#include "locomotion_forget_pointer_methods.h"
 
-#include "movement/locomotion_link_query_methods.h"
+#include "locomotion_link_query_methods.h"
 
-#include "movement/locomotion_velocity_methods.h"
+#include "locomotion_velocity_methods.h"
 
-#include "movement/techno_class_release_locomotor_methods.h"
+#include "techno_class_release_locomotor_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

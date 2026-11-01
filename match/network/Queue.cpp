@@ -76,7 +76,7 @@ extern void* DAT_00B77F60;
 #include "../_layout/techno_class.h"
 #include "../_layout/draw_layer_004a9770.h"
 #include "../renderer/color_scheme_find_methods.h"
-#include "../movement/loco_interfaces.h"
+#include "../loco_interfaces.h"
 #include "../_layout/conn_stat.h"
 #include "../_layout/version_class.h"
 #include "../core/vector_class_operations.h"

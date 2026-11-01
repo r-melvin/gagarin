@@ -17,7 +17,7 @@
 # nothing is written to the tree.
 #
 #   GAMEMD_BINARY=... ctor_gen.py DriveLocomotionClass [--ctor 0x4AF540] [--dtor]
-#   GAMEMD_BINARY=... ctor_gen.py --compare match/movement/drive_locomotion.cpp DriveLocomotionClass --ctor 0x4AF540
+#   GAMEMD_BINARY=... ctor_gen.py --compare match/drive_locomotion.cpp DriveLocomotionClass --ctor 0x4AF540
 
 import argparse
 import json

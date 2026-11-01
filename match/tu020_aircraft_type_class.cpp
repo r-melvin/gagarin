@@ -16,7 +16,7 @@
 
 #include "FUNCTION.H"
 #include "platform/ccini_class_methods.h"
-#include "movement/locomotion_load_support.h"
+#include "locomotion_load_support.h"
 #include "core/header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------

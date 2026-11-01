@@ -248,7 +248,7 @@ void FUN_00753620()
     }
 }
 
-#include "../movement/matrix3d_native_helpers.h"
+#include "../matrix3d_native_helpers.h"
 
 // FUNCTION: GAMEMD 0x007559B0
 // Native ECX is the hidden result, EDX is the full index; copy twelve dwords.

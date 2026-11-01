@@ -21,7 +21,7 @@ public:
     unsigned char Value;        // +0x02
 
     HSVClass() : Hue(0), Saturation(0), Value(0) {}
-    // GAMEMD 0x5175D0 (defined in match/movement/tu098_hover_locomotion_class.cpp)
+    // GAMEMD 0x5175D0 (defined in match/tu098_hover_locomotion_class.cpp)
     bool __fastcall operator==(const HSVClass& o) const;
     // GAMEMD 0x517590 (declared; the body is defined there on a placeholder receiver)
     bool operator!=(const HSVClass& o) const;

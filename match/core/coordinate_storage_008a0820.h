@@ -9,7 +9,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../movement/loco_interfaces.h"
+#include "../loco_interfaces.h"
 
 // The adjacent dwords are used through the existing LocoCoord shape. This is
 // an address-scoped storage view, not a claim about the original declaration.

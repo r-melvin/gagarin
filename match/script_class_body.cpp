@@ -11,7 +11,7 @@
 //   /Ob2: the constructors and destructors expand the registry vector bodies.
 
 #include "FUNCTION.H"
-#include "movement/locomotion_load_support.h"
+#include "locomotion_load_support.h"
 #include "core/header_tuning_globals.h"
 #include "platform/ccini_class_methods.h"
 #include "core/vector_add_item_free.h"

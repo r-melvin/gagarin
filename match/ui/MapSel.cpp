@@ -12,7 +12,7 @@
 
 #include "../_layout/matrix3d.h"
 
-#include "../movement/trivial_tu131_methods.h"
+#include "../trivial_tu131_methods.h"
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

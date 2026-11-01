@@ -46,21 +46,21 @@
 //
 //   NAMING DISAGREEMENTS worth recording (offsets agree in every case; only
 //   the labels differ):
-//     * 0x38. match/movement/fly_locomotion_approach_methods.h calls it
+//     * 0x38. match/fly_locomotion_approach_methods.h calls it
 //       "MoveDistance". The binary says otherwise: Process 0x004CCB40 fills it
 //       from the client's owner (`CALL [EAX+0x84]` then `CALL [EDX+0xBC]`,
 //       stored @0x004CCB81), and 0x004CFC40 tests the remaining travel against
 //       `that value / 2` (@0x004CFC5E..0x004CFC68). That is a cruise altitude,
 //       not a distance; YRpp's "FlightLevel" is the better name and is used
 //       here. The Approach TU's own offset is right either way.
-//     * 0x34. match/movement/fly_locomotion_leaf_methods.h calls it
+//     * 0x34. match/fly_locomotion_leaf_methods.h calls it
 //       "IsElevating". It is the flag Is_Moving 0x004CCA90 returns
 //       (`MOV CL,[EAX+0x30]` interface-relative = object +0x34) and the one
 //       Move_To sets (`MOV BYTE PTR [EBX+0x30],1` @0x004CCEAA). HasMoveOrder.
 //       The name "IsElevating" belongs to 0x5C, which is the byte the approach
 //       driver 0x004CD2A0 sets (`MOV BYTE PTR [ESI+0x5C],1` @0x004CD2CD) and
 //       0x004CD674/0x004CD67B reads and clears.
-//     * 0x53/0x54/0x58. match/movement/fly_locomotion_com_methods.h names these
+//     * 0x53/0x54/0x58. match/fly_locomotion_com_methods.h names these
 //       IsSpinning / unknown_54 / SpinCount from the touchdown spin path
 //       (0x004CFD20, 0x004CFDD0) and that reading is kept here; YRpp leaves all
 //       three unnamed.
@@ -95,7 +95,7 @@
 #include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
-#include "../movement/loco_base.h"
+#include "../loco_base.h"
 
 // ---------------------------------------------------------------------------
 // FlyLocomotionClass (sizeof = 0x60).

@@ -34,7 +34,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "object_class.h"     // ObjectClass spine + CoordStruct + AudioController
 #include "techno_class.h"     // StageClass
-#include "../movement/bounce_class.h"
+#include "../bounce_class.h"
 
 class AnimTypeClass;
 class BulletClass;

@@ -36,7 +36,7 @@
 #include "mathtbl_init_shapes.h"
 #include "../_layout/abstract_class.h"
 #include "../_layout/bomb_class.h"
-#include "../movement/loco_base.h"
+#include "../loco_base.h"
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
 #include "../_layout/unit_class.h"
@@ -56,8 +56,8 @@
 #include "../_layout/ship_locomotion_class.h"
 #include "../_layout/teleport_locomotion_class.h"
 #include "../_layout/tunnel_locomotion_class.h"
-#include "../movement/walk_locomotion_class.h"
-#include "../movement/drive_locomotion.h"
+#include "../walk_locomotion_class.h"
+#include "../drive_locomotion.h"
 
 template<class T> HRESULT TClassFactory<T>::CreateInstance(IUnknown* outer, REFIID riid, void** ppv)
 {
@@ -332,7 +332,7 @@ template class VectorClass<unsigned long>;
 // VTABLE: GAMEMD 0x7F3768
 #include "../_layout/tiberium_class.h"
 #include "campaign_class.h"
-#include "../movement/waypoint_path_class_methods.h"
+#include "../waypoint_path_class_methods.h"
 #include "../_layout/airstrike_class.h"
 #include "../_layout/spawn_manager_class.h"
 #include "../_layout/slave_manager_class.h"
@@ -340,8 +340,8 @@ template class VectorClass<unsigned long>;
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/tag_class.h"
 #include "../_layout/overlay_type_class.h"
-#include "../movement/rocket_locomotion.h"
-#include "../movement/mech_locomotion_class.h"
+#include "../rocket_locomotion.h"
+#include "../mech_locomotion_class.h"
 #include "../_layout/factory_class.h"
 #include "../_layout/ai_trigger_type_class.h"
 #include "../_layout/tube_class.h"

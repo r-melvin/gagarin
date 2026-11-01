@@ -11,7 +11,7 @@
 #include "weapon_type_class.h"
 #include "core/object_class_uninit_methods.h"
 #include "temporal_cell.h"
-#include "movement/matrix3d_native_helpers.h"
+#include "matrix3d_native_helpers.h"
 #include "ui/input_controls/ui_display_chain.h"
 #include "core/randomizer.h"
 #include "core/scenario_class_methods.h"

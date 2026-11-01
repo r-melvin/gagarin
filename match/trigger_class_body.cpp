@@ -11,7 +11,7 @@
 
 #include "DEFINES.H"
 #include "FUNCTION.H"
-#include "movement/locomotion_load_support.h"
+#include "locomotion_load_support.h"
 #include "core/abstract_registry.h"
 #include "tevent_class_methods.h"
 #include "trigger_class_event_methods.h"

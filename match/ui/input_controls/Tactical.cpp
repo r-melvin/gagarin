@@ -4004,7 +4004,7 @@ void Tactical::FUN_006DA9D0(bool argument)
 }
 
 
-#include "../../movement/waypoint_path_class_methods.h"
+#include "../../waypoint_path_class_methods.h"
 #include <wchar.h>
 // Declaration: GAMEMD 0x5BE970/5BE990, one stack word, RET4.
 int __stdcall FUN_005BE970(int index);

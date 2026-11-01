@@ -35,7 +35,7 @@
 #include "../_layout/unit_type_class.h"
 #include "../_layout/voxel_anim_class.h"
 #include "../weapon_type_class.h"
-#include "../movement/walk_locomotion_class.h"
+#include "../walk_locomotion_class.h"
 #include "../_layout/ai_trigger_type_class.h"
 #include "../_layout/alpha_shape_class.h"
 #include "../_layout/cell_class.h"

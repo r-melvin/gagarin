@@ -27,7 +27,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../movement/loco_base.h"
+#include "../loco_base.h"
 #include "frame_timer.h"
 
 struct TunnelDirStruct;

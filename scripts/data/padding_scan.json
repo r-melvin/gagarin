@@ -5787,7 +5787,7 @@
   },
   {
    "addr": "0x4B4C60",
-   "tu": "match/movement/drive_locomotion.cpp",
+   "tu": "match/drive_locomotion.cpp",
    "name": "LocomotionClass::GetStatus",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6819,13 +6819,13 @@
   },
   {
    "addr": "0x589CA0",
-   "tu": "match/movement/vector_compare_family_00589c10.cpp",
+   "tu": "match/vector_compare_family_00589c10.cpp",
    "name": "EqualsA",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x58A0E0",
-   "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+   "tu": "match/vector_lookup_family_00589dc0.cpp",
    "name": "FindActive",
    "reason": "no-preceding-CC-or-90"
   },

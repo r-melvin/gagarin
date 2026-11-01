@@ -14,7 +14,7 @@
 #include <ctype.h>
 #include "ai_trigger_register_methods.h"
 #include "platform/ccini_class_methods.h"
-#include "movement/locomotion_load_support.h"
+#include "locomotion_load_support.h"
 #include "core/header_tuning_globals.h"
 #include "house_views.h"
 

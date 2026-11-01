@@ -6,7 +6,7 @@
 #include "_layout/super_class.h"
 #include "_layout/tube_class.h"
 #include "_layout/tiberium_class.h"
-#include "movement/waypoint_path_class_methods.h"
+#include "waypoint_path_class_methods.h"
 #include "_layout/super_weapon_type_class.h"
 #include "_layout/slave_manager_class.h"
 #include "_layout/spawn_manager_class.h"

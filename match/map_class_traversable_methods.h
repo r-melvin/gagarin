@@ -16,7 +16,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
-#include "movement/loco_interfaces.h"
+#include "loco_interfaces.h"
 
 struct DropPodObjectView;
 

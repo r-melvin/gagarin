@@ -38,8 +38,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
-#include "../movement/loco_base.h"
-#include "../movement/loco_com.h"
+#include "../loco_base.h"
+#include "../loco_com.h"
 
 // Declared with its real bases (LocomotionClass, IPiggyback) so VC6 lays out the
 // three tables and generates the ILocomotion (+4) and IPiggyback (+0x18)

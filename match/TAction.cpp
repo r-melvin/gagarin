@@ -98,7 +98,7 @@ extern double DAT_00B0E688;
 #include <new.h>
 #include "_layout/object_class.h"
 #include <string.h>
-#include "movement/locomotion_load_support.h"
+#include "locomotion_load_support.h"
 #include "core/vector_class_operations.h"
 #include "core/frame_counter.h"
 

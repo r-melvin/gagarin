@@ -23,7 +23,7 @@
 #include "abstract_interfaces.h"
 #include "i_link_stream.h"
 #include "house_interfaces.h"
-#include "../movement/loco_interfaces.h"
+#include "../loco_interfaces.h"
 
 // IFlyControl (".?AUIFlyControl@@", one base IUnknown): AircraftClass's second
 // base at +0x6C0 (COL 0x7E2250 base offset 0x6C0). Table 0x7E2250: slots 0-2

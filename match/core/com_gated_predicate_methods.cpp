@@ -4,7 +4,7 @@
 
 #include "com_gated_predicate_methods.h"
 #include "../_layout/aircraft_class.h"
-#include "../movement/loco_interfaces.h"
+#include "../loco_interfaces.h"
 #include <comip.h>
 
 GG_STATIC_ASSERT(offsetof(AircraftClass, Type) == 0x6C4);

@@ -12,7 +12,7 @@
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_MISC_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_MISC_METHODS_H
 
-#include "movement/waypoint_path_class_methods.h"
+#include "waypoint_path_class_methods.h"
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "storage_class.h"

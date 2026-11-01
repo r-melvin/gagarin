@@ -9,7 +9,7 @@
 //   /Ob2: the destructor expands the registry RemoveItem bodies in place.
 
 #include "FUNCTION.H"
-#include "movement/locomotion_load_support.h"
+#include "locomotion_load_support.h"
 #include "core/abstract_registry.h"
 #include "core/header_tuning_globals.h"
 

@@ -2283,7 +2283,7 @@
    "addr": "0x719EE0",
    "name": "FUN_00719EE0",
    "sym": "?FUN_00719EE0@@YGJPAUOwner_00719EE0@@PAPAX@Z",
-   "tu": "match/movement/locomotion_com_helpers.cpp",
+   "tu": "match/locomotion_com_helpers.cpp",
    "classes": [
     {
      "cls": "TeleportLocomotionClass",
@@ -2296,7 +2296,7 @@
    "addr": "0x7180A0",
    "name": "FUN_007180A0",
    "sym": "?FUN_007180A0@@YGXPAUSource_007180A0@@PAUCoord_007180A0@@@Z",
-   "tu": "match/movement/waypoint_queue_position_methods.cpp",
+   "tu": "match/waypoint_queue_position_methods.cpp",
    "classes": [
     {
      "cls": "TeleportLocomotionClass",

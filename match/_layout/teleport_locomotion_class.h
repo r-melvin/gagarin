@@ -20,7 +20,7 @@
 //   a VPTR and this class cannot share FlyLocomotionClass's two-locator base;
 //   its own data starts at 0x1C.
 //
-//   The class is modelled on the shared COM spine of match/movement/loco_base.h
+//   The class is modelled on the shared COM spine of match/loco_base.h
 //   (LocomotionClass + IPiggyback), as DropPodLocomotionClass is. Table
 //   contents are read from the binary:
 //     IPersistStream 0x7F50CC: QI 0x719E30, AddRef 0x71A0E0, Release 0x71A0F0,
@@ -42,8 +42,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../movement/loco_base.h"
-#include "../movement/loco_com.h"
+#include "../loco_base.h"
+#include "../loco_com.h"
 #include "../core/frame_counter.h"
 
 // The unit's "no coordinate" value: three dwords zeroed by its initialiser

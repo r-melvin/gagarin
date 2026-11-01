@@ -4885,7 +4885,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5172F0",
   "sym": "??_GLocomotionClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -5138,7 +5138,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A210",
   "sym": "??_GTunnelLocomotionClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -8901,7 +8901,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D03A0",
   "sym": "??_GFlyLocomotionClass@@UAEPAXI@Z",
   "len": "0x2b",
@@ -8910,7 +8910,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5172C0",
   "sym": "??_GHoverLocomotionClass@@UAEPAXI@Z",
   "len": "0x2B",
@@ -8919,7 +8919,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B1B50",
   "sym": "??_GMechLocomotionClass@@UAEPAXI@Z",
   "len": "0x2b",
@@ -24717,7 +24717,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/bounce_class.cpp",
+  "tu": "match/bounce_class.cpp",
   "addr": "0x4399A0",
   "sym": "?GetCoords@BounceClass@@QBEPAUCoordStruct@@PAU2@@Z",
   "len": "0x37",
@@ -24726,7 +24726,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/bounce_class.cpp",
+  "tu": "match/bounce_class.cpp",
   "addr": "0x4399E0",
   "sym": "?GetDrawingMatrix@BounceClass@@QBEPAUMatrix3D@@PAU2@@Z",
   "len": "0x28",
@@ -24735,7 +24735,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/dir16_operator_methods.cpp",
+  "tu": "match/dir16_operator_methods.cpp",
   "addr": "0x5B2930",
   "sym": "?Add@Dir16@@QBE?AU1@ABU1@@Z",
   "len": "0x1c",
@@ -24744,7 +24744,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/dir16_operator_methods.cpp",
+  "tu": "match/dir16_operator_methods.cpp",
   "addr": "0x5B2950",
   "sym": "?Sub@Dir16@@QBE?AU1@ABU1@@Z",
   "len": "0x1c",
@@ -24753,7 +24753,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/dir16_operator_methods.cpp",
+  "tu": "match/dir16_operator_methods.cpp",
   "addr": "0x5B2970",
   "sym": "?Div@Dir16@@QBE?AU1@H@Z",
   "len": "0x1a",
@@ -24762,7 +24762,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/dir16_operator_methods.cpp",
+  "tu": "match/dir16_operator_methods.cpp",
   "addr": "0x5B2990",
   "sym": "?IsWithin@Dir16@@QBE_NABU1@0@Z",
   "len": "0x2a",
@@ -24771,7 +24771,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/dir16_operator_methods.cpp",
+  "tu": "match/dir16_operator_methods.cpp",
   "addr": "0x5B29C0",
   "sym": "?StepToward@Dir16@@QAE_NABU1@0@Z",
   "len": "0x64",
@@ -24780,7 +24780,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_set_desired_methods.cpp",
+  "tu": "match/facing_set_desired_methods.cpp",
   "addr": "0x4C9480",
   "sym": "?IsRotating@FacingClass@@QBE_NXZ",
   "len": "0x2D",
@@ -24789,7 +24789,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_set_desired_methods.cpp",
+  "tu": "match/facing_set_desired_methods.cpp",
   "addr": "0x4C94B0",
   "sym": "?IsRotatingCW@FacingClass@@QBE_NXZ",
   "len": "0x3C",
@@ -24798,7 +24798,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_set_desired_methods.cpp",
+  "tu": "match/facing_set_desired_methods.cpp",
   "addr": "0x4C94F0",
   "sym": "?IsRotatingCCW@FacingClass@@QBE_NXZ",
   "len": "0x3A",
@@ -24807,7 +24807,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_set_desired_methods.cpp",
+  "tu": "match/facing_set_desired_methods.cpp",
   "addr": "0x4C9220",
   "sym": "?SetDesired@FacingClass@@QAE_NABUDirStruct@@@Z",
   "len": "0xdf",
@@ -24816,7 +24816,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/flight_path_step_methods.cpp",
+  "tu": "match/flight_path_step_methods.cpp",
   "addr": "0x005B20F0",
   "sym": "?FlightPathStep@@YIHPAUCoordStruct@@PAUVelocityClass@@PBU1@PBUDir16@@DDDD@Z",
   "len": "0x835",
@@ -24825,7 +24825,7 @@
   "pct": 9.2
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2B90",
   "sym": "_$E2",
   "len": "0x28",
@@ -24834,7 +24834,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2BC0",
   "sym": "_$E5",
   "len": "0x13",
@@ -24843,7 +24843,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2BE0",
   "sym": "_$E8",
   "len": "0x13",
@@ -24852,7 +24852,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2C00",
   "sym": "_$E11",
   "len": "0x13",
@@ -24861,7 +24861,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2C20",
   "sym": "_$E14",
   "len": "0x13",
@@ -24870,7 +24870,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2C40",
   "sym": "_$E17",
   "len": "0x13",
@@ -24879,7 +24879,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2C60",
   "sym": "_$E20",
   "len": "0x31",
@@ -24888,7 +24888,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2CA0",
   "sym": "_$E23",
   "len": "0x21",
@@ -24897,7 +24897,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2CD0",
   "sym": "_$E26",
   "len": "0x2c",
@@ -24906,7 +24906,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2D00",
   "sym": "_$E29",
   "len": "0x27",
@@ -24915,7 +24915,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2D30",
   "sym": "_$E32",
   "len": "0xf",
@@ -24924,7 +24924,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2D40",
   "sym": "_$E35",
   "len": "0x12",
@@ -24933,7 +24933,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2D60",
   "sym": "_$E38",
   "len": "0x1a",
@@ -24942,7 +24942,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/flight_tuning_globals.cpp",
+  "tu": "match/flight_tuning_globals.cpp",
   "addr": "0x005B2D80",
   "sym": "_$E41",
   "len": "0x17",
@@ -24951,7 +24951,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CE680",
   "sym": "?Approach@FlyLocoApproach@@QAEDXZ",
   "len": "0x1b6",
@@ -24960,7 +24960,7 @@
   "pct": 19.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFC40",
   "sym": "?FUN_004CFC40@FlyLocomotionClass@@QBEDXZ",
   "len": "0x32",
@@ -24969,7 +24969,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFC80",
   "sym": "?GetClassID@FlyLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -24978,7 +24978,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFCC0",
   "sym": "?Load@FlyLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x29",
@@ -24987,7 +24987,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFCF0",
   "sym": "?InWhichLayer@FlyLocomotionClass@@UAGHXZ",
   "len": "0x22",
@@ -24996,7 +24996,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFD20",
   "sym": "?PowerOff@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x64",
@@ -25005,7 +25005,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFD90",
   "sym": "?IsPowered@FlyLocomotionClass@@UAG_NXZ",
   "len": "0xD",
@@ -25014,7 +25014,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFDA0",
   "sym": "?IsIonSensitive@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x21",
@@ -25023,7 +25023,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CF830",
   "sym": "?DrawPoint@FlyLocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x106",
@@ -25032,7 +25032,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCA20",
   "sym": "?LinkToObject@FlyLocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x50",
@@ -25041,7 +25041,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCA70",
   "sym": "?Destroy@FlyLocoObject@@QAEXXZ",
   "len": "0x12",
@@ -25050,7 +25050,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCA90",
   "sym": "?IsMoving@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x2e",
@@ -25059,7 +25059,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCAC0",
   "sym": "?IsMovingNow@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x1e",
@@ -25068,7 +25068,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCAE0",
   "sym": "?Destination@FlyLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
@@ -25077,7 +25077,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CF940",
   "sym": "?ShadowPoint@FlyLocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x10",
@@ -25086,7 +25086,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFC10",
   "sym": "?FlyLocoAssignTarget_004CFC10@@YGXPAUFlyLocoIface@@PAX@Z",
   "len": "0x22",
@@ -25095,7 +25095,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFDD0",
   "sym": "?StartSpin@FlyLocoObject@@QAEXXZ",
   "len": "0x42",
@@ -25104,7 +25104,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFE20",
   "sym": "?ApparentSpeed@FlyLocomotionClass@@UAGHXZ",
   "len": "0x22",
@@ -25113,7 +25113,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFE50",
   "sym": "?GetStatus@FlyLocomotionClass@@UAGHXZ",
   "len": "0x2f",
@@ -25122,7 +25122,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CF610",
   "sym": "?DrawMatrix@FlyLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x212",
@@ -25131,7 +25131,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_com_methods.cpp",
+  "tu": "match/fly_locomotion_com_methods.cpp",
   "addr": "0x4CFB00",
   "sym": "?ShadowMatrix@FlyLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x109",
@@ -25140,7 +25140,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/fly_locomotion_move_to_methods.cpp",
+  "tu": "match/fly_locomotion_move_to_methods.cpp",
   "addr": "0x4CCC80",
   "sym": "?MoveTo@FlyLocoMoveTo@@QAGXUCoord_004CCC80@@@Z",
   "len": "0x343",
@@ -25149,7 +25149,7 @@
   "pct": 47.7
  },
  {
-  "tu": "match/movement/fly_locomotion_pick_target_methods.cpp",
+  "tu": "match/fly_locomotion_pick_target_methods.cpp",
   "addr": "0x4CFE80",
   "sym": "?PickTarget@FlyLocoPick@@QAGXXZ",
   "len": "0x2f2",
@@ -25158,7 +25158,7 @@
   "pct": 95.6
  },
  {
-  "tu": "match/movement/fly_locomotion_process_methods.cpp",
+  "tu": "match/fly_locomotion_process_methods.cpp",
   "addr": "0x4CCB40",
   "sym": "?Process@FlyLocoProcess@@QAGDXZ",
   "len": "0x132",
@@ -25167,7 +25167,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CE5A0",
   "sym": "?ProcessSpin@FlyLocoSpin@@QAEXXZ",
   "len": "0xd2",
@@ -25176,7 +25176,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFA70",
   "sym": "?BeginLanding@FlyLocoSpin@@QAEXXZ",
   "len": "0x85",
@@ -25185,7 +25185,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/fly_locomotion_stop_moving_methods.cpp",
+  "tu": "match/fly_locomotion_stop_moving_methods.cpp",
   "addr": "0x4CCFD0",
   "sym": "?StopMoving@FlyLocoStop@@QAGXXZ",
   "len": "0x2C7",
@@ -25194,7 +25194,7 @@
   "pct": 9.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CF950",
   "sym": "?BeginTakeOff@FlyLocoTakeOff@@QAEXXZ",
   "len": "0x11a",
@@ -25203,7 +25203,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_find_path_methods.cpp",
+  "tu": "match/foot_class_find_path_methods.cpp",
   "addr": "0x4CBBA0",
   "sym": "?FindPath@FootClass@@QAEPAXPAVCell@@PAHHHHH@Z",
   "len": "0x9e",
@@ -25212,7 +25212,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_jumpjet.cpp",
+  "tu": "match/foot_class_jumpjet.cpp",
   "addr": "0x4135A0",
   "sym": "?IsJumpjet@AircraftTrackerClass@@QAE_NPAVTechnoView_004135A0@@@Z",
   "len": "0x29",
@@ -25221,7 +25221,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_jumpjet_cell_methods.cpp",
+  "tu": "match/foot_class_jumpjet_cell_methods.cpp",
   "addr": "0x4E00B0",
   "sym": "?Jumpjet_OccupyCell@FootClass@@QAEXUCellStruct@@@Z",
   "len": "0x72",
@@ -25230,7 +25230,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4DA1C0",
   "sym": "?ClearNavigationList@FootClass@@QAEXXZ",
   "len": "0xF",
@@ -25239,7 +25239,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4DF0D0",
   "sym": "?AbortMotion@FootClass@@QAEXXZ",
   "len": "0xF",
@@ -25248,7 +25248,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_more_methods.cpp",
+  "tu": "match/foot_class_more_methods.cpp",
   "addr": "0x4D9920",
   "sym": "?vf_241@FootClass@@UAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z",
   "len": "0x3f",
@@ -25266,7 +25266,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_move_to_tiberium_methods.cpp",
+  "tu": "match/foot_class_move_to_tiberium_methods.cpp",
   "addr": "0x4DCFE0",
   "sym": "?MoveToTiberium@Obj_004DCFE0@@QAE_NHH@Z",
   "len": "0xb6",
@@ -25275,7 +25275,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_move_to_weed_methods.cpp",
+  "tu": "match/foot_class_move_to_weed_methods.cpp",
   "addr": "0x4DDB90",
   "sym": "?MoveToWeed@FootClass@@QAE_NH@Z",
   "len": "0xae",
@@ -25284,7 +25284,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_nav_list_methods.cpp",
+  "tu": "match/foot_class_nav_list_methods.cpp",
   "addr": "0x4DA0E0",
   "sym": "?QueueNavigationList@FootClass@@QAEXPAVAbstractClass@@@Z",
   "len": "0xd2",
@@ -25293,7 +25293,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_passenger_methods.cpp",
+  "tu": "match/foot_class_passenger_methods.cpp",
   "addr": "0x4DE710",
   "sym": "?RemoveFirstPassenger@FootClass@@QAEPAV1@XZ",
   "len": "0x3E",
@@ -25320,7 +25320,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A730",
   "sym": "?DrawMatrix@LocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x9f",
@@ -25329,7 +25329,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A710",
   "sym": "?LinkToObject@LocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x13",
@@ -25338,7 +25338,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A910",
   "sym": "?PowerOff@LocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -25347,7 +25347,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A930",
   "sym": "?IsPowered@LocomotionClass@@UAG_NXZ",
   "len": "0xa",
@@ -25356,7 +25356,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A940",
   "sym": "?IsIonSensitive@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -25365,7 +25365,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ABA0",
   "sym": "?ZAdjust@LocomotionClass@@UAGHXZ",
   "len": "0x5",
@@ -25374,7 +25374,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ABB0",
   "sym": "?ZGradient@LocomotionClass@@UAGHXZ",
   "len": "0x8",
@@ -25383,7 +25383,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AD00",
   "sym": "?CanFire@LocomotionClass@@UAGHXZ",
   "len": "0x5",
@@ -25392,7 +25392,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AAC0",
   "sym": "?Load@LocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7a",
@@ -25401,7 +25401,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A950",
   "sym": "?AddRef@LocomotionClass@@UAGKXZ",
   "len": "0x1e",
@@ -25410,7 +25410,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A970",
   "sym": "?Release@LocomotionClass@@UAGKXZ",
   "len": "0x37",
@@ -25419,7 +25419,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AB40",
   "sym": "?GetSizeMax@LocomotionClass@@UAGJPAT_ULARGE_INTEGER@@@Z",
   "len": "0x2d",
@@ -25428,7 +25428,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A9B0",
   "sym": "?QueryInterface@LocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0xa4",
@@ -25437,7 +25437,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AA60",
   "sym": "?Save@SaveView_0055AA60@@UAGJPAUGg_IStream@@J@Z",
   "len": "0x57",
@@ -25446,7 +25446,7 @@
   "pct": 67.5
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A7D0",
   "sym": "?ShadowMatrix@LocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0xf0",
@@ -25464,7 +25464,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_com_helpers.cpp",
+  "tu": "match/locomotion_com_helpers.cpp",
   "addr": "0x719EE0",
   "sym": "?FUN_00719EE0@@YGJPAUOwner_00719EE0@@PAPAX@Z",
   "len": "0x49",
@@ -25536,7 +25536,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_apply_methods.cpp",
+  "tu": "match/matrix3d_apply_methods.cpp",
   "addr": "0x5AFB80",
   "sym": "?MatrixApply@Matrix3D@@SIPAUVector3D@@PAU2@PBU1@PBU2@@Z",
   "len": "0x78",
@@ -25554,7 +25554,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AE980",
   "sym": "?TranslateX@Matrix3D@@QAEXM@Z",
   "len": "0x29",
@@ -25563,7 +25563,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AE9B0",
   "sym": "?TranslateY@Matrix3D@@QAEXM@Z",
   "len": "0x2A",
@@ -25572,7 +25572,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AE9E0",
   "sym": "?TranslateZ@Matrix3D@@QAEXM@Z",
   "len": "0x2A",
@@ -25590,7 +25590,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEA10",
   "sym": "?Scale@Matrix3D@@QAEXM@Z",
   "len": "0x5b",
@@ -25599,7 +25599,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEB20",
   "sym": "?ScaleZ@Matrix3D@@QAEXM@Z",
   "len": "0x21",
@@ -25608,7 +25608,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF000",
   "sym": "?RotateX@Matrix3D@@QAEXMM@Z",
   "len": "0x75",
@@ -25617,7 +25617,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF120",
   "sym": "?RotateY@Matrix3D@@QAEXMM@Z",
   "len": "0x79",
@@ -25626,7 +25626,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEAD0",
   "sym": "?ScaleX@Matrix3D@@QAEXM@Z",
   "len": "0x1F",
@@ -25635,7 +25635,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEAF0",
   "sym": "?ScaleY@Matrix3D@@QAEXM@Z",
   "len": "0x21",
@@ -25644,7 +25644,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF410",
   "sym": "?GetYRotation@Matrix3D@@QBENXZ",
   "len": "0x5D",
@@ -25653,7 +25653,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661CB0",
   "sym": "_$E17",
   "len": "0x28",
@@ -25662,7 +25662,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661CE0",
   "sym": "_$E20",
   "len": "0x13",
@@ -25671,7 +25671,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D00",
   "sym": "_$E23",
   "len": "0x13",
@@ -25680,7 +25680,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D20",
   "sym": "_$E26",
   "len": "0x13",
@@ -25689,7 +25689,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D40",
   "sym": "_$E29",
   "len": "0x13",
@@ -25698,7 +25698,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D60",
   "sym": "_$E32",
   "len": "0x13",
@@ -25707,7 +25707,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661D80",
   "sym": "_$E35",
   "len": "0x31",
@@ -25716,7 +25716,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661DC0",
   "sym": "_$E38",
   "len": "0x21",
@@ -25725,7 +25725,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661DF0",
   "sym": "_$E41",
   "len": "0x2c",
@@ -25734,7 +25734,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E20",
   "sym": "_$E44",
   "len": "0x27",
@@ -25743,7 +25743,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E50",
   "sym": "_$E47",
   "len": "0xf",
@@ -25752,7 +25752,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E60",
   "sym": "_$E50",
   "len": "0x12",
@@ -25761,7 +25761,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661E80",
   "sym": "_$E53",
   "len": "0x1a",
@@ -25770,7 +25770,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661EA0",
   "sym": "_$E56",
   "len": "0x17",
@@ -25851,7 +25851,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/velocity_class_set_pitch_methods.cpp",
+  "tu": "match/velocity_class_set_pitch_methods.cpp",
   "addr": "0x005B2A30",
   "sym": "?SetPitch@VelocityClass@@QAEXABUDir16@@@Z",
   "len": "0x156",
@@ -25861,7 +25861,7 @@
   "note": "Naked asm body replaced by C++ (user decision 2026-10-22). Multiset identical; one load of Z high half scheduled after the first sqrt spill instead of before."
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763980",
   "sym": "?GetWaypoint@WaypointPathClass@@QBEPAVWaypointClass@@H@Z",
   "len": "0x1e",
@@ -25870,7 +25870,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763BA0",
   "sym": "?GetWaypointAfter@WaypointPathClass@@QBEPAVWaypointClass@@PAV2@@Z",
   "len": "0x3d",
@@ -25879,7 +25879,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717A30",
   "sym": "?SetHead@WaypointQueue_00717A30@@QAEXH@Z",
   "len": "0x9",
@@ -25888,7 +25888,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717A40",
   "sym": "?GetHead@WaypointQueue_00717A30@@QBEHXZ",
   "len": "0x3",
@@ -25897,7 +25897,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717A50",
   "sym": "?SetSize@WaypointQueue_00717A30@@QAEXH@Z",
   "len": "0x13",
@@ -25906,7 +25906,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717A80",
   "sym": "?SetTail@WaypointQueue_00717A30@@QAEXH@Z",
   "len": "0x13",
@@ -25915,7 +25915,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717AA0",
   "sym": "?GetTail@WaypointQueue_00717A30@@QBEHXZ",
   "len": "0x4",
@@ -25924,7 +25924,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717AB0",
   "sym": "?SetExtra@WaypointQueue_00717A30@@QAEXH@Z",
   "len": "0x13",
@@ -25933,7 +25933,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717AD0",
   "sym": "?GetExtra@WaypointQueue_00717A30@@QBEHXZ",
   "len": "0x4",
@@ -25942,7 +25942,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_accessors.cpp",
+  "tu": "match/waypoint_queue_accessors.cpp",
   "addr": "0x717AE0",
   "sym": "?IsEmpty@WaypointQueue_00717A30@@QBE_NXZ",
   "len": "0xa",
@@ -25951,7 +25951,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_queue_position_methods.cpp",
+  "tu": "match/waypoint_queue_position_methods.cpp",
   "addr": "0x7180A0",
   "sym": "?FUN_007180A0@@YGXPAUSource_007180A0@@PAUCoord_007180A0@@@Z",
   "len": "0x52",
@@ -28275,7 +28275,7 @@
   "pct": 5.1
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEF60",
   "sym": "?RotateX@Matrix3D@@QAEXM@Z",
   "len": "0x9e",
@@ -28284,7 +28284,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF080",
   "sym": "?RotateY@Matrix3D@@QAEXM@Z",
   "len": "0x9c",
@@ -28293,7 +28293,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF1A0",
   "sym": "?RotateZ@Matrix3D@@QAEXM@Z",
   "len": "0x9c",
@@ -28302,7 +28302,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AE8F0",
   "sym": "?Translate@Matrix3D@@QAEXABUVector3D@@@Z",
   "len": "0x81",
@@ -28311,7 +28311,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AFC20",
   "sym": "?TransposeMatrix@Matrix3D@@SI?AU1@ABU1@@Z",
   "len": "0xB5",
@@ -30192,7 +30192,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_z_adjust.cpp",
+  "tu": "match/tunnel_locomotion_z_adjust.cpp",
   "addr": "0x729E50",
   "sym": "_FUN_00729E50@4",
   "len": "0x1c4",
@@ -30489,7 +30489,7 @@
   "pct": 81.6
  },
  {
-  "tu": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+  "tu": "match/cell_neighbor_flags_0057cbe0.cpp",
   "addr": "0x57CBE0",
   "sym": "?FUN_0057CBE0@@YIEPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x10a",
@@ -30498,7 +30498,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+  "tu": "match/cell_neighbor_flags_0057cbe0.cpp",
   "addr": "0x57CAB0",
   "sym": "?FUN_0057CAB0@@YIHPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x122",
@@ -30525,7 +30525,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/cell_probe_0057ccf0.cpp",
+  "tu": "match/cell_probe_0057ccf0.cpp",
   "addr": "0x57CCF0",
   "sym": "?FUN_0057CCF0@CellProbe_0057CCF0@@QAEDPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x26a",
@@ -30570,7 +30570,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "tu": "match/coordinate_helpers_00588c10.cpp",
   "addr": "0x588C10",
   "sym": "?CopyState@StateRecord_00588C10@@QAEAAU1@ABU1@@Z",
   "len": "0x27",
@@ -30579,7 +30579,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "tu": "match/coordinate_helpers_00588c10.cpp",
   "addr": "0x588C40",
   "sym": "?Add@Coordinate_00588C40@@QAEAAU1@ABU1@@Z",
   "len": "0x17",
@@ -30588,7 +30588,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "tu": "match/coordinate_helpers_00588c10.cpp",
   "addr": "0x588C60",
   "sym": "?Subtract@Coordinate_00588C40@@QBE?AU1@ABU1@@Z",
   "len": "0x29",
@@ -30597,7 +30597,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "tu": "match/coordinate_helpers_00588c10.cpp",
   "addr": "0x588D10",
   "sym": "?Index16@BufferIndex_00588CC0@@QBEIPBX@Z",
   "len": "0x1b",
@@ -30606,7 +30606,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "tu": "match/coordinate_helpers_00588c10.cpp",
   "addr": "0x588D30",
   "sym": "?Get@RecordBuffer_00588D30@@QBE?AUValueRecord_00588D30@@H@Z",
   "len": "0x29",
@@ -30624,7 +30624,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C00",
   "sym": "?GetTrackNumber@DriveLocomotionClass@@UAGHXZ",
   "len": "0xa",
@@ -30633,7 +30633,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C10",
   "sym": "?GetTrackIndex@DriveLocomotionClass@@UAGHXZ",
   "len": "0xa",
@@ -30642,7 +30642,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C20",
   "sym": "?GetSpeedAccum@DriveLocomotionClass@@UAGHXZ",
   "len": "0xa",
@@ -30651,7 +30651,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x588DE0",
   "sym": "?Index36@BufferAccessors_00588DE0@@QBEIPBX@Z",
   "len": "0x24",
@@ -30660,7 +30660,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x588EF0",
   "sym": "?FUN_00588EF0@BufferAccessors_00588DE0@@QBEIH@Z",
   "len": "0xd",
@@ -30669,7 +30669,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x588F30",
   "sym": "?Index4@BufferAccessors_00588DE0@@QBEIPBX@Z",
   "len": "0x1b",
@@ -30678,7 +30678,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x588F50",
   "sym": "?FUN_00588F50@BufferAccessors_00588DE0@@QBEIH@Z",
   "len": "0xd",
@@ -30687,7 +30687,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x588F90",
   "sym": "?Index8@BufferAccessors_00588DE0@@QBEIPBX@Z",
   "len": "0x1b",
@@ -30696,7 +30696,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x588FB0",
   "sym": "?GetPair@BufferAccessors_00588DE0@@QBE?AUBufferPair_00588FB0@@H@Z",
   "len": "0x1c",
@@ -30705,7 +30705,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x589000",
   "sym": "?Index12@BufferAccessors_00588DE0@@QBEIPBX@Z",
   "len": "0x24",
@@ -30714,7 +30714,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "tu": "match/buffer_accessors_00588de0.cpp",
   "addr": "0x589030",
   "sym": "?GetTriple@BufferAccessors_00588DE0@@QBE?AUBufferTriple_00589030@@H@Z",
   "len": "0x25",
@@ -30723,7 +30723,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C30",
   "sym": "?IsDirty@LocomotionClass@@UAGJXZ",
   "len": "0x11",
@@ -30732,7 +30732,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4CB0",
   "sym": "?AddRef@DriveLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -30741,7 +30741,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4CC0",
   "sym": "?Release@DriveLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -30759,7 +30759,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4CD0",
   "sym": "?IsPiggybacking@DriveLocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -30768,7 +30768,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4CF0",
   "sym": "?Size@DriveLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -30813,7 +30813,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/cell_type_predicates_00580b20.cpp",
+  "tu": "match/cell_type_predicates_00580b20.cpp",
   "addr": "0x00580B20",
   "sym": "?FUN_00580B20@@YIHPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x44",
@@ -30822,7 +30822,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/cell_type_predicates_00580b20.cpp",
+  "tu": "match/cell_type_predicates_00580b20.cpp",
   "addr": "0x00580B70",
   "sym": "?FUN_00580B70@@YIHPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0x48",
@@ -30831,7 +30831,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_timer_remaining_004b4d70.cpp",
+  "tu": "match/drive_timer_remaining_004b4d70.cpp",
   "addr": "0x4B4D70",
   "sym": "?FUN_004B4D70@@YIHPAUCDTimerClass@@@Z",
   "len": "0x1c",
@@ -30930,7 +30930,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/vector_search_00589290.cpp",
+  "tu": "match/vector_search_00589290.cpp",
   "addr": "0x589290",
   "sym": "?Remove@SearchVector8_00589290@@QAE_NH@Z",
   "len": "0x39",
@@ -30939,7 +30939,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/vector_search_00589290.cpp",
+  "tu": "match/vector_search_00589290.cpp",
   "addr": "0x589300",
   "sym": "?Equals@SearchVector16_00589300@@QBE_NABU1@@Z",
   "len": "0x63",
@@ -30948,7 +30948,7 @@
   "pct": 88.1
  },
  {
-  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "tu": "match/vector_lookup_family_00589dc0.cpp",
   "addr": "0x589DC0",
   "sym": "?FindFirst@VectorLookup4_00589DC0@@QBEHABH@Z",
   "len": "0x33",
@@ -30957,7 +30957,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "tu": "match/vector_lookup_family_00589dc0.cpp",
   "addr": "0x589E00",
   "sym": "?IndexFirst@VectorLookup4_00589DC0@@QBEIPBH@Z",
   "len": "0x1b",
@@ -30966,7 +30966,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "tu": "match/vector_lookup_family_00589dc0.cpp",
   "addr": "0x589FD0",
   "sym": "?FindSecond@VectorLookup4_00589DC0@@QBEHABH@Z",
   "len": "0x33",
@@ -30975,7 +30975,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "tu": "match/vector_lookup_family_00589dc0.cpp",
   "addr": "0x58A010",
   "sym": "?IndexSecond@VectorLookup4_00589DC0@@QBEIPBH@Z",
   "len": "0x1b",
@@ -30984,7 +30984,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "tu": "match/vector_lookup_family_00589dc0.cpp",
   "addr": "0x58A0E0",
   "sym": "?FindActive@VectorLookup4_00589DC0@@QBEHABH@Z",
   "len": "0x26",
@@ -30993,7 +30993,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "tu": "match/vector_lookup_family_00589dc0.cpp",
   "addr": "0x58A230",
   "sym": "?Find@VectorLookup8_0058A230@@QBEHABH@Z",
   "len": "0x26",
@@ -31002,7 +31002,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "tu": "match/vector_lookup_family_00589dc0.cpp",
   "addr": "0x58A3A0",
   "sym": "?Find@VectorLookup12_0058A3A0@@QBEHABH@Z",
   "len": "0x26",
@@ -31119,7 +31119,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "tu": "match/vector_compare_family_00589c10.cpp",
   "addr": "0x589C10",
   "sym": "?Find@SearchVector36_00589C10@@QBEHABUSearchRecord36_00589C10@@@Z",
   "len": "0x3c",
@@ -31128,7 +31128,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "tu": "match/vector_compare_family_00589c10.cpp",
   "addr": "0x589CA0",
   "sym": "?EqualsA@CompareVector4_00589CA0@@QBE_NABU1@@Z",
   "len": "0x3e",
@@ -31137,7 +31137,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "tu": "match/vector_compare_family_00589c10.cpp",
   "addr": "0x589EB0",
   "sym": "?EqualsB@CompareVector4_00589CA0@@QBE_NABU1@@Z",
   "len": "0x3e",
@@ -31146,7 +31146,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "tu": "match/vector_compare_family_00589c10.cpp",
   "addr": "0x58A110",
   "sym": "?Equals@CompareVector8_0058A110@@QBE_NABU1@@Z",
   "len": "0x3e",
@@ -31155,7 +31155,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "tu": "match/vector_compare_family_00589c10.cpp",
   "addr": "0x58A260",
   "sym": "?Equals@CompareVector12_0058A260@@QBE_NABU1@@Z",
   "len": "0x3e",
@@ -47727,7 +47727,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A8C0",
   "sym": "?ShadowPoint@LocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x28",
@@ -47736,7 +47736,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A8F0",
   "sym": "?PowerOn@LocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -47745,7 +47745,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AB70",
   "sym": "?Push@LocomotionClass@@UAG_NK@Z",
   "len": "0x5",
@@ -47754,7 +47754,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AB80",
   "sym": "?Shove@LocomotionClass@@UAG_NK@Z",
   "len": "0x5",
@@ -47763,7 +47763,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AB90",
   "sym": "?TiltPitchAI@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -47772,7 +47772,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ABC0",
   "sym": "?VisualCharacter@LocomotionClass@@UAGHH@Z",
   "len": "0x5",
@@ -47781,7 +47781,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ABD0",
   "sym": "?DrawPoint@LocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x10",
@@ -47790,7 +47790,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ABE0",
   "sym": "?IsToHaveShadow@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -47799,7 +47799,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ABF0",
   "sym": "?CanEnterCell@LocomotionClass@@UAGHH@Z",
   "len": "0x5",
@@ -47808,7 +47808,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC00",
   "sym": "?ForceImmediateDestination@LocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x3",
@@ -47817,7 +47817,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC10",
   "sym": "?ForceTrack@LocomotionClass@@UAGXHUCoordStruct@@@Z",
   "len": "0x3",
@@ -47826,7 +47826,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC20",
   "sym": "?Unlimbo@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -47835,7 +47835,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC30",
   "sym": "?DoTurn@LocomotionClass@@UAGXK@Z",
   "len": "0x3",
@@ -47844,7 +47844,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC40",
   "sym": "?StopMoving@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -47853,7 +47853,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC50",
   "sym": "?MoveTo@LocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x3",
@@ -47862,7 +47862,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC60",
   "sym": "?Process@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -47871,7 +47871,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AC70",
   "sym": "?Destination@LocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x27",
@@ -47880,7 +47880,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ACA0",
   "sym": "?HeadToCoord@LocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x2c",
@@ -47889,7 +47889,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ACD0",
   "sym": "?IsMoving@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -47898,7 +47898,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ACE0",
   "sym": "?ForceNewSlope@LocomotionClass@@UAGXH@Z",
   "len": "0x3",
@@ -47907,7 +47907,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55ACF0",
   "sym": "?DrawingCode@LocomotionClass@@UAGHXZ",
   "len": "0x5",
@@ -47916,7 +47916,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55AD10",
   "sym": "?ApparentSpeed@LocomotionClass@@UAGHXZ",
   "len": "0x12",
@@ -47925,7 +47925,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A6C0",
   "sym": "??0LocomotionClass@@QAE@XZ",
   "len": "0x23",
@@ -47934,7 +47934,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu122_locomotion_class.cpp",
+  "tu": "match/tu122_locomotion_class.cpp",
   "addr": "0x55A6F0",
   "sym": "??1LocomotionClass@@UAE@XZ",
   "len": "0x15",
@@ -47943,7 +47943,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x513C20",
   "sym": "??0HoverLocomotionClass@@QAE@XZ",
   "len": "0x83",
@@ -47952,7 +47952,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x513CB0",
   "sym": "?LinkToObject@HoverLocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x4D",
@@ -47961,7 +47961,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x513F40",
   "sym": "?DrawMatrix@HoverLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x353",
@@ -47970,7 +47970,7 @@
   "pct": 78.6
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5142A0",
   "sym": "?ShadowMatrix@HoverLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x67",
@@ -47979,7 +47979,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x514310",
   "sym": "?Process@HoverLocomotionClass@@UAG_NXZ",
   "len": "0x911",
@@ -47988,7 +47988,7 @@
   "pct": 14.5
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x514C30",
   "sym": "?IsMoving@HoverLocomotionClass@@UAG_NXZ",
   "len": "0x4B",
@@ -47997,7 +47997,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x514C80",
   "sym": "?IsMovingNow@HoverLocomotionClass@@UAG_NXZ",
   "len": "0x2E",
@@ -48006,7 +48006,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x514CB0",
   "sym": "?Destination@HoverLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x5C",
@@ -48015,7 +48015,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x514D10",
   "sym": "?HeadToCoord@HoverLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
@@ -48024,7 +48024,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x514D90",
   "sym": "?MoveTo@HoverLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x1DA",
@@ -48033,7 +48033,7 @@
   "pct": 53.5
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x516320",
   "sym": "?StopMoving@HoverLocomotionClass@@UAGXXZ",
   "len": "0x4D",
@@ -48042,7 +48042,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x516370",
   "sym": "?DoTurn@HoverLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -48051,7 +48051,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x516BF0",
   "sym": "?PowerOff@HoverLocomotionClass@@UAG_NXZ",
   "len": "0x78",
@@ -48060,7 +48060,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x516C70",
   "sym": "?IsPowered@HoverLocomotionClass@@UAG_NXZ",
   "len": "0x2A",
@@ -48069,7 +48069,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x516CA0",
   "sym": "?IsIonSensitive@HoverLocomotionClass@@UAG_NXZ",
   "len": "0x168",
@@ -48078,7 +48078,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x516E10",
   "sym": "?Push@HoverLocomotionClass@@UAG_NK@Z",
   "len": "0x1AE",
@@ -48087,7 +48087,7 @@
   "pct": 87.7
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x516FC0",
   "sym": "?Shove@HoverLocomotionClass@@UAG_NK@Z",
   "len": "0x5D",
@@ -48096,7 +48096,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517070",
   "sym": "?GetClassID@HoverLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -48105,7 +48105,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5170B0",
   "sym": "?Load@HoverLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x44",
@@ -48114,7 +48114,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517100",
   "sym": "?InWhichLayer@HoverLocomotionClass@@UAGHXZ",
   "len": "0x8",
@@ -48123,7 +48123,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5171C0",
   "sym": "?MarkAllOccupationBits@HoverLocomotionClass@@UAGXH@Z",
   "len": "0x46",
@@ -48132,7 +48132,7 @@
   "pct": 84.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517210",
   "sym": "?IsMovingHere@HoverLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x99",
@@ -48141,7 +48141,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5172B0",
   "sym": "?Size@HoverLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -48150,7 +48150,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5AFEF0",
   "sym": "??0MechLocomotionClass@@QAE@XZ",
   "len": "0x56",
@@ -48159,7 +48159,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5AFF70",
   "sym": "?IsMoving@MechLocomotionClass@@UAG_NXZ",
   "len": "0xa",
@@ -48168,7 +48168,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5AFF80",
   "sym": "?Destination@MechLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
@@ -48177,7 +48177,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5AFFE0",
   "sym": "?HeadToCoord@MechLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
@@ -48186,7 +48186,7 @@
   "pct": 7.3
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B0060",
   "sym": "?Process@MechLocomotionClass@@UAG_NXZ",
   "len": "0x19",
@@ -48195,7 +48195,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B0080",
   "sym": "?MoveTo@MechLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x95",
@@ -48204,7 +48204,7 @@
   "pct": 38.3
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B0120",
   "sym": "?StopMoving@MechLocomotionClass@@UAGXXZ",
   "len": "0x4e",
@@ -48213,7 +48213,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B0170",
   "sym": "?DoTurn@MechLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -48222,7 +48222,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B01A0",
   "sym": "?ForceImmediateDestination@MechLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x20",
@@ -48231,7 +48231,7 @@
   "pct": 0.0
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B1960",
   "sym": "?GetClassID@MechLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -48240,7 +48240,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B19A0",
   "sym": "?Load@MechLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x29",
@@ -48249,7 +48249,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B19D0",
   "sym": "?InWhichLayer@MechLocomotionClass@@UAGHXZ",
   "len": "0x8",
@@ -48258,7 +48258,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B19E0",
   "sym": "?IsMovingNow@MechLocomotionClass@@UAG_NXZ",
   "len": "0x67",
@@ -48267,7 +48267,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B1A50",
   "sym": "?MarkAllOccupationBits@MechLocomotionClass@@UAGXH@Z",
   "len": "0x46",
@@ -48276,7 +48276,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B1AA0",
   "sym": "?IsMovingHere@MechLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x99",
@@ -48285,7 +48285,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu133_mech_locomotion_class.cpp",
+  "tu": "match/tu133_mech_locomotion_class.cpp",
   "addr": "0x5B1B40",
   "sym": "?Size@MechLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -48294,7 +48294,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661EC0",
   "sym": "??0RocketLocomotionClass@@QAE@XZ",
   "len": "0x6A",
@@ -48303,7 +48303,7 @@
   "pct": 13.3
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661F50",
   "sym": "?IsMoving@RocketLocomotionClass@@UAG_NXZ",
   "len": "0x38",
@@ -48312,7 +48312,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661F90",
   "sym": "?IsMovingNow@RocketLocomotionClass@@UAG_NXZ",
   "len": "0x1B",
@@ -48321,7 +48321,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x661FB0",
   "sym": "?Destination@RocketLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
@@ -48330,7 +48330,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x6622C0",
   "sym": "?Process@RocketLocomotionClass@@UAG_NXZ",
   "len": "0xd68",
@@ -48340,7 +48340,7 @@
   "note": "Retail span corrected to the CFG-closed extent 0xd68, which ends in the jump/index tables from 0x663010. pct is diff_retail's instruction diagnostic over the code prefix 0xD4F, with the switch table slots compared separately."
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x6632E0",
   "sym": "?MoveTo@RocketLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xDA",
@@ -48349,7 +48349,7 @@
   "pct": 30.2
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x6633C0",
   "sym": "?StopMoving@RocketLocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -48358,7 +48358,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x6633D0",
   "sym": "?GetClassID@RocketLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -48367,7 +48367,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x663410",
   "sym": "?Load@RocketLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x46",
@@ -48376,7 +48376,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x663460",
   "sym": "?InWhichLayer@RocketLocomotionClass@@UAGHXZ",
   "len": "0x8",
@@ -48385,7 +48385,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x663470",
   "sym": "?DrawMatrix@RocketLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x134",
@@ -48394,7 +48394,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x6635B0",
   "sym": "?Size@RocketLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -48403,7 +48403,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu197_rocket_locomotion_class.cpp",
+  "tu": "match/tu197_rocket_locomotion_class.cpp",
   "addr": "0x6635C0",
   "sym": "??_GRocketLocomotionClass@@UAEPAXI@Z",
   "len": "0x2B",
@@ -48412,7 +48412,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5AB0",
   "sym": "??0DropPodLocomotionClass@@QAE@XZ",
   "len": "0x45",
@@ -48421,7 +48421,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5B30",
   "sym": "?IsMoving@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -48430,7 +48430,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5B40",
   "sym": "?Destination@DropPodLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
@@ -48439,7 +48439,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5B70",
   "sym": "?Process@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x4c9",
@@ -48448,7 +48448,7 @@
   "pct": 2.3
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6040",
   "sym": "?MoveTo@DropPodLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x1b8",
@@ -48457,7 +48457,7 @@
   "pct": 27.1
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6200",
   "sym": "?GetClassID@DropPodLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -48466,7 +48466,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6240",
   "sym": "?Load@DropPodLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7f",
@@ -48475,7 +48475,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B62C0",
   "sym": "?Save@DropPodLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xda",
@@ -48484,7 +48484,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B63A0",
   "sym": "?StopMoving@DropPodLocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -48493,7 +48493,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B63B0",
   "sym": "?BeginPiggyback@DropPodLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
@@ -48502,7 +48502,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6400",
   "sym": "?EndPiggyback@DropPodLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
@@ -48511,7 +48511,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6440",
   "sym": "?IsOkToEnd@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x26",
@@ -48520,7 +48520,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6470",
   "sym": "?QueryInterface@DropPodLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5d",
@@ -48529,7 +48529,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B64D0",
   "sym": "?InWhichLayer@DropPodLocomotionClass@@UAGHXZ",
   "len": "0x8",
@@ -48538,7 +48538,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B64E0",
   "sym": "?PiggybackCLSID@DropPodLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x10b",
@@ -48547,7 +48547,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B65F0",
   "sym": "?DrawingCode@DropPodLocomotionClass@@UAGHXZ",
   "len": "0x11",
@@ -48556,7 +48556,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66A0",
   "sym": "?AddRef@DropPodLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -48565,7 +48565,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66B0",
   "sym": "?Release@DropPodLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -48574,7 +48574,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66C0",
   "sym": "?IsPiggybacking@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -48583,7 +48583,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66E0",
   "sym": "?Size@DropPodLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -48592,7 +48592,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66F0",
   "sym": "??_GDropPodLocomotionClass@@UAEPAXI@Z",
   "len": "0x41",
@@ -48601,7 +48601,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6740",
   "sym": "?QueryInterface@DropPodLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -48610,7 +48610,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6750",
   "sym": "?AddRef@DropPodLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -48619,7 +48619,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6760",
   "sym": "?Release@DropPodLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -48628,7 +48628,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6770",
   "sym": "?QueryInterface@DropPodLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -48637,7 +48637,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6780",
   "sym": "?AddRef@DropPodLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -48646,7 +48646,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6790",
   "sym": "?Release@DropPodLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -50365,7 +50365,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517360",
   "sym": "?Adjust@HSVClass@@QAEXEABV1@@Z",
   "len": "0x86",
@@ -50374,7 +50374,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5173F0",
   "sym": "?Difference@HSVClass@@QBEHABV1@@Z",
   "len": "0x4e",
@@ -59257,7 +59257,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517440",
   "sym": "?FUN_00517440@HSVClass@@QBE?AVRGBClass@@XZ",
   "len": "0x115",
@@ -72899,7 +72899,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718000",
   "sym": "??0TeleportLocomotionClass@@QAE@XZ",
   "len": "0x76",
@@ -72908,7 +72908,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718080",
   "sym": "?IsMoving@TeleportLocomotionClass@@UAG_NXZ",
   "len": "0xE",
@@ -72917,7 +72917,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718100",
   "sym": "?MoveTo@TeleportLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x123",
@@ -72926,7 +72926,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718230",
   "sym": "?StopMoving@TeleportLocomotionClass@@UAGXXZ",
   "len": "0x2D",
@@ -72935,7 +72935,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718260",
   "sym": "?FUN_00718260@TeleportLocomotionClass@@QAE_NUCoordStruct@@_N@Z",
   "len": "0x53B",
@@ -72944,7 +72944,7 @@
   "pct": 4.9
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x7187A0",
   "sym": "?FUN_007187A0@TeleportLocomotionClass@@QAEXUCoordStruct@@@Z",
   "len": "0x3C2",
@@ -72953,7 +72953,7 @@
   "pct": 26.4
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x718B70",
   "sym": "?FUN_00718B70@TeleportLocomotionClass@@QAE_NPBUCoordStruct@@@Z",
   "len": "0x74E",
@@ -72962,7 +72962,7 @@
   "pct": 8.3
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x7192C0",
   "sym": "?DoTurn@TeleportLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -72971,7 +72971,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x7192F0",
   "sym": "?Process@TeleportLocomotionClass@@UAG_NXZ",
   "len": "0x8FE",
@@ -72980,7 +72980,7 @@
   "pct": 6.5
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x719BF0",
   "sym": "?vf_10@TeleportLocomotionClass@@UAGXXZ",
   "len": "0x68",
@@ -72989,7 +72989,7 @@
   "pct": 80.6
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x719CA0",
   "sym": "?Load@TeleportLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x9B",
@@ -72998,7 +72998,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x719D40",
   "sym": "?Save@TeleportLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xDF",
@@ -73007,7 +73007,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x719E30",
   "sym": "?QueryInterface@TeleportLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5D",
@@ -73016,7 +73016,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x719E90",
   "sym": "?BeginPiggyback@TeleportLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
@@ -73025,7 +73025,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x719F30",
   "sym": "?IsOkToEnd@TeleportLocomotionClass@@UAG_NXZ",
   "len": "0x4B",
@@ -73034,7 +73034,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x719F80",
   "sym": "?PiggybackCLSID@TeleportLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x10B",
@@ -73043,7 +73043,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A090",
   "sym": "?MarkAllOccupationBits@TeleportLocomotionClass@@UAGXH@Z",
   "len": "0x46",
@@ -73052,7 +73052,7 @@
   "pct": 84.0
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A100",
   "sym": "?IsPiggybacking@TeleportLocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -73061,7 +73061,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A120",
   "sym": "?Size@TeleportLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -73070,7 +73070,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A130",
   "sym": "??_GTeleportLocomotionClass@@UAEPAXI@Z",
   "len": "0x2D",
@@ -73439,7 +73439,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AA90",
   "sym": "??0WalkLocomotionClass@@QAE@XZ",
   "len": "0x67",
@@ -73448,7 +73448,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AB30",
   "sym": "?IsMoving@WalkLocomotionClass@@UAG_NXZ",
   "len": "0xa",
@@ -73457,7 +73457,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AB40",
   "sym": "?IsMovingNow@WalkLocomotionClass@@UAG_NXZ",
   "len": "0x56",
@@ -73466,7 +73466,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75ABA0",
   "sym": "?Destination@WalkLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
@@ -73475,7 +73475,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AC00",
   "sym": "?HeadToCoord@WalkLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
@@ -73484,7 +73484,7 @@
   "pct": 34.1
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AC80",
   "sym": "?Process@WalkLocomotionClass@@UAG_NXZ",
   "len": "0x21",
@@ -73493,7 +73493,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75ACB0",
   "sym": "?MoveTo@WalkLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xe1",
@@ -73502,7 +73502,7 @@
   "pct": 6.8
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75ADA0",
   "sym": "?StopMoving@WalkLocomotionClass@@UAGXXZ",
   "len": "0x5f",
@@ -73511,7 +73511,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AE00",
   "sym": "?DoTurn@WalkLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -73520,7 +73520,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75AE30",
   "sym": "?ForceImmediateDestination@WalkLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0x83",
@@ -73529,7 +73529,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C680",
   "sym": "?Load@WalkLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7f",
@@ -73538,7 +73538,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C700",
   "sym": "?Save@WalkLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xdf",
@@ -73547,7 +73547,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C7F0",
   "sym": "?QueryInterface@WalkLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5d",
@@ -73556,7 +73556,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C8E0",
   "sym": "?IsOkToEnd@WalkLocomotionClass@@UAG_NXZ",
   "len": "0x3a",
@@ -73565,7 +73565,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C920",
   "sym": "?PiggybackCLSID@WalkLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x10b",
@@ -73574,7 +73574,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CA30",
   "sym": "?MarkAllOccupationBits@WalkLocomotionClass@@UAGXH@Z",
   "len": "0x46",
@@ -73583,7 +73583,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CB20",
   "sym": "?IsReallyMovingNow@WalkLocomotionClass@@UAG_NXZ",
   "len": "0xa",
@@ -73592,7 +73592,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CB30",
   "sym": "?ClearCoords@WalkLocomotionClass@@UAGXXZ",
   "len": "0x41",
@@ -73601,7 +73601,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CBC0",
   "sym": "?StopMovementAnimation@WalkLocomotionClass@@UAGXXZ",
   "len": "0xb",
@@ -73610,7 +73610,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CBD0",
   "sym": "?Size@WalkLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -73619,7 +73619,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CBE0",
   "sym": "??_GWalkLocomotionClass@@UAEPAXI@Z",
   "len": "0x41",
@@ -75115,7 +75115,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF540",
   "sym": "??0DriveLocomotionClass@@QAE@XZ",
   "len": "0x9a",
@@ -75124,7 +75124,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF610",
   "sym": "?PiggybackCLSID@DriveLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x10b",
@@ -75133,7 +75133,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF720",
   "sym": "?QueryInterface@DriveLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5d",
@@ -75142,7 +75142,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF780",
   "sym": "?Load@DriveLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7f",
@@ -75151,7 +75151,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF8E0",
   "sym": "?BeginPiggyback@DriveLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
@@ -75160,7 +75160,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF930",
   "sym": "?EndPiggyback@DriveLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
@@ -75169,7 +75169,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF970",
   "sym": "?IsOkToEnd@DriveLocomotionClass@@UAG_NXZ",
   "len": "0x3a",
@@ -75178,7 +75178,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AF9B0",
   "sym": "?FUN_004AF9B0@DriveLocomotionClass@@QAE?AUMatrix3D@@XZ",
   "len": "0xe3",
@@ -75187,7 +75187,7 @@
   "pct": 37.3
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFAA0",
   "sym": "?FUN_004AFAA0@DriveLocomotionClass@@QAENXZ",
   "len": "0x5b",
@@ -75196,7 +75196,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFB00",
   "sym": "?FUN_004AFB00@DriveLocomotionClass@@QAEXH@Z",
   "len": "0x3a",
@@ -75205,7 +75205,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFB40",
   "sym": "?ForceNewSlope@DriveLocomotionClass@@UAGXH@Z",
   "len": "0x35",
@@ -75214,7 +75214,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFB80",
   "sym": "?IsMoving@DriveLocomotionClass@@UAG_NXZ",
   "len": "0x96",
@@ -75223,7 +75223,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFC20",
   "sym": "?IsMovingNow@DriveLocomotionClass@@UAG_NXZ",
   "len": "0x67",
@@ -75232,7 +75232,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFC90",
   "sym": "?Destination@DriveLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
@@ -75241,7 +75241,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFCC0",
   "sym": "?HeadToCoord@DriveLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
@@ -75250,7 +75250,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFD40",
   "sym": "?MoveTo@DriveLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xb5",
@@ -75259,7 +75259,7 @@
   "pct": 38.2
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFE00",
   "sym": "?StopMoving@DriveLocomotionClass@@UAGXXZ",
   "len": "0xc8",
@@ -75268,7 +75268,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4AFED0",
   "sym": "?FUN_004AFED0@DriveLocomotionClass@@QAEHXZ",
   "len": "0x8e",
@@ -75277,7 +75277,7 @@
   "pct": 10.2
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B0410",
   "sym": "?ShadowMatrix@DriveLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0xb2",
@@ -75286,7 +75286,7 @@
   "pct": 26.7
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B04D0",
   "sym": "?Unlimbo@DriveLocomotionClass@@UAGXXZ",
   "len": "0x25",
@@ -75295,7 +75295,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B0AD0",
   "sym": "?FUN_004B0AD0@DriveLocomotionClass@@QAEXPBUCoordStruct@@H@Z",
   "len": "0x16e",
@@ -75304,7 +75304,7 @@
   "pct": 73.6
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B0C40",
   "sym": "?ForceTrack@DriveLocomotionClass@@UAGXHUCoordStruct@@@Z",
   "len": "0x15e",
@@ -75313,7 +75313,7 @@
   "pct": 20.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B0DA0",
   "sym": "?FUN_004B0DA0@DriveLocomotionClass@@QAE_NXZ",
   "len": "0x47",
@@ -75322,7 +75322,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B0DF0",
   "sym": "?FUN_004B0DF0@DriveLocomotionClass@@QAE_NPBUCoordStruct@@@Z",
   "len": "0xf2",
@@ -75331,7 +75331,7 @@
   "pct": 84.3
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B0EF0",
   "sym": "?DoTurn@DriveLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -75340,7 +75340,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4770",
   "sym": "?FUN_004B4770@@YAXXZ",
   "len": "0x1",
@@ -75349,7 +75349,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4780",
   "sym": "?FUN_004B4780@DriveLocomotionClass@@QAE?AULocoPoint2D@@PBU2@PAH@Z",
   "len": "0x7c",
@@ -75358,7 +75358,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4800",
   "sym": "?FUN_004B4800@DriveLocomotionClass@@QAEXH@Z",
   "len": "0x16",
@@ -75367,7 +75367,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4870",
   "sym": "?ZAdjust@DriveLocomotionClass@@UAGHXZ",
   "len": "0x5",
@@ -75376,7 +75376,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4890",
   "sym": "?FUN_004B4890@DriveLocomotionClass@@QAE_NXZ",
   "len": "0x36",
@@ -75385,7 +75385,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B48D0",
   "sym": "?MarkAllOccupationBits@DriveLocomotionClass@@UAGXH@Z",
   "len": "0x41",
@@ -75394,7 +75394,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4920",
   "sym": "?IsMovingHere@DriveLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x1d7",
@@ -75403,7 +75403,7 @@
   "pct": 6.9
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4B00",
   "sym": "?WillJumpTracks@DriveLocomotionClass@@UAG_NXZ",
   "len": "0xd9",
@@ -75412,7 +75412,7 @@
   "pct": 13.7
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C60",
   "sym": "?GetStatus@LocomotionClass@@UAGHXZ",
   "len": "0x5",
@@ -75421,7 +75421,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C70",
   "sym": "?AcquireHunterSeekerTarget@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -75430,7 +75430,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C80",
   "sym": "?IsSurfacing@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -75439,7 +75439,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4C90",
   "sym": "?StopMovementAnimation@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -75448,7 +75448,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4CA0",
   "sym": "?ClearCoords@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -75457,7 +75457,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4D00",
   "sym": "??_GDriveLocomotionClass@@UAEPAXI@Z",
   "len": "0x41",
@@ -75466,7 +75466,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6620",
   "sym": "?MarkAllOccupationBits@LocomotionClass@@UAGXH@Z",
   "len": "0x3",
@@ -75475,7 +75475,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6630",
   "sym": "?IsMovingHere@LocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x5",
@@ -75484,7 +75484,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6640",
   "sym": "?WillJumpTracks@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -75493,7 +75493,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6650",
   "sym": "?Lock@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -75502,7 +75502,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6660",
   "sym": "?Unlock@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -75511,7 +75511,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6670",
   "sym": "?GetTrackNumber@LocomotionClass@@UAGHXZ",
   "len": "0x6",
@@ -75520,7 +75520,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6680",
   "sym": "?GetTrackIndex@LocomotionClass@@UAGHXZ",
   "len": "0x6",
@@ -75529,7 +75529,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "tu": "match/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6690",
   "sym": "?GetSpeedAccum@LocomotionClass@@UAGHXZ",
   "len": "0x6",
@@ -75538,7 +75538,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/techno_class_slot_4e0150.cpp",
+  "tu": "match/techno_class_slot_4e0150.cpp",
   "addr": "0x4E0150",
   "sym": "?vf_170@TechnoClass@@UAE?AUDirStruct@@XZ",
   "len": "0x1d",
@@ -77244,7 +77244,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4820",
   "sym": "?InWhichLayer@DriveLocomotionClass@@UAGHXZ",
   "len": "0x8",
@@ -77253,7 +77253,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4830",
   "sym": "?GetClassID@DriveLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -78558,7 +78558,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DF50",
   "sym": "?AddRef@JumpjetLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -78567,7 +78567,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DF60",
   "sym": "?Release@JumpjetLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -79584,7 +79584,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4260",
   "sym": "?AddRef@ShipLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -79593,7 +79593,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4270",
   "sym": "?Release@ShipLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -80727,7 +80727,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/locomotor_refcount_forward_methods.cpp",
   "addr": "0x71A0E0",
   "sym": "?AddRef@TeleportLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -80736,7 +80736,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotor_refcount_forward_methods.cpp",
+  "tu": "match/locomotor_refcount_forward_methods.cpp",
   "addr": "0x71A0F0",
   "sym": "?Release@TeleportLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -81186,7 +81186,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C7E0",
   "sym": "?FUN_0075C7E0@Obj_0075C7E0@@QAEHPAX@Z",
   "len": "0x8",
@@ -81195,7 +81195,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CB80",
   "sym": "?AddRef@WalkLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -81204,7 +81204,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CB90",
   "sym": "?Release@WalkLocomotionClass@@UAGKXZ",
   "len": "0xd",
@@ -83688,7 +83688,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D0390",
   "sym": "?Size@FlyLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -86388,7 +86388,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A3EA0",
   "sym": "?ZAdjust@ShipLocomotionClass@@UAGHXZ",
   "len": "0x5",
@@ -86397,7 +86397,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4250",
   "sym": "?GetSpeedAccum@ShipLocomotionClass@@UAGHXZ",
   "len": "0xa",
@@ -86406,7 +86406,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4280",
   "sym": "?IsPiggybacking@ShipLocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -86415,7 +86415,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A42A0",
   "sym": "?Size@ShipLocomotionClass@@UAEHXZ",
   "len": "0x6",
@@ -87738,7 +87738,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu253_methods.cpp",
+  "tu": "match/trivial_tu253_methods.cpp",
   "addr": "0x728A50",
   "sym": "?FUN_00728A50@Obj_00728A50@@QBE_NPAUArg1_00728A50@@@Z",
   "len": "0xf",
@@ -87747,7 +87747,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu253_methods.cpp",
+  "tu": "match/trivial_tu253_methods.cpp",
   "addr": "0x7291D0",
   "sym": "?FUN_007291D0@Obj_007291D0@@QAEHPAUArg1_007291D0@@E@Z",
   "len": "0x20",
@@ -87756,7 +87756,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu253_methods.cpp",
+  "tu": "match/trivial_tu253_methods.cpp",
   "addr": "0x72A1E0",
   "sym": "?FUN_0072A1E0@Obj_0072A1E0@@QAEHPAUArg1_0072A1E0@@@Z",
   "len": "0x1e",
@@ -87765,7 +87765,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu253_methods.cpp",
+  "tu": "match/trivial_tu253_methods.cpp",
   "addr": "0x72A200",
   "sym": "?FUN_0072A200@Obj_0072A200@@QBEHXZ",
   "len": "0x6",
@@ -91124,7 +91124,7 @@
   "pct": 4.9
  },
  {
-  "tu": "match/movement/foot_cell_ring_search_004cbc40.cpp",
+  "tu": "match/foot_cell_ring_search_004cbc40.cpp",
   "addr": "0x4CBC40",
   "sym": "?FUN_004CBC40@FootClass@@QAE?AVCell@@PAUCellStruct@@0HH@Z",
   "len": "0x2a5",
@@ -94552,7 +94552,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517560",
   "sym": "?FUN_00517560@Obj_00517560@@QAEHPAUArg1_00517560@@@Z",
   "len": "0x2e",
@@ -96282,7 +96282,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4BE0",
   "sym": "?Lock@DriveLocomotionClass@@UAGXXZ",
   "len": "0xb",
@@ -96291,7 +96291,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4BF0",
   "sym": "?Unlock@DriveLocomotionClass@@UAGXXZ",
   "len": "0xb",
@@ -96399,7 +96399,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5175E0",
   "sym": "?FUN_005175E0@HSVClass@@QBI_NABV1@@Z",
   "len": "0xb",
@@ -96408,7 +96408,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517590",
   "sym": "?FUN_00517590@Obj_00517560@@QAE_NPAUArg1_00517560@@@Z",
   "len": "0x40",
@@ -96417,7 +96417,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517020",
   "sym": "?StartRocking@HoverLocomotionClass@@QAEXXZ",
   "len": "0x42",
@@ -96426,7 +96426,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x515E30",
   "sym": "?ClearSpeed@HoverLocomotionClass@@QAEXXZ",
   "len": "0x30",
@@ -96435,7 +96435,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x515E60",
   "sym": "?ClearSpeedAndHeading@HoverLocomotionClass@@QAEXXZ",
   "len": "0x6F",
@@ -96444,7 +96444,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517110",
   "sym": "?StartMoving@HoverLocomotionClass@@QAEXXZ",
   "len": "0xA9",
@@ -96453,7 +96453,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5163A0",
   "sym": "?Fun_005163A0@HoverLocomotionClass@@QAE_NXZ",
   "len": "0xF",
@@ -96462,7 +96462,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5176A0",
   "sym": "?FUN_005176A0@Obj_005176A0@@QBE_NXZ",
   "len": "0x7",
@@ -96471,7 +96471,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5176B0",
   "sym": "?FUN_005176B0@Obj_005176A0@@QBE_NXZ",
   "len": "0x9",
@@ -96480,7 +96480,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5176C0",
   "sym": "?FUN_005176C0@Obj_005176A0@@QBE_NXZ",
   "len": "0xa",
@@ -96489,7 +96489,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5163B0",
   "sym": "?Fun_005163B0@HoverLocomotionClass@@QAE_NXZ",
   "len": "0x11b",
@@ -96498,7 +96498,7 @@
   "pct": 95.7
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x517310",
   "sym": "?Fun_00517310@HoverCoordView@@QAE_NPBUCoordStruct@@@Z",
   "len": "0x25",
@@ -100416,7 +100416,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4D90",
   "sym": "?QueryInterface@DriveLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -100425,7 +100425,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4DA0",
   "sym": "?AddRef@DriveLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -100434,7 +100434,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4DB0",
   "sym": "?Release@DriveLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -100443,7 +100443,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4DC0",
   "sym": "?QueryInterface@DriveLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -100452,7 +100452,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4DD0",
   "sym": "?AddRef@DriveLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -100461,7 +100461,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "addr": "0x4B4DE0",
   "sym": "?Release@DriveLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -100470,7 +100470,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54B750",
   "sym": "?Load@JumpjetLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x88",
@@ -100479,7 +100479,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DA00",
   "sym": "?BeginPiggyback@JumpjetLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
@@ -100488,7 +100488,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DB50",
   "sym": "?PiggybackCLSID@JumpjetLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x10b",
@@ -100497,7 +100497,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DC60",
   "sym": "?QueryInterface@JumpjetLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5d",
@@ -100506,7 +100506,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DFA0",
   "sym": "??_GJumpjetLocomotionClass@@UAEPAXI@Z",
   "len": "0x44",
@@ -100515,7 +100515,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DFF0",
   "sym": "?QueryInterface@JumpjetLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -100524,7 +100524,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54E000",
   "sym": "?AddRef@JumpjetLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -100533,7 +100533,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54E010",
   "sym": "?Release@JumpjetLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -100542,7 +100542,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54E020",
   "sym": "?QueryInterface@JumpjetLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -100551,7 +100551,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54E030",
   "sym": "?AddRef@JumpjetLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -100560,7 +100560,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54E040",
   "sym": "?Release@JumpjetLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -100569,7 +100569,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54B6E0",
   "sym": "?DoTurn@JumpjetLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -100578,7 +100578,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DB00",
   "sym": "?IsOkToEnd@JumpjetLocomotionClass@@UAG_NXZ",
   "len": "0x44",
@@ -100587,7 +100587,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54D9B0",
   "sym": "?HeadToCoord@JumpjetLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x4E",
@@ -100596,7 +100596,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54AE60",
   "sym": "?Destination@JumpjetLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x51",
@@ -100605,7 +100605,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54DA50",
   "sym": "?EndPiggyback@JumpjetLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0xA2",
@@ -100614,7 +100614,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54B8D0",
   "sym": "?InWhichLayer@JumpjetLocomotionClass@@UAGHXZ",
   "len": "0xAD",
@@ -100623,7 +100623,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54AD30",
   "sym": "?LinkToObject@JumpjetLocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x11E",
@@ -100632,7 +100632,7 @@
   "pct": 82.6
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54D930",
   "sym": "?MarkAllOccupationBits@JumpjetLocomotionClass@@UAGXH@Z",
   "len": "0x7A",
@@ -100641,7 +100641,7 @@
   "pct": 28.6
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69EC50",
   "sym": "??0ShipLocomotionClass@@QAE@XZ",
   "len": "0x9a",
@@ -100650,7 +100650,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69ED20",
   "sym": "?PiggybackCLSID@ShipLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x10b",
@@ -100659,7 +100659,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69EE30",
   "sym": "?QueryInterface@ShipLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5d",
@@ -100668,7 +100668,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69EE90",
   "sym": "?Load@ShipLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7f",
@@ -100677,7 +100677,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69EFF0",
   "sym": "?BeginPiggyback@ShipLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
@@ -100686,7 +100686,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F040",
   "sym": "?EndPiggyback@ShipLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
@@ -100695,7 +100695,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4300",
   "sym": "?QueryInterface@ShipLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -100704,7 +100704,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4310",
   "sym": "?AddRef@ShipLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -100713,7 +100713,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4320",
   "sym": "?Release@ShipLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -100722,7 +100722,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4330",
   "sym": "?QueryInterface@ShipLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -100731,7 +100731,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4340",
   "sym": "?AddRef@ShipLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -100740,7 +100740,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4350",
   "sym": "?Release@ShipLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -100749,7 +100749,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4230",
   "sym": "?GetTrackNumber@ShipLocomotionClass@@UAGHXZ",
   "len": "0xA",
@@ -100758,7 +100758,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4240",
   "sym": "?GetTrackIndex@ShipLocomotionClass@@UAGHXZ",
   "len": "0xA",
@@ -100767,7 +100767,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4210",
   "sym": "?Lock@ShipLocomotionClass@@UAGXXZ",
   "len": "0xB",
@@ -100776,7 +100776,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4220",
   "sym": "?Unlock@ShipLocomotionClass@@UAGXXZ",
   "len": "0xB",
@@ -100785,7 +100785,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A3EB0",
   "sym": "?ZGradient@ShipLocomotionClass@@UAGHXZ",
   "len": "0xD",
@@ -100794,7 +100794,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A05C0",
   "sym": "?DoTurn@ShipLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -100803,7 +100803,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F3A0",
   "sym": "?Destination@ShipLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x24",
@@ -100812,7 +100812,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69FBE0",
   "sym": "?Unlimbo@ShipLocomotionClass@@UAGXXZ",
   "len": "0x25",
@@ -100821,7 +100821,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F250",
   "sym": "?ForceNewSlope@ShipLocomotionClass@@UAGXH@Z",
   "len": "0x35",
@@ -100830,7 +100830,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F080",
   "sym": "?IsOkToEnd@ShipLocomotionClass@@UAG_NXZ",
   "len": "0x3A",
@@ -100839,7 +100839,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A3F00",
   "sym": "?MarkAllOccupationBits@ShipLocomotionClass@@UAGXH@Z",
   "len": "0x41",
@@ -100848,7 +100848,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F290",
   "sym": "?IsMoving@ShipLocomotionClass@@UAG_NXZ",
   "len": "0x96",
@@ -100857,7 +100857,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F3D0",
   "sym": "?HeadToCoord@ShipLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x71",
@@ -100866,7 +100866,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F510",
   "sym": "?StopMoving@ShipLocomotionClass@@UAGXXZ",
   "len": "0xC8",
@@ -100875,7 +100875,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A0470",
   "sym": "?FUN_006A0470@ShipLocomotionClass@@QAE_NXZ",
   "len": "0x47",
@@ -100884,7 +100884,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A04C0",
   "sym": "?FUN_006A04C0@ShipLocomotionClass@@QAE_NPBUCoordStruct@@@Z",
   "len": "0xf2",
@@ -100893,7 +100893,7 @@
   "pct": 84.3
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69FB20",
   "sym": "?ShadowMatrix@ShipLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0xB2",
@@ -100902,7 +100902,7 @@
   "pct": 26.7
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F1B0",
   "sym": "?FUN_0069F1B0@ShipLocomotionClass@@QAENXZ",
   "len": "0x5B",
@@ -100911,7 +100911,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F210",
   "sym": "?FUN_0069F210@ShipLocomotionClass@@QAEXH@Z",
   "len": "0x3A",
@@ -100920,7 +100920,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69EF10",
   "sym": "?Save@ShipLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xDF",
@@ -100929,7 +100929,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A3EC0",
   "sym": "?FUN_006A3EC0@ShipLocomotionClass@@QAE_NXZ",
   "len": "0x36",
@@ -100938,7 +100938,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F330",
   "sym": "?IsMovingNow@ShipLocomotionClass@@UAG_NXZ",
   "len": "0x67",
@@ -100947,7 +100947,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A42B0",
   "sym": "??_GShipLocomotionClass@@UAEPAXI@Z",
   "len": "0x41",
@@ -100956,7 +100956,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A3DB0",
   "sym": "?FUN_006A3DB0@ShipLocomotionClass@@QAE?AULocoPoint2D@@PBU2@PAH@Z",
   "len": "0x7c",
@@ -100965,7 +100965,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x69F450",
   "sym": "?MoveTo@ShipLocomotionClass@@UAGXUCoordStruct@@@Z",
   "len": "0xB5",
@@ -100974,7 +100974,7 @@
   "pct": 7.4
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A0310",
   "sym": "?ForceTrack@ShipLocomotionClass@@UAGXHUCoordStruct@@@Z",
   "len": "0x15E",
@@ -100983,7 +100983,7 @@
   "pct": 20.0
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A3F50",
   "sym": "?IsMovingHere@ShipLocomotionClass@@UAG_NUCoordStruct@@@Z",
   "len": "0x1D7",
@@ -100992,7 +100992,7 @@
   "pct": 6.9
  },
  {
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "addr": "0x6A4130",
   "sym": "?WillJumpTracks@ShipLocomotionClass@@UAG_NXZ",
   "len": "0xD9",
@@ -101001,7 +101001,7 @@
   "pct": 35.6
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A160",
   "sym": "?QueryInterface@TeleportLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -101010,7 +101010,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A170",
   "sym": "?AddRef@TeleportLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -101019,7 +101019,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A180",
   "sym": "?Release@TeleportLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -101028,7 +101028,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A190",
   "sym": "?QueryInterface@TeleportLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -101037,7 +101037,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A1A0",
   "sym": "?AddRef@TeleportLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -101046,7 +101046,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "addr": "0x71A1B0",
   "sym": "?Release@TeleportLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -101055,7 +101055,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CC30",
   "sym": "?QueryInterface@WalkLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -101064,7 +101064,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CC40",
   "sym": "?AddRef@WalkLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -101073,7 +101073,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CC50",
   "sym": "?Release@WalkLocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -101082,7 +101082,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CC60",
   "sym": "?QueryInterface@WalkLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -101091,7 +101091,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CC70",
   "sym": "?AddRef@WalkLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -101100,7 +101100,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CC80",
   "sym": "?Release@WalkLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
@@ -101343,7 +101343,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CC7C0",
   "sym": "_$E3",
   "len": "0x13",
@@ -101352,7 +101352,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CC7E0",
   "sym": "_$E6",
   "len": "0x13",
@@ -103444,7 +103444,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AE610",
   "sym": "?FUN_005AE610@Matrix3D@@QAEAAU1@ABU1@@Z",
   "len": "0x16",
@@ -103453,7 +103453,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_methods.cpp",
+  "tu": "match/matrix3d_methods.cpp",
   "addr": "0x5AF980",
   "sym": "?FUN_005AF980@@YI?AUMatrix3D@@ABU1@0@Z",
   "len": "0x1fc",
@@ -104056,7 +104056,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4B4C50",
   "sym": "?IsReallyMovingNow@LocomotionClass@@UAG_NXZ",
   "len": "0x10",
@@ -104065,7 +104065,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D0510",
   "sym": "?QueryInterface@LocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -104074,7 +104074,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D0520",
   "sym": "?AddRef@LocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -104083,7 +104083,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4D0530",
   "sym": "?Release@LocomotionClass@@W3AGKXZ",
   "len": "0xa",
@@ -104092,7 +104092,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/facing_set_desired_methods.cpp",
+  "tu": "match/facing_set_desired_methods.cpp",
   "addr": "0x4C93D0",
   "sym": "?FUN_004C93D0@FacingClass@@QBE?AUDirStruct@@XZ",
   "len": "0x99",
@@ -104965,7 +104965,7 @@
   "pct": 2.4
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x41C090",
   "sym": "?vf_323@FootClass@@UAEXPAUSHPStruct@@HPAVPoint2D@@PAURectangleStruct@@HHHHHHHHHHHH@Z",
   "len": "0x58",
@@ -105028,7 +105028,7 @@
   "pct": 24.4
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4DC030",
   "sym": "?vf_317@FootClass@@UAEXXZ",
   "len": "0x2c",
@@ -105037,7 +105037,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4D3710",
   "sym": "?vf_337@FootClass@@UAEXN@Z",
   "len": "0x67",
@@ -105046,7 +105046,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4D55C0",
   "sym": "?vf_320@FootClass@@UAE_NXZ",
   "len": "0x27",
@@ -105055,7 +105055,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4D55F0",
   "sym": "?vf_319@FootClass@@UAE_NABUCoordStruct@@@Z",
   "len": "0x6C",
@@ -105064,7 +105064,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4D9FF0",
   "sym": "?vf_316@FootClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x30",
@@ -105073,7 +105073,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4DBFD0",
   "sym": "?vf_312@FootClass@@UAE_NXZ",
   "len": "0x5C",
@@ -105082,7 +105082,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4D8F40",
   "sym": "?vf_125@FootClass@@UAEXHPAVAbstractClass@@0@Z",
   "len": "0x38",
@@ -105091,7 +105091,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4DEE50",
   "sym": "?vf_332@FootClass@@UAEPAXPAXHH@Z",
   "len": "0x29",
@@ -105100,7 +105100,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_methods.cpp",
+  "tu": "match/foot_class_methods.cpp",
   "addr": "0x4DF040",
   "sym": "?vf_330@FootClass@@UAEPAXPAUDynamicVectorClassLayout@@HH@Z",
   "len": "0x81",
@@ -106153,7 +106153,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4D4200",
   "sym": "?vf_139@FootClass@@UAEHXZ",
   "len": "0x7E",
@@ -106162,7 +106162,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DB1A0",
   "sym": "?vf_334@FootClass@@UAEHXZ",
   "len": "0xA6",
@@ -106171,7 +106171,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DB260",
   "sym": "?vf_53@FootClass@@UAE_NXZ",
   "len": "0x15B",
@@ -106180,7 +106180,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DB9B0",
   "sym": "?vf_321@FootClass@@UAE_NXZ",
   "len": "0x73",
@@ -106189,7 +106189,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DC790",
   "sym": "?vf_311@FootClass@@UAE_NXZ",
   "len": "0x74",
@@ -106198,7 +106198,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4D5660",
   "sym": "?vf_232@FootClass@@UAEXXZ",
   "len": "0x2c",
@@ -106207,7 +106207,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4D8F80",
   "sym": "?vf_126@FootClass@@UAE_NXZ",
   "len": "0x27",
@@ -106216,7 +106216,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DB0A0",
   "sym": "?vf_188@FootClass@@UAEHXZ",
   "len": "0x30",
@@ -106225,7 +106225,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DB7E0",
   "sym": "?vf_30@FootClass@@UAEHXZ",
   "len": "0x25",
@@ -106234,7 +106234,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DE770",
   "sym": "?vf_224@FootClass@@UAE_NXZ",
   "len": "0x35",
@@ -106243,7 +106243,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DAF10",
   "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAUIndexClass@@PAURectangleStruct@@PAVPoint2D@@PAUMatrix3D@@HHH@Z",
   "len": "0xa9",
@@ -134224,7 +134224,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x728A60",
   "sym": "?IsMovingNow@TunnelLocomotionClass@@UAG_NXZ",
   "len": "0x21",
@@ -134233,7 +134233,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A020",
   "sym": "?ZGradient@TunnelLocomotionClass@@UAGHXZ",
   "len": "0x31",
@@ -134242,7 +134242,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A060",
   "sym": "?IsToHaveShadow@TunnelLocomotionClass@@UAG_NXZ",
   "len": "0x29",
@@ -134251,7 +134251,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A0E0",
   "sym": "?DoTurn@TunnelLocomotionClass@@UAGXK@Z",
   "len": "0x22",
@@ -134260,7 +134260,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A1A0",
   "sym": "?InWhichLayer@TunnelLocomotionClass@@UAGHXZ",
   "len": "0x14",
@@ -134269,7 +134269,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A1C0",
   "sym": "?CanFire@TunnelLocomotionClass@@UAGHXZ",
   "len": "0x1f",
@@ -134278,7 +134278,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x728A00",
   "sym": "??0TunnelLocomotionClass@@QAE@XZ",
   "len": "0x4d",
@@ -134287,7 +134287,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x728A90",
   "sym": "?Destination@TunnelLocomotionClass@@UAG?AUCoordStruct@@XZ",
   "len": "0x52",
@@ -134296,7 +134296,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A090",
   "sym": "?CanEnterCell@TunnelLocomotionClass@@UAGHH@Z",
   "len": "0x47",
@@ -134305,7 +134305,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/tunnel_locomotion_w3_methods.cpp",
+  "tu": "match/tunnel_locomotion_w3_methods.cpp",
   "addr": "0x72A150",
   "sym": "?Load@TunnelLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x47",
@@ -135313,7 +135313,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_team_double_methods.cpp",
+  "tu": "match/foot_class_team_double_methods.cpp",
   "addr": "0x4DC760",
   "sym": "?FUN_004DC760@FootClass@@QAENXZ",
   "len": "0x25",
@@ -135988,7 +135988,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x7637D0",
   "sym": "??0WaypointPathClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x35",
@@ -135997,7 +135997,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763810",
   "sym": "??0WaypointPathClass@@QAE@H@Z",
   "len": "0xaf",
@@ -136006,7 +136006,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x7638C0",
   "sym": "??1WaypointPathClass@@UAE@XZ",
   "len": "0xb4",
@@ -136015,7 +136015,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763E20",
   "sym": "??_GWaypointPathClass@@UAEPAXI@Z",
   "len": "0xc8",
@@ -136024,7 +136024,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763C70",
   "sym": "?Load@WaypointPathClass@@UAGJPAUIStream@@@Z",
   "len": "0x114",
@@ -136033,7 +136033,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763730",
   "sym": "??0WaypointPathClass@@QAE@XZ",
   "len": "0x9f",
@@ -136204,7 +136204,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AE630",
   "sym": "??0Matrix3D@@QAE@MMMMMMMMMMMM@Z",
   "len": "0x58",
@@ -136213,7 +136213,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AE690",
   "sym": "??0Matrix3D@@QAE@ABUVector3D@@000@Z",
   "len": "0x5a",
@@ -136222,7 +136222,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEA70",
   "sym": "?Scale@Matrix3D@@QAEXMMM@Z",
   "len": "0x5b",
@@ -136231,7 +136231,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEB50",
   "sym": "?Shear0@Matrix3D@@QAEXMM@Z",
   "len": "0x43",
@@ -136240,7 +136240,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEBA0",
   "sym": "?Shear2@Matrix3D@@QAEXMM@Z",
   "len": "0x44",
@@ -136249,7 +136249,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEBF0",
   "sym": "?Shear1@Matrix3D@@QAEXMM@Z",
   "len": "0x44",
@@ -136258,7 +136258,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF240",
   "sym": "?RotateZ@Matrix3D@@QAEXMM@Z",
   "len": "0x73",
@@ -136267,7 +136267,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF2C0",
   "sym": "?GetTransX@Matrix3D@@QAEMXZ",
   "len": "0x47",
@@ -136276,7 +136276,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF310",
   "sym": "?GetTransY@Matrix3D@@QAEMXZ",
   "len": "0x47",
@@ -136285,7 +136285,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF360",
   "sym": "?GetTransZ@Matrix3D@@QAEMXZ",
   "len": "0x47",
@@ -136294,7 +136294,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF3B0",
   "sym": "?GetAxisHeading@Matrix3D@@QAENXZ",
   "len": "0x5d",
@@ -136303,7 +136303,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF470",
   "sym": "?GetAxisHeadingX@Matrix3D@@QAENXZ",
   "len": "0x5d",
@@ -136312,7 +136312,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AF4D0",
   "sym": "?RotateVector@Matrix3D@@QAEPAUVector3D@@PAU2@PBU2@@Z",
   "len": "0x71",
@@ -139507,7 +139507,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763AF0",
   "sym": "?SetWaypoint@WaypointPathClass@@QAEXHPBVWaypointClass@@@Z",
   "len": "0x31",
@@ -139516,7 +139516,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763B30",
   "sym": "?RemoveWaypoint@WaypointPathClass@@QAEXH@Z",
   "len": "0x64",
@@ -139525,7 +139525,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/waypoint_path_class_w3_methods.cpp",
+  "tu": "match/waypoint_path_class_w3_methods.cpp",
   "addr": "0x763BE0",
   "sym": "?ClearWaypoints@WaypointPathClass@@QAEXXZ",
   "len": "0x15",
@@ -139660,7 +139660,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C850",
   "sym": "?BeginPiggyback@WalkLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
@@ -139669,7 +139669,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75C8A0",
   "sym": "?EndPiggyback@WalkLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
@@ -139678,7 +139678,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu267_walk_locomotion_class.cpp",
+  "tu": "match/tu267_walk_locomotion_class.cpp",
   "addr": "0x75CBA0",
   "sym": "?IsPiggybacking@WalkLocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -139687,7 +139687,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tunnel_locomotion_r12_methods.cpp",
+  "tu": "match/tunnel_locomotion_r12_methods.cpp",
   "addr": "0x729480",
   "sym": "?FinishIfTimed@TunnelLocomotionClass@@QAEXXZ",
   "len": "0x5D",
@@ -139696,7 +139696,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tunnel_locomotion_r12_methods.cpp",
+  "tu": "match/tunnel_locomotion_r12_methods.cpp",
   "addr": "0x729AA0",
   "sym": "?FUN_00729AA0@TunnelLocomotionClass@@QAEXXZ",
   "len": "0x97",
@@ -139705,7 +139705,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tunnel_locomotion_r12_methods.cpp",
+  "tu": "match/tunnel_locomotion_r12_methods.cpp",
   "addr": "0x7294E0",
   "sym": "?FUN_007294E0@TunnelLocomotionClass@@QAEXXZ",
   "len": "0x9B",
@@ -140317,7 +140317,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/facing_r14_methods.cpp",
+  "tu": "match/facing_r14_methods.cpp",
   "addr": "0x4C9530",
   "sym": "?FUN_004C9530@FacingClass@@QBE?AUDirStruct@@XZ",
   "len": "0x9d",
@@ -140326,7 +140326,7 @@
   "pct": 95.5
  },
  {
-  "tu": "match/movement/facing_set_desired_methods.cpp",
+  "tu": "match/facing_set_desired_methods.cpp",
   "addr": "0x4C95D0",
   "sym": "?FUN_004C95D0@FacingClass@@QBE?AUDirStruct@@PBU2@@Z",
   "len": "0xa1",
@@ -142261,7 +142261,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_r17_methods.cpp",
+  "tu": "match/foot_class_r17_methods.cpp",
   "addr": "0x4D8560",
   "sym": "?vf_267@FootClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x6a",
@@ -142270,7 +142270,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r17_methods.cpp",
+  "tu": "match/foot_class_r17_methods.cpp",
   "addr": "0x4D9C10",
   "sym": "?vf_107@FootClass@@UAEHPAVCellClass@@HHH_N@Z",
   "len": "0x49",
@@ -142279,7 +142279,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r17_methods.cpp",
+  "tu": "match/foot_class_r17_methods.cpp",
   "addr": "0x4DA1D0",
   "sym": "?vf_200@FootClass@@UAE_NXZ",
   "len": "0x59",
@@ -142288,7 +142288,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r17_methods.cpp",
+  "tu": "match/foot_class_r17_methods.cpp",
   "addr": "0x4DE630",
   "sym": "?vf_229@FootClass@@UAEXPAV1@@Z",
   "len": "0x3b",
@@ -142297,7 +142297,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r17_methods.cpp",
+  "tu": "match/foot_class_r17_methods.cpp",
   "addr": "0x4DA4E0",
   "sym": "?vf_26@FootClass@@UAEHHH@Z",
   "len": "0x43",
@@ -142306,7 +142306,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r17_methods.cpp",
+  "tu": "match/foot_class_r17_methods.cpp",
   "addr": "0x4DB690",
   "sym": "?Save@FootClass@@UAGJPAUIStream@@H@Z",
   "len": "0x14c",
@@ -142342,7 +142342,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drive_locomotion_r17_methods.cpp",
+  "tu": "match/drive_locomotion_r17_methods.cpp",
   "addr": "0x4AF800",
   "sym": "?Save@DriveLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xdf",
@@ -142351,7 +142351,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "addr": "0x54B7E0",
   "sym": "?Save@JumpjetLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xe5",
@@ -144007,7 +144007,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "tu": "match/foot_class_r21_methods.cpp",
   "addr": "0x4DBDA0",
   "sym": "?IsCloakable@FootClass@@UAE_NXZ",
   "len": "0x4f",
@@ -144016,7 +144016,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "tu": "match/foot_class_r21_methods.cpp",
   "addr": "0x4DE580",
   "sym": "?vf_205@FootClass@@UAEXXZ",
   "len": "0x4b",
@@ -144025,7 +144025,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "tu": "match/foot_class_r21_methods.cpp",
   "addr": "0x4DE5D0",
   "sym": "?vf_62@FootClass@@UAEXXZ",
   "len": "0x42",
@@ -144034,7 +144034,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_r21_methods.cpp",
+  "tu": "match/foot_class_r21_methods.cpp",
   "addr": "0x4DF1F0",
   "sym": "?vf_302@FootClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x8c",
@@ -144439,7 +144439,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEC40",
   "sym": "?PreRotateX@Matrix3D@@QAEXM@Z",
   "len": "0x108",
@@ -144448,7 +144448,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_build_methods.cpp",
+  "tu": "match/matrix3d_build_methods.cpp",
   "addr": "0x5AEE50",
   "sym": "?PreRotateZ@Matrix3D@@QAEXM@Z",
   "len": "0x106",
@@ -144808,7 +144808,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_mega_target_methods.cpp",
+  "tu": "match/foot_class_mega_target_methods.cpp",
   "addr": "0x4DF280",
   "sym": "?FUN_004DF280@FootClass@@QAEXXZ",
   "len": "0x88",
@@ -144817,7 +144817,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_select_waypoint_methods.cpp",
+  "tu": "match/foot_class_select_waypoint_methods.cpp",
   "addr": "0x4DC810",
   "sym": "?FUN_004DC810@FootClass@@QAEXHC@Z",
   "len": "0xa7",
@@ -145339,7 +145339,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/rocket_locomotion_pitch_r24_3.cpp",
+  "tu": "match/rocket_locomotion_pitch_r24_3.cpp",
   "addr": "0x662240",
   "sym": "?FUN_00662240@RocketLocomotionClass@@QAENXZ",
   "len": "0x7f",
@@ -145888,7 +145888,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/cell_neighbor_flags_0057b990.cpp",
+  "tu": "match/cell_neighbor_flags_0057b990.cpp",
   "addr": "0x57B990",
   "sym": "?FUN_0057B990@@YIIPAUNeighborCoord_0057CBE0@@@Z",
   "len": "0xce",
@@ -146086,7 +146086,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/hover_locomotion_update_00515ed0.cpp",
+  "tu": "match/hover_locomotion_update_00515ed0.cpp",
   "addr": "0x515ED0",
   "sym": "?Fun_00515ED0@HoverLocomotionClass@@QAEXXZ",
   "len": "0x446",
@@ -146290,7 +146290,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_vf29_004dded0.cpp",
+  "tu": "match/foot_class_vf29_004dded0.cpp",
   "addr": "0x4DDED0",
   "sym": "?vf_29@FootClass@@UAEHPAVObjectClass@@D@Z",
   "len": "0xC0",
@@ -146299,7 +146299,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/foot_class_shadow_draw_004db0d0.cpp",
+  "tu": "match/foot_class_shadow_draw_004db0d0.cpp",
   "addr": "0x4DB0D0",
   "sym": "?FUN_004DB0D0@FootClass@@QAEXHHHHHPAVPoint2D@@HHHHH@Z",
   "len": "0xCD",
@@ -147287,7 +147287,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D3780",
   "sym": "?vf_73@FootClass@@UAE_NH@Z",
   "len": "0x8a",
@@ -147296,7 +147296,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D4B20",
   "sym": "?vf_133@FootClass@@UAEHXZ",
   "len": "0x184",
@@ -147305,7 +147305,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D4CB0",
   "sym": "?vf_134@FootClass@@UAEHXZ",
   "len": "0x109",
@@ -147314,7 +147314,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D7170",
   "sym": "?vf_54@FootClass@@UAE_NABUCoordStruct@@H@Z",
   "len": "0x1ba",
@@ -147323,7 +147323,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D9720",
   "sym": "?vf_55@FootClass@@UAEX_N@Z",
   "len": "0x78",
@@ -147332,7 +147332,7 @@
   "pct": 87.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D97A0",
   "sym": "?FUN_004D97A0@FootClass@@QAEHPAVAbstractClass@@@Z",
   "len": "0x112",
@@ -147341,7 +147341,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D98C0",
   "sym": "?vf_238@FootClass@@UAEXPAX@Z",
   "len": "0x5b",
@@ -147350,7 +147350,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D9E70",
   "sym": "?vf_38@FootClass@@UAE_NXZ",
   "len": "0xf7",
@@ -147359,7 +147359,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DBA50",
   "sym": "?FUN_004DBA50@FootClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x76",
@@ -147368,7 +147368,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DBED0",
   "sym": "?vf_245@FootClass@@UAE_NPAVHouseClass@@_N@Z",
   "len": "0xf5",
@@ -147377,7 +147377,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DDDE0",
   "sym": "?vf_28@FootClass@@UAEHPAUCellStruct@@DD@Z",
   "len": "0xec",
@@ -147386,7 +147386,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DE670",
   "sym": "?FUN_004DE670@FootClass@@QAEXPAV1@@Z",
   "len": "0x97",
@@ -147395,7 +147395,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DE7B0",
   "sym": "?vf_314@FootClass@@UAEXUCellStruct@@@Z",
   "len": "0x18c",
@@ -147404,7 +147404,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DE940",
   "sym": "?vf_315@FootClass@@UAEXUCellStruct@@@Z",
   "len": "0x19c",
@@ -147413,7 +147413,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DF320",
   "sym": "?vf_306@FootClass@@UAE_NXZ",
   "len": "0x76",
@@ -147422,7 +147422,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DF3A0",
   "sym": "?vf_307@FootClass@@UAEXXZ",
   "len": "0x110",
@@ -147431,7 +147431,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DFA70",
   "sym": "?vf_207@FootClass@@UAE_NXZ",
   "len": "0xfe",
@@ -147440,7 +147440,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DFB70",
   "sym": "?vf_208@FootClass@@UAE_NXZ",
   "len": "0x138",
@@ -147449,7 +147449,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DFCB0",
   "sym": "?vf_210@FootClass@@UAE_NXZ",
   "len": "0x149",
@@ -147458,7 +147458,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DFE00",
   "sym": "?vf_211@FootClass@@UAE_NXZ",
   "len": "0x13f",
@@ -147467,7 +147467,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DFF40",
   "sym": "?vf_209@FootClass@@UAE_NXZ",
   "len": "0x137",
@@ -148250,7 +148250,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CC9A0",
   "sym": "??0FlyLocomotionClass@@QAE@XZ",
   "len": "0x80",
@@ -148259,7 +148259,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "addr": "0x5175D0",
   "sym": "??8HSVClass@@QBI_NABV0@@Z",
   "len": "0x2",
@@ -149222,7 +149222,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D4FC0",
   "sym": "?FUN_004D4FC0@FootClass@@QAEPAVBuildingClass@@XZ",
   "len": "0xa4",
@@ -149231,7 +149231,7 @@
   "pct": 88.7
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4DA030",
   "sym": "?FUN_004DA030@FootClass@@QAEXXZ",
   "len": "0xaf",
@@ -149249,7 +149249,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_tu086_methods.cpp",
+  "tu": "match/foot_class_tu086_methods.cpp",
   "addr": "0x4D9F70",
   "sym": "?vf_104@FootClass@@UAEXH@Z",
   "len": "0x7d",

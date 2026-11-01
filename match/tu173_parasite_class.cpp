@@ -333,7 +333,7 @@ class WeaponTypeClass;
 struct HWND__;
 
 
-#include "movement/foot_class_wakes_methods.h"
+#include "foot_class_wakes_methods.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

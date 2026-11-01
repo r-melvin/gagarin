@@ -11,7 +11,7 @@
 
 #include <stddef.h>
 #include "object_class.h"
-#include "../movement/bounce_class.h"
+#include "../bounce_class.h"
 
 class VoxelAnimTypeClass;
 

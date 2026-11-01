@@ -38,7 +38,7 @@
 #include <stddef.h>
 #include "_layout/foot_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
-#include "movement/loco_interfaces.h"
+#include "loco_interfaces.h"
 #include "_rt/gg_static_assert.h"
 
 struct Arg1_006EDEF0;

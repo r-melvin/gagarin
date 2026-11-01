@@ -1394,7 +1394,7 @@
  {
   "addr": "0x4B0DF0",
   "name": "DriveLocomotionClass::FUN_004B0DF0",
-  "tu": "match/movement/drive_locomotion.cpp",
+  "tu": "match/drive_locomotion.cpp",
   "sym": "?FUN_004B0DF0@DriveLocomotionClass@@QAE_NPBULocoCoord@@@Z",
   "len": "0xf2",
   "manifest_pct": 84.3,
@@ -1444,7 +1444,7 @@
  {
   "addr": "0x4C9530",
   "name": "FacingClass::FUN_004C9530",
-  "tu": "match/movement/facing_r14_methods.cpp",
+  "tu": "match/facing_r14_methods.cpp",
   "sym": "?FUN_004C9530@FacingClass@@QBE?AUDirStruct@@XZ",
   "len": "0x9d",
   "manifest_pct": 95.5,
@@ -1470,7 +1470,7 @@
  {
   "addr": "0x4CFE80",
   "name": "FlyLocomotionClass::PickTarget",
-  "tu": "match/movement/fly_locomotion_pick_target_methods.cpp",
+  "tu": "match/fly_locomotion_pick_target_methods.cpp",
   "sym": "?PickTarget@FlyLocoPick@@QAGXXZ",
   "len": "0x2f2",
   "manifest_pct": 95.6,
@@ -1497,7 +1497,7 @@
  {
   "addr": "0x4DAF10",
   "name": "FootClass::vf_324",
-  "tu": "match/movement/foot_class_small_slots.cpp",
+  "tu": "match/foot_class_small_slots.cpp",
   "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAUIndexClass@@PAURectangleStruct@@PAVPoint2D@@PAUMatrix3D@@HHH@Z",
   "len": "0xa9",
   "manifest_pct": 87.1,
@@ -1750,7 +1750,7 @@
  {
   "addr": "0x5163B0",
   "name": "HoverLocomotionClass::Fun_005163B0",
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "sym": "?Fun_005163B0@HoverLocomotionClass@@QAE_NXZ",
   "len": "0x11b",
   "manifest_pct": 95.7,
@@ -1772,7 +1772,7 @@
  {
   "addr": "0x516E10",
   "name": "HoverLocomotionClass::Push",
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "sym": "?Push@HoverLocomotionClass@@UAG_NK@Z",
   "len": "0x1AE",
   "manifest_pct": 87.7,
@@ -1798,7 +1798,7 @@
  {
   "addr": "0x5171C0",
   "name": "HoverLocomotionClass::MarkAllOccupationBits",
-  "tu": "match/movement/tu098_hover_locomotion_class.cpp",
+  "tu": "match/tu098_hover_locomotion_class.cpp",
   "sym": "?MarkAllOccupationBits@HoverLocomotionClass@@UAGXH@Z",
   "len": "0x46",
   "manifest_pct": 84.0,
@@ -1978,7 +1978,7 @@
  {
   "addr": "0x54AD30",
   "name": "JumpjetLocomotionClass::LinkToObject",
-  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "tu": "match/jumpjet_locomotion.cpp",
   "sym": "?LinkToObject@JumpjetLocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x11E",
   "manifest_pct": 82.6,
@@ -2220,7 +2220,7 @@
  {
   "addr": "0x589300",
   "name": "Equals",
-  "tu": "match/movement/vector_search_00589290.cpp",
+  "tu": "match/vector_search_00589290.cpp",
   "sym": "?Equals@SearchVector16_00589300@@QBE_NABU1@@Z",
   "len": "0x63",
   "manifest_pct": 88.1,
@@ -2572,7 +2572,7 @@
  {
   "addr": "0x005B2A30",
   "name": "VelocityClass::SetPitch",
-  "tu": "match/movement/velocity_class_set_pitch_methods.cpp",
+  "tu": "match/velocity_class_set_pitch_methods.cpp",
   "sym": "?SetPitch@VelocityClass@@QAEXABUDir16@@@Z",
   "len": "0x156",
   "manifest_pct": 96.4,
@@ -3454,7 +3454,7 @@
  {
   "addr": "0x662240",
   "name": "RocketLocomotionClass::FUN_00662240",
-  "tu": "match/movement/rocket_locomotion_pitch_r24_3.cpp",
+  "tu": "match/rocket_locomotion_pitch_r24_3.cpp",
   "sym": "?FUN_00662240@RocketLocomotionClass@@QAENXZ",
   "len": "0x7f",
   "manifest_pct": 88.9,
@@ -3872,7 +3872,7 @@
  {
   "addr": "0x6A04C0",
   "name": "ShipLocomotionClass::FUN_006A04C0",
-  "tu": "match/movement/ship_locomotion.cpp",
+  "tu": "match/ship_locomotion.cpp",
   "sym": "?FUN_006A04C0@ShipLocomotionClass@@QAE_NPBULocoCoord@@@Z",
   "len": "0xF3",
   "manifest_pct": 83.3,
@@ -4515,7 +4515,7 @@
  {
   "addr": "0x719BF0",
   "name": "TeleportLocomotionClass::vf_10",
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "sym": "?vf_10@TeleportLocomotionClass@@UAGXXZ",
   "len": "0x68",
   "manifest_pct": 80.6,
@@ -4539,7 +4539,7 @@
  {
   "addr": "0x71A090",
   "name": "TeleportLocomotionClass::MarkAllOccupationBits",
-  "tu": "match/movement/tu240_teleport_locomotion_class.cpp",
+  "tu": "match/tu240_teleport_locomotion_class.cpp",
   "sym": "?MarkAllOccupationBits@TeleportLocomotionClass@@UAGXH@Z",
   "len": "0x46",
   "manifest_pct": 84.0,

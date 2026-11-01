@@ -460,7 +460,7 @@
     },
     {
       "address": "0x0057CAB0",
-      "source": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+      "source": "match/cell_neighbor_flags_0057cbe0.cpp",
       "symbol": "?FUN_0057CAB0@@YIHPAUNeighborCoord_0057CBE0@@@Z",
       "old_size": 218,
       "corrected_size": 290,
@@ -474,7 +474,7 @@
     },
     {
       "address": "0x0057CBE0",
-      "source": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+      "source": "match/cell_neighbor_flags_0057cbe0.cpp",
       "symbol": "?FUN_0057CBE0@@YIEPAUNeighborCoord_0057CBE0@@@Z",
       "old_size": 212,
       "corrected_size": 266,
@@ -874,7 +874,7 @@
       },
       {
         "address": "0x00729E50",
-        "source": "match/movement/tunnel_locomotion_z_adjust.cpp",
+        "source": "match/tunnel_locomotion_z_adjust.cpp",
         "old_size": 429,
         "corrected_size": 452,
         "reason": "switch_table_tail",

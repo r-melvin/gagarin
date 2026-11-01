@@ -549,7 +549,7 @@
   {
    "addr": "0x57CAB0",
    "length": "0xda",
-   "source": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+   "source": "match/cell_neighbor_flags_0057cbe0.cpp",
    "rea_evidence_id": "ev_e0a3f311b4979e86407b68a66bdf502a864a986a84e5c2d8065abcf41139af02",
    "analysis_target": {
     "format": "raw-binary",
@@ -577,7 +577,7 @@
   {
    "addr": "0x57CBE0",
    "length": "0xd4",
-   "source": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+   "source": "match/cell_neighbor_flags_0057cbe0.cpp",
    "rea_evidence_id": "ev_58558985c84c4e088aab1c3d10719f80e5bd67e006c93042543b8c3cfb3a9291",
    "analysis_target": {
     "format": "raw-binary",
@@ -605,7 +605,7 @@
   {
    "addr": "0x57CCF0",
    "length": "0x26a",
-   "source": "match/movement/cell_probe_0057ccf0.cpp",
+   "source": "match/cell_probe_0057ccf0.cpp",
    "rea_evidence_id": "ev_704bdf1aec79249ebacf495fd480a1cf4c995a8f53636d812e5e90275cf0a749",
    "observed_body": {
     "available": true,
@@ -730,7 +730,7 @@
   {
    "addr": "0x729E50",
    "length": "0x1ad",
-   "source": "match/movement/tunnel_locomotion_z_adjust.cpp",
+   "source": "match/tunnel_locomotion_z_adjust.cpp",
    "status": "C++ partial:31/140 instructions,22.1%; current unsigned shift correction remeasured",
    "rea_evidence_id": "ev_147894ce9dcf1561b92ed531977257bb3d58f2740f5b1a158f9b5892077fc600",
    "analysis_target": {
@@ -874,7 +874,7 @@
   {
    "addr": "0x729E50",
    "subsystem": "movement",
-   "source": "match/movement/tunnel_locomotion_z_adjust.cpp",
+   "source": "match/tunnel_locomotion_z_adjust.cpp",
    "evidence": [
     "Retail7F5A5C contains729E50, slot38 of7F5A24",
     "Table locator at7F5A20 points80CAE8; offset field is4",

@@ -11,7 +11,7 @@
 #include "airstrike_class_methods.h"
 #include "core/vector_class_operations.h"
 #include "core/frame_counter.h"
-#include "movement/locomotion_load_support.h"
+#include "locomotion_load_support.h"
 #include "core/header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------

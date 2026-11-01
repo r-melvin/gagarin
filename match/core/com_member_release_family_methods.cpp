@@ -9,7 +9,7 @@
 //   entry point. Ordered ascending by retail address.
 
 #include "com_member_release_family_methods.h"
-#include "../movement/fly_locomotion_draw_offset_methods.h"
+#include "../fly_locomotion_draw_offset_methods.h"
 
 // FUNCTION: GAMEMD 0x004B4D50
 GG_COM_MEMBER_RELEASE_BODY(004B4D50)

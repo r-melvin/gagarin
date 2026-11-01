@@ -28,13 +28,13 @@
 
 #include "core/same_object_test_sweep.h"
 
-#include "movement/trivial_tu258_methods.h"
+#include "trivial_tu258_methods.h"
 
 #include <stdlib.h>
-#include "movement/unit_class_astar_attempt_methods.h"
+#include "unit_class_astar_attempt_methods.h"
 
 #include "core/scenario_class_methods.h"
-#include "movement/unit_class_occupation_methods.h"
+#include "unit_class_occupation_methods.h"
 #include "ui/input_controls/ui_display_chain.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
