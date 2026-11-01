@@ -2830,6 +2830,12 @@ int FUN_005BC450(int);
 #include "smudge_type_class.h"
 #include "bullet_type_class.h"
 #include "weapon_type_class.h"
+#include "particle_vectors.h"
+#include "particle_type_shared.h"
+#include "particle_class.h"
+#include "particle_type_class.h"
+#include "particle_system_class.h"
+#include "particle_system_type_class.h"
 // GLOBAL: GAMEMD 0x00A83C98
 extern DynamicVectorClass<HouseTypeClass*> DAT_00A83C98;
 // GLOBAL: GAMEMD 0x00A80228
@@ -2878,14 +2884,6 @@ extern DynamicVectorClass<VoxelAnimClass*> DAT_00887388;
 extern DynamicVectorClass<WarheadTypeClass*> DAT_008874C0;
 // GLOBAL: GAMEMD 0x00887568
 extern DynamicVectorClass<WeaponTypeClass*> DAT_00887568;
-// GLOBAL: GAMEMD 0x00A83D98
-extern DynamicVectorClassLayout DAT_00A83D98;
-// GLOBAL: GAMEMD 0x00A83DC8
-extern DynamicVectorClassLayout DAT_00A83DC8;
-// GLOBAL: GAMEMD 0x00A80208
-extern DynamicVectorClassLayout DAT_00A80208;
-// GLOBAL: GAMEMD 0x00A83D68
-extern DynamicVectorClassLayout DAT_00A83D68;
 // GLOBAL: GAMEMD 0x00A83C80
 extern DynamicVectorClass<BulletTypeClass*> DAT_00A83C80;
 // GLOBAL: GAMEMD 0x00A8ED40
@@ -2935,35 +2933,6 @@ static inline void QueueDumpLogicType(FILE* file, ObjectClass* item, const char*
     const char* name = item->vf_34()->ID;
     int index = item->vf_34()->vf_16();
     fprintf(file, format, index, name);
-}
-
-template<class V>
-static inline void QueueDumpCRCEntries(FILE* file, Obj_004A1D30* checksum,
-                                       const V& objects,
-                                       bool skipRemoved)
-{
-    // Native vf13 on every element proves the shared AbstractClass checksum
-    // interface boundary.
-    for (int i = 0; i < objects.Count; ++i) {
-        AbstractClass* object = objects.Items[i];
-        if (skipRemoved && object->vf_rtti_4() == -2) continue;
-        object->vf_13(checksum);
-        // Native copies all12 bytes; the format prints the first DWORD.
-        fprintf(file, STR_008387E8, i, *checksum);
-    }
-}
-
-// Particle vectors are still declared through the layout view in this TU.
-static inline void QueueDumpCRCEntriesLayout(FILE* file, Obj_004A1D30* checksum,
-                                       const DynamicVectorClassLayout& objects,
-                                       bool skipRemoved)
-{
-    for (int i = 0; i < objects.Count; ++i) {
-        AbstractClass* object = static_cast<AbstractClass**>(objects.Items)[i];
-        if (skipRemoved && object->vf_rtti_4() == -2) continue;
-        object->vf_13(checksum);
-        fprintf(file, STR_008387E8, i, *checksum);
-    }
 }
 
 // FUNCTION: GAMEMD 0x64DEA0
@@ -3271,301 +3240,431 @@ fprintf(file, STR_00838838);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 // Loop allocation0064f2b9; Items0x00A83C9C, Count0x00A83CA8.
-QueueDumpCRCEntries(file, checksum, DAT_00A83C98, false);
+    for (i = 0; i < DAT_00A83C98.Count; ++i) {
+        DAT_00A83C98.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008387B4);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f369; Items0x00A8022C, Count0x00A80238.
-QueueDumpCRCEntries(file, checksum, DAT_00A80228, false);
+    for (i = 0; i < DAT_00A80228.Count; ++i) {
+        DAT_00A80228.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838780);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f3f6; Items0x00A83CE4, Count0x00A83CF0.
-QueueDumpCRCEntries(file, checksum, DAT_00A83CE0, false);
+    for (i = 0; i < DAT_00A83CE0.Count; ++i) {
+        DAT_00A83CE0.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838754);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f483; Items0x008B410C, Count0x008B4118.
-QueueDumpCRCEntries(file, checksum, DAT_008B4108, false);
+    for (i = 0; i < DAT_008B4108.Count; ++i) {
+        DAT_008B4108.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_0083871C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f510; Items0x00A8E34C, Count0x00A8E358.
-QueueDumpCRCEntries(file, checksum, DAT_00A8E348, false);
+    for (i = 0; i < DAT_00A8E348.Count; ++i) {
+        DAT_00A8E348.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008386EC);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f59d; Items0x00A83DEC, Count0x00A83DF8.
-QueueDumpCRCEntries(file, checksum, DAT_00A83DE8, false);
+    for (i = 0; i < DAT_00A83DE8.Count; ++i) {
+        DAT_00A83DE8.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008386B8);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f62a; Items0x00A83C6C, Count0x00A83C78.
-QueueDumpCRCEntries(file, checksum, DAT_00A83C68, false);
+    for (i = 0; i < DAT_00A83C68.Count; ++i) {
+        DAT_00A83C68.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838688);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f6b7; Items0x00A8EB44, Count0x00A8EB50.
-QueueDumpCRCEntries(file, checksum, DAT_00A8EB40, false);
+    for (i = 0; i < DAT_00A8EB40.Count; ++i) {
+        DAT_00A8EB40.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838650);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f744; Items0x00A8B21C, Count0x00A8B228.
-QueueDumpCRCEntries(file, checksum, DAT_00A8B218, false);
+    for (i = 0; i < DAT_00A8B218.Count; ++i) {
+        DAT_00A8B218.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838620);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f7d1; Items0x00A8E394, Count0x00A8E3A0.
-QueueDumpCRCEntries(file, checksum, DAT_00A8E390, false);
+    for (i = 0; i < DAT_00A8E390.Count; ++i) {
+        DAT_00A8E390.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008385F4);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f85e; Items0x00A8E9AC, Count0x00A8E9B8.
-QueueDumpCRCEntries(file, checksum, DAT_00A8E9A8, true);
+    for (i = 0; i < DAT_00A8E9A8.Count; ++i) {
+        if (DAT_00A8E9A8.Items[i]->vf_rtti_4() == -2) continue;
+        DAT_00A8E9A8.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008385C0);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f8fc; Items0x008B4154, Count0x008B4160.
-QueueDumpCRCEntries(file, checksum, DAT_008B4150, false);
+    for (i = 0; i < DAT_008B4150.Count; ++i) {
+        DAT_008B4150.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_0083858C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064f989; Items0x00A8E8D4, Count0x00A8E8E0.
-QueueDumpCRCEntries(file, checksum, DAT_00A8E8D0, false);
+    for (i = 0; i < DAT_00A8E8D0.Count; ++i) {
+        DAT_00A8E8D0.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838558);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fa16; Items0x00A8ECA4, Count0x00A8ECB0.
-QueueDumpCRCEntries(file, checksum, DAT_00A8ECA0, false);
+    for (i = 0; i < DAT_00A8ECA0.Count; ++i) {
+        DAT_00A8ECA0.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_0083852C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064faa3; Items0x008B40EC, Count0x008B40F8.
-QueueDumpCRCEntries(file, checksum, DAT_008B40E8, false);
+    for (i = 0; i < DAT_008B40E8.Count; ++i) {
+        DAT_008B40E8.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008384F8);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fb30; Items0x008B41CC, Count0x008B41D8.
-QueueDumpCRCEntries(file, checksum, DAT_008B41C8, false);
+    for (i = 0; i < DAT_008B41C8.Count; ++i) {
+        DAT_008B41C8.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008384C8);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fbbd; Items0x008872B4, Count0x008872C0.
-QueueDumpCRCEntries(file, checksum, DAT_008872B0, false);
+    for (i = 0; i < DAT_008872B0.Count; ++i) {
+        DAT_008872B0.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838498);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fc4a; Items0x00B0E784, Count0x00B0E790.
-QueueDumpCRCEntries(file, checksum, DAT_00B0E780, false);
+    for (i = 0; i < DAT_00B0E780.Count; ++i) {
+        DAT_00B0E780.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_0083846C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fcd7; Items0x00B0E724, Count0x00B0E730.
-QueueDumpCRCEntries(file, checksum, DAT_00B0E720, false);
+    for (i = 0; i < DAT_00B0E720.Count; ++i) {
+        DAT_00B0E720.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838438);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fd64; Items0x008B417C, Count0x008B4188.
-QueueDumpCRCEntries(file, checksum, DAT_008B4178, false);
+    for (i = 0; i < DAT_008B4178.Count; ++i) {
+        DAT_008B4178.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838408);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fdf1; Items0x00A8EAEC, Count0x00A8EAF8.
-QueueDumpCRCEntries(file, checksum, DAT_00A8EAE8, false);
+    for (i = 0; i < DAT_00A8EAE8.Count; ++i) {
+        DAT_00A8EAE8.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008383D8);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064fe7e; Items0x00B0E65C, Count0x00B0E668.
-QueueDumpCRCEntries(file, checksum, DAT_00B0E658, false);
+    for (i = 0; i < DAT_00B0E658.Count; ++i) {
+        DAT_00B0E658.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008383A8);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064ff0b; Items0x00B0F1A4, Count0x00B0F1B0.
-QueueDumpCRCEntries(file, checksum, DAT_00B0F1A0, false);
+    for (i = 0; i < DAT_00B0F1A0.Count; ++i) {
+        DAT_00B0F1A0.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838378);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0064ff98; Items0x00A83E34, Count0x00A83E40.
-QueueDumpCRCEntries(file, checksum, DAT_00A83E30, false);
+    for (i = 0; i < DAT_00A83E30.Count; ++i) {
+        DAT_00A83E30.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838340);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650025; Items0x00A8EB2C, Count0x00A8EB38.
-QueueDumpCRCEntries(file, checksum, DAT_00A8EB28, false);
+    for (i = 0; i < DAT_00A8EB28.Count; ++i) {
+        DAT_00A8EB28.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_0083830C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006500b2; Items0x0088738C, Count0x00887398.
-QueueDumpCRCEntries(file, checksum, DAT_00887388, false);
+    for (i = 0; i < DAT_00887388.Count; ++i) {
+        DAT_00887388.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008382DC);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0065013f; Items0x008874C4, Count0x008874D0.
-QueueDumpCRCEntries(file, checksum, DAT_008874C0, false);
+    for (i = 0; i < DAT_008874C0.Count; ++i) {
+        DAT_008874C0.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008382AC);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006501cc; Items0x0088756C, Count0x00887578.
-QueueDumpCRCEntries(file, checksum, DAT_00887568, false);
+    for (i = 0; i < DAT_00887568.Count; ++i) {
+        DAT_00887568.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838274);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650259; Items0x00A83D9C, Count0x00A83DA8.
-QueueDumpCRCEntriesLayout(file, checksum, DAT_00A83D98, false);
+    for (i = 0; i < ParticleTypeArray.Count; ++i) {
+        reinterpret_cast<AbstractClass*>(ParticleTypeArray.Items[i])->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838244);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006502e6; Items0x00A83DCC, Count0x00A83DD8.
-QueueDumpCRCEntriesLayout(file, checksum, DAT_00A83DC8, false);
+    for (i = 0; i < ParticleArray.Count; ++i) {
+        reinterpret_cast<AbstractClass*>(ParticleArray.Items[i])->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_0083820C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650373; Items0x00A8020C, Count0x00A80218.
-QueueDumpCRCEntriesLayout(file, checksum, DAT_00A80208, false);
+    for (i = 0; i < DAT_00A80208.Count; ++i) {
+        reinterpret_cast<AbstractClass*>(DAT_00A80208.Items[i])->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008381D0);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650400; Items0x00A83D6C, Count0x00A83D78.
-QueueDumpCRCEntriesLayout(file, checksum, DAT_00A83D68, false);
+    for (i = 0; i < DAT_00A83D68.Count; ++i) {
+        reinterpret_cast<AbstractClass*>(DAT_00A83D68.Items[i])->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008381A0);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0065048d; Items0x00A83C84, Count0x00A83C90.
-QueueDumpCRCEntries(file, checksum, DAT_00A83C80, false);
+    for (i = 0; i < DAT_00A83C80.Count; ++i) {
+        DAT_00A83C80.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838170);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0065051a; Items0x00A8ED44, Count0x00A8ED50.
-QueueDumpCRCEntries(file, checksum, DAT_00A8ED40, false);
+    for (i = 0; i < DAT_00A8ED40.Count; ++i) {
+        DAT_00A8ED40.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838138);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006505a7; Items0x00B7260C, Count0x00B72618.
-QueueDumpCRCEntries(file, checksum, DAT_00B72608, false);
+    for (i = 0; i < DAT_00B72608.Count; ++i) {
+        DAT_00B72608.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838104);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650634; Items0x00A8EC1C, Count0x00A8EC28.
-QueueDumpCRCEntries(file, checksum, DAT_00A8EC18, false);
+    for (i = 0; i < DAT_00A8EC18.Count; ++i) {
+        DAT_00A8EC18.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_008380D0);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006506c1; Items0x00A83D84, Count0x00A83D90.
-QueueDumpCRCEntries(file, checksum, DAT_00A83D80, false);
+    for (i = 0; i < DAT_00A83D80.Count; ++i) {
+        DAT_00A83D80.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_0083809C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation0065074e; Items0x00ABCA14, Count0x00ABCA20.
-QueueDumpCRCEntries(file, checksum, DAT_00ABCA10, false);
+    for (i = 0; i < DAT_00ABCA10.Count; ++i) {
+        DAT_00ABCA10.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838064);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006507db; Items0x008B4194, Count0x008B41A0.
-QueueDumpCRCEntries(file, checksum, DAT_008B4190, false);
+    for (i = 0; i < DAT_008B4190.Count; ++i) {
+        DAT_008B4190.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838038);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650868; Items0x008B413C, Count0x008B4148.
-QueueDumpCRCEntries(file, checksum, DAT_008B4138, false);
+    for (i = 0; i < DAT_008B4138.Count; ++i) {
+        DAT_008B4138.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00838008);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006508f5; Items0x008B4124, Count0x008B4130.
-QueueDumpCRCEntries(file, checksum, DAT_008B4120, false);
+    for (i = 0; i < DAT_008B4120.Count; ++i) {
+        DAT_008B4120.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00837FD8);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650982; Items0x00B0F4EC, Count0x00B0F4F8.
-QueueDumpCRCEntries(file, checksum, DAT_00B0F4E8, false);
+    for (i = 0; i < DAT_00B0F4E8.Count; ++i) {
+        DAT_00B0F4E8.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 fprintf(file, STR_00837FA8);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650a0f; Items0x008A3874, Count0x008A3880.
-QueueDumpCRCEntries(file, checksum, DAT_008A3870, false);
+    for (i = 0; i < DAT_008A3870.Count; ++i) {
+        DAT_008A3870.Items[i]->vf_13(checksum);
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
 delete checksum;
 fclose(file);
 }

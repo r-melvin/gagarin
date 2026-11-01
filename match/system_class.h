@@ -33,6 +33,10 @@
 #include "particle_common_vectors.h"
 #include "particle_common_views.h"
 #include "particle_system_type_class.h"
+#include "vector_class_operations.h"
+
+// GLOBAL: GAMEMD 0xA80208 - the class-wide array of particle systems.
+extern DynamicVectorClass<ParticleSystemClass*> DAT_00A80208;
 
 // VTABLE: GAMEMD 0x7EFB9C (primary)
 // VTABLE: GAMEMD 0x7EFB80

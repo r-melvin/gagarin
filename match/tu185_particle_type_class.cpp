@@ -470,7 +470,7 @@ bool ParticleTypeClass::ReadINI(ParticleIniView* ini)
                 }
                 {
                     ParticleTypeClass* created = new ParticleTypeClass(name);
-                    i = ParticleTypeArray.FindIndex(created);
+                    i = ParticleTypeArray.FindItemIndex(created);
                 }
             found:
                 index = i;
@@ -624,8 +624,8 @@ ParticleTypeClass* ParticleTypeClass::FindOrAllocate(const char* id)
         return 0;
 
     for (int i = 0; i < ParticleTypeArray.Count; i++) {
-        if (_stricmp(((ParticleTypeClass**)ParticleTypeArray.Items)[i]->ID, id) == 0)
-            return ((ParticleTypeClass**)ParticleTypeArray.Items)[i];
+        if (_stricmp(ParticleTypeArray.Items[i]->ID, id) == 0)
+            return ParticleTypeArray.Items[i];
     }
 
     return new ParticleTypeClass(id);

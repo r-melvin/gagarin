@@ -39,11 +39,12 @@
 
 #include "particle_common_types.h"
 #include "particle_common_vectors.h"
+#include "vector_class_operations.h"
 #include "particle_common_views.h"
 #include "particle_type_vtable_layout.h"
 
 // GLOBAL: GAMEMD 0xA83D68 - the class-wide array of particle system types.
-extern ParticleInlineDynVector<ParticleSystemTypeClass*> DAT_00A83D68;
+extern DynamicVectorClass<ParticleSystemTypeClass*> DAT_00A83D68;
 
 // VTABLE: GAMEMD 0x7F00A8 // primary, complete-object offset +0
 // VTABLE: GAMEMD 0x7F008C // ParticleRttiBase subobject at +4

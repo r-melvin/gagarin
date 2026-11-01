@@ -661,7 +661,7 @@ bool TActionView_r16::FUN_006E0110(HouseClass* house, ObjectClass* object, Trigg
     CoordStruct where = TActionR16_CellToCoord(at);
     CoordStruct height = TActionR16_CellToCoord(at);
     where.Z = DAT_0087F7E8_r16.FUN_00578080(&height);
-    new ParticleSystemClass(((ParticleSystemTypeClass**)DAT_00A83D68.Items)[Param1],
+    new ParticleSystemClass(DAT_00A83D68.Items[Param1],
                             *reinterpret_cast<ParticleCoord*>(&where), 0, 0, DAT_00B0E6A0_r16, 0);
     return true;
 }

@@ -1139,7 +1139,7 @@ void __fastcall FUN_00684C30()
         ParticleCoord coord(0xA80, 0xA80, 0);
         int index = FUN_00644630(STR_0083DA90);
         DAT_00A8ED78 = new ParticleSystemClass(
-            ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[index], coord, 0, 0, DAT_00B05488, 0);
+            DAT_00A83D68.Items[index], coord, 0, 0, DAT_00B05488, 0);
     }
     if (RulesInstance->OreTwinkle) {
         MapInstance.IteratorBegin_578350();

@@ -187,7 +187,7 @@ bool ParticleSystemTypeClass::ReadINI(ParticleIniView* ini)
 const char* FUN_006446E0(unsigned int index)
 {
     if (index < (unsigned int)DAT_00A83D68.Count)
-        return ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[index]->ID;
+        return DAT_00A83D68.Items[index]->ID;
     return "<none>";
 }
 
@@ -257,8 +257,8 @@ ParticleSystemTypeClass* ParticleSystemTypeClass::FindOrAllocate(const char* id)
         return 0;
 
     for (int i = 0; i < DAT_00A83D68.Count; i++) {
-        if (_stricmp(((ParticleSystemTypeClass**)DAT_00A83D68.Items)[i]->ID, id) == 0)
-            return ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[i];
+        if (_stricmp(DAT_00A83D68.Items[i]->ID, id) == 0)
+            return DAT_00A83D68.Items[i];
     }
 
     return new ParticleSystemTypeClass(id);
@@ -269,7 +269,7 @@ static inline int IndexOfSystemType(ParticleSystemTypeClass* item)
 {
     int count = DAT_00A83D68.Count;
     for (int k = 0; k < count; k++) {
-        if (((ParticleSystemTypeClass**)DAT_00A83D68.Items)[k] == item)
+        if (DAT_00A83D68.Items[k] == item)
             return k;
     }
     return -1;
@@ -284,7 +284,7 @@ int FUN_00644630(const char* name)
     if (_stricmp(name, "<none>") != 0 && strlen(name) != 0) {
         int i;
         for (i = 0; i < DAT_00A83D68.Count; i++) {
-            if (_stricmp(name, ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[i]->ID) == 0)
+            if (_stricmp(name, DAT_00A83D68.Items[i]->ID) == 0)
                 return i;
         }
         return IndexOfSystemType(new ParticleSystemTypeClass(name));

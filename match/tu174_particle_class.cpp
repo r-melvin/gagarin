@@ -393,8 +393,6 @@ ParticleTypeObjectView* ParticleClass::GetType()
 // SYNTHETIC: GAMEMD 0x62D9A0 (compiler-generated scalar deleting destructor).
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA83DC8
-extern ParticleClassVector ParticleArray;
 // GLOBAL: GAMEMD 0xAC49D8
 extern ParticleCoord ParticleEmptyCoord;
 // GLOBAL: GAMEMD 0x7EF900

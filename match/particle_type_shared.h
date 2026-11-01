@@ -7,11 +7,12 @@
 
 #include "particle_common_types.h"
 #include "particle_common_vectors.h"
+#include "vector_class_operations.h"
 #include "particle_common_views.h"
 #include "abstract_registry.h"
 
 // GLOBAL: GAMEMD 0xA83D98 - ParticleTypeClass::Array.
-extern ParticleDynVector<ParticleTypeClass*> ParticleTypeArray;
+extern DynamicVectorClass<ParticleTypeClass*> ParticleTypeArray;
 
 // GLOBAL: GAMEMD 0xB0F670 - the shared AbstractType registry storage. The
 // source-level view is ParticleTypeObjectView*, while storage is owned by

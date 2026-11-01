@@ -36,8 +36,6 @@ extern "C" const CLSID CLSID_ParticleSystem =
 // GLOBAL: GAMEMD 0xAC4A58 - the empty coordinate (three dwords).
 extern ParticleCoord DAT_00AC4A58;
 
-// GLOBAL: GAMEMD 0xA80208 - the class-wide array of particle systems.
-extern ParticleInlineDynVector<ParticleSystemClass*> DAT_00A80208;
 // GLOBAL: GAMEMD 0xB0F720 - a second class-wide array the constructor appends to (element
 // type unconfirmed).
 extern ParticleInlineDynVector<ParticleSystemClass*> DAT_00B0F720;
@@ -399,8 +397,6 @@ ParticleTypeObjectView* ParticleSystemClass::GetType()
 // SYNTHETIC: GAMEMD 0x630230 (compiler-generated scalar deleting destructor; ordinary dtor is an external declaration view at 0x62E070).
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA83D98
-extern ParticleDynVector<ParticleTypeClass*> ParticleTypeArray;
 // GLOBAL: GAMEMD 0x7EFB58
 extern const double DAT_007EFB58 = 60.0;
 // END defined globals

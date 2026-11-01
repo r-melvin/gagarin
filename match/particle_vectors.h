@@ -11,12 +11,12 @@
 #include "_rt/gg_static_assert.h"
 #include "particle_common_types.h"
 #include "particle_common_vectors.h"
+#include "vector_class_operations.h"
 
-typedef ParticleDynVector<ParticleClass*> ParticleClassVector;
-GG_STATIC_ASSERT(sizeof(ParticleClassVector) == 0x18);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<ParticleClass*>) == 0x18);
 
 // GLOBAL: GAMEMD 0xA83DC8 - ParticleClass::Array, every live particle.
-extern ParticleClassVector ParticleArray;
+extern DynamicVectorClass<ParticleClass*> ParticleArray;
 
 // The colour list of ParticleTypeClass (+0x2B8, 0x1C bytes): a dynamic vector of 3-byte colours and
 // one extra dword. Its constructor runs the out-of-line vector constructor and stores the list's own
