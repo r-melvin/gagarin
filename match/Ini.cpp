@@ -1,3 +1,17 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Original translation unit Ini.CPP. The name is the source-file string at 0x825bdc
+//   in retail gamemd.exe v1.001, passed by the assert at 0x529316 inside this object's
+//   code range (0x523697-0x52b7bf). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// Header static initialisers at 0x5256D0-0x5256D0 (header_init_shapes.h): the group of
+// math-table doubles/ints and zero blocks each retail TU opens with, in __xc order.
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
+
 #include "_layout/ini_class.h"
 #include <stdio.h>
 #include <new.h>
@@ -433,9 +447,6 @@ GG_STATIC_ASSERT(sizeof(EntryNode_0052A4D0) == 8);
 extern "C" void __cdecl gg_qsort(void* base, unsigned int count, unsigned int size,
                                  int (__cdecl* compare)(const void*, const void*));
 
-// FUNCTION: GAMEMD 0x52B6A0 (decl; reloc) -- key comparison.
-int __cdecl FUN_0052B6A0(const void* a, const void* b);
-
 // FUNCTION: GAMEMD 0x52B6D0 (decl; reloc) -- table search.
 EntryNode_0052A4D0* FUN_0052B6D0(EntryNode_0052A4D0* items, int count, int* key);
 
@@ -461,6 +472,9 @@ GG_STATIC_ASSERT(offsetof(INISectionEntryView, Count)    == 0x30);
 GG_STATIC_ASSERT(offsetof(INISectionEntryView, IsSorted) == 0x38);
 GG_STATIC_ASSERT(offsetof(INISectionEntryView, Cached)   == 0x3C);
 GG_STATIC_ASSERT(offsetof(INIClass::INISection, EntryIndex) == 0x2C);
+
+// Forward declaration: defined below, in ascending retail address order.
+int __cdecl FUN_0052B6A0(const void* a, const void* b);
 
 // The inlined second lookup: cached node, sort on demand, binary search,
 // default cell when absent.
@@ -500,30 +514,6 @@ INIClass::INIEntry* const& INISectionEntryView::Fetch(int key)
 
 #include "trivial_tu101_methods.h"
 
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x5247A0
-// Returns zero. Vtable slot 44 of InfantryTypeClass (RTTI).
-int Obj_005247A0::FUN_005247A0() const
-{
-    return 0;
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x5247B0
-// Tail-forwards to another function. Vtable slot 40 of InfantryTypeClass (RTTI).
-void Obj_005247B0::FUN_005247B0()
-{
-    FUN_00711E80();
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x5247C0
-// Tail-forwards to another function. Vtable slot 41 of InfantryTypeClass (RTTI).
-void Obj_005247C0::FUN_005247C0()
-{
-    FUN_00711E90();
-}
-
 // Clamp of the third component of a three-integer record to a lower bound taken
 // from a global object that is queried with the record (global at 0x87F7E8,
 // query 0x578080). The record is returned through the hidden pointer (RET 8).
@@ -536,46 +526,6 @@ struct Triple_005247D0 {
 struct Obj_005247D0 {
     Triple_005247D0 FUN_005247D0(const Triple_005247D0* value);
 };
-// FUNCTION: GAMEMD 0x005247D0
-Triple_005247D0 Obj_005247D0::FUN_005247D0(const Triple_005247D0* value)
-{
-    Triple_005247D0 local = *value;
-    if (local.unknown_08 < DAT_0087F7E8.FUN_00578080(&local))
-        local.unknown_08 = DAT_0087F7E8.FUN_00578080(&local);
-    return local;
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x524D40
-// Returns a constant. Vtable slot 11 of InfantryTypeClass (RTTI).
-int Obj_00524D40::FUN_00524D40() const
-{
-    return 0x10;
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x524D50
-// Returns a constant. Vtable slot 12 of InfantryTypeClass (RTTI).
-int Obj_00524D50::FUN_00524D50() const
-{
-    return 0xED0;
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x524D60
-// Member getter (dword). Vtable slot 16 of InfantryTypeClass (RTTI).
-int Obj_00524D60::FUN_00524D60() const
-{
-    return unknown_DF8;
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x524EC0
-// Returns its receiver.
-Obj_00524EC0* Obj_00524EC0::FUN_00524EC0()
-{
-    return this;
-}
 
 // A growable array of dwords, assigned from another (slot 3 releases the old storage).
 struct Vec_00524F20 {
@@ -589,6 +539,122 @@ struct Vec_00524F20 {
     int unknown_14;
     Vec_00524F20* FUN_00524F20(const Vec_00524F20& other);
 };
+
+int FUN_007B5440(int);
+int FUN_007B7140(int);
+
+struct Obj_005289E0 {
+    void FUN_00528660(int, int, int);
+    void FUN_005289E0(int a, int b, int c);
+};
+
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
+extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
+
+// Four ints read at +0/+4/+8/+0xC by 0x527C10.
+struct IniIntQuad { int A; int B; int C; int D; };
+GG_STATIC_ASSERT(offsetof(IniIntQuad, D) == 0xC);
+// Three ints read at +0/+4/+8 by 0x529BF0.
+struct IniIntTriple { int A; int B; int C; };
+GG_STATIC_ASSERT(offsetof(IniIntTriple, C) == 0x8);
+// Three floats read at +0/+4/+8 by 0x52A040 (FLD DWORD, widened for printf).
+struct IniFloatTriple { float A; float B; float C; };
+GG_STATIC_ASSERT(offsetof(IniFloatTriple, C) == 0x8);
+
+// Key object whose two encoders (0x631FC0, 0x631FE0) fill a buffer and return
+// the encoded length.
+class IniKeyBlockSource
+{
+public:
+    // FUNCTION: GAMEMD 0x631FC0 (decl; reloc)
+    int EncodeFirst(char* buffer) const;
+    // FUNCTION: GAMEMD 0x631FE0 (decl; reloc)
+    int EncodeSecond(char* buffer) const;
+};
+
+struct Obj_00528ED0 {
+    void FUN_00528E00(int, int, int);
+    void FUN_00528ED0(int a, int b, int c);
+};
+
+#include "header_init_shapes.h"
+#include "mathtbl_init_shapes.h"
+#include "trig_table_functions_004cac40.h"
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x5247A0
+// Returns zero. Vtable slot 44 of InfantryTypeClass (RTTI).
+int Obj_005247A0::FUN_005247A0() const
+{
+    return 0;
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x5247B0
+// Tail-forwards to another function. Vtable slot 40 of InfantryTypeClass (RTTI).
+void Obj_005247B0::FUN_005247B0()
+{
+    FUN_00711E80();
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x5247C0
+// Tail-forwards to another function. Vtable slot 41 of InfantryTypeClass (RTTI).
+void Obj_005247C0::FUN_005247C0()
+{
+    FUN_00711E90();
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x005247D0
+Triple_005247D0 Obj_005247D0::FUN_005247D0(const Triple_005247D0* value)
+{
+    Triple_005247D0 local = *value;
+    if (local.unknown_08 < DAT_0087F7E8.FUN_00578080(&local))
+        local.unknown_08 = DAT_0087F7E8.FUN_00578080(&local);
+    return local;
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x524D40
+// Returns a constant. Vtable slot 11 of InfantryTypeClass (RTTI).
+int Obj_00524D40::FUN_00524D40() const
+{
+    return 0x10;
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x524D50
+// Returns a constant. Vtable slot 12 of InfantryTypeClass (RTTI).
+int Obj_00524D50::FUN_00524D50() const
+{
+    return 0xED0;
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x524D60
+// Member getter (dword). Vtable slot 16 of InfantryTypeClass (RTTI).
+int Obj_00524D60::FUN_00524D60() const
+{
+    return unknown_DF8;
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x524EC0
+// Returns its receiver.
+Obj_00524EC0* Obj_00524EC0::FUN_00524EC0()
+{
+    return this;
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x00524F20
 Vec_00524F20* Vec_00524F20::FUN_00524F20(const Vec_00524F20& other)
 {
@@ -612,6 +678,7 @@ Vec_00524F20* Vec_00524F20::FUN_00524F20(const Vec_00524F20& other)
     return this;
 }
 
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x525430
 // Read a comma-separated list of record names as registry indices. Unknown
@@ -638,6 +705,11 @@ TypeListInt FUN_00525430(CCINI_00475C70* ini, const char* section,
 
     return defaultValue;
 }
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// SYNTHETIC: GAMEMD 0x5256D0
+// GLOBAL: GAMEMD 0xA8F2D0
+MathTblZero4 DAT_00A8F2D0;
 
 // FUNCTION: GAMEMD 0x526810
 //
@@ -903,13 +975,6 @@ bool INIClass::WriteInteger(const char* pSection, const char* pKey, int value, i
     return WriteString(pSection, pKey, buffer);
 }
 
-int FUN_007B5440(int);
-int FUN_007B7140(int);
-
-struct Obj_005289E0 {
-    void FUN_00528660(int, int, int);
-    void FUN_005289E0(int a, int b, int c);
-};
 // FUNCTION: GAMEMD 0x527640
 // WriteInteger with Wstring names: format 1 "%Xh", 2 "$%X", otherwise "%d".
 bool INIClass::WriteInteger(const Wstring& section, const Wstring& key, int value, int format)
@@ -944,34 +1009,6 @@ bool INIClass::FUN_00527B90(const char* section, const char* key, const GUID& gu
     CoTaskMemFree(wide);
     return WriteString(section, key, buffer);
 }
-
-
-// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
-extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
-
-// Four ints read at +0/+4/+8/+0xC by 0x527C10.
-struct IniIntQuad { int A; int B; int C; int D; };
-GG_STATIC_ASSERT(offsetof(IniIntQuad, D) == 0xC);
-// Three ints read at +0/+4/+8 by 0x529BF0.
-struct IniIntTriple { int A; int B; int C; };
-GG_STATIC_ASSERT(offsetof(IniIntTriple, C) == 0x8);
-// Three floats read at +0/+4/+8 by 0x52A040 (FLD DWORD, widened for printf).
-struct IniFloatTriple { float A; float B; float C; };
-GG_STATIC_ASSERT(offsetof(IniFloatTriple, C) == 0x8);
-
-// Key object whose two encoders (0x631FC0, 0x631FE0) fill a buffer and return
-// the encoded length.
-class IniKeyBlockSource
-{
-public:
-    // FUNCTION: GAMEMD 0x631FC0 (decl; reloc)
-    int EncodeFirst(char* buffer) const;
-    // FUNCTION: GAMEMD 0x631FE0 (decl; reloc)
-    int EncodeSecond(char* buffer) const;
-};
-
-
-
 
 // FUNCTION: GAMEMD 0x527C10
 bool INIClass::WriteIntQuad(const char* section, const char* key, const IniIntQuad& value)
@@ -1088,10 +1125,6 @@ bool INIClass::FUN_00528E00(const char* section, const char* key,
     return result;
 }
 
-struct Obj_00528ED0 {
-    void FUN_00528E00(int, int, int);
-    void FUN_00528ED0(int a, int b, int c);
-};
 // FUNCTION: GAMEMD 0x00528ED0
 void Obj_00528ED0::FUN_00528ED0(int a, int b, int c)
 {
@@ -1515,6 +1548,9 @@ bool HandleHolder::FUN_0052B600(void** other)
 
     return false;
 }
+
+// FUNCTION: GAMEMD 0x52B6A0 (decl; reloc) -- key comparison.
+int __cdecl FUN_0052B6A0(const void* a, const void* b);
 
 // The qsort comparator: order by ID. Equal IDs short-circuit to zero, and the
 // remaining case is turned into -1 or 1 by a SETGE-and-fold idiom rather than
