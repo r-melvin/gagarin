@@ -1,79 +1,53 @@
 {
  "schema": "gagarin/extent_recall/1",
  "summary": {
-  "census_functions": 19793,
-  "candidates_not_in_census": 9060,
+  "census_functions": 19833,
+  "candidates_not_in_census": 9021,
   "classes": {
-   "alt_entry": 2525,
-   "data": 5924,
+   "alt_entry": 2516,
+   "data": 5944,
    "padding_thunk": 388,
-   "real_missed": 132,
-   "shared_tail": 91
+   "shared_tail": 91,
+   "real_missed": 82
   },
   "real_missed_confidence": {
-   "medium": 70,
-   "low": 62
+   "low": 51,
+   "medium": 31
   },
   "real_missed_by_shape": {
-   "plain": 131,
-   "eh_funclet": 1
+   "plain": 82
   },
   "alt_entry_by_shape": {
-   "boundary": 2437,
-   "eh_entry": 88
+   "boundary": 2455,
+   "eh_entry": 61
   },
   "class_by_evidence": {
-   "alt_entry | codeptr": 4,
-   "alt_entry | dataptr": 2521,
+   "alt_entry | codeptr": 3,
+   "alt_entry | dataptr": 2513,
    "data | codeptr": 2,
    "data | codeptr+dataptr": 1,
-   "data | dataptr": 5267,
+   "data | dataptr": 5284,
    "data | jmp": 5,
    "data | none": 1,
-   "data | pad_aligned": 648,
+   "data | pad_aligned": 651,
    "padding_thunk | codeptr": 1,
    "padding_thunk | dataptr": 387,
-   "real_missed | codeptr": 13,
-   "real_missed | codeptr+pad_aligned": 3,
-   "real_missed | dataptr": 60,
+   "real_missed | dataptr": 34,
    "real_missed | jmp": 6,
    "real_missed | jmp+pad_aligned": 4,
    "real_missed | none": 3,
-   "real_missed | pad_aligned": 41,
-   "real_missed | vtable": 2,
+   "real_missed | pad_aligned": 35,
    "shared_tail | jmp": 1,
    "shared_tail | pad_aligned": 90
   },
-  "recall_estimate": 0.9965,
-  "census_plus_proposed": 19863,
-  "all_code_starts_if_every_class_but_data_counts": 22929
+  "recall_estimate": 0.9984,
+  "census_plus_proposed": 19864,
+  "all_code_starts_if_every_class_but_data_counts": 22910
  },
  "examples": {
   "real_missed": [
    {
-    "addr": "0x405A00",
-    "cls": "real_missed",
-    "reason": "unlisted code start",
-    "evidence": [
-     {
-      "kind": "codeptr",
-      "n": 2,
-      "sites": [
-       "0x4056D9",
-       "0x4056D9"
-      ]
-     }
-    ],
-    "confidence": "medium",
-    "walk": {
-     "insns": 60,
-     "len": "0xB8",
-     "clean": true
-    },
-    "padding_before": false
-   },
-   {
-    "addr": "0x405A95",
+    "addr": "0x431997",
     "cls": "real_missed",
     "reason": "unlisted code start",
     "evidence": [
@@ -81,63 +55,41 @@
       "kind": "dataptr",
       "n": 1,
       "sites": [
-       "0x86E144"
+       "0x86E56C"
       ]
      }
     ],
     "confidence": "low",
     "walk": {
-     "insns": 9,
-     "len": "0x1B",
+     "insns": 25,
+     "len": "0x33",
      "clean": true
     },
     "padding_before": false
    },
    {
-    "addr": "0x4176F0",
+    "addr": "0x435B90",
     "cls": "real_missed",
     "reason": "unlisted code start",
     "evidence": [
      {
-      "kind": "vtable",
+      "kind": "pad_aligned",
       "n": 1,
       "sites": [
-       ".?AVAircraftClass@@[289]"
-      ]
-     }
-    ],
-    "confidence": "medium",
-    "walk": {
-     "insns": 372,
-     "len": "0x4E0",
-     "clean": true
-    },
-    "padding_before": false
-   },
-   {
-    "addr": "0x417845",
-    "cls": "real_missed",
-    "reason": "unlisted code start",
-    "evidence": [
-     {
-      "kind": "dataptr",
-      "n": 2,
-      "sites": [
-       "0x81079C",
-       "0x81D81C"
+       "0x435B90"
       ]
      }
     ],
     "confidence": "low",
     "walk": {
-     "insns": 225,
-     "len": "0x365",
+     "insns": 25,
+     "len": "0x46",
      "clean": true
     },
-    "padding_before": false
+    "padding_before": true
    },
    {
-    "addr": "0x417938",
+    "addr": "0x49F5DC",
     "cls": "real_missed",
     "reason": "unlisted code start",
     "evidence": [
@@ -145,14 +97,56 @@
       "kind": "dataptr",
       "n": 1,
       "sites": [
-       "0x86E2F4"
+       "0x86F010"
       ]
      }
     ],
     "confidence": "low",
     "walk": {
-     "insns": 145,
-     "len": "0x25F",
+     "insns": 21,
+     "len": "0x3F",
+     "clean": true
+    },
+    "padding_before": false
+   },
+   {
+    "addr": "0x49F865",
+    "cls": "real_missed",
+    "reason": "unlisted code start",
+    "evidence": [
+     {
+      "kind": "dataptr",
+      "n": 1,
+      "sites": [
+       "0x86F014"
+      ]
+     }
+    ],
+    "confidence": "low",
+    "walk": {
+     "insns": 24,
+     "len": "0x43",
+     "clean": true
+    },
+    "padding_before": false
+   },
+   {
+    "addr": "0x4A6A58",
+    "cls": "real_missed",
+    "reason": "unlisted code start",
+    "evidence": [
+     {
+      "kind": "dataptr",
+      "n": 1,
+      "sites": [
+       "0x86F0C8"
+      ]
+     }
+    ],
+    "confidence": "low",
+    "walk": {
+     "insns": 17,
+     "len": "0x30",
      "clean": true
     },
     "padding_before": false
@@ -579,78 +573,6 @@
  },
  "proposed_additions": [
   {
-   "addr": "0x405A00",
-   "len": "0xB8",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x4056D9",
-      "0x4056D9"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x4176F0",
-   "len": "0x4E0",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "vtable",
-     "n": 1,
-     "sites": [
-      ".?AVAircraftClass@@[289]"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x48BC20",
-   "len": "0x22",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 12,
-     "sites": [
-      "0x48BB98",
-      "0x5388B7",
-      "0x5389B0",
-      "0x55F6F5"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x4F1700",
-   "len": "0x1",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x4F130D"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
    "addr": "0x4F4E53",
    "len": "0x59",
    "kind": "engine",
@@ -685,23 +607,6 @@
    "reason": "unlisted code start"
   },
   {
-   "addr": "0x4FF8F0",
-   "len": "0x90",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x4FF8F0"
-     ]
-    }
-   ],
-   "reason": "starts after padding inside the extent of 0x4FF700 (merged)"
-  },
-  {
    "addr": "0x50E1E4",
    "len": "0x8F",
    "kind": "engine",
@@ -730,57 +635,6 @@
      "n": 1,
      "sites": [
       "0x86FB2C"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x52D430",
-   "len": "0x176",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x52D0D3"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x560480",
-   "len": "0x769",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x55FD36"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x56072D",
-   "len": "0x2C",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8703AC"
      ]
     }
    ],
@@ -855,49 +709,6 @@
    "reason": "unlisted code start"
   },
   {
-   "addr": "0x618D40",
-   "len": "0x394A",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x60FC1C",
-      "0x60FC1C"
-     ]
-    },
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x618D40"
-     ]
-    }
-   ],
-   "reason": "starts after padding inside the extent of 0x617250 (merged)"
-  },
-  {
-   "addr": "0x6232B0",
-   "len": "0x59",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x62323A",
-      "0x62323A"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
    "addr": "0x627BB7",
    "len": "0x168",
    "kind": "engine",
@@ -909,31 +720,6 @@
      "n": 1,
      "sites": [
       "0x627D0C"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x648340",
-   "len": "0x1",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x64761F",
-      "0x64761F"
-     ]
-    },
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x648340"
      ]
     }
    ],
@@ -991,41 +777,6 @@
    "reason": "unlisted code start"
   },
   {
-   "addr": "0x73EFC0",
-   "len": "0xD4",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "vtable",
-     "n": 1,
-     "sites": [
-      ".?AVUnitClass@@[138]"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x75A100",
-   "len": "0x1F",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x7593F3",
-      "0x7593F3"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
    "addr": "0x77D4A1",
    "len": "0x13",
    "kind": "engine",
@@ -1041,67 +792,6 @@
     }
    ],
    "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x78E030",
-   "len": "0x1F7",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x789A9B"
-     ]
-    },
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x78E030"
-     ]
-    }
-   ],
-   "reason": "starts after padding inside the extent of 0x78DB70 (merged)"
-  },
-  {
-   "addr": "0x79DB50",
-   "len": "0x48A",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 5,
-     "sites": [
-      "0x79BE7E",
-      "0x79BE7E",
-      "0x79EA2B",
-      "0x7A946B"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7AF970",
-   "len": "0x159",
-   "kind": "engine",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x7AF970"
-     ]
-    }
-   ],
-   "reason": "starts after padding inside the extent of 0x7AF6C0 (merged)"
   },
   {
    "addr": "0x7C77D0",
@@ -1172,41 +862,6 @@
    "reason": "starts after padding inside the extent of 0x7C7371 (merged)"
   },
   {
-   "addr": "0x7C8F5D",
-   "len": "0x1",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 2,
-     "sites": [
-      "0x87BEBC",
-      "0x87BEC0"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7C979C",
-   "len": "0x2F",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DAC"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
    "addr": "0x7CA2D0",
    "len": "0xF5",
    "kind": "crt",
@@ -1224,145 +879,6 @@
    "reason": "starts after padding inside the extent of 0x7CA090 (merged)"
   },
   {
-   "addr": "0x7CA93F",
-   "len": "0x14",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "eh_funclet",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F95C4"
-     ]
-    }
-   ],
-   "reason": "unwind/catch funclet outside every listed extent"
-  },
-  {
-   "addr": "0x7CA953",
-   "len": "0x40",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F95C8"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CAAAD",
-   "len": "0x37",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F9638"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CABDD",
-   "len": "0x36",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F9658"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CB33D",
-   "len": "0xA8",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DB0"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CB3E5",
-   "len": "0x809D",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DC4"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CC0FC",
-   "len": "0x22",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7CC128"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CC1D4",
-   "len": "0xBD",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 20,
-     "sites": [
-      "0x7CA8F9",
-      "0x7CAA0F",
-      "0x7CAA0F",
-      "0x7CAAEE"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
    "addr": "0x7CD90C",
    "len": "0x30",
    "kind": "crt",
@@ -1374,57 +890,6 @@
      "n": 1,
      "sites": [
       "0x7F97A0"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CE046",
-   "len": "0x3",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C488"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CEB82",
-   "len": "0x4E",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7C8F63"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7CEBD0",
-   "len": "0x18",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7C8F86"
      ]
     }
    ],
@@ -1516,40 +981,6 @@
    "reason": "starts after padding inside the extent of 0x7D0A20 (merged)"
   },
   {
-   "addr": "0x7D49AE",
-   "len": "0x62",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7D4918"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7D5791",
-   "len": "0x6D",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DC8"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
    "addr": "0x7D608F",
    "len": "0x26",
    "kind": "crt",
@@ -1561,74 +992,6 @@
      "n": 1,
      "sites": [
       "0x874B84"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7D60B5",
-   "len": "0x91",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C4C4"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7D6624",
-   "len": "0x1D5",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C4B8"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7D669F",
-   "len": "0x15A",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x874B90"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7D6CE7",
-   "len": "0x3",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C494"
      ]
     }
    ],
@@ -1663,74 +1026,6 @@
      "n": 1,
      "sites": [
       "0x874BE8"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7D9FAC",
-   "len": "0x11",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DB8"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7D9FBD",
-   "len": "0xD",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DD8"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7DCE0E",
-   "len": "0x2D",
-   "kind": "comsupp",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x80F0C0"
-     ]
-    }
-   ],
-   "reason": "unlisted code start"
-  },
-  {
-   "addr": "0x7DE12F",
-   "len": "0x2D",
-   "kind": "crt",
-   "confidence": "medium",
-   "shape": "plain",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DCC"
      ]
     }
    ],
@@ -2159,49 +1454,6 @@
     "clean": true
    },
    "inside": "0x404FD0",
-   "padding_before": false
-  },
-  {
-   "addr": "0x405A00",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x4056D9",
-      "0x4056D9"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 60,
-    "len": "0xB8",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
-   "addr": "0x405A95",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x86E144"
-     ]
-    }
-   ],
-   "confidence": "low",
-   "walk": {
-    "insns": 9,
-    "len": "0x1B",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -6369,52 +5621,9 @@
    "padding_before": false
   },
   {
-   "addr": "0x4176F0",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "vtable",
-     "n": 1,
-     "sites": [
-      ".?AVAircraftClass@@[289]"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 372,
-    "len": "0x4E0",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
-   "addr": "0x417845",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 2,
-     "sites": [
-      "0x81079C",
-      "0x81D81C"
-     ]
-    }
-   ],
-   "confidence": "low",
-   "walk": {
-    "insns": 225,
-    "len": "0x365",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x417938",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
+   "cls": "alt_entry",
+   "reason": "interior of 0x4176F0 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -6424,34 +5633,13 @@
      ]
     }
    ],
-   "confidence": "low",
    "walk": {
     "insns": 145,
     "len": "0x25F",
     "clean": true
    },
+   "inside": "0x4176F0",
    "padding_before": false
-  },
-  {
-   "addr": "0x417A70",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x417A70"
-     ]
-    }
-   ],
-   "confidence": "low",
-   "walk": {
-    "insns": 78,
-    "len": "0x127",
-    "clean": true
-   },
-   "padding_before": true
   },
   {
    "addr": "0x417BDD",
@@ -12472,30 +11660,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x48BC20",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 12,
-     "sites": [
-      "0x48BB98",
-      "0x5388B7",
-      "0x5389B0",
-      "0x55F6F5"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 16,
-    "len": "0x22",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x48BD17",
    "cls": "padding_thunk",
    "reason": "points at CC/90 padding",
@@ -17670,27 +16834,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x4F1700",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x4F130D"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 1,
-    "len": "0x1",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x4F181C",
    "cls": "alt_entry",
    "reason": "interior of 0x4F1720 at an instruction boundary",
@@ -18486,28 +17629,6 @@
     }
    ],
    "padding_before": false
-  },
-  {
-   "addr": "0x4FF8F0",
-   "cls": "real_missed",
-   "reason": "starts after padding inside the extent of 0x4FF700 (merged)",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x4FF8F0"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 22,
-    "len": "0x90",
-    "clean": true
-   },
-   "inside": "0x4FF700",
-   "padding_before": true
   },
   {
    "addr": "0x4FFD89",
@@ -21281,27 +20402,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x52D430",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x52D0D3"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 109,
-    "len": "0x176",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x52E71F",
    "cls": "alt_entry",
    "reason": "interior of 0x52D9A0 at an instruction boundary",
@@ -23915,30 +23015,9 @@
    "padding_before": false
   },
   {
-   "addr": "0x560480",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x55FD36"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 584,
-    "len": "0x769",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x5604C8",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
+   "cls": "alt_entry",
+   "reason": "interior of 0x560480 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -23948,18 +23027,18 @@
      ]
     }
    ],
-   "confidence": "low",
    "walk": {
     "insns": 563,
     "len": "0x721",
     "clean": true
    },
+   "inside": "0x560480",
    "padding_before": false
   },
   {
    "addr": "0x56072D",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
+   "cls": "alt_entry",
+   "reason": "interior of 0x560480 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -23969,33 +23048,12 @@
      ]
     }
    ],
-   "confidence": "medium",
    "walk": {
     "insns": 17,
     "len": "0x2C",
     "clean": true
    },
-   "padding_before": false
-  },
-  {
-   "addr": "0x560991",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8703B0"
-     ]
-    }
-   ],
-   "confidence": "low",
-   "walk": {
-    "insns": 3,
-    "len": "0x7",
-    "clean": true
-   },
+   "inside": "0x560480",
    "padding_before": false
   },
   {
@@ -34328,32 +33386,9 @@
    "padding_before": true
   },
   {
-   "addr": "0x6137D0",
-   "cls": "alt_entry",
-   "reason": "interior of 0x612B70 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x60FE14",
-      "0x60FE14"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 756,
-    "len": "0x9BF",
-    "clean": true
-   },
-   "inside": "0x612B70",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
    "addr": "0x61384A",
    "cls": "alt_entry",
-   "reason": "interior of 0x612B70 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x6137D0 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -34368,14 +33403,13 @@
     "len": "0x945",
     "clean": true
    },
-   "inside": "0x612B70",
-   "sub": "eh_entry",
+   "inside": "0x6137D0",
    "padding_before": false
   },
   {
    "addr": "0x613A90",
    "cls": "alt_entry",
-   "reason": "interior of 0x612B70 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x6137D0 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -34390,74 +33424,7 @@
     "len": "0x6FF",
     "clean": true
    },
-   "inside": "0x612B70",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x613E70",
-   "cls": "real_missed",
-   "reason": "starts after padding inside the extent of 0x612B70 (merged)",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x613E70"
-     ]
-    }
-   ],
-   "confidence": "low",
-   "walk": {
-    "insns": 231,
-    "len": "0x31F",
-    "clean": true
-   },
-   "inside": "0x612B70",
-   "padding_before": true
-  },
-  {
-   "addr": "0x613F1C",
-   "cls": "alt_entry",
-   "reason": "interior of 0x612B70 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8716EC"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 178,
-    "len": "0x273",
-    "clean": true
-   },
-   "inside": "0x612B70",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x614162",
-   "cls": "alt_entry",
-   "reason": "interior of 0x612B70 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8716F0"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 6,
-    "len": "0x10",
-    "clean": true
-   },
-   "inside": "0x612B70",
-   "sub": "eh_entry",
+   "inside": "0x6137D0",
    "padding_before": false
   },
   {
@@ -34809,127 +33776,9 @@
    "padding_before": false
   },
   {
-   "addr": "0x618D40",
-   "cls": "real_missed",
-   "reason": "starts after padding inside the extent of 0x617250 (merged)",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x60FC1C",
-      "0x60FC1C"
-     ]
-    },
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x618D40"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 4278,
-    "len": "0x394A",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "padding_before": true
-  },
-  {
-   "addr": "0x618E9D",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x871778"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 4184,
-    "len": "0x37ED",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x6190E2",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87177C"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 690,
-    "len": "0x341A",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x619327",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x871780"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 1237,
-    "len": "0x31D5",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x61956C",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x871784"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 721,
-    "len": "0x2F90",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
    "addr": "0x6197B1",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -34944,14 +33793,13 @@
     "len": "0x2D4B",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x619C3B",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -34966,58 +33814,13 @@
     "len": "0x28C1",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x619E80",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x871794"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 657,
-    "len": "0x267C",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x61A30A",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87179C"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 657,
-    "len": "0x21F2",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x61A54F",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35032,14 +33835,13 @@
     "len": "0xA9",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x61A794",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35054,36 +33856,13 @@
     "len": "0x131",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x61AC1D",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8717AC"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 703,
-    "len": "0x18DF",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x61AE62",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35098,14 +33877,13 @@
     "len": "0xC",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x61B0A7",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35120,14 +33898,13 @@
     "len": "0x2D",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x61B2EC",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35142,36 +33919,13 @@
     "len": "0x46",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x61B530",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8717BC"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 1055,
-    "len": "0xFCC",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x61B775",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35186,102 +33940,13 @@
     "len": "0xD87",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
-  },
-  {
-   "addr": "0x61B9BA",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8717C4"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 667,
-    "len": "0xB42",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x61BBFE",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8717C8"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 198,
-    "len": "0x8FE",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x61BE43",
-   "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8717CC"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 482,
-    "len": "0x6B9",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x61C060",
-   "cls": "real_missed",
-   "reason": "starts after padding inside the extent of 0x617250 (merged)",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x61C060"
-     ]
-    }
-   ],
-   "confidence": "low",
-   "walk": {
-    "insns": 337,
-    "len": "0x49C",
-    "clean": true
-   },
-   "inside": "0x617250",
-   "padding_before": true
   },
   {
    "addr": "0x61C088",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35296,14 +33961,13 @@
     "len": "0x474",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
    "addr": "0x61C2CC",
    "cls": "alt_entry",
-   "reason": "interior of 0x617250 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
+   "reason": "interior of 0x618D40 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -35318,8 +33982,7 @@
     "len": "0x230",
     "clean": true
    },
-   "inside": "0x617250",
-   "sub": "eh_entry",
+   "inside": "0x618D40",
    "padding_before": false
   },
   {
@@ -35635,28 +34298,6 @@
     "clean": true
    },
    "padding_before": true
-  },
-  {
-   "addr": "0x6232B0",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x62323A",
-      "0x62323A"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 33,
-    "len": "0x59",
-    "clean": true
-   },
-   "padding_before": false
   },
   {
    "addr": "0x623415",
@@ -38454,35 +37095,6 @@
    },
    "inside": "0x6475F0",
    "padding_before": false
-  },
-  {
-   "addr": "0x648340",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x64761F",
-      "0x64761F"
-     ]
-    },
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x648340"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 1,
-    "len": "0x1",
-    "clean": true
-   },
-   "padding_before": true
   },
   {
    "addr": "0x648694",
@@ -54950,27 +53562,6 @@
    "padding_before": true
   },
   {
-   "addr": "0x73EFC0",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "vtable",
-     "n": 1,
-     "sites": [
-      ".?AVUnitClass@@[138]"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 65,
-    "len": "0xD4",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x73F581",
    "cls": "alt_entry",
    "reason": "interior of 0x73F0A0 at an instruction boundary",
@@ -56968,28 +55559,6 @@
     "clean": true
    },
    "inside": "0x759180",
-   "padding_before": false
-  },
-  {
-   "addr": "0x75A100",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 2,
-     "sites": [
-      "0x7593F3",
-      "0x7593F3"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 10,
-    "len": "0x1F",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -60213,57 +58782,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x78E030",
-   "cls": "real_missed",
-   "reason": "starts after padding inside the extent of 0x78DB70 (merged)",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x789A9B"
-     ]
-    },
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x78E030"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 181,
-    "len": "0x1F7",
-    "clean": true
-   },
-   "inside": "0x78DB70",
-   "padding_before": true
-  },
-  {
-   "addr": "0x78E0A2",
-   "cls": "alt_entry",
-   "reason": "interior of 0x78DB70 in bytes normal flow never reaches: an exception-handler or funclet entry named by a table",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x8742B0"
-     ]
-    }
-   ],
-   "walk": {
-    "insns": 4,
-    "len": "0x8",
-    "clean": true
-   },
-   "inside": "0x78DB70",
-   "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
    "addr": "0x78E6CE",
    "cls": "alt_entry",
    "reason": "interior of 0x78E230 at an instruction boundary",
@@ -60515,28 +59033,6 @@
    },
    "inside": "0x792EC0",
    "padding_before": false
-  },
-  {
-   "addr": "0x793440",
-   "cls": "real_missed",
-   "reason": "starts after padding inside the extent of 0x793280 (merged)",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x793440"
-     ]
-    }
-   ],
-   "confidence": "low",
-   "walk": {
-    "insns": 8,
-    "len": "0x18",
-    "clean": true
-   },
-   "inside": "0x793280",
-   "padding_before": true
   },
   {
    "addr": "0x7934ED",
@@ -61319,33 +59815,9 @@
    "padding_before": false
   },
   {
-   "addr": "0x79DB50",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 5,
-     "sites": [
-      "0x79BE7E",
-      "0x79BE7E",
-      "0x79EA2B",
-      "0x7A946B"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 348,
-    "len": "0x48A",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x79DF39",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
+   "cls": "alt_entry",
+   "reason": "interior of 0x79DB50 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -61355,12 +59827,12 @@
      ]
     }
    ],
-   "confidence": "low",
    "walk": {
     "insns": 39,
     "len": "0x7F",
     "clean": true
    },
+   "inside": "0x79DB50",
    "padding_before": false
   },
   {
@@ -62286,28 +60758,6 @@
    },
    "inside": "0x7AF2A0",
    "padding_before": false
-  },
-  {
-   "addr": "0x7AF970",
-   "cls": "real_missed",
-   "reason": "starts after padding inside the extent of 0x7AF6C0 (merged)",
-   "evidence": [
-    {
-     "kind": "pad_aligned",
-     "n": 1,
-     "sites": [
-      "0x7AF970"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 95,
-    "len": "0x159",
-    "clean": true
-   },
-   "inside": "0x7AF6C0",
-   "padding_before": true
   },
   {
    "addr": "0x7AFB69",
@@ -64341,49 +62791,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7C8F5D",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 2,
-     "sites": [
-      "0x87BEBC",
-      "0x87BEC0"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 1,
-    "len": "0x1",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
-   "addr": "0x7C979C",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DAC"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 14,
-    "len": "0x2F",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7C9A3A",
    "cls": "alt_entry",
    "reason": "interior of 0x7C9A31 at an instruction boundary",
@@ -64513,49 +62920,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7CA93F",
-   "cls": "real_missed",
-   "reason": "unwind/catch funclet outside every listed extent",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F95C4"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 8,
-    "len": "0x14",
-    "clean": true
-   },
-   "sub": "eh_funclet",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7CA953",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F95C8"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 22,
-    "len": "0x40",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7CAA99",
    "cls": "alt_entry",
    "reason": "interior of 0x7CAA05 at an instruction boundary",
@@ -64577,27 +62941,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7CAAAD",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F9638"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 17,
-    "len": "0x37",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7CABC9",
    "cls": "alt_entry",
    "reason": "interior of 0x7CAAE4 at an instruction boundary",
@@ -64616,27 +62959,6 @@
     "clean": true
    },
    "inside": "0x7CAAE4",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7CABDD",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x7F9658"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 16,
-    "len": "0x36",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -64679,48 +63001,6 @@
     "clean": true
    },
    "inside": "0x7CB25E",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7CB33D",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DB0"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 60,
-    "len": "0xA8",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
-   "addr": "0x7CB3E5",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DC4"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 54,
-    "len": "0x809D",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -64871,51 +63151,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7CC0FC",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7CC128"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 9,
-    "len": "0x22",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
-   "addr": "0x7CC1D4",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 20,
-     "sites": [
-      "0x7CA8F9",
-      "0x7CAA0F",
-      "0x7CAA0F",
-      "0x7CAAEE"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 73,
-    "len": "0xBD",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7CC2C0",
    "cls": "padding_thunk",
    "reason": "points at CC/90 padding",
@@ -65057,27 +63292,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7CE046",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C488"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 2,
-    "len": "0x3",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7CE121",
    "cls": "alt_entry",
    "reason": "interior of 0x7CE06E at an instruction boundary",
@@ -65117,48 +63331,6 @@
     "clean": true
    },
    "inside": "0x7CE2A5",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7CEB82",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7C8F63"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 38,
-    "len": "0x4E",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
-   "addr": "0x7CEBD0",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7C8F86"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 11,
-    "len": "0x18",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -65674,8 +63846,8 @@
   },
   {
    "addr": "0x7D3416",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
+   "cls": "alt_entry",
+   "reason": "interior of 0x7D3401 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -65685,12 +63857,12 @@
      ]
     }
    ],
-   "confidence": "low",
    "walk": {
     "insns": 40,
     "len": "0x6C",
     "clean": true
    },
+   "inside": "0x7D3401",
    "padding_before": false
   },
   {
@@ -65769,27 +63941,6 @@
     "clean": true
    },
    "inside": "0x7D461E",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7D49AE",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "codeptr",
-     "n": 1,
-     "sites": [
-      "0x7D4918"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 42,
-    "len": "0x62",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -65877,27 +64028,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7D5791",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DC8"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 44,
-    "len": "0x6D",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7D587A",
    "cls": "alt_entry",
    "reason": "interior of 0x7D57FE at an instruction boundary",
@@ -65982,27 +64112,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7D60B5",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C4C4"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 47,
-    "len": "0x91",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7D6294",
    "cls": "alt_entry",
    "reason": "interior of 0x7D6146 at an instruction boundary",
@@ -66024,30 +64133,9 @@
    "padding_before": false
   },
   {
-   "addr": "0x7D6624",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C4B8"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 125,
-    "len": "0x1D5",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7D669F",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
+   "cls": "alt_entry",
+   "reason": "interior of 0x7D6624 at an instruction boundary",
    "evidence": [
     {
      "kind": "dataptr",
@@ -66057,12 +64145,12 @@
      ]
     }
    ],
-   "confidence": "medium",
    "walk": {
     "insns": 11,
     "len": "0x15A",
     "clean": true
    },
+   "inside": "0x7D6624",
    "padding_before": false
   },
   {
@@ -66084,27 +64172,6 @@
     "clean": true
    },
    "inside": "0x7D6AA2",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7D6CE7",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x87C494"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 2,
-    "len": "0x3",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -66421,48 +64488,6 @@
    },
    "inside": "0x7D9729",
    "sub": "eh_entry",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7D9FAC",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DB8"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 4,
-    "len": "0x11",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
-   "addr": "0x7D9FBD",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DD8"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 3,
-    "len": "0xD",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -67096,27 +65121,6 @@
    "padding_before": false
   },
   {
-   "addr": "0x7DCE0E",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x80F0C0"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 17,
-    "len": "0x2D",
-    "clean": true
-   },
-   "padding_before": false
-  },
-  {
    "addr": "0x7DCF9A",
    "cls": "padding_thunk",
    "reason": "jump thunk",
@@ -67197,27 +65201,6 @@
     "clean": true
    },
    "inside": "0x7DD505",
-   "padding_before": false
-  },
-  {
-   "addr": "0x7DE12F",
-   "cls": "real_missed",
-   "reason": "unlisted code start",
-   "evidence": [
-    {
-     "kind": "dataptr",
-     "n": 1,
-     "sites": [
-      "0x815DCC"
-     ]
-    }
-   ],
-   "confidence": "medium",
-   "walk": {
-    "insns": 18,
-    "len": "0x2D",
-    "clean": true
-   },
    "padding_before": false
   },
   {
@@ -67468,5 +65451,5 @@
   }
  ],
  "image_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
- "data_candidates_omitted": 5924
+ "data_candidates_omitted": 5944
 }

@@ -5,25 +5,25 @@
  "ra2_is_known_build": true,
  "method": "strings, RTTI vtable slots, masked-byte hashes and callee order to a fixed point (scripts/agent_tools/twinpair.py)",
  "coverage": {
-  "yr_functions": 20298,
+  "yr_functions": 20326,
   "ra2_functions": 18761,
-  "pairs": 16441,
+  "pairs": 16443,
   "rounds": 3,
-  "yr_paired_pct": 81.0,
-  "ra2_paired_pct": 87.63,
+  "yr_paired_pct": 80.9,
+  "ra2_paired_pct": 87.64,
   "by_method": {
    "hash": 5270,
    "hash-anchor": 4203,
-   "string": 505,
+   "string": 506,
    "vtable": 2982,
-   "callee-order": 1040,
-   "shape": 500,
-   "window-sim": 1941
+   "callee-order": 1039,
+   "shape": 501,
+   "window-sim": 1942
   },
   "by_kind": {
-   "exact": 13807,
+   "exact": 13808,
    "changed": 1163,
-   "near": 1471
+   "near": 1472
   },
   "pass_log": [
    [
@@ -36,7 +36,7 @@
    ],
    [
     "string",
-    505
+    506
    ],
    [
     "vtable",
@@ -48,7 +48,7 @@
    ],
    [
     "callee-order",
-    900
+    899
    ],
    [
     "hash-anchor",
@@ -64,11 +64,11 @@
    ],
    [
     "shape",
-    500
+    501
    ],
    [
     "window-sim",
-    1941
+    1942
    ],
    [
     "hash",
@@ -127,13 +127,13 @@
     0
    ]
   ],
-  "census_functions_paired": 16274,
-  "census_functions": 19793
+  "census_functions_paired": 16279,
+  "census_functions": 19833
  },
  "agreement": {
   "hash": {
    "pairs": 5270,
-   "string_agree": 433,
+   "string_agree": 434,
    "vtable_agree": 969,
    "vtable_disagree": 49,
    "string_disagree": 15
@@ -146,8 +146,8 @@
    "vtable_disagree": 96
   },
   "string": {
-   "pairs": 505,
-   "string_agree": 505,
+   "pairs": 506,
+   "string_agree": 506,
    "vtable_agree": 181,
    "vtable_disagree": 22
   },
@@ -158,20 +158,20 @@
    "string_disagree": 1
   },
   "callee-order": {
-   "pairs": 1040,
+   "pairs": 1039,
    "string_agree": 82,
    "string_disagree": 10,
    "vtable_disagree": 25,
    "vtable_agree": 8
   },
   "shape": {
-   "pairs": 500,
+   "pairs": 501,
    "string_agree": 65,
    "string_disagree": 3,
    "vtable_disagree": 89
   },
   "window-sim": {
-   "pairs": 1941,
+   "pairs": 1942,
    "vtable_disagree": 27,
    "string_agree": 35,
    "string_disagree": 2
@@ -45014,6 +45014,14 @@
    "kind": "changed"
   },
   {
+   "yr_addr": "0x52D430",
+   "ra2_addr": "0x513080",
+   "method": "hash",
+   "byte_identical": true,
+   "similarity": 1.0,
+   "kind": "exact"
+  },
+  {
    "yr_addr": "0x52D5B0",
    "ra2_addr": "0x513200",
    "method": "hash",
@@ -55067,6 +55075,14 @@
    "method": "shape",
    "byte_identical": false,
    "similarity": 0.9891,
+   "kind": "near"
+  },
+  {
+   "yr_addr": "0x560480",
+   "ra2_addr": "0x542D60",
+   "method": "string",
+   "byte_identical": false,
+   "similarity": 0.9503,
    "kind": "near"
   },
   {
@@ -114904,7 +114920,7 @@
   {
    "yr_addr": "0x75A120",
    "ra2_addr": "0x71D4B0",
-   "method": "callee-order",
+   "method": "shape",
    "byte_identical": false,
    "similarity": 0.9796,
    "kind": "near"
@@ -114912,7 +114928,7 @@
   {
    "yr_addr": "0x75A2B0",
    "ra2_addr": "0x71D640",
-   "method": "hash",
+   "method": "window-sim",
    "byte_identical": true,
    "similarity": 1.0,
    "kind": "exact"
@@ -131720,10 +131736,10 @@
  ],
  "versus_old_pairs_csv": {
   "old_pairs": 17102,
-  "new_pairs": 16441,
+  "new_pairs": 16443,
   "agree": 16064,
   "conflict": 48,
-  "only_new": 329,
+  "only_new": 331,
   "only_old": 990,
   "old_exact_pairs": 12294,
   "old_exact_agree": 11829,
