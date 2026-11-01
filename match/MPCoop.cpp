@@ -421,7 +421,7 @@ extern double DAT_00ABF458;
 // (keeping its capacity) and refill it with one campaign per record of the
 // 0x89F518 list.
 //
-// PARTIAL (56.6%). Everything up to the +0x324 member matches; retail then
+// PARTIAL (99.4% now that the campaign count is read through GetCount(); was 56.6%). Everything up to the +0x324 member matches; retail then
 // calls the out-of-line VectorClass<CoopCampaignClass*> constructor 0x5C5A80
 // while cl expands it inline (it keeps the VectorClass<int> calls out of line),
 // shifting the rest. Declaring the instantiation `extern template` reaches
@@ -440,7 +440,7 @@ MPCooperative::MPCooperative(const Obj_007B66D0& a, const Obj_007B66D0& b, const
     unknown_4C = 0;
     unknown_340 = true;
 
-    for (int i = Campaigns.Count - 1; i >= 0; i--) {
+    for (int i = Campaigns.GetCount() - 1; i >= 0; i--) {
         delete Campaigns.Items[i];
     }
     int capacity = Campaigns.Capacity;

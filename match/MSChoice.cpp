@@ -387,15 +387,13 @@ MapStageList::~MapStageList()
 // index against the live count reloaded every turn -- retail's `JL` on a
 // reloaded `Count` is a plain indexed `for`, not a pointer walk.
 //
-// PARTIAL, 90.3% (65/72, multiset identical). Retail issues the four bounds
-// stores before the second loop's first Count load; cl hoists that load above
-// them. Per-loop counters and a `while` form for the second sweep score the
-// same.
+// The counts are read through the vector's inline GetCount(), which keeps the four bounds
+// stores ahead of the second loop's first count load as retail has it.
 void MapStageList::ClearAll()
 {
     int i;
 
-    for (i = 0; i < Titles.Count; ++i) {
+    for (i = 0; i < Titles.GetCount(); ++i) {
         MSSfxEntry* title = Titles.Items[i];
 
         if (title != 0) {
@@ -410,7 +408,7 @@ void MapStageList::ClearAll()
     BoundsW = 640;
     BoundsH = 400;
 
-    for (i = 0; i < Strings.Count; ++i) {
+    for (i = 0; i < Strings.GetCount(); ++i) {
         MSAnimEntry* text = Strings.Items[i];
 
         if (text != 0) {
@@ -420,7 +418,7 @@ void MapStageList::ClearAll()
 
     Strings.Clear();
 
-    for (i = 0; i < Stages.Count; ++i) {
+    for (i = 0; i < Stages.GetCount(); ++i) {
         MapStage* stage = Stages.Items[i];
 
         if (stage != 0) {

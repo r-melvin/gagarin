@@ -1457,10 +1457,10 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
     // not an unconditional redraw request when buildingChanged is false.
     bool update = true;
     if (!full && !buildingChanged) {
-        if (!unknown_D7C && DAT_00B0CE78.Count == 0 && !unknown_D7D &&
+        if (!unknown_D7C && DAT_00B0CE78.GetCount() == 0 && !unknown_D7D &&
             unknown_D64 == unknown_D6C) {
             update = false;
-        } else if (!unknown_D7D && DAT_00B0CE78.Count == 0 && unknown_B0 == unknown_B8) {
+        } else if (!unknown_D7D && DAT_00B0CE78.GetCount() == 0 && unknown_B0 == unknown_B8) {
             update = false;
         }
     }
@@ -1542,10 +1542,10 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
             FUN_006D3870(&horizontal, &vertical, full);
             // Native reverse removal decrementsCount and shifts remaining
             //20-byte entries; do not replace this with an assumed Clear().
-            for (int index = DAT_00B0CE78.Count - 1; index >= 0; --index) {
-                if (index < DAT_00B0CE78.Count) {
+            for (int index = DAT_00B0CE78.GetCount() - 1; index >= 0; --index) {
+                if (index < DAT_00B0CE78.GetCount()) {
                     --DAT_00B0CE78.Count;
-                    for (int next = index; next < DAT_00B0CE78.Count; ++next)
+                    for (int next = index; next < DAT_00B0CE78.GetCount(); ++next)
                         DAT_00B0CE78.Items[next] = DAT_00B0CE78.Items[next + 1];
                 }
             }
@@ -1587,7 +1587,7 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
     FUN_006D5030(true);
     bool special = FUN_00637AA0() != 0;
     if (special) { FUN_0063B0A0(); FUN_0063B150(); }
-    const int count = DAT_00A8EC78.Count;
+    const int count = DAT_00A8EC78.GetCount();
     for (int index = 0; index < count; ++index) {
         TechnoClass* techno = DAT_00A8EC78.Items[index];
         if (techno->Owner->IsControlledByCurrentPlayer()) {
@@ -1643,7 +1643,7 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
                      ScenarioInstance->unknown_11F4, 0, 0);
         ++row;
     }
-    const int superCount = DAT_00A83D50.Count;
+    const int superCount = DAT_00A83D50.GetCount();
     for (int superIndex = 0; superIndex < superCount; ++superIndex) {
         SuperClass* super = DAT_00A83D50.Items[superIndex];
         if (super->IsSuspended && Session_00A8B238.GameMode == 0 &&

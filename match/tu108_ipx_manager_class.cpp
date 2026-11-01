@@ -373,16 +373,14 @@ int IPXManagerClass::FUN_005410F0(void* buf, int buflen, int needsAck, IPXAddres
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x541170
-// PARTIAL (84.1%; mnemonic multiset identical). Retail holds the player count
-// in ECX and this in ESI; VC6 picks EDX and EDI here and schedules the count
-// load first. The sibling 0x541260 with the same shape matches. Tried: count
-// test `> 0`, a while loop, the address declared at the top (5.6%).
+// The player count is read through the vector's inline GetCount() in the later tests too, which
+// gives the register allocation retail has (exact).
 int IPXManagerClass::FUN_00541170(void* buf, int buflen, int needsAck, int id)
 {
-    if (Players_00A8DA74.Count && Players_00A8DA74[0]->unknown_6F == id) {
+    if (Players_00A8DA74.GetCount() && Players_00A8DA74[0]->unknown_6F == id) {
         return 0;
     }
-    for (int i = 1; i < Players_00A8DA74.Count; ++i) {
+    for (int i = 1; i < Players_00A8DA74.GetCount(); ++i) {
         if (Players_00A8DA74[i]->unknown_6F == id) {
             IPXAddressClass address = Players_00A8DA74[i]->Address;
             return FUN_005410F0(buf, buflen, needsAck, &address, Ports_00A8E2B2[i], 0);

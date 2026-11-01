@@ -2571,14 +2571,14 @@ void BuildingClass::vf_23()
     FUN_004503F0();
     if (Type->bools_1570[5]) {
         TechnoClass** list = Overpowerers.Items;
-        for (int i = Overpowerers.Count - 1; i >= 0; i--) {
-            if (list[i]->Target != this && i < Overpowerers.Count) {
+        for (int i = Overpowerers.GetCount() - 1; i >= 0; i--) {
+            if (list[i]->Target != this && i < Overpowerers.GetCount()) {
                 Overpowerers.Count--;
-                for (int j = i; j < Overpowerers.Count; j++)
+                for (int j = i; j < Overpowerers.GetCount(); j++)
                     list[j] = list[j + 1];
             }
         }
-        int count = Overpowerers.Count;
+        int count = Overpowerers.GetCount();
         if (count >= 3 || (Owner->GetPowerPercentage() == DAT_007E1718 && HasPower && count >= 1))
             IsOverpowered = true;
         else

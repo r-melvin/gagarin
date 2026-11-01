@@ -2583,13 +2583,13 @@ void __fastcall FUN_0068C050()
         for (int i = 0; i < RulesInstance->unknown_D54; ++i)
             choices.AddItem(i);
         for (i = 0; i < DAT_008B41F0; ++i) {
-            int index = ScenarioInstance->unknown_0218.RandomRanged(0, choices.Count - 1);
+            int index = ScenarioInstance->unknown_0218.RandomRanged(0, choices.GetCount() - 1);
             choices.Delete(index);
-            if (index + 1 > RulesInstance->SecretInfantry.Count) {
-                index -= RulesInstance->SecretInfantry.Count;
-                if (index + 1 > RulesInstance->SecretUnits.Count) {
-                    index -= RulesInstance->SecretUnits.Count;
-                    if (index + 1 <= RulesInstance->SecretBuildings.Count)
+            if (index + 1 > RulesInstance->SecretInfantry.GetCount()) {
+                index -= RulesInstance->SecretInfantry.GetCount();
+                if (index + 1 > RulesInstance->SecretUnits.GetCount()) {
+                    index -= RulesInstance->SecretUnits.GetCount();
+                    if (index + 1 <= RulesInstance->SecretBuildings.GetCount())
                         selected = RulesInstance->SecretBuildings.Items[index];
                 } else selected = RulesInstance->SecretUnits.Items[index];
             } else selected = RulesInstance->SecretInfantry.Items[index];

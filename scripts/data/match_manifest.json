@@ -24237,11 +24237,8 @@
   "sym": "?ClearAll@MapStageList@@QAEXXZ",
   "len": "0xbf",
   "name": "MapStageList",
-  "status": "partial",
-  "pct": 90.3,
-  "best_pct": 90.3,
-  "best_at": "cf203011",
-  "note": "volatile removed from MapStageList Bounds members (steering). Multiset identical; cl hoists the second loop Count load above the four bounds stores."
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MSChoice.cpp",
@@ -29359,10 +29356,8 @@
   "sym": "?Action@ListClass@@UAEHIPAIH@Z",
   "len": "0xf0",
   "name": "ListClass::Action",
-  "status": "partial",
-  "pct": 96.8,
-  "best_pct": 96.8,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/lists_list.cpp",
@@ -49130,9 +49125,9 @@
   "len": "0x967",
   "name": "BuildingClass::vf_315",
   "status": "partial",
-  "pct": 4.4,
-  "best_pct": 4.4,
-  "best_at": "cf203011"
+  "pct": 5.9,
+  "best_pct": 5.9,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -49453,11 +49448,9 @@
   "len": "0xc48",
   "name": "BuildingClass::vf_148",
   "status": "partial",
-  "pct": 2.0,
-  "best_pct": 2.0,
-  "best_at": "cf203011",
-  "metric": "instruction-position",
-  "note": "scored on the code span 0xc21 (the jump tables after it are not scored)"
+  "pct": 2.1,
+  "best_pct": 2.1,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/tu038_building_class.cpp",
@@ -59992,9 +59985,9 @@
   "len": "0x2C8",
   "name": "FUN_00595CE0",
   "status": "partial",
-  "pct": 78.0,
-  "best_pct": 78.0,
-  "best_at": "cf203011"
+  "pct": 98.8,
+  "best_pct": 98.8,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/MapGen.cpp",
@@ -71363,10 +71356,8 @@
   "sym": "?FUN_00541170@IPXManagerClass@@QAEHPAXHHH@Z",
   "len": "0xE4",
   "name": "IPXManagerClass::FUN_00541170",
-  "status": "partial",
-  "pct": 84.1,
-  "best_pct": 84.1,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/tu108_ipx_manager_class.cpp",
@@ -72622,9 +72613,9 @@
   "len": "0x1cf",
   "name": "MPCooperative::MPCooperative",
   "status": "partial",
-  "pct": 56.6,
-  "best_pct": 56.6,
-  "best_at": "cf203011"
+  "pct": 99.4,
+  "best_pct": 99.4,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/MPCoop.cpp",
@@ -73625,9 +73616,9 @@
   "len": "0x34c",
   "name": "MultiplayerGameMode::vt_entry_C4",
   "status": "partial",
-  "pct": 20.5,
-  "best_pct": 20.5,
-  "best_at": "cf203011"
+  "pct": 93.8,
+  "best_pct": 93.8,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/Multiplayer.cpp",
@@ -73654,9 +73645,9 @@
   "len": "0x3ab",
   "name": "MultiplayerGameMode::vt_entry_CC",
   "status": "partial",
-  "pct": 5.0,
-  "best_pct": 5.0,
-  "best_at": "cf203011"
+  "pct": 15.7,
+  "best_pct": 15.7,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/Multiplayer.cpp",
@@ -92072,9 +92063,9 @@
   "len": "0xa5b",
   "name": "BuildingClass::vf_23",
   "status": "partial",
-  "pct": 4.9,
-  "best_pct": 4.9,
-  "best_at": "cf203011"
+  "pct": 5.2,
+  "best_pct": 5.2,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/foot_cell_ring_search_004cbc40.cpp",
@@ -96721,9 +96712,9 @@
   "len": "0x1a1",
   "name": "?FUN_0068C050@@YIXXZ",
   "status": "partial",
-  "pct": 0.0,
-  "best_pct": 0.0,
-  "best_at": "cf203011"
+  "pct": 94.6,
+  "best_pct": 94.6,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/Scenario.cpp",
@@ -102412,9 +102403,9 @@
   "len": "0x735",
   "name": "SessionClass::FUN_0069BD60",
   "status": "partial",
-  "pct": 3.1,
-  "best_pct": 3.1,
-  "best_at": "cf203011"
+  "pct": 3.3,
+  "best_pct": 3.3,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -103968,9 +103959,9 @@
   "len": "0x3c6",
   "name": "SessionClass::FUN_0069B170",
   "status": "partial",
-  "pct": 8.4,
-  "best_pct": 8.4,
-  "best_at": "cf203011"
+  "pct": 20.4,
+  "best_pct": 20.4,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/Session.cpp",
@@ -104146,9 +104137,9 @@
   "len": "0x103",
   "name": "Session cleanup",
   "status": "partial",
-  "pct": 0.0,
-  "best_pct": 0.0,
-  "best_at": "cf203011"
+  "pct": 12.6,
+  "best_pct": 12.6,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/Session.cpp",
@@ -104486,9 +104477,9 @@
   "len": "0xe3b",
   "name": "Tactical::FUN_006D3D10",
   "status": "partial",
-  "pct": 2.3,
-  "best_pct": 2.3,
-  "best_at": "cf203011"
+  "pct": 2.9,
+  "best_pct": 2.9,
+  "best_at": "ca2773f6"
  },
  {
   "tu": "match/Tactical.cpp",
@@ -142913,10 +142904,8 @@
   "sym": "?FUN_006E0EF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x9F",
   "name": "TActionClass::FUN_006E0EF0",
-  "status": "partial",
-  "pct": 96.1,
-  "best_pct": 96.1,
-  "best_at": "cf203011"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/leaf_sweep_r15_w3.cpp",

@@ -119,8 +119,8 @@ void ListClass::RemoveItem(wchar_t const* text)
 }
 
 // FUNCTION: GAMEMD 0x00557830
-// PARTIAL 96.8%: retail stores SelectedIndex before loading the final count;
-// the compiler schedules that store after the load. Existing body bytes are preserved.
+// The final count is read through the vector's inline GetCount(), which keeps the SelectedIndex
+// store ahead of that load as retail has it.
 int ListClass::Action(unsigned flags, unsigned* key, int extra)
 {
     if (flags & 4) {
@@ -142,8 +142,8 @@ int ListClass::Action(unsigned flags, unsigned* key, int extra)
         int mouseY = DAT_00887640->GetY();
         SelectedIndex = (mouseY - Y - 1) / LineHeight + CurrentTopIndex;
         int row = SelectedIndex;
-        if (row >= List.Count - 1) {
-            row = List.Count - 1;
+        if (row >= List.GetCount() - 1) {
+            row = List.GetCount() - 1;
         }
         SelectedIndex = row;
         if (row == -1) {

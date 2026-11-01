@@ -1632,7 +1632,7 @@ void SessionClass::FUN_0069B170()
     strcpy(buffer, DAT_00B77A04);
     char* token = strtok(buffer, STR_00817F70);
     while (token != 0 && *token != 0) {
-        for (int index = 0; index < HouseArray_00A80228.Count; ++index) {
+        for (int index = 0; index < HouseArray_00A80228.GetCount(); ++index) {
             HouseClass* house = HouseArray_00A80228.Items[index];
             if (house->IsHumanPlayer && _stricmp(house->PlainName, token) == 0)
                 first.AddItem(house);
@@ -1642,24 +1642,24 @@ void SessionClass::FUN_0069B170()
     strcpy(buffer, DAT_00B76568);
     token = strtok(buffer, STR_00817F70);
     while (token != 0 && *token != 0) {
-        for (int index = 0; index < HouseArray_00A80228.Count; ++index) {
+        for (int index = 0; index < HouseArray_00A80228.GetCount(); ++index) {
             HouseClass* house = HouseArray_00A80228.Items[index];
             if (house->IsHumanPlayer && _stricmp(house->PlainName, token) == 0)
                 second.AddItem(house);
         }
         token = strtok(0, STR_00817F70);
     }
-    if (first.Count > 1) {
-        for (int index = 0; index < first.Count; ++index) {
-            for (int other = 0; other < first.Count; ++other) {
+    if (first.GetCount() > 1) {
+        for (int index = 0; index < first.GetCount(); ++index) {
+            for (int other = 0; other < first.GetCount(); ++other) {
                 if (first.Items[index]->ArrayIndex != first.Items[other]->ArrayIndex)
                     first.Items[index]->FUN_004F9B70(first.Items[other], false);
             }
         }
     }
-    if (second.Count > 1) {
-        for (int index = 0; index < second.Count; ++index) {
-            for (int other = 0; other < second.Count; ++other) {
+    if (second.GetCount() > 1) {
+        for (int index = 0; index < second.GetCount(); ++index) {
+            for (int other = 0; other < second.GetCount(); ++other) {
                 if (second.Items[index]->ArrayIndex != second.Items[other]->ArrayIndex)
                     second.Items[index]->FUN_004F9B70(second.Items[other], false);
             }
@@ -1945,18 +1945,18 @@ void SessionClass::FUN_00699980()
 // FUNCTION: GAMEMD 0x69A1F0
 void SessionClass::FUN_0069A1F0()
 {
-    for (int missionIndex = 0; missionIndex < unknown_690.Count; ++missionIndex) {
+    for (int missionIndex = 0; missionIndex < unknown_690.GetCount(); ++missionIndex) {
         MultiMission* mission = unknown_690.Items[missionIndex];
         if (mission != 0)
             delete mission;
     }
     unknown_690.Clear();
 
-    for (int stringIndex = 0; stringIndex < unknown_2914.Count; ++stringIndex)
+    for (int stringIndex = 0; stringIndex < unknown_2914.GetCount(); ++stringIndex)
         delete[] unknown_2914.Items[stringIndex];
     unknown_2914.Clear();
 
-    for (int phoneIndex = 0; phoneIndex < unknown_28FC.Count; ++phoneIndex) {
+    for (int phoneIndex = 0; phoneIndex < unknown_28FC.GetCount(); ++phoneIndex) {
         PhoneEntryClass* entry = unknown_28FC.Items[phoneIndex];
         if (entry != 0)
             delete entry;
@@ -2693,7 +2693,7 @@ void SessionClass::FUN_0069BD60()
     DynamicVectorClass<NodeNameType*> ordered;
     unsigned int adjustment = 1;
     FUN_004068E0(STR_0083F840);
-    if (unknown_283C.Count < 2)
+    if (unknown_283C.GetCount() < 2)
         return;
     int nameCount = 0;
     memset(unknown_2E28, 0, sizeof(unknown_2E28));

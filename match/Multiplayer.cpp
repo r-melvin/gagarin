@@ -789,7 +789,7 @@ bool MultiplayerGameMode::vf_7(int)
 // random cell; an observer gets a random cell, or the first taken one; every
 // other house gets the free cell farthest in sum from the taken ones.
 //
-// PARTIAL (20.5% positional, 80.2% aligned: 219/273). CAPPED after three
+// PARTIAL (93.8% positional after the counts are read through GetCount(); was 20.5% positional, 80.2% aligned: 219/273). CAPPED after three
 // variants: (1) the observer search written out twice in place (20.9/82.1,
 // but it folds retail's `SETZ AL; TEST AL,AL` away); (2) the search as one
 // inline helper returning the node's observer test (kept: it reproduces the
@@ -800,17 +800,17 @@ bool MultiplayerGameMode::vf_7(int)
 Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, bool* taken)
 {
     int i;
-    for (i = 0; i < starts.Count; i++) {
+    for (i = 0; i < starts.GetCount(); i++) {
         if (DAT_00A8B230->unknown_1180.HouseIndex[i] != -1) {
             break;
         }
     }
 
-    if (i == starts.Count) {
+    if (i == starts.GetCount()) {
         DAT_00ABFDD4 = false;
         DAT_00ABFDD5 = false;
         if (IsObserverHouse(house)) {
-            int slot = DAT_00A8B230->unknown_0218.RandomRanged(0, starts.Count - 1);
+            int slot = DAT_00A8B230->unknown_0218.RandomRanged(0, starts.GetCount() - 1);
             taken[slot] = true;
             DAT_00A8B230->unknown_1180.HouseIndex[slot] = house;
             DAT_00ABFDD4 = true;
@@ -818,7 +818,7 @@ Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, boo
                          slot, starts.Items[slot].X, starts.Items[slot].Y);
             return starts.Items[slot];
         }
-        int slot = DAT_00A8B230->unknown_0218.RandomRanged(0, starts.Count - 1);
+        int slot = DAT_00A8B230->unknown_0218.RandomRanged(0, starts.GetCount() - 1);
         FUN_004068E0("First cell taken: %d (%d,%d)\n",
                      slot, starts.Items[slot].X, starts.Items[slot].Y);
         taken[slot] = true;
@@ -842,10 +842,10 @@ Cell MultiplayerGameMode::vf_49(int house, DynamicVectorClass<Cell>& starts, boo
 
     int best = -1;
     int bestDistance = -1;
-    for (int k = 0; k < starts.Count; k++) {
+    for (int k = 0; k < starts.GetCount(); k++) {
         if (!taken[k]) {
             int distance = 0;
-            for (int m = 0; m < starts.Count; m++) {
+            for (int m = 0; m < starts.GetCount(); m++) {
                 if (taken[m]) {
                     Cell d;
                     d.X = starts.Items[k].X - starts.Items[m].X;
@@ -954,7 +954,7 @@ bool MultiplayerGameMode::SpawnBaseUnits(HouseClass* house, int unused)
 // more than a third of the budget is left, infantry after. Twenty failed
 // placements end it early. False when no type qualifies.
 //
-// PARTIAL (5.0% positional, 63.5% aligned: 190/299). One draft, capped:
+// PARTIAL (15.7% positional after the counts are read through GetCount(); was 5.0% positional, 63.5% aligned: 190/299). One draft, capped:
 // retail calls the VectorClass base constructors out of line (0x5D8950,
 // 0x5D89A0) where cl 8804 expands the canonical template constructor in
 // place, which shifts the whole frame set-up; the same out-of-line/inline
@@ -971,22 +971,22 @@ bool MultiplayerGameMode::vf_51(HouseClass* house, int* budget)
     unsigned int mask = 1 << ((HouseTypeClass*)house->Type)->ArrayIndex;
     int i;
 
-    for (i = 0; i < UnitTypeArray_00A83CE0.Count; i++) {
+    for (i = 0; i < UnitTypeArray_00A83CE0.GetCount(); i++) {
         UnitType_005D70F0* type = UnitTypeArray_00A83CE0.Items[i];
         if (type->unknown_6D5 && (type->unknown_6CC & mask)
             && type->unknown_634 <= house->TechLevel) {
             int k;
-            for (k = 0; k < RulesInstance_008871E0->unknown_B20.Count; k++) {
+            for (k = 0; k < RulesInstance_008871E0->unknown_B20.GetCount(); k++) {
                 if (RulesInstance_008871E0->unknown_B20.Items[k] == type) {
                     break;
                 }
             }
-            if (k == RulesInstance_008871E0->unknown_B20.Count) {
+            if (k == RulesInstance_008871E0->unknown_B20.GetCount()) {
                 units.AddItem(type);
             }
         }
     }
-    for (i = 0; i < InfantryTypeArray_00A8E348.Count; i++) {
+    for (i = 0; i < InfantryTypeArray_00A8E348.GetCount(); i++) {
         InfantryType_005D70F0* type = InfantryTypeArray_00A8E348.Items[i];
         if (type->unknown_6D5 && (type->unknown_6CC & mask)
             && type->unknown_634 <= house->TechLevel) {
@@ -994,17 +994,17 @@ bool MultiplayerGameMode::vf_51(HouseClass* house, int* budget)
         }
     }
 
-    if (units.Count == 0 && infantry.Count == 0) {
+    if (units.GetCount() == 0 && infantry.GetCount() == 0) {
         return false;
     }
 
     int tries = 20;
     while (*budget > 0 && tries > 0) {
         TechnoType_005D70F0* type;
-        if (*budget > initial / 3 && units.Count != 0) {
-            type = units.Items[DAT_00A8B230->unknown_0218.RandomRanged(0, units.Count - 1)];
+        if (*budget > initial / 3 && units.GetCount() != 0) {
+            type = units.Items[DAT_00A8B230->unknown_0218.RandomRanged(0, units.GetCount() - 1)];
         } else {
-            type = infantry.Items[DAT_00A8B230->unknown_0218.RandomRanged(0, infantry.Count - 1)];
+            type = infantry.Items[DAT_00A8B230->unknown_0218.RandomRanged(0, infantry.GetCount() - 1)];
         }
         Techno_005D70F0* techno = (Techno_005D70F0*)FUN_007CAAE4(
             (type->*type->Vtbl->vt_8C)(house), 0, TypeDesc_ObjectClass, TypeDesc_TechnoClass, 0);

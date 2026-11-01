@@ -55,12 +55,12 @@ void __cdecl FUN_00595CE0(void)
     }
     delete data;
 
-    while (list.Count > 70) {
+    while (list.GetCount() > 70) {
         int oldest = -1;
         FILETIME best;
         best.dwLowDateTime = 0xFFFFFFFF;
         best.dwHighDateTime = 0x7FFFFFFF;
-        for (int i = 0; i < list.Count; i++) {
+        for (int i = 0; i < list.GetCount(); i++) {
             if (list.Items[i]->ftLastAccessTime.dwHighDateTime != 0) {
                 if (CompareFileTime(&list.Items[i]->ftLastAccessTime, &best) == -1) {
                     oldest = i;
@@ -91,7 +91,7 @@ void __cdecl FUN_00595CE0(void)
         list.Delete(oldest);
     }
 
-    while (list.Count != 0) {
+    while (list.GetCount() != 0) {
         delete list.Items[0];
         list.Delete(0);
     }

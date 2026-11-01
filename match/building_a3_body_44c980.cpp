@@ -221,7 +221,7 @@ int BuildingA3View::vf_148()
                 }
                 if (!vf_33()->unknown_CD5) {
                     HBCounterView& rand = DAT_00886B88;
-                    int sound = weapon->unknown_BC.Items[rand.FUN_0065C780() % weapon->unknown_BC.Count];
+                    int sound = weapon->unknown_BC.Items[rand.FUN_0065C780() % weapon->unknown_BC.GetCount()];
                     FUN_007509E0(sound, &vf_44(0, zero), 0);
                 }
                 Status = 3;

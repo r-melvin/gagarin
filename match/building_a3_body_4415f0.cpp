@@ -123,7 +123,7 @@ void BuildingA3View::vf_315(int unused, int a, char flag, short* list)
             if (mem) {
                 int delay = DAT_00A8B230->Counter.FUN_0065C7E0(0, 3);
                 BA3TypeView* type = Type;
-                mem->FUN_00421EA0(type->unknown_72C.Items[DAT_00A8B230->Counter.FUN_0065C780() % type->unknown_72C.Count],
+                mem->FUN_00421EA0(type->unknown_72C.Items[DAT_00A8B230->Counter.FUN_0065C780() % type->unknown_72C.GetCount()],
                                   &spawn, delay, 1, 0x600, 0, 0);
             }
         }

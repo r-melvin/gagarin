@@ -962,15 +962,15 @@ unsigned char Obj_006E0ED0::FUN_006E0ED0(Arg1_006E0ED0* a1, int a2, int a3, int 
 }
 
 // FUNCTION: GAMEMD 0x6E0EF0
-// PARTIAL: 96.1% -- identical instruction multiset; retail stores the auto-base flag before loading
-// the construction-yard count, this build loads the count first.
+// The construction-yard count is read through the vector's inline GetCount(), which keeps retail's
+// order: the auto-base flag is stored first.
 // Switch the house's automatic base building on (re-centring its base on its first construction
 // yard) or off.
 bool TActionClass::FUN_006E0EF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
     if (*(char*)&unknown_90 != 0) {
         house->AutoBaseBuilding = 1;
-        int yards = house->ConYards.Count;
+        int yards = house->ConYards.GetCount();
         if (yards > 0) {
             CoordStruct where = house->ConYards.Items[0]->Location;
             Cell base;
