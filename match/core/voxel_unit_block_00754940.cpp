@@ -9,7 +9,7 @@
 // draw routines are not.
 
 #include "../core/header_tuning_globals.h"
-#include "../renderer/matrix3d_rotate_methods.h"
+#include "../matrix3d_rotate_methods.h"
 #include "../_layout/matrix3d.h"
 #include "../_layout/quaternion.h"
 #include "voxel_section_source.h"

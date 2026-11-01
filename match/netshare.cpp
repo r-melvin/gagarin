@@ -514,7 +514,7 @@ static inline void Publish_Options_Inline(char force, char poll)
 //   Imports: GetDlgItem 0x7E14A8, SendMessageA 0x7E14A4, InvalidateRect 0x7E149C.
 
 #include "netshare_slot_inline.h"
-#include "renderer/pcx_get_surface_methods.h"
+#include "pcx_get_surface_methods.h"
 
 // GLOBAL: GAMEMD 0xAC10C8 -- nonzero when the local player joins as an observer.
 extern int DAT_00AC10C8;
@@ -606,7 +606,7 @@ int FUN_004E59A0(int control);
 //   Imports: GetDlgItem 0x7E14A8, EnableWindow 0x7E14A0, ShowWindow 0x7E1498.
 
 #include "netshare_slot_inline.h"
-#include "renderer/pcx_get_surface_methods.h"
+#include "pcx_get_surface_methods.h"
 
 // GLOBAL: GAMEMD 0xA8B254 -- the selected map's list index, -1 when none.
 extern int DAT_00A8B254;

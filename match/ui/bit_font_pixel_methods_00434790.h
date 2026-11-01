@@ -9,7 +9,7 @@
 #define GG_MATCH_UI_BIT_FONT_PIXEL_METHODS_00434790_H
 
 #include <stddef.h>
-#include "../renderer/bit_font.h"
+#include "../bit_font.h"
 #include "../_rt/gg_static_assert.h"
 
 struct BitFontPixelMethods_00434790

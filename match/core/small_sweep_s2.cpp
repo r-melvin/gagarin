@@ -9,7 +9,7 @@
 #include <wchar.h>
 #include <stdlib.h>
 #include "../_rt/gg_static_assert.h"
-#include "../renderer/screen_palette_mgr_methods.h"
+#include "../screen_palette_mgr_methods.h"
 #include "../vox_class_play_index_methods.h"
 
 void FUN_00730530();

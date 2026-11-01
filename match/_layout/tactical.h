@@ -9,7 +9,7 @@
 #define GG_MATCH_LAYOUT_TACTICAL_H
 #include "abstract_class.h"
 #include "elapsed_timer.h"
-#include "../renderer/tactical_class_client_to_coords_methods.h"
+#include "../tactical_class_client_to_coords_methods.h"
 GG_STATIC_ASSERT(offsetof(Point2D_006D2280, X) == 0);
 GG_STATIC_ASSERT(offsetof(Point2D_006D2280, Y) == 4);
 

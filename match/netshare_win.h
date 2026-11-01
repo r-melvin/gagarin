@@ -27,7 +27,7 @@ HWND FUN_007759B0(HWND window);
 // FUNCTION: GAMEMD 0x775690 (decl; reloc) -- __fastcall: a control's rectangle.
 void FUN_00775690(HWND window, RECT* rect);
 
-#include "renderer/bit_font.h"
+#include "bit_font.h"
 // GLOBAL: GAMEMD 0x89C4D0
 extern BitFont* DAT_0089C4D0;
 

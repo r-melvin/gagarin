@@ -9,7 +9,7 @@
 //   the timer and stage agree with
 //   match/_layout/techno_class.h (IronTintTimer @0x198, IronTintStage @0x1A4).
 //   Shape mirrors the sibling GetAirstrikeTintIntensity (0x70E4B0) in
-//   match/renderer/techno_class_airstrike_tint_methods.h.
+//   match/techno_class_airstrike_tint_methods.h.
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_INVULN_TINT_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_INVULN_TINT_METHODS_H
 

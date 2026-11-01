@@ -89,7 +89,7 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
 #include "../ccini_class_small_readers_methods.h"
 #include "../file_system_load_whole_methods.h"
-#include "../renderer/pixel_shift_view.h"
+#include "../pixel_shift_view.h"
 #include "../multiplayer_game_mode.h"
 
 // The native vptr at RadarClass+0x1224 is 0x7E3890, whose retail RTTI type

@@ -881,7 +881,7 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 #include "core/cell_step_tables.h"
 #include "cell_class_bridge_tile_queries.h"
 
-#include "renderer/techno_class_drawer_methods.h"
+#include "techno_class_drawer_methods.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
 HouseClass* DAT_00A83D4C;
@@ -1410,7 +1410,7 @@ struct IntPair_00723CA0
 };
 GG_STATIC_ASSERT(offsetof(IntPair_00723CA0, Second) == 0x04);
 
-#include "renderer/techno_class_airstrike_tint_methods.h"
+#include "techno_class_airstrike_tint_methods.h"
 
 #include "_layout/techno_class.h"
 #include "_layout/techno_type_class.h"

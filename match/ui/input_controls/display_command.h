@@ -12,7 +12,7 @@
 #ifndef GG_MATCH_UI_INPUT_CONTROLS_DISPLAY_COMMAND_H
 #define GG_MATCH_UI_INPUT_CONTROLS_DISPLAY_COMMAND_H
 
-#include "../../renderer/pixel_shift_view.h"
+#include "../../pixel_shift_view.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"

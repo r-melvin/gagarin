@@ -199,7 +199,7 @@ void __cdecl FUN_0045EC80();
 // running pointer (71.6%, dropped). The anim-slot macros, the unmodified statement order and all key strings
 // are as retail.
 
-#include "renderer/font_bias_methods.h"
+#include "font_bias_methods.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

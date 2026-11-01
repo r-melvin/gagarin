@@ -15,7 +15,7 @@
 #ifndef GG_MATCH_UI_BIT_TEXT_PRINT_METHODS_H
 #define GG_MATCH_UI_BIT_TEXT_PRINT_METHODS_H
 
-#include "../renderer/bit_font.h"
+#include "../bit_font.h"
 
 // FUNCTION: GAMEMD 0x434B90
 int __stdcall FUN_00434B90(BitFont* font, Surface* surface, const unsigned short* text,

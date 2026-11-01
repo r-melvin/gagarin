@@ -26,7 +26,7 @@
 #ifndef GG_MATCH_UI_PREVIEW_CLASS_SURFACE_METHODS_H
 #define GG_MATCH_UI_PREVIEW_CLASS_SURFACE_METHODS_H
 
-#include "../renderer/pixel_shift_view.h"
+#include "../pixel_shift_view.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"

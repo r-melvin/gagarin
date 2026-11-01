@@ -115,7 +115,7 @@ struct Obj_00420960
     char unknown_00[0x40];
 };
 
-// The line trail fields used here (match/renderer/line_trail.h models Color
+// The line trail fields used here (match/line_trail.h models Color
 // as a byte array).
 struct LineTrailView
 {

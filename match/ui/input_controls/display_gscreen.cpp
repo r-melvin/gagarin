@@ -5,7 +5,7 @@
 
 #include <string.h>
 #include "display_gscreen.h"
-#include "../../renderer/dsurface_class.h"
+#include "../../dsurface_class.h"
 
 
 // FUNCTION: GAMEMD 0x40D230

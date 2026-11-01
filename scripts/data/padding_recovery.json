@@ -83,7 +83,7 @@
   {
    "addr": "0x72B9E0",
    "length": "0x22",
-   "source": "match/renderer/screen_menu_resource_methods.cpp",
+   "source": "match/screen_menu_resource_methods.cpp",
    "rea_evidence_id": "ev_337fa4ed576fcc87b5f931c139fda3fe8a5bcc2dcff4851087ae17cc5b1d7d61",
    "analysis_target": {
     "entry_point": "0x72b9e0",

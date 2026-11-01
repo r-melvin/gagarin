@@ -31,7 +31,7 @@
 #include "netshare_slot_nodes.h"
 #include "core/mathtbl_init_shapes.h"
 #include <windows.h>
-#include "renderer/pcx_get_surface_methods.h"
+#include "pcx_get_surface_methods.h"
 #include "_layout/rec12_008b3f38.h"
 #include "_layout/rec12_008b4040.h"
 #include <math.h>

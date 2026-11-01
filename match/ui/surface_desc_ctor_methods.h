@@ -11,7 +11,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-#include "../renderer/bit_font.h"
+#include "../bit_font.h"
 
 extern "C" __declspec(dllimport) int __stdcall SetRect(LTRBStruct*, int, int, int, int);
 

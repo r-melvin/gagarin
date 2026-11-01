@@ -33,7 +33,7 @@
 #include "../_layout/house_type_class.h"
 #include "../core/header_tuning_globals.h"
 #include "../core/vector_class.h"
-#include "../renderer/pcx_get_surface_methods.h"
+#include "../pcx_get_surface_methods.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 

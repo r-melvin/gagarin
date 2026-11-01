@@ -50,7 +50,7 @@ extern const char STR_00840B98[];
 // STRING: GAMEMD 0x840BB0
 extern const char STR_00840BB0[];
 
-#include "../renderer/yrddraw_dispose_methods.h"
+#include "../yrddraw_dispose_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

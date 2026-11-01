@@ -19,7 +19,7 @@ inline unsigned short* BTranslucentWrapRow(unsigned short* row)
     return row;
 }
 
-#include "../../renderer/pixel_shift_view.h"
+#include "../../pixel_shift_view.h"
 
 // BlitTranslucent50NonzeroAlpha<unsigned short>  RTTI .?AV?$BlitTranslucent50NonzeroAlpha@G@@
 // Draws a pixel only where the source byte is nonzero AND the alpha-row word

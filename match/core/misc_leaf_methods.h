@@ -20,7 +20,7 @@
 // dropped from this file — they collide with in-flight work already staked
 // out (as "(decl; reloc)" forward declarations) in
 // match/scratch_buffer_vector_methods.h (ScratchEntry's out-of-line
-// default ctor) and match/renderer/color_scheme_iterator_methods.h
+// default ctor) and match/color_scheme_iterator_methods.h
 // (Entry_00626690::IsBlank), both of which model a deeper surrounding class
 // than the bare-pointer shape used here. Left for whoever owns that cluster.
 #ifndef GG_MATCH_CORE_MISC_LEAF_METHODS_H

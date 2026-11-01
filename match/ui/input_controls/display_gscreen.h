@@ -19,7 +19,7 @@
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
 #include "mouse_ww_mouse_class.h"
-#include "../../renderer/composite_surface.h"
+#include "../../composite_surface.h"
 
 // GLOBAL: GAMEMD 0x7F7C90 -- IID_IUnknown.
 extern const DisplayGuid IID_IUnknown_007F7C90;

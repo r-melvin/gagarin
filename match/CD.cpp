@@ -206,7 +206,7 @@ GG_STATIC_ASSERT(sizeof(DAT_0089E418) == 4);
 #include "ccfile_class.h"
 
 #include "ui/input_controls/sidebar_cctooltip.h"
-#include "renderer/dsurface_class.h"
+#include "dsurface_class.h"
 
 // The display's pixel packer, expanded inline (see sidebar_cctooltip.h).
 inline unsigned int PackColor(const RGBClass& c)

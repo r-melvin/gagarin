@@ -8,7 +8,7 @@
 #ifndef GG_MATCH_UI_BIT_TEXT_CTOR_METHODS_H
 #define GG_MATCH_UI_BIT_TEXT_CTOR_METHODS_H
 
-#include "../renderer/bit_font.h"
+#include "../bit_font.h"
 
 // GLOBAL: GAMEMD 0x89C4D0 — the game font instance this constructor installs.
 // Retail writes it on both paths, storing null when the allocation fails.

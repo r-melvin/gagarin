@@ -93,12 +93,12 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/color_struct.h"
 #include "_layout/house_class.h"
-#include "renderer/pixel_pack_methods.h"
+#include "pixel_pack_methods.h"
 #include "_layout/player_ptr_00a83d4c.h"
 #include "core/techno_class_house.h"
 #include <stdlib.h>
-#include "renderer/dsurface_class.h"
-#include "renderer/composite_surface.h"
+#include "dsurface_class.h"
+#include "composite_surface.h"
 #include "_layout/tactical_viewport.h"
 
 int DAT_00AC4B84[24];
@@ -565,7 +565,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 
 #include "core/vector_remove_item_family_methods.h"
 
-#include "renderer/pixel_pack_methods.h"
+#include "pixel_pack_methods.h"
 
 #include <stdlib.h>
 #include "ui/planning_manager_rbutton_methods.h"
@@ -583,7 +583,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 #include "planning_manager.h"
 #include "_layout/house_class.h"
 #include "_layout/object_type_class.h"
-#include "renderer/dsurface_class.h"
+#include "dsurface_class.h"
 #include "ui/input_controls/mouse_ww_mouse_class.h"
 
 #include "_layout/tactical.h"
@@ -1117,7 +1117,7 @@ void PlanningNodeClass::FUN_00635310()
 
 // FUNCTION: GAMEMD 0x72AD20 (decl; reloc) -- the tactical view's screen rectangle (written to `out`).
 RectangleStruct* FUN_0072AD20(RectangleStruct* out);
-#include "renderer/composite_surface.h"
+#include "composite_surface.h"
 
 // FUNCTION: GAMEMD 0x635350
 // PARTIAL: 96.0%, same instruction multiset; the intermediate sums of the overlap test and the list-grow

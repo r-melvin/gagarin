@@ -49,7 +49,7 @@
 #include "loco_interfaces.h"
 #include "wdt_map.h"
 #include "world_domination_tour.h"
-#include "renderer/tactical_class_client_to_coords_methods.h"
+#include "tactical_class_client_to_coords_methods.h"
 #include "ui/control_class.h"
 #include "loco_base.h"
 #include "loco_com.h"

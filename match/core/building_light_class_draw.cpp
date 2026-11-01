@@ -5,10 +5,10 @@
 //   DSurface::Temp, whose clip rectangle comes from slot 30 (0x78, GetRect,
 //   hidden result pointer), matching surface_class.h.
 #include "../_layout/building_light_class.h"
-#include "../renderer/shadow_block_list_methods.h"
+#include "../shadow_block_list_methods.h"
 #include "../map_class_methods.h"
 #include "../wwlib/surface/surface_class.h"
-#include "../renderer/matrix3d_rotate_methods.h"
+#include "../matrix3d_rotate_methods.h"
 #include "../core/rules_class.h"
 #include "../ui/tactical_class_coords_to_client_methods.h"
 #include "../ui/tactical_class_position_methods.h"

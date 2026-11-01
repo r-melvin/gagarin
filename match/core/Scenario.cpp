@@ -77,7 +77,7 @@
 #include "../winsock_interface_class.h"
 #include "../ui/message_list_class_methods.h"
 #include "../_layout/map_seed_class.h"
-#include "../renderer/color_scheme_find_methods.h"
+#include "../color_scheme_find_methods.h"
 #include "vector_add_item_free.h"
 extern char DAT_00ABDFD8[]; // GLOBAL: GAMEMD 0xABDFD8
 
@@ -541,8 +541,8 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 // GLOBAL: GAMEMD 0x008B4124
 extern "C" Type_006A46D0** DAT_008B4124;
 
-#include "../renderer/color_scheme_find_methods.h"
-#include "../renderer/convert_class_create_methods.h"
+#include "../color_scheme_find_methods.h"
+#include "../convert_class_create_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).

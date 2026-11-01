@@ -4,7 +4,7 @@
 //   (0x4355B0), blends it towards the colour at 0xA80220 (0x6612C0) and packs
 //   it with Drawing::RGB_To_Int (0x4355D0) through the six pixel-format shift
 //   globals at 0x8A0DD0..0x8A0DE4.
-#include "../renderer/pixel_shift_view.h"
+#include "../pixel_shift_view.h"
 #include "bit_font_print_methods.h"
 #include "../wwlib/surface/drawing.h"
 #include "../core/small_struct_ctor_methods.h"

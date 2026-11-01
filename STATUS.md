@@ -1064,7 +1064,7 @@ translation units**, and **1,283 tracked C++ files**. Whole-repository regressio
 verification, the project object build and 142 tooling tests pass, and the
 compile/layout check passes on the tracked tree.
 
-match/renderer/screen_resource_methods.cpp covers the screen resource block
+match/screen_resource_methods.cpp covers the screen resource block
 0x72A6B0..0x72D9A0 in address order: the block's run-time initialiser chain,
 the point and rectangle helpers, and the per-screen load, release and query
 families over whole-file blocks and palette sets. It adds 160 exact rows and

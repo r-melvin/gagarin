@@ -43,9 +43,9 @@
 #include "../../FUNCTION.H"
 #include "../../core/mathtbl_init_shapes.h"
 #include "../../core/cell_step_tables.h"
-#include "../../renderer/tactical_class_matrix_methods.h"
+#include "../../tactical_class_matrix_methods.h"
 #include "../tactical_class_coords_to_client_methods.h"
-#include "../../renderer/tactical_class_selectable_methods.h"
+#include "../../tactical_class_selectable_methods.h"
 #include "../../_layout/geometry2d.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
@@ -192,7 +192,7 @@ template class DynamicVectorClass<TRect<int> >;
 template class DynamicVectorClass<DirtyAreaStruct>;
 
 
-#include "../../renderer/tactical_class_coords_to_screen_methods.h"
+#include "../../tactical_class_coords_to_screen_methods.h"
 
 // Lepton (x, y) to the un-normalised iso pixel offset, read through a pointer
 // to a two-int local. This is the pClient shape of the sibling
@@ -1107,7 +1107,7 @@ void Tactical::FUN_006D3040(const RectangleStruct* first,
     }
 }
 
-#include "../../renderer/rectangle_dispatch.h"
+#include "../../rectangle_dispatch.h"
 
 // FUNCTION: GAMEMD 0x6D3290
 void Tactical::FUN_006D3290(const RectangleStruct* first,
@@ -1352,15 +1352,15 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 
 #include "../../airstrike_class_methods.h"
 #include "../../super_weapon_type_class_methods.h"
-#include "../../renderer/color_scheme_find_methods.h"
+#include "../../color_scheme_find_methods.h"
 #include "../../core/scenario_class_methods.h"
 #include "../../beacon_manager_class.h"
 #include <mmsystem.h>
 
 // GLOBAL: GAMEMD 0x887314
 extern Surface* DAT_00887314;
-#include "../../renderer/dsurface_class.h"
-#include "../../renderer/composite_surface.h"
+#include "../../dsurface_class.h"
+#include "../../composite_surface.h"
 // GLOBAL: GAMEMD 0xB0E63C
 extern bool DAT_00B0E63C;
 // GLOBAL: GAMEMD 0xA8EC78
@@ -1678,7 +1678,7 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
     unknown_D7D = false;
 }
 
-#include "../../renderer/bit_font.h"
+#include "../../bit_font.h"
 #include "../../core/spin_wait_methods.h"
 #include "../../audio_time_methods.h"
 // Declaration: GAMEMD 0x4A60D0; flags in ECX are unused by this retail getter.
@@ -1783,7 +1783,7 @@ void Tactical::FUN_006D4E00()
 
 
 #include "../../ui/shape_header.h"
-#include "../../renderer/pixel_shift_view.h"
+#include "../../pixel_shift_view.h"
 // GLOBAL: GAMEMD 0xA8F794 (declaration)
 extern ShapeHeader* DAT_00A8F794;
 // GLOBAL: GAMEMD 0xA8F798 (declaration)
@@ -3925,7 +3925,7 @@ void Tactical::FUN_006DA7D0(CellClass* cell)
     }
 }
 
-#include "../../renderer/pixel_shift_view.h"
+#include "../../pixel_shift_view.h"
 // GLOBAL: GAMEMD 0xA83CD9
 extern ColorStruct DAT_00A83CD9;
 // GLOBAL: GAMEMD 0xB0CEB4

@@ -5,7 +5,7 @@
 #ifndef GG_MATCH_EFFECTS_PARTICLES_PARTICLE_SHARED_H
 #define GG_MATCH_EFFECTS_PARTICLES_PARTICLE_SHARED_H
 
-#include "renderer/pixel_shift_view.h"
+#include "pixel_shift_view.h"
 #include "particle_common_types.h"
 #include "particle_common_vectors.h"
 #include "particle_common_views.h"

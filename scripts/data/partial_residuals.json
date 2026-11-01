@@ -1416,7 +1416,7 @@
  {
   "addr": "0x4BB620",
   "name": "DSurface::FillRectEx",
-  "tu": "match/renderer/tu072_d_surface.cpp",
+  "tu": "match/tu072_d_surface.cpp",
   "sym": "?FillRectEx@DSurface@@UAE_NPAURectangleStruct@@0I@Z",
   "len": "0x20e",
   "manifest_pct": 85.1,
@@ -2550,7 +2550,7 @@
  {
   "addr": "0x5AF710",
   "name": "Matrix3D::FUN_005AF710",
-  "tu": "match/renderer/quaternion_matrix_methods.cpp",
+  "tu": "match/quaternion_matrix_methods.cpp",
   "sym": "?FUN_005AF710@Matrix3D@@QAEXABUVector3D@@0M@Z",
   "len": "0x26D",
   "manifest_pct": 95.8,
@@ -3266,7 +3266,7 @@
  {
   "addr": "0x646480",
   "name": "Matrix3D::FromAxis",
-  "tu": "match/renderer/matrix3d_axis_methods.cpp",
+  "tu": "match/matrix3d_axis_methods.cpp",
   "sym": "?FromAxis@Matrix3D@@SI?AUQuaternion@@ABUVector3D@@M@Z",
   "len": "0x10A",
   "manifest_pct": 89.4,

@@ -128,7 +128,7 @@ static int FindBehavesLike(const char* name)
     return -1;
 }
 
-#include "renderer/quaternion_matrix_methods.h"
+#include "quaternion_matrix_methods.h"
 
 // Scale each component; the divisor is taken by value.
 static inline Vector3D Divide(const Vector3D& a, double d)

@@ -2,7 +2,7 @@
 // Provenance: own-binary; retail entries 0x4354D0, 0x435500, 0x435530.
 #ifndef GG_BIT_FONT_SINGLETON_METHODS_H
 #define GG_BIT_FONT_SINGLETON_METHODS_H
-#include "../renderer/bit_font.h"
+#include "../bit_font.h"
 #include "bit_text_ctor_methods.h"
 // FUNCTION: GAMEMD 0x4354D0 (decl)
 void CreateBitFontSingleton();

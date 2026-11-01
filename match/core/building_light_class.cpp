@@ -5,7 +5,7 @@
 //   load operands.
 #include "../FUNCTION.H"
 #include "../core/rules_class.h"
-#include "../renderer/quaternion_matrix_methods.h"
+#include "../quaternion_matrix_methods.h"
 
 // GLOBAL: GAMEMD 0x89C510 -- a CoordStruct used as the initial value of both light positions.
 extern CoordStruct DAT_0089C510;

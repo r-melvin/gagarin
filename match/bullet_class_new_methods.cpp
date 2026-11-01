@@ -17,7 +17,7 @@
 #include "core/scenario_class_methods.h"
 #include "core/vec3d_layout.h"
 #include "core/vector_add_item_free.h"
-#include "renderer/color_scheme_find_methods.h"
+#include "color_scheme_find_methods.h"
 #include "airstrike_class_methods.h"
 #include "parasite_class_infect_methods.h"
 #include "core/small_misc35_methods.h"

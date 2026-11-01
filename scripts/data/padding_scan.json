@@ -8169,7 +8169,7 @@
   },
   {
    "addr": "0x72B460",
-   "tu": "match/renderer/screen_palette_mgr_methods.cpp",
+   "tu": "match/screen_palette_mgr_methods.cpp",
    "name": "FreeLoadingScreenPalettes",
    "reason": "no-preceding-CC-or-90"
   },

@@ -4,7 +4,7 @@
 // Native entry addresses remain annotated below; original TU attribution is unknown.
 
 #include "_layout/matrix3d.h"
-#include "renderer/matrix3d_rotate_methods.h"
+#include "matrix3d_rotate_methods.h"
 #include <math.h>
 
 // Existing runtime call used by the heading methods; source body unchanged.

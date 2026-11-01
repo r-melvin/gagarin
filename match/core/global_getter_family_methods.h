@@ -10,7 +10,7 @@
 #ifndef GG_MATCH_CORE_GLOBAL_GETTER_FAMILY_METHODS_H
 #define GG_MATCH_CORE_GLOBAL_GETTER_FAMILY_METHODS_H
 
-#include "../renderer/pixel_shift_view.h"
+#include "../pixel_shift_view.h"
 
 // GLOBAL: GAMEMD 0x1
 extern int DAT_00000001;

@@ -140,7 +140,7 @@
 #include "listentry_006255f0.h"
 #include "../packet_class.h"
 #include "dialog_type_lookup_predicates.h"
-#include "../renderer/color_scheme_count_methods.h"
+#include "../color_scheme_count_methods.h"
 
 class EntryList_006255F0
 {
@@ -444,9 +444,9 @@ extern "C" void __cdecl gg_free(void*);
 
 template class DynamicVectorClass<HSVClass>;
 
-#include "../renderer/cache_key_extent_methods.h"
+#include "../cache_key_extent_methods.h"
 
-#include "../renderer/color_scheme_count_methods.h"
+#include "../color_scheme_count_methods.h"
 
 // The hash table's constructor: hash routine, bucket count, growth step 10,
 // then the bucket array (vector-new with the count cookie in front and the

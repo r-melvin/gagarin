@@ -16,8 +16,8 @@
 #ifndef GG_MATCH_UI_INPUT_CONTROLS_SIDEBAR_CCTOOLTIP_H
 #define GG_MATCH_UI_INPUT_CONTROLS_SIDEBAR_CCTOOLTIP_H
 
-#include "../../renderer/pixel_shift_view.h"
-#include "../../renderer/composite_surface.h"
+#include "../../pixel_shift_view.h"
+#include "../../composite_surface.h"
 #include "../../_layout/geometry2d.h"
 #include "../../_layout/rgb_class.h"
 #include "../bit_font_print_methods.h"

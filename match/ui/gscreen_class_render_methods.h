@@ -26,7 +26,7 @@
 #include "../_rt/gg_vslot.h"
 
 class Surface;
-#include "../renderer/composite_surface.h"
+#include "../composite_surface.h"
 
 // GLOBAL: GAMEMD 0x887300 — DSurface::Sidebar.
 extern Surface* DAT_00887300;
