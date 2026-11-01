@@ -167,8 +167,8 @@ extern const CLSID DAT_007E9850;
 extern const CLSID DAT_007E9830;
 
 #include "../../combat/airstrike_class_methods.h"
-#include "../../ai/taction_class_methods.h"
-#include "../../ai/tevent_class_methods.h"
+#include "../../taction_class_methods.h"
+#include "../../tevent_class_methods.h"
 #include "../../combat/super_weapon_type_class_methods.h"
 
 #include "../../core/trivial_tu229_methods.h"

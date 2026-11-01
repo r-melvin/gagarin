@@ -14,7 +14,7 @@
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/frame_timer.h"
 #include "../_layout/obj_004a1d30.h"
-#include "../ai/tevent_class_methods.h"
+#include "../tevent_class_methods.h"
 
 // A pointed-to object's RTTI-info interface subobject sits at +4; its slot 4 (+0x10),
 // __stdcall with the subobject as `this`, yields the id mixed into the checksum.

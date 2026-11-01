@@ -1090,7 +1090,7 @@ compile/layout check passes on the tracked tree.
 The keyboard command family now has one canonical nine-slot CommandClass base
 and the 47 command classes' bodies in match/ui/command_class.cpp, which absorbs
 the former deleting-destructor TU with identical bytes. The CommandClass table
-is emitted and verified 9/9. match/ai/planning_manager.cpp covers the planning
+is emitted and verified 9/9. match/planning_manager.cpp covers the planning
 block: its 20 run-time initialisers in retail order, PlanningMemberClass,
 PlanningBranchClass and PlanningNodeClass. Together they add 315 exact and 4
 partial rows. The scalar deleting destructors at 0x63ECA0 and 0x63ED40 are
@@ -3542,7 +3542,7 @@ link closure and complete executable reproduction remained unfinished.
 
 `TagTypeClass::Array` now uses the actual shared
 `DynamicVectorClass<TagTypeClass*>` type, replacing its layout-only declaration.
-The [registry definition](match/ai/tag_type_class_array.cpp) asserts its accessed
+The [registry definition](match/tag_type_class_array.cpp) asserts its accessed
 fields and complete 0x18-byte storage. Retail startup at `0x6E5AE0` confirms the
 concrete dynamic-vector table, empty items/capacity/count, flags 1/0 and growth
 10. The natural C++ static object reproduces that complete **61-byte initializer**
@@ -3744,7 +3744,7 @@ concrete `List<INISection*>` member is identified by RTTI but remains represente
 by its explicitly named GenericList prefix. Full native list construction,
 CCINIClass consolidation and the remaining nested-node views are still pending.
 
-The [TagTypeClass and TriggerTypeClass factories](match/ai/type_find_or_allocate_methods.cpp)
+The [TagTypeClass and TriggerTypeClass factories](match/type_find_or_allocate_methods.cpp)
 now use their native classes, registries and `new` expressions. Both full
 131-byte bodies retain their matches with no-GX flags. Tag INI loading calls
 the canonical TriggerTypeClass factory, removing its free-function alias.
@@ -3910,7 +3910,7 @@ dynamic Clear rows plus one DiskID stand-in, and 16 resize rows.
 
 ## Previous verified integration: native TagClass construction and one shared definition
 
-The [TagClass constructor](match/ai/tag_class_ctor.cpp) adds a full 380-byte
+The [TagClass constructor](match/tag_class_ctor.cpp) adds a full 380-byte
 match using native base and trigger constructor calls and a plain C++
 `new TriggerClass(...)` expression. The no-GX probe avoids exception cleanup
 absent from retail. Its coordinate source is a named global; two additional
@@ -3980,7 +3980,7 @@ At that snapshot, four methods retained conflicting legacy class definitions.
 Those definitions required consolidation before an integrated C++ build could
 satisfy the one-definition rule; complete TagClass hierarchy recovery was pending.
 
-[TagClass::Array](match/ai/tag_class_array.cpp) now has one 24-byte BSS
+[TagClass::Array](match/tag_class_array.cpp) now has one 24-byte BSS
 definition, consistent with the pinned image's loader-zero section tail.
 This establishes initial storage, not later runtime initialization. The
 `/dll /noentry /nodefaultlib` diagnostic link reports 4,156 unique unresolved

@@ -53,7 +53,7 @@
     },
     {
       "address": "0x0041BB30",
-      "source": "match/ai/aircraft_helpers_0041bb30.cpp",
+      "source": "match/aircraft_helpers_0041bb30.cpp",
       "symbol": "?FUN_0041BB30@AircraftClass_0041BB30@@QAEXHHH@Z",
       "old_size": 87,
       "corrected_size": 160,
@@ -687,7 +687,7 @@
     },
     {
       "address": "0x0071F390",
-      "source": "match/ai/tevent_class_prepare_save_methods.cpp",
+      "source": "match/tevent_class_prepare_save_methods.cpp",
       "symbol": "?PrepareSaveToINI@TEvent_0071F390@@QAEXPAD@Z",
       "old_size": 224,
       "corrected_size": 333,
@@ -701,7 +701,7 @@
     },
     {
       "address": "0x0071F680",
-      "source": "match/ai/tevent_class_attach_type_methods.cpp",
+      "source": "match/tevent_class_attach_type_methods.cpp",
       "symbol": "?GetAttachType@TEventClass_0071F680@@SIIH@Z",
       "old_size": 120,
       "corrected_size": 374,

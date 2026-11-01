@@ -1,6 +1,6 @@
 [
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x41F0D0",
   "sym": "?IronCurtainCharged@AITriggerTypeClass@@QBE_NPAVHouseClass@@0@Z",
   "len": "0xab",
@@ -9,7 +9,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x41F180",
   "sym": "?ChronoSphereCharged@AITriggerTypeClass@@QBE_NPAVHouseClass@@0@Z",
   "len": "0xab",
@@ -18,7 +18,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FD60",
   "sym": "?RegisterSuccess@AITriggerTypeClass@@QAEXXZ",
   "len": "0xbf",
@@ -27,7 +27,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FE20",
   "sym": "?RegisterFailure@AITriggerTypeClass@@QAEXXZ",
   "len": "0xbb",
@@ -36,7 +36,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x41F490",
   "sym": "?SaveToINIList@AITriggerType_0041F490@@SIXPAUCCINI_0041F490@@H@Z",
   "len": "0xE5",
@@ -45,7 +45,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x41EAF0",
   "sym": "?EnemyHouseOwns@AITriggerType_0041EAF0@@QAE_NPAUHouse_0041EAF0@@0@Z",
   "len": "0x198",
@@ -55,7 +55,7 @@
   "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EC34. pct is diff_retail's instruction diagnostic over the code prefix 0x144, with the switch table slots compared separately."
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x41EE90",
   "sym": "?OwnerHouseOwns@AITriggerType_0041EAF0@@QAE_NPAUHouse_0041EAF0@@0@Z",
   "len": "0x198",
@@ -65,7 +65,7 @@
   "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EFD4. pct is diff_retail's instruction diagnostic over the code prefix 0x144, with the switch table slots compared separately."
  },
  {
-  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "tu": "match/aircraft_mission_004155f0.cpp",
   "addr": "0x4155F0",
   "sym": "?FUN_004155F0@Aircraft_004155F0@@QAEHXZ",
   "len": "0x1cd",
@@ -74,7 +74,7 @@
   "pct": 98.6
  },
  {
-  "tu": "match/ai/aircraft_tracker_class.cpp",
+  "tu": "match/aircraft_tracker_class.cpp",
   "addr": "0x4134A0",
   "sym": "?Add@AircraftTrackerClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0xec",
@@ -83,7 +83,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_tracker_class.cpp",
+  "tu": "match/aircraft_tracker_class.cpp",
   "addr": "0x4135D0",
   "sym": "?Remove@AircraftTrackerClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0xe9",
@@ -92,7 +92,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_tracker_class.cpp",
+  "tu": "match/aircraft_tracker_class.cpp",
   "addr": "0x4137A0",
   "sym": "?Get@AircraftTrackerClass@@QAEPAVTechnoClass@@XZ",
   "len": "0x5b",
@@ -101,7 +101,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_tracker_class.cpp",
+  "tu": "match/aircraft_tracker_class.cpp",
   "addr": "0x413800",
   "sym": "?Clear@AircraftTrackerClass@@QAEXXZ",
   "len": "0x4d",
@@ -110,7 +110,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_tracker_update_methods.cpp",
+  "tu": "match/aircraft_tracker_update_methods.cpp",
   "addr": "0x4138C0",
   "sym": "?Update@AircraftTracker_004138C0@@QAEXPAVTechno_004138C0@@UCellStruct_004138C0@@1@Z",
   "len": "0x16C",
@@ -128,7 +128,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/deploy_ready_methods.cpp",
+  "tu": "match/deploy_ready_methods.cpp",
   "addr": "0x41B890",
   "sym": "?FUN_0041B890@AircraftClass_0041B890@@QAE_NXZ",
   "len": "0x67",
@@ -137,7 +137,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/foot_class_recruit_methods.cpp",
+  "tu": "match/foot_class_recruit_methods.cpp",
   "addr": "0x4DA230",
   "sym": "?CanBeRecruited@FootClass@@QAE_NPAVHouseClass@@@Z",
   "len": "0x67",
@@ -218,7 +218,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "tu": "match/house_class_lookup_methods.cpp",
   "addr": "0x510ED0",
   "sym": "?FindByPlayerAt@HouseClass@@SIPAV1@H@Z",
   "len": "0x82",
@@ -272,7 +272,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/house_class_psi_warn_methods.cpp",
+  "tu": "match/house_class_psi_warn_methods.cpp",
   "addr": "0x43B5E0",
   "sym": "?PsiWarn@HouseClass@@QAIPAVAnimClass@@PAVCellClass@@PAVBulletClass@@PBD@Z",
   "len": "0x93",
@@ -290,7 +290,7 @@
   "pct": 81.9
  },
  {
-  "tu": "match/ai/house_class_spy_planes_methods.cpp",
+  "tu": "match/house_class_spy_planes_methods.cpp",
   "addr": "0x65EAB0",
   "sym": "?SendSpyPlanes@HouseClass@@QAIHHHHPAVAbstractClass@@0@Z",
   "len": "0x180",
@@ -308,7 +308,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/mission_stop_methods.cpp",
+  "tu": "match/mission_stop_methods.cpp",
   "addr": "0x4158E0",
   "sym": "?FUN_004158E0@AircraftClass_004158E0@@QAEHXZ",
   "len": "0x7d",
@@ -344,7 +344,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_action_methods.cpp",
+  "tu": "match/script_class_action_methods.cpp",
   "addr": "0x691500",
   "sym": "?GetCurrentAction@ScriptClass@@QBEPAUScriptActionNode@@PAU2@@Z",
   "len": "0x37",
@@ -353,7 +353,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_action_methods.cpp",
+  "tu": "match/script_class_action_methods.cpp",
   "addr": "0x691540",
   "sym": "?GetNextAction@ScriptClass@@QBEPAUScriptActionNode@@PAU2@@Z",
   "len": "0x41",
@@ -362,7 +362,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_methods.cpp",
+  "tu": "match/script_class_methods.cpp",
   "addr": "0x691590",
   "sym": "?ClearMission@ScriptClass@@QAE_NXZ",
   "len": "0xA",
@@ -371,7 +371,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/script_class_methods.cpp",
+  "tu": "match/script_class_methods.cpp",
   "addr": "0x6915A0",
   "sym": "?SetMission@ScriptClass@@QAE_NH@Z",
   "len": "0xC",
@@ -380,7 +380,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/script_class_methods.cpp",
+  "tu": "match/script_class_methods.cpp",
   "addr": "0x6915B0",
   "sym": "?NextMission@ScriptClass@@QAE_NXZ",
   "len": "0x15",
@@ -389,7 +389,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/script_type_class.cpp",
+  "tu": "match/script_type_class.cpp",
   "addr": "0x691970",
   "sym": "?LoadFromINIList@ScriptTypeView_00691970@@SIXPAVCCINIClass@@H@Z",
   "len": "0x1B8",
@@ -398,7 +398,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/script_type_class.cpp",
+  "tu": "match/script_type_class.cpp",
   "addr": "0x691C00",
   "sym": "?FindOrAllocate@ScriptTypeView_00691970@@SIPAV1@PBD@Z",
   "len": "0x142",
@@ -425,7 +425,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3EE0",
   "sym": "?GetFlags@TActionClass@@SIHH@Z",
   "len": "0x8a",
@@ -434,7 +434,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E45E0",
   "sym": "?FindHouseByIndex@TActionClass@@SGHPAXH@Z",
   "len": "0x4D",
@@ -443,7 +443,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3B60",
   "sym": "?GetMode@TActionClass_006E3B60@@SIHH@Z",
   "len": "0x208",
@@ -452,7 +452,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_destroy_methods.cpp",
+  "tu": "match/tag_class_destroy_methods.cpp",
   "addr": "0x6E5230",
   "sym": "?Destroy@TagClass@@QAEXXZ",
   "len": "0x5C",
@@ -461,7 +461,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_destroy_methods.cpp",
+  "tu": "match/tag_class_destroy_methods.cpp",
   "addr": "0x6E52A0",
   "sym": "?GetInstance@TagClass@@SIPAV1@PAVTagTypeClass@@@Z",
   "len": "0x43",
@@ -470,7 +470,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_methods.cpp",
+  "tu": "match/tag_class_methods.cpp",
   "addr": "0x6E5300",
   "sym": "?HasCrossesVerticalLineEvent@TagClass@@QBE_NXZ",
   "len": "0x19",
@@ -479,7 +479,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_methods.cpp",
+  "tu": "match/tag_class_methods.cpp",
   "addr": "0x6E5320",
   "sym": "?HasCrossesHorizontalLineEvent@TagClass@@QBE_NXZ",
   "len": "0x19",
@@ -488,7 +488,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_methods.cpp",
+  "tu": "match/tag_class_methods.cpp",
   "addr": "0x6E5340",
   "sym": "?HasZoneEntryByEvent@TagClass@@QBE_NXZ",
   "len": "0x19",
@@ -497,7 +497,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_methods.cpp",
+  "tu": "match/tag_class_methods.cpp",
   "addr": "0x6E57C0",
   "sym": "?ShouldReplace@TagClass@@QBE_NXZ",
   "len": "0x21",
@@ -506,7 +506,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_more_methods.cpp",
+  "tu": "match/tag_class_more_methods.cpp",
   "addr": "0x6E5380",
   "sym": "?ContainsTrigger@TagClass@@QBE_NPAVTriggerClass@@@Z",
   "len": "0x20",
@@ -515,7 +515,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_more_methods.cpp",
+  "tu": "match/tag_class_more_methods.cpp",
   "addr": "0x6E5570",
   "sym": "?DeleteAll@TagClass@@SGXXZ",
   "len": "0x25",
@@ -524,7 +524,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_notify_methods.cpp",
+  "tu": "match/tag_class_notify_methods.cpp",
   "addr": "0x6E57F0",
   "sym": "?NotifyGlobalChanged@TagClass@@SIXH@Z",
   "len": "0x2D",
@@ -533,7 +533,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_notify_methods.cpp",
+  "tu": "match/tag_class_notify_methods.cpp",
   "addr": "0x6E5820",
   "sym": "?NotifyLocalChanged@TagClass@@SIXH@Z",
   "len": "0x2D",
@@ -542,7 +542,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_notify_methods.cpp",
+  "tu": "match/tag_class_notify_methods.cpp",
   "addr": "0x6E5850",
   "sym": "?IsOnlyInstanceOfType@TagClass@@QBE_NXZ",
   "len": "0x39",
@@ -551,7 +551,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E61F0",
   "sym": "?GetFlags@TagTypeClass@@QBEHXZ",
   "len": "0x26",
@@ -560,7 +560,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E6220",
   "sym": "?HasAllowWinAction@TagTypeClass@@QBE_NXZ",
   "len": "0x28",
@@ -569,7 +569,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E6250",
   "sym": "?HasCrossesHorizontalLineEvent@TagTypeClass@@QBE_NXZ",
   "len": "0x28",
@@ -578,7 +578,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E6280",
   "sym": "?HasCrossesVerticalLineEvent@TagTypeClass@@QBE_NXZ",
   "len": "0x28",
@@ -587,7 +587,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E62B0",
   "sym": "?HasZoneEntryByEvent@TagTypeClass@@QBE_NXZ",
   "len": "0x28",
@@ -596,7 +596,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E6080",
   "sym": "?ReadFromINI@TagTypeClass@@QAE_NPAUTagINI_006E6080@@@Z",
   "len": "0xdd",
@@ -605,7 +605,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E6160",
   "sym": "?WriteToINI@TagTypeClass@@QAE_NPAUTagINI_006E6080@@@Z",
   "len": "0x85",
@@ -614,7 +614,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E5ED0",
   "sym": "?LoadFromINIList@TagTypeClass@@SIXPAUCCINI_006E5ED0@@@Z",
   "len": "0x103",
@@ -623,7 +623,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E5E70",
   "sym": "?FindByNameOrID@TagTypeClass@@SIPAV1@PBD@Z",
   "len": "0x54",
@@ -632,7 +632,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E5FE0",
   "sym": "?SaveToINIList@TagTypeClass@@SIXPAUCCINI_006E5FE0@@@Z",
   "len": "0x91",
@@ -641,7 +641,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EA500",
   "sym": "?AddMember@Team_006EA500@@QAE_NPAUFoot_006EA500@@_N@Z",
   "len": "0x101",
@@ -650,7 +650,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EC3A0",
   "sym": "?ScanLimit@TeamClass@@QAEXXZ",
   "len": "0x30",
@@ -659,7 +659,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EF4D0",
   "sym": "?GetTaskForceMissingMemberTypes@Team_006EF4D0@@QAEXPAVTypeVector_006EF4D0@@@Z",
   "len": "0xE5",
@@ -668,7 +668,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6E9050",
   "sym": "?AssignMissionTarget@Team_006E9050@@QAEXPAUAbstract_006E9050@@@Z",
   "len": "0xef",
@@ -677,7 +677,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F09C0",
   "sym": "?CreateTeam@TeamTypeClass@@QAEPAVTeamClass@@PAVHouseClass@@@Z",
   "len": "0xAE",
@@ -686,7 +686,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F0A70",
   "sym": "?DestroyAllInstances@TeamTypeClass@@QAEXXZ",
   "len": "0x35",
@@ -695,7 +695,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F2040",
   "sym": "?ProcessAllTaskforces@TeamTypeClass@@SIXXZ",
   "len": "0x25",
@@ -704,7 +704,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F2070",
   "sym": "?GetHouse@TeamTypeClass@@QBEPAVHouseClass@@XZ",
   "len": "0x2C",
@@ -713,7 +713,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1F30",
   "sym": "?FlashAllInstances@TeamTypeClass@@QAEXH@Z",
   "len": "0x37",
@@ -722,7 +722,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1F70",
   "sym": "?FindFirstInstance@TeamTypeClass@@QBEPAVTeamClass@@XZ",
   "len": "0x28",
@@ -731,7 +731,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1870",
   "sym": "?GetGroup@TeamTypeClass@@QBEHXZ",
   "len": "0x21",
@@ -740,7 +740,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F18A0",
   "sym": "?GetWaypoint@TeamTypeClass@@QBEPAUCellStruct@@PAU2@@Z",
   "len": "0x39",
@@ -749,7 +749,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F18E0",
   "sym": "?GetTransportWaypoint@TeamTypeClass@@QBEPAUCellStruct@@PAU2@@Z",
   "len": "0x39",
@@ -758,7 +758,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1FA0",
   "sym": "?ProcessTaskForce@TeamTypeClass@@QAEXXZ",
   "len": "0x92",
@@ -767,7 +767,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6386E0",
   "sym": "?ClearPlanningTokens@Techno_006386E0@@QAIXPAURecord_006386E0@@@Z",
   "len": "0x151",
@@ -776,7 +776,7 @@
   "pct": 95.5
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634290",
   "sym": "?FUN_00634290@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
   "len": "0x32",
@@ -785,7 +785,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x639F80",
   "sym": "?FUN_00639F80@@YIXH@Z",
   "len": "0x24",
@@ -794,7 +794,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6385C0",
   "sym": "?TryNextPlanningTokenNode@TechnoClass@@QAE_NXZ",
   "len": "0x114",
@@ -803,7 +803,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tevent_class_attach_type_methods.cpp",
+  "tu": "match/tevent_class_attach_type_methods.cpp",
   "addr": "0x71F680",
   "sym": "?GetAttachType@TEventClass_0071F680@@SIIH@Z",
   "len": "0x176",
@@ -812,7 +812,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71F4E0",
   "sym": "?LoadFromINI@TEventClass@@QAEXXZ",
   "len": "0xd0",
@@ -821,7 +821,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71F950",
   "sym": "?GetStateA@TEventClass@@QBE_NXZ",
   "len": "0x63",
@@ -830,7 +830,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71F9C0",
   "sym": "?GetStateB@TEventClass@@QBE_NXZ",
   "len": "0x63",
@@ -839,7 +839,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_prepare_save_methods.cpp",
+  "tu": "match/tevent_class_prepare_save_methods.cpp",
   "addr": "0x71F390",
   "sym": "?PrepareSaveToINI@TEvent_0071F390@@QAEXPAD@Z",
   "len": "0x14d",
@@ -857,7 +857,7 @@
   "pct": 56.6
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x41F230",
   "sym": "?FUN_0041F230@Obj_0041F230@@QAE_NHPAUNode_0041F230@@@Z",
   "len": "0xac",
@@ -866,7 +866,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7265C0",
   "sym": "?FireActions@TriggerClass@@QAE_NPAVObjectClass@@UCellStruct@@@Z",
   "len": "0x66",
@@ -875,7 +875,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726720",
   "sym": "?Destroy@TriggerClass@@QAEXXZ",
   "len": "0x5C",
@@ -884,7 +884,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726250",
   "sym": "?HasCrossesHorizontalLineEvent@TriggerClass@@QBE_NXZ",
   "len": "0x34",
@@ -893,7 +893,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726290",
   "sym": "?HasCrossesVerticalLineEvent@TriggerClass@@QBE_NXZ",
   "len": "0x34",
@@ -902,7 +902,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7262D0",
   "sym": "?HasZoneEntryByEvent@TriggerClass@@QBE_NXZ",
   "len": "0x37",
@@ -911,7 +911,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726310",
   "sym": "?HasAllowWinAction@TriggerClass@@QBE_NXZ",
   "len": "0x37",
@@ -920,7 +920,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7263A0",
   "sym": "?NotifyGlobalChanged@TriggerClass@@QAEXH@Z",
   "len": "0x2C",
@@ -929,7 +929,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7263D0",
   "sym": "?NotifyLocalChanged@TriggerClass@@QAEXH@Z",
   "len": "0x2C",
@@ -938,7 +938,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726350",
   "sym": "?HasGlobalSetOrClearedEvent@TriggerClass@@QBE_NH@Z",
   "len": "0x4e",
@@ -947,7 +947,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726630",
   "sym": "?GetInstance@TriggerClass@@SIPAV1@PAVTriggerTypeClass@@@Z",
   "len": "0x53",
@@ -956,7 +956,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_reset_timers_methods.cpp",
+  "tu": "match/trigger_class_reset_timers_methods.cpp",
   "addr": "0x726400",
   "sym": "?ResetTimers@TriggerClass@@QAEXXZ",
   "len": "0xbe",
@@ -965,7 +965,7 @@
   "pct": 73.5
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727120",
   "sym": "?FindByNameOrID@TriggerTypeClass@@SIPAV1@PBD@Z",
   "len": "0x61",
@@ -974,7 +974,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x7271E0",
   "sym": "?GetFlags@TriggerTypeClass@@QAEIXZ",
   "len": "0x58",
@@ -983,7 +983,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x7275D0",
   "sym": "?LoadFromINIList@TriggerTypeClass@@SIXPAUCCINI_007275D0@@@Z",
   "len": "0xc5",
@@ -992,7 +992,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x726F50",
   "sym": "?HasCrossesVerticalLineEvent@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1001,7 +1001,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x726F80",
   "sym": "?HasCrossesHorizontalLineEvent@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1010,7 +1010,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x726FB0",
   "sym": "?HasZoneEntryByEvent@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1019,7 +1019,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x726FE0",
   "sym": "?HasAllowWinAction@TriggerTypeClass@@QBE_NXZ",
   "len": "0x21",
@@ -1028,7 +1028,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727010",
   "sym": "?HasGlobalSetOrClearedEvent@TriggerTypeClass@@QBE_NH@Z",
   "len": "0x34",
@@ -1037,7 +1037,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727050",
   "sym": "?HasLocalSetOrClearedEvent@TriggerTypeClass@@QBE_NH@Z",
   "len": "0x34",
@@ -1046,7 +1046,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727880",
   "sym": "?SaveToINIList@TriggerTypeClass@@SIXPAUCCINI_00727880@@@Z",
   "len": "0x153",
@@ -3336,7 +3336,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420630",
   "sym": "??_G?$VectorClass@PAVAlphaLightingRemapClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -3345,7 +3345,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420680",
   "sym": "??_G?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -3813,7 +3813,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420370",
   "sym": "?Clear@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -3822,7 +3822,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x4204C0",
   "sym": "?Clear@?$VectorClass@PAVAlphaLightingRemapClass@@@@UAEXXZ",
   "len": "0x27",
@@ -4623,7 +4623,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420120",
   "sym": "?FUN_00420120@@YIPAXPAX@Z",
   "len": "0x3",
@@ -5074,7 +5074,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E58B0",
   "sym": "??_GTagClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -5083,7 +5083,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E64C0",
   "sym": "??_GTagTypeClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -5092,7 +5092,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6F0450",
   "sym": "??_GTeamClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -5129,7 +5129,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727CD0",
   "sym": "??_GTriggerTypeClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -6471,7 +6471,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x41FCA0",
   "sym": "?FUN_0041FCA0@@YIPADPBD@Z",
   "len": "0x83",
@@ -7614,7 +7614,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E30C0",
   "sym": "?FUN_006E30C0@IdCommandOwner@@QAI_NHHHPAXH@Z",
   "len": "0x53",
@@ -7623,7 +7623,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3120",
   "sym": "?FUN_006E3120@IdCommandOwner@@QAI_NHHHPAXH@Z",
   "len": "0x53",
@@ -7632,7 +7632,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3180",
   "sym": "?FUN_006E3180@IdCommandOwner@@QAI_NHHHPAXH@Z",
   "len": "0x53",
@@ -7641,7 +7641,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E31E0",
   "sym": "?FUN_006E31E0@IdCommandOwner@@QAI_NHHHPAXH@Z",
   "len": "0x53",
@@ -7650,7 +7650,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3240",
   "sym": "?FUN_006E3240@IdCommandOwner@@QAI_NHHHPAXH@Z",
   "len": "0x53",
@@ -7659,7 +7659,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E32A0",
   "sym": "?FUN_006E32A0@IdCommandOwner@@QAI_NHHHPAXH@Z",
   "len": "0x53",
@@ -8343,7 +8343,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E44C0",
   "sym": "?FUN_006E44C0@@YG_NPAXHHH@Z",
   "len": "0x17",
@@ -8352,7 +8352,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4540",
   "sym": "?FUN_006E4540@@YG_NPAXHHH@Z",
   "len": "0x17",
@@ -9864,7 +9864,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DB20",
   "sym": "?Contains@Rect_0063DB20@@QBEHPBUPoint_0063DB20@@@Z",
   "len": "0x3a",
@@ -12475,7 +12475,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6370A0",
   "sym": "?FUN_006370A0@@YIXPAX@Z",
   "len": "0x5",
@@ -12583,7 +12583,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6339B0",
   "sym": "?GetControllingHouse@TechnoClass@@QBEHXZ",
   "len": "0x25",
@@ -13213,7 +13213,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/type_find_or_allocate_methods.cpp",
+  "tu": "match/type_find_or_allocate_methods.cpp",
   "addr": "0x006E6310",
   "sym": "?FindOrAllocate@TagTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
@@ -13240,7 +13240,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x00727AA0",
   "sym": "?FindOrAllocate@TriggerTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
@@ -14536,7 +14536,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63dc20",
   "sym": "?Clear@?$DynamicVectorClass@PAVPlanningNodeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14545,7 +14545,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DC80",
   "sym": "?Clear@?$DynamicVectorClass@PAVEventClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14761,7 +14761,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x006e47f0",
   "sym": "?Clear@?$DynamicVectorClass@PAVTActionClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14770,7 +14770,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x006e64e0",
   "sym": "?Clear@?$DynamicVectorClass@PAVTagTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -17570,7 +17570,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x0063ECA0",
   "sym": "??_G?$DynamicVectorClass@PAVPlanningMemberClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17588,7 +17588,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x0063ED40",
   "sym": "??_G?$DynamicVectorClass@PAVPlanningBranchClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17597,7 +17597,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63ed90",
   "sym": "??_G?$VectorClass@PAVPlanningNodeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17606,7 +17606,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63ede0",
   "sym": "??_G?$DynamicVectorClass@PAVPlanningNodeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17615,7 +17615,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63EE30",
   "sym": "??_G?$VectorClass@PAVEventClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17624,7 +17624,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63EE80",
   "sym": "??_G?$DynamicVectorClass@PAVEventClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17642,7 +17642,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x0063EF20",
   "sym": "??_G?$DynamicVectorClass@PAVPlanningTokenClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18074,7 +18074,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x006E4AB0",
   "sym": "??_G?$VectorClass@PAVTActionClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18083,7 +18083,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x006E4B00",
   "sym": "??_G?$DynamicVectorClass@PAVTActionClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18092,7 +18092,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x006E67A0",
   "sym": "??_G?$VectorClass@PAVTagTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18101,7 +18101,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x006E67F0",
   "sym": "??_G?$DynamicVectorClass@PAVTagTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -19910,7 +19910,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x0063de30",
   "sym": "?Clear@?$VectorClass@PAVPlanningMemberClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19919,7 +19919,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x0063e140",
   "sym": "?Clear@?$VectorClass@PAVPlanningBranchClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19928,7 +19928,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63e400",
   "sym": "?Clear@?$VectorClass@PAVPlanningNodeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19937,7 +19937,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E740",
   "sym": "?Clear@?$VectorClass@PAVEventClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19946,7 +19946,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x0063ea40",
   "sym": "?Clear@?$VectorClass@PAVPlanningTokenClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20153,7 +20153,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x006e4940",
   "sym": "?Clear@?$VectorClass@PAVTActionClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20162,7 +20162,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x006e6630",
   "sym": "?Clear@?$VectorClass@PAVTagTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20522,7 +20522,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x0063dfd0",
   "sym": "?FUN_000063DFD0@ItemVector_0063DFD0@@QAE_NH@Z",
   "len": "0x41",
@@ -20531,7 +20531,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x0063e5d0",
   "sym": "?FUN_000063E5D0@ItemVector_0063DFD0@@QAE_NH@Z",
   "len": "0x41",
@@ -20540,7 +20540,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x0063e900",
   "sym": "?FUN_000063E900@ItemVector_0063DFD0@@QAE_NH@Z",
   "len": "0x41",
@@ -20549,7 +20549,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x0063ebd0",
   "sym": "?FUN_000063EBD0@ItemVector_0063DFD0@@QAE_NH@Z",
   "len": "0x41",
@@ -28329,7 +28329,7 @@
   "pct": 1.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DAD0",
   "sym": "?PackPixel_0063DAD0@@YIIPBE@Z",
   "len": "0x4b",
@@ -29373,7 +29373,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63AB00",
   "sym": "?FUN_0063AB00@@YGXHH@Z",
   "len": "0x56",
@@ -30174,7 +30174,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
+  "tu": "match/aircraft_helpers_0041bb30.cpp",
   "addr": "0x41BB30",
   "len": "0xa0",
   "sym": "?vf_125@AircraftClass@@UAEXHPAVAbstractClass@@0@Z",
@@ -30183,7 +30183,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
+  "tu": "match/aircraft_helpers_0041bb30.cpp",
   "addr": "0x41BBD0",
   "len": "0x60",
   "sym": "?vf_330@AircraftClass@@UAEPAXPAUDynamicVectorClassLayout@@HH@Z",
@@ -34819,7 +34819,7 @@
   "name": "DynamicVectorClass<WarheadTypeClass*>::FindItemIndex"
  },
  {
-  "tu": "match/ai/tag_class_ctor.cpp",
+  "tu": "match/tag_class_ctor.cpp",
   "addr": "0x6E4DE0",
   "sym": "??0TagClass@@QAE@PAVTagTypeClass@@@Z",
   "len": "0x17C",
@@ -35044,7 +35044,7 @@
   "name": "DynamicVectorClass<TriggerClass*>::FindItemIndex"
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x725FA0",
   "sym": "??0TriggerClass@@QAE@PAVTriggerTypeClass@@@Z",
   "len": "0x193",
@@ -35620,7 +35620,7 @@
   "name": "DynamicVectorClass<MSTextEntry*>::FindItemIndex"
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x726C80",
   "sym": "??0TriggerTypeClass@@QAE@PBD@Z",
   "len": "0x176",
@@ -35629,7 +35629,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "addr": "0x6E5B60",
   "sym": "??0TagTypeClass@@QAE@PBD@Z",
   "len": "0x13A",
@@ -36479,7 +36479,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVTagTypeClass@@@@UBEHPAPAVTagTypeClass@@@Z",
   "name": "DynamicVectorClass<TagTypeClass*>::Slot5"
  },
@@ -36488,7 +36488,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "?Slot6@?$VectorClass@PAVTagTypeClass@@@@UBEPAVTagTypeClass@@H@Z",
   "name": "VectorClass<TagTypeClass*>::Slot6"
  },
@@ -36497,7 +36497,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "??8?$VectorClass@PAVTagTypeClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<TagTypeClass*>::operator=="
  },
@@ -36506,7 +36506,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVTagTypeClass@@@@UAE_NHPAPAVTagTypeClass@@@Z",
   "name": "VectorClass<TagTypeClass*>::SetCapacity"
  },
@@ -36515,7 +36515,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVTagTypeClass@@@@UBEHABQAVTagTypeClass@@@Z",
   "name": "VectorClass<TagTypeClass*>::FindItemIndex"
  },
@@ -36524,7 +36524,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "?Slot5@?$VectorClass@PAVTagTypeClass@@@@UBEHPAPAVTagTypeClass@@@Z",
   "name": "VectorClass<TagTypeClass*>::Slot5"
  },
@@ -36533,7 +36533,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVTagTypeClass@@@@UAE_NHPAPAVTagTypeClass@@@Z",
   "name": "DynamicVectorClass<TagTypeClass*>::SetCapacity"
  },
@@ -36542,12 +36542,12 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/tu232_tag_type_class.cpp",
+  "tu": "match/tu232_tag_type_class.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTagTypeClass@@@@UBEHABQAVTagTypeClass@@@Z",
   "name": "DynamicVectorClass<TagTypeClass*>::FindItemIndex"
  },
  {
-  "tu": "match/ai/tag_type_class_array.cpp",
+  "tu": "match/tag_type_class_array.cpp",
   "addr": "0x6E5AE0",
   "sym": "_$E4",
   "len": "0x3D",
@@ -36556,7 +36556,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_array.cpp",
+  "tu": "match/tag_type_class_array.cpp",
   "addr": "0x6E5B20",
   "sym": "_$E2",
   "len": "0x3B",
@@ -36641,7 +36641,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVTActionClass@@@@UBEHPAPAVTActionClass@@@Z",
   "name": "DynamicVectorClass<TActionClass*>::Slot5"
  },
@@ -36650,7 +36650,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?Slot6@?$VectorClass@PAVTActionClass@@@@UBEPAVTActionClass@@H@Z",
   "name": "VectorClass<TActionClass*>::Slot6"
  },
@@ -36659,7 +36659,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "??8?$VectorClass@PAVTActionClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<TActionClass*>::operator=="
  },
@@ -36668,7 +36668,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVTActionClass@@@@UAE_NHPAPAVTActionClass@@@Z",
   "name": "VectorClass<TActionClass*>::SetCapacity"
  },
@@ -36677,7 +36677,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVTActionClass@@@@UBEHABQAVTActionClass@@@Z",
   "name": "VectorClass<TActionClass*>::FindItemIndex"
  },
@@ -36686,7 +36686,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?Slot5@?$VectorClass@PAVTActionClass@@@@UBEHPAPAVTActionClass@@@Z",
   "name": "VectorClass<TActionClass*>::Slot5"
  },
@@ -36695,7 +36695,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVTActionClass@@@@UAE_NHPAPAVTActionClass@@@Z",
   "name": "DynamicVectorClass<TActionClass*>::SetCapacity"
  },
@@ -36704,7 +36704,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTActionClass@@@@UBEHABQAVTActionClass@@@Z",
   "name": "DynamicVectorClass<TActionClass*>::FindItemIndex"
  },
@@ -39751,7 +39751,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x4203A0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UBEHPAPAVAlphaLightingRemapClass@@@Z",
   "len": "0x1b",
@@ -39760,7 +39760,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x4203C0",
   "sym": "?Slot6@?$VectorClass@PAVAlphaLightingRemapClass@@@@UBEPAVAlphaLightingRemapClass@@H@Z",
   "len": "0xd",
@@ -39769,7 +39769,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x4203D0",
   "sym": "??8?$VectorClass@PAVAlphaLightingRemapClass@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -39778,7 +39778,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420410",
   "sym": "?SetCapacity@?$VectorClass@PAVAlphaLightingRemapClass@@@@UAE_NHPAPAVAlphaLightingRemapClass@@@Z",
   "len": "0xae",
@@ -39787,7 +39787,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x4204F0",
   "sym": "?FindItemIndex@?$VectorClass@PAVAlphaLightingRemapClass@@@@UBEHABQAVAlphaLightingRemapClass@@@Z",
   "len": "0x33",
@@ -39796,7 +39796,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420530",
   "sym": "?Slot5@?$VectorClass@PAVAlphaLightingRemapClass@@@@UBEHPAPAVAlphaLightingRemapClass@@@Z",
   "len": "0x1b",
@@ -39805,7 +39805,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420550",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UAE_NHPAPAVAlphaLightingRemapClass@@@Z",
   "len": "0xb0",
@@ -39814,7 +39814,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu022_ai_trigger_type_class.cpp",
+  "tu": "match/tu022_ai_trigger_type_class.cpp",
   "addr": "0x420600",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UBEHABQAVAlphaLightingRemapClass@@@Z",
   "len": "0x26",
@@ -40057,7 +40057,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DCB0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVEventClass@@@@UBEHPAPAVEventClass@@@Z",
   "len": "0x1b",
@@ -40066,7 +40066,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DCD0",
   "sym": "?Slot6@?$VectorClass@PAVEventClass@@@@UBEPAVEventClass@@H@Z",
   "len": "0xd",
@@ -40075,7 +40075,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E650",
   "sym": "??8?$VectorClass@PAVEventClass@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -40084,7 +40084,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E690",
   "sym": "?SetCapacity@?$VectorClass@PAVEventClass@@@@UAE_NHPAPAVEventClass@@@Z",
   "len": "0xae",
@@ -40093,7 +40093,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E770",
   "sym": "?FindItemIndex@?$VectorClass@PAVEventClass@@@@UBEHABQAVEventClass@@@Z",
   "len": "0x33",
@@ -40102,7 +40102,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E7B0",
   "sym": "?Slot5@?$VectorClass@PAVEventClass@@@@UBEHPAPAVEventClass@@@Z",
   "len": "0x1b",
@@ -40111,7 +40111,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E7D0",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVEventClass@@@@UAE_NHPAPAVEventClass@@@Z",
   "len": "0xb0",
@@ -40120,7 +40120,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E8D0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVEventClass@@@@UBEHABQAVEventClass@@@Z",
   "len": "0x26",
@@ -41929,7 +41929,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63e310",
   "sym": "??8?$VectorClass@PAVPlanningNodeClass@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -41938,7 +41938,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63e350",
   "sym": "?SetCapacity@?$VectorClass@PAVPlanningNodeClass@@@@UAE_NHPAPAVPlanningNodeClass@@@Z",
   "len": "0xae",
@@ -41947,7 +41947,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63e430",
   "sym": "?FindItemIndex@?$VectorClass@PAVPlanningNodeClass@@@@UBEHABQAVPlanningNodeClass@@@Z",
   "len": "0x33",
@@ -41956,7 +41956,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63e470",
   "sym": "?Slot5@?$VectorClass@PAVPlanningNodeClass@@@@UBEHPAPAVPlanningNodeClass@@@Z",
   "len": "0x1b",
@@ -41965,7 +41965,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63dc70",
   "sym": "?Slot6@?$VectorClass@PAVPlanningNodeClass@@@@UBEPAVPlanningNodeClass@@H@Z",
   "len": "0xd",
@@ -41974,7 +41974,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63e490",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVPlanningNodeClass@@@@UAE_NHPAPAVPlanningNodeClass@@@Z",
   "len": "0xb0",
@@ -41983,7 +41983,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63e620",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVPlanningNodeClass@@@@UBEHABQAVPlanningNodeClass@@@Z",
   "len": "0x26",
@@ -41992,7 +41992,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63dc50",
   "sym": "?Slot5@?$DynamicVectorClass@PAVPlanningNodeClass@@@@UBEHPAPAVPlanningNodeClass@@@Z",
   "len": "0x1b",
@@ -51247,7 +51247,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E5C0",
   "sym": "?Save@AITriggerTypeClass@@UAGJPAUIStream@@H@Z",
   "len": "0x1D",
@@ -53101,7 +53101,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DB90",
   "sym": "?Slot5@?$DynamicVectorClass@PAVPlanningMemberClass@@@@UBEHPAPAVPlanningMemberClass@@@Z",
   "len": "0x1B",
@@ -53110,7 +53110,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DBB0",
   "sym": "?Slot6@?$VectorClass@PAVPlanningMemberClass@@@@UBEPAVPlanningMemberClass@@H@Z",
   "len": "0xD",
@@ -53119,7 +53119,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DBF0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVPlanningBranchClass@@@@UBEHPAPAVPlanningBranchClass@@@Z",
   "len": "0x1B",
@@ -53128,7 +53128,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DC10",
   "sym": "?Slot6@?$VectorClass@PAVPlanningBranchClass@@@@UBEPAVPlanningBranchClass@@H@Z",
   "len": "0xD",
@@ -53137,7 +53137,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DD10",
   "sym": "?Slot5@?$DynamicVectorClass@PAVPlanningTokenClass@@@@UBEHPAPAVPlanningTokenClass@@@Z",
   "len": "0x1B",
@@ -53146,7 +53146,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DD30",
   "sym": "?Slot6@?$VectorClass@PAVPlanningTokenClass@@@@UBEPAVPlanningTokenClass@@H@Z",
   "len": "0xD",
@@ -53155,7 +53155,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DD40",
   "sym": "??8?$VectorClass@PAVPlanningMemberClass@@@@UBE_NABV0@@Z",
   "len": "0x3E",
@@ -53164,7 +53164,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DD80",
   "sym": "?SetCapacity@?$VectorClass@PAVPlanningMemberClass@@@@UAE_NHPAPAVPlanningMemberClass@@@Z",
   "len": "0xAE",
@@ -53173,7 +53173,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DE60",
   "sym": "?FindItemIndex@?$VectorClass@PAVPlanningMemberClass@@@@UBEHABQAVPlanningMemberClass@@@Z",
   "len": "0x33",
@@ -53182,7 +53182,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DEA0",
   "sym": "?Slot5@?$VectorClass@PAVPlanningMemberClass@@@@UBEHPAPAVPlanningMemberClass@@@Z",
   "len": "0x1B",
@@ -53191,7 +53191,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63DF20",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVPlanningMemberClass@@@@UAE_NHPAPAVPlanningMemberClass@@@Z",
   "len": "0xB0",
@@ -53200,7 +53200,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E020",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVPlanningMemberClass@@@@UBEHABQAVPlanningMemberClass@@@Z",
   "len": "0x26",
@@ -53209,7 +53209,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E050",
   "sym": "??8?$VectorClass@PAVPlanningBranchClass@@@@UBE_NABV0@@Z",
   "len": "0x3E",
@@ -53218,7 +53218,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E090",
   "sym": "?SetCapacity@?$VectorClass@PAVPlanningBranchClass@@@@UAE_NHPAPAVPlanningBranchClass@@@Z",
   "len": "0xAE",
@@ -53227,7 +53227,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E170",
   "sym": "?FindItemIndex@?$VectorClass@PAVPlanningBranchClass@@@@UBEHABQAVPlanningBranchClass@@@Z",
   "len": "0x33",
@@ -53236,7 +53236,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E1B0",
   "sym": "?Slot5@?$VectorClass@PAVPlanningBranchClass@@@@UBEHPAPAVPlanningBranchClass@@@Z",
   "len": "0x1B",
@@ -53245,7 +53245,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E230",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVPlanningBranchClass@@@@UAE_NHPAPAVPlanningBranchClass@@@Z",
   "len": "0xB0",
@@ -53254,7 +53254,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E2E0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVPlanningBranchClass@@@@UBEHABQAVPlanningBranchClass@@@Z",
   "len": "0x26",
@@ -53263,7 +53263,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E950",
   "sym": "??8?$VectorClass@PAVPlanningTokenClass@@@@UBE_NABV0@@Z",
   "len": "0x3E",
@@ -53272,7 +53272,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63E990",
   "sym": "?SetCapacity@?$VectorClass@PAVPlanningTokenClass@@@@UAE_NHPAPAVPlanningTokenClass@@@Z",
   "len": "0xAE",
@@ -53281,7 +53281,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63EA70",
   "sym": "?FindItemIndex@?$VectorClass@PAVPlanningTokenClass@@@@UBEHABQAVPlanningTokenClass@@@Z",
   "len": "0x33",
@@ -53290,7 +53290,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63EAB0",
   "sym": "?Slot5@?$VectorClass@PAVPlanningTokenClass@@@@UBEHPAPAVPlanningTokenClass@@@Z",
   "len": "0x1B",
@@ -53299,7 +53299,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63EAD0",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVPlanningTokenClass@@@@UAE_NHPAPAVPlanningTokenClass@@@Z",
   "len": "0xB0",
@@ -53308,7 +53308,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63EC20",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVPlanningTokenClass@@@@UBEHABQAVPlanningTokenClass@@@Z",
   "len": "0x26",
@@ -59717,7 +59717,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63F080",
   "sym": "?FUN_0063F080@@YIXPAUPolygon_0063F080@@PAUScanBuffer_0063F080@@@Z",
   "len": "0x25A",
@@ -59726,7 +59726,7 @@
   "pct": 35.9
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63F2E0",
   "sym": "?FUN_0063F2E0@@YIXHHHHHHPAPAUScanSpan_0063F080@@@Z",
   "len": "0x1B7",
@@ -63866,7 +63866,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633400",
   "sym": "_$E8",
   "len": "0x13",
@@ -63875,7 +63875,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633420",
   "sym": "_$E11",
   "len": "0x13",
@@ -63884,7 +63884,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633440",
   "sym": "_$E14",
   "len": "0x13",
@@ -63893,7 +63893,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633460",
   "sym": "_$E17",
   "len": "0x13",
@@ -63902,7 +63902,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633480",
   "sym": "_$E20",
   "len": "0x13",
@@ -63911,7 +63911,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6334A0",
   "sym": "_$E23",
   "len": "0x31",
@@ -63920,7 +63920,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6334E0",
   "sym": "_$E26",
   "len": "0x21",
@@ -63929,7 +63929,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633510",
   "sym": "_$E29",
   "len": "0x2C",
@@ -63938,7 +63938,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633540",
   "sym": "_$E32",
   "len": "0x27",
@@ -63947,7 +63947,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633570",
   "sym": "_$E35",
   "len": "0xF",
@@ -63956,7 +63956,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633580",
   "sym": "_$E38",
   "len": "0x12",
@@ -63965,7 +63965,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6335A0",
   "sym": "_$E41",
   "len": "0x1A",
@@ -63974,7 +63974,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6335C0",
   "sym": "_$E44",
   "len": "0x17",
@@ -63983,7 +63983,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6335E0",
   "sym": "_$E50",
   "len": "0x3D",
@@ -63992,7 +63992,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633620",
   "sym": "_$E47",
   "len": "0x58",
@@ -64001,7 +64001,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633680",
   "sym": "_$E56",
   "len": "0x3D",
@@ -64010,7 +64010,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6336C0",
   "sym": "_$E53",
   "len": "0x58",
@@ -64019,7 +64019,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633720",
   "sym": "_$E62",
   "len": "0x3D",
@@ -64028,7 +64028,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633760",
   "sym": "_$E59",
   "len": "0x58",
@@ -64037,7 +64037,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6337C0",
   "sym": "_$E68",
   "len": "0x3D",
@@ -64046,7 +64046,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633800",
   "sym": "_$E65",
   "len": "0x58",
@@ -64055,7 +64055,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633860",
   "sym": "_$E73",
   "len": "0x3D",
@@ -64064,7 +64064,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6338A0",
   "sym": "_$E71",
   "len": "0x58",
@@ -64073,7 +64073,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633900",
   "sym": "_$E78",
   "len": "0x3D",
@@ -64082,7 +64082,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633940",
   "sym": "_$E76",
   "len": "0x58",
@@ -64091,7 +64091,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6339A0",
   "sym": "_$E81",
   "len": "0x1",
@@ -64100,7 +64100,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6339E0",
   "sym": "?FUN_006339E0@@YIPAVPoint2D@@PAV1@ABUCoordStruct@@@Z",
   "len": "0x3B",
@@ -64109,7 +64109,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633A20",
   "sym": "??0PlanningMemberClass@@QAE@XZ",
   "len": "0x14",
@@ -64118,7 +64118,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633A40",
   "sym": "?FUN_00633A40@PlanningMemberClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x9",
@@ -64127,7 +64127,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633A50",
   "sym": "?FUN_00633A50@PlanningMemberClass@@QAEXPAVEventClass@@@Z",
   "len": "0xA",
@@ -64136,7 +64136,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633A60",
   "sym": "?FUN_00633A60@PlanningMemberClass@@QAEXH@Z",
   "len": "0xA",
@@ -64145,7 +64145,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633A70",
   "sym": "?FUN_00633A70@PlanningMemberClass@@QAEX_N@Z",
   "len": "0xA",
@@ -64154,7 +64154,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633A80",
   "sym": "?FUN_00633A80@PlanningMemberClass@@QAEPAVTechnoClass@@XZ",
   "len": "0x3",
@@ -64163,7 +64163,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633A90",
   "sym": "?FUN_00633A90@PlanningMemberClass@@QAEPAVEventClass@@XZ",
   "len": "0x4",
@@ -64172,7 +64172,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633AA0",
   "sym": "?FUN_00633AA0@PlanningMemberClass@@QAEHXZ",
   "len": "0x4",
@@ -64181,7 +64181,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633AB0",
   "sym": "?FUN_00633AB0@PlanningMemberClass@@QAE_NXZ",
   "len": "0x4",
@@ -64190,7 +64190,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633AC0",
   "sym": "??0PlanningBranchClass@@QAE@XZ",
   "len": "0x14",
@@ -64199,7 +64199,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633AE0",
   "sym": "?FUN_00633AE0@PlanningBranchClass@@QAEXPBVEventClass@@@Z",
   "len": "0x17",
@@ -64208,7 +64208,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B00",
   "sym": "?FUN_00633B00@PlanningBranchClass@@QAEXH@Z",
   "len": "0xA",
@@ -64217,7 +64217,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B10",
   "sym": "?FUN_00633B10@PlanningBranchClass@@QAEXH@Z",
   "len": "0xA",
@@ -64226,7 +64226,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B20",
   "sym": "?FUN_00633B20@PlanningBranchClass@@QAEXXZ",
   "len": "0x8",
@@ -64235,7 +64235,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B30",
   "sym": "?FUN_00633B30@PlanningBranchClass@@QAEHXZ",
   "len": "0x8",
@@ -64244,7 +64244,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B40",
   "sym": "?FUN_00633B40@PlanningBranchClass@@QAEHXZ",
   "len": "0x8",
@@ -64253,7 +64253,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B50",
   "sym": "?FUN_00633B50@PlanningBranchClass@@QAE?AVEventClass@@XZ",
   "len": "0x19",
@@ -64262,7 +64262,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B70",
   "sym": "?FUN_00633B70@PlanningBranchClass@@QAEHXZ",
   "len": "0x4",
@@ -64271,7 +64271,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B80",
   "sym": "?FUN_00633B80@PlanningBranchClass@@QAEHXZ",
   "len": "0x4",
@@ -64280,7 +64280,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633B90",
   "sym": "?FUN_00633B90@PlanningBranchClass@@QAE?AUCoordStruct@@XZ",
   "len": "0x2E",
@@ -64289,7 +64289,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633BC0",
   "sym": "?FUN_00633BC0@@YIPAUCoordStruct@@PAU1@ABVEventClass@@@Z",
   "len": "0x96",
@@ -64298,7 +64298,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633C60",
   "sym": "?FUN_00633C60@PlanningBranchClass@@QAEPAVPoint2D@@PAV2@@Z",
   "len": "0x5D",
@@ -64307,7 +64307,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633CC0",
   "sym": "??0PlanningNodeClass@@QAE@H@Z",
   "len": "0x69",
@@ -64316,7 +64316,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633D30",
   "sym": "??1PlanningNodeClass@@QAE@XZ",
   "len": "0x118",
@@ -64325,7 +64325,7 @@
   "pct": 10.9
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633E50",
   "sym": "?FUN_00633E50@PlanningNodeClass@@QAEHXZ",
   "len": "0x4",
@@ -64334,7 +64334,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633E60",
   "sym": "?FUN_00633E60@PlanningNodeClass@@QAEHXZ",
   "len": "0x4",
@@ -64343,7 +64343,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633E70",
   "sym": "?FUN_00633E70@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
   "len": "0x21",
@@ -64352,7 +64352,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633EA0",
   "sym": "?FUN_00633EA0@PlanningNodeClass@@QAEPAV1@PAVTechnoClass@@@Z",
   "len": "0x7A",
@@ -64361,7 +64361,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633F20",
   "sym": "?FUN_00633F20@PlanningNodeClass@@QAEPAV1@PAVTechnoClass@@@Z",
   "len": "0x7B",
@@ -64370,7 +64370,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x633FA0",
   "sym": "?FUN_00633FA0@PlanningNodeClass@@QAEXPAVTechnoClass@@PBVEventClass@@@Z",
   "len": "0x107",
@@ -64379,7 +64379,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6340B0",
   "sym": "?FUN_006340B0@PlanningNodeClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x1DB",
@@ -64388,7 +64388,7 @@
   "pct": 4.5
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6342D0",
   "sym": "?FUN_006342D0@PlanningNodeClass@@QAEPAVTechnoClass@@H@Z",
   "len": "0xF",
@@ -64397,7 +64397,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6342E0",
   "sym": "?FUN_006342E0@PlanningNodeClass@@QAE?AVEventClass@@H@Z",
   "len": "0x24",
@@ -64406,7 +64406,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634310",
   "sym": "?FUN_00634310@PlanningNodeClass@@QAE?AVEventClass@@PAVTechnoClass@@@Z",
   "len": "0x4C",
@@ -64415,7 +64415,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634360",
   "sym": "?FUN_00634360@PlanningNodeClass@@QAE_NPAVTechnoClass@@@Z",
   "len": "0x42",
@@ -64424,7 +64424,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6343B0",
   "sym": "?FUN_006343B0@PlanningNodeClass@@QAEPAXXZ",
   "len": "0xE",
@@ -64433,7 +64433,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6343C0",
   "sym": "?FUN_006343C0@PlanningNodeClass@@QAE?AUCoordStruct@@XZ",
   "len": "0x34",
@@ -64442,7 +64442,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634400",
   "sym": "?FUN_00634400@PlanningNodeClass@@QAEPAVPoint2D@@PAV2@@Z",
   "len": "0x63",
@@ -64451,7 +64451,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634470",
   "sym": "?FUN_00634470@PlanningNodeClass@@QAEHHH@Z",
   "len": "0x98",
@@ -64460,7 +64460,7 @@
   "pct": 24.1
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634510",
   "sym": "?FUN_00634510@@YIPAURectangleStruct@@PAU1@HVPoint2D@@@Z",
   "len": "0x35",
@@ -64469,7 +64469,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634550",
   "sym": "?FUN_00634550@PlanningNodeClass@@QAE_NHHH@Z",
   "len": "0x47",
@@ -64478,7 +64478,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6345A0",
   "sym": "?FUN_006345A0@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x83",
@@ -64487,7 +64487,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634630",
   "sym": "?FUN_00634630@PlanningNodeClass@@QAE_NXZ",
   "len": "0x4F",
@@ -64496,7 +64496,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634680",
   "sym": "?FUN_00634680@PlanningNodeClass@@QAEXXZ",
   "len": "0x24",
@@ -64505,7 +64505,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x6346B0",
   "sym": "?FUN_006346B0@PlanningNodeClass@@QAEPAVPlanningMemberClass@@PAVTechnoClass@@@Z",
   "len": "0x41",
@@ -64514,7 +64514,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634700",
   "sym": "?FUN_00634700@PlanningNodeClass@@QAEHXZ",
   "len": "0x4",
@@ -64523,7 +64523,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634710",
   "sym": "?FUN_00634710@PlanningNodeClass@@QAE_NXZ",
   "len": "0xE",
@@ -64532,7 +64532,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634720",
   "sym": "?FUN_00634720@PlanningNodeClass@@QAE_NXZ",
   "len": "0x1C",
@@ -64541,7 +64541,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634740",
   "sym": "?FUN_00634740@PlanningNodeClass@@QAEPAVTechnoClass@@H@Z",
   "len": "0x2F",
@@ -64550,7 +64550,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/planning_manager.cpp",
+  "tu": "match/planning_manager.cpp",
   "addr": "0x634770",
   "sym": "?FUN_00634770@PlanningNodeClass@@QAEPAVTechnoClass@@XZ",
   "len": "0x29",
@@ -69365,7 +69365,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E4B80",
   "sym": "_$E17",
   "len": "0x13",
@@ -69374,7 +69374,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E4BA0",
   "sym": "_$E20",
   "len": "0x13",
@@ -69383,7 +69383,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E4D20",
   "sym": "_$E23",
   "len": "0x1A",
@@ -69392,7 +69392,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E4F60",
   "sym": "??1TagClass@@UAE@XZ",
   "len": "0x2C4",
@@ -69401,7 +69401,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E5290",
   "sym": "?FUN_006E5290@TagClass@@QBE_NXZ",
   "len": "0x4",
@@ -69410,7 +69410,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E52F0",
   "sym": "?FUN_006E52F0@TagClass@@QBEPAUCellStruct@@PAU2@@Z",
   "len": "0xC",
@@ -69419,7 +69419,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E5360",
   "sym": "?FUN_006E5360@TagClass@@QBEHXZ",
   "len": "0x19",
@@ -69428,7 +69428,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E53A0",
   "sym": "?FUN_006E53A0@TagClass@@QAE_NHPAVObjectClass@@UCellStruct@@_NH@Z",
   "len": "0x1B9",
@@ -69437,7 +69437,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E55A0",
   "sym": "?FUN_006E55A0@TagClass@@QAEXH@Z",
   "len": "0x10",
@@ -69446,7 +69446,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E5610",
   "sym": "?vf_10@TagClass@@UAEXPAX_N@Z",
   "len": "0x83",
@@ -69455,7 +69455,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E56E0",
   "sym": "?vf_13@TagClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x4B",
@@ -69464,7 +69464,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E5730",
   "sym": "?Load@TagClass@@UAGJPAUIStream@@@Z",
   "len": "0x61",
@@ -69473,7 +69473,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E5890",
   "sym": "?vf_12@TagClass@@UAEHXZ",
   "len": "0x6",
@@ -69482,7 +69482,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E58A0",
   "sym": "?vf_11@TagClass@@UAEHXZ",
   "len": "0x6",
@@ -69491,7 +69491,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E5900",
   "sym": "_$E17",
   "len": "0x13",
@@ -69500,7 +69500,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E5920",
   "sym": "_$E20",
   "len": "0x13",
@@ -69509,7 +69509,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E5AA0",
   "sym": "_$E23",
   "len": "0x1A",
@@ -69518,7 +69518,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E5CA0",
   "sym": "??1TagTypeClass@@UAE@XZ",
   "len": "0x12D",
@@ -69527,7 +69527,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E5DD0",
   "sym": "?FUN_006E5DD0@TagTypeClass@@QAE_NPAVTriggerTypeClass@@@Z",
   "len": "0x24",
@@ -69536,7 +69536,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E5E00",
   "sym": "?FUN_006E5E00@TagTypeClass@@QAE_NPAVTriggerTypeClass@@@Z",
   "len": "0x49",
@@ -69545,7 +69545,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E5E50",
   "sym": "?vf_10@TagTypeClass@@UAEXPAX_N@Z",
   "len": "0x1D",
@@ -69554,7 +69554,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E62E0",
   "sym": "?FUN_006E62E0@TagTypeClass@@QBE_NPAVTriggerTypeClass@@@Z",
   "len": "0x26",
@@ -69563,7 +69563,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E63E0",
   "sym": "?vf_13@TagTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x21",
@@ -69572,7 +69572,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E6410",
   "sym": "?Load@TagTypeClass@@UAGJPAUIStream@@@Z",
   "len": "0x56",
@@ -69581,7 +69581,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E6490",
   "sym": "?vf_11@TagTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -69590,7 +69590,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E64A0",
   "sym": "?vf_12@TagTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -69599,7 +69599,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_type_class_body.cpp",
+  "tu": "match/tag_type_class_body.cpp",
   "addr": "0x6E64B0",
   "sym": "?vf_16@TagTypeClass@@UAEHXZ",
   "len": "0x7",
@@ -70103,7 +70103,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E190",
   "sym": "_$E17",
   "len": "0x13",
@@ -70112,7 +70112,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E1B0",
   "sym": "_$E20",
   "len": "0x13",
@@ -70121,7 +70121,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E330",
   "sym": "_$E23",
   "len": "0x1a",
@@ -70130,7 +70130,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E350",
   "sym": "??0AITriggerTypeClass@@QAE@PBD@Z",
   "len": "0x128",
@@ -70139,7 +70139,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E480",
   "sym": "??1AITriggerTypeClass@@UAE@XZ",
   "len": "0x72",
@@ -70148,7 +70148,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E540",
   "sym": "?Load@AITriggerTypeClass@@UAGJPAUIStream@@@Z",
   "len": "0x78",
@@ -70157,7 +70157,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41E5E0",
   "sym": "?vf_13@AITriggerTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x13c",
@@ -70166,7 +70166,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41EC90",
   "sym": "?FUN_0041EC90@AITriggerTypeClass@@QAE_NPAUAITriggerHouse@@0@Z",
   "len": "0x1f4",
@@ -70176,7 +70176,7 @@
   "note": "Retail span is the CFG-closed extent 0x1F4 ending in the jump/index tables from 0x41EE30; pct is the instruction diagnostic over the code prefix 0x1A0 (aligned 41.8%). Same residual as the 0x41EAF0/0x41EE90 twins: retail saves EBP inside the type branch and keeps one copy of the call tail per counter arm; this build hoists the push and cross-jumps the arms."
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41F030",
   "sym": "?FUN_0041F030@AITriggerTypeClass@@QBE_NPAUAITriggerHouse@@0@Z",
   "len": "0x41",
@@ -70186,7 +70186,7 @@
   "note": "Instruction multiset nearly equal (aligned 66.7%); retail keeps the house in ECX and pre-loads AL=0 before the null test, VC6 here uses EAX and separate constant returns. Capped after 6 variants."
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41F080",
   "sym": "?FUN_0041F080@AITriggerTypeClass@@QBE_NPAUAITriggerHouse@@0@Z",
   "len": "0x41",
@@ -70196,7 +70196,7 @@
   "note": "Twin of 0x41F030 (compare against 0.0); same register/return-shape residual. Capped."
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41F2E0",
   "sym": "?FUN_0041F2E0@AITriggerTypeClass@@SIXPAVCCINIClass@@H@Z",
   "len": "0x1a8",
@@ -70205,7 +70205,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41F580",
   "sym": "?vf_25@AITriggerTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x581",
@@ -70214,7 +70214,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FB10",
   "sym": "?vf_26@AITriggerTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x187",
@@ -70223,7 +70223,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FD30",
   "sym": "?FUN_0041FD30@AITriggerTypeClass@@QAEXPAVTechnoTypeClass@@@Z",
   "len": "0xd",
@@ -70232,7 +70232,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FD40",
   "sym": "?FUN_0041FD40@AITriggerTypeClass@@QAEXPAVTeamTypeClass@@@Z",
   "len": "0xd",
@@ -70241,7 +70241,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FD50",
   "sym": "?FUN_0041FD50@AITriggerTypeClass@@QAEXPAVTeamTypeClass@@@Z",
   "len": "0xd",
@@ -70250,7 +70250,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FEE0",
   "sym": "?FUN_0041FEE0@AITriggerTypeClass@@QAE_NPAVTeamTypeClass@@PAUAITriggerHouse@@1@Z",
   "len": "0xe7",
@@ -70259,7 +70259,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FFD0",
   "sym": "?vf_11@AITriggerTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -70268,7 +70268,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FFE0",
   "sym": "?vf_12@AITriggerTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -70277,7 +70277,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x41FFF0",
   "sym": "??_GAITriggerTypeClass@@UAEPAXI@Z",
   "len": "0x86",
@@ -70286,7 +70286,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x420130",
   "sym": "?FUN_00420130@@YIXXZ",
   "len": "0x1",
@@ -70295,7 +70295,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/ai_trigger_type_class_body.cpp",
+  "tu": "match/ai_trigger_type_class_body.cpp",
   "addr": "0x420360",
   "sym": "?FUN_00420360@@YIXXZ",
   "len": "0x1",
@@ -74006,7 +74006,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "tu": "match/house_class_lookup_methods.cpp",
   "addr": "0x510D10",
   "sym": "?FUN_00510D10@@YIXPAUHWND__@@@Z",
   "len": "0xf5",
@@ -74015,7 +74015,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "tu": "match/house_class_lookup_methods.cpp",
   "addr": "0x510E10",
   "sym": "?FUN_00510E10@@YIXHPADH@Z",
   "len": "0xb4",
@@ -74024,7 +74024,7 @@
   "pct": 85.7
  },
  {
-  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "tu": "match/house_class_lookup_methods.cpp",
   "addr": "0x510F60",
   "sym": "?FUN_00510F60@@YI_NH@Z",
   "len": "0x46",
@@ -74033,7 +74033,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "tu": "match/house_class_lookup_methods.cpp",
   "addr": "0x510FB0",
   "sym": "?FUN_00510FB0@@YIHPBD@Z",
   "len": "0x222",
@@ -74233,7 +74233,7 @@
   "pct": 63.5
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726140",
   "sym": "??1TriggerClass@@UAE@XZ",
   "len": "0x10b",
@@ -74242,7 +74242,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7264C0",
   "sym": "?FUN_007264C0@TriggerClass@@QAE_NHPAVObjectClass@@_N1H@Z",
   "len": "0xfb",
@@ -74251,7 +74251,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726690",
   "sym": "?vf_10@TriggerClass@@UAEXPAX_N@Z",
   "len": "0x2e",
@@ -74260,7 +74260,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7266C0",
   "sym": "?FUN_007266C0@TriggerClass@@QAEXH@Z",
   "len": "0x13",
@@ -74269,7 +74269,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7266E0",
   "sym": "?FUN_007266E0@TriggerClass@@QAEXH@Z",
   "len": "0x1a",
@@ -74278,7 +74278,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726700",
   "sym": "?FUN_00726700@TriggerClass@@QBE_NH@Z",
   "len": "0x1b",
@@ -74287,7 +74287,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726780",
   "sym": "?FUN_00726780@TriggerClass@@QBE_NXZ",
   "len": "0x4",
@@ -74296,7 +74296,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726790",
   "sym": "?vf_13@TriggerClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x86",
@@ -74305,7 +74305,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726860",
   "sym": "?Load@TriggerClass@@UAGJPAUIStream@@@Z",
   "len": "0x6f",
@@ -74314,7 +74314,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x7268F0",
   "sym": "?FUN_007268F0@TriggerClass@@QAEXXZ",
   "len": "0x9",
@@ -74323,7 +74323,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726900",
   "sym": "?FUN_00726900@TriggerClass@@QAEXXZ",
   "len": "0x5",
@@ -74332,7 +74332,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726920",
   "sym": "?FUN_00726920@TriggerClass@@QAEXPAX@Z",
   "len": "0xa",
@@ -74341,7 +74341,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726930",
   "sym": "?vf_12@TriggerClass@@UAEHXZ",
   "len": "0x6",
@@ -74350,7 +74350,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726940",
   "sym": "?vf_11@TriggerClass@@UAEHXZ",
   "len": "0x6",
@@ -74359,7 +74359,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trigger_class_body.cpp",
+  "tu": "match/trigger_class_body.cpp",
   "addr": "0x726950",
   "sym": "??_GTriggerClass@@UAEPAXI@Z",
   "len": "0x11f",
@@ -75547,7 +75547,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x6911E0",
   "sym": "_$E17",
   "len": "0x13",
@@ -75556,7 +75556,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691200",
   "sym": "_$E20",
   "len": "0x13",
@@ -75565,7 +75565,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691380",
   "sym": "_$E23",
   "len": "0x1a",
@@ -75574,7 +75574,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x6913C0",
   "sym": "??0ScriptClass@@QAE@PAVScriptTypeClass@@@Z",
   "len": "0x94",
@@ -75583,7 +75583,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691460",
   "sym": "??1ScriptClass@@UAE@XZ",
   "len": "0x79",
@@ -75592,7 +75592,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x6914E0",
   "sym": "?vf_13@ScriptClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x1e",
@@ -75601,7 +75601,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691630",
   "sym": "?Load@ScriptClass@@UAGJPAUIStream@@@Z",
   "len": "0x53",
@@ -75610,7 +75610,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x6916B0",
   "sym": "??0ScriptTypeClass@@QAE@PBD@Z",
   "len": "0xbf",
@@ -75619,7 +75619,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691770",
   "sym": "??1ScriptTypeClass@@UAE@XZ",
   "len": "0x79",
@@ -75628,7 +75628,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x6917F0",
   "sym": "?vf_26@ScriptTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0xa1",
@@ -75637,7 +75637,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x6918A0",
   "sym": "?vf_25@ScriptTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0xcf",
@@ -75646,7 +75646,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691B40",
   "sym": "?FUN_00691B40@ScriptTypeClass@@SIPAV1@PBD@Z",
   "len": "0x61",
@@ -75655,7 +75655,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691BB0",
   "sym": "?FUN_00691BB0@ScriptTypeClass@@SIPAV1@PBD@Z",
   "len": "0x47",
@@ -75664,7 +75664,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691D90",
   "sym": "?Load@ScriptTypeClass@@UAGJPAUIStream@@@Z",
   "len": "0x45",
@@ -75673,7 +75673,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691E00",
   "sym": "?vf_13@ScriptTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x21",
@@ -75682,7 +75682,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691E30",
   "sym": "?vf_10@ScriptTypeClass@@UAEXPAX_N@Z",
   "len": "0x90",
@@ -75691,7 +75691,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691EC0",
   "sym": "?vf_11@ScriptClass@@UAEHXZ",
   "len": "0x6",
@@ -75700,7 +75700,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691ED0",
   "sym": "?vf_12@ScriptClass@@UAEHXZ",
   "len": "0x6",
@@ -75709,7 +75709,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691EE0",
   "sym": "??_GScriptClass@@UAEPAXI@Z",
   "len": "0x8d",
@@ -75718,7 +75718,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691F70",
   "sym": "?vf_11@ScriptTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -75727,7 +75727,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691F80",
   "sym": "?vf_12@ScriptTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -75736,7 +75736,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691F90",
   "sym": "?vf_16@ScriptTypeClass@@UAEHXZ",
   "len": "0x7",
@@ -75745,7 +75745,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/script_class_body.cpp",
+  "tu": "match/script_class_body.cpp",
   "addr": "0x691FA0",
   "sym": "??_GScriptTypeClass@@UAEPAXI@Z",
   "len": "0x8d",
@@ -79278,7 +79278,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638A20",
   "sym": "?FUN_00638A20@@YIXPAVPlanningNodeClass@@@Z",
   "len": "0x58",
@@ -79287,7 +79287,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638DC0",
   "sym": "?FUN_00638DC0@@YIXPAVPlanningNodeClass@@@Z",
   "len": "0x58",
@@ -79296,7 +79296,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63B090",
   "sym": "?FUN_0063B090@@YIXXZ",
   "len": "0xb",
@@ -80574,7 +80574,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3D70",
   "sym": "?GetClassID@TActionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -80592,7 +80592,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_body.cpp",
+  "tu": "match/tag_class_body.cpp",
   "addr": "0x6E5560",
   "sym": "?FUN_006E5560@TagClass@@QAEXUCellStruct@@@Z",
   "len": "0xa",
@@ -80646,7 +80646,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F21F0",
   "sym": "?Slot5@?$DynamicVectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@UBEHPAU?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@Z",
   "len": "0x1b",
@@ -80655,7 +80655,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F2210",
   "sym": "?Slot6@?$VectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@UBE?AU?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@H@Z",
   "len": "0x1c",
@@ -80664,7 +80664,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F2290",
   "sym": "??8?$VectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@UBE_NABV0@@Z",
   "len": "0x52",
@@ -80673,7 +80673,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F2440",
   "sym": "?FindItemIndex@?$VectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@UBEHABU?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@Z",
   "len": "0x46",
@@ -80682,7 +80682,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F2490",
   "sym": "?Slot5@?$VectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@UBEHPAU?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@Z",
   "len": "0x1b",
@@ -80691,7 +80691,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F2640",
   "sym": "?FindItemIndex@?$DynamicVectorClass@U?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@@UBEHABU?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@@Z",
   "len": "0x36",
@@ -85587,7 +85587,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634800",
   "sym": "?FUN_00634800@Obj_00634800@@QAEPAHXZ",
   "len": "0x4",
@@ -85596,7 +85596,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634950",
   "sym": "?FUN_00634950@Obj_00634950@@QAEXXZ",
   "len": "0x5",
@@ -85605,7 +85605,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634960",
   "sym": "?FUN_00634960@Obj_00634960@@QBEEXZ",
   "len": "0x4",
@@ -85614,7 +85614,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636110",
   "sym": "?FUN_00636110@Obj_00636110@@QBEHXZ",
   "len": "0x3",
@@ -85623,7 +85623,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636520",
   "sym": "?FUN_00636520@Obj_00636520@@QAEXXZ",
   "len": "0x5",
@@ -85632,7 +85632,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636530",
   "sym": "?FUN_00636530@Obj_00636530@@QAEXXZ",
   "len": "0x5",
@@ -85641,7 +85641,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636540",
   "sym": "?FUN_00636540@Obj_00636540@@QBEEXZ",
   "len": "0x4",
@@ -85650,7 +85650,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636550",
   "sym": "?FUN_00636550@Obj_00636550@@QAEHXZ",
   "len": "0x20",
@@ -85659,7 +85659,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636570",
   "sym": "?FUN_00636570@Obj_00636570@@QAEHXZ",
   "len": "0x1f",
@@ -85668,7 +85668,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636DA0",
   "sym": "?FUN_00636DA0@Obj_00636DA0@@QAEEH@Z",
   "len": "0x20",
@@ -85677,7 +85677,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636DD0",
   "sym": "?FUN_00636DD0@Obj_00636DD0@@QAEHXZ",
   "len": "0xf",
@@ -85686,7 +85686,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636DE0",
   "sym": "?FUN_00636DE0@Obj_00636DE0@@QAEHXZ",
   "len": "0x14",
@@ -85695,7 +85695,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636FA0",
   "sym": "?FUN_00636FA0@Obj_00636FA0@@QAEXHH@Z",
   "len": "0x1e",
@@ -85704,7 +85704,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636FC0",
   "sym": "?FUN_00636FC0@Obj_00636FC0@@QBEHXZ",
   "len": "0x7",
@@ -85713,7 +85713,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636FD0",
   "sym": "?FUN_00636FD0@Obj_00636FD0@@QBEHXZ",
   "len": "0x7",
@@ -85722,7 +85722,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636FE0",
   "sym": "?FUN_00636FE0@Obj_00636FE0@@QAEHXZ",
   "len": "0x15",
@@ -85731,7 +85731,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637000",
   "sym": "?FUN_00637000@Obj_00637000@@QBE_NXZ",
   "len": "0xe",
@@ -85740,7 +85740,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637010",
   "sym": "?FUN_00637010@Obj_00637010@@QBE_NXZ",
   "len": "0xe",
@@ -85749,7 +85749,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637020",
   "sym": "?FUN_00637020@Obj_00637020@@QBEEXZ",
   "len": "0x7",
@@ -85758,7 +85758,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637030",
   "sym": "?FUN_00637030@Obj_00637030@@QBEEXZ",
   "len": "0x7",
@@ -85767,7 +85767,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637060",
   "sym": "?FUN_00637060@@YIXPAVPlanningNotify@@@Z",
   "len": "0x7",
@@ -85776,7 +85776,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637DB0",
   "sym": "?FUN_00637DB0@@YI_NH@Z",
   "len": "0x14",
@@ -85785,7 +85785,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638B50",
   "sym": "?FUN_00638B50@@YIHH@Z",
   "len": "0x18",
@@ -85794,7 +85794,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638C20",
   "sym": "?FUN_00638C20@@YIHH@Z",
   "len": "0x18",
@@ -85803,7 +85803,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A210",
   "sym": "?FUN_0063A210@Obj_0063A210@@QAEXXZ",
   "len": "0x1d",
@@ -85812,7 +85812,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A4A0",
   "sym": "?FUN_0063A4A0@@YIXH@Z",
   "len": "0x7",
@@ -85821,7 +85821,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63AD30",
   "sym": "?FUN_0063AD30@@YIXPAVPlanningNodeClass@@@Z",
   "len": "0x7",
@@ -85830,7 +85830,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63AD40",
   "sym": "?FUN_0063AD40@@YAPAVPlanningNodeClass@@XZ",
   "len": "0x6",
@@ -85839,7 +85839,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D500",
   "sym": "?FUN_0063D500@Obj_0063D500@@QAEHXZ",
   "len": "0x16",
@@ -85848,7 +85848,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D520",
   "sym": "?FUN_0063D520@Obj_0063D520@@QAEHXZ",
   "len": "0x16",
@@ -85857,7 +85857,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D540",
   "sym": "?FUN_0063D540@@YIHPAUObj_0063D540@@H@Z",
   "len": "0x1c",
@@ -86145,7 +86145,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu194_methods.cpp",
+  "tu": "match/trivial_tu194_methods.cpp",
   "addr": "0x65D8D0",
   "sym": "?FUN_0065D8D0@@YA_NXZ",
   "len": "0x3",
@@ -86154,7 +86154,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu194_methods.cpp",
+  "tu": "match/trivial_tu194_methods.cpp",
   "addr": "0x65E650",
   "sym": "?FUN_0065E650@@YG_NHHH@Z",
   "len": "0x5",
@@ -86829,7 +86829,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0040",
   "sym": "?FUN_006E0040@@YG_NHHHH@Z",
   "len": "0x5",
@@ -86838,7 +86838,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0250",
   "sym": "?FUN_006E0250@Obj_006E0250@@QAE_NHHHH@Z",
   "len": "0x17",
@@ -86847,7 +86847,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0270",
   "sym": "?FUN_006E0270@Obj_006E0270@@QAE_NHHHH@Z",
   "len": "0x17",
@@ -86856,7 +86856,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0290",
   "sym": "?FUN_006E0290@Obj_006E0290@@QAE_NHHHH@Z",
   "len": "0x17",
@@ -86865,7 +86865,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0ED0",
   "sym": "?FUN_006E0ED0@Obj_006E0ED0@@QAEEPAUArg1_006E0ED0@@HHH@Z",
   "len": "0x19",
@@ -86874,7 +86874,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0FA0",
   "sym": "?FUN_006E0FA0@Obj_006E0FA0@@QAE_NHHHH@Z",
   "len": "0x19",
@@ -86883,7 +86883,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0FC0",
   "sym": "?FUN_006E0FC0@Obj_006E0FC0@@QAE_NHHHH@Z",
   "len": "0x19",
@@ -86892,7 +86892,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1720",
   "sym": "?FUN_006E1720@Obj_006E1720@@QAE_NHHHH@Z",
   "len": "0x12",
@@ -86901,7 +86901,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1740",
   "sym": "?FUN_006E1740@Obj_006E1740@@QAE_NHHHH@Z",
   "len": "0x12",
@@ -86910,7 +86910,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1B90",
   "sym": "?FUN_006E1B90@@YI_NPAUObj_006E1B90@@HHHHH@Z",
   "len": "0x16",
@@ -86919,7 +86919,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1BB0",
   "sym": "?FUN_006E1BB0@Obj_006E1BB0@@QAE_NHHHH@Z",
   "len": "0x17",
@@ -86928,7 +86928,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1F90",
   "sym": "?FUN_006E1F90@Obj_006E1F90@@QAEEHHHH@Z",
   "len": "0x11",
@@ -86937,7 +86937,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1FB0",
   "sym": "?FUN_006E1FB0@@YIEPAUObj_006E1FB0@@HHHHH@Z",
   "len": "0x17",
@@ -86946,7 +86946,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1FD0",
   "sym": "?FUN_006E1FD0@Obj_006E1FD0@@QAEEHHHH@Z",
   "len": "0x1e",
@@ -86955,7 +86955,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E21D0",
   "sym": "?FUN_006E21D0@@YG_NHHHH@Z",
   "len": "0x5",
@@ -86964,7 +86964,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2950",
   "sym": "?FUN_006E2950@@YI_NHHHHHH@Z",
   "len": "0x14",
@@ -86973,7 +86973,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2BE0",
   "sym": "?FUN_006E2BE0@Obj_006E2BE0@@QAE_NHHHH@Z",
   "len": "0x19",
@@ -86982,7 +86982,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2C00",
   "sym": "?FUN_006E2C00@Obj_006E2C00@@QAE_NHHHH@Z",
   "len": "0x19",
@@ -86991,7 +86991,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2C20",
   "sym": "?FUN_006E2C20@@YG_NHHHH@Z",
   "len": "0x1b",
@@ -87000,7 +87000,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2E20",
   "sym": "?FUN_006E2E20@Obj_006E2E20@@QAE_NHHHH@Z",
   "len": "0x16",
@@ -87009,7 +87009,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2E40",
   "sym": "?FUN_006E2E40@Obj_006E2E40@@QAE_NHHHH@Z",
   "len": "0x16",
@@ -87018,7 +87018,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3300",
   "sym": "?FUN_006E3300@Obj_006E3300@@QAEEPAUArg1_006E3300@@HHH@Z",
   "len": "0x19",
@@ -87027,7 +87027,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3320",
   "sym": "?FUN_006E3320@Obj_006E3320@@QAEEPAUArg1_006E3320@@HHH@Z",
   "len": "0x19",
@@ -87036,7 +87036,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3340",
   "sym": "?FUN_006E3340@Obj_006E3340@@QAEEPAUArg1_006E3340@@HHH@Z",
   "len": "0x19",
@@ -87045,7 +87045,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3360",
   "sym": "?FUN_006E3360@Obj_006E3360@@QAEEPAUArg1_006E3360@@HHH@Z",
   "len": "0x19",
@@ -87054,7 +87054,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3890",
   "sym": "?FUN_006E3890@Obj_006E3890@@QAEEHHHH@Z",
   "len": "0x1e",
@@ -87063,7 +87063,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3B20",
   "sym": "?FUN_006E3B20@@YG_NHHHH@Z",
   "len": "0x1b",
@@ -87072,7 +87072,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3B40",
   "sym": "?FUN_006E3B40@Obj_006E3B40@@QAEEPAUArg1_006E3B40@@HHH@Z",
   "len": "0x20",
@@ -87081,7 +87081,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4020",
   "sym": "?FUN_006E4020@@YIEPAUObj_006E4020@@HHHHH@Z",
   "len": "0x1a",
@@ -87090,7 +87090,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4630",
   "sym": "?vf_12@TActionClass@@UAEHXZ",
   "len": "0x6",
@@ -87099,7 +87099,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4640",
   "sym": "?vf_11@TActionClass@@UAEHXZ",
   "len": "0x6",
@@ -87108,7 +87108,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4650",
   "sym": "?vf_16@TActionClass@@UAEHXZ",
   "len": "0x4",
@@ -87135,7 +87135,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDE40",
   "sym": "?FUN_006EDE40@@YIXPAUObj_006EDE40@@HHH@Z",
   "len": "0x1b",
@@ -87144,7 +87144,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDE80",
   "sym": "?FUN_006EDE80@Obj_006EDE80@@QAEXHH@Z",
   "len": "0xa",
@@ -87153,7 +87153,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDEF0",
   "sym": "?FUN_006EDEF0@@YIXPAUObj_006EDEF0@@HPAUArg1_006EDEF0@@H@Z",
   "len": "0x20",
@@ -87162,7 +87162,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDF90",
   "sym": "?FUN_006EDF90@Obj_006EDF90@@QAEXHH@Z",
   "len": "0x14",
@@ -87171,7 +87171,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDFB0",
   "sym": "?FUN_006EDFB0@Obj_006EDFB0@@QAEXHH@Z",
   "len": "0x17",
@@ -87180,7 +87180,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EE1B0",
   "sym": "?FUN_006EE1B0@@YIXPAUObj_006EE1B0@@HHH@Z",
   "len": "0x1a",
@@ -87189,7 +87189,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EE1D0",
   "sym": "?FUN_006EE1D0@@YIXPAUObj_006EE1D0@@HHH@Z",
   "len": "0x1a",
@@ -87198,7 +87198,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6F0430",
   "sym": "?vf_12@TeamClass@@UAEHXZ",
   "len": "0x6",
@@ -87207,7 +87207,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6F0440",
   "sym": "?vf_11@TeamClass@@UAEHXZ",
   "len": "0x6",
@@ -87216,7 +87216,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F20A0",
   "sym": "?FUN_006F20A0@Obj_006F20A0@@QBEHXZ",
   "len": "0x6",
@@ -87225,7 +87225,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F20B0",
   "sym": "?FUN_006F20B0@Obj_006F20B0@@QBEHXZ",
   "len": "0x6",
@@ -87234,7 +87234,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F20C0",
   "sym": "?FUN_006F20C0@Obj_006F20C0@@QBEHXZ",
   "len": "0x7",
@@ -87243,7 +87243,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F25D0",
   "sym": "?FUN_006F25D0@@YAXXZ",
   "len": "0x1",
@@ -87693,7 +87693,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727CA0",
   "sym": "?vf_11@TriggerTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -87702,7 +87702,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727CB0",
   "sym": "?vf_12@TriggerTypeClass@@UAEHXZ",
   "len": "0x6",
@@ -87711,7 +87711,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727CC0",
   "sym": "?FUN_00727CC0@Obj_00727CC0@@QBEHXZ",
   "len": "0x7",
@@ -90762,7 +90762,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCDA0",
   "sym": "_$E8",
   "len": "0x13",
@@ -90771,7 +90771,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCDC0",
   "sym": "_$E11",
   "len": "0x13",
@@ -90780,7 +90780,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCF40",
   "sym": "_$E41",
   "len": "0x1a",
@@ -93031,7 +93031,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DD2C0",
   "sym": "?vf_10@TActionClass@@UAEXPAX_N@Z",
   "len": "0x34",
@@ -93040,7 +93040,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0050",
   "sym": "?FUN_006E0050@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x23",
@@ -93049,7 +93049,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0080",
   "sym": "?FUN_006E0080@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x82",
@@ -93058,7 +93058,7 @@
   "pct": 45.3
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E02B0",
   "sym": "?FUN_006E02B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x78",
@@ -93067,7 +93067,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0330",
   "sym": "?FUN_006E0330@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x79",
@@ -93076,7 +93076,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E03B0",
   "sym": "?FUN_006E03B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x8e",
@@ -93085,7 +93085,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0790",
   "sym": "?FUN_006E0790@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x54",
@@ -93094,7 +93094,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E07F0",
   "sym": "?FUN_006E07F0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x54",
@@ -93103,7 +93103,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0850",
   "sym": "?FUN_006E0850@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x54",
@@ -93112,7 +93112,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E08B0",
   "sym": "?FUN_006E08B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x71",
@@ -93121,7 +93121,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E09A0",
   "sym": "?FUN_006E09A0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x76",
@@ -93130,7 +93130,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0A20",
   "sym": "?FUN_006E0A20@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x76",
@@ -93139,7 +93139,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0CA0",
   "sym": "?FUN_006E0CA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x56",
@@ -93148,7 +93148,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0DF0",
   "sym": "?FUN_006E0DF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x68",
@@ -93157,7 +93157,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0E60",
   "sym": "?FUN_006E0E60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x68",
@@ -93166,7 +93166,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1180",
   "sym": "?FUN_006E1180@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x37",
@@ -93175,7 +93175,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E13A0",
   "sym": "?FUN_006E13A0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x31",
@@ -93184,7 +93184,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E13E0",
   "sym": "?FUN_006E13E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x56",
@@ -93193,7 +93193,7 @@
   "pct": 28.6
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1440",
   "sym": "?FUN_006E1440@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x60",
@@ -93202,7 +93202,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1760",
   "sym": "?FUN_006E1760@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x1c",
@@ -93211,7 +93211,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1A40",
   "sym": "?FUN_006E1A40@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x27",
@@ -93220,7 +93220,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1E40",
   "sym": "?FUN_006E1E40@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x53",
@@ -93229,7 +93229,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1EA0",
   "sym": "?FUN_006E1EA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x56",
@@ -93238,7 +93238,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1F00",
   "sym": "?FUN_006E1F00@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x53",
@@ -93247,7 +93247,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2A10",
   "sym": "?FUN_006E2A10@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x39",
@@ -93256,7 +93256,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2A50",
   "sym": "?FUN_006E2A50@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x4b",
@@ -93265,7 +93265,7 @@
   "pct": 15.2
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2AA0",
   "sym": "?FUN_006E2AA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x46",
@@ -93274,7 +93274,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2AF0",
   "sym": "?FUN_006E2AF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x7f",
@@ -93283,7 +93283,7 @@
   "pct": 27.1
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2B70",
   "sym": "?FUN_006E2B70@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x3e",
@@ -93292,7 +93292,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2E60",
   "sym": "?FUN_006E2E60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x4a",
@@ -93301,7 +93301,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2EB0",
   "sym": "?FUN_006E2EB0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x4a",
@@ -93310,7 +93310,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2F50",
   "sym": "?FUN_006E2F50@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x31",
@@ -93319,7 +93319,7 @@
   "pct": 25.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2F90",
   "sym": "?FUN_006E2F90@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x10",
@@ -93328,7 +93328,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3000",
   "sym": "?FUN_006E3000@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x53",
@@ -93337,7 +93337,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3060",
   "sym": "?FUN_006E3060@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x53",
@@ -93346,7 +93346,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3380",
   "sym": "?FUN_006E3380@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x8d",
@@ -93355,7 +93355,7 @@
   "pct": 26.2
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E38B0",
   "sym": "?FUN_006E38B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x31",
@@ -93364,7 +93364,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3DB0",
   "sym": "?Load@TActionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7d",
@@ -93373,7 +93373,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3F70",
   "sym": "?FUN_006E3F70@TActionClass@@QAE?AUCoordStruct@@XZ",
   "len": "0x3a",
@@ -93382,7 +93382,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3FB0",
   "sym": "?FUN_006E3FB0@TActionClass@@QAEXPBE@Z",
   "len": "0x5d",
@@ -93391,7 +93391,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4010",
   "sym": "?FUN_006E4010@TActionClass@@QAEPBDXZ",
   "len": "0xd",
@@ -93400,7 +93400,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4080",
   "sym": "?FUN_006E4080@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x10",
@@ -93409,7 +93409,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4100",
   "sym": "?FUN_006E4100@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x44",
@@ -93418,7 +93418,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4150",
   "sym": "?FUN_006E4150@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xae",
@@ -93427,7 +93427,7 @@
   "pct": 89.7
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E43E0",
   "sym": "?FUN_006E43E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x54",
@@ -93436,7 +93436,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4460",
   "sym": "?FUN_006E4460@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x54",
@@ -93445,7 +93445,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E44E0",
   "sym": "?FUN_006E44E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x54",
@@ -93454,7 +93454,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4660",
   "sym": "??_GTActionClass@@UAEPAXI@Z",
   "len": "0x123",
@@ -93463,7 +93463,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6347A0",
   "sym": "?FUN_006347A0@PlanningNodeClass@@QAEPAVPlanningBranchClass@@H@Z",
   "len": "0xd",
@@ -93472,7 +93472,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6347B0",
   "sym": "?FUN_006347B0@PlanningNodeClass@@QAEPAVPlanningBranchClass@@PAVTechnoClass@@@Z",
   "len": "0x4c",
@@ -93481,7 +93481,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634810",
   "sym": "?FUN_00634810@PlanningNodeClass@@QAE?AUCoordStruct@@H@Z",
   "len": "0x36",
@@ -93490,7 +93490,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634850",
   "sym": "?FUN_00634850@PlanningNodeClass@@QAE?AUCoordStruct@@XZ",
   "len": "0x2f",
@@ -93499,7 +93499,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634880",
   "sym": "?FUN_00634880@PlanningNodeClass@@QAEPAVPoint2D@@PAV2@H@Z",
   "len": "0x65",
@@ -93508,7 +93508,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6348F0",
   "sym": "?FUN_006348F0@PlanningNodeClass@@QAEPAVPoint2D@@PAV2@@Z",
   "len": "0x5e",
@@ -93517,7 +93517,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634970",
   "sym": "?FUN_00634970@PlanningNodeClass@@QAEXXZ",
   "len": "0x35",
@@ -93526,7 +93526,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6349B0",
   "sym": "?FUN_006349B0@PlanningNodeClass@@QAEXXZ",
   "len": "0x164",
@@ -93535,7 +93535,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634B20",
   "sym": "?FUN_00634B20@PlanningNodeClass@@QAEXXZ",
   "len": "0x197",
@@ -93544,7 +93544,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x634CC0",
   "sym": "?FUN_00634CC0@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
   "len": "0x146",
@@ -93553,7 +93553,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635060",
   "sym": "?FUN_00635060@PlanningNodeClass@@QAEXPAVPlanningMemberClass@@@Z",
   "len": "0xb7",
@@ -93562,7 +93562,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635120",
   "sym": "?FUN_00635120@PlanningNodeClass@@QAEXXZ",
   "len": "0x72",
@@ -93571,7 +93571,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6351A0",
   "sym": "?FUN_006351A0@PlanningNodeClass@@QAE_NPAVTechnoClass@@@Z",
   "len": "0x35",
@@ -93580,7 +93580,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6351E0",
   "sym": "?FUN_006351E0@PlanningNodeClass@@QAEXPAVPlanningMemberClass@@@Z",
   "len": "0x24",
@@ -93589,7 +93589,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635210",
   "sym": "?FUN_00635210@PlanningNodeClass@@QAEXXZ",
   "len": "0xb6",
@@ -93598,7 +93598,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6352D0",
   "sym": "?FUN_006352D0@PlanningNodeClass@@QAEXXZ",
   "len": "0x31",
@@ -93607,7 +93607,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635310",
   "sym": "?FUN_00635310@PlanningNodeClass@@QAEXXZ",
   "len": "0x31",
@@ -93616,7 +93616,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6357D0",
   "sym": "?FUN_006357D0@@YIXPAURectangleStruct@@H@Z",
   "len": "0x51",
@@ -93625,7 +93625,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635DB0",
   "sym": "?FUN_00635DB0@PlanningNodeClass@@QAEX_N@Z",
   "len": "0x36",
@@ -93634,7 +93634,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635DF0",
   "sym": "?FUN_00635DF0@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x91",
@@ -93643,7 +93643,7 @@
   "pct": 45.8
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635E90",
   "sym": "?FUN_00635E90@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x90",
@@ -93652,7 +93652,7 @@
   "pct": 50.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635F20",
   "sym": "??0PlanningTokenClass@@QAE@PAVTechnoClass@@@Z",
   "len": "0x52",
@@ -93661,7 +93661,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636DC0",
   "sym": "?FUN_00636DC0@PlanningTokenClass@@QAEHXZ",
   "len": "0x4",
@@ -93670,7 +93670,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636E00",
   "sym": "?FUN_00636E00@PlanningTokenClass@@QAEXPAVPlanningNodeClass@@@Z",
   "len": "0x5e",
@@ -93679,7 +93679,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636E60",
   "sym": "?FUN_00636E60@PlanningTokenClass@@QAEPAVPlanningNodeClass@@H@Z",
   "len": "0x44",
@@ -93688,7 +93688,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636EB0",
   "sym": "?FUN_00636EB0@PlanningTokenClass@@QAEPAVPlanningNodeClass@@XZ",
   "len": "0x10",
@@ -93697,7 +93697,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636EE0",
   "sym": "?FUN_00636EE0@PlanningTokenClass@@QAEHPAVPlanningNodeClass@@@Z",
   "len": "0x11",
@@ -93706,7 +93706,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636F00",
   "sym": "?FUN_00636F00@PlanningTokenClass@@QAE?AVEventClass@@H@Z",
   "len": "0x54",
@@ -93715,7 +93715,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636F60",
   "sym": "?FUN_00636F60@PlanningTokenClass@@QAE?AVEventClass@@XZ",
   "len": "0x1a",
@@ -93724,7 +93724,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636F80",
   "sym": "?FUN_00636F80@PlanningTokenClass@@QAEPAVPlanningNodeClass@@XZ",
   "len": "0x15",
@@ -93733,7 +93733,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637040",
   "sym": "?FUN_00637040@PlanningTokenClass@@QAEXXZ",
   "len": "0x1e",
@@ -93742,7 +93742,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637070",
   "sym": "?FUN_00637070@@YIXXZ",
   "len": "0x2e",
@@ -93751,7 +93751,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637550",
   "sym": "?FUN_00637550@@YIXXZ",
   "len": "0x5c",
@@ -93760,7 +93760,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6375B0",
   "sym": "?FUN_006375B0@@YIXPAVEventClass@@@Z",
   "len": "0x8b",
@@ -93769,7 +93769,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637640",
   "sym": "?FUN_00637640@@YIXPAVPlanningNodeClass@@@Z",
   "len": "0x108",
@@ -93778,7 +93778,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637750",
   "sym": "?FUN_00637750@@YIXPAVPlanningTokenClass@@@Z",
   "len": "0x55",
@@ -93787,7 +93787,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6377B0",
   "sym": "?FUN_006377B0@@YIXPAVTechnoClass@@@Z",
   "len": "0x8e",
@@ -93796,7 +93796,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637840",
   "sym": "?FUN_00637840@@YIXPAVTechnoClass@@@Z",
   "len": "0x68",
@@ -93805,7 +93805,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6378B0",
   "sym": "?FUN_006378B0@PlanningNodeClass@@QAEXXZ",
   "len": "0x67",
@@ -93814,7 +93814,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637920",
   "sym": "?FUN_00637920@@YIXXZ",
   "len": "0x94",
@@ -93823,7 +93823,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6379C0",
   "sym": "?FUN_006379C0@@YIXXZ",
   "len": "0x42",
@@ -93832,7 +93832,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637A10",
   "sym": "?FUN_00637A10@@YIXXZ",
   "len": "0x8b",
@@ -93841,7 +93841,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637D00",
   "sym": "?FUN_00637D00@PlanningNodeClass@@QAEXXZ",
   "len": "0xa4",
@@ -93850,7 +93850,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x637DD0",
   "sym": "?FUN_00637DD0@@YIXVEventClass@@@Z",
   "len": "0x2f",
@@ -93859,7 +93859,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638C40",
   "sym": "?FUN_00638C40@@YI_NHUTargetClass@@@Z",
   "len": "0x2a",
@@ -93868,7 +93868,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638C70",
   "sym": "?FUN_00638C70@@YI_NPAVTechnoClass@@@Z",
   "len": "0x62",
@@ -93877,7 +93877,7 @@
   "pct": 37.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638E20",
   "sym": "?FUN_00638E20@@YIXXZ",
   "len": "0x37",
@@ -93886,7 +93886,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x639470",
   "sym": "?FUN_00639470@@YIPAVPlanningNodeClass@@UCoordStruct@@@Z",
   "len": "0x69",
@@ -93895,7 +93895,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x639F60",
   "sym": "?FUN_00639F60@@YIXH@Z",
   "len": "0x11",
@@ -93904,7 +93904,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x639FB0",
   "sym": "?FUN_00639FB0@@YIHH@Z",
   "len": "0x1d",
@@ -93913,7 +93913,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A0D0",
   "sym": "?FUN_0063A0D0@@YIXXZ",
   "len": "0x4f",
@@ -93922,7 +93922,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A440",
   "sym": "?FUN_0063A440@@YIHPAUPlanningView@@PAVEventClass@@@Z",
   "len": "0x5b",
@@ -93931,7 +93931,7 @@
   "pct": 63.2
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63AAC0",
   "sym": "?FUN_0063AAC0@@YGXHH@Z",
   "len": "0x40",
@@ -93940,7 +93940,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63B050",
   "sym": "?FUN_0063B050@@YIPAVTargetAbstract@@PAVEventClass@@@Z",
   "len": "0x30",
@@ -93949,7 +93949,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63CA80",
   "sym": "?FUN_0063CA80@@YIPAUCoordStruct@@PAU1@ABVEventClass@@PAVTargetAbstract@@@Z",
   "len": "0x57",
@@ -94858,7 +94858,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4790",
   "sym": "?FUN_006E4790@Obj_006E4790@@QAEPAU1@H@Z",
   "len": "0x29",
@@ -94876,7 +94876,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDA90",
   "sym": "?FUN_006EDA90@Obj_006EDA90@@QAEXPAUArg1_006EDA90@@H@Z",
   "len": "0x23",
@@ -94885,7 +94885,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDAC0",
   "sym": "?FUN_006EDAC0@Obj_006EDAC0@@QAEXPAUArg1_006EDAC0@@H@Z",
   "len": "0x23",
@@ -94894,7 +94894,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDAF0",
   "sym": "?FUN_006EDAF0@Obj_006EDAF0@@QAEXPAUArg1_006EDAF0@@H@Z",
   "len": "0x23",
@@ -94903,7 +94903,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDB20",
   "sym": "?FUN_006EDB20@Obj_006EDB20@@QAEXPAUArg1_006EDB20@@H@Z",
   "len": "0x23",
@@ -94912,7 +94912,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDE10",
   "sym": "?FUN_006EDE10@Obj_006EDE10@@QAEXPAUArg1_006EDE10@@H@Z",
   "len": "0x21",
@@ -94921,7 +94921,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDE60",
   "sym": "?FUN_006EDE60@@YIXPAUObj_006EDE60@@HHH@Z",
   "len": "0x1b",
@@ -94930,7 +94930,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDEC0",
   "sym": "?FUN_006EDEC0@@YIXPAUObj_006EDEC0@@HPAUArg1_006EDEC0@@H@Z",
   "len": "0x23",
@@ -97218,7 +97218,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63EFB0",
   "sym": "?Ctor@VectorClass_0063EFB0@@QAEPAU1@IPAUPodElem4@@@Z",
   "len": "0x4a",
@@ -97623,7 +97623,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0440",
   "sym": "?FUN_006E0440@Obj_006E0440@@QAE_NHHHH@Z",
   "len": "0x12",
@@ -97632,7 +97632,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0460",
   "sym": "?FUN_006E0460@Obj_006E0440@@QAE_NHHHH@Z",
   "len": "0x12",
@@ -97641,7 +97641,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0D00",
   "sym": "?FUN_006E0D00@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x56",
@@ -97650,7 +97650,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E26C0",
   "sym": "?FUN_006E26C0@Obj_006E26C0@@QAE_NHHHH@Z",
   "len": "0xa",
@@ -97659,7 +97659,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2850",
   "sym": "?FUN_006E2850@Obj_006E2850@@QAE_NHHHH@Z",
   "len": "0xa",
@@ -97668,7 +97668,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4360",
   "sym": "?FUN_006E4360@TActionClass@@QAE_NPAURec_006E4360@@HHH@Z",
   "len": "0x32",
@@ -97677,7 +97677,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E43A0",
   "sym": "?FUN_006E43A0@TActionClass@@QAE_NPAURec_006E43A0@@HHH@Z",
   "len": "0x32",
@@ -97686,7 +97686,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DD1B0",
   "sym": "??1TActionClass@@UAE@XZ",
   "len": "0x10F",
@@ -97713,7 +97713,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EA4F0",
   "sym": "?FUN_006EA4F0@Obj_006EA4F0@@QAEXH@Z",
   "len": "0xf",
@@ -97722,7 +97722,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EE230",
   "sym": "?FUN_006EE230@Owner_006EE230@@QAEXHH@Z",
   "len": "0x68",
@@ -97731,7 +97731,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EE2A0",
   "sym": "?FUN_006EE2A0@Owner_006EE230@@QAEXHH@Z",
   "len": "0x68",
@@ -97740,7 +97740,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F22F0",
   "sym": "?SetCapacity@?$VectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UAE_NHPAU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x101",
@@ -97749,7 +97749,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F25E0",
   "sym": "?AddItem@?$DynamicVectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@QAE_NABU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x57",
@@ -97758,7 +97758,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu236_team_type_class.cpp",
+  "tu": "match/tu236_team_type_class.cpp",
   "addr": "0x6F26E0",
   "sym": "??_E?$DistributionObject@PAVAITriggerTypeClass@@@?$DiscreteDistributionClass@VAITriggerTypeClass@@@@QAEPAXI@Z",
   "len": "0x3b",
@@ -100172,7 +100172,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635560",
   "sym": "?FUN_00635560@PlanningNodeClass@@QAEXI@Z",
   "len": "0x119",
@@ -100181,7 +100181,7 @@
   "pct": 44.2
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638E60",
   "sym": "?FUN_00638E60@@YIXXZ",
   "len": "0x126",
@@ -100190,7 +100190,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x639E30",
   "sym": "?FUN_00639E30@@YI_NPAVPlanningTokenClass@@0@Z",
   "len": "0x123",
@@ -100199,7 +100199,7 @@
   "pct": 25.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D0F0",
   "sym": "?FUN_0063D0F0@@YIIPAVTechnoClass@@@Z",
   "len": "0x120",
@@ -100208,7 +100208,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D2D0",
   "sym": "?FUN_0063D2D0@@YIIPAVPlanningNodeClass@@@Z",
   "len": "0x127",
@@ -100217,7 +100217,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A1B0",
   "sym": "?FUN_0063A1B0@@YIXH@Z",
   "len": "0x55",
@@ -100226,7 +100226,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A230",
   "sym": "?FUN_0063A230@@YIXPBD@Z",
   "len": "0x4a",
@@ -101793,7 +101793,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6E88B0",
   "sym": "_$E17",
   "len": "0x13",
@@ -101802,7 +101802,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6E88D0",
   "sym": "_$E20",
   "len": "0x13",
@@ -101811,7 +101811,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EAE60",
   "len": "0x73",
   "sym": "?vf_10@TeamClass@@UAEXPAX_N@Z",
@@ -101821,7 +101821,7 @@
   "note": "Raw code matches; TeamClass vtable/provider selection and slot closure remain unproved."
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6E8DE0",
   "sym": "??1TeamClass@@UAE@XZ",
   "len": "0x268",
@@ -101830,7 +101830,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EC450",
   "sym": "?Load@TeamClass@@UAGJPAUIStream@@@Z",
   "len": "0xF0",
@@ -101840,7 +101840,7 @@
   "note": "Raw bytes and function relocation targets match; TeamClass vtable/provider closure remains open."
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EC5A0",
   "sym": "?vf_13@TeamClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x183",
@@ -106090,7 +106090,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727BF0",
   "sym": "?Load@TriggerTypeClass@@UAGJPAUIStream@@@Z",
   "len": "0x89",
@@ -106594,7 +106594,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EC370",
   "sym": "?FUN_006EC370@Owner_006EDDC0@@QAE_NXZ",
   "len": "0x21",
@@ -106603,7 +106603,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EC3D0",
   "sym": "?FUN_006EC3D0@Owner_006EDDC0@@QAEPAUMember_006EDDC0@@XZ",
   "len": "0x7d",
@@ -106612,7 +106612,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EDDC0",
   "sym": "?FUN_006EDDC0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x41",
@@ -106621,7 +106621,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EDE90",
   "sym": "?FUN_006EDE90@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x26",
@@ -106630,7 +106630,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EE1F0",
   "sym": "?FUN_006EE1F0@Owner_006EDDC0@@QAEXHH@Z",
   "len": "0x3b",
@@ -106639,7 +106639,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EF470",
   "sym": "?FUN_006EF470@Owner_006EDDC0@@QAE_NXZ",
   "len": "0x5c",
@@ -106648,7 +106648,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EF5C0",
   "sym": "?FUN_006EF5C0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@_N@Z",
   "len": "0x30",
@@ -106657,7 +106657,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EDCA0",
   "sym": "?FUN_006EDCA0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0xb2",
@@ -106666,7 +106666,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EDD60",
   "sym": "?FUN_006EDD60@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x2b",
@@ -106675,7 +106675,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EDD90",
   "sym": "?FUN_006EDD90@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x2b",
@@ -106684,7 +106684,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EDF10",
   "sym": "?FUN_006EDF10@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x73",
@@ -106693,7 +106693,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EDFD0",
   "sym": "?FUN_006EDFD0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x77",
@@ -106702,7 +106702,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EE050",
   "sym": "?FUN_006EE050@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x45",
@@ -106711,7 +106711,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EE0A0",
   "sym": "?FUN_006EE0A0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x37",
@@ -106720,7 +106720,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EE0E0",
   "sym": "?FUN_006EE0E0@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0x1c",
@@ -106729,7 +106729,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EE100",
   "sym": "?FUN_006EE100@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@H@Z",
   "len": "0xa4",
@@ -106738,7 +106738,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EE310",
   "sym": "?FUN_006EE310@Owner_006EDDC0@@QAEXPAUActionArg_006EDDC0@@_N@Z",
   "len": "0xd1",
@@ -106747,7 +106747,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6F03B0",
   "sym": "?FUN_006F03B0@Owner_006EDDC0@@QAEHXZ",
   "len": "0x3c",
@@ -106756,7 +106756,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6F03F0",
   "sym": "?FUN_006F03F0@Owner_006EDDC0@@QAE_NXZ",
   "len": "0x3d",
@@ -106765,7 +106765,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_mission_handlers_006eddc0.cpp",
+  "tu": "match/team_mission_handlers_006eddc0.cpp",
   "addr": "0x6EF9E0",
   "sym": "?FUN_006EF9E0@Member_006EDDC0@@QAE_NXZ",
   "len": "0x2e",
@@ -112849,7 +112849,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCD70",
   "sym": "_$E5",
   "len": "0x28",
@@ -112858,7 +112858,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCDE0",
   "sym": "_$E14",
   "len": "0x13",
@@ -112867,7 +112867,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCE00",
   "sym": "_$E17",
   "len": "0x13",
@@ -112876,7 +112876,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCE20",
   "sym": "_$E20",
   "len": "0x13",
@@ -112885,7 +112885,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCE40",
   "sym": "_$E23",
   "len": "0x31",
@@ -112894,7 +112894,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCE80",
   "sym": "_$E26",
   "len": "0x21",
@@ -112903,7 +112903,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCEB0",
   "sym": "_$E29",
   "len": "0x2c",
@@ -112912,7 +112912,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCEE0",
   "sym": "_$E32",
   "len": "0x27",
@@ -112921,7 +112921,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCF10",
   "sym": "_$E35",
   "len": "0xf",
@@ -112930,7 +112930,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCF20",
   "sym": "_$E38",
   "len": "0x12",
@@ -112939,7 +112939,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6DCF60",
   "sym": "_$E44",
   "len": "0x17",
@@ -113668,7 +113668,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_find_by_name_006f0fc0.cpp",
+  "tu": "match/team_type_find_by_name_006f0fc0.cpp",
   "addr": "0x6F0FC0",
   "sym": "?FUN_006F0FC0@@YIPAUTypeClass_006F1920@@PBD@Z",
   "len": "0x61",
@@ -113677,7 +113677,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_pointer_expired_006f1030.cpp",
+  "tu": "match/team_type_pointer_expired_006f1030.cpp",
   "addr": "0x6F1030",
   "sym": "?FUN_006F1030@TeamTypeView_006F1030@@QAEXPAXH@Z",
   "len": "0x5a",
@@ -113686,7 +113686,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_load_list_006f19b0.cpp",
+  "tu": "match/team_type_load_list_006f19b0.cpp",
   "addr": "0x6F19B0",
   "sym": "?FUN_006F19B0@@YIXPAVCCINIClass@@H@Z",
   "len": "0xf9",
@@ -113695,7 +113695,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_load_list_006f19b0.cpp",
+  "tu": "match/team_type_load_list_006f19b0.cpp",
   "addr": "0x6F1AB0",
   "sym": "?FUN_006F1AB0@@YIXPAUTeamIni_006F1AB0@@H@Z",
   "len": "0xd4",
@@ -134944,7 +134944,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F06E0",
   "sym": "??0TeamTypeClass@@QAE@PBD@Z",
   "len": "0x20c",
@@ -134953,7 +134953,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F08F0",
   "sym": "??1TeamTypeClass@@UAE@XZ",
   "len": "0xc2",
@@ -134962,7 +134962,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1BB0",
   "sym": "?Load@TeamTypeClass@@UAGJPAUIStream@@@Z",
   "len": "0x89",
@@ -134971,7 +134971,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1C80",
   "sym": "?vf_13@TeamTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x196",
@@ -134980,7 +134980,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F20D0",
   "sym": "??_GTeamTypeClass@@UAEPAXI@Z",
   "len": "0xd6",
@@ -134989,7 +134989,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/task_force_class_body.cpp",
+  "tu": "match/task_force_class_body.cpp",
   "addr": "0x6E86A0",
   "sym": "?Load@TaskForceClass@@UAGJPAUIStream@@@Z",
   "len": "0x63",
@@ -134998,7 +134998,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/task_force_class_body.cpp",
+  "tu": "match/task_force_class_body.cpp",
   "addr": "0x6E87F0",
   "sym": "??_GTaskForceClass@@UAEPAXI@Z",
   "len": "0x8d",
@@ -135007,7 +135007,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/task_force_class_body.cpp",
+  "tu": "match/task_force_class_body.cpp",
   "addr": "0x6E8160",
   "sym": "?FUN_006E8160@TaskForceClass@@QBEHXZ",
   "len": "0x1f",
@@ -135016,7 +135016,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/task_force_class_body.cpp",
+  "tu": "match/task_force_class_body.cpp",
   "addr": "0x6E8780",
   "sym": "?FUN_006E8780@TaskForceClass@@QBEHXZ",
   "len": "0x41",
@@ -135025,7 +135025,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/task_force_class_body.cpp",
+  "tu": "match/task_force_class_body.cpp",
   "addr": "0x6E7F80",
   "sym": "??1TaskForceClass@@UAE@XZ",
   "len": "0x79",
@@ -135124,7 +135124,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71F800",
   "sym": "?vf_10@TEventClass@@UAEXPAX_N@Z",
   "len": "0x20",
@@ -135133,7 +135133,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71F8C0",
   "sym": "?Load@TEventClass@@UAGJPAUIStream@@@Z",
   "len": "0x6f",
@@ -135142,7 +135142,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71FA80",
   "sym": "??_GTEventClass@@UAEPAXI@Z",
   "len": "0x11f",
@@ -135151,7 +135151,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71E830",
   "sym": "??1TEventClass@@UAE@XZ",
   "len": "0x10b",
@@ -135187,7 +135187,7 @@
   "pct": 85.4
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0480",
   "sym": "?FUN_006E0480@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x10",
@@ -135196,7 +135196,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0F90",
   "sym": "?FUN_006E0F90@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xf",
@@ -135205,7 +135205,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1DC0",
   "sym": "?FUN_006E1DC0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x33",
@@ -135214,7 +135214,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1E00",
   "sym": "?FUN_006E1E00@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x33",
@@ -135223,7 +135223,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1F60",
   "sym": "?FUN_006E1F60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x2b",
@@ -135232,7 +135232,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2660",
   "sym": "?FUN_006E2660@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x57",
@@ -135241,7 +135241,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1BD0",
   "sym": "?FUN_006E1BD0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x61",
@@ -135250,7 +135250,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1C40",
   "sym": "?FUN_006E1C40@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x75",
@@ -135259,7 +135259,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2860",
   "sym": "?FUN_006E2860@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x74",
@@ -135268,7 +135268,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E28E0",
   "sym": "?FUN_006E28E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x61",
@@ -135277,7 +135277,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2F00",
   "sym": "?FUN_006E2F00@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x4a",
@@ -136042,7 +136042,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1090",
   "sym": "?vf_25@TeamTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x4b2",
@@ -136051,7 +136051,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/team_type_class_body.cpp",
+  "tu": "match/team_type_class_body.cpp",
   "addr": "0x6F1550",
   "sym": "?vf_26@TeamTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x311",
@@ -136852,7 +136852,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_mission_slots_0041b870.cpp",
+  "tu": "match/aircraft_mission_slots_0041b870.cpp",
   "addr": "0x41B870",
   "sym": "?vf_123@AircraftClass@@UAE_NXZ",
   "len": "0x15",
@@ -136861,7 +136861,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_mission_slots_0041b870.cpp",
+  "tu": "match/aircraft_mission_slots_0041b870.cpp",
   "addr": "0x41B9F0",
   "sym": "?vf_124@AircraftClass@@UAEXH@Z",
   "len": "0x4d",
@@ -136870,7 +136870,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/aircraft_mission_slots_0041b870.cpp",
+  "tu": "match/aircraft_mission_slots_0041b870.cpp",
   "addr": "0x41BA90",
   "sym": "?vf_122@AircraftClass@@UAEXH_N@Z",
   "len": "0x52",
@@ -137347,7 +137347,7 @@
   "pct": 81.7
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E42D0",
   "sym": "?FUN_006E42D0@TActionClass@@QAE_NPAURec_006E42D0@@HHH@Z",
   "len": "0x4c",
@@ -137356,7 +137356,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4320",
   "sym": "?FUN_006E4320@TActionClass@@QAE_NPAURec_006E4320@@HHH@Z",
   "len": "0x3a",
@@ -137365,7 +137365,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E47C0",
   "sym": "?FUN_006E47C0@Block_006E47C0@@QAE?AU1@ABU1@@Z",
   "len": "0x29",
@@ -139435,7 +139435,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/trivial_tu251_methods.cpp",
+  "tu": "match/trivial_tu251_methods.cpp",
   "addr": "0x727090",
   "sym": "?vf_10@TriggerTypeClass@@UAEXPAX_N@Z",
   "len": "0x85",
@@ -140515,7 +140515,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EA080",
   "sym": "?FUN_006EA080@TeamClass@@QAEXXZ",
   "len": "0x46",
@@ -140524,7 +140524,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EC730",
   "sym": "?FUN_006EC730@TeamClass@@QAEXH_N@Z",
   "len": "0x33",
@@ -140533,7 +140533,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6ECB50",
   "sym": "?FUN_006ECB50@TeamClass@@QAEXHH@Z",
   "len": "0x50",
@@ -140542,7 +140542,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6ECF10",
   "sym": "?FUN_006ECF10@TeamClass@@QAEXHH@Z",
   "len": "0x34",
@@ -140551,7 +140551,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_class_r14_methods.cpp",
+  "tu": "match/team_class_r14_methods.cpp",
   "addr": "0x6ECF50",
   "sym": "?FUN_006ECF50@TeamClass@@QAEXPAUActionArg_r14@@H@Z",
   "len": "0x54",
@@ -140560,7 +140560,7 @@
   "pct": 84.8
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDC70",
   "sym": "?FUN_006EDC70@TeamClass@@QAEXHH@Z",
   "len": "0x2B",
@@ -141181,7 +141181,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E01C0",
   "sym": "?FUN_006E01C0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x8B",
@@ -141190,7 +141190,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0930",
   "sym": "?FUN_006E0930@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x6F",
@@ -141199,7 +141199,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0AA0",
   "sym": "?FUN_006E0AA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xB3",
@@ -141208,7 +141208,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0B60",
   "sym": "?FUN_006E0B60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x134",
@@ -141217,7 +141217,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E16D0",
   "sym": "?FUN_006E16D0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x4B",
@@ -141226,7 +141226,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1830",
   "sym": "?FUN_006E1830@@YIPAVObjectClass@@PAUCoordStruct@@@Z",
   "len": "0x73",
@@ -141235,7 +141235,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E18B0",
   "sym": "?FUN_006E18B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xCC",
@@ -141244,7 +141244,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1980",
   "sym": "?FUN_006E1980@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xBF",
@@ -141253,7 +141253,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/taction_r15_methods.cpp",
+  "tu": "match/taction_r15_methods.cpp",
   "addr": "0x6E2600",
   "sym": "?FUN_006E2600@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x37",
@@ -141262,7 +141262,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2970",
   "sym": "?FUN_006E2970@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x9F",
@@ -141271,7 +141271,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2BB0",
   "sym": "?FUN_006E2BB0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x2D",
@@ -141280,7 +141280,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4040",
   "sym": "?FUN_006E4040@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x36",
@@ -141289,7 +141289,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E0EF0",
   "sym": "?FUN_006E0EF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x9F",
@@ -141370,7 +141370,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6EC770",
   "sym": "?SetCellTarget@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
   "len": "0x56",
@@ -141379,7 +141379,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6ECFB0",
   "sym": "?SplitOff@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
   "len": "0x71",
@@ -141388,7 +141388,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6ED030",
   "sym": "?InstallHelper@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
   "len": "0x55",
@@ -141397,7 +141397,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6ED770",
   "sym": "?WaitFrames@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
   "len": "0x62",
@@ -141406,7 +141406,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6EC9A0",
   "sym": "?ClearIfBusy@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
   "len": "0xC7",
@@ -141415,7 +141415,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6ECA70",
   "sym": "?ClearIfBuilding@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
   "len": "0xD5",
@@ -141424,7 +141424,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6ECE60",
   "sym": "?StepToOccupant@Team_R15@@QAEXPAUMissionArg_R15@@_N@Z",
   "len": "0xAF",
@@ -141433,7 +141433,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "addr": "0x6EC250",
   "sym": "?FUN_006EC250@@YIXHH@Z",
   "len": "0xAE",
@@ -141676,7 +141676,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/taction_r16_methods.cpp",
+  "tu": "match/taction_r16_methods.cpp",
   "addr": "0x6E0110",
   "sym": "?FUN_006E0110@TActionView_r16@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xa8",
@@ -141685,7 +141685,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E1FF0",
   "sym": "?FUN_006E1FF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x56",
@@ -141694,7 +141694,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E26D0",
   "sym": "?FUN_006E26D0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xbe",
@@ -141703,7 +141703,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E2790",
   "sym": "?FUN_006E2790@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xb3",
@@ -141712,7 +141712,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/waypoint_path_r16_methods.cpp",
+  "tu": "match/waypoint_path_r16_methods.cpp",
   "addr": "0x7639A0",
   "sym": "?FUN_007639A0@WaypointPathView_r16@@QAE_NPAUCoordStruct@@@Z",
   "len": "0xac",
@@ -141964,7 +141964,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63CF10",
   "sym": "?FUN_0063CF10@@YIIPAUTechnoOwner_0063CF10@@@Z",
   "len": "0xa5",
@@ -141973,7 +141973,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63CFC0",
   "sym": "?FUN_0063CFC0@@YIIPAUTechnoOwner_0063CF10@@@Z",
   "len": "0xa5",
@@ -141982,7 +141982,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D070",
   "sym": "?FUN_0063D070@@YIIPBUColorStruct@@0H@Z",
   "len": "0x78",
@@ -142468,7 +142468,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D810",
   "sym": "?FUN_0063D810@@YIXIIVPoint2D@@0D@Z",
   "len": "0xfc",
@@ -142477,7 +142477,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D960",
   "sym": "?FUN_0063D960@@YIXHIVPoint2D@@0@Z",
   "len": "0x56",
@@ -143539,7 +143539,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E3E50",
   "sym": "?vf_13@TActionClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x90",
@@ -145330,7 +145330,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E4560",
   "sym": "?FUN_006E4560@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x7e",
@@ -145366,7 +145366,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "addr": "0x6E21E0",
   "sym": "?FUN_006E21E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xa4",
@@ -146639,7 +146639,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EDB50",
   "sym": "?FUN_006EDB50@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
   "len": "0x11e",
@@ -146648,7 +146648,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "addr": "0x6EF610",
   "sym": "?FUN_006EF610@TeamClass@@QAEXPAUScriptActionNode@@_N@Z",
   "len": "0xC0",
@@ -147494,7 +147494,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x635350",
   "sym": "?FUN_00635350@PlanningNodeClass@@QAEXI@Z",
   "len": "0x135",
@@ -147503,7 +147503,7 @@
   "pct": 96.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x636CE0",
   "sym": "?FUN_00636CE0@PlanningTokenClass@@QAEXXZ",
   "len": "0xb0",
@@ -147512,7 +147512,7 @@
   "pct": 88.1
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638B70",
   "sym": "?FUN_00638B70@@YI_NPAVObjectClass@@HUTargetClass@@@Z",
   "len": "0xa7",
@@ -147521,7 +147521,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638CE0",
   "sym": "?FUN_00638CE0@@YIHPAVTechnoClass@@PAVEventClass@@@Z",
   "len": "0xdd",
@@ -147530,7 +147530,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x638F90",
   "sym": "?FUN_00638F90@@YGPAVPlanningNodeClass@@HH@Z",
   "len": "0xad",
@@ -147539,7 +147539,7 @@
   "pct": 96.7
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x639210",
   "sym": "?FUN_00639210@@YIPAVPlanningNodeClass@@HHUCoordStruct@@@Z",
   "len": "0xbb",
@@ -147548,7 +147548,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6392D0",
   "sym": "?FUN_006392D0@@YGPAVPlanningNodeClass@@HH@Z",
   "len": "0xcf",
@@ -147557,7 +147557,7 @@
   "pct": 96.1
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6393A0",
   "sym": "?FUN_006393A0@@YGPAVPlanningNodeClass@@HH@Z",
   "len": "0xcf",
@@ -147566,7 +147566,7 @@
   "pct": 96.1
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x6394E0",
   "sym": "?FUN_006394E0@@YIXPAVTechnoClass@@PAVPlanningNodeClass@@@Z",
   "len": "0xc1",
@@ -147575,7 +147575,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x639FD0",
   "sym": "?FUN_00639FD0@@YIXPAVEventClass@@@Z",
   "len": "0xf1",
@@ -147584,7 +147584,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A120",
   "sym": "?FUN_0063A120@@YIX_N0@Z",
   "len": "0x84",
@@ -147593,7 +147593,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A280",
   "sym": "?FUN_0063A280@@YIXPAVEventClass@@@Z",
   "len": "0xd8",
@@ -147602,7 +147602,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A360",
   "sym": "?FUN_0063A360@@YIXH@Z",
   "len": "0xdd",
@@ -147611,7 +147611,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63A4B0",
   "sym": "?FUN_0063A4B0@@YIXH@Z",
   "len": "0xed",
@@ -147620,7 +147620,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63AB60",
   "sym": "?FUN_0063AB60@@YG_NHH@Z",
   "len": "0xfc",
@@ -147629,7 +147629,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63AC70",
   "sym": "?FUN_0063AC70@PlanningNodeClass@@QAEHXZ",
   "len": "0xb6",
@@ -147638,7 +147638,7 @@
   "pct": 88.8
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63B0A0",
   "sym": "?FUN_0063B0A0@@YIXXZ",
   "len": "0xb0",
@@ -147647,7 +147647,7 @@
   "pct": 81.4
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63BE10",
   "sym": "?FUN_0063BE10@@YI_NPAVTechnoClass@@@Z",
   "len": "0x42",
@@ -147656,7 +147656,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D400",
   "sym": "?FUN_0063D400@@YIXIHVPoint2D@@@Z",
   "len": "0x72",
@@ -147665,7 +147665,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "addr": "0x63D480",
   "sym": "?FUN_0063D480@@YIXIHVPoint2D@@@Z",
   "len": "0x7e",
@@ -148340,7 +148340,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tevent_class_w3_methods.cpp",
+  "tu": "match/tevent_class_w3_methods.cpp",
   "addr": "0x71E6A0",
   "sym": "??0TEventClass@@QAE@XZ",
   "len": "0x160",
@@ -149141,7 +149141,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu019_aircraft_query_interface.cpp",
+  "tu": "match/tu019_aircraft_query_interface.cpp",
   "addr": "0x414290",
   "sym": "?QueryInterface@AircraftClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5f",
@@ -149150,7 +149150,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "tu": "match/aircraft_mission_004155f0.cpp",
   "addr": "0x4157C0",
   "sym": "?FUN_004157C0@Aircraft_004155F0@@QAEHXZ",
   "len": "0x112",
@@ -149159,7 +149159,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "tu": "match/aircraft_mission_004155f0.cpp",
   "addr": "0x415A50",
   "sym": "?FUN_00415A50@Aircraft_004155F0@@QAEHXZ",
   "len": "0xb9",
@@ -149168,7 +149168,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "tu": "match/aircraft_mission_004155f0.cpp",
   "addr": "0x4195A0",
   "sym": "?FUN_004195A0@Aircraft_004155F0@@QAEHPAU1@PAUCell_004155F0@@@Z",
   "len": "0x104",
@@ -149177,7 +149177,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "tu": "match/aircraft_mission_004155f0.cpp",
   "addr": "0x41A940",
   "sym": "?FUN_0041A940@Aircraft_004155F0@@QAEHXZ",
   "len": "0x9d",
@@ -149186,7 +149186,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ai/tu019_aircraft_target_check.cpp",
+  "tu": "match/tu019_aircraft_target_check.cpp",
   "addr": "0x41A9E0",
   "sym": "?FUN_0041A9E0@AircraftClass@@QAEHPAVAbstractClass@@HH@Z",
   "len": "0x9f",

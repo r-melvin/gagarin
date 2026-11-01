@@ -166,7 +166,7 @@ extern "C" long __stdcall FUN_00410320(void* subject, void* stream, int clearDir
 
 #include "capture_manager_class.h"
 
-#include "../ai/rebind_slots_methods.h"
+#include "../rebind_slots_methods.h"
 
 #include "capture_manager_can_capture_methods.h"
 

@@ -107,7 +107,7 @@ void __cdecl FUN_0045EC80();
 
 #include "../core/small_misc51_methods.h"
 
-#include "../ai/threat_budget_methods.h"
+#include "../threat_budget_methods.h"
 
 #include "../core/buffer_holder_dtor_methods.h"
 

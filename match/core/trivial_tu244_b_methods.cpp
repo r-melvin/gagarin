@@ -4,7 +4,7 @@
 //
 //   Ordered ascending by retail address.
 
-#include "../ai/tevent_class_methods.h"
+#include "../tevent_class_methods.h"
 
 // FUNCTION: GAMEMD 0x71FA30
 // Member getter (dword).

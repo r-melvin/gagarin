@@ -188,7 +188,7 @@
    "addr": "0x4158E0",
    "name": "Obj_004158E0::FUN_004158E0",
    "sym": "?FUN_004158E0@Obj_004158E0@@QAEHXZ",
-   "tu": "match/ai/mission_stop_methods.cpp",
+   "tu": "match/mission_stop_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",
@@ -240,7 +240,7 @@
    "addr": "0x41B890",
    "name": "Obj_0041B890::FUN_0041B890",
    "sym": "?FUN_0041B890@Obj_0041B890@@QAE_NXZ",
-   "tu": "match/ai/deploy_ready_methods.cpp",
+   "tu": "match/deploy_ready_methods.cpp",
    "classes": [
     {
      "cls": "AircraftClass",

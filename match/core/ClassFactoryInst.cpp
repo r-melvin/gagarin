@@ -106,9 +106,9 @@ template<class T> TClassFactory<T>::TClassFactory() : RefCount(0) {}
 
 
 #include "../_layout/temporal_class.h"
-#include "../ai/tevent_class_methods.h"
+#include "../tevent_class_methods.h"
 #include "../_layout/voxel_anim_type_class.h"
-#include "../ai/taction_class_methods.h"
+#include "../taction_class_methods.h"
 #include "../_layout/trigger_class.h"
 #include "../_layout/script_class.h"
 #include "../_layout/script_type_class.h"

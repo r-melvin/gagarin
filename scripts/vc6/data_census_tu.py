@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Provenance: original project tooling (measurement only).
 """List the globals/literals that matched code of one TU reaches but nothing defines (from data_census raw JSON).
-Usage: data_census_tu.py RAW.json match/ai/team_type_class_body.cpp"""
+Usage: data_census_tu.py RAW.json match/team_type_class_body.cpp"""
 import bisect
 import collections
 import json

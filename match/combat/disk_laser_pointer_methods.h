@@ -9,7 +9,7 @@
 //   ECX,[0xB0F6AC]` CapacityIncrement, `MOV EAX,[0xB0F698]; CALL [EAX+8]`
 //   SetCapacity, `MOV ECX,[0xB0F69C]` Items. The same vector is already bound
 //   as the pending-delete list in match/core/object_class_uninit_methods.h
-//   and match/ai/tag_class_destroy_methods.h. Names for the method and the
+//   and match/tag_class_destroy_methods.h. Names for the method and the
 //   members (DiskLaserClass::PointerGotInvalid, Owner, Target, unknown_30)
 //   from YRpp (names only).
 //

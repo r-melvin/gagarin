@@ -322,7 +322,7 @@
  {
   "addr": "0x4155F0",
   "name": "AircraftClass::FUN_004155F0",
-  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "tu": "match/aircraft_mission_004155f0.cpp",
   "sym": "?FUN_004155F0@Aircraft_004155F0@@QAEHXZ",
   "len": "0x1cd",
   "manifest_pct": 98.6,
@@ -1729,7 +1729,7 @@
  {
   "addr": "0x510E10",
   "name": "FUN_00510E10",
-  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "tu": "match/house_class_lookup_methods.cpp",
   "sym": "?FUN_00510E10@@YIXHPADH@Z",
   "len": "0xb4",
   "manifest_pct": 85.7,
@@ -3185,7 +3185,7 @@
  {
   "addr": "0x634290",
   "name": "Node_006386E0::FUN_00634290",
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "sym": "?FUN_00634290@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
   "len": "0x32",
   "manifest_pct": 92.3,
@@ -3212,7 +3212,7 @@
  {
   "addr": "0x6386E0",
   "name": "TechnoClass::ClearPlanningTokens",
-  "tu": "match/ai/PlanMgr.cpp",
+  "tu": "match/PlanMgr.cpp",
   "sym": "?ClearPlanningTokens@Techno_006386E0@@QAIXPAURecord_006386E0@@@Z",
   "len": "0x151",
   "manifest_pct": 95.5,
@@ -4366,7 +4366,7 @@
  {
   "addr": "0x6E0EF0",
   "name": "TActionClass::FUN_006E0EF0",
-  "tu": "match/ai/taction_r15_methods.cpp",
+  "tu": "match/taction_r15_methods.cpp",
   "sym": "?FUN_006E0EF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0x9F",
   "manifest_pct": 96.1,
@@ -4387,7 +4387,7 @@
  {
   "addr": "0x6E4150",
   "name": "TActionClass::FUN_006E4150",
-  "tu": "match/ai/TAction.cpp",
+  "tu": "match/TAction.cpp",
   "sym": "?FUN_006E4150@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
   "len": "0xae",
   "manifest_pct": 89.7,
@@ -4415,7 +4415,7 @@
  {
   "addr": "0x6E8DE0",
   "name": "TeamClass::~TeamClass",
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "sym": "??1TeamClass@@UAE@XZ",
   "len": "0x268",
   "manifest_pct": 100,
@@ -4431,7 +4431,7 @@
  {
   "addr": "0x6EAE60",
   "name": "TeamClass::vf_10",
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "sym": "?vf_10@TeamClass@@UAEXPAX_N@Z",
   "len": "0x73",
   "manifest_pct": 100.0,
@@ -4447,7 +4447,7 @@
  {
   "addr": "0x6EC250",
   "name": "FUN_006EC250",
-  "tu": "match/ai/team_mission_handlers_r15.cpp",
+  "tu": "match/team_mission_handlers_r15.cpp",
   "sym": "?FUN_006EC250@@YIXHH@Z",
   "len": "0xAE",
   "manifest_pct": 89.7,
@@ -4475,7 +4475,7 @@
  {
   "addr": "0x6ECF50",
   "name": "TeamClass::FUN_006ECF50",
-  "tu": "match/ai/team_class_r14_methods.cpp",
+  "tu": "match/team_class_r14_methods.cpp",
   "sym": "?FUN_006ECF50@TeamClass@@QAEXPAUActionArg_r14@@H@Z",
   "len": "0x54",
   "manifest_pct": 84.8,
@@ -4499,7 +4499,7 @@
  {
   "addr": "0x6F0450",
   "name": "TeamClass::scalar deleting destructor",
-  "tu": "match/ai/tu235_team_class.cpp",
+  "tu": "match/tu235_team_class.cpp",
   "sym": "??_GTeamClass@@UAEPAXI@Z",
   "len": "0x1e",
   "manifest_pct": 100,

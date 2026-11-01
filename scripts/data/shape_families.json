@@ -185,7 +185,7 @@
      "n_insns": 80,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ai/trigger_class_body.cpp",
+     "tu": "match/trigger_class_body.cpp",
      "sym": "??1TriggerClass@@UAE@XZ",
      "name": "TriggerClass::~TriggerClass"
     },
@@ -604,7 +604,7 @@
      "n_insns": 21,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ai/planning_manager.cpp",
+     "tu": "match/planning_manager.cpp",
      "sym": "_$E71",
      "name": "PlanMgr cleanup callback (node list, guard byte 0xAC4B62 bit 1)"
     },
@@ -2428,7 +2428,7 @@
      "n_insns": 80,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ai/trigger_class_body.cpp",
+     "tu": "match/trigger_class_body.cpp",
      "sym": "??1TriggerClass@@UAE@XZ",
      "name": "TriggerClass::~TriggerClass"
     },
@@ -2809,7 +2809,7 @@
      "n_insns": 33,
      "status": "matched",
      "pct": 100,
-     "tu": "match/ai/tevent_class_w3_methods.cpp",
+     "tu": "match/tevent_class_w3_methods.cpp",
      "sym": "?Load@TEventClass@@UAGJPAUIStream@@@Z",
      "name": "TEventClass::Load",
      "rtti": [

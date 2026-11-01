@@ -45,7 +45,7 @@ GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, CapacityIncrement) == 0x14);
 
-#include "../ai/queue_unlink_methods.h"
+#include "../queue_unlink_methods.h"
 
 #include "airstrike_class_clear_target_methods.h"
 

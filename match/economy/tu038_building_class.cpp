@@ -461,11 +461,11 @@ void __cdecl FUN_00456970();
 
 #include "building_class_enable_methods.h"
 
-#include "../ai/refresh_all_sides_methods.h"
+#include "../refresh_all_sides_methods.h"
 
-#include "../ai/side_slot_dispatch_methods.h"
+#include "../side_slot_dispatch_methods.h"
 
-#include "../ai/unload_all_methods.h"
+#include "../unload_all_methods.h"
 
 #include "../combat/building_class_fire_laser_methods.h"
 

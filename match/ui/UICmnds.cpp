@@ -22,7 +22,7 @@
 #include "../_layout/infantry_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/unit_class.h"
-#include "../ai/planning_manager.h"
+#include "../planning_manager.h"
 #include "../network/beacon_manager_class.h"
 #include "../_layout/building_class.h"
 #include "../_layout/building_type_class_layout.h"

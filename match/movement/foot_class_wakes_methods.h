@@ -17,8 +17,8 @@
 //     constructor is 0x421EA0.
 //     The double constant at 0x7E2810 scales the facing into radians.
 //   The scenario randomizer agrees with
-//   match/ai/trigger_class_reset_timers_methods.h and the 0x1C8/0x421EA0 pair
-//   with match/ai/house_class_psi_warn_methods.h (neither edited; both
+//   match/trigger_class_reset_timers_methods.h and the 0x1C8/0x421EA0 pair
+//   with match/house_class_psi_warn_methods.h (neither edited; both
 //   re-derived here so the TU stands alone). Names cross-checked against YRpp
 //   (offsets reconfirmed).
 #ifndef GG_MATCH_MOVEMENT_FOOT_CLASS_WAKES_METHODS_H

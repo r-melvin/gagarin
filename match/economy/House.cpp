@@ -328,7 +328,7 @@ extern int DAT_00A80238;
 // GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
 extern HouseClass* CurrentPlayer;
 
-#include "../ai/house_class_teardown_methods.h"
+#include "../house_class_teardown_methods.h"
 #include "house_class_destroy_all_methods.h"
 
 #include "../_layout/house_class.h"
@@ -362,9 +362,9 @@ extern CellStruct NoCell_00A8EF98;
 RulesClass* DAT_008871E0;
 // END defined globals
 
-#include "../ai/house_class_lightning_storm_methods.h"
+#include "../house_class_lightning_storm_methods.h"
 
-#include "../ai/house_class_paradrop_methods.h"
+#include "../house_class_paradrop_methods.h"
 
 // Inlined by retail: BaseCenter when set, otherwise BaseSpawnCell.
 inline Cell HouseClass::GetBaseCenter() const
@@ -375,20 +375,20 @@ inline Cell HouseClass::GetBaseCenter() const
     return this->BaseSpawnCell;
 }
 
-#include "../ai/house_class_pick_target_methods.h"
+#include "../house_class_pick_target_methods.h"
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B40E8
 TeamVector_0050D170 DAT_008B40E8;
 // END defined globals
 
-#include "../ai/house_class_planning_methods.h"
+#include "../house_class_planning_methods.h"
 
-#include "../ai/house_class_planning_path_open_methods.h"
+#include "../house_class_planning_path_open_methods.h"
 
-#include "../ai/house_class_planning_select_methods.h"
+#include "../house_class_planning_select_methods.h"
 
-#include "../ai/house_class_planning_waypoint_at_methods.h"
+#include "../house_class_planning_waypoint_at_methods.h"
 
 #include "../_layout/house_class.h"
 #include "../_layout/super_class.h"
@@ -465,7 +465,7 @@ static inline int TypeIndex_004FD060(BuildingTypeClass* type)
 #include <stdio.h>
 
 
-#include "../ai/house_class_lost_powered_center_methods.h"
+#include "../house_class_lost_powered_center_methods.h"
 
 
 #include "../core/empty_function_family_methods.h"

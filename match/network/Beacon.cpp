@@ -17,7 +17,7 @@
 //
 //   cross-checked against YRpp.
 
-#include "../ai/slot_grid_find_methods.h"
+#include "../slot_grid_find_methods.h"
 #include "../core/mathtbl_init_shapes.h"
 
 #include <stddef.h>

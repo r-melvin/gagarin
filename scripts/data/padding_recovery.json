@@ -149,7 +149,7 @@
   {
    "addr": "0x41BB30",
    "length": "0x57",
-   "source": "match/ai/aircraft_helpers_0041bb30.cpp",
+   "source": "match/aircraft_helpers_0041bb30.cpp",
    "rea_evidence_id": "ev_09de008da03f2f3bf41e2197b0a28f741e37ae1eb5d879e824a20e4762658a44",
    "analysis_target": {
     "entry_point": "0x41bb30",
@@ -186,7 +186,7 @@
   {
    "addr": "0x41BBD0",
    "length": "0x60",
-   "source": "match/ai/aircraft_helpers_0041bb30.cpp",
+   "source": "match/aircraft_helpers_0041bb30.cpp",
    "rea_evidence_id": "ev_a7943afa48928ecde54d5dbe587bb5adaa0f61c7a41f9c7c7ba40bc0e39288bf",
    "analysis_target": {
     "entry_point": "0x41bbd0",
@@ -681,7 +681,7 @@
     "contains_entry": true
    },
    "next_action": "Per AGENTS.md, request direction after three materially different approaches. Preserve plain C++ partial; no assembly workaround.",
-   "source": "match/ai/aircraft_mission_004155f0.cpp",
+   "source": "match/aircraft_mission_004155f0.cpp",
    "match_pct": 98.6,
    "remaining_delta": [
     {

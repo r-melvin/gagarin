@@ -5,7 +5,7 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu244_methods.h"
-#include "../ai/tevent_class_methods.h"
+#include "../tevent_class_methods.h"
 
 // FUNCTION: GAMEMD 0x71FA40
 // Stores its argument in a member; pops its stack arguments.

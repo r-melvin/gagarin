@@ -5031,7 +5031,7 @@
   },
   {
    "addr": "0x41BBD0",
-   "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
+   "tu": "match/aircraft_helpers_0041bb30.cpp",
    "name": "AircraftClass_0041BB30::FUN_0041BBD0",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7431,7 +7431,7 @@
   },
   {
    "addr": "0x691EC0",
-   "tu": "match/ai/script_class_body.cpp",
+   "tu": "match/script_class_body.cpp",
    "name": "ScriptClass::vf_11",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8043,7 +8043,7 @@
   },
   {
    "addr": "0x6E53A0",
-   "tu": "match/ai/tag_class_body.cpp",
+   "tu": "match/tag_class_body.cpp",
    "name": "TagClass::FUN_006E53A0",
    "reason": "no-preceding-CC-or-90"
   },
