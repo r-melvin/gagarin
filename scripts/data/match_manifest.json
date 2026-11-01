@@ -86807,11 +86807,11 @@
  {
   "tu": "match/Power.cpp",
   "addr": "0x63F7C0",
-  "sym": "?FUN_0063F7C0@@YIHPAUObj_0063F7C0@@H@Z",
+  "sym": "?FUN_0063F7C0@@YIPAXPAUObj_0063F7C0@@H@Z",
   "len": "0x1a",
-  "name": "FUN_0063F7C0",
+  "name": "?FUN_0063F7C0@@YIPAXPAUObj_0063F7C0@@H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu183_methods.cpp",
@@ -100254,9 +100254,9 @@
  {
   "tu": "match/ownrdraw.cpp",
   "addr": "0x603870",
-  "sym": "?FUN_00603870@@YIHHPAX0@Z",
+  "sym": "?FUN_00603870@@YIPAXHPAXPA_N@Z",
   "len": "0x226",
-  "name": "?FUN_00603870@@YIHHPAX0@Z",
+  "name": "?FUN_00603870@@YIPAXHPAXPA_N@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -133660,130 +133660,130 @@
   "pct": 100
  },
  {
-  "tu": "match/mathtbl_init_770060.cpp",
+  "tu": "match/WDTTerr.cpp",
   "addr": "0x770060",
-  "sym": "_$E2",
+  "sym": "_$E17",
   "len": "0x17",
-  "name": "dynamic initializer (DAT_00B72B98)",
+  "name": "_$E17",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770080",
-  "sym": "_$E5",
+  "sym": "_$E2",
   "len": "0x28",
-  "name": "dynamic initializer (DAT_00B72BB0)",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x7700B0",
-  "sym": "_$E8",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B72C00)",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x7700D0",
-  "sym": "_$E11",
+  "sym": "_$E8",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B72BE8)",
+  "name": "_$E8",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x7700F0",
-  "sym": "_$E14",
+  "sym": "_$E11",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B72BE0)",
+  "name": "_$E11",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770110",
-  "sym": "_$E17",
+  "sym": "_$E14",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B72BB8)",
+  "name": "_$E14",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770130",
-  "sym": "_$E20",
+  "sym": "_$E17",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_00B72B90)",
+  "name": "_$E17",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770150",
-  "sym": "_$E23",
+  "sym": "_$E20",
   "len": "0x31",
-  "name": "dynamic initializer (DAT_00B72C08)",
+  "name": "_$E20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770190",
-  "sym": "_$E26",
+  "sym": "_$E23",
   "len": "0x21",
-  "name": "dynamic initializer (DAT_00B72BC0)",
+  "name": "_$E23",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x7701C0",
-  "sym": "_$E29",
+  "sym": "_$E26",
   "len": "0x2c",
-  "name": "dynamic initializer (DAT_00B72BD8)",
+  "name": "_$E26",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x7701F0",
-  "sym": "_$E32",
+  "sym": "_$E29",
   "len": "0x27",
-  "name": "dynamic initializer (DAT_00B72BFC)",
+  "name": "_$E29",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770220",
-  "sym": "_$E35",
+  "sym": "_$E32",
   "len": "0xf",
-  "name": "dynamic initializer (DAT_00B72BA8)",
+  "name": "_$E32",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770230",
-  "sym": "_$E38",
+  "sym": "_$E35",
   "len": "0x12",
-  "name": "dynamic initializer (DAT_00B72BC8)",
+  "name": "_$E35",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_770060.cpp",
   "addr": "0x770250",
-  "sym": "_$E41",
+  "sym": "_$E38",
   "len": "0x1a",
-  "name": "dynamic initializer (DAT_00B72BF0)",
+  "name": "_$E38",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/mathtbl_init_771a60.cpp",

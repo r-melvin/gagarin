@@ -6,6 +6,7 @@
 // Address index: 0x6D0F10 loads the 25 shapes, 0x6D0F70 frees them.
 
 #include "sidebar_class_layout.h"
+#include "file_system_load_whole_methods.h"
 
 // GLOBAL: GAMEMD 0xB0C148 -- the 25 command-bar button shapes.
 extern SidebarShapeFile* CommandShapes_00B0C148[25];
@@ -13,9 +14,6 @@ extern SidebarShapeFile* CommandShapes_00B0C148[25];
 extern bool CommandShapeOwned_00B0CBDC[25];
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
-
-// FUNCTION: GAMEMD 0x4A38D0 (decl; reloc) -- loads a whole file, reporting whether the block is owned.
-void* __fastcall FUN_004A38D0(const char* name, char* owned);
 
 // FUNCTION: GAMEMD 0x6D0F10
 // Loads Button00.SHP to Button24.SHP.
@@ -25,7 +23,7 @@ void FUN_006D0F10()
     bool owned = false;
     for (int i = 0; i < 25; ++i) {
         sprintf(name, "Button%02d.SHP", i);
-        CommandShapes_00B0C148[i] = static_cast<SidebarShapeFile*>(FUN_004A38D0(name, reinterpret_cast<char*>(&owned)));
+        CommandShapes_00B0C148[i] = static_cast<SidebarShapeFile*>(FileSystem_LoadWholeFileEx(name, &owned));
         CommandShapeOwned_00B0CBDC[i] = owned;
     }
 }

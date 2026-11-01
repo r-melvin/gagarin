@@ -6,6 +6,7 @@
 
 #include "FUNCTION.H"
 #include "mouse_mouse_class.h"
+#include "file_system_load_whole_methods.h"
 
 // The hot-spot and frame step the cursor entries share: pick the first frame of the row (the alternate set when the
 // flag is set and the row has one), derive the hot spot from the shape's extent and hand all three to the
@@ -111,7 +112,7 @@ void MouseClass::vf_10(int* key, Point2D* where)
 void MouseClass::vf_05()
 {
     ScrollClass::vf_05();
-    DAT_00ABF294 = (Obj_0069E430*)FUN_004A38D0("MOUSE.SHA", &MouseShapeFlag);
+    DAT_00ABF294 = (Obj_0069E430*)FileSystem_LoadWholeFileEx("MOUSE.SHA", &MouseShapeFlag);
 }
 
 // FUNCTION: GAMEMD 0x5BDF50
@@ -134,5 +135,5 @@ MouseClass::MouseClass()
 // GLOBAL: GAMEMD 0xABF2DD
 bool MouseCursorApplied;
 // GLOBAL: GAMEMD 0xABF2DC
-char MouseShapeFlag;
+bool MouseShapeFlag;
 // END defined globals

@@ -8,14 +8,6 @@
 #include "mathtbl_consts.h"
 #include "trig_table_functions_004cac40.h"
 
-// GLOBAL: GAMEMD 0x007F7340
-extern const double DAT_007F7340;
-// GLOBAL: GAMEMD 0x007F7348
-extern const double DAT_007F7348;
-
-// SYNTHETIC: GAMEMD 0x770060
-// GLOBAL: GAMEMD 0x00B72B98
-MathTblZero4 DAT_00B72B98;
 // SYNTHETIC: GAMEMD 0x770080
 // GLOBAL: GAMEMD 0x00B72BB0
 double DAT_00B72BB0 = FUN_004CAC40(2.0 * pow(DAT_007E1710, DAT_007E1708));

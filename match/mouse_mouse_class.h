@@ -43,7 +43,7 @@ extern MouseCursorEntry MouseCursorTable[];
 // GLOBAL: GAMEMD 0x00ABF294 - the loaded MOUSE.SHA shape file.
 extern Obj_0069E430* DAT_00ABF294;
 // GLOBAL: GAMEMD 0x00ABF2DC - the load-flag byte handed to FileSystem::LoadWholeFileEx.
-extern char MouseShapeFlag;
+extern bool MouseShapeFlag;
 // GLOBAL: GAMEMD 0x00ABF2DD - set once a cursor has been applied.
 extern bool MouseCursorApplied;
 
@@ -57,9 +57,6 @@ struct MouseCursorTimer
 GG_STATIC_ASSERT(sizeof(MouseCursorTimer) == 0x0C);
 // GLOBAL: GAMEMD 0x00ABF2A0
 extern MouseCursorTimer MouseTimer;
-
-// FUNCTION: GAMEMD 0x4A38D0 (decl; reloc) - FileSystem::LoadWholeFileEx, __fastcall (name in ECX, flag byte in EDX).
-void* FUN_004A38D0(const char* name, char* flag);
 
 // The MapClass containers Load rebuilds (canonical vector specializations, MapBucketTable and MapWordEntry) are
 // declared in ui_display_chain.h with the class chain.

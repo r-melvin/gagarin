@@ -3,13 +3,14 @@
 //   Original translation unit WDTTerr.cpp. The name is the source-file string at 0x84917c
 //   in retail gamemd.exe v1.001, passed by the assert at 0x76fa3a inside this object's
 //   code range (0x76f720-0x77007f). Functions are in ascending retail address order.
-//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
-//   them with the canonical class re-mangles their symbols, so that is left to
-//   a separate rename-only change.
 //
 // The deleting destructors (??_G) of the World Domination Tour data classes are
 // compiler output: the out-of-line destructors below make cl emit the tables and
 // the wrappers, and /Ob2 expands the destructor bodies into them as retail has it.
+//
+// Static initialisers of the math-table header group in the retail code range 0x770060-0x77026a (disassembled from the user's gamemd.exe v1.001).
+//   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
+//   out-of-line _$E thunk behind a jump).
 
 #include "FUNCTION.H"
 
@@ -54,6 +55,8 @@ void __cdecl FUN_0076F8F0()
     DAT_00B72B74 = 0x80;
 }
 
+#include "mathtbl_init_shapes.h"
+
 // FUNCTION: GAMEMD 0x76F910
 // The Territory factory: a new Territory over the five values, returned in a handle (hidden result
 // pointer in ECX, the first value in EDX).
@@ -91,3 +94,8 @@ MSAnim* WorldDominationTour::Territory::FUN_0076FF30()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x770020
 // Territory scalar deleting destructor.
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// SYNTHETIC: GAMEMD 0x770060
+// GLOBAL: GAMEMD 0x00B72B98
+MathTblZero4 DAT_00B72B98;

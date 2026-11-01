@@ -1546,15 +1546,15 @@ int FUN_00603810(int nKey, GG_HWND hCtl)
 }
 
 // GLOBAL: GAMEMD 0x833674
-extern void* DAT_00833674;
+extern const char* DAT_00833674;
 // GLOBAL: GAMEMD 0xB0FB48, 0xB0FB10, 0xB0FB30, 0xB0FAD0
-extern int DAT_00B0FB48;
-extern int DAT_00B0FB10;
-extern int DAT_00B0FB30;
-extern int DAT_00B0FAD0;
+extern void* DAT_00B0FB48;
+extern void* DAT_00B0FB10;
+extern void* DAT_00B0FB30;
+extern void* DAT_00B0FAD0;
 
 // FUNCTION: GAMEMD 0x603870  FUN_00603870
-int FUN_00603870(int nKey, GG_HWND hCtl, void* pArg)
+void* FUN_00603870(int nKey, GG_HWND hCtl, bool* pArg)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1572,7 +1572,7 @@ int FUN_00603870(int nKey, GG_HWND hCtl, void* pArg)
          category == 0x108 || category == 0xBC6 || category == 0xBC7)
         && nCtlID == 0x71C)
     {
-        return FUN_004A38D0(DAT_00833674, pArg);
+        return FileSystem_LoadWholeFileEx(DAT_00833674, pArg);
     }
 
     if (category == 0x94)
@@ -6648,13 +6648,13 @@ extern const float DAT_007EF718 = 0.0625f;
 // GLOBAL: GAMEMD 0xA8DAB4
 int InhibitWord;
 // GLOBAL: GAMEMD 0xB0FAD0
-int DAT_00B0FAD0;
+void* DAT_00B0FAD0;
 // GLOBAL: GAMEMD 0xB0FB10
-int DAT_00B0FB10;
+void* DAT_00B0FB10;
 // GLOBAL: GAMEMD 0xB0FB30
-int DAT_00B0FB30;
+void* DAT_00B0FB30;
 // GLOBAL: GAMEMD 0xB0FB48
-int DAT_00B0FB48;
+void* DAT_00B0FB48;
 // GLOBAL: GAMEMD 0xAC4848
 PCXCache_00621D30 DAT_00ac4848;
 // GLOBAL: GAMEMD 0x7EF708
