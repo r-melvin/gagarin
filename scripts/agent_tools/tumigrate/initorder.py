@@ -25,7 +25,7 @@ class OrderError(Exception):
 
 
 def object_inits(path):
-    """[(section, offset, name, digest)] of the `_$E` symbols of an object, in emission order. The digest is of
+    """[(section number, offset, name, digest)] of the `_$E` symbols of an object, in emission (section) order. The digest is of
     the section bytes only (relocation fields hold addends, the targets are proved by the identity gate)."""
     import wwlib
     data = open(path, 'rb').read()
@@ -34,7 +34,7 @@ def object_inits(path):
     for name, sec, value, scl in wwlib.defined_symbols(data):
         if E_RE.match(name):
             raw = wwlib.section_bytes(data, secs, sec)
-            out.append((secs[sec - 1][0], value, name, hashlib.sha256(raw).hexdigest()[:12]))
+            out.append((sec, value, name, hashlib.sha256(raw).hexdigest()[:12]))
     return sorted(out)
 
 
@@ -52,7 +52,7 @@ def symbol_digest(path, sym):
 
 
 def pair(rows, syms, want=None):
-    """rows: [(addr, old_sym)]; syms: [(section, offset, name, digest)] in emission order; want: {addr: digest of the
+    """rows: [(addr, old_sym)]; syms: [(section number, offset, name, digest)] in emission order; want: {addr: digest of the
     row's bytes in the base object} or None. The n-th row by retail address is the n-th symbol. When the object holds
     more initialisers than rows (unmatched ones have no row) the rows are matched as a subsequence by digest.
     Returns {addr: new_sym}; raises OrderError."""

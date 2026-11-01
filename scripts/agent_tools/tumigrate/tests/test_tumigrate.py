@@ -260,13 +260,26 @@ class TypeConflict(unittest.TestCase):
 
 
 class InitOrder(unittest.TestCase):
-    S = lambda self, n, d: (".text", 0, "_$E%d" % n, d)
+    S = lambda self, n, d: (n, 0, "_$E%d" % n, d)
 
     def test_pairs_by_order_when_counts_and_bytes_agree(self):
         rows = [(0x63F510, "_$E5"), (0x63F4F0, "_$E2"), (0x63F690, "_$E8")]
         syms = [self.S(19, "a"), self.S(22, "b"), self.S(25, "c")]
         want = {0x63F4F0: "a", 0x63F510: "b", 0x63F690: "c"}
         self.assertEqual(initorder.pair(rows, syms, want), {0x63F4F0: "_$E19", 0x63F510: "_$E22", 0x63F690: "_$E25"})
+
+    def test_object_inits_are_in_section_order_not_name_order(self):
+        import wwlib
+        orig = (wwlib.sections, wwlib.defined_symbols, wwlib.section_bytes)
+        wwlib.sections = lambda data: [(".text", 1, 0, 0)] * 12
+        wwlib.defined_symbols = lambda data: [("_$E10", 2, 0, 3), ("_$E4", 9, 0, 3), ("_$E7", 11, 0, 3)]
+        wwlib.section_bytes = lambda data, secs, s: bytes([s])
+        self.addCleanup(lambda: (setattr(wwlib, "sections", orig[0]), setattr(wwlib, "defined_symbols", orig[1]),
+                                 setattr(wwlib, "section_bytes", orig[2])))
+        d = tempfile.mkdtemp(prefix="tumig_o_")
+        self.addCleanup(shutil.rmtree, d, True)
+        write(os.path.join(d, "x.obj"), "")
+        self.assertEqual([s[2] for s in initorder.object_inits(os.path.join(d, "x.obj"))], ["_$E10", "_$E4", "_$E7"])
 
     def test_refuses_a_merge_that_changes_the_order(self):
         rows = [(0x63F4F0, "_$E2"), (0x63F510, "_$E5")]
