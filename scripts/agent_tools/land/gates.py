@@ -696,6 +696,17 @@ def words(ctx):
         len(hits), msg_hits, len(forb), ("; %d lines in vendored paths exempt" % nvend) if nvend else "")
 
 
+@gate
+def c2probe(ctx):
+    """Nothing from the c2probe shim driver (diagnostic-only): env, real-toolchain c2.dll, changed files."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "vc6", "c2probe"))
+    import guard as G
+    f = G.env_findings() + G.toolchain_findings() + G.scan_diff(ctx.tree, ctx.base)
+    for x in f[:15]:
+        print("C2PROBE", x)
+    return ("FAIL" if f else "PASS"), "%d finding(s)" % len(f)
+
+
 # ---------------------------------------------------------------- driver
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

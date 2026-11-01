@@ -1,0 +1,12 @@
+; c2probe shim export table (after sushi-shi/homm3-decomp, CC0).
+;
+; The CL driver GetProcAddress's these two LITERAL strings (CL.EXE .rdata
+; 0x409a78 / 0x409a60), so the exported names must match the real C2.DLL's
+; byte-for-byte, including the leading underscore and stdcall @N suffix.
+; The internal VC6 symbols for the __stdcall definitions in passthru.c are
+; already exactly these decorated names, so LINK's exact-match lookup binds
+; them; scripts/vc6/c2probe/c2probe.py build hard-checks the resulting export table.
+LIBRARY C2
+EXPORTS
+    _InvokeCompilerPass@12
+    _AbortCompilerPass@4
