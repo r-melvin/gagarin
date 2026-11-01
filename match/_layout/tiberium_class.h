@@ -115,9 +115,9 @@ public:
     virtual bool vf_25(CCINIClass* ini);
     // UIName (+0x60, read by CellClass::GetUIName 0x484FF0) is the AbstractTypeClass member.
     int            unknown_98;    // +0x98 compared with CellClass::GetContainedTiberiumIndex
-    int            unknown_9C;    // +0x9C delay stored into the spread timer
+    int            Spread;    // +0x9C delay stored into the spread timer
     double         SpreadPercentage;   // +0xA0 (ReadINI key SpreadPercentage)
-    int            unknown_A8;    // +0xA8 base growth delay (ReadINI key Growth)
+    int            Growth;    // +0xA8 base growth delay (ReadINI key Growth)
     char           _padAC[0xB0 - 0xAC];
     double         GrowthPercentage;   // +0xB0 (ReadINI key GrowthPercentage)
     int            Value;         // +0xB8
@@ -164,7 +164,7 @@ GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_EC) == 0xEC);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, UIName) == 0x60);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, Value) == 0xB8);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_98) == 0x98);
-GG_STATIC_ASSERT(offsetof(TiberiumClass, unknown_9C) == 0x9C);
+GG_STATIC_ASSERT(offsetof(TiberiumClass, Spread) == 0x9C);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, SpreadLogic) == 0xF0);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, SpreadTimer) == 0x100);
 GG_STATIC_ASSERT(offsetof(TiberiumClass, GrowthLogic) == 0x10C);

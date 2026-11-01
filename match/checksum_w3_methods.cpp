@@ -158,8 +158,8 @@ void SuperWeaponTypeClass::vf_13(Obj_004A1D30* crc)
 void TiberiumClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractTypeClass::vf_13(crc);
-    crc->FUN_004A1D50(unknown_9C);
-    crc->FUN_004A1D50(unknown_A8);
+    crc->FUN_004A1D50(Spread);
+    crc->FUN_004A1D50(Growth);
     crc->FUN_004A1D50(Value);
     crc->FUN_004A1D50(Power);
     crc->FUN_004A1D50(Color);

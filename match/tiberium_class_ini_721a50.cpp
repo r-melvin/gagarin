@@ -44,9 +44,9 @@ bool TiberiumClass::vf_25(CCINIClass* ini)
     char buffer[0x80];
     ini->Reset();
     if (AbstractTypeClass::vf_25(ini)) {
-        unknown_9C = ini->ReadInteger(ID, "Spread", unknown_9C);
+        Spread = ini->ReadInteger(ID, "Spread", Spread);
         SpreadPercentage = ini->ReadDouble(ID, "SpreadPercentage", SpreadPercentage);
-        unknown_A8 = ini->ReadInteger(ID, "Growth", unknown_A8);
+        Growth = ini->ReadInteger(ID, "Growth", Growth);
         GrowthPercentage = ini->ReadDouble(ID, "GrowthPercentage", GrowthPercentage);
         Value = ini->ReadInteger(ID, "Value", Value);
         Power = ini->ReadInteger(ID, "Power", Power);

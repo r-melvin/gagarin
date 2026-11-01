@@ -868,9 +868,9 @@ struct RulesClass
     char unknown_17C9[0x3];
     int CollapseChance;   // +0x17CC
     int WeedCapacity;   // +0x17D0
-    int unknown_17D4_17D4;   // +0x17D4
-    int unknown_17D8;   // +0x17D8
-    int unknown_17DC;   // +0x17DC
+    int ExtraUnitLight;   // +0x17D4
+    int ExtraInfantryLight;   // +0x17D8
+    int ExtraAircraftLight;   // +0x17DC
     bool Paranoid;   // +0x17E0
     bool CurleyShuffle;   // +0x17E1
     bool BlendedFog;   // +0x17E2
@@ -1685,9 +1685,9 @@ GG_STATIC_ASSERT(offsetof(RulesClass, ForceShieldBlackoutDuration) == 0x17C0);
 GG_STATIC_ASSERT(offsetof(RulesClass, ForceShieldPlayFadeSoundTime) == 0x17C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, MutateExplosion) == 0x17C8);
 GG_STATIC_ASSERT(offsetof(RulesClass, CollapseChance) == 0x17CC);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_17D4_17D4) == 0x17D4);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_17D8) == 0x17D8);
-GG_STATIC_ASSERT(offsetof(RulesClass, unknown_17DC) == 0x17DC);
+GG_STATIC_ASSERT(offsetof(RulesClass, ExtraUnitLight) == 0x17D4);
+GG_STATIC_ASSERT(offsetof(RulesClass, ExtraInfantryLight) == 0x17D8);
+GG_STATIC_ASSERT(offsetof(RulesClass, ExtraAircraftLight) == 0x17DC);
 GG_STATIC_ASSERT(offsetof(RulesClass, Paranoid) == 0x17E0);
 GG_STATIC_ASSERT(offsetof(RulesClass, CurleyShuffle) == 0x17E1);
 GG_STATIC_ASSERT(offsetof(RulesClass, BlendedFog) == 0x17E2);
