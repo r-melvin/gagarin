@@ -89304,7 +89304,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/renderer/trivial_tu296_methods.cpp",
+  "tu": "match/wwlib/vqa/trivial_tu296_methods.cpp",
   "addr": "0x7BF220",
   "sym": "?FUN_007BF220@@YAXXZ",
   "len": "0x1",
@@ -89313,7 +89313,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/trivial_tu296_methods.cpp",
+  "tu": "match/wwlib/vqa/trivial_tu296_methods.cpp",
   "addr": "0x7C36C0",
   "sym": "?FUN_007C36C0@@YAPAXXZ",
   "len": "0x6",
@@ -89322,7 +89322,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/trivial_tu296_methods.cpp",
+  "tu": "match/wwlib/vqa/trivial_tu296_methods.cpp",
   "addr": "0x7C3740",
   "sym": "?FUN_007C3740@@YAPAXXZ",
   "len": "0x6",
@@ -89331,7 +89331,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/trivial_tu296_methods.cpp",
+  "tu": "match/wwlib/vqa/trivial_tu296_methods.cpp",
   "addr": "0x7C3950",
   "sym": "?FUN_007C3950@@YIXPAUObj_007C3950@@H@Z",
   "len": "0x7",
@@ -145654,7 +145654,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r25_3_fill_leaves.cpp",
+  "tu": "match/wwlib/vqa/r25_3_fill_leaves.cpp",
   "addr": "0x7BCAF0",
   "sym": "?FUN_007BCAF0@@YGXPAFII@Z",
   "len": "0x56",
@@ -145663,7 +145663,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/r25_3_fill_leaves.cpp",
+  "tu": "match/wwlib/vqa/r25_3_fill_leaves.cpp",
   "addr": "0x7BE5D0",
   "sym": "?FUN_007BE5D0@@YAPAXHHPAXI@Z",
   "len": "0x4e",

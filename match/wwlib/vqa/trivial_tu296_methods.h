@@ -7,7 +7,7 @@
 #define GG_MATCH_RENDERER_TRIVIAL_TU296_METHODS_H
 
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
+#include "../../_rt/gg_static_assert.h"
 
 struct Obj_007C3950;
 
