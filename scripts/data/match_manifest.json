@@ -151209,5 +151209,97 @@
   "name": "TechnoClass::vf_13",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x48BC20",
+  "sym": "?Comparator@IndexClassC@@SAHPBX0@Z",
+  "len": "0x22",
+  "name": "IndexClassC::Comparator",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/GOptions.cpp",
+  "addr": "0x4F1700",
+  "sym": "?FUN_004F1700@@YAXXZ",
+  "len": "0x1",
+  "name": "?FUN_004F1700@@YAXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/House.cpp",
+  "addr": "0x4FF8F0",
+  "sym": "?FUN_004FF8F0@HouseClass@@QAEPAHH_N@Z",
+  "len": "0x53",
+  "name": "HouseClass::FUN_004FF8F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Init.cpp",
+  "addr": "0x52D430",
+  "sym": "?FUN_0052D430@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x176",
+  "name": "?FUN_0052D430@@YGHPAUHWND__@@IIJ@Z",
+  "status": "partial",
+  "pct": 96.3,
+  "best_pct": 96.3,
+  "best_at": "a3d75d54"
+ },
+ {
+  "tu": "match/ownrdraw.cpp",
+  "addr": "0x6232B0",
+  "sym": "?FUN_006232B0@@YGHPAXIIJ@Z",
+  "len": "0x59",
+  "name": "?FUN_006232B0@@YGHPAXIIJ@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Queue.cpp",
+  "addr": "0x648340",
+  "sym": "?FUN_00648340@@YIXXZ",
+  "len": "0x1",
+  "name": "?FUN_00648340@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Unit.cpp",
+  "addr": "0x73EFC0",
+  "sym": "?vf_138@UnitClass@@UAEHXZ",
+  "len": "0xd4",
+  "name": "UnitClass::vf_138",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/wwlib/vqa/vqa_class_methods.cpp",
+  "addr": "0x75A100",
+  "sym": "?FUN_0075A100@@YAHPAUMovieHandle_007BD470@@HPAIH@Z",
+  "len": "0x1f",
+  "name": "?FUN_0075A100@@YAHPAUMovieHandle_007BD470@@HPAIH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/wonline.cpp",
+  "addr": "0x78E030",
+  "sym": "?FUN_0078E030@@YGHPAXIIJ@Z",
+  "len": "0x1f7",
+  "name": "?FUN_0078E030@@YGHPAXIIJ@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/wonline.cpp",
+  "addr": "0x793440",
+  "sym": "?FUN_00793440@@YIXXZ",
+  "len": "0x18",
+  "name": "?FUN_00793440@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

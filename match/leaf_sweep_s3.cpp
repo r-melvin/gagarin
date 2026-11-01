@@ -13,6 +13,7 @@
 #include "_layout/audio_controller.h"
 #include "_layout/voc_class.h"
 #include "center_window_methods.h"
+#include "dialog_help_leaves.h"
 #include "ui_gadget.h"
 #include <ctype.h>
 
@@ -132,15 +133,6 @@ void __fastcall FUN_007767B0(HWND control, int value, int length)
 
 // ---------------------------------------------------------------------------
 // 0x776880: show context help for a dialog's window.
-struct Dialog_00776880
-{
-    int unknown_00;
-    int unknown_04;
-    int unknown_08;
-    HWND Window;   // +0x0C
-    void FUN_00776880();
-};
-GG_STATIC_ASSERT(offsetof(Dialog_00776880, Window) == 0xC);
 // STRING: GAMEMD 0x849E2C
 extern const char HelpFile_00849E2C[];
 

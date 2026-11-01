@@ -416,7 +416,8 @@ int VQAClass::FUN_00759FB0(int op, unsigned int* buf, int size)
     return r;
 }
 
-// 0x75A100 (not an extent-census entry yet): thunk to 0x759FB0 through the handle.
+// FUNCTION: GAMEMD 0x75A100
+// Thunk to 0x759FB0 through the handle.
 int __cdecl FUN_0075A100(MovieHandle_007BD470* h, int op, unsigned int* buf, int size)
 {
     VQAClass* self = h->unknown_40.unknown_6C;

@@ -324,6 +324,40 @@ bool UnitClass::vf_65(RectangleStruct* rect, bool force, int a3)
 extern const double DAT_007E2800;
 
 
+// FUNCTION: GAMEMD 0x73EFC0
+// A unit whose type deploys into something waits out the mission rate plus a little random
+// time, advancing the deploy step first when the type is a listed one, is aiming at something
+// or is player controlled; any other unit takes the foot delay.
+int UnitClass::vf_138()
+{
+    BuildingTypeClass* deploysInto = static_cast<UnitTypeClass*>(this->Type)->DeploysInto;
+    if (deploysInto) {
+        RulesClass* rules = DAT_008871E0;
+        bool listed = false;
+        for (int i = 0; i < rules->list_08AC.Count; i++) {
+            if (rules->list_08AC.Items[i] == deploysInto) {
+                listed = true;
+                break;
+            }
+        }
+        if (listed || this->Target || Owner->IsControlledByHuman()) {
+            switch (MissionStatus) {
+            case 0:
+                if (FUN_00738D30() && FUN_007393C0())
+                    MissionStatus = 1;
+                break;
+            case 1:
+                if (!IsDeploying)
+                    MissionStatus = 0;
+                break;
+            }
+            int delay = (int)(FUN_005B3A00()->Rate * 900.0);
+            return delay + DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+        }
+    }
+    return FootClass::vf_138();
+}
+
 // FUNCTION: GAMEMD 0x740A90
 int UnitClass::vf_139()
 {

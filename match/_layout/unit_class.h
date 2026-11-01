@@ -94,6 +94,11 @@ public:
     bool FUN_00746DB0();                                // 0x746DB0
     virtual void vf_10(void* target, bool removed);    // 10  0x7446E0
     virtual bool vf_245(HouseClass* house, bool a2);   // 245 0x7463A0
+    virtual int vf_138();                              // 138 0x73EFC0
+    // FUNCTION: GAMEMD 0x738D30 (decl; reloc)
+    bool FUN_00738D30();
+    // FUNCTION: GAMEMD 0x7393C0 (decl; reloc)
+    bool FUN_007393C0();
     virtual int vf_139();                              // 139 0x740A90
     int FUN_007438B0();                                // 0x7438B0
     void FUN_00740E60();                               // 0x740E60

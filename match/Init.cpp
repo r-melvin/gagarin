@@ -90,6 +90,9 @@ extern unsigned char DAT_00A9F91C;
 #include "ui_display_chain.h"
 #include "display_command.h"
 #include "ccfile_class.h"
+#include "dialog_help_leaves.h"
+#include "window_moving_methods.h"
+#include "_layout/ini_class.h"
 
 // The source-file string every text load passes (0x825FB8).
 #define INIT_CPP "D:\\ra2mdpost\\Init.CPP"
@@ -488,6 +491,53 @@ extern double DAT_00A8F778;
 // FUNCTION: GAMEMD 0x0052CB80
 void FUN_0052CB80()
 {
+}
+
+// STRING: GAMEMD 0x889F64 -- the shared empty default text.
+extern const char STR_00889F64[];
+
+// FUNCTION: GAMEMD 0x52D430
+// Dialog procedure of the list picker: help requests are forwarded, initialisation fills the
+// list with the "Name" of every ini in the vector passed as the dialog parameter, and a click
+// on control 2 or 0x4A4 closes the dialog with the selected index.
+BOOL CALLBACK FUN_0052D430(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    char name[128];
+    switch (message) {
+    case WM_HELP:
+        ((Dialog_00776880*)lParam)->FUN_00776880();
+        return 0;
+    case WM_CONTEXTMENU:
+        FUN_007768A0((HWND)wParam);
+        return 0;
+    case WM_INITDIALOG: {
+        FUN_00777060(hwnd);
+        HWND list = GetDlgItem(hwnd, 0x4A3);
+        DynamicVectorClass<INIClass*>* inis = (DynamicVectorClass<INIClass*>*)lParam;
+        for (int i = 0; i < inis->Count; i++) {
+            inis->Items[i]->FUN_00528A10("General", "Name", STR_00889F64, name, 128);
+            SendMessageA(list, LB_ADDSTRING, 0, (LPARAM)name);
+        }
+        SendMessageA(list, LB_SETCURSEL, 0, 0);
+        return 0;
+    }
+    case WM_COMMAND: {
+        switch (wParam & 0xFFFF) {
+        case 2:
+        case 0x4A4:
+            if (wParam >> 16)
+                break;
+            HWND list = GetDlgItem(hwnd, 0x4A3);
+            int selected = SendMessageA(list, LB_GETCURSEL, 0, 0);
+            EndDialog(hwnd, selected);
+            DestroyWindow(hwnd);
+        }
+        return 0;
+    }
+    case WM_MOVING:
+        return OnWindowMoving(hwnd, wParam, (Rect_00776D80*)lParam) & 0xFF;
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x52D5B0
@@ -2576,7 +2626,6 @@ public:
     // FUNCTION: GAMEMD 0x538980
     bool IsPresent(const int& id) const;
 
-    // FUNCTION: GAMEMD 0x48BC20 (decl; reloc)
     static int __cdecl Comparator(const void* ptr1, const void* ptr2);
 
     inline bool IncreaseTableSize(int amount);
@@ -2851,6 +2900,18 @@ GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(CCINIClass*) == 4);
+
+// FUNCTION: GAMEMD 0x48BC20
+int __cdecl IndexClassC::Comparator(const void* ptr1, const void* ptr2)
+{
+    if (*(const int*)ptr1 == *(const int*)ptr2) {
+        return 0;
+    }
+    if (*(const int*)ptr1 < *(const int*)ptr2) {
+        return -1;
+    }
+    return 1;
+}
 
 // FUNCTION: GAMEMD 0x5387D0
 bool IndexClassC::AddIndex(const int& id, void* const& data)

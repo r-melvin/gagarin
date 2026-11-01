@@ -621,6 +621,7 @@ public:
     void DestroyAllNonBuildingsNonNaval();                      // 0x4FC820
     void DestroyAllNonBuildingsNaval();                         // 0x4FC8D0
     void FUN_004FF700(TechnoClass* techno);                     // 0x4FF700
+    int* FUN_004FF8F0(int category, bool naval);                // 0x4FF8F0 (RET 8)
     char PickedUpFlag(UnitClass* Who, bool dwUnk);     // 0x4FC060
     bool UpdateFlagCoords(AbstractClass* obj, bool clearCell);    // 0x4FBE40 (RET 8)
     void AcquiredThreatNode();                                  // 0x509130

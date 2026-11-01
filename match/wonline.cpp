@@ -614,6 +614,7 @@ void FUN_005EE190();   // FUNCTION: GAMEMD 0x5EE190 (decl; reloc)
 int FUN_00622B50(HWND window, UINT message, WPARAM wparam, LPARAM lparam);   // FUNCTION: GAMEMD 0x622B50 (decl; reloc)
 void FUN_006213A0(LPARAM drawItem);   // FUNCTION: GAMEMD 0x6213A0 (decl; reloc)
 void FUN_00621E90(HWND window);       // FUNCTION: GAMEMD 0x621E90 (decl; reloc)
+int FUN_00623E40(HWND control, Wstring* text);   // FUNCTION: GAMEMD 0x623E40 (decl; reloc)
 void FUN_00607FD0(HWND window);       // FUNCTION: GAMEMD 0x607FD0 (decl; reloc)
 
 struct Obj_00AC1174;
@@ -636,6 +637,16 @@ public:
     virtual void vf_0();
     virtual void vf_1(HWND window, int code);   // slot 1 (+0x04)
 };
+class DialogOwner_0078E030
+{
+public:
+    virtual void vf_0();
+    virtual void vf_1(HWND window, int code);   // slot 1 (+0x04)
+    int unknown_04;
+    int unknown_08;
+    Wstring Text;   // +0x0C
+};
+GG_STATIC_ASSERT(offsetof(DialogOwner_0078E030, Text) == 0xC);
 void FUN_005E2AC0();   // FUNCTION: GAMEMD 0x5E2AC0 (decl; reloc)
 
 // Declaration: GAMEMD 0x7B7F90 (decl; reloc) -- the narrow text of a wide string.
@@ -2653,6 +2664,68 @@ BOOL CALLBACK FUN_0078DA30(HWND window, UINT message, WPARAM wparam, LPARAM lpar
     return 0;
 }
 
+// STRING: GAMEMD 0x889F64 -- the shared empty default text.
+extern const char STR_00889F64[];
+
+// FUNCTION: GAMEMD 0x78E030
+// Dialog procedure of the text entry prompt: the entry control takes a short, empty-looking
+// default, OK keeps its text for the owner, and the OK button is enabled only while the text
+// holds none of the separator characters.
+BOOL CALLBACK FUN_0078E030(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    if (message == 0x110 && lparam != 0) {
+        SetWindowLongA(window, 8, ((int*)lparam)[1]);
+    }
+    int handled = FUN_00622B50(window, message, wparam, lparam);
+    if (handled != 0)
+        return handled;
+    DialogOwner_0078E030* owner = (DialogOwner_0078E030*)GetWindowLongA(window, 8);
+    switch (message) {
+    case 0x2B:
+        FUN_006213A0(lparam);
+        return 1;
+    case 0xF:
+        FUN_00621E90(window);
+        FUN_00607FD0(window);
+        ValidateRect(window, NULL);
+        return 0;
+    case 0x111:
+        switch (wparam & 0xFFFF) {
+        case 1: {
+            Wstring text;
+            FUN_00623E40(GetDlgItem(window, 0x72C), &text);
+            owner->Text = text;
+            owner->vf_1(window, 1);
+            return 0;
+        }
+        case 2:
+            owner->vf_1(window, 2);
+            return 0;
+        case 0x72C:
+            if (lparam != 0) {
+                Wstring text;
+                FUN_00623E40((HWND)lparam, &text);
+                EnableWindow(GetDlgItem(window, 1), !text.FUN_007B6630(" ,;"));
+            }
+            return 0;
+        }
+        break;
+    case 0x497: {
+        HWND entry = GetDlgItem(window, 0x72C);
+        SendMessageA(entry, 0x4D1, 1, 0);
+        entry = GetDlgItem(window, 0x72C);
+        SendMessageA(entry, 0x4B4, 0, (LPARAM)STR_00889F64);
+        SendDlgItemMessageA(window, 0x72C, 0xC5, 8, 0);
+        SetFocus(GetDlgItem(window, 0x72C));
+        break;
+    }
+    case 0x4DA:
+        PostMessageA(GetDlgItem(window, 1), 0xF5, 0, 0);
+        break;
+    }
+    return 0;
+}
+
 // GLOBAL: GAMEMD 0xB75F6C -- the latency tooltip text buffer.
 extern wchar_t DAT_00B75F6C[];
 
@@ -2849,6 +2922,15 @@ void FUN_00793250()
     HWND window = FUN_00775700(DAT_00B732F0, 0x130, DAT_00B73550, FUN_00793280, 0);
     if (window != NULL) {
         FUN_00622820(window, 0x130);
+    }
+}
+
+// FUNCTION: GAMEMD 0x793440
+void FUN_00793440()
+{
+    HWND dialog = FUN_00775940(0x130);
+    if (dialog != NULL) {
+        FUN_007757E0(dialog, 0);
     }
 }
 

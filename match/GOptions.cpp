@@ -137,6 +137,12 @@ HeaderCoordInit DAT_00A8EE18(0, 0, 0);
 // GLOBAL: GAMEMD 0x00A8EE60
 MathTblCoord DAT_00A8EE60;
 
+// FUNCTION: GAMEMD 0x4F1700
+// Empty function: the exit-time destructor of the timer at 0xA8EE40.
+void __cdecl FUN_004F1700()
+{
+}
+
 // FUNCTION: GAMEMD 0x4F1710
 // Empty function.
 void __cdecl FUN_004F1710()

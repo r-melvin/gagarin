@@ -2866,6 +2866,30 @@ void HouseClass::FUN_004FF700(TechnoClass* techno)
     }
 }
 
+// FUNCTION: GAMEMD 0x4FF8F0
+// Address of the factory counter for a building category (war factory or shipyard by the naval
+// flag, airpad, construction yard, barracks); null for any other category.
+int* HouseClass::FUN_004FF8F0(int category, bool naval)
+{
+    switch (category) {
+    case 1:
+    case 40:
+        if (naval)
+            return &NumShipyards;
+        return &NumWarFactories;
+    case 2:
+    case 3:
+        return &NumAirpads;
+    case 15:
+    case 16:
+        return &NumBarracks;
+    case 6:
+    case 7:
+        return &NumConYards;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x4FF980
 // PARTIAL: 88.9%. Retail tests the naval flag as a byte (test cl,cl); a plain bool test differs.
 // Takes one off the matching factory counter (airpad, barracks, war factory, construction

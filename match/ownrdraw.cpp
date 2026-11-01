@@ -530,9 +530,12 @@ GG_HWND UI_BeginDialog(unsigned short id, int (__stdcall* proc)(GG_HWND, unsigne
 void UI_EndDialog(GG_HWND hDlg);
 // FUNCTION: GAMEMD 0x52B9B0 (decl; reloc) -- dialog banner set-up.
 void FUN_0052B9B0(GG_HWND dialog);
+// FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog message handler.
+int FUN_00622B50(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam, long lParam);
+
 // Dialog procedure at 0x623DA0 (defined below).
 int __stdcall FUN_00623DA0(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam, long lParam);
-// Dialog procedure at 0x6232B0 (declaration only) -- the modeless message dialog.
+// Dialog procedure at 0x6232B0 (defined below) -- the modeless message dialog.
 int __stdcall FUN_006232B0(GG_HWND hDlg, unsigned int uMsg, unsigned int wParam, long lParam);
 
 #include "ui_updated_methods.h"
@@ -5199,6 +5202,31 @@ GG_HWND FUN_00623230(long lLine1, long lLine2, long lUser)
     return hDlg;
 }
 
+// FUNCTION: GAMEMD 0x6232B0  FUN_006232B0
+// Dialog procedure of the message dialog: after the shared handler declines the
+// message, a click on control 0x5C0 queues key 0x1B and sets the flag kept in
+// the window's user data.
+int __stdcall FUN_006232B0(GG_HWND hDlg, unsigned int uMsg, unsigned int wParam, long lParam)
+{
+    int nHandled = FUN_00622B50(hDlg, uMsg, wParam, lParam);
+
+    if (nHandled != 0)
+        return nHandled;
+
+    if (uMsg == 0x111 && wParam == 0x5C0)
+    {
+        bool* pFlag = (bool*)GetWindowLongA(hDlg, 8);
+
+        if (pFlag != 0)
+        {
+            DAT_0087F770->FUN_0054F1C0(0x1B);
+            *pFlag = true;
+        }
+    }
+
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x623310  FUN_00623310
 void FUN_00623310(GG_HWND hDlg, long lParam)
 {
@@ -5440,9 +5468,6 @@ Obj_00623420* Obj_00623420::FUN_00623730(const Obj_00623420& other)
 
     return this;
 }
-
-// FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog message handler.
-int FUN_00622B50(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam, long lParam);
 
 // FUNCTION: GAMEMD 0x623CD0  FUN_00623CD0 (__fastcall)
 // Modal yes/no style prompt (resource 0x10D): shows one text line and waits
