@@ -7,8 +7,8 @@
 #include "small_misc20_methods.h"
 #include "small_misc12_methods.h"
 #include "../audio_stop_methods.h"
-#include "../platform/pk_blow_pipes.h"
-#include "../platform/com_holder_ctor_methods.h"
+#include "../pk_blow_pipes.h"
+#include "../com_holder_ctor_methods.h"
 
 // FUNCTION: GAMEMD 0x408200
 void __cdecl FUN_00408200()

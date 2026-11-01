@@ -20,7 +20,7 @@
 //   GetKeyCount @0x526960  __thiscall(const char* section)               -> int
 //   GetKeyName  @0x526CC0  __thiscall(const char* section, int index)    -> char*
 //   ReadString  @0x528A10  __thiscall(sec, key, def, char* buf, int len) -> int
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 #include "../_layout/rules_class.h"
 
 // Per-type allocator callees (declared only). Each takes the freshly-read key

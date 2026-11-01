@@ -633,7 +633,7 @@
      "n_insns": 12,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/platform/ccfile_class.cpp",
+     "tu": "match/ccfile_class.cpp",
      "sym": "??_GCDFileClass@@UAEPAXI@Z",
      "name": "CDFileClass::`scalar deleting destructor'",
      "rtti": [
@@ -3091,7 +3091,7 @@
      "n_insns": 12,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/platform/ccfile_class.cpp",
+     "tu": "match/ccfile_class.cpp",
      "sym": "??_GCDFileClass@@UAEPAXI@Z",
      "name": "CDFileClass::`scalar deleting destructor'",
      "rtti": [

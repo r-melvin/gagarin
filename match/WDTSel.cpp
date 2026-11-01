@@ -35,7 +35,7 @@
 #include "_layout/ini_class.h"
 #include "_layout/theme_class.h"
 #include "msanim_family_methods.h"
-#include "platform/input_manager_class_methods.h"
+#include "input_manager_class_methods.h"
 
 template <class T> class VectorClass;
 template <class T> class DynamicVectorClass;

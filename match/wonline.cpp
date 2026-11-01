@@ -19,7 +19,7 @@
 #include "core/header_init_shapes.h"
 #include "core/hash_table_view.h"
 #include "_layout/theme_class.h"
-#include "platform/input_manager_class_methods.h"
+#include "input_manager_class_methods.h"
 #include "ui/ui_begin_dialog_methods.h"
 #include "ui/ui_updated_methods.h"
 #include "ui/gscreen_class_render_methods.h"
@@ -524,8 +524,8 @@ GG_REHASH_NODE(007AEC00, 110);
 // ---- declarations used by the bodies below ----
 #include "_layout/elapsed_timer.h"
 #include <mbstring.h>
-#include "platform/ccini_class_methods.h"
-#include "platform/ccfile_class.h"
+#include "ccini_class_methods.h"
+#include "ccfile_class.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new (decl; reloc)
 extern int DAT_00B77EA8;

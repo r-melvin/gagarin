@@ -15,7 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../platform/input_manager_class_methods.h"
+#include "../input_manager_class_methods.h"
 
 struct DialogEntry_00622720
 {

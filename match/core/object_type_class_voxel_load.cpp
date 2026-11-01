@@ -4,7 +4,7 @@
 // each optional model/animation pair has nested file-object lifetimes.
 #include "../_layout/object_type_class.h"
 #include "../_layout/techno_type_class.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

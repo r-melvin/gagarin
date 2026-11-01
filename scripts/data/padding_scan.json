@@ -5229,13 +5229,13 @@
   },
   {
    "addr": "0x473C50",
-   "tu": "match/platform/ccfile_class_open_methods.cpp",
+   "tu": "match/ccfile_class_open_methods.cpp",
    "name": "CCFileClass::Exists",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x4749B0",
-   "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+   "tu": "match/ccini_class_enum_writers_methods.cpp",
    "name": "WritePipScale",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6195,7 +6195,7 @@
   },
   {
    "addr": "0x4F2810",
-   "tu": "match/platform/ini_class_dtor.cpp",
+   "tu": "match/ini_class_dtor.cpp",
    "name": "INIClass::scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6351,7 +6351,7 @@
   },
   {
    "addr": "0x52AAF0",
-   "tu": "match/platform/ini_class_node_methods.cpp",
+   "tu": "match/ini_class_node_methods.cpp",
    "name": "INIClass::INIEntry::~INIEntry",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6909,37 +6909,37 @@
   },
   {
    "addr": "0x5C0330",
-   "tu": "match/platform/movie_handle_class.cpp",
+   "tu": "match/movie_handle_class.cpp",
    "name": "VQMovieHandle::vt_entry_08",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5C03C0",
-   "tu": "match/platform/movie_handle_class.cpp",
+   "tu": "match/movie_handle_class.cpp",
    "name": "VQMovieHandle::vt_entry_24",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5C0550",
-   "tu": "match/platform/movie_handle_class.cpp",
+   "tu": "match/movie_handle_class.cpp",
    "name": "BinkMovieHandle::vt_entry_10",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5C05D0",
-   "tu": "match/platform/movie_handle_class.cpp",
+   "tu": "match/movie_handle_class.cpp",
    "name": "BinkMovieHandle::vt_entry_1C",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5C05E0",
-   "tu": "match/platform/movie_handle_class.cpp",
+   "tu": "match/movie_handle_class.cpp",
    "name": "BinkMovieHandle::vt_entry_24",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5C09B0",
-   "tu": "match/platform/movie_handle_class.cpp",
+   "tu": "match/movie_handle_class.cpp",
    "name": "VQMovieHandle::`scalar deleting destructor'",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7353,7 +7353,7 @@
   },
   {
    "addr": "0x679F40",
-   "tu": "match/platform/ccini_class_methods.cpp",
+   "tu": "match/ccini_class_methods.cpp",
    "name": "Exists",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7395,13 +7395,13 @@
   },
   {
    "addr": "0x67BAC0",
-   "tu": "match/platform/ini_lookup_parse_family_methods.cpp",
+   "tu": "match/ini_lookup_parse_family_methods.cpp",
    "name": "IniLookupParse",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x67BCE0",
-   "tu": "match/platform/ini_lookup_parse_family_methods.cpp",
+   "tu": "match/ini_lookup_parse_family_methods.cpp",
    "name": "IniLookupParse",
    "reason": "no-preceding-CC-or-90"
   },
@@ -7995,7 +7995,7 @@
   },
   {
    "addr": "0x6C8C40",
-   "tu": "match/platform/system_query_methods.cpp",
+   "tu": "match/system_query_methods.cpp",
    "name": "Timer::GetTime",
    "reason": "no-preceding-CC-or-90"
   },

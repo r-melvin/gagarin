@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-#include "../platform/pk_blow_pipes.h"
+#include "../pk_blow_pipes.h"
 
 // LIBRARY: GAMEMD 0x7CA090 (decl; reloc) -- CRT memmove.
 extern "C" void* __cdecl memmove(void* destination, const void* source, unsigned int count);

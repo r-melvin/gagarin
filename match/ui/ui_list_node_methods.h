@@ -5,7 +5,7 @@
 // GenericList at 0x7E1B04 and MixFileClass at 0x7EDF50 (TD0x82C320).
 // SortedTreeNode is a descriptive name. BlowStraw's deleting destructor
 // 0x5B45C0, which sits in this address run, is emitted from its class in
-// match/platform/pk_blow_pipes.h.
+// match/pk_blow_pipes.h.
 // Intrusive-node fields now use the shared layout; the original source-file
 // grouping is not established by these functions.
 #ifndef GG_MATCH_UI_UI_LIST_NODE_METHODS_H

@@ -33,8 +33,8 @@
 #include "../_layout/ini_class.h"
 #include "../_layout/cd_callback.h"
 #include "../_layout/global_0081c1d0.h"
-#include "../platform/ccini_class_methods.h"
-#include "../platform/ccfile_class.h"
+#include "../ccini_class_methods.h"
+#include "../ccfile_class.h"
 #include "../class_sweep_00581f50.h"
 #include "frame_counter.h"
 #include "../_layout/theme_class.h"
@@ -49,7 +49,7 @@
 #include "rules_class.h"
 #include "../_layout/building_class.h"
 #include "../_layout/audio_0048d080.h"
-#include "../platform/input_manager_class_methods.h"
+#include "../input_manager_class_methods.h"
 #include "../win_modem_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../_layout/tactical.h"
@@ -121,7 +121,7 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, SideIndex) == 0xBC);
 #include "../multiplayer_game_mode.h"
 #include "../ipx_interface_class.h"
 #include "../connman_class.h"
-#include "../platform/copy_protection_methods.h"
+#include "../copy_protection_methods.h"
 #include "trivial_tu223_methods.h"
 extern MultiplayerGameMode* DAT_00A8B23C; // GLOBAL: GAMEMD 0xA8B23C
 #include "game_state_flags.h"
@@ -266,7 +266,7 @@ extern int DAT_008B41F0;
 #include "trivial_tu201_methods.h"
 
 #include "../ui/input_controls/mouse_ww_mouse_class.h"
-#include "../platform/input_manager_class_methods.h"
+#include "../input_manager_class_methods.h"
 
 #include <windows.h>
 #include <stddef.h>

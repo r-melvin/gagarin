@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <objidl.h>
 #include "voc_class_methods.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "core/small_misc39_methods.h"
 #include "core/vector_class_operations.h"
 #include "_layout/tactical.h"

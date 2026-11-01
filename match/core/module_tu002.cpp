@@ -11,7 +11,7 @@
 #include "aligned_alloc_methods.h"
 #include "small_misc32_methods.h"
 #include <string.h>
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 #include "../audio_time_methods.h"
 #include "../audio_stop_methods.h"
 #include <windows.h>
@@ -45,7 +45,7 @@ GG_STATIC_ASSERT(offsetof(DSCAPS, dwSize) == 0);
 #include "slot_array_factory_methods.h"
 #include "../dsound_access_methods.h"
 #include "../theme_class_ai_methods.h"
-#include "../platform/mix_file_class.h"
+#include "../mix_file_class.h"
 #include "sorted_list_insert_methods.h"
 #include "../pan_and_pitch_methods.h"
 

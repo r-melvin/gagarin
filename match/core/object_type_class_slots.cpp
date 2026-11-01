@@ -6,8 +6,8 @@
 #include "../FUNCTION.H"
 #include "object_type_registry.h"
 #include "vector_class_operations.h"
-#include "../platform/ccfile_class.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccfile_class.h"
+#include "../ccini_class_methods.h"
 #include "../voc_class_methods.h"
 
 // ImageFile, assigns empty AlphaImageFile, and appends this to the type registry.

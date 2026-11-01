@@ -3,7 +3,7 @@
 // Retail 0x721A50 (TiberiumClass override of AbstractTypeClass::vf_25, the INI reader) reads
 // Spread, SpreadPercentage, Growth, GrowthPercentage, Value, Power, Color, Debris and Image.
 #include "../_layout/tiberium_class.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 #include "rules_class_ini_support.h"
 
 // GLOBAL: GAMEMD 0xA83D84 -- object whose four dwords the Image key selects between.

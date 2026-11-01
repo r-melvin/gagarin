@@ -14,7 +14,7 @@
 //   0x4A3890 and torn down inline (0x7E16B0 at +0, +0x64 zeroed, 0x43AE50
 //   on +0x58, 0x7E1668 at +0, 0x431B80). Names cross-checked against YRpp
 //   (every offset reconfirmed above). The file object agrees with
-//   match/platform/file_system_load_whole_methods.h and the Theater record
+//   match/file_system_load_whole_methods.h and the Theater record
 //   with match/veinhole_monster_class_methods.h (neither edited;
 //   re-derived here so the TU stands alone).
 #ifndef GG_MATCH_MAP_SMUDGE_TYPE_CLASS_LOAD_METHODS_H

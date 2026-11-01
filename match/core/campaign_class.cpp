@@ -3,7 +3,7 @@
 // Native campaign construction, INI, checksum and persistence bodies.
 #include "campaign_class.h"
 #include "vector_class_operations.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 #include "../_layout/obj_004a1d30.h"
 #include <string.h>
 #include <wchar.h>

@@ -29,7 +29,7 @@
 #include "overlay_class.h"
 #include "_layout/obj_004a1d30.h"
 #include "_layout/anim_type_class.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "_layout/geometry2d.h"
 // GLOBAL: GAMEMD 0x887180
 extern CCINIClass DAT_00887180;

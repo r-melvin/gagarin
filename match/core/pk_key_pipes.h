@@ -20,6 +20,6 @@
 #include "../_layout/straw.h"
 
 #include "pkey_layout.h"
-#include "../platform/pk_blow_pipes.h"
+#include "../pk_blow_pipes.h"
 
 #endif // GG_MATCH_CORE_PK_KEY_PIPES_H

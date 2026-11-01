@@ -66,7 +66,7 @@
 #include <new>
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../platform/input_manager_class_methods.h"
+#include "../input_manager_class_methods.h"
 #include "ui_updated_methods.h"
 #include "../_layout/map_0087f7e8.h"
 #include "../core/scenario_class_methods.h"
@@ -87,8 +87,8 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 // GLOBAL: GAMEMD 0x00A8EC78
 extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
-#include "../platform/ccini_class_small_readers_methods.h"
-#include "../platform/file_system_load_whole_methods.h"
+#include "../ccini_class_small_readers_methods.h"
+#include "../file_system_load_whole_methods.h"
 #include "../renderer/pixel_shift_view.h"
 #include "../multiplayer_game_mode.h"
 

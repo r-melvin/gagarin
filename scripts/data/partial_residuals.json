@@ -525,7 +525,7 @@
  {
   "addr": "0x438210",
   "name": "BlowStraw::FUN_006C98E0",
-  "tu": "match/platform/blow_pipe_put_methods.cpp",
+  "tu": "match/blow_pipe_put_methods.cpp",
   "sym": "?FUN_006C98E0@BlowStraw@@UAEHPAXH@Z",
   "len": "0xe3",
   "manifest_pct": 100,
@@ -908,7 +908,7 @@
  {
   "addr": "0x473BA0",
   "name": "CCFileClass::Seek",
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "sym": "?Seek@CCFileClass@@UAEHHH@Z",
   "len": "0x5B",
   "manifest_pct": 90.6,
@@ -929,7 +929,7 @@
  {
   "addr": "0x478BA0",
   "name": "CCToolTip::Update",
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "sym": "?Update@CCToolTip@@UAE_NAAUToolTipManagerData@@@Z",
   "len": "0x20E",
   "manifest_pct": 99.0,
@@ -951,7 +951,7 @@
  {
   "addr": "0x47A3F0",
   "name": "CDDriveControl::FUN_0047a3f0",
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "sym": "?FUN_0047a3f0@CDDriveControl@@QAE_NPAXD@Z",
   "len": "0x16E",
   "manifest_pct": 81.2,
@@ -1328,7 +1328,7 @@
  {
   "addr": "0x4A2780",
   "name": "CacheStraw::FUN_006C98E0",
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "sym": "?FUN_006C98E0@CacheStraw@@UAEHPAXH@Z",
   "len": "0x93",
   "manifest_pct": 93.7,
@@ -2645,7 +2645,7 @@
  {
   "addr": "0x5BF850",
   "name": "FUN_005BF850",
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "sym": "?FUN_005BF850@@YIHXZ",
   "len": "0x5d",
   "manifest_pct": 86.7,
@@ -2667,7 +2667,7 @@
  {
   "addr": "0x5C0240",
   "name": "VQMovieHandle::VQMovieHandle",
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "sym": "??0VQMovieHandle@@QAE@PAUObj_005C01A0@@@Z",
   "len": "0x31",
   "manifest_pct": 87.5,
@@ -2688,7 +2688,7 @@
  {
   "addr": "0x5C07D0",
   "name": "FUN_005C07D0",
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "sym": "?FUN_005C07D0@@YIPAVMovieHandle@@PBDPAUSurface_005C07D0@@PAURectangleStruct@@@Z",
   "len": "0x1a3",
   "manifest_pct": 98.6,
@@ -3432,7 +3432,7 @@
  {
   "addr": "0x6613A0",
   "name": "RGBClass::FUN_006613A0",
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "sym": "?FUN_006613A0@RGBClass@@QBE?AVHSVClass@@XZ",
   "len": "0x141",
   "manifest_pct": 97.5,

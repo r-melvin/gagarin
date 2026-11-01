@@ -536,7 +536,7 @@ int __stdcall FUN_00623DA0(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam,
 int __stdcall FUN_006232B0(GG_HWND hDlg, unsigned int uMsg, unsigned int wParam, long lParam);
 
 #include "ui_updated_methods.h"
-#include "../platform/input_manager_class_methods.h"
+#include "../input_manager_class_methods.h"
 
 // Engine globals read by Updated (absolute dword/byte loads in the disasm).
 extern int           SessionGameMode; // GAMEMD 0xA8B238 (first field of the session)

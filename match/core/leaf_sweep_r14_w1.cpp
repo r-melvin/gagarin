@@ -10,7 +10,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/cell.h"
-#include "../platform/debug_window_list_methods.h"
+#include "../debug_window_list_methods.h"
 
 // ---------------------------------------------------------------------------
 // 0x402900: run the update callback of every enabled node of the global list.

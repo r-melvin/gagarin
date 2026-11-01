@@ -62,7 +62,7 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 extern "C" void  __cdecl FUN_007C8B3D(void* block);
 extern "C" void* __cdecl FUN_007CA090(void* dest, const void* src, unsigned int count);
 
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 class RAMFileClass : public FileClass
 {

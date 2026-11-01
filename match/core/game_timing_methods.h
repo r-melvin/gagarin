@@ -11,7 +11,7 @@
 // with `LEA ECX,[ESP+4]` on a stack temporary (0x6C87F0) — so the clock is a
 // member object rather than a pointer, and its GetTime is a __thiscall whose
 // `this` the callee ignores (the timeGetTime()>>4 leaf matched in
-// match/platform/system_query_methods.cpp).
+// match/system_query_methods.cpp).
 //
 // The constructor writes only the start tick; the clock member is never
 // initialised, and the 8-byte copy at 0x6C8801 carries it out of the dead

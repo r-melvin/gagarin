@@ -469,7 +469,7 @@ extern void* DAT_00B77F60;
 #include "core/trivial_tu055_methods.h"
 #include "ui/ui_focus_methods.h"
 #include "ui/ui_updated_methods.h"
-#include "platform/ccfile_class.h"
+#include "ccfile_class.h"
 #include "core/vtable_seating_ctor_family_methods.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.

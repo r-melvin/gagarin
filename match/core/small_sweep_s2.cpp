@@ -378,7 +378,7 @@ void Selection_0074BEA0::FUN_0074BEA0()
 
 // ---------------------------------------------------------------------------
 // 0x7589F0: reads a 0x300-byte block from an opened file.
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 struct Palette_007589F0
 {

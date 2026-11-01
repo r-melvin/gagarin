@@ -54,7 +54,7 @@
 
 #include "sidebar_class_layout.h"
 #include "../shape_button_class.h"
-#include "../../platform/ccini_class_small_readers_methods.h"
+#include "../../ccini_class_small_readers_methods.h"
 #include "../../super_weapon_type_class_methods.h"
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.

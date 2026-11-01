@@ -3,7 +3,7 @@
 // The ordinary destructor at 0x7BA590 matches with /GX omitted; /GX adds
 // exception-handler setup. All three entry spans below match using this set.
 #include "../_layout/file_straw.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 // The scalar deleting destructor 0x477770 is emitted by the stack-FileStraw
 // user (INIClass::FUN_00525A10, platform/ini_class_stream_wrappers.cpp), where

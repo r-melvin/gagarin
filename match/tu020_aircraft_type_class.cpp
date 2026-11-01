@@ -15,7 +15,7 @@
 // AircraftTypeClass is declared in _layout/aircraft_type_class.h.
 
 #include "FUNCTION.H"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "locomotion_load_support.h"
 #include "core/header_tuning_globals.h"
 

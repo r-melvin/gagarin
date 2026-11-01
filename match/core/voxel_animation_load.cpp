@@ -4,7 +4,7 @@
 // Native 0x5BD5C0..0x5BD729 reads a 24-byte header, skips 16 bytes per
 // section, then reads frame/section matrices; short reads close and clear.
 #include "../_layout/voxel_resource_data.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 #include <new.h>
 
 struct GgAnimationHeader

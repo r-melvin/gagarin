@@ -3424,7 +3424,7 @@ Engine link closure and complete executable reproduction remain unfinished.
 ## Previous verified integration: native GenericNode constructor and two vector pairs
 
 The former explicit initializer at `0x40E320` is now the native
-`GenericNode()` constructor in [the INI node translation unit](match/platform/ini_class_node_methods.cpp).
+`GenericNode()` constructor in [the INI node translation unit](match/ini_class_node_methods.cpp).
 Its full 17-byte span matches retail under `/O2 /DNDEBUG /Gy /GX /Ob2`.
 `GenericList()` relies on automatic construction of its two `GenericNode`
 members, seats the list table and links the sentinels; `InitList()` remains an
@@ -3478,7 +3478,7 @@ GX/no-GX probes confirm the 0x49-byte derived deleting entries require no GX;
 GX emits 0x20-byte wrappers. All twelve seven-slot tables pass conditional
 `--weak-defaults` checks against current project objects.
 
-The native [GenericList](match/platform/ini_class_node_methods.cpp) constructor at
+The native [GenericList](match/ini_class_node_methods.cpp) constructor at
 `0x52ACE0` and `List<INIEntry*>` constructor at `0x52AF50` match their full
 retail spans (0x69 and 0x6F bytes) in the INI translation unit using
 `/O2 /DNDEBUG /Gy /GX /Ob2`. This removes the GenericListObject stand-in;

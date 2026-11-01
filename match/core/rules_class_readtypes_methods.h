@@ -13,7 +13,7 @@
 #ifndef GG_MATCH_CORE_RULES_CLASS_READTYPES_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_READTYPES_METHODS_H
 #include "../_layout/rules_class.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 
 
 // ---------------------------------------------------------------------------

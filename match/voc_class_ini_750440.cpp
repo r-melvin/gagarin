@@ -5,7 +5,7 @@
 //   callee was read off the user's retail gamemd.exe v1.001 disassembly; the setters are named by address.
 #include <string.h>
 #include <stdlib.h>
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "_layout/voc_class.h"
 
 // FUNCTION: GAMEMD 0x4067D0 (decl; reloc) -- priority by name.

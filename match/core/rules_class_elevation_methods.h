@@ -17,7 +17,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/rules_class.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 
 
 // GLOBAL: GAMEMD 0x7F0C8C — holds the "ElevationModel" section name.

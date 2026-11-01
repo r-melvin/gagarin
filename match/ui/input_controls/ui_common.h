@@ -121,7 +121,7 @@ public:
 extern Mouse* DAT_00887640;
 
 // The keyboard singleton 0x87F770 is InputManagerClass (platform/input_manager_class_methods.h).
-#include "../../platform/input_manager_class_methods.h"
+#include "../../input_manager_class_methods.h"
 
 #include "../../_layout/color_convert.h"
 // GLOBAL: GAMEMD 0x87F6C4 -- the palette lookup used by the gauges, lists and shape buttons.

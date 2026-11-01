@@ -5,7 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "small_misc12_methods.h"
-#include "../platform/pk_blow_pipes.h"
+#include "../pk_blow_pipes.h"
 
 // FUNCTION: GAMEMD 0x408500
 // Link the node in after the anchor, add its weight to the running total, and

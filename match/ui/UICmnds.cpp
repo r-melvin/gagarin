@@ -29,7 +29,7 @@
 #include "../_layout/unit_type_class.h"
 #include <stdio.h>
 #include "message_list_class_methods.h"
-#include "../platform/input_manager_class_methods.h"
+#include "../input_manager_class_methods.h"
 #include "../core/rules_class.h"
 #include "../event_queue.h"
 #include "../_layout/tactical.h"
@@ -108,7 +108,7 @@ extern const char DAT_0084566C[] = "MSG:Elite";
 
 #include "../core/global_getter_family_methods.h"
 
-#include "../platform/system_query_methods.h"
+#include "../system_query_methods.h"
 
 // Win32 import reached through the IAT (`CALL dword ptr [0x007E1530]`).
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);

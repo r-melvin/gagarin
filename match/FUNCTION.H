@@ -43,7 +43,7 @@
 #include "core/small_struct_ctor_methods.h"
 #include "core/tail_call_methods.h"
 #include "wdt_rc_ptr.h"
-#include "platform/ccfile_class.h"
+#include "ccfile_class.h"
 #include "ui/gadget_class_methods.h"
 #include "bounce_class.h"
 #include "loco_interfaces.h"

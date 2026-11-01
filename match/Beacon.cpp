@@ -57,7 +57,7 @@ GG_STATIC_ASSERT(offsetof(BenchTimer, Samples) == 0x10);
 extern "C" void __cdecl GameDelete(void* pMem);
 
 #include "beacon_manager_class_art_methods.h"
-#include "platform/ccfile_class.h"
+#include "ccfile_class.h"
 
 #include "beacon_manager_class_draw_methods.h"
 

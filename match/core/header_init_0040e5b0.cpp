@@ -7,7 +7,7 @@
 #include <math.h>
 #include "header_init_shapes.h"
 #include "winmm_timer_methods.h"
-#include "../platform/system_query_methods.h"
+#include "../system_query_methods.h"
 
 // GLOBAL: GAMEMD 0x7E1708
 const double DAT_007E1708 = 2.0;

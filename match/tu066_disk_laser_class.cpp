@@ -180,7 +180,7 @@ class WeaponTypeClass;
 struct HWND__;
 
 
-#include "platform/system_query_methods.h"
+#include "system_query_methods.h"
 
 // Win32 import reached through the IAT (`CALL dword ptr [0x007E1530]`).
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);

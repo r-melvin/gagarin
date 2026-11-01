@@ -24,7 +24,7 @@
 #include "smudge_class.h"
 #include "smudge_type_class.h"
 #include "_layout/obj_004a1d30.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 // GLOBAL: GAMEMD 0x887180
 extern CCINIClass DAT_00887180;
 

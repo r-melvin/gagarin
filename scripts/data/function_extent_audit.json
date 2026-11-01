@@ -404,7 +404,7 @@
     },
     {
       "address": "0x00529560",
-      "source": "match/platform/ccini_class_methods.cpp",
+      "source": "match/ccini_class_methods.cpp",
       "symbol": "?WriteBool@INIClass@@QAE_NPBD0_N@Z",
       "old_size": 52,
       "corrected_size": 54,
@@ -418,7 +418,7 @@
     },
     {
       "address": "0x005297E0",
-      "source": "match/platform/ccini_class_methods.cpp",
+      "source": "match/ccini_class_methods.cpp",
       "symbol": "?Write2Integers@INIClass@@QAE_NPBD0PAH@Z",
       "old_size": 62,
       "corrected_size": 64,
@@ -588,7 +588,7 @@
     },
     {
       "address": "0x679F40",
-      "source": "match/platform/ccini_class_methods.cpp",
+      "source": "match/ccini_class_methods.cpp",
       "symbol": "?Exists@CCINIClass@@QAE_NPBD0@Z",
       "old_size": 45,
       "corrected_size": 47,

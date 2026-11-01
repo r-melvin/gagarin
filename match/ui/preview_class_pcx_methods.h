@@ -17,7 +17,7 @@
 //     constructor 0x4BA5A0 takes (width, height, 1, 0) — width lands at
 //     [ESI+0x4] and height at [ESI+0x8] inside that constructor.
 //   The file object agrees with match/smudge_type_class_load_methods.h and
-//   match/platform/file_system_load_whole_methods.h (neither edited; re-derived
+//   match/file_system_load_whole_methods.h (neither edited; re-derived
 //   here so the TU stands alone). Names cross-checked against YRpp
 //   (every offset reconfirmed above).
 #ifndef GG_MATCH_UI_PREVIEW_CLASS_PCX_METHODS_H

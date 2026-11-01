@@ -1993,7 +1993,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x632F90",
   "sym": "??_GBlowPipe@@UAEPAXI@Z",
   "len": "0x46",
@@ -2002,7 +2002,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x632FF0",
   "sym": "??_GPKPipe@@UAEPAXI@Z",
   "len": "0x52",
@@ -2011,7 +2011,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x633370",
   "sym": "??_GPKStraw@@UAEPAXI@Z",
   "len": "0x52",
@@ -2137,7 +2137,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x6616B0",
   "sym": "??0RandomStraw@@QAE@XZ",
   "len": "0x50",
@@ -2146,7 +2146,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661700",
   "sym": "??1RandomStraw@@UAE@XZ",
   "len": "0x24",
@@ -2155,7 +2155,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661730",
   "sym": "?Reset@RandomStraw@@QAEXXZ",
   "len": "0x17",
@@ -2164,7 +2164,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661750",
   "sym": "?FUN_00661750@RandomStraw@@QBEHXZ",
   "len": "0x16",
@@ -2173,7 +2173,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661770",
   "sym": "?FUN_00661770@RandomStraw@@QAEXH@Z",
   "len": "0xdb",
@@ -2182,7 +2182,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661850",
   "sym": "?FUN_00661850@RandomStraw@@QAEXD@Z",
   "len": "0x103",
@@ -2191,7 +2191,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661960",
   "sym": "?FUN_00661960@RandomStraw@@QAEXF@Z",
   "len": "0xfb",
@@ -2200,7 +2200,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661A60",
   "sym": "?FUN_00661A60@RandomStraw@@QAEXJ@Z",
   "len": "0x103",
@@ -2209,7 +2209,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661B70",
   "sym": "?FUN_00661B70@RandomStraw@@QAEXXZ",
   "len": "0x97",
@@ -2218,7 +2218,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661C10",
   "sym": "?FUN_006C98E0@RandomStraw@@UAEHPAXH@Z",
   "len": "0x58",
@@ -2227,7 +2227,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661C70",
   "sym": "??_GRandomStraw@@UAEPAXI@Z",
   "len": "0x3a",
@@ -4741,7 +4741,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_stream_wrappers.cpp",
+  "tu": "match/ini_class_stream_wrappers.cpp",
   "addr": "0x477770",
   "sym": "??_GFileStraw@@UAEPAXI@Z",
   "len": "0x1E",
@@ -4750,7 +4750,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_stream_wrappers.cpp",
+  "tu": "match/ini_class_stream_wrappers.cpp",
   "addr": "0x477790",
   "sym": "??_GFilePipe@@UAEPAXI@Z",
   "len": "0x1E",
@@ -4804,7 +4804,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x4AEC10",
   "sym": "??_GStraw@@UAEPAXI@Z",
   "len": "0x1E",
@@ -4867,7 +4867,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_dtor.cpp",
+  "tu": "match/ini_class_dtor.cpp",
   "addr": "0x4F2810",
   "sym": "??_GINIClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -4894,7 +4894,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AE00",
   "sym": "??_GINISection@INIClass@@UAEPAXI@Z",
   "len": "0x1e",
@@ -5517,7 +5517,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x00552450",
   "sym": "??1LCWStraw@@UAE@XZ",
   "len": "0x35",
@@ -5526,7 +5526,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x005525F0",
   "sym": "??_GLCWStraw@@UAEPAXI@Z",
   "len": "0x49",
@@ -5535,7 +5535,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x0055C310",
   "sym": "??1LZOPipe@@UAE@XZ",
   "len": "0x35",
@@ -5544,7 +5544,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x0055C6D0",
   "sym": "??_GLZOPipe@@UAEPAXI@Z",
   "len": "0x49",
@@ -5553,7 +5553,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x0055C780",
   "sym": "??1LZOStraw@@UAE@XZ",
   "len": "0x35",
@@ -5562,7 +5562,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x0055C990",
   "sym": "??_GLZOStraw@@UAEPAXI@Z",
   "len": "0x49",
@@ -7668,7 +7668,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B080",
   "sym": "??0IndexClass@@QAE@XZ",
   "len": "0x13",
@@ -7677,7 +7677,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B0A0",
   "sym": "?AddIndex@IndexClass@@QAE_NABHABQAX@Z",
   "len": "0xc7",
@@ -7686,7 +7686,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B170",
   "sym": "?IsPresent@IndexClass@@QBE_NABH@Z",
   "len": "0x97",
@@ -7695,7 +7695,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B210",
   "sym": "?FetchIndex@IndexClass@@QBEABQAXABH@Z",
   "len": "0x95",
@@ -7704,7 +7704,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B2B0",
   "sym": "?RemoveIndex@IndexClass@@QAE_NABH@Z",
   "len": "0xd5",
@@ -7713,7 +7713,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B390",
   "sym": "?IsPresent@IndexClassB@@QBE_NABH@Z",
   "len": "0x97",
@@ -7722,7 +7722,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B430",
   "sym": "?FetchIndex@IndexClassB@@QBEABQAXABH@Z",
   "len": "0x95",
@@ -7731,7 +7731,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B6A0",
   "sym": "?Comparator@IndexClass@@SAHPBX0@Z",
   "len": "0x22",
@@ -7740,7 +7740,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B720",
   "sym": "?Comparator@IndexClassB@@SAHPBX0@Z",
   "len": "0x22",
@@ -8703,7 +8703,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x40E3E0",
   "sym": "??_GGenericList@@UAEPAXI@Z",
   "len": "0xb3",
@@ -9396,7 +9396,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B570",
   "sym": "?Grow_52B570@GrowPairVector@@QAE_NH@Z",
   "len": "0x86",
@@ -10080,7 +10080,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B4D0",
   "sym": "?FUN_0052B4D0@HandleHolder@@QAE_NPAPAX@Z",
   "len": "0x1b",
@@ -10089,7 +10089,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52B600",
   "sym": "?FUN_0052B600@HandleHolder@@QAE_NPAPAX@Z",
   "len": "0x1b",
@@ -10512,7 +10512,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473A80",
   "sym": "??0CCFileClass@@QAE@XZ",
   "len": "0x2c",
@@ -10836,7 +10836,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x40E320",
   "sym": "??0GenericNode@@QAE@XZ",
   "len": "0x11",
@@ -10945,7 +10945,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x4019a0",
   "sym": "??_GCCFileClass@@UAEPAXI@Z",
   "len": "0x3b",
@@ -11062,7 +11062,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_file_time_methods.cpp",
+  "tu": "match/ccfile_class_file_time_methods.cpp",
   "addr": "0x4739F0",
   "sym": "??0CCFileClass@@QAE@PBD@Z",
   "len": "0x3A",
@@ -11071,7 +11071,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473A30",
   "sym": "??0CCFileClass@@QAE@ABVWstring@@@Z",
   "len": "0x46",
@@ -11242,7 +11242,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x40E340",
   "sym": "?Link@GenericNode@@QAEXPAV1@@Z",
   "len": "0x4b",
@@ -11251,7 +11251,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x40E390",
   "sym": "??_GGenericNode@@UAEPAXI@Z",
   "len": "0x45",
@@ -11503,7 +11503,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x432610",
   "sym": "??_GBufferIOFileClass@@UAEPAXI@Z",
   "len": "0x54",
@@ -11935,7 +11935,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x401950",
   "sym": "??_GCDFileClass@@UAEPAXI@Z",
   "len": "0x24",
@@ -14590,7 +14590,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x00660c80",
   "sym": "?Clear@?$DynamicVectorClass@PAVRadarEventClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -17705,7 +17705,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x00660F80",
   "sym": "??_G?$VectorClass@PAVRadarEventClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17714,7 +17714,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x00660FD0",
   "sym": "??_G?$DynamicVectorClass@PAVRadarEventClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18389,7 +18389,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660CB0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVRadarEventClass@@@@UBEHPAPAVRadarEventClass@@@Z",
   "len": "0x1b",
@@ -18398,7 +18398,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660CD0",
   "sym": "?Slot6@?$VectorClass@PAVRadarEventClass@@@@UBEPAVRadarEventClass@@H@Z",
   "len": "0xd",
@@ -18407,7 +18407,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660CE0",
   "sym": "??8?$VectorClass@PAVRadarEventClass@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -18416,7 +18416,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660D20",
   "sym": "?SetCapacity@?$VectorClass@PAVRadarEventClass@@@@UAE_NHPAPAVRadarEventClass@@@Z",
   "len": "0xae",
@@ -18425,7 +18425,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660E00",
   "sym": "?FindItemIndex@?$VectorClass@PAVRadarEventClass@@@@UBEHABQAVRadarEventClass@@@Z",
   "len": "0x33",
@@ -18434,7 +18434,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660E40",
   "sym": "?Slot5@?$VectorClass@PAVRadarEventClass@@@@UBEHPAPAVRadarEventClass@@@Z",
   "len": "0x1b",
@@ -18443,7 +18443,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660E60",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVRadarEventClass@@@@UAE_NHPAPAVRadarEventClass@@@Z",
   "len": "0xb0",
@@ -18452,7 +18452,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660F50",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVRadarEventClass@@@@UBEHABQAVRadarEventClass@@@Z",
   "len": "0x26",
@@ -19982,7 +19982,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x00660dd0",
   "sym": "?Clear@?$VectorClass@PAVRadarEventClass@@@@UAEXXZ",
   "len": "0x27",
@@ -26583,7 +26583,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/bink_player_teardown_methods.cpp",
+  "tu": "match/bink_player_teardown_methods.cpp",
   "addr": "0x432700",
   "sym": "?FUN_00432700@BinkPlayer_00432700@@QAEXXZ",
   "len": "0x50",
@@ -26592,7 +26592,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/bink_player_teardown_methods.cpp",
+  "tu": "match/bink_player_teardown_methods.cpp",
   "addr": "0x432a60",
   "sym": "?FUN_00432A60@BinkPlayer_00432700@@QAEXXZ",
   "len": "0x50",
@@ -26601,7 +26601,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x431B80",
   "sym": "??1BufferIOFileClass@@UAE@XZ",
   "len": "0x40",
@@ -26610,7 +26610,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x431D90",
   "sym": "?FUN_00431D90@BufferIOFileClass@@QAEXXZ",
   "len": "0x33",
@@ -26619,7 +26619,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x431E80",
   "sym": "?SetFileName@BufferIOFileClass@@UAEPBDPBD@Z",
   "len": "0x83",
@@ -26628,7 +26628,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x4324B0",
   "sym": "?Seek@BufferIOFileClass@@UAEHHH@Z",
   "len": "0xea",
@@ -26637,7 +26637,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F70",
   "sym": "?Open@BufferIOFileClass@@UAEHI@Z",
   "len": "0xe0",
@@ -26646,7 +26646,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x401940",
   "sym": "?GetFileName@RawFileClass@@UBEPBDXZ",
   "len": "0x4",
@@ -26655,7 +26655,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x401980",
   "sym": "?OpenEx@CCFileClass@@UAEHPBDI@Z",
   "len": "0x1F",
@@ -26664,7 +26664,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F10",
   "sym": "?Exists@BufferIOFileClass@@UAE_NH@Z",
   "len": "0x16",
@@ -26673,7 +26673,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F50",
   "sym": "?OpenEx@BufferIOFileClass@@UAEHPBDI@Z",
   "len": "0x1F",
@@ -26682,7 +26682,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x4325A0",
   "sym": "?GetFileSize@BufferIOFileClass@@UAEHXZ",
   "len": "0x17",
@@ -26691,7 +26691,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473CE0",
   "sym": "?Close@CCFileClass@@UAEXXZ",
   "len": "0x23",
@@ -26700,7 +26700,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65CCA0",
   "sym": "?Close@RawFileClass@@UAEXXZ",
   "len": "0x38",
@@ -26709,7 +26709,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x4325C0",
   "sym": "?Close@BufferIOFileClass@@UAEXXZ",
   "len": "0x4E",
@@ -26718,7 +26718,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_raw_methods.cpp",
+  "tu": "match/ccfile_raw_methods.cpp",
   "addr": "0x65D1F0",
   "sym": "?GetFileTime@RawFileClass@@UAEKXZ",
   "len": "0x4D",
@@ -26727,7 +26727,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65CBF0",
   "sym": "?Exists@RawFileClass@@UAE_NH@Z",
   "len": "0xAB",
@@ -26736,7 +26736,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_file_time_methods.cpp",
+  "tu": "match/ccfile_class_file_time_methods.cpp",
   "addr": "0x473E50",
   "sym": "?GetFileTime@CCFileClass@@UAEKXZ",
   "len": "0xAF",
@@ -26745,7 +26745,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473AE0",
   "sym": "?WriteBytes@CCFileClass@@UAEHPAXH@Z",
   "len": "0x30",
@@ -26754,7 +26754,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473BA0",
   "sym": "?Seek@CCFileClass@@UAEHHH@Z",
   "len": "0x5B",
@@ -26763,7 +26763,7 @@
   "pct": 90.6
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473C00",
   "sym": "?GetFileSize@CCFileClass@@UAEHXZ",
   "len": "0x50",
@@ -26772,7 +26772,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_more_methods.cpp",
+  "tu": "match/ccfile_class_more_methods.cpp",
   "addr": "0x4A3890",
   "sym": "?ReadWholeFile@FileClass@@QAEPAXXZ",
   "len": "0x38",
@@ -26781,7 +26781,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_more_methods.cpp",
+  "tu": "match/ccfile_class_more_methods.cpp",
   "addr": "0x65D150",
   "sym": "?CreateFile@RawFileClass@@UAEHXZ",
   "len": "0x38",
@@ -26790,7 +26790,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_raw_methods.cpp",
+  "tu": "match/ccfile_raw_methods.cpp",
   "addr": "0x65CAC0",
   "sym": "?SetFileName@RawFileClass@@UAEPBDPBD@Z",
   "len": "0x6f",
@@ -26799,7 +26799,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_raw_methods.cpp",
+  "tu": "match/ccfile_raw_methods.cpp",
   "addr": "0x65D2B0",
   "sym": "?Bias@RawFileClass@@QAEXHH@Z",
   "len": "0x6a",
@@ -26808,7 +26808,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x473C50",
   "sym": "?Exists@CCFileClass@@UAE_NH@Z",
   "len": "0x73",
@@ -26817,7 +26817,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x473FC0",
   "sym": "?SetFileName@CCFileClass@@UAEPBDPBD@Z",
   "len": "0x14",
@@ -26826,7 +26826,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47AAB0",
   "sym": "?Open@CDFileClass@@UAEHI@Z",
   "len": "0xD",
@@ -26835,7 +26835,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65CA70",
   "sym": "?CDCheck@RawFileClass@@UAEXK_NPBD@Z",
   "len": "0x3",
@@ -26844,7 +26844,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65CB30",
   "sym": "?OpenEx@RawFileClass@@UAEHPBDI@Z",
   "len": "0x1F",
@@ -26853,7 +26853,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65D420",
   "sym": "?HasHandle@RawFileClass@@UAE_NXZ",
   "len": "0xC",
@@ -26862,7 +26862,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_open_mix_methods.cpp",
+  "tu": "match/ccfile_class_open_mix_methods.cpp",
   "addr": "0x473D10",
   "sym": "?Open@CCFileClass@@UAEHI@Z",
   "len": "0x13e",
@@ -26871,7 +26871,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x47AF10",
   "sym": "?OpenEx@CDFileClass@@UAEHPBDI@Z",
   "len": "0x59",
@@ -26880,7 +26880,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_raw_methods.cpp",
+  "tu": "match/ccfile_raw_methods.cpp",
   "addr": "0x65D190",
   "sym": "?DeleteFile@RawFileClass@@UAEHXZ",
   "len": "0x5F",
@@ -26889,7 +26889,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473B10",
   "sym": "?ReadBytes@CCFileClass@@UAEHPAXH@Z",
   "len": "0x8e",
@@ -26898,7 +26898,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_file_time_methods.cpp",
+  "tu": "match/ccfile_class_file_time_methods.cpp",
   "addr": "0x473F00",
   "sym": "?SetFileTime@CCFileClass@@UAE_NK@Z",
   "len": "0xB6",
@@ -26907,7 +26907,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x47AE10",
   "sym": "?SetFileName@CDFileClass@@UAEPBDPBD@Z",
   "len": "0xF4",
@@ -26916,7 +26916,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x477640",
   "sym": "?ReadAbilities@CCINIClass@@QAE?AUAbilitiesStruct@@PBD0ABU2@@Z",
   "len": "0xf5",
@@ -26925,7 +26925,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_angle_point_methods.cpp",
+  "tu": "match/ccini_class_angle_point_methods.cpp",
   "addr": "0x474660",
   "sym": "?WriteFixedFraction@CCINI_00474660@@QAE_NPBD0H@Z",
   "len": "0x22",
@@ -26934,7 +26934,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_angle_point_methods.cpp",
+  "tu": "match/ccini_class_angle_point_methods.cpp",
   "addr": "0x474690",
   "sym": "?WriteAngleDegrees@CCINI_00474660@@QAE_NPBD0H@Z",
   "len": "0x4f",
@@ -26943,7 +26943,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_angle_point_methods.cpp",
+  "tu": "match/ccini_class_angle_point_methods.cpp",
   "addr": "0x4746E0",
   "sym": "?ReadAngleDegrees@CCINI_00474660@@QAEHPBD0H@Z",
   "len": "0x59",
@@ -26952,7 +26952,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_angle_point_methods.cpp",
+  "tu": "match/ccini_class_angle_point_methods.cpp",
   "addr": "0x474740",
   "sym": "?ReadPoint@CCINI_00474660@@QAE?AUPoint16@@PBD0PBU2@@Z",
   "len": "0x74",
@@ -26961,7 +26961,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_angle_point_methods.cpp",
+  "tu": "match/ccini_class_angle_point_methods.cpp",
   "addr": "0x4747C0",
   "sym": "?WritePoint@CCINI_00474660@@QAE_NPBD0PBUPoint16@@@Z",
   "len": "0x42",
@@ -26970,7 +26970,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+  "tu": "match/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x4753F0",
   "sym": "?ReadArmor@CCINI_004753F0@@QAEHPBD0H@Z",
   "len": "0x43",
@@ -26979,7 +26979,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+  "tu": "match/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x475460",
   "sym": "?WriteArmor@CCINI_004753F0@@QAE_NPBD0H@Z",
   "len": "0x41",
@@ -26988,7 +26988,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+  "tu": "match/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x4754B0",
   "sym": "?ReadLandType@CCINI_004753F0@@QAEHPBD0H@Z",
   "len": "0x5f",
@@ -26997,7 +26997,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+  "tu": "match/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x475510",
   "sym": "?WriteLandType@CCINI_004753F0@@QAE_NPBD0H@Z",
   "len": "0x22",
@@ -27006,7 +27006,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+  "tu": "match/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x475540",
   "sym": "?FUN_00475540@CCINIClass@@QAEHPBD0H@Z",
   "len": "0xc9",
@@ -27015,7 +27015,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+  "tu": "match/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x475610",
   "sym": "?FUN_00475610@CCINIClass@@QAE_NPBD0H@Z",
   "len": "0xdb",
@@ -27024,7 +27024,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x475A40",
   "sym": "?FUN_00475A40@CCINI_00475A40@@QAE_NPBD0H@Z",
   "len": "0x1e",
@@ -27033,7 +27033,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x475A60",
   "sym": "?ReadCategoryList@CCINI_00475A40@@QAEHPBD0H@Z",
   "len": "0x107",
@@ -27042,7 +27042,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x475B70",
   "sym": "?WriteCategoryList@CCINI_00475A40@@QAE_NPBD0H@Z",
   "len": "0xfb",
@@ -27051,7 +27051,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x476D80",
   "sym": "?GetCRC@CCINI_00476D80@@QAEHXZ",
   "len": "0x9d",
@@ -27060,7 +27060,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x474910",
   "sym": "?WritePip@CCINI_00474910@@QAE_NPBD0H@Z",
   "len": "0x27",
@@ -27069,7 +27069,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x4749B0",
   "sym": "?WritePipScale@CCINI_00474910@@QAE_NPBD0H@Z",
   "len": "0x27",
@@ -27078,7 +27078,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x474A50",
   "sym": "?FUN_00474A50@CCINI_00474910@@QAE?AUIniValue@@PBD0H@Z",
   "len": "0x1f",
@@ -27087,7 +27087,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x474A70",
   "sym": "?FUN_00474A70@CCINI_00474910@@QAE_NPBD0H@Z",
   "len": "0x17",
@@ -27096,7 +27096,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x474C20",
   "sym": "?FUN_00474C20@CCINI_00474910@@QAE_NPBD0PBE@Z",
   "len": "0x4a",
@@ -27105,7 +27105,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x474D50",
   "sym": "?FUN_00474D50@CCINI_00474910@@QAE_NPBD0PBE@Z",
   "len": "0x4a",
@@ -27114,7 +27114,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x474E10",
   "sym": "?WriteFoundation@CCINI_00474910@@QAE_NPBD0H@Z",
   "len": "0x28",
@@ -27123,7 +27123,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x474EB0",
   "sym": "?WriteMovementZone@CCINI_00474910@@QAE_NPBD0H@Z",
   "len": "0x28",
@@ -27132,7 +27132,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x475150",
   "sym": "?WriteHouseTypesList@CCINI_00474910@@QAE_NPBD0I@Z",
   "len": "0x104",
@@ -27141,7 +27141,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x475440",
   "sym": "?WriteArmorName@CCINI_00474910@@QAE_NPBD0H@Z",
   "len": "0x1e",
@@ -27150,7 +27150,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+  "tu": "match/ccini_class_enum_writers_methods.cpp",
   "addr": "0x4757A0",
   "sym": "?WriteMovie@CCINI_00474910@@QAE_NPBD0H@Z",
   "len": "0x2c",
@@ -27159,7 +27159,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x526810",
   "sym": "?GetSection@INIClass@@QAEPAUINISection@1@PBD@Z",
   "len": "0x131",
@@ -27168,7 +27168,7 @@
   "pct": 3.3
  },
  {
-  "tu": "match/platform/ccini_class_house_list_methods.cpp",
+  "tu": "match/ccini_class_house_list_methods.cpp",
   "addr": "0x474810",
   "sym": "?ReadPercentAsByte@CCINI_00474810@@QAEHPBD0H@Z",
   "len": "0x56",
@@ -27177,7 +27177,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_house_list_methods.cpp",
+  "tu": "match/ccini_class_house_list_methods.cpp",
   "addr": "0x4750D0",
   "sym": "?ReadHouseTypesList@CCINI_00474810@@QAEHPBD0H@Z",
   "len": "0x73",
@@ -27186,7 +27186,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_house_list_methods.cpp",
+  "tu": "match/ccini_class_house_list_methods.cpp",
   "addr": "0x475260",
   "sym": "?ReadHousesList@CCINI_00474810@@QAEHPBD0H@Z",
   "len": "0x7c",
@@ -27195,7 +27195,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_house_list_methods.cpp",
+  "tu": "match/ccini_class_house_list_methods.cpp",
   "addr": "0x4752E0",
   "sym": "?WriteHousesList@CCINI_00474810@@QAE_NPBD0I@Z",
   "len": "0x104",
@@ -27204,7 +27204,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x526960",
   "sym": "?GetKeyCount@INIClass@@QAEHPBD@Z",
   "len": "0xC1",
@@ -27213,7 +27213,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x526CC0",
   "sym": "?GetKeyName@INIClass@@QAEPBDPBDH@Z",
   "len": "0xcd",
@@ -27222,7 +27222,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x526B00",
   "sym": "?Reset@INIClass@@QAEXXZ",
   "len": "0x9",
@@ -27231,7 +27231,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x529560",
   "sym": "?WriteBool@INIClass@@QAE_NPBD0_N@Z",
   "len": "0x36",
@@ -27240,7 +27240,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5297E0",
   "sym": "?Write2Integers@INIClass@@QAE_NPBD0PAH@Z",
   "len": "0x40",
@@ -27249,7 +27249,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_methods.cpp",
+  "tu": "match/ccini_class_methods.cpp",
   "addr": "0x679F40",
   "sym": "?Exists@CCINIClass@@QAE_NPBD0@Z",
   "len": "0x2f",
@@ -27258,7 +27258,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_name_table_readers_methods.cpp",
+  "tu": "match/ccini_class_name_table_readers_methods.cpp",
   "addr": "0x4748A0",
   "sym": "?ReadPip@CCINI_004748A0@@QAEHPBD0H@Z",
   "len": "0x6a",
@@ -27267,7 +27267,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_name_table_readers_methods.cpp",
+  "tu": "match/ccini_class_name_table_readers_methods.cpp",
   "addr": "0x474940",
   "sym": "?ReadPipScale@CCINI_004748A0@@QAEHPBD0H@Z",
   "len": "0x70",
@@ -27276,7 +27276,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_name_table_readers_methods.cpp",
+  "tu": "match/ccini_class_name_table_readers_methods.cpp",
   "addr": "0x474A90",
   "sym": "?ReadColorScheme@CCINI_004748A0@@QAEHPBD0H@Z",
   "len": "0x8a",
@@ -27285,7 +27285,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_name_table_readers_methods.cpp",
+  "tu": "match/ccini_class_name_table_readers_methods.cpp",
   "addr": "0x474DA0",
   "sym": "?ReadFoundation@CCINI_004748A0@@QAEHPBD0H@Z",
   "len": "0x67",
@@ -27294,7 +27294,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_name_table_readers_methods.cpp",
+  "tu": "match/ccini_class_name_table_readers_methods.cpp",
   "addr": "0x474E40",
   "sym": "?ReadMovementZone@CCINI_004748A0@@QAEHPBD0H@Z",
   "len": "0x63",
@@ -27303,7 +27303,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_name_table_readers_methods.cpp",
+  "tu": "match/ccini_class_name_table_readers_methods.cpp",
   "addr": "0x474EE0",
   "sym": "?ReadSuperWeaponAction@CCINI_004748A0@@QAEHPBD0H@Z",
   "len": "0x62",
@@ -27312,7 +27312,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x474B50",
   "sym": "?Read3Bytes@CCINIClass@@QAE?AUColorStruct@@PBD0ABU2@@Z",
   "len": "0xcf",
@@ -27321,7 +27321,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x4741F0",
   "sym": "?ReadCCFile@CCINI_004741F0@@QAEHPAUFile_004741F0@@_N1@Z",
   "len": "0x12d",
@@ -27330,7 +27330,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x474C70",
   "sym": "?ReadColor@CCINIClass@@QAEPAUColorStruct@@PAU2@PBD1ABU2@@Z",
   "len": "0xdd",
@@ -27339,7 +27339,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x474620",
   "sym": "?FUN_00474620@CCINI_00474620@@QAEHPBD0H@Z",
   "len": "0x3a",
@@ -27348,7 +27348,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x4749E0",
   "sym": "?FUN_004749E0@CCINI_00474620@@QAEHPBD0I@Z",
   "len": "0x38",
@@ -27357,7 +27357,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x474A20",
   "sym": "?FUN_00474A20@CCINI_00474620@@QAE_NPBD0I@Z",
   "len": "0x2c",
@@ -27366,7 +27366,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x474B20",
   "sym": "?FUN_00474B20@CCINI_00474620@@QAE_NPBD0H@Z",
   "len": "0x26",
@@ -27375,7 +27375,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x474F50",
   "sym": "?FUN_00474F50@CCINI_00474620@@QAEHPBD0H@Z",
   "len": "0x49",
@@ -27384,7 +27384,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x474FA0",
   "sym": "?FUN_00474FA0@CCINI_00474620@@QAEHPBD0H@Z",
   "len": "0x49",
@@ -27393,7 +27393,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x474FF0",
   "sym": "?FUN_00474FF0@CCINI_00474620@@QAEHPBD0H@Z",
   "len": "0x38",
@@ -27402,7 +27402,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x475030",
   "sym": "?FUN_00475030@CCINI_00474620@@QAE_NPBD0H@Z",
   "len": "0x22",
@@ -27411,7 +27411,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x475060",
   "sym": "?FUN_00475060@CCINI_00474620@@QAEHPBD0H@Z",
   "len": "0x38",
@@ -27420,7 +27420,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_small_readers_methods.cpp",
+  "tu": "match/ccini_class_small_readers_methods.cpp",
   "addr": "0x4750A0",
   "sym": "?FUN_004750A0@CCINI_00474620@@QAE_NPBD0H@Z",
   "len": "0x22",
@@ -27429,7 +27429,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_techno_type_methods.cpp",
+  "tu": "match/ccini_class_techno_type_methods.cpp",
   "addr": "0x476EB0",
   "sym": "?GetTechnoType@CCINIClass@@QAEPAVTechnoTypeClass@@PBD0@Z",
   "len": "0xBA",
@@ -27438,7 +27438,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x4756F0",
   "sym": "?ReadMovie@CCINI_004756F0@@QAEHPBD0H@Z",
   "len": "0xa2",
@@ -27447,7 +27447,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x4757D0",
   "sym": "?FUN_004757D0@CCINI_004756F0@@QAEHPBD0H@Z",
   "len": "0x49",
@@ -27456,7 +27456,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x475820",
   "sym": "?FUN_00475820@CCINI_004756F0@@QAE_NPBD0I@Z",
   "len": "0x41",
@@ -27465,7 +27465,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x475870",
   "sym": "?FUN_00475870@CCINI_004756F0@@QAEHPBD0H@Z",
   "len": "0x4d",
@@ -27474,7 +27474,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x4758C0",
   "sym": "?WriteTheater@CCINI_004756F0@@QAE_NPBD0H@Z",
   "len": "0x29",
@@ -27483,7 +27483,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x4758F0",
   "sym": "?ReadTheme@CCINI_004756F0@@QAEHPBD0H@Z",
   "len": "0x53",
@@ -27492,7 +27492,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x475950",
   "sym": "?WriteTheme@CCINI_004756F0@@QAE_NPBD0H@Z",
   "len": "0x28",
@@ -27501,7 +27501,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x475980",
   "sym": "?FUN_00475980@CCINI_004756F0@@QAEHPBD0H@Z",
   "len": "0x4d",
@@ -27510,7 +27510,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x4759D0",
   "sym": "?WriteEdge@CCINI_004756F0@@QAE_NPBD0H@Z",
   "len": "0x1e",
@@ -27519,7 +27519,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+  "tu": "match/ccini_class_theater_theme_methods.cpp",
   "addr": "0x4759F0",
   "sym": "?FUN_004759F0@CCINI_004756F0@@QAEHPBD0H@Z",
   "len": "0x4d",
@@ -27528,7 +27528,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52A940",
   "sym": "?WriteTime@CCINI_0052A940@@QAE_NPBD0H@Z",
   "len": "0x91",
@@ -27537,7 +27537,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_triplet_readers_methods.cpp",
+  "tu": "match/ccini_class_triplet_readers_methods.cpp",
   "addr": "0x476340",
   "sym": "?ReadFloatTriple@CCINI_00476340@@QAE?AUFloatTriple@@PBD0ABU2@@Z",
   "len": "0xde",
@@ -27546,7 +27546,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_triplet_readers_methods.cpp",
+  "tu": "match/ccini_class_triplet_readers_methods.cpp",
   "addr": "0x476420",
   "sym": "?ReadIntTriple@CCINI_00476340@@QAE?AUIntTriple@@PBD0ABU2@@Z",
   "len": "0xce",
@@ -27555,7 +27555,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_armor_list_writer.cpp",
+  "tu": "match/ini_armor_list_writer.cpp",
   "addr": "0x475C70",
   "sym": "?WriteArmorList@IniFile_00475C70@@QAE_NPBD0UIntList_00475C70@@@Z",
   "len": "0xF7",
@@ -27564,7 +27564,7 @@
   "pct": 13.3
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x475D70",
   "sym": "?ReadIntegerList@CCINI_00475C70@@QAE?AUTypeListInt@@PBD0U2@@Z",
   "len": "0x1b9",
@@ -27573,7 +27573,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x475F30",
   "sym": "?WriteIntegerList@CCINI_00475C70@@QAE_NPBD0PBUTypeListInt@@@Z",
   "len": "0xee",
@@ -27582,7 +27582,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x476020",
   "sym": "?ReadTypeIdList@CCINI_00475C70@@QAE?AUTypeListInt@@PBD0U2@@Z",
   "len": "0x21c",
@@ -27591,7 +27591,7 @@
   "pct": 20.4
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x476240",
   "sym": "?WriteTypeIdList@CCINI_00475C70@@QAE_NPBD0PBUTypeListInt@@@Z",
   "len": "0xfa",
@@ -27600,7 +27600,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x528E00",
   "sym": "?FUN_00528E00@INIClass@@QAE_NPBD0PBG@Z",
   "len": "0xc7",
@@ -27609,7 +27609,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x526E80",
   "sym": "?WriteUUBlock@CCINI_00526E80@@QAE_NPBDPBXH@Z",
   "len": "0x130",
@@ -27618,7 +27618,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x474430",
   "sym": "?WriteCCFile@CCINI_00474430@@QAEHPAUFile_00474430@@_N@Z",
   "len": "0x102",
@@ -27627,7 +27627,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5275C0",
   "sym": "?WriteInteger@INIClass@@QAE_NPBD0HH@Z",
   "len": "0x7B",
@@ -27636,7 +27636,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/center_window_methods.cpp",
+  "tu": "match/center_window_methods.cpp",
   "addr": "0x777080",
   "sym": "?Unsorted_CenterWindowIn@@YIXPAUHWND__@@0@Z",
   "len": "0xda",
@@ -27645,7 +27645,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/com_create_and_init_methods.cpp",
+  "tu": "match/com_create_and_init_methods.cpp",
   "addr": "0x46B050",
   "sym": "?FUN_0046B050@@YIPAUTarget_0046B050@@HHHHHHH@Z",
   "len": "0x64",
@@ -27654,7 +27654,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/com_holder_create_instance.cpp",
+  "tu": "match/com_holder_create_instance.cpp",
   "addr": "0x41C250",
   "sym": "?CreateInstance@ComPtr_0041C250@@QAEJPBXPAUComUnknown_0041C250@@K@Z",
   "len": "0x88",
@@ -27672,7 +27672,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/copy_protection_methods.cpp",
+  "tu": "match/copy_protection_methods.cpp",
   "addr": "0x49F5C0",
   "sym": "?IsLauncherRunning@CopyProtection@@YG_NXZ",
   "len": "0x5B",
@@ -27681,7 +27681,7 @@
   "pct": 96
  },
  {
-  "tu": "match/platform/copy_protection_methods.cpp",
+  "tu": "match/copy_protection_methods.cpp",
   "addr": "0x49F620",
   "sym": "?NotifyLauncher@CopyProtection@@YG_NXZ",
   "len": "0x114",
@@ -27690,7 +27690,7 @@
   "pct": 98
  },
  {
-  "tu": "match/platform/copy_protection_methods.cpp",
+  "tu": "match/copy_protection_methods.cpp",
   "addr": "0x49F7A0",
   "sym": "?CheckProtectedData@CopyProtection@@YG_NXZ",
   "len": "0x108",
@@ -27699,7 +27699,7 @@
   "pct": 96
  },
  {
-  "tu": "match/platform/copy_protection_more_methods.cpp",
+  "tu": "match/copy_protection_more_methods.cpp",
   "addr": "0x49F740",
   "sym": "?DispatchLauncherMessage@CopyProtection@@YIXPAUMSG@1@@Z",
   "len": "0x58",
@@ -27708,7 +27708,7 @@
   "pct": 98
  },
  {
-  "tu": "match/platform/copy_protection_more_methods.cpp",
+  "tu": "match/copy_protection_more_methods.cpp",
   "addr": "0x49F8B0",
   "sym": "?ShutDown@CopyProtection@@YGXXZ",
   "len": "0x65",
@@ -27717,7 +27717,7 @@
   "pct": 99
  },
  {
-  "tu": "match/platform/debug_window_list_methods.cpp",
+  "tu": "match/debug_window_list_methods.cpp",
   "addr": "0x53E3C0",
   "sym": "?FUN_0053E3C0@@YIXPAX@Z",
   "len": "0x55",
@@ -27726,7 +27726,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/debug_window_list_methods.cpp",
+  "tu": "match/debug_window_list_methods.cpp",
   "addr": "0x53E420",
   "sym": "?FUN_0053E420@@YIXPAX@Z",
   "len": "0x43",
@@ -27735,7 +27735,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/file_system_load_whole_methods.cpp",
+  "tu": "match/file_system_load_whole_methods.cpp",
   "addr": "0x4A38D0",
   "sym": "?FileSystem_LoadWholeFileEx@@YIPAXPBDPA_N@Z",
   "len": "0x97",
@@ -27744,7 +27744,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AA90",
   "sym": "?FUN_0052AA90@INIClass@@SIXPAD@Z",
   "len": "0x22",
@@ -27753,7 +27753,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AAC0",
   "sym": "?FUN_0052AAC0@INIClass@@SI_NPAD@Z",
   "len": "0x30",
@@ -27762,7 +27762,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AAF0",
   "sym": "??1INIEntry@INIClass@@UAE@XZ",
   "len": "0x8f",
@@ -27771,7 +27771,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AB80",
   "sym": "??1INISection@INIClass@@UAE@XZ",
   "len": "0x15e",
@@ -27780,7 +27780,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52ACE0",
   "sym": "??0GenericList@@QAE@XZ",
   "len": "0x69",
@@ -27789,7 +27789,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AD50",
   "sym": "??_GINIEntry@INIClass@@UAEPAXI@Z",
   "len": "0xa3",
@@ -27798,7 +27798,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AE20",
   "sym": "??_G?$Node@PAUINISection@INIClass@@@@UAEPAXI@Z",
   "len": "0x45",
@@ -27807,7 +27807,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AEC0",
   "sym": "??0CRCEngine@@QAE@J@Z",
   "len": "0x13",
@@ -27816,7 +27816,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AF00",
   "sym": "??0INIEntry@INIClass@@QAE@PAD0PAUINIComment@@0HHH@Z",
   "len": "0x44",
@@ -27825,7 +27825,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AF50",
   "sym": "??0?$List@PAUINIEntry@INIClass@@@@QAE@XZ",
   "len": "0x6f",
@@ -27834,7 +27834,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_node_methods.cpp",
+  "tu": "match/ini_class_node_methods.cpp",
   "addr": "0x52AFC0",
   "sym": "??_G?$List@PAUINIEntry@INIClass@@@@UAEPAXI@Z",
   "len": "0xb3",
@@ -27843,7 +27843,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_lookup_parse_family_methods.cpp",
+  "tu": "match/ini_lookup_parse_family_methods.cpp",
   "addr": "0x0067B500",
   "sym": "?FUN_0067B500@GgIniReader@@QAIHPBD0H@Z",
   "len": "0x49",
@@ -27852,7 +27852,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_lookup_parse_family_methods.cpp",
+  "tu": "match/ini_lookup_parse_family_methods.cpp",
   "addr": "0x0067BAC0",
   "sym": "?FUN_0067BAC0@GgIniReader@@QAIHPBD0H@Z",
   "len": "0x49",
@@ -27861,7 +27861,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_lookup_parse_family_methods.cpp",
+  "tu": "match/ini_lookup_parse_family_methods.cpp",
   "addr": "0x0067BCE0",
   "sym": "?FUN_0067BCE0@GgIniReader@@QAIHPBD0H@Z",
   "len": "0x49",
@@ -27870,7 +27870,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_lookup_parse_family_methods.cpp",
+  "tu": "match/ini_lookup_parse_family_methods.cpp",
   "addr": "0x0067BD30",
   "sym": "?FUN_0067BD30@GgIniReader@@QAIHPBD0H@Z",
   "len": "0x49",
@@ -27879,7 +27879,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_lookup_parse_family_methods.cpp",
+  "tu": "match/ini_lookup_parse_family_methods.cpp",
   "addr": "0x0067BD80",
   "sym": "?FUN_0067BD80@GgIniReader@@QAIHPBD0H@Z",
   "len": "0x49",
@@ -27888,7 +27888,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/keyboard_ring_methods.cpp",
+  "tu": "match/keyboard_ring_methods.cpp",
   "addr": "0x54F5C0",
   "sym": "?IsKeyPressed@InputManagerClass@@QBE_NH@Z",
   "len": "0x46",
@@ -27897,7 +27897,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/keyboard_ring_methods.cpp",
+  "tu": "match/keyboard_ring_methods.cpp",
   "addr": "0x54F720",
   "sym": "?DoSomething@InputManagerClass@@QAEXXZ",
   "len": "0x69",
@@ -27915,7 +27915,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/mix_file_class.cpp",
+  "tu": "match/mix_file_class.cpp",
   "addr": "0x5B40B0",
   "sym": "?MixFileClass_Retrieve@@YIPAXPAD_N@Z",
   "len": "0x1b3",
@@ -27924,7 +27924,7 @@
   "pct": 62.1
  },
  {
-  "tu": "match/platform/raw_file_class_open_methods.cpp",
+  "tu": "match/raw_file_class_open_methods.cpp",
   "addr": "0x65CB50",
   "sym": "?Open@RawFileClass@@UAEHI@Z",
   "len": "0x9b",
@@ -27933,7 +27933,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_raw_methods.cpp",
+  "tu": "match/ccfile_raw_methods.cpp",
   "addr": "0x65CCE0",
   "sym": "?ReadBytes@RawFileClass@@UAEHPAXH@Z",
   "len": "0xEE",
@@ -27942,7 +27942,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_raw_methods.cpp",
+  "tu": "match/ccfile_raw_methods.cpp",
   "addr": "0x65D0D0",
   "sym": "?GetFileSize@RawFileClass@@UAEHXZ",
   "len": "0x76",
@@ -27951,7 +27951,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_raw_methods.cpp",
+  "tu": "match/ccfile_raw_methods.cpp",
   "addr": "0x65D240",
   "sym": "?SetFileTime@RawFileClass@@UAE_NK@Z",
   "len": "0x65",
@@ -27960,7 +27960,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/raw_file_class_write_bytes_methods.cpp",
+  "tu": "match/raw_file_class_write_bytes_methods.cpp",
   "addr": "0x65CDD0",
   "sym": "?WriteBytes@RawFileClass@@UAEHPAXH@Z",
   "len": "0x130",
@@ -27969,7 +27969,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/resource_query_methods.cpp",
+  "tu": "match/resource_query_methods.cpp",
   "addr": "0x4A3B40",
   "sym": "?Unsorted_GetResource@@YIPAXHPBD@Z",
   "len": "0x34",
@@ -27978,7 +27978,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/lcw_block_straw_get.cpp",
+  "tu": "match/lcw_block_straw_get.cpp",
   "addr": "0x552490",
   "sym": "?FUN_006C98E0@LCWStraw@@UAEHPAXH@Z",
   "len": "0x15A",
@@ -27987,7 +27987,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/cd_get_cd_number.cpp",
+  "tu": "match/cd_get_cd_number.cpp",
   "addr": "0x4A80D0",
   "sym": "?CD_GetCDNumber@@YIHHH@Z",
   "len": "0x196",
@@ -27996,7 +27996,7 @@
   "pct": 98
  },
  {
-  "tu": "match/platform/system_query_methods.cpp",
+  "tu": "match/system_query_methods.cpp",
   "addr": "0x6C8C40",
   "sym": "?Timer_GetTime@@YIHXZ",
   "len": "0xA",
@@ -28014,7 +28014,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/window_moving_methods.cpp",
+  "tu": "match/window_moving_methods.cpp",
   "addr": "0x776D80",
   "sym": "?OnWindowMoving@@YI_NPAUHWND__@@IPAURect_00776D80@@@Z",
   "len": "0x8f",
@@ -29832,7 +29832,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x5B45C0",
   "sym": "??_GBlowStraw@@UAEPAXI@Z",
   "len": "0x46",
@@ -35638,7 +35638,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_dtor.cpp",
+  "tu": "match/ini_class_dtor.cpp",
   "addr": "0x5256F0",
   "sym": "??1INIClass@@UAE@XZ",
   "len": "0xC8",
@@ -40399,7 +40399,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x4790E0",
   "sym": "?FUN_004790E0@CD_004790E0@@UAE_NH@Z",
   "len": "0x2C",
@@ -40480,7 +40480,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47ADA0",
   "sym": "?FUN_0047ADA0@@YIXI@Z",
   "len": "0x11",
@@ -40552,7 +40552,7 @@
   "name": "DynamicVectorClass<TeamClass*>::FindItemIndex"
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47aac0",
   "len": "0x43",
   "sym": "?FUN_0047AAC0@@YAHXZ",
@@ -40561,7 +40561,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47ad50",
   "len": "0x45",
   "sym": "?FUN_0047AD50@@YIXPAD@Z",
@@ -40570,7 +40570,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/ccini_class_type_list_methods.cpp",
   "addr": "0x474320",
   "sym": "?FUN_00474320@CCINI_004741F0@@QAEHPAUPipe_004741F0@@_N1@Z",
   "len": "0x10a",
@@ -40579,7 +40579,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47ADC0",
   "len": "0x42",
   "sym": "?FUN_0047ADC0@@YAXXZ",
@@ -50302,7 +50302,7 @@
  },
  {
   "addr": "0x438210",
-  "tu": "match/platform/blow_pipe_put_methods.cpp",
+  "tu": "match/blow_pipe_put_methods.cpp",
   "sym": "?FUN_006C98E0@BlowStraw@@UAEHPAXH@Z",
   "len": "0xe3",
   "status": "partial",
@@ -50311,7 +50311,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/hash_cache_straw_methods.cpp",
+  "tu": "match/hash_cache_straw_methods.cpp",
   "addr": "0x4A2030",
   "sym": "?FUN_00631D10@HashPipe_004A2030@@UAEHHH@Z",
   "len": "0x26",
@@ -50320,7 +50320,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/hash_cache_straw_methods.cpp",
+  "tu": "match/hash_cache_straw_methods.cpp",
   "addr": "0x4A20B0",
   "sym": "?FUN_006C98E0@HashStraw_004A20B0@@UAEHPAXH@Z",
   "len": "0x38",
@@ -50329,7 +50329,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2780",
   "sym": "?FUN_006C98E0@CacheStraw@@UAEHPAXH@Z",
   "len": "0x93",
@@ -50383,7 +50383,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x5523E0",
   "sym": "??0LCWStraw@@QAE@W4CompControl@0@H@Z",
   "len": "0x67",
@@ -50392,7 +50392,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/lcw_uncompress.cpp",
+  "tu": "match/lcw_uncompress.cpp",
   "addr": "0x552640",
   "sym": "?LCW_Uncompress@@YAHPBXPAX@Z",
   "len": "0x1e2",
@@ -50401,7 +50401,7 @@
   "pct": 25.0
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x55C2B0",
   "sym": "??0LZOPipe@@QAE@W4CompControl@0@H@Z",
   "len": "0x57",
@@ -50410,7 +50410,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/compression_straw_ctors.cpp",
+  "tu": "match/compression_straw_ctors.cpp",
   "addr": "0x55C720",
   "sym": "??0LZOStraw@@QAE@W4CompControl@0@H@Z",
   "len": "0x5b",
@@ -50464,7 +50464,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x632CB0",
   "sym": "??0PKPipe@@QAE@W4PipeDirection@0@PAVStraw@@@Z",
   "len": "0x53",
@@ -50473,7 +50473,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x632F30",
   "sym": "?FUN_00632F30@PKPipe@@QBEHXZ",
   "len": "0x28",
@@ -50482,7 +50482,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x632F60",
   "sym": "?FUN_00632F60@PKPipe@@QBEHXZ",
   "len": "0x27",
@@ -50491,7 +50491,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x632FE0",
   "sym": "?FUN_00632FE0@PKPipe@@UAEXPAVPipe@@@Z",
   "len": "0xd",
@@ -50500,7 +50500,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x633050",
   "sym": "??0PKStraw@@QAE@W4PipeDirection@0@PAVStraw@@@Z",
   "len": "0x62",
@@ -50509,7 +50509,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x633110",
   "sym": "?FUN_00633110@PKStraw@@QAEXPAVPKey_00632740@@@Z",
   "len": "0x20",
@@ -50518,7 +50518,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x633300",
   "sym": "?FUN_00633300@PKStraw@@QBEHXZ",
   "len": "0x28",
@@ -50527,7 +50527,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x633330",
   "sym": "?FUN_00633330@PKStraw@@QBEHXZ",
   "len": "0x27",
@@ -50536,7 +50536,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "tu": "match/pk_pipe_straw_methods.cpp",
   "addr": "0x633360",
   "sym": "?FUN_00633360@PKStraw@@UAEXPAVStraw@@@Z",
   "len": "0xd",
@@ -50707,7 +50707,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/buffer_pipe_straw_methods.cpp",
+  "tu": "match/buffer_pipe_straw_methods.cpp",
   "addr": "0x7BA3C0",
   "sym": "?FUN_00631D10@BufferPipe@@UAEHHH@Z",
   "len": "0x58",
@@ -50716,7 +50716,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/buffer_pipe_straw_methods.cpp",
+  "tu": "match/buffer_pipe_straw_methods.cpp",
   "addr": "0x7BA4D0",
   "sym": "?FUN_006C98E0@BufferStraw@@UAEHPAXH@Z",
   "len": "0x58",
@@ -57214,7 +57214,7 @@
   "pct": 29.0
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x478BA0",
   "sym": "?Update@CCToolTip@@UAE_NAAUToolTipManagerData@@@Z",
   "len": "0x20E",
@@ -57223,7 +57223,7 @@
   "pct": 99.0
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x478DB0",
   "sym": "?MarkToRedraw@CCToolTip@@UAEXAAUToolTipManagerData@@@Z",
   "len": "0x5F",
@@ -57232,7 +57232,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x478E10",
   "sym": "?Draw@CCToolTip@@UAEX_N@Z",
   "len": "0x18",
@@ -57241,7 +57241,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x478E30",
   "sym": "?DrawText@CCToolTip@@UAEXAAUToolTipManagerData@@@Z",
   "len": "0x21B",
@@ -57250,7 +57250,7 @@
   "pct": 2.9
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479050",
   "sym": "?GetToolTipText@CCToolTip@@UAEPAGI@Z",
   "len": "0x26",
@@ -59113,7 +59113,7 @@
   "pct": 7.3
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479740",
   "sym": "?FUN_00479740@CDDriveControl@@QAEXD@Z",
   "len": "0x1B5",
@@ -59122,7 +59122,7 @@
   "pct": 9.0
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479BA0",
   "sym": "?FUN_00479ba0@CDDriveControl@@QAE_ND@Z",
   "len": "0x1BE",
@@ -59131,7 +59131,7 @@
   "pct": 56.6
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479D60",
   "sym": "?FUN_00479d60@CDDriveControl@@QAE_ND@Z",
   "len": "0x181",
@@ -59140,7 +59140,7 @@
   "pct": 70.4
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479EF0",
   "sym": "?FUN_00479ef0@CDDriveControl@@QAE_ND@Z",
   "len": "0x181",
@@ -59149,7 +59149,7 @@
   "pct": 70.4
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47A3F0",
   "sym": "?FUN_0047a3f0@CDDriveControl@@QAE_NPAXD@Z",
   "len": "0x16E",
@@ -59158,7 +59158,7 @@
   "pct": 81.2
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47A6F0",
   "sym": "?FUN_0047a6f0@CDDriveControl@@SG_NPAV1@PAXEEF@Z",
   "len": "0x224",
@@ -59167,7 +59167,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47AF70",
   "sym": "?FUN_0047af70@@YI_NPAD@Z",
   "len": "0x14B",
@@ -59266,7 +59266,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x525430",
   "sym": "?FUN_00525430@@YI?AUTypeListInt@@PAVCCINI_00475C70@@PBD1U1@@Z",
   "len": "0x1B7",
@@ -59275,7 +59275,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x527C10",
   "sym": "?WriteIntQuad@INIClass@@QAE_NPBD0ABUIniIntQuad@@@Z",
   "len": "0x48",
@@ -59284,7 +59284,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x529BF0",
   "sym": "?WriteIntTriple@INIClass@@QAE_NPBD0ABUIniIntTriple@@@Z",
   "len": "0x44",
@@ -59293,7 +59293,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52A040",
   "sym": "?WriteFloatTriple@INIClass@@QAE_NPBD0ABUIniFloatTriple@@@Z",
   "len": "0x53",
@@ -59302,7 +59302,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52A4D0",
   "sym": "?FindEntry@INISectionEntryView@@QAEPAUINIEntry@INIClass@@PBD@Z",
   "len": "0x131",
@@ -59311,7 +59311,7 @@
   "pct": 37.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52A610",
   "sym": "?WriteKeyBlocks@CCINIClass@@QAE_NABVIniKeyBlockSource@@@Z",
   "len": "0x5A",
@@ -59753,7 +59753,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661350",
   "sym": "?Difference@ColorRGB_00661350@@QBEHABU1@@Z",
   "len": "0x46",
@@ -59762,7 +59762,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x6613A0",
   "sym": "?FUN_006613A0@RGBClass@@QBE?AVHSVClass@@XZ",
   "len": "0x141",
@@ -59771,7 +59771,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661530",
   "sym": "?FUN_00661530@ZeroRunCodec_00661530@@QAEHPBEPAEH@Z",
   "len": "0x5F",
@@ -59780,7 +59780,7 @@
   "pct": 8.5
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x661590",
   "sym": "?Encode@ZeroRunCodec_00661530@@QAEHPBEPAEH@Z",
   "len": "0x3E",
@@ -59789,7 +59789,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x6615D0",
   "sym": "?Decode@ZeroRunCodec_00661530@@QAEHPBEPAEH@Z",
   "len": "0x62",
@@ -70964,7 +70964,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BED20",
   "sym": "?FUN_005BED20@@YIXPBDHHHH@Z",
   "len": "0x19",
@@ -70973,7 +70973,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BED40",
   "sym": "?Play_Movie@@YIXPBDHHHHH@Z",
   "len": "0x43b",
@@ -70982,7 +70982,7 @@
   "pct": 9.6
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF180",
   "sym": "?FUN_005BF180@@YIXPBD@Z",
   "len": "0xde",
@@ -70991,7 +70991,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF260",
   "sym": "?FUN_005BF260@@YIXHHHHH@Z",
   "len": "0x45",
@@ -71000,7 +71000,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF2B0",
   "sym": "?FUN_005BF2B0@@YIXPBD_N@Z",
   "len": "0xa3",
@@ -71009,7 +71009,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF360",
   "sym": "?FUN_005BF360@@YIXPAUObj_005BF360@@@Z",
   "len": "0x24",
@@ -71018,7 +71018,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF390",
   "sym": "?FUN_005BF390@@YIXH_N@Z",
   "len": "0xbd",
@@ -71027,7 +71027,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF450",
   "sym": "?FUN_005BF450@@YIXXZ",
   "len": "0xa8",
@@ -71036,7 +71036,7 @@
   "pct": 18.4
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF530",
   "sym": "?FUN_005BF530@@YIXXZ",
   "len": "0x45",
@@ -71045,7 +71045,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_play_methods.cpp",
+  "tu": "match/movie_play_methods.cpp",
   "addr": "0x5BF580",
   "sym": "?FUN_005BF580@@YIXXZ",
   "len": "0x40",
@@ -71180,7 +71180,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5BF850",
   "sym": "?FUN_005BF850@@YIHXZ",
   "len": "0x5d",
@@ -71189,7 +71189,7 @@
   "pct": 86.7
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5BF8B0",
   "sym": "?FUN_005BF8B0@@YIXXZ",
   "len": "0xd",
@@ -71198,7 +71198,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5BF950",
   "sym": "?FUN_005BF950@@YIXXZ",
   "len": "0x149",
@@ -71207,7 +71207,7 @@
   "pct": 9.3
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5BFF00",
   "sym": "?FUN_005BFF00@@YIXPAUObj_005C01A0@@@Z",
   "len": "0x54",
@@ -71216,7 +71216,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C01A0",
   "sym": "??0Obj_005C01A0@@QAE@XZ",
   "len": "0x48",
@@ -71225,7 +71225,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C01F0",
   "sym": "??1Obj_005C01A0@@QAE@XZ",
   "len": "0x46",
@@ -71234,7 +71234,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0240",
   "sym": "??0VQMovieHandle@@QAE@PAUObj_005C01A0@@@Z",
   "len": "0x31",
@@ -71243,7 +71243,7 @@
   "pct": 87.5
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0280",
   "sym": "?vt_entry_0C@VQMovieHandle@@UAEX_N@Z",
   "len": "0x33",
@@ -71252,7 +71252,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C02C0",
   "sym": "?vt_entry_10@VQMovieHandle@@UAEXXZ",
   "len": "0x1f",
@@ -71261,7 +71261,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C02E0",
   "sym": "?vt_entry_14@VQMovieHandle@@UAE_NXZ",
   "len": "0x4",
@@ -71270,7 +71270,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C02F0",
   "sym": "?vt_entry_04@VQMovieHandle@@UAE_NXZ",
   "len": "0x40",
@@ -71279,7 +71279,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0330",
   "sym": "?vt_entry_08@VQMovieHandle@@UAEXXZ",
   "len": "0x1",
@@ -71288,7 +71288,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0340",
   "sym": "?vt_entry_18@VQMovieHandle@@UAEXHH@Z",
   "len": "0x36",
@@ -71297,7 +71297,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0380",
   "sym": "?vt_entry_20@VQMovieHandle@@UAEXPAX@Z",
   "len": "0x13",
@@ -71306,7 +71306,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C03A0",
   "sym": "?vt_entry_1C@VQMovieHandle@@UAEXH@Z",
   "len": "0x20",
@@ -71315,7 +71315,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C03C0",
   "sym": "?vt_entry_24@VQMovieHandle@@UAEHXZ",
   "len": "0x6",
@@ -71324,7 +71324,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C03D0",
   "sym": "?vt_entry_28@VQMovieHandle@@UAEXXZ",
   "len": "0xb1",
@@ -71333,7 +71333,7 @@
   "pct": 29.3
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0490",
   "sym": "??1VQMovieHandle@@UAE@XZ",
   "len": "0x71",
@@ -71342,7 +71342,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0510",
   "sym": "??0BinkMovieHandle@@QAE@PAUObj_00432700@@@Z",
   "len": "0x27",
@@ -71351,7 +71351,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0540",
   "sym": "?vt_entry_0C@BinkMovieHandle@@UAEX_N@Z",
   "len": "0x10",
@@ -71360,7 +71360,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0550",
   "sym": "?vt_entry_10@BinkMovieHandle@@UAEXXZ",
   "len": "0x19",
@@ -71369,7 +71369,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0570",
   "sym": "?vt_entry_14@BinkMovieHandle@@UAE_NXZ",
   "len": "0x8",
@@ -71378,7 +71378,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0580",
   "sym": "?vt_entry_04@BinkMovieHandle@@UAE_NXZ",
   "len": "0x8",
@@ -71387,7 +71387,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0590",
   "sym": "?vt_entry_08@BinkMovieHandle@@UAEXXZ",
   "len": "0x8",
@@ -71396,7 +71396,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C05A0",
   "sym": "?vt_entry_18@BinkMovieHandle@@UAEXHH@Z",
   "len": "0x15",
@@ -71405,7 +71405,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C05C0",
   "sym": "?vt_entry_20@BinkMovieHandle@@UAEXPAX@Z",
   "len": "0x10",
@@ -71414,7 +71414,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C05D0",
   "sym": "?vt_entry_1C@BinkMovieHandle@@UAEXH@Z",
   "len": "0x10",
@@ -71423,7 +71423,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C05E0",
   "sym": "?vt_entry_24@BinkMovieHandle@@UAEHXZ",
   "len": "0x8",
@@ -71432,7 +71432,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C05F0",
   "sym": "?vt_entry_28@BinkMovieHandle@@UAEXXZ",
   "len": "0x8",
@@ -71441,7 +71441,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0600",
   "sym": "??1BinkMovieHandle@@UAE@XZ",
   "len": "0x2a",
@@ -71450,7 +71450,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0630",
   "sym": "??1MovieHandle@@UAE@XZ",
   "len": "0x7",
@@ -71459,7 +71459,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0640",
   "sym": "?FUN_005C0640@@YI_NPBDPADH@Z",
   "len": "0x18a",
@@ -71468,7 +71468,7 @@
   "pct": 71.8
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C07D0",
   "sym": "?FUN_005C07D0@@YIPAVMovieHandle@@PBDPAUSurface_005C07D0@@PAURectangleStruct@@@Z",
   "len": "0x1a3",
@@ -71477,7 +71477,7 @@
   "pct": 98.6
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0980",
   "sym": "?FUN_005C0980@@YIHXZ",
   "len": "0x1b",
@@ -71486,7 +71486,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C09A0",
   "sym": "?FUN_005C09A0@@YIXXZ",
   "len": "0x10",
@@ -71495,7 +71495,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C09B0",
   "sym": "??_GVQMovieHandle@@UAEPAXI@Z",
   "len": "0x7c",
@@ -71504,7 +71504,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/movie_handle_class.cpp",
+  "tu": "match/movie_handle_class.cpp",
   "addr": "0x5C0A30",
   "sym": "??_GBinkMovieHandle@@UAEPAXI@Z",
   "len": "0x3f",
@@ -79413,7 +79413,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660AD0",
   "sym": "?FUN_00660AD0@@YIHPBH@Z",
   "len": "0xc",
@@ -79422,7 +79422,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660AE0",
   "sym": "?FUN_00660AE0@@YIHPBH@Z",
   "len": "0xc",
@@ -79431,7 +79431,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660AF0",
   "sym": "?FUN_00660AF0@@YIHPBH@Z",
   "len": "0xc",
@@ -82959,7 +82959,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_buffer_io_methods.cpp",
+  "tu": "match/ccfile_buffer_io_methods.cpp",
   "addr": "0x431F30",
   "sym": "?HasHandle@BufferIOFileClass@@UAE_NXZ",
   "len": "0x1d",
@@ -83220,7 +83220,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
+  "tu": "match/ccfile_class.cpp",
   "addr": "0x473CD0",
   "sym": "?HasHandle@CCFileClass@@UAE_NXZ",
   "len": "0xf",
@@ -83229,7 +83229,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/trivial_tu047_methods.cpp",
+  "tu": "match/trivial_tu047_methods.cpp",
   "addr": "0x476EA0",
   "sym": "?FUN_00476EA0@Obj_00476EA0@@QAEXXZ",
   "len": "0x5",
@@ -83238,7 +83238,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x4790A0",
   "sym": "?FUN_004790A0@Obj_004790A0@@QAEXXZ",
   "len": "0xd",
@@ -83247,7 +83247,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479700",
   "sym": "_$E2",
   "len": "0x1",
@@ -83256,7 +83256,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479730",
   "sym": "?FUN_00479730@@YAXXZ",
   "len": "0x1",
@@ -83463,7 +83463,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/trivial_tu058_methods.cpp",
+  "tu": "match/trivial_tu058_methods.cpp",
   "addr": "0x49F9B0",
   "sym": "?FUN_0049F9B0@Obj_0049F9B0@@QAEPAU1@XZ",
   "len": "0x1b",
@@ -84228,7 +84228,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5247A0",
   "sym": "?FUN_005247A0@Obj_005247A0@@QBEHXZ",
   "len": "0x3",
@@ -84237,7 +84237,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5247B0",
   "sym": "?FUN_005247B0@Obj_005247B0@@QAEXXZ",
   "len": "0x5",
@@ -84246,7 +84246,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5247C0",
   "sym": "?FUN_005247C0@Obj_005247C0@@QAEXXZ",
   "len": "0x5",
@@ -84255,7 +84255,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x524D40",
   "sym": "?FUN_00524D40@Obj_00524D40@@QBEHXZ",
   "len": "0x6",
@@ -84264,7 +84264,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x524D50",
   "sym": "?FUN_00524D50@Obj_00524D50@@QBEHXZ",
   "len": "0x6",
@@ -84273,7 +84273,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x524D60",
   "sym": "?FUN_00524D60@Obj_00524D60@@QBEHXZ",
   "len": "0x7",
@@ -84282,7 +84282,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x524EC0",
   "sym": "?FUN_00524EC0@Obj_00524EC0@@QAEPAU1@XZ",
   "len": "0x3",
@@ -84291,7 +84291,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x526950",
   "sym": "?FUN_00526950@Obj_00526950@@QBEHXZ",
   "len": "0x4",
@@ -84525,7 +84525,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/trivial_tu113_methods.cpp",
+  "tu": "match/trivial_tu113_methods.cpp",
   "addr": "0x54EE50",
   "sym": "?FUN_0054EE50@@YAXXZ",
   "len": "0x1",
@@ -84534,7 +84534,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/trivial_tu113_methods.cpp",
+  "tu": "match/trivial_tu113_methods.cpp",
   "addr": "0x54EFF0",
   "sym": "?FUN_0054EFF0@@YI_NH@Z",
   "len": "0x9",
@@ -86163,7 +86163,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x65FA60",
   "sym": "?FUN_0065FA60@@YAXXZ",
   "len": "0x1",
@@ -86172,7 +86172,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x65FB60",
   "sym": "?FUN_0065FB60@@YIXPAUObj_0065FB60@@H@Z",
   "len": "0xc",
@@ -89502,7 +89502,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2190",
   "sym": "_$E5",
   "len": "0x13",
@@ -89511,7 +89511,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A21B0",
   "sym": "_$E8",
   "len": "0x13",
@@ -89520,7 +89520,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2330",
   "sym": "_$E38",
   "len": "0x1a",
@@ -96102,7 +96102,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_enum_reader_pair_methods.cpp",
+  "tu": "match/ini_enum_reader_pair_methods.cpp",
   "addr": "0x476FC0",
   "sym": "?ReadEnum_00476FC0@Ini_00476FC0@@QAEHPBD0H@Z",
   "len": "0x5f",
@@ -96120,7 +96120,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ini_enum_reader_pair_methods.cpp",
+  "tu": "match/ini_enum_reader_pair_methods.cpp",
   "addr": "0x477050",
   "sym": "?ReadEnum_00477050@Ini_00476FC0@@QAEHPBD0H@Z",
   "len": "0x5f",
@@ -96588,7 +96588,7 @@
   "pct": 95.6
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5247D0",
   "sym": "?FUN_005247D0@Obj_005247D0@@QAE?AUTriple_005247D0@@PBU2@@Z",
   "len": "0x61",
@@ -96597,7 +96597,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x524F20",
   "sym": "?FUN_00524F20@Vec_00524F20@@QAEPAU1@ABU1@@Z",
   "len": "0x84",
@@ -96606,7 +96606,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5289E0",
   "sym": "?FUN_005289E0@Obj_005289E0@@QAEXHHH@Z",
   "len": "0x2c",
@@ -96615,7 +96615,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x528ED0",
   "sym": "?FUN_00528ED0@Obj_00528ED0@@QAEXHHH@Z",
   "len": "0x2c",
@@ -97344,7 +97344,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x65FD50",
   "sym": "?FUN_0065FD50@@YIXXZ",
   "len": "0x74",
@@ -97362,7 +97362,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x660B00",
   "sym": "?FUN_00660B00@@YIXXZ",
   "len": "0x74",
@@ -101703,7 +101703,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x65F7D0",
   "sym": "_$E6",
   "len": "0x13",
@@ -101712,7 +101712,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/tu196_random_straw.cpp",
+  "tu": "match/tu196_random_straw.cpp",
   "addr": "0x65F7F0",
   "sym": "_$E9",
   "len": "0x13",
@@ -102632,7 +102632,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65CA00",
   "sym": "??1RawFileClass@@UAE@XZ",
   "len": "0x67",
@@ -102641,7 +102641,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65CA80",
   "sym": "??0RawFileClass@@QAE@PBD@Z",
   "len": "0x31",
@@ -102650,7 +102650,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/ccfile_class_open_methods.cpp",
   "addr": "0x65D3A0",
   "sym": "??_GRawFileClass@@UAEPAXI@Z",
   "len": "0x7c",
@@ -102794,7 +102794,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x528F00",
   "sym": "?FUN_00528F00@INIClass@@QAEIPBD0PBGPAGH@Z",
   "len": "0x25d",
@@ -102803,7 +102803,7 @@
   "pct": 0.5
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52A9E0",
   "sym": "?FUN_0052A9E0@@YIPADPAEPAH11@Z",
   "len": "0xa1",
@@ -118969,7 +118969,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2160",
   "sym": "_$E2",
   "len": "0x28",
@@ -118978,7 +118978,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A21D0",
   "sym": "_$E11",
   "len": "0x13",
@@ -118987,7 +118987,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A21F0",
   "sym": "_$E14",
   "len": "0x13",
@@ -118996,7 +118996,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2210",
   "sym": "_$E17",
   "len": "0x13",
@@ -119005,7 +119005,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2230",
   "sym": "_$E20",
   "len": "0x31",
@@ -119014,7 +119014,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2270",
   "sym": "_$E23",
   "len": "0x21",
@@ -119023,7 +119023,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A22A0",
   "sym": "_$E26",
   "len": "0x2c",
@@ -119032,7 +119032,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A22D0",
   "sym": "_$E29",
   "len": "0x27",
@@ -119041,7 +119041,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2300",
   "sym": "_$E32",
   "len": "0xf",
@@ -119050,7 +119050,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Credits.cpp",
+  "tu": "match/Credits.cpp",
   "addr": "0x4A2310",
   "sym": "_$E35",
   "len": "0x12",
@@ -135727,7 +135727,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/keyboard_ring_methods.cpp",
+  "tu": "match/keyboard_ring_methods.cpp",
   "addr": "0x54F000",
   "sym": "?FUN_0054F000@InputManagerClass@@QAEGXZ",
   "len": "0x44",
@@ -135736,7 +135736,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/keyboard_ring_methods.cpp",
+  "tu": "match/keyboard_ring_methods.cpp",
   "addr": "0x54F6F0",
   "sym": "?FUN_0054F6F0@InputManagerClass@@QAEXXZ",
   "len": "0x23",
@@ -137095,7 +137095,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47A9D0",
   "sym": "??0CDFileClass@@QAE@PBD@Z",
   "len": "0x24",
@@ -137104,7 +137104,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47AA00",
   "sym": "??0CDFileClass@@QAE@ABVWstring@@@Z",
   "len": "0x29",
@@ -137113,7 +137113,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x47AA30",
   "sym": "??0CDFileClass@@QAE@XZ",
   "len": "0x16",
@@ -140371,7 +140371,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479900",
   "sym": "?FUN_00479900@@YGPAXD@Z",
   "len": "0xa1",
@@ -140380,7 +140380,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x4799D0",
   "sym": "?FUN_004799D0@@YG_NPAX@Z",
   "len": "0x65",
@@ -140389,7 +140389,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479A40",
   "sym": "?FUN_00479A40@@YG_NPAX@Z",
   "len": "0x65",
@@ -140398,7 +140398,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479AB0",
   "sym": "?FUN_00479AB0@@YG_NPAX@Z",
   "len": "0x45",
@@ -140407,7 +140407,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x479B00",
   "sym": "?FUN_00479B00@@YG_NPAX_N@Z",
   "len": "0x50",
@@ -141082,7 +141082,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x527640",
   "sym": "?WriteInteger@INIClass@@QAE_NABVWstring@@0HH@Z",
   "len": "0x90",
@@ -141091,7 +141091,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x527C60",
   "sym": "?WriteIntQuad@INIClass@@QAE_NABVWstring@@0PBH@Z",
   "len": "0x5a",
@@ -141100,7 +141100,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x528170",
   "sym": "?FUN_00528170@INIClass@@QAE_NPBD0H@Z",
   "len": "0x46",
@@ -141109,7 +141109,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5281C0",
   "sym": "?FUN_005281C0@INIClass@@QAE_NABVWstring@@0H@Z",
   "len": "0x5b",
@@ -141118,7 +141118,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x528600",
   "sym": "?WriteDouble@INIClass@@QAE_NABVWstring@@0N@Z",
   "len": "0x60",
@@ -141127,7 +141127,7 @@
   "pct": 93.3
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5295A0",
   "sym": "?WriteBool@INIClass@@QAE_NABVWstring@@0_N@Z",
   "len": "0x46",
@@ -141136,7 +141136,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x529820",
   "sym": "?Write2Integers@INIClass@@QAE_NABVWstring@@0PBH@Z",
   "len": "0x52",
@@ -141145,7 +141145,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x529C40",
   "sym": "?WriteIntTriple@INIClass@@QAE_NABVWstring@@0PBH@Z",
   "len": "0x56",
@@ -141154,7 +141154,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x52A0A0",
   "sym": "?WriteFloatTriple@INIClass@@QAE_NABVWstring@@0PBM@Z",
   "len": "0x65",
@@ -141163,7 +141163,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x527B90",
   "sym": "?FUN_00527B90@INIClass@@QAE_NPBD0ABU_GUID@@@Z",
   "len": "0x7e",
@@ -141172,7 +141172,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/Ini.cpp",
   "addr": "0x5285B0",
   "sym": "?WriteDouble@INIClass@@QAE_NPBD0N@Z",
   "len": "0x4b",
@@ -143008,7 +143008,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/CD.cpp",
+  "tu": "match/CD.cpp",
   "addr": "0x4796E0",
   "sym": "_$E4",
   "len": "0x1e",
@@ -143107,7 +143107,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/wol_options_005175f0.cpp",
+  "tu": "match/wol_options_005175f0.cpp",
   "addr": "0x5175F0",
   "sym": "?FUN_005175F0@@YI_NPAUWolOptionValue_005175F0@@@Z",
   "len": "0xb0",
@@ -143116,7 +143116,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/keyboard_ring_methods.cpp",
+  "tu": "match/keyboard_ring_methods.cpp",
   "addr": "0x54F2F0",
   "sym": "?FUN_0054F2F0@InputManagerClass@@QAE_NHGG_N@Z",
   "len": "0xd2",
@@ -143125,7 +143125,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/keyboard_ring_methods.cpp",
+  "tu": "match/keyboard_ring_methods.cpp",
   "addr": "0x54F3D0",
   "sym": "?FUN_0054F3D0@InputManagerClass@@QAE_ND@Z",
   "len": "0x7f",
@@ -144043,7 +144043,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_stream_wrappers.cpp",
+  "tu": "match/ini_class_stream_wrappers.cpp",
   "addr": "0x525A10",
   "sym": "?FUN_00525A10@INIClass@@QAEHPAVFileClass@@K@Z",
   "len": "0x4b",
@@ -144052,7 +144052,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_class_stream_wrappers.cpp",
+  "tu": "match/ini_class_stream_wrappers.cpp",
   "addr": "0x526420",
   "sym": "?FUN_00526420@INIClass@@QAEHPAVFileClass@@@Z",
   "len": "0x46",
@@ -145483,7 +145483,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/mix_file_class_lookup_methods.cpp",
+  "tu": "match/mix_file_class_lookup_methods.cpp",
   "addr": "0x5B4350",
   "sym": "?FUN_005B4350@@YIPAVMixFileClass@@PBD@Z",
   "len": "0x8a",
@@ -145492,7 +145492,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/mix_file_class_lookup_methods.cpp",
+  "tu": "match/mix_file_class_lookup_methods.cpp",
   "addr": "0x5B3E90",
   "sym": "?FUN_005B3E90@@YI_NPBD@Z",
   "len": "0xbc",
@@ -145501,7 +145501,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/mix_file_class_lookup_methods.cpp",
+  "tu": "match/mix_file_class_lookup_methods.cpp",
   "addr": "0x5B4270",
   "sym": "?FUN_005B4270@@YIXPAD@Z",
   "len": "0x9d",

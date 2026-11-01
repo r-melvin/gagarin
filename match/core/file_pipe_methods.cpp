@@ -3,7 +3,7 @@
 // Paired probes: /GX adds EH setup to the ordinary destructor; no-GX
 // reproduces its complete span. The other three bodies match both sets.
 #include "../_layout/file_pipe.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 // LIBRARY: GAMEMD 0x7C8B3D -- operator delete(void*).
 

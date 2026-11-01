@@ -7,8 +7,8 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "platform/ccfile_class.h"
-#include "platform/ccini_class_methods.h"
+#include "ccfile_class.h"
+#include "ccini_class_methods.h"
 
 extern CCINIClass DAT_008870C0;
 // GLOBAL: GAMEMD 0xAC10C8

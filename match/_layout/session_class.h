@@ -12,7 +12,7 @@
 #include "session_record.h"
 #include "elapsed_timer.h"
 #include "game_mode_options.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 #include "../ui/message_list_class_methods.h"
 #include "score_entry_00a8d1fc.h"
 class PhoneEntryClass;

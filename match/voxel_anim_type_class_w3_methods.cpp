@@ -14,7 +14,7 @@
 #include <string.h>
 #include "_layout/techno_type_class.h"
 #include "_layout/voxel_resource_data.h"
-#include "platform/ccfile_class.h"
+#include "ccfile_class.h"
 #include "core/rules_class_ini_support.h"
 
 // GLOBAL: GAMEMD 0x7E2800

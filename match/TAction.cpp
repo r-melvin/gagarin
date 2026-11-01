@@ -58,7 +58,7 @@
 #include "_layout/house_type_class.h"
 #include "_layout/infantry_class.h"
 #include "_layout/building_light_class.h"
-#include "platform/input_manager_class_methods.h"
+#include "input_manager_class_methods.h"
 #include "ui/input_controls/mouse_ww_mouse_class.h"
 
 // GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.

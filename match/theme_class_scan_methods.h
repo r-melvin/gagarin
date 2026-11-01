@@ -14,7 +14,7 @@
 //   divide by 1000 through __aulldiv 0x7C9380. The ThemeControl and
 //   ThemeClass offsets match the committed model in
 //   match/_layout/theme_class.h and the CCFileClass offsets
-//   match match/platform/ccfile_class_open_mix_methods.h. Names
+//   match match/ccfile_class_open_mix_methods.h. Names
 //   cross-checked against YRpp.
 #ifndef GG_MATCH_AUDIO_THEME_CLASS_SCAN_METHODS_H
 #define GG_MATCH_AUDIO_THEME_CLASS_SCAN_METHODS_H

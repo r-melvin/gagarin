@@ -3,7 +3,7 @@
 // Native 0x755DB0..0x756491: file blocks, optional palette loading, record
 // transforms, bounding corners and cleanup on every checked short read.
 #include "../_layout/voxel_resource_data.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 #include "voxel_shade_palette.h"
 #include <new.h>
 

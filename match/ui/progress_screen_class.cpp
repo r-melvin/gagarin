@@ -11,7 +11,7 @@
 
 #include "progress_screen_class.h"
 #include "../wwlib/surface/surface_class.h"
-#include "../platform/file_system_load_whole_methods.h"
+#include "../file_system_load_whole_methods.h"
 
 // FUNCTION: GAMEMD 0x52FF90 (decl; reloc)
 void __fastcall FUN_0052FF90(const char* name, bool refresh);

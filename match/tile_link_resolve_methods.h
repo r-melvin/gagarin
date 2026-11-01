@@ -20,7 +20,7 @@ struct Entry_00465CC0
 GG_STATIC_ASSERT(offsetof(Entry_00465CC0, Name) == 0x24);
 GG_STATIC_ASSERT(offsetof(Entry_00465CC0, ToTile) == 0xE58);
 
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 
 // GLOBAL: GAMEMD 0xA83C6C — the entry array.
 extern Entry_00465CC0** DAT_00A83C6C;

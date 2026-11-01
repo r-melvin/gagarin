@@ -10,7 +10,7 @@
 #include "team_type_class_methods.h"
 #include "team_type_class_instance_methods.h"
 #include "team_type_class_taskforce_methods.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 
 // FUNCTION: GAMEMD 0x510F60 (decl; reloc) -- is this country index a pseudo-house code?
 bool __fastcall FUN_00510F60(int code);

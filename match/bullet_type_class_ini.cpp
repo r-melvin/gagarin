@@ -5,7 +5,7 @@
 #include "bullet_type_class.h"
 #include "weapon_type_class.h"
 #include "_layout/anim_type_class.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 
 // GLOBAL: GAMEMD 0x887180 -- art INI selected by native immediate receivers.
 extern CCINIClass DAT_00887180;

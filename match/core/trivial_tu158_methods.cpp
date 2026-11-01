@@ -5,7 +5,7 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu158_methods.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 // GLOBAL: GAMEMD 0x8870C0 -- existing canonical INI owner.
 extern CCINIClass DAT_008870C0;
 extern const char STR_0082642C[]; // STRING: GAMEMD 0x82642C (decl; reloc)

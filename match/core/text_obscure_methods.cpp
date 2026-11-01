@@ -3,7 +3,7 @@
 
 #include <ctype.h>
 #include <string.h>
-#include "../platform/ccini_class_crc_methods.h"
+#include "../ccini_class_crc_methods.h"
 
 // Bit masks applied per byte position (index & 7): set, then cleared.
 // GLOBAL: GAMEMD 0x00832c0c

@@ -4,7 +4,7 @@
 // (0x40E340) and GenericList::GenericList (0x52ACE0) for translation units whose
 // retail code expands them in place (the compiler's inline decision differs
 // per call site in retail; the out-of-line bodies live in
-// match/platform/ini_class_node_methods.cpp). Include after generic_list.h.
+// match/ini_class_node_methods.cpp). Include after generic_list.h.
 #ifndef GG_MATCH_LAYOUT_GENERIC_LIST_INLINE_H
 #define GG_MATCH_LAYOUT_GENERIC_LIST_INLINE_H
 #include "generic_list.h"

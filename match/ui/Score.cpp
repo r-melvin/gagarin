@@ -253,7 +253,7 @@ void __cdecl FUN_00690150()
 
 #include "../_layout/score_full_font_class.h"
 #include "../_layout/score_big_font_class.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 // FUNCTION: GAMEMD 0x690640 (decl; reloc) -- loads the shared glyph tables, ECX = font.
 void __fastcall FUN_00690640(ScoreFontClass* font);

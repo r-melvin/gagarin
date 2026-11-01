@@ -466,7 +466,7 @@
   },
   {
    "addr": "0x475150",
-   "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+   "tu": "match/ccini_class_enum_writers_methods.cpp",
    "correction": "registry count offset",
    "fields": [
     {
@@ -479,7 +479,7 @@
   },
   {
    "addr": "0x4752E0",
-   "tu": "match/platform/ccini_class_house_list_methods.cpp",
+   "tu": "match/ccini_class_house_list_methods.cpp",
    "correction": "registry count offset",
    "fields": [
     {
@@ -492,7 +492,7 @@
   },
   {
    "addr": "0x475540",
-   "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+   "tu": "match/ccini_class_armor_house_type_methods.cpp",
    "correction": "registry count offset",
    "fields": [
     {
@@ -505,7 +505,7 @@
   },
   {
    "addr": "0x475610",
-   "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+   "tu": "match/ccini_class_armor_house_type_methods.cpp",
    "correction": "registry count offset",
    "fields": [
     {
@@ -518,7 +518,7 @@
   },
   {
    "addr": "0x4756F0",
-   "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+   "tu": "match/ccini_class_theater_theme_methods.cpp",
    "correction": "registry count offset",
    "fields": [
     {

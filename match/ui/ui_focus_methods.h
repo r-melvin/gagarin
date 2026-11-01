@@ -9,7 +9,7 @@
 #define GG_MATCH_UI_UI_FOCUS_METHODS_H
 
 typedef struct HWND__* HWND;
-#include "../platform/input_manager_class_methods.h"
+#include "../input_manager_class_methods.h"
 
 // Bring the game window up and hand it the foreground.
 // FUNCTION: GAMEMD 0x622800 (decl; reloc)

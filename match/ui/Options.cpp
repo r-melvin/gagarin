@@ -331,7 +331,7 @@ void GameOptionsClass::SetVoiceVolume(float volume, bool playSample)
 }
 
 // The options INI object (the settings file the game reads at start-up).
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 // GLOBAL: GAMEMD 0x8870C0 -- the options INI.
 extern CCINIClass DAT_008870C0;
 // GLOBAL: GAMEMD 0xA83D20 -- score repeat flag mirrored for the jukebox.

@@ -1422,7 +1422,7 @@ GG_STATIC_ASSERT(offsetof(IntPair_00723CA0, Second) == 0x04);
 #include "_layout/veinhole_monster_class.h"
 #include "_layout/warhead_type_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
-#include "platform/input_manager_class_methods.h"
+#include "input_manager_class_methods.h"
 #include "core/scenario_class_methods.h"
 #include "weapon_type_class.h"
 

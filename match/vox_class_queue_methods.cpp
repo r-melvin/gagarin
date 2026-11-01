@@ -7,7 +7,7 @@
 
 #include <string.h>
 #include <objidl.h>
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "_layout/vox_class.h"
 #include "_layout/obj_00407f40.h"
 

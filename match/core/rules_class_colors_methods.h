@@ -18,7 +18,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 
 // ColorStruct -- packed RGB triple (no padding; size = 3).
 #include "../_layout/color_struct.h"

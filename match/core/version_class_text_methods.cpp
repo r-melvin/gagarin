@@ -9,7 +9,7 @@
 
 #include <string.h>
 #include "../_layout/version_class.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 // STRING: GAMEMD 0x84635C -- the version text file name.
 extern const char STR_0084635C[];

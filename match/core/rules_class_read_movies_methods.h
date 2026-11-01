@@ -37,7 +37,7 @@ public:
                            const char* pDefault, char* pBuffer, int size);
 
     // FUNCTION: GAMEMD 0x679F40 — CCINIClass::Exists (matched out of line in
-    // match/platform/ccini_class_methods.cpp); the model of the section
+    // match/ccini_class_methods.cpp); the model of the section
     // probe that Read_Movies expands inline in flag form.
     bool Exists(const char* pSection, const char* pKey = 0)
     {

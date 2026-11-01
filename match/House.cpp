@@ -856,7 +856,7 @@ void __cdecl FUN_0048DC90();
 #include "core/scenario_class_methods.h"
 #include "_layout/session_class.h"
 #include "ui/game_options_class_methods.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 
 // GLOBAL: GAMEMD 0xA8EB60 -- the game options.
 extern GameOptionsClass DAT_00A8EB60;

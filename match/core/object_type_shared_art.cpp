@@ -5,7 +5,7 @@
 // ownership before MIX fallback. Native 0x5F77F0 uses array destruction
 // (36-byte elements, destructor 0x69E500) only for the owned entries.
 #include "../_layout/obj_0069e430.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc)
 void* __fastcall MixFileClass_Retrieve(char* name, bool force);
 // Gagarin storage view of native AC1478..AC148B, not an original type name.

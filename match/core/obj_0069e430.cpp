@@ -4,7 +4,7 @@
 // Entry69E430 initializes the0x24-byte resource allocated by5B40B0.
 // Identity remains unknown; the fields retain address-based names.
 #include "../_layout/obj_0069e430.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 #include <string.h>
 #include <stdlib.h>
 #include <new>

@@ -16,7 +16,7 @@
 
 #include "types_shared.h"
 #include "_layout/obj_004a1d30.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "_layout/house_type_class.h"
 #include "_layout/side_class.h"
 #include "_layout/swizzle_manager_class.h"

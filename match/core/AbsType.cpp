@@ -28,7 +28,7 @@
 #include "header_init_shapes.h"
 
 #include "free_and_compare_methods.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 #include <string.h>
 
 

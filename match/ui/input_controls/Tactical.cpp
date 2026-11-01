@@ -3794,7 +3794,7 @@ void Tactical::vf_10(void* target, bool removed)
     }
 }
 
-#include "../../platform/system_query_methods.h"
+#include "../../system_query_methods.h"
 // GLOBAL: GAMEMD 0x822CF2
 extern bool DAT_00822CF2;
 // Declaration: GAMEMD 0x7327D0; ID string in ECX.

@@ -21,7 +21,7 @@
 #include "../weapon_type_class.h"
 #include "../waypoint_queue_accessors.h"
 #include "rules_class_ini_support.h"
-#include "../platform/ccini_class_type_list_methods.h"
+#include "../ccini_class_type_list_methods.h"
 
 class InfantryTypeClass;
 class AircraftTypeClass;

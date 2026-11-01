@@ -16,6 +16,6 @@
 #include "../../third_party/lzo/lzo-1.00/include/lzo1x.h"
 #undef __LZO_ENTRY
 
-#include "../platform/compression_straws.h"
+#include "../compression_straws.h"
 
 #endif

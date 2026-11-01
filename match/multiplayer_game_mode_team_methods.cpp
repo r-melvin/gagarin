@@ -10,7 +10,7 @@
 #include "multiplayer_game_mode.h"
 #include "session_entry.h"
 #include "mpteams_methods.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 
 // FUNCTION: GAMEMD 0x5D5D20
 // Delete every team and empty the list, then the owned INI.

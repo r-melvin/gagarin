@@ -33,7 +33,7 @@
 //   and under /GX cl wraps the scope in an unwind frame retail has
 //   no trace of (0% against a body that is otherwise instruction-for-
 //   instruction correct). Without /GX the prologue is retail's bare four
-//   pushes. Same category as match/platform/ccini_class_type_list_methods.cpp.
+//   pushes. Same category as match/ccini_class_type_list_methods.cpp.
 //   The flyer's per-frame draw offset. Bytes diffed against the user's retail
 //   gamemd.exe v1.001.
 //

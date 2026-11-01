@@ -60,7 +60,7 @@ struct WholeFileBlock
 // FUNCTION: GAMEMD 0x4A38D0 (decl; reloc) — FileSystem::LoadWholeFileEx,
 // __fastcall, name in ECX and the "allocated" out-flag in EDX. Modelled
 // independently here so this TU stands alone; agrees with
-// match/platform/file_system_load_whole_methods.h (not edited).
+// match/file_system_load_whole_methods.h (not edited).
 WholeFileBlock* FileSystem_LoadWholeFileEx(const char* fileName,
                                            bool* allocated);
 

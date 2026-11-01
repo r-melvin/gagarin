@@ -25,7 +25,7 @@
 #include "dialog_type_lookup_predicates.h"
 #include "dialog_control_group_lookup.h"
 #include "control_id_predicate_methods.h"
-#include "../platform/window_moving_methods.h"
+#include "../window_moving_methods.h"
 #include "../wwlib/surface/surface_class.h"
 
 // IAT 0x7E14A4: USER32!SendMessageA.

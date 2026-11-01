@@ -59,12 +59,12 @@
 
 #include "../core/trivial_tu102_methods.h"
 
-#include "../platform/mix_file_class.h"
+#include "../mix_file_class.h"
 #include "../_layout/memory_buffer.h"
 #include <stdio.h>   // sprintf
 #include <string.h>  // strcpy, _strlwr, strstr
 #include <windows.h>
-#include "../platform/center_window_methods.h"
+#include "../center_window_methods.h"
 #include <string.h>
 #include "../core/vector_class.h"
 #include "command_class.h"
@@ -89,7 +89,7 @@ extern unsigned char DAT_00A9F91C;
 #include "../core/vector_class_operations.h"
 #include "input_controls/ui_display_chain.h"
 #include "input_controls/display_command.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 // The source-file string every text load passes (0x825FB8).
 #define INIT_CPP "D:\\ra2mdpost\\Init.CPP"

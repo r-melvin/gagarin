@@ -11,7 +11,7 @@
 #include <new.h>
 #include <objidl.h>
 #include "../_layout/ini_class.h"
-#include "../platform/ccini_class_methods.h"
+#include "../ccini_class_methods.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../core/type_list.h"
 #include "../core/vector_stream_save_family_methods.h"

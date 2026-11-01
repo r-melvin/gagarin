@@ -12,7 +12,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/audio_controller.h"
 #include "../_layout/voc_class.h"
-#include "../platform/center_window_methods.h"
+#include "../center_window_methods.h"
 #include "../ui/input_controls/ui_gadget.h"
 
 // ---------------------------------------------------------------------------

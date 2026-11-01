@@ -36,7 +36,7 @@
 #include "_rt/gg_static_assert.h"
 #include "core/scenario_class_methods.h"
 #include "core/type_class_findoralloc_methods.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "terrain_class.h"
 #include "terrain_type_class.h"
 #include "ui/shape_header.h"

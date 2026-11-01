@@ -65,8 +65,8 @@
 #include "core/triple_timer_init_methods.h"
 #include "_layout/session_class.h"
 #include "core/mathtbl_init_shapes.h"
-#include "platform/ccini_class_methods.h"
-#include "platform/ccfile_class.h"
+#include "ccini_class_methods.h"
+#include "ccfile_class.h"
 #include <stdio.h>
 #include <math.h>
 // GLOBAL: GAMEMD 0x83EFD0
@@ -130,7 +130,7 @@ void __fastcall FUN_00750FA0(); // 0x750FA0
 void __fastcall FUN_007535D0(); // 0x7535D0
 void __fastcall FUN_00752CA0(); // 0x752CA0
 #include "session_entry.h"
-#include "platform/buffer_straws.h"
+#include "buffer_straws.h"
 #include <stdlib.h>
 #include <wchar.h>
 #include <string.h>
@@ -864,7 +864,7 @@ extern signed char DAT_0083ED14[9];
 GG_STATIC_ASSERT(sizeof(DAT_0083ED14) == 9);
 
 #include "core/rules_class.h"
-#include "platform/ccini_class_methods.h"
+#include "ccini_class_methods.h"
 #include "multiplayer_game_mode.h"
 // Declaration: GAMEMD 0x5D5E10 -- no incoming arguments, pointerEAX, RET.
 MultiplayerGameMode* FUN_005D5E10();
@@ -1679,7 +1679,7 @@ void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
 }
 
 // REA Evidence: ev_11ce794979f0e2980076f87c1eeffe96d530e6c29faed93d9a77c5cc87f93a03
-#include "platform/ccfile_class.h"
+#include "ccfile_class.h"
 GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
 extern const char STR_00830A14[]; // STRING: GAMEMD 0x830A14 (decl; reloc)
 
@@ -1793,7 +1793,7 @@ extern const char STR_0082DF18[]; // STRING: GAMEMD 0x0082DF18 (decl; reloc)
 extern const char STR_0083F608[]; // STRING: GAMEMD 0x0083F608 (decl; reloc)
 extern const char STR_0083F648[]; // STRING: GAMEMD 0x0083F648 (decl; reloc)
 
-#include "platform/mix_file_class.h"
+#include "mix_file_class.h"
 extern const wchar_t STR_0082083C[]; // STRING: GAMEMD 0x0082083C (decl; reloc)
 extern const char STR_0083F490[]; // STRING: GAMEMD 0x0083F490 (decl; reloc)
 extern const char STR_0083F498[]; // STRING: GAMEMD 0x0083F498 (decl; reloc)
@@ -2190,7 +2190,7 @@ bool MultiMission::FUN_0069AE10(Wstring* mode)
 #include <windows.h>
 #include "_layout/audio_0048d080.h"
 #include "_layout/elapsed_timer.h"
-#include "platform/input_manager_class_methods.h"
+#include "input_manager_class_methods.h"
 #include "null_modem_class_methods.h"
 #include "command_packet_layouts.h"
 // Declaration: GAMEMD 0x48D080 -- no arguments, cdecl shared pump.

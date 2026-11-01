@@ -29,7 +29,7 @@
 // STRING: GAMEMD 0x83234F — "COM4"
 
 #include "null_modem_class_methods.h"
-#include "platform/input_manager_class_methods.h"
+#include "input_manager_class_methods.h"
 
 // Debug trace uses the shared cdecl declaration from conn_types.h.
 

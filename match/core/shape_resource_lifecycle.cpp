@@ -4,7 +4,7 @@
 // Native 69E090..69E429: tagged-resource loading and list/cache cleanup.
 // The receiver identity is not attested, so address-based names are retained.
 #include "../_layout/obj_0069e430.h"
-#include "../platform/ccfile_class.h"
+#include "../ccfile_class.h"
 
 // GLOBAL: GAMEMD 0x00B077B0
 Obj_0069E430* DAT_00B077B0;
