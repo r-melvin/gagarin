@@ -38,6 +38,9 @@ import tempfile
 import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Candidates are written beside the TU, so they must go into the worktree being worked,
+# not the checkout this script happens to live in.
+TREE = os.environ.get("GAG_WORKTREE") or ROOT
 sys.path.insert(0, os.path.join(ROOT, "scripts/vc6"))
 import diff_retail as dr  # noqa: E402
 import residual_classify as rc  # noqa: E402
@@ -526,7 +529,7 @@ class Scorer:
         self.retail = dr.raw_x86_insns(raw, addr, allow_data=True)
         self.R = [rc.dissect(m, o, set(), True) for _, _, m, o in self.retail]
         self.Rk = [self._key(x) for x in self.R]
-        self.dir = os.path.dirname(os.path.join(ROOT, tu))
+        self.dir = os.path.dirname(os.path.join(TREE, tu))
 
     @staticmethod
     def _key(d):
@@ -570,7 +573,7 @@ class Scorer:
 
 
 def certify(tu_text, tu, addr, sym, length, tag):
-    path = os.path.join(ROOT, os.path.dirname(tu), f"zz_cert_{tag}.cpp")
+    path = os.path.join(TREE, os.path.dirname(tu), f"zz_cert_{tag}.cpp")
     obj = os.path.join(tempfile.gettempdir(), f"zz_cert_{tag}.obj")
     open(path, "w").write(tu_text)
     try:
@@ -588,7 +591,7 @@ def certify(tu_text, tu, addr, sym, length, tag):
 
 
 def run(tu, addr, sym, length, minutes, seed, out):
-    src = open(os.path.join(ROOT, tu)).read()
+    src = open(os.path.join(TREE, tu)).read()
     b0, b1 = find_function(src, addr)
     base_body = src[b0:b1]
     scorer = Scorer(tu, addr, sym, length)
