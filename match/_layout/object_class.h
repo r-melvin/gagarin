@@ -210,9 +210,7 @@ public:
     virtual bool vf_120();                                     // 120 0x426510: returns true
     virtual void* vf_121();                                    // 121 0x426520: returns null
 
-    int             unknown_24;                  // +0x24
-    int             unknown_28;                  // +0x28
-    int             FallRate;                    // +0x2C
+    CoordStructInit unknown_24;                  // +0x24 (0xC; the ctor's three dword zero stores 0x5F3910..0x5F3916 schedule as one inlined 3-int constructor; the Z at +0x2C was named FallRate)
     void*           NextObject;                  // +0x30  ObjectClass* (cell/transport list)
     TagClass*       AttachedTag;                 // +0x34
     BombClass*      AttachedBomb;                // +0x38
@@ -250,7 +248,6 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(ObjectClass, unknown_24)             == 0x24);
-GG_STATIC_ASSERT(offsetof(ObjectClass, FallRate)               == 0x2C);
 GG_STATIC_ASSERT(offsetof(ObjectClass, NextObject)             == 0x30);
 GG_STATIC_ASSERT(offsetof(ObjectClass, AttachedTag)            == 0x34);
 GG_STATIC_ASSERT(offsetof(ObjectClass, AttachedBomb)           == 0x38);

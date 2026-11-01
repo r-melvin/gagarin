@@ -193,7 +193,7 @@ public:
     WeaponTypeClass* WeaponType;          // +0x130 WeaponTypeClass*; ctor @0x00466401
     CoordStruct    SourceCoords;        // +0x134 (0xC) ctor @0x00466444/0x0046644A/0x00466450
     CoordStruct    TargetCoords;        // +0x140 (0xC) ctor @0x00466456/0x0046645C/0x00466462
-    CellStruct     LastMapCoords;       // +0x14C (4) ctor two word stores @0x00466407/0x0046640E
+    CellStructInit LastMapCoords;       // +0x14C (4) ctor two word stores @0x00466407/0x0046640E
     int            DamageMultiplier;    // +0x150 read at 0x004697FC and IMUL'd against
                                         //   ObjectClass::Health [ESI+0x6C] — same receiver, so this
                                         //   really is a damage scale on the bullet

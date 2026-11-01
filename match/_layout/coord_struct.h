@@ -33,4 +33,15 @@ GG_STATIC_ASSERT(offsetof(CoordStruct, Y) == 0x04);
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x08);
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0x0C);
 
+// Reconstruction scaffolding: retail initialises these members in the mem-init list ahead of the vptr stores, which needs a constructor-bearing member type; CoordStruct/CellStruct themselves must stay aggregates (brace-init and union users). The original's type name is unknown.
+// A CoordStruct member whose owner's constructor stores the three components one by one in its
+// initialiser list (FootClass::CurrentTunnelCoords, three dword stores at 0x4D326D..0x4D3279).
+// CoordStruct itself must stay a plain aggregate, so the constructors live on this derived type.
+struct CoordStructInit : public CoordStruct
+{
+    CoordStructInit() {}
+    CoordStructInit(int x, int y, int z) { X = x; Y = y; Z = z; }
+};
+GG_STATIC_ASSERT(sizeof(CoordStructInit) == 0x0C);
+
 #endif  // GG_MATCH_LAYOUT_COORD_STRUCT_H

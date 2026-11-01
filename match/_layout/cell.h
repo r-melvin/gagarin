@@ -35,6 +35,18 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0);
 GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 2);
 
+// Reconstruction scaffolding: retail initialises these members in the mem-init list ahead of the vptr stores, which needs a constructor-bearing member type; CoordStruct/CellStruct themselves must stay aggregates (brace-init and union users). The original's type name is unknown.
+// A CellStruct member whose owner's constructor stores the two components with word stores in its
+// initialiser list (FootClass 0x4D31E0, BulletClass 0x466380). CellStruct itself must stay a plain
+// aggregate and Cell converts implicitly from CellStruct (changing the code of plain assignments), so
+// the constructors live on this derived type, which assigns from a CellStruct as the plain member did.
+struct CellStructInit : public CellStruct
+{
+    CellStructInit() {}
+    CellStructInit(short x, short y) { X = x; Y = y; }
+    CellStructInit& operator=(const CellStruct& cell) { CellStruct::operator=(cell); return *this; }
+};
+
 // Member-wise cell comparison (two 16-bit compares), as the inlined vector searches and coordinate
 // tests expand it.
 inline bool operator==(CellStruct const& a, CellStruct const& b)

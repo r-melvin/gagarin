@@ -279,6 +279,7 @@ GG_STATIC_ASSERT(sizeof(ObjectClassSortKeyMember) == 4);
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 
 #include "object_class_uninit_methods.h"
+#include "vector_class_mutation.h"
 
 
 typedef CoordStruct* (IPersistStream::*ObjectYSortGetCoords)(CoordStruct*) const;
@@ -292,6 +293,56 @@ GG_STATIC_ASSERT(sizeof(ObjectYSortGetCoords) == 4);
 GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0);
 GG_STATIC_ASSERT(offsetof(CoordStruct, Y) == 4);
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 12);
+
+// GLOBAL: GAMEMD 0xAC1380 -- the invalid coordinate.
+extern CoordStruct DAT_00AC1380;
+// GLOBAL: GAMEMD 0xA8E360 / 0xB0F720 / 0xB0F618 -- the registries every ObjectClass joins
+// (defined in static_vector_init_stubs.cpp and static_vector_dtor_stubs.cpp; 0xB0F670 is the layout view of abstract_registry.h).
+extern DynamicVectorClass<ObjectClass*> DAT_00A8E360;
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F720;
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F618;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5F3900
+ObjectClass::ObjectClass()
+    : unknown_24(0, 0, 0),
+      Health(0xFF),
+      EstimatedHealth(0xFF),
+      unknown_78(1),
+      InLimbo(true),
+      IsAlive(true),
+      IsVisible(true),
+      NextObject(0),
+      AttachedTag(0),
+      AttachedBomb(0),
+      CustomSound(-1),
+      BombVisible(false),
+      IsOnMap(false),
+      unknown_7C(0),
+      NeedsRedraw(false),
+      InOpenToppedTransport(false),
+      IsSelected(false),
+      HasParachute(false),
+      Parachute(0),
+      OnBridge(false),
+      IsFallingDown(false),
+      WasFallingDown(false),
+      IsABomb(false),
+      LastLayer(-1),
+      IsInLogic(false),
+      Location(DAT_00AC1380),
+      LineTrailer(0)
+{
+    AmbientSoundController.FUN_00405BE0();
+    CustomSoundController.FUN_00405BE0();
+    DAT_00A8E360.AddItem(this);
+    DAT_00B0F720.AddItem(this);
+    // Known debt (not a new pattern): the Tag/Trigger registry type split. abstract_registry.h types 0xB0F670 as
+    // DynamicVectorClassLayout and other callers use the same cast; retyping the declaration breaks them.
+    reinterpret_cast<DynamicVectorClass<AbstractClass*>*>(&DAT_00B0F670)->AddItem(this);
+    DAT_00B0F618.AddItem(this);
+    Flags.unknown_14_1 = true;
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5F3B50

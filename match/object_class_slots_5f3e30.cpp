@@ -62,7 +62,7 @@ bool ObjectClass::FUN_005F3E50(const char* name)
 // early-return layout (41.4%), retail's nesting (68.0%) and inline
 // temporaries for the timer and the raised coordinate (68.9%).
 // The per-frame update every object runs: ambient and custom sounds while on
-// the map, then the falling step (slot 116 height plus FallRate), landing, the
+// the map, then the falling step (slot 116 height plus the fall rate unknown_24.Z), landing, the
 // fall-rate update and, for a falling bomb or a flaming-guy animation, the
 // landing effects. WhatAmI (slot 11) value 4 is the animation class.
 void ObjectClass::vf_23()
@@ -80,7 +80,7 @@ void ObjectClass::vf_23()
 
     if (IsFallingDown) {
         int layer = vf_30();
-        int height = FUN_005F5F30() + FallRate;
+        int height = FUN_005F5F30() + unknown_24.Z;
         if (IsOnMap) {
             vf_73(0);
             Location.Z = height;
@@ -100,13 +100,13 @@ void ObjectClass::vf_23()
 
         if (!InLimbo) {
             if (HasParachute) {
-                FallRate--;
+                unknown_24.Z--;
                 int floor = DAT_008871E0->ParachuteMaxFallRate;
-                FallRate = (FallRate > floor) ? FallRate : floor;
+                unknown_24.Z = (unknown_24.Z > floor) ? unknown_24.Z : floor;
             } else {
-                FallRate = (int)(FallRate - 1.4);
+                unknown_24.Z = (int)(unknown_24.Z - 1.4);
                 int floor = DAT_008871E0->NoParachuteMaxFallRate;
-                FallRate = (FallRate > floor) ? FallRate : floor;
+                unknown_24.Z = (unknown_24.Z > floor) ? unknown_24.Z : floor;
             }
 
             if (layer != vf_30()) {

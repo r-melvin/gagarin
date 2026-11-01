@@ -45,6 +45,9 @@ class WaypointClass;
 class FootClass : public TechnoClass
 {
 public:
+    // FUNCTION: GAMEMD 0x4D31E0 -- chains TechnoClass(owner), initialises 0x520..0x6B8, seats the four vtables.
+    FootClass(HouseClass* owner);
+
     // Slots 309-340, introduced by FootClass (341 slots in all; retail table 0x7E8C94).
     // Names are placeholders; argument widths come from native RET n cleanup.
     // Slot 323 forwards its sixteen dwords to TechnoClass::FUN_00705E00.
@@ -135,21 +138,20 @@ public:
     void FUN_004DA030();
 
     int             PlanningPathIdx;                  // +0x520 (ctor = -1)
-    CellStruct      WaypointNearbyAccessibleCellDelta;// +0x524 (4)
-    CellStruct      WaypointCell;                     // +0x528 (4)
+    CellStructInit  WaypointNearbyAccessibleCellDelta;// +0x524 (4)
+    CellStructInit  WaypointCell;                     // +0x528 (4)
     unsigned int    unknown_52C;                      // +0x52C
     double          unknown_530;                      // +0x530 (8; 0x4DC760 returns it with FLD qword)
-    unsigned char   IsMoveSoundPlaying;               // +0x538 (bool)
-    unsigned char   align_539[3];                     // +0x539
+    int             IsMoveSoundPlaying;               // +0x538 (ctor stores a dword zero at 0x4D3223)
     unsigned char   unknown_bool_53C;                 // +0x53C (binary byte-zeroes this)
     unsigned char   align_53D[3];                     // +0x53D
     int             MoveSoundDelay;                   // +0x540
     AudioController MoveSoundAudioController;          // +0x544 (0x14; ctor FUN_00405BE0)
-    CellStruct      CurrentMapCoords;                 // +0x558 (4)
-    CellStruct      LastMapCoords;                    // +0x55C (4)
-    CellStruct      LastFlightMapCoords;              // +0x560 (4)
-    CellStruct      CurrentJumpjetMapCoords;          // +0x564 (4)
-    CoordStruct     CurrentTunnelCoords;              // +0x568 (0xC)
+    CellStructInit  CurrentMapCoords;                 // +0x558 (4)
+    CellStructInit  LastMapCoords;                    // +0x55C (4)
+    CellStructInit  LastFlightMapCoords;              // +0x560 (4)
+    CellStructInit  CurrentJumpjetMapCoords;          // +0x564 (4)
+    CoordStructInit CurrentTunnelCoords;              // +0x568 (0xC)
     unsigned int    unused_574;                       // +0x574
     double          SpeedPercentage;                  // +0x578
     double          SpeedMultiplier;                  // +0x580 (ctor = 1.0)

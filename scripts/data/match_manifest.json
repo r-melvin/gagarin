@@ -106228,10 +106228,8 @@
   "sym": "??0BulletClass@@QAE@XZ",
   "len": "0x13f",
   "name": "BulletClass::BulletClass",
-  "status": "partial",
-  "pct": 54.8,
-  "best_pct": 54.8,
-  "best_at": "2bef252f"
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/trivial_tu238_methods.cpp",
@@ -151379,5 +151377,23 @@
   "pct": 97.8,
   "best_pct": 97.8,
   "best_at": "658da7d4"
+ },
+ {
+  "tu": "match/foot_class_methods.cpp",
+  "addr": "0x4D31E0",
+  "sym": "??0FootClass@@QAE@PAVHouseClass@@@Z",
+  "len": "0x35c",
+  "name": "FootClass::FootClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu165_object_class.cpp",
+  "addr": "0x5F3900",
+  "sym": "??0ObjectClass@@QAE@XZ",
+  "len": "0x241",
+  "name": "ObjectClass::ObjectClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

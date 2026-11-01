@@ -6,6 +6,7 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x41C090  FootClass::vf_323 (__thiscall)
+//   FUNCTION: GAMEMD 0x4D31E0  FootClass::FootClass (__thiscall, RET 4)
 //   FUNCTION: GAMEMD 0x4D3710  FootClass::vf_337 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D55C0  FootClass::vf_320 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D55F0  FootClass::vf_319 (__thiscall)
@@ -19,6 +20,8 @@
 //   FUNCTION: GAMEMD 0x4DF0D0  FootClass::AbortMotion         (__thiscall)
 
 #include "foot_class_methods.h"
+#include "vector_class_dynamic_ctor.h"
+#include "vector_class_mutation.h"
 #include "loco_com.h"
 #include "_layout/techno_type_class.h"
 
@@ -32,6 +35,88 @@ void FootClass::vf_323(SHPStruct* a1, int a2, Point2D* a3,
 {
     TechnoClass::FUN_00705E00(a1, a2, a3, a4, a5, a6, a7, a8,
                              a9, a10, a11, a12, a13, a14, a15, a16);
+}
+
+// GLOBAL: GAMEMD 0x8B3DA8 -- the "no coordinate" sentinel.
+extern CoordStruct DAT_008B3DA8;
+// GLOBAL: GAMEMD 0x8B3DC0 -- every FootClass joins this list (defined in static_vector_dtor_stubs.cpp).
+extern DynamicVectorClass<FootClass*> DAT_008B3DC0;
+// GLOBAL: GAMEMD 0xB0F5D8 -- the second list every FootClass joins (defined in static_vector_dtor_stubs.cpp).
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F5D8;
+
+// FUNCTION: GAMEMD 0x4D31E0
+FootClass::FootClass(HouseClass* owner)
+    : TechnoClass(owner),
+      PlanningPathIdx(-1),
+      WaypointNearbyAccessibleCellDelta(0, 0),
+      WaypointCell(0, 0),
+      unknown_530(0),
+      IsMoveSoundPlaying(0),
+      unknown_bool_53C(0),
+      MoveSoundDelay(0),
+      CurrentMapCoords(0, 0),
+      LastMapCoords(0, 0),
+      LastFlightMapCoords(0, 0),
+      CurrentJumpjetMapCoords(0, 0),
+      CurrentTunnelCoords(0, 0, 0),
+      SpeedPercentage(0),
+      SpeedMultiplier(1.0),
+      unknown_abstract_array_588(0, 0),
+      unknown_5A0(0),
+      Destination(0),
+      LastDestination(0),
+      NavQueue(0, 0),
+      MegaMission(-1),
+      MegaDestination(0),
+      MegaTarget(0),
+      HaveAttackMoveTarget(0),
+      Team(0),
+      NextTeamMember(0),
+      unknown_5DC(0),
+      PathDelayTimer(0),
+      PathWaitTimes(10),
+      unknown_timer_650(0),
+      SightTimer(0),
+      BlockagePathTimer(0),
+      Locomotor(0),
+      unknown_point3d_678(DAT_008B3DA8),
+      TubeIndex(-1),
+      TubeFaceIndex(0),
+      WaypointIndex(0),
+      ShouldScatterInNextIdle(0),
+      IsScanLimited(0),
+      IsInitiated(0),
+      ShouldScanForTarget(0),
+      unknown_bool_68B(0),
+      IsDeploying(0),
+      IsFiring(0),
+      unknown_bool_68E(0),
+      ShouldEnterAbsorber(0),
+      ShouldEnterOccupiable(0),
+      ShouldGarrisonStructure(0),
+      ParasiteEatingMe(0),
+      LastBeParasitedStartFrame(0),
+      ParasiteImUsing(0),
+      ParalysisTimer(0),
+      unknown_bool_6AC(0),
+      IsAttackedByLocomotor(0),
+      IsLetGoByLocomotor(0),
+      unknown_bool_6AF(0),
+      unknown_bool_6B0(0),
+      unknown_bool_6B1(0),
+      unknown_bool_6B2(0),
+      unknown_bool_6B3(0),
+      unknown_bool_6B4(0),
+      IsCrushingSomething(0),
+      FrozenStill(1),
+      IsWaitingBlockagePath(0),
+      unknown_bool_6B8(0)
+{
+    PathDirections[0] = -1;
+    MoveSoundAudioController.FUN_00405BE0();
+    DAT_008B3DC0.AddItem(this);
+    Flags.IsFoot = true;
+    DAT_00B0F5D8.AddItem(this);
 }
 
 // FUNCTION: GAMEMD 0x4D3710
