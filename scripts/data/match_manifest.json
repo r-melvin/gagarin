@@ -151180,7 +151180,9 @@
   "len": "0x15a",
   "name": "FootClass::FUN_004DCE80",
   "status": "partial",
-  "pct": 98.2
+  "pct": 98.2,
+  "best_pct": 98.2,
+  "best_at": "015d8c62"
  },
  {
   "tu": "match/foot_class_tu086_methods.cpp",
@@ -151189,7 +151191,9 @@
   "len": "0x192",
   "name": "FootClass::FUN_004DD9F0",
   "status": "partial",
-  "pct": 82.3
+  "pct": 82.3,
+  "best_pct": 82.3,
+  "best_at": "015d8c62"
  },
  {
   "tu": "match/foot_class_tu086_methods.cpp",
