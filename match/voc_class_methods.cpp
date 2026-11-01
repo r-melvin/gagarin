@@ -26,6 +26,7 @@
 #include "_layout/tactical.h"
 #include "_layout/cell_class.h"
 #include "_layout/map_0087f7e8.h"
+#include "sidebar_display_globals.h"
 
 
 // Retail _stricmp (0x007C8D20). cdecl; declared (no body) so cl emits a call.
@@ -58,8 +59,6 @@ extern int DAT_008464C4;
 extern int DAT_00B1D3B0;
 // GLOBAL: GAMEMD 0x887324 -- the tactical view.
 extern Tactical* DAT_00887324;
-// GLOBAL: GAMEMD 0x886FA8 -- view width in pixels.
-extern int DAT_00886FA8;
 // GLOBAL: GAMEMD 0x886FAC -- view height in pixels.
 extern int DAT_00886FAC;
 // GLOBAL: GAMEMD 0x7E5168 -- 0.5f.
@@ -113,7 +112,7 @@ float VocClass::GetPositionalVolume(CoordStruct* coords, int* pan, AudioEventTyp
 {
     *pan = 0;
     float volume = 0.0f;
-    float halfWidth = (float)DAT_00886FA8 * DAT_007E5168;
+    float halfWidth = (float)MouseViewBoundWidth * DAT_007E5168;
     float halfHeight = (float)DAT_00886FAC * DAT_007E5168;
     float width = halfWidth + halfWidth;
     float range = (float)(type->FUN_00405130() * 60);

@@ -17,6 +17,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "engine_core_globals.h"
 
 struct Cell_0056D460 { short X; short Y; };
 GG_STATIC_ASSERT(sizeof(Cell_0056D460) == 4);
@@ -34,7 +35,6 @@ GG_STATIC_ASSERT(sizeof(Zone_0056D460)       == 4);
 // GLOBAL: GAMEMD 0x87F8DC / 0x87F8E0 -- the two map extents the neighbour
 // stride is built from.
 extern int DAT_0087F8DC;
-extern int DAT_0087F8E0;
 
 struct Map_0056D460
 {

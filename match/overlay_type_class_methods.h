@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "overlay_type_class.h"
+#include "shared_constants_globals.h"
 
 extern "C" int __cdecl gg_overlay_stricmp(const char* a, const char* b);
 void* __cdecl operator new(unsigned int cb);
@@ -19,7 +20,6 @@ struct Image_005FE620;
 Image_005FE620* FUN_005B40B0(const char* name, unsigned char flag);
 void FUN_005F96B0(char* name, int idxTheater);
 void FUN_005F9710(char* name);
-extern const char STR_0081834C[];
 
 struct Theater_005FE620 {
     char ID[0x10]; char UIName[0x20]; char ControlFileName[0xA]; char ArtFileName[0xA];

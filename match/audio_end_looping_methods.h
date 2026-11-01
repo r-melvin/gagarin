@@ -19,8 +19,6 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/audio_controller.h"
 #include "_layout/audio_event.h"
-
-// GLOBAL: GAMEMD 0x87E2A0 — nonzero once the audio subsystem is up.
-extern int DAT_0087E2A0;
+#include "engine_core_globals.h"
 
 #endif  // GG_MATCH_AUDIO_AUDIO_END_LOOPING_METHODS_H

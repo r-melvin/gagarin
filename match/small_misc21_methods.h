@@ -8,9 +8,8 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "guarded_forward_methods.h"
+#include "engine_core_globals.h"
 
-// GLOBAL: GAMEMD 0x87E728
-extern void* DAT_0087E728c;
 bool __cdecl    FUN_0053BAD0();                        // GAMEMD 0x53BAD0
 void FUN_00403770b(void* self, int arg);    // GAMEMD 0x403770
 void __cdecl    FUN_00404FD0b();                       // GAMEMD 0x404FD0

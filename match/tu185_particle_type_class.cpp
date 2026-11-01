@@ -96,6 +96,7 @@
 #include "_layout/swizzle_manager_class.h"
 #include <string.h>
 #include "particle_type_class.h"
+#include "shared_constants_globals.h"
 
 extern const char* const ParticleBehavesLikeNames[5];
 
@@ -157,8 +158,6 @@ struct FloatQuad_006460C0 {
 extern "C" int __cdecl strcmpi(const char* a, const char* b);
 
 extern const char* const DAT_00836EE0[5];
-
-extern const char* const DAT_008370BC[5];
 
 extern const char* const DAT_007F0248[12];
 
@@ -647,7 +646,7 @@ void ParticleTypeClass::PointerExpired(void* ptr, bool removed)
 int FUN_006458D0(const char* name)
 {
     for (int i = 0; i < 5; ++i) {
-        if (strcmpi(name, DAT_008370BC[i]) == 0)
+        if (strcmpi(name, ParticleBehavesLikeNames[i]) == 0)
             return i;
     }
     return -1;
@@ -902,5 +901,5 @@ extern const char STR_008372F4[] = "N/A";
 // GLOBAL: GAMEMD 0x7F0248
 extern const char* const DAT_007F0248[12] = {STR_008372F4, STR_008372E8, STR_008372D8, STR_008372CC, STR_008173D0, STR_008372BC, STR_008372B0, STR_008372A0, STR_00837290, STR_0083727C, STR_00837260, STR_0083724C};
 // GLOBAL: GAMEMD 0x8370BC
-extern const char* const DAT_008370BC[5] = {STR_0081D990, STR_00836F0C, STR_00836F04, STR_00836EFC, STR_00836EF4};
+extern const char* const ParticleBehavesLikeNames[5] = {STR_0081D990, STR_00836F0C, STR_00836F04, STR_00836EFC, STR_00836EF4};
 // END defined globals

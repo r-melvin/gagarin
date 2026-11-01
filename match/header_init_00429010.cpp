@@ -9,6 +9,7 @@
 #include "header_init_shapes.h"
 #include "_layout/application_class.h"
 #include "trig_table_functions_004cac40.h"
+#include "display_objects_globals.h"
 
 // GLOBAL: GAMEMD 0x7E1708
 const double DAT_007E1708 = 2.0;
@@ -62,4 +63,4 @@ HeaderCoordInit DAT_0089A290(0, 0, 0);
 HeaderCoordInit DAT_0089A2B8(128, 128, 0);
 // SYNTHETIC: GAMEMD 0x429200 -- initialiser: constructs the application object (stores its vtable 0x7E36D4).
 // GLOBAL: GAMEMD 0x89A29C
-ApplicationClass DAT_0089A29C;
+ApplicationClass HouseMainObject;

@@ -5,6 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "small_misc21_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x406F00
 // The probe skips only the first three steps; the last two run either way.
@@ -13,8 +14,8 @@
 void __cdecl FUN_00406F00()
 {
     if (!FUN_0053BAD0()) {
-        if (DAT_0087E728c) {
-            FUN_00403770b(DAT_0087E728c, 1);
+        if (DAT_0087E728) {
+            FUN_00403770b(DAT_0087E728, 1);
         }
 
         FUN_00404FD0b();
@@ -60,6 +61,4 @@ Triple3ib Triple3ib::FUN_00437160(const Triple3ib* other) const
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x87E728
-extern void* DAT_0087E728c;
 // END defined globals

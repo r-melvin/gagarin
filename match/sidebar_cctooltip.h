@@ -25,6 +25,7 @@
 #include "_rt/gg_static_assert.h"
 #include "tooltip_manager_shared.h"
 #include "mouse_ww_mouse_class.h"
+#include "sidebar_display_globals.h"
 
 // GLOBAL: GAMEMD 0x886F90 -- sidebar rectangle.
 extern RectangleStruct SidebarRect_00886F90;
@@ -34,8 +35,6 @@ extern RectangleStruct TacticalRect_00886FA0;
 extern unsigned char SidebarSideFlag_00A8EB7C;
 // GLOBAL: GAMEMD 0x884B8E -- set when a tooltip touches the sidebar (byte store).
 extern unsigned char TipTouchedSidebar_00884B8E;
-// GLOBAL: GAMEMD 0x884B8F -- "sidebar needs a full redraw" (byte store).
-extern unsigned char SidebarNeedsRedraw_00884B8F;
 // GLOBAL: GAMEMD 0xB0B518 -- byte set when the tooltip is drawn on the sidebar surface.
 extern unsigned char SidebarSurfaceUsed_00B0B518;
 

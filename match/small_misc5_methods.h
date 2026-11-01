@@ -8,9 +8,8 @@
 #include <stddef.h>
 #include "triple_timer_init_methods.h"
 #include "_rt/gg_static_assert.h"
+#include "engine_core_globals.h"
 
-// GLOBAL: GAMEMD 0x87E728 — the subsystem object these entry points drive.
-extern void* DAT_0087E728;
 // GLOBAL: GAMEMD 0x89E050 / 0x81B1E8 — reset alongside the record at 0x46D330.
 extern int   DAT_0089E050;
 extern int   DAT_0081B1E8;

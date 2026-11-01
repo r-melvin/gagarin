@@ -20,13 +20,10 @@
 #include "_layout/audio_event.h"
 #include <stdlib.h>   // bsearch
 #include <string.h>   // _strcmpi
+#include "engine_core_globals.h"
 
 // GLOBAL: GAMEMD 0x87E294 — the engine's single AudioIDXData instance pointer.
 // AudioController::AudioIndex points at this global when its handle is "live".
-
-// GLOBAL: GAMEMD 0x87E2A0 — audio-subsystem guard. When null, no controller can
-// resolve an event (every getter short-circuits to null).
-extern void* g_AudioEnabled;
 
 // Retail stores the timer group address in these seven globals at FUN_00406B10.
 // The PE image places each pointer in the zero-filled tail of .data. Only the

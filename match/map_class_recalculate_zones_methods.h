@@ -27,6 +27,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "engine_core_globals.h"
 
 struct CellStruct_0056D5A0
 {
@@ -47,8 +48,6 @@ GG_STATIC_ASSERT(sizeof(Zone_0056D5A0) == 4);
 
 // GLOBAL: GAMEMD 0x87F8DC — the first neighbour-stride term.
 extern int DAT_0087F8DC;
-// GLOBAL: GAMEMD 0x87F8E0 — the second neighbour-stride term.
-extern int DAT_0087F8E0;
 
 struct Map_0056D5A0
 {

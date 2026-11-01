@@ -16,6 +16,7 @@
 
 #include "FUNCTION.H"
 #include "header_tuning_globals.h"
+#include "mapobj_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -33,8 +34,6 @@ double DAT_008A3890 = 1.0 / DAT_008A38A8;
 // GLOBAL: GAMEMD 0x8A3898
 TuningCoordInit DAT_008A3898(128, 128, 0);
 
-// GLOBAL: GAMEMD 0x8A3838 -- this unit's copy of the "no cell" value.
-extern CellStruct DAT_008A3838;
 // GLOBAL: GAMEMD 0xA8E9A0
 extern bool DAT_00A8E9A0;
 

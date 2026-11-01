@@ -13,6 +13,7 @@
 #include "tag_class_destroy_methods.h"
 #include "abstract_registry.h"
 #include "header_tuning_globals.h"
+#include "mapobj_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -41,8 +42,6 @@ extern bool DAT_00A8E9A0;
 extern bool DAT_00A8ED6B;
 // GLOBAL: GAMEMD 0xB0E700 -- the "no cell" value (defined in tag_class_array.cpp).
 extern CellStruct DAT_00B0E700;
-// GLOBAL: GAMEMD 0x8B40C8 -- a list of tags the destructor drops itself from.
-extern DynamicVectorClass<TagClass*> DAT_008B40C8;
 // GLOBAL: GAMEMD 0xA83CDC -- the cursor into 0x8B40C8.
 extern int DAT_00A83CDC;
 // GLOBAL: GAMEMD 0x8B41A8 -- a second tag list.
@@ -93,8 +92,8 @@ TagClass::~TagClass()
     AnnounceExpiredPointer(1);
     if (DAT_00A8E9A0) {
         if (DAT_00A8ED5C && Type && (Type->GetFlags() & 0x10)) {
-            int index = DAT_008B40C8.FindItemIndex(this);
-            if (DAT_00A83CDC >= index && --DAT_00A83CDC < 0 && DAT_008B40C8.Count == 0) {
+            int index = LogicArray.FindItemIndex(this);
+            if (DAT_00A83CDC >= index && --DAT_00A83CDC < 0 && LogicArray.Count == 0) {
                 DAT_00A83CDC = 0;
             }
         }

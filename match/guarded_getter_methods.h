@@ -13,10 +13,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/audio_event_type.h"
-
-// GLOBAL: GAMEMD 0x87E2A0 — the gate all four accessors below test first. Until
-// it is set they report neutral values rather than reading the object.
-extern void* DAT_0087E2A0;
+#include "engine_core_globals.h"
 
 // STRING: GAMEMD 0x816204 — "no events", the placeholder 0x405170 hands back
 // while the gate is clear.

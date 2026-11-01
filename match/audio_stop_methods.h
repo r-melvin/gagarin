@@ -26,9 +26,8 @@
 #include "tail_call_methods.h"
 #include "_layout/audio_controller.h"
 #include "_layout/audio_event.h"
+#include "engine_core_globals.h"
 
-// GLOBAL: GAMEMD 0x87E2A0 — nonzero once the audio subsystem is up.
-extern int DAT_0087E2A0;
 // GLOBAL: GAMEMD 0x87E294 — the sample table; the handle's owner is compared
 // against its address.
 extern char DAT_0087E294[];

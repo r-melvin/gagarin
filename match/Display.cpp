@@ -45,6 +45,8 @@
 #include "_layout/techno_type_class.h"
 #include "_layout/rules_class.h"
 #include "_layout/player_ptr_00a83d4c.h"
+#include "mapobj_globals.h"
+#include "sidebar_display_globals.h"
 
 // Recolours the palette entries the highlight cycles through: eight consecutive entries filled from the colour ring,
 // starting `offset` entries into it.
@@ -818,7 +820,7 @@ void DisplayClass::vf_49(int)
         SetBeaconMode_004AC960(0);
     else
         UnselectAll_0048DC90();
-    vf_18(0, DisplayCmdFlag_00884D44);
+    vf_18(0, DAT_00884D44);
 }
 
 // FUNCTION: GAMEMD 0x4AAE90
@@ -839,7 +841,7 @@ void DisplayClass::vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, i
             }
         }
     }
-    else if (cell->X != DisplayCmdNoCell_008A03F8.X || cell->Y != DisplayCmdNoCell_008A03F8.Y)
+    else if (cell->X != DAT_008A03F8.X || cell->Y != DAT_008A03F8.Y)
     {
         object = DisplayCmdMap_0087F7E8.GetCellAt_005657A0(cell);
     }
@@ -2355,7 +2357,7 @@ bool MapClass::vf_26()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x884D44
-bool DisplayCmdFlag_00884D44;
+bool DAT_00884D44;
 // GLOBAL: GAMEMD 0x8A072C
 void* DisplayShadowShape_008A072C;
 // GLOBAL: GAMEMD 0xA8ED9D
@@ -2372,6 +2374,4 @@ void* DisplayPlaceShape_008A03FC;
 extern BeaconManagerClass BeaconManager;
 // GLOBAL: GAMEMD 0xABDC84
 int DAT_00ABDC84;
-// GLOBAL: GAMEMD 0x8A03F8 -- the "no cell" sentinel pair MarkFoundation refuses.
-extern Cell_004A8BF0 DAT_008A03F8;
 // END defined globals

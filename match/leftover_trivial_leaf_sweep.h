@@ -32,6 +32,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // A container read through its field at +0x10. Five leaves return this member
 // raw (`MOV EAX,[ECX+0x10]; RET`); the surrounding address runs are the
@@ -75,8 +76,6 @@ int FUN_0076F080(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x76F080
 // Three single-store leaves that publish their ECX argument into a fixed
 // global (`MOV [imm32],ECX; RET`). The destinations are read off the stores.
 extern int DAT_00828140;   // GLOBAL: GAMEMD 0x828140
-extern int DAT_00829FF4;   // GLOBAL: GAMEMD 0x829FF4
-extern int DAT_00829FF8;   // GLOBAL: GAMEMD 0x829FF8
 
 void FUN_0053F1F0(int value);   // FUNCTION: GAMEMD 0x53F1F0
 void FUN_0055AF40(int value);   // FUNCTION: GAMEMD 0x55AF40

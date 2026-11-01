@@ -9,6 +9,7 @@
 #include "display_scroll.h"
 #include "display_command.h"
 #include "header_tuning_globals.h"
+#include "sidebar_display_globals.h"
 
 // FUNCTION: GAMEMD 0x63AB60 (decl; reloc) -- RET 8.
 bool __stdcall FUN_0063AB60(int x, int y);
@@ -98,7 +99,7 @@ void ScrollClass::vf_49(int arg)
 {
     if (unknown_5558)
     {
-        vf_18(0, DisplayFlag_00884D44);
+        vf_18(0, DAT_00884D44);
         unknown_5558 = false;
     }
     else
@@ -130,8 +131,6 @@ void ScrollClass::vf_35()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x884D44
-extern bool DisplayFlag_00884D44;
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DisplayFlag_00A8ED9C;
 // END defined globals

@@ -5,6 +5,7 @@
 // STRING: GAMEMD 0x816218  "Missing sample %s\n"
 
 #include "sample_registry_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x405FD0
 //
@@ -60,7 +61,7 @@ void FUN_00405FD0(Handle_00405FD0* handle)
     Voice_00405FD0* voice;
     Peer_00405FD0* peer;
 
-    if (DAT_0087E2A0 != 0 && handle->Owner == (void*)&DAT_0087E294) {
+    if (g_AudioEnabled != 0 && handle->Owner == (void*)&DAT_0087E294) {
         voice = handle->Voice;
         if (voice != 0) {
             if (handle->Token == voice->Token
@@ -104,7 +105,7 @@ int AudioEventType::FUN_004064A0(const char* name)
         return 0;
     }
 
-    if (DAT_0087E2A0 != 0 && DAT_0087E294 != 0) {
+    if (g_AudioEnabled != 0 && DAT_0087E294 != 0) {
         while (*name == '$' || *name == '#') {
             name++;
         }

@@ -79,6 +79,9 @@
 #include "_layout/map_seed_class.h"
 #include "color_scheme_find_methods.h"
 #include "vector_add_item_free.h"
+#include "engine_core_globals.h"
+#include "mapobj_globals.h"
+#include "sidebar_display_globals.h"
 extern char DAT_00ABDFD8[]; // GLOBAL: GAMEMD 0xABDFD8
 
 
@@ -208,7 +211,6 @@ extern DynamicVectorClass<IsometricTileTypeClass*> DAT_00A8ED28; // GLOBAL: GAME
 #include "_layout/current_objects.h"
 class TagClass;
 extern DynamicVectorClass<TagClass*> DAT_008B41A8; // GLOBAL: GAMEMD 0x008B41A8
-extern DynamicVectorClass<TagClass*> DAT_008B40C8; // GLOBAL: GAMEMD 0x008B40C8
 extern DynamicVectorClass<ObjectClass*> DAT_00A8ECB8; // GLOBAL: GAMEMD 0x00A8ECB8
 extern DynamicVectorClass<void*> DAT_0087F838; // GLOBAL: GAMEMD 0x0087F838
 extern int DAT_0083D834; // GLOBAL: GAMEMD 0x0083D834
@@ -216,7 +218,6 @@ extern bool DAT_00829AE4; // GLOBAL: GAMEMD 0x00829AE4
 extern int DAT_0087F8D4; // GLOBAL: GAMEMD 0x0087F8D4
 extern int DAT_0087F8D8; // GLOBAL: GAMEMD 0x0087F8D8
 extern int DAT_0087F8DC; // GLOBAL: GAMEMD 0x0087F8DC
-extern int DAT_0087F8E0; // GLOBAL: GAMEMD 0x0087F8E0
 extern const char STR_0083DAF8[]; // STRING: GAMEMD 0x0083DAF8 (decl)
 extern const char STR_0083DAE8[]; // STRING: GAMEMD 0x0083DAE8 (decl)
 extern const char STR_0083DAD0[]; // STRING: GAMEMD 0x0083DAD0 (decl)
@@ -286,8 +287,6 @@ extern "C" void __fastcall FUN_006E57F0(unsigned int);
 // @FUN_006E5820@4
 extern "C" void __fastcall FUN_006E5820(unsigned int);
 
-// GLOBAL: GAMEMD 0x00886FB8
-extern int DAT_00886FB8;
 // GLOBAL: GAMEMD 0x00886FBC
 extern int DAT_00886FBC;
 // GLOBAL: GAMEMD 0x00A8EB84
@@ -743,7 +742,7 @@ bool __fastcall FUN_00683AB0(const char* filename, bool flag, int index)
             wsprintfA(movie, STR_0083D888, DAT_00ABF394[ScenarioInstance->unknown_1438]);
         if (ScenarioInstance->unknown_34D0 > 0) FUN_004B6C30();
         if (flag) FUN_005BF260(ScenarioInstance->unknown_1444, -1, 1, 1, 1);
-        if (DAT_00886FB8 != DAT_00A8EB84 || DAT_00886FBC != DAT_00A8EB88) {
+        if (MouseViewOffset != DAT_00A8EB84 || DAT_00886FBC != DAT_00A8EB88) {
             FUN_004068E0(STR_0083D868, DAT_00A8EB84, DAT_00A8EB88);
             FUN_00560BF0(DAT_00A8EB84, DAT_00A8EB88);
         }
@@ -902,11 +901,11 @@ void __cdecl FUN_00684290()
 void __fastcall FUN_006842F0(bool enabled)
 {
     if (enabled) {
-        if (DAT_00886FB8 != DAT_00A8EB84 || DAT_00886FBC != DAT_00A8EB88) {
+        if (MouseViewOffset != DAT_00A8EB84 || DAT_00886FBC != DAT_00A8EB88) {
             FUN_004068E0(STR_0083D868, DAT_00A8EB84, DAT_00A8EB88);
             FUN_00560BF0(DAT_00A8EB84, DAT_00A8EB88);
         }
-    } else if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+    } else if (MouseViewOffset != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
     }
@@ -1107,7 +1106,7 @@ void __fastcall FUN_00684C30()
     for (i = 0; i < TagTypes.Count; ++i) {
         TagTypeClass* type = TagTypes.Items[i];
         if (type->GetFlags() & 4) DAT_008B41A8.AddItem(TagClass::GetInstance(type));
-        if (type->GetFlags() & 0x10) DAT_008B40C8.AddItem(TagClass::GetInstance(type));
+        if (type->GetFlags() & 0x10) LogicArray.AddItem(TagClass::GetInstance(type));
         if (type->GetFlags() & 8) {
             TagClass* tag = TagClass::GetInstance(type);
             HouseClass* house = FUN_00502D30(tag->Type->FirstTrigger->House->ArrayIndex2);
@@ -1228,7 +1227,7 @@ void __fastcall FUN_006851F0()
     DAT_00829AE4 = true;
     while (TagTypes.Count) delete TagTypes.Items[0];
     DAT_008B41A8.Clear();
-    DAT_008B40C8.Clear();
+    LogicArray.Clear();
     ScenarioInstance->unknown_35A4 = 3600;
     ScenarioInstance->unknown_35A8 = ScenarioInstance->unknown_35A4;
     ScenarioInstance->unknown_35AC = ScenarioInstance->unknown_35A4;
@@ -1249,7 +1248,7 @@ void __fastcall FUN_006851F0()
     DAT_0087F8D4 = 0;
     DAT_0087F8D8 = 0;
     DAT_0087F8DC = 0;
-    DAT_0087F8E0 = 0;
+    g_SurfaceHeight = 0;
     FUN_004068E0(STR_0083DAF8);
     MapInstance.FUN_005BDF50();
     FUN_004068E0(STR_0083DAE8);
@@ -1299,7 +1298,7 @@ void __fastcall FUN_00685670()
     FUN_00406E80();
     FUN_00750FA0();
     FUN_00407150(&DAT_0087E758->First, 0x4000);
-    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+    if (MouseViewOffset != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
     }
@@ -1444,7 +1443,7 @@ void __fastcall FUN_00685DC0()
     WWMouseClassInstance->vf_5();
     MapInstance.FUN_005BDA80(0, 0);
     WWMouseClassInstance->vf_3();
-    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+    if (MouseViewOffset != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
     }
@@ -1563,7 +1562,7 @@ cleanupNotice:
 void __fastcall FUN_006863E0()
 {
     FUN_0072DDB0();
-    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+    if (MouseViewOffset != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
     }
@@ -1615,7 +1614,7 @@ void __fastcall FUN_00686570()
     FUN_00406E80();
     FUN_00750FA0();
     FUN_00407150(&DAT_0087E758->First, 0x4000);
-    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+    if (MouseViewOffset != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
     }
@@ -2734,13 +2733,13 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1180.NumCoopHumanStartSpots) ==
 // GLOBAL: GAMEMD 0x87F8DC
 int DAT_0087F8DC;
 // GLOBAL: GAMEMD 0x87F8E0
-int DAT_0087F8E0;
+int g_SurfaceHeight;
 // GLOBAL: GAMEMD 0x87F914
 int DAT_0087F914;
 // GLOBAL: GAMEMD 0x87F918
 int DAT_0087F918;
 // GLOBAL: GAMEMD 0x886FB8
-int DAT_00886FB8;
+int MouseViewOffset;
 // GLOBAL: GAMEMD 0x886FBC
 int DAT_00886FBC;
 // GLOBAL: GAMEMD 0x887308

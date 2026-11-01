@@ -19,6 +19,7 @@
 
 
 #include "_layout/player_ptr_00a83d4c.h"
+#include "shared_constants_globals.h"
 // GLOBAL: GAMEMD 0xA8EB00
 extern DynamicVectorClass<TechnoTypeClass*> DAT_00A8EB00;
 
@@ -148,8 +149,6 @@ extern DynamicVectorClassLayout* __fastcall FUN_006263D0(char* paletteFile);
 extern int __cdecl FUN_007C8D20(const char* left, const char* right);
 // GLOBAL: GAMEMD 0x00887180
 extern CCINIClass DAT_00887180;
-// GLOBAL: GAMEMD 0x0081834C
-extern const char DAT_0081834C[];
 // GLOBAL: GAMEMD 0x00889F64
 extern const char DAT_00889F64[];
 // STRING: GAMEMD 0x00843350
@@ -270,7 +269,7 @@ HRESULT __stdcall TechnoTypeClass::Load(IStream* stream)
     // fallback, AltCameo, then PaletteFile and Palette.
     char imagePath[0x100];
     char cameoPath[0x100];
-    FUN_007C9FF0(imagePath, 0, 0, ImageFile, DAT_0081834C);
+    FUN_007C9FF0(imagePath, 0, 0, ImageFile, TypesShpExtension);
     Image = FUN_005B40B0(imagePath, 0);
 
     DAT_00887180.FUN_00528A10(ImageFile, STR_CAMEO, STR_XXICON,
@@ -279,7 +278,7 @@ HRESULT __stdcall TechnoTypeClass::Load(IStream* stream)
         DAT_00887180.FUN_00528A10(ID, STR_CAMEO, STR_XXICON,
                                    cameoPath, sizeof(cameoPath));
     }
-    FUN_007C9FF0(imagePath, 0, 0, cameoPath, DAT_0081834C);
+    FUN_007C9FF0(imagePath, 0, 0, cameoPath, TypesShpExtension);
     Cameo = FUN_005B40B0(imagePath, 0);
     if (Cameo == 0) {
         Cameo = FUN_005B40B0(STR_DEFAULT_ICON, 0);
@@ -287,7 +286,7 @@ HRESULT __stdcall TechnoTypeClass::Load(IStream* stream)
 
     DAT_00887180.FUN_00528A10(ImageFile, STR_ALT_CAMEO, DAT_00889F64,
                                cameoPath, sizeof(cameoPath));
-    FUN_007C9FF0(imagePath, 0, 0, cameoPath, DAT_0081834C);
+    FUN_007C9FF0(imagePath, 0, 0, cameoPath, TypesShpExtension);
     AltCameo = FUN_005B40B0(imagePath, 0);
 
     DAT_00887180.FUN_00528A10(ImageFile, STR_PALETTE, DAT_00889F64,

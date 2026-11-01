@@ -45,6 +45,7 @@
 #include <stddef.h>
 #include "trivial_tu048_methods.h"
 #include "string_class.h"
+#include "sidebar_display_globals.h"
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 
@@ -303,12 +304,12 @@ void CCToolTip::MarkToRedraw(ToolTipManagerData& from)
     if (SidebarSideFlag_00A8EB7C == 1) {
         if (from.X >= TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width) {
             TipTouchedSidebar_00884B8E = 1;
-            SidebarNeedsRedraw_00884B8F = 1;
+            DAT_00884B8F = 1;
         }
     } else {
         if (from.X <= SidebarRect_00886F90.X + SidebarRect_00886F90.Width) {
             TipTouchedSidebar_00884B8E = 1;
-            SidebarNeedsRedraw_00884B8F = 1;
+            DAT_00884B8F = 1;
         }
     }
     MapInstance_0087F7E8.FlagToRedraw(0);
@@ -1022,7 +1023,7 @@ unsigned int DAT_0089E418;
 // GLOBAL: GAMEMD 0xA8EB7C
 extern unsigned char SidebarSideFlag_00A8EB7C;
 // GLOBAL: GAMEMD 0x884B8F
-unsigned char SidebarNeedsRedraw_00884B8F;
+unsigned char DAT_00884B8F;
 // GLOBAL: GAMEMD 0x89E414
 unsigned int DAT_0089E414;
 // GLOBAL: GAMEMD 0x886FA0

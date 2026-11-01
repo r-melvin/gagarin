@@ -18,6 +18,7 @@
 
 // 0x406265 addresses the event timer initialized by 0x4062F6.
 #include "triple_timer_init_methods.h"
+#include "mapobj_globals.h"
 struct Sub_00406250 { Timer_00401000 Timer; };
 
 struct Obj_00406250
@@ -107,9 +108,6 @@ bool FUN_0046D460()
     return all != 0;
 }
 
-// GLOBAL: GAMEMD 0x8B4148
-extern int DAT_008B4148;
-
 struct Obj_00484AB0
 {
     char  Pad_00[0xEC];
@@ -126,7 +124,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00484AB0, unknown_116) == 0x116);
 int Obj_00484AB0::InRange()
 {
     short index = unknown_116;
-    if (index >= 0 && index < DAT_008B4148 && unknown_EC == 10)
+    if (index >= 0 && index < TunnelArrayCount && unknown_EC == 10)
         return 1;
     return 0;
 }

@@ -10,9 +10,8 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/audio_event_type.h"
+#include "engine_core_globals.h"
 
-// GLOBAL: GAMEMD 0x87E2A0 — nonzero once the audio subsystem is up.
-extern int DAT_0087E2A0;
 // GLOBAL: GAMEMD 0x87E294 — the sample table. 0x4064A0 reads its value as a
 // pointer, 0x405FD0 compares a handle's owner against its address, so both
 // spellings are in use.

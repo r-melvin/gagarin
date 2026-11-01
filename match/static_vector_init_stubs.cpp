@@ -6,6 +6,7 @@
 // (constructor plus atexit registration) and, 0x40 bytes after it, the exit
 // destructor stub it registers.
 #include "vector_class_operations.h"
+#include "mapobj_globals.h"
 
 class AbstractTypeClass;
 class AircraftTypeClass;
@@ -198,7 +199,7 @@ DynamicVectorClass<ObjectClass*> DAT_00A8ECB8;
 // SYNTHETIC: GAMEMD 0x004E7F70 -- exit-time destructor stub of DAT_008B41A8
 DynamicVectorClass<TagClass*> DAT_008B41A8;
 
-// SYNTHETIC: GAMEMD 0x004E7FB0 -- initialiser of DAT_008B40C8
+// SYNTHETIC: GAMEMD 0x004E7FB0 -- initialiser of LogicArray
 // GLOBAL: GAMEMD 0x008B40C8
-// SYNTHETIC: GAMEMD 0x004E7FF0 -- exit-time destructor stub of DAT_008B40C8
-DynamicVectorClass<TagClass*> DAT_008B40C8;
+// SYNTHETIC: GAMEMD 0x004E7FF0 -- exit-time destructor stub of LogicArray
+DynamicVectorClass<TagClass*> LogicArray;

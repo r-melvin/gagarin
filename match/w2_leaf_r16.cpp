@@ -9,6 +9,7 @@
 #include <windows.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/map_0087f7e8.h"
+#include "sidebar_display_globals.h"
 
 struct Obj_00558860
 {
@@ -154,8 +155,6 @@ GG_STATIC_ASSERT(sizeof(StripSlot_006A76F0) == 0x60);
 extern StripSlot_006A76F0 DAT_00B07C48[];
 // GLOBAL: GAMEMD 0xA8ED84 -- the frame counter.
 extern int DAT_00A8ED84;
-// GLOBAL: GAMEMD 0x884B8F
-extern unsigned char DAT_00884B8F;
 
 // FUNCTION: GAMEMD 0x6A76F0
 // Restart a strip slot's animation aligned to the next 10-frame boundary and request a redraw.

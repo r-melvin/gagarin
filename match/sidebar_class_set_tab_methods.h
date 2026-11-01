@@ -22,6 +22,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "sidebar_display_globals.h"
 
 // One 0x38-byte cameo button.
 struct Button_006A7590
@@ -76,8 +77,6 @@ extern int DAT_00886F9C;
 extern int DAT_00B0B4F8;
 // GLOBAL: GAMEMD 0x886F94 -- sidebar area adjustment term.
 extern int DAT_00886F94;
-// GLOBAL: GAMEMD 0x884B8F -- "sidebar needs a full redraw" byte.
-extern char DAT_00884B8F;
 
 // StripClass (sizeof == 0xF94) -- one sidebar build column.
 struct Strip_006A7590

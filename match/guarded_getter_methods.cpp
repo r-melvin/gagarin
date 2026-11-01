@@ -5,11 +5,12 @@
 // Gate-guarded accessors and one short-pair add, ordered ascending by address.
 
 #include "guarded_getter_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x405130
 int AudioEventType::FUN_00405130() const
 {
-    if (DAT_0087E2A0 == 0) {
+    if (g_AudioEnabled == 0) {
         return 0;
     }
     return Range;
@@ -21,7 +22,7 @@ int AudioEventType::FUN_00405130() const
 // even a literal zero comes from memory.
 float AudioEventType::FUN_00405140() const
 {
-    if (DAT_0087E2A0 == 0) {
+    if (g_AudioEnabled == 0) {
         return 0.0f;
     }
     return MinVolume;
@@ -30,7 +31,7 @@ float AudioEventType::FUN_00405140() const
 // FUNCTION: GAMEMD 0x405160
 int AudioEventType::FUN_00405160() const
 {
-    if (DAT_0087E2A0 == 0) {
+    if (g_AudioEnabled == 0) {
         return 0;
     }
     return Type;
@@ -48,7 +49,7 @@ int AudioEventType::FUN_00405160() const
 // before the test, as retail has it.
 const char* AudioEventType::FUN_00405170() const
 {
-    return DAT_0087E2A0 == 0 ? NoEventsString : Name;
+    return g_AudioEnabled == 0 ? NoEventsString : Name;
 }
 
 // FUNCTION: GAMEMD 0x42E6D0

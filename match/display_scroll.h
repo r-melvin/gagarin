@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "display_class.h"
+#include "sidebar_display_globals.h"
 
 // GetCapture and ReleaseCapture use the SDK declarations from display_class.h.
 
@@ -24,8 +25,6 @@
 extern void* DisplayCaptureWindow_00B73550;
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DisplayFlag_00A8ED9C;
-// GLOBAL: GAMEMD 0x884D44
-extern bool DisplayFlag_00884D44;
 
 // RadarClass, PowerClass, SidebarClass, TabClass (with INoticeSink) and ScrollClass are declared in
 // ui_display_chain.h.

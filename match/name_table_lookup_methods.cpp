@@ -8,11 +8,10 @@
 // verified separately.
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT case-insensitive string compare (cdecl, two pointers).
+#include "shared_constants_globals.h"
 extern "C" int __cdecl strcmpi(const char* a, const char* b);
 
 extern const char* const DAT_00836EE0[5];
-
-extern const char* const DAT_008370BC[5];
 
 extern const char* const DAT_007F0248[12];
 

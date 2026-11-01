@@ -9,6 +9,7 @@
 #include "_layout/super_weapon_type_class.h"
 #include "rules_class_ini_support.h"
 #include "bounded_text.h"
+#include "shared_constants_globals.h"
 
 // GLOBAL: GAMEMD 0x7E2800 -- 0.0, read from memory rather than FLDZ.
 extern const double DAT_007E2800;
@@ -16,8 +17,6 @@ extern const double DAT_007E2800;
 extern const float DAT_007F4100;
 // GLOBAL: GAMEMD 0x8425C0 -- the twelve super weapon type names.
 extern const char* const Names_008425C0[12];
-// STRING: GAMEMD 0x81834C -- ".SHP".
-extern const char STR_0081834C[];
 // STRING: GAMEMD 0x8204FC -- "XXICON.SHP".
 extern const char STR_DEFAULT_ICON[];
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- loads a shape file by path.
@@ -113,7 +112,7 @@ bool SuperWeaponTypeClass::vf_25(CCINIClass* ini)
         ini->ReadString(ID.Data, "SidebarImage", CameoFile, cameo, 0x100);
         GgBoundedText<25>(cameo).CopyTo(CameoFile);
         // STRING: GAMEMD 0x81834C
-        _makepath(path, 0, 0, CameoFile, STR_0081834C);
+        _makepath(path, 0, 0, CameoFile, TypesShpExtension);
         SidebarImage = FUN_005B40B0(path, false);
         if (SidebarImage == 0)
             SidebarImage = FUN_005B40B0(STR_DEFAULT_ICON, false);

@@ -7,6 +7,7 @@
 
 #include "FUNCTION.H"
 #include "randomizer.h"
+#include "shared_constants_globals.h"
 
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, ArrayIndex) == 0xDF8);
 GG_STATIC_ASSERT(sizeof(((UnitTypeClass*)0)->ArrayIndex) == 4);
@@ -20,8 +21,6 @@ extern int DAT_00B1D138;
 
 // GLOBAL: GAMEMD 0xA83CE0 -- the unit type registry.
 extern DynamicVectorClass<UnitTypeClass*> DAT_00A83CE0;
-// STRING: GAMEMD 0x81834C -- ".SHP".
-extern const char STR_0081834C[];
 
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- loads a shape file by path.
 void* __fastcall FUN_005B40B0(const char* name, bool flag);
@@ -113,7 +112,7 @@ HRESULT __stdcall UnitTypeClass::Load(IStream* pStm)
     FUN_005F9070();
     if (AltImage) {
         char path[260];
-        _makepath(path, 0, 0, AltImageFile, STR_0081834C);
+        _makepath(path, 0, 0, AltImageFile, TypesShpExtension);
         AltImage = (SHPStruct*)FUN_005B40B0(path, false);
     }
     return 0;

@@ -12,6 +12,7 @@
 #include "intrusive_list_methods.h"
 #include "tail_call_methods.h"
 #include "audio_sample_methods.h"
+#include "engine_core_globals.h"
 
 struct Gbl_0087E8A8;
 struct Obj_00407060;
@@ -24,8 +25,6 @@ struct Obj_00408ED0;
 struct Obj_004090F0;
 struct Obj_00409330;
 
-// GLOBAL: GAMEMD 0x87E728
-extern void* DAT_0087E728;
 // GLOBAL: GAMEMD 0x87E8A8
 extern Gbl_0087E8A8 DAT_0087E8A8;
 

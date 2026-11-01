@@ -16,6 +16,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/object_class.h"   // ObjectClass: NextObject@0x30
+#include "mapobj_globals.h"
 
 // Re-assert the spine member the loop strides on (self-guards the TU).
 GG_STATIC_ASSERT(offsetof(ObjectClass, NextObject) == 0x30);
@@ -32,7 +33,6 @@ typedef void (* RevealFunc)(ObjectClass*);
 
 // TunnelClass::Array — GetTunnel reads the element count from 0x008B4148 and
 // the Items base from 0x008B413C (the vector object sits at 0x008B4138).
-extern int           TunnelArrayCount;    // GLOBAL: GAMEMD 0x008B4148
 extern TunnelClass** TunnelArrayItems;    // GLOBAL: GAMEMD 0x008B413C
 
 // GLOBAL: GAMEMD 0x00A8E9A0  the byte the three queries test before touching the

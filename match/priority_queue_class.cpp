@@ -10,12 +10,11 @@
 //   GLOBAL:   GAMEMD 0x87F8E0   int  g_SurfaceHeight  (g_e0)
 
 #include "priority_queue_class.h"
+#include "engine_core_globals.h"
 
 // GLOBAL: GAMEMD 0x87F8DC — surface "width" multiplier (read as a signed int by
 // both helpers: IMUL EAX,dword[0x87F8DC]).
 extern int g_SurfaceWidth;
-// GLOBAL: GAMEMD 0x87F8E0 — surface "height" addend (MOV EAX,[0x87F8E0]).
-extern int g_SurfaceHeight;
 
 // FUNCTION: GAMEMD 0x42B1C0  (__fastcall — CellStruct& in ECX)
 //

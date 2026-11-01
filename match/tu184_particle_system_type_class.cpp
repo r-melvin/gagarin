@@ -53,6 +53,7 @@
 
 #include <string.h>
 #include "particle_system_type_class.h"
+#include "shared_constants_globals.h"
 
 // GLOBAL: GAMEMD 0x7E96D0 - CLSID of this class, copied by GetClassID.
 extern "C" const CLSID CLSID_ParticleSystemType =
@@ -107,8 +108,6 @@ static inline int Inline_006442D0(const char* name)
 extern "C" int __cdecl strcmpi(const char* a, const char* b);
 
 extern const char* const DAT_00836EE0[5];
-
-extern const char* const DAT_008370BC[5];
 
 extern const char* const DAT_007F0248[12];
 

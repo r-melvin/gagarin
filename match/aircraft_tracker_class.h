@@ -13,6 +13,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "display_objects_globals.h"
 
 struct CellStruct_004134A0 { short X; short Y; };
 GG_STATIC_ASSERT(sizeof(CellStruct_004134A0) == 4);
@@ -20,8 +21,6 @@ GG_STATIC_ASSERT(sizeof(CellStruct_004134A0) == 4);
 // GLOBAL: GAMEMD 0x87F914 / 0x87F918 — map width / height in cells.
 extern int DAT_0087F914;
 extern int DAT_0087F918;
-// GLOBAL: GAMEMD 0x887850 — the "no cell" coordinate handed back on Remove.
-extern CellStruct_004134A0 DAT_00887850;
 
 struct TrackVtbl;
 // The tracked object; only three vtable slots are used: +0x1B8 and +0x2F4

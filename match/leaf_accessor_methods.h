@@ -19,6 +19,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "small_misc32_methods.h"
+#include "engine_core_globals.h"
 
 // RulesClass singleton pointer @0x8871E0; only the field at +0x44 is read here.
 struct RulesData
@@ -29,8 +30,6 @@ struct RulesData
 GG_STATIC_ASSERT(offsetof(RulesData, unknown_44) == 0x44);
 extern RulesData* GameRules;   // GLOBAL: GAMEMD 0x8871E0
 
-// GLOBAL: GAMEMD 0x87E728 / 0x87E89C — two singleton pointers returned raw.
-extern void* DAT_0087E728;
 struct DirectSoundResource_00409FF0;
 extern DirectSoundResource_00409FF0* DAT_0087E89C;
 

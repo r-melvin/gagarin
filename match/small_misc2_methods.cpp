@@ -8,6 +8,7 @@
 #include "audio_stop_methods.h"
 #include "dispatch_state_methods.h"
 #include "leaf_accessor_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x405BE0
 void AudioController::FUN_00405BE0()
@@ -21,7 +22,7 @@ void AudioController::FUN_00405BE0()
 // FUNCTION: GAMEMD 0x405C00
 void AudioController::FUN_00405C00()
 {
-    if (DAT_0087E2A0 != 0 && this->AudioIndex == &AudioIDXData_Instance) {
+    if (g_AudioEnabled != 0 && this->AudioIndex == &AudioIDXData_Instance) {
         AudioEvent* voice = this->Event;
         if (voice != 0) {
             if (this->EventType == voice->EventType && this->Stamp == voice->Serial

@@ -14,6 +14,7 @@
 #include "terrain_common_views.h"
 #include "_layout/vector_class.h"
 #include "_layout/geometry2d.h"
+#include "shared_constants_globals.h"
 
 // The element of the function-local static offset tables (the user-declared destructor is what makes
 // VC6 register an atexit stub, a bare RET, for each static). It derives from the cell so that
@@ -59,9 +60,6 @@ extern MapObjCell OverlayNoCell;
 extern MapObjCell OverlayZeroCell;
 // GLOBAL: GAMEMD 0x8333BC - the constructor's third argument, parked while Unlimbo runs.
 extern int OverlayPlacementArg;
-
-// STRING: GAMEMD 0x81834C ".SHP"
-extern const char OverlayShpExtension[];
 
 // FUNCTION: GAMEMD 0x5F96B0 (decl; reloc) - stamps the theater letter into name[1]; a theater
 // index of -1 leaves the name alone. __fastcall: the name in ECX, the index in EDX.

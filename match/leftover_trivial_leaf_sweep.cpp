@@ -9,6 +9,7 @@
 // global. Ordered ascending by retail address.
 
 #include "leftover_trivial_leaf_sweep.h"
+#include "shared_constants_globals.h"
 
 
 // FUNCTION: GAMEMD 0x49FB60
@@ -33,13 +34,13 @@ void FUN_0053F1F0(int value)
 // FUNCTION: GAMEMD 0x55AF40
 void FUN_0055AF40(int value)
 {
-    DAT_00829FF4 = value;
+    MinFrameRate = value;
 }
 
 // FUNCTION: GAMEMD 0x55AF50
 void FUN_0055AF50(int value)
 {
-    DAT_00829FF8 = value;
+    BufferZoneWidth = value;
 }
 
 // FUNCTION: GAMEMD 0x5B43E0
@@ -88,7 +89,7 @@ int FUN_00717A70(LeafObj_0x04* self)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x829FF4
-int DAT_00829FF4 = 15;
+int MinFrameRate = 15;
 // GLOBAL: GAMEMD 0x829FF8
-int DAT_00829FF8 = 5;
+int BufferZoneWidth = 5;
 // END defined globals

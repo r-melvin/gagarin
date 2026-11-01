@@ -3,6 +3,7 @@
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x56D460.
 
 #include "map_class_reset_zones_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x56D460  MapClass::ResetZones (__thiscall, ret 4)
 //
@@ -22,7 +23,7 @@ void Map_0056D460::ResetZones(const Cell_0056D460& cell)
 
     Zone_0056D460* here = &Zones[index];
 
-    int len = DAT_0087F8DC + DAT_0087F8E0 + 1;
+    int len = DAT_0087F8DC + g_SurfaceHeight + 1;
     int offsets[8];
     offsets[2] = 1;
     offsets[6] = -1;

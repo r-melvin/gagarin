@@ -109,6 +109,9 @@
 #include "_layout/map_0087f7e8.h"
 #include "_layout/object_class.h"
 #include "_layout/iso_tile_type_class.h"
+#include "engine_core_globals.h"
+#include "mapobj_globals.h"
+#include "shared_constants_globals.h"
 
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
@@ -945,10 +948,6 @@ extern int DAT_00828140;
 #include "leftover_trivial_leaf_sweep.h"
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x829FF4
-extern int DAT_00829FF4;
-// GLOBAL: GAMEMD 0x829FF8
-extern int DAT_00829FF8;
 // END defined globals
 
 #include "member_setter_family_methods.h"
@@ -1108,8 +1107,6 @@ GG_STATIC_ASSERT(offsetof(Node_00401BB0, Key) == 0x14);
 GG_STATIC_ASSERT(offsetof(Node_00401BB0, Payload) == 0x18);
 GG_STATIC_ASSERT(offsetof(Obj_00401BB0, Sentinel) == 0x0C);
 
-// GLOBAL: GAMEMD 0x87E2A0 -- selects whether the per-object table is consulted.
-extern int DAT_0087E2A0;
 // GLOBAL: GAMEMD 0x816204 -- fallback record when the selector is clear.
 extern char DAT_00816204[];
 // GLOBAL: GAMEMD 0x816210 -- fallback record when the object has no table.
@@ -1340,8 +1337,6 @@ extern int DAT_00ABC1D8;
 extern int DAT_00ABC554;
 // GLOBAL: GAMEMD 0x8209D8
 extern int DAT_008209D8;
-// GLOBAL: GAMEMD 0x87E2A0
-extern int DAT_0087E2A0;
 // END defined globals
 
 #include "_layout/bullet_class.h"

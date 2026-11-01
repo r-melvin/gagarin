@@ -15,12 +15,11 @@
 #include "_rt/gg_static_assert.h"
 #include "control_class.h"
 #include "sidebar_class_layout.h"
+#include "sidebar_display_globals.h"
 
 // The tooltip manager singleton (ToolTipManager_Instance, GLOBAL 0x887368) is declared in sidebar_class_layout.h.
 
 
-// GLOBAL: GAMEMD 0x884B8F -- "sidebar needs a full redraw" byte.
-extern unsigned char SidebarNeedsRedraw_00884B8F;
 // GLOBAL: GAMEMD 0xB0B518 -- byte set when a select gadget changes hover state.
 extern unsigned char SelectHoverChanged_00B0B518;
 

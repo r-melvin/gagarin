@@ -5,6 +5,7 @@
 // Flag tests, a flag clear and a clamped setter, ascending by retail address.
 
 #include "flag_and_clamp_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x4010A0
 // True when any of the three sub-objects has bit 1 set.

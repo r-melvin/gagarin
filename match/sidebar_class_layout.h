@@ -20,6 +20,7 @@
 #include "ui_display_chain.h"
 #include "tooltip_manager_shared.h"
 #include "voc_class_play_global_methods.h"
+#include "sidebar_display_globals.h"
 
 // ---------------------------------------------------------------------------
 // Shared call views
@@ -349,8 +350,6 @@ extern SidebarHouse* CurrentPlayer_00A83D4C;
 extern SidebarHouse* Observer_00AC1198;
 // GLOBAL: GAMEMD 0x884CF8 -- observer-mode row limit.
 extern int ObserverRowLimit_00884CF8;
-// GLOBAL: GAMEMD 0x884B8F -- "sidebar needs a full redraw" byte.
-extern unsigned char SidebarNeedsRedraw_00884B8F;
 // GLOBAL: GAMEMD 0xB0B518 -- byte set when the sidebar surface was touched.
 extern unsigned char SidebarTouched_00B0B518;
 

@@ -16,6 +16,8 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
+#include "mapobj_globals.h"
+#include "sidebar_display_globals.h"
 
 
 class DisplayCmdTechno;
@@ -252,8 +254,6 @@ struct DisplayCmdMap
 };
 // GLOBAL: GAMEMD 0x87F7E8
 extern DisplayCmdMap DisplayCmdMap_0087F7E8;
-// GLOBAL: GAMEMD 0x8A03F8 -- the "no cell" sentinel pair.
-extern CellStruct DisplayCmdNoCell_008A03F8;
 // GLOBAL: GAMEMD 0x8A0730
 extern int DisplayCmdZBias_008A0730;
 // GLOBAL: GAMEMD 0xA8ED6B (byte)
@@ -287,8 +287,6 @@ GG_STATIC_ASSERT(offsetof(DisplayCmdTechno, Type) == 0x520);
 // DisplayClass (slots 46, 48, 49, the members +0x1178..+0x11D0 and the mode setters) is declared in
 // ui_display_chain.h.
 
-// GLOBAL: GAMEMD 0x884D44
-extern bool DisplayCmdFlag_00884D44;
 // FUNCTION: GAMEMD 0x48DC90 (decl; reloc)
 void __cdecl UnselectAll_0048DC90();
 

@@ -14,6 +14,7 @@
 #include "_rt/gg_static_assert.h"
 
 #include "_layout/geometry2d.h"
+#include "sidebar_display_globals.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x8);
 
 // One queued selectable: the object and its screen-space point.
@@ -28,8 +29,6 @@ GG_STATIC_ASSERT(offsetof(TacticalSelectableStruct, Point) == 0x4);
 // GLOBAL: GAMEMD 0xB0CEC8 — the selectable queue (500 entries).
 extern TacticalSelectableStruct TacticalSelectables[500];
 
-// GLOBAL: GAMEMD 0x886FA8 — view bound width.
-extern int DAT_00886FA8;
 // GLOBAL: GAMEMD 0x886FAC — view bound height.
 extern int DAT_00886FAC;
 

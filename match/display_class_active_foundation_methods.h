@@ -15,6 +15,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "mapobj_globals.h"
 
 // CellStruct — passed by const reference, which is why retail stores the two
 // words and then copies the pair as one dword into the argument slot.
@@ -33,9 +34,6 @@ inline Cell_004A8BF0 MakeCell_004A8BF0(int x, int y)
     cell.Y = (short)y;
     return cell;
 }
-
-// GLOBAL: GAMEMD 0x8A03F8 — the cell pair the offset is reset to.
-extern Cell_004A8BF0 DAT_008A03F8;
 
 // The foundation the display is currently showing: 0x78 dwords, held in a
 // function-local static whose destructor is registered with atexit.

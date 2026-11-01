@@ -8,6 +8,7 @@
 //   FUNCTION: GAMEMD 0x413800  AircraftTrackerClass::Clear (__thiscall)
 
 #include "aircraft_tracker_class.h"
+#include "display_objects_globals.h"
 
 // The tracked object's vtable view; see TechnoView_004134A0.
 #define TRACKED(t) ((TechnoView_004134A0*)(t))
@@ -104,6 +105,4 @@ void AircraftTrackerClass::Clear()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x887850
-extern CellStruct_004134A0 DAT_00887850;
 // END defined globals

@@ -12,11 +12,10 @@
 //   GLOBAL:   GAMEMD 0xABCD50  FPSCounter::ReducedEffects
 
 #include "fps_counter_methods.h"
+#include "shared_constants_globals.h"
 
 // Engine globals (absolute loads in 0x55AF60). The differ normalises the
 // relocations on these memory operands.
-extern unsigned int MinFrameRate;             // GAMEMD 0x829FF4
-extern unsigned int BufferZoneWidth;          // GAMEMD 0x829FF8
 extern unsigned int FPSCounter_CurrentFrameRate; // GAMEMD 0xABCD44
 extern bool         FPSCounter_ReducedEffects;   // GAMEMD 0xABCD50
 

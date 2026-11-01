@@ -6,6 +6,7 @@
 
 #include "small_misc43_methods.h"
 #include "small_misc45_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x4050C0
 // PARTIAL: 87.5%. Same instructions in retail order except two scheduling swaps:
@@ -15,7 +16,7 @@
 // 0x404DD0, either freeing the block or handing it back to the pool.
 void __cdecl FUN_004050C0()
 {
-    if (DAT_0087E2A0 == 0) {
+    if (g_AudioEnabled == 0) {
         return;
     }
 

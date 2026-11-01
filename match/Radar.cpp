@@ -72,6 +72,7 @@
 #include "scenario_class_methods.h"
 #include "shape_button_class.h"
 #include "ui_display_chain.h"
+#include "sidebar_display_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
@@ -169,8 +170,6 @@ extern const char* DAT_008391F8;
 
 // GLOBAL: GAMEMD 0x007F5BF8
 extern int DAT_007F5BF8;
-// GLOBAL: GAMEMD 0x00886FA8
-extern int DAT_00886FA8;
 // GLOBAL: GAMEMD 0x00A8EB7C
 extern unsigned char DAT_00A8EB7C;
 // GLOBAL: GAMEMD 0x00A8EDA0
@@ -1236,7 +1235,7 @@ bool Obj_00653830::FUN_00653830(int a1, int a2, int a3)
 void RadarClass::vf_10(int* key, Point2D* where)
 {
     DisplayClass::vf_10(key, where);
-    int offset = DAT_00A8EB7C ? DAT_00886FA8 : 0;
+    int offset = DAT_00A8EB7C ? MouseViewBoundWidth : 0;
     if (DAT_00B04A00 + offset <= where->X &&
         where->X < DAT_00B04A00 + offset + DAT_00B04A08 &&
         DAT_00B04A04 <= where->Y &&
@@ -1291,7 +1290,7 @@ void RadarClass::vf_34()
     // Native CALL 0x4AE6B0 is DisplayClass::vf_34, not a virtual dispatch.
     DisplayClass::vf_34();
 
-    const int shift = DAT_00A8EB7C ? DAT_00886FA8 : 0;
+    const int shift = DAT_00A8EB7C ? MouseViewBoundWidth : 0;
 
     // These stores are the two ShapeButtonClass::OffsetX fields at +0x44.
     RadarButtonF2_00B04978.OffsetX = -shift;
@@ -1767,7 +1766,7 @@ template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x886FA8
-int DAT_00886FA8;
+int MouseViewBoundWidth;
 // GLOBAL: GAMEMD 0xB048AC
 void* DAT_00B048AC;
 // GLOBAL: GAMEMD 0xB048C8

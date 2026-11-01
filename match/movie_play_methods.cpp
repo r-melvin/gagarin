@@ -14,6 +14,7 @@
 #include <string.h>
 #include "vector_add_item_free.h"
 #include "_layout/map_0087f7e8.h"
+#include "sidebar_display_globals.h"
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
 void __cdecl FUN_004068E0(const char* format, ...);
@@ -37,8 +38,6 @@ extern bool DAT_00A8EB94;
 extern float DAT_00A8EB9C;
 // GLOBAL: GAMEMD 0x8A0DEE
 extern bool DAT_008A0DEE;
-// GLOBAL: GAMEMD 0x886FB8
-extern int DAT_00886FB8;
 // GLOBAL: GAMEMD 0x886FBC
 extern int DAT_00886FBC;
 
@@ -187,11 +186,11 @@ void Play_Movie(const char* name, int x, int a, int b, int c, int d)
     bool stretch = b == 1 && DAT_00A8EB94 == true;
     if (DAT_008A0DEE == true && stretch == true) {
         int width = data->unknown_24.Width;
-        if (width < DAT_00886FB8) {
+        if (width < MouseViewOffset) {
             int height = data->unknown_24.Height;
             if (height < DAT_00886FBC) {
-                data->unknown_34.Width = DAT_00886FB8;
-                int newHeight = (int)(height * ((double)DAT_00886FB8 / width));
+                data->unknown_34.Width = MouseViewOffset;
+                int newHeight = (int)(height * ((double)MouseViewOffset / width));
                 data->unknown_34.X = 0;
                 data->unknown_34.Height = newHeight;
                 data->unknown_34.Y = (DAT_00886FBC - newHeight) / 2;

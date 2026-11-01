@@ -31,6 +31,7 @@
 #include "_layout/anim_type_class.h"
 #include "ccini_class_methods.h"
 #include "_layout/geometry2d.h"
+#include "shared_constants_globals.h"
 // GLOBAL: GAMEMD 0x887180
 extern CCINIClass DAT_00887180;
 
@@ -227,7 +228,7 @@ void OverlayTypeClass::LoadArt(int idxTheater)
             }
             else if (type->NewTheater != 0)
             {
-                _makepath(path, 0, 0, type->ImageFile, STR_0081834C);
+                _makepath(path, 0, 0, type->ImageFile, TypesShpExtension);
                 FUN_005F96B0(path, idxTheater);
 
                 Image_005FE620* themedImage = FUN_005B40B0(path, 1);
@@ -280,7 +281,7 @@ bool OverlayTypeClass::vf_25(CCINIClass* ini)
 
         if (!Theater && !unknown_2AF) {
             char path[0x200];
-            _makepath(path, 0, 0, ImageFile, OverlayShpExtension);
+            _makepath(path, 0, 0, ImageFile, TypesShpExtension);
             Image = MapObjLoadShape(path, 1);
         }
 
@@ -335,7 +336,7 @@ HRESULT __stdcall OverlayTypeClass::Load(IStream* pStm)
             if (Theater) {
                 _makepath(path, 0, 0, ImageFile, MapObjTheaters[MapObjScenario->TheaterIndex].Extension);
             } else {
-                _makepath(path, 0, 0, ImageFile, OverlayShpExtension);
+                _makepath(path, 0, 0, ImageFile, TypesShpExtension);
                 OverlayStampTheater(path, MapObjScenario->TheaterIndex);
             }
             if (Image == 0)
@@ -377,7 +378,7 @@ void* OverlayTypeClass::vf_39()
         if (Theater) {
             _makepath(path, 0, 0, ImageFile, MapObjTheaters[MapObjScenario->TheaterIndex].Extension);
         } else if (NewTheater) {
-            _makepath(path, 0, 0, ImageFile, OverlayShpExtension);
+            _makepath(path, 0, 0, ImageFile, TypesShpExtension);
             OverlayStampTheater(path, MapObjScenario->TheaterIndex);
         }
         OverlayFileView file(path);

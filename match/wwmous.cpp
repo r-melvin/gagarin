@@ -23,6 +23,7 @@
 #include "mouse_ww_mouse_lock.h"
 #include <windows.h>
 #include "mouse_ww_mouse_class.h"
+#include "sidebar_display_globals.h"
 
 // The save-under restore that vf_3, vf_5 and SetCursor share: copy the saved background back onto the
 // screen at the cursor rectangle.
@@ -378,10 +379,6 @@ void WWMouseClass::vf_14(int x, int y)
 bool MouseConvertFlag;
 // GLOBAL: GAMEMD 0xB78164
 WWMouseClass* DAT_00B78164;
-// GLOBAL: GAMEMD 0x886FA8
-extern int MouseViewBoundWidth;
-// GLOBAL: GAMEMD 0x886FB8
-extern int MouseViewOffset;
 // GLOBAL: GAMEMD 0x887300
 MouseSurfaceView* MouseSidebarSurface;
 // GLOBAL: GAMEMD 0xA8EB7C

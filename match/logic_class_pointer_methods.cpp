@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x55B880.
 
 #include "logic_class_pointer_methods.h"
+#include "mapobj_globals.h"
 
 // FUNCTION: GAMEMD 0x55B880  LogicClass::PointerGotInvalid (__thiscall, ret 0x8)
 // Drop a dying object from the per-frame logic list. `this` is never touched.
@@ -40,6 +41,4 @@ void LogicClass::PointerGotInvalid(AbstractClass* invalid, bool removed)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x8B40C8
-extern DynamicVectorClassLayout LogicArray;
 // END defined globals

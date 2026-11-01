@@ -12,6 +12,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/vector_class.h"
 #include "_layout/layer_class.h"
+#include "mapobj_globals.h"
 
 class AbstractClass;
 
@@ -22,9 +23,6 @@ class AbstractClass;
 // tree's __fastcall-fn-pointer idiom is the right tool here.
 typedef int (* WhatAmIFunc)(AbstractClass*);
 #define LOGIC_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x2c))(o))
-
-// GLOBAL: GAMEMD 0x008B40C8 — the logic list.
-extern DynamicVectorClassLayout LogicArray;
 
 
 #endif  // GG_MATCH_CORE_LOGIC_CLASS_POINTER_METHODS_H

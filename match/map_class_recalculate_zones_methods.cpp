@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x56D5A0.
 
 #include "map_class_recalculate_zones_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x56D5A0
 //
@@ -50,7 +51,7 @@
 // after the stride puts them below the LEA. Still 29.4% overall: the gain is
 // offset by cl scheduling the `LEA EDX,[EDX+EAX*4]` immediately after the
 // Zones load where retail defers it past the two stores. Also re-tried naming
-// `DAT_0087F8E0` in a local to pull its load up to retail's 0x56D5DA slot -
+// `g_SurfaceHeight` in a local to pull its load up to retail's 0x56D5DA slot -
 // identical stream. Deltas 1-3 above stand.
 // Lift pass 3 (2026-09-18): re-tested delta 1 against the loop-rotation lever
 // that took 0x40E3E0, 0x505360 and 0x526CC0 to 100% — `while (1) { body; ++i;
@@ -83,7 +84,7 @@ void Map_0056D5A0::RecalculateZones(CellStruct_0056D5A0& cell)
     offsets[2] = 1;
     offsets[6] = -1;
 
-    int stride = DAT_0087F8E0 + DAT_0087F8DC + 1;
+    int stride = g_SurfaceHeight + DAT_0087F8DC + 1;
     int type = here->Type;
     offsets[4] = stride;
     offsets[0] = -stride;

@@ -12,9 +12,7 @@
 #include "_rt/gg_static_assert.h"
 #include "triple_timer_init_methods.h"
 #include "_layout/audio_event_type.h"
-
-// GLOBAL: GAMEMD 0x87E728
-extern void* DAT_0087E728;
+#include "engine_core_globals.h"
 
 
 

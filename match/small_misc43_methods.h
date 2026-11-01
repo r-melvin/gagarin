@@ -7,6 +7,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "engine_core_globals.h"
 
 // ---------------------------------------------------------------------------
 // 0x4053E0 — on the first pause only, roll a 64-bit accumulator back by the
@@ -59,7 +60,6 @@ void FUN_00405430(Obj_004053E0* self);
 // per-node body is exactly 0x405430's.
 // ---------------------------------------------------------------------------
 // GLOBAL: GAMEMD 0x87E2A0 — the gate; 0x87E180 is the ring header.
-extern int DAT_0087E2A0;
 extern Obj_004053E0 DAT_0087E180;
 
 // FUNCTION: GAMEMD 0x405040

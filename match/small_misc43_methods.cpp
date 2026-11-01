@@ -4,6 +4,7 @@
 
 #include "small_misc43_methods.h"
 #include "audio_time_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x4053E0
 // REGISTER-PRESSURE DELTA (status partial, 18.2%). With an ordinary state
@@ -85,7 +86,7 @@ void FUN_00405430(Obj_004053E0* self)
 // score reflects rather than any wrong code.
 void __cdecl FUN_00405040()
 {
-    if (DAT_0087E2A0 == 0) {
+    if (g_AudioEnabled == 0) {
         return;
     }
 

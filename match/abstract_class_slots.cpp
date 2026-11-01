@@ -7,9 +7,7 @@
 // placeholders (abstract_class.h).
 #include "_layout/object_class.h"
 #include "_layout/obj_004a1d30.h"
-
-// GLOBAL: GAMEMD 0x887680 -- the coordinate slot 18 returns.
-extern CoordStruct DAT_00887680;
+#include "display_objects_globals.h"
 
 // FUNCTION: GAMEMD 0x410210
 // RTTI-interface slot 3 queries primary slot 11; VC6 adjusts the +4 receiver.

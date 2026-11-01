@@ -5,6 +5,7 @@
 // Ordered ascending by retail address.
 
 #include "small_misc13_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x406F40
 // Shutdown chain, ending in a guarded tail call.
@@ -15,8 +16,8 @@ void __cdecl FUN_00406F40()
     FUN_00751080b();
     FUN_00405040b();
 
-    if (DAT_0087E728b) {
-        FUN_004037C0b(DAT_0087E728b, 1);
+    if (DAT_0087E728) {
+        FUN_004037C0b(DAT_0087E728, 1);
     }
 }
 
@@ -53,6 +54,4 @@ void Owned_0043AE80::FUN_0043AE80()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x87E728
-extern void* DAT_0087E728b;
 // END defined globals

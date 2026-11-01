@@ -6,13 +6,12 @@
 //   Address index: 0x6CE700 no-init ctor, 0x6CE740 dtor, 0x6CE800 Load, 0x6CEFE0 deleting dtor.
 
 #include "FUNCTION.H"
+#include "shared_constants_globals.h"
 
 // GLOBAL: GAMEMD 0xA8E330 -- the super weapon type registry.
 extern DynamicVectorClass<SuperWeaponTypeClass*> DAT_00A8E330;
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;
-// STRING: GAMEMD 0x81834C -- ".SHP".
-extern const char STR_0081834C[];
 // STRING: GAMEMD 0x8204FC -- "XXICON.SHP".
 extern const char STR_DEFAULT_ICON[];
 
@@ -43,7 +42,7 @@ HRESULT __stdcall SuperWeaponTypeClass::Load(IStream* pStm)
     DAT_00B0C110.SwizzleManagerClass::vf_4(&WeaponType);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&AuxBuilding);
     char path[0x200];
-    _makepath(path, 0, 0, CameoFile, STR_0081834C);
+    _makepath(path, 0, 0, CameoFile, TypesShpExtension);
     SidebarImage = FUN_005B40B0(path, false);
     if (SidebarImage == 0) {
         SidebarImage = FUN_005B40B0(STR_DEFAULT_ICON, false);

@@ -67,6 +67,7 @@
 #include "sidebar_class_scroll_methods.h"
 #include "sidebar_class_tab_methods.h"
 #include "sidebar_select_class.h"
+#include "sidebar_display_globals.h"
 
 // FUNCTION: GAMEMD 0x5BF450 (decl; reloc) -- releases the pump list.
 void FUN_005BF450();
@@ -1264,7 +1265,7 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
                     CameoButtons_00B07E80[strip->RowBase * 60 + j].Zap();
                     MapInstance_0087F7E8.AddButton(&CameoButtons_00B07E80[strip->RowBase * 60 + j]);
                 }
-                SidebarNeedsRedraw_00884B8F = 1;
+                DAT_00884B8F = 1;
                 FUN_006A6610();
                 At_53A7 = 1;
             }
@@ -1309,7 +1310,7 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
         if (redraw) {
             At_53A6 = 1;
             SidebarTouched_00B0B518 = 1;
-            SidebarNeedsRedraw_00884B8F = 1;
+            DAT_00884B8F = 1;
             FlagToRedraw(0);
         }
     }
@@ -1391,7 +1392,7 @@ bool SidebarClass::vf_54(int control)
                 CameoButtons_00B07E80[strip->RowBase * 60 + k].Zap();
                 MapInstance_0087F7E8.AddButton(&CameoButtons_00B07E80[strip->RowBase * 60 + k]);
             }
-            SidebarNeedsRedraw_00884B8F = 1;
+            DAT_00884B8F = 1;
             FUN_006A6610();
             FlagToRedraw(2);
         } else {
@@ -1522,7 +1523,7 @@ bool StripClass::FUN_006A87F0(int type, int id)
         }
         FUN_006A8710(type, id);
         At_3C = 1;
-        SidebarNeedsRedraw_00884B8F = 1;
+        DAT_00884B8F = 1;
         return true;
     }
     return false;
@@ -1690,7 +1691,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                             Owner->Entries[index].Frames = frames;
                             Owner->At_3C = 1;
                             Map_0087F7E8.FlagToRedraw(0);
-                            SidebarNeedsRedraw_00884B8F = 1;
+                            DAT_00884B8F = 1;
                         }
                     } else {
                         SelectFactory* primary = SelectPlayer_00A83D4C->GetPrimaryFactory(type, technoType->At_CCE, category);
@@ -1808,7 +1809,7 @@ void SidebarSelectClass::OnMouseEnter()
     Hover = 1;
     Owner->At_3C = 1;
     Map_0087F7E8.FlagToRedraw(0);
-    SidebarNeedsRedraw_00884B8F = 1;
+    DAT_00884B8F = 1;
     SelectHoverChanged_00B0B518 = 1;
 }
 
@@ -1819,7 +1820,7 @@ void SidebarSelectClass::OnMouseLeave()
     Hover = 0;
     Owner->At_3C = 1;
     Map_0087F7E8.FlagToRedraw(0);
-    SidebarNeedsRedraw_00884B8F = 1;
+    DAT_00884B8F = 1;
     SelectHoverChanged_00B0B518 = 1;
 }
 

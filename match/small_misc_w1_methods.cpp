@@ -7,6 +7,7 @@
 #include "_rt/gg_static_assert.h"
 #include "header_init_shapes.h"
 #include "_layout/fogged_object_class.h"
+#include "engine_core_globals.h"
 
 // A circular list whose sentinel sits at +0x0C; each node holds a key at +0x14
 // and a payload pointer at +0x18.
@@ -41,8 +42,6 @@ Node_00401BB0* __fastcall Obj_00401BB0::FUN_00401BB0(int key)
     return 0;
 }
 
-// GLOBAL: GAMEMD 0x87E2A0 -- selects whether the per-object table is consulted.
-extern int DAT_0087E2A0;
 // GLOBAL: GAMEMD 0x816204 -- fallback record when the selector is clear.
 extern char DAT_00816204[];
 // GLOBAL: GAMEMD 0x816210 -- fallback record when the object has no table.
@@ -61,7 +60,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00406340, unknown_24) == 0x24);
 // The record at +0x6C of the table at +0x24, or one of two fallback records.
 char* Obj_00406340::FUN_00406340()
 {
-    if (!DAT_0087E2A0) {
+    if (!g_AudioEnabled) {
         return DAT_00816204;
     }
     if (!unknown_24) {

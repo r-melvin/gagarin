@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x405D40.
 
 #include "audio_stop_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x405D40
 //
@@ -56,7 +57,7 @@
 // There is no merged return block to split.
 void AudioController::Stop()
 {
-    if (DAT_0087E2A0 != 0 && this->AudioIndex == &AudioIDXData_Instance) {
+    if (g_AudioEnabled != 0 && this->AudioIndex == &AudioIDXData_Instance) {
         AudioEvent* voice = this->Event;
         if (voice != 0) {
             if (this->EventType == voice->EventType && this->Stamp == voice->Serial

@@ -259,6 +259,7 @@
 #include "vector_class_operations.h"
 #include "_layout/house_class.h"
 #include "vector_ctor_pod_family_methods.h"
+#include "display_objects_globals.h"
 
 class AlphaLightingRemapClass;
 class BulletClass;
@@ -671,8 +672,6 @@ extern const IID DAT_007E9AF0;
 extern const CLSID CLSID_House;
 // GLOBAL: GAMEMD 0x7E36C0 - the interface id requested from the global object below.
 extern const IID DAT_007E36C0;
-// GLOBAL: GAMEMD 0x89A29C - the object the main interface is queried from.
-extern unsigned char HouseMainObject;
 
 
 // Raw PBVTeamTypeClass RTTI identifies const pointer elements and the

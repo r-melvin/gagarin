@@ -50,6 +50,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include <math.h>
+#include "sidebar_display_globals.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -3010,16 +3011,14 @@ extern int DAT_0087F8E8;
 extern int DAT_0087F8EC;
 // GLOBAL: GAMEMD 0x87F8F0
 extern int DAT_0087F8F0;
-// GLOBAL: GAMEMD 0x886FA8
-extern int DAT_00886FA8;
 // GLOBAL: GAMEMD 0x886FAC
 extern int DAT_00886FAC;
 
 // FUNCTION: GAMEMD 0x6D8640
 bool Tactical::FUN_006D8640(Pair_006D9F80* point)
 {
-    int left = DAT_00886FA8 / 2 + (2 * DAT_0087F8E4 - DAT_0087F8DC) * 30;
-    int right = DAT_0087F8EC * 60 - DAT_00886FA8 + left;
+    int left = MouseViewBoundWidth / 2 + (2 * DAT_0087F8E4 - DAT_0087F8DC) * 30;
+    int right = DAT_0087F8EC * 60 - MouseViewBoundWidth + left;
     int top = (DAT_0087F8DC - 5 + 2 * DAT_0087F8E8) * 15 + DAT_00886FAC / 2;
     int bottom = (DAT_0087F8F0 * 60 + 270) / 2 - DAT_00886FAC + top;
     bool changed = false;
@@ -3517,7 +3516,7 @@ bool Tactical::AddSelectable(void* pTechno, int x, int y)
     int count = this->unknown_DB0;
 
     if (count != 500
-        && x >= -32 && x <= DAT_00886FA8 + 32
+        && x >= -32 && x <= MouseViewBoundWidth + 32
         && y >= -32 && y <= DAT_00886FAC + 32)
     {
         TacticalSelectables[count].Techno = pTechno;

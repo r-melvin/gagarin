@@ -7,10 +7,9 @@
 #include <string.h>
 #include <new.h>
 #include "_layout/audio_event.h"
+#include "engine_core_globals.h"
 
 
-// GLOBAL: GAMEMD 0x87E2A0 -- nonzero once the audio subsystem is up.
-extern int DAT_0087E2A0;
 // GLOBAL: GAMEMD 0x816108 -- audio switch.
 extern int DAT_00816108;
 // GLOBAL: GAMEMD 0x81610C -- next event serial.
@@ -44,7 +43,7 @@ AudioEvent* AudioEventType::FUN_00405190()
 
     AudioEvent* event = (AudioEvent*)DAT_0087E2A8->FUN_00407520();
     if (event == 0) {
-        if (DAT_0087E2A0 != 0) {
+        if (g_AudioEnabled != 0) {
             ListNode* node = DAT_0087E180.Prev;
             if (node != &DAT_0087E180) {
                 do {
@@ -92,7 +91,7 @@ AudioEvent* AudioEventType::FUN_00405190()
 // The descriptor named `name`, created with its defaults on first use; null while audio is off.
 AudioEventType* AudioEventType::FUN_004063B0(const char* name)
 {
-    if (DAT_0087E2A0 == 0)
+    if (g_AudioEnabled == 0)
         return 0;
 
     ListNode* node = DAT_0087E250.FUN_004073C0();

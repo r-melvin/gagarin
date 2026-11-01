@@ -10,6 +10,8 @@
 #include "_layout/geometry2d.h"
 #include "_layout/cell.h"
 #include "_layout/cell_offset.h"
+#include "display_objects_globals.h"
+#include "shared_constants_globals.h"
 
 // The map object (global 0x87F7E8; read-only here). The floor-height lookup ignores its `this`.
 class TypesMapView
@@ -50,8 +52,6 @@ extern FoundationCell TypesFoundationCells[22][30];
 extern FoundationCell TypesFoundationOutsideCells[22][30];
 
 #include "foundation_dimensions.h"
-// GLOBAL: GAMEMD 0x89DDB8 - the height of one level in leptons.
-extern int TypesLevelHeight;
 
 // A type object whose cost slot (33, +0x84) the cost query calls, with the dock list's item pointer.
 class TypesCostTypeView
@@ -128,8 +128,6 @@ extern TypesScenarioView* TypesScenario;
 
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir, const char* fname,
                                   const char* ext);
-// STRING: GAMEMD 0x81834C ".SHP"
-extern const char TypesShpExtension[];
 // FUNCTION: GAMEMD 0x5F96B0 (read-only here) - stamps the theater letter into a file name. __fastcall.
 void TypesStampTheater(char* name, int theaterIndex);
 // FUNCTION: GAMEMD 0x5F9710 (read-only here) - stamps the generic theater letter ('G') into a file name.

@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x406060.
 
 #include "audio_end_looping_methods.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x406060
 //
@@ -62,7 +63,7 @@ void AudioController::EndLooping()
     AudioEventType* token;
     Peer_00405D40* peer;
 
-    if (DAT_0087E2A0 == 0) { this->EventType = 0; return; }
+    if (g_AudioEnabled == 0) { this->EventType = 0; return; }
     if (this->AudioIndex != &AudioIDXData_Instance) { this->EventType = 0; return; }
     voice = this->Event;
     if (voice == 0) { this->EventType = 0; return; }

@@ -51,6 +51,8 @@
 
 #include "types_building_shared.h"
 #include "_layout/swizzle_manager_class.h"
+#include "display_objects_globals.h"
+#include "shared_constants_globals.h"
 
 // LIBRARY: GAMEMD 0x7C8B3D - CRT free.
 extern "C" void __cdecl gg_free(void*);
@@ -1837,8 +1839,6 @@ void* BufferHolderDtor::FUN_00466080(unsigned int flags)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x89DDB8
-extern int TypesLevelHeight;
 // GLOBAL: GAMEMD 0x7E4530
 extern const double DAT_007E4530 = 60.0;
 // GLOBAL: GAMEMD 0x81834C
