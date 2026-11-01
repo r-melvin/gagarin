@@ -4,8 +4,8 @@
 //   entry-origin instructions; 0x7C8E17 is the called library allocator.
 
 #include "_layout/memory_buffer.h"
+#include "_rt/crt_allocator.h"
 
-extern "C" void* __cdecl FUN_007C8E17(unsigned int size); // LIBRARY: GAMEMD 0x7C8E17
 
 // FUNCTION: GAMEMD 0x43AD00
 MemoryBuffer::MemoryBuffer(void* pBuffer, int size) throw()
@@ -19,7 +19,6 @@ MemoryBuffer::MemoryBuffer(void* pBuffer, int size) throw()
     }
 }
 
-extern "C" void __cdecl FUN_007C8B3D(void* block); // LIBRARY: GAMEMD 0x7C8B3D
 
 // FUNCTION: GAMEMD 0x43ADC0
 MemoryBuffer::MemoryBuffer(int size) throw()

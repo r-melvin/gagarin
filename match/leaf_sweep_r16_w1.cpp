@@ -13,6 +13,7 @@
 #include "_layout/geometry2d.h"
 #include "ion_blast_draw_methods.h"
 #include "header_init_shapes.h"
+#include "_rt/crt_allocator.h"
 
 // GLOBAL: GAMEMD 0x87F914 / 0x87F918 -- map width / height in cells.
 extern int DAT_0087F914;
@@ -262,11 +263,6 @@ void __fastcall FUN_0053D9F0(int pitch)
     }
 }
 
-// Scalar-deleting-destructor shape at 0x4AECA0 (see core/deleting_dtor_sweep.h): it
-// tears down the member at +0xC, then the object itself, and frees the block when
-// bit 0 of the flag is set. Written longhand because cl would inline the empty
-// destructor bodies instead of emitting the two calls.
-extern "C" void __cdecl FUN_007C8B3D(void* block);   // GAMEMD 0x7C8B3D operator delete
 void __fastcall FUN_0043AE50(void* member);          // GAMEMD 0x43AE50 (decl; reloc)
 void __fastcall FUN_00631C80(void* self);            // GAMEMD 0x631C80 (decl; reloc)
 

@@ -24,8 +24,6 @@
 #ifndef GG_MATCH_CORE_RULES_CLASS_READ_POWERUPS_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_READ_POWERUPS_METHODS_H
 
-#include <stddef.h>
-#include "_rt/gg_static_assert.h"
 
 // Opaque INI parser; members declared only, so cl emits reloc-normalised
 // __thiscall CALLs.
@@ -76,5 +74,47 @@ struct Rules_00673E80
     // FUNCTION: GAMEMD 0x673E80 — RulesClass::Read_Powerups.
     bool Read_Powerups(CCINI_00673E80* pINI);
 };
+
+
+// GLOBAL: GAMEMD 0x817278
+extern const char STR_00817278[];
+// GLOBAL: GAMEMD 0x81746C
+extern const char STR_0081746C[];
+// GLOBAL: GAMEMD 0x81D98C
+extern const char STR_0081D98C[];
+// GLOBAL: GAMEMD 0x81D990
+extern const char STR_0081D990[];
+// GLOBAL: GAMEMD 0x81D994
+extern const char STR_0081D994[];
+// GLOBAL: GAMEMD 0x81D9A0
+extern const char STR_0081D9A0[];
+// GLOBAL: GAMEMD 0x81D9A8
+extern const char STR_0081D9A8[];
+// GLOBAL: GAMEMD 0x81D9B8
+extern const char STR_0081D9B8[];
+// GLOBAL: GAMEMD 0x81D9C0
+extern const char STR_0081D9C0[];
+// GLOBAL: GAMEMD 0x81D9CC
+extern const char STR_0081D9CC[];
+// GLOBAL: GAMEMD 0x81D9D4
+extern const char STR_0081D9D4[];
+// GLOBAL: GAMEMD 0x81D9DC
+extern const char STR_0081D9DC[];
+// GLOBAL: GAMEMD 0x81D9E4
+extern const char STR_0081D9E4[];
+// GLOBAL: GAMEMD 0x81D9F0
+extern const char STR_0081D9F0[];
+// GLOBAL: GAMEMD 0x81D9F8
+extern const char STR_0081D9F8[];
+// GLOBAL: GAMEMD 0x81DA00
+extern const char STR_0081DA00[];
+// GLOBAL: GAMEMD 0x81DA0C
+extern const char STR_0081DA0C[];
+// GLOBAL: GAMEMD 0x81DA14
+extern const char STR_0081DA14[];
+// GLOBAL: GAMEMD 0x81DA20
+extern const char STR_0081DA20[];
+// GLOBAL: GAMEMD 0x839D98
+extern const char STR_00839D98[];
 
 #endif  // GG_MATCH_CORE_RULES_CLASS_READ_POWERUPS_METHODS_H

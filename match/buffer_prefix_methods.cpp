@@ -6,8 +6,8 @@
 // boundaries are unknown; grouping here does not claim a shared owner.
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_rt/crt_allocator.h"
 
-extern "C" void* __cdecl FUN_007C8E17(unsigned int size); // LIBRARY: GAMEMD 0x7C8E17
 
 struct FUN_0043AD40Prefix
 {
@@ -153,7 +153,6 @@ GG_STATIC_ASSERT(offsetof(FUN_0043AFPrefix, Size) == 0x04);
 GG_STATIC_ASSERT(offsetof(FUN_0043AFPrefix, Allocated) == 0x08);
 GG_STATIC_ASSERT(sizeof(FUN_0043AFPrefix) == 0x0C);
 
-extern "C" void __cdecl FUN_007C8B3D(void* block); // LIBRARY: GAMEMD 0x7C8B3D
 
 // FUNCTION: GAMEMD 0x43AF10
 FUN_0043AFPrefix* FUN_0043AFPrefix::FUN_0043AF10()

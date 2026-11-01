@@ -21,6 +21,7 @@
 #include "surface_desc_ctor_methods.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include "_rt/crt_allocator.h"
 
 // FUNCTION: GAMEMD 0x433880
 //
@@ -48,9 +49,6 @@ BitFont::BitFont(const char* key) throw()
     return;
 }
 
-// LIBRARY: GAMEMD 0x7C93E8 — CRT free.
-// LIBRARY: GAMEMD 0x7C8B3D — operator delete used by the destructor.
-extern "C" void __cdecl FUN_007C93E8(void* block);
 // FUNCTION: GAMEMD 0x433940
 BitFont::~BitFont()
 {

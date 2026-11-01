@@ -9,9 +9,8 @@
 // static_vector_member_dtor_stubs_a.cpp.
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_rt/crt_allocator.h"
 
-// LIBRARY: GAMEMD 0x7C8B3D -- operator delete.
-extern "C" void __cdecl FUN_007C8B3D(void*);
 
 struct StaticIndex_008B3CC0 {
     void* IndexTable;   // +0x00
