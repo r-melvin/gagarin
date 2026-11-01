@@ -138,7 +138,7 @@
 
 #define GG_LISTENTRY_006255F0_OUT_OF_LINE_DTOR
 #include "listentry_006255f0.h"
-#include "../network/packet_class.h"
+#include "../packet_class.h"
 #include "dialog_type_lookup_predicates.h"
 #include "../renderer/color_scheme_count_methods.h"
 
@@ -579,7 +579,7 @@ extern double DAT_00AC1B40;
 // C4661: the members this TU does not define stay declarations on purpose.
 #pragma warning(disable : 4661)
 #include "ownrdraw.h"
-#include "../network/packet_class.h"
+#include "../packet_class.h"
 #include "../ui/bit_font_print_methods.h"
 #include "../_layout/rules_class.h"
 #include "../core/hash_table_rehash_sweep.h"

@@ -579,8 +579,8 @@ extern RulesClass* DAT_008871E0;
 #include "_layout/spawn_manager_class.h"
 
 #include "core/abstract_class_untargetable_methods.h"
-#include "network/event_class_ctors.h"
-#include "network/event_queue.h"
+#include "event_class_ctors.h"
+#include "event_queue.h"
 
 #include <string.h>
 

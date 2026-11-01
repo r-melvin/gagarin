@@ -9,7 +9,7 @@
 
 #include "netshare_slot_nodes.h"
 #include "netshare_win.h"
-#include "network/multiplayer_game_mode.h"
+#include "multiplayer_game_mode.h"
 
 // GLOBAL: GAMEMD 0xA8B23C -- the live game-mode object, or null.
 extern MultiplayerGameMode* DAT_00A8B23C;

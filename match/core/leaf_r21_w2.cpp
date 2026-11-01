@@ -4,7 +4,7 @@
 
 #include "../ui/input_controls/mouse_ww_mouse_class.h"
 #include "../_layout/rgb_class.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 
 // GLOBAL: GAMEMD 0xA8E960
 extern unsigned char DAT_00A8E960;

@@ -92,7 +92,7 @@
 //   LIBRARY:  GAMEMD 0x7C8B3D  operator delete (CRT; excluded from the match)
 
 #include "../core/deleting_dtor_sweep.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 #include "../core/header_init_shapes.h"

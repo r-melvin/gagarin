@@ -90,7 +90,7 @@ extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
 #include "../platform/ccini_class_small_readers_methods.h"
 #include "../platform/file_system_load_whole_methods.h"
 #include "../renderer/pixel_shift_view.h"
-#include "../network/multiplayer_game_mode.h"
+#include "../multiplayer_game_mode.h"
 
 // The native vptr at RadarClass+0x1224 is 0x7E3890, whose retail RTTI type
 // is DynamicVectorClass<Cell>. Serialization reads the element's dword at +0;

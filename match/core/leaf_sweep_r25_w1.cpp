@@ -10,7 +10,7 @@
 #include <string.h>
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 
 extern char DAT_0089E000[8];
 

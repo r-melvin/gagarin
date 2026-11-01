@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include "_rt/gg_static_assert.h"
 #include "core/wide_string_class.h"
-#include "network/transport/connman_class.h"
+#include "connman_class.h"
 
 extern "C" {
 // LIBRARY: GAMEMD 0x7CA858 (decl; reloc) -- CRT vswprintf (three-argument form).

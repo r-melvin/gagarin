@@ -13,7 +13,7 @@
 // The nine tail-jump thunks, ordered ascending by retail address.
 
 #include "../core/deleting_dtor_sweep.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 

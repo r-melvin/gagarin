@@ -10,7 +10,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "load_screen_side_caption_methods.h"
 #include "../_layout/session_class.h"
-#include "../network/transport/conn_types.h"
+#include "../conn_types.h"
 
 // STRING: GAMEMD 0x836ECC  "LightGrey"
 extern const char STR_00836ECC[];

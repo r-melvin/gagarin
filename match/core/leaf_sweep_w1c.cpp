@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 
 // 0x406265 addresses the event timer initialized by 0x4062F6.
 #include "triple_timer_init_methods.h"

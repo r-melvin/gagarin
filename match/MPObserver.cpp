@@ -1,0 +1,62 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Original translation unit MPObserver.cpp. The name is the source-file string at 0x82fd40
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5c9476 inside this object's
+//   code range (0x5c91f0-0x5c950f). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// The remaining address-scoped scalar deleting destructors of the 30-byte family,
+// by retail address. Each runs its class's real destructor, then frees the
+// object when bit 0 of the flag argument is set, and returns `this`.
+//
+// The header initialiser group at 0x5C9220, 0x5C9240 and 0x5C93C0
+// (header_init_shapes.h): two derived doubles and a {128, 128, 0} coordinate,
+// in __xc order. The divisor at 0x7EE5E0 reads 60.0 (ghidra memory read).
+//
+//   block of MPObserver.cpp (its __FILE__ string 0x82FD40).
+
+#include "FUNCTION.H"
+#include "core/deleting_dtor_sweep.h"
+#include "winsock_interface_class.h"
+
+#include "core/header_init_shapes.h"
+
+// GLOBAL: GAMEMD 0xABF8F8
+extern double DAT_00ABF8F8;
+// GLOBAL: GAMEMD 0x7EE5E0
+const double DAT_007EE5E0 = 60.0;
+
+#include "mp_game_mode_leaf_classes.h"
+#include "ui/input_controls/ui_display_chain.h"
+
+// GLOBAL: GAMEMD 0xABF948
+extern double DAT_00ABF948;
+
+// GLOBAL: GAMEMD 0xABF930
+extern double DAT_00ABF930;
+
+// GLOBAL: GAMEMD 0xABF938
+extern HeaderCoordInit DAT_00ABF938;
+
+// FUNCTION: GAMEMD 0x5C93E0
+Megawealth::Megawealth(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f)
+    : MultiplayerGameMode(a, b, c, d, e, f)
+{
+}
+
+// FUNCTION: GAMEMD 0x5C9420
+Megawealth::~Megawealth()
+{
+}
+
+// SYNTHETIC: GAMEMD 0x5C9440 -- Megawealth scalar deleting destructor, emitted by the compiler from the virtual destructor above
+
+// FUNCTION: GAMEMD 0x5C9430
+// Slot 35: call the map's 0x577F30 with no house, and succeed.
+bool Megawealth::vf_35()
+{
+    Map_0087F7E8.FUN_00577F30(0);
+    return true;
+}

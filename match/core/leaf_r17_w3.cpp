@@ -9,7 +9,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "voxel_shade_palette.h"
 #include "string_class.h"
-#include "../network/world_domination_tour.h"
+#include "../world_domination_tour.h"
 
 // GLOBAL: GAMEMD 0xB1D4E0
 extern unsigned char DAT_00B1D4E0[256];

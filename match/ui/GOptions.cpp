@@ -13,7 +13,7 @@
 //
 #include "../core/deleting_dtor_sweep.h"
 #include "../core/mathtbl_init_shapes.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 #include <math.h>
@@ -22,7 +22,7 @@
 
 #include "../core/trivial_tu092_methods.h"
 #include "../_layout/elapsed_timer.h"
-#include "../network/event_queue.h"
+#include "../event_queue.h"
 #include "input_controls/menus_graphic_menu.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no

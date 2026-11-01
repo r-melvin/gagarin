@@ -395,7 +395,7 @@ extern Lookup_00747370 DAT_00842DD4_obj;
 #include "team_class_mission_target_methods.h"
 
 #include "core/deleting_dtor_sweep.h"
-#include "network/transport/winsock_interface_class.h"
+#include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 

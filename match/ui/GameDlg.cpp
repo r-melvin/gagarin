@@ -11,7 +11,7 @@
 #include "../_layout/session_class.h"
 #include "game_options_class_methods.h"
 #include "tooltip_manager_shared.h"
-#include "../network/event_queue.h"
+#include "../event_queue.h"
 #include "../_layout/house_class.h"
 #include "../core/header_tuning_globals.h"
 

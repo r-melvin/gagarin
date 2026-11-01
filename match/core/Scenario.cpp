@@ -41,7 +41,7 @@
 #include "../ui/tooltip_manager_shared.h"
 #include "../evade_class_do_methods.h"
 #include "spin_wait_methods.h"
-#include "../network/transport/conn_types.h"
+#include "../conn_types.h"
 #include "../vox_class_methods.h"
 #include "campaign_class.h"
 #include "../_layout/house_type_class.h"
@@ -50,7 +50,7 @@
 #include "../_layout/building_class.h"
 #include "../_layout/audio_0048d080.h"
 #include "../platform/input_manager_class_methods.h"
-#include "../network/win_modem_class.h"
+#include "../win_modem_class.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../_layout/tactical.h"
 #include "../_layout/aircraft_tracker_class.h"
@@ -74,7 +74,7 @@
 
 #include "../_layout/load_progress_mgr.h"
 #include "../_layout/dialog_005d3490.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 #include "../ui/message_list_class_methods.h"
 #include "../_layout/map_seed_class.h"
 #include "../renderer/color_scheme_find_methods.h"
@@ -118,9 +118,9 @@ GG_STATIC_ASSERT(offsetof(Point2D, Y) == 4);
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, SideIndex) == 0xBC);
 
 
-#include "../network/multiplayer_game_mode.h"
-#include "../network/transport/ipx_interface_class.h"
-#include "../network/transport/connman_class.h"
+#include "../multiplayer_game_mode.h"
+#include "../ipx_interface_class.h"
+#include "../connman_class.h"
 #include "../platform/copy_protection_methods.h"
 #include "trivial_tu223_methods.h"
 extern MultiplayerGameMode* DAT_00A8B23C; // GLOBAL: GAMEMD 0xA8B23C

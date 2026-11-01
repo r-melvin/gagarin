@@ -995,7 +995,7 @@
  {
   "addr": "0x48C040",
   "name": "ConnectionClass::Receive_Packet",
-  "tu": "match/network/transport/Connect.cpp",
+  "tu": "match/Connect.cpp",
   "sym": "?Receive_Packet@ConnectionClass@@UAEHPAUConnPacketHeader@@H@Z",
   "len": "0x2D5",
   "manifest_pct": 98.6,
@@ -1911,7 +1911,7 @@
  {
   "addr": "0x540110",
   "name": "IPXGlobalConnClass::vf_17",
-  "tu": "match/network/tu107_ipx_global_conn_class.cpp",
+  "tu": "match/tu107_ipx_global_conn_class.cpp",
   "sym": "?vf_17@IPXGlobalConnClass@@UAEXI@Z",
   "len": "0x194",
   "manifest_pct": 98.5,
@@ -1935,7 +1935,7 @@
  {
   "addr": "0x541170",
   "name": "IPXManagerClass::FUN_00541170",
-  "tu": "match/network/tu108_ipx_manager_class.cpp",
+  "tu": "match/tu108_ipx_manager_class.cpp",
   "sym": "?FUN_00541170@IPXManagerClass@@QAEHPAXHHH@Z",
   "len": "0xE4",
   "manifest_pct": 84.1,
@@ -2709,7 +2709,7 @@
  {
   "addr": "0x5C23B0",
   "name": "MPCooperative::FUN_005C23B0",
-  "tu": "match/network/MPCoop.cpp",
+  "tu": "match/MPCoop.cpp",
   "sym": "?FUN_005C23B0@MPCooperative@@QAEXPAUHWND__@@H@Z",
   "len": "0x14f",
   "manifest_pct": 98.3,
@@ -2731,7 +2731,7 @@
  {
   "addr": "0x5C6AA0",
   "name": "WordsAddSmall",
-  "tu": "match/network/MPLayer.cpp",
+  "tu": "match/MPLayer.cpp",
   "sym": "?WordsAddSmall@@YI_NPAIPBII_NH@Z",
   "len": "0x5c",
   "manifest_pct": 82.9,
@@ -2851,7 +2851,7 @@
  {
   "addr": "0x5D5D20",
   "name": "MultiplayerGameMode::~MultiplayerGameMode",
-  "tu": "match/network/multiplayer_game_mode_team_methods.cpp",
+  "tu": "match/multiplayer_game_mode_team_methods.cpp",
   "sym": "??1MultiplayerGameMode@@UAE@XZ",
   "len": "0x8e",
   "manifest_pct": 96.4,
@@ -2872,7 +2872,7 @@
  {
   "addr": "0x5E2340",
   "name": "FUN_005E2340",
-  "tu": "match/network/r19_4_netdlg2_leaves.cpp",
+  "tu": "match/r19_4_netdlg2_leaves.cpp",
   "sym": "?FUN_005E2340@@YAXXZ",
   "len": "0x53",
   "manifest_pct": 84.6,
@@ -2893,7 +2893,7 @@
  {
   "addr": "0x5E2FA0",
   "name": "FUN_005E2FA0",
-  "tu": "match/network/netshare.cpp",
+  "tu": "match/netshare.cpp",
   "sym": "?FUN_005E2FA0@@YIXXZ",
   "len": "0x65",
   "manifest_pct": 94.7,
@@ -2914,7 +2914,7 @@
  {
   "addr": "0x5E68A0",
   "name": "FUN_005E68A0",
-  "tu": "match/network/netshare.cpp",
+  "tu": "match/netshare.cpp",
   "sym": "?FUN_005E68A0@@YIHPAUHWND__@@@Z",
   "len": "0x7f",
   "manifest_pct": 89.2,
@@ -2935,7 +2935,7 @@
  {
   "addr": "0x5E9580",
   "name": "FUN_005E9580",
-  "tu": "match/network/netshare.cpp",
+  "tu": "match/netshare.cpp",
   "sym": "?FUN_005E9580@@YI_NXZ",
   "len": "0x5c",
   "manifest_pct": 83.8,
@@ -2957,7 +2957,7 @@
  {
   "addr": "0x5E95E0",
   "name": "FUN_005E95E0",
-  "tu": "match/network/netshare.cpp",
+  "tu": "match/netshare.cpp",
   "sym": "?FUN_005E95E0@@YI_NXZ",
   "len": "0xba",
   "manifest_pct": 90.0,
@@ -2979,7 +2979,7 @@
  {
   "addr": "0x5F3450",
   "name": "FUN_005F3450",
-  "tu": "match/network/modem_misc_leaves.cpp",
+  "tu": "match/modem_misc_leaves.cpp",
   "sym": "?FUN_005F3450@@YIHXZ",
   "len": "0x42",
   "manifest_pct": 91.7,
@@ -3288,7 +3288,7 @@
  {
   "addr": "0x646E10",
   "name": "_$E20",
-  "tu": "match/network/Queue.cpp",
+  "tu": "match/Queue.cpp",
   "sym": "_$E23",
   "len": "0x4e",
   "manifest_pct": 92.6,
@@ -3309,7 +3309,7 @@
  {
   "addr": "0x64A000",
   "name": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
-  "tu": "match/network/Queue.cpp",
+  "tu": "match/Queue.cpp",
   "sym": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
   "len": "0xb2",
   "manifest_pct": 86.2,
@@ -3739,7 +3739,7 @@
  {
   "addr": "0x6970A0",
   "name": "Session constructor",
-  "tu": "match/network/Session.cpp",
+  "tu": "match/Session.cpp",
   "sym": "??0SessionClass@@QAE@XZ",
   "len": "0x716",
   "manifest_pct": 87.9,
@@ -3766,7 +3766,7 @@
  {
   "addr": "0x697AD0",
   "name": "SessionClass::FUN_00697AD0",
-  "tu": "match/network/Session.cpp",
+  "tu": "match/Session.cpp",
   "sym": "?FUN_00697AD0@SessionClass@@QAEXXZ",
   "len": "0x85",
   "manifest_pct": 84.3,
@@ -3788,7 +3788,7 @@
  {
   "addr": "0x69A3B0",
   "name": "MultiMission INI constructor",
-  "tu": "match/network/Session.cpp",
+  "tu": "match/Session.cpp",
   "sym": "??0MultiMission@@QAE@PAVINIClass@@PBD@Z",
   "len": "0x5cb",
   "manifest_pct": 91.4,
@@ -3810,7 +3810,7 @@
  {
   "addr": "0x69DB30",
   "name": "SHAState_0069DB30::FUN_0069DB30",
-  "tu": "match/network/Session.cpp",
+  "tu": "match/Session.cpp",
   "sym": "?FUN_0069DB30@SHAState_0069DB30@@QBEXPBXAAUShaState_0069DB30@@@Z",
   "len": "0x195",
   "manifest_pct": 83.1,
@@ -4919,7 +4919,7 @@
  {
   "addr": "0x774980",
   "name": "WinModemClass::Read_Serial_Chars",
-  "tu": "match/network/win_modem_serial_methods.cpp",
+  "tu": "match/win_modem_serial_methods.cpp",
   "sym": "?Read_Serial_Chars@WinModemClass@@QAE_NXZ",
   "len": "0x1AF",
   "manifest_pct": 90.1,
@@ -4946,7 +4946,7 @@
  {
   "addr": "0x774CD0",
   "name": "WinModemClass::Get_Modem_Result",
-  "tu": "match/network/win_modem_serial_methods.cpp",
+  "tu": "match/win_modem_serial_methods.cpp",
   "sym": "?Get_Modem_Result@WinModemClass@@UAEHHPADHH@Z",
   "len": "0x277",
   "manifest_pct": 87.8,
@@ -4973,7 +4973,7 @@
  {
   "addr": "0x774F50",
   "name": "WinModemClass::Dial_Modem",
-  "tu": "match/network/win_modem_serial_methods.cpp",
+  "tu": "match/win_modem_serial_methods.cpp",
   "sym": "?Dial_Modem@WinModemClass@@UAEXPAD@Z",
   "len": "0x1B2",
   "manifest_pct": 92.1,
@@ -4995,7 +4995,7 @@
  {
   "addr": "0x77bae0",
   "name": "atexit cleanup (DAT_00B768C0)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E32",
   "len": "0x12e",
   "manifest_pct": 80.0,
@@ -5019,7 +5019,7 @@
  {
   "addr": "0x77bcb0",
   "name": "atexit cleanup (DAT_00B73AF8)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E37",
   "len": "0x12e",
   "manifest_pct": 80.0,
@@ -5043,7 +5043,7 @@
  {
   "addr": "0x77be80",
   "name": "atexit cleanup (DAT_00B77D80)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E42",
   "len": "0x12e",
   "manifest_pct": 80.0,
@@ -5067,7 +5067,7 @@
  {
   "addr": "0x77C050",
   "name": "atexit cleanup (DAT_00B76640)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E47",
   "len": "0x12e",
   "manifest_pct": 80.0,
@@ -5091,7 +5091,7 @@
  {
   "addr": "0x77c220",
   "name": "atexit cleanup (DAT_00B76680)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E52",
   "len": "0x12e",
   "manifest_pct": 80.0,
@@ -5115,7 +5115,7 @@
  {
   "addr": "0x77c450",
   "name": "atexit cleanup (DAT_00B76530)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E62",
   "len": "0x12e",
   "manifest_pct": 80.0,
@@ -5139,7 +5139,7 @@
  {
   "addr": "0x77cb00",
   "name": "atexit cleanup (DAT_00B76990)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E137",
   "len": "0x12e",
   "manifest_pct": 80.0,
@@ -5163,7 +5163,7 @@
  {
   "addr": "0x77CCD0",
   "name": "atexit cleanup (DAT_00B76608)",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "_$E142",
   "len": "0x137",
   "manifest_pct": 80.0,
@@ -5187,7 +5187,7 @@
  {
   "addr": "0x7A8DA0",
   "name": "?FUN_007A8DA0@@YGHPAXHHPAUEntry_00B77908@@PBD@Z",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "?FUN_007A8DA0@@YGHPAXHHPAUEntry_00B77908@@PBD@Z",
   "len": "0x129",
   "manifest_pct": 96.9,
@@ -5209,7 +5209,7 @@
  {
   "addr": "0x7A8FC0",
   "name": "?FUN_007A8FC0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
-  "tu": "match/network/wonline.cpp",
+  "tu": "match/wonline.cpp",
   "sym": "?FUN_007A8FC0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
   "len": "0x142",
   "manifest_pct": 97.2,

@@ -1,0 +1,402 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+// Declarations shared by the leaf functions of the online-services
+// translation unit (retail text 0x77B690..0x7AF0AF; its assertion path string
+// 0x84A430 is "D:\ra2mdpost\wonline.cpp"). All names are placeholders unless
+// a string in the binary attests them.
+#ifndef GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
+#define GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
+
+#include "ui/ui_window_contracts.h"
+#include "netshare_slot_nodes.h"
+#include <stddef.h>
+#include "wonline.h"
+#include "core/hash_table_view.h"
+#include "_rt/gg_static_assert.h"
+#include "_layout/theme_class.h"
+
+// FUNCTION: GAMEMD 0x775B10 (decl; reloc)
+void* FUN_00775B10();
+
+// FUNCTION: GAMEMD 0x7757E0 (decl; reloc)
+void FUN_007757E0(void* object, int flag);
+
+
+
+// Shared COM declarations use the canonical projection header below.
+
+#include "_layout/com_0048d080.h"
+
+// GLOBAL: GAMEMD 0x84D690 -- a record: a dword (0x47) then the string "WOL:AddBuddyQuery".
+extern char DAT_0084D690[];
+
+// A 0xF8-byte record of the table at 0xB778E0 (count 0xB778D8).
+struct Record_00B778E0
+{
+    char unknown_00[0xF8];
+};
+
+GG_STATIC_ASSERT(sizeof(Record_00B778E0) == 0xF8);
+
+// GLOBAL: GAMEMD 0xB76468
+extern int DAT_00B76468;
+
+// GLOBAL: GAMEMD 0xB778D8 -- counted array of 0xF8-byte records: count +0x00, items +0x08.
+struct Vec_00B778D8
+{
+    int count;                    // +0x00
+    int unknown_04;               // +0x04
+    Record_00B778E0* data;        // +0x08
+    Vec_00B778D8() : count(0), unknown_04(0), data(0) {}
+    ~Vec_00B778D8()
+    {
+        Record_00B778E0* block = data;
+        count = 0;
+        operator delete(block);
+    }
+};
+extern Vec_00B778D8 DAT_00B778D8;
+
+// FUNCTION: GAMEMD 0x7864C0 (decl; reloc)
+bool FUN_007864C0(Record_00B778E0* record);
+
+// GLOBAL: GAMEMD 0xA8DA84
+extern int DAT_00A8DA84;
+
+// GLOBAL: GAMEMD 0xB73BB4
+extern int DAT_00B73BB4[];
+
+// GLOBAL: GAMEMD 0x84A1E0
+extern int DAT_0084A1E0[];
+
+// GLOBAL: GAMEMD 0xB76B10
+extern int DAT_00B76B10[0x43];
+
+// GLOBAL: GAMEMD 0xB73BE8
+extern int DAT_00B73BE8[0x43];
+
+// GLOBAL: GAMEMD 0x84A210
+extern char DAT_0084A210;
+
+
+// GLOBAL: GAMEMD 0xB77DD0
+extern int DAT_00B77DD0;
+
+// A counted array of 0xF8-byte records: count +0x00, items +0x08.
+struct Obj_007AC9D0
+{
+    int Count;                    // +0x00
+    int unknown_04;               // +0x04
+    Record_00B778E0* Items;       // +0x08
+
+    bool FUN_007AC9D0(Record_00B778E0** out, int index);
+};
+
+// GLOBAL: GAMEMD 0xB77E14
+extern int DAT_00B77E14;
+
+// GLOBAL: GAMEMD 0xB73A20
+extern int DAT_00B73A20;
+
+// GLOBAL: GAMEMD 0xB77D70
+extern int DAT_00B77D70;
+
+// GLOBAL: GAMEMD 0xB77A88
+extern int DAT_00B77A88;
+
+// FUNCTION: GAMEMD 0x785740 (decl; reloc)
+void FUN_00785740(int value);
+
+struct Obj_007ACD30
+{
+    int Count;                  // +0x00
+    int unknown_04;             // +0x04
+    Wstring* Items;     // +0x08
+
+    void FUN_007ACD30();
+};
+
+struct Obj_00781380
+{
+    int unknown_00;
+    int Value;      // +0x04
+};
+
+// GLOBAL: GAMEMD 0xB77DC8
+extern unsigned int DAT_00B77DC8;
+
+// GLOBAL: GAMEMD 0xB77908
+// GLOBAL: GAMEMD 0xB77900 -- counted array: count +0x00, items +0x08.
+struct Vec_00B77900
+{
+    int count;                    // +0x00
+    int unknown_04;               // +0x04
+    Entry_00B77908* data;         // +0x08
+    Vec_00B77900() : count(0), unknown_04(0), data(0) {}
+    ~Vec_00B77900()
+    {
+        Entry_00B77908* block = data;
+        count = 0;
+        operator delete(block);
+    }
+};
+extern Vec_00B77900 DAT_00B77900;
+GG_STATIC_ASSERT(offsetof(Vec_00B77900, count) == 0x00);
+GG_STATIC_ASSERT(offsetof(Vec_00B77900, data) == 0x08);
+GG_STATIC_ASSERT(sizeof(Vec_00B77900) == 0x0C);
+
+// GLOBAL: GAMEMD 0xB777B0
+extern Entry_00B77908 DAT_00B777B0;
+
+// GLOBAL: GAMEMD 0xB777D4 -- the +0x24 name field of DAT_00B777B0.
+extern char DAT_00B777D4[];
+
+// LIBRARY: GAMEMD 0x7C8D20 -- CRT _stricmp.
+extern "C" int __cdecl _stricmp(const char* a, const char* b);
+
+struct Value_007AE180
+{
+    int unknown_00;
+};
+
+struct Value_007AE8E0
+{
+    int unknown_00[0x43];
+};
+
+GG_STATIC_ASSERT(sizeof(Value_007AE8E0) == 0x10C);
+
+struct Table_007AE180 : public HashTable_006249A0<Wstring, Value_007AE180>
+{
+    bool FUN_007AE180(const Wstring& key, Value_007AE180** out);
+    bool FUN_007AE7C0(const Wstring& key, Value_007AE180** out);
+};
+
+struct Table_007ADC60 : public HashTable_006249A0<Wstring, Entry_00B77908>
+{
+    bool FUN_007ADC60(const Wstring& key, Entry_00B77908** out);
+};
+
+struct Table_007AE8E0 : public HashTable_006249A0<Wstring, Value_007AE8E0>
+{
+    bool FUN_007AE8E0(const Wstring& key, Value_007AE8E0** out);
+};
+
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc)
+const wchar_t* FUN_00734E60(const char* label, int* out, const char* file, int line);
+
+
+
+// FUNCTION: GAMEMD 0x622820 (decl; reloc)
+void FUN_00622820(HWND window, int id);
+
+
+
+
+
+// FUNCTION: GAMEMD 0x79DB50 (decl; reloc)
+int __stdcall FUN_0079DB50(HWND window, unsigned int message, unsigned int wparam, long lparam);
+
+// FUNCTION: GAMEMD 0x793280 (decl; reloc)
+int __stdcall FUN_00793280(HWND window, unsigned int message, unsigned int wparam, long lparam);
+
+
+
+
+
+// A record with a name (+0x04) and a flag word (+0x08), as ordered by the
+// callbacks below.
+struct Obj_00781CC0
+{
+    int unknown_00;
+    const char* Name;   // +0x04
+    int Flag;           // +0x08
+};
+
+// FUNCTION: GAMEMD 0x781FB0 (decl; reloc)
+void FUN_00781FB0(void* object, bool flag);
+
+// FUNCTION: GAMEMD 0x782320 (decl; reloc)
+void FUN_00782320(void* object, bool flag);
+
+// FUNCTION: GAMEMD 0x782BB0 (decl; reloc)
+void FUN_00782BB0(void* object, bool flag);
+
+// GLOBAL: GAMEMD 0xB77E48
+extern int DAT_00B77E48;
+
+// FUNCTION: GAMEMD 0x5E2700 (decl; reloc)
+void __cdecl FUN_005E2700(int id, const wchar_t* format, ...);
+
+// FUNCTION: GAMEMD 0x5E2CD0 (decl; reloc)
+int FUN_005E2CD0(const wchar_t* text, int a, DialogIdleProc_007759E0 proc, bool b);
+
+// FUNCTION: GAMEMD 0x735120 (decl; reloc)
+const wchar_t* FUN_00735120(const char* text);
+
+// FUNCTION: GAMEMD 0x77EBA0 (decl; reloc)
+int FUN_0077EBA0(Wstring* name);
+
+// LIBRARY: GAMEMD 0x7CA564 -- CRT swprintf.
+extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
+
+// GLOBAL: GAMEMD 0xB77DC1
+extern bool DAT_00B77DC1;
+
+// GLOBAL: GAMEMD 0x7EEF28
+extern int DAT_007EEF28;
+
+// GLOBAL: GAMEMD 0xB73684
+extern HANDLE DAT_00B73684[];
+
+// GLOBAL: GAMEMD 0xB76E24
+extern Wstring DAT_00B76E24;
+
+// GLOBAL: GAMEMD 0xB76990
+extern HashTable_006249A0<Wstring, int> DAT_00B76990;
+
+
+
+
+
+// FUNCTION: GAMEMD 0x4E34A0 (decl; reloc)
+void FUN_004E34A0(void* object, int slot, int value);
+
+
+
+// Declaration: GAMEMD 0x5E93F0 -- these native callers consume AL.
+// The separate netshare provider currently exposes an int result; both return
+// native 0/1, but the original cross-TU source return contract remains unknown.
+bool FUN_005E93F0(NodeNameType* node);
+
+// FUNCTION: GAMEMD 0x7A0EA0
+void FUN_007A0EA0(const char* name, int value);
+
+
+
+// GLOBAL: GAMEMD 0xB76440
+extern int DAT_00B76440[8];
+
+// FUNCTION: GAMEMD 0x792BE0 (decl; reloc)
+void FUN_00792BE0(int mode, Obj_007B66D0* text, int flag);
+
+// FUNCTION: GAMEMD 0x797640 (decl; reloc)
+void FUN_00797640(int mode);
+
+// GLOBAL: GAMEMD 0xA8B244
+extern int DAT_00A8B244;
+
+// GLOBAL: GAMEMD 0xB77DF4
+extern int DAT_00B77DF4;
+
+// GLOBAL: GAMEMD 0xB77E60
+extern int DAT_00B77E60;
+
+// GLOBAL: GAMEMD 0xB77E64
+extern int DAT_00B77E64;
+
+// FUNCTION: GAMEMD 0x5EC880 (decl; reloc)
+void FUN_005EC880(HWND window, int a, int b, int c);
+
+// GLOBAL: GAMEMD 0xA8E050 -- per-slot port numbers.
+extern short DAT_00A8E050[];
+
+// GLOBAL: GAMEMD 0x84A1F0 -- control ids, per slot.
+extern int DAT_0084A1F0[];
+
+// GLOBAL: GAMEMD 0xB75F54
+extern char DAT_00B75F54[];
+
+// FUNCTION: GAMEMD 0x6C6D00 (decl; reloc)
+void __cdecl FUN_006C6D00();
+
+// FUNCTION: GAMEMD 0x6C6DE0 (decl; reloc)
+void __cdecl FUN_006C6DE0();
+
+// GLOBAL: GAMEMD 0xB77E40
+extern char DAT_00B77E40;
+
+// GLOBAL: GAMEMD 0xB76230
+extern Obj_007B66D0 DAT_00B76230;
+
+// A 0x10C-byte record of the table at 0xB76AE8 (count 0xB76AE0); the word at
+// +0x28 is the sort key.
+struct Record_00B76AE8
+{
+    char unknown_00[0x28];
+    int Key;                // +0x28
+    char unknown_2C[0xE0];
+};
+
+GG_STATIC_ASSERT(sizeof(Record_00B76AE8) == 0x10C);
+
+// GLOBAL: GAMEMD 0xB76AE8
+// GLOBAL: GAMEMD 0xB76AE0 -- counted array: count +0x00, items +0x08.
+struct Vec_00B76AE0
+{
+    int count;                    // +0x00
+    int unknown_04;               // +0x04
+    Record_00B76AE8* data;        // +0x08
+    Vec_00B76AE0() : count(0), unknown_04(0), data(0) {}
+    ~Vec_00B76AE0()
+    {
+        Record_00B76AE8* block = data;
+        count = 0;
+        operator delete(block);
+    }
+};
+extern Vec_00B76AE0 DAT_00B76AE0;
+
+struct Item_007830C0
+{
+    int Index;      // +0x00
+    int Key;        // +0x04
+    int Flag;       // +0x08
+};
+
+// FUNCTION: GAMEMD 0x7A1330 (decl; reloc)
+void __cdecl FUN_007A1330();
+
+// FUNCTION: GAMEMD 0x7A1060 (decl; reloc)
+void __cdecl FUN_007A1060();
+
+// FUNCTION: GAMEMD 0x783C80 (decl; reloc)
+void FUN_00783C80(int, unsigned char);
+
+// GLOBAL: GAMEMD 0xB77780
+extern int DAT_00B77780;
+
+// GLOBAL: GAMEMD 0xB77CE0
+extern int DAT_00B77CE0;
+
+// GLOBAL: GAMEMD 0xB736F4
+extern int DAT_00B736F4;
+
+
+// FUNCTION: GAMEMD 0x77D710 (decl; reloc)
+bool __fastcall FUN_0077D710();
+
+// GLOBAL: GAMEMD 0xAC10C8
+extern int DAT_00AC10C8;
+
+struct Item_007835C0
+{
+    int Index;          // +0x00 -- record index in the table at 0xB77908
+    const char* Name;   // +0x04
+    int Flag;           // +0x08
+};
+
+// GLOBAL: GAMEMD 0xA83D10
+extern ThemeClass DAT_00A83D10;
+// GLOBAL: GAMEMD 0xB779BC
+extern int DAT_00B779BC;
+// GLOBAL: GAMEMD 0xB779F0
+extern int DAT_00B779F0;
+// GLOBAL: GAMEMD 0xB76234
+extern int DAT_00B76234;
+// GLOBAL: GAMEMD 0xB7690C
+extern int DAT_00B7690C;
+// FUNCTION: GAMEMD 0x5EE350 (decl; reloc)
+void FUN_005EE350(int value);
+
+#endif // GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H

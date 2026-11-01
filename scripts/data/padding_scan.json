@@ -6681,7 +6681,7 @@
   },
   {
    "addr": "0x540D80",
-   "tu": "match/network/transport/connman_class.cpp",
+   "tu": "match/connman_class.cpp",
    "name": "IPXManagerClass::SetRouterTiming",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6693,7 +6693,7 @@
   },
   {
    "addr": "0x542EC0",
-   "tu": "match/network/transport/connman_class.cpp",
+   "tu": "match/connman_class.cpp",
    "name": "IPXManagerClass::vf_11",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8205,7 +8205,7 @@
   },
   {
    "addr": "0x749150",
-   "tu": "match/network/house_class_net_methods.cpp",
+   "tu": "match/house_class_net_methods.cpp",
    "name": "UnitTrackerClass::ToPCFormat",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8337,7 +8337,7 @@
   },
   {
    "addr": "0x76B7B0",
-   "tu": "match/network/wdt_net.cpp",
+   "tu": "match/wdt_net.cpp",
    "name": "VectorClass<rc_ptr<WDTTerritory>>::operator=",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8421,13 +8421,13 @@
   },
   {
    "addr": "0x7B36C0",
-   "tu": "match/network/transport/udp_interface_class_methods.cpp",
+   "tu": "match/udp_interface_class_methods.cpp",
    "name": "UDPInterfaceClass::SendPacket",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7B4160",
-   "tu": "match/network/transport/udp_interface_class_methods.cpp",
+   "tu": "match/udp_interface_class_methods.cpp",
    "name": "UDPInterfaceClass::GetPrimaryPort",
    "reason": "no-preceding-CC-or-90"
   },

@@ -324,7 +324,7 @@ class VoxClass;
 class VoxelAnimTypeClass;
 class WaveClass;
 class WaypointPathClass;
-#include "network/transport/winsock_interface_class.h"
+#include "winsock_interface_class.h"
 namespace WorldDominationTour
 {
     class Centroid;

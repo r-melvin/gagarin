@@ -4,7 +4,7 @@
 //
 // Address index: 0x5D9060 0x661640
 
-#include "../network/transport/udp_interface_class.h"
+#include "../udp_interface_class.h"
 #include "../_layout/session_class.h"
 
 

@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "trivial_tu130_methods.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 
 // GLOBAL: GAMEMD 0xB05629
 extern unsigned char DAT_00B05629;

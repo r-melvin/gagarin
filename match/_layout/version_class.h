@@ -71,7 +71,7 @@ public:
     // FUNCTION: GAMEMD 0x74FA20 -- read the version text file once, then answer the minor version.
     unsigned short FUN_0074FA20();
 
-    // Declared ascending by retail address (match/network/version_class_methods.cpp).
+    // Declared ascending by retail address (match/version_class_methods.cpp).
     CommProtocolType Version_Protocol(unsigned int version);             // GAMEMD 0x74FD20 __thiscall
     void             InitClipping();                                     // GAMEMD 0x74FD50 __thiscall
     unsigned int     Clip_Version(unsigned int minver, unsigned int maxver);  // GAMEMD 0x74FD60 __thiscall

@@ -44,7 +44,7 @@
 #include "../../_layout/session_class.h"
 #include "../../core/mathtbl_init_shapes.h"
 #include "../../core/deleting_dtor_sweep.h"
-#include "../../network/transport/winsock_interface_class.h"
+#include "../../winsock_interface_class.h"
 #include "../../_layout/pipe.h"
 #include "../../_layout/straw.h"
 

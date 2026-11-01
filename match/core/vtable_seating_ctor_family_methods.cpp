@@ -12,7 +12,7 @@
 #include "vector_class_operations.h"
 #include "type_list.h"
 #include "vector_cursor.h"
-#include "../network/world_domination_tour.h"
+#include "../world_domination_tour.h"
 
 class AnimTypeClass;
 class BuildingTypeClass;

@@ -19,10 +19,10 @@
 #include "../_layout/session_class.h"
 #include "../_rt/gg_static_assert.h"
 
-#include "../network/command_packet_layouts.h"
+#include "../command_packet_layouts.h"
 
 // The serial receiver uses the canonical NullModemClass owner.
-#include "../network/null_modem_class_methods.h"
+#include "../null_modem_class_methods.h"
 
 // Existing receiver shared with the Scenario loading wait.
 #include "../_layout/audio_0048d080.h"

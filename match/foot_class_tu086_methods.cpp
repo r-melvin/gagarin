@@ -40,7 +40,7 @@
 #include "loco_com.h"
 #include "_layout/aircraft_tracker_class.h"
 #include "_layout/coord_struct.h"
-#include "network/event_class_ctors.h"
+#include "event_class_ctors.h"
 #include "_layout/building_class.h"
 #include "_layout/building_array.h"
 #include "_layout/infantry_class.h"

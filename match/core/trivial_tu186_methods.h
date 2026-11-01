@@ -15,7 +15,7 @@ struct Obj_00646CE0;
 struct Obj_00646D00;
 
 // The canonical manager owns the instance at0xA8E9C0.
-#include "../network/transport/connman_class.h"
+#include "../connman_class.h"
 
 // LIBRARY: GAMEMD 0x7C8B3D (decl; reloc)
 // FUN_007C8B3D

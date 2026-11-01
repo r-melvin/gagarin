@@ -15,7 +15,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // Shared manager declaration preserves the direct startup call bindings.
-#include "../network/transport/connman_class.h"
+#include "../connman_class.h"
 
 // The 6-byte record 0x53EDA0 copies out through its second pointer
 // (`MOV [EDX],ESI; MOV word ptr [EDX+4],AX`).

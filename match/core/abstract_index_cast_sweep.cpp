@@ -24,7 +24,7 @@
 //   out-of-line helper behind a jump).
 
 #include "abstract_index_cast_sweep.h"
-#include "../network/event_class_ctors.h"
+#include "../event_class_ctors.h"
 #include "../_layout/abstract_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/object_class.h"

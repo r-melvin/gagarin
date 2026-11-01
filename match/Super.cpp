@@ -28,7 +28,7 @@
 #include "trivial_tu225_methods.h"
 
 #include "core/deleting_dtor_sweep.h"
-#include "network/transport/winsock_interface_class.h"
+#include "winsock_interface_class.h"
 #include "_layout/pipe.h"
 #include "_layout/straw.h"
 #include "_layout/anim_class.h"

@@ -16,7 +16,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "core/vector_class_operations.h"
-#include "network/event_class_ctors.h"
+#include "event_class_ctors.h"
 #include "_layout/techno_class.h"
 #include "_layout/geometry2d.h"
 

@@ -9,7 +9,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "../_rt/gg_static_assert.h"
-#include "../network/wdt_rc_ptr.h"
+#include "../wdt_rc_ptr.h"
 #include "../voc_class_play_at_methods.h"
 #include "../vox_class_play_index_methods.h"
 

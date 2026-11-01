@@ -1354,7 +1354,7 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 #include "../../super_weapon_type_class_methods.h"
 #include "../../renderer/color_scheme_find_methods.h"
 #include "../../core/scenario_class_methods.h"
-#include "../../network/beacon_manager_class.h"
+#include "../../beacon_manager_class.h"
 #include <mmsystem.h>
 
 // GLOBAL: GAMEMD 0x887314

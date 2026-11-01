@@ -210,7 +210,7 @@
     },
     {
       "address": "0x004CB8B0",
-      "source": "match/network/packet_class.cpp",
+      "source": "match/packet_class.cpp",
       "symbol": "?HostToNet@FieldClass@@QAEXXZ",
       "old_size": 90,
       "corrected_size": 108,
@@ -224,7 +224,7 @@
     },
     {
       "address": "0x004CB920",
-      "source": "match/network/packet_class.cpp",
+      "source": "match/packet_class.cpp",
       "symbol": "?NetToHost@FieldClass@@QAEXXZ",
       "old_size": 89,
       "corrected_size": 108,
@@ -799,7 +799,7 @@
     },
     {
       "address": "0x0074FD20",
-      "source": "match/network/version_class_methods.cpp",
+      "source": "match/version_class_methods.cpp",
       "symbol": "?Version_Protocol@VersionClass@@QAE?AW4CommProtocolEnum@@I@Z",
       "old_size": 45,
       "corrected_size": 47,

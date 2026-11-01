@@ -93,7 +93,7 @@
 //   ECX, count in EDX, key pointer pushed); the fallback cell 0xB78830.
 
 #include "../core/deleting_dtor_sweep.h"
-#include "../network/transport/winsock_interface_class.h"
+#include "../winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 

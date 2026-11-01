@@ -776,7 +776,7 @@
      "n_insns": 16,
      "status": "matched",
      "pct": 100,
-     "tu": "match/network/wonline.cpp",
+     "tu": "match/wonline.cpp",
      "sym": "??_GWonlineStringDialogControl@@UAEPAXI@Z",
      "name": "WonlineStringDialogControl::`scalar deleting destructor'",
      "rtti": [
@@ -840,7 +840,7 @@
      "n_insns": 14,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/network/Session.cpp",
+     "tu": "match/Session.cpp",
      "sym": "??_GBufferStraw@@UAEPAXI@Z",
      "name": "BufferStraw scalar deleting destructor",
      "rtti": [
@@ -1087,7 +1087,7 @@
      "n_insns": 2,
      "status": "matched",
      "pct": 100,
-     "tu": "match/network/mp_battle_class.cpp",
+     "tu": "match/mp_battle_class.cpp",
      "sym": "??1MultiplayerBattle@@UAE@XZ",
      "name": "MultiplayerBattle::~MultiplayerBattle"
     },
@@ -2218,7 +2218,7 @@
      "n_insns": 244,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/network/wonline.cpp",
+     "tu": "match/wonline.cpp",
      "sym": "?Remove@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAE_NABVWstring@@AAUValue_007AE8E0@@@Z",
      "name": "?Remove@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAE_NABVWstring@@AAUValue_007AE8E0@@@Z"
     },
@@ -3316,7 +3316,7 @@
      "n_insns": 16,
      "status": "matched",
      "pct": 100,
-     "tu": "match/network/wonline.cpp",
+     "tu": "match/wonline.cpp",
      "sym": "??_GWonlineStringDialogControl@@UAEPAXI@Z",
      "name": "WonlineStringDialogControl::`scalar deleting destructor'",
      "rtti": [
@@ -3409,7 +3409,7 @@
      "n_insns": 14,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/network/Session.cpp",
+     "tu": "match/Session.cpp",
      "sym": "??_GBufferStraw@@UAEPAXI@Z",
      "name": "BufferStraw scalar deleting destructor",
      "rtti": [
@@ -3601,7 +3601,7 @@
      "n_insns": 2,
      "status": "matched",
      "pct": 100,
-     "tu": "match/network/mp_battle_class.cpp",
+     "tu": "match/mp_battle_class.cpp",
      "sym": "??1MultiplayerBattle@@UAE@XZ",
      "name": "MultiplayerBattle::~MultiplayerBattle"
     },

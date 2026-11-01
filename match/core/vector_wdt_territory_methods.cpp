@@ -11,7 +11,7 @@
 // (deleting destructors, Clear, Slot5, the Centroid bodies); only the rows
 // annotated here are claimed from this unit.
 #include "vector_class_operations.h"
-#include "../network/wdt_rc_ptr.h"
+#include "../wdt_rc_ptr.h"
 
 namespace WorldDominationTour {
 class Territory;

@@ -117,7 +117,7 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 #include "tag_type_class_save_methods.h"
 
 #include "core/deleting_dtor_sweep.h"
-#include "network/transport/winsock_interface_class.h"
+#include "winsock_interface_class.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E5B60

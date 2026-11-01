@@ -294,7 +294,7 @@ DisplayCmdObject* FUN_007342B0();
 const wchar_t* FUN_00735120(const char* text);
 
 // ---- Taunt support (0x536350) ----
-#include "../network/command_packet_layouts.h"
+#include "../command_packet_layouts.h"
 
 // A session node (the list at 0xA8DA78): name source, colour byte +0x4B and
 // the address block at +0x28.

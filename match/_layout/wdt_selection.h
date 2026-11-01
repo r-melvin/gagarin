@@ -13,8 +13,8 @@
 #include "ms_engine.h"
 #include "../core/string_class.h"
 #include "../core/wide_string_class.h"
-#include "../network/wdt_map.h"
-#include "../network/world_domination_tour.h"
+#include "../wdt_map.h"
+#include "../world_domination_tour.h"
 
 class MSSfxEntry;
 class INIClass;

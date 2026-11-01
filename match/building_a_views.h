@@ -23,7 +23,7 @@
 #include "house_building_views.h"
 #include "_layout/cell_class.h"
 #include "_layout/map_0087f7e8.h"
-#include "network/event_queue.h"
+#include "event_queue.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 

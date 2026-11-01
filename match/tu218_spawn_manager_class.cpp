@@ -71,7 +71,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SpawnManagerClass::SpawnControl* >) =
 
 
 #include "core/deleting_dtor_sweep.h"
-#include "network/transport/winsock_interface_class.h"
+#include "winsock_interface_class.h"
 
 
 class AITriggerTypeClass;

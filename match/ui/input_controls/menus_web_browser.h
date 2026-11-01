@@ -16,7 +16,7 @@
 
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
-#include "../../network/wonline.h"
+#include "../../wonline.h"
 
 typedef long MenusHResult;
 typedef unsigned long MenusULong;

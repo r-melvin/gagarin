@@ -7,7 +7,7 @@
 // Address index: 0x6638E0 0x663910 0x663960 0x664750
 
 #include "vector_class_operations.h"
-#include "../network/transport/connman_class.h"
+#include "../connman_class.h"
 
 // STRING: GAMEMD 0x839CEC
 extern const char STR_00839CEC[];
