@@ -34,7 +34,7 @@
 #include "../_layout/wdt_selection.h"
 #include "../_layout/ini_class.h"
 #include "../_layout/theme_class.h"
-#include "../map/msanim_family_methods.h"
+#include "../msanim_family_methods.h"
 #include "../platform/input_manager_class_methods.h"
 
 template <class T> class VectorClass;

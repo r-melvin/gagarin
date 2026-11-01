@@ -6,7 +6,7 @@
 //   hidden result pointer), matching surface_class.h.
 #include "../_layout/building_light_class.h"
 #include "../renderer/shadow_block_list_methods.h"
-#include "../map/map_class_methods.h"
+#include "../map_class_methods.h"
 #include "../wwlib/surface/surface_class.h"
 #include "../renderer/matrix3d_rotate_methods.h"
 #include "../core/rules_class.h"

@@ -135,7 +135,7 @@ extern "C" char* __cdecl _strupr(char* text);
 
 #include "unsorted_callback_methods.h"
 
-#include "../map/map_class_methods.h"
+#include "../map_class_methods.h"
 
 // ---------------------------------------------------------------------------
 // Externs reconfirmed numerically from the disasm at the listed addresses.

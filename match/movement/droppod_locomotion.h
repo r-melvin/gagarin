@@ -32,8 +32,8 @@
 #include "../core/type_class_findoralloc_methods.h"
 #include "../core/find_by_name_methods.h"
 #include "../weapon_type_class.h"
-#include "../map/map_class_traversable_methods.h"
-#include "../map/map_class_random_coords_methods.h"
+#include "../map_class_traversable_methods.h"
+#include "../map_class_random_coords_methods.h"
 
 // The piggybacked locomotor smart pointer (ILocomotionPtr, loco_com.h). Retail's AddRef/Release/QI
 // shapes at 0x4B63B0 (assignment), 0x4B6400 (Detach), 0x4B6240 (operator&) and the destructor

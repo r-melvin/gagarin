@@ -2128,7 +2128,7 @@
    "addr": "0x4F42D0",
    "name": "MapClass::FUN_004F42D0",
    "sym": "?FUN_004F42D0@MapClass@@QAEXXZ",
-   "tu": "match/map/map_class_more_methods.cpp",
+   "tu": "match/map_class_more_methods.cpp",
    "classes": [
     {
      "cls": "GScreenClass",

@@ -51,7 +51,7 @@
   },
   {
    "addr": "0x5CD330",
-   "tu": "match/map/msanim_family_methods.cpp",
+   "tu": "match/msanim_family_methods.cpp",
    "removed": "redundant receiver aliases for timer-store scheduling",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -402,7 +402,7 @@
   },
   {
    "addr": "0x5CEAD0",
-   "tu": "match/map/msanim_family_methods.cpp",
+   "tu": "match/msanim_family_methods.cpp",
    "removed": "unsigned StartTime cast in inline TimeLeft used only to defeat compare folding",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -517,7 +517,7 @@
   },
   {
    "addr": "0x487D70",
-   "tu": "match/map/cell_class_jumpjet_methods.cpp",
+   "tu": "match/cell_class_jumpjet_methods.cpp",
    "removed": "byte union alias of the flag word (header)",
    "previous_status": "matched",
    "previous_pct": 100,
@@ -527,7 +527,7 @@
   },
   {
    "addr": "0x56D5A0",
-   "tu": "match/map/map_class_recalculate_zones_methods.cpp",
+   "tu": "match/map_class_recalculate_zones_methods.cpp",
    "removed": "volatile offset array and walk pointers",
    "previous_status": "partial",
    "previous_pct": 29.4,

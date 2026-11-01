@@ -237,7 +237,7 @@ extern double AdjustForZ_Factor;   // GLOBAL: GAMEMD 0xB0CD48
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
-#include "../../map/iso_tile_type_class_tile_data_methods.h"
+#include "../../iso_tile_type_class_tile_data_methods.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -1846,7 +1846,7 @@ extern ShapeHeader* DisplayPlaceShape_008A03FC;
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, GuardRange) == 0x5B8);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16BE - 0x16A4) == 0x16BE);
 
-#include "../../map/terrain_objects/overlay_type_class.h"
+#include "../../overlay_type_class.h"
 #include "mouse_ww_mouse_class.h"
 // GLOBAL: GAMEMD 0x88097C (declaration)
 extern ObjectTypeClass* DAT_0088097C;
@@ -2047,7 +2047,7 @@ void Tactical::FUN_006D5730(unsigned char mode, CellStruct origin)
 }
 
 
-#include "../../map/terrain_objects/overlay_type_class.h"
+#include "../../overlay_type_class.h"
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SpeedType) == 0x67C);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ToOverlay) == 0xE54);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16C0 - 0x16A4) == 0x16C0);
@@ -3171,7 +3171,7 @@ void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
 }
 
 
-#include "../../map/terrain_objects/terrain_class.h"
+#include "../../terrain_class.h"
 
 
 
@@ -3720,7 +3720,7 @@ GG_STATIC_ASSERT(offsetof(DisplayClass, SavedPending) == 0x1190);
 GG_STATIC_ASSERT(offsetof(DisplayClass, SavedType) == 0x1194);
 GG_STATIC_ASSERT(offsetof(DisplayClass, SavedField) == 0x1198);
 
-#include "../../map/terrain_objects/terrain_type_class.h"
+#include "../../terrain_type_class.h"
 // Declaration: GAMEMD 0x40DD20; same pointer returned for native kinds1/2/6/15.
 TechnoClass* FUN_0040DD20(ObjectClass* object);
 

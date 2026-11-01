@@ -18,7 +18,7 @@
 //     `LEA ECX,[ECX+ECX*2]`.
 //     The convert object is 0x188 bytes (`PUSH 0x188`) and its constructor
 //     0x48E740 is called with (palette, palette, [0x887310], 1, 0).
-//   The file object agrees with match/map/smudge_type_class_load_methods.h and
+//   The file object agrees with match/smudge_type_class_load_methods.h and
 //   match/ui/preview_class_pcx_methods.h (neither edited; re-derived here so the
 //   TU stands alone). Names cross-checked against YRpp
 //   (every offset reconfirmed above).

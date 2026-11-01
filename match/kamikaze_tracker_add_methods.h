@@ -172,7 +172,7 @@ struct NodeVector_0054E3B0
     int   CapacityIncrement;            // +0x0014
 
     // DynamicVectorClass::AddItem, expanded inline by VC6 at the call site.
-    // Same phrasing as match/map/cell_class_tag_methods.h (0x485250).
+    // Same phrasing as match/cell_class_tag_methods.h (0x485250).
     bool AddItem(Node_0054E3B0* item)
     {
         int cap = Capacity;

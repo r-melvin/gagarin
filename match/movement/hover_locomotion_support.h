@@ -9,7 +9,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "loco_interfaces.h"
 #include "loco_foot.h"                 // canonical DAT_0087F7E8 declaration
-#include "../map/pair_0042d490.h"       // canonical Pair_0042D490 and DAT_0089F688
+#include "../pair_0042d490.h"       // canonical Pair_0042D490 and DAT_0089F688
 
 // Two-short cell-coordinate value used by Hover bodies and out-parameter calls.
 struct HoverCellCoord : CellStruct

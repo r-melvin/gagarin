@@ -83,7 +83,7 @@ template<class T> TClassFactory<T>::TClassFactory() : RefCount(0) {}
 
 #include "../_layout/cstream_class.h"
 
-#include "../map/terrain_objects/terrain_class.h"
+#include "../terrain_class.h"
 
 #include "../_layout/super_weapon_type_class.h"
 

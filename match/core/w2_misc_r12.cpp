@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
-#include "../map/msanim_family_methods.h"
+#include "../msanim_family_methods.h"
 
 // FUNCTION: GAMEMD 0x645BB0
 // Map a small index to its flag bit; unknown indices give zero.

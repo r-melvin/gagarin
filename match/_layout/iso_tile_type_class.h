@@ -3,7 +3,7 @@
 //   IsometricTileTypeClass (retail RTTI .?AVIsometricTileTypeClass@@, vtable base 0x7ECC48) as modelled so far:
 //   the lazy tile-set loader and its accessors (0x544BE0, 0x544CB0, 0x5471B0, 0x5471F0, 0x549A60) and the
 //   TileInsertType element named by the retail vector RTTI. Offsets are read from those bodies; see
-//   match/map/iso_tile_type_class_tile_data_methods.h for the evidence.
+//   match/iso_tile_type_class_tile_data_methods.h for the evidence.
 #ifndef GG_MATCH_LAYOUT_ISO_TILE_TYPE_CLASS_H
 #define GG_MATCH_LAYOUT_ISO_TILE_TYPE_CLASS_H
 

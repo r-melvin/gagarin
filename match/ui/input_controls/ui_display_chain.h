@@ -52,7 +52,7 @@ extern int CurrentFrame_00A8ED84;
 
 // A packed map cell (two 16-bit coordinates).
 #include "../../_layout/cell.h"
-#include "../../map/crate_class.h"
+#include "../../crate_class.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 #include "../../_layout/components.h"

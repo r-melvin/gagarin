@@ -8,7 +8,7 @@
 //   first cell for which vtable slot 107 (ObjectClass::vf_107, 0x1AC) returns
 //   zero is the result.
 #include "../_layout/foot_class.h"
-#include "../map/cell_flag_search_shared.h"
+#include "../cell_flag_search_shared.h"
 
 // FUNCTION: GAMEMD 0x4CAE30 (decl; reloc) -- two-argument arctangent, __cdecl.
 double __cdecl FUN_004CAE30(double y, double x);

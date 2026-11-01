@@ -16,7 +16,7 @@
 //     The allocated surface is 0x24 bytes (PUSH 0x24 into 0x7C8E17) and its
 //     constructor 0x4BA5A0 takes (width, height, 1, 0) — width lands at
 //     [ESI+0x4] and height at [ESI+0x8] inside that constructor.
-//   The file object agrees with match/map/smudge_type_class_load_methods.h and
+//   The file object agrees with match/smudge_type_class_load_methods.h and
 //   match/platform/file_system_load_whole_methods.h (neither edited; re-derived
 //   here so the TU stands alone). Names cross-checked against YRpp
 //   (every offset reconfirmed above).

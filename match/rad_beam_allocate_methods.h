@@ -34,7 +34,7 @@ struct RadBeamVector
     int   CapacityIncrement;   // +0x0014
 
     // DynamicVectorClass::AddItem, expanded inline by VC6 at the Allocate call
-    // site. Same phrasing as match/map/cell_class_tag_methods.h (0x485250):
+    // site. Same phrasing as match/cell_class_tag_methods.h (0x485250):
     // Capacity bound to a local so the vtable load stays ahead of the argument
     // pushes, and `Count++` bound to an index so the increment is sequenced
     // before the store.

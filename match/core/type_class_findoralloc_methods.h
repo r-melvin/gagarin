@@ -40,7 +40,7 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
 extern DynamicVectorClassLayout AnimTypeClassArray;
 
-#include "../map/terrain_objects/terrain_type_class.h"
+#include "../terrain_type_class.h"
 
 
 // GLOBAL: GAMEMD 0x8874C0 — WarheadTypeClass::Array.

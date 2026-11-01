@@ -2135,7 +2135,7 @@
  {
   "addr": "0x568350",
   "name": "MapView_00568350::FUN_00568350",
-  "tu": "match/map/w2_map_iso_r17.cpp",
+  "tu": "match/w2_map_iso_r17.cpp",
   "sym": "?FUN_00568350@MapView_00568350@@QBE_NPBULeptonPair_00568350@@@Z",
   "len": "0x63",
   "manifest_pct": 92.7,
@@ -2157,7 +2157,7 @@
  {
   "addr": "0x577AB0",
   "name": "MapClass::Reshroud",
-  "tu": "match/map/map_class_reshroud_methods.cpp",
+  "tu": "match/map_class_reshroud_methods.cpp",
   "sym": "?Reshroud@MapView_578350@@QAEXPAVHouseClass@@@Z",
   "len": "0xf4",
   "manifest_pct": 92.3,
@@ -2178,7 +2178,7 @@
  {
   "addr": "0x586360",
   "name": "MapClass::IsLocationShrouded",
-  "tu": "match/map/map_class_location_shrouded_methods.cpp",
+  "tu": "match/map_class_location_shrouded_methods.cpp",
   "sym": "?IsLocationShrouded@MapClass@@QBE_NABUCoordStruct@@@Z",
   "len": "0x135",
   "manifest_pct": 96.9,
@@ -2199,7 +2199,7 @@
  {
   "addr": "0x5866C0",
   "name": "FUN_005866C0",
-  "tu": "match/map/map_cell_sweeps_005866c0.cpp",
+  "tu": "match/map_cell_sweeps_005866c0.cpp",
   "sym": "?FUN_005866C0@MapScan_005866C0@@QAEXXZ",
   "len": "0x5d",
   "manifest_pct": 80.0,
@@ -2244,7 +2244,7 @@
  {
   "addr": "0x5896F0",
   "name": "RecordTable_005896F0::FUN_005896F0",
-  "tu": "match/map/record_table_compare_methods.cpp",
+  "tu": "match/record_table_compare_methods.cpp",
   "sym": "?FUN_005896F0@RecordTable_005896F0@@QBE_NABU1@@Z",
   "len": "0x50",
   "manifest_pct": 89.2,
@@ -2266,7 +2266,7 @@
  {
   "addr": "0x58BE20",
   "name": "FUN_0058BE20",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_0058BE20@@YI?AVCell@@XZ",
   "len": "0x7e",
   "manifest_pct": 88.1,
@@ -2310,7 +2310,7 @@
  {
   "addr": "0x58BF70",
   "name": "MapRegionClass::MapRegionClass",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "??0MapRegionClass@@QAE@UCellStruct@@@Z",
   "len": "0xf7",
   "manifest_pct": 97.3,
@@ -2332,7 +2332,7 @@
  {
   "addr": "0x58C320",
   "name": "MapRegionClass::FUN_0058C320",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_0058C320@MapRegionClass@@QAEXPAUCellStruct@@@Z",
   "len": "0x8e",
   "manifest_pct": 95.8,
@@ -2354,7 +2354,7 @@
  {
   "addr": "0x58C3B0",
   "name": "MapRegionClass::FUN_0058C3B0",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_0058C3B0@MapRegionClass@@QAEXPAUCellStruct@@@Z",
   "len": "0xe7",
   "manifest_pct": 84.2,
@@ -2376,7 +2376,7 @@
  {
   "addr": "0x5904B0",
   "name": "?FUN_005904B0@@YG_NPAURect_4i@@@Z",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_005904B0@@YG_NPAURect_4i@@@Z",
   "len": "0x114",
   "manifest_pct": 94.7,
@@ -2398,7 +2398,7 @@
  {
   "addr": "0x59BAB0",
   "name": "?FUN_0059BAB0@@YG_NPAUCellStruct@@PAURect_4i@@DNN@Z",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_0059BAB0@@YG_NPAUCellStruct@@PAURect_4i@@DNN@Z",
   "len": "0x10c",
   "manifest_pct": 83.9,
@@ -2450,7 +2450,7 @@
  {
   "addr": "0x5A12D0",
   "name": "FUN_005A12D0",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_005A12D0@@YGXDH@Z",
   "len": "0x72",
   "manifest_pct": 94.4,
@@ -2472,7 +2472,7 @@
  {
   "addr": "0x5A6C10",
   "name": "?FUN_005A6C10@@YIXHPAUCellStruct@@HH@Z",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_005A6C10@@YIXHPAUCellStruct@@HH@Z",
   "len": "0x166",
   "manifest_pct": 95.0,
@@ -2498,7 +2498,7 @@
  {
   "addr": "0x5A7E90",
   "name": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
   "len": "0x103",
   "manifest_pct": 93.6,
@@ -2524,7 +2524,7 @@
  {
   "addr": "0x5A7FA0",
   "name": "FUN_005A7FA0",
-  "tu": "match/map/MapGen.cpp",
+  "tu": "match/MapGen.cpp",
   "sym": "?FUN_005A7FA0@@YIXHPAUCellStruct@@D@Z",
   "len": "0x104",
   "manifest_pct": 96.2,
@@ -2759,7 +2759,7 @@
  {
   "addr": "0x5CBCB0",
   "name": "MSShapeAnim::GetRect",
-  "tu": "match/map/msanim_early_methods.cpp",
+  "tu": "match/msanim_early_methods.cpp",
   "sym": "?GetRect@MSShapeAnim@@UAE?AURectangleStruct@@XZ",
   "len": "0x6f",
   "manifest_pct": 83.3,
@@ -2823,7 +2823,7 @@
  {
   "addr": "0x5D31D0",
   "name": "MSFont::CharWidth",
-  "tu": "match/map/ms_font_methods.cpp",
+  "tu": "match/ms_font_methods.cpp",
   "sym": "?CharWidth@MSFont@@UAEHG@Z",
   "len": "0x7c",
   "manifest_pct": 86.4,
@@ -4092,7 +4092,7 @@
  {
   "addr": "0x6B4BE0",
   "name": "SmudgeClass::Mark",
-  "tu": "match/map/tu216_smudge_class.cpp",
+  "tu": "match/tu216_smudge_class.cpp",
   "sym": "?Mark@SmudgeClass@@UAE_NH@Z",
   "len": "0x88",
   "manifest_pct": 82.4,
@@ -4762,7 +4762,7 @@
  {
   "addr": "0x74E930",
   "name": "VeinholeMonsterClass::Recalculate",
-  "tu": "match/map/veinhole_monster_recalculate_methods.cpp",
+  "tu": "match/veinhole_monster_recalculate_methods.cpp",
   "sym": "?Recalculate@VeinholeMonsterClass@@QAEXXZ",
   "len": "0xf4",
   "manifest_pct": 87.0,

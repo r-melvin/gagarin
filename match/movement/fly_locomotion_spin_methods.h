@@ -40,7 +40,7 @@ struct Coord_004CE5A0
 GG_STATIC_ASSERT(sizeof(Coord_004CE5A0) == 12);
 
 // The cell the coordinate resolves to; only one method is reached.
-#include "../map/cell_class_activate_veins_methods.h"
+#include "../cell_class_activate_veins_methods.h"
 
 struct MapClass_00565730
 {

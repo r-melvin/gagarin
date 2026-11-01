@@ -357,7 +357,7 @@
      "n_insns": 44,
      "status": "matched",
      "pct": 100,
-     "tu": "match/map/tu243_terrain_type_class.cpp",
+     "tu": "match/tu243_terrain_type_class.cpp",
      "sym": "??1TerrainTypeClass@@UAE@XZ",
      "name": "TerrainTypeClass::~TerrainTypeClass"
     },
@@ -811,7 +811,7 @@
      "n_insns": 17,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/map/ms_anim_ctors.cpp",
+     "tu": "match/ms_anim_ctors.cpp",
      "sym": "??1MSShapeAnim@@UAE@XZ",
      "name": "MSShapeAnim::~MSShapeAnim"
     },
@@ -2658,7 +2658,7 @@
      "n_insns": 44,
      "status": "matched",
      "pct": 100,
-     "tu": "match/map/tu243_terrain_type_class.cpp",
+     "tu": "match/tu243_terrain_type_class.cpp",
      "sym": "??1TerrainTypeClass@@UAE@XZ",
      "name": "TerrainTypeClass::~TerrainTypeClass"
     },
@@ -3351,7 +3351,7 @@
      "n_insns": 17,
      "status": "matched",
      "pct": 100.0,
-     "tu": "match/map/ms_anim_ctors.cpp",
+     "tu": "match/ms_anim_ctors.cpp",
      "sym": "??1MSShapeAnim@@UAE@XZ",
      "name": "MSShapeAnim::~MSShapeAnim"
     },

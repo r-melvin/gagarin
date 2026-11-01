@@ -167,7 +167,7 @@
     },
     {
       "address": "0x00487D70",
-      "source": "match/map/cell_class_jumpjet_methods.cpp",
+      "source": "match/cell_class_jumpjet_methods.cpp",
       "symbol": "?TryAssignJumpjet@CellClass@@QAE_NPAVObjectClass@@@Z",
       "old_size": 114,
       "corrected_size": 116,
@@ -488,7 +488,7 @@
     },
     {
       "address": "0x00582D30",
-      "source": "match/map/map_record_sweep_00582d30.cpp",
+      "source": "match/map_record_sweep_00582d30.cpp",
       "symbol": "?FUN_00582D30@MapRecordSweepPrefix_00582D30@@QAEXH@Z",
       "old_size": 60,
       "corrected_size": 62,

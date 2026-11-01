@@ -12,7 +12,7 @@
 //   modelled as a plain free function rather than a method.
 // FUN_004F42A0 / FUN_004F42E0 — two distinct retail addresses, byte-identical
 //   bodies (`DAT_00a8ef54 = 0; RET`), each its own MapClass-vtable slot (see
-//   match/map/map_class_more_methods.h for the sibling slot at 0x4F42D0).
+//   match/map_class_more_methods.h for the sibling slot at 0x4F42D0).
 //   Not folded by the linker because they are genuinely two different
 //   overridden virtuals that both happen to reset the same static flag.
 //

@@ -5283,7 +5283,7 @@
   },
   {
    "addr": "0x48DF80",
-   "tu": "match/map/map_class_methods.cpp",
+   "tu": "match/map_class_methods.cpp",
    "name": "GetLandTypeFromName",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6801,13 +6801,13 @@
   },
   {
    "addr": "0x55BAA0",
-   "tu": "match/map/map_class_object_methods.cpp",
+   "tu": "match/map_class_object_methods.cpp",
    "name": "LogicClass::AddObject",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x586990",
-   "tu": "match/map/map_class_update_pathfinding2_methods.cpp",
+   "tu": "match/map_class_update_pathfinding2_methods.cpp",
    "name": "MapClass::Update_Pathfinding_2",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6975,7 +6975,7 @@
   },
   {
    "addr": "0x5CEB80",
-   "tu": "match/map/msanim_family_methods.cpp",
+   "tu": "match/msanim_family_methods.cpp",
    "name": "MSShapeAnim",
    "reason": "no-preceding-CC-or-90"
   },

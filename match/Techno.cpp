@@ -879,7 +879,7 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 #include "_layout/unit_class.h"
 #include "_layout/ebolt_class.h"
 #include "core/cell_step_tables.h"
-#include "map/cell_class_bridge_tile_queries.h"
+#include "cell_class_bridge_tile_queries.h"
 
 #include "renderer/techno_class_drawer_methods.h"
 

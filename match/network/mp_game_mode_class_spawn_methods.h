@@ -8,7 +8,7 @@
 #define GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_SPAWN_METHODS_H
 #include "../_layout/unit_class.h"
 #include "../_layout/rules_class.h"
-#include "../map/object_placement.h"
+#include "../object_placement.h"
 // GLOBAL: GAMEMD 0xA8B258 -- native branch flag, read as one byte.
 extern char DAT_00A8B258;
 #endif

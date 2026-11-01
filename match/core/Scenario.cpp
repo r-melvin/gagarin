@@ -35,7 +35,7 @@
 #include "../_layout/global_0081c1d0.h"
 #include "../platform/ccini_class_methods.h"
 #include "../platform/ccfile_class.h"
-#include "../map/class_sweep_00581f50.h"
+#include "../class_sweep_00581f50.h"
 #include "frame_counter.h"
 #include "../_layout/theme_class.h"
 #include "../ui/tooltip_manager_shared.h"
@@ -166,7 +166,7 @@ extern const char STR_0083DD94[]; // STRING: GAMEMD 0x0083DD94
 extern const char STR_0083DD70[]; // STRING: GAMEMD 0x0083DD70
 extern const char STR_0083DD50[]; // STRING: GAMEMD 0x0083DD50
 extern const char STR_00830990[]; // STRING: GAMEMD 0x00830990
-#include "../map/object_placement.h"
+#include "../object_placement.h"
 TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; checked type filter
 void __fastcall FUN_007500B0(int value); // GAMEMD 0x7500B0
 double __cdecl FUN_004CAC40(double value); // GAMEMD 0x4CAC40

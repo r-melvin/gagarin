@@ -29,11 +29,11 @@
 #include "../../_layout/cell.h"
 #include "../../core/leftover_trivial_leaf_sweep.h"
 
-#include "../../map/map_class_next_object_methods.h"
+#include "../../map_class_next_object_methods.h"
 
-#include "../../map/map_class_waypoint_mode_methods.h"
+#include "../../map_class_waypoint_mode_methods.h"
 
-#include "../../map/trivial_tu067_methods.h"
+#include "../../trivial_tu067_methods.h"
 
 #include "../display_class_active_foundation_methods.h"
 
@@ -90,9 +90,9 @@ inline CellStruct CellStructSum(const CellStruct& a, const CellStruct& b)
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../../core/scenario_class_methods.h"
-#include "../../map/map_class_beacon_mode_methods.h"
-#include "../../map/map_class_mode_methods.h"
-#include "../../map/map_class_sublocation_methods.h"
+#include "../../map_class_beacon_mode_methods.h"
+#include "../../map_class_mode_methods.h"
+#include "../../map_class_sublocation_methods.h"
 #include "../display_class_submit_methods.h"
 
 // GLOBAL: GAMEMD 0x7E1718

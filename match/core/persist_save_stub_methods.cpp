@@ -55,7 +55,7 @@
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/unit_type_class.h"
 #include "../_layout/voxel_anim_class.h"
-#include "../map/terrain_objects/isometric_tile_class.h"
+#include "../isometric_tile_class.h"
 
 
 

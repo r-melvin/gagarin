@@ -185,10 +185,10 @@ static inline bool AllFogged_00457A10(CellStruct const* fd, CellStruct base,
 #include "airstrike_class_methods.h"
 #include "core/rules_class.h"
 #include "core/frame_counter.h"
-#include "map/map_class_methods.h"
+#include "map_class_methods.h"
 #include "ui/tactical_class_coords_to_client_methods.h"
 #include "_layout/map_0087f7e8.h"
-#include "map/map_class_area_methods.h"
+#include "map_class_area_methods.h"
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- ECX = sound, EDX = coordinate,
 // one stack argument (the sound's audio controller).
