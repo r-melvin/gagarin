@@ -21,6 +21,11 @@ struct DirStruct
             unsigned short Padding;
         };
     };
+
+    // Retail builds DirStruct temporaries with a constructor: the default one stores nothing, the value one
+    // stores the low word only (the BuildingClass constructor 0x43B740 hands such a temporary to SetDesired).
+    DirStruct() {}
+    explicit DirStruct(int raw) { Raw = (unsigned short)raw; }
 };
 GG_STATIC_ASSERT(offsetof(DirStruct, Raw) == 0);
 GG_STATIC_ASSERT(offsetof(DirStruct, Padding) == 2);

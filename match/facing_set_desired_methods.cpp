@@ -73,16 +73,12 @@ bool FacingClass::IsRotatingCCW() const
     return Difference() < 0;
 }
 
-static inline DirStruct DirDifference(DirStruct a, DirStruct b)
-{
-    DirStruct r;
-    r.Raw = (unsigned short)(a.Raw - b.Raw);
-    return r;
-}
-
 // FUNCTION: GAMEMD 0x4C95D0
 // Signed distance from the current (interpolated) direction to `other`.
 DirStruct FacingClass::FUN_004C95D0(const DirStruct* other) const
 {
-    return DirDifference(*other, Current());
+    DirStruct cur = Current();
+    DirStruct r;
+    r.Raw = (unsigned short)(other->Raw - cur.Raw);
+    return r;
 }
