@@ -26,9 +26,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "_layout/cell_class.h"
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
-// InvalidCell global (the dummy cell returned when the index is out of range
-// or empty), at fixed retail address 0xABDC50.
-#define InvalidCell (*reinterpret_cast<CellClass*>(0x00ABDC50))
+// InvalidCell is the canonical global declared in ui_display_chain.h (0xABDC50).
 
 #include "ui_display_chain.h"
 

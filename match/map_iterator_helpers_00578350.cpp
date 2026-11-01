@@ -4,23 +4,6 @@
 // entry ranges.
 #include "map_iterator_helpers_00578350.h"
 
-// FUNCTION: GAMEMD 0x578350
-void MapIterator_00578350::FUN_00578350()
-{
-    int count = cellCount;
-    iterState = 1;
-    iterCount = count;
-    iterLast = count - 1;
-    iterCursor = cellBase + count * 0x800 + 4;
-}
-
-// FUNCTION: GAMEMD 0x578850
-void MapIterator_00578350::FUN_00578850()
-{
-    iterNext = stepBase + stepOffset + 1;
-    iterLimit = cellCount - stepBase + stepOffset;
-}
-
 // FUNCTION: GAMEMD 0x578AC0
 void ScreenRedraw_00578AC0::FUN_00578AC0()
 {

@@ -93,29 +93,6 @@ void Obj_00542FC0::FUN_00542FC0(int value)
     }
 }
 
-#include "_layout/entry_005657a0.h"
-
-// GLOBAL: GAMEMD 0x00ABDC50
-extern "C" Entry_005657A0 DAT_00ABDC50;
-
-#include "_layout/obj_005657a0.h"
-
-// FUNCTION: GAMEMD 0x005657A0
-// The entry for `cell` in the 512-wide table at +0x13C; out of range or empty
-// gives the shared entry at 0xABDC50 with the cell stored into its +0x24.
-Entry_005657A0* Obj_005657A0::FUN_005657A0(const Cell_0050DEF0& cell) const
-{
-    int index = (cell.Y << 9) + cell.X;
-    if (index >= 0 && index < 0x40000) {
-        Entry_005657A0* entry = unknown_13C[index];
-        if (entry != NULL) {
-            return entry;
-        }
-    }
-    DAT_00ABDC50.unknown_24 = cell;
-    return &DAT_00ABDC50;
-}
-
 // FUNCTION: GAMEMD 0x0056BC50
 int __stdcall FUN_0056BC50(const Cell_0050DEF0* cell)
 {

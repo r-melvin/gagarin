@@ -293,6 +293,8 @@ struct Cell_0050DEF0;   // radar_class.h
 struct RadarDiamond;    // Radar.cpp
 class Pipe;
 class Straw;
+// GLOBAL: GAMEMD 0xABDC50 -- the invalid cell GetCellAt hands back; its MapCoords (0xABDC74) records the failed lookup.
+extern CellClass InvalidCell;
 class MapClass : public GScreenClass
 {
 public:
@@ -331,8 +333,15 @@ public:
     virtual void vf_28(RectangleStruct* rect, int a, int b, int c);   // 28  0x565C10
     virtual void vf_29(RectangleStruct* rect);   // 29  0x567230
 
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the cell at a coordinate. Two typed views of the one retail function
-    // (by reference and by pointer, same ABI) until the module CellClass views are consolidated.
+    // FUNCTION: GAMEMD 0x5657A0 -- the cell at a cell coordinate; out of range or empty, it records the coordinate in
+    // the invalid cell and returns that. Defined in Map.cpp, where it is expanded inline in the users (retail: 92 sites in 25 functions).
+    CellClass* GetCellAt(const CellStruct& cell);
+    // FUNCTION: GAMEMD 0x577AB0 -- put the shroud back over the whole map for a house (the local player, or none).
+    void Reshroud(HouseClass* house);
+    // FUNCTION: GAMEMD 0x577BB0 -- like Reshroud, but it only clears the cells' shroud flags (no per-cell counters).
+    void FUN_00577BB0(HouseClass* house);
+    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the same entry point as other TUs typed it (by reference and by pointer,
+    // same ABI) until their cell views are consolidated onto CellClass.
     DisplayCell* GetCellAt_005657A0(CellStruct const& cell);
     DisplayScCellObject* FUN_005657A0(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x56D230 (decl; reloc) -- Queue0x64D427/64D51B,
@@ -345,12 +354,14 @@ public:
     bool FUN_005657E0(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x577F30 (decl; reloc) -- RET 4; takes a house (null at 0x5C9430).
     void FUN_00577F30(void* house);
-    // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the next cell of the iteration, or null. Two typed views again (the
-    // display_scenario.h and mouse_mouse_class.h CellClass views).
+    // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the next cell of the diagonal walk over the cell table, or null (RET 0).
     CellClass* FUN_00578290();
+    // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the same entry point as the MapSavedObject view typed it.
     MapSavedObject* NextSavedObject_00578290();
-    // FUNCTION: GAMEMD 0x578350 (decl; reloc) -- rewind the cell-object iteration.
+    // FUNCTION: GAMEMD 0x578350 -- rewind the diagonal walk to the cell at (1, MapRect.Width).
     void FUN_00578350();
+    // FUNCTION: GAMEMD 0x578850 -- the walk's two limits from the local rectangle: x + y + 1 and width - x + y.
+    void FUN_00578850();
     // FUNCTION: GAMEMD 0x56D100 -- whether two cells lie in the same movement zone for a pre-check of a path (RET 0x18; -1 = no zone).
     bool FUN_0056D100(const CellStruct* from, const CellStruct* to, int zone, bool fromBridge, bool toBridge, bool checkEdge);
     // FUNCTION: GAMEMD 0x56E7C0 -- whether every cell of a w x h block from `origin` is clear to move into (RET 0x24; `this` is not read).
@@ -439,7 +450,7 @@ public:
     int   unknown_120;                               // +0x0120
     char  unknown_124[0x134 - 0x124];                // +0x0124
     int   unknown_134;                               // +0x0134 cleared by slot 24 0x565BC0
-    VectorClass<CellClass*> Owned; // +0x0138
+    VectorClass<CellClass*> Owned; // +0x0138 the cell pointer table (Items at +0x13C), 512 x 512 slots
     int unknown_148; // +0x0148
     int unknown_14C; // +0x014C
     int unknown_150; // +0x0150
@@ -560,6 +571,8 @@ public:
     void FUN_004ACC50(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x4ACDA0 (decl; reloc) -- RET 4; put a lit cell's neighbours back to the unlit state.
     void FUN_004ACDA0(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x4ADCD0 (decl; reloc) -- RET 8.
+    void FUN_004ADCD0(bool skipBuildings, int arg);
     // FUNCTION: GAMEMD 0x4ADEE0 (decl; reloc) -- RET 8; reveal around, or run the gap generator of, every techno.
     void FUN_004ADEE0(bool skipBuildings, int arg);
     // FUNCTION: GAMEMD 0x4ADFF0 (decl; reloc) -- RET 8; reveal around the techno objects of draw layer 2.
@@ -1288,6 +1301,9 @@ public:
     virtual long vf_30(IStream* stream);                 // 30  0x5BDF70 Load
     virtual long vf_31(IStream* stream);                 // 31  0x5BE6D0 Save
     virtual int  vf_40();                                // 40  0x40D280
+
+    // FUNCTION: GAMEMD 0x657CE0 (decl; reloc) -- ECX only; the map redraw request Reshroud makes on the map object.
+    void FUN_00657CE0();
 
     // Shared inline step of vf_19 / vf_21 (mouse_mouse_class_methods.cpp).
     void ApplyCursorRow(int index, bool flag);

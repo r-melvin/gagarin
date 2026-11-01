@@ -24104,9 +24104,9 @@
   "pct": 100
  },
  {
-  "tu": "match/map_class_reshroud_methods.cpp",
+  "tu": "match/Map.cpp",
   "addr": "0x577AB0",
-  "sym": "?Reshroud@MapView_578350@@QAEXPAVHouseClass@@@Z",
+  "sym": "?Reshroud@MapClass@@QAEXPAVHouseClass@@@Z",
   "len": "0xf4",
   "name": "MapClass::Reshroud",
   "status": "partial",
@@ -24151,13 +24151,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/map_class_threat_methods.cpp",
+  "tu": "match/Map.cpp",
   "addr": "0x56BCD0",
   "sym": "?GetThreatPosed@MapClass@@QBEHABUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x6d",
-  "name": "GetThreatPosed",
+  "name": "MapClass::GetThreatPosed",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map_class_total_damage_methods.cpp",
@@ -31045,22 +31045,22 @@
   "pct": 100
  },
  {
-  "tu": "match/map_iterator_helpers_00578350.cpp",
+  "tu": "match/Map.cpp",
   "addr": "0x578350",
-  "sym": "?FUN_00578350@MapIterator_00578350@@QAEXXZ",
+  "sym": "?FUN_00578350@MapClass@@QAEXXZ",
   "len": "0x33",
-  "name": "FUN_00578350",
+  "name": "MapClass::FUN_00578350",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map_iterator_helpers_00578350.cpp",
+  "tu": "match/Map.cpp",
   "addr": "0x578850",
-  "sym": "?FUN_00578850@MapIterator_00578350@@QAEXXZ",
+  "sym": "?FUN_00578850@MapClass@@QAEXXZ",
   "len": "0x29",
-  "name": "FUN_00578850",
+  "name": "MapClass::FUN_00578850",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map_iterator_helpers_00578350.cpp",
@@ -61769,13 +61769,13 @@
   "pct": 100
  },
  {
-  "tu": "match/unowned_leaf_sweep_b.cpp",
+  "tu": "match/Map.cpp",
   "addr": "0x5657A0",
-  "sym": "?FUN_005657A0@Obj_005657A0@@QBEPAUEntry_005657A0@@ABUCell_0050DEF0@@@Z",
+  "sym": "?GetCellAt@MapClass@@QAEPAVCellClass@@ABUCellStruct@@@Z",
   "len": "0x38",
-  "name": "Obj_005657A0::FUN_005657A0",
+  "name": "MapClass::GetCellAt",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/unowned_leaf_sweep_b.cpp",
@@ -151211,5 +151211,16 @@
   "name": "TechnoClass::vf_234",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Map.cpp",
+  "addr": "0x577BB0",
+  "sym": "?FUN_00577BB0@MapClass@@QAEXPAVHouseClass@@@Z",
+  "len": "0xd8",
+  "name": "MapClass::FUN_00577BB0",
+  "status": "partial",
+  "pct": 91.1,
+  "best_pct": 91.1,
+  "best_at": "49a9173f"
  }
 ]
