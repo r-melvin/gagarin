@@ -271,7 +271,9 @@ def scan_file(tree, rel, binder, keep_all=False):
         for k in reversed([k for k in gap if comments.get(k)]):
             mm = ANNOT.match(comments[k]) or ANNOT2.match(comments[k])
             if mm:
-                found = (k, [int(x, 16) for x in ADDR_IN.findall(mm.group(mm.lastindex))], 0)
+                # the annotation belongs to this declaration only when nothing but comments lies between them
+                if all(comments.get(j) for j in range(k + 1, ln)):
+                    found = (k, [int(x, 16) for x in ADDR_IN.findall(mm.group(mm.lastindex))], 0)
                 break
         if found:
             ctx = found
