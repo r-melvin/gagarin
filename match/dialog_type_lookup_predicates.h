@@ -113,6 +113,34 @@ struct HashMap_00602B90
     int                unknown_10;   // +0x0010
     int                unknown_14;   // +0x0014
     unsigned (* Hash)(const int* pKey);   // +0x0018
+
+    // The lookup of HashTable_006249A0<int, MapValue_00602B90>::Find (out-of-line instance 0x624760: count test, hash
+    // routine called with the key's address in ECX, bucket by `hash & ((1 << Shift) - 1)`, chain walk on the key),
+    // as the dialog TU expands it inline: 0x600CA0 and the other ownrdraw.cpp bodies that open with
+    // `MOV EAX,[0xAC1B04]` / `CALL [0xAC1B18]` (31 functions, scripts/agent_tools/inline_sites.py). It is defined
+    // here, ahead of every user, because cl only expands a body it has already seen. The result is the value
+    // pointer or null; the inner `node ? &node->Value : 0` guard is the first of retail's two null tests on the
+    // hit path (the caller's `p ? p->Field : 0` is the second). A caller that pre-sets a null out-parameter and
+    // calls the bool Find instead lets cl fold the miss path, which retail's 0x603D30, 0x6040B0, 0x624140 and
+    // 0x6240A0 do not show.
+    inline MapValue_00602B90* Lookup(int nKey) const
+    {
+        if (Count != 0)
+        {
+            unsigned hash = Hash(&nKey);
+            MapNode_00602B90* node = Buckets[hash & ((1u << Shift) - 1u)];
+
+            while (node != 0)
+            {
+                if (node->Key == nKey)
+                    return node ? &node->Value : 0;
+
+                node = node->Next;
+            }
+        }
+
+        return 0;
+    }
 };
 GG_STATIC_ASSERT(offsetof(HashMap_00602B90, Count) == 0x04);
 GG_STATIC_ASSERT(offsetof(HashMap_00602B90, Shift) == 0x0C);
