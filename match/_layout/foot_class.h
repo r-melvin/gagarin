@@ -33,6 +33,7 @@
 #include "cell.h"            // CellStruct, Cell
 
 class TeamClass;
+struct ILocomotion;
 class BuildingClass;
 struct Matrix3D;
 struct VoxelStruct;
@@ -172,7 +173,7 @@ public:
     CDTimerClass    unknown_timer_650;                 // +0x650 (0xC)
     CDTimerClass    SightTimer;                        // +0x65C (0xC)
     CDTimerClass    BlockagePathTimer;                 // +0x668 (0xC)
-    void*           Locomotor;                         // +0x674 ILocomotionPtr (COM ptr)
+    ILocomotion*    Locomotor;                         // +0x674 ILocomotionPtr (COM ptr)
     CoordStruct     unknown_point3d_678;               // +0x678 (0xC)
     signed char     TubeIndex;                         // +0x684 (ctor = -1)
     signed char     TubeFaceIndex;                     // +0x685
