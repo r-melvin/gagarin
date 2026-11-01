@@ -8,7 +8,7 @@
 #define GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
 
 #include "../ui/ui_window_contracts.h"
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_slot_nodes.h"
 #include <stddef.h>
 #include "wonline.h"
 #include "../core/hash_table_view.h"

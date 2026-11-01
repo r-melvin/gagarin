@@ -16,7 +16,7 @@
 // HouseClass — only the flag Init raises is modelled. It keeps a placeholder
 // name: the byte's offset is fixed by `MOV byte ptr [EAX+0x5779],1`, but not its
 // meaning. It sits one byte below SpySatActive @0x577A (see
-// match/economy/house_class_accessor_methods.h), so it is in the same
+// match/house_class_accessor_methods.h), so it is in the same
 // lightning/radar flag cluster.
 
 GG_STATIC_ASSERT(offsetof(HouseClass, RecheckRadar) == 0x5779);

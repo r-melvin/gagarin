@@ -35,7 +35,7 @@ const double DAT_007EE268 = 60.0;
 
 #include "mp_cooperative.h"
 #include "mp_game_mode_class_methods.h"
-#include "../economy/house_class_accessor_methods.h"
+#include "../house_class_accessor_methods.h"
 
 
 // LIBRARY: GAMEMD 0x7CD680 -- CRT _strnicmp (cdecl, locale-flag fast path).

@@ -19,7 +19,7 @@
 //               and 0x87F7E8 is MapClass::Instance, the receiver of the
 //               0x56C510 fallback (`MOV ECX,0x87F7E8`).
 //   0x87F7E8 as an object (not a pointer) agrees with
-//   match/economy/house_class_flag_coords_methods.h (not edited). Names
+//   match/house_class_flag_coords_methods.h (not edited). Names
 //   cross-checked against YRpp (every
 //   offset reconfirmed above).
 #ifndef GG_MATCH_MAP_MAP_CLASS_RECALCULATE_ZONES_METHODS_H

@@ -89,7 +89,7 @@ struct RectangleStruct;
 
 // StorageClass — four-tiberium-type cargo cells (sizeof = 0x10). Owns the
 // matched StorageClass::GetTotalValue @0x6C9600 family.
-#include "../economy/storage_class.h"
+#include "../storage_class.h"
 
 // TransitionTimer — deploy/unload cycle timer (sizeof = 0x20; 8-aligned due to
 // the leading double). Ctor FUN_0x004A50F0.

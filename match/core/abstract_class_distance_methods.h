@@ -5,7 +5,7 @@
 //   (hidden 12-byte buffer, `LEA ECX,[ESP+0x14]` / `LEA EAX,[ESP+0x24]`), the
 //   WhatAmI slot `[EDX+0x2C]` compared with 6 (BuildingClass), the building's
 //   Type `[ESI+0x520]` handed to 0x45ECA0 / 0x45EC90 (the foundation height
-//   and width, already matched in match/economy/building_type_class.cpp),
+//   and width, already matched in match/building_type_class.cpp),
 //   sqrt via 0x4CAC40 and __ftol 0x7C5F00. The method name is YRpp's
 //   AbstractClass::DistanceFrom (name only).
 #ifndef GG_MATCH_CORE_ABSTRACT_CLASS_DISTANCE_METHODS_H

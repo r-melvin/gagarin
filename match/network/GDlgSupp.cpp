@@ -26,9 +26,9 @@
 // Small leaves (64 bytes or less) between 0x470000 and 0x500000 that other
 // translation units already declared as callees but nothing defined.
 
-#include "../economy/netshare_win.h"
+#include "../netshare_win.h"
 #include "../_layout/session_class.h"
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_slot_nodes.h"
 #include "../core/mathtbl_init_shapes.h"
 #include <windows.h>
 #include "../renderer/pcx_get_surface_methods.h"

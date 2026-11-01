@@ -18,7 +18,7 @@
 //   Names cross-checked against YRpp BuildingClass::GoOnline / EnableStuff
 //   and the sibling TUs
 //   match/building_class_offline_methods.h and
-//   match/economy/building_class_enable_methods.h, re-derived here under
+//   match/building_class_enable_methods.h, re-derived here under
 //   this TU's own tags; +0x504 is TechnoClass::EMPLockRemaining per
 //   match/_layout/techno_class.h.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_GO_ONLINE_METHODS_H

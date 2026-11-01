@@ -421,7 +421,7 @@
      "n_insns": 36,
      "status": "matched",
      "pct": 100,
-     "tu": "match/economy/tu020_aircraft_type_class.cpp",
+     "tu": "match/tu020_aircraft_type_class.cpp",
      "sym": "??1AircraftTypeClass@@UAE@XZ",
      "name": "AircraftTypeClass::~AircraftTypeClass"
     },
@@ -706,7 +706,7 @@
      "n_insns": 24,
      "status": "matched",
      "pct": 100,
-     "tu": "match/economy/House.cpp",
+     "tu": "match/House.cpp",
      "sym": "??_E?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@QAEPAXI@Z",
      "name": "DistributionObject<BuildingTypeClass*> vector deleting destructor"
     },
@@ -2751,7 +2751,7 @@
      "n_insns": 36,
      "status": "matched",
      "pct": 100,
-     "tu": "match/economy/tu020_aircraft_type_class.cpp",
+     "tu": "match/tu020_aircraft_type_class.cpp",
      "sym": "??1AircraftTypeClass@@UAE@XZ",
      "name": "AircraftTypeClass::~AircraftTypeClass"
     },
@@ -3246,7 +3246,7 @@
      "n_insns": 24,
      "status": "matched",
      "pct": 100,
-     "tu": "match/economy/House.cpp",
+     "tu": "match/House.cpp",
      "sym": "??_E?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@QAEPAXI@Z",
      "name": "DistributionObject<BuildingTypeClass*> vector deleting destructor"
     },

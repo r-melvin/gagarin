@@ -6,7 +6,7 @@
 #   scripts/vc6/match.sh <source.cpp> <mangled-symbol> <retail-addr-hex> <len-hex>
 #
 # Example:
-#   scripts/vc6/match.sh match/economy/storage_class.cpp \
+#   scripts/vc6/match.sh match/storage_class.cpp \
 #       '?GetTotalValue@StorageClass@@QBEHXZ' 0x6C9600 0x4f
 set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"

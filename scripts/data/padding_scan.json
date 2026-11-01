@@ -5841,7 +5841,7 @@
   },
   {
    "addr": "0x4C9EA0",
-   "tu": "match/economy/factory_class_unsuspend_methods.cpp",
+   "tu": "match/factory_class_unsuspend_methods.cpp",
    "name": "FactoryClass::Unsuspend",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5859,7 +5859,7 @@
   },
   {
    "addr": "0x4CA6B0",
-   "tu": "match/economy/factory_class_methods.cpp",
+   "tu": "match/factory_class_methods.cpp",
    "name": "IsQueued",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6243,7 +6243,7 @@
   },
   {
    "addr": "0x50D9F0",
-   "tu": "match/economy/house_class_accessor_methods.cpp",
+   "tu": "match/house_class_accessor_methods.cpp",
    "name": "GetUnitSelfHealStep",
    "reason": "no-preceding-CC-or-90"
   },
@@ -6261,7 +6261,7 @@
   },
   {
    "addr": "0x50EE50",
-   "tu": "match/economy/House.cpp",
+   "tu": "match/House.cpp",
    "name": "DynamicVectorClass<HouseClass::StartingTechnoStruct*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },

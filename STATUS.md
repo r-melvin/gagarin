@@ -4067,7 +4067,7 @@ The shared `ObjectClass` declaration now owns the existing `GetYSort` and
 remains exact for all 54 bytes, and its separate host/interface header is
 retired. The 195-byte [IsCrushable implementation](match/core/object_class_crushable_methods.cpp)
 uses the shared object/type prefixes, sparse techno views, and the existing
-const House ally overload. All three [House ally methods](match/economy/house_class_ally_methods.cpp)
+const House ally overload. All three [House ally methods](match/house_class_ally_methods.cpp)
 remain exact and use the shared object layout. Their slot-call views make no
 complete hierarchy claim; existing names/const qualifiers remain source-level
 hypotheses where the instructions cannot prove them.
@@ -4394,7 +4394,7 @@ structure has been recovered.
 | Milestone | Current state and evidence | Completion gate |
 | --- | --- | --- |
 | Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
-| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h), [StorageClass](match/economy/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
+| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h), [StorageClass](match/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
 | Integrated project build | A tracked-source object build exists in [build_project.py](scripts/vc6/build_project.py). The M0 diagnostic link and the M1 address-faithful stub link complete (see the top of this file); no runnable engine build exists yet. The existing compile gate also compiles translation units separately. | Resolve remaining project dependencies, establish an integrated engine link, and account for library dependencies. |
 | Whole-image identity | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | No byte-identical executable is promised; retain per-function verification as the matching standard. |

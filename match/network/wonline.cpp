@@ -122,7 +122,7 @@ const double DAT_007F7510 = 60.0;
 #define LocalHandle LocalHandle_Win32
 #include <windows.h>
 #undef LocalHandle
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_slot_nodes.h"
 #include "../core/base_ctor_vtable_seat_sweep.h"
 
 #include <stddef.h>

@@ -31,7 +31,7 @@
 // frame at all, and `new T(id)` with a potentially-throwing constructor makes
 // VC6 emit one (`PUSH -1; PUSH 0; MOV EAX,FS:[0]`) so operator delete can run
 // on unwind — that prologue alone costs the whole match. Same precedent as
-// WaypointPathClass in match/economy/house_class_misc_methods.h.
+// WaypointPathClass in match/house_class_misc_methods.h.
 
 // CRT case-insensitive compare at 0x007C8D20 (__cdecl).
 extern "C" int __cdecl _stricmp(const char* a, const char* b);

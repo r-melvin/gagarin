@@ -564,7 +564,7 @@
  {
   "addr": "0x442C40",
   "name": "BuildingClass::vf_9",
-  "tu": "match/economy/tu038_building_class.cpp",
+  "tu": "match/tu038_building_class.cpp",
   "sym": "?vf_9@BuildingClass@@UAEXXZ",
   "len": "0x147",
   "manifest_pct": 86.5,
@@ -588,7 +588,7 @@
  {
   "addr": "0x447F10",
   "name": "BuildingClass::vf_240",
-  "tu": "match/economy/tu038_building_class.cpp",
+  "tu": "match/tu038_building_class.cpp",
   "sym": "?vf_240@BuildingClass@@UAEHPAVAbstractClass@@HH@Z",
   "len": "0x155",
   "manifest_pct": 91.0,
@@ -610,7 +610,7 @@
  {
   "addr": "0x448160",
   "name": "BuildingClass::vf_316",
-  "tu": "match/economy/tu038_building_class.cpp",
+  "tu": "match/tu038_building_class.cpp",
   "sym": "?vf_316@BuildingClass@@UAEDXZ",
   "len": "0xfb",
   "manifest_pct": 81.7,
@@ -723,7 +723,7 @@
  {
   "addr": "0x45AEA0",
   "name": "ComHolder::FUN_0045AEA0",
-  "tu": "match/economy/tu038_building_class.cpp",
+  "tu": "match/tu038_building_class.cpp",
   "sym": "?FUN_0045AEA0@ComHolder_0045AEA0@@QAEJPAPAUIUnk@@@Z",
   "len": "0x75",
   "manifest_pct": 86.8,
@@ -747,7 +747,7 @@
  {
   "addr": "0x45AF20",
   "name": "ComHolder::FUN_0045AF20",
-  "tu": "match/economy/tu038_building_class.cpp",
+  "tu": "match/tu038_building_class.cpp",
   "sym": "?FUN_0045AF20@ComHolder_0045AEA0@@QAEJPAPAUIUnk@@@Z",
   "len": "0x75",
   "manifest_pct": 86.8,
@@ -771,7 +771,7 @@
  {
   "addr": "0x45E8F0",
   "name": "FUN_0045E8F0",
-  "tu": "match/economy/tu039_building_type_class.cpp",
+  "tu": "match/tu039_building_type_class.cpp",
   "sym": "?FUN_0045E8F0@@YIXXZ",
   "len": "0x72",
   "manifest_pct": 95.3,
@@ -793,7 +793,7 @@
  {
   "addr": "0x465010",
   "name": "BuildingTypeClass::Load",
-  "tu": "match/economy/tu039_building_type_class.cpp",
+  "tu": "match/tu039_building_type_class.cpp",
   "sym": "?Load@BuildingTypeView_0045DD90@@UAGJPAUIStream@@@Z",
   "len": "0x2e7",
   "manifest_pct": 96.6,
@@ -1587,7 +1587,7 @@
  {
   "addr": "0x4F54A0",
   "name": "HouseClass::HouseClass",
-  "tu": "match/economy/House.cpp",
+  "tu": "match/House.cpp",
   "sym": "??0HouseClusterView@@QAE@PAUHouseTypeView@@@Z",
   "len": "0x109a",
   "manifest_pct": 98.3,
@@ -1683,7 +1683,7 @@
  {
   "addr": "0x503040",
   "name": "HouseClass::Load",
-  "tu": "match/economy/House.cpp",
+  "tu": "match/House.cpp",
   "sym": "?Load@HouseClass@@UAGJPAUIStream@@@Z",
   "len": "0x1033",
   "manifest_pct": 98.3,
@@ -1705,7 +1705,7 @@
  {
   "addr": "0x50D440",
   "name": "HouseClass::RespawnStartingForces",
-  "tu": "match/economy/House.cpp",
+  "tu": "match/House.cpp",
   "sym": "?RespawnStartingForces@HouseClass@@QAEXXZ",
   "len": "0xE4",
   "manifest_pct": 81.9,
@@ -4604,7 +4604,7 @@
  {
   "addr": "0x722AF0",
   "name": "TiberiumClass::RegisterForSpread",
-  "tu": "match/economy/tiberium_class_spread_methods.cpp",
+  "tu": "match/tiberium_class_spread_methods.cpp",
   "sym": "?RegisterForSpread@TiberiumClass@@QAEXPAUCellStruct@@@Z",
   "len": "0x143",
   "manifest_pct": 98,

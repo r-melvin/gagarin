@@ -866,7 +866,7 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 
 #include "techno_class_update_methods.h"
 
-#include "economy/building_class_drain.h"
+#include "building_class_drain.h"
 
 #include "_layout/foot_class.h"
 #include "_layout/infantry_class.h"

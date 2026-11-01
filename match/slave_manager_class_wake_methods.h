@@ -11,7 +11,7 @@
 //   `[0x8871E0]` with `[EAX+0x1790]` and `[EAX+0x1780]`, the frame counter
 //   `[0xA8ED84]` and the word pair `[0xB0B5B8]` / `[0xB0B5BA]` (a CellStruct,
 //   bytes 00 00 00 00). Owner@0x21C and IsHumanPlayer@0x1EC agree with
-//   match/_layout/techno_class.h and match/economy/house_class_lookup_methods.h;
+//   match/_layout/techno_class.h and match/House.h;
 //   State/LastScanFrame with match/combat/slave_manager_class_methods.h (none
 //   edited; re-derived here so the TU stands alone). Slot 0x1BC is getCell;
 //   slot 0x338 (0x70F8F0 in the leaf

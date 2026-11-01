@@ -35,7 +35,7 @@
 #include "core/triple_timer_init_methods.h"
 #include "VECTOR.H"
 #include "core/wide_string_class.h"
-#include "economy/storage_class.h"
+#include "storage_class.h"
 #include "movement/loco_vtable_layout.h"
 #include "network/wdt_rc_ptr_base.h"
 #include "ui/control_class_vtable_layout.h"

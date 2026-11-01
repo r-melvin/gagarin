@@ -16,7 +16,7 @@
 #include "platform/ccini_class_methods.h"
 #include "movement/locomotion_load_support.h"
 #include "core/header_tuning_globals.h"
-#include "economy/house_building/house_views.h"
+#include "house_views.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 

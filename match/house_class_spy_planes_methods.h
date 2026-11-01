@@ -9,7 +9,7 @@
 //   `[EAX+EDX*4]`, the same array as match/core/find_by_name_methods.h),
 //   Unsorted::ScenarioInit 0xA8E7AC (read/INC/store around each creating
 //   call and read/DEC/store after it, as in
-//   match/economy/factory_class_abandon_methods.cpp), MapClass::Instance as
+//   match/factory_class_abandon_methods.cpp), MapClass::Instance as
 //   the immediate 0x87F7E8, and the cell global 0xB04C38 pushed twice into
 //   0x4AA440. On the house (EBP): `MOV EAX,[EBP+0x1E0]` bounds-checked
 //   against 0 and 3 before falling back to the __fastcall 0x50DA80. On the

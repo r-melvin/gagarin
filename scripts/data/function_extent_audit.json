@@ -81,7 +81,7 @@
     },
     {
       "address": "0x0042F380",
-      "source": "match/economy/house_class_storage.cpp",
+      "source": "match/house_class_storage.cpp",
       "symbol": "?FailedToPlaceNode@BaseClass@@QAEHPAUBaseNodeClass@@@Z",
       "old_size": 21,
       "corrected_size": 23,

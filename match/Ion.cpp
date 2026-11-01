@@ -136,7 +136,7 @@ extern int DAT_00A9FA80;
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 #include "core/vector_class_operations.h"
-#include "economy/house_class_methods.h"
+#include "house_class_methods.h"
 #include "core/scenario_class_lighting_recalc_methods.h"
 class AnimClass;
 

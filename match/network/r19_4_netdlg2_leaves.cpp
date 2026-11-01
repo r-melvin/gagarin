@@ -16,11 +16,11 @@
 #undef LocalHandle
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
-#include "../economy/netshare_common.h"
+#include "../netshare_common.h"
 #include "../_layout/node_name_type.h"
 #include "transport/connman_class.h"
 #include "../core/init_misc_methods.h"
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_slot_nodes.h"
 
 // FUNCTION: GAMEMD 0x775B10 (decl; reloc) -- the current dialog window.
 HWND __cdecl FUN_00775B10();

@@ -5,7 +5,7 @@
 //   (the building's CoordStruct), `[ESI+0x2E4]` (BunkerLinkedItem, cleared on
 //   both objects), `[ESI+0x520]` (Type) with `ADD EAX,0x127c/0x128c/0x12c0/
 //   0x12d0` (Type->Anims[12]/[13] name buffers, base 0xF4C at 0x44 per record
-//   per match/economy/building_class_enable_methods.h), `[ESI+0x718]`, the
+//   per match/building_class_enable_methods.h), `[ESI+0x718]`, the
 //   rules globals `[0x8871E0]` `+0x244` (int, -1 = none) and `+0x1700`
 //   (double, the FCOMP operand), and the two virtual slots `[EDX+0x274]` and
 //   `[EDX+0x1E8]`. YRpp names ClearBunker,

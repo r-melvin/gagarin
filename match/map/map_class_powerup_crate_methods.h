@@ -15,7 +15,7 @@
 //   cross-checked against YRpp MapClass::PlacePowerupCrate / MapClass::Crates
 //   (Crate = CDTimerClass + CellStruct Location) and CellClass LandType@0xEC /
 //   OverlayData@0x11E, re-derived here from the disassembly. The sibling
-//   match/economy/house_class_dropped_flag_methods.h supplies the
+//   match/house_class_dropped_flag_methods.h supplies the
 //   NearByLocation declaration shape; match/map/cell_class_tiberium_*.h the
 //   LandType/OverlayData offsets.
 #ifndef GG_MATCH_MAP_MAP_CLASS_POWERUP_CRATE_METHODS_H

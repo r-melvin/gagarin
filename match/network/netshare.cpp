@@ -27,7 +27,7 @@
 //   LIBRARY: GAMEMD 0x7CA5D3 wcscmp, 0x7DD0F8 _wcsicmp, 0x7C8D20 _stricmp,
 //   0x7C8B3D operator delete (all reloc).
 
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_slot_nodes.h"
 #include "../core/mathtbl_init_shapes.h"
 #include "../_layout/session_class.h"
 
@@ -60,7 +60,7 @@ static inline int Releasable_Slot_Count()
     return playable;
 }
 
-#include "../economy/trivial_tu161_methods.h"
+#include "../trivial_tu161_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -90,7 +90,7 @@ extern double DAT_00AC0CE8;
 //   LIBRARY: GAMEMD 0x7CA858 vswprintf, 0x7CA405 wcslen, 0x7CA422 wcsncpy,
 //   0x7CA8C6 wcschr, 0x7DDE13 _wcsdup, 0x7C93E8 free, 0x7CB8E6 iswgraph.
 
-#include "../economy/netshare_win.h"
+#include "../netshare_win.h"
 #include "../_layout/house_class.h"
 #include "../_layout/house_type_class.h"
 
@@ -191,7 +191,7 @@ extern const wchar_t DAT_00831774[];
 //   SendMessageA 0x7E14A4, SendDlgItemMessageA 0x7E1490, GetWindowLongA
 //   0x7E1474, SetWindowLongA 0x7E1470, ShowWindow 0x7E1498, ValidateRect 0x7E1478.
 
-#include "../economy/netshare_win.h"
+#include "../netshare_win.h"
 #include "multiplayer_game_mode.h"
 #include "mp_game_mode_class_get_methods.h"
 
@@ -239,8 +239,8 @@ void __cdecl FUN_005D5E10();
 //
 //   Imports: SendMessageA 0x7E14A4, ShowWindow 0x7E1498.
 
-#include "../economy/netshare_win.h"
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_win.h"
+#include "../netshare_slot_nodes.h"
 
 // GLOBAL: GAMEMD 0xB732F0 -- the dialog factory context handed to 0x775700.
 extern void* DAT_00B732F0;
@@ -314,8 +314,8 @@ unsigned int __cdecl FUN_005E66F0();
 //
 //   LIBRARY: GAMEMD 0x7C91D0 strncpy; strcpy is the inline expansion.
 
-#include "../economy/netshare_common.h"
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_common.h"
+#include "../netshare_slot_nodes.h"
 
 // GLOBAL: GAMEMD 0xA8DAB0
 extern unsigned char DAT_00A8DAB0;
@@ -351,7 +351,7 @@ static inline int Find_Player_By_Handle(const char* handle)
 //   LIBRARY: GAMEMD 0x7CA67F time, 0x7DD0F8 _wcsicmp, 0x7C8D20 _stricmp, 0x7CA489
 //   wcscpy; strcpy is the inline expansion.
 
-#include "../economy/netshare_common.h"
+#include "../netshare_common.h"
 
 extern "C" {
 // LIBRARY: GAMEMD 0x7CA67F (decl; reloc) -- CRT time.
@@ -513,7 +513,7 @@ static inline void Publish_Options_Inline(char force, char poll)
 //
 //   Imports: GetDlgItem 0x7E14A8, SendMessageA 0x7E14A4, InvalidateRect 0x7E149C.
 
-#include "../economy/netshare_slot_inline.h"
+#include "../netshare_slot_inline.h"
 #include "../renderer/pcx_get_surface_methods.h"
 
 // GLOBAL: GAMEMD 0xAC10C8 -- nonzero when the local player joins as an observer.
@@ -537,8 +537,8 @@ HWND FUN_00775940(int id);
 //   The lobby dialogs are combo boxes: 0x146 / 0x147 / 0x150 / 0x14E are
 //   CB_GETCOUNT / CB_GETCURSEL / CB_GETITEMDATA / CB_SETCURSEL.
 
-#include "../economy/netshare_win.h"
-#include "../economy/netshare_slot_inline.h"
+#include "../netshare_win.h"
+#include "../netshare_slot_inline.h"
 
 // GLOBAL: GAMEMD 0xA8B27C -- a per-slot choice table (eight ints) cleared with
 // the start table when a slot stops being an AI.
@@ -605,7 +605,7 @@ int FUN_004E59A0(int control);
 //
 //   Imports: GetDlgItem 0x7E14A8, EnableWindow 0x7E14A0, ShowWindow 0x7E1498.
 
-#include "../economy/netshare_slot_inline.h"
+#include "../netshare_slot_inline.h"
 #include "../renderer/pcx_get_surface_methods.h"
 
 // GLOBAL: GAMEMD 0xA8B254 -- the selected map's list index, -1 when none.
@@ -668,8 +668,8 @@ static inline int Slot_Picture_Control(int index)
 //
 //   LIBRARY: GAMEMD 0x7CA45F wcscat.
 
-#include "../economy/netshare_common.h"
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_common.h"
+#include "../netshare_slot_nodes.h"
 #include "../core/string_class.h"
 
 extern "C" {
@@ -693,7 +693,7 @@ extern const wchar_t DAT_008304FC[];
 //   (the matched functions only). netshare.cpp (path string at 0x8317D8): lobby
 //   dialog routines over the slot controls and the player-name edit field.
 
-#include "../economy/netshare_slot_inline.h"
+#include "../netshare_slot_inline.h"
 
 // FUNCTION: GAMEMD 0x5EC9F0 (decl; reloc) -- __fastcall: refresh one slot's
 // kind control from a node (dialog, control, node, flag), RET 8.
@@ -800,8 +800,8 @@ static inline int Combo_Item_Data(HWND dialog, int control, int index)
 //   at 0x831704..0x83171C) and the conversions between them and the singleton
 //   nodes of netshare_slot_nodes.h.
 
-#include "../economy/netshare_common.h"
-#include "../economy/netshare_slot_nodes.h"
+#include "../netshare_common.h"
+#include "../netshare_slot_nodes.h"
 #include "../core/string_class.h"
 
 // GLOBAL: GAMEMD 0x831704..0x83171C -- char pointers to the slot-kind tokens
@@ -825,8 +825,8 @@ Wstring FUN_007B7F90(const Obj_007B66D0& text);
 //   netshare.cpp (path string at 0x8317D8): the lobby's slot queries, over the
 //   slot array and the seven singleton nodes of netshare_slot_nodes.h.
 
-#include "../economy/netshare_common.h"
-#include "../economy/netshare_slot_inline.h"
+#include "../netshare_common.h"
+#include "../netshare_slot_inline.h"
 
 // STRING: GAMEMD 0x831C8C "Channel full - Session.ScenarioMaxPlayers = %d\n"
 extern const char DAT_00831C8C[];
@@ -851,8 +851,8 @@ static inline bool Observer_At_Extra_Slot()
 //   lobby's slot-count helpers and the selected-map query. The two predicates at
 //   0x77D940 / 0x77D970 are the ones netshare_slot_nodes.h declares.
 
-#include "../economy/netshare_win.h"
-#include "../economy/netshare_slot_inline.h"
+#include "../netshare_win.h"
+#include "../netshare_slot_inline.h"
 #include "multiplayer_game_mode.h"
 
 // GLOBAL: GAMEMD 0xAC0D40 -- the lobby dialog.

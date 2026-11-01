@@ -28,7 +28,7 @@ public:
     TypeList(const AbstractNoInit& noInit) : DynamicVectorClass<T>(noInit) {}
     // DynamicVectorClass::AddItem with early returns and `Items[Count++] = item`, the form retail keeps out
     // of line for the house type's veteran lists (0x512F20 / 0x5132F0 / 0x5136C0); defined where used
-    // (match/economy/house_building/types_shared.h).
+    // (match/types_shared.h).
     bool AddItemEarlyOut(const T& item);
     // Nonvirtual stream helper declarations; selected specializations and
     // native entry addresses are declared in vector_stream_save_family_methods.h.

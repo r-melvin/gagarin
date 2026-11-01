@@ -20,7 +20,7 @@
 #include "../_rt/gg_vslot.h"
 #include "../_layout/object_class.h"
 #include "../_layout/object_type_class.h"
-#include "../economy/house_class_ally_methods.h"
+#include "../house_class_ally_methods.h"
 
 // Focused REA/Ghidra analysis reconfirms the full 0xC3-byte entry, including
 // RET 4 at 0x5F6D90, and each field/slot operand documented above.

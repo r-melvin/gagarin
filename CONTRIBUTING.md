@@ -31,7 +31,7 @@ Check the setup with:
 
 ```bash
 scripts/vc6/compile_all.sh
-scripts/vc6/match.sh match/economy/storage_class.cpp \
+scripts/vc6/match.sh match/storage_class.cpp \
     "?GetTotalValue@StorageClass@@QBEHXZ" 0x6C9600 0x4f
 ```
 
