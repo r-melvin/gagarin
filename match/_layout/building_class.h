@@ -214,7 +214,7 @@ public:
     virtual void vf_9();                                           // 9   0x442C40
     virtual int vf_145();                                          // 145 0x449A50
     virtual void vf_104(int mode);                                 // 104 0x447110
-    virtual int vf_240(AbstractClass* target, int a2, int a3);     // 240 0x447F10
+    virtual int vf_240(AbstractClass* target, int a2, bool a3);    // 240 0x447F10
     virtual int vf_28(CellStruct* cell, char a, char b);           // 28  0x447540
     virtual int vf_29(ObjectClass* target, char flag);             // 29  0x447210
     virtual bool vf_80(int mode, CellStruct* cell, int a3, int a4); // 80  0x4436F0

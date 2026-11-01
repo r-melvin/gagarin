@@ -12,7 +12,7 @@
 #include "_layout/aircraft_class.h"
 
 // FUNCTION: GAMEMD 0x41A9E0
-int AircraftClass::FUN_0041A9E0(AbstractClass* target, int a2, int a3)
+int AircraftClass::FUN_0041A9E0(AbstractClass* target, int a2, bool a3)
 {
     int result = TechnoClass::vf_240(target, a2, a3);
     if (result != 0)

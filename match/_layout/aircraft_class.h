@@ -61,7 +61,7 @@ public:
     virtual int __stdcall vf_08();   // 0x41B860
     // FUNCTION: GAMEMD 0x41A9E0 -- the movement-check result for a target (RET 0xC): the base answer, or 1 for a
     // loaded transport with nobody aboard, or 2 when a non-fighter's turret facing is far off the target direction.
-    int FUN_0041A9E0(AbstractClass* target, int a2, int a3);
+    int FUN_0041A9E0(AbstractClass* target, int a2, bool a3);
     // FUNCTION: GAMEMD 0x5F3DB0 (decl; reloc) -- AbstractClass::GetTargetDirection, hidden result pointer (RET 4).
     DirStruct* FUN_005F3DB0(DirStruct* out, AbstractClass* target);
     // Native primary slot 288: two stack dwords, target pointer and flag.

@@ -75,6 +75,8 @@ public:
     CaptureManagerClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x471C90
     bool CanCapture(Techno_00471C90* target) const;
+    // FUNCTION: GAMEMD 0x471C90 (decl; reloc) -- the same routine, called with a TechnoClass.
+    bool CanCapture(TechnoClass* target) const;
     // CALLEE: GAMEMD 0x471D40 -- thiscall, mutable AbstractClass* stack argument, bool result.
     bool FUN_00471D40(AbstractClass* target);
     // FUNCTION: GAMEMD 0x471FF0

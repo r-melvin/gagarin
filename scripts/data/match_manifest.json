@@ -49313,7 +49313,7 @@
  {
   "tu": "match/tu038_building_class.cpp",
   "addr": "0x447F10",
-  "sym": "?vf_240@BuildingClass@@UAEHPAVAbstractClass@@HH@Z",
+  "sym": "?vf_240@BuildingClass@@UAEHPAVAbstractClass@@H_N@Z",
   "len": "0x155",
   "name": "BuildingClass::vf_240",
   "status": "partial",
@@ -150980,7 +150980,7 @@
  {
   "tu": "match/tu019_aircraft_target_check.cpp",
   "addr": "0x41A9E0",
-  "sym": "?FUN_0041A9E0@AircraftClass@@QAEHPAVAbstractClass@@HH@Z",
+  "sym": "?FUN_0041A9E0@AircraftClass@@QAEHPAVAbstractClass@@H_N@Z",
   "len": "0x9f",
   "name": "AircraftClass::FUN_0041A9E0",
   "status": "matched",
@@ -151368,5 +151368,16 @@
   "name": "WeaponTypeClass::WeaponTypeClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x6FC0B0",
+  "sym": "?vf_240@TechnoClass@@UAEHPAVAbstractClass@@H_N@Z",
+  "len": "0xc88",
+  "name": "TechnoClass::vf_240",
+  "status": "partial",
+  "pct": 97.8,
+  "best_pct": 97.8,
+  "best_at": "658da7d4"
  }
 ]

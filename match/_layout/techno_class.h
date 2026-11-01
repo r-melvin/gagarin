@@ -213,6 +213,9 @@ public:
     // target after both sides' multipliers, rank bonuses and the warhead verses (0 when no target).
     int FUN_006FDB80(TechnoClass* target, WeaponTypeClass* weapon);
 
+    // FUNCTION: GAMEMD 0x6F3970 (decl; reloc) -- thiscall, one stack argument (RET 4): the weapon's damage for a weapon slot (-1: the current one).
+    int CombatDamage(int which);
+
     // FUNCTION: GAMEMD 0x709550 -- thiscall, no stack arguments.
     void FUN_00709550();
     // GAMEMD 0x70D590 (body in Techno.cpp, unclaimed) -- thiscall, one stack argument (RET 4).
@@ -416,7 +419,7 @@ public:
     virtual bool vf_237(AbstractClass* target);                                 // 237 0x6F78D0
     virtual void vf_238(void* arg);                                // 238 BuildingClass 0x44D760 (the base slot target 0x4C9150 is a bare stub)
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
-    virtual int vf_240(AbstractClass* target, int a2, int a3);    // 240 0x6FC0B0: returns a result code 0..10; BuildingClass 0x44ACF0 passes its Target
+    virtual int vf_240(AbstractClass* target, int weapon, bool ignoreRange);    // 240 0x6FC0B0: returns a result code 0..10; BuildingClass 0x44ACF0 passes its Target
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x6F8DF0; FootClass 0x4D9920 tests the threat bits and the result pointer
     virtual void vf_242(AbstractClass* target);                                  // 242 0x6FCDB0
     virtual BulletClass* vf_243(AbstractClass* target, int a2);   // 243 0x6FDD50 (returns the projectile fired); BuildingClass 0x44ACF0 passes its Target

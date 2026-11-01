@@ -13,6 +13,8 @@
 #include "obj_004a1d30.h"
 #include "object_class.h"
 
+class FootClass;
+
 class ParasiteClass : public AbstractClass
 {
 public:
@@ -29,6 +31,8 @@ public:
 
     // FUNCTION: GAMEMD 0x62A4A0 (decl; reloc) -- __thiscall, no stack arguments.
     void FUN_0062A4A0();
+    // FUNCTION: GAMEMD 0x62A8E0 (decl; reloc) -- thiscall, one stack argument (RET 4).
+    bool CanInfect(FootClass* target);
 
     void* Owner;          // +0x24
     int unknown_28;       // +0x28

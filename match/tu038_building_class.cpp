@@ -3805,7 +3805,7 @@ CoordStruct BuildingClass::vf_19(AbstractClass* arg)
 //
 // CAPPED at 91.0% (instruction multiset identical): retail takes the absolute value of the quantised limit
 // before the absolute value of the facing difference; every operand order tried evaluates them the other way.
-int BuildingClass::vf_240(AbstractClass* target, int b, int c)
+int BuildingClass::vf_240(AbstractClass* target, int b, bool c)
 {
     if (!Type->bools_1570[0x157B - 0x1570] || (Type->bools_1570[0x157C - 0x1570] && vf_258())) {
         if (!IsBeingDrained()) {

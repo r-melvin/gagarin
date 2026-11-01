@@ -2916,6 +2916,303 @@ void Obj_006FC090::FUN_006FC090(int a1, int a2)
     vf_240(a1, a2, 0);
 }
 
+// Null-tolerant "as TechnoClass" and "as UnitClass" conversions, as retail inlined them: the
+// flag byte (+0x14, mask 1) or the RTTI slot decides, anything else becomes null.
+static inline TechnoClass* AsTechnoByFlag(AbstractClass* object)
+{
+    return object->Flags.IsTechno ? (TechnoClass*)object : 0;
+}
+
+static inline UnitClass* AsUnitByRtti(AbstractClass* object)
+{
+    return object->vf_11() == 1 ? (UnitClass*)object : 0;
+}
+
+static inline FootClass* AsFootByFlag(AbstractClass* object)
+{
+    return object->Flags.IsFoot ? (FootClass*)object : 0;
+}
+
+// FUNCTION: GAMEMD 0x6FC0B0
+// Why this object cannot fire the chosen weapon at the target, as a result code: 0 fire, 1 out of
+// ammo, 3 wait (still reloading, the weapon's effect is active or the target is out of reach),
+// 5 the target is not a valid victim, 6 this object cannot fire now, 8 the target is out of
+// range, 9 the object is cloaked and the weapon decloaks it.
+int TechnoClass::vf_240(AbstractClass* target, int weaponIndex, bool ignoreRange)
+{
+    if (!target) {
+        return 5;
+    }
+    if (SlaveOwner) {
+        return 5;
+    }
+    if (vf_118()) {
+        return 3;
+    }
+    if (LocomotorTarget == target) {
+        return 3;
+    }
+    if (vf_117()) {
+        return 5;
+    }
+    if (Deactivated) {
+        return 5;
+    }
+    if (IsSinking) {
+        return 5;
+    }
+    if (target == DrainTarget) {
+        return 5;
+    }
+    if (target == Transporter) {
+        return 5;
+    }
+    if (vf_119() && TemporalImUsing && target == TemporalImUsing->Target) {
+        return 3;
+    }
+    TechnoClass* techno = AsTechnoByFlag(target);
+    CellClass* cell = MapClass_Instance.GetTargetCell(target->vf_18());
+    if (IsFootObject(this) && ((FootClass*)this)->IsAttackedByLocomotor) {
+        return 5;
+    }
+    if (techno) {
+        if (techno->InLimbo) {
+            return 5;
+        }
+        if (Berzerk && techno->vf_33()->BerserkFriendly) {
+            return 5;
+        }
+        if (vf_33()->Natural && techno->vf_33()->Unnatural) {
+            return 5;
+        }
+        if (techno->IsImmobilized) {
+            return 5;
+        }
+        if (!Owner->IsHumanPlayer && techno->vf_88()) {
+            return 5;
+        }
+        if (techno->vf_26(1, (int)Owner) == 5 && !cell->FUN_004870D0(Owner->ArrayIndex)) {
+            if (CombatDamage(-1) > 0 || !techno->Owner->IsAlliedWith(Owner)) {
+                return 6;
+            }
+        }
+        if (techno->IsTether && techno->vf_33()->BalloonHover && !techno->IsInAir()) {
+            return 5;
+        }
+    }
+    if (IsFallingDown) {
+        return 5;
+    }
+    if (IsUnderEMP()) {
+        if (vf_11() != 1
+            || (!((UnitTypeClass*)((UnitClass*)this)->Type)->LargeVisceroid
+                && !((UnitTypeClass*)((UnitClass*)this)->Type)->SmallVisceroid)) {
+            return 6;
+        }
+    }
+    WeaponTypeClass* weapon = vf_254(weaponIndex)->WeaponType;
+    if (!weapon || (weapon->IonSensitive && Owner->IonSensitivesShouldBeOffline())) {
+        return 6;
+    }
+    if (weapon->DrainWeapon && techno && techno->DrainingMe) {
+        return 5;
+    }
+    if (weapon->DrainWeapon && techno && !techno->vf_33()->Drainable) {
+        return 5;
+    }
+    if (techno && techno->BunkerLinkedItem && techno->vf_11() == 1 && (double)weapon->Range < 384.0) {
+        return 5;
+    }
+    // THISNULL: GAMEMD 0x700D10
+    if (this && vf_11() == 1) {
+        if (AsUnitByRtti(this)->FUN_00746DB0()) {
+            return 5;
+        }
+    }
+    if (weapon->Warhead && weapon->Warhead->Psychedelic && techno && techno->vf_33()->ImmuneToPsionics) {
+        return 5;
+    }
+    if (weapon->Warhead && weapon->Warhead->Psychedelic && techno && techno->BunkerLinkedItem) {
+        return 5;
+    }
+    if (weapon->Warhead && weapon->Warhead->IsLocomotor && target->vf_11() == 1) {
+        if (AsUnitByRtti(target)->FUN_00746DB0()) {
+            return 5;
+        }
+    }
+    if (weapon->Warhead && weapon->Warhead->IsLocomotor && target->Flags.IsFoot && ((ObjectClass*)target)->vf_33()->JumpJet) {
+        FootClass* foot = AsFootByFlag(target);
+        if (!foot->Locomotor) {
+            FUN_007DC720(0x80004003);
+        }
+        if (foot->Locomotor->IsMovingNow()) {
+            return 5;
+        }
+    }
+    if (weapon->Warhead && weapon->Warhead->IsLocomotor && target->vf_11() == 1
+        && ((UnitTypeClass*)AsUnitByRtti(target)->Type)->IsSimpleDeployer
+        && AsUnitByRtti(target)->CurrentMission == 0x10) {
+        return 5;
+    }
+    if (weapon->Warhead && weapon->Warhead->IsLocomotor && techno && techno->vf_33()->Organic) {
+        return 5;
+    }
+    if (InOpenToppedTransport) {
+        if (!weapon->FireInTransport) {
+            return 5;
+        }
+    }
+    if (InOpenToppedTransport && Transporter && ((TechnoClass*)Transporter)->vf_117()) {
+        return 5;
+    }
+    if (InOpenToppedTransport && Transporter && ((TechnoClass*)Transporter)->Transporter) {
+        return 5;
+    }
+    if (techno && weapon->Warhead && techno->vf_117() && !weapon->Warhead->Temporal) {
+        return 5;
+    }
+    if (weapon->Spawner) {
+        if (FUN_00703B10() || vf_224()) {
+            return 6;
+        }
+        if (!((SpawnManagerClass*)SpawnManager)->CountAliveSpawns()) {
+            return 3;
+        }
+    }
+    if (weapon->Warhead->Temporal && techno && techno->vf_11() == 2 && techno->vf_33()->Spawned) {
+        return 5;
+    }
+    WeaponTypeClass* other = vf_254(weaponIndex == 0)->WeaponType;
+    if (other) {
+        if ((other->UseFireParticles && ParticleSystems[0]) || (other->IsRailgun && ParticleSystems[4])
+            || (other->UseSparkParticles && ParticleSystems[1]) || (other->IsSonic && Wave)) {
+            return 6;
+        }
+    }
+    if (target->IsInAir() && !weapon->Projectile->AA) {
+        return LocomotorTarget != target ? 5 : 3;
+    }
+    if (target->Flags.IsFoot && ((ObjectClass*)target)->vf_30() != 2 && !weapon->Projectile->AA) {
+        return 5;
+    }
+    if (techno) {
+        CellClass* below = techno->vf_111();
+        bool onWater = below->LandType == 2 || techno->vf_111()->LandType == 6;
+        if (techno->IsInAir()) {
+            onWater = false;
+        }
+        if (techno->OnBridge) {
+            onWater = false;
+        } else if (onWater && vf_186((TechnoClass*)target) == -1) {
+            return 5;
+        }
+        if (((ObjectClass*)target)->IsOnFloor() && !onWater) {
+            if (vf_33()->LandTargeting == 1) {
+                return 5;
+            }
+        }
+    } else {
+        if (!target->IsInAir() && !weapon->Projectile->AG) {
+            return 5;
+        }
+        if (target->vf_11() == 11
+            && ((CellClass*)(target->vf_11() == 11 ? target : 0))->LandType != 2
+            && ((CellClass*)(target->vf_11() == 11 ? target : 0))->LandType != 6) {
+            if (vf_33()->LandTargeting == 1) {
+                return 5;
+            }
+        }
+    }
+    if (weapon->IsMagBeam && LocomotorTarget && LocomotorTarget != target && Wave && target->vf_11() != 6) {
+        return 3;
+    }
+    if (weapon->IsMagBeam && LocomotorTarget && LocomotorTarget == target && target->vf_11() != 6) {
+        return 3;
+    }
+    int phase;
+    int syncFrame;
+    // THISNULL: GAMEMD 0x700D10
+    if (weaponIndex == 0 && this && vf_11() == 1
+        && (phase = CurrentBurstIndex % weapon->Burst) < 2
+        && (syncFrame = ((UnitTypeClass*)((UnitClass*)this)->Type)->FiringSyncFrame[phase]) != -1
+        && ((UnitClass*)this)->CurrentFiringFrame != -1) {
+        if (((UnitClass*)this)->CurrentFiringFrame != syncFrame) {
+            return 3;
+        }
+    } else {
+        if (RearmTimer.GetTimeLeft()) {
+            return 3;
+        }
+    }
+    if (weapon->UseFireParticles && ParticleSystems[0]) {
+        return 3;
+    }
+    if (weapon->IsRailgun && ParticleSystems[4]) {
+        return 3;
+    }
+    if (weapon->UseSparkParticles && ParticleSystems[1]) {
+        return 3;
+    }
+    if (weapon->IsSonic && Wave) {
+        return 3;
+    }
+    if (Ammo == 0) {
+        return 1;
+    }
+    if (weapon->DecloakToFire && CloakState != 0 && (vf_11() != 2 || CloakState == 2)) {
+        return 9;
+    }
+    if (vf_33()->HunterSeeker) {
+        return 8;
+    }
+    if (weapon->Warhead->Parasite && IsFootObject(this)
+        && !((ParasiteClass*)((FootClass*)this)->ParasiteImUsing)->CanInfect(target->Flags.IsFoot ? (FootClass*)target : 0)) {
+        return 5;
+    }
+    if (weapon->Warhead->Parasite && target->Flags.IsFoot
+        && CurrentFrame < ((FootClass*)target)->LastBeParasitedStartFrame) {
+        return 5;
+    }
+    if (techno) {
+        if (weapon->Warhead->Parasite && techno->vf_88()) {
+            return 5;
+        }
+        if (weapon->Warhead->MindControl && !((CaptureManagerClass*)CaptureManager)->CanCapture(techno)) {
+            return 5;
+        }
+        if (weapon->Warhead->Verses[techno->vf_33()->Armor] == GG_ZERO) {
+            return 5;
+        }
+        if (weapon->Warhead->BombDisarm && !techno->AttachedBomb) {
+            return 5;
+        }
+        if (weapon->Warhead->IvanBomb && techno->AttachedBomb) {
+            return 5;
+        }
+        if (techno->IsSinking) {
+            return 5;
+        }
+        if (OnBridge != techno->OnBridge) {
+            if (vf_111() && (vf_111()->Flags & 0x100) && !IsInAir()
+                && techno->vf_111() && (techno->vf_111()->Flags & 0x100)) {
+                return 5;
+            }
+            CoordStruct here = Location;
+            CoordStruct there = techno->Location;
+            if (weapon->Warhead->Parasite && abs(here.Z - there.Z) > DAT_00B0EB34 * 2) {
+                return 5;
+            }
+        }
+    }
+    if (vf_33()->Organic && vf_224()) {
+        return 5;
+    }
+    if (ignoreRange && !vf_234(target, weaponIndex)) {
+        return 8;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x6FCD40
 // Stand down: clear the target, clear the destination, set slot 160 to 3.
 // Then, unless this is a foot object that is being carried by a locomotor,
@@ -2935,6 +3232,17 @@ void TechnoClass::vf_232()
     }
     vf_84();
 }
+
+#include "_layout/airstrike_class.h"
+#include "loco_interfaces.h"
+#include "_layout/unit_class.h"
+#include "_layout/unit_type_class.h"
+#include "_layout/capture_manager_class.h"
+#include "_layout/parasite_class.h"
+#include <stdlib.h>
+#include "_layout/spawn_manager_class.h"
+#include "system_class.h"
+#include "_layout/warhead_type_class.h"
 
 // FUNCTION: GAMEMD 0x6FD570
 // Pick the weapon for the target, build the bolt at the fire coordinate of that weapon and,

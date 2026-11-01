@@ -11938,6 +11938,7 @@
  "?vf_23@TypesBuildingTypeTechnoView@@UAEXXZ": "0x00410570",
  "?vf_23@WaveClass@@UAEXXZ": "0x00760F50",
  "?vf_240@TechnoClass@@UAEHPAVAbstractClass@@HH@Z": "0x006FC0B0",
+ "?vf_240@TechnoClass@@UAEHPAVAbstractClass@@H_N@Z": "0x006FC0B0",
  "?vf_241@TechnoClass@@UAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z": "0x006F8DF0",
  "?vf_242@TechnoClass@@UAEXPAVAbstractClass@@@Z": "0x006FCDB0",
  "?vf_243@TechnoClass@@UAEPAVBulletClass@@PAVAbstractClass@@H@Z": "0x006FDD50",
