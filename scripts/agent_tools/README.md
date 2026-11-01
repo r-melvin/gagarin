@@ -67,6 +67,8 @@ Not shipped: `cache/` (rebuilt: `ghidra_functions.json` from the ghidra CLI, `vt
 | `refaudit.py [--json OUT]` | do unbound global references agree across TUs? | stdout / JSON |
 | `tpl_audit.py OBJDIR [--instances\|--divergent\|--multi-g]` | which objects define each template COMDAT, which one the link keeps (link order), does it equal retail, which COMDATs diverge, and are the multi-address `??_G` reached by direct calls? | stdout / JSON |
 | `aligned_diff.py --obj O --sym S --addr A --len L [--hunks]` | how close is a partial once insertions/deletions are aligned (LCS under diff_retail's reloc-normalised equality), and where are the mismatching runs? | stdout |
+| `inline_sites.py [--top N] [--touch TEXT] [--func ADDR] [--label L] [--json OUT]` | which instruction sequences does the retail .text repeat (register-abstracted, displacements/immediates/call targets kept), how many sites and functions, which functions are still unmatched, and is there an out-of-line copy of the body (the strongest evidence of the real source form)? | stdout / JSON |
+| `vector_census.py [--member M] [--sites]` | for each VectorClass/DynamicVectorClass member (Delete, AddItem, FindItemIndex dispatch, ctor bodies, Clear): the out-of-line instances, the direct calls reaching them and the inline expansion sites | stdout / JSON |
 
 ## partial_triage.py
 Reuses `scripts/vc6/residual_classify.py` (labels, now including `commutative-swap` and `cmp-swap`, the
