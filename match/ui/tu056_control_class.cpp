@@ -241,8 +241,8 @@
 
 #include "../core/cached_resource_dtor_family_methods.h"
 
-#include "../render/blitters/b_lucent25_blit.h"
-#include "../render/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_lucent25_blit.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
 
 // Alpha row wrapping uses the observed pointer/byte-step fields in the global at 0x87E8A4.
 inline unsigned short* BlitAlphaWrapRow(unsigned short* row)
@@ -267,8 +267,8 @@ inline int Lucent25AlphaRow(int alvl)
     return a << 9;
 }
 
-#include "../render/blitters/b_lucent50.h"
-#include "../render/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_lucent50.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
 
 // Alpha row wrap: same shape as the Z row wrap, against the block at 0x87E8A4
 // (b_shared_alpha.h).
@@ -289,10 +289,10 @@ static inline int AlphaRowIndex(int alvl)
     return a;
 }
 
-#include "../render/blitters/b_lucent75_blit.h"
-#include "../render/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_lucent75_blit.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
 
-#include "../render/blitters/r_darken_remap.h"
+#include "../wwlib/blitters/r_darken_remap.h"
 
 // Explicit instantiation emits the methods from these nine specializations.
 // The production candidate rows cover only the 18 ordinary methods. VC6 also
@@ -308,19 +308,19 @@ template class RLEBlitTransRemapXlat<unsigned char>;
 template class RLEBlitTransRemapXlatZRead<unsigned char>;
 template class RLEBlitTransRemapXlatZReadWrite<unsigned char>;
 
-#include "../render/blitters/blitter.h"
-#include "../render/blitters/rle_blitter.h"
-#include "../render/blitters/b_zremap.h"
-#include "../render/blitters/b_lucent75_blit.h"
-#include "../render/blitters/b_lucent25_blit.h"
-#include "../render/blitters/r_lucent75.h"
-#include "../render/blitters/r_lucent50.h"
-#include "../render/blitters/r_lucent25.h"
+#include "../wwlib/blitters/blitter.h"
+#include "../wwlib/blitters/rle_blitter.h"
+#include "../wwlib/blitters/b_zremap.h"
+#include "../wwlib/blitters/b_lucent75_blit.h"
+#include "../wwlib/blitters/b_lucent25_blit.h"
+#include "../wwlib/blitters/r_lucent75.h"
+#include "../wwlib/blitters/r_lucent50.h"
+#include "../wwlib/blitters/r_lucent25.h"
 
-#include "../render/blitters/b_darken_xlatz.h"
-#include "../render/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_darken_xlatz.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
 
-#include "../render/blitters/r_lucent25.h"
+#include "../wwlib/blitters/r_lucent25.h"
 
 // Explicitly instantiate the eight leaf specializations. VC6 emits their
 // ordinary virtual methods from these declarations.
@@ -333,7 +333,7 @@ template class RLEBlitTransLucent25AlphaZRead<unsigned short>;
 template class RLEBlitTransLucent25AlphaZReadWarp<unsigned short>;
 template class RLEBlitTransLucent25AlphaZReadWrite<unsigned short>;
 
-#include "../render/blitters/b_translucent.h"
+#include "../wwlib/blitters/b_translucent.h"
 
 // VC6 requires class instantiation to emit these member bodies. The object also
 // contains compiler-generated support COMDATs; they are not reviewed candidate
@@ -366,39 +366,39 @@ GG_STATIC_ASSERT(offsetof(GgConvertClassDynamicVectorClass, CapacityIncrement) =
 
 GG_STATIC_ASSERT(sizeof(ConvertClass*) == 4);
 
-#include "../render/blitters/r_alpha.h"
+#include "../wwlib/blitters/r_alpha.h"
 
-#include "../render/blitters/r_lucent75.h"
+#include "../wwlib/blitters/r_lucent75.h"
 
-#include "../render/blitters/r_lucent50.h"
+#include "../wwlib/blitters/r_lucent50.h"
 
-#include "../render/blitters/r_lucent50.h"
+#include "../wwlib/blitters/r_lucent50.h"
 
-#include "../render/blitters/r_lucent75.h"
+#include "../wwlib/blitters/r_lucent75.h"
 
 #include "control_class.h"
 
-#include "../render/blitters/r_lucent50.h"
+#include "../wwlib/blitters/r_lucent50.h"
 
-#include "../render/blitters/r_zremap.h"
+#include "../wwlib/blitters/r_zremap.h"
 
-#include "../render/blitters/r_zremap.h"
+#include "../wwlib/blitters/r_zremap.h"
 
-#include "../render/blitters/r_zremap.h"
+#include "../wwlib/blitters/r_zremap.h"
 
-#include "../render/blitters/r_xlat.h"
+#include "../wwlib/blitters/r_xlat.h"
 
 template class RLEBlitTransXlat<unsigned char>;
 
-#include "../render/blitters/r_xlat.h"
+#include "../wwlib/blitters/r_xlat.h"
 
 template class RLEBlitTransXlatZRead<unsigned char>;
 
-#include "../render/blitters/r_xlat.h"
+#include "../wwlib/blitters/r_xlat.h"
 
 template class RLEBlitTransXlatZReadWrite<unsigned char>;
 
-#include "../render/blitters/r_lucent75.h"
+#include "../wwlib/blitters/r_lucent75.h"
 
 #include "../core/deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"

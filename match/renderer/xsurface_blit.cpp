@@ -6,9 +6,9 @@
 // +0x08, +0x0C). The BlitPlain/BlitTrans objects are stack locals in retail:
 // only their vptr is stored (0x7F7BDC/0x7F7BC4 plain, 0x7F7C0C/0x7F7BF4 trans).
 #include "surface_class.h"
-#include "../render/blitters/blit_plain.h"
+#include "../wwlib/blitters/blit_plain.h"
 
-#include "../render/blitters/b_trans.h"
+#include "../wwlib/blitters/b_trans.h"
 
 // FUNCTION: GAMEMD 0x7BBAF0
 bool XSurface::CopyFromWhole(Surface* src, bool a, bool b)

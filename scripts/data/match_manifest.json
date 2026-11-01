@@ -42028,7 +42028,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC750",
   "sym": "?BlitCopy@?$BlitPlain@E@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x21",
@@ -42037,7 +42037,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC780",
   "sym": "?BlitMove@?$BlitPlain@E@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x1A",
@@ -42046,7 +42046,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC7A0",
   "sym": "?BlitCopyTint@?$BlitPlain@E@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x21",
@@ -42055,7 +42055,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC7D0",
   "sym": "?BlitMoveTint@?$BlitPlain@E@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x1A",
@@ -42064,7 +42064,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC7F0",
   "sym": "?BlitCopy@?$BlitPlain@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x24",
@@ -42073,7 +42073,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC820",
   "sym": "?BlitMove@?$BlitPlain@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x1D",
@@ -42082,7 +42082,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC840",
   "sym": "?BlitCopyTint@?$BlitPlain@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x24",
@@ -42091,7 +42091,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "tu": "match/wwlib/blitters/blit_plain_methods.cpp",
   "addr": "0x7BC870",
   "sym": "?BlitMoveTint@?$BlitPlain@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x1D",
@@ -42280,7 +42280,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x4913F0",
   "sym": "?BlitCopy@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x39",
@@ -42289,7 +42289,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x491430",
   "sym": "?BlitMove@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42298,7 +42298,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x491460",
   "sym": "?BlitCopyTint@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42307,7 +42307,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x491490",
   "sym": "?BlitMoveTint@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42316,7 +42316,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x4924C0",
   "sym": "?BlitCopy@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x3D",
@@ -42325,7 +42325,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x492500",
   "sym": "?BlitMove@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42334,7 +42334,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x492530",
   "sym": "?BlitCopyTint@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42343,7 +42343,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x492560",
   "sym": "?BlitMoveTint@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42352,7 +42352,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x492A10",
   "sym": "?BlitCopy@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x5A",
@@ -42361,7 +42361,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x492A70",
   "sym": "?BlitMove@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42370,7 +42370,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x492AA0",
   "sym": "?BlitCopyTint@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42379,7 +42379,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x492AD0",
   "sym": "?BlitMoveTint@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42388,7 +42388,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x493500",
   "sym": "?BlitCopy@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x6F",
@@ -42397,7 +42397,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x493570",
   "sym": "?BlitMove@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42406,7 +42406,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x4935A0",
   "sym": "?BlitCopyTint@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42415,7 +42415,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x4935D0",
   "sym": "?BlitMoveTint@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42424,7 +42424,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x493CC0",
   "sym": "?BlitCopy@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x9C",
@@ -42433,7 +42433,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x493D60",
   "sym": "?BlitMove@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42442,7 +42442,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x493D90",
   "sym": "?BlitCopyTint@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42451,7 +42451,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "tu": "match/wwlib/blitters/b_plainxlat.cpp",
   "addr": "0x493DC0",
   "sym": "?BlitMoveTint@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42460,7 +42460,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x4912B0",
   "sym": "?BlitCopy@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x46",
@@ -42471,7 +42471,7 @@
   "qualification": "Instruction-position diagnostic: 0/33 against 26 compiled instructions; compiled section is 0x40 versus retail 0x46, so no complete-span raw-byte percentage is claimed."
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491300",
   "sym": "?BlitMove@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42480,7 +42480,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491330",
   "sym": "?BlitCopyTint@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42489,7 +42489,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491360",
   "sym": "?BlitMoveTint@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42498,7 +42498,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x4914C0",
   "sym": "?BlitCopy@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x3B",
@@ -42507,7 +42507,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491500",
   "sym": "?BlitMove@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42516,7 +42516,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491530",
   "sym": "?BlitCopyTint@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42525,7 +42525,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491560",
   "sym": "?BlitMoveTint@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42534,7 +42534,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491670",
   "sym": "?BlitCopy@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x32",
@@ -42543,7 +42543,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x4916B0",
   "sym": "?BlitMove@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42552,7 +42552,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x4916E0",
   "sym": "?BlitCopyTint@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42561,7 +42561,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491710",
   "sym": "?BlitMoveTint@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42570,7 +42570,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491740",
   "sym": "?BlitCopy@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x46",
@@ -42579,7 +42579,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x491790",
   "sym": "?BlitMove@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42588,7 +42588,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x4917C0",
   "sym": "?BlitCopyTint@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42597,7 +42597,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x4917F0",
   "sym": "?BlitMoveTint@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42606,7 +42606,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x499ca0",
   "sym": "??_G?$BlitTransXlat@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -42615,7 +42615,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x499cc0",
   "sym": "??_GBlitter@@UAEPAXI@Z",
   "len": "0x20",
@@ -42624,7 +42624,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x499d00",
   "sym": "??_G?$BlitTransXlat@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -42633,7 +42633,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x499d40",
   "sym": "??_G?$BlitTransRemapDest@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -42642,7 +42642,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x499d60",
   "sym": "??_G?$BlitTransRemapXlat@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -42651,7 +42651,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC610",
   "sym": "?BlitCopy@?$BlitTrans@E@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x2D",
@@ -42662,7 +42662,7 @@
   "qualification": "Instruction-position diagnostic: 0/27 against 17 compiled instructions; raw bytes differ. Source remains a readable hypothesis."
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC6C0",
   "sym": "?BlitMove@?$BlitTrans@E@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42671,7 +42671,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC6F0",
   "sym": "?BlitCopyTint@?$BlitTrans@E@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42680,7 +42680,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC720",
   "sym": "?BlitMoveTint@?$BlitTrans@E@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -42689,7 +42689,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC890",
   "sym": "?BlitCopy@?$BlitTrans@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x2B",
@@ -42698,7 +42698,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC8C0",
   "sym": "?BlitMove@?$BlitTrans@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -42707,7 +42707,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC8F0",
   "sym": "?BlitCopyTint@?$BlitTrans@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -42716,7 +42716,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC920",
   "sym": "?BlitMoveTint@?$BlitTrans@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43589,7 +43589,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x491590",
   "sym": "?BlitCopy@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x47",
@@ -43598,7 +43598,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x4915E0",
   "sym": "?BlitMove@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43607,7 +43607,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x491610",
   "sym": "?BlitCopyTint@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43616,7 +43616,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x491640",
   "sym": "?BlitMoveTint@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43625,7 +43625,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x492590",
   "sym": "?BlitCopy@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x4B",
@@ -43634,7 +43634,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x4925E0",
   "sym": "?BlitMove@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43643,7 +43643,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x492610",
   "sym": "?BlitCopyTint@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43652,7 +43652,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x492640",
   "sym": "?BlitMoveTint@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43661,7 +43661,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x492C00",
   "sym": "?BlitCopy@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x8C",
@@ -43670,7 +43670,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x492C90",
   "sym": "?BlitMove@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43679,7 +43679,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x492CC0",
   "sym": "?BlitCopyTint@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43688,7 +43688,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x492CF0",
   "sym": "?BlitMoveTint@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43697,7 +43697,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x493710",
   "sym": "?BlitCopy@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x8D",
@@ -43706,7 +43706,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x4937A0",
   "sym": "?BlitMove@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43715,7 +43715,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x4937D0",
   "sym": "?BlitCopyTint@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43724,7 +43724,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x493800",
   "sym": "?BlitMoveTint@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43733,7 +43733,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x493F30",
   "sym": "?BlitCopy@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0xBA",
@@ -43742,7 +43742,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x493FF0",
   "sym": "?BlitMove@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43751,7 +43751,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x494020",
   "sym": "?BlitCopyTint@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43760,7 +43760,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x494050",
   "sym": "?BlitMoveTint@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43769,7 +43769,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x494D90",
   "sym": "?BlitCopy@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0xF8",
@@ -43778,7 +43778,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x494E90",
   "sym": "?BlitMove@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43787,7 +43787,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x494EC0",
   "sym": "?BlitCopyTint@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43796,7 +43796,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x494EF0",
   "sym": "?BlitMoveTint@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43805,7 +43805,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x495A50",
   "sym": "?BlitCopy@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0xDA",
@@ -43814,7 +43814,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x495B30",
   "sym": "?BlitMove@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43823,7 +43823,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x495B60",
   "sym": "?BlitCopyTint@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43832,7 +43832,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_zremap.cpp",
+  "tu": "match/wwlib/blitters/b_zremap.cpp",
   "addr": "0x495B90",
   "sym": "?BlitMoveTint@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43841,7 +43841,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x493df0",
   "sym": "?BlitCopy@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0xa7",
@@ -43850,7 +43850,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x493ea0",
   "sym": "?BlitMove@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43859,7 +43859,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x493ed0",
   "sym": "?BlitCopyTint@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43868,7 +43868,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x493f00",
   "sym": "?BlitMoveTint@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43877,7 +43877,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494490",
   "sym": "?BlitCopy@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x62",
@@ -43886,7 +43886,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494500",
   "sym": "?BlitMove@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43895,7 +43895,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494530",
   "sym": "?BlitCopyTint@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43904,7 +43904,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494560",
   "sym": "?BlitMoveTint@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43913,7 +43913,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494590",
   "sym": "?BlitCopy@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x6b",
@@ -43922,7 +43922,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494600",
   "sym": "?BlitMove@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43931,7 +43931,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494630",
   "sym": "?BlitCopyTint@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -43940,7 +43940,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494660",
   "sym": "?BlitMoveTint@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -43949,7 +43949,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494B60",
   "sym": "?BlitCopy@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0xDA",
@@ -43958,7 +43958,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494c40",
   "sym": "?BlitCopyTint@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0xdf",
@@ -43969,7 +43969,7 @@
   "note": "Frozen M2 instruction-position diagnostic; not byte-exact. Body preserved; matching search capped."
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494d20",
   "sym": "?BlitMove@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -43978,7 +43978,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x494d50",
   "sym": "?BlitMoveTint@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x32",
@@ -43987,7 +43987,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x4958d0",
   "sym": "?BlitCopy@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0xe1",
@@ -43996,7 +43996,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x4959c0",
   "sym": "?BlitMove@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
   "len": "0x2d",
@@ -44005,7 +44005,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x4959f0",
   "sym": "?BlitCopyTint@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0x2d",
@@ -44014,7 +44014,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "tu": "match/wwlib/blitters/b_xlatalpha.cpp",
   "addr": "0x495a20",
   "sym": "?BlitMoveTint@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
   "len": "0x2d",
@@ -45084,7 +45084,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_xlat_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_xlat_ushort.cpp",
   "addr": "0x4960a0",
   "sym": "?RLEBlit@?$RLEBlitTransXlat@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0x85",
@@ -45093,7 +45093,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_xlat_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_xlat_ushort.cpp",
   "addr": "0x496130",
   "sym": "?RLEBlitTint@?$RLEBlitTransXlat@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
   "len": "0x3a",
@@ -45102,7 +45102,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_zread_ushort.cpp",
   "addr": "0x4965b0",
   "sym": "?RLEBlit@?$RLEBlitTransXlatZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0xd5",
@@ -45111,7 +45111,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_zread_ushort.cpp",
   "addr": "0x496690",
   "sym": "?RLEBlitTint@?$RLEBlitTransXlatZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
   "len": "0x3a",
@@ -45120,7 +45120,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_zrw_ushort.cpp",
   "addr": "0x497100",
   "sym": "?RLEBlit@?$RLEBlitTransXlatZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0xe8",
@@ -45131,7 +45131,7 @@
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search. Emitted COFF section is shorter than the validated retail span; no full-span raw percentage is claimed."
  },
  {
-  "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_zrw_ushort.cpp",
   "addr": "0x4971f0",
   "sym": "?RLEBlitTint@?$RLEBlitTransXlatZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
   "len": "0x3a",
@@ -51526,7 +51526,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499CE0",
   "sym": "??_G?$BlitPlainXlat@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -51553,7 +51553,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499DC0",
   "sym": "??_G?$RLEBlitTransZRemapXlat@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -51589,7 +51589,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499E40",
   "sym": "??_G?$RLEBlitTransZRemapXlatZRead@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -51625,7 +51625,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499EC0",
   "sym": "??_G?$RLEBlitTransZRemapXlatZReadWrite@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -51652,7 +51652,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499F20",
   "sym": "??_G?$BlitPlainXlat@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51661,7 +51661,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499F60",
   "sym": "??_G?$BlitTransDarken@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51670,7 +51670,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499FA0",
   "sym": "??_G?$BlitTransLucent50@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51679,7 +51679,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x499FE0",
   "sym": "??_G?$BlitPlainXlatZRead@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51688,7 +51688,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A000",
   "sym": "??_G?$BlitTransXlatZRead@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51697,7 +51697,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A040",
   "sym": "??_G?$BlitTransDarkenZRead@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51706,7 +51706,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A080",
   "sym": "??_G?$BlitTransLucent50ZRead@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51715,7 +51715,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A0E0",
   "sym": "??_G?$BlitTransLucent50ZReadWarp@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51724,7 +51724,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A120",
   "sym": "??_G?$BlitPlainXlatZReadWrite@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51733,7 +51733,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A140",
   "sym": "??_G?$BlitTransXlatZReadWrite@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51742,7 +51742,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A180",
   "sym": "??_G?$BlitTransDarkenZReadWrite@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51751,7 +51751,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A1C0",
   "sym": "??_G?$BlitTransLucent50ZReadWrite@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51760,7 +51760,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A380",
   "sym": "??_G?$BlitTransXlatWriteAlpha@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51769,7 +51769,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A3A0",
   "sym": "??_G?$BlitTransXlatMultWriteAlpha@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51805,7 +51805,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_xlat_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_xlat_ushort.cpp",
   "addr": "0x49A760",
   "sym": "??_G?$RLEBlitTransXlat@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51814,7 +51814,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A780",
   "sym": "??_G?$RLEBlitTransZRemapXlat@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51832,7 +51832,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_zread_ushort.cpp",
   "addr": "0x49A820",
   "sym": "??_G?$RLEBlitTransXlatZRead@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51841,7 +51841,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A840",
   "sym": "??_G?$RLEBlitTransZRemapXlatZRead@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51859,7 +51859,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
+  "tu": "match/wwlib/blitters/r_xlat_zrw_ushort.cpp",
   "addr": "0x49A940",
   "sym": "??_G?$RLEBlitTransXlatZReadWrite@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -51868,7 +51868,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x49A960",
   "sym": "??_G?$RLEBlitTransZRemapXlatZReadWrite@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -57142,7 +57142,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x7BC640",
   "sym": "??_G?$BlitPlain@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -57151,7 +57151,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/blitter_ddtors.cpp",
+  "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
   "addr": "0x7BC660",
   "sym": "??_G?$BlitPlain@G@@UAEPAXI@Z",
   "len": "0x20",
@@ -57160,7 +57160,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC680",
   "sym": "??_G?$BlitTrans@E@@UAEPAXI@Z",
   "len": "0x20",
@@ -57169,7 +57169,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/blitters/b_trans.cpp",
+  "tu": "match/wwlib/blitters/b_trans.cpp",
   "addr": "0x7BC6A0",
   "sym": "??_G?$BlitTrans@G@@UAEPAXI@Z",
   "len": "0x20",

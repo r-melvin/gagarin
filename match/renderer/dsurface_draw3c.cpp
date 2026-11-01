@@ -6,8 +6,8 @@
 #include "dsurface_class.h"
 #include "drawing.h"
 #include "drawing_more_methods.h"
-#include "../render/blitters/r_shared_zwrap.h"
-#include "../render/blitters/b_shared_alpha.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_shared_alpha.h"
 
 // LIBRARY: GAMEMD 0x7C8FB0 (decl; reloc) (LIBRARY: _CIpow, x87 register ABI), 0x7C5F00 (LIBRARY: _ftol).
 double __cdecl pow(double, double);

@@ -60,8 +60,8 @@
 
 #include <string.h>
 #include "dsurface_class.h"
-#include "../render/blitters/r_shared_zwrap.h"
-#include "../render/blitters/b_shared_alpha.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_shared_alpha.h"
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
@@ -182,8 +182,8 @@ static inline RectangleStruct Intersect(const RectangleStruct* a, const Rectangl
 #include "dsurface_class.h"
 #include "drawing.h"
 #include "drawing_more_methods.h"
-#include "../render/blitters/r_shared_zwrap.h"
-#include "../render/blitters/b_shared_alpha.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_shared_alpha.h"
 
 
 // Circular row buffer object behind the Z buffer (0x887644) and the alpha buffer (0x87E8A4). Only the fields
@@ -243,7 +243,7 @@ static inline unsigned short Shade(unsigned int alpha, unsigned int ch0, unsigne
 #include <stdlib.h>
 #include "dsurface_class.h"
 #include "drawing_more_methods.h"
-#include "../render/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
 
 // Address-scoped prefix view for data read through 0x887644. Only method-accessed fields are represented; offsets are read from
 // the instructions at 0x4BBF2D..0x4BC2B0.

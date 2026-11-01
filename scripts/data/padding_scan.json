@@ -5307,19 +5307,19 @@
   },
   {
    "addr": "0x499CC0",
-   "tu": "match/render/blitters/b_trans.cpp",
+   "tu": "match/wwlib/blitters/b_trans.cpp",
    "name": "Blitter scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x499CE0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitPlainXlat<unsigned char>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x499D00",
-   "tu": "match/render/blitters/b_trans.cpp",
+   "tu": "match/wwlib/blitters/b_trans.cpp",
    "name": "BlitTransXlat<unsigned char> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5331,13 +5331,13 @@
   },
   {
    "addr": "0x499D40",
-   "tu": "match/render/blitters/b_trans.cpp",
+   "tu": "match/wwlib/blitters/b_trans.cpp",
    "name": "BlitTransRemapDest<unsigned char> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x499D60",
-   "tu": "match/render/blitters/b_trans.cpp",
+   "tu": "match/wwlib/blitters/b_trans.cpp",
    "name": "BlitTransRemapXlat<unsigned char> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5355,7 +5355,7 @@
   },
   {
    "addr": "0x499DC0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "RLEBlitTransZRemapXlat<unsigned char>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5379,7 +5379,7 @@
   },
   {
    "addr": "0x499E40",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "RLEBlitTransZRemapXlatZRead<unsigned char>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5403,7 +5403,7 @@
   },
   {
    "addr": "0x499EC0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned char>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5421,7 +5421,7 @@
   },
   {
    "addr": "0x499F20",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitPlainXlat<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5433,7 +5433,7 @@
   },
   {
    "addr": "0x499F60",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransDarken<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5445,7 +5445,7 @@
   },
   {
    "addr": "0x499FA0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransLucent50<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5457,13 +5457,13 @@
   },
   {
    "addr": "0x499FE0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitPlainXlatZRead<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x49A000",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransXlatZRead<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5475,7 +5475,7 @@
   },
   {
    "addr": "0x49A040",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransDarkenZRead<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5487,7 +5487,7 @@
   },
   {
    "addr": "0x49A080",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransLucent50ZRead<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5505,7 +5505,7 @@
   },
   {
    "addr": "0x49A0E0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransLucent50ZReadWarp<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5517,13 +5517,13 @@
   },
   {
    "addr": "0x49A120",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitPlainXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x49A140",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5535,7 +5535,7 @@
   },
   {
    "addr": "0x49A180",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransDarkenZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5547,7 +5547,7 @@
   },
   {
    "addr": "0x49A1C0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransLucent50ZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5565,7 +5565,7 @@
   },
   {
    "addr": "0x49A3A0",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitTransXlatMultWriteAlpha<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5595,7 +5595,7 @@
   },
   {
    "addr": "0x49A780",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "RLEBlitTransZRemapXlat<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5625,13 +5625,13 @@
   },
   {
    "addr": "0x49A820",
-   "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
+   "tu": "match/wwlib/blitters/r_xlat_zread_ushort.cpp",
    "name": "RLEBlitTransXlatZRead<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x49A840",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "RLEBlitTransZRemapXlatZRead<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -5679,13 +5679,13 @@
   },
   {
    "addr": "0x49A940",
-   "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
+   "tu": "match/wwlib/blitters/r_xlat_zrw_ushort.cpp",
    "name": "RLEBlitTransXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x49A960",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8463,25 +8463,25 @@
   },
   {
    "addr": "0x7BC660",
-   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "tu": "match/wwlib/blitters/blitter_ddtors.cpp",
    "name": "BlitPlain<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7BC680",
-   "tu": "match/render/blitters/b_trans.cpp",
+   "tu": "match/wwlib/blitters/b_trans.cpp",
    "name": "BlitTrans<unsigned char>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7BC6A0",
-   "tu": "match/render/blitters/b_trans.cpp",
+   "tu": "match/wwlib/blitters/b_trans.cpp",
    "name": "BlitTrans<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x7BC6C0",
-   "tu": "match/render/blitters/b_trans.cpp",
+   "tu": "match/wwlib/blitters/b_trans.cpp",
    "name": "BlitTrans<unsigned char>::BlitMove",
    "reason": "no-preceding-CC-or-90"
   }

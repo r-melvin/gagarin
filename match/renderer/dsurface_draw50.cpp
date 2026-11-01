@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "dsurface_class.h"
 #include "drawing.h"
-#include "../render/blitters/b_shared_alpha.h"
+#include "../wwlib/blitters/b_shared_alpha.h"
 // LIBRARY: abs (CRT intrinsic, cdq/xor/sub inline)
 
 // The circular mask buffer object (pointer global at 0x87E8A4, also read by the blitter alpha leaves).

@@ -7,7 +7,7 @@
 // is not established.
 #include "dsurface_class.h"
 #include "drawing.h"
-#include "../render/blitters/b_shared_alpha.h"
+#include "../wwlib/blitters/b_shared_alpha.h"
 
 // The layer object behind global 0x87E8A4 (same object the blitter module calls the alpha buffer).
 // Offsets read at 0x4C07E9 (+4), 0x4C07FE (+0x28), 0x4C0890 (+0x1C), 0x4C089F (+0x18), 0x4C089A (+0x20).

@@ -10,8 +10,8 @@
 #include "dsurface_class.h"
 #include "drawing.h"
 #include "drawing_more_methods.h"
-#include "../render/blitters/r_shared_zwrap.h"
-#include "../render/blitters/b_shared_alpha.h"
+#include "../wwlib/blitters/r_shared_zwrap.h"
+#include "../wwlib/blitters/b_shared_alpha.h"
 
 // Circular row-buffer object behind 0x887644 (Z) and 0x87E8A4 (alpha). Offsets read at 0x4BE263.. and
 // 0x7BD130: +0x04 row origin, +0x14 backing surface (Lock/Unlock slots +0x5C/+0x60), +0x18/+0x1C wrap
