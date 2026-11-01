@@ -139,7 +139,8 @@ don't work on the same function.
    - the correct calling convention (`__thiscall` methods, `__stdcall` COM).
 3. Run `match.sh` and iterate on types, statement order, phrasing and flags.
    No inline `_asm` or match-forcing tricks (`volatile` on accesses or locals,
-   redundant pointer aliases, casts used only to steer codegen); see
+   redundant pointer aliases, casts used only to steer codegen, a null test of `this` without a
+   `// THISNULL: GAMEMD 0xADDR` citation of a matched retail function that tests it); see
    [AGENTS.md](AGENTS.md) for the one admissible `volatile`, on declarations
    of data proven shared with another thread or callback.
    A routine that was hand-written assembly in the original (see the carve-out in

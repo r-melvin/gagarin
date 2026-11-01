@@ -111,6 +111,21 @@ public:
     // dispatches through slot views not yet modelled as virtuals.
     void* const& PrimaryVTable() const { return *reinterpret_cast<void* const*>(this); }
 
+    // Kind-checked self-return, expanded inline by the binary: this object when it is non-null and slot 11 (+0x2C)
+    // returns `kind`, else null. Out-of-line instance 0x459F40 (kind 6, a __thiscall that tests `this` first, then
+    // `SUB kind; NEG; SBB; NOT; AND`); the same sequence is inline at 79 sites in 67 functions (kinds 2, 6, 0xB, 0xF;
+    // 34 with the null test, 45 without it where the caller passes `this`; scripts/agent_tools/inline_sites.py).
+    // Callers convert the result to the kind's class; every such class has AbstractClass at +0x00, so the
+    // conversion is code-free.
+    inline AbstractClass* KindCast_00459F40(int kind)
+    {
+        // THISNULL: GAMEMD 0x459F40
+        if (this == 0)
+            return 0;
+
+        return (vf_11() == kind) ? this : 0;
+    }
+
     int   UniqueID;                 // +0x10
     // +0x14: the flag byte. Retail only ever touches it with byte operations:
     // the constructor clears bits 0-2 with MOV CL,[EAX+0x14]; AND CL,0xF8

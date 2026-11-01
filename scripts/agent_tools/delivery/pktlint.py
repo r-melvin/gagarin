@@ -23,7 +23,7 @@ enforces; nothing here needs a compiler except --strict.
                  deletes `this`, or one named like one); the compiler emits ??_G from the declared virtual destructor.
                  E/W a FUNCTION annotation on a ??_G-like method inside an Obj_/view struct
   flags        E a `// VC6FLAGS:` line whose set equals the project default (delete the line)
-  thisnull     E a real null test of `this` (`this == 0`, `!this`, `if (this)`, `this &&`); comparisons like `x != this &&` are fine (steering; the retail code does not test `this`)
+  thisnull     E a real null test of `this` (`this == 0`, `!this`, `if (this)`, `this &&`); comparisons like `x != this &&` are fine (steering) unless the line or the one above carries `// THISNULL: GAMEMD 0xADDR`, a matched manifest row whose retail bytes test this
   views        E a NEW definition of a class that has a canonical header (w6 brief: never a
                  new per-TU view); W a new definition of a class already defined elsewhere (ODR debt); judged on the POST-patch tree
   classkey     E class/struct keyword differs from the RTTI TypeDescriptor (hcfix rule)
@@ -85,6 +85,7 @@ import landlib as L  # noqa: E402
 import cppscan  # noqa: E402
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "land"))
 import dupaddr as DA  # noqa: E402
+import thisnull as TN  # noqa: E402
 
 def norm(v):
     return L.norm_addr(v)
@@ -372,13 +373,29 @@ class Lint:
                              file=d.path, line=ln)
 
     def thisnull(self):
+        """A null test of `this` needs `// THISNULL: GAMEMD 0xADDR` on the line or the line above, citing a matched
+        (100%) out-of-line retail function (this packet's own matched rows count). The retail bytes are checked by
+        the `thisnull` land gate."""
+        post = self.post_files()
+        matched = {D.hx(r["addr"]) for r in self.rows if r.get("status") == "matched" and float(r.get("pct", 100) or 0) >= 100.0}
         for d in self.diffs:
             if not d.path.startswith("match/"):
                 continue
+            lines = (post.get(d.path) or "").split("\n")
             for ln, text in d.added_lines():
                 code = re.sub(r"//.*$", "", text)
-                if THIS_NULL.search(code):
-                    self.err("thisnull", "`this` null test: %s" % text.strip()[:100], file=d.path, line=ln)
+                if not THIS_NULL.search(code):
+                    continue
+                addr = TN.annotation_addr(lines, ln - 1) if lines[ln - 1:ln] == [text] else TN.annotation_addr([text], 0)
+                if addr is None:
+                    self.err("thisnull", "`this` null test without `// THISNULL: GAMEMD 0xADDR` (a matched out-of-line retail function that tests this): %s" % text.strip()[:100],
+                             file=d.path, line=ln)
+                    continue
+                a = D.hx(addr)
+                if a in matched or TN.is_matched(self.t.by_addr.get(a)):
+                    continue
+                self.err("thisnull", "THISNULL cites %s, which is not a matched (100%%) manifest row: %s" % (a, text.strip()[:80]),
+                         file=d.path, line=ln, addr=a)
 
     def views(self):
         """Class-view duplication is judged on the POST-patch tree: a class moved to a new

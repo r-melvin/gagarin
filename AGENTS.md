@@ -94,6 +94,15 @@ against an instruction in the binary before it lands as a repo fact.
   addresses. Score every row in every TU that includes the header; any
   regression rules it out. Never put `volatile` on an access, a cast or a local.
 
+- A null test of `this` (`this == 0`, `if (this)`, `this &&`, `!this`) is steering unless retail proves the source
+  made it. It is allowed only on the line (or the line directly above) carrying
+  `// THISNULL: GAMEMD 0xADDR`, where 0xADDR is a retail out-of-line function that is a matched (100%) manifest
+  row and whose own entry bytes test the this register (`test ecx,ecx`, or `mov esi,ecx; test esi,esi`) before
+  using it. That out-of-line copy is the evidence the original source tested `this`; inline expansions of the same
+  idiom then use the one canonical helper (`AbstractClass::KindCast_00459F40`), not a literal test. pktlint
+  (`thisnull`) rejects unannotated tests and citations that are not matched rows; the `thisnull` land gate
+  checks the cited bytes.
+
 - Target the 32-bit MSVC6 ABI: `__thiscall` (ECX = `this`) for methods,
   `__stdcall` for COM/WinAPI virtuals, 4-byte pointers. Do not assume `/Gz`;
   determine the convention from the disassembly for each function.

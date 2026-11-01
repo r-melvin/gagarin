@@ -42,6 +42,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import landlib as L  # noqa: E402
 import sectioncmp as S  # noqa: E402
+import thisnull as TN  # noqa: E402
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "vc6"))
 import partial_score as PS  # noqa: E402
@@ -798,6 +799,31 @@ def words(ctx):
         print("PATH NOT ALLOWED", f)
     return ("FAIL" if hits or msg_hits or forb else "PASS"), "%d added-line hits, %d message hits, %d disallowed paths%s" % (
         len(hits), msg_hits, len(forb), ("; %d lines in vendored paths exempt" % nvend) if nvend else "")
+
+
+@gate
+def thisnull(ctx):
+    """Every added `// THISNULL: GAMEMD 0xADDR` annotation cites a matched (100%) manifest row of this tree whose
+    retail entry bytes test the this register before any other use (the evidence for a null test of `this`)."""
+    out = L.git(ctx.tree, "diff", "-U0", "--no-color", ctx.base, "--", "match")
+    rows = {L.A(r): r for r in ctx.man}
+    seen, bad, cur = {}, [], None
+    for ln in out.splitlines():
+        if ln.startswith("diff --git "):
+            m = re.match(r"diff --git a/(\S+) b/(\S+)", ln)
+            cur = m.group(2) if m else None
+        elif ln.startswith("+") and not ln.startswith("+++"):
+            m = TN.ANNOT.search(ln)
+            if m:
+                seen.setdefault(int(m.group(1), 16), []).append(cur)
+    for addr, files in sorted(seen.items()):
+        if not TN.is_matched(rows.get(addr)):
+            bad.append("0x%X (%s): not a matched manifest row" % (addr, files[0]))
+        elif not TN.entry_tests_this(L.BINARY, addr):
+            bad.append("0x%X (%s): retail entry does not test the this register first" % (addr, files[0]))
+    for b in bad[:15]:
+        print("THISNULL", b)
+    return ("FAIL" if bad else "PASS"), "%d THISNULL citation(s) checked, %d bad" % (len(seen), len(bad))
 
 
 @gate

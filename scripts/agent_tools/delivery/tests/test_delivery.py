@@ -986,6 +986,22 @@ class Toolfix1030(unittest.TestCase):
         tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
         self.assertTrue(lint(packet(tmp, {"match/x/a.cpp": src}, []), {"thisnull"}))
 
+    def test_thisnull_annotation(self):
+        def hits(pre, same="", rows=()):
+            src = HEADER + "// FUNCTION: GAMEMD 0x401000\n" + pre + "int Foo::f() { if (this == 0) return 0; return 1; }" + same + "\n"
+            tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+            return [x for x in lint(packet(tmp, {"match/x/a.cpp": src}, list(rows)), {"thisnull"}) if x["rule"] == "thisnull"]
+        ok = "// THISNULL: GAMEMD 0x459F40"
+        self.assertTrue(hits(""))                                   # unannotated stays an error
+        self.assertEqual(hits("", " " + ok), [])                    # same line
+        self.assertEqual(hits(ok + "\n"), [])                       # line directly above
+        self.assertTrue(hits(ok + "\n\n"))                          # two lines up does not count
+        self.assertTrue(hits("// THISNULL: GAMEMD 0x401001\n"))     # not a manifest row
+        partial = [r for r in tree().manifest if r.get("status") == "partial"][0]["addr"]
+        self.assertTrue(hits("// THISNULL: GAMEMD %s\n" % partial))  # a partial row is not enough
+        row = {"tu": "match/x/a.cpp", "addr": "0x401000", "sym": "?f@Foo@@QAEHXZ", "len": "0x4", "status": "matched", "pct": 100}
+        self.assertEqual(hits("// THISNULL: GAMEMD 0x401000\n", rows=[row]), [])   # matched by this packet
+
     def test_upper_case_suffix_is_linted_as_source(self):
         src = HEADER + "// FUNCTION: GAMEMD 0x401000\nint Foo::f() { return this && 1; }\n"
         tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
