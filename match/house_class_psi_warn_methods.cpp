@@ -18,7 +18,7 @@ AnimClass* HouseClass::PsiWarn(CellClass* target, BulletClass* bullet,
                                const char* animName)
 {
     AnimTypeClass* type =
-        ((AnimTypeClass**)AnimTypeArray.Items)[AnimType_FindIndex(animName)];
+        AnimTypeArray.Items[AnimType_FindIndex(animName)];
     CoordStruct coords = target->vf_18();
 
     AnimClass* anim = new AnimClass(type, coords, 0, 1, 0x600, 0, false);
@@ -30,5 +30,5 @@ AnimClass* HouseClass::PsiWarn(CellClass* target, BulletClass* bullet,
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B4150
-extern DynamicVectorClassLayout AnimTypeArray;
+extern DynamicVectorClass<AnimTypeClass*> AnimTypeArray;
 // END defined globals

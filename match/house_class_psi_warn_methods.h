@@ -14,7 +14,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "_layout/vector_class.h"
+#include "vector_class.h"
 
 #include "_layout/coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
@@ -32,7 +32,7 @@ class HouseClass;
 int AnimType_FindIndex(const char* name);
 
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
-extern DynamicVectorClassLayout AnimTypeArray;
+extern DynamicVectorClass<AnimTypeClass*> AnimTypeArray;
 
 class HouseClass
 {

@@ -13,7 +13,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "_layout/vector_class.h"
+#include "vector_class.h"
 
 // CellStruct - map cell coordinate (short X, short Y); 4 bytes.
 // GetVeinholeMonsterFrom reads pCell->X @[ecx] and pCell->Y @[ecx+2].
@@ -49,10 +49,6 @@ GG_STATIC_ASSERT(sizeof(Theater) == 0x70);
 // The global theater table @0x007E1B78.
 extern Theater TheaterArray[6];
 
-// The global vein-monster registry: DynamicVectorClass<VeinholeMonsterClass*>
-// @0x00B1D290 (Items @+0x04 == 0x00B1D294, Count @+0x10 == 0x00B1D2A0).
-extern DynamicVectorClassLayout VeinholeArray;
-
 // VeinholeMonster::VeinSHPData cache pointer @0x00B1D2EC.
 
 // CellStruct -> linear cell index (GAMEMD 0x0042B1C0, __fastcall); used to
@@ -66,6 +62,10 @@ void* LoadVeinholeSHP(const char* name, char fileType);
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 #include "_layout/veinhole_monster_class.h"
+
+// The global vein-monster registry: DynamicVectorClass<VeinholeMonsterClass*>
+// @0x00B1D290 (Items @+0x04 == 0x00B1D294, Count @+0x10 == 0x00B1D2A0).
+extern DynamicVectorClass<VeinholeMonsterClass*> VeinholeArray;
 
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, GrowthLogic) + offsetof(VeinholeLogic, SpreadData) == 0xC4);
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, Position)   == 0xF8);

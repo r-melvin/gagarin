@@ -16,7 +16,7 @@
 //   VTABLE:   GAMEMD 0x7E2070  BSurface
 //   VTABLE:   GAMEMD 0x7E2104  XSurface
 //   VTABLE:   GAMEMD 0x7E2198  Surface
-//   GLOBAL:   GAMEMD 0xAC1678  SpotLightClass::Array (DynamicVectorClassLayout)
+//   GLOBAL:   GAMEMD 0xAC1678  SpotLightClass::Array (DynamicVectorClass<SpotLightClass*>)
 //   GLOBAL:   GAMEMD 0xAC1698  the 74-entry BSurface gradient table
 //   GLOBAL:   GAMEMD 0xAC1834  the gradient-cache one-shot latch
 //   GLOBAL:   GAMEMD 0xAC1838  the companion heap block / fade table
@@ -36,7 +36,7 @@ SpotLightClass::SpotLightClass(Payload_005FF250 payload, int nFlags) throw()
     unknown_14 = 0;
     Flags = nFlags;
 
-    SpotlightArray_AddItem(this);
+    SpotlightArray.AddItem(this);
 }
 
 // FUNCTION: GAMEMD 0x5FF2D0  SpotLightClass::~SpotLightClass (__thiscall)
@@ -44,7 +44,7 @@ SpotLightClass::SpotLightClass(Payload_005FF250 payload, int nFlags) throw()
 // FindItemIndex virtual and the tail is shifted down over it.
 SpotLightClass::~SpotLightClass() throw()
 {
-    SpotlightArray_RemoveItem(this);
+    SpotlightArray.RemoveItem(this);
 }
 
 // FUNCTION: GAMEMD 0x5FF320
@@ -53,7 +53,7 @@ void SpotLightClass::AgeStep()
 {
     Age += 8;
     if (Age >= 0x50 && this != 0) {
-        SpotlightArray_RemoveItem(this);
+        SpotlightArray.RemoveItem(this);
         operator delete(this);
     }
 }
@@ -67,17 +67,10 @@ void SpotLightClass::AgeStep()
 // element in the virtual call's own argument slot from the top of the loop,
 // where retail holds it in a callee-saved register and copies it into that slot
 // only at the call. 18.8% versus 100% on one edit.
-static inline bool RemoveFrom(DynamicVectorClassLayout& list,
+static inline bool RemoveFrom(DynamicVectorClass<SpotLightClass*>& list,
                                      SpotLightClass* item)
 {
-    int index = (list.*((Vtbl_SpotlightArray*)list._vtable)->FindItemIndex)(item);
-    if (index != -1 && index < list.Count) {
-        list.Count = list.Count - 1;
-        for (; index < list.Count; ++index)
-            ((SpotLightClass**)list.Items)[index] = ((SpotLightClass**)list.Items)[index + 1];
-        return true;
-    }
-    return false;
+    return list.RemoveItem(item);
 }
 
 // FUNCTION: GAMEMD 0x5FF390  FUN_005FF390
@@ -94,7 +87,7 @@ void FUN_005FF390()
 {
     for (int i = SpotlightArray.Count - 1; i >= 0; --i)
     {
-        SpotLightClass* entry = ((SpotLightClass**)SpotlightArray.Items)[i];
+        SpotLightClass* entry = SpotlightArray.Items[i];
 
         // The age must be incremented in place: bound to a named local it
         // loses the `MOV EAX,ECX` that feeds the comparison from the register.
@@ -290,7 +283,7 @@ void FUN_005FF800()
 void SpotLightClass::DrawAll()
 {
     for (int i = SpotlightArray.Count - 1; i >= 0; i--) {
-        ((SpotLightClass**)SpotlightArray.Items)[i]->Draw();
+        SpotlightArray.Items[i]->Draw();
     }
 }
 

@@ -356,7 +356,7 @@ roadFill:
             } else {
                 place = true;
             }
-            if (cell->OverlayTypeIndex != -1 && OverlayTypeArray.Items[cell->OverlayTypeIndex]->Overrides)
+            if (cell->OverlayTypeIndex != -1 && OverlayTypeClass_Array.Items[cell->OverlayTypeIndex]->Overrides)
                 place = false;
         } else {
             place = true;
@@ -481,8 +481,8 @@ void OverlayClass::vf_70(Point2D* where, RectangleStruct* clip)
     const CoordStruct& location = Location;
     MapObjCoord heightCoord = location;
     int height = MapObjHeightScale(MapObjMap.GetHeight(&heightCoord));
-    int typeIndex = MapObjFindIndex(&OverlayTypeArray, Type);
-    OverlayTypeClass* type = OverlayTypeArray.Items[typeIndex];
+    int typeIndex = MapObjFindIndex(&OverlayTypeClass_Array, Type);
+    OverlayTypeClass* type = OverlayTypeClass_Array.Items[typeIndex];
 
     int yAdjust = 0;
     if (type->Tiberium || type->Wall || type->ArrayIndex == 0x7E || type->Crate)
@@ -498,10 +498,10 @@ void OverlayClass::vf_70(Point2D* where, RectangleStruct* clip)
     point.Y += MapObjClipRect.Y;
 
     if (Type->Tiberium) {
-        int index = MapObjFindIndex(&OverlayTypeArray, Type);
+        int index = MapObjFindIndex(&OverlayTypeClass_Array, Type);
         OverlayTiberiumView* tiberium = OverlayTiberiumTypes[OverlayTiberiumIndexOf(index)];
         OverlayPaletteView* palette = OverlayPalettes[tiberium->PaletteIndex];
-        void* tiberiumShape = OverlayTypeArray.Items[tiberium->unknown_E0->ArrayIndex]->vf_39();
+        void* tiberiumShape = OverlayTypeClass_Array.Items[tiberium->unknown_E0->ArrayIndex]->vf_39();
         if (tiberiumShape == 0 && Type->CellAnim)
             tiberiumShape = Type->CellAnim->vf_39();
         OverlayDrawShapeInline(MapObjSurface, palette->Convert, tiberiumShape, 0, &point, clip, 0xE00, 0,
@@ -540,7 +540,7 @@ void OverlayClass::vf_70(Point2D* where, RectangleStruct* clip)
 // special overlay 0x7E, one more up for land type 9 and one more for overlay 0x7E itself.
 MapObjPoint* __fastcall FUN_005FDCC0(MapObjPoint* out, int typeIndex)
 {
-    OverlayTypeClass* type = OverlayTypeArray.Items[typeIndex];
+    OverlayTypeClass* type = OverlayTypeClass_Array.Items[typeIndex];
     MapObjPoint p(0, 0);
     if (type->Tiberium || type->Wall || type->ArrayIndex == 0x7E || type->Crate)
         p.Y = -12;
@@ -626,7 +626,7 @@ void OverlayClass::vf_69(Point2D* where, RectangleStruct* clip)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA83D80
-extern DynamicVectorClassLayout OverlayTypeClass_Array;
+extern DynamicVectorClass<OverlayTypeClass*> OverlayTypeClass_Array;
 // GLOBAL: GAMEMD 0xA8EC50
 extern DynamicVectorClass<OverlayClass*> OverlayArray;
 // GLOBAL: GAMEMD 0xAC1528

@@ -114,7 +114,7 @@ extern double DAT_00B0EA08;
 void TeamTypeClass::DestroyAllInstances()
 {
     for (int i = 0; i < TeamInstanceArray.Count; i++) {
-        TeamClass* team = ((TeamClass**)TeamInstanceArray.Items)[i];
+        TeamClass* team = TeamInstanceArray.Items[i];
         if (this == team->Type) {
             if (team) {
                 delete team;
@@ -135,7 +135,7 @@ void TeamTypeClass::DestroyAllInstances()
 void TeamTypeClass::ProcessAllTaskforces()
 {
     for (int i = 0; i < TeamTypeArray.Count; i++) {
-        ((TeamTypeClass**)TeamTypeArray.Items)[i]->ProcessTaskForce();
+        TeamTypeArray.Items[i]->ProcessTaskForce();
     }
 }
 
@@ -211,5 +211,5 @@ void __cdecl FUN_006F25D0()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8ECA0
-extern DynamicVectorClassLayout TeamTypeArray;
+extern DynamicVectorClass<TeamTypeClass*> TeamTypeArray;
 // END defined globals

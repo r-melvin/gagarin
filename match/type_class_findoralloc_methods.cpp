@@ -34,8 +34,8 @@ AnimTypeClass* AnimTypeClass::FindOrAllocate(const char* id)
         return 0;
 
     for (int i = 0; i < AnimTypeClassArray.Count; i++) {
-        if (_stricmp(((AnimTypeClass**)AnimTypeClassArray.Items)[i]->ID, id) == 0)
-            return ((AnimTypeClass**)AnimTypeClassArray.Items)[i];
+        if (_stricmp(AnimTypeClassArray.Items[i]->ID, id) == 0)
+            return AnimTypeClassArray.Items[i];
     }
 
     return new AnimTypeClass(id);
@@ -52,8 +52,8 @@ WarheadTypeClass* WarheadTypeClass::FindOrAllocate(const char* id)
         return 0;
 
     for (int i = 0; i < WarheadTypeClassArray.Count; i++) {
-        if (_stricmp(((WarheadTypeClass**)WarheadTypeClassArray.Items)[i]->ID, id) == 0)
-            return ((WarheadTypeClass**)WarheadTypeClassArray.Items)[i];
+        if (_stricmp(WarheadTypeClassArray.Items[i]->ID, id) == 0)
+            return WarheadTypeClassArray.Items[i];
     }
 
     return new WarheadTypeClass(id);
@@ -61,7 +61,7 @@ WarheadTypeClass* WarheadTypeClass::FindOrAllocate(const char* id)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B4150
-extern DynamicVectorClassLayout AnimTypeClassArray;
+extern DynamicVectorClass<AnimTypeClass*> AnimTypeClassArray;
 // GLOBAL: GAMEMD 0x8874C0
-extern DynamicVectorClassLayout WarheadTypeClassArray;
+extern DynamicVectorClass<WarheadTypeClass*> WarheadTypeClassArray;
 // END defined globals

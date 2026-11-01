@@ -17,11 +17,11 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "_layout/vector_class.h"
+#include "vector_class.h"
 #include "_layout/team_class.h"
 #include "_layout/team_type_class.h"
 
 // Global TeamClass::Array (DynamicVectorClass<TeamClass*>) — GAMEMD 0x8B40E8.
-extern DynamicVectorClassLayout DAT_008B40E8;
+extern DynamicVectorClass<TeamClass*> DAT_008B40E8;
 
 #endif  // GG_MATCH_AI_TEAM_TYPE_CLASS_INSTANCE_METHODS_H

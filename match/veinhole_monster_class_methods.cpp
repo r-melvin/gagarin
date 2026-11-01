@@ -21,10 +21,10 @@ VeinholeMonsterClass* VeinholeMonsterClass::GetVeinholeMonsterFrom(CellStruct* p
     {
         do
         {
-            VeinholeMonsterClass* m = ((VeinholeMonsterClass**)VeinholeArray.Items)[i];
+            VeinholeMonsterClass* m = VeinholeArray.Items[i];
             CellStruct* pos = &m->Position;
             if (pos->X == pCell->X && pos->Y == pCell->Y)
-                return ((VeinholeMonsterClass**)VeinholeArray.Items)[i];
+                return VeinholeArray.Items[i];
             --i;
         } while (i >= 0);
     }
@@ -45,8 +45,8 @@ VeinholeMonsterClass* VeinholeMonsterClass::GetVeinholeMonsterAt(CellStruct* pCe
 {
     for (int i = VeinholeArray.Count - 1; i >= 0; --i)
     {
-        if (((VeinholeMonsterClass**)VeinholeArray.Items)[i]->GrowthLogic.SpreadData[CellStructToIndex(pCell)] != 0)
-            return ((VeinholeMonsterClass**)VeinholeArray.Items)[i];
+        if (VeinholeArray.Items[i]->GrowthLogic.SpreadData[CellStructToIndex(pCell)] != 0)
+            return VeinholeArray.Items[i];
     }
     return 0;
 }
@@ -62,7 +62,7 @@ void VeinholeMonsterClass::LoadVeinholeArt(int idxTheatre)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB1D290
-extern DynamicVectorClassLayout VeinholeArray;
+extern DynamicVectorClass<VeinholeMonsterClass*> VeinholeArray;
 // GLOBAL: GAMEMD 0xB1D2EC
 void* VeinSHPData;
 // END defined globals

@@ -63,7 +63,7 @@
 #include "pixel_shift_view.h"
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "_layout/vector_class.h"
+#include "vector_class_operations.h"
 
 // CRT/game-heap (de)allocators. Declared, never reimplemented in this TU.
 void* __cdecl operator new(unsigned int size);      // GAMEMD 0x7C8E17 (LIBRARY)
@@ -72,67 +72,9 @@ void  __cdecl operator delete(void* p);             // GAMEMD 0x7C8B3D (LIBRARY)
 class SpotLightClass;
 
 // GLOBAL: GAMEMD 0xAC1678 — SpotLightClass::Array, one
-// DynamicVectorClass<SpotLightClass*>. Reused verbatim from
-// match/_layout/vector_class.h so this and effect_array_update_methods.h
-// agree on one name and one type for the same retail global.
-extern DynamicVectorClassLayout SpotlightArray;
-
-// SpotlightArray's two called virtuals (SetCapacity slot 2, FindItemIndex
-// slot 4) are reached through DynamicVectorClass's own `_vtable` field via the
-// project's member-function-pointer vtable-slot idiom (match/_rt/gg_vslot.h):
-// DynamicVectorClassLayout is a complete type above, so VC6 uses the compact 4-byte
-// member-pointer form and the calls come out byte-identical to retail's
-// `CALL [ECX+8]` / `CALL [ECX+0x10]`.
-struct Vtbl_SpotlightArray;
-typedef bool (DynamicVectorClassLayout::*FnSetCapacity_SpotlightArray)(int capacity, void* pMem);
-typedef int  (DynamicVectorClassLayout::*FnFindItemIndex_SpotlightArray)(SpotLightClass* const& item) const;
-struct Vtbl_SpotlightArray
-{
-    char                            _pad00[0x08];     // slots 0..1
-    FnSetCapacity_SpotlightArray    SetCapacity;       // slot 2 [+0x08]
-    char                            _pad0C[0x04];      // slot 3
-    FnFindItemIndex_SpotlightArray  FindItemIndex;     // slot 4 [+0x10]
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_SpotlightArray, SetCapacity)   == 0x08);
-GG_STATIC_ASSERT(offsetof(Vtbl_SpotlightArray, FindItemIndex) == 0x10);
-
-// DynamicVectorClass<T>::AddItem, expanded inline at 0x5FF278.
-inline bool SpotlightArray_AddItem(SpotLightClass* item)
-{
-    int cap = SpotlightArray.Capacity;
-    if (SpotlightArray.Count < cap
-        // Retail reads allocation state as the byte at +0xD, not the full
-        // 4-byte unknown_0C layout cell; that cell also contains byte +0xC.
-        // reading the whole int here regresses to a DWORD compare (97.6%).
-        || ((*((unsigned char*)&SpotlightArray.unknown_0C + 1) || cap == 0)
-            && SpotlightArray.CapacityIncrement > 0
-            && (SpotlightArray.*((Vtbl_SpotlightArray*)SpotlightArray._vtable)->SetCapacity)
-                   (SpotlightArray.CapacityIncrement + cap, 0))) {
-        // `++Count` on its own line, not `Count = index + 1`: retail
-        // increments the loaded register and stores it back, where the
-        // computed form emits a `LEA` and hoists the Items load above the
-        // Count store (73.2% versus 100%).
-        int index = SpotlightArray.Count;
-        ++SpotlightArray.Count;
-        ((SpotLightClass**)SpotlightArray.Items)[index] = item;
-        return true;
-    }
-    return false;
-}
-
-// DynamicVectorClass<T>::RemoveItem, expanded inline at 0x5FF2D1 and again
-// inside the sweep at 0x5FF3BC.
-inline bool SpotlightArray_RemoveItem(SpotLightClass* const& item)
-{
-    int index = (SpotlightArray.*((Vtbl_SpotlightArray*)SpotlightArray._vtable)->FindItemIndex)(item);
-    if (index != -1 && index < SpotlightArray.Count) {
-        SpotlightArray.Count = SpotlightArray.Count - 1;
-        for (; index < SpotlightArray.Count; ++index)
-            ((SpotLightClass**)SpotlightArray.Items)[index] = ((SpotLightClass**)SpotlightArray.Items)[index + 1];
-        return true;
-    }
-    return false;
-}
+// DynamicVectorClass<SpotLightClass*>; AddItem is expanded inline at 0x5FF278
+// and RemoveItem at 0x5FF2D1 and again inside the sweep at 0x5FF3BC.
+extern DynamicVectorClass<SpotLightClass*> SpotlightArray;
 
 // The 12-byte by-value payload the constructor copies into +0x00..+0x0B.
 struct Payload_005FF250

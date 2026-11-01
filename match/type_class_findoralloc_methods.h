@@ -22,7 +22,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "_layout/vector_class.h"
+#include "vector_class.h"
 #include "_layout/anim_type_class.h"
 #include "_layout/warhead_type_class.h"
 #include "particle_system_type_class.h"
@@ -38,12 +38,12 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
-extern DynamicVectorClassLayout AnimTypeClassArray;
+extern DynamicVectorClass<AnimTypeClass*> AnimTypeClassArray;
 
 #include "terrain_type_class.h"
 
 
 // GLOBAL: GAMEMD 0x8874C0 — WarheadTypeClass::Array.
-extern DynamicVectorClassLayout WarheadTypeClassArray;
+extern DynamicVectorClass<WarheadTypeClass*> WarheadTypeClassArray;
 
 #endif  // GG_MATCH_CORE_TYPE_CLASS_FINDORALLOC_METHODS_H

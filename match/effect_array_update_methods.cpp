@@ -12,12 +12,12 @@
 void IonBlastClass::UpdateAll()
 {
     for (int i = IonBlastArray.Count - 1; i >= 0; i--) {
-        ((IonBlastClass**)IonBlastArray.Items)[i]->Update();
+        IonBlastArray.Items[i]->Update();
     }
 }
 
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAC1678
-extern DynamicVectorClassLayout SpotlightArray;
+extern DynamicVectorClass<SpotLightClass*> SpotlightArray;
 // END defined globals

@@ -124,8 +124,8 @@ extern int DAT_00880990;
 extern CoordStruct DAT_00B0FE10;
 // GLOBAL: GAMEMD 0x008B4108
 extern DynamicVectorClass<UnitClass*> DAT_008B4108;
-GG_STATIC_ASSERT(offsetof(HouseClass, Buildings) + offsetof(DynamicVectorClassLayout, Items) == 0x6C);
-GG_STATIC_ASSERT(offsetof(HouseClass, Buildings) + offsetof(DynamicVectorClassLayout, Count) == 0x78);
+GG_STATIC_ASSERT(offsetof(HouseClass, Buildings) + offsetof(DynamicVectorClass<BuildingClass*>, Items) == 0x6C);
+GG_STATIC_ASSERT(offsetof(HouseClass, Buildings) + offsetof(DynamicVectorClass<BuildingClass*>, Count) == 0x78);
 GG_STATIC_ASSERT(offsetof(HouseClass, OwnedUnits) == 0x2E8);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + 0x15 == 0x16B9);
 GG_STATIC_ASSERT(offsetof(TechnoClass, IsPrimaryFactory) == 0x3D3);

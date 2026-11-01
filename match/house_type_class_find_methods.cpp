@@ -24,7 +24,7 @@ int HouseTypeClass::FindIndexOfName(const char* name)
 
     if (name != 0) {
         for (int i = 0; i < HouseTypeArray.Count; i++) {
-            HouseTypeClass* type = ((HouseTypeClass**)HouseTypeArray.Items)[i];
+            HouseTypeClass* type = HouseTypeArray.Items[i];
 
             if (_stricmp(type->Name, name) == 0 || _stricmp(type->ID, name) == 0)
                 return type->ArrayIndex2;
@@ -36,5 +36,5 @@ int HouseTypeClass::FindIndexOfName(const char* name)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA83C98
-extern DynamicVectorClassLayout HouseTypeArray;
+extern DynamicVectorClass<HouseTypeClass*> HouseTypeArray;
 // END defined globals

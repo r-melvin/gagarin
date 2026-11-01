@@ -5,7 +5,7 @@
 #ifndef GG_MATCH_LAYOUT_ION_BLAST_CLASS_H
 #define GG_MATCH_LAYOUT_ION_BLAST_CLASS_H
 
-#include "vector_class.h"
+#include "../vector_class.h"
 
 struct IonBlastClass
 {
@@ -22,6 +22,6 @@ struct IonBlastClass
 
 // GLOBAL: GAMEMD 0xAA0118 -- IonBlastClass::Array. Items at 0xAA011C (+0x04),
 // Count at 0xAA0128 (+0x10).
-extern DynamicVectorClassLayout IonBlastArray;
+extern DynamicVectorClass<IonBlastClass*> IonBlastArray;
 
 #endif  // GG_MATCH_LAYOUT_ION_BLAST_CLASS_H

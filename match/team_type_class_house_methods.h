@@ -18,7 +18,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/abstract_type_class.h"
-#include "_layout/vector_class.h"
+#include "vector_class.h"
 #include "_layout/team_class.h"
 #include "_layout/team_type_class.h"
 
@@ -35,7 +35,7 @@ bool        FUN_00510F60(int idxHouse);          // GAMEMD 0x510F60
 HouseClass* FindHouseByCountryIndex(int idxHouse); // GAMEMD 0x510ED0
 
 // Global type/instance arrays (DynamicVectorClass of pointers).
-extern DynamicVectorClassLayout TeamTypeArray;       // GAMEMD 0xA8ECA0
-extern DynamicVectorClassLayout TeamInstanceArray;   // GAMEMD 0x8B40E8 (TeamClass::Array)
+extern DynamicVectorClass<TeamTypeClass*> TeamTypeArray;       // GAMEMD 0xA8ECA0
+extern DynamicVectorClass<TeamClass*> TeamInstanceArray;   // GAMEMD 0x8B40E8 (TeamClass::Array)
 
 #endif  // GG_MATCH_AI_TEAM_TYPE_CLASS_HOUSE_METHODS_H

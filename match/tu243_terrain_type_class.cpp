@@ -114,8 +114,8 @@ TerrainTypeClass::TerrainTypeClass(const char* id) throw()
     RadarInvisible = true;
     LegalTarget = false;
     Insignificant = true;
-    MapObjAddItemEarlyOut(&TerrainTypeArray, this);
-    ArrayIndex = MapObjFindIndex(&TerrainTypeArray, this);
+    MapObjAddItemEarlyOut(&TerrainTypeClassArray, this);
+    ArrayIndex = MapObjFindIndex(&TerrainTypeClassArray, this);
     Strength = -1;
     Armor = 6;
 }
@@ -136,7 +136,7 @@ TerrainTypeClass::~TerrainTypeClass()
         Image = 0;
     }
     MapObjAnnouncePointerExpired(this, true);
-    TerrainTypeArray.RemoveItem(this);
+    TerrainTypeClassArray.RemoveItem(this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -279,8 +279,8 @@ TerrainTypeClass* TerrainTypeClass::FindOrAllocate(const char* id)
         return 0;
 
     for (int i = 0; i < TerrainTypeClassArray.Count; i++) {
-        if (_stricmp(((TerrainTypeClass**)TerrainTypeClassArray.Items)[i]->ID, id) == 0)
-            return ((TerrainTypeClass**)TerrainTypeClassArray.Items)[i];
+        if (_stricmp(TerrainTypeClassArray.Items[i]->ID, id) == 0)
+            return TerrainTypeClassArray.Items[i];
     }
 
     return new TerrainTypeClass(id);
@@ -314,5 +314,5 @@ int TerrainTypeClass::vf_16()
 // GLOBAL: GAMEMD 0xB0ED7C
 extern CellStruct TerrainDefaultCell;
 // GLOBAL: GAMEMD 0xA8E318
-extern DynamicVectorClassLayout TerrainTypeClassArray;
+extern DynamicVectorClass<TerrainTypeClass*> TerrainTypeClassArray;
 // END defined globals

@@ -16,14 +16,13 @@
 #include "_layout/cell_offset.h"
 #include "frame_counter.h"
 #include "abstract_index_cast_sweep.h"
-#include "_layout/vector_class.h"
+#include "vector_class.h"
 
 // The candidate view at 0xA8ED84 aliases the canonical frame-counter symbol.
 #define TerrainFrame CurrentFrame
 
 // GLOBAL: GAMEMD 0xA8E318 - the existing TerrainTypeClassArray storage.
-extern DynamicVectorClassLayout TerrainTypeClassArray;
-#define TerrainTypeArray (*((DynamicVectorClass<TerrainTypeClass*>*)&TerrainTypeClassArray))
+extern DynamicVectorClass<TerrainTypeClass*> TerrainTypeClassArray;
 // GLOBAL: GAMEMD 0xA8E988 - TerrainClass::Array, every live terrain object.
 extern DynamicVectorClass<TerrainClass*> TerrainArray;
 

@@ -11,7 +11,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
-#include "_layout/vector_class.h"
+#include "vector_class.h"
 #include "_layout/abstract_type_class.h"
 
 // CRT case-insensitive compare at 0x007C8D20 (__cdecl, `ADD ESP,8` after each
@@ -31,6 +31,6 @@ public:
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 
 // GLOBAL: GAMEMD 0x00A83C98 — HouseTypeClass::Array.
-extern DynamicVectorClassLayout HouseTypeArray;
+extern DynamicVectorClass<HouseTypeClass*> HouseTypeArray;
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_TYPE_CLASS_FIND_METHODS_H

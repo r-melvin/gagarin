@@ -24,7 +24,7 @@ void IonBlastClass::DrawAll()
     }
 
     for (int j = IonBlastArray.Count - 1; j >= 0; j--) {
-        ((IonBlastClass**)IonBlastArray.Items)[j]->Draw();
+        IonBlastArray.Items[j]->Draw();
     }
 }
 
@@ -34,7 +34,7 @@ extern Surface* DSurface_Temp;
 // GLOBAL: GAMEMD 0xA9FAE8
 int IonBlastOffsets[ION_BLAST_OFFSET_COUNT];
 // GLOBAL: GAMEMD 0xAA0118
-extern DynamicVectorClassLayout IonBlastArray;
+extern DynamicVectorClass<IonBlastClass*> IonBlastArray;
 // GLOBAL: GAMEMD 0xAA0150
 int IonBlastOffsetsPitch;
 // END defined globals

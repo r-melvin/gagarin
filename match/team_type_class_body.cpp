@@ -380,7 +380,7 @@ void TeamTypeClass::vf_13(Obj_004A1D30* crc)
 void TeamTypeClass::FlashAllInstances(int duration)
 {
     for (int i = 0; i < DAT_008B40E8.Count; i++) {
-        TeamClass* team = ((TeamClass**)DAT_008B40E8.Items)[i];
+        TeamClass* team = DAT_008B40E8.Items[i];
         if (team->Type == this) {
             team->Flash(duration);
         }
@@ -392,7 +392,7 @@ TeamClass* TeamTypeClass::FindFirstInstance() const
 {
     int count = DAT_008B40E8.Count;
     for (int i = 0; i < count; i++) {
-        TeamClass* team = ((TeamClass**)DAT_008B40E8.Items)[i];
+        TeamClass* team = DAT_008B40E8.Items[i];
         if (team->Type == this) {
             return team;
         }

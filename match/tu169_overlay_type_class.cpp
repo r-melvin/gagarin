@@ -82,8 +82,8 @@ OverlayTypeClass::OverlayTypeClass(const char* id)
     Selectable = 0;
     Insignificant = 1;
     AllowCellContent = 0;
-    MapObjAddItemEarlyOut(&OverlayTypeArray, this);
-    ArrayIndex = MapObjFindIndex(&OverlayTypeArray, this);
+    MapObjAddItemEarlyOut(&OverlayTypeClass_Array, this);
+    ArrayIndex = MapObjFindIndex(&OverlayTypeClass_Array, this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -99,7 +99,7 @@ OverlayTypeClass::OverlayTypeClass(const AbstractNoInit& noInit)
 OverlayTypeClass::~OverlayTypeClass()
 {
     AnnounceExpiredPointer(1);
-    OverlayTypeArray.RemoveItem(this);
+    OverlayTypeClass_Array.RemoveItem(this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -124,7 +124,7 @@ int OverlayTypeClass::FindIndex(const char* pID)
             // named-element-pointer lever banked for search loops — here the
             // element feeds a call argument, not a comparison.
             if (gg_overlay_stricmp(
-                    ((OverlayTypeClass**)OverlayTypeClass_Array.Items)[i]->ID,
+                    OverlayTypeClass_Array.Items[i]->ID,
                     pID) == 0)
                 return i;
         }
