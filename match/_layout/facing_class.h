@@ -28,6 +28,15 @@ GG_STATIC_ASSERT(sizeof(DirStruct) == 4);
 
 struct FacingClass
 {
+    // FUNCTION: GAMEMD 0x4C91C0 (decl; reloc) -- called out of line from the TechnoClass constructor
+    // 0x6F2B40 (this+0x388 / this+0x3A0): zeroes the words, ROT, starts the timer at the frame counter.
+    FacingClass();
+    // FUNCTION: GAMEMD 0x4C91E0 (decl; reloc) -- the same, then ROT.Raw = min(argument, 0x7F) << 8
+    // (RET 4); the TechnoClass constructor passes 3 for this+0x370.
+    explicit FacingClass(int rate);
+    // No-init subobject construction (placement-new Load paths): no store, no call.
+    explicit FacingClass(const AbstractNoInit&) {}
+
     DirStruct DesiredFacing;
     DirStruct StartFacing;
     CDTimerClass RotationTimer;

@@ -151312,5 +151312,14 @@
   "pct": 86.7,
   "best_pct": 86.7,
   "best_at": "9380c16b"
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x6F2B40",
+  "sym": "??0TechnoClass@@QAE@PAVHouseClass@@@Z",
+  "len": "0x729",
+  "name": "TechnoClass::TechnoClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

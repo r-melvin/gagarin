@@ -13,6 +13,9 @@
 class FlasherClass
 {
 public:
+    // Inline in the TechnoClass constructor 0x6F2B40: +0xF0 and +0xF4 are stored zero before the StageClass base.
+    FlasherClass() : DurationRemaining(0), FlashingNow(false) {}
+
     int  DurationRemaining;   // +0x00
     bool FlashingNow;         // +0x04
 

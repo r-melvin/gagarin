@@ -46,6 +46,8 @@ class FootClass;
 class BulletClass;
 struct PassengersClass
 {
+    // Inline in the TechnoClass constructor 0x6F2B40: both dwords are stored zero (+0x114 / +0x118).
+    PassengersClass() : NumPassengers(0), FirstPassenger(0) {}
     FootClass* RemoveFirstPassenger();                // GAMEMD 0x473430
     void       AddPassenger(FootClass* passenger);    // GAMEMD 0x4733A0
     FootClass* GetFirstPassenger();                   // GAMEMD 0x473450: returns FirstPassenger
@@ -65,6 +67,9 @@ GG_STATIC_ASSERT(sizeof(PassengersClass)                   == 8);
 #define GG_MATCH_LAYOUT_VETERANCYSTRUCT_DEFINED
 struct VeterancyStruct
 {
+    // FUNCTION: GAMEMD 0x74FF30 (decl; reloc) -- called out of line from the TechnoClass constructor
+    // 0x6F2B40 (ECX = this+0x150): stores a zero dword and returns.
+    VeterancyStruct();
     // FUNCTION: GAMEMD 0x00750030 (decl; reloc)
     // VeterancyStruct::FUN_00750030
     int FUN_00750030() const;
@@ -101,6 +106,9 @@ struct RectangleStruct;
 #define GG_MATCH_LAYOUT_TRANSITIONTIMER_DEFINED
 struct TransitionTimer
 {
+    // FUNCTION: GAMEMD 0x4A50F0 (decl; reloc) -- called out of line from the TechnoClass constructor
+    // 0x6F2B40 (ECX = this+0x350): ActionTimer start = frame counter, Rate2 / State1 / State2 = 0.
+    TransitionTimer();
     // Query methods on the deploy/undeploy state; no stack arguments, result in AL.
     // FUNCTION: GAMEMD 0x4A5110 (decl; reloc)
     bool FUN_004A5110();
@@ -138,6 +146,9 @@ GG_STATIC_ASSERT(sizeof(TransitionTimer)                == 0x20);
 #define GG_MATCH_LAYOUT_TURRETCONTROL_DEFINED
 struct TurretControl
 {
+    // Inline in the TechnoClass constructor 0x6F2B40: stores 2, 1, 1, 1 at +0x3D8 / +0x3DC / +0x3E0 / +0x3E4
+    // (and +0x3F8 .. +0x404 for the barrel).
+    TurretControl() : Travel(2), CompressFrames(1), RecoverFrames(1), HoldFrames(1) {}
     int Travel;          // +0x00
     int CompressFrames;  // +0x04
     int RecoverFrames;   // +0x08
@@ -151,6 +162,9 @@ GG_STATIC_ASSERT(sizeof(TurretControl) == 0x10);
 #define GG_MATCH_LAYOUT_RECOILDATA_DEFINED
 struct RecoilData
 {
+    // Inline in the TechnoClass constructor 0x6F2B40: TravelSoFar (+0x14) and State (+0x18) are stored zero;
+    // TravelPerFrame and TravelFramesLeft are not written.
+    RecoilData() : TravelSoFar(0), State(0) {}
     // FUNCTION: GAMEMD 0x70ECE0 (decl) -- starts the recoil travel (__thiscall).
     void Fire();
 
@@ -179,6 +193,9 @@ class HouseClass;
 class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 {
 public:
+    // FUNCTION: GAMEMD 0x6F2B40 -- the owning house is stored at +0x21C and +0x14C.
+    TechnoClass(HouseClass* owner);
+
     // Native call contract at 0x6FD210 (Bullet call site 0x46A8AC): thiscall,
     // four stack DWORDs (RET 0x10). Bullet passes AbstractClass*, int,
     // WeaponTypeClass*, CoordStruct*. The caller ignores EAX, so its original

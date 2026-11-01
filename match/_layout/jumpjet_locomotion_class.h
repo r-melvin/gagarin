@@ -38,6 +38,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
+#include "abstract_class.h"
 #include "../loco_base.h"
 #include "../loco_com.h"
 
@@ -54,7 +55,7 @@ public:
     JumpjetLocomotionClass();
     // No-init constructor (Load 0x54B750 re-runs it through placement new: it
     // stores only Piggybackee and the three vptrs).
-    JumpjetLocomotionClass(int) : LocomotionClass(0) {}
+    JumpjetLocomotionClass(int) : LocomotionClass(0), LocomotionFacing(AbstractNoInit()) {}
     // Primary slot 8: inline, so the deleting wrapper 0x54DFA0 carries the body
     // (releases Piggybackee, then ~LocomotionClass 0x55A6F0).
     virtual ~JumpjetLocomotionClass() {}
