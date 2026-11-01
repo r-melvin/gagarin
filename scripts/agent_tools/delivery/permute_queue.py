@@ -25,8 +25,10 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import dlib as D  # noqa: E402
 import landlib as L  # noqa: E402
+import twinpair as TP  # noqa: E402
 
-PAIRS = [os.environ.get("GAG_RA2_PAIRS", ""), os.path.join(L.SCRATCH_ROOT, "ra2diff/pairs.csv"), os.path.join(D.BACKUPS, "ra2diff/pairs.csv")]
+# twin_map.json (twinpair.py) supersedes the old ra2diff pairs.csv; the csv layout still loads.
+PAIRS = [os.environ.get("GAG_RA2_PAIRS", ""), str(TP.ROOT / "scripts/data/twin_map.json"), os.path.join(D.MAIN_REPO, "scripts/data/twin_map.json"), os.path.join(L.SCRATCH_ROOT, "ra2diff/pairs.csv"), os.path.join(D.BACKUPS, "ra2diff/pairs.csv")]
 
 
 MULTISET_RE = re.compile(r"^multiset: (identical|retail-only.*)$", re.M)
@@ -100,11 +102,8 @@ def main(argv=None):
     twins = {}
     pf = D.first_existing(PAIRS)
     if pf:
-        for row in csv.DictReader(open(pf)):
-            try:
-                twins[D.hx(row["yr_addr"])] = (row.get("kind"), float(row.get("similarity") or 0))
-            except Exception:
-                pass
+        for yr, (kind, sim, _) in TP.load_twins(pf).items():
+            twins[yr] = (kind, sim)
     objs = {}
 
     def comp(tu):

@@ -10,6 +10,7 @@ only), the VC6 toolchain (classcheck, gates).
 
 Environment (all optional except the binary):
 `GAMEMD_BINARY` (your retail exe; SHA-256 checked; there is no default),
+`GAG_RA2_BINARY` (your own RA2 `game.exe`, twinpair only; `GAG_RA2_PAIRS` overrides the twin file the delivery tools read),
 `GAG_WORKTREE` (match/ to read; default the repo these tools are in),
 `GAG_MAIN` (main checkout: toolchain, untracked local files and data missing from the worktree;
 default derived from the git common dir), `GAG_SCRATCH_ROOT` (disk scratch for worktrees, run dirs
@@ -34,6 +35,8 @@ With no file the `words` rule is disabled and a warning is printed on every run.
 | reccmp over the M3 link | `../vc6/reccmp_image.py [--out build-vc6/reccmp] [--queue permq queue.tsv] [--reuse]`: builds the plain and `/Z7` objects, links both (the `/Z7` link adds `/DEBUG /PDB`), proves debug info leaves code, data and relocations unchanged (`../vc6/debug_neutral.py`), then runs reccmp-reccmp (`--json`), -vtable, -datacmp, -roadmap, audits reccmp's function matching against the manifest (`../vc6/reccmp_audit.py`) and runs -stackcmp on the near-miss partials (`../vc6/reccmp_stack.py`, an M1-style analysis image from `link_m1.py --promote`); `summary.json` holds the numbers. Needs `GAMEMD_BINARY` and the `reccmp-*` tools in PATH; tests `../vc6/test_reccmp_image.py` |
 | structure migration (measure only) | `wwstruct/chd_census.py OBJDIR [--base OBJDIR]` (RTTI `??_R3` attributes per object vs retail), `wwstruct/emitter_map.py OBJDIR [--against OBJDIR]` (which object the link keeps per shared COMDAT), `wwstruct/static_init_dump.py OBJDIR [--against OBJDIR]` (`_$E`/`_$S` per TU), `wwstruct/tu_mapping.py` (current file -> target `<Name>.CPP`, report only); tests: `wwstruct/test_wwstruct.py` |
 | triage the partials | `partial_triage.py` (class, delta and routing per partial row: register-only, order-only/parked B16, stack-only, inline-shape, structural), then `../permuter/source_perm.py` for the permuter/commute rows; `regmine.py` for what edits did to which diff patterns |
+| cross-build twins (report only) | `twinpair.py` (YR to RA2 1.006 function pairs by strings, RTTI slots, masked hashes and callee order to a fixed point, with agreement and conflicts; writes `scripts/data/twin_map.json`, `--csv` keeps the old `pairs.csv` layout; `delivery/permute_queue.py` and `delivery/dispatch.py` read it); needs `GAG_RA2_BINARY` (your own RA2 `game.exe`); `x86scan.py` is its dependency-free decoder / CFG walker; tests: `python3 -m unittest test_twin_extent` |
+| census recall (report only) | `extent_recall.py` (candidate starts from calls, jumps, vtables, stored and table code pointers, classed real missed / alternate entry / shared tail / data / padding-thunk against `function_extents.json`; proposals for review only, the census is never edited) |
 | lead lists (report only) | `delivery/placement_leads.py`, `delivery/ini_names.py`, `delivery/flagsweep.py`, `delivery/permute_queue.py` |
 
 Skills (`skills/`, installed with `skills/install.sh`): `gagarin-packet-worker`, `gagarin-lander`,

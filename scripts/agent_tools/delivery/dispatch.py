@@ -19,6 +19,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import dlib as D  # noqa: E402
+import twinpair as TP  # noqa: E402
 
 WORKLISTS = [os.environ.get("GAG_WORKLIST", ""), os.path.join(D.L.SCRATCH_ROOT, "worklist/worklist_live.csv"), os.path.join(D.L.SCRATCH_ROOT, "worklist/worklist.csv"),
              os.path.join(D.BACKUPS, "worklist/worklist.csv")]
@@ -77,6 +78,11 @@ def main(argv=None):
         import attempts
         from pathlib import Path
         tried = attempts.tried_addrs(attempts.load(Path(a.ledger) if a.ledger else attempts.LEDGER))
+    twins = TP.load_twins(os.environ.get("GAG_RA2_PAIRS") or os.path.join(a.tree, "scripts/data/twin_map.json"))
+    for r in rows:      # worklists without an ra2_twin column take it from twin_map.json
+        if not r.get("ra2_twin") and twins:
+            t = twins.get(D.hx(r["addr"]))
+            r["ra2_twin"] = TP.twin_label(t[0] if t else None)
     keep, dropped = refilter(rows, tree.by_addr, claims, library, tried)
     with open(os.path.join(out, "worklist_refiltered.csv"), "w") as f:
         w = csv.DictWriter(f, fieldnames=rows[0].keys())
