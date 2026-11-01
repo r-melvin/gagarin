@@ -139422,8 +139422,8 @@
   "sym": "?FUN_004F9670@HouseClass@@QAEPAVBuildingClass@@XZ",
   "len": "0x8d",
   "name": "HouseClass::FUN_004F9670",
-  "status": "partial",
-  "pct": 98.2
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/ui/UICmnds.cpp",

@@ -1821,17 +1821,15 @@ float HouseClass::GiveTiberium(float amount, int type)
 }
 
 // FUNCTION: GAMEMD 0x4F9670
-// PARTIAL: 98.2% - one instruction differs: retail stores the zero for the best-room float
-// from EBX (mov [esp+0xc],ebx), ours uses an immediate (variants tried: init order, late assign).
 // The placed building whose type has storage and the most room left in it
 // (capacity minus what it holds); null if there is none.
 BuildingClass* HouseClass::FUN_004F9670()
 {
     BuildingClass* best = 0;
-    int i = 0;
     float bestRoom;
     int count = Buildings.Count;
     bestRoom = 0.0f;
+    int i = 0;
     if (count > 0) {
         do {
             BuildingClass* building = Buildings.Items[i];
