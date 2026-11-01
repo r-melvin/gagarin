@@ -57,7 +57,7 @@ public:
     int   SpecialSound;              // +0xC0  ctor -1
     int   StartSound;              // +0xC4  ctor -1
     void* AuxBuilding;              // +0xC8  ctor 0; swizzled by Load
-    char  CameoFile[0x19];         // +0xCC  ctor [EDI]=0 @0x006CE617
+    GgBoundedText<25> CameoFile;   // +0xCC  ctor [EDI]=0 @0x006CE617; the ID text is copied in after the list push
     bool  UseChargeDrain;          // +0xE5  ctor 0
     bool  IsPowered;              // +0xE6  ctor 1
     bool  DisableableFromShell;              // +0xE7  ctor 0

@@ -92,8 +92,8 @@ GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Verses) == 0xA0);
 GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->Verses) == 88);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, InfDeath) == 0x120);
 GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->InfDeath) == 4);
-GG_STATIC_ASSERT(offsetof(WarheadTypeClass, AnimList) + offsetof(RawBlock1C, Count) == 0x114);
-GG_STATIC_ASSERT(sizeof(((RawBlock1C*)0)->Count) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, AnimList) == 0x104);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->AnimList) == 0x1C);
 
 // FUNCTION: GAMEMD 0x75DEC0
 void WarheadTypeClass::vf_13(Obj_004A1D30* crc)

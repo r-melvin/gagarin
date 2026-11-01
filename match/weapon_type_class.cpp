@@ -18,6 +18,7 @@
 #include "weapon_type_class.h"
 #include "vector_class_dynamic_ctor.h"
 #include "vector_class_mutation.h"
+#include "vector_class_operations.h"
 
 // CRT case-insensitive compare (_strcmpi @ GAMEMD 0x7C8D20). Declared (no body)
 // so the call is a reloc; excluded from the match target.
@@ -152,6 +153,15 @@ WeaponTypeClass* WeaponTypeClass::FindOrAllocate(const char* id)
             return new (p) WeaponTypeClass(id);
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x7730F0
+WeaponTypeClass::~WeaponTypeClass()
+{
+    AnnounceExpiredPointer(1);
+    Projectile = 0;
+    Warhead = 0;
+    WeaponTypeClass_Array.RemoveItem(this);
 }
 
 // BEGIN defined globals (define_globals.py)

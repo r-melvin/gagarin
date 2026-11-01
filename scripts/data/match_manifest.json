@@ -151413,5 +151413,59 @@
   "name": "??0InfantryClass@@QAE@PAVInfantryTypeClass@@PAVHouseClass@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/anim_type_class_r21_methods.cpp",
+  "addr": "0x427530",
+  "sym": "??0AnimTypeClass@@QAE@PBD@Z",
+  "len": "0x320",
+  "name": "??0AnimTypeClass@@QAE@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/infantry_type_class_find_index_methods.cpp",
+  "addr": "0x524D70",
+  "sym": "??_GInfantryTypeClass@@UAEPAXI@Z",
+  "len": "0x14c",
+  "name": "??_GInfantryTypeClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/super_weapon_type_class_w3_methods.cpp",
+  "addr": "0x6CE5B0",
+  "sym": "??0SuperWeaponTypeClass@@QAE@PBD@Z",
+  "len": "0x14b",
+  "name": "??0SuperWeaponTypeClass@@QAE@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/voxel_anim_type_class_w3_methods.cpp",
+  "addr": "0x74AD80",
+  "sym": "??0VoxelAnimTypeClass@@QAE@PBD@Z",
+  "len": "0x1e3",
+  "name": "??0VoxelAnimTypeClass@@QAE@PBD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/type_class_findoralloc_methods.cpp",
+  "addr": "0x75E510",
+  "sym": "??_GWarheadTypeClass@@UAEPAXI@Z",
+  "len": "0x180",
+  "name": "??_GWarheadTypeClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/weapon_type_class.cpp",
+  "addr": "0x7730F0",
+  "sym": "??_GWeaponTypeClass@@UAEPAXI@Z",
+  "len": "0x142",
+  "name": "??_GWeaponTypeClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

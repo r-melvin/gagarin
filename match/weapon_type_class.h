@@ -44,6 +44,8 @@ public:
     WeaponTypeClass(const char* id);
     // FUNCTION: GAMEMD 0x771F00 -- the no-init constructor (vptr stores only, Load's placement construction).
     WeaponTypeClass(const AbstractNoInit& noInit);
+    // FUNCTION: GAMEMD 0x7730F0 -- the scalar deleting destructor (slot 8) with the destructor body inlined.
+    virtual ~WeaponTypeClass();
     virtual int vf_11();   // 11  0x7730E0
     virtual int vf_12();   // 12  0x7730D0
     virtual void vf_13(Obj_004A1D30* crc);   // 13  0x772AE0

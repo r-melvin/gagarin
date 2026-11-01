@@ -741,7 +741,7 @@ public:
 void UnitView_r16::FUN_00744640(Obj_004A1D30* crc)
 {
     FootClass::vf_13(crc);
-    crc->FUN_004A1D50(static_cast<UnitKindView_r16*>(Type)->vf_11());
+    crc->FUN_004A1D50(Type->vf_11());
     UnitComObj_r16* typeIface = reinterpret_cast<UnitComObj_r16*>((char*)Type + 4);
     crc->FUN_004A1D50(typeIface->lpVtbl->Slot4(typeIface));
     if (FollowerCar) {

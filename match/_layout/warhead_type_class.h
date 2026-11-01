@@ -15,22 +15,12 @@
 #include "obj_004a1d30.h"
 #include "../type_list.h"
 
-// Pointer / TypeList / GUID members read as undefined4 / fixed-size blocks in
+// Pointer / GUID members read as undefined4 / fixed-size blocks in
 // the decomp. Pointers become real 4-byte pointers to opaque forward decls;
-// the TypeList<T> (DynamicVectorClass + trailing dword, 0x1C) and the Locomotor
-// _GUID (0x10) are modelled here as exact-size byte blocks.
+// the Locomotor _GUID (0x10) is modelled here as an exact-size byte block.
 class VoxelAnimTypeClass;
 class AnimTypeClass;        // opaque (4-byte ptr target)
 class ParticleTypeClass;    // opaque (4-byte ptr target)
-
-// TypeList<T> — DynamicVectorClass(0x18) + trailing dword; size = 0x1C.
-struct RawBlock1C
-{
-    unsigned char _raw[0x10];   // +0x00..0x0F
-    int Count;                  // +0x10 (the vector's live count)
-    unsigned char _raw14[0x8];  // +0x14..0x1B
-};
-GG_STATIC_ASSERT(sizeof(RawBlock1C) == 0x1C);
 
 // _GUID — Locomotor class id; size = 0x10.
 struct RawBlock10
@@ -48,6 +38,8 @@ public:
     WarheadTypeClass(const char* id) throw();
     // The class factory's construction (TClassFactory<WarheadTypeClass>): the same constructor with a default argument.
     WarheadTypeClass(int unknown_arg0 = 0);
+    // FUNCTION: GAMEMD 0x75E510 -- the scalar deleting destructor (slot 8) with the destructor body inlined.
+    virtual ~WarheadTypeClass();
     // Overrides of the slots AbstractClass leaves pure (slots 3, 5, 6, 11, 12).
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);
@@ -66,7 +58,7 @@ public:
     double            Verses[0xB];         // +0xA0  (0xA0..0xF7)
     double            ProneDamage;         // +0xF8
     int               DeformTreshold;      // +0x100
-    RawBlock1C AnimList;            // +0x104 (TypeList<AnimTypeClass*>)
+    TypeList<const AnimTypeClass*> AnimList; // +0x104 (0x1C)
     int               InfDeath;            // +0x120 (enum)
     float             CellSpread;          // +0x124
     float             CellInset;           // +0x128

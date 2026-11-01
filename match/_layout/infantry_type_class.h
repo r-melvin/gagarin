@@ -18,6 +18,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../type_list.h"
 #include "techno_type_class.h"   // TechnoTypeClass (sizeof 0xDF8), TypeListLayout,
                                  // WeaponStruct, AnimTypeClass fwd-decl
 
@@ -41,6 +42,8 @@ public:
     virtual CellStruct* vf_36(int a1);   // 36  0x523C20: a lazily built static cell pair, a1 unused
     // CALLEE: GAMEMD 0x005236A0 (decl; reloc) -- constructor as the class factory calls it.
     InfantryTypeClass(int unknown_arg0 = 0);
+    // FUNCTION: GAMEMD 0x524D70 -- the scalar deleting destructor (slot 8) with the destructor body inlined.
+    virtual ~InfantryTypeClass();
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x524960
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x524B60
     virtual int vf_11();   // 11  0x524D40
@@ -63,9 +66,9 @@ public:
     int             FireProne;           // +0xE44
     int             SecondaryFire;       // +0xE48
     int             SecondaryProne;      // +0xE4C
-    TypeListLayout  DeadBodies;          // +0xE50 (TypeList<AnimTypeClass*>)
-    TypeListLayout  DeathAnims;          // +0xE6C (TypeList<AnimTypeClass*>)
-    TypeListLayout  VoiceComment;        // +0xE88 (TypeList<int>)
+    TypeList<const AnimTypeClass*> DeadBodies; // +0xE50 (0x1C)
+    TypeList<const AnimTypeClass*> DeathAnims; // +0xE6C (0x1C)
+    TypeList<int>   VoiceComment;        // +0xE88 (0x1C)
     int             EnterWaterSound;     // +0xEA4
     int             LeaveWaterSound;     // +0xEA8
     bool            Cyborg;              // +0xEAC

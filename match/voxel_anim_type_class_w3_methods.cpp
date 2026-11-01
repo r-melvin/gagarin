@@ -29,6 +29,26 @@ extern DynamicVectorClass<VoxelAnimTypeClass*> DAT_00A8EB28;
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;
 
+// FUNCTION: GAMEMD 0x74AD80
+VoxelAnimTypeClass::VoxelAnimTypeClass(const char* id)
+    : ObjectTypeClass(id), Normalized(false), Translucent(false), unknown_296(false), VoxelIndex(0),
+      Duration(30), Elasticity(0.800000011920929), MinAngularVelocity(0.0),
+      MaxAngularVelocity(0.17452777777777778), MinZVel(3.5), MaxZVel(5.0), MaxXYVel(15.0), IsMeteor(false),
+      Spawns(0), SpawnCount(0), StartSound(-1), StopSound(-1), BounceAnim(0), ExpireAnim(0), TrailerAnim(0),
+      Damage(0), DamageRadius(0), Warhead(0), AttachedSystem(0), IsTiberium(false)
+{
+    vf_rtti_5();
+    LegalTarget = false;
+    IsLogic = true;
+    RadarInvisible = true;
+    Selectable = true;
+    Insignificant = true;
+    Immune = true;
+    AllowCellContent = false;
+    DAT_00B0F670.AddItem(this);
+    DAT_00A8EB28.AddItem(this);
+}
+
 // FUNCTION: GAMEMD 0x74AF70
 VoxelAnimTypeClass::~VoxelAnimTypeClass()
 {

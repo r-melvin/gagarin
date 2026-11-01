@@ -7,6 +7,7 @@
 #include "_layout/infantry_type_class.h"
 #include "_layout/rules_class.h"
 #include "vector_class.h"
+#include "vector_class_operations.h"
 #include "header_init_shapes.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT _strcmpi.
@@ -55,4 +56,13 @@ int InfantryTypeClass::FUN_00523C90(const char* name)
 int InfantryTypeClass::vf_45()
 {
     return RulesInstance->IRepairStep;
+}
+
+// FUNCTION: GAMEMD 0x524D70
+InfantryTypeClass::~InfantryTypeClass()
+{
+    AnnounceExpiredPointer(1);
+    DAT_00A8E348.RemoveItem(this);
+    delete Sequence;
+    Sequence = 0;
 }

@@ -28,6 +28,10 @@ struct RandomStruct
 {
     int Min;   // +0x00
     int Max;   // +0x04
+
+    RandomStruct() {}
+    // The AnimTypeClass constructor stores both words from its member-initialiser list.
+    RandomStruct(int min, int max) : Min(min), Max(max) {}
 };
 
 GG_STATIC_ASSERT(sizeof(RandomStruct) == 8);

@@ -115,7 +115,7 @@ public:
     virtual bool vf_65(RectangleStruct* rect, bool force, int a3); // 65 0x73B0B0
 
     int           CurrentFiringFrame;   // +0x6C0  ctor: MOV [ESI+0x6C0],EDI(-1) @0x007353E0
-    void*         Type;                 // +0x6C4  UnitTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x007353E6
+    UnitTypeClass* Type;                // +0x6C4  UnitTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x007353E6
     void*         FollowerCar;          // +0x6C8  UnitClass*;     ctor: MOV [ESI+0x6C8],EBX(0) @0x007353EC
     int           FlagHouseIndex;       // +0x6CC  ctor: MOV [ESI+0x6CC],EDI(-1) @0x007353F2
                                         //         also CMP [ECX+0x6CC],-1 @0x00740DF9 (FlagAttach)

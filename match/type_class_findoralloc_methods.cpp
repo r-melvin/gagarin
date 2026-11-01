@@ -23,6 +23,10 @@
 //    subscript produces.
 
 #include "type_class_findoralloc_methods.h"
+#include "vector_class_operations.h"
+
+// GLOBAL: GAMEMD 0xB0F670 -- the registry every abstract object leaves when destroyed.
+extern DynamicVectorClass<AbstractClass*> DAT_00B0F670;
 
 // FUNCTION: GAMEMD 0x428B80  AnimTypeClass::FindOrAllocate (__fastcall)
 AnimTypeClass* AnimTypeClass::FindOrAllocate(const char* id)
@@ -65,3 +69,11 @@ extern DynamicVectorClass<AnimTypeClass*> AnimTypeClassArray;
 // GLOBAL: GAMEMD 0x8874C0
 extern DynamicVectorClass<WarheadTypeClass*> WarheadTypeClassArray;
 // END defined globals
+
+// FUNCTION: GAMEMD 0x75E510
+WarheadTypeClass::~WarheadTypeClass()
+{
+    AnnounceExpiredPointer(1);
+    WarheadTypeClassArray.RemoveItem(this);
+    DAT_00B0F670.RemoveItem(this);
+}

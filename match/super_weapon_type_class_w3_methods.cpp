@@ -18,9 +18,23 @@ extern const char STR_DEFAULT_ICON[];
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- loads a shape file by path.
 void* __fastcall FUN_005B40B0(const char* name, bool flag);
 
+// FUNCTION: GAMEMD 0x6CE5B0
+SuperWeaponTypeClass::SuperWeaponTypeClass(const char* id)
+    : AbstractTypeClass(id), WeaponType(0), RechargeVoice(-1), ChargingVoice(-1), ImpatientVoice(-1),
+      SuspendVoice(-1), RechargeTime(0x1194), Type(-1), SidebarImage(0), Action(0), SpecialSound(-1),
+      StartSound(-1), AuxBuilding(0), FlashSidebarTabFrames(-1), PreDependent(-1), UseChargeDrain(false),
+      IsPowered(true), DisableableFromShell(false), AIDefendAgainst(false), PreClick(false),
+      PostClick(false), ShowTimer(false), ManualControl(false), Range(0), LineMultiplier(0)
+{
+    vf_rtti_5();
+    ArrayIndex = DAT_00A8E330.Count;
+    DAT_00A8E330.AddItem(this);
+    ID.CopyTo(CameoFile);
+}
+
 // FUNCTION: GAMEMD 0x6CE700
 SuperWeaponTypeClass::SuperWeaponTypeClass(const AbstractNoInit& noInit)
-    : AbstractTypeClass(noInit), SidebarImage(0)
+    : AbstractTypeClass(noInit), SidebarImage(0), CameoFile(noInit)
 {
 }
 
