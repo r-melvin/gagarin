@@ -96,6 +96,14 @@ class ByteMatchReportTests(unittest.TestCase):
             outside.unlink(missing_ok=True)
 
 
+    def test_categories_split_engine_from_library(self):
+        result, _ = report.build_report(self.manifest, self.census, self.root)
+        cats = {c["id"]: c["measures"] for c in result["categories"]}
+        self.assertEqual(cats["game"]["total_code"], 0x30)
+        self.assertEqual(cats["game"]["matched_code"], 0x10)
+        self.assertEqual(cats["library"]["total_code"], 0x30)
+        self.assertEqual(cats["library"]["matched_code"], 0)
+
     def test_linked_code_requires_identical_m3_image(self):
         lp = {"m3": {"identical": True, "sections": {".text": {"project": 1234}}}}
         self.assertEqual(report.linked_code_bytes(lp), 1234)

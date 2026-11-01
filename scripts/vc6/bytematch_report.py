@@ -19,6 +19,13 @@ from typing import Any
 
 
 REPORT_VERSION = 2
+# Progress categories: engine code is the game; the rest is statically linked library code
+# (VC6 CRT, comsupp, LZO, linker thunks), shown apart so it does not dilute the game's figure.
+CATEGORIES = (("game", "Game"), ("library", "Library"))
+
+
+def category_of(kind: str) -> str:
+    return "game" if kind == "engine" else "library"
 MEASURE_KEYS = (
     "fuzzy_match_percent", "total_code", "matched_code", "matched_code_percent",
     "total_data", "matched_data", "matched_data_percent", "total_functions",
@@ -131,7 +138,8 @@ def build_report(manifest: list[dict[str, Any]], census: list[list[Any]], root: 
             item = {"name": f"FUN_{addr:08X}", "size": length, "fuzzy_match_percent": 0,
                     "metadata": {"virtual_address": addr}}
             unit_meta = {"auto_generated": True, "complete": False, "progress_categories": []}
-        assignments[key].append({"item": item, "matched": bool(row and row["status"] == "matched"), "unit_metadata": unit_meta})
+        assignments[key].append({"item": item, "matched": bool(row and row["status"] == "matched"),
+                                 "category": category_of(kind), "unit_metadata": unit_meta})
 
     units: list[dict[str, Any]] = []
     for name in sorted(assignments):
@@ -144,7 +152,8 @@ def build_report(manifest: list[dict[str, Any]], census: list[list[Any]], root: 
         m["fuzzy_match_percent"] = percent(int(m["matched_code"]), int(m["total_code"]))
         m["total_units"] = 1
         finish_measures(m)
-        meta = entries[0]["unit_metadata"]
+        meta = dict(entries[0]["unit_metadata"])
+        meta["progress_categories"] = sorted({e["category"] for e in entries})
         units.append({"name": name, "measures": m, "sections": [],
                       "functions": [e["item"] for e in entries], "metadata": meta})
 
@@ -156,7 +165,19 @@ def build_report(manifest: list[dict[str, Any]], census: list[list[Any]], root: 
     total["total_units"] = len(units)
     total["fuzzy_match_percent"] = percent(int(total["matched_code"]), int(total["total_code"]))
     finish_measures(total)
-    report = {"measures": total, "units": units, "version": REPORT_VERSION, "categories": []}
+    categories = []
+    all_entries = [e for name in assignments for e in assignments[name]]
+    for cid, cname in CATEGORIES:
+        es = [e for e in all_entries if e["category"] == cid]
+        cm = empty_measures()
+        cm["total_code"] = sum(e["item"]["size"] for e in es)
+        cm["matched_code"] = sum(e["item"]["size"] for e in es if e["matched"])
+        cm["total_functions"] = len(es)
+        cm["matched_functions"] = sum(e["matched"] for e in es)
+        cm["fuzzy_match_percent"] = percent(int(cm["matched_code"]), int(cm["total_code"]))
+        cm["total_units"] = sum(1 for u in units if cid in u["metadata"]["progress_categories"])
+        categories.append({"id": cid, "name": cname, "measures": finish_measures(cm)})
+    report = {"measures": total, "units": units, "version": REPORT_VERSION, "categories": categories}
     census_total = sum(length for length, _ in census_by_addr.values())
     context = {
         "schema": "gagarin/bytematch-report-context/1",
@@ -219,6 +240,10 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     print(f"Wrote {output}")
     m = report["measures"]
+    for c in report["categories"]:
+        cm = c["measures"]
+        print(f"  {c['name']}: {cm['matched_code_percent']:.2f}% of code ({cm['matched_code']}/{cm['total_code']} bytes), "
+              f"{cm['matched_functions']}/{cm['total_functions']} functions")
     print(f"Matched: {m['matched_code_percent']:.2f}% of code ({m['matched_code']}/{m['total_code']} bytes); "
           f"linked: {m['complete_code_percent']:.2f}% ({m['complete_code']} bytes from source in the M3 link)")
     print(f"Coverage: {context['manifest_claim_count']}/{context['census_function_count']} functions; "

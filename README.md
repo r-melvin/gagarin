@@ -79,7 +79,9 @@ unclaimed functions use census lengths. `report-context.json` records any
 differences from the older census. Partial functions receive no matched credit,
 and every unit remains marked incomplete. The linked figure (`complete_code`) is the
 `.text` bytes the M3 link takes from source (`scripts/data/link_progress.json`),
-counted only while that image equals retail. Data progress is not measured.
+counted only while that image equals retail. Progress is also split into a `game` category (engine
+code) and a `library` category (CRT, comsupp, LZO and linker thunks, outside the
+recovery scope). Data progress is not measured.
 Source units follow the repository paths; unrecovered functions have no invented
 source path. Existing function address annotations support source lookup.
 Only JSON reports are uploaded; no game bytes, objects or toolchain files.
