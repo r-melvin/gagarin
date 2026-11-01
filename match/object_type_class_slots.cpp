@@ -138,6 +138,9 @@ int ObjectTypeClass::vf_28()
 }
 
 // FUNCTION: GAMEMD 0x5F7090
+// PARTIAL (98.7%): the canonical DynamicVectorClass::AddItem now follows the binary's out-of-line
+// AddItem copies (CapacityIncrement + Capacity); this site has the other add order (Capacity +
+// CapacityIncrement), so the original source here was not a plain AddItem call. The real form is unknown.
 ObjectTypeClass::ObjectTypeClass(const char* id)
     : AbstractTypeClass(id), RadialColor(0, 0, 0), Armor(0), Strength(0),
       Image(0), ImageAllocated(false), AlphaImage(0), NoSpawnAlt(false),

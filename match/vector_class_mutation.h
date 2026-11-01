@@ -27,12 +27,15 @@ inline bool DynamicVectorClass<T>::Delete(int index)
 // CapacityIncrement happens only when the vector owns its block or has none.
 // The new index is taken before the store, so Count is loaded ahead of
 // Items, which is retail's order.
+// The growth sum is CapacityIncrement + Capacity (inc+cap), with Capacity read once: the
+// binary's out-of-line AddItem copies add in that order (e.g. 0x41d3cb, 0x42d851, 0x438641).
 template<class T>
 inline bool DynamicVectorClass<T>::AddItem(const T& item)
 {
-    if (Count >= this->Capacity) {
-        if ((this->IsAllocated || this->Capacity == 0) && CapacityIncrement > 0) {
-            if (!this->SetCapacity(this->Capacity + CapacityIncrement, 0))
+    int cap = this->Capacity;
+    if (Count >= cap) {
+        if ((this->IsAllocated || cap == 0) && CapacityIncrement > 0) {
+            if (!this->SetCapacity(CapacityIncrement + cap, 0))
                 return false;
         } else {
             return false;

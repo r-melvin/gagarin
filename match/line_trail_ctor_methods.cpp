@@ -14,6 +14,9 @@ extern HeaderCoordInit DAT_00ABCB50;
 extern DynamicVectorClass<LineTrail*> DAT_00ABCB78;
 
 // FUNCTION: GAMEMD 0x556A20
+// PARTIAL (92.7%): the canonical DynamicVectorClass::AddItem now follows the binary's out-of-line
+// AddItem copies (CapacityIncrement + Capacity); this site has the other add order (Capacity +
+// CapacityIncrement), so the original source here was not a plain AddItem call. The real form is unknown.
 // A new trail is mid-grey, ownerless, fades by 16 per step, has every ring
 // entry blank, and is registered in the global list.
 LineTrail::LineTrail()

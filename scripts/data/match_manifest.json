@@ -49910,7 +49910,7 @@
   "len": "0x1033",
   "name": "HouseClass::Load",
   "status": "partial",
-  "pct": 98.3
+  "pct": 99.4
  },
  {
   "tu": "match/House.cpp",
@@ -58263,7 +58263,7 @@
   "len": "0x752",
   "name": "MouseClass::vf_30",
   "status": "partial",
-  "pct": 84.1
+  "pct": 84.8
  },
  {
   "tu": "match/mouse_mouse_class_stream.cpp",
@@ -91182,8 +91182,8 @@
   "sym": "??0MapRegionClass@@QAE@UCellStruct@@@Z",
   "len": "0xf7",
   "name": "MapRegionClass::MapRegionClass",
-  "status": "partial",
-  "pct": 97.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/MapGen.cpp",
@@ -95882,7 +95882,7 @@
   "len": "0x474",
   "name": "?FUN_006851F0@@YIXXZ",
   "status": "partial",
-  "pct": 69.5
+  "pct": 70.1
  },
  {
   "tu": "match/Scenario.cpp",
@@ -96656,7 +96656,7 @@
   "len": "0x1bce",
   "name": "FUN_00532150",
   "status": "partial",
-  "pct": 61.2
+  "pct": 64.4
  },
  {
   "tu": "match/global_vector_remove_item_methods.cpp",
@@ -105338,8 +105338,8 @@
   "sym": "??0ObjectTypeClass@@QAE@PBD@Z",
   "len": "0x287",
   "name": "ObjectTypeClass::ObjectTypeClass",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 98.7
  },
  {
   "tu": "match/object_type_class_shape_load.cpp",
@@ -143462,8 +143462,8 @@
   "sym": "??0SlaveManagerClass@@QAE@XZ",
   "len": "0xD2",
   "name": "SlaveManagerClass::SlaveManagerClass()",
-  "status": "partial",
-  "pct": 91.5
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/slave_manager_r19_5.cpp",
@@ -143508,7 +143508,7 @@
   "len": "0xC7",
   "name": "SuperClass::SuperClass()",
   "status": "partial",
-  "pct": 82.5
+  "pct": 91.2
  },
  {
   "tu": "match/Sidebar.cpp",
@@ -144461,8 +144461,8 @@
   "sym": "??0LineTrail@@QAE@XZ",
   "len": "0xa4",
   "name": "LineTrail::LineTrail",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 92.7
  },
  {
   "tu": "match/line_trail_ctor_methods.cpp",
@@ -144983,8 +144983,8 @@
   "sym": "?FUN_006B2430@@YIXPBHH@Z",
   "len": "0x6f",
   "name": "FUN_006B2430",
-  "status": "partial",
-  "pct": 90
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/r23_4_msg_pump.cpp",
@@ -147696,8 +147696,8 @@
   "sym": "??0VocClass@@QAE@PBD@Z",
   "len": "0x6d",
   "name": "??0VocClass@@QAE@PBD@Z",
-  "status": "partial",
-  "pct": 88.2
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/voc_class_methods.cpp",
@@ -147714,8 +147714,8 @@
   "sym": "?ReadAll@VocClass@@SIXPAVCCINIClass@@@Z",
   "len": "0x317",
   "name": "VocClass::ReadAll",
-  "status": "partial",
-  "pct": 99.1
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/voc_class_methods.cpp",
