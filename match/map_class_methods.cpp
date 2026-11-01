@@ -16,9 +16,8 @@
 // ObjectClass::CurrentObjects @ 0x00A8ECB8.  Disasm touches Items (+0x04 =>
 // 0x00A8ECBC) and Count (+0x10 => 0x00A8ECC8).
 #include "_layout/current_objects.h"
+#include <string.h>
 
-// Case-insensitive string compare (retail __cdecl helper @ 0x007C8D20).
-extern "C" int __cdecl strcmpi(const char* a, const char* b);
 
 // Trailing helpers invoked by UnselectAll (not matched here — declared so cl
 // emits reloc-normalised calls):

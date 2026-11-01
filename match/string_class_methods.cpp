@@ -5,17 +5,11 @@
 // evidence for its single member are in string_class.h.
 #include <string.h>
 #include "string_class.h"
+#include <ctype.h>
 // GLOBAL: GAMEMD 0x889F64
 extern char GLOBAL_00889F64[];
 
-// LIBRARY: GAMEMD 0x007CAFF4
-// _tolower
-// Narrow CRT declaration; implementation remains in the toolchain library.
-extern "C" int __cdecl tolower(int ch);
 
-// LIBRARY: GAMEMD 0x007C97D3
-// _toupper
-extern "C" int __cdecl toupper(int ch);
 
 // Length of a possibly unset string (the inline form of Wstring::Length).
 static inline unsigned int LengthOf(const char* text)

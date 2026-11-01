@@ -8,13 +8,10 @@
 // method and global names are descriptive; no size is asserted.
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdio.h>
 
-// LIBRARY: GAMEMD 0x7CB7BA (decl; reloc) -- CRT vsprintf.
-extern "C" int __cdecl vsprintf(char* buffer, const char* format, va_list args);
 // LIBRARY: GAMEMD 0x7CA858 (decl; reloc) -- CRT vswprintf.
 extern "C" int __cdecl vswprintf(wchar_t* buffer, const wchar_t* format, va_list args);
-// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
-extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 class MessageLog_005BD0D0
 {

@@ -6,8 +6,7 @@
 #include "_layout/tag_type_class.h"
 #include "_layout/trigger_type_class.h"
 #include <stddef.h>
-// LIBRARY: GAMEMD 0x7C8D20 — CRT _strcmpi.
-extern "C" int __cdecl _strcmpi(const char*, const char*);
+#include <string.h>
 // LIBRARY: GAMEMD 0x7C8E17 — global operator new(size_t).
 // STRING: GAMEMD 0x817474 "<none>".
 // STRING: GAMEMD 0x817694 "none".

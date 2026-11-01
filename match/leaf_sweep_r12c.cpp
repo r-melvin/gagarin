@@ -4,7 +4,7 @@
 //   the local Ghidra CLI at the address in each annotation. The element types are placeholders.
 //   Address index: 0x751520, 0x7532D0.
 
-extern "C" int __cdecl _stricmp(const char* a, const char* b);
+#include <string.h>
 
 // ---------------------------------------------------------------------------
 // 0x7532D0: the registry entry (a name record starting with its text) matching a name.

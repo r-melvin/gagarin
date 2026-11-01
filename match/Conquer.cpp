@@ -41,15 +41,13 @@
 #include "theater_methods.h"
 #include <math.h>
 #include "header_init_shapes.h"
+#include <string.h>
 
 // The fixed global array. Its address (0x7E1B78) and the end sentinel
 // (&Array[6] == 0x7E1E18) are emitted as relocations and normalised by the
 // differ; confirmed numerically from the 0x48DBE0 disassembly.
 extern Theater Theater_Array[6];
 
-// CRT case-insensitive compare @0x7C8D20 — declared (no body) so cl emits a
-// reloc-normalised call rather than inlining an intrinsic.
-extern "C" int __cdecl _stricmp(const char* s1, const char* s2);
 
 #include "trivial_tu055_methods.h"
 
@@ -57,8 +55,6 @@ extern "C" int __cdecl _stricmp(const char* s1, const char* s2);
 #include "_rt/gg_static_assert.h"
 #include "trig_table_functions_004cac40.h"
 
-extern "C" int __cdecl _stricmp(const char* a, const char* b);
-extern "C" size_t __cdecl strlen(const char* s);
 
 // GLOBAL: GAMEMD 0x00A8ED84
 extern "C" int DAT_00A8ED84;
@@ -118,15 +114,12 @@ struct Vtbl_004D2790;
 // first returns a byte (callees only).
 extern "C" char __cdecl FUN_007C5F3D();
 extern "C" void __cdecl FUN_007C5FFF();
-extern "C" char* __cdecl strncpy(char* dst, const char* src, size_t count);
 
 // GLOBAL: GAMEMD 0x0084E863
 extern "C" signed char DAT_0084E863;
 // GLOBAL: GAMEMD 0x0084E865
 extern "C" const char DAT_0084E865[];
 
-extern "C" char* __cdecl strcpy(char* dst, const char* src);
-extern "C" char* __cdecl _strupr(char* text);
 
 #include "_layout/text_004f4cb0.h"
 
@@ -145,8 +138,6 @@ extern "C" char* __cdecl _strupr(char* text);
 #include "_layout/current_objects.h"
 #include "_layout/object_class.h"
 
-// Case-insensitive string compare (retail __cdecl helper @ 0x007C8D20).
-extern "C" int __cdecl strcmpi(const char* a, const char* b);
 
 // Trailing helpers invoked by UnselectAll (not matched here — declared so cl
 // emits reloc-normalised calls):

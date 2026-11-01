@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "mathtbl_consts.h"
+#include <wchar.h>
 
 // GLOBAL: GAMEMD 0x7F3F48
 extern const double DAT_007F3F48;
@@ -47,8 +48,6 @@ typedef void* GG_HWND;
 extern "C" __declspec(dllimport) long __stdcall SendMessageA(GG_HWND hWnd, unsigned uMsg, unsigned wParam, long lParam);
 // IAT 0x7E14A8: USER32!GetDlgItem.
 extern "C" __declspec(dllimport) GG_HWND __stdcall GetDlgItem(GG_HWND hDlg, int nID);
-// 0x7CA564: the CRT swprintf (cdecl, varargs).
-extern "C" int __cdecl swprintf(wchar_t* pszBuffer, const wchar_t* pszFormat, ...);
 
 // Formats a number of seconds as hours, minutes and seconds and posts the text to a
 // dialog control (custom message 0x4B2).

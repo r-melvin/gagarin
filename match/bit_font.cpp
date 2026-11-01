@@ -116,9 +116,6 @@ unsigned char* BitFont::GetCharacterBitmap(wchar_t wch)
     return result;
 }
 
-// LIBRARY: GAMEMD 0x7C9430
-// The retail call targets the CRT allocator; its body is out of scope.
-extern "C" void* __cdecl malloc(size_t size);
 // FUNCTION: GAMEMD 0x434700
 void BitFont::FUN_00434700()
 {

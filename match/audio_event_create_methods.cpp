@@ -8,7 +8,6 @@
 #include <new.h>
 #include "_layout/audio_event.h"
 
-extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // GLOBAL: GAMEMD 0x87E2A0 -- nonzero once the audio subsystem is up.
 extern int DAT_0087E2A0;

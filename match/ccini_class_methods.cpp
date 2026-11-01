@@ -21,9 +21,8 @@
 //   LIBRARY:  GAMEMD 0x7C8EF4   sprintf (CRT; cdecl; excluded from match target)
 
 #include "ccini_class_methods.h"
+#include <stdio.h>
 
-// CRT sprintf: cdecl variadic, 4-arg call cleaned by the caller (ADD ESP,0x10).
-extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 
 // ---------------------------------------------------------------------------

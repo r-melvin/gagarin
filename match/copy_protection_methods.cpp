@@ -20,8 +20,8 @@
 #include <mmsystem.h>
 #include "copy_protection_methods.h"
 #include "_layout/version_class.h"
+#include <string.h>
 
-extern "C" int __cdecl strcmp(const char* a, const char* b);
 
 void FUN_004068E0(const char*, ...);
 unsigned int __fastcall FUN_0074F760(void* versionRecord);

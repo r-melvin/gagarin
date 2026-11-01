@@ -14,6 +14,7 @@
 #include "_layout/voc_class.h"
 #include "center_window_methods.h"
 #include "ui_gadget.h"
+#include <ctype.h>
 
 // ---------------------------------------------------------------------------
 // 0x7518A0: fire an audio event for the table entry at an index.
@@ -46,8 +47,6 @@ extern int Current_00845728;
 extern NameSlot_00734F20 Slots_00845684[];
 // GLOBAL: GAMEMD 0x8457BC
 extern const char Match_008457BC[];
-// LIBRARY: GAMEMD 0x7C8D20 -- _stricmp.
-extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // FUNCTION: GAMEMD 0x734F20
 // True when the current slot has no name or its name equals the fixed string.
@@ -158,9 +157,6 @@ void Dialog_00776880::FUN_00776880()
 // LIBRARY: GAMEMD 0x007C990E
 // isalpha
 extern "C" int __cdecl isalpha(int ch);
-// LIBRARY: GAMEMD 0x007C97D3
-// _toupper
-extern "C" int __cdecl toupper(int ch);
 
 // FUNCTION: GAMEMD 0x763690
 // "A".."Z" give 0..25, "AA" gives 26 and so on; -1 when the text does not start with a letter.

@@ -7,9 +7,8 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include <wchar.h>
 
-extern "C" wchar_t* __cdecl wcscpy(wchar_t*, const wchar_t*);
-extern "C" size_t __cdecl wcslen(const wchar_t*);
 
 // An object that owns one heap-allocated wide string at +0x14.
 struct TextHolder_006C9960

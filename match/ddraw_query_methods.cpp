@@ -12,9 +12,8 @@
 // the functions and globals are descriptive placeholders.
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include <stdio.h>
 
-// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
-extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 struct CapsBlock_004A45C0
 {

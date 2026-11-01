@@ -5,8 +5,8 @@
 
 #include "_layout/voxel_anim_type_class.h"
 #include "vector_class_operations.h"
+#include <string.h>
 
-extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 
 // FUNCTION: GAMEMD 0x74BB20

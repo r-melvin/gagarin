@@ -3,10 +3,8 @@
 //   Bodies ascending by retail address; bytes diffed against the user's
 //   retail gamemd.exe v1.001.
 #include "dir16_operator_methods.h"
+#include <stdlib.h>
 
-// `abs` as the CRT intrinsic, not a call: retail's absolute values are the
-// inline `CDQ; XOR; SUB` idiom, which is what /O2 + #pragma intrinsic emits.
-extern "C" int __cdecl abs(int);
 
 // FUNCTION: GAMEMD 0x5B2930
 // Dir16 + Dir16. The sum wraps in sixteen bits, which is the whole point of a

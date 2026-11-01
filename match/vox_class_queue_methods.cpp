@@ -11,7 +11,6 @@
 #include "_layout/vox_class.h"
 #include "_layout/obj_00407f40.h"
 
-extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
 // STRING: GAMEMD 0x889F64 -- the shared empty default text.
 extern const char STR_00889F64[];

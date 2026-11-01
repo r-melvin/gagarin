@@ -15,8 +15,6 @@
 #include "vector_add_item_free.h"
 #include "_layout/map_0087f7e8.h"
 
-// LIBRARY: GAMEMD 0x7C8D20 -- _stricmp.
-extern "C" int __cdecl _stricmp(const char* a, const char* b);
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
 void __cdecl FUN_004068E0(const char* format, ...);
 

@@ -5,8 +5,8 @@
 //   there calls the comparison as retail does instead of expanding it.
 
 #include "color_scheme_iterator_methods.h"
+#include <string.h>
 
-extern "C" int __cdecl strcmp(const char* a, const char* b);
 
 // FUNCTION: GAMEMD 0x4F4CE0
 // True when the two keys hold the same text.

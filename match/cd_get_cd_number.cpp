@@ -17,8 +17,8 @@
 #include <windows.h>
 #include <stddef.h>
 #include "_layout/elapsed_timer.h"
+#include <string.h>
 
-extern "C" int __cdecl _stricmp(const char*, const char*);
 
 // FUNCTION: GAMEMD 0x4A80D0  CD::GetCDNumber (__fastcall)
 // PARTIAL: first 6 bytes are the patch (see above).
