@@ -180,12 +180,10 @@ Obj_005C01A0::~Obj_005C01A0()
 }
 
 // FUNCTION: GAMEMD 0x5C0240
-// PARTIAL (87.5%): retail stores the +0x14 flag ahead of the vptr; cl puts
-// the vptr first. Tried: flag first in the body (best), both in the
-// mem-initialiser list (81.2%), Data first then flag (81.2%).
-VQMovieHandle::VQMovieHandle(Obj_005C01A0* data)
+// Retail stores the +0x14 flag ahead of the vptr: only the flag is in the
+// mem-initialiser list, Data is assigned in the body.
+VQMovieHandle::VQMovieHandle(Obj_005C01A0* data) : unknown_14(false)
 {
-    unknown_14 = false;
     Data = data;
     unknown_08 = data->Player->FUN_00759F70();
     unknown_0C = Data->Player->FUN_00759F80();
@@ -433,8 +431,6 @@ bool FUN_005C0640(const char* name, char* out, int unused)
 }
 
 // FUNCTION: GAMEMD 0x5C07D0
-// PARTIAL (98.6%): only the inlined VQMovieHandle constructor's flag/vptr
-// store order differs (see 0x5C0240).
 // Open a movie by name on a surface: a Bink handle for .bik files, otherwise
 // a VQ handle over a freshly loaded state block.
 MovieHandle* FUN_005C07D0(const char* name, Surface_005C07D0* surface, RectangleStruct* rect)

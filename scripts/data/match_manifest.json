@@ -72049,11 +72049,9 @@
   "addr": "0x5C0240",
   "sym": "??0VQMovieHandle@@QAE@PAUObj_005C01A0@@@Z",
   "len": "0x31",
-  "name": "VQMovieHandle::VQMovieHandle",
-  "status": "partial",
-  "pct": 87.5,
-  "best_pct": 87.5,
-  "best_at": "cf203011"
+  "name": "??0VQMovieHandle@@QAE@PAUObj_005C01A0@@@Z",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/movie_handle_class.cpp",
@@ -72289,11 +72287,9 @@
   "addr": "0x5C07D0",
   "sym": "?FUN_005C07D0@@YIPAVMovieHandle@@PBDPAUSurface_005C07D0@@PAURectangleStruct@@@Z",
   "len": "0x1a3",
-  "name": "FUN_005C07D0",
-  "status": "partial",
-  "pct": 98.6,
-  "best_pct": 98.6,
-  "best_at": "cf203011"
+  "name": "?FUN_005C07D0@@YIPAVMovieHandle@@PBDPAUSurface_005C07D0@@PAURectangleStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/movie_handle_class.cpp",
