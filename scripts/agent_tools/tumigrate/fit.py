@@ -189,7 +189,10 @@ def main():
             raise SystemExit('unexpected compile failure after apply: %s' % bad)
         # the merge renumbers the TU's _$E initialisers: follow them, in retail order, before comparing
         try:
-            renum = initorder.renumber(tree, res['dest'], objdir, a.base_objs, a.base_manifest)
+            renum = {}
+            # the destination and every split source that stays: both are recompiled, both renumber their _$E/_$S
+            for t_ in [res['dest']] + res['rewritten']:
+                renum.update(initorder.renumber(tree, t_, objdir, a.base_objs, a.base_manifest))
         except initorder.OrderError as e:
             revert(tree, res)
             raise SystemExit('initialiser order of %s differs from retail: %s' % (res['dest'], e))

@@ -304,6 +304,23 @@ class InitOrder(unittest.TestCase):
         want = {0x63F4F0: "a", 0x63F510: "b", 0x63F690: "c"}
         self.assertEqual(initorder.pair(rows, syms, want), {0x63F4F0: "_$E19", 0x63F510: "_$E22", 0x63F690: "_$E25"})
 
+    def test_renumber_rewrites_manifest_and_bindings_of_a_file(self):
+        tree = tempfile.mkdtemp(prefix="tumig_r_")
+        self.addCleanup(shutil.rmtree, tree, True)
+        mp = os.path.join(tree, "scripts/data/match_manifest.json")
+        write(mp, json.dumps([dict(tu="match/P.cpp", addr="0x63F4F0", sym="_$E2"),
+                              dict(tu="match/P.cpp", addr="0x63F510", sym="_$E5"),
+                              dict(tu="match/Q.cpp", addr="0x700000", sym="_$E2")], indent=1))
+        write(os.path.join(tree, "scripts/data/symbol_bindings.json"), json.dumps({"match/P.cpp::_$E2": "0x63F4F0"}, indent=1))
+        saved = initorder.object_inits
+        initorder.object_inits = lambda path: [(3, 0, "_$E7", "a"), (5, 0, "_$E9", "b")]
+        self.addCleanup(setattr, initorder, "object_inits", saved)
+        ch = initorder.renumber(tree, "match/P.cpp", tree)
+        self.assertEqual(ch, {0x63F4F0: ("_$E2", "_$E7"), 0x63F510: ("_$E5", "_$E9")})
+        man = json.load(open(mp))
+        self.assertEqual([r["sym"] for r in man], ["_$E7", "_$E9", "_$E2"])   # the other file's row is untouched
+        self.assertIn("match/P.cpp::_$E7", json.load(open(os.path.join(tree, "scripts/data/symbol_bindings.json"))))
+
     def test_check_xcu(self):
         a, b, c = ("_$E4", "A"), ("_$E7", "B"), ("_$E9", "C")
         self.assertTrue(initorder.check_xcu([a, b, c], [[a, b], [c]], [(0x10, "_$E4"), (0x20, "_$E9")]))
