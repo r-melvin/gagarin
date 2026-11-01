@@ -199,7 +199,7 @@ struct Map_0087F7E8
     // FUNCTION: GAMEMD 0x56BEC0 (decl; reloc) -- cell by value, then a value (RET 8).
     bool FUN_0056BEC0(CellStruct cell, int value);
     // FUNCTION: GAMEMD 0x56D100 (decl; reloc) -- path pre-check between two cells (RET 0x18).
-    bool FUN_0056D100(CellStruct* from, CellStruct* to, int a, int b, int c, int d);
+    bool FUN_0056D100(CellStruct* from, CellStruct* to, int zone, bool fromBridge, bool toBridge, bool checkEdge);
     // FUNCTION: GAMEMD 0x56D230 (decl; reloc) -- the same entry point taking the cell by pointer.
     int FUN_0056D230(const CellStruct* cell, int movementZone, bool isBridge);
     // FUNCTION: GAMEMD 0x56D3F0 (decl; reloc) -- one cell argument (RET 4).

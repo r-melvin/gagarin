@@ -218,6 +218,8 @@ public:
     bool FUN_00703CC0();
     // FUNCTION: GAMEMD 0x703E70 -- counts bridge tiles among three cells around this object's.
     int FUN_00703E70();
+    // FUNCTION: GAMEMD 0x704000 (decl; reloc)
+    int FUN_00704000();
     // FUNCTION: GAMEMD 0x704240 -- height-step probe toward facing step 3 (2, 1 or 0).
     int FUN_00704240();
     // FUNCTION: GAMEMD 0x70ED80 -- adds disguise-blink bits 2 / 4 to the argument by phase.

@@ -149309,5 +149309,41 @@
   "name": "?FUN_0060F320@@YGHPAXJ@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DAFC0",
+  "sym": "?vf_187@FootClass@@UAEHXZ",
+  "len": "0xdf",
+  "name": "FootClass::vf_187",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DCE80",
+  "sym": "?FUN_004DCE80@FootClass@@QAE_NPAUCellStruct@@@Z",
+  "len": "0x15a",
+  "name": "FootClass::FUN_004DCE80",
+  "status": "partial",
+  "pct": 98.2
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DD9F0",
+  "sym": "?FUN_004DD9F0@FootClass@@QAE_NPAUCellStruct@@FF@Z",
+  "len": "0x192",
+  "name": "FootClass::FUN_004DD9F0",
+  "status": "partial",
+  "pct": 82.3
+ },
+ {
+  "tu": "match/foot_class_tu086_methods.cpp",
+  "addr": "0x4DF4B0",
+  "sym": "?vf_308@FootClass@@UAE_NXZ",
+  "len": "0x57",
+  "name": "FootClass::vf_308",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

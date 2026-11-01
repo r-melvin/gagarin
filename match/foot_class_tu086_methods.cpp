@@ -15,14 +15,18 @@
 //   FUNCTION: GAMEMD 0x4D9E70  FootClass::vf_38 (__thiscall)
 //   FUNCTION: GAMEMD 0x4D9F70  FootClass::vf_104 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DA030  FootClass::FUN_004DA030 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DAFC0  FootClass::vf_187 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBA50  FootClass::FUN_004DBA50 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DBED0  FootClass::vf_245 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DCE80  FootClass::FUN_004DCE80 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DD9F0  FootClass::FUN_004DD9F0 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DDDE0  FootClass::vf_28 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE670  FootClass::FUN_004DE670 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE7B0  FootClass::vf_314 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DE940  FootClass::vf_315 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF320  FootClass::vf_306 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF3A0  FootClass::vf_307 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DF4B0  FootClass::vf_308 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DFA70  FootClass::vf_207 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DFB70  FootClass::vf_208 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DFCB0  FootClass::vf_210 (__thiscall)
@@ -53,6 +57,8 @@
 #include "cell_step_tables.h"
 #include "foot_class_nav_list_methods.h"
 #include "_layout/player_ptr_00a83d4c.h"
+
+#include "_layout/session_class.h"
 
 // GLOBAL: GAMEMD 0x8B3D88 -- the "no cell" sentinel.
 extern CellStruct DAT_008B3D88;
@@ -409,6 +415,35 @@ void FootClass::FUN_004DA030()
     }
 }
 
+// FUNCTION: GAMEMD 0x4DAFC0
+// Slot 187. The base slot's value plus the largest of the type's four Z fudge terms, each scaled by its
+// measure of the cell around the object (bridge only when that cell flag is set), plus the locomotor's Z adjust.
+int FootClass::vf_187()
+{
+    int adjust = 0;
+    if (Locomotor != 0) {
+        adjust = (*(ILocomotionPtr*)&Locomotor)->ZAdjust();
+    }
+    int column = vf_33()->ZFudgeColumn * FUN_00703E70();
+    int tunnel = vf_33()->ZFudgeTunnel * FUN_00704000();
+    int cliff = vf_33()->ZFudgeCliff * FUN_00704240();
+    int bridge = 0;
+    if (FUN_00703B10()) {
+        bridge = vf_33()->ZFudgeBridge;
+    }
+    int most = column;
+    if (!(most > tunnel)) {
+        most = tunnel;
+    }
+    if (!(most > cliff)) {
+        most = cliff;
+    }
+    if (!(most > bridge)) {
+        most = bridge;
+    }
+    return TechnoClass::vf_187() + most + adjust;
+}
+
 // FUNCTION: GAMEMD 0x4DBA50
 // Slot 177 (the retail table entry). The cell under the source's slot-19 coordinate for this object,
 // reduced to its centre point at height 0, goes to slot 179.
@@ -445,6 +480,77 @@ bool FootClass::vf_245(HouseClass* house, bool a2)
     }
     if (vf_33()->SensorsSight != 0) {
         vf_314(vf_110());
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x4DCE80
+// True when the cell is inside the usable map, not shrouded (outside a campaign an owned object only looks),
+// reachable from the cell holding this object, and of land type 5 with this object allowed to enter it.
+bool FootClass::FUN_004DCE80(CellStruct* cell)
+{
+    if (DAT_0087F7E8.FUN_00578460(cell, 1)) {
+        if (Session_00A8B238.GameMode == 0 && IsOwnedByCurrentPlayer) {
+            CoordStruct where;
+            where.X = cell->X * 256 + 128;
+            where.Y = cell->Y * 256 + 128;
+            where.Z = 0;
+            int ground = DAT_0087F7E8.FUN_00578080(&where);
+            CoordStruct shroud;
+            shroud.X = cell->X * 256 + 128;
+            shroud.Y = cell->Y * 256 + 128;
+            shroud.Z = ground;
+            if (DAT_0087F7E8.IsLocationShrouded(shroud)) {
+                return false;
+            }
+        }
+        CellStruct here = CoordToCell(vf_19(0));
+        if (DAT_0087F7E8.FUN_0056D100(&here, cell, vf_33()->MovementZone, vf_47(0), 0, 0)) {
+            CellClass* target = DAT_0087F7E8.FUN_005657A0(cell);
+            if (target->LandType == 5) {
+                if (vf_107(target, -1, -1, 0, true) == 0) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x4DD9F0
+// Steps the cell by (dx, dy) when the step stays inside the usable map; true when the stepped cell is
+// visible (outside a campaign an owned object only looks), reachable from the cell holding this object, and
+// enterable ground of land type 0xB (weed) with overlay data of at least 0x30. The cell takes the step as soon
+// as it is usable.
+bool FootClass::FUN_004DD9F0(CellStruct* cell, short dx, short dy)
+{
+    CellStruct delta;
+    delta.X = dx;
+    delta.Y = dy;
+    CellStruct stepped = *cell + delta;
+    if (DAT_0087F7E8.FUN_00578460(&stepped, 1)) {
+        *cell = stepped;
+        if (Session_00A8B238.GameMode == 0 && IsOwnedByCurrentPlayer) {
+            CoordStruct where;
+            where.X = cell->X * 256 + 128;
+            where.Y = cell->Y * 256 + 128;
+            where.Z = 0;
+            int ground = DAT_0087F7E8.FUN_00578080(&where);
+            CoordStruct shroud;
+            shroud.X = cell->X * 256 + 128;
+            shroud.Y = cell->Y * 256 + 128;
+            shroud.Z = ground;
+            if (DAT_0087F7E8.IsLocationShrouded(shroud)) {
+                return false;
+            }
+        }
+        CellStruct here = CoordToCell(vf_19(0));
+        if (DAT_0087F7E8.FUN_0056D100(&here, cell, vf_33()->MovementZone, vf_47(0), 0, 0)) {
+            CellClass* target = DAT_0087F7E8.FUN_005657A0(cell);
+            if (vf_107(target, -1, -1, 0, true) == 0 && target->LandType == 0xB && target->OverlayData >= 0x30) {
+                return true;
+            }
+        }
     }
     return false;
 }
@@ -623,6 +729,27 @@ void FootClass::vf_307()
             Target = (AbstractClass*)MegaTarget;
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x4DF4B0
+// Slot 308. For the attack-move mega mission (0x1D): with the attack-move target flag set, or a slot-97 value
+// of 5, drops the flag and runs slot 306; otherwise runs slot 298 and answers false.
+bool FootClass::vf_308()
+{
+    bool result = false;
+    if (MegaMission == 0x1D) {
+        result = HaveAttackMoveTarget;
+        if (result) {
+            HaveAttackMoveTarget = 0;
+            result = vf_306();
+        } else if (vf_97() == 5 || vf_97() == 5) {
+            result = vf_306();
+        } else {
+            vf_298();
+            result = false;
+        }
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x4DFA70

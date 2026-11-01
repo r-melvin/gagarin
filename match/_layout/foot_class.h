@@ -109,6 +109,10 @@ public:
     void ClearNavigationList();
     // GAMEMD 0x4DF0D0: zeroes unknown_5A0 and Destination.
     void AbortMotion();
+    // GAMEMD 0x4DCE80 (RET 4): whether `cell` is usable, visible, reachable and of land type 5 and enterable.
+    bool FUN_004DCE80(CellStruct* cell);
+    // GAMEMD 0x4DD9F0 (RET 0xC): steps `cell` by (dx, dy) and tests the stepped cell for a weed-covered, enterable one.
+    bool FUN_004DD9F0(CellStruct* cell, short dx, short dy);
     // GAMEMD 0x4DD890: a weed cell within `radius`, or the 0x8B3D88 sentinel; result through a hidden pointer.
     Cell FindWeedCell(int radius);
     // GAMEMD 0x4DDB90 (RET 4)
@@ -253,6 +257,8 @@ public:
     virtual bool vf_211();                                         // 211 0x4DFE00
     virtual bool vf_306();                                         // 306 0x4DF320
     virtual void vf_307();                                         // 307 0x4DF3A0
+    virtual bool vf_308();                                         // 308 0x4DF4B0
+    virtual int vf_187();                                          // 187 0x4DAFC0
     // GAMEMD 0x4D97A0 (RET 4): how strongly this object wants to attack `target`; 0 when it should not.
     int FUN_004D97A0(AbstractClass* target);
     // GAMEMD 0x4DBA50 (slot 177; RET 4): hands the centre of the lepton cell at `from`'s slot-19 point to slot 179.
