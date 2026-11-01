@@ -6,7 +6,7 @@
 //   overrides that make it a concrete type. Functions are in ascending retail address order.
 
 #include "../FUNCTION.H"
-#include "../combat/weapon_type_class.h"
+#include "../weapon_type_class.h"
 
 // GLOBAL: GAMEMD 0xB0C110 -- the swizzle manager.
 extern SwizzleManagerClass DAT_00B0C110;

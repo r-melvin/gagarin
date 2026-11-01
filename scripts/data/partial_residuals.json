@@ -365,7 +365,7 @@
  {
   "addr": "0x424B50",
   "name": "AnimClass::SetOwnerObject",
-  "tu": "match/combat/anim_class_owner_methods.cpp",
+  "tu": "match/anim_class_owner_methods.cpp",
   "sym": "?SetOwnerObject@Anim_00424B50@@QAEXPAUOwner_00424B50@@@Z",
   "len": "0x13B",
   "manifest_pct": 83.7,
@@ -815,7 +815,7 @@
  {
   "addr": "0x46ADE0",
   "name": "FUN_0046ADE0",
-  "tu": "match/combat/rad_site_at_cell_0046ade0.cpp",
+  "tu": "match/rad_site_at_cell_0046ade0.cpp",
   "sym": "?FUN_0046ADE0@@YGXUCellStruct@@HH@Z",
   "len": "0x81",
   "manifest_pct": 91.5,
@@ -836,7 +836,7 @@
  {
   "addr": "0x4717D0",
   "name": "CaptureManagerClass::CaptureManagerClass",
-  "tu": "match/combat/capture_manager_release_methods.cpp",
+  "tu": "match/capture_manager_release_methods.cpp",
   "sym": "??0CaptureManagerClass@@QAE@PAXH_N@Z",
   "len": "0xBD",
   "manifest_pct": 82.4,
@@ -887,7 +887,7 @@
  {
   "addr": "0x473750",
   "name": "Snapshot_00473750::Ctor",
-  "tu": "match/combat/target_snapshot_ctor_methods.cpp",
+  "tu": "match/target_snapshot_ctor_methods.cpp",
   "sym": "?Ctor@Snapshot_00473750@@QAEPAU1@PAUOwner_00473750@@@Z",
   "len": "0x99",
   "manifest_pct": 83.0,
@@ -1819,7 +1819,7 @@
  {
   "addr": "0x51F190",
   "name": "InfantryClass::vf_81",
-  "tu": "match/combat/Infantry.cpp",
+  "tu": "match/Infantry.cpp",
   "sym": "?vf_81@InfantryClass@@UAE_NHPAVObjectClass@@H@Z",
   "len": "0x6a",
   "manifest_pct": 95.6,
@@ -1841,7 +1841,7 @@
  {
   "addr": "0x51F250",
   "name": "InfantryClass::vf_80",
-  "tu": "match/combat/Infantry.cpp",
+  "tu": "match/Infantry.cpp",
   "sym": "?vf_80@InfantryClass@@UAE_NHPAUCellStruct@@HH@Z",
   "len": "0x6a",
   "manifest_pct": 87.5,
@@ -3985,7 +3985,7 @@
  {
   "addr": "0x6AF360",
   "name": "SlaveManagerClass::SlaveManagerClass()",
-  "tu": "match/combat/slave_manager_r19_5.cpp",
+  "tu": "match/slave_manager_r19_5.cpp",
   "sym": "??0SlaveManagerClass@@QAE@XZ",
   "len": "0xD2",
   "manifest_pct": 91.5,
@@ -4007,7 +4007,7 @@
  {
   "addr": "0x6B0CC0",
   "name": "SlaveManagerClass::SetStateIdle1",
-  "tu": "match/combat/slave_manager_r19_5.cpp",
+  "tu": "match/slave_manager_r19_5.cpp",
   "sym": "?SetStateIdle1@SlaveManagerClass@@QAEXXZ",
   "len": "0x41",
   "manifest_pct": 84.6,
@@ -4028,7 +4028,7 @@
  {
   "addr": "0x6B0D10",
   "name": "SlaveManagerClass::SetStateIdle4",
-  "tu": "match/combat/slave_manager_r19_5.cpp",
+  "tu": "match/slave_manager_r19_5.cpp",
   "sym": "?SetStateIdle4@SlaveManagerClass@@QAEXXZ",
   "len": "0x41",
   "manifest_pct": 84.6,
@@ -4049,7 +4049,7 @@
  {
   "addr": "0x6B0D60",
   "name": "Deploy2",
-  "tu": "match/combat/slave_manager_class_more_methods.cpp",
+  "tu": "match/slave_manager_class_more_methods.cpp",
   "sym": "?Deploy2@SlaveManagerView_006AF580@@QAEXXZ",
   "len": "0x41",
   "manifest_pct": 84.6,
@@ -4162,7 +4162,7 @@
  {
   "addr": "0x6CAEC0",
   "name": "SuperClass::SuperClass()",
-  "tu": "match/combat/Super.cpp",
+  "tu": "match/Super.cpp",
   "sym": "??0SuperClass@@QAE@XZ",
   "len": "0xC7",
   "manifest_pct": 82.5,
@@ -4560,7 +4560,7 @@
  {
   "addr": "0x71ABC0",
   "name": "TemporalClass::LetGo",
-  "tu": "match/combat/tu241_temporal_class.cpp",
+  "tu": "match/tu241_temporal_class.cpp",
   "sym": "?LetGo@Temporal_0071ABC0@@QAEXXZ",
   "len": "0xea",
   "manifest_pct": 85.5,
@@ -4582,7 +4582,7 @@
  {
   "addr": "0x71AF20",
   "name": "TemporalClass::FUN_0071AF20",
-  "tu": "match/combat/temporal_class.cpp",
+  "tu": "match/temporal_class.cpp",
   "sym": "?FUN_0071AF20@TemporalClass@@QAEXPAUTemporalTechnoView@@@Z",
   "len": "0x263",
   "manifest_pct": 99.0,

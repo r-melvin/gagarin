@@ -15,7 +15,7 @@
 //   `RET 0x8` fixes a second (unused) one.  Names cross-checked against YRpp
 //   (every offset reconfirmed above). The
 //   SuperClass / CDTimerClass member run agrees with
-//   match/combat/super_class_charge_methods.h (not edited; re-derived here so
+//   match/super_class_charge_methods.h (not edited; re-derived here so
 //   the TU stands alone).
 #ifndef GG_MATCH_AI_AI_TRIGGER_CHARGED_METHODS_H
 #define GG_MATCH_AI_AI_TRIGGER_CHARGED_METHODS_H

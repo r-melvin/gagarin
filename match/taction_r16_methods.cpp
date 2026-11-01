@@ -13,7 +13,7 @@
 #include "_layout/cell.h"
 #include "_layout/coord_struct.h"
 #include "team_type_class_methods.h"
-#include "combat/particles/system_class.h"
+#include "system_class.h"
 
 class HouseClass;
 class ObjectClass;

@@ -11,7 +11,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/cell.h"
 #include "../_layout/geometry2d.h"
-#include "../combat/ion_blast_draw_methods.h"
+#include "../ion_blast_draw_methods.h"
 #include "header_init_shapes.h"
 
 // GLOBAL: GAMEMD 0x87F914 / 0x87F918 -- map width / height in cells.

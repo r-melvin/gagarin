@@ -19,7 +19,7 @@
 // NOTE: 0x4F4C20 and 0x4F4CA0, originally drafted alongside these, were
 // dropped from this file — they collide with in-flight work already staked
 // out (as "(decl; reloc)" forward declarations) in
-// match/combat/scratch_buffer_vector_methods.h (ScratchEntry's out-of-line
+// match/scratch_buffer_vector_methods.h (ScratchEntry's out-of-line
 // default ctor) and match/renderer/color_scheme_iterator_methods.h
 // (Entry_00626690::IsBlank), both of which model a deeper surrounding class
 // than the bare-pointer shape used here. Left for whoever owns that cluster.

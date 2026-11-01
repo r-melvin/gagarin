@@ -7,7 +7,7 @@
 #include "../_layout/obj_004a1d30.h"
 #include "../_layout/house_class.h"
 #include "../_layout/rules_class.h"
-#include "../combat/weapon_type_class.h"
+#include "../weapon_type_class.h"
 #include <new.h>
 #include <objidl.h>
 #include "../_layout/ini_class.h"

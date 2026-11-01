@@ -85,7 +85,7 @@ GG_STATIC_ASSERT(offsetof(GgRadarEventDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgRadarEventDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgRadarEventDynamicVector, CapacityIncrement) == 0x14);
 
-#include "../combat/random_straw.h"
+#include "../random_straw.h"
 
 // ---------------------------------------------------------------------------
 // The shapes retail expands at every use site.

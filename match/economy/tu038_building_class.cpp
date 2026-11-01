@@ -121,7 +121,7 @@
 //   primary BuildingClass table at 0x7E3EBC; every field offset below is the
 //   one the instruction at the cited retail address uses.
 
-#include "../combat/building_class_fog_methods.h"
+#include "../building_class_fog_methods.h"
 
 // Is every foundation cell of this building fogged? Walks the type's
 // foundation list (terminated by a {0x7FFF,0x7FFF} entry), offsets each entry
@@ -173,7 +173,7 @@ static inline bool AllFogged_00457A10(CellStruct const* fd, CellStruct base,
     return true;
 }
 
-#include "../combat/building_class_kill_occupants_methods.h"
+#include "../building_class_kill_occupants_methods.h"
 
 #include "../_layout/building_class.h"
 #include "../_layout/building_type_class_layout.h"
@@ -182,7 +182,7 @@ static inline bool AllFogged_00457A10(CellStruct const* fd, CellStruct base,
 #include "../_layout/anim_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/cell.h"
-#include "../combat/airstrike_class_methods.h"
+#include "../airstrike_class_methods.h"
 #include "../core/rules_class.h"
 #include "../core/frame_counter.h"
 #include "../map/map_class_methods.h"
@@ -227,7 +227,7 @@ static int TimeLeft(const CDTimerClass& timer)
     return left;
 }
 
-#include "../combat/building_coord_00453840.h"
+#include "../building_coord_00453840.h"
 
 #include "../core/small_misc36_methods.h"
 
@@ -397,7 +397,7 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Reestablish* >) == 0x18);
 #include "../_layout/building_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/house_type_class.h"
-#include "../combat/weapon_type_class.h"
+#include "../weapon_type_class.h"
 #include "../_layout/factory_class.h"
 #include "../_layout/rules_class.h"
 #include "../_layout/infantry_class.h"
@@ -467,25 +467,25 @@ void __cdecl FUN_00456970();
 
 #include "../unload_all_methods.h"
 
-#include "../combat/building_class_fire_laser_methods.h"
+#include "../building_class_fire_laser_methods.h"
 
-#include "../combat/building_class_garrison_owner_methods.h"
+#include "../building_class_garrison_owner_methods.h"
 
-#include "../combat/building_class_go_online_methods.h"
+#include "../building_class_go_online_methods.h"
 
-#include "../combat/building_class_impassable_rows_methods.h"
+#include "../building_class_impassable_rows_methods.h"
 
-#include "../combat/building_class_occupy_methods.h"
+#include "../building_class_occupy_methods.h"
 
-#include "../combat/building_class_offline_methods.h"
+#include "../building_class_offline_methods.h"
 
-#include "../combat/building_class_radial_methods.h"
+#include "../building_class_radial_methods.h"
 
-#include "../combat/building_class_traversable_methods.h"
+#include "../building_class_traversable_methods.h"
 
-#include "../combat/building_class_unload_bunker_methods.h"
+#include "../building_class_unload_bunker_methods.h"
 
-#include "../combat/building_class_voxel_barrel_methods.h"
+#include "../building_class_voxel_barrel_methods.h"
 
 // GLOBAL: GAMEMD 0x7E4408
 // One 32nd of a turn, negated: the double at 0x7E4408.
@@ -1494,11 +1494,11 @@ extern char DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0x7F4890 -- 32-entry table of animation frames per facing step.
 extern int DAT_007F4890[32];
 
-#include "../combat/building_class_clear_bunker_methods.h"
+#include "../building_class_clear_bunker_methods.h"
 
-#include "../combat/building_class_disable_methods.h"
+#include "../building_class_disable_methods.h"
 
-#include "../combat/building_class_occupant_anims_methods.h"
+#include "../building_class_occupant_anims_methods.h"
 
 // Restart one animation slot with the artwork the building's current state
 // calls for: the damaged name once health has fallen to the yellow threshold,
@@ -2922,7 +2922,7 @@ refuse:
 #include "../_layout/anim_class.h"
 #include "../_layout/warhead_type_class.h"
 #include "../_layout/capture_manager_class.h"
-#include "../combat/particles/system_class.h"
+#include "../system_class.h"
 #include "../core/randomizer.h"
 #include "house_building/building_a2_fold.h"
 

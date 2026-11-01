@@ -2846,7 +2846,7 @@ Three existing matched methods—`CanCapture` (`0x471C90`), `FreeUnit`
 of separate receiver definitions. `FreeUnit` also uses the shared
 [`ControlNode`](match/_layout/control_node.h) layout, removing its duplicate
 record view. The receiver now has one additional exact body,
-[`FUN_004729C0`](match/combat/capture_manager_release_methods.cpp), whose
+[`FUN_004729C0`](match/capture_manager_release_methods.cpp), whose
 0xB6-byte entry exhibits deleting-destructor behavior. Its `FUN_` name is
 retained; this does not claim recovery of the original destructor declaration
 or the full COM hierarchy. The registry dispatch view and its used +0x10 slot
@@ -4204,7 +4204,7 @@ and 4,255 unique unresolved symbols (`LNK1120`), down from 4,283. This
 diagnostic excludes default libraries and does not establish engine link closure. The shared
 [RulesClass layout and declaration](match/core/rules_class.h) use the observed
 member offsets at `0x54C` and `0x1804`, and one
-[`RulesInstance` definition](match/combat/rad_site_class_methods.cpp) serves
+[`RulesInstance` definition](match/rad_site_class_methods.cpp) serves
 both consumers. The `CurrentFrame` audit found one 4-byte BSS definition and
 resolved its former aliases in the link diagnostic. `GetFloorHeight` at
 `0x47B3A0` remains an unmatched native call target.
@@ -4233,9 +4233,9 @@ unresolved symbols (`LNK1120`). This diagnostic excludes default libraries and
 does not constitute an engine link.
 
 The two prior duplicate-definition conflicts were addressed by sharing the
-[RadSiteClass declarations](match/combat/rad_site_class_methods.h) and keeping
+[RadSiteClass declarations](match/rad_site_class_methods.h) and keeping
 one `RulesInstance` definition in the shared
-[implementation](match/combat/rad_site_class_methods.cpp). The [SidebarClass
+[implementation](match/rad_site_class_methods.cpp). The [SidebarClass
 declarations](match/ui/sidebar_class_methods.h) are also shared; the distinct
 classifier at `0x6ABC60` remains separate from `GetObjectTabIdx` at `0x6ABCD0`.
 The latest diagnostic reports zero `LNK2005` conflicts after these changes.

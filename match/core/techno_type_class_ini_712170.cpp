@@ -18,7 +18,7 @@
 #include "../_layout/techno_type_class.h"
 #include "../_layout/rules_class.h"
 #include "../_layout/voxel_resource_data.h"
-#include "../combat/weapon_type_class.h"
+#include "../weapon_type_class.h"
 #include "../movement/waypoint_queue_accessors.h"
 #include "rules_class_ini_support.h"
 #include "../platform/ccini_class_type_list_methods.h"

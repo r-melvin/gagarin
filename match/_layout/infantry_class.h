@@ -83,7 +83,7 @@ public:
     virtual bool vf_128();                                         // 128 0x521B60
     virtual void vf_266();                                         // 266 0x51F330
 
-    // Non-virtual members (bodies in match/combat/Infantry.cpp).
+    // Non-virtual members (bodies in match/Infantry.cpp).
     // FUNCTION: GAMEMD 0x522510 -- true for the four SequenceAnim values 0x1B-0x1E.
     int FUN_00522510();
     // FUNCTION: GAMEMD 0x520260 -- off-map while in the playfield: flag the team, run slots 232 and 62.

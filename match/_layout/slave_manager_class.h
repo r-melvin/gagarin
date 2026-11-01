@@ -63,7 +63,7 @@ public:
     int                State;           // +0x5C SlaveManagerStatus
     int                LastScanFrame;   // +0x60
 
-    // Members recovered in r19_5 (match/combat/slave_manager_r19_5.cpp).
+    // Members recovered in r19_5 (match/slave_manager_r19_5.cpp).
     // FUNCTION: GAMEMD 0x6AF6C0 (decl; reloc)
     void FUN_006AF6C0();
     // FUNCTION: GAMEMD 0x6AFD60 (decl; reloc)

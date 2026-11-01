@@ -172,7 +172,7 @@ CellClass InvalidCell;
 #include "../core/lcw_pipe.h"
 #include "../_layout/house_class.h"
 #include "../_layout/house_type_class.h"
-#include "../combat/veinhole_monster_deleteall_methods.h"
+#include "../veinhole_monster_deleteall_methods.h"
 #include "../_layout/tiberium_class.h"
 #include "map_class_location_shrouded_methods.h"
 #include "crate_class.h"

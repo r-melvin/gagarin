@@ -166,10 +166,10 @@ extern const CLSID DAT_007E9850;
 // GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
 extern const CLSID DAT_007E9830;
 
-#include "../../combat/airstrike_class_methods.h"
+#include "../../airstrike_class_methods.h"
 #include "../../taction_class_methods.h"
 #include "../../tevent_class_methods.h"
-#include "../../combat/super_weapon_type_class_methods.h"
+#include "../../super_weapon_type_class_methods.h"
 
 #include "../../core/trivial_tu229_methods.h"
 
@@ -1350,8 +1350,8 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 }
 
 
-#include "../../combat/airstrike_class_methods.h"
-#include "../../combat/super_weapon_type_class_methods.h"
+#include "../../airstrike_class_methods.h"
+#include "../../super_weapon_type_class_methods.h"
 #include "../../renderer/color_scheme_find_methods.h"
 #include "../../core/scenario_class_methods.h"
 #include "../../network/beacon_manager_class.h"

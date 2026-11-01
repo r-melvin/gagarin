@@ -9,7 +9,7 @@
 #include "../_layout/aircraft_type_class.h"
 #include "../_layout/building_class.h"
 #include "../_layout/techno_type_class.h"
-#include "../combat/weapon_type_class.h"
+#include "../weapon_type_class.h"
 
 // FUNCTION: GAMEMD 0x0041B760
 //

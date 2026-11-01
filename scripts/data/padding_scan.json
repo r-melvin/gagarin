@@ -7479,7 +7479,7 @@
   },
   {
    "addr": "0x6B0A20",
-   "tu": "match/combat/slave_manager_class_methods.cpp",
+   "tu": "match/slave_manager_class_methods.cpp",
    "name": "SlaveManagerClass::LostSlave",
    "reason": "no-preceding-CC-or-90"
   },
@@ -8211,7 +8211,7 @@
   },
   {
    "addr": "0x74D450",
-   "tu": "match/combat/veinhole_monster_class_methods.cpp",
+   "tu": "match/veinhole_monster_class_methods.cpp",
    "name": "LoadVeinholeArt",
    "reason": "no-preceding-CC-or-90"
   },

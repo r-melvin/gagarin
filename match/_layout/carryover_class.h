@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   RTTI: TypeDescriptor 0x0081B7A8 `.?AVCarryoverClass@@`; class hierarchy descriptor 0x007FCBE8.
 //   Bases in RTTI (declaration) order: LinkClass +0x0.
-//   vtable 0x7E4C04 (10 slots) (VTABLE marker already carried by match/combat/target_snapshot_ctor_methods.h)
+//   vtable 0x7E4C04 (10 slots) (VTABLE marker already carried by match/target_snapshot_ctor_methods.h)
 //   Virtual slots are named vf_<slot>; the binary attests no names. Argument counts come from each target's RET n;
 //   return types are not recovered (void placeholder). Member offsets come from constructor stores only.
 #ifndef GG_MATCH_LAYOUT_CARRYOVER_CLASS_H

@@ -25,7 +25,7 @@
 #include "../_layout/vector_class.h"
 #include "../_layout/anim_type_class.h"
 #include "../_layout/warhead_type_class.h"
-#include "../combat/particles/particle_system_type_class.h"
+#include "../particle_system_type_class.h"
 
 // The constructors are declared `throw()`. Retail's allocate path has no SEH
 // frame at all, and `new T(id)` with a potentially-throwing constructor makes

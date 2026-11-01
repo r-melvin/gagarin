@@ -20,7 +20,7 @@
 //       LEA EAX,[ESI+4]; PUSH EAX; CALL [ECX+0xC]` — the COM RTTI interface
 //       at +4, slot 3, `this` pushed (__stdcall); object slots `[vt+0x80]`
 //       (bool), `[vt+0x150]` (void) and `[vt+0x1B8]` (CellStruct by hidden
-//       pointer, already confirmed in match/combat/building_class_fog_methods.h);
+//       pointer, already confirmed in match/building_class_fog_methods.h);
 //       `MOV AL,byte ptr [ESI+0x6ED]` compared with 0xF.
 //   0x5657A0 MapClass::GetCellAt, 0x457A10 BuildingClass::CheckFog and
 //   0x457AA0 are declared only. Names cross-checked against YRpp.

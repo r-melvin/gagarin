@@ -1116,7 +1116,7 @@
      "n_insns": 1,
      "status": "matched",
      "pct": 100,
-     "tu": "match/combat/scratch_buffer_vector_methods.cpp",
+     "tu": "match/scratch_buffer_vector_methods.cpp",
      "sym": "??8ScratchEntry@@QBI_NABU0@@Z",
      "name": "ScratchEntry::operator=="
     },
@@ -2879,7 +2879,7 @@
      "n_insns": 20,
      "status": "matched",
      "pct": 100,
-     "tu": "match/combat/capture_manager_release_methods.cpp",
+     "tu": "match/capture_manager_release_methods.cpp",
      "sym": "??0CaptureManagerClass@@QAE@ABUAbstractNoInit@@@Z",
      "name": "CaptureManagerClass::CaptureManagerClass (no-init)"
     },
@@ -3630,7 +3630,7 @@
      "n_insns": 1,
      "status": "matched",
      "pct": 100,
-     "tu": "match/combat/scratch_buffer_vector_methods.cpp",
+     "tu": "match/scratch_buffer_vector_methods.cpp",
      "sym": "??8ScratchEntry@@QBI_NABU0@@Z",
      "name": "ScratchEntry::operator=="
     },

@@ -39,7 +39,7 @@
 #include "frame_counter.h"
 #include "../_layout/theme_class.h"
 #include "../ui/tooltip_manager_shared.h"
-#include "../combat/evade_class_do_methods.h"
+#include "../evade_class_do_methods.h"
 #include "spin_wait_methods.h"
 #include "../network/transport/conn_types.h"
 #include "../vox_class_methods.h"
@@ -57,7 +57,7 @@
 #include "../_layout/layer_class.h"
 #include "../_layout/tag_type_class.h"
 #include "../_layout/kamikaze_class.h"
-#include "../combat/particles/system_class.h"
+#include "../system_class.h"
 #include "small_misc35_methods.h"
 #include "../_layout/tag_class.h"
 #include "../_layout/trigger_type_class.h"
@@ -70,7 +70,7 @@
 #include "trivial_tu207_methods.h"
 #include "../ui/game_options_class_methods.h"
 #include <math.h>
-#include "../combat/particles/particle_common_types.h"
+#include "../particle_common_types.h"
 
 #include "../_layout/load_progress_mgr.h"
 #include "../_layout/dialog_005d3490.h"

@@ -11,7 +11,7 @@
 // ECX), one shared `return 0` tail reached from three places.
 //
 // This is the same shape as the already-matched WeaponTypeClass::FindOrAllocate
-// at 0x772FA0 (match/combat/weapon_type_class.cpp); that body is lifted here
+// at 0x772FA0 (match/weapon_type_class.cpp); that body is lifted here
 // unchanged and parameterised. The per-instance variation is exactly four
 // things: the global DynamicVectorClass holding the type array, the class's
 // sizeof (the `PUSH imm32` before operator new), the constructor address, and

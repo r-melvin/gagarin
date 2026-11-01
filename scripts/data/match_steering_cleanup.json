@@ -79,7 +79,7 @@
   },
   {
    "addr": "0x6B0C80",
-   "tu": "match/combat/slave_manager_class_methods.cpp",
+   "tu": "match/slave_manager_class_methods.cpp",
    "removed": "volatile header stores used to pin store order",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -89,7 +89,7 @@
   },
   {
    "addr": "0x6B0D60",
-   "tu": "match/combat/slave_manager_class_more_methods.cpp",
+   "tu": "match/slave_manager_class_more_methods.cpp",
    "removed": "volatile header stores used to pin store order",
    "previous_status": "matched",
    "previous_pct": 100.0,
@@ -413,7 +413,7 @@
   },
   {
    "addr": "0x6CB7B0",
-   "tu": "match/combat/Super.cpp",
+   "tu": "match/Super.cpp",
    "removed": "vector pointer and this aliases",
    "previous_status": "matched",
    "previous_pct": 100,

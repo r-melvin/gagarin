@@ -31,7 +31,7 @@
 #include "../core/rules_class.h"
 #include "../core/type_class_findoralloc_methods.h"
 #include "../core/find_by_name_methods.h"
-#include "../combat/weapon_type_class.h"
+#include "../weapon_type_class.h"
 #include "../map/map_class_traversable_methods.h"
 #include "../map/map_class_random_coords_methods.h"
 

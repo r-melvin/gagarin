@@ -34,7 +34,7 @@
 #include "../_layout/tunnel_locomotion_class.h"
 #include "../_layout/unit_type_class.h"
 #include "../_layout/voxel_anim_class.h"
-#include "../combat/weapon_type_class.h"
+#include "../weapon_type_class.h"
 #include "../movement/walk_locomotion_class.h"
 #include "../_layout/ai_trigger_type_class.h"
 #include "../_layout/alpha_shape_class.h"

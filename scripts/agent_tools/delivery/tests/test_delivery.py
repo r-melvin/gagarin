@@ -91,7 +91,7 @@ class TreeFacts(unittest.TestCase):
     def test_windows_and_canonical(self):
         t = tree()
         self.assertGreater(len(t.tu_windows()), 60)
-        self.assertEqual(t.tu_for_addr(0x6F4A40), "match/combat/Techno.cpp")
+        self.assertEqual(t.tu_for_addr(0x6F4A40), "match/Techno.cpp")
         self.assertIn("HouseClass", t.canonical_classes())
         self.assertIn("match/_layout/house_class.h", t.canonical_classes()["HouseClass"])
         self.assertIn("AGENTS.md", t.paths)
@@ -167,7 +167,7 @@ class LintRules(unittest.TestCase):
         rules = {x["rule"] for x in f}
         self.assertEqual(rules, {"migrated", "order", "provenance"})
         mig = next(x for x in f if x["rule"] == "migrated")
-        self.assertEqual(mig["dest"], "match/combat/Techno.cpp")
+        self.assertEqual(mig["dest"], "match/Techno.cpp")
 
     def test_delta_rules(self):
         src = HEADER + "// FUNCTION: GAMEMD 0x401000\nvoid a() {}\n// FUNCTION: GAMEMD 0x6F4A40\nvoid q() {}\n"
@@ -401,7 +401,7 @@ class Toolfix(unittest.TestCase):
         file is judged against the narrowed window; without the narrowing the same rows are flagged."""
         import difflib
         t = tree()
-        path = "match/combat/Techno.cpp"
+        path = "match/Techno.cpp"
         old = t.text(path)
         self.assertIn("(0x6f28a0-0x7108df)", old)
         new = old.replace("(0x6f28a0-0x7108df)", "(0x6f28a0-0x6f4000)", 1)
@@ -425,7 +425,7 @@ class Toolfix(unittest.TestCase):
         window lets a new file's rows at 0x6F4A40 stay in their own file; the stale window would merge them."""
         import difflib
         t = tree()
-        path = "match/combat/Techno.cpp"
+        path = "match/Techno.cpp"
         old = t.text(path)
         new = old.replace("(0x6f28a0-0x7108df)", "(0x6f28a0-0x6f4000)", 1)
         diff = "".join(difflib.unified_diff(old.splitlines(True), new.splitlines(True), "a/" + path, "b/" + path))
