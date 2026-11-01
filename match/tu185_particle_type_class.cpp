@@ -98,8 +98,6 @@
 #include "particle_type_class.h"
 #include "shared_constants_globals.h"
 
-extern const char* const ParticleBehavesLikeNames[5];
-
 // GLOBAL: GAMEMD 0x7E9710 - CLSID of ParticleTypeClass (16 bytes read from the image).
 extern "C" const CLSID CLSID_ParticleType =
     { 0x703E044B, 0x0FB1, 0x11D2, { 0x81, 0x72, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5 } };

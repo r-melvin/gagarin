@@ -1039,7 +1039,6 @@ void TechnoClass::vf_277(Point2D* where, RectangleStruct* clip)
 extern const double DAT_007E3808;
 // GLOBAL: GAMEMD 0x7E1718 -- 1.0
 extern const double DAT_007E1718;
-extern const double GG_ZERO;
 #include "_layout/session_class.h"
 
 // Unclaimed (below partial bar), GAMEMD 0x70B1D0
