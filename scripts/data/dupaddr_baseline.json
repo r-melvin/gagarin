@@ -1,0 +1,2831 @@
+{
+ "version": 1,
+ "base": "a57bd9fd",
+ "note": "legacy addresses with two or more strong definitions; the dupaddr gate fails only on addresses or TUs not listed here",
+ "addresses": {
+  "0x00477740": [
+   {
+    "tu": "match/file_pipe_methods.cpp",
+    "name": "FUN_00477740"
+   },
+   {
+    "tu": "match/pipe_class_methods.cpp",
+    "name": "FUN_00477740"
+   }
+  ],
+  "0x00631D10": [
+   {
+    "tu": "match/buffer_pipe_straw_methods.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/file_pipe_methods.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/hash_cache_straw_methods.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/lazy_sink_forward_methods.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/lcw_pipe.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/lzo_pipe_put.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/pipe_class_methods.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/pk_pipe_straw_io_methods.cpp",
+    "name": "FUN_00631D10"
+   },
+   {
+    "tu": "match/sha_pipe_methods.cpp",
+    "name": "FUN_00631D10"
+   }
+  ],
+  "0x00631D30": [
+   {
+    "tu": "match/base64_pipe_flush_methods.cpp",
+    "name": "FUN_00631D30"
+   },
+   {
+    "tu": "match/lcw_pipe.cpp",
+    "name": "FUN_00631D30"
+   },
+   {
+    "tu": "match/pipe_class_methods.cpp",
+    "name": "FUN_00631D30"
+   }
+  ],
+  "0x006C98E0": [
+   {
+    "tu": "match/Credits.cpp",
+    "name": "FUN_006C98E0"
+   },
+   {
+    "tu": "match/buffer_pipe_straw_methods.cpp",
+    "name": "FUN_006C98E0"
+   },
+   {
+    "tu": "match/file_straw_methods.cpp",
+    "name": "FUN_006C98E0"
+   },
+   {
+    "tu": "match/hash_cache_straw_methods.cpp",
+    "name": "FUN_006C98E0"
+   },
+   {
+    "tu": "match/lcw_block_straw_get.cpp",
+    "name": "FUN_006C98E0"
+   },
+   {
+    "tu": "match/pk_pipe_straw_io_methods.cpp",
+    "name": "FUN_006C98E0"
+   },
+   {
+    "tu": "match/straw_class_methods.cpp",
+    "name": "FUN_006C98E0"
+   },
+   {
+    "tu": "match/tu196_random_straw.cpp",
+    "name": "FUN_006C98E0"
+   }
+  ],
+  "0x007E1720": [
+   {
+    "tu": "match/mathtbl_init_435610.cpp",
+    "name": "DAT_007E1720"
+   },
+   {
+    "tu": "match/periodic_state_updates_00439480.cpp",
+    "name": "DAT_007E1720"
+   }
+  ],
+  "0x007E1728": [
+   {
+    "tu": "match/mathtbl_init_435610.cpp",
+    "name": "DAT_007E1728"
+   },
+   {
+    "tu": "match/periodic_state_updates_00439480.cpp",
+    "name": "DAT_007E1728"
+   }
+  ],
+  "0x007E1730": [
+   {
+    "tu": "match/mathtbl_init_435610.cpp",
+    "name": "DAT_007E1730"
+   },
+   {
+    "tu": "match/periodic_state_updates_00439480.cpp",
+    "name": "DAT_007E1730"
+   }
+  ],
+  "0x007E1738": [
+   {
+    "tu": "match/bullet_class_new_methods.cpp",
+    "name": "DAT_007E1738"
+   },
+   {
+    "tu": "match/periodic_state_updates_00439480.cpp",
+    "name": "DAT_007E1738"
+   }
+  ],
+  "0x007E1740": [
+   {
+    "tu": "match/mathtbl_init_435610.cpp",
+    "name": "DAT_007E1740"
+   },
+   {
+    "tu": "match/periodic_state_updates_00439480.cpp",
+    "name": "DAT_007E1740"
+   }
+  ],
+  "0x007E2AC8": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DefaultArmorMultiplier"
+   },
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_007E2AC8"
+   }
+  ],
+  "0x00817474": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "STR_00817474"
+   },
+   {
+    "tu": "match/small_misc2_methods.cpp",
+    "name": "STR_00817474b"
+   }
+  ],
+  "0x00817BC0": [
+   {
+    "tu": "match/Startup.cpp",
+    "name": "DAT_00817BC0"
+   },
+   {
+    "tu": "match/com_holder_create_instance.cpp",
+    "name": "riid_00817BC0"
+   }
+  ],
+  "0x00817F6C": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "STR_00817F6C"
+   },
+   {
+    "tu": "match/range3_leaves_w3.cpp",
+    "name": "DAT_00817F6C"
+   }
+  ],
+  "0x00817F70": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "STR_00817F70"
+   },
+   {
+    "tu": "match/ccini_class_type_list_methods.cpp",
+    "name": "DAT_00817F70"
+   }
+  ],
+  "0x0081834C": [
+   {
+    "tu": "match/super_weapon_type_class_ini_6cea20.cpp",
+    "name": "STR_0081834C"
+   },
+   {
+    "tu": "match/tu039_building_type_class.cpp",
+    "name": "TypesShpExtension"
+   }
+  ],
+  "0x0081C1D0": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "g_FileSearchMode"
+   },
+   {
+    "tu": "match/leaf_sweep_r12_w1.cpp",
+    "name": "DAT_0081C1D0"
+   }
+  ],
+  "0x00829FF4": [
+   {
+    "tu": "match/fps_counter_methods.cpp",
+    "name": "MinFrameRate"
+   },
+   {
+    "tu": "match/leftover_trivial_leaf_sweep.cpp",
+    "name": "DAT_00829FF4"
+   }
+  ],
+  "0x00829FF8": [
+   {
+    "tu": "match/fps_counter_methods.cpp",
+    "name": "BufferZoneWidth"
+   },
+   {
+    "tu": "match/leftover_trivial_leaf_sweep.cpp",
+    "name": "DAT_00829FF8"
+   }
+  ],
+  "0x008370BC": [
+   {
+    "tu": "match/tu185_particle_type_class.cpp",
+    "name": "DAT_008370BC"
+   },
+   {
+    "tu": "match/tu185_particle_type_class.cpp",
+    "name": "ParticleBehavesLikeNames"
+   }
+  ],
+  "0x0087E2A0": [
+   {
+    "tu": "match/audio.cpp",
+    "name": "g_AudioEnabled"
+   },
+   {
+    "tu": "match/small_misc_w1_methods.cpp",
+    "name": "DAT_0087E2A0"
+   }
+  ],
+  "0x0087E728": [
+   {
+    "tu": "match/flag_and_clamp_methods.cpp",
+    "name": "DAT_0087E728"
+   },
+   {
+    "tu": "match/small_misc13_methods.cpp",
+    "name": "DAT_0087E728b"
+   },
+   {
+    "tu": "match/small_misc21_methods.cpp",
+    "name": "DAT_0087E728c"
+   }
+  ],
+  "0x0087E7F8": [
+   {
+    "tu": "match/module_tu002.cpp",
+    "name": "DAT_0087E7F8"
+   },
+   {
+    "tu": "match/small_misc28_methods.cpp",
+    "name": "DAT_0087E7F8"
+   }
+  ],
+  "0x0087E8A8": [
+   {
+    "tu": "match/header_init_0040adc0.cpp",
+    "name": "DAT_0087E8A8"
+   },
+   {
+    "tu": "match/tu056_control_class.cpp",
+    "name": "TheResourceRegistry"
+   }
+  ],
+  "0x0087E8B8": [
+   {
+    "tu": "match/Unit.cpp",
+    "name": "DAT_0087E8B8"
+   },
+   {
+    "tu": "match/header_init_0040adc0.cpp",
+    "name": "DAT_0087E8B8"
+   }
+  ],
+  "0x0087F698": [
+   {
+    "tu": "match/Ion.cpp",
+    "name": "DAT_0087F698"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_0087F698"
+   }
+  ],
+  "0x0087F6CC": [
+   {
+    "tu": "match/Radar.cpp",
+    "name": "DAT_0087F6CC"
+   },
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "ConvertA_0087F6CC"
+   }
+  ],
+  "0x0087F778": [
+   {
+    "tu": "match/Techno.cpp",
+    "name": "LogicInstance"
+   },
+   {
+    "tu": "match/object_class_slots_5f4d30.cpp",
+    "name": "DAT_0087F778"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs_b.cpp",
+    "name": "DAT_0087F778"
+   }
+  ],
+  "0x0087F8DC": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_0087F8DC"
+   },
+   {
+    "tu": "match/priority_queue_class.cpp",
+    "name": "g_SurfaceWidth"
+   }
+  ],
+  "0x0087F8E0": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_0087F8E0"
+   },
+   {
+    "tu": "match/priority_queue_class.cpp",
+    "name": "g_SurfaceHeight"
+   }
+  ],
+  "0x0087F8E4": [
+   {
+    "tu": "match/TAction.cpp",
+    "name": "DAT_0087F8E4"
+   },
+   {
+    "tu": "match/Tactical.cpp",
+    "name": "DAT_0087F8E4"
+   }
+  ],
+  "0x0087F924": [
+   {
+    "tu": "match/map_class_area_free_methods.cpp",
+    "name": "Cells_00586780"
+   },
+   {
+    "tu": "match/map_class_update_pathfinding2_methods.cpp",
+    "name": "Cells_00586990"
+   },
+   {
+    "tu": "match/tu050_cell_class.cpp",
+    "name": "DAT_0087F924"
+   }
+  ],
+  "0x00884B8F": [
+   {
+    "tu": "match/CD.cpp",
+    "name": "SidebarNeedsRedraw_00884B8F"
+   },
+   {
+    "tu": "match/w2_leaf_r16.cpp",
+    "name": "DAT_00884B8F"
+   }
+  ],
+  "0x00884D44": [
+   {
+    "tu": "match/Display.cpp",
+    "name": "DisplayCmdFlag_00884D44"
+   },
+   {
+    "tu": "match/display_scroll.cpp",
+    "name": "DisplayFlag_00884D44"
+   }
+  ],
+  "0x00885780": [
+   {
+    "tu": "match/colour_table_statics.cpp",
+    "name": "DAT_00885780"
+   },
+   {
+    "tu": "match/spawn_effect_methods.cpp",
+    "name": "DAT_00885780"
+   }
+  ],
+  "0x00886F90": [
+   {
+    "tu": "match/CD.cpp",
+    "name": "SidebarRect_00886F90"
+   },
+   {
+    "tu": "match/zero_quad_statics.cpp",
+    "name": "DAT_00886F90"
+   }
+  ],
+  "0x00886FA0": [
+   {
+    "tu": "match/CD.cpp",
+    "name": "TacticalRect_00886FA0"
+   },
+   {
+    "tu": "match/static_object_inits.cpp",
+    "name": "DAT_00886FA0"
+   }
+  ],
+  "0x00886FA8": [
+   {
+    "tu": "match/Radar.cpp",
+    "name": "DAT_00886FA8"
+   },
+   {
+    "tu": "match/wwmous.cpp",
+    "name": "MouseViewBoundWidth"
+   }
+  ],
+  "0x00886FB0": [
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00886FB0"
+   },
+   {
+    "tu": "match/static_object_inits.cpp",
+    "name": "DAT_00886FB0"
+   }
+  ],
+  "0x00886FB8": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00886FB8"
+   },
+   {
+    "tu": "match/wwmous.cpp",
+    "name": "MouseViewOffset"
+   }
+  ],
+  "0x008871E0": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_008871E0"
+   },
+   {
+    "tu": "match/rad_site_class_methods.cpp",
+    "name": "RulesInstance"
+   }
+  ],
+  "0x008872FC": [
+   {
+    "tu": "match/composite_surface.cpp",
+    "name": "DAT_008872FC"
+   },
+   {
+    "tu": "match/leaf_sweep_r12a.cpp",
+    "name": "DAT_008872FC"
+   }
+  ],
+  "0x00887308": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00887308"
+   },
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "ConvertSurface_00887308"
+   }
+  ],
+  "0x0088730C": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_0088730C"
+   },
+   {
+    "tu": "match/msanim_early_methods.cpp",
+    "name": "DAT_0088730C"
+   },
+   {
+    "tu": "match/progress_screen_class.cpp",
+    "name": "DAT_0088730C"
+   },
+   {
+    "tu": "match/w2c_leaf_methods.cpp",
+    "name": "DAT_0088730C"
+   }
+  ],
+  "0x00887310": [
+   {
+    "tu": "match/Queue.cpp",
+    "name": "DAT_00887310"
+   },
+   {
+    "tu": "match/Score.cpp",
+    "name": "DAT_00887310"
+   },
+   {
+    "tu": "match/movie_play_methods.cpp",
+    "name": "DAT_00887310"
+   },
+   {
+    "tu": "match/msanim_family_methods.cpp",
+    "name": "MSScreenSurface"
+   },
+   {
+    "tu": "match/wdt_map_unit.cpp",
+    "name": "DAT_00887310"
+   }
+  ],
+  "0x00887314": [
+   {
+    "tu": "match/building_light_class_draw.cpp",
+    "name": "DAT_00887314"
+   },
+   {
+    "tu": "match/ion_blast_draw_methods.cpp",
+    "name": "DSurface_Temp"
+   },
+   {
+    "tu": "match/leaf_sweep_r12a.cpp",
+    "name": "DAT_00887314"
+   }
+  ],
+  "0x00887324": [
+   {
+    "tu": "match/TAction.cpp",
+    "name": "DAT_00887324"
+   },
+   {
+    "tu": "match/Techno.cpp",
+    "name": "TacticalInstance_r21_4"
+   }
+  ],
+  "0x00887338": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "ConnTimer"
+   },
+   {
+    "tu": "match/header_init_0040e5b0.cpp",
+    "name": "DAT_00887338"
+   },
+   {
+    "tu": "match/leaf_sweep_r12_w1.cpp",
+    "name": "DAT_00887338"
+   },
+   {
+    "tu": "match/message_list_class_lookup_methods.cpp",
+    "name": "MessageTimer"
+   }
+  ],
+  "0x00887368": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00887368"
+   },
+   {
+    "tu": "match/Session.cpp",
+    "name": "ToolTipManager_Instance"
+   }
+  ],
+  "0x008874C0": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_008874C0"
+   },
+   {
+    "tu": "match/type_class_findoralloc_methods.cpp",
+    "name": "WarheadTypeClassArray"
+   }
+  ],
+  "0x00887568": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00887568"
+   },
+   {
+    "tu": "match/weapon_type_class.cpp",
+    "name": "WeaponTypeClass_Array"
+   }
+  ],
+  "0x00887680": [
+   {
+    "tu": "match/abstract_class_slots.cpp",
+    "name": "DAT_00887680"
+   },
+   {
+    "tu": "match/header_init_0040ff90.cpp",
+    "name": "DAT_00887680"
+   }
+  ],
+  "0x00887850": [
+   {
+    "tu": "match/aircraft_tracker_class.cpp",
+    "name": "DAT_00887850"
+   },
+   {
+    "tu": "match/header_init_00412660.cpp",
+    "name": "DAT_00887850"
+   }
+  ],
+  "0x00887888": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "AircraftTracker"
+   },
+   {
+    "tu": "match/tu084_fly_locomotion_class.cpp",
+    "name": "Registry_00887888_Instance"
+   },
+   {
+    "tu": "match/vector_array_init_methods.cpp",
+    "name": "DAT_00887888"
+   }
+  ],
+  "0x00889FB8": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00889FB8"
+   },
+   {
+    "tu": "match/tu021_airstrike_class.cpp",
+    "name": "DAT_00889FB8"
+   }
+  ],
+  "0x0089A29C": [
+   {
+    "tu": "match/House.cpp",
+    "name": "HouseMainObject"
+   },
+   {
+    "tu": "match/header_init_00429010.cpp",
+    "name": "DAT_0089A29C"
+   }
+  ],
+  "0x0089C3B0": [
+   {
+    "tu": "match/Beacon.cpp",
+    "name": "DAT_0089C3B0"
+   },
+   {
+    "tu": "match/Conquer.cpp",
+    "name": "DAT_0089C3B0"
+   },
+   {
+    "tu": "match/Display.cpp",
+    "name": "BeaconManager"
+   },
+   {
+    "tu": "match/beacon_manager_class_radar_methods.cpp",
+    "name": "BeaconManagerInstance"
+   }
+  ],
+  "0x0089C4D0": [
+   {
+    "tu": "match/Tactical.cpp",
+    "name": "DAT_0089C4D0"
+   },
+   {
+    "tu": "match/msanim_family_methods.cpp",
+    "name": "TheGameFont"
+   }
+  ],
+  "0x0089C848": [
+   {
+    "tu": "match/math_global_updates_0043af70.cpp",
+    "name": "DAT_0089C848"
+   },
+   {
+    "tu": "match/tu038_building_class.cpp",
+    "name": "DAT_0089C848"
+   }
+  ],
+  "0x0089DDB8": [
+   {
+    "tu": "match/header_init_0045afa0.cpp",
+    "name": "DAT_0089DDB8"
+   },
+   {
+    "tu": "match/tu039_building_type_class.cpp",
+    "name": "TypesLevelHeight"
+   }
+  ],
+  "0x0089E748": [
+   {
+    "tu": "match/cell_class_jumpjet_methods.cpp",
+    "name": "JumpjetClearCoords"
+   },
+   {
+    "tu": "match/header_init_0047b150.cpp",
+    "name": "DAT_0089E748"
+   }
+  ],
+  "0x0089F688": [
+   {
+    "tu": "match/bridge_span_break_methods.cpp",
+    "name": "AdjacentCellOffset"
+   },
+   {
+    "tu": "match/header_init_0049f0e0.cpp",
+    "name": "DAT_0089F688"
+   }
+  ],
+  "0x008A0094": [
+   {
+    "tu": "match/ddraw_mode_list_methods.cpp",
+    "name": "DAT_008A0094"
+   },
+   {
+    "tu": "match/ddraw_query_methods.cpp",
+    "name": "DirectDraw_008A0094"
+   },
+   {
+    "tu": "match/r24_1_ddraw_report_methods.cpp",
+    "name": "DAT_008A0094"
+   },
+   {
+    "tu": "match/yrddraw_restore_methods.cpp",
+    "name": "DAT_008A0094"
+   }
+  ],
+  "0x008A0360": [
+   {
+    "tu": "match/Display.cpp",
+    "name": "Layers"
+   },
+   {
+    "tu": "match/Queue.cpp",
+    "name": "DAT_008A0360"
+   }
+  ],
+  "0x008A03F8": [
+   {
+    "tu": "match/Display.cpp",
+    "name": "DAT_008A03F8"
+   },
+   {
+    "tu": "match/header_init_004a8440.cpp",
+    "name": "DAT_008A03F8"
+   }
+  ],
+  "0x008A0DD0": [
+   {
+    "tu": "match/misc_free_r16_methods.cpp",
+    "name": "DAT_008A0DD0"
+   },
+   {
+    "tu": "match/pixel_shift_globals_008a0dd0.cpp",
+    "name": "gg_b_translucent_pixel_format"
+   }
+  ],
+  "0x008A3838": [
+   {
+    "tu": "match/header_init_004c5000.cpp",
+    "name": "DAT_008A3838"
+   },
+   {
+    "tu": "match/tu076_em_pulse_class.cpp",
+    "name": "DAT_008A3838"
+   }
+  ],
+  "0x008A38E0": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_008A38E0"
+   },
+   {
+    "tu": "match/evade_unit_globals.cpp",
+    "name": "DAT_008A38E0"
+   }
+  ],
+  "0x008B3D88": [
+   {
+    "tu": "match/foot_class_jumpjet_cell_methods.cpp",
+    "name": "NoCell"
+   },
+   {
+    "tu": "match/foot_class_move_to_tiberium_methods.cpp",
+    "name": "NoCell_004DCFE0"
+   },
+   {
+    "tu": "match/foot_class_small_slots.cpp",
+    "name": "DAT_008B3D88"
+   },
+   {
+    "tu": "match/header_init_004d2f50.cpp",
+    "name": "DAT_008B3D88"
+   }
+  ],
+  "0x008B3F14": [
+   {
+    "tu": "match/GameDlg.cpp",
+    "name": "DAT_008B3F14"
+   },
+   {
+    "tu": "match/leaf_sweep_w1c.cpp",
+    "name": "DAT_008B3F14"
+   }
+  ],
+  "0x008B40C8": [
+   {
+    "tu": "match/logic_class_pointer_methods.cpp",
+    "name": "LogicArray"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_008B40C8"
+   }
+  ],
+  "0x008B40E8": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_008B40E8"
+   },
+   {
+    "tu": "match/Queue.cpp",
+    "name": "DAT_008B40E8"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_008B40E8"
+   }
+  ],
+  "0x008B413C": [
+   {
+    "tu": "match/adjacent_cell_methods.cpp",
+    "name": "DAT_008B413C"
+   },
+   {
+    "tu": "match/tu050_cell_class.cpp",
+    "name": "TunnelArrayItems"
+   }
+  ],
+  "0x008B4148": [
+   {
+    "tu": "match/leaf_sweep_w1c.cpp",
+    "name": "DAT_008B4148"
+   },
+   {
+    "tu": "match/tu050_cell_class.cpp",
+    "name": "TunnelArrayCount"
+   }
+  ],
+  "0x008B4150": [
+   {
+    "tu": "match/house_class_psi_warn_methods.cpp",
+    "name": "AnimTypeArray"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_008B4150"
+   },
+   {
+    "tu": "match/type_class_findoralloc_methods.cpp",
+    "name": "AnimTypeClassArray"
+   }
+  ],
+  "0x008B4178": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_008B4178"
+   },
+   {
+    "tu": "match/trigger_type_class_array.cpp",
+    "name": "Array"
+   }
+  ],
+  "0x008B41C8": [
+   {
+    "tu": "match/script_class_body.cpp",
+    "name": "ScriptTypes"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_008B41C8"
+   }
+  ],
+  "0x00A80208": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00A80208"
+   },
+   {
+    "tu": "match/tu175_particle_system_class.cpp",
+    "name": "DAT_00A80208"
+   }
+  ],
+  "0x00A80228": [
+   {
+    "tu": "match/house_class_lookup_methods.cpp",
+    "name": "HouseArray"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00A80228"
+   },
+   {
+    "tu": "match/tu038_building_class.cpp",
+    "name": "HouseArray_00458200"
+   }
+  ],
+  "0x00A8022C": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "HouseClass_ArrayItems"
+   },
+   {
+    "tu": "match/team_mission_handlers_006eddc0.cpp",
+    "name": "DAT_00A8022C"
+   }
+  ],
+  "0x00A80238": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A80238"
+   },
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "HouseClass_ArrayCount"
+   }
+  ],
+  "0x00A83C68": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "DAT_00A83C68"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A83C68"
+   }
+  ],
+  "0x00A83C6C": [
+   {
+    "tu": "match/Conquer.cpp",
+    "name": "BuildingTypeClass_ArrayItems"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A83C6C"
+   },
+   {
+    "tu": "match/team_mission_handlers_006eddc0.cpp",
+    "name": "DAT_00A83C6C"
+   }
+  ],
+  "0x00A83C98": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "DAT_00A83C98"
+   },
+   {
+    "tu": "match/house_type_class_find_methods.cpp",
+    "name": "HouseTypeArray"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A83C98"
+   }
+  ],
+  "0x00A83CE0": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "DAT_00A83CE0"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A83CE0"
+   },
+   {
+    "tu": "match/tu235_team_class.cpp",
+    "name": "DAT_00A83CE0"
+   }
+  ],
+  "0x00A83CE4": [
+   {
+    "tu": "match/Conquer.cpp",
+    "name": "UnitTypeClass_ArrayItems"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A83CE4"
+   },
+   {
+    "tu": "match/leaf_sweep_r15_w3.cpp",
+    "name": "DAT_00A83CE4"
+   }
+  ],
+  "0x00A83CF8": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "CampaignArray"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A83CF8"
+   }
+  ],
+  "0x00A83D4C": [
+   {
+    "tu": "match/PlanMgr.cpp",
+    "name": "CurrentPlayer"
+   },
+   {
+    "tu": "match/Session.cpp",
+    "name": "HouseClass_CurrentPlayer"
+   },
+   {
+    "tu": "match/Techno.cpp",
+    "name": "DAT_00A83D4C"
+   },
+   {
+    "tu": "match/evade_class_do_methods.cpp",
+    "name": "CurrentPlayer_004C6210"
+   }
+  ],
+  "0x00A83D80": [
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A83D80"
+   },
+   {
+    "tu": "match/tu168_overlay_class.cpp",
+    "name": "OverlayTypeClass_Array"
+   }
+  ],
+  "0x00A83D84": [
+   {
+    "tu": "match/Techno.cpp",
+    "name": "DAT_00A83D84"
+   },
+   {
+    "tu": "match/anim_class_r21_methods.cpp",
+    "name": "DAT_00A83D84"
+   },
+   {
+    "tu": "match/tiberium_class_ini_721a50.cpp",
+    "name": "DAT_00A83D84"
+   }
+  ],
+  "0x00A83D98": [
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A83D98"
+   },
+   {
+    "tu": "match/tu175_particle_system_class.cpp",
+    "name": "ParticleTypeArray"
+   }
+  ],
+  "0x00A83DC8": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00A83DC8"
+   },
+   {
+    "tu": "match/tu174_particle_class.cpp",
+    "name": "ParticleArray"
+   }
+  ],
+  "0x00A8B1E0": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00A8B1E0"
+   },
+   {
+    "tu": "match/tu216_smudge_class.cpp",
+    "name": "SmudgeArray"
+   }
+  ],
+  "0x00A8B200": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "AITriggerTypes"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00A8B200"
+   },
+   {
+    "tu": "match/tu022_ai_trigger_type_class.cpp",
+    "name": "DAT_00A8B200"
+   }
+  ],
+  "0x00A8B218": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "DAT_00A8B218"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8B218"
+   }
+  ],
+  "0x00A8B21C": [
+   {
+    "tu": "match/Conquer.cpp",
+    "name": "AircraftTypeClass_ArrayItems"
+   },
+   {
+    "tu": "match/house_class_spy_planes_methods.cpp",
+    "name": "DAT_00A8B21C"
+   }
+  ],
+  "0x00A8B230": [
+   {
+    "tu": "match/TAction.cpp",
+    "name": "DAT_00A8B230"
+   },
+   {
+    "tu": "match/TAction.cpp",
+    "name": "WaypointLocatorPtr"
+   },
+   {
+    "tu": "match/house_class_lookup_methods.cpp",
+    "name": "ScenarioInstance"
+   },
+   {
+    "tu": "match/team_mission_handlers_r15.cpp",
+    "name": "DAT_00A8B230_MissionR15"
+   }
+  ],
+  "0x00A8B238": [
+   {
+    "tu": "match/building_a2_exit.cpp",
+    "name": "DAT_00A8B238"
+   },
+   {
+    "tu": "match/global_objects_004e62d0.cpp",
+    "name": "Session_00A8B238"
+   }
+  ],
+  "0x00A8B258": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00A8B258"
+   },
+   {
+    "tu": "match/trivial_tu151_methods.cpp",
+    "name": "DAT_00A8B258"
+   },
+   {
+    "tu": "match/w2_leaf_r12.cpp",
+    "name": "DAT_00A8B258"
+   }
+  ],
+  "0x00A8B262": [
+   {
+    "tu": "match/netshare.cpp",
+    "name": "DAT_00A8B262"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00A8B262"
+   }
+  ],
+  "0x00A8B263": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A8B263"
+   },
+   {
+    "tu": "match/netshare.cpp",
+    "name": "DAT_00A8B263"
+   }
+  ],
+  "0x00A8B550": [
+   {
+    "tu": "match/Queue.cpp",
+    "name": "DAT_00A8B550"
+   },
+   {
+    "tu": "match/connman_class.cpp",
+    "name": "MaxAhead"
+   }
+  ],
+  "0x00A8BB0C": [
+   {
+    "tu": "match/MPCoop.cpp",
+    "name": "DAT_00A8BB0C"
+   },
+   {
+    "tu": "match/netshare.cpp",
+    "name": "SessionPlayerLimit"
+   }
+  ],
+  "0x00A8D610": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00A8D610"
+   },
+   {
+    "tu": "match/w2_leaf2_r17.cpp",
+    "name": "DAT_00A8D610"
+   }
+  ],
+  "0x00A8D638": [
+   {
+    "tu": "match/netshare.cpp",
+    "name": "DAT_00A8D638"
+   },
+   {
+    "tu": "match/r19_4_netdlg2_leaves.cpp",
+    "name": "Kind8Packet_00A8D638"
+   }
+  ],
+  "0x00A8DA74": [
+   {
+    "tu": "match/MPCoop.cpp",
+    "name": "MPGameModeArray"
+   },
+   {
+    "tu": "match/netshare.cpp",
+    "name": "PlayerNodes"
+   },
+   {
+    "tu": "match/tu108_ipx_manager_class.cpp",
+    "name": "Players_00A8DA74"
+   }
+  ],
+  "0x00A8DA78": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "Players_00A8DA78"
+   },
+   {
+    "tu": "match/w2_global_leaf_methods.cpp",
+    "name": "DAT_00A8DA78"
+   },
+   {
+    "tu": "match/w2_leaf_r16.cpp",
+    "name": "DAT_00A8DA78"
+   },
+   {
+    "tu": "match/w2c_leaf_methods.cpp",
+    "name": "DAT_00A8DA78"
+   }
+  ],
+  "0x00A8DA84": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "PlayerCount_00A8DA84"
+   },
+   {
+    "tu": "match/w2_global_leaf_methods.cpp",
+    "name": "DAT_00A8DA84"
+   }
+  ],
+  "0x00A8DA8C": [
+   {
+    "tu": "match/CampScor.cpp",
+    "name": "DAT_00A8DA8C"
+   },
+   {
+    "tu": "match/netshare.cpp",
+    "name": "SelectedSlotIndex"
+   }
+  ],
+  "0x00A8DA90": [
+   {
+    "tu": "match/MPCoop.cpp",
+    "name": "DAT_00A8DA90"
+   },
+   {
+    "tu": "match/Session.cpp",
+    "name": "SlotPlayers_00A8DA90"
+   },
+   {
+    "tu": "match/leaf_sweep_r12_w1.cpp",
+    "name": "DAT_00A8DA90"
+   },
+   {
+    "tu": "match/leaf_sweep_w1c.cpp",
+    "name": "DAT_00A8DA90"
+   }
+  ],
+  "0x00A8DAB4": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00A8DAB4"
+   },
+   {
+    "tu": "match/ownrdraw.cpp",
+    "name": "InhibitWord"
+   }
+  ],
+  "0x00A8DAC0": [
+   {
+    "tu": "match/NullDlg.cpp",
+    "name": "DAT_00A8DAC0"
+   },
+   {
+    "tu": "match/PhoneEd.cpp",
+    "name": "DAT_00A8DAC0"
+   }
+  ],
+  "0x00A8E318": [
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8E318"
+   },
+   {
+    "tu": "match/tu243_terrain_type_class.cpp",
+    "name": "TerrainTypeClassArray"
+   }
+  ],
+  "0x00A8E330": [
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8E330"
+   },
+   {
+    "tu": "match/super_weapon_type_class_methods.cpp",
+    "name": "SuperWeaponTypeClass_Array"
+   }
+  ],
+  "0x00A8E348": [
+   {
+    "tu": "match/ai_trigger_type_class_body.cpp",
+    "name": "DAT_00A8E348"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8E348"
+   }
+  ],
+  "0x00A8E34C": [
+   {
+    "tu": "match/Conquer.cpp",
+    "name": "InfantryTypeClass_ArrayItems"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A8E34C"
+   }
+  ],
+  "0x00A8E378": [
+   {
+    "tu": "match/LoadDlg.cpp",
+    "name": "MenusLoadFlagB"
+   },
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00A8E378"
+   }
+  ],
+  "0x00A8E960": [
+   {
+    "tu": "match/intro_movie_play.cpp",
+    "name": "DAT_00A8E960"
+   },
+   {
+    "tu": "match/netshare.cpp",
+    "name": "DAT_00A8E960"
+   }
+  ],
+  "0x00A8E9A0": [
+   {
+    "tu": "match/leaf_sweep_r12_w1.cpp",
+    "name": "DAT_00A8E9A0"
+   },
+   {
+    "tu": "match/tag_class_body.cpp",
+    "name": "DAT_00A8E9A0"
+   },
+   {
+    "tu": "match/tu050_cell_class.cpp",
+    "name": "CellOccupiersValid"
+   }
+  ],
+  "0x00A8EAE8": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00A8EAE8"
+   },
+   {
+    "tu": "match/trigger_class_array.cpp",
+    "name": "Array"
+   }
+  ],
+  "0x00A8EB60": [
+   {
+    "tu": "match/Queue.cpp",
+    "name": "DAT_00A8EB60"
+   },
+   {
+    "tu": "match/global_objects_004e62d0.cpp",
+    "name": "DAT_00A8EB60"
+   },
+   {
+    "tu": "match/movie_handle_class.cpp",
+    "name": "DAT_00A8EB60"
+   }
+  ],
+  "0x00A8EB7C": [
+   {
+    "tu": "match/CD.cpp",
+    "name": "SidebarSideFlag_00A8EB7C"
+   },
+   {
+    "tu": "match/Radar.cpp",
+    "name": "DAT_00A8EB7C"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00A8EB7C"
+   },
+   {
+    "tu": "match/wwmous.cpp",
+    "name": "MouseDrawFlag"
+   }
+  ],
+  "0x00A8EB84": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00A8EB84"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00A8EB84_r21_4"
+   }
+  ],
+  "0x00A8EB88": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00A8EB88"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00A8EB88_r21_4"
+   }
+  ],
+  "0x00A8EC18": [
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8EC18"
+   },
+   {
+    "tu": "match/tu217_smudge_type_class.cpp",
+    "name": "DAT_00A8EC18"
+   }
+  ],
+  "0x00A8EC50": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00A8EC50"
+   },
+   {
+    "tu": "match/tu168_overlay_class.cpp",
+    "name": "OverlayArray"
+   }
+  ],
+  "0x00A8EC74": [
+   {
+    "tu": "match/theme_class_r14_methods.cpp",
+    "name": "ScoresPresent_00A8EC74"
+   },
+   {
+    "tu": "match/theme_class_scan_methods.cpp",
+    "name": "DAT_00A8EC74"
+   }
+  ],
+  "0x00A8EC78": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A8EC78"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "TechnoArray"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8EC78"
+   }
+  ],
+  "0x00A8ECA0": [
+   {
+    "tu": "match/script_class_body.cpp",
+    "name": "DAT_00A8ECA0"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8ECA0"
+   },
+   {
+    "tu": "match/tu236_team_type_class.cpp",
+    "name": "TeamTypeArray"
+   }
+  ],
+  "0x00A8ECB8": [
+   {
+    "tu": "match/Conquer.cpp",
+    "name": "CurrentObjects"
+   },
+   {
+    "tu": "match/static_vector_init_stubs.cpp",
+    "name": "DAT_00A8ECB8"
+   }
+  ],
+  "0x00A8ED2C": [
+   {
+    "tu": "match/r25_3_cell_checks.cpp",
+    "name": "DAT_00A8ED2C"
+   },
+   {
+    "tu": "match/small_misc_w1_methods.cpp",
+    "name": "DAT_00A8ED2C"
+   }
+  ],
+  "0x00A8ED6B": [
+   {
+    "tu": "match/Radar.cpp",
+    "name": "DisplayFlag_00A8ED6B"
+   },
+   {
+    "tu": "match/tag_class_body.cpp",
+    "name": "DAT_00A8ED6B"
+   }
+  ],
+  "0x00A8ED84": [
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "CurrentFrame_00A8ED84"
+   },
+   {
+    "tu": "match/display_gscreen.cpp",
+    "name": "DisplayCurrentFrame_00A8ED84"
+   },
+   {
+    "tu": "match/frame_counter.cpp",
+    "name": "CurrentFrame"
+   }
+  ],
+  "0x00A8ED9C": [
+   {
+    "tu": "match/Radar.cpp",
+    "name": "DAT_00A8ED9C"
+   },
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00A8ED9C"
+   },
+   {
+    "tu": "match/TAction.cpp",
+    "name": "DAT_00A8ED9C"
+   },
+   {
+    "tu": "match/display_scroll.cpp",
+    "name": "DisplayFlag_00A8ED9C"
+   }
+  ],
+  "0x00A8EF54": [
+   {
+    "tu": "match/display_gscreen.cpp",
+    "name": "DisplayButtonList_00A8EF54"
+   },
+   {
+    "tu": "match/gscreen_class_render_methods.cpp",
+    "name": "DAT_00A8EF54"
+   },
+   {
+    "tu": "match/misc_leaf_methods.cpp",
+    "name": "DAT_00a8ef54"
+   }
+  ],
+  "0x00A8EF98": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A8EF98"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "HouseEmptyCell"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "NoCell_00A8EF98"
+   }
+  ],
+  "0x00A8EFF8": [
+   {
+    "tu": "match/House.cpp",
+    "name": "DAT_00A8EFF8"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "EmptyCoord_00A8EFF8"
+   },
+   {
+    "tu": "match/House.cpp",
+    "name": "HouseEmptyCoord"
+   }
+  ],
+  "0x00A8F180": [
+   {
+    "tu": "match/header_init_513a10.cpp",
+    "name": "DAT_00A8F180"
+   },
+   {
+    "tu": "match/hover_locomotion_update_00515ed0.cpp",
+    "name": "DAT_00A8F180"
+   }
+  ],
+  "0x00A9F9F8": [
+   {
+    "tu": "match/Ion.cpp",
+    "name": "DAT_00A9F9F8"
+   },
+   {
+    "tu": "match/header_init_539110.cpp",
+    "name": "DAT_00A9F9F8"
+   }
+  ],
+  "0x00AA0118": [
+   {
+    "tu": "match/ion_blast_draw_methods.cpp",
+    "name": "IonBlastArray"
+   },
+   {
+    "tu": "match/static_vector_member_dtor_stubs_c.cpp",
+    "name": "DAT_00AA0118"
+   }
+  ],
+  "0x00AA0374": [
+   {
+    "tu": "match/leaf_sweep_r14_w1.cpp",
+    "name": "DebugWindowListCapacity"
+   },
+   {
+    "tu": "match/leaf_sweep_w1c.cpp",
+    "name": "DAT_00AA0374"
+   }
+  ],
+  "0x00AA0448": [
+   {
+    "tu": "match/leaf_sweep_r14_w1.cpp",
+    "name": "DebugWindowListActive"
+   },
+   {
+    "tu": "match/leaf_sweep_w1c.cpp",
+    "name": "DAT_00AA0448"
+   }
+  ],
+  "0x00AA044C": [
+   {
+    "tu": "match/leaf_sweep_r14_w1.cpp",
+    "name": "DebugWindowList"
+   },
+   {
+    "tu": "match/leaf_sweep_w1c.cpp",
+    "name": "DAT_00AA044C"
+   }
+  ],
+  "0x00AA0568": [
+   {
+    "tu": "match/leaf_sweep_r25_w1.cpp",
+    "name": "DAT_00AA0568"
+   },
+   {
+    "tu": "match/small_leaf_r17_w1.cpp",
+    "name": "DAT_00AA0568"
+   }
+  ],
+  "0x00AA06D0": [
+   {
+    "tu": "match/header_init_543120.cpp",
+    "name": "DAT_00AA06D0"
+   },
+   {
+    "tu": "match/tu109_isometric_tile_class.cpp",
+    "name": "DAT_00AA06D0"
+   }
+  ],
+  "0x00AA0E28": [
+   {
+    "tu": "match/bridge_span_break_methods.cpp",
+    "name": "GgTileBaseB"
+   },
+   {
+    "tu": "match/tu050_cell_class.cpp",
+    "name": "GgBridgeTileBase"
+   }
+  ],
+  "0x00ABAD1C": [
+   {
+    "tu": "match/bridge_span_break_methods.cpp",
+    "name": "GgTileBaseA"
+   },
+   {
+    "tu": "match/tu050_cell_class.cpp",
+    "name": "GgWoodBridgeTileBase"
+   }
+  ],
+  "0x00ABCA00": [
+   {
+    "tu": "match/header_init_554430.cpp",
+    "name": "DAT_00ABCA00"
+   },
+   {
+    "tu": "match/w2_light_rad_dtors_r13.cpp",
+    "name": "DAT_00ABCA00"
+   }
+  ],
+  "0x00ABCC78": [
+   {
+    "tu": "match/header_init_55a4b0.cpp",
+    "name": "DAT_00ABCC78"
+   },
+   {
+    "tu": "match/tu122_locomotion_class.cpp",
+    "name": "DAT_00ABCC78"
+   }
+  ],
+  "0x00ABDC50": [
+   {
+    "tu": "match/bridge_span_break_methods.cpp",
+    "name": "InvalidCell"
+   },
+   {
+    "tu": "match/map_class_area_free_methods.cpp",
+    "name": "InvalidCell_00586780"
+   },
+   {
+    "tu": "match/map_class_local_radar_methods.cpp",
+    "name": "InvalidCell_00578390"
+   },
+   {
+    "tu": "match/trivial_tu127_methods.cpp",
+    "name": "InvalidCell"
+   }
+  ],
+  "0x00ABDF90": [
+   {
+    "tu": "match/MapGen.cpp",
+    "name": "DAT_00ABDF90"
+   },
+   {
+    "tu": "match/static_vector_member_dtor_stubs_b.cpp",
+    "name": "DAT_00ABDF90"
+   }
+  ],
+  "0x00ABEE10": [
+   {
+    "tu": "match/header_init_5afce0.cpp",
+    "name": "DAT_00ABEE10"
+   },
+   {
+    "tu": "match/tu133_mech_locomotion_class.cpp",
+    "name": "DAT_00ABEE10"
+   }
+  ],
+  "0x00ABF239": [
+   {
+    "tu": "match/debug_window_show_methods.cpp",
+    "name": "DAT_00ABF239"
+   },
+   {
+    "tu": "match/trivial_tu139_b_methods.cpp",
+    "name": "DAT_00ABF239"
+   }
+  ],
+  "0x00ABF2DC": [
+   {
+    "tu": "match/mouse_mouse_class_methods.cpp",
+    "name": "MouseShapeFlag"
+   },
+   {
+    "tu": "match/trivial_tu140_methods.cpp",
+    "name": "DAT_00ABF2DC"
+   }
+  ],
+  "0x00ABF3F4": [
+   {
+    "tu": "match/global_leaf_helper_methods.cpp",
+    "name": "DAT_00ABF3F4"
+   },
+   {
+    "tu": "match/movie_handle_class.cpp",
+    "name": "DAT_00ABF3F4"
+   }
+  ],
+  "0x00AC11B4": [
+   {
+    "tu": "match/CampScor.cpp",
+    "name": "DAT_00AC11B4"
+   },
+   {
+    "tu": "match/leaf_sweep_w1c.cpp",
+    "name": "DAT_00AC11B4"
+   }
+  ],
+  "0x00AC13C8": [
+   {
+    "tu": "match/flight_level.cpp",
+    "name": "FlightLevel"
+   },
+   {
+    "tu": "match/mathtbl_init_5f36f0.cpp",
+    "name": "DAT_00AC13C8"
+   }
+  ],
+  "0x00AC1528": [
+   {
+    "tu": "match/tu168_overlay_class.cpp",
+    "name": "OverlayNoCell"
+   },
+   {
+    "tu": "match/tu168_overlay_statics.cpp",
+    "name": "DAT_00AC1528"
+   }
+  ],
+  "0x00AC1608": [
+   {
+    "tu": "match/tu169_overlay_type_class.cpp",
+    "name": "OverlayZeroCell"
+   },
+   {
+    "tu": "match/tu169_overlay_type_statics.cpp",
+    "name": "DAT_00AC1608"
+   }
+  ],
+  "0x00AC1678": [
+   {
+    "tu": "match/effect_array_update_methods.cpp",
+    "name": "SpotlightArray"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00AC1678"
+   }
+  ],
+  "0x00AC1B00": [
+   {
+    "tu": "match/ownrdraw.cpp",
+    "name": "DAT_00AC1B00"
+   },
+   {
+    "tu": "match/r19_4_hash_tables.cpp",
+    "name": "DAT_00AC1B00"
+   }
+  ],
+  "0x00AC4848": [
+   {
+    "tu": "match/GDlgSupp.cpp",
+    "name": "DAT_00AC4848"
+   },
+   {
+    "tu": "match/ownrdraw.cpp",
+    "name": "DAT_00ac4848"
+   },
+   {
+    "tu": "match/ownrdraw_pcx_cache.cpp",
+    "name": "DAT_00AC4848"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00AC4848"
+   }
+  ],
+  "0x00AC49D8": [
+   {
+    "tu": "match/mathtbl_init_62b3d0.cpp",
+    "name": "DAT_00AC49D8"
+   },
+   {
+    "tu": "match/tu174_particle_class.cpp",
+    "name": "ParticleEmptyCoord"
+   }
+  ],
+  "0x00AC4A58": [
+   {
+    "tu": "match/mathtbl_init_62da40.cpp",
+    "name": "DAT_00AC4A58"
+   },
+   {
+    "tu": "match/tu175_particle_system_class.cpp",
+    "name": "DAT_00AC4A58"
+   }
+  ],
+  "0x00B04C38": [
+   {
+    "tu": "match/house_class_spy_planes_methods.cpp",
+    "name": "DAT_00B04C38"
+   },
+   {
+    "tu": "match/mathtbl_init_65d6c0.cpp",
+    "name": "DAT_00B04C38"
+   }
+  ],
+  "0x00B04D48": [
+   {
+    "tu": "match/w2_leaf_r12.cpp",
+    "name": "DAT_00B04D48"
+   },
+   {
+    "tu": "match/w2_leaf_r16.cpp",
+    "name": "DAT_00B04D48"
+   }
+  ],
+  "0x00B04D68": [
+   {
+    "tu": "match/mathtbl_init_65f7a0.cpp",
+    "name": "DAT_00B04D68"
+   },
+   {
+    "tu": "match/w2_leaf_r12.cpp",
+    "name": "DAT_00B04D68"
+   },
+   {
+    "tu": "match/w2_leaf_r16.cpp",
+    "name": "DAT_00B04D68"
+   }
+  ],
+  "0x00B05458": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00B05458"
+   },
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "WaypointUndefined"
+   }
+  ],
+  "0x00B054D0": [
+   {
+    "tu": "match/Ion.cpp",
+    "name": "DAT_00B054D0"
+   },
+   {
+    "tu": "match/Techno.cpp",
+    "name": "DAT_00B054D0"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B054D0"
+   }
+  ],
+  "0x00B077A0": [
+   {
+    "tu": "match/obj_0069e430.cpp",
+    "name": "DAT_00B077A0"
+   },
+   {
+    "tu": "match/w2_leaf_r12.cpp",
+    "name": "DAT_00B077A0"
+   }
+  ],
+  "0x00B07BC0": [
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "DAT_00B07BC0"
+   },
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "DarkenShape_00B07BC0"
+   }
+  ],
+  "0x00B07C48": [
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "ButtonArray_00B07C48"
+   },
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "TabButtons_00B07C48"
+   }
+  ],
+  "0x00B0B328": [
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "Button_00B0B328"
+   },
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "ScrollDownButton_00B0B328"
+   }
+  ],
+  "0x00B0B408": [
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "Button_00B0B408"
+   },
+   {
+    "tu": "match/Sidebar.cpp",
+    "name": "ScrollUpButton_00B0B408"
+   }
+  ],
+  "0x00B0B5B8": [
+   {
+    "tu": "match/mathtbl_init_6aef10.cpp",
+    "name": "DAT_00B0B5B8"
+   },
+   {
+    "tu": "match/slave_manager_class_wake_methods.cpp",
+    "name": "DAT_00B0B5B8"
+   }
+  ],
+  "0x00B0B728": [
+   {
+    "tu": "match/mathtbl_init_6b4840.cpp",
+    "name": "DAT_00B0B728"
+   },
+   {
+    "tu": "match/tu216_smudge_class.cpp",
+    "name": "SmudgeEmptyCoord"
+   }
+  ],
+  "0x00B0B7A8": [
+   {
+    "tu": "match/mathtbl_init_6b5050.cpp",
+    "name": "DAT_00B0B7A8"
+   },
+   {
+    "tu": "match/tu217_smudge_type_class.cpp",
+    "name": "SmudgeOriginCoord"
+   }
+  ],
+  "0x00B0BC68": [
+   {
+    "tu": "match/Startup.cpp",
+    "name": "DAT_00B0BC68"
+   },
+   {
+    "tu": "match/mathtbl_init_6bb050.cpp",
+    "name": "DAT_00B0BC68"
+   }
+  ],
+  "0x00B0E700": [
+   {
+    "tu": "match/mathtbl_init_6e4b50.cpp",
+    "name": "DAT_00B0E700"
+   },
+   {
+    "tu": "match/tag_class_array.cpp",
+    "name": "DAT_00B0E700"
+   }
+  ],
+  "0x00B0E720": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B0E720"
+   },
+   {
+    "tu": "match/tag_class_array.cpp",
+    "name": "Array"
+   }
+  ],
+  "0x00B0E830": [
+   {
+    "tu": "match/abstract_index_cast_sweep.cpp",
+    "name": "DAT_00B0E830"
+   },
+   {
+    "tu": "match/mathtbl_init_6e6840.cpp",
+    "name": "DAT_00B0E830"
+   }
+  ],
+  "0x00B0E948": [
+   {
+    "tu": "match/mathtbl_init_6e8880.cpp",
+    "name": "DAT_00B0E948"
+   },
+   {
+    "tu": "match/team_mission_handlers_006eddc0.cpp",
+    "name": "DAT_00B0E948"
+   }
+  ],
+  "0x00B0E9C8": [
+   {
+    "tu": "match/mathtbl_init_6f0470.cpp",
+    "name": "DAT_00B0E9C8"
+   },
+   {
+    "tu": "match/team_type_class_methods.cpp",
+    "name": "DefaultWaypointCell"
+   }
+  ],
+  "0x00B0EA50": [
+   {
+    "tu": "match/Techno.cpp",
+    "name": "DAT_00B0EA50"
+   },
+   {
+    "tu": "match/mathtbl_init_6f28a0.cpp",
+    "name": "DAT_00B0EA50"
+   }
+  ],
+  "0x00B0EA80": [
+   {
+    "tu": "match/Techno.cpp",
+    "name": "DAT_00B0EA80"
+   },
+   {
+    "tu": "match/Techno.cpp",
+    "name": "FrameTimer"
+   }
+  ],
+  "0x00B0EBF8": [
+   {
+    "tu": "match/mathtbl_init_717df0.cpp",
+    "name": "DAT_00B0EBF8"
+   },
+   {
+    "tu": "match/tu240_teleport_locomotion_class.cpp",
+    "name": "DAT_00B0EBF8"
+   }
+  ],
+  "0x00B0ED7C": [
+   {
+    "tu": "match/mathtbl_init_71d370.cpp",
+    "name": "DAT_00B0ED7C"
+   },
+   {
+    "tu": "match/tu243_terrain_type_class.cpp",
+    "name": "TerrainDefaultCell"
+   }
+  ],
+  "0x00B0F4E8": [
+   {
+    "tu": "match/House.cpp",
+    "name": "TiberiumArray"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B0F4E8"
+   }
+  ],
+  "0x00B0F4EC": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "TiberiumArrayItems"
+   },
+   {
+    "tu": "match/anim_class_r21_methods.cpp",
+    "name": "DAT_00B0F4EC"
+   },
+   {
+    "tu": "match/leaf_sweep_r12b.cpp",
+    "name": "DAT_00B0F4EC"
+   },
+   {
+    "tu": "match/leaf_sweep_r13_w1.cpp",
+    "name": "DAT_00B0F4EC"
+   }
+  ],
+  "0x00B0F658": [
+   {
+    "tu": "match/TAction.cpp",
+    "name": "DAT_00B0F658"
+   },
+   {
+    "tu": "match/abstract_registry.cpp",
+    "name": "DAT_00B0F658"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B0F658"
+   }
+  ],
+  "0x00B0F670": [
+   {
+    "tu": "match/TAction.cpp",
+    "name": "DAT_00B0F670"
+   },
+   {
+    "tu": "match/abstract_registry.cpp",
+    "name": "DAT_00B0F670"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B0F670"
+   }
+  ],
+  "0x00B0F698": [
+   {
+    "tu": "match/abstract_registry.cpp",
+    "name": "DAT_00B0F698"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B0F698"
+   }
+  ],
+  "0x00B0F708": [
+   {
+    "tu": "match/abstract_registry.cpp",
+    "name": "DAT_00B0F708"
+   },
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B0F708"
+   }
+  ],
+  "0x00B0F720": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B0F720"
+   },
+   {
+    "tu": "match/tu175_particle_system_class.cpp",
+    "name": "DAT_00B0F720"
+   }
+  ],
+  "0x00B0F910": [
+   {
+    "tu": "match/mathtbl_init_7287f0.cpp",
+    "name": "DAT_00B0F910"
+   },
+   {
+    "tu": "match/tunnel_locomotion_w3_methods.cpp",
+    "name": "DAT_00B0F910"
+   }
+  ],
+  "0x00B0F9D8": [
+   {
+    "tu": "match/s1_quick_sweep.cpp",
+    "name": "ColorA_00B0F9D8"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0F9D8"
+   }
+  ],
+  "0x00B0F9DC": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0F9DC"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0F9DC"
+   }
+  ],
+  "0x00B0FA04": [
+   {
+    "tu": "match/leaf_sweep_s3.cpp",
+    "name": "DAT_00B0FA04"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FA04"
+   }
+  ],
+  "0x00B0FA1C": [
+   {
+    "tu": "match/s1_quick_sweep.cpp",
+    "name": "ColorCur_00B0FA1C"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FA1C"
+   }
+  ],
+  "0x00B0FAA0": [
+   {
+    "tu": "match/s1_quick_sweep.cpp",
+    "name": "ColorC_00B0FAA0"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FAA0"
+   }
+  ],
+  "0x00B0FAD0": [
+   {
+    "tu": "match/ownrdraw.cpp",
+    "name": "DAT_00B0FAD0"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FAD0"
+   }
+  ],
+  "0x00B0FAF8": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FAF8"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FAF8"
+   }
+  ],
+  "0x00B0FB04": [
+   {
+    "tu": "match/s1_quick_sweep.cpp",
+    "name": "ColorB_00B0FB04"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FB04"
+   }
+  ],
+  "0x00B0FB10": [
+   {
+    "tu": "match/ownrdraw.cpp",
+    "name": "DAT_00B0FB10"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FB10"
+   }
+  ],
+  "0x00B0FB1C": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FB1C"
+   },
+   {
+    "tu": "match/shape_draw_pair_methods.cpp",
+    "name": "DAT_00B0FB1C"
+   }
+  ],
+  "0x00B0FB30": [
+   {
+    "tu": "match/ownrdraw.cpp",
+    "name": "DAT_00B0FB30"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FB30"
+   }
+  ],
+  "0x00B0FB34": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FB34"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FB34"
+   },
+   {
+    "tu": "match/shape_draw_pair_methods.cpp",
+    "name": "DAT_00B0FB34"
+   }
+  ],
+  "0x00B0FB48": [
+   {
+    "tu": "match/ownrdraw.cpp",
+    "name": "DAT_00B0FB48"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FB48"
+   }
+  ],
+  "0x00B0FB50": [
+   {
+    "tu": "match/leaf_sweep_s3.cpp",
+    "name": "DAT_00B0FB50"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FB50"
+   }
+  ],
+  "0x00B0FBA8": [
+   {
+    "tu": "match/global_getter_family_methods.cpp",
+    "name": "DAT_00B0FBA8"
+   },
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FBA8"
+   },
+   {
+    "tu": "match/shape_draw_pair_methods.cpp",
+    "name": "DAT_00B0FBA8"
+   }
+  ],
+  "0x00B0FBB4": [
+   {
+    "tu": "match/global_getter_family_methods.cpp",
+    "name": "DAT_00B0FBB4"
+   },
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FBB4"
+   },
+   {
+    "tu": "match/shape_draw_pair_methods.cpp",
+    "name": "DAT_00B0FBB4"
+   }
+  ],
+  "0x00B0FBCC": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FBCC"
+   },
+   {
+    "tu": "match/leaf_sweep_s3.cpp",
+    "name": "DAT_00B0FBCC"
+   }
+  ],
+  "0x00B0FBE0": [
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FBE0_r21_4"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FBE0"
+   }
+  ],
+  "0x00B0FBE4": [
+   {
+    "tu": "match/global_getter_family_methods.cpp",
+    "name": "DAT_00B0FBE4"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FBE4"
+   }
+  ],
+  "0x00B0FBEC": [
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FBEC"
+   },
+   {
+    "tu": "match/trivial_tu255_methods.cpp",
+    "name": "DAT_00B0FBEC"
+   }
+  ],
+  "0x00B0FBF4": [
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FBF4"
+   },
+   {
+    "tu": "match/trivial_tu255_methods.cpp",
+    "name": "DAT_00B0FBF4"
+   }
+  ],
+  "0x00B0FBFC": [
+   {
+    "tu": "match/global_getter_family_methods.cpp",
+    "name": "DAT_00B0FBFC"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FBFC"
+   }
+  ],
+  "0x00B0FC04": [
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FC04"
+   },
+   {
+    "tu": "match/trivial_tu255_methods.cpp",
+    "name": "DAT_00B0FC04"
+   }
+  ],
+  "0x00B0FC0C": [
+   {
+    "tu": "match/leaf_sweep_r13_w3.cpp",
+    "name": "DAT_00B0FC0C"
+   },
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FC0C_r21_4"
+   }
+  ],
+  "0x00B0FC10": [
+   {
+    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
+    "name": "DAT_00B0FC10_r21_4"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FC10"
+   }
+  ],
+  "0x00B0FC14": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FC14"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FC14"
+   }
+  ],
+  "0x00B0FC1C": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FC1C"
+   },
+   {
+    "tu": "match/r22_w4_shape_draw.cpp",
+    "name": "DAT_00B0FC1C"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FC1C"
+   },
+   {
+    "tu": "match/shape_draw_pair_methods.cpp",
+    "name": "DAT_00B0FC1C"
+   }
+  ],
+  "0x00B0FC20": [
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B0FC20"
+   },
+   {
+    "tu": "match/screen_resource_methods.cpp",
+    "name": "DAT_00B0FC20"
+   }
+  ],
+  "0x00B1CFB8": [
+   {
+    "tu": "match/Unit.cpp",
+    "name": "DAT_00B1CFB8"
+   },
+   {
+    "tu": "match/mathtbl_init_735180.cpp",
+    "name": "DAT_00B1CFB8"
+   }
+  ],
+  "0x00B1D290": [
+   {
+    "tu": "match/static_vector_member_dtor_stubs_c.cpp",
+    "name": "DAT_00B1D290"
+   },
+   {
+    "tu": "match/veinhole_monster_class_methods.cpp",
+    "name": "VeinholeArray"
+   }
+  ],
+  "0x00B1D378": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B1D378"
+   },
+   {
+    "tu": "match/voc_class_methods.cpp",
+    "name": "Array"
+   }
+  ],
+  "0x00B1D3A8": [
+   {
+    "tu": "match/audio_counts_report_00406760.cpp",
+    "name": "DAT_00B1D3A8"
+   },
+   {
+    "tu": "match/voc_vox_r21_4_methods.cpp",
+    "name": "DAT_00B1D3A8_r21_4"
+   }
+  ],
+  "0x00B1D3C8": [
+   {
+    "tu": "match/r26_2_vox_busy_7529e0.cpp",
+    "name": "DAT_00B1D3C8_busy"
+   },
+   {
+    "tu": "match/r26_2_vox_live_node_752680.cpp",
+    "name": "DAT_00B1D3C8"
+   }
+  ],
+  "0x00B1D3F0": [
+   {
+    "tu": "match/r26_2_vox_busy_7529e0.cpp",
+    "name": "DAT_00B1D3F0_busy"
+   },
+   {
+    "tu": "match/r26_2_vox_live_node_752680.cpp",
+    "name": "DAT_00B1D3F0"
+   }
+  ],
+  "0x00B1D450": [
+   {
+    "tu": "match/r26_2_vox_busy_7529e0.cpp",
+    "name": "DAT_00B1D450_busy"
+   },
+   {
+    "tu": "match/r26_2_vox_live_node_752680.cpp",
+    "name": "DAT_00B1D450"
+   }
+  ],
+  "0x00B1D4A0": [
+   {
+    "tu": "match/static_vector_dtor_stubs.cpp",
+    "name": "DAT_00B1D4A0"
+   },
+   {
+    "tu": "match/vox_class_methods.cpp",
+    "name": "VoxArray"
+   }
+  ],
+  "0x00B1D4B8": [
+   {
+    "tu": "match/r26_2_vox_busy_7529e0.cpp",
+    "name": "DAT_00B1D4B8_busy"
+   },
+   {
+    "tu": "match/r26_2_vox_live_node_752680.cpp",
+    "name": "DAT_00B1D4B8"
+   },
+   {
+    "tu": "match/vox_class_methods.cpp",
+    "name": "VoxCurrentNode"
+   }
+  ],
+  "0x00B1D4D8": [
+   {
+    "tu": "match/audio_stream_forward_methods.cpp",
+    "name": "DAT_00B1D4D8"
+   },
+   {
+    "tu": "match/global_reset_leaf_methods.cpp",
+    "name": "DAT_00B1D4D8"
+   },
+   {
+    "tu": "match/voc_vox_r14_methods.cpp",
+    "name": "DAT_00B1D4D8"
+   }
+  ],
+  "0x00B1D5E0": [
+   {
+    "tu": "match/global_leaf_helper_methods.cpp",
+    "name": "DAT_00B1D5E0"
+   },
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B1D5E0"
+   },
+   {
+    "tu": "match/voxel_draw_buffer_clear_methods.cpp",
+    "name": "DAT_00b1d5e0"
+   },
+   {
+    "tu": "match/voxel_model_span_methods.cpp",
+    "name": "DAT_00b1d5e0"
+   }
+  ],
+  "0x00B2FB60": [
+   {
+    "tu": "match/trivial_tu264_methods.cpp",
+    "name": "DAT_00B2FB60"
+   },
+   {
+    "tu": "match/voxel_draw_buffer_clear_methods.cpp",
+    "name": "DAT_00b2fb60"
+   }
+  ],
+  "0x00B2FF78": [
+   {
+    "tu": "match/global_leaf_helper_methods.cpp",
+    "name": "DAT_00B2FF78"
+   },
+   {
+    "tu": "match/leaf_r17_w3.cpp",
+    "name": "DAT_00B2FF78"
+   },
+   {
+    "tu": "match/voxel_draw_buffer_clear_methods.cpp",
+    "name": "DAT_00b2ff78"
+   }
+  ],
+  "0x00B45BE8": [
+   {
+    "tu": "match/mathtbl_init_75a880.cpp",
+    "name": "DAT_00B45BE8"
+   },
+   {
+    "tu": "match/tu267_walk_locomotion_class.cpp",
+    "name": "DAT_00B45BE8"
+   }
+  ],
+  "0x00B732F0": [
+   {
+    "tu": "match/Startup.cpp",
+    "name": "DAT_00b732f0"
+   },
+   {
+    "tu": "match/dialog_window_helpers.cpp",
+    "name": "DAT_00B732F0"
+   },
+   {
+    "tu": "match/netshare.cpp",
+    "name": "DAT_00B732F0"
+   },
+   {
+    "tu": "match/product_version_string_methods.cpp",
+    "name": "DAT_00b732f0"
+   }
+  ],
+  "0x00B73550": [
+   {
+    "tu": "match/Scenario.cpp",
+    "name": "DAT_00B73550"
+   },
+   {
+    "tu": "match/object_class_slots_5f4520.cpp",
+    "name": "DAT_00B73550"
+   },
+   {
+    "tu": "match/tu038_building_class.cpp",
+    "name": "BuildingBGlobal_00B73550"
+   }
+  ],
+  "0x00B736F8": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B736F8"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B736F8"
+   }
+  ],
+  "0x00B73708": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B73708"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B73708"
+   }
+  ],
+  "0x00B73AE8": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B73AE8"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B73AE8"
+   }
+  ],
+  "0x00B73BD8": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B73BD8"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B73BD8"
+   }
+  ],
+  "0x00B76188": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B76188"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B76188"
+   }
+  ],
+  "0x00B76510": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B76510"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B76510"
+   }
+  ],
+  "0x00B76B00": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B76B00"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B76B00"
+   }
+  ],
+  "0x00B77820": [
+   {
+    "tu": "match/grow_list_handle_tables_methods.cpp",
+    "name": "DAT_00B77820"
+   },
+   {
+    "tu": "match/wonline.cpp",
+    "name": "DAT_00B77820"
+   }
+  ],
+  "0x00B77F58": [
+   {
+    "tu": "match/WorldDom.cpp",
+    "name": "DAT_00B77F58"
+   },
+   {
+    "tu": "match/wdt_rc_ptr_statics.cpp",
+    "name": "DAT_00B77F58"
+   }
+  ],
+  "0x00B77F68": [
+   {
+    "tu": "match/WorldDom.cpp",
+    "name": "DAT_00B77F68"
+   },
+   {
+    "tu": "match/wdt_rc_ptr_statics.cpp",
+    "name": "DAT_00B77F68"
+   }
+  ]
+ }
+}
