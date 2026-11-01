@@ -10,6 +10,7 @@
 #include "display_command.h"
 #include "header_tuning_globals.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 
 // FUNCTION: GAMEMD 0x63AB60 (decl; reloc) -- RET 8.
 bool __stdcall FUN_0063AB60(int x, int y);
@@ -52,7 +53,7 @@ void ScrollClass::vf_10(int* key, Point2D* where)
 // FUNCTION: GAMEMD 0x692F30
 void ScrollClass::FUN_00692F30()
 {
-    if (!DisplayFlag_00A8ED9C) {
+    if (!DAT_00A8ED9C) {
         Point2D origin = DisplayViewRect_00886FA0.Origin;
         Point2D mouse;
         Point2D* position = WWMouseClassInstance->vf_13(&mouse);
@@ -86,7 +87,7 @@ void ScrollClass::FUN_00692F30()
 // FUNCTION: GAMEMD 0x693060
 bool ScrollClass::vf_26()
 {
-    if (!unknown_555A && !DisplayFlag_00A8ED9C)
+    if (!unknown_555A && !DAT_00A8ED9C)
     {
         if (!DisplayTactical_00887324 || DisplayTactical_00887324->unknown_0D8 == 0.0f)
             return false;
@@ -111,7 +112,7 @@ void ScrollClass::vf_49(int arg)
 // FUNCTION: GAMEMD 0x693880
 void ScrollClass::vf_44(const Point2D* where)
 {
-    if (!DisplayFlag_00A8ED9C)
+    if (!DAT_00A8ED9C)
     {
         DisplayClass::vf_44(where);
         unknown_5550 = where->X;
@@ -131,6 +132,4 @@ void ScrollClass::vf_35()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA8ED9C
-extern bool DisplayFlag_00A8ED9C;
 // END defined globals

@@ -8,13 +8,11 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "scenario_session_globals.h"
 
 struct Obj_005CB3E0;
 struct Obj_005CB3F0;
 struct Obj_005CB430;
-
-// GLOBAL: GAMEMD 0xA8B258
-extern bool DAT_00A8B258;
 
 // FUNCTION: GAMEMD 0x5D5D20 (declaration)
 void FUN_005D5D20(Obj_005CB3E0*, int);

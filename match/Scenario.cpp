@@ -82,6 +82,7 @@
 #include "engine_core_globals.h"
 #include "mapobj_globals.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 extern char DAT_00ABDFD8[]; // GLOBAL: GAMEMD 0xABDFD8
 
 
@@ -162,7 +163,6 @@ void __fastcall FUN_0075F020(); // GAMEMD 0x75F020
 HouseClass* __fastcall FUN_00502D30(int index); // GAMEMD 0x502D30
 extern DynamicVectorClass<UnitTypeClass*> DAT_00A83CE0; // GLOBAL: GAMEMD 0x00A83CE0
 extern DynamicVectorClass<InfantryTypeClass*> DAT_00A8E348; // GLOBAL: GAMEMD 0x00A8E348
-extern char DAT_00A8B258; // GLOBAL: GAMEMD 0x00A8B258
 extern int DAT_00A8B270; // GLOBAL: GAMEMD 0x00A8B270
 extern const char STR_0083DDA8[]; // STRING: GAMEMD 0x0083DDA8
 extern const char STR_0083DD94[]; // STRING: GAMEMD 0x0083DD94
@@ -289,10 +289,6 @@ extern "C" void __fastcall FUN_006E5820(unsigned int);
 
 // GLOBAL: GAMEMD 0x00886FBC
 extern int DAT_00886FBC;
-// GLOBAL: GAMEMD 0x00A8EB84
-extern int DAT_00A8EB84;
-// GLOBAL: GAMEMD 0x00A8EB88
-extern int DAT_00A8EB88;
 // GLOBAL: GAMEMD 0x00A8EB8C
 extern int DAT_00A8EB8C;
 // GLOBAL: GAMEMD 0x00A8EB90
@@ -306,8 +302,6 @@ extern "C" void __fastcall FUN_00560BF0(int, int);
 
 // GLOBAL: GAMEMD 0x00A8B230
 extern ScenarioClass* ScenarioInstance;
-// GLOBAL: GAMEMD 0x00A8ED9C
-extern unsigned char DAT_00A8ED9C;
 // GLOBAL: GAMEMD 0x00B07784
 extern int DAT_00B07784;
 
@@ -371,8 +365,6 @@ void __fastcall FUN_0048D080(); // GAMEMD 0x0048D080
 void __fastcall FUN_007529A0(bool enabled); // GAMEMD 0x7529A0
 bool __fastcall FUN_00683AB0(const char* filename, bool flag, int value); // GAMEMD 0x683AB0
 // GLOBAL: GAMEMD 0x00A8ED5C
-// GLOBAL: GAMEMD 0x00A8E378
-extern bool DAT_00A8E378;
 // GLOBAL: GAMEMD 0x00887368
 extern ToolTipManager* DAT_00887368;
 // GLOBAL: GAMEMD 0x00A83D10
@@ -755,7 +747,7 @@ bool __fastcall FUN_00683AB0(const char* filename, bool flag, int index)
         else DAT_00A83D10.QueueSong(ScenarioInstance->unknown_1C70);
         FUN_007781A0();
         DAT_00A8ED5C = true;
-        DAT_00A8E378 = true;
+        MenusLoadFlagB = true;
         if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(0, EmptyName_00887734);
         return true;
     }
@@ -1279,7 +1271,7 @@ void __fastcall FUN_00685670()
         FUN_0055CF10();
     }
     DAT_00A8ED5C = false;
-    DAT_00A8E378 = false;
+    MenusLoadFlagB = false;
     ScenarioInstance->unknown_0614.Pause();
     FUN_005BF450();
     WWMouseClassInstance->DrawCachedOnto(DAT_0088730C, false);
@@ -1436,7 +1428,7 @@ void __fastcall FUN_00685DC0()
         FUN_0055CF10();
     }
     DAT_00A8ED5C = false;
-    DAT_00A8E378 = false;
+    MenusLoadFlagB = false;
     ScenarioInstance->unknown_0614.Pause();
     FUN_005BF450();
     WWMouseClassInstance->DrawCachedOnto(DAT_0088730C, false);
@@ -1567,7 +1559,7 @@ void __fastcall FUN_006863E0()
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
     }
     DAT_00A8ED5C = false;
-    DAT_00A8E378 = false;
+    MenusLoadFlagB = false;
     if (DAT_00887368) DAT_00887368->SetState(false);
     ScenarioInstance->unknown_0614.Pause();
     FUN_005BF450();
@@ -1592,7 +1584,7 @@ void __fastcall FUN_006863E0()
 void __fastcall FUN_00686570()
 {
     DAT_00A8ED5C = false;
-    DAT_00A8E378 = false;
+    MenusLoadFlagB = false;
     ScenarioInstance->unknown_0614.Pause();
     ScenarioInstance->unknown_1254 = 1;
     FUN_005BF450();
@@ -2781,7 +2773,7 @@ int DAT_00A8DAB4;
 // GLOBAL: GAMEMD 0xA8DBA0
 bool Flag_00A8DBA0;
 // GLOBAL: GAMEMD 0xA8E378
-bool DAT_00A8E378;
+bool MenusLoadFlagB;
 // GLOBAL: GAMEMD 0xA8EB80
 bool DAT_00A8EB80;
 // GLOBAL: GAMEMD 0xA8EB84

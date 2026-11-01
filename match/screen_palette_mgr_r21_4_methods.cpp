@@ -20,6 +20,7 @@
 #include "screen_palette_mgr_methods.h"
 #include "scenario_class_methods.h"
 #include "screen_palette_mgr_r21_4_methods.h"
+#include "scenario_session_globals.h"
 
 
 
@@ -241,7 +242,7 @@ void FUN_0072F270()
 {
     FUN_0072FA10();
     LoadSidebarPaletteSets();
-    FUN_0072FC60(DAT_00A8EB84_r21_4, DAT_00A8EB88_r21_4);
+    FUN_0072FC60(DAT_00A8EB84, DAT_00A8EB88);
     DAT_00B0FC0C_r21_4 = 1;
 }
 
@@ -266,7 +267,7 @@ void FUN_0072F350()
     DAT_00B0FC0C_r21_4 = 0;
     FUN_0072FA10();
     LoadSidebarPaletteSets();
-    FUN_0072FC60(DAT_00A8EB84_r21_4, DAT_00A8EB88_r21_4);
+    FUN_0072FC60(DAT_00A8EB84, DAT_00A8EB88);
     DAT_00B0FC0C_r21_4 = 1;
 }
 
@@ -424,10 +425,6 @@ bool DAT_00B0FCCA;
 bool DAT_00B0FCCB;
 // GLOBAL: GAMEMD 0xB0FCCC
 bool DAT_00B0FCCC;
-// GLOBAL: GAMEMD 0xA8EB84
-extern int DAT_00A8EB84_r21_4;
-// GLOBAL: GAMEMD 0xA8EB88
-extern int DAT_00A8EB88_r21_4;
 // GLOBAL: GAMEMD 0xB0F9DC
 WholeFileBlock* DAT_00B0F9DC;
 // GLOBAL: GAMEMD 0xB0FA04

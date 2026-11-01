@@ -24,6 +24,7 @@
 #include <windows.h>
 #include "mouse_ww_mouse_class.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 
 // The save-under restore that vf_3, vf_5 and SetCursor share: copy the saved background back onto the
 // screen at the cursor rectangle.
@@ -381,8 +382,6 @@ bool MouseConvertFlag;
 WWMouseClass* DAT_00B78164;
 // GLOBAL: GAMEMD 0x887300
 MouseSurfaceView* MouseSidebarSurface;
-// GLOBAL: GAMEMD 0xA8EB7C
-extern bool MouseDrawFlag;
 // GLOBAL: GAMEMD 0xB78154
 HANDLE DAT_00B78154;
 // GLOBAL: GAMEMD 0xB7816C

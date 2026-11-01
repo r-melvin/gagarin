@@ -9,6 +9,5 @@
 #include "_layout/unit_class.h"
 #include "_layout/rules_class.h"
 #include "object_placement.h"
-// GLOBAL: GAMEMD 0xA8B258 -- native branch flag, read as one byte.
-extern char DAT_00A8B258;
+#include "scenario_session_globals.h"
 #endif

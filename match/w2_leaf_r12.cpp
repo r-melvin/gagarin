@@ -11,6 +11,7 @@
 #include "_layout/session_class.h"
 #include "mathtbl_init_shapes.h"
 #include "_rt/gg_static_assert.h"
+#include "scenario_session_globals.h"
 
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc)
 void __cdecl FUN_0048D080();
@@ -168,8 +169,6 @@ bool __cdecl FUN_005BB260()
     return false;
 }
 
-// GLOBAL: GAMEMD 0xA8B258
-extern unsigned char DAT_00A8B258;
 // FUNCTION: GAMEMD 0x5D6310 (decl; reloc)
 bool __stdcall FUN_005D6310(int arg);
 

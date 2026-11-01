@@ -6,6 +6,7 @@
 
 #include "screen_palette_mgr_methods.h"
 #include "scenario_class_methods.h"
+#include "scenario_session_globals.h"
 
 // GLOBAL: GAMEMD 0xB0FBE0 -- the screen resources are loaded.
 extern char DAT_00B0FBE0_r21_4;
@@ -39,10 +40,6 @@ extern const char* DAT_00844C00;
 extern const char* DAT_00844C04;
 // GLOBAL: GAMEMD 0x844C08
 extern const char* DAT_00844C08;
-// GLOBAL: GAMEMD 0xA8EB84
-extern int DAT_00A8EB84_r21_4;
-// GLOBAL: GAMEMD 0xA8EB88
-extern int DAT_00A8EB88_r21_4;
 // FUNCTION: GAMEMD 0x72FA10 (decl; reloc)
 void __cdecl FUN_0072FA10();
 // FUNCTION: GAMEMD 0x72FC60 (decl; reloc)

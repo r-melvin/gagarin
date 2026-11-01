@@ -50,6 +50,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/ipx_address_class.h"
+#include "scenario_session_globals.h"
 
 extern "C" {
 // LIBRARY: GAMEMD 0x7CA5D3 (decl; reloc) — CRT wcscmp.
@@ -84,8 +85,6 @@ GG_STATIC_ASSERT(offsetof(NodeNameVector, Vector) == 0x04 &&
 // GLOBAL: GAMEMD 0xA8DA74 — the lobby's player node vector (Vector at
 // 0xA8DA78, Count at 0xA8DA84).
 extern NodeNameVector PlayerNodes;
-// GLOBAL: GAMEMD 0xA8DA8C — the slot index the local player picked, -1 when none.
-extern int SelectedSlotIndex;
 // GLOBAL: GAMEMD 0xA8DA90 — the eight lobby slots. The loops compare the
 // walking pointer against 0xA8DAB0, i.e. &Slots[8].
 extern NodeNameType* Slots[8];
@@ -123,8 +122,6 @@ extern int SessionKind;
 extern int NoExtraSlot;
 // GLOBAL: GAMEMD 0xA8B548 — the map's player limit.
 extern int MapPlayerLimit;
-// GLOBAL: GAMEMD 0xA8BB0C — the session's player limit.
-extern int SessionPlayerLimit;
 // GLOBAL: GAMEMD 0xAC0AC8 / 0xAC0AEC / 0xAC0EA4 / 0xAC0B10 — the four lobby
 // dirty flags cleared together.
 extern bool DirtyFlagA;

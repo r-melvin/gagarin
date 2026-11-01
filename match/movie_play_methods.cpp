@@ -15,6 +15,7 @@
 #include "vector_add_item_free.h"
 #include "_layout/map_0087f7e8.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
 void __cdecl FUN_004068E0(const char* format, ...);
@@ -82,8 +83,6 @@ extern bool DAT_00ABF35C;
 extern char** DAT_00ABF394;
 // GLOBAL: GAMEMD 0xABF3A0 -- its entry count.
 extern int DAT_00ABF3A0;
-// GLOBAL: GAMEMD 0xA8E378
-extern bool DAT_00A8E378;
 // GLOBAL: GAMEMD 0x887300
 extern void* DAT_00887300;
 // GLOBAL: GAMEMD 0x88730C
@@ -271,10 +270,10 @@ void FUN_005BF180(const char* name)
 void FUN_005BF260(int index, int unused, int a, int b, int c)
 {
     if (index >= 0 && index < DAT_00ABF3A0) {
-        bool saved = DAT_00A8E378;
-        DAT_00A8E378 = false;
+        bool saved = MenusLoadFlagB;
+        MenusLoadFlagB = false;
         Play_Movie(DAT_00ABF394[index], -1, a, b, c, 0);
-        DAT_00A8E378 = saved;
+        MenusLoadFlagB = saved;
     }
 }
 

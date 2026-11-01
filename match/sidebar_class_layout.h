@@ -21,6 +21,7 @@
 #include "tooltip_manager_shared.h"
 #include "voc_class_play_global_methods.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 
 // ---------------------------------------------------------------------------
 // Shared call views
@@ -410,8 +411,6 @@ extern SidebarAreaRect TacticalRect_00886FA0;
 // GLOBAL: GAMEMD 0x886F9C / 0x886F94 -- sidebar area height and adjustment terms.
 extern int DAT_00886F9C;
 extern int DAT_00886F94;
-// GLOBAL: GAMEMD 0xA8EB7C -- which side the sidebar is on (compared against 1 / non-zero).
-extern unsigned char SidebarSideFlag_00A8EB7C;
 
 #include "scenario_class_methods.h"
 extern ScenarioClass* DAT_00A8B230;

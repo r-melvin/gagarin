@@ -26,6 +26,7 @@
 #include "mathtbl_init_shapes.h"
 
 #include "header_init_shapes.h"
+#include "scenario_session_globals.h"
 
 // GLOBAL: GAMEMD 0xABF420
 extern double DAT_00ABF420;
@@ -368,8 +369,6 @@ void FUN_004E3F70(HWND dialog, int id, int value);
 // FUNCTION: GAMEMD 0x5E26C0 (decl; reloc) -- a dialog handle, or null.
 HWND FUN_005E26C0();
 
-// GLOBAL: GAMEMD 0xA8BB0C -- the session's player limit.
-extern int DAT_00A8BB0C;
 // GLOBAL: GAMEMD 0xA8DA90 -- the eight lobby slots.
 extern MPGameModeEntry* DAT_00A8DA90[8];
 
@@ -655,7 +654,7 @@ void MPCooperative::FUN_005C2500(HWND dialog)
     if (dialog == 0) {
         return;
     }
-    int limit = DAT_00A8BB0C;
+    int limit = SessionPlayerLimit;
     Rec_0049E3B0* rec;
     int index = 0;
     DAT_0089F518.FUN_0049E3B0(unknown_33C, &rec);

@@ -8,9 +8,9 @@
 
 #include <stdlib.h>
 #include "input_manager_class_methods.h"
+#include "scenario_session_globals.h"
 
 
-extern bool DAT_00A8ED9C;
 extern "C" __declspec(dllimport) int __stdcall GetSystemMetrics(int nIndex);
 short FUN_0053EC90(unsigned int key);
 

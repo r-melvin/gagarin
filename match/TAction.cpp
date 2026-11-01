@@ -69,6 +69,7 @@
 #include "_layout/building_light_class.h"
 #include "input_manager_class_methods.h"
 #include "mouse_ww_mouse_class.h"
+#include "scenario_session_globals.h"
 
 // GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
 extern const CLSID DAT_007E9800;
@@ -240,8 +241,6 @@ extern RulesClass* DAT_008871E0;
 // FUNCTION: GAMEMD 0x6ABC60 (decl; reloc)
 int __fastcall FUN_006ABC60(int a, int b, int c);
 
-// GLOBAL: GAMEMD 0xA8ED9C
-extern bool DAT_00A8ED9C;
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x88099A / 0x88099B / 0x88099C -- tactical-view state reset by action 0x24.
 extern int DAT_0088098C;
 extern int DAT_00880990;

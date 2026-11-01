@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
+#include "scenario_session_globals.h"
 
 struct Obj_006A8B10;
 struct Obj_006ABA20;
@@ -18,8 +19,6 @@ struct Obj_006ABAC0;
 extern char DAT_0083F92C[];
 // GLOBAL: GAMEMD 0x87F7E8
 extern char DAT_0087F7E8[];
-// GLOBAL: GAMEMD 0xA8ED9C
-extern bool DAT_00A8ED9C;
 // GLOBAL: GAMEMD 0xA8EDA0
 extern int DAT_00A8EDA0;
 // GLOBAL: GAMEMD 0xB07BC0

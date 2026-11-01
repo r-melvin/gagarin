@@ -18,6 +18,7 @@
 #include "theme_class_random_methods.h"
 #include "theme_class_scan_methods.h"
 #include "theme_class_stop_methods.h"
+#include "scenario_session_globals.h"
 
 struct ThemeSaveStream_00721010
 {
@@ -114,7 +115,7 @@ ThemeClass::ThemeClass()
 // an inline bool wrapper all fold to a bare `TEST EAX,EAX; JNZ`.
 void ThemeClass::AI()
 {
-    if (FUN_00407000() && !DAT_00A8ED64 && ScoresPresent_00A8EC74
+    if (FUN_00407000() && !DAT_00A8ED64 && DAT_00A8EC74
         && this->Volume > 0) {
         bool playing = false;
         if (this->Stream != 0) {
@@ -199,7 +200,7 @@ int ThemeClass::GetRandomIndex(int index)
 // TEST/JZ (61.7%). The engine probe 0x407000 returns int (retail tests EAX).
 void ThemeClass::QueueSong(int theme)
 {
-    if (ScoresPresent_00A8EC74) {
+    if (DAT_00A8EC74) {
         if (FUN_00407000() && !DAT_00A8ED64) {
             this->QueuedTheme = theme;
             if (theme != -1 && theme != -2 && theme != this->LastTheme) {
@@ -251,7 +252,7 @@ void ThemeClass::FadeStream()
 // duplicated copy makes VC6 hoist -1 into EDI.
 void ThemeClass::Stop(bool fade)
 {
-    if (!ScoresPresent_00A8EC74) {
+    if (!DAT_00A8EC74) {
         return;
     }
     if (!FUN_00407000()) {
@@ -302,7 +303,7 @@ reset:
 // indexes are cleared.
 void ThemeClass::Suspend()
 {
-    if (!ScoresPresent_00A8EC74) {
+    if (!DAT_00A8EC74) {
         return;
     }
     if (!FUN_00407000()) {
@@ -385,7 +386,7 @@ bool ThemeClass::IsAvailable(int theme) const
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8EC74
-bool ScoresPresent_00A8EC74;
+bool DAT_00A8EC74;
 // GLOBAL: GAMEMD 0xA8ED64
 bool DAT_00A8ED64;
 // END defined globals

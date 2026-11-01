@@ -23,12 +23,11 @@
 #include "_layout/session_class.h"
 #include "_rt/gg_static_assert.h"
 #include "_layout/theme_class.h"
+#include "scenario_session_globals.h"
 
 
 
 
-// GLOBAL: GAMEMD 0xA8EC74 — ThemeClass::ScoresPresent (byte).
-extern bool ScoresPresent_00A8EC74;
 // GLOBAL: GAMEMD 0xA8ED64 — byte gate; nonzero suppresses queueing.
 extern bool DAT_00A8ED64;
 // GLOBAL: GAMEMD 0xA83D4C — HouseClass::CurrentPlayer.

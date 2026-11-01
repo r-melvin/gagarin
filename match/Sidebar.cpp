@@ -68,6 +68,7 @@
 #include "sidebar_class_tab_methods.h"
 #include "sidebar_select_class.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 
 // FUNCTION: GAMEMD 0x5BF450 (decl; reloc) -- releases the pump list.
 void FUN_005BF450();
@@ -1936,7 +1937,7 @@ void SidebarClass::vf_34()
     ExtraButton_00B07E58.SetPosition(SidebarRect_00886F90.X + 0x10, TacticalRect_00886FA0.Y);
     ExtraButton_00B07E58.MarkRedraw();
     int bottom = ExtraGadget_00B04A10.Y + ExtraGadget_00B04A10.Height;
-    if (SidebarSideFlag_00A8EB7C) {
+    if (MouseDrawFlag) {
         ExtraButton_00B07E58.SetPosition(TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width, bottom);
     } else {
         ExtraButton_00B07E58.SetPosition(0, bottom);

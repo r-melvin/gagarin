@@ -30,6 +30,7 @@
 #include "_layout/geometry2d.h"
 #include "_layout/obj_0069e430.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 
 // Surface vtable as the mouse code uses it: slot 0 = deleting destructor (`PUSH 1; CALL [EAX]`),
 // slot 2 (+0x08) = the five-argument blit, slot 31 (+0x7C) / 32 (+0x80) = width / height. The match/renderer
@@ -95,8 +96,6 @@ public:
 
 // GLOBAL: GAMEMD 0x00B78160 - a flag read by ConvertCoords (0x7B9D90).
 extern bool MouseConvertFlag;
-// GLOBAL: GAMEMD 0x00A8EB7C - a flag read by the draw path (0x7B90C0).
-extern bool MouseDrawFlag;
 // GLOBAL: GAMEMD 0x00887300 - the sidebar surface.
 extern MouseSurfaceView* MouseSidebarSurface;
 

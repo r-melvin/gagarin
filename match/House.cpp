@@ -260,6 +260,7 @@
 #include "_layout/house_class.h"
 #include "vector_ctor_pod_family_methods.h"
 #include "display_objects_globals.h"
+#include "scenario_session_globals.h"
 
 class AlphaLightingRemapClass;
 class BulletClass;
@@ -442,8 +443,6 @@ struct Cell_004FFD90
 extern BuildingTypeClass** DAT_00A83C6C;
 // GLOBAL: GAMEMD 0xA83C78 — BuildingTypeClass::Array count.
 extern int DAT_00A83C78;
-// GLOBAL: GAMEMD 0xA8B263 — SWAllowed.
-extern char DAT_00A8B263;
 // GLOBAL: GAMEMD 0xA8022C — HouseClass::Array.Items.
 extern HouseClass** DAT_00A8022C;
 // GLOBAL: GAMEMD 0xA80238 — HouseClass::Array.Count.

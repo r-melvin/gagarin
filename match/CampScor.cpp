@@ -27,6 +27,7 @@
 #include "dialog_enable_methods.h"
 
 #include "format_duration_methods.h"
+#include "scenario_session_globals.h"
 
 // VTABLE: GAMEMD 0x7E4AAC
 // Campaign score screen state (retail slot 1 is 0x46FC00, not matched).
@@ -323,7 +324,7 @@ void FUN_0046FB50(HWND_ dlg)
         return;
     }
 
-    if (DAT_0089E000[DAT_00A8DA8C]) {
+    if (DAT_0089E000[SelectedSlotIndex]) {
         EnableWindow(first, 0);
         return;
     }
@@ -456,8 +457,6 @@ int DAT_0081B1E8 = -1;
 extern const double DAT_007E4A98 = 60.0;
 // GLOBAL: GAMEMD 0x81B304
 extern const char DAT_0081B304[] = "D:\\ra2mdpost\\CampScor.cpp";
-// GLOBAL: GAMEMD 0xA8DA8C
-extern int DAT_00A8DA8C;
 // GLOBAL: GAMEMD 0xAC119C
 Entry_0046F810* DAT_00AC119C;
 // GLOBAL: GAMEMD 0xAC11A0

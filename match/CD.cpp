@@ -46,6 +46,7 @@
 #include "trivial_tu048_methods.h"
 #include "string_class.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 
@@ -235,7 +236,7 @@ bool CCToolTip::Update(ToolTipManagerData& from)
     if (WWMouseClassInstance->GetHideCount() >= 0) {
     BitFont* font = DAT_0089C4D0;
     const RectangleStruct* area;
-    if (SidebarSideFlag_00A8EB7C == 1) {
+    if (MouseDrawFlag == 1) {
         if (from.X > TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width) {
             area = &SidebarRect_00886F90;
             TipTouchedSidebar_00884B8E = 1;
@@ -301,7 +302,7 @@ bool CCToolTip::Update(ToolTipManagerData& from)
 // FUNCTION: GAMEMD 0x478DB0
 void CCToolTip::MarkToRedraw(ToolTipManagerData& from)
 {
-    if (SidebarSideFlag_00A8EB7C == 1) {
+    if (MouseDrawFlag == 1) {
         if (from.X >= TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width) {
             TipTouchedSidebar_00884B8E = 1;
             DAT_00884B8F = 1;
@@ -344,7 +345,7 @@ void CCToolTip::Draw(bool onSidebar)
 void CCToolTip::DrawText(ToolTipManagerData& from)
 {
     Surface* surface;
-    unsigned char side = SidebarSideFlag_00A8EB7C;
+    unsigned char side = MouseDrawFlag;
     int x = from.X;
     int y = from.Y;
     if (side == 1) {
@@ -1020,8 +1021,6 @@ extern RectangleStruct SidebarRect_00886F90;
 SearchPath_0047AE10* DAT_0089E410;
 // GLOBAL: GAMEMD 0x89E418
 unsigned int DAT_0089E418;
-// GLOBAL: GAMEMD 0xA8EB7C
-extern unsigned char SidebarSideFlag_00A8EB7C;
 // GLOBAL: GAMEMD 0x884B8F
 unsigned char DAT_00884B8F;
 // GLOBAL: GAMEMD 0x89E414

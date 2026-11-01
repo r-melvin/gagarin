@@ -24,6 +24,7 @@
 #include "ui_updated_methods.h"
 #include "gscreen_class_render_methods.h"
 #include "_layout/com_0048d080.h"
+#include "scenario_session_globals.h"
 
 // Provisional source storage owner; original definition TU is not attested.
 // Native globals are pointer slots in the PE zero-filled data tail.
@@ -574,8 +575,6 @@ extern int DAT_00B76B24;
 extern unsigned int DAT_00B76B30;
 extern int DAT_00A8B274;
 extern char DAT_00A8B31C;
-extern char DAT_00A8B262;
-extern char DAT_00A8B258;
 
 extern char DAT_00B76B44[];
 
@@ -1259,8 +1258,6 @@ extern ThemeClass DAT_00A83D10;
 int __stdcall FUN_0078D120(void* window, unsigned int message, unsigned int wparam, long lparam);
 
 
-// GLOBAL: GAMEMD 0xA8ED9C
-extern bool DAT_00A8ED9C;
 #include "_layout/map_0087f7e8.h"
 
 // GLOBAL: GAMEMD 0xA8B230

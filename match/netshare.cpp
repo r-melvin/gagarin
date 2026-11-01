@@ -30,6 +30,7 @@
 #include "netshare_slot_nodes.h"
 #include "mathtbl_init_shapes.h"
 #include "_layout/session_class.h"
+#include "scenario_session_globals.h"
 
 extern "C" {
 // LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) -- CRT sprintf.
@@ -370,8 +371,6 @@ extern int DAT_00A8B268;
 extern int DAT_00A8B25C;
 extern int DAT_00A8B270;
 // GLOBAL: GAMEMD 0xA8B262, 0xA8B263, 0xA8B264, 0xA8B320, 0xA8B261
-extern unsigned char DAT_00A8B262;
-extern unsigned char DAT_00A8B263;
 extern unsigned char DAT_00A8B264;
 extern unsigned char DAT_00A8B320;
 extern unsigned char DAT_00A8B261;
@@ -745,8 +744,6 @@ extern int DAT_00A8B268;
 extern int DAT_00A8B25C;
 extern int DAT_00A8B270;
 // GLOBAL: GAMEMD 0xA8B262, 0xA8B263, 0xA8B264, 0xA8B320, 0xA8B261
-extern unsigned char DAT_00A8B262;
-extern unsigned char DAT_00A8B263;
 extern unsigned char DAT_00A8B264;
 extern unsigned char DAT_00A8B320;
 extern unsigned char DAT_00A8B261;

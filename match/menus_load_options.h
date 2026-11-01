@@ -20,6 +20,7 @@
 #include "vector_class.h"
 #include "ui_common.h"
 #include "_layout/load_options_class.h"
+#include "scenario_session_globals.h"
 
 // The savegame header record read by 0x67FD20. Constructed by 0x680FF0; the getters are the exact
 // 0x681090 / 0x6810C0 / 0x681100 / 0x681120 / 0x681140 / 0x6812D0 methods.
@@ -45,7 +46,6 @@ struct MenusSession
 extern MenusSession MenusSessionInstance;
 // GLOBAL: GAMEMD 0xA8ED5C / 0xA8E378 -- two flag bytes cleared before a load.
 extern bool MenusLoadFlagA;
-extern bool MenusLoadFlagB;
 // GLOBAL: GAMEMD 0x83D560 -- compared with the header's pad word.
 extern void* MenusDefaultHeaderPad;
 

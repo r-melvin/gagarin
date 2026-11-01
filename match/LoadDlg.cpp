@@ -11,6 +11,7 @@
 
 #include "vector_class_operations.h"
 #include "window_moving_methods.h"
+#include "scenario_session_globals.h"
 
 class FileEntryClass;
 
@@ -432,6 +433,4 @@ const wchar_t* LoadOptionsClass::Slot8()
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8ED5C
 bool MenusLoadFlagA;
-// GLOBAL: GAMEMD 0xA8E378
-extern bool MenusLoadFlagB;
 // END defined globals

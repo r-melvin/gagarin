@@ -73,6 +73,7 @@
 #include "shape_button_class.h"
 #include "ui_display_chain.h"
 #include "sidebar_display_globals.h"
+#include "scenario_session_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
@@ -170,8 +171,6 @@ extern const char* DAT_008391F8;
 
 // GLOBAL: GAMEMD 0x007F5BF8
 extern int DAT_007F5BF8;
-// GLOBAL: GAMEMD 0x00A8EB7C
-extern unsigned char DAT_00A8EB7C;
 // GLOBAL: GAMEMD 0x00A8EDA0
 extern int DAT_00A8EDA0;
 // GLOBAL: GAMEMD 0x00A8B230 -- scenario object pointer, used at native offset +0x34B8.
@@ -1235,7 +1234,7 @@ bool Obj_00653830::FUN_00653830(int a1, int a2, int a3)
 void RadarClass::vf_10(int* key, Point2D* where)
 {
     DisplayClass::vf_10(key, where);
-    int offset = DAT_00A8EB7C ? MouseViewBoundWidth : 0;
+    int offset = MouseDrawFlag ? MouseViewBoundWidth : 0;
     if (DAT_00B04A00 + offset <= where->X &&
         where->X < DAT_00B04A00 + offset + DAT_00B04A08 &&
         DAT_00B04A04 <= where->Y &&
@@ -1290,7 +1289,7 @@ void RadarClass::vf_34()
     // Native CALL 0x4AE6B0 is DisplayClass::vf_34, not a virtual dispatch.
     DisplayClass::vf_34();
 
-    const int shift = DAT_00A8EB7C ? MouseViewBoundWidth : 0;
+    const int shift = MouseDrawFlag ? MouseViewBoundWidth : 0;
 
     // These stores are the two ShapeButtonClass::OffsetX fields at +0x44.
     RadarButtonF2_00B04978.OffsetX = -shift;
@@ -1699,8 +1698,6 @@ void RadarClass::FUN_00656E90(bool force)
 
 // GLOBAL: GAMEMD 0xA8B230
 extern ScenarioClass* DAT_00A8B230;
-// GLOBAL: GAMEMD 0xA8ED9C
-extern char DAT_00A8ED9C;
 
 // FUNCTION: GAMEMD 0x622650 (decl; reloc) -- UI::BeginDialog.
 HWND __fastcall UI_BeginDialog(unsigned short id, int (__stdcall* proc)(HWND, unsigned int, unsigned int, long),
@@ -1804,7 +1801,7 @@ extern const char DAT_008393B4[] = "Tip:DiplomacyButton";
 // GLOBAL: GAMEMD 0x8393C8
 extern const char DAT_008393C8[] = "Tip:BriefingButton";
 // GLOBAL: GAMEMD 0xA8EB7C
-unsigned char DAT_00A8EB7C;
+unsigned char MouseDrawFlag;
 // GLOBAL: GAMEMD 0xA8ED6B
 bool DisplayFlag_00A8ED6B;
 // GLOBAL: GAMEMD 0x7F0424

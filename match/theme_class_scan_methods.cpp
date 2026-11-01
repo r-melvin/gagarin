@@ -4,10 +4,9 @@
 //   has moved to theme_class_r14_methods.cpp.
 
 #include "theme_class_scan_methods.h"
+#include "scenario_session_globals.h"
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x844768
 extern const char STR_00844768[] = ".WAV";
-// GLOBAL: GAMEMD 0xA8EC74
-extern char DAT_00A8EC74;
 // END defined globals

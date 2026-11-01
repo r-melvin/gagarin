@@ -22,6 +22,7 @@
 #include "mathtbl_init_shapes.h"
 #include "screen_resource_globals.h"
 #include "trig_table_functions_004cac40.h"
+#include "scenario_session_globals.h"
 
 // GLOBAL: GAMEMD 0x845530
 extern const char DAT_00845530[];
@@ -31,12 +32,6 @@ extern const char DAT_00845540[];
 extern RectangleStruct DAT_00886FB0;
 // GLOBAL: GAMEMD 0x8A00A8
 extern int DAT_008A00A8;
-// GLOBAL: GAMEMD 0xA8EB7C
-extern bool DAT_00A8EB7C;
-// GLOBAL: GAMEMD 0xA8EB84
-extern int DAT_00A8EB84;
-// GLOBAL: GAMEMD 0xA8EB88
-extern int DAT_00A8EB88;
 // GLOBAL: GAMEMD 0xA8ED6B
 extern bool DAT_00A8ED6B;
 // GLOBAL: GAMEMD 0xAC10C8
@@ -308,7 +303,7 @@ RectangleStruct* FUN_0072AD20(RectangleStruct* rect)
     RectangleStruct view = DAT_00886FB0;
     view.X = 0;
     view.Y = 0;
-    if (!DAT_00A8EB7C && !DAT_00A8ED6B) {
+    if (!MouseDrawFlag && !DAT_00A8ED6B) {
         view.X = 0xA8;
     }
     view.Width -= 0xA8;
@@ -326,7 +321,7 @@ RectangleStruct* FUN_0072AD90(RectangleStruct* rect)
     view.Height = DAT_00A8EB88;
     view.X = 0;
     view.Y = 0;
-    if (!DAT_00A8EB7C && !DAT_00A8ED6B) {
+    if (!MouseDrawFlag && !DAT_00A8ED6B) {
         view.X = 0xA8;
     }
     view.Width -= 0xA8;
