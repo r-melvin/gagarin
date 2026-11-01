@@ -832,6 +832,11 @@ class AllowedPaths(unittest.TestCase):
         self.assertTrue(self.allowed("scripts/data/link_progress.json"))
         self.assertFalse(self.allowed(".github/assets/other.svg"))
 
+    def test_rekey_maps_are_allowed(self):
+        self.assertTrue(self.allowed("scripts/agent_tools/delivery/rekeys/ctor-sweepC-20261101.json"))
+        self.assertFalse(self.allowed("scripts/agent_tools/delivery/rekeys/sub/x.json"))
+        self.assertFalse(self.allowed("scripts/agent_tools/delivery/rekeys/x.py"))
+
     def test_other_tooling_is_not(self):
         self.assertFalse(self.allowed("scripts/agent_tools/land/gates.py"))
         self.assertFalse(self.allowed("scripts/agent_tools/wwstructure/x.py"))
