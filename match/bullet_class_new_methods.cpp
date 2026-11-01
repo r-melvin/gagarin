@@ -1809,7 +1809,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
             }
         }
         Owner->TemporalImUsing->FUN_0071AF20(
-            reinterpret_cast<TemporalTechnoView*>(temporalTarget));
+            temporalTarget);
         goto common_impact_tail;
     }
 

@@ -18,6 +18,7 @@
 #include "../vector_class.h"
 
 class TechnoClass;
+class HouseClass;
 class InfantryClass;
 class InfantryTypeClass;
 struct SlaveObject;
@@ -74,6 +75,8 @@ public:
     void GuardAllSlaves();
     // FUNCTION: GAMEMD 0x6B0A20 -- detaches a lost slave and restarts its timer.
     void LostSlave(SlaveObject* slave);
+    // FUNCTION: GAMEMD 0x6B0AE0 (decl; reloc) -- __thiscall, RET 8: the killer, then a forced house (0 from 0x71A760).
+    void FUN_006B0AE0(TechnoClass* killer, HouseClass* forced);
     // Order every live slave to go idle and set State = 1 / 4 (0x6B0CC0 / 0x6B0D10).
     void SetStateIdle1();
     void SetStateIdle4();

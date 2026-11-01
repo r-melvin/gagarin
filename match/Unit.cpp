@@ -878,7 +878,7 @@ void UnitClass::vf_309(int a1)
             rearming = 1;
         }
         TemporalImUsing = temporal;
-        temporal->Owner = reinterpret_cast<TemporalTechnoView*>(this);
+        temporal->Owner = this;
         other->TemporalImUsing = 0;
         FUN_0070DC70(7);
         if (rearming) {
@@ -900,7 +900,7 @@ void UnitClass::vf_310(FootClass* passenger)
             rearming = 1;
         }
         passenger->TemporalImUsing = temporal;
-        TemporalImUsing->Owner = reinterpret_cast<TemporalTechnoView*>(passenger);
+        TemporalImUsing->Owner = passenger;
         TemporalImUsing = 0;
         if (passenger->TemporalImUsing && passenger->TemporalImUsing->Target) {
             passenger->TemporalImUsing->FUN_0071ABC0();

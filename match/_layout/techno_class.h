@@ -77,6 +77,9 @@ struct VeterancyStruct
     bool FUN_0074FFF0();
     // FUNCTION: GAMEMD 0x750090 (decl; reloc) -- one stack argument (RET 4).
     void FUN_00750090(int arg);
+    // FUNCTION: GAMEMD 0x74FF50 (decl; reloc) -- two stack arguments (RET 8); adds a/b scaled by the
+    // rules double at +0x668 to the float at +0x00.
+    void FUN_0074FF50(int a, int b);
 };
 GG_STATIC_ASSERT(sizeof(VeterancyStruct) == 4);
 #endif
@@ -535,7 +538,7 @@ public:
     unsigned char      unknown_bool_272;         // +0x272 (bool)
     unsigned char      unused_273;               // +0x273
     TemporalClass*     TemporalImUsing;          // +0x274 TemporalClass*
-    void*              TemporalTargetingMe;      // +0x278 TemporalClass*
+    TemporalClass*     TemporalTargetingMe;      // +0x278
     unsigned char      IsImmobilized;            // +0x27C (bool)
     unsigned char      align_27D[3];             // +0x27D
     unsigned int       unknown_280;              // +0x280

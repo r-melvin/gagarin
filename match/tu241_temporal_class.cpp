@@ -50,6 +50,9 @@ GG_STATIC_ASSERT(offsetof(GgTemporalClassDynamicVectorClass, CapacityIncrement) 
 GG_STATIC_ASSERT(sizeof(TemporalClass*) == 4);
 
 #include "_layout/temporal_class.h"
+#include "_layout/techno_class.h"
+#include "_layout/techno_type_class.h"
+#include "weapon_type_class.h"
 
 #include "temporal_class_let_go_methods.h"
 
@@ -153,7 +156,7 @@ int TemporalClass::GetWarpPerStep(int nHelperCount) const
             helper = unknown_44->GetWarpPerStep(nHelperCount + 1);
     }
 
-    int amount = Owner->vf_3F8(Owner->vf_2E4(0))->Type->unknown_A4;
+    int amount = Owner->vf_254(Owner->vf_185(0))->WeaponType->Damage;
     unknown_4C = amount;
     return amount + helper;
 }
@@ -247,8 +250,8 @@ void Temporal_0071ABC0::LetGo()
 void TemporalClass::JustLetGo()
 {
     if (Target) {
-        Target->unknown_270 = 0;
-        Target->unknown_278 = 0;
+        Target->BeingWarpedOut = 0;
+        Target->TemporalTargetingMe = 0;
         Target = 0;
     }
 
@@ -278,8 +281,8 @@ void TemporalClass::JustLetGo()
 // recursively detach both helper neighbours, then notify the owner.
 void TemporalClass::Detach()
 {
-    Target->unknown_270 = 0;
-    Target->unknown_278 = 0;
+    Target->BeingWarpedOut = 0;
+    Target->TemporalTargetingMe = 0;
     Target = 0;
 
     if (unknown_44) {
@@ -300,7 +303,7 @@ void TemporalClass::Detach()
     unknown_38 = 0;
 
     if (Owner)
-        Owner->vf_484(0, 1);
+        Owner->EnterIdleMode(0, 1);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

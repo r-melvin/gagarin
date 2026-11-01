@@ -269,6 +269,8 @@ public:
     int FUN_0043EF90();
     // FUNCTION: GAMEMD 0x4593A0 (decl; reloc) -- __thiscall.
     void FUN_004593A0();
+    // FUNCTION: GAMEMD 0x4585C0 (decl; reloc) -- __thiscall, RET 4: the occupants are killed, the argument is the killer (0 from 0x71A760).
+    void FUN_004585C0(TechnoClass* killer);
     // FUNCTION: GAMEMD 0x457DE0 (decl; reloc) -- two stack arguments.
     void FUN_00457DE0(int a, int b);
     // Inline helper of 0x442230 (no retail address): refreshes the damage-state animation names.
