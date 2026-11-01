@@ -151467,5 +151467,25 @@
   "name": "??_GWeaponTypeClass@@UAEPAXI@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/anim_class_r21_methods.cpp",
+  "addr": "0x422720",
+  "sym": "??0AnimClass@@QAE@XZ",
+  "len": "0x1b7",
+  "name": "??0AnimClass@@QAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/infantry_type_class_find_index_methods.cpp",
+  "addr": "0x5236A0",
+  "sym": "??0InfantryTypeClass@@QAE@PBD@Z",
+  "len": "0x2d9",
+  "name": "??0InfantryTypeClass@@QAE@PBD@Z",
+  "status": "partial",
+  "pct": 80.5,
+  "best_pct": 80.5,
+  "best_at": "2b26b0ea"
  }
 ]

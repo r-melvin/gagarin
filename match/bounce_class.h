@@ -26,13 +26,17 @@ public:
     // GAMEMD 0x4399E0  BounceClass::GetDrawingMatrix (__thiscall)
     Matrix3D* GetDrawingMatrix(Matrix3D* pBuffer) const;
 
-    unsigned char  unknown_00[0x08]; // +0x00; raw prefix, member semantics unconfirmed
+    // Retail's constructors (inline in the AnimClass constructors 0x421EA0 / 0x422720) store zero over +0x00..+0x17
+    // (three eight-byte members) and call the out-of-line quaternion constructor 0x645C30 for the two quaternions.
+    BounceClass() : unknown_00(0.0), unknown_08(0.0), unknown_10(0.0), CurrentAngle(), unknown_40() {}
+
+    double         unknown_00;       // +0x00; member semantics unconfirmed
     double         unknown_08;       // +0x08; qword loads at 0x439B00 and 0x74A7CE
     double         unknown_10;       // +0x10; qword load at 0x439B00
     Vector3D       Coords;           // +0x18; three float loads in GetCoords
     Vector3D       Velocity;         // +0x24; three float fields
-    Quaternion     CurrentAngle;     // +0x30; four floats read by GetDrawingMatrix
-    unsigned char  unknown_40[0x10]; // +0x40..+0x4F; width closed by component size
+    QuaternionEntry CurrentAngle;    // +0x30; four floats read by GetDrawingMatrix
+    QuaternionEntry unknown_40;      // +0x40..+0x4F; a second quaternion (constructor call at this+0x40)
 };
 
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z)        == 0x08);

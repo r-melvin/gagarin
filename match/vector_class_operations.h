@@ -70,18 +70,8 @@ template<class T> inline DynamicVectorClass<T>::DynamicVectorClass(const Dynamic
 }
 
 #include "vector_class_mutation.h"
+#include "vector_class_search.h"
 
-// By-value removal through the virtual FindItemIndex (slot +0x10). Inline in
-// SuperClass::Lose (0x6CB7B0) and ToolTipManager::Remove (0x724730); the call
-// through `this` inside the inlined body keeps the dispatch indirect.
-template<class T>
-inline bool DynamicVectorClass<T>::RemoveItem(const T& item)
-{
-    int index = FindItemIndex(item);
-    if (index != -1)
-        return Delete(index);
-    return false;
-}
 template<class T> bool VectorClass<T>::operator==(const VectorClass<T>& other) const
 {
     if (this->Capacity == other.Capacity) {
@@ -111,14 +101,6 @@ template<class T> int VectorClass<T>::Slot5(T* elementAddress) const
 template<class T> T VectorClass<T>::Slot6(int index) const
 {
     return this->Items[index];
-}
-
-template<class T> int DynamicVectorClass<T>::FindItemIndex(const T& item) const
-{
-    for (int i = 0; i < this->Count; ++i) {
-        if (this->Items[i] == item) return i;
-    }
-    return -1;
 }
 
 template<class T> int DynamicVectorClass<T>::Slot5(T* elementAddress) const

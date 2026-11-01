@@ -41,7 +41,7 @@ public:
     virtual ObjectClass* vf_35(HouseClass* owner);   // 35  0x523B10
     virtual CellStruct* vf_36(int a1);   // 36  0x523C20: a lazily built static cell pair, a1 unused
     // CALLEE: GAMEMD 0x005236A0 (decl; reloc) -- constructor as the class factory calls it.
-    InfantryTypeClass(int unknown_arg0 = 0);
+    InfantryTypeClass(const char* id = 0);
     // FUNCTION: GAMEMD 0x524D70 -- the scalar deleting destructor (slot 8) with the destructor body inlined.
     virtual ~InfantryTypeClass();
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x524960

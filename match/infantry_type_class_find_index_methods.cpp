@@ -7,7 +7,9 @@
 #include "_layout/infantry_type_class.h"
 #include "_layout/rules_class.h"
 #include "vector_class.h"
-#include "vector_class_operations.h"
+#include "vector_class_dynamic_ctor.h"
+#include "vector_class_mutation.h"
+#include "vector_class_search.h"
 #include "header_init_shapes.h"
 
 // LIBRARY: GAMEMD 0x7C8D20 -- CRT _strcmpi.
@@ -28,6 +30,53 @@ struct CellPairStatic_00A8F28C
     }
     ~CellPairStatic_00A8F28C() {}
 };
+
+// FUNCTION: GAMEMD 0x5236A0
+// PARTIAL: 80.5% (169 of 169 instructions, identical multiset). The only delta is the schedule of the inlined AddItem at the registry
+// append: the canonical member loads Capacity first, retail loads Count first (the register roles and the cmp operand order then differ).
+InfantryTypeClass::InfantryTypeClass(const char* id)
+    : TechnoTypeClass(id, 0), ArrayIndex(-1), Pip(1), OccupyPip(7), Sequence(0), FireUp(0), FireProne(0),
+      SecondaryFire(0), SecondaryProne(0), DeadBodies(0, 0), DeathAnims(0, 0), VoiceComment(0, 0),
+      EnterWaterSound(-1), LeaveWaterSound(-1), Cyborg(false), NotHuman(false), Ivan(false),
+      DetectionDistance(0), Occupier(false), Assaulter(false), HarvestRate(1), Fearless(false), Crawls(true),
+      Infiltrate(false), Fraidycat(false), TiberiumProof(false), Civilian(false), C4(false), Engineer(false),
+      Agent(false), Thief(false), VehicleThief(false), Doggie(false), Deployer(false), DeployedCrushable(true),
+      UseOwnName(false), JumpJetTurn(false)
+{
+    vf_rtti_5();
+    DAT_00A8E348.AddItem(this);
+    ArrayIndex = DAT_00A8E348.FindItemIndex(this);
+    OccupyWeapon.WeaponType = 0;
+    OccupyWeapon.FLH = CoordStructInit(0, 0, 0);
+    OccupyWeapon.BarrelLength = 0;
+    OccupyWeapon.BarrelThickness = 0;
+    OccupyWeapon.TurretLocked = false;
+    EliteOccupyWeapon.WeaponType = 0;
+    EliteOccupyWeapon.FLH = CoordStructInit(0, 0, 0);
+    EliteOccupyWeapon.BarrelLength = 0;
+    EliteOccupyWeapon.BarrelThickness = 0;
+    EliteOccupyWeapon.TurretLocked = false;
+    RotCount = 8;
+    RadarVisible = false;
+    Crushable = true;
+    Repairable = false;
+    Crewed = false;
+    ImmuneToPsionics = false;
+    ImmuneToPsionicWeapons = false;
+    ImmuneToPoison = false;
+    Parasiteable = true;
+    Organic = true;
+    ConsideredAircraft = false;
+    Bunkerable = false;
+    Sequence = new SequenceStruct[42];
+    for (int i = 0; i < 42; i++) {
+        Sequence[i].unknown_00 = 0;
+        Sequence[i].unknown_04 = 0;
+        Sequence[i].unknown_08[0] = 0;
+        Sequence[i].unknown_08[1] = -1;
+        Sequence[i].unknown_08[2] = 0;
+    }
+}
 
 // FUNCTION: GAMEMD 0x523C20
 // SYNTHETIC: GAMEMD 0x523C80 -- exit-time destructor stub of the static below

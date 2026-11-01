@@ -10,6 +10,8 @@
 #include "_layout/cell_class.h"
 #include "_layout/obj_004a1d30.h"
 #include "_layout/map_0087f7e8.h"
+#include "vector_class_dynamic_ctor.h"
+#include "vector_class_mutation.h"
 
 // GLOBAL: GAMEMD 0x89A1C0
 extern int DAT_0089A1C0;
@@ -49,6 +51,23 @@ extern int DAT_0089A1B4;
 int __fastcall FUN_004810A0(CoordStruct* coord);
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- play a sound index at a coordinate (index in ECX, coordinate in EDX).
 void* __fastcall FUN_007509E0(int index, const CoordStruct& where, AudioController* controller);
+
+// GLOBAL: GAMEMD 0xA8E9A8 -- AnimClass::Array.
+extern DynamicVectorClass<AnimClass*> DAT_00A8E9A8;
+
+// FUNCTION: GAMEMD 0x422720
+AnimClass::AnimClass()
+    : Type(0), OwnerObject(0), unknown_D0(-1), LightConvert(0), LightConvertIndex(-1), TintColor(0x3E8),
+      ZAdjust(0), YSortAdjust(0), IsBuildingAnim(0), UnderTemporal(0), Paused(0), Unpaused(0),
+      PausedAnimFrame(0), Reverse(0), TimeToDie(0), LoopDelay(0), Accum(0.0), HasExtras(false),
+      RemainingIterations(1), UseCellLightConvert(false), DeleteOnMapCleanup(false), UnableToContinue(false),
+      SkipProcessOnce(true), Invisible(0), PowerOff(false)
+{
+    DAT_00A8E9A8.AddItem(this);
+    StartSoundAudioController.FUN_00405BE0();
+    StopSoundAudioController.FUN_00405BE0();
+    IsAlive = true;
+}
 
 // FUNCTION: GAMEMD 0x425150
 // Slot 10 of AnimClass: when a tracked object goes away, drop the references
