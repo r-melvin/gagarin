@@ -2285,16 +2285,6 @@
     "name": "DAT_00B0FAA0"
    }
   ],
-  "0x00B0FAD0": [
-   {
-    "tu": "match/ownrdraw.cpp",
-    "name": "DAT_00B0FAD0"
-   },
-   {
-    "tu": "match/screen_resource_methods.cpp",
-    "name": "DAT_00B0FAD0"
-   }
-  ],
   "0x00B0FAF8": [
    {
     "tu": "match/leaf_r17_w3.cpp",
@@ -2315,16 +2305,6 @@
     "name": "DAT_00B0FB04"
    }
   ],
-  "0x00B0FB10": [
-   {
-    "tu": "match/ownrdraw.cpp",
-    "name": "DAT_00B0FB10"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FB10"
-   }
-  ],
   "0x00B0FB1C": [
    {
     "tu": "match/leaf_r17_w3.cpp",
@@ -2333,16 +2313,6 @@
    {
     "tu": "match/shape_draw_pair_methods.cpp",
     "name": "DAT_00B0FB1C"
-   }
-  ],
-  "0x00B0FB30": [
-   {
-    "tu": "match/ownrdraw.cpp",
-    "name": "DAT_00B0FB30"
-   },
-   {
-    "tu": "match/screen_resource_methods.cpp",
-    "name": "DAT_00B0FB30"
    }
   ],
   "0x00B0FB34": [
@@ -2357,16 +2327,6 @@
    {
     "tu": "match/shape_draw_pair_methods.cpp",
     "name": "DAT_00B0FB34"
-   }
-  ],
-  "0x00B0FB48": [
-   {
-    "tu": "match/ownrdraw.cpp",
-    "name": "DAT_00B0FB48"
-   },
-   {
-    "tu": "match/screen_palette_mgr_r21_4_methods.cpp",
-    "name": "DAT_00B0FB48"
    }
   ],
   "0x00B0FB50": [
