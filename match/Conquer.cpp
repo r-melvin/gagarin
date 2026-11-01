@@ -189,8 +189,6 @@ double __cdecl FUN_004CAD50(double value);
 // FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) -- __cdecl, double in and out.
 double __cdecl FUN_004CADE0(double value);
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- __cdecl, double in and out.
-double __cdecl FUN_004CAC40(double value);
 
 // SYNTHETIC: GAMEMD 0x48C6B0
 // GLOBAL: GAMEMD 0x89E948
@@ -590,40 +588,6 @@ extern const char STR_0081DC1C[] = "Clear";
 extern const char* const LandTypeName[12] = {STR_0081DC1C, STR_0081DC14, STR_0081BAE8, STR_0081DC0C, STR_0081AC58, STR_00817278, STR_0081DC04, STR_0081DBFC, STR_0081DBF8, STR_0081DBEC, STR_0081DBE4, STR_0081DBDC};
 // GLOBAL: GAMEMD 0x81DA78
 extern const char* const DAT_0081DA78[5] = {STR_0081DB94, STR_0081DB8C, STR_0081DB84, STR_0081758C, STR_0081DB80};
-// GLOBAL: GAMEMD 0x81BB18
-extern const char STR_0081BB18[];
-// GLOBAL: GAMEMD 0x81DBA0
-extern const char STR_0081DBA0[];
-// GLOBAL: GAMEMD 0x81DBAC
-extern const char STR_0081DBAC[];
-// GLOBAL: GAMEMD 0x81DBB4
-extern const char STR_0081DBB4[];
-// GLOBAL: GAMEMD 0x81DBBC
-extern const char STR_0081DBBC[];
-// GLOBAL: GAMEMD 0x81DBC4
-extern const char STR_0081DBC4[];
-// GLOBAL: GAMEMD 0x81DBCC
-extern const char STR_0081DBCC[];
-// GLOBAL: GAMEMD 0x81DBD4
-extern const char STR_0081DBD4[];
-// GLOBAL: GAMEMD 0x81BB18
-extern const char STR_0081BB18[];
-// GLOBAL: GAMEMD 0x81DBA0
-extern const char STR_0081DBA0[];
-// GLOBAL: GAMEMD 0x81DBAC
-extern const char STR_0081DBAC[];
-// GLOBAL: GAMEMD 0x81DBB4
-extern const char STR_0081DBB4[];
-// GLOBAL: GAMEMD 0x81DBBC
-extern const char STR_0081DBBC[];
-// GLOBAL: GAMEMD 0x81DBC4
-extern const char STR_0081DBC4[];
-// GLOBAL: GAMEMD 0x81DBCC
-extern const char STR_0081DBCC[];
-// GLOBAL: GAMEMD 0x81DBD4
-extern const char STR_0081DBD4[];
-// GLOBAL: GAMEMD 0x81BB18
-extern const char STR_0081BB18[];
 // GLOBAL: GAMEMD 0x81DBA0
 extern const char STR_0081DBA0[];
 // GLOBAL: GAMEMD 0x81DBAC

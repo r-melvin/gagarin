@@ -3,27 +3,8 @@
 // Retail v1.001 menu resource helpers. File identities are read from retail
 // filename pointers; function names remain address-based pending stronger evidence.
 #include "screen_palette_mgr_methods.h"
+#include "screen_resource_globals.h"
 
-// GLOBAL: GAMEMD 0x844DC4
-extern const char* DAT_00844DC4;
-// GLOBAL: GAMEMD 0x844DC8
-extern const char* DAT_00844DC8;
-// GLOBAL: GAMEMD 0x844D7C
-extern const char* DAT_00844D7C;
-// GLOBAL: GAMEMD 0x844D80
-extern const char* DAT_00844D80;
-// GLOBAL: GAMEMD 0xB0FB54
-extern WholeFileBlock* DAT_00B0FB54;
-// GLOBAL: GAMEMD 0xB0FA60
-extern WholeFileBlock* DAT_00B0FA60;
-// GLOBAL: GAMEMD 0xB0FD5C
-extern bool DAT_00B0FD5C;
-// GLOBAL: GAMEMD 0xB0FCF0
-extern bool DAT_00B0FCF0;
-// GLOBAL: GAMEMD 0xB0FD60
-extern PaletteSet DAT_00B0FD60;
-// GLOBAL: GAMEMD 0xB0FCF4
-extern PaletteSet DAT_00B0FCF4;
 
 // FUNCTION: GAMEMD 0x72B9E0
 // WOLSoundOptions.shp: the whole-file block is only used at width 800.
@@ -136,20 +117,4 @@ extern const char STR_00844DE0[] = "WOLSoundOptions.shp";
 extern const char STR_00844F1C[] = "MnScrnLMyInformation.PAL";
 // GLOBAL: GAMEMD 0x844F38
 extern const char STR_00844F38[] = "MnScrnLMyInformation.shp";
-// GLOBAL: GAMEMD 0x844DCC
-extern const char STR_00844DCC[];
-// GLOBAL: GAMEMD 0x844DE0
-extern const char STR_00844DE0[];
-// GLOBAL: GAMEMD 0x844F1C
-extern const char STR_00844F1C[];
-// GLOBAL: GAMEMD 0x844F38
-extern const char STR_00844F38[];
-// GLOBAL: GAMEMD 0x844DCC
-extern const char STR_00844DCC[];
-// GLOBAL: GAMEMD 0x844DE0
-extern const char STR_00844DE0[];
-// GLOBAL: GAMEMD 0x844F1C
-extern const char STR_00844F1C[];
-// GLOBAL: GAMEMD 0x844F38
-extern const char STR_00844F38[];
 // END defined globals
