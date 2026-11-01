@@ -727,5 +727,66 @@ class AllowedPaths(unittest.TestCase):
         self.assertFalse(self.allowed("scripts/agent_tools/wwstructure/x.py"))
 
 
+class BestScore(unittest.TestCase):
+    def prow(self, addr="0x401000", pct=50.0, **kw):
+        return dict(row(addr), status="partial", pct=pct, **kw)
+
+    def test_new_partial_gets_best_equal_to_pct(self):
+        m, e, _ = L.merge_deltas([], [("p", [self.prow()])], at="cafe1234")
+        self.assertEqual((m[0]["best_pct"], m[0]["best_at"]), (50.0, "cafe1234"))
+        self.assertEqual(list(m[0]).index("best_pct"), list(m[0]).index("pct") + 1)
+
+    def test_dip_keeps_best_and_where(self):
+        base = [self.prow(best_pct=80.0, best_at="aaaa0000", pct=70.0)]
+        m, e, _ = L.merge_deltas(base, [("p", [dict(self.prow(pct=60.0), op="change")])], at="cafe1234")
+        self.assertEqual((m[0]["pct"], m[0]["best_pct"], m[0]["best_at"]), (60.0, 80.0, "aaaa0000"))
+
+    def test_rise_past_best_moves_best(self):
+        base = [self.prow(best_pct=80.0, best_at="aaaa0000", pct=70.0)]
+        m, e, _ = L.merge_deltas(base, [("p", [dict(self.prow(pct=90.0), op="change")])], at="cafe1234")
+        self.assertEqual((m[0]["pct"], m[0]["best_pct"], m[0]["best_at"]), (90.0, 90.0, "cafe1234"))
+        m, e, _ = L.merge_deltas(base, [("p", [dict(self.prow(pct=90.0, best_at="named"), op="change")])], at="cafe1234")
+        self.assertEqual(m[0]["best_at"], "named")
+
+    def test_a_packet_cannot_lower_best(self):
+        base = [self.prow(best_pct=80.0, best_at="aaaa0000", pct=70.0)]
+        m, e, _ = L.merge_deltas(base, [("p", [dict(self.prow(pct=60.0, best_pct=65.0), op="change")])])
+        self.assertEqual(m[0]["best_pct"], 80.0)
+
+    def test_old_row_without_best_uses_its_pct(self):
+        base = [self.prow(pct=70.0)]
+        m, e, _ = L.merge_deltas(base, [("p", [dict(self.prow(pct=60.0), op="change")])])
+        self.assertEqual(m[0]["best_pct"], 70.0)
+
+    def test_matched_rows_carry_no_best(self):
+        base = [self.prow(best_pct=80.0, pct=70.0)]
+        m, e, _ = L.merge_deltas(base, [("p", [dict(row("0x401000"), op="change", best_pct=80.0)])])
+        self.assertNotIn("best_pct", m[0])
+
+    def test_best_problems(self):
+        old = [self.prow(best_pct=80.0, pct=70.0)]
+        self.assertEqual(L.best_problems(old, [self.prow(best_pct=80.0, pct=60.0)]), [])
+        self.assertEqual(len(L.best_problems(old, [self.prow(best_pct=75.0, pct=60.0)])), 1)
+        self.assertEqual(len(L.best_problems(old, [self.prow(best_pct=50.0, pct=60.0, addr="0x401010")])), 1)
+
+    def test_partial_dips_warn_matched_is_not_a_dip(self):
+        old = [self.prow(pct=70.0, best_pct=80.0), self.prow("0x401010", pct=50.0), row("0x401020")]
+        new = [self.prow(pct=60.0, best_pct=80.0), self.prow("0x401010", pct=55.0), dict(row("0x401020"), status="partial", pct=10.0)]
+        dips = L.partial_dips(old, new)
+        self.assertEqual([(d[0], d[2], d[3], d[4]) for d in dips], [("0x401000", 70.0, 60.0, 80.0)])
+
+    def test_backfill_and_ledger(self):
+        sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        import best_score as B
+        man = [self.prow(pct=70.0), self.prow("0x401010", pct=50.0), row("0x401020")]
+        n, raised = B.backfill(man, {0x401010: (66.0, "attempts:d:a")}, "cafe1234")
+        self.assertEqual((n, raised), (2, 1))
+        self.assertEqual((man[0]["best_pct"], man[0]["best_at"]), (70.0, "cafe1234"))
+        self.assertEqual((man[1]["best_pct"], man[1]["best_at"]), (66.0, "cafe1234 attempts:d:a"))
+        self.assertNotIn("best_pct", man[2])
+        n, raised = B.backfill(man, {0x401010: (60.0, "x")}, "beef")       # second run: nothing lowers, nothing moves
+        self.assertEqual((raised, man[1]["best_pct"], man[1]["best_at"]), (0, 66.0, "cafe1234 attempts:d:a"))
+
+
 if __name__ == "__main__":
     unittest.main()

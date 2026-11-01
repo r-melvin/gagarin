@@ -120,7 +120,7 @@ class Bundle:
             return False, "patch does not apply: %s%s" % (errl[0][:160], " (+%d more errors)" % (len(errl) - 1) if len(errl) > 1 else "")
         man, _ = L.load_manifest(os.path.join(wt, MANIFEST))
         trial = dict(self.touched)
-        merged, errs, warns = L.merge_deltas(man, [(p.name, p.delta())], touched=trial)
+        merged, errs, warns = L.merge_deltas(man, [(p.name, p.delta())], touched=trial, at=(p.base_sha() or "")[:8] or None)
         for w in warns[:5]:
             say("  warning:", w)
         if errs:

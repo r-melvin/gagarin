@@ -70,8 +70,8 @@ def make_packet(repo, outdir, name, edits, delta=None, msg=None, new_files=None)
     open(os.path.join(d, "patch.diff"), "w").write(patch)
     json.dump(delta or [], open(os.path.join(d, "manifest_delta.json"), "w"))
     open(os.path.join(d, "README.md"), "w").write(
-        "# %s\n\nBase: main HEAD\n\nProposed commit message:\n\n    %s\n\n    Synthetic selftest packet.\n\n"
-        "    Co-Authored-By: selftest <noreply@example.invalid>\n" % (name, msg or "Selftest packet " + name))
+        "# %s\n\nBase: %s\n\nProposed commit message:\n\n    %s\n\n    Synthetic selftest packet.\n\n"
+        "    Co-Authored-By: selftest <noreply@example.invalid>\n" % (name, sh("git", "-C", repo, "rev-parse", "HEAD").strip(), msg or "Selftest packet " + name))
     return d
 
 
@@ -125,6 +125,19 @@ def main():
     check("landed 1 of 2" in out, "remaining packet still lands")
     rc, out = bundle(repo, os.path.join(root, "w2b"), [pk["adda"], pk["addb"]], "--branch", "t/s2b")
     check("REJECT addb" in out and "already modified differently" in out, "two packets writing one new address: second rejected")
+
+    print("== scenario 2c: partial rows land with best_pct (a dip keeps the previous best)")
+    man = json.loads(sh("git", "-C", repo, "show", "HEAD:scripts/data/match_manifest.json"))
+    old = next(r for r in man if r["status"] == "partial" and r["pct"] > 5 and "best_pct" not in r)
+    rows = [dict(old, pct=round(old["pct"] - 5, 1), op="change", old=dict(sym=old["sym"], status="partial"))]
+    pb = make_packet(repo, P, "bestpart", {cls2: ("// FUNCTION:", "// best note\n// FUNCTION:")}, delta=rows)
+    rc, out = bundle(repo, os.path.join(root, "w2c"), [pb], "--branch", "t/s2c")
+    if "t/s2c" in sh("git", "-C", repo, "branch", "--list", "t/s2c"):
+        got = {r["addr"]: r for r in json.loads(sh("git", "-C", repo, "show", "t/s2c:scripts/data/match_manifest.json"))}
+        d = got[old["addr"]]
+        check(d["pct"] == round(old["pct"] - 5, 1) and d.get("best_pct") == old["pct"], "a dip keeps the previous best: pct %s best %s" % (d["pct"], d.get("best_pct")))
+    else:
+        check(False, "bestpart packet landed")
 
     print("== scenario 3: bisect drops regress and words, keeps the good ones")
     rc, out = bundle(repo, os.path.join(root, "w3"), [pk["good1"], pk["regress"], pk["good2"], pk["words"]], "--branch", "t/s3")

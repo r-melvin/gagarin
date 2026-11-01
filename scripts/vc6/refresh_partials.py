@@ -11,6 +11,9 @@
 import argparse, json
 import tempfile, os, subprocess, sys
 
+# A partial keeps best_pct (highest score ever recorded) beside pct (the current score): a re-measure may
+# lower pct, never best_pct. A dip is listed as a warning, not a failure.
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 MANIFEST = "scripts/data/match_manifest.json"
@@ -22,6 +25,7 @@ def main():
     args = ap.parse_args()
     entries = json.load(open(args.manifest))
     changed = []
+    head = subprocess.run(["git", "-C", ROOT, "rev-parse", "--short=8", "HEAD"], capture_output=True, text=True).stdout.strip()
     for e in entries:
         if e["status"] == "matched":
             continue
@@ -58,13 +62,18 @@ def main():
             print(f"  skip (no score) {e['addr']}")
             continue
         pct = float(out.splitlines()[-1].split(":")[1].strip().rstrip("%"))
+        prior_best = e.get("best_pct", e.get("pct", 0))
         if abs(pct - e.get("pct", 0)) > 0.05:
             changed.append((e["addr"], e.get("pct", 0), pct, e["tu"]))
             e["pct"] = pct
+        if pct > prior_best:
+            e["best_pct"], e["best_at"] = pct, head
+        elif "best_pct" not in e:
+            e["best_pct"] = prior_best
     json.dump(entries, open(args.manifest, "w"), indent=1)
     open(args.manifest, "a").write("\n")
     for a, was, now, tu in changed:
-        print(f"  {a:9s} {was:5.1f}% -> {now:5.1f}%  {tu}")
+        print(f"  {a:9s} {was:5.1f}% -> {now:5.1f}%  {tu}" + ("  WARN dip" if now < was else ""))
     print(f"{len(changed)} refreshed")
     return 0
 

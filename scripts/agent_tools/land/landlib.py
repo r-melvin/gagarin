@@ -336,6 +336,74 @@ def A(row):
     return int(row["addr"], 16)
 
 
+# ---------------------------------------------------------------- best score
+# A partial row carries its current score (`pct`, what the tree compiles to now) and the highest score
+# ever recorded for it (`best_pct`, with `best_at` naming where it was measured). Current may dip when
+# unrelated edits disturb the compiler state; best only rises. Matched rows are 100 and carry neither.
+def stamp_best(prev, row, at=None):
+    """Copy of ROW with best_pct/best_at set so that best never drops: max of the previous partial row's
+    best (or pct), the row's own best_pct and its pct. A rise is attributed to the row's own best_at, else
+    AT (the sha the packet was measured against). A row that is not partial carries no best fields."""
+    row = dict(row)
+    if row.get("status") != "partial":
+        row.pop("best_pct", None)
+        row.pop("best_at", None)
+        return row
+    pct = row.get("pct")
+    if not isinstance(pct, (int, float)):
+        return row
+    old_best, old_at = None, None
+    if prev and prev.get("status") == "partial":
+        old_best = prev.get("best_pct", prev.get("pct"))
+        old_at = prev.get("best_at")
+    own = row.get("best_pct")
+    best = max(x for x in (old_best, own, pct) if isinstance(x, (int, float)))
+    if isinstance(old_best, (int, float)) and old_best >= best:
+        where = old_at
+    else:
+        where = row.get("best_at") or at
+    out = {}
+    for k, v in row.items():
+        if k in ("best_pct", "best_at"):
+            continue
+        out[k] = v
+        if k == "pct":
+            out["best_pct"] = best
+            if where:
+                out["best_at"] = where
+    return out
+
+
+def best_problems(old, new):
+    """Hard errors for the best-score invariant between two manifests: a partial row whose best_pct is
+    below its own pct, or below the previous partial row's best (best only rises)."""
+    o = {A(r): r for r in old}
+    errs = []
+    for r in new:
+        if r.get("status") != "partial" or "best_pct" not in r:
+            continue
+        if isinstance(r.get("pct"), (int, float)) and r["best_pct"] < r["pct"]:
+            errs.append("row %s best_pct %s is below its pct %s" % (r["addr"], r["best_pct"], r["pct"]))
+        p = o.get(A(r))
+        if p and p.get("status") == "partial" and r["best_pct"] < p.get("best_pct", p.get("pct", 0)):
+            errs.append("row %s best_pct %s lowers the recorded best %s" % (r["addr"], r["best_pct"], p.get("best_pct", p.get("pct"))))
+    return errs
+
+
+def partial_dips(old, new):
+    """(addr, name, was, now, best) for partial rows whose current pct fell below the previous current pct.
+    A warning for the gate summary, not a failure: unrelated edits disturb compiler state."""
+    o = {A(r): r for r in old}
+    out = []
+    for r in new:
+        p = o.get(A(r))
+        if (p and p.get("status") == "partial" and r.get("status") == "partial"
+                and isinstance(r.get("pct"), (int, float)) and isinstance(p.get("pct"), (int, float))
+                and r["pct"] < p["pct"]):
+            out.append((r["addr"], r.get("name"), p["pct"], r["pct"], r.get("best_pct", p.get("best_pct", p["pct"]))))
+    return out
+
+
 def parse_delta(d):
     """Return a list of (op, row, old) from the delta formats seen in packets.
 
@@ -359,7 +427,7 @@ def parse_delta(d):
     return ops
 
 
-def merge_deltas(man, deltas, sort=False, touched=None):
+def merge_deltas(man, deltas, sort=False, touched=None, at=None):
     """Apply several (name, delta) in order with collision checks.
 
     Returns (new_manifest, errors, warnings). Errors are collisions: the same address
@@ -368,6 +436,8 @@ def merge_deltas(man, deltas, sort=False, touched=None):
     remove of a missing address, old-symbol mismatch, malformed rows, an op repeated
     for one address within a packet. Nothing is applied when there are errors.
     `touched` may be passed in to carry that state across successive calls (one packet at a time).
+    Every partial result row is stamped with best_pct/best_at (stamp_best); `at` is the sha a rise is
+    attributed to when the row does not name its own best_at.
     Warnings: a row without an op marker that silently replaces an existing row with a
     different tu or symbol (the landers' apply_delta default: add if new else change).
     """
@@ -422,10 +492,10 @@ def merge_deltas(man, deltas, sort=False, touched=None):
                 gone.add(idx.pop(a))
                 touched[a] = (name, None)
             elif op == "change":
-                man[idx[a]] = row
+                man[idx[a]] = stamp_best(man[idx[a]], row, at)
                 touched[a] = (name, row)
             else:
-                man.append(row)
+                man.append(stamp_best(None, row, at))
                 idx[a] = len(man) - 1
                 touched[a] = (name, row)
     if errs:

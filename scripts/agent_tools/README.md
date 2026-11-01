@@ -25,6 +25,7 @@ With no file the `words` rule is disabled and a warning is printed on every run.
 
 | job | tool |
 |---|---|
+| partial best scores | `best_score.py backfill` stamps `best_pct`/`best_at` on partial rows (max of pct and the attempts ledger); the lander keeps them rising |
 | work one function | `ctx.py ADDR` (extent, claims, flags, named listing, callers, vtable slots), `trivgen/` (exact leaf shapes), `../vc6/idiom_lift.py`, `attempts.py` (what was already tried), `aligned_diff.py` (how close a partial is) |
 | layout | `classcheck.py CLASS` (header vs binary, conflicting views) |
 | package | `delivery/pkt.py init/span/score/bind/finish`, or `delivery/branch2packet.py` for a branch-style worker |

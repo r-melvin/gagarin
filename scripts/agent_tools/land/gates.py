@@ -91,6 +91,8 @@ class Ctx:
         nm, _ = L.load_manifest(os.path.join(self.tree, L.MANIFEST))
         self.man = nm
         self.added, self.changed_rows, self.removed = L.manifest_diff(bm, nm)
+        self.best_errors = L.best_problems(bm, nm)
+        self.partial_dips = L.partial_dips(bm, nm)
         self.compute_affected()
         self.objs_new = os.path.join(self.run, "new")      # new-side object tree
         self.objs_base = os.path.join(self.run, "base")
@@ -240,11 +242,13 @@ def static(ctx):
     for r in ctx.man:
         if r["tu"] not in tracked:
             errs.append("manifest row %s names untracked TU %s" % (r["addr"], r["tu"]))
-    known = {"tu", "addr", "sym", "len", "name", "status", "pct", "note", "qualification", "metric", "pct_metric"}
+    known = {"tu", "addr", "sym", "len", "name", "status", "pct", "note", "qualification", "metric", "pct_metric",
+             "best_pct", "best_at"}
     for r in ctx.added + ctx.changed_rows:
         extra = sorted(set(r) - known)
         if extra:
             errs.append("manifest row %s has unexpected keys %s (packet bookkeeping left in the manifest?)" % (r["addr"], extra))
+    errs += ctx.best_errors        # best_pct only ever rises and never sits below the current pct
     sym = [p for p in ctx.changed if os.path.islink(os.path.join(ctx.tree, p))]
     errs += ["changed path is a symlink: " + p for p in sym]
     for e in sorted(set(errs))[:40]:
@@ -369,9 +373,12 @@ def verify(ctx):
             if not ok:
                 regressed.append((tu, r))
                 print("  REGRESSED %s::%s %s -> %s" % (tu, r.get("name"), r["addr"], pc))
-    detail = "%d TUs, %d matched rows re-proved, %d partial rows compile-checked, %d regressed, %d compile fails" % (
-        len(scope), len(work), partial, len(regressed), len(fail_tus))
-    ctx.verify_summary = {"tus": len(scope), "rows": len(work), "regressed": sorted(r["addr"] for _, r in regressed)}
+    for addr, name, was, now, best in ctx.partial_dips:     # warning only: a partial's current score may dip
+        print("  WARN partial dip %s %s: %s -> %s (best %s)" % (addr, name, was, now, best))
+    detail = "%d TUs, %d matched rows re-proved, %d partial rows compile-checked, %d regressed, %d compile fails, %d partial dips (warn)" % (
+        len(scope), len(work), partial, len(regressed), len(fail_tus), len(ctx.partial_dips))
+    ctx.verify_summary = {"tus": len(scope), "rows": len(work), "regressed": sorted(r["addr"] for _, r in regressed),
+                          "partial_dips": [list(d) for d in ctx.partial_dips]}
     return ("FAIL" if regressed or fail_tus else "PASS"), detail
 
 

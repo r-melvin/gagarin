@@ -109,8 +109,17 @@ A `partial` row must meet the partial bar, which `pktlint` enforces as the
 or more it needs `pct >= 60.0` and an identical instruction multiset
 (`diff_retail.py` prints `multiset: identical`; `pktlint --strict` checks it).
 `pct` is the positional `diff_retail.py` score recorded in the manifest. Below the
-bar is an error for new or re-scored partial rows and a warning for existing
-partial rows left unchanged.
+bar is an error for new partial rows. An existing partial row never errors: it is
+judged on `best_pct` and only warns when that is below the bar, so a stale low
+score can be corrected upward.
+
+Every `partial` row also carries `best_pct`, the highest score ever recorded for
+it, and `best_at`, where it was measured (a commit sha, plus an attempts-ledger
+id when the ledger is the source). `pct` is the current score and may dip when
+unrelated edits disturb compiler state; `best_pct` only rises (the lander stamps
+it, and a delta that lowers it is an error). A dip of `pct` is a warning in the
+gate summary, not a failure. `matched` rows stay strict: any drop below 100 is a
+regression.
 
 Open an issue or draft PR naming the addresses you're taking, so two people
 don't work on the same function.

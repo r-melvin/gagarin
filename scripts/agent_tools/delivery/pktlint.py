@@ -48,7 +48,9 @@ enforces; nothing here needs a compiler except --strict.
   partial-bar  E a NEW partial row below the project's partial bar: len < 0x400 needs pct >= 80.0; len >= 0x400 needs
                  pct >= 60.0 AND an identical instruction multiset (diff_retail's 'multiset: identical', checked under
                  --strict; without --strict an unverified multiset is a warning). pct is diff_retail's positional
-                 score, the same one --strict compares to. W for an existing tree partial whose row is unchanged (legacy)
+                 score, the same one --strict compares to. An existing tree partial is never an error: it is judged on best_pct (best only
+                 rises; a pct dip with best above the bar is silent) and W when best is below the bar, so a rising row may
+                 be corrected upward. E for a best_pct below the row's pct or below the tree's recorded best (delta rule)
   strict       (--strict) compile the touched TUs, raw_match + strict verify_relocations on every
                  matched row with the packet maps + derivable bindings; lists unbound targets;
                  E a partial row whose recorded pct differs from the compiled score (diff_retail, tolerance 0.05)
@@ -483,7 +485,19 @@ class Lint:
                 self.err("delta", "row %s matched with pct %r" % (a, r.get("pct")))
             if r.get("status") == "partial" and r.get("pct") in (100, 100.0):
                 self.warn("delta", "row %s partial at 100" % a)
-            extra = set(r) - {"tu", "addr", "sym", "len", "name", "status", "pct", "note", "qualification", "metric", "pct_metric", "op", "old"}
+            if r.get("status") == "partial" and "best_pct" in r:
+                bp, pp = r["best_pct"], r.get("pct")
+                if not isinstance(bp, (int, float)):
+                    self.err("delta", "row %s best_pct %r is not a number" % (a, bp), addr=a)
+                elif isinstance(pp, (int, float)) and bp < pp:
+                    self.err("delta", "row %s best_pct %s is below its pct %s (best only rises)" % (a, bp, pp), addr=a)
+                else:
+                    prior = self.t.by_addr.get(ai)
+                    if prior and prior.get("status") == "partial" and bp < prior.get("best_pct", prior.get("pct", 0)):
+                        self.err("delta", "row %s best_pct %s lowers the recorded best %s (best only rises)" % (
+                            a, bp, prior.get("best_pct", prior.get("pct"))), addr=a)
+            extra = set(r) - {"tu", "addr", "sym", "len", "name", "status", "pct", "note", "qualification", "metric", "pct_metric", "op", "old",
+                                   "best_pct", "best_at"}
             if extra:
                 self.err("delta", "row %s has unexpected keys %s" % (a, sorted(extra)))
             tu = r.get("tu")
@@ -751,16 +765,25 @@ class Lint:
     # ------------------------------------------------------------ partial-bar
     BAR_SMALL, BAR_SMALL_PCT, BAR_BIG_PCT = 0x400, 80.0, 60.0
 
+    def partial_prior(self, r):
+        """The partial row already in the tree for the same function as R (address, sym and len; any tu), else None."""
+        try:
+            cur = self.t.by_addr.get(D.hx(r["addr"]))
+            same = cur and cur.get("sym") == r.get("sym") and D.hx(cur["len"]) == D.hx(r["len"])
+        except Exception:
+            return None
+        return cur if same and cur.get("status") == "partial" else None
+
     def partial_legacy(self, r):
         """True when R is a partial row already in the tree and unchanged (same sym/len/status/pct; a row that
         only moved to another translation unit, a path-only restructure, is not a new partial)."""
-        try:
-            cur = self.t.by_addr.get(D.hx(r["addr"]))
-        except Exception:
-            return False
-        return bool(cur and cur.get("status") == "partial" and self.same_row(cur, r, ignore_tu=True))
+        cur = self.partial_prior(r)
+        return bool(cur and self.same_row(cur, r, ignore_tu=True))
 
     def partial_bar(self):
+        """The bar is for NEW partial rows, on their pct. A partial already in the tree is judged on its best_pct
+        (best only rises): a dip of the current pct whose best clears the bar is silent, and a rising or unchanged
+        one below the bar only warns, so stale low scores can be corrected upward."""
         for r in self.rows:
             if r.get("status") != "partial" or "addr" not in r:
                 continue
@@ -770,16 +793,22 @@ class Lint:
             except Exception:
                 continue            # the delta rule reports a malformed len
             pct = r.get("pct")
+            prior = self.partial_prior(r)
             legacy = self.partial_legacy(r)
-            level = self.warn if legacy else self.err
-            tag = " (legacy row, unchanged)" if legacy else ""
+            level = self.warn if prior else self.err
+            tag = " (legacy row, unchanged)" if legacy else (" (existing partial, not new)" if prior else "")
             if not isinstance(pct, (int, float)):
                 level("partial-bar", "partial row %s has no numeric pct%s" % (a, tag), addr=a)
                 continue
             need = self.BAR_SMALL_PCT if n < self.BAR_SMALL else self.BAR_BIG_PCT
+            if prior:
+                best = max(x for x in (pct, r.get("best_pct"), prior.get("best_pct", prior.get("pct"))) if isinstance(x, (int, float)))
+                if best < need:
+                    self.warn("partial-bar", "partial row %s (len 0x%x) best %s is below the bar %.1f%s" % (a, n, best, need, tag), addr=a)
+                continue
             if pct < need:
                 level("partial-bar", "partial row %s (len 0x%x) pct %s is below the bar %.1f%s" % (a, n, pct, need, tag), addr=a)
-            elif n >= self.BAR_SMALL and not legacy and not getattr(self, "do_strict", False):
+            elif n >= self.BAR_SMALL and not getattr(self, "do_strict", False):
                 self.warn("partial-bar", "partial row %s (len 0x%x, %.1f%%): identical instruction multiset not verified; run pktlint --strict" % (a, n, pct), addr=a)
 
     # ------------------------------------------------------------ --strict
@@ -834,7 +863,7 @@ class Lint:
                 elif abs(pct - float(r["pct"])) > 0.05:
                     self.err("strict", "partial row %s records pct %s but the compiled score is %s" % (r["addr"], r["pct"], pct),
                              addr=r["addr"], recorded=r["pct"], compiled=pct)
-                if (pct is not None and D.hx(r["len"]) >= self.BAR_SMALL and not self.partial_legacy(r)
+                if (pct is not None and D.hx(r["len"]) >= self.BAR_SMALL and self.partial_prior(r) is None
                         and "multiset: identical" not in text and pct < 100.0):
                     self.err("partial-bar", "partial row %s (len %s) is 1 KB or more and its instruction multiset is not identical to retail" % (r["addr"], r["len"]), addr=r["addr"])
             if not rows:

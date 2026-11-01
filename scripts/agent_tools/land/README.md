@@ -176,7 +176,9 @@ python3 $L/compare_modes.py --repo . --commit 2ab281c
   untracked `.cpp` files in the tree; a bundle worktree has none.
 - verify_all.py is not run as a program; `verify_all.verify()` (its oracle) is imported from the tree
   under test and applied to the objects `build_project` produced. The verdict logic is the same code.
-  "Partial rows are not re-measured" is inherited.
+  "Partial rows are not re-measured" is inherited. The `verify` gate lists partial rows whose recorded pct
+  fell against the base manifest as `WARN partial dip` lines (with best and current); they do not fail.
+  The `static` gate fails a partial whose `best_pct` is below its pct or lowers the base's best.
 - The section gate FAILS only if a function that is `matched` in the base, whose row the change does not
   touch, has different section bytes (relocation-only differences are listed, not failed). The landers'
   secmatch pairing is kept as `moved`.

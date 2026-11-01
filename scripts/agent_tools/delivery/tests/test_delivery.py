@@ -873,9 +873,55 @@ class PartialBar(unittest.TestCase):
         lt.partial_bar()
         self.assertEqual([x["level"] for x in lt.findings], ["W"])
         lt.findings = []
-        lt.rows = [dict(old, pct=11.0)]                 # pct changed: a new result, so the bar applies
+        lt.rows = [dict(old, pct=11.0)]                 # a rising existing partial may sit below the bar: warn only
+        lt.partial_bar()
+        self.assertEqual([x["level"] for x in lt.findings], ["W"])
+        lt.findings = []
+        lt.rows = [dict(old, sym="?other@@YAXXZ", pct=11.0)]    # a different function is a new partial: the bar applies
         lt.partial_bar()
         self.assertEqual([x["level"] for x in lt.findings], ["E"])
+
+    def lint_existing(self, tree_extra, row_extra):
+        cur = next(r for r in tree().by_addr.values() if r.get("status") == "matched")
+        old = dict(cur, status="partial", pct=70.0, **tree_extra)
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        lt = pktlint.Lint(packet(tmp, {"match/x/a.cpp": HEADER}, []), tree(), D.MAIN_REPO)
+        lt.t = types_ns(by_addr={D.hx(old["addr"]): old})
+        lt.rows = [dict(old, **row_extra)]
+        lt.partial_bar()
+        return [x["level"] for x in lt.findings]
+
+    def test_dip_is_judged_on_best_not_current(self):
+        # len < 0x400 bar is 80: current dips to 50 but best 85 clears the bar, so there is nothing to say
+        self.assertEqual(self.lint_existing(dict(best_pct=85.0, len="0x40"), dict(pct=50.0, best_pct=85.0)), [])
+        # best below the bar: warn, never an error, for an existing partial
+        self.assertEqual(self.lint_existing(dict(best_pct=72.0, len="0x40"), dict(pct=50.0, best_pct=72.0)), ["W"])
+        # a rising row below the bar updates pct and best: warn only
+        self.assertEqual(self.lint_existing(dict(len="0x40"), dict(pct=75.0, best_pct=75.0)), ["W"])
+
+    def test_new_partial_still_needs_the_bar(self):
+        cur = next(r for r in tree().by_addr.values() if r.get("status") == "matched")
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+        lt = pktlint.Lint(packet(tmp, {"match/x/a.cpp": HEADER}, []), tree(), D.MAIN_REPO)
+        lt.t = types_ns(by_addr={})
+        lt.rows = [dict(cur, status="partial", len="0x40", pct=50.0, best_pct=95.0)]   # best cannot buy a new row past the bar
+        lt.partial_bar()
+        self.assertEqual([x["level"] for x in lt.findings], ["E"])
+
+    def test_delta_rule_best_only_rises(self):
+        import unittest.mock as mock
+        addr, cur = next((a, r) for a, r in tree().by_addr.items() if r.get("status") == "matched")
+        old = dict(cur, status="partial", pct=40.0, best_pct=60.0)
+        tmp = tempfile.mkdtemp(prefix="dlt_", dir=D.SCRATCH)
+
+        def msgs(**kw):
+            row = dict(old, op="change", old=dict(sym=cur["sym"], status="partial"), **kw)
+            with mock.patch.dict(tree().by_addr, {addr: old}):
+                return [x["msg"] for x in lint(packet(tmp, {"match/x/a.cpp": HEADER}, [row]), {"delta"}) if x["level"] == "E"]
+        self.assertTrue(any("lowers the recorded best" in m for m in msgs(pct=45.0, best_pct=50.0)))
+        self.assertTrue(any("below its pct" in m for m in msgs(pct=45.0, best_pct=44.0)))
+        self.assertFalse(any("best" in m for m in msgs(pct=30.0, best_pct=60.0)))        # a dip with best kept is fine
+        self.assertFalse(any("best" in m for m in msgs(pct=70.0, best_pct=70.0)))        # a rise is fine
 
     def test_moved_legacy_partial_is_not_new(self):
         cur = next(r for r in tree().by_addr.values() if r.get("status") == "matched")
