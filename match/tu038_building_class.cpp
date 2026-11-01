@@ -6421,6 +6421,52 @@ int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4545D0
+// Drop animation slot 0x14, then walk every slot: a type record with the first flag set passes its live
+// animation to the AnimClass method at 0x425270; one with only the second flag restarts an empty slot
+// (placed, and not the 0x2A8 record of a type with the flag at +0x16A7); one with only the third flag
+// restarts a slot whose state byte is set, clearing it first.
+void BuildingClass::FUN_004545D0()
+{
+    DestroyNthAnim(0x14);
+
+    for (int slot = 0; slot < 0x15; slot++) {
+        if (Type->BuildingAnim[slot].Powered) {
+            if (Anims[slot]) {
+                Anims[slot]->FUN_00425270();
+            }
+        } else if (Type->BuildingAnim[slot].PoweredLight) {
+            if (!Anims[slot] && ActuallyPlacedOnMap && (!Type->bools_16A4[3] || slot != 0xA)) {
+                int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+                const char* animName;
+                if (damaged) {
+                    animName = Type->BuildingAnim[slot].Damaged;
+                } else {
+                    animName = Type->BuildingAnim[slot].Anim;
+                }
+                if (animName && *animName) {
+                    PlayAnim(animName, slot, damaged, false, 0);
+                }
+            }
+        } else if (Type->BuildingAnim[slot].PoweredEffect) {
+            if (AnimStates[slot]) {
+                AnimStates[slot] = 0;
+                int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+                const char* animName;
+                if (damaged) {
+                    animName = Type->BuildingAnim[slot].Damaged;
+                } else {
+                    animName = Type->BuildingAnim[slot].Anim;
+                }
+                if (animName && *animName) {
+                    PlayAnim(animName, slot, damaged, false, 0);
+                }
+            }
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x454730
 //
 // Drop animation slot 0x13, then restart each slot whose record is flagged in
@@ -6440,6 +6486,56 @@ void BuildingClass::FUN_00454730()
             }
             if (animName && *animName) {
                 PlayAnim(animName, slot, damaged, false, 0);
+            }
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4547C0
+// Walk every slot: a type record with the first flag passes its live animation to the AnimClass method at
+// 0x425260; with only the second flag the live animation is destroyed, and slot 0xA of a type carrying
+// the flags at +0x16A7 and +0x1058 then restarts as slot 3; with only the third flag the state byte is
+// set and the live animation destroyed, and slot 0x10 restarts as slot 0x14.
+void BuildingClass::FUN_004547C0()
+{
+    for (int slot = 0; slot < 0x15; slot++) {
+        if (Type->BuildingAnim[slot].Powered) {
+            if (Anims[slot]) {
+                Anims[slot]->FUN_00425260();
+            }
+        } else if (Type->BuildingAnim[slot].PoweredLight) {
+            if (Anims[slot]) {
+                DestroyNthAnim(slot);
+                if (slot == 0xA && Type->bools_16A4[3] && Type->BuildingAnim[3].Powered) {
+                    int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+                    const char* animName;
+                    if (damaged) {
+                        animName = Type->BuildingAnim[3].Damaged;
+                    } else {
+                        animName = Type->BuildingAnim[3].Anim;
+                    }
+                    if (animName && *animName) {
+                        PlayAnim(animName, 3, damaged, false, 0);
+                    }
+                }
+            }
+        } else if (Type->BuildingAnim[slot].PoweredEffect) {
+            if (Anims[slot]) {
+                AnimStates[slot] = 1;
+                DestroyNthAnim(slot);
+                if (slot == 0x10) {
+                    int damaged = GetHealthPercentage() <= RulesInstance->ConditionYellow;
+                    const char* animName;
+                    if (damaged) {
+                        animName = Type->BuildingAnim[0x14].Damaged;
+                    } else {
+                        animName = Type->BuildingAnim[0x14].Anim;
+                    }
+                    if (animName && *animName) {
+                        PlayAnim(animName, 0x14, damaged, false, 0);
+                    }
+                }
             }
         }
     }

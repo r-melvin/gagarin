@@ -149282,5 +149282,23 @@
   "name": "?FUN_0076EBE0@Selection@WorldDominationTour@@QAEXABVWstring@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu038_building_class.cpp",
+  "addr": "0x4545D0",
+  "sym": "?FUN_004545D0@BuildingClass@@QAEXXZ",
+  "len": "0x151",
+  "name": "BuildingClass::FUN_004545D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu038_building_class.cpp",
+  "addr": "0x4547C0",
+  "sym": "?FUN_004547C0@BuildingClass@@QAEXXZ",
+  "len": "0x163",
+  "name": "BuildingClass::FUN_004547C0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

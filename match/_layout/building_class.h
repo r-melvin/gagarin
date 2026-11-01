@@ -297,6 +297,10 @@ public:
     void FUN_00451F60(void* lightConvert, int tint);
     // FUNCTION: GAMEMD 0x4528A0 -- true when the target's centre is within PsychicDetectionRadius cells (RET 4).
     bool FUN_004528A0(AbstractClass* target);
+    // FUNCTION: GAMEMD 0x4545D0 -- restart the power-dependent animations.
+    void FUN_004545D0();
+    // FUNCTION: GAMEMD 0x4547C0 -- stop the power-dependent animations.
+    void FUN_004547C0();
     // FUNCTION: GAMEMD 0x452A40 -- one stack argument (RET 4).
     void FUN_00452A40(int a);
     // FUNCTION: GAMEMD 0x4561F0
