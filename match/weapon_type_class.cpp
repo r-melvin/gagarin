@@ -27,10 +27,10 @@ int __cdecl gg_strcmpi(const char* a, const char* b);
 void WeaponTypeClass::CalculateSpeed()
 {
     BulletTypeClass* proj = this->Projectile;
-    if (proj != 0 && proj->unknown_2DC == 0)
+    if (proj != 0 && proj->ROT == 0)
     {
         double v = (double)GameRulesPtr->Field16B8;
-        if (proj->unknown_295 != 0)
+        if (proj->Floater != 0)
             v = Func_0048ACF0();
         this->Speed = (int)Func_0048AB90(this->Range, v);
     }
@@ -43,9 +43,9 @@ int WeaponTypeClass::AllowedThreats()
 {
     BulletTypeClass* proj = this->Projectile;
     int threats = 0;
-    if (proj->unknown_2A4)
+    if (proj->AA)
         threats = 4;
-    if (proj->unknown_2A5)
+    if (proj->AG)
         threats |= 0xB8;
     return threats;
 }

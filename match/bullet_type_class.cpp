@@ -22,48 +22,48 @@ extern const CLSID DAT_007E95D0;
 // FUNCTION: GAMEMD 0x46BBC0
 BulletTypeClass::BulletTypeClass(const char* id)
     : ObjectTypeClass(id),
-      unknown_294(0),
-      unknown_295(0),
-      unknown_296(0),
-      unknown_297(0),
-      unknown_298(0),
-      unknown_299(0),
-      unknown_29A(1),
-      unknown_29B(0),
-      unknown_29C(0),
-      unknown_29D(0),
-      unknown_29E(0),
-      unknown_29F(0),
-      unknown_2A0(0),
-      unknown_2A1(1),
-      unknown_2A2(0),
-      unknown_2A3(0),
-      unknown_2A4(0),
-      unknown_2A5(1),
-      unknown_2D0(3),
-      unknown_2E4(3),
-      unknown_2A6(0),
-      unknown_2A7(0),
-      unknown_2A8(0),
-      unknown_2A9(0),
-      unknown_2AC(1),
+      Airburst(0),
+      Floater(0),
+      SubjectToCliffs(0),
+      SubjectToElevation(0),
+      SubjectToWalls(0),
+      VeryHigh(0),
+      Shadow(1),
+      Arcing(0),
+      Dropping(0),
+      Level(0),
+      Inviso(0),
+      Proximity(0),
+      Ranged(0),
+      Rotates(1),
+      Inaccurate(0),
+      FlakScatter(0),
+      AA(0),
+      AG(1),
+      Acceleration(3),
+      SpawnDelay(3),
+      Degenerates(0),
+      Bouncy(0),
+      AnimPalette(0),
+      FirersPalette(0),
+      Cluster(1),
       AirburstWeapon(0),
       ShrapnelWeapon(0),
       ShrapnelCount(0),
-      unknown_2BC(0),
-      unknown_2C0(0),
-      unknown_2C8(0.75),
-      unknown_2D4(0),
-      unknown_2D8(0),
-      unknown_2DC(0),
-      unknown_2E0(0),
+      DetonationAltitude(0),
+      Vertical(0),
+      Elasticity(0.75),
+      Color(0),
+      Trailer(0),
+      ROT(0),
+      CourseLockDuration(0),
       ScaledSpawnDelay(0),
-      unknown_2EC(0),
-      unknown_2F0(0),
-      unknown_2F4(0),
-      unknown_2F5(0),
-      unknown_2F6(0),
-      unknown_2F7(0)
+      Scalable(0),
+      Arm(0),
+      AnimLow(0),
+      AnimHigh(0),
+      AnimRate(0),
+      Flat(0)
 {
     // The native call targets AbstractClass's RTTI-interface slot 5.
     AbstractClass::vf_rtti_5();
@@ -139,26 +139,26 @@ CoordStruct BulletTypeClass::vf_27(const CoordStruct& coord)
 void BulletTypeClass::vf_13(Obj_004A1D30* crc)
 {
     AbstractTypeClass::vf_13(crc);
-    crc->FUN_004A1CA0(unknown_294);
-    crc->FUN_004A1CA0(unknown_29A);
-    crc->FUN_004A1CA0(unknown_29B);
-    crc->FUN_004A1CA0(unknown_29C);
-    crc->FUN_004A1CA0(unknown_29D);
-    crc->FUN_004A1CA0(unknown_29E);
-    crc->FUN_004A1CA0(unknown_29F);
-    crc->FUN_004A1CA0(unknown_2A0);
-    crc->FUN_004A1CA0(unknown_2A1);
-    crc->FUN_004A1CA0(unknown_2A2);
-    crc->FUN_004A1CA0(unknown_2A3);
-    crc->FUN_004A1CA0(unknown_2A4);
-    crc->FUN_004A1CA0(unknown_2A5);
-    crc->FUN_004A1CA0(unknown_2A6);
-    crc->FUN_004A1CA0(unknown_2A7);
-    crc->FUN_004A1D90(unknown_2C8);
-    crc->FUN_004A1D50(unknown_2D0);
-    crc->FUN_004A1D50(unknown_2DC);
-    crc->FUN_004A1D50(unknown_2F0);
-    crc->FUN_004A1CA0(unknown_2F7);
+    crc->FUN_004A1CA0(Airburst);
+    crc->FUN_004A1CA0(Shadow);
+    crc->FUN_004A1CA0(Arcing);
+    crc->FUN_004A1CA0(Dropping);
+    crc->FUN_004A1CA0(Level);
+    crc->FUN_004A1CA0(Inviso);
+    crc->FUN_004A1CA0(Proximity);
+    crc->FUN_004A1CA0(Ranged);
+    crc->FUN_004A1CA0(Rotates);
+    crc->FUN_004A1CA0(Inaccurate);
+    crc->FUN_004A1CA0(FlakScatter);
+    crc->FUN_004A1CA0(AA);
+    crc->FUN_004A1CA0(AG);
+    crc->FUN_004A1CA0(Degenerates);
+    crc->FUN_004A1CA0(Bouncy);
+    crc->FUN_004A1D90(Elasticity);
+    crc->FUN_004A1D50(Acceleration);
+    crc->FUN_004A1D50(ROT);
+    crc->FUN_004A1D50(Arm);
+    crc->FUN_004A1CA0(Flat);
 }
 
 // FUNCTION: GAMEMD 0x46C6A0
@@ -172,7 +172,7 @@ HRESULT __stdcall BulletTypeClass::Load(IStream* stream)
     ObjectTypeClass::FUN_005F8110();
     ObjectTypeClass::FUN_005F9070();
     // Native direct calls to 0x6CF240 register these three DWORD slots.
-    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2D8);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Trailer);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&AirburstWeapon);
     DAT_00B0C110.SwizzleManagerClass::vf_4(&ShrapnelWeapon);
     return S_OK;
@@ -224,8 +224,8 @@ BulletTypeClass* BulletTypeClass::FindOrAllocate(const char* id)
 // The native entry compares the pointer at +0x2D8 and clears it on equality.
 void BulletTypeClass::vf_10(void* target, bool removed)
 {
-    if (target == unknown_2D8)
-        unknown_2D8 = 0;
+    if (target == Trailer)
+        Trailer = 0;
 }
 
 // FUNCTION: GAMEMD 0x46C840  (__thiscall)

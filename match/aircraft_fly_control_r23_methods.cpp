@@ -70,8 +70,8 @@ int __stdcall AircraftClass::vf_06()
         return 0;
     }
     BulletTypeClass* projectile = weaponType->Projectile;
-    if (projectile->unknown_2DC > 1) {
+    if (projectile->ROT > 1) {
         return 0;
     }
-    return projectile->unknown_29E == 0;
+    return projectile->Inviso == 0;
 }

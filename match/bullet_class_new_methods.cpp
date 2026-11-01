@@ -249,8 +249,8 @@ void BulletClass::FUN_004664C0(BulletTypeClass* type, AbstractClass* target,
     Type = type;
     Owner = owner;
     AnimFrame = 0;
-    AnimRateCounter = Type->unknown_2F6;
-    if (Type->unknown_2A9 && Owner)
+    AnimRateCounter = Type->AnimRate;
+    if (Type->FirersPalette && Owner)
         InheritedColor = Owner->Owner->ColorSchemeIndex;
     else
         InheritedColor = -1;
@@ -328,15 +328,15 @@ void BulletClass::vf_23()
   }
 
   targetResolutionGate = false;
-  impactCandidate = Type->unknown_29C && !IsFallingDown;
-  if (Type->unknown_2F4 || Type->unknown_2F5) {
+  impactCandidate = Type->Dropping && !IsFallingDown;
+  if (Type->AnimLow || Type->AnimHigh) {
     --AnimRateCounter;
     if (AnimRateCounter == 0) {
       const unsigned char nextFrame = static_cast<unsigned char>(AnimFrame + 1);
-      AnimRateCounter = Type->unknown_2F6;
+      AnimRateCounter = Type->AnimRate;
       AnimFrame = nextFrame;
-      if (nextFrame > Type->unknown_2F5) {
-        AnimFrame = Type->unknown_2F4;
+      if (nextFrame > Type->AnimHigh) {
+        AnimFrame = Type->AnimLow;
       }
     }
   }
@@ -347,9 +347,9 @@ void BulletClass::vf_23()
 
   // The two native timing modes converge at the same 0x421EA0 constructor.
   // Keep allocation failure explicit and invoke the constructor only on success.
-  if (Type->unknown_2D8 != 0) {
+  if (Type->Trailer != 0) {
     const int animationPeriod = Type->ScaledSpawnDelay != 0
-        ? Type->ScaledSpawnDelay : Type->unknown_2E4;
+        ? Type->ScaledSpawnDelay : Type->SpawnDelay;
     if (DAT_00A8ED84 % animationPeriod == 0) {
       void* storage = ::operator new(sizeof(AnimClass));
       if (storage != 0) {
@@ -357,12 +357,12 @@ void BulletClass::vf_23()
         position.X = local_18c;
         position.Y = local_188;
         position.Z = local_184;
-        new (storage) AnimClass(Type->unknown_2D8, position, 1, 1, 0x600, 0, false);
+        new (storage) AnimClass(Type->Trailer, position, 1, 1, 0x600, 0, false);
       }
     }
   }
   resolutionMode = 0;
-  if (Type->unknown_2DC > 0) {
+  if (Type->ROT > 0) {
     local_110 = Velocity.Z;
     local_120 = Velocity.X;
     local_148 = Velocity.X;
@@ -379,20 +379,20 @@ void BulletClass::vf_23()
     // branch/field widths here follow native 0x466925..0x466B0B: Type+0x2E0
     // is a dword threshold, CourseLockCounter is incremented only below it,
     // Speed is the dword at Bullet+0x110, and Type+0x2D0 is a dword delta.
-    if (Type->unknown_2E0 == 0) {
+    if (Type->CourseLockDuration == 0) {
       if (Speed >= 0x28 ||
           static_cast<double>(Speed) <= static_cast<double>(fVar24) + DAT_007E1738) {
         CourseLock = 0;
       }
-    } else if (CourseLockCounter < Type->unknown_2E0) {
+    } else if (CourseLockCounter < Type->CourseLockDuration) {
       ++CourseLockCounter;
-      if (CourseLockCounter >= Type->unknown_2E0) {
+      if (CourseLockCounter >= Type->CourseLockDuration) {
         CourseLock = 0;
       }
     }
 
-    int speedAdjustment = Type->unknown_2D0;
-    if (CourseLock && Type->unknown_2E0 == 0) {
+    int speedAdjustment = Type->Acceleration;
+    if (CourseLock && Type->CourseLockDuration == 0) {
       // Native ANDs the timer with 0x80000001, then reduces it to 1 for an
       // even low bit and 0 for an odd low bit. The sign-bit steps are only
       // the compiler's branch-free boolean conversion.
@@ -436,7 +436,7 @@ void BulletClass::vf_23()
       const double phaseSin = FUN_004CACB0(phaseAngle);
       const double phaseScale = RulesInstance->MissileROTVar;
       const int phaseDirection = static_cast<int>(
-          (phaseSin * phaseScale + phaseScale + DAT_007E1718) * Type->unknown_2DC);
+          (phaseSin * phaseScale + phaseScale + DAT_007E1718) * Type->ROT);
 
       CoordStruct targetPosition;
       if (Target != 0) {
@@ -480,8 +480,8 @@ void BulletClass::vf_23()
       const int flightDistance = FlightPathStep(&flightPosition,
           reinterpret_cast<VelocityClass*>(&flightVelocity), &targetPosition,
           reinterpret_cast<const Dir16*>(&turnRate),
-          targetHasClassTwo, Type->unknown_294, Type->unknown_299,
-          Type->unknown_29D);
+          targetHasClassTwo, Type->Airburst, Type->VeryHigh,
+          Type->Level);
       Velocity = flightVelocity;
       local_18c = flightPosition.X;
       local_188 = flightPosition.Y;
@@ -495,7 +495,7 @@ void BulletClass::vf_23()
       if (local_160 <= currentVelocityLength * 0.5 || vf_114() < 1) {
         impactCandidate = true;
         resolutionMode = 1;
-        if (vf_114() > 0 && Type->unknown_294 == 0 &&
+        if (vf_114() > 0 && Type->Airburst == 0 &&
             (targetPosition.X != DAT_0089DE30.X ||
              targetPosition.Y != DAT_0089DE30.Y ||
              targetPosition.Z != DAT_0089DE30.Z)) {
@@ -539,7 +539,7 @@ void BulletClass::vf_23()
         } else {
           unknown_120 = unknown_120 * 0.9833333333333333 + distanceProgress;
           if (unknown_120 >= 0.0 && unknown_120 < 60.0 &&
-              Type->unknown_294 == 0 && Type->unknown_299 == 0) {
+              Type->Airburst == 0 && Type->VeryHigh == 0) {
             impactCandidate = true;
             resolutionMode = 1;
             goto LAB_00467b7a;
@@ -574,8 +574,8 @@ void BulletClass::vf_23()
       }
     }
     else {
-      if (Type->unknown_2C0 == 0) {
-        const double gravity = Type->unknown_295
+      if (Type->Vertical == 0) {
+        const double gravity = Type->Floater
             ? FUN_0048ACF0() : static_cast<double>(RulesInstance->Gravity);
         const double stepX = Velocity.X;
         const double stepY = Velocity.Y;
@@ -629,8 +629,8 @@ void BulletClass::vf_23()
         bool buildingCollision = false;
         BuildingClass* collisionBuilding = 0;
         if (!crossedUp && !crossedDown &&
-            static_cast<double>(baseFloor) <= Type->unknown_2C8 &&
-            Type->unknown_2C8 - 150.0 < static_cast<double>(baseFloor)) {
+            static_cast<double>(baseFloor) <= Type->Elasticity &&
+            Type->Elasticity - 150.0 < static_cast<double>(baseFloor)) {
           collisionBuilding = updatedCell->GetBuilding();
           bool connectsToOverlay = false;
           if (collisionBuilding == 0) {
@@ -654,7 +654,7 @@ void BulletClass::vf_23()
           }
         }
 
-        if (Type->unknown_2C8 < static_cast<double>(baseFloor) ||
+        if (Type->Elasticity < static_cast<double>(baseFloor) ||
             crossedUp || crossedDown || buildingCollision) {
           if (Owner == 0) {
             if (crossedDown) {
@@ -674,7 +674,7 @@ void BulletClass::vf_23()
                                        static_cast<float>(stepZ));
             Vector3D transformed = BulletTransformDirection(
                 inverseTerrainTransform, velocityDirection);
-            const float terrainScale = static_cast<float>(Type->unknown_2C8);
+            const float terrainScale = static_cast<float>(Type->Elasticity);
             transformed.X *= terrainScale;
             transformed.Y *= terrainScale;
             transformed.Z *= -terrainScale;
@@ -697,7 +697,7 @@ void BulletClass::vf_23()
           Velocity.Z * Velocity.Z);
       int measuredSpeed = static_cast<int>(velocityLength);
       if (measuredSpeed < Speed) {
-        const int adjustedSpeed = Type->unknown_2D0 + measuredSpeed;
+        const int adjustedSpeed = Type->Acceleration + measuredSpeed;
         local_160 = static_cast<double>(adjustedSpeed);
         if (Velocity.X == 0.0 && Velocity.Y == 0.0 && Velocity.Z == 0.0) {
           Velocity.X = 100.0;
@@ -724,7 +724,7 @@ void BulletClass::vf_23()
       local_188 = oldY + stepY;
       local_184 = oldZ + stepZ;
 
-      if (Type->unknown_2BC < local_184) {
+      if (Type->DetonationAltitude < local_184) {
         resolutionMode = 1;
         impactCandidate = 1;
       } else {
@@ -780,7 +780,7 @@ void BulletClass::vf_23()
     CellStruct targetCellCoords;
     targetCellCoords.X = sVar19;
     targetCellCoords.Y = sVar4;
-    if ((((sVar16 == sVar19) && (sVar21 == sVar4)) && (Type->unknown_2C0 == '\0')) &&
+    if ((((sVar16 == sVar19) && (sVar21 == sVar4)) && (Type->Vertical == '\0')) &&
        (iVar5 = vf_114(), iVar5 < DAT_0089DE70 * 2)) {
 LAB_00467879:
       resolutionMode = 1;
@@ -794,7 +794,7 @@ LAB_00467879:
           Map_0087F7E8.FUN_005657A0(&targetCellCoords));
       BuildingClass* bulletCellBuilding = bulletCell->GetBuilding();
       BuildingClass* targetCellBuilding = targetCell->GetBuilding();
-      if ((bulletCellBuilding != 0 && Type->unknown_2C0 == '\0') &&
+      if ((bulletCellBuilding != 0 && Type->Vertical == '\0') &&
          (bulletCellBuilding == targetCellBuilding &&
           (iVar5 = vf_114(), iVar5 < DAT_0089DE70 * 2))
          ) goto LAB_00467879;
@@ -837,7 +837,7 @@ LAB_004679d5:
       if ((!targetResolutionGate) && (ownerRelationAccepted == '\0') && nearbyWithin127) {
         resolutionMode = 1;
         impactCandidate = 1;
-        if (Type->unknown_2A2 == '\0') {
+        if (Type->Inaccurate == '\0') {
           local_18c = nearbyObject->Location.X;
           local_188 = nearbyObject->Location.Y;
           local_184 = nearbyObject->Location.Z;
@@ -857,7 +857,7 @@ LAB_004679d5:
         local_184 = Location.Z;
         goto LAB_00467b7a;
       }
-      if (Type->unknown_2C0 == '\0') {
+      if (Type->Vertical == '\0') {
         Velocity.X = local_120;
         Velocity.Y = local_118;
         Velocity.Z = local_110;
@@ -895,7 +895,7 @@ LAB_00467bf0:
         vf_115(0);
       }
     }
-    if ((Type->unknown_2DC < 1) && (Type->unknown_2A0 == '\0')) {
+    if ((Type->ROT < 1) && (Type->Ranged == '\0')) {
       iVar5 = 0;
     }
     else {
@@ -910,15 +910,15 @@ LAB_00467bf0:
       iVar5 = 1;
       effectMode = 1;
     }
-    if ((!impactCandidate) && ((Type->unknown_29C != '\0' || (iVar5 == 0)))) {
-      if ((Type->unknown_2A6 != '\0') && (5 < Health)) {
+    if ((!impactCandidate) && ((Type->Dropping != '\0' || (iVar5 == 0)))) {
+      if ((Type->Degenerates != '\0') && (5 < Health)) {
         Health = Health + -1;
       }
       goto LAB_00467fba;
     }
     if (Target != 0 &&
        (((effectMode == 1 || targetResolutionGate) &&
-        ((Type->unknown_294 == '\0' && (Type->unknown_2A2 == '\0'))))))
+        ((Type->Airburst == '\0' && (Type->Inaccurate == '\0'))))))
     {
       CoordStruct targetCenter = Target->vf_22();
       const int currentX = local_18c;
@@ -1009,12 +1009,12 @@ LAB_00467fba:
 int BulletClass::vf_122()
 {
     int frame = 0;
-    if (!Type->unknown_2A1) {
+    if (!Type->Rotates) {
         unsigned short raw = (unsigned short)(int)((FUN_004CAE30(
             -Velocity.Y, Velocity.X) - DAT_007E2820) * DAT_007E2818);
         frame = DAT_007F4890[((raw >> 10) + 1 >> 1) & 31];
     }
-    if (Type->unknown_2F4 || Type->unknown_2F5)
+    if (Type->AnimLow || Type->AnimHigh)
         frame = AnimFrame;
     return frame;
 }
@@ -1027,7 +1027,7 @@ void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
         if (Map_0087F7E8.IsLocationFogged(&where))
             return;
     }
-    if (Type->unknown_29E || SpawnNextAnim)
+    if (Type->Inviso || SpawnNextAnim)
         return;
 
     if (Type->Voxel) {
@@ -1061,16 +1061,16 @@ void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
         }
     }
     Point2D zero(0, 0);
-    if (height > 0 && Type->unknown_29A) {
+    if (height > 0 && Type->Shadow) {
         Point2D shadow(point->X, point->Y + Tactical::AdjustForZ(height));
         FUN_004AED70(DAT_00887314, DAT_0087F6C4, shape, frame, &shadow,
             clip, 0x2601, 0, -10 - Tactical::AdjustForZ(floorHeight), 0,
             1000, 0, 0, 0, zero);
     }
     void* conversion = DAT_0087F6C4;
-    if (Type->unknown_2A8)
+    if (Type->AnimPalette)
         conversion = DAT_0087F6C0;
-    else if (Type->unknown_2A9) {
+    else if (Type->FirersPalette) {
         int index = InheritedColor;
         if (index == -1)
             index = DAT_00A83D4C->ColorSchemeIndex;
@@ -1123,7 +1123,7 @@ void BulletClass::vf_10(void* pointer, bool removed)
     AbstractClass* object = static_cast<AbstractClass*>(pointer);
     if (removed && object->vf_11() == 8) {
         BulletClass* bullet = static_cast<BulletClass*>(object);
-        if (bullet->Type->unknown_2EC) {
+        if (bullet->Type->Scalable) {
             for (int i = 0; i < ScalableBullets.Count; ++i) {
                 if (ScalableBullets.Items[i] == bullet) {
                     ScalableBullets.RemoveItem(bullet);
@@ -1147,7 +1147,7 @@ bool BulletClass::vf_124(const CoordStruct& source,
     CoordStruct destination = Target->vf_22();
     TargetCoords = destination;
 
-    if (Type->unknown_2A3 && Type->unknown_29E) {
+    if (Type->FlakScatter && Type->Inviso) {
         float dx = (float)(source.X - destination.X);
         float dy = (float)(destination.Y - source.Y);
         int dz = source.Z - destination.Z;
@@ -1177,7 +1177,7 @@ bool BulletClass::vf_124(const CoordStruct& source,
         destination.Z = oldZ;
     }
 
-    if (Type->unknown_29E) {
+    if (Type->Inviso) {
         HouseClass* house = Owner ? Owner->Owner : 0;
         CoordStruct intermediate = Map_0087F7E8.FUN_005880A0(
             source, destination, house);
@@ -1207,12 +1207,12 @@ bool BulletClass::vf_124(const CoordStruct& source,
             Velocity.Z *= scale;
         }
     }
-    int value = Type->unknown_2F0;
+    int value = Type->Arm;
     if (Target && Target->vf_11() == 2)
         value = 0;
     CoordStruct where = Location;
     Data.FUN_004E1130(where, destination, value, 0x7FFFFFFF);
-    if (Type->unknown_2DC > 0) {
+    if (Type->ROT > 0) {
         if (BulletUnorderedOrZero(Velocity.X)
             && BulletUnorderedOrZero(Velocity.Y)
             && BulletUnorderedOrZero(Velocity.Z))
@@ -1231,7 +1231,7 @@ bool BulletClass::vf_124(const CoordStruct& source,
 // FUNCTION: GAMEMD 0x468B90
 int BulletClass::vf_30()
 {
-    return Type->unknown_2F7 ? 1 : 3;
+    return Type->Flat ? 1 : 3;
 }
 
 // FUNCTION: GAMEMD 0x468BB0
@@ -1240,7 +1240,7 @@ bool BulletClass::FUN_00468BB0(CoordStruct* where)
     *where = Location;
 
     CellClass* currentCell = Map_0087F7E8.FUN_00565730(*where);
-    if (Type->unknown_296 || Type->unknown_298) {
+    if (Type->SubjectToCliffs || Type->SubjectToWalls) {
         CellClass* sourceCell = Map_0087F7E8.FUN_00565730(SourceCoords);
         CellClass* targetCell = Map_0087F7E8.FUN_00565730(TargetCoords);
         // Native 0x5657A0 returns the actual zero-offset CellClass object;
@@ -1261,7 +1261,7 @@ bool BulletClass::FUN_00468BB0(CoordStruct* where)
         return true;
     }
 
-    if (Target != 0 && Type->unknown_2A3) {
+    if (Target != 0 && Type->FlakScatter) {
         const int sourceZ = Location.Z;
         CoordStruct targetCoords = Target->vf_22();
         if (sourceZ < targetCoords.Z && vf_114() < 0) {
@@ -1269,11 +1269,11 @@ bool BulletClass::FUN_00468BB0(CoordStruct* where)
         }
     }
 
-    if (Type->unknown_29D && currentCell->IsOnFloor()) {
+    if (Type->Level && currentCell->IsOnFloor()) {
         return true;
     }
 
-    if (Type->unknown_2A4 && Target != 0 && Target->IsInAir() &&
+    if (Type->AA && Target != 0 && Target->IsInAir() &&
         this->FUN_005F6360(Target) < 0x80) {
         return true;
     }
@@ -1293,7 +1293,7 @@ void BulletClass::FUN_00468D80(int mode)
     ObjectClass* airborneObject = static_cast<ObjectClass*>(airborneTarget);
 
     // Native branches directly to final emission when Type+0x2A2 is set.
-    if (!Type->unknown_2A2) {
+    if (!Type->Inaccurate) {
         if (Target != 0) {
             const CoordStruct targetCoords = Target->vf_18();
             CoordStruct difference;
@@ -1308,14 +1308,14 @@ void BulletClass::FUN_00468D80(int mode)
             // the __ftol call at 0x468E57.
             const int distance = static_cast<int>(FUN_004CAC40(squaredDistance));
 
-            if (distance < 0x20 && !Type->unknown_294 && !Type->unknown_2A2)
+            if (distance < 0x20 && !Type->Airburst && !Type->Inaccurate)
                 effectPosition = Target->vf_18();
         }
 
         WarheadTypeClass* warhead = static_cast<WarheadTypeClass*>(WH);
-        if (!warhead->EMEffect && !Type->unknown_294 &&
-            static_cast<unsigned char>(mode) == 0 && !Type->unknown_29B &&
-            Type->unknown_2DC <= 0 &&
+        if (!warhead->EMEffect && !Type->Airburst &&
+            static_cast<unsigned char>(mode) == 0 && !Type->Arcing &&
+            Type->ROT <= 0 &&
             (Data.unknown_18 != DAT_0089DE30.X ||
              Data.unknown_1C != DAT_0089DE30.Y ||
              Data.unknown_20 != DAT_0089DE30.Z)) {
@@ -1324,7 +1324,7 @@ void BulletClass::FUN_00468D80(int mode)
             effectPosition.Z = Data.unknown_20;
         }
 
-        if (!warhead->EMEffect && !Type->unknown_294) {
+        if (!warhead->EMEffect && !Type->Airburst) {
             if (airborneTarget == 0 || airborneObject->vf_30() == 2) {
                 if (Target != 0 && this->FUN_005F6360(Target) < 0x2A) {
                     effectPosition = Target->vf_22();
@@ -1341,12 +1341,12 @@ void BulletClass::FUN_00468D80(int mode)
         }
     }
 
-    if (Type->unknown_294) {
+    if (Type->Airburst) {
         this->FUN_004690B0(&effectPosition);
     } else {
         const CoordStruct emissionOrigin = effectPosition;
         int emitted = 0;
-        while (emitted < Type->unknown_2AC) {
+        while (emitted < Type->Cluster) {
             this->FUN_004690B0(&effectPosition);
             if (!IsAlive)
                 break;
@@ -1603,10 +1603,10 @@ GG_STATIC_ASSERT(offsetof(BulletVelocity, Y) == 0x8);
 GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->Y) == 8);
 GG_STATIC_ASSERT(offsetof(BulletVelocity, Z) == 0x10);
 GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->Z) == 8);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_294) == 0x294);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_294) == 1);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_29E) == 0x29e);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_29E) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, Airburst) == 0x294);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->Airburst) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, Inviso) == 0x29e);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->Inviso) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, AirburstWeapon) == 0x2b0);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->AirburstWeapon) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, ShrapnelWeapon) == 0x2b4);
@@ -2064,7 +2064,7 @@ void BulletClass::FUN_004690B0(const CoordStruct* impact)
 common_impact_tail:
     const CoordStruct impactBase = *impact;
     CoordStruct impactPosition = impactBase;
-    if (Type->unknown_29E) {
+    if (Type->Inviso) {
         // 0x49F420: output in ECX, base in EDX, stack args (0x20, 0).
         FUN_0049F420(&impactPosition, &impactBase, 0x20, 0);
     }
@@ -2239,7 +2239,7 @@ debris_phase_469d06:
 
     // Native 469ECE captures the INI AirburstWeapon pointer once. Its
     // WeaponTypeClass identity is proved by the loader/factory/RTTI chain.
-    if (Type->unknown_294) {
+    if (Type->Airburst) {
         WeaponTypeClass* effectConfig = Type->AirburstWeapon;
         BulletTypeClass* extraType = effectConfig->Projectile;
         CellClass* originalCell = vf_111();
@@ -2669,7 +2669,7 @@ void BulletClass::InitScalable()
     if (extra < 0)
         extra = 0;
 
-    this->Type->SetScaledSpawnDelay(this->Type->unknown_2E4 + extra / 3);
+    this->Type->SetScaledSpawnDelay(this->Type->SpawnDelay + extra / 3);
 }
 
 // SYNTHETIC: GAMEMD 0x46B990 -- compiler-generated BulletClass AddRef adjustor thunk.

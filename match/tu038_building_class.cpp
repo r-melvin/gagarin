@@ -3130,7 +3130,7 @@ int BuildingClass::vf_91(int* damage, int distance, void* warheadArg, void* sour
             }
             OwnerCountryIndex = attacker->vf_15()->ArrayIndex;
             if (CurrentMission != 0x13 && !Owner->FUN_004F9A90(attacker) && vf_254(0)->WeaponType
-                && !vf_254(0)->WeaponType->Projectile->unknown_2A4 && (!Target || !vf_235(Target))) {
+                && !vf_254(0)->WeaponType->Projectile->AA && (!Target || !vf_235(Target))) {
                 if (attacker->vf_11() == 2 || (Owner->IsControlledByHuman() && !Rules->PlayerReturnFire)) {
                     if (!PrimaryFacing.IsRotating() && vf_212()) {
                         DirStruct dir;
@@ -3223,7 +3223,7 @@ bool BuildingClass::vf_80(int mode, CellStruct* cell, int a3, int a4)
 void BuildingClass::vf_242(AbstractClass* target)
 {
     if (CurrentMission != 0x13 && vf_212()) {
-        if (target && vf_254(0)->WeaponType && !vf_254(0)->WeaponType->Projectile->unknown_2A4 && !IsCloseEnoughToAttack(target)) {
+        if (target && vf_254(0)->WeaponType && !vf_254(0)->WeaponType->Projectile->AA && !IsCloseEnoughToAttack(target)) {
             TechnoClass::vf_242(0);
             if (Type->bools_16A4[0x16C4 - 0x16A4] || Type->bools_16A4[0x16CA - 0x16A4]) {
                 if (!Owner->IsControlledByHuman() && !IsUnderEMP()) {
@@ -3566,7 +3566,7 @@ int BuildingClass::vf_29(ObjectClass* obj, char flag)
         if (vf_254(0)->WeaponType == 0) {
             goto checkTarget;
         }
-        if (!vf_254(0)->WeaponType->Projectile->unknown_2A5 || Type->bools_16A4[0x16C3 - 0x16A4]) {
+        if (!vf_254(0)->WeaponType->Projectile->AG || Type->bools_16A4[0x16C3 - 0x16A4]) {
             r = 0;
         }
         if (CurrentMission == 0x13) {
@@ -3667,7 +3667,7 @@ int BuildingClass::vf_28(CellStruct* cell, char a, char b)
         if (vf_254(0)->WeaponType == 0) {
             return r;
         }
-        if (!vf_254(0)->WeaponType->Projectile->unknown_2A5 || Type->bools_16A4[0x16C3 - 0x16A4]) {
+        if (!vf_254(0)->WeaponType->Projectile->AG || Type->bools_16A4[0x16C3 - 0x16A4]) {
             r = 0;
         }
         if (CurrentMission == 0x13) {

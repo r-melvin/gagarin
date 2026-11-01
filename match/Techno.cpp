@@ -1849,7 +1849,7 @@ int TechnoClass::vf_185(AbstractClass* target)
                 TechnoClass* techno = target->Flags.IsTechno ? (TechnoClass*)target : 0;
                 if (vf_33()->IsGattling) {
                     int stage = CurrentGattlingStage;
-                    if (secondary->Projectile->unknown_2A4 && techno && techno->IsInAir()) {
+                    if (secondary->Projectile->AA && techno && techno->IsInAir()) {
                         return stage * 2 + 1;
                     }
                     return stage * 2;
@@ -1915,7 +1915,7 @@ int TechnoClass::vf_185(AbstractClass* target)
                                 if (!techno->IsInAir() && vf_33()->LandTargeting == 2) {
                                     return 1;
                                 }
-                                if (secondary->Projectile->unknown_2A4 && techno->IsInAir()) {
+                                if (secondary->Projectile->AA && techno->IsInAir()) {
                                     return 1;
                                 }
                             }
@@ -3917,7 +3917,7 @@ bool TechnoClass::vf_231(const CoordStruct& where, int a2)
                 victim = victim->Flags.IsTechno ? victim : 0;
             }
             WeaponTypeClass* weapon = vf_254(weaponIndex)->WeaponType;
-            if (victim && weapon && !weapon->Projectile->unknown_2A2) {
+            if (victim && weapon && !weapon->Projectile->Inaccurate) {
                 victim->EstimatedHealth -= FUN_006FDB80(victim, weapon);
             }
         }
