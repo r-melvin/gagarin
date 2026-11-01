@@ -207,7 +207,7 @@ def link_order(index, manifest):
 
 def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents=None, symbol_bindings=None,
          pin_data=False, pin_plan=None, order_tail=False, libdir=None, tail_layout=None, retail=None,
-         source_data=False, data_reject=(), data_search=(), library_imports=False):
+         source_data=False, data_reject=(), data_search=(), library_imports=False, keep=()):
     hybrid = retail is not None   # hybrid.Retail: stubs carry retail bytes, leftovers leave the image
 
     def code_fill(va, size):
@@ -329,7 +329,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             obj = tu_object.get(row["tu"])
             if obj is None or parsed_of(obj) is None:
                 continue
-            if hybrid_module.function_matches(parsed_of(obj), row["sym"], va, hx(row["len"]), retail) is False:
+            if va not in keep and hybrid_module.function_matches(parsed_of(obj), row["sym"], va, hx(row["len"]), retail) is False:
                 demoted.append({"addr": f"0x{va:X}", "symbol": row["sym"]})
                 del provider[va]
                 del provider_rows[va]

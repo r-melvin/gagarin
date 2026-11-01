@@ -8,10 +8,10 @@
 # reccmp-user.yml (git-ignored). `sha256` pins the exact build (v1.001) reccmp
 # will accept, so the annotation map can never be scored against the wrong image.
 #
-# Image-level scoring (reccmp-reccmp: original vs a rebuilt gamemd.exe + PDB) is
-# wired in P5/CI once enough TUs link into a full image. Until then the per-
-# function inner loop is scripts/vc6/diff_retail.py (objdump vs Ghidra, reloc-
-# normalised) — see docs/toolchain_evidence.md §3.
+# Image-level scoring (reccmp-reccmp: original vs a rebuilt gamemd.exe + PDB) runs
+# over the M3 hybrid link through scripts/vc6/reccmp_image.py (it passes --paths and
+# checks the SHA-256 above itself). The per-function inner loop is
+# scripts/vc6/diff_retail.py (objdump vs Ghidra, reloc-normalised).
 targets:
   GAMEMD:
     filename: gamemd.exe

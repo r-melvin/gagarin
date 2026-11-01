@@ -56,6 +56,14 @@ class FakeRetail(hybrid.Retail):
 
 
 class DataObjectTests(unittest.TestCase):
+    def test_debug_directory_leaves_its_bytes_out_of_the_plain_rdata(self):
+        retail = FakeRetail()
+        _, plain = hybrid.data_object(retail)
+        _, debug = hybrid.data_object(retail, debug_directory=28)
+        (_, pva, psize), (_, dva, dsize) = ([x for x in layout if x[0] == ".rdata"][0] for layout in (plain, debug))
+        self.assertEqual((dva, dsize), (pva + 28, psize - 28))
+        self.assertEqual([x for x in plain if x[0] != ".rdata"], [x for x in debug if x[0] != ".rdata"])
+
     def test_pieces_tile_rdata_and_data_at_retail_addresses(self):
         retail = FakeRetail()
         obj, layout = hybrid.data_object(retail)

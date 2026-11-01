@@ -88,6 +88,9 @@ def library_order(bink, library_imports=False):
 LINK_FLAGS = ["/NOLOGO", "/SUBSYSTEM:WINDOWS", "/FIXED", "/BASE:0x400000", "/INCREMENTAL:NO",
               "/OPT:REF", "/OPT:NOICF", "/MACHINE:IX86"]
 MAX_ROUNDS = 4
+# /DEBUG: LINK writes its debug directory (one 28-byte entry) at the start of the plain .rdata,
+# where retail has its own; the hybrid data object leaves those bytes out so nothing moves.
+DEBUG_DIRECTORY = 28
 
 
 def library_symbols(extra=()):
@@ -102,12 +105,14 @@ def library_symbols(extra=()):
     return names
 
 
-def link(objects, libs, out, includes=()):
+def link(objects, libs, out, includes=(), debug=False):
     vc6, env = link_diag.toolenv()
     wp = link_diag.wine_path
     rsp = out / "link.rsp"
     lines = LINK_FLAGS + ["/ORDER:@" + wp(out / "stubs/order.txt"), "/OUT:" + wp(out / "m1.exe"),
                           "/MAP:" + wp(out / "m1.map")]
+    if debug:   # debug info for the image-level reccmp tools (scripts/vc6/reccmp_image.py): PDB beside the image
+        lines += ["/DEBUG", "/PDB:" + wp(out / "m1.pdb")]
     lines += [f"/INCLUDE:{n}" for n in includes]
     lines += [f'"{wp(o)}"' for o in objects] + [f'"{wp(l)}"' if "/" in str(l) else l for l in libs]
     rsp.write_text("\r\n".join(lines) + "\r\n", encoding="latin-1")
@@ -148,8 +153,19 @@ def rsrc_pieces(image, retail):
     return pieces
 
 
+def load_manifest(promote=()):
+    """The match manifest; rows at the addresses in `promote` count as matched (an analysis image that
+    places those partial functions' compiled bodies in their retail slots: it is no longer retail-identical)."""
+    manifest = json.loads((ROOT / "scripts/data/match_manifest.json").read_text())
+    wanted = {int(a, 16) for a in promote}
+    for row in manifest:
+        if int(row["addr"], 16) in wanted and row["status"] != "matched":
+            row["status"] = "matched"
+    return manifest
+
+
 def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data=False, search=(), library_imports=False,
-        rsrc=False, art_from_retail=False):
+        rsrc=False, art_from_retail=False, debug=False, promote=()):
     out.mkdir(parents=True, exist_ok=True)
     rsrc_obj = rsrc_object(objdir, out, art_from_retail) if rsrc else None
     if rsrc and rsrc_obj is None:
@@ -160,7 +176,8 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
     if hybrid:
         pin_data = order_tail = True
         retail = hybrid_module.Retail(pindata.retail_path())
-        data_obj, data_layout = hybrid_module.data_object(retail, library_imports=library_imports, rsrc=rsrc_obj is None)
+        data_obj, data_layout = hybrid_module.data_object(retail, library_imports=library_imports, rsrc=rsrc_obj is None,
+                                                          debug_directory=DEBUG_DIRECTORY if debug else 0)
         (out / "hybrid_data.obj").write_bytes(data_obj)
     bink = out / "binkw32.lib"
     implib.build_from_def(ROOT / "scripts/vc6/binkw32.def", bink)
@@ -169,18 +186,20 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
     pin_plan = None
     if pin_data:   # derived once from the retail image; stubgen.plan adds call pins to it
         index = json.loads((objdir / "objects.json").read_text())
-        manifest = json.loads((ROOT / "scripts/data/match_manifest.json").read_text())
+        manifest = load_manifest(promote)
         pe, _, pe_sections = pindata.load_retail()
         pin_plan = pindata.derive(objdir, index, manifest, pe, pe_sections)
     for _ in range(MAX_ROUNDS + 4):
         vc6, _ = link_diag.toolenv()
         result = stubgen.plan(objdir, library_names, out / "stubs", extra, pin_data=pin_data, pin_plan=pin_plan,
                               order_tail=order_tail, libdir=vc6 / "VC98/Lib", retail=retail,
+                              manifest=load_manifest(promote) if promote else None, keep={int(a, 16) for a in promote},
                               source_data=source_data, data_reject=reject, data_search=search, library_imports=library_imports)
         objects = result["objects"]
         if source_data:
             data_obj, data_layout = hybrid_module.data_object(retail, result["_data_pieces"], library_imports,
-                                                              rsrc=rsrc_obj is None)
+                                                              rsrc=rsrc_obj is None,
+                                                              debug_directory=DEBUG_DIRECTORY if debug else 0)
             (out / "hybrid_data.obj").write_bytes(data_obj)
         includes = ()
         if hybrid:
@@ -191,7 +210,7 @@ def run(objdir, out, pin_data=False, order_tail=False, hybrid=False, source_data
                                                   {n for n, _ in result["thunk_names"]})[0] + includes
         if rsrc_obj:
             objects = objects + [rsrc_obj]
-        code, log = link(objects, library_order(bink, library_imports), out, includes)
+        code, log = link(objects, library_order(bink, library_imports), out, includes, debug)
         unresolved, duplicates = link_diag.parse_link_log(log)
         rounds.append({"exit": code, "unresolved": len(unresolved), "duplicates": len(duplicates)})
         new = set(unresolved) - extra
@@ -253,6 +272,13 @@ def main(argv=None):
                     help="with --hybrid: .rsrc comes from the project build (objdir/rsrc/gamemd.res, RC.EXE and CVTRES) "
                          "instead of the retail image; without --hybrid the project resources are always linked "
                          "when the object directory has them")
+    ap.add_argument("--debug", action="store_true",
+                    help="link with /DEBUG /PDB:OUT/m1.pdb (objects compiled with /Z7 carry the line and symbol records); "
+                         "scripts/vc6/reccmp_image.py drives this")
+    ap.add_argument("--promote", type=Path, metavar="FILE",
+                    help="analysis image: treat the partial rows at the hex addresses in FILE (one per line) as matched, so "
+                         "their compiled bodies take the retail slots; the image is then not retail-identical "
+                         "(reccmp_stack.py uses it to compare stack layouts)")
     ap.add_argument("--rsrc-art-from-retail", action="store_true",
                     help="byte comparison only: the icon and cursor image data of the project .rsrc is read from "
                          "$GAMEMD_BINARY at link time (the layout and group directories stay the project's); "
@@ -277,7 +303,8 @@ def main(argv=None):
                   source_data=args.source_data, search=("string", "float") if args.search_literals else (),
                   library_imports=args.library_imports,
                   rsrc=args.rsrc_from_project or args.rsrc_art_from_retail or not args.hybrid and (args.objdir / "rsrc/gamemd.res").is_file(),
-                  art_from_retail=args.rsrc_art_from_retail)
+                  art_from_retail=args.rsrc_art_from_retail, debug=args.debug,
+                  promote=args.promote.read_text().split() if args.promote else ())
     (out / "link_report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"LINK exit {summary['link_exit_code']}; unresolved after stubs: {summary['unresolved_after_stubs']}; "
           f"duplicates: {len(summary['duplicates'])}; rounds: {summary['rounds']}")

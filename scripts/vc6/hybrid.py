@@ -164,13 +164,16 @@ def region_sections(name, flags, va, size, retail, pieces):
     return out
 
 
-def data_object(retail, pieces=(), library_imports=False, rsrc=True):
+def data_object(retail, pieces=(), library_imports=False, rsrc=True, debug_directory=0):
     """(object bytes, [(section name, VA, size)]) reproducing retail's .rdata, .data and .rsrc.
 
     pieces: source-placed definitions (datasource.assign) that replace retail fill; each lies inside one
     of the pieces below (initialised ones only: uninitialised definitions need no section).
     library_imports: leave out the import tables ($5, $2, $3, $4, $6): the import libraries supply them.
-    rsrc: False leaves .rsrc out; the project's own resource object (rsrc_pack.py, cvtres) supplies it."""
+    rsrc: False leaves .rsrc out; the project's own resource object (rsrc_pack.py, cvtres) supplies it.
+    debug_directory: bytes at the start of the plain .rdata to leave out, for a /DEBUG link. LINK puts its own
+    debug directory (28 bytes) there, where retail's own debug directory sits, so that
+    everything behind it stays at its retail address; the omitted bytes are that directory."""
     r_start, r_vsize, _, _ = retail.by_name[".rdata"]
     iat, descriptors, terminator, ilt, names = retail.import_layout()
     r_end = r_start + r_vsize
@@ -180,7 +183,7 @@ def data_object(retail, pieces=(), library_imports=False, rsrc=True):
         raise VerifyError("the bytes between the import address table and the next .rdata are not zero")
     regions = [
         (".idata$5", iat[0], iat[1]),
-        (".rdata", lead_start, descriptors[0] - lead_start),
+        (".rdata", lead_start + debug_directory, descriptors[0] - lead_start - debug_directory),
         (".idata$2", descriptors[0], descriptors[1]),
         (".idata$3", terminator[0], terminator[1]),
         (".idata$4", ilt[0], ilt[1]),
