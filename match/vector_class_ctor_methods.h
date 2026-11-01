@@ -10,11 +10,10 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // VTABLE: GAMEMD 0x7E38D0 — the 4-byte-element instantiation.
-extern void* const VTBL_007E38D0[];
 // VTABLE: GAMEMD 0x7E38F0 — the 0x10-byte-element instantiation.
-extern void* const VTBL_007E38F0[];
 
 // Both element types carry a user-declared default constructor. That is what
 // makes `new T[n]` emit the vector-constructor-iterator preamble — `DEC` the

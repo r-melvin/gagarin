@@ -17,6 +17,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/memory_buffer.h"
 #include "_rt/gg_vslot.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) — MixFileClass::Retrieve, __fastcall
 // with the force flag in DL.
@@ -30,7 +31,6 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
-extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
 
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct Vtbl_004A38D0;

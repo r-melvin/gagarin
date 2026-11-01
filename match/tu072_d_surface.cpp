@@ -65,6 +65,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" size_t __cdecl strlen(const char* s);
@@ -73,12 +74,6 @@ extern "C" size_t __cdecl strlen(const char* s);
 extern "C" int DAT_00A8ED84;
 // GLOBAL: GAMEMD 0x00AA0738
 extern "C" int DAT_00AA0738;
-// GLOBAL: GAMEMD 0x007E1B60 (five string pointers)
-extern "C" const char* const DAT_007E1B60[5];
-// GLOBAL: GAMEMD 0x007E523C (nineteen string pointers)
-extern "C" const char* const DAT_007E523C[19];
-// GLOBAL: GAMEMD 0x0081DA28 (twelve string pointers)
-extern "C" const char* const DAT_0081DA28[12];
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 

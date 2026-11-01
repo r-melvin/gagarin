@@ -10,6 +10,7 @@
 
 #include "wwlib/surface/surface_class.h"
 #include "pixel_shift_view.h"
+#include "display_objects_globals.h"
 
 // ---------------------------------------------------------------------------
 // DirectDraw (COM, __stdcall through the interface vtable with `this` pushed).
@@ -113,8 +114,6 @@ GG_STATIC_ASSERT(offsetof(DDClipperVtbl, Release) == 0x08);
 struct DDClipper { const DDClipperVtbl* lpVtbl; };
 
 // Byte-width storage views; original source types/names are not established.
-// GLOBAL: GAMEMD 0x89F978
-extern "C" unsigned char DAT_0089F978;
 // GLOBAL: GAMEMD 0xA8ED80
 extern "C" unsigned char DAT_00A8ED80;
 // GLOBAL: GAMEMD 0x8205D4

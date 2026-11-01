@@ -16,6 +16,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 struct IUnk;
 
@@ -30,7 +31,6 @@ typedef unsigned long (__stdcall* ReleaseSlot)(IUnk*);
 // The two interface identifiers, pushed by address as plain immediates.
 struct Guid { char Bytes[16]; };
 extern Guid DAT_00818858;   // GLOBAL: GAMEMD 0x818858
-extern Guid DAT_00819088;   // GLOBAL: GAMEMD 0x819088
 
 struct ComHolder_0045AEA0
 {

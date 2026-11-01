@@ -378,7 +378,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00426E80, unknown_80C) == 0x80C);
 
 // ---------------------------------------------------------------------------
 // 0x4115A0 - scalar deleting destructor.
-extern char VTABLE_007E2198[];
 struct Obj_004115A0
 {
     // FUNCTION: GAMEMD 0x4115A0
@@ -1350,12 +1349,6 @@ extern "C" size_t __cdecl strlen(const char* s);
 extern "C" int DAT_00A8ED84;
 // GLOBAL: GAMEMD 0x00AA0738
 extern "C" int DAT_00AA0738;
-// GLOBAL: GAMEMD 0x007E1B60 (five string pointers)
-extern "C" const char* const DAT_007E1B60[5];
-// GLOBAL: GAMEMD 0x007E523C (nineteen string pointers)
-extern "C" const char* const DAT_007E523C[19];
-// GLOBAL: GAMEMD 0x0081DA28 (twelve string pointers)
-extern "C" const char* const DAT_0081DA28[12];
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 

@@ -122,6 +122,9 @@
 //   one the instruction at the cited retail address uses.
 
 #include "building_class_fog_methods.h"
+#include "display_objects_globals.h"
+#include "engine_core_globals.h"
+#include "shared_constants_globals.h"
 
 // Is every foundation cell of this building fogged? Walks the type's
 // foundation list (terminated by a {0x7FFF,0x7FFF} entry), offsets each entry
@@ -276,7 +279,7 @@ static inline DirStruct DirectionTo(const CoordStruct& to, const CoordStruct& fr
     int bx = to.X;
     int ax = from.X;
     DirStruct d;
-    d.Raw = (short)((FUN_004CAE30((double)to.Y - from.Y, (double)ax - bx) - DAT_007E2820) * DAT_007E2818);
+    d.Raw = (short)((FUN_004CAE30((double)to.Y - from.Y, (double)ax - bx) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
     return d;
 }
 
@@ -676,7 +679,6 @@ extern int DAT_00A8E7AC;
 
 // ---------------------------------------------------------------------------
 // 0x4790B0: store a clamped mode value.
-extern char DAT_0089E3A0;
 extern int  DAT_0081C1D0;
 
 // ---------------------------------------------------------------------------
@@ -946,7 +948,6 @@ struct Probe_0046D430
     bool FUN_005E93F0();
 };
 extern Probe_0046D430* DAT_00A8DA90[8];
-extern char DAT_0089E000[8];
 
 // ---------------------------------------------------------------------------
 // 0x474870: scale by 100/256 and forward.
@@ -1461,10 +1462,6 @@ GG_STATIC_ASSERT(offsetof(Pairs_0042CEB0, Lists) == 0x74);
 extern Timer_0088733C DAT_0088733C;
 // GLOBAL: GAMEMD 0x887340
 extern int DAT_00887340;
-// GLOBAL: GAMEMD 0x89E000
-extern char DAT_0089E000[8];
-// GLOBAL: GAMEMD 0x89E3A0
-extern char DAT_0089E3A0;
 // GLOBAL: GAMEMD 0xA8DA90
 extern Probe_0046D430* DAT_00A8DA90[8];
 // GLOBAL: GAMEMD 0xA9FFC8
@@ -2182,7 +2179,7 @@ DirStruct BuildingClass::vf_314(AbstractClass* target)
     const CoordStruct& t = target->vf_18();
     int tx = t.X;
     DirStruct d;
-    d.Raw = (short)((FUN_004CAE30((double)py - t.Y, (double)tx - px) - DAT_007E2820) * DAT_007E2818);
+    d.Raw = (short)((FUN_004CAE30((double)py - t.Y, (double)tx - px) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
     return d;
 }
 
@@ -3731,7 +3728,7 @@ CoordStruct BuildingClass::vf_42(AbstractClass* arg)
         int bx = pb.X;
         int ax = pa.X;
         DirStruct d;
-        d.Raw = (short)((FUN_004CAE30((double)pb.Y - pa.Y, (double)ax - bx) - DAT_007E2820) * DAT_007E2818);
+        d.Raw = (short)((FUN_004CAE30((double)pb.Y - pa.Y, (double)ax - bx) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
         int dir = ((d.Whole >> 7) + 1 >> 1) & 0xFF;
         const CoordStruct& pc = vf_18();
         if (dir >= 0 && dir < 0x40) {
@@ -4094,7 +4091,7 @@ bool BuildingClass::vf_245(HouseClass* newOwner, bool announce)
         if (oldOwner->IsControlledByCurrentPlayer() && Type->bools_16A4[21]) {
             DAT_0088098C = 0;
             DAT_00880990 = 0;
-            DAT_00880994 = -1;
+            OverlayParkedValue = -1;
             DAT_0087F7E8.FUN_004A8BF0(0);
         }
         Owner->FUN_004FFA50(this);

@@ -34,15 +34,10 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "dir16_operator_methods.h"
+#include "shared_constants_globals.h"
 
-// GLOBAL: GAMEMD 0x007E2800
-extern const double GG_ZERO;
 // GLOBAL: GAMEMD 0x007E2810
 extern const double GG_DIR16_TO_RADIANS;
-// GLOBAL: GAMEMD 0x007E2818
-extern const double GG_RADIANS_TO_DIR16;
-// GLOBAL: GAMEMD 0x007E2820
-extern const double GG_QUARTER_TURN;
 
 struct VelocityClass
 {

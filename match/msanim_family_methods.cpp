@@ -90,6 +90,7 @@
 
 #include "msanim_family_methods.h"
 #include "_layout/memory_buffer.h"
+#include "shared_constants_globals.h"
 
 // SYNTHETIC: GAMEMD 0x5CEDB0 -- initialiser: constructs MSAnimCounts, clearing the four
 // adjacent map-stage counters. Retail materialises the zero in a register once and
@@ -100,7 +101,7 @@ BitFont* TheGameFont;
 BitText* DAT_0089C4B8;
 extern MSSurface*      MSScreenSurface;
 char VT_007E16B0;
-char VT_007E1668;
+char DAT_007E1668;
 
 // FUNCTION: GAMEMD 0x5CD320
 // Slot 7 for the VQA animation: a cached flag, the same one-byte load the PCX
@@ -681,7 +682,7 @@ MSPCXAnim::MSPCXAnim(MSStringClass* name, MSAnimVector* owner, bool flag)
         file.Vtbl    = &VT_007E16B0;
         file.Reset64 = 0;
         ((MemoryBuffer*)file.Sub58)->Clear();
-        file.Vtbl    = &VT_007E1668;
+        file.Vtbl    = &DAT_007E1668;
         FUN_00431B80(&file);
 
         stem.Destruct();
@@ -722,7 +723,7 @@ MSPCXAnim::MSPCXAnim(MSStringClass* name, MSAnimVector* owner, const MSPoint* wh
         file.Vtbl    = &VT_007E16B0;
         file.Reset64 = 0;
         ((MemoryBuffer*)file.Sub58)->Clear();
-        file.Vtbl    = &VT_007E1668;
+        file.Vtbl    = &DAT_007E1668;
         FUN_00431B80(&file);
 
         stem.Destruct();

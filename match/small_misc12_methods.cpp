@@ -6,6 +6,7 @@
 
 #include "small_misc12_methods.h"
 #include "pk_blow_pipes.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x408500
 // Link the node in after the anchor, add its weight to the running total, and
@@ -25,7 +26,7 @@ void* BSurface_00411650::FUN_00411650(unsigned int flags)
 {
     Inner.Clear();
 
-    *(char**)this = VT_007E2198;
+    *(char**)this = DAT_007E2198;
 
     if (flags & 1) {
         FUN_007C8B3D(this);

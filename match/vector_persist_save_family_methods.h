@@ -63,6 +63,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 struct Stream_0067FDF0;
 struct Persist_0067FDF0;
@@ -86,7 +87,6 @@ typedef long (__stdcall* Release_0067FDF0)(Persist_0067FDF0*);
 
 // GLOBAL: GAMEMD 0x7F7C80 -- IID_IPersistStream.
 struct Guid_0067FDF0 { char Bytes[16]; };
-extern const Guid_0067FDF0 IID_IPersistStream_007F7C80;
 
 // OleSaveToStream, reached through the IAT slot at 0x7E15F4.
 extern "C" __declspec(dllimport) long __stdcall

@@ -5,10 +5,9 @@
 //   Address index: 0x758670.
 
 // GLOBAL: GAMEMD 0x8469E0
+#include "shared_constants_globals.h"
 struct Normal_r24 { float x, y, z; };
 extern const Normal_r24* const DAT_008469E0[5];
-// GLOBAL: GAMEMD 0x8469F4
-extern const int DAT_008469F4[5];
 // GLOBAL: GAMEMD 0xB45990
 extern unsigned char DAT_00B45990[256];
 // GLOBAL: GAMEMD 0xB45A8D

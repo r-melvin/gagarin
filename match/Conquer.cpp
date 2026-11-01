@@ -42,6 +42,7 @@
 #include <math.h>
 #include "header_init_shapes.h"
 #include <string.h>
+#include "shared_constants_globals.h"
 
 // The fixed global array. Its address (0x7E1B78) and the end sentinel
 // (&Array[6] == 0x7E1E18) are emitted as relocations and normalised by the
@@ -60,12 +61,6 @@ extern Theater Theater_Array[6];
 extern "C" int DAT_00A8ED84;
 // GLOBAL: GAMEMD 0x00AA0738
 extern "C" int DAT_00AA0738;
-// GLOBAL: GAMEMD 0x007E1B60 (five string pointers)
-extern "C" const char* const DAT_007E1B60[5];
-// GLOBAL: GAMEMD 0x007E523C (nineteen string pointers)
-extern "C" const char* const DAT_007E523C[19];
-// GLOBAL: GAMEMD 0x0081DA28 (twelve string pointers)
-extern "C" const char* const DAT_0081DA28[12];
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 
@@ -153,7 +148,6 @@ extern int DAT_0089C3B0;  // selection grid base @ 0x0089C3B0
 // LandType name table @ 0x0081DA28 .. 0x0081DA58 (12 const char* entries:
 // "Clear","Road","Water","Rock","Wall","Tiberium",...). Loop bound is the
 // one-past pointer 0x0081DA58.
-extern const char* const LandTypeName[12];
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -327,13 +321,12 @@ int FUN_0048DB80(const char* name)
     return -1;
 }
 
-extern "C" const char DAT_00817F64[];
 // FUNCTION: GAMEMD 0x0048DBC0
 const char* FUN_0048DBC0(unsigned int index)
 {
     if (index < 5)
         return DAT_007E1B60[index];
-    return DAT_00817F64;
+    return STR_00817F64;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -464,13 +457,12 @@ int MapView_5865E0::GetLandTypeFromName(const char* name)
 const char* FUN_0048DFD0(unsigned int value)
 {
     if (value < 12) {
-        return DAT_0081DA28[value];
+        return LandTypeName[value];
     }
     return DAT_00817474;
 }
 
 // Index of a name in an eight-entry string table at 0x81DA58; NULL or unknown => -1.
-extern const char* const DAT_0081DA58[8];
 // FUNCTION: GAMEMD 0x0048DFF0
 int FUN_0048DFF0(const char* name)
 {

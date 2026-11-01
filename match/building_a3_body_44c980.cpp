@@ -15,6 +15,7 @@
 // The coordinate argument passed to slot 44 is zeroed here; retail passes a stack value it never writes (indeterminate).
 
 #include "building_a3_views.h"
+#include "shared_constants_globals.h"
 
 // A direction step as radians: the retail code subtracts the 0x3FFF quarter turn offset from the 16-bit direction.
 inline double BA3DirToRadians(int dir)
@@ -161,7 +162,7 @@ int BuildingA3View::vf_148()
             DAT_0087F7E8.FUN_00578080(aim);
             int tx = Owner->EMPTarget.X * 256 + 0x80;
             int ty = Owner->EMPTarget.Y * 256 + 0x80;
-            int yaw = (short)(int)((FUN_004CAE30((double)muzzle.Y - ty, (double)tx - muzzle.X) - DAT_007E2820) * DAT_007E2818);
+            int yaw = (short)(int)((FUN_004CAE30((double)muzzle.Y - ty, (double)tx - muzzle.X) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
             int speed = FUN_005F6360(cell)->FUN_0048AB90((double)RulesInstance->unknown_16B8);
             BA3MissileView* missile = FUN_0046B050(weapon->unknown_A0, cell, this, weapon->unknown_A4, weapon->unknown_AC,
                                                    speed * 3 / 4, weapon->unknown_12F);
@@ -203,7 +204,7 @@ int BuildingA3View::vf_148()
                 }
             }
             double horizontal = FUN_004CAC40(velocity[1] * velocity[1] + velocity[0] * velocity[0]);
-            double pitch = BA3DirToRadians((short)(int)((FUN_004CAE30(velocity[2], horizontal) - DAT_007E2820) * DAT_007E2818));
+            double pitch = BA3DirToRadians((short)(int)((FUN_004CAE30(velocity[2], horizontal) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16));
             double length = FUN_004CAC40(velocity[2] * velocity[2] + velocity[1] * velocity[1] + velocity[0] * velocity[0]);
             if (pitch != 0.0) {
                 velocity[0] = velocity[0] / FUN_004CAD00(pitch);

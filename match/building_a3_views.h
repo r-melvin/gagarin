@@ -20,6 +20,7 @@
 #include "house_building_views.h"
 #include "house_building_views.h"
 #include "vector_class.h"
+#include "shared_constants_globals.h"
 
 class BA3ObjView;
 struct BA3Chain1View;
@@ -2288,9 +2289,6 @@ extern HBCounterView DAT_00886B88;
 // GLOBAL: GAMEMD 0x7E44A8 / 0x7E2810 / 0x7E2800 / 0x7E2820 / 0x7E2818 - double constants (unit scale, radians per direction step, zero, direction conversion)
 extern const double DAT_007E44A8;
 extern const double DAT_007E2810;
-extern const double DAT_007E2800;
-extern const double DAT_007E2820;
-extern const double DAT_007E2818;
 // FUNCTION: GAMEMD 0x4CACB0 / 0x4CAD00 (read-only here) - cdecl, double argument.
 double __cdecl FUN_004CACB0(double a);
 double __cdecl FUN_004CAD00(double a);
@@ -2309,7 +2307,6 @@ void __cdecl FUN_004068E0(const void* arg);
 extern const unsigned char DAT_007E9A50[16];
 extern const unsigned char DAT_007E9A90[16];
 #include "_layout/drive_guid_data.h"
-extern const unsigned char DAT_00819088[16];
 
 // The announcement that closes most states: a name picked by the health of the building (two name slots of the
 // building type), played when it is not empty. A code expansion of the original's inline pair.

@@ -3,6 +3,7 @@
 //   The flyer's Stop_Moving. Bytes diffed against the user's retail
 //   gamemd.exe v1.001.
 #include "fly_locomotion_stop_moving_methods.h"
+#include "mapobj_globals.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // GLOBAL: GAMEMD 0x87F7E8 — the map.
@@ -118,7 +119,7 @@ void __stdcall FlyLocoStop::StopMoving()
             coord.Z = 0;
             coord.Z = MapInstance_004CCFD0.GetZHeightAt(coord);
             if ((MapInstance_004CCFD0.GetCell(&found)->Flags & 0x100) != 0) {
-                coord.Z = coord.Z + BridgeHeight_008B3CAC;
+                coord.Z = coord.Z + DAT_008B3CAC;
             }
 
             Foot_004CCFD0* settle = this->LinkedTo;

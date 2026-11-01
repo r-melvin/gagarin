@@ -41,6 +41,7 @@
 // canonical header declares them yet).
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // GLOBAL: GAMEMD 0x7E1718
 extern const double DAT_007E1718;
@@ -320,9 +321,6 @@ bool UnitClass::vf_65(RectangleStruct* rect, bool force, int a3)
 
 
 
-// GLOBAL: GAMEMD 0x7E2800 -- 0.0, read from memory rather than FLDZ.
-extern const double DAT_007E2800;
-
 
 // FUNCTION: GAMEMD 0x73EFC0
 // A unit whose type deploys into something waits out the mission rate plus a little random
@@ -486,7 +484,7 @@ double UnitClass::vf_173()
 {
     UnitTypeClass* type = static_cast<UnitTypeClass*>(this->Type);
     if (!type->Harvester && !type->Weeder) {
-        return DAT_007E2800;
+        return GG_ZERO;
     }
     return (double)Tiberium.GetTotalAmount() / static_cast<UnitTypeClass*>(this->Type)->Storage;
 }

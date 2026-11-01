@@ -9,9 +9,8 @@
 //   FUNCTION: GAMEMD 0x4E62B0  FUN_004E62B0
 
 // GLOBAL: GAMEMD 0x81D27C -- three name strings.
+#include "shared_constants_globals.h"
 extern const char* DAT_0081D27C[3];
-// GLOBAL: GAMEMD 0x81DA58 -- eight name strings.
-extern const char* DAT_0081DA58[8];
 // GLOBAL: GAMEMD 0x822C54 -- nine name strings.
 extern const char* DAT_00822C54[9];
 // GLOBAL: GAMEMD 0x822CE8 -- the fallback name ("Unknown").

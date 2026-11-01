@@ -17,6 +17,7 @@
 // 0x00A8ECBC) and Count (+0x10 => 0x00A8ECC8).
 #include "_layout/current_objects.h"
 #include <string.h>
+#include "shared_constants_globals.h"
 
 
 // Trailing helpers invoked by UnselectAll (not matched here — declared so cl
@@ -34,7 +35,6 @@ extern int DAT_0089C3B0;  // selection grid base @ 0x0089C3B0
 // LandType name table @ 0x0081DA28 .. 0x0081DA58 (12 const char* entries:
 // "Clear","Road","Water","Rock","Wall","Tiberium",...). Loop bound is the
 // one-past pointer 0x0081DA58.
-extern const char* const LandTypeName[12];
 
 
 // FUNCTION: GAMEMD 0x5865E0  MapClass::IsLocationFogged (__thiscall)

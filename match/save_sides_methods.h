@@ -13,6 +13,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 struct Stream_006805F0;
 struct Side_006805F0;
@@ -48,7 +49,6 @@ GG_STATIC_ASSERT(offsetof(SideVector_006805F0, Count) == 0x10);
 
 // GLOBAL: GAMEMD 0x7F7C80 — IID_IPersistStream.
 struct Guid_006805F0 { char Bytes[16]; };
-extern const Guid_006805F0 IID_IPersistStream_007F7C80;
 
 // OleSaveToStream, called through the IAT (0x7E15F4).
 extern "C" __declspec(dllimport) long __stdcall OleSaveToStream(Persist_006805F0* pPStm,

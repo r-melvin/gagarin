@@ -11,8 +11,6 @@
 #include "bounded_text.h"
 #include "shared_constants_globals.h"
 
-// GLOBAL: GAMEMD 0x7E2800 -- 0.0, read from memory rather than FLDZ.
-extern const double DAT_007E2800;
 // GLOBAL: GAMEMD 0x7F4100 -- 900.0f, the recharge time scale (frames per minute).
 extern const float DAT_007F4100;
 // GLOBAL: GAMEMD 0x8425C0 -- the twelve super weapon type names.
@@ -106,7 +104,7 @@ bool SuperWeaponTypeClass::vf_25(CCINIClass* ini)
         ManualControl = ini->ReadBool(ID.Data, "ManualControl", ManualControl);
         // STRING: GAMEMD 0x842634
         double rechargeTime = ini->ReadDouble(ID.Data, "RechargeTime", 0.0);
-        if (rechargeTime != DAT_007E2800)
+        if (rechargeTime != GG_ZERO)
             RechargeTime = (int)(DAT_007F4100 * (float)rechargeTime);
         // STRING: GAMEMD 0x842624
         ini->ReadString(ID.Data, "SidebarImage", CameoFile, cameo, 0x100);

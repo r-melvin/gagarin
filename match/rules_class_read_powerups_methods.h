@@ -23,6 +23,7 @@
 //   Names cross-checked against YRpp (RulesClass::Read_Powerups).
 #ifndef GG_MATCH_CORE_RULES_CLASS_READ_POWERUPS_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_READ_POWERUPS_METHODS_H
+#include "shared_constants_globals.h"
 
 
 // Opaque INI parser; members declared only, so cl emits reloc-normalised
@@ -58,8 +59,6 @@ double __cdecl P_atof(const char* str);
 
 // GLOBAL: GAMEMD 0x7F0CD8 — pointer to the "Powerups" section name.
 extern char* PowerupsSection_007F0CD8;
-// GLOBAL: GAMEMD 0x7E523C — the 19 powerup key names.
-extern char* PowerupKeyNames_007E523C[19];
 // GLOBAL: GAMEMD 0x81DA8C — per-powerup cash value.
 extern int   PowerupMoney_0081DA8C[19];
 // GLOBAL: GAMEMD 0x81DAD8 — per-powerup animation index.

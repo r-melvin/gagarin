@@ -73,6 +73,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/ms_anim.h"
 #include "string_class.h"
+#include "shared_constants_globals.h"
 
 // MSVC6 has no native `wchar_t`; the CRT headers typedef it and this
 // translation unit is standalone, so it declares the same typedef itself.
@@ -416,7 +417,6 @@ GG_STATIC_ASSERT(sizeof(MSStringClass) == 4);
 // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E16B0;
 // VTABLE: GAMEMD 0x7E1668 — CDFileClass, the base the destructor drops to.
-extern char VT_007E1668;
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void FUN_00431B80(void* self);
 

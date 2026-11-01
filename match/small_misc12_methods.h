@@ -9,6 +9,7 @@
 #include "_rt/gg_static_assert.h"
 #include "intrusive_list_methods.h"
 #include "guarded_forward_methods.h"
+#include "shared_constants_globals.h"
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
@@ -20,7 +21,6 @@ typedef long (__stdcall* Slot2)(IFace*, int, int);
 #include "_layout/memory_buffer.h"
 
 // VTABLE: GAMEMD 0x7E2198
-extern char VT_007E2198[];
 
 // CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). BSurface's own vtable is 0x7E2070.

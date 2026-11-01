@@ -19,6 +19,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];
@@ -26,9 +27,6 @@ extern const char STR_00889F64[];
 extern const char STR_00817474[];
 // STRING: GAMEMD 0x81C008  "<random>"
 extern const char STR_0081C008[];
-
-// GLOBAL: GAMEMD 0x7E5210 — the armour name table.
-extern const char* DAT_007E5210[];
 
 // FUNCTION: GAMEMD 0x772A50 (decl; reloc) — armour name -> armour index.
 int FUN_00772A50(const char* name);

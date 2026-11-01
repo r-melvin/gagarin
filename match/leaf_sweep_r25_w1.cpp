@@ -11,8 +11,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "winsock_interface_class.h"
-
-extern char DAT_0089E000[8];
+#include "display_objects_globals.h"
 
 // FUNCTION: GAMEMD 0x46D400
 // Sets all eight slot flags, then clears the first `count` bytes.

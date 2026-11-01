@@ -10,6 +10,7 @@
 #include <string.h>
 #include "_layout/load_options_class.h"
 #include "vector_class_operations.h"
+#include "mapobj_globals.h"
 
 // FUNCTION: GAMEMD 0x5BECC0
 // Mirror the lower triangle of a 256x256 byte matrix into the upper triangle.
@@ -455,12 +456,8 @@ int LCGRandom_0065C660::RandomRanged(int min, int max)
 extern int DAT_008A0DD0;
 // GLOBAL: GAMEMD 0x8A0DD4
 extern int DAT_008A0DD4;
-// GLOBAL: GAMEMD 0x8A0DD8
-extern int DAT_008A0DD8;
 // GLOBAL: GAMEMD 0x8A0DDC
 extern int DAT_008A0DDC;
-// GLOBAL: GAMEMD 0x8A0DE0
-extern int DAT_008A0DE0;
 // GLOBAL: GAMEMD 0x8A0DE4
 extern int DAT_008A0DE4;
 

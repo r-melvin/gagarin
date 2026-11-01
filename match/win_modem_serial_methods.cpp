@@ -15,6 +15,7 @@
 #include <string.h>
 #include <windows.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
 extern "C" void __cdecl FUN_004068E0(const char* format, ...);
@@ -34,8 +35,6 @@ extern const char STR_008327A0[];
 extern const char STR_0083ED58[];
 // STRING: GAMEMD 0x83ED5C -- "T"
 extern const char STR_0083ED5C[];
-// STRING: GAMEMD 0x8497A4 -- "Closing serial port\n"
-extern const char STR_008497A4[];
 // STRING: GAMEMD 0x8497DC -- "SetCommTimeouts returned error code %s.\n"
 extern const char STR_008497DC[];
 // STRING: GAMEMD 0x849808 -- "GetCommState returned error code %s.\n"

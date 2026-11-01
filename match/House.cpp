@@ -261,6 +261,9 @@
 #include "vector_ctor_pod_family_methods.h"
 #include "display_objects_globals.h"
 #include "scenario_session_globals.h"
+#include "engine_core_globals.h"
+#include "mapobj_globals.h"
+#include "shared_constants_globals.h"
 
 class AlphaLightingRemapClass;
 class BulletClass;
@@ -837,10 +840,6 @@ static inline CellStruct CellOfCoord(const CoordStruct& coord)
 int __fastcall FUN_006ABC60(int a, int b, int c);
 
 // GLOBAL: GAMEMD 0x880994 / 0x88099A / 0x88099B / 0x88099C / 0x8809A0 -- placement state reset when placement starts.
-extern int DAT_00880994;
-extern bool DAT_0088099A;
-extern bool DAT_0088099B;
-extern bool DAT_0088099C;
 extern int DAT_008809A0;
 
 // FUNCTION: GAMEMD 0x48DC90 (decl; reloc) -- deselects everything.
@@ -905,12 +904,8 @@ extern SchemeView_00500B40** DAT_00B054D4;
 // GLOBAL: GAMEMD 0x8A0DD0..0x8A0DE4 -- the display's colour shift operands.
 extern short DAT_008A0DD0;
 extern int DAT_008A0DD4;
-extern short DAT_008A0DD8;
 extern int DAT_008A0DDC;
-extern short DAT_008A0DE0;
 extern int DAT_008A0DE4;
-// GLOBAL: GAMEMD 0x7E2800 -- 0.0 (double).
-extern const double DAT_007E2800;
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square root; __cdecl, one double.
 double __cdecl Sqrt_004CAC40(double value);
@@ -2127,7 +2122,7 @@ bool HouseClass::FUN_004FB840(ObjectClass* target, BuildingClass* object)
         DAT_008809A0 = -1;
         PlacementType_00880990 = object->Type;
         PlacementObject_0088098C = object;
-        DAT_00880994 = ArrayIndex;
+        OverlayParkedValue = ArrayIndex;
         DAT_0087F7E8.FUN_004A8BF0(object->vf_66(1));
         CellStruct cell;
         DAT_0087F7E8.FUN_004A91B0(&cell, target->vf_110());
@@ -3266,7 +3261,7 @@ void HouseClass::FUN_00500B40(CCINIClass* ini)
     green = Color.G;
     blue = Color.B;
     double length = Sqrt_004CAC40(red * red + green * green + blue * blue);
-    if (length == DAT_007E2800) {
+    if (length == GG_ZERO) {
         blue = 255.0;
         green = 255.0;
         red = 255.0;

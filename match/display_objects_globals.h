@@ -21,5 +21,11 @@ extern CellStruct_004134A0 DAT_00887850;
 extern ApplicationClass HouseMainObject;
 // GLOBAL: GAMEMD 0x89DDB8
 extern int TypesLevelHeight;
+// GLOBAL: GAMEMD 0x89E000
+extern char DAT_0089E000[8];
+// GLOBAL: GAMEMD 0x89E3A0
+extern char DAT_0089E3A0;
+// GLOBAL: GAMEMD 0x89F978 -- selects the cooperative-level flags.
+extern bool DAT_0089F978;
 
 #endif  // GG_MATCH_DISPLAY_OBJECTS_GLOBALS_H

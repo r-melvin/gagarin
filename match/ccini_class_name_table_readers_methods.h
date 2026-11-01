@@ -24,6 +24,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];
@@ -50,8 +51,6 @@ extern NameValuePair DAT_0081B958[11];
 extern NameValuePair DAT_0081B9B0[5];
 // GLOBAL: GAMEMD 0x81B9D8 — the foundation table, 22 rows (ends at 0x81BA88).
 extern NameValuePair DAT_0081B9D8[22];
-// GLOBAL: GAMEMD 0x81BA88 — the movement-zone names, 13 (ends at 0x81BABC).
-extern const char* DAT_0081BA88[13];
 // GLOBAL: GAMEMD 0x7E4C50 — the super-weapon action names, 73 (ends 0x7E4D74).
 extern const char* DAT_007E4C50[73];
 

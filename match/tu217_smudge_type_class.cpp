@@ -25,6 +25,7 @@
 #include "smudge_type_class.h"
 #include "_layout/obj_004a1d30.h"
 #include "ccini_class_methods.h"
+#include "shared_constants_globals.h"
 // GLOBAL: GAMEMD 0x887180
 extern CCINIClass DAT_00887180;
 
@@ -153,7 +154,7 @@ void SmudgeTypeClass::LoadFromIniList(int idxTheater)
             file.Vtbl    = &VT_007E16B0;
             file.Reset64 = 0;
             ((MemoryBuffer*)file.Sub58)->Clear();
-            file.Vtbl    = &VT_007E1668;
+            file.Vtbl    = &DAT_007E1668;
             FUN_00431B80(&file);
         }
     }

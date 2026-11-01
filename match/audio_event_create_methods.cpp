@@ -24,8 +24,6 @@ extern int DAT_0087E28C;
 extern int DAT_0087E290;
 // GLOBAL: GAMEMD 0x87E2A4 -- event pool ready.
 extern int DAT_0087E2A4;
-// GLOBAL: GAMEMD 0x87E2A8 -- free pool of event blocks.
-extern Obj_00407520* DAT_0087E2A8;
 
 // FUNCTION: GAMEMD 0x405190
 // PARTIAL (86.6%, 84/97): identical instruction multiset; the residual is scheduling only. After the

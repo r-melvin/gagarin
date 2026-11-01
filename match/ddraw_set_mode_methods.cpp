@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include "_rt/gg_static_assert.h"
+#include "display_objects_globals.h"
 
 struct DDrawModeView;
 
@@ -56,8 +57,6 @@ extern int DAT_008A00AC;
 extern void (* DAT_008A00B0)(long hr);
 // GLOBAL: GAMEMD 0xB73550 -- the main window.
 extern void* DAT_00B73550;
-// GLOBAL: GAMEMD 0x89F978 -- selects the cooperative-level flags.
-extern bool DAT_0089F978;
 // GLOBAL: GAMEMD 0x89FC90 -- the primary palette object.
 extern void* DAT_0089FC90;
 // GLOBAL: GAMEMD 0x89FC94 -- the palette entry table.

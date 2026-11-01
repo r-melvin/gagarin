@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x42FC40 and 0x42FCB0.
 
 #include "vector_class_ctor_methods.h"
+#include "shared_constants_globals.h"
 
 // Placement new over caller-supplied storage. The constructor builds the
 // elements in place with `new((void*)array) T[size]`; retail keeps the
@@ -30,7 +31,7 @@ WideVectorClass_0042FC40* WideVectorClass_0042FC40::Ctor(
     this->Capacity = size;
     this->IsValid = 1;
     this->IsAllocated = 0;
-    this->Vptr = VTBL_007E38F0;
+    this->Vptr = DAT_007E38F0;
 
     if (size) {
         if (array) {
@@ -59,7 +60,7 @@ NarrowVectorClass_0042FCB0* NarrowVectorClass_0042FCB0::Ctor(
     this->Capacity = size;
     this->IsValid = 1;
     this->IsAllocated = 0;
-    this->Vptr = VTBL_007E38D0;
+    this->Vptr = DAT_007E38D0;
 
     if (size) {
         if (array) {

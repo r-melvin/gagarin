@@ -16,9 +16,8 @@
 #include "_layout/voxel_resource_data.h"
 #include "ccfile_class.h"
 #include "rules_class_ini_support.h"
+#include "shared_constants_globals.h"
 
-// GLOBAL: GAMEMD 0x7E2800
-extern const double DAT_007E2800;
 // FUNCTION: GAMEMD 0x74BB20 (decl; reloc)
 VoxelAnimTypeClass* __fastcall FUN_0074BB20(const char* id, DynamicVectorClass<VoxelAnimTypeClass*>* registry);
 
@@ -68,11 +67,11 @@ bool VoxelAnimTypeClass::vf_25(CCINIClass* ini)
             Elasticity = ini->ReadDouble(ID.Data, "Elasticity", Elasticity);
             // STRING: GAMEMD 0x845F14
             double minAngular = ini->ReadDouble(ID.Data, "MinAngularVelocity", -1.0);
-            if (minAngular != DAT_007E2800)
+            if (minAngular != GG_ZERO)
                 MinAngularVelocity = minAngular * 0.01745277777777778;
             // STRING: GAMEMD 0x845F00
             double maxAngular = ini->ReadDouble(ID.Data, "MaxAngularVelocity", -1.0);
-            if (maxAngular != DAT_007E2800)
+            if (maxAngular != GG_ZERO)
                 MaxAngularVelocity = maxAngular * 0.01745277777777778;
             // STRING: GAMEMD 0x845EF4
             Duration = ini->ReadInteger(ID.Data, "Duration", Duration);

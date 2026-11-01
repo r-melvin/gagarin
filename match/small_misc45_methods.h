@@ -7,6 +7,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "engine_core_globals.h"
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
@@ -26,7 +27,6 @@ void FUN_00407450(void* self);
 // object in EDX).
 void FUN_00407530(void* pool, void* self);
 
-extern void* DAT_0087E2A8;   // GLOBAL: GAMEMD 0x87E2A8 — the pool
 extern int   DAT_0087E28C;   // GLOBAL: GAMEMD 0x87E28C — live count
 
 struct Obj_00404DD0

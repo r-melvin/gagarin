@@ -27,6 +27,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void FUN_00431B80(void* self);
@@ -36,7 +37,6 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 extern "C" void  __cdecl FUN_007C8B3D(void* block);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
-extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
 
 // CCFileClass on the stack (0x6C): only the pieces this function touches.
 struct File_0072ADE0

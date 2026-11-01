@@ -16,6 +16,7 @@
 #include "triple_timer_init_methods.h"
 #include "vector_class.h"
 #include "vector_class_operations.h"
+#include "shared_constants_globals.h"
 
 // ---------------------------------------------------------------------------
 // 0x402900 / 0x402BB0 / 0x402C40 - walkers over the pending-node list that hangs
@@ -150,7 +151,6 @@ int Obj_00426E80::FindRun(int pos)
 
 // ---------------------------------------------------------------------------
 // 0x4115A0 - scalar deleting destructor.
-extern char VTABLE_007E2198[];
 struct Obj_004115A0
 {
     // FUNCTION: GAMEMD 0x4115A0
@@ -160,7 +160,7 @@ struct Obj_004115A0
 // FUNCTION: GAMEMD 0x4115A0
 void* Obj_004115A0::Destroy(unsigned char flags)
 {
-    *(char**)this = VTABLE_007E2198;
+    *(char**)this = DAT_007E2198;
     if (flags & 1)
         FUN_007C8B3D(this);
     return this;

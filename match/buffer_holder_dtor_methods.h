@@ -27,6 +27,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "buffer_release_methods.h"
+#include "shared_constants_globals.h"
 
 extern char VTABLE_007E184C[];   // VTABLE: GAMEMD 0x7E184C
 extern char VTABLE_007E18DC[];   // VTABLE: GAMEMD 0x7E18DC
@@ -36,8 +37,6 @@ extern char VTABLE_007E1E4C[];   // VTABLE: GAMEMD 0x7E1E4C
 extern char VTABLE_007E1EF4[];   // VTABLE: GAMEMD 0x7E1EF4
 extern char VTABLE_007E37EC[];   // VTABLE: GAMEMD 0x7E37EC
 extern char VTABLE_007E3824[];   // VTABLE: GAMEMD 0x7E3824
-extern char VTABLE_007E38D0[];   // VTABLE: GAMEMD 0x7E38D0
-extern char VTABLE_007E38F0[];   // VTABLE: GAMEMD 0x7E38F0
 extern char VTABLE_007E3E54[];   // VTABLE: GAMEMD 0x7E3E54
 extern char VTABLE_007E43E8[];   // VTABLE: GAMEMD 0x7E43E8
 extern char VTABLE_007E4468[];   // VTABLE: GAMEMD 0x7E4468

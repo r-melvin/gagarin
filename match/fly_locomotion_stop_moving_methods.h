@@ -26,6 +26,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
+#include "mapobj_globals.h"
 
 // A world coordinate: three ints.
 struct Coord_004CCFD0
@@ -63,8 +64,6 @@ inline Cell_004CCFD0 CellOf_004CCFD0(int x, int y)
 extern const Cell_004CCFD0 UnsetCell_008B3C58;
 // GLOBAL: GAMEMD 0x8B3C78 — the engine's unset coordinate.
 extern const Coord_004CCFD0 UnsetCoord_008B3C78;
-// GLOBAL: GAMEMD 0x8B3CAC — the bridge height a deck adds.
-extern int BridgeHeight_008B3CAC;
 
 // CellClass — only the flag dword @0x140 is touched, as `TEST CH,0x1`.
 struct CellClass_004CCFD0

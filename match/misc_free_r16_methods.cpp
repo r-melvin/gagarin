@@ -8,13 +8,12 @@
 #include <windows.h>
 #include "_rt/gg_static_assert.h"
 #include "vector_class_operations.h"
+#include "mapobj_globals.h"
 
 // GLOBAL: GAMEMD 0x8A0DD0..0x8A0DE4 -- the display's colour shift operands.
 extern int DAT_008A0DD0;
 extern int DAT_008A0DD4;
-extern int DAT_008A0DD8;
 extern int DAT_008A0DDC;
-extern int DAT_008A0DE0;
 extern int DAT_008A0DE4;
 
 // FUNCTION: GAMEMD 0x6B9370

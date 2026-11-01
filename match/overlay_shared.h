@@ -15,6 +15,7 @@
 #include "_layout/vector_class.h"
 #include "_layout/geometry2d.h"
 #include "shared_constants_globals.h"
+#include "engine_core_globals.h"
 
 // The element of the function-local static offset tables (the user-declared destructor is what makes
 // VC6 register an atexit stub, a bare RET, for each static). It derives from the cell so that
@@ -170,9 +171,6 @@ extern OverlayTiberiumView** OverlayTiberiumTypes;
 int OverlayTiberiumIndexOf(int overlayIndex);
 
 // ---- bindings used by OverlayClass::Mark (0x5FC570) -------------------------------------------------
-
-// GLOBAL: GAMEMD 0x880994 - a value copied into cell +0x50 while a placement argument is parked.
-extern int OverlayParkedValue;
 
 // The wall / fence tables Mark reads (read-only here): for each of the four types of a group, the
 // first facing, the type to place on the run, the second facing, and for each of the four facings

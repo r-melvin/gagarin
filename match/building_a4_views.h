@@ -39,6 +39,8 @@
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
+#include "engine_core_globals.h"
+#include "shared_constants_globals.h"
 
 class BuildingTypeClass;
 class HouseClass;
@@ -216,7 +218,6 @@ extern "C" char* __cdecl strncpy(char* dest, const char* src, unsigned int count
 extern int DAT_00A8ED84;
 extern int DAT_0088098C;
 extern int DAT_00880990;
-extern int DAT_00880994;
 extern const double DAT_007E27F8;
 extern const double DAT_007E1718;
 // FUNCTION: GAMEMD 0x4CAC40 (read-only here)
@@ -235,7 +236,6 @@ extern unsigned char DAT_00887418;
 extern int DAT_00818CB0;
 extern unsigned char DAT_00818CB4;
 extern RectangleStruct DAT_00886FA0;
-extern const double DAT_007E4408;
 // FUNCTION: GAMEMD 0x4BBC90 (read-only here) - the pixel-format code of the display.
 int FUN_004BBC90();
 // FUNCTION: GAMEMD 0x6D20E0 (read-only here)

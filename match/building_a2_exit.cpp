@@ -8,6 +8,7 @@
 //   free-roaming kinds), 2 (the vehicle kind) and 6 (the building kind).
 
 #include "building_a2_views.h"
+#include "shared_constants_globals.h"
 extern int DAT_00A8B238;
 
 // The cell of a coordinate (leptons / 256, rounding towards zero like the original's signed shift).
@@ -140,7 +141,7 @@ int BA2Building::vf_64(BA2Other* obj, HBCell where)
                         HBCell base = vf_110();
                         BA2Dir angle;
                         angle.Raw = (short)(int)((FUN_004CAE30((double)(target.Y - base.Y), (double)(target.X - base.X))
-                                                  - DAT_007E2820) * DAT_007E2818);
+                                                  - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
                         int dir = ((angle.Whole >> 12) + 1 >> 1) & 7;
                         if (DAT_0087F7E8.FUN_005657A0(&here)->FUN_0047C520() == this) {
                             do {
@@ -218,7 +219,7 @@ int BA2Building::vf_64(BA2Other* obj, HBCell where)
                 HBCoord* p = vf_18(&tmp);
                 BA2Dir angle;
                 angle.Raw = (short)(int)((FUN_004CAE30((double)p->Y - (double)centre.Y, (double)centre.X - (double)p->X)
-                                          - DAT_007E2820) * DAT_007E2818);
+                                          - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
                 int facing = ((angle.Whole >> 7) + 1 >> 1) & 0xFF;
                 HBCell base = vf_110();
                 HBCell edge = c;
@@ -289,7 +290,7 @@ int BA2Building::vf_64(BA2Other* obj, HBCell where)
                 HBCoord* p = vf_18(&tmp);
                 BA2Dir angle;
                 angle.Raw = (short)(int)((FUN_004CAE30((double)p->Y - (double)centre.Y, (double)centre.X - (double)p->X)
-                                          - DAT_007E2820) * DAT_007E2818);
+                                          - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
                 int facing = ((angle.Whole >> 7) + 1 >> 1) & 0xFF;
                 HBCell base = vf_110();
                 HBCell edge = c;

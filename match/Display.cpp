@@ -47,6 +47,8 @@
 #include "_layout/player_ptr_00a83d4c.h"
 #include "mapobj_globals.h"
 #include "sidebar_display_globals.h"
+#include "engine_core_globals.h"
+#include "shared_constants_globals.h"
 
 // Recolours the palette entries the highlight cycles through: eight consecutive entries filled from the colour ring,
 // starting `offset` entries into it.
@@ -1186,7 +1188,7 @@ void DisplayClass::vf_48(int, CellStruct* cell, DisplayCmdObject* target, int ac
                 DisplayCmdMap_0087F7E8.SetActiveFoundation_004A8BF0(0);
                 DisplayCmdValue_0088098C = 0;
                 DisplayCmdValue_00880990 = 0;
-                DisplayCmdValue_00880994 = -1;
+                OverlayParkedValue = -1;
             }
             FUN_00731CF0();
             return;
@@ -1970,10 +1972,10 @@ void DisplayClass::vf_32(DisplayScIni* ini)
         DisplayScBufferStraw straw;
         straw.ChainTo = 0;
         straw.ChainFrom = 0;
-        straw.Vtable = &DisplayScVT_007E61F0;
+        straw.Vtable = &DAT_007E61F0;
         straw.Buffer.Construct(data, got);
         straw.Index = 0;
-        straw.Vtable = &DisplayScVT_007E61E0;
+        straw.Vtable = &DAT_007E61E0;
         DisplayScMapPacks_0087F7E8.FUN_0056B5A0(&straw);
         surface.LockCount--;
         straw.Buffer.Clear();
@@ -1993,10 +1995,10 @@ void DisplayClass::vf_32(DisplayScIni* ini)
         DisplayScBufferStraw straw;
         straw.ChainTo = 0;
         straw.ChainFrom = 0;
-        straw.Vtable = &DisplayScVT_007E61F0;
+        straw.Vtable = &DAT_007E61F0;
         straw.Buffer.Construct(data, got);
         straw.Index = 0;
-        straw.Vtable = &DisplayScVT_007E61E0;
+        straw.Vtable = &DAT_007E61E0;
         DisplayScMapPacks_0087F7E8.FUN_0056B780(&straw);
         surface.LockCount--;
         straw.Buffer.Clear();
@@ -2016,10 +2018,10 @@ void DisplayClass::vf_32(DisplayScIni* ini)
         DisplayScBufferStraw straw;
         straw.ChainTo = 0;
         straw.ChainFrom = 0;
-        straw.Vtable = &DisplayScVT_007E61F0;
+        straw.Vtable = &DAT_007E61F0;
         straw.Buffer.Construct(data, got);
         straw.Index = 0;
-        straw.Vtable = &DisplayScVT_007E61E0;
+        straw.Vtable = &DAT_007E61E0;
         DisplayScMapPacks_0087F7E8.FUN_0056B8A0(&straw);
         surface.LockCount--;
         straw.Buffer.Clear();
@@ -2039,10 +2041,10 @@ void DisplayClass::vf_32(DisplayScIni* ini)
         DisplayScBufferStraw straw;
         straw.ChainTo = 0;
         straw.ChainFrom = 0;
-        straw.Vtable = &DisplayScVT_007E61F0;
+        straw.Vtable = &DAT_007E61F0;
         straw.Buffer.Construct(data, got);
         straw.Index = 0;
-        straw.Vtable = &DisplayScVT_007E61E0;
+        straw.Vtable = &DAT_007E61E0;
         DisplayScMapPacks_0087F7E8.FUN_0056B9A0(&straw);
         surface.LockCount--;
         straw.Buffer.Clear();
@@ -2062,10 +2064,10 @@ void DisplayClass::vf_32(DisplayScIni* ini)
         DisplayScBufferStraw straw;
         straw.ChainTo = 0;
         straw.ChainFrom = 0;
-        straw.Vtable = &DisplayScVT_007E61F0;
+        straw.Vtable = &DAT_007E61F0;
         straw.Buffer.Construct(data, got);
         straw.Index = 0;
-        straw.Vtable = &DisplayScVT_007E61E0;
+        straw.Vtable = &DAT_007E61E0;
         DisplayScMapPacks_0087F7E8.FUN_0056BAC0(&straw);
         surface.LockCount--;
         straw.Buffer.Clear();

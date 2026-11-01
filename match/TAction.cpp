@@ -70,6 +70,7 @@
 #include "input_manager_class_methods.h"
 #include "mouse_ww_mouse_class.h"
 #include "scenario_session_globals.h"
+#include "engine_core_globals.h"
 
 // GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
 extern const CLSID DAT_007E9800;
@@ -244,10 +245,6 @@ int __fastcall FUN_006ABC60(int a, int b, int c);
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x88099A / 0x88099B / 0x88099C -- tactical-view state reset by action 0x24.
 extern int DAT_0088098C;
 extern int DAT_00880990;
-extern int DAT_00880994;
-extern bool DAT_0088099A;
-extern bool DAT_0088099B;
-extern bool DAT_0088099C;
 
 // FUNCTION: GAMEMD 0x684240 (decl; reloc)
 void __cdecl FUN_00684240();
@@ -1379,7 +1376,7 @@ bool TActionClass::FUN_006E2660(HouseClass* house, ObjectClass* object, TriggerC
 {
     DAT_0088098C = 0;
     DAT_00880990 = 0;
-    DAT_00880994 = -1;
+    OverlayParkedValue = -1;
     DAT_0087F7E8.FUN_004A8BF0(0);
     DAT_0087F7E8.FUN_004AC8C0(0);
     DAT_0087F7E8.FUN_004AC660(0);
@@ -2508,7 +2505,7 @@ int DAT_0088098C;
 // GLOBAL: GAMEMD 0x880990
 int DAT_00880990;
 // GLOBAL: GAMEMD 0x880994
-int DAT_00880994;
+int OverlayParkedValue;
 // GLOBAL: GAMEMD 0x88099A
 bool DAT_0088099A;
 // GLOBAL: GAMEMD 0x88099B

@@ -4,6 +4,7 @@
 
 #include "convert_class_create_methods.h"
 #include "_layout/memory_buffer.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x72ADE0
 //
@@ -116,6 +117,6 @@ void ConvertClass::CreateFromFile(const char* pFilename,
     file.Vtbl    = &VT_007E16B0;
     file.Reset64 = 0;
     ((MemoryBuffer*)file.Sub58)->Clear();
-    file.Vtbl    = &VT_007E1668;
+    file.Vtbl    = &DAT_007E1668;
     FUN_00431B80(&file);
 }

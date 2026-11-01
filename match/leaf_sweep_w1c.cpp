@@ -20,6 +20,7 @@
 #include "triple_timer_init_methods.h"
 #include "mapobj_globals.h"
 #include "runtime_misc_globals.h"
+#include "display_objects_globals.h"
 struct Sub_00406250 { Timer_00401000 Timer; };
 
 struct Obj_00406250
@@ -91,9 +92,6 @@ Rec_00465550* Obj_00465550::CurrentRecord()
         index = 6;
     return &DAT_0089D368[index];
 }
-
-// GLOBAL: GAMEMD 0x89E000
-extern char DAT_0089E000[8];
 
 // FUNCTION: GAMEMD 0x46D460
 // True when all eight bytes of the table are non-zero.

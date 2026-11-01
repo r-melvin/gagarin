@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "scenario_session_globals.h"
+#include "display_objects_globals.h"
 
 struct HWND__;
 typedef HWND__* HWND_;
@@ -23,8 +24,6 @@ extern "C" __declspec(dllimport) int __stdcall EnableWindow(HWND_ wnd, int enabl
 extern int DAT_00A8DA84;
 // GLOBAL: GAMEMD 0xA8D580 — how many there is room for.
 extern int DAT_00A8D580;
-// GLOBAL: GAMEMD 0x89E000 — one flag per slot.
-extern char DAT_0089E000[];
 
 // FUNCTION: GAMEMD 0x46FB50
 void FUN_0046FB50(HWND_ dlg);

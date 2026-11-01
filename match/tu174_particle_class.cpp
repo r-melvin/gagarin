@@ -12,6 +12,7 @@
 #include "FUNCTION.H"
 #include "particle_class.h"
 #include "vector_add_item_free.h"
+#include "shared_constants_globals.h"
 
 extern "C" const CLSID CLSID_Particle;
 
@@ -35,8 +36,6 @@ extern const double DAT_007E1718;
 extern const double DAT_007EF900;
 // GLOBAL: GAMEMD 0xAC49B8
 extern double DAT_00AC49B8;
-// GLOBAL: GAMEMD 0x7E2800
-extern const double DAT_007E2800;
 
 // SYNTHETIC: GAMEMD 0x62B400
 // GLOBAL: GAMEMD 0xAC4A10
@@ -230,12 +229,12 @@ void ParticleClass::FUN_0062D510()
 {
     ParticleCoord next = Location;
     ParticleCoord here = Location;
-    if (Velocity > DAT_007E2800) {
+    if (Velocity > GG_ZERO) {
         next.X += Coord2.X;
         next.Y += Coord2.Y;
         next.Z += Coord2.Z;
     }
-    if (Velocity > DAT_007E2800) {
+    if (Velocity > GG_ZERO) {
         int hereHeight = ParticleMap.GetHeight(&here);
         int nextHeight = ParticleMap.GetHeight(&next);
         if (nextHeight > hereHeight) {
@@ -262,12 +261,12 @@ void ParticleClass::FUN_0062D5E0()
     case 2: {
         ParticleCoord next = Location;
         ParticleCoord here = Location;
-        if (Velocity > DAT_007E2800) {
+        if (Velocity > GG_ZERO) {
             next.X += Coord2.X;
             next.Y += Coord2.Y;
             next.Z += Coord2.Z;
         }
-        if (Velocity > DAT_007E2800) {
+        if (Velocity > GG_ZERO) {
             int hereHeight = ParticleMap.GetHeight(&here);
             int nextHeight = ParticleMap.GetHeight(&next);
             if (nextHeight > hereHeight) {

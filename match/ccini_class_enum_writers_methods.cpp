@@ -5,6 +5,7 @@
 //   0x475440 and 0x4757A0.
 
 #include "ccini_class_enum_writers_methods.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x474910
 //

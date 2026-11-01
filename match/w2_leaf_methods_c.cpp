@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x005C69A0
 // Count of leading non-zero bytes in a word array of `words` 32-bit words.
@@ -75,9 +76,6 @@ void Quat_00645C70::FUN_00645C70()
     }
 }
 
-// GLOBAL: GAMEMD 0x7E2800 - the double zero the running sum starts from.
-extern const double DAT_007E2800;
-
 // A run of up to eight double samples (count byte at +0x61) with a divisor at +0x48.
 struct Obj_006433D0 {
     unsigned char unknown_00[0x08];
@@ -97,7 +95,7 @@ GG_STATIC_ASSERT(offsetof(Obj_006433D0, Count) == 0x61);
 double Obj_006433D0::FUN_006433D0()
 {
     int n = Count;
-    double sum = DAT_007E2800;
+    double sum = GG_ZERO;
     for (int i = 0; i < n; i++) {
         sum += Samples[i];
     }

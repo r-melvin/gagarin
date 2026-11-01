@@ -54,6 +54,7 @@
 #include "_layout/com_interfaces.h"
 #include "_layout/aircraft_class.h"
 #include "_layout/aircraft_type_class.h"
+#include "mapobj_globals.h"
 
 // Native DrawMatrix fields: 0x4CF610 entry-origin instruction offsets.
 GG_STATIC_ASSERT(offsetof(TechnoClass, AngleRotatedSideways) == 0x328);
@@ -306,7 +307,7 @@ char FlyLocoApproach::Approach()
     if (client->IsOnBridgeDeck == 0) {
         Coord_004CE680 here = client->Location;
         if ((MapInstance_004CE680.GetCellAt(here)->Flags & 0x100) != 0) {
-            int bridge = BridgeHeight_008B3CAC;
+            int bridge = DAT_008B3CAC;
             if (travel >= bridge) {
                 travel -= bridge;
             }

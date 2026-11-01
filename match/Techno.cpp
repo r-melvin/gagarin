@@ -264,6 +264,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/cell.h"
 #include "techno_static_timers.h"
+#include "shared_constants_globals.h"
 
 struct TypeView_006FBFA0 {
     unsigned char unknown_00[0x1A6];
@@ -692,12 +693,6 @@ struct Record_007559B0
 
 // GLOBAL: GAMEMD 0x00B45188 (48-byte records)
 extern "C" Record_007559B0 DAT_00B45188[];
-
-// GLOBAL: GAMEMD 0x007E5210 (eleven string pointers)
-extern "C" const char* const DAT_007E5210[11];
-
-// GLOBAL: GAMEMD 0x008497A4
-extern "C" const char DAT_008497A4[];
 
 // 0x4068E0: cdecl text sink taking a format string (callee only).
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
@@ -1251,9 +1246,6 @@ extern ScenarioView_00707D20* ScenarioInstance_00707D20;
 #include "weapon_type_class.h"
 #include "bullet_type_class.h"
 
-// GLOBAL: GAMEMD 0x7E2800 -- 0.0, read from memory rather than FLDZ.
-extern const double DAT_007E2800;
-
 static inline BuildingClass* AsBuilding(AbstractClass* object)
 {
     return object->vf_11() == 6 ? (BuildingClass*)object : 0;
@@ -1646,9 +1638,6 @@ extern Randomizer DAT_00886B88;
 // GLOBAL: GAMEMD 0x7E27F8
 extern double DAT_007E27F8;
 
-// GLOBAL: GAMEMD 0x7E2800
-extern const double DAT_007E2800;
-
 static inline bool CellsDiffer(const CellStruct& a, const CellStruct& b)
 {
     return a.X != b.X || a.Y != b.Y;
@@ -1897,8 +1886,8 @@ int TechnoClass::vf_185(AbstractClass* target)
                         }
                     }
                     if (techno) {
-                        if (secondary->Warhead->Verses[techno->vf_33()->Armor] != DAT_007E2800) {
-                            if (primary->Warhead->Verses[techno->vf_33()->Armor] == DAT_007E2800) {
+                        if (secondary->Warhead->Verses[techno->vf_33()->Armor] != GG_ZERO) {
+                            if (primary->Warhead->Verses[techno->vf_33()->Armor] == GG_ZERO) {
                                 return 1;
                             }
                             bool ground = techno->vf_111()->LandType == 2 || techno->vf_111()->LandType == 6;
@@ -3600,7 +3589,7 @@ double TechnoClass::vf_173()
         double held = Tiberium.GetTotalAmount();
         return held / vf_33()->Storage;
     }
-    return DAT_007E2800;
+    return GG_ZERO;
 }
 
 // FUNCTION: GAMEMD 0x708C10

@@ -28,10 +28,10 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // Only the vtable addresses matter here; no slot of any of them is called.
 // VTABLE: GAMEMD 0x7E1668
-extern char VTABLE_007E1668[];
 // VTABLE: GAMEMD 0x7F7014
 extern char VTABLE_007F7014[];
 // VTABLE: GAMEMD 0x7F7024

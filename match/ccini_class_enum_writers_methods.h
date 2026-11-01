@@ -24,6 +24,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // STRING: GAMEMD 0x817474  "<none>"
 extern const char STR_00817474[];
@@ -51,10 +52,6 @@ extern WriterNameValuePair DAT_0081B958[];
 extern WriterNameValuePair DAT_0081B9B0[];
 // GLOBAL: GAMEMD 0x81B9D8 — the foundation name table.
 extern WriterNameValuePair DAT_0081B9D8[];
-// GLOBAL: GAMEMD 0x81BA88 — the movement-zone names.
-extern const char* DAT_0081BA88[];
-// GLOBAL: GAMEMD 0x7E5210 — the armour names.
-extern const char* DAT_007E5210[];
 
 // The house-type record, as this file uses it: a bit index at +0xB8 and an
 // inline ID text at +0x24.

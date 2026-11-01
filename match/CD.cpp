@@ -47,6 +47,7 @@
 #include "string_class.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "display_objects_globals.h"
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 
@@ -73,8 +74,6 @@ struct FUN_00473AB0_View
 };
 GG_STATIC_ASSERT(offsetof(FUN_00473AB0_View, unknown_04) == 4);
 
-// GLOBAL: GAMEMD 0x0089E3A0 (byte comparison at 0x4790EE)
-extern "C" unsigned char DAT_0089E3A0;
 GG_STATIC_ASSERT(sizeof(DAT_0089E3A0) == 1);
 
 // Slot-0 method view at 0x4790E0. The retail RTTI associates this vtable

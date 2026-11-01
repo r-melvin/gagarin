@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/matrix3d.h"
+#include "shared_constants_globals.h"
 
 struct VoxelPoint
 {
@@ -941,8 +942,6 @@ void __cdecl FUN_00758430(VoxelSpanParams *params)
 
 // GLOBAL: GAMEMD 0x8469E0  DAT_008469e0 (normal vector table per set)
 extern Vector3D *DAT_008469e0[];
-// GLOBAL: GAMEMD 0x8469F4  DAT_008469f4 (normal count per set)
-extern int DAT_008469f4[];
 
 // FUNCTION: GAMEMD 0x7586f0
 // PARTIAL (53.4%). Retail squares Z straight off the FST of the sum and
@@ -962,7 +961,7 @@ void FUN_007586f0(const Vector3D *a, const Vector3D *b, float k, int set)
 		n = VoxelPoint((float)(d.X / len), (float)(d.Y / len), (float)(d.Z / len));
 	else
 		n = d;
-	int count = DAT_008469f4[set];
+	int count = DAT_008469F4[set];
 	for (int i = 0; i < count; i++, t++) {
 		float s1 = t->Z * a->Z + t->Y * a->Y + t->X * a->X;
 		float s2 = n.X * t->X + n.Y * t->Y + n.Z * t->Z;

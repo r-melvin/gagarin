@@ -36,6 +36,7 @@
 #include "_layout/rec12_008b4040.h"
 #include <math.h>
 #include "header_init_shapes.h"
+#include "shared_constants_globals.h"
 
 extern int DAT_00816108;
 #include "_layout/rec12_008b4040.h"
@@ -75,12 +76,6 @@ extern "C" size_t __cdecl strlen(const char* s);
 extern "C" int DAT_00A8ED84;
 // GLOBAL: GAMEMD 0x00AA0738
 extern "C" int DAT_00AA0738;
-// GLOBAL: GAMEMD 0x007E1B60 (five string pointers)
-extern "C" const char* const DAT_007E1B60[5];
-// GLOBAL: GAMEMD 0x007E523C (nineteen string pointers)
-extern "C" const char* const DAT_007E523C[19];
-// GLOBAL: GAMEMD 0x0081DA28 (twelve string pointers)
-extern "C" const char* const DAT_0081DA28[12];
 // GLOBAL: GAMEMD 0x00817474
 extern "C" const char DAT_00817474[];
 
@@ -451,8 +446,6 @@ extern char DAT_00822B10[];
 extern char DAT_00822AFC[];
 extern char DAT_00822AEC[];
 extern char DAT_00822ADC[];
-// GLOBAL: GAMEMD 0x8316A8 -- the nine colour values.
-extern int DAT_008316A8[9];
 
 // FUNCTION: GAMEMD 0x4E43C0
 // Fetch the nine colour abbreviations, then give each record its colour value and mark it used (-1).

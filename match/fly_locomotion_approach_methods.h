@@ -27,6 +27,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_rt/gg_vslot.h"
+#include "mapobj_globals.h"
 
 // A world coordinate: three ints.
 struct Coord_004CE680
@@ -57,8 +58,6 @@ struct Map_004CE680
 
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance.
 extern Map_004CE680 MapInstance_004CE680;
-// GLOBAL: GAMEMD 0x8B3CAC — the bridge height the approach discounts.
-extern int BridgeHeight_008B3CAC;
 
 // The value a facing slot's reader hands back through a hidden pointer, and
 // the value its writer takes. Retail stores only sixteen bits into the

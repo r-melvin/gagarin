@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4A38D0.
 
 #include "file_system_load_whole_methods.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x4A38D0
 //
@@ -38,7 +39,7 @@ void* FileSystem_LoadWholeFileEx(const char* fileName, bool* allocated)
     file.Vtbl    = (Vtbl_004A38D0*)&VT_007E16B0;
     file.Reset64 = 0;
     reinterpret_cast<MemoryBuffer*>(file.Sub58)->Clear();
-    file.Vtbl    = (Vtbl_004A38D0*)&VT_007E1668;
+    file.Vtbl    = (Vtbl_004A38D0*)&DAT_007E1668;
     FUN_00431B80(&file);
 
     return data;

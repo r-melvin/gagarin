@@ -18,6 +18,7 @@
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
 #include "house_building_common_types.h"
+#include "shared_constants_globals.h"
 
 
 class BA2Obj;
@@ -1529,9 +1530,6 @@ extern HBCell DAT_0089C818;
 extern HBCell DAT_0089F698;
 extern HBCell DAT_0089F69C;
 extern BA2Type** DAT_00A83C6C;
-// GLOBAL: GAMEMD 0x7E2820 / 0x7E2818 - the two double constants of the facing-angle conversion.
-extern const double DAT_007E2820;
-extern const double DAT_007E2818;
 // FUNCTION: GAMEMD 0x4CAE30 (read-only here) - the angle of a vector
 double __cdecl FUN_004CAE30(double a, double b);
 // FUNCTION: GAMEMD 0x505F80 (read-only here) - a callback address

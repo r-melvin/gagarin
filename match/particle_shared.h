@@ -12,6 +12,7 @@
 #include "particle_views.h"
 #include "particle_vectors.h"
 #include "particle_type_shared.h"
+#include "engine_core_globals.h"
 
 // GLOBAL: GAMEMD 0xAC49D8 - the all-zero coordinate the constructors copy (decl; reloc) (read-only here).
 extern ParticleCoord ParticleEmptyCoord;
@@ -123,8 +124,6 @@ public:
 };
 // GLOBAL: GAMEMD 0x887314
 extern ParticleSurfaceView* ParticleSurface;
-// GLOBAL: GAMEMD 0x87F6C0 - pointer handed to the shape drawer (decl; reloc) (read-only here).
-extern void* ParticleDrawContext;
 // FUNCTION: GAMEMD 0x4AED70 (decl; reloc) (read-only here) - draws a shape; __fastcall (surface, context), 14 stack
 // dwords.
 void ParticleDrawShape(ParticleSurfaceView* surface, void* context, void* object, int frame,

@@ -18,6 +18,7 @@
 #include "ui_display_chain.h"
 #include "mapobj_globals.h"
 #include "sidebar_display_globals.h"
+#include "engine_core_globals.h"
 
 
 class DisplayCmdTechno;
@@ -420,8 +421,6 @@ extern int DisplayCmdScale_008A0740;
 extern int DisplayCmdValue_0088098C;
 // GLOBAL: GAMEMD 0x880990
 extern int DisplayCmdValue_00880990;
-// GLOBAL: GAMEMD 0x880994
-extern int DisplayCmdValue_00880994;
 
 // FUNCTION: GAMEMD 0x752700 (decl; reloc) -- VoxClass::Play, __fastcall: name in ECX, -1 in EDX, -1 pushed.
 void FUN_00752700(const char* name, int a, int b);

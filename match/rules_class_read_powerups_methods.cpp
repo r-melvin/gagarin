@@ -3,6 +3,7 @@
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x673E80.
 
 #include "rules_class_read_powerups_methods.h"
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x673E80  RulesClass::Read_Powerups (__thiscall, ret 4)
 //
@@ -31,7 +32,7 @@ bool Rules_00673E80::Read_Powerups(CCINI_00673E80* pINI)
         char buffer[0x80];
         for (int i = 0; i < 19; i++) {
             if (pINI->ReadString(PowerupsSection_007F0CD8,
-                                 PowerupKeyNames_007E523C[i],
+                                 DAT_007E523C[i],
                                  "0,NONE", buffer, 0x80) != 0) {
                 char* tok = P_strtok(buffer, ",");
                 if (tok != 0) {

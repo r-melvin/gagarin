@@ -12,6 +12,7 @@
 #include "_layout/player_ptr_00a83d4c.h"
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "display_objects_globals.h"
 
 // ---------------------------------------------------------------------------
 // 0x402C40 / 0x4031D0: walk of a queue that hangs off a global holder.
@@ -134,7 +135,6 @@ extern int DAT_00A8E7AC;
 
 // ---------------------------------------------------------------------------
 // 0x4790B0: store a clamped mode value.
-extern char DAT_0089E3A0;
 extern int  DAT_0081C1D0;
 
 // FUNCTION: GAMEMD 0x4790B0
@@ -556,7 +556,6 @@ struct Probe_0046D430
     bool FUN_005E93F0();
 };
 extern Probe_0046D430* DAT_00A8DA90[8];
-extern char DAT_0089E000[8];
 
 // FUNCTION: GAMEMD 0x46D430
 void FUN_0046D430()

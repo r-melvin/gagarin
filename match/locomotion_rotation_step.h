@@ -5,7 +5,6 @@
 #ifndef GG_MATCH_MOVEMENT_LOCOMOTION_ROTATION_STEP_H
 #define GG_MATCH_MOVEMENT_LOCOMOTION_ROTATION_STEP_H
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 GG_STATIC_ASSERT(sizeof(double) == 8);
-// GLOBAL: GAMEMD 0x7E4408
-extern "C" const double gg_locomotion_facing_step;
 #endif

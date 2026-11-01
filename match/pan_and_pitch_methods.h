@@ -11,9 +11,8 @@
 #include "_rt/gg_static_assert.h"
 #include "triple_timer_init_methods.h"
 #include "audio_sample_methods.h"
+#include "shared_constants_globals.h"
 
-// GLOBAL: GAMEMD 0x816380 — the volume curve.
-extern int DAT_00816380[];
 // GLOBAL: GAMEMD 0x816510 — the pan curve, indexed either side of its base.
 extern int DAT_00816510[];
 

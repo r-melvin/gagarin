@@ -112,6 +112,7 @@
 #include "_layout/straw.h"
 
 #include "index_class.h"
+#include "shared_constants_globals.h"
 
 // Grows the table to hold `amount` more entries, copying the live entries over
 // node by node and dropping the cached node because the array moved. The new
@@ -915,10 +916,10 @@ bool CCINI_00526E80::WriteUUBlock(const char* section, const void* block, int le
     BufferStraw_00526E80 straw;
     straw.ChainTo   = 0;
     straw.ChainFrom = 0;
-    straw.Vtable    = &VT_007E61F0;
+    straw.Vtable    = &DAT_007E61F0;
     straw.Buffer.Construct(block, length);
     straw.Index     = 0;
-    straw.Vtable    = &VT_007E61E0;
+    straw.Vtable    = &DAT_007E61E0;
 
     Base64Straw_00526E80 b64;
     b64.ChainTo   = 0;

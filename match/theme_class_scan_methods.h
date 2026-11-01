@@ -24,6 +24,7 @@
 #include "_layout/memory_buffer.h"
 #include "_layout/theme_class.h"
 #include "scenario_session_globals.h"
+#include "shared_constants_globals.h"
 
 // GLOBAL: GAMEMD 0xA8ED64 — the second scan gate.
 extern bool DAT_00A8ED64;
@@ -45,7 +46,6 @@ extern "C" unsigned __int64 __stdcall gg_aulldiv(unsigned __int64 a,
 void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
-extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
 
 // The stack CCFileClass; only the members this teardown touches are named.
 struct File_007207F0
@@ -71,7 +71,7 @@ struct File_007207F0
         this->Vtbl = &VT_007E16B0;
         this->Position = 0;
         reinterpret_cast<MemoryBuffer*>(this->Buffer)->Clear();
-        this->Vtbl = &VT_007E1668;
+        this->Vtbl = &DAT_007E1668;
         FUN_00431B80(this);
     }
 };

@@ -23,6 +23,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "smudge_type_class.h"
+#include "shared_constants_globals.h"
 
 // LIBRARY: GAMEMD 0x7C9FF0 (decl; reloc) — CRT _makepath, __cdecl.
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir,
@@ -32,7 +33,6 @@ extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir
 void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
-extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
 
 // CCFileClass on the stack (0x6C): only the pieces the inline teardown
 // touches are named.

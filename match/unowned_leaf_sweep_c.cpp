@@ -13,6 +13,7 @@
 #include <imm.h>
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
@@ -257,9 +258,6 @@ Matrix3D FUN_007559B0(int index)
     return DAT_00B45188[index];
 }
 
-// GLOBAL: GAMEMD 0x007E5210 (eleven string pointers)
-extern "C" const char* const DAT_007E5210[11];
-
 // FUNCTION: GAMEMD 0x00772A50
 // Index of `name` in the eleven-entry table at 0x7E5210, or 0.
 int FUN_00772A50(const char* name)
@@ -274,9 +272,6 @@ int FUN_00772A50(const char* name)
     return 0;
 }
 
-// GLOBAL: GAMEMD 0x008497A4
-extern "C" const char DAT_008497A4[];
-
 // 0x4068E0: cdecl text sink taking a format string (callee only).
 void __cdecl FUN_004068E0(const char* format, ...);
 
@@ -287,7 +282,7 @@ void __cdecl FUN_004068E0(const char* format, ...);
 void FUN_00774950(Obj_00774950* self)
 {
     if (self->unknown_5C != INVALID_HANDLE_VALUE) {
-        FUN_004068E0(DAT_008497A4);
+        FUN_004068E0(STR_008497A4);
         CloseHandle(self->unknown_5C);
         self->unknown_5C = INVALID_HANDLE_VALUE;
     }

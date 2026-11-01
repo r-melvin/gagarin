@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include <string.h>
 #include "_rt/gg_static_assert.h"
+#include "shared_constants_globals.h"
 
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];
@@ -28,9 +29,6 @@ extern const char STR_0081C01C[];
 extern const char STR_0081C028[];
 // STRING: GAMEMD 0x81C030  "POWER"
 extern const char STR_0081C030[];
-
-// GLOBAL: GAMEMD 0x7E523C — a name table the 0x475A40 writer indexes.
-extern const char* DAT_007E523C[];
 
 // The category record: the same array the techno-type TU calls the
 // UnitTypeClass items at 0xA83C6C. Only its inline ID text at +0x24 is read,

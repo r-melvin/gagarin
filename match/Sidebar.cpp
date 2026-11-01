@@ -69,6 +69,7 @@
 #include "sidebar_select_class.h"
 #include "sidebar_display_globals.h"
 #include "scenario_session_globals.h"
+#include "engine_core_globals.h"
 
 // FUNCTION: GAMEMD 0x5BF450 (decl; reloc) -- releases the pump list.
 void FUN_005BF450();
@@ -265,11 +266,7 @@ extern SidebarHouse* SelectPlayer_00A83D4C;
 
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x8809A0 / 0x88099A..0x88099C -- placement state.
 #include "_layout/placement_object.h"
-extern int PlacementIndex_00880994;
 extern int PendingSuper_008809A0;
-extern unsigned char PlacementFlagA_0088099A;
-extern unsigned char PlacementFlagB_0088099B;
-extern unsigned char PlacementFlagC_0088099C;
 // GLOBAL: GAMEMD 0xB07DD8 -- cell handed to a placement event.
 extern int PlacementCell_00B07DD8;
 // GLOBAL: GAMEMD 0xA8B550 -- build speed percentage.
@@ -1606,7 +1603,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                         if (PlacementObject_0088098C != 0 && SelectCheckPlacement(PlacementObject_0088098C) != 0) {
                             PlacementObject_0088098C = 0;
                             PlacementType_00880990 = 0;
-                            PlacementIndex_00880994 = -1;
+                            OverlayParkedValue = -1;
                             Map_0087F7E8.SetActiveFoundation_004A8BF0(0);
                         }
                         if (factory->Object == 0 || factory->At_70 != 0) {
@@ -1778,13 +1775,13 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                         } else {
                             PlacementObject_0088098C = 0;
                             PlacementType_00880990 = 0;
-                            PlacementIndex_00880994 = -1;
+                            OverlayParkedValue = -1;
                             Map_0087F7E8.SetActiveFoundation_004A8BF0(0);
                             Map_0087F7E8.SetRepairMode_004AC8C0(0);
                             Map_0087F7E8.SetSellMode_004AC660(0);
-                            PlacementFlagA_0088099A = 0;
-                            PlacementFlagB_0088099B = 0;
-                            PlacementFlagC_0088099C = 0;
+                            DAT_0088099A = 0;
+                            DAT_0088099B = 0;
+                            DAT_0088099C = 0;
                             PendingSuper_008809A0 = item;
                             SelectUnselectAll();
                             SelectVoxPlay("EVA_SelectTarget", -1, -1);

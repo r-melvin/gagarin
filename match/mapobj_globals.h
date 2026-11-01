@@ -5,6 +5,9 @@
 #define GG_MATCH_MAPOBJ_GLOBALS_H
 #include "vector_class.h"
 
+class BuildingClass;
+
+
 class TagClass;
 
 
@@ -22,5 +25,13 @@ extern CellStruct DAT_008A3838;
 extern DynamicVectorClass<TagClass* > LogicArray;
 // GLOBAL: GAMEMD 0x8B4148
 extern int TunnelArrayCount;
+// GLOBAL: GAMEMD 0x8A0DD8
+extern int DAT_008A0DD8;
+// GLOBAL: GAMEMD 0x8A0DE0
+extern int DAT_008A0DE0;
+// GLOBAL: GAMEMD 0x8B3CAC
+extern int DAT_008B3CAC;
+// GLOBAL: GAMEMD 0x008B41E0
+extern DynamicVectorClass<BuildingClass* > DAT_008B41E0;
 
 #endif  // GG_MATCH_MAPOBJ_GLOBALS_H

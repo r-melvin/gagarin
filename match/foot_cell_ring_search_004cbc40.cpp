@@ -10,13 +10,10 @@
 #include "_layout/foot_class.h"
 #include "cell_flag_search_shared.h"
 #include "trig_table_functions_004cac40.h"
+#include "shared_constants_globals.h"
 
 // LIBRARY: GAMEMD 0x7C5F00 -- the double-to-int conversion behind (int).
 
-// GLOBAL: GAMEMD 0x7E2820
-extern const double DAT_007E2820;   // pi / 2
-// GLOBAL: GAMEMD 0x7E2818
-extern const double DAT_007E2818;   // angle scale (binary angle units per radian, negated)
 // GLOBAL: GAMEMD 0x8B3B48
 extern Cell DAT_008B3B48;           // the empty result
 
@@ -34,7 +31,7 @@ Cell FootClass::FUN_004CBC40(CellStruct* from, CellStruct* center, int firstRadi
 {
     unsigned short angle = (int)((FUN_004CAE30((double)from->Y - (double)center->Y,
                                                (double)center->X - (double)from->X)
-                                  - DAT_007E2820) * DAT_007E2818);
+                                  - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
     unsigned int direction = ((((angle >> 12) + 1U) >> 1) ^ 0xFFFFFFFC) - 1;
     direction &= 7;
 

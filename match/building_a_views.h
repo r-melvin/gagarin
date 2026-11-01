@@ -26,6 +26,8 @@
 #include "event_queue.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
+#include "mapobj_globals.h"
+#include "shared_constants_globals.h"
 
 class BAObjView;
 class HouseClass;
@@ -109,9 +111,6 @@ public:
 };
 GG_STATIC_ASSERT(sizeof(BAVector<int*>) == 0x18);
 
-// GLOBAL: GAMEMD 0x7E2820 / 0x7E2818 - the two double constants of the facing-angle conversion.
-extern const double DAT_007E2820;
-extern const double DAT_007E2818;
 // GLOBAL: GAMEMD 0xA8E7AC / 0xA8ED6B
 extern int DAT_00A8E7AC;
 extern unsigned char DAT_00A8ED6B;
@@ -850,7 +849,6 @@ extern DynamicVectorClass<TechnoTypeClass*> DAT_00A83CE0;
 // IMPORT: GAMEMD 0x7E1530 (winmm timeGetTime)
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 // GLOBAL: GAMEMD 0x8B41E0 - a vector of building pointers (the registration list).
-extern BAVector<BuildingClass*> DAT_008B41E0;
 extern CoordStruct DAT_0089C848;
 
 // FUNCTION: GAMEMD 0x772A90 (read-only here) - one register argument: __fastcall.

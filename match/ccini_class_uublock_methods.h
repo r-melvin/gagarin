@@ -20,6 +20,7 @@
 #include "_layout/memory_buffer.h"
 #include "_layout/straw.h"
 #include "_rt/gg_vslot.h"
+#include "shared_constants_globals.h"
 
 // CRT sprintf, __cdecl variadic; the caller pops the arguments.
 // LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc)
@@ -29,9 +30,7 @@ extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 extern const char STR_00817F6C[];
 
 // VTABLE: GAMEMD 0x7E61F0 — the straw base vtable (installed first).
-extern char VT_007E61F0;
 // VTABLE: GAMEMD 0x7E61E0 — the buffer straw's vtable.
-extern char VT_007E61E0;
 
 // The straw base: vtable plus the two chain links.
 struct Straw_00526E80

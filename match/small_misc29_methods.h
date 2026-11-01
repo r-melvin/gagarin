@@ -4,9 +4,7 @@
 //   Ghidra CLI at 0x40A900. Not bound by YRpp.
 #ifndef GG_MATCH_CORE_SMALL_MISC29_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC29_METHODS_H
-
-// GLOBAL: GAMEMD 0x816380 — a 101-entry table indexed by percentage.
-extern int DAT_00816380[101];
+#include "shared_constants_globals.h"
 
 // FUNCTION: GAMEMD 0x40A900 — convert a 0..256 fraction to a percentage and
 // look it up. The multiply by 100 is done with two LEAs and a shift

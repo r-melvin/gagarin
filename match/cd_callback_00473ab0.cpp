@@ -6,6 +6,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/global_0081c1d0.h"
 #include <stddef.h>
+#include "display_objects_globals.h"
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 
@@ -42,8 +43,6 @@ void FUN_00473AB0_View::FUN_00473AB0(int, int, int)
     }
 }
 
-// GLOBAL: GAMEMD 0x0089E3A0 (byte comparison at 0x4790EE)
-extern "C" unsigned char DAT_0089E3A0;
 GG_STATIC_ASSERT(sizeof(DAT_0089E3A0) == 1);
 
 // Slot-0 method view at 0x4790E0. The retail RTTI associates this vtable

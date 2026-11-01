@@ -23,6 +23,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/theme_class.h"
+#include "shared_constants_globals.h"
 
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];
@@ -102,9 +103,6 @@ GG_STATIC_ASSERT(offsetof(TheaterData, Name) == 0x00 &&
 
 // GLOBAL: GAMEMD 0x7E1B78 — the theater record array.
 extern TheaterData DAT_007E1B78[];
-
-// GLOBAL: GAMEMD 0x7E1B60 — the map-edge name table ("North", "East", ...).
-extern const char* DAT_007E1B60[];
 
 // The theme player: canonical ThemeClass.
 // GLOBAL: GAMEMD 0xA83D10 — the theme player instance.

@@ -8,6 +8,7 @@
 #include <math.h>
 #include "header_init_shapes.h"
 #include "trig_table_functions_004cac40.h"
+#include "mapobj_globals.h"
 
 // GLOBAL: GAMEMD 0x7E1708
 const double DAT_007E1708 = 2.0;

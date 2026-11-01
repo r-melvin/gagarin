@@ -7,6 +7,7 @@
 
 #include "msanim_family_methods.h"
 #include "_layout/memory_buffer.h"
+#include "shared_constants_globals.h"
 
 // GLOBAL: GAMEMD 0x88730C -- the blitter the shape animations redraw through.
 extern MSBlitSurface* DAT_0088730C;
@@ -165,7 +166,7 @@ MSVQAnim::MSVQAnim(MSStringClass* name, MSSurface* surface, int field24, bool fi
         file.Vtbl    = &VT_007E16B0;
         file.Reset64 = 0;
         ((MemoryBuffer*)file.Sub58)->Clear();
-        file.Vtbl    = &VT_007E1668;
+        file.Vtbl    = &DAT_007E1668;
         FUN_00431B80(&file);
 
         stem.Destruct();

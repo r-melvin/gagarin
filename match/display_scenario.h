@@ -17,6 +17,7 @@
 #include "_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
 #include "mouse_ww_mouse_class.h"
+#include "shared_constants_globals.h"
 
 // A lepton coordinate (three dwords: the sprintf arguments are X and Y divided by 256).
 struct DisplayScCoord
@@ -152,8 +153,6 @@ DisplayScTagType* FUN_006E6310(const char* name);
 
 // The straw pair the packed sections are fed through (see the UUBlock writer for the same shapes). Flat structs with
 // explicit vtable seat stores, the repository convention for the straw classes.
-extern char DisplayScVT_007E61F0;   // VTABLE: GAMEMD 0x7E61F0 -- Straw.
-extern char DisplayScVT_007E61E0;   // VTABLE: GAMEMD 0x7E61E0 -- the buffer straw.
 
 struct DisplayScBuffer
 {

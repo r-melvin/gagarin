@@ -22,6 +22,8 @@
 #include "parasite_class_infect_methods.h"
 #include "small_misc35_methods.h"
 #include <new>
+#include "engine_core_globals.h"
+#include "shared_constants_globals.h"
 
 // These are engine functions, not recovered CRT implementations.
 // Declaration: GAMEMD 0x4CAC40
@@ -80,8 +82,6 @@ extern CellStruct DAT_0089DDF0;
 extern CoordStruct DAT_0089DE30;
 // GLOBAL: GAMEMD 0x89DE64
 extern int DAT_0089DE64;
-// GLOBAL: GAMEMD 0x87F6C0
-extern void* DAT_0087F6C0;
 // GLOBAL: GAMEMD 0x87F6C4
 extern void* DAT_0087F6C4;
 // GLOBAL: GAMEMD 0x887314
@@ -112,8 +112,6 @@ extern Obj_00439110 DAT_0087F5D8;
 extern const double DAT_007E48E0;
 // GLOBAL: GAMEMD 0x7E1738
 extern const double DAT_007E1738;
-// GLOBAL: GAMEMD 0x7E2800
-extern const double DAT_007E2800;
 // GLOBAL: GAMEMD 0x8B4154
 extern AnimTypeClass** DAT_008B4154;
 // Declaration: GAMEMD 0x48ACE0 (decl; reloc), three stack ints, RET 0xC.
@@ -146,14 +144,8 @@ CoordStruct* __fastcall FUN_0049F420(CoordStruct* output,
 
 
 // Pinned native readonly operands; declarations only, no invented storage.
-// GLOBAL: GAMEMD 0x7E2820
-extern const double DAT_007E2820;
-// GLOBAL: GAMEMD 0x7E2818
-extern const double DAT_007E2818;
 // GLOBAL: GAMEMD 0x7E2810
 extern const double DAT_007E2810;
-// GLOBAL: GAMEMD 0x7E4408
-extern const double DAT_007E4408;
 // GLOBAL: GAMEMD 0x7E3570
 extern const double DAT_007E3570;
 // GLOBAL: GAMEMD 0x7E3CC0
@@ -164,7 +156,7 @@ extern const double DAT_007E3CC0;
 static inline unsigned int BulletDirectionIndex(double y, double x)
 {
     unsigned short raw = (unsigned short)(int)((FUN_004CAE30(y, x)
-        - DAT_007E2820) * DAT_007E2818);
+        - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
     return ((raw >> 10) + 1 >> 1) & 31;
 }
 
@@ -402,7 +394,7 @@ void BulletClass::vf_23()
     double adjustedMagnitude = static_cast<double>(fVar24);
     if (static_cast<double>(Speed) < adjustedMagnitude) {
       adjustedMagnitude -= static_cast<double>(speedAdjustment / 2);
-      if (adjustedMagnitude < DAT_007E2800) {
+      if (adjustedMagnitude < GG_ZERO) {
         adjustedMagnitude = 0.0;
       }
     } else if (static_cast<double>(Speed) > adjustedMagnitude) {
@@ -415,8 +407,8 @@ void BulletClass::vf_23()
     // The three native FCOMP checks accept either signed zero.  If all
     // components are zero, the original body seeds X to 100 before dividing
     // by its norm; this avoids a zero denominator and is observable state.
-    if (Velocity.X == DAT_007E2800 && Velocity.Y == DAT_007E2800 &&
-        Velocity.Z == DAT_007E2800) {
+    if (Velocity.X == GG_ZERO && Velocity.Y == GG_ZERO &&
+        Velocity.Z == GG_ZERO) {
       Velocity.X = 100.0;
     }
     const double velocityMagnitude = FUN_004CAC40(
@@ -1011,7 +1003,7 @@ int BulletClass::vf_122()
     int frame = 0;
     if (!Type->Rotates) {
         unsigned short raw = (unsigned short)(int)((FUN_004CAE30(
-            -Velocity.Y, Velocity.X) - DAT_007E2820) * DAT_007E2818);
+            -Velocity.Y, Velocity.X) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
         frame = DAT_007F4890[((raw >> 10) + 1 >> 1) & 31];
     }
     if (Type->AnimLow || Type->AnimHigh)
@@ -1034,11 +1026,11 @@ void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
         Matrix3D rotation;
         rotation.MakeIdentity();
         rotation.RotateZ((float)((int(BulletDirectionIndex(-Velocity.Y,
-            Velocity.X)) - 8) * DAT_007E4408));
+            Velocity.X)) - 8) * gg_locomotion_facing_step));
         double horizontal = FUN_004CAC40(Velocity.Y * Velocity.Y
                                          + Velocity.X * Velocity.X);
         rotation.RotateY((float)(-(int(BulletDirectionIndex(Velocity.Z,
-            horizontal)) - 8) * DAT_007E4408));
+            horizontal)) - 8) * gg_locomotion_facing_step));
         Matrix3D world = FUN_00754BE0();
         Matrix3D combined = FUN_005AF980(world, rotation);
         FUN_0046B0C0(&Type->MainVoxel, combined, point, clip, 0, 0x800, 1000);
@@ -1069,7 +1061,7 @@ void BulletClass::vf_69(Point2D* point, RectangleStruct* clip)
     }
     void* conversion = DAT_0087F6C4;
     if (Type->AnimPalette)
-        conversion = DAT_0087F6C0;
+        conversion = ParticleDrawContext;
     else if (Type->FirersPalette) {
         int index = InheritedColor;
         if (index == -1)
@@ -1167,7 +1159,7 @@ bool BulletClass::vf_124(const CoordStruct& source,
         int radius = product / range;
         int direction = reinterpret_cast<Randomizer*>(reinterpret_cast<char*>(DAT_00A8B230) + 0x218)->RandomRanged(0, 0x7FFFFFFE);
         short raw = (short)(int)((direction * DAT_007E3570 * DAT_007E3CC0
-                                 - DAT_007E2820) * DAT_007E2818);
+                                 - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16);
         double angle = (raw - 0x3FFF) * DAT_007E2810;
         int oldZ = destination.Z;
         int newY = (int)(destination.Y - FUN_004CACB0(angle) * radius);
@@ -2458,7 +2450,7 @@ void BulletClass::FUN_0046A310()
                     double dx = static_cast<double>(targetPosition.X) - sourcePosition.X;
                     double dy = static_cast<double>(targetPosition.Y) - sourcePosition.Y;
                     short yaw = static_cast<short>(static_cast<int>(
-                        (FUN_004CAE30(-dy, dx) - DAT_007E2820) * DAT_007E2818));
+                        (FUN_004CAE30(-dy, dx) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16));
                     BulletVelocity velocity;
                     velocity.X = 0.0;
                     velocity.Y = 0.0;
@@ -2478,8 +2470,8 @@ void BulletClass::FUN_0046A310()
                     // zeroed input through this first direction stage.
                     double planarLength = vectorView.FUN_0041C350();
                     short pitch = static_cast<short>(static_cast<int>(
-                        (FUN_004CAE30(velocity.Z, planarLength) - DAT_007E2820) *
-                         DAT_007E2818));
+                        (FUN_004CAE30(velocity.Z, planarLength) - GG_QUARTER_TURN) *
+                         GG_RADIANS_TO_DIR16));
                     double pitchRadians = (pitch - 0x3FFF) * DAT_007E2810;
                     double preSpreadLength = vectorView.FUN_0041C3C0();
                     if (pitchRadians != 0.0) {
@@ -2566,7 +2558,7 @@ void BulletClass::FUN_0046A310()
                 double dx = static_cast<double>(targetPosition.X) - sourcePosition.X;
                 double dy = static_cast<double>(targetPosition.Y) - sourcePosition.Y;
                 short yaw = static_cast<short>(static_cast<int>(
-                    (FUN_004CAE30(-dy, dx) - DAT_007E2820) * DAT_007E2818));
+                    (FUN_004CAE30(-dy, dx) - GG_QUARTER_TURN) * GG_RADIANS_TO_DIR16));
                 BulletVelocity velocity;
                 velocity.X = 0.0;
                 velocity.Y = 0.0;
@@ -2590,8 +2582,8 @@ void BulletClass::FUN_0046A310()
                 double planarLength =
                     reinterpret_cast<Vec3d&>(velocity).FUN_0041C350();
                 short pitch = static_cast<short>(static_cast<int>(
-                    (FUN_004CAE30(velocity.Z, planarLength) - DAT_007E2820) *
-                     DAT_007E2818));
+                    (FUN_004CAE30(velocity.Z, planarLength) - GG_QUARTER_TURN) *
+                     GG_RADIANS_TO_DIR16));
                 double pitchRadians = (pitch - 0x3FFF) * DAT_007E2810;
                 double preSpreadLength = FUN_004CAC40(
                     velocity.X * velocity.X + velocity.Y * velocity.Y +
@@ -2694,11 +2686,11 @@ int BulletClass::vf_11()
 // GLOBAL: GAMEMD 0x7E1738
 extern const double DAT_007E1738 = 0.5;
 // GLOBAL: GAMEMD 0x7E2800
-extern const double DAT_007E2800 = 0.0;
+extern const double GG_ZERO = 0.0;
 // GLOBAL: GAMEMD 0x7E2818
-extern const double DAT_007E2818 = -10430.060040584269;
+extern const double GG_RADIANS_TO_DIR16 = -10430.060040584269;
 // GLOBAL: GAMEMD 0x7E2820
-extern const double DAT_007E2820 = 1.5707963267948966;
+extern const double GG_QUARTER_TURN = 1.5707963267948966;
 // GLOBAL: GAMEMD 0x7E96E0
 extern const CLSID DAT_007E96E0 = {0x0E272DC9, 0x9C0F, 0x11D1, {0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1}};
 // GLOBAL: GAMEMD 0x7F7C90
