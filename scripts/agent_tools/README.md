@@ -52,6 +52,7 @@ Not shipped: `cache/` (rebuilt: `ghidra_functions.json` from the ghidra CLI, `vt
 | tool | what it answers | output |
 |---|---|---|
 | `ctx.py ADDR [--json]` | everything about one function before you draft it | stdout |
+| `vslot_owners.py [--tsv OUT] [--class C]` | which class does each virtual function belong to by the RTTI vtables holding it, and which manifest rows sit under a stand-in, a class outside that chain or no class (the rehoming worklist)? | stdout / TSV / JSON |
 | `classcheck.py CLASS [--header H]` | does this header's layout agree with the binary, and which other headers define the class? | `<state>/orchestration/class_reports/CLASS.json` |
 | `attempts.py add/show/search/best/import` | what has already been tried at this address? | `<state>/orchestration/attempts.jsonl` |
 | `libmatch.py [LIB...]` | which .text functions are VC6 CRT, by bytes? | `<state>/orchestration/library_map.json` |
