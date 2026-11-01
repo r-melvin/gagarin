@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x53E4F0.
 
 #include "streamer_thread_flush_methods.h"
+#include "runtime_misc_globals.h"
 
 // LIBRARY: GAMEMD 0x7CA845 (decl; reloc) -- CRT fopen.
 void* __cdecl FUN_007CA845(const char* path, const char* mode);
@@ -16,7 +17,7 @@ void* __cdecl FUN_007CA845(const char* path, const char* mode);
 // Returns whether a stream is now open.
 int __fastcall FUN_0053E4F0(const char* path)
 {
-    if (DAT_00AA0448 != 0 && DAT_00AA0468 == 0) {
+    if (DebugWindowListActive != 0 && DAT_00AA0468 == 0) {
         EnterCriticalSection(&DAT_00AA0418);
         DAT_00AA0468 = FUN_007CA845(path, "wb");
         if (DAT_00AA0468 != 0) {
@@ -41,7 +42,7 @@ extern int DAT_00AA046C;
 // Returns whether a stream is now open.
 int __fastcall FUN_0053E550(const char* path)
 {
-    if (DAT_00AA0448 != 0 && DAT_00AA0468 == 0) {
+    if (DebugWindowListActive != 0 && DAT_00AA0468 == 0) {
         EnterCriticalSection(&DAT_00AA0418);
         DAT_00AA0468 = FUN_007CA845(path, "rb");
         DAT_00AA046C = 0;
@@ -68,9 +69,9 @@ int __cdecl FUN_007CA75B(void* stream);
 // around the flush, as retail does.
 void __cdecl FUN_0053E5F0()
 {
-    if (DAT_00AA0448 != 0) {
+    if (DebugWindowListActive != 0) {
         EnterCriticalSection(&DAT_00AA0418);
-        if (DAT_00AA0448 != 0) {
+        if (DebugWindowListActive != 0) {
             EnterCriticalSection(&DAT_00AA0418);
             if (DAT_00AA0468 != 0 && DAT_00AA045C != 0 && DAT_00AA0444 == 1
                 && DAT_00AA0464 != 0) {

@@ -7,6 +7,7 @@
 #include "mathtbl_init_shapes.h"
 #include "mathtbl_consts.h"
 #include "trig_table_functions_004cac40.h"
+#include "cell_coord_globals.h"
 
 // GLOBAL: GAMEMD 0x007F4790
 extern const double DAT_007F4790;
@@ -45,7 +46,7 @@ double DAT_00B0E9F8 = FUN_004CADE0((double)(DAT_00B0EA28 * 2) / DAT_00B0E9D0);
 int DAT_00B0EA1C = (int)((double)(DAT_00B0EA28 * 4) + DAT_007E1738);
 // SYNTHETIC: GAMEMD 0x6F0610
 // GLOBAL: GAMEMD 0x00B0E9C8
-MathTblShortPair DAT_00B0E9C8;
+MathTblShortPair DefaultWaypointCell;
 // SYNTHETIC: GAMEMD 0x6F0620
 // GLOBAL: GAMEMD 0x00B0E9E8
 MathTblZero3 DAT_00B0E9E8;

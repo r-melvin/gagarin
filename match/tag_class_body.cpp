@@ -14,6 +14,7 @@
 #include "abstract_registry.h"
 #include "header_tuning_globals.h"
 #include "mapobj_globals.h"
+#include "cell_coord_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
@@ -40,8 +41,6 @@ extern bool DAT_00A8E9A0;
 #include "game_state_flags.h"
 // GLOBAL: GAMEMD 0xA8ED6B
 extern bool DAT_00A8ED6B;
-// GLOBAL: GAMEMD 0xB0E700 -- the "no cell" value (defined in tag_class_array.cpp).
-extern CellStruct DAT_00B0E700;
 // GLOBAL: GAMEMD 0xA83CDC -- the cursor into 0x8B40C8.
 extern int DAT_00A83CDC;
 // GLOBAL: GAMEMD 0x8B41A8 -- a second tag list.

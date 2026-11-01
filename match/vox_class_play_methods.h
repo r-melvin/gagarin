@@ -25,6 +25,7 @@
 #include "intrusive_list_methods.h"   // ListNode / Obj_00407520 / FUN_00407420
 
 #include "_layout/coord_struct.h"
+#include "vox_audio_globals.h"
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x8);
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
@@ -36,8 +37,6 @@ void FUN_004072D0(ListNode* node);
 extern Obj_00407520* DAT_00B1D3A4;
 // GLOBAL: GAMEMD 0xB1D320 -- anchor of the live positional-voice list.
 extern ListNode DAT_00B1D320;
-// GLOBAL: GAMEMD 0xB1D3A8 -- live positional-voice count.
-extern int DAT_00B1D3A8;
 // GLOBAL: GAMEMD 0xB1D3AC -- high-water mark of that count.
 extern int DAT_00B1D3AC;
 

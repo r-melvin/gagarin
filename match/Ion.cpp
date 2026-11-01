@@ -28,6 +28,7 @@
 #include <windows.h>
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
@@ -188,8 +189,6 @@ void FUN_00539EA0(int a1)
 }
 
 
-// GLOBAL: GAMEMD 0xA9F9F8
-extern int DAT_00A9F9F8;
 // GLOBAL: GAMEMD 0xA9FAB4
 extern unsigned char DAT_00A9FAB4;
 // GLOBAL: GAMEMD 0xA9FAB8

@@ -7,9 +7,8 @@
 #include "screen_palette_mgr_methods.h"
 #include "scenario_class_methods.h"
 #include "scenario_session_globals.h"
+#include "palette_screen_globals.h"
 
-// GLOBAL: GAMEMD 0xB0FBE0 -- the screen resources are loaded.
-extern char DAT_00B0FBE0_r21_4;
 // GLOBAL: GAMEMD 0xB0FC10 -- eight raw blocks, stride 4.
 extern void* DAT_00B0FC10_r21_4[8];
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
@@ -24,8 +23,6 @@ extern PaletteSet DAT_00B0FBF4;
 extern PaletteSet DAT_00B0FBFC;
 // GLOBAL: GAMEMD 0xB0FC04
 extern PaletteSet DAT_00B0FC04;
-// GLOBAL: GAMEMD 0xB0FC0C -- the sidebar palettes are loaded.
-extern char DAT_00B0FC0C_r21_4;
 // GLOBAL: GAMEMD 0x844BF0 -- sidebar palette file names.
 extern const char* DAT_00844BF0;
 // GLOBAL: GAMEMD 0x844BF4

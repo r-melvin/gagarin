@@ -2,13 +2,12 @@
 // Provenance: own-binary-via-Ghidra
 //   Body read from the retail function at 0x5BC370 (0x4B bytes, plain RET).
 #include <windows.h>
+#include "runtime_misc_globals.h"
 
 // GLOBAL: GAMEMD 0xABF234
 extern HWND DAT_00ABF234;
 // GLOBAL: GAMEMD 0xABF238
 extern bool DAT_00ABF238;
-// GLOBAL: GAMEMD 0xABF239
-extern bool DAT_00ABF239;
 // GLOBAL: GAMEMD 0xABF23A
 extern bool DAT_00ABF23A;
 // GLOBAL: GAMEMD 0xABF240

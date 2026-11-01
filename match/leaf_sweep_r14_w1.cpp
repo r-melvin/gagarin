@@ -11,6 +11,7 @@
 #include "_rt/gg_static_assert.h"
 #include "_layout/cell.h"
 #include "debug_window_list_methods.h"
+#include "runtime_misc_globals.h"
 
 // ---------------------------------------------------------------------------
 // 0x402900: run the update callback of every enabled node of the global list.
@@ -303,8 +304,6 @@ void __fastcall FUN_00549A00(int a, int b, int* outX, int* outY)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xAA0374
-extern int DebugWindowListCapacity;
 // GLOBAL: GAMEMD 0xAA044C
 extern void** DebugWindowList;
 // GLOBAL: GAMEMD 0xAA0470
@@ -317,6 +316,4 @@ TileStep_00544E30** DAT_00AA107C;
 int DAT_00AA1088;
 // GLOBAL: GAMEMD 0x87DE2C
 int DAT_0087DE2C = 0;
-// GLOBAL: GAMEMD 0xAA0448
-extern int DebugWindowListActive;
 // END defined globals

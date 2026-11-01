@@ -4,6 +4,7 @@
 //   v1.001 at 0x406760 via the local Ghidra CLI.
 
 #include <stdio.h>
+#include "vox_audio_globals.h"
 
 // GLOBAL: GAMEMD 0x87E28C -- live audio-event count.
 extern int DAT_0087E28C;
@@ -11,8 +12,6 @@ extern int DAT_0087E28C;
 extern int DAT_0087E290;
 // GLOBAL: GAMEMD 0x87E298 -- reporting enabled.
 extern int DAT_0087E298;
-// GLOBAL: GAMEMD 0xB1D3A8 -- live positional-voice count.
-extern int DAT_00B1D3A8;
 // GLOBAL: GAMEMD 0xB1D3AC -- its high-water mark.
 extern int DAT_00B1D3AC;
 

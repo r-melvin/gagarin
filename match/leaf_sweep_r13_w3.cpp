@@ -7,6 +7,7 @@
 //   0x72F330, 0x747600, 0x7500D0, 0x7500E0, 0x7515F0, 0x763700, 0x764FF0, 0x7B8C50.
 
 #include "mathtbl_init_shapes.h"
+#include "palette_screen_globals.h"
 
 // ---------------------------------------------------------------------------
 // 0x71FF00: static initialiser of a four-word record whose constructor zeroes it.
@@ -121,8 +122,6 @@ void __fastcall FUN_00730100();
 void __fastcall FUN_00730400();
 // FUNCTION: GAMEMD 0x730530 (decl; reloc)
 void __fastcall FUN_00730530();
-// GLOBAL: GAMEMD 0xB0FC0C
-extern char DAT_00B0FC0C;
 
 // FUNCTION: GAMEMD 0x72F330
 void FUN_0072F330()

@@ -15,6 +15,7 @@
 // Match status (reccmp diff_retail.py vs retail, reloc-normalised): see report.
 
 #include "team_type_class_methods.h"
+#include "cell_coord_globals.h"
 
 // ---------------------------------------------------------------------------
 
@@ -26,6 +27,4 @@
 
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB0E9C8
-extern CellStruct DefaultWaypointCell;
 // END defined globals

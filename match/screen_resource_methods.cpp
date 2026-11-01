@@ -23,6 +23,7 @@
 #include "screen_resource_globals.h"
 #include "trig_table_functions_004cac40.h"
 #include "scenario_session_globals.h"
+#include "palette_screen_globals.h"
 
 // GLOBAL: GAMEMD 0x845530
 extern const char DAT_00845530[];

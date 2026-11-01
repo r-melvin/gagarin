@@ -5,6 +5,5 @@
 // This establishes the loader value only, not later initialization or writes.
 #include "flight_level.h"
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 GG_STATIC_ASSERT(sizeof(int) == 4);
-// GLOBAL: GAMEMD 0x00AC13C8
-extern int FlightLevel;

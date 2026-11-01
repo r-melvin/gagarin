@@ -30,15 +30,7 @@
 // The handle is modelled as `void*` so this TU stays free of <windows.h>.
 #ifndef GG_MATCH_PLATFORM_DEBUG_WINDOW_LIST_METHODS_H
 #define GG_MATCH_PLATFORM_DEBUG_WINDOW_LIST_METHODS_H
-
-// GLOBAL: GAMEMD 0x00AA0448 — module-active flag. Both entry points open by
-// loading it (`MOV EAX,[0xAA0448]`) and fall straight through to the epilogue
-// when it is zero, so nothing below runs until the logging module is armed.
-extern int DebugWindowListActive;
-
-// GLOBAL: GAMEMD 0x00AA0374 — table capacity, read as a signed int and compared
-// against the walking index with `JLE`/`JL`.
-extern int DebugWindowListCapacity;
+#include "runtime_misc_globals.h"
 
 // GLOBAL: GAMEMD 0x00AA044C — base of the handle table. Walked with `ADD EAX,4`,
 // which pins the element size at one pointer.

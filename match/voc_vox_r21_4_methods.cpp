@@ -12,6 +12,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "_layout/voc_class.h"
+#include "vox_audio_globals.h"
 
 // The list head at 0xB1D320.
 struct SampleList_r21_4
@@ -29,8 +30,6 @@ struct SamplePool_r21_4
 };
 // GLOBAL: GAMEMD 0xB1D3A4
 extern SamplePool_r21_4* DAT_00B1D3A4_r21_4;
-// GLOBAL: GAMEMD 0xB1D3A8 -- count of live nodes.
-extern int DAT_00B1D3A8_r21_4;
 
 // The three-word key a node is matched on.
 struct SampleKey_r21_4

@@ -19,6 +19,7 @@
 // 0x406265 addresses the event timer initialized by 0x4062F6.
 #include "triple_timer_init_methods.h"
 #include "mapobj_globals.h"
+#include "runtime_misc_globals.h"
 struct Sub_00406250 { Timer_00401000 Timer; };
 
 struct Obj_00406250
@@ -282,16 +283,12 @@ unsigned int FUN_004E24A0()
 
 // GLOBAL: GAMEMD 0xAA044C
 extern int* DAT_00AA044C;
-// GLOBAL: GAMEMD 0xAA0374
-extern int DAT_00AA0374;
-// GLOBAL: GAMEMD 0xAA0448
-extern int DAT_00AA0448;
 
 // FUNCTION: GAMEMD 0x53E4C0
 // Entry `index` of the table when the table is live and the index is in range, else 0.
 int __fastcall FUN_0053E4C0(int index)
 {
-    if (DAT_00AA0448 && index >= 0 && index < DAT_00AA0374)
+    if (DebugWindowListActive && index >= 0 && index < DebugWindowListCapacity)
         return DAT_00AA044C[index];
     return 0;
 }
@@ -817,9 +814,9 @@ int Map_004AA290::QueryCell(int a, int b)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAA0448
-int DAT_00AA0448;
+int DebugWindowListActive;
 // GLOBAL: GAMEMD 0xAA0374
-int DAT_00AA0374;
+int DebugWindowListCapacity;
 // GLOBAL: GAMEMD 0xAA044C
 int* DAT_00AA044C;
 // END defined globals

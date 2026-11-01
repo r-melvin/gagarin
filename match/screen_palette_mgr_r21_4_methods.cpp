@@ -21,6 +21,7 @@
 #include "scenario_class_methods.h"
 #include "screen_palette_mgr_r21_4_methods.h"
 #include "scenario_session_globals.h"
+#include "palette_screen_globals.h"
 
 
 
@@ -124,8 +125,8 @@ void FUN_0072DC20()
 // after its release) and finish with the last teardown.
 void FUN_0072DEF0()
 {
-    if (DAT_00B0FBE0_r21_4 != 0) {
-        DAT_00B0FBE0_r21_4 = 0;
+    if (DAT_00B0FBE0 != 0) {
+        DAT_00B0FBE0 = 0;
         FUN_0072EF60();
         FreeAudioTimerPairs();
         FUN_007C8B3D(DAT_00B0FC10_r21_4[0]);
@@ -243,7 +244,7 @@ void FUN_0072F270()
     FUN_0072FA10();
     LoadSidebarPaletteSets();
     FUN_0072FC60(DAT_00A8EB84, DAT_00A8EB88);
-    DAT_00B0FC0C_r21_4 = 1;
+    DAT_00B0FC0C = 1;
 }
 
 // FUNCTION: GAMEMD 0x730400 (decl; reloc)
@@ -264,11 +265,11 @@ void FUN_0072F350()
     FUN_00730100();
     FUN_00730400();
     FUN_00730530();
-    DAT_00B0FC0C_r21_4 = 0;
+    DAT_00B0FC0C = 0;
     FUN_0072FA10();
     LoadSidebarPaletteSets();
     FUN_0072FC60(DAT_00A8EB84, DAT_00A8EB88);
-    DAT_00B0FC0C_r21_4 = 1;
+    DAT_00B0FC0C = 1;
 }
 
 // FUNCTION: GAMEMD 0x730400
@@ -433,8 +434,6 @@ WholeFileBlock* DAT_00B0FA04;
 WholeFileBlock* DAT_00B0FAF8;
 // GLOBAL: GAMEMD 0xB0FB50
 WholeFileBlock* DAT_00B0FB50;
-// GLOBAL: GAMEMD 0xB0FBE0
-extern char DAT_00B0FBE0_r21_4;
 // GLOBAL: GAMEMD 0xB0FBE4
 extern PaletteSet DAT_00B0FBE4;
 // GLOBAL: GAMEMD 0xB0FBEC
@@ -446,7 +445,7 @@ extern PaletteSet DAT_00B0FBFC;
 // GLOBAL: GAMEMD 0xB0FC04
 extern PaletteSet DAT_00B0FC04;
 // GLOBAL: GAMEMD 0xB0FC0C
-char DAT_00B0FC0C_r21_4;
+char DAT_00B0FC0C;
 // GLOBAL: GAMEMD 0x844FFC
 extern const char STR_00844FFC[] = "FSBKGDLG.PAL";
 // GLOBAL: GAMEMD 0x84500C

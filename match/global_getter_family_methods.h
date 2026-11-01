@@ -11,6 +11,8 @@
 #define GG_MATCH_CORE_GLOBAL_GETTER_FAMILY_METHODS_H
 
 #include "pixel_shift_view.h"
+#include "palette_screen_globals.h"
+#include "platform_online_globals.h"
 
 // GLOBAL: GAMEMD 0x1
 extern int DAT_00000001;
@@ -69,8 +71,6 @@ extern int DAT_00B0FBCC;
 extern int DAT_00B0FBD4;
 // GLOBAL: GAMEMD 0xB0FBDC
 extern int DAT_00B0FBDC;
-// GLOBAL: GAMEMD 0xB0FBE0
-extern char DAT_00B0FBE0;
 // GLOBAL: GAMEMD 0xB0FBE4
 extern int DAT_00B0FBE4;
 // GLOBAL: GAMEMD 0xB0FBE8
@@ -81,8 +81,6 @@ extern int DAT_00B0FBF8;
 extern int DAT_00B0FBFC;
 // GLOBAL: GAMEMD 0xB0FC08
 extern int DAT_00B0FC08;
-// GLOBAL: GAMEMD 0xB0FC0C
-extern char DAT_00B0FC0C;
 // GLOBAL: GAMEMD 0xB0FC78
 extern int DAT_00B0FC78;
 // GLOBAL: GAMEMD 0xB0FCB4
@@ -131,8 +129,6 @@ extern int DAT_00B72F44;
 extern int DAT_00B72F48;
 // GLOBAL: GAMEMD 0xB73570
 extern int DAT_00B73570;
-// GLOBAL: GAMEMD 0xB77F58
-extern int DAT_00B77F58;
 // GLOBAL: GAMEMD 0xB77F68
 extern int DAT_00B77F68;
 // GLOBAL: GAMEMD 0xB780A0

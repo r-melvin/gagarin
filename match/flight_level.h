@@ -4,6 +4,5 @@
 // against twice its value. The descriptive name is a naming hypothesis.
 #ifndef GG_MATCH_CORE_FLIGHT_LEVEL_H
 #define GG_MATCH_CORE_FLIGHT_LEVEL_H
-// GLOBAL: GAMEMD 0x00AC13C8
-extern int FlightLevel;
+#include "runtime_misc_globals.h"
 #endif

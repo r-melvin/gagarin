@@ -5,6 +5,7 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu139_b_methods.h"
+#include "runtime_misc_globals.h"
 
 // FUNCTION: GAMEMD 0x5BC400
 // Branching.
@@ -37,6 +38,4 @@ void Obj_005BCC60::FUN_005BCC60(int a1, int a2, int a3, int a4)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xABF239
-extern unsigned char DAT_00ABF239;
 // END defined globals

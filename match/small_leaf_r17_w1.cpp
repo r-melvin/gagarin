@@ -8,6 +8,7 @@
 #include <windows.h>
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 // View of the object whose +0x294 field gates the mission test below.
 struct Obj_00414A20
@@ -96,13 +97,12 @@ extern unsigned int DAT_00AA0434;
 extern unsigned int DAT_00AA0438;
 // GLOBAL: GAMEMD 0x00AA0444, 0x00AA0448 -- the two enable flags.
 extern int DAT_00AA0444;
-extern int DAT_00AA0448;
 
 // FUNCTION: GAMEMD 0x53EC00
 // Copies the shared pair out under the lock when both enable flags are set.
 void __fastcall FUN_0053EC00(unsigned int* first, unsigned int* second)
 {
-    if (DAT_00AA0448 != 0 && DAT_00AA0444 != 0) {
+    if (DebugWindowListActive != 0 && DAT_00AA0444 != 0) {
         EnterCriticalSection(&DAT_00AA0400);
         *first = DAT_00AA0434;
         *second = DAT_00AA0438;

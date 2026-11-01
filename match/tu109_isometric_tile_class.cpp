@@ -11,6 +11,7 @@
 #include "_layout/swizzle_manager_class.h"
 #include "isometric_tile_class.h"
 #include "_layout/object_class.h"
+#include "runtime_misc_globals.h"
 
 // GLOBAL: GAMEMD 0x007E9640 -- CLSID of IsometricTileClass.
 extern const CLSID DAT_007E9640;
@@ -144,6 +145,4 @@ inline IsometricTileClass::~IsometricTileClass()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xAA06D0
-extern MapObjCell DAT_00AA06D0;
 // END defined globals

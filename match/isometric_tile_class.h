@@ -22,6 +22,7 @@
 #include "_layout/object_class.h"
 #include "_layout/object_type_class.h"
 #include "_layout/geometry2d.h"
+#include "runtime_misc_globals.h"
 
 class IsometricTileClass;
 
@@ -33,9 +34,6 @@ extern DynamicVectorClass<IsometricTileClass*> DAT_0087F750;
 // IsometricTileTypeClass objects; they are held here through their ObjectTypeClass-shaped base,
 // which is what slot 34 returns.
 extern DynamicVectorClass<ObjectTypeClass*> DAT_00A8ED28;
-
-// GLOBAL: GAMEMD 0xAA06D0 - the cell value meaning "no placement" for the constructor.
-extern MapObjCell DAT_00AA06D0;
 
 // VTABLE: GAMEMD 0x7EC258 (IPersistStream side) and GAMEMD 0x7EC23C / 0x7EC234 / 0x7EC22C
 class IsometricTileClass : public ObjectClass

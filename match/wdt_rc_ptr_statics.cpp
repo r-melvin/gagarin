@@ -10,6 +10,7 @@
 // WorldDom.cpp window (0x7AF0B0-0x7B0B9F) next to the two owned blocks at
 // 0xB77F54/0xB77F60; 0xB75E48 follows the Wonline code.
 #include "world_domination_tour.h"
+#include "platform_online_globals.h"
 
 namespace WorldDominationTour { class Campaign; }
 

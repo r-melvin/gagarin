@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x53E6B0.
 
 #include "streamer_thread_flush_methods.h"
+#include "runtime_misc_globals.h"
 
 // FUNCTION: GAMEMD 0x53E6B0
 //
@@ -15,7 +16,7 @@
 // than kept live - the call could have changed them.
 void __cdecl FUN_0053E6B0()
 {
-    if (DAT_00AA0448 != 0) {
+    if (DebugWindowListActive != 0) {
         EnterCriticalSection(&DAT_00AA0418);
 
         if (DAT_00AA0468 != 0 && DAT_00AA045C != 0 && DAT_00AA0444 == 1

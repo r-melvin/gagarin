@@ -7,6 +7,7 @@
 #include "mathtbl_init_shapes.h"
 #include "mathtbl_consts.h"
 #include "trig_table_functions_004cac40.h"
+#include "cell_coord_globals.h"
 
 // GLOBAL: GAMEMD 0x7F44A8
 extern const double DAT_007F44A8;

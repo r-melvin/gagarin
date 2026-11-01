@@ -6,6 +6,7 @@
 
 #include "screen_palette_mgr_methods.h"
 #include "screen_wholefile_block_globals.h"   // DAT_00B0FAD0, DAT_00B0FB10, DAT_00B0FB30, DAT_00B0FB48
+#include "palette_screen_globals.h"
 
 // GLOBAL: GAMEMD 0x844B9C
 extern const char* DAT_00844B9C;
@@ -463,8 +464,6 @@ extern WholeFileBlock* DAT_00B0FB54;
 extern PaletteSet DAT_00B0FBA4;
 // GLOBAL: GAMEMD 0xB0FBAC
 extern bool DAT_00B0FBAC;
-// GLOBAL: GAMEMD 0xB0FBE0
-extern char DAT_00B0FBE0;
 // GLOBAL: GAMEMD 0xB0FBE4 -- palette sets of the sidebar screen (stride 8).
 extern PaletteSet DAT_00B0FBE4;
 // GLOBAL: GAMEMD 0xB0FBEC
@@ -475,8 +474,6 @@ extern PaletteSet DAT_00B0FBF4;
 extern PaletteSet DAT_00B0FBFC;
 // GLOBAL: GAMEMD 0xB0FC04
 extern PaletteSet DAT_00B0FC04;
-// GLOBAL: GAMEMD 0xB0FC0C
-extern char DAT_00B0FC0C;
 // GLOBAL: GAMEMD 0xB0FC10
 extern void* DAT_00B0FC10;
 // GLOBAL: GAMEMD 0xB0FC14

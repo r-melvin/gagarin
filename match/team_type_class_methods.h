@@ -23,6 +23,7 @@
 
 // CellStruct — 2D short cell coordinate (sizeof = 4).  Self-guarded for reuse.
 #include "_layout/cell.h"
+#include "cell_coord_globals.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 
@@ -37,7 +38,6 @@ struct WaypointLocator
     CellStruct* GetCoords(CellStruct* out, int index);   // GAMEMD 0x68BCC0
 };
 extern WaypointLocator* WaypointLocatorPtr;              // GAMEMD 0xA8B230
-extern CellStruct       DefaultWaypointCell;             // GAMEMD 0xB0E9C8
 
 
 

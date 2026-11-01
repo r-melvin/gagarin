@@ -27,6 +27,7 @@
 #include "_layout/cell_class.h"
 #include "_layout/map_0087f7e8.h"
 #include "sidebar_display_globals.h"
+#include "vox_audio_globals.h"
 
 
 // Retail _stricmp (0x007C8D20). cdecl; declared (no body) so cl emits a call.
@@ -75,8 +76,6 @@ extern CellStruct DAT_00B1D310;
 extern ListNode DAT_00B1D320;
 // GLOBAL: GAMEMD 0xB1D3A4 -- pool of free VocVoiceNode blocks.
 extern Obj_00407520* DAT_00B1D3A4;
-// GLOBAL: GAMEMD 0xB1D3A8 -- live positional-voice count.
-extern int DAT_00B1D3A8;
 // GLOBAL: GAMEMD 0xB1D3AC -- high-water mark of that count.
 extern int DAT_00B1D3AC;
 

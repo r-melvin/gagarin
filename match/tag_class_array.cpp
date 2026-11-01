@@ -4,10 +4,7 @@
 // This raw storage definition does not install a vtable or invent startup
 // constructors. Runtime initialization remains a separate recovery task.
 #include "_layout/tag_class.h"
+#include "cell_coord_globals.h"
 GG_STATIC_ASSERT(sizeof(DynamicVectorClassLayout) == 0x18);
 // GLOBAL: GAMEMD 0xB0E720
 DynamicVectorClassLayout TagClass::Array;
-
-// GLOBAL: GAMEMD 0xB0E700
-// Four loader-zero bytes read by the TagClass constructor.
-extern CellStruct DAT_00B0E700;

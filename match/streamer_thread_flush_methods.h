@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "runtime_misc_globals.h"
 
 struct CriticalSection_0053E6B0 { char Opaque[0x18]; };
 GG_STATIC_ASSERT(sizeof(CriticalSection_0053E6B0) == 0x18);
@@ -23,8 +24,6 @@ extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CriticalSec
 extern CriticalSection_0053E6B0 DAT_00AA0418;
 // GLOBAL: GAMEMD 0xAA0444 — streamer state; 1 is the flushable state.
 extern int   DAT_00AA0444;
-// GLOBAL: GAMEMD 0xAA0448 — streamer running.
-extern int   DAT_00AA0448;
 // GLOBAL: GAMEMD 0xAA045C
 extern int   DAT_00AA045C;
 // GLOBAL: GAMEMD 0xAA0464 — the ring buffer being drained.

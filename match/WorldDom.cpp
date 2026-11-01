@@ -14,6 +14,7 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 #include "mathtbl_consts.h"
+#include "platform_online_globals.h"
 
 // GLOBAL: GAMEMD 0x7F7908
 extern const double DAT_007F7908;
@@ -153,8 +154,6 @@ bool __cdecl FUN_007B0430()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB77F58
-extern int DAT_00B77F58;
 // GLOBAL: GAMEMD 0xB77F68
 extern int DAT_00B77F68;
 // END defined globals
