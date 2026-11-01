@@ -44,7 +44,7 @@ Cite REA Evidence IDs (`ev_xxxxxxxx`) in README.md; the linter flags packets wit
 ## 2b. Start from a generated skeleton
 
 ```bash
-python3 $DL/skeleton.py 0xADDR ... --out wt/match/<module>/<file>.cpp --rows READY/rows.tsv
+python3 $DL/skeleton.py 0xADDR ... --out wt/match/<file>.cpp --rows READY/rows.tsv
 ```
 
 The draft has the receiver class and vtable slot (from RTTI), the calling convention and RET n,
@@ -75,7 +75,7 @@ For a partial, `python3 scripts/vc6/residual_classify.py` labels the residual (s
 stack-slot, missing-extra); `scripts/permuter/source_perm.py` tries only non-steering edits.
 
 ```bash
-python3 $DL/pkt.py score wt/match/<module>/<file>.cpp [0xADDR ...]
+python3 $DL/pkt.py score wt/match/<file>.cpp [0xADDR ...]
 ```
 
 Compiles the TU with the project wrapper (VC6FLAGS honoured), finds each `// FUNCTION:` claim,

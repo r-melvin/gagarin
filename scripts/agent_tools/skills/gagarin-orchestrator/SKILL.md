@@ -48,7 +48,7 @@ Branch-style workers: convert with `branch2packet.py BRANCH --rows rows.json [--
 ### 2. Workers
 
 Give them the `gagarin-packet-worker` skill. Their first draft can come from
-`python3 $DL/skeleton.py ADDR... --out wt/match/<mod>/<file>.cpp --rows READY/rows.tsv`
+`python3 $DL/skeleton.py ADDR... --out wt/match/<file>.cpp --rows READY/rows.tsv`
 (signature, slot, offset asserts, callee/global decls, disassembly comment; body TODO), then
 `pkt.py score/bind/finish`. A packet is READY only with `pktlint` at 0 errors.
 

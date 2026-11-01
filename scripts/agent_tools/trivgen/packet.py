@@ -90,7 +90,7 @@ def main():
         r = checks[a]
         sym = r["sym"]
         name = o.mname or (f"{o.member_of}::FUN_{a:08X}" if o.member_of else f"FUN_{a:08X}")
-        rows.append(dict(tu=f"match/{b.module}/{b.name}.cpp", addr=f"0x{a:X}", sym=sym, len=hex(o.spec.size),
+        rows.append(dict(tu=f"match/{b.name}.cpp", addr=f"0x{a:X}", sym=sym, len=hex(o.spec.size),
                          name=name, status="matched", pct=100))
         it = byitem[a]
         ev = [T.describe_owner(it).strip() or "no-vtable-slot", callers.describe(callers.evidence(a))]
@@ -151,7 +151,7 @@ def main():
         sh(["git", "checkout", "--", "scripts/data/match_manifest.json"])
 
     # 4. patch.diff (new files only, explicit paths)
-    paths = sorted({f"match/{b.module}/{b.name}.{e}" for b in bins for e in ("cpp", "h")})
+    paths = sorted({f"match/{b.name}.{e}" for b in bins for e in ("cpp", "h")})
     init_paths = [x for x in paths if "_init_" in x]
     fn_paths = [x for x in paths if "_init_" not in x]
     sh(["git", "add", "-N", "--"] + paths)

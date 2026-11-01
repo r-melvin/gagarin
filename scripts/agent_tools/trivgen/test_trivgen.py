@@ -84,7 +84,7 @@ class VerifierRejectsWrongCode(unittest.TestCase):
         stem = "trivial_tu997_selftest_methods"
         (d / f"{stem}.cpp").write_text("int __cdecl FUN_004107E0() { return 7; }\n")
         try:
-            obj, errs, _ = verify.compile_bin(f"match/core/{stem}.cpp")
+            obj, errs, _ = verify.compile_bin(f"match/{stem}.cpp")
             self.assertIsNotNone(obj)
             r = verify.check_function(obj, 0x4107E0, 0x1a, Path(tempfile.gettempdir()) / "x.json")
             self.assertFalse(r["ok"])

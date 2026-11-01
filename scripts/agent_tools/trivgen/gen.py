@@ -102,7 +102,7 @@ class Bin:
             f"#define {self.guard()}",
             "",
             "#include <stddef.h>",
-            '#include "../_rt/gg_static_assert.h"',
+            '#include "_rt/gg_static_assert.h"',
         ]
         for inc in sorted(self.includes):
             rel = os.path.relpath(inc, str(data.WT / "match" / self.module))

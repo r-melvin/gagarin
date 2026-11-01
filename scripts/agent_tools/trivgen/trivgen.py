@@ -129,7 +129,7 @@ def module_for_tu(tu_id, votes):
     v = votes.get(tu_id)
     if v:
         return max(v.items(), key=lambda kv: kv[1])[0]
-    return "core"
+    return ""   # game code is flat in match/ (Phase 7)
 
 
 def existing_basenames():
@@ -222,7 +222,7 @@ def compile_all(bins):
     results = {}
 
     def one(b):
-        rel = f"match/{b.module}/{b.name}.cpp"
+        rel = f"match/{b.name}.cpp"
         return b.name, verify.compile_bin(rel)
 
     with cf.ThreadPoolExecutor(JOBS) as ex:
@@ -422,9 +422,9 @@ def cmd_diag(args):
     b = gen.Bin("trivial_tu999_diag_methods", "core")
     b.add(out)
     write_bins([b])
-    print((WT / "match/core/trivial_tu999_diag_methods.cpp").read_text().split("#include")[1].split("\n", 2)[2])
+    print((WT / "match/trivial_tu999_diag_methods.cpp").read_text().split("#include")[1].split("\n", 2)[2])
     if not args.brief:
-        print((WT / "match/core/trivial_tu999_diag_methods.h").read_text().split("#include \"../_rt/gg_static_assert.h\"")[1])
+        print((WT / "match/trivial_tu999_diag_methods.h").read_text().split("#include \"_rt/gg_static_assert.h\"")[1])
     obj, errs, text = verify.compile_bin("match/core/trivial_tu999_diag_methods.cpp")
     if obj is None:
         print(text)
@@ -434,7 +434,7 @@ def cmd_diag(args):
                         "--addr", hex(a), "--len", hex(it["ext"])], capture_output=True, text=True,
                        env=dict(os.environ, GAMEMD_BINARY=verify.BIN))
     print(r.stdout)
-    for f in (WT / "match/core").glob("trivial_tu999_diag_methods.*"):
+    for f in (WT / "match").glob("trivial_tu999_diag_methods.*"):
         f.unlink()
 
 

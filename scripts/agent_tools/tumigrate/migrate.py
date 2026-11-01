@@ -141,7 +141,7 @@ def plan(tree, tu, excludes, dest):
         dirs = collections.Counter()
         for f in files:
             dirs[os.path.dirname(f['file'])] += len(f['rows'])
-        d = dirs.most_common(1)[0][0] if dirs else 'match/core'
+        d = dirs.most_common(1)[0][0] if dirs else 'match'
         stem = t['name_or_bound']
         dest = os.path.join(d, stem[:-4] + '.cpp')
     return dict(tu=tu, name=t['name_or_bound'], lo=lo, hi=hi, hi_earliest=hi_e, lo_latest=lo_l,

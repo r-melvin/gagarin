@@ -121,7 +121,9 @@ don't work on the same function.
    Confirm the complete contiguous span, including the final `RET`, against
    raw memory bytes: Ghidra's listing and function-size field can omit blocks
    after calls. Treat the decompiler's output as a hint only.
-2. Write the C++ under `match/<subsystem>/`, using the original 32-bit layout:
+2. Write the C++ directly in `match/` (game code is one flat directory, as in the retail sources, whose assert paths are
+   all flat; Westwood library code goes under `match/wwlib/`, third-party code under `match/lib/`, canonical class headers
+   under `match/_layout/`), using the original 32-bit layout:
    - members in retail order, gaps named `unknown_XX`;
    - `GG_STATIC_ASSERT(offsetof(...))` / `sizeof` for every member you rely on,
      each confirmed against an instruction in the binary;

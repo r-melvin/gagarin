@@ -30,7 +30,7 @@ def stats(manifest, totals):
         'bytes': sum(int(r['len'], 16) for r in matched),
         'total': t['functions'],
         'total_bytes': t['code_bytes'],
-        'subsystems': Counter(r['tu'].split('/')[1] for r in matched).most_common(),
+        'subsystems': Counter((r['tu'].split('/')[1] if r['tu'].count('/') >= 2 else 'game (match root)') for r in matched).most_common(),
     }
 
 
