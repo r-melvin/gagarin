@@ -242,12 +242,72 @@ class Bundle:
         return hi - 1, fails[hi]
 
     # ------------------------------------------------------------- finalize
-    def make_commits(self, packets):
-        """One real commit per packet, created from the WIP trees. Returns the tip sha."""
+    def used_bindings(self, packets, run):
+        """({packet index: {symbol: address}}, conflicts): the bindings the final strict gate took from the packets'
+        symbol maps for the rows this bundle adds or changes, attributed to the packet whose delta holds the row."""
+        owners = {}
+        for i, p in enumerate(packets):
+            for r in self.delta_rows(p.delta()):
+                if r.get("addr") is not None:
+                    owners.setdefault(int(str(r["addr"]), 16), i)
+        return L.strict_used_bindings(os.path.join(run, "strict.json"), owners, len(packets) - 1)
+
+    def with_bindings(self, wip, tree, add):
+        """TREE with the central bindings file extended by ADD ({symbol: address}). Returns (tree, added, conflicts)."""
+        if not add:
+            return tree, 0, []
+        raw = L.git(self.repo, "show", "%s:%s" % (tree, L.BINDINGS))
+        text, n, bad = L.merge_binding_text(raw, add)
+        if bad or not n:
+            return tree, 0, bad
+        tmp = os.path.join(self.work, "bindings.json")
+        open(tmp, "w").write(text)
+        blob = L.git(self.repo, "hash-object", "-w", tmp).strip()
+        idx = os.path.join(self.work, "index.tmp")
+        if os.path.exists(idx):
+            os.unlink(idx)
+        env = dict(os.environ, GIT_INDEX_FILE=idx)
+        subprocess.run(["git", "-C", self.repo, "read-tree", tree], env=env, check=True)
+        subprocess.run(["git", "-C", self.repo, "update-index", "--add", "--cacheinfo",
+                        "100644,%s,%s" % (blob, L.BINDINGS)], env=env, check=True)
+        out = subprocess.run(["git", "-C", self.repo, "write-tree"], env=env, check=True, capture_output=True, text=True)
+        return out.stdout.strip(), n, []
+
+    def central_proof(self, tip, packets, run):
+        """Re-run the strict gate on the tip commit with NO symbol maps: every row the bundle adds must prove from
+        the tree's own manifest and central bindings. Returns (ok, why)."""
+        wt = self.scratch("wt-central")
+        self.checkout(wt, tip)
+        out = os.path.join(self.work, "gates-central")
+        msgf = os.path.join(self.work, "msg-central.txt")
+        open(msgf, "w").write("\n".join(p.msg for p in packets))
+        cmd = [sys.executable, os.path.join(HERE, "gates.py"), "--tree", wt, "--base", self.base, "--mode", "inc",
+               "--run", out, "--msg", msgf, "--jobs", str(self.a.jobs), "--only", "static,compile,strict"]
+        if self.a.no_promote:
+            cmd.append("--no-promote")
+        for w in sorted(set().union(*[p.waived_strict() for p in packets])):
+            cmd += ["--waive", hex(w)]
+        rc, text = L.run(cmd, cwd=wt, env=L.toolenv(), log=os.path.join(self.work, "gates-central.out"))
+        fails = [ln for ln in text.splitlines() if ln.startswith("FAIL ")]
+        for ln in fails[:10]:
+            say("   ", ln[:300])
+        return rc == 0, "%d rows do not prove from the central bindings (log %s)" % (len(fails), os.path.join(self.work, "gates-central.out"))
+
+    def make_commits(self, packets, used=None):
+        """One real commit per packet, created from the WIP trees. USED ({packet index: {symbol: address}}) are
+        central bindings the strict proof took from symbol maps; each goes into the commit of the packet whose row
+        needed it. Returns the commits [(name, sha)]; raises RuntimeError on a binding conflict."""
         parent = self.base
         out = []
-        for p in packets:
+        carried = {}
+        for i, p in enumerate(packets):
             tree = L.git(self.repo, "rev-parse", p.wip + "^{tree}").strip()
+            carried.update((used or {}).get(i, {}))
+            tree, nb, bad = self.with_bindings(p.wip, tree, carried)
+            if bad:
+                raise RuntimeError("central bindings conflict with the symbol maps the strict proof used: " + "; ".join(bad[:4]))
+            if nb:
+                say("  %s: %d central bindings added from the packet's symbol maps (strict proof)" % (p.name, nb))
             tree = self.with_progress_svg(p.wip, tree)
             msgf = os.path.join(self.work, "commitmsg-%s.txt" % p.name)
             open(msgf, "w").write(p.msg)
@@ -344,6 +404,7 @@ def main(argv=None):
     ap.add_argument("--status-para", help="narrative paragraph file: rotate STATUS.md into the LAST commit")
     ap.add_argument("--status-prev-title", help="title for the snapshot being archived (required with --status-para)")
     ap.add_argument("--no-promote", action="store_true")
+    ap.add_argument("--no-central-proof", action="store_true", help="skip re-proving the strict rows from the central bindings alone")
     ap.add_argument("--no-solo", action="store_true", help="skip the solo check of dropped packets")
     ap.add_argument("--keep", action="store_true")
     a = ap.parse_args(argv)
@@ -425,8 +486,21 @@ def main(argv=None):
             remaining[-1].wip = L.git(wt, "rev-parse", "HEAD").strip()
             say("STATUS.md rotated into the last commit:", r.stdout.strip())
         say("== bundle passed; creating %d commits" % len(remaining))
-        commits = B.make_commits(remaining)
+        used, used_bad = B.used_bindings(remaining, final_run)
+        if used_bad:
+            say("BINDING CONFLICT: " + "; ".join(used_bad[:4]))
+            return 5
+        try:
+            commits = B.make_commits(remaining, used)
+        except RuntimeError as ex:
+            say("BINDING CONFLICT:", ex)
+            return 5
         tip = commits[-1][1]
+        if used and not a.no_central_proof:
+            ok, why = B.central_proof(commits[-1][1], remaining, final_run)
+            if not ok:
+                say("CENTRAL PROOF FAILED: " + why)
+                return 5
         branch = a.branch or "land/%s" % B.id
         L.git(B.repo, "update-ref", "refs/heads/" + branch, tip)
         for n, c in commits:

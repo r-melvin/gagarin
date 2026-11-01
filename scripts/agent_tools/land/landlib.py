@@ -1083,3 +1083,44 @@ def merge_bindings(tree, add, corrections=(), rekeys=()):
         return 0, bad
     open(p, "w").write(json.dumps(dict(sorted(cur.items())), indent=1) + ("\n" if raw.endswith("\n") else ""))
     return n, []
+
+
+def merge_binding_text(raw, add):
+    """Merge {symbol: address} into the text of the central bindings file (sorted keys, 0x%08X, indent=1, the
+    file's trailing-newline habit kept). Returns (text, added, conflicts). An existing key bound to a different
+    address is a conflict, never an overwrite; `$L` labels are skipped; an equal existing key is not an addition."""
+    cur = json.loads(raw) if raw.strip() else {}
+    n, bad = 0, []
+    for k, v in sorted(add.items()):
+        if k.startswith("$L"):
+            continue
+        v = norm_addr(v)
+        if k in cur and norm_addr(cur[k]) != v:
+            bad.append("%s: central %s, strict proof used %s" % (k, cur[k], v))
+        elif k not in cur:
+            cur[k] = v
+            n += 1
+    if bad or not n:
+        return raw, 0, bad
+    return json.dumps(dict(sorted(cur.items())), indent=1) + ("\n" if raw.endswith("\n") or not raw.strip() else ""), n, []
+
+
+def strict_used_bindings(strict_json, owners, default):
+    """Read a strict gate's strict.json and return ({packet_index: {symbol: address}}, conflicts): the bindings
+    its passing rows took from symbol maps, attributed to the packet that owns the row (OWNERS maps a row address
+    int to a packet index; unowned rows go to packet DEFAULT). Two rows using one symbol at different addresses
+    are a conflict."""
+    out, seen, bad = {}, {}, []
+    try:
+        rows = json.load(open(strict_json))
+    except (OSError, ValueError):
+        return out, bad
+    for r in rows:
+        for k, v in (r.get("used") or {}).items():
+            v = norm_addr(v)
+            if seen.get(k, v) != v:
+                bad.append("%s: strict proof used %s and %s" % (k, seen[k], v))
+                continue
+            seen[k] = v
+            out.setdefault(owners.get(int(str(r["addr"]), 16), default), {})[k] = v
+    return out, bad

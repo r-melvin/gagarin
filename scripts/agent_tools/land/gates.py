@@ -447,6 +447,34 @@ def strict(ctx):
         json.dump(d, open(sp, "w"))
         singles.append(sp)
     waived = {int(w, 0) for w in ctx.a.waive}
+    # what the tree's own files already bind: the central bindings (unscoped, or scoped to the row's TU) and manifest rows
+    try:
+        central = json.load(open(os.path.join(ctx.tree, L.BINDINGS)))
+    except (OSError, ValueError):
+        central = {}
+    own = {}
+    for mr in json.load(open(os.path.join(ctx.tree, L.MANIFEST))):
+        # the rows verify_relocations itself treats as bindings: matched at 100% (and not the per-object _$E callbacks)
+        if mr.get("sym") and mr.get("addr") is not None and mr.get("status") == "matched" and mr.get("pct") == 100 \
+                and not re.fullmatch(r"_\$E[0-9]+", mr["sym"]):
+            own.setdefault(mr["sym"], set()).add(int(str(mr["addr"]), 16))
+
+    def used_bindings(r, cand, stdout):
+        """{symbol: address} the passing strict check took from the symbol map CAND alone: relocation targets that
+        neither the central bindings (scoped to the row's TU) nor a manifest row bind to that address."""
+        try:
+            rel = json.loads(stdout)
+            m = {k: int(str(v), 0) for k, v in json.load(open(cand)).items()}
+        except (ValueError, OSError):
+            return {}
+        have = {}
+        for k, v in central.items():
+            t, sep, name = k.partition("::")
+            if not sep or t == r["tu"]:
+                have[name if sep else k] = int(str(v), 0)
+        return {x["symbol"]: m[x["symbol"]] for x in rel
+                if x["symbol"] in m and not x["symbol"].startswith("$L")
+                and have.get(x["symbol"]) != m[x["symbol"]] and m[x["symbol"]] not in own.get(x["symbol"], ())}
 
     def one(r):
         o = objpath(ctx.objs_new, r["tu"])
@@ -459,15 +487,20 @@ def strict(ctx):
             q = subprocess.run([sys.executable, "scripts/vc6/verify_relocations.py", *c, "--binary", L.BINARY, "--json",
                                 "--symbol-map", cand], capture_output=True, text=True, env=ctx.env, cwd=ctx.tree)
             if q.returncode == 0:
+                used[r["addr"]] = used_bindings(r, cand, q.stdout)
                 break
         return r, p.returncode, q.returncode, ((p.stdout + p.stderr)[-160:] + (q.stdout + q.stderr)[-240:]).replace("\n", " ")
 
     fails, waivedn = [], 0
+    used = {}
     with cf.ThreadPoolExecutor(ctx.jobs) as ex:
         res = list(ex.map(one, rows))
     out = []
     for r, rc, sc, text in res:
         out.append({"addr": r["addr"], "tu": r["tu"], "raw": rc, "strict": sc})
+        if not rc and not sc and used.get(r["addr"]):
+            # bindings the proof took from the packets' symbol maps; land_bundle merges them into the central file
+            out[-1]["used"] = {k: "0x%08X" % v for k, v in sorted(used[r["addr"]].items())}
         if rc or sc:
             if L.A(r) in waived:
                 waivedn += 1

@@ -312,6 +312,110 @@ class PacketNormalisation(unittest.TestCase):
             self.assertIsNone(mkpacket(d, {"README.md": "Based on prior work, see d08f92b\n"}).base_sha())
 
 
+class StrictUsedBindings(unittest.TestCase):
+    """Bindings the strict proof took from packet symbol maps are merged into the central file at landing."""
+    RAW = json.dumps({"b": "0x00000002", "d": "0x00000004"}, indent=1) + "\n"
+
+    def test_merge_text_sorted_format(self):
+        txt, n, bad = L.merge_binding_text(self.RAW, {"c": "0x3", "a": 1, "$L9": "0x5", "b": "0x00000002"})
+        self.assertEqual((n, bad), (2, []))
+        self.assertTrue(txt.endswith("}\n"))
+        self.assertEqual(list(json.loads(txt)), ["a", "b", "c", "d"])
+        self.assertEqual(txt, json.dumps(json.loads(txt), indent=1) + "\n")
+        self.assertEqual(json.loads(txt)["c"], "0x00000003")
+
+    def test_merge_text_conflict_is_not_an_overwrite(self):
+        txt, n, bad = L.merge_binding_text(self.RAW, {"new": 5, "b": "0x3"})
+        self.assertEqual((txt, n), (self.RAW, 0))
+        self.assertEqual(len(bad), 1)
+        self.assertIn("b:", bad[0])
+
+    def test_merge_text_nothing_new_keeps_bytes(self):
+        self.assertEqual(L.merge_binding_text(self.RAW, {"b": "0x2"}), (self.RAW, 0, []))
+
+    def test_merge_text_no_trailing_newline_kept(self):
+        raw = self.RAW.rstrip("\n")
+        self.assertFalse(L.merge_binding_text(raw, {"a": 1})[0].endswith("\n"))
+
+    def write(self, rows):
+        f = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+        json.dump(rows, f)
+        f.close()
+        self.addCleanup(os.unlink, f.name)
+        return f.name
+
+    def test_attribution_to_owner_and_default(self):
+        sj = self.write([{"addr": "0x00401000", "tu": "a", "raw": 0, "strict": 0, "used": {"x": "0x00500000"}},
+                         {"addr": "0x00402000", "tu": "b", "raw": 0, "strict": 0, "used": {"y": "0x600000"}},
+                         {"addr": "0x00403000", "tu": "b", "raw": 0, "strict": 0}])
+        out, bad = L.strict_used_bindings(sj, {0x401000: 0, 0x403000: 1}, 1)
+        self.assertEqual((out, bad), ({0: {"x": "0x00500000"}, 1: {"y": "0x00600000"}}, []))
+
+    def test_same_symbol_two_addresses_is_a_conflict(self):
+        sj = self.write([{"addr": "0x401000", "used": {"x": "0x500000"}}, {"addr": "0x402000", "used": {"x": "0x500004"}}])
+        out, bad = L.strict_used_bindings(sj, {}, 0)
+        self.assertEqual(len(bad), 1)
+        self.assertEqual(out, {0: {"x": "0x00500000"}})
+
+    def test_missing_file(self):
+        self.assertEqual(L.strict_used_bindings("/nonexistent/strict.json", {}, 0), ({}, []))
+
+
+class BundleBindings(unittest.TestCase):
+    """land_bundle: the commit of the owning packet carries the used bindings; conflicts refuse."""
+    def setUp(self):
+        import subprocess
+        import land_bundle as LB
+        self.LB = LB
+        self.d = tempfile.mkdtemp()
+        self.addCleanup(__import__("shutil").rmtree, self.d, True)
+        g = lambda *a: subprocess.run(["git", "-C", self.d, *a], check=True, capture_output=True, text=True).stdout.strip()
+        g("init", "-q")
+        g("config", "user.email", "t@example.invalid")
+        g("config", "user.name", "t")
+        os.makedirs(os.path.join(self.d, "scripts/data"))
+        self.raw = json.dumps({"b": "0x00000002"}, indent=1) + "\n"
+        open(os.path.join(self.d, L.BINDINGS), "w").write(self.raw)
+        g("add", L.BINDINGS)
+        g("commit", "-q", "-m", "base")
+        self.base = g("rev-parse", "HEAD")
+        self.g = g
+
+        class A:
+            repo = self.d
+            base = self.base
+            work = os.path.join(self.d, ".work")
+        self.B = LB.Bundle(A())
+
+    class P:
+        def __init__(s, name, wip):
+            s.name, s.wip, s.msg = name, wip, name
+
+    def test_commits_carry_bindings_from_the_owner_on(self):
+        self.B.with_progress_svg = lambda wip, tree: tree      # needs the real manifest and renderer
+        ps = [self.P("p1", self.base), self.P("p2", self.base)]
+        out = self.B.make_commits(ps, {1: {"x": "0x500000"}})
+        first = json.loads(self.g("show", "%s:%s" % (out[0][1], L.BINDINGS)))
+        second = self.g("show", "%s:%s" % (out[1][1], L.BINDINGS))
+        self.assertEqual(first, {"b": "0x00000002"})
+        self.assertEqual(second, json.dumps({"b": "0x00000002", "x": "0x00500000"}, indent=1))
+
+    def test_make_commits_conflict_raises(self):
+        self.B.with_progress_svg = lambda wip, tree: tree
+        with self.assertRaises(RuntimeError):
+            self.B.make_commits([self.P("p1", self.base)], {0: {"b": "0x3"}})
+
+    def test_conflict_refused(self):
+        tree = self.g("rev-parse", self.base + "^{tree}")
+        t, n, bad = self.B.with_bindings(self.base, tree, {"b": "0x3"})
+        self.assertEqual((t, n, len(bad)), (tree, 0, 1))
+
+    def test_nothing_to_add_leaves_tree(self):
+        tree = self.g("rev-parse", self.base + "^{tree}")
+        self.assertEqual(self.B.with_bindings(self.base, tree, {}), (tree, 0, []))
+        self.assertEqual(self.B.with_bindings(self.base, tree, {"b": "0x2"}), (tree, 0, []))
+
+
 class MergeBindings(unittest.TestCase):
     def tree(self, d, content):
         os.makedirs(os.path.join(d, "scripts/data"))

@@ -97,6 +97,18 @@ regex per line) or `--allow-word` marks added lines the word check should ignore
 Not done by the bundle: the padding_scan.json refresh (needs a Ghidra function export), commit-message
 editing, and pushing.
 
+## Bindings a strict proof took from packet symbol maps
+
+The strict gate proves a row with the packets' `--symmap` files on top of the tree's own bindings. For
+every row it adds or changes, the gate records in `strict.json` (`used`) the relocation targets it took
+from a symbol map that neither `scripts/data/symbol_bindings.json` (keys scoped to the row's TU
+included) nor a 100% matched manifest row already binds. `land_bundle.py` (so `batchland.py` too) merges
+them into the central file, sorted, `0x%08X`, `indent=1`, in the commit of the packet whose delta holds the row
+(a row no packet's delta names goes to the last packet). A key already bound to a different address is a
+conflict: nothing is merged and the landing exits 5 before the branch is set. Afterwards the strict gate
+re-runs on the tip commit with no symbol map (`--no-central-proof` skips it); a row that does not prove from
+the central bindings alone fails the landing the same way.
+
 ## gates.py
 
 Gates, in order; each prints `GATE name PASS|FAIL|SKIP secs detail`; logs and `summary.json` are in the
