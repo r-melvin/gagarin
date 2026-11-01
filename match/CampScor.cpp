@@ -457,7 +457,7 @@ extern const double DAT_007E4A98 = 60.0;
 // GLOBAL: GAMEMD 0x81B304
 extern const char DAT_0081B304[] = "D:\\ra2mdpost\\CampScor.cpp";
 // GLOBAL: GAMEMD 0xA8DA8C
-int DAT_00A8DA8C;
+extern int DAT_00A8DA8C;
 // GLOBAL: GAMEMD 0xAC119C
 Entry_0046F810* DAT_00AC119C;
 // GLOBAL: GAMEMD 0xAC11A0

@@ -3984,10 +3984,8 @@ int __cdecl FUN_00652630(const void* a, const void* b)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x887310
-Surface* DAT_00887310;
 // GLOBAL: GAMEMD 0x8A0360
-Layer_004A9770 DAT_008A0360[5];
+extern Layer_004A9770 DAT_008A0360[5];
 // GLOBAL: GAMEMD 0xA8B24C
 int DAT_00A8B24C;
 // GLOBAL: GAMEMD 0xA8B550

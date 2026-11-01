@@ -433,5 +433,5 @@ const wchar_t* LoadOptionsClass::Slot8()
 // GLOBAL: GAMEMD 0xA8ED5C
 bool MenusLoadFlagA;
 // GLOBAL: GAMEMD 0xA8E378
-bool MenusLoadFlagB;
+extern bool MenusLoadFlagB;
 // END defined globals

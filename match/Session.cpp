@@ -3042,12 +3042,6 @@ extern const char STR_0083F3E4[] = "No Digest";
 extern const char STR_0083F4B8[] = "MSG:NoDescription";
 // GLOBAL: GAMEMD 0x83F658
 extern const char STR_0083F658[] = "No File Name";
-// GLOBAL: GAMEMD 0x887368
-ToolTipManager* ToolTipManager_Instance;
-// GLOBAL: GAMEMD 0xA83D4C
-HouseClass* HouseClass_CurrentPlayer;
-// GLOBAL: GAMEMD 0xA8DA90
-NodeNameType* SlotPlayers_00A8DA90[8];
 // GLOBAL: GAMEMD 0x83EBBC
 extern const char STR_0083EBBC[] = "TXT_CUSTOM";
 // GLOBAL: GAMEMD 0x83ED24

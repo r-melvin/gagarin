@@ -1838,7 +1838,7 @@ void* BufferHolderDtor::FUN_00466080(unsigned int flags)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x89DDB8
-int TypesLevelHeight;
+extern int TypesLevelHeight;
 // GLOBAL: GAMEMD 0x7E4530
 extern const double DAT_007E4530 = 60.0;
 // GLOBAL: GAMEMD 0x81834C

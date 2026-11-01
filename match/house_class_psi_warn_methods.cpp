@@ -30,5 +30,5 @@ AnimClass* HouseClass::PsiWarn(CellClass* target, BulletClass* bullet,
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B4150
-DynamicVectorClassLayout AnimTypeArray;
+extern DynamicVectorClassLayout AnimTypeArray;
 // END defined globals

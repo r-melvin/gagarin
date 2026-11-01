@@ -42,7 +42,7 @@ Pair8 Obj_00437F00::FUN_00437F30() const
     return result;
 }
 
-int DAT_00a8ef54;
+extern int DAT_00a8ef54;
 
 // FUNCTION: GAMEMD 0x4DB250
 void __stdcall FUN_004DB250(unsigned int unused1, unsigned int unused2)

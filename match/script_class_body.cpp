@@ -249,7 +249,5 @@ int ScriptTypeClass::vf_16()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B41C8
-DynamicVectorClass<ScriptTypeClass*> ScriptTypes;
-// GLOBAL: GAMEMD 0xA8ECA0
-DynamicVectorClass<AbstractClass*> DAT_00A8ECA0;
+extern DynamicVectorClass<ScriptTypeClass*> ScriptTypes;
 // END defined globals

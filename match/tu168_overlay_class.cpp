@@ -626,11 +626,11 @@ void OverlayClass::vf_69(Point2D* where, RectangleStruct* clip)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA83D80
-DynamicVectorClassLayout OverlayTypeClass_Array;
+extern DynamicVectorClassLayout OverlayTypeClass_Array;
 // GLOBAL: GAMEMD 0xA8EC50
-DynamicVectorClass<OverlayClass*> OverlayArray((AbstractNoInit()));
+extern DynamicVectorClass<OverlayClass*> OverlayArray;
 // GLOBAL: GAMEMD 0xAC1528
-MapObjCell OverlayNoCell;
+extern MapObjCell OverlayNoCell;
 // GLOBAL: GAMEMD 0x8333BC
 int OverlayPlacementArg = -1;
 // GLOBAL: GAMEMD 0x7EF390

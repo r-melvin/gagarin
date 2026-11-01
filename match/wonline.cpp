@@ -4831,8 +4831,6 @@ extern const char DAT_0084B500[] = "http://apiregister.westwood.com/support/bann
 extern const char DAT_0084B538[] = "http://apiregister.westwood.com/support/skuserialmismatch_%d.html";
 // GLOBAL: GAMEMD 0x84B57C
 extern const char DAT_0084B57C[] = "http://apiregister.westwood.com/support/serialunknown_%d.html";
-// GLOBAL: GAMEMD 0xAC4848
-PCXCache_00AC4848 DAT_00AC4848;
 // GLOBAL: GAMEMD 0xB77DC1
 bool DAT_00B77DC1;
 // GLOBAL: GAMEMD 0x7F7518

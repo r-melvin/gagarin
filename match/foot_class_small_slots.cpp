@@ -266,7 +266,3 @@ bool FootClass::vf_311()
     return true;
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x8B3D88
-CellStruct DAT_008B3D88;
-// END defined globals

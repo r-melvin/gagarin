@@ -61,7 +61,7 @@ void VeinholeMonsterClass::LoadVeinholeArt(int idxTheatre)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB1D290
-DynamicVectorClassLayout VeinholeArray;
+extern DynamicVectorClassLayout VeinholeArray;
 // GLOBAL: GAMEMD 0xB1D2EC
 void* VeinSHPData;
 // END defined globals

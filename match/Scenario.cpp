@@ -2774,9 +2774,9 @@ int DAT_00A8B54C;
 // GLOBAL: GAMEMD 0xA8D610
 unsigned short DAT_00A8D610;
 // GLOBAL: GAMEMD 0xA8DA78
-NodeNameType** Players_00A8DA78;
+extern NodeNameType** Players_00A8DA78;
 // GLOBAL: GAMEMD 0xA8DA84
-int PlayerCount_00A8DA84;
+extern int PlayerCount_00A8DA84;
 // GLOBAL: GAMEMD 0xA8DAB4
 int DAT_00A8DAB4;
 // GLOBAL: GAMEMD 0xA8DBA0
@@ -2847,14 +2847,8 @@ extern const char STR_0083DB50[] = "Scenario ini load failed!\n";
 extern const char STR_0083DB6C[] = "Read_Scenario_INI - Filename is %s\n";
 // GLOBAL: GAMEMD 0x83DE1C
 extern const char STR_0083DE1C[] = "%s,%d";
-// GLOBAL: GAMEMD 0xA8ED9C
-unsigned char DAT_00A8ED9C;
-// GLOBAL: GAMEMD 0xB0F4EC
-TiberiumClass** TiberiumArrayItems;
 // GLOBAL: GAMEMD 0xB73550
 HWND DAT_00B73550;
-// GLOBAL: GAMEMD 0xA80238
-int HouseClass_ArrayCount;
 // GLOBAL: GAMEMD 0xA8022C
 HouseClass** HouseClass_ArrayItems;
 // GLOBAL: GAMEMD 0x82DB0C

@@ -57,5 +57,5 @@ void Map_00586990::Update_Pathfinding_2(CellVector_00586990* cells)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87F924
-CellClass** Cells_00586990;
+extern CellClass** Cells_00586990;
 // END defined globals

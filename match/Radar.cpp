@@ -1766,8 +1766,6 @@ template class VectorClass<HashObject<RadarTrackingStruct,TechnoClass*> >;
 template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x87F6CC
-int DAT_0087F6CC;
 // GLOBAL: GAMEMD 0x886FA8
 int DAT_00886FA8;
 // GLOBAL: GAMEMD 0xB048AC
@@ -1812,6 +1810,4 @@ unsigned char DAT_00A8EB7C;
 bool DisplayFlag_00A8ED6B;
 // GLOBAL: GAMEMD 0x7F0424
 extern const float DAT_007F0424 = 0.00390625f;
-// GLOBAL: GAMEMD 0xA8ED9C
-char DAT_00A8ED9C;
 // END defined globals

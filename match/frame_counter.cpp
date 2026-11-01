@@ -6,4 +6,4 @@
 #include "frame_counter.h"
 
 // GLOBAL: GAMEMD 0xA8ED84
-int CurrentFrame;
+extern int CurrentFrame;

@@ -135,5 +135,5 @@ MouseClass::MouseClass()
 // GLOBAL: GAMEMD 0xABF2DD
 bool MouseCursorApplied;
 // GLOBAL: GAMEMD 0xABF2DC
-bool MouseShapeFlag;
+extern bool MouseShapeFlag;
 // END defined globals

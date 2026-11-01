@@ -173,7 +173,7 @@ DisplayLayer* DisplayLayer_008A0E10;
 // GLOBAL: GAMEMD 0xA9FA94
 bool DisplayFlag_00A9FA94;
 // GLOBAL: GAMEMD 0xA8EF54
-DisplayGadget* DisplayButtonList_00A8EF54;
+extern DisplayGadget* DisplayButtonList_00A8EF54;
 // GLOBAL: GAMEMD 0xA8ED84
-int DisplayCurrentFrame_00A8ED84;
+extern int DisplayCurrentFrame_00A8ED84;
 // END defined globals

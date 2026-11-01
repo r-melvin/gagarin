@@ -98,7 +98,7 @@
 MSAnimCounters MSAnimCounts;
 BitFont* TheGameFont;
 BitText* DAT_0089C4B8;
-MSSurface*      MSScreenSurface;
+extern MSSurface*      MSScreenSurface;
 char VT_007E16B0;
 char VT_007E1668;
 

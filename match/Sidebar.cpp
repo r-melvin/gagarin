@@ -2167,9 +2167,9 @@ int DAT_00886F94;
 // GLOBAL: GAMEMD 0xB07BC0
 SidebarShapeFile* DarkenShape_00B07BC0;
 // GLOBAL: GAMEMD 0xB0B328
-SidebarButton ScrollDownButton_00B0B328;
+extern SidebarButton ScrollDownButton_00B0B328;
 // GLOBAL: GAMEMD 0xB0B408
-SidebarButton ScrollUpButton_00B0B408;
+extern SidebarButton ScrollUpButton_00B0B408;
 // GLOBAL: GAMEMD 0xB0B468
 SidebarShapeFile* SideShapes_00B0B468[8];
 // GLOBAL: GAMEMD 0xB0B488
@@ -2199,13 +2199,11 @@ extern const double DAT_007F2F30 = 60.0;
 // GLOBAL: GAMEMD 0x87F6CC
 SidebarConvert* ConvertA_0087F6CC;
 // GLOBAL: GAMEMD 0xB07BC0
-int DAT_00B07BC0;
-// GLOBAL: GAMEMD 0x887308
-void* ConvertSurface_00887308;
+extern int DAT_00B07BC0;
 // GLOBAL: GAMEMD 0xA8ED84
 int CurrentFrame_00A8ED84;
 // GLOBAL: GAMEMD 0xB07C48
-SidebarButton TabButtons_00B07C48[4];
+extern SidebarButton TabButtons_00B07C48[4];
 // GLOBAL: GAMEMD 0xB0B478
 int DAT_00B0B478;
 // END defined globals

@@ -400,6 +400,4 @@ int DAT_008B40F8;
 void** DAT_008B41CC;
 // GLOBAL: GAMEMD 0xA8ECA4
 void** DAT_00A8ECA4;
-// GLOBAL: GAMEMD 0xA8B230
-MissionScenario_R15* DAT_00A8B230_MissionR15;
 // END defined globals

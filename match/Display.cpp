@@ -2369,7 +2369,7 @@ extern const double DAT_007E6018 = 60.0;
 // GLOBAL: GAMEMD 0x8A03FC
 void* DisplayPlaceShape_008A03FC;
 // GLOBAL: GAMEMD 0x89C3B0
-BeaconManagerClass BeaconManager;
+extern BeaconManagerClass BeaconManager;
 // GLOBAL: GAMEMD 0xABDC84
 int DAT_00ABDC84;
 // GLOBAL: GAMEMD 0x8A03F8 -- the "no cell" sentinel pair MarkFoundation refuses.

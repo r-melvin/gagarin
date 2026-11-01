@@ -346,7 +346,3 @@ bool ObjectClass::vf_65(RectangleStruct* a1, bool a2, int a3)
     return true;
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB73550
-void* DAT_00B73550;
-// END defined globals

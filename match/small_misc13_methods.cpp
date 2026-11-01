@@ -54,5 +54,5 @@ void Owned_0043AE80::FUN_0043AE80()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87E728
-void* DAT_0087E728b;
+extern void* DAT_0087E728b;
 // END defined globals

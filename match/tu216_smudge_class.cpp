@@ -166,9 +166,9 @@ void SmudgeClass::vf_69(Point2D* where, RectangleStruct* clip)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8B1E0
-DynamicVectorClass<SmudgeClass*> SmudgeArray((AbstractNoInit()));
+extern DynamicVectorClass<SmudgeClass*> SmudgeArray;
 // GLOBAL: GAMEMD 0xB0B728
-MapObjCoord SmudgeEmptyCoord;
+extern MapObjCoord SmudgeEmptyCoord;
 // GLOBAL: GAMEMD 0x83FFD8
 int SmudgeCreateArg = -1;
 // GLOBAL: GAMEMD 0x7F32B8

@@ -11,7 +11,7 @@
 
 #include "rad_site_class_methods.h"
 
-RulesClass* RulesInstance;  // GLOBAL: GAMEMD 0x008871E0
+extern RulesClass* RulesInstance;  // GLOBAL: GAMEMD 0x008871E0
 
 // FUNCTION: GAMEMD 0x65B4C0  (__thiscall)
 // Set the center cell (copied as a single dword).

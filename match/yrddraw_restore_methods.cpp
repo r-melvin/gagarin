@@ -48,5 +48,5 @@ void YRDDraw_Restore()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8A0094
-DirectDrawInterfaceView* DAT_008A0094;
+extern DirectDrawInterfaceView* DAT_008A0094;
 // END defined globals

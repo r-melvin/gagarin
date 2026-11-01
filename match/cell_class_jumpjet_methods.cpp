@@ -47,5 +47,5 @@ bool CellClass::TryAssignJumpjet(ObjectClass* object)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x89E748
-CellStruct JumpjetClearCoords;
+extern CellStruct JumpjetClearCoords;
 // END defined globals

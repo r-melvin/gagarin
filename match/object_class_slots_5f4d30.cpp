@@ -297,7 +297,3 @@ bool ObjectClass::vf_58(const CoordStruct& coord)
     return false;
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x87F778
-LogicView_87F778 DAT_0087F778;
-// END defined globals

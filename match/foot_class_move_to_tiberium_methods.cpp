@@ -35,5 +35,5 @@ bool Obj_004DCFE0::MoveToTiberium(int radius, int scanClose)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B3D88
-Cell_004DCFE0 NoCell_004DCFE0;
+extern Cell_004DCFE0 NoCell_004DCFE0;
 // END defined globals

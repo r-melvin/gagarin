@@ -312,7 +312,7 @@ int TerrainTypeClass::vf_16()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0ED7C
-CellStruct TerrainDefaultCell;
+extern CellStruct TerrainDefaultCell;
 // GLOBAL: GAMEMD 0xA8E318
-DynamicVectorClassLayout TerrainTypeClassArray;
+extern DynamicVectorClassLayout TerrainTypeClassArray;
 // END defined globals

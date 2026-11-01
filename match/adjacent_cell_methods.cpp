@@ -56,5 +56,5 @@ Pair_0042D490* FUN_0042D490(Pair_0042D490* dest, Pair_0042D490* src,
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B413C
-Slot_0042D490** DAT_008B413C;
+extern Slot_0042D490** DAT_008B413C;
 // END defined globals

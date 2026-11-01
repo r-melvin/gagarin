@@ -99,7 +99,3 @@ unsigned long* FUN_004a4900(unsigned long min_width, unsigned long min_height,
     return list;
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x8A0094
-DDrawEnumView* DAT_008A0094;
-// END defined globals

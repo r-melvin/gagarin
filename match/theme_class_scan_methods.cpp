@@ -9,5 +9,5 @@
 // GLOBAL: GAMEMD 0x844768
 extern const char STR_00844768[] = ".WAV";
 // GLOBAL: GAMEMD 0xA8EC74
-char DAT_00A8EC74;
+extern char DAT_00A8EC74;
 // END defined globals

@@ -304,9 +304,9 @@ void __fastcall FUN_00549A00(int a, int b, int* outX, int* outY)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xAA0374
-int DebugWindowListCapacity;
+extern int DebugWindowListCapacity;
 // GLOBAL: GAMEMD 0xAA044C
-void** DebugWindowList;
+extern void** DebugWindowList;
 // GLOBAL: GAMEMD 0xAA0470
 int DebugWindowLastKey;
 // GLOBAL: GAMEMD 0xAA0474
@@ -318,5 +318,5 @@ int DAT_00AA1088;
 // GLOBAL: GAMEMD 0x87DE2C
 int DAT_0087DE2C = 0;
 // GLOBAL: GAMEMD 0xAA0448
-int DebugWindowListActive;
+extern int DebugWindowListActive;
 // END defined globals

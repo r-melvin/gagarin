@@ -553,11 +553,11 @@ extern const char EvaBuildingOffLine[] = "EVA_BuildingOffLine";
 // GLOBAL: GAMEMD 0x81926C
 extern const char EvaStructureAbandoned_00458200[] = "EVA_StructureAbandoned";
 // GLOBAL: GAMEMD 0xA80228
-HouseVector_00458200 HouseArray_00458200;
+extern HouseVector_00458200 HouseArray_00458200;
 // GLOBAL: GAMEMD 0x89C848
 extern CoordStruct DAT_0089C848;
 // GLOBAL: GAMEMD 0xB73550
-int BuildingBGlobal_00B73550;
+extern int BuildingBGlobal_00B73550;
 // END defined globals
 
 #include "_layout/building_class.h"

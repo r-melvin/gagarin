@@ -33,5 +33,5 @@ void FootClass::Jumpjet_OccupyCell(CellStruct coords)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x8B3D88
-CellStruct NoCell;
+extern CellStruct NoCell;
 // END defined globals

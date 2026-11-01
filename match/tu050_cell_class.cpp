@@ -1520,7 +1520,7 @@ extern int DAT_00AA0738;
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8E9A0
-unsigned char CellOccupiersValid;
+extern unsigned char CellOccupiersValid;
 // END defined globals
 
 #include "cell_class_query_methods.h"

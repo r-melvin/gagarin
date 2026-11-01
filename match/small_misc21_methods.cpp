@@ -61,5 +61,5 @@ Triple3ib Triple3ib::FUN_00437160(const Triple3ib* other) const
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87E728
-void* DAT_0087E728c;
+extern void* DAT_0087E728c;
 // END defined globals

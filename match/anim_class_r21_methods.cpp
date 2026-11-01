@@ -137,8 +137,6 @@ AnimClass** DAT_00A8E9AC;
 int DAT_00A8E9B8;
 // GLOBAL: GAMEMD 0xB054D4
 SchemeView_004261D0** DAT_00B054D4;
-// GLOBAL: GAMEMD 0xB0F4EC
-TiberiumView_004261D0** DAT_00B0F4EC;
 // END defined globals
 // A coordinate taken by value (retail copies the animation's location on the stack here).
 static inline CoordStruct PlacedAt(const CoordStruct& where)

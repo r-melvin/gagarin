@@ -883,7 +883,7 @@ static __inline FootClass* foot_cast_007104C0(void* object)
 #include "techno_class_drawer_methods.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
-HouseClass* DAT_00A83D4C;
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xB054D0
 extern ColorSchemeVec_00705D70 DAT_00B054D0;
 
@@ -1104,10 +1104,6 @@ GG_STATIC_ASSERT(offsetof(EventQueue128, List) == 0x0C);
 GG_STATIC_ASSERT(offsetof(EventQueue128, Time) == 0x378C);
 GG_STATIC_ASSERT(sizeof(EventQueue128) == 0x398C);
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xB0EA80
-CDTimerClass DAT_00B0EA80;
-// END defined globals
 
 #include "techno_class_death_weapon_methods.h"
 
@@ -1243,10 +1239,6 @@ GG_STATIC_ASSERT(offsetof(ScenarioView_00707D20, Random) == 0x218);
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario.
 extern ScenarioView_00707D20* ScenarioInstance_00707D20;
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x887324
-TacticalView_r21_4* TacticalInstance_r21_4;
-// END defined globals
 
 #include "_layout/techno_class.h"
 #include "_layout/techno_type_class.h"
@@ -1303,7 +1295,7 @@ GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->IsTether) == 1);
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87F778
-LogicClass LogicInstance;
+extern LogicClass LogicInstance;
 // END defined globals
 
 #include "techno_class_owner_methods.h"

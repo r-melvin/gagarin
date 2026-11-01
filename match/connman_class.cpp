@@ -652,7 +652,3 @@ void IPXManagerClass::Slot24(int, int)
 {
 }
 
-// BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA8B550
-int MaxAhead;
-// END defined globals

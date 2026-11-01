@@ -727,10 +727,8 @@ void FUN_00420360()
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0xA83C98
-DynamicVectorClass<AbstractTypeClass*> DAT_00A83C98;
 // GLOBAL: GAMEMD 0xA8B200
-DynamicVectorClass<AITriggerTypeClass*> AITriggerTypes;
+extern DynamicVectorClass<AITriggerTypeClass*> AITriggerTypes;
 // GLOBAL: GAMEMD 0x817474
 extern const char STR_00817474[] = "<none>";
 // GLOBAL: GAMEMD 0x817694

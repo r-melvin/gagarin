@@ -152,7 +152,7 @@ int FUN_00510FB0(const char* name)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA80228
-HouseArray_00510ED0 HouseArray;
+extern HouseArray_00510ED0 HouseArray;
 // GLOBAL: GAMEMD 0xA8B230
-Scenario_00510ED0* ScenarioInstance;
+extern Scenario_00510ED0* ScenarioInstance;
 // END defined globals

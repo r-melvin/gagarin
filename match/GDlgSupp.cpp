@@ -748,8 +748,6 @@ void FUN_004E6150(int* value, char* code, char* buffer, int count)
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x7E94E0
 extern const double DAT_007E94E0 = 60.0;
-// GLOBAL: GAMEMD 0xAC4848
-PCX DAT_00AC4848;
 // GLOBAL: GAMEMD 0x835C90
 extern const char STR_00835C90[] = "pingr.pcx";
 // GLOBAL: GAMEMD 0x835C9C

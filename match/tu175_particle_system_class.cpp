@@ -400,7 +400,7 @@ ParticleTypeObjectView* ParticleSystemClass::GetType()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA83D98
-ParticleDynVector<ParticleTypeClass*> ParticleTypeArray;
+extern ParticleDynVector<ParticleTypeClass*> ParticleTypeArray;
 // GLOBAL: GAMEMD 0x7EFB58
 extern const double DAT_007EFB58 = 60.0;
 // END defined globals

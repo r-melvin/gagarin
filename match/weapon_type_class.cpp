@@ -75,5 +75,5 @@ WeaponTypeClass* WeaponTypeClass::FindOrAllocate(const char* id)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x887568
-WeaponTypeVector WeaponTypeClass_Array;
+extern WeaponTypeVector WeaponTypeClass_Array;
 // END defined globals

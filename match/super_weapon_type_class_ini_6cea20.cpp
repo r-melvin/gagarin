@@ -123,8 +123,6 @@ bool SuperWeaponTypeClass::vf_25(CCINIClass* ini)
 }
 
 // BEGIN defined globals (define_globals.py)
-// GLOBAL: GAMEMD 0x81834C
-extern const char STR_0081834C[] = ".SHP";
 // GLOBAL: GAMEMD 0x8204FC
 extern const char STR_DEFAULT_ICON[] = "XXICON.SHP";
 // GLOBAL: GAMEMD 0x7F4100

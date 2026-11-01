@@ -3358,9 +3358,7 @@ Obj_00A8E960 DAT_00A8E960;
 // GLOBAL: GAMEMD 0xA8B548
 int MapPlayerLimit;
 // GLOBAL: GAMEMD 0xA8DA74
-NodeNameVector PlayerNodes;
-// GLOBAL: GAMEMD 0xB732F0
-void* DAT_00B732F0;
+extern NodeNameVector PlayerNodes;
 // GLOBAL: GAMEMD 0x81B2AC
 extern const char STR_0081B2AC[] = "wolacpt.pcx";
 // GLOBAL: GAMEMD 0x81B2B8

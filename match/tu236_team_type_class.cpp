@@ -211,5 +211,5 @@ void __cdecl FUN_006F25D0()
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA8ECA0
-DynamicVectorClassLayout TeamTypeArray;
+extern DynamicVectorClassLayout TeamTypeArray;
 // END defined globals

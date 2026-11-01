@@ -105,5 +105,5 @@ int __stdcall FUN_0048ACE0(int, int, int)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x817474
-extern const char STR_00817474b[] = "<none>";
+extern const char STR_00817474b[];
 // END defined globals

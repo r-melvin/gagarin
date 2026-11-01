@@ -6582,5 +6582,5 @@ void* CachedResourceOwner8::FUN_0049AE40(char flags)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0x87E8A8
-ResourceRegistry TheResourceRegistry;
+extern ResourceRegistry TheResourceRegistry;
 // END defined globals

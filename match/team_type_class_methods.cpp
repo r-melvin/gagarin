@@ -27,5 +27,5 @@
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB0E9C8
-CellStruct DefaultWaypointCell;
+extern CellStruct DefaultWaypointCell;
 // END defined globals

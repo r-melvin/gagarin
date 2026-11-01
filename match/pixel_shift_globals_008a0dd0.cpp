@@ -8,5 +8,5 @@
 
 extern "C" {
 // GLOBAL: GAMEMD 0x8A0DD0
-BTranslucentPixelFormat gg_b_translucent_pixel_format;
+extern BTranslucentPixelFormat gg_b_translucent_pixel_format;
 }

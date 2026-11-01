@@ -7,4 +7,4 @@
 #include "_rt/gg_static_assert.h"
 GG_STATIC_ASSERT(sizeof(int) == 4);
 // GLOBAL: GAMEMD 0x00AC13C8
-int FlightLevel;
+extern int FlightLevel;

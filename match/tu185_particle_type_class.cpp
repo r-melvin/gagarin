@@ -116,8 +116,6 @@ template <class T> ParticleVector<T>::~ParticleVector()
     Capacity = 0;
 }
 
-// GLOBAL: GAMEMD 0x8370BC - the BehavesLike names, indexed by the BehavesLike value (five pointers).
-extern const char* const ParticleBehavesLikeNames[5] = { "Gas", "Smoke", "Fire", "Spark", "Railgun" };
 
 static int FindBehavesLike(const char* name)
 {

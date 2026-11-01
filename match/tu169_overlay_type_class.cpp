@@ -417,7 +417,7 @@ int OverlayTypeClass::vf_16()
 // GLOBAL: GAMEMD 0xA83D90
 int DAT_00A83D90;
 // GLOBAL: GAMEMD 0xAC1608
-MapObjCell OverlayZeroCell;
+extern MapObjCell OverlayZeroCell;
 // GLOBAL: GAMEMD 0x7EF5C0
 extern const double DAT_007EF5C0 = 60.0;
 // GLOBAL: GAMEMD 0x818668
