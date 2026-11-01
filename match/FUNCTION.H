@@ -361,7 +361,6 @@
 #include "_layout/unit_class.h"
 #include "_layout/veinhole_monster_class.h"
 #include "_layout/house_class_allied_inline.h"
-#include "_layout/house_class_human_inline.h"
 #include "_layout/light_source_class.h"
 
 // Game global declarations come last.
