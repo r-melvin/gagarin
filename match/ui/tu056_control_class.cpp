@@ -411,7 +411,7 @@ class ConvertClass;
 
 #include "../_layout/staticvectorholder_0089ecf8.h"
 
-#include "../render/trivial_tu056_methods.h"
+#include "../trivial_tu056_methods.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48E520

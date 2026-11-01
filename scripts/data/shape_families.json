@@ -214,7 +214,7 @@
      "n_insns": 62,
      "status": "matched",
      "pct": 100,
-     "tu": "match/render/alpha_shape_class.cpp",
+     "tu": "match/alpha_shape_class.cpp",
      "sym": "??_GAlphaShapeClass@@UAEPAXI@Z",
      "name": "AlphaShapeClass::scalar deleting destructor",
      "rtti": [
@@ -293,7 +293,7 @@
      "n_insns": 56,
      "status": "matched",
      "pct": 100,
-     "tu": "match/render/alpha_shape_class.cpp",
+     "tu": "match/alpha_shape_class.cpp",
      "sym": "??1AlphaShapeClass@@UAE@XZ",
      "name": "AlphaShapeClass::~AlphaShapeClass"
     },
@@ -2457,7 +2457,7 @@
      "n_insns": 62,
      "status": "matched",
      "pct": 100,
-     "tu": "match/render/alpha_shape_class.cpp",
+     "tu": "match/alpha_shape_class.cpp",
      "sym": "??_GAlphaShapeClass@@UAEPAXI@Z",
      "name": "AlphaShapeClass::scalar deleting destructor",
      "rtti": [
@@ -2536,7 +2536,7 @@
      "n_insns": 56,
      "status": "matched",
      "pct": 100,
-     "tu": "match/render/alpha_shape_class.cpp",
+     "tu": "match/alpha_shape_class.cpp",
      "sym": "??1AlphaShapeClass@@UAE@XZ",
      "name": "AlphaShapeClass::~AlphaShapeClass"
     },

@@ -26,7 +26,7 @@
 // they compile here as a by-product and are not claimed. The globals' retail
 // addresses are bound for verification through the per-TU symbol map.
 
-#include "../core/vector_class_operations.h"
+#include "core/vector_class_operations.h"
 class AlphaShapeClass;
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
@@ -55,22 +55,22 @@ GG_STATIC_ASSERT(offsetof(GgAlphaShapeDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAlphaShapeDynamicVector, CapacityIncrement) == 0x14);
 
 #include <objidl.h>
-#include "../_layout/side_class.h"
-#include "../_layout/wave_class.h"
-#include "../_layout/unit_class.h"
-#include "../_layout/anim_type_class.h"
-#include "../_layout/bullet_class.h"
-#include "../_layout/script_class.h"
-#include "../_layout/script_type_class.h"
-#include "../ai/taction_class_methods.h"
-#include "../_layout/tag_type_class.h"
-#include "../_layout/task_force_class.h"
-#include "../_layout/team_class.h"
-#include "../_layout/team_type_class.h"
-#include "../ai/tevent_class_methods.h"
-#include "../_layout/trigger_class.h"
-#include "../_layout/voxel_anim_type_class.h"
-#include "../_layout/warhead_type_class.h"
+#include "_layout/side_class.h"
+#include "_layout/wave_class.h"
+#include "_layout/unit_class.h"
+#include "_layout/anim_type_class.h"
+#include "_layout/bullet_class.h"
+#include "_layout/script_class.h"
+#include "_layout/script_type_class.h"
+#include "ai/taction_class_methods.h"
+#include "_layout/tag_type_class.h"
+#include "_layout/task_force_class.h"
+#include "_layout/team_class.h"
+#include "_layout/team_type_class.h"
+#include "ai/tevent_class_methods.h"
+#include "_layout/trigger_class.h"
+#include "_layout/voxel_anim_type_class.h"
+#include "_layout/warhead_type_class.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -188,7 +188,7 @@ extern const CLSID DAT_007E9850;
 extern const CLSID DAT_007E9830;
 
 
-#include "../core/vector_class_operations.h"
+#include "core/vector_class_operations.h"
 
 class AITriggerTypeClass;
 class AbstractClass;
@@ -278,7 +278,7 @@ struct HWND__;
 // SYNTHETIC: GAMEMD 0x004208E0 -- initialiser of DAT_0088A0F0
 DynamicVectorClass<AlphaShapeClass*> DAT_0088A0F0;
 
-#include "../_layout/alpha_shape_class.h"
+#include "_layout/alpha_shape_class.h"
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x00420D40

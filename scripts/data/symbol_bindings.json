@@ -15602,7 +15602,7 @@
  "match/network/wonline_part2.cpp::_DAT_0084A430": "0x0084A430",
  "match/platform/Credits.cpp::_DAT_007E5D88": "0x007E5D88",
  "match/platform/tu196_random_straw.cpp::_$S14": "0x00B04D28",
- "match/render/alpha_shape_class.cpp::_DAT_007E2B10": "0x007E2B10",
+ "match/alpha_shape_class.cpp::_DAT_007E2B10": "0x007E2B10",
  "match/renderer/pcx_get_surface_methods.cpp::_$E2": "0x006BA220",
  "match/renderer/pcx_get_surface_methods.cpp::_?$S1@?1??GetSurface@PCX@@QAEPAXPBDPAUBytePalette_006BA140@@@Z@4EA": "0x00B0B930",
  "match/renderer/pcx_get_surface_methods.cpp::_?entry@?1??GetSurface@PCX@@QAEPAXPBDPAUBytePalette_006BA140@@@Z@4UPCXStatic_006BA140@@A": "0x00B0B948",

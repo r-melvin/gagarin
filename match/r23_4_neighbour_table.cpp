@@ -4,8 +4,8 @@
 //   recovered class yet, so it is an address-named view.
 
 #include <stddef.h>
-#include "../_rt/gg_static_assert.h"
-#include "../wwlib/surface/surface_class.h"
+#include "_rt/gg_static_assert.h"
+#include "wwlib/surface/surface_class.h"
 
 // The surface whose pitch (slot 29, +0x74) is the grid width used below.
 // GLOBAL: GAMEMD 0x887314

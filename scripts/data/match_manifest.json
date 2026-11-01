@@ -3354,7 +3354,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421AC0",
   "sym": "??_G?$VectorClass@PAVAlphaShapeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -3363,7 +3363,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421B10",
   "sym": "??_G?$DynamicVectorClass@PAVAlphaShapeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -3831,7 +3831,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421800",
   "sym": "?Clear@?$DynamicVectorClass@PAVAlphaShapeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -3840,7 +3840,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421950",
   "sym": "?Clear@?$VectorClass@PAVAlphaShapeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -39913,7 +39913,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421830",
   "sym": "?Slot5@?$DynamicVectorClass@PAVAlphaShapeClass@@@@UBEHPAPAVAlphaShapeClass@@@Z",
   "len": "0x1b",
@@ -39922,7 +39922,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421850",
   "sym": "?Slot6@?$VectorClass@PAVAlphaShapeClass@@@@UBEPAVAlphaShapeClass@@H@Z",
   "len": "0xd",
@@ -39931,7 +39931,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421860",
   "sym": "??8?$VectorClass@PAVAlphaShapeClass@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -39940,7 +39940,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x4218A0",
   "sym": "?SetCapacity@?$VectorClass@PAVAlphaShapeClass@@@@UAE_NHPAPAVAlphaShapeClass@@@Z",
   "len": "0xae",
@@ -39949,7 +39949,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421980",
   "sym": "?FindItemIndex@?$VectorClass@PAVAlphaShapeClass@@@@UBEHABQAVAlphaShapeClass@@@Z",
   "len": "0x33",
@@ -39958,7 +39958,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x4219C0",
   "sym": "?Slot5@?$VectorClass@PAVAlphaShapeClass@@@@UBEHPAPAVAlphaShapeClass@@@Z",
   "len": "0x1b",
@@ -39967,7 +39967,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x4219E0",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVAlphaShapeClass@@@@UAE_NHPAPAVAlphaShapeClass@@@Z",
   "len": "0xb0",
@@ -39976,7 +39976,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x421A90",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAlphaShapeClass@@@@UBEHABQAVAlphaShapeClass@@@Z",
   "len": "0x26",
@@ -70304,7 +70304,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420720",
   "sym": "_$E3",
   "len": "0x13",
@@ -70313,7 +70313,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420740",
   "sym": "_$E6",
   "len": "0x13",
@@ -70322,7 +70322,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x4208C0",
   "sym": "_$E9",
   "len": "0x1a",
@@ -70331,7 +70331,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420960",
   "sym": "??0AlphaShapeClass@@QAE@PAVObjectClass@@HH@Z",
   "len": "0x190",
@@ -70341,7 +70341,7 @@
   "note": "Exact through the vector appends; the residual is the inlined product-table build: retail keeps the product in EAX and moves it to ECX before the /127 multiply, and tests >255 before the 0..255 clamp (three compares); every source form tried folds to two (aligned 90.9%)."
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420AF0",
   "sym": "??0AlphaShapeClass@@QAE@XZ",
   "len": "0x15f",
@@ -70351,7 +70351,7 @@
   "note": "Same table-build residual as 0x420960 (aligned 91.1%)."
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420C50",
   "sym": "??0AlphaShapeClass@@QAE@ABUAbstractNoInit@@@Z",
   "len": "0x2e",
@@ -70360,7 +70360,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420C80",
   "sym": "??1AlphaShapeClass@@UAE@XZ",
   "len": "0xbb",
@@ -70369,7 +70369,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420D80",
   "sym": "?vf_11@AlphaShapeClass@@UAEHXZ",
   "len": "0x6",
@@ -70378,7 +70378,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420D90",
   "sym": "?vf_12@AlphaShapeClass@@UAEHXZ",
   "len": "0x6",
@@ -70387,7 +70387,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420DA0",
   "sym": "?vf_13@AlphaShapeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x3f",
@@ -70396,7 +70396,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420DE0",
   "sym": "?Load@AlphaShapeClass@@UAGJPAUIStream@@@Z",
   "len": "0x5e",
@@ -70405,7 +70405,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420E70",
   "sym": "?vf_10@AlphaShapeClass@@UAEXPAX_N@Z",
   "len": "0x12",
@@ -70414,7 +70414,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420E90",
   "sym": "?FUN_00420E90@AlphaShapeClass@@SIXXZ",
   "len": "0xaa",
@@ -70424,7 +70424,7 @@
   "note": "The sweep loop is exact; the residual is the same inlined table build as 0x420960 (aligned 83.1%)."
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x421730",
   "sym": "??_GAlphaShapeClass@@UAEPAXI@Z",
   "len": "0xcf",
@@ -70433,7 +70433,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/alpha_shape_class.cpp",
+  "tu": "match/alpha_shape_class.cpp",
   "addr": "0x420E40",
   "sym": "?Save@AlphaShapeClass@@UAGJPAUIStream@@H@Z",
   "len": "0x21",
@@ -76479,7 +76479,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x420920",
   "sym": "_$E3",
   "len": "0x3b",
@@ -76488,7 +76488,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x420D40",
   "sym": "?GetClassID@AlphaShapeClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -76497,7 +76497,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/render/tu023_alpha_shape_class.cpp",
+  "tu": "match/tu023_alpha_shape_class.cpp",
   "addr": "0x4208E0",
   "sym": "_$E5",
   "len": "0x3d",
@@ -145105,7 +145105,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/r23_4_neighbour_table.cpp",
+  "tu": "match/r23_4_neighbour_table.cpp",
   "addr": "0x75F140",
   "sym": "?FUN_0075F140@Obj_0075F140@@QAEXXZ",
   "len": "0xe2",

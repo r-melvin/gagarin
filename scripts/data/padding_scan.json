@@ -5049,7 +5049,7 @@
   },
   {
    "addr": "0x421730",
-   "tu": "match/render/alpha_shape_class.cpp",
+   "tu": "match/alpha_shape_class.cpp",
    "name": "AlphaShapeClass::scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },

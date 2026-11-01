@@ -8,13 +8,13 @@
 //   /Ob2: the scalar deleting destructor 0x421730 expands the destructor.
 
 #include <new.h>
-#include "../_layout/alpha_shape_class.h"
-#include "../_layout/object_class.h"
-#include "../_layout/object_type_class.h"
-#include "../_layout/obj_004a1d30.h"
-#include "../core/vector_class_operations.h"
-#include "../movement/locomotion_load_support.h"
-#include "../core/header_tuning_globals.h"
+#include "_layout/alpha_shape_class.h"
+#include "_layout/object_class.h"
+#include "_layout/object_type_class.h"
+#include "_layout/obj_004a1d30.h"
+#include "core/vector_class_operations.h"
+#include "movement/locomotion_load_support.h"
+#include "core/header_tuning_globals.h"
 
 // ---- run-time initialised copies of the shared tuning globals -----------------------------------------------------
 
