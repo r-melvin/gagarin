@@ -188,6 +188,14 @@ public:
     class EBolt* FUN_006FD460(AbstractClass* target, WeaponTypeClass* weapon,
                       const CoordStruct* source);
 
+    // GAMEMD 0x6FDB80 (declaration only: no body is linked, so callers bind to retail) -- thiscall, two stack arguments (RET 8): the weapon's damage against the
+    // target after both sides' multipliers, rank bonuses and the warhead verses (0 when no target).
+    int FUN_006FDB80(TechnoClass* target, WeaponTypeClass* weapon);
+
+    // FUNCTION: GAMEMD 0x709550 -- thiscall, no stack arguments.
+    void FUN_00709550();
+    // GAMEMD 0x70D590 (body in Techno.cpp, unclaimed) -- thiscall, one stack argument (RET 4).
+    bool FUN_0070D590(int weaponIndex);
     bool FUN_0043B150(); // ECX receiver, AL result, RET; render6D4766
     void FUN_004DC340(); // ECX receiver, RET; render6D478E
     // CALLEE: GAMEMD 0x70FEE0 -- existing matched Techno_0070FEE0 provider; one bool arg, RET 4.
@@ -278,6 +286,7 @@ public:
     virtual void vf_9();                                           // 9   0x6F3F40
     virtual int vf_28(CellStruct* cell, char a2, char a3);          // 28  0x700600: the cursor action over a cell
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x70C270
+    virtual HRESULT __stdcall Load(IStream* pStm);                 // 5  0x70BF50
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty); // 6  0x70C250
     virtual bool vf_25();                                          // 25  0x6F32D0
     virtual bool vf_37();                                          // 37  0x701140 (table 0x7F4960 + 0x94)
@@ -437,7 +446,7 @@ public:
     virtual void vf_287(int a1);                                   // 287 0x709A20
     virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x709A30
     virtual bool EnterIdleMode(bool initial, bool a2);             // 289 0x709A40
-    virtual void vf_290(int a1, int a2, int a3, int a4, int a5);   // 290 0x70AF50
+    virtual void vf_290(char a1, char a2, char a3, HouseClass* a4, int a5);   // 290 0x70AF50
     virtual void vf_291(int a1, int a2, bool a3, HouseClass* a4);           // 291 0x70B1D0
     virtual bool vf_292(CoordStruct* coord, int dir);                // 292 0x4C9150
     virtual void vf_293();                                         // 293 0x70CC90
@@ -560,14 +569,14 @@ public:
     int                ChargeTurretDelay;        // +0x2F8
     int                Ammo;                     // +0x2FC (ctor = -1)
     int                Value;                    // +0x300
-    void*              FireParticleSystem;       // +0x304 ParticleSystemClass*
-    void*              SparkParticleSystem;      // +0x308
-    void*              NaturalParticleSystem;    // +0x30C
-    void*              DamageParticleSystem;     // +0x310
-    void*              RailgunParticleSystem;    // +0x314
-    void*              unk1ParticleSystem;       // +0x318
-    void*              unk2ParticleSystem;       // +0x31C
-    void*              FiringParticleSystem;     // +0x320
+    union {
+        void*          ParticleSystems[8];       // +0x304 ParticleSystemClass*; retail walks them as one array
+        struct {
+            void*      unknown_304[2];           // +0x304
+            void*      NaturalParticleSystem;    // +0x30C (named access in BuildingClass code)
+            void*      DamageParticleSystem;     // +0x310 (named access at 0x70D7A0)
+        };
+    };
     void*              Wave;                     // +0x324 WaveClass*
     float              AngleRotatedSideways;     // +0x328
     float              AngleRotatedForwards;     // +0x32C
@@ -625,9 +634,12 @@ public:
     unsigned char      unknown_bool_43A;         // +0x43A (bool)
     unsigned char      align_43B;                // +0x43B
     unsigned int       unknown_43C;              // +0x43C
-    DynamicVectorClassLayout CurrentTargetThreatValues;// +0x440 (0x18; vptr 0x7E4E78)
-    DynamicVectorClassLayout CurrentTargets;           // +0x458 (0x18; vptr 0x7E91EC)
-    DynamicVectorClassLayout AttackedTargets;          // +0x470 (0x18; vptr 0x7E91EC)
+    // TODO(vector-shape): DynamicVectorClassLayoutOf<T> stands in for DynamicVectorClass<T> until the vector inline-shape work lands.
+    DynamicVectorClassLayoutOf<int> CurrentTargetThreatValues;// +0x440 (0x18; vptr 0x7E4E78)
+    // TODO(vector-shape): stands in for DynamicVectorClass<AbstractClass*> until the vector inline-shape work lands.
+    DynamicVectorClassLayoutOf<AbstractClass*> CurrentTargets;           // +0x458 (0x18; vptr 0x7E91EC)
+    // TODO(vector-shape): stands in for DynamicVectorClass<AbstractClass*> until the vector inline-shape work lands.
+    DynamicVectorClassLayoutOf<AbstractClass*> AttackedTargets;          // +0x470 (0x18; vptr 0x7E91EC)
     AudioController    TurretRotateSoundController; // +0x488 (0x14; ctor FUN_00405BE0)
     int                IsTurretRotateSoundPlaying;  // +0x49C (BOOL, ctor = 1)
     int                TurretIsRotating;            // +0x4A0 (BOOL)
@@ -739,7 +751,7 @@ GG_STATIC_ASSERT(offsetof(TechnoClass, SlaveOwner)                == 0x2DC);
 GG_STATIC_ASSERT(offsetof(TechnoClass, BunkerLinkedItem)          == 0x2E4);
 GG_STATIC_ASSERT(offsetof(TechnoClass, RearmTimer)               == 0x2EC);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Ammo)                     == 0x2FC);
-GG_STATIC_ASSERT(offsetof(TechnoClass, FireParticleSystem)       == 0x304);
+GG_STATIC_ASSERT(offsetof(TechnoClass, ParticleSystems)            == 0x304);
 GG_STATIC_ASSERT(offsetof(TechnoClass, HijackerInfantryType)     == 0x338);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Tiberium)                 == 0x33C);
 GG_STATIC_ASSERT(offsetof(TechnoClass, UnloadTimer)              == 0x350);

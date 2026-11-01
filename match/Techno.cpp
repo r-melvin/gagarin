@@ -836,6 +836,7 @@ static inline CellStruct CoordToCell(const CoordStruct& coord)
 #include "_layout/techno_type_class.h"
 #include "_layout/house_class.h"
 #include "_layout/tag_class.h"
+#include "_layout/swizzle_manager_class.h"
 
 // GLOBAL: GAMEMD 0xA83D4C
 extern HouseClass* CurrentPlayer;
@@ -3884,6 +3885,56 @@ int __stdcall FUN_00709800(int a1)
     return a1 != 5 && a1 != 6;
 }
 
+// FUNCTION: GAMEMD 0x709820
+// Retarget after a hit or a scan. Restart the targeting timer (the guard-area delay for the mission
+// 11 case, otherwise the normal delay, each plus a roll of 0..2) and note the frame. A current
+// target that the lose-target flag has marked is re-evaluated: a code 6 resets the spawn manager,
+// 5 and 8 drop the target. With no target left, look for a new one by the threat bits; a type that
+// distributes fire hands over to the group pick, anything else takes it as the target and, when the
+// first weapon it would use against it has a plain warhead, charges the damage to the new target's
+// estimated health.
+bool TechnoClass::vf_231(const CoordStruct& where, int a2)
+{
+    unknown_4FC = CurrentFrame;
+    if (CurrentMission == 11) {
+        int jitter = DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+        TargetingTimer = CDTimerClass(RulesInstance->GuardAreaTargetingDelay + jitter);
+    } else {
+        int jitter = DAT_00A8B230->unknown_0218.RandomRanged(0, 2);
+        TargetingTimer = CDTimerClass(RulesInstance->NormalTargetingDelay + jitter);
+    }
+    unsigned int threat = a2 & 3;
+    if (Target && ShouldLoseTargetNow) {
+        int index = vf_185(Target);
+        int result = vf_240(Target, index, 1);
+        if (result == 6 && SpawnManager) {
+            static_cast<SpawnManagerClass*>(SpawnManager)->ResetTarget();
+        } else if (result == 5 || result == 6 || result == 8) {
+            vf_242(0);
+        }
+    }
+    if (!Target) {
+        AbstractClass* found = vf_241(threat, const_cast<CoordStruct*>(&where), false);
+        if (vf_33()->DistributedFire) {
+            FUN_00709550();
+        } else {
+            if (found) {
+                vf_242(found);
+            }
+            int weaponIndex = vf_185(Target);
+            TechnoClass* victim = static_cast<TechnoClass*>(found);
+            if (victim) {
+                victim = victim->Flags.IsTechno ? victim : 0;
+            }
+            WeaponTypeClass* weapon = vf_254(weaponIndex)->WeaponType;
+            if (victim && weapon && !weapon->Projectile->unknown_2A2) {
+                victim->EstimatedHealth -= FUN_006FDB80(victim, weapon);
+            }
+        }
+    }
+    return Target != 0;
+}
+
 // FUNCTION: GAMEMD 0x7099D0
 // Returns zero; pops its stack arguments. Vtable slot 64 of TechnoClass (RTTI) and 3 derived vtable(s).
 int Obj_007099D0::FUN_007099D0(int a1, int a2) const
@@ -3987,6 +4038,60 @@ void TechnoClass::vf_72(int a1, int a2)
     }
 }
 
+// FUNCTION: GAMEMD 0x70AF50
+// Reveal the map around this object by its sight, as slot 72 does, but remember the reveal: the
+// first one records where and how far (the type's sight scaled by the height bonus and the rank
+// bonus, or the sight passed in) and spends itself on the owner, or on the house passed with
+// the third argument. Later ones go to the passed house only, over the same sight.
+void TechnoClass::vf_290(char a1, char a2, char a3, HouseClass* a4, int a5)
+{
+    if (!IsInPlayfield) {
+        return;
+    }
+    if (Owner->Type->MultiplayPassive) {
+        return;
+    }
+    if (vf_33()->Sight == 0 && a5 == 0) {
+        return;
+    }
+    CoordStruct here = Location;
+    int level = here.Z / Rules->LeptonsPerSightIncrease * 10;
+    if (level > SightIncrease) {
+        a1 = 0;
+    }
+    SightIncrease = (char)level;
+    int sight = (int)(vf_33()->Sight * (SightIncrease * DAT_007E3808 + DAT_007E1718));
+    if (Veterancy.FUN_0074FF90() || Veterancy.FUN_00750010()) {
+        TechnoTypeClass* type = vf_33();
+        if ((Veterancy.FUN_0074FF90() && type->VeteranAbilities._raw[5])
+            || (Veterancy.FUN_00750010() && (type->VeteranAbilities._raw[5] || type->EliteAbilities._raw[5]))) {
+            if (Rules->VeteranSight != GG_ZERO) {
+                sight = (int)(sight * Rules->VeteranSight);
+            }
+        }
+    }
+    if (a5 != 0) {
+        sight = a5;
+    }
+    if (!unknown_bool_250) {
+        unknown_bool_250 = 1;
+        LastSightCoords = Location;
+        LastSightRange = sight;
+        if (sight != 0) {
+            if (a3 && a4) {
+                CoordStruct where = Location;
+                DAT_0087F7E8.FUN_005678E0(&where, sight, a4, a1, a2, 0, 1, 0);
+            } else {
+                CoordStruct where = Location;
+                DAT_0087F7E8.FUN_005678E0(&where, sight, Owner, a1, a2, 0, 1, 0);
+            }
+        }
+    } else if (a3 && sight != 0 && a4) {
+        CoordStruct where = Location;
+        DAT_0087F7E8.FUN_005678E0(&where, sight, a4, a1, a2, 0, 1, 0);
+    }
+}
+
 // FUNCTION: GAMEMD 0x70BE50
 //
 // Frame-phase value: the interface sub-object's slot-4 answer plus the
@@ -4032,12 +4137,138 @@ bool TechnoClass::vf_165()
     return damaged;
 }
 
+// FUNCTION: GAMEMD 0x70BF50
+// Load the object from the stream through the radio base, then hand the address of every saved
+// pointer to the swizzle manager so it can be patched once its target exists, and restart the
+// sound controllers that were not saved.
+HRESULT __stdcall TechnoClass::Load(IStream* pStm)
+{
+    HRESULT hr = RadioClass::Load(pStm);
+    if (hr >= 0) {
+        PlanningToken = 0;
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
+        for (int i = 0; i < 8; i++) {
+            DAT_00B0C110.SwizzleManagerClass::vf_4(&ParticleSystems[i]);
+        }
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&InitialOwner);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&BunkerLinkedItem);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&ArchiveTarget);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&QueueUpToEnter);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Target);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&LastTarget);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&CaptureManager);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&OldTeam);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&SpawnManager);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&SlaveManager);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&SlaveOwner);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&MindControlledBy);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&MindControlledByHouse);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&OriginallyOwnedByHouse);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&SpawnOwner);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Disguise);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&DisguisedAsHouse);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&TemporalImUsing);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&TemporalTargetingMe);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Airstrike);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&DrainTarget);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&DrainingMe);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Transporter);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&DirectRockerLinkedUnit);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&LocomotorTarget);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&LocomotorSource);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&BeingManipulatedBy);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&ChronoWarpedByHouse);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Passengers.FirstPassenger);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Wave);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&DeployAnim);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&BehindAnim);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&MindControlRingAnim);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&DrainAnim);
+        TurretRotateSoundController.FUN_00405BE0();
+        IsTurretRotateSoundPlaying = 1;
+        TurretIsRotating = 0;
+        GattlingSoundController.FUN_00405BE0();
+        IsGattlingSoundPlaying = 0;
+        unknown_4BC = 0;
+        UnusedGattlingSoundController.FUN_00405BE0();
+        IsUnusedGattlingSoundPlaying = 0;
+        unknown_4D8 = 0;
+        QueuedVoiceSoundController.FUN_00405BE0();
+        QueuedVoiceIndex = -1;
+        unknown_4F4 = -1;
+        hr = 0;
+    }
+    return hr;
+}
+
 // FUNCTION: GAMEMD 0x70C250
 // Forwards its three arguments and reports zero.
 int __stdcall FUN_0070C250(int a, int b, int c)
 {
     FUN_0065AC40(a, b, c);
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x70C270
+// Feed the object's synchronised state to the checksum: the radio base, then the group, the armor
+// and firepower multipliers, each timer as the frames it still has to run, the cloak and warp
+// state, ammo, the rocking angles, a run of flags (the discovery flags only in a campaign or skirmish), the
+// sight bonus, and the ids of the current and the attacked targets with their threat values.
+void TechnoClass::vf_13(Obj_004A1D30* crc)
+{
+    RadioClass::vf_13(crc);
+    crc->FUN_004A1D50(Group);
+    crc->FUN_004A1D90(ArmorMultiplier);
+    crc->FUN_004A1D90(FirepowerMultiplier);
+    crc->FUN_004A1D50(IdleActionTimer.GetTimeLeft());
+    crc->FUN_004A1D50(DisplayProductionTo);
+    crc->FUN_004A1D50(CloakState);
+    crc->FUN_004A1D50(CloakDelayTimer.GetTimeLeft());
+    crc->FUN_004A1D70(WarpFactor);
+    crc->FUN_004A1CA0(unknown_bool_250);
+    crc->FUN_004A1D50(LastSightRange);
+    crc->FUN_004A1D70(PitchAngle);
+    crc->FUN_004A1D50(RearmTimer.GetTimeLeft());
+    crc->FUN_004A1D50(Ammo);
+    crc->FUN_004A1D50(ReloadTimer.GetTimeLeft());
+    crc->FUN_004A1D50(Value);
+    crc->FUN_004A1D70(AngleRotatedSideways);
+    crc->FUN_004A1D70(AngleRotatedForwards);
+    crc->FUN_004A1D70(RockingSidewaysPerFrame);
+    crc->FUN_004A1D70(RockingForwardsPerFrame);
+    crc->FUN_004A1CA0(IsSinking);
+    crc->FUN_004A1CA0(unknown_bool_3CF);
+    crc->FUN_004A1CA0(IsUseless);
+    crc->FUN_004A1CA0(HasBeenAttacked);
+    crc->FUN_004A1CA0(Cloakable);
+    crc->FUN_004A1CA0(IsPrimaryFactory);
+    crc->FUN_004A1CA0(Spawned);
+    crc->FUN_004A1CA0(IsInPlayfield);
+    crc->FUN_004A1CA0(IsTether);
+    crc->FUN_004A1CA0(IsAlternativeTether);
+    if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5) {
+        crc->FUN_004A1CA0(IsOwnedByCurrentPlayer);
+        crc->FUN_004A1CA0(DiscoveredByCurrentPlayer);
+        crc->FUN_004A1CA0(DiscoveredByComputer);
+    }
+    crc->FUN_004A1CA0(unknown_bool_41D);
+    crc->FUN_004A1D50(EMPLockRemaining);
+    crc->FUN_004A1D50(unknown_bool_41E);
+    crc->FUN_004A1D50(unknown_bool_41F);
+    crc->FUN_004A1C10(SightIncrease);
+    int count = CurrentTargets.Count;
+    crc->FUN_004A1D50(count);
+    for (int i = 0; i < count; i++) {
+        AbstractClass* target = CurrentTargets.Items[i];
+        int threat = CurrentTargetThreatValues.Items[i];
+        crc->FUN_004A1D50(target->vf_rtti_4());
+        crc->FUN_004A1D50(threat);
+    }
+    count = AttackedTargets.Count;
+    crc->FUN_004A1D50(count);
+    for (int j = 0; j < count; j++) {
+        crc->FUN_004A1D50(AttackedTargets.Items[j]->vf_rtti_4());
+    }
 }
 
 // FUNCTION: GAMEMD 0x70C5A0  (__thiscall)
@@ -4254,6 +4485,33 @@ void Abstract_0070D4A0::BecomeUntargetable()
         if (ref->At_40 == this)
             ref->At_40 = 0;
     }
+}
+
+// Unclaimed (below partial bar, 33.8%: retail reads the second coordinate through the returned
+// pointer instead of a copy), GAMEMD 0x70D590
+// Whether the weapon in this slot can reach the target's height: true with no weapon there or a
+// lobber weapon, and otherwise true when the target sits higher than this object by more than the
+// flat distance between them.
+bool TechnoClass::FUN_0070D590(int weaponIndex)
+{
+    WeaponStruct* weapon = vf_254(weaponIndex);
+    if (!weapon->WeaponType) {
+        return true;
+    }
+    bool result = weapon->WeaponType->Lobber;
+    if (!result && Target) {
+        CoordStruct here = Location;
+        int rise = Target->vf_18().Z - here.Z;
+        if (rise > 0) {
+            const CoordStruct& there = Target->vf_18();
+            int dx = Location.X - there.X;
+            int dy = Location.Y - there.Y;
+            if ((int)FUN_004CAC40((double)dy * dy + (double)dx * dx) < rise) {
+                result = true;
+            }
+        }
+    }
+    return result;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -5196,6 +5454,33 @@ void TechnoClass::FUN_0070F890(int duration)
         vf_242(0);
         vf_122(15, false);
     }
+}
+
+// Unclaimed (below partial bar, 12%: retail keeps four separate false-return epilogues where VC6
+// merges them), GAMEMD 0x70FB50
+// Whether a unit of this type may go looking for a bunker: the type is bunkerable and has a turret,
+// the primary weapon slot names a weapon, the type is not on speed type 3, and no parasite is
+// eating the unit (the foot test is the same null-safe cast the passenger walk uses).
+bool TechnoClass::FUN_0070FB50()
+{
+    if (!vf_33()->Bunkerable) {
+        return false;
+    }
+    if (!vf_33()->Turret) {
+        return false;
+    }
+    WeaponStruct* weapon = GetPrimaryWeapon();
+    if (!weapon || !weapon->WeaponType) {
+        return false;
+    }
+    if (vf_33()->SpeedType == 3) {
+        return false;
+    }
+    FootClass* foot = foot_cast_007104C0(this);
+    if (foot && foot->ParasiteEatingMe) {
+        return false;
+    }
+    return true;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

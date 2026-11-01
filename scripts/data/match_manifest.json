@@ -151184,5 +151184,41 @@
   "pct": 91.1,
   "best_pct": 91.1,
   "best_at": "0a155e47"
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x709820",
+  "sym": "?vf_231@TechnoClass@@UAE_NABUCoordStruct@@H@Z",
+  "len": "0x1ad",
+  "name": "TechnoClass::vf_231",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x70AF50",
+  "sym": "?vf_290@TechnoClass@@UAEXDDDPAVHouseClass@@H@Z",
+  "len": "0x280",
+  "name": "TechnoClass::vf_290",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x70BF50",
+  "sym": "?Load@TechnoClass@@UAGJPAUIStream@@@Z",
+  "len": "0x2fe",
+  "name": "TechnoClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/Techno.cpp",
+  "addr": "0x70C270",
+  "sym": "?vf_13@TechnoClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x330",
+  "name": "TechnoClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
