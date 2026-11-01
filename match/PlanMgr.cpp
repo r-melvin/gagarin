@@ -2055,6 +2055,56 @@ PlanningNodeClass* __stdcall FUN_00638F90(int x, int y)
     return 0;
 }
 
+// STRING: GAMEMD 0x836C6C -- "MSG:PlannerMaximum"
+extern const char STR_00836C6C[];
+
+// 0x63A230 expanded where it is not called.
+inline void PlanningNoticeOnce(const char* key)
+{
+    if (!DAT_00AC4C08) {
+        DAT_00AC4C08 = true;
+        int text = FUN_00734E60(key, 0, STR_00836BD4, 0xCA1);
+        FUN_00730A90(text, 0x1E0);
+        FUN_00750920(RulesInstance->ScoldSound, 1.0f, 0x2000, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x639130
+// PARTIAL: 86.7%, same instruction multiset; retail keeps the selection count in EBX and the fresh count in
+// EDI (this build swaps them, so the final sum lands in the other register), and its notice pushes the
+// pan after loading EDX.
+// Whether the selection may take new plans: false (with a notice, once) when the units waiting for a plan
+// together with those already counted for the current player exceed 128.
+bool __cdecl FUN_00639130()
+{
+    if (!DAT_00AC4CF4) {
+        return true;
+    }
+    int house = DAT_00A83D4C->ArrayIndex;
+    bool valid = house >= 0 && house < 24;
+    int pending = 0;
+    if (valid) {
+        pending = DAT_00AC4B84[house];
+    }
+    int count = DAT_00A8ECC8;
+    int fresh = 0;
+    int i;
+    for (i = 0; i < count; i++) {
+        ObjectClass* object = DAT_00A8ECBC[i];
+        if (PlanningIsTechno(object)) {
+            PlanningTokenClass* token = static_cast<TechnoClass*>(object)->FUN_00705D20();
+            if (token == 0 || token->Nodes.Count == 0) {
+                fresh++;
+            }
+        }
+    }
+    if (pending + fresh > 128) {
+        PlanningNoticeOnce(STR_00836C6C);
+        return false;
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x639210
 // The node on the global list whose first order points at `coord`, optionally filtered by its number
 // (-1 matches any) and by the owning player's index (-1 matches any).
@@ -2256,17 +2306,6 @@ extern const char STR_00836C34[];
 extern const char STR_00836C1C[];
 // STRING: GAMEMD 0x836C00 -- "MSG:PlanningModeNoScatter"
 extern const char STR_00836C00[];
-
-// 0x63A230 expanded where it is not called.
-inline void PlanningNoticeOnce(const char* key)
-{
-    if (!DAT_00AC4C08) {
-        DAT_00AC4C08 = true;
-        int text = FUN_00734E60(key, 0, STR_00836BD4, 0xCA1);
-        FUN_00730A90(text, 0x1E0);
-        FUN_00750920(RulesInstance->ScoldSound, 1.0f, 0x2000, 0);
-    }
-}
 
 // FUNCTION: GAMEMD 0x639FD0
 // The refusal notice of 0x63A280, then the planning sound again.
@@ -3209,6 +3248,8 @@ extern const char STR_00836B9C[] = "MSG:PostContinualCommand";
 extern const char STR_00836BB8[] = "MSG:PostTerminatingCommand";
 // GLOBAL: GAMEMD 0x836BD4
 extern const char STR_00836BD4[] = "D:\\ra2mdpost\\PlanMgr.cpp";
+// GLOBAL: GAMEMD 0x836C6C
+extern const char STR_00836C6C[] = "MSG:PlannerMaximum";
 // GLOBAL: GAMEMD 0x836C80
 extern const char STR_00836C80[] = "MSG:PlanningModeNoGuardArea";
 // GLOBAL: GAMEMD 0x836C00

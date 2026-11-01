@@ -151301,5 +151301,16 @@
   "name": "?FUN_00793440@@YIXXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/PlanMgr.cpp",
+  "addr": "0x639130",
+  "sym": "?FUN_00639130@@YA_NXZ",
+  "len": "0xd7",
+  "name": "?FUN_00639130@@YA_NXZ",
+  "status": "partial",
+  "pct": 86.7,
+  "best_pct": 86.7,
+  "best_at": "9380c16b"
  }
 ]
