@@ -27879,7 +27879,7 @@
   "len": "0x5B",
   "name": "IsLauncherRunning",
   "status": "partial",
-  "pct": 96,
+  "pct": 3.3,
   "best_pct": 96,
   "best_at": "cf203011"
  },
@@ -27890,7 +27890,7 @@
   "len": "0x114",
   "name": "NotifyLauncher",
   "status": "partial",
-  "pct": 98,
+  "pct": 5.1,
   "best_pct": 98,
   "best_at": "cf203011"
  },
@@ -27901,7 +27901,7 @@
   "len": "0x108",
   "name": "CheckProtectedData",
   "status": "partial",
-  "pct": 96,
+  "pct": 1.0,
   "best_pct": 96,
   "best_at": "cf203011"
  },
@@ -27912,7 +27912,7 @@
   "len": "0x58",
   "name": "DispatchLauncherMessage",
   "status": "partial",
-  "pct": 98,
+  "pct": 96.6,
   "best_pct": 98,
   "best_at": "cf203011"
  },
@@ -27923,7 +27923,7 @@
   "len": "0x65",
   "name": "ShutDown",
   "status": "partial",
-  "pct": 99,
+  "pct": 96.4,
   "best_pct": 99,
   "best_at": "cf203011"
  },
@@ -28206,7 +28206,7 @@
   "len": "0x196",
   "name": "CD::GetCDNumber",
   "status": "partial",
-  "pct": 98,
+  "pct": 1.4,
   "best_pct": 98,
   "best_at": "cf203011"
  },
@@ -59279,7 +59279,7 @@
   "len": "0x336",
   "name": "TabClass::vf_10",
   "status": "partial",
-  "pct": 96.9,
+  "pct": 49.4,
   "best_pct": 96.9,
   "best_at": "cf203011"
  },
@@ -72682,7 +72682,7 @@
   "len": "0xd2",
   "name": "MPCooperative::FUN_005C2D00",
   "status": "partial",
-  "pct": 56.0,
+  "pct": 5.7,
   "best_pct": 56.0,
   "best_at": "cf203011"
  },
@@ -96958,9 +96958,9 @@
   "len": "0x4E7",
   "name": "?FUN_00684C30@@YIXXZ",
   "status": "partial",
-  "pct": 18.4,
-  "best_pct": 18.4,
-  "best_at": "cf203011"
+  "pct": 18.7,
+  "best_pct": 18.7,
+  "best_at": "2bef252f"
  },
  {
   "tu": "match/Scenario.cpp",
@@ -103647,9 +103647,9 @@
   "len": "0x9aa",
   "name": "?FUN_0064C380@@YIHHHPAVConnManClass@@PBUScenarioTimer@@PAUObj_00646D00@@@Z",
   "status": "partial",
-  "pct": 1.4,
-  "best_pct": 1.4,
-  "best_at": "cf203011"
+  "pct": 1.7,
+  "best_pct": 1.7,
+  "best_at": "2bef252f"
  },
  {
   "tu": "match/Queue.cpp",
@@ -106209,7 +106209,7 @@
   "len": "0x1916",
   "name": "BulletClass::vf_23",
   "status": "partial",
-  "pct": 3.4,
+  "pct": 3.3,
   "best_pct": 3.4,
   "best_at": "cf203011"
  },
@@ -106229,9 +106229,9 @@
   "len": "0x13f",
   "name": "BulletClass::BulletClass",
   "status": "partial",
-  "pct": 49.3,
-  "best_pct": 49.3,
-  "best_at": "cf203011"
+  "pct": 54.8,
+  "best_pct": 54.8,
+  "best_at": "2bef252f"
  },
  {
   "tu": "match/trivial_tu238_methods.cpp",
