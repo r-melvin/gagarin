@@ -628,13 +628,13 @@ extern const char STR_008391A8[];
 // derived container/element identities are not inferred from this checksum.
 // Primary DAB0 reads Items+4,Count+10,Techno Location9C and Facing388/3A0.
 // GLOBAL: GAMEMD 0xA83DE8
-extern DynamicVectorClassLayout DAT_00A83DE8;
+extern DynamicVectorClass<InfantryClass*> DAT_00A83DE8;
 // GLOBAL: GAMEMD 0x8B4108
-extern DynamicVectorClassLayout DAT_008B4108;
+extern DynamicVectorClass<UnitClass*> DAT_008B4108;
 // GLOBAL: GAMEMD 0xA8EB40
-extern DynamicVectorClassLayout DAT_00A8EB40;
+extern DynamicVectorClass<BuildingClass*> DAT_00A8EB40;
 // GLOBAL: GAMEMD 0x87F778
-extern DynamicVectorClassLayout DAT_0087F778;
+extern DynamicVectorClass<ObjectClass*> DAT_0087F778;
 // GLOBAL: GAMEMD 0xA8B230
 extern ScenarioClass* DAT_00A8B230;
 // Declaration: GAMEMD 0x650A90 (decl; reloc) -- ECX signed frame modulo25664DE70.
@@ -645,7 +645,7 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, Location) == 0x9C);
 GG_STATIC_ASSERT(offsetof(HouseClass, MapIsClear) == 0x241);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x218);
 // GLOBAL: GAMEMD 0xA8E390
-extern DynamicVectorClassLayout DAT_00A8E390;
+extern DynamicVectorClass<AircraftClass*> DAT_00A8E390;
 // GLOBAL: GAMEMD 0xAFA26C
 extern int DAT_00AFA26C;
 // GLOBAL: GAMEMD 0xA83C9C
@@ -2578,7 +2578,7 @@ void FUN_0064DAB0()
     DAT_00AC51FC = 0;
     for (int nA83DE8 = 0; nA83DE8 < DAT_00A83DE8.Count; ++nA83DE8) {
         // Element prefix is proven by Location and canonical Facing accesses.
-        TechnoClass* item = static_cast<TechnoClass**>(DAT_00A83DE8.Items)[nA83DE8];
+        TechnoClass* item = DAT_00A83DE8.Items[nA83DE8];
         CoordStruct location = item->Location;
         DirStruct direction;
         unsigned heading;
@@ -2590,7 +2590,7 @@ void FUN_0064DAB0()
     }
     for (int n8B4108 = 0; n8B4108 < DAT_008B4108.Count; ++n8B4108) {
         // Element prefix is proven by Location and canonical Facing accesses.
-        TechnoClass* item = static_cast<TechnoClass**>(DAT_008B4108.Items)[n8B4108];
+        TechnoClass* item = DAT_008B4108.Items[n8B4108];
         CoordStruct location = item->Location;
         DirStruct direction;
         unsigned heading;
@@ -2604,7 +2604,7 @@ void FUN_0064DAB0()
     }
     for (int nA8EB40 = 0; nA8EB40 < DAT_00A8EB40.Count; ++nA8EB40) {
         // Element prefix is proven by Location and canonical Facing accesses.
-        TechnoClass* item = static_cast<TechnoClass**>(DAT_00A8EB40.Items)[nA8EB40];
+        TechnoClass* item = DAT_00A8EB40.Items[nA8EB40];
         CoordStruct location = item->Location;
         DirStruct direction;
         unsigned heading;
@@ -2628,7 +2628,7 @@ void FUN_0064DAB0()
         }
     }
     for (int n = 0; n < DAT_0087F778.Count; ++n) {
-        ObjectClass* item = static_cast<ObjectClass**>(DAT_0087F778.Items)[n];
+        ObjectClass* item = DAT_0087F778.Items[n];
         if (item->vf_11() == 4 && item->vf_rtti_4() == -2) continue;
         CoordStruct location = item->Location;
         int type = item->vf_11();
@@ -2799,54 +2799,85 @@ extern const char STR_00838EB0[];
 
 // Declaration: GAMEMD 0x5BC450 -- existing matched erased table getter.
 int FUN_005BC450(int);
+// Element types complete for the checksum dump below.
+#include "_layout/task_force_class.h"
+#include "_layout/script_type_class.h"
+#include "_layout/script_class.h"
+#include "_layout/tag_type_class.h"
+#include "_layout/trigger_class.h"
+#include "_layout/tiberium_class.h"
+#include "_layout/tag_class.h"
+#include "_layout/trigger_type_class.h"
+#include "_layout/bullet_class.h"
+#include "_layout/light_source_class.h"
+#include "_layout/team_type_class.h"
+#include "_layout/voxel_anim_type_class.h"
+#include "_layout/anim_class.h"
+#include "_layout/factory_class.h"
+#include "_layout/empulse_class.h"
+#include "_layout/tube_class.h"
+#include "_layout/side_class.h"
+#include "_layout/team_class.h"
+#include "_layout/building_light_class.h"
+#include "_layout/overlay_type_class.h"
+#include "_layout/warhead_type_class.h"
+#include "_layout/voxel_anim_class.h"
+#include "_layout/anim_type_class.h"
+#include "_layout/infantry_type_class.h"
+#include "taction_class_methods.h"
+#include "tevent_class_methods.h"
+#include "waypoint_path_class_methods.h"
+#include "smudge_type_class.h"
+#include "bullet_type_class.h"
+#include "weapon_type_class.h"
 // GLOBAL: GAMEMD 0x00A83C98
-extern DynamicVectorClassLayout DAT_00A83C98;
+extern DynamicVectorClass<HouseTypeClass*> DAT_00A83C98;
 // GLOBAL: GAMEMD 0x00A80228
-extern DynamicVectorClassLayout DAT_00A80228;
+extern DynamicVectorClass<HouseClass*> DAT_00A80228;
 // GLOBAL: GAMEMD 0x00A83CE0
-extern DynamicVectorClassLayout DAT_00A83CE0;
+extern DynamicVectorClass<UnitTypeClass*> DAT_00A83CE0;
 // GLOBAL: GAMEMD 0x00A8E348
-extern DynamicVectorClassLayout DAT_00A8E348;
+extern DynamicVectorClass<InfantryTypeClass*> DAT_00A8E348;
 // GLOBAL: GAMEMD 0x00A83C68
-extern DynamicVectorClassLayout DAT_00A83C68;
+extern DynamicVectorClass<BuildingTypeClass*> DAT_00A83C68;
 // GLOBAL: GAMEMD 0x00A8B218
-extern DynamicVectorClassLayout DAT_00A8B218;
+extern DynamicVectorClass<AircraftTypeClass*> DAT_00A8B218;
 // GLOBAL: GAMEMD 0x00A8E9A8
-extern DynamicVectorClassLayout DAT_00A8E9A8;
+extern DynamicVectorClass<AnimClass*> DAT_00A8E9A8;
 // GLOBAL: GAMEMD 0x008B4150
-extern DynamicVectorClassLayout DAT_008B4150;
+extern DynamicVectorClass<AnimTypeClass*> DAT_008B4150;
 // GLOBAL: GAMEMD 0x00A8E8D0
-extern DynamicVectorClassLayout DAT_00A8E8D0;
+extern DynamicVectorClass<TaskForceClass*> DAT_00A8E8D0;
 // GLOBAL: GAMEMD 0x00A8ECA0
-extern DynamicVectorClassLayout DAT_00A8ECA0;
+extern DynamicVectorClass<TeamTypeClass*> DAT_00A8ECA0;
 // GLOBAL: GAMEMD 0x008B40E8
-extern DynamicVectorClassLayout DAT_008B40E8;
+extern DynamicVectorClass<TeamClass*> DAT_008B40E8;
 // GLOBAL: GAMEMD 0x008B41C8
-extern DynamicVectorClassLayout DAT_008B41C8;
+extern DynamicVectorClass<ScriptTypeClass*> DAT_008B41C8;
 // GLOBAL: GAMEMD 0x008872B0
-extern DynamicVectorClassLayout DAT_008872B0;
+extern DynamicVectorClass<ScriptClass*> DAT_008872B0;
 // GLOBAL: GAMEMD 0x00B0E780
-extern DynamicVectorClassLayout DAT_00B0E780;
+extern DynamicVectorClass<TagTypeClass*> DAT_00B0E780;
 // GLOBAL: GAMEMD 0x00B0E720
-extern DynamicVectorClassLayout DAT_00B0E720;
+extern DynamicVectorClass<TagClass*> DAT_00B0E720;
 // GLOBAL: GAMEMD 0x008B4178
-extern DynamicVectorClassLayout DAT_008B4178;
+extern DynamicVectorClass<TriggerTypeClass*> DAT_008B4178;
 // GLOBAL: GAMEMD 0x00A8EAE8
-extern DynamicVectorClassLayout DAT_00A8EAE8;
+extern DynamicVectorClass<TriggerClass*> DAT_00A8EAE8;
 // GLOBAL: GAMEMD 0x00B0E658
-extern DynamicVectorClassLayout DAT_00B0E658;
+extern DynamicVectorClass<TActionClass*> DAT_00B0E658;
 // GLOBAL: GAMEMD 0x00B0F1A0
-extern DynamicVectorClassLayout DAT_00B0F1A0;
+extern DynamicVectorClass<TEventClass*> DAT_00B0F1A0;
 // GLOBAL: GAMEMD 0x00A83E30
-extern DynamicVectorClassLayout DAT_00A83E30;
+extern DynamicVectorClass<FactoryClass*> DAT_00A83E30;
 // GLOBAL: GAMEMD 0x00A8EB28
-extern DynamicVectorClassLayout DAT_00A8EB28;
+extern DynamicVectorClass<VoxelAnimTypeClass*> DAT_00A8EB28;
 // GLOBAL: GAMEMD 0x00887388
-extern DynamicVectorClassLayout DAT_00887388;
+extern DynamicVectorClass<VoxelAnimClass*> DAT_00887388;
 // GLOBAL: GAMEMD 0x008874C0
-extern DynamicVectorClassLayout DAT_008874C0;
+extern DynamicVectorClass<WarheadTypeClass*> DAT_008874C0;
 // GLOBAL: GAMEMD 0x00887568
-extern DynamicVectorClassLayout DAT_00887568;
+extern DynamicVectorClass<WeaponTypeClass*> DAT_00887568;
 // GLOBAL: GAMEMD 0x00A83D98
 extern DynamicVectorClassLayout DAT_00A83D98;
 // GLOBAL: GAMEMD 0x00A83DC8
@@ -2856,27 +2887,27 @@ extern DynamicVectorClassLayout DAT_00A80208;
 // GLOBAL: GAMEMD 0x00A83D68
 extern DynamicVectorClassLayout DAT_00A83D68;
 // GLOBAL: GAMEMD 0x00A83C80
-extern DynamicVectorClassLayout DAT_00A83C80;
+extern DynamicVectorClass<BulletTypeClass*> DAT_00A83C80;
 // GLOBAL: GAMEMD 0x00A8ED40
-extern DynamicVectorClassLayout DAT_00A8ED40;
+extern DynamicVectorClass<BulletClass*> DAT_00A8ED40;
 // GLOBAL: GAMEMD 0x00B72608
-extern DynamicVectorClassLayout DAT_00B72608;
+extern DynamicVectorClass<WaypointPathClass*> DAT_00B72608;
 // GLOBAL: GAMEMD 0x00A8EC18
-extern DynamicVectorClassLayout DAT_00A8EC18;
+extern DynamicVectorClass<SmudgeTypeClass*> DAT_00A8EC18;
 // GLOBAL: GAMEMD 0x00A83D80
-extern DynamicVectorClassLayout DAT_00A83D80;
+extern DynamicVectorClass<OverlayTypeClass*> DAT_00A83D80;
 // GLOBAL: GAMEMD 0x00ABCA10
-extern DynamicVectorClassLayout DAT_00ABCA10;
+extern DynamicVectorClass<LightSourceClass*> DAT_00ABCA10;
 // GLOBAL: GAMEMD 0x008B4190
-extern DynamicVectorClassLayout DAT_008B4190;
+extern DynamicVectorClass<BuildingLightClass*> DAT_008B4190;
 // GLOBAL: GAMEMD 0x008B4138
-extern DynamicVectorClassLayout DAT_008B4138;
+extern DynamicVectorClass<TubeClass*> DAT_008B4138;
 // GLOBAL: GAMEMD 0x008B4120
-extern DynamicVectorClassLayout DAT_008B4120;
+extern DynamicVectorClass<SideClass*> DAT_008B4120;
 // GLOBAL: GAMEMD 0x00B0F4E8
-extern DynamicVectorClassLayout DAT_00B0F4E8;
+extern DynamicVectorClass<TiberiumClass*> DAT_00B0F4E8;
 // GLOBAL: GAMEMD 0x008A3870
-extern DynamicVectorClassLayout DAT_008A3870;
+extern DynamicVectorClass<EMPulseClass*> DAT_008A3870;
 
 struct QueueTargetDiagnostic
 {
@@ -2906,18 +2937,31 @@ static inline void QueueDumpLogicType(FILE* file, ObjectClass* item, const char*
     fprintf(file, format, index, name);
 }
 
+template<class V>
 static inline void QueueDumpCRCEntries(FILE* file, Obj_004A1D30* checksum,
+                                       const V& objects,
+                                       bool skipRemoved)
+{
+    // Native vf13 on every element proves the shared AbstractClass checksum
+    // interface boundary.
+    for (int i = 0; i < objects.Count; ++i) {
+        AbstractClass* object = objects.Items[i];
+        if (skipRemoved && object->vf_rtti_4() == -2) continue;
+        object->vf_13(checksum);
+        // Native copies all12 bytes; the format prints the first DWORD.
+        fprintf(file, STR_008387E8, i, *checksum);
+    }
+}
+
+// Particle vectors are still declared through the layout view in this TU.
+static inline void QueueDumpCRCEntriesLayout(FILE* file, Obj_004A1D30* checksum,
                                        const DynamicVectorClassLayout& objects,
                                        bool skipRemoved)
 {
-    // Existing canonical opaque container prefix: Items+4, Count+10.
-    // Complete template specialization remains unknown; native vf13 on every
-    // element proves the shared AbstractClass checksum interface boundary.
     for (int i = 0; i < objects.Count; ++i) {
         AbstractClass* object = static_cast<AbstractClass**>(objects.Items)[i];
         if (skipRemoved && object->vf_rtti_4() == -2) continue;
         object->vf_13(checksum);
-        // Native copies all12 bytes; the format prints the first DWORD.
         fprintf(file, STR_008387E8, i, *checksum);
     }
 }
@@ -3003,7 +3047,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     DAT_00AC51FC = 0;
     fprintf(file, STR_00838D08, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_00A83DE8.Count; ++i) {
-        InfantryClass* item = static_cast<InfantryClass**>(DAT_00A83DE8.Items)[i];
+        InfantryClass* item = DAT_00A83DE8.Items[i];
         if (item->Owner != house) continue;
         CoordStruct location = item->Location;
         unsigned heading = QueueLogHeading(&item->PrimaryFacing);
@@ -3039,7 +3083,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     DAT_00AC51FC = 0;
     fprintf(file, STR_00838C60, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_008B4108.Count; ++i) {
-        UnitClass* item = static_cast<UnitClass**>(DAT_008B4108.Items)[i];
+        UnitClass* item = DAT_008B4108.Items[i];
         if (item->Owner != house) continue;
         CoordStruct location = item->Location;
         unsigned heading = QueueLogHeading(&item->PrimaryFacing);
@@ -3084,7 +3128,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     DAT_00AC51FC = 0;
     fprintf(file, STR_00838B90, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_00A8EB40.Count; ++i) {
-        BuildingClass* item = static_cast<BuildingClass**>(DAT_00A8EB40.Items)[i];
+        BuildingClass* item = DAT_00A8EB40.Items[i];
         if (item->Owner != house) continue;
         CoordStruct location = item->Location;
         unsigned heading = QueueLogHeading(&item->PrimaryFacing);
@@ -3116,7 +3160,7 @@ for (int houseIndex = 0; houseIndex < DAT_00A80238; ++houseIndex) {
     DAT_00AC51FC = 0;
     fprintf(file, STR_00838AFC, house->Type->ID.Data, house->ArrayIndex);
     for (int i = 0; i < DAT_00A8E390.Count; ++i) {
-        AircraftClass* item = static_cast<AircraftClass**>(DAT_00A8E390.Items)[i];
+        AircraftClass* item = DAT_00A8E390.Items[i];
         if (item->Owner != house) continue;
         CoordStruct location = item->Location;
         unsigned heading = QueueLogHeading(&item->PrimaryFacing);
@@ -3181,7 +3225,7 @@ logger->FUN_005BD1F0(STR_00838A6C, DAT_00AC51FC);
 fprintf(file, STR_00838A54);
 DAT_00AC51FC = 0;
 for (int i = 0; i < DAT_0087F778.Count; ++i) {
-    ObjectClass* item = static_cast<ObjectClass**>(DAT_0087F778.Items)[i];
+    ObjectClass* item = DAT_0087F778.Items[i];
     if (item->vf_11() == 4 && item->vf_rtti_4() == -2) continue;
     CoordStruct location = item->Location;
     int rtti = item->vf_11();
@@ -3423,28 +3467,28 @@ fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650259; Items0x00A83D9C, Count0x00A83DA8.
-QueueDumpCRCEntries(file, checksum, DAT_00A83D98, false);
+QueueDumpCRCEntriesLayout(file, checksum, DAT_00A83D98, false);
 fprintf(file, STR_00838244);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation006502e6; Items0x00A83DCC, Count0x00A83DD8.
-QueueDumpCRCEntries(file, checksum, DAT_00A83DC8, false);
+QueueDumpCRCEntriesLayout(file, checksum, DAT_00A83DC8, false);
 fprintf(file, STR_0083820C);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650373; Items0x00A8020C, Count0x00A80218.
-QueueDumpCRCEntries(file, checksum, DAT_00A80208, false);
+QueueDumpCRCEntriesLayout(file, checksum, DAT_00A80208, false);
 fprintf(file, STR_008381D0);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
 delete checksum;
 checksum = new Obj_004A1D30();
 // Loop allocation00650400; Items0x00A83D6C, Count0x00A83D78.
-QueueDumpCRCEntries(file, checksum, DAT_00A83D68, false);
+QueueDumpCRCEntriesLayout(file, checksum, DAT_00A83D68, false);
 fprintf(file, STR_008381A0);
 fprintf(file, STR_00838828);
 fprintf(file, STR_008387F8);
@@ -3575,7 +3619,7 @@ void FUN_00650A90(int index)
     for (int iA83DE8 = 0; iA83DE8 < DAT_00A83DE8.Count; ++iA83DE8) {
         // Specific Type offsets are confirmed in650A90; canonical complete
         // object spines provide the inherited fields, no new class view.
-        InfantryClass* item = static_cast<InfantryClass**>(DAT_00A83DE8.Items)[iA83DE8];
+        InfantryClass* item = DAT_00A83DE8.Items[iA83DE8];
         QueueLogTechno(out, item, false);
         out->unknown_04 = item->Type->ArrayIndex;
         out->unknown_67 = static_cast<unsigned char>(int(item->SpeedPercentage * DAT_007E1710));
@@ -3591,7 +3635,7 @@ void FUN_00650A90(int index)
     for (int i8B4108 = 0; i8B4108 < DAT_008B4108.Count; ++i8B4108) {
         // Specific Type offsets are confirmed in650A90; canonical complete
         // object spines provide the inherited fields, no new class view.
-        UnitClass* item = static_cast<UnitClass**>(DAT_008B4108.Items)[i8B4108];
+        UnitClass* item = DAT_008B4108.Items[i8B4108];
         QueueLogTechno(out, item, true);
         out->unknown_04 = static_cast<UnitTypeClass*>(item->Type)->ArrayIndex;
         out->unknown_67 = static_cast<unsigned char>(int(item->SpeedPercentage * DAT_007E1710));
@@ -3610,7 +3654,7 @@ void FUN_00650A90(int index)
     for (int iA8E390 = 0; iA8E390 < DAT_00A8E390.Count; ++iA8E390) {
         // Specific Type offsets are confirmed in650A90; canonical complete
         // object spines provide the inherited fields, no new class view.
-        AircraftClass* item = static_cast<AircraftClass**>(DAT_00A8E390.Items)[iA8E390];
+        AircraftClass* item = DAT_00A8E390.Items[iA8E390];
         QueueLogTechno(out, item, false);
         out->unknown_04 = static_cast<AircraftTypeClass*>(item->Type)->ArrayIndex;
         out->unknown_67 = static_cast<unsigned char>(int(item->SpeedPercentage * DAT_007E1710));
@@ -3626,7 +3670,7 @@ void FUN_00650A90(int index)
     for (int iA8EB40 = 0; iA8EB40 < DAT_00A8EB40.Count; ++iA8EB40) {
         // Specific Type offsets are confirmed in650A90; canonical complete
         // object spines provide the inherited fields, no new class view.
-        BuildingClass* item = static_cast<BuildingClass**>(DAT_00A8EB40.Items)[iA8EB40];
+        BuildingClass* item = DAT_00A8EB40.Items[iA8EB40];
         QueueLogTechno(out, item, false);
         out->unknown_04 = item->Type->ArrayIndex;
         out->unknown_20 = static_cast<unsigned char>(item->Owner->ArrayIndex);
@@ -3657,7 +3701,7 @@ void FUN_00650A90(int index)
     log.unknown_330 = objectOut;
     total = 0;
     for (int i = 0; i < DAT_0087F778.Count; ++i) {
-        ObjectClass* item = static_cast<ObjectClass**>(DAT_0087F778.Items)[i];
+        ObjectClass* item = DAT_0087F778.Items[i];
         if (item->vf_11() == 4 && item->vf_rtti_4() == -2) continue;
         QueueLogObject(objectOut, item);
         ++objectOut;
