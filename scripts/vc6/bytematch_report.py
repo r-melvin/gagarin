@@ -174,6 +174,15 @@ def build_report(manifest: list[dict[str, Any]], census: list[list[Any]], root: 
     return report, context
 
 
+def linked_code_bytes(link_progress: dict[str, Any]) -> int:
+    """Bytes of .text the M3 link takes from the project's own objects."""
+    m3 = link_progress.get("m3", {})
+    text = m3.get("sections", {}).get(".text")
+    if not m3.get("identical") or not text:   # no credit unless the M3 image equals retail
+        return 0
+    return int(text["project"])
+
+
 def export(root: Path, output: Path) -> tuple[dict[str, Any], dict[str, Any]]:
     manifest_path = root / "scripts/data/match_manifest.json"
     census_path = root / "scripts/data/function_extents.json"
@@ -182,6 +191,13 @@ def export(root: Path, output: Path) -> tuple[dict[str, Any], dict[str, Any]]:
     if census_doc.get("schema") != "gagarin/function_extents/1":
         raise ValueError("unsupported function extent census schema")
     report, context = build_report(manifest, census_doc.get("entries", []), root)
+    link_path = root / "scripts/data/link_progress.json"
+    if link_path.is_file():
+        linked = linked_code_bytes(json.loads(link_path.read_text(encoding="utf-8")))
+        total = report["measures"]
+        total["complete_code"] = min(linked, int(total["total_code"]))
+        finish_measures(total)
+        context["linked_code_bytes"] = int(total["complete_code"])
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     context_path = output.with_name("report-context.json")
@@ -202,6 +218,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"bytematch_report: {exc}", file=sys.stderr)
         return 2
     print(f"Wrote {output}")
+    m = report["measures"]
+    print(f"Matched: {m['matched_code_percent']:.2f}% of code ({m['matched_code']}/{m['total_code']} bytes); "
+          f"linked: {m['complete_code_percent']:.2f}% ({m['complete_code']} bytes from source in the M3 link)")
     print(f"Coverage: {context['manifest_claim_count']}/{context['census_function_count']} functions; "
           f"{context['matched_function_count']} matched; {context['length_override_count']} length overrides "
           f"({context['census_code_bytes']} census bytes, {context['effective_code_bytes']} effective bytes)")

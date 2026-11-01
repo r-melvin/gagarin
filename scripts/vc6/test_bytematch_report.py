@@ -96,5 +96,13 @@ class ByteMatchReportTests(unittest.TestCase):
             outside.unlink(missing_ok=True)
 
 
+    def test_linked_code_requires_identical_m3_image(self):
+        lp = {"m3": {"identical": True, "sections": {".text": {"project": 1234}}}}
+        self.assertEqual(report.linked_code_bytes(lp), 1234)
+        lp["m3"]["identical"] = False
+        self.assertEqual(report.linked_code_bytes(lp), 0)
+        self.assertEqual(report.linked_code_bytes({}), 0)
+
+
 if __name__ == "__main__":
     unittest.main()

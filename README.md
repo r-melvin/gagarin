@@ -77,7 +77,9 @@ manifest and function census. It does not run an objdiff comparison or replace
 the retail verification gate. Known functions use their manifest lengths;
 unclaimed functions use census lengths. `report-context.json` records any
 differences from the older census. Partial functions receive no matched credit,
-and every unit remains marked incomplete. Data progress is not measured.
+and every unit remains marked incomplete. The linked figure (`complete_code`) is the
+`.text` bytes the M3 link takes from source (`scripts/data/link_progress.json`),
+counted only while that image equals retail. Data progress is not measured.
 Source units follow the repository paths; unrecovered functions have no invented
 source path. Existing function address annotations support source lookup.
 Only JSON reports are uploaded; no game bytes, objects or toolchain files.
