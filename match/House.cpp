@@ -1424,7 +1424,7 @@ HouseClusterView::HouseClusterView(HouseTypeView* type)
       RatioAITriggerTeam(100),
       RatioTeamAircraft(75),
       RatioTeamInfantry(75),
-      RatioTeamBuildings(75),
+      RatioTeamUnits(75),
       BaseDefenseTeamCount(0),
       CurrentDropshipIndex(0),
       HasCloakingRanges(false),
@@ -3227,7 +3227,7 @@ void HouseClass::FUN_00500B40(CCINIClass* ini)
     // STRING: GAMEMD 0x824DEC
     RatioTeamInfantry = ini->ReadInteger(section, "RatioTeamInfantry", 0x4B);
     // STRING: GAMEMD 0x824DDC
-    RatioTeamBuildings = ini->ReadInteger(section, "RatioTeamUnits", 0x4B);
+    RatioTeamUnits = ini->ReadInteger(section, "RatioTeamUnits", 0x4B);
     SideIndex = Type->SideIndex;
     if (SideIndex == -1)
         SideIndex = 0;

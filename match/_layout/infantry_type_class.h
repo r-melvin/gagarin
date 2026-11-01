@@ -72,7 +72,7 @@ public:
     bool            NotHuman;            // +0xEAD
     bool            Ivan;                // +0xEAE
     unsigned char   _pad_EAF[1];         // +0xEAF
-    int             DirectionDistance;   // +0xEB0
+    int             DetectionDistance;   // +0xEB0
     bool            Occupier;            // +0xEB4
     bool            Assaulter;           // +0xEB5
     unsigned char   _pad_EB6[2];         // +0xEB6
@@ -106,7 +106,7 @@ GG_STATIC_ASSERT(offsetof(InfantryTypeClass, DeadBodies)        == 0xE50);
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, VoiceComment)      == 0xE88);
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, EnterWaterSound)   == 0xEA4);
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, Cyborg)            == 0xEAC);
-GG_STATIC_ASSERT(offsetof(InfantryTypeClass, DirectionDistance) == 0xEB0);
+GG_STATIC_ASSERT(offsetof(InfantryTypeClass, DetectionDistance) == 0xEB0);
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, HarvestRate)       == 0xEB8);
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, Fearless)          == 0xEBC);
 GG_STATIC_ASSERT(offsetof(InfantryTypeClass, JumpJetTurn)       == 0xECB);

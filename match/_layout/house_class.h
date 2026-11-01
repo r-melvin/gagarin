@@ -474,7 +474,7 @@ public:
     int    RatioAITriggerTeam;             // +0x565C ctor MOV [EBP+0x565C],0x64 @0x004F5BDD
     int    RatioTeamAircraft;              // +0x5660 ctor @0x004F5BE7
     int    RatioTeamInfantry;              // +0x5664 ctor @0x004F5BED
-    int    RatioTeamBuildings;             // +0x5668 ctor @0x004F5BF3
+    int    RatioTeamUnits;             // +0x5668 ctor @0x004F5BF3
     int    BaseDefenseTeamCount;           // +0x566C ctor @0x004F5BF9
     DropshipStruct DropshipData[3];        // +0x5670 .. 0x56F3 ctor LEA ESI @0x004F5BFF
     int    CurrentDropshipIndex;           // +0x56F4 ctor @0x004F5C22
