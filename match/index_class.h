@@ -52,16 +52,18 @@ extern "C" void  __cdecl FUN_007C8B48(void* base, unsigned int num,
 
 // Entry and section lookups use distinct binary-confirmed default cells.
 #include "_layout/ini_index_defaults.h"
+#include "_layout/index.h"
 
 // The primary instantiation. Data is modelled as a pointer; only its width
 // (four bytes, giving the 8-byte node stride) reaches the code.
-class IndexClass
+template<>
+class IndexClass<int, INIClass::INIEntry*>
 {
 public:
     struct NodeElement
     {
         int   ID;
-        void* Data;
+        INIClass::INIEntry* Data;
         // Empty no-throw constructor + array operator new: this is what makes
         // `new NodeElement[n]` compile to the bare allocation call with the
         // loop counter left as a dead local, as in retail.
@@ -73,11 +75,11 @@ public:
     IndexClass();
 
     // FUNCTION: GAMEMD 0x52B0A0
-    bool AddIndex(const int& id, void* const& data);
+    bool AddIndex(const int& id, INIClass::INIEntry* const& data);
     // FUNCTION: GAMEMD 0x52B170
     bool IsPresent(const int& id) const;
     // FUNCTION: GAMEMD 0x52B210
-    void* const& FetchIndex(const int& id) const;
+    INIClass::INIEntry* const& FetchIndex(const int& id) const;
     // FUNCTION: GAMEMD 0x52B2B0
     bool RemoveIndex(const int& id);
 
@@ -98,31 +100,33 @@ public:
     NodeElement* Archive;      // +0x10
 };
 
-GG_STATIC_ASSERT(offsetof(IndexClass, IndexTable) == 0x00 &&
-                 offsetof(IndexClass, IndexCount) == 0x04 &&
-                 offsetof(IndexClass, IndexSize) == 0x08 &&
-                 offsetof(IndexClass, IsSorted) == 0x0C &&
-                 offsetof(IndexClass, Archive) == 0x10 &&
-                 sizeof(IndexClass) == 0x14 &&
-                 sizeof(IndexClass::NodeElement) == 0x08 &&
-                 offsetof(IndexClass::NodeElement, ID) == 0x00 &&
-                 offsetof(IndexClass::NodeElement, Data) == 0x04);
+typedef IndexClass<int, INIClass::INIEntry*> IniEntryIndex;   // keeps the template commas out of the macro arguments
+GG_STATIC_ASSERT(offsetof(IniEntryIndex, IndexTable) == 0x00 &&
+                 offsetof(IniEntryIndex, IndexCount) == 0x04 &&
+                 offsetof(IniEntryIndex, IndexSize) == 0x08 &&
+                 offsetof(IniEntryIndex, IsSorted) == 0x0C &&
+                 offsetof(IniEntryIndex, Archive) == 0x10 &&
+                 sizeof(IniEntryIndex) == 0x14 &&
+                 sizeof(IniEntryIndex::NodeElement) == 0x08 &&
+                 offsetof(IniEntryIndex::NodeElement, ID) == 0x00 &&
+                 offsetof(IniEntryIndex::NodeElement, Data) == 0x04);
 
 // The second retail instantiation. Same layout, same bodies; only the two
 // lookups and the comparator have their own copies in the binary.
-class IndexClassB
+template<>
+class IndexClass<int, INIClass::INISection*>
 {
 public:
     struct NodeElement
     {
         int   ID;
-        void* Data;
+        INIClass::INISection* Data;
     };
 
     // FUNCTION: GAMEMD 0x52B390
     bool IsPresent(const int& id) const;
     // FUNCTION: GAMEMD 0x52B430
-    void* const& FetchIndex(const int& id) const;
+    INIClass::INISection* const& FetchIndex(const int& id) const;
 
     // FUNCTION: GAMEMD 0x52B720
     static int __cdecl Comparator(const void* ptr1, const void* ptr2);
@@ -137,10 +141,11 @@ public:
     NodeElement* Archive;      // +0x10
 };
 
-GG_STATIC_ASSERT(offsetof(IndexClassB, Archive) == 0x10 &&
-                 sizeof(IndexClassB) == 0x14 &&
-                 offsetof(IndexClassB::NodeElement, ID) == 0x00 &&
-                 offsetof(IndexClassB::NodeElement, Data) == 0x04 &&
-                 sizeof(IndexClassB::NodeElement) == 0x08);
+typedef IndexClass<int, INIClass::INISection*> IniSectionIndex;
+GG_STATIC_ASSERT(offsetof(IniSectionIndex, Archive) == 0x10 &&
+                 sizeof(IniSectionIndex) == 0x14 &&
+                 offsetof(IniSectionIndex::NodeElement, ID) == 0x00 &&
+                 offsetof(IniSectionIndex::NodeElement, Data) == 0x04 &&
+                 sizeof(IniSectionIndex::NodeElement) == 0x08);
 
 #endif  // GG_MATCH_CORE_INDEX_CLASS_H

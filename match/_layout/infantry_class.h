@@ -33,6 +33,7 @@ public:
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x521960
     virtual int vf_11();   // 11  0x523340
     virtual int vf_12();   // 12  0x5232F0
+    virtual void vf_9();   // 9   0x517CC0: TechnoClass::vf_9 (0x6F3F40) first, then the type-driven setup; the constructor calls it
     // FUNCTION: GAMEMD 0x005224E0 (decl; reloc)
     // InfantryClass::FUN_005224E0
     bool FUN_005224E0();

@@ -158,10 +158,10 @@ void ObjectTypeClass::FUN_005F8110()
         }
         if (dimension <= 8) dimension = 8;
         MaxDimension = dimension;
-        VoxelMainCache.ResetStorage();
-        VoxelTurretWeaponCache.ResetStorage();
-        VoxelShadowCache.ResetStorage();
-        VoxelTurretBarrelCache.ResetStorage();
+        VoxelMainCache.Clear();
+        VoxelTurretWeaponCache.Clear();
+        VoxelShadowCache.Clear();
+        VoxelTurretBarrelCache.Clear();
     }
 }
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 21 == 0xCA1);

@@ -14,18 +14,18 @@
 // RTTI type descriptor pushed as the fourth argument, so the eighteen differ in
 // exactly three bytes plus two call displacements.
 //
-// The whole lookup is inlined into every member: the empty-table test, the
-// one-entry archive cache, the lazy qsort that sorts the table on first use,
-// and a hand-rolled binary search over 8-byte nodes. cl threads the four
-// "not found" exits of that chain into a single error return, which is why
-// retail materialises `&IndexErrorValue` with `MOV EAX,imm32` and then shares
-// one `MOV EAX,[EAX]` with the found path: the inlined fetch yields an address
-// in both arms, so only one load is needed.
+// The whole lookup (IndexClass<int, AbstractClass*>::FetchIndex, _layout/index.h) is
+// inlined into every member: the empty-table test, the one-entry archive cache,
+// the lazy qsort that sorts the table on first use, and the binary search over
+// 8-byte nodes. cl threads the "not found" exits of that chain into a single
+// error return, which is why retail materialises the miss slot with `MOV
+// EAX,imm32` and then shares one `MOV EAX,[EAX]` with the found path.
 #ifndef GG_MATCH_CORE_ABSTRACT_INDEX_CAST_SWEEP_H
 #define GG_MATCH_CORE_ABSTRACT_INDEX_CAST_SWEEP_H
 
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
+#include "_layout/index.h"
 
 // MSVC6's RTTI helper, declared by hand rather than reached through a real
 // `dynamic_cast` so the five pushed arguments are spelled explicitly and no
@@ -33,13 +33,6 @@
 extern "C" void* __cdecl FUN_007CAAE4(void* object, long vfDelta,
                                       void* srcType, void* dstType,
                                       int isReference);   // GAMEMD 0x7CAAE4
-
-// CRT qsort, and the node comparator retail hands it.
-extern "C" void __cdecl FUN_007C8B48(void* base, unsigned int count,
-                                     unsigned int width,
-                                     int (__cdecl* compare)(const void*,
-                                                            const void*));
-extern "C" int __cdecl FUN_0041C610(const void* a, const void* b);  // GAMEMD 0x41C610
 
 // RTTI type descriptors. Only their addresses matter here; the payload is the
 // CRT's own type_info image and is never reconstructed.
@@ -82,16 +75,6 @@ extern char TypeDesc_TeamClass[];
 // GLOBAL: GAMEMD 0x842D80   .?AVUnitClass@@
 extern char TypeDesc_UnitClass[];
 
-// One 8-byte index node: the integer key at +0, the stored pointer at +4.
-struct IndexNode
-{
-    int   ID;      // +0x0000
-    void* Data;    // +0x0004
-};
-GG_STATIC_ASSERT(offsetof(IndexNode, ID) == 0x0);
-GG_STATIC_ASSERT(offsetof(IndexNode, Data) == 0x4);
-GG_STATIC_ASSERT(sizeof(IndexNode) == 0x8);
-
 class AbstractClass;
 class CellClass;
 struct CellStruct;
@@ -133,124 +116,46 @@ struct AbstractIdOwner
 GG_STATIC_ASSERT(offsetof(AbstractIdOwner, ID) == 0x0);
 GG_STATIC_ASSERT(offsetof(AbstractIdOwner, Rtti) == 0x4);
 
-// The index itself. Four of the five members are pinned by the four absolute
-// displacements the family touches - 0xB0E840, 0xB0E844, 0xB0E84C and 0xB0E850
-// - which places the never-read size field at 0xB0E848.
+// GLOBAL: GAMEMD 0xB0E840 -- defined in abstract_index_cast_sweep.cpp
+extern IndexClass<int, AbstractClass*> AbstractIndex;
+
+// One 8-byte index node: the integer key at +0, the stored pointer at +4.
+struct IndexNode
+{
+    int   ID;      // +0x0000
+    void* Data;    // +0x0004
+};
+GG_STATIC_ASSERT(offsetof(IndexNode, ID) == 0x0);
+GG_STATIC_ASSERT(offsetof(IndexNode, Data) == 0x4);
+GG_STATIC_ASSERT(sizeof(IndexNode) == 0x8);
+
+// The held second spelling of the lookup (0x6E6E20): retail expands the sort there and leaves the binary
+// search as a call to 0x523440, where the canonical IndexClass<int, AbstractClass*>::FetchIndex above
+// has it expanded. It stays on its former form (a view of the same global) until the compile context
+// that makes cl choose is understood.
 struct AbstractIndexTable
 {
     IndexNode* IndexTable;    // +0x0000   0xB0E840
     int        IndexCount;    // +0x0004   0xB0E844
-    int        IndexSize;     // +0x0008   0xB0E848  (never read by this family)
+    int        IndexSize;     // +0x0008   0xB0E848
     bool       IsSorted;      // +0x000C   0xB0E84C
     IndexNode* Archive;       // +0x0010   0xB0E850
 
-    // The file-scope object's constructor zeroes the five fields; its
-    // destructor frees the table and zeroes them again.
-    AbstractIndexTable() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(false), Archive(0) {}
-    ~AbstractIndexTable()
-    {
-        delete IndexTable;
-        IndexTable = 0;
-        IndexCount = 0;
-        IndexSize = 0;
-        IsSorted = false;
-        Archive = 0;
-    }
-
-    IndexNode* SearchSorted(const int* key);
-    void**     Fetch(const int& id);
-    // The second spelling of the lookup (0x6E6E20): presence test first, the
-    // binary search out of line in 0x523440.
     IndexNode* SearchForNode(const int& id);
     bool       IsPresent(const int& id);
     void**     FetchIndex(const int& id);
 };
-GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IndexTable) == 0x0);
-GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IndexCount) == 0x4);
-GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IndexSize) == 0x8);
-GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IsSorted) == 0xC);
-GG_STATIC_ASSERT(offsetof(AbstractIndexTable, Archive) == 0x10);
 GG_STATIC_ASSERT(sizeof(AbstractIndexTable) == 0x14);
 
-// GLOBAL: GAMEMD 0xB0E840 -- defined in abstract_index_cast_sweep.cpp
-extern AbstractIndexTable AbstractIndex;
-// GLOBAL: GAMEMD 0xB78828   the slot the fetch yields on a miss
+// GLOBAL: GAMEMD 0xB0E840 -- the same object, declared with the held view (bound by address)
+extern AbstractIndexTable AbstractIndexView;
+// GLOBAL: GAMEMD 0xB78828   the slot the held fetch yields on a miss
 extern void* IndexErrorValue;
 
-// The lookup. Three separate things have to be true for this to reproduce
-// retail's 71 instructions, and each was worth tens of points on its own:
-//
-//  1. The search loop lives in its own inline function with its own miss
-//     `return 0`. Written as one flat body, cl tail-merges the empty-table exit
-//     with the loop's miss exit, and because the merged block pops all three
-//     callee-saved registers, all three pushes move up into the prologue and
-//     the whole register colouring shifts (34.7%).
-//  2. The key is read before the table pointer. Retail's `MOV EBX,[ESI]` comes
-//     ahead of `MOV EDI,[IndexTable]`; declaring `base` first swaps them (97.2%).
-//  3. The labels run error, store, found in that order, so the loop's failure
-//     exit falls into the error block and the archive store sits in the cold
-//     tail past the return. Spelled `if (node == 0) goto error; ... goto found;`
-//     with `found` last, cl lays the store inline and the tail diverges (63.0%).
-inline IndexNode* AbstractIndexTable::SearchSorted(const int* key)
-{
-    int k = *key;
-    IndexNode* base = IndexTable;
-    int count;
-
-    for (count = IndexCount; count > 0; ) {
-        int half = count / 2;
-        IndexNode* mid = base + half;
-
-        if (mid->ID > k) {
-            count = half;
-        } else {
-            if (mid->ID == k) {
-                return mid;
-            }
-
-            base = mid + 1;
-            count = count - 1 - half;
-        }
-    }
-
-    return 0;
-}
-
-inline void** AbstractIndexTable::Fetch(const int& id)
-{
-    IndexNode* node;
-
-    if (IndexCount == 0) {
-        goto error;
-    }
-
-    node = Archive;
-
-    if (node != 0 && node->ID == id) {
-        goto found;
-    }
-
-    if (!IsSorted) {
-        FUN_007C8B48(IndexTable, IndexCount, sizeof(IndexNode), FUN_0041C610);
-        Archive = 0;
-        IsSorted = true;
-    }
-
-    node = SearchSorted(&id);
-
-    if (node != 0) {
-        goto store;
-    }
-
-error:
-    return &IndexErrorValue;
-
-store:
-    Archive = node;
-
-found:
-    return &node->Data;
-}
+// CRT qsort, and the node comparator retail hands it.
+extern "C" void __cdecl FUN_007C8B48(void* base, unsigned int count, unsigned int width,
+                                     int (__cdecl* compare)(const void*, const void*));
+extern "C" int __cdecl FUN_0041C610(const void* a, const void* b);  // GAMEMD 0x41C610
 
 // FUNCTION: GAMEMD 0x523440 (decl; reloc) -- __fastcall sorted search: table in ECX, count in EDX, key by pointer.
 IndexNode* FUN_00523440(IndexNode* table, int count, const IndexNode* key);
@@ -293,5 +198,6 @@ inline void** AbstractIndexTable::FetchIndex(const int& id)
     }
     return &IndexErrorValue;
 }
+
 
 #endif  // GG_MATCH_CORE_ABSTRACT_INDEX_CAST_SWEEP_H

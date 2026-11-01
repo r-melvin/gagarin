@@ -32,18 +32,21 @@
 #include "com_interfaces.h"   // IFlyControl
 
 class AircraftTypeClass;
+class HouseClass;
 
 class AircraftClass : public FootClass, public IFlyControl
 {
 public:
-    // CALLEE: GAMEMD 0x00413D20 (decl; reloc) -- constructor as the class factory calls it.
-    AircraftClass(int unknown_arg0 = 0, int unknown_arg1 = 0);
+    // CALLEE: GAMEMD 0x00413D20 (decl; reloc) -- the constructor, RET 8: the type is stored at +0x6C4 and the owner
+    // is handed to the FootClass constructor (0x4D31E0).
+    AircraftClass(AircraftTypeClass* type = 0, HouseClass* owner = 0);
     virtual HRESULT __stdcall Load(IStream* pStm);   // 5   0x41B430
     virtual ObjectTypeClass* vf_34(); // 34  0x41C200
     virtual const wchar_t* vf_36(); // 36  0x41C1D0
     virtual bool IsOnFloor() const; // 20 0x41B980
     virtual int vf_11();   // 11  0x41C180
     virtual int vf_12();   // 12  0x41C170
+    virtual void vf_9();   // 9   0x413F80: TechnoClass::vf_9 (0x6F3F40) first, then the type-driven setup; the constructor calls it
     // +0x6C0: IFlyControl vptr; ctor: MOV [ESI+0x6C0],0x7E2250 @0x00413DA2;
     //   RTTI COL base-offset 0x6C0 confirms it.
     virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);   // 0x414290

@@ -92,7 +92,7 @@ GG_STATIC_ASSERT(offsetof(ObjectTypeClass, VoxelMainCache) == 0x244);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, VoxelTurretWeaponCache) == 0x258);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, VoxelShadowCache) == 0x26C);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, VoxelTurretBarrelCache) == 0x280);
-GG_STATIC_ASSERT(sizeof(IndexClass) == 0x14);
+GG_STATIC_ASSERT(sizeof(IndexClass<int, void*>) == 0x14);
 
 // base Load, reconstruction of cache state, and optional alpha-image lookup.
 
@@ -543,7 +543,7 @@ HRESULT __stdcall ObjectTypeClass::Load(IStream* stream)
 {
     // Retail expands the first cleanup and calls the emitted entry for the
     // other three; both forms share the same field and ownership contract.
-    VoxelMainCache.ResetStorage();
+    VoxelMainCache.Clear();
     VoxelTurretWeaponCache.FUN_005F9B60();
     VoxelShadowCache.FUN_005F9B60();
     VoxelTurretBarrelCache.FUN_005F9B60();
@@ -568,10 +568,10 @@ HRESULT __stdcall ObjectTypeClass::Load(IStream* stream)
         Image = 0;
         ImageAllocated = false;
         AlphaImage = 0;
-        new (&VoxelMainCache) IndexClass;
-        new (&VoxelTurretWeaponCache) IndexClass;
-        new (&VoxelShadowCache) IndexClass;
-        new (&VoxelTurretBarrelCache) IndexClass;
+        new (&VoxelMainCache) IndexClass<int, void*>;
+        new (&VoxelTurretWeaponCache) IndexClass<int, void*>;
+        new (&VoxelShadowCache) IndexClass<int, void*>;
+        new (&VoxelTurretBarrelCache) IndexClass<int, void*>;
         MainVoxel.unknown_00 = 0;
         MainVoxel.HVAData = 0;
         TurretVoxel.unknown_00 = 0;

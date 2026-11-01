@@ -181,7 +181,7 @@ GG_STATIC_ASSERT(sizeof(RecoilData)                   == 0x20);
 class PlanningTokenClass;
 class AirstrikeClass;
 struct VoxelStruct;
-struct IndexClass;
+#include "index.h"
 struct Matrix3D;
 struct WeaponStruct;
 struct CellStruct;
@@ -450,7 +450,7 @@ public:
     virtual void vf_270(int a1, int a2);                           // 270 0x459E60
     virtual int vf_271(int a1);                                    // 271 0x70ED80
     virtual bool vf_272(ObjectClass* a1);                                 // 272 0x70EE30
-    virtual void vf_273(VoxelStruct* voxel, int a2, int tint, IndexClass* cache, RectangleStruct* clip, Point2D* point, Matrix3D* matrix, int a8, int a9, int a10); // 273 0x706640
+    virtual void vf_273(VoxelStruct* voxel, int a2, int tint, IndexClass<int, void*>* cache, RectangleStruct* clip, Point2D* point, Matrix3D* matrix, int a8, int a9, int a10); // 273 0x706640
     virtual void vf_274(int a1, int a2);                           // 274 0x6F60C0
     virtual void vf_275(int a1, int a2, int a3);                   // 275 0x6F64A0
     virtual void vf_276(int a1, int a2, int a3);                   // 276 0x709A90

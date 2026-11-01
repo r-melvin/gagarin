@@ -120,7 +120,7 @@
 // what leaves retail's dead "count minus one" local in the frame. Retail
 // has this expanded into AddIndex, with its own early return for a negative
 // amount surviving as the one conditional on the doubling path.
-inline bool IndexClass::IncreaseTableSize(int amount)
+inline bool IndexClass<int, INIClass::INIEntry*>::IncreaseTableSize(int amount)
 {
     if (amount < 0) return false;
 
@@ -147,12 +147,12 @@ inline bool IndexClass::IncreaseTableSize(int amount)
 // walks a shrinking (base, count) window rather than a pair of indices, which
 // is why retail advances a pointer and folds the count adjustment into one
 // add.
-inline IndexClass::NodeElement* IndexClass::SearchForNode(const int& id) const
+inline IndexClass<int, INIClass::INIEntry*>::NodeElement* IndexClass<int, INIClass::INIEntry*>::SearchForNode(const int& id) const
 {
     if (!IsSorted) {
         FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
-        ((IndexClass*)this)->Archive = 0;
-        ((IndexClass*)this)->IsSorted = true;
+        ((IndexClass<int, INIClass::INIEntry*>*)this)->Archive = 0;
+        ((IndexClass<int, INIClass::INIEntry*>*)this)->IsSorted = true;
     }
 
     int num = IndexCount;
@@ -178,7 +178,7 @@ inline IndexClass::NodeElement* IndexClass::SearchForNode(const int& id) const
 }
 
 // The lookup both IsPresent and FetchIndex are built from.
-inline bool IndexClass::IsPresentImpl(const int& id) const
+inline bool IndexClass<int, INIClass::INIEntry*>::IsPresentImpl(const int& id) const
 {
     if (IndexCount == 0) {
         return false;
@@ -191,19 +191,19 @@ inline bool IndexClass::IsPresentImpl(const int& id) const
     NodeElement* nodeptr = SearchForNode(id);
 
     if (nodeptr != 0) {
-        ((IndexClass*)this)->Archive = nodeptr;
+        ((IndexClass<int, INIClass::INIEntry*>*)this)->Archive = nodeptr;
         return true;
     }
 
     return false;
 }
 
-inline IndexClassB::NodeElement* IndexClassB::SearchForNode(const int& id) const
+inline IndexClass<int, INIClass::INISection*>::NodeElement* IndexClass<int, INIClass::INISection*>::SearchForNode(const int& id) const
 {
     if (!IsSorted) {
         FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
-        ((IndexClassB*)this)->Archive = 0;
-        ((IndexClassB*)this)->IsSorted = true;
+        ((IndexClass<int, INIClass::INISection*>*)this)->Archive = 0;
+        ((IndexClass<int, INIClass::INISection*>*)this)->IsSorted = true;
     }
 
     int num = IndexCount;
@@ -228,7 +228,7 @@ inline IndexClassB::NodeElement* IndexClassB::SearchForNode(const int& id) const
     return 0;
 }
 
-inline bool IndexClassB::IsPresentImpl(const int& id) const
+inline bool IndexClass<int, INIClass::INISection*>::IsPresentImpl(const int& id) const
 {
     if (IndexCount == 0) {
         return false;
@@ -241,7 +241,7 @@ inline bool IndexClassB::IsPresentImpl(const int& id) const
     NodeElement* nodeptr = SearchForNode(id);
 
     if (nodeptr != 0) {
-        ((IndexClassB*)this)->Archive = nodeptr;
+        ((IndexClass<int, INIClass::INISection*>*)this)->Archive = nodeptr;
         return true;
     }
 
@@ -1367,7 +1367,7 @@ char* __fastcall FUN_0052A9E0(unsigned char* line, int* eq, int* valueStart, int
 // An empty index owns nothing and is trivially "sorted": every field is zero,
 // which retail writes out of one zeroed register.
 // FUNCTION: GAMEMD 0x52B080
-IndexClass::IndexClass()
+IndexClass<int, INIClass::INIEntry*>::IndexClass()
 {
     IndexTable = 0;
     IndexCount = 0;
@@ -1382,7 +1382,7 @@ IndexClass::IndexClass()
 // the cached node is dropped because the table moved. The append itself leaves
 // the index unsorted.
 // FUNCTION: GAMEMD 0x52B0A0
-bool IndexClass::AddIndex(const int& id, void* const& data)
+bool IndexClass<int, INIClass::INIEntry*>::AddIndex(const int& id, INIClass::INIEntry* const& data)
 {
     if (IndexCount + 1 > IndexSize) {
         if (!IncreaseTableSize(IndexSize == 0 ? 10 : IndexSize)) {
@@ -1401,7 +1401,7 @@ bool IndexClass::AddIndex(const int& id, void* const& data)
 // Is the ID in the index? The cached node answers first; otherwise the table is
 // sorted if it is not already and searched. A hit re-arms the cache.
 // FUNCTION: GAMEMD 0x52B170
-bool IndexClass::IsPresent(const int& id) const
+bool IndexClass<int, INIClass::INIEntry*>::IsPresent(const int& id) const
 {
     return IsPresentImpl(id);
 }
@@ -1410,12 +1410,12 @@ bool IndexClass::IsPresent(const int& id) const
 // absent. The lookup is IsPresent expanded, so the cached node it leaves behind
 // is what the value is read from.
 // FUNCTION: GAMEMD 0x52B210
-void* const& IndexClass::FetchIndex(const int& id) const
+INIClass::INIEntry* const& IndexClass<int, INIClass::INIEntry*>::FetchIndex(const int& id) const
 {
     if (IsPresentImpl(id)) {
         return Archive->Data;
     }
-    return reinterpret_cast<void* const&>(DAT_00B78830);
+    return DAT_00B78830;
 }
 
 // The search key lives in a local node (retail's 8-byte frame is that node: the
@@ -1426,14 +1426,14 @@ void* const& IndexClass::FetchIndex(const int& id) const
 // tail is shifted down one slot, the count drops and the freed last slot is
 // zeroed. The cached node is dropped because everything past the hole moved.
 // FUNCTION: GAMEMD 0x52B2B0
-bool IndexClass::RemoveIndex(const int& id)
+bool IndexClass<int, INIClass::INIEntry*>::RemoveIndex(const int& id)
 {
     NodeElement* nodeptr = 0;
 
     if (IndexCount != 0) {
         if (!IsSorted) {
             FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement),
-                         &IndexClassB::Comparator);
+                         &IndexClass<int, INIClass::INISection*>::Comparator);
             Archive = 0;
             IsSorted = true;
         }
@@ -1485,19 +1485,19 @@ bool IndexClass::RemoveIndex(const int& id)
 
 // The second instantiation's lookup: the same body, its own comparator.
 // FUNCTION: GAMEMD 0x52B390
-bool IndexClassB::IsPresent(const int& id) const
+bool IndexClass<int, INIClass::INISection*>::IsPresent(const int& id) const
 {
     return IsPresentImpl(id);
 }
 
 // The second instantiation's value fetch.
 // FUNCTION: GAMEMD 0x52B430
-void* const& IndexClassB::FetchIndex(const int& id) const
+INIClass::INISection* const& IndexClass<int, INIClass::INISection*>::FetchIndex(const int& id) const
 {
     if (IsPresentImpl(id)) {
         return Archive->Data;
     }
-    return reinterpret_cast<void* const&>(DAT_00B7882C);
+    return DAT_00B7882C;
 }
 
 // FUNCTION: GAMEMD 0x52B4D0
@@ -1557,7 +1557,7 @@ int __cdecl FUN_0052B6A0(const void* a, const void* b);
 // remaining case is turned into -1 or 1 by a SETGE-and-fold idiom rather than
 // by two branches.
 // FUNCTION: GAMEMD 0x52B6A0
-int __cdecl IndexClass::Comparator(const void* ptr1, const void* ptr2)
+int __cdecl IndexClass<int, INIClass::INIEntry*>::Comparator(const void* ptr1, const void* ptr2)
 {
     if (*(const int*)ptr1 == *(const int*)ptr2) {
         return 0;
@@ -1569,7 +1569,7 @@ int __cdecl IndexClass::Comparator(const void* ptr1, const void* ptr2)
 }
 
 // FUNCTION: GAMEMD 0x52B720
-int __cdecl IndexClassB::Comparator(const void* ptr1, const void* ptr2)
+int __cdecl IndexClass<int, INIClass::INISection*>::Comparator(const void* ptr1, const void* ptr2)
 {
     if (*(const int*)ptr1 == *(const int*)ptr2) {
         return 0;

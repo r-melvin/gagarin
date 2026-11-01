@@ -114,10 +114,10 @@ public:
     ColorStruct   LineTrailColor;         // +0x23B  (3 bytes)
     unsigned char align_23E[2];           // +0x23E
     int           LineTrailColorDecrement;// +0x240
-    IndexClass    VoxelMainCache;         // +0x244  (0x14)
-    IndexClass    VoxelTurretWeaponCache; // +0x258  (0x14)
-    IndexClass    VoxelShadowCache;       // +0x26C  (0x14)
-    IndexClass    VoxelTurretBarrelCache; // +0x280  (0x14)
+    IndexClass<int, void*>    VoxelMainCache;         // +0x244  (0x14)
+    IndexClass<int, void*>    VoxelTurretWeaponCache; // +0x258  (0x14)
+    IndexClass<int, void*>    VoxelShadowCache;       // +0x26C  (0x14)
+    IndexClass<int, void*>    VoxelTurretBarrelCache; // +0x280  (0x14)
 };
 
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, RadialColor)            == 0x98);

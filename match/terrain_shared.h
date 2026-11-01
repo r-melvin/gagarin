@@ -61,7 +61,6 @@ struct TerrainIndexView
     bool Grow(int amount);
     void RemoveIndex(const int& id);
     void AddIndexOutOfLine(const int& id, void* const& data);
-    void AddIndexInline(const int& id, void* const& data);
 };
 GG_STATIC_ASSERT(sizeof(TerrainIndexView) == 0x14);
 // The packet IndexClass-shaped view aliases the existing IndexClass global; no storage is added.
@@ -101,30 +100,6 @@ inline void TerrainIndexView::AddIndexOutOfLine(const int& id, void* const& data
     if (IndexCount + 1 > IndexSize) {
         if (!Grow(IndexSize == 0 ? 10 : IndexSize))
             return;
-    }
-    IndexTable[IndexCount].ID = id;
-    IndexTable[IndexCount].Data = data;
-    IndexCount++;
-    IsSorted = false;
-}
-
-// The append, expanded in the constructors with the growth inline.
-inline void TerrainIndexView::AddIndexInline(const int& id, void* const& data)
-{
-    if (IndexCount + 1 > IndexSize) {
-        int amount = IndexSize == 0 ? 10 : IndexSize;
-        if (amount < 0)
-            return;
-        int newsize = IndexSize + amount;
-        TerrainIndexNode* table = new TerrainIndexNode[newsize];
-        if (table == 0)
-            return;
-        for (int i = 0; i < IndexCount; i++)
-            table[i] = IndexTable[i];
-        operator delete(IndexTable);
-        IndexTable = table;
-        IndexSize += amount;
-        Archive = 0;
     }
     IndexTable[IndexCount].ID = id;
     IndexTable[IndexCount].Data = data;

@@ -7,6 +7,9 @@
 // three constant or global tests. Each address was verified separately.
 
 #include <string.h>
+#include "_layout/index.h"
+
+class AbstractClass;
 
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
 //   out-of-line _$E thunk behind a jump).
@@ -33,7 +36,8 @@ extern int DAT_00B2FF78[0x4000];
 extern int DAT_00B1D5E0[0x4000];
 
 // FUNCTION: GAMEMD 0x0041C610
-int __cdecl FUN_0041C610(const void* a, const void* b)
+template<>
+int __cdecl IndexClass<int, AbstractClass*>::Comparator(const void* a, const void* b)
 {
     if (*(const int*)a == *(const int*)b)
         return 0;

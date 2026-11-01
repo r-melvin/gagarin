@@ -7748,83 +7748,83 @@
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B080",
-  "sym": "??0IndexClass@@QAE@XZ",
+  "sym": "??0?$IndexClass@HPAUINIEntry@INIClass@@@@QAE@XZ",
   "len": "0x13",
-  "name": "0IndexClass",
+  "name": "IndexClass<int,INIEntry*>::IndexClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B0A0",
-  "sym": "?AddIndex@IndexClass@@QAE_NABHABQAX@Z",
+  "sym": "?AddIndex@?$IndexClass@HPAUINIEntry@INIClass@@@@QAE_NABHABQAUINIEntry@INIClass@@@Z",
   "len": "0xc7",
-  "name": "IndexClass::AddIndex",
+  "name": "IndexClass<int,INIEntry*>::AddIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B170",
-  "sym": "?IsPresent@IndexClass@@QBE_NABH@Z",
+  "sym": "?IsPresent@?$IndexClass@HPAUINIEntry@INIClass@@@@QBE_NABH@Z",
   "len": "0x97",
-  "name": "IsPresent",
+  "name": "IndexClass<int,INIEntry*>::IsPresent",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B210",
-  "sym": "?FetchIndex@IndexClass@@QBEABQAXABH@Z",
+  "sym": "?FetchIndex@?$IndexClass@HPAUINIEntry@INIClass@@@@QBEABQAUINIEntry@INIClass@@ABH@Z",
   "len": "0x95",
-  "name": "FetchIndex",
+  "name": "IndexClass<int,INIEntry*>::FetchIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B2B0",
-  "sym": "?RemoveIndex@IndexClass@@QAE_NABH@Z",
+  "sym": "?RemoveIndex@?$IndexClass@HPAUINIEntry@INIClass@@@@QAE_NABH@Z",
   "len": "0xd5",
-  "name": "IndexClass::RemoveIndex",
+  "name": "IndexClass<int,INIEntry*>::RemoveIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B390",
-  "sym": "?IsPresent@IndexClassB@@QBE_NABH@Z",
+  "sym": "?IsPresent@?$IndexClass@HPAUINISection@INIClass@@@@QBE_NABH@Z",
   "len": "0x97",
-  "name": "IsPresent",
+  "name": "IndexClass<int,INISection*>::IsPresent",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B430",
-  "sym": "?FetchIndex@IndexClassB@@QBEABQAXABH@Z",
+  "sym": "?FetchIndex@?$IndexClass@HPAUINISection@INIClass@@@@QBEABQAUINISection@INIClass@@ABH@Z",
   "len": "0x95",
-  "name": "FetchIndex",
+  "name": "IndexClass<int,INISection*>::FetchIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B6A0",
-  "sym": "?Comparator@IndexClass@@SAHPBX0@Z",
+  "sym": "?Comparator@?$IndexClass@HPAUINIEntry@INIClass@@@@SAHPBX0@Z",
   "len": "0x22",
-  "name": "Comparator",
+  "name": "IndexClass<int,INIEntry*>::Comparator",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Ini.cpp",
   "addr": "0x52B720",
-  "sym": "?Comparator@IndexClassB@@SAHPBX0@Z",
+  "sym": "?Comparator@?$IndexClass@HPAUINISection@INIClass@@@@SAHPBX0@Z",
   "len": "0x22",
-  "name": "Comparator",
+  "name": "IndexClass<int,INISection*>::Comparator",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/AbsType.cpp",
@@ -9523,11 +9523,11 @@
  {
   "tu": "match/pair_vector_resize_methods.cpp",
   "addr": "0x41C500",
-  "sym": "?Grow@PairVector_0041C500@@QAE_NH@Z",
+  "sym": "?FUN_0041C500@?$IndexClass@HPAVAbstractClass@@@@QAE_NH@Z",
   "len": "0x86",
-  "name": "PairVector_0041C500::Grow",
+  "name": "IndexClass<int,AbstractClass*>::FUN_0041C500",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/paired_object_methods.cpp",
@@ -12314,9 +12314,9 @@
  {
   "tu": "match/sorted_pair_search_family_methods.cpp",
   "addr": "0x523440",
-  "sym": "?FUN_00523440@@YIPAUSortedEntry_004D2F00@@PAU1@HPBH@Z",
+  "sym": "?FUN_00523440@?$IndexClass@HPAVAbstractClass@@@@SIPAUNodeElement@1@PAU21@HPBU21@@Z",
   "len": "0x44",
-  "name": "FUN_00523440",
+  "name": "IndexClass<int,AbstractClass*>::FUN_00523440",
   "status": "matched",
   "pct": 100.0
  },
@@ -77348,9 +77348,9 @@
  {
   "tu": "match/global_leaf_helper_methods.cpp",
   "addr": "0x41C610",
-  "sym": "?FUN_0041C610@@YAHPBX0@Z",
+  "sym": "?Comparator@?$IndexClass@HPAVAbstractClass@@@@SAHPBX0@Z",
   "len": "0x22",
-  "name": "FUN_0041C610",
+  "name": "IndexClass<int,AbstractClass*>::Comparator",
   "status": "matched",
   "pct": 100.0
  },
@@ -87707,9 +87707,9 @@
  {
   "tu": "match/Tactical.cpp",
   "addr": "0x6DA350",
-  "sym": "_$E56",
+  "sym": "_$E55",
   "len": "0x1",
-  "name": "_$E6",
+  "name": "_$E55",
   "status": "matched",
   "pct": 100.0
  },
@@ -87725,18 +87725,18 @@
  {
   "tu": "match/Tactical.cpp",
   "addr": "0x6DC400",
-  "sym": "_$E61",
+  "sym": "_$E60",
   "len": "0x1",
-  "name": "_$E11",
+  "name": "_$E60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/Tactical.cpp",
   "addr": "0x6DC410",
-  "sym": "_$E60",
+  "sym": "_$E59",
   "len": "0x1",
-  "name": "_$E10",
+  "name": "_$E59",
   "status": "matched",
   "pct": 100.0
  },
@@ -88517,9 +88517,9 @@
  {
   "tu": "match/tu243_terrain_type_class.cpp",
   "addr": "0x71DE90",
-  "sym": "_$E13",
+  "sym": "_$E12",
   "len": "0x1",
-  "name": "atexit cleanup",
+  "name": "_$E12",
   "status": "matched",
   "pct": 100.0
  },
@@ -88544,9 +88544,9 @@
  {
   "tu": "match/tu243_terrain_type_class.cpp",
   "addr": "0x71D580",
-  "sym": "_$E10",
+  "sym": "_$E9",
   "len": "0x4fd",
-  "name": "static initialiser (TerrainFoundationTable)",
+  "name": "_$E9",
   "status": "matched",
   "pct": 100.0
  },
@@ -106848,11 +106848,11 @@
  {
   "tu": "match/index_class_reset_005f9b60.cpp",
   "addr": "0x5F9B60",
-  "sym": "?FUN_005F9B60@IndexClass@@QAEXXZ",
+  "sym": "?FUN_005F9B60@?$IndexClass@HPAX@@QAEXXZ",
   "len": "0x20",
-  "name": "IndexClass::FUN_005F9B60",
+  "name": "IndexClass<int,void*>::FUN_005F9B60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/object_type_class_slots.cpp",
@@ -107817,7 +107817,7 @@
  {
   "tu": "match/foot_class_small_slots.cpp",
   "addr": "0x4DAF10",
-  "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAUIndexClass@@PAURectangleStruct@@PAVPoint2D@@PAUMatrix3D@@HHH@Z",
+  "sym": "?vf_324@FootClass@@UAEXPAUVoxelStruct@@HHPAV?$IndexClass@HPAX@@PAURectangleStruct@@PAVPoint2D@@PAUMatrix3D@@HHH@Z",
   "len": "0xa9",
   "name": "FootClass::vf_324",
   "status": "partial",

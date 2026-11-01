@@ -15,6 +15,7 @@
 
 #include "color_struct.h"
 #include "voxel_resource_data.h"
+#include "index.h"
 #include <new.h>
 
 // VoxelStruct — a voxel model + its HVA animation (two 32-bit pointers).
@@ -50,43 +51,8 @@ struct AbilitiesStruct
 GG_STATIC_ASSERT(offsetof(AbilitiesStruct, _raw) == 0x00);
 GG_STATIC_ASSERT(sizeof(AbilitiesStruct) == 0x12);
 
-// IndexClass — key->index hash/lookup object (size = 0x14, independent
-// of the Key/Value template; the NodeElement sizing affects only the heap
-// table, not the object). Used by ObjectTypeClass voxel caches. Pointer members
-// modelled as real pointers (decomp shows truncation at IndexTable/Archive).
-struct IndexClass
-{
-    // ObjectType no-init5F7361..5F73D3: four empty cache records.
-    IndexClass() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(0), Archive(0) {}
-    // gagarin helper for the common inline cleanup seen in native Load and
-    // destruction. The separately emitted reset entry follows below.
-    void ResetStorage()
-    {
-        ::operator delete(IndexTable);
-        IndexTable = 0;
-        IndexCount = 0;
-        IndexSize = 0;
-        IsSorted = 0;
-        Archive = 0;
-    }
-    // Native ObjectType destruction 0x5F749C..0x5F7544 expands the same
-    // cleanup for four cache members, in reverse declaration order.
-    ~IndexClass() { ResetStorage(); }
-    // FUNCTION: GAMEMD 0x5F9B60
-    void FUN_005F9B60();
-    void*         IndexTable;   // +0x00  (NodeElement array on the heap)
-    int           IndexCount;   // +0x04
-    int           IndexSize;    // +0x08
-    unsigned char IsSorted;     // +0x0C  (bool)
-    unsigned char _pad_0D[3];   // +0x0D
-    void*         Archive;      // +0x10  (last-found cache slot)
-};
+// The voxel caches are IndexClass instantiations (see index.h); only the node width reaches the code,
+// so the value type is a four-byte placeholder.
 
-GG_STATIC_ASSERT(offsetof(IndexClass, IndexTable) == 0x00);
-GG_STATIC_ASSERT(offsetof(IndexClass, IndexCount) == 0x04);
-GG_STATIC_ASSERT(offsetof(IndexClass, IndexSize)  == 0x08);
-GG_STATIC_ASSERT(offsetof(IndexClass, IsSorted)   == 0x0C);
-GG_STATIC_ASSERT(offsetof(IndexClass, Archive)    == 0x10);
-GG_STATIC_ASSERT(sizeof(IndexClass)               == 0x14);
 
 #endif  // GG_MATCH_LAYOUT_COMPONENTS_H

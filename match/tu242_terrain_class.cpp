@@ -100,7 +100,7 @@ TerrainClass::TerrainClass(TerrainTypeClass* type, const CellStruct* cell)
     SetRate(0);
     MapObjAddItem(&TerrainArray, this);
     int id = vf_rtti_4();
-    TerrainAbstractIndex.AddIndexInline(id, this);
+    AbstractIndex.AddIndex(id, this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -110,7 +110,7 @@ TerrainClass::TerrainClass()
 {
     MapObjAddItem(&TerrainArray, this);
     int id = vf_rtti_4();
-    TerrainAbstractIndex.AddIndexInline(id, this);
+    AbstractIndex.AddIndex(id, this);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -8,16 +8,9 @@
 // stored AbstractClass pointer to its own target type. Only the target RTTI
 // type descriptor differs between them.
 //
-// The lookup body that makes these match is in the header; the three phrasing
-// levers it needed are documented there. Getting from the first working shape
-// to 100% took five failed spellings first -- structured if/early-return
-// (10.5%), a flat goto-threaded body (34.7%), all six declaration orders of
-// {node, base, count} (34.7% each), the lookup as a free function rather than a
-// member (34.7%), the key passed by value (2.8%) and the whole thing flattened
-// into the caller with a `slot` local (1.4%). The residual at 34.7% looked like
-// a pure register-colouring tie-break, and it was, but the cause was source
-// visible: cl merging two identical `return 0` exits. Splitting the search into
-// its own inline function un-merged them and the colouring fell into line.
+// The lookup is IndexClass<int, AbstractClass*>::FetchIndex (_layout/index.h). 0x6E6E20 is the one
+// member where retail leaves the binary search as a call to 0x523440; it keeps the held view
+// (AbstractIndexTable, abstract_index_cast_sweep.h) while the rest have the search expanded.
 
 // VC6FLAGS: /nologo /c /O2 /Gr /GR /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: retail's __xc entries point straight at the initialiser bodies (no
@@ -48,7 +41,7 @@ double DAT_00B0E888 = 1.0 / DAT_00B0E8A0;
 TuningCoordInit DAT_00B0E890(128, 128, 0);
 // SYNTHETIC: GAMEMD 0x6E6A50 -- initialiser of AbstractIndex, registers the exit stub
 // SYNTHETIC: GAMEMD 0x6E6A80 -- exit stub of AbstractIndex (destructor)
-AbstractIndexTable AbstractIndex;
+IndexClass<int, AbstractClass*> AbstractIndex;
 
 // GLOBAL: GAMEMD 0xB0E830 -- this unit's copy of the "no cell" value.
 extern CellStruct DAT_00B0E830;
@@ -99,7 +92,7 @@ AbstractIdOwner::AbstractIdOwner(const CoordStruct& coord)
 void* AbstractIdOwner::AsAbstractTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_AbstractTypeClass, 0);
     }
@@ -111,7 +104,7 @@ void* AbstractIdOwner::AsAbstractTypeClass()
 void* AbstractIdOwner::AsTagClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TagClass, 0);
     }
@@ -123,7 +116,7 @@ void* AbstractIdOwner::AsTagClass()
 void* AbstractIdOwner::AsTagTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TagTypeClass, 0);
     }
@@ -135,7 +128,7 @@ void* AbstractIdOwner::AsTagTypeClass()
 AbstractClass* AbstractIdOwner::FUN_006E6E20()
 {
     if (Rtti == 0x34) {
-        return (AbstractClass*)FUN_007CAAE4(*AbstractIndex.FetchIndex(ID), 0,
+        return (AbstractClass*)FUN_007CAAE4(*AbstractIndexView.FetchIndex(ID), 0,
                                             TypeDesc_AbstractClass,
                                             TypeDesc_AbstractClass, 0);
     }
@@ -152,7 +145,7 @@ AbstractClass* AbstractIdOwner::FUN_006E6E20()
 void* TargetClass::FUN_006E6F20()
 {
     if (RTTI == 0x34) {
-        return FUN_0040DD70(*AbstractIndex.Fetch(ID));
+        return FUN_0040DD70(AbstractIndex.FetchIndex(ID));
     }
     return 0;
 }
@@ -161,7 +154,7 @@ void* TargetClass::FUN_006E6F20()
 void* AbstractIdOwner::AsObjectClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_ObjectClass, 0);
     }
@@ -173,7 +166,7 @@ void* AbstractIdOwner::AsObjectClass()
 void* AbstractIdOwner::AsFootClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_FootClass, 0);
     }
@@ -185,7 +178,7 @@ void* AbstractIdOwner::AsFootClass()
 void* AbstractIdOwner::AsTriggerClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TriggerClass, 0);
     }
@@ -197,7 +190,7 @@ void* AbstractIdOwner::AsTriggerClass()
 void* AbstractIdOwner::AsHouseClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_HouseClass, 0);
     }
@@ -209,7 +202,7 @@ void* AbstractIdOwner::AsHouseClass()
 void* AbstractIdOwner::AsTechnoTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TechnoTypeClass, 0);
     }
@@ -221,7 +214,7 @@ void* AbstractIdOwner::AsTechnoTypeClass()
 void* AbstractIdOwner::AsTriggerTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TriggerTypeClass, 0);
     }
@@ -233,7 +226,7 @@ void* AbstractIdOwner::AsTriggerTypeClass()
 void* AbstractIdOwner::AsTeamTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TeamTypeClass, 0);
     }
@@ -245,7 +238,7 @@ void* AbstractIdOwner::AsTeamTypeClass()
 void* AbstractIdOwner::AsTerrainClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TerrainClass, 0);
     }
@@ -257,7 +250,7 @@ void* AbstractIdOwner::AsTerrainClass()
 void* AbstractIdOwner::AsBulletClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_BulletClass, 0);
     }
@@ -269,7 +262,7 @@ void* AbstractIdOwner::AsBulletClass()
 void* AbstractIdOwner::AsAnimClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_AnimClass, 0);
     }
@@ -281,7 +274,7 @@ void* AbstractIdOwner::AsAnimClass()
 void* AbstractIdOwner::AsTeamClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TeamClass, 0);
     }
@@ -293,7 +286,7 @@ void* AbstractIdOwner::AsTeamClass()
 void* AbstractIdOwner::AsInfantryClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_InfantryClass, 0);
     }
@@ -305,7 +298,7 @@ void* AbstractIdOwner::AsInfantryClass()
 void* AbstractIdOwner::AsUnitClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_UnitClass, 0);
     }
@@ -317,7 +310,7 @@ void* AbstractIdOwner::AsUnitClass()
 void* AbstractIdOwner::AsBuildingClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_BuildingClass, 0);
     }
@@ -329,7 +322,7 @@ void* AbstractIdOwner::AsBuildingClass()
 void* AbstractIdOwner::AsAircraftClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
+        return FUN_007CAAE4(AbstractIndex.FetchIndex(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_AircraftClass, 0);
     }

@@ -16,12 +16,35 @@
 // copy. See GG_SORTED_PAIR_SEARCH_BODY in the header.
 
 #include "sorted_pair_search_family_methods.h"
+#include "_layout/index.h"
+
+class AbstractClass;
 
 // FUNCTION: GAMEMD 0x004D2F00
 GG_SORTED_PAIR_SEARCH_BODY(004D2F00, SortedEntry_004D2F00, int)
 
 // FUNCTION: GAMEMD 0x00523440
-GG_SORTED_PAIR_SEARCH_BODY(00523440, SortedEntry_004D2F00, int)
+// The binary search of IndexClass<int, AbstractClass*> (see _layout/index.h) over its sorted node array, out of line.
+template<>
+IndexClass<int, AbstractClass*>::NodeElement* __fastcall
+IndexClass<int, AbstractClass*>::FUN_00523440(NodeElement* base, int count, const NodeElement* key)
+{
+    int n;
+    for (n = count; n > 0;) {
+        int half = n / 2;
+        NodeElement* mid = base + half;
+        if (mid->ID > key->ID) {
+            n = half;
+        } else {
+            if (mid->ID == key->ID) {
+                return mid;
+            }
+            base = mid + 1;
+            n = n - 1 - half;
+        }
+    }
+    return 0;
+}
 
 // FUNCTION: GAMEMD 0x0052B6D0
 GG_SORTED_PAIR_SEARCH_BODY(0052B6D0, SortedEntry_004D2F00, int)

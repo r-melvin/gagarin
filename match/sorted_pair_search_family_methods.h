@@ -79,8 +79,6 @@ ENTRY* __fastcall FUN_##ADDR(ENTRY* base, int count, const KEYTYPE* key)  \
 
 // FUNCTION: GAMEMD 0x004D2F00
 SortedEntry_004D2F00* FUN_004D2F00(SortedEntry_004D2F00* base, int count, const int* key);
-// FUNCTION: GAMEMD 0x00523440
-SortedEntry_004D2F00* FUN_00523440(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x0052B6D0
 SortedEntry_004D2F00* FUN_0052B6D0(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x0052B750
