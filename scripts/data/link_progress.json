@@ -2,17 +2,17 @@
  "m0": {
   "by_kind": {
    "crt": 25,
-   "data": 2584,
-   "function": 3879,
+   "data": 2540,
+   "function": 3941,
    "import": 0,
    "vtable": 67
   },
   "duplicate_definitions": 0,
   "objects": 1585,
-  "unresolved": 6555
+  "unresolved": 6573
  },
  "m1": {
-  "bytes_at_retail_address": 3820307,
+  "bytes_at_retail_address": 3820232,
   "drift_events": 0,
   "duplicates": 0,
   "entries_at_retail_address": 19218,
@@ -24,16 +24,16 @@
     "entries_at_retail_address": 73
    },
    "matched": {
-    "bytes": 1111606,
-    "bytes_at_retail_address": 1111606,
-    "entries": 15640,
-    "entries_at_retail_address": 15640
+    "bytes": 1116107,
+    "bytes_at_retail_address": 1116107,
+    "entries": 15648,
+    "entries_at_retail_address": 15648
    },
    "stub": {
-    "bytes": 2708701,
-    "bytes_at_retail_address": 2708701,
-    "entries": 3578,
-    "entries_at_retail_address": 3578
+    "bytes": 2704125,
+    "bytes_at_retail_address": 2704125,
+    "entries": 3570,
+    "entries_at_retail_address": 3570
    }
   },
   "entry_point_delta": 0,
@@ -41,11 +41,11 @@
   "filler_entries": 73,
   "filler_entries_at_retail_address": 73,
   "link_exit_code": 0,
-  "matched_at_retail_address": 15640,
-  "matched_functions": 15640,
-  "ordered_bytes": 3820307,
+  "matched_at_retail_address": 15648,
+  "matched_functions": 15648,
+  "ordered_bytes": 3820232,
   "ordered_entries": 19218,
-  "stubs_placed": 3578,
+  "stubs_placed": 3570,
   "unresolved_after_stubs": 0
  },
  "m2": {
@@ -83,8 +83,8 @@
     "diff_bytes": 0,
     "file": 442368,
     "library": 0,
-    "project": 2693703,
-    "retail": 876957,
+    "project": 2693847,
+    "retail": 876813,
     "va": 8462336,
     "vsize": 3570660
    },
@@ -92,8 +92,8 @@
     "diff_bytes": 0,
     "file": 196724,
     "library": 0,
-    "project": 116088,
-    "retail": 80636,
+    "project": 116932,
+    "retail": 79792,
     "va": 8261632,
     "vsize": 196724
    },
@@ -110,8 +110,8 @@
     "diff_bytes": 0,
     "file": 4060045,
     "library": 87227,
-    "project": 1245023,
-    "retail": 2727795,
+    "project": 1249599,
+    "retail": 2723219,
     "va": 4198400,
     "vsize": 4060045
    }
@@ -119,8 +119,8 @@
   "total": {
    "diff_bytes": 0,
    "library": 87227,
-   "project": 4148130,
-   "retail": 4155940,
+   "project": 4153694,
+   "retail": 4150376,
    "vsize": 8391297
   }
  },
@@ -157,9 +157,9 @@
   }
  ],
  "snapshots": {
-  "m0": "78a90a90",
-  "m1": "78a90a90",
+  "m0": "de3f0eed",
+  "m1": "de3f0eed",
   "m2": "ac2bd917",
-  "m3": "78a90a90"
+  "m3": "de3f0eed"
  }
 }
