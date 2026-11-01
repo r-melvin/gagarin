@@ -148007,7 +148007,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/cpu_detect_object.asm",
+  "tu": "match/wwlib/asm/cpu_detect_object.asm",
   "addr": "0x7C5F3D",
   "sym": "_FUN_007C5F3D",
   "len": "0xc2",
@@ -148016,7 +148016,7 @@
   "pct": 100
  },
  {
-  "tu": "match/asm/cpu_detect_object.asm",
+  "tu": "match/wwlib/asm/cpu_detect_object.asm",
   "addr": "0x7C5FFF",
   "sym": "_FUN_007C5FFF",
   "len": "0x65",
@@ -148025,7 +148025,7 @@
   "pct": 100
  },
  {
-  "tu": "match/asm/cpu_detect_object.asm",
+  "tu": "match/wwlib/asm/cpu_detect_object.asm",
   "addr": "0x7C6064",
   "sym": "_FUN_007C6064",
   "len": "0xe",
@@ -148034,7 +148034,7 @@
   "pct": 100
  },
  {
-  "tu": "match/asm/cpu_detect_object.asm",
+  "tu": "match/wwlib/asm/cpu_detect_object.asm",
   "addr": "0x7C6072",
   "sym": "_FUN_007C6072",
   "len": "0x46",
@@ -148574,7 +148574,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/rect_clip_object.asm",
+  "tu": "match/wwlib/asm/rect_clip_object.asm",
   "addr": "0x7C5DB0",
   "sym": "_FUN_007C5DB0",
   "len": "0xce",
@@ -148583,7 +148583,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/rect_clip_object.asm",
+  "tu": "match/wwlib/asm/rect_clip_object.asm",
   "addr": "0x7C5E7E",
   "sym": "_FUN_007C5E7E",
   "len": "0x60",
@@ -148592,7 +148592,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/depth_tested_span_draw_object.asm",
+  "tu": "match/wwlib/asm/depth_tested_span_draw_object.asm",
   "addr": "0x7C60C0",
   "sym": "_FUN_007C60C0",
   "len": "0x10f",
@@ -148601,7 +148601,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/depth_tested_span_draw_object.asm",
+  "tu": "match/wwlib/asm/depth_tested_span_draw_object.asm",
   "addr": "0x7C61CF",
   "sym": "_FUN_007C61CF",
   "len": "0x94",
@@ -148628,7 +148628,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/terrain_height_fix_object.asm",
+  "tu": "match/wwlib/asm/terrain_height_fix_object.asm",
   "addr": "0x7C6620",
   "sym": "_FUN_007C6620",
   "len": "0x10a",
@@ -148790,7 +148790,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DE200",
   "sym": "_FUN_007DE200",
   "len": "0x33a",
@@ -148799,7 +148799,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DE53A",
   "sym": "_FUN_007DE53A",
   "len": "0x340",
@@ -148808,7 +148808,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DE87A",
   "sym": "_FUN_007DE87A",
   "len": "0x340",
@@ -148817,7 +148817,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DEBBA",
   "sym": "_FUN_007DEBBA",
   "len": "0x340",
@@ -148826,7 +148826,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DEEFA",
   "sym": "_FUN_007DEEFA",
   "len": "0xdd",
@@ -148835,7 +148835,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DEFD7",
   "sym": "_FUN_007DEFD7",
   "len": "0xdd",
@@ -148844,7 +148844,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DF0B4",
   "sym": "_FUN_007DF0B4",
   "len": "0xdd",
@@ -148853,7 +148853,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_blend16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_blend16_object.asm",
   "addr": "0x7DF191",
   "sym": "_FUN_007DF191",
   "len": "0xdd",
@@ -148862,7 +148862,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_modulate16_object.asm",
   "addr": "0x7DF280",
   "sym": "_FUN_007DF280",
   "len": "0x142",
@@ -148871,7 +148871,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_modulate16_object.asm",
   "addr": "0x7DF3C2",
   "sym": "_FUN_007DF3C2",
   "len": "0x13e",
@@ -148880,7 +148880,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_modulate16_object.asm",
   "addr": "0x7DF500",
   "sym": "_FUN_007DF500",
   "len": "0x140",
@@ -148889,7 +148889,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/masked_row_modulate16_object.asm",
+  "tu": "match/wwlib/asm/masked_row_modulate16_object.asm",
   "addr": "0x7DF640",
   "sym": "_FUN_007DF640",
   "len": "0x141",
@@ -148898,7 +148898,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DF7C0",
   "sym": "_FUN_007DF7C0",
   "len": "0xf8",
@@ -148907,7 +148907,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DF8C0",
   "sym": "_FUN_007DF8C0",
   "len": "0xf7",
@@ -148916,7 +148916,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DF9C0",
   "sym": "_FUN_007DF9C0",
   "len": "0x109",
@@ -148925,7 +148925,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DFAE0",
   "sym": "_FUN_007DFAE0",
   "len": "0x109",
@@ -148934,7 +148934,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DFC00",
   "sym": "_FUN_007DFC00",
   "len": "0xf6",
@@ -148943,7 +148943,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DFD00",
   "sym": "_FUN_007DFD00",
   "len": "0xf6",
@@ -148952,7 +148952,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DFE00",
   "sym": "_FUN_007DFE00",
   "len": "0xfc",
@@ -148961,7 +148961,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/step_table_draw_object.asm",
+  "tu": "match/wwlib/asm/step_table_draw_object.asm",
   "addr": "0x7DFF00",
   "sym": "_FUN_007DFF00",
   "len": "0xfc",
@@ -148970,7 +148970,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/palette_blend_table_object.asm",
+  "tu": "match/wwlib/asm/palette_blend_table_object.asm",
   "addr": "0x7E0000",
   "sym": "_FUN_007E0000",
   "len": "0x1",
@@ -148979,7 +148979,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/palette_blend_table_object.asm",
+  "tu": "match/wwlib/asm/palette_blend_table_object.asm",
   "addr": "0x7E0001",
   "sym": "_FUN_007E0001",
   "len": "0xa5",
@@ -148988,7 +148988,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/palette_blend_table_object.asm",
+  "tu": "match/wwlib/asm/palette_blend_table_object.asm",
   "addr": "0x7E00A6",
   "sym": "_FUN_007E00A6",
   "len": "0xca",
@@ -148997,7 +148997,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/palette_blend_table_object.asm",
+  "tu": "match/wwlib/asm/palette_blend_table_object.asm",
   "addr": "0x7E0170",
   "sym": "_FUN_007E0170",
   "len": "0x62",
@@ -149006,7 +149006,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/palette_blend_table_object.asm",
+  "tu": "match/wwlib/asm/palette_blend_table_object.asm",
   "addr": "0x7E01D2",
   "sym": "_FUN_007E01D2",
   "len": "0x29",
@@ -149015,7 +149015,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/palette_blend_table_object.asm",
+  "tu": "match/wwlib/asm/palette_blend_table_object.asm",
   "addr": "0x7E01FB",
   "sym": "_FUN_007E01FB",
   "len": "0xd0",
@@ -149024,7 +149024,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/asm/palette_blend_table_object.asm",
+  "tu": "match/wwlib/asm/palette_blend_table_object.asm",
   "addr": "0x7E02CB",
   "sym": "_FUN_007E02CB",
   "len": "0xc2",
