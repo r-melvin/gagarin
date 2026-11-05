@@ -154330,5 +154330,77 @@
   "name": "?FUN_00730100@@YIXXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/building_light_class_tu033_methods.cpp",
+  "addr": "0x436950",
+  "sym": "?Load@BuildingLightClass@@UAGJPAUIStream@@@Z",
+  "len": "0x6b",
+  "name": "BuildingLightClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/building_light_class_tu033_methods.cpp",
+  "addr": "0x4370C0",
+  "sym": "??_GBuildingLightClass@@UAEPAXI@Z",
+  "len": "0x9a",
+  "name": "??_GBuildingLightClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/surface_blit_driver_00437350.cpp",
+  "addr": "0x437350",
+  "sym": "?BlitDriver@@YI_NPAVSurface@@PBURectangleStruct@@01PAVBlitter@@HHHH@Z",
+  "len": "0x5b",
+  "name": "?BlitDriver@@YI_NPAVSurface@@PBURectangleStruct@@01PAVBlitter@@HHHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/factory_class_tu080_methods.cpp",
+  "addr": "0x4C9A10",
+  "sym": "??1FactoryClass@@UAE@XZ",
+  "len": "0x102",
+  "name": "??1FactoryClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/factory_class_tu080_methods.cpp",
+  "addr": "0x4C9B20",
+  "sym": "?vf_23@FactoryClass@@UAEXXZ",
+  "len": "0x122",
+  "name": "FactoryClass::vf_23",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/factory_class_tu080_methods.cpp",
+  "addr": "0x4CA3C0",
+  "sym": "?Save@FactoryClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x65",
+  "name": "FactoryClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/factory_class_tu080_methods.cpp",
+  "addr": "0x4CA430",
+  "sym": "?vf_13@FactoryClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x143",
+  "name": "FactoryClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/factory_class_tu080_methods.cpp",
+  "addr": "0x4CA770",
+  "sym": "??_GFactoryClass@@UAEPAXI@Z",
+  "len": "0x116",
+  "name": "??_GFactoryClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

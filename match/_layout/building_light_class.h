@@ -19,10 +19,15 @@ class BuildingLightClass : public ObjectClass
 public:
     // FUNCTION: GAMEMD 0x435820
     BuildingLightClass(BuildingClass* source = 0);   // default: TClassFactory<BuildingLightClass>::CreateInstance does `new T`
+    // Load (0x436950) re-runs the object-prefix construction on the loaded bytes: ObjectClass(no-init) 0x5F3B50
+    // then the four vptr stores.
+    BuildingLightClass(const AbstractNoInit& noInit) : ObjectClass(noInit) {}
 
     // Overrides present in the primary table 0x7E3AD0 (bodies not recovered here).
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3  0x436910
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5  0x436950
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6  0x4369C0
+    virtual ~BuildingLightClass();                                        // 8  0x4370C0
     virtual void vf_10(void* target, bool removed);                       // 10 0x436A00
     virtual int vf_11();                                                  // 11 0x4370B0
     virtual int vf_12();                                                  // 12 0x436900
