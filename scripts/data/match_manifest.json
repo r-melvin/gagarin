@@ -152116,5 +152116,83 @@
   "name": "?FUN_00406670@@YIXPBDH@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu000_methods.cpp",
+  "addr": "0x4016F0",
+  "sym": "?FUN_004016F0@unknown_Bank_4016F0@@QAIHH@Z",
+  "len": "0x1c9",
+  "name": "unknown_Bank_4016F0::FUN_004016F0",
+  "status": "partial",
+  "pct": 95.6,
+  "best_pct": 95.6,
+  "best_at": "34237239"
+ },
+ {
+  "tu": "match/tu000_methods.cpp",
+  "addr": "0x4019E0",
+  "sym": "?FUN_004019E0@@YIPAUunknown_Node_4019E0@@PAXHHH@Z",
+  "len": "0x113",
+  "name": "?FUN_004019E0@@YIPAUunknown_Node_4019E0@@PAXHHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu000_methods.cpp",
+  "addr": "0x402040",
+  "sym": "?FUN_00402040@unknown_Parent_402040@@QAEPAUunknown_Obj_402040@@XZ",
+  "len": "0x12e",
+  "name": "unknown_Parent_402040::FUN_00402040",
+  "status": "partial",
+  "pct": 87.3,
+  "best_pct": 87.3,
+  "best_at": "34237239"
+ },
+ {
+  "tu": "match/tu224_methods.cpp",
+  "addr": "0x6C96E0",
+  "sym": "?FUN_006C96E0@unknown_P4_6C96E0@@QBE?AU1@ABU1@@Z",
+  "len": "0x60",
+  "name": "unknown_P4_6C96E0::FUN_006C96E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu224_methods.cpp",
+  "addr": "0x6C9780",
+  "sym": "?FUN_006C9780@unknown_P4_6C96E0@@QBE?AU1@ABU1@@Z",
+  "len": "0x5e",
+  "name": "unknown_P4_6C96E0::FUN_006C9780",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu224_methods.cpp",
+  "addr": "0x6C9B40",
+  "sym": "?FUN_006C9B40@unknown_Holder_6C9B40@@QAE_NPBD@Z",
+  "len": "0x11e",
+  "name": "unknown_Holder_6C9B40::FUN_006C9B40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu224_methods.cpp",
+  "addr": "0x6C9C60",
+  "sym": "?FUN_006C9C60@unknown_Player_6C9C60@@QAE_NI@Z",
+  "len": "0xb3",
+  "name": "unknown_Player_6C9C60::FUN_006C9C60",
+  "status": "partial",
+  "pct": 82.5,
+  "best_pct": 82.5,
+  "best_at": "34237239"
+ },
+ {
+  "tu": "match/tu224_methods.cpp",
+  "addr": "0x6CA6A0",
+  "sym": "?FUN_006CA6A0@@YIXPAGPAUunknown_Parsed_6CA6A0@@@Z",
+  "len": "0x82",
+  "name": "?FUN_006CA6A0@@YIXPAGPAUunknown_Parsed_6CA6A0@@@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
