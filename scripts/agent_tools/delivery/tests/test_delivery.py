@@ -214,6 +214,14 @@ class LintRules(unittest.TestCase):
         self.assertTrue(any(x["rule"] == "views" and "HouseClass" in x["msg"] and x["level"] == "E" for x in f))
         self.assertTrue(any(x["rule"] == "classkey" and "TechnoClass" in x["msg"] for x in f))
 
+    def test_migrated_tusplit(self):
+        body = "// FUNCTION: GAMEMD 0x6F4A40\nvoid a() {}\n"
+        rows = [{"tu": "match/combat/Techno2.cpp", "addr": "0x6F4A40", "sym": "?a@@YAXXZ", "len": "0x24", "status": "matched", "pct": 100}]
+        ok = "// TUSPLIT: GAMEMD 0x6F4000 same-file 0% separate 100%\n" + body
+        self.assertFalse([x for x in self.rules({"match/combat/Techno2.cpp": ok}, rows, {"migrated"}) if x["rule"] == "migrated"])
+        bad = "// TUSPLIT: GAMEMD 0x6F4000\n" + body
+        self.assertTrue([x for x in self.rules({"match/combat/Techno2.cpp": bad}, rows, {"migrated"}) if x["rule"] == "migrated"])
+
     def test_migrated_and_order_and_provenance(self):
         src = "// FUNCTION: GAMEMD 0x6F7930\nvoid b() {}\n// FUNCTION: GAMEMD 0x6F4A40\nvoid a() {}\n"
         rows = [{"tu": "match/combat/Techno2.cpp", "addr": "0x6F4A40", "sym": "?a@@YAXXZ", "len": "0x24", "status": "matched", "pct": 100},

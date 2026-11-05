@@ -30,7 +30,8 @@ enforces; nothing here needs a compiler except --strict.
   views        E a NEW definition of a class that has a canonical header (w6 brief: never a
                  new per-TU view); W a new definition of a class already defined elsewhere (ODR debt); judged on the POST-patch tree
   classkey     E class/struct keyword differs from the RTTI TypeDescriptor (hcfix rule)
-  migrated     E a new .cpp whose rows fall inside an already-migrated original TU window
+  migrated     E a new .cpp whose rows fall inside an already-migrated original TU window (unless the file carries a measured
+                 `// TUSPLIT: GAMEMD 0xCALLER same-file N% separate M%` line; see AGENTS.md)
                  (one TU, one file: the lander would have to merge by hand; use pktrebase --merge)
   inits        E rows that are static-initialiser shapes (held for the TU migration)
   delta        E delta rows malformed, unsorted, colliding with the tree, naming TUs the patch does
@@ -122,6 +123,8 @@ THIS_NULL = re.compile(
     r"|\b(?:if|while)\s*\(\s*this\s*\)"
     r"|(?:^|[(&|?,]|\breturn\b)\s*this\s*(?:&&|\|\||\?)")
 
+
+TUSPLIT = re.compile(r"^// TUSPLIT: GAMEMD 0x[0-9A-Fa-f]+ same-file [0-9.]+% separate [0-9.]+%", re.M)
 
 class Lint:
     def __init__(self, packet, tree, repo, allow_words=()):
@@ -473,8 +476,9 @@ class Lint:
             return
         new_cpps = {d.path for d in self.diffs if d.is_new and d.path.lower().endswith(L.SRC_EXT)}
         hits = {}
+        split = {d.path for d, text, _ in self._added_post() if TUSPLIT.search(text)}
         for r in self.rows:
-            if r.get("tu") in new_cpps:
+            if r.get("tu") in new_cpps and r["tu"] not in split:
                 a = D.hx(r["addr"])
                 dest = next((p for p, (name, lo, hi) in windows.items() if lo <= a <= hi), None)
                 if dest and dest != r["tu"]:
