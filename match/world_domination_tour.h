@@ -204,6 +204,10 @@ public:
                   int a9, int a10, int a11, unsigned char a12, const Obj_007B66D0& a13, const Obj_007B66D0& a14);
     ~PlayerProfile();   // 0x77A050
     void FUN_0077A4D0();   // refreshes the date text (+0x40) and the time text (+0x3C)
+    // FUNCTION: GAMEMD 0x77A700 (__thiscall)
+    void FUN_0077A700(int a, int b);
+    // FUNCTION: GAMEMD 0x77A7C0 (__thiscall)
+    void FUN_0077A7C0(const struct PersonaSrc_0077A7C0* src);
     unsigned char unknown_08;  // +0x08 (cleared by the constructor with a byte store)
     Member_7B46F0 Member_0C;   // +0x0C
     int unknown_10;            // +0x10

@@ -147088,18 +147088,18 @@
  {
   "tu": "match/WOLPersonaInformation.cpp",
   "addr": "0x77A700",
-  "sym": "?FUN_0077A700@Persona_0077A700@@QAEXHH@Z",
+  "sym": "?FUN_0077A700@PlayerProfile@@QAEXHH@Z",
   "len": "0x60",
-  "name": "Persona_0077A700::FUN_0077A700",
+  "name": "PlayerProfile::FUN_0077A700",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/WOLPersonaInformation.cpp",
   "addr": "0x77A7C0",
-  "sym": "?FUN_0077A7C0@Persona_0077A700@@QAEXPBUPersonaSrc_0077A7C0@@@Z",
+  "sym": "?FUN_0077A7C0@PlayerProfile@@QAEXPBUPersonaSrc_0077A7C0@@@Z",
   "len": "0x7d",
-  "name": "Persona_0077A700::FUN_0077A7C0",
+  "name": "PlayerProfile::FUN_0077A7C0",
   "status": "matched",
   "pct": 100
  },
