@@ -11,7 +11,6 @@ The rows are never applied: DIR/results.tsv lists improvements for a worker to t
 """
 import argparse, concurrent.futures as cf, csv, json, os, shutil, subprocess, sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
 MIN_FREE = 50 << 30
 
 
@@ -22,7 +21,7 @@ def run(row, a):
     if shutil.disk_usage(a.out).free < MIN_FREE:
         return row, "low-disk"
     os.makedirs(d, exist_ok=True)
-    r = subprocess.run([sys.executable, os.path.join(HERE, "source_perm.py"), "--tu", row["tu"], "--addr", row["addr"],
+    r = subprocess.run([sys.executable, os.path.join(a.tree, "scripts/permuter/source_perm.py"), "--tu", row["tu"], "--addr", row["addr"],
                         "--sym", row["sym"], "--len", row["len"], "--minutes", str(a.minutes), "--out", d],
                        cwd=a.tree, capture_output=True, text=True)
     for n in os.listdir(d):
@@ -41,6 +40,7 @@ def main():
     ap.add_argument("--min-pct", type=float, default=85); ap.add_argument("--limit", type=int)
     a = ap.parse_args()
     a.out = os.path.abspath(a.out); os.makedirs(a.out, exist_ok=True)
+    a.tree = os.path.abspath(a.tree)      # source_perm.py works in the repo it runs from, so run the tree's own copy
     man = {int(r["addr"], 16): r for r in json.load(open(os.path.join(a.tree, "scripts/data/match_manifest.json")))}
     rows = []
     for t in csv.DictReader(open(os.path.join(a.triage_dir, "triage.tsv")), delimiter="\t"):

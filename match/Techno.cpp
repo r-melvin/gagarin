@@ -4151,7 +4151,7 @@ void TechnoClass::vf_219()
 {
     if (!unknown_bool_4F8) {
         // Retail tests this itself and branches: cmp esi,ebx / je 0x708E74 at 0x708E13, then cmp eax,0xF / jne 0x708E74
-        // on vf_11() at 0x708E1C. The helper yields only its mask form (0x708E28); it was tried first and reached 18.6%.
+        // on vf_11() at 0x708E1C. The helper yields only its mask form (0x708E28); it was tried first and stayed far below the 80% bar.
         // THISNULL: GAMEMD 0x459F40
         if (this && vf_11() == 15 && ((InfantryClass*)KindCast_00459F40(15))->FUN_00522510()) {
             if (vf_33()->VoiceUndeploy != -1) {
