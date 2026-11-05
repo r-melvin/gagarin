@@ -32,6 +32,7 @@
 #include "mathtbl_init_shapes.h"
 #include <windows.h>
 #include "pcx_get_surface_methods.h"
+#include "_layout/house_type_class.h"
 #include "_layout/rec12_008b3f38.h"
 #include "_layout/rec12_008b4040.h"
 #include <math.h>
@@ -274,6 +275,123 @@ int __fastcall FUN_004E3440(int index)
     return index == 7 ? 0x75B : -1;
 }
 
+// GDlgSupp.cpp keeps FUN_00603D30 as declared by its other users.
+void FUN_00603D30(HWND control, void* surface);
+
+// FUNCTION: GAMEMD 0x4E34A0
+// Put the ping indicator picture for `level` (0 green, 1 yellow, 2 red, else none) on the
+// control of lobby slot `index`.
+void __fastcall FUN_004E34A0(void* dialog, int index, int level)
+{
+    int control;
+    if (index == 0) control = 0x754;
+    else if (index == 1) control = 0x755;
+    else if (index == 2) control = 0x756;
+    else if (index == 3) control = 0x757;
+    else if (index == 4) control = 0x758;
+    else if (index == 5) control = 0x759;
+    else if (index == 6) control = 0x75A;
+    else control = index == 7 ? 0x75B : -1;
+    HWND item = GetDlgItem((HWND)dialog, control);
+    void* picture = 0;
+    if (level == 0)
+        picture = DAT_00AC4848.GetSurface(DAT_00844B18[0], 0);
+    else if (level == 1)
+        picture = DAT_00AC4848.GetSurface(DAT_00844B18[1], 0);
+    else if (level == 2)
+        picture = DAT_00AC4848.GetSurface(DAT_00844B18[2], 0);
+    if (item != (HWND)-1)
+        FUN_00603D30(item, picture);
+}
+
+// GLOBAL: GAMEMD 0xA8B23C is the object below.
+struct Handler_004E4170
+{
+    virtual void vf_0();
+    virtual void vf_1();
+    virtual void vf_2();
+    virtual void vf_3();
+    virtual void vf_4();
+    virtual void vf_5();
+    virtual void vf_6();
+    virtual void vf_7();
+    virtual void vf_8();
+    virtual void vf_9();
+    virtual int vf_10();
+    virtual int vf_11();
+};
+// GLOBAL: GAMEMD 0xA8B23C
+extern Handler_004E4170* DAT_00A8B23C;
+
+// STRING: GAMEMD 0x844AE8..0x844B14 -- the twelve side picture names: random, observer, then the ten countries.
+extern const char* DAT_00844AE8[12];
+
+// FUNCTION: GAMEMD 0x4E3560
+// The side picture for an index (-2 random, -3 observer, 0..9 the countries), or 0.
+void* __fastcall FUN_004E3560(int index)
+{
+    void* picture = 0;
+    if (index == -2)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[0], 0);
+    if (index == 0)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[2], 0);
+    if (index == 1)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[3], 0);
+    if (index == 2)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[4], 0);
+    if (index == 3)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[5], 0);
+    if (index == 4)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[6], 0);
+    if (index == 5)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[7], 0);
+    if (index == 6)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[8], 0);
+    if (index == 7)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[9], 0);
+    if (index == 8)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[10], 0);
+    if (index == -3)
+        return DAT_00AC4848.GetSurface(DAT_00844AE8[1], 0);
+    if (index == 9)
+        picture = DAT_00AC4848.GetSurface(DAT_00844AE8[11], 0);
+    return picture;
+}
+
+// FUNCTION: GAMEMD 0x4E3690
+// Put the side picture chosen in lobby slot `index` on its picture control.
+void __fastcall FUN_004E3690(HWND dialog, int index)
+{
+    int control;
+    if (index == 0) control = 0x6DA;
+    else if (index == 1) control = 0x6DB;
+    else if (index == 2) control = 0x6DC;
+    else if (index == 3) control = 0x6DD;
+    else if (index == 4) control = 0x6DE;
+    else if (index == 5) control = 0x6DF;
+    else if (index == 6) control = 0x6E0;
+    else control = index == 7 ? 0x6E1 : -1;
+    HWND item = GetDlgItem(dialog, control);
+    int combo;
+    if (index == 0) combo = 0x6A1;
+    else if (index == 1) combo = 0x510;
+    else if (index == 2) combo = 0x513;
+    else if (index == 3) combo = 0x51E;
+    else if (index == 4) combo = 0x514;
+    else if (index == 5) combo = 0x51F;
+    else if (index == 6) combo = 0x520;
+    else combo = index == 7 ? 0x521 : -1;
+    int cur = (int)SendDlgItemMessageA(dialog, combo, CB_GETCURSEL, 0, 0);
+    int data = (int)SendDlgItemMessageA(dialog, combo, CB_GETITEMDATA, cur, 0);
+    if (data < -3 || data > 9) {
+        if (DAT_00A8B23C)
+            data = DAT_00A8B23C->vf_10();
+        else
+            data = -2;
+    }
+    FUN_00603D30(item, FUN_004E3560(data));
+}
+
 // FUNCTION: GAMEMD 0x4E37D0
 int __fastcall FUN_004E37D0(int index)
 {
@@ -285,6 +403,39 @@ int __fastcall FUN_004E37D0(int index)
     if (index == 5) return 0x51F;
     if (index == 6) return 0x520;
     return index == 7 ? 0x521 : -1;
+}
+
+// STRING: GAMEMD 0x8229DC "GUI:RandomEx", 0x8229EC "GUI:Observer".
+extern char DAT_008229DC[];
+extern char DAT_008229EC[];
+extern char DAT_00822BF8[];
+int FUN_005E9B20(HWND dialog, int control, int index);
+extern HouseTypeClass** DAT_00A83C9C;
+extern int DAT_00A83CA8;
+
+// FUNCTION: GAMEMD 0x4E3A00
+// Refill a side combo: the random entry (-2), then every playable multiplayer country.
+void __fastcall FUN_004E3A00(HWND dialog, int control)
+{
+    HWND combo = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(combo, SW_HIDE);
+    SendMessageA(combo, 0x14B, 0, 0);
+    SendMessageA(combo, 0x4DE, 0, 7);
+    WPARAM at = SendMessageA(combo, 0x4C2, 0, (LPARAM)FUN_00734E60(DAT_008229DC, 0, DAT_008229C0, 0x114));
+    SendMessageA(combo, CB_SETITEMDATA, at, -2);
+    int count = DAT_00A83CA8;
+    for (int i = 0; i < count; i++) {
+        HouseTypeClass* house = DAT_00A83C9C[i];
+        if (house != 0 && house->Multiplay != 0 && house->ArrayIndex2 > -3 && house->ArrayIndex2 <= 9
+            && *house->UIName != 0) {
+            at = SendMessageA(combo, 0x4C2, 0, (LPARAM)house->UIName);
+            SendMessageA(combo, CB_SETITEMDATA, at, house->ArrayIndex2);
+        }
+    }
+    SendMessageA(combo, 0x4F1, 0, 0);
+    SendMessageA(combo, CB_SETCURSEL, 0, 0);
+    if (!hidden)
+        ShowWindow(combo, SW_SHOW);
 }
 
 // FUNCTION: GAMEMD 0x4E3830
@@ -344,22 +495,131 @@ extern char DAT_00822A14[];
 extern char DAT_008229FC[];
 
 // A handler object reached through a global; only virtual slot 10 is called.
-struct Handler_004E4170
+
+// FUNCTION: GAMEMD 0x4E3B90
+// Refill the side combo of every lobby slot: the local observer's slot offers only "Observer", the others the
+// full list.
+void __fastcall FUN_004E3B90(HWND dialog)
 {
-    virtual void vf_0();
-    virtual void vf_1();
-    virtual void vf_2();
-    virtual void vf_3();
-    virtual void vf_4();
-    virtual void vf_5();
-    virtual void vf_6();
-    virtual void vf_7();
-    virtual void vf_8();
-    virtual void vf_9();
-    virtual int vf_10();
-};
-// GLOBAL: GAMEMD 0xA8B23C
-extern Handler_004E4170* DAT_00A8B23C;
+    int slot = 0;
+    do {
+        int node = FUN_005E9B20(dialog, slot, -1);
+        bool observer = false;
+        if (ObserverNode != 0 && node == (int)ObserverNode)
+            observer = true;
+        int control;
+        if (slot == 0) control = 0x6A1;
+        else if (slot == 1) control = 0x510;
+        else if (slot == 2) control = 0x513;
+        else if (slot == 3) control = 0x51E;
+        else if (slot == 4) control = 0x514;
+        else if (slot == 5) control = 0x51F;
+        else if (slot == 6) control = 0x520;
+        else control = slot == 7 ? 0x521 : -1;
+        if (observer) {
+            HWND combo = GetDlgItem(dialog, control);
+            bool hidden = !ShowWindow(combo, SW_HIDE);
+            SendMessageA(combo, 0x14B, 0, 0);
+            SendMessageA(combo, 0x4DE, 0, 7);
+            WPARAM at = SendMessageA(combo, 0x4C2, 0, (LPARAM)FUN_00734E60(DAT_008229EC, 0, DAT_008229C0, 0x135));
+            SendMessageA(combo, CB_SETITEMDATA, at, -3);
+            SendMessageA(combo, CB_SETCURSEL, 0, 0);
+            SendMessageA(combo, 0x4F1, 0, 1);
+            if (!hidden)
+                ShowWindow(combo, SW_SHOW);
+        } else {
+            FUN_004E3A00(dialog, control);
+        }
+        slot++;
+    } while (slot < 8);
+}
+
+// FUNCTION: GAMEMD 0x4E3CE0
+// Select the side chosen for lobby slot `index` (random or observer when the session says so) in its combo
+// and refresh the picture beside it.
+void __fastcall FUN_004E3CE0(HWND dialog, int index)
+{
+    int side = Session_00A8B238.unknown_184;
+    if (Session_00A8B238.unknown_188 == -2)
+        side = -2;
+    else if (Session_00A8B238.unknown_188 == -3)
+        side = -3;
+    int control = FUN_004E37D0(index);
+    HWND item = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(item, SW_HIDE);
+    int count = (int)SendDlgItemMessageA(dialog, control, CB_GETCOUNT, 0, 0);
+    for (int i = 0; i < count; i++) {
+        int data = (int)SendDlgItemMessageA(dialog, control, CB_GETITEMDATA, i, 0);
+        if (data == side) {
+            SendDlgItemMessageA(dialog, control, CB_SETCURSEL, i, 0);
+            break;
+        }
+    }
+    if (!hidden)
+        ShowWindow(item, SW_SHOW);
+    int slot;
+    int pictureControl;
+    if (control == 0x6A1) { slot = 0; pictureControl = 0x6DA; }
+    else if (control == 0x510) { slot = 1; pictureControl = 0x6DB; }
+    else if (control == 0x513) { slot = 2; pictureControl = 0x6DC; }
+    else if (control == 0x51E) { slot = 3; pictureControl = 0x6DD; }
+    else if (control == 0x514) { slot = 4; pictureControl = 0x6DE; }
+    else if (control == 0x51F) { slot = 5; pictureControl = 0x6DF; }
+    else if (control == 0x520) { slot = 6; pictureControl = 0x6E0; }
+    else if (control == 0x521) { slot = 7; pictureControl = 0x6E1; }
+    else { slot = -1; pictureControl = -1; }
+    HWND picture = GetDlgItem(dialog, pictureControl);
+    int combo = FUN_004E37D0(slot);
+    int cur = (int)SendDlgItemMessageA(dialog, combo, CB_GETCURSEL, 0, 0);
+    int data = (int)SendDlgItemMessageA(dialog, combo, CB_GETITEMDATA, cur, 0);
+    if (data < -3 || data > 9) {
+        if (DAT_00A8B23C)
+            data = DAT_00A8B23C->vf_10();
+        else
+            data = -2;
+    }
+    FUN_00603D30(picture, FUN_004E3560(data));
+}
+
+// FUNCTION: GAMEMD 0x4E3F70
+// Select the entry of side combo `control` whose item data is `value`, then refresh the picture beside it.
+void __fastcall FUN_004E3F70(HWND dialog, int control, int value)
+{
+    HWND item = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(item, SW_HIDE);
+    int count = (int)SendDlgItemMessageA(dialog, control, CB_GETCOUNT, 0, 0);
+    for (int i = 0; i < count; i++) {
+        int data = (int)SendDlgItemMessageA(dialog, control, CB_GETITEMDATA, i, 0);
+        if (data == value) {
+            SendDlgItemMessageA(dialog, control, CB_SETCURSEL, i, 0);
+            break;
+        }
+    }
+    if (!hidden)
+        ShowWindow(item, SW_SHOW);
+    int slot;
+    int pictureControl;
+    if (control == 0x6A1) { slot = 0; pictureControl = 0x6DA; }
+    else if (control == 0x510) { slot = 1; pictureControl = 0x6DB; }
+    else if (control == 0x513) { slot = 2; pictureControl = 0x6DC; }
+    else if (control == 0x51E) { slot = 3; pictureControl = 0x6DD; }
+    else if (control == 0x514) { slot = 4; pictureControl = 0x6DE; }
+    else if (control == 0x51F) { slot = 5; pictureControl = 0x6DF; }
+    else if (control == 0x520) { slot = 6; pictureControl = 0x6E0; }
+    else if (control == 0x521) { slot = 7; pictureControl = 0x6E1; }
+    else { slot = -1; pictureControl = -1; }
+    HWND picture = GetDlgItem(dialog, pictureControl);
+    int combo = FUN_004E37D0(slot);
+    int cur = (int)SendDlgItemMessageA(dialog, combo, CB_GETCURSEL, 0, 0);
+    int data = (int)SendDlgItemMessageA(dialog, combo, CB_GETITEMDATA, cur, 0);
+    if (data < -3 || data > 9) {
+        if (DAT_00A8B23C)
+            data = DAT_00A8B23C->vf_10();
+        else
+            data = -2;
+    }
+    FUN_00603D30(picture, FUN_004E3560(data));
+}
 
 // FUNCTION: GAMEMD 0x4E4170
 // Combo box item-data read (the current selection when the index is -1). A
@@ -492,6 +752,52 @@ bool FUN_004E4580(int index)
 
 // GLOBAL: GAMEMD 0xA8DA90 / 0xAC11B4 are NodeNameType slots (netshare_slot_nodes.h).
 
+// STRING: GAMEMD 0x822B7C "GUI:RandomAsSymbols"; 0x822B78 the wide caption of a colour entry.
+extern char DAT_00822B7C[];
+extern wchar_t DAT_00822B78[];
+
+// FUNCTION: GAMEMD 0x4E45A0
+// Refill the colour combo of lobby slot `control`: the random entry (-2), then every colour still free or
+// already taken by this slot.
+// PARTIAL: same instruction multiset as retail; retail anchors the strength-reduced record pointer at the key
+// (0x8B4040, colour at [ptr-4]), cl at the colour (key at [ptr+4]). The loop reads the records from their real base.
+void __fastcall FUN_004E45A0(HWND dialog, int control)
+{
+    HWND combo = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(combo, SW_HIDE);
+    SendMessageA(combo, 0x14B, 0, 0);
+    SendMessageA(combo, 0x4DD, 0, 1);
+    SendMessageA(combo, 0x4DE, 0, 9);
+    WPARAM at = SendMessageA(combo, 0x4C2, 0, (LPARAM)FUN_00734E60(DAT_00822B7C, 0, DAT_008229C0, 0x20A));
+    SendMessageA(combo, CB_SETITEMDATA, at, -2);
+    SendMessageA(combo, 0x498, at, -1);
+    int slot;
+    if (control == 0x6A2) slot = 0;
+    else if (control == 0x522) slot = 1;
+    else if (control == 0x523) slot = 2;
+    else if (control == 0x524) slot = 3;
+    else if (control == 0x525) slot = 4;
+    else if (control == 0x526) slot = 5;
+    else if (control == 0x527) slot = 6;
+    else slot = control == 0x528 ? 7 : -1;
+    WPARAM selected = 0;
+    for (int i = 0; i < 8; i++) {
+        int key = DAT_008B4038[i].key;
+        bool mine = key == slot;
+        if (mine || key == -1) {
+            at = SendMessageA(combo, 0x4C2, 0, (LPARAM)DAT_00822B78);
+            SendMessageA(combo, 0x498, at, DAT_008B4038[i].colour);
+            SendMessageA(combo, CB_SETITEMDATA, at, i);
+            if (mine)
+                selected = at;
+        }
+    }
+    SendMessageA(combo, CB_SETCURSEL, selected, 0);
+    SendMessageA(combo, 0x4F1, 0, 0);
+    if (!hidden)
+        ShowWindow(combo, SW_SHOW);
+}
+
 // FUNCTION: GAMEMD 0x4E48E0
 // Refresh the house control of lobby slot `index` (ECX is the dialog, passed on unchanged).
 void __fastcall FUN_004E48E0(HWND dialog, int index)
@@ -513,6 +819,80 @@ void __fastcall FUN_004E48E0(HWND dialog, int index)
             state = 8;
     }
     FUN_004E49A0(dialog, control, state);
+}
+
+// FUNCTION: GAMEMD 0x4E4770 (decl; reloc) -- the observer variant of the colour combo refill.
+void __fastcall FUN_004E4770(HWND dialog, int control);
+
+// FUNCTION: GAMEMD 0x4E49A0
+// Select colour `value` in the colour combo `control` of a lobby slot and claim it for that slot (releasing the
+// colour the slot held), then refill every slot's colour combo.
+void __fastcall FUN_004E49A0(HWND dialog, int control, int value)
+{
+    int i;
+    HWND item = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(item, SW_HIDE);
+    int slot = FUN_004E4230(control);
+    int held = -1;
+    for (i = 0; i < 9; i++) {
+        if (DAT_008B4040[i].key == slot) {
+            held = i;
+            break;
+        }
+    }
+    if (held != -1)
+        DAT_008B4040[held].key = -1;
+    int count = (int)SendDlgItemMessageA(dialog, control, CB_GETCOUNT, 0, 0);
+    for (i = 0; i < count; i++) {
+        int data = (int)SendDlgItemMessageA(dialog, control, CB_GETITEMDATA, i, 0);
+        if (data == value) {
+            SendDlgItemMessageA(dialog, control, CB_SETCURSEL, i, 0);
+            if (data != -2)
+                DAT_008B4040[data].key = FUN_004E4230(control);
+            break;
+        }
+    }
+    if (!hidden)
+        ShowWindow(item, SW_SHOW);
+    for (i = 0; i < 8; i++) {
+        int c = FUN_004E41D0(i);
+        if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)
+            && (Slots[i] == ObserverNode || Slots[i]->unknown_6B == -1))
+            FUN_004E4770(dialog, c);
+        else
+            FUN_004E45A0(dialog, c);
+    }
+}
+
+// FUNCTION: GAMEMD 0x4E4C20
+// Claim the colour now chosen in the colour combo `control` for its slot (releasing the colour the slot held),
+// then refill every slot's colour combo.
+void __fastcall FUN_004E4C20(HWND dialog, int control)
+{
+    int i;
+    int slot = FUN_004E4230(control);
+    int held = -1;
+    for (i = 0; i < 9; i++) {
+        if (DAT_008B4040[i].key == slot) {
+            held = i;
+            break;
+        }
+    }
+    if (held != -1)
+        DAT_008B4040[held].key = -1;
+    int cur = (int)SendDlgItemMessageA(dialog, control, CB_GETCURSEL, 0, 0);
+    int data = (int)SendDlgItemMessageA(dialog, control, CB_GETITEMDATA, cur, 0);
+    slot = FUN_004E4230(control);
+    if (data != -2)
+        DAT_008B4040[data].key = slot;
+    for (i = 0; i < 8; i++) {
+        int c = FUN_004E41D0(i);
+        if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)
+            && (Slots[i] == ObserverNode || Slots[i]->unknown_6B == -1))
+            FUN_004E4770(dialog, c);
+        else
+            FUN_004E45A0(dialog, c);
+    }
 }
 
 // FUNCTION: GAMEMD 0x004E4E20
@@ -633,6 +1013,42 @@ bool FUN_004E50A0(int index)
     return DAT_008B3F38[index].key != -1;
 }
 
+// FUNCTION: GAMEMD 0x4E5260 (decl; reloc) -- the observer variant of the team combo refill.
+void __fastcall FUN_004E5260(HWND dialog, int control);
+
+// FUNCTION: GAMEMD 0x4E50C0
+// Refill the start-position combo `control`: the random entry (-2), then every position still free or already
+// taken by this control.
+// PARTIAL: same instruction multiset as retail; retail anchors the strength-reduced record pointer at the key
+// (0x8B3F38, caption at [ptr-8]), cl at the caption (key at [ptr+8]). The loop reads the records from their real base.
+void __fastcall FUN_004E50C0(HWND dialog, int control)
+{
+    HWND combo = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(combo, SW_HIDE);
+    SendMessageA(combo, 0x14B, 0, 0);
+    SendMessageA(combo, 0x4DD, 0, 1);
+    SendMessageA(combo, 0x4DE, 0, 9);
+    WPARAM at = SendMessageA(combo, 0x4C2, 0, (LPARAM)FUN_00734E60(DAT_00822B7C, 0, DAT_008229C0, 0x341));
+    SendMessageA(combo, CB_SETITEMDATA, at, -2);
+    int slot = FUN_004E4EC0(control);
+    WPARAM selected = 0;
+    for (int i = 0; i < 8; i++) {
+        int key = DAT_008B3F30[i].key;
+        bool mine = key == slot;
+        if (mine || key == -1) {
+            LPARAM text = (LPARAM)DAT_008B3F30[i].name;
+            at = SendMessageA(combo, 0x4C2, 0, text);
+            SendMessageA(combo, CB_SETITEMDATA, at, i);
+            if (mine)
+                selected = at;
+        }
+    }
+    SendMessageA(combo, CB_SETCURSEL, selected, 0);
+    SendMessageA(combo, 0x4F1, 0, 0);
+    if (!hidden)
+        ShowWindow(combo, SW_SHOW);
+}
+
 // FUNCTION: GAMEMD 0x4E53D0
 // Refresh the colour control of lobby slot `index` (ECX is the dialog, passed on unchanged).
 void __fastcall FUN_004E53D0(HWND dialog, int index)
@@ -652,6 +1068,77 @@ void __fastcall FUN_004E53D0(HWND dialog, int index)
             state = 8;
     }
     FUN_004E5480(dialog, control, state);
+}
+
+// FUNCTION: GAMEMD 0x4E5480
+// Select start position `value` in the combo `control` of a lobby slot and claim it for that slot (releasing the
+// one the slot held), then refill every slot's start-position combo.
+void __fastcall FUN_004E5480(HWND dialog, int control, int value)
+{
+    int i;
+    HWND item = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(item, SW_HIDE);
+    int slot = FUN_004E4EC0(control);
+    int held = -1;
+    for (i = 0; i < 9; i++) {
+        if (DAT_008B3F38[i].key == slot) {
+            held = i;
+            break;
+        }
+    }
+    if (held != -1)
+        DAT_008B3F38[held].key = -1;
+    int count = (int)SendDlgItemMessageA(dialog, control, CB_GETCOUNT, 0, 0);
+    for (i = 0; i < count; i++) {
+        int data = (int)SendDlgItemMessageA(dialog, control, CB_GETITEMDATA, i, 0);
+        if (data == value) {
+            SendDlgItemMessageA(dialog, control, CB_SETCURSEL, i, 0);
+            if (data != -2)
+                DAT_008B3F38[data].key = FUN_004E4EC0(control);
+            break;
+        }
+    }
+    if (!hidden)
+        ShowWindow(item, SW_SHOW);
+    for (i = 0; i < 8; i++) {
+        int c = FUN_004E4E60(i);
+        if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)
+            && (Slots[i] == ObserverNode || Slots[i]->unknown_6B == -1))
+            FUN_004E5260(dialog, c);
+        else
+            FUN_004E50C0(dialog, c);
+    }
+}
+
+// FUNCTION: GAMEMD 0x4E5700
+// Claim the start position now chosen in the combo `control` for its slot (releasing the one the slot held),
+// then refill every slot's start-position combo.
+void __fastcall FUN_004E5700(HWND dialog, int control)
+{
+    int i;
+    int slot = FUN_004E4EC0(control);
+    int held = -1;
+    for (i = 0; i < 9; i++) {
+        if (DAT_008B3F38[i].key == slot) {
+            held = i;
+            break;
+        }
+    }
+    if (held != -1)
+        DAT_008B3F38[held].key = -1;
+    int cur = (int)SendDlgItemMessageA(dialog, control, CB_GETCURSEL, 0, 0);
+    int data = (int)SendDlgItemMessageA(dialog, control, CB_GETITEMDATA, cur, 0);
+    slot = FUN_004E4EC0(control);
+    if (data != -2)
+        DAT_008B3F38[data].key = slot;
+    for (i = 0; i < 8; i++) {
+        int c = FUN_004E4E60(i);
+        if ((Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4)
+            && (Slots[i] == ObserverNode || Slots[i]->unknown_6B == -1))
+            FUN_004E5260(dialog, c);
+        else
+            FUN_004E50C0(dialog, c);
+    }
 }
 
 // FUNCTION: GAMEMD 0x004E5900
@@ -688,6 +1175,25 @@ int __fastcall FUN_004E59A0(int id)
     return id == 0x774 ? 7 : -1;
 }
 
+// FUNCTION: GAMEMD 0x4E5A10
+// Localised caption of a player colour: -2 random, 0 gold, 1 red, 2 blue, 3 green, 4 observer.
+const wchar_t* __fastcall FUN_004E5A10(int index)
+{
+    if (index == -2)
+        return FUN_00734E60(DAT_00822AC4, 0, DAT_008229C0, 0x422);
+    if (index == 0)
+        return FUN_00734E60(DAT_00822AB0, 0, DAT_008229C0, 0x424);
+    if (index == 1)
+        return FUN_00734E60(DAT_00822A9C, 0, DAT_008229C0, 0x426);
+    if (index == 2)
+        return FUN_00734E60(DAT_00822A88, 0, DAT_008229C0, 0x428);
+    if (index == 3)
+        return FUN_00734E60(DAT_00822A70, 0, DAT_008229C0, 0x42A);
+    if (index == 4)
+        return FUN_00734E60(DAT_008229FC, 0, DAT_008229C0, 0x42C);
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x4E5AC0
 // Fetch the captions of the four letter choices and name the fifth "0".
 void FUN_004E5AC0()
@@ -703,6 +1209,110 @@ void FUN_004E5AC0()
 bool FUN_004E5B40(int index)
 {
     return DAT_008B3FC8[index].key != -1;
+}
+
+// FUNCTION: GAMEMD 0x4E5E20
+// Refresh the team control of lobby slot `index` (ECX is the dialog, passed on unchanged).
+void __fastcall FUN_004E5E20(HWND dialog, int index)
+{
+    int state = -1;
+    int control;
+    if (index == 0) control = 0x76D;
+    else if (index == 1) control = 0x76E;
+    else if (index == 2) control = 0x76F;
+    else if (index == 3) control = 0x770;
+    else if (index == 4) control = 0x771;
+    else if (index == 5) control = 0x772;
+    else if (index == 6) control = 0x773;
+    else control = index == 7 ? 0x774 : -1;
+    if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
+        if (Slots[index] == ObserverNode && Slots[index]->unknown_6B == -1)
+            state = 4;
+    }
+    FUN_004E5ED0(dialog, control, state);
+}
+
+// FUNCTION: GAMEMD 0x5E2F80 (decl; reloc) -- the handler of the current session, or null.
+Handler_004E4170* FUN_005E2F80();
+
+// FUNCTION: GAMEMD 0x4E5B60
+// Refill the letter combo: an optional "none" entry (-2) when the handler allows it, then the four letters.
+void __fastcall FUN_004E5B60(HWND dialog, int control)
+{
+    WPARAM at;
+    HWND combo = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(combo, SW_HIDE);
+    SendMessageA(combo, 0x14B, 0, 0);
+    SendMessageA(combo, 0x4DD, 0, 1);
+    SendMessageA(combo, 0x4DE, 0, 9);
+    if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
+        if (DAT_00A8B23C) {
+            if (DAT_00A8B23C->vf_11() < 0) {
+                at = SendMessageA(combo, 0x4C2, 0, (LPARAM)FUN_00734E60(DAT_00822BF8, 0, DAT_008229C0, 0x456));
+                SendMessageA(combo, CB_SETITEMDATA, at, -2);
+            }
+        }
+    } else {
+        Handler_004E4170* handler = FUN_005E2F80();
+        if (handler) {
+            if (handler->vf_11() < 0) {
+                at = SendMessageA(combo, 0x4C2, 0, (LPARAM)FUN_00734E60(DAT_00822BF8, 0, DAT_008229C0, 0x45F));
+                SendMessageA(combo, CB_SETITEMDATA, at, -2);
+            }
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        LPARAM text = (LPARAM)DAT_008B3FC0[i].name;
+        at = SendMessageA(combo, 0x4C2, 0, text);
+        SendMessageA(combo, CB_SETITEMDATA, at, i);
+    }
+    SendMessageA(combo, CB_SETCURSEL, 0, 0);
+    SendMessageA(combo, 0x4F1, 0, 0);
+    if (Session_00A8B238.GameMode == 4 && Is_005E8AE0_B()) {
+        ShowWindow(combo, SW_HIDE);
+        combo = GetDlgItem(dialog, 0x794);
+        ShowWindow(combo, SW_HIDE);
+        return;
+    }
+    if (!hidden)
+        ShowWindow(combo, SW_SHOW);
+}
+
+// FUNCTION: GAMEMD 0x4E5ED0
+// (control 0x76D..0x774 of a team combo)
+// Select the entry of the control whose item data is `value` and remember the slot in the entry's record.
+void __fastcall FUN_004E5ED0(HWND dialog, int control, int value)
+{
+    HWND item = GetDlgItem(dialog, control);
+    bool hidden = !ShowWindow(item, SW_HIDE);
+    int count = (int)SendDlgItemMessageA(dialog, control, CB_GETCOUNT, 0, 0);
+    for (int i = 0; i < count; i++) {
+        int data = (int)SendDlgItemMessageA(dialog, control, CB_GETITEMDATA, i, 0);
+        if (data == value) {
+            SendDlgItemMessageA(dialog, control, CB_SETCURSEL, i, 0);
+            if (data != -2) {
+                int slot;
+                if (control == 0x76D) slot = 0;
+                else if (control == 0x76E) slot = 1;
+                else if (control == 0x76F) slot = 2;
+                else if (control == 0x770) slot = 3;
+                else if (control == 0x771) slot = 4;
+                else if (control == 0x772) slot = 5;
+                else if (control == 0x773) slot = 6;
+                else slot = control == 0x774 ? 7 : -1;
+                DAT_008B3FC8[data].key = slot;
+            }
+            break;
+        }
+    }
+    if (Session_00A8B238.GameMode == 4 && Is_005E8AE0_B()) {
+        ShowWindow(item, SW_HIDE);
+        item = GetDlgItem(dialog, 0x794);
+        ShowWindow(item, SW_HIDE);
+        return;
+    }
+    if (!hidden)
+        ShowWindow(item, SW_SHOW);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -732,6 +1342,51 @@ void FUN_004E6150(int* value, char* code, char* buffer, int count)
     *value = DAT_0084E863;
     if (buffer != NULL) {
         strncpy(buffer, DAT_0084E865, count);
+    }
+}
+
+// GLOBAL: GAMEMD 0x84E864 -- the CPU model byte (family is at 0x84E863).
+extern "C" signed char DAT_0084E864;
+// STRING: GAMEMD 0x822CD8, 0x822CC8 -- CPU vendor strings.
+extern "C" const char DAT_00822CD8[];
+extern "C" const char DAT_00822CC8[];
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4E6190
+// Classify the processor: -1 when it cannot be read, 7 AMD, 8 Cyrix, otherwise 0..6 by family and model.
+int __cdecl FUN_004E6190()
+{
+    int family;
+    char code;
+    char vendor[0x40];
+    FUN_004E6150(&family, &code, vendor, 0x40);
+    if (family == 0 || DAT_0084E864 == 0)
+        return -1;
+    if (_stricmp(vendor, DAT_00822CD8) == 0)
+        return 7;
+    if (_stricmp(vendor, DAT_00822CC8) == 0)
+        return 8;
+    switch (family) {
+    case 4:
+        return 0;
+    case 5:
+        return 1;
+    case 6:
+        switch (DAT_0084E864) {
+        case 3:
+        case 5:
+            return 3;
+        default:
+            return 2;
+        case 6:
+            return 5;
+        case 7:
+        case 8:
+        case 10:
+            return 4;
+        }
+    default:
+        return 6;
     }
 }
 

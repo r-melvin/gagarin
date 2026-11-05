@@ -11,6 +11,7 @@
 #include "_rt/gg_static_assert.h"
 #include "multiplayer_game_mode.h"
 #include "_layout/vector_class.h"
+#include "_layout/score_entry_00a8d1fc.h"
 
 // CoopCampaignClass: the 0x70-byte object behind MPCooperative +0x40 and the
 // element of the +0x324 vector (RTTI `DynamicVectorClass<CoopCampaignClass*>`,
@@ -19,15 +20,47 @@ class CoopCampaignClass
 {
 public:
     CoopCampaignClass();                  // GAMEMD 0x49B610 (decl; reloc)
+    // GAMEMD 0x49B660 -- narrows two UTF16 names into Name/Name2, then resets as 0x49B610; RET 8.
+    CoopCampaignClass* FUN_0049B660(const unsigned short* first, const unsigned short* second);
     ~CoopCampaignClass();                 // GAMEMD 0x49B720 (decl; reloc)
     void FUN_0049B760(void* a, void* b);  // GAMEMD 0x49B760 (decl; reloc) RET 8
-    void FUN_0049CAF0(int a);             // GAMEMD 0x49CAF0 (decl; reloc) RET 4
+    bool FUN_0049D120();                  // GAMEMD 0x49D120
+    bool FUN_0049D390(char* map);         // GAMEMD 0x49D390 RET 4
+    bool FUN_0049CAF0(int a);             // GAMEMD 0x49CAF0 RET 4
     bool FUN_0049BC80(int* out);          // GAMEMD 0x49BC80 (decl; reloc) RET 4
     bool FUN_0049BCC0(int* out);          // GAMEMD 0x49BCC0 (decl; reloc) RET 4
 
-    char unknown_00[0x70];                // +0x00
+    char Name[0x14];                      // +0x00 narrowed name (0x49B660, 0x49B760)
+    int unknown_14;                       // +0x14 -2 when reset (0x49B610)
+    int unknown_18;                       // +0x18
+    char Name2[0x14];                     // +0x1C second narrowed name
+    int unknown_30;                       // +0x30
+    int unknown_34;                       // +0x34
+    int unknown_38;                       // +0x38 -1 when reset
+    char** unknown_3C;                    // +0x3C array of 0x104-byte strings (0x49CAF0)
+    int unknown_40;                       // +0x40 element count of unknown_3C
+    int unknown_44;                       // +0x44 -1 when reset
+    int unknown_48;                       // +0x48
+    int unknown_4C;                       // +0x4C
+    int unknown_50;                       // +0x50
+    int unknown_54;                       // +0x54
+    int unknown_58;                       // +0x58
+    int unknown_5C;                       // +0x5C
+    int unknown_60;                       // +0x60
+    int unknown_64;                       // +0x64
+    int unknown_68;                       // +0x68
+    bool unknown_6C;                      // +0x6C
 };
 GG_STATIC_ASSERT(sizeof(CoopCampaignClass) == 0x70);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, Name2) == 0x1C);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_3C) == 0x3C);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_40) == 0x40);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_44) == 0x44);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_48) == 0x48);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_68) == 0x68);
+GG_STATIC_ASSERT(offsetof(CoopCampaignClass, unknown_6C) == 0x6C);
 
 // A 12-byte record whose constructor 0x53ECB0 fills its first ten bytes with
 // 0xFF (the array at +0xC4 steps by 0xC).
