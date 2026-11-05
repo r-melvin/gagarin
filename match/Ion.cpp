@@ -29,6 +29,7 @@
 #include "_rt/gg_static_assert.h"
 #include "runtime_misc_globals.h"
 #include "_layout/cell.h"
+#include "header_init_shapes.h"
 #include "_layout/anim_class.h"
 #include "_layout/anim_type_class.h"
 #include "_layout/rules_class.h"
@@ -460,7 +461,7 @@ extern int DAT_00A9FA84;
 // GLOBAL: GAMEMD 0xA9FA90
 extern int DAT_00A9FA90;
 // GLOBAL: GAMEMD 0xA9FA30
-extern CoordStruct DAT_00A9FA30;
+extern HeaderCoordInit DAT_00A9FA30;
 // FUNCTION: GAMEMD 0x6D2120 (decl; reloc)
 int FUN_006D2120(int);
 

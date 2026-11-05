@@ -818,13 +818,9 @@ GG_STATIC_ASSERT(sizeof(Entry_004A35F0) == 0x20);
 GG_STATIC_ASSERT(offsetof(Entry_004A35F0, One) == 0x0C);
 GG_STATIC_ASSERT(offsetof(Entry_004A35F0, unknown_18) == 0x18);
 
-// An object owned through the global pointer at 0xA9FA9C; only its virtual destructor is used.
-struct Obj_00A9FA9C
-{
-    virtual ~Obj_00A9FA9C() {}
-};
+#include "dsurface_class.h"
 // GLOBAL: GAMEMD 0xA9FA9C
-extern Obj_00A9FA9C* DAT_00A9FA9C;
+extern DSurface* DAT_00A9FA9C;
 
 // A six-byte value copied as a dword and a word.
 struct Bytes6_0053EDC0
@@ -940,7 +936,7 @@ GG_STATIC_ASSERT(offsetof(Obj_0048BAD0, unknown_54) == 0x54);
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA9FA9C
-extern Obj_00A9FA9C* DAT_00A9FA9C;
+extern DSurface* DAT_00A9FA9C;
 // GLOBAL: GAMEMD 0x828140
 extern int DAT_00828140;
 // END defined globals

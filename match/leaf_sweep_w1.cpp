@@ -521,13 +521,9 @@ void __fastcall FUN_004F4DF0(unsigned char* pixels, unsigned int count, int widt
     }
 }
 
-// An object owned through the global pointer at 0xA9FA9C; only its virtual destructor is used.
-struct Obj_00A9FA9C
-{
-    virtual ~Obj_00A9FA9C() {}
-};
+#include "dsurface_class.h"
 // GLOBAL: GAMEMD 0xA9FA9C
-extern Obj_00A9FA9C* DAT_00A9FA9C;
+extern DSurface* DAT_00A9FA9C;
 
 // FUNCTION: GAMEMD 0x53BB80
 // Destroys the object held in the global pointer, if any, and clears the pointer.
@@ -760,7 +756,7 @@ void Obj_0048BAD0::Set(int a, int b, int c, int d, int e)
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xA9FA9C
-Obj_00A9FA9C* DAT_00A9FA9C;
+DSurface* DAT_00A9FA9C;
 // GLOBAL: GAMEMD 0x828140
 int DAT_00828140 = 1;
 // END defined globals
