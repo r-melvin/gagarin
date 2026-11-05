@@ -35,6 +35,7 @@
 // touched, so there is no layout to assert.
 
 #include <stddef.h>
+#include <windows.h>
 #include "mathtbl_init_shapes.h"
 #include "_rt/gg_static_assert.h"
 
@@ -42,19 +43,20 @@
 #include "_layout/geometry2d.h"
 #include "_layout/score_font_class.h"
 #include "_layout/ms_anim.h"
+#include "wwlib/surface/surface_class.h"
 
 // Draw surface: slot +0x08 is a rectangle copy, slot +0x30 a line draw.
 class Surface_0068FFE0
 {
 public:
     virtual ~Surface_0068FFE0();                                   // +0x00
-    virtual void vslot_04();                                       // +0x04
+    virtual int vf_1(Surface_0068FFE0* source, int a, int b);      // +0x04 whole-surface copy
     virtual int vf_2(RectangleStruct& dest, Surface_0068FFE0* source,
                           RectangleStruct& source_rect, int trans, int blit); // +0x08
     virtual void vslot_0C();                                       // +0x0C
     virtual void vslot_10();                                       // +0x10
     virtual void vslot_14();                                       // +0x14
-    virtual void vslot_18();                                       // +0x18
+    virtual int vf_6(unsigned int color);                          // +0x18 fill
     virtual void vslot_1C();                                       // +0x1C
     virtual void vslot_20();                                       // +0x20
     virtual void vslot_24();                                       // +0x24
@@ -204,6 +206,41 @@ int ScoreHost_0068ED80::FUN_0068ED80(HouseClass* house)
     return efficiency;
 }
 
+// LIBRARY: GAMEMD 0x7CA564 (decl; reloc) -- the CRT wide-character bounded copy.
+extern "C" unsigned short* __cdecl FUN_007CA564(unsigned short* destination, const unsigned short* source,
+                                                unsigned int count);
+
+// A text printer: the font it draws with sits at +0x0C.
+struct Printer_0068FB10
+{
+    char _pad00[0x0C];
+    ScoreFontClass* Font;   // +0x0C
+
+    // FUNCTION: GAMEMD 0x68FB10
+    RectangleStruct FUN_0068FB10(Surface* surface, const unsigned short* text, int limit, int count, int x, int y);
+};
+GG_STATIC_ASSERT(offsetof(Printer_0068FB10, Font) == 0xC);
+
+// FUNCTION: GAMEMD 0x68FB10
+// Print up to `count` characters of a text with its baseline at y; answers the
+// rectangle the text covers.
+RectangleStruct Printer_0068FB10::FUN_0068FB10(Surface* surface, const unsigned short* text, int limit, int count,
+                                               int x, int y)
+{
+    unsigned short buffer[64];
+    FUN_007CA564(buffer, text, limit < count ? limit : count);
+    int top = y - Font->unknown_08;
+    Font->vf_3(surface, buffer, x, top, 2);
+    int height = Font->unknown_08;
+    int width = Font->vf_2(buffer);
+    RectangleStruct result;
+    result.X = x;
+    result.Y = top;
+    result.Width = width;
+    result.Height = height;
+    return result;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x68FFE0
 void BlinkCursorHost_0068FFE0::FUN_0068FFE0(int x, int y)
@@ -319,6 +356,47 @@ ScoreFontClass::~ScoreFontClass()
 }
 // SYNTHETIC: GAMEMD 0x691040 -- ScoreFontClass::`scalar deleting destructor' (vtable 0x7F0EF0 slot 0).
 
+// FUNCTION: GAMEMD 0x407000 (decl; reloc)
+int __cdecl FUN_00407000();
+
+// FUNCTION: GAMEMD 0x690640
+// Load the three shared text tables the score fonts draw from: each comes from
+// the mix files, else from disk (and is then owned by the table slot).
+void __fastcall FUN_00690640(ScoreFontClass* font)
+{
+    if (FUN_00407000()) {
+        CCFileClass file;
+        FileClass* base = &file;
+        DAT_00B05590[0].Table = FUN_005B40B0("TEXT1.AUD", false);
+        if (DAT_00B05590[0].Table == 0) {
+            base->SetFileName("TEXT1.AUD");
+            base->Open(1);
+            DAT_00B05590[0].Table = file.ReadWholeFile();
+            DAT_00B05590[0].Loaded = true;
+            file.Close();
+            FUN_004068E0("ScoreScreen: Loaded TEXT1.AUD\n");
+        }
+        DAT_00B05590[1].Table = FUN_005B40B0("TEXT2.AUD", false);
+        if (DAT_00B05590[1].Table == 0) {
+            base->SetFileName("TEXT2.AUD");
+            base->Open(1);
+            DAT_00B05590[1].Table = file.ReadWholeFile();
+            DAT_00B05590[1].Loaded = true;
+            file.Close();
+            FUN_004068E0("ScoreScreen: Loaded TEXT2.AUD\n");
+        }
+        DAT_00B05590[2].Table = FUN_005B40B0("TEXT3.AUD", false);
+        if (DAT_00B05590[2].Table == 0) {
+            base->SetFileName("TEXT3.AUD");
+            base->Open(1);
+            DAT_00B05590[2].Table = file.ReadWholeFile();
+            DAT_00B05590[2].Loaded = true;
+            file.Close();
+            FUN_004068E0("ScoreScreen: Loaded TEXT3.AUD\n");
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6907A0
 int ScoreFontClass::vf_2(const unsigned short* text)
 {
@@ -332,6 +410,36 @@ int ScoreFontClass::vf_2(const unsigned short* text)
     return width;
 }
 
+// FUNCTION: GAMEMD 0x6907E0
+// Width of one glyph: a space is eight; any other character is its frame width
+// (three frames per glyph, clamped to the table).
+int ScoreFontClass::vf_1(unsigned short ch)
+{
+    char src = (char)ch;
+    if (ch == 0x20)
+        return 8;
+    char c;
+    CharToOemBuffA(&src, &c, 1);
+    int glyph = c + -0x21;
+    if (glyph <= 0)
+        glyph = 0;
+    else if (glyph >= 0xD8)
+        glyph = 0xD8;
+    RectangleStruct frame;
+    return ((MSShapeFile*)unknown_0C)->GetFrameRect(&frame, glyph * 3 + 2)->Width;
+}
+
+// GLOBAL: GAMEMD 0x88730C
+extern Surface* DAT_0088730C_Surface;
+// GLOBAL: GAMEMD 0x887310
+extern Surface* DAT_00887310_Surface;
+
+// FUNCTION: GAMEMD 0x4AED70 (decl; reloc) -- draw one frame of a shape onto a surface: surface in ECX,
+// convert table in EDX, then the frame, position, clip and the remaining draw arguments.
+void FUN_004AED70(Surface* surface, ConvertClass* convert, MSShapeFile* shape, int frame,
+                  const Point2D& position, const RectangleStruct& clip, int flags, int a8, int a9, int a10,
+                  int zAdjust, int a12, int a13, int a14, Point2D offset);
+
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
 
 // GLOBAL: GAMEMD 0xA8ED80 -- set once the pending operation has completed.
@@ -342,20 +450,58 @@ void FUN_005D4D50();
 
 // A child object stored in the host's list (only vtable slots 1 and 2 are used here).
 struct Child_006904C0 {
-    virtual void Slot0();
+    virtual ~Child_006904C0();
     virtual void Begin();
     virtual void End();
+    virtual char Update(int a);   // +0x0C
 };
 
 struct Host_006904C0 {
-    char _pad00[0x20];
+    int X;                       // +0x00
+    int Y;                       // +0x04
+    int Field08;                 // +0x08
+    char _pad0C[0x14];
     Child_006904C0** Children;   // +0x20
     char _pad24[0x08];
     int ChildCount;              // +0x2C
 
+    void FUN_00690360();
     // FUNCTION: GAMEMD 0x6904C0 (__thiscall)
     void FUN_006904C0();
 };
+
+// GLOBAL: GAMEMD 0xB05584
+extern char DAT_00B05584;
+// GLOBAL: GAMEMD 0x8A00A0
+extern bool DAT_008A00A0;
+
+// FUNCTION: GAMEMD 0x690360
+// Update every child; a child that answers 1 is deleted and the list closed up.
+void Host_006904C0::FUN_00690360()
+{
+    DAT_00B05584 = 0;
+    if (DAT_008A00A0) {
+        DAT_008A00A0 = false;
+        DAT_0088730c->vf_6(0);
+        DAT_0088730c->vf_1(DAT_00887310, 0, 1);
+    }
+    int i = 0;
+    if (0 < ChildCount) {
+        do {
+            if (Children[i]->Update(Field08) == 1) {
+                Child_006904C0* child = Children[i];
+                if (child)
+                    delete child;
+                if (i < ChildCount) {
+                    ChildCount--;
+                    for (int j = i; j < ChildCount; j++)
+                        Children[j] = Children[j + 1];
+                }
+            }
+            i++;
+        } while (i < ChildCount);
+    }
+}
 
 // FUNCTION: GAMEMD 0x6904C0
 // Tell every child to begin, wait (pumping messages) until the completion flag is set, then
@@ -488,6 +634,7 @@ class ScoreTimeClass : public ScoreAnimClass
 public:
     ScoreTimeClass(int x, int y, int param, int a, int b, int c);
     virtual ~ScoreTimeClass() {}
+    char FUN_00690C00(int unused);
 
     int Field1C;   // +0x1C
     int Field20;   // +0x20
@@ -520,6 +667,24 @@ GG_STATIC_ASSERT(sizeof(ScorePrintClass) == 0x2C);
 ScoreTimeClass::ScoreTimeClass(int x, int y, int param, int a, int b, int c)
     : ScoreAnimClass(x, y, param), Field1C(0), Field20(a), Field24(b), Field28(c)
 {
+}
+
+// FUNCTION: GAMEMD 0x690C00
+// Advance the animation when its interval has run out: restart the timer,
+// step the frame (wrapping at the frame count) and draw it onto both surfaces.
+char ScoreTimeClass::FUN_00690C00(int unused)
+{
+    if (Timer.TimeLeft() == 0) {
+        Timer = MSTimer(Field24);
+        Field1C++;
+        if (Field1C >= Field20)
+            Field1C = 0;
+        FUN_004AED70(DAT_0088730C_Surface, (ConvertClass*)Field28, (MSShapeFile*)Param, Field1C,
+                     Point2D(X, Y), DAT_0088730C_Surface->GetRect(), 0x400, 0, 0, 0, 1000, 0, 0, 0, Point2D(0, 0));
+        FUN_004AED70(DAT_00887310_Surface, (ConvertClass*)Field28, (MSShapeFile*)Param, Field1C,
+                     Point2D(X, Y), DAT_00887310_Surface->GetRect(), 0x400, 0, 0, 0, 1000, 0, 0, 0, Point2D(0, 0));
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x690D10
@@ -567,6 +732,8 @@ ScoreAnimClass::ScoreAnimClass(int x, int y, int param) : X(x), Y(y), Param(para
 // SYNTHETIC: GAMEMD 0x690FE0
 // SYNTHETIC: GAMEMD 0x691000
 // SYNTHETIC: GAMEMD 0x691020
+// SYNTHETIC: GAMEMD 0x6910A0 -- ScoreFullFontClass `scalar deleting destructor' (inlines ~ScoreFontClass).
+// SYNTHETIC: GAMEMD 0x691100 -- ScoreBigFontClass `scalar deleting destructor' (inlines ~ScoreFontClass).
 
 // BEGIN defined globals (define_globals.py)
 // GLOBAL: GAMEMD 0xB05560

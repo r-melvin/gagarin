@@ -186,18 +186,7 @@ public:
 GG_STATIC_ASSERT(sizeof(Obj_007B66D0_msanim_family_methods) == 4
               && offsetof(Obj_007B66D0_msanim_family_methods, Buffer) == 0x00);
 
-// The Bink playback object held by MSBinkAnim. Its destructor is an ordinary
-// non-virtual one: 0x5CEC83 is `MOV ECX,EDI; CALL 0x432700` followed by the
-// plain `operator delete`, which is exactly what a `delete` of a class with a
-// non-virtual destructor expands to.
-class MSBinkPlayer
-{
-public:
-    MSBinkPlayer(const char* file, int flags);  // FUNCTION: GAMEMD 0x4326C0 (decl)
-    ~MSBinkPlayer();                     // FUNCTION: GAMEMD 0x432700 (decl)
-    void Move(int x, int y);             // FUNCTION: GAMEMD 0x432AB0 (decl)
-    bool IsDone();                       // FUNCTION: GAMEMD 0x432C50 (decl)
-};
+#include "bink_player_teardown_methods.h"
 
 // The VQA playback object held by MSVQAnim. Retail stops it and then deletes
 // it, reloading the member in between (0x5CECCE then 0x5CECD3), which is the

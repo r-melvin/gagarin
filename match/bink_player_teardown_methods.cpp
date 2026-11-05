@@ -4,8 +4,6 @@
 
 #include "bink_player_teardown_methods.h"
 
-// FUNCTION: GAMEMD 0x432700
-//
 // Three independent releases, each guarded by its own emptiness test and each
 // writing the empty value back inside the guard - the clears are not shared and
 // not unconditional, which is the opposite of the buffer-release family where
@@ -16,7 +14,8 @@
 // both of its calls and reads the other two once each; going through the member
 // directly makes VC6 re-read it for the argument after the test, which costs an
 // instruction per block.
-void BinkPlayer_00432700::FUN_00432700()
+// FUNCTION: GAMEMD 0x432700
+MSBinkPlayer::~MSBinkPlayer()
 {
     void* helper = Helper;
 
@@ -41,11 +40,10 @@ void BinkPlayer_00432700::FUN_00432700()
     }
 }
 
-// FUNCTION: GAMEMD 0x432A60
-//
 // The second player's teardown. Byte-identical to the above apart from the
 // call displacements; written out rather than shared.
-void BinkPlayer_00432700::FUN_00432A60()
+// FUNCTION: GAMEMD 0x432A60
+void MSBinkPlayer::FUN_00432A60()
 {
     void* helper = Helper;
 

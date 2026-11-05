@@ -19,6 +19,7 @@ class ScoreBigFontClass : public ScoreFontClass
 {
 public:
     ScoreBigFontClass(ConvertClass* convert);   // 0x690AE0, __thiscall, RET 4
+    virtual ~ScoreBigFontClass() {}
     // 0  0x691100: deleting destructor; no destructor of its own is attested (no store of its own vtable)
 };
 GG_STATIC_ASSERT(sizeof(ScoreBigFontClass) == 0x18);
