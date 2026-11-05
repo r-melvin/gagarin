@@ -45,6 +45,8 @@ public:
     int Length() const;
     // Declaration: GAMEMD 0x7B5F10
     int FUN_007B5F10(int cursor, const char* delimiters, Wstring* token);
+    // Declaration: GAMEMD 0x7B6280 -- integer value of the text (atoi), RET 0.
+    int FUN_007B6280();
     // Declaration: GAMEMD 0x7B51D0
     void FUN_007B51D0(const Wstring* trim);
     // Declaration: GAMEMD 0x7B5230
@@ -95,6 +97,8 @@ public:
     Wstring& operator+=(const char* text);
     // Declaration: GAMEMD 0x7B4CD0 -- append another string; returns this.
     Wstring& operator+=(const Wstring& other);
+    // Declaration: GAMEMD 0x7B4ED0 -- a new string holding this followed by `other` (hidden result on the stack).
+    Wstring operator+(const Wstring& other) const;
     // Declaration: GAMEMD 0x7B4B50 -- append another string (unset counts as the fallback text).
     bool FUN_007B4B50(const Wstring* other);
     // Declaration: GAMEMD 0x7B5A40 -- replace with a copy of `text`; AL reports success.
