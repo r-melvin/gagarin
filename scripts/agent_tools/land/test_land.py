@@ -817,6 +817,45 @@ class M3GateSummary(unittest.TestCase):
         open(os.path.join(d, "steps.tsv"), "a").write("compile\t1\n")
         self.assertFalse(S.summarize(d)["ok"])
 
+    def write_compare(self, d, identical, text_diff):
+        os.makedirs(os.path.join(d, "gate-link-m3"), exist_ok=True)
+        open(os.path.join(d, "steps.tsv"), "w").write("verify\t0\n")
+        json.dump({"identical": identical, "sections": {".text": {"diff_bytes": text_diff}, ".data": {"diff_bytes": 0}}},
+                  open(os.path.join(d, "gate-link-m3", "compare.json"), "w"))
+
+    def test_require_identical_exit_status(self):
+        import contextlib
+        import io
+        import m3_gate_summary as S
+        d = tempfile.mkdtemp()
+
+        def run(*extra):
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                rc = S.main([d] + list(extra))
+            return rc, json.load(open(os.path.join(d, "m3_gate_summary.json")))["ok"]
+        self.write_compare(d, False, 3)
+        self.assertEqual(run(), (0, True))                          # measurement only without the flag
+        self.assertEqual(run("--require-identical"), (3, False))
+        self.write_compare(d, True, 0)
+        self.assertEqual(run("--require-identical"), (0, True))
+        self.write_compare(d, True, 1)                              # any differing section fails, whatever the flag says
+        self.assertEqual(run("--require-identical"), (3, False))
+        os.unlink(os.path.join(d, "gate-link-m3", "compare.json"))  # no comparison is not a pass
+        self.assertEqual(run("--require-identical")[0], 3)
+
+
+class BindPlace(unittest.TestCase):
+    def test_misplaced(self):
+        import bindplace as B
+        text = ("  Address         Publics by Value              Rva+Base     Lib:Object\n"
+                " 0001:00000000       ?f@@YAXXZ                  00401000 f   a.obj\n"
+                " 0001:003df000       ?copy@@YAXXZ               007e03e0 f i MPCoop.obj\n"
+                " 0002:00000010       ??_7A@@6B@                 007e1668     a.obj\n"
+                " 0001:003c9000       _memmove                   007d0a20 f   libcmt_0458.obj\n"
+                " 0001:00001000       ?unbound@@YAXXZ            00402000 f   a.obj\n")
+        bind = {"?f@@YAXXZ": "0x00401000", "?copy@@YAXXZ": "0x004779E0", "??_7A@@6B@": "0x007E1668", "_memmove": "0x007CA090"}
+        self.assertEqual(B.misplaced(text, bind), [("?copy@@YAXXZ", 0x7E03E0, 0x4779E0, "MPCoop.obj")])
+
 
 class AllowedPaths(unittest.TestCase):
     def allowed(self, path):

@@ -80,6 +80,12 @@ refreshes the worklist and cluster briefs for the orchestrator.
 (`m3_gate_summary.json`); do not write a per-lander wrapper. `land/placement_diff.py OLD/placement.json NEW/placement.json`
 classifies changed pieces and gives project bytes without ??_R3. Wait for the gate with its exit status or `$!`, never `pgrep -f`.
 
+**Before any push:** `land/m3_gate.sh <worktree> --full --require-identical` must exit 0. Without the flag the gate only
+measures: it reports `ok:true` beside `identical:false`. With it, any differing section exits 3 and sets `ok:false`.
+
+The gate's `bindplace` step (`land/bindplace.py`) fails when the link map puts a bound project symbol away from its binding:
+strict verify resolves through the binding, so a row can prove while the link places that body elsewhere.
+
 ## What stays manual
 
 Judgment items the tools report but never decide: which view of a global/class is

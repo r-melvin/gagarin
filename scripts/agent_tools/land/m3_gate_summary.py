@@ -3,10 +3,11 @@
 # Provenance: original project tooling.
 """m3_gate_summary.py: build the machine-readable summary of one m3_gate.sh run (called by it).
 
-    m3_gate_summary.py OUTDIR [--worktree WT]
+    m3_gate_summary.py OUTDIR [--worktree WT] [--require-identical]
 
 Reads OUTDIR/steps.tsv (step<TAB>rc), gate-verify.log, gate-m3/compare.json (compare_image --json),
 the duplicate and unittest logs, and writes OUTDIR/m3_gate_summary.json (also printed).
+--require-identical: ok is false and the exit status 3 unless every section equals retail.
 """
 import argparse
 import json
@@ -22,7 +23,7 @@ def read(p):
         return ""
 
 
-def summarize(outdir, worktree=""):
+def summarize(outdir, worktree="", require_identical=False):
     steps = {}
     for ln in read(os.path.join(outdir, "steps.tsv")).splitlines():
         k, _, v = ln.partition("\t")
@@ -50,6 +51,9 @@ def summarize(outdir, worktree=""):
     ut = read(os.path.join(outdir, "gate-unittest.log")).strip().splitlines()
     s["unittests"] = ut[-1] if ut else None
     s["ok"] = bool(steps) and all(v == 0 for v in steps.values() if isinstance(v, int)) and s["identical"] is not None
+    if require_identical:
+        s["require_identical"] = s["identical"] is True and not any(s["differing_bytes"].values())
+        s["ok"] = s["ok"] and s["require_identical"]
     return s
 
 
@@ -57,11 +61,15 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("outdir")
     ap.add_argument("--worktree", default="")
+    ap.add_argument("--require-identical", action="store_true")
     a = ap.parse_args(argv)
-    s = summarize(a.outdir, a.worktree)
+    s = summarize(a.outdir, a.worktree, a.require_identical)
     text = json.dumps(s, indent=1, sort_keys=True)
     open(os.path.join(a.outdir, "m3_gate_summary.json"), "w").write(text + "\n")
     print(text)
+    if a.require_identical and not s["require_identical"]:
+        print("m3_gate: image differs from retail: %s" % (s["differing_bytes"] or "no comparison"), file=sys.stderr)
+        return 3
     return 0
 
 

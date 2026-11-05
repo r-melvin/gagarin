@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # m3_gate.sh: the full M3 landing gate for one worktree, as one command.
 #
-#   m3_gate.sh WORKTREE [--full] [--jobs N] [--out DIR] [--link-progress]
+#   m3_gate.sh WORKTREE [--full] [--jobs N] [--out DIR] [--link-progress] [--require-identical]
 #
 # Steps, in order (each runs even if an earlier one failed; every rc is recorded):
 #   prebuild      build_project.py --out build-vc6/gate
@@ -12,6 +12,7 @@
 #   link_m3       link_m1.py --hybrid --pin-data --order-tail --source-data --search-literals
 #                   --distribution-patches --rsrc-from-project --rsrc-art-from-retail
 #   compare       compare_image.py --placement .../placement.json --json .../compare.json
+#   bindplace     bindplace.py: every bound project symbol is linked at its binding's address
 #   duplicates    check_duplicates.py
 #   unittests     python3 -m unittest discover -s scripts/vc6, then -s scripts/agent_tools/wwstruct   (GAMEMD_BINARY unset, as the gate does)
 # --link-progress also runs the M1 link and refreshes link_progress (tracked files). It never touches scripts/data/link_progress.json or the progress SVGs unless --link-progress is
@@ -20,24 +21,25 @@
 # partials, regressed, differing_bytes per section, project_bytes (+ excl. ??_R3), the
 # placement_json path, duplicates, unittests, per-step rc and an overall ok flag.
 # matched/partials count only the TUs verify_all checked (those affected by the change unless --full).
-# Exit 0 iff every step passed. Needs GAMEMD_BINARY (no default). Diff two runs' placement with
+# Exit 0 iff every step passed. --require-identical also fails the run (exit 3, summary ok:false) when any
+# section differs from retail or no comparison exists; it must pass before any push. Needs GAMEMD_BINARY (no default). Diff two runs' placement with
 # placement_diff.py.
 #
 # Waiting for it from a background shell: use this script's exit status or `$!`, never
 # `pgrep -f <pattern>` (the pattern is in your own command line and matches itself).
 set -u
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-wt=""; full=0; jobs=4; out=""; lp=0
+wt=""; full=0; jobs=4; out=""; lp=0; ri=()
 while [ $# -gt 0 ]; do
   case "$1" in
-    --full) full=1;; --jobs) jobs="$2"; shift;; --out) out="$2"; shift;; --link-progress) lp=1;;
-    -h|--help) sed -n 2,30p "$0"; exit 0;;
+    --full) full=1;; --jobs) jobs="$2"; shift;; --out) out="$2"; shift;; --link-progress) lp=1;; --require-identical) ri=(--require-identical);;
+    -h|--help) sed -n 2,32p "$0"; exit 0;;
     -*) echo "m3_gate.sh: unknown option $1" >&2; exit 2;;
     *) wt="$1";;
   esac
   shift
 done
-[ -d "$wt" ] || { echo "usage: m3_gate.sh WORKTREE [--full] [--jobs N] [--out DIR] [--link-progress]" >&2; exit 2; }
+[ -d "$wt" ] || { echo "usage: m3_gate.sh WORKTREE [--full] [--jobs N] [--out DIR] [--link-progress] [--require-identical]" >&2; exit 2; }
 [ -n "${GAMEMD_BINARY:-}" ] || { echo "m3_gate.sh: GAMEMD_BINARY is not set" >&2; exit 2; }
 cd "$wt" || exit 2
 wt="$(pwd)"
@@ -67,12 +69,14 @@ step link_m3    "$out/gate-m3.log"       python3 scripts/vc6/link_m1.py --objdir
 python3 scripts/vc6/compare_image.py --placement "$M3/placement.json" --json "$M3/compare.json" "$M3/m1.exe" > "$out/gate-compare.log" 2>&1
 crc=$?; [ -f "$M3/compare.json" ] && crc=0
 printf 'compare\t%s\n' "$crc" >> "$out/steps.tsv"; echo "compare rc=$crc"
+step bindplace  "$out/gate-bindplace.log" python3 "$here/bindplace.py" "$M3/m1.map" scripts/data/symbol_bindings.json
 step duplicates "$out/gate-dup.log"      python3 scripts/vc6/check_duplicates.py
 step unittests  "$out/gate-unittest.log" env -u GAMEMD_BINARY bash -c "python3 -m unittest discover -s scripts/vc6 -p 'test_*.py' && python3 -m unittest discover -s scripts/agent_tools/wwstruct -p 'test_*.py'"
 if [ "$lp" = 1 ]; then
   step link_m1 "$out/gate-m1.log" python3 scripts/vc6/link_m1.py --objdir "$O" --out "$out/gate-link" --pin-data --order-tail
   step link_progress "$out/gate-link-progress.log" python3 scripts/orchestration/link_svg.py --refresh --diag build-vc6/svg-diag/report.json --m1 "$out/gate-link" --m3 "$M3"
 fi
-python3 "$here/m3_gate_summary.py" "$out" --worktree "$wt"
+python3 "$here/m3_gate_summary.py" "$out" --worktree "$wt" ${ri[@]+"${ri[@]}"}
+src=$?
 grep -qv $'\t0$' "$out/steps.tsv" && exit 1
-exit 0
+exit "$src"

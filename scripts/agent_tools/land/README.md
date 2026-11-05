@@ -109,6 +109,16 @@ conflict: nothing is merged and the landing exits 5 before the branch is set. Af
 re-runs on the tip commit with no symbol map (`--no-central-proof` skips it); a row that does not prove from
 the central bindings alone fails the landing the same way.
 
+## M3 identity before a push
+
+`m3_gate.sh WORKTREE --full --require-identical` must exit 0 before any push. Without the flag the gate
+is a measurement: a differing image still gives `ok:true` with `identical:false`. With it, a differing
+section or a missing comparison sets `ok:false` and exits 3 (a failed step still exits 1).
+
+The gate's `bindplace` step (`bindplace.py M1.map BINDINGS`, always on) fails when the link map puts a
+bound project symbol anywhere but its binding's address. Strict verify resolves relocations through the
+binding and cannot see this. It reads the map because a stray body is not among the placement pieces.
+
 ## gates.py
 
 Gates, in order; each prints `GATE name PASS|FAIL|SKIP secs detail`; logs and `summary.json` are in the
