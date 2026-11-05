@@ -861,7 +861,7 @@ struct RulesClass
     int LightningSeparation;   // +0x17AC
     bool LightningPrintText;   // +0x17B0
     char unknown_17B1[0x3];
-    int LightningWarhead;   // +0x17B4
+    WarheadTypeClass* LightningWarhead;   // +0x17B4 (compared with a warhead pointer by 0x48A4F0)
     int ForceShieldRadius;   // +0x17B8
     int ForceShieldDuration;   // +0x17BC
     int ForceShieldBlackoutDuration;   // +0x17C0

@@ -69,6 +69,7 @@
 void* __cdecl operator new(unsigned int size);      // GAMEMD 0x7C8E17 (LIBRARY)
 void  __cdecl operator delete(void* p);             // GAMEMD 0x7C8B3D (LIBRARY)
 
+struct CoordStruct;
 class SpotLightClass;
 
 // GLOBAL: GAMEMD 0xAC1678 — SpotLightClass::Array, one
@@ -93,6 +94,8 @@ class SpotLightClass
 public:
     // FUNCTION: GAMEMD 0x5FF250 (__thiscall)
     SpotLightClass(Payload_005FF250 payload, int nFlags) throw();
+    // FUNCTION: GAMEMD 0x5FF250 (decl; reloc) -- the same entry point, the payload read as a coordinate.
+    SpotLightClass(CoordStruct where, int nFlags) throw();
 
     // FUNCTION: GAMEMD 0x5FF2D0 (__thiscall) — the unregistering destructor.
     ~SpotLightClass() throw();

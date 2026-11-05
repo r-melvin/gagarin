@@ -86,13 +86,25 @@ public:
 
     int          unknown_04;                        // +0x04 compared with unknown_28 by IPXManagerClass::vf_2
     int          unknown_08;                        // +0x08
-    char         _pad0C[0x28 - 0x0C];
+    int          unknown_0C;                        // +0x0C
+    int          unknown_10;                        // +0x10
+    int          unknown_14;                        // +0x14
+    int          unknown_18;                        // +0x18
+    int          unknown_1C;                        // +0x1C
+    int          unknown_20;                        // +0x20
+    CommSendEntry* unknown_24;                      // +0x24
     int          unknown_28;                         // +0x28
     int          unknown_2C;                        // +0x2C
-    char         _pad30[0x38 - 0x30];
+    int*         unknown_30;                        // +0x30
+    CommReceiveEntry* unknown_34;                   // +0x34
     int          unknown_38;                      // +0x38
     unsigned int unknown_3C;                        // +0x3C
-    char         _pad40[0x58 - 0x40];
+    int*         unknown_40;                        // +0x40
+    int          unknown_44;                        // +0x44
+    int          unknown_48;                        // +0x48
+    int          unknown_4C;                        // +0x4C
+    char         _pad50[0x54 - 0x50];
+    int          unknown_54;                        // +0x54
 
     // FUNCTION: GAMEMD 0x48B0E0 (decl; reloc)
     CommBufferClass(int sendSlots, int receiveSlots, int maxlen, int extraLength);
@@ -102,13 +114,13 @@ public:
     // FUNCTION: GAMEMD 0x48B410 (decl; reloc)
     int FUN_0048B410(void* a1, int a2, void* a3, int a4, unsigned short a5);   // a5 stored as a word (0x48B410)
     // FUNCTION: GAMEMD 0x48B570 (decl; reloc)
-    int FUN_0048B570(void* a1, void* a2, int a3, void* a4, void* a5, int a6);
+    int FUN_0048B570(void* a1, int* a2, int a3, void* a4, int* a5, unsigned short* a6);
     // FUNCTION: GAMEMD 0x48B720 (decl; reloc)
     CommSendEntry* FUN_0048B720(int index);
     // FUNCTION: GAMEMD 0x48B750 (decl; reloc)
     int FUN_0048B750(void* a1, int a2, void* a3, int a4);
     // FUNCTION: GAMEMD 0x48B890 (decl; reloc)
-    int FUN_0048B890(int a1, int a2, int a3, int a4, int a5);
+    int FUN_0048B890(void* a1, int* a2, int a3, void* a4, int* a5);
     // FUNCTION: GAMEMD 0x48B9E0 (decl; reloc)
     CommReceiveEntry* FUN_0048B9E0(int index);
     // FUNCTION: GAMEMD 0x48BA10 (decl; reloc)
@@ -286,6 +298,20 @@ GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_2C) == 0x2C);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_3C) == 0x3C);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_24) == 0x24);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_34) == 0x34);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_40) == 0x40);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_44) == 0x44);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_48) == 0x48);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_54) == 0x54);
 
 // 0x53F830 (defined in conn_ipx.cpp)
 int FUN_0053F830(void* buf, int buflen);

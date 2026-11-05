@@ -154018,5 +154018,95 @@
   "name": "TabClass::FUN_006D1660",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48A4F0",
+  "sym": "?FUN_0048A4F0@@YIPBVAnimTypeClass@@HPAVWarheadTypeClass@@HPBUCoordStruct@@@Z",
+  "len": "0x130",
+  "name": "?FUN_0048A4F0@@YIPBVAnimTypeClass@@HPAVWarheadTypeClass@@HPBUCoordStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48A620",
+  "sym": "?FUN_0048A620@@YIXHPAVWarheadTypeClass@@UCoordStruct@@DI@Z",
+  "len": "0xe0",
+  "name": "?FUN_0048A620@@YIXHPAVWarheadTypeClass@@UCoordStruct@@DI@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48AB20",
+  "sym": "?FUN_0048AB20@@YI_NHHHNPAUDirStruct@@@Z",
+  "len": "0x65",
+  "name": "?FUN_0048AB20@@YI_NHHHNPAUDirStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48B0E0",
+  "sym": "??0CommBufferClass@@QAE@HHHH@Z",
+  "len": "0x10d",
+  "name": "??0CommBufferClass@@QAE@HHHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48B1F0",
+  "sym": "??1CommBufferClass@@UAE@XZ",
+  "len": "0xaa",
+  "name": "??1CommBufferClass@@UAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48B2A0",
+  "sym": "?Init@CommBufferClass@@QAEXXZ",
+  "len": "0xef",
+  "name": "CommBufferClass::Init",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48B410",
+  "sym": "?FUN_0048B410@CommBufferClass@@QAEHPAXH0HG@Z",
+  "len": "0x153",
+  "name": "CommBufferClass::FUN_0048B410",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48B570",
+  "sym": "?FUN_0048B570@CommBufferClass@@QAEHPAXPAHH01PAG@Z",
+  "len": "0x1a8",
+  "name": "CommBufferClass::FUN_0048B570",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48B750",
+  "sym": "?FUN_0048B750@CommBufferClass@@QAEHPAXH0H@Z",
+  "len": "0x136",
+  "name": "CommBufferClass::FUN_0048B750",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/tu053_comm_buffer.cpp",
+  "addr": "0x48B890",
+  "sym": "?FUN_0048B890@CommBufferClass@@QAEHPAXPAHH01@Z",
+  "len": "0x14b",
+  "name": "CommBufferClass::FUN_0048B890",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
