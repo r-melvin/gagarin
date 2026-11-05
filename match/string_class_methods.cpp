@@ -6,8 +6,12 @@
 #include <string.h>
 #include "string_class.h"
 #include <ctype.h>
+#include <stdio.h>
+#include <new>
 // GLOBAL: GAMEMD 0x889F64
 extern char GLOBAL_00889F64[];
+// GLOBAL: GAMEMD 0x822050 -- line terminator set "\r\n".
+extern char DAT_00822050[];
 
 
 
@@ -18,6 +22,55 @@ static inline unsigned int LengthOf(const char* text)
         return 0;
     }
     return strlen(text);
+}
+
+
+// The inline expansion of the constructor from text: `self` takes a fresh copy.
+static inline void InitText(Wstring* self, const char* text)
+{
+    self->unknown_00 = 0;
+    self->unknown_00 = new char[text ? strlen(text) + 1 : 1];
+    self->unknown_00[0] = 0;
+    if (text) {
+        strcpy(self->unknown_00, text);
+    }
+}
+
+// The inline expansion of assignment from text: release the buffer, then copy.
+static inline void AssignText(Wstring* self, const char* text)
+{
+    if (self->unknown_00) {
+        delete self->unknown_00;
+    }
+    InitText(self, text);
+}
+
+// The inline expansion of 0x7B4B50: append another string.
+static inline void AppendString(Wstring* self, const Wstring* other)
+{
+    const char* text;
+    if (other->unknown_00 == 0) {
+        text = GLOBAL_00889F64;
+    } else {
+        text = other->unknown_00;
+    }
+    if (text) {
+        char* old = self->unknown_00;
+        unsigned int total = strlen(text) + 1;
+        if (old) {
+            total += strlen(old);
+        }
+        self->unknown_00 = new char[total];
+        if (old) {
+            strcpy(self->unknown_00, old);
+        } else {
+            self->unknown_00[0] = 0;
+        }
+        strcat(self->unknown_00, text);
+        if (old) {
+            delete old;
+        }
+    }
 }
 
 
@@ -200,29 +253,7 @@ bool Wstring::FUN_007B4AC0(int count, const char* text)
 // Appends another string, taken by pointer; an unset source appends the fallback text.
 bool Wstring::FUN_007B4B50(const Wstring* other)
 {
-    const char* text;
-    if (other->unknown_00 == 0) {
-        text = GLOBAL_00889F64;
-    } else {
-        text = other->unknown_00;
-    }
-    if (text) {
-        char* old = unknown_00;
-        unsigned int total = strlen(text) + 1;
-        if (old) {
-            total += strlen(old);
-        }
-        unknown_00 = new char[total];
-        if (old) {
-            strcpy(unknown_00, old);
-        } else {
-            unknown_00[0] = 0;
-        }
-        strcat(unknown_00, text);
-        if (old) {
-            delete old;
-        }
-    }
+    AppendString(this, other);
     return true;
 }
 
@@ -449,6 +480,109 @@ bool Wstring::FUN_007B54D0(const char* text, unsigned int pos)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x7B5640
+// Inserts the character at `pos` (clamped to the current length); an unset
+// string simply takes a one-character copy.
+bool Wstring::FUN_007B5640(char ch, unsigned int pos)
+{
+    char text[2];
+    if (unknown_00 == 0) {
+        text[0] = ch;
+        text[1] = 0;
+        InitText(this, text);
+        return true;
+    }
+    unsigned int len = strlen(unknown_00);
+    if (pos > len) {
+        pos = len;
+    }
+    char* grown = new char[len + 2];
+    text[1] = 0;
+    char saved = unknown_00[pos];
+    unknown_00[pos] = 0;
+    strcpy(grown, unknown_00);
+    unknown_00[pos] = saved;
+    text[0] = ch;
+    strcat(grown, text);
+    strcat(grown, unknown_00 + pos);
+    delete unknown_00;
+    unknown_00 = grown;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x7B57A0
+// Replaces every occurrence of `find` with `repl` (null `repl` deletes them).
+bool Wstring::FUN_007B57A0(const char* find, const char* repl)
+{
+    char* result = 0;
+    const char* cur = FUN_007B5400();
+    while (cur && *cur) {
+        const char* hit = strstr(cur, find);
+        if (hit == 0) {
+            if (cur) {
+                char* old = result;
+                unsigned int total = strlen(cur) + 1;
+                if (old) {
+                    total += strlen(old);
+                }
+                result = new char[total];
+                if (old) {
+                    strcpy(result, old);
+                } else {
+                    result[0] = 0;
+                }
+                strcat(result, cur);
+                if (old) {
+                    delete old;
+                }
+            }
+            break;
+        }
+        int count = hit - cur;
+        if (count != 0) {
+            char* old = result;
+            unsigned int total = count + 1;
+            if (old) {
+                total += strlen(old);
+            }
+            result = new char[total];
+            if (old) {
+                strcpy(result, old);
+            } else {
+                result[0] = 0;
+            }
+            strncat(result, cur, count);
+            if (old) {
+                delete old;
+            }
+        }
+        if (repl) {
+            char* old = result;
+            unsigned int total = strlen(repl) + 1;
+            if (old) {
+                total += strlen(old);
+            }
+            result = new char[total];
+            if (old) {
+                strcpy(result, old);
+            } else {
+                result[0] = 0;
+            }
+            strcat(result, repl);
+            if (old) {
+                delete old;
+            }
+        }
+        cur = hit + strlen(find);
+    }
+    const char* text = result ? result : GLOBAL_00889F64;
+    AssignText(this, text);
+    if (result != 0) {
+        delete result;
+    }
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x7B5A40
 // Replaces the buffer with a copy of the text; always reports success.
 bool Wstring::FUN_007B5A40(const char* text)
@@ -503,6 +637,19 @@ void Wstring::FUN_007B5B30()
     }
 }
 
+// FUNCTION: GAMEMD 0x7B5B80
+Wstring Wstring::FUN_007B5B80() const
+{
+    Wstring work(*this);
+    for (unsigned int i = 0; i < work.Length(); ++i) {
+        char ch = work.unknown_00[i];
+        if (ch >= 'A' && ch <= 'Z') {
+            work.unknown_00[i] = tolower(ch);
+        }
+    }
+    return work;
+}
+
 // FUNCTION: GAMEMD 0x7B5C50
 void Wstring::FUN_007B5C50()
 {
@@ -512,6 +659,41 @@ void Wstring::FUN_007B5C50()
             unknown_00[i] = toupper(ch);
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x7B5CA0
+Wstring Wstring::FUN_007B5CA0() const
+{
+    Wstring work(*this);
+    for (unsigned int i = 0; i < work.Length(); ++i) {
+        char ch = work.unknown_00[i];
+        if (ch >= 'a' && ch <= 'z') {
+            work.unknown_00[i] = toupper(ch);
+        }
+    }
+    return work;
+}
+
+// FUNCTION: GAMEMD 0x7B5D70
+// Replaces the buffer with a copy of up to `length` leading characters.
+bool Wstring::FUN_007B5D70(int length)
+{
+    const char* source = unknown_00;
+    if (source == 0) {
+        source = GLOBAL_00889F64;
+    }
+    char* head = new char[length + 1];
+    head[0] = 0;
+    if (source) {
+        strncpy(head, source, length);
+    }
+    head[length] = 0;
+    const char* text = head ? head : GLOBAL_00889F64;
+    AssignText(this, text);
+    if (head != 0) {
+        delete head;
+    }
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x7B5E30
@@ -555,3 +737,82 @@ bool Wstring::FUN_007B5E30(char ch)
     return true;
 }
 
+
+// FUNCTION: GAMEMD 0x7B60E0
+// Splits the line starting at `start` into `out` (terminator excluded from the
+// scan, CR LF counted as one); returns the index after it, or -1 past the end.
+int Wstring::FUN_007B60E0(int start, Wstring* out)
+{
+    int end = start;
+    if (start >= (int)LengthOf(unknown_00)) {
+        return -1;
+    }
+    while (end < (int)LengthOf(unknown_00)) {
+        if (strchr(DAT_00822050, unknown_00[end]) != 0) {
+            break;
+        }
+        ++end;
+    }
+    int stop = end;
+    if (unknown_00[end] == '\r' && unknown_00[end + 1] == '\n') {
+        ++end;
+        stop = end;
+    }
+    AssignText(out, unknown_00 + start);
+    int length = stop - start + 1;
+    const char* source = GLOBAL_00889F64;
+    if (out->unknown_00 != 0) {
+        source = out->unknown_00;
+    }
+    char* head = new char[length + 1];
+    head[0] = 0;
+    if (source) {
+        strncpy(head, source, length);
+    }
+    head[length] = 0;
+    const char* text = GLOBAL_00889F64;
+    if (head != 0) {
+        text = head;
+    }
+    AssignText(out, text);
+    if (head != 0) {
+        delete head;
+    }
+    return stop + 1;
+}
+
+// FUNCTION: GAMEMD 0x7B6290
+// Formats `value` with "%d" into a new string held by `out`.
+Wstring* FUN_007B6290(Wstring* out, int value)
+{
+    char text[16];
+    sprintf(text, "%d", value);
+    InitText(out, text);
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x7B6320
+// Formats `value` zero-padded to `width` digits into a new string held by `out`.
+Wstring* FUN_007B6320(Wstring* out, int value, int width)
+{
+    char format[8];
+    char text[8];
+    sprintf(format, "%%0%dd", width);
+    sprintf(text, format, value);
+    InitText(out, text);
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x7B64E0
+// Builds the concatenation of two strings into `out`.
+Wstring* FUN_007B64E0(Wstring* out, const Wstring* first, const Wstring* second)
+{
+    Wstring joined(*first);
+    AppendString(&joined, second);
+    out->unknown_00 = 0;
+    if (joined.unknown_00 != 0) {
+        out->unknown_00 = new char[strlen(joined.unknown_00) + 1];
+        strcpy(out->unknown_00, joined.unknown_00);
+    }
+    return out;
+}

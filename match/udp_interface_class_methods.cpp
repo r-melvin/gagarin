@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "udp_interface_class.h"
+#include "vector_class_operations.h"
 
 // LIBRARY: GAMEMD 0x7CA530 -- sscanf (CRT, cdecl).
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new.
@@ -38,6 +39,15 @@
 // STRING: GAMEMD 0x84E310 "Alternate UDP Socket init complete\n"
 // STRING: GAMEMD 0x84E3D0 "Async select failed on spare socket.\n"
 // STRING: GAMEMD 0x84E3F8 "Marking address %d.%d.%d.%d ; %d as unreachable\n"
+
+// FUNCTION: GAMEMD 0x7B2DB0
+UDPInterfaceClass::UDPInterfaceClass()
+{
+    PrimaryPort = 0;
+    SpareSocketCount = 0;
+    UnreachableCount = 0;
+    CurrentSpareSocket = -1;
+}
 
 // FUNCTION: GAMEMD 0x7B2F90  UDPInterfaceClass::ClearBroadcastAddresses (slot 12)
 void UDPInterfaceClass::ClearBroadcastAddresses()

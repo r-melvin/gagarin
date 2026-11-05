@@ -151925,5 +151925,101 @@
   "name": "?FUN_0076EEB0@Selection@WorldDominationTour@@QAEXXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/udp_interface_class_methods.cpp",
+  "addr": "0x7B2DB0",
+  "sym": "??0UDPInterfaceClass@@QAE@XZ",
+  "len": "0x91",
+  "name": "??0UDPInterfaceClass@@QAE@XZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B5640",
+  "sym": "?FUN_007B5640@Wstring@@QAE_NDI@Z",
+  "len": "0x153",
+  "name": "Wstring::FUN_007B5640",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B57A0",
+  "sym": "?FUN_007B57A0@Wstring@@QAE_NPBD0@Z",
+  "len": "0x29f",
+  "name": "Wstring::FUN_007B57A0",
+  "status": "partial",
+  "pct": 97.4,
+  "best_pct": 97.4,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B5B80",
+  "sym": "?FUN_007B5B80@Wstring@@QBE?AV1@XZ",
+  "len": "0xca",
+  "name": "Wstring::FUN_007B5B80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B5CA0",
+  "sym": "?FUN_007B5CA0@Wstring@@QBE?AV1@XZ",
+  "len": "0xca",
+  "name": "Wstring::FUN_007B5CA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B5D70",
+  "sym": "?FUN_007B5D70@Wstring@@QAE_NH@Z",
+  "len": "0xb7",
+  "name": "Wstring::FUN_007B5D70",
+  "status": "partial",
+  "pct": 96.1,
+  "best_pct": 96.1,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B60E0",
+  "sym": "?FUN_007B60E0@Wstring@@QAEHHPAV1@@Z",
+  "len": "0x195",
+  "name": "Wstring::FUN_007B60E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B6290",
+  "sym": "?FUN_007B6290@@YIPAVWstring@@PAV1@H@Z",
+  "len": "0x85",
+  "name": "?FUN_007B6290@@YIPAVWstring@@PAV1@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B6320",
+  "sym": "?FUN_007B6320@@YIPAVWstring@@PAV1@HH@Z",
+  "len": "0x95",
+  "name": "?FUN_007B6320@@YIPAVWstring@@PAV1@HH@Z",
+  "status": "partial",
+  "pct": 96.6,
+  "best_pct": 96.6,
+  "best_at": "380dea26"
+ },
+ {
+  "tu": "match/string_class_methods.cpp",
+  "addr": "0x7B64E0",
+  "sym": "?FUN_007B64E0@@YIPAVWstring@@PAV1@PBV1@1@Z",
+  "len": "0x14e",
+  "name": "?FUN_007B64E0@@YIPAVWstring@@PAV1@PBV1@1@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -101,8 +101,18 @@ public:
     Wstring operator+(const Wstring& other) const;
     // Declaration: GAMEMD 0x7B4B50 -- append another string (unset counts as the fallback text).
     bool FUN_007B4B50(const Wstring* other);
+    // Declaration: GAMEMD 0x7B5640 -- insert `ch` at `pos` (clamped to the length).
+    bool FUN_007B5640(char ch, unsigned int pos);
+    // Declaration: GAMEMD 0x7B57A0 -- replace every occurrence of `find` with `repl`.
+    bool FUN_007B57A0(const char* find, const char* repl);
     // Declaration: GAMEMD 0x7B5A40 -- replace with a copy of `text`; AL reports success.
     bool FUN_007B5A40(const char* text);
+    // Declaration: GAMEMD 0x7B5CA0 -- a copy with ASCII lowercase characters upper-cased (hidden result on the stack).
+    Wstring FUN_007B5CA0() const;
+    // Declaration: GAMEMD 0x7B5D70 -- replace with a copy of the first `length` characters.
+    bool FUN_007B5D70(int length);
+    // Declaration: GAMEMD 0x7B60E0 -- extract the line at `start` into `out`; returns the next index or -1.
+    int FUN_007B60E0(int start, Wstring* out);
     // Declaration: GAMEMD 0x7B5E30 -- cut the string at the first `ch`; AL reports whether it was found.
     bool FUN_007B5E30(char ch);
     // Declaration: GAMEMD 0x7B54D0 -- insert `text` at `pos` (clamped to the length).
