@@ -4448,7 +4448,7 @@ ObjectClass* Tactical::FUN_006DC430(int index)
 
 // FUNCTION: GAMEMD 0x6DC450
 // Returns a constant. Vtable slot 11 of Tactical (RTTI).
-int Obj_006DC450::FUN_006DC450() const
+int Tactical::vf_11()
 {
     return 0x38;
 }
@@ -4456,7 +4456,7 @@ int Obj_006DC450::FUN_006DC450() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6DC460
 // Returns a constant. Vtable slot 12 of Tactical (RTTI).
-int Obj_006DC460::FUN_006DC460() const
+int Tactical::vf_12()
 {
     return 0xE18;
 }

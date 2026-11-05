@@ -11,7 +11,6 @@
 
 struct Obj_00740E50;
 struct Obj_00740EE0;
-struct Obj_00741490;
 struct Obj_007447A0;
 struct Obj_00746400;
 struct Obj_00746400_6C4;
@@ -22,8 +21,6 @@ struct Obj_00746D00_6C4;
 struct Obj_00746D60;
 struct Obj_00746D80;
 struct Obj_00746D90;
-struct Obj_00746DD0;
-struct Obj_00746E20;
 
 // FUNCTION: GAMEMD 0x4D4DC0 (declaration)
 void FUN_004D4DC0(Obj_007447A0*, int);
@@ -46,14 +43,6 @@ struct Obj_00740EE0
 {
 };
 
-struct Obj_00741490
-{
-    char unknown_00[0x6C4];
-    int unknown_6C4;   // +0x06C4
-    // FUNCTION: GAMEMD 0x741490
-    int FUN_00741490() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00741490, unknown_6C4) == 0x6C4);
 
 struct Obj_007447A0
 {
@@ -125,17 +114,7 @@ struct Obj_00746D90
 GG_STATIC_ASSERT(offsetof(Obj_00746D90, unknown_6E0) == 0x6E0);
 GG_STATIC_ASSERT(offsetof(Obj_00746D90, unknown_6E1) == 0x6E1);
 
-struct Obj_00746DD0
-{
-    // FUNCTION: GAMEMD 0x746DD0
-    int FUN_00746DD0() const;
-};
 
-struct Obj_00746E20
-{
-    // FUNCTION: GAMEMD 0x746E20
-    int FUN_00746E20() const;
-};
 
 
 // FUNCTION: GAMEMD 0x7393B0

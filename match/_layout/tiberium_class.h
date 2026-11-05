@@ -101,6 +101,7 @@ GG_STATIC_ASSERT(sizeof(TiberiumLogic) == 0x10);
 class TiberiumClass : public AbstractTypeClass
 {
 public:
+    virtual int vf_16();                    // 16  0x723700
     // FUNCTION: GAMEMD 0x7216C0 (decl; reloc) -- constructor; the argument is unattested.
     TiberiumClass(int unknown_arg0 = 0);
     // Stream overrides (vtable 0x7F5728); bodies in core/stream_w3_methods.cpp.

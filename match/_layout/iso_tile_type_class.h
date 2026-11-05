@@ -51,6 +51,7 @@ GG_STATIC_ASSERT(offsetof(TileImageHeader, SubTiles) == 0x10);
 class IsometricTileTypeClass : public ObjectTypeClass
 {
 public:
+    virtual int vf_16();                    // 16  0x54A160
     struct TileInsertType; // nested pointer type attested by TU110 vector RTTI
 
     // FUNCTION: GAMEMD 0x5447C0 (decl; reloc) -- the named constructor. Its first argument is forwarded to the

@@ -54,6 +54,11 @@ public:
     virtual void vf_342(int a1, int a2, int a3);                   // 342 0x51D6F0
 
     // Overrides of base slots (primary table 0x7EB058, 343 slots).
+    virtual ObjectTypeClass* vf_34();                            // 34  0x51FAF0
+    virtual bool vf_204();                                         // 204 0x5224D0
+    virtual void vf_325();                                         // 325 0x5220F0
+    virtual void vf_338();                                         // 338 0x521B20
+    virtual void vf_339();                                         // 339 0x521B40
     virtual void vf_10(void* a1, bool a2);                         // 10  0x51AA10
     virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x521C90
     virtual const wchar_t* vf_36();                                // 36  0x51F2C0

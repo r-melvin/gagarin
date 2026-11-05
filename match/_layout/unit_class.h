@@ -38,6 +38,7 @@ class HouseClass;
 class UnitClass : public FootClass
 {
 public:
+    virtual ObjectTypeClass* vf_34();                    // 34  0x741490
     // GAMEMD 0x7353C0. TClassFactory<UnitClass>::CreateInstance constructs with
     // (0, 0): PUSH 0; PUSH 0; MOV ECX,EAX; CALL 0x7353C0 @0x6C344D..0x6C3453.
     UnitClass(UnitTypeClass* type = 0, HouseClass* owner = 0);

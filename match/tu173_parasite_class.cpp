@@ -77,8 +77,6 @@ GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, CapacityIncrement) == 0x
 #include "_rt/gg_static_assert.h"
 
 struct Obj_00629710;
-struct Obj_0062AF50;
-struct Obj_0062AF60;
 
 struct Obj_00629710
 {
@@ -91,17 +89,7 @@ struct Obj_00629710
 GG_STATIC_ASSERT(offsetof(Obj_00629710, unknown_4C) == 0x4C);
 GG_STATIC_ASSERT(offsetof(Obj_00629710, unknown_50) == 0x50);
 
-struct Obj_0062AF50
-{
-    // FUNCTION: GAMEMD 0x62AF50
-    int FUN_0062AF50() const;
-};
 
-struct Obj_0062AF60
-{
-    // FUNCTION: GAMEMD 0x62AF60
-    int FUN_0062AF60() const;
-};
 
 
 
@@ -567,7 +555,7 @@ bool Parasite_0062AB40::CanExistOnVictimCell()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x62AF50
 // Returns a constant. Vtable slot 12 of ParasiteClass (RTTI).
-int Obj_0062AF50::FUN_0062AF50() const
+int ParasiteClass::vf_12()
 {
     return 0x58;
 }
@@ -575,7 +563,7 @@ int Obj_0062AF50::FUN_0062AF50() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x62AF60
 // Returns a constant. Vtable slot 11 of ParasiteClass (RTTI).
-int Obj_0062AF60::FUN_0062AF60() const
+int ParasiteClass::vf_11()
 {
     return 0x43;
 }

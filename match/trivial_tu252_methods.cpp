@@ -5,17 +5,18 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu252_methods.h"
+#include "_layout/tube_class.h"
 
 // FUNCTION: GAMEMD 0x7286B0
 // Returns a constant. Vtable slot 12 of TubeClass (RTTI).
-int Obj_007286B0::FUN_007286B0() const
+int TubeClass::vf_12()
 {
     return 0x1C4;
 }
 
 // FUNCTION: GAMEMD 0x7286C0
 // Returns a constant. Vtable slot 11 of TubeClass (RTTI).
-int Obj_007286C0::FUN_007286C0() const
+int TubeClass::vf_11()
 {
     return 0x35;
 }

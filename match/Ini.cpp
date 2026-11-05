@@ -120,6 +120,7 @@
 #include "_layout/side_class.h"
 #include "_layout/wave_class.h"
 #include "_layout/bullet_class.h"
+#include "_layout/infantry_type_class.h"
 #include "_layout/script_class.h"
 #include "_layout/script_type_class.h"
 #include "taction_class_methods.h"
@@ -451,8 +452,8 @@ struct Obj_00528ED0 {
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x5247A0
-// Returns zero. Vtable slot 44 of InfantryTypeClass (RTTI).
-int Obj_005247A0::FUN_005247A0() const
+// Vtable slot 44 of InfantryTypeClass (RTTI). Returns zero.
+int InfantryTypeClass::vf_44()
 {
     return 0;
 }
@@ -488,8 +489,8 @@ Triple_005247D0 Obj_005247D0::FUN_005247D0(const Triple_005247D0* value)
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x524D40
-// Returns a constant. Vtable slot 11 of InfantryTypeClass (RTTI).
-int Obj_00524D40::FUN_00524D40() const
+// Vtable slot 11 of InfantryTypeClass (RTTI). Returns a constant.
+int InfantryTypeClass::vf_11()
 {
     return 0x10;
 }
@@ -497,8 +498,8 @@ int Obj_00524D40::FUN_00524D40() const
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x524D50
-// Returns a constant. Vtable slot 12 of InfantryTypeClass (RTTI).
-int Obj_00524D50::FUN_00524D50() const
+// Vtable slot 12 of InfantryTypeClass (RTTI). Returns a constant.
+int InfantryTypeClass::vf_12()
 {
     return 0xED0;
 }
@@ -506,10 +507,10 @@ int Obj_00524D50::FUN_00524D50() const
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x524D60
-// Member getter (dword). Vtable slot 16 of InfantryTypeClass (RTTI).
-int Obj_00524D60::FUN_00524D60() const
+// Vtable slot 16 of InfantryTypeClass (RTTI). Member getter (dword).
+int InfantryTypeClass::vf_16()
 {
-    return unknown_DF8;
+    return ArrayIndex;
 }
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.

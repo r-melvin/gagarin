@@ -308,10 +308,7 @@ public:
     // is out of line (not part of this cluster).
     // FUNCTION: GAMEMD 0x465DC0 (scalar deleting destructor; ??_G)
     virtual ~BuildingTypeView_0045DD90();
-    virtual int WhatAmI();                                                   // 11  0x465D90
-    virtual int Size();                                                      // 12  0x465DA0
     virtual void ComputeCRC(TypesCrcView& crc);                              // 13  0x464B30
-    virtual int vf_16();                                                     // 16  0x465DB0
     virtual bool ReadINI(TypesIniView* ini);                                 // 25  0x45FE50
     virtual HBCoord vf_27(const HBCoord* in);                          // 27  0x464A70
     virtual int vf_29();                                                     // 29  0x45ECE0
@@ -322,8 +319,6 @@ public:
     virtual void* vf_35(void* owner);                                        // 35  0x45E880
     virtual CellStruct* vf_36(bool arg);                                           // 36  0x45EC20
     virtual void* vf_39();                                                   // 39  0x45F040
-    virtual bool vf_40();                                                    // 40  0x465910
-    virtual bool vf_41();                                                    // 41  0x465920
     virtual bool vf_42(void* arg1, void* arg2);                              // 42  0x464AC0
     virtual void* vf_48();                                                   // 48  0x465960
 

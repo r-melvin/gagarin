@@ -60,30 +60,9 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<unsigned short* >) == 0x18);
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Obj_0054A140;
-struct Obj_0054A150;
-struct Obj_0054A160;
 
-struct Obj_0054A140
-{
-    // FUNCTION: GAMEMD 0x54A140
-    int FUN_0054A140() const;
-};
 
-struct Obj_0054A150
-{
-    // FUNCTION: GAMEMD 0x54A150
-    int FUN_0054A150() const;
-};
 
-struct Obj_0054A160
-{
-    char unknown_00[0x294];
-    int unknown_294;   // +0x0294
-    // FUNCTION: GAMEMD 0x54A160
-    int FUN_0054A160() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0054A160, unknown_294) == 0x294);
 
 
 void __cdecl FUN_00544DF0();
@@ -417,7 +396,7 @@ Quad_0054A120::Quad_0054A120(int a, int b, int c, int d)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x54A140
 // Returns a constant. Vtable slot 11 of IsometricTileTypeClass (RTTI).
-int Obj_0054A140::FUN_0054A140() const
+int IsometricTileTypeClass::vf_11()
 {
     return 0x12;
 }
@@ -425,7 +404,7 @@ int Obj_0054A140::FUN_0054A140() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x54A150
 // Returns a constant. Vtable slot 12 of IsometricTileTypeClass (RTTI).
-int Obj_0054A150::FUN_0054A150() const
+int IsometricTileTypeClass::vf_12()
 {
     return 0x30C;
 }
@@ -433,7 +412,7 @@ int Obj_0054A150::FUN_0054A150() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x54A160
 // Member getter (dword). Vtable slot 16 of IsometricTileTypeClass (RTTI).
-int Obj_0054A160::FUN_0054A160() const
+int IsometricTileTypeClass::vf_16()
 {
     return unknown_294;
 }

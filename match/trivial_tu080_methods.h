@@ -10,8 +10,6 @@
 #include "_rt/gg_static_assert.h"
 
 struct Obj_004CA580;
-struct Obj_004CA750;
-struct Obj_004CA760;
 
 struct Obj_004CA580
 {
@@ -22,17 +20,7 @@ struct Obj_004CA580
 };
 GG_STATIC_ASSERT(offsetof(Obj_004CA580, unknown_58) == 0x58);
 
-struct Obj_004CA750
-{
-    // FUNCTION: GAMEMD 0x4CA750
-    int FUN_004CA750() const;
-};
 
-struct Obj_004CA760
-{
-    // FUNCTION: GAMEMD 0x4CA760
-    int FUN_004CA760() const;
-};
 
 
 // FUNCTION: GAMEMD 0x4CAEF0

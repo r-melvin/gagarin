@@ -2469,8 +2469,8 @@ void __fastcall FUN_006F6030(const CoordStruct* a, const CoordStruct* b, int col
 }
 
 // FUNCTION: GAMEMD 0x6F60C0
-// Empty function that pops its stack arguments. Vtable slot 274 of TechnoClass (RTTI) and 5 derived vtable(s).
-void Obj_006F60C0::FUN_006F60C0(int a1, int a2)
+// Vtable slot 274 of TechnoClass (RTTI). Empty; pops its arguments.
+void TechnoClass::vf_274(int a1, int a2)
 {
 }
 
@@ -2592,17 +2592,17 @@ bool TechnoClass::vf_89(const CoordStruct& coord, int weapon)
 }
 
 // FUNCTION: GAMEMD 0x6F9DB0
-// Member getter (dword). Vtable slot 14 of TechnoClass (RTTI) and 5 derived vtable(s).
-int Obj_006F9DB0::FUN_006F9DB0() const
+// Vtable slot 14 of TechnoClass (RTTI). The owning house's array index.
+int TechnoClass::vf_14()
 {
-    return unknown_21C->unknown_30;
+    return Owner->ArrayIndex;
 }
 
 // FUNCTION: GAMEMD 0x6F9DC0
-// Member getter (dword). Vtable slot 15 of TechnoClass (RTTI) and 5 derived vtable(s).
-int Obj_006F9DC0::FUN_006F9DC0() const
+// Vtable slot 15 of TechnoClass (RTTI). The owning house.
+HouseClass* TechnoClass::vf_15()
 {
-    return unknown_21C;
+    return Owner;
 }
 
 // FUNCTION: GAMEMD 0x6F9DD0
@@ -2911,10 +2911,10 @@ bool ObjectView_006FBFA0::FUN_006FC030()
 }
 
 // FUNCTION: GAMEMD 0x6FC090
-// Calls other functions. Vtable slot 239 of TechnoClass (RTTI) and 5 derived vtable(s).
-void Obj_006FC090::FUN_006FC090(int a1, int a2)
+// Vtable slot 239 of TechnoClass (RTTI). Forwards to slot 240 with the third argument false.
+int TechnoClass::vf_239(AbstractClass* a1, int a2)
 {
-    vf_240(a1, a2, 0);
+    return vf_240(a1, a2, 0);
 }
 
 // Null-tolerant "as TechnoClass" and "as UnitClass" conversions, as retail inlined them: the
@@ -3519,8 +3519,8 @@ bool TechnoClass::vf_37()
 }
 
 // FUNCTION: GAMEMD 0x701190
-// Returns a constant boolean. Vtable slot 212 of TechnoClass (RTTI) and 4 derived vtable(s).
-bool Obj_00701190::FUN_00701190() const
+// Vtable slot 212 of TechnoClass (RTTI). Returns false.
+bool TechnoClass::vf_212()
 {
     return false;
 }
@@ -3672,8 +3672,8 @@ void TechnoClass::vf_280(bool silent)
 }
 
 // FUNCTION: GAMEMD 0x703850
-// Calls other functions. Vtable slot 63 of TechnoClass (RTTI) and 5 derived vtable(s).
-void Obj_00703850::FUN_00703850()
+// Vtable slot 63 of TechnoClass (RTTI). Forwards to slot 279.
+void TechnoClass::vf_63()
 {
     vf_279(0);
 }
@@ -3843,8 +3843,8 @@ unsigned char Obj_00705D30::FUN_00705D30()
 }
 
 // FUNCTION: GAMEMD 0x705D50
-// Calls other functions. Vtable slot 268 of TechnoClass (RTTI) and 4 derived vtable(s).
-bool Obj_00705D50::FUN_00705D50()
+// Vtable slot 268 of TechnoClass (RTTI). Whether slot 118 reports false.
+bool TechnoClass::vf_268()
 {
     return (vf_118() == 0) ? true : false;
 }
@@ -4410,8 +4410,8 @@ bool TechnoClass::vf_231(const CoordStruct& where, int a2)
 }
 
 // FUNCTION: GAMEMD 0x7099D0
-// Returns zero; pops its stack arguments. Vtable slot 64 of TechnoClass (RTTI) and 3 derived vtable(s).
-int Obj_007099D0::FUN_007099D0(int a1, int a2) const
+// Vtable slot 64 of TechnoClass (RTTI). Returns zero; pops its arguments.
+int TechnoClass::vf_64(int a1, int a2)
 {
     return 0;
 }
@@ -4427,8 +4427,8 @@ bool TechnoClass::IsTimeForIdleAction()
 }
 
 // FUNCTION: GAMEMD 0x709A20
-// Empty function that pops its stack arguments. Vtable slot 287 of TechnoClass (RTTI) and 1 derived vtable(s).
-void Obj_00709A20::FUN_00709A20(int a1)
+// Vtable slot 287 of TechnoClass (RTTI). Empty; pops its argument.
+void TechnoClass::vf_287(int a1)
 {
 }
 
@@ -4769,26 +4769,26 @@ bool TechnoClass::IsCloakable()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70C5B0
-// Member getter (byte). Vtable slot 117 of TechnoClass (RTTI) and 5 derived vtable(s).
-unsigned char Obj_0070C5B0::FUN_0070C5B0() const
+// Vtable slot 117 of TechnoClass (RTTI). Member getter (byte).
+bool TechnoClass::vf_117()
 {
-    return unknown_270;
+    return BeingWarpedOut;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70C5C0
-// Member getter (byte). Vtable slot 118 of TechnoClass (RTTI) and 5 derived vtable(s).
-unsigned char Obj_0070C5C0::FUN_0070C5C0() const
+// Vtable slot 118 of TechnoClass (RTTI). Member getter (byte).
+bool TechnoClass::vf_118()
 {
-    return unknown_271;
+    return WarpingOut;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70C5D0
-// Branching. Vtable slot 119 of TechnoClass (RTTI) and 5 derived vtable(s).
-bool Obj_0070C5D0::FUN_0070C5D0()
+// Vtable slot 119 of TechnoClass (RTTI). Branching.
+bool TechnoClass::vf_119()
 {
-    if (unknown_274 == 0 || unknown_274->unknown_28 == 0)
+    if (TemporalImUsing == 0 || TemporalImUsing->Target == 0)
     {
         return false;
     }
@@ -4797,10 +4797,10 @@ bool Obj_0070C5D0::FUN_0070C5D0()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70C5F0
-// Branching. Vtable slot 120 of TechnoClass (RTTI) and 5 derived vtable(s).
-bool Obj_0070C5F0::FUN_0070C5F0()
+// Vtable slot 120 of TechnoClass (RTTI). Branching.
+bool TechnoClass::vf_120()
 {
-    if (unknown_270 != 0 || unknown_271 != 0)
+    if (BeingWarpedOut != 0 || WarpingOut != 0)
     {
         return false;
     }
@@ -4990,13 +4990,13 @@ bool TechnoClass::FUN_0070D590(int weaponIndex)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70D670
-// Branching. Vtable slot 228 of TechnoClass (RTTI) and 4 derived vtable(s).
-int Obj_0070D670::FUN_0070D670()
+// Vtable slot 228 of TechnoClass (RTTI). Branching.
+int TechnoClass::vf_228()
 {
-    int t1 = unknown_2FC;
+    int t1 = Ammo;
     if (t1 > 0)
     {
-        unknown_2FC = t1 - 1;
+        Ammo = t1 - 1;
         return t1 - 1;
     }
     return t1;
@@ -5136,8 +5136,8 @@ bool TechnoClass::FUN_0070D8F0()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70D980
-// Empty function. Vtable slot 184 of TechnoClass (RTTI) and 4 derived vtable(s).
-void Obj_0070D980::FUN_0070D980()
+// Vtable slot 184 of TechnoClass (RTTI). Empty.
+void TechnoClass::vf_184()
 {
 }
 
@@ -5224,8 +5224,8 @@ int TechnoClass::vf_249()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70DD90
-// Returns a constant. Vtable slot 250 of TechnoClass (RTTI) and 5 derived vtable(s).
-int Obj_0070DD90::FUN_0070DD90() const
+// Vtable slot 250 of TechnoClass (RTTI). Returns a constant.
+int TechnoClass::vf_250()
 {
     return 1;
 }
@@ -5748,23 +5748,23 @@ int Obj_0070F000::FUN_0070F000(Arg1_0070F000* a1) const
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F010
-// Empty function. Vtable slot 298 of TechnoClass (RTTI) and 1 derived vtable(s).
-void Obj_0070F010::FUN_0070F010()
+// Vtable slot 298 of TechnoClass (RTTI). Empty.
+void TechnoClass::vf_298()
 {
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F020
-// Returns a constant boolean. Vtable slot 299 of TechnoClass (RTTI) and 1 derived vtable(s).
-bool Obj_0070F020::FUN_0070F020() const
+// Vtable slot 299 of TechnoClass (RTTI). Returns false.
+bool TechnoClass::vf_299()
 {
     return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F030
-// Returns a constant boolean. Vtable slot 300 of TechnoClass (RTTI) and 1 derived vtable(s).
-bool Obj_0070F030::FUN_0070F030() const
+// Vtable slot 300 of TechnoClass (RTTI). Returns false.
+bool TechnoClass::vf_300()
 {
     return false;
 }
@@ -5827,31 +5827,31 @@ int FUN_0070F0B0(int kind, int, int)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F0E0
-// Returns a constant boolean. Vtable slot 305 of TechnoClass (RTTI) and 1 derived vtable(s).
-bool Obj_0070F0E0::FUN_0070F0E0() const
+// Vtable slot 305 of TechnoClass (RTTI). Returns false.
+bool TechnoClass::vf_305()
 {
     return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F0F0
-// Returns a constant boolean. Vtable slot 306 of TechnoClass (RTTI) and 1 derived vtable(s).
-bool Obj_0070F0F0::FUN_0070F0F0() const
+// Vtable slot 306 of TechnoClass (RTTI). Returns false.
+bool TechnoClass::vf_306()
 {
     return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F100
-// Empty function. Vtable slot 307 of TechnoClass (RTTI) and 1 derived vtable(s).
-void Obj_0070F100::FUN_0070F100()
+// Vtable slot 307 of TechnoClass (RTTI). Empty.
+void TechnoClass::vf_307()
 {
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F110
-// Returns a constant boolean. Vtable slot 308 of TechnoClass (RTTI) and 1 derived vtable(s).
-bool Obj_0070F110::FUN_0070F110() const
+// Vtable slot 308 of TechnoClass (RTTI). Returns false.
+bool TechnoClass::vf_308()
 {
     return false;
 }

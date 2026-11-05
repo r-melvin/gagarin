@@ -5,17 +5,18 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu262_methods.h"
+#include "_layout/veinhole_monster_class.h"
 
 // FUNCTION: GAMEMD 0x74F310
 // Returns a constant. Vtable slot 11 of VeinholeMonsterClass (RTTI).
-int Obj_0074F310::FUN_0074F310() const
+int VeinholeMonsterClass::vf_11()
 {
     return 0x3F;
 }
 
 // FUNCTION: GAMEMD 0x74F320
 // Returns a constant. Vtable slot 12 of VeinholeMonsterClass (RTTI).
-int Obj_0074F320::FUN_0074F320() const
+int VeinholeMonsterClass::vf_12()
 {
     return 0x108;
 }

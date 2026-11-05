@@ -11,8 +11,6 @@
 
 struct Arg1_006D6170;
 struct Obj_006D6170;
-struct Obj_006DC450;
-struct Obj_006DC460;
 
 struct Arg1_006D6170
 {
@@ -33,17 +31,7 @@ struct Obj_006D6170
 GG_STATIC_ASSERT(offsetof(Obj_006D6170, unknown_D64) == 0xD64);
 GG_STATIC_ASSERT(offsetof(Obj_006D6170, unknown_D68) == 0xD68);
 
-struct Obj_006DC450
-{
-    // FUNCTION: GAMEMD 0x6DC450
-    int FUN_006DC450() const;
-};
 
-struct Obj_006DC460
-{
-    // FUNCTION: GAMEMD 0x6DC460
-    int FUN_006DC460() const;
-};
 
 
 // FUNCTION: GAMEMD 0x6D1B00

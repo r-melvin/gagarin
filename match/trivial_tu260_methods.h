@@ -9,29 +9,10 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Obj_0074A960;
-struct Obj_0074AB10;
-struct Obj_0074AB20;
 struct Obj_0074AB30;
-struct Obj_0074AB40;
 
-struct Obj_0074A960
-{
-    // FUNCTION: GAMEMD 0x74A960
-    int FUN_0074A960() const;
-};
 
-struct Obj_0074AB10
-{
-    // FUNCTION: GAMEMD 0x74AB10
-    int FUN_0074AB10() const;
-};
 
-struct Obj_0074AB20
-{
-    // FUNCTION: GAMEMD 0x74AB20
-    int FUN_0074AB20() const;
-};
 
 struct Obj_0074AB30
 {
@@ -42,11 +23,6 @@ struct Obj_0074AB30
 };
 GG_STATIC_ASSERT(offsetof(Obj_0074AB30, unknown_104) == 0x104);
 
-struct Obj_0074AB40
-{
-    // FUNCTION: GAMEMD 0x74AB40
-    int FUN_0074AB40(int a1) const;
-};
 
 
 

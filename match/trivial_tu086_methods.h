@@ -12,18 +12,7 @@
 struct Arg1_004DA020;
 struct Arg2_004DA020;
 struct Obj_004D94A0;
-struct Obj_004D9C00;
 struct Obj_004DA2A0;
-struct Obj_004DBA30;
-struct Obj_004DBA40;
-struct Obj_004DDC40;
-struct Obj_004DE750;
-struct Obj_004DE760;
-struct Obj_004DF1A0;
-struct Obj_004DF1C0;
-struct Obj_004DF1D0;
-struct Obj_004DF1E0;
-struct Obj_004DF310;
 struct Obj_004DFA50;
 
 // FUNCTION: GAMEMD 0x5F6C30 (declaration)
@@ -50,11 +39,6 @@ struct Obj_004D94A0
 };
 GG_STATIC_ASSERT(offsetof(Obj_004D94A0, unknown_5A0) == 0x5A0);
 
-struct Obj_004D9C00
-{
-    // FUNCTION: GAMEMD 0x4D9C00
-    int FUN_004D9C00() const;
-};
 
 struct Obj_004DA2A0
 {
@@ -160,92 +144,15 @@ struct Obj_004DA2A0
     bool FUN_004DA2A0();
 };
 
-struct Obj_004DBA30
-{
-    // FUNCTION: GAMEMD 0x4DBA30
-    void FUN_004DBA30();
-};
 
-struct Obj_004DBA40
-{
-    // FUNCTION: GAMEMD 0x4DBA40
-    void FUN_004DBA40();
-};
 
-struct Obj_004DDC40
-{
-    char unknown_00[0x684];
-    char unknown_684;   // +0x0684
-    // FUNCTION: GAMEMD 0x4DDC40
-    char FUN_004DDC40(int a1);
-    // FUNCTION: GAMEMD 0x5F6A70
-    bool FUN_005F6A70(int);
-};
-GG_STATIC_ASSERT(offsetof(Obj_004DDC40, unknown_684) == 0x684);
 
-struct Obj_004DE750
-{
-    // FUNCTION: GAMEMD 0x4DE750
-    void FUN_004DE750(int a1);
-};
 
-struct Obj_004DE760
-{
-    // FUNCTION: GAMEMD 0x4DE760
-    void FUN_004DE760(int a1);
-};
 
-struct Obj_004DF1A0
-{
-    char unknown_00[0x5C4];
-    int unknown_5C4;   // +0x05C4
-    int unknown_5C8;   // +0x05C8
-    int unknown_5CC;   // +0x05CC
-    char unknown_5D0[0x1];
-    unsigned char unknown_5D1;   // +0x05D1
-    // FUNCTION: GAMEMD 0x4DF1A0
-    void FUN_004DF1A0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_004DF1A0, unknown_5C4) == 0x5C4);
-GG_STATIC_ASSERT(offsetof(Obj_004DF1A0, unknown_5C8) == 0x5C8);
-GG_STATIC_ASSERT(offsetof(Obj_004DF1A0, unknown_5CC) == 0x5CC);
-GG_STATIC_ASSERT(offsetof(Obj_004DF1A0, unknown_5D1) == 0x5D1);
 
-struct Obj_004DF1C0
-{
-    char unknown_00[0x5C4];
-    int unknown_5C4;   // +0x05C4
-    // FUNCTION: GAMEMD 0x4DF1C0
-    bool FUN_004DF1C0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004DF1C0, unknown_5C4) == 0x5C4);
 
-struct Obj_004DF1D0
-{
-    char unknown_00[0x5D1];
-    unsigned char unknown_5D1;   // +0x05D1
-    // FUNCTION: GAMEMD 0x4DF1D0
-    unsigned char FUN_004DF1D0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004DF1D0, unknown_5D1) == 0x5D1);
 
-struct Obj_004DF1E0
-{
-    char unknown_00[0x5C4];
-    int unknown_5C4;   // +0x05C4
-    // FUNCTION: GAMEMD 0x4DF1E0
-    int FUN_004DF1E0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004DF1E0, unknown_5C4) == 0x5C4);
 
-struct Obj_004DF310
-{
-    char unknown_00[0x5C4];
-    int unknown_5C4;   // +0x05C4
-    // FUNCTION: GAMEMD 0x4DF310
-    bool FUN_004DF310() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_004DF310, unknown_5C4) == 0x5C4);
 
 struct Obj_004DFA50
 {

@@ -57,30 +57,9 @@ template class DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>:
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Obj_006F20A0;
-struct Obj_006F20B0;
-struct Obj_006F20C0;
 
-struct Obj_006F20A0
-{
-    // FUNCTION: GAMEMD 0x6F20A0
-    int FUN_006F20A0() const;
-};
 
-struct Obj_006F20B0
-{
-    // FUNCTION: GAMEMD 0x6F20B0
-    int FUN_006F20B0() const;
-};
 
-struct Obj_006F20C0
-{
-    char unknown_00[0x98];
-    int unknown_98;   // +0x0098
-    // FUNCTION: GAMEMD 0x6F20C0
-    int FUN_006F20C0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_006F20C0, unknown_98) == 0x98);
 
 
 void __cdecl FUN_006F25D0();
@@ -161,7 +140,7 @@ HouseClass* TeamTypeClass::GetHouse() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6F20A0
 // Returns a constant. Vtable slot 11 of TeamTypeClass (RTTI).
-int Obj_006F20A0::FUN_006F20A0() const
+int TeamTypeClass::vf_11()
 {
     return 0x23;
 }
@@ -169,7 +148,7 @@ int Obj_006F20A0::FUN_006F20A0() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6F20B0
 // Returns a constant. Vtable slot 12 of TeamTypeClass (RTTI).
-int Obj_006F20B0::FUN_006F20B0() const
+int TeamTypeClass::vf_12()
 {
     return 0xF8;
 }
@@ -177,9 +156,9 @@ int Obj_006F20B0::FUN_006F20B0() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6F20C0
 // Member getter (dword). Vtable slot 16 of TeamTypeClass (RTTI).
-int Obj_006F20C0::FUN_006F20C0() const
+int TeamTypeClass::vf_16()
 {
-    return unknown_98;
+    return ArrayIndex;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

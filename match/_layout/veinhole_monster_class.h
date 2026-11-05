@@ -60,6 +60,8 @@ GG_STATIC_ASSERT(sizeof(VeinholeLogic) == 0x1C);
 class VeinholeMonsterClass : public ObjectClass
 {
 public:
+    virtual int vf_12();                    // 12  0x74F320
+    virtual int vf_11();                    // 11  0x74F310
     virtual int vf_30();                       // 30  0x74F330
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);  // 3   0x74F2D0
     // Statics and methods recovered in the combat/ and map/ TUs.

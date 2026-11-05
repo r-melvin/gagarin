@@ -5,17 +5,18 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu190_methods.h"
+#include "_layout/rad_site_class.h"
 
 // FUNCTION: GAMEMD 0x65B3A0
 // Returns a constant. Vtable slot 12 of RadSiteClass (RTTI).
-int Obj_0065B3A0::FUN_0065B3A0() const
+int RadSiteClass::vf_12()
 {
     return 0x74;
 }
 
 // FUNCTION: GAMEMD 0x65B3C0
 // Returns a constant. Vtable slot 11 of RadSiteClass (RTTI).
-int Obj_0065B3C0::FUN_0065B3C0() const
+int RadSiteClass::vf_11()
 {
     return 0x45;
 }

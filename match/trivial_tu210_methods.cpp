@@ -5,17 +5,18 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu210_methods.h"
+#include "_layout/side_class.h"
 
 // FUNCTION: GAMEMD 0x6A4910
 // Returns a constant. Vtable slot 12 of SideClass (RTTI).
-int Obj_006A4910::FUN_006A4910() const
+int SideClass::vf_12()
 {
     return 0xB4;
 }
 
 // FUNCTION: GAMEMD 0x6A4920
 // Returns a constant. Vtable slot 11 of SideClass (RTTI).
-int Obj_006A4920::FUN_006A4920() const
+int SideClass::vf_11()
 {
     return 0x1C;
 }

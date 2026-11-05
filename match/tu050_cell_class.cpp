@@ -3599,7 +3599,7 @@ int __stdcall CellClass::vf_rtti_3()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487E60
 // Returns a constant. Vtable slot 11 of CellClass (RTTI).
-int Obj_00487E60::FUN_00487E60() const
+int CellClass::vf_11()
 {
     return 0xB;
 }
@@ -3607,7 +3607,7 @@ int Obj_00487E60::FUN_00487E60() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x487E70
 // Returns a constant. Vtable slot 12 of CellClass (RTTI).
-int Obj_00487E70::FUN_00487E70() const
+int CellClass::vf_12()
 {
     return 0x148;
 }

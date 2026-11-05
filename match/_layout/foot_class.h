@@ -49,6 +49,17 @@ public:
     // FUNCTION: GAMEMD 0x4D31E0 -- chains TechnoClass(owner), initialises 0x520..0x6B8, seats the four vtables.
     FootClass(HouseClass* owner);
 
+    // Overrides of inherited slots that FootClass defines.
+    virtual bool vf_164();                                         // 164 0x41C050
+    virtual CellStruct vf_189();                                   // 189 0x41C150
+    virtual bool vf_47(AbstractClass* target);                     // 47  0x4DDC40
+    virtual bool vf_48();                                          // 48  0x41C070
+    virtual void vf_298();                                         // 298 0x4DF1A0
+    virtual bool vf_299();                                         // 299 0x4DF1C0
+    virtual bool vf_300();                                         // 300 0x4DF1D0
+    virtual int vf_301();                                          // 301 0x4DF1E0
+    virtual bool vf_305();                                         // 305 0x4DF310
+
     // Slots 309-340, introduced by FootClass (341 slots in all; retail table 0x7E8C94).
     // Names are placeholders; argument widths come from native RET n cleanup.
     // Slot 323 forwards its sixteen dwords to TechnoClass::FUN_00705E00.
@@ -69,7 +80,7 @@ public:
     // FUNCTION: GAMEMD 0x7013E0 (decl; reloc) -- whether the object may move now.
     bool FUN_007013E0();
     virtual void vf_317();                                         // 317 0x4DC030
-    virtual void vf_318();                                         // 318 0x41C080
+    virtual bool vf_318();                                         // 318 0x41C080, native AL=false
     virtual bool vf_319(const CoordStruct& a1);                    // 319 0x4D55F0
     virtual bool vf_320();                                         // 320 0x4D55C0
     virtual bool vf_321();                                         // 321 0x4DB9B0
@@ -83,7 +94,7 @@ public:
     virtual void vf_326();                                         // 326 0x41C100
     virtual void vf_327();                                         // 327 0x41C110
     virtual void vf_328(int a1);                                   // 328 0x41C120
-    virtual void vf_329();                                         // 329 0x4D9C00
+    virtual int vf_329();                                          // 329 0x4D9C00, native EAX=0
     virtual void* vf_330(DynamicVectorClass<AbstractClass*>* a1, int a2, int a3);// 330 0x4DF040
     virtual void* vf_331(void* a1, int a2, int a3, int* a4);      // 331 0x4DEE80
     virtual void* vf_332(void* a1, int a2, int a3);                // 332 0x4DEE50
@@ -165,7 +176,7 @@ public:
     void*           MegaDestination;                   // +0x5C8 AbstractClass*
     void*           MegaTarget;                        // +0x5CC AbstractClass*
     unsigned char   unknown_5D0;                       // +0x5D0
-    unsigned char   HaveAttackMoveTarget;              // +0x5D1 (bool)
+    bool            HaveAttackMoveTarget;              // +0x5D1
     unsigned char   align_5D2[2];                      // +0x5D2
     TeamClass*      Team;                              // +0x5D4 (0x707CB0 calls TeamClass 0x6EA870 on it)
     FootClass*      NextTeamMember;                    // +0x5D8 (TeamClass::ScanLimit 0x6EC3A0 walks it)
@@ -210,7 +221,7 @@ public:
     unsigned char   unknown_bool_6B3;                  // +0x6B3 (bool)
     unsigned char   unknown_bool_6B4;                  // +0x6B4 (bool)
     unsigned char   IsCrushingSomething;               // +0x6B5 (bool)
-    unsigned char   FrozenStill;                       // +0x6B6 (bool, ctor = 1)
+    bool            FrozenStill;                       // +0x6B6 (ctor = 1)
     unsigned char   IsWaitingBlockagePath;             // +0x6B7 (bool)
     unsigned char   unknown_bool_6B8;                  // +0x6B8 (bool)
     unsigned char   align_6B9[3];                      // +0x6B9

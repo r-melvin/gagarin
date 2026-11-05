@@ -445,10 +445,10 @@ int InfantryClass::vf_139()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x51FAF0
-// Member getter (dword). Vtable slot 34 of InfantryClass (RTTI).
-int Obj_0051FAF0::FUN_0051FAF0() const
+// Vtable slot 34 of InfantryClass (RTTI). Member getter (dword).
+ObjectTypeClass* InfantryClass::vf_34()
 {
-    return unknown_6C0;
+    return Type;
 }
 
 // FUNCTION: GAMEMD 0x520260
@@ -545,32 +545,32 @@ int InfantryClass::vf_185(AbstractClass* target)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x521B20
-// Branching. Vtable slot 338 of InfantryClass (RTTI).
-void Obj_00521B20::FUN_00521B20()
+// Vtable slot 338 of InfantryClass (RTTI). Branching.
+void InfantryClass::vf_338()
 {
-    int t1 = unknown_6C4;
+    int t1 = SequenceAnim;
     if (t1 == 6)
     {
-        unknown_6C4 = -1;
+        SequenceAnim = -1;
     }
     if (t1 == 3)
     {
-        unknown_6C4 = -1;
+        SequenceAnim = -1;
     }
     if (t1 == 0x11)
     {
-        unknown_6C4 = -1;
+        SequenceAnim = -1;
     }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x521B40
-// Branching. Vtable slot 339 of InfantryClass (RTTI).
-void Obj_00521B40::FUN_00521B40()
+// Vtable slot 339 of InfantryClass (RTTI). Branching.
+void InfantryClass::vf_339()
 {
-    if (unknown_6E4 != 0)
+    if (ShouldDeploy != 0)
     {
-        unknown_6E4 = 0;
+        ShouldDeploy = 0;
         vf_342(0x1B, 0, 0);
     }
 }
@@ -662,10 +662,10 @@ CoordStruct InfantryClass::vf_192(int a1)
 }
 
 // FUNCTION: GAMEMD 0x5220F0
-// Stores its argument in a member. Vtable slot 325 of InfantryClass (RTTI).
-void Obj_005220F0::FUN_005220F0()
+// Vtable slot 325 of InfantryClass (RTTI). Stores a constant in a member.
+void InfantryClass::vf_325()
 {
-    unknown_6D8 = 1;
+    PermanentBerzerk = 1;
 }
 
 // FUNCTION: GAMEMD 0x522100
@@ -682,10 +682,10 @@ bool InfantryClass::FUN_00522100()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5224D0
-// Member getter (byte). Vtable slot 204 of InfantryClass (RTTI).
-unsigned char Obj_005224D0::FUN_005224D0() const
+// Vtable slot 204 of InfantryClass (RTTI). Member getter (byte) of the type.
+bool InfantryClass::vf_204()
 {
-    return unknown_6C0->unknown_EC3;
+    return Type->Engineer;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1009,8 +1009,8 @@ CoordStruct InfantryClass::vf_44(int a1, CoordStruct a2)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5232F0
-// Returns a constant. Vtable slot 12 of InfantryClass (RTTI).
-int Obj_005232F0::FUN_005232F0() const
+// Vtable slot 12 of InfantryClass (RTTI). Returns a constant.
+int InfantryClass::vf_12()
 {
     return 0x6F0;
 }
@@ -1027,8 +1027,8 @@ HRESULT __stdcall InfantryClass::GetClassID(CLSID* pClassID)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x523340
-// Returns a constant. Vtable slot 11 of InfantryClass (RTTI).
-int Obj_00523340::FUN_00523340() const
+// Vtable slot 11 of InfantryClass (RTTI). Returns a constant.
+int InfantryClass::vf_11()
 {
     return 0xF;
 }

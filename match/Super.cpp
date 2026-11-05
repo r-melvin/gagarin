@@ -368,7 +368,7 @@ int __stdcall SuperClass::vf_rtti_3()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6CE200
 // Returns a constant. Vtable slot 11 of SuperClass (RTTI).
-int Obj_006CE200::FUN_006CE200() const
+int SuperClass::vf_11()
 {
     return 0x39;
 }
@@ -376,7 +376,7 @@ int Obj_006CE200::FUN_006CE200() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6CE210
 // Returns a constant. Vtable slot 12 of SuperClass (RTTI).
-int Obj_006CE210::FUN_006CE210() const
+int SuperClass::vf_12()
 {
     return 0x80;
 }

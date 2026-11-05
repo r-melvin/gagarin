@@ -5,6 +5,7 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu080_methods.h"
+#include "_layout/factory_class.h"
 
 // FUNCTION: GAMEMD 0x4CA580
 // Branching. Vtable slot 10 of FactoryClass (RTTI).
@@ -20,14 +21,14 @@ int Obj_004CA580::FUN_004CA580(int a1, int a2)
 
 // FUNCTION: GAMEMD 0x4CA750
 // Returns a constant. Vtable slot 11 of FactoryClass (RTTI).
-int Obj_004CA750::FUN_004CA750() const
+int FactoryClass::vf_11()
 {
     return 0xC;
 }
 
 // FUNCTION: GAMEMD 0x4CA760
 // Returns a constant. Vtable slot 12 of FactoryClass (RTTI).
-int Obj_004CA760::FUN_004CA760() const
+int FactoryClass::vf_12()
 {
     return 0x74;
 }

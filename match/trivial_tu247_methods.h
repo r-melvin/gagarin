@@ -9,30 +9,9 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Obj_007236E0;
-struct Obj_007236F0;
-struct Obj_00723700;
 
-struct Obj_007236E0
-{
-    // FUNCTION: GAMEMD 0x7236E0
-    int FUN_007236E0() const;
-};
 
-struct Obj_007236F0
-{
-    // FUNCTION: GAMEMD 0x7236F0
-    int FUN_007236F0() const;
-};
 
-struct Obj_00723700
-{
-    char unknown_00[0x98];
-    int unknown_98;   // +0x0098
-    // FUNCTION: GAMEMD 0x723700
-    int FUN_00723700() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00723700, unknown_98) == 0x98);
 
 
 

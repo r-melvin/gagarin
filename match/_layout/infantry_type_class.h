@@ -48,6 +48,7 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);   // 6   0x524B60
     virtual int vf_11();   // 11  0x524D40
     virtual int vf_12();   // 12  0x524D50
+    virtual int vf_16();   // 16  0x524D60
     // Declaration: GAMEMD 0x5247A0 -- InfantryTypeClass slot 44 returns EAX.
     virtual int vf_44();
     // Declaration: GAMEMD 0x524790 -- slot45, full EAX scalar, no args.

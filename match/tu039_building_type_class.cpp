@@ -1617,14 +1617,14 @@ char* FUN_004653C0(const char* name)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465910
-bool BuildingTypeView_0045DD90::vf_40()
+bool BuildingTypeClass::vf_40()
 {
     return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465920
-bool BuildingTypeView_0045DD90::vf_41()
+bool BuildingTypeClass::vf_41()
 {
     return false;
 }
@@ -1766,21 +1766,21 @@ int Obj_00465D00::FUN_00465D70() const
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465D90
-int BuildingTypeView_0045DD90::WhatAmI()
+int BuildingTypeClass::vf_11()
 {
     return 7;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465DA0
-int BuildingTypeView_0045DD90::Size()
+int BuildingTypeClass::vf_12()
 {
     return 0x1798;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x465DB0
-int BuildingTypeView_0045DD90::vf_16()
+int BuildingTypeClass::vf_16()
 {
     return ArrayIndex;
 }

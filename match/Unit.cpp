@@ -464,9 +464,9 @@ DirStruct UnitClass::vf_194()
 
 // FUNCTION: GAMEMD 0x741490
 // Member getter (dword). Vtable slot 34 of UnitClass (RTTI).
-int Obj_00741490::FUN_00741490() const
+ObjectTypeClass* UnitClass::vf_34()
 {
-    return unknown_6C4;
+    return Type;
 }
 
 // FUNCTION: GAMEMD 0x7414A0
@@ -1053,7 +1053,7 @@ bool UnitClass::FUN_00746DB0()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x746DD0
 // Returns a constant. Vtable slot 12 of UnitClass (RTTI).
-int Obj_00746DD0::FUN_00746DD0() const
+int UnitClass::vf_12()
 {
     return 0x8E8;
 }
@@ -1061,7 +1061,7 @@ int Obj_00746DD0::FUN_00746DD0() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x746E20
 // Returns a constant. Vtable slot 11 of UnitClass (RTTI).
-int Obj_00746E20::FUN_00746E20() const
+int UnitClass::vf_11()
 {
     return 1;
 }

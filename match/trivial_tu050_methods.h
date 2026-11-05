@@ -22,8 +22,6 @@ struct Obj_004866F0;
 struct Obj_00486710;
 struct Obj_00486730;
 struct Obj_00486900;
-struct Obj_00487E60;
-struct Obj_00487E70;
 
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
@@ -148,17 +146,7 @@ struct Obj_00486900
 };
 GG_STATIC_ASSERT(offsetof(Obj_00486900, unknown_38) == 0x38);
 
-struct Obj_00487E60
-{
-    // FUNCTION: GAMEMD 0x487E60
-    int FUN_00487E60() const;
-};
 
-struct Obj_00487E70
-{
-    // FUNCTION: GAMEMD 0x487E70
-    int FUN_00487E70() const;
-};
 
 
 // FUNCTION: GAMEMD 0x484A80

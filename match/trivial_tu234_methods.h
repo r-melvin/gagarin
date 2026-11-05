@@ -9,20 +9,8 @@
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Obj_006E87D0;
-struct Obj_006E87E0;
 
-struct Obj_006E87D0
-{
-    // FUNCTION: GAMEMD 0x6E87D0
-    int FUN_006E87D0() const;
-};
 
-struct Obj_006E87E0
-{
-    // FUNCTION: GAMEMD 0x6E87E0
-    int FUN_006E87E0() const;
-};
 
 
 

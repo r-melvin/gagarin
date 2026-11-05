@@ -68,20 +68,8 @@ GG_STATIC_ASSERT(sizeof(DiskLaserClass*) == 4);
 #include <stddef.h>
 #include "_rt/gg_static_assert.h"
 
-struct Obj_004A7C70;
-struct Obj_004A7C80;
 
-struct Obj_004A7C70
-{
-    // FUNCTION: GAMEMD 0x4A7C70
-    int FUN_004A7C70() const;
-};
 
-struct Obj_004A7C80
-{
-    // FUNCTION: GAMEMD 0x4A7C80
-    int FUN_004A7C80() const;
-};
 
 
 
@@ -323,7 +311,7 @@ HRESULT __stdcall DiskLaserClass::Load(IStream* pStm)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4A7C70
 // Returns a constant. Vtable slot 12 of DiskLaserClass (RTTI).
-int Obj_004A7C70::FUN_004A7C70() const
+int DiskLaserClass::vf_12()
 {
     return 0x40;
 }
@@ -331,7 +319,7 @@ int Obj_004A7C70::FUN_004A7C70() const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4A7C80
 // Returns a constant. Vtable slot 11 of DiskLaserClass (RTTI).
-int Obj_004A7C80::FUN_004A7C80() const
+int DiskLaserClass::vf_11()
 {
     return 0x49;
 }

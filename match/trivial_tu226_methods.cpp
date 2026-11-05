@@ -5,24 +5,25 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu226_methods.h"
+#include "_layout/super_weapon_type_class.h"
 
 // FUNCTION: GAMEMD 0x6CE8F0
 // Returns a constant. Vtable slot 11 of SuperWeaponTypeClass (RTTI).
-int Obj_006CE8F0::FUN_006CE8F0() const
+int SuperWeaponTypeClass::vf_11()
 {
     return 0x20;
 }
 
 // FUNCTION: GAMEMD 0x6CE900
 // Returns a constant. Vtable slot 12 of SuperWeaponTypeClass (RTTI).
-int Obj_006CE900::FUN_006CE900() const
+int SuperWeaponTypeClass::vf_12()
 {
     return 0x100;
 }
 
 // FUNCTION: GAMEMD 0x6CEA10
 // Member getter (dword). Vtable slot 16 of SuperWeaponTypeClass (RTTI).
-int Obj_006CEA10::FUN_006CEA10() const
+int SuperWeaponTypeClass::vf_16()
 {
-    return unknown_98;
+    return ArrayIndex;
 }

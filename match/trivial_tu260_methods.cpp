@@ -5,24 +5,25 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu260_methods.h"
+#include "_layout/voxel_anim_class.h"
 
 // FUNCTION: GAMEMD 0x74A960
 // Returns a constant. Vtable slot 30 of VoxelAnimClass (RTTI).
-int Obj_0074A960::FUN_0074A960() const
+int VoxelAnimClass::vf_30()
 {
     return 3;
 }
 
 // FUNCTION: GAMEMD 0x74AB10
 // Returns a constant. Vtable slot 12 of VoxelAnimClass (RTTI).
-int Obj_0074AB10::FUN_0074AB10() const
+int VoxelAnimClass::vf_12()
 {
     return 0x148;
 }
 
 // FUNCTION: GAMEMD 0x74AB20
 // Returns a constant. Vtable slot 11 of VoxelAnimClass (RTTI).
-int Obj_0074AB20::FUN_0074AB20() const
+int VoxelAnimClass::vf_11()
 {
     return 0x29;
 }
@@ -36,7 +37,7 @@ int Obj_0074AB30::FUN_0074AB30() const
 
 // FUNCTION: GAMEMD 0x74AB40
 // Returns zero; pops its stack arguments. Vtable slot 66 of VoxelAnimClass (RTTI).
-int Obj_0074AB40::FUN_0074AB40(int a1) const
+void* VoxelAnimClass::vf_66(int a1)
 {
     return 0;
 }

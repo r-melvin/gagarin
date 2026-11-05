@@ -76,6 +76,11 @@ class IsometricTileTypeClass;
 class BuildingTypeClass : public TechnoTypeClass
 {
 public:
+    virtual int vf_16();                    // 16  0x465DB0
+    virtual int vf_12();                    // 12  0x465DA0
+    virtual int vf_11();                    // 11  0x465D90
+    virtual bool vf_41();                    // 41  0x465920
+    virtual bool vf_40();                    // 40  0x465910
     // Native introduced slot 48, after TechnoTypeClass slots 0..47; 0x465960.
     virtual void* vf_48();
 
