@@ -330,7 +330,7 @@ class Lint:
             for header, body, l0, l1 in cppscan.function_bodies(text):
                 if not any(l0 <= ln <= l1 for ln in added):
                     continue
-                if "// NOVPTR: GAMEMD 0x" in body:      # retail shows no vptr: no virtual destructor can emit this
+                if "// NOVPTR: GAMEMD 0x" in "\n".join(text.split("\n")[l0 - 1:l1]):      # retail shows no vptr: no virtual destructor can emit this
                     continue
                 if SDD_DELETE.search(body) and SDD_FLAG.search(body):
                     self.err("sdd", "hand-written scalar deleting destructor shape (%s%s-test, delete this): declare the virtual destructor "
