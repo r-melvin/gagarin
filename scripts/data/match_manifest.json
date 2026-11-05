@@ -153099,5 +153099,71 @@
   "name": "MPCooperative::vf_22",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/Ini.cpp",
+  "addr": "0x526B10",
+  "sym": "?GetEntry@INIClass@@QAEPAUINIEntry@1@PBD0@Z",
+  "len": "0x1a3",
+  "name": "INIClass::GetEntry",
+  "status": "partial",
+  "pct": 84.3,
+  "best_pct": 84.3,
+  "best_at": "39303f83"
+ },
+ {
+  "tu": "match/Ini.cpp",
+  "addr": "0x5276D0",
+  "sym": "?FUN_005276D0@INIClass@@QAEHPBD0H@Z",
+  "len": "0x214",
+  "name": "INIClass::FUN_005276D0",
+  "status": "partial",
+  "pct": 82.9,
+  "best_pct": 82.9,
+  "best_at": "39303f83"
+ },
+ {
+  "tu": "match/Ini.cpp",
+  "addr": "0x528220",
+  "sym": "?FUN_00528220@INIClass@@QAEHPBD0H@Z",
+  "len": "0x1aa",
+  "name": "INIClass::FUN_00528220",
+  "status": "partial",
+  "pct": 82.4,
+  "best_pct": 82.4,
+  "best_at": "39303f83"
+ },
+ {
+  "tu": "match/Ini.cpp",
+  "addr": "0x5283D0",
+  "sym": "?FUN_005283D0@INIClass@@QAENPBD0N@Z",
+  "len": "0x1d2",
+  "name": "INIClass::FUN_005283D0",
+  "status": "partial",
+  "pct": 81.1,
+  "best_pct": 81.1,
+  "best_at": "39303f83"
+ },
+ {
+  "tu": "match/Ini.cpp",
+  "addr": "0x5295F0",
+  "sym": "?FUN_005295F0@INIClass@@QAE_NPBD0_N@Z",
+  "len": "0x1ee",
+  "name": "INIClass::FUN_005295F0",
+  "status": "partial",
+  "pct": 82.5,
+  "best_pct": 82.5,
+  "best_at": "39303f83"
+ },
+ {
+  "tu": "match/Ini.cpp",
+  "addr": "0x52A760",
+  "sym": "?FUN_0052A760@INIClass@@QAEHPBD0H@Z",
+  "len": "0x1d1",
+  "name": "INIClass::FUN_0052A760",
+  "status": "partial",
+  "pct": 80.9,
+  "best_pct": 80.9,
+  "best_at": "39303f83"
  }
 ]

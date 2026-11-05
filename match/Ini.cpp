@@ -14,6 +14,8 @@
 
 #include "_layout/ini_class.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <new.h>
 #include <wchar.h>
 #include <string.h>
@@ -290,6 +292,7 @@ int FUN_007515C0(void* record);
 #include "_rt/gg_static_assert.h"
 #include "_layout/ini_nodes.h"
 #include "_layout/ini_index_defaults.h"
+#include "_layout/obj_004a1d30.h"
 
 // The hash state the entry name is run through.
 struct Crc_0052A4D0
@@ -304,11 +307,7 @@ struct Crc_0052A4D0
 GG_STATIC_ASSERT(sizeof(Crc_0052A4D0) == 0xC);
 
 // One {key, entry} node of the section's sorted entry index.
-struct EntryNode_0052A4D0
-{
-    int                 Key;     // +0x0000
-    INIClass::INIEntry* Entry;   // +0x0004
-};
+typedef IndexClass<int, INIClass::INIEntry*>::NodeElement EntryNode_0052A4D0;
 GG_STATIC_ASSERT(sizeof(EntryNode_0052A4D0) == 8);
 
 // LIBRARY: GAMEMD 0x7C8B48 (decl; reloc) -- CRT qsort.
@@ -349,8 +348,8 @@ int __cdecl FUN_0052B6A0(const void* a, const void* b);
 INIClass::INIEntry* const& INISectionEntryView::Fetch(int key)
 {
     if (Count != 0) {
-        if (Cached != 0 && Cached->Key == key) {
-            return Cached->Entry;
+        if (Cached != 0 && Cached->ID == key) {
+            return Cached->Data;
         }
         if (!IsSorted) {
             gg_qsort(Items, Count, 8, FUN_0052B6A0);
@@ -362,13 +361,13 @@ INIClass::INIEntry* const& INISectionEntryView::Fetch(int key)
         while (n > 0) {
             int half = n / 2;
             EntryNode_0052A4D0* mid = base + half;
-            if (mid->Key > key) {
+            if (mid->ID > key) {
                 n = half;
             } else {
-                if (mid->Key == key) {
+                if (mid->ID == key) {
                     if (mid != 0) {
                         Cached = mid;
-                        return Cached->Entry;
+                        return Cached->Data;
                     }
                     break;
                 }
@@ -579,6 +578,127 @@ TypeListInt FUN_00525430(CCINI_00475C70* ini, const char* section,
 // GLOBAL: GAMEMD 0xA8F2D0
 MathTblZero4 DAT_00A8F2D0;
 
+// The INI section-cache lookup and the entry lookup that retail expands inline in
+// the readers and writers of this file (GetEntry 0x526B10 and the typed readers).
+// The section lookup answers from the one-entry cache (name pointer at +4, section at
+// +8), otherwise hashes the name and asks the section index; it hands the section back
+// through a reference. All three returns (cache hit, found, not found) are load-bearing:
+// with fewer, cl keeps the miss arm inline instead of moving it past the final RET.
+typedef IndexClass<int, INIClass::INISection*>::NodeElement SectionNode_Ini;
+typedef IndexClass<int, INIClass::INIEntry*>::NodeElement EntryNode_Ini;
+EntryNode_Ini* FUN_0052B6D0(EntryNode_Ini* items, int count, int* key);
+extern "C" void __cdecl gg_qsort(void* base, unsigned int count, unsigned int size,
+                                 int (__cdecl* compare)(const void*, const void*));
+int __cdecl FUN_0052B6A0(const void* a, const void* b);
+// FUNCTION: GAMEMD 0x727CF0 (decl; reloc) -- in-place whitespace trim (ECX buffer).
+void FUN_00727CF0(char* buffer);
+
+inline int IniSectionIsPresent(INIClass::SectionIndexClass& index, int id)
+{
+    if (index.IndexCount == 0) return 0;
+    if (index.Archive != 0 && index.Archive->ID == id) return 1;
+    SectionNode_Ini* node = index.FUN_0052B620(id);
+    if (node == 0) return 0;
+    index.Archive = node;
+    return 1;
+}
+
+inline INIClass::INISection* const& IniSectionFetch(INIClass::SectionIndexClass& index, int id)
+{
+    if (index.FUN_0052B390(id)) return index.Archive->Data;
+    return DAT_00B7882C;
+}
+
+inline INIClass::INISection* const& IniSectionFetchInline(INIClass::SectionIndexClass& index, int id)
+{
+    if (IniSectionIsPresent(index, id)) return index.Archive->Data;
+    return DAT_00B7882C;
+}
+
+inline EntryNode_Ini* IniEntrySearch(IndexClass<int, INIClass::INIEntry*>& index, const int& id)
+{
+    if (index.IndexCount == 0) return 0;
+    if (!index.IsSorted) {
+        gg_qsort(index.IndexTable, index.IndexCount, 8, FUN_0052B6A0);
+        index.Archive = 0;
+        index.IsSorted = true;
+    }
+    EntryNode_Ini node;
+    node.ID = id;
+    return FUN_0052B6D0(index.IndexTable, index.IndexCount, &node.ID);
+}
+
+inline int IniEntryIsPresent(IndexClass<int, INIClass::INIEntry*>& index, const int& id)
+{
+    if (index.IndexCount == 0) return 0;
+    if (index.Archive != 0 && index.Archive->ID == id) return 1;
+    EntryNode_Ini* node = IniEntrySearch(index, id);
+    if (node == 0) return 0;
+    index.Archive = node;
+    return 1;
+}
+
+inline int IniEntryIsPresentCall(IndexClass<int, INIClass::INIEntry*>& index, const int& id)
+{
+    if (index.IndexCount == 0) return 0;
+    if (index.Archive != 0 && index.Archive->ID == id) return 1;
+    EntryNode_Ini* node = index.FUN_0052B4F0(id);
+    if (node == 0) return 0;
+    index.Archive = node;
+    return 1;
+}
+
+inline INIClass::INIEntry* const& IniEntryFetch(IndexClass<int, INIClass::INIEntry*>& index, const int& id)
+{
+    if (IniEntryIsPresentCall(index, id)) return index.Archive->Data;
+    return DAT_00B78830;
+}
+
+inline bool IniFindSection(INIClass* ini, const char* section, INIClass::INISection*& out)
+{
+    if (section == ini->unknown_04) {
+        out = ini->unknown_08;
+        return true;
+    }
+    if (section != 0) {
+        Obj_004A1D30 crc;
+        int id = crc.FUN_004A1DE0(section, strlen(section));
+        if (IniSectionIsPresent(ini->SectionIndex, id)) {
+            out = IniSectionFetch(ini->SectionIndex, id);
+            if (out != 0) {
+                ini->unknown_08 = out;
+                ini->unknown_04 = section;
+                return true;
+            }
+        }
+    }
+    ini->unknown_04 = 0;
+    ini->unknown_08 = 0;
+    return false;
+}
+
+inline INIClass::INIEntry* IniFindEntryIn(INIClass::INISection* section, const char* key)
+{
+    if (section == 0) return 0;
+    if (key == 0) return 0;
+    Obj_004A1D30 crc;
+    int id = crc.FUN_004A1DE0(key, strlen(key));
+    if (IniEntryIsPresent(section->EntryIndex, id)) return IniEntryFetch(section->EntryIndex, id);
+    return 0;
+}
+
+// The same lookup with the entry index's search left as the call at 0x52B4F0 (the typed readers, where the
+// expansion budget is spent by the time the entry is looked up).
+inline INIClass::INIEntry* IniFindEntryInB(INIClass::INISection* section, const char* key)
+{
+    if (section == 0) return 0;
+    if (key == 0) return 0;
+    Obj_004A1D30 crc;
+    int id = crc.FUN_004A1DE0(key, strlen(key));
+    if (IniEntryIsPresentCall(section->EntryIndex, id)) return IniEntryFetch(section->EntryIndex, id);
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x526810
 //
 // Find a section by name. The name is hashed, the cached entry answers when
@@ -706,12 +826,10 @@ int INIClass::FUN_00526A30(const Wstring& section)
 {
     const char* name = section.FUN_007B5440();
     if (name != 0) {
-        CRC_00526960 engine;
-        int crc = engine(name, strlen(name));
-
-        Index_00526960* index = reinterpret_cast<Index_00526960*>(&SectionIndex);
-        if (index->IsPresent(crc)) {
-            INIClass::INISection* sec = (*index)[crc];
+        Obj_004A1D30 crc;
+        int id = crc.FUN_004A1DE0(name, strlen(name));
+        if (IniSectionIsPresent(SectionIndex, id)) {
+            INIClass::INISection* sec = IniSectionFetchInline(SectionIndex, id);
             if (sec != 0)
                 return sec->EntryIndex.IndexCount;
         }
@@ -727,6 +845,16 @@ void INIClass::Reset()
 {
     unknown_04 = 0;
     unknown_08 = 0;
+}
+
+// FUNCTION: GAMEMD 0x526B10
+// Find an entry by section and key: the section through the one-entry cache or the
+// section index, then the key in that section's entry index.
+INIClass::INIEntry* INIClass::GetEntry(const char* section, const char* key)
+{
+    INISection* found;
+    if (!IniFindSection(this, section, found)) return 0;
+    return IniFindEntryIn(found, key);
 }
 
 // FUNCTION: GAMEMD 0x526CC0
@@ -885,6 +1013,28 @@ bool INIClass::WriteInteger(const Wstring& section, const Wstring& key, int valu
     return WriteString(sectionText, keyText, buffer);
 }
 
+// FUNCTION: GAMEMD 0x5276D0
+// Read an integer: the entry's value is hex when it opens with '$' or ends in 'h',
+// decimal otherwise; the fallback answers a missing section, key or value.
+int INIClass::FUN_005276D0(const char* section, const char* key, int fallback)
+{
+    if (section == 0 || key == 0) return fallback;
+    INISection* found;
+    INIEntry* entry = 0;
+    if (IniFindSection(this, section, found)) entry = IniFindEntryInB(found, key);
+    if (entry != 0 && entry->Value != 0) {
+        const char* text = entry->Value;
+        if (*text == '$') {
+            sscanf(text, "$%x", &fallback);
+        } else if (tolower(text[strlen(text) - 1]) == 'h') {
+            sscanf(entry->Value, "%xh", &fallback);
+        } else {
+            fallback = atoi(entry->Value);
+        }
+    }
+    return fallback;
+}
+
 // FUNCTION: GAMEMD 0x527B90
 // Writes `guid` in its braced text form, converted to the ANSI code page through a local buffer.
 bool INIClass::FUN_00527B90(const char* section, const char* key, const GUID& guid)
@@ -936,6 +1086,36 @@ bool INIClass::FUN_005281C0(const Wstring& section, const Wstring& key, int valu
     const char* sectionText = section.FUN_007B5440();
     sprintf(buffer, "%X", value);
     return WriteString(sectionText, keyText, buffer);
+}
+
+// FUNCTION: GAMEMD 0x528220
+// Read a hexadecimal integer ("%x"); the fallback answers a missing section, key or value.
+int INIClass::FUN_00528220(const char* section, const char* key, int fallback)
+{
+    if (section == 0 || key == 0) return fallback;
+    INISection* found;
+    INIEntry* entry = 0;
+    if (IniFindSection(this, section, found)) entry = IniFindEntryInB(found, key);
+    if (entry != 0 && entry->Value != 0) sscanf(entry->Value, "%x", &fallback);
+    return fallback;
+}
+
+// FUNCTION: GAMEMD 0x5283D0
+// Read a floating-point value (a trailing percent sign scales it by 0.01); the fallback
+// answers a missing section, key or value.
+double INIClass::FUN_005283D0(const char* section, const char* key, double fallback)
+{
+    if (section == 0 || key == 0) return fallback;
+    INISection* found;
+    INIEntry* entry = 0;
+    if (IniFindSection(this, section, found)) entry = IniFindEntryInB(found, key);
+    if (entry != 0 && entry->Value != 0) {
+        float value;
+        sscanf(entry->Value, "%f", &value);
+        fallback = value;
+        if (strchr(entry->Value, '%%') != 0) fallback *= 0.01;
+    }
+    return fallback;
 }
 
 // FUNCTION: GAMEMD 0x5285B0
@@ -1070,6 +1250,31 @@ bool INIClass::WriteBool(const Wstring& section, const Wstring& key, bool value)
     return WriteString(sectionText, keyText, "no");
 }
 
+// FUNCTION: GAMEMD 0x5295F0
+// Read a boolean: 0/F/N (either case) is false, 1/T/Y is true, anything else (and a
+// missing section, key or value) answers the fallback.
+bool INIClass::FUN_005295F0(const char* section, const char* key, bool fallback)
+{
+    if (section == 0) return fallback;
+    if (key == 0) return fallback;
+    INISection* found;
+    INIEntry* entry = 0;
+    if (IniFindSection(this, section, found)) entry = IniFindEntryInB(found, key);
+    if (entry != 0 && entry->Value != 0) {
+        switch (toupper(*entry->Value)) {
+        case '0':
+        case 'F':
+        case 'N':
+            return false;
+        case '1':
+        case 'T':
+        case 'Y':
+            return true;
+        }
+    }
+    return fallback;
+}
+
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x5297E0
 // 0x5297E0  INIClass::Write2Integers
@@ -1155,7 +1360,7 @@ INIClass::INIEntry* INISectionEntryView::FindEntry(const char* name)
             goto missing;
         }
 
-        if (Cached == 0 || Cached->Key != key) {
+        if (Cached == 0 || Cached->ID != key) {
             if (!IsSorted) {
                 gg_qsort(Items, Count, 8, FUN_0052B6A0);
                 Cached = 0;
@@ -1183,6 +1388,26 @@ bool CCINIClass::WriteKeyBlocks(const IniKeyBlockSource& key)
     WriteUUBlock("PublicKey", buffer, key.EncodeFirst(buffer));
     WriteUUBlock("PrivateKey", buffer, key.EncodeSecond(buffer));
     return true;
+}
+
+// FUNCTION: GAMEMD 0x52A760
+// Read a "hh:mm:ss" time as a tick count (sixty ticks to the second); the fallback
+// answers a missing section, key or value.
+int INIClass::FUN_0052A760(const char* section, const char* key, int fallback)
+{
+    if (section == 0) return fallback;
+    if (key == 0) return fallback;
+    INISection* found;
+    INIEntry* entry = 0;
+    if (IniFindSection(this, section, found)) entry = IniFindEntryInB(found, key);
+    if (entry != 0 && entry->Value != 0) {
+        int hours = 0;
+        int minutes = 0;
+        int seconds = 0;
+        sscanf(entry->Value, "%02d:%02d:%02d", &hours, &minutes, &seconds);
+        return ((hours * 60 + minutes) * 60 + seconds) * 60;
+    }
+    return fallback;
 }
 
 // FUNCTION: GAMEMD 0x52A940

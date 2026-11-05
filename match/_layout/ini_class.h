@@ -22,6 +22,19 @@ public:
     // Retail TypeDescriptors name these nested structs.
     struct INIEntry;
     struct INISection;
+    // The section index, IndexClass<int, INISection*> (out-of-line copies 0x52B390/0x52B430/0x52B620/0x52B720).
+    // Retail constructs it through the call at 0x49EA10 (the INIClass constructor expanded at 0x5D5C07), which an
+    // inline template constructor cannot reproduce (VC6 ignores an explicit-specialisation declaration), so this
+    // thin class carries the constructor declaration only, as IndexClassRaw does.
+    struct SectionIndexClass : public IndexClass<int, INISection*>
+    {
+        // FUNCTION: GAMEMD 0x49EA10 (decl; reloc) -- zero all five fields.
+        SectionIndexClass();
+        // FUNCTION: GAMEMD 0x52B390 (decl; reloc) -- IsPresent, the out-of-line copy the lookups call. Declared here
+        // as well as on the template: Ini.cpp defines the template's copy, and a body the TU can see is expanded
+        // inline at the call sites, where retail calls.
+        bool FUN_0052B390(const int& id);
+    };
     // The inline construction, as CCINIClass's constructor expands it at
     // 0x5D5C07: +0x04/+0x08 zeroed, the list (0x49E8E0) and index (0x49EA10)
     // constructors called, +0x3C zeroed.
@@ -55,6 +68,8 @@ public:
     int FUN_005276D0(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x5278F0 (decl; reloc) -- read an integer under Wstring names, RET 0xC.
     int FUN_005278F0(const Wstring& section, const Wstring& key, int fallback);
+    // FUNCTION: GAMEMD 0x528220 -- read a hexadecimal integer ("%x"), RET 0xC.
+    int FUN_00528220(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x5283D0 (decl; reloc) -- section/key and double fallback, RET16.
     double FUN_005283D0(const char* section, const char* key, double fallback);
     // FUNCTION: GAMEMD 0x5275C0
@@ -80,6 +95,8 @@ public:
     bool FUN_005295F0(const char* section, const char* key, bool fallback);
     // FUNCTION: GAMEMD 0x5297E0
     bool Write2Integers(const char* section, const char* key, int* values);
+    // FUNCTION: GAMEMD 0x52A760 -- read an "hh:mm:ss" time as ticks, RET 0xC.
+    int FUN_0052A760(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x52AA90
     static void FUN_0052AA90(char* buffer);
     // FUNCTION: GAMEMD 0x52AAC0
@@ -107,11 +124,15 @@ public:
     int LoadStraw(Straw* straw, unsigned long options);
     int SavePipe(Pipe* pipe);
     int FUN_00526420(FileClass* file);
-    void* unknown_04;
-    void* unknown_08;
+    // The one-entry section cache GetEntry and the typed readers consult first: the name
+    // pointer last looked up, and the section it resolved to (both zeroed by Reset 0x526B00
+    // and on a miss).
+    const char* unknown_04;
+    INISection* unknown_08;
     // RTTI table 0x7E1AFC.
     List<INISection*> Sections;
-    IndexClassRaw SectionIndex;
+    // The CRC-keyed section index; its out-of-line members are at 0x52B390/0x52B430/0x52B620.
+    SectionIndexClass SectionIndex;
     unsigned int unknown_3C;
 };
 GG_STATIC_ASSERT(offsetof(INIClass, unknown_04) == 4);
@@ -120,6 +141,7 @@ GG_STATIC_ASSERT(offsetof(INIClass, Sections) == 0xC);
 GG_STATIC_ASSERT(offsetof(INIClass, SectionIndex) == 0x28);
 GG_STATIC_ASSERT(offsetof(INIClass, unknown_3C) == 0x3C);
 GG_STATIC_ASSERT(sizeof(List<INIClass::INISection*>) == 0x1C);
+GG_STATIC_ASSERT(sizeof(INIClass::SectionIndexClass) == 0x14);
 GG_STATIC_ASSERT(sizeof(INIClass) == 0x40);
 // VTABLE: GAMEMD 0x7E1AFC -- List<INIClass::INISection*>.
 #endif

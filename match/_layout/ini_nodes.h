@@ -62,7 +62,7 @@ struct INIClass::INISection : public Node<INIClass::INISection*>
 {
     char*         Section;      // +0x0C
     List<INIEntry*> Entries;    // +0x10
-    IndexClassRaw EntryIndex;   // +0x2C
+    IndexClass<int, INIEntry*> EntryIndex;   // +0x2C
     INIComment*   Comments;     // +0x40
 
     INIEntry* FirstEntry() const { return (INIEntry*)Entries.First(); }

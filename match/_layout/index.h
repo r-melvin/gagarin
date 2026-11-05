@@ -98,6 +98,10 @@ public:
     const U& FUN_0052B430(const T& id);
     bool FUN_005387D0(const T& id, const U& data);
     bool FUN_00538980(const T& id);
+    // The INI instantiations' out-of-line sort-then-search (SearchForNode): <int, INIEntry*> at 0x52B4F0,
+    // <int, INISection*> at 0x52B620. Ini.cpp's lookup helpers call these where retail does.
+    NodeElement* FUN_0052B4F0(const T& id);
+    NodeElement* FUN_0052B620(const T& id);
 };
 
 template<class T, class U>
