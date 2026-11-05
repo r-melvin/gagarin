@@ -151487,5 +151487,25 @@
   "pct": 80.5,
   "best_pct": 80.5,
   "best_at": "2b26b0ea"
+ },
+ {
+  "tu": "match/Infantry.cpp",
+  "addr": "0x517CC0",
+  "sym": "?vf_9@InfantryClass@@UAEXXZ",
+  "len": "0xcf",
+  "name": "InfantryClass::vf_9",
+  "status": "partial",
+  "pct": 96.7,
+  "best_pct": 96.7,
+  "best_at": "088103f7"
+ },
+ {
+  "tu": "match/Infantry.cpp",
+  "addr": "0x523350",
+  "sym": "?FUN_00523350@Obj_00523350@@QAEPAXI@Z",
+  "len": "0x1e",
+  "name": "Obj_00523350::FUN_00523350",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

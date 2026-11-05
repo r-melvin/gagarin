@@ -57,6 +57,7 @@ extern double DAT_00A8F238;
 //   vtable 0x7EB058); the vf_N and FUN_ names are placeholders.
 
 #include "_layout/infantry_class.h"
+#include "_layout/house_type_class.h"
 #include "abstract_index_cast_sweep.h"
 #include "vector_class_mutation.h"
 #include "_layout/obj_004a1d30.h"
@@ -229,6 +230,37 @@ InfantryClass::InfantryClass(InfantryTypeClass* type, HouseClass* owner)
     }
     PrimaryFacing.FUN_004C9680(0x7F);
     AbstractIndex.AddIndex(vf_rtti_4(), this);
+}
+
+// FUNCTION: GAMEMD 0x517CC0
+void InfantryClass::vf_9()
+{
+    TechnoClass::vf_9();
+    if (Owner) {
+        Owner->FUN_004FF700(this);
+    }
+    if (Type) {
+        if (Owner) {
+            TypeList<const InfantryTypeClass*>& list = Owner->Type->VeteranInfantry;
+            for (int i = 0; i < list.Count; i++) {
+                if (list.Items[i] == Type) {
+                    Veterancy.FUN_00750090(1);
+                    break;
+                }
+            }
+        }
+        if (Owner && Owner->BarracksInfiltrated && Type->bools_C8C[2]) {
+            Veterancy.FUN_00750090(1);
+        }
+        Health = Type->Strength;
+        EstimatedHealth = Type->Strength;
+        int ammo = Type->InitialAmmo;
+        if (ammo == -1) {
+            ammo = Type->Ammo;
+        }
+        Ammo = ammo;
+        Cloakable = Type->Cloakable;
+    }
 }
 
 // FUNCTION: GAMEMD 0x51AA10
@@ -999,6 +1031,27 @@ HRESULT __stdcall InfantryClass::GetClassID(CLSID* pClassID)
 int Obj_00523340::FUN_00523340() const
 {
     return 0xF;
+}
+
+// The infantry as the receiver of its scalar deleting destructor (slot 8, 0x523350).
+struct Obj_00523350
+{
+    // FUNCTION: GAMEMD 0x517D90 (decl; reloc) -- the real destructor.
+    void FUN_00517D90();
+    // FUNCTION: GAMEMD 0x523350
+    void* FUN_00523350(unsigned int flags);
+};
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x523350
+// Scalar deleting destructor: run the destructor, then free when bit 0 is set.
+void* Obj_00523350::FUN_00523350(unsigned int flags)
+{
+    FUN_00517D90();
+    if (flags & 1) {
+        FUN_007C8B3D(this);
+    }
+    return this;
 }
 
 struct Obj_00523370 {
