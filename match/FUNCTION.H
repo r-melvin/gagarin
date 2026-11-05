@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: original project structure (master include list).
 //
-// FUNCTION.H -- the one header every game translation unit includes first.
+// FUNCTION.H -- transitional include list used by some translation units; retail had no universal master header.
 // It lists the canonical layout headers in base-first order: platform and C runtime, the shared
 // support headers, value types and interfaces, then each class after the classes it is built on.
 // Order is by dependency depth, then name; it is part of the build input, so change it only as a
