@@ -117,6 +117,9 @@ against an instruction in the binary before it lands as a repo fact.
   `// TUSPLIT: GAMEMD 0xCALLER same-file N% separate M%` with the caller's measured score in each placement, and its
   header says the placement is a workaround. Do not add a split that regresses another row.
 
+- `match/FUNCTION.H` is transitional, not recovered structure: binary evidence shows retail had no universal master
+  header. Do not add it to more files. The target is per-file include lists guided by the binary's file windows.
+
 - Target the 32-bit MSVC6 ABI: `__thiscall` (ECX = `this`) for methods,
   `__stdcall` for COM/WinAPI virtuals, 4-byte pointers. Do not assume `/Gz`;
   determine the convention from the disassembly for each function.
