@@ -52,11 +52,7 @@ Matrix3D FUN_00754BE0();
 ObjectClass* __fastcall FUN_004CC100(const CoordStruct* from,
     const CoordStruct* to, BulletTypeClass* type, HouseClass* house);
 // Existing canonical Tactical::AdjustForZ declaration is used (6D20E0).
-// Declaration: GAMEMD 0x4AED70 -- ECX surface, EDX conversion, RET56.
-void __fastcall FUN_004AED70(void* surface, void* conversion, void* shape,
-    int frame, const Point2D* point, RectangleStruct* clip, int flags,
-    int a8, int z, int a10, int intensity, int a12, int a13, int a14,
-    Point2D offset);
+#include "shape_blit_004aed70.h"
 
 // GLOBAL: GAMEMD 0x7E96E0 -- CLSID requested by the native spawn path.
 extern const CLSID DAT_007E96E0;

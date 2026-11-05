@@ -991,11 +991,7 @@ extern SHPStruct* DAT_00AC147C;
 extern void* DAT_00887314;
 // GLOBAL: GAMEMD 0x87F6C4 -- the palette conversion drawn with.
 extern void* DAT_0087F6C4;
-// Declaration: GAMEMD 0x4AED70 -- ECX surface, EDX conversion, RET56.
-void __fastcall FUN_004AED70(void* surface, void* conversion, void* shape,
-    int frame, const Point2D* point, RectangleStruct* clip, int flags,
-    int a8, int z, int a10, int intensity, int a12, int a13, int a14,
-    Point2D offset);
+#include "shape_blit_004aed70.h"
 
 // SYNTHETIC: GAMEMD 0x006F2AB0 -- initialiser of TechnoStatics::FrameTimer
 // SYNTHETIC: GAMEMD 0x006F2AD0 -- exit stub of TechnoStatics::FrameTimer, guard byte 0xB0EA38 bit 0

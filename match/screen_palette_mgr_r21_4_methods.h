@@ -61,11 +61,7 @@ extern RectangleStruct* DAT_00B0FC28;
 extern RectangleStruct* DAT_00B0FC2C;
 // GLOBAL: GAMEMD 0xB0FBA4 -- the palette set whose convert object the 0x72E920 background draw hands to the blitter.
 extern PaletteSet DAT_00B0FBA4;
-// FUNCTION: GAMEMD 0x4AED70 (decl; reloc) -- shape blitter, __fastcall: surface in ECX, convert object in EDX and
-// fourteen stack words (the last two are a point passed by value).
-void FUN_004AED70(Surface* surface, ConvertClass_Res* convert, WholeFileBlock* shape, int frame, Point2D* position,
-                  RectangleStruct* clip, int flags, int a8, int a9, int a10, int zAdjust, int a12, int a13, int a14,
-                  Point2D offset);
+#include "shape_blit_004aed70.h"
 // GLOBAL: GAMEMD 0xB0FA20 -- number of repeated middle strips, set by 0x72EC70.
 extern int DAT_00B0FA20;
 // GLOBAL: GAMEMD 0xB0FC30 -- sixteen raw blocks, stride 4.
